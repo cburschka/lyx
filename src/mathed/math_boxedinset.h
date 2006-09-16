@@ -16,10 +16,10 @@
 
 
 /// Non-AMS-style frame
-class MathBoxedInset : public MathNestInset {
+class InsetMathBoxed : public InsetMathNest {
 public:
 	///
-	MathBoxedInset();
+	InsetMathBoxed();
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

@@ -20,24 +20,24 @@ using std::string;
 using std::auto_ptr;
 
 
-MathBoxInset::MathBoxInset(string const & name)
-	: MathNestInset(1), name_(name)
+InsetMathBox::InsetMathBox(string const & name)
+	: InsetMathNest(1), name_(name)
 {}
 
 
-auto_ptr<InsetBase> MathBoxInset::doClone() const
+auto_ptr<InsetBase> InsetMathBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathBoxInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathBox(*this));
 }
 
 
-void MathBoxInset::write(WriteStream & os) const
+void InsetMathBox::write(WriteStream & os) const
 {
 	os << '\\' << name_ << '{' << cell(0) << '}';
 }
 
 
-void MathBoxInset::normalize(NormalStream & os) const
+void InsetMathBox::normalize(NormalStream & os) const
 {
 	os << '[' << name_ << ' ';
 	//text_->write(buffer(), os);
@@ -45,7 +45,7 @@ void MathBoxInset::normalize(NormalStream & os) const
 }
 
 
-void MathBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
@@ -54,7 +54,7 @@ void MathBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathBoxInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathBox::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	cell(0).draw(pi, x, y);
@@ -62,7 +62,7 @@ void MathBoxInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathBoxInset::infoize(std::ostream & os) const
+void InsetMathBox::infoize(std::ostream & os) const
 {
 	os << "Box: " << name_;
 }

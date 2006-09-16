@@ -19,9 +19,9 @@ using std::auto_ptr;
 using std::endl;
 
 
-MathLimInset::MathLimInset
+InsetMathLim::InsetMathLim
 	(MathArray const & f, MathArray const & x, MathArray const & x0)
-	: MathNestInset(3)
+	: InsetMathNest(3)
 {
 	cell(0) = f;
 	cell(1) = x;
@@ -29,55 +29,55 @@ MathLimInset::MathLimInset
 }
 
 
-auto_ptr<InsetBase> MathLimInset::doClone() const
+auto_ptr<InsetBase> InsetMathLim::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathLimInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathLim(*this));
 }
 
 
-void MathLimInset::normalize(NormalStream & os) const
+void InsetMathLim::normalize(NormalStream & os) const
 {
 	os << "[lim " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
 }
 
 
-void MathLimInset::metrics(MetricsInfo &, Dimension &) const
+void InsetMathLim::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathLimInset::draw(PainterInfo &, int, int) const
+void InsetMathLim::draw(PainterInfo &, int, int) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathLimInset::maple(MapleStream & os) const
+void InsetMathLim::maple(MapleStream & os) const
 {
 	os << "limit(" << cell(0) << ',' << cell(1) << '=' << cell(2) << ')';
 }
 
 
-void MathLimInset::maxima(MaximaStream & os) const
+void InsetMathLim::maxima(MaximaStream & os) const
 {
 	os << "limit(" << cell(0) << ',' << cell(1) << ',' << cell(2) << ')';
 }
 
 
-void MathLimInset::mathematica(MathematicaStream & os) const
+void InsetMathLim::mathematica(MathematicaStream & os) const
 {
 	os << "Limit[" << cell(0) << ',' << cell(1) << "-> " << cell(2) << ']';
 }
 
 
-void MathLimInset::mathmlize(MathMLStream & os) const
+void InsetMathLim::mathmlize(MathMLStream & os) const
 {
 	os << "lim(" << cell(0) << ',' << cell(1) << ',' << cell(2) << ')';
 }
 
 
-void MathLimInset::write(WriteStream &) const
+void InsetMathLim::write(WriteStream &) const
 {
 	lyxerr << "should not happen" << endl;
 }

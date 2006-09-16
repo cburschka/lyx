@@ -10,15 +10,23 @@
 
 #include <config.h>
 
+#include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_colorinset.h"
 #include "math_data.h"
+#include "math_deliminset.h"
 #include "math_extern.h"
 #include "math_factory.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
+#include "math_parser.h"
+#include "math_spaceinset.h"
 #include "math_streamstr.h"
 #include "math_support.h"
+#include "ref_inset.h"
+
+#include "bufferview_funcs.h"
+#include "lyxtext.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -48,6 +56,7 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
+#include "support/lyxlib.h"
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>
@@ -150,21 +159,21 @@ std::string hullName(HullType type)
 }
 
 
-MathHullInset::MathHullInset()
-	: MathGridInset(1, 1), type_(hullNone), nonum_(1), label_(1),
+InsetMathHull::InsetMathHull()
+	: InsetMathGrid(1, 1), type_(hullNone), nonum_(1), label_(1),
 	  preview_(new RenderPreview(this))
 {
-	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << endl;
+	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
-	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << endl;
+	//lyxerr << "sizeof InsetMathChar: " << sizeof(InsetMathChar) << endl;
 	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
 	initMath();
 	setDefaults();
 }
 
 
-MathHullInset::MathHullInset(HullType type)
-	: MathGridInset(getCols(type), 1), type_(type), nonum_(1), label_(1),
+InsetMathHull::InsetMathHull(HullType type)
+	: InsetMathGrid(getCols(type), 1), type_(type), nonum_(1), label_(1),
 	  preview_(new RenderPreview(this))
 {
 	initMath();
@@ -172,28 +181,28 @@ MathHullInset::MathHullInset(HullType type)
 }
 
 
-MathHullInset::MathHullInset(MathHullInset const & other)
-	: MathGridInset(other),
+InsetMathHull::InsetMathHull(InsetMathHull const & other)
+	: InsetMathGrid(other),
 	  type_(other.type_), nonum_(other.nonum_), label_(other.label_),
 	  preview_(new RenderPreview(this))
 {}
 
 
-MathHullInset::~MathHullInset()
+InsetMathHull::~InsetMathHull()
 {}
 
 
-auto_ptr<InsetBase> MathHullInset::doClone() const
+auto_ptr<InsetBase> InsetMathHull::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathHullInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathHull(*this));
 }
 
 
-MathHullInset & MathHullInset::operator=(MathHullInset const & other)
+InsetMathHull & InsetMathHull::operator=(InsetMathHull const & other)
 {
 	if (this == &other)
 		return *this;
-	*static_cast<MathGridInset*>(this) = MathGridInset(other);
+	*static_cast<InsetMathGrid*>(this) = InsetMathGrid(other);
 	type_  = other.type_;
 	nonum_ = other.nonum_;
 	label_ = other.label_;
@@ -203,17 +212,17 @@ MathHullInset & MathHullInset::operator=(MathHullInset const & other)
 }
 
 
-InsetBase * MathHullInset::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetMathHull::editXY(LCursor & cur, int x, int y)
 {
 	if (use_preview_) {
 		edit(cur, true);
 		return this;
 	}
-	return MathNestInset::editXY(cur, x, y);
+	return InsetMathNest::editXY(cur, x, y);
 }
 
 
-MathInset::mode_type MathHullInset::currentMode() const
+InsetMath::mode_type InsetMathHull::currentMode() const
 {
 	if (type_ == hullNone)
 		return UNDECIDED_MODE;
@@ -222,7 +231,7 @@ MathInset::mode_type MathHullInset::currentMode() const
 }
 
 
-bool MathHullInset::idxFirst(LCursor & cur) const
+bool InsetMathHull::idxFirst(LCursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = 0;
@@ -230,7 +239,7 @@ bool MathHullInset::idxFirst(LCursor & cur) const
 }
 
 
-bool MathHullInset::idxLast(LCursor & cur) const
+bool InsetMathHull::idxLast(LCursor & cur) const
 {
 	cur.idx() = nargs() - 1;
 	cur.pos() = cur.lastpos();
@@ -238,7 +247,7 @@ bool MathHullInset::idxLast(LCursor & cur) const
 }
 
 
-char MathHullInset::defaultColAlign(col_type col)
+char InsetMathHull::defaultColAlign(col_type col)
 {
 	if (type_ == hullEqnArray)
 		return "rcl"[col];
@@ -248,7 +257,7 @@ char MathHullInset::defaultColAlign(col_type col)
 }
 
 
-int MathHullInset::defaultColSpace(col_type col)
+int InsetMathHull::defaultColSpace(col_type col)
 {
 	if (type_ == hullAlign || type_ == hullAlignAt)
 		return 0;
@@ -260,13 +269,13 @@ int MathHullInset::defaultColSpace(col_type col)
 }
 
 
-char const * MathHullInset::standardFont() const
+char const * InsetMathHull::standardFont() const
 {
 	return type_ == hullNone ? "lyxnochange" : "mathnormal";
 }
 
 
-bool MathHullInset::previewState(BufferView * bv) const
+bool InsetMathHull::previewState(BufferView * bv) const
 {
 	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		lyx::graphics::PreviewImage const * pimage =
@@ -277,7 +286,7 @@ bool MathHullInset::previewState(BufferView * bv) const
 }
 
 
-void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
@@ -293,7 +302,7 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	StyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 
 	// let the cells adjust themselves
-	MathGridInset::metrics(mi, dim);
+	InsetMathGrid::metrics(mi, dim);
 
 	if (display()) {
 		dim.asc += displayMargin();
@@ -321,7 +330,7 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathHullInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	use_preview_ = previewState(pi.base.bv);
 
@@ -334,7 +343,7 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 
 	FontSetChanger dummy1(pi.base, standardFont());
 	StyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
-	MathGridInset::draw(pi, x + 1, y);
+	InsetMathGrid::draw(pi, x + 1, y);
 
 	if (numberedType()) {
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
@@ -350,10 +359,10 @@ void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathHullInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	if (display()) {
-		MathGridInset::metricsT(mi, dim);
+		InsetMathGrid::metricsT(mi, dim);
 	} else {
 		ostringstream os;
 		WriteStream wi(os, false, true);
@@ -365,10 +374,10 @@ void MathHullInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void MathHullInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 {
 	if (display()) {
-		MathGridInset::drawT(pain, x, y);
+		InsetMathGrid::drawT(pain, x, y);
 	} else {
 		ostringstream os;
 		WriteStream wi(os, false, true);
@@ -380,7 +389,7 @@ void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 
 namespace {
 
-string const latex_string(MathHullInset const & inset)
+string const latex_string(InsetMathHull const & inset)
 {
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
@@ -391,7 +400,7 @@ string const latex_string(MathHullInset const & inset)
 } // namespace anon
 
 
-void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
+void InsetMathHull::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		string const snippet = latex_string(*this);
@@ -400,7 +409,7 @@ void MathHullInset::addPreview(lyx::graphics::PreviewLoader & ploader) const
 }
 
 
-bool MathHullInset::notifyCursorLeaves(LCursor & cur)
+bool InsetMathHull::notifyCursorLeaves(LCursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		Buffer const & buffer = cur.buffer();
@@ -412,33 +421,33 @@ bool MathHullInset::notifyCursorLeaves(LCursor & cur)
 }
 
 
-string MathHullInset::label(row_type row) const
+string InsetMathHull::label(row_type row) const
 {
 	BOOST_ASSERT(row < nrows());
 	return label_[row];
 }
 
 
-void MathHullInset::label(row_type row, string const & label)
+void InsetMathHull::label(row_type row, string const & label)
 {
 	//lyxerr << "setting label '" << label << "' for row " << row << endl;
 	label_[row] = label;
 }
 
 
-void MathHullInset::numbered(row_type row, bool num)
+void InsetMathHull::numbered(row_type row, bool num)
 {
 	nonum_[row] = !num;
 }
 
 
-bool MathHullInset::numbered(row_type row) const
+bool InsetMathHull::numbered(row_type row) const
 {
 	return !nonum_[row];
 }
 
 
-bool MathHullInset::ams() const
+bool InsetMathHull::ams() const
 {
 	return
 		type_ == hullAlign ||
@@ -451,13 +460,13 @@ bool MathHullInset::ams() const
 }
 
 
-bool MathHullInset::display() const
+bool InsetMathHull::display() const
 {
 	return type_ != hullSimple && type_ != hullNone;
 }
 
 
-void MathHullInset::getLabelList(Buffer const &, vector<string> & labels) const
+void InsetMathHull::getLabelList(Buffer const &, vector<string> & labels) const
 {
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
@@ -465,7 +474,7 @@ void MathHullInset::getLabelList(Buffer const &, vector<string> & labels) const
 }
 
 
-bool MathHullInset::numberedType() const
+bool InsetMathHull::numberedType() const
 {
 	if (type_ == hullNone)
 		return false;
@@ -480,7 +489,7 @@ bool MathHullInset::numberedType() const
 }
 
 
-void MathHullInset::validate(LaTeXFeatures & features) const
+void InsetMathHull::validate(LaTeXFeatures & features) const
 {
 	if (ams())
 		features.require("amsmath");
@@ -494,11 +503,11 @@ void MathHullInset::validate(LaTeXFeatures & features) const
 	features.require("boldsymbol");
 	//features.binom      = true;
 
-	MathGridInset::validate(features);
+	InsetMathGrid::validate(features);
 }
 
 
-void MathHullInset::header_write(WriteStream & os) const
+void InsetMathHull::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
@@ -536,7 +545,7 @@ hullFlAlign
 }
 
 
-void MathHullInset::footer_write(WriteStream & os) const
+void InsetMathHull::footer_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
@@ -566,7 +575,7 @@ hullFlAlign
 }
 
 
-bool MathHullInset::rowChangeOK() const
+bool InsetMathHull::rowChangeOK() const
 {
 	return
 		type_ == hullEqnArray || type_ == hullAlign ||
@@ -576,7 +585,7 @@ bool MathHullInset::rowChangeOK() const
 }
 
 
-bool MathHullInset::colChangeOK() const
+bool InsetMathHull::colChangeOK() const
 {
 	return
 		type_ == hullAlign || type_ == hullFlAlign ||type_ == hullAlignAt ||
@@ -584,17 +593,17 @@ bool MathHullInset::colChangeOK() const
 }
 
 
-void MathHullInset::addRow(row_type row)
+void InsetMathHull::addRow(row_type row)
 {
 	if (!rowChangeOK())
 		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
-	MathGridInset::addRow(row);
+	InsetMathGrid::addRow(row);
 }
 
 
-void MathHullInset::swapRow(row_type row)
+void InsetMathHull::swapRow(row_type row)
 {
 	if (nrows() <= 1)
 		return;
@@ -602,15 +611,15 @@ void MathHullInset::swapRow(row_type row)
 		--row;
 	swap(nonum_[row], nonum_[row + 1]);
 	swap(label_[row], label_[row + 1]);
-	MathGridInset::swapRow(row);
+	InsetMathGrid::swapRow(row);
 }
 
 
-void MathHullInset::delRow(row_type row)
+void InsetMathHull::delRow(row_type row)
 {
 	if (nrows() <= 1 || !rowChangeOK())
 		return;
-	MathGridInset::delRow(row);
+	InsetMathGrid::delRow(row);
 	// The last dummy row has no number info nor a label.
 	// Test nrows() + 1 because we have already erased the row.
 	if (row == nrows() + 1)
@@ -620,23 +629,23 @@ void MathHullInset::delRow(row_type row)
 }
 
 
-void MathHullInset::addCol(col_type col)
+void InsetMathHull::addCol(col_type col)
 {
 	if (!colChangeOK())
 		return;
-	MathGridInset::addCol(col);
+	InsetMathGrid::addCol(col);
 }
 
 
-void MathHullInset::delCol(col_type col)
+void InsetMathHull::delCol(col_type col)
 {
 	if (ncols() <= 1 || !colChangeOK())
 		return;
-	MathGridInset::delCol(col);
+	InsetMathGrid::delCol(col);
 }
 
 
-string MathHullInset::nicelabel(row_type row) const
+string InsetMathHull::nicelabel(row_type row) const
 {
 	if (nonum_[row])
 		return string();
@@ -646,21 +655,21 @@ string MathHullInset::nicelabel(row_type row) const
 }
 
 
-void MathHullInset::glueall()
+void InsetMathHull::glueall()
 {
 	MathArray ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
-	*this = MathHullInset(hullSimple);
+	*this = InsetMathHull(hullSimple);
 	cell(0) = ar;
 	setDefaults();
 }
 
 
-void MathHullInset::splitTo2Cols()
+void InsetMathHull::splitTo2Cols()
 {
 	BOOST_ASSERT(ncols() == 1);
-	MathGridInset::addCol(1);
+	InsetMathGrid::addCol(1);
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 2 * row;
 		pos_type pos = firstRelOp(cell(i));
@@ -670,12 +679,12 @@ void MathHullInset::splitTo2Cols()
 }
 
 
-void MathHullInset::splitTo3Cols()
+void InsetMathHull::splitTo3Cols()
 {
 	BOOST_ASSERT(ncols() < 3);
 	if (ncols() < 2)
 		splitTo2Cols();
-	MathGridInset::addCol(1);
+	InsetMathGrid::addCol(1);
 	for (row_type row = 0; row < nrows(); ++row) {
 		idx_type const i = 3 * row + 1;
 		if (cell(i).size()) {
@@ -686,7 +695,7 @@ void MathHullInset::splitTo3Cols()
 }
 
 
-void MathHullInset::changeCols(col_type cols)
+void InsetMathHull::changeCols(col_type cols)
 {
 	if (ncols() == cols)
 		return;
@@ -697,7 +706,7 @@ void MathHullInset::changeCols(col_type cols)
 		else {
 			splitTo3Cols();
 			while (ncols() < cols)
-				MathGridInset::addCol(ncols() - 1);
+				InsetMathGrid::addCol(ncols() - 1);
 		}
 		return;
 	}
@@ -711,25 +720,25 @@ void MathHullInset::changeCols(col_type cols)
 	}
 	// delete columns
 	while (ncols() > cols) {
-		MathGridInset::delCol(ncols() - 1);
+		InsetMathGrid::delCol(ncols() - 1);
 	}
 }
 
 
-HullType MathHullInset::getType() const
+HullType InsetMathHull::getType() const
 {
 	return type_;
 }
 
 
-void MathHullInset::setType(HullType type)
+void InsetMathHull::setType(HullType type)
 {
 	type_ = type;
 	setDefaults();
 }
 
 
-void MathHullInset::mutate(HullType newtype)
+void InsetMathHull::mutate(HullType newtype)
 {
 	//lyxerr << "mutating from '" << type_ << "' to '" << newtype << "'" << endl;
 
@@ -873,7 +882,7 @@ void MathHullInset::mutate(HullType newtype)
 }
 
 
-string MathHullInset::eolString(row_type row, bool emptyline, bool fragile) const
+string InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) const
 {
 	string res;
 	if (numberedType()) {
@@ -882,46 +891,46 @@ string MathHullInset::eolString(row_type row, bool emptyline, bool fragile) cons
 		if (nonum_[row] && (type_ != hullMultline))
 			res += "\\nonumber ";
 	}
-	return res + MathGridInset::eolString(row, emptyline, fragile);
+	return res + InsetMathGrid::eolString(row, emptyline, fragile);
 }
 
 
-void MathHullInset::write(WriteStream & os) const
+void InsetMathHull::write(WriteStream & os) const
 {
 	header_write(os);
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 	footer_write(os);
 }
 
 
-void MathHullInset::normalize(NormalStream & os) const
+void InsetMathHull::normalize(NormalStream & os) const
 {
 	os << "[formula " << type_ << ' ';
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << "] ";
 }
 
 
-void MathHullInset::mathmlize(MathMLStream & os) const
+void InsetMathHull::mathmlize(MathMLStream & os) const
 {
-	MathGridInset::mathmlize(os);
+	InsetMathGrid::mathmlize(os);
 }
 
 
-void MathHullInset::infoize(ostream & os) const
+void InsetMathHull::infoize(ostream & os) const
 {
 	os << "Type: " << type_;
 }
 
 
-void MathHullInset::check() const
+void InsetMathHull::check() const
 {
 	BOOST_ASSERT(nonum_.size() == nrows());
 	BOOST_ASSERT(label_.size() == nrows());
 }
 
 
-void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
+void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 {
 	string lang;
 	string extra;
@@ -942,7 +951,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 #endif
 
 	MathArray eq;
-	eq.push_back(MathAtom(new MathCharInset('=')));
+	eq.push_back(MathAtom(new InsetMathChar('=')));
 
 	// go to first item in line
 	cur.idx() -= cur.idx() % ncols();
@@ -1000,7 +1009,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 }
 
 
-void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "action: " << cmd.action << endl;
 	switch (cmd.action) {
@@ -1010,7 +1019,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FINISHED_UP:
 	case LFUN_FINISHED_DOWN:
 		//lyxerr << "action: " << cmd.action << endl;
-		MathGridInset::doDispatch(cur, cmd);
+		InsetMathGrid::doDispatch(cur, cmd);
 		notifyCursorLeaves(cur);
 		cur.undispatched();
 		break;
@@ -1029,7 +1038,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();
 		}
-		MathGridInset::doDispatch(cur, cmd);
+		InsetMathGrid::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_MATH_NUMBER:
@@ -1100,7 +1109,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		MathArray ar;
-		if (createMathInset_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
+		if (createInsetMath_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
 			recordUndo(cur);
 			cur.insert(ar);
 		} else
@@ -1139,13 +1148,13 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		MathGridInset::doDispatch(cur, cmd);
+		InsetMathGrid::doDispatch(cur, cmd);
 		break;
 	}
 }
 
 
-bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action) {
@@ -1168,7 +1177,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		status.enabled(type_ != hullSimple);
 		return true;
 	case LFUN_INSET_INSERT: {
-		// Don't test createMathInset_fromDialogStr(), since
+		// Don't test createInsetMath_fromDialogStr(), since
 		// getStatus is not called with a valid reference and the
 		// dialog would not be applyable.
 		string const name = cmd.getArg(0);
@@ -1223,37 +1232,23 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			status.enabled(false);
 			return true;
 		}
-		return MathGridInset::getStatus(cur, cmd, status);
+		return InsetMathGrid::getStatus(cur, cmd, status);
 	}
 	default:
-		return MathGridInset::getStatus(cur, cmd, status);
+		return InsetMathGrid::getStatus(cur, cmd, status);
 	}
 
 	// This cannot really happen, but inserted to shut-up gcc
-	return MathGridInset::getStatus(cur, cmd, status);
+	return InsetMathGrid::getStatus(cur, cmd, status);
 }
 
 
 /////////////////////////////////////////////////////////////////////
 
-#include "math_arrayinset.h"
-#include "math_deliminset.h"
-#include "math_factory.h"
-#include "math_parser.h"
-#include "math_spaceinset.h"
-#include "ref_inset.h"
-
-#include "bufferview_funcs.h"
-#include "lyxtext.h"
-
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
-
-#include "support/lyxlib.h"
 
 
 // simply scrap this function if you want
-void MathHullInset::mutateToText()
+void InsetMathHull::mutateToText()
 {
 #if 0
 	// translate to latex
@@ -1274,48 +1269,48 @@ void MathHullInset::mutateToText()
 }
 
 
-void MathHullInset::handleFont(LCursor & cur, string const & arg,
+void InsetMathHull::handleFont(LCursor & cur, string const & arg,
 	string const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
 	recordUndo(cur);
-	if (cur.inset().asMathInset()->name() == font)
+	if (cur.inset().asInsetMath()->name() == font)
 		cur.handleFont(font);
 	else {
-		cur.handleNest(createMathInset(font));
+		cur.handleNest(createInsetMath(font));
 		cur.insert(arg);
 	}
 }
 
 
-void MathHullInset::handleFont2(LCursor & cur, string const & arg)
+void InsetMathHull::handleFont2(LCursor & cur, string const & arg)
 {
 	recordUndo(cur);
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(arg, font, b);
 	if (font.color() != LColor::inherit) {
-		MathAtom at = MathAtom(new MathColorInset(true, font.color()));
+		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
 	}
 }
 
 
-void MathHullInset::edit(LCursor & cur, bool left)
+void InsetMathHull::edit(LCursor & cur, bool left)
 {
 	cur.push(*this);
 	left ? idxFirst(cur) : idxLast(cur);
 }
 
 
-docstring const MathHullInset::editMessage() const
+docstring const InsetMathHull::editMessage() const
 {
 	return _("Math editor mode");
 }
 
 
-void MathHullInset::revealCodes(LCursor & cur) const
+void InsetMathHull::revealCodes(LCursor & cur) const
 {
 	if (!cur.inMathed())
 		return;
@@ -1351,7 +1346,7 @@ void MathHullInset::revealCodes(LCursor & cur) const
 }
 
 
-InsetBase::Code MathHullInset::lyxCode() const
+InsetBase::Code InsetMathHull::lyxCode() const
 {
 	return MATH_CODE;
 }
@@ -1361,13 +1356,13 @@ InsetBase::Code MathHullInset::lyxCode() const
 
 
 #if 0
-bool MathHullInset::searchForward(BufferView * bv, string const & str,
+bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 				     bool, bool)
 {
 #ifdef WITH_WARNINGS
 #warning completely broken
 #endif
-	static MathHullInset * lastformula = 0;
+	static InsetMathHull * lastformula = 0;
 	static CursorBase current = DocIterator(ibegin(nucleus()));
 	static MathArray ar;
 	static string laststr;
@@ -1386,7 +1381,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 
 	for (DocIterator it = current; it != iend(nucleus()); increment(it)) {
 		CursorSlice & top = it.back();
-		MathArray const & a = top.asMathInset()->cell(top.idx_);
+		MathArray const & a = top.asInsetMath()->cell(top.idx_);
 		if (a.matchpart(ar, top.pos_)) {
 			bv->cursor().setSelection(it, ar.size());
 			current = it;
@@ -1403,7 +1398,7 @@ bool MathHullInset::searchForward(BufferView * bv, string const & str,
 #endif
 
 
-void MathHullInset::write(Buffer const &, std::ostream & os) const
+void InsetMathHull::write(Buffer const &, std::ostream & os) const
 {
 	WriteStream wi(os, false, false);
 	os << "Formula ";
@@ -1411,7 +1406,7 @@ void MathHullInset::write(Buffer const &, std::ostream & os) const
 }
 
 
-void MathHullInset::read(Buffer const &, LyXLex & lex)
+void InsetMathHull::read(Buffer const &, LyXLex & lex)
 {
 	MathAtom at;
 	mathed_parse_normal(at, lex);
@@ -1419,7 +1414,7 @@ void MathHullInset::read(Buffer const &, LyXLex & lex)
 }
 
 
-int MathHullInset::plaintext(Buffer const &, ostream & os,
+int InsetMathHull::plaintext(Buffer const &, ostream & os,
 			OutputParams const &) const
 {
 	if (0 && display()) {
@@ -1440,7 +1435,7 @@ int MathHullInset::plaintext(Buffer const &, ostream & os,
 }
 
 
-int MathHullInset::docbook(Buffer const & buf, ostream & os,
+int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {
 	MathMLStream ms(os);
@@ -1463,11 +1458,11 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 		// \ensuremath{} or \begin{display}\end{display}
 		// so we strip LyX' math environment
 		WriteStream wi(ls, false, false);
-		MathGridInset::write(wi);
+		InsetMathGrid::write(wi);
 		ms << subst(subst(ls.str(), "&", "&amp;"), "<", "&lt;");
 		ms << ETag("alt");
 		ms << MTag("math");
-		MathGridInset::mathmlize(ms);
+		InsetMathGrid::mathmlize(ms);
 		ms << ETag("math");
 	} else {
 		ms << MTag("alt role=\"tex\"");
@@ -1492,7 +1487,7 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int MathHullInset::textString(Buffer const & buf, ostream & os,
+int InsetMathHull::textString(Buffer const & buf, ostream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

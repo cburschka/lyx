@@ -17,10 +17,10 @@
 
 
 /// The general n-th root inset.
-class MathRootInset : public MathNestInset {
+class InsetMathRoot : public InsetMathNest {
 public:
 	///
-	MathRootInset();
+	InsetMathRoot();
 	///
 	bool idxUpDown(LCursor & cur, bool up) const;
 	///

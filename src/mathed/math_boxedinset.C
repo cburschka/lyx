@@ -24,18 +24,18 @@
 using std::auto_ptr;
 
 
-MathBoxedInset::MathBoxedInset()
-	: MathNestInset(1)
+InsetMathBoxed::InsetMathBoxed()
+	: InsetMathNest(1)
 {}
 
 
-auto_ptr<InsetBase> MathBoxedInset::doClone() const
+auto_ptr<InsetBase> InsetMathBoxed::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathBoxedInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathBoxed(*this));
 }
 
 
-void MathBoxedInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
@@ -43,7 +43,7 @@ void MathBoxedInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathBoxedInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathBoxed::draw(PainterInfo & pi, int x, int y) const
 {
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
 		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
@@ -52,25 +52,25 @@ void MathBoxedInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathBoxedInset::write(WriteStream & os) const
+void InsetMathBoxed::write(WriteStream & os) const
 {
 	os << "\\boxed{" << cell(0) << '}';
 }
 
 
-void MathBoxedInset::normalize(NormalStream & os) const
+void InsetMathBoxed::normalize(NormalStream & os) const
 {
 	os << "[boxed " << cell(0) << ']';
 }
 
 
-void MathBoxedInset::infoize(std::ostream & os) const
+void InsetMathBoxed::infoize(std::ostream & os) const
 {
 	os << "Boxed: ";
 }
 
 
-void MathBoxedInset::validate(LaTeXFeatures & features) const
+void InsetMathBoxed::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
 }

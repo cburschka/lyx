@@ -23,18 +23,18 @@ using std::max;
 using std::auto_ptr;
 
 
-MathDfracInset::MathDfracInset()
-	: MathFracInset()
+InsetMathDFrac::InsetMathDFrac()
+	: InsetMathFrac()
 {}
 
 
-auto_ptr<InsetBase> MathDfracInset::doClone() const
+auto_ptr<InsetBase> InsetMathDFrac::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathDfracInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathDFrac(*this));
 }
 
 
-void MathDfracInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
@@ -45,7 +45,7 @@ void MathDfracInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathDfracInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathDFrac::draw(PainterInfo & pi, int x, int y) const
 {
 	int m = x + dim_.wid / 2;
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
@@ -55,20 +55,20 @@ void MathDfracInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-string MathDfracInset::name() const
+string InsetMathDFrac::name() const
 {
 	return "dfrac";
 }
 
 
-void MathDfracInset::mathmlize(MathMLStream & os) const
+void InsetMathDFrac::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mdfrac") << cell(0) << cell(1) << ETag("mdfrac");
 }
 
 
-void MathDfracInset::validate(LaTeXFeatures & features) const
+void InsetMathDFrac::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }

@@ -22,24 +22,24 @@ using std::string;
 using std::auto_ptr;
 
 
-MathBigInset::MathBigInset(string const & name, string const & delim)
+InsetMathBig::InsetMathBig(string const & name, string const & delim)
 	: name_(name), delim_(delim)
 {}
 
 
-string MathBigInset::name() const
+string InsetMathBig::name() const
 {
 	return name_;
 }
 
 
-auto_ptr<InsetBase> MathBigInset::doClone() const
+auto_ptr<InsetBase> InsetMathBig::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathBigInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathBig(*this));
 }
 
 
-MathBigInset::size_type MathBigInset::size() const
+InsetMathBig::size_type InsetMathBig::size() const
 {
 	// order: big Big bigg Bigg biggg Biggg
 	//        0   1   2    3    4     5
@@ -49,7 +49,7 @@ MathBigInset::size_type MathBigInset::size() const
 }
 
 
-double MathBigInset::increase() const
+double InsetMathBig::increase() const
 {
 	// The formula used in amsmath.sty is
 	// 1.2 * (1.0 + size() * 0.5) - 1.0.
@@ -59,7 +59,7 @@ double MathBigInset::increase() const
 }
 
 
-void MathBigInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	double const h = mathed_char_ascent(mi.base.font, 'I');
 	double const f = increase();
@@ -70,7 +70,7 @@ void MathBigInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathBigInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 {
 	// mathed_draw_deco does not use the leading backslash, so remove it.
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
@@ -84,7 +84,7 @@ void MathBigInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathBigInset::write(WriteStream & os) const
+void InsetMathBig::write(WriteStream & os) const
 {
 	os << '\\' << name_ << ' ' << delim_;
 	if (delim_[0] == '\\')
@@ -92,19 +92,19 @@ void MathBigInset::write(WriteStream & os) const
 }
 
 
-void MathBigInset::normalize(NormalStream & os) const
+void InsetMathBig::normalize(NormalStream & os) const
 {
 	os << '[' << name_ << ' ' <<  delim_ << ']';
 }
 
 
-void MathBigInset::infoize2(std::ostream & os) const
+void InsetMathBig::infoize2(std::ostream & os) const
 {
 	os << name_;
 }
 
 
-bool MathBigInset::isBigInsetDelim(string const & delim)
+bool InsetMathBig::isBigInsetDelim(string const & delim)
 {
 	// mathed_draw_deco must handle these
 	static char const * const delimiters[] = {

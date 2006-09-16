@@ -19,10 +19,10 @@
 class latexkeys;
 
 /// Decorations and accents over (below) a math object
-class MathDecorationInset : public MathNestInset {
+class InsetMathDecoration : public InsetMathNest {
 public:
 	///
-	explicit MathDecorationInset(latexkeys const * key);
+	explicit InsetMathDecoration(latexkeys const * key);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

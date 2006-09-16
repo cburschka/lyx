@@ -41,20 +41,20 @@ using std::endl;
 
 
 InsetFormulaMacro::InsetFormulaMacro()
-	: MathNestInset(2), name_("unknownA")
+	: InsetMathNest(2), name_("unknownA")
 {}
 
 
 InsetFormulaMacro::InsetFormulaMacro
 		(string const & name, int nargs, string const & type)
-	: MathNestInset(2), name_(name)
+	: InsetMathNest(2), name_(name)
 {
 	MathMacroTable::create(MathAtom(new MathMacroTemplate(name, nargs, type)));
 }
 
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
-	: MathNestInset(2), name_("unknownB")
+	: InsetMathNest(2), name_("unknownB")
 {
 	std::istringstream is(s);
 	read(is);

@@ -16,10 +16,10 @@
 
 
 /// LaTeX names for objects that we really don't know
-class MathUnknownInset : public MathDimInset {
+class InsetMathUnknown : public InsetMathDim {
 public:
 	///
-	explicit MathUnknownInset(std::string const & name,
+	explicit InsetMathUnknown(std::string const & name,
 		bool final = true, bool black = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -30,9 +30,9 @@ public:
 	///
 	std::string name() const;
 	/// identifies UnknownInsets
-	MathUnknownInset const * asUnknownInset() const { return this; }
+	InsetMathUnknown const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets
-	MathUnknownInset * asUnknownInset() { return this; }
+	InsetMathUnknown * asUnknownInset() { return this; }
 
 	///
 	void normalize(NormalStream &) const;

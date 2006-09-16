@@ -29,36 +29,36 @@ using std::string;
 using std::auto_ptr;
 
 
-MathSubstackInset::MathSubstackInset()
-	: MathGridInset(1, 1)
+InsetMathSubstack::InsetMathSubstack()
+	: InsetMathGrid(1, 1)
 {}
 
 
-auto_ptr<InsetBase> MathSubstackInset::doClone() const
+auto_ptr<InsetBase> InsetMathSubstack::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathSubstackInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathSubstack(*this));
 }
 
 
-void MathSubstackInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.style == LM_ST_DISPLAY) {
 		StyleChanger dummy(mi.base, LM_ST_TEXT);
-		MathGridInset::metrics(mi, dim);
+		InsetMathGrid::metrics(mi, dim);
 	} else {
-		MathGridInset::metrics(mi, dim);
+		InsetMathGrid::metrics(mi, dim);
 	}
 	dim_ = dim;
 }
 
 
-void MathSubstackInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathSubstack::draw(PainterInfo & pi, int x, int y) const
 {
-	MathGridInset::draw(pi, x + 1, y);
+	InsetMathGrid::draw(pi, x + 1, y);
 }
 
 
-bool MathSubstackInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathSubstack::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -71,46 +71,46 @@ bool MathSubstackInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 	default:
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 }
 
 
-void MathSubstackInset::infoize(std::ostream & os) const
+void InsetMathSubstack::infoize(std::ostream & os) const
 {
 	os << "Substack ";
 }
 
 
-void MathSubstackInset::write(WriteStream & os) const
+void InsetMathSubstack::write(WriteStream & os) const
 {
 	os << "\\substack{";
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 	os << "}\n";
 }
 
 
-void MathSubstackInset::normalize(NormalStream & os) const
+void InsetMathSubstack::normalize(NormalStream & os) const
 {
 	os << "[substack ";
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << ']';
 }
 
 
-void MathSubstackInset::maple(MapleStream & os) const
+void InsetMathSubstack::maple(MapleStream & os) const
 {
 	os << "substack(";
-	MathGridInset::maple(os);
+	InsetMathGrid::maple(os);
 	os << ')';
 }
 
 
-void MathSubstackInset::validate(LaTeXFeatures & features) const
+void InsetMathSubstack::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathGridInset::validate(features);
+	InsetMathGrid::validate(features);
 }

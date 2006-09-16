@@ -17,10 +17,10 @@
 
 /// Support for LaTeX's \\lefteqn command
 
-class MathLefteqnInset : public MathNestInset {
+class InsetMathLefteqn : public InsetMathNest {
 public:
 	///
-	MathLefteqnInset();
+	InsetMathLefteqn();
 	///
 	std::string name() const;
 	///

@@ -23,7 +23,7 @@ class LyXLex;
 // MathMacroTable if it needs to know more.
 
 /// Main LyX Inset for defining math macros
-class InsetFormulaMacro : public MathNestInset {
+class InsetFormulaMacro : public InsetMathNest {
 public:
 	///
 	InsetFormulaMacro();

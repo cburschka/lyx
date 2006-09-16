@@ -26,34 +26,34 @@ using std::string;
 using std::auto_ptr;
 
 
-MathSymbolInset::MathSymbolInset(latexkeys const * l)
+InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
 	: sym_(l), h_(0), width_(0), scriptable_(false)
 {}
 
 
-MathSymbolInset::MathSymbolInset(char const * name)
+InsetMathSymbol::InsetMathSymbol(char const * name)
 	: sym_(in_word_set(name)), h_(0), width_(0), scriptable_(false)
 {}
 
 
-MathSymbolInset::MathSymbolInset(string const & name)
+InsetMathSymbol::InsetMathSymbol(string const & name)
 	: sym_(in_word_set(name.c_str())), h_(0), width_(0), scriptable_(false)
 {}
 
 
-auto_ptr<InsetBase> MathSymbolInset::doClone() const
+auto_ptr<InsetBase> InsetMathSymbol::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathSymbolInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathSymbol(*this));
 }
 
 
-string MathSymbolInset::name() const
+string InsetMathSymbol::name() const
 {
 	return sym_->name;
 }
 
 
-void MathSymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
@@ -97,7 +97,7 @@ void MathSymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathSymbolInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
@@ -116,19 +116,19 @@ void MathSymbolInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathSymbolInset::isRelOp() const
+bool InsetMathSymbol::isRelOp() const
 {
 	return sym_->extra == "mathrel";
 }
 
 
-bool MathSymbolInset::isScriptable() const
+bool InsetMathSymbol::isScriptable() const
 {
 	return scriptable_;
 }
 
 
-bool MathSymbolInset::takesLimits() const
+bool InsetMathSymbol::takesLimits() const
 {
 	return
 		sym_->inset == "cmex" ||
@@ -137,20 +137,20 @@ bool MathSymbolInset::takesLimits() const
 }
 
 
-void MathSymbolInset::validate(LaTeXFeatures & features) const
+void InsetMathSymbol::validate(LaTeXFeatures & features) const
 {
 	if (!sym_->requires.empty())
 		features.require(sym_->requires);
 }
 
 
-void MathSymbolInset::normalize(NormalStream & os) const
+void InsetMathSymbol::normalize(NormalStream & os) const
 {
 	os << "[symbol " << name() << ']';
 }
 
 
-void MathSymbolInset::maple(MapleStream & os) const
+void InsetMathSymbol::maple(MapleStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';
@@ -160,7 +160,7 @@ void MathSymbolInset::maple(MapleStream & os) const
 		os << name();
 }
 
-void MathSymbolInset::maxima(MaximaStream & os) const
+void InsetMathSymbol::maxima(MaximaStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';
@@ -173,7 +173,7 @@ void MathSymbolInset::maxima(MaximaStream & os) const
 }
 
 
-void MathSymbolInset::mathematica(MathematicaStream & os) const
+void InsetMathSymbol::mathematica(MathematicaStream & os) const
 {
 	if ( name() == "pi")    { os << "Pi"; return;}
 	if ( name() == "infty") { os << "Infinity"; return;}
@@ -190,7 +190,7 @@ char const * MathMLtype(string const & s)
 }
 
 
-void MathSymbolInset::mathmlize(MathMLStream & os) const
+void InsetMathSymbol::mathmlize(MathMLStream & os) const
 {
 	char const * type = MathMLtype(sym_->extra);
 	os << '<' << type << "> ";
@@ -202,7 +202,7 @@ void MathSymbolInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathSymbolInset::octave(OctaveStream & os) const
+void InsetMathSymbol::octave(OctaveStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';
@@ -211,14 +211,14 @@ void MathSymbolInset::octave(OctaveStream & os) const
 }
 
 
-void MathSymbolInset::write(WriteStream & os) const
+void InsetMathSymbol::write(WriteStream & os) const
 {
 	os << '\\' << name();
 	os.pendingSpace(true);
 }
 
 
-void MathSymbolInset::infoize2(std::ostream & os) const
+void InsetMathSymbol::infoize2(std::ostream & os) const
 {
 	os << "Symbol: " << name();
 }

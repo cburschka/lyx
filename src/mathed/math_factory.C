@@ -241,7 +241,7 @@ latexkeys const * in_word_set(string const & str)
 }
 
 
-MathAtom createMathInset(string const & s)
+MathAtom createInsetMath(string const & s)
 {
 	//lyxerr << "creating inset with name: '" << s << '\'' << endl;
 	latexkeys const * l = in_word_set(s);
@@ -251,36 +251,36 @@ MathAtom createMathInset(string const & s)
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
 		if (inset == "overset")
-			return MathAtom(new MathOversetInset);
+			return MathAtom(new InsetMathOverset);
 		if (inset == "underset")
-			return MathAtom(new MathUndersetInset);
+			return MathAtom(new InsetMathUnderset);
 		if (inset == "decoration")
-			return MathAtom(new MathDecorationInset(l));
+			return MathAtom(new InsetMathDecoration(l));
 		if (inset == "space")
-			return MathAtom(new MathSpaceInset(l->name));
+			return MathAtom(new InsetMathSpace(l->name));
 		if (inset == "dots")
-			return MathAtom(new MathDotsInset(l));
+			return MathAtom(new InsetMathDots(l));
 		if (inset == "mbox")
-			// return MathAtom(new MathMBoxInset);
-			// MathMBoxInset is proposed to replace MathBoxInset,
+			// return MathAtom(new InsetMathMBox);
+			// InsetMathMBox is proposed to replace InsetMathBox,
 			// but is not ready yet (it needs a BufferView for
 			// construction)
-			return MathAtom(new MathBoxInset(l->name));
+			return MathAtom(new InsetMathBox(l->name));
 //		if (inset == "fbox")
-//			return MathAtom(new MathFboxInset(l));
+//			return MathAtom(new InsetMathFBox(l));
 		if (inset == "style")
-			return MathAtom(new MathSizeInset(l));
+			return MathAtom(new InsetMathSize(l));
 		if (inset == "font")
-			return MathAtom(new MathFontInset(l));
+			return MathAtom(new InsetMathFont(l));
 		if (inset == "oldfont")
-			return MathAtom(new MathFontOldInset(l));
+			return MathAtom(new InsetMathFontOld(l));
 		if (inset == "matrix")
-			return MathAtom(new MathAMSArrayInset(s));
+			return MathAtom(new InsetMathAMSArray(s));
 		if (inset == "big")
-			// we can't create a MathBigInset, since the argument
+			// we can't create a InsetMathBig, since the argument
 			// is missing.
-			return MathAtom(new MathUnknownInset(s));
-		return MathAtom(new MathSymbolInset(l));
+			return MathAtom(new InsetMathUnknown(s));
+		return MathAtom(new InsetMathSymbol(l));
 	}
 
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
@@ -289,65 +289,65 @@ MathAtom createMathInset(string const & s)
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
 	if (s == "boxed")
-		return MathAtom(new MathBoxedInset());
+		return MathAtom(new InsetMathBoxed());
 	if (s == "fbox")
-		return MathAtom(new MathFboxInset());
+		return MathAtom(new InsetMathFBox());
 	if (s == "framebox")
-		return MathAtom(new MathFrameboxInset);
+		return MathAtom(new InsetMathFrameBox);
 	if (s == "makebox")
-		return MathAtom(new MathMakeboxInset);
+		return MathAtom(new InsetMathMakebox);
 	if (s == "kern")
-		return MathAtom(new MathKernInset);
+		return MathAtom(new InsetMathKern);
 	if (s == "xymatrix")
-		return MathAtom(new MathXYMatrixInset);
+		return MathAtom(new InsetMathXYMatrix);
 	if (s == "xrightarrow" || s == "xleftarrow")
-		return MathAtom(new MathXArrowInset(s));
+		return MathAtom(new InsetMathXArrow(s));
 	if (s == "split" || s == "gathered" || s == "aligned" || s == "alignedat")
-		return MathAtom(new MathSplitInset(s));
+		return MathAtom(new InsetMathSplit(s));
 	if (s == "cases")
-		return MathAtom(new MathCasesInset);
+		return MathAtom(new InsetMathCases);
 	if (s == "substack")
-		return MathAtom(new MathSubstackInset);
+		return MathAtom(new InsetMathSubstack);
 	if (s == "subarray" || s == "array")
-		return MathAtom(new MathArrayInset(s, 1, 1));
+		return MathAtom(new InsetMathArray(s, 1, 1));
 	if (s == "sqrt")
-		return MathAtom(new MathSqrtInset);
+		return MathAtom(new InsetMathSqrt);
 	if (s == "root")
-		return MathAtom(new MathRootInset);
+		return MathAtom(new InsetMathRoot);
 	if (s == "tabular")
-		return MathAtom(new MathTabularInset(s, 1, 1));
+		return MathAtom(new InsetMathTabular(s, 1, 1));
 	if (s == "stackrel")
-		return MathAtom(new MathStackrelInset);
+		return MathAtom(new InsetMathStackrel);
 	if (s == "binom" || s == "choose")
-		return MathAtom(new MathBinomInset(s == "choose"));
+		return MathAtom(new InsetMathBinom(s == "choose"));
 	if (s == "frac")
-		return MathAtom(new MathFracInset);
+		return MathAtom(new InsetMathFrac);
 	if (s == "over")
-		return MathAtom(new MathFracInset(MathFracInset::OVER));
+		return MathAtom(new InsetMathFrac(InsetMathFrac::OVER));
 	if (s == "nicefrac")
-		return MathAtom(new MathFracInset(MathFracInset::NICEFRAC));
+		return MathAtom(new InsetMathFrac(InsetMathFrac::NICEFRAC));
 	//if (s == "infer")
 	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
-		return MathAtom(new MathFracInset(MathFracInset::ATOP));
+		return MathAtom(new InsetMathFrac(InsetMathFrac::ATOP));
 	if (s == "lefteqn")
-		return MathAtom(new MathLefteqnInset);
+		return MathAtom(new InsetMathLefteqn);
 	if (s == "boldsymbol")
-		return MathAtom(new MathBoldsymbolInset);
+		return MathAtom(new InsetMathBoldSymbol);
 	if (s == "color" || s == "normalcolor")
-		return MathAtom(new MathColorInset(true));
+		return MathAtom(new InsetMathColor(true));
 	if (s == "textcolor")
-		return MathAtom(new MathColorInset(false));
+		return MathAtom(new InsetMathColor(false));
 	if (s == "dfrac")
-		return MathAtom(new MathDfracInset);
+		return MathAtom(new InsetMathDFrac);
 	if (s == "tfrac")
-		return MathAtom(new MathTfracInset);
+		return MathAtom(new InsetMathTFrac);
 	if (s == "hphantom")
-		return MathAtom(new MathPhantomInset(MathPhantomInset::hphantom));
+		return MathAtom(new InsetMathPhantom(InsetMathPhantom::hphantom));
 	if (s == "phantom")
-		return MathAtom(new MathPhantomInset(MathPhantomInset::phantom));
+		return MathAtom(new InsetMathPhantom(InsetMathPhantom::phantom));
 	if (s == "vphantom")
-		return MathAtom(new MathPhantomInset(MathPhantomInset::vphantom));
+		return MathAtom(new InsetMathPhantom(InsetMathPhantom::vphantom));
 
 	if (MacroTable::globalMacros().has(s))
 		return MathAtom(new MathMacro(s,
@@ -357,11 +357,11 @@ MathAtom createMathInset(string const & s)
 	//		MacroTable::localMacros().get(s).numargs()));
 
 	//lyxerr << "creating unknown inset '" << s << "'" << endl;
-	return MathAtom(new MathUnknownInset(s));
+	return MathAtom(new InsetMathUnknown(s));
 }
 
 
-bool createMathInset_fromDialogStr(string const & str, MathArray & ar)
+bool createInsetMath_fromDialogStr(string const & str, MathArray & ar)
 {
 	// An example str:
 	// "ref LatexCommand \\ref{sec:Title}\n\\end_inset\n\n";

@@ -18,10 +18,10 @@
 
 #include "math_nestinset.h"
 
-class MathLimInset : public MathNestInset {
+class InsetMathLim : public InsetMathNest {
 public:
 	///
-	MathLimInset(MathArray const & f, MathArray const & x, MathArray const & x0);
+	InsetMathLim(MathArray const & f, MathArray const & x, MathArray const & x0);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

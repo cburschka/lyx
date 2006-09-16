@@ -16,10 +16,10 @@
 
 
 /// Binom like objects
-class MathBinomInset : public MathFracbaseInset {
+class InsetMathBinom : public InsetMathFracBase {
 public:
 	///
-	explicit MathBinomInset(bool choose = false);
+	explicit InsetMathBinom(bool choose = false);
 	///
 	void write(WriteStream & os) const;
 	///

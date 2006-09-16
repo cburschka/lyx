@@ -25,8 +25,8 @@ using std::auto_ptr;
 using std::endl;
 
 
-MathExIntInset::MathExIntInset(string const & name)
-	: MathNestInset(4), symbol_(name)
+InsetMathExInt::InsetMathExInt(string const & name)
+	: InsetMathNest(4), symbol_(name)
 {}
 
 // 0 - core
@@ -35,19 +35,19 @@ MathExIntInset::MathExIntInset(string const & name)
 // 3 - upper
 
 
-auto_ptr<InsetBase> MathExIntInset::doClone() const
+auto_ptr<InsetBase> InsetMathExInt::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathExIntInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathExInt(*this));
 }
 
 
-void MathExIntInset::symbol(string const & symbol)
+void InsetMathExInt::symbol(string const & symbol)
 {
 	symbol_ = symbol;
 }
 
 
-bool MathExIntInset::hasScripts() const
+bool InsetMathExInt::hasScripts() const
 {
 	// take empty upper bound as "no scripts"
 	return !cell(3).empty();
@@ -55,26 +55,26 @@ bool MathExIntInset::hasScripts() const
 
 
 
-void MathExIntInset::normalize(NormalStream & os) const
+void InsetMathExInt::normalize(NormalStream & os) const
 {
 	os << '[' << symbol_ << ' ' << cell(0) << ' ' << cell(1) << ' '
 	   << cell(2) << ' ' << cell(3) << ']';
 }
 
 
-void MathExIntInset::metrics(MetricsInfo &, Dimension &) const
+void InsetMathExInt::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathExIntInset::draw(PainterInfo &, int, int) const
+void InsetMathExInt::draw(PainterInfo &, int, int) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathExIntInset::maple(MapleStream & os) const
+void InsetMathExInt::maple(MapleStream & os) const
 {
 	os << symbol_ << '(';
 	if (cell(0).size())
@@ -88,7 +88,7 @@ void MathExIntInset::maple(MapleStream & os) const
 }
 
 
-void MathExIntInset::maxima(MaximaStream & os) const
+void InsetMathExInt::maxima(MaximaStream & os) const
 {
 	if ( symbol_ == "int" )
 		os << "integrate(";
@@ -105,7 +105,7 @@ void MathExIntInset::maxima(MaximaStream & os) const
 		os << cell(1) << ')';
 }
 
-void MathExIntInset::mathematica(MathematicaStream & os) const
+void InsetMathExInt::mathematica(MathematicaStream & os) const
 {
 	if ( symbol_ == "int" )
 		os << "Integrate[";
@@ -125,9 +125,9 @@ void MathExIntInset::mathematica(MathematicaStream & os) const
 }
 
 
-void MathExIntInset::mathmlize(MathMLStream & os) const
+void InsetMathExInt::mathmlize(MathMLStream & os) const
 {
-	boost::scoped_ptr<MathSymbolInset> sym(new MathSymbolInset(symbol_));
+	boost::scoped_ptr<InsetMathSymbol> sym(new InsetMathSymbol(symbol_));
 	//if (hasScripts())
 	//	mathmlize(sym, os);
 	//else
@@ -138,7 +138,7 @@ void MathExIntInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathExIntInset::write(WriteStream &) const
+void InsetMathExInt::write(WriteStream &) const
 {
 	lyxerr << "should not happen" << endl;
 }

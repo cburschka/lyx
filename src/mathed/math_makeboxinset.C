@@ -20,22 +20,22 @@
 using std::auto_ptr;
 
 
-MathMakeboxInset::MathMakeboxInset()
-	: MathNestInset(3)
+InsetMathMakebox::InsetMathMakebox()
+	: InsetMathNest(3)
 {}
 
 
-auto_ptr<InsetBase> MathMakeboxInset::doClone() const
+auto_ptr<InsetBase> InsetMathMakebox::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathMakeboxInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathMakebox(*this));
 }
 
 
-void MathMakeboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
-	MathNestInset::metrics(mi);
+	InsetMathNest::metrics(mi);
 	dim   = cell(0).dim();
 	dim  += cell(1).dim();
 	dim  += cell(2).dim();
@@ -45,7 +45,7 @@ void MathMakeboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathMakeboxInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	drawMarkers(pi, x, y);
@@ -69,7 +69,7 @@ void MathMakeboxInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMakeboxInset::write(WriteStream & os) const
+void InsetMathMakebox::write(WriteStream & os) const
 {
 	os << "\\makebox";
 	os << '[' << cell(0) << ']';
@@ -79,13 +79,13 @@ void MathMakeboxInset::write(WriteStream & os) const
 }
 
 
-void MathMakeboxInset::normalize(NormalStream & os) const
+void InsetMathMakebox::normalize(NormalStream & os) const
 {
 	os << "[makebox " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
 }
 
 
-void MathMakeboxInset::infoize(std::ostream & os) const
+void InsetMathMakebox::infoize(std::ostream & os) const
 {
 	os << "Makebox (width: " << cell(0)
 	    << " pos: " << cell(1) << ")";

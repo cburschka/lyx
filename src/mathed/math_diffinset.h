@@ -18,10 +18,10 @@
 
 #include "math_nestinset.h"
 
-class MathDiffInset : public MathNestInset {
+class InsetMathDiff : public InsetMathNest {
 public:
 	///
-	MathDiffInset();
+	InsetMathDiff();
 	///
 	void addDer(MathArray const & der);
 	///

@@ -21,61 +21,61 @@ using std::string;
 using std::auto_ptr;
 
 
-MathNumberInset::MathNumberInset(string const & s)
+InsetMathNumber::InsetMathNumber(string const & s)
 	: str_(s)
 {}
 
 
-auto_ptr<InsetBase> MathNumberInset::doClone() const
+auto_ptr<InsetBase> InsetMathNumber::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathNumberInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathNumber(*this));
 }
 
 
-void MathNumberInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathNumber::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, str_, dim);
 }
 
 
-void MathNumberInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathNumber::draw(PainterInfo & pi, int x, int y) const
 {
         docstring const dstr(str_.begin(), str_.end());
 	pi.draw(x, y, dstr);
 }
 
 
-void MathNumberInset::normalize(NormalStream & os) const
+void InsetMathNumber::normalize(NormalStream & os) const
 {
 	os << "[number " << str_ << ']';
 }
 
 
-void MathNumberInset::maple(MapleStream & os) const
+void InsetMathNumber::maple(MapleStream & os) const
 {
 	os << str_;
 }
 
 
-void MathNumberInset::mathematica(MathematicaStream & os) const
+void InsetMathNumber::mathematica(MathematicaStream & os) const
 {
 	os << str_;
 }
 
 
-void MathNumberInset::octave(OctaveStream & os) const
+void InsetMathNumber::octave(OctaveStream & os) const
 {
 	os << str_;
 }
 
 
-void MathNumberInset::mathmlize(MathMLStream & os) const
+void InsetMathNumber::mathmlize(MathMLStream & os) const
 {
 	os << "<mi> " << str_ << " </mi>";
 }
 
 
-void MathNumberInset::write(WriteStream & os) const
+void InsetMathNumber::write(WriteStream & os) const
 {
 	os << str_;
 }

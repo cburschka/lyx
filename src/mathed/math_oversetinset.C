@@ -21,13 +21,13 @@ using std::max;
 using std::auto_ptr;
 
 
-auto_ptr<InsetBase> MathOversetInset::doClone() const
+auto_ptr<InsetBase> InsetMathOverset::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathOversetInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathOverset(*this));
 }
 
 
-void MathOversetInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -40,7 +40,7 @@ void MathOversetInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathOversetInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 {
 	int m  = x + width() / 2;
 	int yo = y - cell(1).ascent() + cell(0).descent() - 1;
@@ -51,7 +51,7 @@ void MathOversetInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathOversetInset::idxFirst(LCursor & cur) const
+bool InsetMathOverset::idxFirst(LCursor & cur) const
 {
 	cur.idx() = 1;
 	cur.pos() = 0;
@@ -59,7 +59,7 @@ bool MathOversetInset::idxFirst(LCursor & cur) const
 }
 
 
-bool MathOversetInset::idxLast(LCursor & cur) const
+bool InsetMathOverset::idxLast(LCursor & cur) const
 {
 	cur.idx() = 1;
 	cur.pos() = cur.lastpos();
@@ -67,20 +67,20 @@ bool MathOversetInset::idxLast(LCursor & cur) const
 }
 
 
-void MathOversetInset::write(WriteStream & os) const
+void InsetMathOverset::write(WriteStream & os) const
 {
 	os << "\\overset{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 
-void MathOversetInset::normalize(NormalStream & os) const
+void InsetMathOverset::normalize(NormalStream & os) const
 {
 	os << "[overset " << cell(0) << ' ' << cell(1) << ']';
 }
 
 
-void MathOversetInset::validate(LaTeXFeatures & features) const
+void InsetMathOverset::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }

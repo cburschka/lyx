@@ -20,7 +20,7 @@
 
 
 /// This class contains the data for a macro.
-class MathMacro : public MathNestInset {
+class MathMacro : public InsetMathNest {
 public:
 	/// A macro can be built from an existing template
 	MathMacro(std::string const & name, int numargs);

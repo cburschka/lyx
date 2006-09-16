@@ -21,18 +21,18 @@
 #include "support/std_ostream.h"
 
 
-MathPhantomInset::MathPhantomInset(Kind k)
-	: MathNestInset(1), kind_(k)
+InsetMathPhantom::InsetMathPhantom(Kind k)
+	: InsetMathNest(1), kind_(k)
 {}
 
 
-std::auto_ptr<InsetBase> MathPhantomInset::doClone() const
+std::auto_ptr<InsetBase> InsetMathPhantom::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new MathPhantomInset(*this));
+	return std::auto_ptr<InsetBase>(new InsetMathPhantom(*this));
 }
 
 
-void MathPhantomInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
@@ -40,7 +40,7 @@ void MathPhantomInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathPhantomInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 {
 	static int const arrow_size = 4;
 
@@ -118,7 +118,7 @@ void MathPhantomInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathPhantomInset::write(WriteStream & os) const
+void InsetMathPhantom::write(WriteStream & os) const
 {
 	switch (kind_) {
 	case phantom:
@@ -135,7 +135,7 @@ void MathPhantomInset::write(WriteStream & os) const
 }
 
 
-void MathPhantomInset::normalize(NormalStream & os) const
+void InsetMathPhantom::normalize(NormalStream & os) const
 {
 	switch (kind_) {
 	case phantom:
@@ -152,7 +152,7 @@ void MathPhantomInset::normalize(NormalStream & os) const
 }
 
 
-void MathPhantomInset::infoize(std::ostream & os) const
+void InsetMathPhantom::infoize(std::ostream & os) const
 {
 	switch (kind_) {
 	case phantom:

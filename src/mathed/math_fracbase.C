@@ -15,26 +15,26 @@
 #include "cursor.h"
 
 
-MathFracbaseInset::MathFracbaseInset()
-	: MathNestInset(2)
+InsetMathFracBase::InsetMathFracBase()
+	: InsetMathNest(2)
 {}
 
 
-bool MathFracbaseInset::idxRight(LCursor &) const
+bool InsetMathFracBase::idxRight(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxLeft(LCursor &) const
+bool InsetMathFracBase::idxLeft(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathFracBase::idxUpDown(LCursor & cur, bool up) const
 {
-	MathInset::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
+	InsetMath::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;

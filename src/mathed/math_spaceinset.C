@@ -32,12 +32,12 @@ char const * latex_mathspace[] = {
 int const nSpace = sizeof(latex_mathspace)/sizeof(char *);
 
 
-MathSpaceInset::MathSpaceInset(int sp)
+InsetMathSpace::InsetMathSpace(int sp)
 	: space_(sp)
 {}
 
 
-MathSpaceInset::MathSpaceInset(string const & name)
+InsetMathSpace::InsetMathSpace(string const & name)
 	: space_(1)
 {
 	for (int i = 0; i < nSpace; ++i)
@@ -46,13 +46,13 @@ MathSpaceInset::MathSpaceInset(string const & name)
 }
 
 
-auto_ptr<InsetBase> MathSpaceInset::doClone() const
+auto_ptr<InsetBase> InsetMathSpace::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathSpaceInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathSpace(*this));
 }
 
 
-int MathSpaceInset::width() const
+int InsetMathSpace::width() const
 {
 	switch (space_) {
 		case 0: return 6;
@@ -70,19 +70,19 @@ int MathSpaceInset::width() const
 }
 
 
-int MathSpaceInset::ascent() const
+int InsetMathSpace::ascent() const
 {
 	return 4;
 }
 
 
-int MathSpaceInset::descent() const
+int InsetMathSpace::descent() const
 {
 	return 0;
 }
 
 
-void MathSpaceInset::metrics(MetricsInfo &, Dimension & dim) const
+void InsetMathSpace::metrics(MetricsInfo &, Dimension & dim) const
 {
 	dim.wid = width();
 	dim.asc = ascent();
@@ -90,7 +90,7 @@ void MathSpaceInset::metrics(MetricsInfo &, Dimension & dim) const
 }
 
 
-void MathSpaceInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	// Sadly, HP-UX CC can't handle that kind of initialization.
 	// XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
@@ -110,13 +110,13 @@ void MathSpaceInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathSpaceInset::incSpace()
+void InsetMathSpace::incSpace()
 {
 	space_ = (space_ + 1) % (nSpace - 2);
 }
 
 
-void MathSpaceInset::validate(LaTeXFeatures & features) const
+void InsetMathSpace::validate(LaTeXFeatures & features) const
 {
 	if (space_ >= 0 && space_< nSpace) {
 		if ((latex_mathspace[space_] == string("negmedspace"))
@@ -126,30 +126,30 @@ void MathSpaceInset::validate(LaTeXFeatures & features) const
 }
 
 
-void MathSpaceInset::maple(MapleStream & os) const
+void InsetMathSpace::maple(MapleStream & os) const
 {
 	os << ' ';
 }
 
-void MathSpaceInset::mathematica(MathematicaStream & os) const
-{
-	os << ' ';
-}
-
-
-void MathSpaceInset::octave(OctaveStream & os) const
+void InsetMathSpace::mathematica(MathematicaStream & os) const
 {
 	os << ' ';
 }
 
 
-void MathSpaceInset::normalize(NormalStream & os) const
+void InsetMathSpace::octave(OctaveStream & os) const
+{
+	os << ' ';
+}
+
+
+void InsetMathSpace::normalize(NormalStream & os) const
 {
 	os << "[space " << int(space_) << "] ";
 }
 
 
-void MathSpaceInset::write(WriteStream & os) const
+void InsetMathSpace::write(WriteStream & os) const
 {
 	if (space_ >= 0 && space_ < nSpace) {
 		os << '\\' << latex_mathspace[space_];

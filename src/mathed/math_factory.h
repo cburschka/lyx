@@ -18,12 +18,12 @@ class MathAtom;
 class MathArray;
 
 
-MathAtom createMathInset(std::string const &);
+MathAtom createInsetMath(std::string const &);
 
 /** Fills ar with the contents of str.
  *  str is created by the frontend dialog's and returned to the LyX core.
  *  The function returns true if successful.
  */
-bool createMathInset_fromDialogStr(std::string const &, MathArray &);
+bool createInsetMath_fromDialogStr(std::string const &, MathArray &);
 
 #endif

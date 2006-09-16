@@ -16,10 +16,10 @@
 
 
 /// \dfrac support
-class MathTfracInset : public MathFracInset {
+class InsetMathTFrac : public InsetMathFrac {
 public:
 	///
-	MathTfracInset();
+	InsetMathTFrac();
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

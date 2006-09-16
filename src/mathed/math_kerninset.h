@@ -19,14 +19,14 @@
 /// The \kern primitive
 /// Some hack for visual effects
 
-class MathKernInset : public MathInset {
+class InsetMathKern : public InsetMath {
 public:
 	///
-	MathKernInset();
+	InsetMathKern();
 	///
-	explicit MathKernInset(LyXLength const & wid);
+	explicit InsetMathKern(LyXLength const & wid);
 	///
-	explicit MathKernInset(std::string const & wid);
+	explicit InsetMathKern(std::string const & wid);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

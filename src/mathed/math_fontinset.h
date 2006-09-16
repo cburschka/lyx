@@ -18,14 +18,14 @@
 class latexkeys;
 
 /// Inset for font changes
-class MathFontInset : public MathNestInset {
+class InsetMathFont : public InsetMathNest {
 public:
 	///
-	explicit MathFontInset(latexkeys const * key);
+	explicit InsetMathFont(latexkeys const * key);
 	///
-	MathFontInset * asFontInset() { return this; }
+	InsetMathFont * asFontInset() { return this; }
 	///
-	MathFontInset const * asFontInset() const { return this; }
+	InsetMathFont const * asFontInset() const { return this; }
 	/// are we in math mode, text mode, or unsure?
 	mode_type currentMode() const;
 	///

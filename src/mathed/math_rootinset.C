@@ -24,20 +24,20 @@ using std::auto_ptr;
 
 
 
-MathRootInset::MathRootInset()
-	: MathNestInset(2)
+InsetMathRoot::InsetMathRoot()
+	: InsetMathNest(2)
 {}
 
 
-auto_ptr<InsetBase> MathRootInset::doClone() const
+auto_ptr<InsetBase> InsetMathRoot::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathRootInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathRoot(*this));
 }
 
 
-void MathRootInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	MathNestInset::metrics(mi);
+	InsetMathNest::metrics(mi);
 	dim.asc = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
 	dim.des = max(cell(1).descent() + 5, cell(0).descent()) + 2;
 	dim.wid = cell(0).width() + cell(1).width() + 10;
@@ -46,7 +46,7 @@ void MathRootInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathRootInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 {
 	int const w = cell(0).width();
 	// the "exponent"
@@ -68,19 +68,19 @@ void MathRootInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathRootInset::write(WriteStream & os) const
+void InsetMathRoot::write(WriteStream & os) const
 {
 	os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
 }
 
 
-void MathRootInset::normalize(NormalStream & os) const
+void InsetMathRoot::normalize(NormalStream & os) const
 {
 	os << "[root " << cell(0) << ' ' << cell(1) << ']';
 }
 
 
-bool MathRootInset::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathRoot::idxUpDown(LCursor & cur, bool up) const
 {
 	LCursor::idx_type const target = up ? 0 : 1;
 	if (cur.idx() == target)
@@ -91,19 +91,19 @@ bool MathRootInset::idxUpDown(LCursor & cur, bool up) const
 }
 
 
-void MathRootInset::maple(MapleStream & os) const
+void InsetMathRoot::maple(MapleStream & os) const
 {
 	os << '(' << cell(1) << ")^(1/(" << cell(0) <<"))";
 }
 
 
-void MathRootInset::octave(OctaveStream & os) const
+void InsetMathRoot::octave(OctaveStream & os) const
 {
 	os << "root(" << cell(1) << ',' << cell(0) << ')';
 }
 
 
-void MathRootInset::mathmlize(MathMLStream & os) const
+void InsetMathRoot::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mroot") << cell(1) << cell(0) << ETag("mroot");
 }

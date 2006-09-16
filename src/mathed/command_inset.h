@@ -19,7 +19,7 @@
 
 
 /// Inset for things like \name[options]{contents}
-class CommandInset : public MathNestInset {
+class CommandInset : public InsetMathNest {
 public:
 	///
 	explicit CommandInset(std::string const & name);

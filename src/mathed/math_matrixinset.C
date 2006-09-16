@@ -17,30 +17,30 @@
 using std::auto_ptr;
 
 
-MathMatrixInset::MathMatrixInset(MathGridInset const & p)
-	: MathGridInset(p)
+InsetMathMatrix::InsetMathMatrix(InsetMathGrid const & p)
+	: InsetMathGrid(p)
 {}
 
 
-auto_ptr<InsetBase> MathMatrixInset::doClone() const
+auto_ptr<InsetBase> InsetMathMatrix::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathMatrixInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathMatrix(*this));
 }
 
 
-void MathMatrixInset::write(WriteStream & os) const
+void InsetMathMatrix::write(WriteStream & os) const
 {
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 }
 
 
-void MathMatrixInset::normalize(NormalStream & os) const
+void InsetMathMatrix::normalize(NormalStream & os) const
 {
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 }
 
 
-void MathMatrixInset::maple(MapleStream & os) const
+void InsetMathMatrix::maple(MapleStream & os) const
 {
 	os << "matrix(" << int(nrows()) << ',' << int(ncols()) << ",[";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -52,7 +52,7 @@ void MathMatrixInset::maple(MapleStream & os) const
 }
 
 
-void MathMatrixInset::maxima(MaximaStream & os) const
+void InsetMathMatrix::maxima(MaximaStream & os) const
 {
 	os << "matrix(";
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -70,7 +70,7 @@ void MathMatrixInset::maxima(MaximaStream & os) const
 }
 
 
-void MathMatrixInset::mathematica(MathematicaStream & os) const
+void InsetMathMatrix::mathematica(MathematicaStream & os) const
 {
 	os << '{';
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -88,13 +88,13 @@ void MathMatrixInset::mathematica(MathematicaStream & os) const
 }
 
 
-void MathMatrixInset::mathmlize(MathMLStream & os) const
+void InsetMathMatrix::mathmlize(MathMLStream & os) const
 {
-	MathGridInset::mathmlize(os);
+	InsetMathGrid::mathmlize(os);
 }
 
 
-void MathMatrixInset::octave(OctaveStream & os) const
+void InsetMathMatrix::octave(OctaveStream & os) const
 {
 	os << '[';
 	for (row_type row = 0; row < nrows(); ++row) {

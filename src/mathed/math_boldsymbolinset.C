@@ -19,18 +19,18 @@
 using std::auto_ptr;
 
 
-MathBoldsymbolInset::MathBoldsymbolInset()
-	: MathNestInset(1)
+InsetMathBoldSymbol::InsetMathBoldSymbol()
+	: InsetMathNest(1)
 {}
 
 
-auto_ptr<InsetBase> MathBoldsymbolInset::doClone() const
+auto_ptr<InsetBase> InsetMathBoldSymbol::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathBoldsymbolInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathBoldSymbol(*this));
 }
 
 
-void MathBoldsymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//FontSetChanger dummy(mi.base, "mathbf");
 	cell(0).metrics(mi, dim);
@@ -40,7 +40,7 @@ void MathBoldsymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathBoldsymbolInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathBoldSymbol::draw(PainterInfo & pi, int x, int y) const
 {
 	//FontSetChanger dummy(pi.base, "mathbf");
 	cell(0).draw(pi, x + 1, y);
@@ -49,32 +49,32 @@ void MathBoldsymbolInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathBoldsymbolInset::metricsT(TextMetricsInfo const & mi, Dimension & /*dim*/) const
+void InsetMathBoldSymbol::metricsT(TextMetricsInfo const & mi, Dimension & /*dim*/) const
 {
 	cell(0).metricsT(mi, dim_);
 }
 
 
-void MathBoldsymbolInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathBoldSymbol::drawT(TextPainter & pain, int x, int y) const
 {
 	cell(0).drawT(pain, x, y);
 }
 
 
-void MathBoldsymbolInset::validate(LaTeXFeatures & features) const
+void InsetMathBoldSymbol::validate(LaTeXFeatures & features) const
 {
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 	features.require("amssymb");
 }
 
 
-void MathBoldsymbolInset::write(WriteStream & os) const
+void InsetMathBoldSymbol::write(WriteStream & os) const
 {
 	os << "\\boldsymbol{" << cell(0) << "}";
 }
 
 
-void MathBoldsymbolInset::infoize(std::ostream & os) const
+void InsetMathBoldSymbol::infoize(std::ostream & os) const
 {
 	os << "Boldsymbol ";
 }

@@ -148,7 +148,7 @@ namespace {
 
 		if (sel.empty()) {
 			const int old_pos = cur.pos();
-			cur.insert(new MathHullInset(hullSimple));
+			cur.insert(new InsetMathHull(hullSimple));
 			BOOST_ASSERT(old_pos == cur.pos());
 			cur.nextInset()->edit(cur, true);
 			// don't do that also for LFUN_MATH_MODE
@@ -170,7 +170,7 @@ namespace {
 			if (sel.find("\\newcommand") == string::npos
 			    && sel.find("\\def") == string::npos)
 			{
-				MathHullInset * formula = new MathHullInset;
+				InsetMathHull * formula = new InsetMathHull;
 				LyXLex lex(0, 0);
 				lex.setStream(is);
 				formula->read(cur.buffer(), lex);
@@ -1230,7 +1230,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM: {
-		cur.insert(new MathHullInset(hullSimple));
+		cur.insert(new InsetMathHull(hullSimple));
 		cur.dispatch(FuncRequest(LFUN_CHAR_FORWARD));
 		cur.dispatch(cmd);
 		break;

@@ -17,10 +17,10 @@
 
 class LaTeXFeatures;
 
-class MathCasesInset : public MathGridInset {
+class InsetMathCases : public InsetMathGrid {
 public:
 	///
-	explicit MathCasesInset(row_type rows = 1u);
+	explicit InsetMathCases(row_type rows = 1u);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

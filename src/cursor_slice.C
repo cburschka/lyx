@@ -40,7 +40,7 @@ CursorSlice::CursorSlice(InsetBase & p)
 
 MathArray & CursorSlice::cell() const
 {
-	return inset_->asMathInset()->cell(idx_);
+	return inset_->asInsetMath()->cell(idx_);
 }
 
 
@@ -59,21 +59,21 @@ Paragraph const & CursorSlice::paragraph() const
 CursorSlice::pos_type CursorSlice::lastpos() const
 {
 	BOOST_ASSERT(inset_);
-	return inset_->asMathInset() ? cell().size() : paragraph().size();
+	return inset_->asInsetMath() ? cell().size() : paragraph().size();
 }
 
 
 CursorSlice::row_type CursorSlice::row() const
 {
-	BOOST_ASSERT(asMathInset());
-	return asMathInset()->row(idx_);
+	BOOST_ASSERT(asInsetMath());
+	return asInsetMath()->row(idx_);
 }
 
 
 CursorSlice::col_type CursorSlice::col() const
 {
-	BOOST_ASSERT(asMathInset());
-	return asMathInset()->col(idx_);
+	BOOST_ASSERT(asInsetMath());
+	return asInsetMath()->col(idx_);
 }
 
 

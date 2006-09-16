@@ -18,10 +18,10 @@
 
 
 /// Environtments á la \begin{something}...\end{something}
-class MathEnvInset : public MathNestInset {
+class InsetMathEnv : public InsetMathNest {
 public:
 	///
-	MathEnvInset(std::string const & name_);
+	InsetMathEnv(std::string const & name_);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

@@ -30,20 +30,20 @@ using std::string;
 using std::auto_ptr;
 
 
-MathSplitInset::MathSplitInset(string const & name)
-	: MathGridInset(1, 1), name_(name)
+InsetMathSplit::InsetMathSplit(string const & name)
+	: InsetMathGrid(1, 1), name_(name)
 {
 	setDefaults();
 }
 
 
-auto_ptr<InsetBase> MathSplitInset::doClone() const
+auto_ptr<InsetBase> InsetMathSplit::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathSplitInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathSplit(*this));
 }
 
 
-char MathSplitInset::defaultColAlign(col_type col)
+char InsetMathSplit::defaultColAlign(col_type col)
 {
 	if (name_ == "split")
 		return 'l';
@@ -57,14 +57,14 @@ char MathSplitInset::defaultColAlign(col_type col)
 }
 
 
-void MathSplitInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathSplit::draw(PainterInfo & pi, int x, int y) const
 {
-	MathGridInset::draw(pi, x, y);
+	InsetMathGrid::draw(pi, x, y);
 	setPosCache(pi, x, y);
 }
 
 
-bool MathSplitInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathSplit::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -77,29 +77,29 @@ bool MathSplitInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 	default:
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 }
 
 
-void MathSplitInset::write(WriteStream & ws) const
+void InsetMathSplit::write(WriteStream & ws) const
 {
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\begin{" << name_ << '}';
 	if (name_ == "alignedat")
 		ws << '{' << static_cast<unsigned int>((ncols() + 1)/2) << '}';
-	MathGridInset::write(ws);
+	InsetMathGrid::write(ws);
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\end{" << name_ << "}\n";
 }
 
 
-void MathSplitInset::infoize(std::ostream & os) const
+void InsetMathSplit::infoize(std::ostream & os) const
 {
 	string name = name_;
 	name[0] = lyx::support::uppercase(name[0]);
@@ -107,8 +107,8 @@ void MathSplitInset::infoize(std::ostream & os) const
 }
 
 
-void MathSplitInset::validate(LaTeXFeatures & features) const
+void InsetMathSplit::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }

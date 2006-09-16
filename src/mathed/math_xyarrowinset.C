@@ -21,27 +21,27 @@
 using std::max;
 
 
-MathXYArrowInset::MathXYArrowInset()
-	: MathNestInset(2)
+InsetMathXYArrow::InsetMathXYArrow()
+	: InsetMathNest(2)
 {}
 
 
-std::auto_ptr<InsetBase> MathXYArrowInset::clone() const
+std::auto_ptr<InsetBase> InsetMathXYArrow::clone() const
 {
-	return std::auto_ptr<InsetBase>(new MathXYArrowInset(*this));
+	return std::auto_ptr<InsetBase>(new InsetMathXYArrow(*this));
 }
 
 
-MathXYMatrixInset const * MathXYArrowInset::targetMatrix() const
+InsetMathXYMatrix const * InsetMathXYArrow::targetMatrix() const
 {
 	return target_;
 }
 
 
-MathArray const & MathXYArrowInset::targetCell() const
+MathArray const & InsetMathXYArrow::targetCell() const
 {
 #if 0
-	MathXYMatrixInset const * p = targetMatrix();
+	InsetMathXYMatrix const * p = targetMatrix();
 	int x = 0;
 	int y = 0;
 	MathArray const & t = cell(0);
@@ -54,7 +54,7 @@ MathArray const & MathXYArrowInset::targetCell() const
 		}
 	}
 	//lyxerr << "target: x: " << x << " y: " << y << endl;
-	MathInset::idx_type n = mi_.idx + p->ncols() * y + x;
+	InsetMath::idx_type n = mi_.idx + p->ncols() * y + x;
 	if (n >= p->nargs()) {
 		lyxerr << "source: n: " << mi_.idx << "\n"
 		       << "target: n: " << n << " out of range" << endl;
@@ -68,7 +68,7 @@ MathArray const & MathXYArrowInset::targetCell() const
 }
 
 
-MathArray const & MathXYArrowInset::sourceCell() const
+MathArray const & InsetMathXYArrow::sourceCell() const
 {
 #if 0
 	return targetMatrix()->cell(mi_.idx);
@@ -79,9 +79,9 @@ MathArray const & MathXYArrowInset::sourceCell() const
 }
 
 
-void MathXYArrowInset::metrics(MetricsInfo & mi) const
+void InsetMathXYArrow::metrics(MetricsInfo & mi) const
 {
-	MathNestInset::metrics(mi);
+	InsetMathNest::metrics(mi);
 	mi_   = mi;
 	FontSetChanger dummy(mi.base, "textrm");
 #if 0
@@ -102,7 +102,7 @@ void MathXYArrowInset::metrics(MetricsInfo & mi) const
 }
 
 
-void MathXYArrowInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathXYArrow::draw(PainterInfo & pi, int x, int y) const
 {
 	metrics(mi_);
 	FontSetChanger dummy(pi.base, "textrm");
@@ -138,7 +138,7 @@ void MathXYArrowInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathXYArrowInset::write(WriteStream & os) const
+void InsetMathXYArrow::write(WriteStream & os) const
 {
 	os << "\\ar";
 	if (cell(0).size())
@@ -149,9 +149,9 @@ void MathXYArrowInset::write(WriteStream & os) const
 }
 
 
-void MathXYArrowInset::normalize(NormalStream & os) const
+void InsetMathXYArrow::normalize(NormalStream & os) const
 {
 	os << "[xyarrow ";
-	MathNestInset::normalize(os);
+	InsetMathNest::normalize(os);
 	os << ']';
 }

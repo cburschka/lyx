@@ -18,10 +18,10 @@
 class latexkeys;
 
 /// The different kinds of ellipsis
-class MathDotsInset : public MathDimInset {
+class InsetMathDots : public InsetMathDim {
 public:
 	///
-	explicit MathDotsInset(latexkeys const * l);
+	explicit InsetMathDots(latexkeys const * l);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -72,30 +72,30 @@ using std::string;
 using std::istringstream;
 
 
-MathNestInset::MathNestInset(idx_type nargs)
+InsetMathNest::InsetMathNest(idx_type nargs)
 	: cells_(nargs), lock_(false)
 {}
 
 
-MathInset::idx_type MathNestInset::nargs() const
+InsetMath::idx_type InsetMathNest::nargs() const
 {
 	return cells_.size();
 }
 
 
-MathArray & MathNestInset::cell(idx_type i)
+MathArray & InsetMathNest::cell(idx_type i)
 {
 	return cells_[i];
 }
 
 
-MathArray const & MathNestInset::cell(idx_type i) const
+MathArray const & InsetMathNest::cell(idx_type i) const
 {
 	return cells_[i];
 }
 
 
-void MathNestInset::cursorPos(CursorSlice const & sl, bool /*boundary*/,
+void InsetMathNest::cursorPos(CursorSlice const & sl, bool /*boundary*/,
 	int & x, int & y) const
 {
 // FIXME: This is a hack. Ideally, the coord cache should not store
@@ -137,7 +137,7 @@ void MathNestInset::cursorPos(CursorSlice const & sl, bool /*boundary*/,
 }
 
 
-void MathNestInset::metrics(MetricsInfo const & mi) const
+void InsetMathNest::metrics(MetricsInfo const & mi) const
 {
 	MetricsInfo m = mi;
 	for (idx_type i = 0, n = nargs(); i != n; ++i)
@@ -145,7 +145,7 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 }
 
 
-bool MathNestInset::idxNext(LCursor & cur) const
+bool InsetMathNest::idxNext(LCursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (cur.idx() == cur.lastidx())
@@ -156,13 +156,13 @@ bool MathNestInset::idxNext(LCursor & cur) const
 }
 
 
-bool MathNestInset::idxRight(LCursor & cur) const
+bool InsetMathNest::idxRight(LCursor & cur) const
 {
 	return idxNext(cur);
 }
 
 
-bool MathNestInset::idxPrev(LCursor & cur) const
+bool InsetMathNest::idxPrev(LCursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (cur.idx() == 0)
@@ -173,13 +173,13 @@ bool MathNestInset::idxPrev(LCursor & cur) const
 }
 
 
-bool MathNestInset::idxLeft(LCursor & cur) const
+bool InsetMathNest::idxLeft(LCursor & cur) const
 {
 	return idxPrev(cur);
 }
 
 
-bool MathNestInset::idxFirst(LCursor & cur) const
+bool InsetMathNest::idxFirst(LCursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (nargs() == 0)
@@ -190,7 +190,7 @@ bool MathNestInset::idxFirst(LCursor & cur) const
 }
 
 
-bool MathNestInset::idxLast(LCursor & cur) const
+bool InsetMathNest::idxLast(LCursor & cur) const
 {
 	BOOST_ASSERT(ptr_cmp(&cur.inset(), this));
 	if (nargs() == 0)
@@ -201,7 +201,7 @@ bool MathNestInset::idxLast(LCursor & cur) const
 }
 
 
-void MathNestInset::dump() const
+void InsetMathNest::dump() const
 {
 	WriteStream os(lyxerr);
 	os << "---------------------------------------------\n";
@@ -213,7 +213,7 @@ void MathNestInset::dump() const
 }
 
 
-void MathNestInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathNest::draw(PainterInfo & pi, int x, int y) const
 {
 #if 0
 	if (lock_)
@@ -224,7 +224,7 @@ void MathNestInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
+void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	// this should use the x/y values given, not the cached values
 	LCursor & cur = pi.base.bv->cursor();
@@ -241,7 +241,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
-	//lyxerr << "MathNestInset::drawing selection: "
+	//lyxerr << "InsetMathNest::drawing selection: "
 	//	<< " s1: " << s1 << " s2: " << s2 << endl;
 	if (s1.idx() == s2.idx()) {
 		MathArray const & c = cell(s1.idx());
@@ -250,7 +250,7 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 		int x2 = c.xo() + c.pos2x(s2.pos());
 		int y2 = c.yo() + c.descent();
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-	//lyxerr << "MathNestInset::drawing selection 3: "
+	//lyxerr << "InsetMathNest::drawing selection 3: "
 	//	<< " x1: " << x1 << " x2: " << x2
 	//	<< " y1: " << y1 << " y2: " << y2 << endl;
 	} else {
@@ -268,21 +268,21 @@ void MathNestInset::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathNestInset::validate(LaTeXFeatures & features) const
+void InsetMathNest::validate(LaTeXFeatures & features) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).validate(features);
 }
 
 
-void MathNestInset::replace(ReplaceData & rep)
+void InsetMathNest::replace(ReplaceData & rep)
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).replace(rep);
 }
 
 
-bool MathNestInset::contains(MathArray const & ar) const
+bool InsetMathNest::contains(MathArray const & ar) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		if (cell(i).contains(ar))
@@ -291,25 +291,25 @@ bool MathNestInset::contains(MathArray const & ar) const
 }
 
 
-bool MathNestInset::lock() const
+bool InsetMathNest::lock() const
 {
 	return lock_;
 }
 
 
-void MathNestInset::lock(bool l)
+void InsetMathNest::lock(bool l)
 {
 	lock_ = l;
 }
 
 
-bool MathNestInset::isActive() const
+bool InsetMathNest::isActive() const
 {
 	return nargs() > 0;
 }
 
 
-MathArray MathNestInset::glue() const
+MathArray InsetMathNest::glue() const
 {
 	MathArray ar;
 	for (size_t i = 0; i < nargs(); ++i)
@@ -318,7 +318,7 @@ MathArray MathNestInset::glue() const
 }
 
 
-void MathNestInset::write(WriteStream & os) const
+void InsetMathNest::write(WriteStream & os) const
 {
 	os << '\\' << name().c_str();
 	for (size_t i = 0; i < nargs(); ++i)
@@ -332,7 +332,7 @@ void MathNestInset::write(WriteStream & os) const
 }
 
 
-void MathNestInset::normalize(NormalStream & os) const
+void InsetMathNest::normalize(NormalStream & os) const
 {
 	os << '[' << name().c_str();
 	for (size_t i = 0; i < nargs(); ++i)
@@ -341,7 +341,7 @@ void MathNestInset::normalize(NormalStream & os) const
 }
 
 
-int MathNestInset::latex(Buffer const &, std::ostream & os,
+int InsetMathNest::latex(Buffer const &, std::ostream & os,
 			OutputParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
@@ -350,7 +350,7 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 }
 
 
-bool MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
+bool InsetMathNest::notifyCursorLeaves(LCursor & /*cur*/)
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -359,7 +359,7 @@ bool MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
 	MathArray & ar = cur.cell();
 	// remove base-only "scripts"
 	for (pos_type i = 0; i + 1 < ar.size(); ++i) {
-		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
+		InsetMathScript * p = operator[](i).nucleus()->asScriptInset();
 		if (p && p->nargs() == 1) {
 			MathArray ar = p->nuc();
 			erase(i);
@@ -370,8 +370,8 @@ bool MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
 
 	// glue adjacent font insets of the same kind
 	for (pos_type i = 0; i + 1 < size(); ++i) {
-		MathFontInset * p = operator[](i).nucleus()->asFontInset();
-		MathFontInset const * q = operator[](i + 1)->asFontInset();
+		InsetMathFont * p = operator[](i).nucleus()->asFontInset();
+		InsetMathFont const * q = operator[](i + 1)->asFontInset();
 		if (p && q && p->name() == q->name()) {
 			p->cell(0).append(q->cell(0));
 			erase(i + 1);
@@ -383,38 +383,38 @@ bool MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
 }
 
 
-void MathNestInset::handleFont
+void InsetMathNest::handleFont
 	(LCursor & cur, string const & arg, string const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
 	recordUndo(cur, Undo::ATOMIC);
 
-	if (cur.inset().asMathInset()->name() == font)
+	if (cur.inset().asInsetMath()->name() == font)
 		cur.handleFont(font);
 	else {
-		cur.handleNest(createMathInset(font));
+		cur.handleNest(createInsetMath(font));
 		cur.insert(arg);
 	}
 }
 
 
-void MathNestInset::handleFont2(LCursor & cur, string const & arg)
+void InsetMathNest::handleFont2(LCursor & cur, string const & arg)
 {
 	recordUndo(cur, Undo::ATOMIC);
 	LyXFont font;
 	bool b;
 	bv_funcs::string2font(arg, font, b);
 	if (font.color() != LColor::inherit) {
-		MathAtom at = MathAtom(new MathColorInset(true, font.color()));
+		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
 	}
 }
 
 
-void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "MathNestInset: request: " << cmd << std::endl;
+	//lyxerr << "InsetMathNest: request: " << cmd << std::endl;
 	//CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
@@ -676,8 +676,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// Otherwise we'll get an invalid cursor if we undo after
 		// the macro was finished and the macro is a known command,
 		// e.g. sqrt. LCursor::macroModeClose replaces in this case
-		// the MathUnknownInset with name "frac" by an empty
-		// MathFracInset -> a pos value > 0 is invalid.
+		// the InsetMathUnknown with name "frac" by an empty
+		// InsetMathFrac -> a pos value > 0 is invalid.
 		// A side effect is that an undo before the macro is finished
 		// undoes the complete macro, not only the last character.
 		if (!cur.inMacroMode())
@@ -811,14 +811,14 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.macroModeClose();
 		string const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
-		//cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
-		cur.plainInsert(MathAtom(new MathBoxInset("mbox")));
+		//cur.plainInsert(MathAtom(new InsetMathMBox(cur.bv())));
+		cur.plainInsert(MathAtom(new InsetMathBox("mbox")));
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
 		cur.niceInsert(save_selection);
 #else
 		if (currentMode() == InsetBase::TEXT_MODE) {
-			cur.niceInsert(MathAtom(new MathHullInset("simple")));
+			cur.niceInsert(MathAtom(new InsetMathHull("simple")));
 			cur.message(_("create new math text environment ($...$)"));
 		} else {
 			handleFont(cur, lyx::to_utf8(cmd.argument()), "textrm");
@@ -849,7 +849,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			n = 1;
 		v_align += 'c';
 		cur.niceInsert(
-			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
+			MathAtom(new InsetMathArray("array", m, n, v_align[0], h_align)));
 		break;
 	}
 
@@ -862,7 +862,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (rs.empty())
 			rs = ')';
 		recordUndo(cur, Undo::ATOMIC);
-		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		cur.handleNest(MathAtom(new InsetMathDelim(ls, rs)));
 		break;
 	}
 
@@ -873,10 +873,10 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		string const rdelim = cmd.getArg(3);
 		latexkeys const * l = in_word_set(lname);
 		bool const have_l = l && l->inset == "big" &&
-				    MathBigInset::isBigInsetDelim(ldelim);
+				    InsetMathBig::isBigInsetDelim(ldelim);
 		l = in_word_set(rname);
 		bool const have_r = l && l->inset == "big" &&
-				    MathBigInset::isBigInsetDelim(rdelim);
+				    InsetMathBig::isBigInsetDelim(rdelim);
 		// We mimic LFUN_MATH_DELIM in case we have an empty left
 		// or right delimiter.
 		if (have_l || have_r) {
@@ -884,11 +884,11 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			string const selection = grabAndEraseSelection(cur);
 			selClearOrDel(cur);
 			if (have_l)
-				cur.insert(MathAtom(new MathBigInset(lname,
+				cur.insert(MathAtom(new InsetMathBig(lname,
 								ldelim)));
 			cur.niceInsert(selection);
 			if (have_r)
-				cur.insert(MathAtom(new MathBigInset(rname,
+				cur.insert(MathAtom(new InsetMathBig(rname,
 								rdelim)));
 		}
 		// Don't call cur.undispatched() if we did nothing, this would
@@ -899,7 +899,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SPACE_INSERT:
 	case LFUN_MATH_SPACE:
 		recordUndo(cur, Undo::ATOMIC);
-		cur.insert(MathAtom(new MathSpaceInset(",")));
+		cur.insert(MathAtom(new InsetMathSpace(",")));
 		break;
 
 	case LFUN_ERT_INSERT:
@@ -944,13 +944,13 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		MathDimInset::doDispatch(cur, cmd);
+		InsetMathDim::doDispatch(cur, cmd);
 		break;
 	}
 }
 
 
-bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathNest::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
@@ -1041,17 +1041,17 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void MathNestInset::edit(LCursor & cur, bool left)
+void InsetMathNest::edit(LCursor & cur, bool left)
 {
 	cur.push(*this);
 	cur.idx() = left ? 0 : cur.lastidx();
 	cur.pos() = left ? 0 : cur.lastpos();
 	cur.resetAnchor();
-	//lyxerr << "MathNestInset::edit, cur:\n" << cur << endl;
+	//lyxerr << "InsetMathNest::edit, cur:\n" << cur << endl;
 }
 
 
-InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
+InsetBase * InsetMathNest::editXY(LCursor & cur, int x, int y)
 {
 	int idx_min = 0;
 	int dist_min = 1000000;
@@ -1077,7 +1077,7 @@ InsetBase * MathNestInset::editXY(LCursor & cur, int x, int y)
 }
 
 
-void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMousePress: buttons: " << cmd.button() << endl;
 	BufferView & bv = cur.bv();
@@ -1097,7 +1097,7 @@ void MathNestInset::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 }
 
 
-void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 {
 	// only select with button 1
 	if (cmd.button() == mouse_button::button1) {
@@ -1115,7 +1115,7 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 }
 
 
-void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
+void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
@@ -1134,7 +1134,7 @@ void MathNestInset::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool MathNestInset::interpret(LCursor & cur, char c)
+bool InsetMathNest::interpret(LCursor & cur, char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	string save_selection;
@@ -1166,22 +1166,22 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 			// remove the '\\'
 			if (c == '\\') {
 				cur.backspace();
-				if (currentMode() == MathInset::TEXT_MODE)
-					cur.niceInsert(createMathInset("textbackslash"));
+				if (currentMode() == InsetMath::TEXT_MODE)
+					cur.niceInsert(createInsetMath("textbackslash"));
 				else
-					cur.niceInsert(createMathInset("backslash"));
+					cur.niceInsert(createInsetMath("backslash"));
 			} else if (c == '{') {
 				cur.backspace();
-				cur.niceInsert(MathAtom(new MathBraceInset));
+				cur.niceInsert(MathAtom(new InsetMathBrace));
 			} else if (c == '%') {
 				cur.backspace();
-				cur.niceInsert(MathAtom(new MathCommentInset));
+				cur.niceInsert(MathAtom(new InsetMathComment));
 			} else if (c == '#') {
 				BOOST_ASSERT(cur.activeMacro());
 				cur.activeMacro()->setName(name + c);
 			} else {
 				cur.backspace();
-				cur.niceInsert(createMathInset(string(1, c)));
+				cur.niceInsert(createInsetMath(string(1, c)));
 			}
 			return true;
 		}
@@ -1202,16 +1202,16 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 				delim = string(1, c);
 				break;
 			}
-			if (MathBigInset::isBigInsetDelim(delim)) {
-				// name + delim ared a valid MathBigInset.
+			if (InsetMathBig::isBigInsetDelim(delim)) {
+				// name + delim ared a valid InsetMathBig.
 				// We can't use cur.macroModeClose() because
 				// it does not handle delim.
-				MathUnknownInset * p = cur.activeMacro();
+				InsetMathUnknown * p = cur.activeMacro();
 				p->finalize();
 				--cur.pos();
 				cur.cell().erase(cur.pos());
 				cur.plainInsert(MathAtom(
-					new MathBigInset(name.substr(1), delim)));
+					new InsetMathBig(name.substr(1), delim)));
 				return true;
 			}
 		}
@@ -1219,7 +1219,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		// leave macro mode and try again if necessary
 		cur.macroModeClose();
 		if (c == '{')
-			cur.niceInsert(MathAtom(new MathBraceInset));
+			cur.niceInsert(MathAtom(new InsetMathBrace));
 		else if (c != ' ')
 			interpret(cur, c);
 		return true;
@@ -1246,18 +1246,18 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 
 	if (c == '\\') {
 		//lyxerr << "starting with macro" << endl;
-		cur.insert(MathAtom(new MathUnknownInset("\\", false)));
+		cur.insert(MathAtom(new InsetMathUnknown("\\", false)));
 		return true;
 	}
 
 	if (c == '\n') {
-		if (currentMode() == MathInset::TEXT_MODE)
+		if (currentMode() == InsetMath::TEXT_MODE)
 			cur.insert(c);
 		return true;
 	}
 
 	if (c == ' ') {
-		if (currentMode() == MathInset::TEXT_MODE) {
+		if (currentMode() == InsetMath::TEXT_MODE) {
 			// insert spaces in text mode,
 			// but suppress direct insertion of two spaces in a row
 			// the still allows typing  '<space>a<space>' and deleting the 'a', but
@@ -1277,7 +1277,7 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	}
 
 	// These shouldn't work in text mode:
-	if (currentMode() != MathInset::TEXT_MODE) {
+	if (currentMode() != InsetMath::TEXT_MODE) {
 		if (c == '_') {
 			script(cur, false, save_selection);
 			return true;
@@ -1287,14 +1287,14 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 			return true;
 		}
 		if (c == '~') {
-			cur.niceInsert(createMathInset("sim"));
+			cur.niceInsert(createInsetMath("sim"));
 			return true;
 		}
 	}
 
 	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
 	    c == '%' || c == '_' || c == '^') {
-		cur.niceInsert(createMathInset(string(1, c)));
+		cur.niceInsert(createInsetMath(string(1, c)));
 		return true;
 	}
 
@@ -1310,20 +1310,20 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 }
 
 
-bool MathNestInset::interpret(LCursor & cur, string const & str)
+bool InsetMathNest::interpret(LCursor & cur, string const & str)
 {
-	// Create a MathBigInset from cur.cell()[cur.pos() - 1] and t if
+	// Create a InsetMathBig from cur.cell()[cur.pos() - 1] and t if
 	// possible
 	if (!cur.empty() && cur.pos() > 0 &&
 	    cur.cell()[cur.pos() - 1]->asUnknownInset()) {
-		if (MathBigInset::isBigInsetDelim(str)) {
+		if (InsetMathBig::isBigInsetDelim(str)) {
 			string prev = asString(cur.cell()[cur.pos() - 1]);
 			if (prev[0] == '\\') {
 				prev = prev.substr(1);
 				latexkeys const * l = in_word_set(prev);
 				if (l && l->inset == "big") {
 					cur.cell()[cur.pos() - 1] =
-						MathAtom(new MathBigInset(prev, str));
+						MathAtom(new InsetMathBig(prev, str));
 					return true;
 				}
 			}
@@ -1333,14 +1333,14 @@ bool MathNestInset::interpret(LCursor & cur, string const & str)
 }
 
 
-bool MathNestInset::script(LCursor & cur, bool up, string const &
+bool InsetMathNest::script(LCursor & cur, bool up, string const &
 		save_selection)
 {
 	// Hack to get \^ and \_ working
 	//lyxerr << "handling script: up: " << up << endl;
 	if (cur.inMacroMode() && cur.macroName() == "\\") {
 		if (up)
-			cur.niceInsert(createMathInset("mathcircumflex"));
+			cur.niceInsert(createInsetMath("mathcircumflex"));
 		else
 			interpret(cur, '_');
 		return true;
@@ -1349,14 +1349,14 @@ bool MathNestInset::script(LCursor & cur, bool up, string const &
 	cur.macroModeClose();
 	if (asScriptInset() && cur.idx() == 0) {
 		// we are in a nucleus of a script inset, move to _our_ script
-		MathScriptInset * inset = asScriptInset();
+		InsetMathScript * inset = asScriptInset();
 		//lyxerr << " going to cell " << inset->idxOfScript(up) << endl;
 		inset->ensure(up);
 		cur.idx() = inset->idxOfScript(up);
 		cur.pos() = 0;
 	} else if (cur.pos() != 0 && cur.prevAtom()->asScriptInset()) {
 		--cur.pos();
-		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
+		InsetMathScript * inset = cur.nextAtom().nucleus()->asScriptInset();
 		cur.push(*inset);
 		inset->ensure(up);
 		cur.idx() = inset->idxOfScript(up);
@@ -1366,13 +1366,13 @@ bool MathNestInset::script(LCursor & cur, bool up, string const &
 		// one if in the very first position of the array
 		if (cur.pos() == 0) {
 			//lyxerr << "new scriptinset" << endl;
-			cur.insert(new MathScriptInset(up));
+			cur.insert(new InsetMathScript(up));
 		} else {
 			//lyxerr << "converting prev atom " << endl;
-			cur.prevAtom() = MathAtom(new MathScriptInset(cur.prevAtom(), up));
+			cur.prevAtom() = MathAtom(new InsetMathScript(cur.prevAtom(), up));
 		}
 		--cur.pos();
-		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
+		InsetMathScript * inset = cur.nextAtom().nucleus()->asScriptInset();
 		// special handling of {}-bases
 		// is this always correct?
 		if (inset->nuc().size() == 1

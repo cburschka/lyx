@@ -24,7 +24,7 @@ using std::ostringstream;
 
 
 CommandInset::CommandInset(string const & name)
-	: MathNestInset(2), name_(name), set_label_(false)
+	: InsetMathNest(2), name_(name), set_label_(false)
 {
 	lock_ = true;
 }

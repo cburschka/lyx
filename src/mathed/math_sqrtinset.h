@@ -16,11 +16,11 @@
 #include "math_nestinset.h"
 
 
-/// \c MathSqrtInset The square root inset.
-class MathSqrtInset : public MathNestInset {
+/// \c InsetMathSqrt The square root inset.
+class InsetMathSqrt : public InsetMathNest {
 public:
 	///
-	MathSqrtInset();
+	InsetMathSqrt();
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

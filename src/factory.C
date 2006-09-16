@@ -402,7 +402,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "FormulaMacro") {
 			inset.reset(new MathMacroTemplate);
 		} else if (tmptok == "Formula") {
-			inset.reset(new MathHullInset);
+			inset.reset(new InsetMathHull);
 		} else if (tmptok == "Graphics") {
 			inset.reset(new InsetGraphics);
 		} else if (tmptok == "Note") {

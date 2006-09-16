@@ -17,10 +17,10 @@
 #include <string>
 
 /// Inset for \\bigl & Co.
-class MathBigInset : public MathDimInset {
+class InsetMathBig : public InsetMathDim {
 public:
 	///
-	MathBigInset(std::string const & name, std::string const & delim);
+	InsetMathBig(std::string const & name, std::string const & delim);
 	///
 	std::string name() const;
 	///

@@ -32,7 +32,7 @@ using std::endl;
 
 
 MathMacro::MathMacro(string const & name, int numargs)
-	: MathNestInset(numargs), name_(name)
+	: InsetMathNest(numargs), name_(name)
 {}
 
 
@@ -51,9 +51,9 @@ string MathMacro::name() const
 void MathMacro::cursorPos(CursorSlice const & sl, bool boundary, int & x,
 		int & y) const
 {
-	// We may have 0 arguments, but MathNestInset requires at least one.
+	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0)
-		MathNestInset::cursorPos(sl, boundary, x, y);
+		InsetMathNest::cursorPos(sl, boundary, x, y);
 }
 
 
@@ -116,9 +116,9 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	// We may have 0 arguments, but MathNestInset requires at least one.
+	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0)
-		MathNestInset::drawSelection(pi, x, y);
+		InsetMathNest::drawSelection(pi, x, y);
 }
 
 
@@ -131,17 +131,17 @@ void MathMacro::validate(LaTeXFeatures & features) const
 
 InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
 {
-	// We may have 0 arguments, but MathNestInset requires at least one.
+	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {
 		// Prevent crash due to cold coordcache
 		// FIXME: This is only a workaround, the call of
-		// MathNestInset::editXY is correct. The correct fix would
+		// InsetMathNest::editXY is correct. The correct fix would
 		// ensure that the coordcache of the arguments is valid.
 		if (!editing(&cur.bv())) {
 			edit(cur, true);
 			return this;
 		}
-		return MathNestInset::editXY(cur, x, y);
+		return InsetMathNest::editXY(cur, x, y);
 	}
 	return this;
 }

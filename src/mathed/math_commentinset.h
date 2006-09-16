@@ -18,12 +18,12 @@
 class latexkeys;
 
 /// Inset for end-of-line comments
-class MathCommentInset : public MathNestInset {
+class InsetMathComment : public InsetMathNest {
 public:
 	///
-	MathCommentInset();
+	InsetMathComment();
 	///
-	explicit MathCommentInset(std::string const &);
+	explicit InsetMathComment(std::string const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

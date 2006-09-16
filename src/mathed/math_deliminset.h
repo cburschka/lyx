@@ -19,16 +19,16 @@
 
 
 /// A delimiter
-class MathDelimInset : public MathNestInset {
+class InsetMathDelim : public InsetMathNest {
 public:
 	///
-	MathDelimInset(std::string const & left, std::string const & right);
+	InsetMathDelim(std::string const & left, std::string const & right);
 	///
-	MathDelimInset(std::string const & left, std::string const & right, MathArray const &);
+	InsetMathDelim(std::string const & left, std::string const & right, MathArray const &);
 	///
-	MathDelimInset * asDelimInset() { return this; }
+	InsetMathDelim * asDelimInset() { return this; }
 	///
-	MathDelimInset const * asDelimInset() const { return this; }
+	InsetMathDelim const * asDelimInset() const { return this; }
 	/// is it (...)?
 	bool isParenthesis() const;
 	/// is it [...]?

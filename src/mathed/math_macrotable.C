@@ -44,7 +44,7 @@ MacroData::MacroData(string const & def, int numargs, string const & disp)
 
 void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 {
-	MathSqrtInset inset; // Hack. Any inset with a cell would do.
+	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
 	asArray(disp_.empty() ? def_ : disp_, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
@@ -54,7 +54,7 @@ void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 		if (it.nextInset()->lyxCode() != InsetBase::MATHMACROARG_CODE)
 			continue;
 		//it.cell().erase(it.pos());
-		//it.cell().insert(it.pos(), it.nextInset()->asMathInset()
+		//it.cell().insert(it.pos(), it.nextInset()->asInsetMath()
 		size_t n = static_cast<MathMacroArgument*>(it.nextInset())->number();
 		if (n <= args.size()) {
 			it.cell().erase(it.pos());

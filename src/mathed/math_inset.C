@@ -25,7 +25,7 @@ using std::ostream;
 using std::endl;
 
 
-MathArray & MathInset::cell(idx_type)
+MathArray & InsetMath::cell(idx_type)
 {
 	static MathArray dummyCell;
 	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
@@ -33,7 +33,7 @@ MathArray & MathInset::cell(idx_type)
 }
 
 
-MathArray const & MathInset::cell(idx_type) const
+MathArray const & InsetMath::cell(idx_type) const
 {
 	static MathArray dummyCell;
 	lyxerr << BOOST_CURRENT_FUNCTION << ": I don't have any cell" << endl;
@@ -41,7 +41,7 @@ MathArray const & MathInset::cell(idx_type) const
 }
 
 
-void MathInset::dump() const
+void InsetMath::dump() const
 {
 	lyxerr << "---------------------------------------------" << endl;
 	WriteStream wi(lyxerr, false, true);
@@ -50,24 +50,24 @@ void MathInset::dump() const
 }
 
 
-void MathInset::metricsT(TextMetricsInfo const &, Dimension &) const
+void InsetMath::metricsT(TextMetricsInfo const &, Dimension &) const
 {
 #ifdef WITH_WARNINGS
-	lyxerr << "MathInset::metricsT(Text) called directly!" << endl;
+	lyxerr << "InsetMath::metricsT(Text) called directly!" << endl;
 #endif
 }
 
 
-void MathInset::drawT(TextPainter &, int, int) const
+void InsetMath::drawT(TextPainter &, int, int) const
 {
 #ifdef WITH_WARNINGS
-	lyxerr << "MathInset::drawT(Text) called directly!" << endl;
+	lyxerr << "InsetMath::drawT(Text) called directly!" << endl;
 #endif
 }
 
 
 
-void MathInset::write(WriteStream & os) const
+void InsetMath::write(WriteStream & os) const
 {
 	string const s = name();
 	os << '\\' << s.c_str();
@@ -78,54 +78,54 @@ void MathInset::write(WriteStream & os) const
 }
 
 
-void MathInset::normalize(NormalStream & os) const
+void InsetMath::normalize(NormalStream & os) const
 {
 	os << '[' << name().c_str() << "] ";
 }
 
 
-void MathInset::octave(OctaveStream & os) const
+void InsetMath::octave(OctaveStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
-void MathInset::maple(MapleStream & os) const
+void InsetMath::maple(MapleStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
-void MathInset::maxima(MaximaStream & os) const
+void InsetMath::maxima(MaximaStream & os) const
 {
 	MapleStream ns(os.os());
 	maple(ns);
 }
 
 
-void MathInset::mathematica(MathematicaStream & os) const
+void InsetMath::mathematica(MathematicaStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
-void MathInset::mathmlize(MathMLStream & os) const
+void InsetMath::mathmlize(MathMLStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
-HullType MathInset::getType() const
+HullType InsetMath::getType() const
 {
 	return hullNone;
 }
 
 
-string MathInset::name() const
+string InsetMath::name() const
 {
 	return "unknown";
 }

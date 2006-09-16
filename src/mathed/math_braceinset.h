@@ -16,14 +16,14 @@
 
 
 /// Extra nesting
-class MathBraceInset : public MathNestInset {
+class InsetMathBrace : public InsetMathNest {
 public:
 	///
-	MathBraceInset();
+	InsetMathBrace();
 	///
-	MathBraceInset(MathArray const & ar);
+	InsetMathBrace(MathArray const & ar);
 	///
-	MathBraceInset const * asBraceInset() const { return this; }
+	InsetMathBrace const * asBraceInset() const { return this; }
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///

@@ -16,10 +16,10 @@
 
 
 /// The base character inset.
-class MathCharInset : public MathInset {
+class InsetMathChar : public InsetMath {
 public:
 	///
-	explicit MathCharInset(char c);
+	explicit InsetMathChar(char c);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -40,7 +40,7 @@ public:
 	///
 	void mathmlize(MathMLStream & ms) const;
 	/// identifies Charinsets
-	MathCharInset const * asCharInset() const { return this; }
+	InsetMathChar const * asCharInset() const { return this; }
 	///
 	char getChar() const { return char_; }
 	///

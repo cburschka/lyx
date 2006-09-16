@@ -18,63 +18,63 @@
 #include "support/std_ostream.h"
 
 
-MathXYMatrixInset::MathXYMatrixInset()
-	: MathGridInset(1, 1)
+InsetMathXYMatrix::InsetMathXYMatrix()
+	: InsetMathGrid(1, 1)
 {}
 
 
-std::auto_ptr<InsetBase> MathXYMatrixInset::doClone() const
+std::auto_ptr<InsetBase> InsetMathXYMatrix::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new MathXYMatrixInset(*this));
+	return std::auto_ptr<InsetBase>(new InsetMathXYMatrix(*this));
 }
 
 
-int MathXYMatrixInset::colsep() const
-{
-	return 40;
-}
-
-
-int MathXYMatrixInset::rowsep() const
+int InsetMathXYMatrix::colsep() const
 {
 	return 40;
 }
 
 
-void MathXYMatrixInset::metrics(MetricsInfo & mi, Dimension & dim) const
+int InsetMathXYMatrix::rowsep() const
+{
+	return 40;
+}
+
+
+void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.style == LM_ST_DISPLAY)
 		mi.base.style = LM_ST_TEXT;
-	MathGridInset::metrics(mi, dim);
+	InsetMathGrid::metrics(mi, dim);
 }
 
 
-void MathXYMatrixInset::write(WriteStream & os) const
+void InsetMathXYMatrix::write(WriteStream & os) const
 {
 	os << "\\xymatrix{";
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 	os << "}\n";
 }
 
 
-void MathXYMatrixInset::infoize(std::ostream & os) const
+void InsetMathXYMatrix::infoize(std::ostream & os) const
 {
 	os << "xymatrix ";
-	MathGridInset::infoize(os);
+	InsetMathGrid::infoize(os);
 }
 
 
-void MathXYMatrixInset::normalize(NormalStream & os) const
+void InsetMathXYMatrix::normalize(NormalStream & os) const
 {
 	os << "[xymatrix ";
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << ']';
 }
 
 
-void MathXYMatrixInset::maple(MapleStream & os) const
+void InsetMathXYMatrix::maple(MapleStream & os) const
 {
 	os << "xymatrix(";
-	MathGridInset::maple(os);
+	InsetMathGrid::maple(os);
 	os << ')';
 }

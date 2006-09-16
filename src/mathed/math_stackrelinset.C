@@ -19,17 +19,17 @@ using std::max;
 using std::auto_ptr;
 
 
-MathStackrelInset::MathStackrelInset()
+InsetMathStackrel::InsetMathStackrel()
 {}
 
 
-auto_ptr<InsetBase> MathStackrelInset::doClone() const
+auto_ptr<InsetBase> InsetMathStackrel::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathStackrelInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathStackrel(*this));
 }
 
 
-void MathStackrelInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -42,7 +42,7 @@ void MathStackrelInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathStackrelInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathStackrel::draw(PainterInfo & pi, int x, int y) const
 {
 	int m  = x + dim_.width() / 2;
 	int yo = y - cell(1).ascent() - cell(0).descent() - 1;
@@ -53,13 +53,13 @@ void MathStackrelInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathStackrelInset::write(WriteStream & os) const
+void InsetMathStackrel::write(WriteStream & os) const
 {
 	os << "\\stackrel{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 
-void MathStackrelInset::normalize(NormalStream & os) const
+void InsetMathStackrel::normalize(NormalStream & os) const
 {
 	os << "[stackrel " << cell(0) << ' ' << cell(1) << ']';
 }

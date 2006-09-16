@@ -16,12 +16,13 @@
 
 /// modifier key states
 namespace key_modifier {
-	enum state {
-		none	= 0, //< no modifiers held
-		ctrl	= 1, //< control button held
-		alt	= 2, //< alt/meta key held
-		shift	= 4  //< shift key held
-	};
+
+enum state {
+	none  = 0, //< no modifiers held
+	ctrl  = 1, //< control button held
+	alt   = 2, //< alt/meta key held
+	shift = 4  //< shift key held
+};
 
 
 inline state operator|(state const & s1, state const & s2)

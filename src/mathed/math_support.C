@@ -702,7 +702,7 @@ void asArray(string const & str, MathArray & ar)
 }
 
 
-string asString(MathInset const & inset)
+string asString(InsetMath const & inset)
 {
 	std::ostringstream os;
 	WriteStream ws(os);

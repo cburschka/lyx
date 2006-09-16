@@ -15,10 +15,10 @@
 #include "math_nestinset.h"
 
 
-class MathFracbaseInset : public MathNestInset {
+class InsetMathFracBase : public InsetMathNest {
 public:
 	///
-	MathFracbaseInset();
+	InsetMathFracBase();
 	///
 	bool idxUpDown(LCursor &, bool up) const;
 	///

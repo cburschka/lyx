@@ -36,7 +36,7 @@ using std::endl;
 
 
 MathMacroTemplate::MathMacroTemplate()
-	: MathNestInset(2), numargs_(0), name_(), type_("newcommand")
+	: InsetMathNest(2), numargs_(0), name_(), type_("newcommand")
 {
 	initMath();
 }
@@ -44,7 +44,7 @@ MathMacroTemplate::MathMacroTemplate()
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs,
 		string const & type, MathArray const & ar1, MathArray const & ar2)
-	: MathNestInset(2), numargs_(numargs), name_(nm), type_(type)
+	: InsetMathNest(2), numargs_(numargs), name_(nm), type_(type)
 {
 	initMath();
 
@@ -57,7 +57,7 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs,
 
 
 MathMacroTemplate::MathMacroTemplate(std::istream & is)
-	: MathNestInset(2), numargs_(0), name_()
+	: InsetMathNest(2), numargs_(0), name_()
 {
 	initMath();
 

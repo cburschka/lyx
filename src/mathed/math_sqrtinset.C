@@ -20,18 +20,18 @@
 using std::auto_ptr;
 
 
-MathSqrtInset::MathSqrtInset()
-	: MathNestInset(1)
+InsetMathSqrt::InsetMathSqrt()
+	: InsetMathNest(1)
 {}
 
 
-auto_ptr<InsetBase> MathSqrtInset::doClone() const
+auto_ptr<InsetBase> InsetMathSqrt::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathSqrtInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathSqrt(*this));
 }
 
 
-void MathSqrtInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	dim.asc += 4;
@@ -42,7 +42,7 @@ void MathSqrtInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathSqrtInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 10, y);
 	int const a = dim_.ascent();
@@ -58,7 +58,7 @@ void MathSqrtInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathSqrtInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathSqrt::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	cell(0).metricsT(mi, dim);
 	dim.asc += 1;
@@ -66,7 +66,7 @@ void MathSqrtInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void MathSqrtInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathSqrt::drawT(TextPainter & pain, int x, int y) const
 {
 	cell(0).drawT(pain, x + 2, y);
 	pain.horizontalLine(x + 2, y - cell(0).ascent(), cell(0).width(), '_');
@@ -75,35 +75,35 @@ void MathSqrtInset::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void MathSqrtInset::write(WriteStream & os) const
+void InsetMathSqrt::write(WriteStream & os) const
 {
 	os << "\\sqrt{" << cell(0) << '}';
 }
 
 
-void MathSqrtInset::normalize(NormalStream & os) const
+void InsetMathSqrt::normalize(NormalStream & os) const
 {
 	os << "[sqrt " << cell(0) << ']';
 }
 
-void MathSqrtInset::maple(MapleStream & os) const
+void InsetMathSqrt::maple(MapleStream & os) const
 {
 	os << "sqrt(" << cell(0) << ')';
 }
 
-void MathSqrtInset::mathematica(MathematicaStream & os) const
+void InsetMathSqrt::mathematica(MathematicaStream & os) const
 {
 	os << "Sqrt[" << cell(0) << ']';
 }
 
 
-void MathSqrtInset::octave(OctaveStream & os) const
+void InsetMathSqrt::octave(OctaveStream & os) const
 {
 	os << "sqrt(" << cell(0) << ')';
 }
 
 
-void MathSqrtInset::mathmlize(MathMLStream & os) const
+void InsetMathSqrt::mathmlize(MathMLStream & os) const
 {
 	os << MTag("msqrt") << cell(0) << ETag("msqrt");
 }

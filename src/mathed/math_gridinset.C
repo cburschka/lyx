@@ -50,7 +50,7 @@ using std::vector;
 
 class GridInsetMailer : public MailInset {
 public:
-	GridInsetMailer(MathGridInset & inset) : inset_(inset) {}
+	GridInsetMailer(InsetMathGrid & inset) : inset_(inset) {}
 	///
 	virtual string const & name() const
 	{
@@ -70,11 +70,11 @@ public:
 
 protected:
 	InsetBase & inset() const { return inset_; }
-	MathGridInset & inset_;
+	InsetMathGrid & inset_;
 };
 
 
-void mathed_parse_normal(MathGridInset &, string const & argument);
+void mathed_parse_normal(InsetMathGrid &, string const & argument);
 
 namespace {
 
@@ -102,7 +102,7 @@ int extractInt(istream & is)
 //////////////////////////////////////////////////////////////
 
 
-MathGridInset::CellInfo::CellInfo()
+InsetMathGrid::CellInfo::CellInfo()
 	: dummy_(false)
 {}
 
@@ -112,13 +112,13 @@ MathGridInset::CellInfo::CellInfo()
 //////////////////////////////////////////////////////////////
 
 
-MathGridInset::RowInfo::RowInfo()
+InsetMathGrid::RowInfo::RowInfo()
 	: lines_(0), skip_(0)
 {}
 
 
 
-int MathGridInset::RowInfo::skipPixels() const
+int InsetMathGrid::RowInfo::skipPixels() const
 {
 	return crskip_.inBP();
 }
@@ -128,7 +128,7 @@ int MathGridInset::RowInfo::skipPixels() const
 //////////////////////////////////////////////////////////////
 
 
-MathGridInset::ColInfo::ColInfo()
+InsetMathGrid::ColInfo::ColInfo()
 	: align_('c'), lines_(0)
 {}
 
@@ -136,8 +136,8 @@ MathGridInset::ColInfo::ColInfo()
 //////////////////////////////////////////////////////////////
 
 
-MathGridInset::MathGridInset(char v, string const & h)
-	: MathNestInset(guessColumns(h)),
+InsetMathGrid::InsetMathGrid(char v, string const & h)
+	: InsetMathNest(guessColumns(h)),
 	  rowinfo_(2),
 	  colinfo_(guessColumns(h) + 1),
 	  cellinfo_(1 * guessColumns(h))
@@ -149,8 +149,8 @@ MathGridInset::MathGridInset(char v, string const & h)
 }
 
 
-MathGridInset::MathGridInset()
-	: MathNestInset(1),
+InsetMathGrid::InsetMathGrid()
+	: InsetMathNest(1),
 	  rowinfo_(1 + 1),
 		colinfo_(1 + 1),
 		cellinfo_(1),
@@ -160,8 +160,8 @@ MathGridInset::MathGridInset()
 }
 
 
-MathGridInset::MathGridInset(col_type m, row_type n)
-	: MathNestInset(m * n),
+InsetMathGrid::InsetMathGrid(col_type m, row_type n)
+	: InsetMathNest(m * n),
 	  rowinfo_(n + 1),
 		colinfo_(m + 1),
 		cellinfo_(m * n),
@@ -171,8 +171,8 @@ MathGridInset::MathGridInset(col_type m, row_type n)
 }
 
 
-MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
-	: MathNestInset(m * n),
+InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, string const & h)
+	: InsetMathNest(m * n),
 	  rowinfo_(n + 1),
 	  colinfo_(m + 1),
 		cellinfo_(m * n),
@@ -184,26 +184,26 @@ MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
 }
 
 
-MathGridInset::~MathGridInset()
+InsetMathGrid::~InsetMathGrid()
 {
 	GridInsetMailer mailer(*this);
 	mailer.hideDialog();
 }
 
 
-auto_ptr<InsetBase> MathGridInset::doClone() const
+auto_ptr<InsetBase> InsetMathGrid::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathGridInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathGrid(*this));
 }
 
 
-MathInset::idx_type MathGridInset::index(row_type row, col_type col) const
+InsetMath::idx_type InsetMathGrid::index(row_type row, col_type col) const
 {
 	return col + ncols() * row;
 }
 
 
-void MathGridInset::setDefaults()
+void InsetMathGrid::setDefaults()
 {
 	if (ncols() <= 0)
 		lyxerr << "positive number of columns expected" << endl;
@@ -216,7 +216,7 @@ void MathGridInset::setDefaults()
 }
 
 
-void MathGridInset::halign(string const & hh)
+void InsetMathGrid::halign(string const & hh)
 {
 	col_type col = 0;
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it) {
@@ -245,7 +245,7 @@ void MathGridInset::halign(string const & hh)
 }
 
 
-MathGridInset::col_type MathGridInset::guessColumns(string const & hh) const
+InsetMathGrid::col_type InsetMathGrid::guessColumns(string const & hh) const
 {
 	col_type col = 0;
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it)
@@ -259,19 +259,19 @@ MathGridInset::col_type MathGridInset::guessColumns(string const & hh) const
 }
 
 
-void MathGridInset::halign(char h, col_type col)
+void InsetMathGrid::halign(char h, col_type col)
 {
 	colinfo_[col].align_ = h;
 }
 
 
-char MathGridInset::halign(col_type col) const
+char InsetMathGrid::halign(col_type col) const
 {
 	return colinfo_[col].align_;
 }
 
 
-string MathGridInset::halign() const
+string InsetMathGrid::halign() const
 {
 	string res;
 	for (col_type col = 0; col < ncols(); ++col) {
@@ -282,58 +282,58 @@ string MathGridInset::halign() const
 }
 
 
-void MathGridInset::valign(char c)
+void InsetMathGrid::valign(char c)
 {
 	v_align_ = c;
 }
 
 
-char MathGridInset::valign() const
+char InsetMathGrid::valign() const
 {
 	return v_align_;
 }
 
 
-MathGridInset::col_type MathGridInset::ncols() const
+InsetMathGrid::col_type InsetMathGrid::ncols() const
 {
 	return colinfo_.size() - 1;
 }
 
 
-MathGridInset::row_type MathGridInset::nrows() const
+InsetMathGrid::row_type InsetMathGrid::nrows() const
 {
 	return rowinfo_.size() - 1;
 }
 
 
-MathGridInset::col_type MathGridInset::col(idx_type idx) const
+InsetMathGrid::col_type InsetMathGrid::col(idx_type idx) const
 {
 	return idx % ncols();
 }
 
 
-MathGridInset::row_type MathGridInset::row(idx_type idx) const
+InsetMathGrid::row_type InsetMathGrid::row(idx_type idx) const
 {
 	return idx / ncols();
 }
 
 
-void MathGridInset::vcrskip(LyXLength const & crskip, row_type row)
+void InsetMathGrid::vcrskip(LyXLength const & crskip, row_type row)
 {
 	rowinfo_[row].crskip_ = crskip;
 }
 
 
-LyXLength MathGridInset::vcrskip(row_type row) const
+LyXLength InsetMathGrid::vcrskip(row_type row) const
 {
 	return rowinfo_[row].crskip_;
 }
 
 
-void MathGridInset::metrics(MetricsInfo & mi) const
+void InsetMathGrid::metrics(MetricsInfo & mi) const
 {
 	// let the cells adjust themselves
-	MathNestInset::metrics(mi);
+	InsetMathNest::metrics(mi);
 
 	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -470,19 +470,19 @@ void MathGridInset::metrics(MetricsInfo & mi) const
 }
 
 
-void MathGridInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	metrics(mi);
 	dim = dim_;
 }
 
 
-void MathGridInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 {
 	drawWithMargin(pi, x, y, 0, 0);
 }
 
-void MathGridInset::drawWithMargin(PainterInfo & pi, int x, int y,
+void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 	int lmargin, int rmargin) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
@@ -510,10 +510,10 @@ void MathGridInset::drawWithMargin(PainterInfo & pi, int x, int y,
 }
 
 
-void MathGridInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	// let the cells adjust themselves
-	//MathNestInset::metrics(mi);
+	//InsetMathNest::metrics(mi);
 	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).metricsT(mi, dim);
 
@@ -599,14 +599,14 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void MathGridInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathGrid::drawT(TextPainter & pain, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 
-string MathGridInset::eolString(row_type row, bool emptyline, bool fragile) const
+string InsetMathGrid::eolString(row_type row, bool emptyline, bool fragile) const
 {
 	string eol;
 
@@ -629,7 +629,7 @@ string MathGridInset::eolString(row_type row, bool emptyline, bool fragile) cons
 }
 
 
-string MathGridInset::eocString(col_type col, col_type lastcol) const
+string InsetMathGrid::eocString(col_type col, col_type lastcol) const
 {
 	if (col + 1 == lastcol)
 		return string();
@@ -637,7 +637,7 @@ string MathGridInset::eocString(col_type col, col_type lastcol) const
 }
 
 
-void MathGridInset::addRow(row_type row)
+void InsetMathGrid::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert
@@ -647,7 +647,7 @@ void MathGridInset::addRow(row_type row)
 }
 
 
-void MathGridInset::appendRow()
+void InsetMathGrid::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
 	//cells_.insert(cells_.end(), ncols(), MathArray());
@@ -658,7 +658,7 @@ void MathGridInset::appendRow()
 }
 
 
-void MathGridInset::delRow(row_type row)
+void InsetMathGrid::delRow(row_type row)
 {
 	if (nrows() == 1)
 		return;
@@ -673,7 +673,7 @@ void MathGridInset::delRow(row_type row)
 }
 
 
-void MathGridInset::copyRow(row_type row)
+void InsetMathGrid::copyRow(row_type row)
 {
 	addRow(row);
 	for (col_type col = 0; col < ncols(); ++col)
@@ -681,7 +681,7 @@ void MathGridInset::copyRow(row_type row)
 }
 
 
-void MathGridInset::swapRow(row_type row)
+void InsetMathGrid::swapRow(row_type row)
 {
 	if (nrows() == 1)
 		return;
@@ -692,7 +692,7 @@ void MathGridInset::swapRow(row_type row)
 }
 
 
-void MathGridInset::addCol(col_type newcol)
+void InsetMathGrid::addCol(col_type newcol)
 {
 	const col_type nc = ncols();
 	const row_type nr = nrows();
@@ -716,7 +716,7 @@ void MathGridInset::addCol(col_type newcol)
 }
 
 
-void MathGridInset::delCol(col_type col)
+void InsetMathGrid::delCol(col_type col)
 {
 	if (ncols() == 1)
 		return;
@@ -735,7 +735,7 @@ void MathGridInset::delCol(col_type col)
 }
 
 
-void MathGridInset::copyCol(col_type col)
+void InsetMathGrid::copyCol(col_type col)
 {
 	addCol(col);
 	for (row_type row = 0; row < nrows(); ++row)
@@ -743,7 +743,7 @@ void MathGridInset::copyCol(col_type col)
 }
 
 
-void MathGridInset::swapCol(col_type col)
+void InsetMathGrid::swapCol(col_type col)
 {
 	if (ncols() == 1)
 		return;
@@ -754,7 +754,7 @@ void MathGridInset::swapCol(col_type col)
 }
 
 
-int MathGridInset::cellXOffset(idx_type idx) const
+int InsetMathGrid::cellXOffset(idx_type idx) const
 {
 	col_type c = col(idx);
 	int x = colinfo_[c].offset_;
@@ -767,13 +767,13 @@ int MathGridInset::cellXOffset(idx_type idx) const
 }
 
 
-int MathGridInset::cellYOffset(idx_type idx) const
+int InsetMathGrid::cellYOffset(idx_type idx) const
 {
 	return rowinfo_[row(idx)].offset_;
 }
 
 
-bool MathGridInset::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathGrid::idxUpDown(LCursor & cur, bool up) const
 {
 	if (up) {
 		if (cur.row() == 0)
@@ -789,7 +789,7 @@ bool MathGridInset::idxUpDown(LCursor & cur, bool up) const
 }
 
 
-bool MathGridInset::idxLeft(LCursor & cur) const
+bool InsetMathGrid::idxLeft(LCursor & cur) const
 {
 	// leave matrix if on the left hand edge
 	if (cur.col() == 0)
@@ -800,7 +800,7 @@ bool MathGridInset::idxLeft(LCursor & cur) const
 }
 
 
-bool MathGridInset::idxRight(LCursor & cur) const
+bool InsetMathGrid::idxRight(LCursor & cur) const
 {
 	// leave matrix if on the right hand edge
 	if (cur.col() + 1 == ncols())
@@ -811,7 +811,7 @@ bool MathGridInset::idxRight(LCursor & cur) const
 }
 
 
-bool MathGridInset::idxFirst(LCursor & cur) const
+bool InsetMathGrid::idxFirst(LCursor & cur) const
 {
 	switch (v_align_) {
 		case 't':
@@ -828,7 +828,7 @@ bool MathGridInset::idxFirst(LCursor & cur) const
 }
 
 
-bool MathGridInset::idxLast(LCursor & cur) const
+bool InsetMathGrid::idxLast(LCursor & cur) const
 {
 	switch (v_align_) {
 		case 't':
@@ -845,7 +845,7 @@ bool MathGridInset::idxLast(LCursor & cur) const
 }
 
 
-bool MathGridInset::idxDelete(idx_type & idx)
+bool InsetMathGrid::idxDelete(idx_type & idx)
 {
 	// nothing to do if we have just one row
 	if (nrows() == 1)
@@ -880,7 +880,7 @@ bool MathGridInset::idxDelete(idx_type & idx)
 
 // reimplement old behaviour when pressing Delete in the last position
 // of a cell
-void MathGridInset::idxGlue(idx_type idx)
+void InsetMathGrid::idxGlue(idx_type idx)
 {
 	col_type c = col(idx);
 	if (c + 1 == ncols()) {
@@ -898,19 +898,19 @@ void MathGridInset::idxGlue(idx_type idx)
 }
 
 
-MathGridInset::RowInfo const & MathGridInset::rowinfo(row_type row) const
+InsetMathGrid::RowInfo const & InsetMathGrid::rowinfo(row_type row) const
 {
 	return rowinfo_[row];
 }
 
 
-MathGridInset::RowInfo & MathGridInset::rowinfo(row_type row)
+InsetMathGrid::RowInfo & InsetMathGrid::rowinfo(row_type row)
 {
 	return rowinfo_[row];
 }
 
 
-bool MathGridInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
+bool InsetMathGrid::idxBetween(idx_type idx, idx_type from, idx_type to) const
 {
 	row_type const ri = row(idx);
 	row_type const r1 = min(row(from), row(to));
@@ -923,7 +923,7 @@ bool MathGridInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 
 
 
-void MathGridInset::normalize(NormalStream & os) const
+void InsetMathGrid::normalize(NormalStream & os) const
 {
 	os << "[grid ";
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -936,7 +936,7 @@ void MathGridInset::normalize(NormalStream & os) const
 }
 
 
-void MathGridInset::mathmlize(MathMLStream & os) const
+void InsetMathGrid::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -949,7 +949,7 @@ void MathGridInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathGridInset::write(WriteStream & os) const
+void InsetMathGrid::write(WriteStream & os) const
 {
 	string eol;
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -983,37 +983,37 @@ void MathGridInset::write(WriteStream & os) const
 }
 
 
-int MathGridInset::colsep() const
+int InsetMathGrid::colsep() const
 {
 	return 6;
 }
 
 
-int MathGridInset::rowsep() const
+int InsetMathGrid::rowsep() const
 {
 	return 6;
 }
 
 
-int MathGridInset::hlinesep() const
+int InsetMathGrid::hlinesep() const
 {
 	return 3;
 }
 
 
-int MathGridInset::vlinesep() const
+int InsetMathGrid::vlinesep() const
 {
 	return 3;
 }
 
 
-int MathGridInset::border() const
+int InsetMathGrid::border() const
 {
 	return 1;
 }
 
 
-void MathGridInset::splitCell(LCursor & cur)
+void InsetMathGrid::splitCell(LCursor & cur)
 {
 	if (cur.idx() == cur.lastidx())
 		return;
@@ -1026,9 +1026,9 @@ void MathGridInset::splitCell(LCursor & cur)
 }
 
 
-void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "*** MathGridInset: request: " << cmd << endl;
+	//lyxerr << "*** InsetMathGrid: request: " << cmd << endl;
 	switch (cmd.action) {
 
 	case LFUN_MOUSE_RELEASE:
@@ -1036,7 +1036,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		//	GridInsetMailer(*this).showDialog();
 		//	return DispatchResult(true, true);
 		//}
-		MathNestInset::doDispatch(cur, cmd);
+		InsetMathNest::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_INSET_DIALOG_UPDATE:
@@ -1209,7 +1209,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		istringstream is(lyx::to_utf8(cmd.argument()));
 		int n = 0;
 		is >> n;
-		MathGridInset grid(1, 1);
+		InsetMathGrid grid(1, 1);
 		mathed_parse_normal(grid, lyx::cap::getSelection(cur.buffer(), n));
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
@@ -1230,7 +1230,7 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				}
 				// append the left over horizontal cells to the last column
 				idx_type i = index(r + cur.row(), ncols() - 1);
-				for (MathInset::col_type c = numcols; c < grid.ncols(); ++c)
+				for (InsetMath::col_type c = numcols; c < grid.ncols(); ++c)
 					cell(i).append(grid.cell(grid.index(r, c)));
 			}
 			// append the left over vertical cells to the last _cell_
@@ -1289,12 +1289,12 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		MathNestInset::doDispatch(cur, cmd);
+		InsetMathNest::doDispatch(cur, cmd);
 	}
 }
 
 
-bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathGrid::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action) {
@@ -1385,6 +1385,6 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return MathNestInset::getStatus(cur, cmd, status);
+		return InsetMathNest::getStatus(cur, cmd, status);
 	}
 }

@@ -20,25 +20,25 @@ using std::string;
 using std::auto_ptr;
 
 
-MathCommentInset::MathCommentInset()
-	: MathNestInset(1)
+InsetMathComment::InsetMathComment()
+	: InsetMathNest(1)
 {}
 
 
-MathCommentInset::MathCommentInset(string const & str)
-	: MathNestInset(1)
+InsetMathComment::InsetMathComment(string const & str)
+	: InsetMathNest(1)
 {
 	asArray(str, cell(0));
 }
 
 
-auto_ptr<InsetBase> MathCommentInset::doClone() const
+auto_ptr<InsetBase> InsetMathComment::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathCommentInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathComment(*this));
 }
 
 
-void MathCommentInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathComment::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
@@ -46,52 +46,52 @@ void MathCommentInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathCommentInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathComment::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
 
-void MathCommentInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathComment::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	cell(0).metricsT(mi, dim);
 }
 
 
-void MathCommentInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathComment::drawT(TextPainter & pain, int x, int y) const
 {
 	cell(0).drawT(pain, x, y);
 }
 
 
-void MathCommentInset::write(WriteStream & os) const
+void InsetMathComment::write(WriteStream & os) const
 {
 	os << '%' << cell(0) << "\n";
 }
 
 
-void MathCommentInset::maple(MapleStream & os) const
+void InsetMathComment::maple(MapleStream & os) const
 {
 	os << '#' << cell(0) << "\n";
 }
 
 
-void MathCommentInset::mathematica(MathematicaStream &) const
+void InsetMathComment::mathematica(MathematicaStream &) const
 {}
 
 
-void MathCommentInset::octave(OctaveStream &) const
+void InsetMathComment::octave(OctaveStream &) const
 {}
 
 
-void MathCommentInset::mathmlize(MathMLStream & os) const
+void InsetMathComment::mathmlize(MathMLStream & os) const
 {
 	os << MTag("comment") << cell(0) << cell(1) << ETag("comment");
 }
 
 
-void MathCommentInset::infoize(std::ostream & os) const
+void InsetMathComment::infoize(std::ostream & os) const
 {
 	os << "Comment";
 }

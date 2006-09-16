@@ -20,43 +20,43 @@ using std::string;
 using std::auto_ptr;
 
 
-MathUnknownInset::MathUnknownInset(string const & nm, bool final, bool black)
+InsetMathUnknown::InsetMathUnknown(string const & nm, bool final, bool black)
 	: name_(nm), final_(final), black_(black)
 {}
 
 
-auto_ptr<InsetBase> MathUnknownInset::doClone() const
+auto_ptr<InsetBase> InsetMathUnknown::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathUnknownInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathUnknown(*this));
 }
 
 
-string MathUnknownInset::name() const
+string InsetMathUnknown::name() const
 {
 	return name_;
 }
 
 
-void MathUnknownInset::setName(string const & name)
+void InsetMathUnknown::setName(string const & name)
 {
 	name_ = name;
 }
 
 
-void MathUnknownInset::normalize(NormalStream & os) const
+void InsetMathUnknown::normalize(NormalStream & os) const
 {
 	os << "[unknown " << name_ << ']';
 }
 
 
-void MathUnknownInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, name_, dim);
 	dim_ = dim;
 }
 
 
-void MathUnknownInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathUnknown::draw(PainterInfo & pi, int x, int y) const
 {
 	if (black_)
 		drawStrBlack(pi, x, y, name_);
@@ -66,37 +66,37 @@ void MathUnknownInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathUnknownInset::finalize()
+void InsetMathUnknown::finalize()
 {
 	final_ = true;
 }
 
 
-bool MathUnknownInset::final() const
+bool InsetMathUnknown::final() const
 {
 	return final_;
 }
 
 
-void MathUnknownInset::maple(MapleStream & os) const
+void InsetMathUnknown::maple(MapleStream & os) const
 {
 	os << name_;
 }
 
 
-void MathUnknownInset::mathematica(MathematicaStream & os) const
+void InsetMathUnknown::mathematica(MathematicaStream & os) const
 {
 	os << name_;
 }
 
 
-void MathUnknownInset::mathmlize(MathMLStream & os) const
+void InsetMathUnknown::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mi") << name_ << ETag("mi");
 }
 
 
-void MathUnknownInset::octave(OctaveStream & os) const
+void InsetMathUnknown::octave(OctaveStream & os) const
 {
 	os << name_;
 }

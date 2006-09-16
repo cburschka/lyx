@@ -18,12 +18,12 @@
 
 // for the \ar stuff in \xymatrix
 
-class MathXYMatrixInset;
+class InsetMathXYMatrix;
 
-class MathXYArrowInset : public MathNestInset {
+class InsetMathXYArrow : public InsetMathNest {
 public:
 	///
-	MathXYArrowInset();
+	InsetMathXYArrow();
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -31,7 +31,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	MathXYArrowInset * asXYArrowInset() { return this; }
+	InsetMathXYArrow * asXYArrowInset() { return this; }
 
 	///
 	void normalize();
@@ -42,7 +42,7 @@ public:
 
 public:
 	///
-	MathXYMatrixInset const * targetMatrix() const;
+	InsetMathXYMatrix const * targetMatrix() const;
 	///
 	MathArray const & targetCell() const;
 	///
@@ -55,7 +55,7 @@ public:
 	///
 	mutable LyXFont font_;
 	///
-	mutable MathXYMatrixInset const * target_;
+	mutable InsetMathXYMatrix const * target_;
 };
 
 #endif

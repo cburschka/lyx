@@ -15,10 +15,10 @@
 #include "math_gridinset.h"
 
 
-class MathSplitInset : public MathGridInset {
+class InsetMathSplit : public InsetMathGrid {
 public:
 	///
-	explicit MathSplitInset(std::string const & name);
+	explicit InsetMathSplit(std::string const & name);
 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

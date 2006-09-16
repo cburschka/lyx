@@ -23,12 +23,12 @@ class BufferView;
 class CursorSlice;
 class FuncRequest;
 class FuncStatus;
+class InsetMath;
 class InsetText;
 class LaTeXFeatures;
 class LCursor;
 class LyXLex;
 class LyXText;
-class MathInset;
 class MetricsInfo;
 class Dimension;
 class PainterInfo;
@@ -65,7 +65,7 @@ public:
 	std::auto_ptr<InsetBase> clone() const;
 
 	/// identification as math inset
-	virtual MathInset * asMathInset() { return 0; }
+	virtual InsetMath * asInsetMath() { return 0; }
 	/// true for 'math' math inset, but not for e.g. mbox
 	virtual bool inMathed() const { return false; }
 

@@ -21,12 +21,12 @@
 // f(x) in one block (as opposed to 'f','(','x',')' or 'f','x')
 // for interfacing external programs
 
-class MathExFuncInset : public MathNestInset {
+class InsetMathExFunc : public InsetMathNest {
 public:
 	///
-	explicit MathExFuncInset(std::string const & name);
+	explicit InsetMathExFunc(std::string const & name);
 	///
-	MathExFuncInset(std::string const & name, MathArray const & ar);
+	InsetMathExFunc(std::string const & name, MathArray const & ar);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -16,10 +16,10 @@
 
 
 /// Non-AMS-style frame
-class MathFboxInset : public MathNestInset {
+class InsetMathFBox : public InsetMathNest {
 public:
 	///
-	MathFboxInset();
+	InsetMathFBox();
 	///
 	mode_type currentMode() const;
 	///

@@ -17,16 +17,16 @@
 
 /// support for AMS's \\substack
 
-class MathSubstackInset : public MathGridInset {
+class InsetMathSubstack : public InsetMathGrid {
 public:
 	///
-	MathSubstackInset();
+	InsetMathSubstack();
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	MathSubstackInset const * asSubstackInset() const { return this; }
+	InsetMathSubstack const * asSubstackInset() const { return this; }
 
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,

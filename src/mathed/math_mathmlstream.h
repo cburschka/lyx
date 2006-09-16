@@ -22,7 +22,7 @@
 #include <iosfwd>
 
 class MathArray;
-class MathInset;
+class InsetMath;
 class MathAtom;
 
 //

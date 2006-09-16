@@ -95,7 +95,7 @@ namespace {
 		DocIterator it = c;
 		it.top().pos() = 0;
 		DocIterator et = c;
-		et.top().pos() = et.top().asMathInset()->cell(et.top().idx()).size();
+		et.top().pos() = et.top().asInsetMath()->cell(et.top().idx()).size();
 		for (size_t i = 0; ; ++i) {
 			int xo;
 			int yo;
@@ -566,7 +566,7 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 //
 // The part below is the non-integrated rest of the original math
 // cursor. This should be either generalized for texted or moved
-// back to mathed (in most cases to MathNestInset).
+// back to mathed (in most cases to InsetMathNest).
 //
 ///////////////////////////////////////////////////////////////////
 
@@ -670,7 +670,7 @@ void LCursor::insert(char_type c)
 	BOOST_ASSERT(!empty());
 	if (inMathed()) {
 		lyx::cap::selClearOrDel(*this);
-		insert(new MathCharInset(c));
+		insert(new InsetMathChar(c));
 	} else {
 		text()->insertChar(*this, c);
 	}
@@ -752,7 +752,7 @@ bool LCursor::backspace()
 	}
 
 	if (inMacroMode()) {
-		MathUnknownInset * p = activeMacro();
+		InsetMathUnknown * p = activeMacro();
 		if (p->name().size() > 1) {
 			p->setName(p->name().substr(0, p->name().size() - 1));
 			return true;
@@ -842,7 +842,7 @@ bool LCursor::macroModeClose()
 {
 	if (!inMacroMode())
 		return false;
-	MathUnknownInset * p = activeMacro();
+	InsetMathUnknown * p = activeMacro();
 	p->finalize();
 	string const s = p->name();
 	--pos();
@@ -860,10 +860,10 @@ bool LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	MathNestInset * const in = inset().asMathInset()->asNestInset();
+	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
 	if (in && in->interpret(*this, s))
 		return true;
-	plainInsert(createMathInset(name));
+	plainInsert(createInsetMath(name));
 	return true;
 }
 
@@ -912,12 +912,12 @@ bool LCursor::inMacroMode() const
 {
 	if (pos() == 0)
 		return false;
-	MathUnknownInset const * p = prevAtom()->asUnknownInset();
+	InsetMathUnknown const * p = prevAtom()->asUnknownInset();
 	return p && !p->final();
 }
 
 
-MathUnknownInset * LCursor::activeMacro()
+InsetMathUnknown * LCursor::activeMacro()
 {
 	return inMacroMode() ? prevAtom().nucleus()->asUnknownInset() : 0;
 }
@@ -967,7 +967,7 @@ void LCursor::normalize()
 			<< pos() << ' ' << lastpos() <<  " in idx: " << idx()
 		       << " in atom: '";
 		WriteStream wi(lyxerr, false, true);
-		inset().asMathInset()->write(wi);
+		inset().asInsetMath()->write(wi);
 		lyxerr << endl;
 		pos() = lastpos();
 	}
@@ -985,7 +985,8 @@ bool LCursor::goUpDown(bool up)
 	int yo = 0;
 	getPos(xo, yo);
 
-	// check if we had something else in mind, if not, this is the future goal
+	// check if we had something else in mind, if not, this is the future
+	// target
 	if (x_target() == -1)
 		x_target() = xo;
 	else
@@ -995,10 +996,10 @@ bool LCursor::goUpDown(bool up)
 	if (!selection()) {
 		// try left
 		if (pos() != 0) {
-			MathScriptInset const * p = prevAtom()->asScriptInset();
+			InsetMathScript const * p = prevAtom()->asScriptInset();
 			if (p && p->has(up)) {
 				--pos();
-				push(*const_cast<MathScriptInset*>(p));
+				push(*const_cast<InsetMathScript*>(p));
 				idx() = p->idxOfScript(up);
 				pos() = lastpos();
 				return true;
@@ -1007,9 +1008,9 @@ bool LCursor::goUpDown(bool up)
 
 		// try right
 		if (pos() != lastpos()) {
-			MathScriptInset const * p = nextAtom()->asScriptInset();
+			InsetMathScript const * p = nextAtom()->asScriptInset();
 			if (p && p->has(up)) {
-				push(*const_cast<MathScriptInset*>(p));
+				push(*const_cast<InsetMathScript*>(p));
 				idx() = p->idxOfScript(up);
 				pos() = 0;
 				return true;
@@ -1088,7 +1089,7 @@ void LCursor::handleFont(string const & font)
 		} else {
 			// cursor in between. split cell
 			MathArray::iterator bt = cell().begin();
-			MathAtom at = createMathInset(font);
+			MathAtom at = createInsetMath(font);
 			at.nucleus()->cell(0) = MathArray(bt, bt + pos());
 			cell().erase(bt, bt + pos());
 			popLeft();

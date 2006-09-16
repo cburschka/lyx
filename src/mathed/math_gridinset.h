@@ -19,7 +19,7 @@
 /** Gridded math inset base class.
  *  This is the base to all grid-like editable math objects
  */
-class MathGridInset : public MathNestInset {
+class InsetMathGrid : public InsetMathNest {
 public:
 
 	/// additional per-cell information
@@ -82,15 +82,15 @@ public:
 
 public:
 	/// sets nrows and ncols to 1
-	MathGridInset();
+	InsetMathGrid();
 	/// constructor from columns description, creates one row
-	MathGridInset(char valign, std::string const & halign);
+	InsetMathGrid(char valign, std::string const & halign);
 	/// Note: columns first!
-	MathGridInset(col_type m, row_type n);
+	InsetMathGrid(col_type m, row_type n);
 	///
-	MathGridInset(col_type m, row_type n, char valign, std::string const & halign);
+	InsetMathGrid(col_type m, row_type n, char valign, std::string const & halign);
 	/// Ensures that the dialog is closed.
-	~MathGridInset();
+	~InsetMathGrid();
 	///
 	void metrics(MetricsInfo & mi) const;
 	///
@@ -131,9 +131,9 @@ public:
 	///
 	CellInfo & cellinfo(idx_type idx) { return cellinfo_[idx]; }
 	/// identifies GridInset
-	MathGridInset * asGridInset() { return this; }
+	InsetMathGrid * asGridInset() { return this; }
 	/// identifies GridInset
-	MathGridInset const * asGridInset() const { return this; }
+	InsetMathGrid const * asGridInset() const { return this; }
 	///
 	col_type ncols() const;
 	///

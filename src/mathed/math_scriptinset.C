@@ -32,43 +32,43 @@ using std::endl;
 
 
 
-MathScriptInset::MathScriptInset()
-	: MathNestInset(1), cell_1_is_up_(false), limits_(0)
+InsetMathScript::InsetMathScript()
+	: InsetMathNest(1), cell_1_is_up_(false), limits_(0)
 {}
 
 
-MathScriptInset::MathScriptInset(bool up)
-	: MathNestInset(2), cell_1_is_up_(up), limits_(0)
+InsetMathScript::InsetMathScript(bool up)
+	: InsetMathNest(2), cell_1_is_up_(up), limits_(0)
 {}
 
 
-MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
-	: MathNestInset(2), cell_1_is_up_(up), limits_(0)
+InsetMathScript::InsetMathScript(MathAtom const & at, bool up)
+	: InsetMathNest(2), cell_1_is_up_(up), limits_(0)
 {
 	BOOST_ASSERT(nargs() >= 1);
 	cell(0).push_back(at);
 }
 
 
-auto_ptr<InsetBase> MathScriptInset::doClone() const
+auto_ptr<InsetBase> InsetMathScript::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathScriptInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathScript(*this));
 }
 
 
-MathScriptInset const * MathScriptInset::asScriptInset() const
-{
-	return this;
-}
-
-
-MathScriptInset * MathScriptInset::asScriptInset()
+InsetMathScript const * InsetMathScript::asScriptInset() const
 {
 	return this;
 }
 
 
-bool MathScriptInset::idxFirst(LCursor & cur) const
+InsetMathScript * InsetMathScript::asScriptInset()
+{
+	return this;
+}
+
+
+bool InsetMathScript::idxFirst(LCursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = 0;
@@ -76,7 +76,7 @@ bool MathScriptInset::idxFirst(LCursor & cur) const
 }
 
 
-bool MathScriptInset::idxLast(LCursor & cur) const
+bool InsetMathScript::idxLast(LCursor & cur) const
 {
 	cur.idx() = 0;
 	cur.pos() = nuc().size();
@@ -84,7 +84,7 @@ bool MathScriptInset::idxLast(LCursor & cur) const
 }
 
 
-MathArray const & MathScriptInset::down() const
+MathArray const & InsetMathScript::down() const
 {
 	if (nargs() == 3)
 		return cell(2);
@@ -93,7 +93,7 @@ MathArray const & MathScriptInset::down() const
 }
 
 
-MathArray & MathScriptInset::down()
+MathArray & InsetMathScript::down()
 {
 	if (nargs() == 3)
 		return cell(2);
@@ -102,21 +102,21 @@ MathArray & MathScriptInset::down()
 }
 
 
-MathArray const & MathScriptInset::up() const
+MathArray const & InsetMathScript::up() const
 {
 	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
 }
 
 
-MathArray & MathScriptInset::up()
+MathArray & InsetMathScript::up()
 {
 	BOOST_ASSERT(nargs() > 1);
 	return cell(1);
 }
 
 
-void MathScriptInset::ensure(bool up)
+void InsetMathScript::ensure(bool up)
 {
 	if (nargs() == 1) {
 		// just nucleus so far
@@ -133,19 +133,19 @@ void MathScriptInset::ensure(bool up)
 }
 
 
-MathArray const & MathScriptInset::nuc() const
+MathArray const & InsetMathScript::nuc() const
 {
 	return cell(0);
 }
 
 
-MathArray & MathScriptInset::nuc()
+MathArray & InsetMathScript::nuc()
 {
 	return cell(0);
 }
 
 
-int MathScriptInset::dy0() const
+int InsetMathScript::dy0() const
 {
 	int nd = ndes();
 	if (!hasDown())
@@ -159,7 +159,7 @@ int MathScriptInset::dy0() const
 }
 
 
-int MathScriptInset::dy1() const
+int InsetMathScript::dy1() const
 {
 	int na = nasc();
 	if (!hasUp())
@@ -174,45 +174,45 @@ int MathScriptInset::dy1() const
 }
 
 
-int MathScriptInset::dx0() const
+int InsetMathScript::dx0() const
 {
 	BOOST_ASSERT(hasDown());
 	return hasLimits() ? (dim_.wid - down().width()) / 2 : nwid();
 }
 
 
-int MathScriptInset::dx1() const
+int InsetMathScript::dx1() const
 {
 	BOOST_ASSERT(hasUp());
 	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid();
 }
 
 
-int MathScriptInset::dxx() const
+int InsetMathScript::dxx() const
 {
 	return hasLimits() ? (dim_.wid - nwid()) / 2  :  0;
 }
 
 
-int MathScriptInset::nwid() const
+int InsetMathScript::nwid() const
 {
 	return nuc().size() ? nuc().width() : 2;
 }
 
 
-int MathScriptInset::nasc() const
+int InsetMathScript::nasc() const
 {
 	return nuc().size() ? nuc().ascent() : 5;
 }
 
 
-int MathScriptInset::ndes() const
+int InsetMathScript::ndes() const
 {
 	return nuc().size() ? nuc().descent() : 0;
 }
 
 
-void MathScriptInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	ScriptChanger dummy(mi.base);
@@ -241,7 +241,7 @@ void MathScriptInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathScriptInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 {
 	if (nuc().size())
 		nuc().draw(pi, x + dxx(), y);
@@ -259,7 +259,7 @@ void MathScriptInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathScriptInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathScript::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	if (hasUp())
 		up().metricsT(mi, dim);
@@ -269,7 +269,7 @@ void MathScriptInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) cons
 }
 
 
-void MathScriptInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathScript::drawT(TextPainter & pain, int x, int y) const
 {
 	if (nuc().size())
 		nuc().drawT(pain, x + dxx(), y);
@@ -281,7 +281,7 @@ void MathScriptInset::drawT(TextPainter & pain, int x, int y) const
 
 
 
-bool MathScriptInset::hasLimits() const
+bool InsetMathScript::hasLimits() const
 {
 	// obvious cases
 	if (limits_ == 1)
@@ -309,7 +309,7 @@ bool MathScriptInset::hasLimits() const
 }
 
 
-void MathScriptInset::removeScript(bool up)
+void InsetMathScript::removeScript(bool up)
 {
 	if (nargs() == 2) {
 		if (up == cell_1_is_up_)
@@ -326,13 +326,13 @@ void MathScriptInset::removeScript(bool up)
 }
 
 
-bool MathScriptInset::has(bool up) const
+bool InsetMathScript::has(bool up) const
 {
 	return idxOfScript(up);
 }
 
 
-bool MathScriptInset::hasUp() const
+bool InsetMathScript::hasUp() const
 {
 	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
 	//lyxerr << "hasUp: " << bool(idxOfScript(true)) << endl;
@@ -340,7 +340,7 @@ bool MathScriptInset::hasUp() const
 }
 
 
-bool MathScriptInset::hasDown() const
+bool InsetMathScript::hasDown() const
 {
 	//lyxerr << "1up: " << bool(cell_1_is_up_) << endl;
 	//lyxerr << "hasDown: " << bool(idxOfScript(false)) << endl;
@@ -348,7 +348,7 @@ bool MathScriptInset::hasDown() const
 }
 
 
-InsetBase::idx_type MathScriptInset::idxOfScript(bool up) const
+InsetBase::idx_type InsetMathScript::idxOfScript(bool up) const
 {
 	if (nargs() == 1)
 		return 0;
@@ -362,19 +362,19 @@ InsetBase::idx_type MathScriptInset::idxOfScript(bool up) const
 }
 
 
-bool MathScriptInset::idxRight(LCursor &) const
+bool InsetMathScript::idxRight(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxLeft(LCursor &) const
+bool InsetMathScript::idxLeft(LCursor &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathScript::idxUpDown(LCursor & cur, bool up) const
 {
 	// in nucleus?
 	if (cur.idx() == 0) {
@@ -417,7 +417,7 @@ bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
 }
 
 
-void MathScriptInset::write(WriteStream & os) const
+void InsetMathScript::write(WriteStream & os) const
 {
 	if (nuc().size()) {
 		if (nuc().size() == 1 
@@ -450,7 +450,7 @@ void MathScriptInset::write(WriteStream & os) const
 }
 
 
-void MathScriptInset::normalize(NormalStream & os) const
+void InsetMathScript::normalize(NormalStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
@@ -476,7 +476,7 @@ void MathScriptInset::normalize(NormalStream & os) const
 }
 
 
-void MathScriptInset::maple(MapleStream & os) const
+void InsetMathScript::maple(MapleStream & os) const
 {
 	if (nuc().size())
 		os << nuc();
@@ -487,7 +487,7 @@ void MathScriptInset::maple(MapleStream & os) const
 }
 
 
-void MathScriptInset::mathematica(MathematicaStream & os) const
+void InsetMathScript::mathematica(MathematicaStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
@@ -509,7 +509,7 @@ void MathScriptInset::mathematica(MathematicaStream & os) const
 }
 
 
-void MathScriptInset::mathmlize(MathMLStream & os) const
+void InsetMathScript::mathmlize(MathMLStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
@@ -535,7 +535,7 @@ void MathScriptInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathScriptInset::octave(OctaveStream & os) const
+void InsetMathScript::octave(OctaveStream & os) const
 {
 	if (nuc().size())
 		os << nuc();
@@ -546,24 +546,24 @@ void MathScriptInset::octave(OctaveStream & os) const
 }
 
 
-void MathScriptInset::infoize(std::ostream & os) const
+void InsetMathScript::infoize(std::ostream & os) const
 {
 	os << "Scripts";
 }
 
 
-void MathScriptInset::infoize2(std::ostream & os) const
+void InsetMathScript::infoize2(std::ostream & os) const
 {
 	if (limits_)
 		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");
 }
 
 
-bool MathScriptInset::notifyCursorLeaves(LCursor & cur)
+bool InsetMathScript::notifyCursorLeaves(LCursor & cur)
 {
-	MathNestInset::notifyCursorLeaves(cur);
+	InsetMathNest::notifyCursorLeaves(cur);
 
-	//lyxerr << "MathScriptInset::notifyCursorLeaves: 1 " << cur << endl;
+	//lyxerr << "InsetMathScript::notifyCursorLeaves: 1 " << cur << endl;
 
 	// remove empty scripts if possible
 	if (nargs() > 2) {
@@ -596,14 +596,14 @@ bool MathScriptInset::notifyCursorLeaves(LCursor & cur)
 		return true;
 	}
 
-	//lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
+	//lyxerr << "InsetMathScript::notifyCursorLeaves: 2 " << cur << endl;
 	return false;
 }
 
 
-void MathScriptInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathScript::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "MathScriptInset: request: " << cmd << std::endl;
+	//lyxerr << "InsetMathScript: request: " << cmd << std::endl;
 
 	if (cmd.action == LFUN_MATH_LIMITS) {
 		if (!cmd.argument().empty()) {
@@ -620,5 +620,5 @@ void MathScriptInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		return;
 	}
 
-	MathNestInset::doDispatch(cur, cmd);
+	InsetMathNest::doDispatch(cur, cmd);
 }

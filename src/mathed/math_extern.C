@@ -175,7 +175,7 @@ void extractStrings(MathArray & ar)
 		if (!ar[i]->asCharInset())
 			continue;
 		string s = charSequence(ar.begin() + i, ar.end());
-		ar[i] = MathAtom(new MathStringInset(s));
+		ar[i] = MathAtom(new InsetMathString(s));
 		ar.erase(i + 1, i + s.size());
 	}
 	//lyxerr << "\nStrings to: " << ar << endl;
@@ -194,13 +194,13 @@ void extractMatrices(MathArray & ar)
 			continue;
 		if (!arr.front()->asGridInset())
 			continue;
-		ar[i] = MathAtom(new MathMatrixInset(*(arr.front()->asGridInset())));
+		ar[i] = MathAtom(new InsetMathMatrix(*(arr.front()->asGridInset())));
 	}
 
 	// second pass for AMS "pmatrix" etc
 	for (size_t i = 0; i < ar.size(); ++i)
 		if (ar[i]->asAMSArrayInset())
-			ar[i] = MathAtom(new MathMatrixInset(*(ar[i]->asGridInset())));
+			ar[i] = MathAtom(new InsetMathMatrix(*(ar[i]->asGridInset())));
 	//lyxerr << "\nMatrices to: " << ar << endl;
 }
 
@@ -335,7 +335,7 @@ void splitScripts(MathArray & ar)
 {
 	//lyxerr << "\nScripts from: " << ar << endl;
 	for (size_t i = 0; i < ar.size(); ++i) {
-		MathScriptInset const * script = ar[i]->asScriptInset();
+		InsetMathScript const * script = ar[i]->asScriptInset();
 
 		// is this a script inset and do we also have a superscript?
 		if (!script || !script->hasUp())
@@ -347,15 +347,15 @@ void splitScripts(MathArray & ar)
 
 		if (script->nuc().size() == 1) {
 			// leave alone sums and integrals
-			MathSymbolInset const * sym =
+			InsetMathSymbol const * sym =
 				script->nuc().front()->asSymbolInset();
 			if (sym && (sym->name() == "sum" || sym->name() == "int"))
 				continue;
 		}
 
 		// create extra script inset and move superscript over
-		MathScriptInset * p = ar[i].nucleus()->asScriptInset();
-		auto_ptr<MathScriptInset> q(new MathScriptInset(true));
+		InsetMathScript * p = ar[i].nucleus()->asScriptInset();
+		auto_ptr<InsetMathScript> q(new InsetMathScript(true));
 		swap(q->up(), p->up());
 		p->removeScript(true);
 
@@ -390,12 +390,12 @@ void extractExps(MathArray & ar)
 			continue;
 
 		// we need an exponent but no subscript
-		MathScriptInset const * sup = ar[i + 1]->asScriptInset();
+		InsetMathScript const * sup = ar[i + 1]->asScriptInset();
 		if (!sup || sup->hasDown())
 			continue;
 
 		// create a proper exp-inset as replacement
-		ar[i] = MathAtom(new MathExFuncInset("exp", sup->cell(1)));
+		ar[i] = MathAtom(new InsetMathExFunc("exp", sup->cell(1)));
 		ar.erase(i + 1);
 	}
 	//lyxerr << "\nExps to: " << ar << endl;
@@ -409,12 +409,12 @@ void extractDets(MathArray & ar)
 {
 	//lyxerr << "\ndet from: " << ar << endl;
 	for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathDelimInset const * del = (*it)->asDelimInset();
+		InsetMathDelim const * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
 		if (!del->isAbs())
 			continue;
-		*it = MathAtom(new MathExFuncInset("det", del->cell(0)));
+		*it = MathAtom(new InsetMathExFunc("det", del->cell(0)));
 	}
 	//lyxerr << "\ndet to: " << ar << endl;
 }
@@ -455,7 +455,7 @@ void extractNumbers(MathArray & ar)
 
 		string s = digitSequence(ar.begin() + i, ar.end());
 
-		ar[i] = MathAtom(new MathNumberInset(s));
+		ar[i] = MathAtom(new InsetMathNumber(s));
 		ar.erase(i + 1, i + s.size());
 	}
 	//lyxerr << "\nNumbers to: " << ar << endl;
@@ -481,7 +481,7 @@ bool testCloseParen(MathAtom const & at)
 
 MathAtom replaceParenDelims(const MathArray & ar)
 {
-	return MathAtom(new MathDelimInset("(", ")", ar));
+	return MathAtom(new InsetMathDelim("(", ")", ar));
 }
 
 
@@ -499,11 +499,11 @@ bool testCloseBracket(MathAtom const & at)
 
 MathAtom replaceBracketDelims(const MathArray & ar)
 {
-	return MathAtom(new MathDelimInset("[", "]", ar));
+	return MathAtom(new InsetMathDelim("[", "]", ar));
 }
 
 
-// replace '('...')' and '['...']' sequences by a real MathDelimInset
+// replace '('...')' and '['...']' sequences by a real InsetMathDelim
 void extractDelims(MathArray & ar)
 {
 	//lyxerr << "\nDelims from: " << ar << endl;
@@ -519,7 +519,7 @@ void extractDelims(MathArray & ar)
 //
 
 
-// replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real MathExFuncInset
+// replace 'f' '(...)' and 'f' '^n' '(...)' sequences by a real InsetMathExFunc
 // assume 'extractDelims' ran before
 void extractFunctions(MathArray & ar)
 {
@@ -545,7 +545,7 @@ void extractFunctions(MathArray & ar)
 				continue;
 			// guess so, if this is followed by
 			// a DelimInset with a single item in the cell
-			MathDelimInset const * del = (*jt)->asDelimInset();
+			InsetMathDelim const * del = (*jt)->asDelimInset();
 			if (!del || del->cell(0).size() != 1)
 				continue;
 			// fall trough into main branch
@@ -557,7 +557,7 @@ void extractFunctions(MathArray & ar)
 		extractScript(exp, jt, ar.end(), true);
 
 		// create a proper inset as replacement
-		auto_ptr<MathExFuncInset> p(new MathExFuncInset(name));
+		auto_ptr<InsetMathExFunc> p(new InsetMathExFunc(name));
 
 		// jt points to the "argument". Get hold of this.
 		MathArray::iterator st = extractArgument(p->cell(0), jt, ar.end(), true);
@@ -608,7 +608,7 @@ bool testIntDiff(MathAtom const & at)
 }
 
 
-// replace '\int' ['_^'] x 'd''x'(...)' sequences by a real MathExIntInset
+// replace '\int' ['_^'] x 'd''x'(...)' sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
 void extractIntegrals(MathArray & ar)
 {
@@ -633,7 +633,7 @@ void extractIntegrals(MathArray & ar)
 			continue;
 
 		// core ist part from behind the scripts to the 'd'
-		auto_ptr<MathExIntInset> p(new MathExIntInset("int"));
+		auto_ptr<InsetMathExInt> p(new InsetMathExInt("int"));
 
 		// handle scripts if available
 		if (!testIntSymbol(*it)) {
@@ -699,7 +699,7 @@ bool testSum(MathAtom const & at)
 }
 
 
-// replace '\sum' ['_^'] f(x) sequences by a real MathExIntInset
+// replace '\sum' ['_^'] f(x) sequences by a real InsetMathExInt
 // assume 'extractDelims' ran before
 void extractSums(MathArray & ar)
 {
@@ -716,10 +716,10 @@ void extractSums(MathArray & ar)
 			continue;
 
 		// create a proper inset as replacement
-		auto_ptr<MathExIntInset> p(new MathExIntInset("sum"));
+		auto_ptr<InsetMathExInt> p(new InsetMathExInt("sum"));
 
 		// collect lower bound and summation index
-		MathScriptInset const * sub = ar[i]->asScriptInset();
+		InsetMathScript const * sub = ar[i]->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
 			MathArray const & ar = sub->down();
@@ -762,7 +762,7 @@ bool testDiffItem(MathAtom const & at)
 		return true;
 
 	// we may have d^n .../d and splitScripts() has not yet seen it
-	MathScriptInset const * sup = at->asScriptInset();
+	InsetMathScript const * sup = at->asScriptInset();
 	if (sup && !sup->hasDown() && sup->hasUp() && sup->nuc().size() == 1) {
 		MathAtom const & ma = sup->nuc().front();
 		return testString(ma, "d") || testSymbol(ma, "partial");
@@ -796,14 +796,14 @@ void extractDiff(MathArray & ar)
 		if (!testDiffFrac(*it))
 			continue;
 
-		MathFracInset const * f = (*it)->asFracInset();
+		InsetMathFrac const * f = (*it)->asFracInset();
 		if (!f) {
 			lyxerr << "should not happen" << endl;
 			continue;
 		}
 
 		// create a proper diff inset
-		auto_ptr<MathDiffInset> diff(new MathDiffInset);
+		auto_ptr<InsetMathDiff> diff(new InsetMathDiff);
 
 		// collect function, let jt point behind last used item
 		MathArray::iterator jt = it + 1;
@@ -836,7 +836,7 @@ void extractDiff(MathArray & ar)
 
 			// point before this
 			MathArray::iterator st = et - 1;
-			MathScriptInset const * script = (*st)->asScriptInset();
+			InsetMathScript const * script = (*st)->asScriptInset();
 			if (script && script->hasUp()) {
 				// things like   d.../dx^n
 				int mult = 1;
@@ -872,7 +872,7 @@ bool testRightArrow(MathAtom const & at)
 
 
 
-// replace '\lim_{x->x0} f(x)' sequences by a real MathLimInset
+// replace '\lim_{x->x0} f(x)' sequences by a real InsetMathLim
 // assume 'extractDelims' ran before
 void extractLims(MathArray & ar)
 {
@@ -881,7 +881,7 @@ void extractLims(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// must be a script inset with a subscript (without superscript)
-		MathScriptInset const * sub = (*it)->asScriptInset();
+		InsetMathScript const * sub = (*it)->asScriptInset();
 		if (!sub || !sub->hasDown() || sub->hasUp() || sub->nuc().size() != 1)
 			continue;
 
@@ -907,7 +907,7 @@ void extractLims(MathArray & ar)
 		ar.erase(it + 1, tt);
 
 		// create a proper inset as replacement
-		*it = MathAtom(new MathLimInset(f, x, x0));
+		*it = MathAtom(new InsetMathLim(f, x, x0));
 	}
 	//lyxerr << "\nLimits to: " << ar << endl;
 }
@@ -1280,13 +1280,13 @@ namespace {
 		out = out.substr(6);
 
 		// parse output as matrix or single number
-		MathAtom at(new MathArrayInset("array", out));
-		MathArrayInset const * mat = at->asArrayInset();
+		MathAtom at(new InsetMathArray("array", out));
+		InsetMathArray const * mat = at->asArrayInset();
 		MathArray res;
 		if (mat->ncols() == 1 && mat->nrows() == 1)
 			res.append(mat->cell(0));
 		else {
-			res.push_back(MathAtom(new MathDelimInset("(", ")")));
+			res.push_back(MathAtom(new InsetMathDelim("(", ")")));
 			res.back().nucleus()->cell(0).push_back(at);
 		}
 		return res;

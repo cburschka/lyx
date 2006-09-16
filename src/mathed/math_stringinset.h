@@ -19,10 +19,10 @@
  *  mainly for math-extern
  */
 
-class MathStringInset : public MathInset {
+class InsetMathString : public InsetMath {
 public:
 	///
-	explicit MathStringInset(std::string const & s);
+	explicit InsetMathString(std::string const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -30,9 +30,9 @@ public:
 	///
 	std::string str() const { return str_; }
 	///
-	MathStringInset * asStringInset() { return this; }
+	InsetMathString * asStringInset() { return this; }
 	///
-	MathStringInset const * asStringInset() const { return this; }
+	InsetMathString const * asStringInset() const { return this; }
 
 	///
 	void normalize(NormalStream &) const;

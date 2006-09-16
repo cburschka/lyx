@@ -18,10 +18,10 @@
 /** Some inset that "is" a number
  *  mainly for math-extern
  */
-class MathNumberInset : public MathInset {
+class InsetMathNumber : public InsetMath {
 public:
 	///
-	explicit MathNumberInset(std::string const & s);
+	explicit InsetMathNumber(std::string const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -29,7 +29,7 @@ public:
 	///
 	std::string str() const { return str_; }
 	///
-	MathNumberInset * asNumberInset() { return this; }
+	InsetMathNumber * asNumberInset() { return this; }
 
 	///
 	void normalize(NormalStream &) const;

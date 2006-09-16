@@ -16,16 +16,16 @@
 
 
 /// Smart spaces
-class MathSpaceInset : public MathInset {
+class InsetMathSpace : public InsetMath {
 public:
 	///
-	explicit MathSpaceInset(int sp);
+	explicit InsetMathSpace(int sp);
 	///
-	explicit MathSpaceInset(std::string const & name);
+	explicit InsetMathSpace(std::string const & name);
 	///
-	MathSpaceInset const * asSpaceInset() const { return this; }
+	InsetMathSpace const * asSpaceInset() const { return this; }
 	///
-	MathSpaceInset * asSpaceInset() { return this; }
+	InsetMathSpace * asSpaceInset() { return this; }
 	///
 	void incSpace();
 	///

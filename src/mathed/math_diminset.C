@@ -15,30 +15,30 @@
 #include "debug.h"
 
 
-MathDimInset::MathDimInset()
+InsetMathDim::InsetMathDim()
 {}
 
 
-int MathDimInset::ascent() const
+int InsetMathDim::ascent() const
 {
 	return dim_.asc;
 }
 
 
-int MathDimInset::descent() const
+int InsetMathDim::descent() const
 {
 	return dim_.des;
 }
 
 
-int MathDimInset::width() const
+int InsetMathDim::width() const
 {
 	return dim_.wid;
 }
 
 
-void MathDimInset::setPosCache(PainterInfo const &, int x, int y) const
+void InsetMathDim::setPosCache(PainterInfo const &, int x, int y) const
 {
-	//lyxerr << "MathDimInset: cache to " << x << " " << y << std::endl;
+	//lyxerr << "InsetMathDim: cache to " << x << " " << y << std::endl;
 	theCoords.insets().add(this, x, y);
 }

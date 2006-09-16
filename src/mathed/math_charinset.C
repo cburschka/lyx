@@ -40,19 +40,19 @@ namespace {
 }
 
 
-MathCharInset::MathCharInset(char c)
+InsetMathChar::InsetMathChar(char c)
 	: char_(c)
 {}
 
 
 
-auto_ptr<InsetBase> MathCharInset::doClone() const
+auto_ptr<InsetBase> InsetMathChar::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathCharInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathChar(*this));
 }
 
 
-void MathCharInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 #if 1
 	if (char_ == '=' && has_math_fonts) {
@@ -77,13 +77,13 @@ void MathCharInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	mathed_char_dim(font_, char_, dim_);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * font_metrics::width(' ', font_);
-	lyxerr << "MathCharInset::metrics: " << dim << endl;
+	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
 	width_ = dim.wid;
 }
 
 
-void MathCharInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << endl;
 	int const em = mathed_char_width(pi.base.font, 'M');
@@ -110,7 +110,7 @@ void MathCharInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathCharInset::metricsT(TextMetricsInfo const &, Dimension & dim) const
+void InsetMathChar::metricsT(TextMetricsInfo const &, Dimension & dim) const
 {
 	dim.wid = 1;
 	dim.asc = 1;
@@ -118,32 +118,32 @@ void MathCharInset::metricsT(TextMetricsInfo const &, Dimension & dim) const
 }
 
 
-void MathCharInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathChar::drawT(TextPainter & pain, int x, int y) const
 {
 	//lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
 	pain.draw(x, y, char_);
 }
 
 
-void MathCharInset::write(WriteStream & os) const
+void InsetMathChar::write(WriteStream & os) const
 {
 	os << char_;
 }
 
 
-void MathCharInset::normalize(NormalStream & os) const
+void InsetMathChar::normalize(NormalStream & os) const
 {
 	os << "[char " << char_ << " mathalpha]";
 }
 
 
-void MathCharInset::octave(OctaveStream & os) const
+void InsetMathChar::octave(OctaveStream & os) const
 {
 	os << char_;
 }
 
 
-void MathCharInset::mathmlize(MathMLStream & ms) const
+void InsetMathChar::mathmlize(MathMLStream & ms) const
 {
 	switch (char_) {
 		case '<': ms << "&lt;"; break;
@@ -154,7 +154,7 @@ void MathCharInset::mathmlize(MathMLStream & ms) const
 }
 
 
-bool MathCharInset::isRelOp() const
+bool InsetMathChar::isRelOp() const
 {
 	return char_ == '=' || char_ == '<' || char_ == '>';
 }

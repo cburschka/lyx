@@ -635,7 +635,7 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 		text->setCursor(cur, ppp.first, ppp.second);
 	}
 
-	// mathed is handled in MathNestInset/MathGridInset
+	// mathed is handled in InsetMathNest/InsetMathGrid
 	BOOST_ASSERT(!cur.inMathed());
 }
 
@@ -694,7 +694,7 @@ void eraseSelection(LCursor & cur)
 	//lyxerr << "LCursor::eraseSelection begin: " << cur << endl;
 	CursorSlice const & i1 = cur.selBegin();
 	CursorSlice const & i2 = cur.selEnd();
-	if (i1.inset().asMathInset()) {
+	if (i1.inset().asInsetMath()) {
 		cur.top() = i1;
 		if (i1.idx() == i2.idx()) {
 			i1.cell().erase(i1.pos(), i2.pos());
@@ -703,7 +703,7 @@ void eraseSelection(LCursor & cur)
 			if (cur.pos() > cur.lastpos())
 				cur.pos() = cur.lastpos();
 		} else {
-			MathInset * p = i1.asMathInset();
+			InsetMath * p = i1.asInsetMath();
 			InsetBase::row_type r1, r2;
 			InsetBase::col_type c1, c2;
 			region(i1, i2, r1, r2, c1, c2);
@@ -758,7 +758,7 @@ string grabSelection(LCursor const & cur)
 	CursorSlice i2 = cur.selEnd();
 
 	if (i1.idx() == i2.idx()) {
-		if (i1.inset().asMathInset()) {
+		if (i1.inset().asInsetMath()) {
 			MathArray::const_iterator it = i1.cell().begin();
 			return asString(MathArray(it + i1.pos(), it + i2.pos()));
 		} else {
@@ -771,15 +771,15 @@ string grabSelection(LCursor const & cur)
 	region(i1, i2, r1, r2, c1, c2);
 
 	string data;
-	if (i1.inset().asMathInset()) {
+	if (i1.inset().asInsetMath()) {
 		for (InsetBase::row_type row = r1; row <= r2; ++row) {
 			if (row > r1)
 				data += "\\\\";
 			for (InsetBase::col_type col = c1; col <= c2; ++col) {
 				if (col > c1)
 					data += '&';
-				data += asString(i1.asMathInset()->
-					cell(i1.asMathInset()->index(row, col)));
+				data += asString(i1.asInsetMath()->
+					cell(i1.asInsetMath()->index(row, col)));
 			}
 		}
 	} else {

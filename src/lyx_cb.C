@@ -362,7 +362,7 @@ void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		return;
 
 	// clear the selection
-	LyXText & const text = bv->buffer()->text();
+	LyXText const & text = bv->buffer()->text();
 	if (&text == bv->getLyXText())
 		bv->cursor().clearSelection();
 	if (asParagraph)

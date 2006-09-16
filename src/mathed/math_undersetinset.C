@@ -22,13 +22,13 @@ using std::auto_ptr;
 
 
 
-auto_ptr<InsetBase> MathUndersetInset::doClone() const
+auto_ptr<InsetBase> InsetMathUnderset::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathUndersetInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathUnderset(*this));
 }
 
 
-void MathUndersetInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -41,7 +41,7 @@ void MathUndersetInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathUndersetInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathUnderset::draw(PainterInfo & pi, int x, int y) const
 {
 	int m  = x + width() / 2;
 	int yo = y + cell(1).descent() + cell(0).ascent() + 1;
@@ -52,7 +52,7 @@ void MathUndersetInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathUndersetInset::idxFirst(LCursor & cur) const
+bool InsetMathUnderset::idxFirst(LCursor & cur) const
 {
 	cur.idx() = 1;
 	cur.pos() = 0;
@@ -60,7 +60,7 @@ bool MathUndersetInset::idxFirst(LCursor & cur) const
 }
 
 
-bool MathUndersetInset::idxLast(LCursor & cur) const
+bool InsetMathUnderset::idxLast(LCursor & cur) const
 {
 	cur.idx() = 1;
 	cur.pos() = cur.lastpos();
@@ -68,7 +68,7 @@ bool MathUndersetInset::idxLast(LCursor & cur) const
 }
 
 
-bool MathUndersetInset::idxUpDown(LCursor & cur, bool up) const
+bool InsetMathUnderset::idxUpDown(LCursor & cur, bool up) const
 {
 	idx_type target = up; // up ? 1 : 0, since upper cell has idx 1
 	if (cur.idx() == target)
@@ -79,20 +79,20 @@ bool MathUndersetInset::idxUpDown(LCursor & cur, bool up) const
 }
 
 
-void MathUndersetInset::write(WriteStream & os) const
+void InsetMathUnderset::write(WriteStream & os) const
 {
 	os << "\\underset{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 
-void MathUndersetInset::normalize(NormalStream & os) const
+void InsetMathUnderset::normalize(NormalStream & os) const
 {
 	os << "[underset " << cell(0) << ' ' << cell(1) << ']';
 }
 
 
-void MathUndersetInset::validate(LaTeXFeatures & features) const
+void InsetMathUnderset::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }

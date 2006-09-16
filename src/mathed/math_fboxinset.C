@@ -23,24 +23,24 @@
 using std::auto_ptr;
 
 
-MathFboxInset::MathFboxInset()
-	: MathNestInset(1)
+InsetMathFBox::InsetMathFBox()
+	: InsetMathNest(1)
 {}
 
 
-auto_ptr<InsetBase> MathFboxInset::doClone() const
+auto_ptr<InsetBase> InsetMathFBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathFboxInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathFBox(*this));
 }
 
 
-MathInset::mode_type MathFboxInset::currentMode() const
+InsetMath::mode_type InsetMathFBox::currentMode() const
 {
 	return TEXT_MODE;
 }
 
 
-void MathFboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
@@ -49,7 +49,7 @@ void MathFboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathFBox::draw(PainterInfo & pi, int x, int y) const
 {
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
 		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
@@ -59,19 +59,19 @@ void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFboxInset::write(WriteStream & os) const
+void InsetMathFBox::write(WriteStream & os) const
 {
 	os << "\\fbox{" << cell(0) << '}';
 }
 
 
-void MathFboxInset::normalize(NormalStream & os) const
+void InsetMathFBox::normalize(NormalStream & os) const
 {
 	os << "[fbox " << cell(0) << ']';
 }
 
 
-void MathFboxInset::infoize(std::ostream & os) const
+void InsetMathFBox::infoize(std::ostream & os) const
 {
 	os << "FBox: ";
 }

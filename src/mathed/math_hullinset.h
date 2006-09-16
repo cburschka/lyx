@@ -19,16 +19,16 @@ class RenderPreview;
 
 
 /// This provides an interface between "LyX insets" and "LyX math insets"
-class MathHullInset : public MathGridInset {
+class InsetMathHull : public InsetMathGrid {
 public:
 	///
-	MathHullInset();
+	InsetMathHull();
 	///
-	explicit MathHullInset(HullType type);
+	explicit InsetMathHull(HullType type);
 	///
-	~MathHullInset();
+	~InsetMathHull();
 	///
-	MathHullInset & operator=(MathHullInset const &);
+	InsetMathHull & operator=(InsetMathHull const &);
 	///
 	mode_type currentMode() const;
 	///
@@ -57,9 +57,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset
-	MathHullInset const * asHullInset() const { return this; }
+	InsetMathHull const * asHullInset() const { return this; }
 	/// identifies HullInset
-	MathHullInset * asHullInset() { return this; }
+	InsetMathHull * asHullInset() { return this; }
 
 	/// add a row
 	void addRow(row_type row);
@@ -120,7 +120,7 @@ public:
 	static int displayMargin() { return 12; }
 
 protected:
-	MathHullInset(MathHullInset const &);
+	InsetMathHull(InsetMathHull const &);
 
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 

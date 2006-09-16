@@ -22,25 +22,25 @@ using std::max;
 using std::auto_ptr;
 
 
-MathBraceInset::MathBraceInset()
-	: MathNestInset(1)
+InsetMathBrace::InsetMathBrace()
+	: InsetMathNest(1)
 {}
 
 
-MathBraceInset::MathBraceInset(MathArray const & ar)
-	: MathNestInset(1)
+InsetMathBrace::InsetMathBrace(MathArray const & ar)
+	: InsetMathNest(1)
 {
 	cell(0) = ar;
 }
 
 
-auto_ptr<InsetBase> MathBraceInset::doClone() const
+auto_ptr<InsetBase> InsetMathBrace::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathBraceInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathBrace(*this));
 }
 
 
-void MathBraceInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -53,7 +53,7 @@ void MathBraceInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathBraceInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont font = pi.base.font;
 	font.setColor(LColor::latex);
@@ -66,43 +66,43 @@ void MathBraceInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathBraceInset::write(WriteStream & os) const
+void InsetMathBrace::write(WriteStream & os) const
 {
 	os << '{' << cell(0) << '}';
 }
 
 
-void MathBraceInset::normalize(NormalStream & os) const
+void InsetMathBrace::normalize(NormalStream & os) const
 {
 	os << "[block " << cell(0) << ']';
 }
 
 
-void MathBraceInset::maple(MapleStream & os) const
+void InsetMathBrace::maple(MapleStream & os) const
 {
 	os << cell(0);
 }
 
 
-void MathBraceInset::octave(OctaveStream & os) const
+void InsetMathBrace::octave(OctaveStream & os) const
 {
 	os << cell(0);
 }
 
 
-void MathBraceInset::mathmlize(MathMLStream & os) const
+void InsetMathBrace::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mrow") << cell(0) << ETag("mrow");
 }
 
 
-void MathBraceInset::mathematica(MathematicaStream & os) const
+void InsetMathBrace::mathematica(MathematicaStream & os) const
 {
 	os << cell(0);
 }
 
 
-void MathBraceInset::infoize(std::ostream & os) const
+void InsetMathBrace::infoize(std::ostream & os) const
 {
 	os << "Nested Block: ";
 }

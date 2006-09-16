@@ -20,27 +20,27 @@ using std::string;
 using std::auto_ptr;
 
 
-MathKernInset::MathKernInset()
+InsetMathKern::InsetMathKern()
 {}
 
 
-MathKernInset::MathKernInset(LyXLength const & w)
+InsetMathKern::InsetMathKern(LyXLength const & w)
 	: wid_(w)
 {}
 
 
-MathKernInset::MathKernInset(string const & s)
+InsetMathKern::InsetMathKern(string const & s)
 	: wid_(s)
 {}
 
 
-auto_ptr<InsetBase> MathKernInset::doClone() const
+auto_ptr<InsetBase> InsetMathKern::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathKernInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathKern(*this));
 }
 
 
-void MathKernInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	wid_pix_ = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
 	dim.wid = wid_pix_;
@@ -49,23 +49,23 @@ void MathKernInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-int MathKernInset::width() const
+int InsetMathKern::width() const
 {
 	return wid_pix_;
 }
 
 
-void MathKernInset::draw(PainterInfo &, int, int) const
+void InsetMathKern::draw(PainterInfo &, int, int) const
 {}
 
 
-void MathKernInset::write(WriteStream & os) const
+void InsetMathKern::write(WriteStream & os) const
 {
 	os << "\\kern" << wid_.asLatexString() << ' ';
 }
 
 
-void MathKernInset::normalize(NormalStream & os) const
+void InsetMathKern::normalize(NormalStream & os) const
 {
 	os << "[kern " << wid_.asLatexString() << ']';
 }

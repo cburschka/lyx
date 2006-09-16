@@ -19,14 +19,14 @@
 // cell 0.  If there is just one script, it's cell 1 and cell_1_is_up_
 // is set accordingly.  If both are used, cell 1 is up and cell 2 is down.
 
-class MathScriptInset : public MathNestInset {
+class InsetMathScript : public InsetMathNest {
 public:
 	/// create inset without scripts
-	MathScriptInset();
+	InsetMathScript();
 	/// create inset with single script
-	explicit MathScriptInset(bool up);
+	explicit InsetMathScript(bool up);
 	/// create inset with single script and given nucleus
-	MathScriptInset(MathAtom const & at, bool up);
+	InsetMathScript(MathAtom const & at, bool up);
 	///
 	mode_type currentMode() const { return MATH_MODE; }
 	///
@@ -63,9 +63,9 @@ public:
 	void octave(OctaveStream &) const;
 
 	/// identifies scriptinsets
-	MathScriptInset const * asScriptInset() const;
+	InsetMathScript const * asScriptInset() const;
 	///
-	MathScriptInset * asScriptInset();
+	InsetMathScript * asScriptInset();
 
 	/// set limits
 	void limits(int lim) { limits_ = lim; }

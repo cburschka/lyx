@@ -20,7 +20,7 @@
 #include "support/types.h"
 
 /// This class contains the macro definition.
-class MathMacroTemplate : public MathNestInset {
+class MathMacroTemplate : public InsetMathNest {
 public:
 	///
 	MathMacroTemplate();

@@ -15,12 +15,12 @@
 
 #include "math_hullinset.h"
 
-class MathParInset : public MathHullInset {
+class InsetMathPar : public InsetMathHull {
 public:
 	///
-	MathParInset() {}
+	InsetMathPar() {}
 	///
-	MathParInset(MathArray const & ar);
+	InsetMathPar(MathArray const & ar);
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

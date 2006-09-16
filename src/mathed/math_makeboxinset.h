@@ -15,12 +15,12 @@
 #include "math_nestinset.h"
 
 /// Extra nesting: \\makebox.
-// consolidate with MathFrameboxInset?
+// consolidate with InsetMathFrameBox?
 
-class MathMakeboxInset : public MathNestInset {
+class InsetMathMakebox : public InsetMathNest {
 public:
 	///
-	MathMakeboxInset();
+	InsetMathMakebox();
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

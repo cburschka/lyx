@@ -21,43 +21,43 @@ using std::string;
 using std::auto_ptr;
 
 
-MathExFuncInset::MathExFuncInset(string const & name)
-	: MathNestInset(1), name_(name)
+InsetMathExFunc::InsetMathExFunc(string const & name)
+	: InsetMathNest(1), name_(name)
 {}
 
 
-MathExFuncInset::MathExFuncInset(string const & name, MathArray const & ar)
-	: MathNestInset(1), name_(name)
+InsetMathExFunc::InsetMathExFunc(string const & name, MathArray const & ar)
+	: InsetMathNest(1), name_(name)
 {
 	cell(0) = ar;
 }
 
 
-auto_ptr<InsetBase> MathExFuncInset::doClone() const
+auto_ptr<InsetBase> InsetMathExFunc::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathExFuncInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathExFunc(*this));
 }
 
 
-void MathExFuncInset::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
+void InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
 {
 	mathed_string_dim(mi.base.font, name_, dim_);
 }
 
 
-void MathExFuncInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathExFunc::draw(PainterInfo & pi, int x, int y) const
 {
 	drawStrBlack(pi, x, y, name_);
 }
 
 
-string MathExFuncInset::name() const
+string InsetMathExFunc::name() const
 {
 	return name_;
 }
 
 
-void MathExFuncInset::maple(MapleStream & os) const
+void InsetMathExFunc::maple(MapleStream & os) const
 {
 	if (name_ == "det")
 		os << "linalg[det](" << cell(0) << ')';
@@ -66,7 +66,7 @@ void MathExFuncInset::maple(MapleStream & os) const
 }
 
 
-void MathExFuncInset::maxima(MaximaStream & os) const
+void InsetMathExFunc::maxima(MaximaStream & os) const
 {
 	if (name_ == "det")
 		os << "determinant(" << cell(0) << ')';
@@ -107,19 +107,19 @@ string asMathematicaName(string const & name)
 }
 
 
-void MathExFuncInset::mathematica(MathematicaStream & os) const
+void InsetMathExFunc::mathematica(MathematicaStream & os) const
 {
 	os << asMathematicaName(name_) << '[' << cell(0) << ']';
 }
 
 
-void MathExFuncInset::mathmlize(MathMLStream & os) const
+void InsetMathExFunc::mathmlize(MathMLStream & os) const
 {
 	os << MTag(name_.c_str()) << cell(0) << ETag(name_.c_str());
 }
 
 
-void MathExFuncInset::octave(OctaveStream & os) const
+void InsetMathExFunc::octave(OctaveStream & os) const
 {
 	os << name_ << '(' << cell(0) << ')';
 }

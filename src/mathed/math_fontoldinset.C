@@ -20,20 +20,20 @@
 using std::auto_ptr;
 
 
-MathFontOldInset::MathFontOldInset(latexkeys const * key)
-	: MathNestInset(1), key_(key)
+InsetMathFontOld::InsetMathFontOld(latexkeys const * key)
+	: InsetMathNest(1), key_(key)
 {
 	//lock(true);
 }
 
 
-auto_ptr<InsetBase> MathFontOldInset::doClone() const
+auto_ptr<InsetBase> InsetMathFontOld::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathFontOldInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathFontOld(*this));
 }
 
 
-void MathFontOldInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
 	cell(0).metrics(mi, dim);
@@ -42,7 +42,7 @@ void MathFontOldInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathFontOldInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, key_->name.c_str());
 	cell(0).draw(pi, x + 1, y);
@@ -50,31 +50,31 @@ void MathFontOldInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFontOldInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathFontOld::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	cell(0).metricsT(mi, dim);
 }
 
 
-void MathFontOldInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathFontOld::drawT(TextPainter & pain, int x, int y) const
 {
 	cell(0).drawT(pain, x, y);
 }
 
 
-void MathFontOldInset::write(WriteStream & os) const
+void InsetMathFontOld::write(WriteStream & os) const
 {
 	os << "{\\" << key_->name << ' ' << cell(0) << '}';
 }
 
 
-void MathFontOldInset::normalize(NormalStream & os) const
+void InsetMathFontOld::normalize(NormalStream & os) const
 {
 	os << "[font " << key_->name << ' ' << cell(0) << ']';
 }
 
 
-void MathFontOldInset::infoize(std::ostream & os) const
+void InsetMathFontOld::infoize(std::ostream & os) const
 {
 	os << "Font: " << key_->name;
 }

@@ -18,13 +18,13 @@
 
 /// Change colours.
 
-class MathColorInset : public MathNestInset {
+class InsetMathColor : public InsetMathNest {
 public:
 	/// Create a color inset from LyX color number
-	explicit MathColorInset(bool oldstyle,
+	explicit InsetMathColor(bool oldstyle,
 		LColor_color const & color = LColor::none);
 	/// Create a color inset from LaTeX color name
-	explicit MathColorInset(bool oldstyle, std::string const & color);
+	explicit InsetMathColor(bool oldstyle, std::string const & color);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// we write extra braces in any case...

@@ -19,24 +19,24 @@ using std::auto_ptr;
 using std::endl;
 
 
-MathDiffInset::MathDiffInset()
-	: MathNestInset(1)
+InsetMathDiff::InsetMathDiff()
+	: InsetMathNest(1)
 {}
 
 
-auto_ptr<InsetBase> MathDiffInset::doClone() const
+auto_ptr<InsetBase> InsetMathDiff::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathDiffInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathDiff(*this));
 }
 
 
-void MathDiffInset::addDer(MathArray const & der)
+void InsetMathDiff::addDer(MathArray const & der)
 {
 	cells_.push_back(der);
 }
 
 
-void MathDiffInset::normalize(NormalStream & os) const
+void InsetMathDiff::normalize(NormalStream & os) const
 {
 	os << "[diff";
 	for (idx_type idx = 0; idx < nargs(); ++idx)
@@ -45,19 +45,19 @@ void MathDiffInset::normalize(NormalStream & os) const
 }
 
 
-void MathDiffInset::metrics(MetricsInfo &, Dimension &) const
+void InsetMathDiff::metrics(MetricsInfo &, Dimension &) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathDiffInset::draw(PainterInfo &, int, int) const
+void InsetMathDiff::draw(PainterInfo &, int, int) const
 {
 	lyxerr << "should not happen" << endl;
 }
 
 
-void MathDiffInset::maple(MapleStream & os) const
+void InsetMathDiff::maple(MapleStream & os) const
 {
 	os << "diff(";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -69,7 +69,7 @@ void MathDiffInset::maple(MapleStream & os) const
 }
 
 
-void MathDiffInset::maxima(MaximaStream & os) const
+void InsetMathDiff::maxima(MaximaStream & os) const
 {
 	os << "diff(";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -83,7 +83,7 @@ void MathDiffInset::maxima(MaximaStream & os) const
 }
 
 
-void MathDiffInset::mathematica(MathematicaStream & os) const
+void InsetMathDiff::mathematica(MathematicaStream & os) const
 {
 	os << "D[";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -95,7 +95,7 @@ void MathDiffInset::mathematica(MathematicaStream & os) const
 }
 
 
-void MathDiffInset::mathmlize(MathMLStream & os) const
+void InsetMathDiff::mathmlize(MathMLStream & os) const
 {
 	os << "diff(";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -107,7 +107,7 @@ void MathDiffInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathDiffInset::write(WriteStream &) const
+void InsetMathDiff::write(WriteStream &) const
 {
 	lyxerr << "should not happen" << endl;
 }

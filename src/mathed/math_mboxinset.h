@@ -18,10 +18,10 @@
 
 // almost a substitute for the real text inset...
 
-class MathMBoxInset : public MathDimInset {
+class InsetMathMBox : public InsetMathDim {
 public:
 	///
-	explicit MathMBoxInset(BufferView & bv);
+	explicit InsetMathMBox(BufferView & bv);
 	/// this stores metrics information in cache_
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics

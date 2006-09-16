@@ -17,7 +17,7 @@
 
 
 /// A macro argument.
-class MathMacroArgument : public MathDimInset {
+class MathMacroArgument : public InsetMathDim {
 public:
 	///
 	explicit MathMacroArgument(std::size_t);

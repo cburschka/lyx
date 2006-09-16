@@ -21,18 +21,18 @@ using std::string;
 using std::auto_ptr;
 
 
-MathEnvInset::MathEnvInset(string const & name)
-	: MathNestInset(1), name_(name)
+InsetMathEnv::InsetMathEnv(string const & name)
+	: InsetMathNest(1), name_(name)
 {}
 
 
-auto_ptr<InsetBase> MathEnvInset::doClone() const
+auto_ptr<InsetBase> InsetMathEnv::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathEnvInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathEnv(*this));
 }
 
 
-void MathEnvInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
@@ -40,26 +40,26 @@ void MathEnvInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathEnvInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathEnv::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
 
-void MathEnvInset::write(WriteStream & os) const
+void InsetMathEnv::write(WriteStream & os) const
 {
 	os << "\\begin{" << name_ << '}' << cell(0) << "\\end{" << name_ << '}';
 }
 
 
-void MathEnvInset::normalize(NormalStream & os) const
+void InsetMathEnv::normalize(NormalStream & os) const
 {
 	os << "[env " << name_ << ' ' << cell(0) << ']';
 }
 
 
-void MathEnvInset::infoize(std::ostream & os) const
+void InsetMathEnv::infoize(std::ostream & os) const
 {
 	os << "Env: " << name_;
 }

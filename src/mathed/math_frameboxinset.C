@@ -20,22 +20,22 @@
 using std::auto_ptr;
 
 
-MathFrameboxInset::MathFrameboxInset()
-	: MathNestInset(3)
+InsetMathFrameBox::InsetMathFrameBox()
+	: InsetMathNest(3)
 {}
 
 
-auto_ptr<InsetBase> MathFrameboxInset::doClone() const
+auto_ptr<InsetBase> InsetMathFrameBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathFrameboxInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathFrameBox(*this));
 }
 
 
-void MathFrameboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
-	MathNestInset::metrics(mi);
+	InsetMathNest::metrics(mi);
 	dim  = cell(0).dim();
 	dim += cell(1).dim();
 	dim += cell(2).dim();
@@ -44,7 +44,7 @@ void MathFrameboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathFrameboxInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathFrameBox::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
@@ -70,7 +70,7 @@ void MathFrameboxInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFrameboxInset::write(WriteStream & os) const
+void InsetMathFrameBox::write(WriteStream & os) const
 {
 	os << "\\framebox";
 	os << '[' << cell(0) << ']';
@@ -80,7 +80,7 @@ void MathFrameboxInset::write(WriteStream & os) const
 }
 
 
-void MathFrameboxInset::normalize(NormalStream & os) const
+void InsetMathFrameBox::normalize(NormalStream & os) const
 {
 	os << "[framebox " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
 }

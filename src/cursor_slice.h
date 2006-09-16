@@ -109,8 +109,8 @@ public:
 	///
 	/// mathed specific stuff
 	///
-	/// returns the owning inset if it is a MathInset, else 0
-	MathInset * asMathInset() const { return inset_->asMathInset(); }
+	/// returns the owning inset if it is a InsetMath, else 0
+	InsetMath * asInsetMath() const { return inset_->asInsetMath(); }
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
 

@@ -16,14 +16,14 @@
 #include "math_gridinset.h"
 
 
-class MathXYMatrixInset : public MathGridInset {
+class InsetMathXYMatrix : public InsetMathGrid {
 public:
 	///
-	MathXYMatrixInset();
+	InsetMathXYMatrix();
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	MathXYMatrixInset const * asXYMatrixInset() const { return this; }
+	InsetMathXYMatrix const * asXYMatrixInset() const { return this; }
 	///
 	virtual int colsep() const;
 	///

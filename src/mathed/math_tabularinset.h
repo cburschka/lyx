@@ -16,23 +16,23 @@
 
 
 /// Inset for things like \begin{tabular}...\end{tabular}
-class MathTabularInset : public MathGridInset {
+class InsetMathTabular : public InsetMathGrid {
 public:
 	///
-	MathTabularInset(std::string const &, int m, int n);
+	InsetMathTabular(std::string const &, int m, int n);
 	///
-	MathTabularInset(std::string const &, int m, int n,
+	InsetMathTabular(std::string const &, int m, int n,
 		char valign, std::string const & halign);
 	///
-	MathTabularInset(std::string const &, char valign, std::string const & halign);
+	InsetMathTabular(std::string const &, char valign, std::string const & halign);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	MathTabularInset * asTabularInset() { return this; }
+	InsetMathTabular * asTabularInset() { return this; }
 	///
-	MathTabularInset const * asTabularInset() const { return this; }
+	InsetMathTabular const * asTabularInset() const { return this; }
 
 	///
 	void write(WriteStream & os) const;

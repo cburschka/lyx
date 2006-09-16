@@ -24,26 +24,26 @@
 #include "support/std_ostream.h"
 
 
-MathDecorationInset::MathDecorationInset(latexkeys const * key)
-	: MathNestInset(1), key_(key)
+InsetMathDecoration::InsetMathDecoration(latexkeys const * key)
+	: InsetMathNest(1), key_(key)
 {
 //	lyxerr << " creating deco " << key->name << std::endl;
 }
 
 
-std::auto_ptr<InsetBase> MathDecorationInset::doClone() const
+std::auto_ptr<InsetBase> InsetMathDecoration::doClone() const
 {
-	return std::auto_ptr<InsetBase>(new MathDecorationInset(*this));
+	return std::auto_ptr<InsetBase>(new InsetMathDecoration(*this));
 }
 
 
-bool MathDecorationInset::upper() const
+bool InsetMathDecoration::upper() const
 {
 	return key_->name.substr(0, 5) != "under";
 }
 
 
-bool MathDecorationInset::isScriptable() const
+bool InsetMathDecoration::isScriptable() const
 {
 	return
 			key_->name == "overbrace" ||
@@ -57,7 +57,7 @@ bool MathDecorationInset::isScriptable() const
 }
 
 
-bool MathDecorationInset::protect() const
+bool InsetMathDecoration::protect() const
 {
 	return
 			key_->name == "overbrace" ||
@@ -71,7 +71,7 @@ bool MathDecorationInset::protect() const
 }
 
 
-bool MathDecorationInset::wide() const
+bool InsetMathDecoration::wide() const
 {
 	return
 			key_->name == "overline" ||
@@ -89,7 +89,7 @@ bool MathDecorationInset::wide() const
 }
 
 
-bool MathDecorationInset::ams() const
+bool InsetMathDecoration::ams() const
 {
 	return
 			key_->name == "overleftrightarrow" ||
@@ -99,7 +99,7 @@ bool MathDecorationInset::ams() const
 }
 
 
-void MathDecorationInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 
@@ -119,7 +119,7 @@ void MathDecorationInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	if (wide())
@@ -132,7 +132,7 @@ void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathDecorationInset::write(WriteStream & os) const
+void InsetMathDecoration::write(WriteStream & os) const
 {
 	if (os.fragile() && protect())
 		os << "\\protect";
@@ -140,21 +140,21 @@ void MathDecorationInset::write(WriteStream & os) const
 }
 
 
-void MathDecorationInset::normalize(NormalStream & os) const
+void InsetMathDecoration::normalize(NormalStream & os) const
 {
 	os << "[deco " << key_->name << ' ' <<  cell(0) << ']';
 }
 
 
-void MathDecorationInset::infoize(std::ostream & os) const
+void InsetMathDecoration::infoize(std::ostream & os) const
 {
 	os << "Deco: " << key_->name;
 }
 
 
-void MathDecorationInset::validate(LaTeXFeatures & features) const
+void InsetMathDecoration::validate(LaTeXFeatures & features) const
 {
 	if (ams())
 		features.require("amsmath");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }

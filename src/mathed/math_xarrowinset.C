@@ -22,18 +22,18 @@ using std::string;
 using std::auto_ptr;
 
 
-MathXArrowInset::MathXArrowInset(string const & name)
-	: MathFracbaseInset(), name_(name)
+InsetMathXArrow::InsetMathXArrow(string const & name)
+	: InsetMathFracBase(), name_(name)
 {}
 
 
-auto_ptr<InsetBase> MathXArrowInset::doClone() const
+auto_ptr<InsetBase> InsetMathXArrow::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathXArrowInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathXArrow(*this));
 }
 
 
-void MathXArrowInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -46,7 +46,7 @@ void MathXArrowInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathXArrowInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 {
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, x + 5, y - 10);
@@ -56,7 +56,7 @@ void MathXArrowInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathXArrowInset::write(WriteStream & os) const
+void InsetMathXArrow::write(WriteStream & os) const
 {
 	os << '\\' << name_;
 	if (cell(1).size())
@@ -65,14 +65,14 @@ void MathXArrowInset::write(WriteStream & os) const
 }
 
 
-void MathXArrowInset::normalize(NormalStream & os) const
+void InsetMathXArrow::normalize(NormalStream & os) const
 {
 	os << "[xarrow " << name_ << ' ' <<  cell(0) << ' ' << cell(1) << ']';
 }
 
 
-void MathXArrowInset::validate(LaTeXFeatures & features) const
+void InsetMathXArrow::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }

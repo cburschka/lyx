@@ -19,41 +19,41 @@
 using std::auto_ptr;
 
 
-MathParInset::MathParInset(MathArray const & ar)
+InsetMathPar::InsetMathPar(MathArray const & ar)
 {
 	cells_[0] = ar;
 }
 
 
-void MathParInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathPar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy1(mi.base, "textnormal");
-	MathGridInset::metrics(mi);
+	InsetMathGrid::metrics(mi);
 	dim = dim_;
 }
 
 
-void MathParInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathPar::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy1(pi.base, "textnormal");
-	MathGridInset::draw(pi, x, y);
+	InsetMathGrid::draw(pi, x, y);
 }
 
 
-void MathParInset::write(WriteStream & os) const
+void InsetMathPar::write(WriteStream & os) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		os << cell(i) << "\n";
 }
 
 
-void MathParInset::infoize(std::ostream & os) const
+void InsetMathPar::infoize(std::ostream & os) const
 {
 	os << "Type: Paragraph ";
 }
 
 
-auto_ptr<InsetBase> MathParInset::doClone() const
+auto_ptr<InsetBase> InsetMathPar::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathParInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathPar(*this));
 }

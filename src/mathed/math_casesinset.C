@@ -37,36 +37,36 @@ using std::string;
 using std::auto_ptr;
 
 
-MathCasesInset::MathCasesInset(row_type n)
-	: MathGridInset(2, n, 'c', "ll")
+InsetMathCases::InsetMathCases(row_type n)
+	: InsetMathGrid(2, n, 'c', "ll")
 {}
 
 
-auto_ptr<InsetBase> MathCasesInset::doClone() const
+auto_ptr<InsetBase> InsetMathCases::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathCasesInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathCases(*this));
 }
 
 
-void MathCasesInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathCases::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	MathGridInset::metrics(mi);
+	InsetMathGrid::metrics(mi);
 	dim_.wid += 8;
 	dim = dim_;
 }
 
 
-void MathCasesInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 {
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
-	MathGridInset::drawWithMargin(pi, x, y, 8, 0);
+	InsetMathGrid::drawWithMargin(pi, x, y, 8, 0);
 	setPosCache(pi, x, y);
 }
 
 
-void MathCasesInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathCases::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "*** MathCasesInset: request: " << cmd << endl;
+	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
 		recordUndo(cur);
@@ -77,12 +77,12 @@ void MathCasesInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 	}
 	default:
-		MathGridInset::doDispatch(cur, cmd);
+		InsetMathGrid::doDispatch(cur, cmd);
 	}
 }
 
 
-bool MathCasesInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathCases::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -97,47 +97,47 @@ bool MathCasesInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 	}
 	default:
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 }
 
 
-void MathCasesInset::write(WriteStream & os) const
+void InsetMathCases::write(WriteStream & os) const
 {
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\begin{cases}\n";
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\end{cases}";
 }
 
 
-void MathCasesInset::normalize(NormalStream & os) const
+void InsetMathCases::normalize(NormalStream & os) const
 {
 	os << "[cases ";
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << ']';
 }
 
 
-void MathCasesInset::maple(MapleStream & os) const
+void InsetMathCases::maple(MapleStream & os) const
 {
 	os << "cases(";
-	MathGridInset::maple(os);
+	InsetMathGrid::maple(os);
 	os << ')';
 }
 
 
-void MathCasesInset::infoize(std::ostream & os) const
+void InsetMathCases::infoize(std::ostream & os) const
 {
 	os << "Cases ";
 }
 
 
-void MathCasesInset::validate(LaTeXFeatures & features) const
+void InsetMathCases::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathGridInset::validate(features);
+	InsetMathGrid::validate(features);
 }

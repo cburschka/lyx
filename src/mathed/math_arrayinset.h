@@ -16,25 +16,25 @@
 
 
 /// Inset for things like \begin{array}...\end{array}
-class MathArrayInset : public MathGridInset {
+class InsetMathArray : public InsetMathGrid {
 public:
 	///
-	MathArrayInset(std::string const &, int m, int n);
+	InsetMathArray(std::string const &, int m, int n);
 	///
-	MathArrayInset(std::string const &, int m, int n,
+	InsetMathArray(std::string const &, int m, int n,
 		char valign, std::string const & halign);
 	///
-	MathArrayInset(std::string const &, char valign, std::string const & halign);
+	InsetMathArray(std::string const &, char valign, std::string const & halign);
 	/// convenience constructor from whitespace/newline separated data
-	MathArrayInset(std::string const &, std::string const & str);
+	InsetMathArray(std::string const &, std::string const & str);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	MathArrayInset * asArrayInset() { return this; }
+	InsetMathArray * asArrayInset() { return this; }
 	///
-	MathArrayInset const * asArrayInset() const { return this; }
+	InsetMathArray const * asArrayInset() const { return this; }
 
 	///
 	void write(WriteStream & os) const;

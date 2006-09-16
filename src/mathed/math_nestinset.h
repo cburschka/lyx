@@ -20,10 +20,10 @@
     single symbol.
 */
 
-class MathNestInset : public MathDimInset {
+class InsetMathNest : public InsetMathDim {
 public:
 	/// nestinsets have a fixed size to start with
-	explicit MathNestInset(idx_type ncells);
+	explicit InsetMathNest(idx_type ncells);
 
 	/// the size is usually some sort of convex hull of the cells
 	/// hides inset::metrics() intentionally!
@@ -33,9 +33,9 @@ public:
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	/// identifies NestInsets
-	MathNestInset * asNestInset() { return this; }
+	InsetMathNest * asNestInset() { return this; }
 	/// identifies NestInsets
-	MathNestInset const * asNestInset() const { return this; }
+	InsetMathNest const * asNestInset() const { return this; }
 	/// get cursor position
 	void cursorPos(CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///

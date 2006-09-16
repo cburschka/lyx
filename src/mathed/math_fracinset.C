@@ -25,30 +25,30 @@ using std::max;
 using std::auto_ptr;
 
 
-MathFracInset::MathFracInset(Kind kind)
+InsetMathFrac::InsetMathFrac(Kind kind)
 	: kind_(kind)
 {}
 
 
-auto_ptr<InsetBase> MathFracInset::doClone() const
+auto_ptr<InsetBase> InsetMathFrac::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathFracInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathFrac(*this));
 }
 
 
-MathFracInset * MathFracInset::asFracInset()
-{
-	return kind_ == ATOP ? 0 : this;
-}
-
-
-MathFracInset const * MathFracInset::asFracInset() const
+InsetMathFrac * InsetMathFrac::asFracInset()
 {
 	return kind_ == ATOP ? 0 : this;
 }
 
 
-void MathFracInset::metrics(MetricsInfo & mi, Dimension & dim) const
+InsetMathFrac const * InsetMathFrac::asFracInset() const
+{
+	return kind_ == ATOP ? 0 : this;
+}
+
+
+void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -67,7 +67,7 @@ void MathFracInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathFracInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 	int m = x + dim_.wid / 2;
@@ -94,7 +94,7 @@ void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFracInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void InsetMathFrac::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	cell(0).metricsT(mi, dim);
 	cell(1).metricsT(mi, dim);
@@ -105,7 +105,7 @@ void MathFracInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 }
 
 
-void MathFracInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathFrac::drawT(TextPainter & pain, int x, int y) const
 {
 	int m = x + dim_.width() / 2;
 	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
@@ -116,7 +116,7 @@ void MathFracInset::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-void MathFracInset::write(WriteStream & os) const
+void InsetMathFrac::write(WriteStream & os) const
 {
 	switch (kind_) {
 	case ATOP:
@@ -128,13 +128,13 @@ void MathFracInset::write(WriteStream & os) const
 		break;
 	case FRAC:
 	case NICEFRAC:
-		MathNestInset::write(os);
+		InsetMathNest::write(os);
 		break;
 	}
 }
 
 
-string MathFracInset::name() const
+string InsetMathFrac::name() const
 {
 	switch (kind_) {
 	case FRAC:
@@ -151,40 +151,40 @@ string MathFracInset::name() const
 }
 
 
-bool MathFracInset::extraBraces() const
+bool InsetMathFrac::extraBraces() const
 {
 	return kind_ == ATOP || kind_ == OVER;
 }
 
 
-void MathFracInset::maple(MapleStream & os) const
+void InsetMathFrac::maple(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-void MathFracInset::mathematica(MathematicaStream & os) const
+void InsetMathFrac::mathematica(MathematicaStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-void MathFracInset::octave(OctaveStream & os) const
+void InsetMathFrac::octave(OctaveStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-void MathFracInset::mathmlize(MathMLStream & os) const
+void InsetMathFrac::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
 }
 
 
-void MathFracInset::validate(LaTeXFeatures & features) const
+void InsetMathFrac::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == NICEFRAC)
 		features.require("nicefrac");
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 }
 

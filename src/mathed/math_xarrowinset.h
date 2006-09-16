@@ -16,10 +16,10 @@
 
 
 /// Wide arrows like \xrightarrow
-class MathXArrowInset : public MathFracbaseInset {
+class InsetMathXArrow : public InsetMathFracBase {
 public:
 	///
-	explicit MathXArrowInset(std::string const & name);
+	explicit InsetMathXArrow(std::string const & name);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

@@ -22,7 +22,7 @@ MathAtom::MathAtom()
 
 
 MathAtom::MathAtom(InsetBase * p)
-	: nucleus_(static_cast<MathInset *>(p))
+	: nucleus_(static_cast<InsetMath *>(p))
 {}
 
 
@@ -30,7 +30,7 @@ MathAtom::MathAtom(MathAtom const & at)
 	: nucleus_(0)
 {
 	if (at.nucleus_)
-		nucleus_ = static_cast<MathInset*>(at.nucleus_->clone().release());
+		nucleus_ = static_cast<InsetMath*>(at.nucleus_->clone().release());
 }
 
 

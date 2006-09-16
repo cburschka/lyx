@@ -21,18 +21,18 @@ using std::string;
 using std::auto_ptr;
 
 
-MathDotsInset::MathDotsInset(latexkeys const * key)
+InsetMathDots::InsetMathDots(latexkeys const * key)
 	: key_(key)
 {}
 
 
-auto_ptr<InsetBase> MathDotsInset::doClone() const
+auto_ptr<InsetBase> InsetMathDots::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathDotsInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathDots(*this));
 }
 
 
-void MathDotsInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim);
 	dh_ = 0;
@@ -51,7 +51,7 @@ void MathDotsInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathDotsInset::draw(PainterInfo & pain, int x, int y) const
+void InsetMathDots::draw(PainterInfo & pain, int x, int y) const
 {
 	mathed_draw_deco(pain, x + 2, y - dh_, dim_.width() - 2, dim_.ascent(),
 		key_->name);
@@ -65,7 +65,7 @@ void MathDotsInset::draw(PainterInfo & pain, int x, int y) const
 }
 
 
-string MathDotsInset::name() const
+string InsetMathDots::name() const
 {
 	return key_->name;
 }

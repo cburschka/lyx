@@ -17,7 +17,7 @@
 
 
 /// Fraction like objects (frac, binom)
-class MathFracInset : public MathFracbaseInset {
+class InsetMathFrac : public InsetMathFracBase {
 public:
 	///
 	enum Kind {
@@ -28,7 +28,7 @@ public:
 	};
 
 	///
-	explicit MathFracInset(Kind kind = FRAC);
+	explicit InsetMathFrac(Kind kind = FRAC);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -38,9 +38,9 @@ public:
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	/// identifies FracInsets
-	MathFracInset * asFracInset();
+	InsetMathFrac * asFracInset();
 	/// identifies FracInsets
-	MathFracInset const * asFracInset() const;
+	InsetMathFrac const * asFracInset() const;
 	///
 	std::string name() const;
 	///

@@ -22,10 +22,10 @@
 
 
 // cell(0) is stuff before the 'd', cell(1) the stuff after
-class MathExIntInset : public MathNestInset {
+class InsetMathExInt : public InsetMathNest {
 public:
 	///
-	explicit MathExIntInset(std::string const & name_);
+	explicit InsetMathExInt(std::string const & name_);
 	///
 	void symbol(std::string const &);
 	///

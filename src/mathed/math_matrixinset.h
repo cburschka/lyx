@@ -17,14 +17,14 @@
 
 // "shortcut" for DelimInset("(",ArrayInset,")")
 
-class MathMatrixInset : public MathGridInset {
+class InsetMathMatrix : public InsetMathGrid {
 public:
 	///
-	explicit MathMatrixInset(MathGridInset const &);
+	explicit InsetMathMatrix(InsetMathGrid const &);
 	///
-	explicit MathMatrixInset(std::string const & str);
+	explicit InsetMathMatrix(std::string const & str);
 	/// identifies MatrixInsets
-	MathMatrixInset const * asMatrixInset() const { return this; }
+	InsetMathMatrix const * asMatrixInset() const { return this; }
 
 	///
 	void write(WriteStream & os) const;

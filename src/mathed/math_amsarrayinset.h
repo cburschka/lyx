@@ -16,20 +16,20 @@
 
 
 /// Inset for things like [pbvV]matrix, psmatrix etc
-class MathAMSArrayInset : public MathGridInset {
+class InsetMathAMSArray : public InsetMathGrid {
 public:
 	///
-	MathAMSArrayInset(std::string const & name, int m, int n);
+	InsetMathAMSArray(std::string const & name, int m, int n);
 	///
-	MathAMSArrayInset(std::string const & name);
+	InsetMathAMSArray(std::string const & name);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pain, int x, int y) const;
 	///
-	MathAMSArrayInset * asAMSArrayInset() { return this; }
+	InsetMathAMSArray * asAMSArrayInset() { return this; }
 	///
-	MathAMSArrayInset const * asAMSArrayInset() const { return this; }
+	InsetMathAMSArray const * asAMSArrayInset() const { return this; }
 
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,

@@ -19,10 +19,10 @@ class PainterInfo;
 
 
 /// things that need the dimension cache
-class MathDimInset : public MathInset {
+class InsetMathDim : public InsetMath {
 public:
 	///
-	MathDimInset();
+	InsetMathDim();
 
 	///
 	Dimension dimensions() const { return dim_; }

@@ -31,25 +31,25 @@ using std::istream_iterator;
 using std::vector;
 
 
-MathArrayInset::MathArrayInset(string const & name, int m, int n)
-	: MathGridInset(m, n), name_(name)
+InsetMathArray::InsetMathArray(string const & name, int m, int n)
+	: InsetMathGrid(m, n), name_(name)
 {}
 
 
-MathArrayInset::MathArrayInset(string const & name, int m, int n,
+InsetMathArray::InsetMathArray(string const & name, int m, int n,
 		char valign, string const & halign)
-	: MathGridInset(m, n, valign, halign), name_(name)
+	: InsetMathGrid(m, n, valign, halign), name_(name)
 {}
 
 
-MathArrayInset::MathArrayInset(string const & name, char valign,
+InsetMathArray::InsetMathArray(string const & name, char valign,
 		string const & halign)
-	: MathGridInset(valign, halign), name_(name)
+	: InsetMathGrid(valign, halign), name_(name)
 {}
 
 
-MathArrayInset::MathArrayInset(string const & name, string const & str)
-	: MathGridInset(1, 1), name_(name)
+InsetMathArray::InsetMathArray(string const & name, string const & str)
+	: InsetMathGrid(1, 1), name_(name)
 {
 	vector< vector<string> > dat;
 	istringstream is(str);
@@ -72,30 +72,30 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 }
 
 
-auto_ptr<InsetBase> MathArrayInset::doClone() const
+auto_ptr<InsetBase> InsetMathArray::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathArrayInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathArray(*this));
 }
 
 
-void MathArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
-	MathGridInset::metrics(mi, dim);
+	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
 	dim_ = dim;
 }
 
 
-void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 	ArrayChanger dummy(pi.base);
-	MathGridInset::drawWithMargin(pi, x, y, 4, 2);
+	InsetMathGrid::drawWithMargin(pi, x, y, 4, 2);
 }
 
 
-void MathArrayInset::write(WriteStream & os) const
+void InsetMathArray::write(WriteStream & os) const
 {
 	if (os.fragile())
 		os << "\\protect";
@@ -105,7 +105,7 @@ void MathArrayInset::write(WriteStream & os) const
 		os << '[' << char(v_align_) << ']';
 	os << '{' << halign() << "}\n";
 
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 
 	if (os.fragile())
 		os << "\\protect";
@@ -115,7 +115,7 @@ void MathArrayInset::write(WriteStream & os) const
 }
 
 
-void MathArrayInset::infoize(std::ostream & os) const
+void InsetMathArray::infoize(std::ostream & os) const
 {
 	string name = name_;
 	name[0] = lyx::support::uppercase(name[0]);
@@ -123,25 +123,25 @@ void MathArrayInset::infoize(std::ostream & os) const
 }
 
 
-void MathArrayInset::normalize(NormalStream & os) const
+void InsetMathArray::normalize(NormalStream & os) const
 {
 	os << '[' << name_ << ' ';
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << ']';
 }
 
 
-void MathArrayInset::maple(MapleStream & os) const
+void InsetMathArray::maple(MapleStream & os) const
 {
 	os << "array(";
-	MathGridInset::maple(os);
+	InsetMathGrid::maple(os);
 	os << ')';
 }
 
 
-void MathArrayInset::validate(LaTeXFeatures & features) const
+void InsetMathArray::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "subarray")
 		features.require("amsmath");
-	MathGridInset::validate(features);
+	InsetMathGrid::validate(features);
 }

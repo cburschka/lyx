@@ -21,10 +21,10 @@ class LyXFont;
 
 /// Support for \\mbox
 
-class MathBoxInset : public MathNestInset {
+class InsetMathBox : public InsetMathNest {
 public:
 	///
-	explicit MathBoxInset(std::string const & name);
+	explicit InsetMathBox(std::string const & name);
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

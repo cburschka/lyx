@@ -29,7 +29,7 @@ using std::auto_ptr;
 using std::endl;
 
 
-MathMBoxInset::MathMBoxInset(BufferView & bv)
+InsetMathMBox::InsetMathMBox(BufferView & bv)
 	: text_(&bv), bv_(&bv)
 {
 	text_.paragraphs().clear();
@@ -40,13 +40,13 @@ MathMBoxInset::MathMBoxInset(BufferView & bv)
 }
 
 
-auto_ptr<InsetBase> MathMBoxInset::doClone() const
+auto_ptr<InsetBase> InsetMathMBox::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathMBoxInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathMBox(*this));
 }
 
 
-void MathMBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	text_.metrics(mi, dim);
 	metricsMarkers2(dim);
@@ -54,14 +54,14 @@ void MathMBoxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathMBoxInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathMBox::draw(PainterInfo & pi, int x, int y) const
 {
 	text_.draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }
 
 
-void MathMBoxInset::write(WriteStream & ws) const
+void InsetMathMBox::write(WriteStream & ws) const
 {
 	if (ws.latex()) {
 		ws << "\\mbox{\n";
@@ -79,7 +79,7 @@ void MathMBoxInset::write(WriteStream & ws) const
 }
 
 
-int MathMBoxInset::latex(Buffer const & buf, std::ostream & os,
+int InsetMathMBox::latex(Buffer const & buf, std::ostream & os,
 			OutputParams const & runparams) const
 {
 	os << "\\mbox{\n";
@@ -90,19 +90,19 @@ int MathMBoxInset::latex(Buffer const & buf, std::ostream & os,
 }
 
 
-void MathMBoxInset::doDispatch(LCursor & cur, FuncRequest & cmd)
+void InsetMathMBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	text_.dispatch(cur, cmd);
 }
 
 
-LyXText * MathMBoxInset::getText(int) const
+LyXText * InsetMathMBox::getText(int) const
 {
 	return &text_;
 }
 
 
-void MathMBoxInset::cursorPos
+void InsetMathMBox::cursorPos
 	(CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	x = text_.cursorX(sl, boundary);
@@ -110,7 +110,7 @@ void MathMBoxInset::cursorPos
 }
 
 
-void MathMBoxInset::drawSelection(PainterInfo & pi, int x, int y) const
+void InsetMathMBox::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	text_.drawSelection(pi, x, y);
 }

@@ -16,7 +16,7 @@
 #include "math_fracbase.h"
 
 /// Inset for overset
-class MathOversetInset : public MathFracbaseInset {
+class InsetMathOverset : public InsetMathFracBase {
 public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

@@ -20,7 +20,7 @@ class LyXFont;
 class Dimension;
 class MathArray;
 class MathAtom;
-class MathInset;
+class InsetMath;
 
 
 void mathed_char_dim(LyXFont const &, unsigned char c, Dimension & dim);
@@ -46,7 +46,7 @@ bool isFontName(std::string const & name);
 // converts single cell to string
 std::string asString(MathArray const & ar);
 // converts single inset to string
-std::string asString(MathInset const &);
+std::string asString(InsetMath const &);
 std::string asString(MathAtom const &);
 // converts string to single cell
 void asArray(std::string const & str, MathArray & ar);

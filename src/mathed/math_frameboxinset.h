@@ -16,10 +16,10 @@
 
 
 /// Extra nesting
-class MathFrameboxInset : public MathNestInset {
+class InsetMathFrameBox : public InsetMathNest {
 public:
 	///
-	MathFrameboxInset();
+	InsetMathFrameBox();
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

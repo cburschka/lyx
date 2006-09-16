@@ -20,14 +20,14 @@ class latexkeys;
 /** "normal" symbols that don't take limits and don't grow in displayed
  *  formulae.
  */
-class MathSymbolInset : public MathInset {
+class InsetMathSymbol : public InsetMath {
 public:
 	///
-	explicit MathSymbolInset(latexkeys const * l);
+	explicit InsetMathSymbol(latexkeys const * l);
 	///
-	explicit MathSymbolInset(char const * name);
+	explicit InsetMathSymbol(char const * name);
 	///
-	explicit MathSymbolInset(std::string const & name);
+	explicit InsetMathSymbol(std::string const & name);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -42,7 +42,7 @@ public:
 	/// do we take \limits or \nolimits?
 	bool takesLimits() const;
 	/// identifies SymbolInset as such
-	MathSymbolInset const * asSymbolInset() const { return this; }
+	InsetMathSymbol const * asSymbolInset() const { return this; }
 	/// the LaTeX name of the symbol (without the backslash)
 	std::string name() const;
 	/// request "external features"

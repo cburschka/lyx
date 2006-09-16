@@ -19,10 +19,10 @@
 class latexkeys;
 
 /// An inset for \scriptsize etc.
-class MathSizeInset : public MathNestInset {
+class InsetMathSize : public InsetMathNest {
 public:
 	///
-	explicit MathSizeInset(latexkeys const * l);
+	explicit InsetMathSize(latexkeys const * l);
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///

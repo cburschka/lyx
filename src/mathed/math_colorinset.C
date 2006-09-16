@@ -35,24 +35,24 @@ bool normalcolor(string const & color)
 } // namespace anon
 
 
-MathColorInset::MathColorInset(bool oldstyle, LColor_color const & color)
-	: MathNestInset(1), oldstyle_(oldstyle),
+InsetMathColor::InsetMathColor(bool oldstyle, LColor_color const & color)
+	: InsetMathNest(1), oldstyle_(oldstyle),
 	  color_(lcolor.getLaTeXName(color))
 {}
 
 
-MathColorInset::MathColorInset(bool oldstyle, string const & color)
-	: MathNestInset(1), oldstyle_(oldstyle), color_(color)
+InsetMathColor::InsetMathColor(bool oldstyle, string const & color)
+	: InsetMathNest(1), oldstyle_(oldstyle), color_(color)
 {}
 
 
-auto_ptr<InsetBase> MathColorInset::doClone() const
+auto_ptr<InsetBase> InsetMathColor::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathColorInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathColor(*this));
 }
 
 
-void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathColor::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
@@ -60,7 +60,7 @@ void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathColorInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 {
 	LColor_color origcol = pi.base.font.color();
 	pi.base.font.setColor(lcolor.getFromLaTeXName(color_));
@@ -71,15 +71,15 @@ void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathColorInset::validate(LaTeXFeatures & features) const
+void InsetMathColor::validate(LaTeXFeatures & features) const
 {
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 	if (!normalcolor(color_))
 		features.require("color");
 }
 
 
-void MathColorInset::write(WriteStream & os) const
+void InsetMathColor::write(WriteStream & os) const
 {
 	if (normalcolor(color_))
 		// reset to default color inside another color inset
@@ -91,13 +91,13 @@ void MathColorInset::write(WriteStream & os) const
 }
 
 
-void MathColorInset::normalize(NormalStream & os) const
+void InsetMathColor::normalize(NormalStream & os) const
 {
 	os << "[color " << color_ << ' ' << cell(0) << ']';
 }
 
 
-void MathColorInset::infoize(std::ostream & os) const
+void InsetMathColor::infoize(std::ostream & os) const
 {
 	os << "Color: " << color_;
 }

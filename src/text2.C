@@ -1083,7 +1083,7 @@ bool LyXText::cursorUp(LCursor & cur)
 		LCursor old = cur;
 		// Go to middle of previous row. 16 found to work OK;
 		// 12 = top/bottom margin of display math
-		int const margin = 3 * MathHullInset::displayMargin() / 2;
+		int const margin = 3 * InsetMathHull::displayMargin() / 2;
 		editXY(cur, x, y - par.rows()[row].ascent() - margin);
 		cur.clearSelection();
 
@@ -1131,7 +1131,7 @@ bool LyXText::cursorDown(LCursor & cur)
 		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
 		LCursor old = cur;
 		// To middle of next row
-		int const margin = 3 * MathHullInset::displayMargin() / 2;
+		int const margin = 3 * InsetMathHull::displayMargin() / 2;
 		editXY(cur, x, y + par.rows()[row].descent() + margin);
 		cur.clearSelection();
 

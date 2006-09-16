@@ -16,10 +16,10 @@
 
 
 /// Inset for AMSTeX's \boldsymbol
-class MathBoldsymbolInset : public MathNestInset {
+class InsetMathBoldSymbol : public InsetMathNest {
 public:
 	///
-	MathBoldsymbolInset();
+	InsetMathBoldSymbol();
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

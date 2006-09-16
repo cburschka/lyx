@@ -21,18 +21,18 @@ using std::string;
 using std::auto_ptr;
 
 
-MathFontInset::MathFontInset(latexkeys const * key)
-	: MathNestInset(1), key_(key)
+InsetMathFont::InsetMathFont(latexkeys const * key)
+	: InsetMathNest(1), key_(key)
 {}
 
 
-auto_ptr<InsetBase> MathFontInset::doClone() const
+auto_ptr<InsetBase> InsetMathFont::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathFontInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathFont(*this));
 }
 
 
-MathInset::mode_type MathFontInset::currentMode() const
+InsetMath::mode_type InsetMathFont::currentMode() const
 {
 	if (key_->extra == "mathmode")
 		return MATH_MODE;
@@ -42,7 +42,7 @@ MathInset::mode_type MathFontInset::currentMode() const
 }
 
 
-void MathFontInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, key_->name.c_str());
 	cell(0).metrics(mi, dim);
@@ -51,7 +51,7 @@ void MathFontInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathFontInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathFont::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, key_->name.c_str());
 	cell(0).draw(pi, x + 1, y);
@@ -60,27 +60,27 @@ void MathFontInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFontInset::metricsT(TextMetricsInfo const & mi, Dimension &) const
+void InsetMathFont::metricsT(TextMetricsInfo const & mi, Dimension &) const
 {
 	cell(0).metricsT(mi, dim_);
 }
 
 
-void MathFontInset::drawT(TextPainter & pain, int x, int y) const
+void InsetMathFont::drawT(TextPainter & pain, int x, int y) const
 {
 	cell(0).drawT(pain, x, y);
 }
 
 
-string MathFontInset::name() const
+string InsetMathFont::name() const
 {
 	return key_->name;
 }
 
 
-void MathFontInset::validate(LaTeXFeatures & features) const
+void InsetMathFont::validate(LaTeXFeatures & features) const
 {
-	MathNestInset::validate(features);
+	InsetMathNest::validate(features);
 	// Make sure amssymb is put in preamble if Blackboard Bold or
 	// Fraktur used:
 	if (key_->name == "mathfrak" || key_->name == "mathbb")
@@ -92,7 +92,7 @@ void MathFontInset::validate(LaTeXFeatures & features) const
 }
 
 
-void MathFontInset::infoize(std::ostream & os) const
+void InsetMathFont::infoize(std::ostream & os) const
 {
 	os << "Font: " << key_->name;
 }

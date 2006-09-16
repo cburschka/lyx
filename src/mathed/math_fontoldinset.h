@@ -18,10 +18,10 @@
 class latexkeys;
 
 /// Old-style font changes
-class MathFontOldInset : public MathNestInset {
+class InsetMathFontOld : public InsetMathNest {
 public:
 	///
-	explicit MathFontOldInset(latexkeys const * key);
+	explicit InsetMathFontOld(latexkeys const * key);
 	/// we are in text mode.
 	mode_type currentMode() const { return TEXT_MODE; }
 	/// we write extra braces in any case...

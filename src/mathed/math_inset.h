@@ -44,30 +44,30 @@ the math objects.
 
 Math insets do not know there parents, a cursor position or things
 like that. The are dumb object that are contained in other math insets
-(MathNestInsets, in fact) thus forming a tree. The root of this tree is
-always a MathHullInset, which provides an interface to the Outer World by
+(InsetMathNests, in fact) thus forming a tree. The root of this tree is
+always a InsetMathHull, which provides an interface to the Outer World by
 inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 */
 
 class OutputParams;
-class MathArrayInset;
-class MathAMSArrayInset;
-class MathBraceInset;
-class MathCharInset;
-class MathDelimInset;
-class MathFracInset;
-class MathFontInset;
-class MathGridInset;
-class MathHullInset;
-class MathMatrixInset;
-class MathNestInset;
-class MathParboxInset;
-class MathScriptInset;
-class MathStringInset;
-class MathSpaceInset;
-class MathSymbolInset;
-class MathUnknownInset;
+class InsetMathArray;
+class InsetMathAMSArray;
+class InsetMathBrace;
+class InsetMathChar;
+class InsetMathDelim;
+class InsetMathFrac;
+class InsetMathFont;
+class InsetMathGrid;
+class InsetMathHull;
+class InsetMathMatrix;
+class InsetMathNest;
+class InsetMathParbox;
+class InsetMathScript;
+class InsetMathString;
+class InsetMathSpace;
+class InsetMathSymbol;
+class InsetMathUnknown;
 
 class RefInset;
 
@@ -90,10 +90,10 @@ class TextMetricsInfo;
 class ReplaceData;
 
 
-class MathInset : public InsetBase {
+class InsetMath : public InsetBase {
 public:
 	/// identification as math inset
-	MathInset * asMathInset() { return this; }
+	InsetMath * asInsetMath() { return this; }
 	/// this is overridden in math text insets (i.e. mbox)
 	bool inMathed() const { return true; }
 
@@ -109,39 +109,39 @@ public:
 	virtual MathArray const & cell(idx_type) const;
 
 	/// identifies certain types of insets
-	virtual MathAMSArrayInset       * asAMSArrayInset()       { return 0; }
-	virtual MathAMSArrayInset const * asAMSArrayInset() const { return 0; }
-	virtual MathArrayInset          * asArrayInset()          { return 0; }
-	virtual MathArrayInset const    * asArrayInset() const    { return 0; }
-	virtual MathBraceInset const    * asBraceInset() const    { return 0; }
-	virtual MathCharInset const     * asCharInset() const     { return 0; }
-	virtual MathDelimInset          * asDelimInset()          { return 0; }
-	virtual MathDelimInset const    * asDelimInset() const    { return 0; }
-	virtual MathFracInset           * asFracInset()           { return 0; }
-	virtual MathFracInset const     * asFracInset() const     { return 0; }
-	virtual MathFontInset           * asFontInset()           { return 0; }
-	virtual MathFontInset const     * asFontInset() const     { return 0; }
-	virtual MathGridInset           * asGridInset()           { return 0; }
-	virtual MathGridInset const     * asGridInset() const     { return 0; }
-	virtual MathHullInset           * asHullInset()           { return 0; }
-	virtual MathHullInset const     * asHullInset() const     { return 0; }
+	virtual InsetMathAMSArray       * asAMSArrayInset()       { return 0; }
+	virtual InsetMathAMSArray const * asAMSArrayInset() const { return 0; }
+	virtual InsetMathArray          * asArrayInset()          { return 0; }
+	virtual InsetMathArray const    * asArrayInset() const    { return 0; }
+	virtual InsetMathBrace const    * asBraceInset() const    { return 0; }
+	virtual InsetMathChar const     * asCharInset() const     { return 0; }
+	virtual InsetMathDelim          * asDelimInset()          { return 0; }
+	virtual InsetMathDelim const    * asDelimInset() const    { return 0; }
+	virtual InsetMathFrac           * asFracInset()           { return 0; }
+	virtual InsetMathFrac const     * asFracInset() const     { return 0; }
+	virtual InsetMathFont           * asFontInset()           { return 0; }
+	virtual InsetMathFont const     * asFontInset() const     { return 0; }
+	virtual InsetMathGrid           * asGridInset()           { return 0; }
+	virtual InsetMathGrid const     * asGridInset() const     { return 0; }
+	virtual InsetMathHull           * asHullInset()           { return 0; }
+	virtual InsetMathHull const     * asHullInset() const     { return 0; }
 	virtual MathMacro               * asMacro()               { return 0; }
 	virtual MathMacro const         * asMacro() const         { return 0; }
 	virtual MathMacroTemplate       * asMacroTemplate()       { return 0; }
 	virtual MathMacroTemplate const * asMacroTemplate() const { return 0; }
-	virtual MathMatrixInset const   * asMatrixInset() const   { return 0; }
-	virtual MathNestInset           * asNestInset()           { return 0; }
-	virtual MathNestInset const     * asNestInset() const     { return 0; }
-	virtual MathParboxInset         * asParboxInset()         { return 0; }
-	virtual MathScriptInset         * asScriptInset()         { return 0; }
-	virtual MathScriptInset const   * asScriptInset() const   { return 0; }
-	virtual MathSpaceInset          * asSpaceInset()          { return 0; }
-	virtual MathSpaceInset const    * asSpaceInset() const    { return 0; }
-	virtual MathStringInset         * asStringInset()         { return 0; }
-	virtual MathStringInset const   * asStringInset() const   { return 0; }
-	virtual MathSymbolInset const   * asSymbolInset() const   { return 0; }
-	virtual MathUnknownInset        * asUnknownInset()        { return 0; }
-	virtual MathUnknownInset const  * asUnknownInset() const  { return 0; }
+	virtual InsetMathMatrix const   * asMatrixInset() const   { return 0; }
+	virtual InsetMathNest           * asNestInset()           { return 0; }
+	virtual InsetMathNest const     * asNestInset() const     { return 0; }
+	virtual InsetMathParbox         * asParboxInset()         { return 0; }
+	virtual InsetMathScript         * asScriptInset()         { return 0; }
+	virtual InsetMathScript const   * asScriptInset() const   { return 0; }
+	virtual InsetMathSpace          * asSpaceInset()          { return 0; }
+	virtual InsetMathSpace const    * asSpaceInset() const    { return 0; }
+	virtual InsetMathString         * asStringInset()         { return 0; }
+	virtual InsetMathString const   * asStringInset() const   { return 0; }
+	virtual InsetMathSymbol const   * asSymbolInset() const   { return 0; }
+	virtual InsetMathUnknown        * asUnknownInset()        { return 0; }
+	virtual InsetMathUnknown const  * asUnknownInset() const  { return 0; }
 	virtual RefInset                * asRefInset()            { return 0; }
 
 	/// identifies things that can get scripts

@@ -20,18 +20,18 @@ using std::max;
 using std::auto_ptr;
 
 
-MathBinomInset::MathBinomInset(bool choose)
+InsetMathBinom::InsetMathBinom(bool choose)
 	: choose_(choose)
 {}
 
 
-auto_ptr<InsetBase> MathBinomInset::doClone() const
+auto_ptr<InsetBase> InsetMathBinom::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathBinomInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathBinom(*this));
 }
 
 
-int MathBinomInset::dw() const
+int InsetMathBinom::dw() const
 {
 	int w = dim_.height() / 5;
 	if (w > 15)
@@ -42,7 +42,7 @@ int MathBinomInset::dw() const
 }
 
 
-void MathBinomInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -55,7 +55,7 @@ void MathBinomInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathBinomInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 {
 	int m = x + dim_.width() / 2;
 	ScriptChanger dummy(pi.base);
@@ -68,13 +68,13 @@ void MathBinomInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathBinomInset::extraBraces() const
+bool InsetMathBinom::extraBraces() const
 {
 	return choose_;
 }
 
 
-void MathBinomInset::write(WriteStream & os) const
+void InsetMathBinom::write(WriteStream & os) const
 {
 	if (choose_)
 		os << '{' << cell(0) << " \\choose " << cell(1) << '}';
@@ -83,7 +83,7 @@ void MathBinomInset::write(WriteStream & os) const
 }
 
 
-void MathBinomInset::normalize(NormalStream & os) const
+void InsetMathBinom::normalize(NormalStream & os) const
 {
 	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
 }

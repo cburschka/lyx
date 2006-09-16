@@ -20,10 +20,10 @@
  *
  * Full author contact details are available in file CREDITS.
  */
-class MathStackrelInset : public MathFracbaseInset {
+class InsetMathStackrel : public InsetMathFracBase {
 public:
 	///
-	MathStackrelInset();
+	InsetMathStackrel();
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

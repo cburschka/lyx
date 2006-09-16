@@ -26,7 +26,7 @@ class Point;
 class LyXFont;
 
 // these should go
-class MathUnknownInset;
+class InsetMathUnknown;
 class Encoding;
 
 
@@ -261,7 +261,7 @@ public:
 	/// are we currently typing the name of a macro?
 	bool inMacroMode() const;
 	/// get access to the macro we are currently typing
-	MathUnknownInset * activeMacro();
+	InsetMathUnknown * activeMacro();
 
 	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom

@@ -14,7 +14,7 @@
 
 
 /**
-Wrapper for MathInset * with copy-semantics
+Wrapper for InsetMath * with copy-semantics
 
 --
 
@@ -29,11 +29,11 @@ Jules
 --
 
 Ok: Implementing it thusly is not feasible since cursor movement gets
-hackish. We use MathAtom only as a wrapper around MathInset * with value
+hackish. We use MathAtom only as a wrapper around InsetMath * with value
 semantics.
 
-The MathAtom owns the MathInset * and is responsible for proper cloning and
-destruction. Every MathInset * should be put into a MathAtom after its
+The MathAtom owns the InsetMath * and is responsible for proper cloning and
+destruction. Every InsetMath * should be put into a MathAtom after its
 creation as soon as possible.
 
 Andre'
@@ -41,7 +41,7 @@ Andre'
 */
 
 class InsetBase;
-class MathInset;
+class InsetMath;
 
 class MathAtom {
 public:
@@ -57,17 +57,17 @@ public:
 	/// assignment invokes nucleus_->clone()
 	MathAtom & operator=(MathAtom const &);
 	/// access to the inset (checked with gprof)
-	MathInset       * nucleus()       { return nucleus_; }
-	MathInset const * nucleus() const { return nucleus_; }
+	InsetMath       * nucleus()       { return nucleus_; }
+	InsetMath const * nucleus() const { return nucleus_; }
 	/// access to the inset
-	MathInset const * operator->() const { return nucleus_; }
+	InsetMath const * operator->() const { return nucleus_; }
 
 	/// width cache. Not nice...
 	//mutable int width_;
 
 private:
 	///
-	MathInset * nucleus_;
+	InsetMath * nucleus_;
 };
 
 #endif

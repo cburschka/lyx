@@ -14,7 +14,7 @@
 
 #include "math_nestinset.h"
 
-class MathPhantomInset : public MathNestInset {
+class InsetMathPhantom : public InsetMathNest {
 public:
 	///
 	enum Kind {
@@ -23,7 +23,7 @@ public:
 		hphantom
 	};
 	///
-	explicit MathPhantomInset(Kind);
+	explicit InsetMathPhantom(Kind);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

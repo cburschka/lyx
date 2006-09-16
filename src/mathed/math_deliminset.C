@@ -51,40 +51,40 @@ string convertDelimToLatexName(string const & name)
 
 
 
-MathDelimInset::MathDelimInset(string const & l, string const & r)
-	: MathNestInset(1), left_(l), right_(r)
+InsetMathDelim::InsetMathDelim(string const & l, string const & r)
+	: InsetMathNest(1), left_(l), right_(r)
 {}
 
 
-MathDelimInset::MathDelimInset
+InsetMathDelim::InsetMathDelim
 		(string const & l, string const & r, MathArray const & ar)
-	: MathNestInset(1), left_(l), right_(r)
+	: InsetMathNest(1), left_(l), right_(r)
 {
 	cell(0) = ar;
 }
 
 
-auto_ptr<InsetBase> MathDelimInset::doClone() const
+auto_ptr<InsetBase> InsetMathDelim::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathDelimInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathDelim(*this));
 }
 
 
-void MathDelimInset::write(WriteStream & os) const
+void InsetMathDelim::write(WriteStream & os) const
 {
 	os << "\\left" << convertDelimToLatexName(left_) << cell(0)
 	   << "\\right" << convertDelimToLatexName(right_);
 }
 
 
-void MathDelimInset::normalize(NormalStream & os) const
+void InsetMathDelim::normalize(NormalStream & os) const
 {
 	os << "[delim " << convertDelimToLatexName(left_) << ' '
 	   << convertDelimToLatexName(right_) << ' ' << cell(0) << ']';
 }
 
 
-void MathDelimInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -104,7 +104,7 @@ void MathDelimInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathDelimInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathDelim::draw(PainterInfo & pi, int x, int y) const
 {
 	int const b = y - dim_.asc;
 	cell(0).draw(pi, x + dw_ + 4, y);
@@ -115,25 +115,25 @@ void MathDelimInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathDelimInset::isParenthesis() const
+bool InsetMathDelim::isParenthesis() const
 {
 	return left_ == "(" && right_ == ")";
 }
 
 
-bool MathDelimInset::isBrackets() const
+bool InsetMathDelim::isBrackets() const
 {
 	return left_ == "[" && right_ == "]";
 }
 
 
-bool MathDelimInset::isAbs() const
+bool InsetMathDelim::isAbs() const
 {
 	return left_ == "|" && right_ == "|";
 }
 
 
-void MathDelimInset::maple(MapleStream & os) const
+void InsetMathDelim::maple(MapleStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
@@ -145,7 +145,7 @@ void MathDelimInset::maple(MapleStream & os) const
 		os << left_ << cell(0) << right_;
 }
 
-void MathDelimInset::maxima(MaximaStream & os) const
+void InsetMathDelim::maxima(MaximaStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
@@ -158,7 +158,7 @@ void MathDelimInset::maxima(MaximaStream & os) const
 }
 
 
-void MathDelimInset::mathematica(MathematicaStream & os) const
+void InsetMathDelim::mathematica(MathematicaStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
@@ -171,14 +171,14 @@ void MathDelimInset::mathematica(MathematicaStream & os) const
 }
 
 
-void MathDelimInset::mathmlize(MathMLStream & os) const
+void InsetMathDelim::mathmlize(MathMLStream & os) const
 {
 	os << "<fenced open=\"" << left_ << "\" close=\""
 		<< right_ << "\">" << cell(0) << "</fenced>";
 }
 
 
-void MathDelimInset::octave(OctaveStream & os) const
+void InsetMathDelim::octave(OctaveStream & os) const
 {
 	if (isAbs())
 		os << "det(" << cell(0) << ')';

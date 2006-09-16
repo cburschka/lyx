@@ -298,9 +298,9 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 	}
 
 	// jump over collapsables if they are collapsed
-	// FIXME: the check for asMathInset() shouldn't be necessary
+	// FIXME: the check for asInsetMath() shouldn't be necessary
 	// but math insets do not return a sensible editable() state yet.
-	if (ignorecollapsed && nextInset() && (!nextInset()->asMathInset()
+	if (ignorecollapsed && nextInset() && (!nextInset()->asInsetMath()
 	    && nextInset()->editable() != InsetBase::HIGHLY_EDITABLE)) {
 		++top().pos();
 		return;

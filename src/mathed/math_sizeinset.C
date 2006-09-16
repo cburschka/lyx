@@ -22,18 +22,18 @@
 using std::auto_ptr;
 
 
-MathSizeInset::MathSizeInset(latexkeys const * l)
-	: MathNestInset(1), key_(l), style_(Styles(convert<int>(l->extra)))
+InsetMathSize::InsetMathSize(latexkeys const * l)
+	: InsetMathNest(1), key_(l), style_(Styles(convert<int>(l->extra)))
 {}
 
 
-auto_ptr<InsetBase> MathSizeInset::doClone() const
+auto_ptr<InsetBase> InsetMathSize::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathSizeInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathSize(*this));
 }
 
 
-void MathSizeInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathSize::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	StyleChanger dummy(mi.base, style_);
 	cell(0).metrics(mi, dim);
@@ -42,7 +42,7 @@ void MathSizeInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathSizeInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathSize::draw(PainterInfo & pi, int x, int y) const
 {
 	StyleChanger dummy(pi.base, style_);
 	cell(0).draw(pi, x + 1, y);
@@ -50,19 +50,19 @@ void MathSizeInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathSizeInset::write(WriteStream & os) const
+void InsetMathSize::write(WriteStream & os) const
 {
 	os << "{\\" << key_->name << ' ' << cell(0) << '}';
 }
 
 
-void MathSizeInset::normalize(NormalStream & os) const
+void InsetMathSize::normalize(NormalStream & os) const
 {
 	os << '[' << key_->name << ' ' << cell(0) << ']';
 }
 
 
-void MathSizeInset::infoize(std::ostream & os) const
+void InsetMathSize::infoize(std::ostream & os) const
 {
 	os << "Size: " << key_->name;
 }

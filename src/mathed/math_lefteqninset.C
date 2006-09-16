@@ -19,18 +19,18 @@ using std::string;
 using std::auto_ptr;
 
 
-MathLefteqnInset::MathLefteqnInset()
-	: MathNestInset(1)
+InsetMathLefteqn::InsetMathLefteqn()
+	: InsetMathNest(1)
 {}
 
 
-auto_ptr<InsetBase> MathLefteqnInset::doClone() const
+auto_ptr<InsetBase> InsetMathLefteqn::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathLefteqnInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathLefteqn(*this));
 }
 
 
-void MathLefteqnInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathLefteqn::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	dim.asc += 2;
@@ -41,20 +41,20 @@ void MathLefteqnInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathLefteqnInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathLefteqn::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 2, y);
 	drawMarkers(pi, x, y);
 }
 
 
-string MathLefteqnInset::name() const
+string InsetMathLefteqn::name() const
 {
 	return "lefteqn";
 }
 
 
-void MathLefteqnInset::infoize(std::ostream & os) const
+void InsetMathLefteqn::infoize(std::ostream & os) const
 {
 	os << "Lefteqn ";
 }

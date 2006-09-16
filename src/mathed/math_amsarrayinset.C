@@ -32,23 +32,23 @@ using std::auto_ptr;
 using lyx::support::bformat;
 
 
-MathAMSArrayInset::MathAMSArrayInset(string const & name, int m, int n)
-	: MathGridInset(m, n), name_(name)
+InsetMathAMSArray::InsetMathAMSArray(string const & name, int m, int n)
+	: InsetMathGrid(m, n), name_(name)
 {}
 
 
-MathAMSArrayInset::MathAMSArrayInset(string const & name)
-	: MathGridInset(1, 1), name_(name)
+InsetMathAMSArray::InsetMathAMSArray(string const & name)
+	: InsetMathGrid(1, 1), name_(name)
 {}
 
 
-auto_ptr<InsetBase> MathAMSArrayInset::doClone() const
+auto_ptr<InsetBase> InsetMathAMSArray::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathAMSArrayInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathAMSArray(*this));
 }
 
 
-char const * MathAMSArrayInset::name_left() const
+char const * InsetMathAMSArray::name_left() const
 {
 	if (name_ == "bmatrix")
 		return "[";
@@ -64,7 +64,7 @@ char const * MathAMSArrayInset::name_left() const
 }
 
 
-char const * MathAMSArrayInset::name_right() const
+char const * InsetMathAMSArray::name_right() const
 {
 	if (name_ == "bmatrix")
 		return "]";
@@ -80,27 +80,27 @@ char const * MathAMSArrayInset::name_right() const
 }
 
 
-void MathAMSArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
-	MathGridInset::metrics(mi, dim);
+	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 14;
 	dim_ = dim;
 }
 
 
-void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 {
 	int const yy = y - dim_.ascent();
 	// Drawing the deco after an ArrayChanger does not work
 	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), name_left());
 	mathed_draw_deco(pi, x + dim_.width() - 8, yy, 5, dim_.height(), name_right());
 	ArrayChanger dummy(pi.base);
-	MathGridInset::drawWithMargin(pi, x, y, 6, 8);
+	InsetMathGrid::drawWithMargin(pi, x, y, 6, 8);
 }
 
 
-bool MathAMSArrayInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool InsetMathAMSArray::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action) {
@@ -113,23 +113,23 @@ bool MathAMSArrayInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			flag.enabled(false);
 			return true;
 		}
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 	default:
-		return MathGridInset::getStatus(cur, cmd, flag);
+		return InsetMathGrid::getStatus(cur, cmd, flag);
 	}
 }
 
 
-void MathAMSArrayInset::write(WriteStream & os) const
+void InsetMathAMSArray::write(WriteStream & os) const
 {
 	os << "\\begin{" << name_ << '}';
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 	os << "\\end{" << name_ << '}';
 }
 
 
-void MathAMSArrayInset::infoize(std::ostream & os) const
+void InsetMathAMSArray::infoize(std::ostream & os) const
 {
 	string name = name_;
 	name[0] = lyx::support::uppercase(name[0]);
@@ -137,16 +137,16 @@ void MathAMSArrayInset::infoize(std::ostream & os) const
 }
 
 
-void MathAMSArrayInset::normalize(NormalStream & os) const
+void InsetMathAMSArray::normalize(NormalStream & os) const
 {
 	os << '[' << name_ << ' ';
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << ']';
 }
 
 
-void MathAMSArrayInset::validate(LaTeXFeatures & features) const
+void InsetMathAMSArray::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
-	MathGridInset::validate(features);
+	InsetMathGrid::validate(features);
 }

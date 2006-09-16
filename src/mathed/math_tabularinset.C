@@ -25,46 +25,46 @@ using std::string;
 using std::auto_ptr;
 
 
-MathTabularInset::MathTabularInset(string const & name, int m, int n)
-	: MathGridInset(m, n), name_(name)
+InsetMathTabular::InsetMathTabular(string const & name, int m, int n)
+	: InsetMathGrid(m, n), name_(name)
 {}
 
 
-MathTabularInset::MathTabularInset(string const & name, int m, int n,
+InsetMathTabular::InsetMathTabular(string const & name, int m, int n,
 		char valign, string const & halign)
-	: MathGridInset(m, n, valign, halign), name_(name)
+	: InsetMathGrid(m, n, valign, halign), name_(name)
 {}
 
 
-MathTabularInset::MathTabularInset(string const & name, char valign,
+InsetMathTabular::InsetMathTabular(string const & name, char valign,
 		string const & halign)
-	: MathGridInset(valign, halign), name_(name)
+	: InsetMathGrid(valign, halign), name_(name)
 {}
 
 
-auto_ptr<InsetBase> MathTabularInset::doClone() const
+auto_ptr<InsetBase> InsetMathTabular::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathTabularInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathTabular(*this));
 }
 
 
-void MathTabularInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
-	MathGridInset::metrics(mi, dim);
+	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
 	dim_ = dim;
 }
 
 
-void MathTabularInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathTabular::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
-	MathGridInset::drawWithMargin(pi, x, y, 4, 2);
+	InsetMathGrid::drawWithMargin(pi, x, y, 4, 2);
 }
 
 
-void MathTabularInset::write(WriteStream & os) const
+void InsetMathTabular::write(WriteStream & os) const
 {
 	if (os.fragile())
 		os << "\\protect";
@@ -74,7 +74,7 @@ void MathTabularInset::write(WriteStream & os) const
 		os << '[' << char(v_align_) << ']';
 	os << '{' << halign() << "}\n";
 
-	MathGridInset::write(os);
+	InsetMathGrid::write(os);
 
 	if (os.fragile())
 		os << "\\protect";
@@ -84,7 +84,7 @@ void MathTabularInset::write(WriteStream & os) const
 }
 
 
-void MathTabularInset::infoize(std::ostream & os) const
+void InsetMathTabular::infoize(std::ostream & os) const
 {
 	string name = name_;
 	name[0] = lyx::support::uppercase(name[0]);
@@ -92,17 +92,17 @@ void MathTabularInset::infoize(std::ostream & os) const
 }
 
 
-void MathTabularInset::normalize(NormalStream & os) const
+void InsetMathTabular::normalize(NormalStream & os) const
 {
 	os << '[' << name_ << ' ';
-	MathGridInset::normalize(os);
+	InsetMathGrid::normalize(os);
 	os << ']';
 }
 
 
-void MathTabularInset::maple(MapleStream & os) const
+void InsetMathTabular::maple(MapleStream & os) const
 {
 	os << "array(";
-	MathGridInset::maple(os);
+	InsetMathGrid::maple(os);
 	os << ')';
 }

@@ -11,22 +11,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-// X11 use a define called CursorShape, and we really want to use
-// that name our selves. Therefore we do something similar to what is done
-// in kde/fixx11h.h:
-namespace X {
-#ifdef CursorShape
-#ifndef FIXX11H_CursorShape
-#define FIXX11H_CursorShape
-int const XCursorShape = CursorShape;
-#undef CursorShape
-int const CursorShape = CursorShape;
-#endif
-#undef CursorShape
-#endif
-} // namespace X
-
-
 #ifndef BASE_WORKAREA_H
 #define BASE_WORKAREA_H
 

@@ -21,24 +21,24 @@ using std::string;
 using std::auto_ptr;
 
 
-MathStringInset::MathStringInset(string const & s)
+InsetMathString::InsetMathString(string const & s)
 	: str_(s)
 {}
 
 
-auto_ptr<InsetBase> MathStringInset::doClone() const
+auto_ptr<InsetBase> InsetMathString::doClone() const
 {
-	return auto_ptr<InsetBase>(new MathStringInset(*this));
+	return auto_ptr<InsetBase>(new InsetMathString(*this));
 }
 
 
-void MathStringInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathString::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, str_, dim);
 }
 
 
-void MathStringInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathString::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
         docstring dstr(str_.begin(), str_.end());
@@ -46,13 +46,13 @@ void MathStringInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathStringInset::normalize(NormalStream & os) const
+void InsetMathString::normalize(NormalStream & os) const
 {
 	os << "[string " << str_ << ' ' << "mathalpha" << ']';
 }
 
 
-void MathStringInset::maple(MapleStream & os) const
+void InsetMathString::maple(MapleStream & os) const
 {
 	if (/*code_ != LM_TC_VAR ||*/ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
@@ -66,13 +66,13 @@ void MathStringInset::maple(MapleStream & os) const
 }
 
 
-void MathStringInset::mathematica(MathematicaStream & os) const
+void InsetMathString::mathematica(MathematicaStream & os) const
 {
 	os << ' ' << str_ << ' ';
 }
 
 
-void MathStringInset::octave(OctaveStream & os) const
+void InsetMathString::octave(OctaveStream & os) const
 {
 	if (/*code_ != LM_TC_VAR ||*/ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
@@ -86,7 +86,7 @@ void MathStringInset::octave(OctaveStream & os) const
 }
 
 
-void MathStringInset::mathmlize(MathMLStream & os) const
+void InsetMathString::mathmlize(MathMLStream & os) const
 {
 /*
 	if (code_ == LM_TC_VAR)
@@ -101,7 +101,7 @@ void MathStringInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathStringInset::write(WriteStream & os) const
+void InsetMathString::write(WriteStream & os) const
 {
 	os << str_;
 }
