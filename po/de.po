@@ -83,7 +83,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2006-09-16 12:02+0100\n"
+"PO-Revision-Date: 2006-09-16 15:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -9258,7 +9258,7 @@ msgstr "Fortsetzungspunkte|F"
 
 #: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:267
 msgid "End of Sentence|E"
-msgstr "Satzendepunkt|p"
+msgstr "Satzendepunkt|S"
 
 #: lib/ui/classic.ui:252
 msgid "Single Quote|Q"
@@ -9818,7 +9818,7 @@ msgstr "TeX-Code|X"
 
 #: lib/ui/stdmenus.ui:268
 msgid "Ordinary Quote|Q"
-msgstr "Normales Anführungszeichen|A"
+msgstr "Normales Anführungszeichen|N"
 
 #: lib/ui/stdmenus.ui:269
 msgid "Single Quote|S"
@@ -9826,7 +9826,7 @@ msgstr "Einfaches Anführungszeichen|E"
 
 #: lib/ui/stdmenus.ui:271
 msgid "Phonetic Symbols|y"
-msgstr ""
+msgstr "Phonetische Symbole|P"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Aligned Environment"
@@ -9893,24 +9893,20 @@ msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Änderung akzeptieren|#a"
+msgstr "Änderung akzeptieren|a"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Änderung ablehnen|#a"
+msgstr "Änderung ablehnen|b"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
-msgstr "Alle Änderungen akzeptieren|a"
+msgstr "Alle Änderungen akzeptieren|k"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
-msgstr "Alle Änderungen ablehnen|b"
+msgstr "Alle Änderungen ablehnen|h"
 
 #: lib/ui/stdmenus.ui:430
 msgid "Thesaurus...|T"
