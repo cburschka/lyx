@@ -141,7 +141,7 @@ bool searchAllowed(BufferView * bv, string const & str)
 		Alert::error(_("Search error"), _("Search string is empty"));
 		return false;
 	}
-	return bv->available();
+	return bv->buffer();
 }
 
 
@@ -337,7 +337,7 @@ void replace(BufferView * bv, FuncRequest const & ev)
 
 bool findNextChange(BufferView * bv)
 {
-	if (!bv->available())
+	if (!bv->buffer())
 		return false;
 
 	DocIterator cur = bv->cursor();

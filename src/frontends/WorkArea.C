@@ -235,7 +235,7 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 	 * of the cursor. Note we cannot do this inside
 	 * dispatch() itself, because that's called recursively.
 	 */
-//	if (buffer_view_->available())
+//	if (buffer_view_->buffer())
 	toggleCursor();
 	
 	// uneeded "redraw()" call commented out for now.
@@ -343,7 +343,7 @@ void WorkArea::showCursor()
 	if (cursor_visible_)
 		return;
 
-	if (!buffer_view_->available())
+	if (!buffer_view_->buffer())
 		return;
 
 	CursorShape shape = BAR_SHAPE;

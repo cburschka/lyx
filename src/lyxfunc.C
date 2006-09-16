@@ -775,7 +775,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_CANCEL:
 			keyseq.reset();
 			meta_fake_bit = key_modifier::none;
-			if (view()->available())
+			if (view()->buffer())
 				// cancel any selection
 				dispatch(FuncRequest(LFUN_MARK_OFF));
 			setMessage(lyx::from_utf8(N_("Cancel")));
@@ -998,7 +998,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYX_QUIT:
-			if (view()->available()) {
+			if (view()->buffer()) {
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
@@ -1591,7 +1591,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 		}
 
-		if (view()->available()) {
+		if (view()->buffer()) {
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.
@@ -1690,7 +1690,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	string initpath = lyxrc.document_path;
 	string filename(name);
 
-	if (view()->available()) {
+	if (view()->buffer()) {
 		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (isDirWriteable(trypath))
@@ -1742,7 +1742,7 @@ void LyXFunc::open(string const & fname)
 {
 	string initpath = lyxrc.document_path;
 
-	if (view()->available()) {
+	if (view()->buffer()) {
 		string const trypath = owner->buffer()->filePath();
 		// If directory is writeable, use this as default.
 		if (isDirWriteable(trypath))
@@ -1819,7 +1819,7 @@ void LyXFunc::doImport(string const & argument)
 	if (filename.empty()) {
 		string initpath = lyxrc.document_path;
 
-		if (view()->available()) {
+		if (view()->buffer()) {
 			string const trypath = owner->buffer()->filePath();
 			// If directory is writeable, use this as default.
 			if (isDirWriteable(trypath))
@@ -1940,7 +1940,7 @@ string const LyXFunc::viewStatusMessage()
 	if (keyseq.length() > 0 && !keyseq.deleted())
 		return keyseq.printOptions();
 
-	if (!view()->available())
+	if (!view()->buffer())
 		return lyx::to_utf8(_("Welcome to LyX!"));
 
 	return view()->cursor().currentState();

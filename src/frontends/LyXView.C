@@ -273,7 +273,7 @@ void LyXView::autoSave()
 {
 	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
 
-	if (view()->available()) {
+	if (view()->buffer()) {
 		::autoSave(view());
 	}
 }
@@ -318,7 +318,7 @@ void LyXView::updateWindowTitle()
 	docstring maximize_title = lyx::from_ascii("LyX");
 	docstring minimize_title = lyx::from_ascii("LyX");
 
-	if (view()->available()) {
+	if (view()->buffer()) {
 		string const cur_title = buffer()->fileName();
 		if (!cur_title.empty()) {
 			maximize_title += lyx::from_ascii(": ") + makeDisplayPath(cur_title, 30);

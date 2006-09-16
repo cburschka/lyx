@@ -517,12 +517,6 @@ void BufferView::setCursorFromScrollbar()
 }
 
 
-bool BufferView::available() const
-{
-	return buffer_;
-}
-
-
 Change const BufferView::getCurrentChange()
 {
 	if (!buffer_->params().tracking_changes || !cursor_.selection())
@@ -1399,7 +1393,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		// Launch a file browser
 		string initpath = lyxrc.document_path;
 
-		if (available()) {
+		if (buffer_) {
 			string const trypath = buffer_->filePath();
 			// If directory is writeable, use this as default.
 			if (isDirWriteable(trypath))

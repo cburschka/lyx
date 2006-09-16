@@ -302,7 +302,7 @@ void autoSave(BufferView * bv)
 	// should probably be moved into BufferList (Lgb)
 	// Perfect target for a thread...
 {
-	if (!bv->available())
+	if (!bv->buffer())
 		return;
 
 	if (bv->buffer()->isBakClean() || bv->buffer()->isReadonly()) {
@@ -353,7 +353,7 @@ void newFile(BufferView * bv, string const & filename)
 // Insert ascii file (if filename is empty, prompt for one)
 void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
-	if (!bv->available())
+	if (!bv->buffer())
 		return;
 
 	// FIXME: We don't know the encoding of the file

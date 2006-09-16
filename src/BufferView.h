@@ -127,9 +127,6 @@ public:
 	/// return the Scrollbar Parameters
 	ScrollbarParameters const & scrollbarParameters() const;
 
-	/// FIXME
-	bool available() const;
-
 	/// Save the current position as bookmark i
 	void savePosition(unsigned int i);
 	/// Restore the position from bookmark i
