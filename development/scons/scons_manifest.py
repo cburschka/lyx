@@ -1392,7 +1392,6 @@ src_header_files = Split('''
     Bidi.h
     BranchList.h
     BufferView.h
-    BufferView_pimpl.h
     Bullet.h
     Chktex.h
     Color.h
@@ -1515,7 +1514,6 @@ src_pre_files = Split('''
     Bidi.C
     BranchList.C
     BufferView.C
-    BufferView_pimpl.C
     Bullet.C
     Chktex.C
     Color.C

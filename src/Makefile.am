@@ -72,8 +72,6 @@ lyx_SOURCES = \
 	Bidi.h \
 	BufferView.C \
 	BufferView.h \
-	BufferView_pimpl.C \
-	BufferView_pimpl.h \
 	Bullet.C \
 	Bullet.h \
 	BranchList.C \

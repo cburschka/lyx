@@ -23,7 +23,7 @@
  *
  * They are managed in LyXAction.C and handled in various
  * ::dispatch() functions, starting with LyXFunc.C:dispatch(),
- * BufferView_pimpl::dispatch(), LCursor::dispatch() and
+ * BufferView::dispatch(), LCursor::dispatch() and
  * Inset*::doDispatch();
  */
 enum kb_action {

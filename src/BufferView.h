@@ -15,6 +15,7 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "cursor.h"
 #include "metricsinfo.h"
 
 #include "frontends/LyXKeySym.h"
@@ -222,11 +223,61 @@ public:
 
 private:
 	///
-	class Pimpl;
+	bool multiParSel();
 	///
-	friend class BufferView::Pimpl;
+	int width_;
 	///
-	Pimpl * pimpl_;
+	int height_;
+	///
+	ScrollbarParameters scrollbarParameters_;
+
+	/// track changes for the document
+	void trackChanges();
+
+	///
+	ViewMetricsInfo metrics_info_;
+
+	///
+	LyXView * owner_;
+	///
+	Buffer * buffer_;
+
+	/// Estimated average par height for scrollbar
+	int wh_;
+	///
+	class Position {
+	public:
+		/// Filename
+		std::string filename;
+		/// Cursor paragraph Id
+		int par_id;
+		/// Cursor position
+		lyx::pos_type par_pos;
+		///
+		Position() : par_id(0), par_pos(0) {}
+		///
+		Position(std::string const & f, int id, lyx::pos_type pos)
+			: filename(f), par_id(id), par_pos(pos) {}
+	};
+	///
+	std::vector<Position> saved_positions;
+	///
+	void menuInsertLyXFile(std::string const & filen);
+
+	/// this is used to handle XSelection events in the right manner
+	struct {
+		CursorSlice cursor;
+		CursorSlice anchor;
+		bool set;
+	} xsel_cache_;
+	///
+	LCursor cursor_;
+	///
+	bool multiparsel_cache_;
+	///
+	lyx::pit_type anchor_ref_;
+	///
+	int offset_ref_;
 };
 
 #endif // BUFFERVIEW_H
