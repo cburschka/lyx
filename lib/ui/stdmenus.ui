@@ -6,6 +6,7 @@
 
 # author Jean-Marc Lasgouttes
 # author John Levon
+# author Michael Gerz
 
 # Full author contact details are available in file CREDITS.
 
@@ -267,6 +268,7 @@ Menuset
 		Item "Ordinary Quote|Q" "self-insert \""
 		Item "Single Quote|S" "quote-insert single"
 		Item "Menu Separator|M" "menu-separator-insert"
+		Item "Phonetic Symbols|y" "command-sequence math-mode on; math-insert \text\textipa ; char-forward ;"
 	End
 
 	Menu "insert_formatting"
@@ -387,8 +389,10 @@ Menuset
 	Menu "edit_change"
 		Item "Track Changes|T" "track-changes"
 		Item "Merge Changes...|M" "merge-changes"
-		Item "Accept All Changes|A" "accept-all-changes"
-		Item "Reject All Changes|R" "reject-all-changes"
+		Item "Accept Change|A" "accept-change"
+		Item "Reject Change|R" "reject-change"
+		Item "Accept All Changes|c" "accept-all-changes"
+		Item "Reject All Changes|e" "reject-all-changes"
 		Item "Show Changes in Output|S" "output-changes"
 	End
 
