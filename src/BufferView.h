@@ -199,8 +199,6 @@ public:
 	LCursor & cursor();
 	/// access to full cursor
 	LCursor const & cursor() const;
-	///
-	LyXText * text() const;
 	/// sets cursor and open all relevant collapsable insets.
 	void setCursor(DocIterator const &);
 	/// sets cursor; this is used when handling LFUN_MOUSE_PRESS.

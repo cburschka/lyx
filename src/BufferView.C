@@ -1208,12 +1208,6 @@ int BufferView::workHeight() const
 }
 
 
-LyXText * BufferView::text() const
-{
-	return buffer_ ? &buffer_->text() : 0;
-}
-
-
 void BufferView::setCursor(DocIterator const & dit)
 {
 	size_t const n = dit.depth();

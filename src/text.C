@@ -684,8 +684,11 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 
 int LyXText::rightMargin(Paragraph const & par) const
 {
+	// FIXME: the correct way is to only call rightMargin() only
+	// within the main LyXText. The following test is thus bogus.
+	LyXText const & text = bv()->buffer()->text();
 	// We do not want rightmargins on inner texts.
-	if (bv()->text() != this)
+	if (&text != this)
 		return 0;
 
 	BufferParams const & params = bv()->buffer()->params();
@@ -1079,8 +1082,12 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 	maxasc  += int(layoutasc  * 2 / (2 + pars_[pit].getDepth()));
 	maxdesc += int(layoutdesc * 2 / (2 + pars_[pit].getDepth()));
 
+	// FIXME: the correct way is to do the following is to move the 
+	// following code in another method specially tailored for the 
+	// main LyXText. The following test is thus bogus.
+	LyXText const & text = bv_owner->buffer()->text();
 	// Top and bottom margin of the document (only at top-level)
-	if (bv_owner->text() == this) {
+	if (&text == this) {
 		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars_.size()) &&
