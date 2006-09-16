@@ -51,7 +51,7 @@ bool Kernel::isBufferAvailable() const
 {
 	if (!lyxview_.view())
 		return false;
-	return lyxview_.view()->buffer();
+	return lyxview_.view()->buffer() != 0;
 }
 
 
