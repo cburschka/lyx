@@ -778,7 +778,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (view()->buffer())
 				// cancel any selection
 				dispatch(FuncRequest(LFUN_MARK_OFF));
-			setMessage(lyx::from_utf8(N_("Cancel")));
+			setMessage(_("Cancel"));
 			break;
 
 		case LFUN_META_PREFIX:
@@ -1026,7 +1026,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_HELP_OPEN: {
 			string const arg = argument;
 			if (arg.empty()) {
-				setErrorMessage(lyx::from_utf8(N_("Missing argument")));
+				setErrorMessage(_("Missing argument"));
 				break;
 			}
 			string const fname = i18nLibFileSearch("doc", arg, "lyx");
@@ -1283,7 +1283,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_CHILD_OPEN: {
 			string const filename =
 				makeAbsPath(argument, owner->buffer()->filePath());
-			setMessage(lyx::from_utf8(N_("Opening child document ")) +
+			// FIXME Should use bformat
+			setMessage(_("Opening child document ") +
 					 makeDisplayPath(filename) + lyx::from_ascii("..."));
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
@@ -1362,8 +1363,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string lyx_name;
 			string const x11_name = split(argument, lyx_name, ' ');
 			if (lyx_name.empty() || x11_name.empty()) {
-				setErrorMessage(lyx::from_utf8(N_("Syntax: set-color <lyx_name>"
-							" <x11_name>")));
+				setErrorMessage(_("Syntax: set-color <lyx_name>"
+							" <x11_name>"));
 				break;
 			}
 
@@ -1487,6 +1488,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			if (defaults.writeFile(defaults.fileName()))
+				// FIXME Should use bformat
 				setMessage(_("Document defaults saved in ")
 					   + makeDisplayPath(fname));
 			else
@@ -1616,7 +1618,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	if (!quitting)
 		// FIXME UNICODE: _() does not support anything but ascii.
 		// Do we need a lyx::to_ascii() method?
-		sendDispatchMessage(_(lyx::to_utf8(getMessage())), cmd);
+		sendDispatchMessage(getMessage(), cmd);
 }
 
 
@@ -1669,7 +1671,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		dispatch_msg += lyx::from_utf8('(' + rtrim(comname) + ')');
 	}
 
-	lyxerr[Debug::ACTION] << "verbose dispatch msg " 
+	lyxerr[Debug::ACTION] << "verbose dispatch msg "
 		<< lyx::to_utf8(dispatch_msg) << endl;
 	if (!dispatch_msg.empty())
 		owner->message(dispatch_msg);
