@@ -80,10 +80,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.4.0\n"
+"Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-13 15:17+0200\n"
-"PO-Revision-Date: 2006-08-13 21:47+0100\n"
+"POT-Creation-Date: 2006-09-16 11:55+0200\n"
+"PO-Revision-Date: 2006-09-16 12:02+0100\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -9916,11 +9916,11 @@ msgstr "Dokument speichern"
 msgid "Print document"
 msgstr "Dokument drucken"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1123
+#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:1125
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1134
+#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:1136
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -10219,21 +10219,21 @@ msgstr "Parsen"
 msgid "Formatting document..."
 msgstr "Formatieren des Dokuments..."
 
-#: src/BufferView_pimpl.C:769
+#: src/BufferView_pimpl.C:771
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Lesezeichen %1$d gespeichert"
 
-#: src/BufferView_pimpl.C:802
+#: src/BufferView_pimpl.C:804
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Zu Lesezeichen %1$d gewechselt"
 
-#: src/BufferView_pimpl.C:862
+#: src/BufferView_pimpl.C:864
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView_pimpl.C:864 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:65
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
@@ -10242,82 +10242,82 @@ msgstr "Wählen Sie das einzufügende LyX-Dokument"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView_pimpl.C:866 src/lyxfunc.C:1751 src/lyxfunc.C:1828
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1751 src/lyxfunc.C:1828
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView_pimpl.C:871 src/lyx_cb.C:142 src/lyxfunc.C:1717
+#: src/BufferView_pimpl.C:873 src/lyx_cb.C:142 src/lyxfunc.C:1717
 #: src/lyxfunc.C:1756
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView_pimpl.C:881 src/lyxfunc.C:1766 src/lyxfunc.C:1846
+#: src/BufferView_pimpl.C:883 src/lyxfunc.C:1766 src/lyxfunc.C:1846
 #: src/lyxfunc.C:1860 src/lyxfunc.C:1876
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView_pimpl.C:891
+#: src/BufferView_pimpl.C:893
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView_pimpl.C:899
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:903
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView_pimpl.C:904
+#: src/BufferView_pimpl.C:906
 msgid "Document insertion"
 msgstr "Dokument-Einfügung"
 
-#: src/BufferView_pimpl.C:1126
+#: src/BufferView_pimpl.C:1128
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView_pimpl.C:1137
+#: src/BufferView_pimpl.C:1139
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView_pimpl.C:1263
+#: src/BufferView_pimpl.C:1265
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1272
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView_pimpl.C:1277
+#: src/BufferView_pimpl.C:1279
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView_pimpl.C:1280
+#: src/BufferView_pimpl.C:1282
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView_pimpl.C:1326
+#: src/BufferView_pimpl.C:1328
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView_pimpl.C:1329
+#: src/BufferView_pimpl.C:1331
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView_pimpl.C:1334
+#: src/BufferView_pimpl.C:1336
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView_pimpl.C:1336
+#: src/BufferView_pimpl.C:1338
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView_pimpl.C:1339
+#: src/BufferView_pimpl.C:1341
 msgid "Count words"
 msgstr "Wörter zählen"
 
@@ -11624,14 +11624,13 @@ msgid "User files|#U#u"
 msgstr "Benutzerdateien|#B#b"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Nichts mehr zu wiederholen"
+msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Das Rechtschreibprogramm ist fehlgeschlagen.\n"
+msgstr "Das Skript `%s' ist fehlgeschlagen."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
