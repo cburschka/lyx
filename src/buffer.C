@@ -55,7 +55,7 @@
 #include "insets/insetinclude.h"
 #include "insets/insettext.h"
 
-#include "mathed/MatheMacroTemplate.h"
+#include "mathed/MathMacroTemplate.h"
 #include "mathed/MathMacroTable.h"
 #include "mathed/MathSupport.h"
 

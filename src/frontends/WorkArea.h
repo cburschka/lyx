@@ -22,9 +22,13 @@
 
 #include <boost/signals/trackable.hpp>
 
+// FIXME: defined in X.h, spuriously pulled in by Qt 3 headers
+#undef CursorShape
+
 class BufferView;
 class FuncRequest;
 class LyXView;
+
 
 namespace lyx {
 namespace frontend {

@@ -39,6 +39,7 @@ following hack as starting point to write some macros:
 #include <config.h>
 
 #include "MathParser.h"
+
 #include "InsetMathArray.h"
 #include "InsetMathBig.h"
 #include "InsetMathBrace.h"
@@ -47,20 +48,18 @@ following hack as starting point to write some macros:
 #include "InsetMathComment.h"
 #include "InsetMathDelim.h"
 #include "InsetMathEnv.h"
-#include "MathFactory.h"
 #include "InsetMathKern.h"
 #include "InsetMathMacro.h"
-#include "MathMacroArgument.h"
-#include "MathMacroTemplate.h"
 #include "InsetMathPar.h"
+#include "InsetMathRef.h"
 #include "InsetMathRoot.h"
 #include "InsetMathScript.h"
 #include "InsetMathSqrt.h"
-#include "MathSupport.h"
 #include "InsetMathTabular.h"
-
-//#include "insets/insetref.h"
-#include "InsetMathRef.h"
+#include "MathMacroTemplate.h"
+#include "MathFactory.h"
+#include "MathMacroArgument.h"
+#include "MathSupport.h"
 
 #include "lyxlex.h"
 #include "debug.h"
