@@ -28,6 +28,8 @@
 #include "funcrequest.h"
 #include "LColor.h"
 #include "WorkArea.h"
+#include "Gui.h"
+#include "Selection.h"
 
 using boost::shared_ptr;
 

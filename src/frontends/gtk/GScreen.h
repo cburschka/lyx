@@ -16,6 +16,9 @@
 
 #include <gtkmm.h>
 
+// FIXME: defined in X.h, spuriously pulled in by some gui headers
+#undef CursorShape
+
 namespace lyx {
 namespace frontend {
 

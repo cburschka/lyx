@@ -22,6 +22,8 @@
 #include "funcrequest.h"
 #include "LColor.h"
 #include "support/os.h"
+#include "frontends/Gui.h"
+#include "frontends/Selection.h"
 
 #include <qapplication.h>
 #include <qclipboard.h>
@@ -111,7 +113,7 @@ bool lyxX11EventFilter(XEvent * xev)
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
 		if (wa_ptr) {
-			lyx::docstring const sel = wa_ptr->view().requestSelection();
+			lyx::docstring const sel = wa_ptr->view().view()->requestSelection();
 			if (!sel.empty())
 				wa_ptr->view().gui().selection().put(sel);
 		}

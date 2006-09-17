@@ -21,6 +21,9 @@
 
 #include <X11/Xft/Xft.h>
 
+// FIXME: defined in X.h, spuriously pulled in by some gui headers
+#undef CursorShape
+
 class LColor_color;
 class LyXView;
 

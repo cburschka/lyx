@@ -32,16 +32,18 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
-#include "frontends/WorkArea.h"
 
 #include "insets/insettext.h"
 
 #include <algorithm>
 
+// FIXME: defined in X.h, spuriously pulled in by some gui headers
+#undef CursorShape
+
 namespace lyx {
 namespace frontend {
 
-using lyx::frontend::CursorShape;
+	//using lyx::frontend::CursorShape;
 
 GScreen::GScreen(GWorkArea & o)
 	: owner_(o)
