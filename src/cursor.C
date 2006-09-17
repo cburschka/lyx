@@ -493,7 +493,6 @@ void LCursor::clearSelection()
 	selection() = false;
 	mark() = false;
 	resetAnchor();
-	bv().unsetXSel();
 }
 
 

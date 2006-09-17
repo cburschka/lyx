@@ -184,9 +184,6 @@ public:
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 
-	/// clear the X selection
-	void unsetXSel();
-
 	/// access to offset
 	int offset_ref() const;
 	/// access to anchor

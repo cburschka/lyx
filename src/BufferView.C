@@ -157,12 +157,6 @@ BufferView::~BufferView()
 }
 
 
-void BufferView::unsetXSel()
-{
-	xsel_cache_.set = false;
-}
-
-
 Buffer * BufferView::buffer() const
 {
 	return buffer_;
