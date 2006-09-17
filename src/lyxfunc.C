@@ -1611,7 +1611,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				view()->buffer()->markDirty();
 
 			if (view()->cursor().inTexted()) {
-				view()->owner()->updateLayoutChoice();
+				owner->updateLayoutChoice();
 			}
 		}
 	}
