@@ -1,0 +1,39 @@
+// -*- C++ -*-
+/**
+ * \file InsetMathOverset.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef MATH_OVERSETINSET_H
+#define MATH_OVERSETINSET_H
+
+
+#include "InsetMathFracBase.h"
+
+/// Inset for overset
+class InsetMathOverset : public InsetMathFracBase {
+public:
+	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	bool idxFirst(LCursor &) const;
+	///
+	bool idxLast(LCursor &) const;
+	///
+	void write(WriteStream & os) const;
+	///
+	void normalize(NormalStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const;
+};
+
+#endif

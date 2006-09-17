@@ -18,8 +18,9 @@
 #include "lyxrow.h"
 #include "paragraph.h"
 
-#include "mathed/math_data.h"
-#include "mathed/math_inset.h"
+#include "mathed/MathData.h"
+#include "mathed/InsetMath.h"
+
 #include "insets/insettabular.h"
 
 #include <boost/assert.hpp>

@@ -1,0 +1,190 @@
+/**
+ * \file InsetMathFrac.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "InsetMathFrac.h"
+#include "MathData.h"
+#include "MathMLStream.h"
+#include "TextPainter.h"
+#include "LaTeXFeatures.h"
+#include "LColor.h"
+#include "frontends/Painter.h"
+
+
+using std::string;
+using std::max;
+using std::auto_ptr;
+
+
+InsetMathFrac::InsetMathFrac(Kind kind)
+	: kind_(kind)
+{}
+
+
+auto_ptr<InsetBase> InsetMathFrac::doClone() const
+{
+	return auto_ptr<InsetBase>(new InsetMathFrac(*this));
+}
+
+
+InsetMathFrac * InsetMathFrac::asFracInset()
+{
+	return kind_ == ATOP ? 0 : this;
+}
+
+
+InsetMathFrac const * InsetMathFrac::asFracInset() const
+{
+	return kind_ == ATOP ? 0 : this;
+}
+
+
+void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	FracChanger dummy(mi.base);
+	cell(0).metrics(mi);
+	cell(1).metrics(mi);
+	if (kind_ == NICEFRAC) {
+		dim.wid =  cell(0).width() + cell(1).width() + 5;
+		dim.asc = cell(0).height() + 5;
+		dim.des = cell(1).height() - 5;
+	} else {
+		dim.wid = max(cell(0).width(), cell(1).width()) + 2;
+		dim.asc = cell(0).height() + 2 + 5;
+		dim.des = cell(1).height() + 2 - 5;
+	}
+	metricsMarkers(dim);
+	dim_ = dim;
+}
+
+
+void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
+{
+	setPosCache(pi, x, y);
+	int m = x + dim_.wid / 2;
+	FracChanger dummy(pi.base);
+	if (kind_ == NICEFRAC) {
+		cell(0).draw(pi, x + 2, 
+				y - cell(0).descent() - 5);
+		cell(1).draw(pi, x + cell(0).width() + 5,
+				y + cell(1).ascent() / 2);
+		pi.pain.line(x + cell(0).width(), 
+				y + dim_.des - 2, 
+				x + cell(0).width() + 5, 
+				y - dim_.asc + 2, LColor::math);
+	} else {
+		cell(0).draw(pi, m - cell(0).width() / 2, 
+				y - cell(0).descent() - 2 - 5);
+		cell(1).draw(pi, m - cell(1).width() / 2,
+				y + cell(1).ascent()  + 2 - 5);
+	}
+	if (kind_ == FRAC || kind_ == OVER)
+		pi.pain.line(x + 1, y - 5, 
+				x + dim_.wid - 2, y - 5, LColor::math);
+	drawMarkers(pi, x, y);
+}
+
+
+void InsetMathFrac::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+{
+	cell(0).metricsT(mi, dim);
+	cell(1).metricsT(mi, dim);
+	dim.wid = max(cell(0).width(), cell(1).width());
+	dim.asc = cell(0).height() + 1;
+	dim.des = cell(1).height();
+	//dim = dim_;
+}
+
+
+void InsetMathFrac::drawT(TextPainter & pain, int x, int y) const
+{
+	int m = x + dim_.width() / 2;
+	cell(0).drawT(pain, m - cell(0).width() / 2, y - cell(0).descent() - 1);
+	cell(1).drawT(pain, m - cell(1).width() / 2, y + cell(1).ascent());
+	// ASCII art: ignore niceties
+	if (kind_ == FRAC || kind_ == OVER || kind_ == NICEFRAC)
+		pain.horizontalLine(x, y, dim_.width());
+}
+
+
+void InsetMathFrac::write(WriteStream & os) const
+{
+	switch (kind_) {
+	case ATOP:
+		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
+		break;
+	case OVER:
+		// \\over is only for compatibility, normalize this to \\frac
+		os << "\\frac{" << cell(0) << "}{" << cell(1) << '}';
+		break;
+	case FRAC:
+	case NICEFRAC:
+		InsetMathNest::write(os);
+		break;
+	}
+}
+
+
+string InsetMathFrac::name() const
+{
+	switch (kind_) {
+	case FRAC:
+		return "frac";
+	case OVER:
+		return "over";
+	case NICEFRAC:
+		return "nicefrac";
+	case ATOP:
+		return "atop";
+	}
+	// shut up stupid compiler
+	return string();
+}
+
+
+bool InsetMathFrac::extraBraces() const
+{
+	return kind_ == ATOP || kind_ == OVER;
+}
+
+
+void InsetMathFrac::maple(MapleStream & os) const
+{
+	os << '(' << cell(0) << ")/(" << cell(1) << ')';
+}
+
+
+void InsetMathFrac::mathematica(MathematicaStream & os) const
+{
+	os << '(' << cell(0) << ")/(" << cell(1) << ')';
+}
+
+
+void InsetMathFrac::octave(OctaveStream & os) const
+{
+	os << '(' << cell(0) << ")/(" << cell(1) << ')';
+}
+
+
+void InsetMathFrac::mathmlize(MathMLStream & os) const
+{
+	os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
+}
+
+
+void InsetMathFrac::validate(LaTeXFeatures & features) const
+{
+	if (kind_ == NICEFRAC)
+		features.require("nicefrac");
+	InsetMathNest::validate(features);
+}
+

@@ -40,8 +40,6 @@
 #include "mover.h"
 #include "ToolbarBackend.h"
 
-#include "mathed/math_inset.h"
-
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"

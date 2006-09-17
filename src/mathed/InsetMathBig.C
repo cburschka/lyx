@@ -1,0 +1,120 @@
+/**
+ * \file InsetMathBig.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "InsetMathBig.h"
+#include "MathSupport.h"
+#include "MathMLStream.h"
+#include "MathStream.h"
+
+#include "support/lstrings.h"
+
+
+using std::string;
+using std::auto_ptr;
+
+
+InsetMathBig::InsetMathBig(string const & name, string const & delim)
+	: name_(name), delim_(delim)
+{}
+
+
+string InsetMathBig::name() const
+{
+	return name_;
+}
+
+
+auto_ptr<InsetBase> InsetMathBig::doClone() const
+{
+	return auto_ptr<InsetBase>(new InsetMathBig(*this));
+}
+
+
+InsetMathBig::size_type InsetMathBig::size() const
+{
+	// order: big Big bigg Bigg biggg Biggg
+	//        0   1   2    3    4     5
+	return name_[0] == 'B' ?
+		2 * (name_.size() - 4) + 1:
+		2 * (name_.size() - 4);
+}
+
+
+double InsetMathBig::increase() const
+{
+	// The formula used in amsmath.sty is
+	// 1.2 * (1.0 + size() * 0.5) - 1.0.
+	// We use a smaller step and a bigger offset because our base size
+	// is different.
+	return (size() + 1) * 0.3;
+}
+
+
+void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	double const h = mathed_char_ascent(mi.base.font, 'I');
+	double const f = increase();
+	dim_.wid = 6;
+	dim_.asc = int(h + f * h);
+	dim_.des = int(f * h);
+	dim = dim_;
+}
+
+
+void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
+{
+	// mathed_draw_deco does not use the leading backslash, so remove it.
+	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
+	// would treat it as |.
+	string const delim = (delim_ == "\\|") ?
+		"Vert" :
+		lyx::support::ltrim(delim_, "\\");
+	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
+	                 delim);
+	setPosCache(pi, x, y);
+}
+
+
+void InsetMathBig::write(WriteStream & os) const
+{
+	os << '\\' << name_ << ' ' << delim_;
+	if (delim_[0] == '\\')
+		os.pendingSpace(true);
+}
+
+
+void InsetMathBig::normalize(NormalStream & os) const
+{
+	os << '[' << name_ << ' ' <<  delim_ << ']';
+}
+
+
+void InsetMathBig::infoize2(std::ostream & os) const
+{
+	os << name_;
+}
+
+
+bool InsetMathBig::isBigInsetDelim(string const & delim)
+{
+	// mathed_draw_deco must handle these
+	static char const * const delimiters[] = {
+		"(", ")", "\\{", "\\}", "\\lbrace", "\\rbrace", "[", "]",
+		"|", "/", "\\|", "\\vert", "\\Vert", "'", "\\backslash",
+		"\\langle", "\\lceil", "\\lfloor",
+		"\\rangle", "\\rceil", "\\rfloor",
+		"\\downarrow", "\\Downarrow",
+		"\\uparrow", "\\Uparrow",
+		"\\updownarrow", "\\Updownarrow", ""
+	};
+	return (lyx::support::findToken(delimiters, delim) >= 0);
+}

@@ -35,11 +35,11 @@
 #include "insets/insettabular.h"
 #include "insets/insettext.h"
 
-#include "mathed/math_data.h"
-#include "mathed/math_inset.h"
-#include "mathed/math_scriptinset.h"
-#include "mathed/math_macrotable.h"
-#include "mathed/math_parser.h"
+#include "mathed/MathData.h"
+#include "mathed/InsetMath.h"
+#include "mathed/InsetMathScript.h"
+#include "mathed/MathMacroTable.h"
+#include "mathed/MathParser.h"
 
 #include "support/limited_stack.h"
 
@@ -569,14 +569,14 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 //
 ///////////////////////////////////////////////////////////////////
 
-#include "mathed/math_charinset.h"
-#include "mathed/math_factory.h"
-#include "mathed/math_gridinset.h"
-#include "mathed/math_macroarg.h"
-#include "mathed/math_mathmlstream.h"
-#include "mathed/math_scriptinset.h"
-#include "mathed/math_support.h"
-#include "mathed/math_unknowninset.h"
+#include "mathed/InsetMathChar.h"
+#include "mathed/MathFactory.h"
+#include "mathed/InsetMathGrid.h"
+#include "mathed/MathMacroArgument.h"
+#include "mathed/MathMLStream.h"
+#include "mathed/InsetMathScript.h"
+#include "mathed/MathSupport.h"
+#include "mathed/InsetMathUnknown.h"
 
 //#define FILEDEBUG 1
 

@@ -18,8 +18,8 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 
-#include "mathed/math_inset.h"
-#include "mathed/math_data.h"
+#include "mathed/InsetMath.h"
+#include "mathed/MathData.h"
 
 #include <boost/assert.hpp>
 

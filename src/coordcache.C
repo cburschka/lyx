@@ -14,7 +14,6 @@
 
 #include "lyxtext.h"
 
-#include "mathed/math_data.h"
 #include "insets/insetbase.h"
 
 #include <boost/assert.hpp>

@@ -51,7 +51,7 @@
 
 #include "insets/insetenv.h"
 
-#include "mathed/math_hullinset.h"
+#include "mathed/InsetMathHull.h"
 
 #include "support/textutils.h"
 

@@ -14,7 +14,7 @@
 #include "LColor.h"
 #include "metricsinfo.h"
 
-#include "mathed/math_support.h"
+#include "mathed/MathSupport.h"
 
 #include "frontends/Painter.h"
 
@@ -113,12 +113,14 @@ ArrayChanger::ArrayChanger(MetricsBase & mb)
 {}
 
 
+
 ShapeChanger::ShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape)
 	: Changer<LyXFont, LyXFont::FONT_SHAPE>(font)
 {
 	save_ = orig_.shape();
 	orig_.setShape(shape);
 }
+
 
 ShapeChanger::~ShapeChanger()
 {

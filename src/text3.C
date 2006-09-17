@@ -65,8 +65,8 @@
 #include "support/convert.h"
 #include "support/lyxtime.h"
 
-#include "mathed/math_hullinset.h"
-#include "mathed/math_macrotemplate.h"
+#include "mathed/InsetMathHull.h"
+#include "mathed/MathMacroTemplate.h"
 
 #include <boost/current_function.hpp>
 

@@ -39,9 +39,9 @@
 #include "insets/insetcharstyle.h"
 #include "insets/insettabular.h"
 
-#include "mathed/math_data.h"
-#include "mathed/math_inset.h"
-#include "mathed/math_support.h"
+#include "mathed/MathData.h"
+#include "mathed/InsetMath.h"
+#include "mathed/MathSupport.h"
 
 #include "support/lstrings.h"
 

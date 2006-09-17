@@ -53,8 +53,8 @@
 #include "insets/insetvspace.h"
 #include "insets/insetwrap.h"
 
-#include "mathed/math_macrotemplate.h"
-#include "mathed/math_hullinset.h"
+#include "mathed/MathMacroTemplate.h"
+#include "mathed/InsetMathHull.h"
 
 #include "support/lstrings.h"
 

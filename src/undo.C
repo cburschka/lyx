@@ -24,7 +24,7 @@
 #include "paragraph.h"
 #include "ParagraphList.h"
 
-#include "mathed/math_support.h"
+#include "mathed/MathSupport.h"
 #include "insets/inset.h"
 
 #include <algorithm>
