@@ -108,6 +108,8 @@ private:
 	void doImport(std::string const &);
 	///
 	void closeBuffer();
+	///
+	bool ensureBufferClean(BufferView * bv);
 };
 
 #endif

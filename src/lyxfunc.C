@@ -651,9 +651,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 }
 
 
-namespace {
-
-bool ensureBufferClean(BufferView * bv)
+bool LyXFunc::ensureBufferClean(BufferView * bv)
 {
 	Buffer & buf = *bv->buffer();
 	if (buf.isClean())
@@ -668,11 +666,13 @@ bool ensureBufferClean(BufferView * bv)
 				      _("&Cancel"));
 
 	if (ret == 0)
-		bv->owner()->dispatch(FuncRequest(LFUN_BUFFER_WRITE));
+		dispatch(FuncRequest(LFUN_BUFFER_WRITE));
 
 	return buf.isClean();
 }
 
+
+namespace {
 
 void showPrintError(string const & name)
 {
