@@ -79,13 +79,16 @@ bool Application::x11EventFilter(XEvent * xev)
 	switch (xev->type) {
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
-		if (buffer_view_)
-			buffer_view_->selectionRequested();
+		if (buffer_view_) {
+			lyx::docstring const sel = buffer_view_->requestSelection();
+			if (!sel.empty())
+				gui_.selection().put(sel);
+		}
 		break;
 	case SelectionClear:
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
 		if (buffer_view_)
-			buffer_view_->selectionLost();
+			buffer_view_->clearSelection();
 		break;
 	}
 	return false;

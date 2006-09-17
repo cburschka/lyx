@@ -174,9 +174,9 @@ public:
 	bool dispatch(FuncRequest const & argument);
 
 	///
-	void selectionRequested();
+	lyx::docstring const requestSelection();
 	///
-	void selectionLost();
+	void clearSelection();
 
 	///
 	void workAreaResize(int width, int height);

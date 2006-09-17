@@ -1014,18 +1014,16 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 }
 
 
-void BufferView::selectionRequested()
+docstring const BufferView::requestSelection()
 {
-	static docstring sel;
-
 	if (!buffer_)
-		return;
+		return docstring();
 
 	LCursor & cur = cursor_;
 
 	if (!cur.selection()) {
 		xsel_cache_.set = false;
-		return;
+		return docstring();
 	}
 
 	if (!xsel_cache_.set ||
@@ -1035,14 +1033,13 @@ void BufferView::selectionRequested()
 		xsel_cache_.cursor = cur.top();
 		xsel_cache_.anchor = cur.anchor_.top();
 		xsel_cache_.set = cur.selection();
-		sel = cur.selectionAsString(false);
-		if (!sel.empty())
-			owner_->gui().selection().put(sel);
+		return cur.selectionAsString(false);
 	}
+	return docstring();
 }
 
 
-void BufferView::selectionLost()
+void BufferView::clearSelection()
 {
 	if (buffer_) {
 		cursor_.clearSelection();
