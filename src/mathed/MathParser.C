@@ -51,7 +51,7 @@ following hack as starting point to write some macros:
 #include "InsetMathKern.h"
 #include "InsetMathMacro.h"
 #include "MathMacroArgument.h"
-#include "MatheMacroTemplate.h"
+#include "MathMacroTemplate.h"
 #include "InsetMathPar.h"
 #include "InsetMathRoot.h"
 #include "InsetMathScript.h"

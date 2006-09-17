@@ -33,7 +33,7 @@
 #include "InsetMathMacro.h"
 #include "MathMacroArgument.h"
 #include "MathMacroTable.h"
-#include "MatheMacroTemplate.h"
+#include "MathMacroTemplate.h"
 #include "InsetMathMakebox.h"
 #include "InsetMathOverset.h"
 #include "MathParser.h"

@@ -13,7 +13,7 @@
 
 #include "InsetFormulaMacro.h"
 #include "MathMacroTable.h"
-#include "MatheMacroTemplate.h"
+#include "MathMacroTemplate.h"
 #include "MathMLStream.h"
 
 #include "BufferView.h"
