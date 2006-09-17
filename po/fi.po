@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-09 13:01+0200\n"
+"POT-Creation-Date: 2006-09-17 22:34+0200\n"
 "PO-Revision-Date: 2006-07-03 19:47+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -135,12 +135,12 @@ msgstr "Mahdolliset viitteet"
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
 #: lib/layouts/g-brief2.layout:56 lib/layouts/scrlettr.layout:117
 #: lib/layouts/scrlttr2.layout:145 lib/layouts/agu_stdtitle.inc:184
-#: src/frontends/gtk/GDocument.C:351
+#: src/frontends/gtk/GDocument.C:354
 msgid "Name"
 msgstr "Nimi"
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:67
-#: src/frontends/gtk/GDocument.C:352 src/frontends/qt4/QBranches.C:44
+#: src/frontends/gtk/GDocument.C:355 src/frontends/qt4/QBranches.C:44
 msgid "Activated"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:360
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:313
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:86
-#: src/frontends/gtk/GDocument.C:353 src/frontends/gtk/GExternal.C:385
+#: src/frontends/gtk/GDocument.C:356 src/frontends/gtk/GExternal.C:385
 msgid "Color"
 msgstr "Väri"
 
@@ -683,10 +683,10 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt3/ui/QAskForTextDialog.ui:111
-#: src/frontends/qt3/ui/QDocumentDialogBase.ui:178 src/buffer_funcs.C:96
-#: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:84
-#: src/bufferlist.C:191 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:669
-#: src/lyxfunc.C:833 src/lyxfunc.C:1878 src/lyxvc.C:168
+#: src/frontends/qt3/ui/QDocumentDialogBase.ui:178 src/buffer_funcs.C:97
+#: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:86
+#: src/bufferlist.C:194 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:664
+#: src/lyxfunc.C:830 src/lyxfunc.C:1881 src/lyxvc.C:170
 msgid "&Cancel"
 msgstr "&Peru"
 
@@ -760,9 +760,9 @@ msgstr "Valitse lisättävä BibTeX-tietokanta"
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:262
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:124
 #: src/frontends/qt3/ui/QIndexDialogBase.ui:116
-#: src/frontends/qt3/ui/QSendtoDialogBase.ui:94 src/BufferView_pimpl.C:193
+#: src/frontends/qt3/ui/QSendtoDialogBase.ui:94 src/BufferView.C:280
 #: src/frontends/gtk/GBC.h:27 src/frontends/qt3/Qt2BC.h:36
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:782
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:779
 msgid "Cancel"
 msgstr "Peru"
 
@@ -924,7 +924,7 @@ msgstr "Vasen"
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:90
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:195
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 #: src/frontends/gtk/GTabular.C:358 src/frontends/qt3/QTabular.C:208
 #: src/frontends/qt4/QTabular.C:261
 msgid "Center"
@@ -1002,28 +1002,28 @@ msgstr "&Pysty:"
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:967
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:987
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1007
-#: src/frontends/controllers/ControlBox.C:79 src/frontends/gtk/GBox.C:291
-#: src/frontends/gtk/GBox.C:319 src/frontends/qt3/QBox.C:172
+#: src/frontends/controllers/ControlBox.C:81 src/frontends/gtk/GBox.C:292
+#: src/frontends/gtk/GBox.C:320 src/frontends/qt3/QBox.C:172
 #: src/frontends/qt3/QBox.C:288 src/frontends/qt3/QBoxDialog.C:60
 #: src/frontends/qt4/QBox.C:170 src/frontends/qt4/QBox.C:286
 #: src/frontends/qt4/QBoxDialog.C:74
 msgid "None"
 msgstr "Ei mikään"
 
-#: src/frontends/qt3/ui/QBoxDialogBase.ui:526 src/frontends/gtk/GBox.C:279
-#: src/frontends/gtk/GBox.C:292 src/frontends/gtk/GBox.C:317
+#: src/frontends/qt3/ui/QBoxDialogBase.ui:526 src/frontends/gtk/GBox.C:280
+#: src/frontends/gtk/GBox.C:293 src/frontends/gtk/GBox.C:318
 #: src/frontends/qt3/QBox.C:174 src/frontends/qt3/QBox.C:281
 #: src/frontends/qt3/QBox.C:289 src/frontends/qt4/QBox.C:172
 #: src/frontends/qt4/QBox.C:279 src/frontends/qt4/QBox.C:287
-#: src/insets/insetbox.C:144
+#: src/insets/insetbox.C:156
 #, fuzzy
 msgid "Parbox"
 msgstr "Osa"
 
-#: src/frontends/qt3/ui/QBoxDialogBase.ui:531 src/frontends/gtk/GBox.C:280
-#: src/frontends/gtk/GBox.C:293 src/frontends/qt3/QBox.C:282
+#: src/frontends/qt3/ui/QBoxDialogBase.ui:531 src/frontends/gtk/GBox.C:281
+#: src/frontends/gtk/GBox.C:294 src/frontends/qt3/QBox.C:282
 #: src/frontends/qt3/QBox.C:290 src/frontends/qt4/QBox.C:280
-#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:146
+#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:158
 msgid "Minipage"
 msgstr "Pienoissivu"
 
@@ -1200,7 +1200,7 @@ msgstr "Ota kukin muutos käyttöön automaattisesti"
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:292
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:263
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:133 src/frontends/gtk/GBC.h:28
-#: src/frontends/qt3/Qt2BC.h:36 src/frontends/qt4/Qt2BC.h:36
+#: src/frontends/qt3/Qt2BC.h:37 src/frontends/qt4/Qt2BC.h:37
 msgid "Close"
 msgstr "Sulje"
 
@@ -1524,10 +1524,10 @@ msgstr "Näkymä ruudulla"
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1012
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:169
-#: src/frontends/gtk/GDocument.C:218 src/frontends/gtk/GExternal.C:376
+#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/gtk/GDocument.C:221 src/frontends/gtk/GExternal.C:376
 #: src/frontends/qt3/QDocument.C:113 src/frontends/qt4/QDocumentDialog.C:208
-#: src/lyxfont.C:516 src/tex-strings.C:65 src/tex-strings.C:76
+#: src/lyxfont.C:519 src/tex-strings.C:65 src/tex-strings.C:76
 #: src/tex-strings.C:86
 msgid "Default"
 msgstr "Oletus"
@@ -1794,12 +1794,12 @@ msgid "&Include Type:"
 msgstr "&Sisällytystyyppi:"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:108
-#: src/insets/insetinclude.C:283
+#: src/insets/insetinclude.C:286
 msgid "Input"
 msgstr "Syötä"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:113
-#: src/insets/insetinclude.C:286
+#: src/insets/insetinclude.C:295
 msgid "Include"
 msgstr "Sisällytä"
 
@@ -2091,7 +2091,7 @@ msgstr "Kappaletyyli asetettu"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:39
 #: src/frontends/qt3/QDocument.C:184 src/frontends/qt4/QDocumentDialog.C:122
-#: src/text.C:2409
+#: src/text.C:2412
 msgid "Single"
 msgstr "Yksink."
 
@@ -2101,7 +2101,7 @@ msgstr "1.5"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:49
 #: src/frontends/qt3/QDocument.C:188 src/frontends/qt4/QDocumentDialog.C:126
-#: src/text.C:2415
+#: src/text.C:2418
 msgid "Double"
 msgstr "Kaksink."
 
@@ -2110,7 +2110,7 @@ msgstr "Kaksink."
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:997
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1017
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:117
-#: src/frontends/gtk/GDocument.C:198 src/frontends/gtk/GDocument.C:219
+#: src/frontends/gtk/GDocument.C:201 src/frontends/gtk/GDocument.C:222
 #: src/frontends/qt3/QDocument.C:114 src/frontends/qt3/QDocument.C:190
 #: src/frontends/qt4/QDocumentDialog.C:128
 #: src/frontends/qt4/QDocumentDialog.C:209
@@ -2500,43 +2500,43 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Valinnainen paperikokovalitsin (-paper) joitakin DVI-katselimia varten"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:201
-#: src/frontends/gtk/GDocument.C:220 src/frontends/qt3/QDocument.C:115
+#: src/frontends/gtk/GDocument.C:223 src/frontends/qt3/QDocument.C:115
 #: src/frontends/qt4/QDocumentDialog.C:210
 msgid "US letter"
 msgstr "US letter"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:206
-#: src/frontends/gtk/GDocument.C:221 src/frontends/qt3/QDocument.C:116
+#: src/frontends/gtk/GDocument.C:224 src/frontends/qt3/QDocument.C:116
 #: src/frontends/qt4/QDocumentDialog.C:211
 msgid "US legal"
 msgstr "US legal"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:211
-#: src/frontends/gtk/GDocument.C:222 src/frontends/qt3/QDocument.C:117
+#: src/frontends/gtk/GDocument.C:225 src/frontends/qt3/QDocument.C:117
 #: src/frontends/qt4/QDocumentDialog.C:212
 msgid "US executive"
 msgstr "US executive"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:216
-#: src/frontends/gtk/GDocument.C:223 src/frontends/qt3/QDocument.C:118
+#: src/frontends/gtk/GDocument.C:226 src/frontends/qt3/QDocument.C:118
 #: src/frontends/qt4/QDocumentDialog.C:213
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:221
-#: src/frontends/gtk/GDocument.C:224 src/frontends/qt3/QDocument.C:119
+#: src/frontends/gtk/GDocument.C:227 src/frontends/qt3/QDocument.C:119
 #: src/frontends/qt4/QDocumentDialog.C:214
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:226
-#: src/frontends/gtk/GDocument.C:225 src/frontends/qt3/QDocument.C:120
+#: src/frontends/gtk/GDocument.C:228 src/frontends/qt3/QDocument.C:120
 #: src/frontends/qt4/QDocumentDialog.C:215
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:231
-#: src/frontends/gtk/GDocument.C:228 src/frontends/qt3/QDocument.C:123
+#: src/frontends/gtk/GDocument.C:231 src/frontends/qt3/QDocument.C:123
 #: src/frontends/qt4/QDocumentDialog.C:218
 msgid "B5"
 msgstr "B5"
@@ -2854,14 +2854,14 @@ msgid "Save/restore window size, or use fixed window"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:363
-#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt3/QBox.C:196
+#: src/frontends/controllers/ControlBox.C:85 src/frontends/qt3/QBox.C:196
 #: src/frontends/qt3/QBox.C:230 src/frontends/qt4/QBox.C:194
 #: src/frontends/qt4/QBox.C:228
 msgid "Width"
 msgstr "Leveys"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:388
-#: src/frontends/controllers/ControlBox.C:80 src/frontends/qt3/QBox.C:187
+#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt3/QBox.C:187
 #: src/frontends/qt3/QBox.C:221 src/frontends/qt4/QBox.C:185
 #: src/frontends/qt4/QBox.C:219
 #, fuzzy
@@ -2883,8 +2883,8 @@ msgstr "Koh&distin seuraa vierityspalkkia"
 msgid "QPrefsDialogBase"
 msgstr "Vuoropuhelu"
 
-#: src/frontends/qt3/ui/QPrefsDialogBase.ui:91 src/bufferlist.C:84
-#: src/bufferlist.C:191 src/lyxfunc.C:668
+#: src/frontends/qt3/ui/QPrefsDialogBase.ui:91 src/bufferlist.C:86
+#: src/bufferlist.C:194 src/lyxfunc.C:663
 msgid "&Save"
 msgstr "Ta&llenna"
 
@@ -3763,8 +3763,8 @@ msgstr "Asiakirja muotoutuu..."
 #: lib/layouts/agu_stdclass.inc:22 lib/layouts/db_stdclass.inc:22
 #: lib/layouts/scrclass.inc:15 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdletter.inc:12 lib/layouts/svjour.inc:27
-#: src/frontends/qt4/BulletsModule.C:44 src/insets/insetref.C:142
-#: src/mathed/ref_inset.C:178
+#: src/frontends/qt4/BulletsModule.C:44 src/insets/insetref.C:143
+#: src/mathed/InsetMathRef.C:179
 msgid "Standard"
 msgstr "Perusteksti"
 
@@ -3981,7 +3981,7 @@ msgstr "Väite"
 #: lib/layouts/elsart.layout:395 lib/layouts/llncs.layout:360
 #: lib/layouts/slides.layout:167 lib/layouts/amsmaths-plain.inc:193
 #: lib/layouts/amsmaths-seq.inc:160 lib/layouts/amsmaths.inc:418
-#: lib/layouts/svjour.inc:422 src/insets/insetnote.C:59
+#: lib/layouts/svjour.inc:422 src/insets/insetnote.C:64
 msgid "Note"
 msgstr "Muistiinpano"
 
@@ -4304,7 +4304,7 @@ msgstr "Posti"
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:101
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:161
 #: lib/layouts/stdtitle.inc:50 lib/layouts/svjour.inc:230
-#: lib/ui/stdmenus.ui:264
+#: lib/ui/stdmenus.ui:269
 msgid "Date"
 msgstr "Päiväys"
 
@@ -4847,7 +4847,7 @@ msgid "Seriate"
 msgstr "Luetelma"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:449
+#: src/buffer_funcs.C:452
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -7124,7 +7124,7 @@ msgstr "Punainen"
 msgid "Published-online:"
 msgstr ""
 
-#: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:71
+#: lib/layouts/agu_stdtitle.inc:263 src/frontends/gtk/GCitation.C:72
 #: src/frontends/qt3/QCitation.C:50
 msgid "Citation"
 msgstr "Lähdeviite"
@@ -8030,11 +8030,11 @@ msgstr "Etsi tai korvaa...|E"
 msgid "Tabular|T"
 msgstr "Taulukko|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.ui:104
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.ui:100
 msgid "Math|M"
 msgstr "Matematiikka|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:440
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:441
 msgid "Spellchecker...|S"
 msgstr "Oikoluku...|O"
 
@@ -8042,12 +8042,12 @@ msgstr "Oikoluku...|O"
 msgid "Thesaurus..."
 msgstr "Synonyymit..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:442
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:443
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Nykyinen sana"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:443
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:444
 msgid "Check TeX|h"
 msgstr "Tarkista TeX|X"
 
@@ -8056,25 +8056,25 @@ msgstr "Tarkista TeX|X"
 msgid "Change Tracking|g"
 msgstr "Vaihda kieli"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:450
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:451
 msgid "Preferences...|P"
 msgstr "Asetukset...|A"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:449
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:450
 msgid "Reconfigure|R"
 msgstr "Konfiguroi uudelleen|n"
 
-#: lib/ui/classic.ui:115 lib/ui/stdmenus.ui:131
+#: lib/ui/classic.ui:115 lib/ui/stdmenus.ui:127
 #, fuzzy
 msgid "Selection as Lines|L"
 msgstr "Riveinä|R"
 
-#: lib/ui/classic.ui:116 lib/ui/stdmenus.ui:132
+#: lib/ui/classic.ui:116 lib/ui/stdmenus.ui:128
 #, fuzzy
 msgid "Selection as Paragraphs|P"
 msgstr "Kappaleina|K"
 
-#: lib/ui/classic.ui:120 lib/ui/stdmenus.ui:141
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.ui:147
 msgid "Multicolumn|M"
 msgstr "Yhdistetyt sarakkeet|Y"
 
@@ -8107,11 +8107,11 @@ msgstr "Lisää rivi|L"
 msgid "Delete Row|w"
 msgstr "Poista rivi|r"
 
-#: lib/ui/classic.ui:131 lib/ui/classic.ui:172 lib/ui/stdmenus.ui:161
+#: lib/ui/classic.ui:131 lib/ui/classic.ui:172 lib/ui/stdmenus.ui:167
 msgid "Copy Row"
 msgstr "Kopioi rivi"
 
-#: lib/ui/classic.ui:132 lib/ui/classic.ui:173 lib/ui/stdmenus.ui:162
+#: lib/ui/classic.ui:132 lib/ui/classic.ui:173 lib/ui/stdmenus.ui:168
 msgid "Swap Rows"
 msgstr "Vaihda rivit"
 
@@ -8123,61 +8123,61 @@ msgstr "Lisää sarake|ä"
 msgid "Delete Column|D"
 msgstr "Poista sarake|e"
 
-#: lib/ui/classic.ui:136 lib/ui/classic.ui:177 lib/ui/stdmenus.ui:166
+#: lib/ui/classic.ui:136 lib/ui/classic.ui:177 lib/ui/stdmenus.ui:172
 msgid "Copy Column"
 msgstr "Kopioi sarake"
 
-#: lib/ui/classic.ui:137 lib/ui/classic.ui:178 lib/ui/stdmenus.ui:167
+#: lib/ui/classic.ui:137 lib/ui/classic.ui:178 lib/ui/stdmenus.ui:173
 msgid "Swap Columns"
 msgstr "Vaihda sarakkeet"
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.ui:151
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.ui:157
 #, fuzzy
 msgid "Left|L"
 msgstr "Vasen|#V"
 
-#: lib/ui/classic.ui:142 lib/ui/stdmenus.ui:152
+#: lib/ui/classic.ui:142 lib/ui/stdmenus.ui:158
 #, fuzzy
 msgid "Center|C"
 msgstr "Keskellä"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.ui:153
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.ui:159
 #, fuzzy
 msgid "Right|R"
 msgstr "Oikea|#O"
 
-#: lib/ui/classic.ui:145 lib/ui/stdmenus.ui:155
+#: lib/ui/classic.ui:145 lib/ui/stdmenus.ui:161
 #, fuzzy
 msgid "Top|T"
 msgstr "Yläreuna|#ä"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.ui:156
+#: lib/ui/classic.ui:146 lib/ui/stdmenus.ui:162
 #, fuzzy
 msgid "Middle|M"
 msgstr "Keski"
 
-#: lib/ui/classic.ui:147 lib/ui/stdmenus.ui:157
+#: lib/ui/classic.ui:147 lib/ui/stdmenus.ui:163
 #, fuzzy
 msgid "Bottom|B"
 msgstr "Alareuna|#A"
 
-#: lib/ui/classic.ui:159 lib/ui/stdmenus.ui:171
+#: lib/ui/classic.ui:159 lib/ui/stdmenus.ui:177
 msgid "Toggle Numbering|N"
 msgstr "Numerointi pois/päälle|N"
 
-#: lib/ui/classic.ui:160 lib/ui/stdmenus.ui:172
+#: lib/ui/classic.ui:160 lib/ui/stdmenus.ui:178
 msgid "Toggle Numbering of Line|u"
 msgstr "Rivin numerointi pois/päälle|r"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.ui:173
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.ui:179
 msgid "Change Limits Type|L"
 msgstr "Muuta rajatyyppiä|j"
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.ui:175
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.ui:181
 msgid "Change Formula Type|F"
 msgstr "Muuta kaavan tyyppiä...|t"
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.ui:177
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.ui:183
 msgid "Use Computer Algebra System|S"
 msgstr "Käytä matematiikkaohjelmaa|m"
 
@@ -8201,56 +8201,56 @@ msgstr "Lisää sarake|ä"
 msgid "Delete Column|e"
 msgstr "Poista sarake|e"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.ui:193
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.ui:199
 msgid "Default|t"
 msgstr "Oletus|l"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.ui:194
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.ui:200
 msgid "Display|D"
 msgstr "Esitys|E"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.ui:195
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.ui:201
 msgid "Inline|I"
 msgstr "Tekstin seassa|s"
 
-#: lib/ui/classic.ui:188 lib/ui/stdmenus.ui:199
+#: lib/ui/classic.ui:188 lib/ui/stdmenus.ui:205
 msgid "Octave"
 msgstr "Octave"
 
-#: lib/ui/classic.ui:189 lib/ui/stdmenus.ui:200
+#: lib/ui/classic.ui:189 lib/ui/stdmenus.ui:206
 msgid "Maxima"
 msgstr "Maxima"
 
-#: lib/ui/classic.ui:190 lib/ui/stdmenus.ui:201
+#: lib/ui/classic.ui:190 lib/ui/stdmenus.ui:207
 msgid "Mathematica"
 msgstr "Mathematica"
 
-#: lib/ui/classic.ui:192 lib/ui/stdmenus.ui:203
+#: lib/ui/classic.ui:192 lib/ui/stdmenus.ui:209
 msgid "Maple, simplify"
 msgstr "Maple, simplify"
 
-#: lib/ui/classic.ui:193 lib/ui/stdmenus.ui:204
+#: lib/ui/classic.ui:193 lib/ui/stdmenus.ui:210
 msgid "Maple, factor"
 msgstr "Maple, factor"
 
-#: lib/ui/classic.ui:194 lib/ui/stdmenus.ui:205
+#: lib/ui/classic.ui:194 lib/ui/stdmenus.ui:211
 msgid "Maple, evalm"
 msgstr "Maple, evalm"
 
-#: lib/ui/classic.ui:195 lib/ui/stdmenus.ui:206
+#: lib/ui/classic.ui:195 lib/ui/stdmenus.ui:212
 msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:260 lib/ui/stdmenus.ui:210
-#: lib/ui/stdmenus.ui:303
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:260 lib/ui/stdmenus.ui:216
+#: lib/ui/stdmenus.ui:308
 msgid "Inline Formula|I"
 msgstr "Kaava tekstissä|K"
 
-#: lib/ui/classic.ui:200 lib/ui/stdmenus.ui:211
+#: lib/ui/classic.ui:200 lib/ui/stdmenus.ui:217
 msgid "Displayed Formula|D"
 msgstr "Kaavaesitys|i"
 
-#: lib/ui/classic.ui:201 lib/ui/stdmenus.ui:212
+#: lib/ui/classic.ui:201 lib/ui/stdmenus.ui:218
 msgid "Eqnarray Environment|q"
 msgstr "Yhtälötaulukkoympäristö|Y"
 
@@ -8275,37 +8275,37 @@ msgstr "Koontiympäristö"
 msgid "Multline Environment"
 msgstr "Moniriviympäristö"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.ui:248
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.ui:254
 msgid "Math|h"
 msgstr "Matematiikka|M"
 
-#: lib/ui/classic.ui:216 lib/ui/stdmenus.ui:249
+#: lib/ui/classic.ui:216 lib/ui/stdmenus.ui:255
 msgid "Special Character|S"
 msgstr "Erikoismerkki|E"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:260
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:265
 #, fuzzy
 msgid "Citation...|C"
 msgstr "Lähdeviite"
 
-#: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:261
+#: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:266
 #, fuzzy
 msgid "Cross-reference...|r"
 msgstr "Viittaus"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:262
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:267
 msgid "Label...|L"
 msgstr "Nimike...|N"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:270
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:275
 msgid "Footnote|F"
 msgstr "Alaviite|A"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:271
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:276
 msgid "Marginal Note|M"
 msgstr "Reunahuomautus|R"
 
-#: lib/ui/classic.ui:222 lib/ui/stdmenus.ui:272
+#: lib/ui/classic.ui:222 lib/ui/stdmenus.ui:277
 msgid "Short Title"
 msgstr "Lyhyt teoksen nimi"
 
@@ -8314,11 +8314,11 @@ msgstr "Lyhyt teoksen nimi"
 msgid "Index Entry|I"
 msgstr "Hakemistoviite"
 
-#: lib/ui/classic.ui:224 lib/ui/stdmenus.ui:269
+#: lib/ui/classic.ui:224 lib/ui/stdmenus.ui:274
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:254
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:260
 msgid "Note|N"
 msgstr "Muistiinpano|i"
 
@@ -8335,7 +8335,7 @@ msgstr "TeX|X"
 msgid "Minipage|p"
 msgstr "Pienoissivu|P"
 
-#: lib/ui/classic.ui:230 lib/ui/stdmenus.ui:268
+#: lib/ui/classic.ui:230 lib/ui/stdmenus.ui:273
 msgid "Graphics...|G"
 msgstr "Grafiikka...|G"
 
@@ -8359,56 +8359,56 @@ msgstr "Lisää tiedosto|ä"
 msgid "External Material...|x"
 msgstr "Ulkoinen aineisto...|k"
 
-#: lib/ui/classic.ui:240 lib/ui/stdmenus.ui:286
+#: lib/ui/classic.ui:240 lib/ui/stdmenus.ui:291
 msgid "Superscript|S"
 msgstr "Yläindeksi|Y"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.ui:287
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.ui:292
 msgid "Subscript|u"
 msgstr "Alaindeksi|A"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.ui:292
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.ui:297
 #, fuzzy
 msgid "Horizontal Fill|H"
 msgstr "Vaakatasaus:|#V"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:296
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:301
 msgid "Hyphenation Point|P"
 msgstr "Tavutuskohta|T"
 
-#: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:297
+#: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:302
 msgid "Ligature Break|k"
 msgstr "Yhdyskirjasinkatko|h"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:289
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:294
 #, fuzzy
 msgid "Protected Space|r"
 msgstr "Kova välilyönti|K"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.ui:290
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.ui:295
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:291
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:296
 #, fuzzy
 msgid "Thin Space|T"
 msgstr "Ohut väli\t\\,"
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:294
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:299
 #, fuzzy
 msgid "Vertical Space..."
 msgstr "Pystyväli:|#P"
 
-#: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:298
+#: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:303
 #, fuzzy
 msgid "Line Break|L"
 msgstr "Rivinvaihto|R"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.ui:277
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.ui:282
 msgid "Ellipsis|i"
 msgstr "Ellipsis (...)|E"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:278
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:283
 msgid "End of Sentence|E"
 msgstr "Virkkeen lopun piste|p"
 
@@ -8422,65 +8422,65 @@ msgstr "Tavallinen lainausmerkki (\")|l"
 msgid "Ordinary Quote|O"
 msgstr "Tavallinen lainausmerkki (\")|l"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.ui:281
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.ui:286
 msgid "Menu Separator|M"
 msgstr "Valikkoerotinmerkki|m"
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:293
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:298
 #, fuzzy
 msgid "Horizontal Line"
 msgstr "&Vaakatasaus:"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.ui:299 src/insets/insetpagebreak.C:54
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.ui:304 src/insets/insetpagebreak.C:54
 #, fuzzy
 msgid "Page Break"
 msgstr "&Sivunvaihdot"
 
-#: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:304
+#: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:309
 msgid "Display Formula|D"
 msgstr "Kaavaesitys|e"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:305
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:310
 msgid "Eqnarray Environment|E"
 msgstr "Yhtälötaulukkoympäristö|Y"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:213 lib/ui/stdmenus.ui:306
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:219 lib/ui/stdmenus.ui:311
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "AMS-tasausympäristö|t"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:214 lib/ui/stdmenus.ui:307
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:220 lib/ui/stdmenus.ui:312
 msgid "AMS alignat Environment|t"
 msgstr "AMS-tasausympäristö (alignat)|a"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:215 lib/ui/stdmenus.ui:308
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:221 lib/ui/stdmenus.ui:313
 msgid "AMS flalign Environment|f"
 msgstr "AMS-tasausympäristö (flalign)|t"
 
-#: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:216 lib/ui/stdmenus.ui:309
+#: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:222 lib/ui/stdmenus.ui:314
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "AMS-koontiympäristö"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:217 lib/ui/stdmenus.ui:310
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:223 lib/ui/stdmenus.ui:315
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "AMS-moniriviympäristö"
 
-#: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:312
+#: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:317
 msgid "Array Environment|y"
 msgstr "Taulukkoympäristö|u"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:313
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:318
 msgid "Cases Environment|C"
 msgstr "Tapausympäristö|p"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:317
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:322
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Tasausympäristö|T"
 
-#: lib/ui/classic.ui:275 lib/ui/stdmenus.ui:319
+#: lib/ui/classic.ui:275 lib/ui/stdmenus.ui:324
 #, fuzzy
 msgid "Font Change|o"
 msgstr "Kirjasimen vaihto|v"
@@ -8489,82 +8489,82 @@ msgstr "Kirjasimen vaihto|v"
 msgid "Math Panel|l"
 msgstr "Matematiikkapaneeli|M"
 
-#: lib/ui/classic.ui:280 lib/ui/stdmenus.ui:324
+#: lib/ui/classic.ui:280 lib/ui/stdmenus.ui:329
 #, fuzzy
 msgid "Math Normal Font"
 msgstr "Tavalliset matem. kirjasimet"
 
-#: lib/ui/classic.ui:282 lib/ui/stdmenus.ui:326
+#: lib/ui/classic.ui:282 lib/ui/stdmenus.ui:331
 #, fuzzy
 msgid "Math Calligraphic Family"
 msgstr "Matem. kaunokirjasinperhe"
 
-#: lib/ui/classic.ui:283 lib/ui/stdmenus.ui:327
+#: lib/ui/classic.ui:283 lib/ui/stdmenus.ui:332
 #, fuzzy
 msgid "Math Fraktur Family"
 msgstr "Matem. fraktuura-kirjasinperhe"
 
-#: lib/ui/classic.ui:284 lib/ui/stdmenus.ui:328
+#: lib/ui/classic.ui:284 lib/ui/stdmenus.ui:333
 #, fuzzy
 msgid "Math Roman Family"
 msgstr "Matem. antiikva-kirjasinperhe"
 
-#: lib/ui/classic.ui:285 lib/ui/stdmenus.ui:329
+#: lib/ui/classic.ui:285 lib/ui/stdmenus.ui:334
 #, fuzzy
 msgid "Math Sans Serif Family"
 msgstr "Matem. sans serif -kirjasinperhe"
 
-#: lib/ui/classic.ui:287 lib/ui/stdmenus.ui:331
+#: lib/ui/classic.ui:287 lib/ui/stdmenus.ui:336
 #, fuzzy
 msgid "Math Bold Series"
 msgstr "Matem. lihava kirjasinsarja"
 
-#: lib/ui/classic.ui:289 lib/ui/stdmenus.ui:333
+#: lib/ui/classic.ui:289 lib/ui/stdmenus.ui:338
 #, fuzzy
 msgid "Text Normal Font"
 msgstr "Tekstin tavallinen kirjasin"
 
-#: lib/ui/classic.ui:291 lib/ui/stdmenus.ui:335
+#: lib/ui/classic.ui:291 lib/ui/stdmenus.ui:340
 #, fuzzy
 msgid "Text Roman Family"
 msgstr "Tekstin pysty kirjasinperhe"
 
-#: lib/ui/classic.ui:292 lib/ui/stdmenus.ui:336
+#: lib/ui/classic.ui:292 lib/ui/stdmenus.ui:341
 #, fuzzy
 msgid "Text Sans Serif Family"
 msgstr "Tekstin sans serif -kirjasinperhe"
 
-#: lib/ui/classic.ui:293 lib/ui/stdmenus.ui:337
+#: lib/ui/classic.ui:293 lib/ui/stdmenus.ui:342
 #, fuzzy
 msgid "Text Typewriter Family"
 msgstr "Tekstin kirjoituskone-kirjasinperhe"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.ui:339
+#: lib/ui/classic.ui:295 lib/ui/stdmenus.ui:344
 #, fuzzy
 msgid "Text Bold Series"
 msgstr "Tekstin lihava kirjasinsarja"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.ui:340
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.ui:345
 #, fuzzy
 msgid "Text Medium Series"
 msgstr "Tekstin keskivahva kirjasinsarja"
 
-#: lib/ui/classic.ui:298 lib/ui/stdmenus.ui:342
+#: lib/ui/classic.ui:298 lib/ui/stdmenus.ui:347
 #, fuzzy
 msgid "Text Italic Shape"
 msgstr "Tekstin kursiivi kirjasinmuoto"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.ui:343
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.ui:348
 #, fuzzy
 msgid "Text Small Caps Shape"
 msgstr "Tekstin kapiteeli kirjasinmuoto"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.ui:344
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.ui:349
 #, fuzzy
 msgid "Text Slanted Shape"
 msgstr "Tekstin vino kirjasinmuoto"
 
-#: lib/ui/classic.ui:301 lib/ui/stdmenus.ui:345
+#: lib/ui/classic.ui:301 lib/ui/stdmenus.ui:350
 #, fuzzy
 msgid "Text Upright Shape"
 msgstr "Tekstin pysty kirjasinmuoto"
@@ -8573,39 +8573,39 @@ msgstr "Tekstin pysty kirjasinmuoto"
 msgid "Floatflt Figure"
 msgstr "Kelluva kuva (floatflt)"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:359 lib/ui/stdmenus.ui:355
+#: lib/ui/classic.ui:310 lib/ui/classic.ui:359 lib/ui/stdmenus.ui:360
 msgid "Table of Contents|C"
 msgstr "Sisällysluettelo|S"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.ui:357
+#: lib/ui/classic.ui:312 lib/ui/stdmenus.ui:362
 msgid "Index List|I"
 msgstr "Hakemisto|H"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:358
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:363
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Viitteet"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.ui:362
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.ui:367
 msgid "LyX Document...|X"
 msgstr "LyX-asiakirja...|a"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.ui:363
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.ui:368
 #, fuzzy
 msgid "Plain Text as Lines...|L"
 msgstr "Ascii-teksti riveinä...|r"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:364
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:369
 #, fuzzy
 msgid "Plain Text as Paragraphs...|P"
 msgstr "Ascii-teksti kappaleina...|k"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:400
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:401
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Kirjaa muutokset...|K"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:401
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:402
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Kirjaa muutokset...|K"
@@ -8618,7 +8618,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:406
+#: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:407
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "Kuvan leveys tulosteessa"
@@ -8663,15 +8663,15 @@ msgstr "Kasvata ympäristösyvyyttä|v"
 msgid "Start Appendix Here|S"
 msgstr "Aloita liite tästä|i"
 
-#: lib/ui/classic.ui:355 lib/ui/stdmenus.ui:390
+#: lib/ui/classic.ui:355 lib/ui/stdmenus.ui:391
 msgid "Build Program|B"
 msgstr "Käännä ohjelma|K"
 
-#: lib/ui/classic.ui:356 lib/ui/stdmenus.ui:231
+#: lib/ui/classic.ui:356 lib/ui/stdmenus.ui:237
 msgid "Update|U"
 msgstr "Päivitä|v"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.ui:391
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.ui:392
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "LaTeXin lokitiedosto|L"
@@ -8680,63 +8680,63 @@ msgstr "LaTeXin lokitiedosto|L"
 msgid "TeX Information|X"
 msgstr "TeX-tietoja|X"
 
-#: lib/ui/classic.ui:373 lib/ui/stdmenus.ui:414
+#: lib/ui/classic.ui:373 lib/ui/stdmenus.ui:415
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Muistiinpano|i"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:416
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:417
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "&Nimike"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:413
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:414
 msgid "Bookmarks|B"
 msgstr "Kirjanmerkit|#m"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.ui:428
+#: lib/ui/classic.ui:379 lib/ui/stdmenus.ui:429
 msgid "Save Bookmark 1|S"
 msgstr "Tallenna kirjanmerkki 1|T"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.ui:429
+#: lib/ui/classic.ui:380 lib/ui/stdmenus.ui:430
 msgid "Save Bookmark 2"
 msgstr "Tallenna kirjanmerkki 2|a"
 
-#: lib/ui/classic.ui:381 lib/ui/stdmenus.ui:430
+#: lib/ui/classic.ui:381 lib/ui/stdmenus.ui:431
 msgid "Save Bookmark 3"
 msgstr "Tallenna kirjanmerkki 3|l"
 
-#: lib/ui/classic.ui:382 lib/ui/stdmenus.ui:431
+#: lib/ui/classic.ui:382 lib/ui/stdmenus.ui:432
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Tallenna kirjanmerkki 2|a"
 
-#: lib/ui/classic.ui:383 lib/ui/stdmenus.ui:432
+#: lib/ui/classic.ui:383 lib/ui/stdmenus.ui:433
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Tallenna kirjanmerkki 2|a"
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.ui:422
+#: lib/ui/classic.ui:385 lib/ui/stdmenus.ui:423
 #, fuzzy
 msgid "Go to Bookmark 1|1"
 msgstr "Siirry kirjanmerkille 1|1"
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.ui:423
+#: lib/ui/classic.ui:386 lib/ui/stdmenus.ui:424
 #, fuzzy
 msgid "Go to Bookmark 2|2"
 msgstr "Siirry kirjanmerkille 2|2"
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.ui:424
+#: lib/ui/classic.ui:387 lib/ui/stdmenus.ui:425
 #, fuzzy
 msgid "Go to Bookmark 3|3"
 msgstr "Siirry kirjanmerkille 3|3"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.ui:425
+#: lib/ui/classic.ui:388 lib/ui/stdmenus.ui:426
 #, fuzzy
 msgid "Go to Bookmark 4|4"
 msgstr "Siirry kirjanmerkille 3|3"
 
-#: lib/ui/classic.ui:389 lib/ui/stdmenus.ui:426
+#: lib/ui/classic.ui:389 lib/ui/stdmenus.ui:427
 #, fuzzy
 msgid "Go to Bookmark 5|5"
 msgstr "Siirry kirjanmerkille 3|3"
@@ -8745,53 +8745,53 @@ msgstr "Siirry kirjanmerkille 3|3"
 msgid "Tooltips|o"
 msgstr "Vinkit|V"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:457
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:458
 msgid "Introduction|I"
 msgstr "Johdanto|J"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:458
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:459
 msgid "Tutorial|T"
 msgstr "Opastus|O"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:459
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:460
 msgid "User's Guide|U"
 msgstr "Käyttöopas|K"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:460
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:461
 msgid "Extended Features|E"
 msgstr "Lisäominaisuudet|L"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:461
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:462
 msgid "Customization|C"
 msgstr "Mukauttaminen|M"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:462
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:463
 msgid "FAQ|F"
 msgstr "Usein kysytyt kysymykset|U"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:463
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:464
 msgid "Table of Contents|a"
 msgstr "Sisällysluettelo|S"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:464
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:465
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX-asetukset|X"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:466
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:467
 msgid "About LyX|X"
 msgstr "LyXistä|y"
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:474 src/frontends/qt3/QAbout.C:44
+#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:475 src/frontends/qt3/QAbout.C:44
 #: src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr "LyXistä"
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:475
+#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:476
 #, fuzzy
 msgid "Preferences..."
 msgstr "Asetukset...|A"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:476
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:477
 #, fuzzy
 msgid "Quit LyX"
 msgstr "LyXistä"
@@ -8826,18 +8826,18 @@ msgid "Redo|R"
 msgstr "Tee uudelleen|d"
 
 #: lib/ui/stdmenus.ui:84 lib/ui/stdtoolbars.ui:51
-#: src/mathed/math_nestinset.C:440 src/text3.C:782
+#: src/mathed/InsetMathNest.C:440 src/text3.C:785
 msgid "Cut"
 msgstr "Leikkaa"
 
 #: lib/ui/stdmenus.ui:85 lib/ui/stdtoolbars.ui:52
-#: src/mathed/math_nestinset.C:448 src/text3.C:787
+#: src/mathed/InsetMathNest.C:449 src/text3.C:790
 msgid "Copy"
 msgstr "Kopioi"
 
 #: lib/ui/stdmenus.ui:86 lib/ui/stdtoolbars.ui:53
-#: src/mathed/math_gridinset.C:1207 src/mathed/math_nestinset.C:424
-#: src/text3.C:766
+#: src/mathed/InsetMathGrid.C:1207 src/mathed/InsetMathNest.C:424
+#: src/text3.C:769
 msgid "Paste"
 msgstr "Liitä"
 
@@ -8852,374 +8852,373 @@ msgstr "Liitä ulkoinen valinta|v"
 
 #: lib/ui/stdmenus.ui:92
 #, fuzzy
-msgid "Word in Small Capitals"
-msgstr "Kapiteeli"
-
-#: lib/ui/stdmenus.ui:93
-#, fuzzy
-msgid "Word in Uppercase"
-msgstr "Pakota &iso kirjain"
-
-#: lib/ui/stdmenus.ui:94
-msgid "Word in Lowercase"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:96
-#, fuzzy
 msgid "Move Paragraph Up|o"
 msgstr ", kappale: "
 
-#: lib/ui/stdmenus.ui:97
+#: lib/ui/stdmenus.ui:93
 #, fuzzy
 msgid "Move Paragraph Down|v"
 msgstr ", kappale: "
 
-#: lib/ui/stdmenus.ui:99
+#: lib/ui/stdmenus.ui:95
 #, fuzzy
-msgid "Text Style...|S"
+msgid "Text Style|S"
 msgstr "TeX-tyyli|X"
 
-#: lib/ui/stdmenus.ui:100
+#: lib/ui/stdmenus.ui:96
 #, fuzzy
 msgid "Paragraph Settings...|P"
 msgstr "Kappale...|K"
 
-#: lib/ui/stdmenus.ui:103
+#: lib/ui/stdmenus.ui:99
 #, fuzzy
 msgid "Table|T"
 msgstr "Taulukko"
 
-#: lib/ui/stdmenus.ui:105
+#: lib/ui/stdmenus.ui:101
 #, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Vaihda sarakkeet"
 
-#: lib/ui/stdmenus.ui:107
+#: lib/ui/stdmenus.ui:103
 #, fuzzy
 msgid "Increase List Depth|I"
 msgstr "Kasvata ympäristösyvyyttä|v"
 
-#: lib/ui/stdmenus.ui:108
+#: lib/ui/stdmenus.ui:104
 #, fuzzy
 msgid "Decrease List Depth|D"
 msgstr "Pienennä ympäristösyvyyttä|P"
 
-#: lib/ui/stdmenus.ui:109
+#: lib/ui/stdmenus.ui:105
 msgid "Dissolve Inset|s"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:115
+#: lib/ui/stdmenus.ui:111
 #, fuzzy
 msgid "TeX Code Settings...|C"
 msgstr "LaTeX-asetukset"
 
-#: lib/ui/stdmenus.ui:117
+#: lib/ui/stdmenus.ui:113
 #, fuzzy
 msgid "Float Settings...|a"
 msgstr "Irrallisten asetukset"
 
-#: lib/ui/stdmenus.ui:118
+#: lib/ui/stdmenus.ui:114
 msgid "Text Wrap Settings...|W"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:119
+#: lib/ui/stdmenus.ui:115
 #, fuzzy
 msgid "Note Settings...|N"
 msgstr "Irrallisten asetukset"
 
-#: lib/ui/stdmenus.ui:120
+#: lib/ui/stdmenus.ui:116
 #, fuzzy
 msgid "Branch Settings...|B"
 msgstr "Kirjallisuusviitteiden asetukset"
 
-#: lib/ui/stdmenus.ui:121
+#: lib/ui/stdmenus.ui:117
 #, fuzzy
 msgid "Box Settings...|x"
 msgstr "Irrallisten asetukset"
 
-#: lib/ui/stdmenus.ui:125
+#: lib/ui/stdmenus.ui:121
 #, fuzzy
 msgid "Table Settings...|a"
 msgstr "Taulukkoasetukset"
 
-#: lib/ui/stdmenus.ui:129
+#: lib/ui/stdmenus.ui:125
 #, fuzzy
 msgid "Clipboard as Lines|C"
 msgstr "Riveinä|R"
 
-#: lib/ui/stdmenus.ui:130
+#: lib/ui/stdmenus.ui:126
 #, fuzzy
 msgid "Clipboard as Paragraphs|a"
 msgstr "Kappaleina|K"
 
-#: lib/ui/stdmenus.ui:143
+#: lib/ui/stdmenus.ui:138
+#, fuzzy
+msgid "Customized...|C"
+msgstr "Muu...|M"
+
+#: lib/ui/stdmenus.ui:140
+#, fuzzy
+msgid "Capitalize|a"
+msgstr "katalaani"
+
+#: lib/ui/stdmenus.ui:141
+#, fuzzy
+msgid "Uppercase|U"
+msgstr "Pakota &iso kirjain"
+
+#: lib/ui/stdmenus.ui:142
+msgid "Lowercase|L"
+msgstr ""
+
+#: lib/ui/stdmenus.ui:149
 #, fuzzy
 msgid "Top Line|T"
 msgstr "Yläreuna|#ä"
 
-#: lib/ui/stdmenus.ui:144
+#: lib/ui/stdmenus.ui:150
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "Alareuna|#A"
 
-#: lib/ui/stdmenus.ui:145
+#: lib/ui/stdmenus.ui:151
 #, fuzzy
 msgid "Left Line|L"
 msgstr "Vasemmalla keskellä"
 
-#: lib/ui/stdmenus.ui:146
+#: lib/ui/stdmenus.ui:152
 #, fuzzy
 msgid "Right Line|R"
 msgstr "Oikea|#O"
 
-#: lib/ui/stdmenus.ui:159
+#: lib/ui/stdmenus.ui:165
 #, fuzzy
 msgid "Add Row"
 msgstr "Lisää rivi|L"
 
-#: lib/ui/stdmenus.ui:160
+#: lib/ui/stdmenus.ui:166
 #, fuzzy
 msgid "Delete Row"
 msgstr "Poista rivi|r"
 
-#: lib/ui/stdmenus.ui:164
+#: lib/ui/stdmenus.ui:170
 #, fuzzy
 msgid "Add Column"
 msgstr "Lisää sarake|ä"
 
-#: lib/ui/stdmenus.ui:165
+#: lib/ui/stdmenus.ui:171
 #, fuzzy
 msgid "Delete Column"
 msgstr "Poista sarake|e"
 
-#: lib/ui/stdmenus.ui:179
+#: lib/ui/stdmenus.ui:185
 msgid "Split Cell|C"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:181
+#: lib/ui/stdmenus.ui:187
 #, fuzzy
 msgid "Add Line Above"
 msgstr "Reuna yllä"
 
-#: lib/ui/stdmenus.ui:182
+#: lib/ui/stdmenus.ui:188
 #, fuzzy
 msgid "Add Line Below"
 msgstr "Reuna alla"
 
-#: lib/ui/stdmenus.ui:183
+#: lib/ui/stdmenus.ui:189
 msgid "Delete Line Above"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:184
+#: lib/ui/stdmenus.ui:190
 #, fuzzy
 msgid "Delete Line Below"
 msgstr "Poista rivi|r"
 
-#: lib/ui/stdmenus.ui:186
+#: lib/ui/stdmenus.ui:192
 #, fuzzy
 msgid "Add Line to Left"
 msgstr "Viiva vasemmalla|i"
 
-#: lib/ui/stdmenus.ui:187
+#: lib/ui/stdmenus.ui:193
 #, fuzzy
 msgid "Add Line to Right"
 msgstr "Viiva oikealla|o"
 
-#: lib/ui/stdmenus.ui:188
+#: lib/ui/stdmenus.ui:194
 #, fuzzy
 msgid "Delete Line to Left"
 msgstr "Valitse lisättävä tiedosto"
 
-#: lib/ui/stdmenus.ui:189
+#: lib/ui/stdmenus.ui:195
 #, fuzzy
 msgid "Delete Line to Right"
 msgstr "Valitse lisättävä tiedosto"
 
-#: lib/ui/stdmenus.ui:225
+#: lib/ui/stdmenus.ui:231
 #, fuzzy
 msgid "Open All Insets|O"
 msgstr "Irrallinen avattu"
 
-#: lib/ui/stdmenus.ui:226
+#: lib/ui/stdmenus.ui:232
 msgid "Close All Insets|C"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:228
+#: lib/ui/stdmenus.ui:234
 #, fuzzy
 msgid "Display Tooltips|i"
 msgstr "Vinkit|V"
 
-#: lib/ui/stdmenus.ui:230
+#: lib/ui/stdmenus.ui:236
 #, fuzzy
 msgid "View source|s"
 msgstr "Näkyvä väli|#v"
 
-#: lib/ui/stdmenus.ui:250
+#: lib/ui/stdmenus.ui:256
 #, fuzzy
 msgid "Special Formatting|o"
 msgstr "Erityissarake"
 
-#: lib/ui/stdmenus.ui:251
+#: lib/ui/stdmenus.ui:257
 #, fuzzy
 msgid "List / TOC|i"
 msgstr "Luettelo|o"
 
-#: lib/ui/stdmenus.ui:252
+#: lib/ui/stdmenus.ui:258
 #, fuzzy
 msgid "Float|a"
 msgstr "Irrallinen osa|s"
 
-#: lib/ui/stdmenus.ui:255
+#: lib/ui/stdmenus.ui:261
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:256
-#, fuzzy
-msgid "Character Style|y"
-msgstr "Merkistö"
-
-#: lib/ui/stdmenus.ui:257
+#: lib/ui/stdmenus.ui:262
 #, fuzzy
 msgid "File|e"
 msgstr "Tiedosto|T"
 
-#: lib/ui/stdmenus.ui:258 src/insets/insetbox.C:144 src/insets/insetbox.C:146
-#: src/insets/insetbox.C:148
+#: lib/ui/stdmenus.ui:263 src/insets/insetbox.C:152
 msgid "Box"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:263
+#: lib/ui/stdmenus.ui:268
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "Hakemistoviite"
 
-#: lib/ui/stdmenus.ui:267
+#: lib/ui/stdmenus.ui:272
 #, fuzzy
 msgid "Table...|T"
 msgstr "Taulukko...|T"
 
-#: lib/ui/stdmenus.ui:273
+#: lib/ui/stdmenus.ui:278
 #, fuzzy
 msgid "TeX Code|X"
 msgstr "TeX|X"
 
-#: lib/ui/stdmenus.ui:279
+#: lib/ui/stdmenus.ui:284
 msgid "Ordinary Quote|Q"
 msgstr "Tavallinen lainausmerkki (\")|l"
 
-#: lib/ui/stdmenus.ui:280
+#: lib/ui/stdmenus.ui:285
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Yksink.|#Y"
 
-#: lib/ui/stdmenus.ui:282
+#: lib/ui/stdmenus.ui:287
 msgid "Phonetic Symbols|y"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:314
+#: lib/ui/stdmenus.ui:319
 #, fuzzy
 msgid "Aligned Environment"
 msgstr "Tasausympäristö|T"
 
-#: lib/ui/stdmenus.ui:315
+#: lib/ui/stdmenus.ui:320
 #, fuzzy
 msgid "AlignedAt Environment"
 msgstr "AlignAt-ympäristö"
 
-#: lib/ui/stdmenus.ui:316
+#: lib/ui/stdmenus.ui:321
 #, fuzzy
 msgid "Gathered Environment"
 msgstr "Koontiympäristö"
 
-#: lib/ui/stdmenus.ui:320
+#: lib/ui/stdmenus.ui:325
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "Matematiikkapaneeli|M"
 
-#: lib/ui/stdmenus.ui:351
+#: lib/ui/stdmenus.ui:356
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Lisää irrallinen osio"
 
-#: lib/ui/stdmenus.ui:366
+#: lib/ui/stdmenus.ui:371
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Ulkoinen aineisto...|k"
 
-#: lib/ui/stdmenus.ui:367
+#: lib/ui/stdmenus.ui:372
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Asiakirja...|A"
 
-#: lib/ui/stdmenus.ui:371
+#: lib/ui/stdmenus.ui:376
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Muistiinpano|i"
 
-#: lib/ui/stdmenus.ui:372
+#: lib/ui/stdmenus.ui:377
 #, fuzzy
 msgid "Comment|C"
 msgstr "Huomautus"
 
-#: lib/ui/stdmenus.ui:373
+#: lib/ui/stdmenus.ui:378
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:389
+#: lib/ui/stdmenus.ui:390
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Vaihda kieli"
 
-#: lib/ui/stdmenus.ui:392
+#: lib/ui/stdmenus.ui:393
 #, fuzzy
 msgid "Table of Contents|T"
 msgstr "Sisällysluettelo|S"
 
-#: lib/ui/stdmenus.ui:393
+#: lib/ui/stdmenus.ui:394
 #, fuzzy
 msgid "Start Appendix Here|A"
 msgstr "Aloita liite tästä|i"
 
-#: lib/ui/stdmenus.ui:395
+#: lib/ui/stdmenus.ui:396
 msgid "Compressed|o"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:396
+#: lib/ui/stdmenus.ui:397
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Asetukset"
 
-#: lib/ui/stdmenus.ui:402
+#: lib/ui/stdmenus.ui:403
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Hyväksy|#H"
 
-#: lib/ui/stdmenus.ui:403
+#: lib/ui/stdmenus.ui:404
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Ei muutosta"
 
-#: lib/ui/stdmenus.ui:404
+#: lib/ui/stdmenus.ui:405
 #, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Hyväksy|#H"
 
-#: lib/ui/stdmenus.ui:405
+#: lib/ui/stdmenus.ui:406
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Ei muutosta"
 
-#: lib/ui/stdmenus.ui:415
+#: lib/ui/stdmenus.ui:416
 #, fuzzy
 msgid "Next Reference|R"
 msgstr "Viite"
 
-#: lib/ui/stdmenus.ui:441
+#: lib/ui/stdmenus.ui:442
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Synonyymit..."
 
-#: lib/ui/stdmenus.ui:444
+#: lib/ui/stdmenus.ui:445
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "TeX-tietoja|X"
@@ -9248,11 +9247,11 @@ msgstr "Haluatko tallentaa asiakirjan?"
 msgid "Print document"
 msgstr "Tuo asiakirja"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView_pimpl.C:960
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:734
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView_pimpl.C:971
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:745
 msgid "Redo"
 msgstr "Tee uudelleen"
 
@@ -9548,7 +9547,7 @@ msgstr "Tapausympäristö|p"
 msgid "minibuffer"
 msgstr ""
 
-#: src/BufferView_pimpl.C:164
+#: src/BufferView.C:251
 #, fuzzy, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -9556,22 +9555,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/BufferView_pimpl.C:167 src/lyxfunc.C:832
+#: src/BufferView.C:254 src/lyxfunc.C:829
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Peru kaikki muokkaukset"
 
-#: src/BufferView_pimpl.C:168 src/lyxfunc.C:833 src/lyxvc.C:168
+#: src/BufferView.C:255 src/lyxfunc.C:830 src/lyxvc.C:170
 #, fuzzy
 msgid "&Revert"
 msgstr "Hylkää muutokset|y"
 
-#: src/BufferView_pimpl.C:168
+#: src/BufferView.C:255
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Vaihda avoimeen asiakirjaan"
 
-#: src/BufferView_pimpl.C:189
+#: src/BufferView.C:276
 #, fuzzy, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -9579,117 +9578,117 @@ msgid ""
 "Do you want to create a new document?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/BufferView_pimpl.C:192
+#: src/BufferView.C:279
 #, fuzzy
 msgid "Create new document?"
 msgstr "Luodaanko uusi tämän niminen asiakirja?"
 
-#: src/BufferView_pimpl.C:193
+#: src/BufferView.C:280
 #, fuzzy
 msgid "&Create"
 msgstr "Jä&rjestä"
 
-#: src/BufferView_pimpl.C:607
+#: src/BufferView.C:536
 #, fuzzy, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Tallensi kirjanmerkin %1$d"
 
-#: src/BufferView_pimpl.C:641
+#: src/BufferView.C:570
 #, fuzzy, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Siirtyi kirjanmerkille %1$d"
 
-#: src/BufferView_pimpl.C:711
-msgid "Select LyX document to insert"
-msgstr "Valitse lisättävä LyX-asiakirja"
-
-#: src/BufferView_pimpl.C:713 src/frontends/controllers/ControlBibtex.C:53
-#: src/frontends/controllers/ControlBibtex.C:64
-#: src/frontends/controllers/ControlExternal.C:168
-#: src/frontends/controllers/ControlGraphics.C:94
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
-#: src/lyxfunc.C:1715 src/lyxfunc.C:1754 src/lyxfunc.C:1831
-msgid "Documents|#o#O"
-msgstr "Asiakirjat|#A#a"
-
-#: src/BufferView_pimpl.C:715 src/lyxfunc.C:1756 src/lyxfunc.C:1833
-msgid "Examples|#E#e"
-msgstr "Esimerkit|#E#e"
-
-#: src/BufferView_pimpl.C:720 src/lyx_cb.C:142 src/lyxfunc.C:1722
-#: src/lyxfunc.C:1761
-#, fuzzy
-msgid "LyX Documents (*.lyx)"
-msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
-
-#: src/BufferView_pimpl.C:731 src/lyxfunc.C:1771 src/lyxfunc.C:1851
-#: src/lyxfunc.C:1865 src/lyxfunc.C:1881
-msgid "Canceled."
-msgstr "Peruttu."
-
-#: src/BufferView_pimpl.C:742
-#, c-format
-msgid "Inserting document %1$s..."
-msgstr "Lisätään asiakirja %1$s..."
-
-#: src/BufferView_pimpl.C:752
-#, c-format
-msgid "Document %1$s inserted."
-msgstr "Asiakirja %1$s lisätty."
-
-#: src/BufferView_pimpl.C:754
-#, c-format
-msgid "Could not insert document %1$s"
-msgstr "Asiakirjaa %1$s ei voi lisätä"
-
-#: src/BufferView_pimpl.C:963
+#: src/BufferView.C:737
 msgid "No further undo information"
 msgstr "Ei enää muuta kumottavaa"
 
-#: src/BufferView_pimpl.C:974
+#: src/BufferView.C:748
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/BufferView_pimpl.C:1122
+#: src/BufferView.C:896
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView_pimpl.C:1129
+#: src/BufferView.C:903
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView_pimpl.C:1136
+#: src/BufferView.C:910
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView_pimpl.C:1139
+#: src/BufferView.C:913
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView_pimpl.C:1185
+#: src/BufferView.C:959
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1188
+#: src/BufferView.C:962
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "LyXissä käytettävä avainsana."
 
-#: src/BufferView_pimpl.C:1193
+#: src/BufferView.C:967
 #, fuzzy
 msgid "One word in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView_pimpl.C:1195
+#: src/BufferView.C:969
 #, fuzzy
 msgid "One word in document."
 msgstr "Asiakirja avautuu: "
 
-#: src/BufferView_pimpl.C:1198
+#: src/BufferView.C:972
 #, fuzzy
 msgid "Count words"
 msgstr "Nykyinen sana"
+
+#: src/BufferView.C:1390
+msgid "Select LyX document to insert"
+msgstr "Valitse lisättävä LyX-asiakirja"
+
+#: src/BufferView.C:1392 src/frontends/controllers/ControlBibtex.C:54
+#: src/frontends/controllers/ControlBibtex.C:66
+#: src/frontends/controllers/ControlExternal.C:168
+#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlInclude.C:92 src/lyx_cb.C:133
+#: src/lyxfunc.C:1718 src/lyxfunc.C:1757 src/lyxfunc.C:1834
+msgid "Documents|#o#O"
+msgstr "Asiakirjat|#A#a"
+
+#: src/BufferView.C:1394 src/lyxfunc.C:1759 src/lyxfunc.C:1836
+msgid "Examples|#E#e"
+msgstr "Esimerkit|#E#e"
+
+#: src/BufferView.C:1399 src/lyx_cb.C:141 src/lyxfunc.C:1725
+#: src/lyxfunc.C:1764
+#, fuzzy
+msgid "LyX Documents (*.lyx)"
+msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
+
+#: src/BufferView.C:1410 src/lyxfunc.C:1774 src/lyxfunc.C:1854
+#: src/lyxfunc.C:1868 src/lyxfunc.C:1884
+msgid "Canceled."
+msgstr "Peruttu."
+
+#: src/BufferView.C:1421
+#, c-format
+msgid "Inserting document %1$s..."
+msgstr "Lisätään asiakirja %1$s..."
+
+#: src/BufferView.C:1431
+#, c-format
+msgid "Document %1$s inserted."
+msgstr "Asiakirja %1$s lisätty."
+
+#: src/BufferView.C:1433
+#, c-format
+msgid "Could not insert document %1$s"
+msgstr "Asiakirjaa %1$s ei voi lisätä"
 
 #: src/Chktex.C:67
 #, c-format
@@ -9713,12 +9712,12 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:410
+#: src/CutAndPaste.C:411
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Kappaleen tyyli"
 
-#: src/CutAndPaste.C:429
+#: src/CutAndPaste.C:430
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9729,7 +9728,7 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:435
+#: src/CutAndPaste.C:437
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Merkistö"
@@ -9972,48 +9971,48 @@ msgstr "peri"
 msgid "ignore"
 msgstr "ohita"
 
-#: src/LaTeX.C:87
+#: src/LaTeX.C:89
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "LaTeXin %1$d. ajo"
 
-#: src/LaTeX.C:281 src/LaTeX.C:349
+#: src/LaTeX.C:283 src/LaTeX.C:351
 msgid "Running MakeIndex."
 msgstr "MakeIndex on käynnissä."
 
-#: src/LaTeX.C:293
+#: src/LaTeX.C:295
 msgid "Running BibTeX."
 msgstr "BibTeX on käynnissä."
 
-#: src/MenuBackend.C:451 src/MenuBackend.C:472 src/MenuBackend.C:540
-#: src/MenuBackend.C:564 src/MenuBackend.C:589 src/MenuBackend.C:678
+#: src/MenuBackend.C:454 src/MenuBackend.C:475 src/MenuBackend.C:543
+#: src/MenuBackend.C:567 src/MenuBackend.C:592 src/MenuBackend.C:681
 msgid "No Documents Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
-#: src/MenuBackend.C:511
+#: src/MenuBackend.C:514
 #, fuzzy
 msgid "Plain Text as Lines"
 msgstr "ASCII-teksti riveinä"
 
-#: src/MenuBackend.C:513
+#: src/MenuBackend.C:516
 #, fuzzy
 msgid "Plain Text as Paragraphs"
 msgstr "ASCII-teksti kappaleina"
 
-#: src/MenuBackend.C:713
+#: src/MenuBackend.C:716
 msgid "No Table of contents"
 msgstr "Ei sisällysluetteloa"
 
-#: src/SpellBase.C:48
+#: src/SpellBase.C:50
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/buffer.C:234
+#: src/buffer.C:233
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Virhe! Väliaikaishakemiston luonti epäonnistui:"
 
-#: src/buffer.C:235
+#: src/buffer.C:234
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Virhe! Väliaikaishakemiston luonti epäonnistui:"
@@ -10028,7 +10027,7 @@ msgstr "valituksi asiakirjaluokaksi"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:448 src/text.C:366
+#: src/buffer.C:448 src/text.C:361
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Tuntematon merkintä: %1$s %2$s\n"
@@ -10050,6 +10049,13 @@ msgstr ""
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Tekstiluokkaa ei voi ladata "
+
+#: src/buffer.C:490
+#, c-format
+msgid ""
+"Using the default document class, because the  class %1$s could not be "
+"loaded."
+msgstr ""
 
 #: src/buffer.C:602 src/buffer.C:611
 #, fuzzy
@@ -10137,7 +10143,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo onnistui"
 
-#: src/buffer_funcs.C:77
+#: src/buffer_funcs.C:78
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -10145,12 +10151,12 @@ msgid ""
 "could not be read."
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/buffer_funcs.C:79
+#: src/buffer_funcs.C:80
 #, fuzzy
 msgid "Could not read document"
 msgstr "Asiakirjan avaaminen epäonnistui: "
 
-#: src/buffer_funcs.C:91
+#: src/buffer_funcs.C:92
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -10158,21 +10164,21 @@ msgid ""
 "Recover emergency save?"
 msgstr "Asiakirjasta on olemassa hätätallennusversio!"
 
-#: src/buffer_funcs.C:94
+#: src/buffer_funcs.C:95
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:95
+#: src/buffer_funcs.C:96
 #, fuzzy
 msgid "&Recover"
 msgstr "&Poista"
 
-#: src/buffer_funcs.C:95
+#: src/buffer_funcs.C:96
 #, fuzzy
 msgid "&Load Original"
 msgstr "K&eskus:"
 
-#: src/buffer_funcs.C:117
+#: src/buffer_funcs.C:118
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -10180,37 +10186,37 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:120
+#: src/buffer_funcs.C:121
 #, fuzzy
 msgid "Load backup?"
 msgstr "Palaa"
 
-#: src/buffer_funcs.C:121
+#: src/buffer_funcs.C:122
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Palaa"
 
-#: src/buffer_funcs.C:121
+#: src/buffer_funcs.C:122
 #, fuzzy
 msgid "Load &original"
 msgstr "K&eskus:"
 
-#: src/buffer_funcs.C:160
+#: src/buffer_funcs.C:161
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/buffer_funcs.C:162
+#: src/buffer_funcs.C:163
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Haluatko palauttaa asiakirjan versionhallinnasta?"
 
-#: src/buffer_funcs.C:163
+#: src/buffer_funcs.C:164
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Pala&uta"
 
-#: src/buffer_funcs.C:195
+#: src/buffer_funcs.C:197
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -10218,31 +10224,31 @@ msgid ""
 "could not be read."
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/buffer_funcs.C:196
+#: src/buffer_funcs.C:199
 #, fuzzy
 msgid "Could not read template"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/buffer_funcs.C:446
+#: src/buffer_funcs.C:449
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Alikappale"
 
-#: src/buffer_funcs.C:452
+#: src/buffer_funcs.C:455
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:455
+#: src/buffer_funcs.C:458
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "valinta"
 
-#: src/buffer_funcs.C:494
+#: src/buffer_funcs.C:497
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
 
-#: src/bufferlist.C:81 src/bufferlist.C:188
+#: src/bufferlist.C:82 src/bufferlist.C:190
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -10250,43 +10256,43 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/bufferlist.C:83 src/bufferlist.C:190 src/lyxfunc.C:667
+#: src/bufferlist.C:85 src/bufferlist.C:193 src/lyxfunc.C:662
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Haluatko tallentaa asiakirjan?"
 
-#: src/bufferlist.C:84 src/bufferlist.C:191
+#: src/bufferlist.C:86 src/bufferlist.C:194
 msgid "&Discard"
 msgstr ""
 
-#: src/bufferlist.C:310
+#: src/bufferlist.C:314
 #, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "LyX yrittää tallentaa asiakirjaa %1$s"
 
-#: src/bufferlist.C:320 src/bufferlist.C:333 src/bufferlist.C:347
+#: src/bufferlist.C:325 src/bufferlist.C:338 src/bufferlist.C:352
 msgid "  Save seems successful. Phew."
 msgstr "  Tallennus ilmeisesti onnistui. Huh."
 
-#: src/bufferlist.C:323 src/bufferlist.C:337
+#: src/bufferlist.C:328 src/bufferlist.C:342
 msgid "  Save failed! Trying..."
 msgstr "  Tallennus epäonnistui! Yrittää..."
 
-#: src/bufferlist.C:350
+#: src/bufferlist.C:355
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Tallennus epäonnistui! Asiakirja on hävinnyt."
 
-#: src/bufferparams.C:431
+#: src/bufferparams.C:433
 #, fuzzy, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/bufferparams.C:433
+#: src/bufferparams.C:435
 #, fuzzy
 msgid "Document class not available"
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/bufferparams.C:434
+#: src/bufferparams.C:436
 msgid "LyX will not be able to produce output."
 msgstr ""
 
@@ -10294,195 +10300,195 @@ msgstr ""
 msgid "No more insets"
 msgstr "Ei muita muistiinpanoja"
 
-#: src/client/debug.C:41 src/debug.C:41
+#: src/client/debug.C:41 src/debug.C:42
 msgid "No debugging message"
 msgstr "Ei virheviestiä"
 
-#: src/client/debug.C:42 src/debug.C:42
+#: src/client/debug.C:42 src/debug.C:43
 msgid "General information"
 msgstr "Yleisiä tietoja"
 
-#: src/client/debug.C:43 src/debug.C:67
+#: src/client/debug.C:43 src/debug.C:68
 #, fuzzy
 msgid "Developers' general debug messages"
 msgstr "Kaikki virheviestit"
 
-#: src/client/debug.C:44 src/debug.C:68
+#: src/client/debug.C:44 src/debug.C:69
 msgid "All debugging messages"
 msgstr "Kaikki virheviestit"
 
-#: src/client/debug.C:88 src/debug.C:112
+#: src/client/debug.C:89 src/debug.C:113
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Virheiden seuranta: \"%1$s\" (%2$s)"
 
-#: src/converter.C:318 src/converter.C:443 src/converter.C:467
-#: src/converter.C:506
+#: src/converter.C:320 src/converter.C:445 src/converter.C:469
+#: src/converter.C:508
 msgid "Cannot convert file"
 msgstr "Tiedoston muuntaminen epäonnistui"
 
-#: src/converter.C:319
+#: src/converter.C:321
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a convertor in the preferences."
 msgstr ""
 
-#: src/converter.C:398 src/format.C:315 src/format.C:374
+#: src/converter.C:400 src/format.C:316 src/format.C:375
 #, fuzzy
 msgid "Executing command: "
 msgstr "Komento on käynnissä:"
 
-#: src/converter.C:438
+#: src/converter.C:440
 #, fuzzy
 msgid "Build errors"
 msgstr "Käännösohjelma"
 
-#: src/converter.C:439
+#: src/converter.C:441
 #, fuzzy
 msgid "There were errors during the build process."
 msgstr "Käännösprosessin aikana tapahtui virheitä."
 
-#: src/converter.C:444 src/format.C:322 src/format.C:381
+#: src/converter.C:446 src/format.C:323 src/format.C:382
 #, fuzzy, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Muunnoskriptin suorittaminen epäonnistui."
 
-#: src/converter.C:468 src/converter.C:509
+#: src/converter.C:470 src/converter.C:511
 #, fuzzy, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Virhe! Väliaikaishakemiston luonti epäonnistui:"
 
-#: src/converter.C:508
+#: src/converter.C:510
 #, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Virhe! Väliaikaishakemiston luonti epäonnistui:"
 
-#: src/converter.C:577
+#: src/converter.C:579
 msgid "Running LaTeX..."
 msgstr "LaTeX on käynnissä..."
 
-#: src/converter.C:595
+#: src/converter.C:597
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
 
-#: src/converter.C:598
+#: src/converter.C:600
 #, fuzzy
 msgid "LaTeX failed"
 msgstr "LaTeXin lokitiedosto|L"
 
-#: src/converter.C:600
+#: src/converter.C:602
 #, fuzzy
 msgid "Output is empty"
 msgstr "on tyhjä"
 
-#: src/converter.C:601
+#: src/converter.C:603
 msgid "An empty output file was generated."
 msgstr ""
 
-#: src/debug.C:43
+#: src/debug.C:44
 msgid "Program initialisation"
 msgstr "Ohjelman käynnistys"
 
-#: src/debug.C:44
+#: src/debug.C:45
 msgid "Keyboard events handling"
 msgstr "Näppäimistötapahtumien käsittely"
 
-#: src/debug.C:45
+#: src/debug.C:46
 msgid "GUI handling"
 msgstr "Käyttöliittymän käsittely"
 
-#: src/debug.C:46
+#: src/debug.C:47
 #, fuzzy
 msgid "Lyxlex grammar parser"
 msgstr "Lyxlex-tulkki"
 
-#: src/debug.C:47
+#: src/debug.C:48
 msgid "Configuration files reading"
 msgstr "Asetustiedostojen luku"
 
-#: src/debug.C:48
+#: src/debug.C:49
 msgid "Custom keyboard definition"
 msgstr "Mukautettu näppäimistömääritys"
 
-#: src/debug.C:49
+#: src/debug.C:50
 msgid "LaTeX generation/execution"
 msgstr "LaTeX-tiedostojen luonti ja ajaminen"
 
-#: src/debug.C:50
+#: src/debug.C:51
 msgid "Math editor"
 msgstr "Matematiikkaeditori"
 
-#: src/debug.C:51
+#: src/debug.C:52
 msgid "Font handling"
 msgstr "Kirjasinten käsittely"
 
-#: src/debug.C:52
+#: src/debug.C:53
 msgid "Textclass files reading"
 msgstr "Tekstiluokkatiedostojen luku"
 
-#: src/debug.C:53
+#: src/debug.C:54
 msgid "Version control"
 msgstr "Versiohallinta"
 
-#: src/debug.C:54
+#: src/debug.C:55
 msgid "External control interface"
 msgstr "Ulkoinen hallintarajapinta"
 
-#: src/debug.C:55
+#: src/debug.C:56
 msgid "Keep *roff temporary files"
 msgstr "Säilytä väliaikaiset *roff-tiedostot"
 
-#: src/debug.C:56
+#: src/debug.C:57
 msgid "User commands"
 msgstr "Käyttäjän komennot"
 
-#: src/debug.C:57
+#: src/debug.C:58
 msgid "The LyX Lexxer"
 msgstr "LyX-Lex"
 
-#: src/debug.C:58
+#: src/debug.C:59
 msgid "Dependency information"
 msgstr "Riippuvuustiedot"
 
-#: src/debug.C:59
+#: src/debug.C:60
 msgid "LyX Insets"
 msgstr "LyX-osiot"
 
-#: src/debug.C:60
+#: src/debug.C:61
 msgid "Files used by LyX"
 msgstr "LyXin käyttämät tiedostot"
 
-#: src/debug.C:61
+#: src/debug.C:62
 msgid "Workarea events"
 msgstr "Työalueen tapahtumat"
 
-#: src/debug.C:62
+#: src/debug.C:63
 msgid "Insettext/tabular messages"
 msgstr "Teksti- tai taulukko-osion viestit"
 
-#: src/debug.C:63
+#: src/debug.C:64
 msgid "Graphics conversion and loading"
 msgstr "Kuvien muuntaminen ja lataaminen"
 
-#: src/debug.C:64
+#: src/debug.C:65
 #, fuzzy
 msgid "Change tracking"
 msgstr "Vaihda kieli"
 
-#: src/debug.C:65
+#: src/debug.C:66
 #, fuzzy
 msgid "External template/inset messages"
 msgstr "Erilliset ohjelmat"
 
-#: src/debug.C:66
+#: src/debug.C:67
 msgid "RowPainter profiling"
 msgstr ""
 
-#: src/exporter.C:77
+#: src/exporter.C:79
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -10490,110 +10496,110 @@ msgid ""
 "Do you want to over-write that file?"
 msgstr ""
 
-#: src/exporter.C:80
+#: src/exporter.C:82
 #, fuzzy
 msgid "Over-write file?"
 msgstr "&Kirjoituskone:"
 
-#: src/exporter.C:82 src/lyx_cb.C:169 src/lyxfunc.C:1878
+#: src/exporter.C:84 src/lyx_cb.C:168 src/lyxfunc.C:1881
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Kirjoituskone:"
 
-#: src/exporter.C:82
+#: src/exporter.C:84
 #, fuzzy
 msgid "Over-write &all"
 msgstr "&Kirjoituskone:"
 
-#: src/exporter.C:83
+#: src/exporter.C:85
 #, fuzzy
 msgid "&Cancel export"
 msgstr "&Peru"
 
-#: src/exporter.C:132
+#: src/exporter.C:134
 #, fuzzy
 msgid "Couldn't copy file"
 msgstr "Ei voi avata tiedostoa"
 
-#: src/exporter.C:133
+#: src/exporter.C:135
 #, c-format
 msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
-#: src/exporter.C:171
+#: src/exporter.C:173
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Ei voi viedä tiedostoa"
 
-#: src/exporter.C:172
+#: src/exporter.C:174
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ei tietoa, miten tuoda muodosta %1$s"
 
-#: src/exporter.C:205
+#: src/exporter.C:207
 #, fuzzy
 msgid "File name error"
 msgstr "Tiedostonimi"
 
-#: src/exporter.C:206
+#: src/exporter.C:208
 #, fuzzy
 msgid "The directory path to the document cannot contain spaces."
 msgstr "LyX-tiedoston polussa ei voi olla välilyöntejä."
 
-#: src/exporter.C:241
+#: src/exporter.C:243
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Asiakirja viety nimellä "
 
-#: src/exporter.C:247
+#: src/exporter.C:249
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä "
 
-#: src/exporter.C:253
+#: src/exporter.C:255
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä "
 
-#: src/format.C:265 src/format.C:278 src/format.C:288 src/format.C:321
+#: src/format.C:266 src/format.C:279 src/format.C:289 src/format.C:322
 msgid "Cannot view file"
 msgstr "Tiedostoa ei voi katsella"
 
-#: src/format.C:266 src/format.C:336
+#: src/format.C:267 src/format.C:337
 #, fuzzy, c-format
 msgid "File does not exist: %1$s"
 msgstr "Tiedostoa ei ole olemassa."
 
-#: src/format.C:279
+#: src/format.C:280
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "Ei tietoa, miten näyttää %1$s"
 
-#: src/format.C:289
+#: src/format.C:290
 #, fuzzy, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/format.C:335 src/format.C:348 src/format.C:358 src/format.C:380
+#: src/format.C:336 src/format.C:349 src/format.C:359 src/format.C:381
 #, fuzzy
 msgid "Cannot edit file"
 msgstr "Tiedostoon ei voi kirjoittaa"
 
-#: src/format.C:349
+#: src/format.C:350
 #, fuzzy, c-format
 msgid "No information for editing %1$s"
 msgstr "Ei tietoa, miten näyttää %1$s"
 
-#: src/format.C:359
+#: src/format.C:360
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr ""
 
-#: src/frontends/LyXView.C:326
+#: src/frontends/LyXView.C:323
 msgid " (changed)"
 msgstr " (muutettu)"
 
-#: src/frontends/LyXView.C:330
+#: src/frontends/LyXView.C:327
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
@@ -10662,57 +10668,57 @@ msgstr "Kirjastohakemisto:"
 msgid "User directory: "
 msgstr "Käyttäjän hakemisto:"
 
-#: src/frontends/controllers/ControlBibtex.C:55
+#: src/frontends/controllers/ControlBibtex.C:56
 #, fuzzy
 msgid "BibTeX Databases (*.bib)"
 msgstr "*.bib|BiBTeX-tietokannat (*.bib)"
 
-#: src/frontends/controllers/ControlBibtex.C:57
+#: src/frontends/controllers/ControlBibtex.C:58
 msgid "Select a BibTeX database to add"
 msgstr "Valitse lisättävä BibTeX-tietokanta"
 
-#: src/frontends/controllers/ControlBibtex.C:66
+#: src/frontends/controllers/ControlBibtex.C:68
 #, fuzzy
 msgid "BibTeX Styles (*.bst)"
 msgstr "*.bst|BiBTeXin tyylitiedostot (*.bst)"
 
-#: src/frontends/controllers/ControlBibtex.C:68
+#: src/frontends/controllers/ControlBibtex.C:70
 msgid "Select a BibTeX style"
 msgstr "Valitse BibTeX-tyyli"
 
-#: src/frontends/controllers/ControlBox.C:62
+#: src/frontends/controllers/ControlBox.C:63
 msgid "No frame drawn"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:63
+#: src/frontends/controllers/ControlBox.C:64
 msgid "Rectangular box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:64
+#: src/frontends/controllers/ControlBox.C:65
 msgid "Oval box, thin"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:65
+#: src/frontends/controllers/ControlBox.C:66
 msgid "Oval box, thick"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:66
+#: src/frontends/controllers/ControlBox.C:67
 msgid "Shadow box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:67
+#: src/frontends/controllers/ControlBox.C:68
 #, fuzzy
 msgid "Double box"
 msgstr "Kaksink."
 
-#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt3/QBox.C:190
+#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt3/QBox.C:190
 #: src/frontends/qt3/QBox.C:224 src/frontends/qt4/QBox.C:188
 #: src/frontends/qt4/QBox.C:222
 #, fuzzy
 msgid "Depth"
 msgstr ", Syvyys: "
 
-#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt3/QBox.C:193
+#: src/frontends/controllers/ControlBox.C:84 src/frontends/qt3/QBox.C:193
 #: src/frontends/qt3/QBox.C:227 src/frontends/qt3/QBox.C:260
 #: src/frontends/qt3/QBoxDialog.C:93 src/frontends/qt4/QBox.C:191
 #: src/frontends/qt4/QBox.C:225 src/frontends/qt4/QBox.C:258
@@ -10736,7 +10742,7 @@ msgstr "Sans serif"
 msgid "Typewriter"
 msgstr "Kirjoituskone"
 
-#: src/frontends/controllers/ControlErrorList.C:50
+#: src/frontends/controllers/ControlErrorList.C:51
 #, fuzzy, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s ja %2$s"
@@ -10747,66 +10753,66 @@ msgid "Select external file"
 msgstr "Valitse ulkoinen tiedosto"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Top left"
 msgstr "Vasen yläkulma"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Bottom left"
 msgstr "Oikea alakulma"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 #, fuzzy
 msgid "Baseline left"
 msgstr "Keskitä|K"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Top center"
 msgstr "Ylhäällä keskellä"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Bottom center"
 msgstr "Alhaalla keskellä"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 #, fuzzy
 msgid "Baseline center"
 msgstr "Keskitä|K"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Top right"
 msgstr "Yläoikealla"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Bottom right"
 msgstr "Alaoikealla"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 #, fuzzy
 msgid "Baseline right"
 msgstr "Viiva oikealla|o"
 
-#: src/frontends/controllers/ControlGraphics.C:86
+#: src/frontends/controllers/ControlGraphics.C:87
 msgid "Select graphics file"
 msgstr "Valitse kuvatiedosto"
 
-#: src/frontends/controllers/ControlGraphics.C:93
+#: src/frontends/controllers/ControlGraphics.C:94
 msgid "Clipart|#C#c"
 msgstr "Leikekuva|#L#l"
 
-#: src/frontends/controllers/ControlInclude.C:77
+#: src/frontends/controllers/ControlInclude.C:78
 msgid "Select document to include"
 msgstr "Valitse sisällytettävä asiakirja"
 
-#: src/frontends/controllers/ControlInclude.C:84
+#: src/frontends/controllers/ControlInclude.C:86
 #, fuzzy
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "*.(tex|lyx)| LaTeX- tai LyX-asiakirjat (*.tex *.lyx)"
@@ -10848,63 +10854,63 @@ msgstr "Käännöslokitiedostoa ei ole."
 msgid "No version control log file found."
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
-#: src/frontends/controllers/ControlPrefs.C:112
+#: src/frontends/controllers/ControlPrefs.C:114
 msgid "Choose bind file"
 msgstr "Valitse pikanäppäintiedosto"
 
-#: src/frontends/controllers/ControlPrefs.C:113
+#: src/frontends/controllers/ControlPrefs.C:115
 #, fuzzy
 msgid "LyX bind files (*.bind)"
 msgstr "BiBTeX-tietokannat (*.bib)"
 
-#: src/frontends/controllers/ControlPrefs.C:119
+#: src/frontends/controllers/ControlPrefs.C:123
 msgid "Choose UI file"
 msgstr "Valitse käyttöliittymätiedosto"
 
-#: src/frontends/controllers/ControlPrefs.C:120
+#: src/frontends/controllers/ControlPrefs.C:124
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "Kaikki tiedostot (*)"
 
-#: src/frontends/controllers/ControlPrefs.C:126
+#: src/frontends/controllers/ControlPrefs.C:132
 msgid "Choose keyboard map"
 msgstr "Valitse näppäinkartta"
 
-#: src/frontends/controllers/ControlPrefs.C:127
+#: src/frontends/controllers/ControlPrefs.C:133
 #, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Käytä &näppäinkarttaa"
 
-#: src/frontends/controllers/ControlPrefs.C:133
+#: src/frontends/controllers/ControlPrefs.C:141
 msgid "Choose personal dictionary"
 msgstr "Valitse oma sanasto"
 
-#: src/frontends/controllers/ControlPrefs.C:134
+#: src/frontends/controllers/ControlPrefs.C:142
 #, fuzzy
 msgid "*.ispell"
 msgstr "Ispell"
 
-#: src/frontends/controllers/ControlPrint.C:73
+#: src/frontends/controllers/ControlPrint.C:74
 msgid "Print to file"
 msgstr "Tulosta tiedostoon"
 
-#: src/frontends/controllers/ControlPrint.C:74
+#: src/frontends/controllers/ControlPrint.C:75
 msgid "PostScript files (*.ps)"
 msgstr "PostScript-tiedostot (*.ps)"
 
-#: src/frontends/controllers/ControlSpellchecker.C:111
+#: src/frontends/controllers/ControlSpellchecker.C:114
 #, fuzzy
 msgid "Spellchecker error"
 msgstr "Oikoluku"
 
-#: src/frontends/controllers/ControlSpellchecker.C:112
+#: src/frontends/controllers/ControlSpellchecker.C:115
 #, fuzzy
 msgid "The spellchecker could not be started\n"
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:268
+#: src/frontends/controllers/ControlSpellchecker.C:271
 #, fuzzy
 msgid ""
 "The spellchecker has died for some reason.\n"
@@ -10913,54 +10919,54 @@ msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:271
+#: src/frontends/controllers/ControlSpellchecker.C:274
 #, fuzzy
 msgid "The spellchecker has failed.\n"
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:276
+#: src/frontends/controllers/ControlSpellchecker.C:278
 #, fuzzy
 msgid "The spellchecker has failed"
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/controllers/ControlSpellchecker.C:290
+#: src/frontends/controllers/ControlSpellchecker.C:293
 #, fuzzy, c-format
 msgid "%1$d words checked."
 msgstr "Yksi sana tarkastettu."
 
-#: src/frontends/controllers/ControlSpellchecker.C:292
+#: src/frontends/controllers/ControlSpellchecker.C:295
 msgid "One word checked."
 msgstr "Yksi sana tarkastettu."
 
-#: src/frontends/controllers/ControlSpellchecker.C:295
+#: src/frontends/controllers/ControlSpellchecker.C:298
 #, fuzzy
 msgid "Spelling check completed"
 msgstr "Oikoluku valmis! "
 
 #: src/frontends/controllers/ControlToc.C:91 src/frontends/gtk/GToc.C:33
-#: src/frontends/qt3/QToc.C:41 src/insets/insettoc.C:42
+#: src/frontends/qt3/QToc.C:41 src/insets/insettoc.C:43
 msgid "Table of Contents"
 msgstr "Sisällysluettelo"
 
-#: src/frontends/controllers/biblio.C:222
+#: src/frontends/controllers/biblio.C:223
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s ja %2$s"
 
-#: src/frontends/controllers/biblio.C:226
+#: src/frontends/controllers/biblio.C:228
 #, c-format
 msgid "%1$s et al."
 msgstr "%1$s ym."
 
-#: src/frontends/controllers/biblio.C:263
+#: src/frontends/controllers/biblio.C:265
 msgid "No year"
 msgstr "Ei vuotta"
 
-#: src/frontends/controllers/biblio.C:800
+#: src/frontends/controllers/biblio.C:802
 #, fuzzy
 msgid "before"
 msgstr "Edeltävä teksti:"
@@ -11065,66 +11071,66 @@ msgstr "Magenta"
 msgid "Yellow"
 msgstr "Keltainen"
 
-#: src/frontends/controllers/helper_funcs.C:100
+#: src/frontends/controllers/helper_funcs.C:101
 #, fuzzy
 msgid "System files|#S#s"
 msgstr "Järj. PN.|#J#j"
 
-#: src/frontends/controllers/helper_funcs.C:103
+#: src/frontends/controllers/helper_funcs.C:104
 #, fuzzy
 msgid "User files|#U#u"
 msgstr "Käytt. PN|#y#Y"
 
-#: src/frontends/controllers/tex_helpers.C:63
+#: src/frontends/controllers/tex_helpers.C:64
 #, fuzzy
 msgid "Could not update TeX information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/frontends/controllers/tex_helpers.C:64
+#: src/frontends/controllers/tex_helpers.C:65
 #, fuzzy, c-format
 msgid "The script `%s' failed."
 msgstr ""
 "Oikolukimen prosessi sulkeutui jostakin syystä.\n"
 "Se saatettiin sulkea väkisin."
 
-#: src/frontends/gtk/Dialogs.C:265 src/frontends/qt3/Dialogs.C:219
+#: src/frontends/gtk/Dialogs.C:266 src/frontends/qt3/Dialogs.C:219
 #: src/frontends/qt4/Dialogs.C:216
 #, fuzzy
 msgid "Index Entry"
 msgstr "Hakemistoviite"
 
-#: src/frontends/gtk/Dialogs.C:265
+#: src/frontends/gtk/Dialogs.C:267
 msgid "Keyword:|#K"
 msgstr "Avainsana:|#A"
 
-#: src/frontends/gtk/Dialogs.C:271 src/frontends/gtk/GRef.C:89
+#: src/frontends/gtk/Dialogs.C:274 src/frontends/gtk/GRef.C:89
 #: src/frontends/qt3/Dialogs.C:225 src/frontends/qt4/Dialogs.C:222
 #, fuzzy
 msgid "Label"
 msgstr "&Nimike"
 
-#: src/frontends/gtk/Dialogs.C:271
+#: src/frontends/gtk/Dialogs.C:275
 msgid "Label:|#L"
 msgstr "Nimike:|#N"
 
-#: src/frontends/gtk/GAboutlyx.C:200
+#: src/frontends/gtk/GAboutlyx.C:201
 #, fuzzy
 msgid "C_redits"
 msgstr "Kiitokset"
 
-#: src/frontends/gtk/GBibItem.C:33 src/frontends/qt3/QBibitem.C:31
+#: src/frontends/gtk/GBibItem.C:34 src/frontends/qt3/QBibitem.C:31
 #: src/frontends/qt4/QBibitem.C:31
 #, fuzzy
 msgid "Bibliography Entry Settings"
 msgstr "Lähdeviite"
 
-#: src/frontends/gtk/GBibtex.C:41 src/frontends/qt3/QBibtex.C:48
+#: src/frontends/gtk/GBibtex.C:42 src/frontends/qt3/QBibtex.C:48
 #: src/frontends/qt4/QBibtex.C:47
 #, fuzzy
 msgid "BibTeX Bibliography"
 msgstr "Viitteet"
 
-#: src/frontends/gtk/GBox.C:42 src/frontends/qt3/QBox.C:51
+#: src/frontends/gtk/GBox.C:43 src/frontends/qt3/QBox.C:51
 #: src/frontends/qt4/QBox.C:49
 #, fuzzy
 msgid "Box Settings"
@@ -11168,27 +11174,27 @@ msgstr "Yhdistä sarakkeet"
 msgid "Text Style"
 msgstr "TeX-tyyli|X"
 
-#: src/frontends/gtk/GCitation.C:120
+#: src/frontends/gtk/GCitation.C:122
 msgid "CiteKeys"
 msgstr ""
 
-#: src/frontends/gtk/GCitation.C:126
+#: src/frontends/gtk/GCitation.C:129
 msgid "BibKeys"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:59 src/frontends/qt3/QDocument.C:70
+#: src/frontends/gtk/GDocument.C:60 src/frontends/qt3/QDocument.C:70
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
 msgstr "Asiakirjan asetukset"
 
-#: src/frontends/gtk/GDocument.C:105 src/frontends/qt3/QDocument.C:135
+#: src/frontends/gtk/GDocument.C:107 src/frontends/qt3/QDocument.C:135
 #: src/frontends/qt4/QDocumentDialog.C:366
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Mahdolliset"
 
-#: src/frontends/gtk/GDocument.C:129 src/frontends/gtk/GDocument.C:141
-#: src/frontends/gtk/GDocument.C:153 src/frontends/qt3/QDocument.C:151
+#: src/frontends/gtk/GDocument.C:132 src/frontends/gtk/GDocument.C:144
+#: src/frontends/gtk/GDocument.C:156 src/frontends/qt3/QDocument.C:151
 #: src/frontends/qt3/QDocument.C:157 src/frontends/qt3/QDocument.C:163
 #: src/frontends/qt4/QDocumentDialog.C:154
 #: src/frontends/qt4/QDocumentDialog.C:160
@@ -11196,90 +11202,90 @@ msgstr "Mahdolliset"
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:195
+#: src/frontends/gtk/GDocument.C:198
 #, fuzzy
 msgid "Small Skip"
 msgstr "Pieni väli"
 
-#: src/frontends/gtk/GDocument.C:196
+#: src/frontends/gtk/GDocument.C:199
 #, fuzzy
 msgid "Medium Skip"
 msgstr "Keskisuuri väli"
 
-#: src/frontends/gtk/GDocument.C:197
+#: src/frontends/gtk/GDocument.C:200
 #, fuzzy
 msgid "Big Skip"
 msgstr "Suuri väli"
 
-#: src/frontends/gtk/GDocument.C:226 src/frontends/qt3/QDocument.C:121
+#: src/frontends/gtk/GDocument.C:229 src/frontends/qt3/QDocument.C:121
 #: src/frontends/qt4/QDocumentDialog.C:216
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/gtk/GDocument.C:227 src/frontends/qt3/QDocument.C:122
+#: src/frontends/gtk/GDocument.C:230 src/frontends/qt3/QDocument.C:122
 #: src/frontends/qt4/QDocumentDialog.C:217
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/gtk/GDocument.C:908
+#: src/frontends/gtk/GDocument.C:911
 #, fuzzy
 msgid "No headings numbered"
 msgstr "Numerointi"
 
-#: src/frontends/gtk/GDocument.C:909
+#: src/frontends/gtk/GDocument.C:912
 msgid "Only parts numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:910
+#: src/frontends/gtk/GDocument.C:913
 msgid "Chapters and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:911
+#: src/frontends/gtk/GDocument.C:914
 #, fuzzy
 msgid "Sections and above numbered"
 msgstr "Otsikkotasojen lkm.:"
 
-#: src/frontends/gtk/GDocument.C:912
+#: src/frontends/gtk/GDocument.C:915
 msgid "Subsections and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:913
+#: src/frontends/gtk/GDocument.C:916
 msgid "Subsubsections and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:914
+#: src/frontends/gtk/GDocument.C:917
 msgid "Paragraphs and above numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:915
+#: src/frontends/gtk/GDocument.C:918
 msgid "All headings numbered"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:926
+#: src/frontends/gtk/GDocument.C:930
 msgid "Only Parts appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:927
+#: src/frontends/gtk/GDocument.C:931
 msgid "Chapters and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:928
+#: src/frontends/gtk/GDocument.C:932
 msgid "Sections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:929
+#: src/frontends/gtk/GDocument.C:933
 msgid "Subsections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:930
+#: src/frontends/gtk/GDocument.C:934
 msgid "Subsubsections and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:931
+#: src/frontends/gtk/GDocument.C:935
 msgid "Paragraphs and above appear in TOC"
 msgstr ""
 
-#: src/frontends/gtk/GDocument.C:932
+#: src/frontends/gtk/GDocument.C:936
 msgid "TOC contains all headings"
 msgstr ""
 
@@ -11428,13 +11434,13 @@ msgstr "Lähetä asiakirja komentoon"
 msgid "Show File"
 msgstr "Näytä tiedosto"
 
-#: src/frontends/gtk/GSpellchecker.C:35 src/frontends/qt3/QPrefsDialog.C:107
+#: src/frontends/gtk/GSpellchecker.C:34 src/frontends/qt3/QPrefsDialog.C:107
 #: src/frontends/qt3/QSpellchecker.C:35 src/frontends/qt4/QPrefsDialog.C:748
 #: src/frontends/qt4/QSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Oikoluku"
 
-#: src/frontends/gtk/GSpellchecker.C:136
+#: src/frontends/gtk/GSpellchecker.C:135
 #, fuzzy
 msgid "checked"
 msgstr "Oikoluku"
@@ -11484,9 +11490,9 @@ msgstr "Taulukkoasetukset"
 msgid "Text Wrap Settings"
 msgstr "Taulukkoasetukset"
 
-#: src/frontends/qt3/Alert_pimpl.C:39 src/frontends/qt3/Alert_pimpl.C:64
-#: src/frontends/qt3/Alert_pimpl.C:76 src/frontends/qt3/Alert_pimpl.C:88
-#: src/frontends/qt3/Alert_pimpl.C:101 src/frontends/qt4/Alert_pimpl.C:42
+#: src/frontends/qt3/Alert_pimpl.C:40 src/frontends/qt3/Alert_pimpl.C:65
+#: src/frontends/qt3/Alert_pimpl.C:77 src/frontends/qt3/Alert_pimpl.C:89
+#: src/frontends/qt3/Alert_pimpl.C:102 src/frontends/qt4/Alert_pimpl.C:42
 #: src/frontends/qt4/Alert_pimpl.C:62 src/frontends/qt4/Alert_pimpl.C:71
 #: src/frontends/qt4/Alert_pimpl.C:80 src/frontends/qt4/Alert_pimpl.C:90
 #, c-format
@@ -11591,6 +11597,7 @@ msgid "LyX: Delimiters"
 msgstr "LyX: Erottimet"
 
 #: src/frontends/qt3/QDelimiterDialog.C:106
+#: src/frontends/qt4/QDelimiterDialog.C:110
 #, fuzzy
 msgid "Variable size"
 msgstr "taulukkorivi"
@@ -11662,7 +11669,7 @@ msgid "fancy"
 msgstr "hienot"
 
 #: src/frontends/qt3/QDocument.C:186 src/frontends/qt4/QDocumentDialog.C:124
-#: src/text.C:2412
+#: src/text.C:2415
 msgid "OneHalf"
 msgstr "Puolikas"
 
@@ -12047,7 +12054,7 @@ msgstr "Lähetä asiakirja komentoon"
 msgid "Vertical Space Settings"
 msgstr "Taulukkoasetukset"
 
-#: src/frontends/qt3/QtView.C:211 src/frontends/qt4/GuiView.C:234
+#: src/frontends/qt3/QtView.C:212 src/frontends/qt4/GuiView.C:234
 msgid "LyX"
 msgstr "LyX"
 
@@ -12144,22 +12151,22 @@ msgstr "ranska"
 msgid "(None)"
 msgstr "Ei mikään"
 
-#: src/importer.C:45
+#: src/importer.C:46
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Tuo: %1$s..."
 
-#: src/importer.C:63
+#: src/importer.C:64
 #, fuzzy
 msgid "Couldn't import file"
 msgstr "Ei voi tuoda tiedostoa"
 
-#: src/importer.C:64
+#: src/importer.C:65
 #, fuzzy, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ei tietoa, miten tuoda muodosta %1$s"
 
-#: src/importer.C:89
+#: src/importer.C:90
 msgid "imported."
 msgstr "tuotu."
 
@@ -12167,73 +12174,73 @@ msgstr "tuotu."
 msgid "Opened inset"
 msgstr "Osio avattiin"
 
-#: src/insets/insetbibtex.C:106
+#: src/insets/insetbibtex.C:107
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeXin luomat lähdeviitteet"
 
-#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
+#: src/insets/insetbibtex.C:195 src/insets/insetbibtex.C:247
 msgid "Export Warning!"
 msgstr ""
 
-#: src/insets/insetbibtex.C:194
+#: src/insets/insetbibtex.C:196
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/insetbibtex.C:245
+#: src/insets/insetbibtex.C:248
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
 
-#: src/insets/insetbox.C:57
+#: src/insets/insetbox.C:62
 #, fuzzy
 msgid "Boxed"
 msgstr "Lihavoitu"
 
-#: src/insets/insetbox.C:58
+#: src/insets/insetbox.C:63
 #, fuzzy
 msgid "Frameless"
 msgstr "Parametrit"
 
-#: src/insets/insetbox.C:59
+#: src/insets/insetbox.C:64
 #, fuzzy
 msgid "ovalbox"
 msgstr "Kaksink."
 
-#: src/insets/insetbox.C:60
+#: src/insets/insetbox.C:65
 #, fuzzy
 msgid "Ovalbox"
 msgstr "Kaksink."
 
-#: src/insets/insetbox.C:61
+#: src/insets/insetbox.C:66
 msgid "Shadowbox"
 msgstr ""
 
-#: src/insets/insetbox.C:62
+#: src/insets/insetbox.C:67
 #, fuzzy
 msgid "Doublebox"
 msgstr "Kaksink."
 
-#: src/insets/insetbox.C:116
+#: src/insets/insetbox.C:123
 #, fuzzy
 msgid "Opened Box Inset"
 msgstr "Muistiinpano-osio avattu"
 
-#: src/insets/insetbranch.C:72
+#: src/insets/insetbranch.C:74
 #, fuzzy
 msgid "Opened Branch Inset"
 msgstr "Kelluva irrallinen osio avattu"
 
-#: src/insets/insetbranch.C:97
+#: src/insets/insetbranch.C:100
 #, fuzzy
 msgid "Branch: "
 msgstr "ranska"
 
-#: src/insets/insetbranch.C:103 src/insets/insetcharstyle.C:157
-#: src/insets/insetcharstyle.C:204
+#: src/insets/insetbranch.C:107 src/insets/insetcharstyle.C:158
+#: src/insets/insetcharstyle.C:206
 #, fuzzy
 msgid "Undef: "
 msgstr "Viite: "
@@ -12247,57 +12254,57 @@ msgstr "Kuvatekstiosio avattu"
 msgid "Opened CharStyle Inset"
 msgstr "Muistiinpano-osio avattu"
 
-#: src/insets/insetenv.C:65
+#: src/insets/insetenv.C:68
 #, fuzzy
 msgid "Opened Environment Inset: "
 msgstr "Valinnaisen parametrin osio avattu"
 
-#: src/insets/insetert.C:142
+#: src/insets/insetert.C:143
 msgid "Opened ERT Inset"
 msgstr "ERT-osio avattiin"
 
-#: src/insets/insetert.C:385
+#: src/insets/insetert.C:387
 #, fuzzy
 msgid "ERT"
 msgstr "ERT"
 
-#: src/insets/insetexternal.C:579
+#: src/insets/insetexternal.C:580
 #, fuzzy, c-format
 msgid "External template %1$s is not installed"
 msgstr "Erilliset ohjelmat"
 
-#: src/insets/insetfloat.C:134 src/insets/insetfloat.C:374
-#: src/insets/insetfloat.C:384
+#: src/insets/insetfloat.C:137 src/insets/insetfloat.C:378
+#: src/insets/insetfloat.C:389
 msgid "float: "
 msgstr "irrallinen: "
 
-#: src/insets/insetfloat.C:291
+#: src/insets/insetfloat.C:294
 msgid "Opened Float Inset"
 msgstr "Irrallinen avattu"
 
-#: src/insets/insetfloat.C:386
+#: src/insets/insetfloat.C:391
 #, fuzzy
 msgid " (sideways)"
 msgstr "Kiertyvä kalvon alku"
 
-#: src/insets/insetfloatlist.C:57
+#: src/insets/insetfloatlist.C:58
 msgid "ERROR: Nonexistent float type!"
 msgstr "VIRHE: Olematon irrallistyyppi!"
 
-#: src/insets/insetfloatlist.C:122
+#: src/insets/insetfloatlist.C:124
 #, fuzzy, c-format
 msgid "List of %1$s"
 msgstr "Luettelo: %1$s"
 
-#: src/insets/insetfoot.C:35 src/insets/insetfoot.C:43
+#: src/insets/insetfoot.C:37 src/insets/insetfoot.C:46
 msgid "foot"
 msgstr "alaviite"
 
-#: src/insets/insetfoot.C:56
+#: src/insets/insetfoot.C:59
 msgid "Opened Footnote Inset"
 msgstr "Alaviiteosio avattiin"
 
-#: src/insets/insetgraphics.C:475 src/insets/insetinclude.C:414
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:427
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -12305,25 +12312,25 @@ msgid ""
 "into the temporary directory."
 msgstr "Virhe! Väliaikaishakemiston poistaminen epäonnistui:"
 
-#: src/insets/insetgraphics.C:707
+#: src/insets/insetgraphics.C:709
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:813
+#: src/insets/insetgraphics.C:816
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Kuvatiedosto: %1$s"
 
-#: src/insets/insetinclude.C:284
+#: src/insets/insetinclude.C:289
 msgid "Verbatim Input"
 msgstr "Sinänsä"
 
-#: src/insets/insetinclude.C:285
+#: src/insets/insetinclude.C:292
 msgid "Verbatim Input*"
 msgstr "Sinänsä*"
 
-#: src/insets/insetinclude.C:382
+#: src/insets/insetinclude.C:394
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -12331,100 +12338,100 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/insetinclude.C:388
+#: src/insets/insetinclude.C:400
 msgid "Different textclasses"
 msgstr ""
 
-#: src/insets/insetindex.C:39
+#: src/insets/insetindex.C:40
 msgid "Idx"
 msgstr "Hakusana"
 
-#: src/insets/insetindex.C:71
+#: src/insets/insetindex.C:73
 msgid "Index"
 msgstr "Hakemisto"
 
-#: src/insets/insetmarginal.C:30 src/insets/insetmarginal.C:38
+#: src/insets/insetmarginal.C:32 src/insets/insetmarginal.C:41
 msgid "margin"
 msgstr "reunahuomautus"
 
-#: src/insets/insetmarginal.C:51
+#: src/insets/insetmarginal.C:54
 msgid "Opened Marginal Note Inset"
 msgstr "Reunahuomautusosio avattu"
 
-#: src/insets/insetnote.C:60
+#: src/insets/insetnote.C:65
 msgid "Comment"
 msgstr "Huomautus"
 
-#: src/insets/insetnote.C:61
+#: src/insets/insetnote.C:66
 #, fuzzy
 msgid "Greyed out"
 msgstr "Osio avattiin"
 
-#: src/insets/insetnote.C:62
+#: src/insets/insetnote.C:67
 #, fuzzy
 msgid "Framed"
 msgstr "Etunimi"
 
-#: src/insets/insetnote.C:63
+#: src/insets/insetnote.C:68
 #, fuzzy
 msgid "Shaded"
 msgstr "&Muoto:"
 
-#: src/insets/insetnote.C:141
+#: src/insets/insetnote.C:148
 msgid "Opened Note Inset"
 msgstr "Muistiinpano-osio avattu"
 
-#: src/insets/insetoptarg.C:34 src/insets/insetoptarg.C:44
+#: src/insets/insetoptarg.C:37 src/insets/insetoptarg.C:48
 msgid "opt"
 msgstr "valinn"
 
-#: src/insets/insetoptarg.C:56
+#: src/insets/insetoptarg.C:60
 msgid "Opened Optional Argument Inset"
 msgstr "Valinnaisen parametrin osio avattu"
 
-#: src/insets/insetref.C:142 src/mathed/ref_inset.C:178
+#: src/insets/insetref.C:143 src/mathed/InsetMathRef.C:179
 msgid "Ref: "
 msgstr "Viite: "
 
-#: src/insets/insetref.C:143 src/mathed/ref_inset.C:179
+#: src/insets/insetref.C:144 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "Equation"
 msgstr "Sitaatti"
 
-#: src/insets/insetref.C:143 src/mathed/ref_inset.C:179
+#: src/insets/insetref.C:144 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "EqRef: "
 msgstr "Viite: "
 
-#: src/insets/insetref.C:144 src/mathed/ref_inset.C:180
+#: src/insets/insetref.C:145 src/mathed/InsetMathRef.C:181
 msgid "Page Number"
 msgstr "Sivunumero"
 
-#: src/insets/insetref.C:144 src/mathed/ref_inset.C:180
+#: src/insets/insetref.C:145 src/mathed/InsetMathRef.C:181
 msgid "Page: "
 msgstr "Sivu:"
 
-#: src/insets/insetref.C:145 src/mathed/ref_inset.C:181
+#: src/insets/insetref.C:146 src/mathed/InsetMathRef.C:182
 msgid "Textual Page Number"
 msgstr "Sivunumero tekstinä"
 
-#: src/insets/insetref.C:145 src/mathed/ref_inset.C:181
+#: src/insets/insetref.C:146 src/mathed/InsetMathRef.C:182
 msgid "TextPage: "
 msgstr "Tekstisivu: "
 
-#: src/insets/insetref.C:146 src/mathed/ref_inset.C:182
+#: src/insets/insetref.C:147 src/mathed/InsetMathRef.C:183
 msgid "Standard+Textual Page"
 msgstr "Tavallinen+sivu tekstinä"
 
-#: src/insets/insetref.C:146 src/mathed/ref_inset.C:182
+#: src/insets/insetref.C:147 src/mathed/InsetMathRef.C:183
 msgid "Ref+Text: "
 msgstr "Viite+teksti: "
 
-#: src/insets/insetref.C:147 src/mathed/ref_inset.C:183
+#: src/insets/insetref.C:148 src/mathed/InsetMathRef.C:184
 msgid "PrettyRef"
 msgstr "Sanallinen viite"
 
-#: src/insets/insetref.C:147 src/mathed/ref_inset.C:183
+#: src/insets/insetref.C:148 src/mathed/InsetMathRef.C:184
 msgid "PrettyRef: "
 msgstr "Hieno viite: "
 
@@ -12433,16 +12440,16 @@ msgstr "Hieno viite: "
 msgid "Opened table"
 msgstr "Avaa tiedosto"
 
-#: src/insets/insettabular.C:1560
+#: src/insets/insettabular.C:1561
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Erityinen monisarake"
 
-#: src/insets/insettabular.C:1561
+#: src/insets/insettabular.C:1562
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:230
+#: src/insets/insettext.C:231
 msgid "Opened Text Inset"
 msgstr "Tekstiosio avattiin"
 
@@ -12454,74 +12461,74 @@ msgstr "teoreema"
 msgid "Opened Theorem Inset"
 msgstr "Lauseosio avattiin"
 
-#: src/insets/insettoc.C:43
+#: src/insets/insettoc.C:44
 msgid "Unknown toc list"
 msgstr "Tuntematon luettelo sisällyksistä"
 
-#: src/insets/inseturl.C:40
+#: src/insets/inseturl.C:41
 msgid "Url: "
 msgstr "URL: "
 
-#: src/insets/inseturl.C:42
+#: src/insets/inseturl.C:43
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:109
+#: src/insets/insetvspace.C:110
 #, fuzzy
 msgid "Vertical Space"
 msgstr "Pystyväli:|#P"
 
-#: src/insets/insetwrap.C:60
+#: src/insets/insetwrap.C:64
 msgid "wrap: "
 msgstr "kelluva: "
 
-#: src/insets/insetwrap.C:189
+#: src/insets/insetwrap.C:193
 msgid "Opened Wrap Inset"
 msgstr "Kelluva irrallinen osio avattu"
 
-#: src/insets/render_graphic.C:90 src/insets/render_graphic.C:94
+#: src/insets/render_graphic.C:92 src/insets/render_graphic.C:96
 #, fuzzy
 msgid "Not shown."
 msgstr " tuntematon"
 
-#: src/insets/render_graphic.C:96
+#: src/insets/render_graphic.C:99
 msgid "Loading..."
 msgstr "Latautuu..."
 
-#: src/insets/render_graphic.C:98
+#: src/insets/render_graphic.C:102
 msgid "Converting to loadable format..."
 msgstr "Muuntuu ladattavaan muotoon..."
 
-#: src/insets/render_graphic.C:100
+#: src/insets/render_graphic.C:105
 #, fuzzy
 msgid "Loaded into memory. Generating pixmap..."
 msgstr "Latautui muistiin. Pixmap täytyy muodostaa nyt."
 
-#: src/insets/render_graphic.C:102
+#: src/insets/render_graphic.C:108
 msgid "Scaling etc..."
 msgstr "Skaalautuu ym..."
 
-#: src/insets/render_graphic.C:104
+#: src/insets/render_graphic.C:111
 msgid "Ready to display"
 msgstr "Valmis näkymään"
 
-#: src/insets/render_graphic.C:106
+#: src/insets/render_graphic.C:114
 msgid "No file found!"
 msgstr "Ei tiedostoa!"
 
-#: src/insets/render_graphic.C:108
+#: src/insets/render_graphic.C:117
 msgid "Error converting to loadable format"
 msgstr "Virhe muuntaessa ladattavaan muotoon"
 
-#: src/insets/render_graphic.C:110
+#: src/insets/render_graphic.C:120
 msgid "Error loading file into memory"
 msgstr "Virhe ladatessa tiedostoa muistiin."
 
-#: src/insets/render_graphic.C:112
+#: src/insets/render_graphic.C:123
 msgid "Error generating the pixmap"
 msgstr "Virhe pixmapin luomisessa"
 
-#: src/insets/render_graphic.C:114
+#: src/insets/render_graphic.C:126
 msgid "No image"
 msgstr "Ei kuvaa"
 
@@ -12540,29 +12547,29 @@ msgstr "Esikatselu|#E"
 msgid "Preview failed"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/ispell.C:206 src/ispell.C:213 src/ispell.C:222
+#: src/ispell.C:208 src/ispell.C:215 src/ispell.C:224
 #, fuzzy
 msgid "Can't create pipe for spellchecker."
 msgstr "Käynnistä oikoluku."
 
-#: src/ispell.C:227 src/ispell.C:232 src/ispell.C:237
+#: src/ispell.C:229 src/ispell.C:234 src/ispell.C:239
 #, fuzzy
 msgid "Can't open pipe for spellchecker."
 msgstr "Pysäytä oikoluku."
 
-#: src/ispell.C:246
+#: src/ispell.C:248
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
 
-#: src/ispell.C:268
+#: src/ispell.C:270
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
 
-#: src/ispell.C:377
+#: src/ispell.C:379
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
 
@@ -12644,7 +12651,7 @@ msgstr "Yläoikealla"
 msgid "Page Height %"
 msgstr "Yläoikealla"
 
-#: src/lyx_cb.C:113
+#: src/lyx_cb.C:112
 #, fuzzy, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12652,24 +12659,24 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:114
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:116
+#: src/lyx_cb.C:115
 #, fuzzy
 msgid "&Rename"
 msgstr "&Poista"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:131
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1717
+#: src/lyx_cb.C:135 src/lyxfunc.C:1720
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1875
+#: src/lyx_cb.C:165 src/lyxfunc.C:1878
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12677,39 +12684,39 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyx_cb.C:168 src/lyxfunc.C:1877
+#: src/lyx_cb.C:167 src/lyxfunc.C:1880
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Haluatko tallentaa asiakirjan?"
 
-#: src/lyx_cb.C:215
+#: src/lyx_cb.C:214
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Virhe! Väliaikaishakemiston luonti epäonnistui:"
 
-#: src/lyx_cb.C:217
+#: src/lyx_cb.C:216
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Virhe! Väliaikaishakemiston luonti epäonnistui:"
 
-#: src/lyx_cb.C:249
+#: src/lyx_cb.C:248
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s tallentuu itsestään"
 
-#: src/lyx_cb.C:289
+#: src/lyx_cb.C:288
 msgid "Autosave failed!"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/lyx_cb.C:316
+#: src/lyx_cb.C:317
 msgid "Autosaving current document..."
 msgstr "Asiakirjan automaattinen tallennus käynnissä..."
 
-#: src/lyx_cb.C:382
+#: src/lyx_cb.C:383
 msgid "Select file to insert"
 msgstr "Valitse lisättävä tiedosto"
 
-#: src/lyx_cb.C:401
+#: src/lyx_cb.C:402
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12717,12 +12724,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyx_cb.C:403
+#: src/lyx_cb.C:404
 #, fuzzy
 msgid "Could not read file"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/lyx_cb.C:411
+#: src/lyx_cb.C:412
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12730,37 +12737,37 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyx_cb.C:413 src/output.C:36
+#: src/lyx_cb.C:414 src/output.C:38
 #, fuzzy
 msgid "Could not open file"
 msgstr "Ei voi avata tiedostoa"
 
-#: src/lyx_cb.C:443
+#: src/lyx_cb.C:444
 msgid "Running configure..."
 msgstr "\"configure\" käynnissä..."
 
-#: src/lyx_cb.C:452
+#: src/lyx_cb.C:453
 msgid "Reloading configuration..."
 msgstr "Asetustiedot latautuvat uudelleen..."
 
-#: src/lyx_cb.C:457
+#: src/lyx_cb.C:458
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Kokoonpanoasetukset päivittyivät."
 
-#: src/lyx_cb.C:458
+#: src/lyx_cb.C:459
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:122
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/lyx_main.C:124
+#: src/lyx_main.C:123
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12768,11 +12775,11 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:133
+#: src/lyx_main.C:132
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Käyttäjän hakemisto konfiguroituu uudelleen"
 
-#: src/lyx_main.C:137
+#: src/lyx_main.C:136
 msgid "Done!"
 msgstr "Valmis!"
 
@@ -12960,55 +12967,55 @@ msgstr "Pois/päälle"
 msgid "Emphasis %1$s, "
 msgstr "Korostus %1$s, "
 
-#: src/lyxfont.C:512
+#: src/lyxfont.C:513
 #, c-format
 msgid "Underline %1$s, "
 msgstr "Alleviivaus %1$s, "
 
-#: src/lyxfont.C:514
+#: src/lyxfont.C:516
 #, c-format
 msgid "Noun %1$s, "
 msgstr "Nimityyli %1$s, "
 
-#: src/lyxfont.C:518
+#: src/lyxfont.C:521
 #, c-format
 msgid "Language: %1$s, "
 msgstr "Kieli: %1$s, "
 
-#: src/lyxfont.C:520
+#: src/lyxfont.C:524
 #, c-format
 msgid "  Number %1$s"
 msgstr "  Numero %1$s"
 
-#: src/lyxfunc.C:320
+#: src/lyxfunc.C:317
 msgid "Unknown function."
 msgstr "Tuntematon funktio."
 
-#: src/lyxfunc.C:360
+#: src/lyxfunc.C:357
 msgid "Nothing to do"
 msgstr "Ei mitään tehtävää"
 
-#: src/lyxfunc.C:378
+#: src/lyxfunc.C:375
 msgid "Unknown action"
 msgstr "Tuntematon toiminto"
 
-#: src/lyxfunc.C:384 src/lyxfunc.C:649
+#: src/lyxfunc.C:381 src/lyxfunc.C:646
 msgid "Command disabled"
 msgstr "Komento ei käytössä"
 
-#: src/lyxfunc.C:391
+#: src/lyxfunc.C:388
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/lyxfunc.C:634
+#: src/lyxfunc.C:631
 msgid "Document is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
 
-#: src/lyxfunc.C:643
+#: src/lyxfunc.C:640
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/lyxfunc.C:664
+#: src/lyxfunc.C:659
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13016,64 +13023,64 @@ msgid ""
 "Do you want to save the document?"
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyxfunc.C:680
+#: src/lyxfunc.C:677
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:683
+#: src/lyxfunc.C:680
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tulosta tiedostoon"
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:699
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
-#: src/lyxfunc.C:705
+#: src/lyxfunc.C:702
 #, fuzzy
 msgid "Could not change class"
 msgstr "Tiedoston muuntaminen epäonnistui"
 
-#: src/lyxfunc.C:813
+#: src/lyxfunc.C:810
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/lyxfunc.C:817
+#: src/lyxfunc.C:814
 msgid " done."
 msgstr " valmis."
 
-#: src/lyxfunc.C:830
+#: src/lyxfunc.C:827
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1030 src/text3.C:1204
+#: src/lyxfunc.C:1027 src/text3.C:1208
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:1039
+#: src/lyxfunc.C:1036
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ohjetiedosto %1$s avautuu..."
 
-#: src/lyxfunc.C:1287
+#: src/lyxfunc.C:1285
 msgid "Opening child document "
 msgstr "Aliasiakirja avautuu: "
 
-#: src/lyxfunc.C:1366
+#: src/lyxfunc.C:1364
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1377
+#: src/lyxfunc.C:1375
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
@@ -13094,39 +13101,39 @@ msgstr "Tallenna asiakirjan oletukseksi"
 msgid "Converting document to new document class..."
 msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 
-#: src/lyxfunc.C:1713
+#: src/lyxfunc.C:1716
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1752
+#: src/lyxfunc.C:1755
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1795
+#: src/lyxfunc.C:1798
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/lyxfunc.C:1799
+#: src/lyxfunc.C:1802
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/lyxfunc.C:1801
+#: src/lyxfunc.C:1804
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyxfunc.C:1826
+#: src/lyxfunc.C:1829
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/lyxfunc.C:1941
+#: src/lyxfunc.C:1944
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
-#: src/lyxrc.C:2126
+#: src/lyxrc.C:2127
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -13134,13 +13141,13 @@ msgstr ""
 "Pidetäänkö yhdyssanoja, kuten \"tämäpäivä\" vs. \"tämä päivä\", oikein "
 "kirjoitettuina?"
 
-#: src/lyxrc.C:2131
+#: src/lyxrc.C:2132
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Anna vaihtoehtoinen kieli. Asiakirjan kieltä käytetään oletuksena."
 
-#: src/lyxrc.C:2135
+#: src/lyxrc.C:2136
 #, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
@@ -13151,7 +13158,7 @@ msgstr ""
 "\"groff -t -Tlatin1 $$FName\", jossa \"$$FName\" on syötetiedosto. Jos "
 "asetat arvoksi \"none\", niin LyX muotoilee taulukot itse."
 
-#: src/lyxrc.C:2139
+#: src/lyxrc.C:2140
 #, fuzzy
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
@@ -13160,7 +13167,7 @@ msgstr ""
 "Tämä on Ascii-tiedoston (LaTeX, SGML, tai pelkkä teksti) viedyn tiedoston "
 "suurin rivipituus."
 
-#: src/lyxrc.C:2143
+#: src/lyxrc.C:2144
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -13168,7 +13175,7 @@ msgstr ""
 "Poista tämä käytöstä, jos et halua valitsemasi tekstin korvautuvan, kun alat "
 "kirjoittaa."
 
-#: src/lyxrc.C:2147
+#: src/lyxrc.C:2148
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -13176,14 +13183,14 @@ msgstr ""
 "Poista tämä käytöstä, jos et halua asiakirjan luokka-asetusten palautuvan "
 "oletuksiksi, kun vaihdat sen luokkaa."
 
-#: src/lyxrc.C:2151
+#: src/lyxrc.C:2152
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Määrittää automaattisten tallennusten välisen ajan sekunteina. 0 tarkoittaa, "
 "että automaattitallennus ei ole käytössä."
 
-#: src/lyxrc.C:2158
+#: src/lyxrc.C:2159
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -13191,13 +13198,13 @@ msgstr ""
 "Hakemisto, johon varmuuskopiot tallentuvat. Jos et anna hakemistoa, niin LyX "
 "tallentaa varmuuskopion hakemistoon, jossa alkuperäinen tiedosto on."
 
-#: src/lyxrc.C:2162
+#: src/lyxrc.C:2163
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/lyxrc.C:2166
+#: src/lyxrc.C:2167
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -13205,11 +13212,11 @@ msgstr ""
 "Pikanäppäintiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä sen "
 "sekä yleisestä että paikallisesta bind/-hakemistosta."
 
-#: src/lyxrc.C:2170
+#: src/lyxrc.C:2171
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Määritä, tarkistetaanko viimeisimpien tiedostojen olemassaolo."
 
-#: src/lyxrc.C:2174
+#: src/lyxrc.C:2175
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -13217,7 +13224,7 @@ msgstr ""
 "Määrittele, miten ChkTeX-ohjelma ajetaan. Esim. \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -22 -n25 -n30 -n38\". Lisätietoja saat ChkTeXin ohjeista."
 
-#: src/lyxrc.C:2184
+#: src/lyxrc.C:2185
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -13225,7 +13232,7 @@ msgstr ""
 "LyX ei siirrä tavallisesti kohdistinta, kun liikutat vierityspalkkia. Aseta "
 "todeksi, jos haluat kohdistimen olevan aina näkyvissä."
 
-#: src/lyxrc.C:2195
+#: src/lyxrc.C:2196
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -13234,15 +13241,15 @@ msgstr ""
 "Tähän käy tavallinen funktion strftime hyväksymä muoto, esimerkiksi \"%A %e. "
 "%Bta %Y\". Katso lisätietoja strftimen manuaalisivuilta. "
 
-#: src/lyxrc.C:2199
+#: src/lyxrc.C:2200
 msgid "New documents will be assigned this language."
 msgstr "Uusien asiakirjojen kieli on tämä kieli."
 
-#: src/lyxrc.C:2203
+#: src/lyxrc.C:2204
 msgid "Specify the default paper size."
 msgstr "Anna oletuspaperikoko."
 
-#: src/lyxrc.C:2207
+#: src/lyxrc.C:2208
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -13250,11 +13257,11 @@ msgstr ""
 "Pienennä valintaikkunat, kun pääikkuna pienennetään. Tämä vaikuttaa vain "
 "uusiin valintaikkunoihin."
 
-#: src/lyxrc.C:2211
+#: src/lyxrc.C:2212
 msgid "Select how LyX will display any graphics."
 msgstr "Miten LyX näyttää kuvat."
 
-#: src/lyxrc.C:2215
+#: src/lyxrc.C:2216
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -13262,13 +13269,13 @@ msgstr ""
 "Oletushakemisto asiakirjojasi varten. Tyhjä tarkoittaa hakemistoa, josta LyX "
 "käynnistettiin."
 
-#: src/lyxrc.C:2220
+#: src/lyxrc.C:2221
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 "Anna merkkejä, jotka voivat esiintyä sanan osana tavallisten\n"
 "merkkien lisäksi."
 
-#: src/lyxrc.C:2224
+#: src/lyxrc.C:2225
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -13276,14 +13283,14 @@ msgstr ""
 "Kirjasinmerkistö, jota LaTeX2e fontenc-paketti käyttää. T1 on suositeltu "
 "valinta ei-englantilaisille kielille."
 
-#: src/lyxrc.C:2231
+#: src/lyxrc.C:2232
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/lyxrc.C:2240
+#: src/lyxrc.C:2241
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -13291,22 +13298,22 @@ msgstr ""
 "Määrittele mitä merkkejä eri näppäimet tuottavat. Tarvitset tätä, jos "
 "esimerkiksi haluat kirjoittaa suomea amerikkalaisella näppäimistöllä."
 
-#: src/lyxrc.C:2244
+#: src/lyxrc.C:2245
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Uuden nimikkeen alkumerkkijonon sanojen suurin sallittu määrä"
 
-#: src/lyxrc.C:2248
+#: src/lyxrc.C:2249
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Käytä tätä, jos asiakirjan alussa täytyy olla kielenvaihtokomento."
 
-#: src/lyxrc.C:2252
+#: src/lyxrc.C:2253
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Käytä tätä, jos asiakirjan lopussa täytyy olla kielenvaihtokomento."
 
-#: src/lyxrc.C:2256
+#: src/lyxrc.C:2257
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -13316,15 +13323,15 @@ msgstr ""
 "\"\\selectlanguage{$$lang}\", jossa \"$$lang\" korvautuu toisen kielen "
 "nimellä."
 
-#: src/lyxrc.C:2260
+#: src/lyxrc.C:2261
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "LaTeX-komento, joka vaihtaa kielen takaisin asiakirjan kieleksi."
 
-#: src/lyxrc.C:2264
+#: src/lyxrc.C:2265
 msgid "The LaTeX command for local changing of the language."
 msgstr "LaTeX-komento kielen paikalliseen vaihtamiseen."
 
-#: src/lyxrc.C:2268
+#: src/lyxrc.C:2269
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -13332,7 +13339,7 @@ msgstr ""
 "Aseta epätodeksi, jos et halua kielen tai kielien olevan \\documentclassin "
 "parametreja."
 
-#: src/lyxrc.C:2272
+#: src/lyxrc.C:2273
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -13340,7 +13347,7 @@ msgstr ""
 "LaTeX-komento, joka lataa kielipaketin. Esimerkiksi \"\\usepackage{babel}\" "
 "tai \"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2276
+#: src/lyxrc.C:2277
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -13348,78 +13355,78 @@ msgstr ""
 "Aseta epätodeksi, jos et halua, että babelia käytetään, kun asiakirjan kieli "
 "on oletuskieli."
 
-#: src/lyxrc.C:2280
+#: src/lyxrc.C:2281
 #, fuzzy
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Aseta epätodeksi, jos et halua LyXin luovan varmuuskopioita."
 
-#: src/lyxrc.C:2284
+#: src/lyxrc.C:2285
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
 
-#: src/lyxrc.C:2288
+#: src/lyxrc.C:2289
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Aseta epätodeksi, jos et halua LyXin luovan varmuuskopioita."
 
-#: src/lyxrc.C:2292
+#: src/lyxrc.C:2293
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr "Muuta muiden kuin asiakirjan kielellä kirjoitettujen osien merkintää."
 
-#: src/lyxrc.C:2296
+#: src/lyxrc.C:2297
 #, fuzzy, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Suurin muistettu viimeisimpien tiedostojen määrä. Enintään 9 voi näkyä\n"
 "valikossa."
 
-#: src/lyxrc.C:2300
+#: src/lyxrc.C:2302
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 
-#: src/lyxrc.C:2307
+#: src/lyxrc.C:2309
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi \".ispell_english"
 "\"."
 
-#: src/lyxrc.C:2311
+#: src/lyxrc.C:2313
 msgid "The bold font in the dialogs."
 msgstr "Valintaikkunoiden lihavoitu kirjasin."
 
-#: src/lyxrc.C:2315
+#: src/lyxrc.C:2317
 msgid "The encoding for the menu/popups fonts."
 msgstr "Valikko- sekä valintaikkunakirjasinten merkistö."
 
-#: src/lyxrc.C:2319
+#: src/lyxrc.C:2321
 msgid "The normal font in the dialogs."
 msgstr "Valintaikkunoiden tavallinen kirjasin."
 
-#: src/lyxrc.C:2323
+#: src/lyxrc.C:2325
 msgid "Shows a typeset preview of things such as math"
 msgstr "Näyttää taitetun esikatselun esimerkiksi matematiikasta"
 
-#: src/lyxrc.C:2327
+#: src/lyxrc.C:2329
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Esikatseltavissa yhtälöissä on numerointina vain \"(#)\"."
 
-#: src/lyxrc.C:2331
+#: src/lyxrc.C:2333
 msgid "Scale the preview size to suit."
 msgstr "Skaalaa esikatselunäkymä sopivan kokoiseksi."
 
-#: src/lyxrc.C:2335
+#: src/lyxrc.C:2337
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Valitsin, jolla määritetään, tulostuvatko kopiot järjestyksessä."
 
-#: src/lyxrc.C:2339
+#: src/lyxrc.C:2341
 msgid "The option for specifying the number of copies to print."
 msgstr "Valitsin, jolla asetetaan tulostettavien kopioiden määrä."
 
-#: src/lyxrc.C:2343
+#: src/lyxrc.C:2345
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -13427,11 +13434,11 @@ msgstr ""
 "Oletustulostin. Jos tätä ei ole määritelty, niin LyX käyttää "
 "ympäristömuuttujan PRINTER arvoa."
 
-#: src/lyxrc.C:2347
+#: src/lyxrc.C:2349
 msgid "The option to print only even pages."
 msgstr "Valitsin, jolla saadaan vain parilliset sivut tulostumaan."
 
-#: src/lyxrc.C:2351
+#: src/lyxrc.C:2353
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -13439,37 +13446,37 @@ msgstr ""
 "Lisävalitsimia, jotka välittyvät tulostusohjelmalle muiden valitsimien "
 "jälkeen, mutta ennen tulostettavan tiedoston nimeä."
 
-#: src/lyxrc.C:2355
+#: src/lyxrc.C:2357
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Tulostusohjelman luomien tiedostojen pääte. Yleensä \".ps\""
 
-#: src/lyxrc.C:2359
+#: src/lyxrc.C:2361
 msgid "The option to print out in landscape."
 msgstr "Valitsin, jolla tuloste saadaan vaakasuuntaiseksi."
 
-#: src/lyxrc.C:2363
+#: src/lyxrc.C:2365
 msgid "The option to print only odd pages."
 msgstr "Valitsin, jolla saadaan vain parittomat sivut tulostumaan."
 
-#: src/lyxrc.C:2367
+#: src/lyxrc.C:2369
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Valitsin, jolle annetaan tulostettavien sivujen numerot pilkuilla "
 "erotettuina."
 
-#: src/lyxrc.C:2371
+#: src/lyxrc.C:2373
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Valitsin, jolla määritetään paperin mitat."
 
-#: src/lyxrc.C:2375
+#: src/lyxrc.C:2377
 msgid "The option to specify paper type."
 msgstr "Valitsin, jolla määritetään paperityyppi."
 
-#: src/lyxrc.C:2379
+#: src/lyxrc.C:2381
 msgid "The option to reverse the order of the pages printed."
 msgstr "Valitsin, jolla tulostusjärjestys muutetaan käänteiseksi."
 
-#: src/lyxrc.C:2383
+#: src/lyxrc.C:2385
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -13479,7 +13486,7 @@ msgstr ""
 "Tämän jälkeen kutsutaan annettua erillistä kirjoittimen jonokomentoa "
 "annettujen valitsimien kanssa."
 
-#: src/lyxrc.C:2387
+#: src/lyxrc.C:2389
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -13487,34 +13494,34 @@ msgstr ""
 "Jos annat tulostimen nimet Tulosta-valintaikkunassa, niin seuraava valitsin "
 "liitetään tulostimen nimen kanssa jonokomennon perään."
 
-#: src/lyxrc.C:2391
+#: src/lyxrc.C:2393
 msgid "Option to pass to the print program to print to a file."
 msgstr "Valitsin, jolla tulostusohjelma saadaan tulostamaan tiedostoon."
 
-#: src/lyxrc.C:2395
+#: src/lyxrc.C:2397
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Valitsin, joka määrää tulostusohjelman tulostamaan tietyllä tulostimella."
 
-#: src/lyxrc.C:2399
+#: src/lyxrc.C:2401
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Määritä, antaako LyX tulostimen nimen tulostuskomennolle."
 
-#: src/lyxrc.C:2403
+#: src/lyxrc.C:2405
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 "Mieluiten käyttämäsi tulostinohjelma. Esimerkiksi \"dvips\" tai \"dvilj4\"."
 
-#: src/lyxrc.C:2407
+#: src/lyxrc.C:2409
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Ota oikealta vasemmalle kirjoitettavien kielten (esim. heprea ja arabia) "
 "tuki käyttöön."
 
-#: src/lyxrc.C:2411
+#: src/lyxrc.C:2413
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -13522,15 +13529,15 @@ msgstr ""
 "Näyttösi tarkkuus pisteinä tuumalle (DPI). LyX määrittää tämän "
 "automaattisesti, mutta jos tulos on väärin, niin laita oikea arvo tähän."
 
-#: src/lyxrc.C:2415
+#: src/lyxrc.C:2417
 msgid "The encoding for the screen fonts."
 msgstr "Näyttökirjasinten merkistö."
 
-#: src/lyxrc.C:2421
+#: src/lyxrc.C:2423
 msgid "The screen fonts used to display the text while editing."
 msgstr "Näyttökirjasimet, joilla muokattava teksti piirretään."
 
-#: src/lyxrc.C:2430
+#: src/lyxrc.C:2432
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -13541,12 +13548,12 @@ msgstr ""
 "jättäminen saa LyXin käyttämään lähintä kirjasimessa valmiina olevaa kokoa "
 "skaalauksen sijasta."
 
-#: src/lyxrc.C:2434
+#: src/lyxrc.C:2436
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Kirjasinkoot, joita käytetään näyttökirjasinten skaalaamisen laskemiseen."
 
-#: src/lyxrc.C:2439
+#: src/lyxrc.C:2441
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -13555,17 +13562,17 @@ msgstr ""
 "Näyttökirjasinten suurennusprosentti. Arvolla 100% kirjasimet ovat "
 "suunnilleen saman kokoisia kuin paperilla."
 
-#: src/lyxrc.C:2444
+#: src/lyxrc.C:2446
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
 
-#: src/lyxrc.C:2448
+#: src/lyxrc.C:2450
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
 
-#: src/lyxrc.C:2452
+#: src/lyxrc.C:2454
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -13573,16 +13580,16 @@ msgstr ""
 "Tämä käynnistää lyxserverin. Putket saavat liitteet \".in\" ja \".out\". "
 "Suositellaan vain edistyneille käyttäjille."
 
-#: src/lyxrc.C:2459
+#: src/lyxrc.C:2461
 msgid "De-select if you don't want the startup banner."
 msgstr "Aseta epätodeksi, jos et halua avauskuvan ilmestyvän."
 
-#: src/lyxrc.C:2463
+#: src/lyxrc.C:2465
 #, fuzzy
 msgid "What command runs the spellchecker?"
 msgstr "Mitä oikolukukomentoa käytetään?"
 
-#: src/lyxrc.C:2467
+#: src/lyxrc.C:2469
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -13590,7 +13597,7 @@ msgstr ""
 "LyX käyttää tätä hakemistoa väliaikaisten tiedostojensa tallentamiseen. Se "
 "myös poistaa ne, kun lopetat sen."
 
-#: src/lyxrc.C:2471
+#: src/lyxrc.C:2473
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -13598,7 +13605,7 @@ msgstr ""
 "Hakemisto, jonka LyX näyttää, kun valitset asiakirjamallia. Tyhjä merkitsee "
 "LyXin käynnistyshakemistoa."
 
-#: src/lyxrc.C:2481
+#: src/lyxrc.C:2483
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -13606,7 +13613,7 @@ msgstr ""
 "Käyttöliittymätiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä "
 "sen sekä yleisestä että paikallisesta ui/-hakemistosta."
 
-#: src/lyxrc.C:2494
+#: src/lyxrc.C:2496
 #, fuzzy
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
@@ -13617,39 +13624,39 @@ msgstr ""
 "et voi oikolukea sanoja, joissa on kansainvälisiä merkkejä. Tämä ei "
 "välttämättä toimi kaikkien sanastojen kanssa."
 
-#: src/lyxrc.C:2501
+#: src/lyxrc.C:2503
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Komentoriviparametri, joka kertoo DVI-katselimelle paperikoon. (Jätä "
 "tyhjäksi tai käytä arvoa \"-paper\")"
 
-#: src/lyxvc.C:93
+#: src/lyxvc.C:95
 #, fuzzy
 msgid "Document not saved"
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/lyxvc.C:94
+#: src/lyxvc.C:96
 #, fuzzy
 msgid "You must save the document before it can be registered."
 msgstr "ennen kuin sen voi rekisteröidä."
 
-#: src/lyxvc.C:123
+#: src/lyxvc.C:125
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Alkuperäinen kuvaus"
 
-#: src/lyxvc.C:124
+#: src/lyxvc.C:126
 msgid "(no initial description)"
 msgstr "(ei alkuperäistä kuvausta)"
 
-#: src/lyxvc.C:139
+#: src/lyxvc.C:141
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Lokiviesti"
 
-#: src/lyxvc.C:142
+#: src/lyxvc.C:144
 msgid "(no log message)"
 msgstr "(ei lokiviestejä)"
 
-#: src/lyxvc.C:164
+#: src/lyxvc.C:166
 #, c-format
 msgid ""
 "Reverting to the stored version of the document %1$s will lose all current "
@@ -13658,89 +13665,89 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/lyxvc.C:167
+#: src/lyxvc.C:169
 #, fuzzy
 msgid "Revert to stored version of document?"
 msgstr "Valitse alue asiakirjan loppuun saakka"
 
-#: src/mathed/formulamacro.C:120 src/mathed/math_macrotemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:120 src/mathed/MathMacroTemplate.C:110
 #, fuzzy, c-format
 msgid " Macro: %1$s: "
 msgstr " Makro: %s: "
 
-#: src/mathed/math_amsarrayinset.C:111 src/mathed/math_hullinset.C:1214
-#: src/mathed/math_splitinset.C:75 src/mathed/math_substackinset.C:70
+#: src/mathed/InsetMathAMSArray.C:111 src/mathed/InsetMathHull.C:1224
+#: src/mathed/InsetMathSplit.C:75 src/mathed/InsetMathSubstack.C:70
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_casesinset.C:94
+#: src/mathed/InsetMathCases.C:94
 #, c-format
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1305
+#: src/mathed/InsetMathGrid.C:1305
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1311
+#: src/mathed/InsetMathGrid.C:1311
 #, fuzzy
 msgid "Only one column"
 msgstr "Poista sarake|e"
 
-#: src/mathed/math_gridinset.C:1319
+#: src/mathed/InsetMathGrid.C:1319
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Ei mitään tehtävää"
 
-#: src/mathed/math_gridinset.C:1328
+#: src/mathed/InsetMathGrid.C:1328
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/math_gridinset.C:1346
+#: src/mathed/InsetMathGrid.C:1346
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1045 src/mathed/math_hullinset.C:1054
+#: src/mathed/InsetMathHull.C:1055 src/mathed/InsetMathHull.C:1064
 #, fuzzy
 msgid "No number"
 msgstr "Numerointi"
 
-#: src/mathed/math_hullinset.C:1045 src/mathed/math_hullinset.C:1054
+#: src/mathed/InsetMathHull.C:1055 src/mathed/InsetMathHull.C:1064
 #, fuzzy
 msgid "Number"
 msgstr "Numerointi"
 
-#: src/mathed/math_hullinset.C:1187
+#: src/mathed/InsetMathHull.C:1197
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1197
+#: src/mathed/InsetMathHull.C:1207
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1207
+#: src/mathed/InsetMathHull.C:1217
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/math_hullinset.C:1313 src/text3.C:188
+#: src/mathed/InsetMathHull.C:1309 src/text3.C:184
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/math_nestinset.C:821
+#: src/mathed/InsetMathNest.C:822
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/math_nestinset.C:824
+#: src/mathed/InsetMathNest.C:825
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Tavallinen teksti\t\\textrm"
 
-#: src/output.C:34
+#: src/output.C:36
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13755,17 +13762,17 @@ msgstr "Tiivistelmä: "
 msgid "References: "
 msgstr "Viitteet: "
 
-#: src/support/filefilterlist.C:106
+#: src/support/filefilterlist.C:107
 msgid "All files (*)"
 msgstr "Kaikki tiedostot (*)"
 
-#: src/support/package.C.in:439
+#: src/support/package.C.in:440
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 
-#: src/support/package.C.in:560
+#: src/support/package.C.in:562
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -13774,21 +13781,21 @@ msgid ""
 "LYX_DIR_14x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C.in:645
+#: src/support/package.C.in:648
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/package.C.in:671
+#: src/support/package.C.in:676
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/package.C.in:694
+#: src/support/package.C.in:700
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -13904,102 +13911,102 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Kirjoituskone"
 
-#: src/text.C:193
+#: src/text.C:192
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Tuntematon toiminto"
 
-#: src/text.C:194
+#: src/text.C:193
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:225
+#: src/text.C:224
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Tuntematon luettelo sisällyksistä"
 
-#: src/text.C:342 src/text.C:356
+#: src/text.C:337 src/text.C:351
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Vaihda kieli"
 
-#: src/text.C:343
+#: src/text.C:338
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:357
+#: src/text.C:352
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:365
+#: src/text.C:360
 #, fuzzy
 msgid "Unknown token"
 msgstr "Tuntematon merkintä: "
 
-#: src/text.C:1243
+#: src/text.C:1246
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Kappaleen alkuun ei voi lisätä välilyöntiä. Ks. Opastus."
 
-#: src/text.C:1255
+#: src/text.C:1258
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
-#: src/text.C:2377
+#: src/text.C:2380
 #, fuzzy
 msgid "Change: "
 msgstr "Sivu:"
 
 # FIXME: Cannot translate properly!
-#: src/text.C:2381
+#: src/text.C:2384
 #, fuzzy
 msgid " at "
 msgstr " -> "
 
-#: src/text.C:2393
+#: src/text.C:2396
 #, c-format
 msgid "Font: %1$s"
 msgstr "Kirjasin: %1$s"
 
-#: src/text.C:2400
+#: src/text.C:2403
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Syvyys: %1$d"
 
-#: src/text.C:2406
+#: src/text.C:2409
 msgid ", Spacing: "
 msgstr ", Välit: "
 
-#: src/text.C:2418
+#: src/text.C:2421
 msgid "Other ("
 msgstr "Muu ("
 
-#: src/text.C:2427
+#: src/text.C:2430
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Syvyys: "
 
-#: src/text.C:2428
+#: src/text.C:2431
 msgid ", Paragraph: "
 msgstr ", kappale: "
 
-#: src/text.C:2429
+#: src/text.C:2432
 #, fuzzy
 msgid ", Id: "
 msgstr ", Syvyys: "
 
-#: src/text.C:2430
+#: src/text.C:2433
 #, fuzzy
 msgid ", Position: "
 msgstr "Väittämä"
 
-#: src/text.C:2431
+#: src/text.C:2434
 msgid ", Boundary: "
 msgstr ""
 
@@ -14019,27 +14026,27 @@ msgstr "Ei mitään hakemistossa!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
 
-#: src/text3.C:693
+#: src/text3.C:696
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon väliparametri: "
 
-#: src/text3.C:831
+#: src/text3.C:835
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyXin funktio \"layout\" vaatii parametrin."
 
-#: src/text3.C:849
+#: src/text3.C:853
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/text3.C:850
+#: src/text3.C:854
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/text3.C:1309 src/text3.C:1321
+#: src/text3.C:1313 src/text3.C:1325
 msgid "Character set"
 msgstr "Merkistö"
 
-#: src/text3.C:1454
+#: src/text3.C:1461
 msgid "Paragraph layout set"
 msgstr "Kappaletyyli asetettu"
 
@@ -14072,6 +14079,18 @@ msgstr "&Pysty:"
 #, fuzzy
 msgid "protected"
 msgstr "P&ikanäppäin:"
+
+#, fuzzy
+#~ msgid "Word in Small Capitals"
+#~ msgstr "Kapiteeli"
+
+#, fuzzy
+#~ msgid "Text Style...|S"
+#~ msgstr "TeX-tyyli|X"
+
+#, fuzzy
+#~ msgid "Character Style|y"
+#~ msgstr "Merkistö"
 
 #~ msgid " of "
 #~ msgstr ", "
