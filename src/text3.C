@@ -606,7 +606,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHAR_DELETE_BACKWARD:
 		if (!cur.selection()) {
-			if (bv->owner()->getIntl().getTransManager().backspace()) {
+			if (bv->getIntl().getTransManager().backspace()) {
 				// Par boundary, full-screen update
 				if (cur.pos() == 0)
 					singleParUpdate = false;
@@ -1077,7 +1077,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		docstring::const_iterator end = cmd.argument().end();
 		for (; cit != end; ++cit)
 #if 0
-			bv->owner()->getIntl().getTransManager().
+			bv->getIntl().getTransManager().
 				translateAndInsert(*cit, this);
 #else
 			insertChar(bv->cursor(), *cit);
@@ -1389,7 +1389,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bv->owner()->getLyXFunc().handleKeyFunc(cmd.action);
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
-			bv->owner()->getIntl().getTransManager()
+			bv->getIntl().getTransManager()
 				.translateAndInsert(cmd.argument()[0], this);
 		break;
 

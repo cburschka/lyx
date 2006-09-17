@@ -220,7 +220,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 		c = 0;
 	}
 
-	owner->getIntl().getTransManager()
+	owner->view()->getIntl().getTransManager()
 		.deadkey(c, get_accent(action).accent, view()->getLyXText());
 	// Need to clear, in case the minibuffer calls these
 	// actions
@@ -1304,19 +1304,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_KEYMAP_OFF:
-			owner->getIntl().keyMapOn(false);
+			owner->view()->getIntl().keyMapOn(false);
 			break;
 
 		case LFUN_KEYMAP_PRIMARY:
-			owner->getIntl().keyMapPrim();
+			owner->view()->getIntl().keyMapPrim();
 			break;
 
 		case LFUN_KEYMAP_SECONDARY:
-			owner->getIntl().keyMapSec();
+			owner->view()->getIntl().keyMapSec();
 			break;
 
 		case LFUN_KEYMAP_TOGGLE:
-			owner->getIntl().toggleKeyMap();
+			owner->view()->getIntl().toggleKeyMap();
 			break;
 
 		case LFUN_REPEAT: {

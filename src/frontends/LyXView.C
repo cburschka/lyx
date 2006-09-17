@@ -75,7 +75,6 @@ LyXView::LyXView(Gui & owner)
 	: work_area_(0),
 	  owner_(owner),
 	  toolbars_(new Toolbars(*this)),
-	  intl_(new Intl),
 	  autosave_timeout_(new Timeout(5000)),
 	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
@@ -119,8 +118,6 @@ void LyXView::init()
 		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
 		autosave_timeout_->start();
 	}
-
-	intl_->initKeyMapper(lyxrc.use_kbmap);
 }
 
 

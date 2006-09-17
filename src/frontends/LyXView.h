@@ -23,7 +23,6 @@
 
 class Buffer;
 class InsetBase;
-class Intl;
 class Menubar;
 
 class BufferView;
@@ -106,11 +105,6 @@ public:
 	Dialogs & getDialogs() { return *dialogs_.get(); }
 	///
 	Dialogs const & getDialogs() const { return *dialogs_.get(); }
-
-	/// get this view's keyboard map handler
-	Intl & getIntl() { return *intl_.get(); }
-	///
-	Intl const & getIntl() const { return *intl_.get(); }
 
 	//@}
 
@@ -195,8 +189,6 @@ private:
 
 	/// view's toolbar
 	boost::scoped_ptr<Toolbars> toolbars_;
-	/// keyboard mapping object
-	boost::scoped_ptr<Intl> const intl_;
 	/// auto-saving of buffers
 	boost::scoped_ptr<Timeout> const autosave_timeout_;
 	/// our function handler

@@ -136,7 +136,8 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 BufferView::BufferView(LyXView * owner)
 	: owner_(owner), buffer_(0), wh_(0),
 	  cursor_(*this),
-	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0)
+	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
+	  intl_(new Intl)
 {
 	xsel_cache_.set = false;
 
@@ -149,6 +150,8 @@ BufferView::BufferView(LyXView * owner)
 			saved_positions[bm->get<0>()] = Position( bm->get<1>(), bm->get<2>(), bm->get<3>() );
 	// and then clear them
 	bmList.clear();
+
+	intl_->initKeyMapper(lyxrc.use_kbmap);
 }
 
 
@@ -594,13 +597,12 @@ void BufferView::switchKeyMap()
 	if (!lyxrc.rtl_support)
 		return;
 
-	Intl & intl = owner_->getIntl();
 	if (getLyXText()->real_current_font.isRightToLeft()) {
-		if (intl.keymap == Intl::PRIMARY)
-			intl.keyMapSec();
+		if (intl_->keymap == Intl::PRIMARY)
+			intl_->keyMapSec();
 	} else {
-		if (intl.keymap == Intl::SECONDARY)
-			intl.keyMapPrim();
+		if (intl_->keymap == Intl::SECONDARY)
+			intl_->keyMapPrim();
 	}
 }
 
@@ -1258,12 +1260,6 @@ LCursor const & BufferView::cursor() const
 lyx::pit_type BufferView::anchor_ref() const
 {
 	return anchor_ref_;
-}
-
-
-int BufferView::offset_ref() const
-{
-	return offset_ref_;
 }
 
 

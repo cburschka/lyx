@@ -1261,7 +1261,7 @@ void InsetMathHull::mutateToText()
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit)
-		view_->owner()->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
+		view_->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
 
 	// remove ourselves
 	//view_->owner()->dispatch(LFUN_ESCAPE);

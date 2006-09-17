@@ -32,6 +32,7 @@ class Change;
 class DocIterator;
 class FuncRequest;
 class FuncStatus;
+class Intl;
 class Language;
 class LCursor;
 class LyXText;
@@ -184,8 +185,6 @@ public:
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 
-	/// access to offset
-	int offset_ref() const;
 	/// access to anchor
 	lyx::pit_type anchor_ref() const;
 
@@ -209,6 +208,11 @@ public:
 	ViewMetricsInfo const & viewMetricsInfo();
 	///
 	void updateMetrics(bool singlepar = false);
+
+	/// get this view's keyboard map handler
+	Intl & getIntl() { return *intl_.get(); }
+	///
+	Intl const & getIntl() const { return *intl_.get(); }
 
 	/// This signal is emitted when some message shows up.
 	boost::signal<void(lyx::docstring)> message;
@@ -270,6 +274,9 @@ private:
 	lyx::pit_type anchor_ref_;
 	///
 	int offset_ref_;
+
+	/// keyboard mapping object
+	boost::scoped_ptr<Intl> const intl_;
 };
 
 #endif // BUFFERVIEW_H
