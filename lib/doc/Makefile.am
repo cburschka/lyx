@@ -34,6 +34,7 @@ docfiles = \
 	he_Intro.lyx \
 	he_Tutorial.lyx \
 	hu_Intro.lyx \
+	hu_Tutorial.lyx \
 	Intro.lyx \
 	it_Customization.lyx \
 	it_Intro.lyx \

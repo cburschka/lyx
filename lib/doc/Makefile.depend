@@ -28,7 +28,7 @@ fr_TOC.lyx: $(srcdir)/fr_Customization.lyx $(srcdir)/fr_Extended.lyx $(srcdir)/f
 he_TOC.lyx: $(srcdir)/he_Intro.lyx $(srcdir)/he_Tutorial.lyx
 	python $(srcdir)/doc_toc.py he
 
-hu_TOC.lyx: $(srcdir)/hu_Intro.lyx
+hu_TOC.lyx: $(srcdir)/hu_Intro.lyx $(srcdir)/hu_Tutorial.lyx
 	python $(srcdir)/doc_toc.py hu
 
 it_TOC.lyx: $(srcdir)/it_Customization.lyx $(srcdir)/it_Intro.lyx $(srcdir)/it_Tutorial.lyx $(srcdir)/it_UserGuide.lyx
