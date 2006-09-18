@@ -16,7 +16,7 @@ You need cmake and cygwin (cvs-HEAD:with Unix line endings!!).
 - copy the files from the LyX SVN aspell/win32
 
 - with cygwin patch aspell, call in aspell/:
-    patch -p0 -i win32/win32-aspell.patch
+    patch -p0 -i win32/win32-aspell-0.60.patch
   
 - make a separate build directory and run 
   on a standard Windows command promp
