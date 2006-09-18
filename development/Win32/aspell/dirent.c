@@ -56,7 +56,6 @@
  * University of Illinois, Urbana-Champaign.
  */
 
-//#include <winposix_export.h>
 #include <windows.h>
 
 #include <malloc.h>
@@ -78,6 +77,7 @@
  * The DIR typedef is not compatible with Unix.
  **********************************************************************/
 
+#ifndef __MINGW32__
 
 KDEWIN32_EXPORT DIR * opendir(const char *dir)
 {
@@ -118,24 +118,22 @@ KDEWIN32_EXPORT struct dirent * readdir(DIR *dp)
     if (dp->offset != 0) {
         if (_findnext(dp->handle, &(dp->fileinfo)) < 0) {
             dp->finished = 1;
+            /* posix does not set errno in this case */
+            errno = 0;
             return NULL;
         }
     }
     dp->offset++;
 
     strncpy(dp->dent.d_name, dp->fileinfo.name, _MAX_FNAME);
+#ifdef KDEWIN32_HAVE_DIRENT_D_TYPE
+    dp->dent.d_type = DT_UNKNOWN;
+#endif    
     dp->dent.d_ino = 1;
     dp->dent.d_reclen = strlen(dp->dent.d_name);
     dp->dent.d_off = dp->offset;
 
     return &(dp->dent);
-}
-
-KDEWIN32_EXPORT struct dirent* readdir_r(DIR *dirp, struct dirent *entry, struct dirent **result)
-{
-	//todo: remove this when readdir_r.c will be ported
-	result = 0;
-	return 0;
 }
 
 KDEWIN32_EXPORT int closedir(DIR *dp)
@@ -148,3 +146,12 @@ KDEWIN32_EXPORT int closedir(DIR *dp)
     return 0;
 }
 
+#endif // #ifndef __MINGW32__
+
+
+KDEWIN32_EXPORT struct dirent* readdir_r(DIR *dirp, struct dirent *entry, struct dirent **result)
+{
+	//todo: remove this when readdir_r.c will be ported
+	result = 0;
+	return 0;
+}
