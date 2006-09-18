@@ -101,6 +101,9 @@ askForText_pimpl(docstring const & msg, docstring const & dflt)
 
 	docstring const title = bformat(_("LyX: %1$s"), msg);
 	QAskForTextDialog d(parent, toqstr(title), true);
+        // We try to go with the title set above.
+        // d.setCaption(qt_("LyX: Enter text"));
+
 	// less than ideal !
 	d.askLA->setText(toqstr('&' + msg));
 	d.askLE->setText(toqstr(dflt));

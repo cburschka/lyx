@@ -48,6 +48,8 @@ QCitationDialog::QCitationDialog(QCitation * form)
 		form, SLOT(slotClose()));
 
 	add_ = new QCitationFindDialogBase(this, "", true);
+        add_->setCaption(qt_("LyX: Add Citation"));
+        
 	connect(add_->previousPB, SIGNAL(clicked()), this, SLOT(previous()));
 	connect(add_->nextPB, SIGNAL(clicked()), this, SLOT(next()));
 	connect(add_->availableLB, SIGNAL(currentChanged(QListBoxItem *)), this, SLOT(availableChanged()));

@@ -48,6 +48,8 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		form, SLOT(slotClose()));
 
 	add_ = new QBibtexAddDialogBase(this, "", true);
+        add_->setCaption(qt_("LyX: Add BibTeX Database"));
+        
 	Qt2BC * bcview = new Qt2BC(add_bc_);
 	add_bc_.view(bcview);
 	add_bc_.bp(new OkCancelPolicy);
