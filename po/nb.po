@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-09-18 20:51+0200\n"
-"PO-Revision-Date: 2006-09-18 21:27+0200\n"
+"PO-Revision-Date: 2006-09-18 21:45+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4169,9 +4169,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:134
-#, fuzzy
 msgid "&To:"
-msgstr "Øverst:"
+msgstr "&Til:"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:36
 msgid "Scrolling"
@@ -4587,7 +4586,6 @@ msgid "Biography"
 msgstr "Biografi"
 
 #: lib/layouts/IEEEtran.layout:421
-#, fuzzy
 msgid "BiographyNoPhoto"
 msgstr "BiografiUtenFoto"
 
@@ -5311,7 +5309,6 @@ msgid "Variation"
 msgstr ""
 
 #: lib/layouts/chess.layout:62
-#, fuzzy
 msgid "Variation:"
 msgstr "Variasjon:"
 
@@ -5385,7 +5382,6 @@ msgid "HighLight"
 msgstr ""
 
 #: lib/layouts/chess.layout:157
-#, fuzzy
 msgid "Highlights:"
 msgstr "Høydepunkter:"
 
@@ -6598,14 +6594,12 @@ msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr "Teorem @Section@.\\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr "Påstand @Section@.\\arabic{theorem}."
+msgstr "Påstand @Section@.\\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:269
-#, fuzzy
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr "Lemma @Section@.\\arabic{theorem}."
+msgstr "Lemma @Section@.\\arabic{lemma}."
 
 #: lib/layouts/ijmpd.layout:280
 #, fuzzy
@@ -7806,9 +7800,8 @@ msgid "Austrian"
 msgstr "Østerisk"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Austrian (new spelling)"
-msgstr "Tysk (ny stavemåte)"
+msgstr "Østerisk (ny stavemåte)"
 
 #: lib/languages:7
 msgid "Bahasa"
@@ -8894,14 +8887,12 @@ msgid "Paste External Clipboard/Selection"
 msgstr "Lim inn eksternt utvalg"
 
 #: lib/ui/stdmenus.ui:92
-#, fuzzy
 msgid "Move Paragraph Up|o"
-msgstr ", Avsnitt: "
+msgstr "Flytt avsnitt opp|o"
 
 #: lib/ui/stdmenus.ui:93
-#, fuzzy
 msgid "Move Paragraph Down|v"
-msgstr ", Avsnitt: "
+msgstr "Flytt avsnitt ned|v"
 
 #: lib/ui/stdmenus.ui:95
 #, fuzzy
@@ -10145,19 +10136,16 @@ msgid "Could not read template"
 msgstr "Uleselig mal"
 
 #: src/buffer_funcs.C:449
-#, fuzzy
 msgid "\\arabic{enumi}."
-msgstr "\\arabic{section}"
+msgstr "\\arabic{enumi}."
 
 #: src/buffer_funcs.C:455
-#, fuzzy
 msgid "\\roman{enumiii}."
-msgstr "(\\alph{enumii})"
+msgstr "\\roman{enumiii}."
 
 #: src/buffer_funcs.C:458
-#, fuzzy
 msgid "\\Alph{enumiv}."
-msgstr "(\\alph{enumii})"
+msgstr "\\Alph{enumiv}."
 
 #: src/buffer_funcs.C:497
 #, c-format
@@ -10454,23 +10442,23 @@ msgid "Document export cancelled."
 msgstr "Avbrøt eksport av dokumentet."
 
 #: src/exporter.C:249
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentet eksportert som %1$s til filen `%2$s'"
 
 #: src/exporter.C:255
-#, fuzzy, c-format
+#, c-format
 msgid "Document exported as %1$s"
-msgstr "Dokumentet eksportert som %1$s til filen `%2$s'"
+msgstr "Dokumentet eksportert som %1$s"
 
 #: src/format.C:266 src/format.C:279 src/format.C:289 src/format.C:322
 msgid "Cannot view file"
 msgstr "Kan ikke vise fil"
 
 #: src/format.C:267 src/format.C:337
-#, fuzzy, c-format
+#, c-format
 msgid "File does not exist: %1$s"
-msgstr "Filen finne ikke."
+msgstr "Filen finne ikke: %1$s"
 
 #: src/format.C:280
 #, c-format
@@ -11160,9 +11148,8 @@ msgid "*** No Errors ***"
 msgstr "*** Ingen feil ***"
 
 #: src/frontends/gtk/GExternal.C:118
-#, fuzzy
 msgid "files"
-msgstr "Fil"
+msgstr "filer"
 
 #: src/frontends/gtk/GExternal.C:212 src/frontends/gtk/GExternal.C:237
 #: src/frontends/gtk/GExternal.C:402 src/frontends/gtk/GExternal.C:403
@@ -11522,9 +11509,8 @@ msgstr "Dokumentklasse"
 
 #: src/frontends/qt3/QDocumentDialog.C:81
 #: src/frontends/qt4/QDocumentDialog.C:392
-#, fuzzy
 msgid "Fonts"
-msgstr "&Font:"
+msgstr "Fonter"
 
 #: src/frontends/qt3/QDocumentDialog.C:82
 #: src/frontends/qt4/QDocumentDialog.C:393
@@ -11640,14 +11626,12 @@ msgid "Other root\t\\root"
 msgstr "Andre røtter\t\\root"
 
 #: src/frontends/qt3/QMathDialog.C:128 src/frontends/qt4/QMathDialog.C:139
-#, fuzzy
 msgid "LyX: Fractions"
-msgstr "LyX: Mattefonter"
+msgstr "LyX: Brøker"
 
 #: src/frontends/qt3/QMathDialog.C:130 src/frontends/qt4/QMathDialog.C:141
-#, fuzzy
 msgid "Standard\t\\frac"
-msgstr "Standard"
+msgstr "Standard\t\\frac"
 
 #: src/frontends/qt3/QMathDialog.C:131 src/frontends/qt4/QMathDialog.C:142
 #, fuzzy
@@ -11894,24 +11878,20 @@ msgid "Maths"
 msgstr "Matte"
 
 #: src/frontends/qt4/BulletsModule.C:46
-#, fuzzy
 msgid "Dings 1"
-msgstr "Dings &1"
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.C:47
-#, fuzzy
 msgid "Dings 2"
-msgstr "Dings &2"
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.C:48
-#, fuzzy
 msgid "Dings 3"
-msgstr "Dings &3"
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.C:49
-#, fuzzy
 msgid "Dings 4"
-msgstr "Dings &4"
+msgstr "Dings 4"
 
 #: src/frontends/qt4/QBranches.C:43
 #, fuzzy
@@ -11920,9 +11900,8 @@ msgstr "Dokumentgren|D"
 
 #: src/frontends/qt4/QDelimiterDialog.C:107
 #: src/frontends/qt4/QDelimiterDialog.C:108
-#, fuzzy
 msgid "(None)"
-msgstr "Ingen"
+msgstr "(Ingen)"
 
 #: src/importer.C:46
 #, c-format
@@ -11991,9 +11970,8 @@ msgid "Doublebox"
 msgstr "Dobbel boks"
 
 #: src/insets/insetbox.C:123
-#, fuzzy
 msgid "Opened Box Inset"
-msgstr "Åpnet text inset"
+msgstr "Åpnet box inset"
 
 #: src/insets/insetbranch.C:74
 msgid "Opened Branch Inset"
