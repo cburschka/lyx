@@ -373,11 +373,41 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: qt_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot
+l10n_pots: qt3_l10n.pot qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot
 	cat $^ | \
 	msguniq -o $(DOMAIN).po && rm -f  $^
 
-qt_l10n.pot: $(top_srcdir)/src/frontends/qt3/ui/*.ui
+qt3_l10n.pot: $(top_srcdir)/src/frontends/qt3/ui/*.ui
+	LC_ALL=C ; export LC_ALL ; \
+	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
+		function fixupfilename() \
+		{\
+			return substr(FILENAME, length(top_srcdir "/") + 1);\
+		}\
+		BEGIN { \
+			previousline=""; \
+		} \
+		{ \
+			if ((!(previousline ~ /^ *< *property  *name *= *"shortcut" *> *$$/) && \
+			    !(previousline ~ /^ *< *property  *name *= *"caption" *> *$$/)) \
+			    && $$0 ~ /<string>/) { \
+				line=$$0; \
+				sub(/.*<string>/, "", line); \
+				sub(/<\/string>.*/, "", line); \
+				gsub(/&amp;/, "\\&", line); \
+				gsub(/&lt;/, "<", line); \
+				gsub(/&gt;/, ">", line); \
+				gsub(/"/, "\\\"", line); \
+				if (length(line) > 0) { \
+					printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
+					fixupfilename(), FNR, line); \
+				} \
+			} \
+			previousline=$$0; \
+		}' \
+	${top_srcdir}/src/frontends/qt3/ui/*.ui > $@
+
+qt4_l10n.pot: $(top_srcdir)/src/frontends/qt4/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
 	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
@@ -404,7 +434,7 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt3/ui/*.ui
 			} \
 			previousline=$$0; \
 		}' \
-	${top_srcdir}/src/frontends/qt3/ui/*.ui > $@
+	${top_srcdir}/src/frontends/qt4/ui/*.ui > $@
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \
