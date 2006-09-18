@@ -1,5 +1,5 @@
-#LyX 1.4.2svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 249
 \begin_document
 \begin_header
 \textclass scrbook
@@ -62,7 +62,14 @@
 \options bibtotoc,BCOR7mm
 \language english
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize 12
 \spacing single
@@ -1977,7 +1984,7 @@ Compose+e+'
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- é
+ Ã©
 \end_layout
 
 \begin_layout Itemize
@@ -1989,7 +1996,7 @@ Compose+O+R
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- ®
+ Â®
 \end_layout
 
 \begin_layout Itemize
@@ -2001,7 +2008,7 @@ Compose+1+2
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- ½
+ Â½
 \end_layout
 
 \begin_layout Itemize
@@ -2013,7 +2020,7 @@ Compose+<+<
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- «
+ Â«
 \end_layout
 
 \begin_layout Standard
@@ -2293,12 +2300,12 @@ ghostview
 \end_layout
 
 \begin_layout Standard
-The latter two programs are previewer for files in Dvi and PostScript®
+The latter two programs are previewer for files in Dvi and PostScriptÂ®
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-PostScript® is a registered trademark of Adobe Systems Incorporated, and
+PostScriptÂ® is a registered trademark of Adobe Systems Incorporated, and
  is the main page description language in the UN*X world.
  
 \end_layout
@@ -2641,7 +2648,7 @@ PRINTER
 \end_layout
 
 \begin_layout Standard
-If your printer doesn't understand PostScript®, you'll need to use 
+If your printer doesn't understand PostScriptÂ®, you'll need to use 
 \family typewriter
 ghostscript
 \family default
@@ -2669,7 +2676,7 @@ Preferences
  dialog, too.
  There is a major disadvantage to this method.
  You can't include any PostScript files, such as graphics, in your documents,
- since the printer-specific conversion programs don't understand PostScript®.
+ since the printer-specific conversion programs don't understand PostScriptÂ®.
  For that reason, the LyX team highly recommends using 
 \family typewriter
 dvips
@@ -2781,7 +2788,7 @@ VI
 \family typewriter
 xdvi
 \family default
- window, and voilà! 
+ window, and voilÃ ! 
 \family typewriter
 xdvi
 \family default
@@ -2803,7 +2810,7 @@ ghostview
 must
 \emph default
  view the PostScript version of the document.
- For repeated changes that aren't PostScript® dependent, you're better off
+ For repeated changes that aren't PostScriptÂ® dependent, you're better off
  previewing with 
 \family typewriter
 xdvi
@@ -2996,7 +3003,7 @@ Amsbook Books in the style and format used by the AMS.
 \end_layout
 
 \begin_layout Description
-Dinbrief für Briefe nach deutscher Art
+Dinbrief fÃ¼r Briefe nach deutscher Art
 \end_layout
 
 \begin_layout Description
@@ -5860,7 +5867,7 @@ depth
 \begin_inset Quotes erd
 \end_inset
 
- and voilà! You're all set.
+ and voilÃ ! You're all set.
 \end_layout
 
 \begin_layout Subsubsection
@@ -11832,7 +11839,7 @@ ghostview
 
 \begin_deeper
 \begin_layout Standard
-One advantage of using PostScript® is that the converter program [called
+One advantage of using PostScriptÂ® is that the converter program [called
  
 \family typewriter
 dvips
@@ -13266,6 +13273,33 @@ To close this footnote, click on the red box at the top left.
  If you want to turn already existing text into a footnote, simply mark
  it and click on the footnote button (a picture of text with an arrow pointing
  to stuff in the bottom margin).
+ Vice versa, you can change a footnote to regular text by hitting the 
+\family sans
+\series default
+\bar default
+Backspace
+\family roman
+\series medium
+\bar no
+ key when the cursor is in the first position of a footnote, or by hitting
+ the 
+\family sans
+\series default
+\bar default
+Delete
+\family roman
+\series medium
+\bar no
+ key when the cursor is in the very last position of the footnote, respectively
+ (this works for all 
+\begin_inset Quotes eld
+\end_inset
+
+foldable
+\begin_inset Quotes erd
+\end_inset
+
+ boxes in LyX).
 \end_layout
 
 \begin_layout Standard
@@ -13560,7 +13594,7 @@ LyX has the ability to handle literally any graphics format in the known
  universe so long as a conversion path from this graphics format to the
  target output format can be created.
  If that sounds a little obtuse, consider how LyX handles Encapsulated PostScrip
-t® figures.
+tÂ® figures.
  LaTeX provides native support for this format, so LyX needs do nothing
  other than use the 
 \family typewriter
@@ -14030,7 +14064,7 @@ math unit (1 mu = 1/18 em)
 
 \begin_layout Standard
 To view the figure on the LyX screen, however, some additional work is required
- because neither the XForms nor the Qt GUI libraries can load PostScript®
+ because neither the XForms nor the Qt GUI libraries can load PostScriptÂ®
  figures themselves.
  The XForms library can load figures in the following, widely used graphics
  formats: 
@@ -14078,7 +14112,7 @@ png
 xpm
 \family default
  format figures.
- Thus, LyX must initiate a conversion from Encapsulated PostScript® to a
+ Thus, LyX must initiate a conversion from Encapsulated PostScriptÂ® to a
  loadable graphics format.
 \end_layout
 
@@ -14105,7 +14139,7 @@ references
 \family default
  dialog.
  If LyX cannot create a conversion path (which might have many steps) from
- Encapsulated PostScript® to one of the loadable formats listed above, then
+ Encapsulated PostScriptÂ® to one of the loadable formats listed above, then
  it defaults to the use of ImageMagick's 
 \family typewriter
 convert
@@ -14132,7 +14166,7 @@ Error converting to loadable format
 This strategy is used both to generate on-screen views of your image and
  when generating the final document.
  In the latter case, the LaTeX compiler must be supplied with graphics files
- in PostScript® format.
+ in PostScriptÂ® format.
  Similarly the PDFLaTeX compiler requires files in
 \family typewriter
  pdf
@@ -14681,7 +14715,7 @@ XFig
 Export the figure as Encapsulated PostScript.
  This could be very easy included into LyX as described in the previous
  sections.
- The great advantage of this way is, that you have the full power of PostScript®
+ The great advantage of this way is, that you have the full power of PostScriptÂ®
  available.
  That means Bezier curves, colors, all line thicknesses and many more.
  If you have inserted text into your fig-document this will be printed with
@@ -14757,7 +14791,7 @@ Extended Features
 \begin_deeper
 \begin_layout Standard
 The disadvantage of this way is that the graphical power of LaTeX isn't
- as strong as PostScript®\SpecialChar \@.
+ as strong as PostScriptÂ®\SpecialChar \@.
  You cannot use all thicknesses of lines and, more
  annoyingly, not all slopes.
  This is why we recommend the third way for more complex figures.
@@ -14865,7 +14899,7 @@ foo.pstex_t
 
 \end_inset
 
- This way you have the full PostScript® and LaTeX power combined except
+ This way you have the full PostScriptÂ® and LaTeX power combined except
  for the possibility to scale the figure after creating.
  So if you want scalable pictures, the PostScript format is your only choice.
  Another little advantage of letting LaTeX typeset the font is that the
@@ -15633,7 +15667,7 @@ If your table becomes too large to fit on a portrait document layout, you
  can select the 
 \family sans
 Rotate\InsetSpace ~
-90°
+90Â°
 \family default
  button, and the table will appear sideways (this means landscape in a portrait
  document style).
@@ -15650,7 +15684,7 @@ Note:
  This 
 \family sans
 Rotate\InsetSpace ~
-90°
+90Â°
 \family default
  option will 
 \emph on
@@ -20041,9 +20075,9 @@ Tab
 \series default
  key.
  Here is an example:
-\begin_inset Formula \begin{eqnarray*}
+\begin_inset Formula \begin{3*}
 3 & = & 1+2\\
-4+5 & = & 9.\end{eqnarray*}
+4+5 & = & 9.\end{3*}
 
 \end_inset
 
@@ -20198,10 +20232,10 @@ For numbered (or labelled) multi-line formulas, the default is that all
 \end_inset
 
 ) below.
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula \begin{3}
 1 & = & 3-2\label{mathed:second-equation}\\
 2 & = & 4-2\label{mathed:third-eqn}\\
-4 & \leq & 7.\end{eqnarray}
+4 & \leq & 7.\end{3}
 
 \end_inset
 
@@ -20228,11 +20262,11 @@ line
  while the cursor is on that line of a multi-line numbered equation.
  This also toggles.
  For example :
-\begin_inset Formula \begin{eqnarray}
+\begin_inset Formula \begin{3}
 1 & = & 4-3\label{mathed:fourth-eqn}\\
 2 & = & 7-5\\
 1 & = & e^{2\pi i}\nonumber \\
-16 & \equiv & 2\,(mod\,7)\label{mathed:fifth-eqn}\end{eqnarray}
+16 & \equiv & 2\,(mod\,7)\label{mathed:fifth-eqn}\end{3}
 
 \end_inset
 
@@ -24053,7 +24087,7 @@ p
 \bar no
 \noun off
 \color none
-°
+Â°
 \end_layout
 
 \end_inset
@@ -24070,7 +24104,7 @@ p
 \bar no
 \noun off
 \color none
-À
+Ã€
 \end_layout
 
 \end_inset
@@ -24087,7 +24121,7 @@ p
 \bar no
 \noun off
 \color none
-Ð
+Ã
 \end_layout
 
 \end_inset
@@ -24104,7 +24138,7 @@ p
 \bar no
 \noun off
 \color none
-à
+Ã 
 \end_layout
 
 \end_inset
@@ -24121,7 +24155,7 @@ p
 \bar no
 \noun off
 \color none
-ð
+Ã°
 \end_layout
 
 \end_inset
@@ -24296,7 +24330,7 @@ q
 \bar no
 \noun off
 \color none
-¡
+Â¡
 \end_layout
 
 \end_inset
@@ -24313,7 +24347,7 @@ q
 \bar no
 \noun off
 \color none
-±
+Â±
 \end_layout
 
 \end_inset
@@ -24330,7 +24364,7 @@ q
 \bar no
 \noun off
 \color none
-Á
+Ã
 \end_layout
 
 \end_inset
@@ -24347,7 +24381,7 @@ q
 \bar no
 \noun off
 \color none
-Ñ
+Ã‘
 \end_layout
 
 \end_inset
@@ -24364,7 +24398,7 @@ q
 \bar no
 \noun off
 \color none
-á
+Ã¡
 \end_layout
 
 \end_inset
@@ -24381,7 +24415,7 @@ q
 \bar no
 \noun off
 \color none
-ñ
+Ã±
 \end_layout
 
 \end_inset
@@ -24568,7 +24602,7 @@ textcent
 status collapsed
 
 \begin_layout Standard
-character ¢ 
+character Â¢ 
 \end_layout
 
 \end_inset
@@ -24590,7 +24624,7 @@ character ¢
 \bar no
 \noun off
 \color none
-²
+Â²
 \end_layout
 
 \end_inset
@@ -24607,7 +24641,7 @@ character ¢
 \bar no
 \noun off
 \color none
-Â
+Ã‚
 \end_layout
 
 \end_inset
@@ -24624,7 +24658,7 @@ character ¢
 \bar no
 \noun off
 \color none
-Ò
+Ã’
 \end_layout
 
 \end_inset
@@ -24641,7 +24675,7 @@ character ¢
 \bar no
 \noun off
 \color none
-â
+Ã¢
 \end_layout
 
 \end_inset
@@ -24658,7 +24692,7 @@ character ¢
 \bar no
 \noun off
 \color none
-ò
+Ã²
 \end_layout
 
 \end_inset
@@ -24833,7 +24867,7 @@ s
 \bar no
 \noun off
 \color none
-£
+Â£
 \end_layout
 
 \end_inset
@@ -24850,7 +24884,7 @@ s
 \bar no
 \noun off
 \color none
-³
+Â³
 \end_layout
 
 \end_inset
@@ -24867,7 +24901,7 @@ s
 \bar no
 \noun off
 \color none
-Ã
+Ãƒ
 \end_layout
 
 \end_inset
@@ -24884,7 +24918,7 @@ s
 \bar no
 \noun off
 \color none
-Ó
+Ã“
 \end_layout
 
 \end_inset
@@ -24901,7 +24935,7 @@ s
 \bar no
 \noun off
 \color none
-ã
+Ã£
 \end_layout
 
 \end_inset
@@ -24918,7 +24952,7 @@ s
 \bar no
 \noun off
 \color none
-ó
+Ã³
 \end_layout
 
 \end_inset
@@ -25102,7 +25136,7 @@ textcurrency
 status collapsed
 
 \begin_layout Standard
-character ¤ 
+character Â¤ 
 \end_layout
 
 \end_inset
@@ -25124,7 +25158,7 @@ character ¤
 \bar no
 \noun off
 \color none
-´
+Â´
 \end_layout
 
 \end_inset
@@ -25141,7 +25175,7 @@ character ¤
 \bar no
 \noun off
 \color none
-Ä
+Ã„
 \end_layout
 
 \end_inset
@@ -25158,7 +25192,7 @@ character ¤
 \bar no
 \noun off
 \color none
-Ô
+Ã”
 \end_layout
 
 \end_inset
@@ -25175,7 +25209,7 @@ character ¤
 \bar no
 \noun off
 \color none
-ä
+Ã¤
 \end_layout
 
 \end_inset
@@ -25192,7 +25226,7 @@ character ¤
 \bar no
 \noun off
 \color none
-ô
+Ã´
 \end_layout
 
 \end_inset
@@ -25376,7 +25410,7 @@ textyen
 status collapsed
 
 \begin_layout Standard
-character ¥ 
+character Â¥ 
 \end_layout
 
 \end_inset
@@ -25398,7 +25432,7 @@ character ¥
 \bar no
 \noun off
 \color none
-µ
+Âµ
 \end_layout
 
 \end_inset
@@ -25415,7 +25449,7 @@ character ¥
 \bar no
 \noun off
 \color none
-Å
+Ã…
 \end_layout
 
 \end_inset
@@ -25432,7 +25466,7 @@ character ¥
 \bar no
 \noun off
 \color none
-Õ
+Ã•
 \end_layout
 
 \end_inset
@@ -25449,7 +25483,7 @@ character ¥
 \bar no
 \noun off
 \color none
-å
+Ã¥
 \end_layout
 
 \end_inset
@@ -25466,7 +25500,7 @@ character ¥
 \bar no
 \noun off
 \color none
-õ
+Ãµ
 \end_layout
 
 \end_inset
@@ -25650,7 +25684,7 @@ textbrokenbar
 status collapsed
 
 \begin_layout Standard
-character ¦ 
+character Â¦ 
 \end_layout
 
 \end_inset
@@ -25672,7 +25706,7 @@ character ¦
 \bar no
 \noun off
 \color none
-¶
+Â¶
 \end_layout
 
 \end_inset
@@ -25689,7 +25723,7 @@ character ¦
 \bar no
 \noun off
 \color none
-Æ
+Ã†
 \end_layout
 
 \end_inset
@@ -25706,7 +25740,7 @@ character ¦
 \bar no
 \noun off
 \color none
-Ö
+Ã–
 \end_layout
 
 \end_inset
@@ -25723,7 +25757,7 @@ character ¦
 \bar no
 \noun off
 \color none
-æ
+Ã¦
 \end_layout
 
 \end_inset
@@ -25740,7 +25774,7 @@ character ¦
 \bar no
 \noun off
 \color none
-ö
+Ã¶
 \end_layout
 
 \end_inset
@@ -25915,7 +25949,7 @@ w
 \bar no
 \noun off
 \color none
-§
+Â§
 \end_layout
 
 \end_inset
@@ -25932,7 +25966,7 @@ w
 \bar no
 \noun off
 \color none
-·
+Â·
 \end_layout
 
 \end_inset
@@ -25949,7 +25983,7 @@ w
 \bar no
 \noun off
 \color none
-Ç
+Ã‡
 \end_layout
 
 \end_inset
@@ -25966,7 +26000,7 @@ w
 \bar no
 \noun off
 \color none
-×
+Ã—
 \end_layout
 
 \end_inset
@@ -25983,7 +26017,7 @@ w
 \bar no
 \noun off
 \color none
-ç
+Ã§
 \end_layout
 
 \end_inset
@@ -26000,7 +26034,7 @@ w
 \bar no
 \noun off
 \color none
-÷
+Ã·
 \end_layout
 
 \end_inset
@@ -26175,7 +26209,7 @@ x
 \bar no
 \noun off
 \color none
-¨
+Â¨
 \end_layout
 
 \end_inset
@@ -26192,7 +26226,7 @@ x
 \bar no
 \noun off
 \color none
-¸
+Â¸
 \end_layout
 
 \end_inset
@@ -26209,7 +26243,7 @@ x
 \bar no
 \noun off
 \color none
-È
+Ãˆ
 \end_layout
 
 \end_inset
@@ -26226,7 +26260,7 @@ x
 \bar no
 \noun off
 \color none
-Ø
+Ã˜
 \end_layout
 
 \end_inset
@@ -26243,7 +26277,7 @@ x
 \bar no
 \noun off
 \color none
-è
+Ã¨
 \end_layout
 
 \end_inset
@@ -26260,7 +26294,7 @@ x
 \bar no
 \noun off
 \color none
-ø
+Ã¸
 \end_layout
 
 \end_inset
@@ -26435,7 +26469,7 @@ y
 \bar no
 \noun off
 \color none
-©
+Â©
 \end_layout
 
 \end_inset
@@ -26452,7 +26486,7 @@ y
 \bar no
 \noun off
 \color none
-¹
+Â¹
 \end_layout
 
 \end_inset
@@ -26469,7 +26503,7 @@ y
 \bar no
 \noun off
 \color none
-É
+Ã‰
 \end_layout
 
 \end_inset
@@ -26486,7 +26520,7 @@ y
 \bar no
 \noun off
 \color none
-Ù
+Ã™
 \end_layout
 
 \end_inset
@@ -26503,7 +26537,7 @@ y
 \bar no
 \noun off
 \color none
-é
+Ã©
 \end_layout
 
 \end_inset
@@ -26520,7 +26554,7 @@ y
 \bar no
 \noun off
 \color none
-ù
+Ã¹
 \end_layout
 
 \end_inset
@@ -26695,7 +26729,7 @@ z
 \bar no
 \noun off
 \color none
-ª
+Âª
 \end_layout
 
 \end_inset
@@ -26712,7 +26746,7 @@ z
 \bar no
 \noun off
 \color none
-º
+Âº
 \end_layout
 
 \end_inset
@@ -26729,7 +26763,7 @@ z
 \bar no
 \noun off
 \color none
-Ê
+ÃŠ
 \end_layout
 
 \end_inset
@@ -26746,7 +26780,7 @@ z
 \bar no
 \noun off
 \color none
-Ú
+Ãš
 \end_layout
 
 \end_inset
@@ -26763,7 +26797,7 @@ z
 \bar no
 \noun off
 \color none
-ê
+Ãª
 \end_layout
 
 \end_inset
@@ -26780,7 +26814,7 @@ z
 \bar no
 \noun off
 \color none
-ú
+Ãº
 \end_layout
 
 \end_inset
@@ -26955,7 +26989,7 @@ k
 \bar no
 \noun off
 \color none
-«
+Â«
 \end_layout
 
 \end_inset
@@ -26972,7 +27006,7 @@ k
 \bar no
 \noun off
 \color none
-»
+Â»
 \end_layout
 
 \end_inset
@@ -26989,7 +27023,7 @@ k
 \bar no
 \noun off
 \color none
-Ë
+Ã‹
 \end_layout
 
 \end_inset
@@ -27006,7 +27040,7 @@ k
 \bar no
 \noun off
 \color none
-Û
+Ã›
 \end_layout
 
 \end_inset
@@ -27023,7 +27057,7 @@ k
 \bar no
 \noun off
 \color none
-ë
+Ã«
 \end_layout
 
 \end_inset
@@ -27040,7 +27074,7 @@ k
 \bar no
 \noun off
 \color none
-û
+Ã»
 \end_layout
 
 \end_inset
@@ -27217,7 +27251,7 @@ l
 \bar no
 \noun off
 \color none
-¬
+Â¬
 \end_layout
 
 \end_inset
@@ -27234,7 +27268,7 @@ l
 \bar no
 \noun off
 \color none
-¼
+Â¼
 \end_layout
 
 \end_inset
@@ -27251,7 +27285,7 @@ l
 \bar no
 \noun off
 \color none
-Ì
+ÃŒ
 \end_layout
 
 \end_inset
@@ -27268,7 +27302,7 @@ l
 \bar no
 \noun off
 \color none
-Ü
+Ãœ
 \end_layout
 
 \end_inset
@@ -27285,7 +27319,7 @@ l
 \bar no
 \noun off
 \color none
-ì
+Ã¬
 \end_layout
 
 \end_inset
@@ -27302,7 +27336,7 @@ l
 \bar no
 \noun off
 \color none
-ü
+Ã¼
 \end_layout
 
 \end_inset
@@ -27486,7 +27520,7 @@ textendash
 status collapsed
 
 \begin_layout Standard
-character ­ 
+character Â­ 
 \end_layout
 
 \end_inset
@@ -27508,7 +27542,7 @@ character ­
 \bar no
 \noun off
 \color none
-½
+Â½
 \end_layout
 
 \end_inset
@@ -27525,7 +27559,7 @@ character ­
 \bar no
 \noun off
 \color none
-Í
+Ã
 \end_layout
 
 \end_inset
@@ -27542,7 +27576,7 @@ character ­
 \bar no
 \noun off
 \color none
-Ý
+Ã
 \end_layout
 
 \end_inset
@@ -27559,7 +27593,7 @@ character ­
 \bar no
 \noun off
 \color none
-í
+Ã­
 \end_layout
 
 \end_inset
@@ -27576,7 +27610,7 @@ character ­
 \bar no
 \noun off
 \color none
-ý
+Ã½
 \end_layout
 
 \end_inset
@@ -27751,7 +27785,7 @@ n
 \bar no
 \noun off
 \color none
-®
+Â®
 \end_layout
 
 \end_inset
@@ -27768,7 +27802,7 @@ n
 \bar no
 \noun off
 \color none
-¾
+Â¾
 \end_layout
 
 \end_inset
@@ -27785,7 +27819,7 @@ n
 \bar no
 \noun off
 \color none
-Î
+ÃŽ
 \end_layout
 
 \end_inset
@@ -27802,7 +27836,7 @@ n
 \bar no
 \noun off
 \color none
-Þ
+Ãž
 \end_layout
 
 \end_inset
@@ -27819,7 +27853,7 @@ n
 \bar no
 \noun off
 \color none
-î
+Ã®
 \end_layout
 
 \end_inset
@@ -27836,7 +27870,7 @@ n
 \bar no
 \noun off
 \color none
-þ
+Ã¾
 \end_layout
 
 \end_inset
@@ -28003,7 +28037,7 @@ o
 \bar no
 \noun off
 \color none
-¯
+Â¯
 \end_layout
 
 \end_inset
@@ -28020,7 +28054,7 @@ o
 \bar no
 \noun off
 \color none
-¿
+Â¿
 \end_layout
 
 \end_inset
@@ -28037,7 +28071,7 @@ o
 \bar no
 \noun off
 \color none
-Ï
+Ã
 \end_layout
 
 \end_inset
@@ -28054,7 +28088,7 @@ o
 \bar no
 \noun off
 \color none
-ß
+ÃŸ
 \end_layout
 
 \end_inset
@@ -28071,7 +28105,7 @@ o
 \bar no
 \noun off
 \color none
-ï
+Ã¯
 \end_layout
 
 \end_inset
@@ -28088,7 +28122,7 @@ o
 \bar no
 \noun off
 \color none
-ÿ
+Ã¿
 \end_layout
 
 \end_inset
@@ -28132,43 +28166,43 @@ ISO8859--1
 
 \begin_deeper
 \begin_layout Standard
-¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
+Â¨ Ã„ Ã‹ Ã Ã– Ãœ Ã¤ Ã« Ã¯ Ã¶ Ã¼ Ã¿
 \hfill
 diaeresis
 \end_layout
 
 \begin_layout Standard
-^ Â Ê Î Ô Û â ê î ô û
+^ Ã‚ ÃŠ ÃŽ Ã” Ã› Ã¢ Ãª Ã® Ã´ Ã»
 \hfill
 circumflex
 \end_layout
 
 \begin_layout Standard
-` À È Ì Ò Ù à è ì ò ù
+` Ã€ Ãˆ ÃŒ Ã’ Ã™ Ã  Ã¨ Ã¬ Ã² Ã¹
 \hfill
 grave
 \end_layout
 
 \begin_layout Standard
-´ Á É Í Ó Ú Ý á é í ó ú ý
+Â´ Ã Ã‰ Ã Ã“ Ãš Ã Ã¡ Ã© Ã­ Ã³ Ãº Ã½
 \hfill
 acute
 \end_layout
 
 \begin_layout Standard
-~ Ã Ñ Õ ã ñ õ
+~ Ãƒ Ã‘ Ã• Ã£ Ã± Ãµ
 \hfill
 tilde
 \end_layout
 
 \begin_layout Standard
-¸Çç
+Â¸Ã‡Ã§
 \hfill
 cedilla
 \end_layout
 
 \begin_layout Standard
-¯
+Â¯
 \hfill
 macron
 \begin_inset Foot
@@ -28360,7 +28394,7 @@ LyX Manifesto,
 \begin_layout Itemize
 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \noun default
  wrote several minidocs, including some of the information about international
  support in LyX.
@@ -28378,7 +28412,7 @@ nal keyboard maps and customization.
 \begin_layout Itemize
 
 \noun on
-Pascal André
+Pascal AndrÃ©
 \noun default
  originally documented the LinuxDoc SGML interface.
 \end_layout
