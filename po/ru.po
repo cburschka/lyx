@@ -34,8 +34,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-17 22:34+0200\n"
-"PO-Revision-Date: 2006-07-03 19:40+0200\n"
+"POT-Creation-Date: 2006-09-18 20:51+0200\n"
+"PO-Revision-Date: 2006-09-18 21:25+0200\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,63 +43,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: src/frontends/qt3/ui/BiblioModuleBase.ui:16
-#, fuzzy
-msgid "BiblioModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:33
+#: src/frontends/qt4/ui/BiblioUi.ui:28
 #, fuzzy
 msgid "Citation Style"
 msgstr "Представление ссылок"
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:50
+#: src/frontends/qt4/ui/BiblioUi.ui:43
 #, fuzzy
 msgid "&Jurabib"
 msgstr "Использовать Natbib"
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:53
+#: src/frontends/qt4/ui/BiblioUi.ui:40
 msgid "Use the jurabib styles for law and humanities"
 msgstr ""
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:61
+#: src/frontends/qt4/ui/BiblioUi.ui:53
 #, fuzzy
 msgid "&Natbib"
 msgstr "Использовать Natbib"
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:64
+#: src/frontends/qt4/ui/BiblioUi.ui:50
 msgid "Use the natbib styles for natural sciences and arts"
 msgstr ""
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:72
+#: src/frontends/qt4/ui/BiblioUi.ui:63
 #, fuzzy
 msgid "&Default (numerical)"
 msgstr "Путь по умолчанию"
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:75
+#: src/frontends/qt4/ui/BiblioUi.ui:60
 msgid "Use BibTeX's default numerical styles"
 msgstr ""
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:100
+#: src/frontends/qt4/ui/BiblioUi.ui:81
 #, fuzzy
 msgid "Natbib &style:"
 msgstr "Представление ссылок"
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:148
+#: src/frontends/qt4/ui/BiblioUi.ui:130
 #, fuzzy
 msgid "S&ectioned bibliography"
 msgstr "Библиография"
 
 #: src/frontends/qt3/ui/BiblioModuleBase.ui:151
+#: src/frontends/qt4/ui/BiblioUi.ui:127
 msgid "Select this if you want to split your bibliography into sections"
 msgstr ""
 
-#: src/frontends/qt3/ui/BranchesModuleBase.ui:16
-#, fuzzy
-msgid "BranchesModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:47
+#: src/frontends/qt4/ui/BranchesUi.ui:57
 #, fuzzy
 msgid "A&vailable Branches:"
 msgstr "Сохранить параметры"
@@ -121,7 +122,10 @@ msgstr ""
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:360
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:313
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:86
-#: src/frontends/gtk/GDocument.C:356 src/frontends/gtk/GExternal.C:385
+#: src/frontends/qt4/ui/QExternalUi.ui:207
+#: src/frontends/qt4/ui/QGraphicsUi.ui:153
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:76 src/frontends/gtk/GDocument.C:356
+#: src/frontends/gtk/GExternal.C:385
 #, fuzzy
 msgid "Color"
 msgstr "Цвета"
@@ -132,20 +136,24 @@ msgid "The available branches"
 msgstr "Сохранить параметры"
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:122
+#: src/frontends/qt4/ui/BranchesUi.ui:93
 msgid "(&De)activate"
 msgstr ""
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:125
+#: src/frontends/qt4/ui/BranchesUi.ui:90
 #, fuzzy
 msgid "Toggle the selected branch"
 msgstr "Выберите базу данных"
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:133
+#: src/frontends/qt4/ui/BranchesUi.ui:103
 #, fuzzy
 msgid "Alter Co&lor..."
 msgstr "другие ..."
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:136
+#: src/frontends/qt4/ui/BranchesUi.ui:100
 msgid "Define or change background color"
 msgstr ""
 
@@ -153,16 +161,22 @@ msgstr ""
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:267
 #: src/frontends/qt3/ui/QPrefCopiersModule.ui:102
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:302
+#: src/frontends/qt4/ui/BranchesUi.ui:83
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:201
+#: src/frontends/qt4/ui/QPrefCopiersUi.ui:115
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:212
 #, fuzzy
 msgid "&Remove"
 msgstr "обратный порядок"
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:147
+#: src/frontends/qt4/ui/BranchesUi.ui:80
 #, fuzzy
 msgid "Remove the selected branch"
 msgstr "Выберите базу данных"
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:186
+#: src/frontends/qt4/ui/BranchesUi.ui:67
 #, fuzzy
 msgid "&New:"
 msgstr "Название"
@@ -172,18 +186,19 @@ msgstr "Название"
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:135
 #: src/frontends/qt3/ui/QPrefCopiersModule.ui:153
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:170
+#: src/frontends/qt4/ui/BranchesUi.ui:50
+#: src/frontends/qt4/ui/QBibtexAddUi.ui:70
+#: src/frontends/qt4/ui/QCitationUi.ui:60
+#: src/frontends/qt4/ui/QPrefCopiersUi.ui:65
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:57
 #, fuzzy
 msgid "&Add"
 msgstr "Добавить"
 
 #: src/frontends/qt3/ui/BranchesModuleBase.ui:205
+#: src/frontends/qt4/ui/BranchesUi.ui:47
 msgid "Add a new branch to the list"
 msgstr ""
-
-#: src/frontends/qt3/ui/BulletsModuleBase.ui:16
-#, fuzzy
-msgid "BulletsModuleBase"
-msgstr "Язык"
 
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:103
 #, fuzzy
@@ -216,6 +231,7 @@ msgstr "По умолчанию"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:363
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:577
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:824
+#: src/frontends/qt4/ui/BulletsUi.ui:74
 #: src/frontends/controllers/character.C:123 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "Крохотный"
@@ -224,6 +240,7 @@ msgstr "Крохотный"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:368
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:582
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:829
+#: src/frontends/qt4/ui/BulletsUi.ui:79
 #: src/frontends/controllers/character.C:127 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "Наименьший"
@@ -232,6 +249,7 @@ msgstr "Наименьший"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:373
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:587
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:834
+#: src/frontends/qt4/ui/BulletsUi.ui:84
 #: src/frontends/controllers/character.C:131 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "Меньший"
@@ -240,6 +258,7 @@ msgstr "Меньший"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:378
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:592
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:839
+#: src/frontends/qt4/ui/BulletsUi.ui:89
 #: src/frontends/controllers/character.C:135 src/lyxfont.C:64
 msgid "Small"
 msgstr "Маленький"
@@ -248,6 +267,7 @@ msgstr "Маленький"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:383
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:597
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:844
+#: src/frontends/qt4/ui/BulletsUi.ui:94
 #: src/frontends/controllers/character.C:139 src/lyxfont.C:64
 msgid "Normal"
 msgstr "Нормальный"
@@ -256,6 +276,7 @@ msgstr "Нормальный"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:388
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:602
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:849
+#: src/frontends/qt4/ui/BulletsUi.ui:99
 #: src/frontends/controllers/character.C:143 src/lyxfont.C:64
 msgid "Large"
 msgstr "Большой"
@@ -264,6 +285,7 @@ msgstr "Большой"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:393
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:607
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:854
+#: src/frontends/qt4/ui/BulletsUi.ui:104
 #: src/frontends/controllers/character.C:147 src/lyxfont.C:65
 msgid "Larger"
 msgstr "Больше"
@@ -272,6 +294,7 @@ msgstr "Больше"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:398
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:612
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:859
+#: src/frontends/qt4/ui/BulletsUi.ui:109
 #: src/frontends/controllers/character.C:151 src/lyxfont.C:65
 msgid "Largest"
 msgstr "Наибольший"
@@ -280,6 +303,7 @@ msgstr "Наибольший"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:403
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:617
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:864
+#: src/frontends/qt4/ui/BulletsUi.ui:114
 #: src/frontends/controllers/character.C:155 src/lyxfont.C:65
 msgid "Huge"
 msgstr "Огромный"
@@ -288,6 +312,7 @@ msgstr "Огромный"
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:408
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:622
 #: src/frontends/qt3/ui/BulletsModuleBase.ui:869
+#: src/frontends/qt4/ui/BulletsUi.ui:119
 #: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
 msgstr "Огромнее"
@@ -310,11 +335,6 @@ msgstr ""
 "Шапка в начале\n"
 "таблицы"
 
-#: src/frontends/qt3/ui/FontModuleBase.ui:16
-#, fuzzy
-msgid "FontModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/FontModuleBase.ui:27
 #, fuzzy
 msgid "Document Fonts"
@@ -322,147 +342,160 @@ msgstr "Документ"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:38
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:143
+#: src/frontends/qt4/ui/FontUi.ui:240
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
 #, fuzzy
 msgid "&Roman:"
 msgstr "Романский"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:62
+#: src/frontends/qt4/ui/FontUi.ui:230
 #, fuzzy
 msgid "&Sans Serif:"
 msgstr "Рубленый"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:99
+#: src/frontends/qt4/ui/FontUi.ui:220
 #, fuzzy
 msgid "&Typewriter:"
 msgstr "Машинописный"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:110
+#: src/frontends/qt4/ui/FontUi.ui:210
 #, fuzzy
 msgid "&Default Family:"
 msgstr "Язык по умолчанию"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:153
+#: src/frontends/qt4/ui/FontUi.ui:44
 #, fuzzy
 msgid "Advanced Options"
 msgstr "Продвинутые настройки"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:164
+#: src/frontends/qt4/ui/FontUi.ui:56
 #, fuzzy
 msgid "Use true S&mall Caps"
 msgstr "Капитель"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:172
+#: src/frontends/qt4/ui/FontUi.ui:63
 msgid "Use &Old Style Figures"
 msgstr ""
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:182
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:266
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:217
 #, fuzzy
 msgid "Font Sizes"
 msgstr "Используемые шрифты"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:217
+#: src/frontends/qt4/ui/FontUi.ui:97
 #, fuzzy
 msgid "&Base Size:"
 msgstr "Размер"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:228
+#: src/frontends/qt4/ui/FontUi.ui:137
 #, fuzzy
 msgid "S&cale Sans Serif %:"
 msgstr "Рубленый"
 
 #: src/frontends/qt3/ui/FontModuleBase.ui:239
+#: src/frontends/qt4/ui/FontUi.ui:107
 #, fuzzy
 msgid "Sc&ale Typewriter %:"
 msgstr "Машинописный"
 
-#: src/frontends/qt3/ui/LaTeXModuleBase.ui:16
-#, fuzzy
-msgid "LaTeXModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/LaTeXModuleBase.ui:61
+#: src/frontends/qt4/ui/LaTeXUi.ui:44
 #, fuzzy
 msgid "Document &class:"
 msgstr "Документ экспортирован как '"
 
 #: src/frontends/qt3/ui/LaTeXModuleBase.ui:118
+#: src/frontends/qt4/ui/LaTeXUi.ui:92
 #, fuzzy
 msgid "Class Settings"
 msgstr "Параметры плавающего объекта"
 
 #: src/frontends/qt3/ui/LaTeXModuleBase.ui:135
+#: src/frontends/qt4/ui/LaTeXUi.ui:104
 #, fuzzy
 msgid "&Options:"
 msgstr "Параметры показа режима LaTeX"
 
 #: src/frontends/qt3/ui/LaTeXModuleBase.ui:175
+#: src/frontends/qt4/ui/LaTeXUi.ui:141
 #, fuzzy
 msgid "Postscript &driver:"
 msgstr "Файлы PostScript (*.ps)"
 
-#: src/frontends/qt3/ui/LanguageModuleBase.ui:16
-#, fuzzy
-msgid "LanguageModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/LanguageModuleBase.ui:47
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:176
+#: src/frontends/qt4/ui/LanguageUi.ui:36
+#: src/frontends/qt4/ui/QCharacterUi.ui:151
 #, fuzzy
 msgid "&Language:"
 msgstr "Язык:"
 
 #: src/frontends/qt3/ui/LanguageModuleBase.ui:90
+#: src/frontends/qt4/ui/LanguageUi.ui:76
 #, fuzzy
 msgid "&Use language's default encoding"
 msgstr "Входная кодировка"
 
 #: src/frontends/qt3/ui/LanguageModuleBase.ui:143
+#: src/frontends/qt4/ui/LanguageUi.ui:131
 #, fuzzy
 msgid "&Encoding:"
 msgstr "Кодировка:"
 
 #: src/frontends/qt3/ui/LanguageModuleBase.ui:159
+#: src/frontends/qt4/ui/LanguageUi.ui:141
 #, fuzzy
 msgid "&Quote Style:"
 msgstr "Тип кавычек"
 
-#: src/frontends/qt3/ui/MarginsModuleBase.ui:16
-#, fuzzy
-msgid "MarginsModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:33
+#: src/frontends/qt4/ui/MarginsUi.ui:31
 #, fuzzy
 msgid "&Default Margins"
 msgstr "Язык по умолчанию"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:36
+#: src/frontends/qt4/ui/MarginsUi.ui:28
 #, fuzzy
 msgid "Use the margin settings provided by the document class"
 msgstr "значения по умолчанию для этого класса документов?"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:109
+#: src/frontends/qt4/ui/MarginsUi.ui:89
 #, fuzzy
 msgid "&Top:"
 msgstr "Сверху:"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:123
+#: src/frontends/qt4/ui/MarginsUi.ui:102
 #, fuzzy
 msgid "&Bottom:"
 msgstr "Снизу:"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:137
+#: src/frontends/qt4/ui/MarginsUi.ui:115
 #, fuzzy
 msgid "&Inner:"
 msgstr "Внутри:"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:151
+#: src/frontends/qt4/ui/MarginsUi.ui:128
 #, fuzzy
 msgid "O&uter:"
 msgstr "Снаружи:"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:165
+#: src/frontends/qt4/ui/MarginsUi.ui:141
 #, fuzzy
 msgid "Head &sep:"
 msgstr ""
@@ -470,6 +503,7 @@ msgstr ""
 "верха:"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:179
+#: src/frontends/qt4/ui/MarginsUi.ui:154
 #, fuzzy
 msgid "Head &height:"
 msgstr ""
@@ -477,18 +511,15 @@ msgstr ""
 "верха:"
 
 #: src/frontends/qt3/ui/MarginsModuleBase.ui:193
+#: src/frontends/qt4/ui/MarginsUi.ui:167
 #, fuzzy
 msgid "&Foot skip:"
 msgstr ""
 "Промежуток\n"
 "сноски:"
 
-#: src/frontends/qt3/ui/MathsModuleBase.ui:16
-#, fuzzy
-msgid "MathsModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/MathsModuleBase.ui:33
+#: src/frontends/qt4/ui/MathsUi.ui:28
 #, fuzzy
 msgid "&Use AMS math package automatically"
 msgstr ""
@@ -496,23 +527,21 @@ msgstr ""
 "AMS-математику"
 
 #: src/frontends/qt3/ui/MathsModuleBase.ui:44
+#: src/frontends/qt4/ui/MathsUi.ui:38
 #, fuzzy
 msgid "Use AMS &math package"
 msgstr ""
 "Использовать\n"
 "AMS-математику"
 
-#: src/frontends/qt3/ui/NumberingModuleBase.ui:16
-#, fuzzy
-msgid "NumberingModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/NumberingModuleBase.ui:33
+#: src/frontends/qt4/ui/NumberingUi.ui:73
 #, fuzzy
 msgid "&Numbering"
 msgstr "Номер"
 
 #: src/frontends/qt3/ui/NumberingModuleBase.ui:77
+#: src/frontends/qt4/ui/NumberingUi.ui:63
 #, fuzzy
 msgid "&List in Table of Contents"
 msgstr "Содержание"
@@ -543,12 +572,8 @@ msgstr ""
 msgid "Example numbering and table of contents"
 msgstr "Вставить Содержание"
 
-#: src/frontends/qt3/ui/PageLayoutModuleBase.ui:16
-#, fuzzy
-msgid "PageLayoutModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:33
+#: src/frontends/qt4/ui/PageLayoutUi.ui:28
 #, fuzzy
 msgid "Paper Size"
 msgstr "Размер бумаги"
@@ -557,6 +582,9 @@ msgstr "Размер бумаги"
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:68
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:576
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:459
+#: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/QBoxUi.ui:122
+#: src/frontends/qt4/ui/QExternalUi.ui:507
+#: src/frontends/qt4/ui/QGraphicsUi.ui:239
 #, fuzzy
 msgid "&Height:"
 msgstr "Высота:"
@@ -567,29 +595,38 @@ msgstr "Высота:"
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:413
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:366
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:60
+#: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:138
+#: src/frontends/qt4/ui/QExternalUi.ui:484
+#: src/frontends/qt4/ui/QGraphicsUi.ui:179
+#: src/frontends/qt4/ui/QTabularUi.ui:103 src/frontends/qt4/ui/QWrapUi.ui:39
 #, fuzzy
 msgid "&Width:"
 msgstr "Ширина"
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:89
+#: src/frontends/qt4/ui/PageLayoutUi.ui:74
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:147
+#: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Orientation"
 msgstr "Ориентация"
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:164
+#: src/frontends/qt4/ui/PageLayoutUi.ui:140
 #, fuzzy
 msgid "&Portrait"
 msgstr "Портрет"
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:175
+#: src/frontends/qt4/ui/PageLayoutUi.ui:150
 #, fuzzy
 msgid "&Landscape"
 msgstr "ландшафт"
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:199
+#: src/frontends/qt4/ui/PageLayoutUi.ui:168
 #, fuzzy
 msgid "Page &style:"
 msgstr ""
@@ -597,43 +634,40 @@ msgstr ""
 "страницы:"
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:218
+#: src/frontends/qt4/ui/PageLayoutUi.ui:186
 msgid "Style used for the page header and footer"
 msgstr ""
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:228
+#: src/frontends/qt4/ui/PageLayoutUi.ui:198
 #, fuzzy
 msgid "&Two-sided document"
 msgstr "Создать документ"
 
 #: src/frontends/qt3/ui/PageLayoutModuleBase.ui:231
+#: src/frontends/qt4/ui/PageLayoutUi.ui:195
 msgid "Lay out the page for double-sided printing"
 msgstr ""
 
-#: src/frontends/qt3/ui/PreambleModuleBase.ui:16
-#, fuzzy
-msgid "PreambleModuleBase"
-msgstr "Язык"
-
-#: src/frontends/qt3/ui/QAboutDialogBase.ui:16
-#, fuzzy
-msgid "AboutDialog"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QAboutDialogBase.ui:40
+#: src/frontends/qt4/ui/QAboutUi.ui:32
 #, fuzzy
 msgid "Version"
 msgstr "LyX версии "
 
 #: src/frontends/qt3/ui/QAboutDialogBase.ui:66
+#: src/frontends/qt4/ui/QAboutUi.ui:50
 #, fuzzy
 msgid "Version goes here"
 msgstr "Контроль версий"
 
 #: src/frontends/qt3/ui/QAboutDialogBase.ui:83
+#: src/frontends/qt4/ui/QAboutUi.ui:64
 msgid "Credits"
 msgstr "Благодарности"
 
-#: src/frontends/qt3/ui/QAboutDialogBase.ui:113 lib/layouts/apa.layout:199
+#: src/frontends/qt3/ui/QAboutDialogBase.ui:113
+#: src/frontends/qt4/ui/QAboutUi.ui:80 lib/layouts/apa.layout:199
 #: lib/layouts/agu_stdtitle.inc:81
 msgid "Copyright"
 msgstr "Копирайт"
@@ -662,15 +696,27 @@ msgstr "Копирайт"
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:193
 #: src/frontends/qt3/ui/QViewSourceDialogBase.ui:129
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:254
+#: src/frontends/qt4/ui/QAboutUi.ui:131 src/frontends/qt4/ui/QBibitemUi.ui:121
+#: src/frontends/qt4/ui/QBoxUi.ui:351 src/frontends/qt4/ui/QBranchUi.ui:41
+#: src/frontends/qt4/ui/QDelimiterUi.ui:148
+#: src/frontends/qt4/ui/QErrorListUi.ui:62
+#: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
+#: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
+#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
+#: src/frontends/qt4/ui/QSearchUi.ui:210
+#: src/frontends/qt4/ui/QShowFileUi.ui:58
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
+#: src/frontends/qt4/ui/QTexinfoUi.ui:61
+#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QTocUi.ui:77
+#: src/frontends/qt4/ui/QURLUi.ui:115 src/frontends/qt4/ui/QVSpaceUi.ui:171
+#: src/frontends/qt4/ui/QViewSourceUi.ui:118
+#: src/frontends/qt4/ui/QWrapUi.ui:216
 msgid "&Close"
 msgstr "Закрыть"
 
-#: src/frontends/qt3/ui/QAskForTextDialog.ui:16
-#, fuzzy
-msgid "LyX: Enter text"
-msgstr "Вкладки LyX'а"
-
 #: src/frontends/qt3/ui/QAskForTextDialog.ui:53
+#: src/frontends/qt4/ui/QAskForTextUi.ui:47
 #, fuzzy
 msgid "&Dummy"
 msgstr "Сводка"
@@ -698,51 +744,64 @@ msgstr "Сводка"
 #: src/frontends/qt3/ui/QURLDialogBase.ui:122
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:168
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:226
+#: src/frontends/qt4/ui/QAskForTextUi.ui:84
+#: src/frontends/qt4/ui/QBibitemUi.ui:111
+#: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
+#: src/frontends/qt4/ui/QBranchUi.ui:31
+#: src/frontends/qt4/ui/QCharacterUi.ui:352
+#: src/frontends/qt4/ui/QCitationUi.ui:329
+#: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
+#: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
+#: src/frontends/qt4/ui/QGraphicsUi.ui:791
+#: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:170
+#: src/frontends/qt4/ui/QNoteUi.ui:31 src/frontends/qt4/ui/QParagraphUi.ui:258
+#: src/frontends/qt4/ui/QRefUi.ui:80 src/frontends/qt4/ui/QSendtoUi.ui:75
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:68
+#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:148
+#: src/frontends/qt4/ui/QWrapUi.ui:193
 #, fuzzy
 msgid "&OK"
 msgstr "ОК"
 
 #: src/frontends/qt3/ui/QAskForTextDialog.ui:111
-#: src/frontends/qt3/ui/QDocumentDialogBase.ui:178 src/buffer_funcs.C:97
+#: src/frontends/qt3/ui/QDocumentDialogBase.ui:178
+#: src/frontends/qt4/ui/QAskForTextUi.ui:94
+#: src/frontends/qt4/ui/QCitationUi.ui:349
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:86
 #: src/bufferlist.C:194 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:664
 #: src/lyxfunc.C:830 src/lyxfunc.C:1881 src/lyxvc.C:170
 msgid "&Cancel"
 msgstr "Отмена"
 
-#: src/frontends/qt3/ui/QBibitemDialogBase.ui:16
-#, fuzzy
-msgid "QBibitemDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QBibitemDialogBase.ui:50
+#: src/frontends/qt4/ui/QBibitemUi.ui:77
 #, fuzzy
 msgid "&Key:"
 msgstr "Ключевое слово"
 
 #: src/frontends/qt3/ui/QBibitemDialogBase.ui:56
 #: src/frontends/qt3/ui/QBibitemDialogBase.ui:72
+#: src/frontends/qt4/ui/QBibitemUi.ui:39 src/frontends/qt4/ui/QBibitemUi.ui:74
 #, fuzzy
 msgid "The bibliography key"
 msgstr "Библиография"
 
 #: src/frontends/qt3/ui/QBibitemDialogBase.ui:96
-#: src/frontends/qt3/ui/QRefDialogBase.ui:152 src/frontends/qt3/Dialogs.C:226
-#: src/frontends/qt4/Dialogs.C:223
+#: src/frontends/qt3/ui/QRefDialogBase.ui:152
+#: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
+#: src/frontends/qt3/Dialogs.C:226 src/frontends/qt4/Dialogs.C:223
 #, fuzzy
 msgid "&Label:"
 msgstr "Labeling"
 
 #: src/frontends/qt3/ui/QBibitemDialogBase.ui:102
 #: src/frontends/qt3/ui/QBibitemDialogBase.ui:118
+#: src/frontends/qt4/ui/QBibitemUi.ui:54 src/frontends/qt4/ui/QBibitemUi.ui:61
 #, fuzzy
 msgid "The label as it appears in the document"
 msgstr "Название формата, как оно будет показываться в меню."
-
-#: src/frontends/qt3/ui/QBibtexAddDialogBase.ui:24
-#, fuzzy
-msgid "LyX: Add BibTeX Database"
-msgstr "База данных BiBTeX"
 
 #: src/frontends/qt3/ui/QBibtexAddDialogBase.ui:44
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:210
@@ -750,11 +809,17 @@ msgstr "База данных BiBTeX"
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:591
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:72
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:374
+#: src/frontends/qt4/ui/QBibtexAddUi.ui:126
+#: src/frontends/qt4/ui/QBibtexUi.ui:106
+#: src/frontends/qt4/ui/QExternalUi.ui:99
+#: src/frontends/qt4/ui/QGraphicsUi.ui:375
+#: src/frontends/qt4/ui/QIncludeUi.ui:148 src/frontends/qt4/ui/QPrintUi.ui:316
 #, fuzzy
 msgid "&Browse..."
 msgstr "Обзор..."
 
 #: src/frontends/qt3/ui/QBibtexAddDialogBase.ui:66
+#: src/frontends/qt4/ui/QBibtexAddUi.ui:119
 #, fuzzy
 msgid "Enter BibTeX database name"
 msgstr "База данных BiBTeX"
@@ -783,33 +848,35 @@ msgstr "Выберите базу данных BiBTeX для добавления"
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:262
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:124
 #: src/frontends/qt3/ui/QIndexDialogBase.ui:116
-#: src/frontends/qt3/ui/QSendtoDialogBase.ui:94 src/BufferView.C:280
-#: src/frontends/gtk/GBC.h:27 src/frontends/qt3/Qt2BC.h:36
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:779
+#: src/frontends/qt3/ui/QSendtoDialogBase.ui:94
+#: src/frontends/qt4/ui/QBibtexAddUi.ui:83
+#: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
+#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QSendtoUi.ui:95
+#: src/BufferView.C:280 src/frontends/gtk/GBC.h:27
+#: src/frontends/qt3/Qt2BC.h:36 src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:779
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/frontends/qt3/ui/QBibtexDialogBase.ui:16
-#, fuzzy
-msgid "QBibtexDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:44
+#: src/frontends/qt4/ui/QBibtexUi.ui:252
 #, fuzzy
 msgid "St&yle"
 msgstr "Стиль:  "
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:50
+#: src/frontends/qt4/ui/QBibtexUi.ui:249
 #, fuzzy
 msgid "The BibTeX style"
 msgstr "Выберите cтиль BibTeX"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:124
+#: src/frontends/qt4/ui/QBibtexUi.ui:179
 #, fuzzy
 msgid "Databa&ses"
 msgstr "База данных:"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:133
+#: src/frontends/qt4/ui/QBibtexUi.ui:176
 #, fuzzy
 msgid "BibTeX database to use"
 msgstr "База данных BiBTeX"
@@ -821,27 +888,32 @@ msgstr "Выберите базу данных BiBTeX для добавления"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:154
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:168
+#: src/frontends/qt4/ui/QBibtexUi.ui:161
 #, fuzzy
 msgid "&Add..."
 msgstr "Добавить"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:157
+#: src/frontends/qt4/ui/QBibtexUi.ui:158
 #, fuzzy
 msgid "Add a BibTeX database file"
 msgstr "Файлы базы данных BiBTeX (*.bib)"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:165
+#: src/frontends/qt4/ui/QBibtexUi.ui:151
 #, fuzzy
 msgid "&Delete"
 msgstr "Удалить из"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:168
+#: src/frontends/qt4/ui/QBibtexUi.ui:148
 #, fuzzy
 msgid "Remove the selected database"
 msgstr "Выберите базу данных"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:202
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:216
+#: src/frontends/qt4/ui/QBibtexUi.ui:103 src/frontends/qt4/ui/QBibtexUi.ui:116
 #, fuzzy
 msgid "Choose a style file"
 msgstr ""
@@ -849,65 +921,71 @@ msgstr ""
 "недавних файлов"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:239
+#: src/frontends/qt4/ui/QBibtexUi.ui:69
 #, fuzzy
 msgid "all cited references"
 msgstr "Сохранить параметры"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:244
+#: src/frontends/qt4/ui/QBibtexUi.ui:74
 #, fuzzy
 msgid "all uncited references"
 msgstr "Сохранить параметры"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:249
+#: src/frontends/qt4/ui/QBibtexUi.ui:79
 #, fuzzy
 msgid "all references"
 msgstr "Сохранить параметры"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:256
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:278
+#: src/frontends/qt4/ui/QBibtexUi.ui:52 src/frontends/qt4/ui/QBibtexUi.ui:65
 #, fuzzy
 msgid "This bibliography section contains..."
 msgstr "Просмотреть Содержание"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:272
+#: src/frontends/qt4/ui/QBibtexUi.ui:55
 #, fuzzy
 msgid "&Content:"
 msgstr "Содержит"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:286
+#: src/frontends/qt4/ui/QBibtexUi.ui:37
 #, fuzzy
 msgid "Add bibliography to &TOC"
 msgstr "Добавить библиографию в содержание"
 
 #: src/frontends/qt3/ui/QBibtexDialogBase.ui:289
+#: src/frontends/qt4/ui/QBibtexUi.ui:34
 #, fuzzy
 msgid "Add bibliography to the table of contents"
 msgstr "Просмотреть Содержание"
 
-#: src/frontends/qt3/ui/QBoxDialogBase.ui:16
-#, fuzzy
-msgid "QBoxDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:40
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:566
+#: src/frontends/qt4/ui/QBoxUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:76
 msgid "Supported box types"
 msgstr ""
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:74
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:115
+#: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
 #, fuzzy
 msgid "Height value"
 msgstr "Ширина"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:99
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:512
+#: src/frontends/qt4/ui/QGraphicsUi.ui:219
 #, fuzzy
 msgid "Units of height value"
 msgstr "Ширина"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:140
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:127
+#: src/frontends/qt4/ui/QWrapUi.ui:103
 #, fuzzy
 msgid "Units of width value"
 msgstr "Ширина"
@@ -915,6 +993,8 @@ msgstr "Ширина"
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:160
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:176
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:143
+#: src/frontends/qt4/ui/QBoxUi.ui:112 src/frontends/qt4/ui/QBoxUi.ui:135
+#: src/frontends/qt4/ui/QWrapUi.ui:118
 #, fuzzy
 msgid "Width value"
 msgstr "Ширина"
@@ -927,6 +1007,11 @@ msgstr "Ширина"
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:270
 #: src/frontends/qt3/ui/QPrefsDialogBase.ui:63
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:195
+#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
+#: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
+#: src/frontends/qt4/ui/QGraphicsUi.ui:762
+#: src/frontends/qt4/ui/QParagraphUi.ui:232
+#: src/frontends/qt4/ui/QPrefsUi.ui:50 src/frontends/qt4/ui/QWrapUi.ui:164
 #, fuzzy
 msgid "&Restore"
 msgstr "Восстановить"
@@ -943,20 +1028,33 @@ msgstr "Восстановить"
 #: src/frontends/qt3/ui/QSendtoDialogBase.ui:86
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:182
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:240
+#: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:362
+#: src/frontends/qt4/ui/QDocumentUi.ui:145
+#: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
+#: src/frontends/qt4/ui/QGraphicsUi.ui:812
+#: src/frontends/qt4/ui/QParagraphUi.ui:271
+#: src/frontends/qt4/ui/QPrefsUi.ui:86 src/frontends/qt4/ui/QRefUi.ui:90
+#: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:161
+#: src/frontends/qt4/ui/QWrapUi.ui:206
 #, fuzzy
 msgid "&Apply"
 msgstr "Применить|#A"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:281
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:236
+#: src/frontends/qt4/ui/QBoxUi.ui:148
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:202
 msgid "Alignment"
 msgstr "Выровнять"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:296
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:80
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:190
-#: src/frontends/qt3/ui/QWrapDialogBase.ui:74 src/frontends/gtk/GTabular.C:357
-#: src/frontends/qt3/QTabular.C:207 src/frontends/qt4/QTabular.C:260
+#: src/frontends/qt3/ui/QWrapDialogBase.ui:74
+#: src/frontends/qt4/ui/QBoxUi.ui:164 src/frontends/qt4/ui/QParagraphUi.ui:76
+#: src/frontends/qt4/ui/QTabularUi.ui:145 src/frontends/qt4/ui/QWrapUi.ui:58
+#: src/frontends/gtk/GTabular.C:357 src/frontends/qt3/QTabular.C:207
+#: src/frontends/qt4/QTabular.C:260
 #, fuzzy
 msgid "Left"
 msgstr "Слева"
@@ -964,6 +1062,8 @@ msgstr "Слева"
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:301
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:90
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:195
+#: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QParagraphUi.ui:86
+#: src/frontends/qt4/ui/QTabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.C:236
 #: src/frontends/controllers/ControlGraphics.C:172
 #: src/frontends/gtk/GTabular.C:358 src/frontends/qt3/QTabular.C:208
@@ -975,20 +1075,25 @@ msgstr "по центру"
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:306
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:85
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:200
-#: src/frontends/qt3/ui/QWrapDialogBase.ui:79 src/frontends/gtk/GTabular.C:359
-#: src/frontends/qt3/QTabular.C:209 src/frontends/qt4/QTabular.C:262
+#: src/frontends/qt3/ui/QWrapDialogBase.ui:79
+#: src/frontends/qt4/ui/QBoxUi.ui:174 src/frontends/qt4/ui/QParagraphUi.ui:81
+#: src/frontends/qt4/ui/QTabularUi.ui:155 src/frontends/qt4/ui/QWrapUi.ui:63
+#: src/frontends/gtk/GTabular.C:359 src/frontends/qt3/QTabular.C:209
+#: src/frontends/qt4/QTabular.C:262
 #, fuzzy
 msgid "Right"
 msgstr "Справа"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:311
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:339
+#: src/frontends/qt4/ui/QBoxUi.ui:179 src/frontends/qt4/ui/QBoxUi.ui:261
 #, fuzzy
 msgid "Stretch"
 msgstr "Улица"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:318
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:383
+#: src/frontends/qt4/ui/QBoxUi.ui:160 src/frontends/qt4/ui/QBoxUi.ui:187
 #, fuzzy
 msgid "Horizontal alignment of the content inside the box"
 msgstr ""
@@ -999,6 +1104,9 @@ msgstr ""
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:352
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:251
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:375
+#: src/frontends/qt4/ui/QBoxUi.ui:201 src/frontends/qt4/ui/QBoxUi.ui:246
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:218
+#: src/frontends/qt4/ui/QTabularUi.ui:85
 #, fuzzy
 msgid "Top"
 msgstr "Тема обсуждения"
@@ -1007,6 +1115,9 @@ msgstr "Тема обсуждения"
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:357
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:256
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:380
+#: src/frontends/qt4/ui/QBoxUi.ui:206 src/frontends/qt4/ui/QBoxUi.ui:251
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:223
+#: src/frontends/qt4/ui/QTabularUi.ui:90
 #, fuzzy
 msgid "Middle"
 msgstr ""
@@ -1017,12 +1128,16 @@ msgstr ""
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:362
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:261
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:385
+#: src/frontends/qt4/ui/QBoxUi.ui:211 src/frontends/qt4/ui/QBoxUi.ui:256
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:228
+#: src/frontends/qt4/ui/QTabularUi.ui:95
 #, fuzzy
 msgid "Bottom"
 msgstr "Книзу"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:346
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:397
+#: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
 #, fuzzy
 msgid "Vertical alignment of the content inside the box"
 msgstr ""
@@ -1031,6 +1146,7 @@ msgstr ""
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:369
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:411
+#: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
 msgstr ""
 
@@ -1053,6 +1169,9 @@ msgstr "Интервал"
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:967
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:987
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1007
+#: src/frontends/qt4/ui/QBoxUi.ui:38 src/frontends/qt4/ui/QTabularUi.ui:699
+#: src/frontends/qt4/ui/QTabularUi.ui:718
+#: src/frontends/qt4/ui/QTabularUi.ui:766
 #: src/frontends/controllers/ControlBox.C:81 src/frontends/gtk/GBox.C:292
 #: src/frontends/gtk/GBox.C:320 src/frontends/qt3/QBox.C:172
 #: src/frontends/qt3/QBox.C:288 src/frontends/qt3/QBoxDialog.C:60
@@ -1061,7 +1180,8 @@ msgstr "Интервал"
 msgid "None"
 msgstr "Ничего"
 
-#: src/frontends/qt3/ui/QBoxDialogBase.ui:526 src/frontends/gtk/GBox.C:280
+#: src/frontends/qt3/ui/QBoxDialogBase.ui:526
+#: src/frontends/qt4/ui/QBoxUi.ui:43 src/frontends/gtk/GBox.C:280
 #: src/frontends/gtk/GBox.C:293 src/frontends/gtk/GBox.C:318
 #: src/frontends/qt3/QBox.C:174 src/frontends/qt3/QBox.C:281
 #: src/frontends/qt3/QBox.C:289 src/frontends/qt4/QBox.C:172
@@ -1071,7 +1191,8 @@ msgstr "Ничего"
 msgid "Parbox"
 msgstr "Часть"
 
-#: src/frontends/qt3/ui/QBoxDialogBase.ui:531 src/frontends/gtk/GBox.C:281
+#: src/frontends/qt3/ui/QBoxDialogBase.ui:531
+#: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/gtk/GBox.C:281
 #: src/frontends/gtk/GBox.C:294 src/frontends/qt3/QBox.C:282
 #: src/frontends/qt3/QBox.C:290 src/frontends/qt4/QBox.C:280
 #: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:158
@@ -1080,6 +1201,7 @@ msgstr "Мини-страница"
 
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:538
 #: src/frontends/qt3/ui/QBoxDialogBase.ui:552
+#: src/frontends/qt4/ui/QBoxUi.ui:34 src/frontends/qt4/ui/QBoxUi.ui:63
 msgid "Inner box -- needed for fixed width & line breaks"
 msgstr ""
 
@@ -1093,27 +1215,20 @@ msgstr "Внутри:"
 msgid "T&ype:"
 msgstr "Тип:"
 
-#: src/frontends/qt3/ui/QBranchDialogBase.ui:16
-#, fuzzy
-msgid "QBranchDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QBranchDialogBase.ui:72
+#: src/frontends/qt4/ui/QBranchUi.ui:59
 #, fuzzy
 msgid "&Available branches:"
 msgstr "Сохранить параметры"
 
 #: src/frontends/qt3/ui/QBranchDialogBase.ui:83
+#: src/frontends/qt4/ui/QBranchUi.ui:69
 #, fuzzy
 msgid "Select your branch"
 msgstr "Выбрать предыдущий символ"
 
-#: src/frontends/qt3/ui/QChangesDialogBase.ui:16
-#, fuzzy
-msgid "QChangesDialogBase"
-msgstr "Набор символов"
-
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:50
+#: src/frontends/qt4/ui/QChangesUi.ui:31
 #, fuzzy
 msgid "Change:"
 msgstr "Изменить язык"
@@ -1123,70 +1238,81 @@ msgid "Details of the change"
 msgstr ""
 
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:85
+#: src/frontends/qt4/ui/QChangesUi.ui:98
 #, fuzzy
 msgid "&Accept"
 msgstr "Согласовано"
 
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:91
+#: src/frontends/qt4/ui/QChangesUi.ui:95
 #, fuzzy
 msgid "Accept this change"
 msgstr "Согласовано"
 
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:99
+#: src/frontends/qt4/ui/QChangesUi.ui:111
 #, fuzzy
 msgid "&Reject"
 msgstr "Сброс"
 
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:105
+#: src/frontends/qt4/ui/QChangesUi.ui:108
 #, fuzzy
 msgid "Reject this change"
 msgstr "Без изменений"
 
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:163
+#: src/frontends/qt4/ui/QChangesUi.ui:52
 #, fuzzy
 msgid "&Next change"
 msgstr "Без изменений"
 
 #: src/frontends/qt3/ui/QChangesDialogBase.ui:169
+#: src/frontends/qt4/ui/QChangesUi.ui:49
 #, fuzzy
 msgid "Go to next change"
 msgstr "Перейти к следующей ошибке"
 
-#: src/frontends/qt3/ui/QCharacterDialogBase.ui:16
-#, fuzzy
-msgid "QCharacterDialogBase"
-msgstr "Набор символов"
-
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:68
+#: src/frontends/qt4/ui/QCharacterUi.ui:50
 #, fuzzy
 msgid "&Family:"
 msgstr "Семейство:"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:74
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:152
+#: src/frontends/qt4/ui/QCharacterUi.ui:47
+#: src/frontends/qt4/ui/QCharacterUi.ui:126
 #, fuzzy
 msgid "Font family"
 msgstr "Семейство:"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:90
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:104
+#: src/frontends/qt4/ui/QCharacterUi.ui:68
+#: src/frontends/qt4/ui/QCharacterUi.ui:75
 #, fuzzy
 msgid "Font shape"
 msgstr "Используемые шрифты"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:98
+#: src/frontends/qt4/ui/QCharacterUi.ui:78
 #, fuzzy
 msgid "S&hape:"
 msgstr "Начертание:"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:120
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:196
+#: src/frontends/qt4/ui/QCharacterUi.ui:96
+#: src/frontends/qt4/ui/QCharacterUi.ui:161
 #, fuzzy
 msgid "Font series"
 msgstr "Используемые шрифты"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:136
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:182
+#: src/frontends/qt4/ui/QCharacterUi.ui:111
+#: src/frontends/qt4/ui/QCharacterUi.ui:148
 #: src/frontends/qt3/QDocumentDialog.C:85 src/frontends/qt3/QPrefsDialog.C:106
 #: src/frontends/qt4/QDocumentDialog.C:396
 #: src/frontends/qt4/QPrefsDialog.C:1513
@@ -1195,58 +1321,73 @@ msgstr "Язык"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:168
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:213
+#: src/frontends/qt4/ui/QCharacterUi.ui:141
+#: src/frontends/qt4/ui/QCharacterUi.ui:177
 #, fuzzy
 msgid "Font color"
 msgstr "Нет цвета"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:190
+#: src/frontends/qt4/ui/QCharacterUi.ui:164
 #, fuzzy
 msgid "&Series:"
 msgstr "Серия:"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:207
+#: src/frontends/qt4/ui/QCharacterUi.ui:180
 #, fuzzy
 msgid "&Color:"
 msgstr "Цвета"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:237
+#: src/frontends/qt4/ui/QCharacterUi.ui:200
 #, fuzzy
 msgid "Never Toggled"
 msgstr "Не переключается"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:256
+#: src/frontends/qt4/ui/BulletsUi.ui:47
+#: src/frontends/qt4/ui/QCharacterUi.ui:215
 #, fuzzy
 msgid "Si&ze:"
 msgstr "Размер"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:262
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:278
+#: src/frontends/qt4/ui/QCharacterUi.ui:212
+#: src/frontends/qt4/ui/QCharacterUi.ui:233
 #, fuzzy
 msgid "Font size"
 msgstr "Используемые шрифты"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:288
+#: src/frontends/qt4/ui/QCharacterUi.ui:246
 #, fuzzy
 msgid "Always Toggled"
 msgstr "Переключается"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:293
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:321
+#: src/frontends/qt4/ui/QCharacterUi.ui:243
+#: src/frontends/qt4/ui/QCharacterUi.ui:268
 #, fuzzy
 msgid "Other font settings"
 msgstr "Настройки документа"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:310
+#: src/frontends/qt4/ui/QCharacterUi.ui:258
 #, fuzzy
 msgid "&Misc:"
 msgstr "Другие"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:349
+#: src/frontends/qt4/ui/QCharacterUi.ui:293
 #, fuzzy
 msgid "&Toggle all"
 msgstr "Переключить полужирный"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:352
+#: src/frontends/qt4/ui/QCharacterUi.ui:290
 #, fuzzy
 msgid "toggle font on all of the above"
 msgstr ""
@@ -1254,10 +1395,12 @@ msgstr ""
 "(укажите что и нажмите Применить)"
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:360
+#: src/frontends/qt4/ui/QCharacterUi.ui:303
 msgid "Apply changes immediately"
 msgstr ""
 
 #: src/frontends/qt3/ui/QCharacterDialogBase.ui:363
+#: src/frontends/qt4/ui/QCharacterUi.ui:300
 msgid "Apply each change automatically"
 msgstr ""
 
@@ -1268,15 +1411,16 @@ msgstr ""
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:47
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:292
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:263
-#: src/frontends/qt3/ui/QTabularDialogBase.ui:133 src/frontends/gtk/GBC.h:28
+#: src/frontends/qt3/ui/QTabularDialogBase.ui:133
+#: src/frontends/qt4/ui/QCharacterUi.ui:372 src/frontends/qt4/ui/QERTUi.ui:110
+#: src/frontends/qt4/ui/QGraphicsUi.ui:833
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:177
+#: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:75
+#: src/frontends/qt4/ui/QTabularUi.ui:1128 src/frontends/gtk/GBC.h:28
 #: src/frontends/qt3/Qt2BC.h:37 src/frontends/qt4/Qt2BC.h:37
 msgid "Close"
 msgstr "Закрыть"
-
-#: src/frontends/qt3/ui/QCitationDialogBase.ui:24
-#, fuzzy
-msgid "QCitationDialogBase"
-msgstr "Представление ссылок"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:61
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:99
@@ -1285,6 +1429,7 @@ msgid "Bibliography entry"
 msgstr "Библиография"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:97
+#: src/frontends/qt4/ui/QCitationUi.ui:136
 #, fuzzy
 msgid "Move the selected citation down"
 msgstr "Выберите базу данных"
@@ -1295,11 +1440,13 @@ msgid "Citations currently selected"
 msgstr "Представление ссылок"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:127
+#: src/frontends/qt4/ui/QCitationUi.ui:149
 #, fuzzy
 msgid "D&elete"
 msgstr "Удалить из"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:149
+#: src/frontends/qt4/ui/QCitationUi.ui:88
 #, fuzzy
 msgid "Move the selected citation up"
 msgstr "Выберите базу данных"
@@ -1310,53 +1457,64 @@ msgid "&Citations:"
 msgstr "Ссылка на источник"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:254
+#: src/frontends/qt4/ui/QCitationUi.ui:342
 #, fuzzy
 msgid "A&pply"
 msgstr "Применить|#A"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:275
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:808
+#: src/frontends/qt4/ui/QTabularUi.ui:301
 #, fuzzy
 msgid "Style"
 msgstr "Стиль:  "
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:292
+#: src/frontends/qt4/ui/QCitationUi.ui:218
 #, fuzzy
 msgid "Citation &style:"
 msgstr "Представление ссылок"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:311
+#: src/frontends/qt4/ui/QCitationUi.ui:211
 #, fuzzy
 msgid "Natbib citation style to use"
 msgstr "Представление ссылок"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:319
+#: src/frontends/qt4/ui/QCitationUi.ui:241
 msgid "Force &upper case"
 msgstr ""
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:322
+#: src/frontends/qt4/ui/QCitationUi.ui:238
 msgid "Force upper case in citation"
 msgstr ""
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:330
+#: src/frontends/qt4/ui/QCitationUi.ui:248
 #, fuzzy
 msgid "&Text after:"
 msgstr "ТекстСтр.:"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:349
+#: src/frontends/qt4/ui/QCitationUi.ui:266
 msgid "Text to place after citation"
 msgstr ""
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:365
+#: src/frontends/qt4/ui/QCitationUi.ui:291
 msgid "Text to place before citation"
 msgstr ""
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:373
+#: src/frontends/qt4/ui/QCitationUi.ui:273
 #, fuzzy
 msgid "Text &before:"
 msgstr "ТекстСтр.:"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:384
+#: src/frontends/qt4/ui/QCitationUi.ui:231
 #, fuzzy
 msgid "&Full author list"
 msgstr ""
@@ -1364,16 +1522,12 @@ msgstr ""
 "авторов"
 
 #: src/frontends/qt3/ui/QCitationDialogBase.ui:387
+#: src/frontends/qt4/ui/QCitationUi.ui:228
 #, fuzzy
 msgid "List all authors"
 msgstr ""
 "Полный список\n"
 "авторов"
-
-#: src/frontends/qt3/ui/QCitationFindDialogBase.ui:24
-#, fuzzy
-msgid "LyX: Add Citation"
-msgstr "Ссылка на источник"
 
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:72
 #, fuzzy
@@ -1392,6 +1546,7 @@ msgstr "Сохранить параметры"
 
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:206
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:127
+#: src/frontends/qt4/ui/QSearchUi.ui:108
 #, fuzzy
 msgid "Case &sensitive"
 msgstr ""
@@ -1409,6 +1564,8 @@ msgstr "Текст"
 
 #: src/frontends/qt3/ui/QCitationFindDialogBase.ui:258
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:40
+#: src/frontends/qt4/ui/QCitationUi.ui:166
+#: src/frontends/qt4/ui/QSearchUi.ui:31
 #, fuzzy
 msgid "&Find:"
 msgstr "Искать"
@@ -1422,11 +1579,6 @@ msgstr "Регулярное выражение"
 msgid "Interpret search entry as a regular expression"
 msgstr ""
 
-#: src/frontends/qt3/ui/QDelimiterDialogBase.ui:16
-#, fuzzy
-msgid "QDelimiterDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QDelimiterDialogBase.ui:145
 #, fuzzy
 msgid "Left delimiter"
@@ -1438,10 +1590,12 @@ msgid "Right delimiter"
 msgstr "Разграничители"
 
 #: src/frontends/qt3/ui/QDelimiterDialogBase.ui:284
+#: src/frontends/qt4/ui/QDelimiterUi.ui:52
 msgid "&Keep matched"
 msgstr ""
 
 #: src/frontends/qt3/ui/QDelimiterDialogBase.ui:290
+#: src/frontends/qt4/ui/QDelimiterUi.ui:49
 #, fuzzy
 msgid "Match delimiter types"
 msgstr "Разграничители"
@@ -1452,21 +1606,19 @@ msgid "Choose delimiter size"
 msgstr "Разграничители"
 
 #: src/frontends/qt3/ui/QDelimiterDialogBase.ui:347
+#: src/frontends/qt4/ui/QDelimiterUi.ui:141
 #, fuzzy
 msgid "&Insert"
 msgstr "Вставить"
 
 #: src/frontends/qt3/ui/QDelimiterDialogBase.ui:350
+#: src/frontends/qt4/ui/QDelimiterUi.ui:138
 #, fuzzy
 msgid "Insert the delimiters"
 msgstr "Вставить вхождение слова перед курсором в предметный указатель"
 
-#: src/frontends/qt3/ui/QDocumentDialogBase.ui:24
-#, fuzzy
-msgid "QDocumentDialogBase"
-msgstr "Документ экспортирован как '"
-
 #: src/frontends/qt3/ui/QDocumentDialogBase.ui:71
+#: src/frontends/qt4/ui/QDocumentUi.ui:61
 #, fuzzy
 msgid "Use Class Defaults"
 msgstr ""
@@ -1474,11 +1626,13 @@ msgstr ""
 "умолчания для класса"
 
 #: src/frontends/qt3/ui/QDocumentDialogBase.ui:74
+#: src/frontends/qt4/ui/QDocumentUi.ui:58
 #, fuzzy
 msgid "Reset to the default settings for the document class"
 msgstr "значения по умолчанию для этого класса документов?"
 
 #: src/frontends/qt3/ui/QDocumentDialogBase.ui:90
+#: src/frontends/qt4/ui/QDocumentUi.ui:79
 #, fuzzy
 msgid "Save as Document Defaults"
 msgstr ""
@@ -1486,80 +1640,72 @@ msgstr ""
 "по умолчанию для документа"
 
 #: src/frontends/qt3/ui/QDocumentDialogBase.ui:93
+#: src/frontends/qt4/ui/QDocumentUi.ui:76
 msgid "Save settings as LyX's default document settings"
 msgstr ""
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:16
-#, fuzzy
-msgid "QERTDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QERTDialogBase.ui:36
+#: src/frontends/qt3/ui/QERTDialogBase.ui:36 src/frontends/qt4/ui/QERTUi.ui:31
 #, fuzzy
 msgid "Display"
 msgstr "Показывать графику"
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:53
+#: src/frontends/qt3/ui/QERTDialogBase.ui:53 src/frontends/qt4/ui/QERTUi.ui:46
 #, fuzzy
 msgid "&Inline"
 msgstr "Mainline"
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:56
+#: src/frontends/qt3/ui/QERTDialogBase.ui:56 src/frontends/qt4/ui/QERTUi.ui:43
 #, fuzzy
 msgid "Show ERT inline"
 msgstr "Показать файл"
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:64
+#: src/frontends/qt3/ui/QERTDialogBase.ui:64 src/frontends/qt4/ui/QERTUi.ui:56
 #, fuzzy
 msgid "&Collapsed"
 msgstr "Свернутое"
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:67
+#: src/frontends/qt3/ui/QERTDialogBase.ui:67 src/frontends/qt4/ui/QERTUi.ui:53
 #, fuzzy
 msgid "Show ERT button only"
 msgstr "Нет содержания%i"
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:75
+#: src/frontends/qt3/ui/QERTDialogBase.ui:75 src/frontends/qt4/ui/QERTUi.ui:66
 #, fuzzy
 msgid "O&pen"
 msgstr "Раскрытое"
 
-#: src/frontends/qt3/ui/QERTDialogBase.ui:78
+#: src/frontends/qt3/ui/QERTDialogBase.ui:78 src/frontends/qt4/ui/QERTUi.ui:63
 #, fuzzy
 msgid "Show ERT contents"
 msgstr "Нет содержания%i"
 
-#: src/frontends/qt3/ui/QErrorListDialogBase.ui:16
-#, fuzzy
-msgid "QErrorListDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QExternalDialogBase.ui:16
-#, fuzzy
-msgid "QExternalDialogBase"
-msgstr "Внешний объект"
-
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:42
+#: src/frontends/qt4/ui/QExternalUi.ui:51
 msgid "File"
 msgstr "Файл"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:59
+#: src/frontends/qt4/ui/QExternalUi.ui:126
 #, fuzzy
 msgid "Template"
 msgstr "Источник данных"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:84
+#: src/frontends/qt4/ui/QExternalUi.ui:165
 #, fuzzy
 msgid "Available templates"
 msgstr "Невозможно открыть шаблон"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:119
+#: src/frontends/qt4/ui/QExternalUi.ui:63
 #, fuzzy
 msgid "&Draft"
 msgstr "Черновой режим"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:141
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:155
+#: src/frontends/qt4/ui/QExternalUi.ui:106
+#: src/frontends/qt4/ui/QExternalUi.ui:119
 #, fuzzy
 msgid "Filename"
 msgstr ""
@@ -1570,32 +1716,42 @@ msgstr ""
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:602
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:50
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:349
+#: src/frontends/qt4/ui/QExternalUi.ui:109
+#: src/frontends/qt4/ui/QGraphicsUi.ui:385
+#: src/frontends/qt4/ui/QIncludeUi.ui:158 src/frontends/qt4/ui/QPrintUi.ui:296
 #, fuzzy
 msgid "&File:"
 msgstr "Файл"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:166
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:75
+#: src/frontends/qt4/ui/QExternalUi.ui:96
+#: src/frontends/qt4/ui/QIncludeUi.ui:145
 #, fuzzy
 msgid "Select a file"
 msgstr "Выделить внешний файл"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:191
+#: src/frontends/qt4/ui/QExternalUi.ui:89
 #, fuzzy
 msgid "&Edit File..."
 msgstr "Редактировать"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:194
+#: src/frontends/qt4/ui/QExternalUi.ui:86
 #, fuzzy
 msgid "Edit the file externally"
 msgstr "Редактировать внешний объект"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:206
+#: src/frontends/qt4/ui/QExternalUi.ui:176
 #, fuzzy
 msgid "LyX View"
 msgstr "Просмотр"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:254
+#: src/frontends/qt4/ui/QExternalUi.ui:277
+#: src/frontends/qt4/ui/QGraphicsUi.ui:124
 #, fuzzy
 msgid "Sca&le:"
 msgstr "Масштаб"
@@ -1604,15 +1760,23 @@ msgstr "Масштаб"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:293
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:334
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:367
+#: src/frontends/qt4/ui/QExternalUi.ui:239
+#: src/frontends/qt4/ui/QExternalUi.ui:274
+#: src/frontends/qt4/ui/QGraphicsUi.ui:114
+#: src/frontends/qt4/ui/QGraphicsUi.ui:121
 msgid "Percentage to scale by in LyX"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:307
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:381
+#: src/frontends/qt4/ui/QExternalUi.ui:252
+#: src/frontends/qt4/ui/QGraphicsUi.ui:73
 msgid "%"
 msgstr "%"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:333
+#: src/frontends/qt4/ui/QExternalUi.ui:264
+#: src/frontends/qt4/ui/QGraphicsUi.ui:93
 #, fuzzy
 msgid "&Display:"
 msgstr "Показывать графику"
@@ -1621,6 +1785,10 @@ msgstr "Показывать графику"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:372
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:292
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:320
+#: src/frontends/qt4/ui/QExternalUi.ui:188
+#: src/frontends/qt4/ui/QExternalUi.ui:261
+#: src/frontends/qt4/ui/QGraphicsUi.ui:90
+#: src/frontends/qt4/ui/QGraphicsUi.ui:134
 msgid "Screen display"
 msgstr "Показывать на экране"
 
@@ -1631,6 +1799,14 @@ msgstr "Показывать на экране"
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:972
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:992
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1012
+#: src/frontends/qt4/ui/BulletsUi.ui:69
+#: src/frontends/qt4/ui/QExternalUi.ui:192
+#: src/frontends/qt4/ui/QGraphicsUi.ui:138
+#: src/frontends/qt4/ui/QParagraphUi.ui:32
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:78
+#: src/frontends/qt4/ui/QTabularUi.ui:704
+#: src/frontends/qt4/ui/QTabularUi.ui:723
+#: src/frontends/qt4/ui/QTabularUi.ui:771
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
@@ -1644,7 +1820,9 @@ msgstr "По умолчанию"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:350
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:303
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:76
-#: src/frontends/gtk/GExternal.C:379
+#: src/frontends/qt4/ui/QExternalUi.ui:197
+#: src/frontends/qt4/ui/QGraphicsUi.ui:143
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:66 src/frontends/gtk/GExternal.C:379
 #, fuzzy
 msgid "Monochrome"
 msgstr "Монохромный"
@@ -1652,29 +1830,36 @@ msgstr "Монохромный"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:355
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:308
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:81
-#: src/frontends/gtk/GExternal.C:382
+#: src/frontends/qt4/ui/QExternalUi.ui:202
+#: src/frontends/qt4/ui/QGraphicsUi.ui:148
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:71 src/frontends/gtk/GExternal.C:382
 #, fuzzy
 msgid "Grayscale"
 msgstr "Полутоновый"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:365
-#: src/frontends/gtk/GExternal.C:388
+#: src/frontends/qt4/ui/QExternalUi.ui:212 src/frontends/gtk/GExternal.C:388
 #, fuzzy
 msgid "Preview"
 msgstr "< Назад"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:382
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:275
+#: src/frontends/qt4/ui/QExternalUi.ui:303
+#: src/frontends/qt4/ui/QGraphicsUi.ui:83
 msgid "&Show in LyX"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:385
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:278
+#: src/frontends/qt4/ui/QExternalUi.ui:300
+#: src/frontends/qt4/ui/QGraphicsUi.ui:80
 #, fuzzy
 msgid "Display image in LyX"
 msgstr "Показать информацию о LyX"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:397
+#: src/frontends/qt4/ui/QExternalUi.ui:324
 #, fuzzy
 msgid "Rotate"
 msgstr "Состояние"
@@ -1683,10 +1868,15 @@ msgstr "Состояние"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:492
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:210
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:226
+#: src/frontends/qt4/ui/QExternalUi.ui:381
+#: src/frontends/qt4/ui/QExternalUi.ui:411
+#: src/frontends/qt4/ui/QGraphicsUi.ui:277
+#: src/frontends/qt4/ui/QGraphicsUi.ui:298
 msgid "Angle to rotate image by"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:464
+#: src/frontends/qt4/ui/QExternalUi.ui:394
 #, fuzzy
 msgid "&Origin:"
 msgstr ""
@@ -1697,53 +1887,73 @@ msgstr ""
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:478
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:240
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:248
+#: src/frontends/qt4/ui/QExternalUi.ui:391
+#: src/frontends/qt4/ui/QExternalUi.ui:404
+#: src/frontends/qt4/ui/QGraphicsUi.ui:305
+#: src/frontends/qt4/ui/QGraphicsUi.ui:318
 msgid "The origin of the rotation"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:486
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:204
+#: src/frontends/qt4/ui/QExternalUi.ui:414
+#: src/frontends/qt4/ui/QGraphicsUi.ui:280
 #, fuzzy
 msgid "A&ngle:"
 msgstr "Угол"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:523
+#: src/frontends/qt4/ui/QExternalUi.ui:427
 #, fuzzy
 msgid "Scale"
 msgstr "Масштаб"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:560
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:441
+#: src/frontends/qt4/ui/QExternalUi.ui:497
+#: src/frontends/qt4/ui/QGraphicsUi.ui:192
 msgid "Width of image in output"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:604
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:487
+#: src/frontends/qt4/ui/QExternalUi.ui:448
+#: src/frontends/qt4/ui/QGraphicsUi.ui:229
 msgid "Height of image in output"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:620
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:525
+#: src/frontends/qt4/ui/QExternalUi.ui:461
+#: src/frontends/qt4/ui/QGraphicsUi.ui:255
 msgid "&Maintain aspect ratio"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:623
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:528
+#: src/frontends/qt4/ui/QExternalUi.ui:458
+#: src/frontends/qt4/ui/QGraphicsUi.ui:252
 msgid "Maintain aspect ratio with largest dimension"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:635
+#: src/frontends/qt4/ui/QExternalUi.ui:518
 #, fuzzy
 msgid "Crop"
 msgstr "Скопировать"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:705
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:796
+#: src/frontends/qt4/ui/QExternalUi.ui:586
+#: src/frontends/qt4/ui/QGraphicsUi.ui:446
 #, fuzzy
 msgid "Right &top:"
 msgstr "справа сверху"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:716
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:762
+#: src/frontends/qt4/ui/QExternalUi.ui:573
+#: src/frontends/qt4/ui/QGraphicsUi.ui:436
 #, fuzzy
 msgid "&Left bottom:"
 msgstr "левый нижний"
@@ -1751,6 +1961,9 @@ msgstr "левый нижний"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:743
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:741
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:788
+#: src/frontends/qt4/ui/QExternalUi.ui:612
+#: src/frontends/qt4/ui/QGraphicsUi.ui:464
+#: src/frontends/qt4/ui/QGraphicsUi.ui:504
 #, fuzzy
 msgid "x"
 msgstr "ex"
@@ -1758,68 +1971,75 @@ msgstr "ex"
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:780
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:728
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:807
+#: src/frontends/qt4/ui/QExternalUi.ui:619
+#: src/frontends/qt4/ui/QGraphicsUi.ui:481
+#: src/frontends/qt4/ui/QGraphicsUi.ui:517
 msgid "y"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:802
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:651
+#: src/frontends/qt4/ui/QExternalUi.ui:556
+#: src/frontends/qt4/ui/QGraphicsUi.ui:538
 #, fuzzy
 msgid "Clip to &bounding box"
 msgstr "Обрезать по ограничивающей рамке"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:805
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:654
+#: src/frontends/qt4/ui/QExternalUi.ui:553
+#: src/frontends/qt4/ui/QGraphicsUi.ui:535
 #, fuzzy
 msgid "Clip to bounding box values"
 msgstr "Обрезать по ограничивающей рамке"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:813
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:679
+#: src/frontends/qt4/ui/QExternalUi.ui:533
+#: src/frontends/qt4/ui/QGraphicsUi.ui:548
 #, fuzzy
 msgid "&Get from File"
 msgstr "Получить значения из файла"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:816
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:682
+#: src/frontends/qt4/ui/QExternalUi.ui:530
+#: src/frontends/qt4/ui/QGraphicsUi.ui:545
 msgid "Get bounding box from the (EPS) file"
 msgstr ""
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:828
+#: src/frontends/qt4/ui/QExternalUi.ui:627
 #, fuzzy
 msgid "Options"
 msgstr "Параметры показа режима LaTeX"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:876
+#: src/frontends/qt4/ui/QExternalUi.ui:668
 #, fuzzy
 msgid "Forma&t:"
 msgstr "Форматы"
 
 #: src/frontends/qt3/ui/QExternalDialogBase.ui:911
+#: src/frontends/qt4/ui/QExternalUi.ui:655
 #, fuzzy
 msgid "O&ption:"
 msgstr "Подпись"
 
-#: src/frontends/qt3/ui/QFloatDialogBase.ui:16
-#, fuzzy
-msgid "QFloatDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QGraphicsDialogBase.ui:24
-#, fuzzy
-msgid "QGraphicsDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:153
+#: src/frontends/qt4/ui/QGraphicsUi.ui:43
 #, fuzzy
 msgid "&Graphics"
 msgstr "Графика"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:187
+#: src/frontends/qt4/ui/QGraphicsUi.ui:265
 #, fuzzy
 msgid "Rotation"
 msgstr "Нотация"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:234
+#: src/frontends/qt4/ui/QGraphicsUi.ui:308
 #, fuzzy
 msgid "Or&igin:"
 msgstr ""
@@ -1827,6 +2047,7 @@ msgstr ""
 "вращения"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:258
+#: src/frontends/qt4/ui/QGraphicsUi.ui:55
 #, fuzzy
 msgid "LyX Display"
 msgstr "Показывать на экране"
@@ -1842,37 +2063,45 @@ msgid "Scale:"
 msgstr "Масштаб"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:393
+#: src/frontends/qt4/ui/QGraphicsUi.ui:164
 #, fuzzy
 msgid "Output"
 msgstr "Выходы"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:569
+#: src/frontends/qt4/ui/QGraphicsUi.ui:352
 #, fuzzy
 msgid "&Edit"
 msgstr "Правка"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:583
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:608
+#: src/frontends/qt4/ui/QGraphicsUi.ui:365
+#: src/frontends/qt4/ui/QGraphicsUi.ui:382
 #, fuzzy
 msgid "File name of image"
 msgstr "Выберите документ для вставки"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:594
+#: src/frontends/qt4/ui/QGraphicsUi.ui:372
 #, fuzzy
 msgid "Select an image file"
 msgstr "Выберите файл шаблона"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:620
+#: src/frontends/qt4/ui/QGraphicsUi.ui:398
 #, fuzzy
 msgid "&Clipping"
 msgstr "Завершение"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:841
+#: src/frontends/qt4/ui/QGraphicsUi.ui:598
 #, fuzzy
 msgid "E&xtra options"
 msgstr "доп. параметры"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:858
+#: src/frontends/qt4/ui/QGraphicsUi.ui:613
 #, fuzzy
 msgid "Su&bfigure"
 msgstr ""
@@ -1880,27 +2109,33 @@ msgstr ""
 "сунок"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:861
+#: src/frontends/qt4/ui/QGraphicsUi.ui:610
 #, fuzzy
 msgid "Is this just one part of a figure float ?"
 msgstr "Вставить предметный указатель"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:869
+#: src/frontends/qt4/ui/QGraphicsUi.ui:623
 #, fuzzy
 msgid "Don't un&zip on export"
 msgstr "Не разжимать при экспорте в LaTeX"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:872
+#: src/frontends/qt4/ui/QGraphicsUi.ui:620
 #, fuzzy
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr "Не разжимать при экспорте в LaTeX"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:880
+#: src/frontends/qt4/ui/QGraphicsUi.ui:633
 #, fuzzy
 msgid "LaTeX &options:"
 msgstr "Информацию о LaTeX"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:886
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:894
+#: src/frontends/qt4/ui/QGraphicsUi.ui:630
+#: src/frontends/qt4/ui/QGraphicsUi.ui:643
 #, fuzzy
 msgid "Additional LaTeX options"
 msgstr ""
@@ -1908,61 +2143,65 @@ msgstr ""
 "параметры LaTeX"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:902
+#: src/frontends/qt4/ui/QGraphicsUi.ui:653
 #, fuzzy
 msgid "&Draft mode"
 msgstr "Черновой режим"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:905
+#: src/frontends/qt4/ui/QGraphicsUi.ui:650
 #, fuzzy
 msgid "Draft mode"
 msgstr "Черновой режим"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:964
+#: src/frontends/qt4/ui/QGraphicsUi.ui:714
 #, fuzzy
 msgid "Ca&ption:"
 msgstr "Подпись"
 
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:970
 #: src/frontends/qt3/ui/QGraphicsDialogBase.ui:981
+#: src/frontends/qt4/ui/QGraphicsUi.ui:711
+#: src/frontends/qt4/ui/QGraphicsUi.ui:727
 msgid "The caption for the sub-figure"
 msgstr ""
 
-#: src/frontends/qt3/ui/QIncludeDialogBase.ui:16
-#, fuzzy
-msgid "QIncludeDialogBase"
-msgstr "Включить файл"
-
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:64
+#: src/frontends/qt4/ui/QIncludeUi.ui:83
 #, fuzzy
 msgid "File name to include"
 msgstr "Выберите документ для вставки"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:99
+#: src/frontends/qt4/ui/QIncludeUi.ui:135
 #, fuzzy
 msgid "&Include Type:"
 msgstr "Включить файл"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:108
-#: src/insets/insetinclude.C:286
+#: src/frontends/qt4/ui/QIncludeUi.ui:117 src/insets/insetinclude.C:286
 msgid "Input"
 msgstr "Вставить файл"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:113
-#: src/insets/insetinclude.C:295
+#: src/frontends/qt4/ui/QIncludeUi.ui:122 src/insets/insetinclude.C:295
 msgid "Include"
 msgstr "Включить файл"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:118
-#: lib/layouts/manpage.layout:122
+#: src/frontends/qt4/ui/QIncludeUi.ui:127 lib/layouts/manpage.layout:122
 msgid "Verbatim"
 msgstr "Дословно"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:147
+#: src/frontends/qt4/ui/QIncludeUi.ui:93
 #, fuzzy
 msgid "&Load"
 msgstr "Загрузить"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:150
+#: src/frontends/qt4/ui/QIncludeUi.ui:90
 #, fuzzy
 msgid "Load the file"
 msgstr ""
@@ -1970,65 +2209,60 @@ msgstr ""
 "недавних файлов"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:196
+#: src/frontends/qt4/ui/QIncludeUi.ui:60
 msgid "&Mark spaces in output"
 msgstr ""
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:199
+#: src/frontends/qt4/ui/QIncludeUi.ui:57
 msgid "Underline spaces in generated output"
 msgstr ""
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:215
+#: src/frontends/qt4/ui/QIncludeUi.ui:42
 #, fuzzy
 msgid "&Show preview"
 msgstr "Показать файл"
 
 #: src/frontends/qt3/ui/QIncludeDialogBase.ui:218
+#: src/frontends/qt4/ui/QIncludeUi.ui:39
 #, fuzzy
 msgid "Show LaTeX preview"
 msgstr "Преамбула LaTeX"
 
-#: src/frontends/qt3/ui/QIndexDialogBase.ui:16
-#, fuzzy
-msgid "QIndexDialogBase"
-msgstr "Включить файл"
-
-#: src/frontends/qt3/ui/QLogDialogBase.ui:16
-#, fuzzy
-msgid "QLogDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QLogDialogBase.ui:72
-#: src/frontends/qt3/ui/QRefDialogBase.ui:58
+#: src/frontends/qt3/ui/QRefDialogBase.ui:58 src/frontends/qt4/ui/QLogUi.ui:61
+#: src/frontends/qt4/ui/QRefUi.ui:235 src/frontends/qt4/ui/QTocUi.ui:100
+#: src/frontends/qt4/ui/QViewSourceUi.ui:95
 #, fuzzy
 msgid "&Update"
 msgstr "Обновить"
 
-#: src/frontends/qt3/ui/QLogDialogBase.ui:78
+#: src/frontends/qt3/ui/QLogDialogBase.ui:78 src/frontends/qt4/ui/QLogUi.ui:58
 #, fuzzy
 msgid "Update the display"
 msgstr "Показывать на экране"
 
-#: src/frontends/qt3/ui/QMathDialogBase.ui:16
-#, fuzzy
-msgid "QMathDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QMathDialogBase.ui:84 lib/ui/stdtoolbars.ui:125
+#: src/frontends/qt3/ui/QMathDialogBase.ui:84
+#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:125
 #, fuzzy
 msgid "Insert root"
 msgstr "Вставить кавычку"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:265
 #, fuzzy
 msgid "Insert spacing"
 msgstr "Промежуток"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:290
 #, fuzzy
 msgid "Set limits style"
 msgstr "Выделить следующую строку"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:126
+#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
 #, fuzzy
 msgid "Set math font"
 msgstr "Установить размер шрифта"
@@ -2039,29 +2273,35 @@ msgid "Insert fraction"
 msgstr "Вставить ссылку"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:200
+#: src/frontends/qt4/ui/QMathUi.ui:367
 msgid "Toggle between display and inline mode"
 msgstr ""
 
-#: src/frontends/qt3/ui/QMathDialogBase.ui:214 lib/ui/stdtoolbars.ui:136
+#: src/frontends/qt3/ui/QMathDialogBase.ui:214
+#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:136
 #, fuzzy
 msgid "Insert matrix"
 msgstr "Вставить приложение"
 
-#: src/frontends/qt3/ui/QMathDialogBase.ui:228 lib/ui/stdtoolbars.ui:123
+#: src/frontends/qt3/ui/QMathDialogBase.ui:228
+#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:123
 #, fuzzy
 msgid "Subscript"
 msgstr "Нижний индекс"
 
-#: src/frontends/qt3/ui/QMathDialogBase.ui:242 lib/ui/stdtoolbars.ui:124
+#: src/frontends/qt3/ui/QMathDialogBase.ui:242
+#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:124
 #, fuzzy
 msgid "Superscript"
 msgstr "Верхний индекс"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:256
+#: src/frontends/qt4/ui/QMathUi.ui:443
 msgid "Show delimiter and bracket dialog"
 msgstr ""
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:313
+#: src/frontends/qt4/ui/QMathUi.ui:195
 #, fuzzy
 msgid "&Functions"
 msgstr "Функции"
@@ -2077,87 +2317,100 @@ msgid "Symbols"
 msgstr "Символ"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:412
+#: src/frontends/qt4/ui/QMathUi.ui:102
 #, fuzzy
 msgid "Operators"
 msgstr "Большие операторы"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:417
+#: src/frontends/qt4/ui/QMathUi.ui:107
 #, fuzzy
 msgid "Big operators"
 msgstr "Большие операторы"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:422
+#: src/frontends/qt4/ui/QMathUi.ui:112
 #, fuzzy
 msgid "Relations"
 msgstr "Двоичные отношения"
 
-#: src/frontends/qt3/ui/QMathDialogBase.ui:427 lib/languages:33
+#: src/frontends/qt3/ui/QMathDialogBase.ui:427
+#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
 msgid "Greek"
 msgstr "Greek"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:432
+#: src/frontends/qt4/ui/QMathUi.ui:122
 msgid "Arrows"
 msgstr "Стрелки"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:437
+#: src/frontends/qt4/ui/QMathUi.ui:127
 msgid "Dots"
 msgstr "Dots"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:442
+#: src/frontends/qt4/ui/QMathUi.ui:132
 msgid "Frame decorations"
 msgstr ""
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:447
+#: src/frontends/qt4/ui/QMathUi.ui:137
 #, fuzzy
 msgid "Miscellaneous"
 msgstr "AMS, разное"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:452
+#: src/frontends/qt4/ui/QMathUi.ui:142
 #, fuzzy
 msgid "AMS operators"
 msgstr "AMS операторы"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:457
+#: src/frontends/qt4/ui/QMathUi.ui:147
 #, fuzzy
 msgid "AMS relations"
 msgstr "AMS отношения"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:462
+#: src/frontends/qt4/ui/QMathUi.ui:152
 #, fuzzy
 msgid "AMS negated relations"
 msgstr "AMS отрицательные отношения"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:467
+#: src/frontends/qt4/ui/QMathUi.ui:157
 #, fuzzy
 msgid "AMS arrows"
 msgstr "AMS Стрелки"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:472
+#: src/frontends/qt4/ui/QMathUi.ui:162
 #, fuzzy
 msgid "AMS Miscellaneous"
 msgstr "AMS, разное"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:487
+#: src/frontends/qt4/ui/QMathUi.ui:98
 #, fuzzy
 msgid "Select a page of symbols"
 msgstr "Выберите cтиль BibTeX"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:550
+#: src/frontends/qt4/ui/QMathUi.ui:70
 #, fuzzy
 msgid "&Detach panel"
 msgstr "Без изменений"
 
 #: src/frontends/qt3/ui/QMathDialogBase.ui:553
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "Open this panel as a separate window"
 msgstr ""
 
-#: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:16
-#, fuzzy
-msgid "QMathMatrixDialogBase"
-msgstr "Математическая Матрица"
-
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:56
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:50
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:42
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:87
 #, fuzzy
 msgid "&Rows:"
 msgstr "Строк"
@@ -2166,12 +2419,18 @@ msgstr "Строк"
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:79
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:56
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:73
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:39
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:52
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:84
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:126
 #, fuzzy
 msgid "Number of rows"
 msgstr "  Номер "
 
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:87
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:81
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:71
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:116
 #, fuzzy
 msgid "&Columns:"
 msgstr "Колонок"
@@ -2180,17 +2439,24 @@ msgstr "Колонок"
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:110
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:87
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:104
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:68
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:81
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:113
+#: src/frontends/qt4/ui/QTabularCreateUi.ui:142
 #, fuzzy
 msgid "Number of columns"
 msgstr "Содержание"
 
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:162
 #: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:214
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:139
 msgid "Resize this to the correct table dimensions"
 msgstr ""
 
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:268
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:91
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:214
+#: src/frontends/qt4/ui/QWrapUi.ui:49
 #, fuzzy
 msgid "Vertical alignment"
 msgstr ""
@@ -2198,11 +2464,13 @@ msgstr ""
 "выравнивание"
 
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:282
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:236
 #, fuzzy
 msgid "&Vertical:"
 msgstr "Интервал"
 
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:306
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:257
 #, fuzzy
 msgid "Horizontal alignment per column (l,c,r)"
 msgstr ""
@@ -2210,50 +2478,54 @@ msgstr ""
 "выравнивание"
 
 #: src/frontends/qt3/ui/QMathMatrixDialogBase.ui:320
+#: src/frontends/qt4/ui/QMathMatrixUi.ui:264
 #, fuzzy
 msgid "&Horizontal:"
 msgstr ""
 "Гориз.\n"
 "выравнивание"
 
-#: src/frontends/qt3/ui/QNoteDialogBase.ui:16
-#, fuzzy
-msgid "QNoteDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:58
+#: src/frontends/qt4/ui/QNoteUi.ui:51
 #, fuzzy
 msgid "Type"
 msgstr "Тип:"
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:75
+#: src/frontends/qt4/ui/QNoteUi.ui:66
 #, fuzzy
 msgid "LyX &Note"
 msgstr "Заметка"
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:78
+#: src/frontends/qt4/ui/QNoteUi.ui:63
 msgid "LyX internal only"
 msgstr ""
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:86
+#: src/frontends/qt4/ui/QNoteUi.ui:76
 #, fuzzy
 msgid "&Comment"
 msgstr "Комментарий"
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:89
+#: src/frontends/qt4/ui/QNoteUi.ui:73
 msgid "Export to LaTeX/Docbook but don't print"
 msgstr ""
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:97
+#: src/frontends/qt4/ui/QNoteUi.ui:86
 #, fuzzy
 msgid "&Greyed out"
 msgstr "Открытая вкладка"
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:100
+#: src/frontends/qt4/ui/QNoteUi.ui:83
 msgid "Print as grey text"
 msgstr ""
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:108
+#: src/frontends/qt4/ui/QNoteUi.ui:96
 #, fuzzy
 msgid "&Framed"
 msgstr "Имя"
@@ -2264,6 +2536,7 @@ msgid "Framed box"
 msgstr "Имя"
 
 #: src/frontends/qt3/ui/QNoteDialogBase.ui:119
+#: src/frontends/qt4/ui/QNoteUi.ui:106
 #, fuzzy
 msgid "&Shaded"
 msgstr "Сохранить"
@@ -2273,26 +2546,22 @@ msgstr "Сохранить"
 msgid "Shaded box"
 msgstr "Начертание:"
 
-#: src/frontends/qt3/ui/QParagraphDialogBase.ui:16
-#, fuzzy
-msgid "QParagraphDialogBase"
-msgstr "Установлено размещение абзаца"
-
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:39
-#: src/frontends/qt3/QDocument.C:184 src/frontends/qt4/QDocumentDialog.C:122
-#: src/text.C:2412
+#: src/frontends/qt4/ui/QParagraphUi.ui:37 src/frontends/qt3/QDocument.C:184
+#: src/frontends/qt4/QDocumentDialog.C:122 src/text.C:2412
 msgid "Single"
 msgstr ""
 "Оди-\n"
 "нарный"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:44
+#: src/frontends/qt4/ui/QParagraphUi.ui:42
 msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:49
-#: src/frontends/qt3/QDocument.C:188 src/frontends/qt4/QDocumentDialog.C:126
-#: src/text.C:2418
+#: src/frontends/qt4/ui/QParagraphUi.ui:47 src/frontends/qt3/QDocument.C:188
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2418
 msgid "Double"
 msgstr "Двойной"
 
@@ -2301,60 +2570,69 @@ msgstr "Двойной"
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:997
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1017
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:117
-#: src/frontends/gtk/GDocument.C:201 src/frontends/gtk/GDocument.C:222
-#: src/frontends/qt3/QDocument.C:114 src/frontends/qt3/QDocument.C:190
-#: src/frontends/qt4/QDocumentDialog.C:128
+#: src/frontends/qt4/ui/QParagraphUi.ui:52
+#: src/frontends/qt4/ui/QTabularUi.ui:709
+#: src/frontends/qt4/ui/QTabularUi.ui:728
+#: src/frontends/qt4/ui/QTabularUi.ui:776
+#: src/frontends/qt4/ui/QVSpaceUi.ui:113 src/frontends/gtk/GDocument.C:201
+#: src/frontends/gtk/GDocument.C:222 src/frontends/qt3/QDocument.C:114
+#: src/frontends/qt3/QDocument.C:190 src/frontends/qt4/QDocumentDialog.C:128
 #: src/frontends/qt4/QDocumentDialog.C:209
 msgid "Custom"
 msgstr "Пользовательский"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:66
+#: src/frontends/qt4/ui/QParagraphUi.ui:60
 #, fuzzy
 msgid "L&ine spacing:"
 msgstr "Промежуток"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:75
+#: src/frontends/qt4/ui/QParagraphUi.ui:71
 msgid "Justified"
 msgstr ""
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:102
+#: src/frontends/qt4/ui/QParagraphUi.ui:94
 #, fuzzy
 msgid "Alig&nment:"
 msgstr "Выровнять"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:168
+#: src/frontends/qt4/ui/QParagraphUi.ui:145
 #, fuzzy
 msgid "In&dent paragraph"
 msgstr "одного абзаца"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:198
+#: src/frontends/qt4/ui/QParagraphUi.ui:173
 #, fuzzy
 msgid "Label Width"
 msgstr "Ширина метки:"
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:215
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:229
+#: src/frontends/qt4/ui/QParagraphUi.ui:185
+#: src/frontends/qt4/ui/QParagraphUi.ui:192
 msgid "This text defines the width of the paragraph label"
 msgstr ""
 
 #: src/frontends/qt3/ui/QParagraphDialogBase.ui:223
+#: src/frontends/qt4/ui/QParagraphUi.ui:195
 #, fuzzy
 msgid "&Longest label"
 msgstr ""
 "Самая длинная\n"
 "метка:"
 
-#: src/frontends/qt3/ui/QPrefAsciiModule.ui:16
-#, fuzzy
-msgid "QPrefAsciiModule"
-msgstr "Преобразователи"
-
 #: src/frontends/qt3/ui/QPrefAsciiModule.ui:47
+#: src/frontends/qt4/ui/QPrefAsciiUi.ui:36
 #, fuzzy
 msgid "&roff command:"
 msgstr "Команды пользователя"
 
 #: src/frontends/qt3/ui/QPrefAsciiModule.ui:75
+#: src/frontends/qt4/ui/QPrefAsciiUi.ui:54
 #, fuzzy
 msgid "Max. line length of exported plain text/LaTeX/SGML files"
 msgstr ""
@@ -2362,35 +2640,30 @@ msgstr ""
 "SGML или простого текста)"
 
 #: src/frontends/qt3/ui/QPrefAsciiModule.ui:102
+#: src/frontends/qt4/ui/QPrefAsciiUi.ui:82
 #, fuzzy
 msgid "Output &line length:"
 msgstr "пустой"
 
 #: src/frontends/qt3/ui/QPrefAsciiModule.ui:113
+#: src/frontends/qt4/ui/QPrefAsciiUi.ui:92
 msgid "External app for formating tables in plain text output"
 msgstr ""
 
-#: src/frontends/qt3/ui/QPrefColorsModule.ui:16
-#, fuzzy
-msgid "QPrefColorsModule"
-msgstr "Преобразователи"
-
 #: src/frontends/qt3/ui/QPrefColorsModule.ui:47
+#: src/frontends/qt4/ui/QPrefColorsUi.ui:44
 #, fuzzy
 msgid "&Colors"
 msgstr "Цвета"
 
 #: src/frontends/qt3/ui/QPrefColorsModule.ui:89
+#: src/frontends/qt4/ui/QPrefColorsUi.ui:65
 #, fuzzy
 msgid "&Alter..."
 msgstr "другие ..."
 
-#: src/frontends/qt3/ui/QPrefConvertersModule.ui:16
-#, fuzzy
-msgid "QPrefConvertersModule"
-msgstr "Преобразователи"
-
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:74
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:109
 #, fuzzy
 msgid "C&onverter:"
 msgstr "Преобразователи"
@@ -2400,11 +2673,13 @@ msgid "&To:[[as in 'From format x to format y']]"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:114
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:144
 #, fuzzy
 msgid "&From:"
 msgstr "Из"
 
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:130
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:157
 #, fuzzy
 msgid "E&xtra flag:"
 msgstr ""
@@ -2413,6 +2688,8 @@ msgstr ""
 
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:174
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:58
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:81
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:61
 #, fuzzy
 msgid "A&dd"
 msgstr "Добавить"
@@ -2420,115 +2697,111 @@ msgstr "Добавить"
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:182
 #: src/frontends/qt3/ui/QPrefCopiersModule.ui:161
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:178
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:88
+#: src/frontends/qt4/ui/QPrefCopiersUi.ui:72
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:64
 #, fuzzy
 msgid "&Modify"
 msgstr "Изменить"
 
 #: src/frontends/qt3/ui/QPrefConvertersModule.ui:225
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:167
 #, fuzzy
 msgid "&Converters"
 msgstr "Преобразователи"
 
-#: src/frontends/qt3/ui/QPrefCopiersModule.ui:16
-#, fuzzy
-msgid "QPrefCopiersModule"
-msgstr "Преобразователи"
-
 #: src/frontends/qt3/ui/QPrefCopiersModule.ui:112
+#: src/frontends/qt4/ui/QPrefCopiersUi.ui:81
 #, fuzzy
 msgid "C&opiers"
 msgstr "Копии"
 
 #: src/frontends/qt3/ui/QPrefCopiersModule.ui:215
+#: src/frontends/qt4/ui/QPrefCopiersUi.ui:140
 #, fuzzy
 msgid "&Copier:"
 msgstr "Копии"
 
 #: src/frontends/qt3/ui/QPrefCopiersModule.ui:226
 #: src/frontends/qt3/ui/QRefDialogBase.ui:168
+#: src/frontends/qt4/ui/QPrefCopiersUi.ui:150
+#: src/frontends/qt4/ui/QRefUi.ui:132
 #, fuzzy
 msgid "&Format:"
 msgstr "Форматы"
 
-#: src/frontends/qt3/ui/QPrefCygwinPathModule.ui:16
-#, fuzzy
-msgid "QPrefCygwinPathModule"
-msgstr "Преобразователи"
-
 #: src/frontends/qt3/ui/QPrefCygwinPathModule.ui:34
+#: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:37
 msgid "&Use Windows-style paths in LaTeX files"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefCygwinPathModule.ui:40
+#: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:34
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
 
-#: src/frontends/qt3/ui/QPrefDateModule.ui:16
-#, fuzzy
-msgid "QPrefDateModule"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/QPrefDateModule.ui:47
+#: src/frontends/qt4/ui/QPrefDateUi.ui:36
 #, fuzzy
 msgid "&Date format:"
 msgstr "Формат даты"
 
 #: src/frontends/qt3/ui/QPrefDateModule.ui:58
+#: src/frontends/qt4/ui/QPrefDateUi.ui:46
 msgid "Date format for strftime output"
 msgstr ""
 
-#: src/frontends/qt3/ui/QPrefDisplayModule.ui:16
-#, fuzzy
-msgid "QPrefDisplayModule"
-msgstr "Форматы"
-
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:47
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:36
 #, fuzzy
 msgid "Display &Graphics:"
 msgstr "Показывать графику"
 
-#: src/frontends/qt3/ui/QPrefDisplayModule.ui:56 src/lyxfont.C:69
+#: src/frontends/qt3/ui/QPrefDisplayModule.ui:56
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "Выключен"
 
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:61
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:52
 #, fuzzy
 msgid "No math"
 msgstr "Математические формулы"
 
-#: src/frontends/qt3/ui/QPrefDisplayModule.ui:66 src/lyxfont.C:69
+#: src/frontends/qt3/ui/QPrefDisplayModule.ui:66
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "Включен"
 
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:91
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:81
 #, fuzzy
 msgid "Do not display"
 msgstr "Не показывать"
 
 #: src/frontends/qt3/ui/QPrefDisplayModule.ui:103
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:89
 msgid "Instant &Preview:"
 msgstr ""
 
-#: src/frontends/qt3/ui/QPrefFileformatsModule.ui:16
-#, fuzzy
-msgid "QPrefFileformatsModule"
-msgstr "Форматы"
-
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:57
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:179
 #, fuzzy
 msgid "&Document format"
 msgstr "Документ"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:60
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:176
 msgid ""
 "Tell whether this format is a document format. A document can not be "
 "exported to or viewed in a non-document format."
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:73
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:104
 #, fuzzy
 msgid "&GUI name:"
 msgstr ""
@@ -2536,21 +2809,25 @@ msgstr ""
 "для GUI"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:84
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:114
 #, fuzzy
 msgid "F&ormat:"
 msgstr "Форматы"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:100
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:127
 #, fuzzy
 msgid "&Viewer:"
 msgstr "Просмотрщик"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:111
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:137
 #, fuzzy
 msgid "Ed&itor:"
 msgstr "Редактор"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:127
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:150
 #, fuzzy
 msgid "S&hortcut:"
 msgstr ""
@@ -2558,26 +2835,25 @@ msgstr ""
 "клавиша"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:138
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:160
 #, fuzzy
 msgid "E&xtension:"
 msgstr "Расширение"
 
 #: src/frontends/qt3/ui/QPrefFileformatsModule.ui:236
+#: src/frontends/qt4/ui/QPrefFileformatsUi.ui:224
 #, fuzzy
 msgid "&File formats"
 msgstr "Форматы"
 
-#: src/frontends/qt3/ui/QPrefIdentityModule.ui:16
-#, fuzzy
-msgid "QPrefIdentityModule"
-msgstr "Экранные шрифты"
-
 #: src/frontends/qt3/ui/QPrefIdentityModule.ui:47
+#: src/frontends/qt4/ui/QPrefIdentityUi.ui:36
 #, fuzzy
 msgid "&E-mail:"
 msgstr "Email"
 
 #: src/frontends/qt3/ui/QPrefIdentityModule.ui:58
+#: src/frontends/qt4/ui/QPrefIdentityUi.ui:46
 #, fuzzy
 msgid "Your name"
 msgstr "Отчество"
@@ -2585,53 +2861,54 @@ msgstr "Отчество"
 #: src/frontends/qt3/ui/QPrefIdentityModule.ui:66
 #: src/frontends/qt3/ui/QRefDialogBase.ui:187
 #: src/frontends/qt3/ui/QURLDialogBase.ui:50
+#: src/frontends/qt4/ui/QPrefIdentityUi.ui:53
+#: src/frontends/qt4/ui/QRefUi.ui:119 src/frontends/qt4/ui/QURLUi.ui:47
 #, fuzzy
 msgid "&Name:"
 msgstr "Название"
 
 #: src/frontends/qt3/ui/QPrefIdentityModule.ui:77
+#: src/frontends/qt4/ui/QPrefIdentityUi.ui:63
 #, fuzzy
 msgid "Your E-mail address"
 msgstr "Обратный адрес"
 
-#: src/frontends/qt3/ui/QPrefKeyboardModule.ui:16
-#, fuzzy
-msgid "QPrefKeyboardModule"
-msgstr "Форматы"
-
 #: src/frontends/qt3/ui/QPrefKeyboardModule.ui:60
 #: src/frontends/qt3/ui/QPrefUIModule.ui:84
+#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:50
+#: src/frontends/qt4/ui/QPrefUi.ui:104
 #, fuzzy
 msgid "Bro&wse..."
 msgstr "Обзор..."
 
 #: src/frontends/qt3/ui/QPrefKeyboardModule.ui:71
+#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:60
 #, fuzzy
 msgid "S&econd:"
 msgstr "Раздел"
 
 #: src/frontends/qt3/ui/QPrefKeyboardModule.ui:82
+#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:70
 #, fuzzy
 msgid "&First:"
 msgstr "Имя"
 
 #: src/frontends/qt3/ui/QPrefKeyboardModule.ui:93
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:99
+#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:80
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:82
 #, fuzzy
 msgid "Br&owse..."
 msgstr "Обзор..."
 
 #: src/frontends/qt3/ui/QPrefKeyboardModule.ui:104
+#: src/frontends/qt4/ui/QPrefKeyboardUi.ui:90
 #, fuzzy
 msgid "Use &keyboard map"
 msgstr "Клавиатурная раскладка"
 
-#: src/frontends/qt3/ui/QPrefLanguageModule.ui:16
-#, fuzzy
-msgid "QPrefLanguageModule"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:33
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:28
 #, fuzzy
 msgid "Command s&tart:"
 msgstr ""
@@ -2639,11 +2916,13 @@ msgstr ""
 "начала языка"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:64
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:50
 #, fuzzy
 msgid "&Default language:"
 msgstr "Язык по умолчанию"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:75
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:60
 #, fuzzy
 msgid "Command e&nd:"
 msgstr ""
@@ -2651,11 +2930,13 @@ msgstr ""
 "окончания языка:"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:86
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:70
 #, fuzzy
 msgid "Language pac&kage:"
 msgstr "Язык:"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:97
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:80
 #, fuzzy
 msgid "Auto &begin"
 msgstr ""
@@ -2663,6 +2944,7 @@ msgstr ""
 "начинать"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:105
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:87
 #, fuzzy
 msgid "Use b&abel"
 msgstr ""
@@ -2670,15 +2952,18 @@ msgstr ""
 "babel"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:130
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:110
 #, fuzzy
 msgid "&Global"
 msgstr "Глобально"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:138
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:117
 msgid "&Right-to-left language support"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:146
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:124
 #, fuzzy
 msgid "Auto &end"
 msgstr ""
@@ -2686,23 +2971,21 @@ msgstr ""
 "начинать"
 
 #: src/frontends/qt3/ui/QPrefLanguageModule.ui:154
+#: src/frontends/qt4/ui/QPrefLanguageUi.ui:131
 #, fuzzy
 msgid "Mark &foreign languages"
 msgstr ""
 "Помечать\n"
 "иностранные слова"
 
-#: src/frontends/qt3/ui/QPrefLatexModule.ui:16
-#, fuzzy
-msgid "QPrefLatexModule"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:64
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:31
 #, fuzzy
 msgid "&Reset class options when document class changes"
 msgstr "Автоматически сбрасывать параметры класса при изменении"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:67
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:28
 #, fuzzy
 msgid "Set class options to default on class change"
 msgstr ""
@@ -2710,40 +2993,48 @@ msgstr ""
 "умолчанию после изменения класса."
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:75
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:137
 #, fuzzy
 msgid "External Applications"
 msgstr "доп. параметры"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:92
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:149
 msgid "CheckTeX start options and flags"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:100
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:156
 #, fuzzy
 msgid "Chec&kTeX command:"
 msgstr "Выполнить команду"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:111
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:166
 #, fuzzy
 msgid "BibTeX command and options"
 msgstr "Преамбула LaTeX"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:119
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:173
 #, fuzzy
 msgid "&BibTeX command:"
 msgstr "Выполнить команду"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:130
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:183
 #, fuzzy
 msgid "Index command and options (makeindex, xindy)"
 msgstr "Преамбула LaTeX"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:138
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:190
 #, fuzzy
 msgid "Index command:"
 msgstr "Выполнить команду"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:149
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:200
 #, fuzzy
 msgid "DVI viewer paper size options:"
 msgstr ""
@@ -2751,163 +3042,178 @@ msgstr ""
 "для DVI"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:160
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:210
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:201
-#: src/frontends/gtk/GDocument.C:223 src/frontends/qt3/QDocument.C:115
-#: src/frontends/qt4/QDocumentDialog.C:210
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:83 src/frontends/gtk/GDocument.C:223
+#: src/frontends/qt3/QDocument.C:115 src/frontends/qt4/QDocumentDialog.C:210
 #, fuzzy
 msgid "US letter"
 msgstr "USletter"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:206
-#: src/frontends/gtk/GDocument.C:224 src/frontends/qt3/QDocument.C:116
-#: src/frontends/qt4/QDocumentDialog.C:211
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:88 src/frontends/gtk/GDocument.C:224
+#: src/frontends/qt3/QDocument.C:116 src/frontends/qt4/QDocumentDialog.C:211
 #, fuzzy
 msgid "US legal"
 msgstr "USlegal"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:211
-#: src/frontends/gtk/GDocument.C:225 src/frontends/qt3/QDocument.C:117
-#: src/frontends/qt4/QDocumentDialog.C:212
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:93 src/frontends/gtk/GDocument.C:225
+#: src/frontends/qt3/QDocument.C:117 src/frontends/qt4/QDocumentDialog.C:212
 #, fuzzy
 msgid "US executive"
 msgstr "USexecutive"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:216
-#: src/frontends/gtk/GDocument.C:226 src/frontends/qt3/QDocument.C:118
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:98 src/frontends/gtk/GDocument.C:226
+#: src/frontends/qt3/QDocument.C:118 src/frontends/qt4/QDocumentDialog.C:213
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:221
-#: src/frontends/gtk/GDocument.C:227 src/frontends/qt3/QDocument.C:119
-#: src/frontends/qt4/QDocumentDialog.C:214
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:103 src/frontends/gtk/GDocument.C:227
+#: src/frontends/qt3/QDocument.C:119 src/frontends/qt4/QDocumentDialog.C:214
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:226
-#: src/frontends/gtk/GDocument.C:228 src/frontends/qt3/QDocument.C:120
-#: src/frontends/qt4/QDocumentDialog.C:215
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:108 src/frontends/gtk/GDocument.C:228
+#: src/frontends/qt3/QDocument.C:120 src/frontends/qt4/QDocumentDialog.C:215
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:231
-#: src/frontends/gtk/GDocument.C:231 src/frontends/qt3/QDocument.C:123
-#: src/frontends/qt4/QDocumentDialog.C:218
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:113 src/frontends/gtk/GDocument.C:231
+#: src/frontends/qt3/QDocument.C:123 src/frontends/qt4/QDocumentDialog.C:218
 msgid "B5"
 msgstr "B5"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:248
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:64
 #, fuzzy
 msgid "Te&X encoding:"
 msgstr "Кодировка TeX:"
 
 #: src/frontends/qt3/ui/QPrefLatexModule.ui:259
+#: src/frontends/qt4/ui/QPrefLatexUi.ui:54
 #, fuzzy
 msgid "Default paper si&ze:"
 msgstr ""
 "Размер\n"
 "бумаги:"
 
-#: src/frontends/qt3/ui/QPrefPathsModule.ui:16
-#, fuzzy
-msgid "QPrefPathsModule"
-msgstr "Форматы"
-
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:52
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:128
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:149
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:160
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:176
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:38
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:51
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:61
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:77
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:123
 msgid "Browse..."
 msgstr "Обзор..."
 
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:63
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:143
 #, fuzzy
 msgid "&Document templates:"
 msgstr "Документ экспортирован как '"
 
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:84
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:107
 #, fuzzy
 msgid "&Backup directory:"
 msgstr "Каталог библиотек: "
 
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:95
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:97
 #, fuzzy
 msgid "&Temporary directory:"
 msgstr "Каталог пользователя: "
 
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:106
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:87
 msgid "&PATH prefix:"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:117
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:133
 #, fuzzy
 msgid "&Working directory:"
 msgstr "LyX: создаю каталог "
 
 #: src/frontends/qt3/ui/QPrefPathsModule.ui:187
+#: src/frontends/qt4/ui/QPrefPathsUi.ui:28
 #, fuzzy
 msgid "Ly&XServer pipe:"
 msgstr "Трубы сервера LyX"
 
-#: src/frontends/qt3/ui/QPrefPrinterModule.ui:16
-#, fuzzy
-msgid "QPrefPrinterModule"
-msgstr "Преобразователи"
-
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:61
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:307
 #, fuzzy
 msgid "Printer &name:"
 msgstr "Принтер"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:77
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:297
 #, fuzzy
 msgid "Printer co&mmand:"
 msgstr "Команды пользователя"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:88
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:47
 #, fuzzy
 msgid "Name of the default printer"
 msgstr "Укажите размер бумаги по умолчанию."
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:96
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:57
 #, fuzzy
 msgid "Adapt outp&ut"
 msgstr "адаптировать вывод"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:99
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:54
 msgid "Use printer name explicitely"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:128
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:64
 #, fuzzy
 msgid "Command Options"
 msgstr "Вкладка команд"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:145
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:76
 #, fuzzy
 msgid "Re&verse:"
 msgstr "обратный порядок"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:166
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:92
 #, fuzzy
 msgid "To p&rinter:"
 msgstr "на принтер"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:177
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:102
 #, fuzzy
 msgid "Paper si&ze:"
 msgstr "Размер бумаги"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:198
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:118
 #, fuzzy
 msgid "To &file:"
 msgstr "в файл"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:224
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:137
 #, fuzzy
 msgid "Spool &command:"
 msgstr ""
@@ -2916,21 +3222,25 @@ msgstr ""
 "в очередь"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:245
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:153
 #, fuzzy
 msgid "&Odd pages:"
 msgstr "нечётные страницы"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:261
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:166
 #, fuzzy
 msgid "Paper t&ype:"
 msgstr "тип бумаги"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:277
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:179
 #, fuzzy
 msgid "E&xtra options:"
 msgstr "доп. параметры"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:288
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:189
 #, fuzzy
 msgid "Spool pref&ix:"
 msgstr ""
@@ -2938,134 +3248,149 @@ msgstr ""
 "спула принтера"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:304
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:202
 #, fuzzy
 msgid "Co&llated:"
 msgstr "собирать"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:320
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:215
 #, fuzzy
 msgid "&Even pages:"
 msgstr "чётные страницы"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:331
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:225
 #, fuzzy
 msgid "File ex&tension:"
 msgstr "расширение файла"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:347
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:238
 #, fuzzy
 msgid "Lan&dscape:"
 msgstr "ландшафт"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:363
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:251
 #, fuzzy
 msgid "Co&pies:"
 msgstr "Копии"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:374
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:261
 #, fuzzy
 msgid "Pa&ge range:"
 msgstr "диапазон страниц"
 
 #: src/frontends/qt3/ui/QPrefPrinterModule.ui:385
+#: src/frontends/qt4/ui/QPrefPrinterUi.ui:271
 msgid "Specify the command option names for your printer command"
 msgstr ""
 
-#: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:16
-#, fuzzy
-msgid "QPrefScreenFontsModule"
-msgstr "Экранные шрифты"
-
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:94
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:69
 #, fuzzy
 msgid "Sa&ns Serif:"
 msgstr "Рубленый"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:132
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:104
 #, fuzzy
 msgid "T&ypewriter:"
 msgstr "Машинописный"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:207
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:163
 #, fuzzy
 msgid "Screen &DPI:"
 msgstr "DPI экрана"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:226
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:180
 #, fuzzy
 msgid "&Zoom %:"
 msgstr "Масштаб %"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:328
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:256
 #, fuzzy
 msgid "Larger:"
 msgstr "Больше"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:339
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:266
 #, fuzzy
 msgid "Largest:"
 msgstr "Наибольший"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:355
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:279
 #, fuzzy
 msgid "Huge:"
 msgstr "Огромный"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:366
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:289
 #, fuzzy
 msgid "Hugest:"
 msgstr "Огромный"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:377
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:299
 #, fuzzy
 msgid "Smallest:"
 msgstr "Наименьший"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:388
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:309
 #, fuzzy
 msgid "Smaller:"
 msgstr "Меньший"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:399
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:319
 #, fuzzy
 msgid "Small:"
 msgstr "Маленький"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:410
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:329
 #, fuzzy
 msgid "Normal:"
 msgstr "Нормальный"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:421
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:339
 #, fuzzy
 msgid "Tiny:"
 msgstr "Крохотный"
 
 #: src/frontends/qt3/ui/QPrefScreenFontsModule.ui:432
+#: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:349
 #, fuzzy
 msgid "Large:"
 msgstr "Большой"
 
-#: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:16
-#, fuzzy
-msgid "QPrefSpellcheckerModule"
-msgstr "Проверка правописания"
-
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:47
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:36
 #, fuzzy
 msgid "Spellchec&ker executable:"
 msgstr "Проверка правописания"
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:80
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:65
 msgid "Override the language used for the spellchecker"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:88
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:72
 #, fuzzy
 msgid "Al&ternative language:"
 msgstr "Использовать другой язык:"
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:107
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:89
 #, fuzzy
 msgid "Escape cha&racters:"
 msgstr ""
@@ -3073,91 +3398,100 @@ msgstr ""
 "символы в слове"
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:135
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:115
 #, fuzzy
 msgid "Specify a personal dictionary file other than the default"
 msgstr ""
 "Укажите дополнительный личный словарный файл. Например \".ispell_english\"."
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:143
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:122
 #, fuzzy
 msgid "Personal &dictionary:"
 msgstr "Личный словарь"
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:178
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:156
 #, fuzzy
 msgid "Accept compound &words"
 msgstr "Допускать составные слова"
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:181
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:153
 msgid "Accept words such as \"diskdrive\""
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefSpellcheckerModule.ui:189
+#: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:163
 #, fuzzy
 msgid "Use input encod&ing"
 msgstr "Входная кодировка"
 
-#: src/frontends/qt3/ui/QPrefUIModule.ui:24
-#, fuzzy
-msgid "QPrefUIModule"
-msgstr "Язык"
-
-#: src/frontends/qt3/ui/QPrefUIModule.ui:49
+#: src/frontends/qt3/ui/QPrefUIModule.ui:49 src/frontends/qt4/ui/QPrefUi.ui:74
 #, fuzzy
 msgid "B&rowse..."
 msgstr "Обзор..."
 
-#: src/frontends/qt3/ui/QPrefUIModule.ui:57
+#: src/frontends/qt3/ui/QPrefUIModule.ui:57 src/frontends/qt4/ui/QPrefUi.ui:81
 #, fuzzy
 msgid "&User interface file:"
 msgstr "Файл интерфейса (UI):"
 
-#: src/frontends/qt3/ui/QPrefUIModule.ui:68
+#: src/frontends/qt3/ui/QPrefUIModule.ui:68 src/frontends/qt4/ui/QPrefUi.ui:91
 #, fuzzy
 msgid "&Bind file:"
 msgstr "Файл клавиатурных сокращений"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:107
+#: src/frontends/qt4/ui/QPrefUi.ui:275
 #, fuzzy
 msgid "Documents"
 msgstr "Документ"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:149
+#: src/frontends/qt4/ui/QPrefUi.ui:318
 #, fuzzy
 msgid " every"
 msgstr "обратный порядок"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:171
+#: src/frontends/qt4/ui/QPrefUi.ui:338
 #, fuzzy
 msgid "minutes"
 msgstr "Линия"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:195
+#: src/frontends/qt4/ui/QPrefUi.ui:355
 msgid "&Maximum last files:"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:216
+#: src/frontends/qt4/ui/QPrefUi.ui:287
 #, fuzzy
 msgid "B&ackup documents "
 msgstr "Сохранить документ?"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:243
+#: src/frontends/qt4/ui/QPrefUi.ui:122
 #, fuzzy
 msgid "Session"
 msgstr "LyX версии "
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:254
+#: src/frontends/qt4/ui/QPrefUi.ui:164
 #, fuzzy
 msgid "Restore cursor positions"
 msgstr "Утверждение"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:260
 #: src/frontends/qt3/ui/QPrefUIModule.ui:435
+#: src/frontends/qt4/ui/QPrefUi.ui:174
 #, fuzzy
 msgid "Restore to cursor position when the file was last closed"
 msgstr "Утверждение"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:268
+#: src/frontends/qt4/ui/QPrefUi.ui:157
 msgid "Load opened files from last session"
 msgstr ""
 
@@ -3167,10 +3501,12 @@ msgid "Geometry"
 msgstr "пустой"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:324
+#: src/frontends/qt4/ui/QPrefUi.ui:134
 msgid "Save/restore window size, or use fixed window"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:363
+#: src/frontends/qt4/ui/QPrefUi.ui:211
 #: src/frontends/controllers/ControlBox.C:85 src/frontends/qt3/QBox.C:196
 #: src/frontends/qt3/QBox.C:230 src/frontends/qt4/QBox.C:194
 #: src/frontends/qt4/QBox.C:228
@@ -3179,6 +3515,7 @@ msgid "Width"
 msgstr "Ширина"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:388
+#: src/frontends/qt4/ui/QPrefUi.ui:234
 #: src/frontends/controllers/ControlBox.C:82 src/frontends/qt3/QBox.C:187
 #: src/frontends/qt3/QBox.C:221 src/frontends/qt4/QBox.C:185
 #: src/frontends/qt4/QBox.C:219
@@ -3187,192 +3524,213 @@ msgid "Height"
 msgstr "Высота"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:432
+#: src/frontends/qt4/ui/QPrefUi.ui:177
 #, fuzzy
 msgid "Save/restore window position"
 msgstr "Утверждение"
 
 #: src/frontends/qt3/ui/QPrefUIModule.ui:464
+#: src/frontends/qt4/ui/QPrefUi.ui:51
 #, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Курсор следует за полосой прокрутки"
 
-#: src/frontends/qt3/ui/QPrefsDialogBase.ui:24
-#, fuzzy
-msgid "QPrefsDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QPrefsDialogBase.ui:91 src/bufferlist.C:86
+#: src/frontends/qt3/ui/QPrefsDialogBase.ui:91
+#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:86
 #: src/bufferlist.C:194 src/lyxfunc.C:663
 #, fuzzy
 msgid "&Save"
 msgstr "Сохранить"
 
-#: src/frontends/qt3/ui/QPrintDialogBase.ui:16
-#, fuzzy
-msgid "QPrintDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:36
+#: src/frontends/qt4/ui/QPrintUi.ui:31
 #, fuzzy
 msgid "Pages"
 msgstr "Стр. от:"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:86
+#: src/frontends/qt4/ui/QPrintUi.ui:62
 #, fuzzy
 msgid "Page number to print from"
 msgstr "Невозможно распечатать"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:94
+#: src/frontends/qt4/ui/QPrintUi.ui:69
 msgid "&To:[[as in 'From page x to page y']]"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:108
+#: src/frontends/qt4/ui/QPrintUi.ui:82
 #, fuzzy
 msgid "Page number to print to"
 msgstr "Невозможно распечатать"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:118
+#: src/frontends/qt4/ui/QPrintUi.ui:94
 #, fuzzy
 msgid "Fro&m"
 msgstr "Из"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:124
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:138
+#: src/frontends/qt4/ui/QPrintUi.ui:91 src/frontends/qt4/ui/QPrintUi.ui:104
 #, fuzzy
 msgid "Print all pages"
 msgstr "Убрать рамку"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:132
+#: src/frontends/qt4/ui/QPrintUi.ui:107
 #, fuzzy
 msgid "&All"
 msgstr "Применить|#A"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:148
+#: src/frontends/qt4/ui/QPrintUi.ui:119
 msgid "Print &odd-numbered pages"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:159
+#: src/frontends/qt4/ui/QPrintUi.ui:129
 msgid "Print &even-numbered pages"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:170
+#: src/frontends/qt4/ui/QPrintUi.ui:142
 #, fuzzy
 msgid "Re&verse order"
 msgstr "Обратный"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:173
+#: src/frontends/qt4/ui/QPrintUi.ui:139
 #, fuzzy
 msgid "Print in reverse order"
 msgstr "Обратный"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:183
+#: src/frontends/qt4/ui/QPrintUi.ui:152
 msgid "Copies"
 msgstr "Копии"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:206
+#: src/frontends/qt4/ui/QPrintUi.ui:164
 #, fuzzy
 msgid "Number of copies"
 msgstr "Содержание"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:217
+#: src/frontends/qt4/ui/QPrintUi.ui:183
 #, fuzzy
 msgid "&Collate"
 msgstr "собирать"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:220
+#: src/frontends/qt4/ui/QPrintUi.ui:180
 #, fuzzy
 msgid "Collate copies"
 msgstr "собирать"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:278
+#: src/frontends/qt4/ui/QPrintUi.ui:233
 #, fuzzy
 msgid "&Print"
 msgstr "Распечатать"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:308
+#: src/frontends/qt4/ui/QPrintUi.ui:261
 #, fuzzy
 msgid "Print Destination"
 msgstr "Ориентация"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:327
+#: src/frontends/qt4/ui/QPrintUi.ui:276
 #, fuzzy
 msgid "P&rinter:"
 msgstr "Принтер"
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:333
+#: src/frontends/qt4/ui/QPrintUi.ui:273
 msgid "Send output to the printer"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:341
+#: src/frontends/qt4/ui/QPrintUi.ui:286
 msgid "Send output to the given printer"
 msgstr ""
 
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:352
 #: src/frontends/qt3/ui/QPrintDialogBase.ui:363
+#: src/frontends/qt4/ui/QPrintUi.ui:293 src/frontends/qt4/ui/QPrintUi.ui:306
 msgid "Send output to a file"
 msgstr ""
 
-#: src/frontends/qt3/ui/QRefDialogBase.ui:16
-#, fuzzy
-msgid "QRefDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QRefDialogBase.ui:61
+#: src/frontends/qt4/ui/QRefUi.ui:232
 #, fuzzy
 msgid "Update the label list"
 msgstr "Редактировать параметры"
 
-#: src/frontends/qt3/ui/QRefDialogBase.ui:77 src/frontends/qt3/QRef.C:144
+#: src/frontends/qt3/ui/QRefDialogBase.ui:77
+#: src/frontends/qt4/ui/QRefUi.ui:253 src/frontends/qt3/QRef.C:144
 #: src/frontends/qt4/QRef.C:145
 #, fuzzy
 msgid "&Go to Label"
 msgstr "Labeling"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:80
+#: src/frontends/qt4/ui/QRefUi.ui:250
 #, fuzzy
 msgid "Jump to the label"
 msgstr "Перейти к ссылке"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:90
+#: src/frontends/qt4/ui/QRefUi.ui:209
 #, fuzzy
 msgid "&Sort"
 msgstr "Упорядочить"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:93
+#: src/frontends/qt4/ui/QRefUi.ui:206
 #, fuzzy
 msgid "Sort labels in alphabetical order"
 msgstr "Редактировать параметры"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:104
+#: src/frontends/qt4/ui/QRefUi.ui:170
 #, fuzzy
 msgid "<reference>"
 msgstr "Параметры"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:109
+#: src/frontends/qt4/ui/QRefUi.ui:175
 #, fuzzy
 msgid "(<reference>)"
 msgstr "Параметры"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:114
+#: src/frontends/qt4/ui/QRefUi.ui:180
 #, fuzzy
 msgid "<page>"
 msgstr "Мини-страница"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:119
+#: src/frontends/qt4/ui/QRefUi.ui:185
 #, fuzzy
 msgid "on page <page>"
 msgstr "Мини-страница"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:124
+#: src/frontends/qt4/ui/QRefUi.ui:190
 msgid "<reference> on page <page>"
 msgstr ""
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:129
+#: src/frontends/qt4/ui/QRefUi.ui:195
 #, fuzzy
 msgid "Formatted reference"
 msgstr "Перейти к ссылке"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:144
+#: src/frontends/qt4/ui/QRefUi.ui:166
 msgid "Cross-reference as it appears in output"
 msgstr ""
 
@@ -3382,25 +3740,24 @@ msgid "Available labels"
 msgstr "Невозможно открыть шаблон"
 
 #: src/frontends/qt3/ui/QRefDialogBase.ui:293
+#: src/frontends/qt4/ui/QRefUi.ui:46
 #, fuzzy
 msgid "La&bels in:"
 msgstr "Labeling"
 
-#: src/frontends/qt3/ui/QSearchDialogBase.ui:16
-#, fuzzy
-msgid "QSearchDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:85
+#: src/frontends/qt4/ui/QSearchUi.ui:71
 #, fuzzy
 msgid "Replace &with:"
 msgstr "Заменить на"
 
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:135
+#: src/frontends/qt4/ui/QSearchUi.ui:115
 msgid "Match whole words onl&y"
 msgstr ""
 
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:197
+#: src/frontends/qt4/ui/QSearchUi.ui:173
 #, fuzzy
 msgid "Find &Next"
 msgstr "Текст"
@@ -3408,6 +3765,9 @@ msgstr "Текст"
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:211
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:47
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:149
+#: src/frontends/qt4/ui/QSearchUi.ui:186
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:51
+#: src/frontends/qt4/ui/QThesaurusUi.ui:111
 #, fuzzy
 msgid "&Replace"
 msgstr ""
@@ -3415,30 +3775,30 @@ msgstr ""
 "на"
 
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:222
+#: src/frontends/qt4/ui/QSearchUi.ui:196
 #, fuzzy
 msgid "Replace &All"
 msgstr "Заменить всё"
 
 #: src/frontends/qt3/ui/QSearchDialogBase.ui:230
+#: src/frontends/qt4/ui/QSearchUi.ui:203
 msgid "Search &backwards"
 msgstr ""
 
-#: src/frontends/qt3/ui/QSendtoDialogBase.ui:16
-#, fuzzy
-msgid "QSendtoDialogBase"
-msgstr "Документ экспортирован как '"
-
 #: src/frontends/qt3/ui/QSendtoDialogBase.ui:36
+#: src/frontends/qt4/ui/QSendtoUi.ui:114
 #, fuzzy
 msgid "&Command:"
 msgstr "команда"
 
 #: src/frontends/qt3/ui/QSendtoDialogBase.ui:47
+#: src/frontends/qt4/ui/QSendtoUi.ui:104
 #, fuzzy
 msgid "&Export formats:"
 msgstr "Формат экспорта"
 
 #: src/frontends/qt3/ui/QSendtoDialogBase.ui:133
+#: src/frontends/qt4/ui/QSendtoUi.ui:45
 msgid "Process the converted file with this command ($$FName = file name)"
 msgstr ""
 
@@ -3447,47 +3807,44 @@ msgstr ""
 msgid "Available export converters"
 msgstr "Все преобразователи"
 
-#: src/frontends/qt3/ui/QShowFileDialogBase.ui:16
-#, fuzzy
-msgid "QShowFileDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:16
-#, fuzzy
-msgid "QSpellcheckerDialogBase"
-msgstr "Проверка правописания"
-
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:36
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:38
 #, fuzzy
 msgid "Suggestions:"
 msgstr "Предложения"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:50
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:48
 #, fuzzy
 msgid "Replace word with current choice"
 msgstr "Заменить на текущий документ?"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:61
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:58
 #, fuzzy
 msgid "Add the word to your personal dictionary"
 msgstr "Добавить в личный словарь"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:69
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:71
 #, fuzzy
 msgid "&Ignore"
 msgstr "Игнорировать"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:72
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:68
 #, fuzzy
 msgid "Ignore this word"
 msgstr "Пропустить слово"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:80
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:81
 #, fuzzy
 msgid "I&gnore All"
 msgstr "Игнорировать"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:83
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:78
 #, fuzzy
 msgid "Ignore this word throughout this session"
 msgstr "Пропускать это слово и дальше"
@@ -3502,56 +3859,55 @@ msgid "Suggestions"
 msgstr "Предложения"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:149
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:104
 #, fuzzy
 msgid "Replacement:"
 msgstr "Размещение плавающих объектов:"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:160
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:114
 #, fuzzy
 msgid "Current word"
 msgstr "Ключевые слова"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:168
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:121
 #, fuzzy
 msgid "Unknown word:"
 msgstr "неизвестная"
 
 #: src/frontends/qt3/ui/QSpellcheckerDialogBase.ui:202
+#: src/frontends/qt4/ui/QSpellcheckerUi.ui:142
 #, fuzzy
 msgid "Replace with selected word"
 msgstr "Заменить на текущий документ?"
 
-#: src/frontends/qt3/ui/QTabularCreateDialogBase.ui:16
-#, fuzzy
-msgid "QTabularCreateDialogBase"
-msgstr "Набор символов"
-
-#: src/frontends/qt3/ui/QTabularDialogBase.ui:16
-#, fuzzy
-msgid "QTabularDialogBase"
-msgstr "Тезаурус"
-
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:50
+#: src/frontends/qt4/ui/QTabularUi.ui:1049
 #, fuzzy
 msgid "Current cell:"
 msgstr "Текущий адрес"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:75
+#: src/frontends/qt4/ui/QTabularUi.ui:1073
 #, fuzzy
 msgid "Current row position"
 msgstr "Утверждение"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:100
+#: src/frontends/qt4/ui/QTabularUi.ui:1097
 #, fuzzy
 msgid "Current column position"
 msgstr "Утверждение"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:159
+#: src/frontends/qt4/ui/QTabularUi.ui:41
 #, fuzzy
 msgid "&Table Settings"
 msgstr "Настройки документа"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:176
+#: src/frontends/qt4/ui/QTabularUi.ui:126
 #, fuzzy
 msgid "&Horizontal alignment:"
 msgstr ""
@@ -3559,13 +3915,14 @@ msgstr ""
 "выравнивание"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:185
-#: src/frontends/gtk/GTabular.C:361 src/frontends/qt3/QTabular.C:211
-#: src/frontends/qt4/QTabular.C:264
+#: src/frontends/qt4/ui/QTabularUi.ui:140 src/frontends/gtk/GTabular.C:361
+#: src/frontends/qt3/QTabular.C:211 src/frontends/qt4/QTabular.C:264
 #, fuzzy
 msgid "Block"
 msgstr "Чёрный"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:207
+#: src/frontends/qt4/ui/QTabularUi.ui:136
 #, fuzzy
 msgid "Horizontal alignment in column"
 msgstr ""
@@ -3573,50 +3930,60 @@ msgstr ""
 "выравнивание"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:218
+#: src/frontends/qt4/ui/QTabularUi.ui:185
 #, fuzzy
 msgid "&Rotate table 90 degrees"
 msgstr "Размещение таблицы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:221
+#: src/frontends/qt4/ui/QTabularUi.ui:182
 #, fuzzy
 msgid "Rotate the table by 90 degrees"
 msgstr "Размещение таблицы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:229
+#: src/frontends/qt4/ui/QTabularUi.ui:195
 #, fuzzy
 msgid "Rotate &cell 90 degrees"
 msgstr "Размещение таблицы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:232
+#: src/frontends/qt4/ui/QTabularUi.ui:192
 #, fuzzy
 msgid "Rotate this cell by 90 degrees"
 msgstr "Размещение таблицы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:240
+#: src/frontends/qt4/ui/QTabularUi.ui:212
 #, fuzzy
 msgid "LaTe&X argument:"
 msgstr "Аргументы для LaTeX"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:251
+#: src/frontends/qt4/ui/QTabularUi.ui:222
 msgid "Custom column format (LaTeX)"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:293
+#: src/frontends/qt4/ui/QTabularUi.ui:205
 #, fuzzy
 msgid "&Multicolumn"
 msgstr "Многоколоночная"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:296
+#: src/frontends/qt4/ui/QTabularUi.ui:202
 #, fuzzy
 msgid "Merge cells"
 msgstr "диапазон страниц"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:304
+#: src/frontends/qt4/ui/QTabularUi.ui:53
 #, fuzzy
 msgid "Column Width"
 msgstr "Колонок "
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:321
+#: src/frontends/qt4/ui/QTabularUi.ui:113
 #, fuzzy
 msgid "&Vertical alignment:"
 msgstr ""
@@ -3629,10 +3996,12 @@ msgid "Width unit"
 msgstr "Ширина"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:358
+#: src/frontends/qt4/ui/QTabularUi.ui:71
 msgid "Fixed width of the column"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:392
+#: src/frontends/qt4/ui/QTabularUi.ui:81
 #, fuzzy
 msgid "Vertical alignment for fixed width columns"
 msgstr ""
@@ -3640,112 +4009,136 @@ msgstr ""
 "выравнивание"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:404
+#: src/frontends/qt4/ui/QTabularUi.ui:230
 #, fuzzy
 msgid "&Borders"
 msgstr "Линия"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:448
+#: src/frontends/qt4/ui/QTabularUi.ui:349
 #, fuzzy
 msgid "Set Borders"
 msgstr "Вставить рамку"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:753
+#: src/frontends/qt4/ui/QTabularUi.ui:657
 msgid "Set borders of the current (selected) cell(s)"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:765
+#: src/frontends/qt4/ui/QTabularUi.ui:250
 #, fuzzy
 msgid "All Borders"
 msgstr "Линия"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:782
+#: src/frontends/qt4/ui/QTabularUi.ui:265
 #, fuzzy
 msgid "&Set"
 msgstr "Упорядочить"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:785
+#: src/frontends/qt4/ui/QTabularUi.ui:262
 msgid "Set all borders of the current (selected) cell(s)"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:793
+#: src/frontends/qt4/ui/QTabularUi.ui:275
 #, fuzzy
 msgid "C&lear"
 msgstr "Очистить"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:796
+#: src/frontends/qt4/ui/QTabularUi.ui:272
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:819
+#: src/frontends/qt4/ui/QTabularUi.ui:316
 #, fuzzy
 msgid "Fo&rmal"
 msgstr "Нормальный"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:822
+#: src/frontends/qt4/ui/QTabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:830
+#: src/frontends/qt4/ui/QTabularUi.ui:326
 #, fuzzy
 msgid "De&fault"
 msgstr "По умолчанию"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:833
+#: src/frontends/qt4/ui/QTabularUi.ui:323
 msgid "Use default (grid-like) border style"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:868
+#: src/frontends/qt4/ui/QTabularUi.ui:670
 #, fuzzy
 msgid "Additional Space"
 msgstr "Интервал"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1029
+#: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1040
+#: src/frontends/qt4/ui/QTabularUi.ui:742
 #, fuzzy
 msgid "Botto&m of row:"
 msgstr "Внизу страницы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1051
+#: src/frontends/qt4/ui/QTabularUi.ui:755
 msgid "Bet&ween rows:"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1085
+#: src/frontends/qt4/ui/QTabularUi.ui:793
 #, fuzzy
 msgid "&Longtable"
 msgstr "Длинная таблица"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1102
+#: src/frontends/qt4/ui/QTabularUi.ui:1030
 #, fuzzy
 msgid "&Use long table"
 msgstr "Длинная таблица"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1105
+#: src/frontends/qt4/ui/QTabularUi.ui:1027
 msgid "Select for tables that span multiple pages"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1116
+#: src/frontends/qt4/ui/QTabularUi.ui:834
 #, fuzzy
 msgid "Settings"
 msgstr "Раздел"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1133
+#: src/frontends/qt4/ui/QTabularUi.ui:846
 msgid "Status"
 msgstr "Состояние"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1141
+#: src/frontends/qt4/ui/QTabularUi.ui:853
 #, fuzzy
 msgid "Header:"
 msgstr "Шапка"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1149
+#: src/frontends/qt4/ui/QTabularUi.ui:860
 #, fuzzy
 msgid "Footer:"
 msgstr "Подвал"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1157
+#: src/frontends/qt4/ui/QTabularUi.ui:867
 #, fuzzy
 msgid "First header:"
 msgstr ""
@@ -3753,6 +4146,7 @@ msgstr ""
 "таблицы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1165
+#: src/frontends/qt4/ui/QTabularUi.ui:874
 #, fuzzy
 msgid "Last footer:"
 msgstr ""
@@ -3760,15 +4154,18 @@ msgstr ""
 "конце таблицы"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1173
+#: src/frontends/qt4/ui/QTabularUi.ui:881
 msgid "Contents"
 msgstr "Содержит"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1181
+#: src/frontends/qt4/ui/QTabularUi.ui:888
 #, fuzzy
 msgid "Border above"
 msgstr "Линия сверху"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1189
+#: src/frontends/qt4/ui/QTabularUi.ui:895
 #, fuzzy
 msgid "Border below"
 msgstr "Линия снизу"
@@ -3777,26 +4174,34 @@ msgstr "Линия снизу"
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1208
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1222
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1233
+#: src/frontends/qt4/ui/QTabularUi.ui:905
+#: src/frontends/qt4/ui/QTabularUi.ui:918
+#: src/frontends/qt4/ui/QTabularUi.ui:928
+#: src/frontends/qt4/ui/QTabularUi.ui:938
 #, fuzzy
 msgid "on"
 msgstr "Имена собственные "
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1200
+#: src/frontends/qt4/ui/QTabularUi.ui:902
 #, fuzzy
 msgid "Repeat this row as header on every (except the first) page"
 msgstr "Параметр для задания обратного порядка печати страниц."
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1211
+#: src/frontends/qt4/ui/QTabularUi.ui:912
 #, fuzzy
 msgid "This row is the header of the first page"
 msgstr "Параметр для задания обратного порядка печати страниц."
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1225
+#: src/frontends/qt4/ui/QTabularUi.ui:925
 #, fuzzy
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr "Параметр для задания обратного порядка печати страниц."
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1236
+#: src/frontends/qt4/ui/QTabularUi.ui:935
 #, fuzzy
 msgid "This row is the footer of the last page"
 msgstr "Параметр для задания обратного порядка печати страниц."
@@ -3809,68 +4214,80 @@ msgstr "Параметр для задания обратного порядка печати страниц."
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1287
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1295
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1303
+#: src/frontends/qt4/ui/QTabularUi.ui:948
+#: src/frontends/qt4/ui/QTabularUi.ui:955
+#: src/frontends/qt4/ui/QTabularUi.ui:962
+#: src/frontends/qt4/ui/QTabularUi.ui:969
+#: src/frontends/qt4/ui/QTabularUi.ui:976
+#: src/frontends/qt4/ui/QTabularUi.ui:983
+#: src/frontends/qt4/ui/QTabularUi.ui:990
+#: src/frontends/qt4/ui/QTabularUi.ui:997
 #, fuzzy
 msgid "double"
 msgstr "Двойной"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1311
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1322
+#: src/frontends/qt4/ui/QTabularUi.ui:1007
+#: src/frontends/qt4/ui/QTabularUi.ui:1017
 #, fuzzy
 msgid "is empty"
 msgstr "пустой"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1314
+#: src/frontends/qt4/ui/QTabularUi.ui:1004
 msgid "Don't output the last footer"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1325
+#: src/frontends/qt4/ui/QTabularUi.ui:1014
 msgid "Don't output the first header"
 msgstr ""
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1338
+#: src/frontends/qt4/ui/QTabularUi.ui:824
 #, fuzzy
 msgid "Page &break on current row"
 msgstr "Разрыв страницы на текущей строке"
 
 #: src/frontends/qt3/ui/QTabularDialogBase.ui:1341
+#: src/frontends/qt4/ui/QTabularUi.ui:821
 #, fuzzy
 msgid "Set a page break on the current row"
 msgstr "Разрыв страницы на текущей строке"
 
-#: src/frontends/qt3/ui/QTexinfoDialogBase.ui:16
-#, fuzzy
-msgid "QTexinfoDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:48
-#: src/frontends/gtk/GTexinfo.C:83
+#: src/frontends/qt4/ui/QTexinfoUi.ui:131 src/frontends/gtk/GTexinfo.C:83
 #, fuzzy
 msgid "LaTeX classes"
 msgstr "Классы LaTeX"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:53
-#: src/frontends/gtk/GTexinfo.C:90
+#: src/frontends/qt4/ui/QTexinfoUi.ui:136 src/frontends/gtk/GTexinfo.C:90
 #, fuzzy
 msgid "LaTeX styles"
 msgstr "Стили LaTeX"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:58
-#: src/frontends/gtk/GTexinfo.C:94
+#: src/frontends/qt4/ui/QTexinfoUi.ui:141 src/frontends/gtk/GTexinfo.C:94
 #, fuzzy
 msgid "BibTeX styles"
 msgstr "Стили BibTeX"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:65
+#: src/frontends/qt4/ui/QTexinfoUi.ui:127
 #, fuzzy
 msgid "Selected classes or styles"
 msgstr "Выберите cтиль BibTeX"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:90
+#: src/frontends/qt4/ui/QTexinfoUi.ui:168
 #, fuzzy
 msgid "Show &path"
 msgstr "Показать путь"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:93
+#: src/frontends/qt4/ui/QTexinfoUi.ui:165
 #, fuzzy
 msgid "Toggles view of the file list"
 msgstr "В результате преобразования получен пустой файл"
@@ -3881,21 +4298,25 @@ msgid "Installed files"
 msgstr "Включить файл"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:147
+#: src/frontends/qt4/ui/QTexinfoUi.ui:97
 #, fuzzy
 msgid "&Rescan"
 msgstr "Обновить"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:150
+#: src/frontends/qt4/ui/QTexinfoUi.ui:94
 #, fuzzy
 msgid "Rebuild the file lists"
 msgstr "В результате преобразования получен пустой файл"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:161
+#: src/frontends/qt4/ui/QTexinfoUi.ui:110
 #, fuzzy
 msgid "&View"
 msgstr "Просмотр"
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:164
+#: src/frontends/qt4/ui/QTexinfoUi.ui:107
 #, fuzzy
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
@@ -3904,26 +4325,25 @@ msgstr ""
 "если файлы показываются с полным путём."
 
 #: src/frontends/qt3/ui/QTexinfoDialogBase.ui:208
+#: src/frontends/qt4/ui/QTexinfoUi.ui:58
 msgid "Close this dialog"
 msgstr ""
 
-#: src/frontends/qt3/ui/QThesaurusDialogBase.ui:16
-#, fuzzy
-msgid "QThesaurusDialogBase"
-msgstr "Тезаурус"
-
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:50
-#: src/frontends/qt3/Dialogs.C:220 src/frontends/qt4/Dialogs.C:217
+#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt3/Dialogs.C:220
+#: src/frontends/qt4/Dialogs.C:217
 #, fuzzy
 msgid "&Keyword:"
 msgstr "Ключевое слово"
 
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:56
+#: src/frontends/qt4/ui/QThesaurusUi.ui:42
 #, fuzzy
 msgid "Index entry"
 msgstr "Слово в предметный указатель..."
 
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:64
+#: src/frontends/qt4/ui/QThesaurusUi.ui:55
 #, fuzzy
 msgid "Entry"
 msgstr "Вхождение:"
@@ -3939,27 +4359,27 @@ msgid "Select a related word"
 msgstr "Выберите файл шаблона"
 
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:127
+#: src/frontends/qt4/ui/QThesaurusUi.ui:91
 #, fuzzy
 msgid "&Selection:"
 msgstr "выделенная область"
 
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:133
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:141
+#: src/frontends/qt4/ui/QThesaurusUi.ui:88
+#: src/frontends/qt4/ui/QThesaurusUi.ui:101
 #, fuzzy
 msgid "The selected entry"
 msgstr "Информация о выбранной записи"
 
 #: src/frontends/qt3/ui/QThesaurusDialogBase.ui:152
+#: src/frontends/qt4/ui/QThesaurusUi.ui:108
 #, fuzzy
 msgid "Replace the entry with the selection"
 msgstr "Заменить на текущий документ?"
 
-#: src/frontends/qt3/ui/QTocDialogBase.ui:16
-#, fuzzy
-msgid "QTocDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QTocDialogBase.ui:50
+#: src/frontends/qt4/ui/QTocUi.ui:133
 #, fuzzy
 msgid "&Type:"
 msgstr "Тип:"
@@ -3975,61 +4395,58 @@ msgid "U&pdate"
 msgstr "Обновить"
 
 #: src/frontends/qt3/ui/QTocDialogBase.ui:148
+#: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:39
 #, fuzzy
 msgid "&Up"
 msgstr "Обновить"
 
 #: src/frontends/qt3/ui/QTocDialogBase.ui:156
+#: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:46
 #, fuzzy
 msgid "&Down"
 msgstr "Town"
 
 #: src/frontends/qt3/ui/QTocDialogBase.ui:164
+#: src/frontends/qt4/ui/QTocUi.ui:60
 #, fuzzy
 msgid "&In"
 msgstr "Игнорировать"
 
 #: src/frontends/qt3/ui/QTocDialogBase.ui:172
+#: src/frontends/qt4/ui/QTocUi.ui:53
 #, fuzzy
 msgid "&Out"
 msgstr "Другой"
 
-#: src/frontends/qt3/ui/QURLDialogBase.ui:16
-#, fuzzy
-msgid "QURLDialogBase"
-msgstr "Диалог"
-
-#: src/frontends/qt3/ui/QURLDialogBase.ui:36
+#: src/frontends/qt3/ui/QURLDialogBase.ui:36 src/frontends/qt4/ui/QURLUi.ui:34
 #, fuzzy
 msgid "&URL:"
 msgstr "URL"
 
 #: src/frontends/qt3/ui/QURLDialogBase.ui:42
-#: src/frontends/qt3/ui/QURLDialogBase.ui:72 lib/layouts/scrlttr2.layout:208
+#: src/frontends/qt3/ui/QURLDialogBase.ui:72 src/frontends/qt4/ui/QURLUi.ui:31
+#: src/frontends/qt4/ui/QURLUi.ui:64 lib/layouts/scrlttr2.layout:208
 #: lib/layouts/amsdefs.inc:186 src/frontends/gtk/GUrl.C:37
 #: src/frontends/qt3/QURL.C:33 src/frontends/qt4/UrlView.C:33
 msgid "URL"
 msgstr "URL"
 
 #: src/frontends/qt3/ui/QURLDialogBase.ui:56
-#: src/frontends/qt3/ui/QURLDialogBase.ui:64
+#: src/frontends/qt3/ui/QURLDialogBase.ui:64 src/frontends/qt4/ui/QURLUi.ui:44
+#: src/frontends/qt4/ui/QURLUi.ui:57
 msgid "Name associated with the URL"
 msgstr ""
 
-#: src/frontends/qt3/ui/QURLDialogBase.ui:94
+#: src/frontends/qt3/ui/QURLDialogBase.ui:94 src/frontends/qt4/ui/QURLUi.ui:82
 msgid "&Generate hyperlink"
 msgstr ""
 
-#: src/frontends/qt3/ui/QURLDialogBase.ui:97
+#: src/frontends/qt3/ui/QURLDialogBase.ui:97 src/frontends/qt4/ui/QURLUi.ui:79
 msgid "Output as a hyperlink ?"
 msgstr ""
 
-#: src/frontends/qt3/ui/QVSpaceDialogBase.ui:16
-#, fuzzy
-msgid "QVSpaceDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:36
+#: src/frontends/qt4/ui/QVSpaceUi.ui:31
 #, fuzzy
 msgid "&Spacing:"
 msgstr ""
@@ -4037,11 +4454,13 @@ msgstr ""
 "интервал"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:47
+#: src/frontends/qt4/ui/QVSpaceUi.ui:41
 #, fuzzy
 msgid "&Value:"
 msgstr "Значение"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:58
+#: src/frontends/qt4/ui/QVSpaceUi.ui:54
 #, fuzzy
 msgid "&Protect:"
 msgstr ""
@@ -4049,15 +4468,18 @@ msgstr ""
 "клавиша"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:75
+#: src/frontends/qt4/ui/QVSpaceUi.ui:64
 #, fuzzy
 msgid "Insert the spacing even after a page break"
 msgstr "Вставить разрыв лигатуры"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:86
+#: src/frontends/qt4/ui/QVSpaceUi.ui:77
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr ""
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:92
+#: src/frontends/qt4/ui/QVSpaceUi.ui:88
 #, fuzzy
 msgid "DefSkip"
 msgstr ""
@@ -4065,42 +4487,44 @@ msgstr ""
 "между абзацами:"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:97
-#: src/frontends/qt3/QDocument.C:140 src/frontends/qt4/QDocumentDialog.C:115
+#: src/frontends/qt4/ui/QVSpaceUi.ui:93 src/frontends/qt3/QDocument.C:140
+#: src/frontends/qt4/QDocumentDialog.C:115
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Маленький"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:102
-#: src/frontends/qt3/QDocument.C:141 src/frontends/qt4/QDocumentDialog.C:116
+#: src/frontends/qt4/ui/QVSpaceUi.ui:98 src/frontends/qt3/QDocument.C:141
+#: src/frontends/qt4/QDocumentDialog.C:116
 #, fuzzy
 msgid "MedSkip"
 msgstr "Средний"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:107
-#: src/frontends/qt3/QDocument.C:142 src/frontends/qt4/QDocumentDialog.C:117
+#: src/frontends/qt4/ui/QVSpaceUi.ui:103 src/frontends/qt3/QDocument.C:142
+#: src/frontends/qt4/QDocumentDialog.C:117
 #, fuzzy
 msgid "BigSkip"
 msgstr "Большой"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:112
+#: src/frontends/qt4/ui/QVSpaceUi.ui:108
 #, fuzzy
 msgid "VFill"
 msgstr "Файл"
 
 #: src/frontends/qt3/ui/QVSpaceDialogBase.ui:124
+#: src/frontends/qt4/ui/QVSpaceUi.ui:84
 msgid "Supported spacing types"
 msgstr ""
 
-#: src/frontends/qt3/ui/QViewSourceDialogBase.ui:16
-#, fuzzy
-msgid "QViewSourceDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QViewSourceDialogBase.ui:52
+#: src/frontends/qt4/ui/QViewSourceUi.ui:49
 msgid "Display complete source"
 msgstr ""
 
 #: src/frontends/qt3/ui/QViewSourceDialogBase.ui:63
+#: src/frontends/qt4/ui/QViewSourceUi.ui:56
 msgid "Automatic update"
 msgstr ""
 
@@ -4109,70 +4533,266 @@ msgstr ""
 msgid "Update"
 msgstr "Обновить"
 
-#: src/frontends/qt3/ui/QWrapDialogBase.ui:16
-#, fuzzy
-msgid "QWrapDialogBase"
-msgstr "Диалог"
-
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:69
+#: src/frontends/qt4/ui/QWrapUi.ui:53
 #, fuzzy
 msgid "Default (outer)"
 msgstr "Путь по умолчанию"
 
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:84
+#: src/frontends/qt4/ui/QWrapUi.ui:68
 #, fuzzy
 msgid "Outer"
 msgstr "Другой"
 
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:99
+#: src/frontends/qt4/ui/QWrapUi.ui:76
 #, fuzzy
 msgid "&Placement:"
 msgstr "Размещение плавающих объектов:"
 
 #: src/frontends/qt3/ui/QWrapDialogBase.ui:151
+#: src/frontends/qt4/ui/QWrapUi.ui:125
 #, fuzzy
 msgid "&Units:"
 msgstr "Единицы"
 
-#: src/frontends/qt3/ui/TextLayoutModuleBase.ui:16
-#, fuzzy
-msgid "TextLayoutModuleBase"
-msgstr "Язык"
-
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:33
+#: src/frontends/qt4/ui/TextLayoutUi.ui:68
 #, fuzzy
 msgid "Separate Paragraphs With"
 msgstr "целыми абзацами"
 
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:50
+#: src/frontends/qt4/ui/TextLayoutUi.ui:154
 #, fuzzy
 msgid "&Indentation"
 msgstr "Отступ"
 
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:53
+#: src/frontends/qt4/ui/TextLayoutUi.ui:151
 #, fuzzy
 msgid "Indent consecutive paragraphs"
 msgstr "Выделить следующий абзац"
 
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:61
+#: src/frontends/qt4/ui/TextLayoutUi.ui:144
 #, fuzzy
 msgid "&Vertical space"
 msgstr "Интервал"
 
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:218
+#: src/frontends/qt4/ui/TextLayoutUi.ui:58
 #, fuzzy
 msgid "&Line spacing:"
 msgstr "Промежуток"
 
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:279
+#: src/frontends/qt4/ui/TextLayoutUi.ui:183
 #, fuzzy
 msgid "Two-&column document"
 msgstr "Сохранить документ?"
 
 #: src/frontends/qt3/ui/TextLayoutModuleBase.ui:282
+#: src/frontends/qt4/ui/TextLayoutUi.ui:180
 #, fuzzy
 msgid "Format text into two columns"
 msgstr "Форматирование документа..."
+
+#: src/frontends/qt4/ui/BulletsUi.ui:37
+#, fuzzy
+msgid "&Font:"
+msgstr "Шрифт:"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:147
+#, fuzzy
+msgid "Custom Bullet:"
+msgstr "Заказчик"
+
+#: src/frontends/qt4/ui/BulletsUi.ui:177
+#, fuzzy
+msgid "&Level:"
+msgstr "Labeling"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:16
+#, fuzzy
+msgid "Form"
+msgstr "Нормальный"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:28
+#: src/frontends/qt3/floatplacement.C:38
+msgid "Use &default placement"
+msgstr ""
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:35
+#: src/frontends/qt3/floatplacement.C:36
+#, fuzzy
+msgid "Advanced Placement Options"
+msgstr "Продвинутые настройки"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:47
+#: src/frontends/qt3/floatplacement.C:39
+#, fuzzy
+msgid "&Top of page"
+msgstr "Наверху страницы"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:54
+#: src/frontends/qt3/floatplacement.C:44
+msgid "&Ignore LaTeX rules"
+msgstr ""
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:61
+#, fuzzy
+msgid "Here de&finitely"
+msgstr "Именно здесь"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:68
+#: src/frontends/qt3/floatplacement.C:42
+#, fuzzy
+msgid "&Here if possible"
+msgstr "Здесь, если возможно"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:75
+#: src/frontends/qt3/floatplacement.C:41
+#, fuzzy
+msgid "&Page of floats"
+msgstr ""
+"На странице\n"
+"плавающих объектов"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:82
+#: src/frontends/qt3/floatplacement.C:40
+#, fuzzy
+msgid "&Bottom of page"
+msgstr "Внизу страницы"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:92
+#: src/frontends/qt3/floatplacement.C:84
+#, fuzzy
+msgid "&Span columns"
+msgstr "Дополнительные параметры"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:99
+#: src/frontends/qt3/floatplacement.C:94
+#, fuzzy
+msgid "&Rotate sideways"
+msgstr "Rotatefoilhead"
+
+#: src/frontends/qt4/ui/FontUi.ui:16
+#, fuzzy
+msgid "FontUi"
+msgstr "Шрифт:"
+
+#: src/frontends/qt4/ui/FontUi.ui:73
+#, fuzzy
+msgid "Sizes"
+msgstr "Размер"
+
+#: src/frontends/qt4/ui/FontUi.ui:150
+#, fuzzy
+msgid "Families"
+msgstr "Параметры"
+
+#: src/frontends/qt4/ui/QAskForTextUi.ui:16
+#, fuzzy
+msgid "LyX: Enter text"
+msgstr "Вкладки LyX'а"
+
+#: src/frontends/qt4/ui/QBibtexAddUi.ui:24
+#: src/frontends/qt3/QBibtexDialog.C:51
+#, fuzzy
+msgid "LyX: Add BibTeX Database"
+msgstr "База данных BiBTeX"
+
+#: src/frontends/qt4/ui/QBoxUi.ui:66
+#, fuzzy
+msgid "Inner Bo&x:"
+msgstr "Внутри:"
+
+#: src/frontends/qt4/ui/QBoxUi.ui:79
+#, fuzzy
+msgid "&Decoration:"
+msgstr "Посвящение"
+
+#: src/frontends/qt4/ui/QBoxUi.ui:190
+#, fuzzy
+msgid "Horizontal"
+msgstr ""
+"Гориз.\n"
+"выравнивание"
+
+#: src/frontends/qt4/ui/QBoxUi.ui:222
+#, fuzzy
+msgid "&Box:"
+msgstr "Внутри:"
+
+#: src/frontends/qt4/ui/QBoxUi.ui:232
+#, fuzzy
+msgid "Co&ntent:"
+msgstr "Содержит"
+
+#: src/frontends/qt4/ui/QBoxUi.ui:272
+#, fuzzy
+msgid "Vertical"
+msgstr "Интервал"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:47
+#, fuzzy
+msgid "&Available Citations:"
+msgstr "Сохранить параметры"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:70
+#, fuzzy
+msgid "&Selected citations:"
+msgstr "выделенная область"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:191
+#, fuzzy
+msgid "Formatting"
+msgstr "Форматы"
+
+#: src/frontends/qt4/ui/QDelimiterUi.ui:104
+#, fuzzy
+msgid "&Size:"
+msgstr "Размер"
+
+#: src/frontends/qt4/ui/QNoteUi.ui:93
+#, fuzzy
+msgid "Framed in box"
+msgstr "Имя"
+
+#: src/frontends/qt4/ui/QNoteUi.ui:103
+#, fuzzy
+msgid "Box with shaded background"
+msgstr "Фон непечатаемой заметки"
+
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:131
+msgid ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
+"white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
+"top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
+"indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
+"body></html>"
+msgstr ""
+
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:134
+#, fuzzy
+msgid "&To:"
+msgstr "Сверху:"
+
+#: src/frontends/qt4/ui/QPrefUi.ui:36
+msgid "Scrolling"
+msgstr ""
+
+#: src/frontends/qt4/ui/QViewSourceUi.ui:31
+msgid ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
+"white-space: pre-wrap; font-family:Sans Serif; font-size:13pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\"><p style=\"-qt-"
+"paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -12070,6 +12690,11 @@ msgstr "с заголовками"
 msgid "Change made at %1$s\n"
 msgstr ""
 
+#: src/frontends/qt3/QCitationDialog.C:51
+#, fuzzy
+msgid "LyX: Add Citation"
+msgstr "Ссылка на источник"
+
 #: src/frontends/qt3/QCommandBuffer.C:80 src/frontends/qt4/QCommandBuffer.C:88
 #, fuzzy
 msgid "Previous command"
@@ -12593,55 +13218,10 @@ msgstr "Настройки документа"
 msgid "LyX"
 msgstr "LyX: "
 
-#: src/frontends/qt3/floatplacement.C:36
-#, fuzzy
-msgid "Advanced Placement Options"
-msgstr "Продвинутые настройки"
-
-#: src/frontends/qt3/floatplacement.C:38
-msgid "Use &default placement"
-msgstr ""
-
-#: src/frontends/qt3/floatplacement.C:39
-#, fuzzy
-msgid "&Top of page"
-msgstr "Наверху страницы"
-
-#: src/frontends/qt3/floatplacement.C:40
-#, fuzzy
-msgid "&Bottom of page"
-msgstr "Внизу страницы"
-
-#: src/frontends/qt3/floatplacement.C:41
-#, fuzzy
-msgid "&Page of floats"
-msgstr ""
-"На странице\n"
-"плавающих объектов"
-
-#: src/frontends/qt3/floatplacement.C:42
-#, fuzzy
-msgid "&Here if possible"
-msgstr "Здесь, если возможно"
-
 #: src/frontends/qt3/floatplacement.C:43
 #, fuzzy
 msgid "Here definitely"
 msgstr "Именно здесь"
-
-#: src/frontends/qt3/floatplacement.C:44
-msgid "&Ignore LaTeX rules"
-msgstr ""
-
-#: src/frontends/qt3/floatplacement.C:84
-#, fuzzy
-msgid "&Span columns"
-msgstr "Дополнительные параметры"
-
-#: src/frontends/qt3/floatplacement.C:94
-#, fuzzy
-msgid "&Rotate sideways"
-msgstr "Rotatefoilhead"
 
 #: src/frontends/qt3/validators.C:112 src/frontends/qt4/validators.C:112
 #, fuzzy
@@ -14641,72 +15221,3 @@ msgid "protected"
 msgstr ""
 "Горячая\n"
 "клавиша"
-
-#, fuzzy
-#~ msgid "Word in Small Capitals"
-#~ msgstr "Капитель"
-
-#, fuzzy
-#~ msgid "Text Style...|S"
-#~ msgstr "Режим команд LaTeX"
-
-#, fuzzy
-#~ msgid "Character Style|y"
-#~ msgstr "Набор символов"
-
-#~ msgid " of "
-#~ msgstr " от "
-
-#, fuzzy
-#~ msgid "Parse"
-#~ msgstr "Вставить"
-
-#, fuzzy
-#~ msgid "Document insertion"
-#~ msgstr "Настройки документа"
-
-#, fuzzy
-#~ msgid "Build"
-#~ msgstr "Создать журнал сообщений"
-
-#, fuzzy
-#~ msgid "ChkTeX"
-#~ msgstr "Проверить TeX"
-
-#, fuzzy
-#~ msgid "LaTeX Preamble...|r"
-#~ msgstr "Преамбула LaTeX"
-
-#, fuzzy
-#~ msgid "LaTeX Preamble...|P"
-#~ msgstr "Преамбула LaTeX"
-
-#, fuzzy
-#~ msgid "text%"
-#~ msgstr "Текст"
-
-#, fuzzy
-#~ msgid "col%"
-#~ msgstr "Масштаб"
-
-#, fuzzy
-#~ msgid "page%"
-#~ msgstr "Мини-страница"
-
-#, fuzzy
-#~ msgid "line%"
-#~ msgstr "Mainline"
-
-#, fuzzy
-#~ msgid "theight%"
-#~ msgstr "Прямой"
-
-#, fuzzy
-#~ msgid "pheight%"
-#~ msgstr "Прямой"
-
-#, fuzzy
-#~ msgid ""
-#~ "The number of lines that are scrolled by mice with wheels or five button "
-#~ "mice."
-#~ msgstr "Коэффициент для мышей с колёсиком."
