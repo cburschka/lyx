@@ -1,14 +1,13 @@
-# translation of lyx-1.42_dev_it.po to italiano
+# translation of it.po to italiano
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax e Meris Da Silva per tutti i loro suggerimenti e consigli
 # Kostantino <ciclope10ATalice.it>, 2006.
-# Kostantino <ciclope10ATalice.it>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx-1.42_dev_it\n"
+"Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2006-08-17 17:23+0200\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
+"PO-Revision-Date: 2006-09-18 16:03+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -9739,7 +9738,7 @@ msgstr "Virgolette semplici|S"
 
 #: lib/ui/stdmenus.ui:271
 msgid "Phonetic Symbols|y"
-msgstr ""
+msgstr "Simboli fonetici|i"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Aligned Environment"
@@ -9806,22 +9805,18 @@ msgid "Settings...|S"
 msgstr "Impostazioni...|S"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Accetta modifica|#A"
+msgstr "Accetta modifica|A"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Rifiuta modifica|#R"
+msgstr "Rifiuta modifica|R"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Accetta tutte le modifiche|A"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Rigetta tutte le modifiche|R"
 
@@ -11563,14 +11558,13 @@ msgid "User files|#U#u"
 msgstr "File utente|#U#u"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Nessun altra operazione da rifare"
+msgstr "Non posso aggiornare le informazioni TeX"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Il correttore ortografico ha fallito.\n"
+msgstr "Lo script `%s' è fallito."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -15478,6 +15472,3 @@ msgstr "Riempimento verticale "
 #: src/vspace.C:506
 msgid "protected"
 msgstr "protetto"
-
-#~ msgid " of "
-#~ msgstr " di "
