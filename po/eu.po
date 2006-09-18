@@ -1,23 +1,23 @@
-# translation of lyx_1.4.po to Basque
+# translation of lyx_eu.po to Basque
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
 # Arantzazu Azpillaga Landa <azpilla@euskalnet.net>, 2003.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2003, 2004, 2005, 2006.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2006.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: jean_marck_eu\n"
+"Project-Id-Version: lyx_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2006-04-10 16:53+0000\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
+"PO-Revision-Date: 2006-09-18 10:16+0000\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
-"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
 
 #: src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -1664,9 +1664,8 @@ msgid "Index:|#I"
 msgstr "Indizea:|#I"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
-#, fuzzy
 msgid "Use Windows Paths for LaTeX|#s"
-msgstr "Erabili Cygwin bide-izenak|#s"
+msgstr "Erabili Windowseko bide-izenak LaTeX-entzako|#s"
 
 #: src/frontends/xforms/forms/form_print.fd:44
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -3796,23 +3795,19 @@ msgid "&Format:"
 msgstr "&Formatua:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "&Erabili Cygwin estiloko bideak"
+msgstr "&Erabili Windowseko estiloko bideak LaTeX fitxategietan"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Hautatu LyX-ek Cygwin estiloko bide-izenak idatzi behar dituen zehazteko "
-"(Windows estiloko bide-izenen ordez). Windows-eko MikTeX erabili ordez "
-"Cygwin-eko teTeX erabiltzean hau hautatzea aholkatzen da. Oharra: hala ere "
-"komando lerroko scripta idatzi beharko duzu zure bihurtzaileak erabili "
-"erabiltzeko."
+"Hautatu LyX-ek Windows estiloko bide-izenak idatzi behar dituen zehazteko "
+"(Posix estiloko bide-izenen ordez). Erabilgarria Windowseko jatorrizkoa den "
+"MikTeX erabiltzean, Cygwin-eko teTeX erabili ordez.."
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -5318,9 +5313,8 @@ msgid "Biography"
 msgstr "Bibliografia"
 
 #: lib/layouts/IEEEtran.layout:421
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Bibliografia"
+msgstr "BibliografiaEzArgazkia"
 
 #: lib/layouts/IEEEtran.layout:439 lib/layouts/aa.layout:58
 #: lib/layouts/aa.layout:217 lib/layouts/aa.layout:228
@@ -7248,27 +7242,23 @@ msgstr "Gako-hitzak:"
 
 #: lib/layouts/ijmpc.layout:95
 msgid "Classification Codes"
-msgstr ""
+msgstr "Klasifikazio-kodeak"
 
 #: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
-#, fuzzy
 msgid "Step"
-msgstr "Estatua"
+msgstr "Urratsa"
 
 #: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
-#, fuzzy
 msgid "Step \\arabic{step}."
-msgstr "\\arabic{note}. ohar."
+msgstr "\\arabic{step}. urratsa."
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:287
-#, fuzzy
 msgid "Prop"
-msgstr "Moztu"
+msgstr "Gehigarria"
 
 #: lib/layouts/ijmpc.layout:284
-#, fuzzy
 msgid "Prop \\arabic{prop}."
-msgstr "\\arabic{problem}. buruketa."
+msgstr "\\arabic{prop}. gehigarria."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:298
 #: lib/layouts/llncs.layout:395 lib/layouts/svjour.inc:458
@@ -7276,88 +7266,72 @@ msgid "Question"
 msgstr "Galdera"
 
 #: lib/layouts/ijmpc.layout:294
-#, fuzzy
 msgid "Question \\arabic{question}."
-msgstr "\\arabic{definition}. definizioa."
+msgstr "\\arabic{question}. galdera."
 
 #: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:320
-#, fuzzy
 msgid "Conjecture "
-msgstr "Aierua"
+msgstr "Aierua "
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:327
-#, fuzzy
 msgid "Appendices Section"
-msgstr "Eranskinak"
+msgstr "Eranskinen atalak"
 
 #: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:337
-#, fuzzy
 msgid "--- Appendices ---"
-msgstr "Eranskinak"
+msgstr "--- Eranskinak ---"
 
 #: lib/layouts/ijmpc.layout:349 lib/layouts/ijmpd.layout:360
-#, fuzzy
 msgid "Appendix \\Alph{appendix}."
-msgstr "\\Alph{chapter}. eranskina"
+msgstr "\\Alph{appendix}. eranskina"
 
 #: lib/layouts/ijmpd.layout:150
-#, fuzzy
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr "\\arabic{definition}. definizioa."
+msgstr "@Section@.\\arabic{definition}. definizioa."
 
 #: lib/layouts/ijmpd.layout:179
-#, fuzzy
 msgid "Example @Section@.\\arabic{example}."
-msgstr "@Section@.\\arabic{theorem}. adibidea."
+msgstr "@Section@.\\arabic{example}. adibidea."
 
 #: lib/layouts/ijmpd.layout:190
-#, fuzzy
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr "@Section@.\\arabic{theorem}. oharra."
+msgstr "@Section@.\\arabic{remark}. oharra."
 
 #: lib/layouts/ijmpd.layout:201
-#, fuzzy
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr "@Section@.\\arabic{theorem}. notazioa."
+msgstr "@Section@.\\arabic{notation}. notazioa."
 
 #: lib/layouts/ijmpd.layout:222 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr "@Section@.\\arabic{theorem}. teorema."
 
 #: lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr "\\arabic{corollary}. korolarioa"
+msgstr "@Section@.\\arabic{corollary}. korolarioa"
 
 #: lib/layouts/ijmpd.layout:269
-#, fuzzy
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr "@Section@.\\arabic{theorem}. lema."
+msgstr "@Section@.\\arabic{lemma}. lema."
 
 #: lib/layouts/ijmpd.layout:280
-#, fuzzy
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr "\\arabic{proposition}. proposizioa."
+msgstr "@Section@.\\arabic{proposition}. proposizioa."
 
 #: lib/layouts/ijmpd.layout:291
-#, fuzzy
 msgid "Prop @Section@.\\arabic{prop}."
-msgstr "@Section@.\\arabic{theorem}. buruketa."
+msgstr "@Section@.\\arabic{prop}. gehigarria."
 
 #: lib/layouts/ijmpd.layout:302
-#, fuzzy
 msgid "Question @Section@.\\arabic{question}."
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "@Section@.\\arabic{question}. galdera."
 
 #: lib/layouts/ijmpd.layout:313
-#, fuzzy
 msgid "Claim @Section@.\\arabic{claim}."
-msgstr "@Section@.\\arabic{theorem}. aldarrikapena."
+msgstr "@Section@.\\arabic{claim}. aldarrikapena."
 
 #: lib/layouts/ijmpd.layout:324
-#, fuzzy
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr "\\arabic{conjecture}. aierua."
+msgstr "@Section@.\\arabic{conjecture}. aierua."
 
 #: lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
@@ -8502,9 +8476,8 @@ msgid "Austrian"
 msgstr "Austriera"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Austrian (new spelling)"
-msgstr "Alemaniera (hizkera berria)"
+msgstr "Austriera (hizkera berria)"
 
 #: lib/languages:7
 msgid "Bahasa"
@@ -9554,7 +9527,7 @@ msgstr "Dokumentua|D"
 
 #: lib/ui/stdmenus.ui:26
 msgid "Tools|T"
-msgstr "Tresnak|T"
+msgstr "Tresnak|r"
 
 #: lib/ui/stdmenus.ui:36
 msgid "New from Template...|m"
@@ -9763,7 +9736,7 @@ msgstr "Komatxo bakuna|B"
 
 #: lib/ui/stdmenus.ui:271
 msgid "Phonetic Symbols|y"
-msgstr ""
+msgstr "Ikur fonetikoak|f"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Aligned Environment"
@@ -9823,29 +9796,25 @@ msgstr "Hasi eranskina hemen|e"
 
 #: lib/ui/stdmenus.ui:385
 msgid "Compressed|o"
-msgstr ""
+msgstr "Konprimituak|K"
 
 #: lib/ui/stdmenus.ui:386
 msgid "Settings...|S"
 msgstr "Ezarpenak...|E"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Onartu aldaketa|#O"
+msgstr "Onartu aldaketa|O"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Baztertu aldaketa|#B"
+msgstr "Baztertu aldaketa|B"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Onartu aldaketa guztiak|g"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Baztertu aldaketa guztiak|B"
 
@@ -10681,9 +10650,8 @@ msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s ustegabean amaitu da, hondatuta dagoela dirudi."
 
 #: src/buffer.C:716
-#, fuzzy
 msgid "Backup failure"
-msgstr "chktex-ek huts egin du"
+msgstr "Babeskopiak huts egin du"
 
 #: src/buffer.C:717
 #, c-format
@@ -10691,6 +10659,8 @@ msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
+"LyX-ek ezin izan du %1$s(r)en babeseko kopiarik egin.\n"
+"Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
 
 #: src/buffer.C:1134
 msgid "Running chktex..."
@@ -11118,9 +11088,9 @@ msgid "Cannot view file"
 msgstr "Ezin da fitxategia ikusi"
 
 #: src/format.C:262 src/format.C:333
-#, fuzzy, c-format
+#, c-format
 msgid "File does not exist: %1$s"
-msgstr "Fitxategia ez da existitzen."
+msgstr "Fitxategia ez da existitzen: %1$s"
 
 #: src/format.C:275
 #, c-format
@@ -11128,9 +11098,9 @@ msgid "No information for viewing %1$s"
 msgstr "Informaziorik ez %1$s ikusteko"
 
 #: src/format.C:285
-#, fuzzy, c-format
+#, c-format
 msgid "Auto-view file %1$s failed"
-msgstr "Huts egin du automatikoki gordetzean!"
+msgstr "Huts egin du %1$s automatikoki ikustean"
 
 #: src/format.C:332 src/format.C:345 src/format.C:355 src/format.C:379
 msgid "Cannot edit file"
@@ -11144,7 +11114,7 @@ msgstr "Informaziorik ez %1$s editatzeko"
 #: src/format.C:356
 #, c-format
 msgid "Auto-edit file %1$s failed"
-msgstr ""
+msgstr "Huts egin du %1$s automatikoki editatzean"
 
 #: src/frontends/LyXView.C:185
 msgid " (changed)"
@@ -11577,14 +11547,13 @@ msgid "User files|#U#u"
 msgstr "Erabiltzaile-fitxategiak|#E#e"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Gehiago berregiteko informaziorik ez"
+msgstr "Ezin izan da TeX-en informazioa eguneratu"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Zuzentzaielak huts egin du.\n"
+msgstr "'%s' script-ak huts egin du."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -11597,9 +11566,8 @@ msgid "Label"
 msgstr "Etiketa"
 
 #: src/frontends/gtk/GAboutlyx.C:200
-#, fuzzy
 msgid "C_redits"
-msgstr "Eskerrona"
+msgstr "K_redituak"
 
 #: src/frontends/gtk/GBibItem.C:33 src/frontends/qt2/QBibitem.C:31
 #: src/frontends/xforms/FormBibitem.C:38
@@ -13505,10 +13473,9 @@ msgid "Show full path or only file name."
 msgstr "Erakutsi bide-izen osoa edo edo fitxategi-izena soilik."
 
 #: src/frontends/xforms/FormTexinfo.C:60
-#, fuzzy
 msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr ""
-"Exekutatu  \"TexFiles.sh\" script-a fitxategi-zerrenda berriro eraikitzeko."
+"Exekutatu  \"TexFiles.py\" script-a fitxategi-zerrenda berriro eraikitzeko."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
@@ -13527,7 +13494,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormVSpace.C:198
 msgid "DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr "JauziLehenetsia|JauziTxikia|JauziNormala|JauziHandia|BBete.|Luzera"
+msgstr "Lehenetsia|Txikia|Normala|Handia|BBete.|Luzera"
 
 #: src/frontends/xforms/FormVSpace.C:212
 msgid "Additional vertical space."
@@ -14624,7 +14591,6 @@ msgstr ""
 "lehenetsi gisa."
 
 #: src/lyxrc.C:2075
-#, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -14632,8 +14598,8 @@ msgid ""
 msgstr ""
 "Erabili irteerako testu soileko fitxategietan taulak marrazten duen kanpoko "
 "programa definitzeko. Adibidez, \"groff -t -Tlatin1 $$FName\" non $$FName "
-"sarrerako fitxategia den. \"none\" zehazten bada, barne-errutina bat "
-"erabiliko da."
+"sarrerako fitxategia den. \"\" zehazten bada, barne-errutina bat erabiliko "
+"da."
 
 #: src/lyxrc.C:2079
 msgid ""
@@ -15319,19 +15285,18 @@ msgid "Unknown Inset"
 msgstr "Barneko ezezaguna"
 
 #: src/text.C:331 src/text.C:345
-#, fuzzy
 msgid "Change tracking error"
-msgstr "Aldaketen aztarna"
+msgstr "Errorea aldaketen aztarnan"
 
 #: src/text.C:332
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
+msgstr "Egileen indize ezezaguna txertatzeko: %1$d\n"
 
 #: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
+msgstr "Egileen indize ezezaguna ezabatzeko: %1$d\n"
 
 #: src/text.C:354
 msgid "Unknown token"
@@ -15457,9 +15422,3 @@ msgstr "Betegarri bertikala"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "babestua"
-
-#~ msgid " of "
-#~ msgstr " , "
-
-#~ msgid "Theorem:"
-#~ msgstr "Teorema:"

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2006-06-29 00:05+0100\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
+"PO-Revision-Date: 2006-09-17 16:27+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -195,7 +195,7 @@ msgstr "Doboz típus:|#D"
 
 #: src/frontends/xforms/forms/form_box.fd:134
 msgid "Has Inner Box"
-msgstr "Van belsõ doboz (?)"
+msgstr "Van belsõ doboz"
 
 #: src/frontends/xforms/forms/form_box.fd:152
 msgid "Vertical Alignment"
@@ -274,7 +274,7 @@ msgstr "Bezár|^[^M"
 
 #: src/frontends/xforms/forms/form_browser.fd:80
 msgid "Update|#Uu"
-msgstr "Frissít|#R"
+msgstr "Frissít|#Rr"
 
 #: src/frontends/xforms/forms/form_changes.fd:44
 msgid "Reject change|#R"
@@ -5554,7 +5554,7 @@ msgstr "Táblázat hivatkozás"
 
 #: lib/layouts/aastex.layout:136 lib/layouts/aastex.layout:432
 msgid "MathLetters"
-msgstr ""
+msgstr "MathLetters"
 
 #: lib/layouts/aastex.layout:139 lib/layouts/aastex.layout:470
 msgid "NoteToEditor"
@@ -5562,7 +5562,7 @@ msgstr "Megjegyzés a szerkesztõnek"
 
 #: lib/layouts/aastex.layout:142 lib/layouts/aastex.layout:564
 msgid "Facility"
-msgstr ""
+msgstr "Facility"
 
 #: lib/layouts/aastex.layout:145 lib/layouts/aastex.layout:590
 msgid "Objectname"
@@ -5618,11 +5618,11 @@ msgstr "Kép ---"
 
 #: lib/layouts/aastex.layout:576
 msgid "Facility:"
-msgstr ""
+msgstr "Facility:"
 
 #: lib/layouts/aastex.layout:602
 msgid "Obj:"
-msgstr ""
+msgstr "Obj:"
 
 #: lib/layouts/aastex.layout:629
 msgid "Dataset:"
@@ -5911,7 +5911,7 @@ msgstr "Folyóirat"
 
 #: lib/layouts/apa.layout:206
 msgid "CopNum"
-msgstr ""
+msgstr "CopNum"
 
 #: lib/layouts/apa.layout:234
 msgid "Acknowledgements:"
@@ -5932,11 +5932,11 @@ msgstr "Felirat középen"
 
 #: lib/layouts/apa.layout:266
 msgid "FitFigure"
-msgstr ""
+msgstr "FitFigure"
 
 #: lib/layouts/apa.layout:272
 msgid "FitBitmap"
-msgstr ""
+msgstr "FitBitmap"
 
 #: lib/layouts/apa.layout:308 lib/layouts/cv.layout:94
 #: lib/layouts/egs.layout:176 lib/layouts/linuxdoc.layout:190
@@ -5946,7 +5946,7 @@ msgstr "*"
 
 #: lib/layouts/apa.layout:330
 msgid "Seriate"
-msgstr ""
+msgstr "Seriate"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
 #: src/buffer_funcs.C:451
@@ -6083,11 +6083,11 @@ msgstr "Alvariáció(5):"
 
 #: lib/layouts/chess.layout:114
 msgid "HideMoves"
-msgstr ""
+msgstr "LépésRejtés"
 
 #: lib/layouts/chess.layout:119
 msgid "HideMoves:"
-msgstr ""
+msgstr "LépésRejtés:"
 
 #: lib/layouts/chess.layout:124
 msgid "ChessBoard"
@@ -6397,7 +6397,7 @@ msgstr "\\arabic{theorem}. tétel"
 
 #: lib/layouts/elsart.layout:308
 msgid "PROOF."
-msgstr ""
+msgstr "PROOF."
 
 #: lib/layouts/elsart.layout:322
 msgid "Lemma \\arabic{theorem}"
@@ -7500,7 +7500,7 @@ msgstr "köszönetnyilvánítások"
 
 #: lib/layouts/revtex4.layout:219
 msgid "PACS"
-msgstr ""
+msgstr "PACS"
 
 #: lib/layouts/revtex4.layout:226
 msgid "PACS number:"
@@ -9465,7 +9465,7 @@ msgstr "Ugrás 5. könyvjelzõre|5"
 
 #: lib/ui/classic.ui:405
 msgid "Tooltips|o"
-msgstr "Ötletek|t"
+msgstr "Ötletek|k"
 
 #: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:446
 msgid "Introduction|I"
@@ -9682,7 +9682,7 @@ msgstr "Sor törlése jobbra"
 
 #: lib/ui/stdmenus.ui:219
 msgid "Display Tooltips|i"
-msgstr "Ötletek|t"
+msgstr "Ötletek|k"
 
 #: lib/ui/stdmenus.ui:240
 msgid "Special Formatting|o"
@@ -9787,7 +9787,7 @@ msgstr "Tartalomjegyzék|T"
 
 #: lib/ui/stdmenus.ui:382
 msgid "LaTeX Preamble...|P"
-msgstr "LaTeX preambulum ...|P"
+msgstr "LaTeX preambulum ...|p"
 
 #: lib/ui/stdmenus.ui:383
 msgid "Start Appendix Here|A"
@@ -9795,35 +9795,31 @@ msgstr "Kezd itt a függeléket|f"
 
 #: lib/ui/stdmenus.ui:385
 msgid "Compressed|o"
-msgstr ""
+msgstr "Tömörített|m"
 
 #: lib/ui/stdmenus.ui:386
 msgid "Settings...|S"
 msgstr "Beállítások ...|B"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Elfogadás|#a"
+msgstr "Elfogadás|a"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Visszautasítás|#V"
+msgstr "Visszautasítás|V"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Minden változás elfogadása|f"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Minden változás elvetése|M"
 
 #: lib/ui/stdmenus.ui:430
 msgid "Thesaurus...|T"
-msgstr "Szinonímák ...|n"
+msgstr "Szinonímák ...|o"
 
 #: lib/ui/stdmenus.ui:433
 msgid "TeX Information|I"
@@ -10638,7 +10634,7 @@ msgstr ""
 
 #: src/buffer.C:656
 msgid "Conversion script failed"
-msgstr "Az átalakító parancs sikertelen (failed)"
+msgstr "Az átalakító parancs sikertelen"
 
 #: src/buffer.C:657
 #, c-format
@@ -10655,9 +10651,8 @@ msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s váratlanul véget ért, ami azt jelenti hogy valószinûleg hibás."
 
 #: src/buffer.C:716
-#, fuzzy
 msgid "Backup failure"
-msgstr "chktex hiba"
+msgstr "Biztonsági mentés hiba"
 
 #: src/buffer.C:717
 #, c-format
@@ -10665,6 +10660,8 @@ msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
+"A LyX nem tudott biztonsági másolatot készíteni a %1$s könyvtárba.\n"
+"Kérem ellenõrizze a könyvtár meglétét és írhatóságát."
 
 #: src/buffer.C:1134
 msgid "Running chktex..."
@@ -11548,14 +11545,13 @@ msgid "User files|#U#u"
 msgstr "Felhasználói fájlok|#F#f"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Minden visszavonás semlegesítve"
+msgstr "A TeX információ frissítése nem lehetséges"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "A helyesírás-ellenõrzõ nem mûködik.\n"
+msgstr "A `%s' parancsfájl sikertelen."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -11619,11 +11615,11 @@ msgstr "Szöveg stílus"
 
 #: src/frontends/gtk/GCitation.C:122
 msgid "CiteKeys"
-msgstr ""
+msgstr "CiteKeys"
 
 #: src/frontends/gtk/GCitation.C:128
 msgid "BibKeys"
-msgstr ""
+msgstr "BibKeys"
 
 #: src/frontends/gtk/GDocument.C:58 src/frontends/qt2/QDocument.C:68
 #: src/frontends/xforms/FormDocument.C:93
@@ -11763,7 +11759,7 @@ msgstr "Képletszerkesztõ"
 #: src/frontends/gtk/GMathsMatrix.C:38 src/frontends/qt2/QMath.C:41
 #: src/frontends/xforms/FormMathsMatrix.C:63
 msgid "Math Matrix"
-msgstr "Képlet mátrix"
+msgstr "Mátrix"
 
 #: src/frontends/gtk/GNote.C:35 src/frontends/qt2/QNote.C:34
 #: src/frontends/xforms/FormNote.C:32
@@ -12545,7 +12541,7 @@ msgid ""
 "with appropriate arguments from this dialog."
 msgstr ""
 "A belsõ doboz lehet parbox vagy minilap,\n"
-"e dialógusablak megfelelõ paramétereivel."
+"a dialógusablak megfelelõ paramétereivel."
 
 #: src/frontends/xforms/FormBox.C:269 src/frontends/xforms/FormBox.C:277
 msgid "Invalid length!"
@@ -13105,7 +13101,7 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1035
 #: src/frontends/xforms/FormPreferences.C:1346
 msgid "Add"
-msgstr ""
+msgstr "Új"
 
 #: src/frontends/xforms/FormPreferences.C:780
 msgid ""
@@ -13480,9 +13476,8 @@ msgid "Show full path or only file name."
 msgstr "A teljes elérési utat vagy csak a fájl nevét mutassa."
 
 #: src/frontends/xforms/FormTexinfo.C:60
-#, fuzzy
 msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
-msgstr "Futtatja a \"TexFiles.sh\" parancsfájl a fájllista újraépítéséhez."
+msgstr "Futtatja a \"TexFiles.py\" parancsfájlt a fájllisták újraépítéséhez."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."

@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2006-06-28 13:18+0200\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
+"PO-Revision-Date: 2006-09-17 18:10+0200\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -281,7 +281,7 @@ msgstr "Actualizar|#A"
 
 #: src/frontends/xforms/forms/form_changes.fd:44
 msgid "Reject change|#R"
-msgstr "Rechazar cambio|#c"
+msgstr "Descartar cambio|#c"
 
 #: src/frontends/xforms/forms/form_changes.fd:62
 msgid "Next change|#N"
@@ -9739,7 +9739,7 @@ msgstr "Comillas simples|s"
 
 #: lib/ui/stdmenus.ui:271
 msgid "Phonetic Symbols|y"
-msgstr ""
+msgstr "Símbolos fonéticos|f"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Aligned Environment"
@@ -9806,24 +9806,20 @@ msgid "Settings...|S"
 msgstr "Configuración...|o"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Aceptar cambio|#A"
+msgstr "Aceptar cambio|A"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Rechazar cambio|#c"
+msgstr "Descartar cambio|c"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
-msgstr "Aceptar todos los cambios|A"
+msgstr "Aceptar todos los cambios|t"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
-msgstr "Descartar todos los cambios|D"
+msgstr "Descartar todos los cambios|e"
 
 #: lib/ui/stdmenus.ui:430
 msgid "Thesaurus...|T"
@@ -10662,9 +10658,8 @@ msgstr ""
 "corrupto."
 
 #: src/buffer.C:716
-#, fuzzy
 msgid "Backup failure"
-msgstr "fallo de chktex"
+msgstr "fallo de copia de seguridad"
 
 #: src/buffer.C:717
 #, c-format
@@ -10672,6 +10667,8 @@ msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
+"LyX no pudo hacer una copia de seguridad en %1$s.\n"
+"Compruebe si existe el directorio y se puede escribir."
 
 #: src/buffer.C:1134
 msgid "Running chktex..."
@@ -11558,14 +11555,13 @@ msgid "User files|#U#u"
 msgstr "Archivos del usuario|#U#u"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "No hay más información de rehacer"
+msgstr "No se pudo actualizar la información de TeX"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "El corrector ortográfico ha fallado.\n"
+msgstr "El guión `%s' falló."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -13487,10 +13483,9 @@ msgid "Show full path or only file name."
 msgstr "Mostrar ruta completa o solo nombre de archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:60
-#, fuzzy
 msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
 msgstr ""
-"Ejecuta el guión \"TexFiles.sh\" para reconstruir las listas de archivos."
+"Ejecuta el guión \"TexFiles.py\" para reconstruir las listas de archivos."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
@@ -15443,6 +15438,3 @@ msgstr "Relleno vertical"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "protegido"
-
-#~ msgid " of "
-#~ msgstr " de "

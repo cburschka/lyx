@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.4.3svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
 "PO-Revision-Date: 2006-08-11 23:59+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -1121,7 +1121,6 @@ msgstr "Jméno souboru"
 msgid "Visible space|#s"
 msgstr "Zobrazit zdrojový text|Z"
 
-# TODO nova stranka; viz wiki
 #: src/frontends/xforms/forms/form_include.fd:188
 #, fuzzy
 msgid "Verbatim|#V"
@@ -3780,19 +3779,18 @@ msgstr "&Zpùsob zahrnutí:"
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:134
 #: src/insets/insetinclude.C:285
 msgid "Input"
-msgstr "Input"
+msgstr "Vstup (lze rekurzivnì)"
 
-# TODO lze i rekurzivne
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:140
 #: src/insets/insetinclude.C:288
 msgid "Include"
-msgstr "Include"
+msgstr "Zahrnout (nová stránka)"
 
 # TODO nova stranka; viz wiki
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:146
 #: lib/layouts/linuxdoc.layout:215 lib/layouts/manpage.layout:122
 msgid "Verbatim"
-msgstr "Verbatim"
+msgstr "Doslovnì"
 
 #: src/frontends/qt2/ui/QIncludeDialogBase.ui:183
 msgid "&Load"
@@ -8742,23 +8740,23 @@ msgstr "Dictum"
 
 #: lib/layouts/stdfloats.inc:10 src/frontends/xforms/FormTabular.C:135
 msgid "Table"
-msgstr "Tabulka|T"
+msgstr "Tabulka"
 
 #: lib/layouts/stdfloats.inc:15
 msgid "List of Tables"
-msgstr "Seznam tabulek|t"
+msgstr "Seznam tabulek"
 
 #: lib/layouts/stdfloats.inc:22
 msgid "Figure"
-msgstr "Obrázek|O"
+msgstr "Obrázek"
 
 #: lib/layouts/stdfloats.inc:27
 msgid "List of Figures"
-msgstr "Seznam obrázkù|S"
+msgstr "Seznam obrázkù"
 
 #: lib/layouts/stdfloats.inc:39
 msgid "List of Algorithms"
-msgstr "Seznam algoritmù|a"
+msgstr "Seznam algoritmù"
 
 #: lib/layouts/stdlayouts.inc:75
 msgid "Senseless!"
@@ -9675,7 +9673,7 @@ msgstr "Pøijmout v¹echny zmìny|i"
 
 #: lib/ui/classic.ui:326
 msgid "Reject All Changes|R"
-msgstr "Odmítnout v¹echny zmìny|O"
+msgstr "Odmítnout v¹echny zmìny|d"
 
 #: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:396
 msgid "Show Changes in Output|S"
@@ -10132,24 +10130,20 @@ msgid "Settings...|S"
 msgstr "Nastavení...|N"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Pøijmout v¹echny zmìny|i"
+msgstr "Pøijmout zmìnu|P"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Odmítnout v¹echny zmìny|O"
+msgstr "Odmítnout zmìnu|O"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Pøijmout v¹echny zmìny|i"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
-msgstr "Odmítnout v¹echny zmìny|O"
+msgstr "Odmítnout v¹echny zmìny|d"
 
 #: lib/ui/stdmenus.ui:430
 msgid "Thesaurus...|T"
@@ -11873,14 +11867,13 @@ msgid "User files|#U#u"
 msgstr "U¾ivatelské soubory|#U#u"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "®ádná dal¹í informace pro opakování akce (redo)"
+msgstr "Nelze aktualizovat informaci TeX-u"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Kontrola pravopisu selhala.\n"
+msgstr "Skript `%s' selhal."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -12464,7 +12457,6 @@ msgid "Script (small) style\t\\scriptstyle"
 msgstr "Malý (script)\t\\scriptstyle"
 
 #: src/frontends/qt2/QMathDialog.C:133
-#, fuzzy
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Men¹í (scriptscript)\t\\scriptscriptstyle"
 
@@ -14009,9 +14001,8 @@ msgid "Opened Caption Inset"
 msgstr "Popisek - otevøená vlo¾ka"
 
 #: src/insets/insetcaption.C:107 src/insets/insetcaption.C:110
-#, fuzzy
 msgid "Float"
-msgstr "Plovoucí objekty|P"
+msgstr "Plovoucí objekt"
 
 #: src/insets/insetcharstyle.C:118
 msgid "Opened CharStyle Inset"
