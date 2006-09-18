@@ -11,9 +11,9 @@ if(${LINK} MATCHES "shared" OR ASPELL_LINK)
 	set(ASPELL_SHARED_LIB 1)
 	set(ASPELL_LINK SHARED CACHE TYPE STRING)
 else(${LINK} MATCHES "shared" OR ASPELL_LINK)
-	MESSAGE(STATUS)
-	MESSAGE(STATUS "Use -DLINK=shared to build the libraries as shared")
-	MESSAGE(STATUS)
+	#MESSAGE(STATUS)
+	#MESSAGE(STATUS "Use -DLINK=shared to build the libraries as shared")
+	#MESSAGE(STATUS)
 	set(ASPELL_LINK STATIC)
 endif(${LINK} MATCHES "shared" OR ASPELL_LINK)
 
@@ -100,8 +100,10 @@ if(NOT CVS_HEAD)
 	  ../lib/filter-c.cpp
 	  ../lib/document_checker-c.cpp
 	  # msvc win32 support
-	  ../win32/dirent.c
 	)
+	if(MSVC)
+		set(libaspell_sources ${libaspell_sources} ../win32/dirent.c)
+	endif(MSVC)
 else(NOT CVS_HEAD)
 	set(libaspell_sources ${libaspell_sources}
 	  ../common/convert_filter.cpp
