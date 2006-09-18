@@ -1,5 +1,7 @@
 Aspell on Windows
 
+Use the rel_0_60-branch, HEAD is not stable.
+
 You need cmake and cygwin (cvs-HEAD:with Unix line endings!!).
 
 - check out the rel_0_60-branch version of Aspell
@@ -29,6 +31,7 @@ You need cmake and cygwin (cvs-HEAD:with Unix line endings!!).
   - in a MSYS shell
     cmake -G"MSYS Makefiles"  <Aspell source directory>\win32 
   
+- add "" to fix the msvc error in the generated file gen/static_filters.src.cpp
   
 The patched Aspell reads the location of the dictonary from 
 the registry. You can either install the dictionaries using 
