@@ -1,5 +1,11 @@
 project(aspell)
 
+#  default:      build rel_0_60-branch
+#  -DCVS_HEAD=1: build cvs HEAD version
+
+
+set(ASPELL_LIB_NAME libaspell) 
+set(ASPELL_EXE_NAME aspell) 
 
 if(${LINK} MATCHES "shared" OR ASPELL_LINK)
 	set(ASPELL_SHARED_LIB 1)
@@ -12,10 +18,14 @@ else(${LINK} MATCHES "shared" OR ASPELL_LINK)
 endif(${LINK} MATCHES "shared" OR ASPELL_LINK)
 
 
+
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+
 ########################################################################
 #
 # Aspell Library
 #
+
 
 set(libaspell_sources
   ../common/cache.cpp
@@ -34,9 +44,7 @@ set(libaspell_sources
   ../common/info.cpp
   ../common/can_have_error.cpp
   ../common/convert.cpp
-  ../common/convert_filter.cpp
   ../common/speller.cpp
-  ../common/checker.cpp
   ../common/filter.cpp
   ../common/objstack.cpp 
   ../common/strtonum.cpp
@@ -49,12 +57,10 @@ set(libaspell_sources
   ../modules/speller/default/phonetic.cpp
   ../modules/speller/default/writable.cpp
   ../modules/speller/default/speller_impl.cpp
-  ../modules/speller/default/checker_impl.cpp
   ../modules/speller/default/phonet.cpp
   ../modules/speller/default/typo_editdist.cpp
   ../modules/speller/default/editdist.cpp
   ../modules/speller/default/primes.cpp
-  ../modules/speller/default/lang_impl.cpp
   ../modules/speller/default/leditdist.cpp
   ../modules/speller/default/affix.cpp
   ../lib/word_list-c.cpp
@@ -72,16 +78,8 @@ set(libaspell_sources
   ../lib/string_list-c.cpp
   ../lib/find_speller.cpp
   ../lib/speller-c.cpp
-  ../lib/speller-cm.cpp
   ../lib/string_pair_enumeration-c.cpp
   ../lib/new_checker.cpp
-  ../lib/checker-c.cpp
-  ../lib/document_checker-c.cpp
-  ../lib/convert-c.cpp
-  ../lib/language-c.cpp
-  ../lib/language_types-c.cpp
-  ../lib/language-cm.cpp
-  ../lib/munch_list.cpp
   
   
 # This is for filters which are ALWAYS static.  
@@ -91,11 +89,44 @@ set(libaspell_sources
 #   is just a small wrapper.
 
   ../modules/filter/url.cpp
-  ../modules/filter/genconv.cpp
- 
 )
 
-file(GLOB commons_headers ../common/*.hpp)
+if(NOT CVS_HEAD)
+	set(libaspell_sources ${libaspell_sources}
+	  ../common/tokenizer.cpp
+	  ../common/document_checker.cpp
+	  ../modules/speller/default/language.cpp
+	  ../modules/tokenizer/basic.cpp
+	  ../lib/filter-c.cpp
+	  ../lib/document_checker-c.cpp
+	  # msvc win32 support
+	  ../win32/dirent.c
+	)
+else(NOT CVS_HEAD)
+	set(libaspell_sources ${libaspell_sources}
+	  ../common/convert_filter.cpp
+	  ../common/checker.cpp
+	  ../modules/speller/default/checker_impl.cpp
+	  ../modules/speller/default/lang_impl.cpp
+	  ../lib/speller-cm.cpp
+	  ../lib/checker-c.cpp
+	  ../lib/document_checker-c.cpp
+	  ../lib/convert-c.cpp
+	  ../lib/language-c.cpp
+	  ../lib/language_types-c.cpp
+	  ../lib/language-cm.cpp
+	  ../lib/munch_list.cpp
+	  ../modules/filter/genconv.cpp
+	  # msvc win32 support
+	  ../win32/libstub.cpp
+	)
+	set(CVS_HEAD 1 CACHE TYPE STRING)
+endif(NOT CVS_HEAD)
+
+
+file(GLOB commons_headers ../common/*.hpp )
+
+set(commons_headers ${commons_headers} ../interfaces/cc/aspell.h)
 
 if(COMPILE_IN_FILTERS)
 
@@ -143,16 +174,18 @@ if(MSVC)
 endif(MSVC)
 
 if(WIN32)
-	### msvc win32 support
-	set(libaspell_sources ${libaspell_sources} ../win32/libstub.cpp)
 	add_definitions(-DWIN32PORT)
 endif(WIN32)
 
-add_library(aspell ${ASPELL_LINK} ${libaspell_sources} ${commons_headers})
+if(ASPELL_SHARED_LIB)
+	add_definitions(-DASPELL_MAKE_LIB -DASPELL_USE_SHARED)
+endif(ASPELL_SHARED_LIB)
+
+add_library(${ASPELL_LIB_NAME} ${ASPELL_LINK} ${libaspell_sources} ${commons_headers})
 
 
 if(WIN32)
-	target_link_libraries(aspell ole32)
+	target_link_libraries(${ASPELL_LIB_NAME} ole32)
 endif(WIN32)
 
 
@@ -161,17 +194,7 @@ endif(WIN32)
 # Aspell Program
 #
 
-set(aspell_SOURCES 
-  ../prog/aspell.cpp 
-  ../prog/check_funs.cpp 
-  ../prog/checker_string.cpp
-  )
-  
-add_executable(aspellexe ${aspell_SOURCES})
-
-if(WIN32)
-	target_link_libraries(aspellexe aspell ole32)
-endif(WIN32)
+add_subdirectory(prog)
 
 
 ########################################################################
@@ -181,14 +204,16 @@ endif(WIN32)
 
 set(CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}/../gnuwin32)
 
-install(TARGETS aspellexe aspell
+install(TARGETS ${ASPELL_LIB_NAME} 
 	RUNTIME DESTINATION bin
 	LIBRARY DESTINATION lib
 	ARCHIVE DESTINATION lib)
 	
 install(FILES ../interfaces/cc/aspell.h 
 	DESTINATION include)
-	
 
-
+if(ASPELL_SHARED_LIB)
+	install(FILES ../win32/aspellexport.h
+	DESTINATION include)
+endif(ASPELL_SHARED_LIB)
 

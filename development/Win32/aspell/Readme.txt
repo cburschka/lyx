@@ -1,9 +1,11 @@
 Aspell on Windows
 
-You need cmake and cygwin (with Unix line endings!!).
+You need cmake and cygwin (cvs-HEAD:with Unix line endings!!).
 
-- check out the latest CVS version: 
+- check out the rel_0_60-branch version of Aspell
   http://savannah.gnu.org/cvs/?group=aspell
+  cvs -z9 -d:pserver:anonymous@cvs.savannah.gnu.org:\
+  /sources/aspell co -r rel_0_60-branch aspell
 
 - first build with cygwin to autogenerate 
   all required  files:
