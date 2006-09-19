@@ -122,7 +122,6 @@ boost::signals::connection resizecon;
 boost::signals::connection kpresscon;
 boost::signals::connection selectioncon;
 boost::signals::connection lostcon;
-boost::signals::connection focuscon;
 
 
 /// Return an inset of this class if it exists at the current cursor position
@@ -165,8 +164,6 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 		.connect(boost::bind(&BufferView::Pimpl::selectionRequested, this));
 	lostcon = workarea().selectionLost
 		.connect(boost::bind(&BufferView::Pimpl::selectionLost, this));
-	focuscon = workarea().focusChange
-		.connect(boost::bind(&BufferView::Pimpl::focusChange, this));
 
 	timecon = cursor_timeout.timeout
 		.connect(boost::bind(&BufferView::Pimpl::cursorToggle, this));
@@ -614,12 +611,6 @@ void BufferView::Pimpl::selectionLost()
 		cursor_.clearSelection();
 		xsel_cache_.set = false;
 	}
-}
-
-
-void BufferView::Pimpl::focusChange()
-{
-	owner_->updateToolbars();
 }
 
 

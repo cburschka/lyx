@@ -17,8 +17,6 @@
 #include "QContentPane.h"
 #include "QLyXKeySym.h"
 
-#include "debug.h"
-
 #include <qapplication.h>
 #include <qpainter.h>
 
@@ -350,20 +348,6 @@ void QContentPane::paintEvent(QPaintEvent * e)
 	QPainter q(this);
 	q.drawPixmap(QPoint(r.x(), r.y()),
 		*pixmap_.get(), r);
-}
-
-
-void QContentPane::focusInEvent(QFocusEvent * ev)
-{
-	QWidget::focusInEvent(ev);
-	wa_->focusChange();
-}
-
-
-void QContentPane::focusOutEvent(QFocusEvent * ev)
-{
-	QWidget::focusOutEvent(ev);
-	wa_->focusChange();
 }
 
 

@@ -82,8 +82,6 @@ public:
 	///
 	void selectionLost();
 	///
-	void focusChange();
-	///
 	void cursorToggle();
 	///
 	bool available() const;

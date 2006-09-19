@@ -1,3 +1,7 @@
+2006-09-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (Pimpl, focusChange): revert patch to bug 2423.
+
 2006-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* CutAndPaste.C (pasteSelectionHelper): pass Cursor as argument,
