@@ -1,56 +1,6 @@
-diff -r -u dtl_orig/dt2dv.c dtl/dt2dv.c
---- dtl_orig/dt2dv.c	1995-03-08 01:00:00.000000000 +0000
-+++ dtl/dt2dv.c	2006-03-02 19:05:02.000000000 +0000
-@@ -1,9 +1,11 @@
- /* dt2dv - convert human-readable "DTL" file to DVI format
-          - this is intended to invert dv2dt version 0.6.0
--   - version 0.6.1 - 14:38 GMT +11  Thu 9 March 1995
-+   - version 0.6.2 - 27 July 2005
-    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
-    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
-              Nelson H. F. Beebe    beebe@math.utah.edu
-+	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle
-+	     .dvi files containing strings longer than 1024 chars.
-    - Reference:  "The DVI Driver Standard, Level 0",
-                  by  The TUG DVI Driver Standards Committee.
-                  Appendix A, "Device-Independent File Format".
-@@ -2223,7 +2225,7 @@
- /* transfer (length and) quoted string from dtl to dvi file, */
- /* return number of bytes written to dvi file. */
- {
--  U4 k, k2;
-+  U4 k, k2, lstr_maxsize;
-   Lstring lstr;
- 
-   if (debug)
-@@ -2232,12 +2234,13 @@
-     fprintf (stderr, "(xfer_len_string) : entering xfer_len_string.\n");
-   }
- 
--  init_Lstring (&lstr, LSIZE);
--
-   /* k[n] : length of special string */
- 
-   k = get_unsigned (dtl);
- 
-+  lstr_maxsize = (k > LSIZE) ? k : LSIZE;
-+  init_Lstring (&lstr, lstr_maxsize);
-+
-   if (debug)
-   {
-     PRINT_PROGNAME;
-@@ -2567,7 +2570,7 @@
- #ifdef HEX_CHECKSUM
-   /* c[4] : (hexadecimal) checksum : I (gt) would prefer this */
-   xfer_hex (4, dtl, dvi);
--#else /NOT HEX_CHECKSUM */
-+#else /*NOT HEX_CHECKSUM */
-   /* c[4] : checksum (octal, for comparison with tftopl's .pl file) */
-   xfer_oct (4, dtl, dvi);
- #endif
-diff -r -u dtl_orig/Makefile dtl/Makefile
---- dtl_orig/Makefile	1995-03-08 01:00:00.000000000 +0000
-+++ dtl/Makefile	2006-07-07 14:56:12.000000000 +0100
+diff -riwbBu -Xex dtl/Makefile dtl-modified/Makefile
+--- dtl/Makefile	Tue Sep 19 23:59:17 2006
++++ dtl-modified/Makefile	Wed Jul  5 17:54:21 2006
 @@ -3,6 +3,14 @@
  # Thu 9 March 1995
  # Geoffrey Tobin
@@ -91,16 +41,13 @@ diff -r -u dtl_orig/Makefile dtl/Makefile
  MANDIR		= /usr/local/man/man$(MANEXT)
  MANEXT		= 1
  OBJS            = dt2dv.o dv2dt.o
-@@ -40,7 +60,7 @@
- 	$(DITROFF) -man -Tascii $< | $(COL) >$@
- 
- .man.ps:
--	$(MAN2PS) < $< > $@
-+	$(MAN2PS) $< > $@
+@@ -44,23 +64,24 @@
  
  #=======================================================================
  
-@@ -48,19 +68,19 @@
+-all:  dtl check doc
++#all:  dtl check doc
++all:  dtl check
  
  doc:  dt2dv.hlp dv2dt.hlp dt2dv.ps dv2dt.ps
  
@@ -126,7 +73,7 @@ diff -r -u dtl_orig/Makefile dtl/Makefile
  	-@diff hello.dtl hello2.dtl > hello.dif
  	@if [ -s hello.dif ] ; \
  	then echo ERROR: differences in hello.dif ; \
-@@ -69,11 +89,11 @@
+@@ -69,11 +90,11 @@
  
  hello.dtl:  hello.tex
  	tex hello
@@ -142,7 +89,7 @@ diff -r -u dtl_orig/Makefile dtl/Makefile
  	-@diff example.dtl example2.dtl > example.dif
  	@if [ -s example.dif ] ; \
  	then echo ERROR: differences in example.dif ; \
-@@ -82,11 +102,11 @@
+@@ -82,11 +103,11 @@
  
  example.dtl:  example.tex
  	tex example
@@ -158,7 +105,7 @@ diff -r -u dtl_orig/Makefile dtl/Makefile
  	-@diff tripvdu.dtl tripvdu2.dtl > tripvdu.dif
  	@if [ -s tripvdu.dif ] ; \
  	then echo ERROR: differences in tripvdu.dif ; \
-@@ -95,15 +115,15 @@
+@@ -95,15 +116,15 @@
  
  tripvdu.dtl:  tripvdu.tex
  	tex tripvdu
@@ -180,9 +127,71 @@ diff -r -u dtl_orig/Makefile dtl/Makefile
  	@if [ -s edited.dif ] ; \
  	then echo ERROR : differences in edited.dif ; \
  	else $(RM) edited.dif ; \
-diff -r -u dtl_orig/man2ps dtl/man2ps
---- dtl_orig/man2ps	1993-05-10 02:00:00.000000000 +0100
-+++ dtl/man2ps	2006-07-07 15:03:12.000000000 +0100
+diff -riwbBu -Xex dtl/dt2dv.c dtl-modified/dt2dv.c
+--- dtl/dt2dv.c	Wed Mar  8 00:00:00 1995
++++ dtl-modified/dt2dv.c	Sun Sep 17 21:51:04 2006
+@@ -1,9 +1,11 @@
+ /* dt2dv - convert human-readable "DTL" file to DVI format
+          - this is intended to invert dv2dt version 0.6.0
+-   - version 0.6.1 - 14:38 GMT +11  Thu 9 March 1995
++   - version 0.6.2 - 27 July 2005
+    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
+    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
+              Nelson H. F. Beebe    beebe@math.utah.edu
++	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle
++	     .dvi files containing strings longer than 1024 chars.
+    - Reference:  "The DVI Driver Standard, Level 0",
+                  by  The TUG DVI Driver Standards Committee.
+                  Appendix A, "Device-Independent File Format".
+@@ -1089,7 +1091,11 @@
+       dinfo();
+       status = 0;
+     }
++#if defined(__CYGWIN__) || defined(__MINGW32__)
++    else if ( ! isprint (c & 0x7f) && ! isspace (c))
++#else
+     else if ( ! isprint (c) && ! isspace (c))
++#endif
+     {
+       PRINT_PROGNAME;
+       fprintf (stderr,
+@@ -2223,7 +2229,7 @@
+ /* transfer (length and) quoted string from dtl to dvi file, */
+ /* return number of bytes written to dvi file. */
+ {
+-  U4 k, k2;
++  U4 k, k2, lstr_maxsize;
+   Lstring lstr;
+ 
+   if (debug)
+@@ -2232,12 +2238,13 @@
+     fprintf (stderr, "(xfer_len_string) : entering xfer_len_string.\n");
+   }
+ 
+-  init_Lstring (&lstr, LSIZE);
+-
+   /* k[n] : length of special string */
+ 
+   k = get_unsigned (dtl);
+ 
++  lstr_maxsize = (k > LSIZE) ? k : LSIZE;
++  init_Lstring (&lstr, lstr_maxsize);
++
+   if (debug)
+   {
+     PRINT_PROGNAME;
+@@ -2567,7 +2574,7 @@
+ #ifdef HEX_CHECKSUM
+   /* c[4] : (hexadecimal) checksum : I (gt) would prefer this */
+   xfer_hex (4, dtl, dvi);
+-#else /NOT HEX_CHECKSUM */
++#else /*NOT HEX_CHECKSUM */
+   /* c[4] : checksum (octal, for comparison with tftopl's .pl file) */
+   xfer_oct (4, dtl, dvi);
+ #endif
+diff -riwbBu -Xex dtl/man2ps dtl-modified/man2ps
+--- dtl/man2ps	Tue Sep 19 23:59:23 2006
++++ dtl-modified/man2ps	Wed Sep 20 00:03:06 2006
 @@ -20,16 +20,16 @@
  esac
  
@@ -193,14 +202,14 @@ diff -r -u dtl_orig/man2ps dtl/man2ps
  	TROFF="groff $FORMAT"
  	TROFF2PS="cat"
 -elif [ -x /usr/lib/lp/postscript/dpost ]
-+elif [ which dpost > /dev/null ]
+++elif [ which dpost > /dev/null ]
  then	# Solaris 2.1
  	TROFF="troff $FORMAT"
  	TROFF2PS="/usr/lib/lp/postscript/dpost"
  else
 -	echo "Cannot find troff-to-PostScript filter"
-+	echo "Cannot find troff-to-PostScript filter" >&2
+++	echo "Cannot find troff-to-PostScript filter" >&2
  	exit 1
  fi
  
-Only in dtl: .svn
+
