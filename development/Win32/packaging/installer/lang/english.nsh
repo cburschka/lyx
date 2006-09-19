@@ -6,13 +6,13 @@ Author: Joost Verburg
 
 */
 
-!insertmacro LanguageString TEXT_NO_PRIVILEDGES "You do not have Administrator or Power User priviledges.$\r$\n$\r$\nAlthough you can install ${APP_NAME} and the typesetting system, the utilities for image conversion and previewing cannot be installed without these priviledges."
+!insertmacro LanguageString TEXT_NO_PRIVILEDGES "You do not have Administrator or Power User privileges.$\r$\n$\r$\nAlthough you can install ${APP_NAME} and the typesetting system, the utilities for image conversion and previewing cannot be installed without these priviledges."
 
 !insertmacro LanguageString TEXT_WELCOME_DOWNLOAD "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.\r\n\r\nThis installer will setup a complete environment to use ${APP_NAME} and can download missing components automatically.\r\n\r\n$(^ClickNext)"
 !insertmacro LanguageString TEXT_WELCOME_INSTALL "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.\r\n\r\nThis installer will setup a complete environment to use ${APP_NAME} and can install missing components automatically.\r\n\r\n$(^ClickNext)"
 
 !insertmacro LanguageString TEXT_USER_TITLE "Choose Users"
-!insertmacro LanguageString TEXT_USER_SUBTITLE "Choose for which users want to install $(^NameDA)."
+!insertmacro LanguageString TEXT_USER_SUBTITLE "Choose for which users you want to install $(^NameDA)."
 !insertmacro LanguageString TEXT_USER_INFO "Select whether want to install $(^NameDA) for yourself only or for all users on this sytem. $(^ClickNext)"
 !insertmacro LanguageString TEXT_USER_CURRENT "Install just for me"
 !insertmacro LanguageString TEXT_USER_ALL "Install for anyone using this computer"
@@ -22,7 +22,7 @@ Author: Joost Verburg
 !insertmacro LanguageString TEXT_REINSTALL_INFO "$(^NameDA) is already installed. This installer will allow you to change the interface language, locations of external applications or download additional dictionaries. If you also want to reinstall the program files, check the box below. $(^ClickNext)"
 !insertmacro LanguageString TEXT_REINSTALL_ENABLE "Reinstall $(^NameDA) program files"
 
-!insertmacro LanguageString TEXT_EXTERNAL_NOPRIVILEDGES "(Administrator or Power User priviledges required)"
+!insertmacro LanguageString TEXT_EXTERNAL_NOPRIVILEDGES "(Administrator or Power User privileges required)"
 
 !insertmacro LanguageString TEXT_EXTERNAL_LATEX_TITLE "LaTeX Typesetting System"
 !insertmacro LanguageString TEXT_EXTERNAL_LATEX_SUBTITLE "A typesetting system is required to be able to create documents for printing or publishing."
@@ -66,7 +66,7 @@ Author: Joost Verburg
 
 !insertmacro LanguageString TEXT_DICT_TITLE "Spell Checker Dictionaries"
 !insertmacro LanguageString TEXT_DICT_SUBTITLE "Choose the languages you want the spell checker to support."
-!insertmacro LanguageString TEXT_DICT_TOP "In order to spell check documents in a certain language, a dictionary with valid words needs to be downloaded. Select the dictionaries to download. $_CLICK"
+!insertmacro LanguageString TEXT_DICT_TOP "In order to spell check documents in a certain language, a dictionary with valid words has to be downloaded. Select the dictionaries to download. $_CLICK"
 !insertmacro LanguageString TEXT_DICT_LIST "Select dictionaries to download:"
 
 !insertmacro LanguageString TEXT_LANGUAGE_TITLE "Choose Language"
@@ -80,7 +80,7 @@ Author: Joost Verburg
 !insertmacro LanguageString TEXT_DOWNLOAD_FAILED_DICT "Failed to download the ${DICT_NAME} spell checker dictionary. Would you like to try again?"
 
 !insertmacro LanguageString TEXT_NOTINSTALLED_LATEX "The MiKTeX setup wizard was not completed. Do you want to run MiKTeX setup again?"
-!insertmacro LanguageString TEXT_NOTINSTALLED_IMAGEMAGICK "TheImageMagick was not completed. Do you want to run ImageMagick setup again?"
+!insertmacro LanguageString TEXT_NOTINSTALLED_IMAGEMAGICK "The ImageMagick was not completed. Do you want to run ImageMagick setup again?"
 !insertmacro LanguageString TEXT_NOTINSTALLED_GHOSTSCRIPT "The Ghostscript setup wizard was not completed. Do you want to run Ghostscript setup again?"
 !insertmacro LanguageString TEXT_NOTINSTALLED_VIEWER "You did not associate GSView with the PDF/Postscript file types. Do you want to run GSView setup again?"
 !insertmacro LanguageString TEXT_NOTINSTALLED_DICT "The setup wizard of the ${DICT_NAME} spell checker dictionary was not completed. Do you want to run the setup again?"

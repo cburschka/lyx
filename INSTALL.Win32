@@ -1,7 +1,46 @@
-COMPILING LyX for Win32
-=======================
+Compiling LyX 1.4 for Win32
+===========================
 
-LyX 1.4 can be build with MinGW/MSYS. To compile LyX, follow these steps:
+LyX 1.4 can be compiled with Microsoft Visual C++ 2005 (recommended)
+or MinGW/MSYS.
+
+Compiling using MSVC 2005
+=========================
+
+1	Install MSVC 2005
+	
+	If you don't have MSVC 2005 installed, download and install the free
+	Express edition from http://msdn.microsoft.com/vstudio/express/visualc/
+	
+	You also need to install the Platform SDK, see
+	http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
+	
+2	Install Python
+	
+	Get the latest Python 2.5 version at
+	http://www.python.org/download/releases/2.5/
+	
+	Install in C:\Python25 and add this directory to the PATH environment
+	variable (Start > Settings > Control Panel > System > Advanced >
+	Environment Variables).
+	
+3	Install SCons
+	
+	Download and install SCons 0.96.92 from http://www.scons.org/download.php
+	
+4	Install the dependencies
+	
+	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc.zip
+	and extract in the root directory of your LyX files (so you will get
+	a directory called lyx-windows-deps-msvc next to the other directories
+	like src, development etc.).
+	
+5	Compile
+	
+	Run development\Win32\packaging\build_msvc.bat
+
+Compiling using MinGW/MSYS
+==========================
 
 1	Install a MSYS/MinGW environment
 	
@@ -13,12 +52,21 @@ LyX 1.4 can be build with MinGW/MSYS. To compile LyX, follow these steps:
 	Install MSYS in c:\msys and MinGW in c:\msys\mingw. When installing MinGW,
 	select the Candidate package and a Full installation.
 	
-2	Install the dependencies
+2	Install Python
+	
+	Get the latest Python 2.5 version at
+	http://www.python.org/download/releases/2.5/
+	
+	Install in C:\Python25 and add this directory to the PATH environment
+	variable (Start > Settings > Control Panel > System > Advanced >
+	Environment Variables).
+	
+3	Install the dependencies
 	
 	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-mingw.zip
 	and extract in c:\msys
 	
-3	Compile
+4	Compile
 	
 	First, copy the LyX source code to c:\msys\home\lyx-14
 	
@@ -40,17 +88,16 @@ LyX 1.4 can be build with MinGW/MSYS. To compile LyX, follow these steps:
 	./autogen.sh
 	
 	Then follow step 3 again.
-	
-4	Create the installer
+
+Creating the Installer
+======================
 	
 	To create an installer with LyX and all related components, download
-	and install the latest NSIS.
+	and install the latest NSIS from http://nsis.sourceforge.net
 	
-	Also download the latest Python from www.python.org and install in
-	C:\Python24
+	Open development\Win32\packaging\installer\setttings.user.nsh and modify
+	the settings depending on your build environment.
 	
-	Finally, go to C:\msys\home\lyx-14\development\Win32\packaging\installer
+	Finally, go to development\Win32\packaging\installer
 	(in a normal Windows Explorer), right-click on lyx.nsi and click
 	"Compile NSIS Script".
-
-	

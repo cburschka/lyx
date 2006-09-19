@@ -67,14 +67,24 @@ Function un.SetShellContext
   ReadRegStr $R0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}" "UninstallString"
   
   ${if} $R0 != ""
-    ${if} $AdminOrPowerUser == ${FALSE}
-      MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} has been installed for all users. Therefore you need Administrator or Power User Priviledges to uninstall."
-      Quit
-    ${else}
-      SetShellVarContext all
+  
+    ReadRegStr $R0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}" "UninstallString"
+
+    ${if} $R0 != ""
+    
+      ${if} $AdminOrPowerUser == ${FALSE}
+        MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} has been installed for all users. Therefore you need Administrator or Power User Priviledges to uninstall."
+        Quit
+      ${else}
+        SetShellVarContext all
+      ${endif}
+      
     ${endif}
+    
   ${else}
+  
     SetShellVarContext current
+  
   ${endif}
   
   Pop $R0

@@ -9,56 +9,65 @@ Settings for LyX installer
 
 !define FILES_LICENSE "license.rtf"
 
-!define FILES_LYX "..\..\..\..\build\installprefix"
 !define FILES_ICONS "..\icons"
-!define FILES_QT "..\..\..\..\..\..\local\qt-3"
-!define FILES_DEPS "..\..\..\..\..\..\local"
-!define FILES_MSYS "..\..\..\..\..\.."
-!define FILES_MINGW "..\..\..\..\..\..\mingw"
-!define FILES_ASPELL "C:\Aspell\bin"
-!define FILES_ASPELLDATA "..\..\..\..\..\..\local\aspell"
-!define FILES_DVIPOST "..\..\..\..\..\..\local\dvipost"
-!define FILES_PYTHON "C:\Python24"
-!define FILES_WINDOWS "C:\Windows\System32" ;For Python DLL
 !define FILES_FONTS "..\bakoma"
+
+!ifdef BUILD_MSVC
+  !define FILES_MSVC "${FILES_WINDOWS}\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.42_x-ww_0de06acd"
+  !define FILES_NETPBM "${FILES_DEPS}\netpbm"
+  !define FILES_DTL "${FILES_DEPS}\dtl"
+  !define FILES_AIKSAURUS "${FILES_DEPS}\aiksaurus\"
+  !define FILES_DVIPOST "${FILES_DEPS}\dvipost"
+  !define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
+!else
+  !define FILES_NETPBM "${FILES_DEPS}\bin"
+  !define FILES_DTL "${FILES_DEPS}\bin"
+  !define FILES_AIKSAURUS "${FILES_DEPS}\share\Aiksaurus\"
+  !define FILES_DVIPOST "${FILES_DEPS}\bin"
+  !define FILES_DVIPOST_PKG "${FILES_DEPS}\dvipost"
+!endif
+
+!define FILES_QT "${FILES_DEPS}\qt-3"
+!define FILES_DVIPOSTDATA "${FILES_DEPS}\dvipost"
+!define FILES_ASPELLDATA "${FILES_DEPS}\aspell"
 
 ;--------------------------------
 ;Locations of components to download
 
-!define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.4.2207.exe"
-!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.2.8-0-Q16-windows-dll.exe"
-!define DOWNLOAD_GHOSTSCRIPT "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/AFPL/gs853/gs853w32.exe"
+!define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.5.2449.exe"
+!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.2.9-6-Q16-windows-dll.exe"
+!define DOWNLOAD_GHOSTSCRIPT "http://superb-west.dl.sourceforge.net/sourceforge/ghostscript/gs854w32.exe"
 !define DOWNLOAD_VIEWER "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/ghostgum/gsv48w32.exe"
 
 ;--------------------------------
 ;Download size (in KB)
 
-!define SIZE_DOWNLOAD_LATEX 32470
-!define SIZE_DOWNLOAD_IMAGEMAGICK 6582
-!define SIZE_DOWNLOAD_GHOSTSCRIPT 9325
+!define SIZE_DOWNLOAD_LATEX 43127
+!define SIZE_DOWNLOAD_IMAGEMAGICK 6790
+!define SIZE_DOWNLOAD_GHOSTSCRIPT 12669
 !define SIZE_DOWNLOAD_VIEWER 1459
 
 ;--------------------------------
 ;Approximations of space required for components (in KB)
 
-!define SIZE_LATEX 133120
-!define SIZE_IMAGEMAGICK 20480
-!define SIZE_GHOSTSCRIPT 25600 
-!define SIZE_VIEWER 4096
+!define SIZE_LATEX 120000
+!define SIZE_IMAGEMAGICK 17000
+!define SIZE_GHOSTSCRIPT 26000
+!define SIZE_VIEWER 4000
 
 ;--------------------------------
 ;Locations of setup files for components (for bundled setup)
 
-!define INSTALL_LATEX "basic-miktex-2.4.2207.exe"
-!define INSTALL_IMAGEMAGICK "ImageMagick-6.2.8-0-Q16-windows-dll.exe"
-!define INSTALL_GHOSTSCRIPT "gs853w32.exe"
+!define INSTALL_LATEX "basic-miktex-2.5.2449.exe"
+!define INSTALL_IMAGEMAGICK "ImageMagick-6.2.9-6-Q16-windows-dll.exe"
+!define INSTALL_GHOSTSCRIPT "gs854w32.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 
 ;--------------------------------
 ;Names and version
 
 !define APP_NAME "LyX"
-!define /date APP_VERSION "1.4.2svn %Y%m%d"
+!define /date APP_VERSION "1.4svn %Y%m%d"
 !define APP_SERIES_NAME "1.4"
 !define APP_SERIES_KEY "14"
 !define APP_DIR_USERDATA "LyX1.4.x"
@@ -78,9 +87,9 @@ Settings for LyX installer
 ;Setup settings
 
 !ifndef SETUPTYPE_BUNDLE
-  !define /date SETUP_EXE "lyx-142svn-%Y%m%d.exe"
+  !define /date SETUP_EXE "lyx-14svn-%Y%m%d.exe"
 !else
-  !define /date SETUP_EXE "lyx-142svn-%Y%m%d.exe-bundle.exe"
+  !define /date SETUP_EXE "lyx-14svn-%Y%m%d.exe-bundle.exe"
 !endif
 
 !define SETUP_DEFAULT_DIRECTORY "$PROGRAMFILES\${APP_NAME}${APP_SERIES_KEY}"
@@ -93,7 +102,7 @@ Settings for LyX installer
 ;--------------------------------
 ;Names of binaries to identify compontents
 
-!define BIN_LATEX "latex.exe"
+!define BIN_LATEX "tex.exe"
 !define BIN_IMAGEMAGICK "convert.exe"
 !define BIN_GHOSTSCRIPT "gswin32c.exe"
 

@@ -170,9 +170,14 @@ FunctionEnd
 Function InitInterface
 
   Call CheckPriviledges
+
+  Banner::show /NOUNLOAD "Preparing wizard"
+
   Call InitDialogs
   Call InitLanguage  
   Call InitSizeExternal
   Call InitSizeViewer
+  
+  Banner::destroy
 
 FunctionEnd

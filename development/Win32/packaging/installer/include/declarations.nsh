@@ -4,6 +4,7 @@ Declarations
 
 */
 
+!include "settings.user.nsh"
 !include "settings.nsh"
 
 ;--------------------------------
@@ -78,6 +79,7 @@ Var AspellHive
 
 !insertmacro GetParent
 !insertmacro VersionCompare
+!insertmacro WordFind2X
 
 ;--------------------------------
 ;Macros  

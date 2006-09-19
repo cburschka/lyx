@@ -30,19 +30,36 @@ Lists of files to include in the installer
 
 !macroend
 
+!macro FileListMSVCBin COMMAND DIRECTORY
+
+  ${COMMAND} "${DIRECTORY}msvcr80.dll"
+  ${COMMAND} "${DIRECTORY}msvcp80.dll"
+  
+!macroend
+
 !macro FileListMinGWBin COMMAND DIRECTORY
 
   ${COMMAND} "${DIRECTORY}mingwm10.dll"
   
 !macroend
 
-!macro FileListDllBin COMMAND DIRECTORY
+!macro FileListDllMSVCBin COMMAND DIRECTORY
+
+  ${COMMAND} "${DIRECTORY}iconv.dll"
+  ${COMMAND} "${DIRECTORY}intl.dll"
+  ${COMMAND} "${DIRECTORY}aspell.dll"
+  ${COMMAND} "${DIRECTORY}Aiksaurus.dll"
+  ${COMMAND} "${DIRECTORY}zlib1.dll"
+
+!macroend
+
+!macro FileListDllMinGWBin COMMAND DIRECTORY
 
   ${COMMAND} "${DIRECTORY}libiconv-2.dll"
   ${COMMAND} "${DIRECTORY}libintl-3.dll"
-  ${COMMAND} "${DIRECTORY}zlib1.dll"
   ${COMMAND} "${DIRECTORY}libAiksaurus-1-2-0.dll"
   ${COMMAND} "${DIRECTORY}libaspell-15.dll"
+  ${COMMAND} "${DIRECTORY}zlib1.dll"
 
 !macroend
 
@@ -85,35 +102,6 @@ Lists of files to include in the installer
   
 !macroend
 
-!macro FileListMSYSBin COMMAND DIRECTORY
-
-  ${COMMAND} "${DIRECTORY}cat.exe"
-  ${COMMAND} "${DIRECTORY}cp.exe"
-  ${COMMAND} "${DIRECTORY}cut.exe"
-  ${COMMAND} "${DIRECTORY}expr.exe"
-  ${COMMAND} "${DIRECTORY}find.exe"
-  ${COMMAND} "${DIRECTORY}grep.exe"
-  ${COMMAND} "${DIRECTORY}ln.exe"
-  ${COMMAND} "${DIRECTORY}ls.exe"
-  ${COMMAND} "${DIRECTORY}mkdir.exe"
-  ${COMMAND} "${DIRECTORY}mv.exe"
-  ${COMMAND} "${DIRECTORY}rm.exe"
-  ${COMMAND} "${DIRECTORY}sed.exe"
-  ${COMMAND} "${DIRECTORY}sh.exe"
-  ${COMMAND} "${DIRECTORY}touch.exe"
-  ${COMMAND} "${DIRECTORY}tr.exe"
-  ${COMMAND} "${DIRECTORY}uname.exe"
-  ${COMMAND} "${DIRECTORY}MSYS-1.0.dll"
-
-!macroend
-
-!macro FileListMSYSEtc COMMAND DIRECTORY
-
-  ${COMMAND} "${DIRECTORY}config.site"
-  ${COMMAND} "${DIRECTORY}profile"
-
-!macroend
-
 !macro FileListPythonBin COMMAND DIRECTORY
 
   ${COMMAND} "${DIRECTORY}python.exe"
@@ -122,13 +110,7 @@ Lists of files to include in the installer
 
 !macro FileListPythonDll COMMAND DIRECTORY
 
-  ${COMMAND} "${DIRECTORY}python24.dll"
-
-!macroend
-
-!macro FileListPythonDLLs COMMAND DIRECTORY
-
-  ${COMMAND} "${DIRECTORY}zlib.pyd"
+  ${COMMAND} "${DIRECTORY}python25.dll"
 
 !macroend
 
@@ -157,6 +139,7 @@ Lists of files to include in the installer
   ${COMMAND} "${DIRECTORY}sre_parse.py"
   ${COMMAND} "${DIRECTORY}stat.py"
   ${COMMAND} "${DIRECTORY}string.py"
+  ${COMMAND} "${DIRECTORY}struct.py"  
   ${COMMAND} "${DIRECTORY}tempfile.py"
   ${COMMAND} "${DIRECTORY}tempfile.py"
   ${COMMAND} "${DIRECTORY}types.py"
@@ -171,12 +154,6 @@ Lists of files to include in the installer
   ${COMMAND} "${DIRECTORY}cp1252.py"
   ${COMMAND} "${DIRECTORY}zlib_codec.py"
   
-!macroend
-
-!macro FileListPythonLibs COMMAND DIRECTORY
-
-  ${COMMAND} "${DIRECTORY}zlib.lib"
-
 !macroend
 
 !macro FileListAiksaurusData COMMAND DIRECTORY

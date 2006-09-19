@@ -17,9 +17,17 @@ OutFile "${SETUP_EXE}"
 ;Functions
 
 Function .onInit
-  !insertmacro MUI_LANGDLL_DISPLAY
+  ${unless} ${silent}
+    Banner::show /NOUNLOAD "Checking system"
+  ${endif}
+  
   Call CheckWindows
   Call SearchAll
+
+  ${unless} ${silent}
+    Banner::destroy
+    !insertmacro MUI_LANGDLL_DISPLAY
+  ${endif}
 FunctionEnd
 
 Function un.onInit
