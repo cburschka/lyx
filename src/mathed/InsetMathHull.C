@@ -1081,7 +1081,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 		string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty())
-			cur.bv().owner()->getDialogs().show("label", data, 0);
+			cur.bv().showInsetDialog("label", data, 0);
 		else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);

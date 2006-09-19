@@ -41,7 +41,7 @@ class LyXView;
 class LyXFunc : public boost::signals::trackable {
 public:
 	///
-	explicit LyXFunc(LyXView *);
+	explicit LyXFunc(LyXView * lv = 0);
 
 	/// LyX dispatcher, executes lyx actions.
 	void dispatch(FuncRequest const &);

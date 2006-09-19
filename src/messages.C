@@ -196,7 +196,7 @@ public:
 			lyxerr << "Undefined result from gettext" << endl;
 			translated = from_ascii(tmp);
 		} else if (msg == tmp) {
-			lyxerr << "Same as entered returned" << endl;
+			//lyxerr << "Same as entered returned" << endl;
 			translated = from_ascii(tmp);
 		} else {
 			lyxerr << "We got a translation" << endl;

@@ -939,7 +939,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 			RefInset tmp(name);
 			data = tmp.createDialogStr(name);
 		}
-		cur.bv().owner()->getDialogs().show(name, data, 0);
+		cur.bv().showInsetDialog(name, data, 0);
 		break;
 	}
 
@@ -1126,7 +1126,7 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		cur.bv().owner()->getDialogs().show("mathpanel");
+		cur.bv().showDialog("mathpanel");
 		return;
 	}
 

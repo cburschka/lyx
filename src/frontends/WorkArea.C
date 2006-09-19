@@ -159,8 +159,10 @@ WorkArea::WorkArea(LyXView & lyx_view)
 
 void WorkArea::setBufferView(BufferView * buffer_view)
 {
-	if (buffer_view_)
+	if (buffer_view_) {
 		message_connection_.disconnect();
+		lyx_view_.disconnectBufferView();
+	}
 
 	hideCursor();
 	buffer_view_ = buffer_view;
@@ -168,6 +170,8 @@ void WorkArea::setBufferView(BufferView * buffer_view)
 
 	message_connection_ = buffer_view_->message.connect(
 			boost::bind(&WorkArea::displayMessage, this, _1));
+
+	lyx_view_.connectBufferView(*buffer_view);
 }
 
 

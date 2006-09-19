@@ -1091,14 +1091,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_URL_INSERT: {
 		InsetCommandParams p("url");
 		string const data = InsetCommandMailer::params2string("url", p);
-		bv->owner()->getDialogs().show("url", data, 0);
+		bv->showInsetDialog("url", data, 0);
 		break;
 	}
 
 	case LFUN_HTML_INSERT: {
 		InsetCommandParams p("htmlurl");
 		string const data = InsetCommandMailer::params2string("url", p);
-		bv->owner()->getDialogs().show("url", data, 0);
+		bv->showInsetDialog("url", data, 0);
 		break;
 	}
 
@@ -1111,7 +1111,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty()) {
-			bv->owner()->getDialogs().show("label", data, 0);
+			bv->showInsetDialog("label", data, 0);
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, data);
 			dispatch(cur, fr);
@@ -1146,7 +1146,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (doInsertInset(cur, this, cmd, false, true))
 			cur.posRight();
 		else
-			bv->owner()->getDialogs().show("tabularcreate");
+			bv->showDialog("tabularcreate");
 
 		break;
 
@@ -1351,13 +1351,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		string data;
 		params2string(cur.paragraph(), data);
 		data = "show\n" + data;
-		bv->owner()->getDialogs().show("paragraph", data);
+		bv->showDialogWithData("paragraph", data);
 		break;
 	}
 
 	case LFUN_PARAGRAPH_UPDATE: {
-		if (!bv->owner()->getDialogs().visible("paragraph"))
-			break;
 		string data;
 		params2string(cur.paragraph(), data);
 
@@ -1365,7 +1363,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bool const accept = !cur.inset().forceDefaultParagraphs(cur.idx());
 
 		data = "update " + convert<string>(accept) + '\n' + data;
-		bv->owner()->getDialogs().update("paragraph", data);
+		bv->updateDialog("paragraph", data);
 		break;
 	}
 
@@ -1438,7 +1436,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				arg = cur.selectionAsString(false);
 			}
 		}
-		bv->owner()->getDialogs().show("thesaurus", lyx::to_utf8(arg));
+		bv->showDialogWithData("thesaurus", lyx::to_utf8(arg));
 		break;
 	}
 

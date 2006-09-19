@@ -858,7 +858,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_CHANGES_MERGE:
 		if (lyx::find::findNextChange(this))
-			owner_->getDialogs().show("changes");
+			showDialog("changes");
 		break;
 
 	case LFUN_ALL_CHANGES_ACCEPT: {
@@ -1454,7 +1454,7 @@ void BufferView::trackChanges()
 	} else {
 		cursor_.setCursor(doc_iterator_begin(buffer_->inset()));
 		if (lyx::find::findNextChange(this)) {
-			owner_->getDialogs().show("changes");
+			showDialog("changes");
 			return;
 		}
 

@@ -73,8 +73,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		string const data = createDialogStr("ref");
-		if (cur.bv().owner()->getDialogs().visible("ref"))
-			cur.bv().owner()->getDialogs().update("ref", data);
+		cur.bv().updateDialog("ref", data);
 		break;
 	}
 
@@ -87,7 +86,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			// Eventually trigger dialog with button 3, not 1
 			string const data = createDialogStr("ref");
-			cur.bv().owner()->getDialogs().show("ref", data, this);
+			cur.bv().showInsetDialog("ref", data, this);
 			break;
 		}
 		cur.undispatched();

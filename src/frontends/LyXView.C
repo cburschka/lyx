@@ -83,6 +83,7 @@ LyXView::LyXView(Gui & owner)
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 }
 
+
 LyXView::~LyXView()
 {
 }
@@ -219,12 +220,61 @@ void LyXView::disconnectBuffer()
 }
 
 
+void LyXView::connectBufferView(BufferView & bv)
+{
+	show_dialog_connection_ = bv.showDialog.connect(
+			boost::bind(&LyXView::showDialog, this, _1));
+	show_dialog_with_data_connection_ = bv.showDialogWithData.connect(
+			boost::bind(&LyXView::showDialogWithData, this, _1, _2));
+	show_inset_dialog_connection_ = bv.showInsetDialog.connect(
+			boost::bind(&LyXView::showInsetDialog, this, _1, _2, _3));
+	update_dialog_connection_ = bv.updateDialog.connect(
+			boost::bind(&LyXView::updateDialog, this, _1, _2));
+}
+
+
+void LyXView::disconnectBufferView()
+{
+	show_dialog_connection_.disconnect();
+	show_dialog_with_data_connection_.disconnect();
+	show_inset_dialog_connection_.disconnect();
+	update_dialog_connection_.disconnect();
+}
+
+
 void LyXView::showErrorList(string const & error_type)
 {
 	ErrorList & el = buffer()->errorList(error_type);
 	if (!el.empty()) {
 		getDialogs().show("errorlist", error_type);
 	}
+}
+
+
+void LyXView::showDialog(string const & name)
+{
+	getDialogs().show(name);
+}
+
+
+void LyXView::showDialogWithData(string const & name,
+								 string const & data)
+{
+	getDialogs().show(name, data);
+}
+
+
+void LyXView::showInsetDialog(string const & name, string const & data,
+							  InsetBase * inset)
+{
+	getDialogs().show(name, data, 0);
+}
+
+
+void LyXView::updateDialog(string const & name, string const & data)
+{
+	if (getDialogs().visible(name))
+		getDialogs().update(name, data);
 }
 
 

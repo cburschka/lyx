@@ -217,6 +217,22 @@ public:
 	/// This signal is emitted when some message shows up.
 	boost::signal<void(lyx::docstring)> message;
 
+	/// This signal is emitted when some dialog needs to be shown.
+	boost::signal<void(std::string name)> showDialog;
+
+	/// This signal is emitted when some dialog needs to be shown with
+	/// some data
+	boost::signal<void(std::string name,
+		std::string data)> showDialogWithData;
+
+	/// This signal is emitted when some inset dialogs needs to be shown.
+	boost::signal<void(std::string name, std::string data,
+		InsetBase * inset)> showInsetDialog;
+
+	/// This signal is emitted when some dialogs needs to be updated.
+	boost::signal<void(std::string name,
+		std::string data)> updateDialog;
+
 private:
 	///
 	bool multiParSel();

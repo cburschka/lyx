@@ -165,6 +165,11 @@ public:
 	/// show the error list to the user
 	void showErrorList(std::string const &);
 
+	/// connect to signals in the given BufferView
+	void connectBufferView(BufferView & bv);
+	/// disconnect from signals in the given BufferView
+	void disconnectBufferView();
+
 protected:
 	/// current work area (screen view of a BufferView).
 	/**
@@ -214,6 +219,27 @@ private:
 	void connectBuffer(Buffer & buf);
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
+
+	/// BufferView messages signal connection
+	//@{
+	boost::signals::connection message_connection_;
+	boost::signals::connection show_dialog_connection_;
+	boost::signals::connection show_dialog_with_data_connection_;
+	boost::signals::connection show_inset_dialog_connection_;
+	boost::signals::connection update_dialog_connection_;
+	//@}
+
+	/// Bind methods for BufferView messages signal connection
+	//@{
+	void showDialog(std::string const & name);
+	void showDialogWithData(std::string const & name,
+		std::string const & data);
+	void showInsetDialog(std::string const & name,
+		std::string const & data, InsetBase * inset);
+	void updateDialog(std::string const & name,
+		std::string const & data);
+	//@}
+
 	/// notify readonly status
 	void showReadonly(bool);
 
