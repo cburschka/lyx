@@ -229,27 +229,16 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	setInlined();
 	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
+	
+	case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button3)
 				has_label_ = !has_label_;
 			else
 				InsetText::doDispatch(cur, cmd);
 			break;
-	case LFUN_PASTE:
-	case LFUN_PASTESELECTION: {
+	default:
 		InsetCollapsable::doDispatch(cur, cmd);
-		BufferParams const & bp = cur.buffer().params();
-		LyXLayout_ptr const layout =
-			bp.getLyXTextClass().defaultLayout();
-		ParagraphList::iterator const end = paragraphs().end();
-		for (ParagraphList::iterator par = paragraphs().begin(); 
-				par != end; ++par)
-			par->layout(layout);
 		break;
-		}
-		default:
-			InsetCollapsable::doDispatch(cur, cmd);
-			break;
 	}
 }
 

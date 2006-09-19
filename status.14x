@@ -106,6 +106,9 @@ What's new
 - When inserting an inset (footnote etc.) over an existing selection,
   don't copy the layout of the source paragraph to the inset (bug 2802).
 
+- When pasting some text in an environment that does not allow the given
+  paragraph layout, reset the layout (bug 2382).
+
 - Fix the disabling of some toolbar icons after closing a dialog (bug 2423).
 
 - Fix the editing of a document while Error List dialog is open (bug 2179).

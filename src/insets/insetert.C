@@ -255,7 +255,6 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 		ParagraphList::iterator const end = paragraphs().end();
 		for (ParagraphList::iterator par = paragraphs().begin();
 		     par != end; ++par) {
-			par->layout(layout);
 			// in case par had a manual label
 			par->setBeginOfBody();
 			pos_type const siz = par->size();

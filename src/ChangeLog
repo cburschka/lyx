@@ -1,3 +1,11 @@
+2006-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* CutAndPaste.C (pasteSelectionHelper): pass Cursor as argument,
+	remove cursor-dependent arguments, inplement method to reset layout
+	in insets which forceParagraphsToDefault (fixes bug 2382).
+	* CutAndPaste.C (pasteParagraphList): adapt call of 
+	pasteSelectionHelper.
+
 2006-09-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (setCursorFromCoordinates): 
