@@ -10,9 +10,9 @@ file(GLOB mathed_sources ${TOP_SRC_DIR}/src/mathed/*.C)
 file(GLOB mathed_headers ${TOP_SRC_DIR}/src/mathed/*.h)
 
 list(REMOVE_ITEM mathed_sources
-	${TOP_SRC_DIR}/src/mathed/math_xyarrowinset.C
-	${TOP_SRC_DIR}/src/mathed/math_mboxinset.C
-	${TOP_SRC_DIR}/src/mathed/formulamacro.C)
+	${TOP_SRC_DIR}/src/mathed/InsetMathXYArrow.C
+	${TOP_SRC_DIR}/src/mathed/InsetMathMbox.C
+	${TOP_SRC_DIR}/src/mathed/InsetFormulaMacro.C)
 
 include_directories(${TOP_SRC_DIR}/src/mathed)
 
