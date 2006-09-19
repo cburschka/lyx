@@ -141,6 +141,8 @@ What's new
 
 * Build/installation:
 
+- Fix compilation with Qt 3.0.x.
+
 - Fix the 'check' make target for systems which do not have
   /bin/bash (bug 2524).
 
