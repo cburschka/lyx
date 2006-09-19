@@ -1,4 +1,4 @@
-# translation of nn_142.po to Nynorsk
+# translation of nn.po to Nynorsk
 # translation of nn_1.4pre3.po to
 # Norske oversettelser for LyX
 # Copyright (C) 1997-1999 LyX Team
@@ -8,10 +8,10 @@
 # Ingar Pareliussen <ingarp_ved_samfundet.no>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: nn_142\n"
+"Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2006-09-12 22:10+0200\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
+"PO-Revision-Date: 2006-09-18 18:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -9729,7 +9729,7 @@ msgstr "Enkle sitatteikn|E"
 
 #: lib/ui/stdmenus.ui:271
 msgid "Phonetic Symbols|y"
-msgstr ""
+msgstr "Fonetiske symbol|y"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Aligned Environment"
@@ -9796,22 +9796,18 @@ msgid "Settings...|S"
 msgstr "Dokumentval...|D"
 
 #: lib/ui/stdmenus.ui:392
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Godta endring|#G"
+msgstr "Godta endring|G"
 
 #: lib/ui/stdmenus.ui:393
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Avvis endring|#A"
+msgstr "Avvis endring|v"
 
 #: lib/ui/stdmenus.ui:394
-#, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Akssepter alle endringar|A"
 
 #: lib/ui/stdmenus.ui:395
-#, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Forkast alle endringar|F"
 
@@ -11535,14 +11531,13 @@ msgid "User files|#U#u"
 msgstr "Brukar filer|#B#b"
 
 #: src/frontends/controllers/tex_helpers.C:61
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Ikkje meir \"Gjer om\" informasjon"
+msgstr "Kan ikkje oppdatere TeX informasjon"
 
 #: src/frontends/controllers/tex_helpers.C:62
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Stavekontrollen gjekk gale.\n"
+msgstr "Køyringa av programmet %s gjekk gale."
 
 #: src/frontends/gtk/Dialogs.C:265 src/frontends/qt2/Dialogs.C:232
 #: src/frontends/xforms/Dialogs.C:246
@@ -15362,6 +15357,3 @@ msgstr "Fyll loddrett"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "vern"
-
-#~ msgid " of "
-#~ msgstr " av "
