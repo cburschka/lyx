@@ -123,11 +123,14 @@ bool checkPastePossible(int index)
 
 
 pair<PitPosPair, pit_type>
-pasteSelectionHelper(Buffer const & buffer,
-		     ParagraphList & pars, pit_type pit, int pos,
-		     ParagraphList const & parlist, textclass_type textclass,
-		     ErrorList & errorlist)
+pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
+		     textclass_type textclass, ErrorList & errorlist)
 {
+	Buffer const & buffer = cur.buffer();
+	pit_type pit = cur.pit();
+	pos_type pos = cur.pos();
+	ParagraphList & pars = cur.text()->paragraphs();
+
 	if (parlist.empty())
 		return make_pair(PitPosPair(pit, pos), pit);
 
@@ -154,6 +157,19 @@ pasteSelectionHelper(Buffer const & buffer,
 				}
 			}
 		}
+	}
+
+	// If we are in an inset which returns forceDefaultParagraphs,
+	// set the paragraphs to default
+	// FIXME: pars[pit].forceDefaultParagraphs() should be enough,
+	// but returns the wrong values for tabular cells!
+	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
+		LyXLayout_ptr const layout = 
+			buffer.params().getLyXTextClass().defaultLayout();
+		ParagraphList::iterator const end = insertion.end();
+		for (ParagraphList::iterator par = insertion.begin(); 
+				par != end; ++par)
+			par->layout(layout);
 	}
 
 	// Make sure there is no class difference.
@@ -625,11 +641,8 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 		PitPosPair ppp;
 
 		boost::tie(ppp, endpit) =
-			pasteSelectionHelper(cur.buffer(),
-					     text->paragraphs(),
-					     cur.pit(), cur.pos(),
-					     parlist, textclass,
-					     errorList);
+			pasteSelectionHelper(cur, parlist,
+					     textclass, errorList);
 		updateLabels(cur.buffer());
 		cur.clearSelection();
 		text->setCursor(cur, ppp.first, ppp.second);

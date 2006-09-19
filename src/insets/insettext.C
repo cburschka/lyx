@@ -251,18 +251,6 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 }
 
 
-void InsetText::forceParagraphsToDefault(LCursor & cur)
-{
-	BufferParams const & bp = cur.buffer().params();
-	LyXLayout_ptr const layout =
-		bp.getLyXTextClass().defaultLayout();
-	ParagraphList::iterator const end = paragraphs().end();
-	for (ParagraphList::iterator par = paragraphs().begin();
-			par != end; ++par)
-		par->layout(layout);
-}
-
-
 void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION

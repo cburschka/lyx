@@ -138,8 +138,6 @@ public:
 	InsetText(InsetText const &);
 	///
 	bool & Wide() const { return wide_inset_; }
-	///
-	void forceParagraphsToDefault(LCursor & cur);
 
 protected:
 	///

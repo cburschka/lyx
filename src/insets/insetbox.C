@@ -213,13 +213,6 @@ void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
-	case LFUN_PASTE:
-	case LFUN_CLIPBOARD_PASTE:
-	case LFUN_PRIMARY_SELECTION_PASTE:
-		InsetCollapsable::doDispatch(cur, cmd);
-		if (!params_.inner_box)
-			forceParagraphsToDefault(cur);
-		break;
 
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);

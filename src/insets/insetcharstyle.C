@@ -234,22 +234,17 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	setInlined();
 	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
+	
+	case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button3)
 				has_label_ = !has_label_;
 			else
 				InsetText::doDispatch(cur, cmd);
 			break;
-	case LFUN_PASTE:
-	case LFUN_CLIPBOARD_PASTE:
-	case LFUN_PRIMARY_SELECTION_PASTE: {
+
+	default:
 		InsetCollapsable::doDispatch(cur, cmd);
-		forceParagraphsToDefault(cur);
 		break;
-		}
-		default:
-			InsetCollapsable::doDispatch(cur, cmd);
-			break;
 	}
 }
 

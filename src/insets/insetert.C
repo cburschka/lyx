@@ -224,7 +224,6 @@ void InsetERT::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		// Since we can only store plain text, we must reset all
 		// attributes.
-		forceParagraphsToDefault(cur);
 		// FIXME: Change only the pasted paragraphs
 
 		BufferParams const & bp = cur.buffer().params();
