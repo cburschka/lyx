@@ -35,7 +35,7 @@ What's new
 - Update Basque, Czech (new), French, German (bug 2718), Hungarian,
   Italian (bug 2774), NyNorsk and Spanish localizations.
 
-- Update Czech (Tutorial, new splash), German (UserGuide, Extended)
+- Update Czech (Tutorial, new splash), German (UserGuide [bug 2660], Extended)
   and Hungarian (new Tutorial) documentation.
 
 ** Bug fixes:
@@ -168,8 +168,6 @@ What's new
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- remove outdated development tools & outdated LyXConfig.LyX.
+- remove outdated development tools and outdated LyXConfig.LyX.in.
 
 - remove all references to reLyX which has been replaced by tex2LyX.
-
-- fix image paths in german userguide (bug 2660)

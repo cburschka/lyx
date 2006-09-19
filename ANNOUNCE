@@ -103,7 +103,7 @@ What's new in version 1.4.3?
 - Update Basque, Czech (new), French, German (bug 2718), Hungarian,
   Italian (bug 2774), NyNorsk and Spanish localizations.
 
-- Update Czech (Tutorial, new splash), German (UserGuide, Extended)
+- Update Czech (Tutorial, new splash), German (UserGuide [bug 2660], Extended)
   and Hungarian (new Tutorial) documentation.
 
 ** Bug fixes:
@@ -174,6 +174,9 @@ What's new in version 1.4.3?
 - When inserting an inset (footnote etc.) over an existing selection,
   don't copy the layout of the source paragraph to the inset (bug 2802).
 
+- When pasting some text in an environment that does not allow the given
+  paragraph layout, reset the layout (bug 2382).
+
 - Fix the disabling of some toolbar icons after closing a dialog (bug 2423).
 
 - Fix the editing of a document while Error List dialog is open (bug 2179).
@@ -233,8 +236,6 @@ What's new in version 1.4.3?
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- remove outdated development tools & outdated LyXConfig.LyX.
+- remove outdated development tools and outdated LyXConfig.LyX.in.
 
 - remove all references to reLyX which has been replaced by tex2LyX.
-
-- fix image paths in german userguide (bug 2660)
