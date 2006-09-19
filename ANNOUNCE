@@ -1,22 +1,20 @@
-Public release of LyX version 1.4.2
+Public release of LyX version 1.4.3
 ===================================
 
-We are pleased to announce the release of LyX 1.4.2. This is a bug fix
-release that improves performance, stability and native OS support.
+We are pleased to announce the release of LyX 1.4.3. This is a bug fix
+release that improves stability and MS Windows support.
 Notable new features include:
 
-- LyX now automatically uses file viewers and editors set at OS level
-  [Windows and Mac OS X only].
+- The windows port does not need a MSys (unix-like tools) installation
+  anymore.
 
-- The windows installer has been completely rewritten.
+- A new function inset-dissolve has been added to delete an inset like
+  a footnote and put its contents in the enclosing text; this can be
+  accessed (like in the math editor) by pressing Backspace at the
+  start of an inset, or Delete at the end.
 
-- A new function buffer-toggle-compression (and corresponding entry in
-  the Document menu) has been added to change whether the file will be
-  compressed on disk or not.
-
-- A "LaTeX (pdflatex)" output format has been added. This new output
-  format produces .tex files that are suitable for pdflatex, including
-  figure conversion to png, pdf or jpeg instead of eps.
+- Many crashes have been fixed, in particlualr for systems based on
+  gcc 4.1.
 
 See the file RELEASE-NOTES for some known problems in this release.
 
@@ -44,35 +42,35 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux, the
    Macintosh and modern Windows platforms. 
 
-You can download LyX 1.4.2 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.4.3 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.4.2.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.4.2.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.4.2.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.4.2.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.4.3.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.4.3.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.4.3.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.4.3.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will also host
 the .bz2 versions):
 
-        http://lyx.mirror.fr/stable/lyx-1.4.2.tar.gz
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.4.2.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.4.2.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.4.2.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.4.3.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.4.3.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.4.3.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.4.3.tar.gz
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.4.2/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.4.3/
 
-If you already have the LyX 1.4.1 sources, you may want to apply one
+If you already have the LyX 1.4.2 sources, you may want to apply one
 of the following patches instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.4.2.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.4.2.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.4.3.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.4.3.bz2
 
 Note that this patch will not produce valid LyX/Mac sources, since
 some binary files have been added for this release.
 
-If you find what you think is a bug in LyX 1.4.2, you may either
+If you find what you think is a bug in LyX 1.4.3, you may either
 e-mail the LyX developers' mailing list (lyx-devel  <at>  lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -84,183 +82,159 @@ Enjoy!
 
 The LyX team.
 
-What's new in version 1.4.2?
+What's new in version 1.4.3?
 ---------------------------- 
 
-** Updates
+** Updates:
 
-- LyX now automatically uses file viewers and editors set at OS level
-  [Windows and Mac OS X only] (bug 2017).
+- All shell scripts have been translated to python so sh.exe is no
+  longer needed. That's a big plus for the Windows port.
 
-- Add a new function buffer-toggle-compression (and corresponding entry
-  in the Document menu) to change whether the file will be compressed
-  on disk or not.
+- Implement inset-dissolve feature; this can be accessed (like in
+  mathed) by pressing Backspace at the start of an inset, or Delete at
+  the end (bug 2201).
 
-- Update the German, Hungarian, Italian (bug 2650), Polish, Slovak,
-  Spanish and Turkish localizations of the interface.
+- Add buttons for \intop and \ointop to the math panel (bug 2698)
 
-- Update translations of documentation for German (all) and Hungarian
-  (Introduction, splash document, new tutorial examples).
+- Native support for \phantom, \hphantom and \vphantom in mathed (bug 1473).
 
-- Add support for Austrian (new spelling) as a document language.
+- Some small updates to the documentation.
 
-- Add the "LaTeX (pdflatex)" output format. This new output format produces
-  .tex files that are suitable for pdflatex, including figure conversion
-  to png, pdf or jpeg instead of eps.
+- Update Basque, Czech (new), French, German (bug 2718), Hungarian,
+  Italian (bug 2774), NyNorsk and Spanish localizations.
 
-- Add biographynophoto style to IEEEtran.layout; add a new text class for
-  International Journal of Modern Physics C (and update support for
-  IJMP D).
+- Update Czech (Tutorial, new splash), German (UserGuide, Extended)
+  and Hungarian (new Tutorial) documentation.
 
-- Add buttons for \overset and \underset to the math panel (bug 2533).
+** Bug fixes:
 
-- Add support for the dvipdfmx converter.
+* Document Input/Output
 
-- Add tgif->ppm and tgif->png converters for preview of tgif figures.
+- Fix a crash when importing LaTeX files with no text (bug 2667).
 
-- Add native support for \intop and \ointop. (Display only; not in
-  the math panel yet.)
+- Fix a crash when a used bibtex file is in a non-readable directory
+  (bug 2782).
 
-** Bug fixes
+- Ignore the definition of LyXgreyout environment when re-importing a
+  LyX-generated LaTeX file (part of bug 2420).
+
+- When exporting to LaTeX an external inset with template XFig,
+  require the color package, since XFig generates LaTeX code with
+  \color (bug 2716).
+
+- Make sure enough passes are made to update the table of contents
+  when running LaTeX (bug 2616).
+
+- Don't add extra braces when reading documents containing \choose,
+  \atop or \over (bug 2481).
+
+- Reenable import of noweb files (bug 2289).
+
+- Render greyed out notes correctly in output (bug 2723).
+
+- Fix bug 2768 (inset comment/note eats space after it).
+
+- Do not convert known spaces to ERT on LaTeX import (bug 2786).
 
 * User Interface:
 
-- Much better performance when using natbib/jurabib citations (bug 2460).
+- Fix random crashes resulting of an incompatibility of the included
+  boost::bind library with gcc 4.1 (bug 2677, probably also 2662 and 2684).
 
-- Much better performance of screen updating in LyX/Mac, and with an 
-  acceptable UI.
+- Fix a crash when using next-inset-toggle (Ctrl+I) inside mathed;
+  inset locking in mathed generally work (bug 2756).
 
-- Don't jump back to the previous cursor position when trying to click on
-  an inset (bug 2526).
+- Fix a crash on save (including dataloss) when the backup directory 
+  creation failed or the directory is not writeable(bug 2740).
 
-- Fix several cursor movement functions when initiating a selection
-  (bugs 2119 and 2259, and a crash).
+- Fix a crash when selecting several cells in a tabular (bug 2630).
 
-- Disable saving of bookmarks in mathed because it is not yet supported
-  and makes LyX crash (bug 2597).
+- Fix a crash when searching for an inset and none is present.
 
-- Fix a crash when pasting contents from the clipboard to a tabular
-  (bug 2603).
+- Fix a crash when scrolling the document and the cursor is inside an
+  inset (bug 2830).
 
-- When pasting contents to a tabular with the middle mouse button, the
-  language could sometimes be changed. This is fixed now.
+- Fix lockup when accepting a change in a text inset (bug 2510).
 
-- Text copied from an ERT box no longer has the pseudo "latex" language
-  (bug 2476).
+- Fix a crash with change tracking in tables (bug 2600).
 
-- Fix a crash when selecting and deleting "blue" paragraph break in
-  change tracking mode.
+- Fix a crash when undoing super/subscript deletion (bug 2727).
 
-- Set change tracking marks properly when copying between documents
-  with different change tracking status (bug 2207).
+- Fix a crash when the cursor is in an empty script and the user
+  clicks in the text.
 
-- Fix a crash when reading documents containing bogus change tracking
-  markup due to the bug above (bug 2614).
+- Do not reset environment depth when breaking a paragraph (bug 2445).
 
-- Fix any remaining "ghost" empty paragraphs when selecting and deleting
-  multiple paragraphs (bug 2516).
+- Handle properly script insets which the nucleus has more than
+  one element (like {a'}^{2}).
 
-- Fix the display of horizontal fill which appears at the end of a line
-  (bug 2509).
+- On pressing button 2 in a math inset, paste the inner LyX selection
+  if it exists (bug 2779).
 
-- Fix a crash when changing document class while the cursor is inside a
-  table.
+- When inserting an inset (footnote etc.) over an existing selection,
+  don't copy the layout of the source paragraph to the inset (bug 2802).
 
-- Fix a crash when there is a syntax error in a keyboard map file (bug 2604).
+- Fix the disabling of some toolbar icons after closing a dialog (bug 2423).
 
-- Fix a crash on exit on MacOS X, and the well known "Mutex destroy failure"
-  error message on Linux (qt frontend, bugs 2549 and 1029).
+- Fix the editing of a document while Error List dialog is open (bug 2179).
 
-- Paint the tabular background (bug fix).
+- Improve the position of the cursor after undo.
 
-- Fix a bug where the spellchecker doesn't pop up the dialog window for
-  the first misspelled word (bug 2218).
+- Update labels on screen when changing language.
 
-- Fix spell checking in tables (bug 2675).
+- Fix doubling of initial character when correcting a word with
+  ligatures in spellechecker (bug 2068).
 
-- Cosmetic fixes to the document dialog (Qt only).
+- Show an error box when failing to update the TeX Information dalog data.
 
-- Reduce the right margin on screen from 30 pixels to 10.
+- Fix an unexpected font change on maximize (bug 2664).
 
-* Math editor:
+- Handle the Meta keyboard modifier as Alt (Qt only).
 
-- Fix the metrics of AMS array environments like bmatrix, vmatrix etc.
-  (bug 2036).
+- Fix the C-x C-b binding in emacs mode (bug 2747).
 
-- Fix undo in matrices.
+- Fix a crash when a non-template file is selected in the
+  "New from Template" dialog (bug 2404).
 
-- Fix a crash when deleting the last row of an equation (bug 2655).
+- The LaTeX log file can now also be viewed if the path of the temporary
+  directory contains spaces (bug 2687)
 
-* Document input/output:
+- Graphics files with ' in the name can now be previewed (bug 2637)
 
-- Convert definitions of itemize and enumerate environments in old layout
-  files correctly.
+- New menu entries have been added for phonetic symbols and accepting/rejecting
+  a single change in change tracking mode
 
-- Fix the conversion of minipages (default height and inner vertical
-  position) from LyX 1.3 documents.
+* Build/installation:
 
-- Make sure that the amsmath package is used in LaTeX output when
-  using the AMS-specific commands \xleftarrow, \xrightarrow or the
-  array constructs split, gathered, aligned and alignedat (bug 2149).
+- Fix the 'check' make target for systems which do not have
+  /bin/bash (bug 2524).
 
-- Load the tipa package automatically when needed.
+- Set CPPFLAGS only if it not already set by the user
+  (and ignore CXXFLAGS when setting CPPFLAGS).
 
-- Properly strike out deleted math formulas when change tracking is
-  active (bug 2214).
+- Handle properly gcc 4.1 in configure.
 
-- Don't get confused by 0-Characters in MikTeX logfiles anymore.
+- Install python files together with precompiled versions.
 
-- Always honor the "Requirement" tag in External Template Definitions.
+- A scons build system is added, for details please see INSTALL.scons.
 
-- Fix tex2lyx to handle whitespace in front of required arguments (bug 2546).
+- LyX can be compiled with MSVC using qt3 from the Q../Free project and scons.
 
-- Update templates and examples to the latest file format.
+- 'scons install' now produces a cygwin-compatible binary package under cygwin.
 
-- Enable jpeg graphics whose suffix is in capital letters (.JPG) work with
-  pdflatex (bug 2235).
+* Miscellaneous
 
-- Fix a LaTeX crash on multi-paragraph boxes.
+- Display LaTeX package checking results faster during configuration.
 
-- Fix LaTeX errors with memoir and makeindex (bug 2623).
+- Log the output of configure.py to a log file configure.log.
 
-* Miscellaneous:
+- Do automatic reconfiguration even when running in batch mode (bug 2741).
 
-- Replace the old sh version of lib/configure with the new python version
-  lib/configure.py. The TexFiles.sh script (which crashed on Windows)
-  has also been pythonified.
+- Change the encoding of some python scripts from iso-8859-15 to
+  iso-8859-1. The former causes problems with embedded python.
 
-- It is  longer necessary to run lib/configure.py in the main LyX
-  support directory.
+- remove outdated development tools & outdated LyXConfig.LyX.
 
-- Reading of configuration now goes like this: LyX first reads the file 
-  lyxrc.dist (if it exists). If lib/configure.py is newer than
-  any of lyxrc.defaults, textclass.lst or packages.lst, it is re-run
-  before loading lyxrc.defaults and preferences. 
+- remove all references to reLyX which has been replaced by tex2LyX.
 
-- Automatically use fonts in the fonts/ subdirectory of the LyX support
-  directory on Windows.
-
-- When compiling with --with-version-suffix on Windows, do not
-  rename the executable files.
-
-- Fix lib/configure.py to find tex2lyx when compiling with
-  --with-version-suffix (bug 2285).
-
-- Fix lib/configure.py to find tex2lyx if the path to it contains spaces.
-
-- Use the clean_dvi.py script on Windows not only in the installer but also
-  in the source package.
-
-- Fix the code to find the localization of the interface on Windows
-  and Mac OS X.
-
-- Fix hyphens in man pages.
-
-- Replace the \cygwin_path_fix_needed preference with the better named
-  \tex_expects_windows_paths; this is auto-detected and matters only on
-  Windows. 
-
-- Remove the --enable-compression-support option of configure. Compression
-  support via zlib is now a requirement.
-
-- Fix compilation on DragonFly BSD.
+- fix image paths in german userguide (bug 2660)
