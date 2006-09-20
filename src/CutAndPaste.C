@@ -161,8 +161,6 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 
 	// If we are in an inset which returns forceDefaultParagraphs,
 	// set the paragraphs to default
-	// FIXME: pars[pit].forceDefaultParagraphs() should be enough,
-	// but returns the wrong values for tabular cells!
 	if (cur.inset().forceDefaultParagraphs(cur.idx())) {
 		LyXLayout_ptr const layout = 
 			buffer.params().getLyXTextClass().defaultLayout();
