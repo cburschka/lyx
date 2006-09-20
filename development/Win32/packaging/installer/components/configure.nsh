@@ -79,6 +79,11 @@ Section -Configure
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   
   FileWrite $R1 '\path_prefix "$R0"$\r$\n'
+
+  ;Default screen fonts
+  FileWrite $R1 '\screen_font_roman "Times New Roman"$\r$\n'
+  FileWrite $R1 '\screen_font_sans "Arial"$\r$\n'
+  FileWrite $R1 '\screen_font_typewriter "Courier New"$\r$\n'
   
   FileClose $R1
 
