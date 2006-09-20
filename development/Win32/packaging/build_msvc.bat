@@ -1,2 +1,2 @@
 cd ..\..\scons
-scons install prefix=..\..\build-msvc use_vc=yes frontend=qt2 mode=release version_suffix=1.4.x fast_start=no gettext=system nls=yes extra_inc_path=..\..\lyx14-windows-deps-msvc\include extra_lib_path=..\..\lyx14-windows-deps-msvc\lib extra_bin_path=..\..\lyx14-windows-deps-msvc\bin qt_dir=..\..\lyx14-windows-deps-msvc\qt-3
+scons install prefix=..\..\build-msvc use_vc=yes frontend=qt2 mode=release version_suffix=1.4.x fast_start=no gettext=system nls=yes extra_inc_path=..\..\lyx-windows-deps-msvc\include extra_lib_path=..\..\lyx-windows-deps-msvc\lib extra_bin_path=..\..\lyx-windows-deps-msvc\bin qt_dir=..\..\lyx-windows-deps-msvc\qt-3
