@@ -1757,7 +1757,10 @@ void InsetTabular::cutSelection(LCursor & cur)
 	}
 
 	// cursor position might be invalid now
-	cur.pos() = cur.lastpos();
+	if (cur.pit() > cur.lastpit())
+		cur.pit() = cur.lastpit();
+	if (cur.pos() > cur.lastpos())
+		cur.pos() = cur.lastpos();
 	cur.clearSelection();
 }
 

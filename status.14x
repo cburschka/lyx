@@ -90,6 +90,8 @@ What's new
 
 - Fix a crash with change tracking in tables (bug 2600).
 
+- Fix a crash when deleting a multi-cell selection in a tabular.
+
 - Fix a crash when undoing super/subscript deletion (bug 2727).
 
 - Fix a crash when the cursor is in an empty script and the user
