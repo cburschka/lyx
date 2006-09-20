@@ -1,0 +1,22 @@
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
+#
+
+project(frontends)
+
+include_directories(${TOP_SRC_DIR}/src/frontends)
+
+add_subdirectory(controllers) 
+add_subdirectory(${qt_postfix}) 
+
+
+
+file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/*.C)
+file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/*.h)
+
+add_library(frontends STATIC ${frontends_sources} ${frontends_headers})
+
+project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
+
