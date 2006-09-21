@@ -114,9 +114,7 @@ The two following programs should be available at configuration time:
     as. Otherwise, LyX will not be able to run a number of tests. Note
     that users can run these tests manually with Edit>Reconfigure.
 
-  o Python 1.5.2 or newer installed to be able to import older LyX files
-    with the lyx2lyx script (this script is called automatically when
-    opening a file).
+  o Python 2.2 or newer installed.
 
 
 Creating the Makefile
