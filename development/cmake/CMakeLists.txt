@@ -7,6 +7,8 @@
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 
+set (EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
+
 if(NOT GROUP_CODE)
 	#set(GROUP_CODE "The Golden Code")
 	set(GROUP_CODE flat)
