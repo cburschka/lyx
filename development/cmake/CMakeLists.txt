@@ -9,6 +9,15 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 
 set (EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 
+set(PACKAGE lyx)
+set(PACKAGE_VERSION 1.5.0svn)
+
+if(WIN32)
+	set(USE_WINDOWS_PACKAGING 1)
+else(WIN32)
+	set(USE_POSIX_PACKAGING 1)
+endif(WIN32)
+
 if(NOT GROUP_CODE)
 	#set(GROUP_CODE "The Golden Code")
 	set(GROUP_CODE flat)
