@@ -83,6 +83,10 @@ What's new
 
 - Fix a crash when selecting several cells in a tabular (bug 2630).
 
+- Fix a crash when deleting a multi-cell selection in a tabular.
+
+- Fix a crash when applying a font change to several cells in a tabular.
+
 - Fix a crash when searching for an inset and none is present.
 
 - Fix a crash when scrolling the document and the cursor is inside an
@@ -91,8 +95,6 @@ What's new
 - Fix lockup when accepting a change in a text inset (bug 2510).
 
 - Fix a crash with change tracking in tables (bug 2600).
-
-- Fix a crash when deleting a multi-cell selection in a tabular.
 
 - Fix a crash when undoing super/subscript deletion (bug 2727).
 
