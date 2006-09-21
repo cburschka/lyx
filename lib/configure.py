@@ -106,7 +106,7 @@ def checkTeXPaths():
         os.close(fd)
         inpname = cmdOutput('cygpath -m ' + tmpfname)
         latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}"' % inpname)
-        if 'Error' in latex_out:
+        if latex_out.find('Error') != -1:
             print "configure: TeX engine needs posix-style paths in latex files"
             windows_style_tex_paths = 'false'
         else:
@@ -579,7 +579,10 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
         for line in open('chkconfig.vars').readlines():
             key, val = re.sub('-', '_', line).split('=')
             val = val.strip()
-            values[key] = val.strip("'")
+            tmp = val.split("'")
+            while tmp and not tmp[0]: tmp = tmp[1:]
+            while tmp and not tmp[-1]: tmp = tmp[:-1]
+            values[key] = "'".join(tmp)
         # chk_fontenc may not exist 
         try:
             addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])
@@ -652,7 +655,7 @@ def checkTeXAllowSpaces():
             latex_out = cmdOutput(LATEX + r""" "\nonstopmode\input{\"a b\"}" """)
         else:
             latex_out = cmdOutput(LATEX + r""" '\nonstopmode\input{"a b"}' """)
-        if 'working' in latex_out:
+        if latex_out.find('working') != -1:
             print 'yes'
             tex_allows_spaces = 'true'
         else:
