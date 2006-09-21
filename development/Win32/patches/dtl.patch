@@ -129,7 +129,7 @@ diff -riwbBu -Xex dtl/Makefile dtl-modified/Makefile
  	else $(RM) edited.dif ; \
 diff -riwbBu -Xex dtl/dt2dv.c dtl-modified/dt2dv.c
 --- dtl/dt2dv.c	Wed Mar  8 00:00:00 1995
-+++ dtl-modified/dt2dv.c	Sun Sep 17 21:51:04 2006
++++ dtl-modified/dt2dv.c	Thu Sep 21 07:50:31 2006
 @@ -1,9 +1,11 @@
  /* dt2dv - convert human-readable "DTL" file to DVI format
           - this is intended to invert dv2dt version 0.6.0
@@ -143,6 +143,15 @@ diff -riwbBu -Xex dtl/dt2dv.c dtl-modified/dt2dv.c
     - Reference:  "The DVI Driver Standard, Level 0",
                   by  The TUG DVI Driver Standards Committee.
                   Appendix A, "Device-Independent File Format".
+@@ -34,7 +36,7 @@
+   size_t max;   /* capacity of buf */
+   S4 wrote;     /* number of characters written into buf */
+   size_t read;  /* position in buf of next character to read from buf */
+-  char * buf;   /* line buffer */
++  unsigned char * buf;   /* line buffer */
+ } Line;
+ 
+ char linebuf[MAXLINE+1];
 @@ -1089,7 +1091,11 @@
        dinfo();
        status = 0;
@@ -212,4 +221,3 @@ diff -riwbBu -Xex dtl/man2ps dtl-modified/man2ps
  	exit 1
  fi
  
-
