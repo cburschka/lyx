@@ -8,12 +8,12 @@ Notable new features include:
 - The windows port does not need a MSys (unix-like tools) installation
   anymore.
 
-- A new function inset-dissolve has been added to delete an inset like
-  a footnote and put its contents in the enclosing text; this can be
+- A new function inset-dissolve has been added to delete an text inset
+  and put its contents in the enclosing text; this can be
   accessed (like in the math editor) by pressing Backspace at the
   start of an inset, or Delete at the end.
 
-- Many crashes have been fixed, in particlualr for systems based on
+- Many crashes have been fixed, in particular for systems based on
   gcc 4.1.
 
 See the file RELEASE-NOTES for some known problems in this release.
@@ -115,6 +115,8 @@ What's new in version 1.4.3?
 - Fix a crash when a used bibtex file is in a non-readable directory
   (bug 2782).
 
+- Fix a crash when lyx2lyx failed to convert LyX file.
+
 - Ignore the definition of LyXgreyout environment when re-importing a
   LyX-generated LaTeX file (part of bug 2420).
 
@@ -148,6 +150,10 @@ What's new in version 1.4.3?
   creation failed or the directory is not writeable(bug 2740).
 
 - Fix a crash when selecting several cells in a tabular (bug 2630).
+
+- Fix a crash when deleting a multi-cell selection in a tabular.
+
+- Fix a crash when applying a font change to several cells in a tabular.
 
 - Fix a crash when searching for an inset and none is present.
 
@@ -185,6 +191,9 @@ What's new in version 1.4.3?
 
 - Update labels on screen when changing language.
 
+- Make sure that the "Check TeX" menu entry is not available when the
+  chktex tool has not been configured (bug 2831).
+
 - Fix doubling of initial character when correcting a word with
   ligatures in spellechecker (bug 2068).
 
@@ -204,10 +213,12 @@ What's new in version 1.4.3?
 
 - Graphics files with ' in the name can now be previewed (bug 2637)
 
-- New menu entries have been added for phonetic symbols and accepting/rejecting
-  a single change in change tracking mode
+- New menu entries have been added for phonetic symbols and
+  accepting/rejecting a single change in change tracking mode
 
 * Build/installation:
+
+- Fix compilation with Qt 3.0.x.
 
 - Fix the 'check' make target for systems which do not have
   /bin/bash (bug 2524).
@@ -219,11 +230,15 @@ What's new in version 1.4.3?
 
 - Install python files together with precompiled versions.
 
-- A scons build system is added, for details please see INSTALL.scons.
+- A scons build system has been added, for details please see
+  INSTALL.scons. 'scons install' produces a cygwin-compatible binary
+  package under cygwin.
 
-- LyX can be compiled with MSVC using qt3 from the Q../Free project and scons.
+- A CMake build system has been added, for details see
+  development/cmake/README.cmake
 
-- 'scons install' now produces a cygwin-compatible binary package under cygwin.
+- LyX can be compiled on windows with MSVC using qt3 from the Q../Free
+  project and scons or CMake.
 
 * Miscellaneous
 
@@ -236,6 +251,7 @@ What's new in version 1.4.3?
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- remove outdated development tools and outdated LyXConfig.LyX.in.
+- Remove outdated development tools and outdated LyXConfig.LyX.in.
 
-- remove all references to reLyX which has been replaced by tex2LyX.
+- Remove in the documentation all references to reLyX, which has been
+  replaced by tex2LyX.
