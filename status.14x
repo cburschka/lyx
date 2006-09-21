@@ -162,7 +162,9 @@ What's new
 
 - A scons build system is added, for details please see INSTALL.scons.
 
-- LyX can be compiled with MSVC using qt3 from the Q../Free project and scons.
+- CMmake build system added, for details see /development/cmake/README.cmake
+
+- LyX can be compiled with MSVC using qt3 from the Q../Free project and scons or CMake.
 
 - 'scons install' now produces a cygwin-compatible binary package under cygwin.
 
