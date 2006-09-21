@@ -47,6 +47,8 @@ What's new
 - Fix a crash when a used bibtex file is in a non-readable directory
   (bug 2782).
 
+- Fix a crash when lyx2lyx failed to convert LyX file.
+
 - Ignore the definition of LyXgreyout environment when re-importing a
   LyX-generated LaTeX file (part of bug 2420).
 
