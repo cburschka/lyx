@@ -143,8 +143,8 @@ What's new
 
 - Graphics files with ' in the name can now be previewed (bug 2637)
 
-- New menu entries have been added for phonetic symbols and accepting/rejecting
-  a single change in change tracking mode
+- New menu entries have been added for phonetic symbols and
+  accepting/rejecting a single change in change tracking mode
 
 * Build/installation:
 
@@ -160,13 +160,15 @@ What's new
 
 - Install python files together with precompiled versions.
 
-- A scons build system is added, for details please see INSTALL.scons.
+- A scons build system has been added, for details please see
+  INSTALL.scons. 'scons install' produces a cygwin-compatible binary
+  package under cygwin.
 
-- CMmake build system added, for details see /development/cmake/README.cmake
+- A CMake build system has been added, for details see
+  development/cmake/README.cmake
 
-- LyX can be compiled with MSVC using qt3 from the Q../Free project and scons or CMake.
-
-- 'scons install' now produces a cygwin-compatible binary package under cygwin.
+- LyX can be compiled on windows with MSVC using qt3 from the Q../Free
+  project and scons or CMake.
 
 * Miscellaneous
 
@@ -179,6 +181,7 @@ What's new
 - Change the encoding of some python scripts from iso-8859-15 to
   iso-8859-1. The former causes problems with embedded python.
 
-- remove outdated development tools and outdated LyXConfig.LyX.in.
+- Remove outdated development tools and outdated LyXConfig.LyX.in.
 
-- remove all references to reLyX which has been replaced by tex2LyX.
+- Remove in the documentation all references to reLyX, which has been
+  replaced by tex2LyX.
