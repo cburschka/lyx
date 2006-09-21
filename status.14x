@@ -121,6 +121,9 @@ What's new
 
 - Update labels on screen when changing language.
 
+- Make sure that the "Check TeX" menu entry is not available when the
+  chktex tool has not been configured (bug 2831).
+
 - Fix doubling of initial character when correcting a word with
   ligatures in spellechecker (bug 2068).
 

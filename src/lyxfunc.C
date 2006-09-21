@@ -415,7 +415,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	case LFUN_RUNCHKTEX:
-		enable = buf->isLatex() && lyxrc.chktex_command != "none";
+		enable = buf->isLatex() && !lyxrc.chktex_command.empty();
 		break;
 
 	case LFUN_BUILDPROG:
