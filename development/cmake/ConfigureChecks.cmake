@@ -144,14 +144,6 @@ check_cxx_source_compiles(
 	"
 SIZEOF_WCHAR_T_IS_4)
 
-set(PACKAGE lyx)
-set(PACKAGE_VERSION 1.5.0svn)
-
-if(WIN32)
-	set(USE_WINDOWS_PACKAGING 1)
-else(WIN32)
-	set(USE_POSIX_PACKAGING 1)
-endif(WIN32)
 
 
 
