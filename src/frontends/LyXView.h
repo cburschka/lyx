@@ -35,7 +35,6 @@ class FuncRequest;
 
 namespace lyx {
 namespace frontend {
-class Gui;
 class WorkArea;
 class ControlCommandBuffer;
 } // namespace frontend
