@@ -50,5 +50,17 @@ void GuiSelection::put(docstring const & str)
 	                           QClipboard::Selection);
 }
 
+
+void GuiSelection::haveSelection(bool own)
+{
+	if (!QApplication::clipboard()->supportsSelection())
+		return;
+
+	if (own)
+		QApplication::clipboard()->setText(QString(), QClipboard::Selection);
+	// We don't need to do anything if own = false, as this case is
+	// handled by QT.
+}
+
 } // namespace frontend
 } // namespace lyx

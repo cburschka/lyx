@@ -732,6 +732,7 @@ src_frontends_qt3_moc_files = Split('''
 src_frontends_qt3_header_files = Split('''
     BulletsModule.h
     FileDialog_private.h
+    GuiApplication.h
     GuiClipboard.h
     GuiImplementation.h
     GuiSelection.h
@@ -852,6 +853,7 @@ src_frontends_qt3_files = Split('''
     Dialogs.C
     FileDialog.C
     FileDialog_private.C
+    GuiApplication.C
     GuiClipboard.C
     GuiSelection.C
     LyXKeySymFactory.C

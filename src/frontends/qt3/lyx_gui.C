@@ -14,7 +14,6 @@
 #include "lyx_gui.h"
 
 // FIXME: move this stuff out again
-#include "bufferlist.h"
 #include "BufferView.h"
 #include "Color.h"
 #include "funcrequest.h"
@@ -25,8 +24,6 @@
 #include "lyxrc.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
-
-#include "graphics/LoaderQueue.h"
 
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -39,9 +36,10 @@
 #include <boost/signal.hpp> // FIXME: Is this needed? (Lgb)
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include "frontends/LyXView.h"
 #include "frontends/WorkArea.h"
 
-#include "GuiImplementation.h"
+#include "GuiApplication.h"
 #include "QtView.h"
 #include "lcolorcache.h"
 #include "qfont_loader.h"
@@ -64,8 +62,7 @@
 using lyx::support::ltrim;
 using lyx::support::package;
 
-using lyx::frontend::Gui;
-using lyx::frontend::GuiImplementation;
+using lyx::frontend::GuiApplication;
 using lyx::frontend::QtView;
 
 namespace os = lyx::support::os;
@@ -81,92 +78,15 @@ using std::vector;
 using std::string;
 
 
-extern BufferList bufferlist;
-
-// FIXME: wrong place !
-LyXServer * lyxserver;
-LyXServerSocket * lyxsocket;
-
 namespace {
-
-int getDPI()
-{
-	QWidget w;
-	QPaintDeviceMetrics pdm(&w);
-	return int(0.5 * (pdm.logicalDpiX() + pdm.logicalDpiY()));
-}
 
 map<int, shared_ptr<socket_callback> > socket_callbacks;
 
-void cleanup()
-{
-	delete lyxsocket;
-	lyxsocket = 0;
-	delete lyxserver;
-	lyxserver = 0;
-}
-
 } // namespace anon
 
-// in QLyXKeySym.C
-extern void initEncodings();
 
-#ifdef Q_WS_X11
-extern bool lyxX11EventFilter(XEvent * xev);
-#endif
-
-#ifdef Q_WS_MACX
-extern pascal OSErr
-handleOpenDocuments(const AppleEvent* inEvent, AppleEvent* /*reply*/,
-		    long /*refCon*/);
-#endif
-
-class LQApplication : public QApplication
-{
-public:
-	LQApplication(int & argc, char ** argv);
-	//
-	Gui & gui() { return gui_; }
-
-#ifdef Q_WS_X11
-	bool x11EventFilter (XEvent * ev) { return lyxX11EventFilter(ev); }
-#endif
-#ifdef Q_WS_MACX
-	bool macEventFilter(EventRef event);
-#endif
-
-private:
-	///
-	GuiImplementation gui_;
-};
-
-
-LQApplication::LQApplication(int & argc, char ** argv)
-	: QApplication(argc, argv)
-{
-#ifdef Q_WS_MACX
-	AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,
-			      NewAEEventHandlerUPP(handleOpenDocuments),
-			      0, false);
-#endif
-}
-
-
-#ifdef Q_WS_MACX
-bool LQApplication::macEventFilter(EventRef event)
-{
-	if (GetEventClass(event) == kEventClassAppleEvent) {
-		EventRecord eventrec;
-		ConvertEventRefToEventRecord(event, &eventrec);
-		AEProcessAppleEvent(&eventrec);
-
-		return false;
-	}
-	return false;
-}
-#endif
-
-LQApplication * theApp;
+lyx::frontend::Application * theApp;
+GuiApplication * guiApp;
 
 namespace lyx_gui {
 
@@ -178,53 +98,10 @@ int exec(int & argc, char * argv[])
 	// Force adding of font path _before_ QApplication is initialized
 	FontLoader::initFontPath();
 
-	LQApplication app(argc, argv);
-	theApp = &app;
+	GuiApplication app(argc, argv);
 
-#if QT_VERSION >= 0x030200
-	// install translation file for Qt built-in dialogs
-	// These are only installed since Qt 3.2.x
-	QTranslator qt_trans(0);
-	if (qt_trans.load(QString("qt_") + QTextCodec::locale(),
-			  qInstallPathTranslations())) {
-		qApp->installTranslator(&qt_trans);
-		// even if the language calls for RtL, don't do that
-		qApp->setReverseLayout(false);
-		lyxerr[Debug::GUI]
-			<< "Successfully installed Qt translations for locale "
-			<< QTextCodec::locale() << std::endl;
-	} else
-		lyxerr[Debug::GUI]
-			<< "Could not find  Qt translations for locale "
-			<< QTextCodec::locale() << std::endl;
-#endif
-
-#ifdef Q_WS_MACX
-	// These translations are meant to break Qt/Mac menu merging
-	// algorithm on some entries. It lists the menu names that
-	// should not be moved to the LyX menu
-	QTranslator aqua_trans(0);
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0,
-					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0,
-					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Options", 0,
-					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0,
-					     "do_not_merge_me"));
-
-	qApp->installTranslator(&aqua_trans);
-#endif
-
-	using namespace lyx::graphics;
-
-	Image::newImage = boost::bind(&QLImage::newImage);
-	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
-
-	// needs to be done before reading lyxrc
-	lyxrc.dpi = getDPI();
-
-	LoaderQueue::setPriority(10,100);
+	guiApp = &app;
+	theApp = guiApp;
 
 	return LyX::ref().exec2(argc, argv);
 }
@@ -237,50 +114,13 @@ void parse_lyxrc()
 LyXView* create_view(unsigned int width, unsigned int height, int posx, int posy,
 	      bool maximize)
 {
-	// this can't be done before because it needs the Languages object
-	initEncodings();
-
-	int view_id = theApp->gui().newView(width, height);
-	QtView & view = static_cast<QtView &> (theApp->gui().view(view_id));
-	theApp->gui().newWorkArea(width, height, 0);
-
-	LyX::ref().addLyXView(&view);
-
-	view.init();
-
-	if (width != 0 && height != 0) {
-		view.initFloatingGeometry(QRect(posx, posy, width, height));
-		view.resize(width, height);
-		if (posx != -1 && posy != -1)
-			view.move(posx, posy);
-		view.show();
-		if (maximize)
-			view.setWindowState(Qt::WindowMaximized);
-	} else
-		view.show();
-
-	return &view;
+	return &guiApp->createView(width, height, posx, posy, maximize);
 }
 
 
-int start(LyXView * view, string const & batch)
+int start(LyXView *, string const & batch)
 {
-	// FIXME: some code below needs moving
-
-	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
-	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
-			  os::internal_path(package().temp_dir() + "/lyxsocket"));
-
-	// handle the batch commands the user asked for
-	if (!batch.empty()) {
-		view->getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
-	}
-
-	int const status = qApp->exec();
-
-	// FIXME
-	cleanup();
-	return status;
+	return theApp->start(batch);
 }
 
 
@@ -298,8 +138,7 @@ void sync_events()
 
 void exit(int status)
 {
-	cleanup();
-	QApplication::exit(status);
+	guiApp->exit(status);
 }
 
 

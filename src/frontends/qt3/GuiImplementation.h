@@ -18,8 +18,6 @@
 #include "qscreen.h"
 #include "QWorkArea.h"
 
-#include "GuiClipboard.h"
-#include "GuiSelection.h"
 #include "GuiWorkArea.h"
 
 #include "BufferView.h"
@@ -47,19 +45,9 @@ public:
 	{
 	}
 
-	lyx::frontend::Clipboard& clipboard()
-	{
-		return clipboard_;
-	}
-
-	lyx::frontend::Selection& selection()
-	{
-		return *selection_;
-	}
-
 	int newView(unsigned int /*w*/, unsigned int /*h*/)
 	{
-		view_.reset(new FView(*this));
+		view_.reset(new FView);
 		return 0;
 	}
 
@@ -80,7 +68,6 @@ public:
 		old_work_area_.reset(new FWorkArea(*view_.get(), w, h));
 		old_screen_.reset(new FScreen(*old_work_area_.get()));
 		work_area_.reset(new GuiWorkArea(old_screen_.get(), old_work_area_.get()));
-		selection_.reset(new GuiSelection(old_work_area_.get()));
 
 		// FIXME BufferView creation should be independant of WorkArea creation
 		buffer_views_[0].reset(new BufferView(view_.get()));
@@ -96,17 +83,12 @@ public:
 
 	void destroyWorkArea(int /*id*/)
 	{
-		selection_.reset();
 		work_area_.reset();
 		old_work_area_.reset();
 		old_screen_.reset();
 	}
 
 private:
-	///
-	GuiClipboard clipboard_;
-	///
-	boost::shared_ptr<GuiSelection> selection_;
 	///
 	boost::shared_ptr<GuiWorkArea> work_area_;
 	///

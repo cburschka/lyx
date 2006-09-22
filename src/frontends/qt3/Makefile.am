@@ -34,6 +34,7 @@ libqt3_la_SOURCES = \
 	Alert_pimpl.C \
 	Dialogs.C \
 	FileDialog.C \
+	GuiApplication.C GuiApplication.h \
 	GuiClipboard.C GuiClipboard.h \
 	GuiImplementation.h \
 	GuiSelection.C GuiSelection.h \

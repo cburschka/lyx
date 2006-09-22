@@ -55,8 +55,8 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-QtView::QtView(Gui & owner)
-	: QMainWindow(), LyXView(owner), commandbuffer_(0)
+QtView::QtView()
+	: QMainWindow(), LyXView(), commandbuffer_(0)
 {
 	qApp->setMainWidget(this);
 

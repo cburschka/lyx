@@ -45,10 +45,6 @@ using std::string;
 
 namespace os = lyx::support::os;
 
-namespace {
-lyx::frontend::QWorkArea * wa_ptr = 0;
-}
-
 namespace lyx {
 namespace frontend {
 
@@ -72,9 +68,6 @@ QWorkArea::QWorkArea(LyXView & owner, int, int)
 	vl->addWidget(content_, 5);
 	vl->addWidget(scrollbar_, 0);
 
-#ifdef Q_WS_MACX
-	wa_ptr = this;
-#endif
 	show();
 }
 
@@ -100,117 +93,6 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 	scrollbar_->setPageStep(height());
 
 	scrollbar_->setTracking(true);
-}
-
-} // namespace frontend
-} // namespace lyx
-
-
-#ifdef Q_WS_X11
-bool lyxX11EventFilter(XEvent * xev)
-{
-	switch (xev->type) {
-	case SelectionRequest:
-		lyxerr[Debug::GUI] << "X requested selection." << endl;
-		if (wa_ptr) {
-			lyx::docstring const sel = wa_ptr->view().view()->requestSelection();
-			if (!sel.empty())
-				wa_ptr->view().gui().selection().put(sel);
-		}
-		break;
-	case SelectionClear:
-		lyxerr[Debug::GUI] << "Lost selection." << endl;
-		if (wa_ptr)
-			wa_ptr->view().view()->clearSelection();
-		break;
-	}
-	return false;
-}
-#endif
-
-#ifdef Q_WS_MACX
-namespace{
-OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
- {
-	DescType returnedType;
-	Size actualSize;
-	OSErr err = AEGetAttributePtr(&theAppleEvent, keyMissedKeywordAttr,
-				      typeWildCard, &returnedType, nil, 0,
-				      &actualSize);
-	switch (err) {
-	case errAEDescNotFound:
-		return noErr;
-	case noErr:
-		return errAEEventNotHandled;
-	default:
-		return err;
-	}
- }
-}
-
-pascal OSErr handleOpenDocuments(const AppleEvent* inEvent,
-				 AppleEvent* /*reply*/, long /*refCon*/)
-{
-	QString s_arg;
-	AEDescList documentList;
-	OSErr err = AEGetParamDesc(inEvent, keyDirectObject, typeAEList,
-				   &documentList);
-	if (err != noErr)
-		return err;
-
-	err = checkAppleEventForMissingParams(*inEvent);
-	if (err == noErr) {
-		long documentCount;
-		err = AECountItems(&documentList, &documentCount);
-		for (long documentIndex = 1;
-		     err == noErr && documentIndex <= documentCount;
-		     documentIndex++) {
-			DescType returnedType;
-			Size actualSize;
-			AEKeyword keyword;
-			FSRef ref;
-			char qstr_buf[1024];
-			err = AESizeOfNthItem(&documentList, documentIndex,
-					      &returnedType, &actualSize);
-			if (err == noErr) {
-				err = AEGetNthPtr(&documentList, documentIndex,
-						  typeFSRef, &keyword,
-						  &returnedType, (Ptr)&ref,
-						  sizeof(FSRef), &actualSize);
-				if (err == noErr) {
-					FSRefMakePath(&ref, (UInt8*)qstr_buf,
-						      1024);
-					s_arg=QString::fromUtf8(qstr_buf);
-					wa_ptr->view().view()->workAreaDispatch(
-						FuncRequest(LFUN_FILE_OPEN,
-							    fromqstr(s_arg)));
-					break;
-				}
-			}
-		} // for ...
-	}
-	AEDisposeDesc(&documentList);
-	return err;
-}
-#endif  // Q_WS_MACX
-
-
-namespace lyx {
-namespace frontend {
-
-void QWorkArea::haveSelection(bool own)
-{
-	wa_ptr = const_cast<QWorkArea*>(this);
-
-	if (!QApplication::clipboard()->supportsSelection())
-		return;
-
-	if (own) {
-		QApplication::clipboard()->setSelectionMode(true);
-		QApplication::clipboard()->setText(QString());
-	}
-	// We don't need to do anything if own = false, as this case is
-	// handled by QT.
 }
 
 

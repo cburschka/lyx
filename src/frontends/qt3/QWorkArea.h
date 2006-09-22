@@ -49,8 +49,6 @@ public:
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 
-	/// a selection exists
-	virtual void haveSelection(bool);
 	///
 	virtual void dragEnterEvent(QDragEnterEvent * event);
 	///

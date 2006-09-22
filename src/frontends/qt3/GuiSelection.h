@@ -14,8 +14,6 @@
 
 #include "frontends/Selection.h"
 
-#include "QWorkArea.h"
-
 namespace lyx {
 namespace frontend {
 
@@ -25,28 +23,19 @@ namespace frontend {
 class GuiSelection: public lyx::frontend::Selection
 {
 public:
-	GuiSelection(QWorkArea * work_area)
-		: old_work_area_(work_area)
-	{
-	}
+	GuiSelection() {}
 
 	virtual ~GuiSelection() {}
 
 	/** Selection overloaded methods
 	 */
 	//@{
-	void haveSelection(bool own)
-	{
-		old_work_area_->haveSelection(own);
-	}
+	void haveSelection(bool);
 
 	docstring const get() const;
 
 	void put(docstring const & str);
 	//@}
-
-private:
-	QWorkArea * old_work_area_;
 };
 
 } // namespace frontend
