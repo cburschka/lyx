@@ -56,6 +56,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
   install_${component}:
       
     ExecWait '"$PLUGINSDIR\${component}Setup.exe"'
+    Call UpdatePathEnvironment
     Call Search${component}
     
     ${if} $Path${component} == ""  

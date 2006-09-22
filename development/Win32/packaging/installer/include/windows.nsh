@@ -47,6 +47,23 @@ Function CheckPriviledges
   
 FunctionEnd
 
+Function UpdatePathEnvironment
+
+  Push $R0
+  Push $R1
+  
+  ;Updates the path environment variable of the instaler process to the latest system value
+  
+  ReadRegStr $R0 HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" Path
+  ReadRegStr $R1 HKCU "Environment" Path
+  
+  System::Call 'kernel32::SetEnvironmentVariableA(t, t) i("Path", "$R0;$R1").r0'
+  
+  Pop $R1
+  Pop $R0
+
+FunctionEnd
+
 Function un.SetShellContext
 
   Push $R0
