@@ -62,6 +62,26 @@ Section -InstallData
   
 SectionEnd
 
+Section -LaTeX
+
+  ;dvipost package
+
+  Call SearchLaTeXLocalRoot
+  Pop $R0
+
+  ${if} $R0 != ""
+    SetOutPath "$R0\tex\latex\dvipost"
+    File "${FILES_DVIPOST_PKG}\dvipost.sty"
+  ${endif}
+  
+  ;Update file name database
+  
+  ${if} $PathLaTeX != ""
+    nsExec::Exec '"$PathLaTeX\initexmf.exe" --update-fndb'
+  ${endif}
+
+SectionEnd
+
 Section -Configure
 
   ;Remove old configuration files

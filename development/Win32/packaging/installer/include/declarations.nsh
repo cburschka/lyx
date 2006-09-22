@@ -41,6 +41,7 @@ ReserveFile "dialogs\external.ini"
 ReserveFile "dialogs\viewer.ini"
 ReserveFile "dialogs\langselect.ini"
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+ReserveFile "${FILES_DVIPOST_PKG}\dvipost.sty"
 
 ;--------------------------------
 ;Variables
