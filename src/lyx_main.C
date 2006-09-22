@@ -35,12 +35,12 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
-#include "lyxserver.h"
 #include "MenuBackend.h"
 #include "mover.h"
 #include "ToolbarBackend.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Application.h"
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
 
@@ -88,8 +88,6 @@ using std::signal;
 using std::system;
 #endif
 
-
-extern LyXServer * lyxserver;
 
 // This is the global bufferlist object
 BufferList bufferlist;
@@ -661,8 +659,7 @@ void LyX::emergencyCleanup() const
 	// a crash
 
 	bufferlist.emergencyWriteAll();
-	if (lyxserver)
-		lyxserver->emergencyCleanup();
+	theApp->server().emergencyCleanup();
 }
 
 

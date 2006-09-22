@@ -24,8 +24,6 @@
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
-#include "lyxserver.h"
-#include "lyxsocket.h"
 
 
 #include "support/lstrings.h"

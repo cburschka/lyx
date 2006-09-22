@@ -25,11 +25,6 @@
 
 using lyx::support::package;
 
-// FIXME: replace all occurence of lyxserver with theApp->server().
-LyXServer * lyxserver;
-// FIXME: replace all occurence of lyxsocket with theApp->socket().
-LyXServerSocket * lyxsocket;
-
 namespace lyx {
 namespace frontend {
 
@@ -86,10 +81,6 @@ int Application::start(std::string const & batch)
 	lyx_server_.reset(new LyXServer(lyxfunc_.get(), lyxrc.lyxpipes));
 	lyx_socket_.reset(new LyXServerSocket(lyxfunc_.get(), 
 		lyx::support::os::internal_path(package().temp_dir() + "/lyxsocket")));
-
-	// FIXME: these two lines should disappear soon (Abdel 20/09/71)
-	lyxserver = lyx_server_.get();
-	lyxsocket = lyx_socket_.get();
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {

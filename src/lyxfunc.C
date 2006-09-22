@@ -51,7 +51,6 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
-#include "lyxserver.h"
 #include "lyxtextclasslist.h"
 #include "lyxvc.h"
 #include "paragraph.h"
@@ -72,6 +71,7 @@
 #include "insets/insetvspace.h"
 #include "insets/insetwrap.h"
 
+#include "frontends/Application.h"
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
@@ -139,7 +139,6 @@ namespace fs = boost::filesystem;
 
 
 extern BufferList bufferlist;
-extern LyXServer * lyxserver;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
@@ -1120,7 +1119,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_SERVER_NOTIFY:
 			dispatch_buffer = lyx::from_utf8(keyseq.print());
-			lyxserver->notifyClient(lyx::to_utf8(dispatch_buffer));
+			theApp->server().notifyClient(lyx::to_utf8(dispatch_buffer));
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW: {

@@ -16,8 +16,8 @@
 #include "lyxrc.h"
 #include "debug.h"
 #include "gettext.h"
-#include "lyxsocket.h"
 
+#include "frontends/Application.h"
 #include "frontends/Alert.h" //to be removed?
 
 #include "support/filetools.h"
@@ -45,8 +45,6 @@ using std::distance;
 
 namespace fs = boost::filesystem;
 namespace os = lyx::support::os;
-
-extern LyXServerSocket * lyxsocket;
 
 namespace {
 
@@ -311,7 +309,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 
 	command = subst(command, token_from, quoteName(filename));
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
-	command = subst(command, token_socket, quoteName(lyxsocket->address()));
+	command = subst(command, token_socket, quoteName(theApp->socket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + lyx::from_utf8(command));
 
@@ -370,7 +368,7 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 
 	command = subst(command, token_from, quoteName(filename));
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
-	command = subst(command, token_socket, quoteName(lyxsocket->address()));
+	command = subst(command, token_socket, quoteName(theApp->socket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + lyx::from_utf8(command));
 
