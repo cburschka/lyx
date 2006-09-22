@@ -13,6 +13,7 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
+#include "frontends/Application.h"
 #include "frontends/Toolbars.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -87,9 +88,9 @@ public:
 	Buffer * buffer() const;
 
 	/// return the LyX function handler for this view
-	LyXFunc & getLyXFunc() { return *lyxfunc_.get(); }
+	LyXFunc & getLyXFunc() { return theApp->lyxFunc(); }
 	///
-	LyXFunc const & getLyXFunc() const { return *lyxfunc_.get(); }
+	LyXFunc const & getLyXFunc() const { return theApp->lyxFunc(); }
 
 	/// return the toolbar for this view
 	Toolbars & getToolbars() { return *toolbars_.get(); }

@@ -1,5 +1,5 @@
 /**
- * \file qt4/Application.C
+ * \file qt4/GuiApplication.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,42 +12,68 @@
 
 #include <config.h>
 
-#include "Application.h"
+#include "GuiApplication.h"
 
+#include "GuiView.h"
 #include "GuiWorkArea.h"
-
 #include "qt_helpers.h"
+#include "QLImage.h"
 
 #include "BufferView.h"
-#include "debug.h"
+
+#include "graphics/LoaderQueue.h"
 
 #include "support/lstrings.h"
+#include "support/os.h"
+#include "support/package.h"
+
+#include "lyx_main.h"
+#include "lyxrc.h"
+#include "debug.h"
 
 #include <QApplication>
-#include <QEventLoop>
-#include <QTranslator>
-#include <QTextCodec>
 #include <QClipboard>
+#include <QEventLoop>
+#include <QLocale>
+#include <QLibraryInfo>
+#include <QTextCodec>
+#include <QTranslator>
 
 #ifdef Q_WS_X11
 #include <X11/Xlib.h>
 #endif
+
+#include <boost/bind.hpp>
 
 using lyx::support::subst;
 
 using std::string;
 using std::endl;
 
+// in QLyXKeySym.C
+extern void initEncodings();
+
 ///////////////////////////////////////////////////////////////
 // You can find other X11 and MACX specific stuff
 // at the end of this file...
 ///////////////////////////////////////////////////////////////
 
+namespace {
+
+int getDPI()
+{
+	QWidget w;
+	return int(0.5 * (w.logicalDpiX() + w.logicalDpiY()));
+}
+
+} // namespace anon
+
+
 namespace lyx {
 namespace frontend {
 
-Application::Application(int & argc, char ** argv)
-	: QApplication(argc, argv), buffer_view_(0)
+GuiApplication::GuiApplication(int & argc, char ** argv)
+	: QApplication(argc, argv), Application(argc, argv)
 {
 #ifdef Q_WS_X11
 	// doubleClickInterval() is 400 ms on X11 witch is just too long.
@@ -62,19 +88,121 @@ Application::Application(int & argc, char ** argv)
 			      NewAEEventHandlerUPP(handleOpenDocuments),
 			      0, false);
 #endif
+
+	// install translation file for Qt built-in dialogs
+	// These are only installed since Qt 3.2.x
+	QTranslator qt_trans;
+	QString language_name = QString("qt_") + QLocale::system().name();
+	language_name.truncate(5);
+	if (qt_trans.load(language_name,
+		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+	{
+		qApp->installTranslator(&qt_trans);
+		// even if the language calls for RtL, don't do that
+		qApp->setLayoutDirection(Qt::LeftToRight);
+		lyxerr[Debug::GUI]
+			<< "Successfully installed Qt translations for locale "
+			<< fromqstr(language_name) << std::endl;
+	} else
+		lyxerr[Debug::GUI]
+			<< "Could not find  Qt translations for locale "
+			<< fromqstr(language_name) << std::endl;
+
+/*#ifdef Q_WS_MACX
+	// These translations are meant to break Qt/Mac menu merging
+	// algorithm on some entries. It lists the menu names that
+	// should not be moved to the LyX menu
+	QTranslator aqua_trans(0);
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0,
+					     "do_not_merge_me"));
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0,
+					     "do_not_merge_me"));
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Options", 0,
+					     "do_not_merge_me"));
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0,
+					     "do_not_merge_me"));
+
+	qApp->installTranslator(&aqua_trans);
+#endif
+*/
+	using namespace lyx::graphics;
+
+	Image::newImage = boost::bind(&QLImage::newImage);
+	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
+
+	// needs to be done before reading lyxrc
+	lyxrc.dpi = getDPI();
+
+	LoaderQueue::setPriority(10,100);
 }
 
 
-void Application::setBufferView(BufferView * buffer_view)
+int const GuiApplication::exec()
 {
-	buffer_view_ = buffer_view;
+	return QApplication::exec();
+}
+
+
+void GuiApplication::exit(int status)
+{
+	QApplication::exit(status);
+}
+
+
+// FIXME: this whole method needs to be moved to Application.
+LyXView & GuiApplication::createView(unsigned int width,
+									  unsigned int height,
+									  int posx, int posy,
+									  bool maximize)
+{
+	// this can't be done before because it needs the Languages object
+	initEncodings();
+
+	int view_id = gui().newView(width, height);
+	GuiView & view = static_cast<GuiView &> (gui().view(view_id));
+
+	lyxfunc_.reset(new LyXFunc(&view));
+
+	// FIXME: for now we assume that there is only one LyXView with id = 0.
+	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
+	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
+
+	LyX::ref().addLyXView(&view);
+
+	view.init();
+
+	// FIXME: put this initialisation code in GuiView accessible via
+	// a pure virtual method in LyXView.
+
+	// only true when the -geometry option was NOT used
+	if (width != 0 && height != 0) {
+		if (posx != -1 && posy != -1) {
+#ifdef Q_OS_WIN32
+			// FIXME: use only setGeoemtry when Trolltech has
+			// fixed the qt4/X11 bug
+			view.setGeometry(posx, posy,width, height);
+#else
+			view.resize(width, height);
+			view.move(posx, posy);
+#endif
+		} else {
+			view.resize(width, height);
+		}
+
+		if (maximize)
+			view.setWindowState(Qt::WindowMaximized);
+	}
+
+	view.show();
+
+	return view;
 }
 
 
 ////////////////////////////////////////////////////////////////////////
 // X11 specific stuff goes here...
 #ifdef Q_WS_X11
-bool Application::x11EventFilter(XEvent * xev)
+bool GuiApplication::x11EventFilter(XEvent * xev)
 {
 	switch (xev->type) {
 	case SelectionRequest:
@@ -101,6 +229,7 @@ bool Application::x11EventFilter(XEvent * xev)
 
 #ifdef Q_WS_MACX
 namespace{
+
 OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
  {
 	DescType returnedType;
@@ -117,9 +246,10 @@ OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
 		return err;
 	}
  }
+
 } // namespace
 
-OSErr Application::handleOpenDocuments(const AppleEvent* inEvent,
+OSErr GuiApplication::handleOpenDocuments(const AppleEvent* inEvent,
 				       AppleEvent* /*reply*/, long /*refCon*/)
 {
 	QString s_arg;
@@ -165,7 +295,7 @@ OSErr Application::handleOpenDocuments(const AppleEvent* inEvent,
 	return err;
 }
 
-bool Application::macEventFilter(EventRef event)
+bool GuiApplication::macEventFilter(EventRef event)
 {
 	if (GetEventClass(event) == kEventClassAppleEvent) {
 		EventRecord eventrec;

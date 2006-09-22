@@ -1,5 +1,5 @@
 /**
- * \file qt4/Application.h
+ * \file qt4/GuiApplication.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,11 +10,13 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LYX_APPLICATION_H
-#define LYX_APPLICATION_H
+#ifndef QT4_APPLICATION_H
+#define QT4_APPLICATION_H
 
 #include "GuiImplementation.h"
 #include "FontLoader.h"
+
+#include "frontends/Application.h"
 
 #include <QApplication>
 
@@ -41,22 +43,26 @@ initialisation should be done before the instanciation of this class.
 \todo The work areas handling could be moved to a base virtual class
 comon to all frontends.
 */
-class Application : public QApplication
+class GuiApplication : public QApplication, public Application
 {
 public:
-	Application(int & argc, char ** argv);
+	GuiApplication(int & argc, char ** argv);
 
-	//
-	Gui & gui() { return gui_; }
+	/// Method inherited from \c Application class
+	//@{
+	virtual int const exec();
+	virtual Gui & gui() { return gui_; }
+	virtual void exit(int status);
+	//@}
+
 	///
 	FontLoader & fontLoader() { return font_loader_; }
+
 	///
-	void setBufferView(BufferView * buffer_view);
+	LyXView & createView(unsigned int width, unsigned int height,
+		int posx, int posy, bool maximize);
 
 private:
-	///
-	BufferView * buffer_view_;
-
 	///
 	GuiImplementation gui_;
 
@@ -76,12 +82,12 @@ private:
 	static pascal OSErr	handleOpenDocuments(
 		const AppleEvent* inEvent, AppleEvent*, long);
 #endif
-}; // Application
+}; // GuiApplication
 
 } // namespace frontend
 } // namespace lyx
 
-extern lyx::frontend::Application * theApp;
+extern lyx::frontend::GuiApplication * guiApp;
 
 
-#endif // LYX_APPLICATION_H
+#endif // QT4_APPLICATION_H

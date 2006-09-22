@@ -164,6 +164,8 @@ void WorkArea::setBufferView(BufferView * buffer_view)
 		lyx_view_.disconnectBufferView();
 	}
 
+	theApp->setBufferView(buffer_view);
+
 	hideCursor();
 	buffer_view_ = buffer_view;
 	toggleCursor();

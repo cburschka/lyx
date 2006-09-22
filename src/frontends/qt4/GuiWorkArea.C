@@ -13,7 +13,7 @@
 
 #include "GuiWorkArea.h"
 
-#include "Application.h"
+#include "GuiApplication.h"
 #include "ColorCache.h"
 #include "QLPainter.h"
 #include "QLyXKeySym.h"

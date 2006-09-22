@@ -18,7 +18,7 @@
 #include "ColorCache.h"
 #include "FontLoader.h"
 
-#include "Application.h"
+#include "GuiApplication.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
@@ -202,8 +202,8 @@ void QLPainter::smallCapsText(int x, int y,
 	LyXFont smallfont(f);
 	smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 
-	QFont const & qfont = theApp->fontLoader().get(f);
-	QFont const & qsmallfont = theApp->fontLoader().get(smallfont);
+	QFont const & qfont = guiApp->fontLoader().get(f);
+	QFont const & qsmallfont = guiApp->fontLoader().get(smallfont);
 	QFontMetrics const & qfontm = QFontMetrics(qfont);
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
@@ -252,7 +252,7 @@ void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());
-		qp_->setFont(theApp->fontLoader().get(f));
+		qp_->setFont(guiApp->fontLoader().get(f));
 		// We need to draw the text as LTR as we use our own bidi code.
 		qp_->setLayoutDirection(Qt::LeftToRight);
 		qp_->drawText(x, y, str);
