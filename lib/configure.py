@@ -289,6 +289,7 @@ def checkFormatEntries():
 \Format program    ""      Program                "" ""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""
 \Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
+\Format wmf        wmf    "Windows Meta File"     "" ""	""
 \Format word       doc    "MS Word"               W  ""	""
 \Format wordhtml   html   "MS Word (HTML)"        "" ""        ""
 ''')
@@ -368,6 +369,9 @@ def checkConverterEntries():
 \converter tgif       png        "tgif -stdout -print -color -png $$i > $$o"	""
 \converter tgif       pdf        "tgif -stdout -print -color -pdf $$i > $$o"	""''',
             ''])
+    #
+    checkProg('a WMF -> EPS converter', ['wmf2eps -o $$o $$i'],
+        rc_entry = [ r'\converter wmf        eps        "%%"	""', ''])
     #
     checkProg('a EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
