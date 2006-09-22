@@ -4,7 +4,7 @@ Create uninstaller, file associations and configure LyX
 
 */
 
-!define SHORTCUT '\${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\bin\lyx_32x32.ico" "" "" "" "${APP_INFO}"'
+!define SHORTCUT '${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\bin\lyx_32x32.ico" "" "" "" "${APP_INFO}"'
 
 ;--------------------------------
 ;Sections
