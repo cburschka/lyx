@@ -20,9 +20,8 @@ libboost_regex_la_SOURCES = \
 	regex.cpp \
 	regex_raw_buffer.cpp \
 	regex_traits_defaults.cpp \
-	w32_regex_traits.cpp
-
-#	posix_api.cpp \
-#	wide_posix_api.cpp \
-#	regex_debug.cpp \
-#	winstances.cpp
+	w32_regex_traits.cpp \
+	posix_api.cpp \
+	wide_posix_api.cpp \
+	regex_debug.cpp \
+	winstances.cpp
