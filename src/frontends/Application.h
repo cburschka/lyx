@@ -41,7 +41,10 @@ comon to all frontends.
 class Application
 {
 public:
+	///
 	Application(int & argc, char ** argv);
+	///
+	virtual ~Application() {}
 
 	int start(std::string const & batch);
 	///
