@@ -13,8 +13,10 @@
 #ifndef QT4_APPLICATION_H
 #define QT4_APPLICATION_H
 
-#include "GuiImplementation.h"
 #include "FontLoader.h"
+#include "GuiClipboard.h"
+#include "GuiImplementation.h"
+#include "GuiSelection.h"
 
 #include "frontends/Application.h"
 
@@ -50,6 +52,8 @@ public:
 
 	/// Method inherited from \c Application class
 	//@{
+	virtual Clipboard& clipboard();
+	virtual Selection& selection();
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
@@ -65,7 +69,10 @@ public:
 private:
 	///
 	GuiImplementation gui_;
-
+	///
+	GuiClipboard clipboard_;
+	///
+	GuiSelection selection_;
 	///
 	FontLoader font_loader_;
 

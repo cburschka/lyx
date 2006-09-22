@@ -64,7 +64,6 @@
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/font_metrics.h"
-#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 #include "frontends/Selection.h"
 
@@ -84,7 +83,6 @@
 
 
 using lyx::frontend::Clipboard;
-using lyx::frontend::Gui;
 
 using lyx::docstring;
 using lyx::pos_type;

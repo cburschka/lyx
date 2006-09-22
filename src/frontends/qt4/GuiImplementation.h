@@ -14,8 +14,6 @@
 #define GUI_H
 
 #include "frontends/Gui.h"
-#include "GuiClipboard.h"
-#include "GuiSelection.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -38,9 +36,6 @@ public:
 	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
-	Clipboard& clipboard();
-	Selection& selection();
-
 	int newView(unsigned int width, unsigned int height);
 	LyXView& view(int id);
 	void destroyView(int id);
@@ -51,10 +46,6 @@ public:
 
 
 private:
-	///
-	GuiClipboard clipboard_;
-	///
-	GuiSelection selection_;
 	///
 	std::map<int, boost::shared_ptr<GuiView> > views_;
 	///

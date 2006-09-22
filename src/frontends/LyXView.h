@@ -58,7 +58,7 @@ class ControlCommandBuffer;
 class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
 
-	LyXView(lyx::frontend::Gui & owner);
+	LyXView();
 
 	virtual ~LyXView();
 
@@ -162,9 +162,6 @@ public:
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
 
-	///
-	virtual lyx::frontend::Gui & gui();
-
 	/// Temporary method used by the kernel to redraw the work area.
 	virtual void redrawWorkArea();
 
@@ -191,7 +188,6 @@ protected:
 	boost::scoped_ptr<Menubar> menubar_;
 
 private:
-	lyx::frontend::Gui & owner_;
 	/**
 	 * setWindowTitle - set title of window
 	 * @param t main window title

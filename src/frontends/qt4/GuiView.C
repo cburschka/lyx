@@ -68,8 +68,8 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-GuiView::GuiView(Gui & owner)
-	: QMainWindow(), LyXView(owner), commandbuffer_(0)
+GuiView::GuiView()
+	: QMainWindow(), LyXView(), commandbuffer_(0)
 {
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));

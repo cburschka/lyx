@@ -25,8 +25,9 @@ class LyXView;
 namespace lyx {
 namespace frontend {
 
-//class GuiWorkArea;
+class Clipboard;
 class Gui;
+class Selection;
 
 
 /// The main application class
@@ -49,6 +50,11 @@ public:
 	virtual int const exec() = 0;
 	///
 	virtual void exit(int status) = 0;
+
+	///
+	virtual Clipboard & clipboard() = 0;
+	///
+	virtual Selection & selection() = 0;
 
 	///
 	LyXFunc & lyxFunc();

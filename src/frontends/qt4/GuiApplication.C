@@ -137,6 +137,18 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 }
 
 
+Clipboard& GuiApplication::clipboard()
+{
+	return clipboard_;
+}
+
+
+Selection& GuiApplication::selection()
+{
+	return selection_;
+}
+
+
 int const GuiApplication::exec()
 {
 	return QApplication::exec();

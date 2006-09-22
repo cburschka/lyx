@@ -45,7 +45,6 @@
 
 #include "support/lstrings.h"
 
-#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 #include "frontends/Clipboard.h"
 
@@ -57,7 +56,6 @@ using lyx::textclass_type;
 
 using lyx::support::bformat;
 
-using lyx::frontend::Gui;
 using lyx::frontend::Clipboard;
 
 using std::endl;
@@ -513,8 +511,8 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// solved by running the line below only when the selection has
 		// finished. The solution used currently just works, to make it
 		// faster we need to be more clever and probably also have more
-		// calls to cur.bv().owner()->gui().selection().put. (Lgb)
-//		cur.bv().owner()->gui().selection().put(cur.selectionAsString(true));
+		// calls to theApp->selection().put. (Lgb)
+//		theApp->selection().put(cur.selectionAsString(true));
 
 
 		// make sure that the depth behind the selection are restored, too
@@ -578,7 +576,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 void copySelection(LCursor & cur)
 {
 	// stuff the selection onto the X clipboard, from an explicit copy request
-	cur.bv().owner()->gui().clipboard().put(cur.selectionAsString(true));
+	theApp->clipboard().put(cur.selectionAsString(true));
 
 	// this doesn't make sense, if there is no selection
 	if (!cur.selection())

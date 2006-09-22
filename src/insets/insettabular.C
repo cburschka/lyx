@@ -38,7 +38,6 @@
 
 #include "frontends/Alert.h"
 #include "frontends/font_metrics.h"
-#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
@@ -59,7 +58,6 @@ using lyx::graphics::PreviewLoader;
 using lyx::support::ltrim;
 
 using lyx::frontend::Painter;
-using lyx::frontend::Gui;
 using lyx::frontend::Clipboard;
 
 using boost::shared_ptr;
@@ -700,8 +698,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		docstring const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
-			cur.bv().owner()->gui().clipboard().get() :
-			cur.bv().owner()->gui().selection().get();
+			theApp->clipboard().get() :
+			theApp->selection().get();
 		if (clip.empty())
 			break;
 		// pass to InsertAsciiString, but
@@ -1780,7 +1778,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 	ostringstream os;
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
-	cur.bv().owner()->gui().clipboard().put(lyx::from_utf8(os.str()));
+	theApp->clipboard().put(lyx::from_utf8(os.str()));
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.

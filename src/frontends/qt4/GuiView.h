@@ -47,7 +47,7 @@ class GuiView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
 	/// create a main window of the given dimensions
-	GuiView(Gui & owner);
+	GuiView();
 
 	~GuiView();
 

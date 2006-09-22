@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "LyXView.h"
-#include "Gui.h"
 #include "Dialogs.h"
 #include "Timeout.h"
 #include "Toolbars.h"
@@ -50,7 +49,6 @@
 # include <unistd.h>
 #endif
 
-using lyx::frontend::Gui;
 using lyx::frontend::WorkArea;
 
 using lyx::docstring;
@@ -65,15 +63,9 @@ using lyx::frontend::ControlCommandBuffer;
 
 string current_layout;
 
-Gui & LyXView::gui()
-{
-	return owner_;
-}
 
-
-LyXView::LyXView(Gui & owner)
+LyXView::LyXView()
 	: work_area_(0),
-	  owner_(owner),
 	  toolbars_(new Toolbars(*this)),
 	  autosave_timeout_(new Timeout(5000)),
 	  lyxfunc_(new LyXFunc(this)),
