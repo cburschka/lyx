@@ -16,6 +16,21 @@
 
 import os, re, string, sys, tempfile
 
+# compatibility with python 2.2
+if sys.version_info[:3] == (2, 2, 0):
+    __builtin__.True = (1 == 1)
+    __builtin__.False = (1 == 0)
+    def bool(value):
+        """Demote a value to 0 or 1, depending on its truth value
+
+        This is not to be confused with types.BooleanType, which is
+        way too hard to duplicate in 2.1 to be worth the trouble.
+        """
+        return not not value
+    __builtin__.bool = bool
+    del bool
+# end compatibility chunk
+
 use_win32_modules = 0
 if os.name == "nt":
     use_win32_modules = 1

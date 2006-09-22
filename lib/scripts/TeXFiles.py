@@ -33,12 +33,63 @@
 # relies on python and kpsewhich (no shell command is used).
 # 
 
+# this import is required for 2.2 compatibility
+from __future__ import generators
+
 import os, sys, re
 
 cls_stylefile = 'clsFiles.lst'
 sty_stylefile = 'styFiles.lst'
 bst_stylefile = 'bstFiles.lst'
 bib_files = 'bibFiles.lst'
+
+# this code was taken from twisted
+# http://twistedmatrix.com/trac/browser/trunk/twisted/python/compat.py?rev=14178&format=txt
+# and allow us to use os.walk with python 2.2
+try:
+    os.walk
+except AttributeError:
+    if sys.version_info[:3] == (2, 2, 0):
+        __builtin__.True = (1 == 1)
+        __builtin__.False = (1 == 0)
+        def bool(value):
+            """Demote a value to 0 or 1, depending on its truth value
+
+            This is not to be confused with types.BooleanType, which is
+            way too hard to duplicate in 2.1 to be worth the trouble.
+            """
+            return not not value
+        __builtin__.bool = bool
+        del bool
+
+    def walk(top, topdown=True, onerror=None):
+        from os.path import join, isdir, islink
+
+        try:
+            names = os.listdir(top)
+        except OSError, e:
+            if onerror is not None:
+                onerror(err)
+            return
+
+        nondir, dir = [], []
+        nameLists = [nondir, dir]
+        for name in names:
+            nameLists[isdir(join(top, name))].append(name)
+
+        if topdown:
+            yield top, dir, nondir
+
+        for name in dir:
+            path = join(top, name)
+            if not islink(path):
+                for x in walk(path, topdown, onerror):
+                    yield x
+
+        if not topdown:
+            yield top, dir, nondir
+    os.walk = walk
+# end compatibility chunk
 
 def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string

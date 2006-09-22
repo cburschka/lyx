@@ -579,10 +579,14 @@ def checkLatexConfig(check_config, bool_docbook, bool_linuxdoc):
         for line in open('chkconfig.vars').readlines():
             key, val = re.sub('-', '_', line).split('=')
             val = val.strip()
-            tmp = val.split("'")
-            while tmp and not tmp[0]: tmp = tmp[1:]
-            while tmp and not tmp[-1]: tmp = tmp[:-1]
-            values[key] = "'".join(tmp)
+            try:
+                values[key] = val.strip("'")
+            except TypeError:
+                # workaround for python 2.2.0 and 2.2.1
+                tmp = val.split("'")
+                while tmp and not tmp[0]: tmp = tmp[1:]
+                while tmp and not tmp[-1]: tmp = tmp[:-1]
+                values[key] = "'".join(tmp)
         # chk_fontenc may not exist 
         try:
             addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])

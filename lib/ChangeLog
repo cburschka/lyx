@@ -1,4 +1,12 @@
-2009-09-21  José Matos  <jamatos@lyx.org>
+2006-09-22  José Matos  <jamatos@lyx.org>
+
+	* scripts/lyxpreview_tools.py
+	* scripts/fig_copy.py
+	* scripts/TeXFiles.py	
+	* configure.py: make code compatible with python 2.2.0 and document
+	the changes.
+	
+2006-09-21  José Matos  <jamatos@lyx.org>
 
 	* configure.py: make it compatible with python 2.2
 
