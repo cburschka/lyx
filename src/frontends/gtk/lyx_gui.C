@@ -37,17 +37,16 @@
 #include "io_callback.h"
 
 // FIXME: move this stuff out again
-#include "bufferlist.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
 #include "BufferView.h"
 
+#include "GuiApplication.h"
 #include "GuiImplementation.h"
 #include "GView.h"
 #include "GtkmmX.h"
 
-#include "xftFontLoader.h"
 #include "GWorkArea.h"
 
 #include "support/lyxlib.h"
@@ -56,8 +55,6 @@
 #include "support/package.h"
 
 #include <gtkmm.h>
-
-#include "LyXGdkImage.h"
 
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
@@ -77,15 +74,10 @@ using lyx::support::package;
 
 using lyx::frontend::colorCache;
 using lyx::frontend::Gui;
+using lyx::frontend::GuiApplication;
 using lyx::frontend::GuiImplementation;
 using lyx::frontend::GView;
 
-
-extern BufferList bufferlist;
-
-// FIXME: wrong place !
-LyXServer * lyxserver;
-LyXServerSocket * lyxsocket;
 
 bool lyx_gui::use_gui = true;
 
@@ -102,34 +94,13 @@ int getDPI()
 
 } // namespace anon
 
-class Application: public Gtk::Main
-{
-public:
-	///
-	Application(int & argc, char * argv[]): Gtk::Main(argc, argv)
-	{}
-	///
-	Gui & gui() { return gui_; }
-
-private:
-	///
-	GuiImplementation gui_;
-};
-
-Application * theApp;
+lyx::frontend::Application * theApp;
+GuiApplication * guiApp;
 
 int lyx_gui::exec(int & argc, char * argv[])
 {
-	theApp = new Application(argc, argv);
-
-	using namespace lyx::graphics;
-	Image::newImage = boost::bind(&LyXGdkImage::newImage);
-	Image::loadableFormats = boost::bind(&LyXGdkImage::loadableFormats);
-
-	locale_init();
-
-	// must do this /before/ lyxrc gets read
-	lyxrc.dpi = getDPI();
+	guiApp = new GuiApplication(argc, argv);
+	theApp = guiApp;
 
 	return LyX::ref().exec2(argc, argv);
 }
@@ -141,47 +112,21 @@ void lyx_gui::parse_lyxrc()
 
 
 LyXView * lyx_gui::create_view(unsigned int width, unsigned int height,
-		   int /*posx*/, int /*posy*/, bool)
+		int posx, int posy, bool maximize)
 {
-	int view_id = theApp->gui().newView(width, height);
-	GView & view = static_cast<GView &> (theApp->gui().view(view_id));
-	theApp->gui().newWorkArea(width, height, 0);
-
-	LyX::ref().addLyXView(&view);
-
-	view.show();
-	view.init();
-
-	return &view;
+	return &guiApp->createView(width, height, posx, posy, maximize);
 }
 
 
-int lyx_gui::start(LyXView * view, string const & batch)
+int lyx_gui::start(LyXView *, string const & batch)
 {
-	// FIXME: server code below needs moving
-
-	lyxserver = new LyXServer(&view->getLyXFunc(), lyxrc.lyxpipes);
-	lyxsocket = new LyXServerSocket(&view->getLyXFunc(),
-			  os::internal_path(package().temp_dir() + "/lyxsocket"));
-
-	// handle the batch commands the user asked for
-	if (!batch.empty()) {
-		view->getLyXFunc().dispatch(lyxaction.lookupFunc(batch));
-	}
-
-	theApp->run();
-
-	// FIXME: breaks emergencyCleanup
-	delete lyxsocket;
-	delete lyxserver;
-	return EXIT_SUCCESS;
+	return guiApp->start(batch);
 }
 
 
-void lyx_gui::exit(int /*status*/)
+void lyx_gui::exit(int status)
 {
-	// FIXME: Don't ignore status
-	theApp->quit();
+	guiApp->exit(status);
 }
 
 

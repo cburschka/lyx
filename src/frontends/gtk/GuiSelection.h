@@ -14,7 +14,8 @@
 
 #include "frontends/Selection.h"
 
-#include "GWorkArea.h"
+#include <gtkmm.h>
+#include <gtk/gtk.h>
 
 namespace lyx {
 namespace frontend {
@@ -25,28 +26,22 @@ namespace frontend {
 class GuiSelection: public lyx::frontend::Selection
 {
 public:
-	GuiSelection(GWorkArea * work_area)
-		: old_work_area_(work_area)
-	{
-	}
+	GuiSelection() {}
 
 	virtual ~GuiSelection() {}
 
 	/** Selection overloaded methods
 	 */
 	//@{
-	void haveSelection(bool own)
-	{
-		old_work_area_->haveSelection(own);
-	}
+	void haveSelection(bool own);
 
 	docstring const get() const;
 
 	void put(docstring const & str);
 	//@}
-
 private:
-	GWorkArea * old_work_area_;
+	void onClipboardGet(Gtk::SelectionData & selection_data, guint info);
+	void onClipboardClear();
 };
 
 } // namespace frontend

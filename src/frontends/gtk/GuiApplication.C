@@ -1,0 +1,125 @@
+/**
+ * \file qt4/GuiApplication.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author unknown
+ * \author John Levon
+ * \author Abdelrazak Younes
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "GuiApplication.h"
+
+#include "GView.h"
+#include "GuiWorkArea.h"
+#include "GtkmmX.h"
+
+#include "BufferView.h"
+
+#include "graphics/LoaderQueue.h"
+
+#include "support/lstrings.h"
+#include "support/os.h"
+#include "support/package.h"
+
+#include "lyx_main.h"
+#include "lyxrc.h"
+#include "debug.h"
+
+#include <gtkmm.h>
+
+#include "LyXGdkImage.h"
+
+
+using lyx::support::subst;
+
+using std::string;
+using std::endl;
+
+
+namespace {
+
+/// estimate DPI from X server
+int getDPI()
+{
+	//TODO use GDK instead
+	Screen * scr = ScreenOfDisplay(getDisplay(), getScreen());
+	return int(((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
+		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2);
+}
+
+} // namespace anon
+
+
+namespace lyx {
+namespace frontend {
+
+GuiApplication::GuiApplication(int & argc, char ** argv)
+	: Gtk::Main(argc, argv), Application(argc, argv)
+{
+	using namespace lyx::graphics;
+	Image::newImage = boost::bind(&LyXGdkImage::newImage);
+	Image::loadableFormats = boost::bind(&LyXGdkImage::loadableFormats);
+
+	// needs to be done before reading lyxrc
+	lyxrc.dpi = getDPI();
+
+	LoaderQueue::setPriority(10,100);
+}
+
+
+Clipboard& GuiApplication::clipboard()
+{
+	return clipboard_;
+}
+
+
+Selection& GuiApplication::selection()
+{
+	return selection_;
+}
+
+
+int const GuiApplication::exec()
+{
+	run();
+	return EXIT_SUCCESS;
+}
+
+
+void GuiApplication::exit(int /*status*/)
+{
+	// FIXME: Don't ignore status
+	guiApp->quit();
+}
+
+
+// FIXME: this whole method needs to be moved to Application.
+LyXView & GuiApplication::createView(unsigned int width,
+									  unsigned int height,
+									  int posx, int posy,
+									  bool maximize)
+{
+	// FIXME: for now we assume that there is only one LyXView with id = 0.
+	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
+	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
+
+	int view_id = gui().newView(width, height);
+	GView & view = static_cast<GView &>(gui().view(view_id));
+
+	lyxfunc_.reset(new LyXFunc(&view));
+
+	LyX::ref().addLyXView(&view);
+
+	view.show();
+	view.init();
+
+	return view;
+}
+
+} // namespace frontend
+} // namespace lyx

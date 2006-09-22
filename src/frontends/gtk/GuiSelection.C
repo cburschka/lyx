@@ -21,7 +21,13 @@
 #endif
 
 #include "GuiSelection.h"
+
+#include "BufferView.h"
 #include "debug.h"
+
+#include "frontends/Application.h"
+#include "frontends/Gui.h"
+#include "frontends/LyXView.h"
 
 #include <gtkmm.h>
 
@@ -48,6 +54,39 @@ void GuiSelection::put(docstring const & str)
 	Glib::RefPtr<Gtk::Clipboard> clipboard =
 		Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
 	clipboard->set_text(utf8);
+}
+
+
+void GuiSelection::onClipboardGet(Gtk::SelectionData & /*selection_data*/,
+		guint /*info*/)
+{
+	// FIXME: This assumes only one LyXView
+	lyx::docstring const sel = theApp->gui().view(0).view()->requestSelection();
+	if (!sel.empty())
+		put(sel);
+}
+
+
+void GuiSelection::onClipboardClear()
+{
+	// FIXME: This assumes only one LyXView
+	theApp->gui().view(0).view()->clearSelection();
+}
+
+
+void GuiSelection::haveSelection(bool toHave)
+{
+	if (toHave) {
+		Glib::RefPtr<Gtk::Clipboard> clipboard =
+			Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
+		std::vector<Gtk::TargetEntry> listTargets;
+		listTargets.push_back(Gtk::TargetEntry("UTF8_STRING"));
+		clipboard->set(listTargets,
+				sigc::mem_fun(const_cast<GuiSelection&>(*this),
+					&GuiSelection::onClipboardGet),
+				sigc::mem_fun(const_cast<GuiSelection&>(*this),
+					&GuiSelection::onClipboardClear));
+	}
 }
 
 } // namespace frontend

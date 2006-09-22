@@ -493,36 +493,5 @@ bool GWorkArea::onKeyPress(GdkEventKey * event)
 	return true;
 }
 
-
-void GWorkArea::onClipboardGet(Gtk::SelectionData & /*selection_data*/,
-			       guint /*info*/)
-{
-	lyx::docstring const sel = view_.view()->requestSelection();
-	if (!sel.empty())
-		view_.gui().selection().put(sel);
-}
-
-
-void GWorkArea::onClipboardClear()
-{
-//	clearSelection();
-}
-
-
-void GWorkArea::haveSelection(bool toHave)
-{
-	if (toHave) {
-		Glib::RefPtr<Gtk::Clipboard> clipboard =
-			Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-		std::vector<Gtk::TargetEntry> listTargets;
-		listTargets.push_back(Gtk::TargetEntry("UTF8_STRING"));
-		clipboard->set(listTargets,
-			       sigc::mem_fun(const_cast<GWorkArea&>(*this),
-					  &GWorkArea::onClipboardGet),
-			       sigc::mem_fun(const_cast<GWorkArea&>(*this),
-					  &GWorkArea::onClipboardClear));
-	}
-}
-
 } // namespace frontend
 } // namespace lyx

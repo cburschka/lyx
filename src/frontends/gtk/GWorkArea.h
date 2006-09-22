@@ -82,8 +82,6 @@ public:
 	ColorHandler & getColorHandler();
 
 	virtual void setScrollbarParams(int height, int pos, int line_height);
-	/// a selection exists
-	virtual void haveSelection(bool);
 	void inputCommit(gchar * str);
 
 	LyXView & view()
@@ -100,8 +98,6 @@ private:
 	bool onButtonRelease(GdkEventButton * event);
 	bool onMotionNotify(GdkEventMotion * event);
 	bool onKeyPress(GdkEventKey * event);
-	void onClipboardGet(Gtk::SelectionData & selection_data, guint info);
-	void onClipboardClear();
 	LyXView & view_;
 	Gtk::HBox hbox_;
 	Gtk::DrawingArea workArea_;

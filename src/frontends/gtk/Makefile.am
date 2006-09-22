@@ -138,6 +138,8 @@ libgtk_la_SOURCES = \
 	LyXKeySymFactory.C \
 	ghelpers.C \
 	ghelpers.h \
+	GuiApplication.C \
+	GuiApplication.h \
 	GuiImplementation.h \
 	GuiImplementation.C \
 	io_callback.C \

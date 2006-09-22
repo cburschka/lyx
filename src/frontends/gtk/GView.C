@@ -59,7 +59,7 @@ void add_el(Gtk::Box::BoxList & list, Gtk::Box & box, bool shrink)
 } // namespace anon
 
 
-GView::GView(Gui & owner) : LyXView(owner)
+GView::GView() : LyXView()
 {
 	// The physical store for the boxes making up the layout.
 	box_store_.push_back(BoxPtr(new Gtk::VBox));

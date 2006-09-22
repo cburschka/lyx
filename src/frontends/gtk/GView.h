@@ -35,7 +35,7 @@ public:
 		Center
 	};
 
-	GView(Gui & owner);
+	GView();
 	~GView();
 
 	Gtk::Box & getBox(Position pos);
