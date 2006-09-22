@@ -429,6 +429,7 @@ src_insets_files = Split('''
 src_frontends_header_files = Split('''
     Alert.h
     Alert_pimpl.h
+    Application.h
     Clipboard.h
     Dialogs.h
     FileDialog.h
@@ -453,6 +454,7 @@ src_frontends_header_files = Split('''
 
 src_frontends_files = Split('''
     Alert.C
+    Application.C
     Dialogs.C
     LyXView.C
     Painter.C
@@ -1104,12 +1106,12 @@ src_frontends_qt4_moc_files = Split('''
 
 src_frontends_qt4_header_files = Split('''
     Action.h
-    Application.h
     BiblioModuleBase.h
     BulletsModule.h
     ColorCache.h
     FileDialog_private.h
     FontLoader.h
+    GuiApplication.h
     GuiClipboard.h
     GuiImplementation.h
     GuiSelection.h
@@ -1223,13 +1225,13 @@ src_frontends_qt4_header_files = Split('''
 src_frontends_qt4_files = Split('''
     Action.C
     Alert_pimpl.C
-    Application.C
     BulletsModule.C
     ColorCache.C
     Dialogs.C
     FileDialog.C
     FileDialog_private.C
     FontLoader.C
+    GuiApplication.C
     GuiClipboard.C
     GuiImplementation.C
     GuiSelection.C

@@ -222,7 +222,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 		if (buffer_view_) {
 			lyx::docstring const sel = buffer_view_->requestSelection();
 			if (!sel.empty())
-				gui_.selection().put(sel);
+				selection_.put(sel);
 		}
 		break;
 	case SelectionClear:

@@ -31,11 +31,11 @@ AM_CPPFLAGS += \
 
 libqt4_la_SOURCES = \
 	Alert_pimpl.C \
-	Application.C Application.h \
 	ColorCache.h ColorCache.C \
 	Dialogs.C \
 	FileDialog.C \
 	FontLoader.h FontLoader.C \
+	GuiApplication.C GuiApplication.h \
 	GuiClipboard.h GuiClipboard.C \
 	GuiSelection.h GuiSelection.C \
 	GuiImplementation.h GuiImplementation.C \
