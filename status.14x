@@ -26,6 +26,9 @@ What's new
 
 * User Interface:
 
+- Fix a crash that occured on exit if the clipboard was not empty (only on
+  windows). This fix was already used by the official windows installer for
+  1.4.3.
 
 * Build/installation:
 
