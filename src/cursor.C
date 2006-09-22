@@ -1105,13 +1105,13 @@ void LCursor::handleFont(string const & font)
 
 void LCursor::message(docstring const & msg) const
 {
-	bv().owner()->getLyXFunc().setMessage(msg);
+	theApp->lyxFunc().setMessage(msg);
 }
 
 
 void LCursor::errorMessage(docstring const & msg) const
 {
-	bv().owner()->getLyXFunc().setErrorMessage(msg);
+	theApp->lyxFunc().setErrorMessage(msg);
 }
 
 

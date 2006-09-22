@@ -87,6 +87,15 @@ public:
 	/// return the buffer currently shown in this window
 	Buffer * buffer() const;
 
+	/* FIXME: Abdel 22/09/71
+	there is only one lyxFunc() for now but there is maybe a need
+	for more in the feature. Something like that:
+	
+		LyXFunc & getLyXFunc() { return theApp->lyxFunc(id_); }
+
+	where id_ would be the this LyXView ID.
+	That's the reason why I didn't remove these methods for now.
+	*/
 	/// return the LyX function handler for this view
 	LyXFunc & getLyXFunc() { return theApp->lyxFunc(); }
 	///
