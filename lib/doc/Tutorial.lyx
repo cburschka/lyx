@@ -1,18 +1,11 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 249
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
+\lyxformat 245
 \begin_document
 \begin_header
 \textclass book
 \language english
 \inputencoding latin1
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_default_family default
-\font_sc false
-\font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\fontscheme default
 \graphics none
 \paperfontsize default
 \spacing single
@@ -164,7 +157,7 @@ This tutorial consists of examples and exercises.
  To get the most out of this document, you should read through the document,
  typing all the silly little things we're telling you to type and trying
  out all of the exercises to see if you get them right.
- For convenience, you might want to print out the PostScriptÂ® version of
+ For convenience, you might want to print out the PostScript® version of
  this document.
 \end_layout
 
@@ -388,7 +381,7 @@ dvips
 \family typewriter
 dvi
 \family default
- documents to PostScriptÂ® documents, and a working printer.
+ documents to PostScript® documents, and a working printer.
  This is a lot to assume.
  If any of this is not true, you (or a friendly system administrator) will
  need to set up your system.
@@ -2573,7 +2566,7 @@ We told you that LyX worries about numbering cross-references; now you can
  test that.
  Add a new section before Section\InsetSpace ~
 2.
- Now rerun LaTeX, and --- voilÃ ! --- the section cross reference changed
+ Now rerun LaTeX, and --- voilà! --- the section cross reference changed
  to 
 \begin_inset Quotes eld
 \end_inset
@@ -2789,16 +2782,12 @@ Paste
 Insert\InsetSpace ~
 Footnote
 \family default
- button; change a footnote to regular text by hitting the 
+ button; change a footnote to regular text by clicking the 
 \family sans
-Backspace
+Insert\InsetSpace ~
+Footnote
 \family default
- key when the cursor is in the first position of a footnote, or by hitting
- the 
-\family sans
-Delete
-\family default
- key when the cursor is in the very last position of the footnote, respectively.
+ button when the cursor is in a footnote.
 \end_layout
 
 \begin_layout Standard
@@ -4351,7 +4340,7 @@ Settings
 
 \begin_layout Itemize
 LyX also supports including pictures in a number of formats (including JPEG
- and other bitmap formats, PostScriptÂ® and raw LaTeX) within documents.
+ and other bitmap formats, PostScript® and raw LaTeX) within documents.
  (You guessed it: 
 \family sans
 \bar under
