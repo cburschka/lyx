@@ -3,8 +3,12 @@ Building LyX with CMake
 For all builds:
 - CMake 2.4 or CVS version from www.cmake.org
 - install Qt 4 and make sure qmake 4 is found
+  (add the folder with qmake to the environment variable PATH)
 - by default it builds the Qt4 frontend
 - to build the Qt3 frontend set QTDIR and call cmake with '-Dqt3=1'
+- with GNUWIN32_DIR you could point to your gnuwin32 packages
+  (eg. -DGNUWIN32_DIR=c:\gnuwin32) by default it searches in your 
+  program  folder
 
 Building Visual C++ 2005 project files:
 - install Visual C++ 2005
@@ -37,6 +41,6 @@ To generate other build files call 'cmake'
 which shows a list of possibilities.
 
 
-The build process tries to find aspell and iconv on Windows 
+The build process tries to find aspell on Windows
 in %ProgramFiles%/GnuWin32/ and in /usr/ or in /usr/local 
-under Linux. If they are not found the support is disabled.
+under Linux. If it is not found the support is disabled.
