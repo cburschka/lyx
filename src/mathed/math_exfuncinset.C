@@ -80,12 +80,15 @@ string asMathematicaName(string const & name)
 	if (name == "sin")    return "Sin";
 	if (name == "sinh")   return "Sinh";
 	if (name == "arcsin") return "ArcSin";
+	if (name == "asin")   return "ArcSin";
 	if (name == "cos")    return "Cos";
 	if (name == "cosh")   return "Cosh";
-	if (name == "arcos")  return "ArcCos";
+	if (name == "arccos") return "ArcCos";
+	if (name == "acos")   return "ArcCos";
 	if (name == "tan")    return "Tan";
 	if (name == "tanh")   return "Tanh";
 	if (name == "arctan") return "ArcTan";
+	if (name == "atan")   return "ArcTan";
 	if (name == "cot")    return "Cot";
 	if (name == "coth")   return "Coth";
 	if (name == "csc")    return "Csc";
@@ -93,6 +96,13 @@ string asMathematicaName(string const & name)
 	if (name == "exp")    return "Exp";
 	if (name == "log")    return "Log";
 	if (name == "ln" )    return "Log";
+	if (name == "arg" )   return "Arg";
+	if (name == "det" )   return "Det";
+	if (name == "gcd" )   return "GCD";
+	if (name == "max" )   return "Max";
+	if (name == "min" )   return "Min";
+	if (name == "erf" )   return "Erf";
+	if (name == "erfc" )  return "Erfc";
 	return name;
 }
 

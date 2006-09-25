@@ -69,9 +69,23 @@ void MathDiffInset::maple(MapleStream & os) const
 }
 
 
+void MathDiffInset::maxima(MaximaStream & os) const
+{
+	os << "diff(";
+	for (idx_type idx = 0; idx < nargs(); ++idx) {
+		if (idx != 0)
+			os << ',';
+		os << cell(idx);
+		if (idx != 0)
+			os << ",1";
+	}
+	os << ')';
+}
+
+
 void MathDiffInset::mathematica(MathematicaStream & os) const
 {
-	os << "Dt[";
+	os << "D[";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
 		if (idx != 0)
 			os << ',';

@@ -38,6 +38,8 @@ public:
 	///
 	void maple(MapleStream &) const;
 	///
+	void mathematica(MathematicaStream &) const;
+	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void write(WriteStream & os) const;

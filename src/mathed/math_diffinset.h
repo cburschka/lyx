@@ -38,6 +38,8 @@ public:
 	///
 	void mathmlize(MathMLStream &) const;
 	///
+	void maxima(MaximaStream &) const;
+	///
 	void write(WriteStream & os) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;

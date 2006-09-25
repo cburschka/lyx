@@ -1,3 +1,65 @@
+2006-09-25  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* src/mathed/math_symbolinset.C
+	(void MathSymbolInset::maxima): newer maxima versions use inf
+	instead of INF. Add support for greek pi.
+	(void MathSymbolInset::mathematica): Add support for \cdot.
+
+	* src/mathed/math_stringinset.h: account for the const version
+	of asStringInset().
+
+	* src/mathed/math_extern.C (bool extractScript): added a boolean
+	to formal parameters in order to only extract superscripts.
+	(MathArray::iterator extractArgument): leave out delimiters and a
+	possible superscript for function arguments.
+	(bool isKnownFunction):
+	(bool extractFunctionName): recognize standard and user defined
+	function names.
+	(void splitScripts): correctly split scripts as expected by other
+	functions.
+	(MathAtom replaceDelims): ranamed as replaceParenDelims.
+	(bool testOpenBracket):
+	(bool testCloseBracket): test for "[" and "]", respectively.
+	(MathAtom replaceBracketDelims): replace something delimited by
+	"[" and "]" with a proper DelimInset.
+	(void extractDelims): create a DelimInset for "[" and "]" delimiters.
+	(void extractFunctions): improved recognition of function names.
+	(bool testTermDelimiter): test for '+' or '-' as term delimiters
+	(MathArray::iterator extractTerm): extract a "term", i.e., something
+	delimited by '+' or '-'.
+	(bool testDiffItem): improved recognition of a "differential fraction"
+	(void extractDiff): call splitScripts() on numerator and denominator
+	of a differential fraction before analyzing them.
+	(void extractLims): improved recognition of a limit function.
+	(void extractStructure): reorganized order of searches.
+	(MathArray pipeThroughMaxima): newer versions of maxima use simpsum
+	instead of SIMPSUM.
+	(string fromMathematicaName): translates from mathematica names.
+	(void prettifyMathematicaOutput): convert to LyX format the latex
+	macros output by mathematica.
+	(MathArray pipeThroughMathematica): call mathematica and collect
+	its output.
+	(MathArray pipeThroughExtern): add support for mathematica.
+
+	* src/mathed/math_numberinset.[Ch]
+	(void MathNumberInset::mathematica): add support for mathematica.
+
+	* src/mathed/math_matrixinset.[Ch]
+	(void MathMatrixInset::mathematica): add support for mathematica.
+
+	* src/mathed/math_diffinset.[Ch]
+	(void MathDiffInset::maxima): add support for maxima.
+	(void MathDiffInset::mathematica): mathematica uses "D" and not
+	"Dt" for normal derivatives.
+
+	* src/mathed/math_liminset.[Ch]
+	(void MathLimInset::maxima): add support for maxima.
+	(void MathLimInset::mathematica): mathematica uses "Limit" and
+	not "Lim" for limits.
+
+	* src/mathed/math_exfuncinset.C
+	(string asMathematicaName): added some more function names.
+
 2006-08-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (lfunMousePress): on button 2 press, paste

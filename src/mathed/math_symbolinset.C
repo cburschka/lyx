@@ -162,7 +162,9 @@ void MathSymbolInset::maxima(MaximaStream & os) const
 	if (name() == "cdot")
 		os << '*';
 	else if (name() == "infty")
-		os << "INF";
+		os << "inf";
+	else if (name() == "pi")
+		os << "%pi";
 	else
 		os << name();
 }
@@ -172,6 +174,7 @@ void MathSymbolInset::mathematica(MathematicaStream & os) const
 {
 	if ( name() == "pi")    { os << "Pi"; return;}
 	if ( name() == "infty") { os << "Infinity"; return;}
+	if ( name() == "cdot")  { os << '*'; return;}
 	os << name();
 }
 
