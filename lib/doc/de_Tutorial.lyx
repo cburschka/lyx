@@ -1,4 +1,4 @@
-#LyX 1.4.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -3044,8 +3044,17 @@ opieren
  Sie können auch einfach gewöhnlichen, bereits geschriebenen Text in eine
  Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schaltfläche
  anklicken.
- Umgekehrt können Sie eine Fußnote nicht in gewöhnlichen Text zurückwandeln,
- sondern Sie müssen den Fußnotentext kopieren und dann die Fußnote löschen.
+ Um eine Fußnote in gewöhnlichen Text zurückzuwandeln, setzen Sie den Cursor
+ an den Anfang des Textes in der Fußnote und drücken Sie die 
+\family sans
+Backspace
+\family default
+-Taste.
+ Alternativ können Sie auch am Ende des Fußnotentextes die 
+\family sans
+Entf
+\family default
+-Taste drücken.
 \end_layout
 
 \begin_layout Standard

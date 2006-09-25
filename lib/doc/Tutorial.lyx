@@ -2782,12 +2782,16 @@ Paste
 Insert\InsetSpace ~
 Footnote
 \family default
- button; change a footnote to regular text by clicking the 
+ button; change a footnote to regular text by hitting the 
 \family sans
-Insert\InsetSpace ~
-Footnote
+Backspace
 \family default
- button when the cursor is in a footnote.
+ key when the cursor is in the first position of a footnote, or by hitting
+ the 
+\family sans
+Delete
+\family default
+ key when the cursor is in the very last position of the footnote, respectively.
 \end_layout
 
 \begin_layout Standard

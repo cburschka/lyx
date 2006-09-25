@@ -1,4 +1,4 @@
-#LyX 1.4.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -13266,6 +13266,29 @@ To close this footnote, click on the red box at the top left.
  If you want to turn already existing text into a footnote, simply mark
  it and click on the footnote button (a picture of text with an arrow pointing
  to stuff in the bottom margin).
+ 
+\family default
+\series default
+\bar default
+Vice versa, you can change a footnote to regular text by hitting the 
+\family sans
+Backspace
+\family default
+ key when the cursor is in the first position of a footnote, or by hitting
+ the 
+\family sans
+Delete
+\family default
+ key when the cursor is in the very last position of the footnote, respectively
+ (this works for all 
+\begin_inset Quotes eld
+\end_inset
+
+foldable
+\begin_inset Quotes erd
+\end_inset
+
+ boxes in LyX).
 \end_layout
 
 \begin_layout Standard
