@@ -22,7 +22,11 @@ Section -Core SecCore
   
   RMDir /r "$INSTDIR\python\DLLs"
   RMDir /r "$INSTDIR\python\libs"
-  RMDir /r "$INSTDIR\python\python25.dll"  
+  RMDir /r "$INSTDIR\python\python25.dll"
+  
+  ;Remove previous latextools folder (moved to bin)
+  
+  RMDir /r "$INSTDIR\latextools"
   
   ;Binaries
   
@@ -36,6 +40,7 @@ Section -Core SecCore
     
     !insertmacro FileListDllMSVCBin File "${FILES_DEPS}\bin\"
     !insertmacro FileListMSVCBin File "${FILES_MSVC}\"
+    !insertmacro FileListMSVCManifest File "..\"    
   !else
     !insertmacro FileListDllMSVCBin Delete "$INSTDIR\bin\"
     !insertmacro FileListMSVCBin Delete "$INSTDIR\bin\"  
@@ -44,9 +49,6 @@ Section -Core SecCore
     !insertmacro FileListMinGWBin File "${FILES_MINGW}\bin\" 
   !endif
 
-  ;LaTeX tools
-  
-  SetOutPath "$INSTDIR\latextools"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"

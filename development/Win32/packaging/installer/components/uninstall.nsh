@@ -18,17 +18,15 @@ Section "un.Program Files" un.SecProgramFiles
   !ifdef BUILD_MSVC
     !insertmacro FileListDllMSVCBin Delete "$INSTDIR\bin\"
     !insertmacro FileListMSVCBin Delete "$INSTDIR\bin\"
+    !insertmacro FileListMSVCManifest Delete "$INSTDIR\bin\"
   !else
     !insertmacro FileListDllMinGWBin Delete "$INSTDIR\bin\"
     !insertmacro FileListMinGWBin Delete "$INSTDIR\bin\"
   !endif
-
-  ;LaTeX Tools
   
-  !insertmacro FileListNetpbmBin Delete "$INSTDIR\latextools\"
-  !insertmacro FileListDvipostBin Delete "$INSTDIR\latextools\"
-  !insertmacro FileListDTLBin Delete "$INSTDIR\latextools\"
-  RMDir "$INSTDIR\latextools"
+  !insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
+  !insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
+  !insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
   
   ;Icons
   

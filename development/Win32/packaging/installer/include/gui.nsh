@@ -85,6 +85,8 @@ Page custom PageLanguage PageLanguageValidate
 ;Languages
 
 !insertmacro IncludeLang "english"
+!insertmacro IncludeLang "french"
+!insertmacro IncludeLang "german"
 !insertmacro IncludeLang "italian"
 
 ;--------------------------------

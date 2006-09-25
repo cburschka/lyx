@@ -37,6 +37,12 @@ Lists of files to include in the installer
   
 !macroend
 
+!macro FileListMSVCManifest COMMAND DIRECTORY
+
+  ${COMMAND} "${DIRECTORY}\Microsoft.VC80.CRT.manifest"
+  
+!macroend
+
 !macro FileListMinGWBin COMMAND DIRECTORY
 
   ${COMMAND} "${DIRECTORY}mingwm10.dll"

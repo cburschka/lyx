@@ -26,7 +26,6 @@ Function .onInit
 
   ${unless} ${silent}
     Banner::destroy
-    !insertmacro MUI_LANGDLL_DISPLAY
   ${endif}
 FunctionEnd
 
