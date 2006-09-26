@@ -70,7 +70,7 @@ public:
 		work_area_.reset(new GuiWorkArea(old_screen_.get(), old_work_area_.get()));
 
 		// FIXME BufferView creation should be independant of WorkArea creation
-		buffer_views_[0].reset(new BufferView());
+		buffer_views_[0].reset(new BufferView);
 		work_area_->setBufferView(buffer_views_[0].get());
 		view_->setWorkArea(work_area_.get());
 		return 0;
