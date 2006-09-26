@@ -21,7 +21,6 @@
 
 #include "coordcache.h"
 #include "LColor.h"
-#include "BufferView.h"
 #include "buffer.h"
 #include "cursor.h"
 #include "debug.h"

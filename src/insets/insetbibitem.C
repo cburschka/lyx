@@ -13,7 +13,6 @@
 #include "insetbibitem.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "lyxfont.h"

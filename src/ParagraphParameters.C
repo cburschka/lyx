@@ -17,7 +17,6 @@
 #include "ParagraphParameters.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "gettext.h"
 #include "lyxlayout.h"
 #include "lyxlex.h"

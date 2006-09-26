@@ -14,7 +14,6 @@
 #include "insets/insettext.h"
 
 #include "debug.h"
-#include "BufferView.h"
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxtext.h"

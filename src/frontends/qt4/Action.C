@@ -12,7 +12,6 @@
 
 #include "Action.h"
 
-#include "BufferView.h"
 #include "lyx_cb.h"
 #include "lyxfunc.h"
 #include "FuncStatus.h"

@@ -14,7 +14,6 @@
 #include "insetvspace.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "cursor.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"

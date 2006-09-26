@@ -12,7 +12,6 @@
 
 #include "insetnewline.h"
 
-#include "BufferView.h"
 #include "debug.h"
 #include "LColor.h"
 #include "lyxtext.h"
