@@ -50,9 +50,6 @@
 #include "insets/render_preview.h"
 #include "insets/insetlabel.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
-
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 

@@ -22,8 +22,6 @@
 #include "pariterator.h"
 #include "sgml.h"
 
-#include "frontends/LyXView.h"
-
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/std_ostream.h"

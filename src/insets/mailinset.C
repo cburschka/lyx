@@ -16,7 +16,6 @@
 #include "debug.h"
 
 #include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
 
 using std::string;
 

@@ -47,8 +47,7 @@
 #include "vspace.h"
 #include "pariterator.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
+#include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
@@ -874,7 +873,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (change_layout) {
 			current_layout = layout;
 			setLayout(cur, layout);
-			bv->owner()->setLayout(layout);
+			// inform the GUI that the layout has changed.
+			bv->layoutChanged(layout);
 			bv->switchKeyMap();
 		}
 		break;
@@ -1048,8 +1048,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			theApp->selection().haveSelection(cur.selection());
 
 		bv->switchKeyMap();
-		bv->owner()->updateMenubar();
-		bv->owner()->updateToolbars();
 		break;
 	}
 

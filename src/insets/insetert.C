@@ -32,7 +32,6 @@
 #include "paragraph.h"
 
 #include "frontends/Alert.h"
-#include "frontends/LyXView.h"
 
 #include <sstream>
 

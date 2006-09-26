@@ -46,8 +46,8 @@
 #include "undo.h"
 #include "vspace.h"
 
+#include "frontends/Application.h"
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
 
 #include "insets/insetenv.h"
 

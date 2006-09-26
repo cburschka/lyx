@@ -24,8 +24,6 @@
 #include "debug.h"
 #include "undo.h"
 
-#include "frontends/LyXView.h"
-
 #include "insets/insetfloat.h"
 #include "insets/insetoptarg.h"
 #include "insets/insetwrap.h"

@@ -52,7 +52,6 @@
 #include "WordLangTuple.h"
 
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "insets/insettext.h"

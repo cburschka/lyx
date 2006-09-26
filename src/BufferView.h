@@ -18,8 +18,6 @@
 #include "cursor.h"
 #include "metricsinfo.h"
 
-#include "frontends/LyXKeySym.h"
-
 #include "support/types.h"
 
 #include <boost/utility.hpp>
@@ -36,7 +34,6 @@ class Intl;
 class Language;
 class LCursor;
 class LyXText;
-class LyXView;
 class ParIterator;
 class ViewMetricsInfo;
 
@@ -88,11 +85,7 @@ struct ScrollbarParameters
  */
 class BufferView : boost::noncopyable {
 public:
-	/**
-	 * Create a view with the given owner main window,
-	 * of the given dimensions.
-	 */
-	BufferView(LyXView * owner);
+	BufferView();
 
 	~BufferView();
 
@@ -100,9 +93,6 @@ public:
 	void setBuffer(Buffer * b);
 	/// return the buffer being viewed
 	Buffer * buffer() const;
-
-	/// return the owning main view
-	LyXView * owner() const;
 
 	/// resize event has happened
 	void resize();
@@ -233,6 +223,9 @@ public:
 	boost::signal<void(std::string name,
 		std::string data)> updateDialog;
 
+	/// This signal is emitted when the layout at the cursor is changed.
+	boost::signal<void(std::string layout)> layoutChanged;
+
 private:
 	///
 	bool multiParSel();
@@ -249,8 +242,6 @@ private:
 	///
 	ViewMetricsInfo metrics_info_;
 
-	///
-	LyXView * owner_;
 	///
 	Buffer * buffer_;
 

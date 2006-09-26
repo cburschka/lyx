@@ -21,7 +21,7 @@
 #include "outputparams.h"
 #include "sgml.h"
 
-#include "frontends/LyXView.h"
+#include "frontends/Application.h"
 
 #include "support/lstrings.h"
 

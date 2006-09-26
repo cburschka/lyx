@@ -32,7 +32,6 @@
 #include "pariterator.h"
 
 #include "frontends/Alert.h"
-#include "frontends/LyXView.h"
 
 #include "insets/insetcommand.h"
 #include "insets/insettext.h"

@@ -32,7 +32,6 @@
 #include "outputparams.h"
 
 #include "frontends/lyx_gui.h"
-#include "frontends/LyXView.h"
 
 #include "graphics/PreviewLoader.h"
 

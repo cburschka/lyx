@@ -264,6 +264,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 	// Skip these when selecting
 	if (cmd0.action != LFUN_MOUSE_MOTION) {
 		lyx_view_.updateLayoutChoice();
+		lyx_view_.updateMenubar();
 		lyx_view_.updateToolbars();
 	}
 

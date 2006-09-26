@@ -45,7 +45,7 @@
 
 #include "support/lstrings.h"
 
-#include "frontends/LyXView.h"
+#include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 
 #include <boost/tuple/tuple.hpp>

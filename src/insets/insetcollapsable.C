@@ -28,7 +28,6 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
-#include "frontends/LyXView.h"
 
 using lyx::docstring;
 using lyx::graphics::PreviewLoader;

@@ -25,8 +25,6 @@
 #include "paragraph.h"
 #include "tex-strings.h"
 
-#include "frontends/LyXView.h"
-
 #include "support/lstrings.h"
 
 #include <sstream>

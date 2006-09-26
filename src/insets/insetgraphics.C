@@ -73,7 +73,6 @@ TODO
 #include "sgml.h"
 
 #include "frontends/Alert.h"
-#include "frontends/LyXView.h"
 
 #include "support/convert.h"
 #include "support/filetools.h"

@@ -32,7 +32,6 @@
 #include "outputparams.h"
 
 #include "frontends/Alert.h"
-#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"

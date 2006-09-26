@@ -34,8 +34,6 @@
 
 #include "frontends/font_metrics.h"
 #include "frontends/nullpainter.h"
-#include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
 #include "frontends/Painter.h"
 
 #include "insets/insettext.h"

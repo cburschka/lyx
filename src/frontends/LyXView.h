@@ -123,8 +123,6 @@ public:
 	/// set a buffer to the current workarea
 	void setBuffer(Buffer * b);
 
-	/// sets the layout in the toolbar layout selection
-	void setLayout(std::string const & layout);
 	/// updates the possible layouts selectable
 	void updateLayoutChoice();
 
@@ -232,6 +230,7 @@ private:
 	boost::signals::connection show_dialog_with_data_connection_;
 	boost::signals::connection show_inset_dialog_connection_;
 	boost::signals::connection update_dialog_connection_;
+	boost::signals::connection layout_changed_connection_;
 	//@}
 
 	/// Bind methods for BufferView messages signal connection

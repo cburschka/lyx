@@ -66,7 +66,7 @@ int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int view_id)
 	work_areas_[id].reset(new GuiWorkArea(w, h, *view));
 
 	// FIXME BufferView creation should be independant of WorkArea creation
-	buffer_views_[id].reset(new BufferView(view));
+	buffer_views_[id].reset(new BufferView());
 	work_areas_[id]->setBufferView(buffer_views_[id].get());
 	view->setWorkArea(work_areas_[id].get());
 

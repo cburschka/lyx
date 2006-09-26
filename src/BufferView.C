@@ -60,12 +60,8 @@
 #include "insets/insettext.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Clipboard.h"
-#include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
-#include "frontends/Selection.h"
 
 #include "graphics/Previews.h"
 
@@ -81,8 +77,6 @@
 #include <functional>
 #include <vector>
 
-
-using lyx::frontend::Clipboard;
 
 using lyx::docstring;
 using lyx::pos_type;
@@ -131,8 +125,8 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 } // anon namespace
 
 
-BufferView::BufferView(LyXView * owner)
-	: owner_(owner), buffer_(0), wh_(0),
+BufferView::BufferView()
+	: buffer_(0), wh_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
 	  intl_(new Intl)
@@ -161,12 +155,6 @@ BufferView::~BufferView()
 Buffer * BufferView::buffer() const
 {
 	return buffer_;
-}
-
-
-LyXView * BufferView::owner() const
-{
-	return owner_;
 }
 
 

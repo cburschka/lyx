@@ -209,6 +209,7 @@ void LyXView::disconnectBuffer()
 	timerConnection_.disconnect();
 	readonlyConnection_.disconnect();
 	closingConnection_.disconnect();
+	layout_changed_connection_.disconnect();
 }
 
 
@@ -222,6 +223,8 @@ void LyXView::connectBufferView(BufferView & bv)
 			boost::bind(&LyXView::showInsetDialog, this, _1, _2, _3));
 	update_dialog_connection_ = bv.updateDialog.connect(
 			boost::bind(&LyXView::updateDialog, this, _1, _2));
+	layout_changed_connection_ = bv.layoutChanged.connect(
+			boost::bind(&Toolbars::setLayout, toolbars_.get(), _1));
 }
 
 
@@ -280,12 +283,6 @@ void LyXView::showReadonly(bool)
 BufferView * LyXView::view() const
 {
 	return &work_area_->bufferView();
-}
-
-
-void LyXView::setLayout(string const & layout)
-{
-	toolbars_->setLayout(layout);
 }
 
 

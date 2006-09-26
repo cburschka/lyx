@@ -49,8 +49,7 @@
 
 #include "support/lstrings.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
+#include "frontends/Application.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 #include "frontends/nullpainter.h"
