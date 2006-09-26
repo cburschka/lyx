@@ -2266,3 +2266,15 @@ lib_lyx2lyx_files = Split('''
     profiling.py
 ''')
 
+win32_bakoma_fonts = Split('''
+    Readme.txt   
+    Licence.txt  
+    cmex10.ttf  
+    cmr10.ttf   
+    eufm10.ttf  
+    msbm10.ttf
+    cmmi10.ttf  
+    cmsy10.ttf  
+    msam10.ttf  
+    wasy10.ttf
+''')
