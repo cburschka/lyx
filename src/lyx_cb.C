@@ -34,7 +34,6 @@
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/lyx_gui.h"
-#include "frontends/LyXView.h"
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
@@ -307,7 +306,7 @@ void autoSave(BufferView * bv)
 
 	if (bv->buffer()->isBakClean() || bv->buffer()->isReadonly()) {
 		// We don't save now, but we'll try again later
-		bv->owner()->resetAutosaveTimer();
+		bv->buffer()->resetAutosaveTimers();
 		return;
 	}
 
@@ -324,7 +323,7 @@ void autoSave(BufferView * bv)
 	autosave.start();
 
 	bv->buffer()->markBakClean();
-	bv->owner()->resetAutosaveTimer();
+	bv->buffer()->resetAutosaveTimers();
 }
 
 
@@ -383,7 +382,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
 		FileDialog::Result result =
-			fileDlg.open(bv->owner()->buffer()->filePath(),
+			fileDlg.open(bv->buffer()->filePath(),
 				     FileFilterList(), string());
 
 		if (result.first == FileDialog::Later)
