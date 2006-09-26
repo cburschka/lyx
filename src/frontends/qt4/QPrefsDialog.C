@@ -13,7 +13,7 @@
 #include "debug.h"
 #include "qt_helpers.h"
 
-#include "ColorCache.h"
+#include "GuiApplication.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
@@ -40,7 +40,6 @@
 
 #include "gettext.h"
 #include "LColor.h"
-#include "ColorCache.h"
 
 #include "controllers/ControlPrefs.h"
 
@@ -519,7 +518,7 @@ PrefColors::PrefColors(QPrefs * form, QWidget * parent)
 			|| lc == LColor::ignore) continue;
 
 		lcolors_.push_back(lc);
-		QColor color = QColor(lcolorcache.get(lc));
+		QColor color = QColor(guiApp->colorCache().get(lc));
 		prefcolors_.push_back(color.name());
 		QPixmap coloritem(32, 32);
 		coloritem.fill(color);

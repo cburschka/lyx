@@ -14,7 +14,6 @@
 #include "GuiWorkArea.h"
 
 #include "GuiApplication.h"
-#include "ColorCache.h"
 #include "QLPainter.h"
 #include "QLyXKeySym.h"
 #include "qt_helpers.h"
@@ -493,7 +492,7 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 
 	show_vcursor_ = true;
 
-	QColor const & required_color = lcolorcache.get(LColor::cursor);
+	QColor const & required_color = guiApp->colorCache().get(LColor::cursor);
 
 	if (x==cursor_x_ && y==cursor_y_ && h==cursor_h_
 		&& cursor_color_ == required_color

@@ -15,8 +15,6 @@
 
 #include "LColor.h"
 
-ColorCache lcolorcache;
-
 const QColor grey40(0x66, 0x66, 0x66);
 const QColor grey60(0x99, 0x99, 0x99);
 const QColor grey80(0xcc, 0xcc, 0xcc);

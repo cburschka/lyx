@@ -44,9 +44,6 @@ private:
 	mutable lcolor_map colormap;
 };
 
-/// singleton instance
-extern ColorCache lcolorcache;
-
 ///
 QColor const rgb2qcolor(lyx::RGBColor const &);
 #endif // COLORCACHE_H

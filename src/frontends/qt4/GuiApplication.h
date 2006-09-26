@@ -13,6 +13,7 @@
 #ifndef QT4_APPLICATION_H
 #define QT4_APPLICATION_H
 
+#include "ColorCache.h"
 #include "FontLoader.h"
 #include "GuiClipboard.h"
 #include "GuiImplementation.h"
@@ -60,6 +61,8 @@ public:
 	//@}
 
 	///
+	ColorCache & colorCache() { return color_cache_; }
+	///
 	FontLoader & fontLoader() { return font_loader_; }
 
 	///
@@ -75,6 +78,8 @@ private:
 	GuiSelection selection_;
 	///
 	FontLoader font_loader_;
+	///
+	ColorCache color_cache_;
 
 #ifdef Q_WS_X11
 public:

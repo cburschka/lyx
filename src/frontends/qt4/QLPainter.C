@@ -13,9 +13,9 @@
 
 #include "QLPainter.h"
 
+#include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "QLImage.h"
-#include "ColorCache.h"
 #include "FontLoader.h"
 
 #include "GuiApplication.h"
@@ -93,7 +93,7 @@ void QLPainter::setQPainterPen(LColor_color col,
 
 	QPen pen = qp_.get()->pen();
 
-	pen.setColor(lcolorcache.get(col));
+	pen.setColor(guiApp->colorCache().get(col));
 
 	switch (ls) {
 		case line_solid: pen.setStyle(Qt::SolidLine); break;
@@ -158,7 +158,7 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 
 void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 {
-	qp_->fillRect(x, y, w, h, lcolorcache.get(col));
+	qp_->fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
 

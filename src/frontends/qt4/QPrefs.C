@@ -13,7 +13,6 @@
 #include "QPrefs.h"
 #include "QPrefsDialog.h"
 
-#include "ColorCache.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 

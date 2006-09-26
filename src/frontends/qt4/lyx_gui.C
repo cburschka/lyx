@@ -30,7 +30,6 @@
 
 
 #include "GuiView.h"
-#include "ColorCache.h"
 #include "FontLoader.h"
 #include "QLImage.h"
 #include "qt_helpers.h"
@@ -167,7 +166,7 @@ FuncStatus getStatus(FuncRequest const & ev)
 
 bool getRGBColor(LColor_color col, lyx::RGBColor & rgbcol)
 {
-	QColor const & qcol = lcolorcache.get(col);
+	QColor const & qcol = guiApp->colorCache().get(col);
 	if (!qcol.isValid()) {
 		rgbcol.r = 0;
 		rgbcol.g = 0;
@@ -183,14 +182,14 @@ bool getRGBColor(LColor_color col, lyx::RGBColor & rgbcol)
 
 string const hexname(LColor_color col)
 {
-	return ltrim(fromqstr(lcolorcache.get(col).name()), "#");
+	return ltrim(fromqstr(guiApp->colorCache().get(col).name()), "#");
 }
 
 
 void update_color(LColor_color)
 {
 	// FIXME: Bleh, can't we just clear them all at once ?
-	lcolorcache.clear();
+	guiApp->colorCache().clear();
 }
 
 
