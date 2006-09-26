@@ -53,8 +53,10 @@ else:
 
 # some global settings
 #
-package_version = '1.5.0svn'
-package_cygwin_version = '1.5.0svn-1'
+# get version number from configure.ac so that JMarc does
+# not have to change SConstruct during lyx release
+package_version = utils.getVerFromConfigure(top_src_dir)
+package_cygwin_version = '%s-1' % package_version
 boost_version = '1_33_1'
 
 devel_version = True
@@ -2252,6 +2254,15 @@ if 'install' in targets:
         env.Install(Cygwin_Doc, [os.path.join(env.subst('$TOP_SRCDIR'), x) for x in \
             ['INSTALL', 'README', 'README.Cygwin', 'RELEASE-NOTES', 'COPYING', 'ANNOUNCE']])
         Alias('install', Cygwin_Doc)
+        # cygwin fonts also need to be installed
+        env.Install(os.path.join(share_dest_dir, 'font'),
+            [env.subst('$TOP_SRC_DIR/development/Win32/packaging/bakoma/%s' % file) \
+                  for file in win32_bakoma_fonts])
+        # we also need a post installation script
+        tmp_script = utils.installCygwinPostinstallScript('/tmp')
+        postinstall_script = os.path.join(dest_dir, 'etc', 'postinstall', 'lyx.sh')
+        env.Install(postinstall_script, tmp_script)
+        Alias('install', postinstall_script)
 
     # lyx1.4.x does not have lyx2lyx_version.py.in
     if os.path.isfile(env.subst('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')):

@@ -16,6 +16,24 @@ import os, sys, re, shutil, glob
 from SCons.Util import WhereIs
 
 
+def getVerFromConfigure(path):
+    " get lyx version from the AC_INIT line of configure.ac "
+    try:
+        config = open(os.path.join(path, 'configure.ac'))
+    except:
+        print "Can not open configure.ac. "
+        return 'x.x.x'
+    # find a line like follows
+    # AC_INIT(LyX,1.4.4svn,[lyx-devel@lists.lyx.org],[lyx])
+    pat = re.compile('AC_INIT\([^,]+,([^,]+),')
+    for line in config.readlines():
+        if pat.match(line):
+            (version,) = pat.match(line).groups()
+            return version.strip()
+    return 'x.x.x'
+
+
+
 def writeToFile(filename, lines, append = False):
     " utility function: write or append lines to filename "
     # create directory if needed
@@ -599,6 +617,27 @@ SECTIONS
 ''')
     script.close()
     return(ld_script)
+
+
+def installCygwinPostinstallScript(path):
+    ''' Install lyx.sh '''
+    postinstall_script = os.path.join(path, 'lyx.sh')
+    script = open(postinstall_script, 'w')
+    script.write('''#!/bin/sh
+
+# Add /usr/share/lyx/fonts to /etc/fonts/local.conf
+# if it is not already there.
+if [ -f /etc/fonts/local.conf ]; then
+    grep -q /usr/share/lyx/fonts /etc/fonts/local.conf
+    if [ $? -ne 0 ]; then
+        sed 's/^<\/fontconfig>/<dir>\/usr\/share\/lyx\/fonts<\/dir>\n<\/fontconfig>/' /etc/fonts/local.conf > /etc/fonts/local.conf.tmp
+        mv -f /etc/fonts/local.conf.tmp /etc/fonts/local.conf
+        fc-cache /usr/share/lyx/fonts
+    fi
+fi
+    ''')
+    script.close()
+    return(postinstall_script)
 
 
 try:
