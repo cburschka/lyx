@@ -19,9 +19,10 @@
 #include "funcrequest.h"
 #include "lyx_cb.h"
 
-#include "bufferlist.h"
 #include "support/filetools.h"
+
 #include "frontends/Alert.h"
+
 #include "gettext.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
@@ -34,9 +35,6 @@ using lyx::support::makeDisplayPath;
 using std::find;
 using std::string;
 using std::vector;
-
-
-extern BufferList bufferlist;
 
 
 bool Importer::Import(LyXView * lv, string const & filename,

@@ -15,11 +15,13 @@
 #include <config.h>
 
 #include "LaTeX.h"
-#include "bufferlist.h"
 #include "gettext.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "DepTable.h"
+
+#include "frontends/Application.h"
+
 #include "support/filetools.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
@@ -70,7 +72,7 @@ using std::set;
 using std::vector;
 
 // TODO: in no particular order
-// - get rid of the extern BufferList and the call to
+// - get rid of the call to
 //   BufferList::updateIncludedTeXfiles, this should either
 //   be done before calling LaTeX::funcs or in a completely
 //   different way.
@@ -79,8 +81,6 @@ using std::vector;
 // - makeindex commandline options should be supported
 // - somewhere support viewing of bibtex and makeindex log files.
 // - we should perhaps also scan the bibtex log file
-
-extern BufferList bufferlist;
 
 namespace {
 
@@ -179,7 +179,7 @@ int LaTeX::run(TeXErrors & terr)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	bufferlist.updateIncludedTeXfiles(getcwd(), runparams);
+	theApp->bufferList().updateIncludedTeXfiles(getcwd(), runparams);
 
 	// Never write the depfile if an error was encountered.
 

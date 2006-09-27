@@ -19,7 +19,6 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
 #include "converter.h"
 #include "debug.h"
 #include "encoding.h"
@@ -88,9 +87,6 @@ using std::signal;
 using std::system;
 #endif
 
-
-// This is the global bufferlist object
-BufferList bufferlist;
 
 // convenient to have it here.
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
@@ -275,7 +271,7 @@ int LyX::exec2(int & argc, char * argv[])
 				if (b)
 					last_loaded = b;
 			} else {
-				Buffer * buf = bufferlist.newBuffer(s, false);
+				Buffer * buf = theApp->bufferList().newBuffer(s, false);
 				if (loadLyXFile(buf, s)) {
 					last_loaded = buf;
 					ErrorList const & el = buf->errorList("Parse");
@@ -284,7 +280,7 @@ int LyX::exec2(int & argc, char * argv[])
 							boost::bind(&LyX::printError, this, _1));
 				}
 				else
-					bufferlist.release(buf);
+					theApp->bufferList().release(buf);
 			}
 		}
 
@@ -658,7 +654,7 @@ void LyX::emergencyCleanup() const
 	// contain documents etc. which might be helpful on
 	// a crash
 
-	bufferlist.emergencyWriteAll();
+	theApp->bufferList().emergencyWriteAll();
 	theApp->server().emergencyCleanup();
 }
 

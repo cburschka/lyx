@@ -19,7 +19,6 @@
 
 #include "BranchList.h"
 #include "buffer.h"
-#include "bufferlist.h"
 #include "bufferparams.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -37,6 +36,7 @@
 #include "lyxlex.h"
 #include "toc.h"
 
+#include "frontends/Application.h"
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h"
@@ -67,7 +67,6 @@ using std::string;
 using std::vector;
 
 
-extern BufferList bufferlist;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 namespace {
@@ -448,7 +447,7 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 void expandDocuments(Menu & tomenu, LyXView const * view)
 {
 	typedef vector<string> Strings;
-	Strings const names = bufferlist.getFileNames();
+	Strings const names = theApp->bufferList().getFileNames();
 
 	if (names.empty()) {
 		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),

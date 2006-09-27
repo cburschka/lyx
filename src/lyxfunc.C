@@ -24,7 +24,6 @@
 #include "BranchList.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
@@ -137,8 +136,6 @@ using std::ostringstream;
 namespace biblio = lyx::biblio;
 namespace fs = boost::filesystem;
 
-
-extern BufferList bufferlist;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
@@ -1082,15 +1079,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		// --- buffers ----------------------------------------
 		case LFUN_BUFFER_SWITCH:
-			owner->setBuffer(bufferlist.getBuffer(argument));
+			owner->setBuffer(theApp->bufferList().getBuffer(argument));
 			break;
 
 		case LFUN_BUFFER_NEXT:
-			owner->setBuffer(bufferlist.next(view()->buffer()));
+			owner->setBuffer(theApp->bufferList().next(view()->buffer()));
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
-			owner->setBuffer(bufferlist.previous(view()->buffer()));
+			owner->setBuffer(theApp->bufferList().previous(view()->buffer()));
 			break;
 
 		case LFUN_FILE_NEW:
@@ -1130,14 +1127,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (prefixIs(file_name, package().temp_dir())) {
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
-				owner->setBuffer(bufferlist.getBufferFromTmp(file_name));
+				owner->setBuffer(theApp->bufferList().getBufferFromTmp(file_name));
 			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
 				string const s = changeExtension(file_name, ".lyx");
 				// Either change buffer or load the file
-				if (bufferlist.exists(s)) {
-					owner->setBuffer(bufferlist.getBuffer(s));
+				if (theApp->bufferList().exists(s)) {
+					owner->setBuffer(theApp->bufferList().getBuffer(s));
 				} else {
 					owner->loadLyXFile(s);
 				}
@@ -1287,8 +1284,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					 makeDisplayPath(filename) + lyx::from_ascii("..."));
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
-			if (bufferlist.exists(filename))
-				owner->setBuffer(bufferlist.getBuffer(filename));
+			if (theApp->bufferList().exists(filename))
+				owner->setBuffer(theApp->bufferList().getBuffer(filename));
 			else
 				owner->loadLyXFile(filename);
 			// Set the parent name of the child document.
@@ -1703,7 +1700,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (filename.empty()) {
 		filename = addName(lyxrc.document_path,
 			    "newfile" + convert<string>(++newfile_number) + ".lyx");
-		while (bufferlist.exists(filename) || fs::is_readable(filename)) {
+		while (theApp->bufferList().exists(filename) || fs::is_readable(filename)) {
 			++newfile_number;
 			filename = addName(lyxrc.document_path,
 					   "newfile" +	convert<string>(newfile_number) +
@@ -1864,8 +1861,8 @@ void LyXFunc::doImport(string const & argument)
 	string const lyxfile = changeExtension(filename, ".lyx");
 
 	// Check if the document already is open
-	if (lyx_gui::use_gui && bufferlist.exists(lyxfile)) {
-		if (!bufferlist.close(bufferlist.getBuffer(lyxfile), true)) {
+	if (lyx_gui::use_gui && theApp->bufferList().exists(lyxfile)) {
+		if (!theApp->bufferList().close(theApp->bufferList().getBuffer(lyxfile), true)) {
 			owner->message(_("Canceled."));
 			return;
 		}
@@ -1898,14 +1895,14 @@ void LyXFunc::closeBuffer()
 	// save current cursor position
 	LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
 		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
-	if (bufferlist.close(owner->buffer(), true) && !quitting) {
-		if (bufferlist.empty()) {
+	if (theApp->bufferList().close(owner->buffer(), true) && !quitting) {
+		if (theApp->bufferList().empty()) {
 			// need this otherwise SEGV may occur while
 			// trying to set variables that don't exist
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();
 		} else {
-			owner->setBuffer(bufferlist.first());
+			owner->setBuffer(theApp->bufferList().first());
 		}
 	}
 }

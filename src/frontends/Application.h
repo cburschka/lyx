@@ -11,6 +11,7 @@
 #ifndef LYX_APPLICATION_H
 #define LYX_APPLICATION_H
 
+#include "bufferlist.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
@@ -69,6 +70,9 @@ public:
 	LyXServerSocket & socket();
 	LyXServerSocket const & socket() const;
 	///
+	BufferList & bufferList();
+	BufferList const & bufferList() const;
+
 	void setBufferView(BufferView * buffer_view);
 
 protected:
@@ -86,6 +90,8 @@ private:
 	boost::scoped_ptr<LyXServer> lyx_server_;
 	///
 	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
+	///
+	BufferList buffer_list_;
 
 }; // Application
 

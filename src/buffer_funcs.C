@@ -14,7 +14,6 @@
 
 #include "buffer_funcs.h"
 #include "buffer.h"
-#include "bufferlist.h"
 #include "bufferparams.h"
 #include "dociterator.h"
 #include "counters.h"
@@ -36,6 +35,7 @@
 #include "toc.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Application.h"
 
 #include "insets/insetbibitem.h"
 
@@ -63,8 +63,6 @@ using std::min;
 using std::string;
 
 namespace fs = boost::filesystem;
-
-extern BufferList bufferlist;
 
 namespace {
 
@@ -175,12 +173,12 @@ bool loadLyXFile(Buffer * b, string const & s)
 	return false;
 }
 
-
+// FIXME newFile() should probably be a member method of Application...
 Buffer * newFile(string const & filename, string const & templatename,
 		 bool const isNamed)
 {
 	// get a free buffer
-	Buffer * b = bufferlist.newBuffer(filename);
+	Buffer * b = theApp->bufferList().newBuffer(filename);
 	BOOST_ASSERT(b);
 
 	string tname;
@@ -197,7 +195,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 				_("The specified document template\n%1$s\ncould not be read."),
 				file);
 			Alert::error(_("Could not read template"), text);
-			bufferlist.release(b);
+			theApp->bufferList().release(b);
 			return 0;
 		}
 	}

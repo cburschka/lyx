@@ -17,7 +17,6 @@
 #include "lyx_cb.h"
 
 #include "buffer.h"
-#include "bufferlist.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
 #include "cursor.h"
@@ -32,6 +31,7 @@
 #include "paragraph.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Application.h"
 #include "frontends/FileDialog.h"
 #include "frontends/lyx_gui.h"
 
@@ -88,7 +88,6 @@ using std::ios;
 using std::istream_iterator;
 
 
-extern BufferList bufferlist;
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
 
@@ -192,7 +191,7 @@ void quitLyX(bool noask)
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyx_gui::use_gui) {
-		if (!noask && !bufferlist.quitWriteAll())
+		if (!noask && !theApp->bufferList().quitWriteAll())
 			return;
 
 		LyX::cref().session().writeFile();
@@ -203,7 +202,7 @@ void quitLyX(bool noask)
 	quitting = true;
 
 	// close buffers first
-	bufferlist.closeAll();
+	theApp->bufferList().closeAll();
 
 	// do any other cleanup procedures now
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;

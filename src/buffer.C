@@ -15,7 +15,6 @@
 #include "author.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
 #include "bufferparams.h"
 #include "counters.h"
 #include "Bullet.h"
@@ -60,6 +59,7 @@
 #include "mathed/MathSupport.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Application.h"
 
 #include "graphics/Previews.h"
 
@@ -140,9 +140,6 @@ using std::stack;
 using std::vector;
 using std::string;
 
-
-// all these externs should eventually be removed.
-extern BufferList bufferlist;
 
 namespace {
 
@@ -1484,8 +1481,8 @@ void Buffer::setParentName(string const & name)
 Buffer const * Buffer::getMasterBuffer() const
 {
 	if (!params().parentname.empty()
-	    && bufferlist.exists(params().parentname)) {
-		Buffer const * buf = bufferlist.getBuffer(params().parentname);
+	    && theApp->bufferList().exists(params().parentname)) {
+		Buffer const * buf = theApp->bufferList().getBuffer(params().parentname);
 		if (buf)
 			return buf->getMasterBuffer();
 	}
@@ -1497,8 +1494,8 @@ Buffer const * Buffer::getMasterBuffer() const
 Buffer * Buffer::getMasterBuffer()
 {
 	if (!params().parentname.empty()
-	    && bufferlist.exists(params().parentname)) {
-		Buffer * buf = bufferlist.getBuffer(params().parentname);
+	    && theApp->bufferList().exists(params().parentname)) {
+		Buffer * buf = theApp->bufferList().getBuffer(params().parentname);
 		if (buf)
 			return buf->getMasterBuffer();
 	}

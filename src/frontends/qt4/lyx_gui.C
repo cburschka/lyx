@@ -15,7 +15,6 @@
 #include "lyx_gui.h"
 
 // FIXME: move this stuff out again
-#include "bufferlist.h"
 #include "Color.h"
 #include "funcrequest.h"
 #include "LColor.h"

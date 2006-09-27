@@ -15,11 +15,12 @@
 #include "helper_funcs.h"
 #include "Kernel.h"
 
-#include "bufferlist.h"
 #include "gettext.h"
 #include "funcrequest.h"
 #include "paper.h"
 #include "LColor.h"
+
+#include "frontends/Application.h"
 
 #include "support/filefilterlist.h"
 
@@ -30,8 +31,6 @@ using std::pair;
 using std::string;
 using std::vector;
 
-
-extern BufferList bufferlist;
 
 namespace lyx {
 
@@ -67,7 +66,7 @@ void ControlPrefs::dispatchParams()
 	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 
 	// FIXME: these need lfuns
-	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);
+	theApp->bufferList().setCurrentAuthor(rc_.user_name, rc_.user_email);
 
 	::formats = formats_;
 

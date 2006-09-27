@@ -14,7 +14,6 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
@@ -32,6 +31,7 @@
 #include "outputparams.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Application.h"
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"
@@ -81,8 +81,6 @@ using std::ostream;
 using std::ostringstream;
 
 namespace fs = boost::filesystem;
-
-extern BufferList bufferlist;
 
 
 namespace {
@@ -319,7 +317,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 	if (!isLyXFilename(included_file))
 		return 0;
 
-	return bufferlist.getBuffer(included_file);
+	return theApp->bufferList().getBuffer(included_file);
 }
 
 
@@ -333,12 +331,12 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 	if (!isLyXFilename(included_file))
 		return false;
 
-	Buffer * buf = bufferlist.getBuffer(included_file);
+	Buffer * buf = theApp->bufferList().getBuffer(included_file);
 	if (!buf) {
 		// the readonly flag can/will be wrong, not anymore I think.
 		if (!fs::exists(included_file))
 			return false;
-		buf = bufferlist.newBuffer(included_file);
+		buf = theApp->bufferList().newBuffer(included_file);
 		if (!loadLyXFile(buf, included_file))
 			return false;
 	}
@@ -386,7 +384,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		// Don't try to load or copy the file
 		;
 	else if (loadIfNeeded(buffer, params_)) {
-		Buffer * tmp = bufferlist.getBuffer(included_file);
+		Buffer * tmp = theApp->bufferList().getBuffer(included_file);
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
 			// FIXME UNICODE
@@ -499,7 +497,7 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 	string writefile = changeExtension(included_file, ".sgml");
 
 	if (loadIfNeeded(buffer, params_)) {
-		Buffer * tmp = bufferlist.getBuffer(included_file);
+		Buffer * tmp = theApp->bufferList().getBuffer(included_file);
 
 		string const mangled = FileName(writefile).mangledFilename();
 		writefile = makeAbsPath(mangled,
@@ -560,7 +558,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// to be loaded:
 	if (loadIfNeeded(buffer, params_)) {
 		// a file got loaded
-		Buffer * const tmp = bufferlist.getBuffer(included_file);
+		Buffer * const tmp = theApp->bufferList().getBuffer(included_file);
 		if (tmp) {
 			// We must temporarily change features.buffer,
 			// otherwise it would always be the master buffer,
@@ -578,7 +576,7 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 {
 	if (loadIfNeeded(buffer, params_)) {
 		string const included_file = includedFilename(buffer, params_);
-		Buffer * tmp = bufferlist.getBuffer(included_file);
+		Buffer * tmp = theApp->bufferList().getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->getLabelList(list);
 		tmp->setParentName(parentFilename(buffer));
@@ -591,7 +589,7 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 {
 	if (loadIfNeeded(buffer, params_)) {
 		string const included_file = includedFilename(buffer, params_);
-		Buffer * tmp = bufferlist.getBuffer(included_file);
+		Buffer * tmp = theApp->bufferList().getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->fillWithBibKeys(keys);
 		tmp->setParentName(parentFilename(buffer));

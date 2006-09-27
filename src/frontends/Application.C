@@ -70,6 +70,18 @@ LyXServerSocket const & Application::socket() const
 }
 
 
+BufferList & Application::bufferList()
+{
+	return buffer_list_;
+}
+
+
+BufferList const & Application::bufferList() const
+{
+	return buffer_list_;
+}
+
+
 void Application::setBufferView(BufferView * buffer_view)
 {
 	buffer_view_ = buffer_view;

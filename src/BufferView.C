@@ -18,7 +18,6 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "bufferlist.h"
 #include "bufferparams.h"
 #include "coordcache.h"
 #include "CutAndPaste.h"
@@ -60,6 +59,7 @@
 #include "insets/insettext.h"
 
 #include "frontends/Alert.h"
+#include "frontends/Application.h"
 #include "frontends/FileDialog.h"
 #include "frontends/font_metrics.h"
 
@@ -100,8 +100,6 @@ using std::max;
 using std::mem_fun_ref;
 using std::string;
 using std::vector;
-
-extern BufferList bufferlist;
 
 
 namespace {
@@ -186,7 +184,7 @@ void BufferView::setBuffer(Buffer * b)
 		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
 				    << " No Buffer!" << endl;
 		// We are closing the buffer, use the first buffer as current
-		buffer_ = bufferlist.first();
+		buffer_ = theApp->bufferList().first();
 	} else {
 		// Set current buffer
 		buffer_ = b;
@@ -233,7 +231,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 		s = filename;
 
 	// File already open?
-	if (bufferlist.exists(s)) {
+	if (theApp->bufferList().exists(s)) {
 		docstring const file = makeDisplayPath(s, 20);
 		docstring text = bformat(_("The document %1$s is already "
 						     "loaded.\n\nDo you want to revert "
@@ -242,11 +240,11 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret != 0) {
-			setBuffer(bufferlist.getBuffer(s));
+			setBuffer(theApp->bufferList().getBuffer(s));
 			return true;
 		}
 		// FIXME: should be LFUN_REVERT
-		if (!bufferlist.close(bufferlist.getBuffer(s), false))
+		if (!theApp->bufferList().close(theApp->bufferList().getBuffer(s), false))
 			return false;
 		// Fall through to new load. (Asger)
 	}
@@ -254,9 +252,9 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 	Buffer * b = 0;
 
 	if (found) {
-		b = bufferlist.newBuffer(s);
+		b = theApp->bufferList().newBuffer(s);
 		if (!::loadLyXFile(b, s)) {
-			bufferlist.release(b);
+			theApp->bufferList().release(b);
 			return false;
 		}
 	} else {
@@ -310,7 +308,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 void BufferView::reload()
 {
 	string const fn = buffer_->fileName();
-	if (bufferlist.close(buffer_, false))
+	if (theApp->bufferList().close(buffer_, false))
 		loadLyXFile(fn);
 }
 
@@ -535,10 +533,10 @@ void BufferView::restorePosition(unsigned int i)
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
-		if (bufferlist.exists(fname))
-			b = bufferlist.getBuffer(fname);
+		if (theApp->bufferList().exists(fname))
+			b = theApp->bufferList().getBuffer(fname);
 		else {
-			b = bufferlist.newBuffer(fname);
+			b = theApp->bufferList().newBuffer(fname);
 			// Don't ask, just load it
 			::loadLyXFile(b, fname);
 		}
