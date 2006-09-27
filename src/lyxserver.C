@@ -44,6 +44,7 @@
 #include "funcrequest.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
+#include "frontends/lyx_gui.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
