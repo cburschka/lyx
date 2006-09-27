@@ -2095,9 +2095,11 @@ if 'install' in targets:
             ['INSTALL', 'README', 'README.Cygwin', 'RELEASE-NOTES', 'COPYING', 'ANNOUNCE']])
         Alias('install', Cygwin_Doc)
         # cygwin fonts also need to be installed
-        env.Install(os.path.join(share_dest_dir, 'font'),
-            [env.subst('$TOP_SRC_DIR/development/Win32/packaging/bakoma/%s' % file) \
+        Cygwin_fonts = os.path.join(share_dest_dir, 'font')
+        env.Install(Cygwin_fonts, 
+            [env.subst('$TOP_SRCDIR/development/Win32/packaging/bakoma/%s' % file) \
                   for file in win32_bakoma_fonts])
+        Alias('install', Cygwin_fonts)
         # we also need a post installation script
         tmp_script = utils.installCygwinPostinstallScript('/tmp')
         postinstall_script = os.path.join(dest_dir, 'etc', 'postinstall', 'lyx.sh')
