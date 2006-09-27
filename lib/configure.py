@@ -295,6 +295,7 @@ def checkFormatEntries():
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
+\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document"
 \Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"document"
 \Format wmf        wmf    "Windows Meta File"     "" ""	""	""
 \Format word       doc    "MS Word"               W  ""	""	"document"
@@ -340,6 +341,9 @@ def checkConverterEntries():
     #
     checkProg('a LaTeX -> OpenOffice.org converter', ['oolatex $$i', 'oolatex.sh $$i'],
         rc_entry = [ r'\converter latex      sxw        "%%"	"latex"' ])
+    # On windows it is called latex2rt.exe
+    checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
+        rc_entry = [ r'\converter latex      rtf        "%%"	"needaux"' ])
     #
     checkProg('a PS to PDF converter', ['ps2pdf13 $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
