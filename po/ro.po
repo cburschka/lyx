@@ -4,12 +4,13 @@
 # This file is distributed under the same license as the LyX package.
 # Claudiu Costin <claudiuc@calderon.pcnet.ro>, 1999.
 # Claudiu Costin <claudiuc@kde.org>, 2003, 2004.
+# Marius Ionescu <felijohn@gmail.com>, 2006
 msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-09-16 15:16+0200\n"
-"PO-Revision-Date: 2004-01-08 21:46+0200\n"
+"POT-Creation-Date: 2006-09-18 10:43+0200\n"
+"PO-Revision-Date: 2006-09-25 15:07-0400\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -223,7 +224,7 @@ msgstr "EmailSpecial"
 
 #: src/frontends/xforms/forms/form_box.fd:224
 msgid "Inner Alignment (Vert.)"
-msgstr ""
+msgstr "Aliniere interioarã (Verticalã)"
 
 #: src/frontends/xforms/forms/form_box.fd:242
 #, fuzzy
@@ -233,7 +234,6 @@ msgstr "Aliniere pe &orizontalã:"
 #: src/frontends/xforms/forms/form_box.fd:260
 #: src/frontends/controllers/ControlBox.C:80 src/frontends/qt2/QBox.C:187
 #: src/frontends/qt2/QBox.C:221
-#, fuzzy
 msgid "Height"
 msgstr "Î&nãlþime"
 
@@ -299,14 +299,13 @@ msgstr "Modificare font|f"
 
 #: src/frontends/xforms/forms/form_changes.fd:80
 msgid "Accept change|#A"
-msgstr ""
+msgstr "Aceptã modificarea|m"
 
 #: src/frontends/xforms/forms/form_changes.fd:116
 msgid "Changed by:"
-msgstr ""
+msgstr "Modificat de cãtre"
 
 #: src/frontends/xforms/forms/form_changes.fd:134
-#, fuzzy
 msgid "author"
 msgstr "Autor"
 
@@ -690,7 +689,7 @@ msgstr "Ding 4|#g"
 
 #: src/frontends/xforms/forms/form_document.fd:1783
 msgid "New Branch:|#N"
-msgstr ""
+msgstr "Ramurã noua"
 
 #: src/frontends/xforms/forms/form_document.fd:1801
 #: src/frontends/xforms/forms/form_spellchecker.fd:134
@@ -698,7 +697,6 @@ msgid "Add|#d"
 msgstr "Adaugã|#A"
 
 #: src/frontends/xforms/forms/form_document.fd:1819
-#, fuzzy
 msgid "Remove|#e"
 msgstr "&Eliminã"
 
@@ -709,7 +707,7 @@ msgstr "Referinþe disponibile"
 
 #: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Activated Branches:"
-msgstr ""
+msgstr "Ramurile active"
 
 #: src/frontends/xforms/forms/form_document.fd:1873
 #, fuzzy
@@ -1368,7 +1366,7 @@ msgstr "Înlocuieºte|#n"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1072
 msgid "Email address:|#E"
-msgstr ""
+msgstr "Adresa de email:|#e"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
 #, fuzzy
@@ -1725,7 +1723,7 @@ msgstr "Interior:|#I"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
 msgid "Use Windows Paths for LaTeX|#s"
-msgstr ""
+msgstr "Foloseºte stilul de numire Windows pentru LaTeX"
 
 #: src/frontends/xforms/forms/form_print.fd:44
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -2142,7 +2140,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:64
 msgid "Use the jurabib styles for law and humanities"
-msgstr ""
+msgstr "Foloseºte stilul jurabib pentru drept si stiinþe umaniste"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:75
 #, fuzzy
@@ -2151,7 +2149,7 @@ msgstr "Utilizeazã &NatBib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:79
 msgid "Use the natbib styles for natural sciences and arts"
-msgstr ""
+msgstr "Foloseºte stilul natbib pentru stiinþe naturale si arte"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:90
 #, fuzzy
@@ -2159,9 +2157,8 @@ msgid "&Default (numerical)"
 msgstr "Implicit (în exterior)"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:94
-#, fuzzy
 msgid "Use BibTeX's default numerical styles"
-msgstr "Utilizeazã setãrile LaTeX implicite"
+msgstr "Utilizeazã setãrile BibTeX implicite"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:124
 #, fuzzy
@@ -2176,7 +2173,7 @@ msgstr "Bibliografie"
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
 #: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
-msgstr ""
+msgstr "Selecteazã-mã dacã doreºti sã imparþi bibliografia in secþiuni"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
 #, fuzzy
@@ -2194,7 +2191,7 @@ msgstr "Nume"
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:82
 #: src/frontends/gtk/GDocument.C:304
 msgid "Activated"
-msgstr ""
+msgstr "Activat"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:96
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:436
@@ -2211,7 +2208,7 @@ msgstr "Referinþe disponibile"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:154
 msgid "(&De)activate"
-msgstr ""
+msgstr "(&De)activeazã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:158
 #, fuzzy
@@ -2219,13 +2216,12 @@ msgid "Toggle the selected branch"
 msgstr "ªterge citarea selectatã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
-#, fuzzy
 msgid "Alter Co&lor..."
-msgstr "&Modificã..."
+msgstr "&Modificã culoarea"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:173
 msgid "Define or change background color"
-msgstr ""
+msgstr "Defineºte sau modificã culoarea de bazã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:184
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:324
@@ -2240,7 +2236,6 @@ msgid "Remove the selected branch"
 msgstr "ªterge citarea selectatã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:235
-#, fuzzy
 msgid "&New:"
 msgstr "&Nou"
 
@@ -2254,7 +2249,7 @@ msgstr "&Adaugã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:261
 msgid "Add a new branch to the list"
-msgstr ""
+msgstr "Adaugã o noua ramurã la listã"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:118
 #, fuzzy
@@ -2359,27 +2354,25 @@ msgstr "Huger"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:353
 msgid "&Second level"
-msgstr ""
+msgstr "Al &doilea nivel"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:609
 msgid "&Third level"
-msgstr ""
+msgstr "Al &treilea nivel"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:901
 msgid "Fou&rth level"
-msgstr ""
+msgstr "Al &patrulea nivel"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:71
 msgid "Document &class:"
 msgstr "&Clasã document:"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:138
-#, fuzzy
 msgid "Class Settings"
-msgstr "opþiuni suplimentare"
+msgstr "Opþiuni specifice clasei selectate"
 
 #: src/frontends/qt2/ui/LaTeXModuleBase.ui:157
-#, fuzzy
 msgid "&Options:"
 msgstr "&Opþiuni:"
 
@@ -2418,7 +2411,7 @@ msgstr "&Implicit"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:45
 msgid "Use the margin settings provided by the document class"
-msgstr ""
+msgstr "Foloseºte marginile implicite ale clasei de document"
 
 #: src/frontends/qt2/ui/MarginsModuleBase.ui:132
 msgid "&Top:"
@@ -2485,7 +2478,7 @@ msgstr "&Numerotare"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:159
 msgid "Appears in TOC"
-msgstr ""
+msgstr "Apare in Cuprins"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:200
 #, fuzzy
@@ -2515,6 +2508,8 @@ msgstr "&Lãþime:"
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:109
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
+"Alege o dimensiune speficã pentru foaie, sau creazã dimensiunile proprii cu "
+"\"Personalizeazã\""
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:199
 msgid "&Portrait"
@@ -2530,7 +2525,7 @@ msgstr "&Stil paginã:"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:264
 msgid "Style used for the page header and footer"
-msgstr ""
+msgstr "Stiluri folosite pentru antet si subsol"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:277
 msgid "&Two-sided document"
@@ -2538,7 +2533,7 @@ msgstr "Document &dublã-faþã"
 
 #: src/frontends/qt2/ui/PageLayoutModuleBase.ui:281
 msgid "Lay out the page for double-sided printing"
-msgstr ""
+msgstr "Pregãteºte formatul paginilor pentru imprimare faþã-verso"
 
 #: src/frontends/qt2/ui/QAboutDialogBase.ui:51
 #: src/frontends/xforms/FormAboutlyx.C:89
@@ -2781,9 +2776,8 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:94
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:141
-#, fuzzy
 msgid "Height value"
-msgstr "Valoare lãþime"
+msgstr "Valoare inãlþime"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:123
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:625
@@ -2958,35 +2952,31 @@ msgstr "Limbaj:"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:75
 msgid "Details of the change"
-msgstr ""
+msgstr "Detalii ale modificãrilor"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:103
-#, fuzzy
 msgid "&Accept"
-msgstr "Acceptat"
+msgstr "Acceptã"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:111
 msgid "Accept this change"
-msgstr ""
+msgstr "Acceptã aceastã modificare"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:122
-#, fuzzy
 msgid "&Reject"
-msgstr "Reseteazã"
+msgstr "Respinge"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:130
 msgid "Reject this change"
-msgstr ""
+msgstr "Respinge aceastã modificare"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:200
-#, fuzzy
 msgid "&Next change"
-msgstr "Modificare font|f"
+msgstr "Urmatoarea modificare"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:208
-#, fuzzy
 msgid "Go to next change"
-msgstr "Salt la eroarea urmãtoare"
+msgstr "Salt la modificarea urmãtoare"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:81
 msgid "&Family:"
@@ -3067,9 +3057,8 @@ msgid "toggle font on all of the above"
 msgstr "comutã fontul pentru toate de deasupra"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:436
-#, fuzzy
 msgid "Apply changes immediately"
-msgstr "Aplicã automat fiecare modificare"
+msgstr "Aplicã fiecare modificare imediat"
 
 #: src/frontends/qt2/ui/QCharacterDialogBase.ui:440
 msgid "Apply each change automatically"
@@ -3089,9 +3078,8 @@ msgstr "Închide"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:71
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:117
-#, fuzzy
 msgid "Bibliography entry"
-msgstr "Bibliografie"
+msgstr "Intrare în bibliografie"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:112
 msgid "Move the selected citation down"
@@ -3102,7 +3090,6 @@ msgid "Citations currently selected"
 msgstr "Citãrile curente selectate"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:152
-#, fuzzy
 msgid "D&elete"
 msgstr "ªte&rge"
 
@@ -3111,12 +3098,10 @@ msgid "Move the selected citation up"
 msgstr "Mutã citarea selectatã mai sus"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:189
-#, fuzzy
 msgid "&Citations:"
 msgstr "Citare"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:312
-#, fuzzy
 msgid "A&pply"
 msgstr "&Aplicã"
 
@@ -3125,7 +3110,6 @@ msgid "Style"
 msgstr "Stil"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:359
-#, fuzzy
 msgid "Citation &style:"
 msgstr "Stil de citare:"
 
@@ -3142,7 +3126,6 @@ msgid "Force upper case in citation"
 msgstr "Forþeazã la majuscule în citare"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:407
-#, fuzzy
 msgid "&Text after:"
 msgstr "Text dupã:"
 
@@ -3155,7 +3138,6 @@ msgid "Text to place before citation"
 msgstr "Text de plasat înainte de citare"
 
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:458
-#, fuzzy
 msgid "Text &before:"
 msgstr "Text înainte:"
 
@@ -3183,7 +3165,7 @@ msgstr "&Precedent"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:227
 msgid "Browse the available bibliography entries"
-msgstr ""
+msgstr "Rãsfoieºte toate intrãrile bibliografice"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:245
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:161
@@ -3241,7 +3223,6 @@ msgid "Use Class Defaults"
 msgstr "Utilizeazã paramentrii impliciþi ai clasei"
 
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:85
-#, fuzzy
 msgid "Reset to the default settings for the document class"
 msgstr "Reseteazã la valorile implicite ale clasei curente"
 
@@ -3250,7 +3231,6 @@ msgid "Save as Document Defaults"
 msgstr "Salveazã valorile ca implicite pentru document"
 
 #: src/frontends/qt2/ui/QDocumentDialogBase.ui:107
-#, fuzzy
 msgid "Save settings as LyX's default document settings"
 msgstr "Salveazã setãrile ca model implicit LyX"
 
@@ -3275,7 +3255,6 @@ msgid "Show ERT button only"
 msgstr "Afiºeazã numai butonul ERT"
 
 #: src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
 msgid "O&pen"
 msgstr "&Deschide"
 
@@ -3286,7 +3265,6 @@ msgstr "Afiºeazã conþinutul ERT"
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:54
 #: src/frontends/xforms/FormExternal.C:447
 #: src/frontends/xforms/FormGraphics.C:280
-#, fuzzy
 msgid "File"
 msgstr "Fiºier:"
 
@@ -3300,7 +3278,6 @@ msgid "Available templates"
 msgstr "Modele disponibile"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:144
-#, fuzzy
 msgid "&Draft"
 msgstr "Mod &ciornã"
 
@@ -3331,7 +3308,6 @@ msgid "Edit the file externally"
 msgstr "Editeazã extern fiºierul"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:308
-#, fuzzy
 msgid "Sca&le:"
 msgstr "Scalare:"
 
@@ -3343,7 +3319,6 @@ msgid "Percentage to scale by in LyX"
 msgstr "Procentul de scalare în LyX"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:402
-#, fuzzy
 msgid "&Display:"
 msgstr "Afiºare:"
 
@@ -3378,7 +3353,6 @@ msgid "Grayscale"
 msgstr "Nuanþe de gri"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:442
-#, fuzzy
 msgid "Preview"
 msgstr "Previzualizeazã|#P"
 
@@ -3394,9 +3368,8 @@ msgstr "Afiºeazã imaginea în LyX"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:483
 #: src/frontends/xforms/FormExternal.C:454
-#, fuzzy
 msgid "Rotate"
-msgstr "Stat"
+msgstr "Roteºte"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:547
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:596
@@ -3406,7 +3379,6 @@ msgid "Angle to rotate image by"
 msgstr "Unghiul de rotire al imaginii"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:558
-#, fuzzy
 msgid "&Origin:"
 msgstr "&Origine:"
 
@@ -3424,9 +3396,8 @@ msgstr "&Unghi:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:634
 #: src/frontends/xforms/FormExternal.C:457
-#, fuzzy
 msgid "Scale"
-msgstr "Smaller"
+msgstr "Scalare"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:676
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:538
@@ -3476,7 +3447,6 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:993
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:833
-#, fuzzy
 msgid "&Get from File"
 msgstr "&Insereazã din fiºier"
 
@@ -3491,21 +3461,18 @@ msgid "Options"
 msgstr "Opþiuni"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1065
-#, fuzzy
 msgid "Forma&t:"
 msgstr "F&ormat:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:1108
-#, fuzzy
 msgid "O&ption:"
-msgstr "&Titlu:"
+msgstr "O&pþiune:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
 msgid "&Graphics"
 msgstr "&Graficã"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:282
-#, fuzzy
 msgid "Or&igin:"
 msgstr "&Origine:"
 
@@ -3522,9 +3489,8 @@ msgid "Scale:"
 msgstr "Scalare:"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:695
-#, fuzzy
 msgid "&Edit"
-msgstr "&Editeazã..."
+msgstr "&Editeazã"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:714
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:748
@@ -3663,9 +3629,9 @@ msgid "Insert fraction"
 msgstr "Insereazã fracþie"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:239
-#, fuzzy
 msgid "Toggle between display and inline mode"
-msgstr "Comutã între modurile afiºare"
+msgstr ""
+"Comutã între modurile afiºare tip ecuatie sau formulã in cadrul rîndului"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:258 lib/ui/stdtoolbars.ui:136
 msgid "Insert matrix"
@@ -3804,24 +3770,22 @@ msgid "&Horizontal:"
 msgstr "&Orizontal:"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:94
-#, fuzzy
 msgid "LyX &Note"
-msgstr "Notã"
+msgstr "Notã LyX"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:98
 #: src/frontends/xforms/FormNote.C:42
 msgid "LyX internal only"
-msgstr ""
+msgstr "Format intern LyX"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:109
-#, fuzzy
 msgid "&Comment"
 msgstr "Comentariu"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:113
 #: src/frontends/xforms/FormNote.C:44
 msgid "Export to LaTeX/Docbook but don't print"
-msgstr ""
+msgstr "Exportã in format LaTeX/Docbook dar nu tipãri"
 
 #: src/frontends/qt2/ui/QNoteDialogBase.ui:124
 msgid "&Greyed out"
@@ -3873,10 +3837,9 @@ msgstr "Eticheteazã cu"
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:264
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:283
 msgid "This text defines the width of the paragraph label"
-msgstr ""
+msgstr "Acest text defineºte lãþimea etichetei acestui paragraf"
 
 #: src/frontends/qt2/ui/QParagraphDialogBase.ui:275
-#, fuzzy
 msgid "&Longest label"
 msgstr "Cea mai &lungã etichetã"
 
@@ -3885,7 +3848,6 @@ msgid "&roff command:"
 msgstr "Comandã &roff:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:90
-#, fuzzy
 msgid "Max. line length of exported plain text/LaTeX/SGML files"
 msgstr "Lungimea maximã a liniei a fiºierelor ASCII/LaTeX/SGML exportate"
 
@@ -3894,7 +3856,6 @@ msgid "Output &line length:"
 msgstr "Lungimea &liniei:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:139
-#, fuzzy
 msgid "External app for formating tables in plain text output"
 msgstr "Aplicaþie externã pentru formatarea tabelelor ca text ASCII"
 
@@ -3955,7 +3916,7 @@ msgstr "&Format:"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr ""
+msgstr "Foloseºte stilul de nume de fiºiere Windows pentru fiºierele LaTeX"
 
 #: src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2145
@@ -3964,6 +3925,9 @@ msgid ""
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
+"Selecteazã daca doreºti ca LyX sã producã cãi in stilul Windows decit stilul "
+"Posix/Unix. Este folositor dacã foloseºti versiunea Windows MikTeX ºi nu "
+"versiunea Cygwin teTex"
 
 #: src/frontends/qt2/ui/QPrefDateModule.ui:56
 msgid "&Date format:"
@@ -3992,7 +3956,6 @@ msgid "Do not display"
 msgstr "Nu afiºeazã"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:127
-#, fuzzy
 msgid "Instant &Preview:"
 msgstr "&Previzualizare instantanee"
 
@@ -4026,7 +3989,6 @@ msgid "&File formats"
 msgstr "Formate de &fiºier"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:56
-#, fuzzy
 msgid "&E-mail:"
 msgstr "Email"
 
@@ -4043,7 +4005,7 @@ msgstr "&Nume:"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:97
 msgid "Your E-mail address"
-msgstr ""
+msgstr "Adresa de email"
 
 #: src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
 #: src/frontends/qt2/ui/QPrefUIModule.ui:111
@@ -4136,7 +4098,7 @@ msgstr "Opþiuni limbaj"
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:148
 #, fuzzy
 msgid "&BibTeX command:"
-msgstr "Comandã Chec&kTeX:"
+msgstr "Comandã &BibTeX:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:163
 msgid "Index command and options (makeindex, xindy)"
@@ -4159,21 +4121,18 @@ msgstr ""
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
 #: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
-#, fuzzy
 msgid "US letter"
-msgstr "Letter"
+msgstr "Format scrisoare SUA"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:256
 #: src/frontends/gtk/GDocument.C:173 src/frontends/qt2/QDocument.C:114
-#, fuzzy
 msgid "US legal"
-msgstr "Literal"
+msgstr "Format legal SUA"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:262
 #: src/frontends/gtk/GDocument.C:174 src/frontends/qt2/QDocument.C:115
-#, fuzzy
 msgid "US executive"
-msgstr "Executive"
+msgstr "Format executiv SUA"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:268
 #: src/frontends/gtk/GDocument.C:175 src/frontends/qt2/QDocument.C:116
@@ -4212,13 +4171,12 @@ msgid "&Backup directory:"
 msgstr "&Director pentru rezerve: "
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:122
-#, fuzzy
 msgid "&Temporary directory:"
-msgstr "&Utilizeazã director temporar"
+msgstr "&Specificã directorul temporar"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:137
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "Prefixul variabilei &PATH (cale)"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:152
 msgid "&Working directory:"
@@ -4226,7 +4184,7 @@ msgstr "&Director de lucru:"
 
 #: src/frontends/qt2/ui/QPrefPathsModule.ui:248
 msgid "Ly&XServer pipe:"
-msgstr "Conducã server Ly&X:"
+msgstr "Conductã server Ly&X:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:71
 msgid "Printer &name:"
@@ -4352,7 +4310,7 @@ msgstr "&Verificator ortografic:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
 msgid "Override the language used for the spellchecker"
-msgstr ""
+msgstr "Schimbã limbajul folosit de cãtre verificatorul ortografic"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:110
 msgid "Al&ternative language:"
@@ -4364,7 +4322,7 @@ msgstr "Caractere de &evitare:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:172
 msgid "Specify a personal dictionary file other than the default"
-msgstr ""
+msgstr "Specificã un dicþionar personal diferit decît cel implicit"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:183
 msgid "Personal &dictionary:"
@@ -4376,7 +4334,7 @@ msgstr "Acceptã &cuvinte compuse"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
 msgid "Accept words such as \"diskdrive\""
-msgstr ""
+msgstr "Acceptã cuvinte de felul \"diskdrive\""
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
 msgid "Use input encod&ing"
@@ -4399,7 +4357,6 @@ msgid "&Bind file:"
 msgstr "Fiºier de &asocieri de taste:"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:131
-#, fuzzy
 msgid "Cursor follows &scrollbar"
 msgstr "Cursorul &urmãreºte bara de defilare"
 
@@ -4490,7 +4447,6 @@ msgid "Print Destination"
 msgstr "Destinaþia tipãririi"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:409
-#, fuzzy
 msgid "P&rinter:"
 msgstr "I&mprimantã"
 
@@ -4508,29 +4464,25 @@ msgid "Send output to a file"
 msgstr "Trimite documentul în fiºier"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the label list"
-msgstr "Actualizeazã lista de referinþe"
+msgstr "Actualizeazã lista de etichete"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:145
 #, fuzzy
 msgid "&Go to Label"
-msgstr "Cea mai &lungã etichetã"
+msgstr "&Mergi la etichetã"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Jump to the label"
-msgstr "Cea mai &lungã etichetã"
+msgstr "Sari la etichetã"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:106
-#, fuzzy
 msgid "&Sort"
 msgstr "Sorteazã"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort labels in alphabetical order"
-msgstr "Sorteazã referinþele în ordine alfabeticã "
+msgstr "Sorteazã etichetele în ordine alfabeticã "
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -4563,9 +4515,8 @@ msgid "Cross-reference as it appears in output"
 msgstr "Referinþa, aºa cum apare la tipãrire"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:353
-#, fuzzy
 msgid "Available labels"
-msgstr "Modele disponibile"
+msgstr "Etichete disponibile"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
 #, fuzzy
@@ -4578,7 +4529,7 @@ msgstr "Î&nlocuieºte cu:"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:172
 msgid "Match whole words onl&y"
-msgstr "Numai c&uvinte întregi"
+msgstr "Cautã numai c&uvinte întregi"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:250
 msgid "Find &Next"
@@ -4592,7 +4543,7 @@ msgstr "În&locuieºte"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:284
 msgid "Replace &All"
-msgstr "Înlocuieºte &tot"
+msgstr "Înlocuieºte &toate apariþiile"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:295
 msgid "Search &backwards"
@@ -4640,7 +4591,6 @@ msgid "I&gnore All"
 msgstr "Ignorã t&ot"
 
 #: src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
-#, fuzzy
 msgid "Ignore this word throughout this session"
 msgstr "Acceptã cuvîntul pentru aceastã sesiune"
 
@@ -4684,17 +4634,14 @@ msgid "Horizontal alignment in column"
 msgstr "Aliniere orizontalã în coloanã"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:136
-#, fuzzy
 msgid "&Rotate table 90 degrees"
 msgstr "Roteºte tabelul cu 90 grade"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:140
-#, fuzzy
 msgid "Rotate the table by 90 degrees"
 msgstr "Roteºte tabelul cu 90 grade"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:151
-#, fuzzy
 msgid "Rotate &cell 90 degrees"
 msgstr "Roteºte aceastã celulã cu 90 grade"
 
@@ -4748,23 +4695,20 @@ msgid "Set Borders"
 msgstr "Seteazã marginile"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:675
-#, fuzzy
 msgid "Set borders of the current (selected) cell(s)"
-msgstr "Reseteazã la valorile implicite ale clasei curente"
+msgstr "Modificã marginile celulei (celulelor) curente (selectate)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:690
 msgid "All Borders"
 msgstr "Toate marginile"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:709
-#, fuzzy
 msgid "&Set"
-msgstr "&Salveazã"
+msgstr "&Modificã"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:713
-#, fuzzy
 msgid "Set all borders of the current (selected) cell(s)"
-msgstr "Reseteazã la valorile implicite ale clasei curente"
+msgstr "Modificã toate marginile celulei (celulelor) curente (selectate)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:724
 msgid "C&lear"
@@ -4773,7 +4717,9 @@ msgstr "ª&terge"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:728
 #, fuzzy
 msgid "Unset all borders of the current (selected) cell(s)"
-msgstr "Reseteazã la valorile implicite ale clasei curente"
+msgstr ""
+"Reseteazã toate marginile ale celulei (celulelor) curente (selectate) la "
+"valorile implicite"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:785
 msgid "&Longtable"
@@ -4825,18 +4771,22 @@ msgstr "pe"
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:934
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
+"Foloseºte aceastã linie ca antent pe fiecare paginã, cu excepþia primei "
+"pagini"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:949
 msgid "This row is the header of the first page"
-msgstr ""
+msgstr "Foloseºte aceastã linie ca antet pentru prima pagini"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:968
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
+"Foloseºte aceastã linie ca subsol pentru fiecare paginã (cu excepþia primei "
+"pagini)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:983
 msgid "This row is the footer of the last page"
-msgstr ""
+msgstr "Foloseºte aceastã linie ca subsol pentru prima paginã"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:994
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1009
@@ -4855,14 +4805,12 @@ msgid "is empty"
 msgstr "este gol"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1090
-#, fuzzy
 msgid "Don't output the last footer"
-msgstr "Referinþã aºa cum apare la tipãrire"
+msgstr "Nu tipãri ultimul subsol"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1105
-#, fuzzy
 msgid "Don't output the first header"
-msgstr "Trimite documentul la imprimantã"
+msgstr "Nu tipãri primul antet"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:1122
 msgid "Page &break on current row"
@@ -4978,7 +4926,6 @@ msgid "Contents list"
 msgstr "Lista cuprinsului"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL:"
 msgstr "&URL"
 
@@ -5003,7 +4950,6 @@ msgid "Output as a hyperlink ?"
 msgstr "Tipãresc ca hiperlegãturã?"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:45
-#, fuzzy
 msgid "&Spacing:"
 msgstr "&Spaþiere"
 
@@ -5017,13 +4963,12 @@ msgid "&Protect:"
 msgstr "&Accelerator:"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:98
-#, fuzzy
 msgid "Insert the spacing even after a page break"
-msgstr "Insereazã rupere de ligaturã"
+msgstr "Insereazã spaþiu chiar ºi dupã inceput de paginã"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:113
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr ""
+msgstr "Valoare personalizatã. Are nevoie de spaþiere de tip \"personalizat\""
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:121
 msgid "DefSkip"
@@ -5069,9 +5014,8 @@ msgid "&Units:"
 msgstr "&Unitãþi:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:56
-#, fuzzy
 msgid "Document Font"
-msgstr "Documentul "
+msgstr "Fontul pentru document "
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:75
 #, fuzzy
@@ -5083,22 +5027,18 @@ msgid "&Size:"
 msgstr "&Mãrime:"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:137
-#, fuzzy
 msgid "Separate Paragraphs With"
-msgstr "ca paragrafe|p"
+msgstr "Separã paragrafele cu"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:156
-#, fuzzy
 msgid "&Indentation"
 msgstr "&Indentare"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:160
-#, fuzzy
 msgid "Indent consecutive paragraphs"
-msgstr "Selecteazã paragraful urmãtor"
+msgstr "Identeazã paragrafe consecutive"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:171
-#, fuzzy
 msgid "&Vertical space"
 msgstr "Spaþiere verticalã:|#v"
 
@@ -5111,9 +5051,8 @@ msgid "Two-&column document"
 msgstr "Documentul pe &douã coloane"
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:427
-#, fuzzy
 msgid "Format text into two columns"
-msgstr "Formatez documentul..."
+msgstr "Formateazã documentul în douã coloane"
 
 #: lib/layouts/IEEEtran.layout:18 lib/layouts/aa.layout:22
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:49
@@ -5147,12 +5086,11 @@ msgstr "ModelTeoremã"
 #: lib/layouts/llncs.layout:375 lib/layouts/siamltex.layout:252
 #: lib/layouts/amsdefs.inc:28 lib/layouts/svjour.inc:437
 msgid "Proof"
-msgstr "Dovadã"
+msgstr "Demonstraþie"
 
 #: lib/layouts/IEEEtran.layout:66 lib/layouts/heb-article.layout:110
-#, fuzzy
 msgid "Proof:"
-msgstr "Dovadã"
+msgstr "Demonstraþie"
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
 #: lib/layouts/amsart-seq.layout:137 lib/layouts/elsart.layout:263
@@ -5165,9 +5103,8 @@ msgid "Theorem"
 msgstr "Teoremã"
 
 #: lib/layouts/IEEEtran.layout:74
-#, fuzzy
 msgid "Theorem #:"
-msgstr "Teoremã"
+msgstr "Teoremã #"
 
 #: lib/layouts/IEEEtran.layout:81 lib/layouts/amsart-plain.layout:37
 #: lib/layouts/amsart-seq.layout:149 lib/layouts/elsart.layout:319
@@ -5180,9 +5117,8 @@ msgid "Lemma"
 msgstr "Lemã"
 
 #: lib/layouts/IEEEtran.layout:84
-#, fuzzy
 msgid "Lemma #:"
-msgstr "Lemã"
+msgstr "Lemã #:"
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
 #: lib/layouts/amsart-seq.layout:143 lib/layouts/elsart.layout:326
@@ -5195,9 +5131,8 @@ msgid "Corollary"
 msgstr "Corolar"
 
 #: lib/layouts/IEEEtran.layout:94
-#, fuzzy
 msgid "Corollary #:"
-msgstr "Corolar"
+msgstr "Corolar #:"
 
 #: lib/layouts/IEEEtran.layout:101 lib/layouts/amsart-plain.layout:43
 #: lib/layouts/amsart-seq.layout:155 lib/layouts/elsart.layout:333
@@ -5207,12 +5142,11 @@ msgstr "Corolar"
 #: lib/layouts/amsmaths-seq.inc:56 lib/layouts/amsmaths.inc:147
 #: lib/layouts/svjour.inc:451
 msgid "Proposition"
-msgstr "Afirmaþie"
+msgstr "Propoziþie"
 
 #: lib/layouts/IEEEtran.layout:104
-#, fuzzy
 msgid "Proposition #:"
-msgstr "Afirmaþie"
+msgstr "Propoziþie #:"
 
 #: lib/layouts/IEEEtran.layout:111 lib/layouts/amsart-plain.layout:49
 #: lib/layouts/amsart-seq.layout:161 lib/layouts/elsart.layout:368
@@ -5220,12 +5154,11 @@ msgstr "Afirmaþie"
 #: lib/layouts/amsmaths-seq.inc:64 lib/layouts/amsmaths.inc:169
 #: lib/layouts/svjour.inc:370
 msgid "Conjecture"
-msgstr "Ipotezã"
+msgstr "Conjecturã"
 
 #: lib/layouts/IEEEtran.layout:114
-#, fuzzy
 msgid "Conjecture #:"
-msgstr "Ipotezã"
+msgstr "Conjecturã #:"
 
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/amsart-plain.layout:55
 #: lib/layouts/amsart-seq.layout:167 lib/layouts/elsart.layout:340
@@ -5235,20 +5168,18 @@ msgid "Criterion"
 msgstr "Criteriu"
 
 #: lib/layouts/IEEEtran.layout:124
-#, fuzzy
 msgid "Criterion #:"
-msgstr "Criteriu"
+msgstr "Criteriu #:"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
 #: lib/layouts/amsart-seq.layout:179 lib/layouts/amsmaths-plain.inc:103
 #: lib/layouts/amsmaths-seq.inc:88 lib/layouts/amsmaths.inc:213
 msgid "Fact"
-msgstr "Fact"
+msgstr "Fapt"
 
 #: lib/layouts/IEEEtran.layout:134
-#, fuzzy
 msgid "Fact #:"
-msgstr "Fact"
+msgstr "Fapt #:"
 
 #: lib/layouts/IEEEtran.layout:141 lib/layouts/amsart-plain.layout:73
 #: lib/layouts/amsart-seq.layout:185 lib/layouts/amsmaths-plain.inc:113
@@ -5257,9 +5188,8 @@ msgid "Axiom"
 msgstr "Axiomã"
 
 #: lib/layouts/IEEEtran.layout:144
-#, fuzzy
 msgid "Axiom #:"
-msgstr "Axiomã"
+msgstr "Axiomã #:"
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
 #: lib/layouts/amsart-seq.layout:191 lib/layouts/elsart.layout:354
@@ -5272,9 +5202,8 @@ msgid "Definition"
 msgstr "Definiþie"
 
 #: lib/layouts/IEEEtran.layout:154
-#, fuzzy
 msgid "Definition #:"
-msgstr "Definiþie"
+msgstr "Definiþie #:"
 
 #: lib/layouts/IEEEtran.layout:164
 #, fuzzy
@@ -5290,7 +5219,7 @@ msgstr "Condiþie"
 #: lib/layouts/IEEEtran.layout:174
 #, fuzzy
 msgid "Condition #:"
-msgstr "Condiþie"
+msgstr "Condiþie #:"
 
 #: lib/layouts/IEEEtran.layout:181 lib/layouts/amsart-plain.layout:97
 #: lib/layouts/amsart-seq.layout:209 lib/layouts/elsart.layout:382
@@ -5303,7 +5232,7 @@ msgstr "Problemã"
 #: lib/layouts/IEEEtran.layout:184
 #, fuzzy
 msgid "Problem #:"
-msgstr "Problemã"
+msgstr "Problemã #:"
 
 #: lib/layouts/IEEEtran.layout:191 lib/layouts/amsart-plain.layout:103
 #: lib/layouts/amsart-seq.layout:215 lib/layouts/llncs.layout:348
@@ -5315,7 +5244,7 @@ msgstr "Exerciþiu"
 #: lib/layouts/IEEEtran.layout:194
 #, fuzzy
 msgid "Exercise #:"
-msgstr "Exerciþiu"
+msgstr "Exerciþiu #:"
 
 #: lib/layouts/IEEEtran.layout:201 lib/layouts/amsart-plain.layout:109
 #: lib/layouts/amsart-seq.layout:221 lib/layouts/elsart.layout:389
@@ -5327,9 +5256,8 @@ msgid "Remark"
 msgstr "Remarcã"
 
 #: lib/layouts/IEEEtran.layout:204
-#, fuzzy
 msgid "Remark #:"
-msgstr "Remarcã"
+msgstr "Remarcã #:"
 
 #: lib/layouts/IEEEtran.layout:211 lib/layouts/amsart-plain.layout:115
 #: lib/layouts/amsart-seq.layout:227 lib/layouts/elsart.layout:403
