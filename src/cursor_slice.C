@@ -79,7 +79,7 @@ CursorSlice::col_type CursorSlice::col() const
 
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
-	return &p.inset() == &q.inset()
+	return p.inset_ == q.inset_
 	       && p.idx() == q.idx()
 	       && p.pit() == q.pit()
 	       && p.pos() == q.pos();
@@ -88,7 +88,7 @@ bool operator==(CursorSlice const & p, CursorSlice const & q)
 
 bool operator!=(CursorSlice const & p, CursorSlice const & q)
 {
-	return &p.inset() != &q.inset()
+	return p.inset_ != q.inset_
 	       || p.idx() != q.idx()
 	       || p.pit() != q.pit()
 	       || p.pos() != q.pos();
