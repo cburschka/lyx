@@ -95,6 +95,8 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::APPEND_COLUMN, "append-column" },
 	{ LyXTabular::DELETE_ROW, "delete-row" },
 	{ LyXTabular::DELETE_COLUMN, "delete-column" },
+	{ LyXTabular::COPY_ROW, "copy-row" },
+	{ LyXTabular::COPY_COLUMN, "copy-column" },
 	{ LyXTabular::TOGGLE_LINE_TOP, "toggle-line-top" },
 	{ LyXTabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
 	{ LyXTabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
@@ -826,6 +828,8 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LyXTabular::APPEND_COLUMN:
 		case LyXTabular::DELETE_ROW:
 		case LyXTabular::DELETE_COLUMN:
+		case LyXTabular::COPY_ROW:
+		case LyXTabular::COPY_COLUMN:
 		case LyXTabular::SET_ALL_LINES:
 		case LyXTabular::UNSET_ALL_LINES:
 		case LyXTabular::SET_TOP_SPACE:
@@ -1459,6 +1463,15 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.selection() = false;
+		break;
+
+	case LyXTabular::COPY_ROW:
+		tabular.copyRow(bv.buffer()->params(), row);
+		break;
+
+	case LyXTabular::COPY_COLUMN:
+		tabular.copyColumn(bv.buffer()->params(), column);
+		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
 	case LyXTabular::M_TOGGLE_LINE_TOP:

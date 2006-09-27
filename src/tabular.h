@@ -43,6 +43,10 @@ public:
 		///
 		DELETE_COLUMN,
 		///
+		COPY_ROW,
+		///
+		COPY_COLUMN,
+		///
 		TOGGLE_LINE_TOP,
 		///
 		TOGGLE_LINE_BOTTOM,
@@ -282,9 +286,13 @@ public:
 	///
 	void deleteRow(row_type row);
 	///
+	void copyRow(BufferParams const &, row_type);
+	///
 	void appendColumn(BufferParams const &, idx_type cell);
 	///
 	void deleteColumn(col_type column);
+	///
+	void copyColumn(BufferParams const &, col_type);
 	///
 	bool isFirstCellInRow(idx_type cell) const;
 	///
