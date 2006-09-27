@@ -606,6 +606,14 @@ contributers = [
                  "30 March 2005",
                  u"Fixes to literate programming support"),
 
+     contributer(u"Marius Ionescu",
+                 "felijohn () gmail ! com",
+                 "GPL",
+                 "permission to licence",
+                 "m=115935958330941",
+                 "27 September 2006",
+                 u"Romanian localization"),
+
      contributer(u"Bernhard Iselborn",
                  "bernhard.iselborn () sap ! com",
                  "GPL",
@@ -670,6 +678,14 @@ contributers = [
                  "11 March 2005",
                  u"Gtk reference insertion dialog"),
 
+     contributer(u"Kostantino",
+                 "ciclope10 () alice ! it",
+                 "GPL",
+                 "Permission granted",
+                 "m=115513400621782",
+                 "9 August 2006",
+                 u"Italian localization of the interface"),
+
      contributer(u"Michael Koziarski",
                  "koziarski () gmail ! com",
                  "GPL",
@@ -701,14 +717,6 @@ contributers = [
                  "m=110934318821667",
                  "25 February 2005",
                  u"Initial version of the koma-script textclasses"),
-
-     contributer(u"Kostantino",
-                 "ciclope10 () alice ! it",
-                 "GPL",
-                 "Permission granted",
-                 "m=115513400621782",
-                 "9 August 2006",
-                 u"Italian localization of the interface"),
 
      contributer(u"Felix Kurth",
                  "felix () fkurth ! de",
