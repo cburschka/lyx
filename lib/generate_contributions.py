@@ -606,6 +606,14 @@ contributers = [
                  "30 March 2005",
                  u"Fixes to literate programming support"),
 
+     contributer(u"Marius Ionescu",
+                 "felijohn () gmail ! com",
+                 "GPL",
+                 "permission to licence",
+                 "m=115935958330941",
+                 "27 September 2006",
+                 u"Romanian localization"),
+
      contributer(u"Bernhard Iselborn",
                  "bernhard.iselborn () sap ! com",
                  "GPL",
@@ -693,6 +701,14 @@ contributers = [
                  "",
                  "",
                  u"Hungarian translation and bind file for menu shortcuts"),
+
+     contributer(u"Peter Kümmel",
+                 "syntheticpp () gmx ! net",
+                 "GPL",
+                 "License",
+                 "m=114968828021007",
+                 "7 June 2006",
+                 u"Testing, clean ups and profiling"),
 
      contributer(u"Bernd Kümmerlen",
                  "bkuemmer () gmx ! net",
@@ -1158,6 +1174,14 @@ contributers = [
                  "22 February 2005",
                  u"Gnome frontend"),
 
+     contributer(u"Joost Verburg",
+                 "joostverburg () users ! sourceforge ! net",
+                 "GPL",
+                 "Re: New Windows Installer",
+                 "m=114957884100403",
+                 "6 June 2006",
+                 u"A new and improved Windows installer"),
+
      contributer(u"Martin Vermeer",
                  "martin.vermeer () hut ! fi",
                  "GPL",
@@ -1246,6 +1270,14 @@ contributers = [
                  "28 February 2005",
                  u"Gtk frontend"),
 
+     contributer(u"Abdelrazak Younes",
+                 "younes.a () free ! fr",
+                 "GPL",
+                 "Re: [Patch] RFQ: ParagraphList Rewrite",
+                 "m=113993670602439",
+                 "14 February 2006",
+                 u"Qt4 frontend, editing optimisations"),
+
      contributer(u"Henner Zeller",
                  "henner.zeller () freiheit ! com",
                  "GPL",
@@ -1261,7 +1293,6 @@ contributers = [
                  "",
                  "",
                  u"bug reports and small fixes") ]
-
 
 if __name__ == "__main__":
      main(sys.argv, contributers)
