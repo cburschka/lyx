@@ -2244,18 +2244,18 @@ if 'install' in targets:
     
     if platform_name == 'cygwin':
         # cygwin packaging requires a file /usr/share/doc/Cygwin/foot-vendor-suffix.README
-        Cygwin_README = os.path.join(dest_prefix_dir, 'doc', 'Cygwin', 
-            '%s%s.README' % (package, package_cygwin_version))
+        Cygwin_README = os.path.join(dest_prefix_dir, 'share', 'doc', 'Cygwin', 
+            '%s-%s.README' % (package, package_cygwin_version))
         env.InstallAs(Cygwin_README,
             os.path.join(env.subst('$TOP_SRCDIR'), 'README.cygwin'))
         Alias('install', Cygwin_README)
         # also a directory /usr/share/doc/lyx for README etc
-        Cygwin_Doc = os.path.join(dest_prefix_dir, 'doc', package)
+        Cygwin_Doc = os.path.join(dest_prefix_dir, 'share', 'doc', package)
         env.Install(Cygwin_Doc, [os.path.join(env.subst('$TOP_SRCDIR'), x) for x in \
             ['INSTALL', 'README', 'README.Cygwin', 'RELEASE-NOTES', 'COPYING', 'ANNOUNCE']])
         Alias('install', Cygwin_Doc)
         # cygwin fonts also need to be installed
-        Cygwin_fonts = os.path.join(share_dest_dir, 'font')
+        Cygwin_fonts = os.path.join(share_dest_dir, 'fonts')
         env.Install(Cygwin_fonts, 
             [env.subst('$TOP_SRCDIR/development/Win32/packaging/bakoma/%s' % file) \
                   for file in win32_bakoma_fonts])
