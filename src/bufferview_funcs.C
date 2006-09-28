@@ -46,6 +46,7 @@ using std::istringstream;
 using std::ostringstream;
 using std::string;
 using std::vector;
+using std::find;
 
 
 namespace bv_funcs {

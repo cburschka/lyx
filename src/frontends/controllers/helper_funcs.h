@@ -16,6 +16,7 @@
 #include <utility>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 
 namespace lyx {

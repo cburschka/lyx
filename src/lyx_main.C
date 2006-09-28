@@ -80,6 +80,7 @@ namespace fs = boost::filesystem;
 using std::endl;
 using std::string;
 using std::vector;
+using std::for_each;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;

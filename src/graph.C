@@ -17,6 +17,7 @@
 
 using std::vector;
 using std::reverse;
+using std::fill;
 
 
 int Graph::bfs_init(int s, bool clear_visited)

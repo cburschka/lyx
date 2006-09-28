@@ -17,6 +17,8 @@
 
 #include "support/translator.h"
 
+#include <string>
+
 
 namespace lyx {
 namespace graphics {
