@@ -41,7 +41,14 @@ public:
 	~QtView();
 
 	/// initialise the object members (menubars, toolbars, etc..)
-	void init();
+	virtual void init();
+
+	///
+	virtual void setGeometry(
+		unsigned int width,
+		unsigned int height,
+		int posx, int posy,
+		bool maximize);
 
 	/// show - display the top-level window
 	void show();

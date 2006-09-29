@@ -14,11 +14,12 @@
 
 #include "Application_pimpl.h"
 #include "Gui.h"
+#include "LyXView.h"
+#include "WorkArea.h"
 
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
-#include "LyXView.h"
 
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -87,6 +88,34 @@ BufferList const & Application::bufferList() const
 void Application::setBufferView(BufferView * buffer_view)
 {
 	buffer_view_ = buffer_view;
+}
+
+
+// FIXME: this whole method needs to be moved to Application.
+LyXView & Application::createView(unsigned int width,
+								  unsigned int height,
+								  int posx, int posy,
+								  bool maximize)
+{
+	// FIXME: please confirm: with unicode, I think initEncoding()
+	// is not needed anymore!
+	
+	// this can't be done before because it needs the Languages object
+	//initEncodings();
+
+	int view_id = gui().newView(width, height);
+	LyXView & view = gui().view(view_id);
+
+	pimpl_->lyxfunc_.reset(new LyXFunc(&view));
+
+	// FIXME: for now we assume that there is only one LyXView with id = 0.
+	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
+	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
+
+	view.init();
+	view.setGeometry(width, height, posx, posy, maximize);
+
+	return view;
 }
 
 

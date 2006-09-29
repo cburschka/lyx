@@ -338,6 +338,7 @@ int LyX::exec2(int & argc, char * argv[])
 		}
 		// create the main window
 		LyXView * view = lyx_gui::create_view(width, height, posx, posy, maximize);
+		ref().addLyXView(view);
 
 		// load files
 		for_each(files.begin(), files.end(),

@@ -131,6 +131,22 @@ GView::~GView()
 {}
 
 
+void GView::init()
+{
+	updateLayoutChoice();
+	updateMenubar();
+}
+
+
+void GView::setGeometry(unsigned int width,
+						 unsigned int height,
+						 int posx, int posy,
+						 bool maximize)
+{
+// FIXME: do something here...
+}
+
+
 Gtk::Box & GView::getBox(Position pos)
 {
 	return *box_map_[pos];

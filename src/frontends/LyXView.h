@@ -69,7 +69,13 @@ public:
 	 * We have to have the toolbar and the other stuff created
 	 * before we can populate it with this call.
 	 */
-	void init();
+	virtual void init() = 0;
+
+	virtual void setGeometry(
+		unsigned int width,
+		unsigned int height,
+		int posx, int posy,
+		bool maximize) = 0;
 
 	/// show busy cursor
 	virtual void busy(bool) const = 0;

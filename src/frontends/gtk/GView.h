@@ -38,6 +38,16 @@ public:
 	GView();
 	~GView();
 
+	/// initialize the object
+	virtual void init();
+
+	/// FIXME: not implemented!
+	virtual void setGeometry(
+		unsigned int width,
+		unsigned int height,
+		int posx, int posy,
+		bool maximize);
+
 	Gtk::Box & getBox(Position pos);
 
 	virtual void prohibitInput() const;

@@ -14,8 +14,6 @@
 
 #include "GuiApplication.h"
 
-#include "GuiView.h"
-#include "GuiWorkArea.h"
 #include "qt_helpers.h"
 #include "QLImage.h"
 
@@ -42,6 +40,7 @@
 #include <QLibraryInfo>
 #include <QTextCodec>
 #include <QTranslator>
+#include <QWidget>
 
 #ifdef Q_WS_X11
 #include <X11/Xlib.h>
@@ -165,54 +164,6 @@ void GuiApplication::exit(int status)
 }
 
 
-// FIXME: this whole method needs to be moved to Application.
-LyXView & GuiApplication::createView(unsigned int width,
-									  unsigned int height,
-									  int posx, int posy,
-									  bool maximize)
-{
-	// this can't be done before because it needs the Languages object
-	initEncodings();
-
-	int view_id = gui().newView(width, height);
-	GuiView & view = static_cast<GuiView &> (gui().view(view_id));
-
-	pimpl_->lyxfunc_.reset(new LyXFunc(&view));
-
-	// FIXME: for now we assume that there is only one LyXView with id = 0.
-	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
-	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
-
-	LyX::ref().addLyXView(&view);
-
-	view.init();
-
-	// FIXME: put this initialisation code in GuiView accessible via
-	// a pure virtual method in LyXView.
-
-	// only true when the -geometry option was NOT used
-	if (width != 0 && height != 0) {
-		if (posx != -1 && posy != -1) {
-#ifdef Q_OS_WIN32
-			// FIXME: use only setGeoemtry when Trolltech has
-			// fixed the qt4/X11 bug
-			view.setGeometry(posx, posy,width, height);
-#else
-			view.resize(width, height);
-			view.move(posx, posy);
-#endif
-		} else {
-			view.resize(width, height);
-		}
-
-		if (maximize)
-			view.setWindowState(Qt::WindowMaximized);
-	}
-
-	view.show();
-
-	return view;
-}
 
 
 ////////////////////////////////////////////////////////////////////////

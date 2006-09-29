@@ -71,7 +71,12 @@ LyXView::LyXView()
 	  dialogs_(new Dialogs(*this)),
 	  controlcommand_(new ControlCommandBuffer(*this))
 {
-	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
+	// Start autosave timer
+	if (lyxrc.autosave) {
+		autosave_timeout_->timeout.connect(boost::bind(&LyXView::autoSave, this));
+		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
+		autosave_timeout_->start();
+	}
 }
 
 
@@ -96,20 +101,6 @@ void LyXView::redrawWorkArea()
 WorkArea * LyXView::workArea()
 {
 	return work_area_;
-}
-
-
-void LyXView::init()
-{
-	updateLayoutChoice();
-	updateMenubar();
-
-	// Start autosave timer
-	if (lyxrc.autosave) {
-		autosave_timeout_->timeout.connect(boost::bind(&LyXView::autoSave, this));
-		autosave_timeout_->setTimeout(lyxrc.autosave * 1000);
-		autosave_timeout_->start();
-	}
 }
 
 

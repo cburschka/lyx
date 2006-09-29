@@ -104,9 +104,38 @@ void GuiView::init()
 
 	// make sure the buttons are disabled if needed
 	updateToolbars();
-
-	LyXView::init();
+	updateLayoutChoice();
+	updateMenubar();
 }
+
+
+void GuiView::setGeometry(unsigned int width,
+								  unsigned int height,
+								  int posx, int posy,
+								  bool maximize)
+{
+	// only true when the -geometry option was NOT used
+	if (width != 0 && height != 0) {
+		if (posx != -1 && posy != -1) {
+#ifdef Q_OS_WIN32
+			// FIXME: use only setGeoemtry when Trolltech has
+			// fixed the qt4/X11 bug
+			QMainWindow::setGeometry(posx, posy,width, height);
+#else
+			resize(width, height);
+			move(posx, posy);
+#endif
+		} else {
+			resize(width, height);
+		}
+
+		if (maximize)
+			setWindowState(Qt::WindowMaximized);
+	}
+	
+	show();
+}
+
 
 void GuiView::updateMenu(QAction * /*action*/)
 {

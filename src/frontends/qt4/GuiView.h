@@ -54,6 +54,13 @@ public:
 	/// initialize the object
 	virtual void init();
 
+	///
+	virtual void setGeometry(
+		unsigned int width,
+		unsigned int height,
+		int posx, int posy,
+		bool maximize);
+
 	/// show - display the top-level window
 	void show();
 

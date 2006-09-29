@@ -190,21 +190,6 @@ LyXView & GuiApplication::createView(unsigned int width,
 
 	view.init();
 
-	// FIXME: put this initialisation code in GuiView accessible via
-	// a pure virtual method in LyXView.
-
-	// only true when the -geometry option was NOT used
-	if (width != 0 && height != 0) {
-		view.initFloatingGeometry(QRect(posx, posy, width, height));
-		view.resize(width, height);
-		if (posx != -1 && posy != -1)
-			view.move(posx, posy);
-		view.show();
-		if (maximize)
-			view.setWindowState(Qt::WindowMaximized);
-	} else
-		view.show();
-
 	return view;
 }
 

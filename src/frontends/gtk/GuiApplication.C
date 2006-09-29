@@ -110,28 +110,5 @@ void GuiApplication::exit(int /*status*/)
 }
 
 
-// FIXME: this whole method needs to be moved to Application.
-LyXView & GuiApplication::createView(unsigned int width,
-									  unsigned int height,
-									  int posx, int posy,
-									  bool maximize)
-{
-	// FIXME: for now we assume that there is only one LyXView with id = 0.
-	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
-	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
-
-	int view_id = gui().newView(width, height);
-	GView & view = static_cast<GView &>(gui().view(view_id));
-
-	pimpl_->lyxfunc_.reset(new LyXFunc(&view));
-
-	LyX::ref().addLyXView(&view);
-
-	view.show();
-	view.init();
-
-	return view;
-}
-
 } // namespace frontend
 } // namespace lyx

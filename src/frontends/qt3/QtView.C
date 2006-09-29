@@ -91,7 +91,27 @@ void QtView::init()
 	// and we don't save their orientation anyway. Disable the handle.
 	setToolBarsMovable(false);
 	
-	LyXView::init();
+	updateLayoutChoice();
+	updateMenubar();
+}
+
+
+void QtView::setGeometry(unsigned int width,
+						 unsigned int height,
+						 int posx, int posy,
+						 bool maximize)
+{
+	// only true when the -geometry option was NOT used
+	if (width != 0 && height != 0) {
+		initFloatingGeometry(QRect(posx, posy, width, height));
+		resize(width, height);
+		if (posx != -1 && posy != -1)
+			move(posx, posy);
+		show();
+		if (maximize)
+			setWindowState(Qt::WindowMaximized);
+	} else
+		show();
 }
 
 

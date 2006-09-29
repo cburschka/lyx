@@ -20,6 +20,7 @@ class BufferView;
 class LyXFunc;
 class LyXServer;
 class LyXServerSocket;
+class LyXView;
 	
 namespace lyx {
 namespace frontend {
@@ -71,6 +72,11 @@ public:
 	BufferList & bufferList();
 	BufferList const & bufferList() const;
 
+	///
+	LyXView & createView(unsigned int width, unsigned int height,
+		int posx, int posy, bool maximize);
+	
+	///
 	void setBufferView(BufferView * buffer_view);
 
 protected:
