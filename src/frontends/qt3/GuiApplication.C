@@ -12,13 +12,8 @@
 
 #include <config.h>
 
-#include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
-
 #include "GuiApplication.h"
 
-#include "QtView.h"
-#include "GuiWorkArea.h"
 #include "qt_helpers.h"
 #include "QLImage.h"
 
@@ -165,32 +160,6 @@ int const GuiApplication::exec()
 void GuiApplication::exit(int status)
 {
 	QApplication::exit(status);
-}
-
-
-// FIXME: this whole method needs to be moved to Application.
-LyXView & GuiApplication::createView(unsigned int width,
-									  unsigned int height,
-									  int posx, int posy,
-									  bool maximize)
-{
-	// this can't be done before because it needs the Languages object
-	initEncodings();
-
-	int view_id = gui().newView(width, height);
-	QtView & view = static_cast<QtView &> (gui().view(view_id));
-
-	pimpl_->lyxfunc_.reset(new LyXFunc(&view));
-
-	// FIXME: for now we assume that there is only one LyXView with id = 0.
-	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
-	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
-
-	LyX::ref().addLyXView(&view);
-
-	view.init();
-
-	return view;
 }
 
 

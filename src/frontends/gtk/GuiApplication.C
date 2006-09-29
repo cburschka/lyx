@@ -22,15 +22,9 @@
 
 #include "GuiApplication.h"
 
-#include "GView.h"
-#include "GuiWorkArea.h"
 #include "GtkmmX.h"
 
 #include "BufferView.h"
-
-// FIXME: this is needed for now because LyXFunc is still constructed
-// there.
-#include "frontends/Application_pimpl.h"
 
 #include "graphics/LoaderQueue.h"
 

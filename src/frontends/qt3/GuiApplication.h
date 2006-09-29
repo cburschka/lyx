@@ -62,10 +62,6 @@ public:
 	///
 	FontLoader & fontLoader() { return font_loader_; }
 
-	///
-	LyXView & createView(unsigned int width, unsigned int height,
-		int posx, int posy, bool maximize);
-
 private:
 	///
 	GuiImplementation gui_;
