@@ -91,7 +91,6 @@ void Application::setBufferView(BufferView * buffer_view)
 }
 
 
-// FIXME: this whole method needs to be moved to Application.
 LyXView & Application::createView(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
