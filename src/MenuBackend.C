@@ -19,6 +19,7 @@
 
 #include "BranchList.h"
 #include "buffer.h"
+#include "bufferlist.h"
 #include "bufferparams.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -37,7 +38,6 @@
 #include "toc.h"
 
 #include "frontends/Application.h"
-#include "frontends/LyXView.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -156,18 +156,20 @@ docstring const MenuItem::binding() const
 }
 
 
-Menu & Menu::add(MenuItem const & i, LyXView const * view)
+Menu & Menu::add(MenuItem const & i)
 {
-	if (!view) {
-		items_.push_back(i);
-		return *this;
-	}
+	items_.push_back(i);
+	return *this;
+}
 
+
+Menu & Menu::addWithStatusCheck(MenuItem const & i)
+{
 	switch (i.kind()) {
 
 	case MenuItem::Command: {
 		FuncStatus status =
-			view->getLyXFunc().getStatus(i.func());
+			theApp->lyxFunc().getStatus(i.func());
 		if (status.unknown()
 		    || (!status.enabled() && i.optional()))
 			break;
@@ -428,7 +430,7 @@ string const limit_string_length(string const & str)
 }
 
 
-void expandLastfiles(Menu & tomenu, LyXView const * view)
+void expandLastfiles(Menu & tomenu)
 {
 	lyx::Session::LastFiles const & lf = LyX::cref().session().lastFiles();
 	lyx::Session::LastFiles::const_iterator lfit = lf.begin();
@@ -439,19 +441,19 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 		docstring const label = convert<docstring>(ii) + lyx::from_ascii(". ")
 			+ makeDisplayPath((*lfit), 30)
 			+ char_type('|') + convert<docstring>(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))), view);
+		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))));
 	}
 }
 
 
-void expandDocuments(Menu & tomenu, LyXView const * view)
+void expandDocuments(Menu & tomenu)
 {
 	typedef vector<string> Strings;
 	Strings const names = theApp->bufferList().getFileNames();
 
 	if (names.empty()) {
 		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
-				    FuncRequest(LFUN_NOACTION)), view);
+				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
 
@@ -462,18 +464,17 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 		docstring label = makeDisplayPath(*docit, 20);
 		if (ii < 10)
 			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)), view);
+		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)));
 	}
 }
 
 
-void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
+void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 {
-	if (!view->buffer() && kind != MenuItem::ImportFormats) {
+	if (!buf && kind != MenuItem::ImportFormats) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"),
-				    FuncRequest(LFUN_NOACTION)),
-				    view);
+				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
 
@@ -487,15 +488,15 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		action = LFUN_BUFFER_IMPORT;
 		break;
 	case MenuItem::ViewFormats:
-		formats = Exporter::getExportableFormats(*view->buffer(), true);
+		formats = Exporter::getExportableFormats(*buf, true);
 		action = LFUN_BUFFER_VIEW;
 		break;
 	case MenuItem::UpdateFormats:
-		formats = Exporter::getExportableFormats(*view->buffer(), true);
+		formats = Exporter::getExportableFormats(*buf, true);
 		action = LFUN_BUFFER_UPDATE;
 		break;
 	default:
-		formats = Exporter::getExportableFormats(*view->buffer(), false);
+		formats = Exporter::getExportableFormats(*buf, false);
 		action = LFUN_BUFFER_EXPORT;
 	}
 	sort(formats.begin(), formats.end(), compare_format());
@@ -528,80 +529,78 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		if (!(*fit)->shortcut().empty())
 			label += char_type('|') + lyx::from_utf8((*fit)->shortcut());
 
-		tomenu.add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(action, (*fit)->name())),
-			   view);
+		if (buf)
+			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
+				FuncRequest(action, (*fit)->name())));
+		else
+			tomenu.add(MenuItem(MenuItem::Command, label,
+				FuncRequest(action, (*fit)->name())));
 	}
 }
 
 
-void expandFloatListInsert(Menu & tomenu, LyXView const * view)
+void expandFloatListInsert(Menu & tomenu, Buffer const * buf)
 {
-	if (!view->buffer()) {
+	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"),
-				    FuncRequest(LFUN_NOACTION)),
-			   view);
+				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
 
 	FloatList const & floats =
-		view->buffer()->params().getLyXTextClass().floats();
+		buf->params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
-		tomenu.add(MenuItem(MenuItem::Command,
+		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command,
 				    _(cit->second.listName()),
 				    FuncRequest(LFUN_FLOAT_LIST,
-						cit->second.type())),
-			   view);
+						cit->second.type())));
 	}
 }
 
 
-void expandFloatInsert(Menu & tomenu, LyXView const * view)
+void expandFloatInsert(Menu & tomenu, Buffer const * buf)
 {
-	if (!view->buffer()) {
+	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"),
-				    FuncRequest(LFUN_NOACTION)),
-			   view);
+				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
 
 	FloatList const & floats =
-		view->buffer()->params().getLyXTextClass().floats();
+		buf->params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		// normal float
 		docstring const label = _(cit->second.name());
-		tomenu.add(MenuItem(MenuItem::Command, label,
+		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_FLOAT_INSERT,
-						cit->second.type())),
-			   view);
+						cit->second.type())));
 	}
 }
 
 
-void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
+void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 {
-	if (!view->buffer()) {
+	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"),
-				    FuncRequest(LFUN_NOACTION)),
-			   view);
+				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
 	CharStyles & charstyles =
-		view->buffer()->params().getLyXTextClass().charstyles();
+		buf->params().getLyXTextClass().charstyles();
 	CharStyles::iterator cit = charstyles.begin();
 	CharStyles::iterator end = charstyles.end();
 	for (; cit != end; ++cit) {
 		docstring const label = lyx::from_utf8(cit->name);
-		tomenu.add(MenuItem(MenuItem::Command, label,
+		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_CHARSTYLE_INSERT,
-						cit->name)), view);
+						cit->name)));
 	}
 }
 
@@ -666,20 +665,17 @@ void expandToc2(Menu & tomenu,
 }
 
 
-void expandToc(Menu & tomenu, LyXView const * view)
+void expandToc(Menu & tomenu, Buffer const * buf)
 {
-	// To make things very cleanly, we would have to pass view to
+	// To make things very cleanly, we would have to pass buf to
 	// all MenuItem constructors and to expandToc2. However, we
 	// know that all the entries in a TOC will be have status_ ==
 	// OK, so we avoid this unnecessary overhead (JMarc)
 
-
-	Buffer const * buf = view->buffer();
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
 				    _("No Documents Open!"),
-				    FuncRequest(LFUN_NOACTION)),
-			   view);
+				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
 
@@ -711,23 +707,22 @@ void expandToc(Menu & tomenu, LyXView const * view)
 	// Handle normal TOC
 	cit = toc_list.find("TOC");
 	if (cit == end) {
-		tomenu.add(MenuItem(MenuItem::Command,
+		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command,
 				    _("No Table of contents"),
-				    FuncRequest()),
-			   view);
+				    FuncRequest()));
 	} else {
 		expandToc2(tomenu, cit->second, 0, cit->second.size(), 0);
 	}
 }
 
 
-void expandPasteRecent(Menu & tomenu, LyXView const * view)
+void expandPasteRecent(Menu & tomenu, Buffer const * buf)
 {
-	if (!view || !view->buffer())
+	if (!buf)
 		return;
 
 	vector<string> const sel =
-		lyx::cap::availableSelections(*view->buffer());
+		lyx::cap::availableSelections(*buf);
 
 	vector<string>::const_iterator cit = sel.begin();
 	vector<string>::const_iterator end = sel.end();
@@ -739,12 +734,12 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 }
 
 
-void expandBranches(Menu & tomenu, LyXView const * view)
+void expandBranches(Menu & tomenu, Buffer const * buf)
 {
-	if (!view || !view->buffer())
+	if (!buf)
 		return;
 
-	BufferParams const & params = view->buffer()->getMasterBuffer()->params();
+	BufferParams const & params = buf->getMasterBuffer()->params();
 
 	BranchList::const_iterator cit = params.branchlist().begin();
 	BranchList::const_iterator end = params.branchlist().end();
@@ -753,9 +748,9 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 		docstring label = lyx::from_utf8(cit->getBranch());
 		if (ii < 10)
 			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label,
+		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_BRANCH_INSERT,
-						cit->getBranch())), view);
+						cit->getBranch())));
 	}
 }
 
@@ -764,7 +759,7 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 
 
 void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
-			 LyXView const * view) const
+			 Buffer const * buf) const
 {
 	if (!tomenu.empty())
 		tomenu.clear();
@@ -773,61 +768,61 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 	     cit != frommenu.end() ; ++cit) {
 		switch (cit->kind()) {
 		case MenuItem::Lastfiles:
-			expandLastfiles(tomenu, view);
+			expandLastfiles(tomenu);
 			break;
 
 		case MenuItem::Documents:
-			expandDocuments(tomenu, view);
+			expandDocuments(tomenu);
 			break;
 
 		case MenuItem::ImportFormats:
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats:
-			expandFormats(cit->kind(), tomenu, view);
+			expandFormats(cit->kind(), tomenu, buf);
 			break;
 
 		case MenuItem::CharStyles:
-			expandCharStyleInsert(tomenu, view);
+			expandCharStyleInsert(tomenu, buf);
 			break;
 
 		case MenuItem::FloatListInsert:
-			expandFloatListInsert(tomenu, view);
+			expandFloatListInsert(tomenu, buf);
 			break;
 
 		case MenuItem::FloatInsert:
-			expandFloatInsert(tomenu, view);
+			expandFloatInsert(tomenu, buf);
 			break;
 
 		case MenuItem::PasteRecent:
-			expandPasteRecent(tomenu, view);
+			expandPasteRecent(tomenu, buf);
 			break;
 
 		case MenuItem::Branches:
-			expandBranches(tomenu, view);
+			expandBranches(tomenu, buf);
 			break;
 
 		case MenuItem::Toc:
-			expandToc(tomenu, view);
+			expandToc(tomenu, buf);
 			break;
 
 		case MenuItem::Submenu: {
 			MenuItem item(*cit);
 			item.submenu(new Menu(cit->submenuname()));
 			expand(getMenu(cit->submenuname()),
-			       *item.submenu(), view);
-			tomenu.add(item, view);
+			       *item.submenu(), buf);
+			tomenu.addWithStatusCheck(item);
 		}
 		break;
 
 		case MenuItem::Separator:
-			tomenu.add(*cit, view);
+			tomenu.addWithStatusCheck(*cit);
 			break;
 
 		case MenuItem::Command:
 			if (!specialmenu_
 			    || !specialmenu_->hasFunc(cit->func()))
-				tomenu.add(*cit, view);
+				tomenu.addWithStatusCheck(*cit);
 		}
 	}
 

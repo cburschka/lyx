@@ -21,7 +21,7 @@
 #include <vector>
 
 class LyXLex;
-class LyXView;
+class Buffer;
 class Menu;
 
 ///
@@ -145,8 +145,11 @@ public:
 	///
 	explicit Menu(lyx::docstring const & name = lyx::docstring())
 		: name_(name) {}
-	///
-	Menu & add(MenuItem const &, LyXView const * view = 0);
+	/// Add the menu item unconditionally
+	Menu & add(MenuItem const &);
+	/// Checks the associated FuncRequest status before adding the
+	/// menu item.
+	Menu & addWithStatusCheck(MenuItem const &);
 	///
 	Menu & read(LyXLex &);
 	///
@@ -218,7 +221,7 @@ public:
 	    ViewFormats, ExportFormats, UpdateFormats, Branches
 	*/
 	void expand(Menu const & frommenu, Menu & tomenu,
-		    LyXView const *) const;
+		    Buffer const *) const;
 	///
 	const_iterator begin() const {
 		return menulist_.begin();

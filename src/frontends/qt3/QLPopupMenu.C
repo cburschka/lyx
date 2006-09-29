@@ -163,7 +163,7 @@ void QLPopupMenu::showing()
 	clear();
 	Menu tomenu;
 	Menu const frommenu = owner_->backend().getMenu(name_);
-	owner_->backend().expand(frommenu, tomenu, owner_->view());
+	owner_->backend().expand(frommenu, tomenu, owner_->view()->buffer());
 	populate(&tomenu);
 #ifdef Q_WS_MACX
 	/* The qt/mac menu code has a very silly hack that

@@ -159,7 +159,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 	Menu::const_iterator end;
 	if(!item->submenuname().empty()) {
 		fmenu = &menubackend.getMenu(item->submenuname());
-		menubackend.expand(*fmenu, lyxmenu->getBackMenu(), view_);
+		menubackend.expand(*fmenu, lyxmenu->getBackMenu(), view_->buffer());
 		i = lyxmenu->getBackMenu().begin();
 		end = lyxmenu->getBackMenu().end();
 	} else {

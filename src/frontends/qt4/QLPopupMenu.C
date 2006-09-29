@@ -75,7 +75,7 @@ void QLPopupMenu::update()
 		return;
 
 	Menu const & fromLyxMenu = owner_->backend().getMenu(name_);
-	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view());
+	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view()->buffer());
 
 	if (!owner_->backend().hasMenu(topLevelMenu_.name())) {
 		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << lyx::to_utf8(topLevelMenu_.name()) << endl;

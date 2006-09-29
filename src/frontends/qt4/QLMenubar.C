@@ -60,7 +60,7 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 	//	for (; m != end; ++m) {
 
 	Menu menu;
-	menubackend_.expand(menubackend_.getMenubar(), menu, owner_);
+	menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
 
 	Menu::const_iterator m = menu.begin();
 	Menu::const_iterator end = menu.end();
@@ -81,7 +81,7 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 		}
 
 		Menu menu;
-		menubackend_.expand(menubackend_.getMenubar(), menu, owner_);
+		menubackend_.expand(menubackend_.getMenubar(), menu, owner_->buffer());
 
 		QLPopupMenu * qMenu = new QLPopupMenu(this, *m, true);
 		owner_->menuBar()->addMenu(qMenu);
