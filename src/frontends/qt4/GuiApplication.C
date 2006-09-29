@@ -21,6 +21,10 @@
 
 #include "BufferView.h"
 
+// FIXME: this is needed for now because LyXFunc is still constructed
+// there.
+#include "frontends/Application_pimpl.h"
+
 #include "graphics/LoaderQueue.h"
 
 #include "support/lstrings.h"
@@ -173,7 +177,7 @@ LyXView & GuiApplication::createView(unsigned int width,
 	int view_id = gui().newView(width, height);
 	GuiView & view = static_cast<GuiView &> (gui().view(view_id));
 
-	lyxfunc_.reset(new LyXFunc(&view));
+	pimpl_->lyxfunc_.reset(new LyXFunc(&view));
 
 	// FIXME: for now we assume that there is only one LyXView with id = 0.
 	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);

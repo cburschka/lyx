@@ -54,6 +54,11 @@
 #include "frontends/Selection.h"
 #include "frontends/nullpainter.h"
 
+//#include "bufferlist.h"
+#include "funcrequest.h"
+#include "lyxserver.h"
+#include "lyxsocket.h"
+
 #include <sstream>
 
 using lyx::cap::copySelection;

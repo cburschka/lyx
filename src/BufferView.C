@@ -18,6 +18,7 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "bufferlist.h"
 #include "bufferparams.h"
 #include "coordcache.h"
 #include "CutAndPaste.h"

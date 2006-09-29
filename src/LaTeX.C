@@ -14,6 +14,7 @@
 
 #include <config.h>
 
+#include "bufferlist.h"
 #include "LaTeX.h"
 #include "gettext.h"
 #include "lyxrc.h"

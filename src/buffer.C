@@ -15,6 +15,7 @@
 #include "author.h"
 #include "BranchList.h"
 #include "buffer_funcs.h"
+#include "bufferlist.h"
 #include "bufferparams.h"
 #include "counters.h"
 #include "Bullet.h"

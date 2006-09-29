@@ -12,7 +12,9 @@
 
 
 #include "ControlRef.h"
+
 #include "buffer.h"
+#include "bufferlist.h"
 #include "funcrequest.h"
 
 #include "frontends/Application.h"

@@ -17,6 +17,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "lyxfunc.h"
 #include "outputparams.h"
 #include "sgml.h"
 

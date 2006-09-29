@@ -24,8 +24,6 @@ class Dialogs;
 class LColor_color;
 class LyXFont;
 class LyXComm;
-class LyXDataSocket;
-class LyXServerSocket;
 class FuncRequest;
 class LyXView;
 namespace lyx {

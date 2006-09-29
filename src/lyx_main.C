@@ -19,6 +19,7 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "bufferlist.h"
 #include "converter.h"
 #include "debug.h"
 #include "encoding.h"
@@ -33,6 +34,7 @@
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "lyxserver.h"
 #include "lyxtextclasslist.h"
 #include "MenuBackend.h"
 #include "mover.h"

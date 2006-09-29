@@ -15,6 +15,7 @@
 #include "helper_funcs.h"
 #include "Kernel.h"
 
+#include "bufferlist.h"
 #include "gettext.h"
 #include "funcrequest.h"
 #include "paper.h"

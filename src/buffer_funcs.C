@@ -14,6 +14,7 @@
 
 #include "buffer_funcs.h"
 #include "buffer.h"
+#include "bufferlist.h"
 #include "bufferparams.h"
 #include "dociterator.h"
 #include "counters.h"

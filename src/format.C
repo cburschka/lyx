@@ -16,6 +16,7 @@
 #include "lyxrc.h"
 #include "debug.h"
 #include "gettext.h"
+#include "lyxsocket.h"
 
 #include "frontends/Application.h"
 #include "frontends/Alert.h" //to be removed?

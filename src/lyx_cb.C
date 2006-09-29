@@ -17,6 +17,7 @@
 #include "lyx_cb.h"
 
 #include "buffer.h"
+#include "bufferlist.h"
 #include "BufferView.h"
 #include "buffer_funcs.h"
 #include "cursor.h"

@@ -11,25 +11,23 @@
 #ifndef LYX_APPLICATION_H
 #define LYX_APPLICATION_H
 
-#include "bufferlist.h"
-#include "lyxfunc.h"
-#include "lyxserver.h"
-#include "lyxsocket.h"
-
 #include <boost/scoped_ptr.hpp>
 
 #include <string>
 
+class BufferList;
 class BufferView;
-class LyXView;
-
+class LyXFunc;
+class LyXServer;
+class LyXServerSocket;
+	
 namespace lyx {
 namespace frontend {
 
+struct Application_pimpl;
 class Clipboard;
 class Gui;
 class Selection;
-
 
 /// The main application class
 /**
@@ -76,22 +74,15 @@ public:
 	void setBufferView(BufferView * buffer_view);
 
 protected:
-	///
+	/// This BufferView is the one receiving Clipboard and Selection
+	/// Events
+	/// FIXME: \todo use Gui::currentView() in the future
 	BufferView * buffer_view_;
 
-	// FIXME: lyxfunc_ should be private. But the actual construction is done in
-	// GuiApplication for now.
-
-	/// our function handler
-	boost::scoped_ptr<LyXFunc> lyxfunc_;
-
-private:
-	///
-	boost::scoped_ptr<LyXServer> lyx_server_;
-	///
-	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
-	///
-	BufferList buffer_list_;
+	/// Application private implementation.
+	/// FIXME: this should be private but LyXFunc construction
+	/// is still done in GuiApplication.
+	Application_pimpl * pimpl_;
 
 }; // Application
 

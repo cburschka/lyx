@@ -68,7 +68,6 @@ LyXView::LyXView()
 	: work_area_(0),
 	  toolbars_(new Toolbars(*this)),
 	  autosave_timeout_(new Timeout(5000)),
-	  lyxfunc_(new LyXFunc(this)),
 	  dialogs_(new Dialogs(*this)),
 	  controlcommand_(new ControlCommandBuffer(*this))
 {

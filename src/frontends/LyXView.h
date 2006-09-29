@@ -16,6 +16,7 @@
 #include "frontends/Application.h"
 #include "frontends/Toolbars.h"
 
+#include "lyxfunc.h"
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signal.hpp>

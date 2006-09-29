@@ -23,6 +23,7 @@
 
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "Bullet.h"
@@ -36,6 +37,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "LColor.h"
+#include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
@@ -43,6 +45,8 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "pariterator.h"
+#include "lyxserver.h"
+#include "lyxsocket.h"
 #include "undo.h"
 #include "vspace.h"
 
