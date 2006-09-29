@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-09-18 10:43+0200\n"
-"PO-Revision-Date: 2006-09-25 15:07-0400\n"
+"PO-Revision-Date: 2006-09-28 21:35-0400\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -689,7 +689,7 @@ msgstr "Ding 4|#g"
 
 #: src/frontends/xforms/forms/form_document.fd:1783
 msgid "New Branch:|#N"
-msgstr "Ramurã noua"
+msgstr "O nouã versiune a documentului:| #N"
 
 #: src/frontends/xforms/forms/form_document.fd:1801
 #: src/frontends/xforms/forms/form_spellchecker.fd:134
@@ -707,7 +707,7 @@ msgstr "Referinþe disponibile"
 
 #: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Activated Branches:"
-msgstr "Ramurile active"
+msgstr "Versiunile de document active"
 
 #: src/frontends/xforms/forms/form_document.fd:1873
 #, fuzzy
@@ -1132,10 +1132,9 @@ msgstr "&Tip"
 #: src/frontends/xforms/forms/form_note.fd:80
 #, fuzzy
 msgid "LyX Note|#N"
-msgstr "Notã|N"
+msgstr "Notã Lyx|N"
 
 #: src/frontends/xforms/forms/form_note.fd:98
-#, fuzzy
 msgid "Comment|#o"
 msgstr "Comentariu"
 
@@ -1278,7 +1277,7 @@ msgstr "Mãrime"
 
 #: src/frontends/xforms/forms/form_preferences.fd:629
 msgid "Popup Fonts & Encoding"
-msgstr ""
+msgstr "Fonturi & Codificare"
 
 #: src/frontends/xforms/forms/form_preferences.fd:647
 msgid "Normal Font:|#N"
@@ -1286,7 +1285,7 @@ msgstr "Font normal:|#n"
 
 #: src/frontends/xforms/forms/form_preferences.fd:665
 msgid "Bold Font:|#B"
-msgstr "Font bold:|#b"
+msgstr "Font îngroºat (bold):|#b"
 
 #: src/frontends/xforms/forms/form_preferences.fd:683
 #, fuzzy
@@ -1355,23 +1354,20 @@ msgid "Graphics display:|#G"
 msgstr "Afiºarea graficã:|#g"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1012
-#, fuzzy
 msgid "Instant Preview:|#p"
 msgstr "Previzualizare automatã|#P"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1054
-#, fuzzy
 msgid "Real name:|#R"
-msgstr "Înlocuieºte|#n"
+msgstr "Nume real|#n"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1072
 msgid "Email address:|#E"
 msgstr "Adresa de email:|#e"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1114
-#, fuzzy
 msgid "Spellchecker executable:|#S"
-msgstr "Verificator ortografic...|V"
+msgstr "Programul de verificator ortografic...|V"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1132
 msgid "Alternative language:|#a"
@@ -1526,7 +1522,7 @@ msgstr "De la:|#D"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1960
 msgid "To:|#T[[as in 'From format x to format y']]"
-msgstr ""
+msgstr "În: (în sensul 'din formatul x în formatul y')"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1978
 msgid "Converter:|#C"
@@ -1590,9 +1586,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "Conductã server LyX:|#s"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2464
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Tip:|#T"
+msgstr "Prefixul cãii curente:|#T"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2506
 msgid "Date format:|#f"
@@ -1678,7 +1673,6 @@ msgid "Paper size:"
 msgstr "Mãrime foaie:"
 
 #: src/frontends/xforms/forms/form_preferences.fd:2950
-#, fuzzy
 msgid "Plain text line length:|#A"
 msgstr "Lungimea liniei ASCII:|#A"
 
@@ -1717,9 +1711,8 @@ msgid "BibTeX:|#B"
 msgstr "Bibtex"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3116
-#, fuzzy
 msgid "Index:|#I"
-msgstr "Interior:|#I"
+msgstr "Index:|#I"
 
 #: src/frontends/xforms/forms/form_preferences.fd:3134
 msgid "Use Windows Paths for LaTeX|#s"
@@ -1745,7 +1738,7 @@ msgstr "Sortat|#S"
 
 #: src/frontends/xforms/forms/form_print.fd:188
 msgid "To:|#T[[as in 'From page x to page y']]"
-msgstr ""
+msgstr "La (în sensul 'De la pagina x la pagina y')"
 
 #: src/frontends/xforms/forms/form_print.fd:224
 msgid "Reverse order|#R"
@@ -1789,7 +1782,6 @@ msgid "Name:|#N"
 msgstr "Nume:|#N"
 
 #: src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Label:|#e"
 msgstr "Etichetã:|#E"
 
@@ -2136,14 +2128,13 @@ msgstr "Stil de citare:"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:60
 msgid "&Jurabib"
-msgstr ""
+msgstr "Utilizeazã &Jurabib"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:64
 msgid "Use the jurabib styles for law and humanities"
 msgstr "Foloseºte stilul jurabib pentru drept si stiinþe umaniste"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:75
-#, fuzzy
 msgid "&Natbib"
 msgstr "Utilizeazã &NatBib"
 
@@ -2152,18 +2143,16 @@ msgid "Use the natbib styles for natural sciences and arts"
 msgstr "Foloseºte stilul natbib pentru stiinþe naturale si arte"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:90
-#, fuzzy
 msgid "&Default (numerical)"
-msgstr "Implicit (în exterior)"
+msgstr "Implicit (numeric)"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:94
 msgid "Use BibTeX's default numerical styles"
 msgstr "Utilizeazã setãrile BibTeX implicite"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:124
-#, fuzzy
 msgid "Natbib &style:"
-msgstr "&Stil paginã:"
+msgstr "&Stil Natbib:"
 
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:182
 #, fuzzy
@@ -2176,9 +2165,8 @@ msgid "Select this if you want to split your bibliography into sections"
 msgstr "Selecteazã-mã dacã doreºti sã imparþi bibliografia in secþiuni"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
-#, fuzzy
 msgid "A&vailable Branches:"
-msgstr "Referinþe disponibile"
+msgstr "Versiuni ale documentului disponibile"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:68
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
@@ -2202,18 +2190,16 @@ msgid "Color"
 msgstr "Color"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:141
-#, fuzzy
 msgid "The available branches"
-msgstr "Referinþe disponibile"
+msgstr "Versiuni ale documentului disponibile"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:154
 msgid "(&De)activate"
 msgstr "(&De)activeazã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:158
-#, fuzzy
 msgid "Toggle the selected branch"
-msgstr "ªterge citarea selectatã"
+msgstr "Comutã la versiunea de document selectatã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
 msgid "Alter Co&lor..."
@@ -2231,9 +2217,8 @@ msgid "&Remove"
 msgstr "&Eliminã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:188
-#, fuzzy
 msgid "Remove the selected branch"
-msgstr "ªterge citarea selectatã"
+msgstr "ªterge versiunea de document selectatã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:235
 msgid "&New:"
@@ -2249,7 +2234,7 @@ msgstr "&Adaugã"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:261
 msgid "Add a new branch to the list"
-msgstr "Adaugã o noua ramurã la listã"
+msgstr "Adaugã o noua versiune a documentului la listã"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:118
 #, fuzzy
@@ -2260,7 +2245,6 @@ msgstr "Primul antet"
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:413
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:669
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:963
-#, fuzzy
 msgid "Size:"
 msgstr "&Mãrime:"
 
@@ -2391,16 +2375,14 @@ msgid "&Language:"
 msgstr "&Limbaj:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:108
-#, fuzzy
 msgid "&Use language's default encoding"
-msgstr "Utilizeazã setãrile LaTeX implicite"
+msgstr "Utilizeazã setãrile de limbtã implicite"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:170
 msgid "&Encoding:"
 msgstr "&Codificare:"
 
 #: src/frontends/qt2/ui/LanguageModuleBase.ui:192
-#, fuzzy
 msgid "&Quote Style:"
 msgstr "Stil de citare   "
 
@@ -2444,22 +2426,19 @@ msgstr "Separaþie &subsol:"
 #: src/frontends/qt2/ui/MathsModuleBase.ui:41
 #, fuzzy
 msgid "&Use AMS math package automatically"
-msgstr "Aplicã automat fiecare modificare"
+msgstr "Foloseºte automat pachetul matematic AMS"
 
 #: src/frontends/qt2/ui/MathsModuleBase.ui:56
-#, fuzzy
 msgid "Use AMS &math package"
 msgstr "Utilizeazã pachetul &matematic AMS"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:41
-#, fuzzy
 msgid "&Numbering"
 msgstr "&Numerotare"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:96
-#, fuzzy
 msgid "&List in Table of Contents"
-msgstr "Cuprins|C"
+msgstr "Listeazã in Cuprins|C"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:131
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
@@ -2472,9 +2451,8 @@ msgid "Example"
 msgstr "Exemplu"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:145
-#, fuzzy
 msgid "Numbered"
-msgstr "&Numerotare"
+msgstr "&Numerotat"
 
 #: src/frontends/qt2/ui/NumberingModuleBase.ui:159
 msgid "Appears in TOC"
@@ -2645,9 +2623,8 @@ msgid "The label as it appears in the document"
 msgstr "Eticheta, aºa cum apare în document"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:29
-#, fuzzy
 msgid "LyX: Add BibTeX Database"
-msgstr "Baza de date BibTeX de utilizat"
+msgstr "Utilizeazã o nouã baza de date BibTeX"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:52
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:265
@@ -2659,9 +2636,8 @@ msgid "&Browse..."
 msgstr "&Rãsfoieºte..."
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:78
-#, fuzzy
 msgid "Enter BibTeX database name"
-msgstr "Baza de date BibTeX de utilizat"
+msgstr "Introdu numele noii baze de date BibTeX de utilizat"
 
 #: src/frontends/qt2/ui/QBibtexAddDialogBase.ui:86
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:120
@@ -2708,13 +2684,11 @@ msgid "BibTeX database to use"
 msgstr "Baza de date BibTeX de utilizat"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:180
-#, fuzzy
 msgid "Selected BibTeX databases"
-msgstr "Baza de date BibTeX de utilizat"
+msgstr "Bazele de date BibTeX selectate"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:191
 #: src/frontends/qt2/ui/QCitationDialogBase.ui:204
-#, fuzzy
 msgid "&Add..."
 msgstr "&Adaugã"
 
@@ -2757,7 +2731,6 @@ msgid "This bibliography section contains..."
 msgstr "Cheie bibliograficã"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:341
-#, fuzzy
 msgid "&Content:"
 msgstr "Conþinut"
 
@@ -2899,14 +2872,12 @@ msgid "Vertical alignment of the box (with regard to baseline)"
 msgstr "Aliniere verticalã pentru coloane de lãþime fixã"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:468
-#, fuzzy
 msgid "Content hori&zontal:"
-msgstr "Insereazã umplere orizontalã"
+msgstr "Conþinut orizontal"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:487
-#, fuzzy
 msgid "Content &vertical:"
-msgstr "&Vertical:"
+msgstr "Conþinut &vertical:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:506
 #, fuzzy
@@ -2931,24 +2902,21 @@ msgid "&Inner Box:"
 msgstr "&Interior:"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:701
-#, fuzzy
 msgid "T&ype:"
 msgstr "&Tip:"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:90
 #, fuzzy
 msgid "&Available branches:"
-msgstr "Referinþe disponibile"
+msgstr "Versiuni de document disponibile"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:105
-#, fuzzy
 msgid "Select your branch"
-msgstr "Selecteazã caracterul precedent"
+msgstr "Selecteazã versiunea documentului"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:60
-#, fuzzy
 msgid "Change:"
-msgstr "Limbaj:"
+msgstr "Modificã:"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:75
 msgid "Details of the change"
@@ -3150,14 +3118,12 @@ msgid "List all authors"
 msgstr "Listeazã toþi autorii"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:29
-#, fuzzy
 msgid "LyX: Add Citation"
-msgstr "Citare"
+msgstr "LyX: Adaugã o citare"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:85
-#, fuzzy
 msgid "Available bibliography keys"
-msgstr "Cheie bibliograficã"
+msgstr "Chei bibliografice disponibile"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:205
 msgid "&Previous"
@@ -3186,7 +3152,6 @@ msgid "&Find:"
 msgstr "C&autã:"
 
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:353
-#, fuzzy
 msgid "&Regular Expression"
 msgstr "Expresie &regulatã"
 
@@ -3269,7 +3234,6 @@ msgid "File"
 msgstr "Fiºier:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:73
-#, fuzzy
 msgid "Template"
 msgstr "&Model:"
 
@@ -3873,7 +3837,7 @@ msgstr "&Convertor:"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:121
 msgid "&To:[[as in 'From format x to format y']]"
-msgstr ""
+msgstr "În (în sensul 'Din formatul x în formatul y')"
 
 #: src/frontends/qt2/ui/QPrefConvertersModule.ui:136
 #, fuzzy
@@ -3947,9 +3911,8 @@ msgid "Off"
 msgstr "Offsets"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:74
-#, fuzzy
 msgid "No math"
-msgstr "mod matematic"
+msgstr "Nu afiºa in modul matematic"
 
 #: src/frontends/qt2/ui/QPrefDisplayModule.ui:111
 msgid "Do not display"
@@ -3993,9 +3956,8 @@ msgid "&E-mail:"
 msgstr "Email"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:71
-#, fuzzy
 msgid "Your name"
-msgstr "Prenume"
+msgstr "Numele dumneavoastrã"
 
 #: src/frontends/qt2/ui/QPrefIdentityModule.ui:82
 #: src/frontends/qt2/ui/QRefDialogBase.ui:230
@@ -4050,7 +4012,6 @@ msgid "Auto &begin"
 msgstr "Î&ncepere automatã"
 
 #: src/frontends/qt2/ui/QPrefLanguageModule.ui:140
-#, fuzzy
 msgid "Use b&abel"
 msgstr "Utilizeazã &babel"
 
@@ -4096,18 +4057,16 @@ msgid "BibTeX command and options"
 msgstr "Opþiuni limbaj"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:148
-#, fuzzy
 msgid "&BibTeX command:"
 msgstr "Comandã &BibTeX:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:163
 msgid "Index command and options (makeindex, xindy)"
-msgstr ""
+msgstr "Comanda de indexare ºi opþiuni (makeindex, xindy)"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:174
-#, fuzzy
 msgid "Index command:"
-msgstr "Comenzi utilizator"
+msgstr "Comenda de indexare"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:189
 msgid "DVI viewer paper size options:"
@@ -4115,9 +4074,7 @@ msgstr "Opþiuni mãrime paginã pentru previzualizorul DVI:"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:204
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"Opþiuni suplimentare pentru mãrimea paginii (-paper) la cîteva din "
-"vizualizatoare DVI"
+msgstr "Opþiuni suplimentare pentru mãrimea paginii (-paper) la cîteva din vizualizatoare DVI"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:250
 #: src/frontends/gtk/GDocument.C:172 src/frontends/qt2/QDocument.C:113
@@ -4273,7 +4230,7 @@ msgstr "&Domeniu de pagini:"
 
 #: src/frontends/qt2/ui/QPrefPrinterModule.ui:508
 msgid "Specify the command option names for your printer command"
-msgstr ""
+msgstr "Specificã opþiunile dorite pentru tipärire"
 
 #: src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
 msgid "Sa&ns Serif:"
@@ -4304,9 +4261,8 @@ msgid "Hugest:"
 msgstr "Hugest:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-#, fuzzy
 msgid "Spellchec&ker executable:"
-msgstr "&Verificator ortografic:"
+msgstr "Numele programului de &verificare ortograficä:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:99
 msgid "Override the language used for the spellchecker"
@@ -4342,7 +4298,7 @@ msgstr "Utilizeazã &codarea textului "
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:29
 msgid "QPrefUIModule"
-msgstr ""
+msgstr "QPrefUIModule"
 
 #: src/frontends/qt2/ui/QPrefUIModule.ui:63
 msgid "B&rowse..."
@@ -4391,7 +4347,7 @@ msgstr "Numãrul de paginã de la care începe tipãrirea"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:112
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr ""
+msgstr "La [în sensul 'De la pagina x la pagina y']"
 
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:131
 msgid "Page number to print to"
@@ -4995,7 +4951,7 @@ msgstr "VFill"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:160
 msgid "Supported spacing types"
-msgstr ""
+msgstr "Tipuri de spaþiere suportate"
 
 #: src/frontends/qt2/ui/QWrapDialogBase.ui:87
 msgid "Default (outer)"
@@ -5018,7 +4974,6 @@ msgid "Document Font"
 msgstr "Fontul pentru document "
 
 #: src/frontends/qt2/ui/TextLayoutModuleBase.ui:75
-#, fuzzy
 msgid "&Font:"
 msgstr "Fonturi:|#F"
 
@@ -5206,9 +5161,8 @@ msgid "Definition #:"
 msgstr "Definiþie #:"
 
 #: lib/layouts/IEEEtran.layout:164
-#, fuzzy
 msgid "Example #:"
-msgstr "Exemplu"
+msgstr "Exemplu #:"
 
 #: lib/layouts/IEEEtran.layout:171 lib/layouts/amsart-plain.layout:91
 #: lib/layouts/amsart-seq.layout:203 lib/layouts/amsmaths-plain.inc:143
@@ -5217,7 +5171,6 @@ msgid "Condition"
 msgstr "Condiþie"
 
 #: lib/layouts/IEEEtran.layout:174
-#, fuzzy
 msgid "Condition #:"
 msgstr "Condiþie #:"
 
@@ -5242,7 +5195,6 @@ msgid "Exercise"
 msgstr "Exerciþiu"
 
 #: lib/layouts/IEEEtran.layout:194
-#, fuzzy
 msgid "Exercise #:"
 msgstr "Exerciþiu #:"
 
@@ -5283,9 +5235,8 @@ msgid "Note"
 msgstr "Notã"
 
 #: lib/layouts/IEEEtran.layout:224
-#, fuzzy
 msgid "Note #:"
-msgstr "Notã"
+msgstr "Notã #:"
 
 #: lib/layouts/IEEEtran.layout:231 lib/layouts/amsart-plain.layout:127
 #: lib/layouts/amsart-seq.layout:239 lib/layouts/ijmpc.layout:198
@@ -5307,9 +5258,8 @@ msgid "Case"
 msgstr "Caz"
 
 #: lib/layouts/IEEEtran.layout:244
-#, fuzzy
 msgid "Case #:"
-msgstr "Caz"
+msgstr "Caz #:"
 
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:235 lib/layouts/aapaper.layout:66
@@ -5411,9 +5361,8 @@ msgid "Abstract"
 msgstr "Abstract"
 
 #: lib/layouts/IEEEtran.layout:334
-#, fuzzy
 msgid "Abstract---"
-msgstr "Abstract"
+msgstr "Abstract---"
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
 #: lib/layouts/aastex.layout:284 lib/layouts/elsart.layout:64
@@ -5730,9 +5679,8 @@ msgid "Objectname"
 msgstr "Octave"
 
 #: lib/layouts/aastex.layout:148 lib/layouts/aastex.layout:617
-#, fuzzy
 msgid "Dataset"
-msgstr "Datã"
+msgstr "Seturi de date"
 
 #: lib/layouts/aastex.layout:296
 #, fuzzy
@@ -5745,14 +5693,13 @@ msgid "[Acknowledgements]"
 msgstr "Acknowledgements"
 
 #: lib/layouts/aastex.layout:360
-#, fuzzy
 msgid "and"
-msgstr "Land"
+msgstr "ºi"
 
 #: lib/layouts/aastex.layout:381
 #, fuzzy
 msgid "Place Figure here:"
-msgstr "PlaceFigure"
+msgstr "Insereazã figura aici"
 
 #: lib/layouts/aastex.layout:402
 #, fuzzy
@@ -5765,19 +5712,16 @@ msgid "[Appendix]"
 msgstr "Apendix"
 
 #: lib/layouts/aastex.layout:482
-#, fuzzy
 msgid "Note to Editor:"
-msgstr "NotãCãtreEditor"
+msgstr "Notã cãtre editor"
 
 #: lib/layouts/aastex.layout:503
-#, fuzzy
 msgid "References. ---"
-msgstr "Referinþe"
+msgstr "Bibliografie. ---"
 
 #: lib/layouts/aastex.layout:523
-#, fuzzy
 msgid "Note. ---"
-msgstr "Notã"
+msgstr "Notã. ---"
 
 #: lib/layouts/aastex.layout:549
 msgid "FigCaption"
@@ -5785,7 +5729,7 @@ msgstr "FigCaption"
 
 #: lib/layouts/aastex.layout:559
 msgid "Fig. ---"
-msgstr ""
+msgstr "Fig. ---"
 
 #: lib/layouts/aastex.layout:576
 #, fuzzy
@@ -5797,9 +5741,8 @@ msgid "Obj:"
 msgstr ""
 
 #: lib/layouts/aastex.layout:629
-#, fuzzy
 msgid "Dataset:"
-msgstr "Datã"
+msgstr "Set de date"
 
 #: lib/layouts/amsart-plain.layout:27 lib/layouts/foils.layout:300
 #: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:35
@@ -5811,32 +5754,27 @@ msgstr "Teoremã"
 #: lib/layouts/amsart-plain.layout:33 lib/layouts/foils.layout:314
 #: lib/layouts/siamltex.layout:284 lib/layouts/amsmaths-plain.inc:45
 #: lib/layouts/amsmaths.inc:117
-#, fuzzy
 msgid "Corollary."
 msgstr "Corolar"
 
 #: lib/layouts/amsart-plain.layout:39 lib/layouts/foils.layout:307
 #: lib/layouts/siamltex.layout:277 lib/layouts/amsmaths-plain.inc:55
 #: lib/layouts/amsmaths.inc:139
-#, fuzzy
 msgid "Lemma."
 msgstr "Lemã"
 
 #: lib/layouts/amsart-plain.layout:45 lib/layouts/foils.layout:321
 #: lib/layouts/siamltex.layout:291 lib/layouts/amsmaths-plain.inc:65
 #: lib/layouts/amsmaths.inc:161
-#, fuzzy
 msgid "Proposition."
-msgstr "Afirmaþie"
+msgstr "Propoziþie"
 
 #: lib/layouts/amsart-plain.layout:51 lib/layouts/amsmaths-plain.inc:75
 #: lib/layouts/amsmaths.inc:183
-#, fuzzy
 msgid "Conjecture."
-msgstr "Ipotezã"
+msgstr "Conjecturã"
 
 #: lib/layouts/amsart-plain.layout:57 lib/layouts/amsmaths-plain.inc:85
-#, fuzzy
 msgid "Criterion."
 msgstr "Criteriu"
 
@@ -5848,55 +5786,46 @@ msgid "Algorithm"
 msgstr "Algoritm"
 
 #: lib/layouts/amsart-plain.layout:63
-#, fuzzy
 msgid "Algorithm."
-msgstr "Algoritm"
+msgstr "Algoritm."
 
 #: lib/layouts/amsart-plain.layout:69 lib/layouts/amsmaths-plain.inc:105
 #: lib/layouts/amsmaths.inc:227
-#, fuzzy
 msgid "Fact."
-msgstr "Fact"
+msgstr "Fapt."
 
 #: lib/layouts/amsart-plain.layout:75 lib/layouts/amsmaths-plain.inc:115
-#, fuzzy
 msgid "Axiom."
 msgstr "Axiomã"
 
 #: lib/layouts/amsart-plain.layout:81 lib/layouts/foils.layout:328
 #: lib/layouts/siamltex.layout:297 lib/layouts/amsmaths-plain.inc:125
 #: lib/layouts/amsmaths.inc:268
-#, fuzzy
 msgid "Definition."
 msgstr "Definiþie"
 
 #: lib/layouts/amsart-plain.layout:87 lib/layouts/amsmaths-plain.inc:135
 #: lib/layouts/amsmaths.inc:290
-#, fuzzy
 msgid "Example."
 msgstr "Exemplu"
 
 #: lib/layouts/amsart-plain.layout:93 lib/layouts/amsmaths-plain.inc:145
 #: lib/layouts/amsmaths.inc:312
-#, fuzzy
 msgid "Condition."
 msgstr "Condiþie"
 
 #: lib/layouts/amsart-plain.layout:99 lib/layouts/amsmaths-plain.inc:155
 #: lib/layouts/amsmaths.inc:334
-#, fuzzy
 msgid "Problem."
 msgstr "Problemã"
 
 #: lib/layouts/amsart-plain.layout:105 lib/layouts/amsmaths-plain.inc:165
 #: lib/layouts/amsmaths.inc:357
-#, fuzzy
 msgid "Exercise."
 msgstr "Exerciþiu"
 
 #: lib/layouts/amsart-plain.layout:111 lib/layouts/amsmaths-plain.inc:175
 #: lib/layouts/amsmaths.inc:388
-#, fuzzy
 msgid "Remark."
 msgstr "Remarcã"
 
@@ -5909,13 +5838,11 @@ msgstr "Declaraþie"
 
 #: lib/layouts/amsart-plain.layout:123 lib/layouts/amsmaths-plain.inc:195
 #: lib/layouts/amsmaths.inc:432
-#, fuzzy
 msgid "Note."
 msgstr "Notã"
 
 #: lib/layouts/amsart-plain.layout:129 lib/layouts/amsmaths-plain.inc:205
 #: lib/layouts/amsmaths.inc:454
-#, fuzzy
 msgid "Notation."
 msgstr "Notaþie"
 
@@ -5926,7 +5853,6 @@ msgid "Summary"
 msgstr "Sumar"
 
 #: lib/layouts/amsart-plain.layout:135 lib/layouts/amsmaths-plain.inc:215
-#, fuzzy
 msgid "Summary."
 msgstr "Sumar"
 
@@ -5938,7 +5864,6 @@ msgid "Acknowledgement."
 msgstr "Acknowledgement"
 
 #: lib/layouts/amsart-plain.layout:147 lib/layouts/amsmaths-plain.inc:235
-#, fuzzy
 msgid "Case."
 msgstr "Caz"
 
@@ -5950,7 +5875,6 @@ msgstr "Concluzie"
 
 #: lib/layouts/amsart-plain.layout:153 lib/layouts/amsmaths-plain.inc:245
 #: lib/layouts/amsmaths.inc:520
-#, fuzzy
 msgid "Conclusion."
 msgstr "Concluzie"
 
@@ -6057,9 +5981,8 @@ msgid "RightHeader"
 msgstr "AntetDreapta"
 
 #: lib/layouts/apa.layout:59
-#, fuzzy
 msgid "Right header:"
-msgstr "Antet_Dreapta"
+msgstr "Antet Dreapta"
 
 #: lib/layouts/apa.layout:83
 #, fuzzy
@@ -6071,7 +5994,6 @@ msgid "ShortTitle"
 msgstr "TitluScurt"
 
 #: lib/layouts/apa.layout:100
-#, fuzzy
 msgid "Short title:"
 msgstr "Titlu scurt"
 
@@ -6089,7 +6011,6 @@ msgstr "PatruAutori"
 
 #: lib/layouts/apa.layout:162 lib/layouts/revtex4.layout:145
 #: lib/layouts/agu_stdtitle.inc:131
-#, fuzzy
 msgid "Affiliation:"
 msgstr "Afiliere"
 
@@ -6143,7 +6064,7 @@ msgstr "FitBitmap"
 #: lib/layouts/egs.layout:176 lib/layouts/linuxdoc.layout:190
 #: lib/layouts/manpage.layout:96 lib/layouts/stdlists.inc:25
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: lib/layouts/apa.layout:330
 msgid "Seriate"
