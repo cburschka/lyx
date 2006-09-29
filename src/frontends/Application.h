@@ -85,9 +85,8 @@ protected:
 	/// FIXME: \todo use Gui::currentView() in the future
 	BufferView * buffer_view_;
 
+private:
 	/// Application private implementation.
-	/// FIXME: this should be private but LyXFunc construction
-	/// is still done in GuiApplication.
 	Application_pimpl * pimpl_;
 
 }; // Application
