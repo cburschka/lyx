@@ -12,16 +12,16 @@
 
 #include <config.h>
 
+// FIXME: this is needed for now because LyXFunc is still constructed
+// there.
+#include "frontends/Application_pimpl.h"
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
+
 #include "GuiApplication.h"
 
 #include "qt_helpers.h"
 #include "QLImage.h"
-
-#include "BufferView.h"
-
-// FIXME: this is needed for now because LyXFunc is still constructed
-// there.
-#include "frontends/Application_pimpl.h"
 
 #include "graphics/LoaderQueue.h"
 
@@ -29,6 +29,7 @@
 #include "support/os.h"
 #include "support/package.h"
 
+#include "BufferView.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "debug.h"
