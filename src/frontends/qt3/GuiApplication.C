@@ -12,9 +12,6 @@
 
 #include <config.h>
 
-// FIXME: this is needed for now because LyXFunc is still constructed
-// there.
-#include "frontends/Application_pimpl.h"
 #include "frontends/LyXView.h"
 #include "frontends/WorkArea.h"
 
