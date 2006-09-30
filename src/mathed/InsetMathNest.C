@@ -945,6 +945,16 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_INSET_INSERT: {
+		MathArray ar;
+		if (createInsetMath_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
+			recordUndo(cur);
+			cur.insert(ar);
+		} else
+			cur.undispatched();
+		break;
+	}
+
 	default:
 		InsetMathDim::doDispatch(cur, cmd);
 		break;
@@ -1028,6 +1038,15 @@ bool InsetMathNest::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_MATRIX:
 		flag.enabled(currentMode() == MATH_MODE);
 		break;
+
+	case LFUN_INSET_INSERT: {
+		// Don't test createMathInset_fromDialogStr(), since
+		// getStatus is not called with a valid reference and the
+		// dialog would not be applyable.
+		string const name = cmd.getArg(0);
+		flag.enabled(name == "ref");
+		break;
+	}
 
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:

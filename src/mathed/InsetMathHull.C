@@ -1105,13 +1105,8 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 			}
 			break;
 		}
-		MathArray ar;
-		if (createInsetMath_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
-			recordUndo(cur);
-			cur.insert(ar);
-		} else
-			cur.undispatched();
-		break;
+		InsetMathGrid::doDispatch(cur, cmd);
+		return;
 	}
 
 	case LFUN_MATH_EXTERN:
@@ -1173,15 +1168,12 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_LABEL_INSERT:
 		status.enabled(type_ != hullSimple);
 		return true;
-	case LFUN_INSET_INSERT: {
-		// Don't test createInsetMath_fromDialogStr(), since
-		// getStatus is not called with a valid reference and the
-		// dialog would not be applyable.
-		string const name = cmd.getArg(0);
-		status.enabled(name == "ref" ||
-			       (name == "label" && type_ != hullSimple));
-		break;
-	}
+	case LFUN_INSET_INSERT:
+		if (cmd.getArg(0) == "label") {
+			status.enabled(type_ != hullSimple);
+			return true;
+		}
+		return InsetMathGrid::getStatus(cur, cmd, status);
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(lyx::to_utf8(cmd.argument()));
 		string s;
