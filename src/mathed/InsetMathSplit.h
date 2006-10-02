@@ -18,7 +18,7 @@
 class InsetMathSplit : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathSplit(std::string const & name);
+	explicit InsetMathSplit(std::string const & name, char valign = 'c');
 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;

@@ -54,6 +54,7 @@ following hack as starting point to write some macros:
 #include "InsetMathRef.h"
 #include "InsetMathRoot.h"
 #include "InsetMathScript.h"
+#include "InsetMathSplit.h"
 #include "InsetMathSqrt.h"
 #include "InsetMathTabular.h"
 #include "MathMacroTemplate.h"
@@ -1099,16 +1100,22 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				parse2(cell->back(), FLAG_END, InsetMath::TEXT_MODE, false);
 			}
 
-			else if (name == "split" || name == "cases" ||
-				 name == "gathered" || name == "aligned") {
+			else if (name == "split" || name == "cases") {
 				cell->push_back(createInsetMath(name));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 
+			else if (name == "gathered" || name == "aligned") {
+				string const valign = parse_verbatim_option() + 'c';
+				cell->push_back(MathAtom(new InsetMathSplit(name, valign[0])));
+				parse2(cell->back(), FLAG_END, mode, false);
+			}
+
 			else if (name == "alignedat") {
+				string const valign = parse_verbatim_option() + 'c';
 				// ignore this for a while
 				getArg('{', '}');
-				cell->push_back(createInsetMath(name));
+				cell->push_back(MathAtom(new InsetMathSplit(name, valign[0])));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 
