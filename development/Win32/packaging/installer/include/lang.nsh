@@ -1,8 +1,32 @@
 /*
 
-Language file handling
+Translations for installer and LyX itself
 
 */
+
+!macro LanguageList COMMAND
+
+  ;List of supported LyX languages with ISO code and language identifier
+  ;To be used as input for other macros
+ 
+  ${COMMAND} "Basque" eu_EU 1069
+  ${COMMAND} "Bokmål" nb_NO 1044
+  ${COMMAND} "Cesky" cs_CZ 1029
+  ${COMMAND} "Dansk" da_DK 1030
+  ${COMMAND} "Deutsch" de_DE 1031
+  ${COMMAND} "English" en_EN 1033
+  ${COMMAND} "Español" es_ES 1034
+  ${COMMAND} "Français" fr_FR 1036
+  ${COMMAND} "Italiano" it_IT 1057
+  ${COMMAND} "Magyar" hu_HU 1038  
+  ${COMMAND} "Nynorsk" nn_NO 2068
+  ${COMMAND} "Polski" pl_PL 1045
+  ${COMMAND} "Russian" ru_RU 1049
+  ${COMMAND} "Slovenský jazyk" sk_SK 1060
+  ${COMMAND} "Suomi" fi_FI 1035
+  ${COMMAND} "Türkçe" tr_TR 1055
+  
+!macroend
 
 !macro LanguageString name text
 
@@ -39,6 +63,8 @@ Language file handling
   !insertmacro ReDef LanguageStringAdd '!insertmacro LanguageStringAdd "${lang_name}"'
 
   ${LanguageStringAdd} TEXT_NO_PRIVILEDGES
+  
+  ${LanguageStringAdd} TEXT_INSTALL_CURRENTUSER
 
   ${LanguageStringAdd} TEXT_WELCOME_${SETUPTYPE_NAME}
 

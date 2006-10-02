@@ -7,14 +7,14 @@ Install type setting (current user/all users)
 ;--------------------------------
 ;Macros
 
-!macro GetDirExternal component
+!macro GetDirExternal COMPONENT
 
-  ReadRegStr $R0 SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${component} Path"
+  ReadRegStr $R0 SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${COMPONENT} Path"
   
-  ${if} ${FileExists} "$R0\${BIN_${component}}"
+  ${if} ${FileExists} "$R0\${BIN_${COMPONENT}}"
 
     ${if} $R0 != ""
-      StrCpy $Path${component} $R0
+      StrCpy $Path${COMPONENT} $R0
     ${endif}
   
   ${endif}
@@ -75,10 +75,11 @@ Function PageUserValidate
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "user.ini" "Field 2" "State"
   
   ${if} $R0 == "1"
-    SetShellVarContext current
-  ${else}
     SetShellVarContext all
-    StrCpy $AllUsersInstall ${TRUE}
+    StrCpy $CurrentUserInstall ${FALSE}
+  ${else}
+    SetShellVarContext current
+    StrCpy $CurrentUserInstall ${TRUE}
   ${endif}
   
   Call InitUser

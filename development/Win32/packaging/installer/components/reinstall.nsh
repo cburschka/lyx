@@ -32,6 +32,4 @@ Function PageReinstallValidate
     !insertmacro UnselectSection ${SecCore}
   ${endif}
 
-  Call InitUser
-
 FunctionEnd

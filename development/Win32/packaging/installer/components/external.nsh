@@ -7,31 +7,31 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 ;--------------------------------
 ;Macros
 
-!macro SetComponentState var component
+!macro SetComponentState VAR COMPONENT
 
-  ${if} ${var} == "1"
+  ${if} ${VAR} == "1"
   
-    StrCpy $Setup${component} ${TRUE}
+    StrCpy $Setup${COMPONENT} ${TRUE}
     
-    StrCpy $R1 $Size${component}
+    StrCpy $R1 $Size${COMPONENT}
     
-    ${if} $Path${component} == ""
+    ${if} $Path${COMPONENT} == ""
       ;Add size of component itself
-      IntOp $R1 $R1 + ${SIZE_${component}}
+      IntOp $R1 $R1 + ${SIZE_${COMPONENT}}
     ${endif}
     
-    SectionSetSize ${External${component}} $R1
+    SectionSetSize ${External${COMPONENT}} $R1
     
   ${else}
   
-    StrCpy $Setup${component} ${FALSE}
-    SectionSetSize ${External${component}} 0
+    StrCpy $Setup${COMPONENT} ${FALSE}
+    SectionSetSize ${External${COMPONENT}} 0
     
   ${endif}
 
 !macroend
 
-!macro ExternalComponent component
+!macro ExternalComponent COMPONENT
 
   ;Action depending on type of installer
   
@@ -49,54 +49,54 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 !macroend
 
-!macro SetupComponent component
+!macro SetupComponent COMPONENT
 
   ;Run the setup application for a component
 
-  install_${component}:
+  install_${COMPONENT}:
       
-    ExecWait '"$PLUGINSDIR\${component}Setup.exe"'
+    ExecWait '"$PLUGINSDIR\${COMPONENT}Setup.exe"'
     Call UpdatePathEnvironment
-    Call Search${component}
+    Call Search${COMPONENT}
     
-    ${if} $Path${component} == ""  
-      MessageBox MB_YESNO|MB_ICONEXCLAMATION $(TEXT_NOTINSTALLED_${component}) IDYES install_${component}
+    ${if} $Path${COMPONENT} == ""  
+      MessageBox MB_YESNO|MB_ICONEXCLAMATION $(TEXT_NOTINSTALLED_${COMPONENT}) IDYES install_${COMPONENT}
     ${endif}
       
-    Delete "$PLUGINSDIR\${component}Setup.exe"
+    Delete "$PLUGINSDIR\${COMPONENT}Setup.exe"
      
 !macroend
 
 !ifndef SETUPTYPE_BUNDLE
 
-  !macro DownloadComponent component
+  !macro DownloadComponent COMPONENT
 
-    download_${component}:
+    download_${COMPONENT}:
 
       ;Download using HTTP
-      NSISdl::download "${DOWNLOAD_${component}}" "$PLUGINSDIR\${component}Setup.exe"
+      NSISdl::download "${DOWNLOAD_${COMPONENT}}" "$PLUGINSDIR\${COMPONENT}Setup.exe"
       Pop $R0
  
       ${if} $R0 != "success"
         ;Download failed
-        MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${component}) ($R0)" IDYES download_${component}
-        Goto noinstall_${component}
+        MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${COMPONENT}) ($R0)" IDYES download_${COMPONENT}
+        Goto noinstall_${COMPONENT}
       ${endif}
       
-      !insertmacro SetupComponent ${component}
+      !insertmacro SetupComponent ${COMPONENT}
       
-    noinstall_${component}:
+    noinstall_${COMPONENT}:
 
   !macroend
 
 !else
 
-  !macro InstallComponent component
+  !macro InstallComponent COMPONENT
 
     ;Extract
-    File /oname=$PLUGINSDIR\${component}Setup.exe ${INSTALL_${component}}
+    File /oname=$PLUGINSDIR\${COMPONENT}Setup.exe ${INSTALL_${COMPONENT}}
     
-    !insertmacro SetupComponent ${component}
+    !insertmacro SetupComponent ${COMPONENT}
     
   !macroend
 
@@ -113,38 +113,38 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 !macroend
 
-!macro DialogExternalShow component
+!macro DialogExternalShow COMPONENT
 
-  !insertmacro MUI_HEADER_TEXT $(TEXT_EXTERNAL_${component}_TITLE) $(TEXT_EXTERNAL_${component}_SUBTITLE)
-  !insertmacro MUI_INSTALLOPTIONS_INITDIALOG "external_${component}.ini"
-  !insertmacro DialogExternalControl ${component}
+  !insertmacro MUI_HEADER_TEXT $(TEXT_EXTERNAL_${COMPONENT}_TITLE) $(TEXT_EXTERNAL_${COMPONENT}_SUBTITLE)
+  !insertmacro MUI_INSTALLOPTIONS_INITDIALOG "external_${COMPONENT}.ini"
+  !insertmacro DialogExternalControl ${COMPONENT}
   !insertmacro MUI_INSTALLOPTIONS_SHOW
 
 !macroend
 
-!macro DialogExternalValidate component
+!macro DialogExternalValidate COMPONENT
 
   Push $R0
   Push $R1
   
   ;Next button pressed?
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${component}.ini" "Settings" "State"
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Settings" "State"
   ${if} $R0 != "0"
-    !insertmacro DialogExternalControl ${component}
+    !insertmacro DialogExternalControl ${COMPONENT}
     Abort
   ${endif}
   
   ;Download?
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${component}.ini" "Field 2" "State"
-  !insertmacro SetComponentState $R0 ${component}
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Field 2" "State"
+  !insertmacro SetComponentState $R0 ${COMPONENT}
   
   ;Folder?
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${component}.ini" "Field 3" "State"
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Field 3" "State"
   
   ${if} $R0 == "1"
-    !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${component}.ini" "Field 4" "State"
-    ${unless} ${FileExists} "$R0\${BIN_${component}}"
-      MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_EXTERNAL_${component}_NOTFOUND)
+    !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Field 4" "State"
+    ${unless} ${FileExists} "$R0\${BIN_${COMPONENT}}"
+      MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_EXTERNAL_${COMPONENT}_NOTFOUND)
       Abort
     ${endif}
     StrCpy $Path${component} $R0

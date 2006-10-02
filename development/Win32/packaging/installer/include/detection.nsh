@@ -107,7 +107,7 @@ Function GetPathPrefix
 
   Push $R0
 
-  StrCpy $R0 "$INSTDIR\python"
+  StrCpy $R0 "$INSTDIR\bin;$INSTDIR\python"
   
   ${if} $PathLaTeX != ""
     StrCpy $R0 "$R0;$PathLaTeX"

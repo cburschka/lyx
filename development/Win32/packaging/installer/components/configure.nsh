@@ -48,17 +48,20 @@ Section -InstallData
   ;Uninstaller information
   !define REG_UNINSTALL 'WriteRegStr SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"'
   
-  ${REG_UNINSTALL} "UninstallString" "$\"$INSTDIR\${SETUP_UNINSTALLER}$\""
-  ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION}"
+  ${if} $CurrentUserInstall == ${TRUE}
+    ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}" /CurrentUser'
+    ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION} $(TEXT_INSTALL_CURRENTUSER)"
+  ${else}
+    ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}" /AllUsers'
+    ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION}"
+  ${endif}
+  
   ${REG_UNINSTALL} "DisplayVersion" "${APP_VERSION}"
   ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\bin\lyx_32x32.ico"
   ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/"
   ${REG_UNINSTALL} "URLInfoAbout" "http://www.lyx.org/about/"
   ${REG_UNINSTALL} "Publisher" "LyX Team"
   ${REG_UNINSTALL} "HelpLink" "http://www.lyx.org/internet/mailing.php"  
- 
-  ;Create uninstaller
-  WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
   
 SectionEnd
 
@@ -113,7 +116,7 @@ Section -Configure
   FileOpen $R1 "$INSTDIR\${APP_RUN}" w
 
   FileWrite $R1 '@echo off$\r$\n'  
-  FileWrite $R1 'SET LC_ALL=$LangCode$\r$\n'
+  FileWrite $R1 'SET LC_ALL=$LangISOCode$\r$\n'
   FileWrite $R1 'SET AIK_DATA_DIR=$INSTDIR\aiksaurus$\r$\n'
   FileWrite $R1 'start "${APP_NAME}" "$INSTDIR\bin\lyx.exe" %*$\r$\n'
 

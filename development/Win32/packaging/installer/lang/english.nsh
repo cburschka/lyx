@@ -8,6 +8,8 @@ Author: Joost Verburg
 
 !insertmacro LanguageString TEXT_NO_PRIVILEDGES "You do not have Administrator or Power User privileges.$\r$\n$\r$\nAlthough you can install ${APP_NAME} and the typesetting system, the utilities for image conversion and previewing cannot be installed without these priviledges."
 
+!insertmacro LanguageString TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+
 !insertmacro LanguageString TEXT_WELCOME_DOWNLOAD "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.\r\n\r\nThis installer will setup a complete environment to use ${APP_NAME} and can download missing components automatically.\r\n\r\n$(^ClickNext)"
 !insertmacro LanguageString TEXT_WELCOME_INSTALL "This wizard will guide you through the installation of $(^NameDA), the document processor that encourages an approach to writing based on the structure of your documents, not their appearance.\r\n\r\nThis installer will setup a complete environment to use ${APP_NAME} and can install missing components automatically.\r\n\r\n$(^ClickNext)"
 

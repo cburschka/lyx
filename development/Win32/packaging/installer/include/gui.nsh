@@ -12,13 +12,6 @@ Name "${APP_NAME} ${APP_VERSION}"
 ;Default installation folder
 InstallDir "${SETUP_DEFAULT_DIRECTORY}"
 
-;--------------------------------
-;Installer language
-
-;Get from registry if available
-!define MUI_LANGDLL_REGISTRY_ROOT SHELL_CONTEXT
-!define MUI_LANGDLL_REGISTRY_KEY "${APP_REGKEY_SETUP}"
-!define MUI_LANGDLL_REGISTRY_VALUENAME "Setup Language"
 
 ;--------------------------------
 ;Interface settings
@@ -82,7 +75,7 @@ Page custom PageLanguage PageLanguageValidate
 !insertmacro MUI_UNPAGE_FINISH
 
 ;--------------------------------
-;Languages
+;Installer Languages
 
 !insertmacro IncludeLang "english"
 !insertmacro IncludeLang "french"
@@ -92,52 +85,60 @@ Page custom PageLanguage PageLanguageValidate
 ;--------------------------------
 ;Macros
 
-!macro InitDialogExternal component currentuser_possible
+!macro InitDialogExternal COMPONENT CURRENTUSER_POSSIBLE
 
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 1" "Text" $(TEXT_EXTERNAL_${component}_INFO_${SETUPTYPE_NAME})
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 3" "Text" $(TEXT_EXTERNAL_${component}_FOLDER)
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 5" "Text" $(TEXT_EXTERNAL_${component}_FOLDER_INFO)
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 6" "Text" $(TEXT_EXTERNAL_${component}_NONE)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 1" "Text" $(TEXT_EXTERNAL_${COMPONENT}_INFO_${SETUPTYPE_NAME})
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 3" "Text" $(TEXT_EXTERNAL_${COMPONENT}_FOLDER)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 5" "Text" $(TEXT_EXTERNAL_${COMPONENT}_FOLDER_INFO)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 6" "Text" $(TEXT_EXTERNAL_${COMPONENT}_NONE)
   
-  !if ${currentuser_possible} == ${TRUE}
-    !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 2" "Text" "$(TEXT_EXTERNAL_${component}_${SETUPTYPE_NAME})"
+  !if ${CURRENTUSER_POSSIBLE} == ${TRUE}
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 2" "Text" "$(TEXT_EXTERNAL_${COMPONENT}_${SETUPTYPE_NAME})"
   !else  
     ${if} $AdminOrPowerUser == ${TRUE}
-      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 2" "Text" "$(TEXT_EXTERNAL_${component}_${SETUPTYPE_NAME})"
+      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 2" "Text" "$(TEXT_EXTERNAL_${COMPONENT}_${SETUPTYPE_NAME})"
     ${else}
-      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 2" "Text" "$(TEXT_EXTERNAL_${component}_${SETUPTYPE_NAME}) $(TEXT_EXTERNAL_NOPRIVILEDGES)"
-      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 2" "Flags" "DISABLED"
+      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 2" "Text" "$(TEXT_EXTERNAL_${COMPONENT}_${SETUPTYPE_NAME}) $(TEXT_EXTERNAL_NOPRIVILEDGES)"
+      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 2" "Flags" "DISABLED"
     ${endif}
   !endif
   
 !macroend
 
-!macro InitDialogExternalDir component currentuser_possible
+!macro InitDialogExternalDir COMPONENT CURRENTUSER_POSSIBLE
 
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 4" "State" $Path${component}
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 4" "State" $Path${COMPONENT}
   
-  !if ${currentuser_possible} == ${FALSE}
+  !if ${CURRENTUSER_POSSIBLE} == ${FALSE}
     ${if} $AdminOrPowerUser == ${TRUE}
   !endif
   
-    ${if} $Path${component} == ""
-      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 2" "State" "1"
+    ${if} $Path${COMPONENT} == ""
+      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 2" "State" "1"
     ${else}
-      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 3" "State" "1"
+      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 3" "State" "1"
     ${endif}
     
-  !if ${currentuser_possible} == ${FALSE}
+  !if ${CURRENTUSER_POSSIBLE} == ${FALSE}
     ${else}
-      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${component}.ini" "Field 3" "State" "1"
+      !insertmacro MUI_INSTALLOPTIONS_WRITE "external_${COMPONENT}.ini" "Field 3" "State" "1"
     ${endif}
   !endif
   
+!macroend
+
+!macro InitDialogLang VAR LANGNAME LANGISOCODE LANGID
+
+  StrCpy ${VAR} `${VAR}|${LANGNAME}`
+
 !macroend
 
 ;--------------------------------
 ;Functions
 
 Function InitDialogs
+
+  Push $R0
 
   ;Extract dialogs
   
@@ -152,8 +153,8 @@ Function InitDialogs
   ;Write texts
   
   !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 1" "Text" $(TEXT_USER_INFO)
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "Text" $(TEXT_USER_CURRENT)
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 3" "Text" $(TEXT_USER_ALL)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "Text" $(TEXT_USER_ALL)
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 3" "Text" $(TEXT_USER_CURRENT)
   
   !insertmacro MUI_INSTALLOPTIONS_WRITE "reinstall.ini" "Field 1" "Text" $(TEXT_REINSTALL_INFO)
   !insertmacro MUI_INSTALLOPTIONS_WRITE "reinstall.ini" "Field 2" "Text" $(TEXT_REINSTALL_ENABLE)
@@ -166,12 +167,29 @@ Function InitDialogs
   !insertmacro MUI_INSTALLOPTIONS_WRITE "viewer.ini" "Field 2" "Text" $(TEXT_VIEWER_${SETUPTYPE_NAME})
   
   !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 1" "Text" $(TEXT_LANGUAGE_INFO)
+  StrCpy $R0 ""
+  !insertmacro LanguageList '!insertmacro InitDialogLang $R0'
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 2" "ListItems" $R0
+  
+  ;Set state of user dialog
+  ${if} $CurrentUserInstall == ${TRUE}
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "State" "0"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 3" "State" "1"
+  ${else}
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "State" "1"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 3" "State" "0"
+  ${endif}
+  
+  
+  Pop $R0
 
 FunctionEnd
 
 Function InitInterface
 
-  Call CheckPriviledges
+  ${if} $AdminOrPowerUser != ${TRUE}
+    MessageBox MB_OK|MB_ICONEXCLAMATION $(TEXT_NO_PRIVILEDGES)
+  ${endif}
 
   Banner::show /NOUNLOAD "Preparing wizard"
 

@@ -22,6 +22,8 @@ Function .onInit
   ${endif}
   
   Call CheckWindows
+  Call CheckPrivileges
+  Call InitInstaller
   Call SearchAll
 
   ${unless} ${silent}
@@ -30,8 +32,8 @@ Function .onInit
 FunctionEnd
 
 Function un.onInit
-  !insertmacro MUI_UNGETLANGUAGE
-  Call un.SetShellContext
+  Call un.CheckPrivileges
+  Call un.InitUnInstaller
 FunctionEnd
 
 ;--------------------------------

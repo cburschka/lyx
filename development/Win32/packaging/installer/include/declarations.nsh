@@ -21,6 +21,7 @@ Declarations
 
 !include "MUI.nsh"
 !include "LogicLib.nsh"
+!include "StrFunc.nsh"
 !include "FileFunc.nsh"
 !include "WordFunc.nsh"
 !include "Sections.nsh"
@@ -47,7 +48,7 @@ ReserveFile "${FILES_DVIPOST_PKG}\dvipost.sty"
 ;Variables
 
 Var AdminOrPowerUser
-Var AllUsersInstall
+Var CurrentUserInstall
 
 Var PathLaTeX
 Var PathImageMagick
@@ -65,18 +66,15 @@ Var SizeGhostscript
 Var SizeViewer
 
 Var LangName
-Var LangCode
+Var LangISOCode
 
 Var AspellHive
-
-;--------------------------------
-;Generic defines
-
-!define FALSE 0
-!define TRUE 1
   
 ;--------------------------------
 ;Include standard functions
+
+!insertmacro FUNCTION_STRING_StrStr
+!insertmacro FUNCTION_STRING_UnStrStr
 
 !insertmacro GetParent
 !insertmacro VersionCompare
@@ -85,25 +83,25 @@ Var AspellHive
 ;--------------------------------
 ;Macros  
 
-!macro ReDef name value
+!macro ReDef NAME VALUE
 
   ;Redefine a pre-processor definition
 
-  !ifdef `${name}`
-    !undef `${name}`
+  !ifdef `${NAME}`
+    !undef `${NAME}`
   !endif
 
-  !define `${name}` `${value}`
+  !define `${NAME}` `${VALUE}`
 
 !macroend
   
-!macro CallFunc function input var_output
+!macro CallFunc FUNCTION INPUT VAROUT
   
   ;Calls a function that modifies a single value on the stack
 
-  Push ${input}
-    Call ${function}
-  Pop ${var_output}
+  Push ${INPUT}
+    Call ${FUNCTION}
+  Pop ${VAROUT}
 
 !macroend
 

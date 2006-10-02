@@ -1,7 +1,7 @@
 /*
 
 LyX Core
-Binaries, resources, MSYS/Python, Aspell
+Binaries, Resources, Python, Aspell
 
 */
 
@@ -78,19 +78,22 @@ Section -Core SecCore
   
   ;Aspell
 
-  File /oname=$PLUGINSDIR\aspelldata.exe "${FILES_ASPELLDATA}\aspelldata-sep06.exe"
+  File /oname=$PLUGINSDIR\AspellData.exe "${FILES_ASPELLDATA}\AspellData.exe"
 
-  ${if} $AllUsersInstall == ${TRUE}
-    ExecWait '"$PLUGINSDIR\aspelldata.exe" /S /AllUsers'
+  ${if} $CurrentUserInstall == ${TRUE}
+    ExecWait '"$PLUGINSDIR\AspellData.exe" /S /CurrentUser'
   ${else}
-    ExecWait '"$PLUGINSDIR\aspelldata.exe" /S'
+    ExecWait '"$PLUGINSDIR\AspellData.exe" /S /AllUsers'
   ${endif}
 
-  Delete "$PLUGINSDIR\aspelldata.exe"
+  Delete "$PLUGINSDIR\AspellData.exe"
 
   ;Aiksarus data
   
   SetOutPath "$INSTDIR\aiksaurus"
   !insertmacro FileListAiksaurusData File "${FILES_AIKSAURUS}\"
+  
+  ;Create uninstaller
+  WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 
 SectionEnd

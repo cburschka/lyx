@@ -86,6 +86,6 @@ Author: Andreas Deininger
 !insertmacro LanguageString TEXT_NOTINSTALLED_DICT "Die Installation der Wörterbucher für die ${DICT_NAME} Rechtschreibprüfung konnte nicht erfolgreich abgeschlossen werden. Möchten Sie die Installation erneut versuchen?"
 
 !insertmacro LanguageString TEXT_FINISH_DESKTOP "Ein Symbol auf der Arbeitsoberfläche erzeugen"
-!insertmacro LanguageString TEXT_FINISH_WEBSITE "Besuchen Sie lyx.org für aktuelle Neuigkeiten, für Tips und Tricks sowie für sonstige Hinweise zur Unterstützung bei der Nutzung des Programms"
+!insertmacro LanguageString TEXT_FINISH_WEBSITE "Besuchen Sie lyx.org für aktuelle Neuigkeiten, für Tips und Tricks sowie für sonstige Hinweise"
 
 !insertmacro LanguageString UNTEXT_WELCOME "Dieses Installationsprogramm wird Sie durch die Deinstallation von $(^NameDA) leiten. Bitte schließen Sie $(^NameDA) bevor Sie fortfahren.\r\n\r\nBeachten Sie bitte, dass im folgenden nur LyX selbst deinstalliert wird. Falls Sie andere Anwendungen aus ihrem System entfernen möchten, die zur Nutzung von Lyx installiert wurden, benutzen Sie hierzu bitte den Eintrag Software im Menü Systemsteuerung und wählen Sie dort dann den entsprechenden Eintrag für das Programm aus.\r\n\r\n$_CLICK"
