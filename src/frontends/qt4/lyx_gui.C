@@ -28,7 +28,6 @@
 
 
 #include "GuiView.h"
-#include "FontLoader.h"
 #include "QLImage.h"
 #include "qt_helpers.h"
 #include "socket_callback.h"
@@ -97,9 +96,6 @@ int exec(int & argc, char * argv[])
 	lyx_gui entirely, thus using theApp directly throughout the code for LyXFunc,
 	Clipboard and Selection access.
 	*/
-
-	// Force adding of font path _before_ QApplication is initialized
-	FontLoader::initFontPath();
 
 #if defined(Q_WS_WIN) && !defined(Q_CYGWIN_WIN)
 	static GuiApplication app(argc, argv);

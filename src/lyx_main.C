@@ -47,6 +47,7 @@
 
 #include "support/environment.h"
 #include "support/filetools.h"
+#include "support/fontutils.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/os.h"
@@ -107,9 +108,13 @@ void lyx_exit(int status)
 	// FIXME: We should not directly call exit(), since it only
 	// guarantees a return to the system, no application cleanup.
 	// This may cause troubles with not executed destructors.
-	if (lyx_gui::use_gui)
+	if (lyx_gui::use_gui) {
 		// lyx_gui::exit may return and only schedule the exit
 		lyx_gui::exit(status);
+		// Restore original font resources after Application is destroyed.
+		lyx::support::restoreFontResources();
+	}
+
 	exit(status);
 }
 
@@ -216,8 +221,11 @@ int LyX::priv_exec(int & argc, char * argv[])
 				   lyx::support::top_build_dir_is_one_level_up);
 
 	// Start the real execution loop.
-	if (lyx_gui::use_gui)
+	if (lyx_gui::use_gui) {
+		// Force adding of font path _before_ Application is initialized
+		lyx::support::addFontResources();
 		return lyx_gui::exec(argc, argv);
+	}
 	else
 		return exec2(argc, argv);
 }

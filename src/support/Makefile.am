@@ -37,6 +37,8 @@ libsupport_la_SOURCES = \
 	filename.h \
 	filetools.C \
 	filetools.h \
+	fontutils.C \
+	fontutils.h \
 	forkedcall.C \
 	forkedcall.h \
 	forkedcallqueue.C \

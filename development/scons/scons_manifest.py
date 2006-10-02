@@ -101,6 +101,7 @@ src_support_header_files = Split('''
     filefilterlist.h
     filename.h
     filetools.h
+    fontutils.h
     forkedcall.h
     forkedcallqueue.h
     forkedcontr.h
@@ -138,6 +139,7 @@ src_support_files = Split('''
     filefilterlist.C
     filename.C
     filetools.C
+    fontutils.C
     forkedcall.C
     forkedcallqueue.C
     forkedcontr.C

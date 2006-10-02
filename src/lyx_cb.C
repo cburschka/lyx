@@ -38,6 +38,7 @@
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
+#include "support/fontutils.h"
 #include "support/forkedcall.h"
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
@@ -216,6 +217,8 @@ void quitLyX(bool noask)
 	}
 
 	lyx_gui::exit(0);
+	// Restore original font resources after Application is destroyed.
+	lyx::support::restoreFontResources();
 }
 
 

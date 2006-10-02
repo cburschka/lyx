@@ -95,9 +95,6 @@ bool use_gui = true;
 
 int exec(int & argc, char * argv[])
 {
-	// Force adding of font path _before_ QApplication is initialized
-	FontLoader::initFontPath();
-
 	GuiApplication app(argc, argv);
 
 	guiApp = &app;

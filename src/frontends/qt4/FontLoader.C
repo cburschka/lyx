@@ -43,77 +43,8 @@ using std::pair;
 using std::vector;
 using std::string;
 
-#ifdef Q_WS_MACX
-#include <ApplicationServices/ApplicationServices.h>
-#endif
-
-#ifdef Q_WS_WIN
-#include "windows.h"
-#include "support/os.h"
-#include "support/package.h"
-#include "support/path.h"
-using lyx::support::addName;
-using lyx::support::addPath;
-using lyx::support::package;
-namespace os = lyx::support::os;
-string const win_fonts_truetype[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
-	"eufm10", "msam10", "msbm10", "wasy10"};
-const int num_fonts_truetype = sizeof(win_fonts_truetype) / sizeof(*win_fonts_truetype);
-#endif
-
-void FontLoader::initFontPath()
-{
-#ifdef Q_WS_MACX
-	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
-	CFURLRef  myAppResourcesURL, FontsURL;
-	FSRef  fontDirRef;
-	FSSpec  fontDirSpec;
-	CFStringRef  filePath = CFStringCreateWithBytes(kCFAllocatorDefault,
-					(UInt8 *) "Fonts", strlen("Fonts"),
-					kCFStringEncodingISOLatin1, false);
-
-	myAppResourcesURL = CFBundleCopyResourcesDirectoryURL(myAppBundle);
-	FontsURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault,
-			myAppResourcesURL, filePath, true);
-	if (lyxerr.debugging(Debug::FONT)) {
-		UInt8  buf[255];
-		if (CFURLGetFileSystemRepresentation(FontsURL, true, buf, 255))
-			lyxerr << "Adding Fonts directory: " << buf << endl;
-	}
-	CFURLGetFSRef (FontsURL, &fontDirRef);
-	OSStatus err = FSGetCatalogInfo (&fontDirRef, kFSCatInfoNone,
-					 NULL, NULL, &fontDirSpec, NULL);
-	if (err)
-		lyxerr << "FSGetCatalogInfo err = " << err << endl;
-	err = FMActivateFonts (&fontDirSpec, NULL, NULL,
-			       kFMLocalActivationContext);
-	if (err)
-		lyxerr << "FMActivateFonts err = " << err << endl;
-#endif
-
-#ifdef Q_WS_WIN
-	// Windows only: Add BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support(), "fonts");
-	
-	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = 
-			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		AddFontResource(os::external_path(font_current).c_str());
-	}
-#endif
-}
 
 FontLoader::~FontLoader() {
-#ifdef Q_WS_WIN
-	// Windows only: Remove BaKoMa TrueType font resources
-	string const fonts_dir = addPath(package().system_support(), "fonts");
-	
-	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = 
-			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		RemoveFontResource(os::external_path(font_current).c_str());
-	}
-#endif
 }
 
 namespace {
