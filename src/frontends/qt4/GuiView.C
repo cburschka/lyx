@@ -117,7 +117,7 @@ void GuiView::setGeometry(unsigned int width,
 	// only true when the -geometry option was NOT used
 	if (width != 0 && height != 0) {
 		if (posx != -1 && posy != -1) {
-#ifdef Q_OS_WIN32
+#ifdef Q_WS_WIN
 			// FIXME: use only setGeoemtry when Trolltech has
 			// fixed the qt4/X11 bug
 			QMainWindow::setGeometry(posx, posy,width, height);

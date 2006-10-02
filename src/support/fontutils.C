@@ -23,7 +23,7 @@
 #include <ApplicationServices/ApplicationServices.h>
 #endif
 
-#ifdef _WIN32
+#if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
 #include "windows.h"
 #include "support/os.h"
 #include "support/package.h"
@@ -74,7 +74,7 @@ void addFontResources()
 		lyxerr << "FMActivateFonts err = " << err << endl;
 #endif
 
-#ifdef _WIN32
+#if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
 	// Windows only: Add BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support(), "fonts");
 	
@@ -89,7 +89,7 @@ void addFontResources()
 
 void restoreFontResources()
 {
-#ifdef _WIN32
+#if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
 	// Windows only: Remove BaKoMa TrueType font resources
 	string const fonts_dir = addPath(package().system_support(), "fonts");
 	
