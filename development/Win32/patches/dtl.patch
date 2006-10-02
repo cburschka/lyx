@@ -1,6 +1,74 @@
-diff -riwbBu -Xex dtl/Makefile dtl-modified/Makefile
---- dtl/Makefile	Tue Sep 19 23:59:17 2006
-+++ dtl-modified/Makefile	Wed Jul  5 17:54:21 2006
+diff -riwBu -Xex dtl\dt2dv.c dtl-modified\dt2dv.c
+--- dtl\dt2dv.c	Wed Mar 08 01:00:00 1995
++++ dtl-modified\dt2dv.c	Mon Oct 02 13:28:35 2006
+@@ -1,9 +1,11 @@
+ /* dt2dv - convert human-readable "DTL" file to DVI format
+          - this is intended to invert dv2dt version 0.6.0
+-   - version 0.6.1 - 14:38 GMT +11  Thu 9 March 1995
++   - version 0.6.2 - 27 July 2005
+    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
+    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
+              Nelson H. F. Beebe    beebe@math.utah.edu
++	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle
++	     .dvi files containing strings longer than 1024 chars.
+    - Reference:  "The DVI Driver Standard, Level 0",
+                  by  The TUG DVI Driver Standards Committee.
+                  Appendix A, "Device-Independent File Format".
+@@ -34,7 +36,7 @@
+   size_t max;   /* capacity of buf */
+   S4 wrote;     /* number of characters written into buf */
+   size_t read;  /* position in buf of next character to read from buf */
+-  char * buf;   /* line buffer */
++  unsigned char * buf;   /* line buffer */
+ } Line;
+ 
+ char linebuf[MAXLINE+1];
+@@ -1089,7 +1091,7 @@
+       dinfo();
+       status = 0;
+     }
+-    else if ( ! isprint (c) && ! isspace (c))
++    else if ( ! isprint (c & 0x7f) && ! isspace (c))
+     {
+       PRINT_PROGNAME;
+       fprintf (stderr,
+@@ -2223,7 +2225,7 @@
+ /* transfer (length and) quoted string from dtl to dvi file, */
+ /* return number of bytes written to dvi file. */
+ {
+-  U4 k, k2;
++  U4 k, k2, lstr_maxsize;
+   Lstring lstr;
+ 
+   if (debug)
+@@ -2232,12 +2234,13 @@
+     fprintf (stderr, "(xfer_len_string) : entering xfer_len_string.\n");
+   }
+ 
+-  init_Lstring (&lstr, LSIZE);
+-
+   /* k[n] : length of special string */
+ 
+   k = get_unsigned (dtl);
+ 
++  lstr_maxsize = (k > LSIZE) ? k : LSIZE;
++  init_Lstring (&lstr, lstr_maxsize);
++
+   if (debug)
+   {
+     PRINT_PROGNAME;
+@@ -2567,7 +2570,7 @@
+ #ifdef HEX_CHECKSUM
+   /* c[4] : (hexadecimal) checksum : I (gt) would prefer this */
+   xfer_hex (4, dtl, dvi);
+-#else /NOT HEX_CHECKSUM */
++#else /*NOT HEX_CHECKSUM */
+   /* c[4] : checksum (octal, for comparison with tftopl's .pl file) */
+   xfer_oct (4, dtl, dvi);
+ #endif
+diff -riwBu -Xex dtl\Makefile dtl-modified\Makefile
+--- dtl\Makefile	Tue Sep 19 23:59:17 2006
++++ dtl-modified\Makefile	Wed Jul 05 17:54:20 2006
 @@ -3,6 +3,14 @@
  # Thu 9 March 1995
  # Geoffrey Tobin
@@ -127,80 +195,9 @@ diff -riwbBu -Xex dtl/Makefile dtl-modified/Makefile
  	@if [ -s edited.dif ] ; \
  	then echo ERROR : differences in edited.dif ; \
  	else $(RM) edited.dif ; \
-diff -riwbBu -Xex dtl/dt2dv.c dtl-modified/dt2dv.c
---- dtl/dt2dv.c	Wed Mar  8 00:00:00 1995
-+++ dtl-modified/dt2dv.c	Thu Sep 21 07:50:31 2006
-@@ -1,9 +1,11 @@
- /* dt2dv - convert human-readable "DTL" file to DVI format
-          - this is intended to invert dv2dt version 0.6.0
--   - version 0.6.1 - 14:38 GMT +11  Thu 9 March 1995
-+   - version 0.6.2 - 27 July 2005
-    - Geoffrey Tobin    G.Tobin@ee.latrobe.edu.au
-    - fixes:  Michal Tomczak-Jaegermann    ntomczak@vm.ucs.ualberta.ca
-              Nelson H. F. Beebe    beebe@math.utah.edu
-+	     Angus Leeming leeming@lyx.org: Enable dt2dv to handle
-+	     .dvi files containing strings longer than 1024 chars.
-    - Reference:  "The DVI Driver Standard, Level 0",
-                  by  The TUG DVI Driver Standards Committee.
-                  Appendix A, "Device-Independent File Format".
-@@ -34,7 +36,7 @@
-   size_t max;   /* capacity of buf */
-   S4 wrote;     /* number of characters written into buf */
-   size_t read;  /* position in buf of next character to read from buf */
--  char * buf;   /* line buffer */
-+  unsigned char * buf;   /* line buffer */
- } Line;
- 
- char linebuf[MAXLINE+1];
-@@ -1089,7 +1091,11 @@
-       dinfo();
-       status = 0;
-     }
-+#if defined(__CYGWIN__) || defined(__MINGW32__)
-+    else if ( ! isprint (c & 0x7f) && ! isspace (c))
-+#else
-     else if ( ! isprint (c) && ! isspace (c))
-+#endif
-     {
-       PRINT_PROGNAME;
-       fprintf (stderr,
-@@ -2223,7 +2229,7 @@
- /* transfer (length and) quoted string from dtl to dvi file, */
- /* return number of bytes written to dvi file. */
- {
--  U4 k, k2;
-+  U4 k, k2, lstr_maxsize;
-   Lstring lstr;
- 
-   if (debug)
-@@ -2232,12 +2238,13 @@
-     fprintf (stderr, "(xfer_len_string) : entering xfer_len_string.\n");
-   }
- 
--  init_Lstring (&lstr, LSIZE);
--
-   /* k[n] : length of special string */
- 
-   k = get_unsigned (dtl);
- 
-+  lstr_maxsize = (k > LSIZE) ? k : LSIZE;
-+  init_Lstring (&lstr, lstr_maxsize);
-+
-   if (debug)
-   {
-     PRINT_PROGNAME;
-@@ -2567,7 +2574,7 @@
- #ifdef HEX_CHECKSUM
-   /* c[4] : (hexadecimal) checksum : I (gt) would prefer this */
-   xfer_hex (4, dtl, dvi);
--#else /NOT HEX_CHECKSUM */
-+#else /*NOT HEX_CHECKSUM */
-   /* c[4] : checksum (octal, for comparison with tftopl's .pl file) */
-   xfer_oct (4, dtl, dvi);
- #endif
-diff -riwbBu -Xex dtl/man2ps dtl-modified/man2ps
---- dtl/man2ps	Tue Sep 19 23:59:23 2006
-+++ dtl-modified/man2ps	Wed Sep 20 00:03:06 2006
+diff -riwBu -Xex dtl\man2ps dtl-modified\man2ps
+--- dtl\man2ps	Tue Sep 19 23:59:22 2006
++++ dtl-modified\man2ps	Wed Sep 20 00:03:05 2006
 @@ -20,16 +20,16 @@
  esac
  
