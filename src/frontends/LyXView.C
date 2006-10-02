@@ -252,7 +252,7 @@ void LyXView::showDialogWithData(string const & name,
 void LyXView::showInsetDialog(string const & name, string const & data,
 							  InsetBase * inset)
 {
-	getDialogs().show(name, data, 0);
+	getDialogs().show(name, data, inset);
 }
 
 
