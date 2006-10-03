@@ -220,13 +220,13 @@ def checkLatex():
 def checkFormatEntries():  
     ''' Check all formats (\Format entries) '''
     checkViewer('a Tgif viewer and editor', ['tgif'],
-        rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	""'])
+        rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a FIG viewer and editor', ['xfig'],
-        rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	""'])
+        rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a Grace viewer and editor', ['xmgrace'],
-        rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	""'])
+        rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""'])
@@ -266,22 +266,22 @@ def checkFormatEntries():
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
     checkViewer('a Postscript previewer', ['gv', 'ghostview -swap', 'kghostview'],
-        rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	""
-\Format ps         ps      Postscript             t  "%%"	""	"document"'''])
+        rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
+\Format ps         ps      Postscript             t  "%%"	""	"document,vector"'''])
     #
     checkViewer('a PDF previewer', ['acrobat', 'acroread', 'gv', 'ghostview', \
                             'xpdf', 'kpdf', 'kghostview'],
-        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document"
-\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document"
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document"'''])
+        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector"
+\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector"
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector"'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
-        rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document"'])
+        rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
     if ((os.name == 'nt' or sys.platform == 'cygwin') and
             checkProg('DVI to DTL converter', ['dv2dt']) != ['', ''] and
             checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
         # Windows only: DraftDVI
-        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document"')
+        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document,vector"')
     #
     checkViewer('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
@@ -295,10 +295,10 @@ def checkFormatEntries():
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
 \Format pstex      pstex_t PSTEX                  "" ""	""	""
-\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document"
-\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"document"
-\Format wmf        wmf    "Windows Meta File"     "" ""	""	""
-\Format word       doc    "MS Word"               W  ""	""	"document"
+\Format rtf        rtf    "Rich Text Format"      "" ""	""	"document,vector"
+\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"document,vector"
+\Format wmf        wmf    "Windows Meta File"     "" ""	""	"vector"
+\Format word       doc    "MS Word"               W  ""	""	"document,vector"
 \Format wordhtml   html   "MS Word (HTML)"        "" ""        ""	"document"
 ''')
 

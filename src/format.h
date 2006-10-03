@@ -21,10 +21,20 @@ class Buffer;
 
 class Format {
 public:
+	/// Flags for some format properties
+	enum Flags {
+		none = 0,
+		/// Set if this format is a document format (as opposed to
+		/// e.g. image formats).
+		/// Some formats are both (e.g. pdf), they have this flag set.
+		document = 1,
+		/// Set if this format can contain vector graphics.
+		vector = 2,
+	};
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
 	       std::string const & s, std::string const & v, std::string const & ed,
-	       bool ex);
+	       int);
 	///
 	bool dummy() const;
 	/// Tell whether this format is a child format.
@@ -66,7 +76,11 @@ public:
 	}
 	///
 	bool documentFormat() const {
-		return document_;
+		return flags_ & document;
+	}
+	///
+	bool vectorFormat() const {
+		return flags_ & vector;
 	}
 private:
 	/// Internal name. Needs to be unique.
@@ -87,13 +101,13 @@ private:
 	std::string viewer_;
 	/// Editor for this format. \sa viewer_.
 	std::string editor_;
-	/// Is this format a document format? (as opposed to e.g. image formats)
-	/// Some formats are both (e.g. pdf), they have this flag set.
-	bool document_;
+	///
+	int flags_;
 };
 
 
 bool operator<(Format const & a, Format const & b);
+
 
 ///
 class Formats {
@@ -126,7 +140,7 @@ public:
 	void add(std::string const & name, std::string const & extension,
 	         std::string const & prettyname, std::string const & shortcut,
 	         std::string const & viewer, std::string const & editor,
-	         bool document);
+	         int flags);
 	///
 	void erase(std::string const & name);
 	///

@@ -49,7 +49,6 @@ using lyx::support::expandPath;
 using lyx::support::getEnv;
 using lyx::support::libFileSearch;
 using lyx::support::token;
-using lyx::support::tokenPos;
 
 using std::cout;
 using std::endl;
@@ -1083,9 +1082,6 @@ int LyXRC::read(LyXLex & lexrc)
 				viewer = lexrc.getString();
 			if (lexrc.next())
 				editor = lexrc.getString();
-			// The only supported flag for now is "document".
-			// More flags could be added in the future.
-			// Therefore we use tokenPos below to read the flag.
 			string flags;
 			// Hack to ensure compatibility with versions older
 			// than 1.5.0
@@ -1101,13 +1097,19 @@ int LyXRC::read(LyXLex & lexrc)
 					flags.erase();
 				}
 			}
-			bool const document =
-				(tokenPos(flags, ',', "document") >= 0);
-			if (!flags.empty() && flags != "document")
-				lyxerr << "Ignoring flags other than "
-					  "`document' in `" << flags
-				       << "' for format `" << format << "'."
-				       << endl;
+			int flgs = Format::none;
+			while (!flags.empty()) {
+				string flag;
+				flags = lyx::support::split(flags, flag, ',');
+				if (flag == "document")
+					flgs |= Format::document;
+				else if (flag == "vector")
+					flgs |= Format::vector;
+				else
+					lyxerr << "Ignoring unknown flag `"
+					       << flag << "' for format `"
+					       << format << "'." << endl;
+			}
 			if (prettyname.empty()) {
 				if (converters.formatIsUsed(format)) {
 					lyxerr << "Can't delete format "
@@ -1117,7 +1119,7 @@ int LyXRC::read(LyXLex & lexrc)
 				}
 			} else {
 				formats.add(format, extension, prettyname,
-					    shortcut, viewer, editor, document);
+				            shortcut, viewer, editor, flgs);
 			}
 			break;
 		}
@@ -2017,15 +2019,20 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			    format->shortcut() != cit->shortcut() ||
 			    format->viewer() != cit->viewer() ||
 			    format->editor() != cit->editor() ||
-			    format->documentFormat() != cit->documentFormat()) {
+			    format->documentFormat() != cit->documentFormat() ||
+			    format->vectorFormat() != cit->vectorFormat()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extension() << "\" \""
 				   << cit->prettyname() << "\" \""
 				   << cit->shortcut() << "\" \""
 				   << cit->viewer() << "\" \""
 				   << cit->editor() << "\" \"";
+				std::vector<string> flags;
 				if (cit->documentFormat())
-					os << "document";
+					flags.push_back("document");
+				if (cit->vectorFormat())
+					flags.push_back("vector");
+				os << lyx::support::getStringFromVector(flags);
 				os << "\"\n";
 			}
 		}

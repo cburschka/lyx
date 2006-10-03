@@ -1293,6 +1293,7 @@ PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
 	connect(viewerED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(editorED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(documentCB, SIGNAL(toggled(bool)), this, SLOT(fileformat_changed()));
+	connect(vectorCB, SIGNAL(toggled(bool)), this, SLOT(fileformat_changed()));
 	connect(formatNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(formatRemovePB, SIGNAL(clicked()),
@@ -1356,6 +1357,7 @@ void PrefFileformats::switch_format(int nr)
 	viewerED->setText(toqstr(f.viewer()));
 	editorED->setText(toqstr(f.editor()));
 	documentCB->setChecked((f.documentFormat()));
+	vectorCB->setChecked((f.vectorFormat()));
 	formatRemovePB->setEnabled(
 		!form_->converters().formatIsUsed(f.name()));
 
@@ -1398,6 +1400,7 @@ void PrefFileformats::updateButtons()
 	string const old_viewer(f.viewer());
 	string const old_editor(f.editor());
 	bool const old_document(f.documentFormat());
+	bool const old_vector(f.vectorFormat());
 
 	string const new_pretty(fromqstr(gui_name));
 	string const new_shortcut(fromqstr(shortcutED->text()));
@@ -1405,10 +1408,12 @@ void PrefFileformats::updateButtons()
 	string const new_viewer(fromqstr(viewerED->text()));
 	string const new_editor(fromqstr(editorED->text()));
 	bool const new_document(documentCB->isChecked());
+	bool const new_vector(vectorCB->isChecked());
 
 	bool modified = ((old_pretty != new_pretty) || (old_shortcut != new_shortcut)
 		|| (old_extension != new_extension) || (old_viewer != new_viewer)
-		|| (old_editor != new_editor) || old_document != new_document);
+		|| old_editor != new_editor || old_document != new_document
+		|| old_vector != new_vector);
 
 	formatModifyPB->setEnabled(
 		valid && known && modified && !known_otherwise);
@@ -1429,10 +1434,14 @@ void PrefFileformats::new_format()
 	string const shortcut = fromqstr(shortcutED->text());
 	string const viewer = fromqstr(viewerED->text());
 	string const editor = fromqstr(editorED->text());
-	bool const document = documentCB->isChecked();
+	int flags = Format::none;
+	if (documentCB->isChecked())
+		flags |= Format::document;
+	if (vectorCB->isChecked())
+		flags |= Format::vector;
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-			     editor, document);
+	                     editor, flags);
 	form_->formats().sort();
 	update();
 
@@ -1464,10 +1473,14 @@ void PrefFileformats::modify_format()
 	string const shortcut = fromqstr(shortcutED->text());
 	string const viewer = fromqstr(viewerED->text());
 	string const editor = fromqstr(editorED->text());
-	bool const document = documentCB->isChecked();
+	int flags = Format::none;
+	if (documentCB->isChecked())
+		flags |= Format::document;
+	if (vectorCB->isChecked())
+		flags |= Format::vector;
 
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-			     editor, document);
+	                     editor, flags);
 	form_->formats().sort();
 
 	formatsLW->setUpdatesEnabled(false);
