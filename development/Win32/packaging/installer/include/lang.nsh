@@ -9,13 +9,13 @@ Translations for installer and LyX itself
   ;List of supported LyX languages with ISO code and language identifier
   ;To be used as input for other macros
  
-  ${COMMAND} "Basque" eu_EU 1069
   ${COMMAND} "Bokmål" nb_NO 1044
   ${COMMAND} "Cesky" cs_CZ 1029
   ${COMMAND} "Dansk" da_DK 1030
   ${COMMAND} "Deutsch" de_DE 1031
   ${COMMAND} "English" en_EN 1033
   ${COMMAND} "Español" es_ES 1034
+  ${COMMAND} "Euskara" eu_EU 1069
   ${COMMAND} "Français" fr_FR 1036
   ${COMMAND} "Italiano" it_IT 1057
   ${COMMAND} "Magyar" hu_HU 1038  
