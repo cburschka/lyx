@@ -12,14 +12,17 @@
 
 #include "Application.h"
 
-#include "Application_pimpl.h"
 #include "Gui.h"
 #include "LyXView.h"
 #include "WorkArea.h"
 
+#include "bufferlist.h"
+#include "funcrequest.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
+#include "lyxserver.h"
+#include "lyxsocket.h"
 
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -30,6 +33,20 @@ using lyx::support::package;
 
 namespace lyx {
 namespace frontend {
+
+/// The main application class private implementation.
+struct Application_pimpl 
+{
+	///
+	BufferList buffer_list_;
+	/// our function handler
+	boost::scoped_ptr<LyXFunc> lyxfunc_;
+	///
+	boost::scoped_ptr<LyXServer> lyx_server_;
+	///
+	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
+};
+
 
 Application::Application(int &, char **)
 {

@@ -428,7 +428,6 @@ src_insets_files = Split('''
 src_frontends_header_files = Split('''
     Alert.h
     Alert_pimpl.h
-	Application_pimpl.h
     Application.h
     Clipboard.h
     Dialogs.h

@@ -16,7 +16,6 @@ libfrontends_la_SOURCES = \
 	Alert.C \
 	Alert.h \
 	Alert_pimpl.h \
-	Application_pimpl.h \
 	Application.C \
 	Application.h \
 	Dialogs.C \
