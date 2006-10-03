@@ -45,30 +45,4 @@ FuncStatus getStatus(FuncRequest const & ev)
 }
 
 
-string const roman_font_name()
-{
-	if (!use_gui)
-		return "serif";
-
-	return theApp->romanFontName();
-}
-
-
-string const sans_font_name()
-{
-	if (!use_gui)
-		return "sans";
-
-	return theApp->sansFontName();
-}
-
-
-string const typewriter_font_name()
-{
-	if (!use_gui)
-		return "monospace";
-
-	return theApp->typewriterFontName();
-}
-
 }; // namespace lyx_gui

@@ -40,7 +40,7 @@ void QViewSource::build_dialog()
 	dialog_->viewSourceTV->setReadOnly(true);
 	dialog_->viewSourceTV->setTextFormat(Qt::PlainText);
 	// this is personal. I think source code should be in fixed-size font
-	QFont font(toqstr(lyx_gui::typewriter_font_name()));
+	QFont font(toqstr(theApp->typewriterFontName()));
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);
 	dialog_->viewSourceTV->setFont(font);

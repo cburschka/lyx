@@ -499,11 +499,16 @@ bool LyX::init()
 	}
 
 	if (lyxrc.roman_font_name.empty())
-		lyxrc.roman_font_name = lyx_gui::roman_font_name();
+		lyxrc.roman_font_name = 
+			lyx_gui::use_gui? theApp->romanFontName(): "serif";
+
 	if (lyxrc.sans_font_name.empty())
-		lyxrc.sans_font_name = lyx_gui::sans_font_name();
+		lyxrc.sans_font_name =
+			lyx_gui::use_gui? theApp->sansFontName(): "sans";
+
 	if (lyxrc.typewriter_font_name.empty())
-		lyxrc.typewriter_font_name = lyx_gui::typewriter_font_name();
+		lyxrc.typewriter_font_name =
+			lyx_gui::use_gui? theApp->typewriterFontName(): "monospace";
 
 	//
 	// Read configuration files

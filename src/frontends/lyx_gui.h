@@ -36,15 +36,6 @@ namespace lyx_gui {
 /// are we using the GUI at all
 extern bool use_gui;
 
-/// return a suitable serif font name (called from non-gui context too !)
-std::string const roman_font_name();
-
-/// return a suitable sans serif font name (called from non-gui context too !)
-std::string const sans_font_name();
-
-/// return a suitable monospaced font name (called from non-gui context too !)
-std::string const typewriter_font_name();
-
 /**
  * set up GUI parameters. At this point lyxrc may
  * be used.
