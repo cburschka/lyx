@@ -25,8 +25,10 @@
 
 #if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
 #include "windows.h"
-#ifdef __CYGWIN__
+#ifdef max
 #undef max
+#endif
+#ifdef min
 #undef min
 #endif
 #include "support/os.h"
