@@ -13,6 +13,8 @@
 #include "docstring.h"
 #include "unicode.h"
 
+#include <locale>
+
 #include <boost/assert.hpp>
 
 
@@ -105,3 +107,251 @@ lyx::docstring operator+(char l, lyx::docstring const & r)
 	BOOST_ASSERT(static_cast<unsigned char>(l) < 0x80);
 	return lyx::docstring::value_type(l) + r;
 }
+
+
+#if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)
+
+// gcc does not have proper locale facets for lyx::char_type if
+// sizeof(wchar_t) == 2, so we have to implement them on our own.
+
+
+// We get undefined references to these virtual methods. This looks like
+// a bug in gcc. The implementation here does not do anything useful, since
+// it is overriden in ascii_ctype_facet.
+namespace std {
+template<> ctype<lyx::char_type>::~ctype() {}
+template<> bool
+ctype<lyx::char_type>::do_is(ctype<lyx::char_type>::mask, lyx::char_type) const { return false; }
+template<> lyx::char_type const *
+ctype<lyx::char_type>::do_is(const lyx::char_type *, const lyx::char_type *, ctype<lyx::char_type>::mask *) const { return 0; }
+template<> const lyx::char_type *
+ctype<lyx::char_type>::do_scan_is(ctype<lyx::char_type>::mask, const lyx::char_type *, const lyx::char_type *) const { return 0; }
+template<> const lyx::char_type *
+ctype<lyx::char_type>::do_scan_not(ctype<lyx::char_type>::mask, const lyx::char_type *, const lyx::char_type *) const { return 0; }
+template<> lyx::char_type ctype<lyx::char_type>::do_toupper(lyx::char_type) const { return 0; }
+template<> const lyx::char_type * ctype<lyx::char_type>::do_toupper(lyx::char_type *, lyx::char_type const *) const { return 0; }
+template<> lyx::char_type ctype<lyx::char_type>::do_tolower(lyx::char_type) const { return 0; }
+template<> const lyx::char_type * ctype<lyx::char_type>::do_tolower(lyx::char_type *, lyx::char_type const *) const { return 0; }
+template<> lyx::char_type ctype<lyx::char_type>::do_widen(char) const { return 0; }
+template<> const char *
+ctype<lyx::char_type>::do_widen(const char *, const char *, lyx::char_type *) const { return 0; }
+template<> char
+ctype<lyx::char_type>::do_narrow(const lyx::char_type, char) const { return 0; }
+template<> const lyx::char_type *
+ctype<lyx::char_type>::do_narrow(const lyx::char_type *, const lyx::char_type *, char, char *) const { return 0; }
+}
+
+
+namespace lyx {
+
+class ctype_failure : public std::bad_cast {
+public:
+	ctype_failure() throw() : std::bad_cast() {}
+	virtual ~ctype_failure() throw() {}
+	virtual const char* what() const throw()
+	{
+		return "The ctype<lyx::char_type> locale facet does only support ASCII characters on this platform.";
+	}
+};
+
+
+/// ctype facet for UCS4 characters. The implementation does only support pure
+/// ASCII, since we do not need anything else for now.
+/// The code is partly stolen from std::ctype<wchar_t> from gcc.
+class ascii_ctype_facet : public std::ctype<lyx::char_type>
+{
+public:
+	typedef lyx::char_type char_type;
+	typedef wctype_t wmask_type;
+	explicit ascii_ctype_facet(size_t refs = 0) : std::ctype<char_type>(refs)
+	{
+		M_initialize_ctype();
+	}
+protected:
+	bool       M_narrow_ok;
+	char       M_narrow[128];
+	wint_t     M_widen[1 + static_cast<unsigned char>(-1)];
+	mask       M_bit[16];
+	wmask_type M_wmask[16];
+	wmask_type M_convert_to_wmask(const mask m) const
+	{
+		wmask_type ret;
+		switch (m) {
+			case space:  ret = wctype("space");  break;
+			case print:  ret = wctype("print");  break;
+			case cntrl:  ret = wctype("cntrl");  break;
+			case upper:  ret = wctype("upper");  break;
+			case lower:  ret = wctype("lower");  break;
+			case alpha:  ret = wctype("alpha");  break;
+			case digit:  ret = wctype("digit");  break;
+			case punct:  ret = wctype("punct");  break;
+			case xdigit: ret = wctype("xdigit"); break;
+			case alnum:  ret = wctype("alnum");  break;
+			case graph:  ret = wctype("graph");  break;
+			default:     ret = wmask_type();
+		}
+		return ret;
+	}
+	void M_initialize_ctype()
+	{
+		wint_t i;
+		for (i = 0; i < 128; ++i) {
+			const int c = wctob(i);
+			if (c == EOF)
+				break;
+			else
+				M_narrow[i] = static_cast<char>(c);
+		}
+		if (i == 128)
+			M_narrow_ok = true;
+		else
+			M_narrow_ok = false;
+		for (size_t i = 0; i < sizeof(M_widen) / sizeof(wint_t); ++i)
+			M_widen[i] = btowc(i);
+
+		for (size_t i = 0; i <= 15; ++i) {
+			M_bit[i] = static_cast<mask>(1 << i);
+			M_wmask[i] = M_convert_to_wmask(M_bit[i]);
+		}
+	}
+	virtual ~ascii_ctype_facet() {}
+	char_type do_toupper(char_type c) const
+	{
+		if (c >= 0x80)
+			throw ctype_failure();
+		return toupper(static_cast<int>(c));
+	}
+	char_type const * do_toupper(char_type * lo, char_type const * hi) const
+	{
+		while (lo < hi) {
+			if (*lo >= 0x80)
+				throw ctype_failure();
+			*lo = toupper(static_cast<int>(*lo));
+			++lo;
+		}
+		return hi;
+	}
+	char_type do_tolower(char_type c) const
+	{
+		if (c >= 0x80)
+			throw ctype_failure();
+		return tolower(c);
+	}
+	char_type const * do_tolower(char_type * lo, char_type const * hi) const
+	{
+		while (lo < hi) {
+			if (*lo >= 0x80)
+				throw ctype_failure();
+			*lo = tolower(*lo);
+			++lo;
+		}
+		return hi;
+	}
+	bool do_is(mask m, char_type c) const
+	{
+		if (c >= 0x80)
+			throw ctype_failure();
+		// The code below works because c is in the ASCII range.
+		// We could not use iswctype() which is designed for a 2byte
+		// whar_t without encoding conversion otherwise.
+		bool ret = false;
+		// Generically, 15 (instead of 10) since we don't know the numerical
+		// encoding of the various categories in /usr/include/ctype.h.
+		const size_t bitmasksize = 15;
+		for (size_t bitcur = 0; bitcur <= bitmasksize; ++bitcur)
+			if (m & M_bit[bitcur] &&
+			    iswctype(static_cast<int>(c), M_wmask[bitcur])) {
+				ret = true;
+				break;
+			}
+		return ret;
+	}
+	char_type const * do_is(char_type const * lo, char_type const * hi, mask * vec) const
+	{
+		for (;lo < hi; ++vec, ++lo) {
+			if (*lo >= 0x80)
+				throw ctype_failure();
+			// The code below works because c is in the ASCII range.
+			// We could not use iswctype() which is designed for a 2byte
+			// whar_t without encoding conversion otherwise.
+			// Generically, 15 (instead of 10) since we don't know the numerical
+			// encoding of the various categories in /usr/include/ctype.h.
+			const size_t bitmasksize = 15;
+			mask m = 0;
+			for (size_t bitcur = 0; bitcur <= bitmasksize; ++bitcur)
+				if (iswctype(static_cast<int>(*lo), M_wmask[bitcur]))
+					m |= M_bit[bitcur];
+			*vec = m;
+		}
+		return hi;
+	}
+	char_type const * do_scan_is(mask m, char_type const * lo, char_type const * hi) const
+	{
+		while (lo < hi && !this->do_is(m, *lo))
+			++lo;
+		return lo;
+	}
+	char_type const * do_scan_not(mask m, char_type const * lo, char_type const * hi) const
+	{
+		while (lo < hi && this->do_is(m, *lo) != 0)
+			++lo;
+		return lo;
+	}
+	char_type do_widen(char c) const
+	{
+		if (static_cast<unsigned char>(c) < 0x80)
+			return c;
+		throw ctype_failure();
+	}
+	const char* do_widen(const char* lo, const char* hi, char_type* dest) const
+	{
+		while (lo < hi) {
+			if (static_cast<unsigned char>(*lo) >= 0x80)
+				throw ctype_failure();
+			*dest = *lo;
+			++lo;
+			++dest;
+		}
+		return hi;
+	}
+	char do_narrow(char_type wc, char) const
+	{
+		if (wc < 0x80)
+			return static_cast<char>(wc);
+		throw ctype_failure();
+	}
+	const char_type * do_narrow(const char_type * lo, const char_type * hi, char, char * dest) const
+	{
+		while (lo < hi) {
+			if (*lo < 0x80)
+				*dest = static_cast<char>(*lo);
+			else
+				throw ctype_failure();
+			++lo;
+			++dest;
+		}
+		return hi;
+	}
+};
+
+
+/// class to add our ascii_ctype_facet to the global locale
+class locale_initializer {
+public:
+	locale_initializer()
+	{
+		std::locale global;
+		std::locale const loc(global, new ascii_ctype_facet);
+		std::locale::global(loc);
+	}
+};
+
+
+namespace {
+
+/// make sure that our ascii_ctype_facet gets used
+static locale_initializer initializer;
+
+}
+}
+#endif
