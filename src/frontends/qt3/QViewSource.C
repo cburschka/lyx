@@ -16,6 +16,8 @@
 #include "qt_helpers.h"
 #include "lyx_gui.h"
 
+#include "frontends/Application.h"
+
 #include "controllers/ControlViewSource.h"
 
 #include <sstream>
