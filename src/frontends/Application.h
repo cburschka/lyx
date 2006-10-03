@@ -46,12 +46,19 @@ public:
 	///
 	virtual ~Application() {}
 
+	/// Start the main event loop, after executing the given batch
+	/// commands.
 	int start(std::string const & batch);
 	///
 	virtual Gui & gui() = 0;
 	///
 	virtual int const exec() = 0;
-	///
+
+	/// Quit running LyX.
+	/**
+	* This may either quit directly or record the exit status
+	* and only stop the event loop.
+	*/
 	virtual void exit(int status) = 0;
 
 	///
@@ -81,7 +88,7 @@ public:
 	BufferList & bufferList();
 	BufferList const & bufferList() const;
 
-	///
+	/// Create the main window with given geometry settings.
 	LyXView & createView(unsigned int width, unsigned int height,
 		int posx, int posy, bool maximize);
 	
