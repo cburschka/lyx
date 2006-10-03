@@ -140,18 +140,6 @@ void update_color(LColor_color)
 }
 
 
-void update_fonts()
-{
-	guiApp->fontLoader().update();
-}
-
-
-bool font_available(LyXFont const & font)
-{
-	return guiApp->fontLoader().available(font);
-}
-
-
 void register_socket_callback(int fd, boost::function<void()> func)
 {
 	socket_callbacks[fd] = shared_ptr<socket_callback>(new socket_callback(fd, func));

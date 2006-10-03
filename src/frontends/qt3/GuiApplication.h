@@ -56,6 +56,7 @@ public:
 	//@{
 	virtual Clipboard& clipboard();
 	virtual Selection& selection();
+	virtual FontLoader & fontLoader() { return font_loader_; }
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
@@ -65,8 +66,6 @@ public:
 	//@}
 
 	///
-	FontLoader & fontLoader() { return font_loader_; }
-
 private:
 	///
 	GuiImplementation gui_;
@@ -75,7 +74,7 @@ private:
 	///
 	GuiSelection selection_;
 	///
-	FontLoader font_loader_;
+	GuiFontLoader font_loader_;
 
 #ifdef Q_WS_X11
 public:

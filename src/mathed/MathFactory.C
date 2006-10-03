@@ -60,7 +60,8 @@
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
 
-#include "frontends/lyx_gui.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
 
 #include <fstream>
 #include <sstream>
@@ -88,7 +89,7 @@ bool math_font_available(string & name)
 	augmentFont(f, name);
 
 	// Do we have the font proper?
-	if (lyx_gui::font_available(f))
+	if (theApp->fontLoader().available(f))
 		return true;
 
 	// can we fake it?

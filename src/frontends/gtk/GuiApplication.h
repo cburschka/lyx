@@ -50,6 +50,7 @@ public:
 	//@{
 	virtual Clipboard& clipboard();
 	virtual Selection& selection();
+	virtual FontLoader & fontLoader() { return font_loader_; }
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
@@ -59,7 +60,6 @@ public:
 	//@}
 
 	///
-	xftFontLoader & fontLoader() { return font_loader_; }
 
 private:
 	///

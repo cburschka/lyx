@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FontLoader.h
+ * \file GuiFontLoader.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QFONTLOADER_H
-#define QFONTLOADER_H
+#ifndef QT4_FONTLOADER_H
+#define QT4_FONTLOADER_H
+
+#include "frontends/FontLoader.h"
 
 #include "encoding.h"
 #include "lyxfont.h"
@@ -25,6 +27,9 @@
 #if defined(USE_LYX_FONTCACHE)
 #include <map>
 #endif
+
+namespace lyx {
+namespace frontend {
 
 /**
  * Qt font loader for LyX. Matches LyXFonts against
@@ -51,19 +56,20 @@ public:
 
 
 /// Hold info about a particular font
-class FontLoader {
+class GuiFontLoader: public FontLoader 
+{
 public:
 	///
-	FontLoader();
+	GuiFontLoader();
 	
 	/// Destructor
-	~FontLoader();
+	virtual ~GuiFontLoader();
 
 	/// Update fonts after zoom, dpi, font names, or norm change
-	void update();
+	virtual void update();
 
 	/// Do we have anything matching?
-	bool available(LyXFont const & f);
+	virtual bool available(LyXFont const & f);
 
 	/// Get the QFont for this LyXFont
 	QFont const & get(LyXFont const & f) {
@@ -74,9 +80,6 @@ public:
 	QFontMetrics const & metrics(LyXFont const & f) {
 		return fontinfo(f).metrics;
 	}
-
-	/// Called the first time when available() can't load a symbol font
-	static void addToFontPath();
 
 	/// Get font info (font + metrics) for the given LyX font.
 	QLFontInfo & fontinfo(LyXFont const & f) {
@@ -94,4 +97,8 @@ private:
 	QLFontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
-#endif // QFONT_LOADER_H
+
+} // namespace frontend
+} // namespace lyx
+
+#endif // QT4_FONTLOADER_H

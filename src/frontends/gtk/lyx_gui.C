@@ -152,18 +152,6 @@ void lyx_gui::update_color(LColor_color /*col*/)
 }
 
 
-void lyx_gui::update_fonts()
-{
-	fontLoader.update();
-}
-
-
-bool lyx_gui::font_available(LyXFont const & font)
-{
-	return fontLoader.available(font);
-}
-
-
 namespace {
 
 std::map<int, boost::shared_ptr<io_callback> > callbacks;

@@ -34,9 +34,9 @@ libqt4_la_SOURCES = \
 	ColorCache.h ColorCache.C \
 	Dialogs.C \
 	FileDialog.C \
-	FontLoader.h FontLoader.C \
 	GuiApplication.C GuiApplication.h \
 	GuiClipboard.h GuiClipboard.C \
+	GuiFontLoader.h GuiFontLoader.C \
 	GuiSelection.h GuiSelection.C \
 	GuiImplementation.h GuiImplementation.C \
 	LyXKeySymFactory.C \

@@ -40,7 +40,7 @@
 
 using std::string;
 
-FontLoader fontloader;
+GuiFontLoader fontloader;
 
 namespace lyx {
 

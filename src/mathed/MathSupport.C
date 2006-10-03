@@ -20,9 +20,10 @@
 #include "debug.h"
 #include "LColor.h"
 
+#include "frontends/Application.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
-#include "frontends/lyx_gui.h"
+#include "frontends/FontLoader.h"
 
 #include <map>
 #include <sstream>
@@ -670,9 +671,9 @@ void augmentFont(LyXFont & font, string const & name)
 	if (!initialized) {
 		initialized = true;
 		// fake fonts if necessary
-		if (!lyx_gui::font_available(getFont("mathfrak")))
+		if (!theApp->fontLoader().available(getFont("mathfrak")))
 			fakeFont("mathfrak", "lyxfakefrak");
-		if (!lyx_gui::font_available(getFont("mathcal")))
+		if (!theApp->fontLoader().available(getFont("mathcal")))
 			fakeFont("mathcal", "lyxfakecal");
 	}
 	fontinfo * info = searchFont(name);

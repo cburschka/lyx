@@ -1,5 +1,5 @@
 /**
- * \file FontLoader.C
+ * \file GuiFontLoader.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "FontLoader.h"
+#include "GuiFontLoader.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
@@ -44,7 +44,10 @@ using std::vector;
 using std::string;
 
 
-FontLoader::~FontLoader() {
+namespace lyx {
+namespace frontend {
+
+GuiFontLoader::~GuiFontLoader() {
 }
 
 namespace {
@@ -191,7 +194,7 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 } // namespace anon
 
 
-FontLoader::FontLoader()
+GuiFontLoader::GuiFontLoader()
 {
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
@@ -201,7 +204,7 @@ FontLoader::FontLoader()
 }
 
 
-void FontLoader::update()
+void GuiFontLoader::update()
 {
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
@@ -305,7 +308,7 @@ int QLFontInfo::width(Uchar val)
 }
 
 
-bool FontLoader::available(LyXFont const & f)
+bool GuiFontLoader::available(LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return false;
@@ -330,3 +333,6 @@ bool FontLoader::available(LyXFont const & f)
 	cache[family] = true;
 	return true;
 }
+
+} // namespace frontend
+} // namespace lyx

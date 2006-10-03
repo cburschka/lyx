@@ -27,6 +27,7 @@ namespace frontend {
 
 struct Application_pimpl;
 class Clipboard;
+class FontLoader;
 class Gui;
 class Selection;
 
@@ -65,6 +66,8 @@ public:
 	virtual Clipboard & clipboard() = 0;
 	///
 	virtual Selection & selection() = 0;
+	///
+	virtual FontLoader & fontLoader() = 0;
 
 	/// return a suitable serif font name.
 	virtual std::string const romanFontName() = 0;

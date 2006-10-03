@@ -12,6 +12,8 @@
 #ifndef QFONTLOADER_H
 #define QFONTLOADER_H
 
+#include "frontends/FontLoader.h"
+
 #include "encoding.h"
 #include "lyxfont.h"
 
@@ -51,19 +53,19 @@ public:
 
 
 /// Hold info about a particular font
-class FontLoader {
+class GuiFontLoader: public lyx::frontend::FontLoader {
 public:
 	///
-	FontLoader();
+	GuiFontLoader();
 	
 	/// Destructor
-	~FontLoader();
+	virtual ~GuiFontLoader();
 
 	/// Update fonts after zoom, dpi, font names, or norm change
-	void update();
+	virtual void update();
 
 	/// Do we have anything matching?
-	bool available(LyXFont const & f);
+	virtual bool available(LyXFont const & f);
 
 	/// Get the QFont for this LyXFont
 	QFont const & get(LyXFont const & f) {
@@ -94,6 +96,6 @@ private:
 	QLFontInfo * fontinfo_[LyXFont::NUM_FAMILIES][2][4][10];
 };
 
-extern FontLoader fontloader;
+extern GuiFontLoader fontloader;
 
 #endif // QFONT_LOADER_H

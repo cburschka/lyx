@@ -76,6 +76,7 @@
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
+#include "frontends/FontLoader.h"
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXKeySym.h"
 #include "frontends/LyXView.h"
@@ -1352,7 +1353,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_SCREEN_FONT_UPDATE:
 			// handle the screen font changes.
 			lyxrc.set_font_norm_type();
-			lyx_gui::update_fonts();
+			theApp->fontLoader().update();
 			// All visible buffers will need resize
 			view()->resize();
 			break;

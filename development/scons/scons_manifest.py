@@ -432,6 +432,7 @@ src_frontends_header_files = Split('''
     Clipboard.h
     Dialogs.h
     FileDialog.h
+    FontLoader.h
     Gui.h
     LyXKeySym.h
     LyXKeySymFactory.h
@@ -1112,9 +1113,9 @@ src_frontends_qt4_header_files = Split('''
     BulletsModule.h
     ColorCache.h
     FileDialog_private.h
-    FontLoader.h
     GuiApplication.h
     GuiClipboard.h
+    GuiFontLoader.h
     GuiImplementation.h
     GuiSelection.h
     GuiView.h
@@ -1232,9 +1233,9 @@ src_frontends_qt4_files = Split('''
     Dialogs.C
     FileDialog.C
     FileDialog_private.C
-    FontLoader.C
     GuiApplication.C
     GuiClipboard.C
+    GuiFontLoader.C
     GuiImplementation.C
     GuiSelection.C
     GuiView.C

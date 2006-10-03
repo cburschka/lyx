@@ -76,16 +76,6 @@ std::string const hexname(LColor_color col);
 void update_color(LColor_color col);
 
 /**
- * update the font cache
- */
-void update_fonts();
-
-/**
- * is the given font available ?
- */
-bool font_available(LyXFont const & font);
-
-/**
  * add a callback for socket read notification
  * @param fd socket descriptor (file/socket/etc)
  */

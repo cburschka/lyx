@@ -12,6 +12,8 @@
 #ifndef XFT_FONT_LOADER_H
 #define XFT_FONT_LOADER_H
 
+#include "frontends/FontLoader.h"
+
 #include "lyxfont.h"
 
 #include <gtkmm.h>
@@ -20,18 +22,18 @@
 class GWorkArea;
 
 
-class xftFontLoader {
+class xftFontLoader: public lyx::frontend::FontLoader {
 public:
 	///
 	xftFontLoader();
 
 	///
-	~xftFontLoader();
+	virtual ~xftFontLoader();
 
 	/// Update fonts after zoom, dpi, font names, or norm change
-	void update();
+	virtual void update();
 
-	bool available(LyXFont const & f);
+	virtual bool available(LyXFont const & f);
 
 	/// Load font
 	XftFont * load(LyXFont::FONT_FAMILY family,

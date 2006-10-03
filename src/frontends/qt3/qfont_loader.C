@@ -47,7 +47,7 @@ using std::vector;
 using std::string;
 
 
-FontLoader::~FontLoader() {
+GuiFontLoader::~GuiFontLoader() {
 }
 
 namespace {
@@ -193,7 +193,7 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 } // namespace anon
 
 
-FontLoader::FontLoader()
+GuiFontLoader::GuiFontLoader()
 {
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
@@ -203,7 +203,7 @@ FontLoader::FontLoader()
 }
 
 
-void FontLoader::update()
+void GuiFontLoader::update()
 {
 	for (int i1 = 0; i1 < LyXFont::NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < 2; ++i2)
@@ -307,7 +307,7 @@ int QLFontInfo::width(Uchar val)
 }
 
 
-bool FontLoader::available(LyXFont const & f)
+bool GuiFontLoader::available(LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return false;

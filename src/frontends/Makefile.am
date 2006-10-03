@@ -21,6 +21,7 @@ libfrontends_la_SOURCES = \
 	Dialogs.C \
 	Dialogs.h \
 	FileDialog.h \
+	FontLoader.h \
 	LyXKeySym.h \
 	LyXKeySymFactory.h \
 	LyXView.C \

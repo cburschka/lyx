@@ -14,7 +14,7 @@
 #define QT4_APPLICATION_H
 
 #include "ColorCache.h"
-#include "FontLoader.h"
+#include "GuiFontLoader.h"
 #include "GuiClipboard.h"
 #include "GuiImplementation.h"
 #include "GuiSelection.h"
@@ -57,6 +57,7 @@ public:
 	//@{
 	virtual Clipboard& clipboard();
 	virtual Selection& selection();
+	virtual FontLoader & fontLoader() { return font_loader_; }
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
@@ -68,7 +69,8 @@ public:
 	///
 	ColorCache & colorCache() { return color_cache_; }
 	///
-	FontLoader & fontLoader() { return font_loader_; }
+	///
+	GuiFontLoader & guiFontLoader() { return font_loader_; }
 
 private:
 	///
@@ -78,7 +80,7 @@ private:
 	///
 	GuiSelection selection_;
 	///
-	FontLoader font_loader_;
+	GuiFontLoader font_loader_;
 	///
 	ColorCache color_cache_;
 
