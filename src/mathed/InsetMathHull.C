@@ -508,37 +508,46 @@ void InsetMathHull::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
-	if (type_ == hullNone)
-		;
+	switch(type_) {
+	case hullNone:
+		break;
 
-	else if (type_ == hullSimple) {
+	case hullSimple:
 		os << '$';
 		if (cell(0).empty())
 			os << ' ';
-	}
+		break;
 
-	else if (type_ == hullEquation) {
+	case hullEquation:
 		if (n)
 			os << "\\begin{equation" << star(n) << "}\n";
 		else
 			os << "\\[\n";
-	}
+		break;
 
-	else if (type_ == hullEqnArray || type_ == hullAlign || type_ ==
-hullFlAlign
-		 || type_ == hullGather || type_ == hullMultline)
-			os << "\\begin{" << type_ << star(n) << "}\n";
+	case hullEqnArray:
+	case hullAlign:
+	case hullFlAlign:
+	case hullGather:
+	case hullMultline:
+		os << "\\begin{" << hullName(type_) << star(n) << "}\n";
+		break;
 
-	else if (type_ == hullAlignAt || type_ == hullXAlignAt)
-		os << "\\begin{" << type_ << star(n) << '}'
+	case hullAlignAt:
+	case hullXAlignAt:
+		os << "\\begin{" << hullName(type_) << star(n) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
+		break;
 
-	else if (type_ == hullXXAlignAt)
-		os << "\\begin{" << type_ << '}'
+	case hullXXAlignAt:
+		os << "\\begin{" << hullName(type_) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
+		break;
 
-	else
+	default:
 		os << "\\begin{unknown" << star(n) << '}';
+		break;
+	}
 }
 
 
@@ -546,29 +555,40 @@ void InsetMathHull::footer_write(WriteStream & os) const
 {
 	bool n = numberedType();
 
-	if (type_ == hullNone)
+	switch(type_) {
+	case hullNone:
 		os << "\n";
+		break;
 
-	else if (type_ == hullSimple)
+	case hullSimple:
 		os << '$';
+		break;
 
-	else if (type_ == hullEquation)
+	case hullEquation:
 		if (n)
 			os << "\\end{equation" << star(n) << "}\n";
 		else
 			os << "\\]\n";
+		break;
 
-	else if (type_ == hullEqnArray || type_ == hullAlign || type_ ==
-hullFlAlign
-		 || type_ == hullAlignAt || type_ == hullXAlignAt
-		 || type_ == hullGather || type_ == hullMultline)
-		os << "\\end{" << type_ << star(n) << "}\n";
+	case hullEqnArray:
+	case hullAlign:
+	case hullFlAlign:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullGather:
+	case hullMultline:
+		os << "\\end{" << hullName(type_) << star(n) << "}\n";
+		break;
 
-	else if (type_ == hullXXAlignAt)
-		os << "\\end{" << type_ << "}\n";
+	case hullXXAlignAt:
+		os << "\\end{" << hullName(type_) << "}\n";
+		break;
 
-	else
+	default:
 		os << "\\end{unknown" << star(n) << '}';
+		break;
+	}
 }
 
 
@@ -873,8 +893,9 @@ void InsetMathHull::mutate(HullType newtype)
 	}
 
 	else {
-		lyxerr << "mutation from '" << type_
-		       << "' to '" << newtype << "' not implemented" << endl;
+		lyxerr << "mutation from '" << hullName(type_)
+		       << "' to '" << hullName(newtype)
+		       << "' not implemented" << endl;
 	}
 }
 
@@ -902,7 +923,7 @@ void InsetMathHull::write(WriteStream & os) const
 
 void InsetMathHull::normalize(NormalStream & os) const
 {
-	os << "[formula " << type_ << ' ';
+	os << "[formula " << hullName(type_) << ' ';
 	InsetMathGrid::normalize(os);
 	os << "] ";
 }
@@ -916,7 +937,7 @@ void InsetMathHull::mathmlize(MathMLStream & os) const
 
 void InsetMathHull::infoize(ostream & os) const
 {
-	os << "Type: " << type_;
+	os << "Type: " << hullName(type_);
 }
 
 
