@@ -168,7 +168,51 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Update</string>
+                        <string>U&amp;pdate</string>
+                    </property>
+                </widget>
+ 		<widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>moveupPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Up</string>
+                    </property>
+		</widget>
+  		<widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>movednPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Down</string>
+                    </property>
+                </widget>
+ 		<widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>moveinPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;In</string>
+                    </property>
+                </widget>
+ 		<widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>moveoutPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Out</string>
                     </property>
                 </widget>
                 <spacer>

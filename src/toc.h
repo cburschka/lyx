@@ -20,6 +20,8 @@
 #include <vector>
 #include <string>
 
+#include "pariterator.h"
+
 class Buffer;
 class LyXView;
 class Paragraph;
@@ -72,8 +74,7 @@ std::string const getGuiName(std::string const & type, Buffer const &);
 inline
 bool operator==(TocItem const & a, TocItem const & b)
 {
-	return a.id_ == b.id_ && a.str == b.str;
-	// No need to compare depth.
+	return a.id_ == b.id_ && a.str == b.str && a.depth == b.depth;
 }
 
 
@@ -82,6 +83,18 @@ bool operator!=(TocItem const & a, TocItem const & b)
 {
 	return !(a == b);
 }
+
+
+/// the type of outline operation
+enum OutlineOp {
+	Up, // Move this header with text down
+	Down,   // Move this header with text up
+	In, // Make this header deeper
+	Out // Make this header shallower
+};
+
+
+void outline(OutlineOp, LCursor &);
 
 
 } // namespace toc

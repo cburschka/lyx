@@ -48,6 +48,8 @@ void QToc::build_dialog()
 
 	// Manage the cancel/close button
 	bcview().setCancel(dialog_->closePB);
+	type_ = toc::getType(controller().params().getCmdName());
+	dialog_->enableButtons();
 }
 
 
@@ -67,6 +69,8 @@ void QToc::updateType()
 			setTitle(guiname);
 		}
 	}
+	type_ = type;
+	dialog_->enableButtons();
 }
 
 
@@ -83,6 +87,8 @@ void QToc::updateToc(int newdepth)
 	string type;
 	if (!choice.empty())
 		type = choice[dialog_->typeCO->currentItem()];
+	type_ = type;
+	dialog_->enableButtons();
 
 	toc::Toc const & contents = controller().getContents(type);
 
@@ -107,7 +113,9 @@ void QToc::updateToc(int newdepth)
 	QListViewItem * last = 0;
 	QListViewItem * parent = 0;
 	QListViewItem * item;
-
+	QListViewItem * selected_item = 0;
+	bool multiple = false;
+	
 	// Yes, it is this ugly. Two reasons - root items must have
 	// a QListView parent, rather than QListViewItem; and the
 	// TOC can move in and out an arbitrary number of levels
@@ -157,11 +165,31 @@ void QToc::updateToc(int newdepth)
 		item->setOpen(iter->depth < depth_);
 		curdepth = iter->depth;
 		last = item;
+
+		// Recognise part past the counter
+		if (iter->str.substr(iter->str.find(' ') + 1) == text_) {
+			if (selected_item == 0)
+				selected_item = item;
+			else
+				// more than one match
+				multiple = true;
+		}
 	}
 
 	dialog_->tocLV->setUpdatesEnabled(true);
 	dialog_->tocLV->update();
+	if (!multiple) {
+		dialog_->tocLV->scrollBy(0, selected_item->itemPos() 
+			- dialog_->tocLV->height() / 2);
+		dialog_->tocLV->setSelected(selected_item, true);
+	}
 	setTitle(fromqstr(dialog_->typeCO->currentText()));
+}
+
+
+bool QToc::canOutline()
+{
+	return controller().canOutline(type_);
 }
 
 
@@ -180,6 +208,8 @@ void QToc::select(string const & text)
 		return;
 	}
 
+	// Lop off counter part and save:
+	text_ = text.substr(text.find(' ') + 1);
 	controller().goTo(*iter);
 }
 
@@ -189,6 +219,35 @@ void QToc::set_depth(int depth)
 	if (depth != depth_)
 		updateToc(depth);
 }
+
+
+void QToc::moveup()
+{
+	controller().outline(toc::Up);
+	updateToc(depth_);
+}
+
+
+void QToc::movedn()
+{
+	controller().outline(toc::Down);
+	updateToc(depth_);
+}
+
+
+void QToc::movein()
+{
+	controller().outline(toc::In);
+	updateToc(depth_);
+}
+
+
+void QToc::moveout()
+{
+	controller().outline(toc::Out);
+	updateToc(depth_);
+}
+
 
 } // namespace frontend
 } // namespace lyx

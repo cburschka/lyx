@@ -49,6 +49,7 @@
 #include "ParagraphParameters.h"
 #include "pariterator.h"
 #include "rowpainter.h"
+#include "toc.h"
 #include "undo.h"
 #include "vspace.h"
 
@@ -1033,6 +1034,11 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_FONT_STATE:
 	case LFUN_INSERT_LABEL:
 	case LFUN_GOTO_PARAGRAPH:
+	// FIXME handle non-trivially
+	case LFUN_OUTLINE_UP:
+	case LFUN_OUTLINE_DOWN:
+	case LFUN_OUTLINE_IN:
+	case LFUN_OUTLINE_OUT:
 	case LFUN_GOTONOTE:
 	case LFUN_REFERENCE_GOTO:
 	case LFUN_WORD_FIND:
@@ -1194,6 +1200,25 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 	}
 
+ 	case LFUN_OUTLINE_UP:
+		lyx::toc::outline(lyx::toc::Up, cursor_);
+		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
+		updateCounters(*buffer_);
+		break;
+ 	case LFUN_OUTLINE_DOWN:
+		lyx::toc::outline(lyx::toc::Down, cursor_);
+		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
+		updateCounters(*buffer_);
+		break;
+ 	case LFUN_OUTLINE_IN:
+		lyx::toc::outline(lyx::toc::In, cursor_);
+		updateCounters(*buffer_);
+		break;
+ 	case LFUN_OUTLINE_OUT:
+		lyx::toc::outline(lyx::toc::Out, cursor_);
+		updateCounters(*buffer_);
+		break;
+				  
 	case LFUN_GOTONOTE:
 		bv_funcs::gotoInset(bv_, InsetBase::NOTE_CODE, false);
 		break;

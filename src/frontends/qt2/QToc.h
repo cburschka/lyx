@@ -33,6 +33,9 @@ private:
 	/// update the listview
 	void updateToc(int newdepth);
 
+	///
+	bool canOutline();
+
 	/// update the float types
 	void updateType();
 
@@ -41,6 +44,15 @@ private:
 
 	/// set the depth
 	void set_depth(int depth);
+
+	/// Move header up/down/in/out in list (outlining)
+	void moveup();
+	///
+	void movedn();
+	///
+	void movein();
+	///
+	void moveout();
 
 	virtual void apply() {}
 
@@ -55,6 +67,12 @@ private:
 
 	/// depth of list shown
 	int depth_;
+
+	/// Store selected item's string
+	std::string text_;
+
+	/// Store ToC list type
+	std::string type_;
 };
 
 } // namespace frontend

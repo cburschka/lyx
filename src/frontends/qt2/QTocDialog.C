@@ -32,8 +32,11 @@ QTocDialog::QTocDialog(QToc * form)
 	if (w)
 		w->hide();
 
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(moveupPB, SIGNAL(clicked()), this, SLOT(moveup_adaptor()));
+	connect(movednPB, SIGNAL(clicked()), this, SLOT(movedn_adaptor()));
+	connect(moveinPB, SIGNAL(clicked()), this, SLOT(movein_adaptor()));
+	connect(moveoutPB, SIGNAL(clicked()), this, SLOT(moveout_adaptor()));
 }
 
 
@@ -60,9 +63,47 @@ void QTocDialog::select_adaptor(QListViewItem * item)
 }
 
 
+void QTocDialog::enableButtons(bool enable)
+{
+	updatePB->setEnabled(enable);
+
+	if (!form_->canOutline())
+		enable = false;
+
+	moveupPB->setEnabled(enable);
+	movednPB->setEnabled(enable);
+	moveinPB->setEnabled(enable);
+	moveoutPB->setEnabled(enable);
+}
+
+
 void QTocDialog::update_adaptor()
 {
 	form_->update();
+}
+
+
+void QTocDialog::moveup_adaptor()
+{
+	form_->moveup();
+}
+
+
+void QTocDialog::movedn_adaptor()
+{
+	form_->movedn();
+}
+
+
+void QTocDialog::movein_adaptor()
+{
+	form_->movein();
+}
+
+
+void QTocDialog::moveout_adaptor()
+{
+	form_->moveout();
 }
 
 
