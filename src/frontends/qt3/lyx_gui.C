@@ -85,13 +85,9 @@ map<int, shared_ptr<socket_callback> > socket_callbacks;
 } // namespace anon
 
 
-lyx::frontend::Application * theApp;
 GuiApplication * guiApp;
 
 namespace lyx_gui {
-
-bool use_gui = true;
-
 
 int exec(int & argc, char * argv[])
 {
@@ -101,23 +97,6 @@ int exec(int & argc, char * argv[])
 	theApp = guiApp;
 
 	return LyX::ref().exec2(argc, argv);
-}
-
-
-void parse_lyxrc()
-{}
-
-
-LyXView* create_view(unsigned int width, unsigned int height, int posx, int posy,
-	      bool maximize)
-{
-	return &guiApp->createView(width, height, posx, posy, maximize);
-}
-
-
-int start(LyXView *, string const & batch)
-{
-	return theApp->start(batch);
 }
 
 
@@ -136,21 +115,6 @@ void sync_events()
 void exit(int status)
 {
 	guiApp->exit(status);
-}
-
-
-FuncStatus getStatus(FuncRequest const & ev)
-{
-	FuncStatus flag;
-	switch (ev.action) {
-	case LFUN_TOOLTIPS_TOGGLE:
-		flag.unknown(true);
-		break;
-	default:
-		break;
-	}
-
-	return flag;
 }
 
 
@@ -204,45 +168,6 @@ void register_socket_callback(int fd, boost::function<void()> func)
 void unregister_socket_callback(int fd)
 {
 	socket_callbacks.erase(fd);
-}
-
-
-string const roman_font_name()
-{
-	if (!use_gui)
-		return "serif";
-
-	QFont font;
-	font.setStyleHint(QFont::Serif);
-	font.setFamily("serif");
-
-	return fromqstr(QFontInfo(font).family());
-}
-
-
-string const sans_font_name()
-{
-	if (!use_gui)
-		return "sans";
-
-	QFont font;
-	font.setStyleHint(QFont::SansSerif);
-	font.setFamily("sans");
-
-	return fromqstr(QFontInfo(font).family());
-}
-
-
-string const typewriter_font_name()
-{
-	if (!use_gui)
-		return "monospace";
-
-	QFont font;
-	font.setStyleHint(QFont::TypeWriter);
-	font.setFamily("monospace");
-
-	return fromqstr(QFontInfo(font).family());
 }
 
 }; // namespace lyx_gui

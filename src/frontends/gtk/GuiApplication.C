@@ -104,5 +104,23 @@ void GuiApplication::exit(int /*status*/)
 }
 
 
+string const GuiApplication::romanFontName()
+{
+	return "times";
+}
+
+
+string const GuiApplication::sansFontName()
+{
+	return "helvetica";
+}
+
+
+string const GuiApplication::typewriterFontName()
+{
+	return "courier";
+}
+
+
 } // namespace frontend
 } // namespace lyx

@@ -79,8 +79,6 @@ using lyx::frontend::GuiImplementation;
 using lyx::frontend::GView;
 
 
-bool lyx_gui::use_gui = true;
-
 namespace {
 
 /// estimate DPI from X server
@@ -94,7 +92,6 @@ int getDPI()
 
 } // namespace anon
 
-lyx::frontend::Application * theApp;
 GuiApplication * guiApp;
 
 int lyx_gui::exec(int & argc, char * argv[])
@@ -106,42 +103,9 @@ int lyx_gui::exec(int & argc, char * argv[])
 }
 
 
-void lyx_gui::parse_lyxrc()
-{
-}
-
-
-LyXView * lyx_gui::create_view(unsigned int width, unsigned int height,
-		int posx, int posy, bool maximize)
-{
-	return &guiApp->createView(width, height, posx, posy, maximize);
-}
-
-
-int lyx_gui::start(LyXView *, string const & batch)
-{
-	return guiApp->start(batch);
-}
-
-
 void lyx_gui::exit(int status)
 {
 	guiApp->exit(status);
-}
-
-
-FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
-{
-	FuncStatus flag;
-	switch (ev.action) {
-	case LFUN_TOOLTIPS_TOGGLE:
-		flag.unknown(true);
-		break;
-	default:
-		break;
-	}
-
-	return flag;
 }
 
 
@@ -223,24 +187,6 @@ void lyx_gui::register_socket_callback(int fd,
 void lyx_gui::unregister_socket_callback(int fd)
 {
 	callbacks.erase(fd);
-}
-
-
-string const lyx_gui::roman_font_name()
-{
-	return "times";
-}
-
-
-string const lyx_gui::sans_font_name()
-{
-	return "helvetica";
-}
-
-
-string const lyx_gui::typewriter_font_name()
-{
-	return "courier";
 }
 
 

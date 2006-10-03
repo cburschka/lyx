@@ -50,6 +50,8 @@ class GuiApplication : public QApplication, public Application
 {
 public:
 	GuiApplication(int & argc, char ** argv);
+	///
+	virtual ~GuiApplication() {}
 
 	/// Method inherited from \c Application class
 	//@{
@@ -58,6 +60,9 @@ public:
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
+	virtual std::string const romanFontName();
+	virtual std::string const sansFontName();
+	virtual std::string const typewriterFontName();
 	//@}
 
 	///

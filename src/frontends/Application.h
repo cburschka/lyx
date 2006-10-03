@@ -59,6 +59,15 @@ public:
 	///
 	virtual Selection & selection() = 0;
 
+	/// return a suitable serif font name.
+	virtual std::string const romanFontName() = 0;
+
+	/// return a suitable sans serif font name.
+	virtual std::string const sansFontName() = 0;
+
+	/// return a suitable monospaced font name.
+	virtual std::string const typewriterFontName() = 0;
+
 	///
 	LyXFunc & lyxFunc();
 	LyXFunc const & lyxFunc() const;

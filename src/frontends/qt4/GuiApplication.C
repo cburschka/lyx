@@ -159,6 +159,34 @@ void GuiApplication::exit(int status)
 }
 
 
+string const GuiApplication::romanFontName()
+{
+	QFont font;
+	font.setStyleHint(QFont::Serif);
+	font.setFamily("serif");
+
+	return fromqstr(QFontInfo(font).family());
+}
+
+
+string const GuiApplication::sansFontName()
+{
+	QFont font;
+	font.setStyleHint(QFont::SansSerif);
+	font.setFamily("sans");
+
+	return fromqstr(QFontInfo(font).family());
+}
+
+
+string const GuiApplication::typewriterFontName()
+{
+	QFont font;
+	font.setStyleHint(QFont::TypeWriter);
+	font.setFamily("monospace");
+
+	return fromqstr(QFontInfo(font).family());
+}
 
 
 ////////////////////////////////////////////////////////////////////////
