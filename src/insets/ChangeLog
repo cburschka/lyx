@@ -1,3 +1,8 @@
+2006-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetvspace.C (doDispatch): open dialog on mouse release,
+	not mouse press (fixes cursor positioning: bug 2869).
+
 2006-09-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettabular.C (doDispatch): do not modify cursor when iterating
