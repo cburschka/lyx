@@ -52,18 +52,6 @@ std::string const typewriter_font_name();
 void parse_lyxrc();
 
 /**
- * Create the main window with given geometry settings
- */
-LyXView * create_view(unsigned int width, unsigned int height, int posx, int posy,
-	      bool maximize);
-
-/**
- * Start the main event loop, after executing the given
- * batch commands
- */
-int start(LyXView* view, std::string const & batch);
-
-/**
  * Enter the main event loop (\sa LyX::exec2)
  */
 int exec(int & argc, char * argv[]);
@@ -72,12 +60,6 @@ int exec(int & argc, char * argv[]);
  * Synchronise all pending events.
  */
 void sync_events();
-
-/**
- * Quit running LyX. This may either quit directly or record the exit status
- * and only stop the event loop.
- */
-void exit(int);
 
 /**
  * return the status flag for a given action. This can be used to tell

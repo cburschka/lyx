@@ -13,7 +13,6 @@
 
 #include "lyx_gui.h"
 
-#include "LyXView.h"
 #include "Application.h"
 
 #include "funcrequest.h"
@@ -29,25 +28,6 @@ bool use_gui = true;
 
 void parse_lyxrc()
 {}
-
-
-LyXView * create_view(unsigned int width, unsigned int height, int posx, int posy,
-          bool maximize)
-{
-	return &theApp->createView(width, height, posx, posy, maximize);
-}
-
-
-int start(LyXView * view, string const & batch)
-{
-	return theApp->start(batch);
-}
-
-
-void exit(int status)
-{
-	theApp->exit(status);
-}
 
 
 FuncStatus getStatus(FuncRequest const & ev)

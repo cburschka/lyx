@@ -109,8 +109,7 @@ void lyx_exit(int status)
 	// guarantees a return to the system, no application cleanup.
 	// This may cause troubles with not executed destructors.
 	if (lyx_gui::use_gui) {
-		// lyx_gui::exit may return and only schedule the exit
-		lyx_gui::exit(status);
+		theApp->exit(status);
 		// Restore original font resources after Application is destroyed.
 		lyx::support::restoreFontResources();
 	}
@@ -345,7 +344,7 @@ int LyX::exec2(int & argc, char * argv[])
 			height = 0;
 		}
 		// create the main window
-		LyXView * view = lyx_gui::create_view(width, height, posx, posy, maximize);
+		LyXView * view = &theApp->createView(width, height, posx, posy, maximize);
 		ref().addLyXView(view);
 
 		// load files
@@ -364,7 +363,7 @@ int LyX::exec2(int & argc, char * argv[])
 		// clear this list to save a few bytes of RAM
 		session_->clearLastOpenedFiles();
 
-		return lyx_gui::start(view, batch_command);
+		return theApp->start(batch_command);
 	} else {
 		// Something went wrong above
 		quitLyX(false);

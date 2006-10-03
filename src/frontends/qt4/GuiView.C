@@ -235,7 +235,7 @@ void GuiView::closeEvent(QCloseEvent *)
 	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
 	// Then also the moveEvent, resizeEvent, and the
 	// code for floatingGeometry_ can be removed;
-	// adjust lyx_gui::start
+	// adjust GuiView::setGeometry()
 #ifdef Q_OS_WIN32
 	QRect geometry = normalGeometry();
 #else

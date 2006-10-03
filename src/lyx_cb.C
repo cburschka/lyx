@@ -216,7 +216,7 @@ void quitLyX(bool noask)
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 
-	lyx_gui::exit(0);
+	theApp->exit(0);
 	// Restore original font resources after Application is destroyed.
 	lyx::support::restoreFontResources();
 }
