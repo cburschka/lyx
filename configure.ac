@@ -388,7 +388,7 @@ int mkstemp(char*);
 #endif
 #endif
 
-#if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM) && !defined(__CYGWIN__)
+#if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
 #  define USE_BOOST_FORMAT 1
 #else
 #  define USE_BOOST_FORMAT 0
