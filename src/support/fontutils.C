@@ -20,7 +20,9 @@
 #include "support/systemcall.h"
 
 #ifdef __APPLE__
+#include "debug.h"
 #include <ApplicationServices/ApplicationServices.h>
+using std::endl;
 #endif
 
 #if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
