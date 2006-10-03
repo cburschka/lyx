@@ -87,6 +87,14 @@ smallmatrix       matrix      none
 vmatrix           matrix      none
 CD                matrix      none
 
+# split environments with optional valign argument.
+# the others (split and alignedat) are hardcoded.
+aligned           split       none
+gathered          split       none
+# from Morten H\o gholm's mathtools.sty:
+lgathered         split       none
+rgathered         split       none
+
 # references
 pageref           ref         none
 prettyref         ref         none

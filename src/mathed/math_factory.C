@@ -276,6 +276,8 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathFontOldInset(l));
 		if (inset == "matrix")
 			return MathAtom(new MathAMSArrayInset(s));
+		if (inset == "split")
+			return MathAtom(new MathSplitInset(s));
 		return MathAtom(new MathSymbolInset(l));
 	}
 

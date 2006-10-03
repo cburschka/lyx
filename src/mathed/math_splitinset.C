@@ -109,6 +109,8 @@ void MathSplitInset::infoize(std::ostream & os) const
 
 void MathSplitInset::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
-	MathNestInset::validate(features);
+	if (name_ == "split" || name_ == "gathered" || name_ == "aligned" ||
+	    name_ == "alignedat")
+		features.require("amsmath");
+	MathGridInset::validate(features);
 }

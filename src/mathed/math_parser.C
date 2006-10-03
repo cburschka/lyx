@@ -1178,6 +1178,18 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				if (l->inset == "matrix") {
 					cell->push_back(createMathInset(name));
 					parse2(cell->back(), FLAG_END, mode, false);
+				} else if (l->inset == "split") {
+					string const valign = parse_verbatim_option() + 'c';
+					cell->push_back(MathAtom(new MathSplitInset(name, valign[0])));
+					parse2(cell->back(), FLAG_END, mode, false);
+				} else {
+					dump();
+					lyxerr << "found math environment `" << name
+					       << "' in symbols file with unsupported inset `"
+					       << l->inset << "'." << endl;
+					// create generic environment inset
+					cell->push_back(MathAtom(new MathEnvInset(name)));
+					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 				}
 			}
 
