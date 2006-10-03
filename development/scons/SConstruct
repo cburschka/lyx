@@ -1275,6 +1275,7 @@ else:
 # this looks misplaced, but intl/libintl.h is needed by src/message.C
 if env['nls'] and included_gettext:
     # libgnuintl.h.in => libintl.h
+    env.Depends('$TOP_SRCDIR/intl/libintl.h', '$BUILDDIR/intl/config.h')
     env.substFile('$BUILDDIR/intl/libintl.h', '$TOP_SRCDIR/intl/libgnuintl.h.in')
     env.Command('$BUILDDIR/intl/libgnuintl.h', '$BUILDDIR/intl/libintl.h',
         [Copy('$TARGET', '$SOURCE')])
@@ -1619,6 +1620,7 @@ if build_support:
     #
     print "Processing files in src/support..."
 
+    env.Depends('$BUILDDIR/common/support/package.C', '$BUILDDIR/common/config.h')
     env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/package.C.in')
 
     support = env.StaticLibrary(
@@ -1801,6 +1803,7 @@ if build_lyxbase:
     #
     print "Processing files in src..."
 
+    env.Depends('$BUILDDIR/common/version.C', '$BUILDDIR/common/config.h')
     env.substFile('$BUILDDIR/common/version.C', '$TOP_SRCDIR/src/version.C.in')
 
     if env.has_key('USE_ASPELL') and env['USE_ASPELL']:
@@ -2106,12 +2109,6 @@ if 'install' in targets:
         env.Install(postinstall_script, tmp_script)
         Alias('install', postinstall_script)
 
-    # lyx1.4.x does not have lyx2lyx_version.py.in
-    if os.path.isfile(env.subst('$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')):
-        # subst and install this file
-        env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
-            '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
-        Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
     # man
     env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),
         env.subst('$TOP_SRCDIR/lyx.man'))
