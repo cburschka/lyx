@@ -51,10 +51,6 @@ using lyx::frontend::GuiApplication;
 
 using boost::shared_ptr;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::exit;
-#endif
-
 using std::map;
 using std::vector;
 using std::string;
@@ -112,12 +108,6 @@ void sync_events()
 	// prevent keyboard events being handed to the LyX core, where
 	// they could cause re-entrant calls to screen update.
 	guiApp->processEvents(QEventLoop::ExcludeUserInputEvents);
-}
-
-
-void exit(int status)
-{
-	guiApp->exit(status);
 }
 
 

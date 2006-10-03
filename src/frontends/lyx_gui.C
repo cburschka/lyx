@@ -44,6 +44,12 @@ int start(LyXView * view, string const & batch)
 }
 
 
+void exit(int status)
+{
+	theApp->exit(status);
+}
+
+
 FuncStatus getStatus(FuncRequest const & ev)
 {
 	FuncStatus flag;

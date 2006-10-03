@@ -103,12 +103,6 @@ int lyx_gui::exec(int & argc, char * argv[])
 }
 
 
-void lyx_gui::exit(int status)
-{
-	guiApp->exit(status);
-}
-
-
 bool lyx_gui::getRGBColor(LColor_color col, lyx::RGBColor & rgbcol)
 {
 	Gdk::Color gdkColor;

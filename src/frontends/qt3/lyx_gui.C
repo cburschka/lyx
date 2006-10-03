@@ -69,10 +69,6 @@ namespace os = lyx::support::os;
 
 using boost::shared_ptr;
 
-#ifndef CXX_GLOBAL_CSTD
-using std::exit;
-#endif
-
 using std::map;
 using std::vector;
 using std::string;
@@ -109,12 +105,6 @@ void sync_events()
 #if QT_VERSION >= 0x030100
 	qApp->eventLoop()->processEvents(QEventLoop::ExcludeUserInput);
 #endif
-}
-
-
-void exit(int status)
-{
-	guiApp->exit(status);
 }
 
 
