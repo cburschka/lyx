@@ -70,9 +70,11 @@ void InsetVSpace::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_PRESS: {
 		InsetVSpaceMailer(*this).showDialog(&cur.bv());
+		cur.undispatched();
 		break;
+	}
 
 	default:
 		InsetBase::doDispatch(cur, cmd);
