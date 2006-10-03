@@ -29,10 +29,9 @@ using std::string;
 using std::auto_ptr;
 
 
-MathSplitInset::MathSplitInset(string const & name)
-	: MathGridInset(1, 1), name_(name)
+MathSplitInset::MathSplitInset(string const & name, char valign)
+	: MathGridInset(1, 1, valign, string()), name_(name)
 {
-	setDefaults();
 }
 
 
@@ -89,6 +88,8 @@ void MathSplitInset::write(WriteStream & ws) const
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\begin{" << name_ << '}';
+	if (name_ != "split" && valign() != 'c')
+		ws << '[' << valign() << ']';
 	if (name_ == "alignedat")
 		ws << '{' << static_cast<unsigned int>((ncols() + 1)/2) << '}';
 	MathGridInset::write(ws);
