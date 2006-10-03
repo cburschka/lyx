@@ -110,6 +110,8 @@ void InsetMathSplit::infoize(std::ostream & os) const
 
 void InsetMathSplit::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
-	InsetMathNest::validate(features);
+	if (name_ == "split" || name_ == "gathered" || name_ == "aligned" ||
+	    name_ == "alignedat")
+		features.require("amsmath");
+	InsetMathGrid::validate(features);
 }

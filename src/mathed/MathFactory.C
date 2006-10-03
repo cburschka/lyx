@@ -275,6 +275,8 @@ MathAtom createInsetMath(string const & s)
 			return MathAtom(new InsetMathFontOld(l));
 		if (inset == "matrix")
 			return MathAtom(new InsetMathAMSArray(s));
+		if (inset == "split")
+			return MathAtom(new InsetMathSplit(s));
 		if (inset == "big")
 			// we can't create a InsetMathBig, since the argument
 			// is missing.
