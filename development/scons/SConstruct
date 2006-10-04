@@ -59,8 +59,12 @@ package_version = utils.getVerFromConfigure(top_src_dir)
 package_cygwin_version = '%s-1' % package_version
 boost_version = '1_33_1'
 
-devel_version = True
-default_build_mode = 'debug'
+if 'svn' in package_version:
+    devel_version = True
+    default_build_mode = 'debug'
+else:
+    devel_version = False
+    default_build_mode = 'release'
 
 package = 'lyx'
 package_bugreport = 'lyx-devel@lists.lyx.org'
