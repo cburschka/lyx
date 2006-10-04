@@ -254,6 +254,7 @@ def checkFormatEntries():
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document"
 \Format docbook-xml xml   "Docbook (XML)"         "" ""	"%%"	"document"
 \Format literate   nw      NoWeb                  N  ""	"%%"	"document"
+\Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document"
 \Format linuxdoc   sgml    LinuxDoc               x  ""	"%%"	"document"
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document"
@@ -407,6 +408,24 @@ def checkConverterEntries():
     checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
         'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
         rc_entry = [ r'\converter latex      html       "%%"	"originaldir,needaux"' ])
+    #
+    path, lilypond = checkProg('a LilyPond -> ESP/PDF/PNG converter', ['lilypond'])
+    if (lilypond != ''):
+        version_string = cmdOutput("lilypond --version")
+        match = re.match('GNU LilyPond (\S+)', version_string)
+        if match:
+            version_number = match.groups()[0]
+            version = version_number.split('.')
+            if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 6):
+                addToRC(r'''\converter lilypond   eps        "lilypond -b eps --ps $$i"	""
+\converter lilypond   png        "lilypond -b eps --png $$i"	""''')
+                if int(version[0]) > 2 or (len(version) > 1 and int(version[0]) == 2 and int(version[1]) >= 9):
+                    addToRC(r'\converter lilypond   pdf        "lilypond -b eps --pdf $$i"	""')
+                print '+  found LilyPond version %s.' % version_number
+            else:
+                print '+  found LilyPond, but version %s is too old.' % version_number
+        else:
+            print '+  found LilyPond, but could not extract version number.'
     #
     # FIXME: no rc_entry? comment it out
     # checkProg('Image converter', ['convert $$i $$o'])
