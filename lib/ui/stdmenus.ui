@@ -180,6 +180,8 @@ Menuset
 		Separator
 		Submenu "Change Formula Type|F" "edit_math_mutate"
 		Separator
+		Submenu "Text Style|T" "edit_math_textstyles"
+		Separator
 		Submenu "Use Computer Algebra System|S" "edit_math_extern"
 		Separator
 		Item "Split Cell|C" "cell-split"
@@ -199,6 +201,31 @@ Menuset
 		 Item "Default|t"  "math-limits empty"
 		 Item "Display|D"  "math-limits limits"
 		 Item "Inline|I"  "math-limits nolimits"
+	End
+
+	Menu "edit_math_textstyles"
+		Item "Math Normal Font" "math-insert \mathnormal"
+		Separator
+		Item "Math Calligraphic Family" "math-insert \mathcal"
+		Item "Math Fraktur Family" "math-insert \mathfrak"
+		Item "Math Roman Family" "math-insert \mathrm"
+		Item "Math Sans Serif Family" "math-insert \mathsf"
+		Separator
+		Item "Math Bold Series" "math-insert \mathbf"
+		Separator
+		Item "Text Normal Font" "math-insert \textnormal"
+		Separator
+		Item "Text Roman Family" "math-insert \textrm"
+		Item "Text Sans Serif Family" "math-insert \textsf"
+		Item "Text Typewriter Family" "math-insert \texttt"
+		Separator
+		Item "Text Bold Series" "math-insert \textbf"
+		Item "Text Medium Series" "math-insert \textmd"
+		Separator
+		Item "Text Italic Shape" "math-insert \textit"
+		Item "Text Small Caps Shape" "math-insert \textsc"
+		Item "Text Slanted Shape" "math-insert \textsl"
+		Item "Text Upright Shape" "math-insert \textup"
 	End
 
 	Menu "edit_math_extern"
@@ -315,40 +342,14 @@ Menuset
 		Item "AMS multline Environment|m" "command-sequence math-mode on; math-mutate multline;"
 		Separator
 		Item "Array Environment|y" "math-matrix 2 2"
-		Item "Cases Environment|C" "math-insert \cases"
-		Item "Aligned Environment" "command-sequence math-insert \aligned; tabular-feature append-column"
-		Item "AlignedAt Environment" "command-sequence math-insert \alignedat; tabular-feature append-column"
-		Item "Gathered Environment" "math-insert \gathered"
-		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
+		Item "Cases Environment|C" "command-sequence math-mode on; math-insert \cases"
+		Item "Aligned Environment" "command-sequence math-mode on; math-insert \aligned; tabular-feature append-column"
+		Item "AlignedAt Environment" "command-sequence math-mode on; math-insert \alignedat; tabular-feature append-column"
+		Item "Gathered Environment" "command-sequence math-mode on; math-insert \gathered"
+		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; tabular-feature append-column"
 		Separator
-		Submenu "Font Change|o" "insert_math_font"
 		Item "Math Panel|P" "dialog-show mathpanel"
 	End
-
-	Menu "insert_math_font"
-		Item "Math Normal Font" "math-insert \mathnormal"
-		Separator
-		Item "Math Calligraphic Family" "math-insert \mathcal"
-		Item "Math Fraktur Family" "math-insert \mathfrak"
-		Item "Math Roman Family" "math-insert \mathrm"
-		Item "Math Sans Serif Family" "math-insert \mathsf"
-		Separator
-		Item "Math Bold Series" "math-insert \mathbf"
-		Separator
-		Item "Text Normal Font" "math-insert \textnormal"
-		Separator
-		Item "Text Roman Family" "math-insert \textrm"
-		Item "Text Sans Serif Family" "math-insert \textsf"
-		Item "Text Typewriter Family" "math-insert \texttt"
-		Separator
-		Item "Text Bold Series" "math-insert \textbf"
-		Item "Text Medium Series" "math-insert \textmd"
-		Separator
-		Item "Text Italic Shape" "math-insert \textit"
-		Item "Text Small Caps Shape" "math-insert \textsc"
-		Item "Text Slanted Shape" "math-insert \textsl"
-		Item "Text Upright Shape" "math-insert \textup"
-			End
 
 	Menu "insert_float"
 		FloatInsert

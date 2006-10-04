@@ -1763,7 +1763,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
 	case LFUN_MATH_MACRO:
-	case LFUN_MATH_INSERT:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
