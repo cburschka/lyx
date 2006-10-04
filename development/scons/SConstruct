@@ -479,7 +479,6 @@ if use_vc:
     else:
         CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
         C_CCFLAGS.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
-    CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
 else:
     if env.has_key('CXX') and env['CXX']:
         env['CC'] = env.subst('$CXX')
