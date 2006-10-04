@@ -162,7 +162,7 @@ void QLMenubar::macxMenuBarInit()
 	mac_menubar_.reset(new QMenuBar);
 
 	// this is the name of the menu that contains our special entries
-	menubackend_.specialMenu("LyX");
+	menubackend_.specialMenu(lyx::from_ascii("LyX"));
 	// make sure that the special entries are added to the first
 	// menu even before this menu has been opened.
 	//name_map_[menubackend_.getMenubar().begin()->submenuname()]->update();
