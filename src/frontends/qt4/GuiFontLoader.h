@@ -20,11 +20,10 @@
 #include <QFont>
 #include <QFontMetrics>
 
-//#if QT_VERSION < 0x030100
+// Starting with version 3.1.0, Qt/X11 does its own caching of
+// character width, so it is not necessary to provide ours.
+#if defined(Q_WS_MACX)
 #define USE_LYX_FONTCACHE
-//#endif
-
-#if defined(USE_LYX_FONTCACHE)
 #include <map>
 #endif
 
@@ -39,19 +38,24 @@ class QLFontInfo {
 public:
 	QLFontInfo(LyXFont const & f);
 
-	/// Return pixel width for the given unicode char
-	int width(Uchar val);
-
 	/// The font instance
 	QFont font;
 	/// Metrics on the font
 	QFontMetrics metrics;
 
-#if defined(USE_LYX_FONTCACHE)
+#ifndef USE_LYX_FONTCACHE
+	/// Return pixel width for the given unicode char
+	int width(Uchar val) { return metrics.width(QChar(val)); }
+
+#else
+	/// Return pixel width for the given unicode char
+	int width(Uchar val);
+
+private:
 	typedef std::map<Uchar, int> WidthCache;
 	/// Cache of char widths
 	WidthCache widthcache;
-#endif
+#endif // USE_LYX_FONTCACHE
 };
 
 

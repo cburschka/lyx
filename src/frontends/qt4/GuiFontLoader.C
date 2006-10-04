@@ -289,12 +289,9 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 	metrics = QFontMetrics(font);
 }
 
-
+#ifdef USE_LYX_FONTCACHE
 int QLFontInfo::width(Uchar val)
 {
-// Starting with version 3.1.0, Qt/X11 does its own caching of
-// character width, so it is not necessary to provide ours.
-#if defined (USE_LYX_FONTCACHE)
 	QLFontInfo::WidthCache::const_iterator cit = widthcache.find(val);
 	if (cit != widthcache.end())
 		return cit->second;
@@ -302,10 +299,8 @@ int QLFontInfo::width(Uchar val)
 	int const w = metrics.width(QChar(val));
 	widthcache[val] = w;
 	return w;
-#else
-	return metrics.width(QChar(val));
-#endif
 }
+#endif
 
 
 bool GuiFontLoader::available(LyXFont const & f)
