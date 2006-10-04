@@ -472,6 +472,13 @@ if use_vc:
     #   in the current code page (number)
     # C4996: foo was decleared deprecated
     CCFLAGS_required.extend(['/TP', '/EHsc'])
+    if mode == 'debug':
+        CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MDd'])
+        # the flags are also needed in C mode (for intl lib)
+        C_CCFLAGS.extend(['/wd4819', '/wd4996', '/nologo', '/MDd'])
+    else:
+        CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
+        C_CCFLAGS.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
     CCFLAGS_default.extend(['/wd4819', '/wd4996', '/nologo', '/MD'])
 else:
     if env.has_key('CXX') and env['CXX']:
