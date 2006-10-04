@@ -529,6 +529,9 @@ def setEnvVariable(env, name, required = None, default = None, split = True):
     '''
     # 1. ARGUMENTS is already set to env[name], override default.
     if ARGUMENTS.has_key(name):
+        # env[name] may be rewritten when building tools are reloaded
+        # if that is the case, commandline option will override it.
+        env[name] = ARGUMENTS[name]
         default = None
     # then use environment default
     elif os.environ.has_key(name):
