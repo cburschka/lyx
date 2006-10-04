@@ -315,6 +315,7 @@ void LyXAction::init()
 		{ LFUN_TOOLTIPS_TOGGLE, "tooltips-toggle", NoBuffer },
 		{ LFUN_CHANGES_TRACK, "changes-track", Noop },
 		{ LFUN_CHANGES_OUTPUT, "changes-output", Noop },
+		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly },
 		{ LFUN_CHANGES_MERGE, "changes-merge", Noop },
 		{ LFUN_CHANGE_ACCEPT, "change-accept", Noop },
 		{ LFUN_CHANGE_REJECT, "change-reject", Noop },

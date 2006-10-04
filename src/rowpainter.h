@@ -39,7 +39,7 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y);
 inline int nestMargin() { return 15; }
 
 /// margin for changebar
-inline int changebarMargin() { return 10; }
+inline int changebarMargin() { return 12; }
 
 /// right margin
 inline int rightMargin() { return 10; }

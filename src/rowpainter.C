@@ -387,7 +387,7 @@ void RowPainter::paintChangeBar()
 		? row_.ascent()
 		: row_.height();
 
-	pain_.fillRectangle(4, yo_ - row_.ascent(), 5, height, LColor::changebar);
+	pain_.fillRectangle(5, yo_ - row_.ascent(), 3, height, LColor::changebar);
 }
 
 

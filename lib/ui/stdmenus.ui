@@ -414,6 +414,7 @@ Menuset
 	Menu "navigate"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
 		Item "Next Note|N" "note-next"
+		Item "Next Change|C" "change-next"
 		Item "Next Reference|R" "reference-next"
 		Item "Go to Label|L" "label-goto"
 		Separator

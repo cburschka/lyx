@@ -366,6 +366,7 @@ enum kb_action {
 	LFUN_CLIPBOARD_PASTE,
 	// 280
 	LFUN_INSET_DISSOLVE,                 // jspitzm 20060807
+	LFUN_CHANGE_NEXT,
 
 	LFUN_LASTACTION                  // end of the table
 };

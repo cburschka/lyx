@@ -661,6 +661,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_BOOKMARK_GOTO:
 		flag.enabled(isSavedPosition(convert<unsigned int>(lyx::to_utf8(cmd.argument()))));
 		break;
+
 	case LFUN_CHANGES_TRACK:
 		flag.enabled(true);
 		flag.setOnOff(buffer_->params().tracking_changes);
@@ -676,8 +677,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	}
 
 	case LFUN_CHANGES_MERGE:
-	case LFUN_CHANGE_ACCEPT: // what about these two
-	case LFUN_CHANGE_REJECT: // what about these two
+	case LFUN_CHANGE_NEXT:
 	case LFUN_ALL_CHANGES_ACCEPT:
 	case LFUN_ALL_CHANGES_REJECT:
 		flag.enabled(buffer_ && buffer_->params().tracking_changes);
@@ -840,6 +840,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_->params().output_changes = !state;
 		break;
 	}
+
+	case LFUN_CHANGE_NEXT:
+		lyx::find::findNextChange(this);
+		break;
 
 	case LFUN_CHANGES_MERGE:
 		if (lyx::find::findNextChange(this))

@@ -1706,6 +1706,11 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		enable = !isMainText() && cur.inset().nargs() == 1;
 		break;
 
+	case LFUN_CHANGE_ACCEPT:
+	case LFUN_CHANGE_REJECT:
+		enable = cur.buffer().params().tracking_changes;
+		break;
+
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
 	case LFUN_LINE_DELETE:
@@ -1793,8 +1798,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 	case LFUN_ACCENT_CIRCLE:
 	case LFUN_ACCENT_OGONEK:
-	case LFUN_CHANGE_ACCEPT:
-	case LFUN_CHANGE_REJECT:
 	case LFUN_THESAURUS_ENTRY:
 	case LFUN_PARAGRAPH_PARAMS_APPLY:
 	case LFUN_ESCAPE:
