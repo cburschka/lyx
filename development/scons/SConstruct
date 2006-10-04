@@ -677,11 +677,11 @@ if not fast_start:
         print 'Did not find zdll.lib or zlib.h, exiting!'
         Exit(1)
     if conf.CheckLib('iconv'):
-        env['ICONV_LIB'] = ['iconv']
+        env['ICONV_LIB'] = 'iconv'
     elif conf.CheckLib('libiconv'):
-        env['ICONV_LIB'] = ['libiconv']
+        env['ICONV_LIB'] = 'libiconv'
     elif conf.CheckFunc('iconv_open'):
-        env['ICONV_LIB'] = []
+        env['ICONV_LIB'] = None
     else:
         print 'Did not find iconv or libiconv, exiting!'
         Exit(1)
@@ -1375,7 +1375,10 @@ elif frontend == 'qt4':
     frontend_libs = [x + qt_lib_suffix for x in qt_libs]
 
 
-system_libs = env['ICONV_LIB']
+if env['ICONV_LIB'] is None:
+    system_libs = []
+else:
+    system_libs = [env['ICONV_LIB']]
 if platform_name in ['win32', 'cygwin']:
     # the final link step needs stdc++ to succeed under mingw
     # FIXME: shouldn't g++ automatically link to stdc++?
