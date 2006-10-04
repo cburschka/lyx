@@ -22,7 +22,7 @@
 
 // Starting with version 3.1.0, Qt/X11 does its own caching of
 // character width, so it is not necessary to provide ours.
-#if defined(Q_WS_MACX)
+#if defined(Q_WS_MACX) || defined(Q_WS_WIN32)
 #define USE_LYX_FONTCACHE
 #include <map>
 #endif
