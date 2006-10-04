@@ -538,25 +538,37 @@ def setEnvVariable(env, name, required = None, default = None, split = True):
                 environment variables
             split: whether or not split obtained variable like '-02 -g'
     '''
-    # first try command line argument (override environment settings)
+    # 1. ARGUMENTS is already set to env[name], override default.
     if ARGUMENTS.has_key(name):
-        default = ARGUMENTS[name]
-        if split:
-            default = default.split()
+        # env[name] may be rewritten when building tools are reloaded
+        # if that is the case, commandline option will override it.
+        env[name] = ARGUMENTS[name]
+        default = None
     # then use environment default
     elif os.environ.has_key(name):
-        print "Acquiring varaible %s from system environment: %s" % (name, os.environ[name])
+        print "Acquiring variable %s from system environment: %s" % (name, os.environ[name])
         default = os.environ[name]
         if split:
             default = default.split()
-    # set variable
-    if required is not None:
-        env[name] = required
-    if default is not None:
-        if env.has_key(name) and env[name] != default:
-            env[name] += default
-        else:
-            env[name] = default
+    # the real value should be env[name] + default + required
+    if split:
+        value = []
+        if env.has_key(name):
+            value = str(env[name]).split()
+        if required is not None:
+            value += required
+        if default is not None:
+            value += default
+    else:
+        value = ""
+        if env.has_key(name):
+            value = str(env[name])
+        if required is not None:
+            value += " " + required
+        if default is not None:
+            value += " " + default
+    env[name] = value
+    # print name, env[name]
 
 setEnvVariable(env, 'DESTDIR', split=False)
 setEnvVariable(env, 'CC')
