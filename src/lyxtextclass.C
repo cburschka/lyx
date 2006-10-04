@@ -251,11 +251,15 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
-				string tmp = LibFileSearch("layouts",
-							    lexrc.getString(),
+				string const inc = lexrc.getString();
+				string tmp = LibFileSearch("layouts", inc,
 							    "layout");
 
-				if (Read(tmp, true)) {
+				if (tmp.empty()) {
+					lexrc.printError("Could not find input"
+					                 "file: " + inc);
+					error = true;
+				} else if (Read(tmp, true)) {
 					lexrc.printError("Error reading input"
 							 "file: "+tmp);
 					error = true;
