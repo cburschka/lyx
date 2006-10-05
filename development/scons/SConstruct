@@ -2025,7 +2025,7 @@ if 'install' in targets:
     def joinPaths(path1, path2):
         ''' join path1 and path2, do not use os.path.join because
             under window, c:\destdir\d:\program is invalid '''
-        if path1 is None:
+        if path1 == '':
             return os.path.normpath(path2)
         # separate drive letter
         (drive, path) = os.path.splitdrive(os.path.normpath(path2))
@@ -2033,7 +2033,7 @@ if 'install' in targets:
         return os.path.join(os.path.normpath(path1), path[1:])
     #
     # install to dest_dir/prefix
-    dest_dir = env.get('DESTDIR', None)
+    dest_dir = env.get('DESTDIR', '')
     dest_prefix_dir = joinPaths(dest_dir, env.Dir(prefix).abspath)
     # create the directory if needed
     if not os.path.isdir(dest_prefix_dir):
