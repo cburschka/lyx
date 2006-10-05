@@ -250,9 +250,6 @@ int LyX::exec2(int & argc, char * argv[])
 	if (!success)
 		return EXIT_FAILURE;
 
-	if (lyx_gui::use_gui)
-		lyx_gui::parse_lyxrc();
-
 	vector<string> files;
 
 	for (int argi = argc - 1; argi >= 1; --argi)

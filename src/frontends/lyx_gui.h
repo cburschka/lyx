@@ -37,12 +37,6 @@ namespace lyx_gui {
 extern bool use_gui;
 
 /**
- * set up GUI parameters. At this point lyxrc may
- * be used.
- */
-void parse_lyxrc();
-
-/**
  * Enter the main event loop (\sa LyX::exec2)
  */
 int exec(int & argc, char * argv[]);
@@ -51,12 +45,6 @@ int exec(int & argc, char * argv[]);
  * Synchronise all pending events.
  */
 void sync_events();
-
-/**
- * return the status flag for a given action. This can be used to tell
- * that a given lfun is not implemented by a frontend
- */
-FuncStatus getStatus(FuncRequest const & ev);
 
 /**
  * Given col, fills r, g, b in the range 0-255.

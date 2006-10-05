@@ -15,8 +15,6 @@
 
 #include "Application.h"
 
-#include "funcrequest.h"
-
 using std::string;
 
 lyx::frontend::Application * theApp;
@@ -25,24 +23,5 @@ lyx::frontend::Application * theApp;
 namespace lyx_gui {
 
 bool use_gui = true;
-
-void parse_lyxrc()
-{}
-
-
-FuncStatus getStatus(FuncRequest const & ev)
-{
-	FuncStatus flag;
-	switch (ev.action) {
-	case LFUN_TOOLTIPS_TOGGLE:
-		flag.unknown(true);
-		break;
-	default:
-		break;
-	}
-
-	return flag;
-}
-
 
 }; // namespace lyx_gui

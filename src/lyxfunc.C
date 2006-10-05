@@ -368,8 +368,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.unknown(true);
 		flag.enabled(false);
 		break;
+
+	case LFUN_TOOLTIPS_TOGGLE:
+		flag.unknown(true);
+		break;
+
 	default:
-		flag |= lyx_gui::getStatus(cmd);
+		break;
 	}
 
 	if (flag.unknown()) {
