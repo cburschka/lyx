@@ -2281,9 +2281,9 @@ if 'install' in targets:
         Alias('install', Cygwin_fonts)
         # we also need a post installation script
         tmp_script = utils.installCygwinPostinstallScript('/tmp')
-        postinstall_script = os.path.join(dest_dir, 'etc', 'postinstall', 'lyx.sh')
-        env.Install(postinstall_script, tmp_script)
-        Alias('install', postinstall_script)
+        postinstall_path = os.path.join(dest_dir, 'etc', 'postinstall')
+        env.Install(postinstall_path, tmp_script)
+        Alias('install', postinstall_path)
 
     # subst and install lyx2lyx_version.py which is not in scons_manifest.py
     env.Depends(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py', '$BUILDDIR/common/config.h')
