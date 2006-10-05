@@ -49,7 +49,7 @@ fi
 AC_CHECK_PROGS(M4, gm4 gnum4 m4, m4)
 
 # Check for installed python
-AM_PATH_PYTHON(1.5.2,, :)
+AM_PATH_PYTHON(2.2,, :)
 
 # Work around a problem in automake 1.4: when invoking install-strip,
 # INSTALL_PROGRAM is changed to 'install -s', and since
