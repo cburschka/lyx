@@ -312,7 +312,6 @@ void LyXAction::init()
 		{ LFUN_CHARS_TRANSPOSE, "chars-transpose", Noop },
 		{ LFUN_FLOAT_LIST, "float-list", Noop },
 		{ LFUN_ESCAPE, "escape", ReadOnly },
-		{ LFUN_TOOLTIPS_TOGGLE, "tooltips-toggle", NoBuffer },
 		{ LFUN_CHANGES_TRACK, "changes-track", Noop },
 		{ LFUN_CHANGES_OUTPUT, "changes-output", Noop },
 		{ LFUN_CHANGE_NEXT, "change-next", ReadOnly },

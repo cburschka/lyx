@@ -43,9 +43,6 @@ public:
 	 */
 	void checkStatus();
 
-	/// Toggle tooltips on/off in all dialogs.
-	static void toggleTooltips();
-
 	/// Are the tooltips on or off?
 	static bool tooltipsEnabled();
 

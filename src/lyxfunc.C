@@ -369,10 +369,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.enabled(false);
 		break;
 
-	case LFUN_TOOLTIPS_TOGGLE:
-		flag.unknown(true);
-		break;
-
 	default:
 		break;
 	}
@@ -403,10 +399,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// to handle (Andre')
 	bool enable = true;
 	switch (cmd.action) {
-	case LFUN_TOOLTIPS_TOGGLE:
-		flag.setOnOff(owner->getDialogs().tooltipsEnabled());
-		break;
-
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
 		flag.setOnOff(buf->isReadonly());
 		break;
@@ -1399,10 +1391,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_MESSAGE:
 			owner->message(lyx::from_utf8(argument));
-			break;
-
-		case LFUN_TOOLTIPS_TOGGLE:
-			owner->getDialogs().toggleTooltips();
 			break;
 
 		case LFUN_EXTERNAL_EDIT: {

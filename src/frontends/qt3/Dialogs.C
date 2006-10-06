@@ -313,10 +313,6 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 }
 
 
-void Dialogs::toggleTooltips()
-{}
-
-
 /// Are the tooltips on or off?
 bool Dialogs::tooltipsEnabled()
 {

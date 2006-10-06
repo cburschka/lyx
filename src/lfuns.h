@@ -283,7 +283,6 @@ enum kb_action {
 	// 210
 	LFUN_ESCAPE,                    // Lgb 20010517
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
-	LFUN_TOOLTIPS_TOGGLE,           // Angus 8 Mar 2002
 	LFUN_OPTIONAL_INSERT,              // Martin 12 Aug 2002
 	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
 	// 215

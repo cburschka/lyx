@@ -567,14 +567,6 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 }
 
 
-void Dialogs::toggleTooltips()
-{
-	// Turning off tooltips is not necessary and will
-	// not be implemented by me - jcs
-	//Tooltips::toggleEnabled();
-}
-
-
 /// Are the tooltips on or off?
 bool Dialogs::tooltipsEnabled()
 {
