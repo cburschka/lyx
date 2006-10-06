@@ -1106,8 +1106,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 {
 	LyXTextClass const & tclass = params().getLyXTextClass();
 
-	if (features.isAvailable("dvipost") && params().tracking_changes
-	    && params().output_changes)
+	if (features.isAvailable("dvipost") && params().outputChanges)
 		features.require("dvipost");
 
 	// AMS Style is at document level

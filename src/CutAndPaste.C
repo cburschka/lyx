@@ -210,10 +210,8 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 		}
 
 		// reset change tracking status
-		if (buffer.params().tracking_changes)
-			tmpbuf->cleanChanges(Paragraph::trackingOn);
-		else
-			tmpbuf->cleanChanges(Paragraph::trackingOff);
+		// FIXME: Change tracking (MG)
+		// tmpbuf->cleanChanges(Paragraph::trackingOn/Off);
 	}
 
 	bool const empty = pars[pit].empty();
@@ -319,7 +317,8 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	// only if either (1) change tracking is off, or (2) the para break
 	// is "blue"
 	for (pit_type pit = startpit; pit != endpit + 1;) {
-		bool const merge = !params.tracking_changes ||
+		// FIXME: Change tracking (MG)
+		bool const merge = !params.trackChanges ||
 			pars[pit].lookupChange(pars[pit].size()) ==
 			Change::INSERTED;
 		pos_type const left  = ( pit == startpit ? startpos : 0 );

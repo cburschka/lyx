@@ -1170,7 +1170,8 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	updateLabels(cur.buffer(), current_it, last_it);
 
 	// Mark "carriage return" as inserted if change tracking:
-	if (cur.buffer().params().tracking_changes) {
+	if (cur.buffer().params().trackChanges) {
+		// FIXME: Change tracking (MG)
 		cur.paragraph().setChange(cur.paragraph().size(),
 			Change::INSERTED);
 	}
@@ -1670,7 +1671,8 @@ bool LyXText::erase(LCursor & cur)
 		if (pars_[cur.pit()].layout() == pars_[scur.pit()].layout()) {
 			recordUndo(scur, Undo::DELETE, scur.pit());
 			needsUpdate = backspace(cur);
-			if (cur.buffer().params().tracking_changes) {
+			if (cur.buffer().params().trackChanges) {
+				// FIXME: Change tracking (MG)
 				// move forward after the paragraph break is DELETED
 				Paragraph & par = cur.paragraph();
 				if (par.lookupChange(par.size()) == Change::DELETED)
@@ -1774,7 +1776,8 @@ bool LyXText::backspace(LCursor & cur)
 		// the the backspace will collapse two paragraphs into
 		// one.
 
-		if (cur.pit() != 0 && cur.buffer().params().tracking_changes) {
+		if (cur.pit() != 0 && cur.buffer().params().trackChanges) {
+			// FIXME: Change tracking (MG)
 			// Previous paragraph, mark "carriage return" as
 			// deleted:
 			Paragraph & par = pars_[cur.pit() - 1];
@@ -2214,8 +2217,6 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex, ErrorList & errorList)
 
 			Paragraph par;
 			par.params().depth(depth);
-			if (buf.params().tracking_changes)
-				par.trackChanges();
 			par.setFont(0, LyXFont(LyXFont::ALL_INHERIT, buf.params().language));
 			pars_.push_back(par);
 
@@ -2372,10 +2373,9 @@ string LyXText::currentState(LCursor & cur)
 	Paragraph const & par = cur.paragraph();
 	std::ostringstream os;
 
-	bool const show_change = buf.params().tracking_changes
-		&& par.lookupChange(cur.pos()) != Change::UNCHANGED;
+	bool const show_change = par.lookupChange(cur.pos()) != Change::UNCHANGED;
 
-	if (buf.params().tracking_changes)
+	if (buf.params().trackChanges)
 		os << "[C] ";
 
 	if (show_change) {

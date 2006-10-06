@@ -639,8 +639,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	// Are we in a DELETED change-tracking region?
-	if (buf && buf->params().tracking_changes
-	    && lookupChangeType(cur, true) == Change::DELETED
+	if (buf && lookupChangeType(cur, true) == Change::DELETED
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
 		flag.message(lyx::from_utf8(N_("This portion of the document is deleted.")));

@@ -501,7 +501,7 @@ void BufferView::setCursorFromScrollbar()
 
 Change const BufferView::getCurrentChange()
 {
-	if (!buffer_->params().tracking_changes || !cursor_.selection())
+	if (!cursor_.selection())
 		return Change(Change::UNCHANGED);
 
 	DocIterator dit = cursor_.selectionBegin();
@@ -664,15 +664,14 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_CHANGES_TRACK:
 		flag.enabled(true);
-		flag.setOnOff(buffer_->params().tracking_changes);
+		flag.setOnOff(buffer_->params().trackChanges);
 		break;
 
 	case LFUN_CHANGES_OUTPUT: {
 		OutputParams runparams;
 		LaTeXFeatures features(*buffer_, buffer_->params(), runparams);
-		flag.enabled(buffer_ && buffer_->params().tracking_changes
-			&& features.isAvailable("dvipost"));
-		flag.setOnOff(buffer_->params().output_changes);
+		flag.enabled(buffer_ && features.isAvailable("dvipost"));
+		flag.setOnOff(buffer_->params().outputChanges);
 		break;
 	}
 
@@ -680,7 +679,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_CHANGE_NEXT:
 	case LFUN_ALL_CHANGES_ACCEPT:
 	case LFUN_ALL_CHANGES_REJECT:
-		flag.enabled(buffer_ && buffer_->params().tracking_changes);
+		flag.enabled(buffer_); // FIXME: Change tracking (MG)
 		break;
 
 	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
@@ -832,12 +831,11 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_CHANGES_TRACK:
-		trackChanges();
+		buffer_->params().trackChanges = !buffer_->params().trackChanges;
 		break;
 
 	case LFUN_CHANGES_OUTPUT: {
-		bool const state = buffer_->params().output_changes;
-		buffer_->params().output_changes = !state;
+		buffer_->params().outputChanges = !buffer_->params().outputChanges;
 		break;
 	}
 
@@ -1425,34 +1423,4 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	message(bformat(res, disp_fn));
 	buffer_->errors("Parse");
 	resize();
-}
-
-
-void BufferView::trackChanges()
-{
-	bool const tracking = buffer_->params().tracking_changes;
-
-	if (!tracking) {
-		for_each(buffer_->par_iterator_begin(),
-			 buffer_->par_iterator_end(),
-			 bind(&Paragraph::trackChanges, _1, Change::UNCHANGED));
-		buffer_->params().tracking_changes = true;
-
-		// We cannot allow undos beyond the freeze point
-		buffer_->undostack().clear();
-	} else {
-		cursor_.setCursor(doc_iterator_begin(buffer_->inset()));
-		if (lyx::find::findNextChange(this)) {
-			showDialog("changes");
-			return;
-		}
-
-		for_each(buffer_->par_iterator_begin(),
-			 buffer_->par_iterator_end(),
-			 mem_fun_ref(&Paragraph::untrackChanges));
-
-		buffer_->params().tracking_changes = false;
-	}
-
-	buffer_->redostack().clear();
 }

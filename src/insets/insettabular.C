@@ -1847,7 +1847,8 @@ void InsetTabular::cutSelection(LCursor & cur)
 		for (col_type j = cs; j <= ce; ++j) {
 			shared_ptr<InsetText> t
 				= cell(tabular.getCellNumber(i, j));
-			if (cur.buffer().params().tracking_changes)
+			if (cur.buffer().params().trackChanges)
+				// FIXME: Change tracking (MG)
 				t->markErased(true);
 			else
 				t->clear();

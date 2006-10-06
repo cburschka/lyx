@@ -1708,7 +1708,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
-		enable = cur.buffer().params().tracking_changes;
+		enable = true; // FIXME: Change tracking (MG)
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:

@@ -894,7 +894,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// output change tracking marks only if desired,
 	// if dvipost is installed,
 	// and with dvi/ps (other formats don't work)
-	bool const output = bparams.output_changes
+	bool const output = bparams.outputChanges
 		&& runparams.flavor == OutputParams::LATEX
 		&& features.isAvailable("dvipost");
 

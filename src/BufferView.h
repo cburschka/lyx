@@ -236,9 +236,6 @@ private:
 	///
 	ScrollbarParameters scrollbarParameters_;
 
-	/// track changes for the document
-	void trackChanges();
-
 	///
 	ViewMetricsInfo metrics_info_;
 

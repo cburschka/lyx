@@ -80,8 +80,6 @@ InsetText::InsetText(BufferParams const & bp)
 {
 	paragraphs().push_back(Paragraph());
 	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
-	if (bp.tracking_changes)
-		paragraphs().back().trackChanges();
 	// Dispose of the infamous L-shaped cursor.
 	text_.current_font.setLanguage(bp.language);
 	text_.real_current_font.setLanguage(bp.language);
@@ -154,12 +152,6 @@ void InsetText::write(Buffer const & buf, ostream & os) const
 void InsetText::read(Buffer const & buf, LyXLex & lex)
 {
 	clear();
-
-#ifdef WITH_WARNINGS
-#warning John, look here. Doesnt make much sense.
-#endif
-	if (buf.params().tracking_changes)
-		paragraphs().begin()->trackChanges();
 
 	// delete the initial paragraph
 	Paragraph oldpar = *paragraphs().begin();

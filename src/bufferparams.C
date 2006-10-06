@@ -300,8 +300,8 @@ BufferParams::BufferParams()
 	use_amsmath = AMS_AUTO;
 	cite_engine = biblio::ENGINE_BASIC;
 	use_bibtopic = false;
-	tracking_changes = false;
-	output_changes = false;
+	trackChanges = false;
+	outputChanges = false;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -490,9 +490,9 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
 	} else if (token == "\\tracking_changes") {
-		lex >> tracking_changes;
+		lex >> trackChanges;
 	} else if (token == "\\output_changes") {
-		lex >> output_changes;
+		lex >> outputChanges;
 	} else if (token == "\\branch") {
 		lex.next();
 		string branch = lex.getString();
@@ -699,10 +699,11 @@ void BufferParams::writeFile(ostream & os) const
 		}
 	}
 
-	os << "\\tracking_changes " << convert<string>(tracking_changes) << "\n";
-	os << "\\output_changes " << convert<string>(output_changes) << "\n";
+	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n";
+	os << "\\output_changes " << convert<string>(outputChanges) << "\n";
 
-	if (tracking_changes) {
+	if (trackChanges) {
+		// FIXME: Change tracking (MG)
 		AuthorList::Authors::const_iterator it = pimpl_->authorlist.begin();
 		AuthorList::Authors::const_iterator end = pimpl_->authorlist.end();
 		for (; it != end; ++it) {
@@ -1084,7 +1085,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	lyxpreamble += "\\makeatother\n";
 
 	// dvipost settings come after everything else
-	if (features.isAvailable("dvipost") && tracking_changes && output_changes) {
+	if (features.isAvailable("dvipost") && outputChanges) {
 		lyxpreamble +=
 			"\\dvipostlayout\n"
 			"\\dvipost{osstart color push Red}\n"

@@ -110,9 +110,6 @@ void breakParagraph(BufferParams const & bparams,
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par.inInset());
 
-	if (bparams.tracking_changes)
-		tmp->trackChanges();
-
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
 
@@ -187,7 +184,8 @@ void breakParagraph(BufferParams const & bparams,
 	}
 
 	// subtle, but needed to get empty pars working right
-	if (bparams.tracking_changes) {
+	if (bparams.trackChanges) {
+		// FIXME: Change tracking (MG)
 		if (!par.size()) {
 			par.cleanChanges();
 		} else if (!tmp->size()) {
@@ -204,9 +202,6 @@ void breakParagraphConservative(BufferParams const & bparams,
 	Paragraph & tmp = *pars.insert(boost::next(pars.begin(), par_offset + 1),
 				       Paragraph());
 	Paragraph & par = pars[par_offset];
-
-	if (bparams.tracking_changes)
-		tmp.trackChanges();
 
 	tmp.makeSameLayout(par);
 
@@ -228,7 +223,8 @@ void breakParagraphConservative(BufferParams const & bparams,
 		// If tracking changes, set all the text that is to be
 		// erased to Type::INSERTED.
 		for (pos_type k = pos_end; k >= pos; --k) {
-			if (bparams.tracking_changes)
+			if (bparams.trackChanges)
+				// FIXME: Change tracking (MG)
 				par.setChange(k, Change::INSERTED);
 			par.erase(k);
 		}
