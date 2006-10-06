@@ -321,10 +321,11 @@ void InsetText::markNew(bool track_changes)
 	ParagraphList::iterator pit = paragraphs().begin();
 	ParagraphList::iterator end = paragraphs().end();
 	for (; pit != end; ++pit) {
-		if (track_changes)
-			pit->trackChanges();
-		else // no-op when not tracking
-			pit->cleanChanges();
+		// FIXME: change tracking (MG)
+		// if (track_changes)
+		//   set pit's text to UNCHANGED
+		// else
+		//   set pit's text to INSERTED in CT mode; reset CT info otherwise
 	}
 }
 

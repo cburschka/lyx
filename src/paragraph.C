@@ -1417,24 +1417,6 @@ void Paragraph::setContentsFromPar(Paragraph const & par)
 }
 
 
-void Paragraph::trackChanges(Change::Type type)
-{
-	pimpl_->trackChanges(type);
-}
-
-
-void Paragraph::untrackChanges()
-{
-	pimpl_->untrackChanges();
-}
-
-
-void Paragraph::cleanChanges(ChangeTracking ct)
-{
-	pimpl_->cleanChanges(ct);
-}
-
-
 Change const Paragraph::lookupChange(lyx::pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());

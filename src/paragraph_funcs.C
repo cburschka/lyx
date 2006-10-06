@@ -186,11 +186,10 @@ void breakParagraph(BufferParams const & bparams,
 	// subtle, but needed to get empty pars working right
 	if (bparams.trackChanges) {
 		// FIXME: Change tracking (MG)
-		if (!par.size()) {
-			par.cleanChanges();
-		} else if (!tmp->size()) {
-			tmp->cleanChanges();
-		}
+		// if (!par.size())
+		//	set 'par' text to INSERTED in CT mode; clear CT info otherwise
+		// else if (!tmp->size())
+		//	set 'tmp' text to INSERTED in CT mode; clear CT info otherwise
 	}
 }
 

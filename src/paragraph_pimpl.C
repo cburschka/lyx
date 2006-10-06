@@ -90,45 +90,6 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 }
 
 
-void Paragraph::Pimpl::trackChanges(Change::Type type)
-{
-	if (tracking()) {
-		lyxerr[Debug::CHANGES] << "already tracking for par " << id_ << endl;
-		return;
-	}
-
-	lyxerr[Debug::CHANGES] << "track changes for par "
-		<< id_ << " type " << type << endl;
-	changes_.reset(new Changes(type));
-	changes_->set(type, 0, size() + 1);
-}
-
-
-void Paragraph::Pimpl::untrackChanges()
-{
-	changes_.reset(0);
-}
-
-
-void Paragraph::Pimpl::cleanChanges(Paragraph::ChangeTracking ct)
-{
-	// if the paragraph was not tracked and we don't know the buffer's
-	// change tracking state, we do nothing
-	if ((ct == Paragraph::trackingUnknown) && !tracking())
-		return;
-
-	// untrack everything if we are in a buffer where ct is disabled
-	else if (ct == Paragraph::trackingOff) {
-		untrackChanges();
-		return;
-	}
-	
-	// in a buffer where ct is enabled, set everything to INSERTED
-	changes_.reset(new Changes(Change::INSERTED));
-	changes_->set(Change::INSERTED, 0, size() + 1);
-}
-
-
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
 	if (!tracking())

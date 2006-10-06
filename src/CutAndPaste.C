@@ -82,7 +82,9 @@ class resetParagraph : public std::unary_function<Paragraph, Buffer const &> {
 public:
 	resetParagraph(Buffer const & b) : buffer_(b) {}
 	void operator()(Paragraph & p) const {
-		p.cleanChanges();
+		// FIXME: change tracking (MG)
+		// set p's text to INSERTED in CT mode; clear CT info otherwise
+
 		// ERT paragraphs have the Language latex_language.
 		// This is invalid outside of ERT, so we need to change it
 		// to the buffer language.
@@ -209,9 +211,8 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 				tmpbuf->erase(i--);
 		}
 
-		// reset change tracking status
 		// FIXME: Change tracking (MG)
-		// tmpbuf->cleanChanges(Paragraph::trackingOn/Off);
+		// set tmpbuf's text to INSERTED in CT mode; clear CT info otherwise
 	}
 
 	bool const empty = pars[pit].empty();

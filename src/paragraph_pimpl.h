@@ -38,12 +38,6 @@ public:
 	//
 	// Change tracking
 	//
-	/// set tracking mode
-	void trackChanges(Change::Type type = Change::UNCHANGED);
-	/// stop tracking
-	void untrackChanges();
-	/// set all text as new for change mode
-	void cleanChanges(Paragraph::ChangeTracking ct = Paragraph::trackingUnknown);
 	/// look up change at given pos
 	Change const lookupChange(lyx::pos_type pos) const;
 	/// is there a change within the given range ?

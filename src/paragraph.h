@@ -204,15 +204,6 @@ public:
 	///
 	InsetBibitem * bibitem() const;  // ale970302
 
-	/// initialise tracking for this par
-	void trackChanges(Change::Type = Change::UNCHANGED);
-
-	/// stop tracking
-	void untrackChanges();
-
-	/// set entire paragraph to new text for change tracking
-	void cleanChanges(ChangeTracking ct = trackingUnknown);
-
 	/// look up change at given pos
 	Change const lookupChange(lyx::pos_type pos) const;
 
