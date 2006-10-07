@@ -64,9 +64,10 @@ iconv_convert(iconv_t * cd,
 
 	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(reinterpret_cast<char const *>(buf));
 	size_t inbytesleft = buflen * sizeof(InType);
-	static char out[1000];
+	size_t const outsize = 1000;
+	static char out[outsize];
 	char * outbuf = out;
-	size_t outbytesleft = 1000;
+	size_t outbytesleft = outsize;
 
 	size_t res = iconv(*cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);
 
@@ -115,7 +116,7 @@ iconv_convert(iconv_t * cd,
 	//lyxerr << std::dec;
 	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
 	//lyxerr << "Outbytesleft: " << outbytesleft << endl;
-	int bytes = 1000 - outbytesleft;
+	int bytes = outsize - outbytesleft;
 
 	RetType const * tmp = reinterpret_cast<RetType const *>(out);
 	return std::vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
