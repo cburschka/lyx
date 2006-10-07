@@ -24,6 +24,9 @@ using std::pair;
 using std::string;
 
 
+namespace lyx {
+namespace frontend {
+
 int Alert::prompt(docstring const & title, docstring const & question,
 		  int default_button, int escape_button,
 		  docstring const & b1, docstring const & b2, docstring const & b3)
@@ -97,4 +100,7 @@ pair<bool, docstring> const Alert::askForText(docstring const & msg,
 	}
 
 	return askForText_pimpl(msg, dflt);
+}
+
+}
 }

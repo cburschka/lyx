@@ -59,7 +59,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
-			Alert::error(_("Couldn't import file"),
+			lyx::frontend::Alert::error(_("Couldn't import file"),
 				     bformat(_("No information for importing the format %1$s."),
 					 formats.prettyName(format)));
 			return false;

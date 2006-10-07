@@ -35,7 +35,7 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 		docstring const file = makeDisplayPath(fname, 50);
 		docstring text = bformat(_("Could not open the specified "
 						     "document\n%1$s."), file);
-		Alert::error(_("Could not open file"), text);
+		lyx::frontend::Alert::error(_("Could not open file"), text);
 		return false;
 	}
 	return true;

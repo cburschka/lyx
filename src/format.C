@@ -44,6 +44,7 @@ using lyx::support::token;
 using std::string;
 using std::distance;
 
+namespace Alert = lyx::frontend::Alert;
 namespace fs = boost::filesystem;
 namespace os = lyx::support::os;
 

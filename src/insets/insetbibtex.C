@@ -57,6 +57,7 @@ using lyx::support::subst;
 using lyx::support::tokenPos;
 using lyx::support::trim;
 
+namespace Alert = lyx::frontend::Alert;
 namespace os = lyx::support::os;
 
 using std::endl;

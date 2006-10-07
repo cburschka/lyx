@@ -77,6 +77,7 @@ using lyx::support::Systemcall;
 
 using lyx::docstring;
 
+namespace Alert = lyx::frontend::Alert;
 namespace os = lyx::support::os;
 namespace fs = boost::filesystem;
 

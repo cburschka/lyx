@@ -58,6 +58,8 @@ using std::string;
 using std::vector;
 using std::distance;
 
+namespace Alert = lyx::frontend::Alert;
+
 
 namespace {
 
@@ -449,9 +451,9 @@ bool Converters::convert(Buffer const * buffer,
 				} else {
 // FIXME: this should go out of here. For example, here we cannot say if
 // it is a document (.lyx) or something else. Same goes for elsewhere.
-				Alert::error(_("Cannot convert file"),
-					bformat(_("An error occurred whilst running %1$s"),
-					lyx::from_ascii(command.substr(0, 50))));
+					Alert::error(_("Cannot convert file"),
+						bformat(_("An error occurred whilst running %1$s"),
+						lyx::from_ascii(command.substr(0, 50))));
 				}
 				return false;
 			}

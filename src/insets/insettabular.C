@@ -71,6 +71,8 @@ using std::ostringstream;
 using std::swap;
 using std::vector;
 
+namespace Alert = lyx::frontend::Alert;
+
 
 namespace {
 

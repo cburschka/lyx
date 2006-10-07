@@ -60,6 +60,7 @@ using std::ostream;
 using std::ostringstream;
 using std::pair;
 
+namespace Alert = lyx::frontend::Alert;
 namespace biblio = lyx::biblio;
 
 

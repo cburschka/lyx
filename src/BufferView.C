@@ -103,6 +103,8 @@ using std::mem_fun_ref;
 using std::string;
 using std::vector;
 
+namespace Alert = lyx::frontend::Alert;
+
 
 namespace {
 

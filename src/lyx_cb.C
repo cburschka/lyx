@@ -78,6 +78,7 @@ using lyx::support::unlink;
 
 using boost::shared_ptr;
 
+namespace Alert = lyx::frontend::Alert;
 namespace fs = boost::filesystem;
 
 using std::back_inserter;

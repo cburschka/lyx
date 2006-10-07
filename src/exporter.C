@@ -53,6 +53,7 @@ using std::find;
 using std::string;
 using std::vector;
 
+namespace Alert = lyx::frontend::Alert;
 namespace fs = boost::filesystem;
 
 namespace {

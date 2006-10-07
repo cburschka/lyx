@@ -81,6 +81,7 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 
+namespace Alert = lyx::frontend::Alert;
 namespace fs = boost::filesystem;
 
 

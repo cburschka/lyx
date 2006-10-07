@@ -37,6 +37,8 @@ using std::endl;
 using std::string;
 using std::pair;
 
+namespace Alert = lyx::frontend::Alert;
+
 
 LyXVC::LyXVC()
 {

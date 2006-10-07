@@ -136,6 +136,7 @@ using std::string;
 using std::istringstream;
 using std::ostringstream;
 
+namespace Alert = lyx::frontend::Alert;
 namespace biblio = lyx::biblio;
 namespace fs = boost::filesystem;
 

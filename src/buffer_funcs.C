@@ -63,6 +63,7 @@ using lyx::support::unlink;
 using std::min;
 using std::string;
 
+namespace Alert = lyx::frontend::Alert;
 namespace fs = boost::filesystem;
 
 namespace {

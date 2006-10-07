@@ -15,6 +15,8 @@
 #include "support/lstrings.h"
 
 
+namespace lyx {
+namespace frontend {
 namespace Alert {
 
 /**
@@ -57,6 +59,8 @@ std::pair<bool, lyx::docstring> const
 askForText(lyx::docstring const & msg,
 	   lyx::docstring const & dflt = lyx::docstring());
 
+}
+}
 }
 
 #endif // LYX_ALERT_H

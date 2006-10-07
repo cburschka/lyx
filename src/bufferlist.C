@@ -57,6 +57,8 @@ using std::vector;
 using std::back_inserter;
 using std::transform;
 
+namespace Alert = lyx::frontend::Alert;
+
 
 BufferList::BufferList()
 {}

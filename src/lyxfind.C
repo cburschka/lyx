@@ -137,7 +137,8 @@ bool findChange(DocIterator & cur)
 bool searchAllowed(BufferView * bv, string const & str)
 {
 	if (str.empty()) {
-		Alert::error(_("Search error"), _("Search string is empty"));
+		lyx::frontend::Alert::error(_("Search error"),
+		                            _("Search string is empty"));
 		return false;
 	}
 	return bv->buffer();
