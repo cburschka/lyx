@@ -11,7 +11,6 @@
 
 #include <config.h>
 #include "debug.h"
-#include "qt_helpers.h"
 
 #include "GuiApplication.h"
 #include "Qt2BC.h"
