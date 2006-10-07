@@ -37,6 +37,7 @@ libqt4_la_SOURCES = \
 	GuiApplication.C GuiApplication.h \
 	GuiClipboard.h GuiClipboard.C \
 	GuiFontLoader.h GuiFontLoader.C \
+	GuiFontMetrics.h GuiFontMetrics.C \
 	GuiSelection.h GuiSelection.C \
 	GuiImplementation.h GuiImplementation.C \
 	LyXKeySymFactory.C \
@@ -86,7 +87,6 @@ libqt4_la_SOURCES = \
 	lyx_gui.C \
 	panelstack.h panelstack.C \
 	qfontexample.h qfontexample.C \
-	qfont_metrics.C \
 	qlkey.h \
 	qt_helpers.h qt_helpers.C \
 	qtTimeout.C qtTimeout.h \

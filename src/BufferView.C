@@ -62,7 +62,8 @@
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
 #include "frontends/FileDialog.h"
-#include "frontends/font_metrics.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 
 #include "graphics/Previews.h"
 
@@ -330,9 +331,10 @@ void BufferView::resize()
 bool BufferView::fitCursor()
 {
 	if (bv_funcs::status(this, cursor_) == bv_funcs::CUR_INSIDE) {
-		LyXFont const font = cursor_.getFont();
-		int const asc = font_metrics::maxAscent(font);
-		int const des = font_metrics::maxDescent(font);
+		lyx::frontend::FontMetrics const & fm 
+			= theApp->fontLoader().metrics(cursor_.getFont());
+		int const asc = fm.maxAscent();
+		int const des = fm.maxDescent();
 		Point const p = bv_funcs::getPos(cursor_, cursor_.boundary());
 		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;

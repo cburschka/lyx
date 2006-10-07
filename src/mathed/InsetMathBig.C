@@ -15,6 +15,10 @@
 #include "MathMLStream.h"
 #include "MathStream.h"
 
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
+
 #include "support/lstrings.h"
 
 
@@ -61,7 +65,8 @@ double InsetMathBig::increase() const
 
 void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	double const h = mathed_char_ascent(mi.base.font, 'I');
+	double const h 
+		= theApp->fontLoader().metrics(mi.base.font).ascent('I');
 	double const f = increase();
 	dim_.wid = 6;
 	dim_.asc = int(h + f * h);

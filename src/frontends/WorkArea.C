@@ -13,9 +13,12 @@
 
 #include <config.h>
 
-#include "WorkArea.h"
+#include "frontends/WorkArea.h"
 
-#include "font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
+
 #include "funcrequest.h"
 #include "lyx_gui.h"
 #include "lyxfunc.h"
@@ -372,8 +375,9 @@ void WorkArea::showCursor()
 		shape = BAR_SHAPE;
 
 	LyXFont const font = buffer_view_->cursor().getFont();
-	int const asc = font_metrics::maxAscent(font);
-	int const des = font_metrics::maxDescent(font);
+	FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	int const asc = fm.maxAscent();
+	int const des = fm.maxDescent();
 	int h = asc + des;
 	int x = 0;
 	int y = 0;

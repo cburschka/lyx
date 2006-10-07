@@ -25,8 +25,6 @@ class InsetMath;
 
 void mathed_char_dim(LyXFont const &, unsigned char c, Dimension & dim);
 int mathed_char_width(LyXFont const &, unsigned char c);
-int mathed_char_ascent(LyXFont const &, unsigned char c);
-int mathed_char_descent(LyXFont const &, unsigned char c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	std::string const & name);

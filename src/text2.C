@@ -51,7 +51,8 @@
 #include "vspace.h"
 
 #include "frontends/Application.h"
-#include "frontends/font_metrics.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 
 #include "insets/insetenv.h"
 
@@ -804,14 +805,16 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
+	lyx::frontend::FontMetrics const & fm = theApp->fontLoader().metrics(
+		getLabelFont(par));
+
 	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			string lsep = layout->labelsep;
 			docstring dlsep(lsep.begin(), lsep.end());
-			tmpx += r.label_hfill +
-				font_metrics::width(dlsep, getLabelFont(par));
+			tmpx += r.label_hfill + fm.width(dlsep);
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(par, body_pos - 1);
 		}
@@ -1342,5 +1345,5 @@ void LyXText::recUndo(pit_type par) const
 
 int defaultRowHeight()
 {
-	return int(font_metrics::maxHeight(LyXFont(LyXFont::ALL_SANE)) *  1.2);
+	return int(theApp->fontLoader().metrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);
 }

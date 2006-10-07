@@ -19,7 +19,9 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 using std::endl;
@@ -40,10 +42,11 @@ void InsetNewline::write(Buffer const &, ostream & os) const
 
 void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont & font = mi.base.font;
-	dim.asc = font_metrics::maxAscent(font);
-	dim.des = font_metrics::maxDescent(font);
-	dim.wid = font_metrics::width('n', font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(mi.base.font);
+	dim.asc = fm.maxAscent();
+	dim.des = fm.maxDescent();
+	dim.wid = fm.width('n');
 	dim_ = dim;
 }
 
@@ -74,8 +77,10 @@ int InsetNewline::docbook(Buffer const &, std::ostream & os,
 
 void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 {
-	int const wid = font_metrics::width('n', pi.base.font);
-	int const asc = font_metrics::maxAscent(pi.base.font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(pi.base.font);
+	int const wid = fm.width('n');
+	int const asc = fm.maxAscent();
 
 	int xp[3];
 	int yp[3];

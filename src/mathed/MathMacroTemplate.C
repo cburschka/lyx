@@ -21,8 +21,10 @@
 #include "lyxlex.h"
 #include "LColor.h"
 
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
 
 #include "support/lstrings.h"
 
@@ -117,7 +119,7 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	cell(1).metrics(mi);
 	docstring dp = prefix();
 	dim.wid = cell(0).width() + cell(1).width() + 20
-		+ font_metrics::width(dp, mi.base.font);
+		+ theApp->fontLoader().metrics(mi.base.font).width(dp);
 	dim.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 7;
 	dim.des = std::max(cell(0).descent(), cell(1).descent()) + 7;
 	dim_ = dim;
@@ -155,7 +157,8 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 #endif
 	docstring dp = prefix();
 	pi.pain.text(x + 2, y, dp, font);
-	x += font_metrics::width(dp, pi.base.font) + 6;
+	// FIXME: Painter text should retain the drawn text width
+	x += theApp->fontLoader().metrics(font).width(dp) + 6;
 
 	int const w0 = cell(0).width();
 	int const w1 = cell(1).width();

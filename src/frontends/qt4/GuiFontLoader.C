@@ -220,9 +220,7 @@ void GuiFontLoader::update()
 
 
 QLFontInfo::QLFontInfo(LyXFont const & f)
-	: metrics(font)
 {
-
 	string const pat = symbolFamily(f.family());
 	if (!pat.empty()) {
 		bool tmp;
@@ -245,9 +243,6 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 			break;
 		}
 	}
-
-	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
-			       * lyxrc.zoom / 100.0);
 
 	switch (f.series()) {
 		case LyXFont::MEDIUM_SERIES:
@@ -274,9 +269,6 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 			<< "' matched by\n" << fromqstr(font.rawName()) << endl;
 	}
 
-	lyxerr[Debug::FONT] << "The font has size: "
-			    << font.pointSizeF() << endl;
-
 	// Is this an exact match?
 	if (font.exactMatch())
 		lyxerr[Debug::FONT] << "This font is an exact match" << endl;
@@ -286,21 +278,27 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 
 	lyxerr[Debug::FONT] << "XFLD: " << fromqstr(font.rawName()) << endl;
 
-	metrics = QFontMetrics(font);
-}
+	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
+			       * lyxrc.zoom / 100.0);
 
-#ifdef USE_LYX_FONTCACHE
-int QLFontInfo::width(Uchar val)
-{
-	QLFontInfo::WidthCache::const_iterator cit = widthcache.find(val);
-	if (cit != widthcache.end())
-		return cit->second;
+	lyxerr[Debug::FONT] << "The font has size: "
+			    << font.pointSizeF() << endl;
 
-	int const w = metrics.width(QChar(val));
-	widthcache[val] = w;
-	return w;
+	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
+		metrics.reset(new GuiFontMetrics(font));
+	}
+	else {	
+		// handle small caps ourselves ...
+		LyXFont smallfont = f;
+		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+		QFont font2(font);
+		font2.setPointSizeF(convert<double>(lyxrc.font_sizes[smallfont.size()])
+			       * lyxrc.zoom / 100.0);
+
+		metrics.reset(new GuiFontMetrics(font, font2));
+	}
+
 }
-#endif
 
 
 bool GuiFontLoader::available(LyXFont const & f)

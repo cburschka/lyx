@@ -14,18 +14,12 @@
 
 #include "frontends/FontLoader.h"
 
+#include "GuiFontMetrics.h"
+
 #include "encoding.h"
 #include "lyxfont.h"
 
 #include <QFont>
-#include <QFontMetrics>
-
-// Starting with version 3.1.0, Qt/X11 does its own caching of
-// character width, so it is not necessary to provide ours.
-#if defined(Q_WS_MACX) || defined(Q_WS_WIN32)
-#define USE_LYX_FONTCACHE
-#include <map>
-#endif
 
 namespace lyx {
 namespace frontend {
@@ -41,21 +35,7 @@ public:
 	/// The font instance
 	QFont font;
 	/// Metrics on the font
-	QFontMetrics metrics;
-
-#ifndef USE_LYX_FONTCACHE
-	/// Return pixel width for the given unicode char
-	int width(Uchar val) { return metrics.width(QChar(val)); }
-
-#else
-	/// Return pixel width for the given unicode char
-	int width(Uchar val);
-
-private:
-	typedef std::map<Uchar, int> WidthCache;
-	/// Cache of char widths
-	WidthCache widthcache;
-#endif // USE_LYX_FONTCACHE
+	boost::scoped_ptr<GuiFontMetrics> metrics;
 };
 
 
@@ -69,21 +49,17 @@ public:
 	/// Destructor
 	virtual ~GuiFontLoader();
 
-	/// Update fonts after zoom, dpi, font names, or norm change
 	virtual void update();
-
-	/// Do we have anything matching?
 	virtual bool available(LyXFont const & f);
+	inline virtual FontMetrics const & metrics(LyXFont const & f) {
+		return *fontinfo(f).metrics.get();
+	}
 
 	/// Get the QFont for this LyXFont
 	QFont const & get(LyXFont const & f) {
 		return fontinfo(f).font;
 	}
 
-	/// Get the QFont metrics for this LyXFont
-	QFontMetrics const & metrics(LyXFont const & f) {
-		return fontinfo(f).metrics;
-	}
 
 	/// Get font info (font + metrics) for the given LyX font.
 	QLFontInfo & fontinfo(LyXFont const & f) {

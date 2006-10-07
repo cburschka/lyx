@@ -44,7 +44,6 @@
 #include "support/limited_stack.h"
 
 #include "frontends/Application.h"
-#include "frontends/font_metrics.h"
 
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>

@@ -136,7 +136,7 @@ int LyXLength::inPixels(int text_width, int em_width_base) const
 		? em_width_base
 		: 10*(dpi/72.27)*zoom;
 	// A different estimate for em_width is
-	// font_metrics::width('M', LyXFont(LyXFont::ALL_SANE))
+	// theApp->fontLoader().metrics(LyXFont(LyXFont::ALL_SANE)).width('M')
 	// but this estimate might not be more accurate as the screen font
 	// is different then the latex font.
 

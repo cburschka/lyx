@@ -433,6 +433,7 @@ src_frontends_header_files = Split('''
     Dialogs.h
     FileDialog.h
     FontLoader.h
+    FontMetrics.h
     Gui.h
     LyXKeySym.h
     LyXKeySymFactory.h
@@ -443,7 +444,6 @@ src_frontends_header_files = Split('''
     Timeout.h
     Toolbars.h
     WorkArea.h
-    font_metrics.h
     guiapi.h
     key_state.h
     lyx_gui.h
@@ -1236,6 +1236,7 @@ src_frontends_qt4_files = Split('''
     GuiApplication.C
     GuiClipboard.C
     GuiFontLoader.C
+    GuiFontMetrics.C
     GuiImplementation.C
     GuiSelection.C
     GuiView.C
@@ -1335,7 +1336,6 @@ src_frontends_qt4_files = Split('''
     lengthcombo.C
     lyx_gui.C
     panelstack.C
-    qfont_metrics.C
     qfontexample.C
     qsetborder.C
     qtTimeout.C

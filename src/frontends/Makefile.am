@@ -22,6 +22,7 @@ libfrontends_la_SOURCES = \
 	Dialogs.h \
 	FileDialog.h \
 	FontLoader.h \
+	FontMetrics.h \
 	LyXKeySym.h \
 	LyXKeySymFactory.h \
 	LyXView.C \
@@ -38,7 +39,6 @@ libfrontends_la_SOURCES = \
 	Selection.h \
 	WorkArea.C \
 	WorkArea.h \
-	font_metrics.h \
 	guiapi.h \
 	guiapi.C \
 	key_state.h \

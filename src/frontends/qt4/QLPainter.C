@@ -25,7 +25,7 @@
 #include "language.h"
 #include "LColor.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/FontMetrics.h"
 
 #include "support/unicode.h"
 
@@ -196,7 +196,7 @@ void QLPainter::text(int x, int y, char_type c, LyXFont const & f)
 }
 
 
-void QLPainter::smallCapsText(int x, int y,
+int QLPainter::smallCapsText(int x, int y,
 	QString const & s, LyXFont const & f)
 {
 	LyXFont smallfont(f);
@@ -204,24 +204,21 @@ void QLPainter::smallCapsText(int x, int y,
 
 	QFont const & qfont = guiApp->guiFontLoader().get(f);
 	QFont const & qsmallfont = guiApp->guiFontLoader().get(smallfont);
-	QFontMetrics const & qfontm = QFontMetrics(qfont);
-	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
 	setQPainterPen(f.realColor());
-	int tmpx = x;
+	int textwidth = 0;
 	size_t ls = s.length();
 	for (unsigned int i = 0; i < ls; ++i) {
 		QChar const c = s[i].toUpper();
 		if (c != s.at(i)) {
 			qp_->setFont(qsmallfont);
-			qp_->drawText(tmpx, y, c);
-			tmpx += qsmallfontm.width(c);
 		} else {
 			qp_->setFont(qfont);
-			qp_->drawText(tmpx, y, c);
-			tmpx += qfontm.width(c);
 		}
+		qp_->drawText(x + textwidth, y, c);
+		textwidth += qp_->fontMetrics().width(c);
 	}
+	return textwidth;
 }
 
 
@@ -250,18 +247,23 @@ void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 		str = ' ' + str;
 #endif
 
+	QLFontInfo & fi = guiApp->guiFontLoader().fontinfo(f);
+
+	int textwidth;
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());
-		qp_->setFont(guiApp->guiFontLoader().get(f));
+		qp_->setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
 		qp_->setLayoutDirection(Qt::LeftToRight);
 		qp_->drawText(x, y, str);
+		textwidth = qp_->fontMetrics().width(str);
 	} else {
-		smallCapsText(x, y, str, f);
+		textwidth = smallCapsText(x, y, str, f);
 	}
 
 	if (f.underbar() == LyXFont::ON) {
-		underline(f, x, y, font_metrics::width(s, ls, f));
+		underline(f, x, y, textwidth);
 	}
 
 }

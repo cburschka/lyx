@@ -123,6 +123,7 @@ QString const toqstr(string const & str)
 QString const ucs4_to_qstring(char_type const * str, size_t ls)
 {
 	QString s;
+	s.reserve(ls);
 
 	for (size_t i = 0; i < ls; ++i)
 		s.append(ucs4_to_qchar(str[i]));

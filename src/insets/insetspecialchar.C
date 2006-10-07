@@ -20,7 +20,9 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 using lyx::docstring;
@@ -43,9 +45,10 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 
 void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont & font = mi.base.font;
-	dim.asc = font_metrics::maxAscent(font);
-	dim.des = font_metrics::maxDescent(font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(mi.base.font);
+	dim.asc = fm.maxAscent();
+	dim.des = fm.maxDescent();
 
 	string s;
 	switch (kind_) {
@@ -56,7 +59,7 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		case HYPHENATION:      s = "-";   break;
 	}
         docstring ds(s.begin(), s.end());
-	dim.wid = font_metrics::width(ds, font);
+	dim.wid = fm.width(ds);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
 	dim_ = dim;
@@ -96,10 +99,13 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	}
 	case MENU_SEPARATOR:
 	{
+		lyx::frontend::FontMetrics const & fm =
+			theApp->fontLoader().metrics(font);
+
 		// A triangle the width and height of an 'x'
-                int w = font_metrics::width(lyx::char_type('x'), font);
-		int ox = font_metrics::width(lyx::char_type(' '), font) + x;
-		int h = font_metrics::ascent(lyx::char_type('x'), font);
+                int w = fm.width(lyx::char_type('x'));
+		int ox = fm.width(lyx::char_type(' ')) + x;
+		int h = fm.ascent(lyx::char_type('x'));
 		int xp[4], yp[4];
 
 		xp[0] = ox;     yp[0] = y;

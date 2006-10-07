@@ -21,9 +21,9 @@
 #include "LColor.h"
 
 #include "frontends/Application.h"
-#include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
 #include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
+#include "frontends/Painter.h"
 
 #include <map>
 #include <sstream>
@@ -368,52 +368,44 @@ deco_struct const * search_deco(string const & name)
 
 void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
 {
-	dim.des = font_metrics::descent(c, font);
-	dim.asc = font_metrics::ascent(c, font);
-	dim.wid = mathed_char_width(font, c);
-}
-
-
-int mathed_char_ascent(LyXFont const & font, unsigned char c)
-{
-	return font_metrics::ascent(c, font);
-}
-
-
-int mathed_char_descent(LyXFont const & font, unsigned char c)
-{
-	return font_metrics::descent(c, font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+	dim.des = fm.descent(c);
+	dim.asc = fm.ascent(c);
+	dim.wid = fm.width(c);
 }
 
 
 int mathed_char_width(LyXFont const & font, unsigned char c)
 {
-	return font_metrics::width(c, font);
+	return theApp->fontLoader().metrics(font).width(c);
 }
 
 
 void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
 {
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
 #if 1
 	dim.asc = 0;
 	dim.des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
-		dim.asc = max(dim.asc, font_metrics::ascent(*it, font));
-		dim.des = max(dim.des, font_metrics::descent(*it, font));
+		dim.asc = max(dim.asc, fm.ascent(*it));
+		dim.des = max(dim.des, fm.descent(*it));
 	}
 #else
-	dim.asc = font_metrics::maxAscent(font);
-	dim.des = font_metrics::maxDescent(font);
+	dim.asc = fm.maxAscent();
+	dim.des = fm.maxDescent();
 #endif
-        docstring ds(s.begin(), s.end());
-	dim.wid = font_metrics::width(ds, font);
+	docstring ds(s.begin(), s.end());
+	dim.wid = fm.width(ds);
 }
 
 
 int mathed_string_width(LyXFont const & font, string const & s)
 {
-        docstring ds(s.begin(), s.end());
-	return font_metrics::width(ds, font);
+	docstring ds(s.begin(), s.end());
+	return theApp->fontLoader().metrics(font).width(ds);
 }
 
 
@@ -507,8 +499,10 @@ void drawStrBlack(PainterInfo & pi, int x, int y, string const & str)
 
 void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 {
-	asc = font_metrics::maxAscent(font);
-	des = font_metrics::maxDescent(font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+	asc = fm.maxAscent();
+	des = fm.maxDescent();
 }
 
 

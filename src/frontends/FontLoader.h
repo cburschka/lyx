@@ -17,6 +17,8 @@ class LyXFont;
 namespace lyx {
 namespace frontend {
 
+class FontMetrics;
+
 /// Hold info about a particular font
 class FontLoader
 {
@@ -31,6 +33,9 @@ public:
 
 	/// Is the given font available ?
 	virtual bool available(LyXFont const & f) = 0;
+
+	/// Get the Font metrics for this LyXFont
+	virtual FontMetrics const & metrics(LyXFont const & f) = 0;
 };
 
 } // namespace frontend

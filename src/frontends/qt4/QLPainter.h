@@ -125,7 +125,10 @@ public:
 
 private:
 	/// draw small caps text
-	void smallCapsText(int x, int y,
+	/**
+	\return width of the drawn text.
+	*/
+	int smallCapsText(int x, int y,
 		QString const & str, LyXFont const & f);
 
 	/// set pen parameters

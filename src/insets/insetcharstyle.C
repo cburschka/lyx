@@ -31,7 +31,9 @@
 #include "paragraph_funcs.h"
 #include "sgml.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include <sstream>
@@ -157,7 +159,7 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 			// FIXME UNICODE
 			s = lyx::to_utf8(_("Undef: ")) + s;
 		docstring ds(s.begin(), s.end());
-		font_metrics::rectText(ds, font, w, a, d);
+		theApp->fontLoader().metrics(font).rectText(ds, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
 	dim.asc += TEXT_TO_INSET_OFFSET;
@@ -205,7 +207,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 			// FIXME UNICODE
 			s = lyx::to_utf8(_("Undef: ")) + s;
 		docstring ds(s.begin(), s.end());
-		font_metrics::rectText(ds, font, w, a, d);
+		theApp->fontLoader().metrics(font).rectText(ds, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
 			ds, font, LColor::none, LColor::none);
 	}

@@ -11,8 +11,11 @@
 
 #include <config.h>
 
-#include "Painter.h"
-#include "font_metrics.h"
+#include "frontends/Painter.h"
+
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 
 #include "LColor.h"
 #include "lyxfont.h"
@@ -59,7 +62,8 @@ void Painter::rectText(int x, int y,
 	int ascent;
 	int descent;
 
-	font_metrics::rectText(str, font, width, ascent, descent);
+	FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	fm.rectText(str, width, ascent, descent);
 
 	if (back != LColor::none)
 		fillRectangle(x + 1, y - ascent + 1, width - 1,
@@ -78,7 +82,8 @@ void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & fo
 	int ascent;
 	int descent;
 
-	font_metrics::buttonText(str, font, width, ascent, descent);
+	FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	fm.buttonText(str, width, ascent, descent);
 
 	button(x, y - ascent, width, descent + ascent);
 	text(x + 4, y, str, font);
@@ -87,8 +92,10 @@ void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & fo
 
 void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
-	int const below = max(font_metrics::maxDescent(f) / 2, 2);
-	int const height = max((font_metrics::maxDescent(f) / 4) - 1, 1);
+	FontMetrics const & fm = theApp->fontLoader().metrics(f);
+
+	int const below = max(fm.maxDescent() / 2, 2);
+	int const height = max((fm.maxDescent() / 4) - 1, 1);
 
 	if (height < 2)
 		line(x, y + below, x + width, y + below, f.color());

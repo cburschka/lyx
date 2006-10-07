@@ -19,7 +19,9 @@
 #include "lyxrc.h"
 #include "metricsinfo.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/lstrings.h"
@@ -244,45 +246,36 @@ void InsetLatexAccent::checkContents()
 void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+
 	// This function is a bit too simplistic and is just a
 	// "try to make a fit for all accents" approach, to
 	// make it better we need to know what kind of accent is
 	// used and add to max based on that.
 	if (candisp) {
 		if (ic == ' ')
-			dim.asc = font_metrics::ascent('a', font);
+			dim.asc = fm.ascent('a');
 		else
-			dim.asc = font_metrics::ascent(ic, font);
+			dim.asc = fm.ascent(ic);
 		if (plusasc)
-			dim.asc += (font_metrics::maxAscent(font) + 3) / 3;
+			dim.asc += (fm.maxAscent() + 3) / 3;
 
 		if (ic == ' ')
-			dim.des = font_metrics::descent('a', font);
+			dim.des = fm.descent('a');
 		else
-			dim.des = font_metrics::descent(ic, font);
+			dim.des = fm.descent(ic);
 		if (plusdesc)
 			dim.des += 3;
 
-		dim.wid = font_metrics::width(ic, font);
+		dim.wid = fm.width(ic);
 	} else {
-		dim.asc = font_metrics::maxAscent(font) + 4;
-		dim.des = font_metrics::maxDescent(font) + 4;
+		dim.asc = fm.maxAscent() + 4;
+		dim.des = fm.maxDescent() + 4;
 		docstring dcon(contents.begin(), contents.end());
-		dim.wid = font_metrics::width(dcon, font) + 4;
+		dim.wid = fm.width(dcon) + 4;
 	}
 	dim_ = dim;
-}
-
-
-int InsetLatexAccent::lbearing(LyXFont const & font) const
-{
-	return font_metrics::lbearing(ic, font);
-}
-
-
-int InsetLatexAccent::rbearing(LyXFont const & font) const
-{
-	return font_metrics::rbearing(ic, font);
 }
 
 
@@ -338,10 +331,13 @@ void InsetLatexAccent::drawAccent(PainterInfo const & pi, int x, int y,
 	char_type accent) const
 {
 	LyXFont const & font = pi.base.font;
-	x -= font_metrics::center(accent, font);
-	y -= font_metrics::ascent(ic, font);
-	y -= font_metrics::descent(accent, font);
-	y -= font_metrics::height(accent, font) / 2;
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+
+	x -= fm.center(accent);
+	y -= fm.ascent(ic);
+	y -= fm.descent(accent);
+	y -= fm.height(accent) / 2;
 	pi.pain.text(x, y, accent, font);
 }
 
@@ -360,13 +356,16 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		font.setLanguage(english_language);
 
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+
 	if (candisp) {
-		int x2 = int(x + (rbearing(font) - lbearing(font)) / 2);
+		int x2 = int(x + (fm.rbearing(ic) - fm.lbearing(ic)) / 2);
 		int hg;
 		int y;
 		if (plusasc) {
 			// mark at the top
-			hg = font_metrics::maxDescent(font);
+			hg = fm.maxDescent();
 			y = baseline - dim_.asc;
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
 				x2 += int(0.8 * hg); // italic
@@ -383,15 +382,15 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		pi.pain.text(x, baseline, ic, font);
 
 		if (remdot) {
-			int tmpvar = baseline - font_metrics::ascent('i', font);
+			int tmpvar = baseline - fm.ascent('i');
 			int tmpx = 0;
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
 				tmpx += int(0.8 * hg); // italic
 			lyxerr[Debug::KEY] << "Removing dot." << endl;
 			// remove the dot first
 			pi.pain.fillRectangle(x + tmpx, tmpvar, dim_.wid,
-					   font_metrics::ascent('i', pi.base.font) -
-					   font_metrics::ascent('x', pi.base.font) - 1,
+					   fm.ascent('i') -
+					   fm.ascent('x') - 1,
 					   backgroundColor());
 			// the five lines below is a simple hack to
 			// make the display of accent 'i' and 'j'
@@ -430,21 +429,21 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 
 		case UNDERBAR: {
 			char_type const underbar = 0x5F; //('\x5F');
-			pi.pain.text(x2 - font_metrics::center(underbar, font),
+			pi.pain.text(x2 - fm.center(underbar),
 				     baseline, underbar, font);
 			break;
 		}
 
 		case CEDILLA: {
 			char_type const cedilla = 0xB8; //('\xB8');
-			pi.pain.text(x2  - font_metrics::center(cedilla, font),
+			pi.pain.text(x2  - fm.center(cedilla),
 				     baseline, cedilla, font);
 			break;
 		}
 
 		case UNDERDOT:
-			pi.pain.text(x2  - font_metrics::center('.', font),
-				  int(baseline + 1.5 * font_metrics::height('.', font)),
+			pi.pain.text(x2  - fm.center('.'),
+				  int(baseline + 1.5 * fm.height('.')),
 				  '.', font);
 			break;
 
@@ -496,8 +495,8 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		}
 
 		case HUNGARIAN_UMLAUT:
-			drawAccent(pi, x2 - font_metrics::center('´', font), baseline, '´');
-			drawAccent(pi, x2 + font_metrics::center('´', font), baseline, '´');
+			drawAccent(pi, x2 - fm.center('´'), baseline, '´');
+			drawAccent(pi, x2 + fm.center('´'), baseline, '´');
 			break;
 
 		case UMLAUT:

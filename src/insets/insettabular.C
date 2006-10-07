@@ -38,7 +38,6 @@
 
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
-#include "frontends/font_metrics.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"

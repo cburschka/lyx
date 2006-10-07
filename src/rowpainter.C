@@ -32,7 +32,9 @@
 #include "ParagraphParameters.h"
 #include "vspace.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/nullpainter.h"
 #include "frontends/Painter.h"
 
@@ -45,6 +47,8 @@
 using lyx::docstring;
 using lyx::frontend::Painter;
 using lyx::frontend::NullPainter;
+using lyx::frontend::FontMetrics;
+
 using lyx::char_type;
 using lyx::pos_type;
 using lyx::pit_type;
@@ -198,7 +202,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 	str += c;
 	++vpos;
 
-	int const width = font_metrics::width(c, font);
+	int const width = theApp->fontLoader().metrics(font).width(c);
 	int dx = 0;
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
@@ -233,7 +237,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 	str += c;
 	++vpos;
 
-	int const width = font_metrics::width(c, font);
+	int const width = theApp->fontLoader().metrics(font).width(c);
 	int dx = 0;
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
@@ -313,10 +317,10 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 	//lyxerr << "paint row: yo_ " << yo_ << "\n";
 #if 0
 	pain_.text(int(x_), yo_, str, font);
-	x_ += font_metrics::width(str, font);
+	x_ += theApp->fontLoader().metrics(font).width(str);
 #else
 	pain_.text(int(x_), yo_, &str[0], str.size(), font);
-	x_ += font_metrics::width(&str[0], str.size(), font);
+	x_ += theApp->fontLoader().metrics(font).width(&str[0], str.size());
 #endif
 }
 
@@ -460,7 +464,7 @@ int RowPainter::paintAppendixStart(int y)
 	int a = 0;
 	int d = 0;
         docstring dlab(label.begin(), label.end());
-	font_metrics::rectText(dlab, pb_font, w, a, d);
+	theApp->fontLoader().metrics(pb_font).rectText(dlab, w, a, d);
 
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
@@ -515,6 +519,9 @@ void RowPainter::paintFirst()
 		      || is_seq)) {
 
 		LyXFont const font = getLabelFont();
+		FontMetrics const & fm =
+			theApp->fontLoader().metrics(font);
+
 		string const str = par_.getLabelstring();
 		if (!str.empty()) {
 			double x = x_;
@@ -531,14 +538,14 @@ void RowPainter::paintFirst()
 					spacing_val = buffer.params().spacing().getValue();
 				}
 
-				int const labeladdon = int(font_metrics::maxHeight(font) * layout->spacing.getValue() * spacing_val);
+				int const labeladdon = int(fm.maxHeight() * layout->spacing.getValue() * spacing_val);
 
-				int const maxdesc = int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val)
+				int const maxdesc = int(fm.maxDescent() * layout->spacing.getValue() * spacing_val)
 					+ int(layout->parsep) * defaultRowHeight();
 
 				if (is_rtl) {
 					x = width_ - leftMargin() -
-						font_metrics::width(dstr, font);
+						fm.width(dstr);
 				}
 
 				pain_.text(int(x), yo_ - maxdesc - labeladdon, dstr, font);
@@ -547,10 +554,10 @@ void RowPainter::paintFirst()
                                 docstring dlab(lab.begin(), lab.end());
 				if (is_rtl) {
 					x = width_ - leftMargin()
-						+ font_metrics::width(dlab, font);
+						+ fm.width(dlab);
 				} else {
-					x = x_ - font_metrics::width(dlab, font)
-						- font_metrics::width(dstr, font);
+					x = x_ - fm.width(dlab)
+						- fm.width(dstr);
 				}
 
 				pain_.text(int(x), yo_, dstr, font);
@@ -573,10 +580,14 @@ void RowPainter::paintFirst()
 			else
 				spacing_val = buffer.params().spacing().getValue();
 
-			int const labeladdon = int(font_metrics::maxHeight(font) * layout->spacing.getValue() * spacing_val);
+			FontMetrics const & fm =
+				theApp->fontLoader().metrics(font);
+
+			int const labeladdon = int(fm.maxHeight()
+				* layout->spacing.getValue() * spacing_val);
 
 			int maxdesc =
-				int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val
+				int(fm.maxDescent() * layout->spacing.getValue() * spacing_val
 				+ (layout->labelbottomsep * defaultRowHeight()));
 
 			double x = x_;
@@ -584,10 +595,9 @@ void RowPainter::paintFirst()
 				if (is_rtl)
 					x = leftMargin();
 				x += (width_ - text_.rightMargin(par_) - leftMargin()) / 2;
-				x -= font_metrics::width(dstr, font) / 2;
+				x -= fm.width(dstr) / 2;
 			} else if (is_rtl) {
-				x = width_ - leftMargin() -
-					font_metrics::width(dstr, font);
+				x = width_ - leftMargin() -	fm.width(dstr);
 			}
 			pain_.text(int(x), yo_ - maxdesc - labeladdon, dstr, font);
 		}
@@ -605,7 +615,8 @@ void RowPainter::paintLast()
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
 		LyXFont const font = getLabelFont();
-		int const size = int(0.75 * font_metrics::maxAscent(font));
+		FontMetrics const & fm = theApp->fontLoader().metrics(font);
+		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
 		int x = is_rtl ? nestMargin() + changebarMargin() : width_ - size;
 
@@ -621,10 +632,11 @@ void RowPainter::paintLast()
 
 	case END_LABEL_STATIC: {
 		LyXFont font = getLabelFont();
+		FontMetrics const & fm = theApp->fontLoader().metrics(font);
 		string const & str = par_.layout()->endlabelstring();
                 docstring dstr(str.begin(), str.end());
 		double const x = is_rtl ?
-			x_ - font_metrics::width(dstr, font)
+			x_ - fm.width(dstr)
 			: - text_.rightMargin(par_) - row_.width();
 		pain_.text(int(x), yo_, dstr, font);
 		break;
@@ -695,9 +707,9 @@ void RowPainter::paintText()
 		// We also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			// Calculate 1/3 height of the buffer's default font
-			int const middle =
-				yo_ -
-				font_metrics::maxAscent(bv_.buffer()->params().getFont()) / 3;
+			FontMetrics const & fm = theApp->fontLoader().metrics(
+				bv_.buffer()->params().getFont());
+			int const middle = yo_ - fm.maxAscent() / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
@@ -706,8 +718,8 @@ void RowPainter::paintText()
 		if (body_pos > 0 && pos == body_pos - 1) {
                         string lab = layout->labelsep;
                         docstring dlab(lab.begin(), lab.end());
-			int const lwidth = font_metrics::width(dlab,
-				getLabelFont());
+			int const lwidth =
+				theApp->fontLoader().metrics(getLabelFont()).width(dlab);
 
 			x_ += label_hfill_ + lwidth - width_pos;
 		}
@@ -751,9 +763,9 @@ void RowPainter::paintText()
 	// if we reach the end of a struck out range, paint it
 	if (running_strikeout) {
 		// calculate 1/3 height of the buffer's default font
-		int const middle =
-			yo_ -
-			font_metrics::maxAscent(bv_.buffer()->params().getFont()) / 3;
+		FontMetrics const & fm = theApp->fontLoader().metrics(
+			bv_.buffer()->params().getFont());
+		int const middle = yo_ - fm.maxAscent() / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;

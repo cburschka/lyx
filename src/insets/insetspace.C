@@ -21,7 +21,9 @@
 #include "metricsinfo.h"
 #include "outputparams.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 
@@ -48,18 +50,19 @@ InsetSpace::Kind InsetSpace::kind() const
 
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont & font = mi.base.font;
-	dim.asc = font_metrics::maxAscent(font);
-	dim.des = font_metrics::maxDescent(font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(mi.base.font);
+	dim.asc = fm.maxAscent();
+	dim.des = fm.maxDescent();
 
 	switch (kind_) {
 		case THIN:
 		case NEGTHIN:
-                    dim.wid = font_metrics::width(lyx::char_type('x'), font) / 3;
+                    dim.wid = fm.width(lyx::char_type('x')) / 3;
 			break;
 		case PROTECTED:
 		case NORMAL:
-                    dim.wid = font_metrics::width(lyx::char_type('x'), font);
+                    dim.wid = fm.width(lyx::char_type('x'));
 			break;
 		case QUAD:
 			dim.wid = 20;
@@ -79,7 +82,8 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	int const w = width();
-	int const h = font_metrics::ascent('x', pi.base.font);
+	int const h = theApp->fontLoader().metrics(pi.base.font)
+		.ascent('x');
 	int xp[4], yp[4];
 
 	xp[0] = x;

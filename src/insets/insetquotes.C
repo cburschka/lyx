@@ -24,7 +24,9 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/lstrings.h"
@@ -199,18 +201,20 @@ string const InsetQuotes::dispString(Language const * loclang) const
 void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
-	dim.asc = font_metrics::maxAscent(font);
-	dim.des = font_metrics::maxDescent(font);
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+	dim.asc = fm.maxAscent();
+	dim.des = fm.maxDescent();
 	dim.wid = 0;
 
 	string const text = dispString(font.language());
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
-			dim.wid += font_metrics::width('i', font);
+			dim.wid += fm.width('i');
 		else if (i == 0 || text[i] != text[i - 1])
-			dim.wid += font_metrics::width(text[i], font);
+			dim.wid += fm.width(text[i]);
 		else
-			dim.wid += font_metrics::width(',', font);
+			dim.wid += fm.width(',');
 	}
 	dim_ = dim;
 }
@@ -235,7 +239,8 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 
 	if (text.length() == 2 && text[0] == text[1]) {
 		pi.pain.text(x, y, text[0], pi.base.font);
-		int const t = font_metrics::width(',', pi.base.font);
+		int const t = theApp->fontLoader().metrics(pi.base.font)
+			.width(',');
 		pi.pain.text(x + t, y, text[0], pi.base.font);
 	} else {
                 docstring dtext(text.begin(), text.end());

@@ -21,7 +21,9 @@
 #include "lyxrc.h"
 #include "metricsinfo.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"
@@ -133,7 +135,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 		string stat = statusMessage(mi.base.bv, snippet_);
 		docstring dstat(stat.begin(), stat.end());
-		dim.wid = 15 + font_metrics::width(dstat, font);
+		dim.wid = 15 + theApp->fontLoader().metrics(font).width(dstat);
 	}
 
 	dim_ = dim;
@@ -168,7 +170,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		string stat = statusMessage(pi.base.bv, snippet_);
 		docstring dstat(stat.begin(), stat.end());
 		pi.pain.text(x + offset + 6,
-			     y - font_metrics::maxAscent(font) - 4,
+			     y - theApp->fontLoader().metrics(font).maxAscent() - 4,
 			     dstat, font);
 	}
 }

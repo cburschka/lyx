@@ -43,7 +43,6 @@
 #include "undo.h"
 
 #include "frontends/Alert.h"
-#include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
 #include "support/lyxalgo.h" // lyx::count

@@ -15,7 +15,9 @@
 #include "LColor.h"
 #include "metricsinfo.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 using lyx::docstring;
@@ -46,13 +48,15 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
-
-        docstring dtext(text_.begin(), text_.end());
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
+	
+	docstring dtext(text_.begin(), text_.end());
         
 	if (editable_)
-		font_metrics::buttonText(dtext, font, dim.wid, dim.asc, dim.des);
+		fm.buttonText(dtext, dim.wid, dim.asc, dim.des);
 	else
-		font_metrics::rectText(dtext, font, dim.wid, dim.asc, dim.des);
+		fm.rectText(dtext, dim.wid, dim.asc, dim.des);
 
 	dim.wid += 4;
 }

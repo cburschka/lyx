@@ -26,7 +26,9 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 using lyx::docstring;
@@ -121,8 +123,9 @@ void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
-        docstring dlab(label.begin(), label.end());
-	font_metrics::buttonText(dlab, labelfont_, dim.wid, dim.asc, dim.des);
+	docstring dlab(label.begin(), label.end());
+	theApp->fontLoader().metrics(labelfont_).buttonText(
+		dlab, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 

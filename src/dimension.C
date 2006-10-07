@@ -11,7 +11,9 @@
 #include <config.h>
 
 #include "dimension.h"
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 
 
 void Dimension::operator+=(Dimension const & dim)
@@ -26,7 +28,8 @@ void Dimension::operator+=(Dimension const & dim)
 
 void Dimension::clear(LyXFont const & font)
 {
-	asc = font_metrics::maxAscent(font);
-	des = font_metrics::maxDescent(font);
+	lyx::frontend::FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	asc = fm.maxAscent();
+	des = fm.maxDescent();
 	wid = 0;
 }

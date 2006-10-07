@@ -20,7 +20,9 @@
 #include "paragraph.h"
 #include "ParagraphList.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/Application.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
 
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
@@ -136,7 +138,10 @@ string const bibitemWidest(Buffer const & buffer)
 	// Does look like a hack? It is! (but will change at 0.13)
 
 	InsetBibitem const * bitem = 0;
+	// FIXME font is used unitialized, is that correct?
 	LyXFont font;
+	lyx::frontend::FontMetrics const & fm =
+		theApp->fontLoader().metrics(font);
 
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
@@ -147,7 +152,7 @@ string const bibitemWidest(Buffer const & buffer)
                         docstring const dlab(label.begin(), label.end());
                     
 			int const wx =
-				font_metrics::width(dlab, font);
+				fm.width(dlab);
 			if (wx > w) {
 				w = wx;
 				bitem = it->bibitem();
