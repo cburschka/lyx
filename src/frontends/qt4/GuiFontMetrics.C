@@ -177,7 +177,6 @@ void GuiFontMetrics::rectText(docstring const & str,
 void GuiFontMetrics::buttonText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
-	QFontMetrics const & m = metrics_;
 	static int const d = 3;
 	w = FontMetrics::width(str) + d * 2 + 2;
 	ascent = metrics_.ascent() + d;
