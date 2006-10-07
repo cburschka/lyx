@@ -19,13 +19,14 @@
 
 #include "support/docstring.h"
 
+#include <QChar>
+
 #include <vector>
 
 class LengthCombo;
 class QComboBox;
 class QLineEdit;
 class QString;
-class QChar;
 
 std::string makeFontName(std::string const & family, std::string const & foundry);
 
@@ -68,16 +69,19 @@ QString const toqstr(std::string const & str);
  */
 QString const toqstr(lyx::docstring const & ucs4);
 
-QString const ucs4_to_qstring(lyx::char_type const * str, size_t ls);
+void ucs4_to_qstring(lyx::char_type const * str, size_t ls, QString & s);
 
 lyx::docstring const qstring_to_ucs4(QString const & qstr);
 
 void qstring_to_ucs4(QString const & qstr, std::vector<lyx::char_type> & ucs4);
 
-lyx::char_type const qchar_to_ucs4(QChar const & qchar);
+inline lyx::char_type const qchar_to_ucs4(QChar const & qchar) {
+	return static_cast<lyx::char_type>(qchar.unicode());
+}
 
-QChar const ucs4_to_qchar(lyx::char_type const & ucs4);
-
+inline QChar const ucs4_to_qchar(lyx::char_type const ucs4) {
+	return QChar(static_cast<unsigned short>(ucs4));
+}
 
 /**
  * qt_ - i18nize string and convert to unicode

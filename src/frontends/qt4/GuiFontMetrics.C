@@ -137,7 +137,8 @@ int GuiFontMetrics::width(char_type const * s, size_t ls) const
 	if (!lyx_gui::use_gui)
 		return ls;
 
-	QString ucs2 = ucs4_to_qstring(s, ls);
+	QString ucs2;
+	ucs4_to_qstring(s, ls, ucs2);
 
 	if (smallcaps_shape_)
 		return smallcapsWidth(ucs2);

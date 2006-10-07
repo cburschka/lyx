@@ -231,14 +231,8 @@ void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 		encoding = encodings.symbol_encoding();
 #endif
 
-#if 0
 	QString str;
-	str.setLength(ls);
-	for (unsigned int i = 0; i < ls; ++i)
-		str[i] = QChar(encoding->ucs(s[i]));
-#else
-	QString str = ucs4_to_qstring(s, ls);
-#endif
+	ucs4_to_qstring(s, ls, str);
 
 #if 0
 	// HACK: QT3 refuses to show single compose characters

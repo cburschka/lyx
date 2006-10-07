@@ -120,15 +120,12 @@ QString const toqstr(string const & str)
 }
 
 
-QString const ucs4_to_qstring(char_type const * str, size_t ls)
+void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
 {
-	QString s;
 	s.reserve(ls);
 
 	for (size_t i = 0; i < ls; ++i)
 		s.append(ucs4_to_qchar(str[i]));
-
-	return s;
 }
 
 
@@ -161,18 +158,6 @@ void qstring_to_ucs4(QString const & qstr, vector<char_type> & ucs4)
 	ucs4.clear();
 	for (int i = 0; i < ls; ++i)
 		ucs4.push_back(static_cast<lyx::char_type>(qstr[i].unicode()));
-}
-
-
-char_type const qchar_to_ucs4(QChar const & qchar)
-{
-	return static_cast<lyx::char_type>(qchar.unicode());
-}
-
-
-QChar const ucs4_to_qchar(char_type const & ucs4)
-{
-	return QChar(static_cast<unsigned short>(ucs4));
 }
 
 
