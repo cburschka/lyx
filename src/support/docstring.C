@@ -122,7 +122,7 @@ lyx::docstring operator+(char l, lyx::docstring const & r)
 }
 
 
-lyx::docstring operator+=(lyx::docstring & l, char const * r)
+lyx::docstring & operator+=(lyx::docstring & l, char const * r)
 {
 	for (char const * c = r; *c; ++c) {
 		BOOST_ASSERT(static_cast<unsigned char>(*c) < 0x80);
@@ -132,7 +132,7 @@ lyx::docstring operator+=(lyx::docstring & l, char const * r)
 }
 
 
-lyx::docstring operator+=(lyx::docstring & l, char r)
+lyx::docstring & operator+=(lyx::docstring & l, char r)
 {
 	BOOST_ASSERT(static_cast<unsigned char>(r) < 0x80);
 	l.push_back(r);

@@ -64,10 +64,10 @@ lyx::docstring operator+(lyx::docstring const & l, char r);
 lyx::docstring operator+(char l, lyx::docstring const & r);
 
 /// Append a C string of ASCII characters to a docstring
-lyx::docstring operator+=(lyx::docstring &, char const *);
+lyx::docstring & operator+=(lyx::docstring &, char const *);
 
 /// Append a single ASCII character to a docstring
-lyx::docstring operator+=(lyx::docstring & l, char r);
+lyx::docstring & operator+=(lyx::docstring & l, char r);
 
 
 #if SIZEOF_WCHAR_T != 4 && defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
