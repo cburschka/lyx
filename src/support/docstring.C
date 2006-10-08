@@ -40,6 +40,19 @@ docstring const from_ascii(std::string const & ascii)
 }
 
 
+std::string const to_ascii(docstring const & ucs4)
+{
+	int const len = ucs4.length();
+	std::string ascii;
+	ascii.resize(len);
+	for (int i = 0; i < len; ++i) {
+		BOOST_ASSERT(ucs4[i] < 0x80);
+		ascii[i] = static_cast<char>(ucs4[i]);
+	}
+	return ascii;
+}
+
+
 docstring const from_utf8(std::string const & utf8)
 {
 	std::vector<lyx::char_type> const ucs4 =
@@ -106,6 +119,24 @@ lyx::docstring operator+(char l, lyx::docstring const & r)
 {
 	BOOST_ASSERT(static_cast<unsigned char>(l) < 0x80);
 	return lyx::docstring::value_type(l) + r;
+}
+
+
+lyx::docstring operator+=(lyx::docstring & l, char const * r)
+{
+	for (char const * c = r; *c; ++c) {
+		BOOST_ASSERT(static_cast<unsigned char>(*c) < 0x80);
+		l.push_back(*c);
+	}
+	return l;
+}
+
+
+lyx::docstring operator+=(lyx::docstring & l, char r)
+{
+	BOOST_ASSERT(static_cast<unsigned char>(r) < 0x80);
+	l.push_back(r);
+	return l;
 }
 
 

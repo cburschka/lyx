@@ -28,6 +28,9 @@ docstring const from_ascii(char const *);
 /// Creates a docstring from a std::string of ASCII characters
 docstring const from_ascii(std::string const &);
 
+/// Creates a std::string of ASCII characters from a docstring
+std::string const to_ascii(docstring const &);
+
 /// Creates a docstring from a UTF8 string. This should go eventually.
 docstring const from_utf8(std::string const &);
 
@@ -59,6 +62,12 @@ lyx::docstring operator+(lyx::docstring const & l, char r);
 
 /// Concatenate a single ASCII character and a docstring
 lyx::docstring operator+(char l, lyx::docstring const & r);
+
+/// Append a C string of ASCII characters to a docstring
+lyx::docstring operator+=(lyx::docstring &, char const *);
+
+/// Append a single ASCII character to a docstring
+lyx::docstring operator+=(lyx::docstring & l, char r);
 
 
 #if SIZEOF_WCHAR_T != 4 && defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4
