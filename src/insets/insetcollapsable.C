@@ -264,7 +264,7 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 		++i;
 	}
 	if (paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
-		label += lyx::from_utf8("...");
+		label += "...";
 	}
 	return label.empty() ? l : label;
 }

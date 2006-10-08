@@ -150,7 +150,7 @@ void InsetBox::setButtonLabel()
 	docstring label;
 	// FIXME UNICODE
 	label += _("Box");
-	label += lyx::from_utf8(" (");
+	label += " (";
 	if (btype == Frameless) {
 		if (params_.use_parbox)
 			label += _("Parbox");
@@ -159,7 +159,7 @@ void InsetBox::setButtonLabel()
 	} else
 		// FXIME unicode
 		label += lyx::from_utf8(boxtranslator_loc().find(btype));
-	label += lyx::from_utf8(")");
+	label += ")";
 
 	setLabel(label);
 
