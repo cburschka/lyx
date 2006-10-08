@@ -735,6 +735,7 @@ src_frontends_qt3_header_files = Split('''
     FileDialog_private.h
     GuiApplication.h
     GuiClipboard.h
+    GuiFontMetrics.h
     GuiImplementation.h
     GuiSelection.h
     GuiWorkArea.h
@@ -856,6 +857,7 @@ src_frontends_qt3_files = Split('''
     FileDialog_private.C
     GuiApplication.C
     GuiClipboard.C
+    GuiFontMetrics.C
     GuiSelection.C
     LyXKeySymFactory.C
     QAbout.C
@@ -956,7 +958,6 @@ src_frontends_qt3_files = Split('''
     panelstack.C
     qcoloritem.C
     qfont_loader.C
-    qfont_metrics.C
     qfontexample.C
     qscreen.C
     qsetborder.C

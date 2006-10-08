@@ -23,7 +23,7 @@
 
 #include "support/unicode.h"
 
-#include "frontends/font_metrics.h"
+#include "frontends/FontMetrics.h"
 
 #include <qpainter.h>
 
@@ -245,7 +245,7 @@ void QLPainter::text(int x, int y, lyx::char_type const * s, size_t ls,
 	}
 
 	if (f.underbar() == LyXFont::ON) {
-		underline(f, x, y, font_metrics::width(s, ls, f));
+		underline(f, x, y, qp_->fontMetrics().width(str));
 	}
 }
 

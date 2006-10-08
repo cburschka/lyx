@@ -126,6 +126,15 @@ QString const toqstr(docstring const & str)
 }
 
 
+QString const toqstr(lyx::char_type const * str, size_t ls)
+{
+	std::vector<unsigned short> ucs2 =
+		ucs4_to_ucs2(str, ls);
+	ucs2.push_back('\0');
+	return QString::fromUcs2(&ucs2[0]);
+}
+
+
 QString const qt_(char const * str)
 {
 	return toqstr(_(str));

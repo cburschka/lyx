@@ -36,6 +36,7 @@ libqt3_la_SOURCES = \
 	FileDialog.C \
 	GuiApplication.C GuiApplication.h \
 	GuiClipboard.C GuiClipboard.h \
+	GuiFontMetrics.C GuiFontMetrics.h \
 	GuiImplementation.h \
 	GuiSelection.C GuiSelection.h \
 	GuiWorkArea.h \
@@ -91,7 +92,6 @@ libqt3_la_SOURCES = \
 	qcoloritem.h qcoloritem.C \
 	qfontexample.h qfontexample.C \
 	qfont_loader.h qfont_loader.C \
-	qfont_metrics.C \
 	qlkey.h \
 	qscreen.h qscreen.C \
 	qt_helpers.h qt_helpers.C \

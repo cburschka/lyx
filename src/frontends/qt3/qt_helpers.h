@@ -17,10 +17,11 @@
 #include "lyxlength.h"
 #include "support/docstring.h"
 
+#include <qstring.h>
+
 class LengthCombo;
 class QComboBox;
 class QLineEdit;
-class QString;
 
 std::string makeFontName(std::string const & family, std::string const & foundry);
 
@@ -60,6 +61,17 @@ QString const toqstr(std::string const & str);
  * toqstr - convert UCS4 encoded docstring to QString
  */
 QString const toqstr(lyx::docstring const & str);
+
+
+/**
+ * toqstr - convert UCS4 encoded docstring to QString
+ */
+QString const toqstr(lyx::char_type const * str, size_t ls);
+
+
+inline QChar const ucs4_to_qchar(lyx::char_type const ucs4) {
+	return QChar(static_cast<unsigned short>(ucs4));
+}
 
 
 /**

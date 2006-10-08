@@ -14,19 +14,13 @@
 
 #include "frontends/FontLoader.h"
 
+#include "GuiFontMetrics.h"
+
 #include "encoding.h"
 #include "lyxfont.h"
 
 #include <qfont.h>
-#include <qfontmetrics.h>
 
-#if QT_VERSION < 0x030100 || defined(Q_WS_MACX)
-#define USE_LYX_FONTCACHE
-#endif
-
-#if defined(USE_LYX_FONTCACHE)
-#include <map>
-#endif
 
 /**
  * Qt font loader for LyX. Matches LyXFonts against
@@ -36,19 +30,10 @@ class QLFontInfo {
 public:
 	QLFontInfo(LyXFont const & f);
 
-	/// Return pixel width for the given unicode char
-	int width(Uchar val);
-
 	/// The font instance
 	QFont font;
 	/// Metrics on the font
-	QFontMetrics metrics;
-
-#if defined(USE_LYX_FONTCACHE)
-	typedef std::map<Uchar, int> WidthCache;
-	/// Cache of char widths
-	WidthCache widthcache;
-#endif
+	boost::scoped_ptr<lyx::frontend::GuiFontMetrics> metrics;
 };
 
 
@@ -73,8 +58,8 @@ public:
 	}
 
 	/// Get the QFont metrics for this LyXFont
-	QFontMetrics const & metrics(LyXFont const & f) {
-		return fontinfo(f).metrics;
+	lyx::frontend::FontMetrics const & metrics(LyXFont const & f) {
+		return *(fontinfo(f).metrics);
 	}
 
 	/// Called the first time when available() can't load a symbol font
