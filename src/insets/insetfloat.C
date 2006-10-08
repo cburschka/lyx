@@ -114,27 +114,12 @@ using std::ostringstream;
 //
 // Lgb
 
-namespace {
-
-string floatname(string const & type, BufferParams const & bp)
-{
-	FloatList const & floats = bp.getLyXTextClass().floats();
-	FloatList::const_iterator it = floats[type];
-	if (it == floats.end())
-		return type;
-
-	// FIXME UNICODE
-	return lyx::to_utf8(_(it->second.name()));
-}
-
-} // namespace anon
-
 
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
 	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("float: ")) + floatname(type, bp));
+	setLabel(lyx::to_utf8(_("float: ")) + floatName(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -375,7 +360,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
 	// FIXME UNICODE
-	string lab = lyx::to_utf8(_("float: ")) + floatname(params_.type, bp);
+	string lab = lyx::to_utf8(_("float: ")) + floatName(params_.type, bp);
 	if (params_.wide)
 		lab += '*';
 	setLabel(lab);
@@ -386,7 +371,7 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 {
 	params_.sideways = s;
 	// FIXME UNICODE
-	string lab = lyx::to_utf8(_("float: ")) + floatname(params_.type, bp);
+	string lab = lyx::to_utf8(_("float: ")) + floatName(params_.type, bp);
 	if (params_.sideways)
 		lab += lyx::to_utf8(_(" (sideways)"));
 	setLabel(lab);

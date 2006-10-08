@@ -15,11 +15,14 @@
 #include "insetcollapsable.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "BufferView.h"
 #include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
+#include "FloatList.h"
 #include "FuncStatus.h"
+#include "gettext.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "funcrequest.h"
@@ -406,4 +409,12 @@ void InsetCollapsable::setStatus(LCursor & cur, CollapseStatus status)
 void InsetCollapsable::setLabelFont(LyXFont & font)
 {
 	labelfont_ = font;
+}
+
+string InsetCollapsable::floatName(string const & type, BufferParams const & bp)
+{
+	FloatList const & floats = bp.getLyXTextClass().floats();
+	FloatList::const_iterator it = floats[type];
+	// FIXME UNICODE
+	return (it == floats.end()) ? type : lyx::to_utf8(_(it->second.name()));
 }

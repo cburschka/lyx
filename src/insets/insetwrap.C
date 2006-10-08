@@ -44,24 +44,11 @@ using std::ostream;
 using std::ostringstream;
 
 
-namespace {
-
-string floatname(string const & type, BufferParams const & bp)
-{
-	FloatList const & floats = bp.getLyXTextClass().floats();
-	FloatList::const_iterator it = floats[type];
-	// FIXME UNICODE
-	return (it == floats.end()) ? type : lyx::to_utf8(_(it->second.name()));
-}
-
-} // namespace anon
-
-
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
 	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("wrap: ")) + floatname(type, bp));
+	setLabel(lyx::to_utf8(_("wrap: ")) + floatName(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();

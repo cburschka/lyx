@@ -20,6 +20,8 @@
 #include "box.h"
 #include "lyxfont.h"
 
+#include <string>
+
 class LyXText;
 class Paragraph;
 class CursorSlice;
@@ -94,6 +96,8 @@ protected:
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
 	void setInlined() { status_ = Inlined; }
+	///
+	std::string floatName(std::string const & type, BufferParams const &);
 
 protected:
 	///
