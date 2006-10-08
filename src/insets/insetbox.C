@@ -147,18 +147,19 @@ void InsetBox::setButtonLabel()
 
 	BoxType btype = boxtranslator().find(params_.type);
 
-	string label;
+	docstring label;
 	// FIXME UNICODE
-	label += lyx::to_utf8(_("Box"));
-	label += " (";
+	label += _("Box");
+	label += lyx::from_utf8(" (");
 	if (btype == Frameless) {
 		if (params_.use_parbox)
-			label += lyx::to_utf8(_("Parbox"));
+			label += _("Parbox");
 		else
-			label += lyx::to_utf8(_("Minipage"));
+			label += _("Minipage");
 	} else
-		label += boxtranslator_loc().find(btype);
-	label += ")";
+		// FXIME unicode
+		label += lyx::from_utf8(boxtranslator_loc().find(btype));
+	label += lyx::from_utf8(")");
 
 	setLabel(label);
 

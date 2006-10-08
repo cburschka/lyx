@@ -118,8 +118,7 @@ using std::ostringstream;
 InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
-	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("float: ")) + floatName(type, bp));
+	setLabel(_("float: ") + floatName(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -359,8 +358,7 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
-	// FIXME UNICODE
-	string lab = lyx::to_utf8(_("float: ")) + floatName(params_.type, bp);
+	docstring lab = _("float: ") + floatName(params_.type, bp);
 	if (params_.wide)
 		lab += '*';
 	setLabel(lab);
@@ -370,10 +368,9 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 void InsetFloat::sideways(bool s, BufferParams const & bp)
 {
 	params_.sideways = s;
-	// FIXME UNICODE
-	string lab = lyx::to_utf8(_("float: ")) + floatName(params_.type, bp);
+	docstring lab = _("float: ") + floatName(params_.type, bp);
 	if (params_.sideways)
-		lab += lyx::to_utf8(_(" (sideways)"));
+		lab += _(" (sideways)");
 	setLabel(lab);
 }
 

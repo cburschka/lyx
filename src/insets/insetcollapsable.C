@@ -52,7 +52,7 @@ InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 
 InsetCollapsable::InsetCollapsable
 		(BufferParams const & bp, CollapseStatus status)
-	: InsetText(bp), label("Label"), status_(status),
+	: InsetText(bp), label(lyx::from_ascii("Label")), status_(status),
 	  openinlined_(false), autoOpen_(false)
 {
 	setAutoBreakRows(true);
@@ -249,9 +249,9 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 }
 
 
-string const InsetCollapsable::getNewLabel(string const & l) const
+docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 {
-	string label;
+	docstring label;
 	pos_type const max_length = 15;
 	pos_type const p_siz = paragraphs().begin()->size();
 	pos_type const n = min(max_length, p_siz);
@@ -264,7 +264,7 @@ string const InsetCollapsable::getNewLabel(string const & l) const
 		++i;
 	}
 	if (paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
-		label += "...";
+		label += lyx::from_utf8("...");
 	}
 	return label.empty() ? l : label;
 }
@@ -391,7 +391,7 @@ bool InsetCollapsable::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetCollapsable::setLabel(string const & l)
+void InsetCollapsable::setLabel(docstring const & l)
 {
 	label = l;
 }
@@ -411,10 +411,10 @@ void InsetCollapsable::setLabelFont(LyXFont & font)
 	labelfont_ = font;
 }
 
-string InsetCollapsable::floatName(string const & type, BufferParams const & bp)
+docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp)
 {
 	FloatList const & floats = bp.getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
-	return (it == floats.end()) ? type : lyx::to_utf8(_(it->second.name()));
+	return (it == floats.end()) ? lyx::from_ascii(type) : _(it->second.name());
 }

@@ -33,8 +33,7 @@ using std::ostream;
 InsetFoot::InsetFoot(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
-	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("foot")));
+	setLabel(_("foot"));
 	setInsetName("Foot");
 }
 
@@ -42,8 +41,7 @@ InsetFoot::InsetFoot(BufferParams const & bp)
 InsetFoot::InsetFoot(InsetFoot const & in)
 	: InsetFootlike(in)
 {
-	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("foot")));
+	setLabel(_("foot"));
 	setInsetName("Foot");
 }
 

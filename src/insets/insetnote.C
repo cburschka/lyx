@@ -166,7 +166,8 @@ void InsetNote::read(Buffer const & buf, LyXLex & lex)
 
 void InsetNote::setButtonLabel()
 {
-	string const label = notetranslator_loc().find(params_.type);
+	// FIXME unicode
+	docstring const label = lyx::from_utf8(notetranslator_loc().find(params_.type));
 	setLabel(label);
 
 	LyXFont font(LyXFont::ALL_SANE);

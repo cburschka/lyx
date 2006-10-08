@@ -47,8 +47,7 @@ using std::ostringstream;
 InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	: InsetCollapsable(bp)
 {
-	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("wrap: ")) + floatName(type, bp));
+	setLabel(_("wrap: ") + floatName(type, bp));
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();

@@ -33,8 +33,7 @@ InsetOptArg::InsetOptArg(BufferParams const & ins)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("opt")));
+	setLabel(_("opt"));
 }
 
 
@@ -44,8 +43,7 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	// FIXME UNICODE
-	setLabel(lyx::to_utf8(_("opt")));
+	setLabel(_("opt"));
 }
 
 

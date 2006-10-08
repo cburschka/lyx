@@ -97,14 +97,13 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 
 	// FIXME UNICODE
-	string s = lyx::to_utf8(_("Branch: ")) + params_.branch;
+	docstring s = _("Branch: ") + lyx::from_utf8(params_.branch);
 	font.setColor(LColor::foreground);
 	if (!params_.branch.empty()) {
 		LColor_color c = lcolor.getFromLyXName(params_.branch);
 		if (c == LColor::none) {
 			c = LColor::error;
-			// FIXME UNICODE
-			s = lyx::to_utf8(_("Undef: ")) + s;
+			s = _("Undef: ") + s;
 		}
 		setBackgroundColor(c);
 	} else

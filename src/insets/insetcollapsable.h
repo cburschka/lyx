@@ -59,13 +59,13 @@ public:
 	///
 	bool hitButton(FuncRequest const &) const;
 	///
-	std::string const getNewLabel(std::string const & l) const;
+	lyx::docstring const getNewLabel(lyx::docstring const & l) const;
 	///
 	EDITABLE editable() const;
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
-	void setLabel(std::string const & l);
+	void setLabel(lyx::docstring const & l);
 	///
 	virtual void setButtonLabel() {}
 	///
@@ -97,7 +97,7 @@ protected:
 	///
 	void setInlined() { status_ = Inlined; }
 	///
-	std::string floatName(std::string const & type, BufferParams const &);
+	lyx::docstring floatName(std::string const & type, BufferParams const &);
 
 protected:
 	///
@@ -109,7 +109,7 @@ protected:
 	///
 	mutable int topbaseline;
 	///
-	mutable std::string label;
+	mutable lyx::docstring label;
 private:
 	///
 	mutable CollapseStatus status_;

@@ -382,7 +382,7 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 void InsetERT::setButtonLabel()
 {
 	// FIXME UNICODE
-	setLabel(isOpen() ?  lyx::to_utf8(_("ERT")) : getNewLabel(lyx::to_utf8(_("ERT"))));
+	setLabel(isOpen() ?  _("ERT") : getNewLabel(_("ERT")));
 }
 
 
