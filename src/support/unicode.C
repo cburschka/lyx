@@ -84,8 +84,8 @@ iconv_convert(iconv_t * cd,
 			       << " to " << tocode << ".\n";
 			lyxerr << "Input: " << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
-				unsigned char const b = buf[i];
-				lyxerr << "0x" << int(b) << " ";
+				boost::uint32_t const b = buf[i];
+				lyxerr << "0x" << b << " ";
 			}
 			lyxerr << endl;
 			break;
@@ -96,8 +96,8 @@ iconv_convert(iconv_t * cd,
 			       << " to " << tocode << ".\n";
 			lyxerr << "Input: " << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
-				unsigned char const b = buf[i];
-				lyxerr << "0x" << int(b) << " ";
+				boost::uint32_t const b = buf[i];
+				lyxerr << "0x" << b << " ";
 			}
 			lyxerr << endl;
 			break;
