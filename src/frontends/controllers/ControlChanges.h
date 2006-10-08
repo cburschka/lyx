@@ -14,6 +14,8 @@
 
 #include "Dialog.h"
 
+#include "support/docstring.h"
+
 namespace lyx {
 namespace frontend {
 
@@ -42,10 +44,10 @@ public:
 	bool changed();
 
 	/// return date of change
-	std::string const getChangeDate();
+	lyx::docstring const getChangeDate();
 
 	/// return author of change
-	std::string const getChangeAuthor();
+	lyx::docstring const getChangeAuthor();
 
 	/// accept the current merge
 	bool accept();

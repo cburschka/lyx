@@ -51,8 +51,8 @@ void QChanges::build_dialog()
 void QChanges::update_contents()
 {
 	docstring text;
-	docstring author = lyx::from_utf8(controller().getChangeAuthor());
-	docstring date = lyx::from_utf8(controller().getChangeDate());
+	docstring author = controller().getChangeAuthor();
+	docstring date = controller().getChangeDate();
 
 	if (!author.empty())
 		text += bformat(_("Change by %1$s\n\n"), author);

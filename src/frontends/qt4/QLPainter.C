@@ -183,13 +183,13 @@ void QLPainter::image(int x, int y, int w, int h,
 }
 
 
-void QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
+int QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
     return text(x, y, reinterpret_cast<char_type const *>(s.data()), s.length(), f);
 }
 
 
-void QLPainter::text(int x, int y, char_type c, LyXFont const & f)
+int QLPainter::text(int x, int y, char_type c, LyXFont const & f)
 {
 	char_type s[2] = { c, char_type('\0') };
 	return text(x, y, s, 1, f);
@@ -222,7 +222,7 @@ int QLPainter::smallCapsText(int x, int y,
 }
 
 
-void QLPainter::text(int x, int y, char_type const * s, size_t ls,
+int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	LyXFont const & f)
 {
 #if 0
@@ -260,6 +260,7 @@ void QLPainter::text(int x, int y, char_type const * s, size_t ls,
 		underline(f, x, y, textwidth);
 	}
 
+	return textwidth;
 }
 
 

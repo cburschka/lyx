@@ -102,17 +102,18 @@ void GChanges::onNext()
 
 void GChanges::promptChange()
 {
-	string const header = lyx::to_utf8(_("Accept highlighted change?"));
-	string author = controller().getChangeAuthor();
-	string date = controller().getChangeDate();
+	docstring const header = _("Accept highlighted change?");
+	docstring author = controller().getChangeAuthor();
+	docstring date = controller().getChangeDate();
 	if(author.empty())
-		author = lyx::to_utf8(_("unknown author"));
+		author = _("unknown author");
 	if(date.empty())
-		date = lyx::to_utf8(_("unknown date"));
+		date = _("unknown date");
 
-	messagelabel_->set_markup("<big><b>" + header +
-				"</b></big>\n\nChanged by <b>" + author
-				+ "</b> on <b>" + date + "</b>");
+	// FIXME UNICODE in set_markup():
+	messagelabel_->set_markup("<big><b>" + lyx::to_utf8(header) +
+				"</b></big>\n\nChanged by <b>" + lyx::to_utf8(author)
+				+ "</b> on <b>" + lyx::to_utf8(date) + "</b>");
 
 	acceptbutton_->set_sensitive(true && !readOnly());
 	rejectbutton_->set_sensitive(true && !readOnly());

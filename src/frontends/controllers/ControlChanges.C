@@ -21,6 +21,8 @@
 #include "lyxfind.h"
 #include "support/lyxtime.h"
 
+using lyx::docstring;
+
 using std::string;
 
 namespace lyx {
@@ -46,29 +48,32 @@ bool ControlChanges::changed()
 }
 
 
-string const ControlChanges::getChangeDate()
+docstring const ControlChanges::getChangeDate()
 {
 	Change c(kernel().bufferview()->getCurrentChange());
 	if (c.type == Change::UNCHANGED || !c.changetime)
-		return string();
+		return docstring();
 
-	return formatted_time(c.changetime);
+	// FIXME UNICODE
+	return lyx::from_utf8(formatted_time(c.changetime));
 }
 
 
-string const ControlChanges::getChangeAuthor()
+docstring const ControlChanges::getChangeAuthor()
 {
 	Change c(kernel().bufferview()->getCurrentChange());
 	if (c.type == Change::UNCHANGED)
-		return string();
+		return docstring();
 
 	Author const & a(kernel().buffer().params().authors().get(c.author));
 
-	string author(a.name());
+	// FIXME UNICODE in Author class
+	docstring author(lyx::from_utf8(a.name()));
 
 	if (!a.email().empty()) {
 		author += " (";
-		author += a.email() + ")";
+		author += lyx::from_utf8(a.email());
+		author += ")";
 	}
 
 	return author;
