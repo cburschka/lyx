@@ -810,11 +810,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_FONT:
 		if (current_font.shape() == LyXFont::ITALIC_SHAPE)
-			cur.message(lyx::from_utf8("E"));
+			cur.message(lyx::from_ascii("E"));
 		else if (current_font.shape() == LyXFont::SMALLCAPS_SHAPE)
-			cur.message(lyx::from_utf8("N"));
+			cur.message(lyx::from_ascii("N"));
 		else
-			cur.message(lyx::from_utf8("0"));
+			cur.message(lyx::from_ascii("0"));
 		break;
 
 	case LFUN_SERVER_GET_LAYOUT:
