@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-09-18 10:43+0200\n"
-"PO-Revision-Date: 2006-09-28 21:35-0400\n"
-"Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
+"PO-Revision-Date: 2006-10-05 22:49-0400\n"
+"Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
@@ -5221,9 +5221,8 @@ msgid "Claim"
 msgstr "Declaraþie"
 
 #: lib/layouts/IEEEtran.layout:214
-#, fuzzy
 msgid "Claim #:"
-msgstr "Declaraþie"
+msgstr "Declaraþie #:"
 
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/amsart-plain.layout:121
 #: lib/layouts/amsart-seq.layout:233 lib/layouts/apa.layout:213
@@ -5832,7 +5831,6 @@ msgstr "Remarcã"
 #: lib/layouts/amsart-plain.layout:117 lib/layouts/llncs.layout:309
 #: lib/layouts/amsmaths-plain.inc:185 lib/layouts/amsmaths.inc:410
 #: lib/layouts/svjour.inc:363
-#, fuzzy
 msgid "Claim."
 msgstr "Declaraþie"
 
@@ -5880,79 +5878,79 @@ msgstr "Concluzie"
 
 #: lib/layouts/amsart-seq.layout:139 lib/layouts/ijmpc.layout:219
 msgid "Theorem \\arabic{theorem}."
-msgstr ""
+msgstr "Teoremã \\arabic{theorem}"
 
 #: lib/layouts/amsart-seq.layout:145 lib/layouts/ijmpc.layout:254
 msgid "Corollary \\arabic{corollary}."
-msgstr ""
+msgstr "Corolar \\arabic{corollary}"
 
 #: lib/layouts/amsart-seq.layout:151 lib/layouts/ijmpc.layout:264
 msgid "Lemma \\arabic{lemma}."
-msgstr ""
+msgstr "Lemã \\arabic{lemma}"
 
 #: lib/layouts/amsart-seq.layout:157 lib/layouts/ijmpc.layout:274
 msgid "Proposition \\arabic{proposition}."
-msgstr ""
+msgstr "Propoziþie \\arabic{proposition}"
 
 #: lib/layouts/amsart-seq.layout:163 lib/layouts/ijmpc.layout:314
 msgid "Conjecture \\arabic{conjecture}."
-msgstr ""
+msgstr "Conjecturã \\arabic{conjecture}"
 
 #: lib/layouts/amsart-seq.layout:169
 msgid "Criterion \\arabic{criterion}."
-msgstr ""
+msgstr "Criteriu \\arabic{criterion}"
 
 #: lib/layouts/amsart-seq.layout:175
 msgid "Algorithm \\arabic{algorithm}."
-msgstr ""
+msgstr "Algoritm \\arabic{algorithm}"
 
 #: lib/layouts/amsart-seq.layout:181
 msgid "Fact \\arabic{fact}."
-msgstr ""
+msgstr "Fapt \\arabic{fact}"
 
 #: lib/layouts/amsart-seq.layout:187
 msgid "Axiom \\arabic{axiom}."
-msgstr ""
+msgstr "Axiomã \\arabic{axiom}"
 
 #: lib/layouts/amsart-seq.layout:193 lib/layouts/ijmpc.layout:153
 msgid "Definition \\arabic{definition}."
-msgstr ""
+msgstr "Definiþie \\arabic{definition}"
 
 #: lib/layouts/amsart-seq.layout:199 lib/layouts/ijmpc.layout:182
 msgid "Example \\arabic{example}."
-msgstr ""
+msgstr "Exemplu \\arabic{example}"
 
 #: lib/layouts/amsart-seq.layout:205
 msgid "Condition \\arabic{condition}."
-msgstr ""
+msgstr "Condiþie \\arabic{condition}"
 
 #: lib/layouts/amsart-seq.layout:211
 msgid "Problem \\arabic{problem}."
-msgstr ""
+msgstr "Problemã \\arabic{problem}"
 
 #: lib/layouts/amsart-seq.layout:217
 msgid "Exercise \\arabic{exercise}."
-msgstr ""
+msgstr "Exerciþiu \\arabic{exercise}"
 
 #: lib/layouts/amsart-seq.layout:223 lib/layouts/ijmpc.layout:192
 msgid "Remark \\arabic{remark}."
-msgstr ""
+msgstr "Remarcã \\arabic{remark}"
 
 #: lib/layouts/amsart-seq.layout:229 lib/layouts/ijmpc.layout:304
 msgid "Claim \\arabic{claim}."
-msgstr ""
+msgstr "Declaraþie \\arabic{claim}"
 
 #: lib/layouts/amsart-seq.layout:235
 msgid "Note \\arabic{note}."
-msgstr ""
+msgstr "Notã \\arabic{note}"
 
 #: lib/layouts/amsart-seq.layout:241 lib/layouts/ijmpc.layout:202
 msgid "Notation \\arabic{notation}."
-msgstr ""
+msgstr "Notaþie \\arabic{notation}"
 
 #: lib/layouts/amsart-seq.layout:247
 msgid "Summary \\arabic{summary}."
-msgstr ""
+msgstr "Sumar \\arabic{summary}"
 
 #: lib/layouts/amsart-seq.layout:253
 msgid "Acknowledgement \\arabic{acknowledgement}."
@@ -5960,17 +5958,16 @@ msgstr ""
 
 #: lib/layouts/amsart-seq.layout:259
 msgid "Case \\arabic{case}."
-msgstr ""
+msgstr "Caz \\arabic{case}"
 
 #: lib/layouts/amsart-seq.layout:265
 msgid "Conclusion \\arabic{conclusion}."
-msgstr ""
+msgstr "Concluzie \\arabic{conclusion}"
 
 #: lib/layouts/amsbook.layout:96 lib/layouts/amsbook.layout:97
 #: lib/layouts/numarticle.inc:16
-#, fuzzy
 msgid "\\arabic{section}"
-msgstr "Subsecþiune"
+msgstr "\\arabic{section}"
 
 #: lib/layouts/amsbook.layout:109
 msgid "Chapter Exercises"
@@ -5985,7 +5982,6 @@ msgid "Right header:"
 msgstr "Antet Dreapta"
 
 #: lib/layouts/apa.layout:83
-#, fuzzy
 msgid "Abstract:"
 msgstr "Abstract "
 
@@ -6104,7 +6100,7 @@ msgstr "ACT"
 
 #: lib/layouts/broadway.layout:69
 msgid "ACT \\arabic{act}"
-msgstr ""
+msgstr "ACT \\arabic{act}"
 
 #: lib/layouts/broadway.layout:73 lib/layouts/broadway.layout:102
 msgid "SCENE"
@@ -6112,7 +6108,7 @@ msgstr "SCENÃ"
 
 #: lib/layouts/broadway.layout:86
 msgid "SCENE \\arabic{scene}"
-msgstr ""
+msgstr "SCENÃ"
 
 #: lib/layouts/broadway.layout:90
 msgid "SCENE*"
@@ -6152,7 +6148,6 @@ msgid "Mainline"
 msgstr "LiniaPrincipalã"
 
 #: lib/layouts/chess.layout:40
-#, fuzzy
 msgid "Mainline:"
 msgstr "LiniaPrincipalã"
 
@@ -6161,7 +6156,6 @@ msgid "Variation"
 msgstr "Variaþie"
 
 #: lib/layouts/chess.layout:62
-#, fuzzy
 msgid "Variation:"
 msgstr "Variaþie"
 
@@ -6170,7 +6164,6 @@ msgid "SubVariation"
 msgstr "SubVariaþie"
 
 #: lib/layouts/chess.layout:71
-#, fuzzy
 msgid "Subvariation:"
 msgstr "SubVariaþie"
 
@@ -6179,7 +6172,6 @@ msgid "SubVariation2"
 msgstr "SubVariaþie2"
 
 #: lib/layouts/chess.layout:80
-#, fuzzy
 msgid "Subvariation(2):"
 msgstr "SubVariaþie2"
 
@@ -6188,7 +6180,6 @@ msgid "SubVariation3"
 msgstr "SubVariaþie3"
 
 #: lib/layouts/chess.layout:89
-#, fuzzy
 msgid "Subvariation(3):"
 msgstr "SubVariaþie3"
 
@@ -6197,7 +6188,6 @@ msgid "SubVariation4"
 msgstr "SubVariaþie4"
 
 #: lib/layouts/chess.layout:98
-#, fuzzy
 msgid "Subvariation(4):"
 msgstr "SubVariaþie4"
 
@@ -6206,7 +6196,6 @@ msgid "SubVariation5"
 msgstr "SubVariaþie5"
 
 #: lib/layouts/chess.layout:107
-#, fuzzy
 msgid "Subvariation(5):"
 msgstr "SubVariaþie5"
 
@@ -6215,7 +6204,6 @@ msgid "HideMoves"
 msgstr "MutãriAscunse"
 
 #: lib/layouts/chess.layout:119
-#, fuzzy
 msgid "HideMoves:"
 msgstr "MutãriAscunse"
 
@@ -6234,23 +6222,21 @@ msgstr "TablãCentratã"
 
 #: lib/layouts/chess.layout:142
 msgid "[centered board]"
-msgstr ""
+msgstr "[tablã centratã]"
 
 #: lib/layouts/chess.layout:152
 msgid "HighLight"
 msgstr "Evidenþiere"
 
 #: lib/layouts/chess.layout:157
-#, fuzzy
 msgid "Highlights:"
-msgstr "Evidenþiere"
+msgstr "Evidenþieri"
 
 #: lib/layouts/chess.layout:172
 msgid "Arrow"
 msgstr "Sãgeatã"
 
 #: lib/layouts/chess.layout:177
-#, fuzzy
 msgid "Arrow:"
 msgstr "Sãgeatã"
 
@@ -6259,7 +6245,6 @@ msgid "KnightMove"
 msgstr "MutareCal"
 
 #: lib/layouts/chess.layout:188
-#, fuzzy
 msgid "KnightMove:"
 msgstr "MutareCal"
 
@@ -6301,9 +6286,8 @@ msgid "Send To Address"
 msgstr "Adresã_Destinaþie"
 
 #: lib/layouts/dinbrief.layout:34 lib/layouts/g-brief-de.layout:184
-#, fuzzy
 msgid "Adresse:"
-msgstr "Adresse"
+msgstr "Destinatar"
 
 #: lib/layouts/dinbrief.layout:46 lib/layouts/g-brief-en.layout:204
 #: lib/layouts/g-brief2.layout:864 lib/layouts/scrlettr.layout:62
@@ -6352,7 +6336,6 @@ msgid "ps"
 msgstr "ps"
 
 #: lib/layouts/dinbrief.layout:110
-#, fuzzy
 msgid "PS:"
 msgstr "PS"
 
@@ -6387,12 +6370,11 @@ msgstr "Stadt"
 
 #: lib/layouts/dinbrief.layout:178 lib/layouts/g-brief-de.layout:188
 msgid "Datum"
-msgstr "Datum"
+msgstr "Data"
 
 #: lib/layouts/dinbrief.layout:189 lib/layouts/g-brief-de.layout:191
-#, fuzzy
 msgid "Datum:"
-msgstr "Datum"
+msgstr "Data"
 
 #: lib/layouts/egs.layout:85 lib/layouts/kluwer.layout:94
 #: lib/layouts/linuxdoc.layout:154 lib/layouts/llncs.layout:78
@@ -6431,7 +6413,6 @@ msgid "LaTeX Title"
 msgstr "Titlu_LaTeX"
 
 #: lib/layouts/egs.layout:303
-#, fuzzy
 msgid "Author:"
 msgstr "Autor"
 
@@ -6440,12 +6421,10 @@ msgid "Affil"
 msgstr "Affil"
 
 #: lib/layouts/egs.layout:326
-#, fuzzy
 msgid "Affilation:"
 msgstr "Afiliere"
 
 #: lib/layouts/egs.layout:349
-#, fuzzy
 msgid "Journal:"
 msgstr "Jurnal"
 
@@ -6460,7 +6439,7 @@ msgstr "msnumber"
 
 #: lib/layouts/egs.layout:383
 msgid "FirstAuthor"
-msgstr "FirstAuthor"
+msgstr "PrimulAutor"
 
 #: lib/layouts/egs.layout:397
 msgid "1st_author_surname:"
@@ -6473,7 +6452,6 @@ msgstr "Primit"
 
 #: lib/layouts/egs.layout:420 lib/layouts/agu_stdtitle.inc:201
 #: lib/layouts/aguplus.inc:112
-#, fuzzy
 msgid "Received:"
 msgstr "Primit"
 
@@ -6484,7 +6462,6 @@ msgstr "Acceptat"
 
 #: lib/layouts/egs.layout:443 lib/layouts/agu_stdtitle.inc:217
 #: lib/layouts/aguplus.inc:128
-#, fuzzy
 msgid "Accepted:"
 msgstr "Acceptat"
 
@@ -6500,7 +6477,6 @@ msgstr ""
 #: lib/layouts/llncs.layout:255 lib/layouts/siamltex.layout:156
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
 #: lib/layouts/amsdefs.inc:139 lib/layouts/svjour.inc:267
-#, fuzzy
 msgid "Abstract."
 msgstr "Abstract"
 
@@ -6517,7 +6493,6 @@ msgstr "Adresã_Autor"
 #: lib/layouts/g-brief2.layout:810 lib/layouts/revtex.layout:128
 #: lib/layouts/revtex4.layout:158 lib/layouts/scrlettr.layout:148
 #: lib/layouts/scrlttr2.layout:57 lib/layouts/amsdefs.inc:163
-#, fuzzy
 msgid "Address:"
 msgstr "Adresã"
 
@@ -6526,7 +6501,6 @@ msgid "Author Email"
 msgstr "Email_Autor"
 
 #: lib/layouts/elsart.layout:160 lib/layouts/llncs.layout:237
-#, fuzzy
 msgid "Email:"
 msgstr "Email"
 
@@ -6536,7 +6510,6 @@ msgstr "URL_Autor"
 
 #: lib/layouts/elsart.layout:182 lib/layouts/revtex4.layout:187
 #: lib/layouts/amsdefs.inc:190
-#, fuzzy
 msgid "URL:"
 msgstr "&URL"
 
@@ -6547,67 +6520,67 @@ msgstr "Mulþumiri"
 
 #: lib/layouts/elsart.layout:279
 msgid "Theorem \\arabic{theorem}"
-msgstr ""
+msgstr "Teoremã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:308
 msgid "PROOF."
-msgstr ""
+msgstr "Demonstraþie"
 
 #: lib/layouts/elsart.layout:322
 msgid "Lemma \\arabic{theorem}"
-msgstr ""
+msgstr "Lemã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:329
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "Corolariu \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:336
 msgid "Proposition \\arabic{theorem}"
-msgstr ""
+msgstr "Propoziþie \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:343
 msgid "Criterion \\arabic{theorem}"
-msgstr ""
+msgstr "Criteriu \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:350
 msgid "Algorithm \\arabic{theorem}"
-msgstr ""
+msgstr "Algoritm \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:357
 msgid "Definition \\arabic{theorem}"
-msgstr ""
+msgstr "Definiþie \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:371
 msgid "Conjecture \\arabic{theorem}"
-msgstr ""
+msgstr "Conjecturã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:378
 msgid "Example \\arabic{theorem}"
-msgstr ""
+msgstr "Exemple \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:385
 msgid "Problem \\arabic{theorem}"
-msgstr ""
+msgstr "Problemã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:392
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "Remarcã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:399
 msgid "Note \\arabic{theorem}"
-msgstr ""
+msgstr "Notã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:406
 msgid "Claim \\arabic{theorem}"
-msgstr ""
+msgstr "Decleraþie \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:414
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "Sumar \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:422
 msgid "Case \\arabic{case}"
-msgstr ""
+msgstr "Caz \\arabic{case}"
 
 #: lib/layouts/elsart.layout:434
 #, fuzzy
@@ -6889,7 +6862,6 @@ msgid "HTTP"
 msgstr "HTTP"
 
 #: lib/layouts/g-brief-de.layout:147 lib/layouts/g-brief-en.layout:147
-#, fuzzy
 msgid "HTTP:"
 msgstr "HTTP"
 
@@ -6957,7 +6929,6 @@ msgid "Letter"
 msgstr "Scrisoare"
 
 #: lib/layouts/g-brief-en.layout:25 lib/layouts/g-brief2.layout:43
-#, fuzzy
 msgid "Letter:"
 msgstr "Scrisoare"
 
@@ -7401,7 +7372,6 @@ msgid "BankRowF:"
 msgstr "BancãLiniaF"
 
 #: lib/layouts/heb-article.layout:68
-#, fuzzy
 msgid "Claim #."
 msgstr "Declaraþie"
 
@@ -7476,32 +7446,28 @@ msgstr "Scenã"
 #: lib/layouts/kluwer.layout:291 lib/layouts/paper.layout:178
 #: lib/layouts/revtex4.layout:235 lib/layouts/spie.layout:47
 #: lib/layouts/agu_stdtitle.inc:123
-#, fuzzy
 msgid "Keywords:"
 msgstr "Cuvinte cheie"
 
 #: lib/layouts/ijmpc.layout:95
 msgid "Classification Codes"
-msgstr ""
+msgstr "Coduri de clasificare"
 
 #: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
-#, fuzzy
 msgid "Step"
-msgstr "Stat"
+msgstr "Etapã"
 
 #: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
-#, fuzzy
 msgid "Step \\arabic{step}."
-msgstr "Subsecþiune"
+msgstr "Etapã \\arabic{step}"
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:287
-#, fuzzy
 msgid "Prop"
-msgstr "Copiazã"
+msgstr "Prop"
 
 #: lib/layouts/ijmpc.layout:284
 msgid "Prop \\arabic{prop}."
-msgstr ""
+msgstr "Prop \\arabic{prop}"
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:298
 #: lib/layouts/llncs.layout:395 lib/layouts/svjour.inc:458
@@ -7509,76 +7475,72 @@ msgid "Question"
 msgstr "Întrebare"
 
 #: lib/layouts/ijmpc.layout:294
-#, fuzzy
 msgid "Question \\arabic{question}."
-msgstr "Subsubsecþiune"
+msgstr "Întrebare \\arabic{question}"
 
 #: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:320
-#, fuzzy
 msgid "Conjecture "
-msgstr "Ipotezã"
+msgstr "Conjecturã"
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:327
-#, fuzzy
 msgid "Appendices Section"
-msgstr "Appendices"
+msgstr "Secþiune de appendix"
 
 #: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:337
-#, fuzzy
 msgid "--- Appendices ---"
-msgstr "Appendices"
+msgstr "--- Appendix ---"
 
 #: lib/layouts/ijmpc.layout:349 lib/layouts/ijmpd.layout:360
 msgid "Appendix \\Alph{appendix}."
-msgstr ""
+msgstr "Apendix \\Alph{appendix}"
 
 #: lib/layouts/ijmpd.layout:150
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr ""
+msgstr "Definiþie @Secþiune@. \\arabic{definition}."
 
 #: lib/layouts/ijmpd.layout:179
 msgid "Example @Section@.\\arabic{example}."
-msgstr ""
+msgstr "Exemplu @Secþiune@. \\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:190
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr ""
+msgstr "Remarcã @Secþiune@. \\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:201
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr ""
+msgstr "Notaþie @Secþiune@. \\arabic{notation}."
 
 #: lib/layouts/ijmpd.layout:222 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Teoremã @Secþiune@. \\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:255
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr ""
+msgstr "Corolar @Secþiune@. \\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:269
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr ""
+msgstr "Lemã @Secþiune@. \\arabic{lemma}"
 
 #: lib/layouts/ijmpd.layout:280
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr ""
+msgstr "Propoziþie @Secþiune@. \\arabic{propozition}"
 
 #: lib/layouts/ijmpd.layout:291
 msgid "Prop @Section@.\\arabic{prop}."
-msgstr ""
+msgstr "Prop @Secþiune@. \\arabic{prop}"
 
 #: lib/layouts/ijmpd.layout:302
 msgid "Question @Section@.\\arabic{question}."
-msgstr ""
+msgstr "Întrebare @Secþiune@. \\arabic{question}"
 
 #: lib/layouts/ijmpd.layout:313
 msgid "Claim @Section@.\\arabic{claim}."
-msgstr ""
+msgstr "Declaraþie @Secþiune@. \\arabic{claim}"
 
 #: lib/layouts/ijmpd.layout:324
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr ""
+msgstr "Conjecturã @Secþiune@. \\arabic{conjecture}"
 
 #: lib/layouts/kluwer.layout:195
 msgid "AddressForOffprints"
@@ -7608,7 +7570,6 @@ msgid "Running author:"
 msgstr ""
 
 #: lib/layouts/latex8.layout:70
-#, fuzzy
 msgid "E-mail:"
 msgstr "Email"
 
@@ -7638,7 +7599,6 @@ msgid "TOC Title"
 msgstr "TitluCuprins"
 
 #: lib/layouts/llncs.layout:173
-#, fuzzy
 msgid "TOC title:"
 msgstr "TitluCuprins"
 
@@ -7647,7 +7607,6 @@ msgid "Author Running"
 msgstr "Author_Running"
 
 #: lib/layouts/llncs.layout:202 lib/layouts/svjour.inc:208
-#, fuzzy
 msgid "Author Running:"
 msgstr "Author_Running"
 
@@ -7661,17 +7620,14 @@ msgid "TOC Author:"
 msgstr "AutorCuprins"
 
 #: lib/layouts/llncs.layout:299
-#, fuzzy
 msgid "Case #."
-msgstr "Caz"
+msgstr "Caz #."
 
 #: lib/layouts/llncs.layout:316 lib/layouts/svjour.inc:373
-#, fuzzy
 msgid "Conjecture #."
-msgstr "Ipotezã"
+msgstr "Conjectuã"
 
 #: lib/layouts/llncs.layout:344 lib/layouts/svjour.inc:401
-#, fuzzy
 msgid "Example #."
 msgstr "Exemplu"
 
@@ -7778,11 +7734,12 @@ msgstr "Comutã sublinierea fontului"
 
 #: lib/layouts/scrbook.layout:17
 msgid "\\arabic{chapter}"
-msgstr ""
+msgstr "\\arabic{chapter}"
 
+# \Alph{chapter}
 #: lib/layouts/scrbook.layout:18
 msgid "\\Alph{chapter}"
-msgstr ""
+msgstr "\\Alph{chapter}"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
@@ -7947,13 +7904,12 @@ msgid "SenderAddress"
 msgstr "AdresãExpeditor"
 
 #: lib/layouts/scrlttr2.layout:180
-#, fuzzy
 msgid "Sender Address:"
-msgstr "AdresãExpeditor"
+msgstr "Adresã Expeditor"
 
 #: lib/layouts/scrlttr2.layout:188
 msgid "Sender Phone:"
-msgstr ""
+msgstr "Telefon Expeditor"
 
 #: lib/layouts/scrlttr2.layout:192
 msgid "Fax"
@@ -7961,7 +7917,7 @@ msgstr "Fax"
 
 #: lib/layouts/scrlttr2.layout:196
 msgid "Sender Fax:"
-msgstr ""
+msgstr "Fax expeditor"
 
 #: lib/layouts/scrlttr2.layout:200
 msgid "E-Mail"
