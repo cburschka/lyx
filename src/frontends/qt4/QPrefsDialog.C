@@ -277,7 +277,7 @@ void PrefKeyboard::update(LyXRC const & rc)
 
 QString PrefKeyboard::testKeymap(QString keymap)
 {
-	return toqstr(form_->controller().browsekbmap(fromqstr(keymap)));
+	return toqstr(form_->controller().browsekbmap(qstring_to_ucs4(keymap)));
 }
 
 
@@ -700,11 +700,11 @@ void PrefPaths::update(LyXRC const & rc)
 	lyxserverDirED->setText(external_path(rc.lyxpipes));
 }
 
-// NB: the lyx::to_utf8(_() is OK here because it gets passed back and we toqstr()) them
-
 void PrefPaths::select_templatedir()
 {
-	string file(form_->controller().browsedir(fromqstr(templateDirED->text()), lyx::to_utf8(_("Select a document templates directory"))));
+	docstring file(form_->controller().browsedir(
+		qstring_to_ucs4(templateDirED->text()),
+		_("Select a document templates directory")));
 	if (!file.empty())
 		templateDirED->setText(toqstr(file));
 }
@@ -712,7 +712,9 @@ void PrefPaths::select_templatedir()
 
 void PrefPaths::select_tempdir()
 {
-	string file(form_->controller().browsedir(fromqstr(tempDirED->text()), lyx::to_utf8(_("Select a temporary directory"))));
+	docstring file(form_->controller().browsedir(
+		qstring_to_ucs4(tempDirED->text()),
+		_("Select a temporary directory")));
 	if (!file.empty())
 		tempDirED->setText(toqstr(file));
 }
@@ -720,7 +722,9 @@ void PrefPaths::select_tempdir()
 
 void PrefPaths::select_backupdir()
 {
-	string file(form_->controller().browsedir(fromqstr(backupDirED->text()), lyx::to_utf8(_("Select a backups directory"))));
+	docstring file(form_->controller().browsedir(
+		qstring_to_ucs4(backupDirED->text()),
+		_("Select a backups directory")));
 	if (!file.empty())
 		backupDirED->setText(toqstr(file));
 }
@@ -728,7 +732,9 @@ void PrefPaths::select_backupdir()
 
 void PrefPaths::select_workingdir()
 {
-	string file(form_->controller().browsedir(fromqstr(workingDirED->text()), lyx::to_utf8(_("Select a document directory"))));
+	docstring file(form_->controller().browsedir(
+		qstring_to_ucs4(workingDirED->text()),
+		_("Select a document directory")));
 	if (!file.empty())
 		workingDirED->setText(toqstr(file));
 }
@@ -736,7 +742,9 @@ void PrefPaths::select_workingdir()
 
 void PrefPaths::select_lyxpipe()
 {
-	string file(form_->controller().browse(fromqstr(lyxserverDirED->text()), lyx::to_utf8(_("Give a filename for the LyX server pipe"))));
+	docstring file(form_->controller().browse(
+		qstring_to_ucs4(lyxserverDirED->text()),
+		_("Give a filename for the LyX server pipe")));
 	if (!file.empty())
 		lyxserverDirED->setText(toqstr(file));
 }
@@ -837,7 +845,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 
 void PrefSpellchecker::select_dict()
 {
-	string file(form_->controller().browsedict(fromqstr(persDictionaryED->text())));
+	docstring file(form_->controller().browsedict(qstring_to_ucs4(persDictionaryED->text())));
 	if (!file.empty())
 		persDictionaryED->setText(toqstr(file));
 }
@@ -1136,6 +1144,7 @@ void PrefCopiers::switch_copierLB(int row)
 	if (row<0)
 		return;
 
+	// FIXME UNICODE?
 	std::string const browser_text =
 		fromqstr(AllCopiersLW->currentItem()->text());
 	Format const * fmt = getFormat(browser_text);
@@ -1786,7 +1795,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 
 void PrefUserInterface::select_ui()
 {
-	string file(form_->controller().browseUI(fromqstr(uiFileED->text())));
+	docstring file(form_->controller().browseUI(qstring_to_ucs4(uiFileED->text())));
 	if (!file.empty())
 		uiFileED->setText(toqstr(file));
 }
@@ -1794,7 +1803,7 @@ void PrefUserInterface::select_ui()
 
 void PrefUserInterface::select_bind()
 {
-	string file(form_->controller().browsebind(fromqstr(bindFileED->text())));
+	docstring file(form_->controller().browsebind(qstring_to_ucs4(bindFileED->text())));
 	if (!file.empty())
 		bindFileED->setText(toqstr(file));
 }

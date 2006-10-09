@@ -1369,6 +1369,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 	if (filename.empty()) {
 		// Launch a file browser
+		// FIXME UNICODE
 		string initpath = lyxrc.document_path;
 
 		if (buffer_) {
@@ -1378,22 +1379,22 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 				initpath = trypath;
 		}
 
-		FileDialog fileDlg(lyx::to_utf8(_("Select LyX document to insert")),
+		// FIXME UNICODE
+		FileDialog fileDlg(_("Select LyX document to insert"),
 			LFUN_FILE_INSERT,
-			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
-				  string(lyxrc.document_path)),
-			make_pair(string(lyx::to_utf8(_("Examples|#E#e"))),
-				  string(addPath(package().system_support(), "examples"))));
+			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
+			make_pair(_("Examples|#E#e"), lyx::from_utf8(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
-			fileDlg.open(initpath,
-				     FileFilterList(lyx::to_utf8(_("LyX Documents (*.lyx)"))),
-				     string());
+			fileDlg.open(lyx::from_utf8(initpath),
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     docstring());
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = result.second;
+		// FIXME UNICODE
+		filename = lyx::to_utf8(result.second);
 
 		// check selected filename
 		if (filename.empty()) {

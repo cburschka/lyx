@@ -27,6 +27,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::ostringstream;
 using std::pair;
 using std::string;
@@ -107,51 +109,47 @@ void ControlPrefs::updateScreenFonts()
 }
 
 
-string const ControlPrefs::browsebind(string const & file) const
+docstring const ControlPrefs::browsebind(docstring const & file) const
 {
-	// FIXME UNICODE
-	return browseLibFile("bind", file, "bind",
-			     lyx::to_utf8(_("Choose bind file")),
-			     FileFilterList(lyx::to_utf8(_("LyX bind files (*.bind)"))));
+	return browseLibFile(lyx::from_ascii("bind"), file, lyx::from_ascii("bind"),
+			     _("Choose bind file"),
+			     FileFilterList(_("LyX bind files (*.bind)")));
 }
 
 
-string const ControlPrefs::browseUI(string const & file) const
+docstring const ControlPrefs::browseUI(docstring const & file) const
 {
-	// FIXME UNICODE
-	return browseLibFile("ui", file, "ui",
-			     lyx::to_utf8(_("Choose UI file")),
-			     FileFilterList(lyx::to_utf8(_("LyX UI files (*.ui)"))));
+	return browseLibFile(lyx::from_ascii("ui"), file, lyx::from_ascii("ui"),
+			     _("Choose UI file"),
+			     FileFilterList(_("LyX UI files (*.ui)")));
 }
 
 
-string const ControlPrefs::browsekbmap(string const & file) const
+docstring const ControlPrefs::browsekbmap(docstring const & file) const
 {
-	// FIXME UNICODE
-	return browseLibFile("kbd", file, "kmap",
-			     lyx::to_utf8(_("Choose keyboard map")),
-			     FileFilterList(lyx::to_utf8(_("LyX keyboard maps (*.kmap)"))));
+	return browseLibFile(lyx::from_ascii("kbd"), file, lyx::from_ascii("kmap"),
+			     _("Choose keyboard map"),
+			     FileFilterList(_("LyX keyboard maps (*.kmap)")));
 }
 
 
-string const ControlPrefs::browsedict(string const & file) const
+docstring const ControlPrefs::browsedict(docstring const & file) const
 {
-	// FIXME UNICODE
 	return browseFile(file,
-			  lyx::to_utf8(_("Choose personal dictionary")),
-			  FileFilterList(lyx::to_utf8(_("*.ispell"))));
+			  _("Choose personal dictionary"),
+			  FileFilterList(_("*.ispell")));
 }
 
 
-string const ControlPrefs::browse(string const & file,
-				  string const & title) const
+docstring const ControlPrefs::browse(docstring const & file,
+				  docstring const & title) const
 {
 	return browseFile(file, title, FileFilterList(), true);
 }
 
 
-string const ControlPrefs::browsedir(string const & path,
-				     string const & title) const
+docstring const ControlPrefs::browsedir(docstring const & path,
+				     docstring const & title) const
 {
 	return browseDir(path, title);
 }

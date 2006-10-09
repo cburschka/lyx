@@ -72,27 +72,25 @@ void ControlInclude::setParams(InsetCommandParams const & params)
 }
 
 
-string const ControlInclude::browse(string const & in_name, Type in_type) const
+docstring const ControlInclude::browse(docstring const & in_name, Type in_type) const
 {
-	// FIXME UNICODE
-	string const title = lyx::to_utf8(_("Select document to include"));
+	docstring const title = _("Select document to include");
 
 	// input TeX, verbatim, or LyX file ?
 	FileFilterList filters;
 	switch (in_type) {
 	case INCLUDE:
 	case INPUT:
-		// FIXME UNICODE
-		filters = FileFilterList(lyx::to_utf8(_("LaTeX/LyX Documents (*.tex *.lyx)")));
+		filters = FileFilterList(_("LaTeX/LyX Documents (*.tex *.lyx)"));
 		break;
 	case VERBATIM:
 		break;
 	}
 
-	pair<string, string> dir1(N_("Documents|#o#O"),
-				  string(lyxrc.document_path));
+	pair<docstring, docstring> dir1(_("Documents|#o#O"),
+		lyx::from_utf8(lyxrc.document_path));
 
-	string const docpath = onlyPath(kernel().buffer().fileName());
+	docstring const docpath = lyx::from_utf8(onlyPath(kernel().buffer().fileName()));
 
 	return browseRelFile(in_name, docpath, title,
 			     filters, false, dir1);

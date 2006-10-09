@@ -67,12 +67,11 @@ PrinterParams & ControlPrint::params() const
 }
 
 
-string const ControlPrint::browse(string const & in_name) const
+docstring const ControlPrint::browse(docstring const & in_name) const
 {
-	// FIXME UNICODE
-	return browseRelFile(in_name, kernel().buffer().filePath(),
-			     lyx::to_utf8(_("Print to file")),
-			     FileFilterList(lyx::to_utf8(_("PostScript files (*.ps)"))),
+	return browseRelFile(in_name, lyx::from_utf8(kernel().buffer().filePath()),
+			     _("Print to file"),
+			     FileFilterList(_("PostScript files (*.ps)")),
 			     true);
 }
 

@@ -1707,23 +1707,21 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	// The template stuff
 	string templname;
 	if (fromTemplate) {
-		FileDialog fileDlg(lyx::to_utf8(_("Select template file")),
+		FileDialog fileDlg(_("Select template file"),
 			LFUN_SELECT_FILE_SYNC,
-			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
-				  string(lyxrc.document_path)),
-			make_pair(string(lyx::to_utf8(_("Templates|#T#t"))),
-				  string(lyxrc.template_path)));
+			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
+			make_pair(_("Templates|#T#t"), lyx::from_utf8(lyxrc.template_path)));
 
 		FileDialog::Result result =
-			fileDlg.open(lyxrc.template_path,
-				     FileFilterList(lyx::to_utf8(_("LyX Documents (*.lyx)"))),
-				     string());
+			fileDlg.open(lyx::from_utf8(lyxrc.template_path),
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     docstring());
 
 		if (result.first == FileDialog::Later)
 			return;
 		if (result.second.empty())
 			return;
-		templname = result.second;
+		templname = lyx::to_utf8(result.second);
 	}
 
 	Buffer * const b = newFile(filename, templname, !name.empty());
@@ -1746,22 +1744,20 @@ void LyXFunc::open(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(lyx::to_utf8(_("Select document to open")),
+		FileDialog fileDlg(_("Select document to open"),
 			LFUN_FILE_OPEN,
-			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
-				  string(lyxrc.document_path)),
-			make_pair(string(lyx::to_utf8(_("Examples|#E#e"))),
-				  string(addPath(package().system_support(), "examples"))));
+			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
+			make_pair(_("Examples|#E#e"), lyx::from_utf8(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
-			fileDlg.open(initpath,
-				     FileFilterList(lyx::to_utf8(_("LyX Documents (*.lyx)"))),
-				     string());
+			fileDlg.open(lyx::from_utf8(initpath),
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     docstring());
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = result.second;
+		filename = lyx::to_utf8(result.second);
 
 		// check selected filename
 		if (filename.empty()) {
@@ -1823,25 +1819,27 @@ void LyXFunc::doImport(string const & argument)
 		docstring const text = bformat(_("Select %1$s file to import"),
 			formats.prettyName(format));
 
-		FileDialog fileDlg(lyx::to_utf8(text),
+		FileDialog fileDlg(text,
 			LFUN_BUFFER_IMPORT,
-			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
-				  string(lyxrc.document_path)),
-			make_pair(string(lyx::to_utf8(_("Examples|#E#e"))),
-				  string(addPath(package().system_support(), "examples"))));
+			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
+			make_pair(_("Examples|#E#e"),
+				  lyx::from_utf8(addPath(package().system_support(), "examples"))));
 
-		string const filter = lyx::to_utf8(formats.prettyName(format))
-			+ " (*." + formats.extension(format) + ')';
+		docstring filter = formats.prettyName(format);
+		filter += " (*.";
+		// FIXME UNICODE
+		filter += lyx::from_utf8(formats.extension(format));
+		filter += ')';
 
 		FileDialog::Result result =
-			fileDlg.open(initpath,
+			fileDlg.open(lyx::from_utf8(initpath),
 				     FileFilterList(filter),
-				     string());
+				     docstring());
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = result.second;
+		filename = lyx::to_utf8(result.second);
 
 		// check selected filename
 		if (filename.empty())

@@ -60,7 +60,7 @@ void QLPrintDialog::change_adaptor()
 
 void QLPrintDialog::browseClicked()
 {
-	QString file = toqstr(form_->controller().browse(""));
+	QString file = toqstr(form_->controller().browse(docstring()));
 	if (!file.isNull()) {
 		fileED->setText(file);
 		form_->changed();

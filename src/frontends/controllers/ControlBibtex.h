@@ -14,6 +14,9 @@
 #define CONTROLBIBTEX_H
 
 #include "ControlCommand.h"
+
+#include "support/docstring.h"
+
 #include <vector>
 
 namespace lyx {
@@ -34,10 +37,10 @@ public:
 	ControlBibtex(Dialog &);
 
 	/// Browse for a .bib file
-	std::string const browseBib(std::string const & in_name) const;
+	lyx::docstring const browseBib(lyx::docstring const & in_name) const;
 
 	/// Browse for a .bst file
-	std::string const browseBst(std::string const & in_name) const;
+	lyx::docstring const browseBst(lyx::docstring const & in_name) const;
 
 	/// get the list of bst files
 	void getBibStyles(std::vector<std::string> & data) const;

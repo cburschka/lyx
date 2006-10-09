@@ -129,27 +129,26 @@ bool writeAs(Buffer * buffer, string const & filename)
 
 	if (filename.empty()) {
 
-		FileDialog fileDlg(lyx::to_utf8(_("Choose a filename to save document as")),
+		// FIXME UNICODE
+		FileDialog fileDlg(_("Choose a filename to save document as"),
 			LFUN_BUFFER_WRITE_AS,
-			make_pair(string(lyx::to_utf8(_("Documents|#o#O"))),
-				  string(lyxrc.document_path)),
-			make_pair(string(lyx::to_utf8(_("Templates|#T#t"))),
-				  string(lyxrc.template_path)));
+			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
+			make_pair(_("Templates|#T#t"), lyx::from_utf8(lyxrc.template_path)));
 
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
 
-		FileFilterList const filter (lyx::to_utf8(_("LyX Documents (*.lyx)")));
+		FileFilterList const filter (_("LyX Documents (*.lyx)"));
 
 		FileDialog::Result result =
-			fileDlg.save(onlyPath(fname),
+			fileDlg.save(lyx::from_utf8(onlyPath(fname)),
 				     filter,
-				     onlyFilename(fname));
+				     lyx::from_utf8(onlyFilename(fname)));
 
 		if (result.first == FileDialog::Later)
 			return false;
 
-		fname = result.second;
+		fname = lyx::to_utf8(result.second);
 
 		if (fname.empty())
 			return false;
@@ -382,17 +381,17 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 	string fname = f;
 
 	if (fname.empty()) {
-		FileDialog fileDlg(lyx::to_utf8(_("Select file to insert")),
+		FileDialog fileDlg(_("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
 		FileDialog::Result result =
-			fileDlg.open(bv->buffer()->filePath(),
-				     FileFilterList(), string());
+			fileDlg.open(lyx::from_utf8(bv->buffer()->filePath()),
+				     FileFilterList(), docstring());
 
 		if (result.first == FileDialog::Later)
 			return string();
 
-		fname = result.second;
+		fname = lyx::to_utf8(result.second);
 
 		if (fname.empty())
 			return string();

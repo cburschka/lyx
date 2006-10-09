@@ -117,15 +117,16 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	string const file = form_->controller().browseBst("");
+	docstring const file = form_->controller().browseBst(docstring());
 
 	if (!file.empty()) {
-		string const filen = changeExtension(file, "");
+		// FIXME UNICODE
+		docstring const filen = lyx::from_utf8(changeExtension(lyx::to_utf8(file), ""));
 		bool present = false;
 		unsigned int pres = 0;
 
 		for (int i = 0; i != styleCB->count(); ++i) {
-			if (fromqstr(styleCB->itemText(i)) == filen) {
+			if (qstring_to_ucs4(styleCB->itemText(i)) == filen) {
 				present = true;
 				pres = i;
 			}
@@ -142,10 +143,11 @@ void QBibtexDialog::browsePressed()
 
 void QBibtexDialog::browseBibPressed()
 {
-	string const file = trim(form_->controller().browseBib(""));
+	docstring const file = trim(form_->controller().browseBib(docstring()));
 
 	if (!file.empty()) {
-		QString const f = toqstr(changeExtension(file, ""));
+		// FIXME UNICODE
+		QString const f = toqstr(lyx::from_utf8(changeExtension(lyx::to_utf8(file), "")));
 		bool present = false;
 
 		for (int i = 0; i < add_->bibLW->count(); ++i) {
@@ -173,7 +175,7 @@ void QBibtexDialog::addPressed()
 void QBibtexDialog::addDatabase()
 {
 	int const sel = add_->bibLW->currentRow();
-	string const file = trim(fromqstr(add_->bibED->text()));
+	docstring const file = trim(qstring_to_ucs4(add_->bibED->text()));
 
 	if (sel < 0 && file.empty())
 		return;
@@ -193,7 +195,7 @@ void QBibtexDialog::addDatabase()
 
 	if (!file.empty()) {
 		add_->bibED->clear();
-		QString const f = toqstr(changeExtension(file, ""));
+		QString const f = toqstr(lyx::from_utf8(changeExtension(lyx::to_utf8(file), "")));
 		QList<QListWidgetItem *> matches =
 			databaseLW->findItems(f, Qt::MatchExactly);
 		if (matches.empty())

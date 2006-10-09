@@ -23,9 +23,11 @@
 #include "support/lstrings.h"
 #include "support/package.h"
 
+using lyx::docstring;
+
 using std::pair;
-using std::vector;
 using std::string;
+using std::vector;
 
 namespace lyx {
 
@@ -44,16 +46,16 @@ using support::prefixIs;
 namespace frontend {
 
 
-string const browseFile(string const & filename,
-			string const & title,
+docstring const browseFile(docstring const & filename,
+			docstring const & title,
 			FileFilterList const & filters,
 			bool save,
-			pair<string,string> const & dir1,
-			pair<string,string> const & dir2)
+			pair<docstring,docstring> const & dir1,
+			pair<docstring,docstring> const & dir2)
 {
-	string lastPath(".");
+	docstring lastPath = from_ascii(".");
 	if (!filename.empty())
-		lastPath = onlyPath(filename);
+		lastPath = lyx::from_utf8(onlyPath(lyx::to_utf8(filename)));
 
 	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 
@@ -61,29 +63,31 @@ string const browseFile(string const & filename,
 
 	if (save)
 		result = fileDlg.save(lastPath, filters,
-				      onlyFilename(filename));
+				      lyx::from_utf8(onlyFilename(lyx::to_utf8(filename))));
 	else
 		result = fileDlg.open(lastPath, filters,
-				      onlyFilename(filename));
+				      lyx::from_utf8(onlyFilename(lyx::to_utf8(filename))));
 
 	return result.second;
 }
 
 
-string const browseRelFile(string const & filename,
-			   string const & refpath,
-			   string const & title,
+docstring const browseRelFile(docstring const & filename,
+			   docstring const & refpath,
+			   docstring const & title,
 			   FileFilterList const & filters,
 			   bool save,
-			   pair<string,string> const & dir1,
-			   pair<string,string> const & dir2)
+			   pair<docstring,docstring> const & dir1,
+			   pair<docstring,docstring> const & dir2)
 {
-	string const fname = makeAbsPath(filename, refpath);
+	docstring const fname = lyx::from_utf8(
+		makeAbsPath(lyx::to_utf8(filename), lyx::to_utf8(refpath)));
 
-	string const outname = browseFile(fname, title, filters, save,
+	docstring const outname = browseFile(fname, title, filters, save,
 					  dir1, dir2);
-	string const reloutname = makeRelPath(outname, refpath);
-	if (prefixIs(reloutname, "../"))
+	docstring const reloutname = lyx::from_utf8(
+		makeRelPath(lyx::to_utf8(outname), lyx::to_utf8(refpath)));
+	if (prefixIs(lyx::to_utf8(reloutname), "../"))
 		return outname;
 	else
 		return reloutname;
@@ -91,63 +95,64 @@ string const browseRelFile(string const & filename,
 
 
 
-string const browseLibFile(string const & dir,
-			   string const & name,
-			   string const & ext,
-			   string const & title,
+docstring const browseLibFile(docstring const & dir,
+			   docstring const & name,
+			   docstring const & ext,
+			   docstring const & title,
 			   FileFilterList const & filters)
 {
 	// FIXME UNICODE
-	pair<string,string> const dir1(lyx::to_utf8(_("System files|#S#s")),
-				       addName(package().system_support(), dir));
+	pair<docstring, docstring> const dir1(_("System files|#S#s"),
+				       lyx::from_utf8(addName(package().system_support(), lyx::to_utf8(dir))));
 
-	pair<string,string> const dir2(lyx::to_utf8(_("User files|#U#u")),
-				       addName(package().user_support(), dir));
+	pair<docstring, docstring> const dir2(_("User files|#U#u"),
+				       lyx::from_utf8(addName(package().user_support(), lyx::to_utf8(dir))));
 
-	string const result = browseFile(libFileSearch(dir, name, ext), title,
-					 filters, false, dir1, dir2);
+	docstring const result = browseFile(lyx::from_utf8(
+		libFileSearch(lyx::to_utf8(dir), lyx::to_utf8(name), lyx::to_utf8(ext))),
+		title, filters, false, dir1, dir2);
 
 	// remove the extension if it is the default one
-	string noextresult;
-	if (getExtension(result) == ext)
-		noextresult = changeExtension(result, string());
+	docstring noextresult;
+	if (lyx::from_utf8(getExtension(lyx::to_utf8(result))) == ext)
+		noextresult = lyx::from_utf8(changeExtension(lyx::to_utf8(result), string()));
 	else
 		noextresult = result;
 
 	// remove the directory, if it is the default one
-	string const file = onlyFilename(noextresult);
-	if (libFileSearch(dir, file, ext) == result)
+	docstring const file = lyx::from_utf8(onlyFilename(lyx::to_utf8(noextresult)));
+	if (lyx::from_utf8(libFileSearch(lyx::to_utf8(dir), lyx::to_utf8(file), lyx::to_utf8(ext))) == result)
 		return file;
 	else
 		return noextresult;
 }
 
 
-string const browseDir(string const & pathname,
-		       string const & title,
-		       pair<string,string> const & dir1,
-		       pair<string,string> const & dir2)
+docstring const browseDir(docstring const & pathname,
+		       docstring const & title,
+		       pair<docstring,docstring> const & dir1,
+		       pair<docstring,docstring> const & dir2)
 {
-	string lastPath(".");
+	docstring lastPath = lyx::from_ascii(".");
 	if (!pathname.empty())
-		lastPath = onlyPath(pathname);
+		lastPath = lyx::from_utf8(onlyPath(lyx::to_utf8(pathname)));
 
 	FileDialog fileDlg(title, LFUN_SELECT_FILE_SYNC, dir1, dir2);
 
 	FileDialog::Result const result =
-		fileDlg.opendir(lastPath, onlyFilename(pathname));
+		fileDlg.opendir(lastPath, lyx::from_utf8(onlyFilename(lyx::to_utf8(pathname))));
 
 	return result.second;
 }
 
 
-vector<string> const getLatexUnits()
+vector<docstring> const getLatexUnits()
 {
-	vector<string> units;
+	vector<docstring> units;
 	int i = 0;
 	char const * str = stringFromUnit(i);
 	for (; str != 0; ++i, str = stringFromUnit(i))
-		units.push_back(str);
+		units.push_back(lyx::from_ascii(str));
 
 	return units;
 }

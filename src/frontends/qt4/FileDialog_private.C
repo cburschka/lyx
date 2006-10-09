@@ -22,6 +22,7 @@
 #include <QHBoxLayout>
 
 using lyx::support::split;
+using lyx::docstring;
 
 using std::string;
 
@@ -29,23 +30,25 @@ using std::string;
 namespace {
 
 /// return the Qt form of the label
-string const getLabel(string const & str) {
+docstring const getLabel(docstring const & ucs4str) {
+	// FIXME UNICOE
+	string str = lyx::to_utf8(ucs4str);
 	string label;
 	string sc(split(str, label, '|'));
 	if (sc.length() < 2)
-		return label;
+		return lyx::from_utf8(label);
 	string::size_type pos = label.find(sc[1]);
 	if (pos == string::npos)
-		return label;
+		return lyx::from_utf8(label);
 	label.insert(pos, 1, '&');
-	return label;
+	return lyx::from_utf8(label);
 }
 
 } // namespace anon
 
 
-LyXFileDialog::LyXFileDialog(string const & t,
-			     string const & p,
+LyXFileDialog::LyXFileDialog(docstring const & t,
+			     docstring const & p,
 			     lyx::support::FileFilterList const & filters,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)

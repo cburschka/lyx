@@ -81,20 +81,20 @@ void ControlGraphics::dispatchParams()
 }
 
 
-string const ControlGraphics::browse(string const & in_name) const
+docstring const ControlGraphics::browse(docstring const & in_name) const
 {
 	// FIXME UNICODE
-	string const title = lyx::to_utf8(_("Select graphics file"));
+	docstring const title = _("Select graphics file");
 
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support(), "clipart");
 	if (!(fs::exists(clipdir) && fs::is_directory(clipdir)))
 		// No - bail out to system clipart directory
 		clipdir = addName(package().system_support(), "clipart");
-	pair<string, string> dir1(lyx::to_utf8(_("Clipart|#C#c")), clipdir);
-	pair<string, string> dir2(lyx::to_utf8(_("Documents|#o#O")), string(lyxrc.document_path));
+	pair<docstring, docstring> dir1(_("Clipart|#C#c"), lyx::from_utf8(clipdir));
+	pair<docstring, docstring> dir2(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseRelFile(in_name, kernel().bufferFilepath(),
+	return browseRelFile(in_name, lyx::from_utf8(kernel().bufferFilepath()),
 			     title,
 			     FileFilterList(),
 			     false, dir1, dir2);

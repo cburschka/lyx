@@ -156,17 +156,17 @@ ControlExternal::getTemplateFilters(string const & template_name) const
 }
 
 
-string const ControlExternal::browse(string const & input,
-				     string const & template_name) const
+docstring const ControlExternal::browse(docstring const & input,
+				     docstring const & template_name) const
 {
-	string const title =  lyx::to_utf8(_("Select external file"));
+	docstring const title =  _("Select external file");
 
-	string const bufpath = kernel().bufferFilepath();
+	docstring const bufpath = lyx::from_utf8(kernel().bufferFilepath());
 	FileFilterList const filter = 
-		FileFilterList(getTemplateFilters(template_name));
+		FileFilterList(lyx::from_utf8(getTemplateFilters(lyx::to_utf8(template_name))));
 
-	std::pair<string, string> dir1(N_("Documents|#o#O"),
-				       string(lyxrc.document_path));
+	std::pair<docstring, docstring> dir1(_("Documents|#o#O"),
+		lyx::from_utf8(lyxrc.document_path));
 
 	return browseRelFile(input, bufpath, title, filter, false, dir1);
 }

@@ -21,6 +21,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::distance;
 using std::ostringstream;
 using std::string;
@@ -81,7 +83,7 @@ string const convert_brace_glob(string const & glob)
 namespace lyx {
 namespace support {
 
-FileFilterList::Filter::Filter(std::string const & description,
+FileFilterList::Filter::Filter(lyx::docstring const & description,
 			       std::string const & globs)
 	: desc_(description)
 {
@@ -99,10 +101,10 @@ FileFilterList::Filter::Filter(std::string const & description,
 }
 
 
-FileFilterList::FileFilterList(string const & qt_style_filter)
+FileFilterList::FileFilterList(docstring const & qt_style_filter)
 {
 	// FIXME UNICODE
-	string const filter = qt_style_filter
+	string const filter = lyx::to_utf8(qt_style_filter)
 		+ (qt_style_filter.empty() ? string() : ";;")
 		+ lyx::to_utf8(_("All files (*)"));
 
@@ -139,17 +141,19 @@ void FileFilterList::parse_filter(string const & filter)
 	boost::match_results<string::const_iterator> what;
 	if (!boost::regex_search(filter, what, filter_re)) {
 		// Just a glob, no description.
-		filters_.push_back(Filter(string(), trim(filter)));
+		filters_.push_back(Filter(docstring(), trim(filter)));
 	} else {
-		string const desc = string(what[1].first, what[1].second);
+		// FIXME UNICODE
+		docstring const desc = lyx::from_utf8(string(what[1].first, what[1].second));
 		string const globs = string(what[2].first, what[2].second);
 		filters_.push_back(Filter(trim(desc), trim(globs)));
 	}
 }
 
 
-string const FileFilterList::as_string() const
+docstring const FileFilterList::as_string() const
 {
+	// FIXME UNICODE
 	ostringstream ss;
 
 	vector<Filter>::const_iterator fit = filters_.begin();
@@ -165,7 +169,7 @@ string const FileFilterList::as_string() const
 
 		bool const has_description = !fit->description().empty();
 		if (has_description)
-			ss << fit->description() << " (";
+			ss << lyx::to_utf8(fit->description()) << " (";
 
 		for (Filter::glob_iterator git = gbegin; git != gend; ++git) {
 			if (git != gbegin)
@@ -177,7 +181,7 @@ string const FileFilterList::as_string() const
 			ss << ')';
 	}
 
-	return ss.str();
+	return lyx::from_utf8(ss.str());
 }
 
 } // namespace support

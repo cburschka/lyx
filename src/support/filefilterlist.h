@@ -12,6 +12,8 @@
 #ifndef FILE_FILTER_LIST_H
 #define FILE_FILTER_LIST_H
 
+#include "support/docstring.h"
+
 #include <string>
 #include <vector>
 
@@ -26,18 +28,19 @@ namespace support {
  */
 class FileFilterList {
 public:
+	// FIXME UNICODE: globs_ should be unicode...
 	class Filter {
-		std::string desc_;
+		lyx::docstring desc_;
 		std::vector<std::string> globs_;
 	public:
 		/* \param description text describing the filters.
 		 * \param one or more wildcard patterns, separated by
 		 * whitespace.
 		 */
-		Filter(std::string const & description,
+		Filter(lyx::docstring const & description,
 		       std::string const & globs);
 
-		std::string const & description() const { return desc_; }
+		lyx::docstring const & description() const { return desc_; }
 
 		typedef std::vector<std::string>::const_iterator glob_iterator;
 		glob_iterator begin() const { return globs_.begin(); }
@@ -48,8 +51,8 @@ public:
 	 *  Eg. "TeX documents (*.tex);;LyX Documents (*.lyx)".
 	 *  The "All files (*)" filter is always added to the list.
 	 */
-	explicit FileFilterList(std::string const & qt_style_filter =
-				std::string());
+	explicit FileFilterList(lyx::docstring const & qt_style_filter =
+				lyx::docstring());
 
 	typedef std::vector<Filter>::size_type size_type;
 
@@ -62,7 +65,7 @@ public:
 	 *  although any brace expressions are expanded.
 	 *  (E.g. "*.{png,jpg}" -> "*.png *.jpg")
 	 */
-	std::string const as_string() const;
+	lyx::docstring const as_string() const;
 
 private:
 	void parse_filter(std::string const & filter);

@@ -140,8 +140,8 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 
 void QGraphicsDialog::browse_clicked()
 {
-	string const str =
-		form_->controller().browse(fromqstr(filename->text()));
+	docstring const str =
+		form_->controller().browse(qstring_to_ucs4(filename->text()));
 	filename->setText(toqstr(str));
 	form_->changed();
 }

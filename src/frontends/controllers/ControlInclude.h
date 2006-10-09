@@ -18,6 +18,8 @@
 #include "Dialog.h"
 #include "insets/insetcommandparams.h"
 
+#include "support/docstring.h"
+
 namespace lyx {
 namespace frontend {
 
@@ -52,7 +54,7 @@ public:
 	void setParams(InsetCommandParams const &);
 
 	/// Browse for a file
-	std::string const browse(std::string const &, Type) const;
+	lyx::docstring const browse(lyx::docstring const &, Type) const;
 
 	/// load a file
 	void load(std::string const & file);

@@ -14,6 +14,9 @@
 #define CONTROLPRINT_H
 
 #include "Dialog.h"
+
+#include "support/docstring.h"
+
 #include <boost/scoped_ptr.hpp>
 
 class PrinterParams;
@@ -39,7 +42,7 @@ public:
 	virtual kb_action getLfun() const { return LFUN_BUFFER_PRINT; }
 
 	/// Browse for a file
-	std::string const browse(std::string const &) const;
+	lyx::docstring const browse(lyx::docstring const &) const;
 	///
 	PrinterParams & params() const;
 private:

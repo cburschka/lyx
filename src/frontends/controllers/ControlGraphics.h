@@ -16,6 +16,9 @@
 
 
 #include "Dialog.h"
+
+#include "support/docstring.h"
+
 #include <utility>
 #include <vector>
 
@@ -46,7 +49,7 @@ public:
 	InsetGraphicsParams const & params() const { return *params_.get(); }
 
 	/// Browse for a file
-	std::string const browse(std::string const &) const;
+	lyx::docstring const browse(lyx::docstring const &) const;
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);
 	/// Control the bb
