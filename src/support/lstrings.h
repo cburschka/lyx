@@ -156,6 +156,13 @@ lyx::docstring const subst(lyx::docstring const & a,
     trim("ccabccc", "c") == "ab".
     \endcode
 */
+lyx::docstring const trim(lyx::docstring const & a, char const * p = " ");
+
+/** Trims characters off the end and beginning of a string.
+    \code
+    trim("ccabccc", "c") == "ab".
+    \endcode
+*/
 std::string const trim(std::string const & a, char const * p = " ");
 
 /** Trims characters off the end of a string.

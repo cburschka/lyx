@@ -472,6 +472,25 @@ docstring const subst(docstring const & a,
 }
 
 
+docstring const trim(docstring const & a, char const * p)
+{
+	BOOST_ASSERT(p);
+
+	if (a.empty() || !*p)
+		return a;
+
+	docstring s = lyx::from_ascii(p);
+	docstring::size_type r = a.find_last_not_of(s);
+	docstring::size_type l = a.find_first_not_of(s);
+
+	// Is this the minimal test? (lgb)
+	if (r == docstring::npos && l == docstring::npos)
+		return docstring();
+
+	return a.substr(l, r - l + 1);
+}
+
+
 string const trim(string const & a, char const * p)
 {
 	BOOST_ASSERT(p);

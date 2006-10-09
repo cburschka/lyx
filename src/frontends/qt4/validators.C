@@ -21,6 +21,7 @@
 
 #include "frontends/controllers/Dialog.h"
 
+#include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 
@@ -30,6 +31,8 @@
 #include <sstream>
 
 using lyx::support::isStrDbl;
+using lyx::docstring;
+
 using std::string;
 
 
@@ -98,23 +101,23 @@ PathValidator::PathValidator(bool acceptable_if_empty,
 
 namespace {
 
-string const printable_list(string const & invalid_chars)
+docstring const printable_list(docstring const & invalid_chars)
 {
-	std::ostringstream ss;
-	string::const_iterator const begin = invalid_chars.begin();
-	string::const_iterator const end = invalid_chars.end();
-	string::const_iterator it = begin;
+	docstring s;
+	docstring::const_iterator const begin = invalid_chars.begin();
+	docstring::const_iterator const end = invalid_chars.end();
+	docstring::const_iterator it = begin;
 
 	for (; it != end; ++it) {
 		if (it != begin)
-			ss << ", ";
-		if (*it == ' ')
-			ss << lyx::to_utf8(_("space"));
+			s += lyx::from_ascii(", ");
+		if (*it == lyx::char_type(' '))
+			s += _("space");
 		else
-			ss << *it;
+			s += *it;
 	}
 
-	return ss.str();
+	return s;
 }
 
 } // namespace anon
@@ -125,22 +128,22 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 	if (!latex_doc_)
 		return QValidator::Acceptable;
 
-	string const text = lyx::support::trim(fromqstr(qtext));
+	docstring const text = lyx::support::trim(qstring_to_ucs4(qtext));
 	if (text.empty())
 		return	acceptable_if_empty_ ?
 			QValidator::Acceptable : QValidator::Intermediate;
 
-	string invalid_chars("#$%{}()[]\"^");
+	docstring invalid_chars = lyx::from_ascii("#$%{}()[]\"^");
 	if (!tex_allows_spaces_)
 		invalid_chars += ' ';
 
-	if (text.find_first_of(invalid_chars) != string::npos) {
+	if (text.find_first_of(invalid_chars) != docstring::npos) {
 
 		static int counter = 0;
 		if (counter == 0) {
 			lyx::frontend::Alert::error(_("Invalid filename"),
 				     _("LyX does not provide LateX support for file names containing any of these characters:\n") +
-					 lyx::from_utf8(printable_list(invalid_chars)));
+					 printable_list(invalid_chars));
 		}
 		++counter;
 		return QValidator::Intermediate;
