@@ -13,6 +13,7 @@
 #include "insetbibitem.h"
 
 #include "buffer.h"
+#include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "lyxfont.h"
@@ -63,11 +64,14 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("bibitem", lyx::to_utf8(cmd.argument()), p);
-		if (!p.getCmdName().empty())
-			setParams(p);
-		else
-			cur.noUpdate();
-		break;
+		if (p.getCmdName().empty()) {
+ 			cur.noUpdate();
+			break;
+		}
+		if (p.getContents() != params().getContents()) 
+			cur.bv().buffer()->changeRefsIfUnique(params().getContents(),
+						       p.getContents(), InsetBase::CITE_CODE);
+		setParams(p);
 	}
 
 	default:

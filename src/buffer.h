@@ -340,7 +340,7 @@ public:
 	///
 	StableDocIterator getAnchor() const { return anchor_; }
 	///
-	void changeRefsIfUnique(std::string const & from, std::string const & to);
+	void changeRefsIfUnique(std::string const & from, std::string const & to, InsetBase::Code code);
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
 	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);

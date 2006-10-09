@@ -69,6 +69,8 @@ public:
 		p_.setContents(c);
 	}
 	///
+	virtual void replaceContents(std::string const & from, std::string const & to);
+	///
 	std::string const & getOptions() const { return p_.getOptions(); }
 	///
 	std::string const & getSecOptions() const { return p_.getSecOptions(); }

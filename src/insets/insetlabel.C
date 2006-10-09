@@ -69,7 +69,7 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		if (p.getContents() != params().getContents())
 			cur.bv().buffer()->changeRefsIfUnique(params().getContents(),
-						       p.getContents());
+						       p.getContents(), InsetBase::REF_CODE);
 		setParams(p);
 		break;
 	}
