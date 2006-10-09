@@ -178,7 +178,7 @@ QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 }
 
 
-void QLToolbar::add(FuncRequest const & func, string const & tooltip)
+void QLToolbar::add(FuncRequest const & func, lyx::docstring const & tooltip)
 {
 	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:

@@ -64,7 +64,7 @@ public:
 
 	//~QLToolbar();
 
-	void add(FuncRequest const & func, std::string const & tooltip);
+	void add(FuncRequest const & func, lyx::docstring const & tooltip);
 	void hide(bool);
 	void show(bool);
 	void update();

@@ -15,6 +15,8 @@
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
 
+#include "support/docstring.h"
+
 #include <QAction>
 
 //class FuncRequest;
@@ -33,11 +35,11 @@ class Action: public QAction {
 	Q_OBJECT
 public:
 
-	Action(LyXView & lyxView, std::string const & text,
-		FuncRequest const & func, std::string const & tooltip="");
+	Action(LyXView & lyxView, lyx::docstring const & text,
+		FuncRequest const & func, lyx::docstring const & tooltip = lyx::docstring());
 
-	Action(LyXView & lyxView, std::string const & icon, std::string const & text,
-		FuncRequest const & func, std::string const & tooltip="");
+	Action(LyXView & lyxView, std::string const & icon, lyx::docstring const & text,
+		FuncRequest const & func, lyx::docstring const & tooltip = lyx::docstring());
 
 	void update();
 

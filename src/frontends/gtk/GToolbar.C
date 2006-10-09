@@ -213,7 +213,7 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	toolbar_.set_tooltips(true);
 }
 
-void GToolbar::add(FuncRequest const & func, string const & tooltip)
+void GToolbar::add(FuncRequest const & func, lyx::docstring const & tooltip)
 {
 	switch (func.action) {
 	case ToolbarBackend::SEPARATOR: {
@@ -235,6 +235,7 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 	default: {
 		// ENCODING, FIXME - we assume tooltips are in locale.  No 
 		// idea whether they actually are.
+		// FIXME UNICODE 2: tooltip is a docstring now...
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
 
 		Gtk::ToolButton * toolbutton;

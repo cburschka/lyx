@@ -51,7 +51,7 @@ public:
 	virtual ~Toolbar() {}
 	/// Add a button to the bar.
 	virtual void add(FuncRequest const & func,
-			 std::string const & tooltip) = 0;
+			 lyx::docstring const & tooltip) = 0;
 
 	/** Hide the bar.
 	 *  \param update_metrics is a hint to the layout engine that the

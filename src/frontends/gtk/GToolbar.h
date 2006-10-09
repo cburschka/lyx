@@ -65,7 +65,7 @@ private:
 class GToolbar : public Toolbar, public sigc::trackable {
 public:
 	GToolbar(ToolbarBackend::Toolbar const &, LyXView &);
-	void add(FuncRequest const & func, std::string const & tooltip);
+	void add(FuncRequest const & func, lyx::docstring const & tooltip);
 	void hide(bool);
 	void show(bool);
 	void update();

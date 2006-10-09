@@ -120,7 +120,7 @@ void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
 			addBinding(label, *m);
 
 			Action * action = new Action(*(owner_->view()),
-						     lyx::to_utf8(label), m->func());
+						     label, m->func());
 			qMenu->addAction(action);
 		}
 	}

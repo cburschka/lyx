@@ -158,12 +158,13 @@ QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
 
 	ToolbarBackend::item_iterator it = tbb.items.begin();
 	ToolbarBackend::item_iterator end = tbb.items.end();
+	// FIXME UNICODE: ToolbarBackend!!!
 	for (; it != end; ++it)
-		add(it->first, it->second);
+		add(it->first, lyx::from_utf8(it->second));
 }
 
 
-void QLToolbar::add(FuncRequest const & func, string const & tooltip)
+void QLToolbar::add(FuncRequest const & func, docstring const & tooltip)
 {
 	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
@@ -194,7 +195,7 @@ void QLToolbar::add(FuncRequest const & func, string const & tooltip)
 		if (owner_.getLyXFunc().getStatus(func).unknown())
 			break;
 
-		Action * action = new Action(owner_, toolbarbackend.getIcon(func), "", func, tooltip);
+		Action * action = new Action(owner_, toolbarbackend.getIcon(func), lyx::docstring(), func, tooltip);
 		addAction(action);
 		ActionVector.push_back(action);
 		break;

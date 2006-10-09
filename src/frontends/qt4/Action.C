@@ -25,6 +25,7 @@
 
 #include <boost/bind.hpp>
 
+using lyx::docstring;
 
 using std::string;
 using std::endl;
@@ -39,8 +40,8 @@ int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
-Action::Action(LyXView & lyxView, string const & text,
-		FuncRequest const & func, string const & tooltip)
+Action::Action(LyXView & lyxView, docstring const & text,
+		FuncRequest const & func, docstring const & tooltip)
 	: QAction(this), func_(func), lyxView_(lyxView)
 {
 	setText(toqstr(text));
@@ -50,8 +51,8 @@ Action::Action(LyXView & lyxView, string const & text,
 	update();
 }
 
-Action::Action(LyXView & lyxView, string const & icon, string const & text,
-		FuncRequest const & func, string const & tooltip)
+Action::Action(LyXView & lyxView, string const & icon, docstring const & text,
+		FuncRequest const & func, docstring const & tooltip)
 		: QAction(this), func_(func), lyxView_(lyxView)
 {
 	setIcon(QPixmap(icon.c_str()));

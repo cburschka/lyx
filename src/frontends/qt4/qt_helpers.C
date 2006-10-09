@@ -144,10 +144,7 @@ void ucs4_to_qstring(lyx::docstring const & str, QString & s)
 QString const toqstr(docstring const & ucs4)
 {
 	QString s;
-	size_t const ls = ucs4.size();
-
-	for (size_t i = 0; i < ls; ++i)
-		s.append(ucs4_to_qchar(ucs4[i]));
+	ucs4_to_qstring(ucs4, s);
 
 	return s;
 }
