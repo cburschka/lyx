@@ -28,9 +28,8 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-// FIXME UNICODE
 GChanges::GChanges(Dialog & parent)
-	: GViewCB<ControlChanges, GViewGladeB>(parent, lyx::to_utf8(_("Merge Changes")), false)
+	: GViewCB<ControlChanges, GViewGladeB>(parent, _("Merge Changes"), false)
 {}
 
 

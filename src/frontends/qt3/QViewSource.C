@@ -32,7 +32,7 @@ namespace frontend {
 typedef QController<ControlViewSource, QView<QViewSourceDialog> > base_class;
 
 QViewSource::QViewSource(Dialog & parent)
-	: base_class(parent, "")
+	: base_class(parent, lyx::docstring())
 {}
 
 

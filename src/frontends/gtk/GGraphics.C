@@ -50,7 +50,7 @@ string defaultUnit("cm");
 } // namespace anon
 
 GGraphics::GGraphics(Dialog & parent)
-	: GViewCB<ControlGraphics, GViewGladeB>(parent, lyx::to_utf8(_("Graphics")), false)
+	: GViewCB<ControlGraphics, GViewGladeB>(parent, _("Graphics"), false)
 {}
 
 

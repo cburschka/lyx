@@ -26,7 +26,7 @@ typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> > base_cla
 
 
 QTabularCreate::QTabularCreate(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Insert Table")))
+	: base_class(parent, _("Insert Table"))
 {
 }
 

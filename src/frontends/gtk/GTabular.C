@@ -39,7 +39,7 @@ namespace lyx {
 namespace frontend {
 
 GTabular::GTabular(Dialog & parent)
-	: GViewCB<ControlTabular, GViewGladeB>(parent, lyx::to_utf8(_("Table Settings")), false)
+	: GViewCB<ControlTabular, GViewGladeB>(parent, _("Table Settings"), false)
 {}
 
 

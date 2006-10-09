@@ -38,7 +38,7 @@ namespace frontend {
 typedef QController<ControlToc, QView<QTocDialog> > base_class;
 
 QToc::QToc(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Table of Contents"))), depth_(1)
+	: base_class(parent, _("Table of Contents")), depth_(1)
 {}
 
 
@@ -66,7 +66,7 @@ void QToc::updateType()
 		dialog_->typeCO->insertItem(toqstr(guiname));
 		if (*it == type) {
 			dialog_->typeCO->setCurrentItem(it - choice.begin());
-			setTitle(guiname);
+			setTitle(lyx::from_ascii(guiname));
 		}
 	}
 	type_ = type;

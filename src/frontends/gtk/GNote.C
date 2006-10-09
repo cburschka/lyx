@@ -32,7 +32,7 @@ namespace lyx {
 namespace frontend {
 
 GNote::GNote(Dialog & parent)
-	: GViewCB<ControlNote, GViewGladeB>(parent, lyx::to_utf8(_("Note Settings")), false)
+	: GViewCB<ControlNote, GViewGladeB>(parent, _("Note Settings"), false)
 {}
 
 

@@ -32,7 +32,7 @@ public:
 	void setApply(Gtk::Button * apply);
 	void setOK(Gtk::Button * ok);
 	void setRestore(Gtk::Button * restore);
-	void setTitle(std::string const &);
+	void setTitle(lyx::doctring const &);
 	bool readOnly() const;
 protected:
 	// Build the dialog
@@ -103,12 +103,12 @@ public:
 	Controller & controller();
 	Controller const & controller() const;
 protected:
-	GViewCB(Dialog & parent, std::string const & t, bool allowResize = false);
+	GViewCB(Dialog & parent, lyx::docstring const & t, bool allowResize = false);
 };
 
 
 template <class Controller, class Base>
-GViewCB<Controller, Base>::GViewCB(Dialog & parent, std::string const & t,
+GViewCB<Controller, Base>::GViewCB(Dialog & parent, lyx::docstring const & t,
 				   bool allowResize) :
 	Base(parent, t, allowResize)
 {

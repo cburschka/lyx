@@ -38,9 +38,8 @@ namespace {
 string defaultUnit("cm");
 } // namespace anon
 
-// FIXME UNICODE
 GBox::GBox(Dialog & parent)
-	: GViewCB<ControlBox, GViewGladeB>(parent, lyx::to_utf8(_("Box Settings")), false)
+	: GViewCB<ControlBox, GViewGladeB>(parent, _("Box Settings"), false)
 {}
 
 

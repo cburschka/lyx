@@ -29,7 +29,7 @@ typedef QController<ControlShowFile, QView<QShowFileDialog> > base_class;
 
 
 QShowFile::QShowFile(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Show File")))
+	: base_class(parent, _("Show File"))
 {
 }
 

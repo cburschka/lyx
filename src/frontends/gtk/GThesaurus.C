@@ -44,7 +44,7 @@ synModelColumns synColumns;
 
 
 GThesaurus::GThesaurus(Dialog & parent)
-	: GViewCB<ControlThesaurus, GViewGladeB>(parent, lyx::to_utf8(_("Thesaurus")), false)
+	: GViewCB<ControlThesaurus, GViewGladeB>(parent, _("Thesaurus"), false)
 {}
 
 

@@ -33,9 +33,8 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-// FIXME UNICODE
 GBranch::GBranch(Dialog & parent)
-	: GViewCB<ControlBranch, GViewGladeB>(parent, lyx::to_utf8(_("Branch Settings")), false)
+	: GViewCB<ControlBranch, GViewGladeB>(parent, _("Branch Settings"), false)
 {}
 
 

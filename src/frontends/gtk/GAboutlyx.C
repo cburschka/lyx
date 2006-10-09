@@ -152,7 +152,7 @@ Glib::ustring translateMarkup(Glib::ustring const & lyxMarkup)
 
 
 GAboutlyx::GAboutlyx(Dialog & parent)
-	: GViewCB<ControlAboutlyx, GViewGladeB>(parent, "About LyX")
+	: GViewCB<ControlAboutlyx, GViewGladeB>(parent, _("About LyX"))
 {
 }
 

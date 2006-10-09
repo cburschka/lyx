@@ -29,7 +29,7 @@ namespace lyx {
 namespace frontend {
 
 GErrorList::GErrorList(Dialog & parent)
-	: GViewCB<ControlErrorList, GViewGladeB>(parent, lyx::to_utf8(_("Errors")), false)
+	: GViewCB<ControlErrorList, GViewGladeB>(parent, _("Errors"), false)
 {}
 
 
@@ -59,7 +59,7 @@ void GErrorList::doBuild()
 
 void GErrorList::update()
 {
-	setTitle(controller().name());
+	setTitle(lyx::from_ascii(controller().name()));
 	updateContents();
 }
 

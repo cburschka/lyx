@@ -41,7 +41,7 @@ namespace {
 
 
 GParagraph::GParagraph(Dialog & parent)
-	: GViewCB<ControlParagraph, GViewGladeB>(parent, lyx::to_utf8(_("Paragraph Settings")), false)
+	: GViewCB<ControlParagraph, GViewGladeB>(parent, _("Paragraph Settings"), false)
 {}
 
 void GParagraph::doBuild()

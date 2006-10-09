@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GSpellchecker::GSpellchecker(Dialog & parent)
-	: GViewCB<ControlSpellchecker, GViewGladeB>(parent, lyx::to_utf8(_("Spellchecker")), false)
+	: GViewCB<ControlSpellchecker, GViewGladeB>(parent, _("Spellchecker"), false)
 {}
 
 

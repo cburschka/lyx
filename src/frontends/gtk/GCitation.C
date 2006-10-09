@@ -67,9 +67,8 @@ bool GCitation::bib_visible(const Gtk::TreeModel::const_iterator& iter)
 styleModelColumns styleColumns;
 
 
-// FIXME UNICODE
 GCitation::GCitation(Dialog & parent)
-	: GViewCB<ControlCitation, GViewGladeB>(parent, lyx::to_utf8(_("Citation")), false)
+	: GViewCB<ControlCitation, GViewGladeB>(parent, _("Citation"), false)
 {}
 
 

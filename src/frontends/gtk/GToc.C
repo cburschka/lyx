@@ -30,7 +30,7 @@ namespace lyx {
 namespace frontend {
 
 GToc::GToc(Dialog & parent)
-	: GViewCB<ControlToc, GViewGladeB>(parent, lyx::to_utf8(_("Table of Contents")), false)
+	: GViewCB<ControlToc, GViewGladeB>(parent, _("Table of Contents"), false)
 {}
 
 

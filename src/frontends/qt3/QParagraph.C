@@ -37,7 +37,7 @@ typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
 
 
 QParagraph::QParagraph(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Paragraph Settings")))
+	: base_class(parent, _("Paragraph Settings"))
 {}
 
 

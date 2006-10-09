@@ -297,7 +297,7 @@ void get_extra(external::ExtraData & data,
 
 
 GExternal::GExternal(Dialog & parent)
-	: GViewCB<ControlExternal, GViewGladeB>(parent, lyx::to_utf8(_("External Settings")), false)
+	: GViewCB<ControlExternal, GViewGladeB>(parent, _("External Settings"), false)
 {}
 
 

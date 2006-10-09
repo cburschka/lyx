@@ -29,7 +29,7 @@ namespace lyx {
 namespace frontend {
 
 GShowFile::GShowFile(Dialog & parent)
-	: GViewCB<ControlShowFile, GViewGladeB>(parent, lyx::to_utf8(_("Show File")), false)
+	: GViewCB<ControlShowFile, GViewGladeB>(parent, _("Show File"), false)
 {}
 
 
@@ -53,7 +53,7 @@ void GShowFile::update()
 	string const title = controller().getFileName();
 
 	if (!title.empty())
-		setTitle(title);
+		setTitle(lyx::from_utf8(title));
 
 	string const contents = controller().getFileContents();
 

@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GTableCreate::GTableCreate(Dialog & parent)
-	: GViewCB<ControlTabularCreate, GViewGladeB>(parent, lyx::to_utf8(_("Insert Table")))
+	: GViewCB<ControlTabularCreate, GViewGladeB>(parent, _("Insert Table"))
 {
 }
 

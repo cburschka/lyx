@@ -37,9 +37,8 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-// FIXME UNICODE
 GBibtex::GBibtex(Dialog & parent)
-	: GViewCB<ControlBibtex, GViewGladeB>(parent, lyx::to_utf8(_("BibTeX Bibliography")), false)
+	: GViewCB<ControlBibtex, GViewGladeB>(parent, _("BibTeX Bibliography"), false)
 {}
 
 

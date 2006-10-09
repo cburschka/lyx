@@ -31,7 +31,7 @@ namespace lyx {
 namespace frontend {
 
 GLog::GLog(Dialog & parent)
-	: GViewCB<ControlLog, GViewGladeB>(parent, lyx::to_utf8(_("Log Viewer")), false)
+	: GViewCB<ControlLog, GViewGladeB>(parent, _("Log Viewer"), false)
 {}
 
 
@@ -56,7 +56,7 @@ void GLog::doBuild()
 
 void GLog::update()
 {
-	string const title = controller().title();
+	lyx::docstring const title = controller().title();
 
 	if (!title.empty())
 		setTitle(title);

@@ -35,7 +35,7 @@ namespace lyx {
 namespace frontend {
 
 GPreferences::GPreferences(Dialog & parent)
-	: GViewCB<ControlPrefs, GViewGladeB>(parent, lyx::to_utf8(_("Preferences")), false)
+	: GViewCB<ControlPrefs, GViewGladeB>(parent, _("Preferences"), false)
 {}
 
 

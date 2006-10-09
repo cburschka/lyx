@@ -21,12 +21,14 @@
 #include "GViewBase.h"
 #include "support/filetools.h"
 
+using lyx::docstring;
+
 using std::string;
 
 namespace lyx {
 namespace frontend {
 
-GViewBase::GViewBase(Dialog & parent, string const & t, bool allowResize) :
+GViewBase::GViewBase(Dialog & parent, docstring const & t, bool allowResize) :
 	Dialog::View(parent, t), allowResize_(allowResize)
 {
 }
@@ -115,7 +117,7 @@ void GViewBase::setRestore(Gtk::Button * restore)
 }
 
 
-void GViewBase::setTitle(std::string const & title)
+void GViewBase::setTitle(lyx::docstring const & title)
 {
 	Dialog::View::setTitle(title);
 	window()->set_title(title);

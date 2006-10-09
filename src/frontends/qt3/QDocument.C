@@ -67,7 +67,7 @@ char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 
 
 QDocument::QDocument(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Document Settings"))),
+	: base_class(parent, _("Document Settings")),
 		lang_(getSecond(getLanguageData(false)))
 {}
 

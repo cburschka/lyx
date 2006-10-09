@@ -27,7 +27,7 @@ namespace frontend {
 typedef QController<ControlLog, QView<QLogDialog> > base_class;
 
 QLog::QLog(Dialog & parent)
-	: base_class(parent, "")
+: base_class(parent, lyx::docstring())
 {}
 
 

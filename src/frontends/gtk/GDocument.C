@@ -55,9 +55,8 @@ char const * const encodings[] = { "Language Default", "LaTeX default",
 }
 
 
-// FIXME UNICODE
 GDocument::GDocument(Dialog & parent)
-	: GViewCB<ControlDocument, GViewGladeB>(parent, lyx::to_utf8(_("Document Settings")), false),
+	: GViewCB<ControlDocument, GViewGladeB>(parent, _("Document Settings"), false),
 	lang_(getSecond(getLanguageData(false)))
 {}
 

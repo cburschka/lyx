@@ -28,7 +28,7 @@ typedef QController<ControlCommand, QView<QBibitemDialog> > base_class;
 
 
 QBibitem::QBibitem(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Bibliography Entry Settings")))
+	: base_class(parent, _("Bibliography Entry Settings"))
 {
 }
 

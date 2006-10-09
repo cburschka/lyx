@@ -33,7 +33,7 @@ typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
 
 
 QChanges::QChanges(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Merge Changes")))
+	: base_class(parent, _("Merge Changes"))
 {
 }
 

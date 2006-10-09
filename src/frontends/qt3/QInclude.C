@@ -36,7 +36,7 @@ typedef QController<ControlInclude, QView<QIncludeDialog> > base_class;
 
 
 QInclude::QInclude(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Child Document")))
+	: base_class(parent, _("Child Document"))
 {}
 
 

@@ -33,7 +33,7 @@ typedef GViewCB<ControlSearch, GViewGladeB> base_class;
 
 
 GSearch::GSearch(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Find and Replace")), false)
+	: base_class(parent, _("Find and Replace"), false)
 {}
 
 

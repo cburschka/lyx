@@ -62,7 +62,7 @@ bufferModelColumns bufferColumns;
 
 
 GRef::GRef(Dialog & parent)
-	: GViewCB<ControlRef, GViewGladeB>(parent, lyx::to_utf8(_("Cross-reference")), false)
+	: GViewCB<ControlRef, GViewGladeB>(parent, _("Cross-reference"), false)
 {}
 
 

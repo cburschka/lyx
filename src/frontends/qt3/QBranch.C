@@ -33,7 +33,7 @@ typedef QController<ControlBranch, QView<QBranchDialog> > base_class;
 
 
 QBranch::QBranch(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Branch Settings")))
+	: base_class(parent, _("Branch Settings"))
 {}
 
 

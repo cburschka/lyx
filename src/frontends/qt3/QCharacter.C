@@ -32,7 +32,7 @@ typedef QController<ControlCharacter, QView<QCharacterDialog> > base_class;
 
 
 QCharacter::QCharacter(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Text Style")))
+	: base_class(parent, _("Text Style"))
 {
 }
 
