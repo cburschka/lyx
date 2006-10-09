@@ -33,8 +33,8 @@ class Qt2BC : public GuiBC<QButton, QWidget> {
 public:
 	///
 	Qt2BC(ButtonController const &,
-	      std::string const & = lyx::to_utf8(_("Cancel")),
-	      std::string const & = lyx::to_utf8(_("Close")));
+	      lyx::docstring const & = _("Cancel"),
+	      lyx::docstring const & = _("Close"));
 private:
 	/// Updates the button sensitivity (enabled/disabled)
 	void setButtonEnabled(QButton *, bool enabled) const;
@@ -43,7 +43,7 @@ private:
 	void setWidgetEnabled(QWidget *, bool enabled) const;
 
 	/// Set the label on the button
-	void setButtonLabel(QButton *, std::string const & label) const;
+	void setButtonLabel(QButton *, lyx::docstring const & label) const;
 };
 
 } // namespace frontend

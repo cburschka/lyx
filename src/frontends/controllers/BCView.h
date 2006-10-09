@@ -14,9 +14,10 @@
 #ifndef BCVIEW_H
 #define BCVIEW_H
 
+#include "support/docstring.h"
+
 #include <boost/shared_ptr.hpp>
 #include <list>
-#include <string>
 
 namespace lyx {
 namespace frontend {
@@ -94,7 +95,7 @@ class GuiBC : public BCView {
 public:
 	///
 	GuiBC(ButtonController const & parent,
-	      std::string const & cancel, std::string const & close);
+	      lyx::docstring const & cancel, lyx::docstring const & close);
 
 	//@{
 	/** Store pointers to these widgets. The pointers are _not_
@@ -123,10 +124,10 @@ private:
 	/// Enable/Disable a button
 	virtual void setButtonEnabled(Button * obj, bool enable) const = 0;
 	/// Set the Label on the button
-	virtual void setButtonLabel(Button * obj, std::string const & label) const = 0;
+	virtual void setButtonLabel(Button * obj, lyx::docstring const & label) const = 0;
 
-	std::string const cancel_label_;
-	std::string const close_label_;
+	lyx::docstring const cancel_label_;
+	lyx::docstring const close_label_;
 
 	Button * okay_;
 	Button * apply_;

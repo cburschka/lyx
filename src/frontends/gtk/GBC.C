@@ -20,13 +20,13 @@
 
 #include "GBC.h"
 
-using std::string;
+using lyx::docstring;
 
 namespace lyx {
 namespace frontend {
 
 GBC::GBC(ButtonController const & parent,
-	 string const & cancel, string const & close)
+	 docstring const & cancel, docstring const & close)
 	: GuiBC<Gtk::Button, Gtk::Widget>(parent, cancel, close)
 {
 }
@@ -44,11 +44,11 @@ void GBC::setWidgetEnabled(Gtk::Widget * widget, bool enabled) const
 }
 
 
-void GBC::setButtonLabel(Gtk::Button * btn, string const & label) const
+void GBC::setButtonLabel(Gtk::Button * btn, docstring const & label) const
 {
 	// GTK+ Stock buttons take precedence
 	if (!btn->get_use_stock())
-		btn->set_label(Glib::locale_to_utf8(label));
+		btn->set_label(label);
 }
 
 } // namespace frontend

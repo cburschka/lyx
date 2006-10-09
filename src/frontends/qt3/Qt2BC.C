@@ -17,13 +17,13 @@
 #include <qbutton.h>
 #include <qlineedit.h>
 
-using std::string;
+using lyx::docstring;
 
 namespace lyx {
 namespace frontend {
 
 Qt2BC::Qt2BC(ButtonController const & parent,
-	     string const & cancel, string const & close)
+	     docstring const & cancel, docstring const & close)
 	: GuiBC<QButton, QWidget>(parent, cancel, close)
 {}
 
@@ -50,7 +50,7 @@ void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled) const
 }
 
 
-void Qt2BC::setButtonLabel(QButton * obj, string const & label) const
+void Qt2BC::setButtonLabel(QButton * obj, docstring const & label) const
 {
 	obj->setText(toqstr(label));
 }
