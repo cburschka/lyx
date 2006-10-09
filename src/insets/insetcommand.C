@@ -156,6 +156,13 @@ bool InsetCommand::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
+void InsetCommand::replaceContents(std::string const & from, string const & to)
+{
+	if (getContents() == from)
+		setContents(to);
+}
+
+
 InsetCommandMailer::InsetCommandMailer(string const & name,
 				       InsetCommand & inset)
 	: name_(name), inset_(inset)

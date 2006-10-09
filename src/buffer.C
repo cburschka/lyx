@@ -67,7 +67,7 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
-# include "support/gzstream.h"
+#include "support/gzstream.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
@@ -1612,31 +1612,30 @@ void Buffer::saveCursor(StableDocIterator cur, StableDocIterator anc)
 }
 
 
-void Buffer::changeRefsIfUnique(string const & from, string const & to)
+void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBase::Code code)
 {
+	BOOST_ASSERT(code == InsetBase::CITE_CODE || code == InsetBase::REF_CODE);
 	// Check if the label 'from' appears more than once
 	vector<string> labels;
-	getLabelList(labels);
+
+	if (code == InsetBase::CITE_CODE) {
+		vector<pair<string, string> > keys;
+		fillWithBibKeys(keys);
+		vector<pair<string, string> >::const_iterator bit  = keys.begin();
+		vector<pair<string, string> >::const_iterator bend = keys.end();
+
+		for (; bit != bend; ++bit)
+			labels.push_back(bit->first);
+	} else
+		getLabelList(labels);
 
 	if (lyx::count(labels.begin(), labels.end(), from) > 1)
 		return;
 
-	InsetBase::Code code = InsetBase::REF_CODE;
-
-	ParIterator it = par_iterator_begin();
-	ParIterator end = par_iterator_end();
-	for ( ; it != end; ++it) {
-		bool changed_inset = false;
-		for (InsetList::iterator it2 = it->insetlist.begin();
-		     it2 != it->insetlist.end(); ++it2) {
-			if (it2->inset->lyxCode() == code) {
-				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
-				if (inset->getContents() == from) {
-					inset->setContents(to);
-					//inset->setButtonLabel();
-					changed_inset = true;
-				}
-			}
+	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
+		if (it->lyxCode() == code) {
+			InsetCommand & inset = dynamic_cast<InsetCommand &>(*it);
+			inset.replaceContents(from, to);
 		}
 	}
 }

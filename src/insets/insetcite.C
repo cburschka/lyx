@@ -28,14 +28,19 @@
 
 #include <boost/filesystem/operations.hpp>
 
+#include <algorithm>
+
 using lyx::support::ascii_lowercase;
 using lyx::support::contains;
 using lyx::support::getVectorFromString;
+using lyx::support::getStringFromVector;
 using lyx::support::ltrim;
 using lyx::support::rtrim;
 using lyx::support::split;
+using lyx::support::tokenPos;
 
 using std::endl;
+using std::replace;
 using std::string;
 using std::ostream;
 using std::vector;
@@ -430,3 +435,14 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 		break;
 	}
 }
+
+
+void InsetCitation::replaceContents(string const & from, string const & to)
+{
+	if (tokenPos(getContents(), ',', from) != -1) {
+		vector<string> items = getVectorFromString(getContents());
+		replace(items.begin(), items.end(), from, to);
+		setContents(getStringFromVector(items));
+	}
+}
+

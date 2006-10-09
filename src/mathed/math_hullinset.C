@@ -1078,7 +1078,7 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				numbered(r, true);
 			string old = label(r);
 			if (str != old) {
-				cur.bv().buffer()->changeRefsIfUnique(old, str);
+				cur.bv().buffer()->changeRefsIfUnique(old, str, InsetBase::REF_CODE);
 				label(r, str);
 			}
 			break;

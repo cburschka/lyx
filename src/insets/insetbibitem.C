@@ -61,10 +61,14 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p;
 		InsetCommandMailer::string2params("bibitem", cmd.argument, p);
-		if (!p.getCmdName().empty())
-			setParams(p);
-		else
+		if (p.getCmdName().empty()) {
 			cur.noUpdate();
+			break;
+		}
+		if (p.getContents() != params().getContents()) 
+			cur.bv().buffer()->changeRefsIfUnique(params().getContents(),
+						       p.getContents(), InsetBase::CITE_CODE);
+		setParams(p);
 		break;
 	}
 

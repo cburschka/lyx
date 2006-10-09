@@ -343,7 +343,7 @@ public:
 	///
 	StableDocIterator getAnchor() const { return anchor_; }
 	///
-	void changeRefsIfUnique(std::string const & from, std::string const & to);
+	void changeRefsIfUnique(std::string const & from, std::string const & to, InsetBase::Code code);
 
 private:
 	/** Inserts a file into a document

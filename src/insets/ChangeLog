@@ -1,3 +1,15 @@
+2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetlabel (doDispatch): changeRefsIfUnique needs a
+	InsetCode argument now.
+
+	* insetbibitem (doDispatch): use changeRefsIfUnique
+	(actual fix for bug 2744).
+
+	* insetcommand.[Ch]:
+	* insetcite.[Ch]: implement replaceContents, which is
+	used by changeRefsIfUnique.
+
 2006-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetvspace.C (doDispatch): open dialog on mouse release,

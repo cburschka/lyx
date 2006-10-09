@@ -1,3 +1,9 @@
+2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* buffer.[Ch] (changeRefsIfUnique): extend to handle bibitems 
+	as well	(the function takes a InsetCode argument now) [bug 2744];
+	clean up by using InsetIterator.
+
 2006-09-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): fix handling of LFUN_RUNCHKTEX (bug 2831)
