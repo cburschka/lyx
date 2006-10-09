@@ -123,6 +123,18 @@ QString const toqstr(string const & str)
 void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
 {
 	s.reserve(ls);
+	s.clear();
+
+	for (size_t i = 0; i < ls; ++i)
+		s.append(ucs4_to_qchar(str[i]));
+}
+
+
+void ucs4_to_qstring(lyx::docstring const & str, QString & s)
+{
+	size_t ls = str.size(); 
+	s.reserve(ls);
+	s.clear();
 
 	for (size_t i = 0; i < ls; ++i)
 		s.append(ucs4_to_qchar(str[i]));

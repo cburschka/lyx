@@ -178,7 +178,7 @@ string const internal_path(QString const & input)
 
 
 PrefAscii::PrefAscii(QWidget * parent)
-: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Plain text")), 0, parent)
+: PrefModule(_(Outputs), _("Plain text"), 0, parent)
 {
 	setupUi(this);
 	connect(asciiLinelengthSB, SIGNAL(valueChanged(int)),
@@ -203,7 +203,7 @@ void PrefAscii::update(LyXRC const & rc)
 
 
 PrefDate::PrefDate(QWidget * parent)
-: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Date format")), 0, parent)
+: PrefModule(_(Outputs), _("Date format"), 0, parent)
 {
 	setupUi(this);
 	connect(DateED, SIGNAL(textChanged(const QString&)),
@@ -224,7 +224,7 @@ void PrefDate::update(LyXRC const & rc)
 
 
 PrefKeyboard::PrefKeyboard(QPrefs * form, QWidget * parent)
-: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Keyboard")), form, parent)
+: PrefModule(_(LookAndFeel), _("Keyboard"), form, parent)
 {
 	setupUi(this);
 
@@ -298,7 +298,7 @@ void PrefKeyboard::on_secondKeymapPB_clicked(bool)
 
 
 PrefLatex::PrefLatex(QPrefs * form, QWidget * parent)
-: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("LaTeX")), form, parent)
+: PrefModule(_(Outputs), _("LaTeX"), form, parent)
 {
 	setupUi(this);
 	connect(latexEncodingED, SIGNAL(textChanged(const QString&)),
@@ -345,7 +345,7 @@ void PrefLatex::update(LyXRC const & rc)
 
 
 PrefScreenFonts::PrefScreenFonts(QPrefs * form, QWidget * parent)
-: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Screen fonts")), form, parent)
+: PrefModule(_(LookAndFeel), _("Screen fonts"), form, parent)
 {
 	setupUi(this);
 
@@ -497,7 +497,7 @@ void PrefScreenFonts::select_typewriter(const QString& name)
 
 
 PrefColors::PrefColors(QPrefs * form, QWidget * parent)
-: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Colors")), form, parent)
+: PrefModule(_(LookAndFeel), _("Colors"), form, parent)
 {
 	setupUi(this);
 
@@ -566,7 +566,7 @@ void PrefColors::change_color()
 
 
 PrefCygwinPath::PrefCygwinPath(QWidget * parent)
-: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Paths")), 0, parent)
+: PrefModule(_(Outputs), _("Paths"), 0, parent)
 {
 	setupUi(this);
 	connect(pathCB, SIGNAL(toggled(bool)),
@@ -587,7 +587,7 @@ void PrefCygwinPath::update(LyXRC const & rc)
 
 
 PrefDisplay::PrefDisplay(QWidget * parent)
-: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("Graphics")), 0, parent)
+: PrefModule(_(LookAndFeel), _("Graphics"), 0, parent)
 {
 	setupUi(this);
 	connect(instantPreviewCO, SIGNAL(activated(int)),
@@ -654,7 +654,7 @@ void PrefDisplay::update(LyXRC const & rc)
 
 
 PrefPaths::PrefPaths(QPrefs * form, QWidget * parent)
-: PrefModule(string(), lyx::to_utf8(_("Paths")), form, parent)
+: PrefModule(docstring(), _("Paths"), form, parent)
 {
 	setupUi(this);
 	connect(templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
@@ -743,7 +743,7 @@ void PrefPaths::select_lyxpipe()
 
 
 PrefSpellchecker::PrefSpellchecker(QPrefs * form, QWidget * parent)
-: PrefModule(lyx::to_utf8(_(LanguageSettings)), lyx::to_utf8(_("Spellchecker")), form, parent)
+: PrefModule(_(LanguageSettings), _("Spellchecker"), form, parent)
 {
 	setupUi(this);
 
@@ -844,7 +844,7 @@ void PrefSpellchecker::select_dict()
 
 
 PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
-: PrefModule(string(), lyx::to_utf8(_("Converters")), form, parent)
+: PrefModule(docstring(), _("Converters"), form, parent)
 {
 	setupUi(this);
 
@@ -1033,7 +1033,7 @@ void PrefConverters::remove_converter()
 
 
 PrefCopiers::PrefCopiers(QPrefs * form, QWidget * parent)
-: PrefModule(string(), lyx::to_utf8(_("Copiers")), form, parent)
+: PrefModule(docstring(), _("Copiers"), form, parent)
 {
 	setupUi(this);
 
@@ -1276,7 +1276,7 @@ void PrefCopiers::remove_copier()
 
 
 PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
-: PrefModule(string(), lyx::to_utf8(_("File formats")), form, parent)
+: PrefModule(docstring(), _("File formats"), form, parent)
 {
 	setupUi(this);
 
@@ -1521,7 +1521,7 @@ void PrefFileformats::remove_format()
 
 
 PrefLanguage::PrefLanguage(QWidget * parent)
-: PrefModule(string(), lyx::to_utf8(_("Language")), 0, parent)
+: PrefModule(docstring(), _("Language"), 0, parent)
 {
 	setupUi(this);
 
@@ -1597,7 +1597,7 @@ void PrefLanguage::update(LyXRC const & rc)
 
 
 PrefPrinter::PrefPrinter(QWidget * parent)
-: PrefModule(lyx::to_utf8(_(Outputs)), lyx::to_utf8(_("Printer")), 0, parent)
+: PrefModule(_(Outputs), _("Printer"), 0, parent)
 {
 	setupUi(this);
 
@@ -1689,7 +1689,7 @@ void PrefPrinter::update(LyXRC const & rc)
 
 
 PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
-: PrefModule(lyx::to_utf8(_(LookAndFeel)), lyx::to_utf8(_("User interface")), form, parent)
+: PrefModule(_(LookAndFeel), _("User interface"), form, parent)
 {
 	setupUi(this);
 
@@ -1801,7 +1801,7 @@ void PrefUserInterface::select_bind()
 
 
 PrefIdentity::PrefIdentity(QWidget * parent)
-: PrefModule(string(), lyx::to_utf8(_("Identity")), 0, parent)
+: PrefModule(docstring(), _("Identity"), 0, parent)
 {
 	setupUi(this);
 
@@ -1870,7 +1870,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	add(new PrefUserInterface(form_));
 	add(new PrefIdentity);
 
-	prefsPS->setCurrentPanel(lyx::to_utf8(_("User interface")));
+	prefsPS->setCurrentPanel(_("User interface"));
 
 	form_->bcview().setOK(savePB);
 	form_->bcview().setApply(applyPB);

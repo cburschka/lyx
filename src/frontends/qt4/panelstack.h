@@ -12,6 +12,8 @@
 #ifndef PANELSTACK_H
 #define PANELSTACK_H
 
+#include "support/docstring.h"
+
 #include <QWidget>
 
 #include <map>
@@ -28,20 +30,22 @@ public:
 	PanelStack(QWidget * parent = 0);
 
 	/// add a category with no associated panel
-	void addCategory(std::string const & name, std::string const & parent = std::string());
+	void addCategory(lyx::docstring const & name,
+		lyx::docstring const & parent = lyx::docstring());
 
 	/// add a widget panel with a given name, under the given parent
-	void addPanel(QWidget * panel, std::string const & name, std::string const & parent = std::string());
+	void addPanel(QWidget * panel, lyx::docstring const & name,
+		lyx::docstring const & parent = lyx::docstring());
 
 	/// set current panel by logical name
-	void setCurrentPanel(std::string const &);
+	void setCurrentPanel(lyx::docstring const &);
 
 public Q_SLOTS:
 	/// set current panel from an item
 	void switchPanel(QTreeWidgetItem * i, QTreeWidgetItem* previous=0);
 
 private:
-	typedef std::map<std::string, QTreeWidgetItem *> PanelMap;
+	typedef std::map<lyx::docstring, QTreeWidgetItem *> PanelMap;
 
 	PanelMap panel_map_;
 

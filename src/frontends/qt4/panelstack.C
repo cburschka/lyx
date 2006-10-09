@@ -22,9 +22,10 @@
 
 #include <boost/assert.hpp>
 
-using std::string;
-
 #include <iostream>
+
+using lyx::docstring;
+
 using std::endl;
 using std::cout;
 
@@ -59,13 +60,14 @@ PanelStack::PanelStack(QWidget * parent)
 }
 
 
-void PanelStack::addCategory(string const & n, string const & parent)
+void PanelStack::addCategory(docstring const & n, docstring const & parent)
 {
 	QTreeWidgetItem * item;
 
-	QString name = toqstr(n);
+	QString name;
+	ucs4_to_qstring(n, name);
 
-	cout << "addCategory n= " << n << "   parent= " << endl;
+	cout << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
 
 	if (parent.empty()) {
 		item = new QTreeWidgetItem(list_);
@@ -103,7 +105,7 @@ void PanelStack::addCategory(string const & n, string const & parent)
 }
 
 
-void PanelStack::addPanel(QWidget * panel, string const & name, string const & parent)
+void PanelStack::addPanel(QWidget * panel, docstring const & name, docstring const & parent)
 {
 	addCategory(name, parent);
 	QTreeWidgetItem * item = panel_map_.find(name)->second;
@@ -117,7 +119,7 @@ void PanelStack::addPanel(QWidget * panel, string const & name, string const & p
 }
 
 
-void PanelStack::setCurrentPanel(string const & name)
+void PanelStack::setCurrentPanel(docstring const & name)
 {
 	PanelMap::const_iterator cit = panel_map_.find(name);
 	BOOST_ASSERT(cit != panel_map_.end());

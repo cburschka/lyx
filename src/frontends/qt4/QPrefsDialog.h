@@ -60,7 +60,7 @@ class PrefModule : public QWidget
 {
 	Q_OBJECT
 public:
-	PrefModule(std::string const & cat, std::string const & t, QPrefs * form = 0, QWidget * parent = 0)
+	PrefModule(lyx::docstring const & cat, lyx::docstring const & t, QPrefs * form = 0, QWidget * parent = 0)
 		: QWidget(parent), category_(cat), title_(t), form_(form)
 	{
 	}
@@ -69,17 +69,17 @@ public:
 	virtual void apply(LyXRC & rc) const = 0;
 	virtual void update(LyXRC const & rc) = 0;
 
-	std::string const & category() {
+	lyx::docstring const & category() {
 		return category_;
 	}
 
-	std::string const & title() {
+	lyx::docstring const & title() {
 		return title_;
 	}
 
 protected:
-	std::string category_;
-	std::string title_;
+	lyx::docstring category_;
+	lyx::docstring title_;
 	QPrefs * form_;
 
 Q_SIGNALS:
