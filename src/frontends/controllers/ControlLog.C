@@ -19,6 +19,8 @@
 #include <sstream>
 #include <fstream>
 
+using lyx::docstring;
+
 using std::istringstream;
 using std::ostream;
 using std::string;
@@ -70,21 +72,21 @@ void ControlLog::clearParams()
 }
 
 
-string const ControlLog::title() const
+docstring const ControlLog::title() const
 {
-	string t;
+	docstring t;
 	switch (type_) {
 	case LatexLog:
-		t = lyx::to_utf8(_("LaTeX Log"));
+		t = _("LaTeX Log");
 		break;
 	case LiterateLog:
-		t = lyx::to_utf8(_("Literate Programming Build Log"));
+		t = _("Literate Programming Build Log");
 		break;
 	case Lyx2lyxLog:
-		t = lyx::to_utf8(_("lyx2lyx Error Log"));
+		t = _("lyx2lyx Error Log");
 		break;
 	case VCLog:
-		t = lyx::to_utf8(_("Version Control Log"));
+		t = _("Version Control Log");
 		break;
 	}
 	return t;

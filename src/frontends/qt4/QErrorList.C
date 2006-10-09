@@ -27,7 +27,7 @@ namespace frontend {
 typedef QController<ControlErrorList, QView<QErrorListDialog> > base_class;
 
 QErrorList::QErrorList(Dialog & parent)
-	: base_class(parent, "")
+	: base_class(parent, lyx::docstring())
 {}
 
 
@@ -48,7 +48,7 @@ void QErrorList::select(QListWidgetItem * wi)
 
 void QErrorList::update_contents()
 {
-	setTitle(controller().name());
+	setTitle(lyx::from_ascii(controller().name()));
 	dialog_->errorsLW->clear();
 	dialog_->descriptionTB->setPlainText(QString());
 

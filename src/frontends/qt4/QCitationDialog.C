@@ -17,6 +17,7 @@
 #include "qt_helpers.h"
 
 #include "bufferparams.h"
+#include "gettext.h"
 
 #include "controllers/ControlCitation.h"
 
@@ -37,7 +38,7 @@ namespace frontend {
 
 
 QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
-	: Dialog::View(dialog, "Citation"), form_(form)
+	: Dialog::View(dialog, _("Citation")), form_(form)
 {
 	setupUi(this);
 

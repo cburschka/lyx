@@ -21,6 +21,7 @@
 #include "FuncStatus.h"
 #include "lyxfunc.h"
 
+using lyx::docstring;
 
 using std::string;
 
@@ -219,7 +220,7 @@ Dialog::Controller & Dialog::controller() const
 }
 
 
-Dialog::View::View(Dialog & parent, string title) :
+Dialog::View::View(Dialog & parent, docstring title) :
 	p_(parent), title_(title)
 {}
 
@@ -231,13 +232,13 @@ Dialog::View & Dialog::view() const
 }
 
 
-void Dialog::View::setTitle(string const & newtitle)
+void Dialog::View::setTitle(docstring const & newtitle)
 {
 	title_ = newtitle;
 }
 
 
-string const & Dialog::View::getTitle() const
+docstring const & Dialog::View::getTitle() const
 {
 	return title_;
 }

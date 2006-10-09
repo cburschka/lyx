@@ -15,6 +15,8 @@
 #include "Kernel.h"
 #include "lfuns.h"
 
+#include "support/docstring.h"
+
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 
@@ -219,7 +221,7 @@ public:
 	/** \param parent Dialog owning this Controller.
 	 *  \param title  is the dialog title displayed by the WM.
 	 */
-	View(Dialog & parent, std::string title);
+	View(Dialog & parent, lyx::docstring title);
 	virtual ~View() {}
 
 	/** \name Generic View
@@ -257,9 +259,9 @@ public:
 	virtual void partialUpdate(int id);
 
 	/// sets the title of the dialog (window caption)
-	void setTitle(std::string const &);
+	void setTitle(lyx::docstring const &);
 	/// gets the title of the dialog (window caption)
-	std::string const & getTitle() const;
+	lyx::docstring const & getTitle() const;
 
 	/** \name View Access
 	 *  Enable the derived classes to access the other parts of the whole.
@@ -281,7 +283,7 @@ protected:
 
 private:
 	Dialog & p_;
-	std::string title_;
+	lyx::docstring title_;
 };
 
 } // namespace frontend

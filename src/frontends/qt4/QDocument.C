@@ -45,7 +45,7 @@ typedef QController<ControlDocument, QView<QDocumentDialog> > base_class;
 
 
 QDocument::QDocument(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Document Settings")))
+	: base_class(parent, _("Document Settings"))
 {}
 
 

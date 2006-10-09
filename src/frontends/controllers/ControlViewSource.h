@@ -37,7 +37,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// The title displayed by the dialog reflects source type. 
-	std::string const title() const;
+	lyx::docstring const title() const;
 
 	/** get the source code of selected paragraphs, or the whole document
 		\param fullSource get full source code

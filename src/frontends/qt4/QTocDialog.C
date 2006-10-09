@@ -39,7 +39,7 @@ namespace lyx {
 namespace frontend {
 
 QTocDialog::QTocDialog(Dialog & dialog, QToc * form)
-	: Dialog::View(dialog, "Toc"), form_(form), depth_(2)
+	: Dialog::View(dialog, _("Toc")), form_(form), depth_(2)
 {
 	setupUi(this);
 

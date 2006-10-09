@@ -30,7 +30,7 @@ namespace frontend {
 typedef QController<ControlCommand, QView<QIndexDialog> > base_class;
 
 
-QIndex::QIndex(Dialog & parent, string const & title, QString const & label)
+QIndex::QIndex(Dialog & parent, docstring const & title, QString const & label)
 	: base_class(parent, title), label_(label)
 {
 }

@@ -129,7 +129,7 @@ VSpace setVSpaceFromWidgets(int spacing,
 typedef QController<ControlVSpace, QView<QVSpaceDialog> > base_class;
 
 QVSpace::QVSpace(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("Vertical Space Settings")))
+	: base_class(parent, _("Vertical Space Settings"))
 {}
 
 

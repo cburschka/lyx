@@ -41,7 +41,7 @@ namespace frontend {
 typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;
 
 QAbout::QAbout(Dialog & parent)
-	: base_class(parent, lyx::to_utf8(_("About LyX")))
+	: base_class(parent, _("About LyX"))
 {
 }
 

@@ -64,7 +64,7 @@ void ControlViewSource::clearParams()
 }
 
 
-string const ControlViewSource::title() const
+docstring const ControlViewSource::title() const
 {
 	string source_type;
 
@@ -81,7 +81,7 @@ string const ControlViewSource::title() const
 	default:
 		BOOST_ASSERT(false);
 	}
-	return lyx::to_utf8(_(source_type + " Source"));
+	return _(source_type + " Source");
 }
 
 } // namespace frontend

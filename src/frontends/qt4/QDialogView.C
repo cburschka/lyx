@@ -16,10 +16,12 @@
 
 #include "controllers/ButtonController.h"
 
+using lyx::docstring;
+
 namespace lyx {
 namespace frontend {
 
-QDialogView::QDialogView(Dialog & parent, std::string const & t)
+QDialogView::QDialogView(Dialog & parent, docstring const & t)
 	: Dialog::View(parent,t), updating_(false)
 {}
 
