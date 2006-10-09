@@ -216,13 +216,13 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "index") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
-					   lyx::to_utf8(_("Index Entry")),
+					   _("Index Entry"),
 					   qt_("&Keyword:")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QIndex(*dialog,
-					   lyx::to_utf8(_("Label")),
+					   _("Label"),
 					   qt_("&Label:")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {

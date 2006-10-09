@@ -28,7 +28,7 @@ class QIndex :
 public:
 	friend class QIndexDialog;
 
-	QIndex(Dialog &, std::string const & title, QString const & label);
+	QIndex(Dialog &, lyx::docstring const & title, QString const & label);
 protected:
 	virtual bool isValid();
 private:

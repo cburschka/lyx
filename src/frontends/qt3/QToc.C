@@ -183,7 +183,7 @@ void QToc::updateToc(int newdepth)
 			- dialog_->tocLV->height() / 2);
 		dialog_->tocLV->setSelected(selected_item, true);
 	}
-	setTitle(fromqstr(dialog_->typeCO->currentText()));
+	setTitle(qstring_to_ucs4(dialog_->typeCO->currentText()));
 }
 
 

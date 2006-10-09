@@ -31,7 +31,7 @@ class QDialogView : public QObject, public Dialog::View {
 	Q_OBJECT
 public:
 	///
-	QDialogView(Dialog &, std::string const &);
+	QDialogView(Dialog &, lyx::docstring const &);
 	///
 	virtual ~QDialogView() {}
 	///
@@ -85,7 +85,7 @@ private:
 template <class GUIDialog>
 class QView: public QDialogView {
 protected:
-	QView(Dialog &, std::string const &);
+	QView(Dialog &, lyx::docstring const &);
 
 	/// update the dialog
 	virtual void update();
@@ -103,7 +103,7 @@ protected:
 
 
 template <class GUIDialog>
-QView<GUIDialog>::QView(Dialog & p, std::string const & t)
+QView<GUIDialog>::QView(Dialog & p, lyx::docstring const & t)
 	: QDialogView(p, t)
 {}
 
@@ -151,7 +151,7 @@ class QController: public Base
 {
 protected:
 	///
-	QController(Dialog &, std::string const &);
+	QController(Dialog &, lyx::docstring const &);
 public:
 	/// The parent controller
 	Controller & controller();
@@ -161,7 +161,7 @@ public:
 
 
 template <class Controller, class Base>
-QController<Controller, Base>::QController(Dialog & p, std::string const & t)
+QController<Controller, Base>::QController(Dialog & p, lyx::docstring const & t)
 	: Base(p, t)
 {}
 
