@@ -132,19 +132,26 @@ public:
 		lyx::graphics::Image const & image) = 0;
 
 	/// draw a string at position x, y (y is the baseline)
-	virtual void text(int x, int y,
+	/**
+	* \return the width of the drawn text.
+	*/
+	virtual int text(int x, int y,
 		lyx::docstring const & str, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string at position x, y (y is the baseline)
 	 * This is just for fast drawing
+	 * \return the width of the drawn text.
 	 */
-	virtual void text(int x, int y,
+	virtual int text(int x, int y,
 		lyx::char_type const * str, size_t l,
 		LyXFont const & f) = 0;
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual void text(int x, int y,
+	/**
+	* \return the width of the drawn text.
+	*/
+	virtual int text(int x, int y,
 			  lyx::char_type c, LyXFont const & f) = 0;
 
 	/**

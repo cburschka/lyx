@@ -98,22 +98,22 @@ public:
 		lyx::graphics::Image const & image);
 
 	/// draw a string at position x, y (y is the baseline)
-	virtual void text(int x, int y,
+	virtual int text(int x, int y,
 			  lyx::docstring const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
 	 *  This is just for fast drawing
 	 */
-	virtual void text(int x, int y,
+	virtual int text(int x, int y,
 			  lyx::char_type const * str, size_t l,
 			  LyXFont const & f);
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual void text(int x, int y,
+	virtual int text(int x, int y,
 			  lyx::char_type c, LyXFont const & f);
 private:
 	/// draw small caps text
-	void smallCapsText(int x, int y,
+	int smallCapsText(int x, int y,
 		QString const & str, LyXFont const & f);
 
 	/// set pen parameters

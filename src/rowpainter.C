@@ -316,12 +316,11 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 	// Draw text and set the new x position
 	//lyxerr << "paint row: yo_ " << yo_ << "\n";
 #if 0
-	pain_.text(int(x_), yo_, str, font);
-	x_ += theApp->fontLoader().metrics(font).width(str);
+	int width = pain_.text(int(x_), yo_, str, font);
 #else
-	pain_.text(int(x_), yo_, &str[0], str.size(), font);
-	x_ += theApp->fontLoader().metrics(font).width(&str[0], str.size());
+	int width = pain_.text(int(x_), yo_, &str[0], str.size(), font);
 #endif
+	x_ += width;
 }
 
 

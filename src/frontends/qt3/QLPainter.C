@@ -159,21 +159,21 @@ void QLPainter::image(int x, int y, int w, int h,
 }
 
 
-void QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
+int QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
 	lyxerr << "Drawing string" << endl;
 	return text(x, y, reinterpret_cast<lyx::char_type const *>(s.data()), s.length(), f);
 }
 
 
-void QLPainter::text(int x, int y, lyx::char_type c, LyXFont const & f)
+int QLPainter::text(int x, int y, lyx::char_type c, LyXFont const & f)
 {
 	char_type s[2] = { c, L'\0' };
 	return text(x, y, s, 1, f);
 }
 
 
-void QLPainter::smallCapsText(int x, int y,
+int QLPainter::smallCapsText(int x, int y,
 	QString const & s, LyXFont const & f)
 {
 	LyXFont smallfont(f);
@@ -184,25 +184,27 @@ void QLPainter::smallCapsText(int x, int y,
 	QFontMetrics const & qfontm = QFontMetrics(qfont);
 	QFontMetrics const & qsmallfontm = QFontMetrics(qsmallfont);
 
-	int tmpx = x;
 	size_t ls = s.length();
+	int textwidth = 0;
 	for (size_t i = 0; i < ls; ++i) {
 		// Brain-dead MSVC wants at(i) rather than operator[]
 		QChar const c = s.at(i).upper();
 		if (c != s.at(i)) {
 			qp_->setFont(qsmallfont);
-			qp_->drawText(tmpx, y, c);
-			tmpx += qsmallfontm.width(c);
+			qp_->drawText(x + textwidth, y, c);
+			textwidth += qsmallfontm.width(c);
 		} else {
 			qp_->setFont(qfont);
-			qp_->drawText(tmpx, y, c);
-			tmpx += qfontm.width(c);
+			qp_->drawText(x + textwidth, y, c);
+			textwidth += qfontm.width(c);
 		}
 	}
+
+	return textwidth;
 }
 
 
-void QLPainter::text(int x, int y, lyx::char_type const * s, size_t ls,
+int QLPainter::text(int x, int y, lyx::char_type const * s, size_t ls,
 	LyXFont const & f)
 {
 	lyxerr << "Drawing lyx::char_type const * s" << endl;
@@ -235,18 +237,23 @@ void QLPainter::text(int x, int y, lyx::char_type const * s, size_t ls,
 		str = ' ' + str;
 #endif
 
+	int textwidth;
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		qp_->setFont(fontloader.get(f));
 		// We need to draw the text as LTR as we use our own bidi
 		// code.
 		qp_->drawText(x, y, str, -1, QPainter::LTR);
+		textwidth = qp_->fontMetrics().width(str);
 	} else {
-		smallCapsText(x, y, str, f);
+		textwidth = smallCapsText(x, y, str, f);
 	}
 
 	if (f.underbar() == LyXFont::ON) {
-		underline(f, x, y, qp_->fontMetrics().width(str));
+		underline(f, x, y, textwidth);
 	}
+
+	return textwidth;
 }
 
 } // namespace frontend

@@ -196,7 +196,7 @@ inline XftFont * getXftFont(LyXFont const & f)
 } // anon namespace
 
 
-void GPainter::text(int x, int y,
+int GPainter::text(int x, int y,
 		    char_type const * s, size_t ls,
 		    LyXFont const & f)
 {
@@ -204,6 +204,8 @@ void GPainter::text(int x, int y,
 	XftColor * xftClr = owner_.getColorHandler().
 		getXftColor(f.realColor());
 	XftDraw * draw = owner_.getXftDraw();
+	int textwidth = 0;
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		XftDrawString32(draw,
 				xftClr,
@@ -211,11 +213,11 @@ void GPainter::text(int x, int y,
 				x, y,
 				reinterpret_cast<FcChar32 const *>(s),
 				ls);
+		textwidth = font_metrics::width(s, ls, f);
 	} else {
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		XftFont * fontS = getXftFont(smallfont);
-		int tmpx = x;
 		for (unsigned int i = 0; i < ls; ++i) {
 			// Ok, this looks quite ugly...
 			char_type c = gdk_keyval_to_unicode(gdk_keyval_to_upper(gdk_unicode_to_keyval(s[i])));
@@ -223,35 +225,37 @@ void GPainter::text(int x, int y,
 				XftDrawString32(draw,
 						xftClr,
 						fontS,
-						tmpx, y,
+						x + textwidth, y,
 						reinterpret_cast<FcChar32 *>(&c),
 						1);
-				tmpx += font_metrics::width(c, smallfont);
+				textwidth += font_metrics::width(c, smallfont);
 			} else {
 				XftDrawString32(draw,
 						xftClr,
 						font,
-						tmpx, y,
+						x + textwidth, y,
 						reinterpret_cast<FcChar32 *>(&c),
 						1);
-				tmpx += font_metrics::width(c, f);
+				textwidth += font_metrics::width(c, f);
 			}
 		}
 	}
 	if (f.underbar() == LyXFont::ON)
-		underline(f, x, y, font_metrics::width(s, ls, f));
+		underline(f, x, y, textwidth);
+
+	return textwidth;
 }
 
 
-void GPainter::text(int x, int y, docstring const & s, LyXFont const & f)
+int GPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
-	text (x, y, reinterpret_cast<char_type const *>(s.data()), s.size(), f);
+	return text (x, y, reinterpret_cast<char_type const *>(s.data()), s.size(), f);
 }
 
 
-void GPainter::text(int x, int y, char_type c, LyXFont const & f)
+int GPainter::text(int x, int y, char_type c, LyXFont const & f)
 {
-	text (x, y, &c, 1, f);
+	return text (x, y, &c, 1, f);
 }
 
 

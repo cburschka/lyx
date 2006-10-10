@@ -57,13 +57,13 @@ public:
 	///
 	void image(int, int, int, int, lyx::graphics::Image const &) {}
 	///
-	void text(int, int, lyx::docstring const &, LyXFont const &) {}
+	int text(int, int, lyx::docstring const &, LyXFont const &) { return 0; }
 // 	///
-// 	void text(int, int, char const *, size_t, LyXFont const &) {}
+// 	int text(int, int, char const *, size_t, LyXFont const &) { return 0; }
 	///
-	void text(int, int, lyx::char_type const *, size_t, LyXFont const &) {}
+	int text(int, int, lyx::char_type const *, size_t, LyXFont const &) { return 0; }
 	///
-	void text(int, int, lyx::char_type, LyXFont const &) {}
+	int text(int, int, lyx::char_type, LyXFont const &) { return 0; }
 	///
 	void rectText(int, int, lyx::docstring const &,
 		LyXFont const &, LColor_color, LColor_color) {}
