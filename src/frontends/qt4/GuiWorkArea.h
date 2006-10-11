@@ -160,10 +160,6 @@ protected:
 	void keyPressEvent(QKeyEvent * e);
 	/// IM events
 	void inputMethodEvent(QInputMethodEvent * e);
-	/// focus in
-	void focusInEvent(QFocusEvent * ev);
-	/// focus out
-	void focusOutEvent(QFocusEvent * ev);
 
 public Q_SLOTS:
 

@@ -578,20 +578,6 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	e->accept();
 }
 
-
-void GuiWorkArea::focusInEvent(QFocusEvent * ev)
-{
-	QAbstractScrollArea::focusInEvent(ev);
-	lyx_view_.updateToolbars();
-}
-
-
-void GuiWorkArea::focusOutEvent(QFocusEvent * ev)
-{
-	QAbstractScrollArea::focusOutEvent(ev);
-	lyx_view_.updateToolbars();
-}
-
 } // namespace frontend
 } // namespace lyx
 
