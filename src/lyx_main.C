@@ -169,9 +169,29 @@ LyX const & LyX::cref()
 }
 
 
+BufferList & theBufferList()
+{
+	return LyX::ref().bufferList();
+}
+
+
 LyX::LyX()
 	: first_start(false), geometryOption_(false)
-{}
+{
+	buffer_list_.reset(new BufferList);
+}
+
+
+BufferList & LyX::bufferList()
+{
+	return *buffer_list_.get();
+}
+
+
+BufferList const & LyX::bufferList() const
+{
+	return *buffer_list_.get();
+}
 
 
 lyx::Session & LyX::session()

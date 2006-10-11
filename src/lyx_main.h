@@ -22,6 +22,7 @@
 #include <string>
 
 class Buffer;
+class BufferList;
 class ErrorItem;
 class InsetBase;
 class LyXView;
@@ -55,6 +56,10 @@ public:
 	/// in the case of failure
 	void emergencyCleanup() const;
 
+	///
+	BufferList & bufferList();
+	BufferList const & bufferList() const;
+	///
 	lyx::Session & session();
 	lyx::Session const & session() const;
 
@@ -102,6 +107,8 @@ private:
 	/// the parsed command line batch command if any
 	std::string batch_command;
 
+	///
+	boost::scoped_ptr<BufferList> buffer_list_;
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
 	boost::scoped_ptr<lyx::Session> session_;
 	///

@@ -41,8 +41,6 @@ namespace frontend {
 /// The main application class private implementation.
 struct Application_pimpl 
 {
-	///
-	BufferList buffer_list_;
 	/// our function handler
 	boost::scoped_ptr<LyXFunc> lyxfunc_;
 	///
@@ -91,18 +89,6 @@ LyXServerSocket & Application::socket()
 LyXServerSocket const & Application::socket() const
 {
 	return *pimpl_->lyx_socket_.get();
-}
-
-
-BufferList & Application::bufferList()
-{
-	return pimpl_->buffer_list_;
-}
-
-
-BufferList const & Application::bufferList() const
-{
-	return pimpl_->buffer_list_;
 }
 
 
@@ -174,12 +160,6 @@ void dispatch(FuncRequest const & action)
 LyXFunc & theLyXFunc()
 {
 	return theApp->lyxFunc();
-}
-
-
-BufferList & theBufferList()
-{
-	return theApp->bufferList();
 }
 
 

@@ -87,9 +87,6 @@ public:
 	///
 	LyXServerSocket & socket();
 	LyXServerSocket const & socket() const;
-	///
-	BufferList & bufferList();
-	BufferList const & bufferList() const;
 
 	/// Create the main window with given geometry settings.
 	LyXView & createView(unsigned int width, unsigned int height,
