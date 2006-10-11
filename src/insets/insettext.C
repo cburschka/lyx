@@ -334,7 +334,8 @@ void InsetText::setText(docstring const & data, LyXFont const & font)
 	clear();
 	Paragraph & first = paragraphs().front();
 	for (unsigned int i = 0; i < data.length(); ++i)
-		first.insertChar(i, data[i], font);
+		// FIXME: change tracking (MG)
+		first.insertChar(i, data[i], font, Change(Change::INSERTED));
 }
 
 

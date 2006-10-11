@@ -30,7 +30,7 @@ public:
 		DELETED // deleted text
 	};
 
-	Change(Type t = UNCHANGED, int a = 0, lyx::time_type ct = 0)
+	explicit Change(Type t, int a = 0, lyx::time_type ct = 0)
 		: type(t), author(a), changetime(ct) {}
 
 	Type type;

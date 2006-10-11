@@ -282,7 +282,8 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 		if (pos < font_span.first || pos > font_span.last)
 			break;
 
-		if (prev_change != par_.lookupChange(pos))
+		// FIXME: change tracking (MG)
+		if (Change(prev_change) != par_.lookupChange(pos))
 			break;
 
 		char_type c = par_.getChar(pos);

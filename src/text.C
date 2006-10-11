@@ -180,7 +180,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		string layoutname = lex.getString();
 
 		font = LyXFont(LyXFont::ALL_INHERIT, bp.language);
-		change = Change();
+		change = Change(Change::UNCHANGED);
 
 		LyXTextClass const & tclass = bp.getLyXTextClass();
 
@@ -373,7 +373,7 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex, ErrorList 
 	lex.nextToken();
 	string token = lex.getString();
 	LyXFont font;
-	Change change;
+	Change change(Change::UNCHANGED);
 
 	while (lex.isOK()) {
 
@@ -1173,7 +1173,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	if (cur.buffer().params().trackChanges) {
 		// FIXME: Change tracking (MG)
 		cur.paragraph().setChange(cur.paragraph().size(),
-			Change::INSERTED);
+			Change(Change::INSERTED));
 	}
 
 	// This check is necessary. Otherwise the new empty paragraph will
@@ -1257,7 +1257,8 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		BOOST_ASSERT(cur.pos() > 0);
 		if ((par.isLineSeparator(cur.pos() - 1)
 		    || par.isNewline(cur.pos() - 1))
-		    && par.lookupChange(cur.pos() - 1) != Change::DELETED) {
+		    // FIXME: change tracking (MG)
+		    && par.lookupChange(cur.pos() - 1) != Change(Change::DELETED)) {
 			static bool sent_space_message = false;
 			if (!sent_space_message) {
 				cur.message(_("You cannot type two spaces this way. "
@@ -1268,7 +1269,8 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		}
 	}
 
-	par.insertChar(cur.pos(), c, current_font);
+	// FIXME: change tracking (MG)
+	par.insertChar(cur.pos(), c, current_font, Change(Change::INSERTED));
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }
@@ -1501,8 +1503,9 @@ void LyXText::acceptChange(LCursor & cur)
 				    boost::next(plist.begin(), et.pit()));
 
 		// Paragraph merge if appropriate:
+		// FIXME: change tracking (MG)
 		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size())
-			== Change::DELETED) {
+			== Change(Change::DELETED)) {
 			setCursorIntern(cur, it.pit() + 1, 0);
 			backspacePos0(cur);
 		}
@@ -1537,8 +1540,9 @@ void LyXText::rejectChange(LCursor & cur)
 			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
 				    boost::next(plist.begin(), et.pit()));
 		// Paragraph merge if appropriate:
+		// FIXME: change tracking (MG)
 		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size())
-			== Change::INSERTED) {
+			== Change(Change::INSERTED)) {
 			setCursorIntern(cur, it.pit() + 1, 0);
 			backspacePos0(cur);
 		}
@@ -1662,7 +1666,8 @@ bool LyXText::erase(LCursor & cur)
 		recordUndo(cur, Undo::DELETE, cur.pit());
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 		needsUpdate = backspace(cur);
-		if (cur.paragraph().lookupChange(cur.pos()) == Change::DELETED)
+		// FIXME: change tracking (MG)
+		if (cur.paragraph().lookupChange(cur.pos()) == Change(Change::DELETED))
 			cur.posRight();
 	} else if (cur.pit() != cur.lastpit()) {
 		LCursor scur = cur;
@@ -1675,7 +1680,8 @@ bool LyXText::erase(LCursor & cur)
 				// FIXME: Change tracking (MG)
 				// move forward after the paragraph break is DELETED
 				Paragraph & par = cur.paragraph();
-				if (par.lookupChange(par.size()) == Change::DELETED)
+				// FIXME: change tracking (MG)
+				if (par.lookupChange(par.size()) == Change(Change::DELETED))
 					setCursorIntern(cur, cur.pit() + 1, 0);
 				}
 		} else {
@@ -1782,8 +1788,10 @@ bool LyXText::backspace(LCursor & cur)
 			// deleted:
 			Paragraph & par = pars_[cur.pit() - 1];
 			// Take care of a just inserted para break:
-			if (par.lookupChange(par.size()) != Change::INSERTED) {
-				par.setChange(par.size(), Change::DELETED);
+			// FIXME: change tracking (MG)
+			if (par.lookupChange(par.size()) != Change(Change::INSERTED)) {
+				// FIXME: change tracking (MG)
+				par.setChange(par.size(), Change(Change::DELETED));
 				setCursorIntern(cur, cur.pit() - 1, par.size());
 				return true;
 			}
@@ -1871,7 +1879,8 @@ bool LyXText::redoParagraph(pit_type const pit)
 		if (!hasbibitem) {
 			InsetBibitem * inset(new
 				InsetBibitem(InsetCommandParams("bibitem")));
-			par.insertInset(0, static_cast<InsetBase *>(inset));
+			// FIXME: change tracking (MG)
+			par.insertInset(0, static_cast<InsetBase *>(inset), Change(Change::INSERTED));
 			bv()->cursor().posRight();
 		}
 	}
@@ -2372,7 +2381,8 @@ string LyXText::currentState(LCursor & cur)
 	Paragraph const & par = cur.paragraph();
 	std::ostringstream os;
 
-	bool const show_change = par.lookupChange(cur.pos()) != Change::UNCHANGED;
+	// FIXME: change tracking (MG)
+	bool const show_change = par.lookupChange(cur.pos()) != Change(Change::UNCHANGED);
 
 	if (buf.params().trackChanges)
 		os << "[C] ";

@@ -321,7 +321,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		// FIXME: Change tracking (MG)
 		bool const merge = !params.trackChanges ||
 			pars[pit].lookupChange(pars[pit].size()) ==
-			Change::INSERTED;
+			Change(Change::INSERTED);
 		pos_type const left  = ( pit == startpit ? startpos : 0 );
 		pos_type const right = ( pit == endpit ? endpos :
 				pars[pit].size() + 1 );
@@ -677,7 +677,8 @@ void replaceSelectionWithString(LCursor & cur, string const & str, bool backward
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
-		par.insertChar(pos, (*cit), font);
+		// FIXME: change tracking (MG)
+		par.insertChar(pos, (*cit), font, Change(Change::INSERTED));
 
 	// Cut the selection
 	cutSelection(cur, true, false);

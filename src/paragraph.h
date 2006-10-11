@@ -72,15 +72,6 @@ public:
 		//META_INSET = 1 // as in trunk
 		META_INSET = 0x200001  // above 0x10ffff, for ucs-4
 	};
-	enum ChangeTracking
-	{
-		/// Change tracking is "on" in this buffer
-		trackingOn,
-		/// Change tracking is "off" in this buffer
-		trackingOff,
-		/// Change tracking is "unknown" in this buffer
-		trackingUnknown
-	};
 	///
 	typedef lyx::char_type value_type;
 	///
@@ -307,17 +298,16 @@ public:
 	void insert(lyx::pos_type pos, std::string const & str,
 		    LyXFont const & font);
 	///
-	void insertChar(lyx::pos_type pos, value_type c,
-			Change change = Change::INSERTED);
+	void insertChar(lyx::pos_type pos, value_type c, Change change);
 	///
 	void insertChar(lyx::pos_type pos, value_type c,
-		LyXFont const &, Change change = Change::INSERTED);
+		LyXFont const &, Change change);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-			 Change change = Change::INSERTED);
+			 Change change);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-		LyXFont const &, Change change = Change::INSERTED);
+		LyXFont const &, Change change);
 	///
 	bool insetAllowed(InsetBase_code code);
 	///

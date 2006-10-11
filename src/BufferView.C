@@ -501,7 +501,7 @@ void BufferView::setCursorFromScrollbar()
 }
 
 
-Change const BufferView::getCurrentChange()
+Change const BufferView::getCurrentChange() const
 {
 	if (!cursor_.selection())
 		return Change(Change::UNCHANGED);

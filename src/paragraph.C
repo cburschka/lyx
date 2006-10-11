@@ -259,7 +259,8 @@ void Paragraph::insert(pos_type start, string const & str,
 		       LyXFont const & font)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
-		insertChar(start + i, str[i], font);
+		// FIXME: change tracking (MG)
+		insertChar(start + i, str[i], font, Change(Change::INSERTED));
 }
 
 

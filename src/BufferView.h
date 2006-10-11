@@ -128,7 +128,7 @@ public:
 	void saveSavedPositions();
 
 	/// return the current change at the cursor
-	Change const getCurrentChange();
+	Change const getCurrentChange() const;
 
 	/// return the lyxtext we are using
 	LyXText * getLyXText();

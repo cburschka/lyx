@@ -116,7 +116,8 @@ void breakParagraph(BufferParams const & bparams,
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
 			Change::Type change = par.lookupChange(i).type;
 			if (moveItem(par, *tmp, bparams, i, j - pos)) {
-				tmp->setChange(j - pos, change);
+				// FIXME: change tracking (MG)
+				tmp->setChange(j - pos, Change(change));
 				++j;
 			}
 		}
@@ -180,18 +181,20 @@ void breakParagraphConservative(BufferParams const & bparams,
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
 			Change::Type change = par.lookupChange(i).type;
-			if (moveItem(par, tmp, bparams, i, j - pos, change))
+			// FIXME: change tracking (MG)
+			if (moveItem(par, tmp, bparams, i, j - pos, Change(change)))
 				++j;
 		}
 		// Move over end-of-par change attr
-		tmp.setChange(tmp.size(), par.lookupChange(par.size()).type);
+		// FIXME: change tracking (MG)
+		tmp.setChange(tmp.size(), Change(par.lookupChange(par.size()).type));
 
 		// If tracking changes, set all the text that is to be
 		// erased to Type::INSERTED.
 		for (pos_type k = pos_end; k >= pos; --k) {
 			if (bparams.trackChanges)
 				// FIXME: Change tracking (MG)
-				par.setChange(k, Change::INSERTED);
+				par.setChange(k, Change(Change::INSERTED));
 			par.erase(k);
 		}
 	}
@@ -218,17 +221,20 @@ void mergeParagraph(BufferParams const & bparams,
 	// one. It will (should) remain "orphaned", having no CT info to it,
 	// and check() in changes.C will assert. Setting the para break
 	// forcibly to "black" prevents this scenario. -- MV 13.3.2006
-	par.setChange(par.size(), Change::UNCHANGED);
+	// FIXME: change tracking (MG)
+	par.setChange(par.size(), Change(Change::UNCHANGED));
 
 	Change::Type cr = next.lookupChange(next.size()).type;
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
 		Change::Type change = next.lookupChange(i).type;
-		if (moveItem(next, par, bparams, i, pos_insert + j, change))
+		// FIXME: change tracking (MG)
+		if (moveItem(next, par, bparams, i, pos_insert + j, Change(change)))
 			++j;
 	}
 	// Move the change status of "carriage return" over
-	par.setChange(par.size(), cr);
+	// FIXME: change tracking (MG)
+	par.setChange(par.size(), Change(cr));
 
 	pars.erase(boost::next(pars.begin(), par_offset + 1));
 }
