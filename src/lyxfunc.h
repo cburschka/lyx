@@ -112,4 +112,13 @@ private:
 	bool ensureBufferClean(BufferView * bv);
 };
 
+extern LyXFunc & theLyXFunc();
+
+namespace lyx {
+
+extern FuncStatus getStatus(FuncRequest const & action);
+
+extern void dispatch(FuncRequest const & action);
+}
+
 #endif

@@ -192,7 +192,7 @@ void QLToolbar::add(FuncRequest const & func, lyx::docstring const & tooltip)
 		toolbar_->setHorizontalStretchable(true);
 		break;
 	default: {
-		if (owner_.getLyXFunc().getStatus(func).unknown())
+		if (lyx::getStatus(func).unknown())
 			break;
 		QPixmap p = QPixmap(toolbarbackend.getIcon(func).c_str());
 		QToolButton * button =
@@ -227,8 +227,7 @@ void QLToolbar::update()
 		QToolButton * button = p->first;
 		FuncRequest const & func = p->second;
 
-		FuncStatus const status =
-			owner_.getLyXFunc().getStatus(func);
+		FuncStatus const status = lyx::getStatus(func);
 
 		button->setToggleButton(true);
 		button->setOn(status.onoff(true));
@@ -247,7 +246,7 @@ void QLToolbar::clicked()
 	ButtonMap::const_iterator it = map_.find(button);
 
 	if (it != map_.end())
-		owner_.getLyXFunc().dispatch(it->second);
+		owner_.dispatch(it->second);
 	else
 		lyxerr << "non existent tool button selected !" << endl;
 }

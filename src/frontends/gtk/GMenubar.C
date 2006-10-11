@@ -268,7 +268,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 void GMenubar::onCommandActivate(MenuItem const * item,
 				       Gtk::MenuItem * /*gitem*/)
 {
-	view_->getLyXFunc().dispatch(item->func());
+	view_.dispatch(item->func());
 }
 
 } // namespace frontend

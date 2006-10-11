@@ -18,8 +18,6 @@
 #include "metricsinfo.h"
 #include "gettext.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -62,7 +60,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-	theApp->fontLoader().metrics(font).rectText(label, w, a, d);
+	theFontMetrics(font).rectText(label, w, a, d);
 
 	int const text_start = int(x + (dim_.wid - w) / 2);
 	int const text_end = text_start + w;

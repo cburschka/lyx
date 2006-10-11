@@ -20,8 +20,6 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -46,7 +44,7 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(mi.base.font);
+		theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 
@@ -100,7 +98,7 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case MENU_SEPARATOR:
 	{
 		lyx::frontend::FontMetrics const & fm =
-			theApp->fontLoader().metrics(font);
+			theFontMetrics(font);
 
 		// A triangle the width and height of an 'x'
                 int w = fm.width(lyx::char_type('x'));

@@ -114,4 +114,8 @@ public:
 } // namespace frontend
 } // namespace lyx
 
+class LyXFont;
+
+extern lyx::frontend::FontMetrics const & theFontMetrics(LyXFont const & f);
+
 #endif // FONT_METRICS_H

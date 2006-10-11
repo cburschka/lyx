@@ -60,7 +60,6 @@
 #include "mathed/MathSupport.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Application.h"
 
 #include "graphics/Previews.h"
 
@@ -1482,8 +1481,8 @@ void Buffer::setParentName(string const & name)
 Buffer const * Buffer::getMasterBuffer() const
 {
 	if (!params().parentname.empty()
-	    && theApp->bufferList().exists(params().parentname)) {
-		Buffer const * buf = theApp->bufferList().getBuffer(params().parentname);
+	    && theBufferList().exists(params().parentname)) {
+		Buffer const * buf = theBufferList().getBuffer(params().parentname);
 		if (buf)
 			return buf->getMasterBuffer();
 	}
@@ -1495,8 +1494,8 @@ Buffer const * Buffer::getMasterBuffer() const
 Buffer * Buffer::getMasterBuffer()
 {
 	if (!params().parentname.empty()
-	    && theApp->bufferList().exists(params().parentname)) {
-		Buffer * buf = theApp->bufferList().getBuffer(params().parentname);
+	    && theBufferList().exists(params().parentname)) {
+		Buffer * buf = theBufferList().getBuffer(params().parentname);
 		if (buf)
 			return buf->getMasterBuffer();
 	}

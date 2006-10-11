@@ -37,7 +37,6 @@
 #include "support/convert.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
@@ -701,8 +700,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		docstring const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
-			theApp->clipboard().get() :
-			theApp->selection().get();
+			theClipboard().get() :
+			theSelection().get();
 		if (clip.empty())
 			break;
 		// pass to InsertAsciiString, but
@@ -1792,7 +1791,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 	ostringstream os;
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
-	theApp->clipboard().put(lyx::from_utf8(os.str()));
+	theClipboard().put(lyx::from_utf8(os.str()));
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.

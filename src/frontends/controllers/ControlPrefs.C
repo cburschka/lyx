@@ -21,8 +21,6 @@
 #include "paper.h"
 #include "LColor.h"
 
-#include "frontends/Application.h"
-
 #include "support/filefilterlist.h"
 
 #include <sstream>
@@ -69,7 +67,7 @@ void ControlPrefs::dispatchParams()
 	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 
 	// FIXME: these need lfuns
-	theApp->bufferList().setCurrentAuthor(rc_.user_name, rc_.user_email);
+	theBufferList().setCurrentAuthor(rc_.user_name, rc_.user_email);
 
 	::formats = formats_;
 

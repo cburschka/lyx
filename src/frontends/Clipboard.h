@@ -44,4 +44,6 @@ public:
 } // namespace frontend
 } // namespace lyx
 
+extern lyx::frontend::Clipboard & theClipboard();
+
 #endif // BASE_CLIPBOARD_H

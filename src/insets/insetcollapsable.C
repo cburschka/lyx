@@ -29,8 +29,6 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -127,7 +125,7 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
 	docstring dlab(label.begin(), label.end());
-	theApp->fontLoader().metrics(labelfont_).buttonText(
+	theFontMetrics(labelfont_).buttonText(
 		dlab, dim.wid, dim.asc, dim.des);
 	return dim;
 }

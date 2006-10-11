@@ -19,8 +19,6 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -42,8 +40,8 @@ void InsetNewline::write(Buffer const &, ostream & os) const
 
 void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(mi.base.font);
+	lyx::frontend::FontMetrics const & fm 
+		=	theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 	dim.wid = fm.width('n');
@@ -78,7 +76,7 @@ int InsetNewline::docbook(Buffer const &, std::ostream & os,
 void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 {
 	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(pi.base.font);
+		theFontMetrics(pi.base.font);
 	int const wid = fm.width('n');
 	int const asc = fm.maxAscent();
 

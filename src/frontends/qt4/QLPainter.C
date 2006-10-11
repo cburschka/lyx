@@ -16,7 +16,6 @@
 #include "GuiApplication.h"
 #include "GuiWorkArea.h"
 #include "QLImage.h"
-#include "FontLoader.h"
 
 #include "GuiApplication.h"
 #include "qt_helpers.h"

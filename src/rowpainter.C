@@ -32,8 +32,6 @@
 #include "ParagraphParameters.h"
 #include "vspace.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/nullpainter.h"
 #include "frontends/Painter.h"
@@ -202,7 +200,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 	str += c;
 	++vpos;
 
-	int const width = theApp->fontLoader().metrics(font).width(c);
+	int const width = theFontMetrics(font).width(c);
 	int dx = 0;
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
@@ -237,7 +235,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 	str += c;
 	++vpos;
 
-	int const width = theApp->fontLoader().metrics(font).width(c);
+	int const width = theFontMetrics(font).width(c);
 	int dx = 0;
 
 	for (pos_type i = pos - 1; i >= 0; --i) {
@@ -463,7 +461,7 @@ int RowPainter::paintAppendixStart(int y)
 	int a = 0;
 	int d = 0;
         docstring dlab(label.begin(), label.end());
-	theApp->fontLoader().metrics(pb_font).rectText(dlab, w, a, d);
+	theFontMetrics(pb_font).rectText(dlab, w, a, d);
 
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
@@ -518,8 +516,7 @@ void RowPainter::paintFirst()
 		      || is_seq)) {
 
 		LyXFont const font = getLabelFont();
-		FontMetrics const & fm =
-			theApp->fontLoader().metrics(font);
+		FontMetrics const & fm = theFontMetrics(font);
 
 		string const str = par_.getLabelstring();
 		if (!str.empty()) {
@@ -579,8 +576,7 @@ void RowPainter::paintFirst()
 			else
 				spacing_val = buffer.params().spacing().getValue();
 
-			FontMetrics const & fm =
-				theApp->fontLoader().metrics(font);
+			FontMetrics const & fm = theFontMetrics(font);
 
 			int const labeladdon = int(fm.maxHeight()
 				* layout->spacing.getValue() * spacing_val);
@@ -614,7 +610,7 @@ void RowPainter::paintLast()
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
 		LyXFont const font = getLabelFont();
-		FontMetrics const & fm = theApp->fontLoader().metrics(font);
+		FontMetrics const & fm = theFontMetrics(font);
 		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
 		int x = is_rtl ? nestMargin() + changebarMargin() : width_ - size;
@@ -631,7 +627,7 @@ void RowPainter::paintLast()
 
 	case END_LABEL_STATIC: {
 		LyXFont font = getLabelFont();
-		FontMetrics const & fm = theApp->fontLoader().metrics(font);
+		FontMetrics const & fm = theFontMetrics(font);
 		string const & str = par_.layout()->endlabelstring();
                 docstring dstr(str.begin(), str.end());
 		double const x = is_rtl ?
@@ -706,8 +702,8 @@ void RowPainter::paintText()
 		// We also don't paint across things like tables
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			// Calculate 1/3 height of the buffer's default font
-			FontMetrics const & fm = theApp->fontLoader().metrics(
-				bv_.buffer()->params().getFont());
+			FontMetrics const & fm 
+				= theFontMetrics(bv_.buffer()->params().getFont());
 			int const middle = yo_ - fm.maxAscent() / 3;
 			pain_.line(last_strikeout_x, middle, int(x_), middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
@@ -717,8 +713,8 @@ void RowPainter::paintText()
 		if (body_pos > 0 && pos == body_pos - 1) {
                         string lab = layout->labelsep;
                         docstring dlab(lab.begin(), lab.end());
-			int const lwidth =
-				theApp->fontLoader().metrics(getLabelFont()).width(dlab);
+			int const lwidth 
+				= theFontMetrics(getLabelFont()).width(dlab);
 
 			x_ += label_hfill_ + lwidth - width_pos;
 		}
@@ -762,8 +758,8 @@ void RowPainter::paintText()
 	// if we reach the end of a struck out range, paint it
 	if (running_strikeout) {
 		// calculate 1/3 height of the buffer's default font
-		FontMetrics const & fm = theApp->fontLoader().metrics(
-			bv_.buffer()->params().getFont());
+		FontMetrics const & fm 
+			= theFontMetrics(bv_.buffer()->params().getFont());
 		int const middle = yo_ - fm.maxAscent() / 3;
 		pain_.line(last_strikeout_x, middle, int(x_), middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);

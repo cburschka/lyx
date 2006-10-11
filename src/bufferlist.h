@@ -99,4 +99,6 @@ private:
 	void emergencyWrite(Buffer * buf);
 };
 
+extern BufferList & theBufferList();
+
 #endif // BUFFERLIST_H

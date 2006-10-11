@@ -21,8 +21,6 @@
 #include "metricsinfo.h"
 #include "outputparams.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -51,7 +49,7 @@ InsetSpace::Kind InsetSpace::kind() const
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(mi.base.font);
+		theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 
@@ -82,7 +80,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	int const w = width();
-	int const h = theApp->fontLoader().metrics(pi.base.font)
+	int const h = theFontMetrics(pi.base.font)
 		.ascent('x');
 	int xp[4], yp[4];
 

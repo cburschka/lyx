@@ -60,9 +60,7 @@
 #include "insets/insettext.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Application.h"
 #include "frontends/FileDialog.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
 #include "graphics/Previews.h"
@@ -188,7 +186,7 @@ void BufferView::setBuffer(Buffer * b)
 		lyxerr[Debug::INFO] << BOOST_CURRENT_FUNCTION
 				    << " No Buffer!" << endl;
 		// We are closing the buffer, use the first buffer as current
-		buffer_ = theApp->bufferList().first();
+		buffer_ = theBufferList().first();
 	} else {
 		// Set current buffer
 		buffer_ = b;
@@ -235,7 +233,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 		s = filename;
 
 	// File already open?
-	if (theApp->bufferList().exists(s)) {
+	if (theBufferList().exists(s)) {
 		docstring const file = makeDisplayPath(s, 20);
 		docstring text = bformat(_("The document %1$s is already "
 						     "loaded.\n\nDo you want to revert "
@@ -244,11 +242,11 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret != 0) {
-			setBuffer(theApp->bufferList().getBuffer(s));
+			setBuffer(theBufferList().getBuffer(s));
 			return true;
 		}
 		// FIXME: should be LFUN_REVERT
-		if (!theApp->bufferList().close(theApp->bufferList().getBuffer(s), false))
+		if (!theBufferList().close(theBufferList().getBuffer(s), false))
 			return false;
 		// Fall through to new load. (Asger)
 	}
@@ -256,9 +254,9 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 	Buffer * b = 0;
 
 	if (found) {
-		b = theApp->bufferList().newBuffer(s);
+		b = theBufferList().newBuffer(s);
 		if (!::loadLyXFile(b, s)) {
-			theApp->bufferList().release(b);
+			theBufferList().release(b);
 			return false;
 		}
 	} else {
@@ -312,7 +310,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 void BufferView::reload()
 {
 	string const fn = buffer_->fileName();
-	if (theApp->bufferList().close(buffer_, false))
+	if (theBufferList().close(buffer_, false))
 		loadLyXFile(fn);
 }
 
@@ -333,8 +331,8 @@ void BufferView::resize()
 bool BufferView::fitCursor()
 {
 	if (bv_funcs::status(this, cursor_) == bv_funcs::CUR_INSIDE) {
-		lyx::frontend::FontMetrics const & fm 
-			= theApp->fontLoader().metrics(cursor_.getFont());
+		lyx::frontend::FontMetrics const & fm =
+			theFontMetrics(cursor_.getFont());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
 		Point const p = bv_funcs::getPos(cursor_, cursor_.boundary());
@@ -538,10 +536,10 @@ void BufferView::restorePosition(unsigned int i)
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
-		if (theApp->bufferList().exists(fname))
-			b = theApp->bufferList().getBuffer(fname);
+		if (theBufferList().exists(fname))
+			b = theBufferList().getBuffer(fname);
 		else {
-			b = theApp->bufferList().newBuffer(fname);
+			b = theBufferList().newBuffer(fname);
 			// Don't ask, just load it
 			::loadLyXFile(b, fname);
 		}

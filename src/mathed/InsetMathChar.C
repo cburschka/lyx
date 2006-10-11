@@ -20,8 +20,6 @@
 #include "support/lstrings.h"
 #include "TextPainter.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
 using std::auto_ptr;
@@ -80,7 +78,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, dim_);
 	if (isBinaryOp(char_, code_))
-		width_ += 2 * theApp->fontLoader().metrics(font_).width(' ');
+		width_ += 2 * theFontMetrics(font_).width(' ');
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
 	width_ = dim.wid;

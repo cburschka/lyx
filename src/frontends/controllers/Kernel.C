@@ -32,7 +32,7 @@ Kernel::Kernel(LyXView & lyxview)
 
 void Kernel::dispatch(FuncRequest const & fr) const
 {
-	lyxview_.getLyXFunc().dispatch(fr);
+	lyxview_.dispatch(fr);
 }
 
 

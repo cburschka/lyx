@@ -60,7 +60,6 @@
 #include "support/filetools.h" // LibFileSearch
 #include "support/lstrings.h"
 
-#include "frontends/Application.h"
 #include "frontends/FontLoader.h"
 
 #include <fstream>
@@ -89,7 +88,7 @@ bool math_font_available(string & name)
 	augmentFont(f, name);
 
 	// Do we have the font proper?
-	if (theApp->fontLoader().available(f))
+	if (theFontLoader().available(f))
 		return true;
 
 	// can we fake it?

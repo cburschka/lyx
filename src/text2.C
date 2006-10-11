@@ -50,8 +50,6 @@
 #include "undo.h"
 #include "vspace.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
 #include "insets/insetenv.h"
@@ -371,13 +369,13 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
 		lyxerr[Debug::DEBUG] << "setting layout " << layout << endl;
-		theApp->lyxFunc().dispatch(FuncRequest(LFUN_LINE_BEGIN));
-		theApp->lyxFunc().dispatch(FuncRequest(LFUN_LINE_END_SELECT));
-		theApp->lyxFunc().dispatch(FuncRequest(LFUN_CUT));
+		lyx::dispatch(FuncRequest(LFUN_LINE_BEGIN));
+		lyx::dispatch(FuncRequest(LFUN_LINE_END_SELECT));
+		lyx::dispatch(FuncRequest(LFUN_CUT));
 		InsetBase * inset = new InsetEnvironment(params, layout);
 		insertInset(cur, inset);
 		//inset->edit(cur, true);
-		//theApp->lyxFunc().dispatch(FuncRequest(LFUN_PASTE));
+		//lyx::dispatch(FuncRequest(LFUN_PASTE));
 		return;
 	}
 
@@ -805,8 +803,8 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
-	lyx::frontend::FontMetrics const & fm = theApp->fontLoader().metrics(
-		getLabelFont(par));
+	lyx::frontend::FontMetrics const & fm 
+		= theFontMetrics(getLabelFont(par));
 
 	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
@@ -1345,5 +1343,5 @@ void LyXText::recUndo(pit_type par) const
 
 int defaultRowHeight()
 {
-	return int(theApp->fontLoader().metrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);
+	return int(theFontMetrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);
 }

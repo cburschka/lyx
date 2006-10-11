@@ -21,8 +21,6 @@
 #include "debug.h"
 #include "DepTable.h"
 
-#include "frontends/Application.h"
-
 #include "support/filetools.h"
 #include "support/convert.h"
 #include "support/lstrings.h"
@@ -180,7 +178,7 @@ int LaTeX::run(TeXErrors & terr)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	theApp->bufferList().updateIncludedTeXfiles(getcwd(), runparams);
+	theBufferList().updateIncludedTeXfiles(getcwd(), runparams);
 
 	// Never write the depfile if an error was encountered.
 

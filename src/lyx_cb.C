@@ -193,7 +193,7 @@ void quitLyX(bool noask)
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyx_gui::use_gui) {
-		if (!noask && !theApp->bufferList().quitWriteAll())
+		if (!noask && !theBufferList().quitWriteAll())
 			return;
 
 		LyX::cref().session().writeFile();
@@ -204,7 +204,7 @@ void quitLyX(bool noask)
 	quitting = true;
 
 	// close buffers first
-	theApp->bufferList().closeAll();
+	theBufferList().closeAll();
 
 	// do any other cleanup procedures now
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;

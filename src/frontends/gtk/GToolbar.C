@@ -274,7 +274,7 @@ void GToolbar::add(FuncRequest const & func, lyx::docstring const & tooltip)
 
 void GToolbar::clicked(FuncRequest func)
 {
-	owner_.getLyXFunc().dispatch(func);
+	owner_.dispatch(func);
 }
 
 
@@ -300,7 +300,7 @@ void GToolbar::update()
 		FuncRequest const * func = reinterpret_cast<FuncRequest *>(
 			item->get_data(gToolData));
 		if (func) {
-			FuncStatus const status = owner_.getLyXFunc().getStatus(*func);
+			FuncStatus const status = lyx::getStatus(*func);
 			item->set_sensitive(status.enabled());
 		}
 	}

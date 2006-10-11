@@ -24,8 +24,6 @@
 #include "lyxlex.h"
 #include "outputparams.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -129,8 +127,7 @@ void InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	tmpl()->metrics(mi, dim);
 	dim.asc += 5;
 	dim.des += 5;
-	dim.wid += 10 
-		+ theApp->fontLoader().metrics(mi.base.font).width(prefix());
+	dim.wid += 10 + theFontMetrics(mi.base.font).width(prefix());
 	dim_ = dim;
 }
 
@@ -166,7 +163,7 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 
 	// body
 	tmpl()->draw(pi,
-		x + theApp->fontLoader().metrics(p.base.font).width(prefix()) + 5,
+		x + theFontMetrics(p.base.font).width(prefix()) + 5,
 		y);
 
 	setPosCache(pi, x, y);

@@ -47,7 +47,6 @@
 #include "vspace.h"
 #include "pariterator.h"
 
-#include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
@@ -123,7 +122,7 @@ namespace {
 		if (selecting || cur.mark())
 			cur.setSelection();
 		if (!cur.selection())
-			theApp->selection().haveSelection(false);
+			theSelection().haveSelection(false);
 		cur.bv().switchKeyMap();
 	}
 
@@ -264,7 +263,7 @@ bool doInsertInset(LCursor & cur, LyXText * text,
 	recordUndo(cur);
 	bool gotsel = false;
 	if (cur.selection()) {
-		theApp->lyxFunc().dispatch(FuncRequest(LFUN_CUT));
+		lyx::dispatch(FuncRequest(LFUN_CUT));
 		gotsel = true;
 	}
 	text->insertInset(cur, inset);
@@ -273,7 +272,7 @@ bool doInsertInset(LCursor & cur, LyXText * text,
 		inset->edit(cur, true);
 
 	if (gotsel && pastesel) {
-		theApp->lyxFunc().dispatch(FuncRequest(LFUN_PASTE));
+		lyx::dispatch(FuncRequest(LFUN_PASTE));
 		// reset first par to default
 		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
 			LyXLayout_ptr const layout =
@@ -882,7 +881,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_CLIPBOARD_PASTE: {
 		cur.clearSelection();
-		docstring const clip = theApp->clipboard().get();
+		docstring const clip = theClipboard().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
 			if (cmd.argument() == "paragraph")
@@ -895,7 +894,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		cur.clearSelection();
-		docstring const clip = theApp->selection().get();
+		docstring const clip = theSelection().get();
 		if (!clip.empty()) {
 			recordUndo(cur);
 			if (cmd.argument() == "paragraph")
@@ -935,16 +934,16 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.posRight();
 		}
 		else
-			theApp->lyxFunc().dispatch(FuncRequest(LFUN_SELF_INSERT, "\""));
+			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, "\""));
 		break;
 	}
 
 	case LFUN_DATE_INSERT:
 		if (cmd.argument().empty())
-			theApp->lyxFunc().dispatch(FuncRequest(LFUN_SELF_INSERT,
+			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT,
 				lyx::formatted_time(lyx::current_time())));
 		else
-			theApp->lyxFunc().dispatch(FuncRequest(LFUN_SELF_INSERT,
+			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT,
 				lyx::formatted_time(lyx::current_time(), lyx::to_utf8(cmd.argument()))));
 		break;
 
@@ -955,7 +954,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cursorEnd(cur);
 			cur.setSelection();
 			bv->cursor() = cur;
-			theApp->selection().haveSelection(cur.selection());
+			theSelection().haveSelection(cur.selection());
 		}
 		break;
 
@@ -963,7 +962,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			selectWord(cur, lyx::WHOLE_WORD_STRICT);
 			bv->cursor() = cur;
-			theApp->selection().haveSelection(cur.selection());
+			theSelection().haveSelection(cur.selection());
 		}
 		break;
 
@@ -979,7 +978,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// we have to check this first
 		bool paste_internally = false;
 		if (cmd.button() == mouse_button::button2 && cur.selection()) {
-			theApp->lyxFunc().dispatch(FuncRequest(LFUN_COPY));
+			lyx::dispatch(FuncRequest(LFUN_COPY));
 			paste_internally = true;
 		}
 
@@ -990,9 +989,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// insert this
 		if (cmd.button() == mouse_button::button2) {
 			if (paste_internally)
-				theApp->lyxFunc().dispatch(FuncRequest(LFUN_PASTE));
+				lyx::dispatch(FuncRequest(LFUN_PASTE));
 			else
-				theApp->lyxFunc().dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
+				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 		}
 
 		break;
@@ -1045,7 +1044,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 		// finish selection
 		if (cmd.button() == mouse_button::button1)
-			theApp->selection().haveSelection(cur.selection());
+			theSelection().haveSelection(cur.selection());
 
 		bv->switchKeyMap();
 		break;
@@ -1064,7 +1063,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (lyxrc.auto_region_delete) {
 			if (cur.selection())
 				cutSelection(cur, false, false);
-			theApp->selection().haveSelection(false);
+			theSelection().haveSelection(false);
 		}
 
 		cur.clearSelection();
@@ -1381,7 +1380,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_ACCENT_HUNGARIAN_UMLAUT:
 	case LFUN_ACCENT_CIRCLE:
 	case LFUN_ACCENT_OGONEK:
-		theApp->lyxFunc().handleKeyFunc(cmd.action);
+		theLyXFunc().handleKeyFunc(cmd.action);
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
 			bv->getIntl().getTransManager()

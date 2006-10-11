@@ -162,7 +162,7 @@ bool GView::on_delete_event(GdkEventAny * /*event*/)
 	// trigger LFUN_LYX_QUIT instead of quit directly
 	// since LFUN_LYX_QUIT may have more cleanup stuff
 	//
-	getLyXFunc().dispatch(FuncRequest(LFUN_LYX_QUIT));
+	dispatch(FuncRequest(LFUN_LYX_QUIT));
 	return true;
 }
 
@@ -197,7 +197,7 @@ void GView::message(docstring const & msg)
 
 void GView::updateStatusBar()
 {
-	message(lyx::from_utf8(getLyXFunc().viewStatusMessage()));
+	message(lyx::from_utf8(theLyXFunc().viewStatusMessage()));
 }
 
 
@@ -225,7 +225,7 @@ void GView::busy(bool yes) const
 
 void GView::clearMessage()
 {
-	message(lyx::from_utf8(getLyXFunc().viewStatusMessage()));
+	message(lyx::from_utf8(theLyXFunc().viewStatusMessage()));
 }
 
 

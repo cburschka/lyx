@@ -17,8 +17,6 @@
 #include "bufferlist.h"
 #include "funcrequest.h"
 
-#include "frontends/Application.h"
-
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
 using std::vector;
@@ -38,7 +36,7 @@ ControlRef::ControlRef(Dialog & d)
 
 vector<string> const ControlRef::getLabelList(string const & name) const
 {
-	Buffer const & buf = *theApp->bufferList().getBuffer(makeAbsPath(name));
+	Buffer const & buf = *theBufferList().getBuffer(makeAbsPath(name));
 	vector<string> list;
 	buf.getLabelList(list);
 	return list;
@@ -60,7 +58,7 @@ void ControlRef::gotoBookmark()
 
 vector<string> const ControlRef::getBufferList() const
 {
-	vector<string> buffers = theApp->bufferList().getFileNames();
+	vector<string> buffers = theBufferList().getFileNames();
 	for (vector<string>::iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
 		*it = lyx::to_utf8(makeDisplayPath(*it));
@@ -72,7 +70,7 @@ vector<string> const ControlRef::getBufferList() const
 
 int ControlRef::getBufferNum() const
 {
-	vector<string> buffers = theApp->bufferList().getFileNames();
+	vector<string> buffers = theBufferList().getFileNames();
 	string const name = kernel().buffer().fileName();
 	vector<string>::const_iterator cit =
 		find(buffers.begin(), buffers.end(), name);
@@ -83,7 +81,7 @@ int ControlRef::getBufferNum() const
 
 string const ControlRef::getBufferName(int num) const
 {
-	return theApp->bufferList().getFileNames()[num];
+	return theBufferList().getFileNames()[num];
 }
 
 } // namespace frontend

@@ -13,8 +13,6 @@
 
 #include "frontends/Painter.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
 #include "LColor.h"
@@ -62,7 +60,7 @@ void Painter::rectText(int x, int y,
 	int ascent;
 	int descent;
 
-	FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	FontMetrics const & fm = theFontMetrics(font);
 	fm.rectText(str, width, ascent, descent);
 
 	if (back != LColor::none)
@@ -82,7 +80,7 @@ void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & fo
 	int ascent;
 	int descent;
 
-	FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	FontMetrics const & fm = theFontMetrics(font);
 	fm.buttonText(str, width, ascent, descent);
 
 	button(x, y - ascent, width, descent + ascent);
@@ -92,7 +90,7 @@ void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & fo
 
 void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
-	FontMetrics const & fm = theApp->fontLoader().metrics(f);
+	FontMetrics const & fm = theFontMetrics(f);
 
 	int const below = max(fm.maxDescent() / 2, 2);
 	int const height = max((fm.maxDescent() / 4) - 1, 1);

@@ -41,4 +41,6 @@ public:
 } // namespace frontend
 } // namespace lyx
 
+extern lyx::frontend::FontLoader & theFontLoader();
+
 #endif // QFONT_LOADER_H

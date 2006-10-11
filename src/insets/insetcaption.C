@@ -26,8 +26,6 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -127,7 +125,7 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	LCursor cur = mi.base.bv->cursor();
 	setLabel(cur);
 	docstring dlab(label.begin(), label.end());
-	labelwidth_ = theApp->fontLoader().metrics(mi.base.font).width(dlab);
+	labelwidth_ = theFontMetrics(mi.base.font).width(dlab);
 	dim.wid = labelwidth_;
 	Dimension textdim;
 	InsetText::metrics(mi, textdim);
@@ -157,7 +155,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	docstring dlab(label.begin(), label.end());
 	// FXIME: instead of using the fontLoader metrics, we should make
 	// painter::text() returns the drawn text witdh.
-	labelwidth_ = theApp->fontLoader().metrics(pi.base.font).width(dlab);
+	labelwidth_ = theFontMetrics(pi.base.font).width(dlab);
 	pi.pain.text(x, y, dlab, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);

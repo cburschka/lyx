@@ -19,8 +19,6 @@
 #include "lyxrc.h"
 #include "metricsinfo.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -246,8 +244,7 @@ void InsetLatexAccent::checkContents()
 void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	// This function is a bit too simplistic and is just a
 	// "try to make a fit for all accents" approach, to
@@ -331,8 +328,7 @@ void InsetLatexAccent::drawAccent(PainterInfo const & pi, int x, int y,
 	char_type accent) const
 {
 	LyXFont const & font = pi.base.font;
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	x -= fm.center(accent);
 	y -= fm.ascent(ic);
@@ -356,8 +352,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		font.setLanguage(english_language);
 
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	if (candisp) {
 		int x2 = int(x + (fm.rbearing(ic) - fm.lbearing(ic)) / 2);

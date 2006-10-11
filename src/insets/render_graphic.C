@@ -20,8 +20,6 @@
 #include "lyxrc.h"
 #include "metricsinfo.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -165,7 +163,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		docstring djust(justname.begin(), justname.end());
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			font_width = theApp->fontLoader().metrics(msgFont)
+			font_width = theFontMetrics(msgFont)
 				.width(djust);
 		}
 
@@ -173,8 +171,8 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (!msg.empty()) {
 			docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			font_width = std::max(font_width, theApp->fontLoader()
-				.metrics(msgFont).width(dmsg));
+			font_width = std::max(font_width,
+				theFontMetrics(msgFont).width(dmsg));
 		}
 
 		dim.wid = std::max(50, font_width + 15);
@@ -219,7 +217,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 			docstring djust(justname.begin(), justname.end());
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
-				   y - theApp->fontLoader().metrics(msgFont).maxAscent() - 4,
+				   y - theFontMetrics(msgFont).maxAscent() - 4,
 				   djust, msgFont);
 		}
 

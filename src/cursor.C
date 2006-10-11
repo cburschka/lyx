@@ -43,8 +43,6 @@
 
 #include "support/limited_stack.h"
 
-#include "frontends/Application.h"
-
 #include <boost/assert.hpp>
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
@@ -1105,13 +1103,13 @@ void LCursor::handleFont(string const & font)
 
 void LCursor::message(docstring const & msg) const
 {
-	theApp->lyxFunc().setMessage(msg);
+	theLyXFunc().setMessage(msg);
 }
 
 
 void LCursor::errorMessage(docstring const & msg) const
 {
-	theApp->lyxFunc().setErrorMessage(msg);
+	theLyXFunc().setErrorMessage(msg);
 }
 
 

@@ -72,7 +72,7 @@ void Action::setAction(FuncRequest const & func)
 
 void Action::update()
 {
-	FuncStatus const status = lyxView_.getLyXFunc().getStatus(func_);
+	FuncStatus const status = lyx::getStatus(func_);
 
 	if (status.onoff(true)) {
 		setCheckable(true);
@@ -92,7 +92,7 @@ void Action::action()
 {
 //	lyxerr[Debug::ACTION] << "calling LyXFunc::dispatch: func_: " << func_ << endl;
 
-	lyxView_.getLyXFunc().dispatch(func_);
+	lyxView_.dispatch(func_);
 }
 
 } // namespace frontend

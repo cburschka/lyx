@@ -21,8 +21,6 @@
 #include "outputparams.h"
 #include "sgml.h"
 
-#include "frontends/Application.h"
-
 #include "support/lstrings.h"
 
 
@@ -48,7 +46,7 @@ void InsetRef::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
-			theApp->lyxFunc().dispatch(FuncRequest(LFUN_LABEL_GOTO, getContents()));
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getContents()));
 		else {
 			InsetCommandMailer("ref", *this).showDialog(&cur.bv());
 			cur.undispatched();

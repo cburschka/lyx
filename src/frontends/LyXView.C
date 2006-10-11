@@ -280,7 +280,7 @@ void LyXView::updateToolbars()
 {
 	bool const math = work_area_->bufferView().cursor().inMathed();
 	bool const table =
-		getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
+		lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
 	toolbars_->update(math, table);
 	// update redaonly status of open dialogs. This could also be in
 	// updateMenubar(), but since updateToolbars() and updateMenubar()
@@ -367,7 +367,7 @@ void LyXView::updateWindowTitle()
 
 void LyXView::dispatch(FuncRequest const & cmd)
 {
-	getLyXFunc().dispatch(cmd);
+	lyx::dispatch(cmd);
 }
 
 

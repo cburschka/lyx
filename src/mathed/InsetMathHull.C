@@ -1275,7 +1275,7 @@ void InsetMathHull::mutateToText()
 		view_->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
 
 	// remove ourselves
-	//theApp->lyxFunc().dispatch(LFUN_ESCAPE);
+	//lyx::dispatch(LFUN_ESCAPE);
 #endif
 }
 

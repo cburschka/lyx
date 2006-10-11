@@ -24,8 +24,6 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -202,7 +200,7 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
 	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+		theFontMetrics(font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 	dim.wid = 0;
@@ -239,7 +237,7 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 
 	if (text.length() == 2 && text[0] == text[1]) {
 		pi.pain.text(x, y, text[0], pi.base.font);
-		int const t = theApp->fontLoader().metrics(pi.base.font)
+		int const t = theFontMetrics(pi.base.font)
 			.width(',');
 		pi.pain.text(x + t, y, text[0], pi.base.font);
 	} else {

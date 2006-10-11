@@ -192,7 +192,7 @@ void QLToolbar::add(FuncRequest const & func, docstring const & tooltip)
 		break;
 		}
 	default: {
-		if (owner_.getLyXFunc().getStatus(func).unknown())
+		if (lyx::getStatus(func).unknown())
 			break;
 
 		Action * action = new Action(owner_, toolbarbackend.getIcon(func), lyx::docstring(), func, tooltip);

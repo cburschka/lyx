@@ -20,7 +20,6 @@
 #include "debug.h"
 #include "LColor.h"
 
-#include "frontends/Application.h"
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -368,8 +367,7 @@ deco_struct const * search_deco(string const & name)
 
 void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
 {
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 	dim.des = fm.descent(c);
 	dim.asc = fm.ascent(c);
 	dim.wid = fm.width(c);
@@ -378,14 +376,13 @@ void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
 
 int mathed_char_width(LyXFont const & font, unsigned char c)
 {
-	return theApp->fontLoader().metrics(font).width(c);
+	return theFontMetrics(font).width(c);
 }
 
 
 void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
 {
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 #if 1
 	dim.asc = 0;
 	dim.des = 0;
@@ -405,7 +402,7 @@ void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
 int mathed_string_width(LyXFont const & font, string const & s)
 {
 	docstring ds(s.begin(), s.end());
-	return theApp->fontLoader().metrics(font).width(ds);
+	return theFontMetrics(font).width(ds);
 }
 
 
@@ -499,8 +496,7 @@ void drawStrBlack(PainterInfo & pi, int x, int y, string const & str)
 
 void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 {
-	lyx::frontend::FontMetrics const & fm =
-		theApp->fontLoader().metrics(font);
+	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 	asc = fm.maxAscent();
 	des = fm.maxDescent();
 }
@@ -665,9 +661,9 @@ void augmentFont(LyXFont & font, string const & name)
 	if (!initialized) {
 		initialized = true;
 		// fake fonts if necessary
-		if (!theApp->fontLoader().available(getFont("mathfrak")))
+		if (!theFontLoader().available(getFont("mathfrak")))
 			fakeFont("mathfrak", "lyxfakefrak");
-		if (!theApp->fontLoader().available(getFont("mathcal")))
+		if (!theFontLoader().available(getFont("mathcal")))
 			fakeFont("mathcal", "lyxfakecal");
 	}
 	fontinfo * info = searchFont(name);

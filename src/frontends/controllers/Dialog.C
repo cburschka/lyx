@@ -208,7 +208,7 @@ Dialog::Controller::Controller(Dialog & parent)
 bool Dialog::Controller::canApply() const
 {
 	FuncRequest const fr(getLfun(), dialog().name());
-	FuncStatus const fs(kernel().lyxview().getLyXFunc().getStatus(fr));
+	FuncStatus const fs(lyx::getStatus(fr));
 	return fs.enabled();
 }
 

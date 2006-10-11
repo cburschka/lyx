@@ -23,8 +23,6 @@
 #include "lyxtext.h"
 #include "metricsinfo.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -133,7 +131,7 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	int d = 0;
 	string lab = label();
 	docstring dlab(lab.begin(), lab.end());
-	theApp->fontLoader().metrics(font).rectText(dlab, w, a, d);
+	theFontMetrics(font).rectText(dlab, w, a, d);
 
 	height = max(height, a + d);
 
@@ -185,7 +183,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.decSize();
 	string lab = label();
 	docstring dlab(lab.begin(), lab.end());
-	theApp->fontLoader().metrics(font).rectText(dlab, w, a, d);
+	theFontMetrics(font).rectText(dlab, w, a, d);
 
 	pi.pain.rectText(x + 2 * arrow_size + 5,
 			 start + (end - start) / 2 + (a - d) / 2,

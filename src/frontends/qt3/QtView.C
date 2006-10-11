@@ -152,7 +152,7 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	statusBar()->message(toqstr(getLyXFunc().viewStatusMessage()));
+	statusBar()->message(toqstr(theLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
 }
 
@@ -163,13 +163,13 @@ void QtView::updateStatusBar()
 	if (statusbar_timer_.isActive())
 		return;
 
-	statusBar()->message(toqstr(getLyXFunc().viewStatusMessage()));
+	statusBar()->message(toqstr(theLyXFunc().viewStatusMessage()));
 }
 
 
 void QtView::activated(FuncRequest const & func)
 {
-	getLyXFunc().dispatch(func);
+	dispatch(func);
 }
 
 
@@ -223,7 +223,7 @@ void QtView::closeEvent(QCloseEvent *)
 	}
 	// trigger LFUN_LYX_QUIT instead of quit directly
 	// since LFUN_LYX_QUIT may have more cleanup stuff
-	getLyXFunc().dispatch(FuncRequest(LFUN_LYX_QUIT));
+	dispatch(FuncRequest(LFUN_LYX_QUIT));
 }
 
 

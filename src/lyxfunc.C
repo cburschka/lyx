@@ -1079,15 +1079,15 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		// --- buffers ----------------------------------------
 		case LFUN_BUFFER_SWITCH:
-			owner->setBuffer(theApp->bufferList().getBuffer(argument));
+			owner->setBuffer(theBufferList().getBuffer(argument));
 			break;
 
 		case LFUN_BUFFER_NEXT:
-			owner->setBuffer(theApp->bufferList().next(view()->buffer()));
+			owner->setBuffer(theBufferList().next(view()->buffer()));
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
-			owner->setBuffer(theApp->bufferList().previous(view()->buffer()));
+			owner->setBuffer(theBufferList().previous(view()->buffer()));
 			break;
 
 		case LFUN_FILE_NEW:
@@ -1127,14 +1127,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (prefixIs(file_name, package().temp_dir())) {
 				// Needed by inverse dvi search. If it is a file
 				// in tmpdir, call the apropriated function
-				owner->setBuffer(theApp->bufferList().getBufferFromTmp(file_name));
+				owner->setBuffer(theBufferList().getBufferFromTmp(file_name));
 			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
 				string const s = changeExtension(file_name, ".lyx");
 				// Either change buffer or load the file
-				if (theApp->bufferList().exists(s)) {
-					owner->setBuffer(theApp->bufferList().getBuffer(s));
+				if (theBufferList().exists(s)) {
+					owner->setBuffer(theBufferList().getBuffer(s));
 				} else {
 					owner->loadLyXFile(s);
 				}
@@ -1284,8 +1284,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					 makeDisplayPath(filename) + lyx::from_ascii("..."));
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
-			if (theApp->bufferList().exists(filename))
-				owner->setBuffer(theApp->bufferList().getBuffer(filename));
+			if (theBufferList().exists(filename))
+				owner->setBuffer(theBufferList().getBuffer(filename));
 			else
 				owner->loadLyXFile(filename);
 			// Set the parent name of the child document.
@@ -1350,7 +1350,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_SCREEN_FONT_UPDATE:
 			// handle the screen font changes.
 			lyxrc.set_font_norm_type();
-			theApp->fontLoader().update();
+			theFontLoader().update();
 			// All visible buffers will need resize
 			view()->resize();
 			break;
@@ -1696,7 +1696,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (filename.empty()) {
 		filename = addName(lyxrc.document_path,
 			    "newfile" + convert<string>(++newfile_number) + ".lyx");
-		while (theApp->bufferList().exists(filename) || fs::is_readable(filename)) {
+		while (theBufferList().exists(filename) || fs::is_readable(filename)) {
 			++newfile_number;
 			filename = addName(lyxrc.document_path,
 					   "newfile" +	convert<string>(newfile_number) +
@@ -1855,8 +1855,8 @@ void LyXFunc::doImport(string const & argument)
 	string const lyxfile = changeExtension(filename, ".lyx");
 
 	// Check if the document already is open
-	if (lyx_gui::use_gui && theApp->bufferList().exists(lyxfile)) {
-		if (!theApp->bufferList().close(theApp->bufferList().getBuffer(lyxfile), true)) {
+	if (lyx_gui::use_gui && theBufferList().exists(lyxfile)) {
+		if (!theBufferList().close(theBufferList().getBuffer(lyxfile), true)) {
 			owner->message(_("Canceled."));
 			return;
 		}
@@ -1889,14 +1889,14 @@ void LyXFunc::closeBuffer()
 	// save current cursor position
 	LyX::ref().session().saveFilePosition(owner->buffer()->fileName(),
 		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
-	if (theApp->bufferList().close(owner->buffer(), true) && !quitting) {
-		if (theApp->bufferList().empty()) {
+	if (theBufferList().close(owner->buffer(), true) && !quitting) {
+		if (theBufferList().empty()) {
 			// need this otherwise SEGV may occur while
 			// trying to set variables that don't exist
 			// since there's no current buffer
 			owner->getDialogs().hideBufferDependent();
 		} else {
-			owner->setBuffer(theApp->bufferList().first());
+			owner->setBuffer(theBufferList().first());
 		}
 	}
 }

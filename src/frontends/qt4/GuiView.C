@@ -36,7 +36,6 @@
 #include "GuiView.h"
 #include "QLMenubar.h"
 #include "QLToolbar.h"
-#include "FontLoader.h"
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
 
@@ -181,7 +180,7 @@ void GuiView::focus_command_widget()
 
 void GuiView::update_view_state_qt()
 {
-	statusBar()->showMessage(toqstr(getLyXFunc().viewStatusMessage()));
+	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
 }
 
@@ -192,13 +191,13 @@ void GuiView::updateStatusBar()
 	if (statusbar_timer_.isActive())
 		return;
 
-	statusBar()->showMessage(toqstr(getLyXFunc().viewStatusMessage()));
+	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 }
 
 
 void GuiView::activated(FuncRequest const & func)
 {
-	getLyXFunc().dispatch(func);
+	dispatch(func);
 }
 
 
@@ -254,7 +253,7 @@ void GuiView::closeEvent(QCloseEvent *)
 	}
 	// trigger LFUN_LYX_QUIT instead of quit directly
 	// since LFUN_LYX_QUIT may have more cleanup stuff
-	getLyXFunc().dispatch(FuncRequest(LFUN_LYX_QUIT));
+	dispatch(FuncRequest(LFUN_LYX_QUIT));
 }
 
 

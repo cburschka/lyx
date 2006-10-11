@@ -16,7 +16,6 @@
 #include "frontends/WorkArea.h"
 
 #include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 
 #include "funcrequest.h"
@@ -235,7 +234,7 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 							 key_modifier::state state)
 {
 	hideCursor();
-	lyx_view_.getLyXFunc().processKeySym(key, state);
+	theLyXFunc().processKeySym(key, state);
 
 	/* This is perhaps a bit of a hack. When we move
 	 * around, or type, it's nice to be able to see
@@ -375,7 +374,7 @@ void WorkArea::showCursor()
 		shape = BAR_SHAPE;
 
 	LyXFont const font = buffer_view_->cursor().getFont();
-	FontMetrics const & fm = theApp->fontLoader().metrics(font);
+	FontMetrics const & fm = theFontMetrics(font);
 	int const asc = fm.maxAscent();
 	int const des = fm.maxDescent();
 	int h = asc + des;

@@ -37,8 +37,6 @@
 #include "lyxlex.h"
 #include "toc.h"
 
-#include "frontends/Application.h"
-
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/convert.h"
@@ -169,7 +167,7 @@ Menu & Menu::addWithStatusCheck(MenuItem const & i)
 
 	case MenuItem::Command: {
 		FuncStatus status =
-			theApp->lyxFunc().getStatus(i.func());
+			lyx::getStatus(i.func());
 		if (status.unknown()
 		    || (!status.enabled() && i.optional()))
 			break;
@@ -449,7 +447,7 @@ void expandLastfiles(Menu & tomenu)
 void expandDocuments(Menu & tomenu)
 {
 	typedef vector<string> Strings;
-	Strings const names = theApp->bufferList().getFileNames();
+	Strings const names = theBufferList().getFileNames();
 
 	if (names.empty()) {
 		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),

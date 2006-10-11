@@ -36,7 +36,6 @@
 #include "toc.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Application.h"
 
 #include "insets/insetbibitem.h"
 
@@ -180,7 +179,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 		 bool const isNamed)
 {
 	// get a free buffer
-	Buffer * b = theApp->bufferList().newBuffer(filename);
+	Buffer * b = theBufferList().newBuffer(filename);
 	BOOST_ASSERT(b);
 
 	string tname;
@@ -197,7 +196,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 				_("The specified document template\n%1$s\ncould not be read."),
 				file);
 			Alert::error(_("Could not read template"), text);
-			theApp->bufferList().release(b);
+			theBufferList().release(b);
 			return 0;
 		}
 	}

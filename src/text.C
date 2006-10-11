@@ -51,8 +51,6 @@
 #include "vspace.h"
 #include "WordLangTuple.h"
 
-#include "frontends/Application.h"
-#include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
@@ -466,13 +464,13 @@ int LyXText::singleWidth(Paragraph const & par,
 				   Encodings::isComposeChar_hebrew(c))
 				return 0;
 		}
-		return theApp->fontLoader().metrics(font).width(c);
+		return theFontMetrics(font).width(c);
 	}
 
 	if (c == Paragraph::META_INSET)
 		return par.getInset(pos)->width();
 
-	return theApp->fontLoader().metrics(font).width(c);
+	return theFontMetrics(font).width(c);
 }
 
 
@@ -505,7 +503,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 
 	string leftm = tclass.leftmargin();
 	docstring dleft(leftm.begin(), leftm.end());
-	l_margin += theApp->fontLoader().metrics(params.getFont()).signedWidth(dleft);
+	l_margin += theFontMetrics(params.getFont()).signedWidth(dleft);
 
 	if (par.getDepth() != 0) {
 		// find the next level paragraph
@@ -531,14 +529,14 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		parindent.erase();
 
 	LyXFont const labelfont = getLabelFont(par);
-	FontMetrics const & labelfont_metrics = theApp->fontLoader().metrics(labelfont);
+	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
 
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty()) {
 			string leftm = layout->leftmargin;
 			docstring dleft(leftm.begin(), leftm.end());
-			l_margin += theApp->fontLoader().metrics(params.getFont()).signedWidth(dleft);
+			l_margin += theFontMetrics(params.getFont()).signedWidth(dleft);
 		}
 		if (!par.getLabelstring().empty()) {
 			string labin = layout->labelindent;
@@ -574,8 +572,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	case MARGIN_STATIC: {
 		string leftm = layout->leftmargin;
 		docstring dleft(leftm.begin(), leftm.end());
-		l_margin += 
-			theApp->fontLoader().metrics(params.getFont()).signedWidth(dleft)
+		l_margin += theFontMetrics(params.getFont()).signedWidth(dleft)
 			* 4	/ (par.getDepth() + 4);
 		break;
 	}
@@ -629,7 +626,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
-		l_margin += theApp->fontLoader().metrics(params.getFont()).signedWidth(layout->leftmargin);
+		l_margin += theFontMetrics(params.getFont()).signedWidth(layout->leftmargin);
 		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
@@ -669,7 +666,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		   BufferParams::PARSEP_INDENT))
 	{
 		docstring din(parindent.begin(), parindent.end());
-		l_margin += theApp->fontLoader().metrics(params.getFont()).signedWidth(din);
+		l_margin += theFontMetrics(params.getFont()).signedWidth(din);
 	}
 
 	return l_margin;
@@ -691,7 +688,7 @@ int LyXText::rightMargin(Paragraph const & par) const
 	docstring dtrmarg(trmarg.begin(), trmarg.end());
 	string lrmarg = par.layout()->rightmargin;
 	docstring dlrmarg(lrmarg.begin(), lrmarg.end());
-	FontMetrics const & fm = theApp->fontLoader().metrics(params.getFont());
+	FontMetrics const & fm = theFontMetrics(params.getFont());
 	int const r_margin =
 		::rightMargin()
 		+ fm.signedWidth(dtrmarg)
@@ -769,7 +766,7 @@ void LyXText::rowBreakPoint(pit_type const pit, Row & row) const
 	FontIterator fi = FontIterator(*this, par, pos);
 	pos_type point = end;
 	pos_type i = pos;
-	FontMetrics const & fm = theApp->fontLoader().metrics(getLabelFont(par));
+	FontMetrics const & fm = theFontMetrics(getLabelFont(par));
 	for ( ; i < end; ++i, ++fi) {
 		char_type const c = par.getChar(i);
 		int thiswidth = singleWidth(par, i, c, *fi);
@@ -858,7 +855,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 	pos_type const body_pos = par.beginOfBody();
 	pos_type i = row.pos();
 
-	FontMetrics const & fm = theApp->fontLoader().metrics(getLabelFont(par));
+	FontMetrics const & fm = theFontMetrics(getLabelFont(par));
 
 	if (i < end) {
 		FontIterator fi = FontIterator(*this, par, i);
@@ -909,7 +906,7 @@ int LyXText::labelFill(Paragraph const & par, Row const & row) const
 
 	docstring dlab(label.begin(), label.end());
 
-	FontMetrics const & fm = theApp->fontLoader().metrics(getLabelFont(par));
+	FontMetrics const & fm = theFontMetrics(getLabelFont(par));
 
 	return max(0, fm.width(dlab) - w);
 }
@@ -946,8 +943,8 @@ void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 
 	LyXFont labelfont = getLabelFont(par);
 
-	FontMetrics const & labelfont_metrics = theApp->fontLoader().metrics(labelfont);
-	FontMetrics const & fontmetrics = theApp->fontLoader().metrics(font);
+	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
+	FontMetrics const & fontmetrics = theFontMetrics(font);
 
 	// these are minimum values
 	double const spacing_val = layout->spacing.getValue() * spacing(par);
@@ -1396,7 +1393,7 @@ LyXText::computeRowMetrics(pit_type const pit, Row const & row) const
 		{
 			string lsep = layout->labelsep;
 			docstring dlsep(lsep.begin(), lsep.end());
-			result.x += theApp->fontLoader().metrics(getLabelFont(par)).width(dlsep);
+			result.x += theFontMetrics(getLabelFont(par)).width(dlsep);
 			if (body_pos <= end)
 				result.x += result.label_hfill;
 		}
@@ -2300,7 +2297,7 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	// Use font span to speed things up, see below
 	FontSpan font_span;
 	LyXFont font;
-	FontMetrics const & labelfm = theApp->fontLoader().metrics(getLabelFont(par));
+	FontMetrics const & labelfm = theFontMetrics(getLabelFont(par));
 
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = bidi.vis2log(vpos);

@@ -149,8 +149,8 @@ void Toolbars::update()
 	for (; it != end; ++it)
 		it->second->update();
 
-	bool const enable = owner_.getLyXFunc().
-		getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
+	bool const enable =
+		lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled();
 
 	if (layout_)
 		layout_->setEnabled(enable);
@@ -169,7 +169,7 @@ void layoutSelected(LyXView & lv, string const & name)
 		if (lyx::to_utf8(_(itname)) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
 					       FuncRequest::UI);
-			lv.getLyXFunc().dispatch(func);
+			lv.dispatch(func);
 			return;
 		}
 	}

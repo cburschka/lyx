@@ -10,15 +10,19 @@
 
 #include <config.h>
 
-#include "Application.h"
+#include "frontends/Application.h"
 
-#include "Gui.h"
-#include "LyXView.h"
-#include "WorkArea.h"
+#include "frontends/FontLoader.h"
+#include "frontends/FontMetrics.h"
+#include "frontends/Gui.h"
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
 
 #include "bufferlist.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "LyXAction.h"
+#include "lyxfont.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
@@ -151,4 +155,53 @@ int Application::start(std::string const & batch)
 
 
 } // namespace frontend
+
+
+FuncStatus getStatus(FuncRequest const & action)
+{
+	return theApp->lyxFunc().getStatus(action);
+}
+
+
+void dispatch(FuncRequest const & action)
+{
+	theApp->lyxFunc().dispatch(action);
+}
+
 } // namespace lyx
+
+
+LyXFunc & theLyXFunc()
+{
+	return theApp->lyxFunc();
+}
+
+
+BufferList & theBufferList()
+{
+	return theApp->bufferList();
+}
+
+
+lyx::frontend::FontLoader & theFontLoader()
+{
+	return theApp->fontLoader();
+}
+
+
+lyx::frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
+{
+	return theApp->fontLoader().metrics(f);
+}
+
+
+lyx::frontend::Clipboard & theClipboard()
+{
+	return theApp->clipboard();
+}
+
+
+lyx::frontend::Selection & theSelection()
+{
+	return theApp->selection();
+}

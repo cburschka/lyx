@@ -279,7 +279,7 @@ int LyX::exec2(int & argc, char * argv[])
 				if (b)
 					last_loaded = b;
 			} else {
-				Buffer * buf = theApp->bufferList().newBuffer(s, false);
+				Buffer * buf = theBufferList().newBuffer(s, false);
 				if (loadLyXFile(buf, s)) {
 					last_loaded = buf;
 					ErrorList const & el = buf->errorList("Parse");
@@ -288,7 +288,7 @@ int LyX::exec2(int & argc, char * argv[])
 							boost::bind(&LyX::printError, this, _1));
 				}
 				else
-					theApp->bufferList().release(buf);
+					theBufferList().release(buf);
 			}
 		}
 
@@ -668,7 +668,7 @@ void LyX::emergencyCleanup() const
 	// contain documents etc. which might be helpful on
 	// a crash
 
-	theApp->bufferList().emergencyWriteAll();
+	theBufferList().emergencyWriteAll();
 	theApp->server().emergencyCleanup();
 }
 
