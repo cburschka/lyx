@@ -12,47 +12,14 @@
 
 #include "paragraph_funcs.h"
 
-#include "buffer.h"
 #include "bufferparams.h"
-
-#include "debug.h"
-#include "encoding.h"
-#include "gettext.h"
-#include "language.h"
-#include "lyxrow.h"
 #include "lyxtext.h"
-#include "outputparams.h"
 #include "paragraph_pimpl.h"
-#include "pariterator.h"
-#include "sgml.h"
-#include "texrow.h"
-#include "vspace.h"
-
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/lyxlib.h"
-
-#include <sstream>
-#include <vector>
 
 using lyx::pos_type;
 using lyx::pit_type;
 
-using lyx::support::ascii_lowercase;
-using lyx::support::bformat;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::compare_no_case;
-using lyx::support::contains;
-using lyx::support::split;
-using lyx::support::subst;
-
-using std::auto_ptr;
-using std::endl;
 using std::string;
-using std::vector;
-using std::istringstream;
-using std::ostream;
-using std::pair;
 
 
 namespace {
