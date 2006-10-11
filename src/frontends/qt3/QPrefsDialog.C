@@ -908,7 +908,7 @@ void QPrefsDialog::change_color()
 
 void QPrefsDialog::select_ui()
 {
-	string file(form_->controller().browseUI(fromqstr(uiModule->uiFileED->text())));
+	docstring file(form_->controller().browseUI(qstring_to_ucs4(uiModule->uiFileED->text())));
 	if (!file.empty())
 		uiModule->uiFileED->setText(toqstr(file));
 }
@@ -916,7 +916,7 @@ void QPrefsDialog::select_ui()
 
 void QPrefsDialog::select_bind()
 {
-	string file(form_->controller().browsebind(fromqstr(uiModule->bindFileED->text())));
+	docstring file(form_->controller().browsebind(qstring_to_ucs4(uiModule->bindFileED->text())));
 	if (!file.empty())
 		uiModule->bindFileED->setText(toqstr(file));
 }
@@ -924,7 +924,7 @@ void QPrefsDialog::select_bind()
 
 void QPrefsDialog::select_keymap1()
 {
-	string file(form_->controller().browsekbmap(fromqstr(keyboardModule->firstKeymapED->text())));
+	docstring file(form_->controller().browsekbmap(qstring_to_ucs4(keyboardModule->firstKeymapED->text())));
 	if (!file.empty())
 		keyboardModule->firstKeymapED->setText(toqstr(file));
 }
@@ -932,7 +932,7 @@ void QPrefsDialog::select_keymap1()
 
 void QPrefsDialog::select_keymap2()
 {
-	string file(form_->controller().browsekbmap(fromqstr(keyboardModule->secondKeymapED->text())));
+	docstring file(form_->controller().browsekbmap(qstring_to_ucs4(keyboardModule->secondKeymapED->text())));
 	if (!file.empty())
 		keyboardModule->secondKeymapED->setText(toqstr(file));
 }
@@ -940,7 +940,7 @@ void QPrefsDialog::select_keymap2()
 
 void QPrefsDialog::select_dict()
 {
-	string file(form_->controller().browsedict(fromqstr(spellcheckerModule->persDictionaryED->text())));
+	docstring file(form_->controller().browsedict(qstring_to_ucs4(spellcheckerModule->persDictionaryED->text())));
 	if (!file.empty())
 		spellcheckerModule->persDictionaryED->setText(toqstr(file));
 }
@@ -950,7 +950,7 @@ void QPrefsDialog::select_dict()
 
 void QPrefsDialog::select_templatedir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->templateDirED->text()), lyx::to_utf8(_("Select a document templates directory"))));
+	docstring file(form_->controller().browsedir(qstring_to_ucs4(pathsModule->templateDirED->text()), _("Select a document templates directory")));
 	if (!file.empty())
 		pathsModule->templateDirED->setText(toqstr(file));
 }
@@ -958,7 +958,7 @@ void QPrefsDialog::select_templatedir()
 
 void QPrefsDialog::select_tempdir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->tempDirED->text()), lyx::to_utf8(_("Select a temporary directory"))));
+	docstring file(form_->controller().browsedir(qstring_to_ucs4(pathsModule->tempDirED->text()), _("Select a temporary directory")));
 	if (!file.empty())
 		pathsModule->tempDirED->setText(toqstr(file));
 }
@@ -966,7 +966,7 @@ void QPrefsDialog::select_tempdir()
 
 void QPrefsDialog::select_backupdir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->backupDirED->text()), lyx::to_utf8(_("Select a backups directory"))));
+	docstring file(form_->controller().browsedir(qstring_to_ucs4(pathsModule->backupDirED->text()), _("Select a backups directory")));
 	if (!file.empty())
 		pathsModule->backupDirED->setText(toqstr(file));
 }
@@ -974,7 +974,7 @@ void QPrefsDialog::select_backupdir()
 
 void QPrefsDialog::select_workingdir()
 {
-	string file(form_->controller().browsedir(fromqstr(pathsModule->workingDirED->text()), lyx::to_utf8(_("Select a document directory"))));
+	docstring file(form_->controller().browsedir(qstring_to_ucs4(pathsModule->workingDirED->text()), _("Select a document directory")));
 	if (!file.empty())
 		pathsModule->workingDirED->setText(toqstr(file));
 }
@@ -982,7 +982,7 @@ void QPrefsDialog::select_workingdir()
 
 void QPrefsDialog::select_lyxpipe()
 {
-	string file(form_->controller().browse(fromqstr(pathsModule->lyxserverDirED->text()), lyx::to_utf8(_("Give a filename for the LyX server pipe"))));
+	docstring file(form_->controller().browse(qstring_to_ucs4(pathsModule->lyxserverDirED->text()), _("Give a filename for the LyX server pipe")));
 	if (!file.empty())
 		pathsModule->lyxserverDirED->setText(toqstr(file));
 }

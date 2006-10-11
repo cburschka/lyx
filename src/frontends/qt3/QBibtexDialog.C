@@ -96,7 +96,7 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	string const file = form_->controller().browseBst("");
+	string const file = lyx::to_utf8(form_->controller().browseBst(lyx::from_ascii("")));
 
 	if (!file.empty()) {
 		string const filen = changeExtension(file, "");
@@ -121,7 +121,7 @@ void QBibtexDialog::browsePressed()
 
 void QBibtexDialog::browseBibPressed()
 {
-	string const file = trim(form_->controller().browseBib(""));
+	string const file = trim(lyx::to_utf8(form_->controller().browseBib(lyx::from_ascii(""))));
 
 	if (!file.empty()) {
 		string const f = changeExtension(file, "");

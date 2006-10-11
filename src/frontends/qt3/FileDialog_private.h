@@ -31,19 +31,19 @@ class LyXFileDialog : public QFileDialog
 {
 	Q_OBJECT
 public:
-	LyXFileDialog(std::string const & path,
+	LyXFileDialog(lyx::docstring const & path,
 		      lyx::support::FileFilterList const & filters,
-		      std::string const & title,
+		      lyx::docstring const & title,
 		      FileDialog::Button const & b1,
 		      FileDialog::Button const & b2);
 public slots:
 	void buttonClicked();
 private:
 	QToolButton * b1_;
-	std::string b1_dir_;
+	lyx::docstring b1_dir_;
 
 	QToolButton * b2_;
-	std::string b2_dir_;
+	lyx::docstring b2_dir_;
 };
 
 #endif // FILEDIALOG_PRIVATE_H

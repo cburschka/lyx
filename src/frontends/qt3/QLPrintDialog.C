@@ -43,7 +43,7 @@ void QLPrintDialog::change_adaptor()
 
 void QLPrintDialog::browseClicked()
 {
-	QString file = toqstr(form_->controller().browse(""));
+	QString file = toqstr(form_->controller().browse(lyx::from_ascii("")));
 	if (!file.isNull()) {
 		fileED->setText(file);
 		form_->changed();

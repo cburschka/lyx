@@ -542,13 +542,14 @@ string const ltrim(string const & a, char const * p)
 }
 
 
-string const split(string const & a, string & piece, char delim)
+template<typename String, typename Char> inline
+String const doSplit(String const & a, String & piece, Char delim)
 {
-	string tmp;
-	string::size_type i = a.find(delim);
+	String tmp;
+	typename String::size_type i = a.find(delim);
 	if (i == a.length() - 1) {
 		piece = a.substr(0, i);
-	} else if (i != string::npos) {
+	} else if (i != String::npos) {
 		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
 	} else if (i == 0) {
@@ -558,6 +559,18 @@ string const split(string const & a, string & piece, char delim)
 		piece = a;
 	}
 	return tmp;
+}
+
+
+string const split(string const & a, string & piece, char delim)
+{
+	return doSplit(a, piece, delim);
+}
+
+
+docstring const split(docstring const & a, docstring & piece, char_type delim)
+{
+	return doSplit(a, piece, delim);
 }
 
 

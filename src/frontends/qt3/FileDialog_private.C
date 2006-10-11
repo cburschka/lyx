@@ -20,6 +20,7 @@
 #include <qtoolbutton.h>
 
 using lyx::support::split;
+using lyx::docstring;
 
 using std::string;
 
@@ -27,13 +28,13 @@ using std::string;
 namespace {
 
 /// return the Qt form of the label
-string const getLabel(string const & str) {
-	string label;
-	string sc(split(str, label, '|'));
+docstring const getLabel(docstring const & str) {
+	docstring label;
+	docstring sc(split(str, label, '|'));
 	if (sc.length() < 2)
 		return label;
-	string::size_type pos = label.find(sc[1]);
-	if (pos == string::npos)
+	docstring::size_type pos = label.find(sc[1]);
+	if (pos == docstring::npos)
 		return label;
 	label.insert(pos, 1, '&');
 	return label;
@@ -42,9 +43,9 @@ string const getLabel(string const & str) {
 } // namespace anon
 
 
-LyXFileDialog::LyXFileDialog(string const & p,
+LyXFileDialog::LyXFileDialog(docstring const & p,
 			     lyx::support::FileFilterList const & filters,
-			     string const & t,
+			     docstring const & t,
 			     FileDialog::Button const & b1,
 			     FileDialog::Button const & b2)
 	: QFileDialog(toqstr(p), toqstr(filters.as_string()),

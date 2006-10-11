@@ -189,6 +189,7 @@ std::string const ltrim(std::string const & a, char const * p = " ");
     \endcode
 */
 std::string const split(std::string const & a, std::string & piece, char delim);
+docstring const split(docstring const & a, docstring & piece, char_type delim);
 
 /// Same as split but does not return a piece
 std::string const split(std::string const & a, char delim);
