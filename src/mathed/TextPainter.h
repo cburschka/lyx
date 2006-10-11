@@ -13,8 +13,9 @@
 #define TEXTPAINTER_H
 
 
+#include "support/docstream.h"
+
 #include <vector>
-#include <iosfwd>
 
 class TextPainter {
 	public:
@@ -25,7 +26,7 @@ class TextPainter {
 		///
 		void draw(int x, int y, char c);
 		///
-		void show(std::ostream & os, int offset = 0) const;
+		void show(lyx::odocstream & os, int offset = 0) const;
 		///
 		int textheight() const { return ymax_; }
 		///

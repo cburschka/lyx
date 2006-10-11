@@ -22,6 +22,7 @@
 
 #include "support/std_ostream.h"
 
+using lyx::docstring;
 using lyx::support::subst;
 
 using std::string;
@@ -33,14 +34,10 @@ InsetUrl::InsetUrl(InsetCommandParams const & p)
 {}
 
 
-string const InsetUrl::getScreenLabel(Buffer const &) const
+docstring const InsetUrl::getScreenLabel(Buffer const &) const
 {
-	string temp;
-	// FIXME UNICODE
-	if (getCmdName() == "url")
-		temp = lyx::to_utf8(_("Url: "));
-	else
-		temp = lyx::to_utf8(_("HtmlUrl: "));
+	docstring const temp =
+		(getCmdName() == "url") ? _("Url: ") : _("HtmlUrl: ");
 
 	string url;
 
@@ -54,7 +51,8 @@ string const InsetUrl::getScreenLabel(Buffer const &) const
 		url = url.substr(0, 10) + "..."
 			+ url.substr(url.length() - 17, url.length());
 	}
-	return temp + url;
+	// FIXME UNICODE
+	return temp + lyx::from_utf8(url);
 }
 
 
@@ -70,13 +68,16 @@ int InsetUrl::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetUrl::plaintext(Buffer const &, ostream & os,
+int InsetUrl::plaintext(Buffer const &, lyx::odocstream & os,
 		    OutputParams const &) const
 {
+	// FIXME UNICODE
+	os << '[' << lyx::from_utf8(getContents());
 	if (getOptions().empty())
-		os << '[' << getContents() << ']';
+		os << ']';
 	else
-		os << '[' << getContents() << "||" <<  getOptions() << ']';
+		// FIXME UNICODE
+		os << "||" << lyx::from_utf8(getOptions()) << ']';
 	return 0;
 }
 
@@ -90,7 +91,7 @@ int InsetUrl::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetUrl::textString(Buffer const & buf, ostream & os,
+int InsetUrl::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

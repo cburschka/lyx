@@ -20,6 +20,8 @@
 
 #include "support/std_ostream.h"
 
+using lyx::docstring;
+
 using std::string;
 using std::ostream;
 
@@ -36,12 +38,11 @@ std::auto_ptr<InsetBase> InsetTOC::doClone() const
 }
 
 
-string const InsetTOC::getScreenLabel(Buffer const &) const
+docstring const InsetTOC::getScreenLabel(Buffer const &) const
 {
-	// FIXME UNICODE
 	if (getCmdName() == "tableofcontents")
-		return lyx::to_utf8(_("Table of Contents"));
-	return lyx::to_utf8(_("Unknown toc list"));
+		return _("Table of Contents");
+	return _("Unknown toc list");
 }
 
 
@@ -53,7 +54,7 @@ InsetBase::Code InsetTOC::lyxCode() const
 }
 
 
-int InsetTOC::plaintext(Buffer const & buffer, ostream & os,
+int InsetTOC::plaintext(Buffer const & buffer, lyx::odocstream & os,
 		    OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";

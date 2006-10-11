@@ -24,7 +24,7 @@ public:
 	///
 	InsetFloatList(std::string const & type);
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -42,7 +42,7 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const { return 0; }
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;

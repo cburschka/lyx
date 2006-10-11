@@ -221,7 +221,7 @@ bool InsetBase::idxUpDown(LCursor &, bool) const
 
 
 int InsetBase::plaintext(Buffer const &,
-	std::ostream &, OutputParams const &) const
+	lyx::odocstream &, OutputParams const &) const
 {
 	return 0;
 }

@@ -154,7 +154,7 @@ void QToc::updateToc(int newdepth)
 
 		lyxerr[Debug::GUI]
 			<< "Table of contents\n"
-			<< "Added item " << iter->str()
+			<< "Added item " << lyx::to_utf8(iter->str())
 			<< " at depth " << iter->depth()
 			<< ", previous sibling \""
 			<< (last ? fromqstr(last->text(0)) : "0")
@@ -193,8 +193,10 @@ bool QToc::canOutline()
 }
 
 
-void QToc::select(string const & text)
+void QToc::select(string const & t)
 {
+	// FIXME UNICODE
+	docstring const text = lyx::from_utf8(t);
 	toc::Toc::const_iterator iter = toclist.begin();
 
 	for (; iter != toclist.end(); ++iter) {
@@ -204,7 +206,7 @@ void QToc::select(string const & text)
 
 	if (iter == toclist.end()) {
 		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry: "
-			<< text << endl;
+			<< t << endl;
 		return;
 	}
 

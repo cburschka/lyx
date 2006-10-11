@@ -36,7 +36,7 @@ public:
 	InsetRef(InsetCommandParams const &, Buffer const &);
 
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -47,13 +47,13 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, std::ostream & os,
+	virtual int textString(Buffer const &, lyx::odocstream &,
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;

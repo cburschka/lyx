@@ -170,7 +170,7 @@ int InsetERT::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetERT::plaintext(Buffer const &, ostream &,
+int InsetERT::plaintext(Buffer const &, lyx::odocstream &,
 		    OutputParams const & /*runparams*/) const
 {
 	return 0;

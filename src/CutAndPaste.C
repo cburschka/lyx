@@ -48,6 +48,7 @@
 
 #include <boost/tuple/tuple.hpp>
 
+using lyx::docstring;
 using lyx::pos_type;
 using lyx::pit_type;
 using lyx::textclass_type;
@@ -456,9 +457,9 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 }
 
 
-std::vector<string> const availableSelections(Buffer const & buffer)
+std::vector<docstring> const availableSelections(Buffer const & buffer)
 {
-	vector<string> selList;
+	vector<docstring> selList;
 
 	CutStack::const_iterator cit = theCuts.begin();
 	CutStack::const_iterator end = theCuts.end();
@@ -466,13 +467,14 @@ std::vector<string> const availableSelections(Buffer const & buffer)
 		// we do not use cit-> here because gcc 2.9x does not
 		// like it (JMarc)
 		ParagraphList const & pars = (*cit).first;
-		string asciiSel;
+		docstring asciiSel;
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();
 		for (; pit != pend; ++pit) {
 			asciiSel += pit->asString(buffer, false);
 			if (asciiSel.size() > 25) {
-				asciiSel.replace(22, string::npos, "...");
+				asciiSel.replace(22, docstring::npos,
+				                 lyx::from_ascii("..."));
 				break;
 			}
 		}
@@ -614,11 +616,11 @@ void copySelection(LCursor & cur)
 }
 
 
-std::string getSelection(Buffer const & buf, size_t sel_index)
+docstring getSelection(Buffer const & buf, size_t sel_index)
 {
 	return sel_index < theCuts.size()
 		? theCuts[sel_index].first.back().asString(buf, false)
-		: string();
+		: docstring();
 }
 
 

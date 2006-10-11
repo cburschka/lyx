@@ -29,7 +29,7 @@ public:
 	virtual int latex(Buffer const &, std::ostream &,
 			  OutputParams const &) const;
 
-	virtual int plaintext(Buffer const &, std::ostream &,
+	virtual int plaintext(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const;
 
 	virtual int docbook(Buffer const &, std::ostream &,

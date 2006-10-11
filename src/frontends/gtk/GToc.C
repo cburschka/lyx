@@ -157,7 +157,7 @@ void GToc::updateContents()
 
 	for (int rowindex = 0; cit != end; ++cit, ++rowindex) {
 		Gtk::ListStore::iterator row = tocstore_->append();
-		(*row)[listCol_] = cit->asString();
+		(*row)[listCol_] = lyx::to_utf8(cit->asString());
 		(*row)[listColIndex_] = rowindex;
 	}
 	changing_views_ = false;

@@ -28,14 +28,14 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 	///
-	std::string const screenLabel() const;
+	lyx::docstring const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	virtual RefInset * asRefInset() { return this; }
 
-	/// plain ascii output
-	int plaintext(std::ostream & os, OutputParams const &) const;
+	/// plain text output in ucs4 encoding
+	int plaintext(lyx::odocstream &, OutputParams const &) const;
 	/// docbook output
 	int docbook(Buffer const & buf, std::ostream & os, OutputParams const &) const;
 

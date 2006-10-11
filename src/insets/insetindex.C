@@ -20,6 +20,8 @@
 
 #include "support/std_ostream.h"
 
+using lyx::docstring;
+
 using std::string;
 using std::ostream;
 
@@ -34,10 +36,9 @@ InsetIndex::InsetIndex(InsetCommandParams const & p)
 // {}
 
 
-string const InsetIndex::getScreenLabel(Buffer const &) const
+docstring const InsetIndex::getScreenLabel(Buffer const &) const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Idx"));
+	return _("Idx");
 }
 
 
@@ -67,10 +68,9 @@ InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p)
 // {}
 
 
-string const InsetPrintIndex::getScreenLabel(Buffer const &) const
+docstring const InsetPrintIndex::getScreenLabel(Buffer const &) const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("Index"));
+	return _("Index");
 }
 
 

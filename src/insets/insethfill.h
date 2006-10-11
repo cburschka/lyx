@@ -22,14 +22,14 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::HFILL_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const &, std::ostream &,

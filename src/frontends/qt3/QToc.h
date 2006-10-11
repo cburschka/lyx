@@ -69,7 +69,7 @@ private:
 	int depth_;
 
 	/// Store selected item's string
-	std::string text_;
+	lyx::docstring text_;
 
 	/// Store ToC list type
 	std::string type_;

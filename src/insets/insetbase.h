@@ -12,10 +12,9 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include "support/docstring.h"
+#include "support/docstream.h"
 
 #include <memory>
-#include <string>
 #include <vector>
 
 class Buffer;
@@ -186,14 +185,14 @@ public:
 	/// describe content if cursor behind
 	virtual void infoize2(std::ostream &) const {}
 
-	/// plain ascii output
-	virtual int plaintext(Buffer const &, std::ostream & os,
+	/// plain text output in ucs4 encoding
+	virtual int plaintext(Buffer const &, lyx::odocstream &,
 		OutputParams const &) const;
 	/// docbook output
 	virtual int docbook(Buffer const &, std::ostream & os,
 		OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, std::ostream &,
+	virtual int textString(Buffer const &, lyx::odocstream &,
 		OutputParams const &) const { return 0; };
 
 	/** This enum indicates by which means the inset can be modified:

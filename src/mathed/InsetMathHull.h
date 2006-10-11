@@ -100,13 +100,13 @@ public:
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, std::ostream & os,
+	virtual int textString(Buffer const &, lyx::odocstream &,
 		OutputParams const &) const;
 
 	/// get notification when the cursor leaves this inset

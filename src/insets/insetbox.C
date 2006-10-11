@@ -381,7 +381,7 @@ int InsetBox::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetBox::plaintext(Buffer const & buf, std::ostream & os,
+int InsetBox::plaintext(Buffer const & buf, lyx::odocstream & os,
 		    OutputParams const & runparams) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);

@@ -579,10 +579,10 @@ int InsetLatexAccent::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLatexAccent::plaintext(Buffer const &, ostream & os,
+int InsetLatexAccent::plaintext(Buffer const &, lyx::odocstream & os,
 			    OutputParams const &) const
 {
-	os << contents;
+	os << lyx::from_ascii(contents);
 	return 0;
 }
 
@@ -595,7 +595,7 @@ int InsetLatexAccent::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetLatexAccent::textString(Buffer const & buf, ostream & os,
+int InsetLatexAccent::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

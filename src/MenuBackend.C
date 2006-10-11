@@ -417,9 +417,9 @@ public:
 	}
 };
 
-string const limit_string_length(string const & str)
+docstring const limit_string_length(docstring const & str)
 {
-	string::size_type const max_item_length = 45;
+	docstring::size_type const max_item_length = 45;
 
 	if (str.size() > max_item_length)
 		return str.substr(0, max_item_length - 3) + "...";
@@ -436,7 +436,7 @@ void expandLastfiles(Menu & tomenu)
 	int ii = 1;
 
 	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
-		docstring const label = convert<docstring>(ii) + lyx::from_ascii(". ")
+		docstring const label = convert<docstring>(ii) + ". "
 			+ makeDisplayPath((*lfit), 30)
 			+ char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))));
@@ -461,7 +461,7 @@ void expandDocuments(Menu & tomenu)
 	for (; docit != end; ++docit, ++ii) {
 		docstring label = makeDisplayPath(*docit, 20);
 		if (ii < 10)
-			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
+			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)));
 	}
 }
@@ -512,7 +512,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 				label = _("Plain Text as Lines");
 			else if ((*fit)->name() == "textparagraph")
 				label = _("Plain Text as Paragraphs");
-			label += lyx::from_ascii("...");
+			label += "...";
 			break;
 		case MenuItem::ViewFormats:
 		case MenuItem::ExportFormats:
@@ -623,7 +623,7 @@ void expandToc2(Menu & tomenu,
 	if (to - from <= max_number_of_items) {
 		for (lyx::toc::Toc::size_type i = from; i < to; ++i) {
 			docstring label(4 * max(0, toc_list[i].depth() - depth), char_type(' '));
-			label += lyx::from_utf8(limit_string_length(toc_list[i].str()));
+			label += limit_string_length(toc_list[i].str());
 			if (toc_list[i].depth() == depth
 			    && shortcut_count < 9) {
 				if (label.find(convert<docstring>(shortcut_count + 1)) != docstring::npos)
@@ -641,12 +641,12 @@ void expandToc2(Menu & tomenu,
 				++new_pos;
 
 			docstring label(4 * max(0, toc_list[pos].depth() - depth), ' ');
-			label += lyx::from_utf8(limit_string_length(toc_list[pos].str()));
+			label += limit_string_length(toc_list[pos].str());
 			if (toc_list[pos].depth() == depth &&
 			    shortcut_count < 9) {
 				if (label.find(convert<docstring>(shortcut_count + 1)) != docstring::npos)
 					label += char_type('|') + convert<docstring>(++shortcut_count);
-				}
+			}
 			if (new_pos == pos + 1) {
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, FuncRequest(toc_list[pos].action())));
@@ -691,7 +691,7 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		lyx::toc::Toc::const_iterator ccit = cit->second.begin();
 		lyx::toc::Toc::const_iterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
-			docstring const label = lyx::from_utf8(limit_string_length(ccit->str()));
+			docstring const label = limit_string_length(ccit->str());
 			menu->add(MenuItem(MenuItem::Command,
 					   label,
 					   FuncRequest(ccit->action())));
@@ -719,14 +719,14 @@ void expandPasteRecent(Menu & tomenu, Buffer const * buf)
 	if (!buf)
 		return;
 
-	vector<string> const sel =
+	vector<docstring> const sel =
 		lyx::cap::availableSelections(*buf);
 
-	vector<string>::const_iterator cit = sel.begin();
-	vector<string>::const_iterator end = sel.end();
+	vector<docstring>::const_iterator cit = sel.begin();
+	vector<docstring>::const_iterator end = sel.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
-		tomenu.add(MenuItem(MenuItem::Command, lyx::from_utf8(*cit),
+		tomenu.add(MenuItem(MenuItem::Command, *cit,
 				    FuncRequest(LFUN_PASTE, convert<string>(index))));
 	}
 }
@@ -745,7 +745,7 @@ void expandBranches(Menu & tomenu, Buffer const * buf)
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring label = lyx::from_utf8(cit->getBranch());
 		if (ii < 10)
-			label = convert<docstring>(ii) + lyx::from_ascii(". ") + label + char_type('|') + convert<docstring>(ii);
+			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
 		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_BRANCH_INSERT,
 						cit->getBranch())));

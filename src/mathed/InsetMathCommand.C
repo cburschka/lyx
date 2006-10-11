@@ -18,6 +18,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using std::ostringstream;
@@ -70,9 +72,9 @@ void CommandInset::write(WriteStream & os) const
 }
 
 
-string const CommandInset::screenLabel() const
+docstring const CommandInset::screenLabel() const
 {
-	return name_;
+	return lyx::from_ascii(name_);
 }
 
 

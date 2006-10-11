@@ -268,18 +268,18 @@ int InsetText::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetText::plaintext(Buffer const & buf, ostream & os,
+int InsetText::plaintext(Buffer const & buf, lyx::odocstream & os,
 		     OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
-	std::ostringstream oss;
+	lyx::odocstringstream oss;
 	for (; it != end; ++it)
 		asciiParagraph(buf, *it, oss, runparams, ref_printed);
 
-	string const str = oss.str();
+	docstring const str = oss.str();
 	os << str;
 	// Return how many newlines we issued.
 	return int(lyx::count(str.begin(), str.end(), '\n'));

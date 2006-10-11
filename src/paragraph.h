@@ -111,18 +111,18 @@ public:
 	bool isMultiLingual(BufferParams const &) const;
 
 	///
-	std::string const asString(Buffer const &,
+	lyx::docstring const asString(Buffer const &,
 				   OutputParams const & runparams,
 				   bool label) const;
 	///
-	std::string const asString(Buffer const &, bool label) const;
+	lyx::docstring const asString(Buffer const &, bool label) const;
 	///
-	std::string const asString(Buffer const & buffer,
+	lyx::docstring const asString(Buffer const & buffer,
 				   lyx::pos_type beg,
 				   lyx::pos_type end,
 				   bool label) const;
 	///
-	std::string const asString(Buffer const &,
+	lyx::docstring const asString(Buffer const &,
 				   OutputParams const & runparams,
 				   lyx::pos_type beg,
 				   lyx::pos_type end,

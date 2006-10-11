@@ -316,7 +316,7 @@ public:
 	int docbook(Buffer const & buf, std::ostream & os,
 		    OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const & runparams,
 		  int const depth,
 		  bool onlydata, unsigned char delim) const;
@@ -605,13 +605,13 @@ public:
 	///
 	// helper function for ASCII returns number of newlines
 	///
-	int asciiTopHLine(std::ostream &, row_type row,
+	int asciiTopHLine(lyx::odocstream &, row_type row,
 			  std::vector<unsigned int> const &) const;
 	///
-	int asciiBottomHLine(std::ostream &, row_type row,
+	int asciiBottomHLine(lyx::odocstream &, row_type row,
 			     std::vector<unsigned int> const &) const;
 	///
-	int asciiPrintCell(Buffer const &, std::ostream &,
+	int asciiPrintCell(Buffer const &, lyx::odocstream &,
 			   OutputParams const &,
 			   idx_type cell, row_type row, col_type column,
 			   std::vector<unsigned int> const &,

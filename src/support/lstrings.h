@@ -32,6 +32,9 @@ int compare_no_case(lyx::docstring const & s, lyx::docstring const & s2);
 int compare_ascii_no_case(std::string const & s, std::string const & s2);
 
 ///
+int compare_ascii_no_case(docstring const & s, docstring const & s2);
+
+///
 int compare_no_case(std::string const & s, std::string const & s2, unsigned int len);
 
 ///

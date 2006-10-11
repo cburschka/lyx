@@ -57,7 +57,7 @@ int InsetNewline::latex(Buffer const &, ostream &,
 }
 
 
-int InsetNewline::plaintext(Buffer const &, ostream & os,
+int InsetNewline::plaintext(Buffer const &, lyx::odocstream & os,
 			OutputParams const &) const
 {
 	os << '\n';

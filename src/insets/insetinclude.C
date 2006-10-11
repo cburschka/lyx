@@ -39,10 +39,10 @@
 
 #include "insets/render_preview.h"
 
-#include "support/lyxalgo.h"
 #include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
+#include "support/lyxalgo.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
 
@@ -275,7 +275,7 @@ void InsetInclude::read(LyXLex & lex)
 }
 
 
-string const InsetInclude::getScreenLabel(Buffer const &) const
+docstring const InsetInclude::getScreenLabel(Buffer const &) const
 {
 	docstring temp;
 
@@ -294,15 +294,15 @@ string const InsetInclude::getScreenLabel(Buffer const &) const
 			break;
 	}
 
-	temp += lyx::from_ascii(": ");
+	temp += ": ";
 
 	if (params_.getContents().empty())
-		temp += lyx::from_ascii("???");
+		temp += "???";
 	else
+		// FIXME: We don't know the encoding of the filename
 		temp += lyx::from_ascii(onlyFilename(params_.getContents()));
 
-	// FIXME UNICODE
-	return lyx::to_utf8(temp);
+	return temp;
 }
 
 
@@ -468,12 +468,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 }
 
 
-int InsetInclude::plaintext(Buffer const & buffer, ostream & os,
+int InsetInclude::plaintext(Buffer const & buffer, lyx::odocstream & os,
 			OutputParams const &) const
 {
 	if (isVerbatim(params_)) {
-		string const str =
-			getFileContents(includedFilename(buffer, params_));
+		// FIXME: We don't know the encoding of the file
+		docstring const str = lyx::from_utf8(
+			getFileContents(includedFilename(buffer, params_)));
 		os << str;
 		// Return how many newlines we issued.
 		return int(lyx::count(str.begin(), str.end(), '\n'));

@@ -26,6 +26,7 @@
 #include "support/lyxalgo.h"
 #include "support/std_ostream.h"
 
+using lyx::docstring;
 using lyx::support::escape;
 
 using std::string;
@@ -50,9 +51,10 @@ void InsetLabel::getLabelList(Buffer const &, std::vector<string> & list) const
 }
 
 
-string const InsetLabel::getScreenLabel(Buffer const &) const
+docstring const InsetLabel::getScreenLabel(Buffer const &) const
 {
-	return getContents();
+	// FIXME UNICODE
+	return lyx::from_utf8(getContents());
 }
 
 
@@ -89,10 +91,11 @@ int InsetLabel::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLabel::plaintext(Buffer const &, ostream & os,
+int InsetLabel::plaintext(Buffer const &, lyx::odocstream & os,
 		      OutputParams const &) const
 {
-	os << '<' << getContents()  << '>';
+	// FIXME UNICODE
+	os << '<' << lyx::from_utf8(getContents()) << '>';
 	return 0;
 }
 

@@ -322,7 +322,7 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
+int InsetNote::plaintext(Buffer const & buf, lyx::odocstream & os,
 			 OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)

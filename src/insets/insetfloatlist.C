@@ -27,6 +27,7 @@
 
 #include "support/lstrings.h"
 
+using lyx::docstring;
 using lyx::support::bformat;
 
 using std::endl;
@@ -46,16 +47,14 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
-string const InsetFloatList::getScreenLabel(Buffer const & buf) const
+docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[getCmdName()];
 	if (it != floats.end())
-		// FIXME UNICODE
-		return lyx::to_utf8(buf.B_(it->second.listName()));
+		return buf.B_(it->second.listName());
 	else
-		// FIXME UNICODE
-		return lyx::to_utf8(_("ERROR: Nonexistent float type!"));
+		return _("ERROR: Nonexistent float type!");
 }
 
 
@@ -128,7 +127,8 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetFloatList::plaintext(Buffer const & buffer, ostream & os, OutputParams const &) const
+int InsetFloatList::plaintext(Buffer const & buffer, lyx::odocstream & os,
+                              OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

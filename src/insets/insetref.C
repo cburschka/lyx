@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 
 
+using lyx::docstring;
 using lyx::support::escape;
 
 using std::string;
@@ -62,21 +63,22 @@ void InsetRef::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-string const InsetRef::getScreenLabel(Buffer const &) const
+docstring const InsetRef::getScreenLabel(Buffer const &) const
 {
-	string temp;
+	docstring temp;
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (getCmdName() == types[i].latex_name) {
-			// FIXME UNIOCDE
-			temp = lyx::to_utf8(_(types[i].short_gui_name));
+			temp = _(types[i].short_gui_name);
 			break;
 		}
 	}
-	temp += getContents();
+	// FIXME UNIOCDE
+	temp += lyx::from_utf8(getContents());
 
 	if (!isLatex && !getOptions().empty()) {
 		temp += "||";
-		temp += getOptions();
+		// FIXME UNIOCDE
+		temp += lyx::from_utf8(getOptions());
 	}
 	return temp;
 }
@@ -95,10 +97,11 @@ int InsetRef::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetRef::plaintext(Buffer const &, ostream & os,
+int InsetRef::plaintext(Buffer const &, lyx::odocstream & os,
 		    OutputParams const &) const
 {
-	os << '[' << getContents() << ']';
+	// FIXME UNIOCDE
+	os << '[' << lyx::from_utf8(getContents()) << ']';
 	return 0;
 }
 
@@ -119,7 +122,7 @@ int InsetRef::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int InsetRef::textString(Buffer const & buf, ostream & os,
+int InsetRef::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

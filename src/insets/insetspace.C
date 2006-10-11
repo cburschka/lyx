@@ -195,7 +195,7 @@ int InsetSpace::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::plaintext(Buffer const &, ostream & os,
+int InsetSpace::plaintext(Buffer const &, lyx::odocstream & os,
 		      OutputParams const &) const
 {
 	switch (kind_) {
@@ -235,7 +235,7 @@ int InsetSpace::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::textString(Buffer const & buf, ostream & os,
+int InsetSpace::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

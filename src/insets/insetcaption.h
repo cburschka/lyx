@@ -51,7 +51,7 @@ public:
 	virtual int latex(Buffer const & buf, std::ostream & os,
 			  OutputParams const &) const;
 	///
-	int plaintext(Buffer const & buf, std::ostream & os,
+	int plaintext(Buffer const & buf, lyx::odocstream & os,
 		  OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const & buf, std::ostream & os,

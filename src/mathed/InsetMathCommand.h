@@ -34,7 +34,7 @@ public:
 	//
 	// void infoize(std::ostream & os) const;
 	///
-	virtual std::string const screenLabel() const;
+	virtual lyx::docstring const screenLabel() const;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr(std::string const & name) const;
 	///

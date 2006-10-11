@@ -101,7 +101,7 @@ void TocModel::populate(TocBackend::Toc const & toc)
 
 			lyxerr[Debug::GUI]
 				<< "Toc: at depth " << iter->depth()
-				<< ", added item " << iter->str()
+				<< ", added item " << lyx::to_utf8(iter->str())
 				<< endl;
 
 			populate(iter, end, top_level_item);

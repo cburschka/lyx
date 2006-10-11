@@ -37,7 +37,7 @@ public:
 		  OutputParams const &) const;
 
 	/// Standard plain text output -- short-circuited
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 
 	/// Outputting the optional parameter of a LaTeX command

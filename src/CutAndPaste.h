@@ -16,9 +16,8 @@
 
 #include "ParagraphList_fwd.h"
 
-#include "support/types.h"
+#include "support/docstring.h"
 
-#include <string>
 #include <vector>
 
 class Buffer;
@@ -32,11 +31,11 @@ namespace lyx {
 namespace cap {
 
 ///
-std::vector<std::string> const availableSelections(Buffer const & buffer);
+std::vector<lyx::docstring> const availableSelections(Buffer const & buffer);
 ///
 lyx::size_type numberOfSelections();
 ///
-std::string getSelection(Buffer const & buffer, size_t sel_index);
+lyx::docstring getSelection(Buffer const & buffer, size_t sel_index);
 
 ///
 void cutSelection(LCursor & cur, bool doclear, bool realcut);

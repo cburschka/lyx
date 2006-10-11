@@ -23,7 +23,7 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///

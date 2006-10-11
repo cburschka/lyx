@@ -51,7 +51,7 @@ public:
 		Item(
 			ParConstIterator const & par_it = ParConstIterator(),
 			int d = -1,
-			std::string const & s = std::string());
+			lyx::docstring const & s = lyx::docstring());
 		///
 		~Item() {}
 		///
@@ -61,9 +61,9 @@ public:
 		///
 		int const depth() const;
 		///
-		std::string const & str() const;
+		lyx::docstring const & str() const;
 		///
-		std::string const asString() const;
+		lyx::docstring const asString() const;
 		/// set cursor in LyXView to this Item
 		void goTo(LyXView & lv_) const;
 		/// the action corresponding to the goTo above
@@ -77,7 +77,7 @@ public:
 		int depth_;
 
 		/// Full item string
-		std::string str_;
+		lyx::docstring str_;
 	};
 
 	///
@@ -109,7 +109,7 @@ public:
 	/// Return the first Toc Item before the cursor
 	TocIterator const item(std::string const & type, ParConstIterator const &);
 
-	void asciiTocList(std::string const & type, std::ostream & os) const;
+	void asciiTocList(std::string const & type, lyx::odocstream & os) const;
 
 private:
 	/// 

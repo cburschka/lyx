@@ -99,7 +99,7 @@ void QToc::goTo(QModelIndex const & index)
 	TocIterator const it = toc_models_[type_]->tocIterator(index);
 	
 	lyxerr[Debug::GUI]
-		<< "QToc::goTo " << it->str()
+		<< "QToc::goTo " << lyx::to_utf8(it->str())
 		<< endl;
 
 	it->goTo(kernel().lyxview());

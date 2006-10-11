@@ -35,7 +35,7 @@ auto_ptr<RenderBase> RenderButton::clone(InsetBase const *) const
 }
 
 
-void RenderButton::update(string const & text, bool editable)
+void RenderButton::update(docstring const & text, bool editable)
 {
 	text_ = text;
 	editable_ = editable;
@@ -49,12 +49,10 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 	lyx::frontend::FontMetrics const & fm =
 		theFontMetrics(font);
 	
-	docstring dtext(text_.begin(), text_.end());
-        
 	if (editable_)
-		fm.buttonText(dtext, dim.wid, dim.asc, dim.des);
+		fm.buttonText(text_, dim.wid, dim.asc, dim.des);
 	else
-		fm.rectText(dtext, dim.wid, dim.asc, dim.des);
+		fm.rectText(text_, dim.wid, dim.asc, dim.des);
 
 	dim.wid += 4;
 }
@@ -67,12 +65,10 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::command);
 	font.decSize();
 
-        docstring dtext(text_.begin(), text_.end());
-        
 	if (editable_) {
-		pi.pain.buttonText(x + 2, y, dtext, font);
+		pi.pain.buttonText(x + 2, y, text_, font);
 	} else {
-		pi.pain.rectText(x + 2, y, dtext, font,
+		pi.pain.rectText(x + 2, y, text_, font,
 				 LColor::commandbg, LColor::commandframe);
 	}
 }

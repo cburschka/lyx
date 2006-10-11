@@ -114,18 +114,23 @@ void InsetBibitem::read(Buffer const &, LyXLex & lex)
 }
 
 
-string const InsetBibitem::getBibLabel() const
+docstring const InsetBibitem::getBibLabel() const
 {
-	return getOptions().empty() ? convert<string>(counter) : getOptions();
+	// FIXME UNICODE
+	return getOptions().empty() ?
+		convert<docstring>(counter) :
+		lyx::from_utf8(getOptions());
 }
 
 
-string const InsetBibitem::getScreenLabel(Buffer const &) const
+docstring const InsetBibitem::getScreenLabel(Buffer const &) const
 {
-	return getContents() + " [" + getBibLabel() + ']';
+	// FIXME UNICODE
+	return lyx::from_utf8(getContents()) + " [" + getBibLabel() + ']';
 }
 
-int InsetBibitem::plaintext(Buffer const &, ostream & os,
+
+int InsetBibitem::plaintext(Buffer const &, lyx::odocstream & os,
 			    OutputParams const &) const
 {
 	os << '[' << getCounter() << "] ";
@@ -134,7 +139,7 @@ int InsetBibitem::plaintext(Buffer const &, ostream & os,
 
 
 // ale070405
-string const bibitemWidest(Buffer const & buffer)
+docstring const bibitemWidest(Buffer const & buffer)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
@@ -149,11 +154,10 @@ string const bibitemWidest(Buffer const & buffer)
 
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
-                        string const label = it->bibitem()->getBibLabel();
-                        docstring const dlab(label.begin(), label.end());
+			docstring const label = it->bibitem()->getBibLabel();
                     
 			int const wx =
-				fm.width(dlab);
+				fm.width(label);
 			if (wx > w) {
 				w = wx;
 				bitem = it->bibitem();
@@ -164,5 +168,5 @@ string const bibitemWidest(Buffer const & buffer)
 	if (bitem && !bitem->getBibLabel().empty())
 		return bitem->getBibLabel();
 
-	return "99";
+	return lyx::from_ascii("99");
 }

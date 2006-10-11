@@ -93,7 +93,7 @@ vector<string> const & getTypes(Buffer const & buf)
 }
 
 
-void asciiTocList(string const & type, Buffer const & buf, ostream & os)
+void asciiTocList(string const & type, Buffer const & buf, lyx::odocstream & os)
 {
 	toc_backend_[&buf].asciiTocList(type, os);
 }

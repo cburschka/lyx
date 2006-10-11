@@ -37,6 +37,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::support::ltrim;
 using lyx::support::prefixIs;
 using lyx::support::rtrim;
@@ -2434,7 +2435,7 @@ int LyXTabular::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int LyXTabular::asciiTopHLine(ostream & os, row_type row,
+int LyXTabular::asciiTopHLine(lyx::odocstream & os, row_type row,
 			      vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
@@ -2450,7 +2451,7 @@ int LyXTabular::asciiTopHLine(ostream & os, row_type row,
 	if (!tmp)
 		return 0;
 
-	unsigned char ch;
+	lyx::char_type ch;
 	for (idx_type i = fcell; i < n; ++i) {
 		if (topLine(i)) {
 			if (leftLine(i))
@@ -2467,7 +2468,7 @@ int LyXTabular::asciiTopHLine(ostream & os, row_type row,
 		while (column < columns_ - 1
 		       && isPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
-		os << string(len, ch);
+		os << docstring(len, ch);
 		if (topLine(i)) {
 			if (rightLine(i))
 				os << "-+";
@@ -2482,7 +2483,7 @@ int LyXTabular::asciiTopHLine(ostream & os, row_type row,
 }
 
 
-int LyXTabular::asciiBottomHLine(ostream & os, row_type row,
+int LyXTabular::asciiBottomHLine(lyx::odocstream & os, row_type row,
 				 vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
@@ -2498,7 +2499,7 @@ int LyXTabular::asciiBottomHLine(ostream & os, row_type row,
 	if (!tmp)
 		return 0;
 
-	unsigned char ch;
+	lyx::char_type ch;
 	for (idx_type i = fcell; i < n; ++i) {
 		if (bottomLine(i)) {
 			if (leftLine(i))
@@ -2515,7 +2516,7 @@ int LyXTabular::asciiBottomHLine(ostream & os, row_type row,
 		while (column < columns_ -1
 		       && isPartOfMultiColumn(row, ++column))
 			len += clen[column] + 4;
-		os << string(len, ch);
+		os << docstring(len, ch);
 		if (bottomLine(i)) {
 			if (rightLine(i))
 				os << "-+";
@@ -2530,13 +2531,13 @@ int LyXTabular::asciiBottomHLine(ostream & os, row_type row,
 }
 
 
-int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
+int LyXTabular::asciiPrintCell(Buffer const & buf, lyx::odocstream & os,
 			       OutputParams const & runparams,
 			       idx_type cell, row_type row, col_type column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
 {
-	ostringstream sstr;
+	lyx::odocstringstream sstr;
 	int const ret = getCellInset(cell)->plaintext(buf, sstr, runparams);
 
 	if (onlydata) {
@@ -2571,7 +2572,8 @@ int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 		break;
 	}
 
-	os << string(len1, ' ') << sstr.str() << string(len2, ' ');
+	os << docstring(len1, ' ') << sstr.str()
+	   << docstring(len2, ' ');
 
 	if (rightLine(cell))
 		os << " |";
@@ -2582,7 +2584,7 @@ int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 }
 
 
-int LyXTabular::plaintext(Buffer const & buf, ostream & os,
+int LyXTabular::plaintext(Buffer const & buf, lyx::odocstream & os,
 		      OutputParams const & runparams,
 		      int const depth,
 		      bool onlydata, unsigned char delim) const
@@ -2600,7 +2602,7 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 				idx_type cell = getCellNumber(i, j);
 				if (isMultiColumnReal(cell))
 					continue;
-				ostringstream sstr;
+				lyx::odocstringstream sstr;
 				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				if (clen[j] < sstr.str().length())
 					clen[j] = sstr.str().length();
@@ -2612,7 +2614,7 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 				idx_type cell = getCellNumber(i, j);
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
-				ostringstream sstr;
+				lyx::odocstringstream sstr;
 				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				int len = int(sstr.str().length());
 				idx_type const n = cells_in_multicolumn(cell);
@@ -2626,7 +2628,7 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 	idx_type cell = 0;
 	for (row_type i = 0; i < rows_; ++i) {
 		if (!onlydata && asciiTopHLine(os, i, clen))
-			os << string(depth * 2, ' ');
+			os << docstring(depth * 2, ' ');
 		for (col_type j = 0; j < columns_; ++j) {
 			if (isPartOfMultiColumn(i, j))
 				continue;
@@ -2638,9 +2640,9 @@ int LyXTabular::plaintext(Buffer const & buf, ostream & os,
 		}
 		os << endl;
 		if (!onlydata) {
-			os << string(depth * 2, ' ');
+			os << docstring(depth * 2, ' ');
 			if (asciiBottomHLine(os, i, clen))
-				os << string(depth * 2, ' ');
+				os << docstring(depth * 2, ' ');
 		}
 	}
 	return ret;

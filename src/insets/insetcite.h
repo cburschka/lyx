@@ -25,13 +25,13 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::CITE_CODE; }
 	///
-	int plaintext(Buffer const &, std::ostream &, OutputParams const &) const;
+	int plaintext(Buffer const &, lyx::odocstream &, OutputParams const &) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
@@ -39,7 +39,7 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, std::ostream & os,
+	virtual int textString(Buffer const &, lyx::odocstream &,
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -53,7 +53,7 @@ private:
 	}
 
 	/// This function does the donkey work of creating the pretty label
-	std::string const generateLabel(Buffer const &) const;
+	lyx::docstring const generateLabel(Buffer const &) const;
 
 	class Cache {
 	public:
@@ -64,9 +64,9 @@ private:
 		///
 		InsetCommandParams params;
 		///
-		std::string generated_label;
+		lyx::docstring generated_label;
 		///
-		std::string screen_label;
+		lyx::docstring screen_label;
 	};
 	///
 	mutable Cache cache;

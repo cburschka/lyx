@@ -2481,7 +2481,8 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 	if (layout->latextype == LATEX_PARAGRAPH || lyxrc.label_init_length < 0)
 		text.erase();
 
-	string par_text = pars_[pit].asString(cur.buffer(), false);
+	// FIXME UNICODE
+	string par_text = lyx::to_utf8(pars_[pit].asString(cur.buffer(), false));
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;

@@ -79,7 +79,7 @@ int InsetOptArg::docbook(Buffer const &, ostream &,
 }
 
 
-int InsetOptArg::plaintext(Buffer const &, ostream &,
+int InsetOptArg::plaintext(Buffer const &, lyx::odocstream &,
 		       OutputParams const &) const
 {
 	return 0;

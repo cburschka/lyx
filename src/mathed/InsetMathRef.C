@@ -26,6 +26,8 @@
 #include "outputparams.h"
 #include "sgml.h"
 
+using lyx::docstring;
+
 using std::string;
 using std::auto_ptr;
 using std::endl;
@@ -118,16 +120,16 @@ bool RefInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-string const RefInset::screenLabel() const
+docstring const RefInset::screenLabel() const
 {
-	string str;
+	docstring str;
 	for (int i = 0; !types[i].latex_name.empty(); ++i)
 		if (commandname() == types[i].latex_name) {
-			// FIXME UNICODE
-			str = lyx::to_utf8(_(types[i].short_gui_name));
+			str = _(types[i].short_gui_name);
 			break;
 		}
-	str += asString(cell(0));
+	// FIXME UNICODE
+	str += lyx::from_utf8(asString(cell(0)));
 
 	//if (/* !isLatex && */ !cell(0).empty()) {
 	//	str += "||";
@@ -146,9 +148,10 @@ void RefInset::validate(LaTeXFeatures & features) const
 }
 
 
-int RefInset::plaintext(std::ostream & os, OutputParams const &) const
+int RefInset::plaintext(lyx::odocstream & os, OutputParams const &) const
 {
-	os << '[' << asString(cell(0)) << ']';
+	// FIXME UNICODE
+	os << '[' << lyx::from_utf8(asString(cell(0))) << ']';
 	return 0;
 }
 

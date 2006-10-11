@@ -62,7 +62,7 @@ void TextPainter::draw(int x, int y, char c)
 }
 
 
-void TextPainter::show(std::ostream & os, int offset) const
+void TextPainter::show(lyx::odocstream & os, int offset) const
 {
 	os << '\n';
 	for (int j = 0; j <= ymax_; ++j) {

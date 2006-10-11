@@ -133,7 +133,8 @@ TeXEnvironment(Buffer const & buf,
 			os << "{" << pit->params().labelWidthString() << "}\n";
 		} else if (style->labeltype == LABEL_BIBLIO) {
 			// ale970405
-			os << "{" <<  bibitemWidest(buf) << "}\n";
+			// FIXME UNICODE
+			os << '{' << lyx::to_utf8(bibitemWidest(buf)) << "}\n";
 		} else
 			os << style->latexparam() << '\n';
 		texrow.newline();

@@ -50,7 +50,7 @@ public:
 	virtual int latex(Buffer const &, std::ostream &,
 			  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	virtual int docbook(Buffer const &, std::ostream &,
@@ -107,7 +107,7 @@ protected:
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button
-	virtual std::string const getScreenLabel(Buffer const &) const = 0;
+	virtual lyx::docstring const getScreenLabel(Buffer const &) const = 0;
 
 private:
 	///

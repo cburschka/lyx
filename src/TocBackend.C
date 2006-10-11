@@ -33,6 +33,8 @@
 
 #include <iostream>
 
+using lyx::docstring;
+
 using std::vector;
 using std::max;
 using std::ostream;
@@ -46,7 +48,7 @@ namespace lyx {
 // TocBackend::Item implementation
 
 TocBackend::Item::Item(ParConstIterator const & par_it, int d,
-					   std::string const & s)
+		docstring const & s)
 		: par_it_(par_it), depth_(d), str_(s)
 {
 /*
@@ -96,15 +98,15 @@ int const TocBackend::Item::depth() const
 }
 
 
-std::string const & TocBackend::Item::str() const
+docstring const & TocBackend::Item::str() const
 {
 	return str_;
 }
 
 
-string const TocBackend::Item::asString() const
+docstring const TocBackend::Item::asString() const
 {
-	return string(4 * depth_, ' ') + str_;
+	return docstring(4 * depth_, ' ') + str_;
 }
 
 
@@ -163,7 +165,7 @@ void TocBackend::update()
 	for (; pit != end; ++pit) {
 
 		// the string that goes to the toc (could be the optarg)
-		string tocstring;
+		docstring tocstring;
 
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE or WRAP_CODE
@@ -184,8 +186,9 @@ void TocBackend::update()
 					break;
 				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
 				if (!pit->getLabelstring().empty())
-					tocstring = pit->getLabelstring()
-						+ ' ';
+					// FIXME UNICODE
+					tocstring = lyx::from_utf8(
+						pit->getLabelstring() + ' ');
 				tocstring += par.asString(*buffer_, false);
 				break;
 			}
@@ -245,7 +248,7 @@ TocBackend::TocIterator const TocBackend::item(std::string const & type, ParCons
 }
 
 
-void TocBackend::asciiTocList(string const & type, ostream & os) const
+void TocBackend::asciiTocList(string const & type, lyx::odocstream & os) const
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {

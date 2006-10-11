@@ -27,6 +27,8 @@ libsupport_la_SOURCES = \
 	copied_ptr.h \
 	cow_ptr.h \
 	debugstream.h \
+	docstream.C \
+	docstream.h \
 	docstring.C \
 	docstring.h \
 	environment.h \

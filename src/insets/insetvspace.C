@@ -210,7 +210,7 @@ int InsetVSpace::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetVSpace::plaintext(Buffer const &, ostream & os,
+int InsetVSpace::plaintext(Buffer const &, lyx::odocstream & os,
 			   OutputParams const &) const
 {
 	os << "\n\n";

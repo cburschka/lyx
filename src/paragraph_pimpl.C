@@ -446,7 +446,10 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			if (c != '\0')
 				os << c;
 		} else {
-			owner_->getInset(i)->plaintext(buf, os, runparams);
+			lyx::odocstringstream oss;
+			owner_->getInset(i)->plaintext(buf, oss, runparams);
+			// FIXME UNICODE
+			os << lyx::to_utf8(oss.str());
 		}
 		return;
 	}

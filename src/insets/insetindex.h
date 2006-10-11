@@ -24,7 +24,7 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -52,7 +52,7 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
 		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));

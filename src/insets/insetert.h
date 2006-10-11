@@ -52,7 +52,7 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const &, std::ostream &,

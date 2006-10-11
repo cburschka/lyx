@@ -83,7 +83,7 @@ int InsetPagebreak::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetPagebreak::plaintext(Buffer const &, ostream & os,
+int InsetPagebreak::plaintext(Buffer const &, lyx::odocstream & os,
 			  OutputParams const &) const
 {
 	os << '\n';

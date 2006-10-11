@@ -31,7 +31,7 @@ public:
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
-	virtual std::string const getScreenLabel(Buffer const &) const;
+	lyx::docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -43,9 +43,9 @@ public:
 	///
 	int getCounter() const { return counter; }
 	///
-	std::string const getBibLabel() const;
+	lyx::docstring const getBibLabel() const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		      OutputParams const &) const;
 protected:
 	///
@@ -61,6 +61,6 @@ private:
 
 
 /// Return the widest label in the Bibliography.
-std::string const bibitemWidest(Buffer const &);
+lyx::docstring const bibitemWidest(Buffer const &);
 
 #endif // INSET_BIBITEM_H

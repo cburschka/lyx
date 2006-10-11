@@ -1060,7 +1060,7 @@ int InsetTabular::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetTabular::plaintext(Buffer const & buf, ostream & os,
+int InsetTabular::plaintext(Buffer const & buf, lyx::odocstream & os,
 			OutputParams const & runparams) const
 {
 	int const dp = runparams.linelen ? runparams.depth : 0;
@@ -1788,10 +1788,10 @@ bool InsetTabular::copySelection(LCursor & cur)
 	paste_tabular->setRightLine(paste_tabular->getLastCellInRow(0),
 				    true, true);
 
-	ostringstream os;
+	lyx::odocstringstream os;
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
-	theClipboard().put(lyx::from_utf8(os.str()));
+	theClipboard().put(os.str());
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.

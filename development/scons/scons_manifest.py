@@ -96,6 +96,7 @@ src_support_header_files = Split('''
     copied_ptr.h
     cow_ptr.h
     debugstream.h
+    docstream.h
     docstring.h
     environment.h
     filefilterlist.h
@@ -134,6 +135,7 @@ src_support_files = Split('''
     chdir.C
     convert.C
     copy.C
+    docstream.C
     docstring.C
     environment.C
     filefilterlist.C

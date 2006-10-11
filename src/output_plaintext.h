@@ -12,8 +12,7 @@
 #ifndef OUTPUT_PLAINTEXT_H
 #define OUTPUT_PLAINTEXT_H
 
-#include <iosfwd>
-#include <string>
+#include "support/docstream.h"
 
 class Buffer;
 class OutputParams;
@@ -25,12 +24,12 @@ void writeFileAscii(Buffer const & buf, std::string const &,
 	OutputParams const &);
 
 ///
-void writeFileAscii(Buffer const & buf, std::ostream &, OutputParams const &);
+void writeFileAscii(Buffer const & buf, lyx::odocstream &, OutputParams const &);
 
 ///
 void asciiParagraph(Buffer const & buf,
 		    Paragraph const & paragraphs,
-		    std::ostream & ofs,
+		    lyx::odocstream & ofs,
 		    OutputParams const &,
 		    bool & ref_printed);
 

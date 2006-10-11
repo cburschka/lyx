@@ -236,7 +236,7 @@ int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetBranch::plaintext(Buffer const & buf, std::ostream & os,
+int InsetBranch::plaintext(Buffer const & buf, lyx::odocstream & os,
 			   OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?

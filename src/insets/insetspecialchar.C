@@ -188,7 +188,7 @@ int InsetSpecialChar::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetSpecialChar::plaintext(Buffer const &, ostream & os,
+int InsetSpecialChar::plaintext(Buffer const &, lyx::odocstream & os,
 			    OutputParams const &) const
 {
 	switch (kind_) {
@@ -230,7 +230,7 @@ int InsetSpecialChar::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetSpecialChar::textString(Buffer const & buf, ostream & os,
+int InsetSpecialChar::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

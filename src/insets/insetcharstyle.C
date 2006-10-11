@@ -306,14 +306,14 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCharStyle::plaintext(Buffer const & buf, ostream & os,
+int InsetCharStyle::plaintext(Buffer const & buf, lyx::odocstream & os,
 			      OutputParams const & runparams) const
 {
 	return InsetText::plaintext(buf, os, runparams);
 }
 
 
-int InsetCharStyle::textString(Buffer const & buf, ostream & os,
+int InsetCharStyle::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

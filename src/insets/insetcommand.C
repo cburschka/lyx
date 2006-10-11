@@ -78,7 +78,7 @@ int InsetCommand::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetCommand::plaintext(Buffer const &, ostream &,
+int InsetCommand::plaintext(Buffer const &, lyx::odocstream &,
 			OutputParams const &) const
 {
 	return 0;

@@ -54,6 +54,7 @@
 #include <stack>
 #include <sstream>
 
+using lyx::docstring;
 using lyx::pos_type;
 using lyx::char_type;
 
@@ -1338,14 +1339,14 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string const Paragraph::asString(Buffer const & buffer, bool label) const
+docstring const Paragraph::asString(Buffer const & buffer, bool label) const
 {
 	OutputParams runparams;
 	return asString(buffer, runparams, label);
 }
 
 
-string const Paragraph::asString(Buffer const & buffer,
+docstring const Paragraph::asString(Buffer const & buffer,
 				 OutputParams const & runparams,
 				 bool label) const
 {
@@ -1369,13 +1370,13 @@ string const Paragraph::asString(Buffer const & buffer,
 	return s;
 #else
 	// This should really be done by the caller and not here.
-	string ret = asString(buffer, runparams, 0, size(), label);
+	docstring ret = asString(buffer, runparams, 0, size(), label);
 	return subst(ret, '\n', ' ');
 #endif
 }
 
 
-string const Paragraph::asString(Buffer const & buffer,
+docstring const Paragraph::asString(Buffer const & buffer,
 				 pos_type beg, pos_type end, bool label) const
 {
 
@@ -1384,19 +1385,21 @@ string const Paragraph::asString(Buffer const & buffer,
 }
 
 
-string const Paragraph::asString(Buffer const & buffer,
+docstring const Paragraph::asString(Buffer const & buffer,
 				 OutputParams const & runparams,
 				 pos_type beg, pos_type end, bool label) const
 {
-	ostringstream os;
+	lyx::odocstringstream os;
 
 	if (beg == 0 && label && !params().labelString().empty())
-		os << params().labelString() << ' ';
+		// FIXME UNICODE
+		os << lyx::from_utf8(params().labelString()) << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
 		value_type const c = getUChar(buffer.params(), i);
+		// FIXME: isPrintable does not work for lyx::char_type
 		if (isPrintable(c))
-			os << c;
+			os.put(c);
 		else if (c == META_INSET)
 			getInset(i)->textString(buffer, os, runparams);
 	}

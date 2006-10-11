@@ -804,7 +804,7 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetGraphics::plaintext(Buffer const &, ostream & os,
+int InsetGraphics::plaintext(Buffer const &, lyx::odocstream & os,
 			 OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
@@ -813,8 +813,10 @@ int InsetGraphics::plaintext(Buffer const &, ostream & os,
 	// 2. Read ascii output file and add it to the output stream.
 	// at least we send the filename
 	// FIXME UNICODE
-	os << '<' << lyx::to_utf8(bformat(_("Graphics file: %1$s"),
-			     lyx::from_utf8(params().filename.absFilename()))) << ">\n";
+	// FIXME: We have no idea what the encoding of the filename is
+	os << '<' << bformat(_("Graphics file: %1$s"),
+			     lyx::from_utf8(params().filename.absFilename()))
+	   << ">\n";
 	return 0;
 }
 

@@ -18,8 +18,7 @@
 
 #include "support/filetools.h"
 
-#include <fstream>
-
+using lyx::odocfstream;
 using lyx::support::bformat;
 using lyx::support::makeDisplayPath;
 
@@ -28,7 +27,10 @@ using lyx::docstring;
 using std::ofstream;
 using std::string;
 
-bool openFileWrite(ofstream & ofs, string const & fname)
+namespace {
+
+template<typename OFStream>
+bool doOpenFileWrite(OFStream & ofs, string const & fname)
 {
 	ofs.open(fname.c_str());
 	if (!ofs) {
@@ -39,4 +41,18 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 		return false;
 	}
 	return true;
+}
+
+}
+
+
+bool openFileWrite(ofstream & ofs, string const & fname)
+{
+	return doOpenFileWrite(ofs, fname);
+}
+
+
+bool openFileWrite(odocfstream & ofs, string const & fname)
+{
+	return doOpenFileWrite(ofs, fname);
 }

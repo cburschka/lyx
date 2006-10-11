@@ -1129,10 +1129,10 @@ docstring LCursor::selectionAsString(bool label) const
 		size_t const endpos = selEnd().pos();
 
 		if (startpit == endpit)
-			return lyx::from_utf8(pars[startpit].asString(buffer, startpos, endpos, label));
+			return pars[startpit].asString(buffer, startpos, endpos, label);
 
 		// First paragraph in selection
-		string result = pars[startpit].
+		docstring result = pars[startpit].
 			asString(buffer, startpos, pars[startpit].size(), label) + "\n\n";
 
 		// The paragraphs in between (if any)
@@ -1144,7 +1144,7 @@ docstring LCursor::selectionAsString(bool label) const
 		// Last paragraph in selection
 		result += pars[endpit].asString(buffer, 0, endpos, label);
 
-		return lyx::from_utf8(result);
+		return result;
 	}
 
 	if (inMathed())

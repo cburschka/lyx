@@ -1281,7 +1281,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				makeAbsPath(argument, owner->buffer()->filePath());
 			// FIXME Should use bformat
 			setMessage(_("Opening child document ") +
-					 makeDisplayPath(filename) + lyx::from_ascii("..."));
+					 makeDisplayPath(filename) + "...");
 			view()->savePosition(0);
 			string const parentfilename = owner->buffer()->fileName();
 			if (theBufferList().exists(filename))

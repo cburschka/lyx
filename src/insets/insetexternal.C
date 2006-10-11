@@ -49,6 +49,7 @@ namespace support = lyx::support;
 namespace external = lyx::external;
 namespace graphics = lyx::graphics;
 
+using lyx::docstring;
 using std::endl;
 using std::string;
 using std::auto_ptr;
@@ -569,16 +570,18 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 }
 
 
-string const getScreenLabel(InsetExternalParams const & params,
+docstring const getScreenLabel(InsetExternalParams const & params,
 			    Buffer const & buffer)
 {
 	external::Template const * const ptr =
 		external::getTemplatePtr(params);
 	if (!ptr)
 		// FIXME UNICODE
-		return lyx::to_utf8(support::bformat(_("External template %1$s is not installed"),
-					lyx::from_utf8(params.templatename())));
-	return external::doSubstitution(params, buffer, ptr->guiName, false);
+		return support::bformat((_("External template %1$s is not installed")),
+					lyx::from_utf8(params.templatename()));
+	// FIXME UNICODE
+	return lyx::from_utf8(external::doSubstitution(params, buffer,
+				ptr->guiName, false));
 }
 
 void add_preview_and_start_loading(RenderMonitoredPreview &,
@@ -715,12 +718,16 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetExternal::plaintext(Buffer const & buf, ostream & os,
+int InsetExternal::plaintext(Buffer const & buf, lyx::odocstream & os,
 			 OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "Ascii", buf, os,
+	std::ostringstream oss;
+	int const retval = external::writeExternal(params_, "Ascii", buf, oss,
 				       *(runparams.exportdata), false,
 				       runparams.inComment);
+	// FIXME UNICODE
+	os << lyx::from_utf8(oss.str());
+	return retval;
 }
 
 

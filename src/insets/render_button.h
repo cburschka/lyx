@@ -14,7 +14,7 @@
 
 #include "render_base.h"
 #include "box.h"
-#include <string>
+#include "support/docstring.h"
 
 
 class RenderButton : public RenderBase
@@ -30,7 +30,7 @@ public:
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
 	/// Provide the text for the button
-	void update(std::string const &, bool editable);
+	void update(lyx::docstring const &, bool editable);
 
 	/// The "sensitive area" box, i.e., the button area
 	Box box() const { return button_box_; }
@@ -42,7 +42,7 @@ public:
 
 private:
 	/// The stored data.
-	std::string text_;
+	lyx::docstring text_;
 	bool editable_;
 	Box button_box_;
 };

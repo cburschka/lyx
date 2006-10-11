@@ -301,7 +301,7 @@ int InsetQuotes::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetQuotes::plaintext(Buffer const &, ostream & os,
+int InsetQuotes::plaintext(Buffer const &, lyx::odocstream & os,
 		       OutputParams const &) const
 {
 	os << '"';
@@ -327,7 +327,7 @@ int InsetQuotes::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetQuotes::textString(Buffer const & buf, ostream & os,
+int InsetQuotes::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

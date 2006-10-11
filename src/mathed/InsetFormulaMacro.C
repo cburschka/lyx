@@ -85,7 +85,7 @@ int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetFormulaMacro::plaintext(Buffer const &, ostream & os,
+int InsetFormulaMacro::plaintext(Buffer const &, lyx::odocstream & os,
 			     OutputParams const &) const
 {
 	WriteStream wi(os, false, true);

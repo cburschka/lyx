@@ -347,7 +347,7 @@ void LyXView::updateWindowTitle()
 	if (view()->buffer()) {
 		string const cur_title = buffer()->fileName();
 		if (!cur_title.empty()) {
-			maximize_title += lyx::from_ascii(": ") + makeDisplayPath(cur_title, 30);
+			maximize_title += ": " + makeDisplayPath(cur_title, 30);
 			minimize_title = lyx::from_utf8(onlyFilename(cur_title));
 			if (!buffer()->isClean()) {
 				maximize_title += _(" (changed)");

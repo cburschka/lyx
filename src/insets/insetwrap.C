@@ -233,10 +233,10 @@ void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 	for (; pit != end; ++pit) {
 		if (pit->layout()->labeltype == LABEL_SENSITIVE) {
 			string const type = params_.type;
-			string const str =
-				convert<string>(toclist[type].size() + 1)
+			docstring const str =
+				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			lyx::toc::TocItem const item(pit, 0 , str);
+			lyx::toc::TocItem const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}

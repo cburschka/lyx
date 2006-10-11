@@ -1425,7 +1425,7 @@ void InsetMathHull::read(Buffer const &, LyXLex & lex)
 }
 
 
-int InsetMathHull::plaintext(Buffer const &, ostream & os,
+int InsetMathHull::plaintext(Buffer const &, lyx::odocstream & os,
 			OutputParams const &) const
 {
 	if (0 && display()) {
@@ -1439,8 +1439,11 @@ int InsetMathHull::plaintext(Buffer const &, ostream & os,
 		//metrics();
 		return tpain.textheight();
 	} else {
-		WriteStream wi(os, false, true);
+		std::ostringstream oss;
+		WriteStream wi(oss, false, true);
 		wi << cell(0);
+		// FIXME UNICODE
+		os << lyx::from_utf8(oss.str());
 		return wi.line();
 	}
 }
@@ -1498,7 +1501,7 @@ int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int InsetMathHull::textString(Buffer const & buf, ostream & os,
+int InsetMathHull::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

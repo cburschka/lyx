@@ -23,15 +23,13 @@
 #include "ParagraphParameters.h"
 
 #include "support/lstrings.h"
-#include "support/unicode.h"
-
-#include <fstream>
 
 using lyx::support::ascii_lowercase;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::compare_no_case;
 using lyx::support::contains;
 
+using lyx::docstring;
 using lyx::pos_type;
 using std::endl;
 using std::ostream;
@@ -44,14 +42,14 @@ void writeFileAscii(Buffer const & buf,
 		    string const & fname,
 		    OutputParams const & runparams)
 {
-	ofstream ofs;
+	lyx::odocfstream ofs;
 	if (!::openFileWrite(ofs, fname))
 		return;
 	writeFileAscii(buf, ofs, runparams);
 }
 
 
-void writeFileAscii(Buffer const & buf, ostream & os,
+void writeFileAscii(Buffer const & buf, lyx::odocstream & os,
 	OutputParams const & runparams)
 {
 	bool ref_printed = false;
@@ -68,12 +66,12 @@ void writeFileAscii(Buffer const & buf, ostream & os,
 
 namespace {
 
-pair<int, string> const addDepth(int depth, int ldepth)
+pair<int, docstring> const addDepth(int depth, int ldepth)
 {
 	int d = depth * 2;
 	if (ldepth > depth)
 		d += (ldepth - depth) * 2;
-	return make_pair(d, string(d, ' '));
+	return make_pair(d, docstring(d, ' '));
 }
 
 }
@@ -81,7 +79,7 @@ pair<int, string> const addDepth(int depth, int ldepth)
 
 void asciiParagraph(Buffer const & buf,
 		    Paragraph const & par,
-		    ostream & os,
+		    lyx::odocstream & os,
 		    OutputParams const & runparams,
 		    bool & ref_printed)
 {
@@ -136,7 +134,7 @@ void asciiParagraph(Buffer const & buf,
 	if (runparams.linelen > 0)
 		os << "\n\n";
 
-	os << string(depth * 2, ' ');
+	os << docstring(depth * 2, ' ');
 	currlinelen += depth * 2;
 
 	//--
@@ -152,10 +150,10 @@ void asciiParagraph(Buffer const & buf,
 
 	case 6: // Abstract
 		if (runparams.linelen > 0) {
-			os << lyx::to_utf8(_("Abstract")) << "\n\n";
+			os << _("Abstract") << "\n\n";
 			currlinelen = 0;
 		} else {
-			string const abst = lyx::to_utf8(_("Abstract: "));
+			docstring const abst = _("Abstract: ");
 			os << abst;
 			currlinelen += abst.length();
 		}
@@ -164,10 +162,10 @@ void asciiParagraph(Buffer const & buf,
 	case 7: // Bibliography
 		if (!ref_printed) {
 			if (runparams.linelen > 0) {
-				os << lyx::to_utf8(_("References")) << "\n\n";
+				os << _("References") << "\n\n";
 				currlinelen = 0;
 			} else {
-				string const refs = lyx::to_utf8(_("References: "));
+				docstring const refs = _("References: ");
 				os << refs;
 				currlinelen += refs.length();
 			}
@@ -176,7 +174,9 @@ void asciiParagraph(Buffer const & buf,
 		break;
 
 	default: {
-		string const label = par.params().labelString();
+		// FIXME UNICODE
+		docstring const label =
+			lyx::from_utf8(par.params().labelString());
 		os << label << ' ';
 		currlinelen += label.length() + 1;
 		break;
@@ -185,7 +185,7 @@ void asciiParagraph(Buffer const & buf,
 	}
 
 	if (!currlinelen) {
-		pair<int, string> p = addDepth(depth, ltype_depth);
+		pair<int, docstring> p = addDepth(depth, ltype_depth);
 		os << p.second;
 		currlinelen += p.first;
 	}
@@ -194,7 +194,7 @@ void asciiParagraph(Buffer const & buf,
 	// intelligent hopefully! (only in the case where we have a
 	// max runparams.linelength!) (Jug)
 
-	string word;
+	docstring word;
 
 	for (pos_type i = 0; i < par.size(); ++i) {
 		lyx::char_type c = par.getUChar(buf.params(), i);
@@ -218,8 +218,8 @@ void asciiParagraph(Buffer const & buf,
 		case ' ':
 			if (runparams.linelen > 0 &&
 			    currlinelen + word.length() > runparams.linelen - 10) {
-				os << "\n";
-				pair<int, string> p = addDepth(depth, ltype_depth);
+				os << '\n';
+				pair<int, docstring> p = addDepth(depth, ltype_depth);
 				os << p.second;
 				currlinelen = p.first;
 			}
@@ -233,19 +233,17 @@ void asciiParagraph(Buffer const & buf,
 				"writeAsciiFile: NULL char in structure." << endl;
 			break;
 
-		default: {
-			std::vector<char> const tmp = ucs4_to_utf8(c);
-			word.append(tmp.begin(), tmp.end());
+		default:
+			word += c;
 			if (runparams.linelen > 0 &&
 			    currlinelen + word.length() > runparams.linelen)
 			{
-				os << "\n";
-				pair<int, string> p = addDepth(depth, ltype_depth);
+				os << '\n';
+				pair<int, docstring> p = addDepth(depth, ltype_depth);
 				os << p.second;
 				currlinelen = p.first;
 			}
 			break;
-		}
 		}
 	}
 	os << word;

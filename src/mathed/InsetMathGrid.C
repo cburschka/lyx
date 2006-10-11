@@ -1210,7 +1210,9 @@ void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
 		int n = 0;
 		is >> n;
 		InsetMathGrid grid(1, 1);
-		mathed_parse_normal(grid, lyx::cap::getSelection(cur.buffer(), n));
+		// FIXME UNICODE
+		mathed_parse_normal(grid,
+			lyx::to_utf8(lyx::cap::getSelection(cur.buffer(), n)));
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
 			recordUndo(cur);

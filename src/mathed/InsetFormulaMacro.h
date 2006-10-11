@@ -41,7 +41,7 @@ public:
 	///
 	void write(Buffer const &, std::ostream & os) const;
 	///
-	int plaintext(Buffer const &, std::ostream &,
+	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int latex(Buffer const &, std::ostream & os,

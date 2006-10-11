@@ -36,6 +36,7 @@
 #include <fstream>
 #include <sstream>
 
+using lyx::docstring;
 using lyx::support::absolutePath;
 using lyx::support::ascii_lowercase;
 using lyx::support::changeExtension;
@@ -102,10 +103,9 @@ void InsetBibtex::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-string const InsetBibtex::getScreenLabel(Buffer const &) const
+docstring const InsetBibtex::getScreenLabel(Buffer const &) const
 {
-	// FIXME UNICODE
-	return lyx::to_utf8(_("BibTeX Generated Bibliography"));
+	return _("BibTeX Generated Bibliography");
 }
 
 

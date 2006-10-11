@@ -30,6 +30,7 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/exception.hpp>
 
+using lyx::docstring;
 using lyx::support::ascii_lowercase;
 using lyx::support::contains;
 using lyx::support::getStringFromVector;
@@ -305,7 +306,7 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 {}
 
 
-string const InsetCitation::generateLabel(Buffer const & buffer) const
+docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 {
 	string const before = getSecOptions();
 	string const after  = getOptions();
@@ -322,11 +323,12 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 		label = getBasicLabel(getContents(), after);
 	}
 
-	return label;
+	// FIXME UNICODE
+	return lyx::from_utf8(label);
 }
 
 
-string const InsetCitation::getScreenLabel(Buffer const & buffer) const
+docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 {
 	biblio::CiteEngine const engine = biblio::getEngine(buffer);
 	if (cache.params == params() && cache.engine == engine)
@@ -336,11 +338,11 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 	string const before = getSecOptions();
 	string const after  = getOptions();
 
-	string const glabel = generateLabel(buffer);
+	docstring const glabel = generateLabel(buffer);
 
 	unsigned int const maxLabelChars = 45;
 
-	string label = glabel;
+	docstring label = glabel;
 	if (label.size() > maxLabelChars) {
 		label.erase(maxLabelChars-3);
 		label += "...";
@@ -355,7 +357,8 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 }
 
 
-int InsetCitation::plaintext(Buffer const & buffer, ostream & os, OutputParams const &) const
+int InsetCitation::plaintext(Buffer const & buffer, lyx::odocstream & os,
+                             OutputParams const &) const
 {
 	if (cache.params == params() &&
 	    cache.engine == biblio::getEngine(buffer))
@@ -395,7 +398,7 @@ int InsetCitation::docbook(Buffer const &, ostream & os, OutputParams const &) c
 }
 
 
-int InsetCitation::textString(Buffer const & buf, ostream & os,
+int InsetCitation::textString(Buffer const & buf, lyx::odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

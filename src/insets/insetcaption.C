@@ -191,7 +191,7 @@ int InsetCaption::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCaption::plaintext(Buffer const & /*buf*/,ostream & /*os*/,
+int InsetCaption::plaintext(Buffer const & /*buf*/, lyx::odocstream & /*os*/,
 			OutputParams const & /*runparams*/) const
 {
 	// FIXME: Implement me!

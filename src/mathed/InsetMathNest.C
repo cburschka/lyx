@@ -59,6 +59,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::cap::copySelection;
 using lyx::cap::grabAndEraseSelection;
 using lyx::cap::cutSelection;
@@ -424,8 +425,9 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		size_t n = 0;
 		istringstream is(lyx::to_utf8(cmd.argument()));
 		is >> n;
-		string const selection = lyx::cap::getSelection(cur.buffer(), n);
-		cur.niceInsert(selection);
+		docstring const selection = lyx::cap::getSelection(cur.buffer(), n);
+		// FIXME UNICODE
+		cur.niceInsert(lyx::to_utf8(selection));
 		cur.clearSelection(); // bug 393
 		cur.bv().switchKeyMap();
 		finishUndo();

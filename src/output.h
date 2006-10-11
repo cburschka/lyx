@@ -12,9 +12,9 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-#include <iosfwd>
-#include <string>
+#include "support/docstream.h"
 
 bool openFileWrite(std::ofstream & ofs, std::string const & fname);
+bool openFileWrite(lyx::odocfstream & ofs, std::string const & fname);
 
 #endif

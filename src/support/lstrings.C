@@ -93,18 +93,19 @@ int compare_no_case(docstring const & s, docstring const & s2)
 
 
 namespace {
-	int ascii_tolower(int c) {
-		if (c >= 'A' && c <= 'Z')
-			return c - 'A' + 'a';
-		return c;
-	}
+
+int ascii_tolower(int c) {
+	if (c >= 'A' && c <= 'Z')
+		return c - 'A' + 'a';
+	return c;
 }
 
 
-int compare_ascii_no_case(string const & s, string const & s2)
+template<typename String> inline
+int do_compare_ascii_no_case(String const & s, String const & s2)
 {
-	string::const_iterator p = s.begin();
-	string::const_iterator p2 = s2.begin();
+	typename String::const_iterator p = s.begin();
+	typename String::const_iterator p2 = s2.begin();
 
 	while (p != s.end() && p2 != s2.end()) {
 		int const lc1 = ascii_tolower(*p);
@@ -120,6 +121,20 @@ int compare_ascii_no_case(string const & s, string const & s2)
 	if (s.size() < s2.size())
 		return -1;
 	return 1;
+}
+
+}
+
+
+int compare_ascii_no_case(string const & s, string const & s2)
+{
+	return do_compare_ascii_no_case(s, s2);
+}
+
+
+int compare_ascii_no_case(docstring const & s, docstring const & s2)
+{
+	return do_compare_ascii_no_case(s, s2);
 }
 
 
@@ -411,6 +426,7 @@ int tokenPos(string const & a, char delim, string const & tok)
 
 namespace {
 
+/// Substitute all \a oldchar with \a newchar
 template<typename Ch> inline
 std::basic_string<Ch> const subst_char(std::basic_string<Ch> const & a,
 		Ch oldchar, Ch newchar)
@@ -426,6 +442,7 @@ std::basic_string<Ch> const subst_char(std::basic_string<Ch> const & a,
 }
 
 
+/// substitutes all instances of \a oldstr with \a newstr
 template<typename String> inline
 String const subst_string(String const & a,
 		String const & oldstr, String const & newstr)
@@ -542,6 +559,8 @@ string const ltrim(string const & a, char const * p)
 }
 
 
+namespace {
+
 template<typename String, typename Char> inline
 String const doSplit(String const & a, String & piece, Char delim)
 {
@@ -559,6 +578,8 @@ String const doSplit(String const & a, String & piece, Char delim)
 		piece = a;
 	}
 	return tmp;
+}
+
 }
 
 

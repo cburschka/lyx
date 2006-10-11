@@ -63,7 +63,7 @@ int InsetLine::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLine::plaintext(Buffer const &, ostream & os,
+int InsetLine::plaintext(Buffer const &, lyx::odocstream & os,
 		     OutputParams const &) const
 {
 	os << "-------------------------------------------";
