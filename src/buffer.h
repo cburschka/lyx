@@ -139,10 +139,6 @@ public:
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(std::string const &) const;
 
-	///
-	void writeFileAscii(std::string const &, OutputParams const &);
-	///
-	void writeFileAscii(std::ostream &, OutputParams const &);
 	/// Just a wrapper for the method below, first creating the ofstream.
 	void makeLaTeXFile(std::string const & filename,
 			   std::string const & original_path,
