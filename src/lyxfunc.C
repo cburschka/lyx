@@ -215,6 +215,11 @@ LyXFunc::LyXFunc(LyXView * lv)
 }
 
 
+void LyXFunc::setLyXView(LyXView * lv)
+{
+	owner = lv;
+}
+
 void LyXFunc::handleKeyFunc(kb_action action)
 {
 	char c = encoded_last_key;

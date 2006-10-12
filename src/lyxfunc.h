@@ -46,6 +46,9 @@ public:
 	/// LyX dispatcher, executes lyx actions.
 	void dispatch(FuncRequest const &);
 
+	///
+	void setLyXView(LyXView * lv);
+
 	/// return the status bar state string
 	std::string const viewStatusMessage();
 

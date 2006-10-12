@@ -367,6 +367,7 @@ void LyXView::updateWindowTitle()
 
 void LyXView::dispatch(FuncRequest const & cmd)
 {
+	theLyXFunc().setLyXView(this);
 	lyx::dispatch(cmd);
 }
 
