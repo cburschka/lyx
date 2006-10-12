@@ -239,9 +239,11 @@ supported_versions = ["1.5.0","1.5"]
 convert = [[246, []],
            [247, [convert_font_settings]],
            [248, []],
-           [249, [convert_utf8]]]
+           [249, [convert_utf8]],
+           [250, []]
 
-revert =  [[248, [revert_utf8]],
+revert =  [[249, []],
+           [248, [revert_utf8]],
            [247, [revert_booktabs]],
            [246, [revert_font_settings]],
            [245, [revert_framed]]]

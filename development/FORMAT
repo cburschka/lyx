@@ -1,5 +1,13 @@
 LyX file-format changes
------------------------
+-----------------------§
+2006-10-12  Martin Vermeer <martin.vermeer@hut.fi>
+
+	* Format incremented to 250: allow optional arg to environments
+
+	No material format change. Now optargs for environments are allowed
+	to be specified in layout files and will be handled properly. When 
+	converted back to older formats, they will be ignored in LaTeX 
+	output.
 
 2006-08-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 

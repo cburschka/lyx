@@ -81,6 +81,10 @@ TeXDeeper(Buffer const & buf,
 }
 
 
+int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
+		      ostream & os, OutputParams const & runparams, int number);
+
+
 ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
@@ -129,6 +133,14 @@ TeXEnvironment(Buffer const & buf,
 
 	if (style->isEnvironment()) {
 		os << "\\begin{" << style->latexname() << '}';
+		if (style->optionalargs > 0) {
+			int ret = latexOptArgInsets(buf, *pit, os, runparams,
+						    style->optionalargs);
+			while (ret > 0) {
+				texrow.newline();
+				--ret;
+			}
+		}
 		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
 			os << "{" << pit->params().labelWidthString() << "}\n";
 		} else if (style->labeltype == LABEL_BIBLIO) {
