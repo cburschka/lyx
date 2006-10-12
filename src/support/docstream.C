@@ -231,3 +231,27 @@ odocfstream::odocfstream(const char* s, std::ios_base::openmode mode)
 }
 
 }
+
+#if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)
+// We get undefined references to these virtual methods. This looks like
+// a bug in gcc. The implementation here does not do anything useful, since
+// it is overriden in utf8_codecvt_facet.
+namespace std {
+template<> codecvt<lyx::char_type, char, mbstate_t>::result
+codecvt<lyx::char_type, char, mbstate_t>::do_out(mbstate_t &, const lyx::char_type *, const lyx::char_type *, const lyx::char_type *&,
+		char *, char *, char *&) const { return error; }
+template<> codecvt<lyx::char_type, char, mbstate_t>::result
+codecvt<lyx::char_type, char, mbstate_t>::do_unshift(mbstate_t &, char *, char *, char *&) const { return error; }
+template<> codecvt<lyx::char_type, char, mbstate_t>::result
+codecvt<lyx::char_type, char, mbstate_t>::do_in(mbstate_t &, const char *, const char *, const char *&,
+		lyx::char_type *, lyx::char_type *, lyx::char_type *&) const { return error; }
+template<> int codecvt<lyx::char_type, char, mbstate_t>::do_encoding() const throw() { return 0; }
+template<> bool codecvt<lyx::char_type, char, mbstate_t>::do_always_noconv() const throw() { return true; }
+#if __GNUC__ == 3 && __GNUC_MINOR__ < 4
+template<> int codecvt<lyx::char_type, char, mbstate_t>::do_length(mbstate_t const &, const char *, const char *, size_t) const { return 1; }
+#else
+template<> int codecvt<lyx::char_type, char, mbstate_t>::do_length(mbstate_t &, const char *, const char *, size_t) const { return 1; }
+#endif
+template<> int codecvt<lyx::char_type, char, mbstate_t>::do_max_length() const throw() { return 4; }
+}
+#endif
