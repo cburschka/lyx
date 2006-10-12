@@ -574,7 +574,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 
 void InsetInclude::getLabelList(Buffer const & buffer,
-				std::vector<string> & list) const
+				std::vector<docstring> & list) const
 {
 	if (loadIfNeeded(buffer, params_)) {
 		string const included_file = includedFilename(buffer, params_);

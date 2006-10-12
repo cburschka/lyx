@@ -463,11 +463,12 @@ bool InsetMathHull::display() const
 }
 
 
-void InsetMathHull::getLabelList(Buffer const &, vector<string> & labels) const
+void InsetMathHull::getLabelList(Buffer const &, vector<docstring> & labels) const
 {
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
-			labels.push_back(label_[row]);
+			// FIXME UNICODE
+			labels.push_back(lyx::from_utf8(label_[row]));
 }
 
 

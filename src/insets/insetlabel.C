@@ -45,9 +45,10 @@ std::auto_ptr<InsetBase> InsetLabel::doClone() const
 }
 
 
-void InsetLabel::getLabelList(Buffer const &, std::vector<string> & list) const
+void InsetLabel::getLabelList(Buffer const &, std::vector<docstring> & list) const
 {
-	list.push_back(getContents());
+	// FIXME UNICODE
+	list.push_back(lyx::from_utf8(getContents()));
 }
 
 

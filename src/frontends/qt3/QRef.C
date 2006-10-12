@@ -29,6 +29,8 @@
 #include <qtooltip.h>
 
 
+using lyx::docstring;
+
 using std::vector;
 using std::string;
 
@@ -180,7 +182,7 @@ void QRef::redoRefs()
 	// the first item inserted
 	QString const tmp(dialog_->referenceED->text());
 
-	for (std::vector<string>::const_iterator iter = refs_.begin();
+	for (std::vector<docstring>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {
 		dialog_->refsLB->insertItem(toqstr(*iter));
 	}

@@ -178,7 +178,7 @@ public:
 	virtual void validate(LaTeXFeatures &) const {}
 	/// Appends \c list with all labels found within this inset.
 	virtual void getLabelList(Buffer const &,
-				  std::vector<std::string> & /* list */) const {}
+				  std::vector<lyx::docstring> & /* list */) const {}
 
 	/// describe content if cursor inside
 	virtual void infoize(std::ostream &) const {}

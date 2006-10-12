@@ -254,7 +254,7 @@ public:
 	/// of loaded child documents).
 	std::vector<std::string> const & getBibfilesCache() const;
 	///
-	void getLabelList(std::vector<std::string> &) const;
+	void getLabelList(std::vector<lyx::docstring> &) const;
 
 	///
 	void changeLanguage(Language const * from, Language const * to);

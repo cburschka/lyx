@@ -19,6 +19,8 @@
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
+using lyx::docstring;
+
 using std::vector;
 using std::string;
 
@@ -34,10 +36,10 @@ ControlRef::ControlRef(Dialog & d)
 {}
 
 
-vector<string> const ControlRef::getLabelList(string const & name) const
+vector<docstring> const ControlRef::getLabelList(string const & name) const
 {
 	Buffer const & buf = *theBufferList().getBuffer(makeAbsPath(name));
-	vector<string> list;
+	vector<docstring> list;
 	buf.getLabelList(list);
 	return list;
 }

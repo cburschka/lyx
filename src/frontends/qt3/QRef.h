@@ -71,7 +71,7 @@ private:
 	int restored_buffer_;
 
 	/// the references
-	std::vector<std::string> refs_;
+	std::vector<lyx::docstring> refs_;
 };
 
 } // namespace frontend

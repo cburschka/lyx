@@ -47,7 +47,7 @@ public:
 	 *  \param list the list of labels in the child buffer.
 	 */
 	void getLabelList(Buffer const & buffer,
-			  std::vector<std::string> & list) const;
+			  std::vector<lyx::docstring> & list) const;
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.

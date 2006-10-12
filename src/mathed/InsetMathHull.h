@@ -53,7 +53,7 @@ public:
 	bool ams() const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
-			  std::vector<std::string> & list) const;
+			  std::vector<lyx::docstring> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset

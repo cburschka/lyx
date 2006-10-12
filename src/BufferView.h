@@ -137,7 +137,7 @@ public:
 	LyXText const * getLyXText() const;
 
 	/// move cursor to the named label
-	void gotoLabel(std::string const & label);
+	void gotoLabel(lyx::docstring const & label);
 
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);

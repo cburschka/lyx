@@ -1150,7 +1150,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 }
 
 
-void Buffer::getLabelList(vector<string> & list) const
+void Buffer::getLabelList(vector<docstring> & list) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
@@ -1563,7 +1563,7 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBas
 	//FIXME: This does not work for child documents yet.
 	BOOST_ASSERT(code == InsetBase::CITE_CODE || code == InsetBase::REF_CODE);
 	// Check if the label 'from' appears more than once
-	vector<string> labels;
+	vector<docstring> labels;
 
 	if (code == InsetBase::CITE_CODE) {
 		vector<pair<string, string> > keys;
@@ -1572,11 +1572,13 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBas
 		vector<pair<string, string> >::const_iterator bend = keys.end();
 
 		for (; bit != bend; ++bit)
-			labels.push_back(bit->first);
+			// FIXME UNICODE
+			labels.push_back(lyx::from_utf8(bit->first));
 	} else
 		getLabelList(labels);
 
-	if (lyx::count(labels.begin(), labels.end(), from) > 1)
+	// FIXME UNICODE
+	if (lyx::count(labels.begin(), labels.end(), lyx::from_utf8(from)) > 1)
 		return;
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {

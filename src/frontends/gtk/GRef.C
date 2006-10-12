@@ -28,6 +28,8 @@
 
 #include <libglademm.h>
 
+using lyx::docstring;
+
 using std::string;
 using std::vector;
 
@@ -213,15 +215,15 @@ void GRef::update_labels()
 		buffernum=0;
 
 	string const name = controller().getBufferName(buffernum);
-	vector<string> keys = controller().getLabelList(name);
+	vector<docstring> keys = controller().getLabelList(name);
 	refListStore_ = Gtk::ListStore::create(refColumns);
 
 	if (!keys.empty()) {
-		vector<string>::const_iterator it = keys.begin();
-		vector<string>::const_iterator end = keys.end();
+		vector<docstring>::const_iterator it = keys.begin();
+		vector<docstring>::const_iterator end = keys.end();
 		for (;it != keys.end(); ++it) {
 			Gtk::TreeModel::iterator iter =refListStore_->append();
-			(*iter)[refColumns.name] = *it;
+			(*iter)[refColumns.name] = lyx::to_utf8(*it);
 		}
 		refview_->set_sensitive(true);
 	} else {

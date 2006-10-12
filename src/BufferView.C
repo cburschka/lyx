@@ -765,13 +765,13 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_LABEL_GOTO: {
-		string label = lyx::to_utf8(cmd.argument());
+		docstring label = cmd.argument();
 		if (label.empty()) {
 			InsetRef * inset =
 				getInsetByCode<InsetRef>(cursor_,
 							 InsetBase::REF_CODE);
 			if (inset) {
-				label = inset->getContents();
+				label = lyx::from_utf8(inset->getContents());
 				savePosition(0);
 			}
 		}
@@ -1148,10 +1148,10 @@ void BufferView::setCursorFromRow(int row)
 }
 
 
-void BufferView::gotoLabel(string const & label)
+void BufferView::gotoLabel(docstring const & label)
 {
 	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it) {
-		vector<string> labels;
+		vector<docstring> labels;
 		it->getLabelList(*buffer_, labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			setCursor(it);

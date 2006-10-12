@@ -25,7 +25,7 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::LABEL_CODE; }
 	/// Appends \c list with this label
-	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
+	void getLabelList(Buffer const &, std::vector<lyx::docstring> & list) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
