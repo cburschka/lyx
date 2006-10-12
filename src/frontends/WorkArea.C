@@ -260,6 +260,8 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 		return;
 	}
 
+	theLyXFunc().setLyXView(&lyx_view_);
+
 	buffer_view_->workAreaDispatch(cmd0);
 
 	// Skip these when selecting
