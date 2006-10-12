@@ -79,9 +79,7 @@ namespace lyx {
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {
-	frontend::GuiApplication app(argc, argv);
-
-	return &app;
+	return new frontend::GuiApplication(argc, argv);
 }
 
 namespace frontend {

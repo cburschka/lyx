@@ -80,11 +80,10 @@ lyx::frontend::Application * createApplication(int & argc, char * argv[])
 
 #if defined(Q_WS_WIN) && !defined(Q_CYGWIN_WIN)
 	static lyx::frontend::GuiApplication app(argc, argv);
-#else
-	lyx::frontend::GuiApplication app(argc, argv);
-#endif
-
 	return &app;
+#else
+	return new lyx::frontend::GuiApplication(argc, argv);
+#endif
 }
 
 
