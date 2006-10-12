@@ -86,7 +86,6 @@ libqt3_la_SOURCES = \
 	Qt2BC.C	Qt2BC.h	\
 	QtLyXView.h \
 	checkedwidgets.C checkedwidgets.h \
-	lyx_gui.C \
 	lcolorcache.h lcolorcache.C \
 	panelstack.h panelstack.C \
 	qcoloritem.h qcoloritem.C \

@@ -39,9 +39,9 @@ public:
 	 * Execute LyX. The startup sequence is as follows:
 	 * -# LyX::exec()
 	 * -# LyX::priv_exec()
-	 * -# lyx_gui::exec()
+	 * -# lyx::createApplication()
 	 * -# LyX::exec2()
-	 * Step 3 is omitted if no gui is wanted. We need lyx_gui::exec()
+	 * Step 3 is omitted if no gui is wanted. We need lyx::createApplication()
 	 * only to create the QApplication object in the qt frontend. All
 	 * attempts with static and dynamically allocated QApplication
 	 * objects lead either to harmless error messages on exit
@@ -97,8 +97,8 @@ private:
 	bool readLanguagesFile(std::string const & name);
 	/// read the given encodings file
 	bool readEncodingsFile(std::string const & name);
-	/// parsing of non-gui LyX options. Returns true if gui
-	bool easyParse(int & argc, char * argv[]);
+	/// parsing of non-gui LyX options.
+	void easyParse(int & argc, char * argv[]);
 	/// shows up a parsing error on screen
 	void printError(ErrorItem const &);
 

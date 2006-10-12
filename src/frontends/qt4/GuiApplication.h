@@ -32,6 +32,7 @@
 ///////////////////////////////////////////////////////////////
 
 class BufferView;
+class socket_callback;
 
 namespace lyx {
 namespace frontend {
@@ -61,9 +62,16 @@ public:
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
+	void syncEvents();
 	virtual std::string const romanFontName();
 	virtual std::string const sansFontName();
 	virtual std::string const typewriterFontName();
+	virtual bool getRgbColor(LColor_color col, lyx::RGBColor & rgbcol);
+	virtual std::string const hexName(LColor_color col);
+	virtual void updateColor(LColor_color col);
+	virtual void registerSocketCallback(
+		int fd, boost::function<void()> func);
+	virtual void unregisterSocketCallback(int fd);
 	//@}
 
 	///
@@ -83,6 +91,8 @@ private:
 	GuiFontLoader font_loader_;
 	///
 	ColorCache color_cache_;
+	///
+	std::map<int, boost::shared_ptr<socket_callback> > socket_callbacks_;
 
 #ifdef Q_WS_X11
 public:

@@ -18,7 +18,7 @@
 
 #include "controllers/ControlMath.h"
 
-#include "frontends/lyx_gui.h"
+#include "frontends/Application.h"
 
 #include <qwidgetstack.h>
 #include <qcombobox.h>
@@ -55,7 +55,7 @@ protected:
 
 		w_->resize(viewport()->width(), w_->height());
 		// force the resize to get accurate scrollbar
-		lyx_gui::sync_events();
+		theApp->syncEvents();
 		resizeContents(w_->width(), w_->height());
 	}
 private:

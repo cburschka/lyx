@@ -49,6 +49,8 @@ using std::endl;
 
 namespace {
 
+std::map<int, boost::shared_ptr<io_callback> > callbacks;
+
 /// estimate DPI from X server
 int getDPI()
 {
@@ -62,6 +64,12 @@ int getDPI()
 
 
 namespace lyx {
+
+lyx::frontend::Application * createApplication(int & argc, char * argv[])
+{
+	return new GuiApplication(argc, argv);
+}
+
 namespace frontend {
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
@@ -121,6 +129,73 @@ string const GuiApplication::typewriterFontName()
 	return "courier";
 }
 
+
+void GuiApplication::syncEvents()
+{
+	// FIXME
+}
+
+
+bool GuiApplication::getRgbColor(LColor_color col,
+								 lyx::RGBColor & rgbcol)
+{
+	Gdk::Color gdkColor;
+	Gdk::Color * gclr = colorCache.getColor(col);
+	if (!gclr) {
+		gclr = &gdkColor;
+		if(!gclr->parse(lcolor.getX11Name(col))) {
+			rgbcol.r = 0;
+			rgbcol.g = 0;
+			rgbcol.b = 0;
+			return false;
+		}
+	}
+
+	// Note that X stores the RGB values in the range 0 - 65535
+	// whilst we require them in the range 0 - 255.
+	rgbcol.r = gclr->get_red() / 256;
+	rgbcol.g = gclr->get_green() / 256;
+	rgbcol.b = gclr->get_blue() / 256;
+	return true;
+}
+
+
+string const GuiApplication::hexName(LColor_color col)
+{
+	lyx::RGBColor rgbcol;
+	if (!getRGBColor(col, rgbcol)) {
+		lyxerr << "X can't find color for \"" << lcolor.getLyXName(col)
+		       << '"' << std::endl;
+		return string();
+	}
+
+	std::ostringstream os;
+
+	os << std::setbase(16) << std::setfill('0')
+	   << std::setw(2) << rgbcol.r
+	   << std::setw(2) << rgbcol.g
+	   << std::setw(2) << rgbcol.b;
+
+	return os.str();
+}
+
+
+void GuiApplication::updateColor(LColor_color)
+{
+	colorCache.clear();
+}
+
+
+void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func)
+{
+	callbacks[fd] = boost::shared_ptr<io_callback>(new io_callback(fd, func));
+}
+
+
+void GuiApplication::unregisterSocketCallback(int fd)
+{
+	callbacks.erase(fd);
+}
 
 } // namespace frontend
 } // namespace lyx

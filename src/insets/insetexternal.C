@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "dispatchresult.h"
 #include "exporter.h"
+#include "FuncStatus.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -30,8 +31,6 @@
 #include "lyxrc.h"
 #include "metricsinfo.h"
 #include "outputparams.h"
-
-#include "frontends/lyx_gui.h"
 
 #include "graphics/PreviewLoader.h"
 
@@ -58,6 +57,9 @@ using std::ostream;
 using std::ostringstream;
 using std::vector;
 
+namespace lyx {
+extern bool use_gui;
+}
 
 namespace {
 
@@ -563,7 +565,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 	if (gparams.display == graphics::DefaultDisplay)
 		gparams.display = lyxrc.display_graphics;
 	// Override the above if we're not using a gui
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		gparams.display = graphics::NoDisplay;
 
 	return gparams;

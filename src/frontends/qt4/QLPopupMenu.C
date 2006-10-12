@@ -23,7 +23,6 @@
 #include "qt_helpers.h"
 #include "MenuBackend.h"
 
-#include "frontends/lyx_gui.h"
 #include "support/lstrings.h"
 #include "debug.h"
 

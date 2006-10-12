@@ -448,7 +448,6 @@ src_frontends_header_files = Split('''
     WorkArea.h
     guiapi.h
     key_state.h
-    lyx_gui.h
     mouse_state.h
     nullpainter.h
 ''')
@@ -464,7 +463,6 @@ src_frontends_files = Split('''
     Toolbars.C
     WorkArea.C
     guiapi.C
-    lyx_gui.C
     nullpainter.C
 ''')
 
@@ -956,7 +954,6 @@ src_frontends_qt3_files = Split('''
     iconpalette.C
     lcolorcache.C
     lengthcombo.C
-    lyx_gui.C
     panelstack.C
     qcoloritem.C
     qfont_loader.C
@@ -1337,7 +1334,6 @@ src_frontends_qt4_files = Split('''
     FloatPlacement.C
     iconpalette.C
     lengthcombo.C
-    lyx_gui.C
     panelstack.C
     qfontexample.C
     qsetborder.C

@@ -16,6 +16,7 @@
 
 #include "qt_helpers.h"
 #include "QLImage.h"
+#include "socket_callback.h"
 
 #include "graphics/LoaderQueue.h"
 
@@ -24,9 +25,10 @@
 #include "support/package.h"
 
 #include "BufferView.h"
+#include "Color.h"
+#include "debug.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
-#include "debug.h"
 
 #include <QApplication>
 #include <QClipboard>
@@ -67,7 +69,25 @@ int getDPI()
 } // namespace anon
 
 
+lyx::frontend::GuiApplication * guiApp;
+
 namespace lyx {
+
+lyx::frontend::Application * createApplication(int & argc, char * argv[])
+{
+	// FIXME: it would be great if we could just do:
+	//return new lyx::frontend::GuiApplication(argc, argv);
+
+#if defined(Q_WS_WIN) && !defined(Q_CYGWIN_WIN)
+	static lyx::frontend::GuiApplication app(argc, argv);
+#else
+	lyx::frontend::GuiApplication app(argc, argv);
+#endif
+
+	return &app;
+}
+
+
 namespace frontend {
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
@@ -132,6 +152,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	lyxrc.dpi = getDPI();
 
 	LoaderQueue::setPriority(10,100);
+
+	guiApp = this;
 }
 
 
@@ -188,6 +210,58 @@ string const GuiApplication::typewriterFontName()
 	return fromqstr(QFontInfo(font).family());
 }
 
+
+void GuiApplication::syncEvents()
+{
+	// This is the ONLY place where processEvents may be called.
+	// During screen update/ redraw, this method is disabled to
+	// prevent keyboard events being handed to the LyX core, where
+	// they could cause re-entrant calls to screen update.
+	processEvents(QEventLoop::ExcludeUserInputEvents);
+}
+
+
+bool GuiApplication::getRgbColor(LColor_color col,
+								 lyx::RGBColor & rgbcol)
+{
+	QColor const & qcol = color_cache_.get(col);
+	if (!qcol.isValid()) {
+		rgbcol.r = 0;
+		rgbcol.g = 0;
+		rgbcol.b = 0;
+		return false;
+	}
+	rgbcol.r = qcol.red();
+	rgbcol.g = qcol.green();
+	rgbcol.b = qcol.blue();
+	return true;
+}
+
+
+string const GuiApplication::hexName(LColor_color col)
+{
+	return lyx::support::ltrim(fromqstr(color_cache_.get(col).name()), "#");
+}
+
+
+void GuiApplication::updateColor(LColor_color)
+{
+	// FIXME: Bleh, can't we just clear them all at once ?
+	color_cache_.clear();
+}
+
+
+void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func)
+{
+	socket_callbacks_[fd] =
+		boost::shared_ptr<socket_callback>(new socket_callback(fd, func));
+}
+
+
+void GuiApplication::unregisterSocketCallback(int fd)
+{
+	socket_callbacks_.erase(fd);
+}
 
 ////////////////////////////////////////////////////////////////////////
 // X11 specific stuff goes here...

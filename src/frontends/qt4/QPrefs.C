@@ -27,8 +27,6 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
-#include "frontends/lyx_gui.h"
-
 using namespace Ui;
 
 namespace lyx {

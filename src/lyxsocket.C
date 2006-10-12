@@ -21,7 +21,7 @@
 #include "LyXAction.h"
 #include "lyxfunc.h"
 
-#include "frontends/lyx_gui.h"
+#include "frontends/Application.h"
 
 #include "support/environment.h"
 #include "support/lyxlib.h"
@@ -61,7 +61,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 	// Needed by lyxclient
 	lyx::support::setEnv("LYXSOCKET", address_);
 
-	lyx_gui::register_socket_callback(
+	theApp->registerSocketCallback(
 		fd_,
 		boost::bind(&LyXServerSocket::serverCallback, this)
 		);
@@ -75,7 +75,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 LyXServerSocket::~LyXServerSocket()
 {
 	if (fd_ != -1) {
-		lyx_gui::unregister_socket_callback(fd_);
+		theApp->unregisterSocketCallback(fd_);
 		if (::close(fd_) != 0)
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
@@ -111,7 +111,7 @@ void LyXServerSocket::serverCallback()
 	// Register the new client.
 	clients[client_fd] =
 		shared_ptr<LyXDataSocket>(new LyXDataSocket(client_fd));
-	lyx_gui::register_socket_callback(
+	theApp->registerSocketCallback(
 		client_fd,
 		boost::bind(&LyXServerSocket::dataCallback,
 			    this, client_fd)
@@ -209,7 +209,7 @@ LyXDataSocket::~LyXDataSocket()
 		lyxerr << "lyx: Data socket " << fd_
 		       << " IO error on closing: " << strerror(errno);
 
-	lyx_gui::unregister_socket_callback(fd_);
+	theApp->unregisterSocketCallback(fd_);
 	lyxerr[Debug::LYXSERVER] << "lyx: Data socket " << fd_ << " quitting."
 				 << endl;
 }

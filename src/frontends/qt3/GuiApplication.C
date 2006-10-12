@@ -19,6 +19,7 @@
 
 #include "qt_helpers.h"
 #include "QLImage.h"
+#include "socket_callback.h"
 
 #include "graphics/LoaderQueue.h"
 
@@ -60,6 +61,8 @@ extern void initEncodings();
 
 namespace {
 
+map<int, shared_ptr<socket_callback> > socket_callbacks;
+
 int getDPI()
 {
 	QWidget w;
@@ -71,6 +74,14 @@ int getDPI()
 
 
 namespace lyx {
+
+lyx::frontend::Application * createApplication(int & argc, char * argv[])
+{
+	GuiApplication app(argc, argv);
+
+	return &app;
+}
+
 namespace frontend {
 
 GuiApplication::GuiApplication(int & argc, char ** argv)
@@ -188,6 +199,60 @@ string const GuiApplication::typewriterFontName()
 	font.setFamily("monospace");
 
 	return fromqstr(QFontInfo(font).family());
+}
+
+
+void GuiApplication::syncEvents()
+{
+	// This is the ONLY place where processEvents may be called.
+	// During screen update/ redraw, this method is disabled to
+	// prevent keyboard events being handed to the LyX core, where
+	// they could cause re-entrant calls to screen update.
+#if QT_VERSION >= 0x030100
+	qApp->eventLoop()->processEvents(QEventLoop::ExcludeUserInput);
+#endif
+}
+
+
+bool GuiApplication::getRgbColor(LColor_color col,
+								 lyx::RGBColor & rgbcol)
+{
+	QColor const & qcol = lcolorcache.get(col);
+	if (!qcol.isValid()) {
+		rgbcol.r = 0;
+		rgbcol.g = 0;
+		rgbcol.b = 0;
+		return false;
+	}
+	rgbcol.r = qcol.red();
+	rgbcol.g = qcol.green();
+	rgbcol.b = qcol.blue();
+	return true;
+}
+
+
+string const GuiApplication::hexName(LColor_color col)
+{
+	return ltrim(fromqstr(lcolorcache.get(col).name()), "#");
+}
+
+
+void GuiApplication::updateColor(LColor_color)
+{
+	// FIXME: Bleh, can't we just clear them all at once ?
+	lcolorcache.clear();
+}
+
+
+void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func)
+{
+	socket_callbacks[fd] = shared_ptr<socket_callback>(new socket_callback(fd, func));
+}
+
+
+void GuiApplication::unregisterSocketCallback(int fd)
+{
+	socket_callbacks.erase(fd);
 }
 
 

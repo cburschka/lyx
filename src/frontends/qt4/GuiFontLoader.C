@@ -17,8 +17,6 @@
 #include "debug.h"
 #include "lyxrc.h"
 
-#include "frontends/lyx_gui.h"
-
 #include "support/convert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -45,6 +43,9 @@ using std::string;
 
 
 namespace lyx {
+
+extern bool use_gui;
+
 namespace frontend {
 
 GuiFontLoader::~GuiFontLoader() {
@@ -303,7 +304,7 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 
 bool GuiFontLoader::available(LyXFont const & f)
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return false;
 
 	static vector<int> cache_set(LyXFont::NUM_FAMILIES, false);

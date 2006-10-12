@@ -42,7 +42,6 @@
 
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
-#include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
 
 #include "support/environment.h"
@@ -93,8 +92,21 @@ using std::system;
 #endif
 
 
-// convenient to have it here.
+/// convenient to have it here.
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
+
+///
+lyx::frontend::Application * theApp;
+
+namespace lyx {
+
+/// are we using the GUI at all?
+/** 
+* We default to true and this is changed to false when the export feature is used.
+*/
+bool use_gui = true;
+
+}
 
 namespace {
 
@@ -109,7 +121,7 @@ void lyx_exit(int status)
 	// FIXME: We should not directly call exit(), since it only
 	// guarantees a return to the system, no application cleanup.
 	// This may cause troubles with not executed destructors.
-	if (lyx_gui::use_gui) {
+	if (lyx::use_gui) {
 		theApp->exit(status);
 		// Restore original font resources after Application is destroyed.
 		lyx::support::restoreFontResources();
@@ -235,19 +247,23 @@ int LyX::priv_exec(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
-	lyx_gui::use_gui = easyParse(argc, argv);
+	easyParse(argc, argv);
 
 	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
 				   lyx::support::top_build_dir_is_one_level_up);
 
 	// Start the real execution loop.
-	if (lyx_gui::use_gui) {
+	if (lyx::use_gui) {
 		// Force adding of font path _before_ Application is initialized
 		lyx::support::addFontResources();
-		return lyx_gui::exec(argc, argv);
+		theApp = lyx::createApplication(argc, argv);
 	}
-	else
-		return exec2(argc, argv);
+	else {
+		// FIXME: create a ConsoleApplication
+		theApp = 0;
+	}
+	
+	return exec2(argc, argv);
 }
 
 
@@ -323,7 +339,7 @@ int LyX::exec2(int & argc, char * argv[])
 		files.clear(); // the files are already loaded
 	}
 
-	if (lyx_gui::use_gui) {
+	if (lyx::use_gui) {
 		// determine windows size and position, from lyxrc and/or session
 		// initial geometry
 		unsigned int width = 690;
@@ -518,15 +534,15 @@ bool LyX::init()
 
 	if (lyxrc.roman_font_name.empty())
 		lyxrc.roman_font_name = 
-			lyx_gui::use_gui? theApp->romanFontName(): "serif";
+			lyx::use_gui? theApp->romanFontName(): "serif";
 
 	if (lyxrc.sans_font_name.empty())
 		lyxrc.sans_font_name =
-			lyx_gui::use_gui? theApp->sansFontName(): "sans";
+			lyx::use_gui? theApp->sansFontName(): "sans";
 
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name =
-			lyx_gui::use_gui? theApp->typewriterFontName(): "monospace";
+			lyx::use_gui? theApp->typewriterFontName(): "monospace";
 
 	//
 	// Read configuration files
@@ -551,7 +567,7 @@ bool LyX::init()
 		reconfigureUserLyXDir();
 
 	// no need for a splash when there is no GUI
-	if (!lyx_gui::use_gui) {
+	if (!lyx::use_gui) {
 		first_start = false;
 	}
 
@@ -582,7 +598,7 @@ bool LyX::init()
 	if (!LyXSetStyle())
 		return false;
 
-	if (lyx_gui::use_gui) {
+	if (lyx::use_gui) {
 		// Set up bindings
 		toplevel_keymap.reset(new kb_keymap);
 		defaultKeyBindings(toplevel_keymap.get());
@@ -920,7 +936,6 @@ bool LyX::readEncodingsFile(string const & name)
 
 namespace {
 
-bool is_gui = true;
 string batch;
 
 /// return the the number of arguments consumed
@@ -1015,7 +1030,7 @@ int parse_export(string const & type, string const &)
 		exit(1);
 	}
 	batch = "buffer-export " + type;
-	is_gui = false;
+	lyx::use_gui = true;
 	return 1;
 }
 
@@ -1038,7 +1053,7 @@ int parse_import(string const & type, string const & file)
 } // namespace anon
 
 
-bool LyX::easyParse(int & argc, char * argv[])
+void LyX::easyParse(int & argc, char * argv[])
 {
 	std::map<string, cmd_helper> cmdmap;
 
@@ -1082,6 +1097,4 @@ bool LyX::easyParse(int & argc, char * argv[])
 	}
 
 	batch_command = batch;
-
-	return is_gui;
 }

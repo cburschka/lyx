@@ -25,7 +25,7 @@
 #include "iconpalette.h"
 #include "qt_helpers.h"
 #include "controllers/ControlMath.h"
-#include "frontends/lyx_gui.h"
+
 #include "support/filetools.h"
 
 using std::string;

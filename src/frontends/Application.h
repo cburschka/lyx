@@ -11,7 +11,7 @@
 #ifndef LYX_APPLICATION_H
 #define LYX_APPLICATION_H
 
-#include <boost/scoped_ptr.hpp>
+#include <boost/function.hpp>
 
 #include <string>
 
@@ -21,8 +21,12 @@ class LyXFunc;
 class LyXServer;
 class LyXServerSocket;
 class LyXView;
+class LColor_color;
 	
 namespace lyx {
+
+struct RGBColor;
+
 namespace frontend {
 
 struct Application_pimpl;
@@ -62,6 +66,10 @@ public:
 	*/
 	virtual void exit(int status) = 0;
 
+	/**
+	* Synchronise all pending events.
+	*/
+	virtual void syncEvents() = 0;
 	///
 	virtual Clipboard & clipboard() = 0;
 	///
@@ -77,6 +85,36 @@ public:
 
 	/// return a suitable monospaced font name.
 	virtual std::string const typewriterFontName() = 0;
+
+	/**
+	* Given col, fills r, g, b in the range 0-255.
+	* The function returns true if successful.
+	* It returns false on failure and sets r, g, b to 0.
+	*/
+	virtual bool getRgbColor(LColor_color col, lyx::RGBColor & rgbcol) = 0;
+
+	/** Eg, passing LColor::black returns "000000",
+	*      passing LColor::white returns "ffffff".
+	*/
+	virtual std::string const hexName(LColor_color col) = 0;
+
+	/**
+	* update an altered GUI color
+	*/
+	virtual void updateColor(LColor_color col) = 0;
+
+	/**
+	* add a callback for socket read notification
+	* @param fd socket descriptor (file/socket/etc)
+	*/
+	virtual void registerSocketCallback(
+		int fd, boost::function<void()> func) = 0;
+
+	/**
+	* remove a I/O read callback
+	* @param fd socket descriptor (file/socket/etc)
+	*/
+	virtual void unregisterSocketCallback(int fd) = 0;
 
 	///
 	LyXFunc & lyxFunc();
@@ -108,6 +146,9 @@ private:
 }; // Application
 
 } // namespace frontend
+
+lyx::frontend::Application * createApplication(int & argc, char * argv[]);
+
 } // namespace lyx
 
 extern lyx::frontend::Application * theApp;

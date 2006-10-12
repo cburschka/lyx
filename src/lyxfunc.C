@@ -36,6 +36,7 @@
 #include "exporter.h"
 #include "format.h"
 #include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "importer.h"
 #include "insetiterator.h"
@@ -77,7 +78,6 @@
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontLoader.h"
-#include "frontends/lyx_gui.h"
 #include "frontends/LyXKeySym.h"
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
@@ -146,6 +146,9 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
 
+namespace lyx {
+extern bool use_gui;
+}
 
 namespace {
 
@@ -1000,7 +1003,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
-			}
+			}			
 			quitLyX(argument == "force");
 			break;
 
@@ -1377,7 +1380,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 
-			lyx_gui::update_color(lcolor.getFromLyXName(lyx_name));
+			theApp->updateColor(lcolor.getFromLyXName(lyx_name));
 
 			if (graphicsbg_changed) {
 #ifdef WITH_WARNINGS
@@ -1855,7 +1858,7 @@ void LyXFunc::doImport(string const & argument)
 	string const lyxfile = changeExtension(filename, ".lyx");
 
 	// Check if the document already is open
-	if (lyx_gui::use_gui && theBufferList().exists(lyxfile)) {
+	if (lyx::use_gui && theBufferList().exists(lyxfile)) {
 		if (!theBufferList().close(theBufferList().getBuffer(lyxfile), true)) {
 			owner->message(_("Canceled."));
 			return;

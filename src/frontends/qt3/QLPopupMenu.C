@@ -20,7 +20,7 @@
 
 #include "MenuBackend.h"
 
-#include "frontends/lyx_gui.h"
+#include "frontends/Application.h"
 
 #include "support/lstrings.h"
 
@@ -94,7 +94,7 @@ void QLPopupMenu::fire(int index)
 {
 	// make sure the interface is repainted correctly (in case the
 	// action needs a long time, like File>Open).
-	lyx_gui::sync_events();
+	theApp->syncEvents();
 #ifdef Q_WS_MACX
 	if (index >= indexOffset) {
 		MenuItem mi = owner_->backend().getMenu("LyX")[index - indexOffset];

@@ -26,7 +26,6 @@
 #include "GtkmmX.h"
 
 #include "frontends/LyXView.h"
-#include "frontends/lyx_gui.h"
 
 #include "support/convert.h"
 #include "support/lstrings.h"
@@ -38,6 +37,10 @@
 
 using std::endl;
 using std::string;
+
+namespace lyx {
+extern bool use_gui;
+}
 
 // The global fontLoader
 xftFontLoader fontLoader;
@@ -189,7 +192,7 @@ XftFont * xftFontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 bool xftFontLoader::available(LyXFont const & f)
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return false;
 
 	static std::vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);

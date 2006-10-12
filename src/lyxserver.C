@@ -44,7 +44,7 @@
 #include "funcrequest.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
-#include "frontends/lyx_gui.h"
+#include "frontends/Application.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
@@ -189,7 +189,8 @@ int LyXComm::startPipe(string const & filename, bool write)
 	}
 
 	if (!write) {
-		lyx_gui::register_socket_callback(fd, boost::bind(&LyXComm::read_ready, this));
+		theApp->registerSocketCallback(fd,
+			boost::bind(&LyXComm::read_ready, this));
 	}
 
 	return fd;
@@ -202,7 +203,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 		return;
 
 	if (!write) {
-		lyx_gui::unregister_socket_callback(fd);
+		theApp->unregisterSocketCallback(fd);
 	}
 
 	if (::close(fd) < 0) {

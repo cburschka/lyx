@@ -14,7 +14,6 @@
 #include "QViewSource.h"
 #include "QViewSourceDialog.h"
 #include "qt_helpers.h"
-#include "lyx_gui.h"
 
 #include "frontends/Application.h"
 

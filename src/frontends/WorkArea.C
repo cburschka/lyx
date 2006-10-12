@@ -19,7 +19,6 @@
 #include "frontends/FontMetrics.h"
 
 #include "funcrequest.h"
-#include "lyx_gui.h"
 #include "lyxfunc.h"
 #include "Painter.h"
 

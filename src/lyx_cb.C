@@ -34,7 +34,6 @@
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
 #include "frontends/FileDialog.h"
-#include "frontends/lyx_gui.h"
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
@@ -94,6 +93,9 @@ using std::istream_iterator;
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
 
+namespace lyx {
+extern bool use_gui;
+}
 
 //
 // Menu callbacks
@@ -192,7 +194,7 @@ void quitLyX(bool noask)
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
-	if (lyx_gui::use_gui) {
+	if (lyx::use_gui) {
 		if (!noask && !theBufferList().quitWriteAll())
 			return;
 
@@ -216,11 +218,12 @@ void quitLyX(bool noask)
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 
-	if (lyx_gui::use_gui)
+	if (lyx::use_gui) {
 		theApp->exit(0);
 
-	// Restore original font resources after Application is destroyed.
-	lyx::support::restoreFontResources();
+		// Restore original font resources after Application is destroyed.
+		lyx::support::restoreFontResources();
+	}
 }
 
 

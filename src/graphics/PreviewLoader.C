@@ -24,7 +24,7 @@
 #include "outputparams.h"
 #include "paragraph.h"
 
-#include "frontends/lyx_gui.h" // hexname
+#include "frontends/Application.h" // hexName
 
 #include "insets/inset.h"
 
@@ -500,8 +500,8 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << support::quoteName(latexfile) << ' '
 	   << int(font_scaling_factor_) << ' '
-	   << lyx_gui::hexname(LColor::preview) << ' '
-	   << lyx_gui::hexname(LColor::background);
+	   << theApp->hexName(LColor::preview) << ' '
+	   << theApp->hexName(LColor::background);
 
 	string const command = support::libScriptSearch(cs.str());
 

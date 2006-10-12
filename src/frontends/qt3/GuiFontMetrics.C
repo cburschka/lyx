@@ -17,8 +17,6 @@
 
 #include "language.h"
 
-#include "frontends/lyx_gui.h"
-
 #include "support/unicode.h"
 
 using lyx::char_type;
@@ -28,6 +26,9 @@ using std::string;
 
 
 namespace lyx {
+
+extern bool use_gui;
+
 namespace frontend {
 
 
@@ -45,7 +46,7 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font, QFont const & smallcaps_font)
 
 int GuiFontMetrics::maxAscent() const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 	return metrics_.ascent();
 }
@@ -53,7 +54,7 @@ int GuiFontMetrics::maxAscent() const
 
 int GuiFontMetrics::maxDescent() const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 	// We add 1 as the value returned by QT is different than X
 	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
@@ -63,7 +64,7 @@ int GuiFontMetrics::maxDescent() const
 
 int GuiFontMetrics::ascent(char_type c) const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
 	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
@@ -79,7 +80,7 @@ int GuiFontMetrics::ascent(char_type c) const
 
 int GuiFontMetrics::descent(char_type c) const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
 	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
@@ -95,7 +96,7 @@ int GuiFontMetrics::descent(char_type c) const
 
 int GuiFontMetrics::lbearing(char_type c) const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 	return metrics_.leftBearing(ucs4_to_qchar(c));
 }
@@ -103,7 +104,7 @@ int GuiFontMetrics::lbearing(char_type c) const
 
 int GuiFontMetrics::rbearing(char_type c) const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 
 	// Qt rbearing is from the right edge of the char's width().
@@ -114,7 +115,7 @@ int GuiFontMetrics::rbearing(char_type c) const
 
 int GuiFontMetrics::smallcapsWidth(QString const & s) const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return 1;
 
 	int w = 0;
@@ -134,7 +135,7 @@ int GuiFontMetrics::smallcapsWidth(QString const & s) const
 
 int GuiFontMetrics::width(char_type const * s, size_t ls) const
 {
-	if (!lyx_gui::use_gui)
+	if (!lyx::use_gui)
 		return ls;
 
 	QString const ucs2 = toqstr(s, ls);

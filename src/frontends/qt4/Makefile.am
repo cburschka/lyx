@@ -84,7 +84,6 @@ libqt4_la_SOURCES = \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\
 	checkedwidgets.C checkedwidgets.h \
-	lyx_gui.C \
 	panelstack.h panelstack.C \
 	qfontexample.h qfontexample.C \
 	qlkey.h \

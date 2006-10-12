@@ -32,6 +32,8 @@
 #include "support/os.h"
 #include "support/package.h"
 
+#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 using lyx::support::package;
 
@@ -139,7 +141,6 @@ int Application::start(std::string const & batch)
 	return exec();
 }
 
-
 } // namespace frontend
 
 
@@ -185,3 +186,4 @@ lyx::frontend::Selection & theSelection()
 {
 	return theApp->selection();
 }
+

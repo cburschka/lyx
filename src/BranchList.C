@@ -12,7 +12,9 @@
 
 #include "BranchList.h"
 #include "LColor.h"
-#include "frontends/lyx_gui.h"
+
+#include "frontends/Application.h"
+
 #include <algorithm>
 
 using std::string;
@@ -20,7 +22,7 @@ using std::string;
 
 Branch::Branch()
 {
-	lyx_gui::getRGBColor(LColor::background, color_);
+	theApp->getRgbColor(LColor::background, color_);
 }
 
 
@@ -69,7 +71,7 @@ void Branch::setColor(string const & c)
 		color_ = lyx::RGBColor(c);
 	else
 		// no color set or invalid color - use normal background
-		lyx_gui::getRGBColor(LColor::background, color_);
+		theApp->getRgbColor(LColor::background, color_);
 }
 
 

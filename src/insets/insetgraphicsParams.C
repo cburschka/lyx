@@ -17,8 +17,6 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 
-#include "frontends/lyx_gui.h"
-
 #include "graphics/GraphicsParams.h"
 
 #include "support/convert.h"
@@ -34,6 +32,10 @@ using lyx::support::token;
 using std::string;
 using std::ostream;
 
+
+namespace lyx {
+extern bool use_gui;
+}
 
 InsetGraphicsParams::InsetGraphicsParams()
 {
@@ -322,7 +324,7 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 	}
 
 	// Override the above if we're not using a gui
-	if (!lyx_gui::use_gui) {
+	if (!lyx::use_gui) {
 		pars.display = lyx::graphics::NoDisplay;
 	}
 

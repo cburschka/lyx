@@ -42,8 +42,6 @@ libfrontends_la_SOURCES = \
 	guiapi.h \
 	guiapi.C \
 	key_state.h \
-	lyx_gui.C \
-	lyx_gui.h \
 	mouse_state.h \
 	nullpainter.C \
 	nullpainter.h

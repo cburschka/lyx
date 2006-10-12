@@ -29,7 +29,7 @@
 #include "controllers/helper_funcs.h"
 
 #include "frontends/Alert.h"
-#include "frontends/lyx_gui.h"
+#include "frontends/Application.h"
 
 #include "QPrefsDialog.h"
 #include "QPrefs.h"

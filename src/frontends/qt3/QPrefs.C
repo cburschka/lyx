@@ -47,7 +47,6 @@
 #include "controllers/helper_funcs.h"
 
 #include "frontends/Application.h"
-#include "frontends/lyx_gui.h"
 
 #include <qcheckbox.h>
 #include "qcoloritem.h"
