@@ -240,7 +240,7 @@ convert = [[246, []],
            [247, [convert_font_settings]],
            [248, []],
            [249, [convert_utf8]],
-           [250, []]
+           [250, []]]
 
 revert =  [[249, []],
            [248, [revert_utf8]],
