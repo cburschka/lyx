@@ -45,7 +45,7 @@ public:
 	{
 	}
 
-	int newView(unsigned int /*w*/, unsigned int /*h*/)
+	int newView()
 	{
 		view_.reset(new FView);
 		return 0;

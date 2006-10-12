@@ -36,11 +36,10 @@ public:
 	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
-	int newView(unsigned int width, unsigned int height);
+	int newView();
 	LyXView& view(int id);
 	void destroyView(int id);
 	int newWorkArea(unsigned int width, unsigned int height, int view_id);
-	int newWorkArea(int w, int h);
 	WorkArea& workArea(int id);
 	void destroyWorkArea(int id);
 

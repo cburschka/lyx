@@ -111,7 +111,7 @@ LyXView & Application::createView(unsigned int width,
 	// this can't be done before because it needs the Languages object
 	//initEncodings();
 
-	int view_id = gui().newView(width, height);
+	int view_id = gui().newView();
 	LyXView & view = gui().view(view_id);
 
 	pimpl_->lyxfunc_.reset(new LyXFunc(&view));

@@ -31,7 +31,7 @@ GuiImplementation::GuiImplementation(): max_view_id_(0), max_wa_id_(0)
 }
 
 
-int GuiImplementation::newView(unsigned int /*w*/, unsigned int /*h*/)
+int GuiImplementation::newView()
 {
 	size_t const id = max_view_id_;
 	++max_view_id_;

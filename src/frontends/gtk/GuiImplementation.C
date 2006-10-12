@@ -30,7 +30,7 @@
 namespace lyx {
 namespace frontend {
 
-int GuiImplementation::newView(unsigned int /*w*/, unsigned int /*h*/)
+int GuiImplementation::newView()
 {
 	view_.reset(new GView);
 	return 0;

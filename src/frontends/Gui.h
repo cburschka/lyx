@@ -36,7 +36,7 @@ public:
 	virtual ~Gui() {}
 
 	///
-	virtual int newView(unsigned int width, unsigned int height) = 0;
+	virtual int newView() = 0;
 	///
 	virtual LyXView & view(int id) = 0;
 	///

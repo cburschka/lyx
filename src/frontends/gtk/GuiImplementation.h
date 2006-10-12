@@ -39,7 +39,7 @@ public:
 	{
 	}
 
-	int newView(unsigned int w, unsigned int h);
+	int newView();
 
 	LyXView & view(int /*id*/)
 	{
