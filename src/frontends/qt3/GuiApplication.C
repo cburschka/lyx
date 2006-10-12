@@ -17,6 +17,7 @@
 
 #include "GuiApplication.h"
 
+#include "lcolorcache.h"
 #include "qt_helpers.h"
 #include "QLImage.h"
 #include "socket_callback.h"
@@ -28,6 +29,7 @@
 #include "support/package.h"
 
 #include "BufferView.h"
+#include "Color.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "debug.h"
@@ -61,7 +63,7 @@ extern void initEncodings();
 
 namespace {
 
-map<int, shared_ptr<socket_callback> > socket_callbacks;
+std::map<int, boost::shared_ptr<socket_callback> > socket_callbacks;
 
 int getDPI()
 {
@@ -75,9 +77,9 @@ int getDPI()
 
 namespace lyx {
 
-lyx::frontend::Application * createApplication(int & argc, char * argv[])
+frontend::Application * createApplication(int & argc, char * argv[])
 {
-	GuiApplication app(argc, argv);
+	frontend::GuiApplication app(argc, argv);
 
 	return &app;
 }
@@ -233,7 +235,7 @@ bool GuiApplication::getRgbColor(LColor_color col,
 
 string const GuiApplication::hexName(LColor_color col)
 {
-	return ltrim(fromqstr(lcolorcache.get(col).name()), "#");
+	return lyx::support::ltrim(fromqstr(lcolorcache.get(col).name()), "#");
 }
 
 
@@ -246,7 +248,7 @@ void GuiApplication::updateColor(LColor_color)
 
 void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func)
 {
-	socket_callbacks[fd] = shared_ptr<socket_callback>(new socket_callback(fd, func));
+	socket_callbacks[fd] = boost::shared_ptr<socket_callback>(new socket_callback(fd, func));
 }
 
 

@@ -60,6 +60,7 @@ public:
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
+	void syncEvents();
 	virtual std::string const romanFontName();
 	virtual std::string const sansFontName();
 	virtual std::string const typewriterFontName();
