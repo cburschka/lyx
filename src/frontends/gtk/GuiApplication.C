@@ -137,7 +137,7 @@ void GuiApplication::syncEvents()
 
 
 bool GuiApplication::getRgbColor(LColor_color col,
-								 lyx::RGBColor & rgbcol)
+	lyx::RGBColor & rgbcol)
 {
 	Gdk::Color gdkColor;
 	Gdk::Color * gclr = colorCache.getColor(col);

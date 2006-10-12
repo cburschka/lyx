@@ -221,7 +221,7 @@ void GuiApplication::syncEvents()
 
 
 bool GuiApplication::getRgbColor(LColor_color col,
-								 lyx::RGBColor & rgbcol)
+	lyx::RGBColor & rgbcol)
 {
 	QColor const & qcol = color_cache_.get(col);
 	if (!qcol.isValid()) {
