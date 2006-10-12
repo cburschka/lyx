@@ -27,8 +27,12 @@ class ErrorItem;
 class InsetBase;
 class LyXView;
 class kb_keymap;
+
 namespace lyx {
-	class Session;
+class Session;
+namespace frontend {
+class Application;
+}
 }
 
 
@@ -118,6 +122,8 @@ private:
 	///
 	bool geometryOption_;
 
+	///
+	boost::scoped_ptr<lyx::frontend::Application> application_;
 };
 
 #endif // LYX_MAIN_H

@@ -75,15 +75,7 @@ namespace lyx {
 
 lyx::frontend::Application * createApplication(int & argc, char * argv[])
 {
-	// FIXME: it would be great if we could just do:
-	//return new lyx::frontend::GuiApplication(argc, argv);
-
-#if defined(Q_WS_WIN) && !defined(Q_CYGWIN_WIN)
-	static lyx::frontend::GuiApplication app(argc, argv);
-	return &app;
-#else
 	return new lyx::frontend::GuiApplication(argc, argv);
-#endif
 }
 
 

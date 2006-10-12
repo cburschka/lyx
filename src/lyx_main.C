@@ -256,13 +256,14 @@ int LyX::priv_exec(int & argc, char * argv[])
 	if (lyx::use_gui) {
 		// Force adding of font path _before_ Application is initialized
 		lyx::support::addFontResources();
-		theApp = lyx::createApplication(argc, argv);
+		application_.reset(lyx::createApplication(argc, argv));
+		theApp = application_.get();
 	}
 	else {
 		// FIXME: create a ConsoleApplication
 		theApp = 0;
 	}
-	
+
 	return exec2(argc, argv);
 }
 
@@ -378,7 +379,7 @@ int LyX::exec2(int & argc, char * argv[])
 			height = 0;
 		}
 		// create the main window
-		LyXView * view = &theApp->createView(width, height, posx, posy, maximize);
+		LyXView * view = &application_->createView(width, height, posx, posy, maximize);
 		ref().addLyXView(view);
 
 		// load files
@@ -397,7 +398,7 @@ int LyX::exec2(int & argc, char * argv[])
 		// clear this list to save a few bytes of RAM
 		session_->clearLastOpenedFiles();
 
-		return theApp->start(batch_command);
+		return application_->start(batch_command);
 	} else {
 		// Something went wrong above
 		quitLyX(false);
@@ -534,15 +535,15 @@ bool LyX::init()
 
 	if (lyxrc.roman_font_name.empty())
 		lyxrc.roman_font_name = 
-			lyx::use_gui? theApp->romanFontName(): "serif";
+			lyx::use_gui? application_->romanFontName(): "serif";
 
 	if (lyxrc.sans_font_name.empty())
 		lyxrc.sans_font_name =
-			lyx::use_gui? theApp->sansFontName(): "sans";
+			lyx::use_gui? application_->sansFontName(): "sans";
 
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name =
-			lyx::use_gui? theApp->typewriterFontName(): "monospace";
+			lyx::use_gui? application_->typewriterFontName(): "monospace";
 
 	//
 	// Read configuration files
@@ -705,7 +706,7 @@ void LyX::emergencyCleanup() const
 	// a crash
 
 	theBufferList().emergencyWriteAll();
-	theApp->server().emergencyCleanup();
+	application_->server().emergencyCleanup();
 }
 
 
