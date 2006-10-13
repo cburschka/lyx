@@ -233,6 +233,8 @@ void WorkArea::processKeySym(LyXKeySymPtr key,
 							 key_modifier::state state)
 {
 	hideCursor();
+
+	theLyXFunc().setLyXView(&lyx_view_);
 	theLyXFunc().processKeySym(key, state);
 
 	/* This is perhaps a bit of a hack. When we move
