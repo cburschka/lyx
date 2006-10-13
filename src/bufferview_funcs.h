@@ -37,7 +37,7 @@ bool string2font(std::string const & data, LyXFont & font, bool & toggle);
  */
 std::string const freefont2string();
 
-Point getPos(DocIterator const & dit, bool boundary);
+Point getPos(BufferView & bv, DocIterator const & dit, bool boundary);
 
 enum CurStatus {
 	CUR_INSIDE,

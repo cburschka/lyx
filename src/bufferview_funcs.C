@@ -198,12 +198,12 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 }
 
 
-Point getPos(DocIterator const & dit, bool boundary)
+Point getPos(BufferView & bv, DocIterator const & dit, bool boundary)
 {
 	CursorSlice const & bot = dit.bottom();
 	CoordCache::ParPosCache::const_iterator cache_it = 
-		theCoords.getParPos().find(bot.text());
-	if (cache_it == theCoords.getParPos().end())
+		bv.coordCache().getParPos().find(bot.text());
+	if (cache_it == bv.coordCache().getParPos().end())
 		return Point(-1, -1);
 
 	CoordCache::InnerParPosCache const & cache = cache_it->second;
@@ -221,7 +221,8 @@ Point getPos(DocIterator const & dit, bool boundary)
 // this could be used elsewhere as well?
 CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
-	CoordCache::InnerParPosCache const & cache = theCoords.getParPos().find(dit.bottom().text())->second;
+	CoordCache::InnerParPosCache const & cache =
+		bv->coordCache().getParPos().find(dit.bottom().text())->second;
 
 	if (cache.find(dit.bottom().pit()) != cache.end())
 		return CUR_INSIDE;

@@ -116,13 +116,13 @@ public:
 	/// add space for markers
 	void metricsMarkers2(Dimension & dim, int framesize = 1) const;
 	/// last drawn position for 'important' insets
-	int xo() const;
+	int xo(BufferView & bv) const;
 	/// last drawn position for 'important' insets
-	int yo() const;
+	int yo(BufferView & bv) const;
 	/// set x/y drawing position cache if available
 	virtual void setPosCache(PainterInfo const &, int, int) const {}
 	/// do we cover screen position x/y?
-	virtual bool covers(int x, int y) const;
+	virtual bool covers(BufferView & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in cursor.C)
 	virtual void cursorPos(CursorSlice const & sl, bool boundary,
 		int & x, int & y) const;

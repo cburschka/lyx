@@ -20,6 +20,7 @@
 #include "MathAtom.h"
 #include "dimension.h"
 
+class BufferView;
 class LaTeXFeatures;
 class ReplaceData;
 class MetricsInfo;
@@ -112,15 +113,15 @@ public:
 	void touch() const;
 
 	/// access to cached x coordinate of last drawing
-	int xo() const;
+	int xo(BufferView & bv) const;
 	/// access to cached y coordinate of last drawing
-	int yo() const;
+	int yo(BufferView & bv) const;
 	/// access to cached x coordinate of mid point of last drawing
-	int xm() const { return xo() + dim_.wid / 2; }
+	int xm(BufferView & bv) const { return xo(bv) + dim_.wid / 2; }
 	/// access to cached y coordinate of mid point of last drawing
-	int ym() const { return yo() + (dim_.des - dim_.asc) / 2; }
+	int ym(BufferView & bv) const { return yo(bv) + (dim_.des - dim_.asc) / 2; }
 	/// write access to coordinate;
-	void setXY(int x, int y) const;
+	void setXY(BufferView & bv, int x, int y) const;
 	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
 	/// returns position of given x coordinate
@@ -131,7 +132,7 @@ public:
 	size_type x2pos(int targetx, int glue) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
-	int dist(int x, int y) const;
+	int dist(BufferView & bv, int x, int y) const;
 
 	/// ascent of this cell above the baseline
 	int ascent() const { return dim_.asc; }

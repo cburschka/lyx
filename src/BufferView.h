@@ -15,6 +15,7 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
+#include "coordcache.h"
 #include "cursor.h"
 #include "metricsinfo.h"
 
@@ -199,6 +200,14 @@ public:
 	///
 	void updateMetrics(bool singlepar = false);
 
+	///
+	CoordCache & coordCache() {
+		return coord_cache_;
+	}
+	///
+	CoordCache const & coordCache() const {
+		return coord_cache_;
+	}
 	/// get this view's keyboard map handler
 	Intl & getIntl() { return *intl_.get(); }
 	///
@@ -238,7 +247,7 @@ private:
 
 	///
 	ViewMetricsInfo metrics_info_;
-
+	CoordCache coord_cache_;
 	///
 	Buffer * buffer_;
 

@@ -327,30 +327,30 @@ bool InsetBase::editing(BufferView * bv) const
 }
 
 
-int InsetBase::xo() const
+int InsetBase::xo(BufferView & bv) const
 {
-	return theCoords.getInsets().x(this);
+	return bv.coordCache().getInsets().x(this);
 }
 
 
-int InsetBase::yo() const
+int InsetBase::yo(BufferView & bv) const
 {
-	return theCoords.getInsets().y(this);
+	return bv.coordCache().getInsets().y(this);
 }
 
 
-bool InsetBase::covers(int x, int y) const
+bool InsetBase::covers(BufferView & bv, int x, int y) const
 {
 	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y
-	//	<< " xo: " << xo() << " yo: " << yo()
-	//	<< " x1: " << xo() << " x2: " << xo() + width()
-	//	<< " y1: " << yo() - ascent() << " y2: " << yo() + descent()
+	//	<< " xo: " << xo(bv) << " yo: " << yo()
+	//	<< " x1: " << xo(bv) << " x2: " << xo() + width()
+	//	<< " y1: " << yo(bv) - ascent() << " y2: " << yo() + descent()
 	//	<< std::endl;
-	return theCoords.getInsets().has(this)
-			&& x >= xo()
-			&& x <= xo() + width()
-			&& y >= yo() - ascent()
-			&& y <= yo() + descent();
+	return bv.coordCache().getInsets().has(this)
+			&& x >= xo(bv)
+			&& x <= xo(bv) + width()
+			&& y >= yo(bv) - ascent()
+			&& y <= yo(bv) + descent();
 }
 
 

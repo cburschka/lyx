@@ -19,11 +19,11 @@
 #include "MathSupport.h"
 #include "MathReplace.h"
 
-#include "coordcache.h"
-#include "LColor.h"
+#include "BufferView.h"
 #include "buffer.h"
 #include "cursor.h"
 #include "debug.h"
+#include "LColor.h"
 
 #include "frontends/Painter.h"
 
@@ -275,7 +275,7 @@ void MathArray::metrics(MetricsInfo & mi) const
 void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
-	setXY(x, y);
+	setXY(*pi.base.bv, x, y);
 
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
@@ -309,7 +309,8 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 			}
 		}
 #endif
-		theCoords.insets().add(at.nucleus(), x, y);
+		//BufferView & bv  = *pi.base.bv;
+		pi.base.bv->coordCache().insets().add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
 		x += at->width();
@@ -331,7 +332,22 @@ void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 void MathArray::drawT(TextPainter & pain, int x, int y) const
 {
 	//lyxerr << "x: " << x << " y: " << y << ' ' << pain.workAreaHeight() << endl;
-	setXY(x, y);
+
+	// FIXME: Abdel 13/10/2006
+	// The setXV() call below is commented out for now because
+	// we don't have access to a BufferView at this level.
+	// In any case, this drawT() method is never used, this is dead code.
+	//
+	/* Georg explanation of current situation:
+	AFAIK the text painter was used to export math formulas as ASCII art.
+	Therefore the setXY() call makes sense. Imagine that the text painter is
+	like a real painter, but operating on a very coarse grid of character cells
+	where each cell can be filled with an ASCII character.
+	I don't know why it is currently disabled. I do know that we have a bugzilla
+	request for reenabling it. I believe only Andre can tell whether that is
+	doable or whether the whole drawT machinery should be removed.	
+	*/
+	//setXY(bv, x, y);
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->drawT(pain, x, y);
@@ -402,13 +418,13 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 }
 
 
-int MathArray::dist(int x, int y) const
+int MathArray::dist(BufferView & bv, int x, int y) const
 {
 	int xx = 0;
 	int yy = 0;
 
-	const int xo_ = xo();
-	const int yo_ = yo();
+	const int xo_ = xo(bv);
+	const int yo_ = yo(bv);
 
 	if (x < xo_)
 		xx = xo_ - x;
@@ -424,20 +440,20 @@ int MathArray::dist(int x, int y) const
 }
 
 
-void MathArray::setXY(int x, int y) const
+void MathArray::setXY(BufferView & bv, int x, int y) const
 {
 	//lyxerr << "setting position cache for MathArray " << this << std::endl;
-	theCoords.arrays().add(this, x, y);
+	bv.coordCache().arrays().add(this, x, y);
 }
 
 
-int MathArray::xo() const
+int MathArray::xo(BufferView & bv) const
 {
-	return theCoords.getArrays().x(this);
+	return bv.coordCache().getArrays().x(this);
 }
 
 
-int MathArray::yo() const
+int MathArray::yo(BufferView & bv) const
 {
-	return theCoords.getArrays().y(this);
+	return bv.coordCache().getArrays().y(this);
 }

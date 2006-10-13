@@ -150,6 +150,4 @@ private:
 	SliceCache slices1_;
 };
 
-extern CoordCache theCoords;
-
 #endif

@@ -97,7 +97,7 @@ private:
 	LyXFont const getLabelFont() const;
 
 	/// bufferview to paint on
-	BufferView const & bv_;
+	BufferView & bv_;
 
 	/// Painter to use
 	Painter & pain_;
@@ -173,7 +173,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 		font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || isDeletedText(par_, pos);
-	theCoords.insets().add(inset, int(x_), yo_);
+	bv_.coordCache().insets().add(inset, int(x_), yo_);
 	InsetText const * const in = inset->asTextInset();
 	// non-wide insets are painted completely. Recursive
 	bool tmp = refreshInside;
@@ -828,7 +828,7 @@ void paintPar
 	static PainterInfo nullpi(pi.base.bv, nop);
 	int const ww = pi.base.bv->workHeight();
 
-	theCoords.parPos()[&text][pit] = Point(x, y);
+	pi.base.bv->coordCache().parPos()[&text][pit] = Point(x, y);
 
 	Paragraph const & par = text.paragraphs()[pit];
 	if (par.rows().empty())
@@ -913,7 +913,7 @@ void paintPar
 } // namespace anon
 
 
-void paintText(BufferView const & bv, ViewMetricsInfo const & vi,
+void paintText(BufferView & bv, ViewMetricsInfo const & vi,
 	       Painter & pain)
 {
 	LyXText & text = bv.buffer()->text();
@@ -948,13 +948,13 @@ void paintText(BufferView const & bv, ViewMetricsInfo const & vi,
 
 	if (vi.p1 > 0) {
 		text.redoParagraph(vi.p1 - 1);
-		theCoords.parPos()[&text][vi.p1 - 1] =
+		bv.coordCache().parPos()[&text][vi.p1 - 1] =
 			Point(0, vi.y1 - text.getPar(vi.p1 - 1).descent());
 	}
 
 	if (vi.p2 < lyx::pit_type(text.paragraphs().size()) - 1) {
 		text.redoParagraph(vi.p2 + 1);
-		theCoords.parPos()[&text][vi.p2 + 1] =
+		bv.coordCache().parPos()[&text][vi.p2 + 1] =
 			Point(0, vi.y2 + text.getPar(vi.p2 + 1).ascent());
 	}
 

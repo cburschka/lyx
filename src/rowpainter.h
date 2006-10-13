@@ -29,7 +29,7 @@ class Painter;
 
 
 /// paint visible paragraph of main text
-void paintText(BufferView const & bv, ViewMetricsInfo const & vi,
+void paintText(BufferView & bv, ViewMetricsInfo const & vi,
 			   lyx::frontend::Painter & painter);
 
 /// paint the rows of a text inset

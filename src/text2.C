@@ -128,21 +128,21 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 			<< BOOST_CURRENT_FUNCTION
 			<< ": examining inset " << inset << endl;
 
-		if (theCoords.getInsets().has(inset))
+		if (bv()->coordCache().getInsets().has(inset))
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
-				<< ": xo: " << inset->xo() << "..."
-				<< inset->xo() + inset->width()
-				<< " yo: " << inset->yo() - inset->ascent()
+				<< ": xo: " << inset->xo(*bv()) << "..."
+				<< inset->xo(*bv()) + inset->width()
+				<< " yo: " << inset->yo(*bv()) - inset->ascent()
 				<< "..."
-				<< inset->yo() + inset->descent()
+				<< inset->yo(*bv()) + inset->descent()
 				<< endl;
 		else
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
 				<< ": inset has no cached position" << endl;
 #endif
-		if (inset->covers(x, y)) {
+		if (inset->covers(*bv(), x, y)) {
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
 				<< ": Hit inset: " << inset << endl;
@@ -777,7 +777,7 @@ void LyXText::setCurrentFont(LCursor & cur)
 pos_type LyXText::getColumnNearX(pit_type const pit,
 				 Row const & row, int & x, bool & boundary) const
 {
-	int const xo = theCoords.get(this, pit).x_;
+	int const xo = bv()->coordCache().get(this, pit).x_;
 	x -= xo;
 	RowMetrics const r = computeRowMetrics(pit, row);
 	Paragraph const & par = pars_[pit];
@@ -913,8 +913,8 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 pit_type LyXText::getPitNearY(int y) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
-	BOOST_ASSERT(theCoords.getParPos().find(this) != theCoords.getParPos().end());
-	CoordCache::InnerParPosCache const & cc = theCoords.getParPos().find(this)->second;
+	BOOST_ASSERT(bv()->coordCache().getParPos().find(this) != bv()->coordCache().getParPos().end());
+	CoordCache::InnerParPosCache const & cc = bv()->coordCache().getParPos().find(this)->second;
 	lyxerr[Debug::DEBUG]
 		<< BOOST_CURRENT_FUNCTION
 		<< ": y: " << y << " cache size: " << cc.size()
@@ -950,7 +950,7 @@ pit_type LyXText::getPitNearY(int y) const
 Row const & LyXText::getRowNearY(int y, pit_type pit) const
 {
 	Paragraph const & par = pars_[pit];
-	int yy = theCoords.get(this, pit).y_ - par.ascent();
+	int yy = bv()->coordCache().get(this, pit).y_ - par.ascent();
 	BOOST_ASSERT(!par.rows().empty());
 	RowList::const_iterator rit = par.rows().begin();
 	RowList::const_iterator const rlast = boost::prior(par.rows().end());
@@ -1085,7 +1085,7 @@ bool LyXText::cursorUp(LCursor & cur)
 		row = par.pos2row(cur.pos());
 
 	if (!cur.selection()) {
-		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
+		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
 		LCursor old = cur;
 		// Go to middle of previous row. 16 found to work OK;
 		// 12 = top/bottom margin of display math
@@ -1134,7 +1134,7 @@ bool LyXText::cursorDown(LCursor & cur)
 		row = par.pos2row(cur.pos());
 
 	if (!cur.selection()) {
-		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
+		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
 		LCursor old = cur;
 		// To middle of next row
 		int const margin = 3 * InsetMathHull::displayMargin() / 2;

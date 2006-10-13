@@ -1147,12 +1147,12 @@ void InsetTabular::cursorPos
 }
 
 
-int InsetTabular::dist(idx_type const cell, int x, int y) const
+int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 {
 	int xx = 0;
 	int yy = 0;
 	InsetBase const & inset = *tabular.getCellInset(cell);
-	Point o = theCoords.getInsets().xy(&inset);
+	Point o = bv.coordCache().getInsets().xy(&inset);
 	int const xbeg = o.x_ - tabular.getBeginningOfTextInCell(cell);
 	int const xend = xbeg + tabular.getWidthOfColumn(cell);
 	row_type const row = tabular.row_of_cell(cell);
@@ -1183,7 +1183,7 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
 	cur.selection() = false;
 	cur.push(*this);
-	cur.idx() = getNearestCell(x, y);
+	cur.idx() = getNearestCell(cur.bv(), x, y);
 	resetPos(cur);
 	return cell(cur.idx())->text_.editXY(cur, x, y);
 }
@@ -1191,18 +1191,18 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y)
 
 void InsetTabular::setCursorFromCoordinates(LCursor & cur, int x, int y) const
 {
-	cur.idx() = getNearestCell(x, y);
+	cur.idx() = getNearestCell(cur.bv(), x, y);
 	cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
 }
 
 
-InsetTabular::idx_type InsetTabular::getNearestCell(int x, int y) const
+InsetTabular::idx_type InsetTabular::getNearestCell(BufferView & bv, int x, int y) const
 {
 	idx_type idx_min = 0;
 	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0, n = nargs(); i != n; ++i) {
-		if (theCoords.getInsets().has(tabular.getCellInset(i).get())) {
-			int const d = dist(i, x, y);
+		if (bv.coordCache().getInsets().has(tabular.getCellInset(i).get())) {
+			int const d = dist(bv, i, x, y);
 			if (d < dist_min) {
 				dist_min = d;
 				idx_min = i;
@@ -1238,7 +1238,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 		int const X1 = 0;
 		int const X2 = maxwidth;
 		int const offset = ADD_TO_TABULAR_WIDTH + 2;
-		int const x1 = xo() + getCellXPos(cur.idx()) + offset;
+		int const x1 = xo(cur.bv()) + getCellXPos(cur.idx()) + offset;
 		int const x2 = x1 + tabular.getWidthOfColumn(cur.idx());
 
 		if (x1 < X1)

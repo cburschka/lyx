@@ -15,6 +15,7 @@
 
 #include "inset.h"
 
+#include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lyxtext.h"
@@ -67,8 +68,8 @@ int InsetOld::width() const
 }
 
 
-void InsetOld::setPosCache(PainterInfo const &, int x, int y) const
+void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
-	theCoords.insets().add(this, x, y);
+	pi.base.bv->coordCache().insets().add(this, x, y);
 }

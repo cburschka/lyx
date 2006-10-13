@@ -44,6 +44,7 @@
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "lyxtext.h"
 #include "outputparams.h"
 #include "undo.h"
 
@@ -106,7 +107,8 @@ void InsetMathNest::cursorPos(CursorSlice const & sl, bool /*boundary*/,
 // absolute again when actually drawing the cursor. What a mess.
 	BOOST_ASSERT(ptr_cmp(&sl.inset(), this));
 	MathArray const & ar = sl.cell();
-	if (!theCoords.getArrays().has(&ar)) {
+	CoordCache & coord_cache = sl.text()->bv()->coordCache();
+	if (!coord_cache.getArrays().has(&ar)) {
 		// this can (semi-)legally happen if we just created this cell
 		// and it never has been drawn before. So don't ASSERT.
 		//lyxerr << "no cached data for array " << &ar << endl;
@@ -114,15 +116,15 @@ void InsetMathNest::cursorPos(CursorSlice const & sl, bool /*boundary*/,
 		y = 0;
 		return;
 	}
-	Point const pt = theCoords.getArrays().xy(&ar);
-	if (!theCoords.getInsets().has(this)) {
+	Point const pt = coord_cache.getArrays().xy(&ar);
+	if (!coord_cache.getInsets().has(this)) {
 		// same as above
 		//lyxerr << "no cached data for inset " << this << endl;
 		x = 0;
 		y = 0;
 		return;
 	}
-	Point const pt2 = theCoords.getInsets().xy(this);
+	Point const pt2 = coord_cache.getInsets().xy(this);
 	//lyxerr << "retrieving position cache for MathArray "
 	//	<< pt.x_ << ' ' << pt.y_ << std::endl;
 	x = pt.x_ - pt2.x_ + ar.pos2x(sl.pos());
@@ -225,8 +227,9 @@ void InsetMathNest::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 {
+	BufferView & bv = *pi.base.bv;
 	// this should use the x/y values given, not the cached values
-	LCursor & cur = pi.base.bv->cursor();
+	LCursor & cur = bv.cursor();
 	if (!cur.selection())
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
@@ -240,14 +243,15 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();
+
 	//lyxerr << "InsetMathNest::drawing selection: "
 	//	<< " s1: " << s1 << " s2: " << s2 << endl;
 	if (s1.idx() == s2.idx()) {
 		MathArray const & c = cell(s1.idx());
-		int x1 = c.xo() + c.pos2x(s1.pos());
-		int y1 = c.yo() - c.ascent();
-		int x2 = c.xo() + c.pos2x(s2.pos());
-		int y2 = c.yo() + c.descent();
+		int x1 = c.xo(bv) + c.pos2x(s1.pos());
+		int y1 = c.yo(bv) - c.ascent();
+		int x2 = c.xo(bv) + c.pos2x(s2.pos());
+		int y2 = c.yo(bv) + c.descent();
 		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	//lyxerr << "InsetMathNest::drawing selection 3: "
 	//	<< " x1: " << x1 << " x2: " << x2
@@ -256,10 +260,10 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
 				MathArray const & c = cell(i);
-				int x1 = c.xo();
-				int y1 = c.yo() - c.ascent();
-				int x2 = c.xo() + c.width();
-				int y2 = c.yo() + c.descent();
+				int x1 = c.xo(bv);
+				int y1 = c.yo(bv) - c.ascent();
+				int x2 = c.xo(bv) + c.width();
+				int y2 = c.yo(bv) + c.descent();
 				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 			}
 		}
@@ -1075,7 +1079,7 @@ InsetBase * InsetMathNest::editXY(LCursor & cur, int x, int y)
 	int idx_min = 0;
 	int dist_min = 1000000;
 	for (idx_type i = 0, n = nargs(); i != n; ++i) {
-		int const d = cell(i).dist(x, y);
+		int const d = cell(i).dist(cur.bv(), x, y);
 		if (d < dist_min) {
 			dist_min = d;
 			idx_min = i;
@@ -1084,12 +1088,13 @@ InsetBase * InsetMathNest::editXY(LCursor & cur, int x, int y)
 	MathArray & ar = cell(idx_min);
 	cur.push(*this);
 	cur.idx() = idx_min;
-	cur.pos() = ar.x2pos(x - ar.xo());
+	cur.pos() = ar.x2pos(x - ar.xo(cur.bv()));
+
 	//lyxerr << "found cell : " << idx_min << " pos: " << cur.pos() << endl;
 	if (dist_min == 0) {
 		// hit inside cell
 		for (pos_type i = 0, n = ar.size(); i < n; ++i)
-			if (ar[i]->covers(x, y))
+			if (ar[i]->covers(cur.bv(), x, y))
 				return ar[i].nucleus()->editXY(cur, x, y);
 	}
 	return this;

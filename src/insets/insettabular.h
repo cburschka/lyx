@@ -192,9 +192,9 @@ private:
 	bool tablemode(LCursor & cur) const;
 
 	/// return the "Manhattan distance" to nearest corner
-	int dist(idx_type cell, int x, int y) const;
+	int dist(BufferView &, idx_type cell, int x, int y) const;
 	/// return the cell nearest to x, y
-	idx_type getNearestCell(int x, int y) const;
+	idx_type getNearestCell(BufferView &, int x, int y) const;
 
 	///
 	Buffer const * buffer_;

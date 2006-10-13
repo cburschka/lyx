@@ -19,8 +19,6 @@
 #include <boost/assert.hpp>
 
 
-CoordCache theCoords;
-
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {

@@ -103,7 +103,6 @@ using std::vector;
 
 namespace Alert = lyx::frontend::Alert;
 
-
 namespace {
 
 unsigned int const saved_positions_num = 20;
@@ -335,7 +334,7 @@ bool BufferView::fitCursor()
 			theFontMetrics(cursor_.getFont());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
-		Point const p = bv_funcs::getPos(cursor_, cursor_.boundary());
+		Point const p = bv_funcs::getPos(*this, cursor_, cursor_.boundary());
 		if (p.y_ - asc >= 0 && p.y_ + des < height_)
 			return false;
 	}
@@ -491,7 +490,7 @@ void BufferView::setCursorFromScrollbar()
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_INSIDE:
-		int const y = bv_funcs::getPos(cur, cur.boundary()).y_;
+		int const y = bv_funcs::getPos(*this, cur, cur.boundary()).y_;
 		int const newy = min(last, max(y, first));
 		if (y != newy) {
 			cur.reset(buffer_->inset());
@@ -1261,7 +1260,7 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 void BufferView::updateMetrics(bool singlepar)
 {
 	// Remove old position cache
-	theCoords.clear();
+	coord_cache_.clear();
 	LyXText & buftext = buffer_->text();
 	lyx::pit_type size = int(buftext.paragraphs().size());
 
@@ -1325,7 +1324,7 @@ void BufferView::updateMetrics(bool singlepar)
 
 	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
-	CoordCache::InnerParPosCache & parPos = theCoords.parPos()[&buftext];
+	CoordCache::InnerParPosCache & parPos = coord_cache_.parPos()[&buftext];
 	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
 		Paragraph const & par = buftext.getPar(pit);
 		y += par.ascent();

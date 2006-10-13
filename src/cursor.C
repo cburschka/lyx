@@ -98,7 +98,7 @@ namespace {
 			int xo;
 			int yo;
 			InsetBase const * inset = &it.inset();
-			Point o = theCoords.getInsets().xy(inset);
+			Point o = c.bv().coordCache().getInsets().xy(inset);
 			inset->cursorPos(it.top(), c.boundary(), xo, yo);
 			// Convert to absolute
 			xo += o.x_;
@@ -126,8 +126,10 @@ namespace {
 	{
 		BOOST_ASSERT(!cursor.empty());
 		InsetBase & inset = cursor[0].inset();
+		BufferView & bv = cursor.bv();
 
-		CoordCache::InnerParPosCache const & cache = theCoords.getParPos().find(cursor.bottom().text())->second;
+		CoordCache::InnerParPosCache const & cache =
+			bv.coordCache().getParPos().find(cursor.bottom().text())->second;
 		// Get an iterator on the first paragraph in the cache
 		DocIterator it(inset);
 		it.push_back(CursorSlice(inset));
@@ -147,7 +149,7 @@ namespace {
 		for ( ; it != et; it.forwardPos(true)) {
 			// avoid invalid nesting when selecting
 			if (!cursor.selection() || positionable(it, cursor.anchor_)) {
-				Point p = bv_funcs::getPos(it, false);
+				Point p = bv_funcs::getPos(bv, it, false);
 				int xo = p.x_;
 				int yo = p.y_;
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
@@ -204,7 +206,7 @@ namespace {
 			// avoid invalid nesting when selecting
 			if (bv_funcs::status(&bv, it) == bv_funcs::CUR_INSIDE
 			    && (!cur.selection() || positionable(it, cur.anchor_))) {
-				Point p = bv_funcs::getPos(it, false);
+				Point p = bv_funcs::getPos(bv, it, false);
 				int xo = p.x_;
 				int yo = p.y_;
 				if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
@@ -383,7 +385,7 @@ int LCursor::currentMode()
 
 void LCursor::getPos(int & x, int & y) const
 {
-	Point p = bv_funcs::getPos(*this, boundary());
+	Point p = bv_funcs::getPos(bv(), *this, boundary());
 	x = p.x_;
 	y = p.y_;
 }

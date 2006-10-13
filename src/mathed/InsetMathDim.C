@@ -11,8 +11,11 @@
 #include <config.h>
 
 #include "InsetMathDim.h"
+
+#include "BufferView.h"
 #include "coordcache.h"
 #include "debug.h"
+#include "metricsinfo.h"
 
 
 InsetMathDim::InsetMathDim()
@@ -37,8 +40,8 @@ int InsetMathDim::width() const
 }
 
 
-void InsetMathDim::setPosCache(PainterInfo const &, int x, int y) const
+void InsetMathDim::setPosCache(PainterInfo const & pi, int x, int y) const
 {
 	//lyxerr << "InsetMathDim: cache to " << x << " " << y << std::endl;
-	theCoords.insets().add(this, x, y);
+	pi.base.bv->coordCache().insets().add(this, x, y);
 }

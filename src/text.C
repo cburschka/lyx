@@ -2063,17 +2063,19 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	DocIterator beg = cur.selectionBegin();
 	DocIterator end = cur.selectionEnd();
 
+	BufferView * bv = pi.base.bv;
+
 	// the selection doesn't touch the visible screen
-	if (bv_funcs::status(pi.base.bv, beg) == bv_funcs::CUR_BELOW
-	    || bv_funcs::status(pi.base.bv, end) == bv_funcs::CUR_ABOVE)
+	if (bv_funcs::status(bv, beg) == bv_funcs::CUR_BELOW
+	    || bv_funcs::status(bv, end) == bv_funcs::CUR_ABOVE)
 		return;
 
 	Paragraph const & par1 = pars_[beg.pit()];
 	Paragraph const & par2 = pars_[end.pit()];
 
-	bool const above = (bv_funcs::status(pi.base.bv, beg)
+	bool const above = (bv_funcs::status(bv, beg)
 			    == bv_funcs::CUR_ABOVE);
-	bool const below = (bv_funcs::status(pi.base.bv, end)
+	bool const below = (bv_funcs::status(bv, end)
 			    == bv_funcs::CUR_BELOW);
 	int y1,y2,x1,x2;
 	if (above) {
@@ -2083,7 +2085,7 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		x2 = dim_.wid;
 	} else {
 		Row const & row1 = par1.getRow(beg.pos(), beg.boundary());
-		y1 = bv_funcs::getPos(beg, beg.boundary()).y_ - row1.ascent();
+		y1 = bv_funcs::getPos(*bv, beg, beg.boundary()).y_ - row1.ascent();
 		y2 = y1 + row1.height();
 		int const startx = cursorX(beg.top(), beg.boundary());
 		x1 = !isRTL(par1) ? startx : 0;
@@ -2092,13 +2094,13 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 
 	int Y1,Y2,X1,X2;
 	if (below) {
-		Y1 = pi.base.bv->workHeight();
-		Y2 = pi.base.bv->workHeight();
+		Y1 = bv->workHeight();
+		Y2 = bv->workHeight();
 		X1 = 0;
 		X2 = dim_.wid;
 	} else {
 		Row const & row2 = par2.getRow(end.pos(), end.boundary());
-		Y1 = bv_funcs::getPos(end, end.boundary()).y_ - row2.ascent();
+		Y1 = bv_funcs::getPos(*bv, end, end.boundary()).y_ - row2.ascent();
 		Y2 = Y1 + row2.height();
 		int const endx = cursorX(end.top(), end.boundary());
 		X1 = !isRTL(par2) ? 0 : endx;
@@ -2549,7 +2551,7 @@ bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 {
 	BOOST_ASSERT(this == cur.text());
 	pit_type pit = getPitNearY(y);
-	int yy = theCoords.get(this, pit).y_ - pars_[pit].ascent();
+	int yy = cur.bv().coordCache().get(this, pit).y_ - pars_[pit].ascent();
 	lyxerr[Debug::DEBUG]
 		<< BOOST_CURRENT_FUNCTION
 		<< ": x: " << x
