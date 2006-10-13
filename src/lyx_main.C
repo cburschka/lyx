@@ -1036,7 +1036,7 @@ int parse_export(string const & type, string const &)
 		exit(1);
 	}
 	batch = "buffer-export " + type;
-	lyx::use_gui = true;
+	lyx::use_gui = false;
 	return 1;
 }
 

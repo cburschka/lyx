@@ -74,6 +74,9 @@ using std::istringstream;
 
 bool has_math_fonts;
 
+namespace lyx {
+extern bool use_gui;
+}
 
 namespace {
 
@@ -227,7 +230,8 @@ void initMath()
 	if (!initialized) {
 		initialized = true;
 		initParser();
-		initSymbols();
+		if (lyx::use_gui)
+			initSymbols();
 	}
 }
 
