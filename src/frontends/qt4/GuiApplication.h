@@ -52,7 +52,7 @@ class GuiApplication : public QApplication, public Application
 public:
 	GuiApplication(int & argc, char ** argv);
 	///
-	virtual ~GuiApplication() {}
+	virtual ~GuiApplication();
 
 	/// Method inherited from \c Application class
 	//@{

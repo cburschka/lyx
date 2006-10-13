@@ -81,6 +81,13 @@ lyx::frontend::Application * createApplication(int & argc, char * argv[])
 
 namespace frontend {
 
+
+GuiApplication::~GuiApplication()
+{
+	socket_callbacks_.clear();
+}
+
+
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application(argc, argv)
 {
