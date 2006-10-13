@@ -1,4 +1,4 @@
-#LyX 1.4.2svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -890,7 +890,7 @@ Notes: The document class
 \family sans
 aa
 \family default
- (Version 5.01) can be used to write articles for submission to the  scientific
+ (Version 5.01) can be used to write articles for submission to the scientific
  journal 
 \emph on
 Astronomy and Astrophysics
@@ -2216,6 +2216,35 @@ WWW:
 
 \end_layout
 
+\begin_layout Subsection
+International Society for Photogrammetry and Remote Sensing
+\end_layout
+
+\begin_layout Description
+Found @chk_isprs@
+\end_layout
+
+\begin_layout Description
+CTAN: N/A
+\end_layout
+
+\begin_layout Description
+Notes: 
+\family sans
+isprs
+\family default
+ can be used for writing articles for this Society's journals.
+\end_layout
+
+\begin_layout Description
+WWW: 
+\begin_inset LatexCommand \url{http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Required packages
 \end_layout
@@ -2452,23 +2481,20 @@ booktabs
 \end_layout
 
 \begin_layout Description
-
 Found: @chk_booktabs@
 \end_layout
 
 \begin_layout Description
-
 CTAN: 
-\family typewriter 
+\family typewriter
 macros/latex/contrib/booktabs/
 \end_layout
 
 \begin_layout Description
-
 Notes: The package 
-\family sans 
+\family sans
 booktabs
-\family default 
+\family default
  is needed by LyX to be able to output correctly formal tables.
 \end_layout
 
