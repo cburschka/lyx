@@ -83,6 +83,13 @@ string convert<string>(unsigned long ul)
 
 
 template<>
+docstring convert<docstring>(unsigned long ul)
+{
+	return lyx::from_ascii(lexical_cast<string>(ul));
+}
+
+
+template<>
 string convert<string>(long l)
 {
 	return lexical_cast<string>(l);
