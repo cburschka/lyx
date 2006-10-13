@@ -264,7 +264,12 @@ int LyX::priv_exec(int & argc, char * argv[])
 		theApp = 0;
 	}
 
-	return exec2(argc, argv);
+	int exit_status = exec2(argc, argv);
+
+	if (lyx::use_gui)
+		application_.reset();
+
+	return exit_status;
 }
 
 
