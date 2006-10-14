@@ -41,6 +41,7 @@ public:
 } // namespace frontend
 } // namespace lyx
 
+/// Implementation is in Application.C
 extern lyx::frontend::FontLoader & theFontLoader();
 
 #endif // QFONT_LOADER_H

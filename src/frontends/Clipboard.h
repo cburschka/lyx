@@ -44,6 +44,7 @@ public:
 } // namespace frontend
 } // namespace lyx
 
+/// Implementation is in Application.C
 extern lyx::frontend::Clipboard & theClipboard();
 
 #endif // BASE_CLIPBOARD_H

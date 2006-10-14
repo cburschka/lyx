@@ -48,6 +48,7 @@ public:
 } // namespace frontend
 } // namespace lyx
 
+/// Implementation is in Application.C
 extern lyx::frontend::Selection & theSelection();
 
 #endif // BASE_SELECTION_H

@@ -99,6 +99,7 @@ private:
 	void emergencyWrite(Buffer * buf);
 };
 
+/// Implementation is in lyx_main.C
 extern BufferList & theBufferList();
 
 #endif // BUFFERLIST_H

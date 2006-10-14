@@ -119,8 +119,10 @@ extern LyXFunc & theLyXFunc();
 
 namespace lyx {
 
+/// Implementation is in frontends/Application.C
 extern FuncStatus getStatus(FuncRequest const & action);
 
+/// Implementation is in frontends/Application.C
 extern void dispatch(FuncRequest const & action);
 }
 
