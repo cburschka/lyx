@@ -21,8 +21,6 @@
 #include "paragraph.h"
 #include "ParagraphList.h"
 
-#include "frontends/FontMetrics.h"
-
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 #include "support/convert.h"
@@ -37,10 +35,6 @@ using std::ostream;
 
 int InsetBibitem::key_counter = 0;
 string const key_prefix = "key-";
-
-namespace lyx {
-extern bool use_gui;
-}
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem"), counter(1)
@@ -145,11 +139,11 @@ int InsetBibitem::plaintext(Buffer const &, lyx::odocstream & os,
 docstring const bibitemWidest(Buffer const & buffer)
 {
 	int w = 0;
-	// Does look like a hack? It is! (but will change at 0.13)
 
 	InsetBibitem const * bitem = 0;
+
 	// FIXME: this font is used unitialized for now but should  be set to
-	// a proportional font. Here is what Georg has to say about it:
+	// a proportional font. Here is what Georg Baum has to say about it:
 	/*
 	bibitemWidest() is supposed to find the bibitem with the widest label in the 
 	output, because that is needed as an argument of the bibliography 
@@ -178,12 +172,17 @@ docstring const bibitemWidest(Buffer const & buffer)
 		if (it->bibitem()) {
 			docstring const label = it->bibitem()->getBibLabel();
             
-			// FIXME 1: we can't be sure using the following that the GUI
+			// FIXME: we can't be sure using the following that the GUI
 			// version and the command-line version will give the same 
 			// result.
-			// FIXME 2: this use_gui test should be transfered to the frontend.
-			int const wx = lyx::use_gui?
-				theFontMetrics(font).width(label): label.size();
+			//
+			//int const wx = lyx::use_gui?
+			//	theFontMetrics(font).width(label): label.size();
+			//
+			// So for now we just use the label size in order to be sure
+			// that GUI and no-GUI gives the same bibitem (even if that is 
+			// potentially the wrong one.
+			int const wx = label.size();
 
 			if (wx > w) {
 				w = wx;
