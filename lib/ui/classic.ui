@@ -401,8 +401,6 @@ Menuset
 # HELP MENU
 #
 	Menu "help"
-		Item "Tooltips|o" "tooltips-toggle"
-	    Separator
 		Item "Introduction|I" "help-open Intro"
 		Item "Tutorial|T" "help-open Tutorial"
 		Item "User's Guide|U" "help-open UserGuide"
