@@ -160,30 +160,35 @@ void dispatch(FuncRequest const & action)
 
 LyXFunc & theLyXFunc()
 {
+	BOOST_ASSERT(theApp);
 	return theApp->lyxFunc();
 }
 
 
 lyx::frontend::FontLoader & theFontLoader()
 {
+	BOOST_ASSERT(theApp);
 	return theApp->fontLoader();
 }
 
 
 lyx::frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
 {
+	BOOST_ASSERT(theApp);
 	return theApp->fontLoader().metrics(f);
 }
 
 
 lyx::frontend::Clipboard & theClipboard()
 {
+	BOOST_ASSERT(theApp);
 	return theApp->clipboard();
 }
 
 
 lyx::frontend::Selection & theSelection()
 {
+	BOOST_ASSERT(theApp);
 	return theApp->selection();
 }
 
