@@ -38,6 +38,9 @@ using std::ostream;
 int InsetBibitem::key_counter = 0;
 string const key_prefix = "key-";
 
+namespace lyx {
+extern bool use_gui;
+}
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem"), counter(1)
@@ -145,9 +148,28 @@ docstring const bibitemWidest(Buffer const & buffer)
 	// Does look like a hack? It is! (but will change at 0.13)
 
 	InsetBibitem const * bitem = 0;
-	// FIXME font is used unitialized, is that correct?
+	// FIXME: this font is used unitialized for now but should  be set to
+	// a proportional font. Here is what Georg has to say about it:
+	/*
+	bibitemWidest() is supposed to find the bibitem with the widest label in the 
+	output, because that is needed as an argument of the bibliography 
+	environment to dtermine the correct indentation. To be 100% correct we 
+	would need the metrics of the font that is used in the output, but usually 
+	we don't have access to these.
+	In practice, any proportional font is probably good enough, since we don't 
+	need to know the final with, we only need to know the which label is the 
+	widest.
+	Unless there is an easy way to get the metrics of the output font I suggest 
+	to use a hardcoded font like "Times" or so.
+
+	It is very important that the result of this function is the same both with 
+	and without GUI. After thinking about this it is clear that no LyXFont 
+	metrics should be used here, since these come from the gui. If we can't 
+	easily get the LaTeX font metrics we should make our own poor mans front 
+	metrics replacement, e.g. by hardcoding the metrics of the standard TeX 
+	font.
+	*/
 	LyXFont font;
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
@@ -155,9 +177,14 @@ docstring const bibitemWidest(Buffer const & buffer)
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
 			docstring const label = it->bibitem()->getBibLabel();
-                    
-			int const wx =
-				fm.width(label);
+            
+			// FIXME 1: we can't be sure using the following that the GUI
+			// version and the command-line version will give the same 
+			// result.
+			// FIXME 2: this use_gui test should be transfered to the frontend.
+			int const wx = lyx::use_gui?
+				theFontMetrics(font).width(label): label.size();
+
 			if (wx > w) {
 				w = wx;
 				bitem = it->bibitem();
