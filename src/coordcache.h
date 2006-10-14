@@ -11,6 +11,9 @@
 #ifndef COORDCACHE_H
 #define COORDCACHE_H
 
+// It seems that MacOSX define the check macro.
+#undef check
+
 class InsetBase;
 class LyXText;
 class MathArray;
