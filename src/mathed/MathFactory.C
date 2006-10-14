@@ -87,6 +87,9 @@ WordList theWordList;
 
 bool math_font_available(string & name)
 {
+	if (!lyx::use_gui)
+		return false;
+
 	LyXFont f;
 	augmentFont(f, name);
 
@@ -230,8 +233,7 @@ void initMath()
 	if (!initialized) {
 		initialized = true;
 		initParser();
-		if (lyx::use_gui)
-			initSymbols();
+		initSymbols();
 	}
 }
 
