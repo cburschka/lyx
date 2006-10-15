@@ -31,7 +31,7 @@ namespace {
 
 /// return the Qt form of the label
 docstring const getLabel(docstring const & ucs4str) {
-	// FIXME UNICOE
+	// FIXME UNICODE
 	string str = lyx::to_utf8(ucs4str);
 	string label;
 	string sc(split(str, label, '|'));

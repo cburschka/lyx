@@ -72,12 +72,12 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 			break;
 		}
 	}
-	// FIXME UNIOCDE
+	// FIXME UNICODE
 	temp += lyx::from_utf8(getContents());
 
 	if (!isLatex && !getOptions().empty()) {
 		temp += "||";
-		// FIXME UNIOCDE
+		// FIXME UNICODE
 		temp += lyx::from_utf8(getOptions());
 	}
 	return temp;
@@ -100,7 +100,7 @@ int InsetRef::latex(Buffer const &, ostream & os,
 int InsetRef::plaintext(Buffer const &, lyx::odocstream & os,
 		    OutputParams const &) const
 {
-	// FIXME UNIOCDE
+	// FIXME UNICODE
 	os << '[' << lyx::from_utf8(getContents()) << ']';
 	return 0;
 }
