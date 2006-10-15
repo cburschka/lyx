@@ -74,9 +74,6 @@ using std::istringstream;
 
 bool has_math_fonts;
 
-namespace lyx {
-extern bool use_gui;
-}
 
 namespace {
 
@@ -87,9 +84,6 @@ WordList theWordList;
 
 bool math_font_available(string & name)
 {
-	if (!lyx::use_gui)
-		return false;
-
 	LyXFont f;
 	augmentFont(f, name);
 

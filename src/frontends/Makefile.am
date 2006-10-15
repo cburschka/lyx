@@ -18,6 +18,8 @@ libfrontends_la_SOURCES = \
 	Alert_pimpl.h \
 	Application.C \
 	Application.h \
+	NoGuiFontLoader.h \
+	NoGuiFontMetrics.h \
 	Dialogs.C \
 	Dialogs.h \
 	FileDialog.h \

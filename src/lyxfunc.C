@@ -146,9 +146,6 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
 
-namespace lyx {
-extern bool use_gui;
-}
 
 namespace {
 

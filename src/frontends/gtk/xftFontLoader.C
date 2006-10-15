@@ -38,10 +38,6 @@
 using std::endl;
 using std::string;
 
-namespace lyx {
-extern bool use_gui;
-}
-
 // The global fontLoader
 xftFontLoader fontLoader;
 
@@ -192,9 +188,6 @@ XftFont * xftFontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 bool xftFontLoader::available(LyXFont const & f)
 {
-	if (!lyx::use_gui)
-		return false;
-
 	static std::vector<bool> cache_set(LyXFont::NUM_FAMILIES, false);
 	static std::vector<bool> cache(LyXFont::NUM_FAMILIES, false);
 

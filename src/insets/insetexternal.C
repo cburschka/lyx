@@ -57,9 +57,6 @@ using std::ostream;
 using std::ostringstream;
 using std::vector;
 
-namespace lyx {
-extern bool use_gui;
-}
 
 namespace {
 

@@ -432,6 +432,8 @@ src_frontends_header_files = Split('''
     Alert_pimpl.h
     Application.h
     Clipboard.h
+    NoGuiFontLoader.h
+    NoGuiFontMetrics.h
     Dialogs.h
     FileDialog.h
     FontLoader.h

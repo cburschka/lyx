@@ -93,10 +93,6 @@ using std::istream_iterator;
 // this should be static, but I need it in buffer.C
 bool quitting;	// flag, that we are quitting the program
 
-namespace lyx {
-extern bool use_gui;
-}
-
 //
 // Menu callbacks
 //

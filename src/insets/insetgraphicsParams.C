@@ -14,6 +14,7 @@
 #include "insetgraphicsParams.h"
 
 #include "debug.h"
+#include "lyx_main.h" // for lyx::use_gui
 #include "lyxlex.h"
 #include "lyxrc.h"
 
@@ -32,10 +33,6 @@ using lyx::support::token;
 using std::string;
 using std::ostream;
 
-
-namespace lyx {
-extern bool use_gui;
-}
 
 InsetGraphicsParams::InsetGraphicsParams()
 {

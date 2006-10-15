@@ -14,6 +14,7 @@
 #include "Alert_pimpl.h"
 
 #include "debug.h"
+#include "lyx_main.h" // for lyx::use_gui
 
 using lyx::docstring;
 
@@ -24,8 +25,6 @@ using std::string;
 
 
 namespace lyx {
-
-extern bool use_gui;
 
 namespace frontend {
 

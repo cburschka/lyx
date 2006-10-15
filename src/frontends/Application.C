@@ -12,6 +12,8 @@
 
 #include "frontends/Application.h"
 
+#include "frontends/NoGuiFontLoader.h"
+#include "frontends/NoGuiFontMetrics.h"
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Gui.h"
@@ -21,6 +23,7 @@
 #include "bufferlist.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
+#include "lyx_main.h"
 #include "LyXAction.h"
 #include "lyxfont.h"
 #include "lyxfunc.h"
@@ -167,6 +170,11 @@ LyXFunc & theLyXFunc()
 
 lyx::frontend::FontLoader & theFontLoader()
 {
+	static lyx::frontend::NoGuiFontLoader no_gui_font_loader;
+
+	if (!lyx::use_gui)
+		return no_gui_font_loader;
+
 	BOOST_ASSERT(theApp);
 	return theApp->fontLoader();
 }
@@ -174,6 +182,11 @@ lyx::frontend::FontLoader & theFontLoader()
 
 lyx::frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
 {
+	static lyx::frontend::NoGuiFontMetrics no_gui_font_metrics;
+
+	if (!lyx::use_gui)
+		return no_gui_font_metrics;
+
 	BOOST_ASSERT(theApp);
 	return theApp->fontLoader().metrics(f);
 }

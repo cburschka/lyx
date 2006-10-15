@@ -29,12 +29,12 @@ class LyXView;
 class kb_keymap;
 
 namespace lyx {
+extern bool use_gui;
 class Session;
 namespace frontend {
 class Application;
 }
 }
-
 
 /// initial startup
 class LyX : boost::noncopyable {

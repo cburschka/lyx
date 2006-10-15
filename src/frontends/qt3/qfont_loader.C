@@ -44,10 +44,6 @@ using std::pair;
 using std::vector;
 using std::string;
 
-namespace lyx {
-extern bool use_gui;
-}
-
 
 GuiFontLoader::~GuiFontLoader() {
 }
@@ -292,9 +288,6 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 
 bool GuiFontLoader::available(LyXFont const & f)
 {
-	if (!lyx::use_gui)
-		return false;
-
 	static vector<int> cache_set(LyXFont::NUM_FAMILIES, false);
 	static vector<int> cache(LyXFont::NUM_FAMILIES, false);
 
