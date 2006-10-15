@@ -62,6 +62,7 @@
 
 #include <sstream>
 
+using lyx::CoordCache;
 using lyx::docstring;
 using lyx::pit_type;
 using lyx::pos_type;

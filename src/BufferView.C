@@ -78,8 +78,10 @@
 #include <vector>
 
 
+using lyx::CoordCache;
 using lyx::docstring;
 using lyx::pos_type;
+using lyx::Point;
 
 using lyx::support::addPath;
 using lyx::support::bformat;

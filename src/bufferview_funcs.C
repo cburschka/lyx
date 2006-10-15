@@ -40,6 +40,9 @@
 
 #include <sstream>
 
+using lyx::Point;
+using lyx::CoordCache;
+
 using lyx::support::bformat;
 
 using std::istringstream;

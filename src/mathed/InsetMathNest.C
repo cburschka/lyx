@@ -60,7 +60,10 @@
 
 #include <sstream>
 
+using lyx::CoordCache;
 using lyx::docstring;
+using lyx::Point;
+
 using lyx::cap::copySelection;
 using lyx::cap::grabAndEraseSelection;
 using lyx::cap::cutSelection;

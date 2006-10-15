@@ -51,8 +51,10 @@
 #include <limits>
 
 using lyx::char_type;
+using lyx::CoordCache;
 using lyx::docstring;
 using lyx::pit_type;
+using lyx::Point;
 
 using std::string;
 using std::vector;

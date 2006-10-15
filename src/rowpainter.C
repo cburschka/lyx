@@ -48,8 +48,9 @@ using lyx::frontend::NullPainter;
 using lyx::frontend::FontMetrics;
 
 using lyx::char_type;
-using lyx::pos_type;
 using lyx::pit_type;
+using lyx::pos_type;
+using lyx::Point;
 
 using std::endl;
 using std::max;

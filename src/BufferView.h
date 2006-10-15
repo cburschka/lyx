@@ -201,11 +201,11 @@ public:
 	void updateMetrics(bool singlepar = false);
 
 	///
-	CoordCache & coordCache() {
+	lyx::CoordCache & coordCache() {
 		return coord_cache_;
 	}
 	///
-	CoordCache const & coordCache() const {
+	lyx::CoordCache const & coordCache() const {
 		return coord_cache_;
 	}
 	/// get this view's keyboard map handler
@@ -247,7 +247,7 @@ private:
 
 	///
 	ViewMetricsInfo metrics_info_;
-	CoordCache coord_cache_;
+	lyx::CoordCache coord_cache_;
 	///
 	Buffer * buffer_;
 

@@ -47,6 +47,7 @@
 #include <limits>
 
 using lyx::docstring;
+using lyx::Point;
 
 using lyx::cap::dirtyTabularStack;
 using lyx::cap::tabularStackDirty;

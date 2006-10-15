@@ -19,6 +19,8 @@
 #include <boost/assert.hpp>
 
 
+namespace lyx {
+
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {
@@ -46,3 +48,5 @@ Point CoordCache::get(LyXText const * text, lyx::pit_type pit)
 	BOOST_ASSERT(posit != it->second.end());
 	return posit->second;
 }
+
+} // namespace lyx

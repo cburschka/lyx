@@ -22,7 +22,6 @@ class Buffer;
 class BufferView;
 class FuncStatus;
 class FuncRequest;
-class Point;
 class LyXFont;
 
 // these should go

@@ -25,6 +25,8 @@ class Paragraph;
 
 #include <map>
 
+namespace lyx {
+
 void lyxbreaker(void const * data, const char * hint, int size);
 
 class Point {
@@ -152,5 +154,7 @@ private:
 	/// Used with boundary == 1
 	SliceCache slices1_;
 };
+
+} // namespace lyx
 
 #endif
