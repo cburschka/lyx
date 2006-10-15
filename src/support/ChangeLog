@@ -1,3 +1,6 @@
+2006-10-15  Bo Peng <ben.bob@gmail.com>
+	* os_win32.C: remove console-hiding code
+
 2006-09-07  Enrico Forestieri  <[EMAIL PROTECTED]>
 	* os_cygwin.C (is_windows_path): avoid unnecessary conversion
 		when path is relative
