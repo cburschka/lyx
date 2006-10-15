@@ -120,8 +120,9 @@ char const * const known_natbib_commands[] = { "cite", "citet", "citep",
  * No starred form other than "cite*" known.
  */
 char const * const known_jurabib_commands[] = { "cite", "citet", "citep",
-"citealt", "citealp", "citeauthor", "citeyear", "citeyearpar", "fullcite",
+"citealt", "citealp", "citeauthor", "citeyear", "citeyearpar",
 // jurabib commands not (yet) supported by LyX:
+// "fullcite",
 // "footcite", "footcitet", "footcitep", "footcitealt", "footcitealp",
 // "footciteauthor", "footciteyear", "footciteyearpar",
 "citefield", "citetitle", "cite*", 0 };
