@@ -43,6 +43,9 @@ bool QToc::canOutline()
 {
 	vector<string> const & types = getTypes();
 
+	if (types.empty())
+		return false;
+
 	BOOST_ASSERT(type_ >= 0 && type_ < int(types.size()));
 	return ControlToc::canOutline(types[type_]);
 }
@@ -115,6 +118,9 @@ void QToc::update()
 	type_ = 0;
 
 	vector<string> const & types = getTypes();
+	if (types.empty())
+		return;
+
 	string const & selected_type = toc::getType(params().getCmdName());
 	lyxerr[Debug::GUI] << "selected_type " << selected_type	<< endl;
 

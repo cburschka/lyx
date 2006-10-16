@@ -186,8 +186,17 @@ void QTocDialog::update()
 
 void QTocDialog::updateGui()
 {
-	typeCO->setModel(form_->typeModel());
-	tocTV->setModel(form_->tocModel());
+	QStringListModel * type_model = form_->typeModel();
+	if (type_model->stringList().isEmpty())
+	{
+		enableButtons();
+		return;
+	}
+
+	typeCO->setModel(type_model);
+
+	if (form_->tocModel())
+		tocTV->setModel(form_->tocModel());
 	tocTV->showColumn(0);
 	// hide the pointless QHeader for now
 	// in the future, new columns may appear
