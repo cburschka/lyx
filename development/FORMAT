@@ -1,5 +1,12 @@
 LyX file-format changes
 -----------------------§
+
+2006-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 251: save show_label param for charstyles.
+
+	On revert, the show_label param is just removed. Nothing to convert.
+
 2006-10-12  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* Format incremented to 250: allow optional arg to environments

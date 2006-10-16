@@ -231,6 +231,28 @@ def revert_utf8(document):
     document.encoding = get_encoding(document.language, document.inputencoding, 248)
 
 
+def revert_cs_label(document):
+    " Remove status flag of charstyle label. "
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset CharStyle", i)
+        if i == -1:
+            return
+        # Seach for a line starting 'show_label'
+        # If it is not there, break with a warning message
+        i = i + 1
+        while 1:
+            if (document.body[i][:10] == "show_label"):
+                del document.body[i]
+		break
+            elif (document.body[i][:13] == "\\begin_layout"):
+                document.warning("Malformed LyX document: Missing 'show_label'.")
+                break
+            i = i + 1
+
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -240,9 +262,11 @@ convert = [[246, []],
            [247, [convert_font_settings]],
            [248, []],
            [249, [convert_utf8]],
-           [250, []]]
+           [250, []],
+           [251, []]]
 
-revert =  [[249, []],
+revert =  [[250, [revert_cs_label]],
+           [249, []],
            [248, [revert_utf8]],
            [247, [revert_booktabs]],
            [246, [revert_font_settings]],

@@ -35,6 +35,8 @@ public:
 	LyXFont font;
 	///
 	LyXFont labelfont;
+	///
+	bool show_label;
 };
 
 
@@ -106,8 +108,6 @@ private:
 	void init();
 	///
 	InsetCharStyleParams params_;
-	///
-	bool has_label_;
 };
 
 #endif

@@ -34,6 +34,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/convert.h"
+
 #include <sstream>
 
 using lyx::docstring;
@@ -51,7 +53,6 @@ void InsetCharStyle::init()
 	setInsetName("CharStyle");
 	setInlined();
 	setDrawFrame(false);
-	has_label_ = true;
 }
 
 
@@ -101,6 +102,7 @@ void InsetCharStyle::setUndefined()
 	params_.font = LyXFont(LyXFont::ALL_INHERIT);
 	params_.labelfont = LyXFont(LyXFont::ALL_INHERIT);
 	params_.labelfont.setColor(LColor::error);
+	params_.show_label = true;
 }
 
 
@@ -111,6 +113,7 @@ void InsetCharStyle::setDefined(CharStyles::iterator cs)
 	params_.latexparam = cs->latexparam;
 	params_.font = cs->font;
 	params_.labelfont = cs->labelfont;
+	params_.show_label = true;
 }
 
 
@@ -129,6 +132,7 @@ void InsetCharStyle::write(Buffer const & buf, ostream & os) const
 
 void InsetCharStyle::read(Buffer const & buf, LyXLex & lex)
 {
+	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
 	setInlined();
 }
@@ -143,7 +147,7 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::metrics(mi, dim);
 	mi.base.font = tmpfont;
-	if (has_label_) {
+	if (params_.show_label) {
 		// consider width of the inset label
 		LyXFont font(params_.labelfont);
 		font.realize(LyXFont(LyXFont::ALL_SANE));
@@ -165,7 +169,7 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim_ = dim;
-	if (has_label_)
+	if (params_.show_label)
 		dim_.des += ascent();
 }
 
@@ -182,7 +186,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	pi.base.font = tmpfont;
 
 	int desc = InsetText::descent();
-	if (has_label_)
+	if (params_.show_label)
 		desc -= ascent();
 
 	pi.pain.line(x, y + desc - 4, x, y + desc, params_.labelfont.color());
@@ -192,7 +196,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		params_.labelfont.color());
 
 	// the name of the charstyle. Can be toggled.
-	if (has_label_) {
+	if (params_.show_label) {
 		LyXFont font(params_.labelfont);
 		font.realize(LyXFont(LyXFont::ALL_SANE));
 		font.decSize();
@@ -237,10 +241,22 @@ void InsetCharStyle::doDispatch(LCursor & cur, FuncRequest & cmd)
 	
 	case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button3)
-				has_label_ = !has_label_;
+				params_.show_label = !params_.show_label;
 			else
 				InsetText::doDispatch(cur, cmd);
 			break;
+
+	case LFUN_INSET_TOGGLE:
+		if (cmd.argument() == "open")
+			params_.show_label = true;
+		else if (cmd.argument() == "close")
+			params_.show_label = false;
+		else if (cmd.argument() == "toggle" || cmd.argument().empty())
+			params_.show_label = !params_.show_label;
+		else // if assign or anything else
+			cur.undispatched();
+		cur.dispatched();
+		break;
 
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
@@ -331,18 +347,29 @@ void InsetCharStyle::validate(LaTeXFeatures & features) const
 void InsetCharStyleParams::write(ostream & os) const
 {
 	os << "CharStyle " << type << "\n";
+	os << "show_label " << convert<string>(show_label) << "\n";
 }
 
 
 void InsetCharStyleParams::read(LyXLex & lex)
 {
-	if (lex.isOK()) {
+	while (lex.isOK()) {
 		lex.next();
 		string token = lex.getString();
-	}
 
-	if (lex.isOK()) {
-		lex.next();
-		type = lex.getString();
+		if (token == "CharStyle") {
+			lex.next();
+			type = lex.getString();
+		}
+
+		else if (token == "show_label") {
+			lex.next();
+			show_label = lex.getBool();
+		}
+
+		else if (token == "status") {
+			lex.pushToken(token);
+			break;
+		}
 	}
 }
