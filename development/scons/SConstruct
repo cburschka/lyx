@@ -74,7 +74,7 @@ package_string = '%s %s' % (package_name, package_version)
 
 # various cache/log files
 default_log_file = 'scons_lyx.log'
-env_cache_file = 'env.cache'
+opt_cache_file = 'opt.cache'
 
 
 #----------------------------------------------------------
@@ -153,7 +153,7 @@ opts.AddOptions(
     EnumOption('packaging', 'Packaging method to use.', default_packaging_method,
         allowed_values = ('windows', 'posix', 'macosx')),
     #
-    BoolOption('fast_start', 'Whether or not use cached tests and keep current config.h', True),
+    BoolOption('fast_start', 'This option is obsolete.', False),
     # No precompiled header support (too troublesome to make it work for msvc)
     # BoolOption('pch', 'Whether or not use pch', False),
     # enable assertion, (config.h has ENABLE_ASSERTIOS
@@ -236,23 +236,8 @@ all_options = [x.key for x in opts.options]
 true_strings  = ('y', 'yes', 'true', 't', '1', 'on' , 'all' )
 false_strings = ('n', 'no', 'false', 'f', '0', 'off', 'none')
 
-# whether or not use current config.h, and cached tests
-#
-# if fast_start=yes (default), load variables from env_cache_file
-if (not ARGUMENTS.has_key('fast_start') or \
-    ARGUMENTS['fast_start'] in true_strings) \
-    and os.path.isfile(env_cache_file):
-    fast_start = True
-    cache_file = open(env_cache_file)
-    env_cache = cPickle.load(cache_file)
-    cache_file.close()
-    print '------------ fast_start mode --------------------'
-    print '  Use cached test results and current config.h'
-    print '  use fast_start=no to override'
-    print
-else:
-    fast_start = False
-    env_cache = {}
+if ARGUMENTS.has_key('fast_start'):
+    print 'fast_start option is obsolete'
 
 # if load_option=yes (default), load saved comand line options
 #
@@ -260,26 +245,17 @@ else:
 # and tries to be clever in choosing options to load
 if (not ARGUMENTS.has_key('load_option') or \
     ARGUMENTS['load_option'] not in false_strings) \
-    and os.path.isfile(env_cache_file):
-    cache_file = open(env_cache_file)
-    opt_cache = cPickle.load(cache_file)['arg_cache']
+    and os.path.isfile(opt_cache_file):
+    cache_file = open(opt_cache_file)
+    opt_cache = cPickle.load(cache_file)
     cache_file.close()
     # import cached options, but we should ignore qt_dir when frontend changes
     if ARGUMENTS.has_key('frontend') and opt_cache.has_key('frontend') \
         and ARGUMENTS['frontend'] != opt_cache['frontend'] \
         and opt_cache.has_key('qt_dir'):
         opt_cache.pop('qt_dir')
-    # some options will require full rebuild
-    # these are in general things that will change config.h
-    for arg in ['version_suffix', 'nls', 'boost', 'spell']:
-        if ARGUMENTS.has_key(arg) and ((not opt_cache.has_key(arg)) or \
-            ARGUMENTS[arg] != opt_cache[arg]):
-            if fast_start:
-                print "  ** fast_start is disabled because of the change of option", arg
-                print
-                fast_start = False
     # and we do not cache some options (dest_dir is obsolete)
-    for arg in ['fast_start', 'load_option', 'dest_dir']:
+    for arg in ['load_option', 'dest_dir']:
         if opt_cache.has_key(arg):
             opt_cache.pop(arg)
     # remove obsolete cached keys (well, SConstruct is evolving. :-)
@@ -318,8 +294,10 @@ for arg in ARGUMENTS.keys():
         print '    ' + '\n    '.join(textwrap.wrap(',  '.join(all_options)))
         Exit(1)
 
-# save arguments
-env_cache['arg_cache'] = ARGUMENTS
+# save options used
+cache_file = open(opt_cache_file, 'w')
+cPickle.dump(ARGUMENTS, cache_file)
+cache_file.close()
 
 
 #---------------------------------------------------------
@@ -674,33 +652,26 @@ conf = Configure(env,
 )
 
 # pkg-config? (if not, we use hard-coded options)
-if not fast_start:
-    if conf.CheckPkgConfig('0.15.0'):
-        env['HAS_PKG_CONFIG'] = True
-    else:
-        print 'pkg-config >= 0.1.50 is not found'
-        env['HAS_PKG_CONFIG'] = False
-    env_cache['HAS_PKG_CONFIG'] = env['HAS_PKG_CONFIG']
+if conf.CheckPkgConfig('0.15.0'):
+    env['HAS_PKG_CONFIG'] = True
 else:
-    env['HAS_PKG_CONFIG'] = env_cache['HAS_PKG_CONFIG']
+    print 'pkg-config >= 0.1.50 is not found'
+    env['HAS_PKG_CONFIG'] = False
 
-# zlib? This is required. (fast_start assumes the existance of zlib)
-if not fast_start:
-    if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
-        or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
-        print 'Did not find zdll.lib or zlib.h, exiting!'
+# zlib? This is required.
+if (not use_vc and not conf.CheckLibWithHeader('z', 'zlib.h', 'C')) \
+    or (use_vc and not conf.CheckLibWithHeader('zdll', 'zlib.h', 'C')):
+    print 'Did not find zdll.lib or zlib.h, exiting!'
+    Exit(1)
+
+#
+# qt3 does not use pkg_config
+if frontend == 'qt2':
+    # windows lib name is qt-mt3
+    if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();') \
+        and not conf.CheckLibWithHeader('qt-mt3', 'qapp.h', 'c++', 'QApplication qapp();'):
+        print 'Did not find qt libraries, exiting!'
         Exit(1)
-
-# qt libraries?
-if not fast_start:
-    #
-    # qt3 does not use pkg_config
-    if frontend == 'qt2':
-        # windows lib name is qt-mt3
-        if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();') \
-            and not conf.CheckLibWithHeader('qt-mt3', 'qapp.h', 'c++', 'QApplication qapp();'):
-            print 'Did not find qt libraries, exiting!'
-            Exit(1)
 
 # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
 if use_vc:
@@ -712,17 +683,13 @@ if use_vc:
         env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
 
 # check socket libs
-if not fast_start:
-    socket_libs = []
-    if conf.CheckLib('socket'):
-        socket_libs.append('socket')
-    # nsl is the network services library and provides a
-    # transport-level interface to networking services.
-    if conf.CheckLib('nsl'):
-        socket_libs.append('nsl')
-    env_cache['SOCKET_LIBS'] = socket_libs
-else:
-    socket_libs = env_cache['SOCKET_LIBS']
+socket_libs = []
+if conf.CheckLib('socket'):
+    socket_libs.append('socket')
+# nsl is the network services library and provides a
+# transport-level interface to networking services.
+if conf.CheckLib('nsl'):
+    socket_libs.append('nsl')
 
 # check available boost libs (since lyx1.4 does not use iostream)
 boost_libs = []
@@ -730,48 +697,38 @@ for lib in ['signals', 'regex', 'filesystem', 'iostreams']:
     if os.path.isdir(os.path.join(top_src_dir, 'boost', 'libs', lib)):
         boost_libs.append(lib)
 
-if not fast_start:
-    # check boost libraries
-    boost_opt = ARGUMENTS.get('boost', 'auto')
-    # check for system boost
-    lib_paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
-    inc_paths = env['CPPPATH'] + ['/usr/include', '/usr/local/include']
-    # default to $BUILDDIR/libs (use None since this path will be added anyway)
-    boost_libpath = None
-    # here I assume that all libraries are in the same directory
-    if boost_opt == 'included':
+# check boost libraries
+boost_opt = ARGUMENTS.get('boost', 'auto')
+# check for system boost
+lib_paths = env['LIBPATH'] + ['/usr/lib', '/usr/local/lib']
+inc_paths = env['CPPPATH'] + ['/usr/include', '/usr/local/include']
+# default to $BUILDDIR/libs (use None since this path will be added anyway)
+boost_libpath = None
+# here I assume that all libraries are in the same directory
+if boost_opt == 'included':
+    boost_libraries = ['included_boost_%s' % x for x in boost_libs]
+    included_boost = True
+    env['BOOST_INC_PATH'] = '$TOP_SRCDIR/boost'
+elif boost_opt == 'auto':
+    res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, boost_version, mode == 'debug')
+    # if not found, use local boost
+    if res[0] is None:
         boost_libraries = ['included_boost_%s' % x for x in boost_libs]
         included_boost = True
         env['BOOST_INC_PATH'] = '$TOP_SRCDIR/boost'
-    elif boost_opt == 'auto':
-        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, boost_version, mode == 'debug')
-        # if not found, use local boost
-        if res[0] is None:
-            boost_libraries = ['included_boost_%s' % x for x in boost_libs]
-            included_boost = True
-            env['BOOST_INC_PATH'] = '$TOP_SRCDIR/boost'
-        else:
-            included_boost = False
-            (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
-    elif boost_opt == 'system':
-        res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, boost_version, mode == 'debug')
-        if res[0] is None:
-            print "Can not find system boost libraries with version %s " % boost_version
-            print "Please supply a path through extra_lib_path and try again."
-            print "Or use boost=included to use included boost libraries."
-            Exit(2)
-        else:
-            included_boost = False
-            (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
-    env_cache['BOOST_LIBRARIES'] = boost_libraries
-    env_cache['INCLUDED_BOOST'] = included_boost
-    env_cache['BOOST_INC_PATH'] = env['BOOST_INC_PATH']
-    env_cache['BOOST_LIBPATH'] = boost_libpath
-else:
-    boost_libraries = env_cache['BOOST_LIBRARIES']
-    included_boost = env_cache['INCLUDED_BOOST']
-    env['BOOST_INC_PATH'] = env_cache['BOOST_INC_PATH']
-    boost_libpath = env_cache['BOOST_LIBPATH']
+    else:
+        included_boost = False
+        (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
+elif boost_opt == 'system':
+    res = conf.CheckBoostLibraries(boost_libs, lib_paths, inc_paths, boost_version, mode == 'debug')
+    if res[0] is None:
+        print "Can not find system boost libraries with version %s " % boost_version
+        print "Please supply a path through extra_lib_path and try again."
+        print "Or use boost=included to use included boost libraries."
+        Exit(2)
+    else:
+        included_boost = False
+        (boost_libraries, boost_libpath, env['BOOST_INC_PATH']) = res
 
 if boost_libpath is not None:
     env.AppendUnique(LIBPATH = [boost_libpath])
@@ -779,59 +736,44 @@ if boost_libpath is not None:
 
 env['ENABLE_NLS'] = env['nls']
 
-if not fast_start:
-    if not env['ENABLE_NLS']:
-        intl_libs = []
-        included_gettext = False
-    else:
-        # check gettext libraries
-        gettext_opt = ARGUMENTS.get('gettext', 'auto')
-        # check for system gettext
-        succ = False
-        if gettext_opt in ['auto', 'system']:
-            if conf.CheckLib('intl'):
-                included_gettext = False
-                intl_libs = ['intl']
-                succ = True
-            else: # no found
-                if gettext_opt == 'system':
-                    print "Can not find system gettext library"
-                    print "Please supply a path through extra_lib_path and try again."
-                    print "Or use gettext=included to use included gettext libraries."
-                    Exit(2)
-        # now, auto and succ = false, or gettext=included
-        if not succ:
-            # we do not need to set LIBPATH now.
-            included_gettext = True
-            intl_libs = ['included_intl']
-    env_cache['INCLUDED_GETTEXT'] = included_gettext
-    env_cache['INTL_LIBS'] = intl_libs
+if not env['ENABLE_NLS']:
+    intl_libs = []
+    included_gettext = False
 else:
-    included_gettext = env_cache['INCLUDED_GETTEXT']
-    intl_libs = env_cache['INTL_LIBS']
+    # check gettext libraries
+    gettext_opt = ARGUMENTS.get('gettext', 'auto')
+    # check for system gettext
+    succ = False
+    if gettext_opt in ['auto', 'system']:
+        if conf.CheckLib('intl'):
+            included_gettext = False
+            intl_libs = ['intl']
+            succ = True
+        else: # no found
+            if gettext_opt == 'system':
+                print "Can not find system gettext library"
+                print "Please supply a path through extra_lib_path and try again."
+                print "Or use gettext=included to use included gettext libraries."
+                Exit(2)
+    # now, auto and succ = false, or gettext=included
+    if not succ:
+        # we do not need to set LIBPATH now.
+        included_gettext = True
+        intl_libs = ['included_intl']
 
 #
 # check for msgfmt command
-if not fast_start:
-    env['MSGFMT'] = conf.CheckCommand('msgfmt')
-    env_cache['MSGFMT'] = env['MSGFMT']
-else:
-    env['MSGFMT'] = env_cache['MSGFMT']
+env['MSGFMT'] = conf.CheckCommand('msgfmt')
 
 # cygwin packaging requires the binaries to be stripped
 if platform_name == 'cygwin':
-    if not fast_start:
-        env['STRIP'] = conf.CheckCommand('strip')
-        env_cache['STRIP'] = env['STRIP']
-    else:
-        env['STRIP'] = env_cache['STRIP']
+    env['STRIP'] = conf.CheckCommand('strip')
 
 # check uic and moc commands for qt frontends
-if not fast_start:
-    if frontend[:2] == 'qt' and (conf.CheckCommand('uic') == None \
-        or conf.CheckCommand('moc') == None):
-        print 'uic or moc command is not found for frontend', frontend
-        Exit(1)
+if frontend[:2] == 'qt' and (conf.CheckCommand('uic') == None \
+    or conf.CheckCommand('moc') == None):
+    print 'uic or moc command is not found for frontend', frontend
+    Exit(1)
 
 #
 # Customized builders
@@ -851,14 +793,12 @@ if platform_name == 'win32' and mode == 'debug' and use_vc:
 # check the existence of config.h
 config_h = os.path.join(env.Dir('$BUILDDIR/common').path, 'config.h')
 boost_config_h = os.path.join(env.Dir('$BUILDDIR/boost').path, 'config.h')
-if not fast_start or not os.path.isfile(boost_config_h) \
-    or not os.path.isfile(config_h):
-    #
-    print "Creating %s..." % boost_config_h
-    #
-    utils.createConfigFile(conf,
-        config_file = boost_config_h,
-        config_pre = '''/* boost/config.h.  Generated by SCons.  */
+#
+print "Creating %s..." % boost_config_h
+#
+utils.createConfigFile(conf,
+    config_file = boost_config_h,
+    config_pre = '''/* boost/config.h.  Generated by SCons.  */
 
 /* -*- C++ -*- */
 /*
@@ -875,19 +815,19 @@ if not fast_start or not os.path.isfile(boost_config_h) \
 #ifndef _BOOST_CONFIG_H
 #define _BOOST_CONFIG_H
 ''',
-        headers = [
-            ('ostream', 'HAVE_OSTREAM', 'cxx'),
-            ('locale', 'HAVE_LOCALE', 'cxx'),
-            ('sstream', 'HAVE_SSTREAM', 'cxx'),
-            #('newapis.h', 'HAVE_NEWAPIS_H', 'c'),
-        ],
-        custom_tests = [
-            (env.has_key('assertions') and env['assertions'],
-                'ENABLE_ASSERTIONS',
-                'Define if you want assertions to be enabled in the code'
-            ),
-        ],
-        config_post = '''
+    headers = [
+        ('ostream', 'HAVE_OSTREAM', 'cxx'),
+        ('locale', 'HAVE_LOCALE', 'cxx'),
+        ('sstream', 'HAVE_SSTREAM', 'cxx'),
+        #('newapis.h', 'HAVE_NEWAPIS_H', 'c'),
+    ],
+    custom_tests = [
+        (env.has_key('assertions') and env['assertions'],
+            'ENABLE_ASSERTIONS',
+            'Define if you want assertions to be enabled in the code'
+        ),
+    ],
+    config_post = '''
 
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
 #  define USE_BOOST_FORMAT 1
@@ -915,63 +855,63 @@ if not fast_start or not os.path.isfile(boost_config_h) \
 
 #endif
 '''
-    )
-    #
-    print "\nGenerating %s..." % config_h
+)
+#
+print "\nGenerating %s..." % config_h
 
-    # AIKSAURUS_H_LOCATION
-    if (conf.CheckCXXHeader("Aiksaurus.h")):
-        aik_location = '<Aiksaurus.h>'
-    elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
-        aik_location = '<Aiksaurus/Aiksaurus.h>'
-    else:
-        aik_location = ''
+# AIKSAURUS_H_LOCATION
+if (conf.CheckCXXHeader("Aiksaurus.h")):
+    aik_location = '<Aiksaurus.h>'
+elif (conf.CheckCXXHeader("Aiksaurus/Aiksaurus.h")):
+    aik_location = '<Aiksaurus/Aiksaurus.h>'
+else:
+    aik_location = ''
 
-    # determine headers to use
-    spell_opt = ARGUMENTS.get('spell', 'auto')
-    env['USE_ASPELL'] = False
-    env['USE_PSPELL'] = False
-    env['USE_ISPELL'] = False
-    if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
-        spell_engine = 'USE_ASPELL'
-    elif spell_opt in ['auto', 'pspell'] and conf.CheckLib('pspell'):
-        spell_engine = 'USE_PSPELL'
-    elif spell_opt in ['auto', 'ispell'] and conf.CheckLib('ispell'):
-        spell_engine = 'USE_ISPELL'
-    else:
-        spell_engine = None
+# determine headers to use
+spell_opt = ARGUMENTS.get('spell', 'auto')
+env['USE_ASPELL'] = False
+env['USE_PSPELL'] = False
+env['USE_ISPELL'] = False
+if spell_opt in ['auto', 'aspell'] and conf.CheckLib(aspell_lib):
+    spell_engine = 'USE_ASPELL'
+elif spell_opt in ['auto', 'pspell'] and conf.CheckLib('pspell'):
+    spell_engine = 'USE_PSPELL'
+elif spell_opt in ['auto', 'ispell'] and conf.CheckLib('ispell'):
+    spell_engine = 'USE_ISPELL'
+else:
+    spell_engine = None
 
-    if spell_engine is not None:
-        env[spell_engine] = True
-    else:
-        if spell_opt == 'auto':
-            print "Warning: Can not locate any spell checker"
-        elif spell_opt != 'no':
-            print "Warning: Can not locate specified spell checker:", spell_opt
-            Exit(1)
+if spell_engine is not None:
+    env[spell_engine] = True
+else:
+    if spell_opt == 'auto':
+        print "Warning: Can not locate any spell checker"
+    elif spell_opt != 'no':
+        print "Warning: Can not locate specified spell checker:", spell_opt
+        Exit(1)
 
-    # check for iconv function/lib
-    if conf.CheckLib('iconv'):
-        env['ICONV_LIB'] = 'iconv'
-        env['HAVE_ICONV'] = True
-    elif conf.CheckLib('libiconv'):
-        env['ICONV_LIB'] = 'libiconv'
-        env['HAVE_ICONV'] = True
-    elif conf.CheckFunc('iconv_open'):
-        env['ICONV_LIB'] = None
-        env['HAVE_ICONV'] = True
-    else:
-        env['ICONV_LIB'] = None
-        env['HAVE_ICONV'] = False
+# check for iconv function/lib
+if conf.CheckLib('iconv'):
+    env['ICONV_LIB'] = 'iconv'
+    env['HAVE_ICONV'] = True
+elif conf.CheckLib('libiconv'):
+    env['ICONV_LIB'] = 'libiconv'
+    env['HAVE_ICONV'] = True
+elif conf.CheckFunc('iconv_open'):
+    env['ICONV_LIB'] = None
+    env['HAVE_ICONV'] = True
+else:
+    env['ICONV_LIB'] = None
+    env['HAVE_ICONV'] = False
 
-    # check arg types of select function
-    (select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
+# check arg types of select function
+(select_arg1, select_arg234, select_arg5) = conf.CheckSelectArgType()
 
-    #
-    # create config.h
-    result = utils.createConfigFile(conf,
-        config_file = config_h,
-        config_pre = '''/* config.h.  Generated by SCons.  */
+#
+# create config.h
+result = utils.createConfigFile(conf,
+    config_file = config_h,
+    config_pre = '''/* config.h.  Generated by SCons.  */
 
 /* -*- C++ -*- */
 /*
@@ -988,142 +928,142 @@ if not fast_start or not os.path.isfile(boost_config_h) \
 #ifndef _CONFIG_H
 #define _CONFIG_H
 ''',
-        headers = [
-            ('io.h', 'HAVE_IO_H', 'c'),
-            ('limits.h', 'HAVE_LIMITS_H', 'c'),
-            ('locale.h', 'HAVE_LOCALE_H', 'c'),
-            ('process.h', 'HAVE_PROCESS_H', 'c'),
-            ('stdlib.h', 'HAVE_STDLIB_H', 'c'),
-            ('sys/stat.h', 'HAVE_SYS_STAT_H', 'c'),
-            ('sys/time.h', 'HAVE_SYS_TIME_H', 'c'),
-            ('sys/types.h', 'HAVE_SYS_TYPES_H', 'c'),
-            ('sys/utime.h', 'HAVE_SYS_UTIME_H', 'c'),
-            ('sys/socket.h', 'HAVE_SYS_SOCKET_H', 'c'),
-            ('unistd.h', 'HAVE_UNISTD_H', 'c'),
-            ('utime.h', 'HAVE_UTIME_H', 'c'),
-            ('direct.h', 'HAVE_DIRECT_H', 'c'),
-            ('istream', 'HAVE_ISTREAM', 'cxx'),
-            ('ios', 'HAVE_IOS', 'cxx'),
-        ],
-        functions = [
-            ('open', 'HAVE_OPEN', None),
-            ('close', 'HAVE_CLOSE', None),
-            ('popen', 'HAVE_POPEN', None),
-            ('pclose', 'HAVE_PCLOSE', None),
-            ('_open', 'HAVE__OPEN', None),
-            ('_close', 'HAVE__CLOSE', None),
-            ('_popen', 'HAVE__POPEN', None),
-            ('_pclose', 'HAVE__PCLOSE', None),
-            ('getpid', 'HAVE_GETPID', None),
-            ('_getpid', 'HAVE__GETPID', None),
-            ('mkdir', 'HAVE_MKDIR', None),
-            ('_mkdir', 'HAVE__MKDIR', None),
-            ('mktemp', 'HAVE_MKTEMP', None),
-            ('mkstemp', 'HAVE_MKSTEMP', None),
-            ('strerror', 'HAVE_STRERROR', None),
-            ('count', 'HAVE_STD_COUNT', '''
+    headers = [
+        ('io.h', 'HAVE_IO_H', 'c'),
+        ('limits.h', 'HAVE_LIMITS_H', 'c'),
+        ('locale.h', 'HAVE_LOCALE_H', 'c'),
+        ('process.h', 'HAVE_PROCESS_H', 'c'),
+        ('stdlib.h', 'HAVE_STDLIB_H', 'c'),
+        ('sys/stat.h', 'HAVE_SYS_STAT_H', 'c'),
+        ('sys/time.h', 'HAVE_SYS_TIME_H', 'c'),
+        ('sys/types.h', 'HAVE_SYS_TYPES_H', 'c'),
+        ('sys/utime.h', 'HAVE_SYS_UTIME_H', 'c'),
+        ('sys/socket.h', 'HAVE_SYS_SOCKET_H', 'c'),
+        ('unistd.h', 'HAVE_UNISTD_H', 'c'),
+        ('utime.h', 'HAVE_UTIME_H', 'c'),
+        ('direct.h', 'HAVE_DIRECT_H', 'c'),
+        ('istream', 'HAVE_ISTREAM', 'cxx'),
+        ('ios', 'HAVE_IOS', 'cxx'),
+    ],
+    functions = [
+        ('open', 'HAVE_OPEN', None),
+        ('close', 'HAVE_CLOSE', None),
+        ('popen', 'HAVE_POPEN', None),
+        ('pclose', 'HAVE_PCLOSE', None),
+        ('_open', 'HAVE__OPEN', None),
+        ('_close', 'HAVE__CLOSE', None),
+        ('_popen', 'HAVE__POPEN', None),
+        ('_pclose', 'HAVE__PCLOSE', None),
+        ('getpid', 'HAVE_GETPID', None),
+        ('_getpid', 'HAVE__GETPID', None),
+        ('mkdir', 'HAVE_MKDIR', None),
+        ('_mkdir', 'HAVE__MKDIR', None),
+        ('mktemp', 'HAVE_MKTEMP', None),
+        ('mkstemp', 'HAVE_MKSTEMP', None),
+        ('strerror', 'HAVE_STRERROR', None),
+        ('count', 'HAVE_STD_COUNT', '''
 #include <algorithm>
 int count()
 {
-    char a[] = "hello";
-    return std::count(a, a+5, 'l');
+char a[] = "hello";
+return std::count(a, a+5, 'l');
 }
 '''),
-            ('getcwd', 'HAVE_GETCWD', None),
-            ('setenv', 'HAVE_SETENV', None),
-            ('putenv', 'HAVE_PUTENV', None),
-            ('fcntl', 'HAVE_FCNTL', None),
-        ],
-        types = [
-            ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
-                '#include <streambuf>\n#include <istream>')
-        ],
-        libs = [
-            ('gdi32', 'HAVE_LIBGDI32'),
-            (('Aiksaurus', 'libAiksaurus'), 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB'),
-        ],
-        custom_tests = [
-            (conf.CheckType('pid_t', includes='#include <sys/types.h>'),
-                'HAVE_PID_T',
-                'Define is sys/types.h does not have pid_t',
-                '',
-                '#define pid_t int',
-            ),
-            (conf.CheckCXXGlobalCstd(),
-                'CXX_GLOBAL_CSTD',
-                'Define if your C++ compiler puts C library functions in the global namespace'
-            ),
-            (conf.CheckMkdirOneArg(),
-                'MKDIR_TAKES_ONE_ARG',
-                'Define if mkdir takes only one argument.'
-            ),
-            (conf.CheckLC_MESSAGES(),
-                'HAVE_LC_MESSAGES',
-                'Define if your <locale.h> file defines LC_MESSAGES.'
-            ),
-            (devel_version, 'DEVEL_VERSION', 'Whether or not a development version'),
-            (env['HAVE_ICONV'],
-                'HAVE_ICONV',
-                'Define to 1 if function iconv exists'
-            ),
-            (env['nls'],
-                'ENABLE_NLS',
-                "Define to 1 if translation of program messages to the user's native anguage is requested.",
-            ),
-            (env['nls'] and not included_gettext,
-                'HAVE_GETTEXT',
-                'Define to 1 if using system gettext library'
-            ),
-            (env.has_key('warnings') and env['warnings'],
-                'WITH_WARNINGS',
-                'Define this if you want to see the warning directives put here and there by the developpers to get attention'
-            ),
-            (env.has_key('concept_checks') and env['concept_checks'],
-                '_GLIBCXX_CONCEPT_CHECKS',
-                'libstdc++ concept checking'
-            ),
-            (env.has_key('stdlib_debug') and env['stdlib_debug'],
-                '_GLIBCXX_DEBUG',
-                'libstdc++ debug mode'
-            ),
-            (env.has_key('stdlib_debug') and env['stdlib_debug'],
-                '_GLIBCXX_DEBUG_PEDANTIC',
-                'libstdc++ pedantic debug mode'
-            ),
-            (os.name != 'nt', 'BOOST_POSIX',
-                'Indicates to boost which API to use (posix or windows).'
-            ),
-            (spell_engine is not None, spell_engine,
-                'Spell engine to use'
-            ),
-        ],
-        extra_items = [
-            ('#define PACKAGE "%s%s"' % (package, program_suffix),
-                'Name of package'),
-            ('#define PACKAGE_BUGREPORT "%s"' % package_bugreport,
-                'Define to the address where bug reports for this package should be sent.'),
-            ('#define PACKAGE_NAME "%s"' % package_name,
-                'Define to the full name of this package.'),
-            ('#define PACKAGE_STRING "%s"' % package_string,
-                'Define to the full name and version of this package.'),
-            ('#define PACKAGE_TARNAME "%s"' % package_tarname,
-                'Define to the one symbol short name of this package.'),
-            ('#define PACKAGE_VERSION "%s"' % package_version,
-                'Define to the version of this package.'),
-            ('#define BOOST_ALL_NO_LIB 1',
-                'disable automatic linking of boost libraries.'),
-            ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),
-                'Packaging method'),
-            ('#define AIKSAURUS_H_LOCATION ' + aik_location,
-                'Aiksaurus include file'),
-            ('#define SELECT_TYPE_ARG1 %s' % select_arg1,
-                "Define to the type of arg 1 for `select'."),
-            ('#define SELECT_TYPE_ARG234 %s' % select_arg234,
-                "Define to the type of arg 2, 3, 4 for `select'."),
-            ('#define SELECT_TYPE_ARG5 %s' % select_arg5,
-                "Define to the type of arg 5 for `select'."),
-        ],
-        config_post = '''/************************************************************
+        ('getcwd', 'HAVE_GETCWD', None),
+        ('setenv', 'HAVE_SETENV', None),
+        ('putenv', 'HAVE_PUTENV', None),
+        ('fcntl', 'HAVE_FCNTL', None),
+    ],
+    types = [
+        ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
+            '#include <streambuf>\n#include <istream>')
+    ],
+    libs = [
+        ('gdi32', 'HAVE_LIBGDI32'),
+        (('Aiksaurus', 'libAiksaurus'), 'HAVE_LIBAIKSAURUS', 'AIKSAURUS_LIB'),
+    ],
+    custom_tests = [
+        (conf.CheckType('pid_t', includes='#include <sys/types.h>'),
+            'HAVE_PID_T',
+            'Define is sys/types.h does not have pid_t',
+            '',
+            '#define pid_t int',
+        ),
+        (conf.CheckCXXGlobalCstd(),
+            'CXX_GLOBAL_CSTD',
+            'Define if your C++ compiler puts C library functions in the global namespace'
+        ),
+        (conf.CheckMkdirOneArg(),
+            'MKDIR_TAKES_ONE_ARG',
+            'Define if mkdir takes only one argument.'
+        ),
+        (conf.CheckLC_MESSAGES(),
+            'HAVE_LC_MESSAGES',
+            'Define if your <locale.h> file defines LC_MESSAGES.'
+        ),
+        (devel_version, 'DEVEL_VERSION', 'Whether or not a development version'),
+        (env['HAVE_ICONV'],
+            'HAVE_ICONV',
+            'Define to 1 if function iconv exists'
+        ),
+        (env['nls'],
+            'ENABLE_NLS',
+            "Define to 1 if translation of program messages to the user's native anguage is requested.",
+        ),
+        (env['nls'] and not included_gettext,
+            'HAVE_GETTEXT',
+            'Define to 1 if using system gettext library'
+        ),
+        (env.has_key('warnings') and env['warnings'],
+            'WITH_WARNINGS',
+            'Define this if you want to see the warning directives put here and there by the developpers to get attention'
+        ),
+        (env.has_key('concept_checks') and env['concept_checks'],
+            '_GLIBCXX_CONCEPT_CHECKS',
+            'libstdc++ concept checking'
+        ),
+        (env.has_key('stdlib_debug') and env['stdlib_debug'],
+            '_GLIBCXX_DEBUG',
+            'libstdc++ debug mode'
+        ),
+        (env.has_key('stdlib_debug') and env['stdlib_debug'],
+            '_GLIBCXX_DEBUG_PEDANTIC',
+            'libstdc++ pedantic debug mode'
+        ),
+        (os.name != 'nt', 'BOOST_POSIX',
+            'Indicates to boost which API to use (posix or windows).'
+        ),
+        (spell_engine is not None, spell_engine,
+            'Spell engine to use'
+        ),
+    ],
+    extra_items = [
+        ('#define PACKAGE "%s%s"' % (package, program_suffix),
+            'Name of package'),
+        ('#define PACKAGE_BUGREPORT "%s"' % package_bugreport,
+            'Define to the address where bug reports for this package should be sent.'),
+        ('#define PACKAGE_NAME "%s"' % package_name,
+            'Define to the full name of this package.'),
+        ('#define PACKAGE_STRING "%s"' % package_string,
+            'Define to the full name and version of this package.'),
+        ('#define PACKAGE_TARNAME "%s"' % package_tarname,
+            'Define to the one symbol short name of this package.'),
+        ('#define PACKAGE_VERSION "%s"' % package_version,
+            'Define to the version of this package.'),
+        ('#define BOOST_ALL_NO_LIB 1',
+            'disable automatic linking of boost libraries.'),
+        ('#define USE_%s_PACKAGING 1' % packaging_method.upper(),
+            'Packaging method'),
+        ('#define AIKSAURUS_H_LOCATION ' + aik_location,
+            'Aiksaurus include file'),
+        ('#define SELECT_TYPE_ARG1 %s' % select_arg1,
+            "Define to the type of arg 1 for `select'."),
+        ('#define SELECT_TYPE_ARG234 %s' % select_arg234,
+            "Define to the type of arg 2, 3, 4 for `select'."),
+        ('#define SELECT_TYPE_ARG5 %s' % select_arg5,
+            "Define to the type of arg 5 for `select'."),
+    ],
+    config_post = '''/************************************************************
 ** You should not need to change anything beyond this point */
 
 #ifndef HAVE_STRERROR
@@ -1146,30 +1086,29 @@ int mkstemp(char*);
 
 #endif
 '''
-    )
+)
 
-    # these keys are needed in env
-    for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
-        'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
-        'ICONV_LIB', 'AIKSAURUS_LIB']:
-        # USE_ASPELL etc does not go through result
-        if result.has_key(key):
-            env[key] = result[key]
-        env_cache[key] = env[key]
+# these keys are needed in env
+for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
+    'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
+    'ICONV_LIB', 'AIKSAURUS_LIB']:
+    # USE_ASPELL etc does not go through result
+    if result.has_key(key):
+        env[key] = result[key]
 
+#
+# if nls=yes and gettext=included, create intl/config.h
+# intl/libintl.h etc
+#
+intl_config_h = os.path.join(env.Dir('$BUILDDIR/intl').path, 'config.h')
+if env['nls'] and included_gettext:
     #
-    # if nls=yes and gettext=included, create intl/config.h
-    # intl/libintl.h etc
+    print "Creating %s..." % intl_config_h
     #
-    intl_config_h = os.path.join(env.Dir('$BUILDDIR/intl').path, 'config.h')
-    if env['nls'] and included_gettext:
-        #
-        print "Creating %s..." % intl_config_h
-        #
-        # create intl/config.h
-        result = utils.createConfigFile(conf,
-            config_file = intl_config_h,
-            config_pre = '''/* intl/config.h.  Generated by SCons.  */
+    # create intl/config.h
+    result = utils.createConfigFile(conf,
+        config_file = intl_config_h,
+        config_pre = '''/* intl/config.h.  Generated by SCons.  */
 
 /* -*- C++ -*- */
 /*
@@ -1186,109 +1125,88 @@ int mkstemp(char*);
 #ifndef _CONFIG_H
 #define _CONFIG_H
 ''',
-            headers = [
-                ('unistd.h', 'HAVE_UNISTD_H', 'c'),
-                ('inttypes.h', 'HAVE_INTTYPES_H', 'c'),
-                ('string.h', 'HAVE_STRING_H', 'c'),
-                ('strings.h', 'HAVE_STRINGS_H', 'c'),
-                ('argz.h', 'HAVE_ARGZ_H', 'c'),
-                ('limits.h', 'HAVE_LIMITS_H', 'c'),
-                ('alloca.h', 'HAVE_ALLOCA_H', 'c'),
-                ('stddef.h', 'HAVE_STDDEF_H', 'c'),
-                ('stdint.h', 'HAVE_STDINT_H', 'c'),
-                ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c'),
-            ],
-            functions = [
-                ('getcwd', 'HAVE_GETCWD', None),
-                ('stpcpy', 'HAVE_STPCPY', None),
-                ('strcasecmp', 'HAVE_STRCASECMP', None),
-                ('strdup', 'HAVE_STRDUP', None),
-                ('strtoul', 'HAVE_STRTOUL', None),
-                ('alloca', 'HAVE_ALLOCA', None),
-                ('__fsetlocking', 'HAVE___FSETLOCKING', None),
-                ('mempcpy', 'HAVE_MEMPCPY', None),
-                ('__argz_count', 'HAVE___ARGZ_COUNT', None),
-                ('__argz_next', 'HAVE___ARGZ_NEXT', None),
-                ('__argz_stringify', 'HAVE___ARGZ_STRINGIFY', None),
-                ('setlocale', 'HAVE_SETLOCALE', None),
-                ('tsearch', 'HAVE_TSEARCH', None),
-                ('getegid', 'HAVE_GETEGID', None),
-                ('getgid', 'HAVE_GETGID', None),
-                ('getuid', 'HAVE_GETUID', None),
-                ('wcslen', 'HAVE_WCSLEN', None),
-                ('asprintf', 'HAVE_ASPRINTF', None),
-                ('wprintf', 'HAVE_WPRINTF', None),
-                ('snprintf', 'HAVE_SNPRINTF', None),
-                ('printf', 'HAVE_POSIX_PRINTF', None),
-                ('fcntl', 'HAVE_FCNTL', None),
-            ],
-            types = [
-                ('intmax_t', 'HAVE_INTMAX_T', None),
-                ('long double', 'HAVE_LONG_DOUBLE', None),
-                ('long long', 'HAVE_LONG_LONG', None),
-                ('wchar_t', 'HAVE_WCHAR_T', None),
-                ('wint_t', 'HAVE_WINT_T', None),
-                ('uintmax_t', 'HAVE_INTTYPES_H_WITH_UINTMAX', '#include <inttypes.h>'),
-                ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
-            ],
-            libs = [
-                ('c', 'HAVE_LIBC'),
-            ],
-            custom_tests = [
-                (conf.CheckLC_MESSAGES(),
-                    'HAVE_LC_MESSAGES',
-                    'Define if your <locale.h> file defines LC_MESSAGES.'
-                ),
-                (conf.CheckIconvConst(),
-                    'ICONV_CONST',
-                    'Define as const if the declaration of iconv() needs const.',
-                    '#define ICONV_CONST const',
-                    '#define ICONV_CONST',
-                ),
-                (conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
-                conf.CheckType('intmax_t', includes='#include <inttypes.h>'),
-                    'HAVE_INTMAX_T',
-                    "Define to 1 if you have the `intmax_t' type."
-                ),
-                (env.has_key('nls') and env['nls'],
-                    'ENABLE_NLS',
-                    "Define to 1 if translation of program messages to the user's native anguage is requested.",
-                ),
-                (env['HAVE_ICONV'],
-                    'HAVE_ICONV',
-                    'Define to 1 if function iconv exists',
-                ),
-            ],
-            config_post = '#endif'
-        )
+        headers = [
+            ('unistd.h', 'HAVE_UNISTD_H', 'c'),
+            ('inttypes.h', 'HAVE_INTTYPES_H', 'c'),
+            ('string.h', 'HAVE_STRING_H', 'c'),
+            ('strings.h', 'HAVE_STRINGS_H', 'c'),
+            ('argz.h', 'HAVE_ARGZ_H', 'c'),
+            ('limits.h', 'HAVE_LIMITS_H', 'c'),
+            ('alloca.h', 'HAVE_ALLOCA_H', 'c'),
+            ('stddef.h', 'HAVE_STDDEF_H', 'c'),
+            ('stdint.h', 'HAVE_STDINT_H', 'c'),
+            ('sys/param.h', 'HAVE_SYS_PARAM_H', 'c'),
+        ],
+        functions = [
+            ('getcwd', 'HAVE_GETCWD', None),
+            ('stpcpy', 'HAVE_STPCPY', None),
+            ('strcasecmp', 'HAVE_STRCASECMP', None),
+            ('strdup', 'HAVE_STRDUP', None),
+            ('strtoul', 'HAVE_STRTOUL', None),
+            ('alloca', 'HAVE_ALLOCA', None),
+            ('__fsetlocking', 'HAVE___FSETLOCKING', None),
+            ('mempcpy', 'HAVE_MEMPCPY', None),
+            ('__argz_count', 'HAVE___ARGZ_COUNT', None),
+            ('__argz_next', 'HAVE___ARGZ_NEXT', None),
+            ('__argz_stringify', 'HAVE___ARGZ_STRINGIFY', None),
+            ('setlocale', 'HAVE_SETLOCALE', None),
+            ('tsearch', 'HAVE_TSEARCH', None),
+            ('getegid', 'HAVE_GETEGID', None),
+            ('getgid', 'HAVE_GETGID', None),
+            ('getuid', 'HAVE_GETUID', None),
+            ('wcslen', 'HAVE_WCSLEN', None),
+            ('asprintf', 'HAVE_ASPRINTF', None),
+            ('wprintf', 'HAVE_WPRINTF', None),
+            ('snprintf', 'HAVE_SNPRINTF', None),
+            ('printf', 'HAVE_POSIX_PRINTF', None),
+            ('fcntl', 'HAVE_FCNTL', None),
+        ],
+        types = [
+            ('intmax_t', 'HAVE_INTMAX_T', None),
+            ('long double', 'HAVE_LONG_DOUBLE', None),
+            ('long long', 'HAVE_LONG_LONG', None),
+            ('wchar_t', 'HAVE_WCHAR_T', None),
+            ('wint_t', 'HAVE_WINT_T', None),
+            ('uintmax_t', 'HAVE_INTTYPES_H_WITH_UINTMAX', '#include <inttypes.h>'),
+            ('uintmax_t', 'HAVE_STDINT_H_WITH_UINTMAX', '#include <stdint.h>'),
+        ],
+        libs = [
+            ('c', 'HAVE_LIBC'),
+        ],
+        custom_tests = [
+            (conf.CheckLC_MESSAGES(),
+                'HAVE_LC_MESSAGES',
+                'Define if your <locale.h> file defines LC_MESSAGES.'
+            ),
+            (conf.CheckIconvConst(),
+                'ICONV_CONST',
+                'Define as const if the declaration of iconv() needs const.',
+                '#define ICONV_CONST const',
+                '#define ICONV_CONST',
+            ),
+            (conf.CheckType('intmax_t', includes='#include <stdint.h>') or \
+            conf.CheckType('intmax_t', includes='#include <inttypes.h>'),
+                'HAVE_INTMAX_T',
+                "Define to 1 if you have the `intmax_t' type."
+            ),
+            (env.has_key('nls') and env['nls'],
+                'ENABLE_NLS',
+                "Define to 1 if translation of program messages to the user's native anguage is requested.",
+            ),
+            (env['HAVE_ICONV'],
+                'HAVE_ICONV',
+                'Define to 1 if function iconv exists',
+            ),
+        ],
+        config_post = '#endif'
+    )
 
-        # these keys are needed in env
-        for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
-            'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
-            # USE_ASPELL etc does not go through result
-            if result.has_key(key):
-                env[key] = result[key]
-            env_cache[key] = env[key]
-
-else:
-    #
-    # this comes as a big surprise, without this line
-    # (doing nothing obvious), adding fast_start=yes
-    # to a build with fast_start=no will result in a rebuild
-    # Note that the exact header file to check does not matter
-    conf.CheckCHeader('io.h')
-    # only a few variables need to be rescanned
-    for key in ['USE_ASPELL', 'USE_PSPELL', 'USE_ISPELL', 'HAVE_FCNTL',\
-        'HAVE_ICONV', 'HAVE_LIBGDI32', 'HAVE_LIBAIKSAURUS',
-        'ICONV_LIB', 'AIKSAURUS_LIB']:
-        env[key] = env_cache[key]
-    #
-    # nls related keys
-    if env['nls'] and included_gettext:
-        # only a few variables need to be rescanned
-        for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
-            'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
-            env[key] = env_cache[key]
+    # these keys are needed in env
+    for key in ['HAVE_ASPRINTF', 'HAVE_WPRINTF', 'HAVE_SNPRINTF', \
+        'HAVE_POSIX_PRINTF', 'HAVE_ICONV', 'HAVE_LIBC']:
+        # USE_ASPELL etc does not go through result
+        if result.has_key(key):
+            env[key] = result[key]
 
 # this looks misplaced, but intl/libintl.h is needed by src/message.C
 if env['nls'] and included_gettext:
@@ -1436,8 +1354,7 @@ if frontend == 'qt2':
   X11:                            %s
 ''' % (qt_inc_path, qt_lib_path, env['X11'])
 
-if not fast_start:
-    print env['VERSION_INFO']
+print env['VERSION_INFO']
 
 #
 # Mingw command line may be too short for our link usage,
@@ -1462,11 +1379,6 @@ if logfile != '' or platform_name == 'win32':
 #
 # -h will print out help info
 Help(opts.GenerateHelpText(env))
-
-# save environment settings (for fast_start option)
-cache_file = open(env_cache_file, 'w')
-cPickle.dump(env_cache, cache_file)
-cache_file.close()
 
 
 #----------------------------------------------------------
@@ -1895,9 +1807,9 @@ if build_msvs_projects:
         the full path to start debug them.
         '''
         if rebuildTargetOnly:
-            cmds = 'fast_start=yes rebuild='+target
+            cmds = 'rebuild='+target
         else:
-            cmds = 'fast_start=yes'
+            cmds = ''
         if full_target is None:
             build_target = target
         else:
