@@ -244,7 +244,7 @@ def revert_cs_label(document):
         while 1:
             if (document.body[i][:10] == "show_label"):
                 del document.body[i]
-		break
+                break
             elif (document.body[i][:13] == "\\begin_layout"):
                 document.warning("Malformed LyX document: Missing 'show_label'.")
                 break
