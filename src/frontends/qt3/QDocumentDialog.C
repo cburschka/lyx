@@ -436,7 +436,8 @@ void QDocumentDialog::updateNumbering()
 	QListViewItem * item = 0;
 	for ( ; cit != end ; ++cit) {
 		int const toclevel = (*cit)->toclevel;
-		if (toclevel != LyXLayout::NOT_IN_TOC) {
+		if (toclevel != LyXLayout::NOT_IN_TOC 
+		    && (*cit)->labeltype == LABEL_COUNTER) {
 			item = new QListViewItem(numberingModule->tocLV,
 						 item, qt_((*cit)->name()));
 			item->setText(1, (toclevel <= depth) ? yes : no);
