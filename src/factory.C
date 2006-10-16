@@ -345,6 +345,12 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 
 		// This strange command allows LyX to recognize "natbib" style
 		// citations: citet, citep, Citet etc.
+		// FIXME: We already have partial support for \\fullcite and
+		// the various \\footcite commands. We should increase the
+		// file format number and read these commands here, too.
+		// Then we should use is_possible_cite_command() in
+		// src/frontends/controllers/biblio.C to test for valid cite
+		// commands.
 		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
 			inset.reset(new InsetCitation(inscmd));
 		} else if (cmdName == "bibitem") {
