@@ -17,6 +17,16 @@
 
 #include <vector>
 
+// FIXME: Abdel 16/10/2006
+// This TextPainter class is never used, this is dead code.
+/* Georg explanation of current situation:
+AFAIK the text painter was used to export math formulas as ASCII art.
+The text painter is	like a real painter, but operating on a very coarse
+grid of character cells	where each cell can be filled with an ASCII character.
+I don't know why it is currently disabled. I do know that we have a bugzilla
+request for reenabling it.
+*/
+
 class TextPainter {
 	public:
 		///

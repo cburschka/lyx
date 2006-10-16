@@ -333,21 +333,8 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 {
 	//lyxerr << "x: " << x << " y: " << y << ' ' << pain.workAreaHeight() << endl;
 
-	// FIXME: Abdel 13/10/2006
-	// The setXV() call below is commented out for now because
-	// we don't have access to a BufferView at this level.
-	// In any case, this drawT() method is never used, this is dead code.
-	//
-	/* Georg explanation of current situation:
-	AFAIK the text painter was used to export math formulas as ASCII art.
-	Therefore the setXY() call makes sense. Imagine that the text painter is
-	like a real painter, but operating on a very coarse grid of character cells
-	where each cell can be filled with an ASCII character.
-	I don't know why it is currently disabled. I do know that we have a bugzilla
-	request for reenabling it. I believe only Andre can tell whether that is
-	doable or whether the whole drawT machinery should be removed.	
-	*/
-	//setXY(bv, x, y);
+	// FIXME: Abdel 16/10/2006
+	// This drawT() method is never used, this is dead code.
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
 		(*it)->drawT(pain, x, y);
