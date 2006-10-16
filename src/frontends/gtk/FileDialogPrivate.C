@@ -24,23 +24,25 @@
 #include "support/filefilterlist.h"
 #include "debug.h"
 
+using lyx::docstring;
+
 using std::string;
 
-FileDialog::Private::Private(string const & title,
+FileDialog::Private::Private(docstring const & title,
 			     kb_action action,
 			     FileDialog::Button /*b1*/,
 			     FileDialog::Button /*b2*/) :
 	action_(action),
 	fileChooser_("You shouldn't see this", Gtk::FILE_CHOOSER_ACTION_OPEN)
 {
-	fileChooser_.set_title(title);
+	fileChooser_.set_title(lyx::to_utf8(title));
 }
 
 
 FileDialog::Result const
-FileDialog::Private::open(string const & path,
+FileDialog::Private::open(docstring const & path,
 			  lyx::support::FileFilterList const & filters,
-			  string const & suggested)
+			  docstring const & suggested)
 {
 	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
 	fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
@@ -50,8 +52,8 @@ FileDialog::Private::open(string const & path,
 }
 
 
-FileDialog::Result const FileDialog::Private::opendir(string const & path,
-						      string const & suggested)
+FileDialog::Result const FileDialog::Private::opendir(docstring const & path,
+						      docstring const & suggested)
 {
 	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
 	fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
@@ -61,9 +63,9 @@ FileDialog::Result const FileDialog::Private::opendir(string const & path,
 }
 
 
-FileDialog::Result const FileDialog::Private::save(string const & path,
+FileDialog::Result const FileDialog::Private::save(docstring const & path,
 						   lyx::support::FileFilterList const & filters,
-						   string const & suggested)
+						   docstring const & suggested)
 {
 	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_SAVE);
 	fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
@@ -73,13 +75,13 @@ FileDialog::Result const FileDialog::Private::save(string const & path,
 }
 
 
-FileDialog::Result const FileDialog::Private::showChooser(string const & path,
+FileDialog::Result const FileDialog::Private::showChooser(docstring const & path,
 			  lyx::support::FileFilterList const & filters,
-			  string const & suggested)
+			  docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "File Dialog with path \"" << path
-			   << "\", mask \"" << filters.as_string()
-			   << "\", suggested \"" << suggested << "\"\n";
+	lyxerr[Debug::GUI] << "File Dialog with path \"" << lyx::to_utf8(path)
+			   << "\", mask \"" << lyx::to_utf8(filters.as_string())
+			   << "\", suggested \"" << lyx::to_utf8(suggested) << "\"\n";
 
 	for (lyx::support::FileFilterList::size_type i = 0; i < filters.size(); ++i) {
 		typedef lyx::support::FileFilterList::Filter::glob_iterator glob_iterator;
@@ -89,7 +91,7 @@ FileDialog::Result const FileDialog::Private::showChooser(string const & path,
 			continue;
 
 		Gtk::FileFilter filter;
-		filter.set_name(filters[i].description());
+		filter.set_name(lyx::to_utf8(filters[i].description()));
 		for (; it != end; ++it)
 			filter.add_pattern(*it);
 
@@ -97,16 +99,16 @@ FileDialog::Result const FileDialog::Private::showChooser(string const & path,
 	}
 
 	if (!path.empty())
-		fileChooser_.set_current_folder(path);
+		fileChooser_.set_current_folder(lyx::to_utf8(path));
 	if (!suggested.empty())
-		fileChooser_.set_current_name(suggested);
+		fileChooser_.set_current_name(lyx::to_utf8(suggested));
 
 	fileChooser_.set_default_response(Gtk::RESPONSE_OK);
 	Result result;
 	result.first = FileDialog::Chosen;
 	if (fileChooser_.run() == Gtk::RESPONSE_OK)
-		result.second = fileChooser_.get_filename();
+		result.second = lyx::from_utf8(fileChooser_.get_filename());
 	else
-		result.second = string();
+		result.second = docstring();
 	return result;
 }

@@ -27,6 +27,7 @@
 
 #include <libglademm.h>
 
+using lyx::docstring;
 using lyx::support::changeExtension;
 using lyx::support::split;
 using lyx::support::trim;
@@ -212,7 +213,7 @@ void GBibtex::apply()
 
 void GBibtex::add()
 {
-	string new_bib = controller().browseBib("");
+	string new_bib = lyx::to_utf8(controller().browseBib(docstring()));
 	if (new_bib.empty())
 		return;
 
@@ -239,10 +240,10 @@ void GBibtex::remove()
 
 void GBibtex::browse()
 {
-	string const file = controller().browseBst("");
+	string const file = lyx::to_utf8(controller().browseBst(docstring()));
 
 	if (!file.empty()) {
-		string const filen = changeExtension(file, "");
+		string const filen = changeExtension(file, string());
 		bool present = false;
 
 		for (unsigned int i = 0; i < stylecombo_.get_model()->children().size(); ++i) {

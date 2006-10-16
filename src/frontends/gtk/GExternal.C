@@ -34,6 +34,7 @@
 #include <vector>
 #include <string>
 
+using lyx::docstring;
 using lyx::support::token;
 using lyx::support::FileFilterList;
 using lyx::support::trim;
@@ -102,7 +103,7 @@ templateModelColumns& templateColumns() {
 
 /// Produces a vector of Gtk::FileFilter*s out of the controller's filterstring
 /// providing sensible descriptions (with alttitle as a fallback)
-std::vector<Gtk::FileFilter* > get_filters(const std::string & filterstring, const std::string & alttitle)
+std::vector<Gtk::FileFilter* > get_filters(docstring const & filterstring, docstring const & alttitle)
 {
 	FileFilterList filterlist(filterstring);
 	std::vector<Gtk::FileFilter* > filters(filterlist.size());
@@ -111,17 +112,16 @@ std::vector<Gtk::FileFilter* > get_filters(const std::string & filterstring, con
 		FileFilterList::Filter ff = filterlist[i];
 
 		filters[i] = new Gtk::FileFilter();
-		std::string description = ff.description();
+		docstring const description = ff.description();
 
 		if (description.empty())
-			filters[i]->set_name(Glib::locale_to_utf8(alttitle) +
-					     " " + lyx::to_utf8(_("files")));
+			filters[i]->set_name(lyx::to_utf8(alttitle + ' ' + _("files")));
 		else
-			filters[i]->set_name(Glib::locale_to_utf8(description));
+			filters[i]->set_name(lyx::to_utf8(description));
 
 		for (FileFilterList::Filter::glob_iterator git = ff.begin();
 			git!=ff.end(); ++git)
-			filters[i]->add_pattern(Glib::locale_to_utf8(*git));
+			filters[i]->add_pattern(*git);
 	}
 	return filters;
 }
@@ -328,11 +328,11 @@ void GExternal::doBuild()
 		external::Template templ = controller().getTemplate(count);
 
 		Gtk::TreeModel::iterator iter = templatestore_->append();
-		(*iter)[templateColumns().name] = Glib::locale_to_utf8(*cit);
-		(*iter)[templateColumns().info] =
-			Glib::locale_to_utf8(templ.helpText);
+		(*iter)[templateColumns().name] = *cit;
+		(*iter)[templateColumns().info] = templ.helpText;
 		(*iter)[templateColumns().filters] = get_filters(
-			controller().getTemplateFilters(*cit),*cit);
+			lyx::from_utf8(controller().getTemplateFilters(*cit)),
+			lyx::from_utf8(*cit));
 	}
 
 

@@ -48,7 +48,7 @@ void GBC::setButtonLabel(Gtk::Button * btn, docstring const & label) const
 {
 	// GTK+ Stock buttons take precedence
 	if (!btn->get_use_stock())
-		btn->set_label(label);
+		btn->set_label(lyx::to_utf8(label));
 }
 
 } // namespace frontend

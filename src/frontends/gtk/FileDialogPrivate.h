@@ -19,21 +19,21 @@
 
 class FileDialog::Private : public sigc::trackable {
 public:
-	Private(std::string const & title,
+	Private(lyx::docstring const & title,
 		kb_action action,
 		FileDialog::Button b1, FileDialog::Button b2);
-	FileDialog::Result const open(std::string const & path,
+	FileDialog::Result const open(lyx::docstring const & path,
 		lyx::support::FileFilterList const & filters,
-		std::string const & suggested);
-	FileDialog::Result const opendir(std::string const & path,
-		std::string const & suggested);
-	FileDialog::Result const save(std::string const & path,
+		lyx::docstring const & suggested);
+	FileDialog::Result const opendir(lyx::docstring const & path,
+		lyx::docstring const & suggested);
+	FileDialog::Result const save(lyx::docstring const & path,
 		lyx::support::FileFilterList const & filters,
-		std::string const & suggested);
+		lyx::docstring const & suggested);
 
-	FileDialog::Result const showChooser(std::string const & path,
+	FileDialog::Result const showChooser(lyx::docstring const & path,
 		lyx::support::FileFilterList const & filters,
-		std::string const & suggested);
+		lyx::docstring const & suggested);
 
 private:
 	kb_action action_;

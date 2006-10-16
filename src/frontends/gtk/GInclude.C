@@ -147,7 +147,7 @@ void GInclude::onBrowseClicked()
 	else
 		type = ControlInclude::VERBATIM;
 
-	fileentry_->set_text(controller().browse(fileentry_->get_text(), type));
+	fileentry_->set_text(lyx::to_utf8(controller().browse(lyx::from_utf8(fileentry_->get_text()), type)));
 }
 
 

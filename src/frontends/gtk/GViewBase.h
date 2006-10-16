@@ -32,7 +32,7 @@ public:
 	void setApply(Gtk::Button * apply);
 	void setOK(Gtk::Button * ok);
 	void setRestore(Gtk::Button * restore);
-	void setTitle(lyx::doctring const &);
+	void setTitle(lyx::docstring const &);
 	bool readOnly() const;
 protected:
 	// Build the dialog
@@ -90,7 +90,7 @@ const Gtk::Window * GViewDB<Dialog>::window() const
 
 class GViewGladeB : public GViewBase {
 protected:
-	GViewGladeB(Dialog & parent, std::string const & t, bool allowResize);
+	GViewGladeB(Dialog & parent, lyx::docstring const & t, bool allowResize);
 	virtual Gtk::Window const * window() const;
 	virtual Gtk::Window * window();
 	Glib::RefPtr<Gnome::Glade::Xml> xml_;

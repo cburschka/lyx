@@ -20,10 +20,12 @@
 
 #include "FileDialogPrivate.h"
 
+using lyx::docstring;
+
 using std::string;
 
 
-FileDialog::FileDialog(string const & title,
+FileDialog::FileDialog(docstring const & title,
 		       kb_action action,
 		       Button b1,
 		       Button b2)
@@ -39,26 +41,26 @@ FileDialog::~FileDialog()
 
 
 FileDialog::Result const
-FileDialog::open(string const & path,
+FileDialog::open(docstring const & path,
 		 lyx::support::FileFilterList const & filters,
-		 string const & suggested)
+		 docstring const & suggested)
 {
 	return private_->open(path, filters, suggested);
 }
 
 
 FileDialog::Result const
-FileDialog::opendir(string const & path,
-		    string const & suggested)
+FileDialog::opendir(docstring const & path,
+		    docstring const & suggested)
 {
 	return private_->opendir(path, suggested);
 }
 
 
 FileDialog::Result const
-FileDialog::save(string const & path,
+FileDialog::save(docstring const & path,
 		 lyx::support::FileFilterList const & filters,
-		 string const & suggested)
+		 docstring const & suggested)
 {
 	return private_->save(path, filters, suggested);
 }

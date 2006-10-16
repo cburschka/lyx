@@ -468,7 +468,7 @@ void GGraphics::onBrowseClicked()
 {
 	// Get the filename from the dialog
 	string const in_name = fileentry_->get_text();
-	string const out_name = controller().browse(in_name);
+	string const out_name = lyx::to_utf8(controller().browse(lyx::from_utf8(in_name)));
 	lyxerr[Debug::GRAPHICS]
 		<< "[FormGraphics]out_name: " << out_name << "\n";
 	if (out_name != in_name && !out_name.empty()) {
