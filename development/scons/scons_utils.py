@@ -339,28 +339,28 @@ def createConfigFile(conf, config_file,
         description = "Define to 1 if you have the <%s> header file." % header[0]
         if (header[2] == 'c' and conf.CheckCHeader(header[0])) or \
             (header[2] == 'cxx' and conf.CheckCXXHeader(header[0])):
-            result[header[1]] = True
+            result[header[1]] = 1
             cont += configString('#define %s 1' % header[1], desc = description)
         else:
-            result[header[1]] = False
+            result[header[1]] = 0
             cont += configString('/* #undef %s */' % header[1], desc = description)
     # functions
     for func in functions:
         description = "Define to 1 if you have the `%s' function." % func[0]
         if conf.CheckFunc(func[0], header=func[2]):
-            result[func[1]] = True
+            result[func[1]] = 1
             cont += configString('#define %s 1' % func[1], desc = description)
         else:
-            result[func[1]] = False
+            result[func[1]] = 0
             cont += configString('/* #undef %s */' % func[1], desc = description)
     # types
     for t in types:
         description = "Define to 1 if you have the `%s' type." % t[0]
         if conf.CheckType(t[0], includes=t[2]):
-            result[t[1]] = True
+            result[t[1]] = 1
             cont += configString('#define %s 1' % t[1], desc = description)
         else:
-            result[t[1]] = False
+            result[t[1]] = 0
             cont += configString('/* #undef %s */' % t[1],  desc = description)
     # libraries
     for lib in libs:
@@ -370,13 +370,13 @@ def createConfigFile(conf, config_file,
         else:
             lib_list = lib[0]
         # check if any of the lib exists
-        result[lib[1]] = False
+        result[lib[1]] = 0
         # if user want the name of the lib detected
         if len(lib) == 3:
             result[lib[2]] = None
         for ll in lib_list:
             if conf.CheckLib(ll):
-                result[lib[1]] = True
+                result[lib[1]] = 1
                 if len(lib) == 3:
                     result[lib[2]] = ll
                 cont += configString('#define %s 1' % lib[1], desc = description)
@@ -387,13 +387,13 @@ def createConfigFile(conf, config_file,
     # custom tests
     for test in custom_tests:
         if test[0]:
-            result[test[1]] = True
+            result[test[1]] = 1
             if len(test) == 3:
                 cont += configString('#define %s 1' % test[1], desc = test[2])
             else:
                 cont += configString(test[3], desc = test[2])
         else:
-            result[test[1]] = False
+            result[test[1]] = 0
             if len(test) == 3:
                 cont += configString('/* #undef %s */' % test[1], desc = test[2])
             else:
