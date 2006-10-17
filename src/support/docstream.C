@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "docstream.h"
+#include "unicode.h"
 
 #include <cerrno>
 #include <cstdio>
@@ -19,11 +20,6 @@
 
 namespace {
 
-#ifdef WORDS_BIGENDIAN
-char const * ucs4_codeset = "UCS-4BE";
-#else
-char const * ucs4_codeset = "UCS-4LE";
-#endif
 char const * utf8_codeset = "UTF-8";
 
 // We use C IO throughout this file, because the facets might be used with

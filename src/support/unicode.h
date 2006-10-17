@@ -61,4 +61,7 @@ ucs4_to_utf8(std::vector<lyx::char_type> const & ucs4str);
 std::vector<char>
 ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls);
 
+extern char const * ucs4_codeset;
+extern char const * ucs2_codeset;
+
 #endif

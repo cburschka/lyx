@@ -23,8 +23,6 @@
 
 using std::endl;
 
-namespace {
-
 #ifdef WORDS_BIGENDIAN
 	char const * ucs4_codeset = "UCS-4BE";
 	char const * ucs2_codeset = "UCS-2BE";
@@ -32,6 +30,8 @@ namespace {
 	char const * ucs4_codeset = "UCS-4LE";
 	char const * ucs2_codeset = "UCS-2LE";
 #endif
+
+namespace {
 
 template<typename RetType, typename InType>
 std::vector<RetType>
