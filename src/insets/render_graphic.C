@@ -159,20 +159,22 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		LyXFont msgFont(mi.base.font);
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
 
-		string const justname = onlyFilename(params_.filename);
-		docstring djust(justname.begin(), justname.end());
+		// FIXME UNICODE
+		docstring const justname = 
+			lyx::from_utf8(onlyFilename(params_.filename));
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			font_width = theFontMetrics(msgFont)
-				.width(djust);
+				.width(justname);
 		}
 
-		string const msg = statusMessage(params_, loader_.status());
+		// FIXME UNICODE
+		docstring const msg = 
+			lyx::from_utf8(statusMessage(params_, loader_.status()));
 		if (!msg.empty()) {
-			docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
-				theFontMetrics(msgFont).width(dmsg));
+				theFontMetrics(msgFont).width(msg));
 		}
 
 		dim.wid = std::max(50, font_width + 15);

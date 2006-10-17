@@ -347,9 +347,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
 			FontSetChanger dummy(pi.base, "mathrm");
-			string const nl = nicelabel(row);
-			docstring const dnl(nl.begin(), nl.end());
-			pi.draw(xx, yy, dnl);
+			docstring const nl = nicelabel(row);
+			pi.draw(xx, yy, nl);
 		}
 	}
 	setPosCache(pi, x, y);
@@ -663,13 +662,14 @@ void InsetMathHull::delCol(col_type col)
 }
 
 
-string InsetMathHull::nicelabel(row_type row) const
+docstring InsetMathHull::nicelabel(row_type row) const
 {
 	if (nonum_[row])
-		return string();
+		return docstring();
 	if (label_[row].empty())
-		return string("(#)");
-	return '(' + label_[row] + ')';
+		return lyx::from_ascii("(#)");
+	// FIXME UNICODE
+	return lyx::from_utf8('(' + label_[row] + ')');
 }
 
 
@@ -980,7 +980,8 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (cur.inMathed() && cur.selection()) {
-			asArray(grabAndEraseSelection(cur), ar);
+			// FIXME UNICODE
+			asArray(lyx::from_utf8(grabAndEraseSelection(cur)), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;

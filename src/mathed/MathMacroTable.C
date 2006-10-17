@@ -45,7 +45,8 @@ MacroData::MacroData(string const & def, int numargs, string const & disp)
 void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 {
 	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
-	asArray(disp_.empty() ? def_ : disp_, inset.cell(0));
+	// FIXME UNICODE
+	asArray(lyx::from_utf8(disp_.empty() ? def_ : disp_), inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
 	for (DocIterator it = doc_iterator_begin(inset); it; it.forwardChar()) {

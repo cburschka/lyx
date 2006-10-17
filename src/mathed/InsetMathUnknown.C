@@ -51,17 +51,19 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 
 void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, name_, dim);
+	// FIXME UNICODE
+	mathed_string_dim(mi.base.font, lyx::from_utf8(name_), dim);
 	dim_ = dim;
 }
 
 
 void InsetMathUnknown::draw(PainterInfo & pi, int x, int y) const
 {
+	// FIXME UNICODE
 	if (black_)
-		drawStrBlack(pi, x, y, name_);
+		drawStrBlack(pi, x, y, lyx::from_utf8(name_));
 	else
-		drawStrRed(pi, x, y, name_);
+		drawStrRed(pi, x, y, lyx::from_utf8(name_));
 	setPosCache(pi, x, y);
 }
 

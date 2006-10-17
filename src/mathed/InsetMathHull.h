@@ -141,7 +141,7 @@ private:
 	///
 	void footer_write(WriteStream &) const;
 	///
-	std::string nicelabel(row_type row) const;
+	lyx::docstring nicelabel(row_type row) const;
 	///
 	void doExtern(LCursor & cur, FuncRequest & func);
 	///

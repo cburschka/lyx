@@ -60,14 +60,17 @@ void MathMacro::cursorPos(CursorSlice const & sl, bool boundary, int & x,
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
-		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
+		mathed_string_dim(mi.base.font, lyx::from_utf8("Unknown: " + name()), dim);
 	} else if (editing(mi.base.bv)) {
-		asArray(MacroTable::globalMacros().get(name()).def(), tmpl_);
+		// FIXME UNICODE
+		asArray(lyx::from_utf8(MacroTable::globalMacros().get(name()).def()), tmpl_);
 		LyXFont font = mi.base.font;
 		augmentFont(font, "lyxtex");
 		tmpl_.metrics(mi, dim);
-		dim.wid += mathed_string_width(font, name()) + 10;
-		int ww = mathed_string_width(font, "#1: ");
+		// FIXME UNICODE
+		dim.wid += mathed_string_width(font, lyx::from_utf8(name())) + 10;
+		// FIXME UNICODE
+		int ww = mathed_string_width(font, lyx::from_ascii("#1: "));
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			c.metrics(mi);
@@ -86,18 +89,20 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
-		drawStrRed(pi, x, y, "Unknown: " + name());
+		// FIXME UNICODE
+		drawStrRed(pi, x, y, lyx::from_utf8("Unknown: " + name()));
 	} else if (editing(pi.base.bv)) {
 		LyXFont font = pi.base.font;
 		augmentFont(font, "lyxtex");
 		int h = y - dim_.ascent() + 2 + tmpl_.ascent();
-		docstring dn(name().begin(), name().end());
+		// FIXME UNICODE
+		docstring dn = lyx::from_utf8(name());
 		pi.pain.text(x + 3, h, dn, font);
-		int const w = mathed_string_width(font, name());
+		int const w = mathed_string_width(font, dn);
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
 		Dimension ldim;
-		mathed_string_dim(font, "#1: ", ldim);
+		mathed_string_dim(font, lyx::from_ascii("#1: "), ldim);
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.asc) + 5;

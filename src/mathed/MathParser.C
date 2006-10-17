@@ -1220,7 +1220,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// FIXME: This is swallowed in inline formulas
 			string label = parse_verbatim_item();
 			MathArray ar;
-			asArray(label, ar);
+			// FIXME UNICODE
+			asArray(lyx::from_utf8(label), ar);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
 			} else {

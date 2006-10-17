@@ -34,14 +34,15 @@ auto_ptr<InsetBase> InsetMathNumber::doClone() const
 
 void InsetMathNumber::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, str_, dim);
+	// FIXME UNICODE
+	mathed_string_dim(mi.base.font, lyx::from_utf8(str_), dim);
 }
 
 
 void InsetMathNumber::draw(PainterInfo & pi, int x, int y) const
 {
-        docstring const dstr(str_.begin(), str_.end());
-	pi.draw(x, y, dstr);
+	// FIXME UNICODE
+	pi.draw(x, y, lyx::from_utf8(str_));
 }
 
 

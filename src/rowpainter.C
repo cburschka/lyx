@@ -194,7 +194,7 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
 
-	string str;
+	docstring str;
 
 	// first char
 	char_type c = par_.getChar(pos);
@@ -220,15 +220,15 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 	}
 
 	// Draw nikud
-        docstring dstr(str.begin(), str.end());
-	pain_.text(int(x_) + dx, yo_, dstr, font);
+	// FIXME UNICODE
+	pain_.text(int(x_) + dx, yo_, str, font);
 }
 
 
 void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 {
 	pos_type pos = text_.bidi.vis2log(vpos);
-	string str;
+	docstring str;
 
 	// first char
 	char_type c = par_.getChar(pos);
@@ -251,8 +251,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 		}
 	}
 	// Draw nikud
-        docstring dstr(str.begin(), str.end());
-	pain_.text(int(x_) + dx, yo_, dstr, font);
+	pain_.text(int(x_) + dx, yo_, str, font);
 }
 
 
@@ -458,17 +457,17 @@ int RowPainter::paintAppendixStart(int y)
 	pb_font.setColor(LColor::appendix);
 	pb_font.decSize();
 
-	string const label = lyx::to_utf8(_("Appendix"));
 	int w = 0;
 	int a = 0;
 	int d = 0;
-        docstring dlab(label.begin(), label.end());
-	theFontMetrics(pb_font).rectText(dlab, w, a, d);
+
+	docstring const label = _("Appendix");
+	theFontMetrics(pb_font).rectText(label, w, a, d);
 
 	int const text_start = int(xo_ + (width_ - w) / 2);
 	int const text_end = text_start + w;
 
-	pain_.rectText(text_start, y + d, dlab, pb_font, LColor::none, LColor::none);
+	pain_.rectText(text_start, y + d, label, pb_font, LColor::none, LColor::none);
 
 	pain_.line(int(xo_ + 1), y, text_start, y, LColor::appendix);
 	pain_.line(text_end, y, int(xo_ + width_ - 2), y, LColor::appendix);
@@ -520,10 +519,10 @@ void RowPainter::paintFirst()
 		LyXFont const font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 
-		string const str = par_.getLabelstring();
+		// FIXME UNICODE
+		docstring const str = lyx::from_utf8(par_.getLabelstring());
 		if (!str.empty()) {
 			double x = x_;
-                        docstring dstr(str.begin(), str.end());
 
 			// this is special code for the chapter layout. This is
 			// printed in an extra row and has a pagebreak at
@@ -543,22 +542,22 @@ void RowPainter::paintFirst()
 
 				if (is_rtl) {
 					x = width_ - leftMargin() -
-						fm.width(dstr);
+						fm.width(str);
 				}
 
-				pain_.text(int(x), yo_ - maxdesc - labeladdon, dstr, font);
+				pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 			} else {
-                                string lab = layout->labelsep;
-                                docstring dlab(lab.begin(), lab.end());
+				// FIXME UNICODE
+				docstring lab = lyx::from_utf8(layout->labelsep);
 				if (is_rtl) {
 					x = width_ - leftMargin()
-						+ fm.width(dlab);
+						+ fm.width(lab);
 				} else {
-					x = x_ - fm.width(dlab)
-						- fm.width(dstr);
+					x = x_ - fm.width(lab)
+						- fm.width(str);
 				}
 
-				pain_.text(int(x), yo_, dstr, font);
+				pain_.text(int(x), yo_, str, font);
 			}
 		}
 
@@ -570,8 +569,7 @@ void RowPainter::paintFirst()
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
 		LyXFont font = getLabelFont();
 		if (!par_.getLabelstring().empty()) {
-			string const str = par_.getLabelstring();
-                        docstring dstr(str.begin(), str.end());
+			docstring const str = lyx::from_utf8(par_.getLabelstring());
 			double spacing_val = 1.0;
 			if (!parparams.spacing().isDefault())
 				spacing_val = parparams.spacing().getValue();
@@ -592,11 +590,11 @@ void RowPainter::paintFirst()
 				if (is_rtl)
 					x = leftMargin();
 				x += (width_ - text_.rightMargin(par_) - leftMargin()) / 2;
-				x -= fm.width(dstr) / 2;
+				x -= fm.width(str) / 2;
 			} else if (is_rtl) {
-				x = width_ - leftMargin() -	fm.width(dstr);
+				x = width_ - leftMargin() -	fm.width(str);
 			}
-			pain_.text(int(x), yo_ - maxdesc - labeladdon, dstr, font);
+			pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 		}
 	}
 }
@@ -630,12 +628,12 @@ void RowPainter::paintLast()
 	case END_LABEL_STATIC: {
 		LyXFont font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
-		string const & str = par_.layout()->endlabelstring();
-                docstring dstr(str.begin(), str.end());
+		// FIXME UNICODE
+		docstring const & str = lyx::from_utf8(par_.layout()->endlabelstring());
 		double const x = is_rtl ?
-			x_ - fm.width(dstr)
+			x_ - fm.width(str)
 			: - text_.rightMargin(par_) - row_.width();
-		pain_.text(int(x), yo_, dstr, font);
+		pain_.text(int(x), yo_, str, font);
 		break;
 	}
 
@@ -713,10 +711,9 @@ void RowPainter::paintText()
 		}
 
 		if (body_pos > 0 && pos == body_pos - 1) {
-                        string lab = layout->labelsep;
-                        docstring dlab(lab.begin(), lab.end());
-			int const lwidth 
-				= theFontMetrics(getLabelFont()).width(dlab);
+			// FIXME UNICODE
+			int const lwidth = theFontMetrics(getLabelFont())
+				.width(lyx::from_utf8(layout->labelsep));
 
 			x_ += label_hfill_ + lwidth - width_pos;
 		}

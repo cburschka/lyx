@@ -699,7 +699,8 @@ void LCursor::insert(InsetBase * inset)
 void LCursor::niceInsert(string const & t)
 {
 	MathArray ar;
-	asArray(t, ar);
+	// FIXME UNICODE
+	asArray(lyx::from_utf8(t), ar);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
 	else
@@ -720,7 +721,8 @@ void LCursor::niceInsert(MathAtom const & t)
 		pushLeft(*nextInset());
 		// We may not use niceInsert here (recursion)
 		MathArray ar;
-		asArray(safe, ar);
+		// FIXME UNICODE
+		asArray(lyx::from_utf8(safe), ar);
 		insert(ar);
 	}
 }
@@ -879,7 +881,8 @@ void LCursor::handleNest(MathAtom const & a, int c)
 {
 	//lyxerr << "LCursor::handleNest: " << c << endl;
 	MathAtom t = a;
-	asArray(lyx::cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
+	// FIXME UNICODE
+	asArray(lyx::from_utf8(lyx::cap::grabAndEraseSelection(*this)), t.nucleus()->cell(c));
 	insert(t);
 	posLeft();
 	pushLeft(*nextInset());

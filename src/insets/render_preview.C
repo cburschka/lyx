@@ -131,9 +131,9 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		LyXFont font(mi.base.font);
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
-		string stat = statusMessage(mi.base.bv, snippet_);
-		docstring dstat(stat.begin(), stat.end());
-		dim.wid = 15 + theFontMetrics(font).width(dstat);
+		// FIXME UNICODE
+		docstring const stat = lyx::from_utf8(statusMessage(mi.base.bv, snippet_));
+		dim.wid = 15 + theFontMetrics(font).width(stat);
 	}
 
 	dim_ = dim;
@@ -165,11 +165,11 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
-		string stat = statusMessage(pi.base.bv, snippet_);
-		docstring dstat(stat.begin(), stat.end());
+		// FIXME UNICODE
+		docstring const stat = lyx::from_utf8(statusMessage(pi.base.bv, snippet_));
 		pi.pain.text(x + offset + 6,
 			     y - theFontMetrics(font).maxAscent() - 4,
-			     dstat, font);
+			     stat, font);
 	}
 }
 

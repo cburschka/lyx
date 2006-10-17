@@ -365,7 +365,7 @@ deco_struct const * search_deco(string const & name)
 } // namespace anon
 
 
-void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
+void mathed_char_dim(LyXFont const & font, lyx::char_type c, Dimension & dim)
 {
 	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
 	dim.des = fm.descent(c);
@@ -374,35 +374,28 @@ void mathed_char_dim(LyXFont const & font, unsigned char c, Dimension & dim)
 }
 
 
-int mathed_char_width(LyXFont const & font, unsigned char c)
+int mathed_char_width(LyXFont const & font, lyx::char_type c)
 {
 	return theFontMetrics(font).width(c);
 }
 
 
-void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim)
+void mathed_string_dim(LyXFont const & font, docstring const & s, Dimension & dim)
 {
 	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
-#if 1
 	dim.asc = 0;
 	dim.des = 0;
-	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
+	for (docstring::const_iterator it = s.begin(); it != s.end(); ++it) {
 		dim.asc = max(dim.asc, fm.ascent(*it));
 		dim.des = max(dim.des, fm.descent(*it));
 	}
-#else
-	dim.asc = fm.maxAscent();
-	dim.des = fm.maxDescent();
-#endif
-	docstring ds(s.begin(), s.end());
-	dim.wid = fm.width(ds);
+	dim.wid = fm.width(s);
 }
 
 
-int mathed_string_width(LyXFont const & font, string const & s)
+int mathed_string_width(LyXFont const & font, docstring const & s)
 {
-	docstring ds(s.begin(), s.end());
-	return theFontMetrics(font).width(ds);
+	return theFontMetrics(font).width(s);
 }
 
 
@@ -476,21 +469,19 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
-void drawStrRed(PainterInfo & pi, int x, int y, string const & str)
+void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::latex);
-        docstring dstr(str.begin(), str.end());
-	pi.pain.text(x, y, dstr, f);
+	pi.pain.text(x, y, str, f);
 }
 
 
-void drawStrBlack(PainterInfo & pi, int x, int y, string const & str)
+void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::foreground);
-        docstring dstr(str.begin(), str.end());
-	pi.pain.text(x, y, dstr, f);
+	pi.pain.text(x, y, str, f);
 }
 
 
@@ -687,9 +678,9 @@ string asString(MathArray const & ar)
 }
 
 
-void asArray(string const & str, MathArray & ar)
+void asArray(docstring const & str, MathArray & ar)
 {
-	mathed_parse_cell(ar, str);
+	mathed_parse_cell(ar, lyx::to_utf8(str));
 }
 
 

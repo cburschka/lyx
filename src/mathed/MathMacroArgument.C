@@ -49,14 +49,15 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, str_, dim_);
+	mathed_string_dim(mi.base.font, lyx::from_utf8(str_), dim_);
 	dim = dim_;
 }
 
 
 void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 {
-	drawStrRed(pi, x, y, str_);
+	// FIXME UNICODE
+	drawStrRed(pi, x, y, lyx::from_utf8(str_));
 	setPosCache(pi, x, y);
 }
 

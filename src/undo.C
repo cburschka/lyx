@@ -169,7 +169,8 @@ bool textUndoOrRedo(BufferView & bv,
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
 		//lyxerr << "undo.array=" << undo.array <<endl;
-		asArray(undo.array, dit.cell());
+		// FIXME UNICODE
+		asArray(lyx::from_utf8(undo.array), dit.cell());
 	} else {
 		// Some finer machinery is needed here.
 		LyXText * text = dit.text();

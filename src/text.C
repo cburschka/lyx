@@ -501,9 +501,9 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	if (isMainText())
 		l_margin += changebarMargin();
 
-	string leftm = tclass.leftmargin();
-	docstring dleft(leftm.begin(), leftm.end());
-	l_margin += theFontMetrics(params.getFont()).signedWidth(dleft);
+	// FIXME UNICODE
+	docstring leftm = lyx::from_utf8(tclass.leftmargin());
+	l_margin += theFontMetrics(params.getFont()).signedWidth(leftm);
 
 	if (par.getDepth() != 0) {
 		// find the next level paragraph
@@ -534,45 +534,41 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	switch (layout->margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty()) {
-			string leftm = layout->leftmargin;
-			docstring dleft(leftm.begin(), leftm.end());
-			l_margin += theFontMetrics(params.getFont()).signedWidth(dleft);
+			// FIXME UNICODE
+			docstring leftm = lyx::from_utf8(layout->leftmargin);
+			l_margin += theFontMetrics(params.getFont()).signedWidth(leftm);
 		}
 		if (!par.getLabelstring().empty()) {
-			string labin = layout->labelindent;
-			docstring dlabin(labin.begin(), labin.end());
-			l_margin += labelfont_metrics.signedWidth(dlabin);
-			string labstr = par.getLabelstring();
-			docstring dlabstr(labstr.begin(), labstr.end());
-			l_margin += labelfont_metrics.width(dlabstr);
-			string labsep = layout->labelsep;
-			docstring dlabsep(labsep.begin(), labsep.end());
-			l_margin += labelfont_metrics.width(dlabsep);
+			// FIXME UNICODE
+			docstring labin = lyx::from_utf8(layout->labelindent);
+			l_margin += labelfont_metrics.signedWidth(labin);
+			docstring labstr = lyx::from_utf8(par.getLabelstring());
+			l_margin += labelfont_metrics.width(labstr);
+			docstring labsep = lyx::from_utf8(layout->labelsep);
+			l_margin += labelfont_metrics.width(labsep);
 		}
 		break;
 
 	case MARGIN_MANUAL: {
-		string labin = layout->labelindent;
-		docstring dlabin(labin.begin(), labin.end());
-		l_margin += labelfont_metrics.signedWidth(dlabin);
+		// FIXME UNICODE
+		docstring labin = lyx::from_utf8(layout->labelindent);
+		l_margin += labelfont_metrics.signedWidth(labin);
 		// The width of an empty par, even with manual label, should be 0
 		if (!par.empty() && pos >= par.beginOfBody()) {
 			if (!par.getLabelWidthString().empty()) {
-				string labstr = par.getLabelWidthString();
-				docstring dlabstr(labstr.begin(), labstr.end());
-				l_margin += labelfont_metrics.width(dlabstr);
-				string labsep = layout->labelsep;
-				docstring dlabsep(labsep.begin(), labsep.end());
-				l_margin += labelfont_metrics.width(dlabsep);
+				docstring labstr = lyx::from_utf8(par.getLabelWidthString());
+				l_margin += labelfont_metrics.width(labstr);
+				docstring labsep = lyx::from_utf8(layout->labelsep);
+				l_margin += labelfont_metrics.width(labsep);
 			}
 		}
 		break;
 	}
 
 	case MARGIN_STATIC: {
-		string leftm = layout->leftmargin;
-		docstring dleft(leftm.begin(), leftm.end());
-		l_margin += theFontMetrics(params.getFont()).signedWidth(dleft)
+		// FIXME UNICODE
+		docstring leftm = lyx::from_utf8(layout->leftmargin);
+		l_margin += theFontMetrics(params.getFont()).signedWidth(leftm)
 			* 4	/ (par.getDepth() + 4);
 		break;
 	}
@@ -580,13 +576,13 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	case MARGIN_FIRST_DYNAMIC:
 		if (layout->labeltype == LABEL_MANUAL) {
 			if (pos >= par.beginOfBody()) {
-				string leftm = layout->leftmargin;
-				docstring dleft(leftm.begin(), leftm.end());
-				l_margin += labelfont_metrics.signedWidth(dleft);
+				// FIXME UNICODE
+				l_margin += labelfont_metrics.signedWidth(
+					lyx::from_utf8(layout->leftmargin));
 			} else {
-				string labin = layout->labelindent;
-				docstring dlabin(labin.begin(), labin.end());
-				l_margin += labelfont_metrics.signedWidth(dlabin);
+				// FIXME UNICODE
+				l_margin += labelfont_metrics.signedWidth(
+					lyx::from_utf8(layout->labelindent));
 			}
 		} else if (pos != 0
 			   // Special case to fix problems with
@@ -594,22 +590,15 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			   || (layout->labeltype == LABEL_STATIC
 			       && layout->latextype == LATEX_ENVIRONMENT
 			       && !isFirstInSequence(pit, pars_))) {
-			string leftm = layout->leftmargin;
-			docstring dleft(leftm.begin(), leftm.end());
-			l_margin += labelfont_metrics.signedWidth(dleft);
+			// FIXME UNICODE
+			l_margin += labelfont_metrics.signedWidth(lyx::from_utf8(layout->leftmargin));
 		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
 			   && layout->labeltype != LABEL_BIBLIO
 			   && layout->labeltype !=
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
-			string labin = layout->labelindent;
-			docstring dlabin(labin.begin(), labin.end());
-			l_margin += labelfont_metrics.signedWidth(dlabin);
-			string labsep = layout->labelsep;
-			docstring dlabsep(labsep.begin(), labsep.end());
-			l_margin += labelfont_metrics.width(dlabsep);
-			string labstr = par.getLabelstring();
-			docstring dlabstr(labstr.begin(), labstr.end());
-			l_margin += labelfont_metrics.width(dlabstr);
+			l_margin += labelfont_metrics.signedWidth(lyx::from_utf8(layout->labelindent));
+			l_margin += labelfont_metrics.width(lyx::from_utf8(layout->labelsep));
+			l_margin += labelfont_metrics.width(lyx::from_utf8(par.getLabelstring()));
 		}
 		break;
 
@@ -665,7 +654,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		|| bv()->buffer()->params().paragraph_separation ==
 		   BufferParams::PARSEP_INDENT))
 	{
-		docstring din(parindent.begin(), parindent.end());
+		docstring din = lyx::from_utf8(parindent);
 		l_margin += theFontMetrics(params.getFont()).signedWidth(din);
 	}
 
@@ -684,15 +673,13 @@ int LyXText::rightMargin(Paragraph const & par) const
 
 	BufferParams const & params = bv()->buffer()->params();
 	LyXTextClass const & tclass = params.getLyXTextClass();
-	string trmarg = tclass.rightmargin();
-	docstring dtrmarg(trmarg.begin(), trmarg.end());
-	string lrmarg = par.layout()->rightmargin;
-	docstring dlrmarg(lrmarg.begin(), lrmarg.end());
+	docstring trmarg = lyx::from_utf8(tclass.rightmargin());
+	docstring lrmarg = lyx::from_utf8(par.layout()->rightmargin);
 	FontMetrics const & fm = theFontMetrics(params.getFont());
 	int const r_margin =
 		::rightMargin()
-		+ fm.signedWidth(dtrmarg)
-		+ fm.signedWidth(dlrmarg)
+		+ fm.signedWidth(trmarg)
+		+ fm.signedWidth(lrmarg)
 		* 4 / (par.getDepth() + 4);
 
 	return r_margin;
@@ -773,9 +760,8 @@ void LyXText::rowBreakPoint(pit_type const pit, Row & row) const
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
-			string lsep = layout->labelsep;
-			docstring dlsep(lsep.begin(), lsep.end());
-			int add = fm.width(dlsep);
+			docstring lsep = lyx::from_utf8(layout->labelsep);
+			int add = fm.width(lsep);
 			if (par.isLineSeparator(i - 1))
 				add -= singleWidth(par, i - 1);
 
@@ -848,8 +834,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 	pos_type const end = row.endpos();
 
 	Paragraph const & par = pars_[pit];
-	string const & labelsep = par.layout()->labelsep;
-	docstring dlsep(labelsep.begin(), labelsep.end());
+	docstring const labelsep = lyx::from_utf8(par.layout()->labelsep);
 	int w = leftMargin(pit, row.pos());
 
 	pos_type const body_pos = par.beginOfBody();
@@ -861,7 +846,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 		FontIterator fi = FontIterator(*this, par, i);
 		for ( ; i < end; ++i, ++fi) {
 			if (body_pos > 0 && i == body_pos) {
-				w += fm.width(dlsep);
+				w += fm.width(labelsep);
 				if (par.isLineSeparator(i - 1))
 					w -= singleWidth(par, i - 1);
 				w = max(w, labelEnd(pit));
@@ -872,7 +857,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 	}
 
 	if (body_pos > 0 && body_pos >= end) {
-		w += fm.width(dlsep);
+		w += fm.width(labelsep);
 		if (end > 0 && par.isLineSeparator(end - 1))
 			w -= singleWidth(par, end - 1);
 		w = max(w, labelEnd(pit));
@@ -904,11 +889,10 @@ int LyXText::labelFill(Paragraph const & par, Row const & row) const
 	if (label.empty())
 		return 0;
 
-	docstring dlab(label.begin(), label.end());
-
 	FontMetrics const & fm = theFontMetrics(getLabelFont(par));
 
-	return max(0, fm.width(dlab) - w);
+	// FIXME UNICODE
+	return max(0, fm.width(lyx::from_utf8(label)) - w);
 }
 
 
@@ -1393,9 +1377,8 @@ LyXText::computeRowMetrics(pit_type const pit, Row const & row) const
 		if (body_pos > 0
 		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		{
-			string lsep = layout->labelsep;
-			docstring dlsep(lsep.begin(), lsep.end());
-			result.x += theFontMetrics(getLabelFont(par)).width(dlsep);
+			docstring const lsep = lyx::from_utf8(layout->labelsep);
+			result.x += theFontMetrics(getLabelFont(par)).width(lsep);
 			if (body_pos <= end)
 				result.x += result.label_hfill;
 		}
@@ -2313,9 +2296,9 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
-			string lsep = par.layout()->labelsep;
-			docstring dlsep(lsep.begin(), lsep.end());
-			x += m.label_hfill + labelfm.width(dlsep);
+			// FIXME UNICODE
+			docstring const lsep = lyx::from_utf8(par.layout()->labelsep);
+			x += m.label_hfill + labelfm.width(lsep);
 			if (par.isLineSeparator(body_pos - 1))
 				x -= singleWidth(par, body_pos - 1);
 		}

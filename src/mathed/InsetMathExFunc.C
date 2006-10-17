@@ -41,13 +41,15 @@ auto_ptr<InsetBase> InsetMathExFunc::doClone() const
 
 void InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
 {
-	mathed_string_dim(mi.base.font, name_, dim_);
+	// FIXME UNICODE
+	mathed_string_dim(mi.base.font, lyx::from_utf8(name_), dim_);
 }
 
 
 void InsetMathExFunc::draw(PainterInfo & pi, int x, int y) const
 {
-	drawStrBlack(pi, x, y, name_);
+	// FIXME UNICODE
+	drawStrBlack(pi, x, y, lyx::from_utf8(name_));
 }
 
 

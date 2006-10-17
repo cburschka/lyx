@@ -34,14 +34,16 @@ auto_ptr<InsetBase> InsetMathString::doClone() const
 
 void InsetMathString::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, str_, dim);
+	// FIXME UNICODE
+	mathed_string_dim(mi.base.font, lyx::from_utf8(str_), dim);
 }
 
 
 void InsetMathString::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
-        docstring dstr(str_.begin(), str_.end());
+	// FIXME UNICODE
+	docstring dstr = lyx::from_utf8(str_);
 	pi.draw(x, y, dstr);
 }
 

@@ -28,7 +28,8 @@ InsetMathComment::InsetMathComment()
 InsetMathComment::InsetMathComment(string const & str)
 	: InsetMathNest(1)
 {
-	asArray(str, cell(0));
+	// FIXME UNICODE
+	asArray(lyx::from_utf8(str), cell(0));
 }
 
 

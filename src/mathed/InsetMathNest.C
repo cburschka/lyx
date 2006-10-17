@@ -1114,9 +1114,9 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
 		if (cur.selection())
-			asArray(lyx::to_utf8(bv.cursor().selectionAsString(false)), ar);
+			asArray(bv.cursor().selectionAsString(false), ar);
 		else
-			asArray(lyx::to_utf8(theSelection().get()), ar);
+			asArray(theSelection().get(), ar);
 
 		cur.insert(ar);
 		bv.mouseSetCursor(cur);

@@ -13,7 +13,7 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
-#include <string>
+#include "support/docstring.h"
 
 class PainterInfo;
 class LyXFont;
@@ -23,17 +23,17 @@ class MathAtom;
 class InsetMath;
 
 
-void mathed_char_dim(LyXFont const &, unsigned char c, Dimension & dim);
-int mathed_char_width(LyXFont const &, unsigned char c);
+void mathed_char_dim(LyXFont const &, lyx::char_type c, Dimension & dim);
+int mathed_char_width(LyXFont const &, lyx::char_type c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	std::string const & name);
 
-void mathed_string_dim(LyXFont const & font, std::string const & s, Dimension & dim);
-int mathed_string_width(LyXFont const &, std::string const & s);
+void mathed_string_dim(LyXFont const & font, lyx::docstring const & s, Dimension & dim);
+int mathed_string_width(LyXFont const &, lyx::docstring const & s);
 
-void drawStrRed(PainterInfo & pi, int x, int y, std::string const & s);
-void drawStrBlack(PainterInfo & pi, int x, int y, std::string const & s);
+void drawStrRed(PainterInfo & pi, int x, int y, lyx::docstring const & s);
+void drawStrBlack(PainterInfo & pi, int x, int y, lyx::docstring const & s);
 
 void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 
@@ -47,6 +47,6 @@ std::string asString(MathArray const & ar);
 std::string asString(InsetMath const &);
 std::string asString(MathAtom const &);
 // converts string to single cell
-void asArray(std::string const & str, MathArray & ar);
+void asArray(lyx::docstring const & str, MathArray & ar);
 
 #endif
