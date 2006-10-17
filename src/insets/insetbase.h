@@ -124,8 +124,8 @@ public:
 	/// do we cover screen position x/y?
 	virtual bool covers(BufferView & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in cursor.C)
-	virtual void cursorPos(CursorSlice const & sl, bool boundary,
-		int & x, int & y) const;
+	virtual void cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 
 	/// is this an inset that can be moved into?
 	virtual bool isActive() const { return nargs() > 0; }

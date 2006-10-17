@@ -81,10 +81,10 @@ docstring const InsetCaption::editMessage() const
 }
 
 
-void InsetCaption::cursorPos
-	(CursorSlice const & sl, bool boundary, int & x, int & y) const
+void InsetCaption::cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	InsetText::cursorPos(sl, boundary, x, y);
+	InsetText::cursorPos(bv, sl, boundary, x, y);
 	x += labelwidth_;
 }
 

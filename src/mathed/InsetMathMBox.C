@@ -102,8 +102,8 @@ LyXText * InsetMathMBox::getText(int) const
 }
 
 
-void InsetMathMBox::cursorPos
-	(CursorSlice const & sl, bool boundary, int & x, int & y) const
+void InsetMathMBox::cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	x = text_.cursorX(sl, boundary);
 	y = text_.cursorY(sl, boundary);

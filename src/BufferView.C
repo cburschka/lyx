@@ -608,7 +608,7 @@ void BufferView::center()
 	bot.text()->redoParagraph(pit);
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
-	offset_ref_ = bv_funcs::coordOffset(cursor_, cursor_.boundary()).y_
+	offset_ref_ = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary()).y_
 		+ par.ascent() - height_ / 2;
 }
 

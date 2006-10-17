@@ -35,8 +35,8 @@ public:
 	///
 	virtual lyx::docstring const editMessage() const;
 	///
-	virtual void cursorPos
-		(CursorSlice const & sl, bool boundary, int & x, int & y) const;
+	virtual void cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x, int & y) const;
 	///
 	bool descendable() const { return true; }
 	///

@@ -211,12 +211,12 @@ void InsetCollapsable::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCollapsable::cursorPos
-	(CursorSlice const & sl, bool boundary, int & x, int & y) const
+void InsetCollapsable::cursorPos(BufferView const & bv, 
+		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	BOOST_ASSERT(status() != Collapsed);
 
-	InsetText::cursorPos(sl, boundary, x, y);
+	InsetText::cursorPos(bv, sl, boundary, x, y);
 
 	if (status() == Open) {
 		if (openinlined_)

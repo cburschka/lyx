@@ -269,7 +269,8 @@ void InsetBase::markErased(bool)
 {}
 
 
-void InsetBase::cursorPos(CursorSlice const &, bool, int & x, int & y) const
+void InsetBase::cursorPos(BufferView const & bv, CursorSlice const &,
+		bool, int & x, int & y) const
 {
 	lyxerr << "InsetBase::cursorPos called directly" << std::endl;
 	x = 100;

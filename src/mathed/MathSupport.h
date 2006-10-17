@@ -15,6 +15,8 @@
 
 #include "support/docstring.h"
 
+#include <string>
+
 class PainterInfo;
 class LyXFont;
 class Dimension;

@@ -101,7 +101,7 @@ namespace {
 			int yo;
 			InsetBase const * inset = &it.inset();
 			Point o = c.bv().coordCache().getInsets().xy(inset);
-			inset->cursorPos(it.top(), c.boundary(), xo, yo);
+			inset->cursorPos(c.bv(), it.top(), c.boundary(), xo, yo);
 			// Convert to absolute
 			xo += o.x_;
 			yo += o.y_;

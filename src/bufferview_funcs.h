@@ -52,7 +52,7 @@ enum CurStatus {
 CurStatus status(BufferView const * bv, DocIterator const & dit);
 
 
-lyx::Point coordOffset(DocIterator const & dit, bool boundary);
+lyx::Point coordOffset(BufferView const & bv, DocIterator const & dit, bool boundary);
 
 /// Moves cursor to the next inset with one of the given codes.
 void gotoInset(BufferView * bv, std::vector<InsetBase_code> const & codes,

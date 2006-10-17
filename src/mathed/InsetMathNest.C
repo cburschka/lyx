@@ -98,8 +98,9 @@ MathArray const & InsetMathNest::cell(idx_type i) const
 }
 
 
-void InsetMathNest::cursorPos(CursorSlice const & sl, bool /*boundary*/,
-	int & x, int & y) const
+void InsetMathNest::cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool /*boundary*/,
+		int & x, int & y) const
 {
 // FIXME: This is a hack. Ideally, the coord cache should not store
 // absolute positions, but relative ones. This would mean to call
@@ -110,7 +111,7 @@ void InsetMathNest::cursorPos(CursorSlice const & sl, bool /*boundary*/,
 // absolute again when actually drawing the cursor. What a mess.
 	BOOST_ASSERT(ptr_cmp(&sl.inset(), this));
 	MathArray const & ar = sl.cell();
-	CoordCache & coord_cache = sl.text()->bv()->coordCache();
+	CoordCache const & coord_cache = bv.coordCache();
 	if (!coord_cache.getArrays().has(&ar)) {
 		// this can (semi-)legally happen if we just created this cell
 		// and it never has been drawn before. So don't ASSERT.

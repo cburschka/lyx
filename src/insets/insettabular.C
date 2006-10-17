@@ -1117,10 +1117,10 @@ shared_ptr<InsetText> InsetTabular::cell(idx_type idx)
 }
 
 
-void InsetTabular::cursorPos
-	(CursorSlice const & sl, bool boundary, int & x, int & y) const
+void InsetTabular::cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	cell(sl.idx())->cursorPos(sl, boundary, x, y);
+	cell(sl.idx())->cursorPos(bv, sl, boundary, x, y);
 
 	// y offset	correction
 	int const row = tabular.row_of_cell(sl.idx());

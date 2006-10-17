@@ -41,7 +41,8 @@ public:
 	///
 	LyXText * getText(int) const;
 	///
-	void cursorPos(CursorSlice const & sl, bool boundary, int & x, int & y) const;
+	void cursorPos(BufferView const & bv, CursorSlice const & sl,
+		bool boundary, int & x, int & y) const;
 protected:
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 

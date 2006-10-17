@@ -301,8 +301,8 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::cursorPos
-	(CursorSlice const & sl, bool boundary, int & x, int & y) const
+void InsetText::cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	x = text_.cursorX(sl, boundary) + border_;
 	y = text_.cursorY(sl, boundary);

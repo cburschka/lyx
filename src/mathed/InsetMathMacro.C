@@ -48,12 +48,12 @@ string MathMacro::name() const
 }
 
 
-void MathMacro::cursorPos(CursorSlice const & sl, bool boundary, int & x,
-		int & y) const
+void MathMacro::cursorPos(BufferView const & bv,
+		CursorSlice const & sl, bool boundary, int & x,	int & y) const
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0)
-		InsetMathNest::cursorPos(sl, boundary, x, y);
+		InsetMathNest::cursorPos(bv, sl, boundary, x, y);
 }
 
 

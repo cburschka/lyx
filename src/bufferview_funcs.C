@@ -156,7 +156,8 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 // the next two should probably go elsewhere
 // this give the position relative to (0, baseline) of outermost
 // paragraph
-Point coordOffset(DocIterator const & dit, bool boundary)
+Point coordOffset(BufferView const & bv, DocIterator const & dit,
+		bool boundary)
 {
 	int x = 0;
 	int y = 0;
@@ -166,7 +167,7 @@ Point coordOffset(DocIterator const & dit, bool boundary)
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
-		sl.inset().cursorPos(sl, boundary && ((i+1) == dit.depth()), xx, yy);
+		sl.inset().cursorPos(bv, sl, boundary && ((i+1) == dit.depth()), xx, yy);
 		x += xx;
 		y += yy;
 		//lyxerr << "LCursor::getPos, i: "
@@ -215,7 +216,7 @@ Point getPos(BufferView & bv, DocIterator const & dit, bool boundary)
 		//lyxerr << "cursor out of view" << std::endl;
 		return Point(-1, -1);
 	}
-	Point p = coordOffset(dit, boundary); // offset from outer paragraph
+	Point p = coordOffset(bv, dit, boundary); // offset from outer paragraph
 	p.y_ += it->second.y_;
 	return p;
 }
