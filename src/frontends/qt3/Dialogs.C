@@ -150,7 +150,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QAbout(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "bibitem") {
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new QBibitem(*dialog));
 		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
@@ -214,13 +214,13 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QInclude(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "index") {
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new QIndex(*dialog,
 					   _("Index Entry"),
 					   qt_("&Keyword:")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new QIndex(*dialog,
 					   _("Label"),
 					   qt_("&Label:")));
@@ -296,7 +296,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QToc(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new QURL(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "vspace") {

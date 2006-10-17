@@ -24,10 +24,6 @@ class InsetBibitem : public InsetCommand {
 public:
 	///
 	InsetBibitem(InsetCommandParams const &);
-	/** Currently \bibitem is used as a LyX2.x command,
-	    so we need this method.
-	*/
-	void write(Buffer const &, std::ostream &) const;
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
@@ -36,8 +32,6 @@ public:
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::BIBITEM_CODE; }
-	/// keep .lyx format compatible
-	bool directWrite() const { return true; }
 	///
 	void setCounter(int);
 	///

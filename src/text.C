@@ -314,11 +314,6 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		auto_ptr<InsetBase> inset(new InsetTabular(buf));
 		inset->read(buf, lex);
 		par.insertInset(par.size(), inset.release(), font, change);
-	} else if (token == "\\bibitem") {
-		InsetCommandParams p("bibitem", "dummy");
-		auto_ptr<InsetBibitem> inset(new InsetBibitem(p));
-		inset->read(buf, lex);
-		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\hfill") {
 		par.insertInset(par.size(), new InsetHFill, font, change);
 	} else if (token == "\\lyxline") {

@@ -185,7 +185,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "bibitem") {
 		dialog->bc().view(new GBC(dialog->bc()));
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new GBibItem(*dialog));
 		dialog->bc().bp(new OkCancelReadOnlyPolicy);
 	} else if (name == "bibtex") {
@@ -260,7 +260,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "index") {
 		dialog->bc().view(new GBC(dialog->bc()));
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		// FIXME UNICODE
 		dialog->setView(new GText(*dialog,
 					  lyx::to_utf8(_("Index Entry")),
@@ -268,7 +268,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->bc().view(new GBC(dialog->bc()));
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		// FIXME UNICODE
 		dialog->setView(new GText(*dialog,
 					  lyx::to_utf8(_("Label")),
@@ -548,7 +548,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->bc().view(new GBC(dialog->bc()));
-		dialog->setController(new ControlCommand(*dialog, name));
+		dialog->setController(new ControlCommand(*dialog, name, name));
 		dialog->setView(new GUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "vspace") {

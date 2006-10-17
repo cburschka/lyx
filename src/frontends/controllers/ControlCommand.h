@@ -26,9 +26,11 @@ class ControlCommand : public Dialog::Controller {
 public:
 	/** LFUN_INSET_APPLY requires a name, "citation", "ref" etc so that
 	    it knows what to do with the rest of the contents.
-	    An empty name indicates that no action will occur on 'Apply'.
+	    An empty \p lfun_name indicates that no action will occur on
+	    'Apply'.
 	 */
-	ControlCommand(Dialog &, std::string const & lfun_name = std::string());
+	ControlCommand(Dialog &, std::string const & command_name,
+	               std::string const & lfun_name);
 	///
 	InsetCommandParams & params() { return params_; }
 	///

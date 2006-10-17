@@ -32,7 +32,7 @@ using support::makeDisplayPath;
 namespace frontend {
 
 ControlRef::ControlRef(Dialog & d)
-	: ControlCommand(d, "ref")
+	: ControlCommand(d, "ref", "ref")
 {}
 
 

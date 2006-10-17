@@ -126,7 +126,7 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p;
+		InsetCommandParams p("include");
 		InsetIncludeMailer::string2params(lyx::to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			set(p, cur.buffer());
@@ -761,7 +761,7 @@ string const InsetIncludeMailer::inset2string(Buffer const &) const
 void InsetIncludeMailer::string2params(string const & in,
 				       InsetCommandParams & params)
 {
-	params = InsetCommandParams();
+	params.clear();
 	if (in.empty())
 		return;
 

@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Georg Baum
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,8 +13,10 @@
 #ifndef INSETCOMMANDPARAMS_H
 #define INSETCOMMANDPARAMS_H
 
-#include <string>
+#include "support/docstring.h"
+
 #include <iosfwd>
+#include <vector>
 
 
 class LyXLex;
@@ -21,53 +24,74 @@ class LyXLex;
 
 class InsetCommandParams {
 public:
-	///
-	InsetCommandParams();
-	///
-	explicit InsetCommandParams(std::string const & n,
-			    std::string const & c = std::string(),
-			    std::string const & o = std::string(),
-			    std::string const & s = std::string());
+	/// Construct parameters for command \p name. \p name must be known.
+	explicit InsetCommandParams(std::string const & name);
 	///
 	void read(LyXLex &);
 	/// Parse the command
+	/// FIXME remove
 	void scanCommand(std::string const &);
 	///
 	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
 	std::string const getCommand() const;
-	///
-	std::string const & getCmdName() const { return cmdname; }
-	///
-	std::string const & getOptions() const { return options; }
-	///
-	std::string const & getSecOptions() const { return sec_options; }
-	///
-	std::string const & getContents() const { return contents; }
-	///
-	void setCmdName(std::string const & n) { cmdname = n; }
-	///
-	void setOptions(std::string const & o) { options = o; }
-	///
-	void setSecOptions(std::string const & s) { sec_options = s; }
-	///
-	void setContents(std::string const & c) { contents = c; }
+	/// Return the command name
+	std::string const & getCmdName() const { return name_; }
+	/// FIXME remove
+	std::string const getOptions() const;
+	/// FIXME remove
+	std::string const getSecOptions() const;
+	/// FIXME remove
+	std::string const getContents() const;
+	/// Set the name to \p n. This must be a known name. All parameters
+	/// are cleared except those that exist also in the new command.
+	/// What matters here is the parameter name, not position.
+	void setCmdName(std::string const & n);
+	/// FIXME remove
+	void setOptions(std::string const &);
+	/// FIXME remove
+	void setSecOptions(std::string const &);
+	/// FIXME remove
+	void setContents(std::string const &);
+	/// get parameter \p name
+	lyx::docstring const & operator[](std::string const & name) const;
+	/// set parameter \p name
+	lyx::docstring & operator[](std::string const & name);
 	///
 	bool preview() const { return preview_; }
 	///
 	void preview(bool p) { preview_ = p; }
+	/// Clear the values of all parameters
+	void clear();
 
 private:
 	///
-	std::string cmdname;
+	struct CommandInfo {
+		/// Number of parameters
+		size_t n;
+		/// Parameter names. paramnames[n] must be "".
+		char const * const * paramnames;
+		/// Tells whether a parameter is optional
+		bool const * optional;
+	};
+	/// Get information for command \p name.
+	/// Returns 0 if the command is not known.
+	static CommandInfo const * findInfo(std::string const & name);
+	/// Description of all command properties
+	CommandInfo const * info_;
+	/// The name of this command as it appears in .lyx and .tex files
+	std::string name_;
 	///
-	std::string contents;
-	///
-	std::string options;
-	///
-	std::string sec_options;
+	typedef std::vector<lyx::docstring> ParamVector;
+	/// The parameters (both optional and required ones). The order is
+	/// the same that is required for LaTeX output. The size of params_
+	/// is always info_->n.
+	ParamVector params_;
 	///
 	bool preview_;
+	///
+	friend bool operator==(InsetCommandParams const &,
+			InsetCommandParams const &);
 };
 
 

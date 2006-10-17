@@ -86,7 +86,7 @@ void InsetBibtex::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p;
+		InsetCommandParams p("bibtex");
 		InsetCommandMailer::string2params("bibtex", lyx::to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			setParams(p);

@@ -253,6 +253,193 @@ def revert_cs_label(document):
         i = i + 1
 
 
+def convert_bibitem(document):
+    """ Convert
+\bibitem [option]{argument}
+
+to
+
+\begin_inset LatexCommand bibitem
+label "option"
+key "argument"
+
+\end_inset
+
+This must be called after convert_commandparams.
+"""
+    regex = re.compile(r'\S+\s*(\[[^\[\{]*\])?(\{[^}]*\})')
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\bibitem", i)
+        if i == -1:
+            break
+        match = re.match(regex, document.body[i])
+        option = match.group(1)
+        argument = match.group(2)
+        lines = ['\\begin_inset LatexCommand bibitem']
+	if not option == None:
+            lines.append('label "%s"' % option[1:-1].replace('"', '\\"'))
+        lines.append('key "%s"' % argument[1:-1].replace('"', '\\"'))
+        lines.append('')
+        lines.append('\\end_inset')
+        document.body[i:i+1] = lines
+        i = i + 1
+
+
+commandparams_info = {
+    # command : [option1, option2, argument]
+    "bibitem" : ["label", "", "key"],
+    "bibtex" : ["options", "btprint", "bibfiles"],
+    "cite"        : ["after", "before", "key"],
+    "citet"       : ["after", "before", "key"],
+    "citep"       : ["after", "before", "key"],
+    "citealt"     : ["after", "before", "key"],
+    "citealp"     : ["after", "before", "key"],
+    "citeauthor"  : ["after", "before", "key"],
+    "citeyear"    : ["after", "before", "key"],
+    "citeyearpar" : ["after", "before", "key"],
+    "citet*"      : ["after", "before", "key"],
+    "citep*"      : ["after", "before", "key"],
+    "citealt*"    : ["after", "before", "key"],
+    "citealp*"    : ["after", "before", "key"],
+    "citeauthor*" : ["after", "before", "key"],
+    "Citet"       : ["after", "before", "key"],
+    "Citep"       : ["after", "before", "key"],
+    "Citealt"     : ["after", "before", "key"],
+    "Citealp"     : ["after", "before", "key"],
+    "Citeauthor"  : ["after", "before", "key"],
+    "Citet*"      : ["after", "before", "key"],
+    "Citep*"      : ["after", "before", "key"],
+    "Citealt*"    : ["after", "before", "key"],
+    "Citealp*"    : ["after", "before", "key"],
+    "Citeauthor*" : ["after", "before", "key"],
+    "citefield"   : ["after", "before", "key"],
+    "citetitle"   : ["after", "before", "key"],
+    "cite*"       : ["after", "before", "key"],
+    "hfill" : ["", "", ""],
+    "index"      : ["", "", "name"],
+    "printindex" : ["", "", "name"],
+    "label" : ["", "", "name"],
+    "eqref"     : ["name", "", "reference"],
+    "pageref"   : ["name", "", "reference"],
+    "prettyref" : ["name", "", "reference"],
+    "ref"       : ["name", "", "reference"],
+    "vpageref"  : ["name", "", "reference"],
+    "vref"      : ["name", "", "reference"],
+    "tableofcontents" : ["", "", "type"],
+    "htmlurl" : ["name", "", "target"],
+    "url"     : ["name", "", "target"]}
+
+
+def convert_commandparams(document):
+    """ Convert
+
+ \begin_inset LatexCommand \cmdname[opt1][opt2]{arg}
+ \end_inset
+
+ to
+
+ \begin_inset LatexCommand cmdname
+ name1 "opt1"
+ name2 "opt2"
+ name3 "arg"
+ \end_inset
+
+ name1, name2 and name3 can be different for each command.
+"""
+    # \begin_inset LatexCommand bibitem was not the official version (see
+    # convert_bibitem()), but could be read in, so we convert it here, too.
+
+    # FIXME: Handle things like \command[foo[bar]]{foo{bar}}
+    # we need a real parser here.
+    regex = re.compile(r'\\([^\[\{]+)(\[[^\[\{]*\])?(\[[^\[\{]*\])?(\{[^}]*\})?')
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset LatexCommand", i)
+        if i == -1:
+            break
+        command = document.body[i][26:].strip()
+        match = re.match(regex, command)
+        name = match.group(1)
+        option1 = match.group(2)
+        option2 = match.group(3)
+        argument = match.group(4)
+        lines = ["\\begin_inset LatexCommand %s" % name]
+        if option1 != None:
+            if commandparams_info[name][0] == "":
+                document.warning("Ignoring invalid option `%s' of command `%s'." % (option1[1:-1], name))
+            else:
+                lines.append('%s "%s"' % (commandparams_info[name][0], option1[1:-1].replace('"', '\"')))
+        if option2 != None:
+            if commandparams_info[name][1] == "":
+                document.warning("Ignoring invalid second option `%s' of command `%s'." % (option2[1:-1], name))
+            else:
+                lines.append('%s "%s"' % (commandparams_info[name][1], option2[1:-1].replace('"', '\"')))
+        if argument != None:
+            if commandparams_info[name][2] == "":
+                document.warning("Ignoring invalid argument `%s' of command `%s'." % (argument[1:-1], name))
+            else:
+                lines.append('%s "%s"' % (commandparams_info[name][2], argument[1:-1].replace('"', '\"')))
+        document.body[i:i+1] = lines
+        i = i + 1
+
+
+def revert_commandparams(document):
+    regex = re.compile(r'(\S+)\s+(.+)')
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset LatexCommand", i)
+        if i == -1:
+            break
+        name = document.body[i].split()[2]
+        j = find_end_of_inset(document.body, i + 1)
+        preview_line = ""
+        option1 = ""
+        option2 = ""
+        argument = ""
+        for k in range(i + 1, j):
+            match = re.match(regex, document.body[k])
+            if match:
+                pname = match.group(1)
+                pvalue = match.group(2)
+                if pname == "preview":
+                    preview_line = document.body[k]
+                elif (commandparams_info[name][0] != "" and
+                      pname == commandparams_info[name][0]):
+                    option1 = pvalue.strip('"').replace('\\"', '"')
+                elif (commandparams_info[name][1] != "" and
+                      pname == commandparams_info[name][1]):
+                    option2 = pvalue.strip('"').replace('\\"', '"')
+                elif (commandparams_info[name][2] != "" and
+                      pname == commandparams_info[name][2]):
+                    argument = pvalue.strip('"').replace('\\"', '"')
+            elif document.body[k].strip() != "":
+                document.warning("Ignoring unknown contents `%s' in command inset %s." % (document.body[k], name))
+        if name == "bibitem":
+            if option1 == "":
+                lines = ["\\bibitem {%s}" % argument]
+            else:
+                lines = ["\\bibitem [%s]{%s}" % (option1, argument)]
+        else:
+            if option1 == "":
+                if option2 == "":
+                    lines = ["\\begin_inset LatexCommand \\%s{%s}" % (name, argument)]
+                else:
+                    lines = ["\\begin_inset LatexCommand \\%s[][%s]{%s}" % (name, option2, argument)]
+            else:
+                if option2 == "":
+                    lines = ["\\begin_inset LatexCommand \\%s[%s]{%s}" % (name, option1, argument)]
+                else:
+                    lines = ["\\begin_inset LatexCommand \\%s[%s][%s]{%s}" % (name, option1, option2, argument)]
+        if name != "bibitem":
+            if preview_line != "":
+                lines.append(preview_line)
+            lines.append('')
+            lines.append('\\end_inset')
+        document.body[i:j+1] = lines
+        i = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -263,9 +450,11 @@ convert = [[246, []],
            [248, []],
            [249, [convert_utf8]],
            [250, []],
-           [251, []]]
+           [251, []],
+           [252, [convert_commandparams, convert_bibitem]]]
 
-revert =  [[250, [revert_cs_label]],
+revert =  [[251, [revert_commandparams]],
+           [250, [revert_cs_label]],
            [249, []],
            [248, [revert_utf8]],
            [247, [revert_booktabs]],

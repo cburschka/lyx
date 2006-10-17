@@ -42,7 +42,7 @@ using support::onlyPath;
 namespace frontend {
 
 ControlInclude::ControlInclude(Dialog & parent)
-	: Dialog::Controller(parent)
+	: Dialog::Controller(parent), params_("include")
 {}
 
 
@@ -55,7 +55,7 @@ bool ControlInclude::initialiseParams(string const & data)
 
 void ControlInclude::clearParams()
 {
-	params_ = InsetCommandParams();
+	params_.clear();
 }
 
 

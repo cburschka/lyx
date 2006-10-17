@@ -58,7 +58,7 @@ private:
 	class Cache {
 	public:
 		///
-		Cache() : engine(lyx::biblio::ENGINE_BASIC) {}
+		Cache() : engine(lyx::biblio::ENGINE_BASIC), params("cite") {}
 		///
 		lyx::biblio::CiteEngine engine;
 		///

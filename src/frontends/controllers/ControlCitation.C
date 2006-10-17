@@ -28,7 +28,7 @@ vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
 
 ControlCitation::ControlCitation(Dialog & d)
-	: ControlCommand(d, "citation")
+	: ControlCommand(d, "cite", "citation")
 {}
 
 

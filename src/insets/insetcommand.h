@@ -45,6 +45,7 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex)
 		{ p_.read(lex); }
 	/// Can remove one InsetBibKey is modified
+	/// FIXME remove
 	void scanCommand(std::string const & c) { p_.scanCommand(c); };
 	///
 	virtual int latex(Buffer const &, std::ostream &,
@@ -60,20 +61,31 @@ public:
 
 	///
 	InsetCommandParams const & params() const { return p_; }
-	///
-	std::string const & getContents() const { return p_.getContents(); }
-	///
+	/// FIXME remove
+	std::string const getContents() const { return p_.getContents(); }
+	/// FIXME remove
 	void setContents(std::string const & c)
 	{
 		updateButtonLabel_ = true;
 		p_.setContents(c);
 	}
 	///
+	void setParam(std::string const & name, lyx::docstring const & value)
+	{
+		updateButtonLabel_ = true;
+		p_[name] = value;
+	}
+	///
+	lyx::docstring const & getParam(std::string const & name) const
+	{
+		return p_[name];
+	}
+	/// FIXME remove
 	virtual void replaceContents(std::string const & from, std::string const & to);
-	///
-	std::string const & getOptions() const { return p_.getOptions(); }
-	///
-	std::string const & getSecOptions() const { return p_.getSecOptions(); }
+	/// FIXME remove
+	std::string const getOptions() const { return p_.getOptions(); }
+	/// FIXME remove
+	std::string const getSecOptions() const { return p_.getSecOptions(); }
 	///
 	RenderButton & button() const { return button_; }
 

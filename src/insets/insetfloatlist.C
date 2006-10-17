@@ -36,12 +36,12 @@ using std::ostream;
 
 
 InsetFloatList::InsetFloatList()
-	: InsetCommand(InsetCommandParams(), "toc")
+	: InsetCommand(InsetCommandParams("floatlist"), "toc")
 {}
 
 
 InsetFloatList::InsetFloatList(string const & type)
-	: InsetCommand(InsetCommandParams(), "toc")
+	: InsetCommand(InsetCommandParams("floatlist"), "toc")
 {
 	setCmdName(type);
 }

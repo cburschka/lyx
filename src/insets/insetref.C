@@ -87,12 +87,10 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 int InsetRef::latex(Buffer const &, ostream & os,
 		    OutputParams const &) const
 {
-	if (getOptions().empty())
-		os << escape(getCommand());
-	else {
-		InsetCommandParams p(getCmdName(), getContents(), "");
-		os << escape(p.getCommand());
-	}
+	// Don't output p_["name"], this is only used in docbook
+	InsetCommandParams p(getCmdName());
+	p["reference"] = getParam("reference");
+	os << escape(p.getCommand());
 	return 0;
 }
 

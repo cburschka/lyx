@@ -1089,15 +1089,14 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_LABEL_INSERT: {
 		recordUndoInset(cur);
 		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-		string old_label = label(r);
-		string const default_label =
-			(lyxrc.label_init_length >= 0) ? "eq:" : "";
+		docstring old_label = lyx::from_utf8(label(r));
+		docstring const default_label = lyx::from_ascii(
+			(lyxrc.label_init_length >= 0) ? "eq:" : "");
 		if (old_label.empty())
 			old_label = default_label;
-		string const contents = cmd.argument().empty() ?
-			old_label : lyx::to_utf8(cmd.argument());
 
-		InsetCommandParams p("label", contents);
+		InsetCommandParams p("label");
+		p["name"] = cmd.argument().empty() ? old_label : cmd.argument();
 		string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty())
@@ -1113,7 +1112,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 		//lyxerr << "arg: " << lyx::to_utf8(cmd.argument()) << endl;
 		string const name = cmd.getArg(0);
 		if (name == "label") {
-			InsetCommandParams p;
+			InsetCommandParams p("label");
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), p);
 			string str = p.getContents();
 			recordUndoInset(cur);

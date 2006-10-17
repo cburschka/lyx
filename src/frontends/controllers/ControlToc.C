@@ -29,7 +29,7 @@ namespace frontend {
 
 
 ControlToc::ControlToc(Dialog & d)
-	: ControlCommand(d, "toc")
+	: ControlCommand(d, "tableofcontents", "toc")
 {}
 
 

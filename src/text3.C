@@ -1099,11 +1099,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LABEL_INSERT: {
+		InsetCommandParams p("label");
 		// Try to generate a valid label
-		string const contents = cmd.argument().empty() ?
-			cur.getPossibleLabel() : lyx::to_utf8(cmd.argument());
-
-		InsetCommandParams p("label", contents);
+		p["name"] = (cmd.argument().empty()) ?
+			// FIXME UNICODE
+			lyx::from_utf8(cur.getPossibleLabel()) :
+			cmd.argument();
 		string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty()) {

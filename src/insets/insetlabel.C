@@ -64,7 +64,7 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p;
+		InsetCommandParams p("label");
 		InsetCommandMailer::string2params("label", lyx::to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noUpdate();

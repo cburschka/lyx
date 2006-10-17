@@ -211,19 +211,19 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		string const name = cmd.getArg(0);
 
 		if (name == "bibitem") {
-			InsetCommandParams icp;
+			InsetCommandParams icp(name);
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetBibitem(icp);
 
 		} else if (name == "bibtex") {
-			InsetCommandParams icp;
+			InsetCommandParams icp(name);
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetBibtex(icp);
 
 		} else if (name == "citation") {
-			InsetCommandParams icp;
+			InsetCommandParams icp("cite");
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetCitation(icp);
@@ -252,36 +252,36 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 			return inset.release();
 
 		} else if (name == "include") {
-			InsetCommandParams iip;
+			InsetCommandParams iip(name);
 			InsetIncludeMailer::string2params(lyx::to_utf8(cmd.argument()), iip);
 			return new InsetInclude(iip);
 
 		} else if (name == "index") {
-			InsetCommandParams icp;
+			InsetCommandParams icp(name);
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetIndex(icp);
 
 		} else if (name == "label") {
-			InsetCommandParams icp;
+			InsetCommandParams icp(name);
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetLabel(icp);
 
 		} else if (name == "ref") {
-			InsetCommandParams icp;
+			InsetCommandParams icp(name);
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetRef(icp, *bv->buffer());
 
 		} else if (name == "toc") {
-			InsetCommandParams icp;
+			InsetCommandParams icp("tableofcontents");
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetTOC(icp);
 
 		} else if (name == "url") {
-			InsetCommandParams icp;
+			InsetCommandParams icp(name);
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
 							  icp);
 			return new InsetUrl(icp);
@@ -344,10 +344,12 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 
 	// test the different insets
 	if (tmptok == "LatexCommand") {
-		InsetCommandParams inscmd;
-		inscmd.read(lex);
+		lex.next();
+		string const cmdName = lex.getString();
+		lex.pushToken(cmdName);
 
-		string const cmdName = inscmd.getCmdName();
+		InsetCommandParams inscmd(cmdName);
+		inscmd.read(lex);
 
 		// This strange command allows LyX to recognize "natbib" style
 		// citations: citet, citep, Citet etc.
@@ -360,7 +362,6 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
 			inset.reset(new InsetCitation(inscmd));
 		} else if (cmdName == "bibitem") {
-			lex.printError("Wrong place for bibitem");
 			inset.reset(new InsetBibitem(inscmd));
 		} else if (cmdName == "bibtex") {
 			inset.reset(new InsetBibtex(inscmd));

@@ -1,6 +1,34 @@
 LyX file-format changes
 -----------------------§
 
+2006-10-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 252: changed command inset syntax
+
+	Old:
+
+	\begin_inset LatexCommand \cmdname[opt1][opt2]{arg}
+	preview true
+	\end_inset
+
+	and
+
+	\bibitem [opt1]{arg}
+
+
+	New:
+
+	\begin_inset LatexCommand cmdname
+	name1 "opt1"
+	name2 "opt2"
+	name3 "arg"
+	preview true
+	\end_inset
+
+	The order of the parameters and for each parameter the name and
+	optional/required bit is now stored in InsetCommandParams.
+
+
 2006-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 251: save show_label param for charstyles.

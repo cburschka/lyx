@@ -31,7 +31,7 @@ using std::ostringstream;
 
 InsetCommand::InsetCommand(InsetCommandParams const & p,
 			   string const & mailer_name)
-	: p_(p.getCmdName(), p.getContents(), p.getOptions(), p.getSecOptions()),
+	: p_(p),
 	  mailer_name_(mailer_name),
 	  updateButtonLabel_(true)
 {}
@@ -100,7 +100,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_MODIFY: {
-		InsetCommandParams p;
+		InsetCommandParams p(p_.getCmdName());
 		InsetCommandMailer::string2params(mailer_name_, lyx::to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noUpdate();
@@ -172,7 +172,7 @@ void InsetCommandMailer::string2params(string const & name,
 				       string const & in,
 				       InsetCommandParams & params)
 {
-	params = InsetCommandParams();
+	params.clear();
 	if (in.empty())
 		return;
 
