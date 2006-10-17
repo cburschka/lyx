@@ -29,13 +29,15 @@
 
 #include <libglademm.h>
 
+using lyx::docstring;
+
 using std::string;
 using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
 
-GPrint::GPrint(Dialog & parent, string const & title)
+GPrint::GPrint(Dialog & parent, docstring const & title)
 	: GViewCB<ControlPrint, GViewGladeB>(parent, title, false)
 {
 }
@@ -110,7 +112,7 @@ void GPrint::updateUI()
 void GPrint::onBrowse()
 {
 	string const inName = fileEntry_->get_text();
-	string const outName = Glib::locale_to_utf8(controller().browse(Glib::locale_from_utf8(inName)));
+	string const outName = lyx::to_utf8(controller().browse(lyx::from_utf8(inName)));
 	if (outName != inName && !outName.empty())
 		fileEntry_->set_text(outName);
 	if (!outName.empty())

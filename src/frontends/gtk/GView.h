@@ -67,7 +67,7 @@ public:
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage();
 
-	// returns true if this view has the focus.
+	/// returns true if this view has the focus.
 	virtual bool hasFocus() const;
 	///
 	void updateStatusBar();

@@ -28,22 +28,23 @@
 #include <gtkmm.h>
 #include <libglademm.h>
 
+using lyx::docstring;
+
 using std::string;
 
 namespace lyx {
 namespace frontend {
 
-GText::GText(Dialog & parent, string const & title, string const & label)
+GText::GText(Dialog & parent, docstring const & title, docstring const & label)
 	: GViewCB<ControlCommand, GViewGladeB>(parent, title),
-	  label_(label), entry_(0)
+	  label_(lyx::to_utf8(label)), entry_(0)
 {
 }
 
 
 void GText::apply()
 {
-	string const contents = Glib::locale_from_utf8(entry_->get_text());
-	controller().params().setContents(contents);
+	controller().params().setContents(entry_->get_text());
 }
 
 
@@ -51,7 +52,7 @@ void GText::update()
 {
 	string const contents = support::trim(
 		controller().params().getContents());
-	entry_->set_text(Glib::locale_to_utf8(contents));
+	entry_->set_text(contents);
 }
 
 

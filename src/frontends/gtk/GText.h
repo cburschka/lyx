@@ -21,7 +21,7 @@ class ControlCommand;
 
 class GText : public GViewCB<ControlCommand, GViewGladeB> {
 public:
-	GText(Dialog & parent, std::string const & title, std::string const & label);
+	GText(Dialog & parent, lyx::docstring const & title, lyx::docstring const & label);
 private:
 	virtual void apply();
 	virtual void update();

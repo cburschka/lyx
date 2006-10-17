@@ -30,7 +30,6 @@
 #include "lyxtext.h"
 #include "lyxrow.h"
 
-#include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
 #include "insets/insettext.h"
