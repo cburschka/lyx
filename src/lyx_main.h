@@ -20,6 +20,7 @@
 
 #include <list>
 #include <string>
+#include <vector>
 
 class Buffer;
 class BufferList;
@@ -60,6 +61,13 @@ public:
 	/// in the case of failure
 	void emergencyCleanup() const;
 
+	/// Ask the LyX class to exit.
+	/**
+	In GUI mode, after this function has been called, application_ leaves
+	the main event loop and returns from the call to Application::start().
+	*/
+	void quit(bool noask);
+
 	///
 	BufferList & bufferList();
 	BufferList const & bufferList() const;
@@ -79,6 +87,26 @@ private:
 
 	LyX();
 	int priv_exec(int & argc, char * argv[]);
+
+	/// Do some cleanup in preparation of an exit.
+	void prepareExit();
+
+	/// Early exit during the initialisation process.
+	void earlyExit(int status);
+
+	/// Initialise LyX and execute batch commands if available.
+	/**
+	\param files is filled in with the command-line file names.
+	\return exit code failure if any.
+	*/
+	int execBatchCommands(int & argc, char * argv[],
+		std::vector<std::string> & files);
+
+	/// Create a View and restore GUI Session.
+	void restoreGuiSession(std::vector<std::string> const & files);
+
+	/// Initialize RC font for the GUI.
+	void initGuiFont();
 
 	/// initial LyX set up
 	bool init();

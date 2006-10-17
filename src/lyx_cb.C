@@ -58,7 +58,6 @@
 using lyx::docstring;
 using lyx::support::addName;
 using lyx::support::bformat;
-using lyx::support::destroyDir;
 using lyx::support::FileFilterList;
 using lyx::support::ForkedProcess;
 using lyx::support::isLyXFilename;
@@ -183,43 +182,6 @@ bool writeAs(Buffer * buffer, string const & filename)
 
 	removeAutosaveFile(oldname);
 	return true;
-}
-
-
-void quitLyX(bool noask)
-{
-	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
-
-	if (lyx::use_gui) {
-		if (!noask && !theBufferList().quitWriteAll())
-			return;
-
-		LyX::cref().session().writeFile();
-	}
-
-	// Set a flag that we do quitting from the program,
-	// so no refreshes are necessary.
-	quitting = true;
-
-	// close buffers first
-	theBufferList().closeAll();
-
-	// do any other cleanup procedures now
-	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
-
-	if (!destroyDir(package().temp_dir())) {
-		docstring const msg =
-			bformat(_("Unable to remove the temporary directory %1$s"),
-			lyx::from_utf8(package().temp_dir()));
-		Alert::warning(_("Unable to remove temporary directory"), msg);
-	}
-
-	if (lyx::use_gui) {
-		theApp->exit(0);
-
-		// Restore original font resources after Application is destroyed.
-		lyx::support::restoreFontResources();
-	}
 }
 
 

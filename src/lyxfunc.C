@@ -1006,7 +1006,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
 			}			
-			quitLyX(argument == "force");
+			LyX::ref().quit(argument == "force");
 			break;
 
 		case LFUN_TOC_VIEW: {

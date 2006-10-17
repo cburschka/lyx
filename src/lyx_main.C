@@ -65,6 +65,7 @@ using lyx::support::addPath;
 using lyx::support::bformat;
 using lyx::support::createDirectory;
 using lyx::support::createLyXTmpDir;
+using lyx::support::destroyDir;
 using lyx::support::fileSearch;
 using lyx::support::getEnv;
 using lyx::support::i18nLibFileSearch;
@@ -96,7 +97,7 @@ using std::system;
 boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 ///
-lyx::frontend::Application * theApp;
+lyx::frontend::Application * theApp = 0;
 
 namespace lyx {
 
@@ -114,21 +115,6 @@ namespace {
 // "-userdir foo".
 string cl_system_support;
 string cl_user_support;
-
-
-void lyx_exit(int status)
-{
-	// FIXME: We should not directly call exit(), since it only
-	// guarantees a return to the system, no application cleanup.
-	// This may cause troubles with not executed destructors.
-	if (lyx::use_gui) {
-		theApp->exit(status);
-		// Restore original font resources after Application is destroyed.
-		lyx::support::restoreFontResources();
-	}
-
-	exit(status);
-}
 
 
 void showFileError(string const & error)
@@ -252,28 +238,89 @@ int LyX::priv_exec(int & argc, char * argv[])
 	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
 				   lyx::support::top_build_dir_is_one_level_up);
 
-	// Start the real execution loop.
+	vector<string> files;
+	int exit_status = execBatchCommands(argc, argv, files);
+
+	if (exit_status)
+		return exit_status;
+
 	if (lyx::use_gui) {
 		// Force adding of font path _before_ Application is initialized
 		lyx::support::addFontResources();
 		application_.reset(lyx::createApplication(argc, argv));
+		initGuiFont();
+		// FIXME: this global pointer should probably go.
 		theApp = application_.get();
+		restoreGuiSession(files);
+		// Start the real execution loop.
+		exit_status = application_->start(batch_command);
+		// Kill the application object before exiting. This avoid crash
+		// on exit on Linux.
+		application_.reset();
+		// Restore original font resources after Application is destroyed.
+		lyx::support::restoreFontResources();
 	}
 	else {
 		// FIXME: create a ConsoleApplication
 		theApp = 0;
 	}
 
-	int exit_status = exec2(argc, argv);
-
-	if (lyx::use_gui)
-		application_.reset();
-
 	return exit_status;
 }
 
 
-int LyX::exec2(int & argc, char * argv[])
+void LyX::prepareExit()
+{
+	// Set a flag that we do quitting from the program,
+	// so no refreshes are necessary.
+	quitting = true;
+
+	// close buffers first
+	buffer_list_->closeAll();
+
+	// do any other cleanup procedures now
+	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
+
+	if (!destroyDir(package().temp_dir())) {
+		docstring const msg =
+			bformat(_("Unable to remove the temporary directory %1$s"),
+			lyx::from_utf8(package().temp_dir()));
+		Alert::warning(_("Unable to remove temporary directory"), msg);
+	}
+}
+
+
+void LyX::earlyExit(int status)
+{
+	BOOST_ASSERT(application_.get());
+	// LyX::application_ is not initialised at this
+	// point so it's safe to just exit after some cleanup.
+	prepareExit();
+	exit(status);
+}
+
+
+void LyX::quit(bool noask)
+{
+	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
+
+	if (lyx::use_gui) {
+		if (!noask && !buffer_list_->quitWriteAll())
+			return;
+
+		session_->writeFile();
+	}
+
+	prepareExit();
+
+	if (lyx::use_gui) {
+		application_->exit(0);
+	}
+}
+
+
+int LyX::execBatchCommands(int & argc, char * argv[],
+	vector<string> & files)
 {
 	// check for any spurious extra arguments
 	// other than documents
@@ -288,12 +335,10 @@ int LyX::exec2(int & argc, char * argv[])
 
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
-	bool const success = init();
+	bool success = init();
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 	if (!success)
 		return EXIT_FAILURE;
-
-	vector<string> files;
 
 	for (int argi = argc - 1; argi >= 1; --argi)
 		files.push_back(os::internal_path(argv[argi]));
@@ -321,7 +366,7 @@ int LyX::exec2(int & argc, char * argv[])
 				if (b)
 					last_loaded = b;
 			} else {
-				Buffer * buf = theBufferList().newBuffer(s, false);
+				Buffer * buf = buffer_list_->newBuffer(s, false);
 				if (loadLyXFile(buf, s)) {
 					last_loaded = buf;
 					ErrorList const & el = buf->errorList("Parse");
@@ -330,85 +375,83 @@ int LyX::exec2(int & argc, char * argv[])
 							boost::bind(&LyX::printError, this, _1));
 				}
 				else
-					theBufferList().release(buf);
+					buffer_list_->release(buf);
 			}
 		}
 
 		// try to dispatch to last loaded buffer first
 		if (last_loaded) {
-			bool success = false;
+			success = false;
 			if (last_loaded->dispatch(batch_command, &success)) {
-				quitLyX(false);
+				prepareExit();
 				return !success;
 			}
 		}
 		files.clear(); // the files are already loaded
 	}
 
-	if (lyx::use_gui) {
-		// determine windows size and position, from lyxrc and/or session
-		// initial geometry
-		unsigned int width = 690;
-		unsigned int height = 510;
-		bool maximize = false;
-		// first try lyxrc
-		if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
-			width = lyxrc.geometry_width;
-			height = lyxrc.geometry_height;
-		}
-		// if lyxrc returns (0,0), then use session info
-		else {
-			string val = session().loadSessionInfo("WindowWidth");
-			if (!val.empty())
-				width = convert<unsigned int>(val);
-			val = session().loadSessionInfo("WindowHeight");
-			if (!val.empty())
-				height = convert<unsigned int>(val);
-			if (session().loadSessionInfo("WindowIsMaximized") == "yes")
-				maximize = true;
-		}
-		// if user wants to restore window position
-		int posx = -1;
-		int posy = -1;
-		if (lyxrc.geometry_xysaved) {
-			string val = session().loadSessionInfo("WindowPosX");
-			if (!val.empty())
-				posx = convert<int>(val);
-			val = session().loadSessionInfo("WindowPosY");
-			if (!val.empty())
-				posy = convert<int>(val);
-		}
+	return EXIT_SUCCESS;
+}
 
-		if (geometryOption_) {
-			width = 0;
-			height = 0;
-		}
-		// create the main window
-		LyXView * view = &application_->createView(width, height, posx, posy, maximize);
-		ref().addLyXView(view);
 
-		// load files
-		for_each(files.begin(), files.end(),
-			bind(&LyXView::loadLyXFile, view, _1, true));
-
-		// if a file is specified, I assume that user wants to edit *that* file
-		if (files.empty() && lyxrc.load_session) {
-			vector<string> const & lastopened = session_->lastOpenedFiles();
-			// do not add to the lastfile list since these files are restored from
-			// last seesion, and should be already there (regular files), or should
-			// not be added at all (help files).
-			for_each(lastopened.begin(), lastopened.end(),
-				bind(&LyXView::loadLyXFile, view, _1, false));
-		}
-		// clear this list to save a few bytes of RAM
-		session_->clearLastOpenedFiles();
-
-		return application_->start(batch_command);
-	} else {
-		// Something went wrong above
-		quitLyX(false);
-		return EXIT_FAILURE;
+void LyX::restoreGuiSession(vector<string> const & files)
+{
+	// determine windows size and position, from lyxrc and/or session
+	// initial geometry
+	unsigned int width = 690;
+	unsigned int height = 510;
+	bool maximize = false;
+	// first try lyxrc
+	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
+		width = lyxrc.geometry_width;
+		height = lyxrc.geometry_height;
 	}
+	// if lyxrc returns (0,0), then use session info
+	else {
+		string val = session().loadSessionInfo("WindowWidth");
+		if (!val.empty())
+			width = convert<unsigned int>(val);
+		val = session().loadSessionInfo("WindowHeight");
+		if (!val.empty())
+			height = convert<unsigned int>(val);
+		if (session().loadSessionInfo("WindowIsMaximized") == "yes")
+			maximize = true;
+	}
+	// if user wants to restore window position
+	int posx = -1;
+	int posy = -1;
+	if (lyxrc.geometry_xysaved) {
+		string val = session().loadSessionInfo("WindowPosX");
+		if (!val.empty())
+			posx = convert<int>(val);
+		val = session().loadSessionInfo("WindowPosY");
+		if (!val.empty())
+			posy = convert<int>(val);
+	}
+
+	if (geometryOption_) {
+		width = 0;
+		height = 0;
+	}
+	// create the main window
+	LyXView * view = &application_->createView(width, height, posx, posy, maximize);
+	ref().addLyXView(view);
+
+	// load files
+	for_each(files.begin(), files.end(),
+		bind(&LyXView::loadLyXFile, view, _1, true));
+
+	// if a file is specified, I assume that user wants to edit *that* file
+	if (files.empty() && lyxrc.load_session) {
+		vector<string> const & lastopened = session_->lastOpenedFiles();
+		// do not add to the lastfile list since these files are restored from
+		// last seesion, and should be already there (regular files), or should
+		// not be added at all (help files).
+		for_each(lastopened.begin(), lastopened.end(),
+			bind(&LyXView::loadLyXFile, view, _1, false));
+	}
+	// clear this list to save a few bytes of RAM
+	session_->clearLastOpenedFiles();
 }
 
 
@@ -519,6 +562,20 @@ void LyX::printError(ErrorItem const & ei)
 }
 
 
+void LyX::initGuiFont()
+{
+	if (lyxrc.roman_font_name.empty())
+		lyxrc.roman_font_name = application_->romanFontName();
+
+	if (lyxrc.sans_font_name.empty())
+		lyxrc.sans_font_name = application_->sansFontName();
+
+	if (lyxrc.typewriter_font_name.empty())
+		lyxrc.typewriter_font_name 
+			= application_->typewriterFontName();
+}
+
+
 bool LyX::init()
 {
 #ifdef SIGHUP
@@ -537,18 +594,6 @@ bool LyX::init()
 		lyxrc.template_path = addPath(package().system_support(),
 					      "templates");
 	}
-
-	if (lyxrc.roman_font_name.empty())
-		lyxrc.roman_font_name = 
-			lyx::use_gui? application_->romanFontName(): "serif";
-
-	if (lyxrc.sans_font_name.empty())
-		lyxrc.sans_font_name =
-			lyx::use_gui? application_->sansFontName(): "sans";
-
-	if (lyxrc.typewriter_font_name.empty())
-		lyxrc.typewriter_font_name =
-			lyx::use_gui? application_->typewriterFontName(): "monospace";
 
 	//
 	// Read configuration files
@@ -710,7 +755,7 @@ void LyX::emergencyCleanup() const
 	// contain documents etc. which might be helpful on
 	// a crash
 
-	theBufferList().emergencyWriteAll();
+	buffer_list_->emergencyWriteAll();
 	application_->server().emergencyCleanup();
 }
 
@@ -786,7 +831,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		    _("&Create directory"),
 		    _("&Exit LyX"))) {
 		lyxerr << lyx::to_utf8(_("No user LyX directory. Exiting.")) << endl;
-		lyx_exit(EXIT_FAILURE);
+		earlyExit(EXIT_FAILURE);
 	}
 
 	lyxerr << lyx::to_utf8(bformat(_("LyX: Creating directory %1$s"),
@@ -797,7 +842,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		// Failed, so let's exit.
 		lyxerr << lyx::to_utf8(_("Failed to create directory. Exiting."))
 		       << endl;
-		lyx_exit(EXIT_FAILURE);
+		earlyExit(EXIT_FAILURE);
 	}
 
 	return true;
