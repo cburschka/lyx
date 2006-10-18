@@ -756,7 +756,8 @@ void LyX::emergencyCleanup() const
 	// a crash
 
 	buffer_list_->emergencyWriteAll();
-	application_->server().emergencyCleanup();
+	if (lyx::use_gui)
+		application_->server().emergencyCleanup();
 }
 
 
