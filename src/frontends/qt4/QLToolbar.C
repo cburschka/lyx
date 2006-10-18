@@ -158,9 +158,8 @@ QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
 
 	ToolbarBackend::item_iterator it = tbb.items.begin();
 	ToolbarBackend::item_iterator end = tbb.items.end();
-	// FIXME UNICODE: ToolbarBackend!!!
 	for (; it != end; ++it)
-		add(it->first, lyx::from_utf8(it->second));
+		add(it->first, it->second);
 }
 
 

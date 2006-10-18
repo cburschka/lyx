@@ -197,7 +197,7 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	ToolbarBackend::item_iterator it = tbb.items.begin();
 	ToolbarBackend::item_iterator end = tbb.items.end();
 	for (; it != end; ++it)
-		add(it->first, lyx::from_utf8(it->second));
+		add(it->first, it->second);
 
 	toolbar_.set_toolbar_style(Gtk::TOOLBAR_ICONS);
 	toolbar_.show_all();

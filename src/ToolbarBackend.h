@@ -35,7 +35,7 @@ public:
 	};
 
 	/// action, tooltip
-	typedef std::pair<FuncRequest, std::string> Item;
+	typedef std::pair<FuncRequest, lyx::docstring> Item;
 
 	/// the toolbar items
 	typedef std::vector<Item> Items;
@@ -91,7 +91,7 @@ public:
 private:
 	/// add the given lfun with tooltip if relevant
 	void add(Toolbar & tb, FuncRequest const &,
-		 std::string const & tooltip = std::string());
+		 lyx::docstring const & tooltip = lyx::docstring());
 
 	/// all the toolbars
 	Toolbars toolbars;

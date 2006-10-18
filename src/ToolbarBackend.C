@@ -23,6 +23,7 @@
 
 #include "frontends/controllers/ControlMath.h"
 
+using lyx::docstring;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::getVectorFromString;
 using lyx::support::libFileSearch;
@@ -94,7 +95,7 @@ void ToolbarBackend::read(LyXLex & lex)
 		switch (lex.lex()) {
 		case TO_ADD:
 			if (lex.next(true)) {
-				string const tooltip = lyx::to_utf8(_(lex.getString()));
+				docstring const tooltip = _(lex.getString());
 				lex.next(true);
 				string const func_arg = lex.getString();
 				lyxerr[Debug::PARSER]
@@ -204,7 +205,7 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 
 
 void ToolbarBackend::add(Toolbar & tb,
-			 FuncRequest const & func, string const & tooltip)
+			 FuncRequest const & func, docstring const & tooltip)
 {
 	tb.items.push_back(make_pair(func, tooltip));
 	tb.items.back().first.origin = FuncRequest::UI;
