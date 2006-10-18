@@ -242,15 +242,14 @@ void LyXView::showDialog(string const & name)
 }
 
 
-void LyXView::showDialogWithData(string const & name,
-								 string const & data)
+void LyXView::showDialogWithData(string const & name, string const & data)
 {
 	getDialogs().show(name, data);
 }
 
 
 void LyXView::showInsetDialog(string const & name, string const & data,
-							  InsetBase * inset)
+		InsetBase * inset)
 {
 	getDialogs().show(name, data, inset);
 }

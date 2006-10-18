@@ -261,18 +261,14 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "index") {
 		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCommand(*dialog, name, name));
-		// FIXME UNICODE
-		dialog->setView(new GText(*dialog,
-					  lyx::to_utf8(_("Index Entry")),
-					  lyx::to_utf8(_("Keyword:|#K"))));
+		dialog->setView(new GText(*dialog, _("Index Entry"),
+		                          _("Keyword:|#K")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCommand(*dialog, name, name));
-		// FIXME UNICODE
-		dialog->setView(new GText(*dialog,
-					  lyx::to_utf8(_("Label")),
-					  lyx::to_utf8(_("Label:|#L"))));
+		dialog->setView(new GText(*dialog, _("Label"),
+		                          _("Label:|#L")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {
 		dialog->bc().view(new GBC(dialog->bc()));
