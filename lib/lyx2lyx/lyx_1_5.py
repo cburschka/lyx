@@ -277,7 +277,7 @@ This must be called after convert_commandparams.
         option = match.group(1)
         argument = match.group(2)
         lines = ['\\begin_inset LatexCommand bibitem']
-	if not option == None:
+        if not option == None:
             lines.append('label "%s"' % option[1:-1].replace('"', '\\"'))
         lines.append('key "%s"' % argument[1:-1].replace('"', '\\"'))
         lines.append('')
