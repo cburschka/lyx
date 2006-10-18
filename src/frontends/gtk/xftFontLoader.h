@@ -14,6 +14,8 @@
 
 #include "frontends/FontLoader.h"
 
+#include "xftFontMetrics.h"
+
 #include "lyxfont.h"
 
 #include <gtkmm.h>
@@ -34,6 +36,15 @@ public:
 	virtual void update();
 
 	virtual bool available(LyXFont const & f);
+	virtual lyx::frontend::FontMetrics const & metrics(LyXFont const & f)
+	{
+		if (f.realShape() != LyXFont::SMALLCAPS_SHAPE)
+			return font_metrics(load(f.family(), f.series(), f.realShape(), f.size()), 0);
+		LyXFont scf(f);
+		scf.decSize().decSize().setShape(LyXFont::UP_SHAPE);
+		return font_metrics(load(f.family(), f.series(), f.realShape(), f.size()),
+				load(scf.family(), scf.series(), scf.realShape(), scf.size()));
+	}
 
 	/// Load font
 	XftFont * load(LyXFont::FONT_FAMILY family,

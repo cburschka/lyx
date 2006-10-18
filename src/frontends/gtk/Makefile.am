@@ -146,4 +146,5 @@ libgtk_la_SOURCES = \
 	io_callback.h \
 	xftFontLoader.C \
 	xftFontLoader.h \
-	xftFontMetrics.C
+	xftFontMetrics.C \
+	xftFontMetrics.h

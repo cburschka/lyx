@@ -18,9 +18,10 @@
 #undef _GLIBCPP_CONCEPT_CHECKS
 #endif
 
+#include "xftFontMetrics.h"
+
 #include "GtkmmX.h"
 #include "xftFontLoader.h"
-#include "font_metrics.h"
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"
@@ -41,13 +42,6 @@ using std::string;
 
 
 namespace {
-
-
-inline XftFont * getXftFont(LyXFont const & f)
-{
-	return fontLoader.load(f.family(), f.series(),
-			       f.realShape(), f.size());
-}
 
 
 inline int XGlyphAscent(XGlyphInfo const & info)
@@ -82,23 +76,26 @@ inline int XGlyphLogWidth(XGlyphInfo const & info)
 } // namespace anon
 
 
-int font_metrics::maxAscent(LyXFont const & f)
+font_metrics::font_metrics(XftFont * f, XftFont * scf)
+	: font(f), fontS(scf)
 {
-	XftFont * font = getXftFont(f);
+}
+
+
+int font_metrics::maxAscent() const
+{
 	return font->ascent;
 }
 
 
-int font_metrics::maxDescent(LyXFont const & f)
+int font_metrics::maxDescent() const
 {
-	XftFont * font = getXftFont(f);
 	return font->descent;
 }
 
 
-int font_metrics::ascent(char_type c,LyXFont const & f)
+int font_metrics::ascent(char_type c) const
 {
-	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
 			 reinterpret_cast<FcChar32 *>(&c),
@@ -108,9 +105,8 @@ int font_metrics::ascent(char_type c,LyXFont const & f)
 }
 
 
-int font_metrics::descent(char_type c,LyXFont const & f)
+int font_metrics::descent(char_type c) const
 {
-	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
 			 reinterpret_cast<FcChar32 *>(&c),
@@ -120,9 +116,8 @@ int font_metrics::descent(char_type c,LyXFont const & f)
 }
 
 
-int font_metrics::lbearing(char_type c,LyXFont const & f)
+int font_metrics::lbearing(char_type c) const
 {
-	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
 			 reinterpret_cast<FcChar32 *>(&c),
@@ -132,9 +127,8 @@ int font_metrics::lbearing(char_type c,LyXFont const & f)
 }
 
 
-int font_metrics::rbearing(char_type c,LyXFont const & f)
+int font_metrics::rbearing(char_type c) const
 {
-	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
 			 reinterpret_cast<FcChar32 *>(&c),
@@ -144,11 +138,10 @@ int font_metrics::rbearing(char_type c,LyXFont const & f)
 }
 
 
-int font_metrics::width(char_type const * s, size_t n, LyXFont const & f)
+int font_metrics::width(char_type const * s, size_t n) const
 {
-	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
-	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE){
+	if (!fontS){
 		XftTextExtents32(getDisplay(),
                                 font,
                                 reinterpret_cast<FcChar32 const *>(s),
@@ -157,9 +150,6 @@ int font_metrics::width(char_type const * s, size_t n, LyXFont const & f)
 		return XGlyphLogWidth(glyph);
 	} else {
 		int result = 0;
-		LyXFont smallfont(f);
-		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
-		XftFont * fontS = getXftFont(smallfont);
 		for (size_t i = 0; i < n; ++i) {
 			char_type c = lyx::support::uppercase(s[i]);
 			if (c != s[i]) {
@@ -183,37 +173,37 @@ int font_metrics::width(char_type const * s, size_t n, LyXFont const & f)
 }
 
 
-int font_metrics::signedWidth(docstring const & s, LyXFont const & f)
+int font_metrics::signedWidth(docstring const & s) const
 {
 	if (s.empty())
 		return 0;
 	if (s[0] == '-')
-                return width(s.substr(1, s.length() - 1), f);
+                return width(s.substr(1, s.length() - 1).c_str(), s.length() - 1);
 	else
-                return width(s, f);
+                return width(s.c_str(), s.length());
 }
 
 
-void font_metrics::rectText(docstring const & str, LyXFont const & font,
+void font_metrics::rectText(docstring const & str,
 	int & width,
 	int & ascent,
-	int & descent)
+	int & descent) const
 {
 	static int const d = 2;
-	width = font_metrics::width(str, font) + d * 2 + 2;
-	ascent = font_metrics::maxAscent(font) + d;
-	descent = font_metrics::maxDescent(font) + d;
+	width = font_metrics::width(str.c_str(), str.length()) + d * 2 + 2;
+	ascent = font_metrics::maxAscent() + d;
+	descent = font_metrics::maxDescent() + d;
 }
 
 
-void font_metrics::buttonText(docstring const & str, LyXFont const & font,
+void font_metrics::buttonText(docstring const & str,
 	int & width,
 	int & ascent,
-	int & descent)
+	int & descent) const
 {
 	static int const d = 3;
 
-	width = font_metrics::width(str, font) + d * 2 + 2;
-	ascent = font_metrics::maxAscent(font) + d;
-	descent = font_metrics::maxDescent(font) + d;
+	width = font_metrics::width(str.c_str(), str.length()) + d * 2 + 2;
+	ascent = font_metrics::maxAscent() + d;
+	descent = font_metrics::maxDescent() + d;
 }

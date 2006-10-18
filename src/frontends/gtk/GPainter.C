@@ -28,7 +28,9 @@
 #include "language.h"
 #include "LColor.h"
 #include "xftFontLoader.h"
-#include "frontends/font_metrics.h"
+
+#include "frontends/Application.h"
+#include "frontends/FontMetrics.h"
 
 #include "support/lstrings.h"
 
@@ -213,7 +215,7 @@ int GPainter::text(int x, int y,
 				x, y,
 				reinterpret_cast<FcChar32 const *>(s),
 				ls);
-		textwidth = font_metrics::width(s, ls, f);
+		textwidth = theApp->fontLoader().metrics(f).width(s, ls);
 	} else {
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
@@ -228,7 +230,7 @@ int GPainter::text(int x, int y,
 						x + textwidth, y,
 						reinterpret_cast<FcChar32 *>(&c),
 						1);
-				textwidth += font_metrics::width(c, smallfont);
+				textwidth += theApp->fontLoader().metrics(smallfont).width(c);
 			} else {
 				XftDrawString32(draw,
 						xftClr,
@@ -236,7 +238,7 @@ int GPainter::text(int x, int y,
 						x + textwidth, y,
 						reinterpret_cast<FcChar32 *>(&c),
 						1);
-				textwidth += font_metrics::width(c, f);
+				textwidth += theApp->fontLoader().metrics(f).width(c);
 			}
 		}
 	}
