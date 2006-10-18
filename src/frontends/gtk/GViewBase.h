@@ -26,7 +26,7 @@ namespace frontend {
 
 class GViewBase : public Dialog::View, public sigc::trackable {
 public:
-	GViewBase(Dialog &, std::string const &, bool allowResize);
+	GViewBase(Dialog &, lyx::docstring const &, bool allowResize);
 	virtual ~GViewBase();
 	void setCancel(Gtk::Button * cancel);
 	void setApply(Gtk::Button * apply);

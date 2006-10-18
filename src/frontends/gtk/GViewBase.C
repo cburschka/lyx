@@ -54,7 +54,7 @@ void GViewBase::build()
 		window()->set_icon_from_file(iconName);
 	window()->signal_delete_event().connect(
 		sigc::mem_fun(*this, &GViewBase::onDeleteEvent));
-	window()->set_title(Glib::locale_to_utf8(getTitle()));
+	window()->set_title(lyx::to_utf8(getTitle()));
 }
 
 
@@ -120,7 +120,7 @@ void GViewBase::setRestore(Gtk::Button * restore)
 void GViewBase::setTitle(lyx::docstring const & title)
 {
 	Dialog::View::setTitle(title);
-	window()->set_title(title);
+	window()->set_title(lyx::to_utf8(title));
 }
 
 
@@ -161,7 +161,7 @@ bool GViewBase::onDeleteEvent(GdkEventAny *)
 }
 
 
-GViewGladeB::GViewGladeB(Dialog & parent, string const & t, bool allowResize) :
+GViewGladeB::GViewGladeB(Dialog & parent, docstring const & t, bool allowResize) :
 	GViewBase(parent, t, allowResize)
 {
 }

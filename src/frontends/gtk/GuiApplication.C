@@ -21,10 +21,12 @@
 #endif
 
 #include "GuiApplication.h"
+#include "io_callback.h"
 
 #include "GtkmmX.h"
 
 #include "BufferView.h"
+#include "Color.h"
 
 #include "graphics/LoaderQueue.h"
 
@@ -39,6 +41,8 @@
 #include <gtkmm.h>
 
 #include "LyXGdkImage.h"
+
+#include <iomanip>
 
 
 using lyx::support::subst;
@@ -65,9 +69,9 @@ int getDPI()
 
 namespace lyx {
 
-lyx::frontend::Application * createApplication(int & argc, char * argv[])
+frontend::Application * createApplication(int & argc, char * argv[])
 {
-	return new GuiApplication(argc, argv);
+	return new frontend::GuiApplication(argc, argv);
 }
 
 namespace frontend {
@@ -163,7 +167,7 @@ bool GuiApplication::getRgbColor(LColor_color col,
 string const GuiApplication::hexName(LColor_color col)
 {
 	lyx::RGBColor rgbcol;
-	if (!getRGBColor(col, rgbcol)) {
+	if (!getRgbColor(col, rgbcol)) {
 		lyxerr << "X can't find color for \"" << lcolor.getLyXName(col)
 		       << '"' << std::endl;
 		return string();

@@ -197,7 +197,7 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	ToolbarBackend::item_iterator it = tbb.items.begin();
 	ToolbarBackend::item_iterator end = tbb.items.end();
 	for (; it != end; ++it)
-		add(it->first, it->second);
+		add(it->first, lyx::from_utf8(it->second));
 
 	toolbar_.set_toolbar_style(Gtk::TOOLBAR_ICONS);
 	toolbar_.show_all();
@@ -233,10 +233,7 @@ void GToolbar::add(FuncRequest const & func, lyx::docstring const & tooltip)
 	}
 
 	default: {
-		// ENCODING, FIXME - we assume tooltips are in locale.  No 
-		// idea whether they actually are.
-		// FIXME UNICODE 2: tooltip is a docstring now...
-		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
+		Glib::ustring tip = lyx::to_utf8(tooltip);
 
 		Gtk::ToolButton * toolbutton;
 		Gtk::Image * image = NULL;
