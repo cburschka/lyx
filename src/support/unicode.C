@@ -127,6 +127,9 @@ iconv_convert(iconv_t * cd,
 
 std::vector<lyx::char_type> utf8_to_ucs4(std::vector<char> const & utf8str)
 {
+	if (utf8str.empty())
+		return std::vector<lyx::char_type>();
+
 	return utf8_to_ucs4(&utf8str[0], utf8str.size());
 }
 
@@ -150,6 +153,9 @@ ucs2_to_ucs4(unsigned short c)
 std::vector<lyx::char_type>
 ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str)
 {
+	if (ucs2str.empty())
+		return std::vector<lyx::char_type>();
+
 	return ucs2_to_ucs4(&ucs2str[0], ucs2str.size());
 }
 
@@ -173,6 +179,9 @@ ucs4_to_ucs2(lyx::char_type c)
 std::vector<unsigned short>
 ucs4_to_ucs2(std::vector<lyx::char_type> const & ucs4str)
 {
+	if (ucs4str.empty())
+		return std::vector<unsigned short>();
+
 	return ucs4_to_ucs2(&ucs4str[0], ucs4str.size());
 }
 
@@ -197,6 +206,9 @@ ucs4_to_utf8(lyx::char_type c)
 std::vector<char>
 ucs4_to_utf8(std::vector<lyx::char_type> const & ucs4str)
 {
+	if (ucs4str.empty())
+		return std::vector<char>();
+
 	return ucs4_to_utf8(&ucs4str[0], ucs4str.size());
 }
 
