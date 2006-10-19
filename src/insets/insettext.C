@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "coordcache.h"
 #include "CutAndPaste.h"
 #include "cursor.h"
 #include "debug.h"
@@ -217,6 +218,16 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 	pi.pain.fillRectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h,
 		backgroundColor());
 	text_.drawSelection(pi, x, y);
+}
+
+
+bool InsetText::covers(BufferView & bv, int x, int y) const
+{
+	return bv.coordCache().getInsets().has(this)
+			&& x >= xo(bv)
+			&& x <= xo(bv) + width() + (Wide() ? text_.maxwidth_ : 0)
+			&& y >= yo(bv) - ascent()
+			&& y <= yo(bv) + descent();
 }
 
 

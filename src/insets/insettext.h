@@ -52,6 +52,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw inset selection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
+	/// are we inside the area covered by the inset?
+	virtual bool covers(BufferView & bv, int x, int y) const;
 	///
 	virtual lyx::docstring const editMessage() const;
 	///
