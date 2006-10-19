@@ -6,7 +6,8 @@
 
 project(support)
 
-configure_file(package.C.cmake ${CMAKE_CURRENT_BINARY_DIR}/package.C)
+configure_file(${TOP_SRC_DIR}/src/support/package.C.in 
+               ${CMAKE_CURRENT_BINARY_DIR}/package.C)
 
 file(GLOB support_sources ${TOP_SRC_DIR}/src/support/*.C)
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/*.h)
