@@ -110,7 +110,7 @@ protected:
 
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.
-	bool interpretChar(LCursor & cur, char c);
+	bool interpretChar(LCursor & cur, lyx::char_type c);
 	///
 	bool script(LCursor & cur, bool,
 		std::string const & save_selection = std::string());

@@ -705,15 +705,9 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.posLeft();
 				cur.pushLeft(*cur.nextInset());
 			}
-		// FIXME: Change to
-		// } else if (!interpret(cur, cmd.argument()[0])) {
-		// when interpret accepts UCS4 characters
-		} else {
-			std::string arg0 = lyx::to_utf8(docstring(1, cmd.argument()[0]));
-			if (!interpretChar(cur, arg0[0])) {
-				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-				cur.undispatched();
-			}
+		} else if (!interpretChar(cur, cmd.argument()[0])) {
+			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			cur.undispatched();
 		}
 		break;
 
@@ -940,8 +934,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_INSERT: {
 		recordUndo(cur, Undo::ATOMIC);
 		if (cmd.argument() == "^" || cmd.argument() == "_") {
-			std::string arg0 = lyx::to_utf8(docstring(1, cmd.argument()[0]));
-			interpretChar(cur, arg0[0]);
+			interpretChar(cur, cmd.argument()[0]);
 		} else
 			cur.niceInsert(lyx::to_utf8(cmd.argument()));
 		break;
@@ -1169,7 +1162,7 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathNest::interpretChar(LCursor & cur, char c)
+bool InsetMathNest::interpretChar(LCursor & cur, lyx::char_type c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	string save_selection;
@@ -1192,7 +1185,7 @@ bool InsetMathNest::interpretChar(LCursor & cur, char c)
 		}
 
 		if (isalpha(c)) {
-			cur.activeMacro()->setName(name + c);
+			cur.activeMacro()->setName(name + lyx::to_ascii(docstring(1, c)));
 			return true;
 		}
 
@@ -1213,16 +1206,16 @@ bool InsetMathNest::interpretChar(LCursor & cur, char c)
 				cur.niceInsert(MathAtom(new InsetMathComment));
 			} else if (c == '#') {
 				BOOST_ASSERT(cur.activeMacro());
-				cur.activeMacro()->setName(name + c);
+				cur.activeMacro()->setName(name + lyx::to_ascii(docstring(1, c)));
 			} else {
 				cur.backspace();
-				cur.niceInsert(createInsetMath(string(1, c)));
+				cur.niceInsert(createInsetMath(lyx::to_ascii(docstring(1, c))));
 			}
 			return true;
 		}
 
 		// One character big delimiters. The others are handled in
-		// the other interpret() method.
+		// interpretString().
 		latexkeys const * l = in_word_set(name.substr(1));
 		if (name[0] == '\\' && l && l->inset == "big") {
 			string delim;
@@ -1234,7 +1227,7 @@ bool InsetMathNest::interpretChar(LCursor & cur, char c)
 				delim = "\\}";
 				break;
 			default:
-				delim = string(1, c);
+				delim = lyx::to_ascii(docstring(1, c));
 				break;
 			}
 			if (InsetMathBig::isBigInsetDelim(delim)) {
@@ -1329,7 +1322,7 @@ bool InsetMathNest::interpretChar(LCursor & cur, char c)
 
 	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
 	    c == '%' || c == '_' || c == '^') {
-		cur.niceInsert(createInsetMath(string(1, c)));
+		cur.niceInsert(createInsetMath(lyx::to_ascii(docstring(1, c))));
 		return true;
 	}
 
