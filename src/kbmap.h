@@ -126,4 +126,7 @@ private:
 	Table table;
 };
 
+/// Implementation is in lyx_main.C
+extern kb_keymap & theTopLevelKeymap();
+
 #endif // KBMAP_H

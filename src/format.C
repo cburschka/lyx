@@ -312,7 +312,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 
 	command = subst(command, token_from, quoteName(filename));
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
-	command = subst(command, token_socket, quoteName(theApp->socket().address()));
+	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + lyx::from_utf8(command));
 
@@ -371,7 +371,7 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 
 	command = subst(command, token_from, quoteName(filename));
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
-	command = subst(command, token_socket, quoteName(theApp->socket().address()));
+	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	buffer.message(_("Executing command: ") + lyx::from_utf8(command));
 

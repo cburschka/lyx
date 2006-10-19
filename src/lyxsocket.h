@@ -89,4 +89,7 @@ private:
 	std::string buffer_;
 };
 
+/// Implementation is in lyx_main.C
+extern LyXServerSocket & theLyXServerSocket();
+
 #endif // LYXSOCKET_H

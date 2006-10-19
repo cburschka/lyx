@@ -20,16 +20,12 @@
 #include "frontends/LyXView.h"
 #include "frontends/WorkArea.h"
 
-#include "bufferlist.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "lyx_main.h"
-#include "LyXAction.h"
 #include "lyxfont.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
-#include "lyxserver.h"
-#include "lyxsocket.h"
 
 #include "support/lstrings.h"
 #include "support/os.h"
@@ -43,57 +39,9 @@ using lyx::support::package;
 namespace lyx {
 namespace frontend {
 
-/// The main application class private implementation.
-struct Application_pimpl 
-{
-	/// our function handler
-	boost::scoped_ptr<LyXFunc> lyxfunc_;
-	///
-	boost::scoped_ptr<LyXServer> lyx_server_;
-	///
-	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
-};
-
 
 Application::Application(int &, char **)
 {
-	pimpl_ = new Application_pimpl;
-}
-
-
-LyXFunc & Application::lyxFunc()
-{
-	return *pimpl_->lyxfunc_.get();
-}
-
-
-LyXFunc const & Application::lyxFunc() const
-{
-	return *pimpl_->lyxfunc_.get(); 
-}
-
-
-LyXServer & Application::server()
-{
-	return *pimpl_->lyx_server_.get(); 
-}
-
-
-LyXServer const & Application::server() const 
-{
-	return *pimpl_->lyx_server_.get(); 
-}
-
-
-LyXServerSocket & Application::socket()
-{
-	return *pimpl_->lyx_socket_.get();
-}
-
-
-LyXServerSocket const & Application::socket() const
-{
-	return *pimpl_->lyx_socket_.get();
 }
 
 
@@ -117,7 +65,7 @@ LyXView & Application::createView(unsigned int width,
 	int view_id = gui().newView();
 	LyXView & view = gui().view(view_id);
 
-	pimpl_->lyxfunc_.reset(new LyXFunc(&view));
+	theLyXFunc().setLyXView(&view);
 
 	// FIXME: for now we assume that there is only one LyXView with id = 0.
 	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
@@ -132,40 +80,11 @@ LyXView & Application::createView(unsigned int width,
 
 int Application::start(std::string const & batch)
 {
-	pimpl_->lyx_server_.reset(new LyXServer(pimpl_->lyxfunc_.get(), lyxrc.lyxpipes));
-	pimpl_->lyx_socket_.reset(new LyXServerSocket(pimpl_->lyxfunc_.get(), 
-		lyx::support::os::internal_path(package().temp_dir() + "/lyxsocket")));
-
-	// handle the batch commands the user asked for
-	if (!batch.empty()) {
-		pimpl_->lyxfunc_->dispatch(lyxaction.lookupFunc(batch));
-	}
-
 	return exec();
 }
 
 } // namespace frontend
-
-
-FuncStatus getStatus(FuncRequest const & action)
-{
-	return theApp->lyxFunc().getStatus(action);
-}
-
-
-void dispatch(FuncRequest const & action)
-{
-	theApp->lyxFunc().dispatch(action);
-}
-
 } // namespace lyx
-
-
-LyXFunc & theLyXFunc()
-{
-	BOOST_ASSERT(theApp);
-	return theApp->lyxFunc();
-}
 
 
 lyx::frontend::FontLoader & theFontLoader()

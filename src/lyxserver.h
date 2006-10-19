@@ -140,6 +140,9 @@ private:
 	LyXComm pipes;
 };
 
+/// Implementation is in lyx_main.C
+extern LyXServer & theLyXServer();
+
 #endif /* _LYXSERVER_H_ */
 
 /* === End of File: lyxserver.h ========================================== */

@@ -30,7 +30,6 @@
 #ifdef Q_WS_MACX
 #include "kbmap.h"
 #include "QLyXKeySym.h"
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 #endif
 
 using std::make_pair;

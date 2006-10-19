@@ -15,7 +15,6 @@
 #define LYX_MAIN_H
 
 #include <boost/scoped_ptr.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
 
 #include <list>
@@ -26,8 +25,12 @@ class Buffer;
 class BufferList;
 class ErrorItem;
 class InsetBase;
+class LyXFunc;
+class LyXServer;
+class LyXServerSocket;
 class LyXView;
 class kb_keymap;
+
 
 namespace lyx {
 extern bool use_gui;
@@ -74,6 +77,23 @@ public:
 	///
 	lyx::Session & session();
 	lyx::Session const & session() const;
+	///
+	LyXFunc & lyxFunc();
+	LyXFunc const & lyxFunc() const;
+	///
+	LyXServer & server();
+	LyXServer const & server() const;
+	///
+	LyXServerSocket & socket();
+	LyXServerSocket const & socket() const;
+
+	///
+	lyx::frontend::Application & application();
+	lyx::frontend::Application const & application() const;
+
+	///
+	kb_keymap & topLevelKeymap();
+	kb_keymap const & topLevelKeymap() const;
 
 	void addLyXView(LyXView * lyxview);
 
@@ -139,19 +159,15 @@ private:
 	/// the parsed command line batch command if any
 	std::string batch_command;
 
-	///
-	boost::scoped_ptr<BufferList> buffer_list_;
-	/// lyx session, containing lastfiles, lastfilepos, and lastopened
-	boost::scoped_ptr<lyx::Session> session_;
+	/// Use the Pimpl idiom to hide the internals.
+	struct Singletons;
+	boost::scoped_ptr<Singletons> pimpl_;
 	///
 	typedef std::list<LyXView *> ViewList;
 	ViewList views_;
 
 	///
 	bool geometryOption_;
-
-	///
-	boost::scoped_ptr<lyx::frontend::Application> application_;
 };
 
 #endif // LYX_MAIN_H

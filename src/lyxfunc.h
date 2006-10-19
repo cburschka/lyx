@@ -20,7 +20,7 @@
 
 #include "support/docstring.h"
 
-#include <boost/shared_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
 
@@ -41,13 +41,16 @@ class LyXView;
 class LyXFunc : public boost::signals::trackable {
 public:
 	///
-	explicit LyXFunc(LyXView * lv = 0);
+	explicit LyXFunc();
 
 	/// LyX dispatcher, executes lyx actions.
 	void dispatch(FuncRequest const &);
 
 	///
 	void setLyXView(LyXView * lv);
+
+	///
+	void initKeySequences(kb_keymap * kb);
 
 	/// return the status bar state string
 	std::string const viewStatusMessage();
@@ -83,13 +86,12 @@ private:
 	lyx::char_type encoded_last_key;
 
 	///
-	kb_sequence keyseq;
+	boost::scoped_ptr<kb_sequence> keyseq;
 	///
-	kb_sequence cancel_meta_seq;
+	boost::scoped_ptr<kb_sequence> cancel_meta_seq;
 	///
 	key_modifier::state meta_fake_bit;
-	///
-	void setupLocalKeymap();
+
 	/// Error status, only Dispatch can change this flag
 	mutable bool errorstat;
 
@@ -115,14 +117,15 @@ private:
 	bool ensureBufferClean(BufferView * bv);
 };
 
+/// Implementation is in lyx_main.C
 extern LyXFunc & theLyXFunc();
 
 namespace lyx {
 
-/// Implementation is in frontends/Application.C
+/// Implementation is in lyx_main.C
 extern FuncStatus getStatus(FuncRequest const & action);
 
-/// Implementation is in frontends/Application.C
+/// Implementation is in lyx_main.C
 extern void dispatch(FuncRequest const & action);
 }
 

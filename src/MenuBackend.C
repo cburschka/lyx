@@ -65,8 +65,6 @@ using std::string;
 using std::vector;
 
 
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
-
 namespace {
 
 class MenuNamesEqual : public std::unary_function<Menu, bool> {
@@ -139,7 +137,7 @@ docstring const MenuItem::binding() const
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	kb_keymap::Bindings bindings = toplevel_keymap->findbindings(func_);
+	kb_keymap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
 
 	if (bindings.size()) {
 		return lyx::from_utf8(bindings.begin()->print());

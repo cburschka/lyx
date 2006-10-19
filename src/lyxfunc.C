@@ -141,8 +141,6 @@ namespace biblio = lyx::biblio;
 namespace fs = boost::filesystem;
 
 
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
-
 // (alkis)
 extern tex_accent_struct get_accent(kb_action action);
 
@@ -202,13 +200,18 @@ Change::Type lookupChangeType(DocIterator const & dit, bool outer = false)
 
 }
 
-LyXFunc::LyXFunc(LyXView * lv)
-	: owner(lv),
+LyXFunc::LyXFunc()
+	: owner(0),
 	encoded_last_key(0),
-	keyseq(toplevel_keymap.get(), toplevel_keymap.get()),
-	cancel_meta_seq(toplevel_keymap.get(), toplevel_keymap.get()),
 	meta_fake_bit(key_modifier::none)
 {
+}
+
+
+void LyXFunc::initKeySequences(kb_keymap * kb)
+{
+	keyseq.reset(new kb_sequence(kb, kb));
+	cancel_meta_seq.reset(new kb_sequence(kb, kb));
 }
 
 
@@ -217,11 +220,12 @@ void LyXFunc::setLyXView(LyXView * lv)
 	owner = lv;
 }
 
+
 void LyXFunc::handleKeyFunc(kb_action action)
 {
 	char c = encoded_last_key;
 
-	if (keyseq.length()) {
+	if (keyseq->length()) {
 		c = 0;
 	}
 
@@ -229,7 +233,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 		.deadkey(c, get_accent(action).accent, view()->getLyXText());
 	// Need to clear, in case the minibuffer calls these
 	// actions
-	keyseq.clear();
+	keyseq->clear();
 	// copied verbatim from do_accent_char
 	view()->cursor().resetAnchor();
 	view()->update();
@@ -259,9 +263,9 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5
-	cancel_meta_seq.reset();
+	cancel_meta_seq->reset();
 
-	FuncRequest func = cancel_meta_seq.addkey(keysym, state);
+	FuncRequest func = cancel_meta_seq->addkey(keysym, state);
 	lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
 			   << " action first set to [" << func.action << ']'
 			   << endl;
@@ -271,7 +275,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
 	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_PREFIX)) {
 		// remove Caps Lock and Mod2 as a modifiers
-		func = keyseq.addkey(keysym, (state | meta_fake_bit));
+		func = keyseq->addkey(keysym, (state | meta_fake_bit));
 		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
 				   << "action now set to ["
 				   << func.action << ']' << endl;
@@ -289,7 +293,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		lyxerr << BOOST_CURRENT_FUNCTION
 		       << " Key [action="
 		       << func.action << "]["
-		       << keyseq.print() << ']'
+		       << keyseq->print() << ']'
 		       << endl;
 	}
 
@@ -297,8 +301,8 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if (keyseq.length() > 1) {
-		owner->message(lyx::from_utf8(keyseq.print()));
+	if (keyseq->length() > 1) {
+		owner->message(lyx::from_utf8(keyseq->print()));
 	}
 
 
@@ -307,7 +311,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	if (func.action == LFUN_UNKNOWN_ACTION &&
 	    state == key_modifier::shift) {
 		lyxerr[Debug::KEY] << "Trying without shift" << endl;
-		func = keyseq.addkey(keysym, key_modifier::none);
+		func = keyseq->addkey(keysym, key_modifier::none);
 		lyxerr[Debug::KEY] << "Action now " << func.action << endl;
 	}
 
@@ -315,7 +319,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
 		// by a binding
-		if (keysym->isText() && keyseq.length() == 1) {
+		if (keysym->isText() && keyseq->length() == 1) {
 			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
 			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
@@ -765,7 +769,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_COMMAND_PREFIX:
-			owner->message(lyx::from_utf8(keyseq.printOptions()));
+			owner->message(lyx::from_utf8(keyseq->printOptions()));
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
@@ -774,7 +778,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_CANCEL:
-			keyseq.reset();
+			keyseq->reset();
 			meta_fake_bit = key_modifier::none;
 			if (view()->buffer())
 				// cancel any selection
@@ -784,7 +788,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_META_PREFIX:
 			meta_fake_bit = key_modifier::alt;
-			setMessage(lyx::from_utf8(keyseq.print()));
+			setMessage(lyx::from_utf8(keyseq->print()));
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -1120,8 +1124,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = lyx::from_utf8(keyseq.print());
-			theApp->server().notifyClient(lyx::to_utf8(dispatch_buffer));
+			dispatch_buffer = lyx::from_utf8(keyseq->print());
+			theLyXServer().notifyClient(lyx::to_utf8(dispatch_buffer));
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW: {
@@ -1656,7 +1660,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		}
 	}
 
-	string const shortcuts = toplevel_keymap->printbindings(cmd);
+	string const shortcuts = theTopLevelKeymap().printbindings(cmd);
 
 	if (!shortcuts.empty())
 		comname += ": " + shortcuts;
@@ -1672,15 +1676,6 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		<< lyx::to_utf8(dispatch_msg) << endl;
 	if (!dispatch_msg.empty())
 		owner->message(dispatch_msg);
-}
-
-
-void LyXFunc::setupLocalKeymap()
-{
-	keyseq.stdmap = toplevel_keymap.get();
-	keyseq.curmap = toplevel_keymap.get();
-	cancel_meta_seq.stdmap = toplevel_keymap.get();
-	cancel_meta_seq.curmap = toplevel_keymap.get();
 }
 
 
@@ -1930,12 +1925,12 @@ string const LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey())
-		return keyseq.print() + "M-";
+		return keyseq->print() + "M-";
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
-	if (keyseq.length() > 0 && !keyseq.deleted())
-		return keyseq.printOptions();
+	if (keyseq->length() > 0 && !keyseq->deleted())
+		return keyseq->printOptions();
 
 	if (!view()->buffer())
 		return lyx::to_utf8(_("Welcome to LyX!"));

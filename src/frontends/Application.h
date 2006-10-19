@@ -15,11 +15,7 @@
 
 #include <string>
 
-class BufferList;
 class BufferView;
-class LyXFunc;
-class LyXServer;
-class LyXServerSocket;
 class LyXView;
 class LColor_color;
 	
@@ -29,7 +25,6 @@ struct RGBColor;
 
 namespace frontend {
 
-struct Application_pimpl;
 class Clipboard;
 class FontLoader;
 class Gui;
@@ -116,16 +111,6 @@ public:
 	*/
 	virtual void unregisterSocketCallback(int fd) = 0;
 
-	///
-	LyXFunc & lyxFunc();
-	LyXFunc const & lyxFunc() const;
-	///
-	LyXServer & server();
-	LyXServer const & server() const;
-	///
-	LyXServerSocket & socket();
-	LyXServerSocket const & socket() const;
-
 	/// Create the main window with given geometry settings.
 	LyXView & createView(unsigned int width, unsigned int height,
 		int posx, int posy, bool maximize);
@@ -138,10 +123,6 @@ protected:
 	/// Events
 	/// FIXME: \todo use Gui::currentView() in the future
 	BufferView * buffer_view_;
-
-private:
-	/// Application private implementation.
-	Application_pimpl * pimpl_;
 
 }; // Application
 

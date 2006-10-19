@@ -31,10 +31,12 @@
 #include "session.h"
 #include "LColor.h"
 #include "lyx_cb.h"
+#include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
+#include "lyxsocket.h"
 #include "lyxtextclasslist.h"
 #include "MenuBackend.h"
 #include "mover.h"
@@ -92,10 +94,6 @@ using std::signal;
 using std::system;
 #endif
 
-
-/// convenient to have it here.
-boost::scoped_ptr<kb_keymap> toplevel_keymap;
-
 ///
 lyx::frontend::Application * theApp = 0;
 
@@ -107,7 +105,8 @@ namespace lyx {
 */
 bool use_gui = true;
 
-}
+} // namespace lyx
+
 
 namespace {
 
@@ -139,7 +138,28 @@ void reconfigureUserLyXDir()
 } // namespace anon
 
 
+/// The main application class private implementation.
+struct LyX::Singletons 
+{
+	/// our function handler
+	LyXFunc lyxfunc_;
+	///
+	BufferList buffer_list_;
+	///
+	boost::scoped_ptr<kb_keymap> toplevel_keymap_;
+	///
+	boost::scoped_ptr<LyXServer> lyx_server_;
+	///
+	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
+	///
+	boost::scoped_ptr<lyx::frontend::Application> application_;
+	/// lyx session, containing lastfiles, lastfilepos, and lastopened
+	boost::scoped_ptr<lyx::Session> session_;
+};
+
+
 boost::scoped_ptr<LyX> LyX::singleton_;
+
 
 int LyX::exec(int & argc, char * argv[])
 {
@@ -167,44 +187,105 @@ LyX const & LyX::cref()
 }
 
 
-BufferList & theBufferList()
-{
-	return LyX::ref().bufferList();
-}
-
-
 LyX::LyX()
 	: first_start(false), geometryOption_(false)
 {
-	buffer_list_.reset(new BufferList);
+	pimpl_.reset(new Singletons);
 }
 
 
 BufferList & LyX::bufferList()
 {
-	return *buffer_list_.get();
+	return pimpl_->buffer_list_;
 }
 
 
 BufferList const & LyX::bufferList() const
 {
-	return *buffer_list_.get();
+	return pimpl_->buffer_list_;
 }
 
 
 lyx::Session & LyX::session()
 {
-	BOOST_ASSERT(session_.get());
-	return *session_.get();
+	BOOST_ASSERT(pimpl_->session_.get());
+	return *pimpl_->session_.get();
 }
 
 
 lyx::Session const & LyX::session() const
 {
-	BOOST_ASSERT(session_.get());
-	return *session_.get();
+	BOOST_ASSERT(pimpl_->session_.get());
+	return *pimpl_->session_.get();
 }
 
+
+LyXFunc & LyX::lyxFunc()
+{
+	return pimpl_->lyxfunc_;
+}
+
+
+LyXFunc const & LyX::lyxFunc() const
+{
+	return pimpl_->lyxfunc_;
+}
+
+
+LyXServer & LyX::server()
+{
+	BOOST_ASSERT(pimpl_->lyx_server_.get());
+	return *pimpl_->lyx_server_.get(); 
+}
+
+
+LyXServer const & LyX::server() const 
+{
+	BOOST_ASSERT(pimpl_->lyx_server_.get());
+	return *pimpl_->lyx_server_.get(); 
+}
+
+
+LyXServerSocket & LyX::socket()
+{
+	BOOST_ASSERT(pimpl_->lyx_socket_.get());
+	return *pimpl_->lyx_socket_.get();
+}
+
+
+LyXServerSocket const & LyX::socket() const
+{
+	BOOST_ASSERT(pimpl_->lyx_socket_.get());
+	return *pimpl_->lyx_socket_.get();
+}
+
+
+lyx::frontend::Application & LyX::application()
+{
+	BOOST_ASSERT(pimpl_->application_.get());
+	return *pimpl_->application_.get();
+}
+
+
+lyx::frontend::Application const & LyX::application() const
+{
+	BOOST_ASSERT(pimpl_->application_.get());
+	return *pimpl_->application_.get();
+}
+
+
+kb_keymap & LyX::topLevelKeymap()
+{
+	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
+	return *pimpl_->toplevel_keymap_.get();
+}
+
+
+kb_keymap const & LyX::topLevelKeymap() const
+{
+	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
+	return *pimpl_->toplevel_keymap_.get();
+}
 
 void LyX::addLyXView(LyXView * lyxview)
 {
@@ -243,20 +324,36 @@ int LyX::priv_exec(int & argc, char * argv[])
 
 	if (exit_status)
 		return exit_status;
-
+	
 	if (lyx::use_gui) {
 		// Force adding of font path _before_ Application is initialized
 		lyx::support::addFontResources();
-		application_.reset(lyx::createApplication(argc, argv));
+		pimpl_->application_.reset(lyx::createApplication(argc, argv));
 		initGuiFont();
 		// FIXME: this global pointer should probably go.
-		theApp = application_.get();
+		theApp = pimpl_->application_.get();
 		restoreGuiSession(files);
 		// Start the real execution loop.
-		exit_status = application_->start(batch_command);
+
+		// FIXME
+		/* Create a CoreApplication class that will provide the main event loop and 
+		 * the socket callback registering. With Qt4, only QtCore library would be needed.
+		 * When this done, a lyx::server_mode could be created and the following two
+		 * line would be moved out from here.
+		 */
+		pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
+		pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
+			lyx::support::os::internal_path(package().temp_dir() + "/lyxsocket")));
+
+		// handle the batch commands the user asked for
+		if (!batch_command.empty()) {
+			pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(batch_command));
+		}
+
+		exit_status = pimpl_->application_->start(batch_command);
 		// Kill the application object before exiting. This avoid crash
 		// on exit on Linux.
-		application_.reset();
+		pimpl_->application_.reset();
 		// Restore original font resources after Application is destroyed.
 		lyx::support::restoreFontResources();
 	}
@@ -276,7 +373,7 @@ void LyX::prepareExit()
 	quitting = true;
 
 	// close buffers first
-	buffer_list_->closeAll();
+	pimpl_->buffer_list_.closeAll();
 
 	// do any other cleanup procedures now
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
@@ -292,8 +389,8 @@ void LyX::prepareExit()
 
 void LyX::earlyExit(int status)
 {
-	BOOST_ASSERT(application_.get());
-	// LyX::application_ is not initialised at this
+	BOOST_ASSERT(pimpl_->application_.get());
+	// LyX::pimpl_::application_ is not initialised at this
 	// point so it's safe to just exit after some cleanup.
 	prepareExit();
 	exit(status);
@@ -305,16 +402,16 @@ void LyX::quit(bool noask)
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyx::use_gui) {
-		if (!noask && !buffer_list_->quitWriteAll())
+		if (!noask && !pimpl_->buffer_list_.quitWriteAll())
 			return;
 
-		session_->writeFile();
+		pimpl_->session_->writeFile();
 	}
 
 	prepareExit();
 
 	if (lyx::use_gui) {
-		application_->exit(0);
+		pimpl_->application_->exit(0);
 	}
 }
 
@@ -366,7 +463,7 @@ int LyX::execBatchCommands(int & argc, char * argv[],
 				if (b)
 					last_loaded = b;
 			} else {
-				Buffer * buf = buffer_list_->newBuffer(s, false);
+				Buffer * buf = pimpl_->buffer_list_.newBuffer(s, false);
 				if (loadLyXFile(buf, s)) {
 					last_loaded = buf;
 					ErrorList const & el = buf->errorList("Parse");
@@ -375,7 +472,7 @@ int LyX::execBatchCommands(int & argc, char * argv[],
 							boost::bind(&LyX::printError, this, _1));
 				}
 				else
-					buffer_list_->release(buf);
+					pimpl_->buffer_list_.release(buf);
 			}
 		}
 
@@ -434,7 +531,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 		height = 0;
 	}
 	// create the main window
-	LyXView * view = &application_->createView(width, height, posx, posy, maximize);
+	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize);
 	ref().addLyXView(view);
 
 	// load files
@@ -443,7 +540,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 
 	// if a file is specified, I assume that user wants to edit *that* file
 	if (files.empty() && lyxrc.load_session) {
-		vector<string> const & lastopened = session_->lastOpenedFiles();
+		vector<string> const & lastopened = pimpl_->session_->lastOpenedFiles();
 		// do not add to the lastfile list since these files are restored from
 		// last seesion, and should be already there (regular files), or should
 		// not be added at all (help files).
@@ -451,7 +548,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 			bind(&LyXView::loadLyXFile, view, _1, false));
 	}
 	// clear this list to save a few bytes of RAM
-	session_->clearLastOpenedFiles();
+	pimpl_->session_->clearLastOpenedFiles();
 }
 
 
@@ -565,14 +662,14 @@ void LyX::printError(ErrorItem const & ei)
 void LyX::initGuiFont()
 {
 	if (lyxrc.roman_font_name.empty())
-		lyxrc.roman_font_name = application_->romanFontName();
+		lyxrc.roman_font_name = pimpl_->application_->romanFontName();
 
 	if (lyxrc.sans_font_name.empty())
-		lyxrc.sans_font_name = application_->sansFontName();
+		lyxrc.sans_font_name = pimpl_->application_->sansFontName();
 
 	if (lyxrc.typewriter_font_name.empty())
 		lyxrc.typewriter_font_name 
-			= application_->typewriterFontName();
+			= pimpl_->application_->typewriterFontName();
 }
 
 
@@ -651,9 +748,11 @@ bool LyX::init()
 
 	if (lyx::use_gui) {
 		// Set up bindings
-		toplevel_keymap.reset(new kb_keymap);
-		defaultKeyBindings(toplevel_keymap.get());
-		toplevel_keymap->read(lyxrc.bind_file);
+		pimpl_->toplevel_keymap_.reset(new kb_keymap);
+		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
+		pimpl_->toplevel_keymap_->read(lyxrc.bind_file);
+
+		pimpl_->lyxfunc_.initKeySequences(pimpl_->toplevel_keymap_.get());
 
 		// Read menus
 		if (!readUIFile(lyxrc.ui_file))
@@ -691,7 +790,7 @@ bool LyX::init()
 	}
 
 	lyxerr[Debug::INIT] << "Reading session information '.lyx/session'..." << endl;
-	session_.reset(new lyx::Session(lyxrc.num_lastfiles));
+	pimpl_->session_.reset(new lyx::Session(lyxrc.num_lastfiles));
 	return true;
 }
 
@@ -755,9 +854,9 @@ void LyX::emergencyCleanup() const
 	// contain documents etc. which might be helpful on
 	// a crash
 
-	buffer_list_->emergencyWriteAll();
+	pimpl_->buffer_list_.emergencyWriteAll();
 	if (lyx::use_gui)
-		application_->server().emergencyCleanup();
+		pimpl_->lyx_server_->emergencyCleanup();
 }
 
 
@@ -1149,4 +1248,54 @@ void LyX::easyParse(int & argc, char * argv[])
 	}
 
 	batch_command = batch;
+}
+
+namespace lyx {
+
+FuncStatus getStatus(FuncRequest const & action)
+{
+	return LyX::ref().lyxFunc().getStatus(action);
+}
+
+
+void dispatch(FuncRequest const & action)
+{
+	LyX::ref().lyxFunc().dispatch(action);
+}
+
+} // namespace lyx
+
+
+BufferList & theBufferList()
+{
+	return LyX::ref().bufferList();
+}
+
+
+LyXFunc & theLyXFunc()
+{
+	return LyX::ref().lyxFunc();
+}
+
+
+LyXServer & theLyXServer()
+{
+	// FIXME: this should not be use_gui dependent
+	BOOST_ASSERT(lyx::use_gui);
+	return LyX::ref().server();
+}
+
+
+LyXServerSocket & theLyXServerSocket()
+{
+	// FIXME: this should not be use_gui dependent
+	BOOST_ASSERT(lyx::use_gui);
+	return LyX::ref().socket();
+}
+
+
+kb_keymap & theTopLevelKeymap()
+{
+	BOOST_ASSERT(lyx::use_gui);
+	return LyX::ref().topLevelKeymap();
 }

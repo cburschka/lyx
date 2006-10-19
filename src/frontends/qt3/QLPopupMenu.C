@@ -27,7 +27,6 @@
 #ifdef Q_WS_MACX
 #include "kbmap.h"
 #include "QLyXKeySym.h"
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 #endif
 
 #include <qapplication.h>
@@ -137,7 +136,7 @@ void QLPopupMenu::populate(Menu * menu)
 			   needed (JMarc)
 			*/
 			pair<LyXKeySym const *, key_modifier::state>
-				binding = toplevel_keymap->find1keybinding(m->func());
+				binding = theTopLevelKeymap().find1keybinding(m->func());
 			if (binding.first) {
 				QLyXKeySym const *key = static_cast<QLyXKeySym const *>(binding.first);
 				label += '\t' + key->qprint(binding.second);
