@@ -322,7 +322,7 @@ bool Converters::convert(Buffer const * buffer,
 		Alert::error(_("Cannot convert file"),
 			     bformat(_("No information for converting %1$s "
 						    "format files to %2$s.\n"
-						    "Define a convertor in the preferences."),
+						    "Define a converter in the preferences."),
 							lyx::from_ascii(from_format), lyx::from_ascii(to_format)));
 		return false;
 	}

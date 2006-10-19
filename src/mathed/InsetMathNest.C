@@ -675,7 +675,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.argument().size() != 1) {
 			recordUndo(cur);
 			string const arg = lyx::to_utf8(cmd.argument());
-			if (!interpret(cur, arg))
+			if (!interpretString(cur, arg))
 				cur.insert(arg);
 			break;
 		}
@@ -705,9 +705,12 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// FIXME: Change to
 		// } else if (!interpret(cur, cmd.argument()[0])) {
 		// when interpret accepts UCS4 characters
-		} else if (!interpret(cur, lyx::to_utf8(cmd.argument()))) {
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-			cur.undispatched();
+		} else {
+			std::string arg0 = lyx::to_utf8(docstring(1, cmd.argument()[0]));
+			if (!interpretChar(cur, arg0[0])) {
+				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+				cur.undispatched();
+			}
 		}
 		break;
 
@@ -913,19 +916,19 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_ERT_INSERT:
 		// interpret this as if a backslash was typed
 		recordUndo(cur, Undo::ATOMIC);
-		interpret(cur, '\\');
+		interpretChar(cur, '\\');
 		break;
 
 	case LFUN_MATH_SUBSCRIPT:
 		// interpret this as if a _ was typed
 		recordUndo(cur, Undo::ATOMIC);
-		interpret(cur, '_');
+		interpretChar(cur, '_');
 		break;
 
 	case LFUN_MATH_SUPERSCRIPT:
 		// interpret this as if a ^ was typed
 		recordUndo(cur, Undo::ATOMIC);
-		interpret(cur, '^');
+		interpretChar(cur, '^');
 		break;
 
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
@@ -933,9 +936,10 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 // math-insert only handles special math things like "matrix".
 	case LFUN_MATH_INSERT: {
 		recordUndo(cur, Undo::ATOMIC);
-		if (cmd.argument() == "^" || cmd.argument() == "_")
-			interpret(cur, cmd.argument()[0]);
-		else
+		if (cmd.argument() == "^" || cmd.argument() == "_") {
+			std::string arg0 = lyx::to_utf8(docstring(1, cmd.argument()[0]));
+			interpretChar(cur, arg0[0]);
+		} else
 			cur.niceInsert(lyx::to_utf8(cmd.argument()));
 		break;
 		}
@@ -1162,7 +1166,7 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetMathNest::interpret(LCursor & cur, char c)
+bool InsetMathNest::interpretChar(LCursor & cur, char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	string save_selection;
@@ -1249,7 +1253,7 @@ bool InsetMathNest::interpret(LCursor & cur, char c)
 		if (c == '{')
 			cur.niceInsert(MathAtom(new InsetMathBrace));
 		else if (c != ' ')
-			interpret(cur, c);
+			interpretChar(cur, c);
 		return true;
 	}
 
@@ -1338,7 +1342,7 @@ bool InsetMathNest::interpret(LCursor & cur, char c)
 }
 
 
-bool InsetMathNest::interpret(LCursor & cur, string const & str)
+bool InsetMathNest::interpretString(LCursor & cur, string const & str)
 {
 	// Create a InsetMathBig from cur.cell()[cur.pos() - 1] and t if
 	// possible
@@ -1370,7 +1374,7 @@ bool InsetMathNest::script(LCursor & cur, bool up, string const &
 		if (up)
 			cur.niceInsert(createInsetMath("mathcircumflex"));
 		else
-			interpret(cur, '_');
+			interpretChar(cur, '_');
 		return true;
 	}
 

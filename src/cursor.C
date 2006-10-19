@@ -864,7 +864,7 @@ bool LCursor::macroModeClose()
 		lyxerr << "can't enter recursive macro" << endl;
 
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
-	if (in && in->interpret(*this, s))
+	if (in && in->interpretString(*this, s))
 		return true;
 	plainInsert(createInsetMath(name));
 	return true;
