@@ -11,6 +11,9 @@ set (EXECUTABLE_OUTPUT_PATH  ${CMAKE_BINARY_DIR}/bin)
 
 set(PACKAGE lyx)
 set(PACKAGE_VERSION 1.5.0svn)
+set(LYX_DATE "not released yet")
+#TODO
+set(VERSION_INFO "CMake Build")
 
 if(WIN32)
 	set(USE_WINDOWS_PACKAGING 1)
@@ -101,6 +104,10 @@ else(MSVC)
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 endif(MSVC)
 
+
+#TODO: insource is not the best place
+configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 
+               ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py)
      
 include_directories( 
 	${CMAKE_BINARY_DIR} 

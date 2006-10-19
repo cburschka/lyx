@@ -16,7 +16,7 @@ add_subdirectory(support)
 #add_subdirectory(tex2lyx) 
 
 
-configure_file(version.C.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.C)
+configure_file(${TOP_SRC_DIR}/src/version.C.in ${CMAKE_CURRENT_BINARY_DIR}/version.C)
 
 file(GLOB lyx_sources ${TOP_SRC_DIR}/src/*.C)
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/*.h)
