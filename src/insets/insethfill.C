@@ -49,7 +49,7 @@ docstring const InsetHFill::getScreenLabel(Buffer const &) const
 int InsetHFill::latex(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
-	os << getCommand();
+	os << getCommand() << "{}";
 	return 0;
 }
 
