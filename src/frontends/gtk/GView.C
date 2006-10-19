@@ -138,10 +138,10 @@ void GView::init()
 }
 
 
-void GView::setGeometry(unsigned int width,
-						 unsigned int height,
-						 int posx, int posy,
-						 bool maximize)
+void GView::setGeometry(unsigned int /*width*/,
+                        unsigned int /*height*/,
+                        int /*posx*/, int /*posy*/,
+                        bool /*maximize*/)
 {
 // FIXME: do something here...
 }

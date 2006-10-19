@@ -36,6 +36,7 @@
 #endif
 
 using lyx::pos_type;
+using lyx::odocstream;
 using lyx::support::subst;
 
 using std::endl;
@@ -98,7 +99,7 @@ ParagraphList::const_iterator searchEnvironment(ParagraphList::const_iterator co
 
 
 ParagraphList::const_iterator makeParagraph(Buffer const & buf,
-					    ostream & os,
+					    odocstream & os,
 					    OutputParams const & runparams,
 					    ParagraphList const & paragraphs,
 					    ParagraphList::const_iterator const & pbegin,
@@ -121,7 +122,7 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 
 
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
-					      ostream & os,
+					      odocstream & os,
 					      OutputParams const & runparams,
 					      ParagraphList const & paragraphs,
 					      ParagraphList::const_iterator const & pbegin,
@@ -218,7 +219,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 
 ParagraphList::const_iterator makeCommand(Buffer const & buf,
-					  ostream & os,
+					  odocstream & os,
 					  OutputParams const & runparams,
 					  ParagraphList const & paragraphs,
 					  ParagraphList::const_iterator const & pbegin,
@@ -234,7 +235,8 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	// Label around sectioning number:
 	if (!bstyle->labeltag().empty()) {
 		sgml::openTag(os, bstyle->labeltag());
-		os << expandLabel(buf, bstyle, false);
+                // FIXME UNICODE
+		os << lyx::from_ascii(expandLabel(buf, bstyle, false));
 		sgml::closeTag(os, bstyle->labeltag());
 	}
 
@@ -280,7 +282,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 
 void docbookParagraphs(ParagraphList const & paragraphs,
 		       Buffer const & buf,
-		       ostream & os,
+		       odocstream & os,
 		       OutputParams const & runparams)
 {
 	ParagraphList::const_iterator par = paragraphs.begin();

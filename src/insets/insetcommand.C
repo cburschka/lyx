@@ -22,6 +22,7 @@
 
 #include <sstream>
 
+using lyx::odocstream;
 
 using lyx::odocstream;
 
@@ -87,7 +88,7 @@ int InsetCommand::plaintext(Buffer const &, odocstream &,
 }
 
 
-int InsetCommand::docbook(Buffer const &, ostream &,
+int InsetCommand::docbook(Buffer const &, odocstream &,
 			  OutputParams const &) const
 {
 	return 0;

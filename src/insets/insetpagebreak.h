@@ -32,7 +32,7 @@ public:
 	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 
-	int docbook(Buffer const &, std::ostream &,
+	int docbook(Buffer const &, lyx::odocstream &,
 		    OutputParams const &) const;
 
 	void read(Buffer const &, LyXLex & lex);

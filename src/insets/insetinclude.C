@@ -488,7 +488,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 }
 
 
-int InsetInclude::docbook(Buffer const & buffer, ostream & os,
+int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 			  OutputParams const & runparams) const
 {
 	string incfile(params_.getContents());
@@ -524,12 +524,13 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 	runparams.exportdata->addExternalFile("docbook-xml", writefile,
 					      exportfile);
 
+        // FIXME UNICODE
 	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""
-		   << '&' << include_label << ';'
+		   << '&' << lyx::from_ascii(include_label) << ';'
 		   << "\" format=\"linespecific\">";
 	} else
-		os << '&' << include_label << ';';
+                os << '&' << lyx::from_ascii(include_label) << ';';
 
 	return 0;
 }

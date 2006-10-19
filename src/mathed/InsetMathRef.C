@@ -27,6 +27,7 @@
 #include "sgml.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -156,17 +157,23 @@ int RefInset::plaintext(lyx::odocstream & os, OutputParams const &) const
 }
 
 
-int RefInset::docbook(Buffer const & buf, std::ostream & os, OutputParams const & runparams) const
+int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
-		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, asString(cell(0)));
+                // FIXME UNICODE
+		os << "<xref linkend=\""
+                   << lyx::from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))));
 		if (runparams.flavor == OutputParams::XML)
 			os << "\"/>";
 		else
 			os << "\">";
 	} else {
-		os << "<link linkend=\"" << sgml::cleanID(buf, runparams, asString(cell(0)))
-		   << "\">" << asString(cell(1)) << "</link>";
+                // FIXME UNICODE
+		os << "<link linkend=\""
+                   << lyx::from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))))
+		   << "\">"
+                   << lyx::from_ascii(asString(cell(1)))
+                   << "</link>";
 	}
 
 	return 0;

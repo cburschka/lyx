@@ -105,16 +105,24 @@ int InsetRef::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetRef::docbook(Buffer const & buf, ostream & os,
+int InsetRef::docbook(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams) const
 {
+        // FIXME UNICODE
 	if (getOptions().empty() && runparams.flavor == OutputParams::XML) {
-		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, getContents()) << "\" />";
+		os << "<xref linkend=\""
+                   << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
+                   << "\" />";
 	} else if (getOptions().empty()) {
-		os << "<xref linkend=\"" << sgml::cleanID(buf, runparams, getContents()) << "\">";
+		os << "<xref linkend=\""
+                   << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
+                   << "\">";
 	} else {
-		os << "<link linkend=\"" << sgml::cleanID(buf, runparams, getContents())
-		   << "\">" << getOptions() << "</link>";
+		os << "<link linkend=\""
+                   << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
+		   << "\">"
+                   << lyx::from_ascii(getOptions())
+                   << "</link>";
 	}
 
 	return 0;

@@ -80,7 +80,7 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetFoot::docbook(Buffer const & buf, ostream & os,
+int InsetFoot::docbook(Buffer const & buf, odocstream & os,
 		       OutputParams const & runparams) const
 {
 	os << "<footnote>";

@@ -33,7 +33,7 @@ public:
 	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
-	int docbook(Buffer const &, std::ostream &,
+	int docbook(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 
 	/// Standard plain text output -- short-circuited

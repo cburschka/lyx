@@ -199,7 +199,7 @@ int InsetCaption::plaintext(Buffer const & /*buf*/, odocstream & /*os*/,
 }
 
 
-int InsetCaption::docbook(Buffer const & buf, ostream & os,
+int InsetCaption::docbook(Buffer const & buf, odocstream & os,
 			  OutputParams const & runparams) const
 {
 	int ret;

@@ -73,7 +73,7 @@ int InsetLine::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetLine::docbook(Buffer const &, std::ostream & os,
+int InsetLine::docbook(Buffer const &, odocstream & os,
 		       OutputParams const &) const
 {
 	os << '\n';

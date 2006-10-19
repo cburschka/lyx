@@ -54,7 +54,7 @@ public:
 	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
-	virtual int docbook(Buffer const &, std::ostream &,
+	virtual int docbook(Buffer const &, lyx::odocstream &,
 			    OutputParams const & runparams) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::NO_CODE; }

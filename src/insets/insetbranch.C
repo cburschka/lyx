@@ -229,7 +229,7 @@ int InsetBranch::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
+int InsetBranch::docbook(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?

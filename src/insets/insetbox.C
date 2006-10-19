@@ -383,7 +383,7 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetBox::docbook(Buffer const & buf, std::ostream & os,
+int InsetBox::docbook(Buffer const & buf, lyx::odocstream & os,
 		      OutputParams const & runparams) const
 {
 	return InsetText::docbook(buf, os, runparams);

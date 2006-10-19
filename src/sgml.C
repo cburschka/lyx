@@ -29,6 +29,7 @@
 #include <map>
 #include <sstream>
 
+using lyx::odocstream;
 using lyx::support::subst;
 
 using std::make_pair;
@@ -38,9 +39,7 @@ using std::ostringstream;
 using std::pair;
 using std::string;
 
-namespace sgml {
-
-pair<bool, string> escapeChar(char c)
+pair<bool, string> sgml::escapeChar(char c)
 {
 	string str;
 
@@ -100,7 +99,7 @@ pair<bool, string> escapeChar(char c)
 }
 
 
-string escapeString(string const & raw)
+string sgml::escapeString(string const & raw)
 {
 	ostringstream bin;
 
@@ -114,14 +113,14 @@ string escapeString(string const & raw)
 }
 
 
-string const uniqueID(string const label)
+string const sgml::uniqueID(string const label)
 {
 	static unsigned int seed = 1000;
 	return label + convert<string>(++seed);
 }
 
 
-string cleanID(Buffer const & buf, OutputParams const & runparams, std::string const & orig)
+string sgml::cleanID(Buffer const & buf, OutputParams const & runparams, std::string const & orig)
 {
 	// The standard DocBook SGML declaration only allows letters,
 	// digits, '-' and '.' in a name.
@@ -184,29 +183,31 @@ string cleanID(Buffer const & buf, OutputParams const & runparams, std::string c
 }
 
 
-void openTag(ostream & os, string const & name, string const & attribute)
+void sgml::openTag(odocstream & os, string const & name, string const & attribute)
 {
+        // FIXME UNICODE
 	// This should be fixed in layout files later.
 	string param = subst(attribute, "<", "\"");
 	param = subst(param, ">", "\"");
 
 	if (!name.empty() && name != "!-- --") {
-		os << '<' << name;
+                os << '<' << lyx::from_ascii(name);
 		if (!param.empty())
-			os << " " << param;
+                    os << ' ' << lyx::from_ascii(param);
 		os << '>';
 	}
 }
 
 
-void closeTag(ostream & os, string const & name)
+void sgml::closeTag(odocstream & os, string const & name)
 {
+        // FIXME UNICODE
 	if (!name.empty() && name != "!-- --")
-		os << "</" << name << '>';
+                os << "</" << lyx::from_ascii(name) << '>';
 }
 
 
-void openTag(Buffer const & buf, ostream & os, OutputParams const & runparams, Paragraph const & par)
+void sgml::openTag(Buffer const & buf, odocstream & os, OutputParams const & runparams, Paragraph const & par)
 {
 	LyXLayout_ptr const & style = par.layout();
 	string const & name = style->latexname();
@@ -240,10 +241,8 @@ void openTag(Buffer const & buf, ostream & os, OutputParams const & runparams, P
 }
 
 
-void closeTag(ostream & os, Paragraph const & par)
+void sgml::closeTag(odocstream & os, Paragraph const & par)
 {
 	LyXLayout_ptr const & style = par.layout();
 	closeTag(os, style->latexname());
 }
-
-} // namespace sgml

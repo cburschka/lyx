@@ -178,7 +178,7 @@ int InsetERT::plaintext(Buffer const &, odocstream &,
 }
 
 
-int InsetERT::docbook(Buffer const &, ostream & os,
+int InsetERT::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	ParagraphList::const_iterator par = paragraphs().begin();

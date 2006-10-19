@@ -21,6 +21,7 @@
 #include "support/limited_stack.h"
 #include "support/types.h"
 #include "support/docstring.h"
+#include "support/docstream.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
@@ -156,7 +157,7 @@ public:
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	///
-	void writeDocBookSource(std::ostream & os, std::string const & filename,
+	void writeDocBookSource(lyx::odocstream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	/// returns the main language for the buffer (document)

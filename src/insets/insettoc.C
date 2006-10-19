@@ -67,7 +67,7 @@ int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 }
 
 
-int InsetTOC::docbook(Buffer const &, ostream & os,
+int InsetTOC::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	if (getCmdName() == "tableofcontents")

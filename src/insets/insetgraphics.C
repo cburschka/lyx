@@ -91,6 +91,8 @@ using lyx::odocstream;
 
 namespace support = lyx::support;
 
+using lyx::odocstream;
+
 using lyx::support::absolutePath;
 using lyx::support::bformat;
 using lyx::support::changeExtension;
@@ -826,14 +828,22 @@ int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 
 namespace {
 
-int writeImageObject(char * format, ostream& os, OutputParams const & runparams,
-					 string const graphic_label, string const attributes)
+int writeImageObject(char * format, odocstream & os, OutputParams const & runparams,
+                     string const graphic_label, string const attributes)
 {
 		if (runparams.flavor != OutputParams::XML) {
-			os << "<![ %output.print." << format << "; [" << std::endl;
+			os << "<![ %output.print."
+                           << format
+                           << "; ["
+                           << std::endl;
 		}
+                // FIXME UNICODE
 		os <<"<imageobject><imagedata fileref=\"&"
-		   << graphic_label << ";." << format << "\" " << attributes ;
+		   << lyx::from_ascii(graphic_label)
+                   << ";."
+                   << format
+                   << "\" "
+                   << lyx::from_ascii(attributes);
 		if (runparams.flavor == OutputParams::XML) {
 			os <<  " role=\"" << format << "\"/>" ;
 		}
@@ -853,7 +863,7 @@ int writeImageObject(char * format, ostream& os, OutputParams const & runparams,
 // For explanation on inserting graphics into DocBook checkout:
 // http://en.tldp.org/LDP/LDP-Author-Guide/html/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(Buffer const &, ostream & os,
+int InsetGraphics::docbook(Buffer const &, odocstream & os,
 			   OutputParams const & runparams) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will

@@ -102,9 +102,12 @@ int InsetLabel::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetLabel::docbook(Buffer const & buf, ostream & os,
+int InsetLabel::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
-	os << "<!-- anchor id=\"" << sgml::cleanID(buf, runparams, getContents()) << "\" -->";
+        // FIXME UNICODE
+	os << "<!-- anchor id=\""
+           << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
+           << "\" -->";
 	return 0;
 }

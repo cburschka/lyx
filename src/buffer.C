@@ -67,16 +67,15 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "support/fs_extras.h"
-#include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/device/file.hpp>
-namespace io = boost::iostreams;
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
 #include "support/textutils.h"
 #include "support/convert.h"
 
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/device/file.hpp>
 #include <boost/bind.hpp>
 #include <boost/filesystem/exception.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -94,6 +93,7 @@ namespace io = boost::iostreams;
 
 
 using lyx::docstring;
+using lyx::odocfstream;
 using lyx::odocstream;
 using lyx::pos_type;
 using lyx::pit_type;
@@ -126,6 +126,7 @@ using lyx::support::trim;
 namespace Alert = lyx::frontend::Alert;
 namespace os = lyx::support::os;
 namespace fs = boost::filesystem;
+namespace io = boost::iostreams;
 
 using std::endl;
 using std::for_each;
@@ -991,7 +992,8 @@ void Buffer::makeDocBookFile(string const & fname,
 {
 	lyxerr[Debug::LATEX] << "makeDocBookFile..." << endl;
 
-	ofstream ofs;
+	//ofstream ofs;
+        odocfstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
 
@@ -1003,7 +1005,7 @@ void Buffer::makeDocBookFile(string const & fname,
 }
 
 
-void Buffer::writeDocBookSource(ostream & os, string const & fname,
+void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			     OutputParams const & runparams,
 			     bool const only_body)
 {
@@ -1013,16 +1015,18 @@ void Buffer::writeDocBookSource(ostream & os, string const & fname,
 	texrow().reset();
 
 	LyXTextClass const & tclass = params().getLyXTextClass();
-	string const & top_element = tclass.latexname();
+	string const top_element = tclass.latexname();
 
 	if (!only_body) {
 		if (runparams.flavor == OutputParams::XML)
-			os << "<?xml version=\"1.0\" encoding=\""
-			    << params().language->encoding()->name() << "\"?>\n";
+			os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
-		os << "<!DOCTYPE " << top_element << " ";
+                // FIXME UNICODE
+		os << "<!DOCTYPE " << lyx::from_ascii(top_element) << ' ';
 
-		if (! tclass.class_header().empty()) os << tclass.class_header();
+                // FIXME UNICODE
+		if (! tclass.class_header().empty())
+                        os << lyx::from_ascii(tclass.class_header());
 		else if (runparams.flavor == OutputParams::XML)
 			os << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
 			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
@@ -1043,7 +1047,7 @@ void Buffer::writeDocBookSource(ostream & os, string const & fname,
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
-			os << "\n [ " << preamble << " ]";
+                        os << "\n [ " << lyx::from_ascii(preamble) << " ]";
 		}
 		os << ">\n\n";
 	}
@@ -1608,15 +1612,13 @@ void Buffer::getSourceCode(odocstream & os, lyx::pit_type par_begin, lyx::pit_ty
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
+        /* Support for docbook temprarily commented out. */
 	if (full_source) {
 		os << "% Preview source code\n\n";
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
 		else {
-			// FIXME UNICODE
-			ostringstream oss;
-			writeDocBookSource(oss, fileName(), runparams, false);
-			os << lyx::from_utf8(oss.str());
+			writeDocBookSource(os, fileName(), runparams, false);
 		}
 	} else {
 		runparams.par_begin = par_begin;
@@ -1631,10 +1633,7 @@ void Buffer::getSourceCode(odocstream & os, lyx::pit_type par_begin, lyx::pit_ty
 			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
 		} else {
 			// DocBook
-			// FIXME UNICODE
-			ostringstream oss;
-			docbookParagraphs(paragraphs(), *this, oss, runparams);
-			os << lyx::from_utf8(oss.str());
+			docbookParagraphs(paragraphs(), *this, os, runparams);
 		}
 	}
 }

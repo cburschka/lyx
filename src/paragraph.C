@@ -1160,7 +1160,7 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) cons
 }
 
 
-pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams const & runparams) const
+pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputParams const & runparams) const
 {
 	pos_type i;
 	for (i = 0; i < size(); ++i) {
@@ -1176,8 +1176,8 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams 
 			// FIXME UNICODE
 			// sgml::escapeChar takes a char, not lyx::char_type
 			boost::tie(ws, str) = sgml::escapeChar(c);
-
-			os << str;
+                        // FIXME UNICODE
+			os << lyx::from_ascii(str);
 		}
 	}
 	return i;
@@ -1202,7 +1202,7 @@ bool Paragraph::onlyText(Buffer const & buf, LyXFont const & outerfont, pos_type
 
 
 void Paragraph::simpleDocBookOnePar(Buffer const & buf,
-				    ostream & os,
+				    odocstream & os,
 				    OutputParams const & runparams,
 				    LyXFont const & outerfont,
 				    pos_type initial) const
@@ -1243,9 +1243,10 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			boost::tie(ws, str) = sgml::escapeChar(c);
 
 			if (style->pass_thru)
-				os << c;
+                                os.put(c);
 			else
-				os << str;
+                                // FIXME UNICODE
+                                os << lyx::from_ascii(str);
 		}
 		font_old = font;
 	}

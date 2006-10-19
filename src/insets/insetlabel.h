@@ -33,7 +33,7 @@ public:
 	int plaintext(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, std::ostream &,
+	int docbook(Buffer const &, lyx::odocstream &,
 		    OutputParams const &) const;
 protected:
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);

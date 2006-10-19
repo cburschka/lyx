@@ -392,9 +392,12 @@ string const cleanupWhitespace(string const & citelist)
 // end anon namyspace
 }
 
-int InsetCitation::docbook(Buffer const &, ostream & os, OutputParams const &) const
+int InsetCitation::docbook(Buffer const &, odocstream & os, OutputParams const &) const
 {
-	os << "<citation>" << cleanupWhitespace(getContents()) << "</citation>";
+        // FIXME UNICODE
+	os << "<citation>"
+           << lyx::from_ascii(cleanupWhitespace(getContents()))
+           << "</citation>";
 	return 0;
 }
 

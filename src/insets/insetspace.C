@@ -24,6 +24,7 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+using lyx::odocstream;
 
 using lyx::odocstream;
 
@@ -216,7 +217,7 @@ int InsetSpace::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetSpace::docbook(Buffer const &, ostream & os,
+int InsetSpace::docbook(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	switch (kind_) {

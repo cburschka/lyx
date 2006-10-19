@@ -313,7 +313,7 @@ public:
 	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	//
-	int docbook(Buffer const & buf, std::ostream & os,
+	int docbook(Buffer const & buf, lyx::odocstream & os,
 		    OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, lyx::odocstream &,
@@ -617,7 +617,7 @@ public:
 			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
-	int docbookRow(Buffer const & buf, std::ostream & os, row_type,
+	int docbookRow(Buffer const & buf, lyx::odocstream & os, row_type,
 		       OutputParams const &) const;
 
 private:

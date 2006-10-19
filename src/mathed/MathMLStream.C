@@ -16,8 +16,9 @@
 #include "MathExtern.h"
 #include "support/lyxalgo.h"
 
-using std::strlen;
+using lyx::odocstream;
 
+using std::strlen;
 using lyx::odocstream;
 
 

@@ -1070,7 +1070,7 @@ int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetTabular::docbook(Buffer const & buf, ostream & os,
+int InsetTabular::docbook(Buffer const & buf, odocstream & os,
 			  OutputParams const & runparams) const
 {
 	int ret = 0;

@@ -1113,7 +1113,7 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 }
 
 
-void BufferView::scroll(int lines)
+void BufferView::scroll(int /*lines*/)
 {
 //	if (!buffer_)
 //		return;

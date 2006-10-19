@@ -14,6 +14,7 @@
 #define SGML_H
 
 #include "support/types.h"
+#include "support/docstream.h"
 
 #include <iosfwd>
 #include <string>
@@ -43,17 +44,17 @@ std::string cleanID(Buffer const & buf, OutputParams const & runparams,
 std::string const uniqueID(std::string const label);
 
 /// Opens tag
-void openTag(std::ostream & os, std::string const & name,
+void openTag(lyx::odocstream & os, std::string const & name,
 	    std::string const & attribute = std::string());
 
 /// Open tag
-void openTag(Buffer const & buf, std::ostream & os,
+void openTag(Buffer const & buf, lyx::odocstream & os,
 	     OutputParams const & runparams, Paragraph const & par);
 
 /// Close tag
-void closeTag(std::ostream & os, std::string const & name);
+void closeTag(lyx::odocstream & os, std::string const & name);
 
 /// Close tag
-void closeTag(std::ostream & os, Paragraph const & par);
+void closeTag(lyx::odocstream & os, Paragraph const & par);
 }
 #endif // SGML_H

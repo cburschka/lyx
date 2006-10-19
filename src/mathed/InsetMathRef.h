@@ -37,7 +37,7 @@ public:
 	/// plain text output in ucs4 encoding
 	int plaintext(lyx::odocstream &, OutputParams const &) const;
 	/// docbook output
-	int docbook(Buffer const & buf, std::ostream & os, OutputParams const &) const;
+	int docbook(Buffer const & buf, lyx::odocstream & os, OutputParams const &) const;
 
 	struct ref_type_info {
 		///

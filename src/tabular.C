@@ -2306,7 +2306,7 @@ int LyXTabular::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int LyXTabular::docbookRow(Buffer const & buf, ostream & os, row_type row,
+int LyXTabular::docbookRow(Buffer const & buf, odocstream & os, row_type row,
 			   OutputParams const & runparams) const
 {
 	int ret = 0;
@@ -2358,7 +2358,7 @@ int LyXTabular::docbookRow(Buffer const & buf, ostream & os, row_type row,
 }
 
 
-int LyXTabular::docbook(Buffer const & buf, ostream & os,
+int LyXTabular::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	int ret = 0;

@@ -189,7 +189,7 @@ public:
 	virtual int plaintext(Buffer const &, lyx::odocstream &,
 		OutputParams const &) const;
 	/// docbook output
-	virtual int docbook(Buffer const &, std::ostream & os,
+	virtual int docbook(Buffer const &, lyx::odocstream & os,
 		OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual int textString(Buffer const &, lyx::odocstream &,

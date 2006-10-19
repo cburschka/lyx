@@ -210,7 +210,7 @@ int InsetSpecialChar::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetSpecialChar::docbook(Buffer const &, ostream & os,
+int InsetSpecialChar::docbook(Buffer const &, odocstream & os,
 			      OutputParams const &) const
 {
 	switch (kind_) {

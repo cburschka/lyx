@@ -92,7 +92,7 @@ int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetPagebreak::docbook(Buffer const &, std::ostream & os,
+int InsetPagebreak::docbook(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
 	os << '\n';

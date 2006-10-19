@@ -31,15 +31,15 @@ public:
 
 	virtual int maxDescent() const { return 1; }
 	
-	virtual int ascent(lyx::char_type c) const { return 1; }
+	virtual int ascent(lyx::char_type) const { return 1; }
 	
-	int descent(lyx::char_type c) const { return 1; }
+	int descent(lyx::char_type) const { return 1; }
 	
-	virtual int lbearing(lyx::char_type c) const { return 1; }
+	virtual int lbearing(lyx::char_type) const { return 1; }
 	
-	virtual int rbearing(lyx::char_type c) const { return 1; }
+	virtual int rbearing(lyx::char_type) const { return 1; }
 	
-	virtual int width(lyx::char_type const * s, size_t n) const { return n; }
+	virtual int width(lyx::char_type const *, size_t n) const { return n; }
 	
 	virtual int signedWidth(lyx::docstring const & s) const
 	{
@@ -49,12 +49,12 @@ public:
 			return FontMetrics::width(s);
 	}
 	
-	virtual void rectText(lyx::docstring const & str,
+	virtual void rectText(lyx::docstring const &,
 		int & width,
 		int & ascent,
 		int & descent) const {};	 
 	
-	virtual void buttonText(lyx::docstring const & str,
+	virtual void buttonText(lyx::docstring const &,
 		int & width,
 		int & ascent,
 		int & descent) const {};

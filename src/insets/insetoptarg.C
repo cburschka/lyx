@@ -73,7 +73,7 @@ int InsetOptArg::latex(Buffer const &, odocstream &,
 	return 0;
 }
 
-int InsetOptArg::docbook(Buffer const &, ostream &,
+int InsetOptArg::docbook(Buffer const &, odocstream &,
 		       OutputParams const &) const
 {
 	return 0;

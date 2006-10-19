@@ -117,8 +117,8 @@ void InsetMath::mathematica(MathematicaStream & os) const
 
 void InsetMath::mathmlize(MathMLStream & os) const
 {
-	NormalStream ns(os.os());
-	normalize(ns);
+        NormalStream ns(os.os());
+        normalize(ns);
 }
 
 

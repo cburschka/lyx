@@ -54,7 +54,7 @@ public:
 	int plaintext(Buffer const & buf, lyx::odocstream & os,
 		  OutputParams const & runparams) const;
 	///
-	int docbook(Buffer const & buf, std::ostream & os,
+	int docbook(Buffer const & buf, lyx::odocstream & os,
 		    OutputParams const & runparams) const;
 	///
 	void setCount(int c) { counter_ = c; }

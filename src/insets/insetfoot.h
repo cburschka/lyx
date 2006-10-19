@@ -28,7 +28,7 @@ public:
 	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, std::ostream &,
+	int docbook(Buffer const &, lyx::odocstream &,
 		    OutputParams const & runparams) const;
 	///
 	virtual lyx::docstring const editMessage() const;

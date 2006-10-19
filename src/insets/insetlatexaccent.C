@@ -588,10 +588,11 @@ int InsetLatexAccent::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetLatexAccent::docbook(Buffer const &, ostream & os,
+int InsetLatexAccent::docbook(Buffer const &, odocstream & os,
 			      OutputParams const &) const
 {
-	os << contents;
+        // FIXME UNICODE
+        os << lyx::from_ascii(contents);
 	return 0;
 }
 

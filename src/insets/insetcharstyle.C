@@ -300,7 +300,7 @@ int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
+int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
 			    OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
@@ -308,8 +308,9 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 
 	if (!undefined())
-		sgml::openTag(os, params_.latexname,
-			par->getID(buf, runparams) + params_.latexparam);
+                // FIXME UNICODE
+                sgml::openTag(os, params_.latexname,
+                              par->getID(buf, runparams) + params_.latexparam);
 
 	for (; par != end; ++par) {
 		par->simpleDocBookOnePar(buf, os, runparams,

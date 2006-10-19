@@ -706,17 +706,21 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 
 		external::Template::Formats::const_iterator cit =
 			et.formats.find("PDFLaTeX");
-		if (cit != et.formats.end())
+
+		if (cit != et.formats.end()) {
 			return external::writeExternal(params_, "PDFLaTeX",
-						       buf, os,
-						       *(runparams.exportdata),
-						       external_in_tmpdir,
-						       runparams.inComment);
+                                                       buf, os,
+                                                       *(runparams.exportdata),
+                                                       external_in_tmpdir,
+                                                       runparams.inComment);
+                }
+                
 	}
+        
 	return external::writeExternal(params_, "LaTeX", buf, os,
-				       *(runparams.exportdata),
-				       external_in_tmpdir,
-				       runparams.inComment);
+                                       *(runparams.exportdata),
+                                       external_in_tmpdir,
+                                       runparams.inComment);
 }
 
 
@@ -729,16 +733,12 @@ int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetExternal::docbook(Buffer const & buf, ostream & os,
+int InsetExternal::docbook(Buffer const & buf, odocstream & os,
 			   OutputParams const & runparams) const
 {
-	lyx::odocstringstream oss;
-	int const retval = external::writeExternal(params_, "DocBook", buf, oss,
+	return external::writeExternal(params_, "DocBook", buf, os,
 				       *(runparams.exportdata), false,
 				       runparams.inComment);
-	// FIXME UNICODE
-	os << lyx::to_utf8(oss.str());
-	return retval;
 }
 
 

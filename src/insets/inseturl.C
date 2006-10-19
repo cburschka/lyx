@@ -84,11 +84,15 @@ int InsetUrl::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetUrl::docbook(Buffer const &, ostream & os,
+int InsetUrl::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
-	os << "<ulink url=\"" << subst(getContents(),"&","&amp;")
-	   << "\">" << getOptions() << "</ulink>";
+        // FIXME UNICODE
+	os << "<ulink url=\""
+           << lyx::from_ascii(subst(getContents(), "&", "&amp;"))
+	   << "\">"
+           << lyx::from_ascii(getOptions())
+           << "</ulink>";
 	return 0;
 }
 

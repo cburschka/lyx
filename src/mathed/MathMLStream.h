@@ -18,6 +18,7 @@
 
 
 #include "metricsinfo.h"
+#include "support/docstream.h"
 
 #include "support/docstream.h"
 

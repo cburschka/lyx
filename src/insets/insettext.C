@@ -299,7 +299,7 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetText::docbook(Buffer const & buf, ostream & os,
+int InsetText::docbook(Buffer const & buf, odocstream & os,
 		       OutputParams const & runparams) const
 {
 	docbookParagraphs(paragraphs(), buf, os, runparams);
@@ -314,7 +314,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::cursorPos(BufferView const & bv,
+void InsetText::cursorPos(BufferView const & /*bv*/,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	x = text_.cursorX(sl, boundary) + border_;
@@ -328,7 +328,7 @@ bool InsetText::showInsetDialog(BufferView *) const
 }
 
 
-void InsetText::markNew(bool track_changes)
+void InsetText::markNew(bool /*track_changes*/)
 {
 	ParagraphList::iterator pit = paragraphs().begin();
 	ParagraphList::iterator end = paragraphs().end();

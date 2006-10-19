@@ -75,7 +75,7 @@ LyXView & Application::createView(unsigned int width,
 }
 
 
-int Application::start(std::string const & batch)
+int Application::start(std::string const & /*batch*/)
 {
 	return exec();
 }

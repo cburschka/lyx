@@ -329,12 +329,13 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetFloat::docbook(Buffer const & buf, ostream & os,
+int InsetFloat::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
-	os << '<' << params_.type << '>';
+        // FIXME UNICODE
+        os << '<' << lyx::from_ascii(params_.type) << '>';
 	int const i = InsetText::docbook(buf, os, runparams);
-	os << "</" << params_.type << '>';
+	os << "</" << lyx::from_ascii(params_.type) << '>';
 
 	return i;
 }

@@ -14,6 +14,7 @@
 #define OUTPUT_DOCBOOK_H
 
 #include "ParagraphList_fwd.h"
+#include "support/docstream.h"
 
 #include <iosfwd>
 
@@ -23,6 +24,6 @@ class OutputParams;
 ///
 void docbookParagraphs(ParagraphList const & subset,
 		       Buffer const & buf,
-		       std::ostream & os,
+		       lyx::odocstream & os,
 		       OutputParams const & runparams);
 #endif

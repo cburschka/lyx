@@ -63,6 +63,7 @@
 using lyx::docstring;
 using lyx::odocstream;
 using lyx::odocstringstream;
+
 using lyx::cap::grabAndEraseSelection;
 using lyx::support::bformat;
 using lyx::support::subst;
@@ -1452,11 +1453,10 @@ int InsetMathHull::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetMathHull::docbook(Buffer const & buf, ostream & os,
+int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 			  OutputParams const & runparams) const
 {
-	odocstringstream oss;
-	MathMLStream ms(oss);
+	MathMLStream ms(os);
 	int res = 0;
 	string name;
 	if (getType() == hullSimple)
@@ -1501,7 +1501,6 @@ int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 		ms << "\">";
 
 	ms << ETag(name.c_str());
-	os << lyx::to_utf8(oss.str());
 	return ms.line() + res;
 }
 

@@ -63,7 +63,7 @@ int InsetMarginal::latex(Buffer const & buf, odocstream & os,
 	return i + 2;
 }
 
-int InsetMarginal::docbook(Buffer const & buf, ostream & os,
+int InsetMarginal::docbook(Buffer const & buf, odocstream & os,
 		       OutputParams const & runparams) const
 {
 	os << "<note role=\"margin\">";

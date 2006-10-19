@@ -219,7 +219,7 @@ int InsetVSpace::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetVSpace::docbook(Buffer const &, std::ostream & os,
+int InsetVSpace::docbook(Buffer const &, odocstream & os,
 			 OutputParams const &) const
 {
 	os << '\n';

@@ -231,7 +231,7 @@ int InsetBase::plaintext(Buffer const &,
 
 
 int InsetBase::docbook(Buffer const &,
-	std::ostream &, OutputParams const &) const
+	lyx::odocstream &, OutputParams const &) const
 {
 	return 0;
 }
@@ -272,7 +272,7 @@ void InsetBase::markErased(bool)
 {}
 
 
-void InsetBase::cursorPos(BufferView const & bv, CursorSlice const &,
+void InsetBase::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 		bool, int & x, int & y) const
 {
 	lyxerr << "InsetBase::cursorPos called directly" << std::endl;

@@ -143,7 +143,7 @@ public:
 
 	// Get the first word of a paragraph, return the position where it left
 	lyx::pos_type getFirstWord(Buffer const & buf,
-				   std::ostream & os,
+				   lyx::odocstream & os,
 				   OutputParams const & runparams) const;
 
 	/// Checks if the paragraph contains only text and no inset or font change.
@@ -152,7 +152,7 @@ public:
 
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
-				 std::ostream &,
+				 lyx::odocstream &,
 				 OutputParams const & runparams,
 				 LyXFont const & outerfont,
 				 lyx::pos_type initial = 0) const;

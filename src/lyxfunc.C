@@ -256,8 +256,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		return;
 	}
 
-	Encoding const * encoding = view()->cursor().getEncoding();
-
+	//Encoding const * encoding = view()->cursor().getEncoding();
 	//encoded_last_key = keysym->getISOEncoded(encoding ? encoding->name() : "");
 	size_t encoded_last_key = keysym->getUCSEncoded();
 

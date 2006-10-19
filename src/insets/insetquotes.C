@@ -310,7 +310,7 @@ int InsetQuotes::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetQuotes::docbook(Buffer const &, ostream & os,
+int InsetQuotes::docbook(Buffer const &, odocstream & os,
 			 OutputParams const &) const
 {
 	if (times_ == DoubleQ) {

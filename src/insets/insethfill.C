@@ -62,7 +62,7 @@ int InsetHFill::plaintext(Buffer const &, odocstream & os,
 }
 
 
-int InsetHFill::docbook(Buffer const &, std::ostream & os,
+int InsetHFill::docbook(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	os << '\n';

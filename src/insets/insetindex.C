@@ -21,6 +21,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::ostream;
@@ -42,10 +43,12 @@ docstring const InsetIndex::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetIndex::docbook(Buffer const &, ostream & os,
+int InsetIndex::docbook(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
-	os << "<indexterm><primary>" << sgml::escapeString(getContents())
+        // FIXME UNICODE
+	os << "<indexterm><primary>"
+           << lyx::from_ascii(sgml::escapeString(getContents()))
 	   << "</primary></indexterm>";
 	return 0;
 }

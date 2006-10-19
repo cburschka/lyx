@@ -129,7 +129,7 @@ public:
 	virtual int plaintext(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const;
 	///
-	virtual int docbook(Buffer const &, std::ostream &,
+	virtual int docbook(Buffer const &, lyx::odocstream &,
 			    OutputParams const &) const;
 
 	/// Update needed features for this inset.
