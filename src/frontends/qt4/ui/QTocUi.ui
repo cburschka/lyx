@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QTocUi</class>
  <widget class="QDialog" name="QTocUi" >
   <property name="geometry" >
@@ -47,17 +44,17 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="3" >
+     <item row="0" column="2" >
       <widget class="QPushButton" name="moveOutPB" >
        <property name="text" >
-        <string>&amp;Out</string>
+        <string>&lt;- &amp;Promote</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="2" >
+     <item row="0" column="3" >
       <widget class="QPushButton" name="moveInPB" >
        <property name="text" >
-        <string>&amp;In</string>
+        <string>&amp;Demote -></string>
        </property>
       </widget>
      </item>
@@ -172,7 +169,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>typeCO</tabstop>
   <tabstop>tocTV</tabstop>
