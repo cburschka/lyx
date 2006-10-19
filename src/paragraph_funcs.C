@@ -123,6 +123,7 @@ void breakParagraph(BufferParams const & bparams,
 		}
 
 		for (pos_type i = pos_end; i >= pos; --i)
+			// FIXME: change tracking (MG)
 			par.erase(i, false); // erase without change tracking
 	}
 
