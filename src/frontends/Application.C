@@ -42,6 +42,11 @@ namespace frontend {
 
 Application::Application(int &, char **)
 {
+	// FIXME: please confirm: with unicode, I think initEncoding()
+	// is not needed anymore!
+	
+	// this can't be done before because it needs the Languages object
+	//initEncodings();
 }
 
 
@@ -56,20 +61,12 @@ LyXView & Application::createView(unsigned int width,
 								  int posx, int posy,
 								  bool maximize)
 {
-	// FIXME: please confirm: with unicode, I think initEncoding()
-	// is not needed anymore!
-	
-	// this can't be done before because it needs the Languages object
-	//initEncodings();
-
 	int view_id = gui().newView();
 	LyXView & view = gui().view(view_id);
 
 	theLyXFunc().setLyXView(&view);
 
-	// FIXME: for now we assume that there is only one LyXView with id = 0.
-	/*int workArea_id_ =*/ gui().newWorkArea(width, height, 0);
-	//WorkArea * workArea_ = & theApp->gui().workArea(workArea_id_);
+	/*int workArea_id_ =*/ gui().newWorkArea(width, height, view_id);
 
 	view.init();
 	view.setGeometry(width, height, posx, posy, maximize);
