@@ -25,6 +25,8 @@
 #include "paragraph.h"
 #include "texrow.h"
 
+using lyx::odocstream;
+
 using std::auto_ptr;
 using std::endl;
 
@@ -73,7 +75,9 @@ void InsetMathMBox::write(WriteStream & ws) const
 		ws << "}";
 	} else {
 		ws << "\\mbox{\n";
-		text_.write(*bv_->buffer(), ws.os());
+		std::ostringstream os;
+		text_.write(*bv_->buffer(), os);
+		ws.os() << lyx::from_utf8(os.str());
 		ws << "}";
 	}
 }
