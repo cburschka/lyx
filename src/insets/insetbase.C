@@ -34,6 +34,9 @@
 #include <typeinfo>
 
 
+using lyx::odocstream;
+
+
 namespace {
 
 class InsetName {
@@ -221,7 +224,7 @@ bool InsetBase::idxUpDown(LCursor &, bool) const
 
 
 int InsetBase::plaintext(Buffer const &,
-	lyx::odocstream &, OutputParams const &) const
+	odocstream &, OutputParams const &) const
 {
 	return 0;
 }

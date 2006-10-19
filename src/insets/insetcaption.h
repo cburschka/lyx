@@ -48,7 +48,7 @@ public:
 	///
 	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 	///
-	virtual int latex(Buffer const & buf, std::ostream & os,
+	virtual int latex(Buffer const & buf, lyx::odocstream & os,
 			  OutputParams const &) const;
 	///
 	int plaintext(Buffer const & buf, lyx::odocstream & os,

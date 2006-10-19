@@ -29,13 +29,14 @@
 
 #include <boost/next_prior.hpp>
 
+using lyx::docstring;
+using lyx::odocstream;
 using lyx::pos_type;
 
 using std::endl;
 using std::upper_bound;
 using std::lower_bound;
 using std::string;
-using std::ostream;
 
 
 // Initialization of the counter for the paragraph id's,
@@ -45,15 +46,15 @@ namespace {
 
 struct special_phrase {
 	string phrase;
-	string macro;
+	docstring macro;
 	bool builtin;
 };
 
-special_phrase special_phrases[] = {
-	{ "LyX", "\\LyX{}", false },
-	{ "TeX", "\\TeX{}", true },
-	{ "LaTeX2e", "\\LaTeXe{}", true },
-	{ "LaTeX", "\\LaTeX{}", true },
+special_phrase const special_phrases[] = {
+	{ "LyX", lyx::from_ascii("\\LyX{}"), false },
+	{ "TeX", lyx::from_ascii("\\TeX{}"), true },
+	{ "LaTeX2e", lyx::from_ascii("\\LaTeXe{}"), true },
+	{ "LaTeX", lyx::from_ascii("\\LaTeX{}"), true },
 };
 
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
@@ -346,7 +347,7 @@ int Paragraph::Pimpl::erase(pos_type start, pos_type end)
 }
 
 
-void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
+void Paragraph::Pimpl::simpleTeXBlanks(odocstream & os, TexRow & texrow,
 				       pos_type const i,
 				       unsigned int & column,
 				       LyXFont const & font,
@@ -410,7 +411,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
-					     ostream & os,
+					     odocstream & os,
 					     TexRow & texrow,
 					     OutputParams const & runparams,
 					     LyXFont & font,
@@ -427,13 +428,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 	if (style.pass_thru) {
 		if (c != Paragraph::META_INSET) {
 			if (c != '\0')
-				os << c;
-		} else {
-			lyx::odocstringstream oss;
-			owner_->getInset(i)->plaintext(buf, oss, runparams);
-			// FIXME UNICODE
-			os << lyx::to_utf8(oss.str());
-		}
+				os.put(c);
+		} else
+			owner_->getInset(i)->plaintext(buf, os, runparams);
 		return;
 	}
 
@@ -491,7 +488,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		}
 
 		bool close = false;
-		ostream::pos_type const len = os.tellp();
+		odocstream::pos_type const len = os.tellp();
 
 		if ((inset->lyxCode() == InsetBase::GRAPHICS_CODE
 		     || inset->lyxCode() == InsetBase::MATH_CODE

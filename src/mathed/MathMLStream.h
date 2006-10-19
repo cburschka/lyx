@@ -19,7 +19,7 @@
 
 #include "metricsinfo.h"
 
-#include <iosfwd>
+#include "support/docstream.h"
 
 class MathArray;
 class InsetMath;
@@ -32,9 +32,9 @@ class MathAtom;
 class WriteStream {
 public:
 	///
-	WriteStream(std::ostream & os, bool fragile, bool latex);
+	WriteStream(lyx::odocstream & os, bool fragile, bool latex);
 	///
-	explicit WriteStream(std::ostream & os);
+	explicit WriteStream(lyx::odocstream & os);
 	///
 	~WriteStream();
 	///
@@ -44,7 +44,7 @@ public:
 	///
 	bool latex() const { return latex_; }
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 	///
 	bool & firstitem() { return firstitem_; }
 	///
@@ -55,7 +55,7 @@ public:
 	bool pendingSpace() const { return pendingspace_; }
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 	/// do we have to write \\protect sometimes
 	bool fragile_;
 	/// are we at the beginning of an MathArray?
@@ -106,11 +106,11 @@ public:
 class MathMLStream {
 public:
 	///
-	explicit MathMLStream(std::ostream & os);
+	explicit MathMLStream(lyx::odocstream & os);
 	///
 	void cr();
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 	///
 	int line() const { return line_; }
 	///
@@ -119,7 +119,7 @@ public:
 	friend MathMLStream & operator<<(MathMLStream &, char const *);
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 	///
 	int tab_;
 	///
@@ -150,12 +150,12 @@ MathMLStream & operator<<(MathMLStream &, ETag const &);
 class NormalStream {
 public:
 	///
-	explicit NormalStream(std::ostream & os) : os_(os) {}
+	explicit NormalStream(lyx::odocstream & os) : os_(os) {}
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 };
 
 ///
@@ -178,12 +178,12 @@ NormalStream & operator<<(NormalStream &, int);
 class MapleStream {
 public:
 	///
-	explicit MapleStream(std::ostream & os) : os_(os) {}
+	explicit MapleStream(lyx::odocstream & os) : os_(os) {}
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 };
 
 
@@ -207,12 +207,12 @@ MapleStream & operator<<(MapleStream &, int);
 class MaximaStream {
 public:
 	///
-	explicit MaximaStream(std::ostream & os) : os_(os) {}
+	explicit MaximaStream(lyx::odocstream & os) : os_(os) {}
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 };
 
 
@@ -236,12 +236,12 @@ MaximaStream & operator<<(MaximaStream &, int);
 class MathematicaStream {
 public:
 	///
-	explicit MathematicaStream(std::ostream & os) : os_(os) {}
+	explicit MathematicaStream(lyx::odocstream & os) : os_(os) {}
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 };
 
 
@@ -265,12 +265,12 @@ MathematicaStream & operator<<(MathematicaStream &, int);
 class OctaveStream {
 public:
 	///
-	explicit OctaveStream(std::ostream & os) : os_(os) {}
+	explicit OctaveStream(lyx::odocstream & os) : os_(os) {}
 	///
-	std::ostream & os() { return os_; }
+	lyx::odocstream & os() { return os_; }
 private:
 	///
-	std::ostream & os_;
+	lyx::odocstream & os_;
 };
 
 ///

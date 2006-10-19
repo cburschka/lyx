@@ -970,9 +970,10 @@ void LCursor::normalize()
 		lyxerr << "this should not really happen - 2: "
 			<< pos() << ' ' << lastpos() <<  " in idx: " << idx()
 		       << " in atom: '";
-		WriteStream wi(lyxerr, false, true);
+		lyx::odocstringstream os;
+		WriteStream wi(os, false, true);
 		inset().asInsetMath()->write(wi);
-		lyxerr << endl;
+		lyxerr << lyx::to_utf8(os.str()) << endl;
 		pos() = lastpos();
 	}
 }

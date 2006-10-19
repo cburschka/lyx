@@ -37,6 +37,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::contains;
 
 using std::endl;
@@ -279,7 +280,7 @@ docstring const InsetFloat::editMessage() const
 }
 
 
-int InsetFloat::latex(Buffer const & buf, ostream & os,
+int InsetFloat::latex(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
@@ -310,11 +311,11 @@ int InsetFloat::latex(Buffer const & buf, ostream & os,
 	// The \n is used to force \begin{<floatname>} to appear in a new line.
 	// The % is needed to prevent two consecutive \n chars in the case
 	// when the current output line is empty.
-	os << "%\n\\begin{" << tmptype << '}';
+	os << "%\n\\begin{" << lyx::from_ascii(tmptype) << '}';
 	// We only output placement if different from the def_placement.
 	// sidewaysfloats always use their own page
 	if (!placement.empty() && !params_.sideways) {
-		os << '[' << placement << ']';
+		os << '[' << lyx::from_ascii(placement) << ']';
 	}
 	os << '\n';
 
@@ -322,7 +323,7 @@ int InsetFloat::latex(Buffer const & buf, ostream & os,
 
 	// The \n is used to force \end{<floatname>} to appear in a new line.
 	// In this case, we do not case if the current output line is empty.
-	os << "\n\\end{" << tmptype << "}\n";
+	os << "\n\\end{" << lyx::from_ascii(tmptype) << "}\n";
 
 	return i + 4;
 }

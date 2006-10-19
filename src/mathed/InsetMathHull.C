@@ -61,6 +61,8 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
+using lyx::odocstringstream;
 using lyx::cap::grabAndEraseSelection;
 using lyx::support::bformat;
 using lyx::support::subst;
@@ -360,7 +362,7 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 	if (display()) {
 		InsetMathGrid::metricsT(mi, dim);
 	} else {
-		ostringstream os;
+		odocstringstream os;
 		WriteStream wi(os, false, true);
 		write(wi);
 		dim.wid = os.str().size();
@@ -375,7 +377,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 	if (display()) {
 		InsetMathGrid::drawT(pain, x, y);
 	} else {
-		ostringstream os;
+		odocstringstream os;
 		WriteStream wi(os, false, true);
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
@@ -385,9 +387,9 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 
 namespace {
 
-string const latex_string(InsetMathHull const & inset)
+docstring const latex_string(InsetMathHull const & inset)
 {
-	ostringstream ls;
+	odocstringstream ls;
 	WriteStream wi(ls, false, false);
 	inset.write(wi);
 	return ls.str();
@@ -399,7 +401,7 @@ string const latex_string(InsetMathHull const & inset)
 void InsetMathHull::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		string const snippet = latex_string(*this);
+		docstring const snippet = latex_string(*this);
 		preview_->addPreview(snippet, ploader);
 	}
 }
@@ -409,7 +411,7 @@ bool InsetMathHull::notifyCursorLeaves(LCursor & cur)
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		Buffer const & buffer = cur.buffer();
-		string const snippet = latex_string(*this);
+		docstring const snippet = latex_string(*this);
 		preview_->addPreview(snippet, buffer);
 		preview_->startLoading(buffer);
 	}
@@ -951,12 +953,13 @@ void InsetMathHull::check() const
 
 void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 {
-	string lang;
-	string extra;
-	istringstream iss(lyx::to_utf8(func.argument()));
-	iss >> lang >> extra;
+	docstring dlang;
+	docstring extra;
+	lyx::idocstringstream iss(func.argument());
+	iss >> dlang >> extra;
 	if (extra.empty())
-		extra = "noextra";
+		extra = lyx::from_ascii("noextra");
+	string const lang = lyx::to_ascii(dlang);
 
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
@@ -1412,9 +1415,11 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 
 void InsetMathHull::write(Buffer const &, std::ostream & os) const
 {
-	WriteStream wi(os, false, false);
-	os << "Formula ";
+	odocstringstream oss;
+	WriteStream wi(oss, false, false);
+	oss << "Formula ";
 	write(wi);
+	os << lyx::to_utf8(oss.str());
 }
 
 
@@ -1426,7 +1431,7 @@ void InsetMathHull::read(Buffer const &, LyXLex & lex)
 }
 
 
-int InsetMathHull::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetMathHull::plaintext(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	if (0 && display()) {
@@ -1440,11 +1445,8 @@ int InsetMathHull::plaintext(Buffer const &, lyx::odocstream & os,
 		//metrics();
 		return tpain.textheight();
 	} else {
-		std::ostringstream oss;
-		WriteStream wi(oss, false, true);
+		WriteStream wi(os, false, true);
 		wi << cell(0);
-		// FIXME UNICODE
-		os << lyx::from_utf8(oss.str());
 		return wi.line();
 	}
 }
@@ -1453,7 +1455,8 @@ int InsetMathHull::plaintext(Buffer const &, lyx::odocstream & os,
 int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {
-	MathMLStream ms(os);
+	odocstringstream oss;
+	MathMLStream ms(oss);
 	int res = 0;
 	string name;
 	if (getType() == hullSimple)
@@ -1466,7 +1469,7 @@ int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 		bname += " id=\"" + sgml::cleanID(buf, runparams, label(0)) + "\"";
 	ms << MTag(bname.c_str());
 
-	ostringstream ls;
+	odocstringstream ls;
 	if (runparams.flavor == OutputParams::XML) {
 		ms << MTag("alt role=\"tex\" ");
 		// Workaround for db2latex: db2latex always includes equations with
@@ -1474,7 +1477,7 @@ int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 		// so we strip LyX' math environment
 		WriteStream wi(ls, false, false);
 		InsetMathGrid::write(wi);
-		ms << subst(subst(ls.str(), "&", "&amp;"), "<", "&lt;");
+		ms << subst(subst(lyx::to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
 		ms << ETag("alt");
 		ms << MTag("math");
 		InsetMathGrid::mathmlize(ms);
@@ -1482,7 +1485,7 @@ int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 	} else {
 		ms << MTag("alt role=\"tex\"");
 		res = latex(buf, ls, runparams);
-		ms << subst(subst(ls.str(), "&", "&amp;"), "<", "&lt;");
+		ms << subst(subst(lyx::to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
 		ms << ETag("alt");
 	}
 
@@ -1498,11 +1501,12 @@ int InsetMathHull::docbook(Buffer const & buf, ostream & os,
 		ms << "\">";
 
 	ms << ETag(name.c_str());
+	os << lyx::to_utf8(oss.str());
 	return ms.line() + res;
 }
 
 
-int InsetMathHull::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetMathHull::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

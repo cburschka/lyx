@@ -86,7 +86,7 @@ public:
 	 *  the BufferParams and a LyXRC variable).
 	 *  This returned value can then be passed to the insets...
 	 */
-	bool writeLaTeX(std::ostream &, LaTeXFeatures &, TexRow &) const;
+	bool writeLaTeX(lyx::odocstream &, LaTeXFeatures &, TexRow &) const;
 
 	///
 	void useClassDefaults();

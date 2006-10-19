@@ -15,6 +15,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::ostream;
 
@@ -45,7 +46,7 @@ docstring const InsetHFill::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetHFill::latex(Buffer const &, ostream & os,
+int InsetHFill::latex(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	os << getCommand();
@@ -53,7 +54,7 @@ int InsetHFill::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetHFill::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetHFill::plaintext(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	os << '\t';

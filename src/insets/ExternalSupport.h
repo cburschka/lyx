@@ -13,8 +13,7 @@
 #ifndef EXTERNALSUPPORT_H
 #define EXTERNALSUPPORT_H
 
-#include <iosfwd>
-#include <string>
+#include "support/docstream.h"
 
 class Buffer;
 class ExportData;
@@ -63,7 +62,7 @@ std::string const doSubstitution(InsetExternalParams const & params,
 int writeExternal(InsetExternalParams const &,
 		  std::string const & format,
 		  Buffer const &,
-		  std::ostream &,
+		  lyx::odocstream &,
 		  ExportData &,
 		  bool external_in_tmpdir,
 		  bool external_in_comment);

@@ -35,13 +35,13 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::bformat;
 
 using std::auto_ptr;
 using std::endl;
 using std::string;
 using std::ostream;
-using std::ostringstream;
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)
@@ -176,7 +176,7 @@ InsetBase * InsetCaption::editXY(LCursor & cur, int x, int y)
 }
 
 
-int InsetCaption::latex(Buffer const & buf, ostream & os,
+int InsetCaption::latex(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	// This is a bit too simplistic to take advantage of
@@ -184,14 +184,14 @@ int InsetCaption::latex(Buffer const & buf, ostream & os,
 	// This code is currently only able to handle the simple
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
-	ostringstream ost;
+	lyx::odocstringstream ost;
 	int const l = InsetText::latex(buf, ost, runparams);
 	os << "\\caption{" << ost.str() << "}\n";
 	return l + 1;
 }
 
 
-int InsetCaption::plaintext(Buffer const & /*buf*/, lyx::odocstream & /*os*/,
+int InsetCaption::plaintext(Buffer const & /*buf*/, odocstream & /*os*/,
 			OutputParams const & /*runparams*/) const
 {
 	// FIXME: Implement me!

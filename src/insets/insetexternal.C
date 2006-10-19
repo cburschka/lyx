@@ -49,6 +49,8 @@ namespace external = lyx::external;
 namespace graphics = lyx::graphics;
 
 using lyx::docstring;
+using lyx::odocstream;
+
 using std::endl;
 using std::string;
 using std::auto_ptr;
@@ -676,12 +678,13 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 }
 
 
-int InsetExternal::latex(Buffer const & buf, ostream & os,
+int InsetExternal::latex(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams) const
 {
 	if (params_.draft) {
+		// FIXME UNICODE
 		os << "\\fbox{\\ttfamily{}"
-		   << params_.filename.outputFilename(buf.filePath())
+		   << lyx::from_utf8(params_.filename.outputFilename(buf.filePath()))
 		   << "}\n";
 		return 1;
 	}
@@ -717,25 +720,25 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetExternal::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams) const
 {
-	std::ostringstream oss;
-	int const retval = external::writeExternal(params_, "Ascii", buf, oss,
+	return external::writeExternal(params_, "Ascii", buf, os,
 				       *(runparams.exportdata), false,
 				       runparams.inComment);
-	// FIXME UNICODE
-	os << lyx::from_utf8(oss.str());
-	return retval;
 }
 
 
 int InsetExternal::docbook(Buffer const & buf, ostream & os,
 			   OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "DocBook", buf, os,
+	lyx::odocstringstream oss;
+	int const retval = external::writeExternal(params_, "DocBook", buf, oss,
 				       *(runparams.exportdata), false,
 				       runparams.inComment);
+	// FIXME UNICODE
+	os << lyx::to_utf8(oss.str());
+	return retval;
 }
 
 
@@ -802,9 +805,9 @@ bool preview_wanted(InsetExternalParams const & params)
 }
 
 
-string const latex_string(InsetExternal const & inset, Buffer const & buffer)
+docstring const latex_string(InsetExternal const & inset, Buffer const & buffer)
 {
-	ostringstream os;
+	lyx::odocstringstream os;
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
@@ -822,7 +825,7 @@ void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params)) {
 		renderer.setAbsFile(params.filename.absFilename());
-		string const snippet = latex_string(inset, buffer);
+		docstring const snippet = latex_string(inset, buffer);
 		renderer.addPreview(snippet, buffer);
 		renderer.startLoading(buffer);
 	}
@@ -839,7 +842,7 @@ void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 
 	if (preview_wanted(params())) {
 		ptr->setAbsFile(params_.filename.absFilename());
-		string const snippet = latex_string(*this, ploader.buffer());
+		docstring const snippet = latex_string(*this, ploader.buffer());
 		ptr->addPreview(snippet, ploader);
 	}
 }

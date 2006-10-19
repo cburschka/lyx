@@ -126,14 +126,14 @@ public:
 	FontList fontlist;
 
 	///
-	void simpleTeXBlanks(std::ostream &, TexRow & texrow,
+	void simpleTeXBlanks(lyx::odocstream &, TexRow & texrow,
 			     lyx::pos_type const i,
 			     unsigned int & column,
 			     LyXFont const & font,
 			     LyXLayout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
-				   std::ostream &, TexRow & texrow,
+				   lyx::odocstream &, TexRow & texrow,
 				   OutputParams const &,
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont,

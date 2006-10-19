@@ -75,7 +75,7 @@ public:
 	///
 	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, lyx::odocstream &,

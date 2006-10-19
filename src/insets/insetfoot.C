@@ -24,6 +24,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -58,7 +59,7 @@ docstring const InsetFoot::editMessage() const
 }
 
 
-int InsetFoot::latex(Buffer const & buf, ostream & os,
+int InsetFoot::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;

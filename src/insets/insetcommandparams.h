@@ -34,7 +34,7 @@ public:
 	///
 	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
-	std::string const getCommand() const;
+	lyx::docstring const getCommand() const;
 	/// Return the command name
 	std::string const & getCmdName() const { return name_; }
 	/// FIXME remove

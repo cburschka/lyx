@@ -18,10 +18,9 @@
 #include "output_latex.h"
 #include "texrow.h"
 
-#include "support/std_ostream.h"
-
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -69,14 +68,16 @@ docstring const InsetEnvironment::editMessage() const
 }
 
 
-int InsetEnvironment::latex(Buffer const & buf, ostream & os,
+int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 			    OutputParams const & runparams) const
 {
-	os << layout_->latexheader;
+	// FIXME UNICODE
+	os << lyx::from_utf8(layout_->latexheader);
 	TexRow texrow;
 	latexParagraphs(buf, paragraphs(), os, texrow, runparams,
 			layout_->latexparagraph);
-	os << layout_->latexfooter;
+	// FIXME UNICODE
+	os << lyx::from_utf8(layout_->latexfooter);
 	return texrow.rows();
 }
 

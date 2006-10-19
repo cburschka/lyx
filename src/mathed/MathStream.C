@@ -12,7 +12,6 @@
 
 #include "MathStream.h"
 #include "MathMLStream.h"
-#include "support/std_ostream.h"
 
 using std::string;
 
@@ -26,41 +25,47 @@ WriteStream & operator<<(WriteStream & ws, string const & s)
 
 NormalStream & operator<<(NormalStream & ns, string const & s)
 {
-	ns.os() << s;
+	// FIXME UNICODE
+	ns.os() << lyx::from_utf8(s);
 	return ns;
 }
 
 
 MapleStream & operator<<(MapleStream & ms, string const & s)
 {
-	ms.os() << s;
+	// FIXME UNICODE
+	ms.os() << lyx::from_utf8(s);
 	return ms;
 }
 
 
 MaximaStream & operator<<(MaximaStream & ms, string const & s)
 {
-	ms.os() << s;
+	// FIXME UNICODE
+	ms.os() << lyx::from_utf8(s);
 	return ms;
 }
 
 
 MathematicaStream & operator<<(MathematicaStream & ms, string const & s)
 {
-	ms.os() << s;
+	// FIXME UNICODE
+	ms.os() << lyx::from_utf8(s);
 	return ms;
 }
 
 
 MathMLStream & operator<<(MathMLStream & ms, string const & s)
 {
-	ms.os() << s;
+	// FIXME UNICODE
+	ms.os() << lyx::from_utf8(s);
 	return ms;
 }
 
 
 OctaveStream & operator<<(OctaveStream & os, string const & s)
 {
-	os.os() << s;
+	// FIXME UNICODE
+	os.os() << lyx::from_utf8(s);
 	return os;
 }

@@ -31,6 +31,7 @@
 
 #include <sstream>
 
+using lyx::odocstream;
 using lyx::support::bformat;
 
 using std::string;
@@ -75,7 +76,7 @@ void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(Buffer const &, ostream & os,
+int InsetFormulaMacro::latex(Buffer const &, odocstream & os,
 			     OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
@@ -85,7 +86,7 @@ int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetFormulaMacro::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetFormulaMacro::plaintext(Buffer const &, odocstream & os,
 			     OutputParams const &) const
 {
 	WriteStream wi(os, false, true);

@@ -28,6 +28,7 @@
 #include "support/lstrings.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::bformat;
 
 using std::endl;
@@ -79,7 +80,7 @@ void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-int InsetFloatList::latex(Buffer const & buf, ostream & os,
+int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 			  OutputParams const &) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
@@ -98,20 +99,20 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 			}
 		} else {
 			// FIXME UNICODE
-			os << "\\listof{" << getCmdName() << "}{"
-			   << lyx::to_utf8(buf.B_(cit->second.listName())) << "}\n";
+			os << "\\listof{" << lyx::from_ascii(getCmdName()) << "}{"
+			   << buf.B_(cit->second.listName()) << "}\n";
 		}
 	} else {
 		// FIXME UNICODE
-		os << "%%\\listof{" << getCmdName() << "}{"
-		   << lyx::to_utf8(bformat(_("List of %1$s"), lyx::from_utf8(cit->second.name())))
+		os << "%%\\listof{" << lyx::from_ascii(getCmdName()) << "}{"
+		   << bformat(_("List of %1$s"), lyx::from_utf8(cit->second.name()))
 		   << "}\n";
 	}
 	return 1;
 }
 
 
-int InsetFloatList::plaintext(Buffer const & buffer, lyx::odocstream & os,
+int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
                               OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";

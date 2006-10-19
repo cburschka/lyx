@@ -22,6 +22,7 @@
 #include "frontends/Painter.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::frontend::Painter;
 
 using std::endl;
@@ -75,7 +76,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetPagebreak::latex(Buffer const &, ostream & os,
+int InsetPagebreak::latex(Buffer const &, odocstream & os,
 			  OutputParams const &) const
 {
 	os << "\\newpage{}";
@@ -83,7 +84,7 @@ int InsetPagebreak::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetPagebreak::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
 			  OutputParams const &) const
 {
 	os << '\n';

@@ -24,9 +24,6 @@
 
 #include "insets/insetbase.h" // only for InsetBase::Code
 
-#include "support/types.h"
-
-#include <string>
 
 class Buffer;
 class BufferParams;
@@ -126,15 +123,15 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	int startTeXParParams(BufferParams const &, std::ostream &, bool) const;
+	int startTeXParParams(BufferParams const &, lyx::odocstream &, bool) const;
 
 	///
-	int endTeXParParams(BufferParams const &, std::ostream &, bool) const;
+	int endTeXParParams(BufferParams const &, lyx::odocstream &, bool) const;
 
 
 	///
 	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
-			     LyXFont const & outerfont, std::ostream &,
+			     LyXFont const & outerfont, lyx::odocstream &,
 			     TexRow & texrow, OutputParams const &) const;
 
 	/// Can we drop the standard paragraph wrapper?

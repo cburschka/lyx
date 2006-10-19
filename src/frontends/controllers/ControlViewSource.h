@@ -42,7 +42,7 @@ public:
 	/** get the source code of selected paragraphs, or the whole document
 		\param fullSource get full source code
 	 */
-	std::string const updateContent(bool fullSource);
+	lyx::docstring const updateContent(bool fullSource);
 };
 
 } // namespace frontend

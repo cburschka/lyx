@@ -23,6 +23,8 @@
 #include <sstream>
 
 
+using lyx::odocstream;
+
 using std::string;
 using std::istringstream;
 using std::ostream;
@@ -70,7 +72,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 }
 
 
-int InsetCommand::latex(Buffer const &, ostream & os,
+int InsetCommand::latex(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	os << getCommand();
@@ -78,7 +80,7 @@ int InsetCommand::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetCommand::plaintext(Buffer const &, lyx::odocstream &,
+int InsetCommand::plaintext(Buffer const &, odocstream &,
 			OutputParams const &) const
 {
 	return 0;

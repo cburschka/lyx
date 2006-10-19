@@ -79,7 +79,7 @@ void InsetMathMBox::write(WriteStream & ws) const
 }
 
 
-int InsetMathMBox::latex(Buffer const & buf, std::ostream & os,
+int InsetMathMBox::latex(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << "\\mbox{\n";

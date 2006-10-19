@@ -356,7 +356,7 @@ public:
 	/// read inset in .lyx format
 	virtual void read(Buffer const &, LyXLex &) {}
 	/// returns the number of rows (\n's) of generated tex code.
-	virtual int latex(Buffer const &, std::ostream &,
+	virtual int latex(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const { return 0; }
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;

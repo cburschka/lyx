@@ -19,6 +19,7 @@
 #include "render_base.h"
 
 #include "support/FileMonitor.h"
+#include "support/docstring.h"
 
 #include <boost/signal.hpp>
 #include <boost/signals/trackable.hpp>
@@ -56,12 +57,12 @@ public:
 	/** Find the PreviewLoader and add a LaTeX snippet to it.
 	 *  Do not start the loading process.
 	 */
-	void addPreview(std::string const & latex_snippet, Buffer const &);
+	void addPreview(lyx::docstring const & latex_snippet, Buffer const &);
 
 	/** Add a LaTeX snippet to the PreviewLoader.
 	 *  Do not start the loading process.
 	 */
-	void addPreview(std::string const & latex_snippet,
+	void addPreview(lyx::docstring const & latex_snippet,
 			lyx::graphics::PreviewLoader & ploader);
 
 	/// Begin the loading process.

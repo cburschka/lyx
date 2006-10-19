@@ -29,6 +29,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::istringstream;
 using std::ostream;
@@ -202,15 +203,15 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetVSpace::latex(Buffer const & buf, ostream & os,
+int InsetVSpace::latex(Buffer const & buf, odocstream & os,
 			  OutputParams const &) const
 {
-	os << space_.asLatexCommand(buf.params()) << '\n';
+	os << lyx::from_ascii(space_.asLatexCommand(buf.params())) << '\n';
 	return 1;
 }
 
 
-int InsetVSpace::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetVSpace::plaintext(Buffer const &, odocstream & os,
 			   OutputParams const &) const
 {
 	os << "\n\n";

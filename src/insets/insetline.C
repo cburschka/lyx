@@ -21,6 +21,7 @@
 
 #include "frontends/Painter.h"
 
+using lyx::odocstream;
 using lyx::frontend::Painter;
 
 using std::endl;
@@ -55,15 +56,16 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-int InsetLine::latex(Buffer const &, ostream & os,
+int InsetLine::latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const
 {
-	os << "\\lyxline{\\" << runparams.local_font->latexSize() << '}';
+	os << "\\lyxline{\\"
+	   << lyx::from_ascii(runparams.local_font->latexSize()) << '}';
 	return 0;
 }
 
 
-int InsetLine::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetLine::plaintext(Buffer const &, odocstream & os,
 		     OutputParams const &) const
 {
 	os << "-------------------------------------------";

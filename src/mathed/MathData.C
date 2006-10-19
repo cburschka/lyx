@@ -29,6 +29,8 @@
 
 #include <boost/assert.hpp>
 
+using lyx::odocstream;
+
 using std::abs;
 using std::endl;
 using std::min;
@@ -106,17 +108,21 @@ void MathArray::erase(size_type pos1, size_type pos2)
 
 void MathArray::dump2() const
 {
-	NormalStream ns(lyxerr);
+	lyx::odocstringstream os;
+	NormalStream ns(os);
 	for (const_iterator it = begin(); it != end(); ++it)
 		ns << *it << ' ';
+	lyxerr << lyx::to_utf8(os.str());
 }
 
 
 void MathArray::dump() const
 {
-	NormalStream ns(lyxerr);
+	lyx::odocstringstream os;
+	NormalStream ns(os);
 	for (const_iterator it = begin(); it != end(); ++it)
 		ns << '<' << *it << '>';
+	lyxerr << lyx::to_utf8(os.str());
 }
 
 
@@ -443,4 +449,21 @@ int MathArray::xo(BufferView & bv) const
 int MathArray::yo(BufferView & bv) const
 {
 	return bv.coordCache().getArrays().y(this);
+}
+
+
+std::ostream & operator<<(std::ostream & os, MathArray const & ar)
+{
+	lyx::odocstringstream oss;
+	NormalStream ns(oss);
+	ns << ar;
+	return os << lyx::to_utf8(oss.str());
+}
+
+
+odocstream & operator<<(odocstream & os, MathArray const & ar)
+{
+	NormalStream ns(os);
+	ns << ar;
+	return os;
 }

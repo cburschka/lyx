@@ -146,7 +146,7 @@ public:
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
-	void writeLaTeXSource(std::ostream & os,
+	void writeLaTeXSource(lyx::odocstream & os,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
@@ -339,7 +339,7 @@ public:
 	void changeRefsIfUnique(std::string const & from, std::string const & to, InsetBase::Code code);
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
-	void getSourceCode(std::ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);
+	void getSourceCode(lyx::odocstream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);
 
 	/// errorLists_ accessors.
 	//@{

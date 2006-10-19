@@ -93,7 +93,7 @@ public:
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
 	///
-	int latex(Buffer const &, std::ostream & os,
+	int latex(Buffer const &, lyx::odocstream & os,
 			OutputParams const & runparams) const;
 
 protected:

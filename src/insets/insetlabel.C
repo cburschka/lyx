@@ -27,6 +27,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::escape;
 
 using std::string;
@@ -84,7 +85,7 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-int InsetLabel::latex(Buffer const &, ostream & os,
+int InsetLabel::latex(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	os << escape(getCommand());
@@ -92,7 +93,7 @@ int InsetLabel::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLabel::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetLabel::plaintext(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	// FIXME UNICODE

@@ -27,6 +27,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -220,7 +221,7 @@ bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 }
 
 
-int InsetBranch::latex(Buffer const & buf, ostream & os,
+int InsetBranch::latex(Buffer const & buf, odocstream & os,
 		       OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?
@@ -236,7 +237,7 @@ int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetBranch::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
 			   OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?

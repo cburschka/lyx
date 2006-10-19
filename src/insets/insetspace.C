@@ -25,6 +25,8 @@
 #include "frontends/Painter.h"
 
 
+using lyx::odocstream;
+
 using std::string;
 using std::max;
 using std::auto_ptr;
@@ -162,7 +164,7 @@ void InsetSpace::read(Buffer const &, LyXLex & lex)
 }
 
 
-int InsetSpace::latex(Buffer const &, ostream & os,
+int InsetSpace::latex(Buffer const &, odocstream & os,
 		      OutputParams const & runparams) const
 {
 	switch (kind_) {
@@ -195,7 +197,7 @@ int InsetSpace::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetSpace::plaintext(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	switch (kind_) {
@@ -235,7 +237,7 @@ int InsetSpace::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetSpace::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

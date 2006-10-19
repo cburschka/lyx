@@ -22,6 +22,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+using lyx::odocstream;
+
 using std::endl;
 using std::ostream;
 
@@ -49,7 +51,7 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-int InsetNewline::latex(Buffer const &, ostream &,
+int InsetNewline::latex(Buffer const &, odocstream &,
 			OutputParams const &) const
 {
 	lyxerr << "Eek, calling InsetNewline::latex !" << endl;
@@ -57,7 +59,7 @@ int InsetNewline::latex(Buffer const &, ostream &,
 }
 
 
-int InsetNewline::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetNewline::plaintext(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
 	os << '\n';

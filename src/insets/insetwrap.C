@@ -32,9 +32,8 @@
 
 #include "support/convert.h"
 
-#include <sstream>
-
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::endl;
@@ -180,15 +179,15 @@ docstring const InsetWrap::editMessage() const
 }
 
 
-int InsetWrap::latex(Buffer const & buf, ostream & os,
+int InsetWrap::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
-	os << "\\begin{floating" << params_.type << '}';
+	os << "\\begin{floating" << lyx::from_ascii(params_.type) << '}';
 	if (!params_.placement.empty())
-		os << '[' << params_.placement << ']';
-	os << '{' << params_.width.asLatexString() << "}%\n";
+		os << '[' << lyx::from_ascii(params_.placement) << ']';
+	os << '{' << lyx::from_ascii(params_.width.asLatexString()) << "}%\n";
 	int const i = InsetText::latex(buf, os, runparams);
-	os << "\\end{floating" << params_.type << "}%\n";
+	os << "\\end{floating" << lyx::from_ascii(params_.type) << "}%\n";
 	return i + 2;
 }
 

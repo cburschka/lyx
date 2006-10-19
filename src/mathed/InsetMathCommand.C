@@ -22,7 +22,6 @@ using lyx::docstring;
 
 using std::string;
 using std::auto_ptr;
-using std::ostringstream;
 
 
 CommandInset::CommandInset(string const & name)
@@ -80,10 +79,10 @@ docstring const CommandInset::screenLabel() const
 
 string const CommandInset::createDialogStr(string const & name) const
 {
-	ostringstream os;
-	os << name << " LatexCommand ";
+	lyx::odocstringstream os;
+	os << lyx::from_ascii(name) << " LatexCommand ";
 	WriteStream ws(os);
 	write(ws);
 	ws << "\n\\end_inset\n\n";
-	return os.str();
+	return lyx::to_utf8(os.str());
 }

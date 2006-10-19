@@ -31,6 +31,7 @@
 #include <boost/filesystem/exception.hpp>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::ascii_lowercase;
 using lyx::support::contains;
 using lyx::support::getStringFromVector;
@@ -357,7 +358,7 @@ docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 }
 
 
-int InsetCitation::plaintext(Buffer const & buffer, lyx::odocstream & os,
+int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
                              OutputParams const &) const
 {
 	if (cache.params == params() &&
@@ -398,7 +399,7 @@ int InsetCitation::docbook(Buffer const &, ostream & os, OutputParams const &) c
 }
 
 
-int InsetCitation::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetCitation::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);
@@ -409,23 +410,25 @@ int InsetCitation::textString(Buffer const & buf, lyx::odocstream & os,
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(Buffer const & buffer, ostream & os,
+int InsetCitation::latex(Buffer const & buffer, odocstream & os,
 			 OutputParams const &) const
 {
 	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
-	string const cite_str =
-		biblio::asValidLatexCommand(getCmdName(), cite_engine);
+	// FIXME UNICODE
+	docstring const cite_str = lyx::from_utf8(
+		biblio::asValidLatexCommand(getCmdName(), cite_engine));
 
 	os << "\\" << cite_str;
 
-	string const before = getSecOptions();
-	string const after  = getOptions();
+	docstring const & before = getParam("before");
+	docstring const & after  = getParam("after");
 	if (!before.empty() && cite_engine != biblio::ENGINE_BASIC)
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';
 
-	os << '{' << cleanupWhitespace(getContents()) << '}';
+	// FIXME UNICODE
+	os << '{' << lyx::from_utf8(cleanupWhitespace(getContents())) << '}';
 
 	return 0;
 }

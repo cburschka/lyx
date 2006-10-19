@@ -26,8 +26,7 @@
 
 #include "support/lstrings.h"
 
-#include <sstream>
-
+using lyx::odocstream;
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
 using lyx::support::rtrim;
@@ -743,7 +742,7 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
+int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 				    LyXFont const & prev) const
 {
 	int count = 0;
@@ -763,7 +762,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 			string const tmp =
 				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());
-			os << tmp;
+			os << lyx::from_ascii(tmp);
 			count += tmp.length();
 		}
 	}
@@ -800,7 +799,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	}
 	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
 		os << "\\textcolor{"
-		   << lcolor.getLaTeXName(f.color())
+		   << lyx::from_ascii(lcolor.getLaTeXName(f.color()))
 		   << "}{";
 		count += lcolor.getLaTeXName(f.color()).length() + 13;
 		env = true; //We have opened a new environment
@@ -839,7 +838,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
-int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
+int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
 				  LyXFont const & next) const
 {
 	int count = 0;

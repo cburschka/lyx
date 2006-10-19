@@ -36,6 +36,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::pos_type;
 using lyx::support::token;
 
@@ -143,7 +144,7 @@ docstring const InsetERT::editMessage() const
 }
 
 
-int InsetERT::latex(Buffer const &, ostream & os,
+int InsetERT::latex(Buffer const &, odocstream & os,
 		    OutputParams const &) const
 {
 	ParagraphList::const_iterator par = paragraphs().begin();
@@ -157,7 +158,7 @@ int InsetERT::latex(Buffer const &, ostream & os,
 			if (par->isDeleted(i))
 				continue;
 
-			os << par->getChar(i);
+			os.put(par->getChar(i));
 		}
 		++par;
 		if (par != end) {
@@ -170,7 +171,7 @@ int InsetERT::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetERT::plaintext(Buffer const &, lyx::odocstream &,
+int InsetERT::plaintext(Buffer const &, odocstream &,
 		    OutputParams const & /*runparams*/) const
 {
 	return 0;
@@ -187,7 +188,7 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 	while (par != end) {
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i)
-			os << par->getChar(i);
+			os.put(par->getChar(i));
 		++par;
 		if (par != end) {
 			os << "\n";

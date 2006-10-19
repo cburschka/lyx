@@ -55,6 +55,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::pos_type;
 using lyx::char_type;
 
@@ -743,7 +744,7 @@ string const corrected_env(string const & suffix, string const & env,
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
-				 ostream & os, bool moving_arg) const
+				 odocstream & os, bool moving_arg) const
 {
 	int column = 0;
 
@@ -780,7 +781,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\begin", "flushleft", ownerCode());
 		else
 			output = corrected_env("\\begin", "flushright", ownerCode());
-		os << output;
+		os << lyx::from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
@@ -789,13 +790,13 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\begin", "flushright", ownerCode());
 		else
 			output = corrected_env("\\begin", "flushleft", ownerCode());
-		os << output;
+		os << lyx::from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\\begin", "center", ownerCode());
-		os << output;
+		os << lyx::from_ascii(output);
 		column += output.size();
 		break;
 	}
@@ -807,7 +808,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::endTeXParParams(BufferParams const & bparams,
-			       ostream & os, bool moving_arg) const
+			       odocstream & os, bool moving_arg) const
 {
 	int column = 0;
 
@@ -839,7 +840,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\par\\end", "flushleft", ownerCode());
 		else
 			output = corrected_env("\\par\\end", "flushright", ownerCode());
-		os << output;
+		os << lyx::from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
@@ -848,13 +849,13 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\par\\end", "flushright", ownerCode());
 		else
 			output = corrected_env("\\par\\end", "flushleft", ownerCode());
-		os << output;
+		os << lyx::from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\\par\\end", "center", ownerCode());
-		os << output;
+		os << lyx::from_ascii(output);
 		column += output.size();
 		break;
 	}
@@ -868,7 +869,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				BufferParams const & bparams,
 				LyXFont const & outerfont,
-				ostream & os, TexRow & texrow,
+				odocstream & os, TexRow & texrow,
 				OutputParams const & runparams) const
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
@@ -1178,6 +1179,8 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, ostream & os, OutputParams 
 				break;
 			bool ws;
 			string str;
+			// FIXME UNICODE
+			// sgml::escapeChar takes a char, not lyx::char_type
 			boost::tie(ws, str) = sgml::escapeChar(c);
 
 			os << str;
@@ -1241,6 +1244,8 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			value_type c = getChar(i);
 			bool ws;
 			string str;
+			// FIXME UNICODE
+			// sgml::escapeChar takes a char, not lyx::char_type
 			boost::tie(ws, str) = sgml::escapeChar(c);
 
 			if (style->pass_thru)

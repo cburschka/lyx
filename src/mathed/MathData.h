@@ -14,11 +14,12 @@
 #ifndef MATH_DATA_H
 #define MATH_DATA_H
 
-#include <iosfwd>
 #include <vector>
 
 #include "MathAtom.h"
 #include "dimension.h"
+
+#include "support/docstream.h"
 
 class BufferView;
 class LaTeXFeatures;
@@ -157,6 +158,8 @@ private:
 
 ///
 std::ostream & operator<<(std::ostream & os, MathArray const & ar);
+///
+lyx::odocstream & operator<<(lyx::odocstream & os, MathArray const & ar);
 
 
 #endif

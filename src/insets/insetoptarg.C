@@ -20,6 +20,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -66,7 +67,7 @@ void InsetOptArg::write(Buffer const & buf, ostream & os) const
 }
 
 
-int InsetOptArg::latex(Buffer const &, ostream &,
+int InsetOptArg::latex(Buffer const &, odocstream &,
 		       OutputParams const &) const
 {
 	return 0;
@@ -79,20 +80,20 @@ int InsetOptArg::docbook(Buffer const &, ostream &,
 }
 
 
-int InsetOptArg::plaintext(Buffer const &, lyx::odocstream &,
+int InsetOptArg::plaintext(Buffer const &, odocstream &,
 		       OutputParams const &) const
 {
 	return 0;
 }
 
 
-int InsetOptArg::latexOptional(Buffer const & buf, ostream & os,
+int InsetOptArg::latexOptional(Buffer const & buf, odocstream & os,
 			       OutputParams const & runparams) const
 {
-	ostringstream ss;
+	lyx::odocstringstream ss;
 	int ret = InsetText::latex(buf, ss, runparams);
-	string str = ss.str();
-	if (str.find(']') != string::npos)
+	docstring str = ss.str();
+	if (str.find(']') != docstring::npos)
 		str = '{' + str + '}';
 	os << '[' << str << ']';
 	return ret;

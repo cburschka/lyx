@@ -27,7 +27,7 @@ public:
 	/// Appends \c list with this label
 	void getLabelList(Buffer const &, std::vector<lyx::docstring> & list) const;
 	///
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, lyx::odocstream &,

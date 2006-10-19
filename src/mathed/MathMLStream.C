@@ -18,7 +18,7 @@
 
 using std::strlen;
 
-using std::ostream;
+using lyx::odocstream;
 
 
 namespace {
@@ -31,13 +31,13 @@ namespace {
 }
 
 
-WriteStream::WriteStream(ostream & os, bool fragile, bool latex)
+WriteStream::WriteStream(odocstream & os, bool fragile, bool latex)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  pendingspace_(false), line_(0)
 {}
 
 
-WriteStream::WriteStream(ostream & os)
+WriteStream::WriteStream(odocstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  pendingspace_(false), line_(0)
 {}
@@ -120,7 +120,7 @@ WriteStream & operator<<(WriteStream & ws, unsigned int i)
 //////////////////////////////////////////////////////////////////////
 
 
-MathMLStream::MathMLStream(ostream & os)
+MathMLStream::MathMLStream(odocstream & os)
 	: os_(os), tab_(0), line_(0), lastchar_(0)
 {}
 

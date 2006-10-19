@@ -54,6 +54,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::addName;
 using lyx::support::absolutePath;
 using lyx::support::bformat;
@@ -258,7 +259,7 @@ void InsetInclude::write(Buffer const &, ostream & os) const
 
 void InsetInclude::write(ostream & os) const
 {
-	os << "Include " << params_.getCommand() << '\n'
+	os << "Include " << lyx::to_utf8(params_.getCommand()) << '\n'
 	   << "preview " << convert<string>(params_.preview()) << '\n';
 }
 
@@ -350,7 +351,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 } // namespace anon
 
 
-int InsetInclude::latex(Buffer const & buffer, ostream & os,
+int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			OutputParams const & runparams) const
 {
 	string incfile(params_.getContents());
@@ -435,7 +436,9 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			"latex" : "pdflatex";
 	if (isVerbatim(params_)) {
 		incfile = latex_path(incfile);
-		os << '\\' << params_.getCmdName() << '{' << incfile << '}';
+		// FIXME UNICODE
+		os << '\\' << lyx::from_ascii(params_.getCmdName()) << '{'
+		   << lyx::from_utf8(incfile) << '}';
 	} else if (type(params_) == INPUT) {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
 						      exportfile);
@@ -443,13 +446,15 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		// \input wants file with extension (default is .tex)
 		if (!isLyXFilename(included_file)) {
 			incfile = latex_path(incfile);
-			os << '\\' << params_.getCmdName() << '{' << incfile << '}';
+			// FIXME UNICODE
+			os << '\\' << lyx::from_ascii(params_.getCmdName())
+			   << '{' << lyx::from_utf8(incfile) << '}';
 		} else {
 		incfile = changeExtension(incfile, ".tex");
 		incfile = latex_path(incfile);
-			os << '\\' << params_.getCmdName() << '{'
-			   << incfile
-			   <<  '}';
+			// FIXME UNICODE
+			os << '\\' << lyx::from_ascii(params_.getCmdName())
+			   << '{' << lyx::from_utf8(incfile) <<  '}';
 		}
 	} else {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
@@ -459,16 +464,16 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		// file really have .tex
 		incfile = changeExtension(incfile, string());
 		incfile = latex_path(incfile);
-		os << '\\' << params_.getCmdName() << '{'
-		   << incfile
-		   << '}';
+		// FIXME UNICODE
+		os << '\\' << lyx::from_ascii(params_.getCmdName()) << '{'
+		   << lyx::from_utf8(incfile) << '}';
 	}
 
 	return 0;
 }
 
 
-int InsetInclude::plaintext(Buffer const & buffer, lyx::odocstream & os,
+int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 			OutputParams const &) const
 {
 	if (isVerbatim(params_)) {
@@ -708,9 +713,9 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 }
 
 
-string const latex_string(InsetInclude const & inset, Buffer const & buffer)
+docstring const latex_string(InsetInclude const & inset, Buffer const & buffer)
 {
-	ostringstream os;
+	lyx::odocstringstream os;
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
@@ -726,7 +731,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params, buffer)) {
 		renderer.setAbsFile(includedFilename(buffer, params));
-		string const snippet = latex_string(inset, buffer);
+		docstring const snippet = latex_string(inset, buffer);
 		renderer.addPreview(snippet, buffer);
 	}
 }
@@ -739,7 +744,7 @@ void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 	Buffer const & buffer = ploader.buffer();
 	if (preview_wanted(params(), buffer)) {
 		preview_->setAbsFile(includedFilename(buffer, params()));
-		string const snippet = latex_string(*this, buffer);
+		docstring const snippet = latex_string(*this, buffer);
 		preview_->addPreview(snippet, ploader);
 	}
 }

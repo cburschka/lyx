@@ -26,7 +26,7 @@ public:
 
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
-	virtual int latex(Buffer const &, std::ostream &,
+	virtual int latex(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const;
 
 	virtual int plaintext(Buffer const &, lyx::odocstream &,

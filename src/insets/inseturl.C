@@ -23,6 +23,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::subst;
 
 using std::string;
@@ -56,19 +57,20 @@ docstring const InsetUrl::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetUrl::latex(Buffer const &, ostream & os,
+int InsetUrl::latex(Buffer const &, odocstream & os,
 		    OutputParams const & runparams) const
 {
-	if (!getOptions().empty())
-		os << getOptions() + ' ';
+	docstring const & name = getParam("name");
+	if (!name.empty())
+		os << name + ' ';
 	if (runparams.moving_arg)
 		os << "\\protect";
-	os << "\\url{" << getContents() << '}';
+	os << "\\url{" << getParam("target") << '}';
 	return 0;
 }
 
 
-int InsetUrl::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetUrl::plaintext(Buffer const &, odocstream & os,
 		    OutputParams const &) const
 {
 	// FIXME UNICODE
@@ -91,7 +93,7 @@ int InsetUrl::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetUrl::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetUrl::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

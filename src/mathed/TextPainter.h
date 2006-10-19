@@ -32,25 +32,25 @@ class TextPainter {
 		///
 		TextPainter(int xmax, int ymax);
 		///
-		void draw(int x, int y, char const * str);
+		void draw(int x, int y, lyx::char_type const * str);
 		///
-		void draw(int x, int y, char c);
+		void draw(int x, int y, lyx::char_type c);
 		///
 		void show(lyx::odocstream & os, int offset = 0) const;
 		///
 		int textheight() const { return ymax_; }
 		///
-		void horizontalLine(int x, int y, int len, char c = '-');
+		void horizontalLine(int x, int y, int len, lyx::char_type c = '-');
 		///
-		void verticalLine(int x, int y, int len, char c = '|');
+		void verticalLine(int x, int y, int len, lyx::char_type c = '|');
 
 	private:
 		///
-		typedef std::vector<char> data_type;
+		typedef std::vector<lyx::char_type> data_type;
 		///
-		char at(int x, int y) const;
+		lyx::char_type at(int x, int y) const;
 		///
-		char & at(int x, int y);
+		lyx::char_type & at(int x, int y);
 
 		/// xsize of the painter area
 		int xmax_;

@@ -184,7 +184,7 @@ void RenderPreview::startLoading(Buffer const & buffer) const
 }
 
 
-void RenderPreview::addPreview(string const & latex_snippet,
+void RenderPreview::addPreview(docstring const & latex_snippet,
 			       Buffer const & buffer)
 {
 	if (status() == LyXRC::PREVIEW_OFF)
@@ -195,13 +195,15 @@ void RenderPreview::addPreview(string const & latex_snippet,
 }
 
 
-void RenderPreview::addPreview(string const & latex_snippet,
+void RenderPreview::addPreview(docstring const & latex_snippet,
 			       graphics::PreviewLoader & ploader)
 {
 	if (status() == LyXRC::PREVIEW_OFF)
 		return;
 
-	snippet_ = support::trim(latex_snippet);
+	// FIXME UNICODE
+	// We have to make sure that we call latex with the right encoding
+	snippet_ = support::trim(lyx::to_utf8(latex_snippet));
 	if (snippet_.empty())
 		return;
 

@@ -31,6 +31,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::auto_ptr;
 using std::string;
@@ -245,7 +246,7 @@ bool InsetBox::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetBox::latex(Buffer const & buf, ostream & os,
+int InsetBox::latex(Buffer const & buf, odocstream & os,
 				OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
@@ -292,11 +293,14 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 		if (!params_.inner_box) {
 			os << "{\\makebox";
 			// Special widths, see usrguide §3.5
+			// FIXME UNICODE
 			if (params_.special != "none") {
 				os << "[" << params_.width.value()
-				   << "\\" << params_.special << "]";
+				   << '\\' << lyx::from_utf8(params_.special)
+				   << ']';
 			} else
-				os << "[" << width_string << "]";
+				os << '[' << lyx::from_ascii(width_string)
+				   << ']';
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
 		}
@@ -325,16 +329,21 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 
 		os << "[" << params_.pos << "]";
 		if (params_.height_special == "none") {
-			os << "[" << params_.height.asLatexString() << "]";
+			// FIXME UNICODE
+			os << '[' << lyx::from_ascii(params_.height.asLatexString())
+			   << ']';
 		} else {
 			// Special heights
+			// FIXME UNICODE
 			os << "[" << params_.height.value()
-			   << "\\" << params_.height_special << "]";
+			   << '\\' << lyx::from_utf8(params_.height_special)
+			   << ']';
 		}
 		if (params_.inner_pos != params_.pos)
 			os << "[" << params_.inner_pos << "]";
 
-		os << "{" << width_string << "}";
+		// FIXME UNICODE
+		os << '{' << lyx::from_ascii(width_string) << '}';
 
 		if (params_.use_parbox)
 			os << "{";
@@ -381,7 +390,7 @@ int InsetBox::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetBox::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 		    OutputParams const & runparams) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);

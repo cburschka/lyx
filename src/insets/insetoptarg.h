@@ -30,7 +30,7 @@ public:
 	virtual lyx::docstring const editMessage() const;
 
 	/// Standard LaTeX output -- short-circuited
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
 	int docbook(Buffer const &, std::ostream &,
@@ -41,7 +41,7 @@ public:
 		  OutputParams const &) const;
 
 	/// Outputting the optional parameter of a LaTeX command
-	int latexOptional(Buffer const &, std::ostream &,
+	int latexOptional(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const;
 	/// Write out tothe .lyx file
 	void write(Buffer const & buf, std::ostream & os) const;

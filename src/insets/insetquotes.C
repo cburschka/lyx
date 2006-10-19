@@ -31,6 +31,7 @@
 
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::prefixIs;
 
 using std::endl;
@@ -268,7 +269,7 @@ void InsetQuotes::read(Buffer const &, LyXLex & lex)
 }
 
 
-int InsetQuotes::latex(Buffer const &, ostream & os,
+int InsetQuotes::latex(Buffer const &, odocstream & os,
 		       OutputParams const & runparams) const
 {
 	const int quoteind = quote_index[side_][language_];
@@ -296,12 +297,12 @@ int InsetQuotes::latex(Buffer const &, ostream & os,
 	if (prefixIs(qstr, "`"))
 		qstr.insert(0, "{}");
 
-	os << qstr;
+	os << lyx::from_ascii(qstr);
 	return 0;
 }
 
 
-int InsetQuotes::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetQuotes::plaintext(Buffer const &, odocstream & os,
 		       OutputParams const &) const
 {
 	os << '"';
@@ -327,7 +328,7 @@ int InsetQuotes::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetQuotes::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetQuotes::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

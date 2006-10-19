@@ -43,6 +43,8 @@
 
 namespace support = lyx::support;
 
+using lyx::odocstream;
+
 using std::endl;
 using std::find;
 using std::fill;
@@ -54,8 +56,6 @@ using boost::bind;
 using std::ifstream;
 using std::list;
 using std::map;
-using std::ofstream;
-using std::ostream;
 using std::ostringstream;
 using std::pair;
 using std::vector;
@@ -149,9 +149,9 @@ private:
 	/// Called by the Forkedcall process that generated the bitmap files.
 	void finishedGenerating(pid_t, int);
 	///
-	void dumpPreamble(ostream &) const;
+	void dumpPreamble(odocstream &) const;
 	///
-	void dumpData(ostream &, BitmapFile const &) const;
+	void dumpData(odocstream &, BitmapFile const &) const;
 
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
@@ -481,7 +481,10 @@ void PreviewLoader::Impl::startLoading()
 	// Output the LaTeX file.
 	string const latexfile = filename_base + ".tex";
 
-	ofstream of(latexfile.c_str());
+	// FIXME UNICODE
+	// This creates an utf8 encoded file, but the proper inputenc
+	// command is missing.
+	lyx::odocfstream of(latexfile.c_str());
 	if (!of) {
 		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
 					<< "Unable to create LaTeX file\n"
@@ -582,7 +585,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 }
 
 
-void PreviewLoader::Impl::dumpPreamble(ostream & os) const
+void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 {
 	// Why on earth is Buffer::makeLaTeXFile a non-const method?
 	Buffer & tmp = const_cast<Buffer &>(buffer_);
@@ -596,7 +599,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
-	// int InsetFormula::latex(Buffer const &, ostream & os,
+	// int InsetFormula::latex(Buffer const &, odocstream & os,
 	//                         OutputParams const & runparams) const
 	// {
 	//	WriteStream wi(os, runparams.moving_arg, true);
@@ -629,7 +632,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 }
 
 
-void PreviewLoader::Impl::dumpData(ostream & os,
+void PreviewLoader::Impl::dumpData(odocstream & os,
 				   BitmapFile const & vec) const
 {
 	if (vec.empty())
@@ -639,8 +642,9 @@ void PreviewLoader::Impl::dumpData(ostream & os,
 	BitmapFile::const_iterator end = vec.end();
 
 	for (; it != end; ++it) {
+		// FIXME UNICODE
 		os << "\\begin{preview}\n"
-		   << it->first
+		   << lyx::from_utf8(it->first)
 		   << "\n\\end{preview}\n\n";
 	}
 }

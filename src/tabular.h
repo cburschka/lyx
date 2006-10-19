@@ -310,7 +310,7 @@ public:
 	///
 	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	//
 	int docbook(Buffer const & buf, std::ostream & os,
@@ -587,20 +587,20 @@ public:
 	///
 	// helper function for Latex returns number of newlines
 	///
-	int TeXTopHLine(std::ostream &, row_type row) const;
+	int TeXTopHLine(lyx::odocstream &, row_type row) const;
 	///
-	int TeXBottomHLine(std::ostream &, row_type row) const;
+	int TeXBottomHLine(lyx::odocstream &, row_type row) const;
 	///
-	int TeXCellPreamble(std::ostream &, idx_type cell) const;
+	int TeXCellPreamble(lyx::odocstream &, idx_type cell) const;
 	///
-	int TeXCellPostamble(std::ostream &, idx_type cell) const;
+	int TeXCellPostamble(lyx::odocstream &, idx_type cell) const;
 	///
-	int TeXLongtableHeaderFooter(std::ostream &, Buffer const & buf,
+	int TeXLongtableHeaderFooter(lyx::odocstream &, Buffer const & buf,
 				     OutputParams const &) const;
 	///
 	bool isValidRow(row_type const row) const;
 	///
-	int TeXRow(std::ostream &, row_type const row, Buffer const & buf,
+	int TeXRow(lyx::odocstream &, row_type const row, Buffer const & buf,
 		   OutputParams const &) const;
 	///
 	// helper function for ASCII returns number of newlines

@@ -14,11 +14,10 @@
 #ifndef CHANGES_H
 #define CHANGES_H
 
-#include "support/types.h"
+#include "support/docstream.h"
 #include "support/lyxtime.h"
 
 #include <vector>
-#include <iosfwd>
 
 
 class Change {
@@ -84,7 +83,7 @@ public:
 
 	/// output latex to mark a transition between two changetypes
 	/// returns length of text outputted
-	static int latexMarkChange(std::ostream & os, Change::Type old,
+	static int latexMarkChange(lyx::odocstream & os, Change::Type old,
 		Change::Type change, bool const & output);
 
 	/// output .lyx file format for transitions between changes

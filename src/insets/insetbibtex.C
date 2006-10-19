@@ -37,6 +37,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::absolutePath;
 using lyx::support::ascii_lowercase;
 using lyx::support::changeExtension;
@@ -126,7 +127,7 @@ string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 }
 
 
-int InsetBibtex::latex(Buffer const & buffer, ostream & os,
+int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		       OutputParams const & runparams) const
 {
 	// the sequence of the commands:
@@ -234,8 +235,9 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 				       << endl;
 			}
 		}
+		// FIXME UNICODE
 		os << "\\bibliographystyle{"
-		   << latex_path(normalize_name(buffer, runparams, base, ".bst"))
+		   << lyx::from_utf8(latex_path(normalize_name(buffer, runparams, base, ".bst")))
 		   << "}\n";
 		nlines += 1;
 	}
@@ -244,18 +246,18 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	static bool warned_about_bst_spaces = false;
 	if (!warned_about_bst_spaces && runparams.nice && contains(style, ' ')) {
 		warned_about_bst_spaces = true;
-		// FIXME UNICODE
 		Alert::warning(_("Export Warning!"),
 			       _("There are spaces in the path to your BibTeX style file.\n"
 					      "BibTeX will be unable to find it."));
 	}
 
 	if (!db_out.empty() && buffer.params().use_bibtopic){
-		os << "\\begin{btSect}{" << db_out << "}\n";
-		string btprint = getSecOptions();
+		// FIXME UNICODE
+		os << "\\begin{btSect}{" << lyx::from_utf8(db_out) << "}\n";
+		docstring btprint = getParam("btprint");
 		if (btprint.empty())
 			// default
-			btprint = "btPrintCited";
+			btprint = lyx::from_ascii("btPrintCited");
 		os << "\\" << btprint << "\n"
 		   << "\\end{btSect}\n";
 		nlines += 3;
@@ -287,7 +289,8 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	}
 
 	if (!db_out.empty() && !buffer.params().use_bibtopic){
-		os << "\\bibliography{" << db_out << "}\n";
+		// FIXME UNICODE
+		os << "\\bibliography{" << lyx::from_utf8(db_out) << "}\n";
 		nlines += 1;
 	}
 

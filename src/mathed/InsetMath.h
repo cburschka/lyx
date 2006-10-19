@@ -17,8 +17,6 @@
 
 #include "insets/insetbase.h"
 
-#include <string>
-
 enum HullType {
 	hullNone,
 	hullSimple,
@@ -198,7 +196,10 @@ public:
 	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }
 };
 
+///
 std::ostream & operator<<(std::ostream &, MathAtom const &);
+///
+lyx::odocstream & operator<<(lyx::odocstream &, MathAtom const &);
 
 // initialize math
 void initMath();

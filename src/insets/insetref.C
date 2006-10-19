@@ -25,6 +25,7 @@
 
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::escape;
 
 using std::string;
@@ -84,7 +85,7 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetRef::latex(Buffer const &, ostream & os,
+int InsetRef::latex(Buffer const &, odocstream & os,
 		    OutputParams const &) const
 {
 	// Don't output p_["name"], this is only used in docbook
@@ -95,7 +96,7 @@ int InsetRef::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetRef::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetRef::plaintext(Buffer const &, odocstream & os,
 		    OutputParams const &) const
 {
 	// FIXME UNICODE
@@ -120,7 +121,7 @@ int InsetRef::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int InsetRef::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetRef::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

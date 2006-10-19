@@ -26,6 +26,7 @@
 
 using lyx::char_type;
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::contains;
 using lyx::support::trim;
 
@@ -571,15 +572,15 @@ void InsetLatexAccent::read(Buffer const &, LyXLex & lex)
 }
 
 
-int InsetLatexAccent::latex(Buffer const &, ostream & os,
+int InsetLatexAccent::latex(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
-	os << contents;
+	os << lyx::from_ascii(contents);
 	return 0;
 }
 
 
-int InsetLatexAccent::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetLatexAccent::plaintext(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
 	os << lyx::from_ascii(contents);
@@ -595,7 +596,7 @@ int InsetLatexAccent::docbook(Buffer const &, ostream & os,
 }
 
 
-int InsetLatexAccent::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetLatexAccent::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

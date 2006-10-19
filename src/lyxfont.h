@@ -16,9 +16,8 @@
 #define LYXFONT_H
 
 #include "LColor.h"
+#include "support/docstream.h"
 
-#include <iosfwd>
-#include <string>
 
 class LyXLex;
 class BufferParams;
@@ -295,14 +294,14 @@ public:
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(std::ostream &, LyXFont const & base,
+	int latexWriteStartChanges(lyx::odocstream &, LyXFont const & base,
 				   LyXFont const & prev) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(std::ostream &, LyXFont const & base,
+	int latexWriteEndChanges(lyx::odocstream &, LyXFont const & base,
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state

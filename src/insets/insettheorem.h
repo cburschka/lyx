@@ -31,7 +31,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	virtual lyx::docstring const editMessage() const;

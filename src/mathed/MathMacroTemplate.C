@@ -183,9 +183,11 @@ void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 
 void MathMacroTemplate::write(Buffer const &, std::ostream & os) const
 {
-	WriteStream wi(os, false, false);
-	os << "FormulaMacro\n";
+	lyx::odocstringstream oss;
+	WriteStream wi(oss, false, false);
+	oss << "FormulaMacro\n";
 	write(wi);
+	os << lyx::to_utf8(oss.str());
 }
 
 

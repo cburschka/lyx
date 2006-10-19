@@ -20,8 +20,9 @@
 
 #include <boost/current_function.hpp>
 
+using lyx::odocstream;
+
 using std::string;
-using std::ostream;
 using std::endl;
 
 
@@ -44,8 +45,10 @@ MathArray const & InsetMath::cell(idx_type) const
 void InsetMath::dump() const
 {
 	lyxerr << "---------------------------------------------" << endl;
-	WriteStream wi(lyxerr, false, true);
+	lyx::odocstringstream os;
+	WriteStream wi(os, false, true);
 	write(wi);
+	lyxerr << lyx::to_utf8(os.str());
 	lyxerr << "\n---------------------------------------------" << endl;
 }
 
@@ -131,7 +134,16 @@ string InsetMath::name() const
 }
 
 
-ostream & operator<<(ostream & os, MathAtom const & at)
+std::ostream & operator<<(std::ostream & os, MathAtom const & at)
+{
+	lyx::odocstringstream oss;
+	WriteStream wi(oss, false, false);
+	at->write(wi);
+	return os << lyx::to_utf8(oss.str());
+}
+
+
+odocstream & operator<<(odocstream & os, MathAtom const & at)
 {
 	WriteStream wi(os, false, false);
 	at->write(wi);

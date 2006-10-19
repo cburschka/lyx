@@ -21,6 +21,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::ostream;
@@ -54,7 +55,7 @@ InsetBase::Code InsetTOC::lyxCode() const
 }
 
 
-int InsetTOC::plaintext(Buffer const & buffer, lyx::odocstream & os,
+int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 		    OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";

@@ -35,6 +35,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -250,7 +251,7 @@ bool InsetNote::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetNote::latex(Buffer const & buf, ostream & os,
+int InsetNote::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
@@ -270,10 +271,10 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 	else if (params_.type == InsetNoteParams::Shaded)
 		type = "shaded";
 
-	ostringstream ss;
-	ss << "%\n\\begin{" << type << "}\n";
+	lyx::odocstringstream ss;
+	ss << "%\n\\begin{" << lyx::from_ascii(type) << "}\n";
 	InsetText::latex(buf, ss, runparams);
-	ss << "\n\\end{" << type << "}\n";
+	ss << "\n\\end{" << lyx::from_ascii(type) << "}\n";
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
 	// following latex output:
@@ -288,10 +289,10 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 	if (params_.type == InsetNoteParams::Comment)
 		ss << "{}";
 
-	string const str = ss.str();
+	docstring const str = ss.str();
 	os << str;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n'));
+	return int(lyx::count(str.begin(), str.end(), '\n'));
 }
 
 
@@ -322,7 +323,7 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetNote::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetNote::plaintext(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)

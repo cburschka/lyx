@@ -47,6 +47,7 @@
 #include <limits>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::Point;
 
 using lyx::cap::dirtyTabularStack;
@@ -1054,14 +1055,14 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetTabular::latex(Buffer const & buf, ostream & os,
+int InsetTabular::latex(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	return tabular.latex(buf, os, runparams);
 }
 
 
-int InsetTabular::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	int const dp = runparams.linelen ? runparams.depth : 0;

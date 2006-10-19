@@ -94,6 +94,7 @@ namespace io = boost::iostreams;
 
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::pos_type;
 using lyx::pit_type;
 
@@ -824,7 +825,10 @@ void Buffer::makeLaTeXFile(string const & fname,
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 
-	ofstream ofs;
+	// FIXME UNICODE
+	// This creates an utf8 encoded file, but the inputenc commands
+	// specify other encodings
+	lyx::odocfstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
 
@@ -837,7 +841,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 }
 
 
-void Buffer::writeLaTeXSource(ostream & os,
+void Buffer::writeLaTeXSource(odocstream & os,
 			   string const & original_path,
 			   OutputParams const & runparams_in,
 			   bool const output_preamble, bool const output_body)
@@ -883,11 +887,13 @@ void Buffer::writeLaTeXSource(ostream & os,
 			texrow().newline();
 		}
 		if (!original_path.empty()) {
-			string const inputpath = latex_path(original_path);
+			// FIXME UNICODE
+			// We don't know the encoding of inputpath
+			docstring const inputpath = lyx::from_utf8(latex_path(original_path));
 			os << "\\makeatletter\n"
-			    << "\\def\\input@path{{"
-			    << inputpath << "/}}\n"
-			    << "\\makeatother\n";
+			   << "\\def\\input@path{{"
+			   << inputpath << "/}}\n"
+			   << "\\makeatother\n";
 			texrow().newline();
 			texrow().newline();
 			texrow().newline();
@@ -906,9 +912,11 @@ void Buffer::writeLaTeXSource(ostream & os,
 	lyxerr[Debug::INFO] << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin) {
-		os << subst(lyxrc.language_command_begin, "$$lang",
-			     params().language->babel())
-		    << endl;
+		// FIXME UNICODE
+		os << lyx::from_utf8(subst(lyxrc.language_command_begin,
+		                           "$$lang",
+		                           params().language->babel()))
+		   << '\n';
 		texrow().newline();
 	}
 
@@ -933,9 +941,10 @@ void Buffer::writeLaTeXSource(ostream & os,
 	texrow().newline();
 
 	if (!lyxrc.language_auto_end) {
-		os << subst(lyxrc.language_command_end, "$$lang",
-			     params().language->babel())
-		    << endl;
+		os << lyx::from_utf8(subst(lyxrc.language_command_end,
+		                           "$$lang",
+		                           params().language->babel()))
+		   << '\n';
 		texrow().newline();
 	}
 
@@ -1590,7 +1599,7 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBas
 }
 
 
-void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source)
+void Buffer::getSourceCode(odocstream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source)
 {
 	OutputParams runparams;
 	runparams.nice = true;
@@ -1603,8 +1612,12 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 		os << "% Preview source code\n\n";
 		if (isLatex())
 			writeLaTeXSource(os, filePath(), runparams, true, true);
-		else
-			writeDocBookSource(os, fileName(), runparams, false);
+		else {
+			// FIXME UNICODE
+			ostringstream oss;
+			writeDocBookSource(oss, fileName(), runparams, false);
+			os << lyx::from_utf8(oss.str());
+		}
 	} else {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
@@ -1616,8 +1629,13 @@ void Buffer::getSourceCode(ostream & os, lyx::pit_type par_begin, lyx::pit_type 
 		if (isLatex()) {
 			texrow().reset();
 			latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
-		} else // DocBook
-			docbookParagraphs(paragraphs(), *this, os, runparams);
+		} else {
+			// DocBook
+			// FIXME UNICODE
+			ostringstream oss;
+			docbookParagraphs(paragraphs(), *this, oss, runparams);
+			os << lyx::from_utf8(oss.str());
+		}
 	}
 }
 

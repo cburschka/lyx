@@ -228,7 +228,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lyxerr << "Command <" <<  cmd
-		       << "> == <" << getCommand()
+		       << "> == <" << lyx::to_utf8(getCommand())
 		       << "> == <" << getCmdName()
 		       << '|' << getContents()
 		       << '|' << getOptions()
@@ -284,7 +284,7 @@ void InsetCommandParams::write(ostream & os) const
 }
 
 
-string const InsetCommandParams::getCommand() const
+docstring const InsetCommandParams::getCommand() const
 {
 	docstring s = '\\' + lyx::from_ascii(name_);
 	for (size_t i = 0; i < info_->n; ++i) {
@@ -306,7 +306,7 @@ string const InsetCommandParams::getCommand() const
 		} else
 			s += '{' + params_[i] + '}';
 	}
-	return lyx::to_utf8(s);
+	return s;
 }
 
 

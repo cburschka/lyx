@@ -201,7 +201,7 @@ std::string const split(std::string const & a, char delim);
 std::string const rsplit(std::string const & a, std::string & piece, char delim);
 
 /// Escapes non ASCII chars
-std::string const escape(std::string const & lab);
+lyx::docstring const escape(lyx::docstring const & lab);
 
 /// gives a vector of stringparts which have the delimiter delim
 std::vector<std::string> const getVectorFromString(std::string const & str,

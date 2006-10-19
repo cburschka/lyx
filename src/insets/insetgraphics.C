@@ -87,6 +87,8 @@ TODO
 
 #include <sstream>
 
+using lyx::odocstream;
+
 namespace support = lyx::support;
 
 using lyx::support::absolutePath;
@@ -735,7 +737,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 }
 
 
-int InsetGraphics::latex(Buffer const & buf, ostream & os,
+int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams) const
 {
 	// If there is no file specified or not existing,
@@ -795,7 +797,8 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 	// (when there are several versions in different formats)
 	latex_str += prepareFile(buf, runparams);
 	latex_str += '}' + after;
-	os << latex_str;
+	// FIXME UNICODE
+	os << lyx::from_utf8(latex_str);
 
 	lyxerr[Debug::GRAPHICS] << "InsetGraphics::latex outputting:\n"
 				<< latex_str << endl;
@@ -804,7 +807,7 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetGraphics::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 			 OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert

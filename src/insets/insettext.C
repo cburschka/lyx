@@ -53,6 +53,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::pos_type;
 
 using lyx::graphics::PreviewLoader;
@@ -260,7 +261,7 @@ bool InsetText::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetText::latex(Buffer const & buf, ostream & os,
+int InsetText::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
 	TexRow texrow;
@@ -269,7 +270,7 @@ int InsetText::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetText::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetText::plaintext(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();

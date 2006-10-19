@@ -12,7 +12,7 @@
 #ifndef MATH_EXTERN_H
 #define MATH_EXTERN_H
 
-#include <string>
+#include "support/docstring.h"
 
 
 class NormalStream;
@@ -35,7 +35,7 @@ void octave(MathArray const &, OctaveStream &);
 bool extractNumber(MathArray const & ar, int & i);
 bool extractNumber(MathArray const & ar, double & i);
 
-MathArray pipeThroughExtern(std::string const & lang, std::string const & extra,
+MathArray pipeThroughExtern(std::string const & lang, lyx::docstring const & extra,
 	MathArray const & ar);
 
 #endif

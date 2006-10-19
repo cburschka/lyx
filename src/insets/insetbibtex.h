@@ -31,7 +31,7 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	void fillWithBibKeys(Buffer const & buffer,

@@ -14,7 +14,7 @@
 
 #include "ParagraphList_fwd.h"
 
-#include <string>
+#include "support/docstream.h"
 
 class Buffer;
 class OutputParams;
@@ -24,7 +24,7 @@ class TexRow;
 
 void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
-		     std::ostream & ofs,
+		     lyx::odocstream & ofs,
 		     TexRow & texrow,
 		     OutputParams const &,
 		     std::string const & everypar = std::string());

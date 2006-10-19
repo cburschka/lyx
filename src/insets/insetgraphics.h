@@ -43,7 +43,7 @@ public:
 	 #fragile == true# means, that the inset should take care about
 	 fragile commands by adding a #\protect# before.
 	 */
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, lyx::odocstream &,

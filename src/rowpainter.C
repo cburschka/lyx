@@ -210,6 +210,10 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 			if (isPrintableNonspace(c)) {
 				int const width2 =
 					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
+				// FIXME UNICODE
+				// This does not work anymore, and non-ascii
+				// characters in source files are forbidden
+				// anyway.
 				// dalet / resh
 				dx = (c == 'ø' || c == 'ã')
 					? width2 - width

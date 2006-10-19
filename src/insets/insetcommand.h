@@ -48,7 +48,7 @@ public:
 	/// FIXME remove
 	void scanCommand(std::string const & c) { p_.scanCommand(c); };
 	///
-	virtual int latex(Buffer const &, std::ostream &,
+	virtual int latex(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, lyx::odocstream &,
@@ -95,7 +95,7 @@ protected:
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
-	std::string const getCommand() const { return p_.getCommand(); }
+	lyx::docstring const getCommand() const { return p_.getCommand(); }
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///

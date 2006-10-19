@@ -19,6 +19,7 @@
 #include "support/std_ostream.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -53,7 +54,7 @@ docstring const InsetMarginal::editMessage() const
 }
 
 
-int InsetMarginal::latex(Buffer const & buf, ostream & os,
+int InsetMarginal::latex(Buffer const & buf, odocstream & os,
 			 OutputParams const & runparams) const
 {
 	os << "%\n\\marginpar{";

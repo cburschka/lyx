@@ -87,7 +87,7 @@ string const InsetTheorem::editMessage() const
 }
 
 
-int InsetTheorem::latex(Buffer const * buf, ostream & os,
+int InsetTheorem::latex(Buffer const * buf, odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << "\\begin{theorem}%\n";

@@ -62,6 +62,7 @@
 
 using lyx::CoordCache;
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::Point;
 
 using lyx::cap::copySelection;
@@ -208,13 +209,15 @@ bool InsetMathNest::idxLast(LCursor & cur) const
 
 void InsetMathNest::dump() const
 {
-	WriteStream os(lyxerr);
+	lyx::odocstringstream oss;
+	WriteStream os(oss);
 	os << "---------------------------------------------\n";
 	write(os);
 	os << "\n";
 	for (idx_type i = 0, n = nargs(); i != n; ++i)
 		os << cell(i) << "\n";
 	os << "---------------------------------------------\n";
+	lyxerr << lyx::to_utf8(oss.str());
 }
 
 
@@ -348,7 +351,7 @@ void InsetMathNest::normalize(NormalStream & os) const
 }
 
 
-int InsetMathNest::latex(Buffer const &, std::ostream & os,
+int InsetMathNest::latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);

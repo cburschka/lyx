@@ -26,7 +26,7 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::MARGIN_CODE; }
 	///
-	int latex(Buffer const &, std::ostream &,
+	int latex(Buffer const &, lyx::odocstream &,
 		  OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,

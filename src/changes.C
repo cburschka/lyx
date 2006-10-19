@@ -17,6 +17,8 @@
 
 #include <boost/assert.hpp>
 
+using lyx::docstring;
+using lyx::odocstream;
 using lyx::pos_type;
 
 using std::endl;
@@ -450,17 +452,17 @@ void Changes::check() const
 }
 
 
-int Changes::latexMarkChange(std::ostream & os,
+int Changes::latexMarkChange(odocstream & os,
 			     Change::Type const old, Change::Type const change,
 			     bool const & output)
 {
 	if (!output || old == change)
 		return 0;
 
-	string const start("\\changestart{}");
-	string const end("\\changeend{}");
-	string const son("\\overstrikeon{}");
-	string const soff("\\overstrikeoff{}");
+	static docstring const start(lyx::from_ascii("\\changestart{}"));
+	static docstring const end(lyx::from_ascii("\\changeend{}"));
+	static docstring const son(lyx::from_ascii("\\overstrikeon{}"));
+	static docstring const soff(lyx::from_ascii("\\overstrikeoff{}"));
 
 	int column = 0;
 

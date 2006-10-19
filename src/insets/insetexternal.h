@@ -123,7 +123,7 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex);
 
 	/// \returns the number of rows (\n's) of generated code.
-	virtual int latex(Buffer const &, std::ostream &,
+	virtual int latex(Buffer const &, lyx::odocstream &,
 			  OutputParams const &) const;
 	///
 	virtual int plaintext(Buffer const &, lyx::odocstream &,

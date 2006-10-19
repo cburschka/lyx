@@ -64,7 +64,7 @@ iconv_convert(iconv_t * cd,
 
 	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(reinterpret_cast<char const *>(buf));
 	size_t inbytesleft = buflen * sizeof(InType);
-	size_t const outsize = 1000;
+	size_t const outsize = 10000;
 	static char out[outsize];
 	char * outbuf = out;
 	size_t outbytesleft = outsize;

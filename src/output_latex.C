@@ -33,7 +33,7 @@
 using lyx::support::subst;
 
 using std::endl;
-using std::ostream;
+using lyx::odocstream;
 using std::string;
 
 
@@ -43,14 +43,14 @@ ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::const_iterator pit,
-	       ostream & os, TexRow & texrow,
+	       odocstream & os, TexRow & texrow,
 	       OutputParams const & runparams);
 
 ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::const_iterator pit,
-	  ostream & os, TexRow & texrow,
+	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams,
 	  string const & everypar = string());
 
@@ -59,7 +59,7 @@ ParagraphList::const_iterator
 TeXDeeper(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::const_iterator pit,
-	  ostream & os, TexRow & texrow,
+	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << &*pit << endl;
@@ -82,14 +82,14 @@ TeXDeeper(Buffer const & buf,
 
 
 int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
-		      ostream & os, OutputParams const & runparams, int number);
+		      odocstream & os, OutputParams const & runparams, int number);
 
 
 ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::const_iterator pit,
-	       ostream & os, TexRow & texrow,
+	       odocstream & os, TexRow & texrow,
 	       OutputParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
@@ -108,16 +108,20 @@ TeXEnvironment(Buffer const & buf,
 
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel()) {
-			os << subst(lyxrc.language_command_end, "$$lang",
-				    previous_language->babel())
+			os << lyx::from_ascii(subst(
+				lyxrc.language_command_end,
+				"$$lang",
+				previous_language->babel()))
 			   << endl;
 			texrow.newline();
 		}
 
 		if (lyxrc.language_command_end.empty() ||
 		    language->babel() != doc_language->babel()) {
-			os << subst(lyxrc.language_command_begin, "$$lang",
-				    language->babel())
+			os << lyx::from_ascii(subst(
+				lyxrc.language_command_begin,
+				"$$lang",
+				language->babel()))
 			   << endl;
 			texrow.newline();
 		}
@@ -125,14 +129,15 @@ TeXEnvironment(Buffer const & buf,
 
 	bool leftindent_open = false;
 	if (!pit->params().leftIndent().zero()) {
-		os << "\\begin{LyXParagraphLeftIndent}{" <<
-			pit->params().leftIndent().asLatexString() << "}\n";
+		os << "\\begin{LyXParagraphLeftIndent}{"
+		   << lyx::from_ascii(pit->params().leftIndent().asLatexString())
+		   << "}\n";
 		texrow.newline();
 		leftindent_open = true;
 	}
 
 	if (style->isEnvironment()) {
-		os << "\\begin{" << style->latexname() << '}';
+		os << "\\begin{" << lyx::from_ascii(style->latexname()) << '}';
 		if (style->optionalargs > 0) {
 			int ret = latexOptArgInsets(buf, *pit, os, runparams,
 						    style->optionalargs);
@@ -142,13 +147,15 @@ TeXEnvironment(Buffer const & buf,
 			}
 		}
 		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
-			os << "{" << pit->params().labelWidthString() << "}\n";
+			// FIXME UNICODE
+			os << '{'
+			   << lyx::from_utf8(pit->params().labelWidthString())
+			   << "}\n";
 		} else if (style->labeltype == LABEL_BIBLIO) {
 			// ale970405
-			// FIXME UNICODE
-			os << '{' << lyx::to_utf8(bibitemWidest(buf)) << "}\n";
+			os << '{' << bibitemWidest(buf) << "}\n";
 		} else
-			os << style->latexparam() << '\n';
+			os << lyx::from_ascii(style->latexparam()) << '\n';
 		texrow.newline();
 	}
 	ParagraphList::const_iterator par = pit;
@@ -190,7 +197,7 @@ TeXEnvironment(Buffer const & buf,
 		 && par->params().leftIndent() == pit->params().leftIndent());
 
 	if (style->isEnvironment()) {
-		os << "\\end{" << style->latexname() << "}\n";
+		os << "\\end{" << lyx::from_ascii(style->latexname()) << "}\n";
 		texrow.newline();
 	}
 
@@ -206,7 +213,7 @@ TeXEnvironment(Buffer const & buf,
 
 
 int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
-		      ostream & os, OutputParams const & runparams, int number)
+		      odocstream & os, OutputParams const & runparams, int number)
 {
 	int lines = 0;
 
@@ -228,7 +235,7 @@ ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::const_iterator pit,
-	  ostream & os, TexRow & texrow,
+	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams_in,
 	  string const & everypar)
 {
@@ -266,8 +273,9 @@ TeXOnePar(Buffer const & buf,
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel())
 		{
-			os << subst(lyxrc.language_command_end, "$$lang",
-				    previous_language->babel())
+			os << lyx::from_ascii(subst(lyxrc.language_command_end,
+				"$$lang",
+				previous_language->babel()))
 			   << endl;
 			texrow.newline();
 		}
@@ -275,8 +283,10 @@ TeXOnePar(Buffer const & buf,
 		if (lyxrc.language_command_end.empty() ||
 		    language->babel() != doc_language->babel())
 		{
-			os << subst(lyxrc.language_command_begin, "$$lang",
-				    language->babel())
+			os << lyx::from_ascii(subst(
+				lyxrc.language_command_begin,
+				"$$lang",
+				language->babel()))
 			   << endl;
 			texrow.newline();
 		}
@@ -285,7 +295,7 @@ TeXOnePar(Buffer const & buf,
 	if (bparams.inputenc == "auto" &&
 	    language->encoding() != previous_language->encoding()) {
 		os << "\\inputencoding{"
-		   << language->encoding()->latexName()
+		   << lyx::from_ascii(language->encoding()->latexName())
 		   << "}\n";
 		texrow.newline();
 	}
@@ -302,7 +312,8 @@ TeXOnePar(Buffer const & buf,
 			&& (pit == paragraphs.begin()
 			    || !boost::prior(pit)->hasSameLayout(*pit)))
 		{
-			os << pit->params().spacing().writeEnvirBegin() << '\n';
+			os << lyx::from_ascii(pit->params().spacing().writeEnvirBegin())
+			    << '\n';
 			texrow.newline();
 		}
 
@@ -319,7 +330,7 @@ TeXOnePar(Buffer const & buf,
 
 	switch (style->latextype) {
 	case LATEX_COMMAND:
-		os << '\\' << style->latexname();
+		os << '\\' << lyx::from_ascii(style->latexname());
 
 		// Separate handling of optional argument inset.
 		if (style->optionalargs > 0) {
@@ -331,7 +342,7 @@ TeXOnePar(Buffer const & buf,
 			}
 		}
 		else
-			os << style->latexparam();
+			os << lyx::from_ascii(style->latexparam());
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
@@ -344,7 +355,8 @@ TeXOnePar(Buffer const & buf,
 		break;
 	}
 
-	os << everypar;
+	// FIXME UNICODE
+	os << lyx::from_utf8(everypar);
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
 					     outerFont(std::distance(paragraphs.begin(), pit), paragraphs),
 					     os, texrow, runparams);
@@ -374,7 +386,7 @@ TeXOnePar(Buffer const & buf,
 	    && !is_command) {
 		if (!need_par)
 			os << '{';
-		os << "\\" << font.latexSize() << " \\par}";
+		os << "\\" << lyx::from_ascii(font.latexSize()) << " \\par}";
 	} else if (need_par) {
 		os << "\\par}";
 	} else if (is_command)
@@ -421,7 +433,8 @@ TeXOnePar(Buffer const & buf,
 			&& (boost::next(pit) == paragraphs.end()
 			    || !boost::next(pit)->hasSameLayout(*pit)))
 		{
-			os << pit->params().spacing().writeEnvirEnd() << '\n';
+			os << lyx::from_ascii(pit->params().spacing().writeEnvirEnd())
+			   << '\n';
 			texrow.newline();
 		}
 	}
@@ -433,14 +446,16 @@ TeXOnePar(Buffer const & buf,
 		// float.
 
 		if (lyxrc.language_command_end.empty())
-			os << subst(lyxrc.language_command_begin,
-				    "$$lang",
-				    doc_language->babel())
+			os << lyx::from_ascii(subst(
+				lyxrc.language_command_begin,
+				"$$lang",
+				doc_language->babel()))
 			   << endl;
 		else
-			os << subst(lyxrc.language_command_end,
-				    "$$lang",
-				    language->babel())
+			os << lyx::from_ascii(subst(
+				lyxrc.language_command_end,
+				"$$lang",
+				language->babel()))
 			   << endl;
 		texrow.newline();
 	}
@@ -465,7 +480,7 @@ TeXOnePar(Buffer const & buf,
 // LaTeX all paragraphs
 void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
-		     ostream & os,
+		     odocstream & os,
 		     TexRow & texrow,
 		     OutputParams const & runparams,
 		     string const & everypar)
@@ -506,18 +521,18 @@ void latexParagraphs(Buffer const & buf,
 					was_title = true;
 					if (tclass.titletype() == TITLE_ENVIRONMENT) {
 						os << "\\begin{"
-						    << tclass.titlename()
+						    << lyx::from_ascii(tclass.titlename())
 						    << "}\n";
 						texrow.newline();
 					}
 				}
 			} else if (was_title && !already_title) {
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
-					os << "\\end{" << tclass.titlename()
+					os << "\\end{" << lyx::from_ascii(tclass.titlename())
 					    << "}\n";
 				}
 				else {
-					os << "\\" << tclass.titlename()
+					os << "\\" << lyx::from_ascii(tclass.titlename())
 					    << "\n";
 				}
 				texrow.newline();
@@ -547,11 +562,11 @@ void latexParagraphs(Buffer const & buf,
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
-			os << "\\end{" << tclass.titlename()
+			os << "\\end{" << lyx::from_ascii(tclass.titlename())
 			    << "}\n";
 		}
 		else {
-			os << "\\" << tclass.titlename()
+			os << "\\" << lyx::from_ascii(tclass.titlename())
 			    << "\n";
 				}
 		texrow.newline();

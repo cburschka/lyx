@@ -44,7 +44,6 @@ using std::string;
 using std::auto_ptr;
 using std::istream;
 using std::istringstream;
-using std::ostringstream;
 using std::vector;
 
 
@@ -60,12 +59,12 @@ public:
 	///
 	virtual string const inset2string(Buffer const &) const
 	{
-		ostringstream data;
+		lyx::odocstringstream data;
 		//data << name() << " active_cell " << inset.getActCell() << '\n';
-		data << name() << " active_cell " << 0 << '\n';
+		data << lyx::from_utf8(name()) << " active_cell " << 0 << '\n';
 		WriteStream ws(data);
 		inset_.write(ws);
-		return data.str();
+		return lyx::to_utf8(data.str());
 	}
 
 protected:

@@ -39,6 +39,7 @@
 #include <sstream>
 
 using lyx::docstring;
+using lyx::odocstream;
 
 using std::string;
 using std::auto_ptr;
@@ -282,14 +283,15 @@ bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-int InsetCharStyle::latex(Buffer const & buf, ostream & os,
+int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
 	if (!undefined()) {
-		os << "\\" << params_.latexname;
+		// FIXME UNICODE
+		os << '\\' << lyx::from_utf8(params_.latexname);
 		if (!params_.latexparam.empty())
-			os << params_.latexparam;
-		os << "{";
+			os << lyx::from_utf8(params_.latexparam);
+		os << '{';
 	}
 	int i = InsetText::latex(buf, os, runparams);
 	if (!undefined())
@@ -322,14 +324,14 @@ int InsetCharStyle::docbook(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCharStyle::plaintext(Buffer const & buf, lyx::odocstream & os,
+int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
 			      OutputParams const & runparams) const
 {
 	return InsetText::plaintext(buf, os, runparams);
 }
 
 
-int InsetCharStyle::textString(Buffer const & buf, lyx::odocstream & os,
+int InsetCharStyle::textString(Buffer const & buf, odocstream & os,
 		       OutputParams const & op) const
 {
 	return plaintext(buf, os, op);

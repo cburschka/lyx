@@ -26,6 +26,7 @@
 #include "support/convert.h"
 
 using lyx::docstring;
+using lyx::odocstream;
 using lyx::support::prefixIs;
 
 using std::max;
@@ -109,7 +110,7 @@ docstring const InsetBibitem::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetBibitem::plaintext(Buffer const &, lyx::odocstream & os,
+int InsetBibitem::plaintext(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
 	os << '[' << getCounter() << "] ";

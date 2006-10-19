@@ -671,10 +671,11 @@ void augmentFont(LyXFont & font, string const & name)
 
 string asString(MathArray const & ar)
 {
-	std::ostringstream os;
+	lyx::odocstringstream os;
 	WriteStream ws(os);
 	ws << ar;
-	return os.str();
+	// FIXME UNICODE
+	return lyx::to_utf8(os.str());
 }
 
 
@@ -686,17 +687,19 @@ void asArray(docstring const & str, MathArray & ar)
 
 string asString(InsetMath const & inset)
 {
-	std::ostringstream os;
+	lyx::odocstringstream os;
 	WriteStream ws(os);
 	inset.write(ws);
-	return os.str();
+	// FIXME UNICODE
+	return lyx::to_utf8(os.str());
 }
 
 
 string asString(MathAtom const & at)
 {
-	std::ostringstream os;
+	lyx::odocstringstream os;
 	WriteStream ws(os);
 	at->write(ws);
-	return os.str();
+	// FIXME UNICODE
+	return lyx::to_utf8(os.str());
 }
