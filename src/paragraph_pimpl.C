@@ -92,19 +92,11 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
+	// FIXME: change tracking (MG)
 	if (!tracking())
 		return false;
 
 	return changes_->isChange(start, end);
-}
-
-
-bool Paragraph::Pimpl::isChangeEdited(pos_type start, pos_type end) const
-{
-	if (!tracking())
-		return false;
-
-	return changes_->isChangeEdited(start, end);
 }
 
 

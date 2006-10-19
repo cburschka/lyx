@@ -154,7 +154,7 @@ int InsetERT::latex(Buffer const &, ostream & os,
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
 			// ignore all struck out text
-			if (isDeletedText(*par, i))
+			if (par->isDeleted(i))
 				continue;
 
 			os << par->getChar(i);

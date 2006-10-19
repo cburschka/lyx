@@ -368,28 +368,6 @@ bool Changes::isChange(pos_type const start, pos_type const end) const
 }
 
 
-bool Changes::isChangeEdited(lyx::pos_type const start,
-			     lyx::pos_type const end) const
-{
-	if (!table_.size()) {
-		if (lyxerr.debugging(Debug::CHANGES))
-			lyxerr[Debug::CHANGES] << "Empty, type is " << empty_type_ << endl;
-		return empty_type_ != Change::INSERTED;
-	}
-
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator const itend = table_.end();
-
-	for (; it != itend; ++it) {
-		if (it->range.intersects(Range(start, end ? end - 1 : 0))
-			&& it->change.type != Change::INSERTED) {
-			return true;
-		}
-	}
-	return false;
-}
-
-
 void Changes::merge()
 {
 	if (lyxerr.debugging(Debug::CHANGES))

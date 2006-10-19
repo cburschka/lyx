@@ -139,7 +139,7 @@ bool isLetter(DocIterator const & dit)
 		    // We want to pass the ' and escape chars to ispell
 		    || contains(lyx::from_utf8(lyxrc.isp_esc_chars + '\''),
 				dit.paragraph().getChar(dit.pos())))
-		&& !isDeletedText(dit.paragraph(), dit.pos());
+		&& !dit.paragraph().isDeleted(dit.pos());
 }
 
 

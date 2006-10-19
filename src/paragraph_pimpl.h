@@ -42,8 +42,6 @@ public:
 	Change const lookupChange(lyx::pos_type pos) const;
 	/// is there a change within the given range ?
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
-	/// is there a non-addition in this range ?
-	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
         /// set change for the entire par
         void setChange(Change const & change);
 	/// set change type at given pos

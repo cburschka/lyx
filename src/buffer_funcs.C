@@ -260,7 +260,7 @@ int countWords(DocIterator const & from, DocIterator const & to)
 		if (dit.inTexted()
 		    && dit.pos() != dit.lastpos()
 		    && dit.paragraph().isLetter(dit.pos())
-		    && !isDeletedText(dit.paragraph(), dit.pos())) {
+		    && !dit.paragraph().isDeleted(dit.pos())) {
 			if (!inword) {
 				++count;
 				inword = true;

@@ -78,9 +78,6 @@ public:
 	/// return true if there is a change in the given range
 	bool isChange(lyx::pos_type start, lyx::pos_type end) const;
 
-	/// return true if there is a deleted or unchanged range contained
-	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
-
 	/// remove the given entry. This implies that a character was
 	/// deleted at pos, and will adjust all range bounds past it
 	void erase(lyx::pos_type pos);

@@ -1434,12 +1434,6 @@ bool Paragraph::isChanged(pos_type start, pos_type end) const
 }
 
 
-bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
-{
-	return pimpl_->isChangeEdited(start, end);
-}
-
-
 void Paragraph::setChange(Change const & change)
 {
 	pimpl_->setChange(change);

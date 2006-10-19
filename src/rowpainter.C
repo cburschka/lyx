@@ -173,7 +173,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 		bv_.buffer()->params().getFont() :
 		font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
-	pi.erased_ = erased_ || isDeletedText(par_, pos);
+	pi.erased_ = erased_ || par_.isDeleted(pos);
 	bv_.coordCache().insets().add(inset, int(x_), yo_);
 	InsetText const * const in = inset->asTextInset();
 	// non-wide insets are painted completely. Recursive
@@ -688,7 +688,7 @@ void RowPainter::paintText()
 			continue;
 		}
 
-		is_struckout = isDeletedText(par_, pos);
+		is_struckout = par_.isDeleted(pos);
 
 		if (is_struckout && !running_strikeout) {
 			running_strikeout = true;

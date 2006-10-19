@@ -200,9 +200,10 @@ public:
 
 	/// is there a change within the given range ?
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
-
-	/// is there a non-addition in this range ?
-	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
+	/// is there a deletion at the given pos ?
+	bool isDeleted(lyx::pos_type pos) const {
+		return lookupChange(pos).type == Change::DELETED;
+	}
 
 	/// set change type at given pos
 	void setChangeType(lyx::pos_type pos, Change::Type type);
@@ -321,8 +322,8 @@ public:
 
 	///
 	bool isHfill(lyx::pos_type pos) const {
-	return isInset(pos)
-		&& getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
+		return isInset(pos)
+		       && getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
 	}
 	/// hinted by profiler
 	bool isInset(lyx::pos_type pos) const {
@@ -414,17 +415,5 @@ private:
 	///
 	Pimpl * pimpl_;
 };
-
-
-inline bool isInsertedText(Paragraph const & par, lyx::pos_type pos)
-{
-	return par.lookupChange(pos).type == Change::INSERTED;
-}
-
-
-inline bool isDeletedText(Paragraph const & par, lyx::pos_type pos)
-{
-	return par.lookupChange(pos).type == Change::DELETED;
-}
 
 #endif // PARAGRAPH_H
