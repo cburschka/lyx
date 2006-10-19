@@ -238,21 +238,15 @@ void Paragraph::validate(LaTeXFeatures & features) const
 }
 
 
-void Paragraph::eraseIntern(lyx::pos_type pos)
+bool Paragraph::erase(pos_type pos, bool trackChanges)
 {
-	pimpl_->eraseIntern(pos);
+	return pimpl_->erase(pos, trackChanges);
 }
 
 
-bool Paragraph::erase(pos_type pos)
+int Paragraph::erase(pos_type start, pos_type end, bool trackChanges)
 {
-	return pimpl_->erase(pos);
-}
-
-
-int Paragraph::erase(pos_type start, pos_type end)
-{
-	return pimpl_->erase(start, end);
+	return pimpl_->erase(start, end, trackChanges);
 }
 
 
@@ -568,7 +562,7 @@ int Paragraph::stripLeadingSpaces()
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))
 		&& (lookupChange(0).type != Change::DELETED)) {
-		erase(0);
+		erase(0, false); // no change tracking here
 		++i;
 	}
 

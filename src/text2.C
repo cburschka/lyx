@@ -1264,11 +1264,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		// FIXME: change tracking (MG)
 		    && oldpar.lookupChange(old.pos() - 1) != Change(Change::DELETED)) {
-			// We need to set the text to Change::INSERTED to
-			// get it erased properly
-			// FIXME: change tracking (MG)
-			oldpar.setChange(old.pos() -1, Change(Change::INSERTED));
-			oldpar.erase(old.pos() - 1);
+			oldpar.erase(old.pos() - 1, false);  // do not track changes in DEPM
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by

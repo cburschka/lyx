@@ -62,11 +62,11 @@ public:
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset, Change const & change);
 	/// definite erase
-	void eraseIntern(lyx::pos_type pos);
+	void erase(lyx::pos_type pos);
 	/// erase the given position. Returns true if it was actually erased
-	bool erase(lyx::pos_type pos);
+	bool erase(lyx::pos_type pos, bool trackChanges);
 	/// erase the given range
-	int erase(lyx::pos_type start, lyx::pos_type end);
+	int erase(lyx::pos_type start, lyx::pos_type end, bool trackChanges);
 	///
 	InsetBase * inset_owner;
 

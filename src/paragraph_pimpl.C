@@ -161,8 +161,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 				// Suppress access to nonexistent
 				// "end-of-paragraph char":
 				if (i < size()) {
-					eraseIntern(i);
-					changes_->erase(i);
+					erase(i);
 					--end;
 					--i;
 				}
@@ -194,8 +193,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 			case Change::INSERTED:
 				if (i < size()) {
-					eraseIntern(i);
-					changes_->erase(i);
+					erase(i);
 					--end;
 					--i;
 				}
@@ -266,8 +264,13 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 }
 
 
-void Paragraph::Pimpl::eraseIntern(pos_type pos)
+void Paragraph::Pimpl::erase(pos_type pos)
 {
+	// FIXME: change tracking (MG)
+	// do something like changes_->erase(i);
+	// in one of the next patches, the two erase functions 
+ 	// will be merged but I don't want to break too many things at the same time :-)
+
 	// if it is an inset, delete the inset entry
 	if (owner_->text_[pos] == Paragraph::META_INSET) {
 		owner_->insetlist.erase(pos);
@@ -300,18 +303,19 @@ void Paragraph::Pimpl::eraseIntern(pos_type pos)
 		}
 	}
 
-	// Update all other entries.
+	// Update all other entries
 	FontList::iterator fend = fontlist.end();
 	for (; it != fend; ++it)
 		it->pos(it->pos() - 1);
 
-	// Update the insetlist.
+	// Update the insetlist
 	owner_->insetlist.decreasePosAfterPos(pos);
 }
 
 
-bool Paragraph::Pimpl::erase(pos_type pos)
+bool Paragraph::Pimpl::erase(pos_type pos, bool trackChanges)
 {
+	// FIXME: change tracking (MG)
 	BOOST_ASSERT(pos <= size());
 
 	if (tracking()) {
@@ -328,7 +332,7 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 
 	// Don't physically access nonexistent end-of-paragraph char
 	if (pos < size()) {
-		eraseIntern(pos);
+		erase(pos);
 		return true;
 	}
 
@@ -336,11 +340,11 @@ bool Paragraph::Pimpl::erase(pos_type pos)
 }
 
 
-int Paragraph::Pimpl::erase(pos_type start, pos_type end)
+int Paragraph::Pimpl::erase(pos_type start, pos_type end, bool trackChanges)
 {
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {
-		if (!erase(i))
+		if (!erase(i, trackChanges))
 			++i;
 	}
 	return end - i;

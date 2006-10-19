@@ -149,7 +149,8 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
 			for (pos_type j = 0; j < insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {
-					insertion[i].erase(j);
+					// do not track deletion of newline
+					insertion[i].erase(j, false);
 					breakParagraphConservative(
 							buffer.params(),
 							insertion, i, j);
@@ -208,7 +209,8 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 			if (tmpbuf->getChar(i) == Paragraph::META_INSET &&
 			    !pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
-				tmpbuf->erase(i--);
+				// do not track deletion of invalid insets
+				tmpbuf->erase(i--, false);
 		}
 
 		// FIXME: Change tracking (MG)
