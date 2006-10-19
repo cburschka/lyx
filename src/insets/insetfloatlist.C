@@ -72,26 +72,10 @@ void InsetFloatList::write(Buffer const &, ostream & os) const
 
 void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 {
-	FloatList const & floats = buf.params().getLyXTextClass().floats();
-	string token;
-
-	if (lex.eatLine()) {
-		setCmdName(lex.getString());
-		lyxerr[Debug::INSETS] << "FloatList::float_type: " << getCmdName() << endl;
-		if (!floats.typeExist(getCmdName()))
-			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
-	} else
-		lex.printError("InsetFloatList: Parse error: `$$Token'");
-	while (lex.isOK()) {
-		lex.next();
-		token = lex.getString();
-		if (token == "\\end_inset")
-			break;
-	}
-	if (token != "\\end_inset") {
-		lex.printError("Missing \\end_inset at this point. "
-			       "Read: `$$Token'");
-	}
+	InsetCommand::read(buf, lex);
+	lyxerr[Debug::INSETS] << "FloatList::float_type: " << getCmdName() << endl;
+	if (!buf.params().getLyXTextClass().floats().typeExist(getCmdName()))
+		lex.printError("InsetFloatList: Unknown float type: `$$Token'");
 }
 
 
