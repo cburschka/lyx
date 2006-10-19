@@ -190,6 +190,8 @@ void QTocDialog::updateGui()
 	if (type_model->stringList().isEmpty())
 	{
 		enableButtons();
+		typeCO->setModel(type_model);
+		tocTV->setModel(new QStandardItemModel);
 		return;
 	}
 

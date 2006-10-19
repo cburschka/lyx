@@ -58,6 +58,9 @@ QStandardItemModel * QToc::tocModel()
 		<< "  toc_models_.size() " << toc_models_.size()
 		<< endl;
 
+	if (toc_models_.empty())
+		return 0;
+
 	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
 	return toc_models_[type_];
 }
@@ -118,8 +121,11 @@ void QToc::update()
 	type_ = 0;
 
 	vector<string> const & types = getTypes();
-	if (types.empty())
+	if (types.empty()) {
+		type_model_.setStringList(type_list);
+		toc_models_.clear();
 		return;
+	}
 
 	string const & selected_type = toc::getType(params().getCmdName());
 	lyxerr[Debug::GUI] << "selected_type " << selected_type	<< endl;
