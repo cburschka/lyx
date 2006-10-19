@@ -1440,12 +1440,6 @@ void Paragraph::setChange(Change const & change)
 }
 
 
-void Paragraph::setChangeType(lyx::pos_type pos, Change::Type type)
-{
-	pimpl_->setChangeType(pos, type);
-}
-
-
 void Paragraph::setChange(lyx::pos_type pos, Change const & change)
 {
 	pimpl_->setChange(pos, change);

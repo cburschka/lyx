@@ -116,15 +116,6 @@ void Paragraph::Pimpl::setChange(Change const & change)
 }
 
 
-void Paragraph::Pimpl::setChangeType(pos_type pos, Change::Type type)
-{
-	if (!tracking())
-		return;
-
-	changes_->set(type, pos);
-}
-
-
 void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 {
 	if (!tracking())

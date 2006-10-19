@@ -44,8 +44,6 @@ public:
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
         /// set change for the entire par
         void setChange(Change const & change);
-	/// set change type at given pos
-	void setChangeType(lyx::pos_type pos, Change::Type type);
 	/// set change at given pos
 	void setChange(lyx::pos_type pos, Change const & change);
 	/// accept change

@@ -205,9 +205,6 @@ public:
 		return lookupChange(pos).type == Change::DELETED;
 	}
 
-	/// set change type at given pos
-	void setChangeType(lyx::pos_type pos, Change::Type type);
-
 	/// set change for the entire par
 	void setChange(Change const & change);
 
