@@ -666,7 +666,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			// I assume this is hack treating typewriter as verbatim
 			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				if (c != '\0') {
-					os << c;
+					os.put(c);
 				}
 				break;
 			}
@@ -691,7 +691,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			}
 
 			if (pnr == phrases_nr && c != '\0') {
-				os << c;
+				os.put(c);
 			}
 			break;
 		}

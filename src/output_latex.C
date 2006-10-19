@@ -292,12 +292,14 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	if (bparams.inputenc == "auto" &&
-	    language->encoding() != previous_language->encoding()) {
-		os << "\\inputencoding{"
-		   << lyx::from_ascii(language->encoding()->latexName())
-		   << "}\n";
-		texrow.newline();
+	if (false) {
+		if (bparams.inputenc == "auto" &&
+			language->encoding() != previous_language->encoding()) {
+			os << "\\inputencoding{"
+			   << lyx::from_ascii(language->encoding()->latexName())
+			   << "}\n";
+			texrow.newline();
+		}
 	}
 
 	// In an an inset with unlimited length (all in one row),

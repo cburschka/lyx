@@ -839,26 +839,32 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	if (inputenc == "auto") {
-		string const doc_encoding =
-			language->encoding()->latexName();
-
-		// Create a list with all the input encodings used
-		// in the document
-		std::set<string> encodings =
-			features.getEncodingSet(doc_encoding);
-
-		os << "\\usepackage[";
-		std::set<string>::const_iterator it = encodings.begin();
-		std::set<string>::const_iterator const end = encodings.end();
-		for (; it != end; ++it)
-			os << lyx::from_ascii(*it) << ',';
-		os << lyx::from_ascii(doc_encoding) << "]{inputenc}\n";
+	// TODO: Some people want to support more encodings than UTF-8. They can have a field day around here
+	if (true) {
+		os << "\\usepackage[utf8]{inputenc}\n";
 		texrow.newline();
-	} else if (inputenc != "default") {
-		os << "\\usepackage[" << lyx::from_ascii(inputenc)
-		   << "]{inputenc}\n";
-		texrow.newline();
+	} else {
+		if (inputenc == "auto") {
+			string const doc_encoding =
+				language->encoding()->latexName();
+
+			// Create a list with all the input encodings used
+			// in the document
+			std::set<string> encodings =
+				features.getEncodingSet(doc_encoding);
+
+			os << "\\usepackage[";
+			std::set<string>::const_iterator it = encodings.begin();
+			std::set<string>::const_iterator const end = encodings.end();
+			for (; it != end; ++it)
+				os << lyx::from_ascii(*it) << ',';
+			os << lyx::from_ascii(doc_encoding) << "]{inputenc}\n";
+			texrow.newline();
+		} else if (inputenc != "default") {
+			os << "\\usepackage[" << lyx::from_ascii(inputenc)
+			   << "]{inputenc}\n";
+			texrow.newline();
+		}
 	}
 
 	if (use_geometry || nonstandard_papersize) {
