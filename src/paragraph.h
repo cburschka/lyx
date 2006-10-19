@@ -207,17 +207,17 @@ public:
 	/// set change type at given pos
 	void setChangeType(lyx::pos_type pos, Change::Type type);
 
+	/// set change for the entire par
+	void setChange(Change const & change);
+
 	/// set change at given pos
-	void setChange(lyx::pos_type pos, Change change);
+	void setChange(lyx::pos_type pos, Change const & change);
 
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
 
 	/// reject change
 	void rejectChange(lyx::pos_type start, lyx::pos_type end);
-
-	/// mark whole par as erased or not
-	void markErased(bool erased);
 
 	/// Paragraphs can contain "manual labels", for example, Description
 	/// environment. The text for this user-editable label is stored in
@@ -298,16 +298,16 @@ public:
 	void insert(lyx::pos_type pos, std::string const & str,
 		    LyXFont const & font);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, Change change);
+	void insertChar(lyx::pos_type pos, value_type c, Change const & change);
 	///
 	void insertChar(lyx::pos_type pos, value_type c,
-		LyXFont const &, Change change);
+		LyXFont const &, Change const & change);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-			 Change change);
+			 Change const & change);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-		LyXFont const &, Change change);
+		LyXFont const &, Change const & change);
 	///
 	bool insetAllowed(InsetBase_code code);
 	///

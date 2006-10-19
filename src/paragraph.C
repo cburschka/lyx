@@ -265,28 +265,28 @@ void Paragraph::insert(pos_type start, string const & str,
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   Change change)
+			   Change const & change)
 {
 	pimpl_->insertChar(pos, c, change);
 }
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   LyXFont const & font, Change change)
+			   LyXFont const & font, Change const & change)
 {
 	pimpl_->insertChar(pos, c, change);
 	setFont(pos, font);
 }
 
 
-void Paragraph::insertInset(pos_type pos, InsetBase * inset, Change change)
+void Paragraph::insertInset(pos_type pos, InsetBase * inset, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 }
 
 
 void Paragraph::insertInset(pos_type pos, InsetBase * inset,
-			    LyXFont const & font, Change change)
+			    LyXFont const & font, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 	setFont(pos, font);
@@ -1440,21 +1440,21 @@ bool Paragraph::isChangeEdited(pos_type start, pos_type end) const
 }
 
 
+void Paragraph::setChange(Change const & change)
+{
+	pimpl_->setChange(change);
+}
+
+
 void Paragraph::setChangeType(lyx::pos_type pos, Change::Type type)
 {
 	pimpl_->setChangeType(pos, type);
 }
 
 
-void Paragraph::setChange(lyx::pos_type pos, Change change)
+void Paragraph::setChange(lyx::pos_type pos, Change const & change)
 {
 	pimpl_->setChange(pos, change);
-}
-
-
-void Paragraph::markErased(bool erased)
-{
-	pimpl_->markErased(erased);
 }
 
 

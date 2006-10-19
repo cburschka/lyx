@@ -58,7 +58,7 @@ public:
 	}
 
 	/// set the position to the given change
-	void set(Change change, lyx::pos_type pos);
+	void set(Change const & change, lyx::pos_type pos);
 
 	/// set the position to the given change
 	void set(Change::Type, lyx::pos_type pos);
@@ -67,10 +67,10 @@ public:
 	void set(Change::Type, lyx::pos_type start, lyx::pos_type end);
 
 	/// set the range to the given change
-	void set(Change, lyx::pos_type start, lyx::pos_type end);
+	void set(Change const & change, lyx::pos_type start, lyx::pos_type end);
 
 	/// mark the given change and adjust
-	void record(Change, lyx::pos_type pos);
+	void record(Change const & change, lyx::pos_type pos);
 
 	/// return the change at the given position
 	Change const lookup(lyx::pos_type pos) const;
@@ -124,7 +124,7 @@ private:
 
 	class ChangeRange {
 	public:
-		ChangeRange(lyx::pos_type s, lyx::pos_type e, Change c)
+		ChangeRange(lyx::pos_type s, lyx::pos_type e, Change const & c)
 			: range(Range(s, e)), change(c) {}
 		Range range;
 		Change change;
@@ -139,10 +139,10 @@ private:
 	Change::Type empty_type_;
 
 	/// handle a delete, either logical or physical (see erase)
-	void del(Change change, ChangeTable::size_type pos);
+	void del(Change const & change, ChangeTable::size_type pos);
 
 	/// handle an add, adjusting range bounds past it
-	void add(Change change, ChangeTable::size_type pos);
+	void add(Change const & change, ChangeTable::size_type pos);
 
 	/// merge neighbouring ranges, assuming that they are abutting
 	/// (as done by set())

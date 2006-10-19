@@ -44,12 +44,12 @@ public:
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
+        /// set change for the entire par
+        void setChange(Change const & change);
 	/// set change type at given pos
 	void setChangeType(lyx::pos_type pos, Change::Type type);
 	/// set change at given pos
-	void setChange(lyx::pos_type pos, Change change);
-	/// mark as erased
-	void markErased(bool);
+	void setChange(lyx::pos_type pos, Change const & change);
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
 	/// reject change
@@ -62,9 +62,9 @@ public:
 	///
 	void setChar(lyx::pos_type pos, value_type c);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, Change change);
+	void insertChar(lyx::pos_type pos, value_type c, Change const & change);
 	///
-	void insertInset(lyx::pos_type pos, InsetBase * inset, Change change);
+	void insertInset(lyx::pos_type pos, InsetBase * inset, Change const & change);
 	/// definite erase
 	void eraseIntern(lyx::pos_type pos);
 	/// erase the given position. Returns true if it was actually erased

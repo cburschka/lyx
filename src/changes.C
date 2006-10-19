@@ -96,7 +96,7 @@ Changes::Changes(Changes const & c)
 }
 
 
-void Changes::record(Change const change, pos_type const pos)
+void Changes::record(Change const & change, pos_type const pos)
 {
 	if (lyxerr.debugging(Debug::CHANGES)) {
 		lyxerr[Debug::CHANGES] << "record " << change.type
@@ -118,7 +118,7 @@ void Changes::record(Change const change, pos_type const pos)
 }
 
 
-void Changes::set(Change const change, pos_type const pos)
+void Changes::set(Change const & change, pos_type const pos)
 {
 	set(change, pos, pos + 1);
 }
@@ -137,7 +137,7 @@ void Changes::set(Change::Type const type,
 }
 
 
-void Changes::set(Change const change,
+void Changes::set(Change const & change,
 		  pos_type const start, pos_type const end)
 {
 	ChangeTable::iterator it = table_.begin();
@@ -254,7 +254,7 @@ void Changes::erase(pos_type const pos)
 }
 
 
-void Changes::del(Change const change, ChangeTable::size_type const pos)
+void Changes::del(Change const & change, ChangeTable::size_type const pos)
 {
 	// this case happens when building from .lyx
 	if (table_.empty()) {
@@ -283,7 +283,7 @@ void Changes::del(Change const change, ChangeTable::size_type const pos)
 }
 
 
-void Changes::add(Change const change, ChangeTable::size_type const pos)
+void Changes::add(Change const & change, ChangeTable::size_type const pos)
 {
 	ChangeTable::iterator it = table_.begin();
 	ChangeTable::iterator end = table_.end();

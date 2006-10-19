@@ -115,9 +115,10 @@ void InsetText::init()
 
 void InsetText::markErased(bool erased)
 {
+	// FIXME: change tracking (MG)
 	ParagraphList & pars = paragraphs();
 	for_each(pars.begin(), pars.end(),
-		 bind(&Paragraph::markErased, _1, erased));
+		 bind(&Paragraph::setChange, _1, Change(erased ? Change::DELETED : Change::UNCHANGED)));
 }
 
 

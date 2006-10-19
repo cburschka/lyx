@@ -108,6 +108,22 @@ bool Paragraph::Pimpl::isChangeEdited(pos_type start, pos_type end) const
 }
 
 
+void Paragraph::Pimpl::setChange(Change const & change)
+{
+	// FIXME: change tracking (MG)
+	// changes_.set(change, 0, size());
+
+	if (change.type == Change::UNCHANGED) { // only for UNCHANGED ???
+		for (pos_type i = 0; i < size(); ++i) {
+			if (owner_->isInset(i)) {
+				// FIXME: change tracking (MG)
+				// owner_->getInset(i)->setChange(change);
+			}
+		}
+	}
+}
+
+
 void Paragraph::Pimpl::setChangeType(pos_type pos, Change::Type type)
 {
 	if (!tracking())
@@ -117,7 +133,7 @@ void Paragraph::Pimpl::setChangeType(pos_type pos, Change::Type type)
 }
 
 
-void Paragraph::Pimpl::setChange(pos_type pos, Change change)
+void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 {
 	if (!tracking())
 		return;
@@ -132,22 +148,6 @@ Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
 		return Change(Change::UNCHANGED);
 
 	return changes_->lookup(pos);
-}
-
-
-void Paragraph::Pimpl::markErased(bool erased)
-{
-	BOOST_ASSERT(tracking());
-
-	if (erased) {
-		erase(0, size());
-	} else {
-		for (pos_type i = 0; i < size(); ++i) {
-			changes_->set(Change::UNCHANGED, i);
-			if (owner_->isInset(i))
-				owner_->getInset(i)->markErased(false);
-		}
-	}
 }
 
 
@@ -235,7 +235,7 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change change)
+void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & change)
 {
 	BOOST_ASSERT(pos <= size());
 
@@ -269,7 +269,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change change)
 
 
 void Paragraph::Pimpl::insertInset(pos_type pos,
-				   InsetBase * inset, Change change)
+				   InsetBase * inset, Change const & change)
 {
 	BOOST_ASSERT(inset);
 	BOOST_ASSERT(pos <= size());
