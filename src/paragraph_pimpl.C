@@ -560,14 +560,14 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				   << '}';
 				column += 13;
 			} else {
-				os << c;
+				os.put(c);
 			}
 			break;
 
 		case '|': case '<': case '>':
 			// In T1 encoding, these characters exist
 			if (lyxrc.fontenc == "T1") {
-				os << c;
+				os.put(c);
 				//... but we should avoid ligatures
 				if ((c == '>' || c == '<')
 				    && i <= size() - 2
@@ -584,7 +584,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			}
 			// Typewriter font also has them
 			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
-				os << c;
+				os.put(c);
 				break;
 			}
 			// Otherwise, we use what LaTeX
@@ -626,14 +626,15 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				os << "\\pounds{}";
 				column += 8;
 			} else {
-				os << c;
+				os.put(c);
 			}
 			break;
 
 		case '$': case '&':
 		case '%': case '#': case '{':
 		case '}': case '_':
-			os << '\\' << c;
+			os << '\\';
+			os.put(c);
 			column += 1;
 			break;
 
