@@ -80,7 +80,7 @@ private:
 	BufferView * view() const;
 
 	///
-	LyXView * owner;
+	LyXView * lyx_view_;
 
 	/// the last character added to the key sequence, in ISO encoded form
 	lyx::char_type encoded_last_key;
