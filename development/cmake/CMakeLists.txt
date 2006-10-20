@@ -57,7 +57,6 @@ else(qt3)
 	set(qt_postfix qt4)
 	project(lyx-${qt_postfix})
 	find_package(Qt4 REQUIRED)
-	
 endif(qt3)	
 
 find_package(ZLIB REQUIRED)
@@ -65,6 +64,7 @@ find_package(ICONV REQUIRED)
 add_definitions(-DHAVE_ICONV=1)
 
 if(all OR aspell)
+	set(aspell TRUE CACHE TYPE STRING)
 	find_package(ASPELL REQUIRED)
 else(all OR aspell)
 	find_package(ASPELL)
@@ -73,6 +73,7 @@ set(aspell)
 
 message("")
 if(nls OR all)
+	set(nls TRUE CACHE TYPE STRING)
 	add_definitions(-DENABLE_NLS=1)
 	message("----- Building with ENABLE_NLS")
 else(nls OR all)	
