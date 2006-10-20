@@ -1321,8 +1321,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							new InsetMathBig(t.cs(), delim)));
 					else {
 						cell->push_back(createInsetMath(t.cs()));
-						cell->push_back(createInsetMath(
-								delim.substr(1)));
+						putback();
 					}
 				}
 
