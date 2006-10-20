@@ -478,7 +478,7 @@ void InsetTabular::edit(LCursor & cur, bool left)
 		cur.pit() = 0;
 		cur.pos() = cur.lastpos(); // FIXME crude guess
 	}
-	// this accesses the position cache before it is initialized
+	// FIXME: this accesses the position cache before it is initialized
 	//resetPos(cur);
 	//cur.bv().fitCursor();
 }
@@ -783,7 +783,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	resetPos(cur);
+	// FIXME: this accesses the position cache before it is initialized
+	//resetPos(cur);
 	InsetTabularMailer(*this).updateDialog(&cur.bv());
 }
 
@@ -1302,7 +1303,9 @@ void InsetTabular::movePrevCell(LCursor & cur)
 	}
 	cur.pit() = cur.lastpit();
 	cur.pos() = cur.lastpos();
-	resetPos(cur);
+
+	// FIXME: this accesses the position cache before it is initialized
+	//resetPos(cur);
 }
 
 
