@@ -127,8 +127,8 @@ bool findBackwards(DocIterator & cur, MatchString const & match)
 bool findChange(DocIterator & cur)
 {
 	for (; cur; cur.forwardPos())
-		if (cur.inTexted() && cur.paragraph().lookupChange(cur.pos()).type
-		    != Change::UNCHANGED)
+		if (cur.inTexted() &&
+		    cur.paragraph().lookupChange(cur.pos()).type != Change::UNCHANGED)
 			return true;
 	return false;
 }
@@ -185,7 +185,8 @@ int replaceAll(BufferView * bv,
 		lyx::pos_type pos = cur.pos();
 		LyXFont const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
-		int striked = ssize - cur.paragraph().erase(pos, pos + ssize);
+		int striked = ssize - cur.paragraph().erase(pos, pos + ssize,
+							    buf.params().trackChanges);
 		cur.paragraph().insert(pos, replacestr, font,
 		                       Change(buf.params().trackChanges ?
 		                              Change::INSERTED : Change::UNCHANGED));
