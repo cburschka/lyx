@@ -52,6 +52,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw inset selection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
+	/// do we cover screen position x/y?
+	virtual bool covers(int x, int y) const;
 	///
 	std::string const editMessage() const;
 	///
