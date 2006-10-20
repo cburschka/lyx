@@ -186,7 +186,9 @@ int replaceAll(BufferView * bv,
 		LyXFont const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.paragraph().erase(pos, pos + ssize);
-		cur.paragraph().insert(pos, replacestr, font);
+		cur.paragraph().insert(pos, replacestr, font,
+		                       Change(buf.params().trackChanges ?
+		                              Change::INSERTED : Change::UNCHANGED));
 		for (int i = 0; i < rsize + striked; ++i)
 			cur.forwardChar();
 		++num;

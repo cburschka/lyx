@@ -531,15 +531,13 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 		} else if (*cit == '\t') {
 			if (!par.isFreeSpacing()) {
 				// tabs are like spaces here
-				// FIXME: change tracking (MG)
-				par.insertChar(pos, ' ', font, Change(Change::INSERTED));
+				par.insertChar(pos, ' ', font, params().trackChanges);
 				++pos;
 				space_inserted = true;
 			} else {
 				const pos_type n = 8 - pos % 8;
 				for (pos_type i = 0; i < n; ++i) {
-					// FIXME: change tracking (MG)
-					par.insertChar(pos, ' ', font, Change(Change::INSERTED));
+					par.insertChar(pos, ' ', font, params().trackChanges);
 					++pos;
 				}
 				space_inserted = true;
@@ -551,8 +549,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 */
 		} else {
 			// just insert the character
-			// FIXME: change tracking (MG)
-			par.insertChar(pos, *cit, font, Change(Change::INSERTED));
+			par.insertChar(pos, *cit, font, params().trackChanges);
 			++pos;
 			space_inserted = (*cit == ' ');
 		}

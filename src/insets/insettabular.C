@@ -1983,7 +1983,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 				inset->setViewCache(&bv);
 				Paragraph & par = inset->text_.getPar(0);
 				LyXFont const font = inset->text_.getFont(par, 0);
-				inset->setText(buf.substr(op, p - op), font);
+				inset->setText(buf.substr(op, p - op), font,
+				               bv.buffer()->params().trackChanges);
 				++cols;
 				++cell;
 			}
@@ -1995,7 +1996,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 				inset->setViewCache(&bv);
 				Paragraph & par = inset->text_.getPar(0);
 				LyXFont const font = inset->text_.getFont(par, 0);
-				inset->setText(buf.substr(op, p - op), font);
+				inset->setText(buf.substr(op, p - op), font,
+				               bv.buffer()->params().trackChanges);
 			}
 			cols = ocol;
 			++row;
@@ -2012,7 +2014,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 		inset->setViewCache(&bv);
 		Paragraph & par = inset->text_.getPar(0);
 		LyXFont const font = inset->text_.getFont(par, 0);
-		inset->setText(buf.substr(op, len - op), font);
+		inset->setText(buf.substr(op, len - op), font,
+		               bv.buffer()->params().trackChanges);
 	}
 	return true;
 }

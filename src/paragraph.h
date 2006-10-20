@@ -289,18 +289,21 @@ public:
 					LyXFont_size def_size) const;
 	///
 	void insert(lyx::pos_type pos, std::string const & str,
-		    LyXFont const & font);
+	            LyXFont const & font, Change const & change);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, Change const & change);
+	void insertChar(lyx::pos_type pos, value_type c, bool trackChanges);
 	///
 	void insertChar(lyx::pos_type pos, value_type c,
-		LyXFont const &, Change const & change);
+	                LyXFont const &, bool trackChanges);
+	///
+	void insertChar(lyx::pos_type pos, value_type c,
+	                LyXFont const &, Change const & change);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
 			 Change const & change);
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
-		LyXFont const &, Change const & change);
+		         LyXFont const &, Change const & change);
 	///
 	bool insetAllowed(InsetBase_code code);
 	///

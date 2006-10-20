@@ -329,13 +329,12 @@ bool InsetText::showInsetDialog(BufferView *) const
 }
 
 
-void InsetText::setText(docstring const & data, LyXFont const & font)
+void InsetText::setText(docstring const & data, LyXFont const & font, bool trackChanges)
 {
 	clear();
 	Paragraph & first = paragraphs().front();
 	for (unsigned int i = 0; i < data.length(); ++i)
-		// FIXME: change tracking (MG)
-		first.insertChar(i, data[i], font, Change(Change::INSERTED));
+		first.insertChar(i, data[i], font, trackChanges);
 }
 
 

@@ -80,7 +80,7 @@ public:
 	///
 	Code lyxCode() const { return TEXT_CODE; }
 	///
-	void setText(lyx::docstring const &, LyXFont const &);
+	void setText(lyx::docstring const &, LyXFont const &, bool trackChanges);
 	///
 	void setAutoBreakRows(bool);
 	///

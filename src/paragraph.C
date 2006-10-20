@@ -251,23 +251,32 @@ int Paragraph::erase(pos_type start, pos_type end, bool trackChanges)
 
 
 void Paragraph::insert(pos_type start, string const & str,
-		       LyXFont const & font)
+		       LyXFont const & font, Change const & change)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
-		// FIXME: change tracking (MG)
-		insertChar(start + i, str[i], font, Change(Change::INSERTED));
+		insertChar(start + i, str[i], font, change);
 }
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   Change const & change)
+			   bool trackChanges)
 {
-	pimpl_->insertChar(pos, c, change);
+	pimpl_->insertChar(pos, c, Change(trackChanges ?
+	                   Change::INSERTED : Change::UNCHANGED));
 }
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   LyXFont const & font, Change const & change)
+			   LyXFont const & font, bool trackChanges)
+{
+	pimpl_->insertChar(pos, c, Change(trackChanges ?
+	                   Change::INSERTED : Change::UNCHANGED));
+	setFont(pos, font);
+}
+
+
+void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
+                           LyXFont const & font, Change const & change)
 {
 	pimpl_->insertChar(pos, c, change);
 	setFont(pos, font);

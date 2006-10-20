@@ -610,7 +610,8 @@ void copySelection(LCursor & cur)
 		BufferParams const & bp = cur.buffer().params();
 		pars.back().layout(bp.getLyXTextClass().defaultLayout());
 		for_each(pars.begin(), pars.end(), resetParagraph(cur.buffer()));
-		pars.back().insert(0, grabSelection(cur), LyXFont());
+		// FIXME: change tracking (MG)
+		pars.back().insert(0, grabSelection(cur), LyXFont(), Change(Change::UNCHANGED));
 		theCuts.push(make_pair(pars, bp.textclass));
 	}
 	// tell tabular that a recent copy happened
@@ -679,8 +680,7 @@ void replaceSelectionWithString(LCursor & cur, string const & str, bool backward
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
-		// FIXME: change tracking (MG)
-		par.insertChar(pos, (*cit), font, Change(Change::INSERTED));
+		par.insertChar(pos, (*cit), font, cur.buffer().params().trackChanges);
 
 	// Cut the selection
 	cutSelection(cur, true, false);
