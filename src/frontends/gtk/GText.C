@@ -44,14 +44,14 @@ GText::GText(Dialog & parent, docstring const & title, docstring const & label)
 
 void GText::apply()
 {
-	controller().params().setContents(entry_->get_text());
+	controller().params()["name"] = lyx::from_utf8(entry_->get_text());
 }
 
 
 void GText::update()
 {
 	string const contents = support::trim(
-		controller().params().getContents());
+		lyx::to_utf8(controller().params()["name"]));
 	entry_->set_text(contents);
 }
 

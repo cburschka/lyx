@@ -72,13 +72,13 @@ void QRef::update_contents()
 
 	int orig_type = dialog_->typeCO->currentIndex();
 
-	dialog_->referenceED->setText(toqstr(params.getContents()));
+	dialog_->referenceED->setText(toqstr(params["reference"]));
 
-	dialog_->nameED->setText(toqstr(params.getOptions()));
+	dialog_->nameED->setText(toqstr(params["name"]));
 	dialog_->nameED->setReadOnly(!nameAllowed() && !readOnly());
 
 	// restore type settings for new insets
-	if (params.getContents().empty())
+	if (params["reference"].empty())
 		dialog_->typeCO->setCurrentIndex(orig_type);
 	else
 		dialog_->typeCO->setCurrentIndex(InsetRef::getType(params.getCmdName()));
@@ -96,7 +96,7 @@ void QRef::update_contents()
 		dialog_->bufferCO->addItem(toqstr(*it));
 	}
 	// restore the buffer combo setting for new insets
-	if (params.getContents().empty() && restored_buffer_ != -1
+	if (params["reference"].empty() && restored_buffer_ != -1
 	&& restored_buffer_ < dialog_->bufferCO->count())
 		dialog_->bufferCO->setCurrentIndex(restored_buffer_);
 	else
@@ -112,8 +112,8 @@ void QRef::apply()
 	InsetCommandParams & params = controller().params();
 
 	params.setCmdName(InsetRef::getName(dialog_->typeCO->currentIndex()));
-	params.setContents(fromqstr(dialog_->referenceED->text()));
-	params.setOptions(fromqstr(dialog_->nameED->text()));
+	params["reference"] = qstring_to_ucs4(dialog_->referenceED->text());
+	params["name"] = qstring_to_ucs4(dialog_->nameED->text());
 
 	restored_buffer_ = dialog_->bufferCO->currentIndex();
 }

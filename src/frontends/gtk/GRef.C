@@ -168,8 +168,8 @@ void GRef::update()
 	bc().refreshReadOnly();
 	jumptobutton_->set_sensitive(true);
 	backbutton_->set_sensitive(false);
-	labelentry_->set_text(controller().params().getContents());
-	nameentry_->set_text(controller().params().getOptions());
+	labelentry_->set_text(lyx::to_utf8(controller().params()["reference"]));
+	nameentry_->set_text(lyx::to_utf8(controller().params()["name"]));
 
 	// Name is irrelevant to LaTeX/Literate documents
 	Kernel::DocType doctype = kernel().docType();
@@ -240,8 +240,8 @@ void GRef::apply()
 	if (applylock_)
 		return;
 
-	controller().params().setContents(labelentry_->get_text());
-	controller().params().setOptions(nameentry_->get_text());
+	controller().params()["reference"] = lyx::from_utf8(labelentry_->get_text());
+	controller().params()["name"] = lyx::from_utf8(nameentry_->get_text());
 	int const type = formatcombo_->get_active_row_number();
 	controller().params().setCmdName(InsetRef::getName(type));
 }

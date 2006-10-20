@@ -95,7 +95,7 @@ void GBibtex::doBuild()
 
 void GBibtex::update()
 {
-	string bibs(controller().params().getContents());
+	string bibs(lyx::to_utf8(controller().params()["bibfiles"]));
 	string bib;
 
 	databasesstore_->clear();
@@ -118,7 +118,7 @@ void GBibtex::update()
 
 	toccheck_->set_sensitive(!bibtopic);
 
-	string btprint(controller().params().getSecOptions());
+	string btprint(lyx::to_ascii(controller().params()["btprint"]));
 	int btp = 0;
 	if (btprint == "btPrintNotCited")
 		btp = 1;
@@ -169,7 +169,7 @@ void GBibtex::apply()
 			dblist += ",";
 	}
 
-	controller().params().setContents(dblist);
+	controller().params()["bibfiles"] = lyx::from_utf8(dblist);
 
 	string const bibstyle = stylecombo_.get_active_text();
 	bool const bibtotoc = toccheck_->get_active();
@@ -177,15 +177,15 @@ void GBibtex::apply()
 
 	if (!bibtopic && bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
-		controller().params().setOptions("bibtotoc," + bibstyle);
+		controller().params()["options"] = lyx::from_utf8("bibtotoc," + bibstyle);
 	} else if (!bibtopic && bibtotoc) {
 		// bibtotoc and no style
-		controller().params().setOptions("bibtotoc");
+		controller().params()["options"] = lyx::from_ascii("bibtotoc");
 	} else {
 		// only style. An empty one is valid, because some
 		// documentclasses have an own \bibliographystyle{}
 		// command!
-		controller().params().setOptions(bibstyle);
+		controller().params()["options"] = lyx::from_utf8(bibstyle);
 	}
 
 	// bibtopic allows three kinds of sections:
@@ -196,18 +196,20 @@ void GBibtex::apply()
 
 	switch (btp) {
 	case 0:
-		controller().params().setSecOptions("btPrintCited");
+		controller().params()["btprint"] = lyx::from_ascii("btPrintCited");
 		break;
 	case 1:
-		controller().params().setSecOptions("btPrintNotCited");
+
+		controller().params()["btprint"] = lyx::from_ascii("btPrintNotCited");
 		break;
 	case 2:
-		controller().params().setSecOptions("btPrintAll");
+
+		controller().params()["btprint"] = lyx::from_ascii("btPrintAll");
 		break;
 	}
 
 	if (!bibtopic)
-		controller().params().setSecOptions("");
+		controller().params()["btprint"] = docstring();
 }
 
 

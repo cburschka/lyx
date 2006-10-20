@@ -62,15 +62,15 @@ void GBibItem::update()
 {
 	bc().refreshReadOnly();
 
-	keyentry_->set_text (controller().params().getContents());
-	labelentry_->set_text (controller().params().getOptions());
+	keyentry_->set_text (lyx::to_utf8(controller().params()["key"]));
+	labelentry_->set_text (lyx::to_utf8(controller().params()["label"]));
 }
 
 
 void GBibItem::apply()
 {
-	controller().params().setContents(keyentry_->get_text());
-	controller().params().setOptions(labelentry_->get_text());
+	controller().params()["key"] = lyx::from_utf8(keyentry_->get_text());
+	controller().params()["label"] = lyx::from_utf8(labelentry_->get_text());
 }
 
 void GBibItem::changed()

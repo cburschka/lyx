@@ -77,10 +77,8 @@ void GUrl::onEntryChanged()
 
 void GUrl::update()
 {
-	url_->set_text(Glib::locale_to_utf8(
-			       controller().params().getContents()));
-	name_->set_text(Glib::locale_to_utf8(
-				controller().params().getOptions()));
+	url_->set_text(lyx::to_utf8(controller().params()["target"]));
+	name_->set_text(lyx::to_utf8(controller().params()["name"]));
 	if (controller().params().getCmdName() == "url")
 		htmlType_->set_active(false);
 	else
@@ -90,10 +88,8 @@ void GUrl::update()
 
 void GUrl::apply()
 {
-	controller().params().setContents(
-		Glib::locale_to_utf8(url_->get_text()));
-	controller().params().setOptions(
-		Glib::locale_to_utf8(name_->get_text()));
+	controller().params()["target"] = lyx::from_utf8(url_->get_text());
+	controller().params()["name"] = lyx::from_utf8(name_->get_text());
 	if (htmlType_->get_active())
 		controller().params().setCmdName("htmlurl");
 	else

@@ -51,8 +51,8 @@ void QURL::update_contents()
 {
 	InsetCommandParams const & params = controller().params();
 
-	dialog_->urlED->setText(toqstr(params.getContents()));
-	dialog_->nameED->setText(toqstr(params.getOptions()));
+	dialog_->urlED->setText(toqstr(params["target"]));
+	dialog_->nameED->setText(toqstr(params["name"]));
 	dialog_->hyperlinkCB->setChecked(params.getCmdName() != "url");
 
 	bc().valid(isValid());
@@ -63,8 +63,8 @@ void QURL::apply()
 {
 	InsetCommandParams & params = controller().params();
 
-	params.setContents(fromqstr(dialog_->urlED->text()));
-	params.setOptions(fromqstr(dialog_->nameED->text()));
+	params["target"] = qstring_to_ucs4(dialog_->urlED->text());
+	params["name"] = qstring_to_ucs4(dialog_->nameED->text());
 
 	if (dialog_->hyperlinkCB->isChecked())
 		params.setCmdName("htmlurl");

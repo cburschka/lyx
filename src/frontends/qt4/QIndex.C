@@ -50,7 +50,7 @@ void QIndex::build_dialog()
 
 void QIndex::update_contents()
 {
-	string const contents = controller().params().getContents();
+	docstring const contents = controller().params()["name"];
 	dialog_->keywordED->setText(toqstr(contents));
 
 	bc().valid(!contents.empty());
@@ -59,7 +59,7 @@ void QIndex::update_contents()
 
 void QIndex::apply()
 {
-	controller().params().setContents(fromqstr(dialog_->keywordED->text()));
+	controller().params()["name"] = qstring_to_ucs4(dialog_->keywordED->text());
 }
 
 

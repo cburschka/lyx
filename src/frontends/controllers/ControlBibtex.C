@@ -125,7 +125,7 @@ bool ControlBibtex::usingBibtopic() const
 
 bool ControlBibtex::bibtotoc() const
 {
-	return prefixIs(params().getOptions(), "bibtotoc");
+	return prefixIs(lyx::to_utf8(params()["options"]), "bibtotoc");
 }
 
 
@@ -135,27 +135,27 @@ string const ControlBibtex::getStylefile() const
 	// own "plain" stylefiles
 	biblio::CiteEngine_enum const & engine =
 		biblio::getEngine(kernel().buffer());
-	string defaultstyle;
+	docstring defaultstyle;
 	switch (engine) {
 	case biblio::ENGINE_BASIC:
-		defaultstyle = "plain";
+		defaultstyle = lyx::from_ascii("plain");
 		break;
 	case biblio::ENGINE_NATBIB_AUTHORYEAR:
-		defaultstyle = "plainnat";
+		defaultstyle = lyx::from_ascii("plainnat");
 		break;
 	case biblio::ENGINE_NATBIB_NUMERICAL:
-		defaultstyle = "plainnat";
+		defaultstyle = lyx::from_ascii("plainnat");
 		break;
 	case biblio::ENGINE_JURABIB:
-		defaultstyle = "jurabib";
+		defaultstyle = lyx::from_ascii("jurabib");
 		break;
 	}
 
-	string bst = params().getOptions();
+	docstring bst = params()["btprint"];
 	if (bibtotoc()){
 		// bibstyle exists?
-		if (contains(bst,',')) {
-			string bibtotoc = "bibtotoc";
+		if (contains(bst, ',')) {
+			docstring bibtotoc = lyx::from_ascii("bibtotoc");
 			bst = split(bst, bibtotoc, ',');
 		} else
 			bst.erase();
@@ -164,10 +164,11 @@ string const ControlBibtex::getStylefile() const
 	// propose default style file for new insets
 	// existing insets might have (legally) no bst files
 	// (if the class already provides a style)
-	if (bst.empty() && params().getContents().empty())
+	if (bst.empty() && params()["bibfiles"].empty())
 		bst = defaultstyle;
 
-	return bst;
+	// FIXME UNICODE
+	return lyx::to_utf8(bst);
 }
 
 } // namespace frontend

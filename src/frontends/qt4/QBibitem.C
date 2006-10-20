@@ -46,15 +46,15 @@ void QBibitem::build_dialog()
 
 void QBibitem::update_contents()
 {
-	dialog_->keyED->setText(toqstr(controller().params().getContents()));
-	dialog_->labelED->setText(toqstr(controller().params().getOptions()));
+	dialog_->keyED->setText(toqstr(controller().params()["key"]));
+	dialog_->labelED->setText(toqstr(controller().params()["label"]));
 }
 
 
 void QBibitem::apply()
 {
-	controller().params().setContents(fromqstr(dialog_->keyED->text()));
-	controller().params().setOptions(fromqstr(dialog_->labelED->text()));
+	controller().params()["key"] = qstring_to_ucs4(dialog_->keyED->text());
+	controller().params()["label"] = qstring_to_ucs4(dialog_->labelED->text());
 }
 
 

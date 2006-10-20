@@ -76,8 +76,8 @@ void QBibtex::update_contents()
 
 	dialog_->databaseLB->clear();
 
-	string bibs(controller().params().getContents());
-	string bib;
+	docstring bibs(controller().params()["bibfiles"]);
+	docstring bib;
 
 	while (!bibs.empty()) {
 		bibs = split(bibs, bib, ',');
@@ -99,7 +99,7 @@ void QBibtex::update_contents()
 	dialog_->bibtocCB->setChecked(controller().bibtotoc() && !bibtopic);
 	dialog_->bibtocCB->setEnabled(!bibtopic);
 
-	string btprint(controller().params().getSecOptions());
+	docstring btprint(controller().params()["bibfiles"]);
 	int btp = 0;
 	if (btprint == "btPrintNotCited")
 		btp = 1;
@@ -138,30 +138,30 @@ void QBibtex::update_contents()
 
 void QBibtex::apply()
 {
-	string dbs(fromqstr(dialog_->databaseLB->text(0)));
+	docstring dbs(qstring_to_ucs4(dialog_->databaseLB->text(0)));
 
 	unsigned int maxCount = dialog_->databaseLB->count();
 	for (unsigned int i = 1; i < maxCount; i++) {
 		dbs += ',';
-		dbs += fromqstr(dialog_->databaseLB->text(i));
+		dbs += qstring_to_ucs4(dialog_->databaseLB->text(i));
 	}
 
-	controller().params().setContents(dbs);
+	controller().params()["bibfiles"] = dbs;
 
-	string const bibstyle(fromqstr(dialog_->styleCB->currentText()));
+	docstring const bibstyle(qstring_to_ucs4(dialog_->styleCB->currentText()));
 	bool const bibtotoc(dialog_->bibtocCB->isChecked());
 
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
-		controller().params().setOptions("bibtotoc," + bibstyle);
+		controller().params()["options"] = "bibtotoc," + bibstyle;
 	} else if (bibtotoc) {
 		// bibtotoc and no style
-		controller().params().setOptions("bibtotoc");
+		controller().params()["options"] = lyx::from_ascii("bibtotoc");
 	} else {
 		// only style. An empty one is valid, because some
 		// documentclasses have an own \bibliographystyle{}
 		// command!
-		controller().params().setOptions(bibstyle);
+		controller().params()["options"] = bibstyle;
 	}
 
 	// bibtopic allows three kinds of sections:
@@ -172,18 +172,18 @@ void QBibtex::apply()
 
 	switch (btp) {
 	case 0:
-		controller().params().setSecOptions("btPrintCited");
+		controller().params()["btprint"] = lyx::from_ascii("btPrintCited");
 		break;
 	case 1:
-		controller().params().setSecOptions("btPrintNotCited");
+		controller().params()["btprint"] = lyx::from_ascii("btPrintNotCited");
 		break;
 	case 2:
-		controller().params().setSecOptions("btPrintAll");
+		controller().params()["btprint"] = lyx::from_ascii("btPrintAll");
 		break;
 	}
 
 	if (!controller().usingBibtopic())
-		controller().params().setSecOptions("");
+		controller().params()["btprint"] = docstring();
 }
 
 

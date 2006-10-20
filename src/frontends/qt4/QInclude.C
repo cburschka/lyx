@@ -62,7 +62,7 @@ void QInclude::update_contents()
 
 	InsetCommandParams const & params = controller().params();
 
-	dialog_->filenameED->setText(toqstr(params.getContents()));
+	dialog_->filenameED->setText(toqstr(params["filename"]));
 
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
@@ -99,7 +99,7 @@ void QInclude::apply()
 {
 	InsetCommandParams params = controller().params();
 
-	params.setContents(fromqstr(dialog_->filenameED->text()));
+	params["filename"] = qstring_to_ucs4(dialog_->filenameED->text());
 	params.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentIndex();

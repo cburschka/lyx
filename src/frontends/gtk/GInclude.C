@@ -72,7 +72,7 @@ void GInclude::doBuild()
 
 void GInclude::update()
 {
-	string const filename = controller().params().getContents();
+	string const filename = lyx::to_utf8(controller().params()["filename"]);
 	fileentry_->set_text(filename);
 
 	string const cmdname = controller().params().getCmdName();
@@ -113,7 +113,7 @@ void GInclude::apply()
 	InsetCommandParams params = controller().params();
 
 	params.preview(previewcheck_->get_active());
-	params.setContents(fileentry_->get_text());
+	params["filename"] = lyx::from_utf8(fileentry_->get_text());
 
 	if (includeradio_->get_active())
 		params.setCmdName("include");
