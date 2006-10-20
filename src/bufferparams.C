@@ -704,13 +704,10 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\tracking_changes " << convert<string>(trackChanges) << "\n";
 	os << "\\output_changes " << convert<string>(outputChanges) << "\n";
 
-	if (trackChanges) {
-		// FIXME: Change tracking (MG)
-		AuthorList::Authors::const_iterator it = pimpl_->authorlist.begin();
-		AuthorList::Authors::const_iterator end = pimpl_->authorlist.end();
-		for (; it != end; ++it) {
-			os << "\\author " << it->second << "\n";
-		}
+	AuthorList::Authors::const_iterator a_it = pimpl_->authorlist.begin();
+	AuthorList::Authors::const_iterator a_end = pimpl_->authorlist.end();
+	for (; a_it != a_end; ++a_it) {
+		os << "\\author " << a_it->second << "\n";
 	}
 }
 
