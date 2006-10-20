@@ -217,6 +217,8 @@ void QLToolbar::show(bool)
 
 void QLToolbar::update()
 {
+	// This is a speed bottleneck because this is called on every keypress
+	// and update calls getStatus, which copies the cursor at least two times
 	for (size_t i=0; i<ActionVector.size(); ++i)
 		ActionVector[i]->update();
 

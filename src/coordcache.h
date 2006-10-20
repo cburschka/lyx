@@ -107,7 +107,7 @@ private:
  * All points cached in this cache are only valid between subsequent
  * updated. (x,y) == (0,0) is the upper left screen corner, x increases
  * to the right, y increases downwords.
- * The cache is built in BufferView::Pimpl::metrics which is called
+ * The cache is built in BufferView::updateMetrics which is called
  * from BufferView::Pimpl::update. The individual points are added
  * while we paint them. See for instance paintPar in RowPainter.C.
  */
