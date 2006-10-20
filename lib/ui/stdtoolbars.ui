@@ -79,7 +79,6 @@ Toolbar "extra" "Extra"
 	Separator
 	Item "Insert footnote" "footnote-insert"
 	Item "Insert margin note" "marginalnote-insert"
-	Item "Insert note" "note-insert"
 	Item "Insert URL" "url-insert"
 	Item "Insert TeX Code" "ert-insert"
 	Item "Include file" "dialog-show-new-inset include"
@@ -143,4 +142,20 @@ End
 
 Toolbar "minibuffer" "Command Buffer"
 	Minibuffer
+End
+
+Toolbar "review" "Review"
+	Item "Track changes" "changes-track"
+	Item "Show changes in output" "changes-output"
+	Separator
+	Item "Next change" "change-next"
+	Item "Accept change" "change-accept"
+	Item "Reject change" "change-reject"
+	Separator
+	Item "Merge changes" "changes-merge"
+	Item "Accept all changes" "all-changes-accept"
+	Item "Reject all changes" "all-changes-reject"
+	Separator
+	Item "Insert note" "note-insert"
+	Item "Next note" "note-next"
 End
