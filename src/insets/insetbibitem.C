@@ -35,13 +35,13 @@ using std::auto_ptr;
 using std::ostream;
 
 int InsetBibitem::key_counter = 0;
-string const key_prefix = "key-";
+docstring const key_prefix = lyx::from_ascii("key-");
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem"), counter(1)
 {
-	if (getContents().empty())
-		setContents(key_prefix + convert<string>(++key_counter));
+	if (getParam("key").empty())
+		setParam("key", key_prefix + convert<docstring>(++key_counter));
 }
 
 
@@ -64,9 +64,10 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
  			cur.noUpdate();
 			break;
 		}
-		if (p.getContents() != params().getContents()) 
-			cur.bv().buffer()->changeRefsIfUnique(params().getContents(),
-						       p.getContents(), InsetBase::CITE_CODE);
+		if (p["key"] != params()["key"])
+			// FIXME UNICODE
+			cur.bv().buffer()->changeRefsIfUnique(lyx::to_utf8(params()["key"]),
+						       lyx::to_utf8(p["key"]), InsetBase::CITE_CODE);
 		setParams(p);
 	}
 
@@ -87,8 +88,8 @@ void InsetBibitem::read(Buffer const & buf, LyXLex & lex)
 {
 	InsetCommand::read(buf, lex);
 
-	if (prefixIs(getContents(), key_prefix)) {
-		int const key = convert<int>(getContents().substr(key_prefix.length()));
+	if (prefixIs(getParam("key"), key_prefix)) {
+		int const key = convert<int>(getParam("key").substr(key_prefix.length()));
 		key_counter = max(key_counter, key);
 	}
 }
@@ -96,17 +97,14 @@ void InsetBibitem::read(Buffer const & buf, LyXLex & lex)
 
 docstring const InsetBibitem::getBibLabel() const
 {
-	// FIXME UNICODE
-	return getOptions().empty() ?
-		convert<docstring>(counter) :
-		lyx::from_utf8(getOptions());
+	docstring const & label = getParam("label");
+	return label.empty() ?  convert<docstring>(counter) : label;
 }
 
 
 docstring const InsetBibitem::getScreenLabel(Buffer const &) const
 {
-	// FIXME UNICODE
-	return lyx::from_utf8(getContents()) + " [" + getBibLabel() + ']';
+	return getParam("key") + " [" + getBibLabel() + ']';
 }
 
 

@@ -40,20 +40,19 @@ docstring const InsetUrl::getScreenLabel(Buffer const &) const
 	docstring const temp =
 		(getCmdName() == "url") ? _("Url: ") : _("HtmlUrl: ");
 
-	string url;
+	docstring url;
 
-	if (!getOptions().empty())
-		url += getOptions();
+	if (!getParam("name").empty())
+		url += getParam("name");
 	else
-		url += getContents();
+		url += getParam("target");
 
 	// elide if long
 	if (url.length() > 30) {
 		url = url.substr(0, 10) + "..."
 			+ url.substr(url.length() - 17, url.length());
 	}
-	// FIXME UNICODE
-	return temp + lyx::from_utf8(url);
+	return temp + url;
 }
 
 
@@ -73,13 +72,11 @@ int InsetUrl::latex(Buffer const &, odocstream & os,
 int InsetUrl::plaintext(Buffer const &, odocstream & os,
 		    OutputParams const &) const
 {
-	// FIXME UNICODE
-	os << '[' << lyx::from_utf8(getContents());
-	if (getOptions().empty())
+	os << '[' << getParam("target");
+	if (getParam("name").empty())
 		os << ']';
 	else
-		// FIXME UNICODE
-		os << "||" << lyx::from_utf8(getOptions()) << ']';
+		os << "||" << getParam("name") << ']';
 	return 0;
 }
 
@@ -87,12 +84,11 @@ int InsetUrl::plaintext(Buffer const &, odocstream & os,
 int InsetUrl::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
-        // FIXME UNICODE
-	os << "<ulink url=\""
-           << lyx::from_ascii(subst(getContents(), "&", "&amp;"))
-	   << "\">"
-           << lyx::from_ascii(getOptions())
-           << "</ulink>";
+	os << "<ulink url=\"" 
+	   << subst(getParam("target"), lyx::from_ascii("&"), lyx::from_ascii("&amp;"))
+	   << "\">" 
+	   << getParam("name")
+	   << "</ulink>";
 	return 0;
 }
 

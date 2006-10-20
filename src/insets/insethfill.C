@@ -12,6 +12,8 @@
 
 #include "insethfill.h"
 
+#include "gettext.h"
+
 #include "support/std_ostream.h"
 
 using lyx::docstring;
@@ -42,7 +44,7 @@ void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
 
 docstring const InsetHFill::getScreenLabel(Buffer const &) const
 {
-	return lyx::from_ascii(getContents());
+	return _("Horizontal Fill");
 }
 
 

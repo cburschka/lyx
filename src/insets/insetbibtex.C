@@ -154,7 +154,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	typedef boost::tokenizer<Separator> Tokenizer;
 
 	Separator const separator(",");
-	Tokenizer const tokens(getContents(), separator);
+	Tokenizer const tokens(lyx::to_utf8(getParam("bibfiles")), separator);
 	Tokenizer::const_iterator const begin = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
 
@@ -185,15 +185,15 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			dbs << ',';
 		dbs << latex_path(database);
 	}
-	string const db_out = dbs.str();
+	// FIXME UNICODE
+	docstring const db_out = lyx::from_utf8(dbs.str());
 
 	// Post this warning only once.
 	static bool warned_about_spaces = false;
 	if (!warned_about_spaces &&
-	    runparams.nice && db_out.find(' ') != string::npos) {
+	    runparams.nice && db_out.find(' ') != docstring::npos) {
 		warned_about_spaces = true;
 
-		// FIXME UNICODE
 		Alert::warning(_("Export Warning!"),
 			       _("There are spaces in the paths to your BibTeX databases.\n"
 					      "BibTeX will be unable to find them."));
@@ -201,7 +201,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	}
 
 	// Style-Options
-	string style = getOptions(); // maybe empty! and with bibtotoc
+	string style = lyx::to_utf8(getParam("options")); // maybe empty! and with bibtotoc
 	string bibtotoc;
 	if (prefixIs(style, "bibtotoc")) {
 		bibtotoc = "bibtotoc";
@@ -252,8 +252,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	}
 
 	if (!db_out.empty() && buffer.params().use_bibtopic){
-		// FIXME UNICODE
-		os << "\\begin{btSect}{" << lyx::from_utf8(db_out) << "}\n";
+		os << "\\begin{btSect}{" << db_out << "}\n";
 		docstring btprint = getParam("btprint");
 		if (btprint.empty())
 			// default
@@ -289,8 +288,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	}
 
 	if (!db_out.empty() && !buffer.params().use_bibtopic){
-		// FIXME UNICODE
-		os << "\\bibliography{" << lyx::from_utf8(db_out) << "}\n";
+		os << "\\bibliography{" << db_out << "}\n";
 		nlines += 1;
 	}
 
@@ -305,7 +303,8 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 	vector<string> vec;
 
 	string tmp;
-	string bibfiles = getContents();
+	// FIXME UNICODE
+	string bibfiles = lyx::to_utf8(getParam("bibfiles"));
 	bibfiles = split(bibfiles, tmp, ',');
 	while (!tmp.empty()) {
 		string file = findtexfile(changeExtension(tmp, "bib"), "bib");
@@ -362,11 +361,12 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 
 bool InsetBibtex::addDatabase(string const & db)
 {
-	string contents(getContents());
-	if (tokenPos(contents, ',', db) == -1) {
-		if (!contents.empty())
-			contents += ',';
-		setContents(contents + db);
+	// FIXME UNICODE
+	string bibfiles(lyx::to_utf8(getParam("bibfiles")));
+	if (tokenPos(bibfiles, ',', db) == -1) {
+		if (!bibfiles.empty())
+			bibfiles += ',';
+		setParam("bibfiles", lyx::from_utf8(bibfiles + db));
 		return true;
 	}
 	return false;
@@ -375,17 +375,18 @@ bool InsetBibtex::addDatabase(string const & db)
 
 bool InsetBibtex::delDatabase(string const & db)
 {
-	string contents(getContents());
-	if (contains(contents, db)) {
-		int const n = tokenPos(contents, ',', db);
+	// FIXME UNICODE
+	string bibfiles(lyx::to_utf8(getParam("bibfiles")));
+	if (contains(bibfiles, db)) {
+		int const n = tokenPos(bibfiles, ',', db);
 		string bd = db;
 		if (n > 0) {
 			// this is not the first database
 			string tmp = ',' + bd;
-			setContents(subst(contents, tmp, ""));
+			setParam("bibfiles", lyx::from_utf8(subst(bibfiles, tmp, string())));
 		} else if (n == 0)
 			// this is the first (or only) database
-			setContents(split(contents, bd, ','));
+			setParam("bibfiles", lyx::from_utf8(split(bibfiles, bd, ',')));
 		else
 			return false;
 	}

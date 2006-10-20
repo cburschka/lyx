@@ -1118,7 +1118,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (name == "label") {
 			InsetCommandParams p("label");
 			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), p);
-			string str = p.getContents();
+			string str = lyx::to_utf8(p["name"]);
 			recordUndoInset(cur);
 			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			str = lyx::support::trim(str);

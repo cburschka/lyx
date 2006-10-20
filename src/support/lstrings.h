@@ -91,6 +91,7 @@ std::string const uppercase(std::string const &);
 
 /// Does the std::string start with this prefix?
 bool prefixIs(std::string const &, std::string const &);
+bool prefixIs(lyx::docstring const &, lyx::docstring const &);
 
 /// Does the string end with this char?
 bool suffixIs(std::string const &, char);

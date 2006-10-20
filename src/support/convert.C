@@ -125,6 +125,13 @@ int convert<int>(string const s)
 
 
 template<>
+int convert<int>(docstring const s)
+{
+	return strtol(lyx::to_ascii(s).c_str(), 0, 10);
+}
+
+
+template<>
 unsigned int convert<unsigned int>(string const s)
 {
 	return strtoul(s.c_str(), 0, 10);

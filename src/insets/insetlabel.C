@@ -48,15 +48,13 @@ std::auto_ptr<InsetBase> InsetLabel::doClone() const
 
 void InsetLabel::getLabelList(Buffer const &, std::vector<docstring> & list) const
 {
-	// FIXME UNICODE
-	list.push_back(lyx::from_utf8(getContents()));
+	list.push_back(getParam("name"));
 }
 
 
 docstring const InsetLabel::getScreenLabel(Buffer const &) const
 {
-	// FIXME UNICODE
-	return lyx::from_utf8(getContents());
+	return getParam("name");
 }
 
 
@@ -71,9 +69,10 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 			cur.noUpdate();
 			break;
 		}
-		if (p.getContents() != params().getContents())
-			cur.bv().buffer()->changeRefsIfUnique(params().getContents(),
-						       p.getContents(), InsetBase::REF_CODE);
+		if (p["name"] != params()["name"])
+        		// FIXME UNICODE
+			cur.bv().buffer()->changeRefsIfUnique(lyx::to_utf8(params()["name"]),
+						       lyx::to_utf8(p["name"]), InsetBase::REF_CODE);
 		setParams(p);
 		break;
 	}
@@ -96,8 +95,7 @@ int InsetLabel::latex(Buffer const &, odocstream & os,
 int InsetLabel::plaintext(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
-	// FIXME UNICODE
-	os << '<' << lyx::from_utf8(getContents()) << '>';
+	os << '<' << getParam("name") << '>';
 	return 0;
 }
 
@@ -107,7 +105,7 @@ int InsetLabel::docbook(Buffer const & buf, odocstream & os,
 {
         // FIXME UNICODE
 	os << "<!-- anchor id=\""
-           << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
+           << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("name"))))
            << "\" -->";
 	return 0;
 }

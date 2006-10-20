@@ -162,10 +162,9 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	case LFUN_INDEX_INSERT: {
 		// Try and generate a valid index entry.
 		InsetCommandParams icp("index");
-		string const contents = cmd.argument().empty() ?
-			bv->getLyXText()->getStringToIndex(bv->cursor()) :
-			lyx::to_utf8(cmd.argument());
-		icp.setContents(contents);
+		icp["name"] = cmd.argument().empty() ?
+			lyx::from_utf8(bv->getLyXText()->getStringToIndex(bv->cursor())) :
+			cmd.argument();
 		return new InsetIndex(icp);
 	}
 
@@ -380,8 +379,8 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 			   || cmdName == "vref"
 			   || cmdName == "vpageref"
 			   || cmdName == "prettyref") {
-			if (!inscmd.getOptions().empty()
-			    || !inscmd.getContents().empty()) {
+			if (!inscmd["name"].empty()
+			    || !inscmd["reference"].empty()) {
 				inset.reset(new InsetRef(inscmd, buf));
 			}
 		} else if (cmdName == "tableofcontents") {

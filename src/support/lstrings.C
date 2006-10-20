@@ -329,6 +329,18 @@ bool prefixIs(string const & a, string const & pre)
 }
 
 
+bool prefixIs(docstring const & a, docstring const & pre)
+{
+	docstring::size_type const prelen = pre.length();
+	docstring::size_type const alen = a.length();
+
+	if (prelen > alen || a.empty())
+		return false;
+	else
+		return a.compare(0, prelen, pre) == 0;
+}
+
+
 bool suffixIs(string const & a, char c)
 {
 	if (a.empty()) return false;

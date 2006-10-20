@@ -48,7 +48,7 @@ void InsetRef::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
-			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getContents()));
+			lyx::dispatch(FuncRequest(LFUN_LABEL_GOTO, getParam("reference")));
 		else {
 			InsetCommandMailer("ref", *this).showDialog(&cur.bv());
 			cur.undispatched();
@@ -73,13 +73,11 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 			break;
 		}
 	}
-	// FIXME UNICODE
-	temp += lyx::from_utf8(getContents());
+	temp += getParam("reference");
 
-	if (!isLatex && !getOptions().empty()) {
+	if (!isLatex && !getParam("name").empty()) {
 		temp += "||";
-		// FIXME UNICODE
-		temp += lyx::from_utf8(getOptions());
+		temp += getParam("name");
 	}
 	return temp;
 }
@@ -99,8 +97,7 @@ int InsetRef::latex(Buffer const &, odocstream & os,
 int InsetRef::plaintext(Buffer const &, odocstream & os,
 		    OutputParams const &) const
 {
-	// FIXME UNICODE
-	os << '[' << lyx::from_utf8(getContents()) << ']';
+	os << '[' << getParam("reference") << ']';
 	return 0;
 }
 
@@ -108,21 +105,23 @@ int InsetRef::plaintext(Buffer const &, odocstream & os,
 int InsetRef::docbook(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams) const
 {
-        // FIXME UNICODE
-	if (getOptions().empty() && runparams.flavor == OutputParams::XML) {
-		os << "<xref linkend=\""
-                   << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
-                   << "\" />";
-	} else if (getOptions().empty()) {
-		os << "<xref linkend=\""
-                   << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
-                   << "\">";
+	docstring const & name = getParam("name");
+	if (name.empty()) {
+		if (runparams.flavor == OutputParams::XML) {
+			os << "<xref linkend=\"" 
+			   << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
+			   << "\" />";
+		} else {
+			os << "<xref linkend=\"" 
+			   << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
+			   << "\">";
+		}
 	} else {
-		os << "<link linkend=\""
-                   << lyx::from_ascii(sgml::cleanID(buf, runparams, getContents()))
-		   << "\">"
-                   << lyx::from_ascii(getOptions())
-                   << "</link>";
+		os << "<link linkend=\"" 
+		   << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference"))))
+		   << "\">" 
+		   << getParam("name")
+		   << "</link>";
 	}
 
 	return 0;

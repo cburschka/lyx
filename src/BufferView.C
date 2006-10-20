@@ -772,7 +772,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 				getInsetByCode<InsetRef>(cursor_,
 							 InsetBase::REF_CODE);
 			if (inset) {
-				label = lyx::from_utf8(inset->getContents());
+				label = inset->getParam("reference");
 				savePosition(0);
 			}
 		}

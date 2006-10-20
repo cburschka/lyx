@@ -222,7 +222,7 @@ string const parentFilename(Buffer const & buffer)
 string const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
-	return makeAbsPath(params.getContents(),
+	return makeAbsPath(lyx::to_utf8(params["filename"]),
 			   onlyPath(parentFilename(buffer)));
 }
 
@@ -297,11 +297,11 @@ docstring const InsetInclude::getScreenLabel(Buffer const &) const
 
 	temp += ": ";
 
-	if (params_.getContents().empty())
+	if (params_["filename"].empty())
 		temp += "???";
 	else
 		// FIXME: We don't know the encoding of the filename
-		temp += lyx::from_ascii(onlyFilename(params_.getContents()));
+		temp += lyx::from_ascii(onlyFilename(lyx::to_utf8(params_["filename"])));
 
 	return temp;
 }
@@ -354,7 +354,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			OutputParams const & runparams) const
 {
-	string incfile(params_.getContents());
+	string incfile(lyx::to_utf8(params_["filename"]));
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
@@ -491,7 +491,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 			  OutputParams const & runparams) const
 {
-	string incfile(params_.getContents());
+	string incfile(lyx::to_utf8(params_["filename"]));
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
@@ -538,7 +538,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 
 void InsetInclude::validate(LaTeXFeatures & features) const
 {
-	string incfile(params_.getContents());
+	string incfile(lyx::to_utf8(params_["filename"]));
 	string writefile;
 
 	Buffer const & buffer = features.buffer();
