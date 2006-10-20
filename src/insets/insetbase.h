@@ -396,7 +396,7 @@ public:
 	virtual bool noFontChange() const { return false; }
 
 	/// set the change for the entire inset
-	virtual void setChange(Change const & change) {}
+	virtual void setChange(Change const &) {}
 
 	/// pretty arbitrary
 	virtual int width() const { return 10; }
