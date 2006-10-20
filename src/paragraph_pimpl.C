@@ -322,7 +322,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 }
 
 
-bool Paragraph::Pimpl::erase(pos_type pos, bool trackChanges)
+bool Paragraph::Pimpl::erase(pos_type pos, bool /*trackChanges*/)
 {
 	// FIXME: change tracking (MG)
 	BOOST_ASSERT(pos <= size());

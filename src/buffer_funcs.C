@@ -375,8 +375,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 	if (layout->margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
-			// FIXME UNICODE
-			par.setLabelWidthString(lyx::from_ascii(layout->labelstring()));
+			par.setLabelWidthString(layout->labelstring());
 	} else {
 		par.setLabelWidthString(docstring());
 	}
@@ -386,8 +385,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		if (layout->toclevel <= buf.params().secnumdepth
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
-			// FIXME UNICODE
-			counters.step(lyx::from_ascii(layout->counter));
+			counters.step(layout->counter);
 			docstring label = expandLabel(buf, layout,
 						      par.params().appendix());
 			par.params().labelString(label);
@@ -469,7 +467,8 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		int number = counters.value(lyx::from_ascii("bibitem"));
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
-		par.params().labelString(buf.B_(layout->labelstring()));
+		// FIXME UNICODE
+		par.params().labelString(buf.B_(lyx::to_ascii(layout->labelstring())));
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
@@ -495,14 +494,16 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
 		} else {
 			// par->SetLayout(0);
-			s = buf.B_(layout->labelstring());
+			// FIXME UNICODE
+			s = buf.B_(lyx::to_ascii(layout->labelstring()));
 		}
 
 		par.params().labelString(s);
 	} else if (layout->labeltype == LABEL_NO_LABEL)
 		par.params().labelString(docstring());
 	else
-		par.params().labelString(buf.B_(layout->labelstring()));
+		// FIXME UNICODE
+		par.params().labelString(buf.B_(lyx::to_ascii(layout->labelstring())));
 }
 
 } // anon namespace
@@ -594,8 +595,9 @@ docstring expandLabel(Buffer const & buf,
 {
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 
-	docstring fmt = buf.B_(appendix ? layout->labelstring_appendix()
-				  : layout->labelstring());
+	// FIXME UNICODE
+	docstring fmt = buf.B_(lyx::to_ascii(appendix ? layout->labelstring_appendix()
+					     : layout->labelstring()));
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'

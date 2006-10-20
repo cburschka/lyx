@@ -229,9 +229,9 @@ void sgml::openTag(Buffer const & buf, odocstream & os, OutputParams const & run
 		if (param.find('#') != string::npos) {
 			// FIXME UNICODE
 			if(!style->counter.empty())
-				counters.step(lyx::from_ascii(style->counter));
+				counters.step(style->counter);
 			else
-				counters.step(lyx::from_ascii(style->latexname()));
+				counters.step(lyx::from_ascii(name));
 			int i = counters.value(lyx::from_ascii(name));
 			attribute = subst(param, "#", convert<string>(i));
 		} else {

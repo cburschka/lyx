@@ -354,8 +354,7 @@ void LyXText::setLayout(pit_type start, pit_type end, string const & layout)
 	for (pit_type pit = start; pit != end; ++pit) {
 		pars_[pit].applyLayout(lyxlayout);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
-			// FIXME UNICODE
-			pars_[pit].setLabelWidthString(lyx::from_ascii(lyxlayout->labelstring()));
+			pars_[pit].setLabelWidthString(lyxlayout->labelstring());
 	}
 }
 

@@ -630,8 +630,7 @@ void RowPainter::paintLast()
 	case END_LABEL_STATIC: {
 		LyXFont font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
-		// FIXME UNICODE
-		docstring const & str = lyx::from_utf8(par_.layout()->endlabelstring());
+		docstring const & str = par_.layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - fm.width(str)
 			: - text_.rightMargin(par_) - row_.width();

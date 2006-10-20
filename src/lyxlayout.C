@@ -448,22 +448,22 @@ bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LABELSTRING:	// label string definition
 			if (lexrc.next())
-				labelstring_ = trim(lexrc.getString());
+				labelstring_ = lyx::from_ascii(trim(lexrc.getString()));
 			break;
 
 		case LT_ENDLABELSTRING:	// endlabel string definition
 			if (lexrc.next())
-				endlabelstring_ = trim(lexrc.getString());
+				endlabelstring_ = lyx::from_ascii(trim(lexrc.getString()));
 			break;
 
 		case LT_LABELSTRING_APPENDIX: // label string appendix definition
 			if (lexrc.next())
-				labelstring_appendix_ = trim(lexrc.getString());
+				labelstring_appendix_ = lyx::from_ascii(trim(lexrc.getString()));
 			break;
 
 		case LT_LABELCOUNTER: // name of counter to use
 			if (lexrc.next())
-				counter = trim(lexrc.getString());
+				counter = lyx::from_ascii(trim(lexrc.getString()));
 			break;
 
 		case LT_FREE_SPACING:	// Allow for free spacing.

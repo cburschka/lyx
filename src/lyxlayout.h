@@ -17,6 +17,7 @@
 #include "lyxfont.h"
 #include "layout.h"
 #include "Spacing.h"
+#include "support/docstring.h"
 
 #include <string>
 
@@ -55,9 +56,9 @@ public:
 	///
 	std::string const & latexname() const { return latexname_; }
 	///
-	std::string const & labelstring() const { return labelstring_; }
+	lyx::docstring const & labelstring() const { return labelstring_; }
 	///
-	std::string const & endlabelstring() const { return endlabelstring_; }
+	lyx::docstring const & endlabelstring() const { return endlabelstring_; }
 	///
 	std::string const & preamble() const { return preamble_; }
 	///
@@ -69,7 +70,7 @@ public:
 	///
 	std::string const & itemtag() const { return itemtag_; }
 	///
-	std::string const & labelstring_appendix() const {
+	lyx::docstring const & labelstring_appendix() const {
 		return labelstring_appendix_;
 	}
 	/** Default font for this layout/environment.
@@ -185,7 +186,7 @@ public:
 	/// Does this layout allow for an optional parameter?
 	int optionalargs;
 	/// Which counter to step
-	std::string counter;
+	lyx::docstring counter;
 	/// Depth of XML command
 	int commanddepth;
 
@@ -208,11 +209,11 @@ private:
 	/// LaTeX name for environment
 	std::string latexname_;
 	/// Label string. "Abstract", "Reference", "Caption"...
-	std::string labelstring_;
+	lyx::docstring labelstring_;
 	///
-	std::string endlabelstring_;
+	lyx::docstring endlabelstring_;
 	/// Label string inside appendix. "Appendix", ...
-	std::string labelstring_appendix_;
+	lyx::docstring labelstring_appendix_;
 	/// LaTeX parameter for environment
 	std::string latexparam_;
 	/// Internal tag to use (e.g., <title></title> for sect header)

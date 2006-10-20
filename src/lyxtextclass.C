@@ -804,8 +804,8 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 
 	lexrc.pushTable(counterTags, CT_END);
 
-	string name;
-	string within;
+	docstring name;
+	docstring within;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -819,12 +819,12 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 		switch (static_cast<CounterTags>(le)) {
 		case CT_NAME:
 			lexrc.next();
-			name = lexrc.getString();
+			name = lyx::from_ascii(lexrc.getString());
 			break;
 		case CT_WITHIN:
 			lexrc.next();
-			within = lexrc.getString();
-			if (within == "none")
+			within = lyx::from_ascii(lexrc.getString());
+			if (within == lyx::from_ascii("none"))
 				within.erase();
 			break;
 		case CT_END:
@@ -835,12 +835,10 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 
 	// Here if have a full counter if getout == true
 	if (getout) {
-		// FIXME UNICODE
 		if (within.empty()) {
-			ctrs_->newCounter(lyx::from_ascii(name));
+			ctrs_->newCounter(name);
 		} else {
-			ctrs_->newCounter(lyx::from_ascii(name),
-					  lyx::from_ascii(within));
+			ctrs_->newCounter(name, within);
 		}
 	}
 
