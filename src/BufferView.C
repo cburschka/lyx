@@ -1264,11 +1264,11 @@ void BufferView::updateMetrics(bool singlepar)
 	// FIXME (Abdel 19/10/2006):
 	// There's something fishy in tabular. The coord_cache_ is not
 	// correctly reconstructed when a character is trying to be inserted.
-	// Not clearing out the coord_cache_ fixes the crash but I don't know
-	// what side effect this could have on other insets.
+	// Not clearing out the coord_cache_ fixes the crash but there is a
+	// bad side effect: buffer-begin and buffer-end do not update the screen.
 	//
 	// Remove old position cache
-	// coord_cache_.clear();
+	coord_cache_.clear();
 
 	LyXText & buftext = buffer_->text();
 	lyx::pit_type size = int(buftext.paragraphs().size());
