@@ -28,6 +28,7 @@
 
 #include <sstream>
 
+using lyx::docstring;
 using lyx::support::rtrim;
 
 using std::istringstream;
@@ -141,25 +142,25 @@ void ParagraphParameters::appendix(bool a)
 }
 
 
-string const & ParagraphParameters::labelString() const
+docstring const & ParagraphParameters::labelString() const
 {
 	return labelstring_;
 }
 
 
-void ParagraphParameters::labelString(string const & ls)
+void ParagraphParameters::labelString(docstring const & ls)
 {
 	labelstring_ = ls;
 }
 
 
-string const & ParagraphParameters::labelWidthString() const
+docstring const & ParagraphParameters::labelWidthString() const
 {
 	return labelwidthstring_;
 }
 
 
-void ParagraphParameters::labelWidthString(string const & lws)
+void ParagraphParameters::labelWidthString(docstring const & lws)
 {
 	labelwidthstring_ = lws;
 }
@@ -223,7 +224,7 @@ void ParagraphParameters::read(LyXLex & lex)
 			align(LyXAlignment(1 << tmpret));
 		} else if (token == "\\labelwidthstring") {
 			lex.eatLine();
-			labelWidthString(lex.getString());
+			labelWidthString(lex.getDocString());
 		} else {
 			lex.pushToken(token);
 			break;
@@ -240,7 +241,7 @@ void ParagraphParameters::write(ostream & os) const
 	// The labelwidth string used in lists.
 	if (!labelWidthString().empty())
 		os << "\\labelwidthstring "
-		   << labelWidthString() << '\n';
+		   << lyx::to_utf8(labelWidthString()) << '\n';
 
 	// Start of appendix?
 	if (startOfAppendix())

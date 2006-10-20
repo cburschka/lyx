@@ -13,7 +13,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include <string>
+#include "support/docstring.h"
 
 ///
 class Bullet {
@@ -22,7 +22,7 @@ public:
 	Bullet(int f = -1, int c = -1, int s = -1);
 
 	///
-	explicit Bullet(std::string const &);
+	explicit Bullet(lyx::docstring const &);
 
 	///
 	void setCharacter(int);
@@ -31,7 +31,7 @@ public:
 	///
 	void setSize(int);
 	///
-	void setText(std::string const &);
+	void setText(lyx::docstring const &);
 	///
 	int getCharacter() const;
 	///
@@ -39,7 +39,7 @@ public:
 	///
 	int getSize() const;
 	///
-	std::string const & getText() const;
+	lyx::docstring const & getText() const;
 	///
 	Bullet & operator=(Bullet const &);
 	///
@@ -70,9 +70,9 @@ private:
 	///
 	void generateText() const;
 	///
-	static std::string const bulletSize(int);
+	static lyx::docstring const bulletSize(int);
 	///
-	static std::string const bulletEntry(int, int);
+	static lyx::docstring const bulletEntry(int, int);
 
 	///
 	int font;
@@ -97,7 +97,7 @@ private:
 	    or one generated internally from the font, character
 	    and size settings.
 	*/
-	mutable std::string text;
+	mutable lyx::docstring text;
 };
 
 

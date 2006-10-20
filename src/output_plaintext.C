@@ -174,9 +174,8 @@ void asciiParagraph(Buffer const & buf,
 		break;
 
 	default: {
-		// FIXME UNICODE
 		docstring const label =
-			lyx::from_utf8(par.params().labelString());
+			par.params().labelString();
 		os << label << ' ';
 		currlinelen += label.length() + 1;
 		break;

@@ -19,6 +19,7 @@
 #include "Spacing.h"
 
 #include "support/types.h"
+#include "support/docstring.h"
 
 #include <iosfwd>
 #include <string>
@@ -66,13 +67,13 @@ public:
 	///
 	void appendix(bool);
 	///
-	std::string const & labelString() const;
+	lyx::docstring const & labelString() const;
 	///
-	void labelString(std::string const &);
+	void labelString(lyx::docstring const &);
 	///
-	std::string const & labelWidthString() const;
+	lyx::docstring const & labelWidthString() const;
 	///
-	void labelWidthString(std::string const &);
+	void labelWidthString(lyx::docstring const &);
 	///
 	LyXLength const & leftIndent() const;
 	///
@@ -101,9 +102,9 @@ private:
 	///
 	depth_type depth_;
 	///
-	std::string labelstring_;
+	lyx::docstring labelstring_;
 	///
-	std::string labelwidthstring_;
+	lyx::docstring labelwidthstring_;
 	///
 	LyXLength leftindent_;
 };

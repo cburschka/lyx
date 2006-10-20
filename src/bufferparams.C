@@ -694,8 +694,9 @@ void BufferParams::writeFile(ostream & os) const
 				   << user_defined_bullet(i).getSize() << "\n";
 			}
 			else {
+				// FIXME UNICODE
 				os << "\\bulletLaTeX " << i << " \""
-				   << user_defined_bullet(i).getText()
+				   << lyx::to_ascii(user_defined_bullet(i).getText())
 				   << "\"\n";
 			}
 		}
@@ -1073,8 +1074,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				bullets_def += 'v';
 				break;
 			}
+			// FIXME UNICODE
 			bullets_def += '{' +
-				user_defined_bullet(i).getText()
+				lyx::to_ascii(user_defined_bullet(i).getText())
 				+ "}\n";
 		}
 	}
@@ -1239,7 +1241,7 @@ void BufferParams::readBulletsLaTeX(LyXLex & lex)
 	if (!lex.next()) return;
 	int const index = lex.getInteger();
 	lex.next(true);
-	string const temp_str = lex.getString();
+	docstring const temp_str = lex.getDocString();
 
 	user_defined_bullet(index).setText(temp_str);
 	temp_bullet(index).setText(temp_str);

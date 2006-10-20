@@ -606,23 +606,23 @@ char Paragraph::getAlign() const
 }
 
 
-string const & Paragraph::getLabelstring() const
+docstring const & Paragraph::getLabelstring() const
 {
 	return params().labelString();
 }
 
 
 // the next two functions are for the manual labels
-string const Paragraph::getLabelWidthString() const
+docstring const Paragraph::getLabelWidthString() const
 {
 	if (!params().labelWidthString().empty())
 		return params().labelWidthString();
 	else
-		return lyx::to_utf8(_("Senseless with this layout!"));
+		return _("Senseless with this layout!");
 }
 
 
-void Paragraph::setLabelWidthString(string const & s)
+void Paragraph::setLabelWidthString(docstring const & s)
 {
 	params().labelWidthString(s);
 }
@@ -631,7 +631,7 @@ void Paragraph::setLabelWidthString(string const & s)
 void Paragraph::applyLayout(LyXLayout_ptr const & new_layout)
 {
 	layout(new_layout);
-	params().labelWidthString(string());
+	params().labelWidthString(docstring());
 	params().align(LYX_ALIGN_LAYOUT);
 	params().spacing(Spacing(Spacing::Default));
 }
@@ -1402,8 +1402,7 @@ docstring const Paragraph::asString(Buffer const & buffer,
 	lyx::odocstringstream os;
 
 	if (beg == 0 && label && !params().labelString().empty())
-		// FIXME UNICODE
-		os << lyx::from_utf8(params().labelString()) << ' ';
+		os << params().labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
 		value_type const c = getUChar(buffer.params(), i);

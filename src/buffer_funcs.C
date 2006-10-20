@@ -371,13 +371,14 @@ void setLabel(Buffer const & buf, ParIterator & it)
 	par.itemdepth = getItemDepth(it);
 
 	// erase what was there before
-	par.params().labelString(string());
+	par.params().labelString(docstring());
 
 	if (layout->margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
-			par.setLabelWidthString(layout->labelstring());
+			// FIXME UNICODE
+			par.setLabelWidthString(lyx::from_ascii(layout->labelstring()));
 	} else {
-		par.setLabelWidthString(string());
+		par.setLabelWidthString(docstring());
 	}
 
 	// is it a layout that has an automatic label?
@@ -386,8 +387,10 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout->counter);
-			string label = expandLabel(buf, layout,
-						   par.params().appendix());
+			// FIXME UNICODE
+			docstring label =
+				lyx::from_ascii(expandLabel(buf, layout,
+							    par.params().appendix()));
 			par.params().labelString(label);
 		}
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
@@ -396,19 +399,19 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		//   par.params().labelString(
 		//    bufparams.user_defined_bullet(par.itemdepth).getText());
 		// for now, use a simple hardcoded label
-		string itemlabel;
+		docstring itemlabel;
 		switch (par.itemdepth) {
 		case 0:
-			itemlabel = "*";
+			itemlabel = lyx::char_type(0x2022);
 			break;
 		case 1:
-			itemlabel = "-";
+			itemlabel = lyx::char_type(0x2013);
 			break;
 		case 2:
-			itemlabel = "@";
+			itemlabel = lyx::char_type(0x2217);
 			break;
 		case 3:
-			itemlabel = "·";
+			itemlabel += lyx::char_type(0x2219); // or 0x00b7
 			break;
 		}
 
@@ -462,14 +465,13 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		}
 
 		// FIXME UNICODE
-		par.params().labelString(counters.counterLabel(lyx::to_utf8(buf.B_(format))));
+		par.params().labelString(lyx::from_utf8(counters.counterLabel(lyx::to_utf8(buf.B_(format)))));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step("bibitem");
 		int number = counters.value("bibitem");
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
-		// FIXME UNICODE
-		par.params().labelString(lyx::to_utf8(buf.B_(layout->labelstring())));
+		par.params().labelString(buf.B_(layout->labelstring()));
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
@@ -492,20 +494,17 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			counters.step(fl.type());
 
 			// Doesn't work... yet.
-			// FIXME UNICODE
 			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
 		} else {
 			// par->SetLayout(0);
-			// FIXME UNICODE
 			s = buf.B_(layout->labelstring());
 		}
 
-		par.params().labelString(lyx::to_utf8(s));
+		par.params().labelString(s);
 	} else if (layout->labeltype == LABEL_NO_LABEL)
-		par.params().labelString(string());
+		par.params().labelString(docstring());
 	else
-		// FIXME UNICODE
-		par.params().labelString(lyx::to_utf8(buf.B_(layout->labelstring())));
+		par.params().labelString(buf.B_(layout->labelstring()));
 }
 
 } // anon namespace

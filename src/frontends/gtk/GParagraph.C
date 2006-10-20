@@ -93,10 +93,10 @@ void GParagraph::doBuild()
 void GParagraph::update()
 {
 	// label width
-	string const labelwidth = controller().params().labelWidthString();
-	maxlabelwidthentry_->set_text(labelwidth);
+	docstring const labelwidth = controller().params().labelWidthString();
+	maxlabelwidthentry_->set_text(lyx::to_utf8(labelwidth));
 	maxlabelwidthentry_->set_sensitive(
-		labelwidth != lyx::to_utf8(_("Senseless with this layout!")));
+		labelwidth != _("Senseless with this layout!"));
 
 	// alignment
 	LyXAlignment const current_alignment = controller().params().align();
@@ -175,8 +175,9 @@ void GParagraph::onSpacingChanged()
 
 void GParagraph::onMaxLabelWidthChanged()
 {
+	// FIXME UNICODE
 	controller().params().labelWidthString(
-		maxlabelwidthentry_->get_text());
+		lyx::from_utf8(Glib::locale_to_utf8(maxlabelwidthentry_->get_text())));
 	controller().dispatchParams();
 }
 

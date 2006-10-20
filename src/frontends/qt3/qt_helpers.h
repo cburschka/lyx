@@ -103,4 +103,8 @@ std::string const fromqstr(QString const & str);
  */
 lyx::docstring const qstring_to_ucs4(QString const & str);
 
+void ucs4_to_qstring(lyx::docstring const & str, QString & s);
+
+QString ucs4_to_qstring(lyx::docstring const & str);
+
 #endif // QTHELPERS_H

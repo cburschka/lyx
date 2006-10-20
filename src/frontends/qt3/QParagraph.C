@@ -104,7 +104,7 @@ void QParagraph::apply()
 	params.spacing(spacing);
 
 	// label width
-	params.labelWidthString(fromqstr(dialog_->labelWidth->text()));
+	params.labelWidthString(qstring_to_ucs4(dialog_->labelWidth->text()));
 	// indendation
 	params.noindent(!dialog_->indentCB->isChecked());
 }
@@ -115,11 +115,11 @@ void QParagraph::update_contents()
 	ParagraphParameters const & params = controller().params();
 
 	// label width
-	string const & labelwidth = params.labelWidthString();
+	docstring const & labelwidth = params.labelWidthString();
 	// lyx::to_utf8(_() is correct here (this is stupid though !))
-	if (labelwidth != lyx::to_utf8(_("Senseless with this layout!"))) {
+	if (labelwidth != _("Senseless with this layout!")) {
 		dialog_->labelwidthGB->setEnabled(true);
-		dialog_->labelWidth->setText(toqstr(labelwidth));
+		dialog_->labelWidth->setText(ucs4_to_qstring(labelwidth));
 	} else {
 		dialog_->labelwidthGB->setEnabled(false);
 		dialog_->labelWidth->setText("");

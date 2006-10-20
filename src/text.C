@@ -537,7 +537,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			// FIXME UNICODE
 			docstring labin = lyx::from_utf8(layout->labelindent);
 			l_margin += labelfont_metrics.signedWidth(labin);
-			docstring labstr = lyx::from_utf8(par.getLabelstring());
+			docstring labstr = par.getLabelstring();
 			l_margin += labelfont_metrics.width(labstr);
 			docstring labsep = lyx::from_utf8(layout->labelsep);
 			l_margin += labelfont_metrics.width(labsep);
@@ -551,7 +551,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		// The width of an empty par, even with manual label, should be 0
 		if (!par.empty() && pos >= par.beginOfBody()) {
 			if (!par.getLabelWidthString().empty()) {
-				docstring labstr = lyx::from_utf8(par.getLabelWidthString());
+				docstring labstr = par.getLabelWidthString();
 				l_margin += labelfont_metrics.width(labstr);
 				docstring labsep = lyx::from_utf8(layout->labelsep);
 				l_margin += labelfont_metrics.width(labsep);
@@ -593,7 +593,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
 			l_margin += labelfont_metrics.signedWidth(lyx::from_utf8(layout->labelindent));
 			l_margin += labelfont_metrics.width(lyx::from_utf8(layout->labelsep));
-			l_margin += labelfont_metrics.width(lyx::from_utf8(par.getLabelstring()));
+			l_margin += labelfont_metrics.width(par.getLabelstring());
 		}
 		break;
 
@@ -880,14 +880,13 @@ int LyXText::labelFill(Paragraph const & par, Row const & row) const
 	for (pos_type i = row.pos(); i <= last; ++i)
 		w += singleWidth(par, i);
 
-	string const & label = par.params().labelWidthString();
+	docstring const & label = par.params().labelWidthString();
 	if (label.empty())
 		return 0;
 
 	FontMetrics const & fm = theFontMetrics(getLabelFont(par));
 
-	// FIXME UNICODE
-	return max(0, fm.width(lyx::from_utf8(label)) - w);
+	return max(0, fm.width(label) - w);
 }
 
 

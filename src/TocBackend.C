@@ -187,8 +187,7 @@ void TocBackend::update()
 				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
 				if (!pit->getLabelstring().empty())
 					// FIXME UNICODE
-					tocstring = lyx::from_utf8(
-						pit->getLabelstring() + ' ');
+					tocstring = pit->getLabelstring() + ' ';
 				tocstring += par.asString(*buffer_, false);
 				break;
 			}

@@ -522,8 +522,7 @@ void RowPainter::paintFirst()
 		LyXFont const font = getLabelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 
-		// FIXME UNICODE
-		docstring const str = lyx::from_utf8(par_.getLabelstring());
+		docstring const str = par_.getLabelstring();
 		if (!str.empty()) {
 			double x = x_;
 
@@ -572,7 +571,7 @@ void RowPainter::paintFirst()
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
 		LyXFont font = getLabelFont();
 		if (!par_.getLabelstring().empty()) {
-			docstring const str = lyx::from_utf8(par_.getLabelstring());
+			docstring const str = par_.getLabelstring();
 			double spacing_val = 1.0;
 			if (!parparams.spacing().isDefault())
 				spacing_val = parparams.spacing().getValue();

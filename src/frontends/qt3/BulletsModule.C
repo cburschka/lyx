@@ -351,7 +351,7 @@ void BulletsModule::setCustom()
 		return;
 
 	tmpbulletset = true;
-	tmpbullet.setText(fromqstr(text));
+	tmpbullet.setText(qstring_to_ucs4(text));
 	tmpbullet.setFont(-1);
 }
 

@@ -354,7 +354,8 @@ void LyXText::setLayout(pit_type start, pit_type end, string const & layout)
 	for (pit_type pit = start; pit != end; ++pit) {
 		pars_[pit].applyLayout(lyxlayout);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
-			pars_[pit].setLabelWidthString(lyxlayout->labelstring());
+			// FIXME UNICODE
+			pars_[pit].setLabelWidthString(lyx::from_ascii(lyxlayout->labelstring()));
 	}
 }
 
@@ -637,7 +638,8 @@ void LyXText::setParagraph(LCursor & cur,
 			else
 				params.align(align);
 		}
-		par.setLabelWidthString(labelwidthstring);
+		// FIXME UNICODE
+		par.setLabelWidthString(lyx::from_ascii(labelwidthstring));
 		params.noindent(noindent);
 	}
 }
@@ -991,8 +993,11 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 
 	// This should be just before or just behind the
 	// cursor position set above.
-	BOOST_ASSERT((pos != 0 && inset == pars_[pit].getInset(pos - 1))
-		     || inset == pars_[pit].getInset(pos));
+        InsetBase * inset2 = pars_[pit].getInset(pos - 1);
+        InsetBase * inset3 = pars_[pit].getInset(pos);
+        
+	BOOST_ASSERT((pos != 0 && inset == inset2)
+		     || inset == inset3);
 	// Make sure the cursor points to the position before
 	// this inset.
 	if (inset == pars_[pit].getInset(pos - 1))

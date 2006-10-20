@@ -652,7 +652,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// indentation.  Otherwise, do the same as LFUN_BREAK_PARAGRAPH.
 		lyx::cap::replaceSelection(cur);
 		if (cur.pos() == 0)
-			cur.paragraph().params().labelWidthString(string());
+			cur.paragraph().params().labelWidthString(docstring());
 		else
 			breakParagraph(cur, 0);
 		cur.resetAnchor();
@@ -1446,11 +1446,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		lex.setStream(is);
 		ParagraphParameters params;
 		params.read(lex);
+		// FIXME UNICODE
 		setParagraph(cur,
-					 params.spacing(),
-					 params.align(),
-					 params.labelWidthString(),
-					 params.noindent());
+			     params.spacing(),
+			     params.align(),
+			     lyx::to_ascii(params.labelWidthString()),
+			     params.noindent());
 		cur.message(_("Paragraph layout set"));
 		break;
 	}

@@ -172,7 +172,7 @@ void BulletsModule::on_customLE_textEdited(const QString & text)
 		return;
 
 	bullets_[levelLW->currentRow()].setFont(current_font_);
-	bullets_[levelLW->currentRow()].setText(fromqstr(text));
+	bullets_[levelLW->currentRow()].setText(qstring_to_ucs4(text));
 	changed();
 }
 

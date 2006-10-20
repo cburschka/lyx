@@ -147,9 +147,8 @@ TeXEnvironment(Buffer const & buf,
 			}
 		}
 		if (style->latextype == LATEX_LIST_ENVIRONMENT) {
-			// FIXME UNICODE
 			os << '{'
-			   << lyx::from_utf8(pit->params().labelWidthString())
+			   << pit->params().labelWidthString()
 			   << "}\n";
 		} else if (style->labeltype == LABEL_BIBLIO) {
 			// ale970405

@@ -20,6 +20,8 @@
 
 #include <boost/assert.hpp>
 
+using lyx::docstring;
+
 using std::string;
 
 
@@ -54,7 +56,7 @@ Bullet::Bullet(int f, int c, int s)
 
 
 
-Bullet::Bullet(string const & t)
+Bullet::Bullet(docstring const & t)
 	: font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
 	testInvariant();
@@ -97,7 +99,7 @@ void Bullet::setSize(int s)
 }
 
 
-void Bullet::setText(string const & t)
+void Bullet::setText(docstring const & t)
 {
 	font = character = size = MIN;
 	user_text = 1;
@@ -137,7 +139,7 @@ Bullet & Bullet::operator=(Bullet const & b)
 }
 
 
-string const & Bullet::getText() const
+docstring const & Bullet::getText() const
 {
 	if (user_text == 0) {
 		generateText();
@@ -193,7 +195,7 @@ void Bullet::generateText() const
 }
 
 
-string const Bullet::bulletSize(int s)
+docstring const Bullet::bulletSize(int s)
 {
 	// use a parameter rather than hard code `size' in here
 	// in case some future function may want to retrieve
@@ -205,11 +207,11 @@ string const Bullet::bulletSize(int s)
 		"\\large", "\\Large",      "\\LARGE",        "\\huge",  "\\Huge"
 	};
 
-	return BulletSize[s];
+	return lyx::from_ascii(BulletSize[s]);
 }
 
 
-string const Bullet::bulletEntry(int f, int c)
+docstring const Bullet::bulletEntry(int f, int c)
 {
 	// Despite how this may at first appear the static local variables
 	// are only initialized once..
@@ -350,7 +352,7 @@ string const Bullet::bulletEntry(int f, int c)
 		BulletPanel4, BulletPanel5
 	};
 
-	return BulletPanels[f][c];
+	return lyx::from_ascii(BulletPanels[f][c]);
 }
 
 void Bullet::testInvariant() const

@@ -224,12 +224,12 @@ public:
 	void setBeginOfBody();
 
 	///
-	std::string const & getLabelstring() const;
+	lyx::docstring const & getLabelstring() const;
 
 	/// the next two functions are for the manual labels
-	std::string const getLabelWidthString() const;
+	lyx::docstring const getLabelWidthString() const;
 	///
-	void setLabelWidthString(std::string const & s);
+	void setLabelWidthString(lyx::docstring const & s);
 	///
 	char getAlign() const;
 	/// The nesting depth of a paragraph

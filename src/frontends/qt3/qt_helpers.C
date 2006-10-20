@@ -163,6 +163,25 @@ docstring const qstring_to_ucs4(QString const & str)
 }
 
 
+void ucs4_to_qstring(lyx::docstring const & str, QString & s)
+{
+	size_t ls = str.size(); 
+	s = "";
+	s.reserve(ls);
+
+	for (size_t i = 0; i < ls; ++i)
+		s.append(ucs4_to_qchar(str[i]));
+}
+
+
+QString ucs4_to_qstring(lyx::docstring const & str)
+{
+	QString tmp;
+	ucs4_to_qstring(str, tmp);
+	return tmp;
+}
+
+
 docstring const formatted(docstring const & text, int w)
 {
 	docstring sout;
