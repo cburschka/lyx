@@ -384,9 +384,6 @@ void LyX::prepareExit()
 			lyx::from_utf8(package().temp_dir()));
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
-
-        pimpl_->lyx_server_.reset();
-        pimpl_->lyx_socket_.reset();
 }
 
 
@@ -414,6 +411,8 @@ void LyX::quit(bool noask)
 	prepareExit();
 
 	if (lyx::use_gui) {
+		pimpl_->lyx_server_.reset();
+		pimpl_->lyx_socket_.reset();
 		pimpl_->application_->exit(0);
 	}
 }
@@ -860,9 +859,9 @@ void LyX::emergencyCleanup() const
 	pimpl_->buffer_list_.emergencyWriteAll();
 	if (lyx::use_gui) {
 		pimpl_->lyx_server_->emergencyCleanup();
-                pimpl_->lyx_server_.reset();
-                pimpl_->lyx_socket_.reset();
-        }
+		pimpl_->lyx_server_.reset();
+		pimpl_->lyx_socket_.reset();
+	}
 }
 
 
