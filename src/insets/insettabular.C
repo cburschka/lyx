@@ -316,7 +316,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	static lyx::frontend::NullPainter nop;
 	static PainterInfo nullpi(bv, nop);
 
-	//resetPos(bv->cursor());
+	resetPos(bv->cursor());
 
 	x += scx_;
 	x += ADD_TO_TABULAR_WIDTH;
