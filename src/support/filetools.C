@@ -390,7 +390,12 @@ string const createTmpDir(string const & tempdir, string const & mask)
 
 bool destroyDir(string const & tmpdir)
 {
-	return fs::remove_all(tmpdir) > 0;
+	try {
+		return fs::remove_all(tmpdir) > 0;
+	} catch (fs::filesystem_error const & fe){
+		lyxerr << "Could not delete " << tmpdir << ". (" << fe.what() << ")" << std::endl;
+		return false;
+	}
 }
 
 
