@@ -389,11 +389,11 @@ void InsetText::setViewCache(BufferView const * bv) const
 
 void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 {
-#ifdef WITH_WARNINGS
-#warning FIXME Check if Changes stuff needs changing here. (Lgb)
-// And it probably does. You have to take a look at this John. (Lgb)
-#warning John, have a look here. (Lgb)
-#endif
+	// There is little we can do here to keep track of changes.
+	// As of 2006/10/20, appendParagraphs is used exclusively by
+	// LyXTabular::setMultiColumn. In this context, the paragraph break
+	// is lost irreversibly and the appended text doesn't really change
+
 	ParagraphList & pl = paragraphs();
 
 	ParagraphList::iterator pit = plist.begin();
@@ -403,7 +403,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 		       std::distance(pl.begin(), ins) - 1);
 
 	for_each(pit, plist.end(),
-		 bind(&ParagraphList::push_back, ref(pl), _1));
+	         bind(&ParagraphList::push_back, ref(pl), _1));
 }
 
 
