@@ -203,7 +203,8 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 				changes_->set(Change::UNCHANGED, i);
 				// No real char at position size():
 				if (i < size() && owner_->isInset(i))
-					owner_->getInset(i)->markErased(false);
+					// FIXME: change tracking (MG)
+					owner_->getInset(i)->setChange(Change(Change::UNCHANGED));
 				break;
 		}
 	}
@@ -325,7 +326,8 @@ bool Paragraph::Pimpl::erase(pos_type pos, bool trackChanges)
 		if (changetype != Change::INSERTED) {
 			changes_->record(Change(Change::DELETED), pos);
 			if (pos < size() && owner_->isInset(pos))
-				owner_->getInset(pos)->markErased(true);
+				// FIXME: change tracking (MG)
+				owner_->getInset(pos)->setChange(Change(Change::DELETED));
 			return false;
 		}
 	}

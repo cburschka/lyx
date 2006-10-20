@@ -115,15 +115,6 @@ void InsetText::init()
 }
 
 
-void InsetText::markErased(bool erased)
-{
-	// FIXME: change tracking (MG)
-	ParagraphList & pars = paragraphs();
-	for_each(pars.begin(), pars.end(),
-		 bind(&Paragraph::setChange, _1, Change(erased ? Change::DELETED : Change::UNCHANGED)));
-}
-
-
 void InsetText::clear()
 {
 	ParagraphList & pars = paragraphs();
@@ -272,6 +263,16 @@ bool InsetText::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
+void InsetText::setChange(Change const & change)
+{
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
+	for (; pit != end; ++pit) {
+		pit->setChange(change);
+	}
+}
+
+
 int InsetText::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
@@ -325,20 +326,6 @@ void InsetText::cursorPos(BufferView const & /*bv*/,
 bool InsetText::showInsetDialog(BufferView *) const
 {
 	return false;
-}
-
-
-void InsetText::markNew(bool /*track_changes*/)
-{
-	ParagraphList::iterator pit = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	for (; pit != end; ++pit) {
-		// FIXME: change tracking (MG)
-		// if (track_changes)
-		//   set pit's text to UNCHANGED
-		// else
-		//   set pit's text to INSERTED in CT mode; reset CT info otherwise
-	}
 }
 
 

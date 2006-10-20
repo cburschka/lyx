@@ -500,7 +500,7 @@ void LyXTabular::appendRow(BufferParams const & bp, idx_type const cell)
 	if (bp.trackChanges)
 		// FIXME: Change Tracking (MG)
 		for (col_type j = 0; j < columns_; ++j)
-			cell_info[row + 1][j].inset->markNew(true);
+			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
 
 	set_row_column_number_info();
 }
@@ -529,7 +529,7 @@ void LyXTabular::copyRow(BufferParams const & bp, row_type const row)
 	if (bp.trackChanges)
 		// FIXME: Change Tracking (MG)
 		for (col_type j = 0; j < columns_; ++j)
-			cell_info[row + 1][j].inset->markNew(true);
+			cell_info[row + 1][j].inset->setChange(Change(Change::INSERTED));
 
 	set_row_column_number_info();
 }
@@ -559,9 +559,9 @@ void LyXTabular::appendColumn(BufferParams const & bp, idx_type const cell)
 	//++column;
 	for (row_type i = 0; i < rows_; ++i) {
 		cell_info[i][column + 1].inset->clear();
+		// FIXME: Change Tracking (MG)
 		if (bp.trackChanges)
-			// FIXME: Change Tracking (MG)
-			cell_info[i][column + 1].inset->markNew(true);
+			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
 	}
 	fixCellNums();
 }
@@ -593,7 +593,7 @@ void LyXTabular::copyColumn(BufferParams const & bp, col_type const column)
 	if (bp.trackChanges)
 		// FIXME: Change Tracking (MG)
 		for (row_type i = 0; i < rows_; ++i)
-			cell_info[i][column + 1].inset->markNew(true);
+			cell_info[i][column + 1].inset->setChange(Change(Change::INSERTED));
 	fixCellNums();
 }
 

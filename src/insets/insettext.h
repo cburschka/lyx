@@ -102,17 +102,8 @@ public:
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
-	/// mark as erased for change tracking
-	void markErased(bool erased);
-
-	/**
-	 * Mark as new. Used when pasting in tabular, and adding rows
-	 * or columns. Note that pasting will ensure that tracking already
-	 * happens, and this just resets the changes for the copied text,
-	 * whereas for row/col add, we need to start tracking changes
-	 * for the (empty) paragraph contained.
-	 */
-	void markNew(bool track_changes = false);
+	/// set the change for the entire inset
+	void setChange(Change const & change);
 
 	/// append text onto the existing text
 	void appendParagraphs(Buffer * bp, ParagraphList &);

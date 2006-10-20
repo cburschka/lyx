@@ -117,8 +117,8 @@ public:
 	///
 	LyXText * getText(int) const;
 
-	///
-	void markErased(bool);
+	/// set the change for the entire inset
+	void setChange(Change const & change);
 
 	// this should return true if we have a "normal" cell, otherwise false.
 	// "normal" means without width set!

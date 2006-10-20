@@ -268,10 +268,6 @@ std::string const & InsetBase::getInsetName() const
 }
 
 
-void InsetBase::markErased(bool)
-{}
-
-
 void InsetBase::cursorPos(BufferView const & /*bv*/, CursorSlice const &,
 		bool, int & x, int & y) const
 {

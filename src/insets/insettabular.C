@@ -1829,7 +1829,9 @@ bool InsetTabular::pasteSelection(LCursor & cur)
 			shared_ptr<InsetText> inset(
 				new InsetText(*paste_tabular->getCellInset(r1, c1)));
 			tabular.setCellInset(r2, c2, inset);
-			inset->markNew();
+			// FIXME: change tracking (MG)
+			inset->setChange(Change(cur.buffer().params().trackChanges ?
+			                        Change::INSERTED : Change::UNCHANGED));
 			cur.pos() = 0;
 		}
 	}
@@ -1851,7 +1853,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 				= cell(tabular.getCellNumber(i, j));
 			if (cur.buffer().params().trackChanges)
 				// FIXME: Change tracking (MG)
-				t->markErased(true);
+				t->setChange(Change(Change::DELETED));
 			else
 				t->clear();
 		}
@@ -1903,10 +1905,10 @@ LyXText * InsetTabular::getText(int idx) const
 }
 
 
-void InsetTabular::markErased(bool erased)
+void InsetTabular::setChange(Change const & change)
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx)->markErased(erased);
+		cell(idx)->setChange(change);
 }
 
 

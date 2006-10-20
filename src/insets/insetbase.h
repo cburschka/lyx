@@ -17,6 +17,8 @@
 #include <memory>
 #include <vector>
 
+#include "changes.h"
+
 class Buffer;
 class BufferView;
 class CursorSlice;
@@ -393,8 +395,8 @@ public:
 	 */
 	virtual bool noFontChange() const { return false; }
 
-	/// mark the inset as erased or not
-	virtual void markErased(bool erased);
+	/// set the change for the entire inset
+	virtual void setChange(Change const & change) {}
 
 	/// pretty arbitrary
 	virtual int width() const { return 10; }
