@@ -648,8 +648,9 @@ void LyXText::insertInset(LCursor & cur, InsetBase * inset)
 {
 	BOOST_ASSERT(this == cur.text());
 	BOOST_ASSERT(inset);
-	// FIXME: change tracking (MG)
-	cur.paragraph().insertInset(cur.pos(), inset, Change(Change::INSERTED));
+	cur.paragraph().insertInset(cur.pos(), inset, 
+				    Change(cur.buffer().params().trackChanges ?
+				    	   Change::INSERTED : Change::UNCHANGED));
 }
 
 
@@ -1262,9 +1263,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 		    && old.pos() < oldpar.size()
 		    && oldpar.isLineSeparator(old.pos())
 		    && oldpar.isLineSeparator(old.pos() - 1)
-		// FIXME: change tracking (MG)
-		    && oldpar.lookupChange(old.pos() - 1) != Change(Change::DELETED)) {
-			oldpar.erase(old.pos() - 1, false);  // do not track changes in DEPM
+		    && oldpar.lookupChange(old.pos() - 1).type != Change::DELETED) {
+			oldpar.erase(old.pos() - 1, false); // do not track changes in DEPM
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
