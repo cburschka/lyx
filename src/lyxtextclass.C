@@ -835,10 +835,12 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 
 	// Here if have a full counter if getout == true
 	if (getout) {
+		// FIXME UNICODE
 		if (within.empty()) {
-			ctrs_->newCounter(name);
+			ctrs_->newCounter(lyx::from_ascii(name));
 		} else {
-			ctrs_->newCounter(name, within);
+			ctrs_->newCounter(lyx::from_ascii(name),
+					  lyx::from_ascii(within));
 		}
 	}
 

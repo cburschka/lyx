@@ -13,6 +13,7 @@
 #define BUFFER_FUNCS_H
 
 #include "lyxlayout_ptr_fwd.h"
+#include "support/docstring.h"
 
 #include <string>
 
@@ -45,8 +46,9 @@ void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
 int countWords(DocIterator const & from, DocIterator const & to);
 
 /// Expand the counters for the labelstring of \c layout
-std::string expandLabel(Buffer const & buf, LyXLayout_ptr const & layout,
-			bool appendix);
+lyx::docstring expandLabel(Buffer const & buf,
+			   LyXLayout_ptr const & layout,
+			   bool appendix);
 
 
 /// update labels at "iter".

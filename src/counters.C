@@ -22,6 +22,8 @@
 
 #include <sstream>
 
+using lyx::docstring;
+
 using std::endl;
 using std::ostringstream;
 using std::string;
@@ -63,45 +65,52 @@ void Counter::reset()
 }
 
 
-string Counter::master() const
+docstring Counter::master() const
 {
 	return master_;
 }
 
 
-void Counter::setMaster(string const & m)
+void Counter::setMaster(docstring const & m)
 {
 	master_ = m;
 }
 
 
-void Counters::newCounter(string const & newc)
+void Counters::newCounter(docstring const & newc)
 {
 	// First check if newc already exist
 	CounterList::iterator const cit = counterList.find(newc);
 	// if already exist give warning and return
 	if (cit != counterList.end()) {
-		lyxerr << "New counter already exists: " << newc << endl;
+		lyxerr << "New counter already exists: "
+		       << lyx::to_utf8(newc)
+		       << endl;
 		return;
 	}
 	counterList[newc];
 }
 
 
-void Counters::newCounter(string const & newc, string const & masterc)
+void Counters::newCounter(docstring const & newc,
+			  docstring const & masterc)
 {
 	// First check if newc already exists
 	CounterList::iterator const cit = counterList.find(newc);
 	// if already existant give warning and return
 	if (cit != counterList.end()) {
-		lyxerr << "New counter already exists: " << newc << endl;
+		lyxerr << "New counter already exists: "
+		       << lyx::to_utf8(newc)
+		       << endl;
 		return;
 	}
 	// then check if masterc exists
 	CounterList::iterator const it = counterList.find(masterc);
 	// if not give warning and return
 	if (it == counterList.end()) {
-		lyxerr << "Master counter does not exist: " << masterc << endl;
+		lyxerr << "Master counter does not exist: "
+		       << lyx::to_utf8(masterc)
+		       << endl;
 		return;
 	}
 
@@ -109,44 +118,48 @@ void Counters::newCounter(string const & newc, string const & masterc)
 }
 
 
-void Counters::set(string const & ctr, int const val)
+void Counters::set(docstring const & ctr, int const val)
 {
 	CounterList::iterator const it = counterList.find(ctr);
 	if (it == counterList.end()) {
-		lyxerr << "set: Counter does not exist: " << ctr << endl;
+		lyxerr << "set: Counter does not exist: "
+		       << lyx::to_utf8(ctr) << endl;
 		return;
 	}
 	it->second.set(val);
 }
 
 
-void Counters::addto(string const & ctr, int const val)
+void Counters::addto(docstring const & ctr, int const val)
 {
 	CounterList::iterator const it = counterList.find(ctr);
 	if (it == counterList.end()) {
-		lyxerr << "addto: Counter does not exist: " << ctr << endl;
+		lyxerr << "addto: Counter does not exist: "
+		       << lyx::to_utf8(ctr) << endl;
 		return;
 	}
 	it->second.addto(val);
 }
 
 
-int Counters::value(string const & ctr) const
+int Counters::value(docstring const & ctr) const
 {
 	CounterList::const_iterator const cit = counterList.find(ctr);
 	if (cit == counterList.end()) {
-		lyxerr << "value: Counter does not exist: " << ctr << endl;
+		lyxerr << "value: Counter does not exist: "
+		       << lyx::to_utf8(ctr) << endl;
 		return 0;
 	}
 	return cit->second.value();
 }
 
 
-void Counters::step(string const & ctr)
+void Counters::step(docstring const & ctr)
 {
 	CounterList::iterator it = counterList.find(ctr);
 	if (it == counterList.end()) {
-		lyxerr << "step: Counter does not exist: " << ctr << endl;
+		lyxerr << "step: Counter does not exist: "
+		       << lyx::to_utf8(ctr) << endl;
 		return;
 	}
 
@@ -171,7 +184,7 @@ void Counters::reset()
 }
 
 
-void Counters::reset(string const & match)
+void Counters::reset(docstring const & match)
 {
 	BOOST_ASSERT(!match.empty());
 
@@ -184,7 +197,7 @@ void Counters::reset(string const & match)
 }
 
 
-void Counters::copy(Counters & from, Counters & to, string const & match)
+void Counters::copy(Counters & from, Counters & to, docstring const & match)
 {
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator end = counterList.end();
@@ -228,7 +241,7 @@ char hebrewCounter(int const n)
 }
 
 
-string const lowerromanCounter(int const n)
+docstring const lowerromanCounter(int const n)
 {
 	static char const * const roman[20] = {
 		"i",   "ii",  "iii", "iv", "v",
@@ -238,12 +251,12 @@ string const lowerromanCounter(int const n)
 	};
 
 	if (n < 1 || n > 20)
-		return "??";
-	return roman[n - 1];
+		return lyx::from_ascii("??");
+	return lyx::from_ascii(roman[n - 1]);
 }
 
 
-string const romanCounter(int const n)
+docstring const romanCounter(int const n)
 {
 	static char const * const roman[20] = {
 		"I",   "II",  "III", "IV", "V",
@@ -253,28 +266,31 @@ string const romanCounter(int const n)
 	};
 
 	if (n < 1 || n > 20)
-		return "??";
-	return roman[n - 1];
+		return lyx::from_ascii("??");
+	return lyx::from_ascii(roman[n - 1]);
 }
 
 } // namespace anon
 
 
-string Counters::labelItem(string const & ctr, string const & numbertype)
+docstring Counters::labelItem(docstring const & ctr,
+			      docstring const & numbertype)
 {
 	if (counterList.find(ctr) == counterList.end()) {
-		lyxerr << "Counter " << ctr << " does not exist." << endl;
-		return string();
+		lyxerr << "Counter "
+		       << lyx::to_utf8(ctr)
+		       << " does not exist." << endl;
+		return docstring();
 	}
 
 	if (numbertype == "hebrew")
-		return string(1, hebrewCounter(value(ctr)));
+		return docstring(1, hebrewCounter(value(ctr)));
 
 	if (numbertype == "alph")
-		return string(1, loweralphaCounter(value(ctr)));
+		return docstring(1, loweralphaCounter(value(ctr)));
 
 	if (numbertype == "Alph")
-		return string(1, alphaCounter(value(ctr)));
+		return docstring(1, alphaCounter(value(ctr)));
 
 	if (numbertype == "roman")
 		return lowerromanCounter(value(ctr));
@@ -282,31 +298,31 @@ string Counters::labelItem(string const & ctr, string const & numbertype)
 	if (numbertype == "Roman")
 		return romanCounter(value(ctr));
 
-	return convert<string>(value(ctr));
+	return convert<docstring>(value(ctr));
 }
 
 
-string Counters::counterLabel(string const & format)
+docstring Counters::counterLabel(docstring const & format)
 {
-	string label = format;
+	docstring label = format;
 	while (true) {
 #ifdef WITH_WARNINGS
 #warning Using boost::regex or boost::spirit would make this code a lot simpler... (Lgb)
 #endif
 
 		size_t const i = label.find('\\', 0);
-		if (i == string::npos)
+		if (i == docstring::npos)
 			break;
 		size_t const j = label.find('{', i + 1);
-		if (j == string::npos)
+		if (j == docstring::npos)
 			break;
 		size_t const k = label.find('}', j + 1);
 		if (k == string::npos)
 			break;
-		string const numbertype(label, i + 1, j - i - 1);
-		string const counter(label, j + 1, k - j - 1);
-		string const rep = labelItem(counter, numbertype);
-		label = string(label, 0, i) + rep + string(label, k + 1, string::npos);
+		docstring const numbertype(label, i + 1, j - i - 1);
+		docstring const counter(label, j + 1, k - j - 1);
+		docstring const rep = labelItem(counter, numbertype);
+		label = docstring(label, 0, i) + rep + docstring(label, k + 1, string::npos);
 		//lyxerr << "  : " << " (" << counter  << ","
 		//	<< numbertype << ") -> " << label << endl;
 	}

@@ -235,8 +235,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	// Label around sectioning number:
 	if (!bstyle->labeltag().empty()) {
 		sgml::openTag(os, bstyle->labeltag());
-                // FIXME UNICODE
-		os << lyx::from_ascii(expandLabel(buf, bstyle, false));
+		os << expandLabel(buf, bstyle, false);
 		sgml::closeTag(os, bstyle->labeltag());
 	}
 

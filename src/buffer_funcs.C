@@ -386,11 +386,10 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		if (layout->toclevel <= buf.params().secnumdepth
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
-			counters.step(layout->counter);
 			// FIXME UNICODE
-			docstring label =
-				lyx::from_ascii(expandLabel(buf, layout,
-							    par.params().appendix()));
+			counters.step(lyx::from_ascii(layout->counter));
+			docstring label = expandLabel(buf, layout,
+						      par.params().appendix());
 			par.params().labelString(label);
 		}
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
@@ -420,7 +419,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		// FIXME
 		// Yes I know this is a really, really! bad solution
 		// (Lgb)
-		string enumcounter = "enum";
+		docstring enumcounter = lyx::from_ascii("enum");
 
 		switch (par.itemdepth) {
 		case 2:
@@ -464,11 +463,10 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			break;
 		}
 
-		// FIXME UNICODE
-		par.params().labelString(lyx::from_utf8(counters.counterLabel(lyx::to_utf8(buf.B_(format)))));
+		par.params().labelString(counters.counterLabel(buf.B_(format)));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		counters.step("bibitem");
-		int number = counters.value("bibitem");
+		counters.step(lyx::from_ascii("bibitem"));
+		int number = counters.value(lyx::from_ascii("bibitem"));
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
 		par.params().labelString(buf.B_(layout->labelstring()));
@@ -490,8 +488,8 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		docstring s;
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(type);
-
-			counters.step(fl.type());
+			// FIXME UNICODE
+			counters.step(lyx::from_ascii(fl.type()));
 
 			// Doesn't work... yet.
 			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
@@ -591,24 +589,24 @@ void updateLabels(Buffer const & buf)
 }
 
 
-string expandLabel(Buffer const & buf,
-	LyXLayout_ptr const & layout, bool appendix)
+docstring expandLabel(Buffer const & buf,
+		      LyXLayout_ptr const & layout, bool appendix)
 {
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 
-	// FIXME UNICODE
-	string fmt = lyx::to_utf8(buf.B_(appendix ? layout->labelstring_appendix()
-				  : layout->labelstring()));
+	docstring fmt = buf.B_(appendix ? layout->labelstring_appendix()
+				  : layout->labelstring());
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
 	size_t const i = fmt.find('@', 0);
-	if (i != string::npos) {
+	if (i != docstring::npos) {
 		size_t const j = fmt.find('@', i + 1);
-		if (j != string::npos) {
-			string parent(fmt, i + 1, j - i - 1);
-			string label = expandLabel(buf, tclass[parent], appendix);
-			fmt = string(fmt, 0, i) + label + string(fmt, j + 1, string::npos);
+		if (j != docstring::npos) {
+			docstring parent(fmt, i + 1, j - i - 1);
+			// FIXME UNICODE
+			docstring label = expandLabel(buf, tclass[lyx::to_utf8(parent)], appendix);
+			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
 		}
 	}
 
