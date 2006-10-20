@@ -77,8 +77,9 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
 	fontlist = p.fontlist;
 	id_ = paragraph_id++;
 
-	if (p.tracking())
-		changes_.reset(new Changes(*p.changes_.get()));
+	// FIXME: change tracking (MG)
+	//if (p.tracking())
+	//		changes_.reset(new Changes(*p.changes_.get()));
 }
 
 
@@ -86,7 +87,8 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 {
 	owner_->text_ = par.text_;
 	if (par.pimpl_->tracking()) {
-		changes_.reset(new Changes(*(par.pimpl_->changes_.get())));
+		// FIXME: change tracking (MG)
+		// changes_.reset(new Changes(*(par.pimpl_->changes_.get())));
 	}
 }
 
@@ -97,7 +99,7 @@ bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 	if (!tracking())
 		return false;
 
-	return changes_->isChange(start, end);
+	return changes_->isChanged(start, end);
 }
 
 
@@ -141,7 +143,8 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 		return;
 
 	if (!size()) {
-		changes_.reset(new Changes(Change::UNCHANGED));
+		// FIXME: change tracking (MG)
+		// changes_.reset(new Changes(Change::UNCHANGED));
 		return;
 	}
 
@@ -171,7 +174,8 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 	}
 
 	lyxerr[Debug::CHANGES] << "endacceptchange" << endl;
-	changes_->reset(Change::UNCHANGED);
+	// FIXME: change tracking (MG)
+	// changes_->reset(Change::UNCHANGED);
 }
 
 
@@ -181,7 +185,8 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 		return;
 
 	if (!size()) {
-		changes_.reset(new Changes(Change::UNCHANGED));
+		// FIXME: change tracking (MG)
+		// changes_.reset(new Changes(Change::UNCHANGED));
 		return;
 	}
 
@@ -210,7 +215,8 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 				break;
 		}
 	}
-	changes_->reset(Change::UNCHANGED);
+	// FIXME: change tracking (MG)
+	// changes_->reset(Change::UNCHANGED);
 }
 
 

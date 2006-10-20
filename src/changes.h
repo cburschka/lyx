@@ -45,21 +45,8 @@ bool operator!=(Change const & l, Change const & r);
 
 class Changes {
 public:
-
-	Changes(Change::Type type);
-
-	~Changes();
-
-	Changes(Changes const &);
-
-	/// reset "default" change type (for empty pars)
-	void reset(Change::Type type) {
-		empty_type_ = type;
-	}
-
 	/// set the pos to the given change
 	void set(Change const & change, lyx::pos_type pos);
-
 	/// set the range to the given change
 	void set(Change const & change, lyx::pos_type start, lyx::pos_type end);
 
@@ -70,7 +57,7 @@ public:
 	Change const lookup(lyx::pos_type pos) const;
 
 	/// return true if there is a change in the given range
-	bool isChange(lyx::pos_type start, lyx::pos_type end) const;
+	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
 
 	/// remove the given entry. This implies that a character was
 	/// deleted at pos, and will adjust all range bounds past it
@@ -119,9 +106,6 @@ private:
 
 	/// our table of changes, every row a range and change descriptor
 	ChangeTable table_;
-
-	/// change type for an empty paragraph
-	Change::Type empty_type_;
 
 	/// handle a delete, either logical or physical (see erase)
 	void del(Change const & change, ChangeTable::size_type pos);

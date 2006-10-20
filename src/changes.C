@@ -68,23 +68,6 @@ bool Changes::Range::intersects(Range const & r) const
 }
 
 
-Changes::Changes(Change::Type const type)
-	: empty_type_(type)
-{
-}
-
-
-Changes::~Changes()
-{
-}
-
-
-Changes::Changes(Changes const & c)
-{
-	table_ = c.table_;
-}
-
-
 void Changes::record(Change const & change, pos_type const pos)
 {
 	if (lyxerr.debugging(Debug::CHANGES)) {
@@ -289,12 +272,6 @@ void Changes::add(Change const & change, ChangeTable::size_type const pos)
 
 Change const Changes::lookup(pos_type const pos) const
 {
-	if (!table_.size()) {
-		if (lyxerr.debugging(Debug::CHANGES))
-			lyxerr[Debug::CHANGES] << "Empty, type is " << empty_type_ << endl;
-		return Change(empty_type_);
-	}
-
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator const end = table_.end();
 
@@ -308,14 +285,8 @@ Change const Changes::lookup(pos_type const pos) const
 }
 
 
-bool Changes::isChange(pos_type const start, pos_type const end) const
+bool Changes::isChanged(pos_type const start, pos_type const end) const
 {
-	if (!table_.size()) {
-		if (lyxerr.debugging(Debug::CHANGES))
-			lyxerr[Debug::CHANGES] << "Empty, type is " << empty_type_ << endl;
-		return empty_type_ != Change::UNCHANGED;
-	}
-
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator const itend = table_.end();
 
