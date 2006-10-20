@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -56,14 +57,8 @@ public:
 		empty_type_ = type;
 	}
 
-	/// set the position to the given change
+	/// set the pos to the given change
 	void set(Change const & change, lyx::pos_type pos);
-
-	/// set the position to the given change
-	void set(Change::Type, lyx::pos_type pos);
-
-	/// set the range to the given change
-	void set(Change::Type, lyx::pos_type start, lyx::pos_type end);
 
 	/// set the range to the given change
 	void set(Change const & change, lyx::pos_type start, lyx::pos_type end);
@@ -102,17 +97,11 @@ private:
 		// does this range contain pos ?
 		bool contains(lyx::pos_type pos) const;
 
-		// does this range contain pos, or can it be appended ?
-		bool containsOrPrecedes(lyx::pos_type pos) const;
-
-		// is this range contained within r ?
-		bool contained(Range const & r) const;
-
 		// do the ranges intersect ?
 		bool intersects(Range const & r) const;
 
 		lyx::pos_type start;
-		lyx::pos_type end;
+		lyx::pos_type end; // Caution: end is not in the range!
 	};
 
 	friend bool operator==(Range const & r1, Range const & r2);
@@ -143,10 +132,6 @@ private:
 	/// merge neighbouring ranges, assuming that they are abutting
 	/// (as done by set())
 	void merge();
-
-	/// consistency check, needed before merge()
-	void check() const;
-
 };
 
 #endif // CHANGES_H

@@ -154,7 +154,8 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 				break;
 
 			case Change::INSERTED:
-				changes_->set(Change::UNCHANGED, i);
+				// FIXME: change tracking (MG)
+				changes_->set(Change(Change::UNCHANGED), i);
 				break;
 
 			case Change::DELETED:
@@ -200,7 +201,8 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 				break;
 
 			case Change::DELETED:
-				changes_->set(Change::UNCHANGED, i);
+				// FIXME: change tracking (MG)
+				changes_->set(Change(Change::UNCHANGED), i);
 				// No real char at position size():
 				if (i < size() && owner_->isInset(i))
 					// FIXME: change tracking (MG)

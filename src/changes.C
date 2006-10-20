@@ -56,28 +56,15 @@ bool Changes::Range::contains(Range const & r) const
 }
 
 
-bool Changes::Range::contained(Range const & r) const
-{
-	return r.contains(*this);
-}
-
-
 bool Changes::Range::contains(pos_type const pos) const
 {
 	return pos >= start && pos < end;
 }
 
 
-bool Changes::Range::containsOrPrecedes(pos_type const pos) const
-{
-	return pos >= start && pos <= end;
-}
-
-
 bool Changes::Range::intersects(Range const & r) const
 {
-	return contained(r) || contains(r)
-		|| contains(r.start) || contains(r.end);
+	return r.start < end && r.end > start; // end itself is not in the range!
 }
 
 
@@ -114,7 +101,8 @@ void Changes::record(Change const & change, pos_type const pos)
 			del(change, pos);
 			break;
 		case Change::UNCHANGED:
-			set(Change::UNCHANGED, pos);
+			// FIXME: change tracking (MG)
+			// set(Change::UNCHANGED, pos);
 			break;
 	}
 }
@@ -123,19 +111,6 @@ void Changes::record(Change const & change, pos_type const pos)
 void Changes::set(Change const & change, pos_type const pos)
 {
 	set(change, pos, pos + 1);
-}
-
-
-void Changes::set(Change::Type const type, pos_type const pos)
-{
-	set(type, pos, pos + 1);
-}
-
-
-void Changes::set(Change::Type const type,
-		  pos_type const start, pos_type const end)
-{
-	set(Change(type), start, end);
 }
 
 
@@ -154,7 +129,7 @@ void Changes::set(Change const & change,
 
 	// remove all sub-ranges
 	for (; it != table_.end();) {
-		if (new_range != it->range && it->range.contained(new_range)) {
+		if (new_range != it->range /*&& it->range.contained(new_range)*/) { // FIXME: change tracking (MG)
 			if (lyxerr.debugging(Debug::CHANGES)) {
 				lyxerr[Debug::CHANGES] << "Removing subrange "
 					<< it->range.start << "," << it->range.end << endl;
@@ -220,7 +195,6 @@ void Changes::set(Change const & change,
 		}
 	}
 
-	check();
 	merge();
 }
 
@@ -251,7 +225,6 @@ void Changes::erase(pos_type const pos)
 			--range.end;
 		}
 	}
-	check();
 	merge();
 }
 
@@ -276,7 +249,7 @@ void Changes::del(Change const & change, ChangeTable::size_type const pos)
 				erase(pos);
 			}
 			break;
-		} else if (range.containsOrPrecedes(pos) && it + 1 == table_.end()) {
+		} else if (/*range.containsOrPrecedes(pos) && it + 1 == table_.end()*/ true) { // FIXME: change tracking (MG)
 			// this case happens when building from .lyx
 			set(change, pos);
 			break;
@@ -295,7 +268,7 @@ void Changes::add(Change const & change, ChangeTable::size_type const pos)
 	for (; it != end; ++it) {
 		Range & range(it->range);
 
-		if (!found && range.containsOrPrecedes(pos)) {
+		if (!found /* && range.containsOrPrecedes(pos)*/) { // FIXME: change tracking (MG)
 			found = true;
 			if (lyxerr.debugging(Debug::CHANGES)) {
 				lyxerr[Debug::CHANGES] << "Found range of "
@@ -330,7 +303,6 @@ Change const Changes::lookup(pos_type const pos) const
 			return it->change;
 	}
 
-	check();
 	BOOST_ASSERT(false && "missing changes for pos");
 	return Change(Change::UNCHANGED);
 }
@@ -417,38 +389,6 @@ void Changes::merge()
 	}
 
 	lyxerr[Debug::CHANGES] << "Merge ended" << endl;
-	check();
-}
-
-
-void Changes::check() const
-{
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator end = table_.end();
-
-	bool dont_assert = true;
-
-	lyxerr[Debug::CHANGES] << "Changelist:" << endl;
-	for (; it != end; ++it) {
-		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "Range of type " << it->change.type << " is "
-				<< it->range.start << "," << it->range.end << " author "
-				<< it->change.author << " time " << it->change.changetime << endl;
-		}
-
-		if (it + 1 == end)
-			break;
-
-		Range const & range(it->range);
-		Range const & next((it + 1)->range);
-		if (range.end != next.start)
-			dont_assert = false;
-	}
-
-	if (lyxerr.debugging(Debug::CHANGES))
-		lyxerr[Debug::CHANGES] << "End" << endl;
-
-	BOOST_ASSERT(dont_assert);
 }
 
 
