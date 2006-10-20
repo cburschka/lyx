@@ -555,9 +555,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			      == "latin1" ||
 			      font.language()->encoding()->latexName()
 			      == "latin9"))) {
-				os << "\\ensuremath{"
-				   << c
-				   << '}';
+				os << "\\ensuremath{";
+				os.put(c);
+				os << '}';
 				column += 13;
 			} else {
 				os.put(c);
@@ -650,7 +650,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 
 		case '*': case '[':
 			// avoid being mistaken for optional arguments
-			os << '{' << c << '}';
+			os << '{';
+			os.put(c);
+			os << '}';
 			column += 2;
 			break;
 

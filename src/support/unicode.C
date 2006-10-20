@@ -64,7 +64,8 @@ iconv_convert(iconv_t * cd,
 
 	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(reinterpret_cast<char const *>(buf));
 	size_t inbytesleft = buflen * sizeof(InType);
-	size_t const outsize = 10000;
+	// The preamble of the user guide is more than 11.500 characters, so we go for 32kb
+	size_t const outsize = 32768;
 	static char out[outsize];
 	char * outbuf = out;
 	size_t outbytesleft = outsize;
