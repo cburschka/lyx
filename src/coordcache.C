@@ -49,4 +49,24 @@ Point CoordCache::get(LyXText const * text, lyx::pit_type pit)
 	return posit->second;
 }
 
+void
+CoordCache::dump() const {
+	lyxerr << "ParPosCache contains:" << std::endl;
+	for (ParPosCache::const_iterator i = getParPos().begin(); i != getParPos().end(); ++i) {
+		LyXText const * lt = (*i).first;
+		InnerParPosCache const & cache = (*i).second;
+		lyxerr << "LyXText:" << lt << std::endl;
+		for (InnerParPosCache::const_iterator j = cache.begin(); j != cache.end(); ++j) {
+			pit_type pit = (*j).first;
+			Paragraph const & par = lt->getPar(pit);
+			Point p = (*j).second;
+			lyxerr << "Paragraph " << pit << ": \"";
+			for (int k = 0; k < std::min(10, par.size()); ++k) {
+				lyxerr << lyx::to_utf8(docstring(1,par.getChar(k)));
+			}
+			lyxerr << "\" has point " << p.x_ << "," << p.y_ << std::endl;
+		}
+	}
+}
+
 } // namespace lyx

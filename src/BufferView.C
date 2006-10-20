@@ -1365,6 +1365,10 @@ void BufferView::updateMetrics(bool singlepar)
 		<< endl;
 
 	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2, singlepar, size);
+
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		coord_cache_.dump();
+	}
 }
 
 

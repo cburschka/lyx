@@ -105,7 +105,7 @@ private:
  * A global cache that allows us to come from a paragraph in a document
  * to a position point on the screen.
  * All points cached in this cache are only valid between subsequent
- * updated. (x,y) == (0,0) is the upper left screen corner, x increases
+ * updates. (x,y) == (0,0) is the upper left screen corner, x increases
  * to the right, y increases downwords.
  * The cache is built in BufferView::updateMetrics which is called
  * from BufferView::Pimpl::update. The individual points are added
@@ -142,6 +142,8 @@ public:
 		return boundary ? slices1_ : slices0_;
 	}
 
+	/// Dump the contents of the cache to lyxerr in debugging form
+	void dump() const;
 private:
 	/// MathArrays
 	CoordCacheBase<MathArray> arrays_;
