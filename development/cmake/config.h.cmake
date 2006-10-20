@@ -136,6 +136,9 @@
 #endif
 
 
+
+#cmakedefine ENABLE_ASSERTIONS 1
+
 #if !defined(ENABLE_ASSERTIONS)
 #  define BOOST_DISABLE_ASSERTS 1
 #endif
