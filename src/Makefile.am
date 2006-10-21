@@ -31,11 +31,7 @@ OTHERLIBS = $(BOOST_LIBS) $(LIBICONV) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@ $(SOC
 
 bin_PROGRAMS = lyx
 noinst_PROGRAMS = $(FRONTENDS_PROGS)
-EXTRA_PROGRAMS = lyx-qt3 lyx-gtk lyx-qt4
-
-lyx_qt3_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
-	frontends/qt3/libqt3.la $(LYX_POST_LIBS) $(OTHERLIBS)
-lyx_qt3_SOURCES = main.C
+EXTRA_PROGRAMS = lyx-gtk lyx-qt4
 
 lyx_qt4_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
 	frontends/qt4/libqt4.la $(LYX_POST_LIBS) $(OTHERLIBS)

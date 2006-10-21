@@ -11,7 +11,7 @@ widely supported on the *nix systems, but not so under windows. They are
 not necessarily easy to use and maintain (at least to non-m4 experts)
 either. Because of these, a scons (http://www.scons.org) build system has
 been set up as an alternative way to build lyx. As of writing, this system
-only supports qt3 and qt4 frontends.
+only supports the qt4 frontend.
 
 This file is organized as follows:
 1. General usage of scons
@@ -43,7 +43,7 @@ Prerequisites:
   in the near future.
 
 * Other libraries:
-  These include zlib (required), qt3 or qt4 (required), gettext
+  These include zlib (required), qt4 (required), gettext
   (optional), boost (optional), aspell (optional) and Aiksaurus
   (optional). Please refer to the system-specific sections regarding the
   availability and installation of them.
@@ -77,9 +77,8 @@ command 'scons -h'.
 
 Components to use/build:
 
-  * frontend=qt3/qt4: qt3 is the default for all *nix systems including
-    windows cygwin. qt4 is the default for windows/mingw and windows/
-    msvc. gtk is not currently supported.
+  * frontend=qt4: qt4 is the only option right now.
+    gtk is not currently supported.
   * mode=debug/release: lyx will be built under the debug or release
     directory, with different default build options.
   * boost=included/system/auto: whether or not use included boost, system
@@ -144,7 +143,7 @@ You can specify one or more of the following targets:
 
   Static libraries (names correspond to their directories):
     boost, intl, support, mathed, insets, frontends, graphics,
-    controllers, client, qt3, qt4, lyxbase
+    controllers, client, qt4, lyxbase
   Programs:
     tex2lyx, client, lyx, all = tex2lyx + client + lyx
   Installation:
@@ -158,7 +157,7 @@ directory structure is:
   $build_dir
     - common: most of the intermediate files, mostly object files
     - libs: all static libraries
-    - qt3 etc: lyx executable built with the frontend
+    - qt4 etc: lyx executable built with the frontend
     - executables: lyxclient, tex2lyx, lyx
 
 MSVS projects will be put to development/scons (and you should invoke
@@ -247,7 +246,7 @@ extra_inc_path etc is needed.
 =================
 
 LyX should be easy to compile, but you must use the most recent cygwin
-dll (version 1.5.20-1 as of July 2006) because the qt3 library in the
+dll (version 1.5.20-1 as of July 2006) because qt library in older
 cygwin distribution does not work with previous versions due to broken
 threading support.
 
@@ -256,8 +255,8 @@ To build lyx for cygwin, you should
   * install (using the cygwin setup program) at least the following
     packages and all other packages pulled in by dependencies:
 
-    aspell        gzip       libiconv     qt3-bin
-    aspell-dev    jpeg       libpng       qt3-devel
+    aspell        gzip       libiconv     qt4-bin
+    aspell-dev    jpeg       libpng       qt4-devel
     gcc           libintl    libpng2
     gettext       libintl1   jpeg
     gettext-devel libintl2   python
@@ -269,10 +268,10 @@ To build lyx for cygwin, you should
   * run scons as you would do under linux.
 
 Note: cygwin/qt does not follow the usual $qt_dir/include, $qt_dir/bin,
-$qt_dir/lib directory structure. For example, cygwin/qt3 uses directories
-/usr/include/qt3, /usr/lib/qt3/bin and /usr/lib/qt3/lib. If these
+$qt_dir/lib directory structure. For example, cygwin/qt4 uses directories
+/usr/include/qt4, /usr/lib/qt4/bin and /usr/lib/qt4/lib. If these
 directories can not be detected automatically, use options, for example,
-  qt_dir=/usr/lib/qt3 qt_inc_path=/usr/include/qt3
+  qt_dir=/usr/lib/qt4 qt_inc_path=/usr/include/qt4
 
 
 5. Windows/msvc
@@ -292,12 +291,7 @@ To build lyx with msvc, you should
     directories in VCProjectEngine.dll.express.config, as suggested in
     http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/.
 
-  * build qt3 
-    - download qt3 source from Q../Free sourceforge.net website (not from 
-      trolltech).
-    - compile qt3 as instructed
-
-    or qt4
+  * build qt4 
     - download qt4 source from trolltech (not the binary version, which
       only works with mingw)
     - get q../free patch for qt4

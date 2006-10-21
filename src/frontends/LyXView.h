@@ -156,7 +156,7 @@ public:
 	virtual void redrawWorkArea();
 
 	/// Temporary method to access the current workArea.
-	/// This is needed for the qt3 and gtk frontend.
+	/// This is needed for the gtk frontend.
 	frontend::WorkArea * workArea();
 
 	/// show the error list to the user

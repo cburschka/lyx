@@ -89,26 +89,26 @@ if os.name == 'nt':
     default_packaging_method = 'windows'
 elif os.name == 'posix' and sys.platform != 'cygwin':
     platform_name = sys.platform
-    default_frontend = 'qt3'
+    default_frontend = 'qt4'
     default_prefix = '/usr/local'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'posix' and sys.platform == 'cygwin':
     platform_name = 'cygwin'
-    default_frontend = 'qt3'
+    default_frontend = 'qt4'
     default_prefix = '/usr'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'darwin':
     platform_name = 'macosx'
-    default_frontend = 'qt3'
+    default_frontend = 'qt4'
     # FIXME: macOSX default prefix?
     default_prefix = '.'
     default_with_x = False
     default_packaging_method = 'macosx'
 else:  # unsupported system, assume posix behavior
     platform_name = 'others'
-    default_frontend = 'qt3'
+    default_frontend = 'qt4'
     default_prefix = '.'
     default_with_x = True
     default_packaging_method = 'posix'
@@ -126,7 +126,7 @@ opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
     EnumOption('frontend', 'Main GUI', default_frontend,
-        allowed_values = ('qt3', 'qt4', 'gtk') ),
+        allowed_values = ('qt4', 'gtk') ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
         allowed_values = ('debug', 'release') ),
@@ -674,14 +674,7 @@ else:
 
 # qt libraries?
 #
-# qt3 does not use pkg_config
-if frontend == 'qt3':
-    # windows lib name is qt-mt3
-    if not conf.CheckLibWithHeader('qt-mt', 'qapp.h', 'c++', 'QApplication qapp();') \
-        and not conf.CheckLibWithHeader('qt-mt3', 'qapp.h', 'c++', 'QApplication qapp();'):
-        print 'Did not find qt libraries, exiting!'
-        Exit(1)
-elif frontend == 'qt4':
+if frontend == 'qt4':
     succ = False
     # first: try pkg_config
     if env['HAS_PKG_CONFIG']:
@@ -712,9 +705,7 @@ elif frontend == 'qt4':
 
 # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
 if use_vc:
-    if frontend == 'qt3':
-        manifest = os.path.join(qt_lib_path, 'qt-mt3.dll.manifest')
-    elif frontend == 'qt4':
+    if frontend == 'qt4':
         if mode == 'debug':
             manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
         else:
@@ -1289,14 +1280,7 @@ env = conf.Finish()
 #
 # NOTE: Tool('qt') or Tool('qt4') will be loaded later
 # in their respective directory and specialized env.
-if frontend == 'qt3':
-    # note: env.Tool('qt') my set QT_LIB to qt
-    if platform_name == 'win32':
-        qt_libs = ['qt-mt3']
-    else:
-        qt_libs = ['qt-mt']
-    frontend_libs = qt_libs
-elif frontend == 'qt4':
+if frontend == 'qt4':
     qt_libs = ['QtCore', 'QtGui']
     # set the right lib names
     if platform_name == 'win32':
@@ -1425,7 +1409,7 @@ Frontend:
     frontend, packaging_method,
     prefix, env['LYX_DIR'])
 
-if frontend in ['qt3', 'qt4']:
+if frontend in ['qt4']:
     env['VERSION_INFO'] += '''  include dir:                    %s
   library dir:                    %s
   X11:                            %s
@@ -1507,7 +1491,6 @@ build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
     or 'install' in targets or 'all' in targets
 build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
-build_qt3 = (build_lyx and frontend == 'qt3') or 'qt3' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
 build_msvs_projects = use_vc and 'msvs_projects' in targets
 
@@ -1534,7 +1517,6 @@ if rebuild_targets is not None:
     build_graphics = ifBuildLib('graphics', 'graphics', build_graphics)
     build_controllers = ifBuildLib('controllers', 'controllers', build_controllers)
     build_lyxbase = ifBuildLib('lyxbase', 'lyxbase_pre', build_lyxbase)
-    build_qt3 = ifBuildLib('qt3', 'qt3', build_qt3)
     build_qt4 = ifBuildLib('qt4', 'qt4', build_qt4)
     #
     def ifBuildApp(name, appname, old_value):
@@ -1550,10 +1532,8 @@ if rebuild_targets is not None:
     build_tex2lyx = ifBuildApp('tex2lyx', 'tex2lyx', build_tex2lyx)
     build_client = ifBuildApp('client', 'lyxclient', build_client)
 
-# sync frontend and frontend (maybe build qt4 with frontend=qt3)
-if build_qt3:
-    frontend = 'qt3'
-elif build_qt4:
+# sync frontend and frontend (?)
+if build_qt4:
     frontend = 'qt4'
 
 
@@ -1709,49 +1689,10 @@ if build_controllers:
 
 
 #
-# src/frontend/qt3/4
+# src/frontend/qt4
 #
-if build_qt3 or build_qt4:
+if build_qt4:
     env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
-
-if build_qt3:
-    print "Processing files in src/frontends/qt3..."
-
-    qt3env = env.Copy()
-    # disable auto scan to speed up non build time
-    qt3env['QT_AUTOSCAN'] = 0
-    qt3env['QT_MOCHPREFIX'] = ''
-
-    # load qt3 tools
-    qt3env.Tool('qt')
-
-    qt3env.AppendUnique(CPPPATH = [
-        '$BUILDDIR/common',
-        '$BUILDDIR/common/images',
-        '$BUILDDIR/common/frontends',
-        '$BUILDDIR/common/frontends/qt3',
-        '$BUILDDIR/common/frontends/controllers',
-        qt_inc_path]
-    )
-
-    qt3_moc_files = ["$BUILDDIR/common/frontends/qt3/%s" % x for x in src_frontends_qt3_moc_files]
-    
-    # manually moc and uic files for better performance
-    qt3_moced_files = [qt3env.Moc(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt3_moc_files]
-
-    qt3_uiced_files = [qt3env.Uic('$BUILDDIR/common/frontends/qt3/ui/'+x) for x in \
-        src_frontends_qt3_ui_files]
-
-    qt3_uiced_cc_files = []
-    for x in qt3_uiced_files:
-        qt3_uiced_cc_files.extend(x[1:])
-
-    qt3 = qt3env.StaticLibrary(
-        target = '$LOCALLIBPATH/qt3',
-        source = ['$BUILDDIR/common/frontends/qt3/%s' % x for x in src_frontends_qt3_files] \
-            + qt3_uiced_cc_files
-    )
-    Alias('qt3', qt3)
 
 
 if build_qt4:
@@ -1994,10 +1935,6 @@ if build_msvs_projects:
     build_project('controllers', src = ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files], 
         inc = ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files])
     #
-    build_project('qt3', src = ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_files + src_frontends_qt3_moc_files],
-        inc = ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_header_files],
-        res = ['$TOP_SRCDIR/src/frontends/qt3/ui/%s' % x for x in src_frontends_qt3_ui_files])
-    #
     build_project('qt4', src = ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
         inc = ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
         res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files])
@@ -2014,28 +1951,6 @@ if build_msvs_projects:
     #
     build_project('lyxbase', src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files],
         inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files])
-    #
-    if frontend == 'qt3':
-        build_project('lyx', 
-            src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \
-                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files] + \
-                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_files] + \
-                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files] + \
-                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
-                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files] + \
-                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files] + \
-                ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_files + src_frontends_qt3_moc_files],
-            inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files] + \
-                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files] + \
-                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_header_files] + \
-                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files] + \
-                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files] + \
-                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files] + \
-                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files] + \
-                ['$TOP_SRCDIR/src/frontends/qt3/%s' % x for x in src_frontends_qt3_header_files],
-            res = ['$TOP_SRCDIR/src/frontends/qt3/ui/%s' % x for x in src_frontends_qt3_ui_files],
-            rebuildTargetOnly = False,
-            full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
     else:
         build_project('lyx', 
             src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \

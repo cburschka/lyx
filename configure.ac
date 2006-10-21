@@ -192,25 +192,6 @@ for frontend in $FRONTENDS ; do
     libglademm version:\t\t${LIBGLADEMM_VERSION}\n"
 	  ;;
 
-    qt3)
-	  QT_DO_IT_ALL
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt3\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt3"
-	  RPM_FRONTEND="qt3"
-	  FRONTEND_INFO="${FRONTEND_INFO}\
-  Qt Frontend:\n\
-      Qt version:\t\t${QT_VERSION}\n"
-dnl qt build will fail without moc or uic
-	  if test -z "$MOC"; then
-	    LYX_ERROR([moc binary not found !])
-	  fi
-	  if test -z "$UIC"; then
-	    LYX_ERROR([uic binary not found !])
-	  fi
-	  if test -z "$QT_LIB"; then
-	    LYX_ERROR([qt library not found !])
-	  fi
-      ;;
     qt4)
 	  QT4_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt4\$(EXEEXT)"
@@ -456,9 +437,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/gtk/Makefile \
        src/frontends/gtk/gimages/Makefile \
        src/frontends/gtk/glade/Makefile \
-       src/frontends/qt3/Makefile \
-       src/frontends/qt3/ui/Makefile \
-       src/frontends/qt3/ui/moc/Makefile \
        src/frontends/qt4/Makefile \
        src/frontends/qt4/ui/Makefile \
 ])

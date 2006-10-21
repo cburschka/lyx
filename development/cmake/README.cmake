@@ -5,7 +5,6 @@ For all builds:
 - install Qt 4 and make sure qmake 4 is found
   (add the folder with qmake to the environment variable PATH)
 - by default it builds the Qt4 frontend
-- to build the Qt3 frontend set QTDIR and call cmake with '-Dqt3=1'
 - with GNUWIN32_DIR you could point to your gnuwin32 packages
   (eg. -DGNUWIN32_DIR=c:\gnuwin32) by default it searches in your 
   program  folder
