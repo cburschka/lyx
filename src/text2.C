@@ -980,33 +980,10 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 		return 0;
 	}
 
-	int i=0;
-	InsetBase * inset2 = pars_[pit].getInset(pos - 1);
-	InsetBase * inset3 = pars_[pit].getInset(pos);
-	if (inset != pars_[pit].getInset(pos - 1))
-	{
-		i++;		
-		std::cout << "pit " << pit 
-		<< "  pos -1 " << pos - 1
-		<< "\ninset " << inset
-		<< "\ninset2 " << inset2
-		<< endl;
-	}
-
-	if (inset != pars_[pit].getInset(pos))
-	{		
-		i++;
-		std::cout << "pit " << pit 
-		<< "  pos " << pos
-		<< "\ninset " << inset
-		<< "\ninset3 " << inset3
-		<< endl;
-	}
- 	if (i == 2)
-		std::cout << endl;
-
 	// This should be just before or just behind the
 	// cursor position set above.
+        InsetBase * inset2 = pars_[pit].getInset(pos - 1);
+        InsetBase * inset3 = pars_[pit].getInset(pos);
         
 	BOOST_ASSERT((pos != 0 && inset == inset2)
 		     || inset == inset3);
