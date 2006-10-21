@@ -542,9 +542,18 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += 15;
 			break;
 
-		case '±': case '²': case '³':
-		case '×': case '÷': case '¹':
-		case '¬': case 'µ':
+		// The following characters could be written literally in latin1, but they
+		// would be wrongly converted on systems where char is signed, so we give
+		// the code points.
+		// This also makes us independant from the encoding of this source file.
+		case 0xb1:    // ± PLUS-MINUS SIGN
+		case 0xb2:    // ² SUPERSCRIPT TWO
+		case 0xb3:    // ³ SUPERSCRIPT THREE
+		case 0xd7:    // × MULTIPLICATION SIGN
+		case 0xf7:    // ÷ DIVISION SIGN
+		case 0xb9:    // ¹ SUPERSCRIPT ONE
+		case 0xac:    // ¬ NOT SIGN
+		case 0xb5:    // µ MICRO SIGN
 			if ((bparams.inputenc == "latin1" ||
 			     bparams.inputenc == "latin9") ||
 			    (bparams.inputenc == "auto" &&
@@ -618,7 +627,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += 9;
 			break;
 
-		case '£':
+		case 0xa3:    // £ POUND SIGN
 			if (bparams.inputenc == "default") {
 				os << "\\pounds{}";
 				column += 8;
