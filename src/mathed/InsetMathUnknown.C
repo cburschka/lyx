@@ -21,6 +21,7 @@ namespace lyx {
 
 using std::string;
 using std::auto_ptr;
+using std::vector;
 
 
 InsetMathUnknown::InsetMathUnknown(string const & nm, bool final, bool black)
@@ -55,7 +56,8 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, from_utf8(name_), dim);
+	vector<char_type> n(name_.begin(), name_.end());
+	mathed_string_dim(mi.base.font, n, dim);
 	dim_ = dim;
 }
 

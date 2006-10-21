@@ -16,7 +16,7 @@
 #include "support/docstring.h"
 
 #include <string>
-
+#include <vector>
 
 namespace lyx {
 
@@ -34,7 +34,10 @@ int mathed_char_width(LyXFont const &, char_type c);
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	std::string const & name);
 
-void mathed_string_dim(LyXFont const & font, docstring const & s, Dimension & dim);
+void mathed_string_dim(LyXFont const & font,
+		       std::vector<char_type> const & s,
+		       Dimension & dim);
+
 int mathed_string_width(LyXFont const &, docstring const & s);
 
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & s);

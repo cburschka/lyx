@@ -20,6 +20,7 @@ namespace lyx {
 
 using std::string;
 using std::auto_ptr;
+using std::vector;
 
 
 InsetMathString::InsetMathString(string const & s)
@@ -36,7 +37,8 @@ auto_ptr<InsetBase> InsetMathString::doClone() const
 void InsetMathString::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, from_utf8(str_), dim);
+	vector<char_type> n(str_.begin(), str_.end());
+	mathed_string_dim(mi.base.font, n, dim);
 }
 
 

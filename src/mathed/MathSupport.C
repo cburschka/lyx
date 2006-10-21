@@ -35,6 +35,7 @@ using frontend::Painter;
 using std::string;
 using std::max;
 using std::endl;
+using std::vector;
 
 
 ///
@@ -382,16 +383,20 @@ int mathed_char_width(LyXFont const & font, char_type c)
 }
 
 
-void mathed_string_dim(LyXFont const & font, docstring const & s, Dimension & dim)
+void mathed_string_dim(LyXFont const & font,
+		       vector<char_type> const & s,
+		       Dimension & dim)
 {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 	dim.asc = 0;
 	dim.des = 0;
-	for (docstring::const_iterator it = s.begin(); it != s.end(); ++it) {
+	for (vector<char_type>::const_iterator it = s.begin();
+	     it != s.end();
+	     ++it) {
 		dim.asc = max(dim.asc, fm.ascent(*it));
 		dim.des = max(dim.des, fm.descent(*it));
 	}
-	dim.wid = fm.width(s);
+	dim.wid = fm.width(&s[0], s.size());
 }
 
 

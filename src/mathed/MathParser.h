@@ -13,8 +13,10 @@
 #ifndef MATH_PARSER_H
 #define MATH_PARSER_H
 
-#include <string>
+#include "support/types.h"
 
+#include <string>
+#include <vector>
 
 namespace lyx {
 
@@ -33,7 +35,7 @@ public:
 	/// name of a inset that handles that macro
 	std::string inset;
 	/// position of the ting in a font
-	std::string draw;
+        std::vector<char_type> draw;
 	/// operator/..., fontname e
 	std::string extra;
 	/// how is this called as XML entity?

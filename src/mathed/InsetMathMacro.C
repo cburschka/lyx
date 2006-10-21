@@ -30,6 +30,7 @@ using std::string;
 using std::max;
 using std::auto_ptr;
 using std::endl;
+using std::vector;
 
 
 MathMacro::MathMacro(string const & name, int numargs)
@@ -61,7 +62,9 @@ void MathMacro::cursorPos(BufferView const & bv,
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
-		mathed_string_dim(mi.base.font, from_utf8("Unknown: " + name()), dim);
+		string t = "Unknown: " + name();
+		vector<char_type> n(t.begin(), t.end());
+		mathed_string_dim(mi.base.font, n, dim);
 	} else if (editing(mi.base.bv)) {
 		// FIXME UNICODE
 		asArray(from_utf8(MacroTable::globalMacros().get(name()).def()), tmpl_);
@@ -103,7 +106,9 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
 		Dimension ldim;
-		mathed_string_dim(font, from_ascii("#1: "), ldim);
+		string t = "#1: ";
+		vector<char_type> n(t.begin(), t.end());
+		mathed_string_dim(font, n, ldim);
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.asc) + 5;

@@ -64,7 +64,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	int const em = mathed_char_width(mi.base.font, 'M');
 	FontSetChanger dummy(mi.base, sym_->inset.c_str());
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, from_utf8(sym_->draw), dim);
+	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	// correct height for broken cmex and wasy font
 #if defined(__APPLE__) && defined(__GNUC__)
 	if (sym_->inset == "cmex") {
@@ -113,7 +113,8 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 
 	FontSetChanger dummy(pi.base, sym_->inset.c_str());
 	// FIXME UNICODE
-	pi.draw(x, y - h_, from_utf8(sym_->draw));
+	docstring n(sym_->draw.begin(), sym_->draw.end());
+	pi.draw(x, y - h_, n);
 }
 
 

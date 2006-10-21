@@ -74,6 +74,7 @@ using support::split;
 using std::string;
 using std::endl;
 using std::istringstream;
+using std::vector;
 
 bool has_math_fonts;
 
@@ -179,20 +180,25 @@ void initSymbols()
 
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
 				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << endl;
-				tmp.draw = tmp.name;
+				// FIXME UNICODE
+				vector<char_type> n(tmp.name.begin(), tmp.name.end());
+				tmp.draw = n;
 			} else if (math_font_available(tmp.inset)) {
 				lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << endl;
-				tmp.draw += char(charid);
+				tmp.draw.push_back(char_type(charid));
 			} else if (fallbackid && math_font_available(symbol_font)) {
 				if (tmp.inset == "cmex")
 					tmp.inset  = "lyxsymbol";
 				else
 					tmp.inset  = "lyxboldsymbol";
 				lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << endl;
-				tmp.draw += char(fallbackid);
+				tmp.draw.push_back(char_type(fallbackid));
 			} else {
 				lyxerr[Debug::MATHED] << "faking " << tmp.name << endl;
-				tmp.draw = tmp.name;
+				vector<char_type> n(tmp.name.begin(),
+						    tmp.name.end());
+				
+				tmp.draw = n;
 				tmp.inset = "lyxtex";
 			}
 		} else {

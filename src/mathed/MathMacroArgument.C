@@ -23,6 +23,7 @@ namespace lyx {
 using std::endl;
 using std::auto_ptr;
 using std::size_t;
+using std::vector;
 
 
 MathMacroArgument::MathMacroArgument(size_t n)
@@ -52,7 +53,8 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, from_utf8(str_), dim_);
+	vector<char_type> n(str_, str_ + 3);
+	mathed_string_dim(mi.base.font, n, dim_);
 	dim = dim_;
 }
 
