@@ -50,20 +50,28 @@ class Changes {
 public:
 	/// set the pos to the given change
 	void set(Change const & change, pos_type pos);
-	/// set the range to the given change
+	/// set the range (excluding end) to the given change
 	void set(Change const & change, pos_type start, pos_type end);
 
-	/// return the change at the given position
+	/// erase the entry at pos and adjust all range bounds past it
+	/// (assumes that a character was deleted at pos)
+	void erase(lyx::pos_type pos);
+
+	/// insert a new entry at pos and adjust all range bounds past it
+	/// (assumes that a character was inserted at pos)
+	void insert(Change const & change, lyx::pos_type pos);
+
+	///
+
+	/// return the change at the given pos
 	Change const lookup(pos_type pos) const;
 
-	/// return true if there is a change in the given range
+	/// return true if there is a change in the given range (excluding end)
 	bool isChanged(pos_type start, pos_type end) const;
 
-	/// remove the given entry. This implies that a character was
-	/// deleted at pos, and will adjust all range bounds past it
-	void erase(pos_type pos);
+	///
 
-	/// output latex to mark a transition between two changetypes
+	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
 	static int latexMarkChange(odocstream & os, Change::Type old,
 		Change::Type change, bool const & output);
@@ -103,7 +111,7 @@ private:
 		Range range;
 	};
 
-	/// merge neighbouring ranges, assuming that they are abutting
+	/// merge equal changes with adjoining ranges
 	void merge();
 
 	typedef std::vector<ChangeRange> ChangeTable;
