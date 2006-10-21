@@ -155,7 +155,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 				// Suppress access to nonexistent
 				// "end-of-paragraph char":
 				if (i < size()) {
-					erase(i);
+					eraseChar(i);
 					--end;
 					--i;
 				}
@@ -185,7 +185,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 			case Change::INSERTED:
 				if (i < size()) {
-					erase(i);
+					eraseChar(i);
 					--end;
 					--i;
 				}
@@ -260,7 +260,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 }
 
 
-void Paragraph::Pimpl::erase(pos_type pos)
+void Paragraph::Pimpl::eraseChar(pos_type pos)
 {
 	// FIXME: change tracking (MG)
 	// do something like changes_.erase(i);
@@ -309,7 +309,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 }
 
 
-bool Paragraph::Pimpl::erase(pos_type pos, bool /*trackChanges*/)
+bool Paragraph::Pimpl::eraseChar(pos_type pos, bool /*trackChanges*/)
 {
 	BOOST_ASSERT(pos <= size());
 
@@ -329,7 +329,7 @@ bool Paragraph::Pimpl::erase(pos_type pos, bool /*trackChanges*/)
 
 	// Don't physically access nonexistent end-of-paragraph char
 	if (pos < size()) {
-		erase(pos);
+		eraseChar(pos);
 		return true;
 	}
 
@@ -341,7 +341,7 @@ int Paragraph::Pimpl::erase(pos_type start, pos_type end, bool trackChanges)
 {
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {
-		if (!erase(i, trackChanges))
+		if (!eraseChar(i, trackChanges))
 			++i;
 	}
 	return end - i;

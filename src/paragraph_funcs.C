@@ -116,7 +116,7 @@ void breakParagraph(BufferParams const & bparams,
 
 		for (pos_type i = pos_end; i >= pos; --i)
 			// FIXME: change tracking (MG)
-			par.erase(i, false); // erase without change tracking
+			par.eraseChar(i, false); // erase without change tracking
 	}
 
 	if (pos) {
@@ -189,7 +189,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 				// FIXME: Change tracking (MG)
 				par.setChange(k, Change(Change::INSERTED));
 			// FIXME: change tracking (MG)
-			par.erase(k, false);
+			par.eraseChar(k, false);
 		}
 	}
 }

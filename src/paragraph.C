@@ -236,9 +236,9 @@ void Paragraph::validate(LaTeXFeatures & features) const
 }
 
 
-bool Paragraph::erase(pos_type pos, bool trackChanges)
+bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 {
-	return pimpl_->erase(pos, trackChanges);
+	return pimpl_->eraseChar(pos, trackChanges);
 }
 
 
@@ -570,7 +570,7 @@ int Paragraph::stripLeadingSpaces()
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))
 		&& (lookupChange(0).type != Change::DELETED)) {
-		erase(0, false); // no change tracking here
+		eraseChar(0, false); // no change tracking here
 		++i;
 	}
 

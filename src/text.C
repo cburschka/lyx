@@ -1101,7 +1101,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	// It is better to erase the space (Dekel)
 	if (cur.pos() != cur.lastpos() && cpar.isLineSeparator(cur.pos()))
 		// FIXME: change tracking (MG)
-		cpar.erase(cur.pos(), cur.buffer().params().trackChanges);
+		cpar.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 
 	// How should the layout for the new paragraph be?
 	int preserve_layout = 0;
@@ -1137,7 +1137,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
 		// FIXME: change tracking (MG)
-		pars_[next_par].erase(0, cur.buffer().params().trackChanges);
+		pars_[next_par].eraseChar(0, cur.buffer().params().trackChanges);
 
 	ParIterator current_it(cur);
 	ParIterator last_it(cur);
@@ -1787,7 +1787,7 @@ bool LyXText::backspace(LCursor & cur)
 		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());
 		// FIXME: change tracking (MG)
-		cur.paragraph().erase(cur.pos(), cur.buffer().params().trackChanges);
+		cur.paragraph().eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 	}
 
 	if (cur.pos() == cur.lastpos())
@@ -1820,7 +1820,7 @@ bool LyXText::dissolveInset(LCursor & cur) {
 	spit += cur.pit();
 	Buffer & b = cur.buffer();
 	// FIXME: change tracking (MG)
-	cur.paragraph().erase(cur.pos(), b.params().trackChanges);
+	cur.paragraph().eraseChar(cur.pos(), b.params().trackChanges);
 	if (!plist.empty()) {
 		pasteParagraphList(cur, plist, b.params().textclass,
 				   b.errorList("Paste"));

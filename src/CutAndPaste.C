@@ -147,7 +147,7 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 			for (pos_type j = 0; j < insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {
 					// do not track deletion of newline
-					insertion[i].erase(j, false);
+					insertion[i].eraseChar(j, false);
 					breakParagraphConservative(
 							buffer.params(),
 							insertion, i, j);
@@ -207,7 +207,7 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 			if (tmpbuf->getChar(i) == Paragraph::META_INSET &&
 			    !pars[pit].insetAllowed(tmpbuf->getInset(i)->lyxCode()))
 				// do not track deletion of invalid insets
-				tmpbuf->erase(i--, false);
+				tmpbuf->eraseChar(i--, false);
 		}
 
 		// FIXME: Change tracking (MG)
@@ -309,7 +309,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	// Start and end is inside same paragraph
 	if (endpit == pit_type(pars.size()) ||
 	    startpit == endpit) {
-		endpos -= pars[startpit].erase(startpos, endpos);
+		endpos -= pars[startpit].erase(startpos, endpos, false);
 		return PitPosPair(endpit, endpos);
 	}
 
@@ -325,7 +325,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		pos_type const right = ( pit == endpit ? endpos :
 				pars[pit].size() + 1 );
 		// Logical erase only:
-		pars[pit].erase(left, right);
+		pars[pit].erase(left, right, false);
 		// Separate handling of para break:
 		if (merge && pit != endpit &&
 		   (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
@@ -363,11 +363,11 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 
 	// Cut out the end of the last paragraph.
 	Paragraph & back = paragraphs.back();
-	back.erase(end, back.size());
+	back.erase(end, back.size(), false);
 
 	// Cut out the begin of the first paragraph
 	Paragraph & front = paragraphs.front();
-	front.erase(0, start);
+	front.erase(0, start, false);
 
 	theCuts.push(make_pair(paragraphs, tc));
 }

@@ -354,7 +354,7 @@ void InsetText::setAutoBreakRows(bool flag)
 			if (it->isNewline(i))
 				// do not track the change, because the user
 				// is not allowed to revert/reject it
-				it->erase(i, false);
+				it->eraseChar(i, false);
 }
 
 

@@ -61,9 +61,9 @@ public:
 	///
 	void insertInset(pos_type pos, InsetBase * inset, Change const & change);
 	/// definite erase
-	void erase(pos_type pos);
+	void eraseChar(pos_type pos);
 	/// erase the given position. Returns true if it was actually erased
-	bool erase(pos_type pos, bool trackChanges);
+	bool eraseChar(pos_type pos, bool trackChanges);
 	/// erase the given range
 	int erase(pos_type start, pos_type end, bool trackChanges);
 	///
