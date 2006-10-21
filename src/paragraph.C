@@ -249,7 +249,7 @@ int Paragraph::erase(pos_type start, pos_type end, bool trackChanges)
 
 
 void Paragraph::insert(pos_type start, string const & str,
-		       LyXFont const & font, Change const & change)
+                       LyXFont const & font, Change const & change)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
 		insertChar(start + i, str[i], font, change);
@@ -257,7 +257,7 @@ void Paragraph::insert(pos_type start, string const & str,
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   bool trackChanges)
+                           bool trackChanges)
 {
 	pimpl_->insertChar(pos, c, Change(trackChanges ?
 	                   Change::INSERTED : Change::UNCHANGED));
@@ -265,7 +265,7 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
-			   LyXFont const & font, bool trackChanges)
+                           LyXFont const & font, bool trackChanges)
 {
 	pimpl_->insertChar(pos, c, Change(trackChanges ?
 	                   Change::INSERTED : Change::UNCHANGED));
@@ -281,14 +281,15 @@ void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 }
 
 
-void Paragraph::insertInset(pos_type pos, InsetBase * inset, Change const & change)
+void Paragraph::insertInset(pos_type pos, InsetBase * inset,
+                            Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 }
 
 
 void Paragraph::insertInset(pos_type pos, InsetBase * inset,
-			    LyXFont const & font, Change const & change)
+                            LyXFont const & font, Change const & change)
 {
 	pimpl_->insertInset(pos, inset, change);
 	setFont(pos, font);

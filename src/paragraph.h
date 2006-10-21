@@ -300,10 +300,10 @@ public:
 	                LyXFont const &, Change const & change);
 	///
 	void insertInset(pos_type pos, InsetBase * inset,
-			 Change const & change);
+	                 Change const & change);
 	///
 	void insertInset(pos_type pos, InsetBase * inset,
-		         LyXFont const &, Change const & change);
+	                 LyXFont const &, Change const & change);
 	///
 	bool insetAllowed(InsetBase_code code);
 	///
