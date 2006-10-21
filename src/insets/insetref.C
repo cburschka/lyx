@@ -24,9 +24,9 @@
 #include "support/lstrings.h"
 
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::escape;
+namespace lyx {
+
+using support::escape;
 
 using std::string;
 using std::ostream;
@@ -109,16 +109,16 @@ int InsetRef::docbook(Buffer const & buf, odocstream & os,
 	if (name.empty()) {
 		if (runparams.flavor == OutputParams::XML) {
 			os << "<xref linkend=\"" 
-			   << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
+			   << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
 			   << "\" />";
 		} else {
 			os << "<xref linkend=\"" 
-			   << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
+			   << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
 			   << "\">";
 		}
 	} else {
 		os << "<link linkend=\"" 
-		   << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference"))))
+		   << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference"))))
 		   << "\">" 
 		   << getParam("name")
 		   << "</link>";
@@ -170,3 +170,6 @@ string const & InsetRef::getName(int type)
 {
 	return types[type].latex_name;
 }
+
+
+} // namespace lyx

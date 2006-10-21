@@ -129,7 +129,8 @@ void QInclude::browse()
 	else
 		type = ControlInclude::VERBATIM;
 
-	docstring const & name = controller().browse(qstring_to_ucs4(dialog_->filenameED->text()), type);
+	docstring const & name =
+		controller().browse(qstring_to_ucs4(dialog_->filenameED->text()), type);
 	if (!name.empty())
 		dialog_->filenameED->setText(toqstr(name));
 }

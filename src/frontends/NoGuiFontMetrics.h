@@ -19,7 +19,7 @@
 namespace lyx {
 namespace frontend {
 
-class NoGuiFontMetrics: public FontMetrics
+class NoGuiFontMetrics : public FontMetrics
 {
 public:
 
@@ -31,33 +31,28 @@ public:
 
 	virtual int maxDescent() const { return 1; }
 	
-	virtual int ascent(lyx::char_type) const { return 1; }
+	virtual int ascent(char_type) const { return 1; }
 	
-	int descent(lyx::char_type) const { return 1; }
+	int descent(char_type) const { return 1; }
 	
-	virtual int lbearing(lyx::char_type) const { return 1; }
+	virtual int lbearing(char_type) const { return 1; }
 	
-	virtual int rbearing(lyx::char_type) const { return 1; }
+	virtual int rbearing(char_type) const { return 1; }
 	
-	virtual int width(lyx::char_type const *, size_t n) const { return n; }
+	virtual int width(char_type const *, size_t n) const { return n; }
 	
-	virtual int signedWidth(lyx::docstring const & s) const
+	virtual int signedWidth(docstring const & s) const
 	{
-		if (s[0] == '-')
+		if (s.size() && s[0] == '-')
 			return -FontMetrics::width(s.substr(1, s.length() - 1));
-		else
-			return FontMetrics::width(s);
+		return FontMetrics::width(s);
 	}
 	
-	virtual void rectText(lyx::docstring const &,
-		int & width,
-		int & ascent,
-		int & descent) const {};	 
+	virtual void rectText(docstring const &,
+		int & /*width*/, int & /*ascent*/, int & /*descent*/) const {}
 	
-	virtual void buttonText(lyx::docstring const &,
-		int & width,
-		int & ascent,
-		int & descent) const {};
+	virtual void buttonText(docstring const &,
+		int & /*width*/, int & /*ascent*/, int & /*descent*/) const {}
 };
 
 } // namespace frontend

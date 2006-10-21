@@ -28,23 +28,21 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::support::rtrim;
+namespace lyx {
+
+using support::rtrim;
 
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::string;
 
-// anonym namespace
-namespace {
-int findToken(char const * const str[], string const & search_token)
+
+static int findToken(char const * const str[], string const & search_token)
 {
 	return search_token == "default" ?
 		0 :
-		lyx::support::findToken(str, search_token);
-}
-
+		support::findToken(str, search_token);
 }
 
 
@@ -61,7 +59,7 @@ void ParagraphParameters::clear()
 }
 
 
-ParagraphParameters::depth_type ParagraphParameters::depth() const
+depth_type ParagraphParameters::depth() const
 {
 	return depth_;
 }
@@ -241,7 +239,7 @@ void ParagraphParameters::write(ostream & os) const
 	// The labelwidth string used in lists.
 	if (!labelWidthString().empty())
 		os << "\\labelwidthstring "
-		   << lyx::to_utf8(labelWidthString()) << '\n';
+		   << to_utf8(labelWidthString()) << '\n';
 
 	// Start of appendix?
 	if (startOfAppendix())
@@ -314,3 +312,6 @@ bool operator==(ParagraphParameeters const & ps1,
 		&& ps1.leftindent == ps2.leftindent;
 }
 */
+
+
+} // namespace lyx

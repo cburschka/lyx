@@ -20,7 +20,7 @@
 
 #include <boost/assert.hpp>
 
-using lyx::docstring;
+namespace lyx {
 
 using std::string;
 
@@ -207,7 +207,7 @@ docstring const Bullet::bulletSize(int s)
 		"\\large", "\\Large",      "\\LARGE",        "\\huge",  "\\Huge"
 	};
 
-	return lyx::from_ascii(BulletSize[s]);
+	return from_ascii(BulletSize[s]);
 }
 
 
@@ -352,7 +352,7 @@ docstring const Bullet::bulletEntry(int f, int c)
 		BulletPanel4, BulletPanel5
 	};
 
-	return lyx::from_ascii(BulletPanels[f][c]);
+	return from_ascii(BulletPanels[f][c]);
 }
 
 void Bullet::testInvariant() const
@@ -380,3 +380,6 @@ void Bullet::testInvariant() const
 	//      }
 #endif
 }
+
+
+} // namespace lyx

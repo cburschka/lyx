@@ -12,6 +12,9 @@
 
 #include "lyx_sty.h"
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -133,3 +136,6 @@ string const lyxgreyedout_def =
 string const lyxdot_def =
 	"%% A simple dot to overcome graphicx limitations\n"
 	"\\newcommand{\\lyxdot}{.}\n";
+
+
+} // namespace lyx

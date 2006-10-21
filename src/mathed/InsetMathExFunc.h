@@ -18,6 +18,8 @@
 #include <string>
 
 
+namespace lyx {
+
 // f(x) in one block (as opposed to 'f','(','x',')' or 'f','x')
 // for interfacing external programs
 
@@ -50,4 +52,7 @@ private:
 	///
 	std::string const name_;
 };
+
+} // namespace lyx
+
 #endif

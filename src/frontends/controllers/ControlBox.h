@@ -16,9 +16,10 @@
 #include "Dialog.h"
 #include <vector>
 
+namespace lyx {
+
 class InsetBoxParams;
 
-namespace lyx {
 namespace frontend {
 
 class ControlBox : public Dialog::Controller {

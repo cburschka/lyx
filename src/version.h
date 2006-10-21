@@ -12,6 +12,8 @@
 #ifndef VERSION_H
 #define VERSION_H
 
+//namespace lyx {
+
 ///
 extern char const * lyx_version;
 ///
@@ -19,5 +21,7 @@ extern char const * lyx_release_date;
 
 /// This is the version information shown by 'lyx -version'
 extern char const * lyx_version_info;
+
+//} // namespace lyx
 
 #endif

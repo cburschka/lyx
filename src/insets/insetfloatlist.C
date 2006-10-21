@@ -27,9 +27,10 @@
 
 #include "support/lstrings.h"
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::bformat;
+
+namespace lyx {
+
+using support::bformat;
 
 using std::endl;
 using std::string;
@@ -99,13 +100,13 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 			}
 		} else {
 			// FIXME UNICODE
-			os << "\\listof{" << lyx::from_ascii(getCmdName()) << "}{"
+			os << "\\listof{" << from_ascii(getCmdName()) << "}{"
 			   << buf.B_(cit->second.listName()) << "}\n";
 		}
 	} else {
 		// FIXME UNICODE
-		os << "%%\\listof{" << lyx::from_ascii(getCmdName()) << "}{"
-		   << bformat(_("List of %1$s"), lyx::from_utf8(cit->second.name()))
+		os << "%%\\listof{" << from_ascii(getCmdName()) << "}{"
+		   << bformat(_("List of %1$s"), from_utf8(cit->second.name()))
 		   << "}\n";
 	}
 	return 1;
@@ -117,7 +118,7 @@ int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	lyx::toc::asciiTocList(getCmdName(), buffer, os);
+	toc::asciiTocList(getCmdName(), buffer, os);
 
 	os << "\n";
 	return 0;
@@ -128,3 +129,6 @@ void InsetFloatList::validate(LaTeXFeatures & features) const
 {
 	features.useFloat(getCmdName());
 }
+
+
+} // namespace lyx

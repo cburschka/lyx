@@ -12,6 +12,9 @@
 
 #include "support/lyxlib.h"
 
+
+namespace lyx {
+
 #ifdef HAVE_STDLIB_H
 # include <stdlib.h>
 #endif
@@ -21,3 +24,6 @@ void lyx::support::abort()
 {
 	::abort();
 }
+
+
+} // namespace lyx

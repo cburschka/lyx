@@ -15,6 +15,9 @@
 
 #include "InsetMathFracBase.h"
 
+
+namespace lyx {
+
 /// Inset for underset
 class InsetMathUnderset : public InsetMathFracBase {
 public:
@@ -38,4 +41,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

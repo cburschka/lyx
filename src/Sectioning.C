@@ -12,6 +12,9 @@
 
 #include "Sectioning.h"
 
+
+namespace lyx {
+
 using std::string;
 
 string const & Section::name() const
@@ -57,3 +60,6 @@ bool Section::display() const
 		return false;
 	return true;
 }
+
+
+} // namespace lyx

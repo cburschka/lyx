@@ -15,6 +15,9 @@
 #include "lyxgluelength.h"
 
 
+namespace lyx {
+
+
 class BufferParams;
 class BufferView;
 
@@ -74,5 +77,8 @@ private:
 	/// if true, use \vspace* type
 	bool keep_;
 };
+
+
+} // namespace lyx
 
 #endif // VSPACE_H

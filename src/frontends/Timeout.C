@@ -14,6 +14,9 @@
 #include "Timeout.h"
 
 
+namespace lyx {
+
+
 Timeout::~Timeout()
 {
 	pimpl_->stop();
@@ -69,3 +72,6 @@ Timeout & Timeout::setTimeout(unsigned int msec)
 	timeout_ms = msec;
 	return * this;
 }
+
+
+} // namespace lyx

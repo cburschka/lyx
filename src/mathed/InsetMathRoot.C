@@ -19,6 +19,9 @@
 
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::max;
 using std::auto_ptr;
 
@@ -107,3 +110,6 @@ void InsetMathRoot::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mroot") << cell(1) << cell(0) << ETag("mroot");
 }
+
+
+} // namespace lyx

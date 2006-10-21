@@ -12,17 +12,14 @@
 #ifndef QSETBORDER_H
 #define QSETBORDER_H
 
-#include <qwidget.h>
-#include <qpixmap.h>
-//Added by qt3to4:
-#include <QMouseEvent>
-#include <QResizeEvent>
-#include <QPaintEvent>
+#include <QWidget>
+#include <QPixmap>
 
 class QColor;
 class QMouseEvent;
 class QPaintEvent;
-class QResizeEvent;
+
+//namespace lyx {
 
 class QSetBorder : public QWidget
 {
@@ -86,5 +83,8 @@ private:
 
 	QPixmap buffer;
 };
+
+
+//} // namespace lyx
 
 #endif // QSETBORDER_H

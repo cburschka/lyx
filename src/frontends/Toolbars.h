@@ -27,8 +27,10 @@
 #include <boost/shared_ptr.hpp>
 #include <map>
 
-class LyXView;
 
+namespace lyx {
+
+class LyXView;
 
 class LayoutBox {
 public:
@@ -50,8 +52,7 @@ class Toolbar {
 public:
 	virtual ~Toolbar() {}
 	/// Add a button to the bar.
-	virtual void add(FuncRequest const & func,
-			 lyx::docstring const & tooltip) = 0;
+	virtual void add(FuncRequest const & func, docstring const & tooltip) = 0;
 
 	/** Hide the bar.
 	 *  \param update_metrics is a hint to the layout engine that the
@@ -130,5 +131,8 @@ private:
 
 /// Set the layout in the kernel when an entry has been selected
 void layoutSelected(LyXView & lv, std::string const & name);
+
+
+} // namespace lyx
 
 #endif // NOT TOOLBARS_H

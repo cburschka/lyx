@@ -28,8 +28,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::istringstream;
 using std::ostream;
@@ -67,7 +67,7 @@ void InsetVSpace::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetVSpaceMailer::string2params(lyx::to_utf8(cmd.argument()), space_);
+		InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), space_);
 		break;
 	}
 
@@ -107,7 +107,7 @@ void InsetVSpace::write(Buffer const &, ostream & os) const
 string const InsetVSpace::label() const
 {
 	// FIXME UNICODE
-	static string const label = lyx::to_utf8(_("Vertical Space"));
+	static string const label = to_utf8(_("Vertical Space"));
 	return label + " (" + space_.asGUIName() + ')';
 }
 
@@ -206,7 +206,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 int InsetVSpace::latex(Buffer const & buf, odocstream & os,
 			  OutputParams const &) const
 {
-	os << lyx::from_ascii(space_.asLatexCommand(buf.params())) << '\n';
+	os << from_ascii(space_.asLatexCommand(buf.params())) << '\n';
 	return 1;
 }
 
@@ -269,3 +269,6 @@ string const InsetVSpaceMailer::params2string(VSpace const & vspace)
 	data << name_ << ' ' << vspace.asLyXCommand();
 	return data.str();
 }
+
+
+} // namespace lyx

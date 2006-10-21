@@ -54,7 +54,7 @@ public:
 	void setParams(InsetCommandParams const &);
 
 	/// Browse for a file
-	lyx::docstring const browse(lyx::docstring const &, Type) const;
+	docstring const browse(docstring const &, Type) const;
 
 	/// load a file
 	void load(std::string const & file);

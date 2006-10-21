@@ -15,6 +15,9 @@
 #include "InsetMathDim.h"
 
 
+namespace lyx {
+
+
 /// LaTeX names for objects that we really don't know
 class InsetMathUnknown : public InsetMathDim {
 public:
@@ -57,4 +60,7 @@ private:
 	///
 	bool black_;
 };
+
+
+} // namespace lyx
 #endif

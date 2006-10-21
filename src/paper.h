@@ -15,6 +15,8 @@
 #ifndef PAPER_H
 #define PAPER_H
 
+namespace lyx {
+
 ///
 enum PAPER_SIZE {
 	///
@@ -48,4 +50,8 @@ enum PAPER_ORIENTATION {
 	///
 	ORIENTATION_LANDSCAPE
 };
+
+} // namespace lyx
+
+
 #endif

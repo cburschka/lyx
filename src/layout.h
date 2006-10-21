@@ -13,6 +13,8 @@
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
+namespace lyx {
+
 /// The different output types
 enum OutputType {
 	///
@@ -152,5 +154,6 @@ enum LYX_END_LABEL_TYPES {
  * previous paragraph is standard too. Well, this is LateX and it is good!
  */
 
+} // namespace lyx
 
 #endif

@@ -356,3 +356,9 @@ void BulletsModule::setCustom()
 }
 
 #include "BulletsModule_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

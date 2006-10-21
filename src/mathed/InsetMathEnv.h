@@ -17,6 +17,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 /// Environtments á la \begin{something}...\end{something}
 class InsetMathEnv : public InsetMathNest {
 public:
@@ -38,5 +41,8 @@ private:
 	/// name of that environment
 	std::string name_;
 };
+
+
+} // namespace lyx
 
 #endif

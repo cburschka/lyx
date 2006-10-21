@@ -15,6 +15,9 @@
 #include "InsetMathFracBase.h"
 
 
+namespace lyx {
+
+
 /// Wide arrows like \xrightarrow
 class InsetMathXArrow : public InsetMathFracBase {
 public:
@@ -38,4 +41,7 @@ private:
 	///
 	std::string const name_;
 };
+
+
+} // namespace lyx
 #endif

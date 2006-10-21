@@ -20,6 +20,9 @@
 
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 using std::string;
 
@@ -101,3 +104,6 @@ void InsetMathColor::infoize(std::ostream & os) const
 {
 	os << "Color: " << color_;
 }
+
+
+} // namespace lyx

@@ -23,7 +23,8 @@
 #include "LaTeXFeatures.h"
 #include "frontends/Painter.h"
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 using std::max;
@@ -60,17 +61,17 @@ void MathMacro::cursorPos(BufferView const & bv,
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
-		mathed_string_dim(mi.base.font, lyx::from_utf8("Unknown: " + name()), dim);
+		mathed_string_dim(mi.base.font, from_utf8("Unknown: " + name()), dim);
 	} else if (editing(mi.base.bv)) {
 		// FIXME UNICODE
-		asArray(lyx::from_utf8(MacroTable::globalMacros().get(name()).def()), tmpl_);
+		asArray(from_utf8(MacroTable::globalMacros().get(name()).def()), tmpl_);
 		LyXFont font = mi.base.font;
 		augmentFont(font, "lyxtex");
 		tmpl_.metrics(mi, dim);
 		// FIXME UNICODE
-		dim.wid += mathed_string_width(font, lyx::from_utf8(name())) + 10;
+		dim.wid += mathed_string_width(font, from_utf8(name())) + 10;
 		// FIXME UNICODE
-		int ww = mathed_string_width(font, lyx::from_ascii("#1: "));
+		int ww = mathed_string_width(font, from_ascii("#1: "));
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			c.metrics(mi);
@@ -90,25 +91,25 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
 		// FIXME UNICODE
-		drawStrRed(pi, x, y, lyx::from_utf8("Unknown: " + name()));
+		drawStrRed(pi, x, y, from_utf8("Unknown: " + name()));
 	} else if (editing(pi.base.bv)) {
 		LyXFont font = pi.base.font;
 		augmentFont(font, "lyxtex");
 		int h = y - dim_.ascent() + 2 + tmpl_.ascent();
 		// FIXME UNICODE
-		docstring dn = lyx::from_utf8(name());
+		docstring dn = from_utf8(name());
 		pi.pain.text(x + 3, h, dn, font);
 		int const w = mathed_string_width(font, dn);
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
 		Dimension ldim;
-		mathed_string_dim(font, lyx::from_ascii("#1: "), ldim);
+		mathed_string_dim(font, from_ascii("#1: "), ldim);
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.asc) + 5;
 			c.draw(pi, x + ldim.wid, h);
-			lyx::char_type str[] = { '#', '1', ':', '\0' };
-			str[1] += static_cast<lyx::char_type>(i);
+			char_type str[] = { '#', '1', ':', '\0' };
+			str[1] += static_cast<char_type>(i);
 			pi.pain.text(x + 3, h, str, font);
 			h += max(c.descent(), ldim.des) + 5;
 		}
@@ -155,21 +156,21 @@ InsetBase * MathMacro::editXY(LCursor & cur, int x, int y)
 void MathMacro::maple(MapleStream & os) const
 {
 	updateExpansion();
-	::maple(expanded_, os);
+	lyx::maple(expanded_, os);
 }
 
 
 void MathMacro::mathmlize(MathMLStream & os) const
 {
 	updateExpansion();
-	::mathmlize(expanded_, os);
+	lyx::mathmlize(expanded_, os);
 }
 
 
 void MathMacro::octave(OctaveStream & os) const
 {
 	updateExpansion();
-	::octave(expanded_, os);
+	lyx::octave(expanded_, os);
 }
 
 
@@ -190,3 +191,6 @@ void MathMacro::infoize2(std::ostream & os) const
 	os << "Macro: " << name();
 
 }
+
+
+} // namespace lyx

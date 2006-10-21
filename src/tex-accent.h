@@ -15,6 +15,9 @@
 
 #include "lfuns.h"
 
+
+namespace lyx {
+
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this
    if I got it wrong
@@ -107,5 +110,8 @@ struct tex_accent_struct {
 
 ///
 extern tex_accent_struct lyx_accent_table[];
+
+
+} // namespace lyx
 
 #endif

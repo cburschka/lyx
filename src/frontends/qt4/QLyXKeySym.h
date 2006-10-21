@@ -18,7 +18,10 @@
 #include <QString>
 #include <QKeyEvent>
 
+
 class QKeyEvent;
+
+namespace lyx {
 
 /**
  * Qt-specific key press.
@@ -71,5 +74,8 @@ private:
 	/// the event string value
 	QString text_;
 };
+
+
+} // namespace lyx
 
 #endif // QLYXKEYSYM_H

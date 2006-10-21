@@ -36,6 +36,9 @@
 #include <list>
 
 
+namespace lyx {
+
+
 class Branch {
 public:
 	///
@@ -51,9 +54,9 @@ public:
 	 */
 	bool setSelected(bool);
 	///
-	lyx::RGBColor const & getColor() const;
+	RGBColor const & getColor() const;
 	///
-	void setColor(lyx::RGBColor const &);
+	void setColor(RGBColor const &);
 	/**
 	 * Set color from a string "#rrggbb".
 	 * Use LColor:background if the string is no valid color.
@@ -62,14 +65,13 @@ public:
 	 */
 	void setColor(std::string const &);
 
-
 private:
 	///
 	std::string branch_;
 	///
 	bool selected_;
 	///
-	lyx::RGBColor color_;
+	RGBColor color_;
 };
 
 
@@ -123,5 +125,8 @@ public:
 private:
 	std::string name_;
 };
+
+
+} // namespace lyx
 
 #endif

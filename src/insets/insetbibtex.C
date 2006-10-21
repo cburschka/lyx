@@ -36,31 +36,32 @@
 #include <fstream>
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::absolutePath;
-using lyx::support::ascii_lowercase;
-using lyx::support::changeExtension;
-using lyx::support::contains;
-using lyx::support::copy;
-using lyx::support::FileName;
-using lyx::support::findtexfile;
-using lyx::support::isFileReadable;
-using lyx::support::latex_path;
-using lyx::support::ltrim;
-using lyx::support::makeAbsPath;
-using lyx::support::makeRelPath;
-using lyx::support::Path;
-using lyx::support::prefixIs;
-using lyx::support::removeExtension;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::subst;
-using lyx::support::tokenPos;
-using lyx::support::trim;
 
-namespace Alert = lyx::frontend::Alert;
-namespace os = lyx::support::os;
+namespace lyx {
+
+using support::absolutePath;
+using support::ascii_lowercase;
+using support::changeExtension;
+using support::contains;
+using support::copy;
+using support::FileName;
+using support::findtexfile;
+using support::isFileReadable;
+using support::latex_path;
+using support::ltrim;
+using support::makeAbsPath;
+using support::makeRelPath;
+using support::Path;
+using support::prefixIs;
+using support::removeExtension;
+using support::rtrim;
+using support::split;
+using support::subst;
+using support::tokenPos;
+using support::trim;
+
+namespace Alert = frontend::Alert;
+namespace os = support::os;
 
 using std::endl;
 using std::getline;
@@ -88,7 +89,7 @@ void InsetBibtex::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p("bibtex");
-		InsetCommandMailer::string2params("bibtex", lyx::to_utf8(cmd.argument()), p);
+		InsetCommandMailer::string2params("bibtex", to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			setParams(p);
 			cur.buffer().updateBibfilesCache();
@@ -154,7 +155,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	typedef boost::tokenizer<Separator> Tokenizer;
 
 	Separator const separator(",");
-	Tokenizer const tokens(lyx::to_utf8(getParam("bibfiles")), separator);
+	Tokenizer const tokens(to_utf8(getParam("bibfiles")), separator);
 	Tokenizer::const_iterator const begin = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
 
@@ -186,7 +187,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		dbs << latex_path(database);
 	}
 	// FIXME UNICODE
-	docstring const db_out = lyx::from_utf8(dbs.str());
+	docstring const db_out = from_utf8(dbs.str());
 
 	// Post this warning only once.
 	static bool warned_about_spaces = false;
@@ -201,7 +202,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	}
 
 	// Style-Options
-	string style = lyx::to_utf8(getParam("options")); // maybe empty! and with bibtotoc
+	string style = to_utf8(getParam("options")); // maybe empty! and with bibtotoc
 	string bibtotoc;
 	if (prefixIs(style, "bibtotoc")) {
 		bibtotoc = "bibtotoc";
@@ -237,7 +238,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		}
 		// FIXME UNICODE
 		os << "\\bibliographystyle{"
-		   << lyx::from_utf8(latex_path(normalize_name(buffer, runparams, base, ".bst")))
+		   << from_utf8(latex_path(normalize_name(buffer, runparams, base, ".bst")))
 		   << "}\n";
 		nlines += 1;
 	}
@@ -256,7 +257,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		docstring btprint = getParam("btprint");
 		if (btprint.empty())
 			// default
-			btprint = lyx::from_ascii("btPrintCited");
+			btprint = from_ascii("btPrintCited");
 		os << "\\" << btprint << "\n"
 		   << "\\end{btSect}\n";
 		nlines += 3;
@@ -304,7 +305,7 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 
 	string tmp;
 	// FIXME UNICODE
-	string bibfiles = lyx::to_utf8(getParam("bibfiles"));
+	string bibfiles = to_utf8(getParam("bibfiles"));
 	bibfiles = split(bibfiles, tmp, ',');
 	while (!tmp.empty()) {
 		string file = findtexfile(changeExtension(tmp, "bib"), "bib");
@@ -362,11 +363,11 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 bool InsetBibtex::addDatabase(string const & db)
 {
 	// FIXME UNICODE
-	string bibfiles(lyx::to_utf8(getParam("bibfiles")));
+	string bibfiles(to_utf8(getParam("bibfiles")));
 	if (tokenPos(bibfiles, ',', db) == -1) {
 		if (!bibfiles.empty())
 			bibfiles += ',';
-		setParam("bibfiles", lyx::from_utf8(bibfiles + db));
+		setParam("bibfiles", from_utf8(bibfiles + db));
 		return true;
 	}
 	return false;
@@ -376,17 +377,17 @@ bool InsetBibtex::addDatabase(string const & db)
 bool InsetBibtex::delDatabase(string const & db)
 {
 	// FIXME UNICODE
-	string bibfiles(lyx::to_utf8(getParam("bibfiles")));
+	string bibfiles(to_utf8(getParam("bibfiles")));
 	if (contains(bibfiles, db)) {
 		int const n = tokenPos(bibfiles, ',', db);
 		string bd = db;
 		if (n > 0) {
 			// this is not the first database
 			string tmp = ',' + bd;
-			setParam("bibfiles", lyx::from_utf8(subst(bibfiles, tmp, string())));
+			setParam("bibfiles", from_utf8(subst(bibfiles, tmp, string())));
 		} else if (n == 0)
 			// this is the first (or only) database
-			setParam("bibfiles", lyx::from_utf8(split(bibfiles, bd, ',')));
+			setParam("bibfiles", from_utf8(split(bibfiles, bd, ',')));
 		else
 			return false;
 	}
@@ -399,3 +400,6 @@ void InsetBibtex::validate(LaTeXFeatures & features) const
 	if (features.bufferParams().use_bibtopic)
 		features.require("bibtopic");
 }
+
+
+} // namespace lyx

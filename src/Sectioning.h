@@ -17,6 +17,9 @@
 #include <map>
 
 
+namespace lyx {
+
+
 ///
 class Section {
 public:
@@ -58,5 +61,8 @@ private:
 	///
 	List_ list_;
 };
+
+
+} // namespace lyx
 
 #endif

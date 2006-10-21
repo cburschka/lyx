@@ -15,6 +15,9 @@
 #include <qwidget.h>
 #include <qpixmap.h>
 
+
+namespace lyx {
+
 class QColor;
 class QMouseEvent;
 class QPaintEvent;
@@ -82,5 +85,8 @@ private:
 
 	QPixmap buffer;
 };
+
+
+} // namespace lyx
 
 #endif // QSETBORDER_H

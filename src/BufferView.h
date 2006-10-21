@@ -26,6 +26,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class Buffer;
 class Change;
 class DocIterator;
@@ -138,7 +141,7 @@ public:
 	LyXText const * getLyXText() const;
 
 	/// move cursor to the named label
-	void gotoLabel(lyx::docstring const & label);
+	void gotoLabel(docstring const & label);
 
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
@@ -166,7 +169,7 @@ public:
 	bool dispatch(FuncRequest const & argument);
 
 	///
-	lyx::docstring const requestSelection();
+	docstring const requestSelection();
 	///
 	void clearSelection();
 
@@ -177,7 +180,7 @@ public:
 	bool workAreaDispatch(FuncRequest const & ev);
 
 	/// access to anchor
-	lyx::pit_type anchor_ref() const;
+	pit_type anchor_ref() const;
 
 	/// access to full cursor
 	LCursor & cursor();
@@ -201,11 +204,11 @@ public:
 	void updateMetrics(bool singlepar = false);
 
 	///
-	lyx::CoordCache & coordCache() {
+	CoordCache & coordCache() {
 		return coord_cache_;
 	}
 	///
-	lyx::CoordCache const & coordCache() const {
+	CoordCache const & coordCache() const {
 		return coord_cache_;
 	}
 	/// get this view's keyboard map handler
@@ -214,7 +217,7 @@ public:
 	Intl const & getIntl() const { return *intl_.get(); }
 
 	/// This signal is emitted when some message shows up.
-	boost::signal<void(lyx::docstring)> message;
+	boost::signal<void(docstring)> message;
 
 	/// This signal is emitted when some dialog needs to be shown.
 	boost::signal<void(std::string name)> showDialog;
@@ -247,7 +250,7 @@ private:
 
 	///
 	ViewMetricsInfo metrics_info_;
-	lyx::CoordCache coord_cache_;
+	CoordCache coord_cache_;
 	///
 	Buffer * buffer_;
 
@@ -261,11 +264,11 @@ private:
 		/// Cursor paragraph Id
 		int par_id;
 		/// Cursor position
-		lyx::pos_type par_pos;
+		pos_type par_pos;
 		///
 		Position() : par_id(0), par_pos(0) {}
 		///
-		Position(std::string const & f, int id, lyx::pos_type pos)
+		Position(std::string const & f, int id, pos_type pos)
 			: filename(f), par_id(id), par_pos(pos) {}
 	};
 	///
@@ -284,12 +287,15 @@ private:
 	///
 	bool multiparsel_cache_;
 	///
-	lyx::pit_type anchor_ref_;
+	pit_type anchor_ref_;
 	///
 	int offset_ref_;
 
 	/// keyboard mapping object
 	boost::scoped_ptr<Intl> const intl_;
 };
+
+
+} // namespace lyx
 
 #endif // BUFFERVIEW_H

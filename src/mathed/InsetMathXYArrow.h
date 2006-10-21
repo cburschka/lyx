@@ -16,6 +16,9 @@
 #include "metricsinfo.h"
 
 
+namespace lyx {
+
+
 // for the \ar stuff in \xymatrix
 
 class InsetMathXYMatrix;
@@ -58,4 +61,7 @@ public:
 	mutable InsetMathXYMatrix const * target_;
 };
 
+
+
+} // namespace lyx
 #endif

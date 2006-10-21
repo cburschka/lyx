@@ -17,6 +17,9 @@
 
 #include "frontends/Dialogs.h"
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -48,3 +51,6 @@ void print_mailer_error(string const & class_name,
 	       << "Expected arg " << arg_id << " to be \"" << arg << "\"\n"
 	       << std::endl;
 }
+
+
+} // namespace lyx

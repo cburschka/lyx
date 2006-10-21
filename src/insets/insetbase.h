@@ -14,10 +14,12 @@
 
 #include "support/docstream.h"
 
+#include "changes.h"
+
 #include <memory>
 #include <vector>
 
-#include "changes.h"
+namespace lyx {
 
 class Buffer;
 class BufferView;
@@ -35,8 +37,8 @@ class Dimension;
 class PainterInfo;
 class OutputParams;
 
-namespace lyx { namespace graphics { class PreviewLoader; } }
 
+namespace graphics { class PreviewLoader; }
 
 
 /// Common base class to all insets
@@ -180,7 +182,7 @@ public:
 	virtual void validate(LaTeXFeatures &) const {}
 	/// Appends \c list with all labels found within this inset.
 	virtual void getLabelList(Buffer const &,
-				  std::vector<lyx::docstring> & /* list */) const {}
+				  std::vector<docstring> & /* list */) const {}
 
 	/// describe content if cursor inside
 	virtual void infoize(std::ostream &) const {}
@@ -188,13 +190,13 @@ public:
 	virtual void infoize2(std::ostream &) const {}
 
 	/// plain text output in ucs4 encoding
-	virtual int plaintext(Buffer const &, lyx::odocstream &,
+	virtual int plaintext(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	/// docbook output
-	virtual int docbook(Buffer const &, lyx::odocstream & os,
+	virtual int docbook(Buffer const &, odocstream & os,
 		OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const { return 0; };
 
 	/** This enum indicates by which means the inset can be modified:
@@ -213,7 +215,7 @@ public:
 		HIGHLY_EDITABLE
 	};
 	/// what appears in the minibuffer when opening
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	virtual EDITABLE editable() const;
 	/// can we go further down on mouse click?
@@ -358,7 +360,7 @@ public:
 	/// read inset in .lyx format
 	virtual void read(Buffer const &, LyXLex &) {}
 	/// returns the number of rows (\n's) of generated tex code.
-	virtual int latex(Buffer const &, lyx::odocstream &,
+	virtual int latex(Buffer const &, odocstream &,
 			  OutputParams const &) const { return 0; }
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
@@ -374,7 +376,8 @@ public:
 	 *  Most insets have no interest in this capability, so the method
 	 *  defaults to empty.
 	 */
-	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
+	virtual void addPreview(graphics::PreviewLoader &) const {}
+
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Code lyxCode() const { return NO_CODE; }
@@ -415,8 +418,8 @@ public:
 	///
 	virtual void setStatus(LCursor &, CollapseStatus) {}
 protected:
-	InsetBase();
-	InsetBase(InsetBase const &);
+	InsetBase() {}
+	InsetBase(InsetBase const &) {}
 	/** The real dispatcher.
 	 *  Gets normally called from LCursor::dispatch(). LCursor::dispatch()
 	 *  assumes the common case of 'LFUN handled, need update'.
@@ -446,5 +449,7 @@ bool isEditableInset(InsetBase const * inset);
  * and points to a highly editable inset
  */
 bool isHighlyEditableInset(InsetBase const * inset);
+
+} // namespace lyx
 
 #endif

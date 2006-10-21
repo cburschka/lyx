@@ -25,6 +25,9 @@
 #include "insets/insetbase.h" // only for InsetBase::Code
 
 
+namespace lyx {
+
+
 class Buffer;
 class BufferParams;
 class BufferView;
@@ -48,11 +51,11 @@ public:
 	/// Invalid font span containing no character
 	FontSpan() : first(0), last(-1) {}
 	/// Span including first and last
-	FontSpan(lyx::pos_type f, lyx::pos_type l) : first(f), last(l) {}
+	FontSpan(pos_type f, pos_type l) : first(f), last(l) {}
 
 public:
 	/// Range including first and last.
-	lyx::pos_type first, last;
+	pos_type first, last;
 };
 
 
@@ -70,9 +73,7 @@ public:
 		META_INSET = 0x200001  // above 0x10ffff, for ucs-4
 	};
 	///
-	typedef lyx::char_type value_type;
-	///
-	typedef lyx::depth_type depth_type;
+	typedef char_type value_type;
 	///
 	typedef std::vector<value_type> TextContainer;
 
@@ -99,21 +100,21 @@ public:
 	bool isMultiLingual(BufferParams const &) const;
 
 	///
-	lyx::docstring const asString(Buffer const &,
+	docstring const asString(Buffer const &,
 				   OutputParams const & runparams,
 				   bool label) const;
 	///
-	lyx::docstring const asString(Buffer const &, bool label) const;
+	docstring const asString(Buffer const &, bool label) const;
 	///
-	lyx::docstring const asString(Buffer const & buffer,
-				   lyx::pos_type beg,
-				   lyx::pos_type end,
+	docstring const asString(Buffer const & buffer,
+				   pos_type beg,
+				   pos_type end,
 				   bool label) const;
 	///
-	lyx::docstring const asString(Buffer const &,
+	docstring const asString(Buffer const &,
 				   OutputParams const & runparams,
-				   lyx::pos_type beg,
-				   lyx::pos_type end,
+				   pos_type beg,
+				   pos_type end,
 				   bool label) const;
 
 	///
@@ -123,15 +124,15 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	int startTeXParParams(BufferParams const &, lyx::odocstream &, bool) const;
+	int startTeXParParams(BufferParams const &, odocstream &, bool) const;
 
 	///
-	int endTeXParParams(BufferParams const &, lyx::odocstream &, bool) const;
+	int endTeXParParams(BufferParams const &, odocstream &, bool) const;
 
 
 	///
 	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
-			     LyXFont const & outerfont, lyx::odocstream &,
+			     LyXFont const & outerfont, odocstream &,
 			     TexRow & texrow, OutputParams const &) const;
 
 	/// Can we drop the standard paragraph wrapper?
@@ -142,20 +143,20 @@ public:
 			  OutputParams const & runparams) const;
 
 	// Get the first word of a paragraph, return the position where it left
-	lyx::pos_type getFirstWord(Buffer const & buf,
-				   lyx::odocstream & os,
+	pos_type getFirstWord(Buffer const & buf,
+				   odocstream & os,
 				   OutputParams const & runparams) const;
 
 	/// Checks if the paragraph contains only text and no inset or font change.
 	bool onlyText(Buffer const & buf, LyXFont const & outerfont,
-		      lyx::pos_type initial) const;
+		      pos_type initial) const;
 
 	/// Writes to stream the docbook representation
 	void simpleDocBookOnePar(Buffer const & buf,
-				 lyx::odocstream &,
+				 odocstream &,
 				 OutputParams const & runparams,
 				 LyXFont const & outerfont,
-				 lyx::pos_type initial = 0) const;
+				 pos_type initial = 0) const;
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;
@@ -173,7 +174,7 @@ public:
 	bool forceDefaultParagraphs() const;
 
 	///
-	lyx::pos_type size() const { return text_.size(); }
+	pos_type size() const { return text_.size(); }
 	///
 	bool empty() const { return text_.empty(); }
 	///
@@ -193,12 +194,12 @@ public:
 	InsetBibitem * bibitem() const;  // ale970302
 
 	/// look up change at given pos
-	Change const lookupChange(lyx::pos_type pos) const;
+	Change const lookupChange(pos_type pos) const;
 
 	/// is there a change within the given range ?
-	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
+	bool isChanged(pos_type start, pos_type end) const;
 	/// is there a deletion at the given pos ?
-	bool isDeleted(lyx::pos_type pos) const {
+	bool isDeleted(pos_type pos) const {
 		return lookupChange(pos).type == Change::DELETED;
 	}
 
@@ -206,30 +207,30 @@ public:
 	void setChange(Change const & change);
 
 	/// set change at given pos
-	void setChange(lyx::pos_type pos, Change const & change);
+	void setChange(pos_type pos, Change const & change);
 
 	/// accept change
-	void acceptChange(lyx::pos_type start, lyx::pos_type end);
+	void acceptChange(pos_type start, pos_type end);
 
 	/// reject change
-	void rejectChange(lyx::pos_type start, lyx::pos_type end);
+	void rejectChange(pos_type start, pos_type end);
 
 	/// Paragraphs can contain "manual labels", for example, Description
 	/// environment. The text for this user-editable label is stored in
 	/// the paragraph alongside the text of the rest of the paragraph
 	/// (the body). This function returns the starting position of the
 	/// body of the text in the paragraph.
-	lyx::pos_type beginOfBody() const;
+	pos_type beginOfBody() const;
 	/// recompute this value
 	void setBeginOfBody();
 
 	///
-	lyx::docstring const & getLabelstring() const;
+	docstring const & getLabelstring() const;
 
 	/// the next two functions are for the manual labels
-	lyx::docstring const getLabelWidthString() const;
+	docstring const getLabelWidthString() const;
 	///
-	void setLabelWidthString(lyx::docstring const & s);
+	void setLabelWidthString(docstring const & s);
 	///
 	char getAlign() const;
 	/// The nesting depth of a paragraph
@@ -240,16 +241,16 @@ public:
 	void applyLayout(LyXLayout_ptr const & new_layout);
 
 	/// erase the char at the given position
-	bool erase(lyx::pos_type pos, bool trackChanges);
+	bool erase(pos_type pos, bool trackChanges);
 	/// erase the given range. Returns the number of chars actually erased
-	int erase(lyx::pos_type start, lyx::pos_type end, bool trackChanges);
+	int erase(pos_type start, pos_type end, bool trackChanges);
 
 	/** Get uninstantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.
 	    This is what is stored in the fonttable
 	*/
 	LyXFont const
-	getFontSettings(BufferParams const &, lyx::pos_type pos) const;
+	getFontSettings(BufferParams const &, pos_type pos) const;
 	///
 	LyXFont const getFirstFontSettings(BufferParams const &) const;
 
@@ -260,7 +261,7 @@ public:
 	    attributes with values LyXFont::INHERIT, LyXFont::IGNORE or
 	    LyXFont::TOGGLE.
 	*/
-	LyXFont const getFont(BufferParams const &, lyx::pos_type pos,
+	LyXFont const getFont(BufferParams const &, pos_type pos,
 			      LyXFont const & outerfont) const;
 	LyXFont const getLayoutFont(BufferParams const &,
 				    LyXFont const & outerfont) const;
@@ -273,66 +274,65 @@ public:
 	 * the same. This can be used to avoid unnecessary calls to
    * getFont.
 	 */
-	FontSpan fontSpan(lyx::pos_type pos) const;
+	FontSpan fontSpan(pos_type pos) const;
 	///
 	/// this is a bottleneck.
-	value_type getChar(lyx::pos_type pos) const { return text_[pos]; }
+	value_type getChar(pos_type pos) const { return text_[pos]; }
 	/// Get the char, but mirror all bracket characters if it is right-to-left
-	value_type getUChar(BufferParams const &, lyx::pos_type pos) const;
+	value_type getUChar(BufferParams const &, pos_type pos) const;
 	/// The position must already exist.
-	void setChar(lyx::pos_type pos, value_type c);
+	void setChar(pos_type pos, value_type c);
 	/// pos <= size() (there is a dummy font change at the end of each par)
-	void setFont(lyx::pos_type pos, LyXFont const & font);
+	void setFont(pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
-	LyXFont_size highestFontInRange(lyx::pos_type startpos,
-					lyx::pos_type endpos,
-					LyXFont_size def_size) const;
+	LyXFont_size highestFontInRange(pos_type startpos,
+					pos_type endpos, LyXFont_size def_size) const;
 	///
-	void insert(lyx::pos_type pos, std::string const & str,
+	void insert(pos_type pos, std::string const & str,
 	            LyXFont const & font, Change const & change);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, bool trackChanges);
+	void insertChar(pos_type pos, value_type c, bool trackChanges);
 	///
-	void insertChar(lyx::pos_type pos, value_type c,
+	void insertChar(pos_type pos, value_type c,
 	                LyXFont const &, bool trackChanges);
 	///
-	void insertChar(lyx::pos_type pos, value_type c,
+	void insertChar(pos_type pos, value_type c,
 	                LyXFont const &, Change const & change);
 	///
-	void insertInset(lyx::pos_type pos, InsetBase * inset,
+	void insertInset(pos_type pos, InsetBase * inset,
 			 Change const & change);
 	///
-	void insertInset(lyx::pos_type pos, InsetBase * inset,
+	void insertInset(pos_type pos, InsetBase * inset,
 		         LyXFont const &, Change const & change);
 	///
 	bool insetAllowed(InsetBase_code code);
 	///
-	InsetBase * getInset(lyx::pos_type pos) {
+	InsetBase * getInset(pos_type pos) {
 		return insetlist.get(pos);
 	}
 	///
-	InsetBase const * getInset(lyx::pos_type pos) const {
+	InsetBase const * getInset(pos_type pos) const {
 		return insetlist.get(pos);
 	}
 
 	///
-	bool isHfill(lyx::pos_type pos) const {
+	bool isHfill(pos_type pos) const {
 		return isInset(pos)
 		       && getInset(pos)->lyxCode() == InsetBase::HFILL_CODE;
 	}
 	/// hinted by profiler
-	bool isInset(lyx::pos_type pos) const {
+	bool isInset(pos_type pos) const {
 		return getChar(pos) == static_cast<value_type>(META_INSET);
 	}
 	///
-	bool isNewline(lyx::pos_type pos) const;
+	bool isNewline(pos_type pos) const;
 	/// return true if the char is a word separator
-	bool isSeparator(lyx::pos_type pos) const { return getChar(pos) == ' '; }
+	bool isSeparator(pos_type pos) const { return getChar(pos) == ' '; }
 	///
-	bool isLineSeparator(lyx::pos_type pos) const;
+	bool isLineSeparator(pos_type pos) const;
 	/// True if the character/inset at this point can be part of a word
 	// Note that digits in particular are considered as letters
-	bool isLetter(lyx::pos_type pos) const;
+	bool isLetter(pos_type pos) const;
 
 	/// returns -1 if inset not found
 	int getPositionOfInset(InsetBase const * inset) const;
@@ -346,18 +346,18 @@ public:
 	/// return true if we allow this par to stay empty
 	bool allowEmpty() const;
 	///
-	lyx::char_type transformChar(lyx::char_type c, lyx::pos_type pos) const;
+	char_type transformChar(char_type c, pos_type pos) const;
 	///
 	ParagraphParameters & params();
 	///
 	ParagraphParameters const & params() const;
 
 	///
-	Row & getRow(lyx::pos_type pos, bool boundary);
+	Row & getRow(pos_type pos, bool boundary);
 	///
-	Row const & getRow(lyx::pos_type pos, bool boundary) const;
+	Row const & getRow(pos_type pos, bool boundary) const;
 	///
-	size_t pos2row(lyx::pos_type pos) const;
+	size_t pos2row(pos_type pos) const;
 
 	/// total height of paragraph
 	unsigned int height() const { return dim_.height(); }
@@ -401,7 +401,7 @@ private:
 	 */
 	TextContainer text_;
 	/// end of label
-	lyx::pos_type begin_of_body_;
+	pos_type begin_of_body_;
 
 	/// Pimpl away stuff
 	class Pimpl;
@@ -410,5 +410,8 @@ private:
 	///
 	Pimpl * pimpl_;
 };
+
+
+} // namespace lyx
 
 #endif // PARAGRAPH_H

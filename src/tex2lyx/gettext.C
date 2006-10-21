@@ -13,6 +13,9 @@
 
 #include "gettext.h"
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -24,3 +27,6 @@ string const _(string const & str)
 
 void locale_init()
 {}
+
+
+} // namespace lyx

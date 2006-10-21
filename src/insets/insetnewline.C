@@ -22,7 +22,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::endl;
 using std::ostream;
@@ -42,8 +43,7 @@ void InsetNewline::write(Buffer const &, ostream & os) const
 
 void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	lyx::frontend::FontMetrics const & fm 
-		=	theFontMetrics(mi.base.font);
+	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 	dim.wid = fm.width('n');
@@ -77,8 +77,7 @@ int InsetNewline::docbook(Buffer const &, odocstream & os,
 
 void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 {
-	lyx::frontend::FontMetrics const & fm =
-		theFontMetrics(pi.base.font);
+	frontend::FontMetrics const & fm = theFontMetrics(pi.base.font);
 	int const wid = fm.width('n');
 	int const asc = fm.maxAscent();
 
@@ -123,3 +122,6 @@ bool InsetNewline::isSpace() const
 {
 	return true;
 }
+
+
+} // namespace lyx

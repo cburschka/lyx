@@ -12,10 +12,13 @@
 #ifndef MATHAUTOCORRECT_H
 #define MATHAUTOCORRECT_H
 
+namespace lyx {
 
 class MathAtom;
 
 // make "corrections" according to file lib/autocorrect
 bool math_autocorrect(MathAtom & at, char c);
+
+} // namespace lyx
 
 #endif

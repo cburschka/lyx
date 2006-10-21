@@ -37,12 +37,13 @@
 #ifdef USE_NATIVE_FILEDIALOG
 #include <qapplication.h>
 #include "support/filetools.h"
+
 using lyx::support::makeAbsPath;
 #endif
 
-using lyx::support::FileFilterList;
-using lyx::docstring;
+namespace lyx {
 
+using support::FileFilterList;
 using std::endl;
 
 
@@ -169,3 +170,6 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 #endif
 	return result;
 }
+
+
+} // namespace lyx

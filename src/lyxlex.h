@@ -24,6 +24,9 @@
 #include <iosfwd>
 
 
+namespace lyx {
+
+
 ///
 struct keyword_item {
 	///
@@ -102,7 +105,7 @@ public:
 	std::string const getString() const;
 
 	///
-	lyx::docstring const getDocString() const;
+	docstring const getDocString() const;
 
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
@@ -181,5 +184,8 @@ public:
 */
 #define pushpophelper(x, y, z) unnamed_pushpophelper;
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
+
+
+} // namespace lyx
 
 #endif

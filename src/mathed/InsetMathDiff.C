@@ -15,6 +15,9 @@
 #include "MathMLStream.h"
 #include "debug.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 using std::endl;
 
@@ -111,3 +114,6 @@ void InsetMathDiff::write(WriteStream &) const
 {
 	lyxerr << "should not happen" << endl;
 }
+
+
+} // namespace lyx

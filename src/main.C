@@ -24,7 +24,6 @@
 #endif
 
 
-namespace os = lyx::support::os;
 namespace fs = boost::filesystem;
 
 int main(int argc, char * argv[])
@@ -37,12 +36,12 @@ int main(int argc, char * argv[])
 	// To avoid ordering of global object problems with some
 	// stdlibs we do the initialization here, but still as
 	// early as possible.
-	lyxerr.rdbuf(std::cerr.rdbuf());
+	lyx::lyxerr.rdbuf(std::cerr.rdbuf());
 
-	os::init(argc, argv);
+	lyx::support::os::init(argc, argv);
 
 	// initialize for internationalized version *EK*
-	locale_init();
+	lyx::locale_init();
 
-	return LyX::exec(argc, argv);
+	return lyx::LyX::exec(argc, argv);
 }

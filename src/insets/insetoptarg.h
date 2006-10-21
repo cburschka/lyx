@@ -16,6 +16,9 @@
 #include "insetcollapsable.h"
 
 
+namespace lyx {
+
+
 /**
  * InsetOptArg. Used to insert a short version of sectioning header etc.
  * automatically, or other optional LaTeX arguments
@@ -27,21 +30,21 @@ public:
 	/// code of the inset
 	InsetBase::Code lyxCode() const { return InsetBase::OPTARG_CODE; }
 	/// return an message upon editing
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 
 	/// Standard LaTeX output -- short-circuited
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	/// Standard DocBook output -- short-circuited
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 
 	/// Standard plain text output -- short-circuited
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 
 	/// Outputting the optional parameter of a LaTeX command
-	int latexOptional(Buffer const &, lyx::odocstream &,
+	int latexOptional(Buffer const &, odocstream &,
 			  OutputParams const &) const;
 	/// Write out tothe .lyx file
 	void write(Buffer const & buf, std::ostream & os) const;
@@ -53,5 +56,8 @@ protected:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif // INSETOPTARG_H

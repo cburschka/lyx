@@ -62,25 +62,26 @@
 #include <iostream>
 #include <csignal>
 
-using lyx::support::addName;
-using lyx::support::addPath;
-using lyx::support::bformat;
-using lyx::support::createDirectory;
-using lyx::support::createLyXTmpDir;
-using lyx::support::destroyDir;
-using lyx::support::fileSearch;
-using lyx::support::getEnv;
-using lyx::support::i18nLibFileSearch;
-using lyx::support::libFileSearch;
-using lyx::support::package;
-using lyx::support::prependEnvPath;
-using lyx::support::rtrim;
-using lyx::support::Systemcall;
 
-using lyx::docstring;
+namespace lyx {
 
-namespace Alert = lyx::frontend::Alert;
-namespace os = lyx::support::os;
+using support::addName;
+using support::addPath;
+using support::bformat;
+using support::createDirectory;
+using support::createLyXTmpDir;
+using support::destroyDir;
+using support::fileSearch;
+using support::getEnv;
+using support::i18nLibFileSearch;
+using support::libFileSearch;
+using support::package;
+using support::prependEnvPath;
+using support::rtrim;
+using support::Systemcall;
+
+namespace Alert = frontend::Alert;
+namespace os = support::os;
 namespace fs = boost::filesystem;
 
 using std::endl;
@@ -95,17 +96,13 @@ using std::system;
 #endif
 
 ///
-lyx::frontend::Application * theApp = 0;
-
-namespace lyx {
+frontend::Application * theApp = 0;
 
 /// are we using the GUI at all?
 /** 
 * We default to true and this is changed to false when the export feature is used.
 */
 bool use_gui = true;
-
-} // namespace lyx
 
 
 namespace {
@@ -120,7 +117,7 @@ void showFileError(string const & error)
 {
 	Alert::warning(_("Could not read configuration file"),
 		       bformat(_("Error while reading the configuration file\n%1$s.\n"
-			   "Please check your installation."), lyx::from_utf8(error)));
+			   "Please check your installation."), from_utf8(error)));
 }
 
 
@@ -128,11 +125,11 @@ void reconfigureUserLyXDir()
 {
 	string const configure_command = package().configure_command();
 
-	lyxerr << lyx::to_utf8(_("LyX: reconfiguring user directory")) << endl;
-	lyx::support::Path p(package().user_support());
+	lyxerr << to_utf8(_("LyX: reconfiguring user directory")) << endl;
+	support::Path p(package().user_support());
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
-	lyxerr << "LyX: " << lyx::to_utf8(_("Done!")) << endl;
+	lyxerr << "LyX: " << to_utf8(_("Done!")) << endl;
 }
 
 } // namespace anon
@@ -152,9 +149,9 @@ struct LyX::Singletons
 	///
 	boost::scoped_ptr<LyXServerSocket> lyx_socket_;
 	///
-	boost::scoped_ptr<lyx::frontend::Application> application_;
+	boost::scoped_ptr<frontend::Application> application_;
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
-	boost::scoped_ptr<lyx::Session> session_;
+	boost::scoped_ptr<Session> session_;
 };
 
 
@@ -206,14 +203,14 @@ BufferList const & LyX::bufferList() const
 }
 
 
-lyx::Session & LyX::session()
+Session & LyX::session()
 {
 	BOOST_ASSERT(pimpl_->session_.get());
 	return *pimpl_->session_.get();
 }
 
 
-lyx::Session const & LyX::session() const
+Session const & LyX::session() const
 {
 	BOOST_ASSERT(pimpl_->session_.get());
 	return *pimpl_->session_.get();
@@ -260,14 +257,14 @@ LyXServerSocket const & LyX::socket() const
 }
 
 
-lyx::frontend::Application & LyX::application()
+frontend::Application & LyX::application()
 {
 	BOOST_ASSERT(pimpl_->application_.get());
 	return *pimpl_->application_.get();
 }
 
 
-lyx::frontend::Application const & LyX::application() const
+frontend::Application const & LyX::application() const
 {
 	BOOST_ASSERT(pimpl_->application_.get());
 	return *pimpl_->application_.get();
@@ -316,8 +313,8 @@ int LyX::priv_exec(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	easyParse(argc, argv);
 
-	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
-				   lyx::support::top_build_dir_is_one_level_up);
+	support::init_package(argv[0], cl_system_support, cl_user_support,
+				   support::top_build_dir_is_one_level_up);
 
 	vector<string> files;
 	int exit_status = execBatchCommands(argc, argv, files);
@@ -325,10 +322,10 @@ int LyX::priv_exec(int & argc, char * argv[])
 	if (exit_status)
 		return exit_status;
 	
-	if (lyx::use_gui) {
+	if (use_gui) {
 		// Force adding of font path _before_ Application is initialized
-		lyx::support::addFontResources();
-		pimpl_->application_.reset(lyx::createApplication(argc, argv));
+		support::addFontResources();
+		pimpl_->application_.reset(createApplication(argc, argv));
 		initGuiFont();
 		// FIXME: this global pointer should probably go.
 		theApp = pimpl_->application_.get();
@@ -338,12 +335,12 @@ int LyX::priv_exec(int & argc, char * argv[])
 		// FIXME
 		/* Create a CoreApplication class that will provide the main event loop and 
 		 * the socket callback registering. With Qt4, only QtCore library would be needed.
-		 * When this done, a lyx::server_mode could be created and the following two
+		 * When this done, a server_mode could be created and the following two
 		 * line would be moved out from here.
 		 */
 		pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
 		pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
-			lyx::support::os::internal_path(package().temp_dir() + "/lyxsocket")));
+			support::os::internal_path(package().temp_dir() + "/lyxsocket")));
 
 		// handle the batch commands the user asked for
 		if (!batch_command.empty()) {
@@ -355,7 +352,7 @@ int LyX::priv_exec(int & argc, char * argv[])
 		// on exit on Linux.
 		pimpl_->application_.reset();
 		// Restore original font resources after Application is destroyed.
-		lyx::support::restoreFontResources();
+		support::restoreFontResources();
 	}
 	else {
 		// FIXME: create a ConsoleApplication
@@ -381,7 +378,7 @@ void LyX::prepareExit()
 	if (!destroyDir(package().temp_dir())) {
 		docstring const msg =
 			bformat(_("Unable to remove the temporary directory %1$s"),
-			lyx::from_utf8(package().temp_dir()));
+			from_utf8(package().temp_dir()));
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 }
@@ -401,7 +398,7 @@ void LyX::quit(bool noask)
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
-	if (lyx::use_gui) {
+	if (use_gui) {
 		if (!noask && !pimpl_->buffer_list_.quitWriteAll())
 			return;
 
@@ -410,7 +407,7 @@ void LyX::quit(bool noask)
 
 	prepareExit();
 
-	if (lyx::use_gui) {
+	if (use_gui) {
 		pimpl_->lyx_server_.reset();
 		pimpl_->lyx_socket_.reset();
 		pimpl_->application_->exit(0);
@@ -425,9 +422,9 @@ int LyX::execBatchCommands(int & argc, char * argv[],
 	// other than documents
 	for (int argi = 1; argi < argc ; ++argi) {
 		if (argv[argi][0] == '-') {
-			lyxerr << lyx::to_utf8(
+			lyxerr << to_utf8(
 				bformat(_("Wrong command line option `%1$s'. Exiting."),
-				lyx::from_utf8(argv[argi]))) << endl;
+				from_utf8(argv[argi]))) << endl;
 			return EXIT_FAILURE;
 		}
 	}
@@ -646,7 +643,7 @@ static void error_handler(int err_sig)
 #else
 	if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty())
 #endif
-		lyx::support::abort();
+		support::abort();
 	exit(0);
 }
 
@@ -655,9 +652,9 @@ static void error_handler(int err_sig)
 
 void LyX::printError(ErrorItem const & ei)
 {
-	docstring tmp = _("LyX: ") + ei.error + lyx::char_type(':')
+	docstring tmp = _("LyX: ") + ei.error + char_type(':')
 		+ ei.description;
-	std::cerr << lyx::to_utf8(tmp) << std::endl;
+	std::cerr << to_utf8(tmp) << std::endl;
 }
 
 
@@ -717,7 +714,7 @@ bool LyX::init()
 		reconfigureUserLyXDir();
 
 	// no need for a splash when there is no GUI
-	if (!lyx::use_gui) {
+	if (!use_gui) {
 		first_start = false;
 	}
 
@@ -748,7 +745,7 @@ bool LyX::init()
 	if (!LyXSetStyle())
 		return false;
 
-	if (lyx::use_gui) {
+	if (use_gui) {
 		// Set up bindings
 		pimpl_->toplevel_keymap_.reset(new kb_keymap);
 		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
@@ -778,7 +775,7 @@ bool LyX::init()
 			     bformat(_("Could not create a temporary directory in\n"
 						    "%1$s. Make sure that this\n"
 						    "path exists and is writable and try again."),
-				     lyx::from_utf8(lyxrc.tempdir_path)));
+				     from_utf8(lyxrc.tempdir_path)));
 		// createLyXTmpDir() tries sufficiently hard to create a
 		// usable temp dir, so the probability to come here is
 		// close to zero. We therefore don't try to overcome this
@@ -792,7 +789,7 @@ bool LyX::init()
 	}
 
 	lyxerr[Debug::INIT] << "Reading session information '.lyx/session'..." << endl;
-	pimpl_->session_.reset(new lyx::Session(lyxrc.num_lastfiles));
+	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
 	return true;
 }
 
@@ -857,7 +854,7 @@ void LyX::emergencyCleanup() const
 	// a crash
 
 	pimpl_->buffer_list_.emergencyWriteAll();
-	if (lyx::use_gui) {
+	if (use_gui) {
 		pimpl_->lyx_server_->emergencyCleanup();
 		pimpl_->lyx_server_.reset();
 		pimpl_->lyx_socket_.reset();
@@ -931,21 +928,21 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		    bformat(_("You have specified a non-existent user "
 					   "LyX directory, %1$s.\n"
 					   "It is needed to keep your own configuration."),
-			    lyx::from_utf8(package().user_support())),
+			    from_utf8(package().user_support())),
 		    1, 0,
 		    _("&Create directory"),
 		    _("&Exit LyX"))) {
-		lyxerr << lyx::to_utf8(_("No user LyX directory. Exiting.")) << endl;
+		lyxerr << to_utf8(_("No user LyX directory. Exiting.")) << endl;
 		earlyExit(EXIT_FAILURE);
 	}
 
-	lyxerr << lyx::to_utf8(bformat(_("LyX: Creating directory %1$s"),
-			  lyx::from_utf8(package().user_support())))
+	lyxerr << to_utf8(bformat(_("LyX: Creating directory %1$s"),
+			  from_utf8(package().user_support())))
 	       << endl;
 
 	if (!createDirectory(package().user_support(), 0755)) {
 		// Failed, so let's exit.
-		lyxerr << lyx::to_utf8(_("Failed to create directory. Exiting."))
+		lyxerr << to_utf8(_("Failed to create directory. Exiting."))
 		       << endl;
 		earlyExit(EXIT_FAILURE);
 	}
@@ -1100,11 +1097,11 @@ typedef boost::function<int(string const &, string const &)> cmd_helper;
 int parse_dbg(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << lyx::to_utf8(_("List of supported debug flags:")) << endl;
+		lyxerr << to_utf8(_("List of supported debug flags:")) << endl;
 		Debug::showTags(lyxerr);
 		exit(0);
 	}
-	lyxerr << lyx::to_utf8(bformat(_("Setting debug level to %1$s"), lyx::from_utf8(arg))) << endl;
+	lyxerr << to_utf8(bformat(_("Setting debug level to %1$s"), from_utf8(arg))) << endl;
 
 	lyxerr.level(Debug::value(arg));
 	Debug::showLevel(lyxerr, lyxerr.level());
@@ -1115,7 +1112,7 @@ int parse_dbg(string const & arg, string const &)
 int parse_help(string const &, string const &)
 {
 	lyxerr <<
-		lyx::to_utf8(_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+		to_utf8(_("Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 		  "Command line switches (case sensitive):\n"
 		  "\t-help              summarize LyX usage\n"
 		  "\t-userdir dir       set user directory to dir\n"
@@ -1151,7 +1148,7 @@ int parse_version(string const &, string const &)
 int parse_sysdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << lyx::to_utf8(_("Missing directory for -sysdir switch")) << endl;
+		lyxerr << to_utf8(_("Missing directory for -sysdir switch")) << endl;
 		exit(1);
 	}
 	cl_system_support = arg;
@@ -1161,7 +1158,7 @@ int parse_sysdir(string const & arg, string const &)
 int parse_userdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << lyx::to_utf8(_("Missing directory for -userdir switch")) << endl;
+		lyxerr << to_utf8(_("Missing directory for -userdir switch")) << endl;
 		exit(1);
 	}
 	cl_user_support = arg;
@@ -1171,7 +1168,7 @@ int parse_userdir(string const & arg, string const &)
 int parse_execute(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << lyx::to_utf8(_("Missing command string after --execute switch")) << endl;
+		lyxerr << to_utf8(_("Missing command string after --execute switch")) << endl;
 		exit(1);
 	}
 	batch = arg;
@@ -1181,24 +1178,24 @@ int parse_execute(string const & arg, string const &)
 int parse_export(string const & type, string const &)
 {
 	if (type.empty()) {
-		lyxerr << lyx::to_utf8(_("Missing file type [eg latex, ps...] after "
+		lyxerr << to_utf8(_("Missing file type [eg latex, ps...] after "
 					 "--export switch")) << endl;
 		exit(1);
 	}
 	batch = "buffer-export " + type;
-	lyx::use_gui = false;
+	use_gui = false;
 	return 1;
 }
 
 int parse_import(string const & type, string const & file)
 {
 	if (type.empty()) {
-		lyxerr << lyx::to_utf8(_("Missing file type [eg latex, ps...] after "
+		lyxerr << to_utf8(_("Missing file type [eg latex, ps...] after "
 					 "--import switch")) << endl;
 		exit(1);
 	}
 	if (file.empty()) {
-		lyxerr << lyx::to_utf8(_("Missing filename for --import")) << endl;
+		lyxerr << to_utf8(_("Missing filename for --import")) << endl;
 		exit(1);
 	}
 
@@ -1232,7 +1229,7 @@ void LyX::easyParse(int & argc, char * argv[])
 			= cmdmap.find(argv[i]);
 
 		// check for X11 -geometry option
-		if (lyx::support::compare(argv[i], "-geometry") == 0)
+		if (support::compare(argv[i], "-geometry") == 0)
 			geometryOption_ = true;
 
 		// don't complain if not found - may be parsed later
@@ -1255,7 +1252,6 @@ void LyX::easyParse(int & argc, char * argv[])
 	batch_command = batch;
 }
 
-namespace lyx {
 
 FuncStatus getStatus(FuncRequest const & action)
 {
@@ -1267,8 +1263,6 @@ void dispatch(FuncRequest const & action)
 {
 	LyX::ref().lyxFunc().dispatch(action);
 }
-
-} // namespace lyx
 
 
 BufferList & theBufferList()
@@ -1286,7 +1280,7 @@ LyXFunc & theLyXFunc()
 LyXServer & theLyXServer()
 {
 	// FIXME: this should not be use_gui dependent
-	BOOST_ASSERT(lyx::use_gui);
+	BOOST_ASSERT(use_gui);
 	return LyX::ref().server();
 }
 
@@ -1294,13 +1288,27 @@ LyXServer & theLyXServer()
 LyXServerSocket & theLyXServerSocket()
 {
 	// FIXME: this should not be use_gui dependent
-	BOOST_ASSERT(lyx::use_gui);
+	BOOST_ASSERT(use_gui);
 	return LyX::ref().socket();
 }
 
 
 kb_keymap & theTopLevelKeymap()
 {
-	BOOST_ASSERT(lyx::use_gui);
+	BOOST_ASSERT(use_gui);
 	return LyX::ref().topLevelKeymap();
 }
+
+} // namespace lyx
+
+
+namespace boost {
+
+void assertion_failed(char const* a, char const* b, char const* c, long d)
+{
+	lyx::lyxerr << "Assertion failed: " << a << ' ' << b << ' ' << c << ' '
+		<< d << '\n';
+}
+
+} // boost
+

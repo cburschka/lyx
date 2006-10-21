@@ -26,8 +26,10 @@
 
 #include "support/lstrings.h"
 
-using lyx::docstring;
-using lyx::support::bformat;
+
+namespace lyx {
+
+using support::bformat;
 
 using std::string;
 using std::auto_ptr;
@@ -107,7 +109,7 @@ docstring MathMacroTemplate::prefix() const
 	// FIXME UNICODE
 	// delete the conversion when bformat() will return a docstring.
 	// delete the conversion when bformat() takes a docstring arg.
-	return bformat(_(" Macro: %1$s: "), lyx::from_utf8(name_));
+	return bformat(_(" Macro: %1$s: "), from_utf8(name_));
 }
 
 
@@ -183,11 +185,11 @@ void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 
 void MathMacroTemplate::write(Buffer const &, std::ostream & os) const
 {
-	lyx::odocstringstream oss;
+	odocstringstream oss;
 	WriteStream wi(oss, false, false);
 	oss << "FormulaMacro\n";
 	write(wi);
-	os << lyx::to_utf8(oss.str());
+	os << to_utf8(oss.str());
 }
 
 
@@ -221,3 +223,6 @@ MacroData MathMacroTemplate::asMacroData() const
 {
 	return MacroData(asString(cell(0)), numargs(), asString(cell(1)));
 }
+
+
+} // namespace lyx

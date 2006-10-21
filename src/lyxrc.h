@@ -24,10 +24,13 @@
 #include <iosfwd>
 #include <string>
 
+
+namespace lyx {
+
 class LyXLex;
 
 /// This contains the runtime configuration of LyX
-class LyXRC //: public noncopyable {
+class LyXRC //: public noncopyable 
 // after 1.1.6 I will use a LyXRCStruct here and then this can be made
 // noncopyable again.  For now I want to minimise changes.  ARRae 20001010
 {
@@ -366,7 +369,7 @@ public:
 	///
 	int label_init_length;
 	///
-	lyx::graphics::DisplayType display_graphics;
+	graphics::DisplayType display_graphics;
 	///
 	bool show_banner;
 	///
@@ -412,4 +415,7 @@ public:
 extern LyXRC lyxrc;
 ///
 extern LyXRC system_lyxrc;
+
+} // namespace lyx
+
 #endif

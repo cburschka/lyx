@@ -50,11 +50,7 @@
 #include <sstream>
 #include <limits>
 
-using lyx::char_type;
-using lyx::CoordCache;
-using lyx::docstring;
-using lyx::pit_type;
-using lyx::Point;
+namespace lyx {
 
 using std::string;
 using std::vector;
@@ -560,7 +556,7 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 	return os;
 }
 
-
+} // namespace lyx
 
 
 ///////////////////////////////////////////////////////////////////
@@ -579,6 +575,9 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 #include "mathed/InsetMathScript.h"
 #include "mathed/MathSupport.h"
 #include "mathed/InsetMathUnknown.h"
+
+
+namespace lyx {
 
 //#define FILEDEBUG 1
 
@@ -670,7 +669,7 @@ void LCursor::insert(char_type c)
 	//lyxerr << "LCursor::insert char '" << c << "'" << endl;
 	BOOST_ASSERT(!empty());
 	if (inMathed()) {
-		lyx::cap::selClearOrDel(*this);
+		cap::selClearOrDel(*this);
 		insert(new InsetMathChar(c));
 	} else {
 		text()->insertChar(*this, c);
@@ -682,7 +681,7 @@ void LCursor::insert(MathAtom const & t)
 {
 	//lyxerr << "LCursor::insert MathAtom '" << t << "'" << endl;
 	macroModeClose();
-	lyx::cap::selClearOrDel(*this);
+	cap::selClearOrDel(*this);
 	plainInsert(t);
 }
 
@@ -700,7 +699,7 @@ void LCursor::niceInsert(string const & t)
 {
 	MathArray ar;
 	// FIXME UNICODE
-	asArray(lyx::from_utf8(t), ar);
+	asArray(from_utf8(t), ar);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
 	else
@@ -711,7 +710,7 @@ void LCursor::niceInsert(string const & t)
 void LCursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
-	string const safe = lyx::cap::grabAndEraseSelection(*this);
+	string const safe = cap::grabAndEraseSelection(*this);
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
@@ -722,7 +721,7 @@ void LCursor::niceInsert(MathAtom const & t)
 		// We may not use niceInsert here (recursion)
 		MathArray ar;
 		// FIXME UNICODE
-		asArray(lyx::from_utf8(safe), ar);
+		asArray(from_utf8(safe), ar);
 		insert(ar);
 	}
 }
@@ -732,7 +731,7 @@ void LCursor::insert(MathArray const & ar)
 {
 	macroModeClose();
 	if (selection())
-		lyx::cap::eraseSelection(*this);
+		cap::eraseSelection(*this);
 	cell().insert(pos(), ar);
 	pos() += ar.size();
 }
@@ -743,7 +742,7 @@ bool LCursor::backspace()
 	autocorrect() = false;
 
 	if (selection()) {
-		lyx::cap::selDel(*this);
+		cap::selDel(*this);
 		return true;
 	}
 
@@ -783,7 +782,7 @@ bool LCursor::erase()
 		return true;
 
 	if (selection()) {
-		lyx::cap::selDel(*this);
+		cap::selDel(*this);
 		return true;
 	}
 
@@ -882,7 +881,7 @@ void LCursor::handleNest(MathAtom const & a, int c)
 	//lyxerr << "LCursor::handleNest: " << c << endl;
 	MathAtom t = a;
 	// FIXME UNICODE
-	asArray(lyx::from_utf8(lyx::cap::grabAndEraseSelection(*this)), t.nucleus()->cell(c));
+	asArray(from_utf8(cap::grabAndEraseSelection(*this)), t.nucleus()->cell(c));
 	insert(t);
 	posLeft();
 	pushLeft(*nextInset());
@@ -970,10 +969,10 @@ void LCursor::normalize()
 		lyxerr << "this should not really happen - 2: "
 			<< pos() << ' ' << lastpos() <<  " in idx: " << idx()
 		       << " in atom: '";
-		lyx::odocstringstream os;
+		odocstringstream os;
 		WriteStream wi(os, false, true);
 		inset().asInsetMath()->write(wi);
-		lyxerr << lyx::to_utf8(os.str()) << endl;
+		lyxerr << to_utf8(os.str()) << endl;
 		pos() = lastpos();
 	}
 }
@@ -1080,7 +1079,7 @@ void LCursor::handleFont(string const & font)
 	string safe;
 	if (selection()) {
 		macroModeClose();
-		safe = lyx::cap::grabAndEraseSelection(*this);
+		safe = cap::grabAndEraseSelection(*this);
 	}
 
 	if (lastpos() != 0) {
@@ -1156,7 +1155,7 @@ docstring LCursor::selectionAsString(bool label) const
 	}
 
 	if (inMathed())
-		return lyx::from_utf8(lyx::cap::grabSelection(*this));
+		return from_utf8(cap::grabSelection(*this));
 
 	return docstring();
 }
@@ -1283,3 +1282,6 @@ void LCursor::fixIfBroken()
 		lyxerr << "correcting cursor to level " << depth() << endl;
 	}
 }
+
+
+} // namespace lyx

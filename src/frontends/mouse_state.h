@@ -15,6 +15,8 @@
 #ifndef MOUSE_STATE_H
 #define MOUSE_STATE_H
 
+namespace lyx {
+
 /// used both for presses and held during motion
 namespace mouse_button {
 
@@ -33,5 +35,8 @@ inline void operator|=(state & s1, state s2)
 }
 
 } // namespace mouse_button
+
+
+} // namespace lyx
 
 #endif // MOUSE_STATE_H

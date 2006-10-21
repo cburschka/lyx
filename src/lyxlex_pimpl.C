@@ -24,11 +24,14 @@
 
 #include <functional>
 
-using lyx::support::compare_ascii_no_case;
-using lyx::support::getFormatFromContents;
-using lyx::support::makeDisplayPath;
-using lyx::support::split;
-using lyx::support::subst;
+
+namespace lyx {
+
+using support::compare_ascii_no_case;
+using support::getFormatFromContents;
+using support::makeDisplayPath;
+using support::split;
+using support::subst;
 
 using std::endl;
 using std::getline;
@@ -71,10 +74,10 @@ string const LyXLex::Pimpl::getString() const
 }
 
 
-lyx::docstring const LyXLex::Pimpl::getDocString() const
+docstring const LyXLex::Pimpl::getDocString() const
 {
-	std::vector<lyx::char_type> res = utf8_to_ucs4(buff);
-	lyx::docstring dstr(res.begin(), res.end());
+	std::vector<char_type> res = utf8_to_ucs4(buff);
+	docstring dstr(res.begin(), res.end());
 	return dstr;
 }
 
@@ -83,7 +86,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 {
 	string const tmpmsg = subst(message, "$$Token", getString());
 	lyxerr << "LyX: " << tmpmsg << " [around line " << lineno
-		<< " of file " << lyx::to_utf8(makeDisplayPath(name)) << ']' << endl;
+		<< " of file " << to_utf8(makeDisplayPath(name)) << ']' << endl;
 }
 
 
@@ -523,3 +526,6 @@ void LyXLex::Pimpl::pushToken(string const & pt)
 {
 	pushTok = pt;
 }
+
+
+} // namespace lyx

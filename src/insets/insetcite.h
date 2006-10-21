@@ -18,6 +18,9 @@
 #include "bufferparams.h"
 
 
+namespace lyx {
+
+
 /** Used to insert citations
  */
 class InsetCitation : public InsetCommand {
@@ -25,21 +28,21 @@ public:
 	///
 	InsetCitation(InsetCommandParams const &);
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::CITE_CODE; }
 	///
-	int plaintext(Buffer const &, lyx::odocstream &, OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -53,23 +56,26 @@ private:
 	}
 
 	/// This function does the donkey work of creating the pretty label
-	lyx::docstring const generateLabel(Buffer const &) const;
+	docstring const generateLabel(Buffer const &) const;
 
 	class Cache {
 	public:
 		///
-		Cache() : engine(lyx::biblio::ENGINE_BASIC), params("cite") {}
+		Cache() : engine(biblio::ENGINE_BASIC), params("cite") {}
 		///
-		lyx::biblio::CiteEngine engine;
+		biblio::CiteEngine engine;
 		///
 		InsetCommandParams params;
 		///
-		lyx::docstring generated_label;
+		docstring generated_label;
 		///
-		lyx::docstring screen_label;
+		docstring screen_label;
 	};
 	///
 	mutable Cache cache;
 };
+
+
+} // namespace lyx
 
 #endif // INSET_CITE_H

@@ -16,6 +16,9 @@
 
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::ostream;
 
 
@@ -41,3 +44,6 @@ ostream & operator<<(ostream & os, Box const & b)
 		 << " x2,y2: " << b.x2 << ',' << b.y2
 		 << std::endl;
 }
+
+
+} // namespace lyx

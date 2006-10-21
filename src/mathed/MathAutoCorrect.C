@@ -22,7 +22,10 @@
 #include <fstream>
 #include <sstream>
 
-using lyx::support::libFileSearch;
+
+namespace lyx {
+
+using support::libFileSearch;
 
 using std::string;
 using std::ifstream;
@@ -184,3 +187,6 @@ bool math_autocorrect(MathAtom & at, char c)
 
 	return theCorrections.correct(at, c);
 }
+
+
+} // namespace lyx

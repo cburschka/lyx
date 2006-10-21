@@ -21,6 +21,9 @@
 
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::endl;
 using std::ostream;
 
@@ -97,3 +100,6 @@ int InsetTheorem::latex(Buffer const * buf, odocstream & os,
 
 	return i + 2;
 }
+
+
+} // namespace lyx

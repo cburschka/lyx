@@ -17,6 +17,9 @@
 
 #include <algorithm>
 
+
+namespace lyx {
+
 using std::find_if;
 
 
@@ -83,3 +86,6 @@ TexRow & TexRow::operator+=(TexRow const & tr)
 	rowlist.insert(rowlist.end(), tr.rowlist.begin(), tr.rowlist.end());
 	return *this;
 }
+
+
+} // namespace lyx

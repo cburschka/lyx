@@ -15,12 +15,11 @@
 
 #include <string>
 
+namespace lyx {
+
 class BufferView;
 class LyXView;
 class LColor_color;
-	
-namespace lyx {
-
 struct RGBColor;
 
 namespace frontend {
@@ -36,7 +35,7 @@ There should be only one instance of this class. No Qt object
 initialisation should be done before the instanciation of this class.
 
 \todo The work areas handling could be moved to a base virtual class
-comon to all frontends.
+common to all frontends.
 */
 class Application
 {
@@ -86,7 +85,7 @@ public:
 	* The function returns true if successful.
 	* It returns false on failure and sets r, g, b to 0.
 	*/
-	virtual bool getRgbColor(LColor_color col, lyx::RGBColor & rgbcol) = 0;
+	virtual bool getRgbColor(LColor_color col, RGBColor & rgbcol) = 0;
 
 	/** Eg, passing LColor::black returns "000000",
 	*      passing LColor::white returns "ffffff".
@@ -128,11 +127,11 @@ protected:
 
 } // namespace frontend
 
-lyx::frontend::Application * createApplication(int & argc, char * argv[]);
+extern frontend::Application * theApp;
+frontend::Application * createApplication(int & argc, char * argv[]);
+
 
 } // namespace lyx
-
-extern lyx::frontend::Application * theApp;
 
 
 #endif // LYX_APPLICATION_H

@@ -18,6 +18,9 @@
 #include "trans_mgr.h"
 
 
+namespace lyx {
+
+
 /**
  * This class is used for managing keymaps
  * for composing characters in LyX.
@@ -70,5 +73,8 @@ TransManager & Intl::getTransManager()
 {
 	return trans;
 }
+
+
+} // namespace lyx
 
 #endif /* INTL_H */

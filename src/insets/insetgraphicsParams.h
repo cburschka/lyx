@@ -18,13 +18,11 @@
 #include "lyxlength.h"
 #include "support/filename.h"
 
-class LyXLex;
-
 namespace lyx {
-namespace graphics {
-	class Params;
-}
-}
+
+namespace graphics { class Params; }
+
+class LyXLex;
 
 
 /// This class holds all the parameters needed by insetGraphics.
@@ -32,11 +30,11 @@ class InsetGraphicsParams
 {
 public:
 	/// Image filename.
-	lyx::support::FileName filename;
+	support::FileName filename;
 	/// Scaling the Screen inside Lyx
 	unsigned int lyxscale;
 	/// How to display the image inside LyX
-	lyx::graphics::DisplayType display;
+	graphics::DisplayType display;
 	/// Scaling for output (LaTeX)
 	std::string scale;
 	/// sizes for output (LaTeX)
@@ -80,7 +78,7 @@ public:
   // Only a subset of InsetGraphicsParams is needed for display purposes.
   // This function also interrogates lyxrc to ascertain whether
   // to display or not.
-	lyx::graphics::Params as_grfxParams() const;
+	graphics::Params as_grfxParams() const;
 
 private:
 	/// Initialize the object to a default status.
@@ -93,5 +91,7 @@ private:
 bool operator==(InsetGraphicsParams const &, InsetGraphicsParams const &);
 ///
 bool operator!=(InsetGraphicsParams const &, InsetGraphicsParams const &);
+
+} // namespace lyx
 
 #endif

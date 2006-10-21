@@ -15,6 +15,9 @@
 #include "support/lstrings.h"
 #include "context.h"
 
+
+namespace lyx {
+
 using std::ostream;
 using std::endl;
 using std::string;
@@ -234,3 +237,6 @@ void Context::dump(ostream & os, string const & desc) const
 	   << font.size << ' ' << font.family << ' ' << font.series << ' '
 	   << font.shape << ']' << endl;
 }
+
+
+} // namespace lyx

@@ -30,8 +30,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::auto_ptr;
 using std::string;
@@ -60,12 +60,12 @@ BoxTranslator const init_boxtranslator()
 BoxTranslator const init_boxtranslator_loc()
 {
 	// FIXME UNICODE
-	BoxTranslator translator(lyx::to_utf8(_("Boxed")), InsetBox::Boxed);
-	translator.addPair(lyx::to_utf8(_("Frameless")), InsetBox::Frameless);
-	translator.addPair(lyx::to_utf8(_("ovalbox")), InsetBox::ovalbox);
-	translator.addPair(lyx::to_utf8(_("Ovalbox")), InsetBox::Ovalbox);
-	translator.addPair(lyx::to_utf8(_("Shadowbox")), InsetBox::Shadowbox);
-	translator.addPair(lyx::to_utf8(_("Doublebox")), InsetBox::Doublebox);
+	BoxTranslator translator(to_utf8(_("Boxed")), InsetBox::Boxed);
+	translator.addPair(to_utf8(_("Frameless")), InsetBox::Frameless);
+	translator.addPair(to_utf8(_("ovalbox")), InsetBox::ovalbox);
+	translator.addPair(to_utf8(_("Ovalbox")), InsetBox::Ovalbox);
+	translator.addPair(to_utf8(_("Shadowbox")), InsetBox::Shadowbox);
+	translator.addPair(to_utf8(_("Doublebox")), InsetBox::Doublebox);
 	return translator;
 }
 
@@ -159,7 +159,7 @@ void InsetBox::setButtonLabel()
 			label += _("Minipage");
 	} else
 		// FXIME unicode
-		label += lyx::from_utf8(boxtranslator_loc().find(btype));
+		label += from_utf8(boxtranslator_loc().find(btype));
 	label += ")";
 
 	setLabel(label);
@@ -199,7 +199,7 @@ void InsetBox::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		lyxerr << "InsetBox::dispatch MODIFY" << endl;
-		InsetBoxMailer::string2params(lyx::to_utf8(cmd.argument()), params_);
+		InsetBoxMailer::string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		break;
 	}
@@ -296,10 +296,10 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 			// FIXME UNICODE
 			if (params_.special != "none") {
 				os << "[" << params_.width.value()
-				   << '\\' << lyx::from_utf8(params_.special)
+				   << '\\' << from_utf8(params_.special)
 				   << ']';
 			} else
-				os << '[' << lyx::from_ascii(width_string)
+				os << '[' << from_ascii(width_string)
 				   << ']';
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
@@ -330,20 +330,20 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 		os << "[" << params_.pos << "]";
 		if (params_.height_special == "none") {
 			// FIXME UNICODE
-			os << '[' << lyx::from_ascii(params_.height.asLatexString())
+			os << '[' << from_ascii(params_.height.asLatexString())
 			   << ']';
 		} else {
 			// Special heights
 			// FIXME UNICODE
 			os << "[" << params_.height.value()
-			   << '\\' << lyx::from_utf8(params_.height_special)
+			   << '\\' << from_utf8(params_.height_special)
 			   << ']';
 		}
 		if (params_.inner_pos != params_.pos)
 			os << "[" << params_.inner_pos << "]";
 
 		// FIXME UNICODE
-		os << '{' << lyx::from_ascii(width_string) << '}';
+		os << '{' << from_ascii(width_string) << '}';
 
 		if (params_.use_parbox)
 			os << "{";
@@ -383,7 +383,7 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetBox::docbook(Buffer const & buf, lyx::odocstream & os,
+int InsetBox::docbook(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams) const
 {
 	return InsetText::docbook(buf, os, runparams);
@@ -631,3 +631,6 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 }
+
+
+} // namespace lyx

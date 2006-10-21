@@ -14,6 +14,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 /** This is a "float layout" object. It contains the parameters for how to
  *  handle the different kinds of floats, default ones and user created ones.
  *  Objects of this class is stored in a container in FloatList. The different
@@ -63,5 +66,8 @@ private:
 	///
 	bool builtin_;
 };
+
+
+} // namespace lyx
 
 #endif

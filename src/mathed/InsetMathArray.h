@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
+
 /// Inset for things like \begin{array}...\end{array}
 class InsetMathArray : public InsetMathGrid {
 public:
@@ -51,5 +54,8 @@ private:
 	///
 	std::string name_;
 };
+
+
+} // namespace lyx
 
 #endif

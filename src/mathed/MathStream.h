@@ -14,6 +14,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class WriteStream;
 class NormalStream;
 class MapleStream;
@@ -33,4 +36,7 @@ MaximaStream & operator<<(MaximaStream & ms, std::string const & s);
 MathematicaStream & operator<<(MathematicaStream & ms, std::string const & s);
 MathMLStream & operator<<(MathMLStream & ms, std::string const & s);
 OctaveStream & operator<<(OctaveStream & os, std::string const & s);
+
+} // namespace lyx
+
 #endif

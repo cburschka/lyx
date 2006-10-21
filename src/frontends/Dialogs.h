@@ -18,14 +18,12 @@
 
 #include <map>
 
+namespace lyx {
+
 class InsetBase;
 class LyXView;
 
-namespace lyx {
-namespace frontend {
-class Dialog;
-} // namespace frontend
-} // namespace lyx
+namespace frontend { class Dialog; }
 
 /** Container of all dialogs.
  */
@@ -102,9 +100,9 @@ private:
 	///
 	bool isValidName(std::string const & name) const;
 	///
-	lyx::frontend::Dialog * find_or_build(std::string const & name);
+	frontend::Dialog * find_or_build(std::string const & name);
 	///
-	typedef boost::shared_ptr<lyx::frontend::Dialog> DialogPtr;
+	typedef boost::shared_ptr<frontend::Dialog> DialogPtr;
 	///
 	DialogPtr build(std::string const & name);
 
@@ -119,5 +117,7 @@ private:
 	/// flag against a race condition due to multiclicks in Qt frontend, see bug #1119
 	bool in_show_;
 };
+
+} // namespace lyx
 
 #endif

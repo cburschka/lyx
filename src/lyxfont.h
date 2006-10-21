@@ -19,6 +19,9 @@
 #include "support/docstream.h"
 
 
+namespace lyx {
+
+
 class LyXLex;
 class BufferParams;
 class Language;
@@ -294,14 +297,14 @@ public:
 	    to this font. Returns number of chars written. Base is the
 	    font state active now.
 	*/
-	int latexWriteStartChanges(lyx::odocstream &, LyXFont const & base,
+	int latexWriteStartChanges(odocstream &, LyXFont const & base,
 				   LyXFont const & prev) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(lyx::odocstream &, LyXFont const & base,
+	int latexWriteEndChanges(odocstream &, LyXFont const & base,
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state
@@ -406,5 +409,8 @@ bool operator!=(LyXFont const & font1, LyXFont const & font2)
 {
 	return !(font1 == font2);
 }
+
+
+} // namespace lyx
 
 #endif

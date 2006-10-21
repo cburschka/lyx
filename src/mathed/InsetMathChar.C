@@ -22,6 +22,9 @@
 
 #include "frontends/FontMetrics.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 extern bool has_math_fonts;
@@ -30,7 +33,7 @@ namespace {
 
 	bool isBinaryOp(char c)
 	{
-		return lyx::support::contains("+-<>=/*", c);
+		return support::contains("+-<>=/*", c);
 	}
 
 
@@ -160,3 +163,6 @@ bool InsetMathChar::isRelOp() const
 {
 	return char_ == '=' || char_ == '<' || char_ == '>';
 }
+
+
+} // namespace lyx

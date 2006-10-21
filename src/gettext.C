@@ -16,19 +16,21 @@
 #include "support/environment.h"
 #include "support/docstring.h"
 
+
+namespace lyx {
+
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
 #endif
 
-using lyx::support::setEnv;
-using lyx::docstring;
+using support::setEnv;
 
 using std::string;
 
 
 namespace {
 
-Messages & getLyXMessages()
+static Messages & getLyXMessages()
 {
 	static Messages lyx_messages;
 
@@ -65,3 +67,6 @@ void locale_init()
 }
 
 #endif
+
+
+} // namespace lyx

@@ -62,10 +62,8 @@
 
 #include <sstream>
 
-using lyx::CoordCache;
-using lyx::docstring;
-using lyx::pit_type;
-using lyx::pos_type;
+
+namespace lyx {
 
 using std::endl;
 using std::ostringstream;
@@ -389,10 +387,7 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 }
 
 
-namespace {
-
-
-bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
+static bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
 			Paragraph const & par, int max_depth)
 {
 	if (par.layout()->labeltype == LABEL_BIBLIO)
@@ -403,9 +398,6 @@ bool changeDepthAllowed(LyXText::DEPTH_CHANGE type,
 	if (type == LyXText::DEC_DEPTH && depth > 0)
 		return true;
 	return false;
-}
-
-
 }
 
 
@@ -421,7 +413,7 @@ bool LyXText::changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const
 	int max_depth = (beg != 0 ? pars_[beg - 1].getMaxDepthAfter() : 0);
 
 	for (pit_type pit = beg; pit != end; ++pit) {
-		if (::changeDepthAllowed(type, pars_[pit], max_depth))
+		if (lyx::changeDepthAllowed(type, pars_[pit], max_depth))
 			return true;
 		max_depth = pars_[pit].getMaxDepthAfter();
 	}
@@ -439,7 +431,7 @@ void LyXText::changeDepth(LCursor & cur, DEPTH_CHANGE type)
 
 	for (pit_type pit = beg; pit != end; ++pit) {
 		Paragraph & par = pars_[pit];
-		if (::changeDepthAllowed(type, par, max_depth)) {
+		if (lyx::changeDepthAllowed(type, par, max_depth)) {
 			int const depth = par.params().depth();
 			if (type == INC_DEPTH)
 				par.params().depth(depth + 1);
@@ -511,7 +503,6 @@ bool LyXText::cursorHome(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	Row const & row = cur.paragraph().getRow(cur.pos(),cur.boundary());
-
 	return setCursor(cur, cur.pit(), row.pos());
 }
 
@@ -570,7 +561,7 @@ void LyXText::toggleFree(LCursor & cur, LyXFont const & font, bool toggleall)
 	bool implicitSelection =
 		font.language() == ignore_language
 		&& font.number() == LyXFont::IGNORE
-		&& selectWordWhenUnderCursor(cur, lyx::WHOLE_WORD_STRICT);
+		&& selectWordWhenUnderCursor(cur, WHOLE_WORD_STRICT);
 
 	// Set font
 	setFont(cur, font, toggleall);
@@ -597,7 +588,7 @@ string LyXText::getStringToIndex(LCursor const & cur)
 		// in the language the implicit word selection is
 		// disabled.
 		LCursor tmpcur = cur;
-		selectWord(tmpcur, lyx::PREVIOUS_WORD);
+		selectWord(tmpcur, PREVIOUS_WORD);
 
 		if (!tmpcur.selection())
 			cur.message(_("Nothing to index!"));
@@ -607,7 +598,7 @@ string LyXText::getStringToIndex(LCursor const & cur)
 			idxstring = tmpcur.selectionAsString(false);
 	}
 
-	return lyx::to_utf8(idxstring);
+	return to_utf8(idxstring);
 }
 
 
@@ -638,7 +629,7 @@ void LyXText::setParagraph(LCursor & cur,
 				params.align(align);
 		}
 		// FIXME UNICODE
-		par.setLabelWidthString(lyx::from_ascii(labelwidthstring));
+		par.setLabelWidthString(from_ascii(labelwidthstring));
 		params.noindent(noindent);
 	}
 }
@@ -807,7 +798,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		return 0;
 	}
 
-	lyx::frontend::FontMetrics const & fm 
+	frontend::FontMetrics const & fm 
 		= theFontMetrics(getLabelFont(par));
 
 	while (vc < end && tmpx <= x) {
@@ -815,7 +806,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
 			// FIXME UNICODE
-			docstring const lsep = lyx::from_utf8(layout->labelsep);
+			docstring const lsep = from_utf8(layout->labelsep);
 			tmpx += r.label_hfill + fm.width(lsep);
 			if (par.isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(par, body_pos - 1);
@@ -1349,3 +1340,6 @@ int defaultRowHeight()
 {
 	return int(theFontMetrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);
 }
+
+
+} // namespace lyx

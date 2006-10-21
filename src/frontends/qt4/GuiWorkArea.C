@@ -53,10 +53,10 @@ using std::string;
 
 namespace os = lyx::support::os;
 
-namespace {
+namespace lyx {
 
 /// return the LyX key state from Qt's
-key_modifier::state q_key_state(Qt::KeyboardModifiers state)
+static key_modifier::state q_key_state(Qt::KeyboardModifiers state)
 {
 	key_modifier::state k = key_modifier::none;
 	if (state & Qt::ControlModifier)
@@ -70,7 +70,7 @@ key_modifier::state q_key_state(Qt::KeyboardModifiers state)
 
 
 /// return the LyX mouse button state from Qt's
-mouse_button::state q_button_state(Qt::MouseButton button)
+static mouse_button::state q_button_state(Qt::MouseButton button)
 {
 	mouse_button::state b = mouse_button::none;
 	switch (button) {
@@ -90,7 +90,7 @@ mouse_button::state q_button_state(Qt::MouseButton button)
 }
 
 
-/// return the LyX mouse button state from Qt's
+/// retddurn the LyX mouse button state from Qt's
 mouse_button::state q_motion_state(Qt::MouseButton state)
 {
 	mouse_button::state b = mouse_button::none;
@@ -103,9 +103,7 @@ mouse_button::state q_motion_state(Qt::MouseButton state)
 	return b;
 }
 
-} // namespace anon
 
-namespace lyx {
 namespace frontend {
 
 // This is a 'heartbeat' generating synthetic mouse move events when the
@@ -117,7 +115,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
-: WorkArea(lyx_view), painter_(this)
+	: WorkArea(lyx_view), painter_(this)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

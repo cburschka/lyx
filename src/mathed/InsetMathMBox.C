@@ -25,7 +25,10 @@
 #include "paragraph.h"
 #include "texrow.h"
 
-using lyx::odocstream;
+
+namespace lyx {
+
+using odocstream;
 
 using std::auto_ptr;
 using std::endl;
@@ -77,7 +80,7 @@ void InsetMathMBox::write(WriteStream & ws) const
 		ws << "\\mbox{\n";
 		std::ostringstream os;
 		text_.write(*bv_->buffer(), os);
-		ws.os() << lyx::from_utf8(os.str());
+		ws.os() << from_utf8(os.str());
 		ws << "}";
 	}
 }
@@ -118,3 +121,6 @@ void InsetMathMBox::drawSelection(PainterInfo & pi, int x, int y) const
 {
 	text_.drawSelection(pi, x, y);
 }
+
+
+} // namespace lyx

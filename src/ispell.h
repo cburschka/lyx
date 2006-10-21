@@ -21,12 +21,11 @@
 
 #include <cstdio>
 
-class BufferParams;
 namespace lyx {
-namespace support {
-class ForkedProcess;
-}
-}
+
+class BufferParams;
+
+namespace support { class ForkedProcess; }
 
 /// i/a spell process-based spellchecker
 class ISpell : public SpellBase {
@@ -51,7 +50,7 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual lyx::docstring const error();
+	virtual docstring const error();
 
 private:
 	/// read some data. Returns true on an error. Sets err_read
@@ -74,9 +73,9 @@ private:
 	char buf[BUFSIZ];
 
 	/// spell error
-	lyx::docstring error_;
+	docstring error_;
 
-	boost::scoped_ptr<lyx::support::ForkedProcess> child_;
+	boost::scoped_ptr<support::ForkedProcess> child_;
 
 	// vileness below ... please FIXME
 	/// str ???
@@ -85,5 +84,7 @@ private:
 	char * e;
 
 };
+
+} // namespace lyx
 
 #endif // ISPELL_H

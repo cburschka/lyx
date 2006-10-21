@@ -78,24 +78,20 @@
 #include <vector>
 
 
-using lyx::CoordCache;
-using lyx::docstring;
-using lyx::pos_type;
-using lyx::Point;
+namespace lyx {
 
-using lyx::support::addPath;
-using lyx::support::bformat;
-using lyx::support::FileFilterList;
-using lyx::support::fileSearch;
-using lyx::support::isDirWriteable;
-using lyx::support::makeDisplayPath;
-using lyx::support::makeAbsPath;
-using lyx::support::package;
+using support::addPath;
+using support::bformat;
+using support::FileFilterList;
+using support::fileSearch;
+using support::isDirWriteable;
+using support::makeDisplayPath;
+using support::makeAbsPath;
+using support::package;
 
 using std::distance;
 using std::endl;
 using std::istringstream;
-using std::find;
 using std::make_pair;
 using std::min;
 using std::max;
@@ -103,7 +99,7 @@ using std::mem_fun_ref;
 using std::string;
 using std::vector;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 
 namespace {
 
@@ -136,8 +132,8 @@ BufferView::BufferView()
 
 	saved_positions.resize(saved_positions_num);
 	// load saved bookmarks
-	lyx::Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();
-	for (lyx::Session::BookmarkList::iterator bm = bmList.begin();
+	Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();
+	for (Session::BookmarkList::iterator bm = bmList.begin();
 		bm != bmList.end(); ++bm)
 		if (bm->get<0>() < saved_positions_num)
 			saved_positions[bm->get<0>()] = Position( bm->get<1>(), bm->get<2>(), bm->get<3>() );
@@ -217,8 +213,8 @@ void BufferView::setBuffer(Buffer * b)
 
 	update();
 
-	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
-		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
+	if (buffer_ && graphics::Previews::status() != LyXRC::PREVIEW_OFF)
+		graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
 
@@ -256,14 +252,14 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 
 	if (found) {
 		b = theBufferList().newBuffer(s);
-		if (!::loadLyXFile(b, s)) {
+		if (!lyx::loadLyXFile(b, s)) {
 			theBufferList().release(b);
 			return false;
 		}
 	} else {
 		docstring text = bformat(_("The document %1$s does not yet "
 						     "exist.\n\nDo you want to create "
-						     "a new document?"), lyx::from_utf8(s));
+						     "a new document?"), from_utf8(s));
 		int const ret = Alert::prompt(_("Create new document?"),
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
@@ -281,8 +277,8 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
-		lyx::pit_type pit;
-		lyx::pos_type pos;
+		pit_type pit;
+		pos_type pos;
 		boost::tie(pit, pos) = LyX::ref().session().loadFilePosition(s);
 		// I am not sure how to separate the following part to a function
 		// so I will leave this to Lars.
@@ -332,7 +328,7 @@ void BufferView::resize()
 bool BufferView::fitCursor()
 {
 	if (bv_funcs::status(this, cursor_) == bv_funcs::CUR_INSIDE) {
-		lyx::frontend::FontMetrics const & fm =
+		frontend::FontMetrics const & fm =
 			theFontMetrics(cursor_.getFont());
 		int const asc = fm.maxAscent();
 		int const des = fm.maxDescent();
@@ -426,7 +422,7 @@ void BufferView::updateScrollbar()
 	// Look at paragraph heights on-screen
 	int sumh = 0;
 	int nh = 0;
-	for (lyx::pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
+	for (pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
 		if (sumh > height_)
 			break;
 		int const h2 = t.getPar(pit).height();
@@ -542,7 +538,7 @@ void BufferView::restorePosition(unsigned int i)
 		else {
 			b = theBufferList().newBuffer(fname);
 			// Don't ask, just load it
-			::loadLyXFile(b, fname);
+			lyx::loadLyXFile(b, fname);
 		}
 		if (b)
 			setBuffer(b);
@@ -604,7 +600,7 @@ int BufferView::workWidth() const
 void BufferView::center()
 {
 	CursorSlice & bot = cursor_.bottom();
-	lyx::pit_type const pit = bot.pit();
+	pit_type const pit = bot.pit();
 	bot.text()->redoParagraph(pit);
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
@@ -662,7 +658,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	}
 
 	case LFUN_BOOKMARK_GOTO:
-		flag.enabled(isSavedPosition(convert<unsigned int>(lyx::to_utf8(cmd.argument()))));
+		flag.enabled(isSavedPosition(convert<unsigned int>(to_utf8(cmd.argument()))));
 		break;
 
 	case LFUN_CHANGES_TRACK:
@@ -706,7 +702,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	// Make sure that the cached BufferView is correct.
 	lyxerr[Debug::ACTION] << BOOST_CURRENT_FUNCTION
 		<< " action[" << cmd.action << ']'
-		<< " arg[" << lyx::to_utf8(cmd.argument()) << ']'
+		<< " arg[" << to_utf8(cmd.argument()) << ']'
 		<< " x[" << cmd.x << ']'
 		<< " y[" << cmd.y << ']'
 		<< " button[" << cmd.button() << ']'
@@ -740,29 +736,29 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_FILE_INSERT:
 		// FIXME: We don't know the encoding of filenames
-		menuInsertLyXFile(lyx::to_utf8(cmd.argument()));
+		menuInsertLyXFile(to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_FILE_INSERT_ASCII_PARA:
 		// FIXME: We don't know the encoding of filenames
-		insertAsciiFile(this, lyx::to_utf8(cmd.argument()), true);
+		insertAsciiFile(this, to_utf8(cmd.argument()), true);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII:
 		// FIXME: We don't know the encoding of filenames
-		insertAsciiFile(this, lyx::to_utf8(cmd.argument()), false);
+		insertAsciiFile(this, to_utf8(cmd.argument()), false);
 		break;
 
 	case LFUN_FONT_STATE:
-		cur.message(lyx::from_utf8(cur.currentState()));
+		cur.message(from_utf8(cur.currentState()));
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
-		savePosition(convert<unsigned int>(lyx::to_utf8(cmd.argument())));
+		savePosition(convert<unsigned int>(to_utf8(cmd.argument())));
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		restorePosition(convert<unsigned int>(lyx::to_utf8(cmd.argument())));
+		restorePosition(convert<unsigned int>(to_utf8(cmd.argument())));
 		break;
 
 	case LFUN_LABEL_GOTO: {
@@ -783,7 +779,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PARAGRAPH_GOTO: {
-		int const id = convert<int>(lyx::to_utf8(cmd.argument()));
+		int const id = convert<int>(to_utf8(cmd.argument()));
 		ParIterator par = buffer_->getParFromID(id);
 		if (par == buffer_->par_iterator_end()) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
@@ -803,21 +799,21 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_OUTLINE_UP:
-		lyx::toc::outline(lyx::toc::Up, cursor_);
+		toc::outline(toc::Up, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
 		updateLabels(*buffer_);
 		break;
 	case LFUN_OUTLINE_DOWN:
-		lyx::toc::outline(lyx::toc::Down, cursor_);
+		toc::outline(toc::Down, cursor_);
 		cursor_.text()->setCursor(cursor_, cursor_.pit(), 0);
 		updateLabels(*buffer_);
 		break;
 	case LFUN_OUTLINE_IN:
-		lyx::toc::outline(lyx::toc::In, cursor_);
+		toc::outline(toc::In, cursor_);
 		updateLabels(*buffer_);
 		break;
 	case LFUN_OUTLINE_OUT:
-		lyx::toc::outline(lyx::toc::Out, cursor_);
+		toc::outline(toc::Out, cursor_);
 		updateLabels(*buffer_);
 		break;
 
@@ -843,11 +839,11 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_CHANGE_NEXT:
-		lyx::find::findNextChange(this);
+		findNextChange(this);
 		break;
 
 	case LFUN_CHANGES_MERGE:
-		if (lyx::find::findNextChange(this))
+		if (findNextChange(this))
 			showDialog("changes");
 		break;
 
@@ -856,7 +852,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 #ifdef WITH_WARNINGS
 #warning FIXME changes
 #endif
-		while (lyx::find::findNextChange(this))
+		while (findNextChange(this))
 			getLyXText()->acceptChange(cursor_);
 		update();
 		break;
@@ -867,40 +863,40 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 #ifdef WITH_WARNINGS
 #warning FIXME changes
 #endif
-		while (lyx::find::findNextChange(this))
+		while (findNextChange(this))
 			getLyXText()->rejectChange(cursor_);
 		break;
 	}
 
 	case LFUN_WORD_FIND:
-		lyx::find::find(this, cmd);
+		find(this, cmd);
 		break;
 
 	case LFUN_WORD_REPLACE:
-		lyx::find::replace(this, cmd);
+		replace(this, cmd);
 		break;
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
 		cur.resetAnchor();
-		cur.message(lyx::from_utf8(N_("Mark off")));
+		cur.message(from_utf8(N_("Mark off")));
 		break;
 
 	case LFUN_MARK_ON:
 		cur.clearSelection();
 		cur.mark() = true;
 		cur.resetAnchor();
-		cur.message(lyx::from_utf8(N_("Mark on")));
+		cur.message(from_utf8(N_("Mark on")));
 		break;
 
 	case LFUN_MARK_TOGGLE:
 		cur.clearSelection();
 		if (cur.mark()) {
 			cur.mark() = false;
-			cur.message(lyx::from_utf8(N_("Mark removed")));
+			cur.message(from_utf8(N_("Mark removed")));
 		} else {
 			cur.mark() = true;
-			cur.message(lyx::from_utf8(N_("Mark set")));
+			cur.message(from_utf8(N_("Mark set")));
 		}
 		cur.resetAnchor();
 		break;
@@ -915,7 +911,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
 		if (inset) {
-			if (inset->addDatabase(lyx::to_utf8(cmd.argument())))
+			if (inset->addDatabase(to_utf8(cmd.argument())))
 				buffer_->updateBibfilesCache();
 		}
 		break;
@@ -927,7 +923,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		InsetBibtex * inset = getInsetByCode<InsetBibtex>(tmpcur,
 						InsetBase::BIBTEX_CODE);
 		if (inset) {
-			if (inset->delDatabase(lyx::to_utf8(cmd.argument())))
+			if (inset->delDatabase(to_utf8(cmd.argument())))
 				buffer_->updateBibfilesCache();
 		}
 		break;
@@ -1154,7 +1150,7 @@ void BufferView::gotoLabel(docstring const & label)
 	for (InsetIterator it = inset_iterator_begin(buffer_->inset()); it; ++it) {
 		vector<docstring> labels;
 		it->getLabelList(*buffer_, labels);
-		if (find(labels.begin(),labels.end(),label) != labels.end()) {
+		if (std::find(labels.begin(), labels.end(), label) != labels.end()) {
 			setCursor(it);
 			update();
 			return;
@@ -1247,7 +1243,7 @@ LCursor const & BufferView::cursor() const
 }
 
 
-lyx::pit_type BufferView::anchor_ref() const
+pit_type BufferView::anchor_ref() const
 {
 	return anchor_ref_;
 }
@@ -1271,14 +1267,14 @@ void BufferView::updateMetrics(bool singlepar)
 	coord_cache_.clear();
 
 	LyXText & buftext = buffer_->text();
-	lyx::pit_type size = int(buftext.paragraphs().size());
+	pit_type size = int(buftext.paragraphs().size());
 
 	if (anchor_ref_ > int(buftext.paragraphs().size() - 1)) {
 		anchor_ref_ = int(buftext.paragraphs().size() - 1);
 		offset_ref_ = 0;
 	}
 
-	lyx::pit_type const pit = anchor_ref_;
+	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
 	int pit2 = pit;
 	size_t const npit = buftext.paragraphs().size();
@@ -1334,7 +1330,7 @@ void BufferView::updateMetrics(bool singlepar)
 	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
 	CoordCache::InnerParPosCache & parPos = coord_cache_.parPos()[&buftext];
-	for (lyx::pit_type pit = pit1; pit <= pit2; ++pit) {
+	for (pit_type pit = pit1; pit <= pit2; ++pit) {
 		Paragraph const & par = buftext.getPar(pit);
 		y += par.ascent();
 		parPos[pit] = Point(0, y);
@@ -1392,11 +1388,11 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Select LyX document to insert"),
 			LFUN_FILE_INSERT,
-			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"), lyx::from_utf8(addPath(package().system_support(), "examples"))));
+			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
+			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
-			fileDlg.open(lyx::from_utf8(initpath),
+			fileDlg.open(from_utf8(initpath),
 				     FileFilterList(_("LyX Documents (*.lyx)")),
 				     docstring());
 
@@ -1404,7 +1400,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 			return;
 
 		// FIXME UNICODE
-		filename = lyx::to_utf8(result.second);
+		filename = to_utf8(result.second);
 
 		// check selected filename
 		if (filename.empty()) {
@@ -1424,11 +1420,11 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 	docstring res;
 	Buffer buf("", false);
-	if (::loadLyXFile(&buf, makeAbsPath(filename))) {
+	if (lyx::loadLyXFile(&buf, makeAbsPath(filename))) {
 		ErrorList & el = buffer_->errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
-		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(),
+		cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass, el);
 		res = _("Document %1$s inserted.");
 	} else
@@ -1439,3 +1435,6 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	buffer_->errors("Parse");
 	resize();
 }
+
+
+} // namespace lyx

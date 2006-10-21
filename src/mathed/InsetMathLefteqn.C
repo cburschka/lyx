@@ -15,6 +15,9 @@
 #include "support/std_ostream.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 
@@ -58,3 +61,6 @@ void InsetMathLefteqn::infoize(std::ostream & os) const
 {
 	os << "Lefteqn ";
 }
+
+
+} // namespace lyx

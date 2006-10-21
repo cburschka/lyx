@@ -30,27 +30,28 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-using lyx::support::addName;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::contains;
-using lyx::support::dirList;
-using lyx::support::getExtension;
-using lyx::support::isFileReadable;
-using lyx::support::libFileSearch;
-using lyx::support::libScriptSearch;
-using lyx::support::makeRelPath;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::Path;
-using lyx::support::prefixIs;
-using lyx::support::quoteName;
-using lyx::support::split;
-using lyx::support::subst;
-using lyx::support::Systemcall;
 
-using lyx::docstring;
+namespace lyx {
+
+using support::addName;
+using support::bformat;
+using support::changeExtension;
+using support::compare_ascii_no_case;
+using support::contains;
+using support::dirList;
+using support::getExtension;
+using support::isFileReadable;
+using support::libFileSearch;
+using support::libScriptSearch;
+using support::makeRelPath;
+using support::onlyFilename;
+using support::onlyPath;
+using support::Path;
+using support::prefixIs;
+using support::quoteName;
+using support::split;
+using support::subst;
+using support::Systemcall;
 
 using std::endl;
 using std::find_if;
@@ -303,7 +304,7 @@ bool Converters::convert(Buffer const * buffer,
 				getExtension(from_file) :
 				formats.extension(from_format);
 			string const command =
-				lyx::support::os::python() + ' ' +
+				support::os::python() + ' ' +
 				quoteName(libFileSearch("scripts", "convertDefault.py")) +
 				' ' +
 				quoteName(from_ext + ':' + from_file) +
@@ -323,7 +324,7 @@ bool Converters::convert(Buffer const * buffer,
 			     bformat(_("No information for converting %1$s "
 						    "format files to %2$s.\n"
 						    "Define a converter in the preferences."),
-							lyx::from_ascii(from_format), lyx::from_ascii(to_format)));
+							from_ascii(from_format), from_ascii(to_format)));
 		return false;
 	}
 	OutputParams runparams;
@@ -407,7 +408,7 @@ bool Converters::convert(Buffer const * buffer,
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
 			if (buffer)
 				buffer->message(_("Executing command: ")
-				+ lyx::from_utf8(command));
+				+ from_utf8(command));
 
 			Systemcall::Starttype const type = (dummy)
 				? Systemcall::DontWait : Systemcall::Wait;
@@ -453,7 +454,7 @@ bool Converters::convert(Buffer const * buffer,
 // it is a document (.lyx) or something else. Same goes for elsewhere.
 					Alert::error(_("Cannot convert file"),
 						bformat(_("An error occurred whilst running %1$s"),
-						lyx::from_ascii(command.substr(0, 50))));
+						from_ascii(command.substr(0, 50))));
 				}
 				return false;
 			}
@@ -477,7 +478,7 @@ bool Converters::convert(Buffer const * buffer,
 			if (!mover.rename(from, to)) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary file from %1$s to %2$s."),
-						lyx::from_ascii(from), lyx::from_ascii(to)));
+						from_ascii(from), from_ascii(to)));
 				return false;
 			}
 		}
@@ -518,7 +519,7 @@ bool Converters::move(string const & fmt,
 					bformat(copy ?
 						_("Could not copy a temporary file from %1$s to %2$s.") :
 						_("Could not move a temporary file from %1$s to %2$s."),
-						lyx::from_ascii(from2), lyx::from_ascii(to2)));
+						from_ascii(from2), from_ascii(to2)));
 				no_errors = false;
 			}
 		}
@@ -605,7 +606,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 		docstring const str =
 			bformat(_("LaTeX did not run successfully. "
 					       "Additionally, LyX could not locate "
-					       "the LaTeX log %1$s."), lyx::from_utf8(name));
+					       "the LaTeX log %1$s."), from_utf8(name));
 		Alert::error(_("LaTeX failed"), str);
 	} else if (result & LaTeX::NO_OUTPUT) {
 		Alert::warning(_("Output is empty"),
@@ -697,3 +698,6 @@ Converters converters;
 
 // The global copy after reading lyxrc.defaults
 Converters system_converters;
+
+
+} // namespace lyx

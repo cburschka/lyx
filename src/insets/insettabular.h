@@ -34,6 +34,9 @@
 
 #include "inset.h"
 #include "tabular.h"
+#include "mailinset.h"
+
+namespace lyx {
 
 class FuncStatus;
 class LyXLex;
@@ -43,12 +46,7 @@ class BufferParams;
 class Paragraph;
 class CursorSlice;
 
-namespace lyx {
-namespace frontend {
-class Painter;
-}
-}
-
+namespace frontend { class Painter; }
 
 class InsetTabular : public InsetOld {
 public:
@@ -68,7 +66,7 @@ public:
 	///
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -84,13 +82,13 @@ public:
 	///
 	bool display() const { return tabular.isLongTabular(); }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -126,7 +124,7 @@ public:
 	bool forceDefaultParagraphs(idx_type cell = 0) const;
 
 	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
+	void addPreview(graphics::PreviewLoader &) const;
 
 	///
 	Buffer const & buffer() const;
@@ -159,7 +157,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
-	void drawCellLines(lyx::frontend::Painter &, int x, int y, row_type row,
+	void drawCellLines(frontend::Painter &, int x, int y, row_type row,
 			   idx_type cell, bool erased) const;
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y) const;
@@ -188,7 +186,7 @@ private:
 	void getSelection(LCursor & cur, row_type & rs, row_type & re,
 			  col_type & cs, col_type & ce) const;
 	///
-	bool insertAsciiString(BufferView &, lyx::docstring const & buf, bool usePaste);
+	bool insertAsciiString(BufferView &, docstring const & buf, bool usePaste);
 	/// are we operating on several cells?
 	bool tablemode(LCursor & cur) const;
 
@@ -204,9 +202,6 @@ private:
 	///
 	mutable int scx_;
 };
-
-
-#include "mailinset.h"
 
 
 class InsetTabularMailer : public MailInset {
@@ -231,5 +226,7 @@ private:
 };
 
 std::string const featureAsString(LyXTabular::Feature feature);
+
+} // namespace lyx
 
 #endif

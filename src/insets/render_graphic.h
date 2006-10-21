@@ -18,6 +18,9 @@
 #include "graphics/GraphicsParams.h"
 
 
+namespace lyx {
+
+
 class RenderGraphic : public RenderBase
 {
 public:
@@ -31,7 +34,7 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	/// Refresh the info about which file to display and how to display it.
-	void update(lyx::graphics::Params const & params);
+	void update(graphics::Params const & params);
 
 	/// equivalent to dynamic_cast
 	virtual RenderGraphic * asGraphic() { return this; }
@@ -41,9 +44,12 @@ private:
 	RenderGraphic & operator=(RenderGraphic const &);
 
 	/// The stored data.
-	lyx::graphics::Loader loader_;
-	lyx::graphics::Params params_;
+	graphics::Loader loader_;
+	graphics::Params params_;
 };
 
+
+
+} // namespace lyx
 
 #endif // NOT RENDER_GRAPHIC_H

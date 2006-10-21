@@ -20,6 +20,8 @@
 using lyx::support::contains;
 using std::string;
 
+//namespace lyx {
+
 FloatPlacement::FloatPlacement(QWidget *)
 {
 	setupUi(this);
@@ -40,11 +42,6 @@ FloatPlacement::FloatPlacement(QWidget *)
 
 	spanCB->hide();
 	sidewaysCB->hide();
-}
-
-
-FloatPlacement::~FloatPlacement()
-{
 }
 
 
@@ -111,7 +108,7 @@ void FloatPlacement::set(string const & placement)
 }
 
 
-void FloatPlacement::set(InsetFloatParams const & params)
+void FloatPlacement::set(lyx::InsetFloatParams const & params)
 {
 	set(params.placement);
 
@@ -209,16 +206,16 @@ void FloatPlacement::on_sidewaysCB_clicked()
 
 void FloatPlacement::checkAllowed()
 {
-	bool const defaults(defaultsCB->isChecked());
-	bool ignore(topCB->isChecked());
+	bool const defaults = defaultsCB->isChecked();
+	bool ignore = topCB->isChecked();
 	ignore |= bottomCB->isChecked();
 	ignore |= pageCB->isChecked();
 	ignore |= herepossiblyCB->isChecked();
 
 	// float or document dialog?
 	if (spanCB->isVisible()) {
-		bool const span(spanCB->isChecked());
-		bool const sideways(sidewaysCB->isChecked());
+		bool const span = spanCB->isChecked();
+		bool const sideways = sidewaysCB->isChecked();
 		defaultsCB->setEnabled(!sideways);
 		topCB->setEnabled(!sideways && !defaults);
 		bottomCB->setEnabled(!sideways && !defaults && !span);
@@ -237,5 +234,7 @@ void FloatPlacement::checkAllowed()
 	}
 }
 
+//} // namespace lyx
 
 #include "FloatPlacement_moc.cpp"
+

@@ -16,6 +16,9 @@
 
 #include "gettext.h"
 
+
+namespace lyx {
+
 using std::string;
 
 // I am not sure if "mu" should be possible to select (Lgb)
@@ -43,3 +46,6 @@ LyXLength::UNIT unitFromString(string const & data)
 		++i;
 	return static_cast<LyXLength::UNIT>(i);
 }
+
+
+} // namespace lyx

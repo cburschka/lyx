@@ -37,8 +37,6 @@ docstring const from_utf8(std::string const &);
 /// Creates a UTF8 string from a docstring. This should go eventually.
 std::string const to_utf8(docstring const &);
 
-}
-
 /// Compare a docstring with a C string of ASCII characters
 bool operator==(lyx::docstring const &, char const *);
 
@@ -68,6 +66,8 @@ lyx::docstring & operator+=(lyx::docstring &, char const *);
 
 /// Append a single ASCII character to a docstring
 lyx::docstring & operator+=(lyx::docstring & l, char r);
+
+} // namespace lyx
 
 
 #if SIZEOF_WCHAR_T != 4 && defined(__GNUC__) && defined(__GNUC_MINOR__) && __GNUC__ == 3 && __GNUC_MINOR__ < 4

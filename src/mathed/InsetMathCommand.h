@@ -18,6 +18,9 @@
 #include "insets/render_button.h"
 
 
+namespace lyx {
+
+
 /// Inset for things like \name[options]{contents}
 class CommandInset : public InsetMathNest {
 public:
@@ -34,7 +37,7 @@ public:
 	//
 	// void infoize(std::ostream & os) const;
 	///
-	virtual lyx::docstring const screenLabel() const;
+	virtual docstring const screenLabel() const;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr(std::string const & name) const;
 	///
@@ -49,5 +52,8 @@ private:
 	///
 	mutable RenderButton button_;
 };
+
+
+} // namespace lyx
 
 #endif

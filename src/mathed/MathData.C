@@ -29,7 +29,8 @@
 
 #include <boost/assert.hpp>
 
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::abs;
 using std::endl;
@@ -37,10 +38,6 @@ using std::min;
 using std::ostringstream;
 using std::string;
 using std::vector;
-
-
-MathArray::MathArray()
-{}
 
 
 MathArray::MathArray(const_iterator from, const_iterator to)
@@ -108,21 +105,21 @@ void MathArray::erase(size_type pos1, size_type pos2)
 
 void MathArray::dump2() const
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	NormalStream ns(os);
 	for (const_iterator it = begin(); it != end(); ++it)
 		ns << *it << ' ';
-	lyxerr << lyx::to_utf8(os.str());
+	lyxerr << to_utf8(os.str());
 }
 
 
 void MathArray::dump() const
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	NormalStream ns(os);
 	for (const_iterator it = begin(); it != end(); ++it)
 		ns << '<' << *it << '>';
-	lyxerr << lyx::to_utf8(os.str());
+	lyxerr << to_utf8(os.str());
 }
 
 
@@ -224,7 +221,7 @@ void MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 namespace {
 
 bool isInside(DocIterator const & it, MathArray const & ar,
-	lyx::pos_type p1, lyx::pos_type p2)
+	pos_type p1, pos_type p2)
 {
 	for (size_t i = 0; i != it.depth(); ++i) {
 		CursorSlice const & sl = it[i];
@@ -454,10 +451,10 @@ int MathArray::yo(BufferView & bv) const
 
 std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 {
-	lyx::odocstringstream oss;
+	odocstringstream oss;
 	NormalStream ns(oss);
 	ns << ar;
-	return os << lyx::to_utf8(oss.str());
+	return os << to_utf8(oss.str());
 }
 
 
@@ -467,3 +464,6 @@ odocstream & operator<<(odocstream & os, MathArray const & ar)
 	ns << ar;
 	return os;
 }
+
+
+} // namespace lyx

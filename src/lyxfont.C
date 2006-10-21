@@ -26,11 +26,13 @@
 
 #include "support/lstrings.h"
 
-using lyx::odocstream;
-using lyx::support::ascii_lowercase;
-using lyx::support::bformat;
-using lyx::support::rtrim;
-using lyx::support::subst;
+
+namespace lyx {
+
+using support::ascii_lowercase;
+using support::bformat;
+using support::rtrim;
+using support::subst;
 
 using std::endl;
 using std::string;
@@ -496,31 +498,31 @@ string const LyXFont::stateText(BufferParams * params) const
 {
 	ostringstream os;
 	if (family() != INHERIT_FAMILY)
-		os << lyx::to_utf8(_(GUIFamilyNames[family()])) << ", ";
+		os << to_utf8(_(GUIFamilyNames[family()])) << ", ";
 	if (series() != INHERIT_SERIES)
-		os << lyx::to_utf8(_(GUISeriesNames[series()])) << ", ";
+		os << to_utf8(_(GUISeriesNames[series()])) << ", ";
 	if (shape() != INHERIT_SHAPE)
-		os << lyx::to_utf8(_(GUIShapeNames[shape()])) << ", ";
+		os << to_utf8(_(GUIShapeNames[shape()])) << ", ";
 	if (size() != INHERIT_SIZE)
-		os << lyx::to_utf8(_(GUISizeNames[size()])) << ", ";
+		os << to_utf8(_(GUISizeNames[size()])) << ", ";
 	if (color() != LColor::inherit)
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
-		os << lyx::to_utf8(bformat(_("Emphasis %1$s, "),
+		os << to_utf8(bformat(_("Emphasis %1$s, "),
 			      _(GUIMiscNames[emph()])));
 	if (underbar() != INHERIT)
-		os << lyx::to_utf8(bformat(_("Underline %1$s, "),
+		os << to_utf8(bformat(_("Underline %1$s, "),
 			      _(GUIMiscNames[underbar()])));
 	if (noun() != INHERIT)
-		os << lyx::to_utf8(bformat(_("Noun %1$s, "),
+		os << to_utf8(bformat(_("Noun %1$s, "),
 			      _(GUIMiscNames[noun()])));
 	if (bits == inherit)
-		os << lyx::to_utf8(_("Default")) << ", ";
+		os << to_utf8(_("Default")) << ", ";
 	if (!params || (language() != params->language))
-		os << lyx::to_utf8(bformat(_("Language: %1$s, "),
+		os << to_utf8(bformat(_("Language: %1$s, "),
 			      _(language()->display())));
 	if (number() != OFF)
-		os << lyx::to_utf8(bformat(_("  Number %1$s"),
+		os << to_utf8(bformat(_("  Number %1$s"),
 				_(GUIMiscNames[number()])));
 	return rtrim(os.str(), ", ");
 }
@@ -762,7 +764,7 @@ int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 			string const tmp =
 				subst(lyxrc.language_command_local,
 				      "$$lang", language()->babel());
-			os << lyx::from_ascii(tmp);
+			os << from_ascii(tmp);
 			count += tmp.length();
 		}
 	}
@@ -799,7 +801,7 @@ int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 	}
 	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
 		os << "\\textcolor{"
-		   << lyx::from_ascii(lcolor.getLaTeXName(f.color()))
+		   << from_ascii(lcolor.getLaTeXName(f.color()))
 		   << "}{";
 		count += lcolor.getLaTeXName(f.color()).length() + 13;
 		env = true; //We have opened a new environment
@@ -936,3 +938,6 @@ std::ostream & operator<<(std::ostream & os, LyXFont const & font)
 		<< " number " << font.bits.number
 		<< " lang: " << (font.lang ? font.lang->lang() : 0);
 }
+
+
+} // namespace lyx

@@ -14,6 +14,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class Buffer;
 
 /// A simple version control system interface
@@ -155,4 +158,7 @@ protected:
 private:
 	std::string file_;
 };
+
+} // namespace lyx
+
 #endif // VCBACKEND_H

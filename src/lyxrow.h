@@ -17,6 +17,9 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 /**
  * An on-screen row of text. A paragraph is broken into a
  * RowList for display. Each Row contains position pointers
@@ -27,15 +30,15 @@ public:
 	///
 	Row();
 	///
-	Row(lyx::pos_type pos);
+	Row(pos_type pos);
 	///
-	void pos(lyx::pos_type p);
+	void pos(pos_type p);
 	///
-	lyx::pos_type pos() const;
+	pos_type pos() const;
 	///
-	void endpos(lyx::pos_type p);
+	void endpos(pos_type p);
 	///
-	lyx::pos_type endpos() const;
+	pos_type endpos() const;
 	///
 	int height() const { return ascent_ + descent_; }
 	///
@@ -55,9 +58,9 @@ public:
 
 private:
 	/// first pos covered by this row
-	lyx::pos_type pos_;
+	pos_type pos_;
 	/// one behind last pos covered by this row
-	lyx::pos_type end_;
+	pos_type end_;
 	///
 	int ascent_;
 	///
@@ -80,5 +83,8 @@ public:
 	double x;
 };
 
+
+
+} // namespace lyx
 
 #endif

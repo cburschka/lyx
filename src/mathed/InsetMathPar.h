@@ -15,6 +15,9 @@
 
 #include "InsetMathHull.h"
 
+
+namespace lyx {
+
 class InsetMathPar : public InsetMathHull {
 public:
 	///
@@ -36,4 +39,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

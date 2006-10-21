@@ -29,11 +29,11 @@
 
 #include <boost/bind.hpp>
 
-namespace graphics = lyx::graphics;
 
-using lyx::docstring;
-using lyx::support::absolutePath;
-using lyx::support::onlyFilename;
+namespace lyx {
+
+using support::absolutePath;
+using support::onlyFilename;
 
 using std::string;
 using std::auto_ptr;
@@ -129,7 +129,7 @@ string const statusMessage(graphics::Params const & params,
 	}
 
 	// FIXME UNICODE
-	return lyx::to_utf8(ret);
+	return to_utf8(ret);
 }
 
 
@@ -161,7 +161,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		// FIXME UNICODE
 		docstring const justname = 
-			lyx::from_utf8(onlyFilename(params_.filename));
+			from_utf8(onlyFilename(params_.filename));
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			font_width = theFontMetrics(msgFont)
@@ -170,7 +170,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		// FIXME UNICODE
 		docstring const msg = 
-			lyx::from_utf8(statusMessage(params_, loader_.status()));
+			from_utf8(statusMessage(params_, loader_.status()));
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
@@ -233,3 +233,6 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		}
 	}
 }
+
+
+} // namespace lyx

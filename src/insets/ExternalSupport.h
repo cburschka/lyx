@@ -15,11 +15,12 @@
 
 #include "support/docstream.h"
 
+namespace lyx {
+
 class Buffer;
 class ExportData;
 class InsetExternalParams;
 
-namespace lyx {
 namespace external {
 
 class Template;
@@ -62,7 +63,7 @@ std::string const doSubstitution(InsetExternalParams const & params,
 int writeExternal(InsetExternalParams const &,
 		  std::string const & format,
 		  Buffer const &,
-		  lyx::odocstream &,
+		  odocstream &,
 		  ExportData &,
 		  bool external_in_tmpdir,
 		  bool external_in_comment);

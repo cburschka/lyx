@@ -20,6 +20,9 @@
 #include <string>
 #include <utility>
 
+
+namespace lyx {
+
 class Buffer;
 class Paragraph;
 class OutputParams;
@@ -44,17 +47,20 @@ std::string cleanID(Buffer const & buf, OutputParams const & runparams,
 std::string const uniqueID(std::string const label);
 
 /// Opens tag
-void openTag(lyx::odocstream & os, std::string const & name,
+void openTag(odocstream & os, std::string const & name,
 	    std::string const & attribute = std::string());
 
 /// Open tag
-void openTag(Buffer const & buf, lyx::odocstream & os,
+void openTag(Buffer const & buf, odocstream & os,
 	     OutputParams const & runparams, Paragraph const & par);
 
 /// Close tag
-void closeTag(lyx::odocstream & os, std::string const & name);
+void closeTag(odocstream & os, std::string const & name);
 
 /// Close tag
-void closeTag(lyx::odocstream & os, Paragraph const & par);
+void closeTag(odocstream & os, Paragraph const & par);
+
+
+} // namespace lyx
 }
 #endif // SGML_H

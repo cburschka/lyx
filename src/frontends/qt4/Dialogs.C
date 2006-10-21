@@ -91,6 +91,7 @@
 
 #include <boost/assert.hpp>
 
+
 using std::string;
 
 using namespace lyx::frontend;
@@ -126,6 +127,8 @@ private:
 
 } // namespace anon
 
+
+namespace lyx {
 
 bool Dialogs::isValidName(string const & name) const
 {
@@ -317,3 +320,6 @@ bool Dialogs::tooltipsEnabled()
 {
 	return false;
 }
+
+
+} // namespace lyx

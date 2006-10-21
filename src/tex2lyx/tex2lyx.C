@@ -38,6 +38,9 @@
 #include <vector>
 #include <map>
 
+
+namespace lyx {
+
 using std::endl;
 using std::cout;
 using std::cerr;
@@ -490,9 +493,12 @@ bool tex2lyx(string const &infilename, string const &outfilename)
 	return tex2lyx(infilename, os);
 }
 
+} // namespace lyx
+
 
 int main(int argc, char * argv[])
 {
+	using namespace lyx;
 	fs::path::default_name_check(fs::no_check);
 
 	easyParse(argc, argv);

@@ -16,6 +16,9 @@
 #include <vector>
 
 
+namespace lyx {
+
+
 class Graph {
 public:
 	Graph() : numedges_(0) {};
@@ -60,5 +63,8 @@ private:
 
 };
 
+
+
+} // namespace lyx
 
 #endif //GRAPH_H

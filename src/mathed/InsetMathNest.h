@@ -15,6 +15,9 @@
 #include "InsetMathDim.h"
 
 
+namespace lyx {
+
+
 /** Abstract base class for all math objects that contain nested items.
     This is basically everything that is not a single character or a
     single symbol.
@@ -93,7 +96,7 @@ public:
 	/// writes [, name(), and args in []
 	void normalize(NormalStream & os) const;
 	///
-	int latex(Buffer const &, lyx::odocstream & os,
+	int latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const;
 
 protected:
@@ -110,7 +113,7 @@ protected:
 
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.
-	bool interpretChar(LCursor & cur, lyx::char_type c);
+	bool interpretChar(LCursor & cur, char_type c);
 	///
 	bool script(LCursor & cur, bool,
 		std::string const & save_selection = std::string());
@@ -138,4 +141,7 @@ protected:
 	bool lock_;
 };
 
+
+
+} // namespace lyx
 #endif

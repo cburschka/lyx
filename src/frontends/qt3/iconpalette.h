@@ -19,6 +19,9 @@
 #include <utility>
 #include <vector>
 
+
+namespace lyx {
+
 class QPixmap;
 class QPushButton;
 class QGridLayout;
@@ -48,5 +51,8 @@ private:
 
 	std::vector<Button> buttons_;
 };
+
+
+} // namespace lyx
 
 #endif // ICONPALETTE_H

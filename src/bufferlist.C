@@ -34,15 +34,17 @@
 #include <algorithm>
 #include <functional>
 
-using lyx::docstring;
-using lyx::support::addName;
-using lyx::support::bformat;
-using lyx::support::makeAbsPath;
-using lyx::support::makeDisplayPath;
-using lyx::support::onlyFilename;
-using lyx::support::removeAutosaveFile;
-using lyx::support::package;
-using lyx::support::prefixIs;
+
+namespace lyx {
+
+using support::addName;
+using support::bformat;
+using support::makeAbsPath;
+using support::makeDisplayPath;
+using support::onlyFilename;
+using support::removeAutosaveFile;
+using support::package;
+using support::prefixIs;
 
 using boost::bind;
 
@@ -76,7 +78,7 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 
 	docstring file;
 	if (buf->isUnnamed())
-		file = lyx::from_utf8(onlyFilename(buf->fileName()));
+		file = from_utf8(onlyFilename(buf->fileName()));
 	else
 		file = makeDisplayPath(buf->fileName(), 30);
 
@@ -184,7 +186,7 @@ bool BufferList::close(Buffer * buf, bool const ask)
 
 	docstring fname;
 	if (buf->isUnnamed())
-		fname = lyx::from_utf8(onlyFilename(buf->fileName()));
+		fname = from_utf8(onlyFilename(buf->fileName()));
 	else
 		fname = makeDisplayPath(buf->fileName(), 30);
 
@@ -312,8 +314,8 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string const doc = buf->isUnnamed()
 		? onlyFilename(buf->fileName()) : buf->fileName();
 
-	lyxerr << lyx::to_utf8(
-		bformat(_("LyX: Attempting to save document %1$s"), lyx::from_utf8(doc)))
+	lyxerr << to_utf8(
+		bformat(_("LyX: Attempting to save document %1$s"), from_utf8(doc)))
 		<< endl;
 
 	// We try to save three places:
@@ -324,10 +326,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 		lyxerr << "  " << s << endl;
 		if (buf->writeFile(s)) {
 			buf->markClean();
-			lyxerr << lyx::to_utf8(_("  Save seems successful. Phew.")) << endl;
+			lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
 			return;
 		} else {
-			lyxerr << lyx::to_utf8(_("  Save failed! Trying...")) << endl;
+			lyxerr << to_utf8(_("  Save failed! Trying...")) << endl;
 		}
 	}
 
@@ -337,11 +339,11 @@ void BufferList::emergencyWrite(Buffer * buf)
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
 		buf->markClean();
-		lyxerr << lyx::to_utf8(_("  Save seems successful. Phew.")) << endl;
+		lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
 		return;
 	}
 
-	lyxerr << lyx::to_utf8(_("  Save failed! Trying...")) << endl;
+	lyxerr << to_utf8(_("  Save failed! Trying...")) << endl;
 
 	// 3) In "/tmp" directory.
 	// MakeAbsPath to prepend the current
@@ -351,10 +353,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
 		buf->markClean();
-		lyxerr << lyx::to_utf8(_("  Save seems successful. Phew.")) << endl;
+		lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
 		return;
 	}
-	lyxerr << lyx::to_utf8(_("  Save failed! Bummer. Document is lost.")) << endl;
+	lyxerr << to_utf8(_("  Save failed! Bummer. Document is lost.")) << endl;
 }
 
 
@@ -408,3 +410,6 @@ void BufferList::setCurrentAuthor(string const & name, string const & email)
 		(*it)->params().authors().record(0, Author(name, email));
 	}
 }
+
+
+} // namespace lyx

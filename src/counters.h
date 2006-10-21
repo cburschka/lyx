@@ -19,6 +19,9 @@
 
 #include <map>
 
+
+namespace lyx {
+
 /// This represents a single counter.
 class Counter {
 public:
@@ -90,5 +93,8 @@ private:
 	CounterList counterList;
 
 };
+
+
+} // namespace lyx
 
 #endif

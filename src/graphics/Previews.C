@@ -22,6 +22,7 @@
 
 
 namespace lyx {
+
 namespace graphics {
 
 LyXRC_PreviewStatus Previews::status()

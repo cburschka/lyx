@@ -33,6 +33,9 @@
 #include <vector>
 
 
+namespace lyx {
+
+
 class BufferParams;
 class ErrorItem;
 class FuncRequest;
@@ -108,8 +111,8 @@ public:
 
 	///
 	void insertStringAsLines(ParagraphList & plist,
-		lyx::pit_type &, lyx::pos_type &,
-		LyXFont const &, lyx::docstring const &, bool);
+		pit_type &, pos_type &,
+		LyXFont const &, docstring const &, bool);
 	///
 	ParIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?
@@ -118,7 +121,7 @@ public:
 	/// This signal is emitted when some parsing error shows up.
 	boost::signal<void(std::string)> errors;
 	/// This signal is emitted when some message shows up.
-	boost::signal<void(lyx::docstring)> message;
+	boost::signal<void(docstring)> message;
 	/// This signal is emitted when the buffer busy status change.
 	boost::signal<void(bool)> busy;
 	/// This signal is emitted when the buffer readonly status change.
@@ -147,7 +150,7 @@ public:
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
-	void writeLaTeXSource(lyx::odocstream & os,
+	void writeLaTeXSource(odocstream & os,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
@@ -157,13 +160,13 @@ public:
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	///
-	void writeDocBookSource(lyx::odocstream & os, std::string const & filename,
+	void writeDocBookSource(odocstream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
 	/// get l10n translated to the buffers language
-	lyx::docstring const B_(std::string const & l10n) const;
+	docstring const B_(std::string const & l10n) const;
 
 	///
 	int runChktex();
@@ -255,7 +258,7 @@ public:
 	/// of loaded child documents).
 	std::vector<std::string> const & getBibfilesCache() const;
 	///
-	void getLabelList(std::vector<lyx::docstring> &) const;
+	void getLabelList(std::vector<docstring> &) const;
 
 	///
 	void changeLanguage(Language const * from, Language const * to);
@@ -340,7 +343,7 @@ public:
 	void changeRefsIfUnique(std::string const & from, std::string const & to, InsetBase::Code code);
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
-	void getSourceCode(lyx::odocstream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source);
+	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source);
 
 	/// errorLists_ accessors.
 	//@{
@@ -373,5 +376,8 @@ private:
 	/// Container for all sort of Buffer dependant errors.
 	std::map<std::string, ErrorList> errorLists_;
 };
+
+
+} // namespace lyx
 
 #endif

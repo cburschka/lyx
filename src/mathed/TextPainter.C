@@ -14,7 +14,7 @@
 #include "support/std_ostream.h"
 
 
-using lyx::char_type;
+namespace lyx {
 
 
 TextPainter::TextPainter(int xmax, int ymax)
@@ -65,7 +65,7 @@ void TextPainter::draw(int x, int y, char_type c)
 }
 
 
-void TextPainter::show(lyx::odocstream & os, int offset) const
+void TextPainter::show(odocstream & os, int offset) const
 {
 	os << '\n';
 	for (int j = 0; j <= ymax_; ++j) {
@@ -76,3 +76,6 @@ void TextPainter::show(lyx::odocstream & os, int offset) const
 		os << '\n';
 	}
 }
+
+
+} // namespace lyx

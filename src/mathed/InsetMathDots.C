@@ -17,6 +17,9 @@
 #include "MathParser.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 
@@ -69,3 +72,6 @@ string InsetMathDots::name() const
 {
 	return key_->name;
 }
+
+
+} // namespace lyx

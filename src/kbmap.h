@@ -24,6 +24,9 @@
 #include <vector>
 #include <deque>
 
+
+namespace lyx {
+
 class kb_sequence;
 
 /// Defines key maps and actions for key sequences
@@ -128,5 +131,8 @@ private:
 
 /// Implementation is in lyx_main.C
 extern kb_keymap & theTopLevelKeymap();
+
+
+} // namespace lyx
 
 #endif // KBMAP_H

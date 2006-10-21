@@ -31,8 +31,11 @@
 
 #include <sstream>
 
-using lyx::odocstream;
-using lyx::support::bformat;
+
+namespace lyx {
+
+using odocstream;
+using support::bformat;
 
 using std::string;
 using std::auto_ptr;
@@ -118,7 +121,7 @@ void InsetFormulaMacro::read(std::istream & is)
 
 string InsetFormulaMacro::prefix() const
 {
-	return lyx::to_utf8(bformat(_(" Macro: %1$s: "), lyx::from_utf8(name_)));
+	return to_utf8(bformat(_(" Macro: %1$s: "), lyx::from_utf8(name_)));
 }
 
 
@@ -175,3 +178,6 @@ MathAtom & InsetFormulaMacro::tmpl() const
 {
 	return MathMacroTable::provide(name_);
 }
+
+
+} // namespace lyx

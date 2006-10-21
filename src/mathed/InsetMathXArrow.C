@@ -18,6 +18,9 @@
 
 #include "LaTeXFeatures.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -76,3 +79,6 @@ void InsetMathXArrow::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathNest::validate(features);
 }
+
+
+} // namespace lyx

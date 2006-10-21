@@ -16,6 +16,9 @@
 #include <map>
 
 
+namespace lyx {
+
+
 ///
 class Variables {
 public:
@@ -33,5 +36,8 @@ private:
 	///
 	Vars vars_;
 };
+
+
+} // namespace lyx
 
 #endif

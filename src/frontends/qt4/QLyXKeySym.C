@@ -31,6 +31,9 @@
 #include "encoding.h"
 #include "language.h"
 
+
+namespace lyx {
+
 using std::endl;
 using std::string;
 using std::map;
@@ -254,3 +257,6 @@ bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
 
 	return q1.key() == q2.key();
 }
+
+
+} // namespace lyx

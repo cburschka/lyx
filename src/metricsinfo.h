@@ -18,10 +18,8 @@
 class BufferView;
 
 namespace lyx {
-namespace frontend {
-class Painter;
-}
-}
+
+namespace frontend { class Painter; }
 
 
 /// Standard Sizes (mode styles)
@@ -83,16 +81,16 @@ public:
 class PainterInfo {
 public:
 	///
-	PainterInfo(BufferView * bv, lyx::frontend::Painter & pain);
+	PainterInfo(BufferView * bv, frontend::Painter & pain);
 	///
-        void draw(int x, int y, lyx::char_type c);
+	void draw(int x, int y, char_type c);
 	///
-	void draw(int x, int y, lyx::docstring const & str);
+	void draw(int x, int y, docstring const & str);
 
 	///
 	MetricsBase base;
 	///
-	lyx::frontend::Painter & pain;
+	frontend::Painter & pain;
 	/// Whether the text at this point is right-to-left (for InsetNewline)
 	bool ltr_pos;
 	/// Whether the parent is deleted (change tracking)
@@ -105,18 +103,19 @@ class ViewMetricsInfo
 {
 public:
 	ViewMetricsInfo()
-		: p1(0), p2(0), y1(0), y2(0),
-		  singlepar(false), size(0) {}
-	ViewMetricsInfo(lyx::pit_type p1, lyx::pit_type p2, int y1, int y2,
-			bool singlepar, lyx::pit_type size)
-		: p1(p1), p2(p2), y1(y1), y2(y2),
-		  singlepar(singlepar), size(size) {}
-	lyx::pit_type p1;
-	lyx::pit_type p2;
+			: p1(0), p2(0), y1(0), y2(0), singlepar(false), size(0)
+		{}
+	ViewMetricsInfo(pit_type p1, pit_type p2, int y1, int y2,
+			bool singlepar, pit_type size)
+			: p1(p1), p2(p2), y1(y1), y2(y2), singlepar(singlepar), size(size)
+		{}
+
+	pit_type p1;
+	pit_type p2;
 	int y1;
 	int y2;
 	bool singlepar;
-	lyx::pit_type size;
+	pit_type size;
 };
 
 
@@ -221,5 +220,7 @@ public:
 	///
 	~ColorChanger();
 };
+
+} // namespace lyx
 
 #endif

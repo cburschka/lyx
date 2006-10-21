@@ -18,6 +18,9 @@
 
 #include <iosfwd>
 
+
+namespace lyx {
+
 /** These are all the lyx functions, the main mechanism
  * through which the frontends communicate with the core.
  *
@@ -371,5 +374,8 @@ enum kb_action {
 };
 
 std::ostream & operator<<(std::ostream &, kb_action);
+
+
+} // namespace lyx
 
 #endif // LFUNS_H

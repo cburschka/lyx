@@ -15,6 +15,9 @@
 #include "InsetMath.h"
 
 
+namespace lyx {
+
+
 /** Some inset that "is" a number
  *  mainly for math-extern
  */
@@ -49,4 +52,7 @@ private:
 	/// the number as string
 	std::string str_;
 };
+
+
+} // namespace lyx
 #endif

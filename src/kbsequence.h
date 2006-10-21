@@ -19,6 +19,9 @@
 #include <string>
 #include <vector>
 
+
+namespace lyx {
+
 class kb_keymap;
 class FuncRequest;
 
@@ -110,5 +113,8 @@ private:
 	/// is keysequence deleted ?
 	bool deleted_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -18,7 +18,9 @@
 #include <string>
 
 
-/// A delimiter
+namespace lyx {
+
+/// A delimiter like '{' or '(' or '<'
 class InsetMathDelim : public InsetMathNest {
 public:
 	///
@@ -65,4 +67,7 @@ private:
 	///
 	mutable int dw_;
 };
+
+} // namespace lyx
+
 #endif

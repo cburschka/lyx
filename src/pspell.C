@@ -24,7 +24,10 @@ extern "C" {
 
 #include <boost/assert.hpp>
 
-using lyx::docstring;
+
+namespace lyx {
+
+using docstring;
 
 using std::endl;
 using std::string;
@@ -155,3 +158,6 @@ docstring const PSpell::error()
 		return err;
 	return "";
 }
+
+
+} // namespace lyx

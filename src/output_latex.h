@@ -16,6 +16,9 @@
 
 #include "support/docstream.h"
 
+
+namespace lyx {
+
 class Buffer;
 class OutputParams;
 class TexRow;
@@ -24,9 +27,12 @@ class TexRow;
 
 void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
-		     lyx::odocstream & ofs,
+		     odocstream & ofs,
 		     TexRow & texrow,
 		     OutputParams const &,
 		     std::string const & everypar = std::string());
+
+
+} // namespace lyx
 
 #endif

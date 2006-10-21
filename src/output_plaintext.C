@@ -24,13 +24,14 @@
 
 #include "support/lstrings.h"
 
-using lyx::support::ascii_lowercase;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::compare_no_case;
-using lyx::support::contains;
 
-using lyx::docstring;
-using lyx::pos_type;
+namespace lyx {
+
+using support::ascii_lowercase;
+using support::compare_ascii_no_case;
+using support::compare_no_case;
+using support::contains;
+
 using std::endl;
 using std::ostream;
 using std::ofstream;
@@ -38,18 +39,17 @@ using std::pair;
 using std::string;
 
 
-void writeFileAscii(Buffer const & buf,
-		    string const & fname,
-		    OutputParams const & runparams)
+void writeFileAscii(Buffer const & buf, string const & fname,
+	OutputParams const & runparams)
 {
-	lyx::odocfstream ofs;
-	if (!::openFileWrite(ofs, fname))
+	odocfstream ofs;
+	if (!openFileWrite(ofs, fname))
 		return;
 	writeFileAscii(buf, ofs, runparams);
 }
 
 
-void writeFileAscii(Buffer const & buf, lyx::odocstream & os,
+void writeFileAscii(Buffer const & buf, odocstream & os,
 	OutputParams const & runparams)
 {
 	bool ref_printed = false;
@@ -79,13 +79,13 @@ pair<int, docstring> const addDepth(int depth, int ldepth)
 
 void asciiParagraph(Buffer const & buf,
 		    Paragraph const & par,
-		    lyx::odocstream & os,
+		    odocstream & os,
 		    OutputParams const & runparams,
 		    bool & ref_printed)
 {
 	int ltype = 0;
-	Paragraph::depth_type ltype_depth = 0;
-	Paragraph::depth_type depth = par.params().depth();
+	depth_type ltype_depth = 0;
+	depth_type depth = par.params().depth();
 
 	// First write the layout
 	string const & tmp = par.layout()->name();
@@ -174,8 +174,7 @@ void asciiParagraph(Buffer const & buf,
 		break;
 
 	default: {
-		docstring const label =
-			par.params().labelString();
+		docstring const label = par.params().labelString();
 		os << label << ' ';
 		currlinelen += label.length() + 1;
 		break;
@@ -196,7 +195,7 @@ void asciiParagraph(Buffer const & buf,
 	docstring word;
 
 	for (pos_type i = 0; i < par.size(); ++i) {
-		lyx::char_type c = par.getUChar(buf.params(), i);
+		char_type c = par.getUChar(buf.params(), i);
 		switch (c) {
 		case Paragraph::META_INSET: {
 			InsetBase const * inset = par.getInset(i);
@@ -247,3 +246,6 @@ void asciiParagraph(Buffer const & buf,
 	}
 	os << word;
 }
+
+
+} // namespace lyx

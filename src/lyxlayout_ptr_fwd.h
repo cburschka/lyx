@@ -14,9 +14,15 @@
 
 #include <boost/shared_ptr.hpp>
 
+
+namespace lyx {
+
 class LyXLayout;
 
 /// Global typedef
 typedef boost::shared_ptr<LyXLayout> LyXLayout_ptr;
+
+
+} // namespace lyx
 
 #endif

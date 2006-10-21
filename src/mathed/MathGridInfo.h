@@ -15,6 +15,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class ColInfo
 {
 public:
@@ -59,5 +62,8 @@ inline char const * verbose_align(char c)
 	return c == 'c' ? "center" : c == 'r' ? "right" : c == 'l' ? "left" : "none";
 }
 
+
+
+} // namespace lyx
 
 #endif

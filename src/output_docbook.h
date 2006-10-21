@@ -18,12 +18,18 @@
 
 #include <iosfwd>
 
+
+namespace lyx {
+
 class Buffer;
 class OutputParams;
 
 ///
 void docbookParagraphs(ParagraphList const & subset,
 		       Buffer const & buf,
-		       lyx::odocstream & os,
+		       odocstream & os,
 		       OutputParams const & runparams);
+
+} // namespace lyx
+
 #endif

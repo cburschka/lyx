@@ -15,6 +15,9 @@
 
 #include "LColor.h"
 
+
+namespace lyx {
+
 const QColor grey40(0x66, 0x66, 0x66);
 const QColor grey60(0x99, 0x99, 0x99);
 const QColor grey80(0xcc, 0xcc, 0xcc);
@@ -59,3 +62,6 @@ QColor const rgb2qcolor(lyx::RGBColor const & rgb)
 {
 	return QColor(rgb.r, rgb.g, rgb.b);
 }
+
+
+} // namespace lyx

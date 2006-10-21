@@ -16,6 +16,9 @@
 
 #include <boost/scoped_array.hpp>
 
+
+namespace lyx {
+
 class GXpmBtnTbl : public Gtk::Table {
 public:
 	typedef char const ** XpmData;
@@ -85,5 +88,8 @@ private:
 
 void buttonSetXpm(Gtk::Button * btn, char const ** xpm);
 
+
+
+} // namespace lyx
 
 #endif

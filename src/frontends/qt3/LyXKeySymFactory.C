@@ -14,6 +14,9 @@
 
 #include "QLyXKeySym.h"
 
+
+namespace lyx {
+
 namespace LyXKeySymFactory {
 
 LyXKeySym * create()
@@ -22,3 +25,6 @@ LyXKeySym * create()
 }
 
 } // namespace LyXKeySymFactory
+
+
+} // namespace lyx

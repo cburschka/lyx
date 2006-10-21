@@ -15,6 +15,9 @@
 #include "Dialogs.h"
 
 
+namespace lyx {
+
+
 extern "C" {
 
 void gui_show_dialog(Dialogs * d, char const * name, char const * data)
@@ -23,3 +26,6 @@ void gui_show_dialog(Dialogs * d, char const * name, char const * data)
 }
 
 } // extern "C"
+
+
+} // namespace lyx

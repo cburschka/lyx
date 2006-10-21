@@ -17,6 +17,9 @@
 #include "lyxlength.h"
 
 
+namespace lyx {
+
+
 class LyXGlueLength {
 public:
 	///
@@ -68,5 +71,8 @@ bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2);
 /** If "data" is valid, the length represented by it is
     stored into "result", if that is not 0. */
 bool isValidGlueLength(std::string const & data, LyXGlueLength * result = 0);
+
+
+} // namespace lyx
 
 #endif // LYXGLUELENGTH_H

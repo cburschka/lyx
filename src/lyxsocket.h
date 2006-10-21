@@ -22,6 +22,9 @@
 #include <string>
 #include <map>
 
+
+namespace lyx {
+
 class LyXServerSocket;
 class LyXDataSocket;
 
@@ -91,5 +94,8 @@ private:
 
 /// Implementation is in lyx_main.C
 extern LyXServerSocket & theLyXServerSocket();
+
+
+} // namespace lyx
 
 #endif // LYXSOCKET_H

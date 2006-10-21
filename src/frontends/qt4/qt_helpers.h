@@ -12,21 +12,21 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-#include <utility>
-
 #include "lyxlength.h"
-//#include "lengthcombo.h"
-
 #include "support/docstring.h"
 
 #include <QChar>
 
 #include <vector>
+#include <utility>
 
-class LengthCombo;
 class QComboBox;
 class QLineEdit;
 class QString;
+
+class LengthCombo;
+
+namespace lyx {
 
 std::string makeFontName(std::string const & family, std::string const & foundry);
 
@@ -42,7 +42,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	std::string const & len, LyXLength::UNIT default_unit);
 
 /// format a string to the given width
-lyx::docstring const formatted(lyx::docstring const & text, int w = 80);
+docstring const formatted(docstring const & text, int w = 80);
 
 /**
  * toqstr - convert char * into unicode
@@ -65,25 +65,25 @@ QString const toqstr(std::string const & str);
 /**
  * toqstr - convert ucs4 into QString
  *
- * QString uses ucs2 (a.k.a utf16) internally.
+ * QString uses utf16 internally.
  */
-QString const toqstr(lyx::docstring const & ucs4);
+QString const toqstr(docstring const & ucs4);
 
-void ucs4_to_qstring(lyx::char_type const * str, size_t ls, QString & s);
+void ucs4_to_qstring(char_type const * str, size_t ls, QString & s);
 
-void ucs4_to_qstring(lyx::docstring const & str, QString & s);
+void ucs4_to_qstring(docstring const & str, QString & s);
 
-QString ucs4_to_qstring(lyx::docstring const & str);
+QString ucs4_to_qstring(docstring const & str);
 
-lyx::docstring const qstring_to_ucs4(QString const & qstr);
+docstring const qstring_to_ucs4(QString const & qstr);
 
-void qstring_to_ucs4(QString const & qstr, std::vector<lyx::char_type> & ucs4);
+void qstring_to_ucs4(QString const & qstr, std::vector<char_type> & ucs4);
 
-inline lyx::char_type const qchar_to_ucs4(QChar const & qchar) {
-	return static_cast<lyx::char_type>(qchar.unicode());
+inline char_type const qchar_to_ucs4(QChar const & qchar) {
+	return static_cast<char_type>(qchar.unicode());
 }
 
-inline QChar const ucs4_to_qchar(lyx::char_type const ucs4) {
+inline QChar const ucs4_to_qchar(char_type const ucs4) {
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 
@@ -109,5 +109,8 @@ QString const qt_(std::string const & str);
  * Return the QString encoded in the locale
  */
 std::string const fromqstr(QString const & str);
+
+
+} // namespace lyx
 
 #endif // QTHELPERS_H

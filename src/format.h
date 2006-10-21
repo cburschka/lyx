@@ -17,6 +17,9 @@
 #include <vector>
 #include <string>
 
+
+namespace lyx {
+
 class Buffer;
 
 class Format {
@@ -154,21 +157,15 @@ public:
 	bool edit(Buffer const & buffer, std::string const & filename,
 		  std::string const & format_name) const;
 	///
-	lyx::docstring const prettyName(std::string const & name) const;
+	docstring const prettyName(std::string const & name) const;
 	///
 	std::string const extension(std::string const & name) const;
 	///
-	const_iterator begin() const {
-		return formatlist.begin();
-	}
+	const_iterator begin() const { return formatlist.begin(); }
 	///
-	const_iterator end() const {
-		return formatlist.end();
-	}
+	const_iterator end() const { return formatlist.end(); }
 	///
-	FormatList::size_type size() const {
-		return formatlist.size();
-	}
+	FormatList::size_type size() const { return formatlist.size(); }
 private:
 	///
 	FormatList formatlist;
@@ -177,5 +174,8 @@ private:
 extern Formats formats;
 
 extern Formats system_formats;
+
+
+} // namespace lyx
 
 #endif //FORMAT_H

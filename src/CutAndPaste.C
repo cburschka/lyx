@@ -48,14 +48,11 @@
 
 #include <boost/tuple/tuple.hpp>
 
-using lyx::docstring;
-using lyx::pos_type;
-using lyx::pit_type;
-using lyx::textclass_type;
 
-using lyx::support::bformat;
+namespace lyx {
 
-using lyx::frontend::Clipboard;
+using support::bformat;
+using frontend::Clipboard;
 
 using std::endl;
 using std::for_each;
@@ -67,7 +64,7 @@ using std::string;
 
 namespace {
 
-typedef std::pair<lyx::pit_type, int> PitPosPair;
+typedef std::pair<pit_type, int> PitPosPair;
 
 typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 
@@ -177,13 +174,13 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 	// since we store pointers to insets at some places and we don't
 	// want to invalidate them.
 	insertion.swap(in.paragraphs());
-	lyx::cap::switchBetweenClasses(textclass, tc, in, errorlist);
+	cap::switchBetweenClasses(textclass, tc, in, errorlist);
 	insertion.swap(in.paragraphs());
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
 	int depth_delta = pars[pit].params().depth() - tmpbuf->params().depth();
 
-	Paragraph::depth_type max_depth = pars[pit].getMaxDepthAfter();
+	depth_type max_depth = pars[pit].getMaxDepthAfter();
 
 	for (; tmpbuf != insertion.end(); ++tmpbuf) {
 		// If we have a negative jump so that the depth would
@@ -380,7 +377,6 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 
 
 
-namespace lyx {
 namespace cap {
 
 string grabAndEraseSelection(LCursor & cur)
@@ -418,8 +414,8 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 			docstring const s = bformat(
 						 _("Layout had to be changed from\n%1$s to %2$s\n"
 						"because of class conversion from\n%3$s to %4$s"),
-			 lyx::from_utf8(name), lyx::from_utf8(it->layout()->name()),
-			 lyx::from_utf8(tclass1.name()), lyx::from_utf8(tclass2.name()));
+			 from_utf8(name), from_utf8(it->layout()->name()),
+			 from_utf8(tclass1.name()), from_utf8(tclass2.name()));
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem(_("Changed Layout"), s,
 						      it->id(), 0,
@@ -443,8 +439,8 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
 					"Character style %1$s is "
 					"undefined because of class "
 					"conversion from\n%2$s to %3$s"),
-					 lyx::from_utf8(name), lyx::from_utf8(tclass1.name()),
-					 lyx::from_utf8(tclass2.name()));
+					 from_utf8(name), from_utf8(tclass1.name()),
+					 from_utf8(tclass2.name()));
 				// To warn the user that something had to be done.
 				errorlist.push_back(ErrorItem(
 					_("Undefined character style"),
@@ -476,7 +472,7 @@ std::vector<docstring> const availableSelections(Buffer const & buffer)
 			asciiSel += pit->asString(buffer, false);
 			if (asciiSel.size() > 25) {
 				asciiSel.replace(22, docstring::npos,
-				                 lyx::from_ascii("..."));
+				                 from_ascii("..."));
 				break;
 			}
 		}
@@ -488,7 +484,7 @@ std::vector<docstring> const availableSelections(Buffer const & buffer)
 }
 
 
-lyx::size_type numberOfSelections()
+size_type numberOfSelections()
 {
 	return theCuts.size();
 }
@@ -814,4 +810,5 @@ bool tabularStackDirty()
 
 
 } // namespace cap
+
 } // namespace lyx

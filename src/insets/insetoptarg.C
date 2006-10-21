@@ -19,8 +19,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -90,7 +90,7 @@ int InsetOptArg::plaintext(Buffer const &, odocstream &,
 int InsetOptArg::latexOptional(Buffer const & buf, odocstream & os,
 			       OutputParams const & runparams) const
 {
-	lyx::odocstringstream ss;
+	odocstringstream ss;
 	int ret = InsetText::latex(buf, ss, runparams);
 	docstring str = ss.str();
 	if (str.find(']') != docstring::npos)
@@ -98,3 +98,6 @@ int InsetOptArg::latexOptional(Buffer const & buf, odocstream & os,
 	os << '[' << str << ']';
 	return ret;
 }
+
+
+} // namespace lyx

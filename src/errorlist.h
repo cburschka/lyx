@@ -17,18 +17,21 @@
 #include <vector>
 #include <string>
 
+
+namespace lyx {
+
 class Buffer;
 
 /// A class to hold an error item
 class ErrorItem {
 public:
-	lyx::docstring error;
-	lyx::docstring description;
+	docstring error;
+	docstring description;
 	int par_id;
-	lyx::pos_type pos_start;
-	lyx::pos_type pos_end;
-	ErrorItem(lyx::docstring const & error, lyx::docstring const & description,
-		  int parid, lyx::pos_type posstart, lyx::pos_type posend);
+	pos_type pos_start;
+	pos_type pos_end;
+	ErrorItem(docstring const & error, docstring const & description,
+		  int parid, pos_type posstart, pos_type posend);
 	ErrorItem();
 };
 
@@ -47,5 +50,8 @@ public:
 	using std::vector<ErrorItem>::empty;
 	using std::vector<ErrorItem>::const_iterator;
 };
+
+
+} // namespace lyx
 
 #endif

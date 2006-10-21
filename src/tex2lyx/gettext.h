@@ -15,6 +15,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 ///
 std::string const _(std::string const &);
 
@@ -23,5 +26,8 @@ std::string const _(std::string const &);
 
 ///
 void locale_init();
+
+
+} // namespace lyx
 
 #endif

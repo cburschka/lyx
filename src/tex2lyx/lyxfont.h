@@ -17,6 +17,8 @@
 #ifndef LYXFONT_H
 #define LYXFONT_H
 
+namespace lyx {
+
 class LyXLex;
 
 class LyXFont {
@@ -34,5 +36,8 @@ public:
 	LyXFont & realize(LyXFont const &) { return *this; }
 	bool resolved() const { return true; }
 };
+
+
+} // namespace lyx
 
 #endif // NOT LYXFONT_H

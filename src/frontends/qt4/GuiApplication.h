@@ -31,10 +31,11 @@
 #endif
 ///////////////////////////////////////////////////////////////
 
+namespace lyx {
+
 class BufferView;
 class socket_callback;
 
-namespace lyx {
 namespace frontend {
 
 class GuiWorkArea;
@@ -109,10 +110,11 @@ private:
 #endif
 }; // GuiApplication
 
-} // namespace frontend
-} // namespace lyx
+extern GuiApplication * guiApp;
 
-extern lyx::frontend::GuiApplication * guiApp;
+} // namespace frontend
+
+} // namespace lyx
 
 
 #endif // QT4_APPLICATION_H

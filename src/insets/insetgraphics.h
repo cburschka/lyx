@@ -15,9 +15,13 @@
 
 #include "inset.h"
 #include "insetgraphicsParams.h"
+#include "mailinset.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
+
+
+namespace lyx {
 
 class Dialogs;
 class RenderGraphic;
@@ -43,13 +47,13 @@ public:
 	 #fragile == true# means, that the inset should take care about
 	 fragile commands by adding a #\protect# before.
 	 */
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 
 	/** Tell LyX what the latex features you need i.e. what latex packages
@@ -109,8 +113,6 @@ private:
 };
 
 
-#include "mailinset.h"
-
 class InsetGraphicsMailer : public MailInset {
 public:
 	///
@@ -134,5 +136,8 @@ private:
 	///
 	InsetGraphics & inset_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -28,6 +28,9 @@
 
 #include <algorithm>
 
+
+namespace lyx {
+
 using lyx::support::bformat;
 using lyx::docstring;
 
@@ -101,3 +104,6 @@ askForText_pimpl(docstring const & msg, docstring const & dflt)
 	else
 		return make_pair<bool, docstring>(false, docstring());
 }
+
+
+} // namespace lyx

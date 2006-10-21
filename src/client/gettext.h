@@ -15,6 +15,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 /*
  * Native Language Support
  *
@@ -60,5 +63,8 @@ std::string const _(std::string const &);
 
 ///
 void locale_init();
+
+
+} // namespace lyx
 
 #endif

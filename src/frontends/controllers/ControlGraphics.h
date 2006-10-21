@@ -22,11 +22,12 @@
 #include <utility>
 #include <vector>
 
+namespace lyx {
+
 class InsetGraphics;
 class InsetGraphicsParams;
 class LyXView;
 
-namespace lyx {
 namespace frontend {
 
 /** A controller for Graphics dialogs.
@@ -49,7 +50,7 @@ public:
 	InsetGraphicsParams const & params() const { return *params_.get(); }
 
 	/// Browse for a file
-	lyx::docstring const browse(lyx::docstring const &) const;
+	docstring const browse(docstring const &) const;
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);
 	/// Control the bb

@@ -15,6 +15,9 @@
 #include "Color.h"
 #include "LColor.h"
 
+
+namespace lyx {
+
 LColorCache lcolorcache;
 
 
@@ -45,3 +48,6 @@ QColor const rgb2qcolor(lyx::RGBColor const & rgb)
 {
 	return QColor(rgb.r, rgb.g, rgb.b);
 }
+
+
+} // namespace lyx

@@ -22,6 +22,9 @@
 #include <vector>
 
 
+namespace lyx {
+
+
 
 class InsetBase;
 class LyXText;
@@ -43,7 +46,7 @@ public:
 
 
 	///
-	ParIterator(InsetBase &, lyx::pit_type pit);
+	ParIterator(InsetBase &, pit_type pit);
 	///
 	ParIterator(ParIterator const &);
 	///
@@ -62,9 +65,9 @@ public:
 	///
 	Paragraph * operator->() const;
 	/// This gives us the top-most parent paragraph
-	lyx::pit_type outerPar() const;
+	pit_type outerPar() const;
 	///
-	lyx::pit_type pit() const;
+	pit_type pit() const;
 	///
 	/// return the paragraph this cursor is in
 	pit_type & pit() { return DocIterator::pit(); }
@@ -73,7 +76,7 @@ public:
 };
 
 
-DocIterator makeDocIterator(ParIterator const &, lyx::pos_type);
+DocIterator makeDocIterator(ParIterator const &, pos_type);
 
 ParIterator par_iterator_begin(InsetBase & inset);
 
@@ -122,5 +125,8 @@ ParConstIterator par_const_iterator_begin(InsetBase const & inset);
 
 ParConstIterator par_const_iterator_end(InsetBase const & inset);
 
+
+
+} // namespace lyx
 
 #endif

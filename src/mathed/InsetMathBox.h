@@ -17,6 +17,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class LyXFont;
 
 /// Support for \\mbox
@@ -44,5 +47,8 @@ private:
 	std::string name_;
 };
 
+
+
+} // namespace lyx
 
 #endif

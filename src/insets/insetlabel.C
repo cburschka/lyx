@@ -26,9 +26,10 @@
 #include "support/lyxalgo.h"
 #include "support/std_ostream.h"
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::escape;
+
+namespace lyx {
+
+using support::escape;
 
 using std::string;
 using std::ostream;
@@ -64,15 +65,15 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p("label");
-		InsetCommandMailer::string2params("label", lyx::to_utf8(cmd.argument()), p);
+		InsetCommandMailer::string2params("label", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noUpdate();
 			break;
 		}
 		if (p["name"] != params()["name"])
         		// FIXME UNICODE
-			cur.bv().buffer()->changeRefsIfUnique(lyx::to_utf8(params()["name"]),
-						       lyx::to_utf8(p["name"]), InsetBase::REF_CODE);
+			cur.bv().buffer()->changeRefsIfUnique(to_utf8(params()["name"]),
+						       to_utf8(p["name"]), InsetBase::REF_CODE);
 		setParams(p);
 		break;
 	}
@@ -105,7 +106,10 @@ int InsetLabel::docbook(Buffer const & buf, odocstream & os,
 {
         // FIXME UNICODE
 	os << "<!-- anchor id=\""
-           << lyx::from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("name"))))
+           << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("name"))))
            << "\" -->";
 	return 0;
 }
+
+
+} // namespace lyx

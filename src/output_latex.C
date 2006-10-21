@@ -30,10 +30,12 @@
 
 #include "support/lstrings.h"
 
-using lyx::support::subst;
+
+namespace lyx {
+
+using support::subst;
 
 using std::endl;
-using lyx::odocstream;
 using std::string;
 
 
@@ -108,7 +110,7 @@ TeXEnvironment(Buffer const & buf,
 
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel()) {
-			os << lyx::from_ascii(subst(
+			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
 				previous_language->babel()))
@@ -118,7 +120,7 @@ TeXEnvironment(Buffer const & buf,
 
 		if (lyxrc.language_command_end.empty() ||
 		    language->babel() != doc_language->babel()) {
-			os << lyx::from_ascii(subst(
+			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
 				language->babel()))
@@ -130,14 +132,14 @@ TeXEnvironment(Buffer const & buf,
 	bool leftindent_open = false;
 	if (!pit->params().leftIndent().zero()) {
 		os << "\\begin{LyXParagraphLeftIndent}{"
-		   << lyx::from_ascii(pit->params().leftIndent().asLatexString())
+		   << from_ascii(pit->params().leftIndent().asLatexString())
 		   << "}\n";
 		texrow.newline();
 		leftindent_open = true;
 	}
 
 	if (style->isEnvironment()) {
-		os << "\\begin{" << lyx::from_ascii(style->latexname()) << '}';
+		os << "\\begin{" << from_ascii(style->latexname()) << '}';
 		if (style->optionalargs > 0) {
 			int ret = latexOptArgInsets(buf, *pit, os, runparams,
 						    style->optionalargs);
@@ -154,7 +156,7 @@ TeXEnvironment(Buffer const & buf,
 			// ale970405
 			os << '{' << bibitemWidest(buf) << "}\n";
 		} else
-			os << lyx::from_ascii(style->latexparam()) << '\n';
+			os << from_ascii(style->latexparam()) << '\n';
 		texrow.newline();
 	}
 	ParagraphList::const_iterator par = pit;
@@ -196,7 +198,7 @@ TeXEnvironment(Buffer const & buf,
 		 && par->params().leftIndent() == pit->params().leftIndent());
 
 	if (style->isEnvironment()) {
-		os << "\\end{" << lyx::from_ascii(style->latexname()) << "}\n";
+		os << "\\end{" << from_ascii(style->latexname()) << "}\n";
 		texrow.newline();
 	}
 
@@ -272,7 +274,7 @@ TeXOnePar(Buffer const & buf,
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel())
 		{
-			os << lyx::from_ascii(subst(lyxrc.language_command_end,
+			os << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
 				previous_language->babel()))
 			   << endl;
@@ -282,7 +284,7 @@ TeXOnePar(Buffer const & buf,
 		if (lyxrc.language_command_end.empty() ||
 		    language->babel() != doc_language->babel())
 		{
-			os << lyx::from_ascii(subst(
+			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
 				language->babel()))
@@ -295,7 +297,7 @@ TeXOnePar(Buffer const & buf,
 		if (bparams.inputenc == "auto" &&
 			language->encoding() != previous_language->encoding()) {
 			os << "\\inputencoding{"
-			   << lyx::from_ascii(language->encoding()->latexName())
+			   << from_ascii(language->encoding()->latexName())
 			   << "}\n";
 			texrow.newline();
 		}
@@ -313,7 +315,7 @@ TeXOnePar(Buffer const & buf,
 			&& (pit == paragraphs.begin()
 			    || !boost::prior(pit)->hasSameLayout(*pit)))
 		{
-			os << lyx::from_ascii(pit->params().spacing().writeEnvirBegin())
+			os << from_ascii(pit->params().spacing().writeEnvirBegin())
 			    << '\n';
 			texrow.newline();
 		}
@@ -331,7 +333,7 @@ TeXOnePar(Buffer const & buf,
 
 	switch (style->latextype) {
 	case LATEX_COMMAND:
-		os << '\\' << lyx::from_ascii(style->latexname());
+		os << '\\' << from_ascii(style->latexname());
 
 		// Separate handling of optional argument inset.
 		if (style->optionalargs > 0) {
@@ -343,7 +345,7 @@ TeXOnePar(Buffer const & buf,
 			}
 		}
 		else
-			os << lyx::from_ascii(style->latexparam());
+			os << from_ascii(style->latexparam());
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
@@ -357,7 +359,7 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	// FIXME UNICODE
-	os << lyx::from_utf8(everypar);
+	os << from_utf8(everypar);
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
 					     outerFont(std::distance(paragraphs.begin(), pit), paragraphs),
 					     os, texrow, runparams);
@@ -387,7 +389,7 @@ TeXOnePar(Buffer const & buf,
 	    && !is_command) {
 		if (!need_par)
 			os << '{';
-		os << "\\" << lyx::from_ascii(font.latexSize()) << " \\par}";
+		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
 	} else if (need_par) {
 		os << "\\par}";
 	} else if (is_command)
@@ -434,7 +436,7 @@ TeXOnePar(Buffer const & buf,
 			&& (boost::next(pit) == paragraphs.end()
 			    || !boost::next(pit)->hasSameLayout(*pit)))
 		{
-			os << lyx::from_ascii(pit->params().spacing().writeEnvirEnd())
+			os << from_ascii(pit->params().spacing().writeEnvirEnd())
 			   << '\n';
 			texrow.newline();
 		}
@@ -447,13 +449,13 @@ TeXOnePar(Buffer const & buf,
 		// float.
 
 		if (lyxrc.language_command_end.empty())
-			os << lyx::from_ascii(subst(
+			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
 				doc_language->babel()))
 			   << endl;
 		else
-			os << lyx::from_ascii(subst(
+			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
 				language->babel()))
@@ -522,18 +524,18 @@ void latexParagraphs(Buffer const & buf,
 					was_title = true;
 					if (tclass.titletype() == TITLE_ENVIRONMENT) {
 						os << "\\begin{"
-						    << lyx::from_ascii(tclass.titlename())
+						    << from_ascii(tclass.titlename())
 						    << "}\n";
 						texrow.newline();
 					}
 				}
 			} else if (was_title && !already_title) {
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
-					os << "\\end{" << lyx::from_ascii(tclass.titlename())
+					os << "\\end{" << from_ascii(tclass.titlename())
 					    << "}\n";
 				}
 				else {
-					os << "\\" << lyx::from_ascii(tclass.titlename())
+					os << "\\" << from_ascii(tclass.titlename())
 					    << "\n";
 				}
 				texrow.newline();
@@ -563,13 +565,16 @@ void latexParagraphs(Buffer const & buf,
 	// It might be that we only have a title in this document
 	if (was_title && !already_title) {
 		if (tclass.titletype() == TITLE_ENVIRONMENT) {
-			os << "\\end{" << lyx::from_ascii(tclass.titlename())
+			os << "\\end{" << from_ascii(tclass.titlename())
 			    << "}\n";
 		}
 		else {
-			os << "\\" << lyx::from_ascii(tclass.titlename())
+			os << "\\" << from_ascii(tclass.titlename())
 			    << "\n";
 				}
 		texrow.newline();
 	}
 }
+
+
+} // namespace lyx

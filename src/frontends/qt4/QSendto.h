@@ -16,9 +16,10 @@
 
 #include <vector>
 
+namespace lyx {
+
 class Format;
 
-namespace lyx {
 namespace frontend {
 
 class ControlSendto;

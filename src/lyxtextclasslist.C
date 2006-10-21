@@ -22,12 +22,13 @@
 #include <boost/regex.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
+
+
+namespace lyx {
 namespace fs = boost::filesystem;
 
-using lyx::textclass_type;
-
-using lyx::support::libFileSearch;
-using lyx::support::makeDisplayPath;
+using support::libFileSearch;
+using support::makeDisplayPath;
 
 using boost::bind;
 using boost::regex;
@@ -104,7 +105,7 @@ bool LyXTextClassList::read()
 
 	if (real_file.empty()) {
 		lyxerr << "LyXTextClassList::Read: unable to find "
-			"textclass file  `" << lyx::to_utf8(makeDisplayPath(real_file, 1000))
+			"textclass file  `" << to_utf8(makeDisplayPath(real_file, 1000))
 		       << "'. Exiting." << endl;
 		return false;
 		// This causes LyX to end... Not a desirable behaviour. Lgb
@@ -122,7 +123,7 @@ bool LyXTextClassList::read()
 
 	if (!lex.isOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
-			"textclass file  `" << lyx::to_utf8(makeDisplayPath(real_file, 1000))
+			"textclass file  `" << to_utf8(makeDisplayPath(real_file, 1000))
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
 		return false;
@@ -174,7 +175,7 @@ bool LyXTextClassList::read()
 }
 
 
-std::pair<bool, lyx::textclass_type> const
+std::pair<bool, textclass_type> const
 LyXTextClassList::addTextClass(std::string const & textclass, std::string const & path)
 {
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
@@ -230,3 +231,6 @@ bool LyXSetStyle()
 	lyxerr[Debug::TCLASS] << "LyXSetStyle: configuration parsed." << endl;
 	return true;
 }
+
+
+} // namespace lyx

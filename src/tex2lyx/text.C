@@ -29,6 +29,9 @@
 #include <sstream>
 #include <vector>
 
+
+namespace lyx {
+
 using lyx::support::changeExtension;
 using lyx::support::makeAbsPath;
 using lyx::support::makeRelPath;
@@ -2353,3 +2356,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 // }])
+
+
+} // namespace lyx

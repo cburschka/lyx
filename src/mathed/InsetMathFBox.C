@@ -20,6 +20,9 @@
 #include "support/std_ostream.h"
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -75,3 +78,6 @@ void InsetMathFBox::infoize(std::ostream & os) const
 {
 	os << "FBox: ";
 }
+
+
+} // namespace lyx

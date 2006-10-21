@@ -17,6 +17,9 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 /// return true if the char is a line separator
 inline
 bool isLineSeparatorChar(lyx::char_type c)
@@ -57,5 +60,8 @@ bool isDigit(lyx::char_type ch)
 	return ch >= '0' && ch <= '9';
 }
 
+
+
+} // namespace lyx
 
 #endif // TEXTUTILS_H

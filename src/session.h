@@ -39,7 +39,7 @@ class Session : boost::noncopyable {
 
 public:
 	///
-	typedef boost::tuple<lyx::pit_type, lyx::pos_type> FilePos;
+	typedef boost::tuple<pit_type, pos_type> FilePos;
 	///
 	typedef std::map<std::string, FilePos> FilePosMap;
 	///
@@ -47,7 +47,7 @@ public:
 	///
 	typedef std::vector<std::string> LastOpened;
 	///
-	typedef boost::tuple<unsigned int, std::string, unsigned int, lyx::pos_type> Bookmark;
+	typedef boost::tuple<unsigned int, std::string, unsigned int, pos_type> Bookmark;
 	///
 	typedef std::vector<Bookmark> BookmarkList;
 	///

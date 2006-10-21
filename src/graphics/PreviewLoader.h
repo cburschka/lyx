@@ -22,9 +22,11 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
-class Buffer;
 
 namespace lyx {
+
+class Buffer;
+
 namespace graphics {
 
 class PreviewImage;

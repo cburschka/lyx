@@ -14,6 +14,9 @@
 
 #include "insetcollapsable.h"
 
+
+namespace lyx {
+
 // To have this class is probably a bit overkill... (Lgb)
 
 // The footnote inset
@@ -36,5 +39,8 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 };
+
+
+} // namespace lyx
 
 #endif

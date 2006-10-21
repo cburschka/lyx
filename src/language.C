@@ -19,6 +19,9 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 
+
+namespace lyx {
+
 using std::endl;
 using std::string;
 
@@ -100,3 +103,6 @@ Language const * Languages::getLanguage(string const & language) const
 	const_iterator it = languagelist.find(language);
 	return it == languagelist.end() ? 0 : &it->second;
 }
+
+
+} // namespace lyx

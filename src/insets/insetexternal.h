@@ -21,6 +21,8 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
+#include "mailinset.h"
+
 
 /** No two InsetExternalParams variables can have the same temporary file.
  *  This class has copy-semantics but the copy constructor
@@ -30,6 +32,7 @@
  *  InsetExternalParams class.
  */
 namespace lyx {
+
 namespace external {
 
 class TempName {
@@ -58,7 +61,6 @@ enum DisplayType {
 Translator<DisplayType, std::string> const & displayTranslator();
 
 } // namespace external
-} // namespace lyx
 
 
 /// hold parameters settable from the GUI
@@ -77,16 +79,16 @@ public:
 	std::string const & templatename() const { return templatename_; }
 
 	/// The external file.
-	lyx::support::FileName filename;
+	support::FileName filename;
 	/// How the inset is to be displayed by LyX.
-	lyx::external::DisplayType display;
+	external::DisplayType display;
 	/// The scale of the displayed graphic (if shown).
 	unsigned int lyxscale;
 
-	lyx::external::ClipData     clipdata;
-	lyx::external::ExtraData    extradata;
-	lyx::external::ResizeData   resizedata;
-	lyx::external::RotationData rotationdata;
+	external::ClipData     clipdata;
+	external::ExtraData    extradata;
+	external::ResizeData   resizedata;
+	external::RotationData rotationdata;
 
 	/** if \c true, simply output the filename, maybe wrapped in a
 	 *  box, rather than generate and display the image etc.
@@ -94,7 +96,7 @@ public:
 	bool draft;
 
 private:
-	lyx::external::TempName tempname_;
+	external::TempName tempname_;
 	std::string templatename_;
 };
 
@@ -123,13 +125,13 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex);
 
 	/// \returns the number of rows (\n's) of generated code.
-	virtual int latex(Buffer const &, lyx::odocstream &,
+	virtual int latex(Buffer const &, odocstream &,
 			  OutputParams const &) const;
 	///
-	virtual int plaintext(Buffer const &, lyx::odocstream &,
+	virtual int plaintext(Buffer const &, odocstream &,
 			  OutputParams const &) const;
 	///
-	virtual int docbook(Buffer const &, lyx::odocstream &,
+	virtual int docbook(Buffer const &, odocstream &,
 			    OutputParams const &) const;
 
 	/// Update needed features for this inset.
@@ -140,7 +142,7 @@ public:
 	///
 	void setParams(InsetExternalParams const &, Buffer const &);
 	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
+	void addPreview(graphics::PreviewLoader &) const;
 	///
 	void edit(LCursor & cur, bool left);
 	///
@@ -170,8 +172,6 @@ private:
 };
 
 
-#include "mailinset.h"
-
 class InsetExternalMailer : public MailInset {
 public:
 	///
@@ -194,5 +194,7 @@ private:
 	///
 	InsetExternal & inset_;
 };
+
+} // namespace lyx
 
 #endif

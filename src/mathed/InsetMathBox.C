@@ -16,6 +16,9 @@
 #include "MathStream.h"
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -66,3 +69,6 @@ void InsetMathBox::infoize(std::ostream & os) const
 {
 	os << "Box: " << name_;
 }
+
+
+} // namespace lyx

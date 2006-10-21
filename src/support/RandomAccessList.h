@@ -21,6 +21,9 @@
 #include <list>
 #include <algorithm>
 
+
+namespace lyx {
+
 #define USE_OLD_ITERATOR 1
 
 /// Random Access List.
@@ -275,5 +278,8 @@ private:
 	/// Our container of iterators.
 	IterCont iterCont_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -21,8 +21,6 @@
 #include "lyxfind.h"
 #include "support/lyxtime.h"
 
-using lyx::docstring;
-
 using std::string;
 
 namespace lyx {
@@ -37,7 +35,7 @@ ControlChanges::ControlChanges(Dialog & parent)
 
 bool ControlChanges::find()
 {
-	return find::findNextChange(kernel().bufferview());
+	return findNextChange(kernel().bufferview());
 }
 
 
@@ -55,7 +53,7 @@ docstring const ControlChanges::getChangeDate()
 		return docstring();
 
 	// FIXME UNICODE
-	return lyx::from_utf8(formatted_time(c.changetime));
+	return from_utf8(formatted_time(c.changetime));
 }
 
 
@@ -68,11 +66,11 @@ docstring const ControlChanges::getChangeAuthor()
 	Author const & a(kernel().buffer().params().authors().get(c.author));
 
 	// FIXME UNICODE in Author class
-	docstring author(lyx::from_utf8(a.name()));
+	docstring author(from_utf8(a.name()));
 
 	if (!a.email().empty()) {
 		author += " (";
-		author += lyx::from_utf8(a.email());
+		author += from_utf8(a.email());
 		author += ")";
 	}
 
@@ -83,14 +81,14 @@ docstring const ControlChanges::getChangeAuthor()
 bool ControlChanges::accept()
 {
 	kernel().dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
-	return find::findNextChange(kernel().bufferview());
+	return findNextChange(kernel().bufferview());
 }
 
 
 bool ControlChanges::reject()
 {
 	kernel().dispatch(FuncRequest(LFUN_CHANGE_REJECT));
-	return find::findNextChange(kernel().bufferview());
+	return findNextChange(kernel().bufferview());
 }
 
 

@@ -16,16 +16,11 @@
 
 #include <QFileDialog>
 
-namespace lyx {
-namespace support {
-
-class FileFilterList;
-
-} // namespace support
-} // namespace lyx
-
-
 class QToolButton;
+
+namespace lyx {
+
+namespace support { class FileFilterList; }
 
 class LyXFileDialog : public QFileDialog
 {
@@ -45,5 +40,8 @@ private:
 	QToolButton * b2_;
 	lyx::docstring b2_dir_;
 };
+
+} // namespace lyx
+
 
 #endif // FILEDIALOG_PRIVATE_H

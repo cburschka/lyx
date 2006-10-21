@@ -23,9 +23,7 @@
 
 namespace lyx {
 
-namespace support {
-class FileFilterList;
-} // namespace support
+namespace support { class FileFilterList; }
 
 
 namespace frontend {
@@ -36,15 +34,15 @@ namespace frontend {
     pattern: *.ps etc.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-lyx::docstring const
-browseFile(lyx::docstring const & filename,
-	   lyx::docstring const & title,
+docstring const
+browseFile(docstring const & filename,
+	   docstring const & title,
 	   support::FileFilterList const & filters,
 	   bool save = false,
-	   std::pair<lyx::docstring,lyx::docstring> const & dir1 =
-	   std::make_pair(lyx::docstring(), lyx::docstring()),
-	   std::pair<lyx::docstring,lyx::docstring> const & dir2 =
-	   std::make_pair(lyx::docstring(), lyx::docstring()));
+	   std::pair<docstring, docstring> const & dir1 =
+	   std::make_pair(docstring(), docstring()),
+	   std::pair<docstring, docstring> const & dir2 =
+	   std::make_pair(docstring(), docstring()));
 
 
 /** Wrapper around browseFile which tries to provide a filename
@@ -53,28 +51,28 @@ browseFile(lyx::docstring const & filename,
     of the form "../baz/foo.txt", an absolute path is returned. This is
     intended to be useful for insets which encapsulate files/
 */
-lyx::docstring const
-browseRelFile(lyx::docstring const & filename,
-	      lyx::docstring const & refpath,
-	      lyx::docstring const & title,
+docstring const
+browseRelFile(docstring const & filename,
+	      docstring const & refpath,
+	      docstring const & title,
 	      support::FileFilterList const & filters,
 	      bool save = false,
-	      std::pair<lyx::docstring,lyx::docstring> const & dir1 =
-	      std::make_pair(lyx::docstring(), lyx::docstring()),
-	      std::pair<lyx::docstring,lyx::docstring> const & dir2 =
-	      std::make_pair(lyx::docstring(), lyx::docstring()));
+	      std::pair<docstring, docstring> const & dir1 =
+	      std::make_pair(docstring(), docstring()),
+	      std::pair<docstring, docstring> const & dir2 =
+	      std::make_pair(docstring(), docstring()));
 
 
 /** Wrapper around browseFile which tries to provide a filename
  *  relative to the user or system directory. The dir, name and ext
  *  parameters have the same meaning as in the
- *  lyx::support::LibFileSearch function.
+ *  support::LibFileSearch function.
  */
-lyx::docstring const
-browseLibFile(lyx::docstring const & dir,
-	      lyx::docstring const & name,
-	      lyx::docstring const & ext,
-	      lyx::docstring const & title,
+docstring const
+browseLibFile(docstring const & dir,
+	      docstring const & name,
+	      docstring const & ext,
+	      docstring const & title,
 	      support::FileFilterList const & filters);
 
 
@@ -83,17 +81,17 @@ browseLibFile(lyx::docstring const & dir,
     title: the title of the dialog.
     dir1 = (name, dir), dir2 = (name, dir): extra buttons on the dialog.
 */
-lyx::docstring const
-browseDir(lyx::docstring const & pathname,
-	   lyx::docstring const & title,
-	   std::pair<lyx::docstring,lyx::docstring> const & dir1 =
-	   std::make_pair(lyx::docstring(), lyx::docstring()),
-	   std::pair<lyx::docstring,lyx::docstring> const & dir2 =
-	   std::make_pair(lyx::docstring(), lyx::docstring()));
+docstring const
+browseDir(docstring const & pathname,
+	   docstring const & title,
+	   std::pair<docstring, docstring> const & dir1 =
+	   std::make_pair(docstring(), docstring()),
+	   std::pair<docstring, docstring> const & dir2 =
+	   std::make_pair(docstring(), docstring()));
 
 
 /// Returns a vector of units that can be used to create a valid LaTeX length.
-std::vector<lyx::docstring> const getLatexUnits();
+std::vector<docstring> const getLatexUnits();
 
 
 /** Functions to extract vectors of the first and second elems from a

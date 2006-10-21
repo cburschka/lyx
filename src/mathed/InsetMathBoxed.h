@@ -15,6 +15,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 /// Non-AMS-style frame
 class InsetMathBoxed : public InsetMathNest {
 public:
@@ -35,5 +38,8 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

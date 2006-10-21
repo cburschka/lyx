@@ -17,6 +17,9 @@
 #include "LColor.h"
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -107,3 +110,6 @@ void InsetMathSqrt::mathmlize(MathMLStream & os) const
 {
 	os << MTag("msqrt") << cell(0) << ETag("msqrt");
 }
+
+
+} // namespace lyx

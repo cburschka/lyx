@@ -36,9 +36,10 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::contains;
+
+namespace lyx {
+
+using support::contains;
 
 using std::endl;
 using std::string;
@@ -142,7 +143,7 @@ void InsetFloat::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
-		InsetFloatMailer::string2params(lyx::to_utf8(cmd.argument()), params);
+		InsetFloatMailer::string2params(to_utf8(cmd.argument()), params);
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
 		params_.sideways  = params.sideways;
@@ -311,11 +312,11 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 	// The \n is used to force \begin{<floatname>} to appear in a new line.
 	// The % is needed to prevent two consecutive \n chars in the case
 	// when the current output line is empty.
-	os << "%\n\\begin{" << lyx::from_ascii(tmptype) << '}';
+	os << "%\n\\begin{" << from_ascii(tmptype) << '}';
 	// We only output placement if different from the def_placement.
 	// sidewaysfloats always use their own page
 	if (!placement.empty() && !params_.sideways) {
-		os << '[' << lyx::from_ascii(placement) << ']';
+		os << '[' << from_ascii(placement) << ']';
 	}
 	os << '\n';
 
@@ -323,7 +324,7 @@ int InsetFloat::latex(Buffer const & buf, odocstream & os,
 
 	// The \n is used to force \end{<floatname>} to appear in a new line.
 	// In this case, we do not case if the current output line is empty.
-	os << "\n\\end{" << lyx::from_ascii(tmptype) << "}\n";
+	os << "\n\\end{" << from_ascii(tmptype) << "}\n";
 
 	return i + 4;
 }
@@ -333,9 +334,9 @@ int InsetFloat::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
         // FIXME UNICODE
-        os << '<' << lyx::from_ascii(params_.type) << '>';
+        os << '<' << from_ascii(params_.type) << '>';
 	int const i = InsetText::docbook(buf, os, runparams);
-	os << "</" << lyx::from_ascii(params_.type) << '>';
+	os << "</" << from_ascii(params_.type) << '>';
 
 	return i;
 }
@@ -377,7 +378,7 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 }
 
 
-void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
+void InsetFloat::addToToc(toc::TocList & toclist, Buffer const & buf) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
@@ -389,7 +390,7 @@ void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 			docstring const str =
 				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			lyx::toc::TocItem const item(pit, 0, str);
+			toc::TocItem const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}
@@ -445,3 +446,6 @@ string const InsetFloatMailer::params2string(InsetFloatParams const & params)
 	params.write(data);
 	return data.str();
 }
+
+
+} // namespace lyx

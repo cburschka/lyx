@@ -12,6 +12,8 @@
 #ifndef LYXKEYSYMFACTORY_H
 #define LYXKEYSYMFACTORY_H
 
+namespace lyx {
+
 class LyXKeySym;
 
 namespace LyXKeySymFactory {
@@ -21,5 +23,7 @@ namespace LyXKeySymFactory {
 	 */
 	LyXKeySym * create();
 }
+
+} // namespace lyx
 
 #endif // LYXKEYSYM_FACTORY_H

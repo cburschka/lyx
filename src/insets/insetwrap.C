@@ -32,8 +32,8 @@
 
 #include "support/convert.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::endl;
@@ -69,7 +69,7 @@ void InsetWrap::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetWrapParams params;
-		InsetWrapMailer::string2params(lyx::to_utf8(cmd.argument()), params);
+		InsetWrapMailer::string2params(to_utf8(cmd.argument()), params);
 		params_.placement = params.placement;
 		params_.width     = params.width;
 		break;
@@ -182,12 +182,12 @@ docstring const InsetWrap::editMessage() const
 int InsetWrap::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
-	os << "\\begin{floating" << lyx::from_ascii(params_.type) << '}';
+	os << "\\begin{floating" << from_ascii(params_.type) << '}';
 	if (!params_.placement.empty())
-		os << '[' << lyx::from_ascii(params_.placement) << ']';
-	os << '{' << lyx::from_ascii(params_.width.asLatexString()) << "}%\n";
+		os << '[' << from_ascii(params_.placement) << ']';
+	os << '{' << from_ascii(params_.width.asLatexString()) << "}%\n";
 	int const i = InsetText::latex(buf, os, runparams);
-	os << "\\end{floating" << lyx::from_ascii(params_.type) << "}%\n";
+	os << "\\end{floating" << from_ascii(params_.type) << "}%\n";
 	return i + 2;
 }
 
@@ -196,9 +196,9 @@ int InsetWrap::docbook(Buffer const & buf, odocstream & os,
 		       OutputParams const & runparams) const
 {
         // FIXME UNICODE
-        os << '<' << lyx::from_ascii(params_.type) << '>';
+        os << '<' << from_ascii(params_.type) << '>';
 	int const i = InsetText::docbook(buf, os, runparams);
-	os << "</" << lyx::from_ascii(params_.type) << '>';
+	os << "</" << from_ascii(params_.type) << '>';
 	return i;
 }
 
@@ -224,7 +224,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
+void InsetWrap::addToToc(toc::TocList & toclist, Buffer const & buf) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
@@ -236,7 +236,7 @@ void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 			docstring const str =
 				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			lyx::toc::TocItem const item(pit, 0, str);
+			toc::TocItem const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}
@@ -291,3 +291,6 @@ string const InsetWrapMailer::params2string(InsetWrapParams const & params)
 	params.write(data);
 	return data.str();
 }
+
+
+} // namespace lyx

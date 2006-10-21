@@ -23,13 +23,16 @@
 
 #include <sstream>
 
-using lyx::support::compare_ascii_no_case;
-using lyx::support::isStrDbl;
-using lyx::support::isStrInt;
-using lyx::support::ltrim;
-using lyx::support::prefixIs;
-using lyx::support::subst;
-using lyx::support::trim;
+
+namespace lyx {
+
+using support::compare_ascii_no_case;
+using support::isStrDbl;
+using support::isStrInt;
+using support::ltrim;
+using support::prefixIs;
+using support::subst;
+using support::trim;
 
 using std::endl;
 using std::string;
@@ -147,7 +150,7 @@ string const LyXLex::getString() const
 }
 
 
-lyx::docstring const LyXLex::getDocString() const
+docstring const LyXLex::getDocString() const
 {
 	return pimpl_->getDocString();
 }
@@ -310,3 +313,6 @@ string const LyXLex::quoteString(string const & arg)
 	os << '"' << subst(subst(arg, "\\", "\\\\"), "\"", "\\\"") << '"';
 	return os.str();
 }
+
+
+} // namespace lyx

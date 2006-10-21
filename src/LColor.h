@@ -22,6 +22,9 @@
 #include <boost/scoped_ptr.hpp>
 #include <string>
 
+
+namespace lyx {
+
 /**
  * This is a stateless class.
  *
@@ -251,5 +254,8 @@ public:
 extern LColor lcolor;
 /// the system color definitions
 extern LColor system_lcolor;
+
+
+} // namespace lyx
 
 #endif

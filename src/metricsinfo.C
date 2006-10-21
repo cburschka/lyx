@@ -20,8 +20,8 @@
 
 #include <boost/assert.hpp>
 
-using lyx::char_type;
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 
@@ -202,3 +202,6 @@ ColorChanger::~ColorChanger()
 {
 	orig_.setColor(lcolor.getFromLyXName(save_));
 }
+
+
+} // namespace lyx

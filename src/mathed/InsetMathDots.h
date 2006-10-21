@@ -15,6 +15,8 @@
 #include "InsetMathDim.h"
 
 
+namespace lyx {
+
 class latexkeys;
 
 /// The different kinds of ellipsis
@@ -36,4 +38,7 @@ protected:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+} // namespace lyx
+
 #endif

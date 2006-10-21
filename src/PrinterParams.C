@@ -16,6 +16,9 @@
 
 #include <boost/assert.hpp>
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -79,3 +82,6 @@ void PrinterParams::testInvariant() const
 	}
 #endif
 }
+
+
+} // namespace lyx

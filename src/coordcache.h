@@ -14,18 +14,16 @@
 // It seems that MacOSX define the check macro.
 #undef check
 
-class InsetBase;
-class LyXText;
-class MathArray;
-class Paragraph;
-
 #include "support/types.h"
-
-#include <boost/assert.hpp>
 
 #include <map>
 
 namespace lyx {
+
+class InsetBase;
+class LyXText;
+class MathArray;
+class Paragraph;
 
 void lyxbreaker(void const * data, const char * hint, int size);
 
@@ -35,14 +33,7 @@ public:
 		: x_(0), y_(0)
 	{}
 
-	Point(int x, int y)
-		: x_(x), y_(y)
-	{
-		BOOST_ASSERT(x > -1000000);
-		BOOST_ASSERT(x <  1000000);
-		BOOST_ASSERT(y > -1000000);
-		BOOST_ASSERT(y <  1000000);
-	}
+	Point(int x, int y);
 
 	int x_, y_;
 };
@@ -114,10 +105,10 @@ private:
 class CoordCache {
 public:
 	void clear();
-	Point get(LyXText const *, lyx::pit_type);
+	Point get(LyXText const *, pit_type);
 
 	/// A map from paragraph index number to screen point
-	typedef std::map<lyx::pit_type, Point> InnerParPosCache;
+	typedef std::map<pit_type, Point> InnerParPosCache;
 	/// A map from a LyXText to the map of paragraphs to screen points
 	typedef std::map<LyXText const *, InnerParPosCache> ParPosCache;
 	/// A map from a CursorSlice to screen points

@@ -17,6 +17,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class VCS;
 class Buffer;
 
@@ -104,5 +107,8 @@ private:
 	///
 	boost::scoped_ptr<VCS> vcs;
 };
+
+
+} // namespace lyx
 
 #endif

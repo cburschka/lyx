@@ -18,8 +18,11 @@
 #include "paragraph.h"
 
 
+namespace lyx {
+
+
 FontIterator::FontIterator(LyXText const & text, Paragraph const & par,
-			   lyx::pos_type pos)
+			   pos_type pos)
 	: text_(text), par_(par), pos_(pos),
 	  font_(text.getFont(par, pos)),
 	  endspan_(par.fontSpan(pos).last),
@@ -48,3 +51,6 @@ FontIterator & FontIterator::operator++()
 	}
 	return *this;
 }
+
+
+} // namespace lyx

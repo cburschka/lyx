@@ -124,28 +124,13 @@ string const & Converter::convertedFile() const
 	return pimpl_->finished_ ? pimpl_->to_file_ : empty;
 }
 
-} // namespace graphics
-} // namespace lyx
-
-
-//------------------------------
-// Implementation details follow
-//------------------------------
-
-namespace {
-
 /** Build the conversion script.
  *  The script is output to the stream \p script.
  */
-void build_script(string const & from_file, string const & to_file_base,
+static void build_script(string const & from_file, string const & to_file_base,
 		  string const & from_format, string const & to_format,
 		  ostream & script);
 
-} // namespace anon
-
-
-namespace lyx {
-namespace graphics {
 
 Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		      string const & from_format, string const & to_format)
@@ -233,12 +218,8 @@ void Converter::Impl::converted(pid_t /* pid */, int retval)
 	}
 }
 
-} // namespace graphics
-} // namespace lyx
 
-namespace {
-
-string const move_file(string const & from_file, string const & to_file)
+static string const move_file(string const & from_file, string const & to_file)
 {
 	if (from_file == to_file)
 		return string();
@@ -259,7 +240,7 @@ string const move_file(string const & from_file, string const & to_file)
 }
 
 
-void build_conversion_command(string const & command, ostream & script)
+static void build_conversion_command(string const & command, ostream & script)
 {
 	// Store in the python script
 	script << "\nif os.system(r'" << command << "') != 0:\n";
@@ -288,7 +269,7 @@ void build_conversion_command(string const & command, ostream & script)
 }
 
 
-void build_script(string const & from_file,
+static void build_script(string const & from_file,
 		  string const & to_file_base,
 		  string const & from_format,
 		  string const & to_format,
@@ -377,7 +358,7 @@ void build_script(string const & from_file,
 	EdgePath::const_iterator end = edgepath.end();
 
 	for (; it != end; ++it) {
-		::Converter const & conv = converters.get(*it);
+		lyx::Converter const & conv = converters.get(*it);
 
 		// Build the conversion command
 		string const infile      = outfile;
@@ -405,4 +386,6 @@ void build_script(string const & from_file,
 	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
 }
 
-} // namespace anon
+} // namespace graphics
+
+} // namespace lyx

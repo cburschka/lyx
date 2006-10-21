@@ -21,6 +21,9 @@
 #include <cerrno>
 #include <iomanip>
 
+
+namespace lyx {
+
 using std::endl;
 
 #ifdef WORDS_BIGENDIAN
@@ -221,3 +224,6 @@ ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls)
 	return iconv_convert<char>(&cd, "UTF-8", ucs4_codeset,
 				   ucs4str, ls);
 }
+
+
+} // namespace lyx

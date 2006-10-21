@@ -14,6 +14,9 @@
 #include "exporter.h"
 
 
+namespace lyx {
+
+
 OutputParams::OutputParams()
 	: flavor(LATEX), nice(false), moving_arg(false),
 	  local_font(0), free_spacing(false), use_babel(false),
@@ -27,3 +30,6 @@ OutputParams::OutputParams()
 
 OutputParams::~OutputParams()
 {}
+
+
+} // namespace lyx

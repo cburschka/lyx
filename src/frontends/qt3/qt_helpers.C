@@ -28,6 +28,9 @@
 #include <algorithm>
 
 
+namespace lyx {
+
+
 using lyx::support::isStrDbl;
 using lyx::char_type;
 using lyx::docstring;
@@ -237,3 +240,6 @@ docstring const formatted(docstring const & text, int w)
 
 	return sout;
 }
+
+
+} // namespace lyx

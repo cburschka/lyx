@@ -15,6 +15,9 @@
 #include <iostream>
 #include <sstream>
 
+
+namespace lyx {
+
 using std::cerr;
 using std::endl;
 using std::fill;
@@ -512,3 +515,6 @@ CatCode Parser::getCatCode(char c) const
 {
 	return theCatcode[(unsigned char)c];
 }
+
+
+} // namespace lyx

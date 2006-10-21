@@ -18,6 +18,9 @@
 #include <vector>
 
 
+namespace lyx {
+
+
 class LyXLex;
 
 
@@ -35,7 +38,7 @@ public:
 	};
 
 	/// action, tooltip
-	typedef std::pair<FuncRequest, lyx::docstring> Item;
+	typedef std::pair<FuncRequest, docstring> Item;
 
 	/// the toolbar items
 	typedef std::vector<Item> Items;
@@ -71,13 +74,9 @@ public:
 	ToolbarBackend();
 
 	/// iterator for all toolbars
-	Toolbars::const_iterator begin() const {
-		return usedtoolbars.begin();
-	}
+	Toolbars::const_iterator begin() const { return usedtoolbars.begin(); }
 
-	Toolbars::const_iterator end() const {
-		return usedtoolbars.end();
-	}
+	Toolbars::const_iterator end() const { return usedtoolbars.end(); }
 
 	/// read a toolbar from the file
 	void read(LyXLex &);
@@ -91,7 +90,7 @@ public:
 private:
 	/// add the given lfun with tooltip if relevant
 	void add(Toolbar & tb, FuncRequest const &,
-		 lyx::docstring const & tooltip = lyx::docstring());
+		 docstring const & tooltip = docstring());
 
 	/// all the toolbars
 	Toolbars toolbars;
@@ -103,5 +102,8 @@ private:
 /// The global instance
 extern ToolbarBackend toolbarbackend;
 
+
+
+} // namespace lyx
 
 #endif // TOOLBAR_BACKEND_H

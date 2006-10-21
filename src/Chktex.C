@@ -24,10 +24,13 @@
 
 #include <fstream>
 
-using lyx::support::changeExtension;
-using lyx::support::onlyFilename;
-using lyx::support::split;
-using lyx::support::Systemcall;
+
+namespace lyx {
+
+using support::changeExtension;
+using support::onlyFilename;
+using support::split;
+using support::Systemcall;
 
 using std::getline;
 using std::string;
@@ -64,9 +67,9 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string const tmp = onlyFilename(changeExtension(file, ".log"));
 
 #if USE_BOOST_FORMAT
-	boost::format msg(lyx::to_utf8(_("ChkTeX warning id # %1$d")));
+	boost::format msg(to_utf8(_("ChkTeX warning id # %1$d")));
 #else
-	string const msg(lyx::to_utf8(_("ChkTeX warning id # ")));
+	string const msg(to_utf8(_("ChkTeX warning id # ")));
 #endif
 	ifstream ifs(tmp.c_str());
 	while (getline(ifs, token)) {
@@ -95,3 +98,6 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	}
 	return retval;
 }
+
+
+} // namespace lyx

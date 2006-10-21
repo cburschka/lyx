@@ -15,6 +15,9 @@
 
 #include "MathData.h"
 
+
+namespace lyx {
+
 class ReplaceData {
 public:
 	///
@@ -22,5 +25,8 @@ public:
 	///
 	MathArray to;
 };
+
+
+} // namespace lyx
 
 #endif

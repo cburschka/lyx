@@ -22,9 +22,8 @@
 
 #include <sstream>
 
-using lyx::odocstream;
 
-using lyx::odocstream;
+namespace lyx {
 
 using std::string;
 using std::istringstream;
@@ -104,7 +103,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p(p_.getCmdName());
-		InsetCommandMailer::string2params(mailer_name_, lyx::to_utf8(cmd.argument()), p);
+		InsetCommandMailer::string2params(mailer_name_, to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty())
 			cur.noUpdate();
 		else
@@ -113,7 +112,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
-		string const name = lyx::to_utf8(cmd.argument());
+		string const name = to_utf8(cmd.argument());
 		InsetCommandMailer(name, *this).updateDialog(&cur.bv());
 		break;
 	}
@@ -209,3 +208,6 @@ InsetCommandMailer::params2string(string const & name,
 	data << "\\end_inset\n";
 	return data.str();
 }
+
+
+} // namespace lyx

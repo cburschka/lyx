@@ -13,13 +13,15 @@
 #define QPREFS_H
 
 #include "QDialogView.h"
+
 #include <vector>
+
+namespace lyx {
 
 class Converters;
 class Formats;
 class Movers;
 
-namespace lyx {
 namespace frontend {
 
 class QPrefsDialog;

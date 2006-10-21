@@ -8,7 +8,7 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * lyx::graphics::RenderPreview is an abstract base class that can help
+ * graphics::RenderPreview is an abstract base class that can help
  * insets to generate previews. The daughter class must instantiate two small
  * methods. The Inset would own an instance of this daughter class.
  */
@@ -25,19 +25,19 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
+namespace lyx {
+
 class Buffer;
 class LyXRC_PreviewStatus;
 class MetricsInfo;
 class PainterInfo;
 
-namespace lyx {
 namespace graphics {
 
 class PreviewImage;
 class PreviewLoader;
 
 } // namespace graphics
-} // namespace lyx
 
 
 class RenderPreview : public RenderBase, public boost::signals::trackable {
@@ -57,13 +57,13 @@ public:
 	/** Find the PreviewLoader and add a LaTeX snippet to it.
 	 *  Do not start the loading process.
 	 */
-	void addPreview(lyx::docstring const & latex_snippet, Buffer const &);
+	void addPreview(docstring const & latex_snippet, Buffer const &);
 
 	/** Add a LaTeX snippet to the PreviewLoader.
 	 *  Do not start the loading process.
 	 */
-	void addPreview(lyx::docstring const & latex_snippet,
-			lyx::graphics::PreviewLoader & ploader);
+	void addPreview(docstring const & latex_snippet,
+			graphics::PreviewLoader & ploader);
 
 	/// Begin the loading process.
 	void startLoading(Buffer const & buffer) const;
@@ -76,7 +76,7 @@ public:
 	/** \returns a pointer to the PreviewImage associated with this snippet
 	 *  of latex.
 	 */
-	lyx::graphics::PreviewImage const *
+	graphics::PreviewImage const *
 	getPreviewImage(Buffer const & buffer) const;
 
 	/// equivalent to dynamic_cast
@@ -87,7 +87,7 @@ private:
 	RenderPreview & operator=(RenderPreview const &);
 
 	/// This method is connected to the PreviewLoader::imageReady signal.
-	void imageReady(lyx::graphics::PreviewImage const &);
+	void imageReady(graphics::PreviewImage const &);
 
 	/// The thing that we're trying to generate a preview of.
 	std::string snippet_;
@@ -114,9 +114,8 @@ public:
 	void startMonitoring() const { monitor_.start(); }
 	void stopMonitoring() const { monitor_.stop(); }
 
-
 	/// Connect and you'll be informed when the file changes.
-	typedef lyx::support::FileMonitor::slot_type slot_type;
+	typedef support::FileMonitor::slot_type slot_type;
 	boost::signals::connection fileChanged(slot_type const &);
 
 	/// equivalent to dynamic_cast
@@ -124,7 +123,9 @@ public:
 
 private:
 	///
-	mutable lyx::support::FileMonitor monitor_;
+	mutable support::FileMonitor monitor_;
 };
+
+} // namespace lyx
 
 #endif // RENDERPREVIEW_H

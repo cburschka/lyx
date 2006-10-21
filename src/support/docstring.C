@@ -68,8 +68,6 @@ std::string const to_utf8(docstring const & ucs4)
 	return std::string(utf8.begin(), utf8.end());
 }
 
-}
-
 
 bool operator==(lyx::docstring const & l, char const * r)
 {
@@ -139,6 +137,7 @@ lyx::docstring & operator+=(lyx::docstring & l, char r)
 	return l;
 }
 
+} // namespace lyx
 
 #if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)
 

@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
+
 class LaTeXFeatures;
 
 class InsetMathCases : public InsetMathGrid {
@@ -44,5 +47,8 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

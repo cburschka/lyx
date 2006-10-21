@@ -15,10 +15,16 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 class Paragraph;
 class Row;
 
 bool hfillExpansion(Paragraph const & par, Row const & row,
-	lyx::pos_type pos);
+	pos_type pos);
+
+
+} // namespace lyx
 
 #endif

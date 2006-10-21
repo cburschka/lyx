@@ -18,10 +18,11 @@
 
 #include <map>
 
+namespace lyx {
+
 class LyXView;
 class BufferView;
 
-namespace lyx {
 namespace frontend {
 
 class WorkArea;

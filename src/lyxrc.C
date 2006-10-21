@@ -40,15 +40,17 @@
 #include "support/os.h"
 #include "support/userinfo.h"
 
-namespace os = lyx::support::os;
 
-using lyx::docstring;
-using lyx::support::ascii_lowercase;
-using lyx::support::bformat;
-using lyx::support::expandPath;
-using lyx::support::getEnv;
-using lyx::support::libFileSearch;
-using lyx::support::token;
+namespace lyx {
+
+namespace os = support::os;
+
+using support::ascii_lowercase;
+using support::bformat;
+using support::expandPath;
+using support::getEnv;
+using support::libFileSearch;
+using support::token;
 
 using std::cout;
 using std::endl;
@@ -256,7 +258,7 @@ void LyXRC::setDefaults() {
 	load_session = false;
 	make_backup = true;
 	backupdir_path.erase();
-	display_graphics = lyx::graphics::ColorDisplay;
+	display_graphics = graphics::ColorDisplay;
 	// Spellchecker settings:
 	use_spell_lib = true;
 	isp_command = "ispell";
@@ -288,9 +290,9 @@ void LyXRC::setDefaults() {
 	preview_hashed_labels  = false;
 	preview_scale_factor = "0.9";
 
-	user_name = lyx::support::user_name();
+	user_name = support::user_name();
 
-	user_email = lyx::support::user_email();
+	user_email = support::user_email();
 }
 
 
@@ -392,7 +394,7 @@ int LyXRC::read(LyXLex & lexrc)
 
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next()) {
-				display_graphics = lyx::graphics::displayTranslator().find(lexrc.getString());
+				display_graphics = graphics::displayTranslator().find(lexrc.getString());
 			}
 			break;
 
@@ -1100,7 +1102,7 @@ int LyXRC::read(LyXLex & lexrc)
 			int flgs = Format::none;
 			while (!flags.empty()) {
 				string flag;
-				flags = lyx::support::split(flags, flag, ',');
+				flags = support::split(flags, flag, ',');
 				if (flag == "document")
 					flgs |= Format::document;
 				else if (flag == "vector")
@@ -1313,7 +1315,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			os << "# Display graphics within LyX\n"
 			   << "# monochrome|grayscale|color|none\n"
 			   << "\\display_graphics "
-			   << lyx::graphics::displayTranslator().find(display_graphics)
+			   << graphics::displayTranslator().find(display_graphics)
 			   << '\n';
 		}
 
@@ -2032,7 +2034,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 					flags.push_back("document");
 				if (cit->vectorFormat())
 					flags.push_back("vector");
-				os << lyx::support::getStringFromVector(flags);
+				os << support::getStringFromVector(flags);
 				os << "\"\n";
 			}
 		}
@@ -2517,7 +2519,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 	}
 
-				   return lyx::to_utf8(str);
+				   return to_utf8(str);
 }
 
 // The global instance
@@ -2525,3 +2527,6 @@ LyXRC lyxrc;
 
 // The global copy of the system lyxrc entries (everything except preferences)
 LyXRC system_lyxrc;
+
+
+} // namespace lyx

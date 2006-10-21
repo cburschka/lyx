@@ -26,7 +26,7 @@
 #include <boost/bind.hpp>
 
 
-namespace support = lyx::support;
+namespace lyx {
 
 using support::changeExtension;
 using support::FileMonitor;
@@ -42,7 +42,6 @@ using std::endl;
 using std::string;
 
 
-namespace lyx {
 namespace graphics {
 
 class CacheItem::Impl : public boost::signals::trackable {
@@ -323,13 +322,7 @@ void CacheItem::Impl::imageLoaded(bool success)
 }
 
 
-} // namespace graphics
-} // namespace lyx
-
-
-namespace {
-
-string const findTargetFormat(string const & from)
+static string const findTargetFormat(string const & from)
 {
 	typedef lyx::graphics::Image::FormatList FormatList;
 	FormatList const formats = lyx::graphics::Image::loadableFormats();
@@ -366,11 +359,6 @@ string const findTargetFormat(string const & from)
 	return string("ppm");
 }
 
-} // anon namespace
-
-
-namespace lyx {
-namespace graphics {
 
 void CacheItem::Impl::convertToDisplayFormat()
 {

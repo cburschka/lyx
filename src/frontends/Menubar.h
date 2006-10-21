@@ -15,6 +15,9 @@
 
 #include "support/docstring.h"
 
+
+namespace lyx {
+
 /**
  * The LyX GUI independent menubar class
  * The GUI interface is implemented in the frontends
@@ -24,8 +27,11 @@ public:
 	///
 	virtual ~Menubar() {}
 	/// Opens a top-level submenu given its name
-	virtual void openByName(lyx::docstring const &) = 0;
+	virtual void openByName(docstring const &) = 0;
 	/// update the state of the menuitems
 	virtual void update() = 0;
 };
+
+} // namespace lyx
+
 #endif // MENUBAR_H

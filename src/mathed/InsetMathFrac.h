@@ -16,6 +16,9 @@
 #include "InsetMathFracBase.h"
 
 
+namespace lyx {
+
+
 /// Fraction like objects (frac, binom)
 class InsetMathFrac : public InsetMathFracBase {
 public:
@@ -64,4 +67,7 @@ public:
 	Kind kind_;
 };
 
+
+
+} // namespace lyx
 #endif

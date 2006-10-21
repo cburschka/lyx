@@ -16,9 +16,10 @@
 #include "Dialog.h"
 #include <vector>
 
+namespace lyx {
+
 class InsetNoteParams;
 
-namespace lyx {
 namespace frontend {
 
 class ControlNote : public Dialog::Controller {

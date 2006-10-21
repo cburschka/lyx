@@ -21,8 +21,10 @@
 
 #include "frontends/Painter.h"
 
-using lyx::odocstream;
-using lyx::frontend::Painter;
+
+namespace lyx {
+
+using frontend::Painter;
 
 using std::endl;
 using std::ostream;
@@ -60,7 +62,7 @@ int InsetLine::latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const
 {
 	os << "\\lyxline{\\"
-	   << lyx::from_ascii(runparams.local_font->latexSize()) << '}';
+	   << from_ascii(runparams.local_font->latexSize()) << '}';
 	return 0;
 }
 
@@ -85,3 +87,6 @@ void InsetLine::validate(LaTeXFeatures & features) const
 {
 	features.require("lyxline");
 }
+
+
+} // namespace lyx

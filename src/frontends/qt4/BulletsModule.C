@@ -20,6 +20,8 @@
 
 #include <boost/assert.hpp>
 
+namespace lyx {
+
 using lyx::support::libFileSearch;
 
 using std::string;
@@ -196,4 +198,8 @@ Bullet const & BulletsModule::getBullet(int level) const
 }
 
 
+} // namespace lyx
+
+
 #include "BulletsModule_moc.cpp"
+

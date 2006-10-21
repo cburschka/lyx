@@ -24,6 +24,9 @@
 #include <vector>
 #include <set>
 
+
+namespace lyx {
+
 class DepTable;
 
 ///
@@ -128,7 +131,7 @@ public:
 	};
 
 	/// This signal emits an informative message
-	boost::signal<void(lyx::docstring)> message;
+	boost::signal<void(docstring)> message;
 
 
 	/**
@@ -197,5 +200,8 @@ private:
 	///
 	OutputParams runparams;
 };
+
+
+} // namespace lyx
 
 #endif

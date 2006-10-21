@@ -29,7 +29,8 @@
 
 #include <algorithm>
 
-using lyx::pit_type;
+
+namespace lyx {
 
 using std::advance;
 using std::endl;
@@ -170,7 +171,7 @@ bool textUndoOrRedo(BufferView & bv,
 		// all math inset cells have just one paragraph!)
 		//lyxerr << "undo.array=" << undo.array <<endl;
 		// FIXME UNICODE
-		asArray(lyx::from_utf8(undo.array), dit.cell());
+		asArray(from_utf8(undo.array), dit.cell());
 	} else {
 		// Some finer machinery is needed here.
 		LyXText * text = dit.text();
@@ -292,3 +293,6 @@ void recordUndoFullDocument(BufferView * bv)
 	);
 	undo_finished = false;
 }
+
+
+} // namespace lyx

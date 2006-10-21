@@ -15,6 +15,9 @@
 #include "InsetMath.h"
 #include "dimension.h"
 
+
+namespace lyx {
+
 class PainterInfo;
 
 
@@ -40,5 +43,8 @@ protected:
 	///
 	mutable Dimension dim_;
 };
+
+
+} // namespace lyx
 
 #endif

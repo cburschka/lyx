@@ -71,3 +71,9 @@ void LengthCombo::noPercents()
 }
 
 #include "lengthcombo_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

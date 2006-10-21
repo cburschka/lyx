@@ -114,3 +114,9 @@ void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 */
 
 #include "emptytable_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

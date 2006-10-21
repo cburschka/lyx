@@ -23,6 +23,9 @@
 
 #include <boost/scoped_ptr.hpp>
 
+
+namespace lyx {
+
 class LyXLayout;
 
 
@@ -39,34 +42,34 @@ public:
 	// Change tracking
 	//
 	/// look up change at given pos
-	Change const lookupChange(lyx::pos_type pos) const;
+	Change const lookupChange(pos_type pos) const;
 	/// is there a change within the given range ?
-	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
+	bool isChanged(pos_type start, pos_type end) const;
         /// set change for the entire par
         void setChange(Change const & change);
 	/// set change at given pos
-	void setChange(lyx::pos_type pos, Change const & change);
+	void setChange(pos_type pos, Change const & change);
 	/// accept change
-	void acceptChange(lyx::pos_type start, lyx::pos_type end);
+	void acceptChange(pos_type start, pos_type end);
 	/// reject change
-	void rejectChange(lyx::pos_type start, lyx::pos_type end);
+	void rejectChange(pos_type start, pos_type end);
 	/// are we tracking changes ?
 	bool tracking() const { return changes_.get(); }
 
 	///
-	value_type getChar(lyx::pos_type pos) const;
+	value_type getChar(pos_type pos) const;
 	///
-	void setChar(lyx::pos_type pos, value_type c);
+	void setChar(pos_type pos, value_type c);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, Change const & change);
+	void insertChar(pos_type pos, value_type c, Change const & change);
 	///
-	void insertInset(lyx::pos_type pos, InsetBase * inset, Change const & change);
+	void insertInset(pos_type pos, InsetBase * inset, Change const & change);
 	/// definite erase
-	void erase(lyx::pos_type pos);
+	void erase(pos_type pos);
 	/// erase the given position. Returns true if it was actually erased
-	bool erase(lyx::pos_type pos, bool trackChanges);
+	bool erase(pos_type pos, bool trackChanges);
 	/// erase the given range
-	int erase(lyx::pos_type start, lyx::pos_type end, bool trackChanges);
+	int erase(pos_type start, pos_type end, bool trackChanges);
 	///
 	InsetBase * inset_owner;
 
@@ -84,20 +87,20 @@ public:
 	class FontTable  {
 	public:
 		///
-		FontTable(lyx::pos_type p, LyXFont const & f)
+		FontTable(pos_type p, LyXFont const & f)
 			: pos_(p), font_(f)
 		{}
 		///
-		lyx::pos_type pos() const { return pos_; }
+		pos_type pos() const { return pos_; }
 		///
-		void pos(lyx::pos_type p) { pos_ = p; }
+		void pos(pos_type p) { pos_ = p; }
 		///
 		LyXFont const & font() const { return font_; }
 		///
 		void font(LyXFont const & f) { font_ = f;}
 	private:
 		/// End position of paragraph this font attribute covers
-		lyx::pos_type pos_;
+		pos_type pos_;
 		/** Font. Interpretation of the font values:
 		    If a value is LyXFont::INHERIT_*, it means that the font
 		    attribute is inherited from either the layout of this
@@ -126,14 +129,14 @@ public:
 	FontList fontlist;
 
 	///
-	void simpleTeXBlanks(lyx::odocstream &, TexRow & texrow,
-			     lyx::pos_type const i,
+	void simpleTeXBlanks(odocstream &, TexRow & texrow,
+			     pos_type const i,
 			     unsigned int & column,
 			     LyXFont const & font,
 			     LyXLayout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
-				   lyx::odocstream &, TexRow & texrow,
+				   odocstream &, TexRow & texrow,
 				   OutputParams const &,
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont,
@@ -141,7 +144,7 @@ public:
 				   bool & open_font,
 				   Change::Type & running_change,
 				   LyXLayout const & style,
-				   lyx::pos_type & i,
+				   pos_type & i,
 				   unsigned int & column, value_type const c);
 
 	///
@@ -157,9 +160,9 @@ public:
 
 private:
 	///
-	lyx::pos_type size() const { return owner_->size(); }
+	pos_type size() const { return owner_->size(); }
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(std::string const & str, lyx::pos_type pos) const;
+	bool isTextAt(std::string const & str, pos_type pos) const;
 
 	/// for recording and looking up changes in revision tracking mode
 	boost::scoped_ptr<Changes> changes_;
@@ -167,5 +170,8 @@ private:
 	/// Who owns us?
 	Paragraph * owner_;
 };
+
+
+} // namespace lyx
 
 #endif

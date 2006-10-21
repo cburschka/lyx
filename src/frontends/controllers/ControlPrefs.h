@@ -21,9 +21,10 @@
 #include <string>
 #include <vector>
 
+namespace lyx {
+
 class LColor_color;
 
-namespace lyx {
 namespace frontend {
 
 class ControlPrefs : public Dialog::Controller {

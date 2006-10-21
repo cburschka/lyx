@@ -21,6 +21,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class LyXLex;
 class LyXTextClass;
 
@@ -225,5 +228,8 @@ private:
 	/// Macro definitions needed for this layout
 	std::string preamble_;
 };
+
+
+} // namespace lyx
 
 #endif

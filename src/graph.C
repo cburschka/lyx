@@ -15,6 +15,9 @@
 
 #include <algorithm>
 
+
+namespace lyx {
+
 using std::vector;
 using std::reverse;
 using std::fill;
@@ -197,3 +200,6 @@ void Graph::addEdge(int s, int t)
 }
 
 vector<Graph::Vertex> Graph::vertices_;
+
+
+} // namespace lyx

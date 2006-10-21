@@ -17,6 +17,9 @@
 #include "Bullet.h"
 #include <boost/array.hpp>
 
+
+namespace lyx {
+
 class QBrowseBox;
 class QPushButton;
 class QComboBox;
@@ -87,5 +90,8 @@ private:
 	QBrowseBox * ding4_;
 	Bullet * bullet_pressed_;
 };
+
+
+} // namespace lyx
 
 #endif // BULLETSMODULE_H

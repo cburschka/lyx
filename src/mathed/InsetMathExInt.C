@@ -20,6 +20,9 @@
 #include <boost/scoped_ptr.hpp>
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 using std::endl;
@@ -142,3 +145,6 @@ void InsetMathExInt::write(WriteStream &) const
 {
 	lyxerr << "should not happen" << endl;
 }
+
+
+} // namespace lyx

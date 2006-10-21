@@ -26,16 +26,13 @@ public:
 	///
 	QCitation(Dialog &);
 	/// Available keys
-	QStringListModel * available()
-	{ return &available_keys_; }
+	QStringListModel * available() { return &available_keys_; }
 
 	/// Selected keys
-	QStringListModel * selected()
-	{ return &selected_keys_; }
+	QStringListModel * selected() { return &selected_keys_; }
 
 	/// Found keys
-	QStringListModel * found()
-	{ return &found_keys_; }
+	QStringListModel * found() { return &found_keys_; }
 
 	/// Text before cite
 	QString textBefore();

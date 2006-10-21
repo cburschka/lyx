@@ -46,13 +46,12 @@
 
 #include <sstream>
 
-namespace support = lyx::support;
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::bformat;
-using lyx::support::rtrim;
-using lyx::support::tokenPos;
+namespace lyx {
+
+using support::bformat;
+using support::rtrim;
+using support::tokenPos;
 
 using std::endl;
 using std::string;
@@ -62,7 +61,6 @@ using std::ostringstream;
 using std::pair;
 
 namespace Alert = lyx::frontend::Alert;
-namespace biblio = lyx::biblio;
 
 
 // Local translators
@@ -433,7 +431,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		if (!getLyXTextClass().isTeXClassAvailable()) {
 			docstring const msg =
 				bformat(_("The document uses a missing "
-						       "TeX class \"%1$s\".\n"), lyx::from_utf8(classname));
+						       "TeX class \"%1$s\".\n"), from_utf8(classname));
 			Alert::warning(_("Document class not available"),
 				       msg + _("LyX will not be able to produce output."));
 		}
@@ -811,10 +809,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (!strOptions.empty()) {
 		strOptions = rtrim(strOptions, ",");
 		// FIXME UNICODE
-		os << '[' << lyx::from_utf8(strOptions) << ']';
+		os << '[' << from_utf8(strOptions) << ']';
 	}
 
-	os << '{' << lyx::from_ascii(tclass.latexname()) << "}\n";
+	os << '{' << from_ascii(tclass.latexname()) << "}\n";
 	texrow.newline();
 	// end of \documentclass defs
 
@@ -824,15 +822,15 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			  fontsTypewriter, fontsSC, fontsOSF,
 			  fontsSansScale, fontsTypewriterScale);
 	if (!fonts.empty()) {
-		os << lyx::from_ascii(fonts);
+		os << from_ascii(fonts);
 		texrow.newline();
 	}
 	if (fontsDefaultFamily != "default")
 		os << "\\renewcommand{\\familydefault}{\\"
-		   << lyx::from_ascii(fontsDefaultFamily) << "}\n";
+		   << from_ascii(fontsDefaultFamily) << "}\n";
 	// this one is not per buffer
 	if (lyxrc.fontenc != "default") {
-		os << "\\usepackage[" << lyx::from_ascii(lyxrc.fontenc)
+		os << "\\usepackage[" << from_ascii(lyxrc.fontenc)
 		   << "]{fontenc}\n";
 		texrow.newline();
 	}
@@ -855,11 +853,11 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			std::set<string>::const_iterator it = encodings.begin();
 			std::set<string>::const_iterator const end = encodings.end();
 			for (; it != end; ++it)
-				os << lyx::from_ascii(*it) << ',';
-			os << lyx::from_ascii(doc_encoding) << "]{inputenc}\n";
+				os << from_ascii(*it) << ',';
+			os << from_ascii(doc_encoding) << "]{inputenc}\n";
 			texrow.newline();
 		} else if (inputenc != "default") {
-			os << "\\usepackage[" << lyx::from_ascii(inputenc)
+			os << "\\usepackage[" << from_ascii(inputenc)
 			   << "]{inputenc}\n";
 			texrow.newline();
 		}
@@ -875,10 +873,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		case PAPER_CUSTOM:
 			if (!paperwidth.empty())
 				os << ",paperwidth="
-				   << lyx::from_ascii(paperwidth);
+				   << from_ascii(paperwidth);
 			if (!paperheight.empty())
 				os << ",paperheight="
-				   << lyx::from_ascii(paperheight);
+				   << from_ascii(paperheight);
 			break;
 		case PAPER_USLETTER:
 			os << ",letterpaper";
@@ -939,19 +937,19 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			}
 		}
 		if (!topmargin.empty())
-			os << ",tmargin=" << lyx::from_ascii(topmargin);
+			os << ",tmargin=" << from_ascii(topmargin);
 		if (!bottommargin.empty())
-			os << ",bmargin=" << lyx::from_ascii(bottommargin);
+			os << ",bmargin=" << from_ascii(bottommargin);
 		if (!leftmargin.empty())
-			os << ",lmargin=" << lyx::from_ascii(leftmargin);
+			os << ",lmargin=" << from_ascii(leftmargin);
 		if (!rightmargin.empty())
-			os << ",rmargin=" << lyx::from_ascii(rightmargin);
+			os << ",rmargin=" << from_ascii(rightmargin);
 		if (!headheight.empty())
-			os << ",headheight=" << lyx::from_ascii(headheight);
+			os << ",headheight=" << from_ascii(headheight);
 		if (!headsep.empty())
-			os << ",headsep=" << lyx::from_ascii(headsep);
+			os << ",headsep=" << from_ascii(headsep);
 		if (!footskip.empty())
-			os << ",footskip=" << lyx::from_ascii(footskip);
+			os << ",footskip=" << from_ascii(footskip);
 		os << "}\n";
 		texrow.newline();
 	}
@@ -962,7 +960,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << "\\usepackage{fancyhdr}\n";
 			texrow.newline();
 		}
-		os << "\\pagestyle{" << lyx::from_ascii(pagestyle) << "}\n";
+		os << "\\pagestyle{" << from_ascii(pagestyle) << "}\n";
 		texrow.newline();
 	}
 
@@ -995,7 +993,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			break;
 		case VSpace::LENGTH:
 			os << "\\setlength\\parskip{"
-			   << lyx::from_ascii(getDefSkip().length().asLatexString())
+			   << from_ascii(getDefSkip().length().asLatexString())
 			   << "}\n";
 			break;
 		default: // should never happen // Then delete it.
@@ -1010,9 +1008,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// If we use jurabib, we have to call babel here.
 	if (use_babel && features.isRequired("jurabib")) {
-		os << lyx::from_ascii(babelCall(language_options.str()))
+		os << from_ascii(babelCall(language_options.str()))
 		   << '\n'
-		   << lyx::from_ascii(features.getBabelOptions());
+		   << from_ascii(features.getBabelOptions());
 		texrow.newline();
 	}
 
@@ -1111,7 +1109,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	// FIXME UNICODE
-	os << lyx::from_utf8(lyxpreamble);
+	os << from_utf8(lyxpreamble);
 	return use_babel;
 }
 
@@ -1449,3 +1447,6 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 
 	return os.str();
 }
+
+
+} // namespace lyx

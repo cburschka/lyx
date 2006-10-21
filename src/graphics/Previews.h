@@ -18,10 +18,11 @@
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 
+namespace lyx {
+
 class Buffer;
 class LyXRC_PreviewStatus;
 
-namespace lyx {
 namespace graphics {
 
 class PreviewLoader;

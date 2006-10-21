@@ -19,6 +19,9 @@
 #include "support/convert.h"
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -66,3 +69,6 @@ void InsetMathSize::infoize(std::ostream & os) const
 {
 	os << "Size: " << key_->name;
 }
+
+
+} // namespace lyx

@@ -25,6 +25,9 @@
 #include <boost/assert.hpp>
 
 
+namespace lyx {
+
+
 void GXpmBtnTbl::GXpmBtn::setXpm(XpmData xpm)
 {
 	Glib::RefPtr<Gdk::Colormap> clrmap = get_colormap();
@@ -180,3 +183,6 @@ void buttonSetXpm(Gtk::Button * btn, char const ** xpm)
 	image->show();
 	btn->add(*image);
 }
+
+
+} // namespace lyx

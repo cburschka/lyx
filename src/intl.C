@@ -18,6 +18,9 @@
 #include "lyxrc.h"
 
 
+namespace lyx {
+
+
 using std::endl;
 
 
@@ -93,3 +96,6 @@ void Intl::initKeyMapper(bool on)
 	if (keymapon)
 		keyMapPrim();
 }
+
+
+} // namespace lyx

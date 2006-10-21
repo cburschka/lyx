@@ -16,6 +16,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 /// The general n-th root inset.
 class InsetMathRoot : public InsetMathNest {
 public:
@@ -42,4 +45,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

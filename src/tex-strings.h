@@ -13,7 +13,7 @@
 #ifndef TEX_STRINGS
 #define TEX_STRINGS
 
-// this file should perhaps be split into even smaler parts
+namespace lyx {
 
 ///
 extern char const * const string_paragraph_separation[];
@@ -47,5 +47,8 @@ extern char const * tex_fonts_sans_gui[];
 extern char const * const tex_fonts_monospaced[];
 ///
 extern char const * tex_fonts_monospaced_gui[];
+
+
+} // namespace lyx
 
 #endif

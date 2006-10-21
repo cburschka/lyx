@@ -20,11 +20,8 @@
 #include <vector>
 
 namespace lyx {
-namespace support {
 
-class FileFilterList;
-
-} // namespace support
+namespace support { class FileFilterList; }
 
 
 namespace frontend {
@@ -37,10 +34,10 @@ public:
 	ControlBibtex(Dialog &);
 
 	/// Browse for a .bib file
-	lyx::docstring const browseBib(lyx::docstring const & in_name) const;
+	docstring const browseBib(docstring const & in_name) const;
 
 	/// Browse for a .bst file
-	lyx::docstring const browseBst(lyx::docstring const & in_name) const;
+	docstring const browseBst(docstring const & in_name) const;
 
 	/// get the list of bst files
 	void getBibStyles(std::vector<std::string> & data) const;

@@ -16,6 +16,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 /// Inset for \\bigl & Co.
 class InsetMathBig : public InsetMathDim {
 public:
@@ -48,5 +51,8 @@ private:
 	/// ( or [ or \\Vert...
 	std::string const delim_;
 };
+
+
+} // namespace lyx
 
 #endif

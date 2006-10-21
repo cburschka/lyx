@@ -15,6 +15,8 @@
 #include "socket_callback.h"
 
 
+namespace lyx {
+
 socket_callback::socket_callback(int fd, boost::function<void()> func)
 	: func_(func)
 {
@@ -27,5 +29,7 @@ void socket_callback::data_received()
 {
 	func_();
 }
+
+} // namespace lyx
 
 #include "socket_callback_moc.cpp"

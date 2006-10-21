@@ -15,6 +15,9 @@
 
 #include "insetcommand.h"
 
+
+namespace lyx {
+
 class LaTeXFeatures;
 
 /** The url inset
@@ -29,27 +32,30 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	bool display() const { return false; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
 		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
 	}
 };
+
+
+} // namespace lyx
 
 #endif

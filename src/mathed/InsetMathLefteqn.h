@@ -15,6 +15,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 /// Support for LaTeX's \\lefteqn command
 
 class InsetMathLefteqn : public InsetMathNest {
@@ -32,4 +35,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 #endif

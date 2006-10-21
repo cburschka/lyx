@@ -26,6 +26,9 @@
 #include <boost/assert.hpp>
 #include <boost/current_function.hpp>
 
+
+namespace lyx {
+
 using std::endl;
 
 
@@ -181,13 +184,13 @@ Row const & DocIterator::textRow() const
 }
 
 
-DocIterator::pit_type DocIterator::lastpit() const
+pit_type DocIterator::lastpit() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;
 }
 
 
-DocIterator::pos_type DocIterator::lastpos() const
+pos_type DocIterator::lastpos() const
 {
 	return inMathed() ? cell().size() : paragraph().size();
 }
@@ -592,3 +595,6 @@ bool operator==(StableDocIterator const & dit1, StableDocIterator const & dit2)
 {
 	return dit1.data_ == dit2.data_;
 }
+
+
+} // namespace lyx

@@ -22,6 +22,9 @@
 #include "io_callback.h"
 
 
+namespace lyx {
+
+
 io_callback::io_callback(int fd, boost::function<void()> func)
 	: func_(func)
 {
@@ -36,3 +39,6 @@ bool io_callback::data_received(Glib::IOCondition /*condition*/)
 	func_();
 	return true;
 }
+
+
+} // namespace lyx

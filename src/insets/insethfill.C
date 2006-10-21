@@ -11,13 +11,12 @@
 #include <config.h>
 
 #include "insethfill.h"
-
 #include "gettext.h"
 
 #include "support/std_ostream.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::ostream;
 
@@ -82,3 +81,6 @@ bool InsetHFill::isSpace() const
 {
 	return true;
 }
+
+
+} // namespace lyx

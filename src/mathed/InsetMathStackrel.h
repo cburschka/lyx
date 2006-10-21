@@ -15,6 +15,9 @@
 #include "InsetMathFracBase.h"
 
 
+namespace lyx {
+
+
 /** Stackrel objects
  *  \author André Pönitz
  *
@@ -37,4 +40,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

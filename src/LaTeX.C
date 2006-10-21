@@ -33,26 +33,27 @@
 
 #include <fstream>
 
-using lyx::support::absolutePath;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::contains;
-using lyx::support::findtexfile;
-using lyx::support::getcwd;
-using lyx::support::onlyFilename;
-using lyx::support::prefixIs;
-using lyx::support::quoteName;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::subst;
-using lyx::support::suffixIs;
-using lyx::support::Systemcall;
-using lyx::support::unlink;
-using lyx::support::trim;
 
-using lyx::docstring;
+namespace lyx {
 
-namespace os = lyx::support::os;
+using support::absolutePath;
+using support::bformat;
+using support::changeExtension;
+using support::contains;
+using support::findtexfile;
+using support::getcwd;
+using support::onlyFilename;
+using support::prefixIs;
+using support::quoteName;
+using support::rtrim;
+using support::split;
+using support::subst;
+using support::suffixIs;
+using support::Systemcall;
+using support::unlink;
+using support::trim;
+
+namespace os = support::os;
 namespace fs = boost::filesystem;
 
 using boost::regex;
@@ -398,8 +399,7 @@ int LaTeX::startscript()
 bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "idx file has been made,"
-		" running makeindex on file "
-			     <<  f << endl;
+		" running makeindex on file " <<  f << endl;
 	string tmp = lyxrc.index_command + " ";
 	tmp = subst(tmp, "$$lang", runparams.document_language);
 	tmp += quoteName(f);
@@ -816,3 +816,6 @@ void LaTeX::deplog(DepTable & head)
 	// Make sure that the main .tex file is in the dependancy file.
 	head.insert(onlyFilename(file), true);
 }
+
+
+} // namespace lyx

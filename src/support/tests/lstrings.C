@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+
+namespace lyx {
+
 using namespace lyx::support;
 
 using namespace std;
@@ -23,3 +26,6 @@ int main()
 	test_lowercase();
 	test_uppercase();
 }
+
+
+} // namespace lyx

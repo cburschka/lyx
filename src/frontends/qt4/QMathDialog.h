@@ -17,10 +17,12 @@
 
 #include <QDialog>
 
-class IconPalette;
 class QListWidgetItem;
 
 namespace lyx {
+
+class IconPalette;
+
 namespace frontend {
 
 class QMAction : public QAction {

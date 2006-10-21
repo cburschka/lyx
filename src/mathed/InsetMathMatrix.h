@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
+
 // "shortcut" for DelimInset("(",ArrayInset,")")
 
 class InsetMathMatrix : public InsetMathGrid {
@@ -44,4 +47,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

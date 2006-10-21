@@ -14,6 +14,9 @@
 #include "frontends/FontMetrics.h"
 
 
+namespace lyx {
+
+
 void Dimension::operator+=(Dimension const & dim)
 {
 	if (asc < dim.asc)
@@ -26,8 +29,11 @@ void Dimension::operator+=(Dimension const & dim)
 
 void Dimension::clear(LyXFont const & font)
 {
-	lyx::frontend::FontMetrics const & fm = theFontMetrics(font);
+	frontend::FontMetrics const & fm = theFontMetrics(font);
 	asc = fm.maxAscent();
 	des = fm.maxDescent();
 	wid = 0;
 }
+
+
+} // namespace lyx

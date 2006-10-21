@@ -15,6 +15,9 @@
 
 #include "inset.h"
 
+
+namespace lyx {
+
 class InsetPagebreak : public InsetOld {
 public:
 
@@ -26,13 +29,13 @@ public:
 
 	void draw(PainterInfo & pi, int x, int y) const;
 
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 
 	void read(Buffer const &, LyXLex & lex);
@@ -48,5 +51,8 @@ private:
 		return std::auto_ptr<InsetBase>(new InsetPagebreak);
 	}
 };
+
+
+} // namespace lyx
 
 #endif // INSET_NEWLINE_H

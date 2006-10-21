@@ -42,15 +42,12 @@
 
 #include <boost/crc.hpp>
 
-using lyx::docstring;
-using lyx::frontend::Painter;
-using lyx::frontend::NullPainter;
-using lyx::frontend::FontMetrics;
 
-using lyx::char_type;
-using lyx::pit_type;
-using lyx::pos_type;
-using lyx::Point;
+namespace lyx {
+
+using frontend::Painter;
+using frontend::NullPainter;
+using frontend::FontMetrics;
 
 using std::endl;
 using std::max;
@@ -83,13 +80,13 @@ public:
 
 private:
 	void paintForeignMark(double orig_x, LyXFont const & font, int desc = 0);
-	void paintHebrewComposeChar(lyx::pos_type & vpos, LyXFont const & font);
-	void paintArabicComposeChar(lyx::pos_type & vpos, LyXFont const & font);
-	void paintChars(lyx::pos_type & vpos, LyXFont font,
+	void paintHebrewComposeChar(pos_type & vpos, LyXFont const & font);
+	void paintArabicComposeChar(pos_type & vpos, LyXFont const & font);
+	void paintChars(pos_type & vpos, LyXFont font,
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
-	void paintFromPos(lyx::pos_type & vpos);
-	void paintInset(lyx::pos_type const pos, LyXFont const & font);
+	void paintFromPos(pos_type & vpos);
+	void paintInset(pos_type const pos, LyXFont const & font);
 
 	/// return left margin
 	int leftMargin() const;
@@ -413,12 +410,12 @@ void RowPainter::paintAppendix()
 
 void RowPainter::paintDepthBar()
 {
-	Paragraph::depth_type const depth = par_.getDepth();
+	depth_type const depth = par_.getDepth();
 
 	if (depth <= 0)
 		return;
 
-	Paragraph::depth_type prev_depth = 0;
+	depth_type prev_depth = 0;
 	if (!text_.isFirstRow(pit_, row_)) {
 		pit_type pit2 = pit_;
 		if (row_.pos() == 0)
@@ -426,7 +423,7 @@ void RowPainter::paintDepthBar()
 		prev_depth = pars_[pit2].getDepth();
 	}
 
-	Paragraph::depth_type next_depth = 0;
+	depth_type next_depth = 0;
 	if (!text_.isLastRow(pit_, row_)) {
 		pit_type pit2 = pit_;
 		if (row_.endpos() >= pars_[pit2].size())
@@ -434,7 +431,7 @@ void RowPainter::paintDepthBar()
 		next_depth = pars_[pit2].getDepth();
 	}
 
-	for (Paragraph::depth_type i = 1; i <= depth; ++i) {
+	for (depth_type i = 1; i <= depth; ++i) {
 		int const w = nestMargin() / 5;
 		int x = int(xo_) + w * i;
 		// only consider the changebar space if we're drawing outermost text
@@ -550,7 +547,7 @@ void RowPainter::paintFirst()
 				pain_.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 			} else {
 				// FIXME UNICODE
-				docstring lab = lyx::from_utf8(layout->labelsep);
+				docstring lab = from_utf8(layout->labelsep);
 				if (is_rtl) {
 					x = width_ - leftMargin()
 						+ fm.width(lab);
@@ -714,7 +711,7 @@ void RowPainter::paintText()
 		if (body_pos > 0 && pos == body_pos - 1) {
 			// FIXME UNICODE
 			int const lwidth = theFontMetrics(getLabelFont())
-				.width(lyx::from_utf8(layout->labelsep));
+				.width(from_utf8(layout->labelsep));
 
 			x_ += label_hfill_ + lwidth - width_pos;
 		}
@@ -768,11 +765,11 @@ void RowPainter::paintText()
 }
 
 
-lyx::size_type calculateRowSignature(Row const & row, Paragraph const & par,
+size_type calculateRowSignature(Row const & row, Paragraph const & par,
 	int x, int y)
 {
 	boost::crc_32_type crc;
-	for (lyx::pos_type i = row.pos(); i < row.endpos(); ++i) {
+	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
 		const unsigned char b[] = { par.getChar(i) };
 		crc.process_bytes(b, 1);
 	}
@@ -787,7 +784,7 @@ bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 {
 	// Is there a cursor on this row (or inside inset on row)
 	LCursor & cur = pi.base.bv->cursor();
-	for (lyx::size_type d = 0; d < cur.depth(); d++) {
+	for (size_type d = 0; d < cur.depth(); ++d) {
 		CursorSlice const & sl = cur[d];
 		if (sl.text() == &text
 		    && sl.pit() == pit
@@ -807,7 +804,7 @@ bool innerCursorOnRow(PainterInfo & pi, pit_type pit,
 	LCursor & cur = pi.base.bv->cursor();
 	if (rit->pos() + 1 != rit->endpos())
 		return false;
-	for (lyx::size_type d = 0; d < cur.depth(); d++) {
+	for (size_type d = 0; d < cur.depth(); d++) {
 		CursorSlice const & sl = cur[d];
 		if (sl.text() == &text
 		    && sl.pit() == pit
@@ -837,7 +834,7 @@ void paintPar
 	RowList::const_iterator const re = par.rows().end();
 
 	y -= rb->ascent();
-	lyx::size_type rowno(0);
+	size_type rowno = 0;
 	for (RowList::const_iterator rit = rb; rit != re; ++rit, ++rowno) {
 		y += rit->ascent();
 		// Allow setting of refreshInside for nested insets in
@@ -845,7 +842,7 @@ void paintPar
 		bool tmp = refreshInside;
 
 		// Row signature; has row changed since last paint?
-		lyx::size_type const row_sig = calculateRowSignature(*rit, par, x, y);
+		size_type const row_sig = calculateRowSignature(*rit, par, x, y);
 		bool row_has_changed = par.rowSignature()[rowno] != row_sig;
 
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
@@ -951,7 +948,7 @@ void paintText(BufferView & bv, ViewMetricsInfo const & vi,
 			Point(0, vi.y1 - text.getPar(vi.p1 - 1).descent());
 	}
 
-	if (vi.p2 < lyx::pit_type(text.paragraphs().size()) - 1) {
+	if (vi.p2 < pit_type(text.paragraphs().size()) - 1) {
 		text.redoParagraph(vi.p2 + 1);
 		bv.coordCache().parPos()[&text][vi.p2 + 1] =
 			Point(0, vi.y2 + text.getPar(vi.p2 + 1).ascent());
@@ -982,3 +979,6 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
 		y += text.getPar(pit).descent();
 	}
 }
+
+
+} // namespace lyx

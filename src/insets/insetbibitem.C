@@ -25,9 +25,10 @@
 #include "support/std_ostream.h"
 #include "support/convert.h"
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::prefixIs;
+
+namespace lyx {
+
+using support::prefixIs;
 
 using std::max;
 using std::string;
@@ -35,7 +36,7 @@ using std::auto_ptr;
 using std::ostream;
 
 int InsetBibitem::key_counter = 0;
-docstring const key_prefix = lyx::from_ascii("key-");
+docstring const key_prefix = from_ascii("key-");
 
 InsetBibitem::InsetBibitem(InsetCommandParams const & p)
 	: InsetCommand(p, "bibitem"), counter(1)
@@ -59,15 +60,15 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p("bibitem");
-		InsetCommandMailer::string2params("bibitem", lyx::to_utf8(cmd.argument()), p);
+		InsetCommandMailer::string2params("bibitem", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
  			cur.noUpdate();
 			break;
 		}
 		if (p["key"] != params()["key"])
 			// FIXME UNICODE
-			cur.bv().buffer()->changeRefsIfUnique(lyx::to_utf8(params()["key"]),
-						       lyx::to_utf8(p["key"]), InsetBase::CITE_CODE);
+			cur.bv().buffer()->changeRefsIfUnique(to_utf8(params()["key"]),
+						       to_utf8(p["key"]), InsetBase::CITE_CODE);
 		setParams(p);
 	}
 
@@ -157,7 +158,7 @@ docstring const bibitemWidest(Buffer const & buffer)
 			// version and the command-line version will give the same 
 			// result.
 			//
-			//int const wx = lyx::use_gui?
+			//int const wx = use_gui?
 			//	theFontMetrics(font).width(label): label.size();
 			//
 			// So for now we just use the label size in order to be sure
@@ -175,5 +176,8 @@ docstring const bibitemWidest(Buffer const & buffer)
 	if (bitem && !bitem->getBibLabel().empty())
 		return bitem->getBibLabel();
 
-	return lyx::from_ascii("99");
+	return from_ascii("99");
 }
+
+
+} // namespace lyx

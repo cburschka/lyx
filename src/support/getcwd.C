@@ -15,6 +15,9 @@
 #include <boost/scoped_array.hpp>
 
 #include <cerrno>
+
+
+namespace lyx {
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -63,3 +66,6 @@ string const lyx::support::getcwd()
 		result = tbuf.get();
 	return result;
 }
+
+
+} // namespace lyx

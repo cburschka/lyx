@@ -15,6 +15,9 @@
 
 #include "InsetMathNest.h"
 
+
+namespace lyx {
+
 class MathMacroTemplate;
 class LyXLex;
 
@@ -41,13 +44,13 @@ public:
 	///
 	void write(Buffer const &, std::ostream & os) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int latex(Buffer const &, lyx::odocstream & os,
+	int latex(Buffer const &, odocstream & os,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 
 	///
@@ -68,5 +71,8 @@ private:
 	///
 	std::string name_;
 };
+
+
+} // namespace lyx
 
 #endif

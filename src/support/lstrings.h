@@ -26,7 +26,7 @@ namespace support {
 
 ///
 int compare_no_case(std::string const & s, std::string const & s2);
-int compare_no_case(lyx::docstring const & s, lyx::docstring const & s2);
+int compare_no_case(docstring const & s, docstring const & s2);
 
 ///
 int compare_ascii_no_case(std::string const & s, std::string const & s2);
@@ -107,9 +107,9 @@ bool contains(std::string const & a, B b)
 }
 
 template <typename B>
-bool contains(lyx::docstring const & a, B b)
+bool contains(docstring const & a, B b)
 {
-	return a.find(b) != lyx::docstring::npos;
+	return a.find(b) != docstring::npos;
 }
 
 ///
@@ -125,8 +125,7 @@ bool containsOnly(std::string const &, std::string const &);
 */
 std::string const token(std::string const & a, char delim, int n);
 
-lyx::docstring const token(lyx::docstring const & a,
-			   lyx::char_type delim, int n);
+docstring const token(docstring const & a, char_type delim, int n);
 
 /** Search a token in this string using the delim.
     Doesn't modify the original string. Returns -1 in case of
@@ -144,23 +143,22 @@ int tokenPos(std::string const & a, char delim, std::string const & tok);
 std::string const subst(std::string const & a, char oldchar, char newchar);
 
 /// Substitute all \a oldchar with \a newchar
-lyx::docstring const subst(docstring const & a,
-						   lyx::char_type oldchar, lyx::char_type newchar);
+docstring const subst(docstring const & a, char_type oldchar, char_type newchar);
 
 /// substitutes all instances of \a oldstr with \a newstr
 std::string const subst(std::string const & a,
 		   std::string const & oldstr, std::string const & newstr);
 
 /// substitutes all instances of \a oldstr with \a newstr
-lyx::docstring const subst(lyx::docstring const & a,
-		lyx::docstring const & oldstr, lyx::docstring const & newstr);
+docstring const subst(docstring const & a,
+		docstring const & oldstr, docstring const & newstr);
 
 /** Trims characters off the end and beginning of a string.
     \code
     trim("ccabccc", "c") == "ab".
     \endcode
 */
-lyx::docstring const trim(lyx::docstring const & a, char const * p = " ");
+docstring const trim(docstring const & a, char const * p = " ");
 
 /** Trims characters off the end and beginning of a string.
     \code
@@ -202,7 +200,7 @@ std::string const split(std::string const & a, char delim);
 std::string const rsplit(std::string const & a, std::string & piece, char delim);
 
 /// Escapes non ASCII chars
-lyx::docstring const escape(lyx::docstring const & lab);
+docstring const escape(docstring const & lab);
 
 /// gives a vector of stringparts which have the delimiter delim
 std::vector<std::string> const getVectorFromString(std::string const & str,
@@ -217,10 +215,10 @@ std::string const getStringFromVector(std::vector<std::string> const & vec,
 int findToken(char const * const str[], std::string const & search_token);
 
 /// Convert internal line endings to line endings as expected by the OS
-lyx::docstring const externalLineEnding(lyx::docstring const & str);
+docstring const externalLineEnding(docstring const & str);
 
 /// Convert line endings in any formnat to internal line endings
-lyx::docstring const internalLineEnding(lyx::docstring const & str);
+docstring const internalLineEnding(docstring const & str);
 
 
 #ifdef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
@@ -228,28 +226,28 @@ lyx::docstring const internalLineEnding(lyx::docstring const & str);
 #include <boost/format.hpp>
 
 template<class Arg1>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1 arg1)
+docstring bformat(docstring const & fmt, Arg1 arg1)
 {
 	return (boost::basic_format<char_type>(fmt) % arg1).str();
 }
 
 
 template<class Arg1, class Arg2>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1 arg1, Arg2 arg2)
+docstring bformat(docstring const & fmt, Arg1 arg1, Arg2 arg2)
 {
 	return (boost::basic_format<char_type>(fmt) % arg1 % arg2).str();
 }
 
 
 template<class Arg1, class Arg2, class Arg3>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3)
+docstring bformat(docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3)
 {
 	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3).str();
 }
 
 
 template<class Arg1, class Arg2, class Arg3, class Arg4>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3, Arg4 arg4)
+docstring bformat(docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 arg3, Arg4 arg4)
 {
 	return (boost::basic_format<char_type>(fmt) % arg1 % arg2 % arg3 % arg4).str();
 }
@@ -257,16 +255,16 @@ lyx::docstring bformat(lyx::docstring const & fmt, Arg1 arg1, Arg2 arg2, Arg3 ar
 #else
 
 template <class Arg1>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1);
+docstring bformat(docstring const & fmt, Arg1);
 
 template <class Arg1, class Arg2>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1, Arg2);
+docstring bformat(docstring const & fmt, Arg1, Arg2);
 
 template <class Arg1, class Arg2, class Arg3>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1, Arg2, Arg3);
+docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3);
 
 template <class Arg1, class Arg2, class Arg3, class Arg4>
-lyx::docstring bformat(lyx::docstring const & fmt, Arg1, Arg2, Arg3, Arg4);
+docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3, Arg4);
 
 #endif
 

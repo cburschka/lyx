@@ -14,6 +14,9 @@
 
 #include "support/lstrings.h"
 
+
+namespace lyx {
+
 using lyx::support::split;
 
 using std::string;
@@ -36,3 +39,6 @@ string const id_sc::id(string const & idsc)
 	split(idsc, id, '|');
 	return id;
 }
+
+
+} // namespace lyx

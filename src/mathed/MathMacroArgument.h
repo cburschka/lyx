@@ -16,6 +16,9 @@
 #include "InsetMathDim.h"
 
 
+namespace lyx {
+
+
 /// A macro argument.
 class MathMacroArgument : public InsetMathDim {
 public:
@@ -42,5 +45,8 @@ private:
 	///
 	char str_[3];
 };
+
+
+} // namespace lyx
 
 #endif

@@ -23,6 +23,9 @@
 
 #include <gtkmm.h>
 
+
+namespace lyx {
+
 using lyx::docstring;
 
 using std::string;
@@ -118,3 +121,6 @@ std::pair<bool, docstring> const askForText_pimpl(docstring const & msg,
 	else
 		return std::make_pair<bool, docstring>(false, docstring());
 }
+
+
+} // namespace lyx

@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+
+namespace lyx {
+
 using namespace lyx::support;
 
 using namespace std;
@@ -28,3 +31,6 @@ int main()
 {
 	test_normalizePath();
 }
+
+
+} // namespace lyx

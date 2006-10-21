@@ -16,21 +16,15 @@
 #include "lyxtext.h"
 #include "paragraph_pimpl.h"
 
-using lyx::pos_type;
-using lyx::pit_type;
+
+namespace lyx {
 
 using std::string;
 
 
-namespace {
-
-bool moveItem(Paragraph & from, Paragraph & to,
+static bool moveItem(Paragraph & from, Paragraph & to,
 	BufferParams const & params, pos_type i, pos_type j,
-	Change change = Change(Change::INSERTED));
-
-bool moveItem(Paragraph & from, Paragraph & to,
-	BufferParams const & params, pos_type i, pos_type j,
-	Change change)
+	Change change = Change(Change::INSERTED))
 {
 	Paragraph::value_type const tmpchar = from.getChar(i);
 	LyXFont tmpfont = from.getFontSettings(params, i);
@@ -53,8 +47,6 @@ bool moveItem(Paragraph & from, Paragraph & to,
 		to.insertChar(j, tmpchar, tmpfont, change);
 	}
 	return true;
-}
-
 }
 
 
@@ -242,8 +234,7 @@ void mergeParagraph(BufferParams const & bparams,
 }
 
 
-pit_type depthHook(pit_type pit,
-	ParagraphList const & pars, Paragraph::depth_type depth)
+pit_type depthHook(pit_type pit, ParagraphList const & pars, depth_type depth)
 {
 	pit_type newpit = pit;
 
@@ -266,7 +257,7 @@ pit_type outerHook(pit_type par_offset, ParagraphList const & pars)
 
 	if (par.getDepth() == 0)
 		return pars.size();
-	return depthHook(par_offset, pars, Paragraph::depth_type(par.getDepth() - 1));
+	return depthHook(par_offset, pars, depth_type(par.getDepth() - 1));
 }
 
 
@@ -287,7 +278,7 @@ bool isFirstInSequence(pit_type par_offset, ParagraphList const & pars)
 int getEndLabel(pit_type p, ParagraphList const & pars)
 {
 	pit_type pit = p;
-	Paragraph::depth_type par_depth = pars[p].getDepth();
+	depth_type par_depth = pars[p].getDepth();
 	while (pit != pit_type(pars.size())) {
 		LyXLayout_ptr const & layout = pars[pit].layout();
 		int const endlabeltype = layout->endlabeltype;
@@ -296,7 +287,7 @@ int getEndLabel(pit_type p, ParagraphList const & pars)
 			if (p + 1 == pit_type(pars.size()))
 				return endlabeltype;
 
-			Paragraph::depth_type const next_depth =
+			depth_type const next_depth =
 				pars[p + 1].getDepth();
 			if (par_depth > next_depth ||
 			    (par_depth == next_depth && layout != pars[p + 1].layout()))
@@ -315,7 +306,7 @@ int getEndLabel(pit_type p, ParagraphList const & pars)
 
 LyXFont const outerFont(pit_type par_offset, ParagraphList const & pars)
 {
-	Paragraph::depth_type par_depth = pars[par_offset].getDepth();
+	depth_type par_depth = pars[par_offset].getDepth();
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
@@ -346,3 +337,6 @@ int numberOfOptArgs(Paragraph const & par)
 	}
 	return num;
 }
+
+
+} // namespace lyx

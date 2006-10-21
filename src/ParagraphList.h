@@ -16,7 +16,13 @@
 
 #include "support/RandomAccessList.h"
 
+
+namespace lyx {
+
 /// Container for all kind of Paragraphs used in Lyx.
 typedef RandomAccessList<Paragraph> ParagraphList;
+
+
+} // namespace lyx
 
 #endif

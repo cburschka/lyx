@@ -18,6 +18,9 @@
 
 #include <exception>
 
+
+namespace lyx {
+
 using std::endl;
 
 namespace boost {
@@ -41,3 +44,6 @@ void assertion_failed(char const * expr, char const * function,
 
 
 }
+
+
+} // namespace lyx

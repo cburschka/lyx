@@ -53,6 +53,9 @@
 #include <map>
 #include <iostream>
 
+
+namespace lyx {
+
 using lyx::support::prefixIs;
 
 using boost::scoped_ptr;
@@ -610,3 +613,6 @@ int main(int argc, char * argv[])
 
 	return EXIT_SUCCESS;
 }
+
+
+} // namespace lyx

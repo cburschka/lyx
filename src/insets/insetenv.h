@@ -16,6 +16,8 @@
 #include "lyxlayout_ptr_fwd.h"
 
 
+namespace lyx {
+
 class InsetEnvironment : public InsetText {
 public:
 	///
@@ -27,10 +29,10 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::ENVIRONMENT_CODE; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	InsetBase::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -46,5 +48,8 @@ private:
 	/// the layout
 	LyXLayout_ptr layout_;
 };
+
+
+} // namespace lyx
 
 #endif

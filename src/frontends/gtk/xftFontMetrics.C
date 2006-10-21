@@ -35,6 +35,9 @@
 
 #include <algorithm>
 
+
+namespace lyx {
+
 using lyx::char_type;
 using lyx::docstring;
 
@@ -207,3 +210,6 @@ void font_metrics::buttonText(docstring const & str,
 	ascent = font_metrics::maxAscent() + d;
 	descent = font_metrics::maxDescent() + d;
 }
+
+
+} // namespace lyx

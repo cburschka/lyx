@@ -23,6 +23,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 
+namespace lyx {
 
 class BufferView;
 class FuncRequest;
@@ -67,11 +68,11 @@ public:
 	/// True if lyxfunc reports an error
 	bool errorStat() const { return errorstat; }
 	/// Buffer to store result messages
-	void setMessage(lyx::docstring const & m) const;
+	void setMessage(docstring const & m) const;
 	/// Buffer to store result messages
-	void setErrorMessage(lyx::docstring const &) const;
+	void setErrorMessage(docstring const &) const;
 	/// Buffer to store result messages
-	lyx::docstring const getMessage() const { return dispatch_buffer; }
+	docstring const getMessage() const { return dispatch_buffer; }
 	/// Handle a accented char key sequence
 	void handleKeyFunc(kb_action action);
 
@@ -83,7 +84,7 @@ private:
 	LyXView * lyx_view_;
 
 	/// the last character added to the key sequence, in ISO encoded form
-	lyx::char_type encoded_last_key;
+	char_type encoded_last_key;
 
 	///
 	boost::scoped_ptr<kb_sequence> keyseq;
@@ -98,10 +99,10 @@ private:
 	/** Buffer to store messages and result data. Is there a
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
-	mutable lyx::docstring dispatch_buffer;
+	mutable docstring dispatch_buffer;
 
 	/// send a post-dispatch status message
-	void sendDispatchMessage(lyx::docstring const & msg,
+	void sendDispatchMessage(docstring const & msg,
 		FuncRequest const & ev);
 
 	// I think the following should be moved to BufferView. (Asger)
@@ -120,13 +121,12 @@ private:
 /// Implementation is in lyx_main.C
 extern LyXFunc & theLyXFunc();
 
-namespace lyx {
-
 /// Implementation is in lyx_main.C
 extern FuncStatus getStatus(FuncRequest const & action);
 
 /// Implementation is in lyx_main.C
 extern void dispatch(FuncRequest const & action);
-}
+
+} // namespace lyx
 
 #endif

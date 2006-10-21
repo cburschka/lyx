@@ -29,3 +29,9 @@ void socket_callback::data_received()
 }
 
 #include "socket_callback_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

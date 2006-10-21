@@ -14,6 +14,8 @@
 #ifndef KEY_STATE_H
 #define KEY_STATE_H
 
+namespace lyx {
+
 /// modifier key states
 namespace key_modifier {
 
@@ -27,8 +29,8 @@ enum state {
 
 inline state operator|(state const & s1, state const & s2)
 {
-	int const i1(static_cast<int>(s1));
-	int const i2(static_cast<int>(s2));
+	int const i1 = static_cast<int>(s1);
+	int const i2 = static_cast<int>(s2);
 	return static_cast<state>(i1 | i2);
 }
 
@@ -39,5 +41,8 @@ inline void operator|=(state & s1, state s2)
 }
 
 } // namespace key_modifier
+
+
+} // namespace lyx
 
 #endif // KEY_STATE_H

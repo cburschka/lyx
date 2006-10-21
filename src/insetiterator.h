@@ -15,6 +15,9 @@
 #include "dociterator.h"
 
 
+namespace lyx {
+
+
 class InsetIterator : public DocIterator
 {
 public:
@@ -34,5 +37,8 @@ InsetIterator inset_iterator_begin(InsetBase & inset);
 
 InsetIterator inset_iterator_end(InsetBase & inset);
 
+
+
+} // namespace lyx
 
 #endif

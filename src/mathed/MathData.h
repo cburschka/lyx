@@ -21,6 +21,9 @@
 
 #include "support/docstream.h"
 
+
+namespace lyx {
+
 class BufferView;
 class LaTeXFeatures;
 class ReplaceData;
@@ -54,7 +57,7 @@ public:
 
 public:
 	///
-	MathArray();
+	MathArray() {}
 	///
 	MathArray(const_iterator from, const_iterator to);
 	///
@@ -159,7 +162,10 @@ private:
 ///
 std::ostream & operator<<(std::ostream & os, MathArray const & ar);
 ///
-lyx::odocstream & operator<<(lyx::odocstream & os, MathArray const & ar);
+odocstream & operator<<(odocstream & os, MathArray const & ar);
 
+
+
+} // namespace lyx
 
 #endif

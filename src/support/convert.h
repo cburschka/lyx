@@ -16,7 +16,11 @@
 #ifndef CONVERT_H
 #define CONVERT_H
 
+namespace lyx {
+
 template <class Target, class Source>
 Target convert(Source arg);
+
+} // namespace lyx
 
 #endif

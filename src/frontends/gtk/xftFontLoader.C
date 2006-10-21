@@ -35,6 +35,9 @@
 #include <cmath>	// fabs()
 #include <vector>
 
+
+namespace lyx {
+
 using std::endl;
 using std::string;
 
@@ -218,3 +221,6 @@ bool xftFontLoader::available(LyXFont const & f)
 	// We don't care about non-symbol fonts
 	return false;
 }
+
+
+} // namespace lyx

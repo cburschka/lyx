@@ -137,7 +137,7 @@ void QGraphics::update_contents()
 		path_validator->setChecker(kernel().docType(), lyxrc);
 
 	// clear and fill in the comboboxes
-	vector<string> const bb_units = lyx::frontend::getBBUnits();
+	vector<string> const bb_units = frontend::getBBUnits();
 	dialog_->lbXunit->clear();
 	dialog_->lbYunit->clear();
 	dialog_->rtXunit->clear();
@@ -230,17 +230,17 @@ void QGraphics::update_contents()
 
 	int item = 0;
 	switch (igp.display) {
-		case lyx::graphics::DefaultDisplay: item = 0; break;
-		case lyx::graphics::MonochromeDisplay: item = 1; break;
-		case lyx::graphics::GrayscaleDisplay: item = 2; break;
-		case lyx::graphics::ColorDisplay: item = 3; break;
-		case lyx::graphics::NoDisplay: item = 0; break;
+		case graphics::DefaultDisplay: item = 0; break;
+		case graphics::MonochromeDisplay: item = 1; break;
+		case graphics::GrayscaleDisplay: item = 2; break;
+		case graphics::ColorDisplay: item = 3; break;
+		case graphics::NoDisplay: item = 0; break;
 	}
 	dialog_->showCB->setCurrentIndex(item);
-	dialog_->showCB->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
-	dialog_->displayCB->setChecked(igp.display != lyx::graphics::NoDisplay);
-	dialog_->displayscale->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
-	dialog_->displayscaleL->setEnabled(igp.display != lyx::graphics::NoDisplay && !readOnly());
+	dialog_->showCB->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
+	dialog_->displayCB->setChecked(igp.display != graphics::NoDisplay);
+	dialog_->displayscale->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
+	dialog_->displayscaleL->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
 
 	//// the output section (width/height)
@@ -283,7 +283,7 @@ void QGraphics::update_contents()
 
 	dialog_->origin->clear();
 
-	using namespace lyx::frontend;
+	using namespace frontend;
 	vector<RotationOriginPair> origindata = getRotationOriginData();
 	vector<string> const origin_lang = getFirst(origindata);
 	QGraphics::origin_ltx = getSecond(origindata);
@@ -351,15 +351,15 @@ void QGraphics::apply()
 	igp.subcaptionText = fromqstr(dialog_->subcaption->text());
 
 	switch (dialog_->showCB->currentIndex()) {
-		case 0: igp.display = lyx::graphics::DefaultDisplay; break;
-		case 1: igp.display = lyx::graphics::MonochromeDisplay; break;
-		case 2: igp.display = lyx::graphics::GrayscaleDisplay; break;
-		case 3: igp.display = lyx::graphics::ColorDisplay; break;
+		case 0: igp.display = graphics::DefaultDisplay; break;
+		case 1: igp.display = graphics::MonochromeDisplay; break;
+		case 2: igp.display = graphics::GrayscaleDisplay; break;
+		case 3: igp.display = graphics::ColorDisplay; break;
 		default:;
 	}
 
 	if (!dialog_->displayCB->isChecked())
-		igp.display = lyx::graphics::NoDisplay;
+		igp.display = graphics::NoDisplay;
 
 	string value = fromqstr(dialog_->Width->text());
 	if (dialog_->widthUnit->currentIndex() > 0 || isValidLength(value)) {

@@ -17,9 +17,10 @@
 
 #include <boost/utility.hpp>
 
+namespace lyx {
+
 class LyXLex;
 
-namespace lyx {
 namespace external {
 
 class Template {

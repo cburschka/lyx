@@ -17,6 +17,9 @@
 
 #include <gtkmm.h>
 
+
+namespace lyx {
+
 class FileDialog::Private : public sigc::trackable {
 public:
 	Private(lyx::docstring const & title,
@@ -39,5 +42,8 @@ private:
 	kb_action action_;
 	Gtk::FileChooserDialog fileChooser_;
 };
+
+
+} // namespace lyx
 
 #endif

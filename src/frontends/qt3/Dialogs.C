@@ -95,6 +95,9 @@
 
 #include <boost/assert.hpp>
 
+
+namespace lyx {
+
 using std::string;
 
 using namespace lyx::frontend;
@@ -318,3 +321,6 @@ bool Dialogs::tooltipsEnabled()
 {
 	return false;
 }
+
+
+} // namespace lyx

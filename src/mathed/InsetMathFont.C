@@ -17,6 +17,9 @@
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -96,3 +99,6 @@ void InsetMathFont::infoize(std::ostream & os) const
 {
 	os << "Font: " << key_->name;
 }
+
+
+} // namespace lyx

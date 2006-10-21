@@ -24,9 +24,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using lyx::odocstream;
 
-using lyx::odocstream;
+namespace lyx {
 
 using std::string;
 using std::max;
@@ -51,7 +50,7 @@ InsetSpace::Kind InsetSpace::kind() const
 
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	lyx::frontend::FontMetrics const & fm =
+	frontend::FontMetrics const & fm =
 		theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
@@ -59,11 +58,11 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	switch (kind_) {
 		case THIN:
 		case NEGTHIN:
-                    dim.wid = fm.width(lyx::char_type('x')) / 3;
+                    dim.wid = fm.width(char_type('x')) / 3;
 			break;
 		case PROTECTED:
 		case NORMAL:
-                    dim.wid = fm.width(lyx::char_type('x'));
+                    dim.wid = fm.width(char_type('x'));
 			break;
 		case QUAD:
 			dim.wid = 20;
@@ -265,3 +264,6 @@ bool InsetSpace::isSpace() const
 {
 	return true;
 }
+
+
+} // namespace lyx

@@ -18,9 +18,10 @@
 #include <vector>
 
 
+namespace lyx {
+
 class LyXView;
 
-namespace lyx {
 namespace frontend {
 
 /**

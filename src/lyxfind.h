@@ -19,12 +19,11 @@
 
 #include <string>
 
+namespace lyx {
+
 class BufferView;
 class FuncRequest;
 class LyXText;
-
-namespace lyx {
-namespace find {
 
 /** Encode the parameters needed to find \c search as a string
  *  that can be dispatched to the LyX core in a FuncRequest wrapper.
@@ -60,7 +59,6 @@ void replace(BufferView * bv, FuncRequest const &);
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);
 
-} // namespace find
 } // namespace lyx
 
 #endif // LYXFIND_H

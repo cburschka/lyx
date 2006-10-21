@@ -19,7 +19,8 @@
 #include "lyxrow.h"
 #include "debug.h"
 
-using lyx::pos_type;
+
+namespace lyx {
 
 
 RowMetrics::RowMetrics()
@@ -93,3 +94,6 @@ void Row::dump(const char * s) const
 		<< " descent: " << descent_
 		<< std::endl;
 }
+
+
+} // namespace lyx

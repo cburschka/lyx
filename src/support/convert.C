@@ -19,6 +19,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 using lyx::docstring;
 
 using boost::lexical_cast;
@@ -157,3 +160,6 @@ double convert<double>(char const * cptr)
 {
 	return strtod(cptr, 0);
 }
+
+
+} // namespace lyx

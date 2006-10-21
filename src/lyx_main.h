@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 
+namespace lyx {
+
 class Buffer;
 class BufferList;
 class ErrorItem;
@@ -29,16 +31,12 @@ class LyXFunc;
 class LyXServer;
 class LyXServerSocket;
 class LyXView;
+class Session;
 class kb_keymap;
 
-
-namespace lyx {
 extern bool use_gui;
-class Session;
-namespace frontend {
-class Application;
-}
-}
+
+namespace frontend { class Application; }
 
 /// initial startup
 class LyX : boost::noncopyable {
@@ -75,8 +73,8 @@ public:
 	BufferList & bufferList();
 	BufferList const & bufferList() const;
 	///
-	lyx::Session & session();
-	lyx::Session const & session() const;
+	Session & session();
+	Session const & session() const;
 	///
 	LyXFunc & lyxFunc();
 	LyXFunc const & lyxFunc() const;
@@ -88,8 +86,8 @@ public:
 	LyXServerSocket const & socket() const;
 
 	///
-	lyx::frontend::Application & application();
-	lyx::frontend::Application const & application() const;
+	frontend::Application & application();
+	frontend::Application const & application() const;
 
 	///
 	kb_keymap & topLevelKeymap();
@@ -169,5 +167,7 @@ private:
 	///
 	bool geometryOption_;
 };
+
+} // namespace lyx
 
 #endif // LYX_MAIN_H

@@ -20,6 +20,9 @@
 #include <iostream>
 #include <iomanip>
 
+
+namespace lyx {
+
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
 using lyx::support::isStrInt;
@@ -106,3 +109,6 @@ void lyx_debug_trait::showTags(ostream & os)
 }
 
 LyXErr lyxerr;
+
+
+} // namespace lyx

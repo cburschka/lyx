@@ -15,6 +15,9 @@
 #include <qgridview.h>
 
 
+namespace lyx {
+
+
 class QString;
 class QPainter;
 class QPixmap;
@@ -63,5 +66,8 @@ private:
 	bool firstrelease_;
 	bool inloop;
 
+
+
+} // namespace lyx
 };
 #endif

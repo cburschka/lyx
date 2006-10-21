@@ -17,6 +17,9 @@
 
 #ifndef QT_H
 #include "qframe.h"
+
+
+namespace lyx {
 #endif // QT_H
 
 #ifndef QT_NO_QTTABLEVIEW
@@ -247,5 +250,8 @@ inline void QtTableView::updateScrollBars()
 
 
 #endif // QT_NO_QTTABLEVIEW
+
+
+} // namespace lyx
 
 #endif // QTTABLEVIEW_H

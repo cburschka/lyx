@@ -17,6 +17,9 @@
 
 #include "SpellBase.h"
 
+
+namespace lyx {
+
 class AspellSpeller;
 class AspellStringEnumeration;
 class AspellCanHaveError;
@@ -53,7 +56,7 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual lyx::docstring const error();
+	virtual docstring const error();
 
 private:
 	/// add a speller of the given language
@@ -74,5 +77,8 @@ private:
 	/// FIXME
 	AspellCanHaveError * spell_error_object;
 };
+
+
+} // namespace lyx
 
 #endif // LYX_ASPELL_H

@@ -24,13 +24,13 @@
 #include <cmath> // std::abs
 #include <sstream>
 
-using lyx::support::float_equal;
-
-using std::string;
-
 
 namespace lyx {
 namespace external {
+
+using support::float_equal;
+using std::string;
+
 
 string const ExtraData::get(string const & id) const
 {
@@ -318,7 +318,7 @@ string const sanitizeLatexOption(string const & input)
 	output = what.str(1);
 
 	// Remove any surrounding whitespace
-	output = lyx::support::trim(output);
+	output = support::trim(output);
 
 	// If the thing is empty, leave it so, else wrap it in square brackets.
 	return output.empty() ? output : "[" + output + "]";

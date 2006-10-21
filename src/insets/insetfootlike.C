@@ -19,8 +19,8 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
-using std::ostream;
 
+namespace lyx {
 
 InsetFootlike::InsetFootlike(BufferParams const & bp)
 	: InsetCollapsable(bp)
@@ -63,7 +63,7 @@ void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetFootlike::write(Buffer const & buf, ostream & os) const
+void InsetFootlike::write(Buffer const & buf, std::ostream & os) const
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);
@@ -77,3 +77,6 @@ bool InsetFootlike::insetAllowed(InsetBase::Code code) const
 		return false;
 	return InsetCollapsable::insetAllowed(code);
 }
+
+
+} // namespace lyx

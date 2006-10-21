@@ -21,6 +21,9 @@
 #include <map>
 #include <string>
 
+
+namespace lyx {
+
 class Buffer;
 class BufferParams;
 class Language;
@@ -132,5 +135,8 @@ private:
 	 */
 	OutputParams const & runparams_;
 };
+
+
+} // namespace lyx
 
 #endif

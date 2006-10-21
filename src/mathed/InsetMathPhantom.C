@@ -21,6 +21,9 @@
 #include "support/std_ostream.h"
 
 
+namespace lyx {
+
+
 InsetMathPhantom::InsetMathPhantom(Kind k)
 	: InsetMathNest(1), kind_(k)
 {}
@@ -166,3 +169,6 @@ void InsetMathPhantom::infoize(std::ostream & os) const
 		break;
 	}
 }
+
+
+} // namespace lyx

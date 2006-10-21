@@ -28,25 +28,27 @@
 
 #include <boost/filesystem/operations.hpp>
 
-using lyx::docstring;
-using lyx::support::absolutePath;
-using lyx::support::bformat;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::contains;
-using lyx::support::libScriptSearch;
-using lyx::support::makeDisplayPath;
-using lyx::support::onlyPath;
-using lyx::support::quoteName;
-using lyx::support::subst;
-using lyx::support::Systemcall;
-using lyx::support::token;
+
+namespace lyx {
+
+using support::absolutePath;
+using support::bformat;
+using support::compare_ascii_no_case;
+using support::contains;
+using support::libScriptSearch;
+using support::makeDisplayPath;
+using support::onlyPath;
+using support::quoteName;
+using support::subst;
+using support::Systemcall;
+using support::token;
 
 using std::string;
 using std::distance;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
-namespace os = lyx::support::os;
+namespace os = support::os;
 
 namespace {
 
@@ -139,12 +141,12 @@ string Formats::getFormatFromFile(string const & filename) const
 	if (filename.empty())
 		return string();
 
-	string const format = lyx::support::getFormatFromContents(filename);
+	string const format = support::getFormatFromContents(filename);
 	if (!format.empty())
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext(lyx::support::getExtension(filename));
+	string const ext(support::getExtension(filename));
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -266,7 +268,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	if (filename.empty() || !fs::exists(filename)) {
 		Alert::error(_("Cannot view file"),
 			bformat(_("File does not exist: %1$s"),
-				lyx::from_utf8(filename)));
+				from_utf8(filename)));
 		return false;
 	}
 
@@ -289,7 +291,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 		else {
 			Alert::error(_("Cannot view file"),
 				bformat(_("Auto-view file %1$s failed"),
-					lyx::from_utf8(filename)));
+					from_utf8(filename)));
 			return false;
 		}
 	}
@@ -314,7 +316,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
 	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
-	buffer.message(_("Executing command: ") + lyx::from_utf8(command));
+	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
@@ -336,7 +338,7 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	if (filename.empty() || !fs::exists(filename)) {
 		Alert::error(_("Cannot edit file"),
 			bformat(_("File does not exist: %1$s"),
-				lyx::from_utf8(filename)));
+				from_utf8(filename)));
 		return false;
 	}
 
@@ -359,7 +361,7 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 		else {
 			Alert::error(_("Cannot edit file"),
 				bformat(_("Auto-edit file %1$s failed"),
-					lyx::from_utf8(filename)));
+					from_utf8(filename)));
 			return false;
 		}
 	}
@@ -373,7 +375,7 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	command = subst(command, token_path, quoteName(onlyPath(filename)));
 	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
-	buffer.message(_("Executing command: ") + lyx::from_utf8(command));
+	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
 	int const res = one.startscript(Systemcall::DontWait, command);
@@ -392,9 +394,9 @@ docstring const Formats::prettyName(string const & name) const
 {
 	Format const * format = getFormat(name);
 	if (format)
-		return lyx::from_utf8(format->prettyname());
+		return from_utf8(format->prettyname());
 	else
-		return lyx::from_utf8(name);
+		return from_utf8(name);
 }
 
 
@@ -413,3 +415,6 @@ string const Formats::extension(string const & name) const
 Formats formats;
 
 Formats system_formats;
+
+
+} // namespace lyx

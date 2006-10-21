@@ -21,6 +21,9 @@
 #include <boost/function.hpp>
 
 
+namespace lyx {
+
+
 /**
  * socket_callback - a simple wrapper for asynchronous socket notification
  *
@@ -42,5 +45,8 @@ private:
 	/// The callback function
 	boost::function<void()> func_;
 };
+
+
+} // namespace lyx
 
 #endif // SOCKET_CALLBACK_H

@@ -16,6 +16,9 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 class Buffer;
 class BufferParams;
 class InsetBase;
@@ -33,40 +36,43 @@ class Paragraph;
  */
 void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
-		    lyx::pit_type par,
-		    lyx::pos_type pos,
+		    pit_type par,
+		    pos_type pos,
 		    int flag);
 
 ///
 void breakParagraphConservative(BufferParams const & bparams,
 				ParagraphList & paragraphs,
-				lyx::pit_type par,
-				lyx::pos_type pos);
+				pit_type par,
+				pos_type pos);
 
 /**
  * Append the next paragraph onto the tail of this one.
  * Be careful, this doesent make any check at all.
  */
 void mergeParagraph(BufferParams const & bparams,
-	ParagraphList & paragraphs, lyx::pit_type par);
+	ParagraphList & paragraphs, pit_type par);
 
 
 /// for the environments
-lyx::pit_type depthHook(lyx::pit_type par,
-	ParagraphList const & plist, lyx::depth_type depth);
+pit_type depthHook(pit_type par,
+	ParagraphList const & plist, depth_type depth);
 
-lyx::pit_type outerHook(lyx::pit_type par, ParagraphList const & plist);
+pit_type outerHook(pit_type par, ParagraphList const & plist);
 
 /// Is it the first par with same depth and layout?
-bool isFirstInSequence(lyx::pit_type par, ParagraphList const & plist);
+bool isFirstInSequence(pit_type par, ParagraphList const & plist);
 
 /** Check if the current paragraph is the last paragraph in a
     proof environment */
-int getEndLabel(lyx::pit_type par, ParagraphList const & plist);
+int getEndLabel(pit_type par, ParagraphList const & plist);
 
-LyXFont const outerFont(lyx::pit_type par_offset, ParagraphList const & pars);
+LyXFont const outerFont(pit_type par_offset, ParagraphList const & pars);
 
 /// return the number of InsetOptArg in a paragraph
 int numberOfOptArgs(Paragraph const & par);
+
+
+} // namespace lyx
 
 #endif // PARAGRAPH_FUNCS_H

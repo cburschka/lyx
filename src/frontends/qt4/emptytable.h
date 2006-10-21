@@ -14,7 +14,10 @@
 
 #include <QTableWidget>
 
+
 class QMouseEvent;
+
+//namespace lyx {
 
 /**
  * A simple widget for a quick "preview" in TabularCreateDialog.
@@ -24,8 +27,6 @@ class EmptyTable : public QTableWidget {
 	Q_OBJECT
 public:
 	EmptyTable(QWidget * parent = 0, int rows = 5, int columns = 5);
-
-	~EmptyTable() {}
 
 	virtual QSize sizeHint() const;
 public Q_SLOTS:
@@ -53,5 +54,8 @@ private:
 	unsigned int rows;
 
 };
+
+
+//} // namespace lyx
 
 #endif

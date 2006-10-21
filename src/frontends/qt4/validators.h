@@ -33,6 +33,8 @@ class QWidget;
 class QLineEdit;
 
 
+namespace lyx {
+
 /** A class to ascertain whether the data passed to the @c validate()
  *  member function can be interpretted as a LyXGlueLength.
  */
@@ -77,13 +79,7 @@ LengthValidator * unsignedLengthValidator(QLineEdit *);
 // Forward declarations
 class LyXRC;
 
-namespace lyx {
-namespace frontend {
-
-class KernelDocType;
-
-} // namespace frontend
-} // namespace lyx
+namespace frontend { class KernelDocType; } 
 
 
 /** A class to ascertain whether the data passed to the @c validate()
@@ -111,13 +107,13 @@ public:
 	 *  @param lyxrc contains a @c tex_allows_spaces member that
 	 *  is used to define what is legal.
 	 */
-	void setChecker(lyx::frontend::KernelDocType const & doc_type,
+	void setChecker(frontend::KernelDocType const & doc_type,
 			LyXRC const & lyxrc);
 
 private:
 #if defined(Q_DISABLE_COPY)
-	PathValidator( const PathValidator & );
-	PathValidator& operator=( const PathValidator & );
+	PathValidator(const PathValidator &);
+	PathValidator & operator=(const PathValidator &);
 #endif
 
 	bool acceptable_if_empty_;
@@ -128,5 +124,7 @@ private:
 
 /// @returns the PathValidator attached to the widget, or 0.
 PathValidator * getPathValidator(QLineEdit *);
+
+} // namespace lyx
 
 # endif // NOT VALIDATORS_H

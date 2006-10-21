@@ -17,6 +17,9 @@
 //Added by qt3to4:
 #include <QTimerEvent>
 
+
+namespace lyx {
+
 // stupid Qt
 #undef emit
 
@@ -45,5 +48,8 @@ private:
 	/// timout id
 	int timeout_id;
 };
+
+
+} // namespace lyx
 
 #endif // QTTIMEOUT_H

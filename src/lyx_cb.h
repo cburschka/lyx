@@ -14,6 +14,8 @@
 
 #include <string>
 
+namespace lyx {
+
 class Buffer;
 class BufferView;
 
@@ -34,4 +36,7 @@ void insertAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
 std::string getContentsOfAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
 void reconfigure(BufferView * bv);
+
+} // namespace lyx
+
 #endif

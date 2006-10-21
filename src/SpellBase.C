@@ -14,7 +14,8 @@
 #include "SpellBase.h"
 #include "gettext.h"
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 
@@ -49,3 +50,6 @@ docstring const SpellBase::error()
 {
 	return _("Native OS API not yet supported.");
 }
+
+
+} // namespace lyx

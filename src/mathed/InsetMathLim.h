@@ -18,6 +18,9 @@
 
 #include "InsetMathNest.h"
 
+
+namespace lyx {
+
 class InsetMathLim : public InsetMathNest {
 public:
 	///
@@ -43,4 +46,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

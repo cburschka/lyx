@@ -36,6 +36,8 @@ using lyx::docstring;
 using std::string;
 
 
+namespace lyx {
+
 LengthValidator::LengthValidator(QWidget * parent)
 	: QValidator(parent),
 	  no_bottom_(true), glue_length_(false)
@@ -171,4 +173,7 @@ PathValidator * getPathValidator(QLineEdit * ed)
 	return dynamic_cast<PathValidator *>(validator);
 }
 
+} // namespace lyx
+
 #include "validators_moc.cpp"
+

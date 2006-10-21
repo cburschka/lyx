@@ -16,6 +16,9 @@
 #include "MathSupport.h"
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -29,7 +32,7 @@ InsetMathComment::InsetMathComment(string const & str)
 	: InsetMathNest(1)
 {
 	// FIXME UNICODE
-	asArray(lyx::from_utf8(str), cell(0));
+	asArray(from_utf8(str), cell(0));
 }
 
 
@@ -96,3 +99,6 @@ void InsetMathComment::infoize(std::ostream & os) const
 {
 	os << "Comment";
 }
+
+
+} // namespace lyx

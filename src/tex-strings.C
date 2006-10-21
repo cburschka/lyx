@@ -15,6 +15,9 @@
 #include "gettext.h"
 
 
+namespace lyx {
+
+
 // this file should perhaps be split into even smaller parts
 
 char const * const string_paragraph_separation[] = {
@@ -87,3 +90,6 @@ char const * tex_fonts_monospaced_gui[] = { N_("Default"), N_("Computer Modern T
 			    N_("Latin Modern Typewriter"), N_("Courier"), N_("Bera Mono"), N_("LuxiMono"),
 			    N_("CM Typewriter Light"), ""
 };
+
+
+} // namespace lyx

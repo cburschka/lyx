@@ -46,20 +46,19 @@
 #include "frontends/Alert.h"
 #include "frontends/Painter.h"
 
-#include "support/lyxalgo.h" // lyx::count
+#include "support/lyxalgo.h" // count
 
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::pos_type;
 
-using lyx::graphics::PreviewLoader;
+namespace lyx {
 
-using lyx::support::isStrUnsignedInt;
+using graphics::PreviewLoader;
+
+using support::isStrUnsignedInt;
 
 using boost::bind;
 using boost::ref;
@@ -289,7 +288,7 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
-	lyx::odocstringstream oss;
+	odocstringstream oss;
 	for (; it != end; ++it)
 		asciiParagraph(buf, *it, oss, runparams, ref_printed);
 
@@ -440,3 +439,6 @@ ParagraphList & InsetText::paragraphs()
 {
 	return text_.paragraphs();
 }
+
+
+} // namespace lyx

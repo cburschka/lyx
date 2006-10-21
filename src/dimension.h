@@ -13,6 +13,8 @@
 #define DIMENSION_H
 
 
+namespace lyx {
+
 class LyXFont;
 
 /// Simple wrapper around three ints
@@ -66,5 +68,8 @@ bool operator==(Dimension const & a, Dimension const & b)
 {
 	return a.wid == b.wid && a.asc == b.asc && a.des ==b.des ;
 }
+
+
+} // namespace lyx
 
 #endif

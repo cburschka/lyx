@@ -16,6 +16,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 using std::string;
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
@@ -103,3 +106,6 @@ string const DoAccent(char c, tex_accent accent)
 {
 	return DoAccent(convert<string>(c), accent);
 }
+
+
+} // namespace lyx

@@ -18,11 +18,11 @@
 
 #include "support/filetools.h"
 
-using lyx::odocfstream;
-using lyx::support::bformat;
-using lyx::support::makeDisplayPath;
 
-using lyx::docstring;
+namespace lyx {
+
+using support::bformat;
+using support::makeDisplayPath;
 
 using std::ofstream;
 using std::string;
@@ -37,7 +37,7 @@ bool doOpenFileWrite(OFStream & ofs, string const & fname)
 		docstring const file = makeDisplayPath(fname, 50);
 		docstring text = bformat(_("Could not open the specified "
 						     "document\n%1$s."), file);
-		lyx::frontend::Alert::error(_("Could not open file"), text);
+		frontend::Alert::error(_("Could not open file"), text);
 		return false;
 	}
 	return true;
@@ -56,3 +56,6 @@ bool openFileWrite(odocfstream & ofs, string const & fname)
 {
 	return doOpenFileWrite(ofs, fname);
 }
+
+
+} // namespace lyx

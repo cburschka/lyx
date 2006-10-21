@@ -25,6 +25,9 @@
 
 #include <iosfwd>
 
+
+namespace lyx {
+
 class Buffer;
 class BufferParams;
 class BufferView;
@@ -48,13 +51,6 @@ class Spacing;
 /// This class encapsulates the main text data and operations in LyX
 class LyXText {
 public:
-	///
-	typedef lyx::pos_type pos_type;
-	///
-	typedef lyx::char_type char_type;
-	///
-	typedef lyx::pit_type pit_type;
-
 	/// constructor
 	explicit LyXText(BufferView *);
 	///
@@ -111,7 +107,7 @@ public:
 	std::string getStringToIndex(LCursor const & cur);
 
 	/// insert a character at cursor position
-	void insertChar(LCursor & cur, lyx::char_type c);
+	void insertChar(LCursor & cur, char_type c);
 	/// insert an inset at cursor position
 	void insertInset(LCursor & cur, InsetBase * inset);
 
@@ -155,9 +151,9 @@ public:
 	 *  @param from return here the start of the word
 	 *  @param to return here the end of the word
 	 */
-	void getWord(CursorSlice & from, CursorSlice & to, lyx::word_location const);
+	void getWord(CursorSlice & from, CursorSlice & to, word_location const);
 	/// just selects the word the cursor is in
-	void selectWord(LCursor & cur, lyx::word_location loc);
+	void selectWord(LCursor & cur, word_location loc);
 
 	/// accept selected change
 	void acceptChange(LCursor & cur);
@@ -235,7 +231,7 @@ public:
 	// Dissolve the inset under cursor
 	bool dissolveInset(LCursor & cur);
 	///
-	bool selectWordWhenUnderCursor(LCursor & cur, lyx::word_location);
+	bool selectWordWhenUnderCursor(LCursor & cur, word_location);
 	///
 	enum TextCase {
 		///
@@ -262,9 +258,9 @@ public:
 	/* these things are for search and replace */
 
 	/// needed to insert the selection
-	void insertStringAsLines(LCursor & cur, lyx::docstring const & str);
+	void insertStringAsLines(LCursor & cur, docstring const & str);
 	/// needed to insert the selection
-	void insertStringAsParagraphs(LCursor & cur, lyx::docstring const & str);
+	void insertStringAsParagraphs(LCursor & cur, docstring const & str);
 
 	/// current text width
 	int width() const;
@@ -402,5 +398,8 @@ private:
 
 /// return the default height of a row in pixels, considering font zoom
 int defaultRowHeight();
+
+
+} // namespace lyx
 
 #endif // LYXTEXT_H

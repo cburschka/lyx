@@ -15,6 +15,9 @@
 
 #include <boost/signals/trackable.hpp>
 
+
+namespace lyx {
+
 class LyXFunc;
 class LyXServer;
 
@@ -144,5 +147,8 @@ private:
 extern LyXServer & theLyXServer();
 
 #endif /* _LYXSERVER_H_ */
+
+
+} // namespace lyx
 
 /* === End of File: lyxserver.h ========================================== */

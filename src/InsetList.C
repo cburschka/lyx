@@ -20,7 +20,8 @@
 
 #include "insets/insetbranch.h"
 
-using lyx::pos_type;
+
+namespace lyx {
 
 using std::endl;
 using std::lower_bound;
@@ -70,7 +71,7 @@ InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 }
 
 
-void InsetList::insert(InsetBase * inset, lyx::pos_type pos)
+void InsetList::insert(InsetBase * inset, pos_type pos)
 {
 	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
@@ -135,3 +136,6 @@ void InsetList::decreasePosAfterPos(pos_type pos)
 		--it->pos;
 	}
 }
+
+
+} // namespace lyx

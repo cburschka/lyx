@@ -32,6 +32,8 @@ using std::string;
 using std::vector;
 
 
+namespace lyx {
+
 int const button_size = 40;
 
 
@@ -126,5 +128,8 @@ out:
 	setUpdatesEnabled(true);
 	update();
 }
+
+
+} // namespace lyx
 
 #include "iconpalette_moc.cpp"

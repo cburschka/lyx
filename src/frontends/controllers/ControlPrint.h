@@ -19,9 +19,10 @@
 
 #include <boost/scoped_ptr.hpp>
 
+namespace lyx {
+
 class PrinterParams;
 
-namespace lyx {
 namespace frontend {
 
 /** A controller for Print dialogs.

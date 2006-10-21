@@ -12,10 +12,13 @@
 #ifndef CHKTEX_H
 #define CHKTEX_H
 
+#include <string>
+
+
+namespace lyx {
+
 class LyXLex;
 class TeXErrors;
-
-#include <string>
 
 
 ///
@@ -36,15 +39,15 @@ public:
 private:
 	///
 	int scanLogFile(TeXErrors &);
-
 	///
 	std::string cmd;
-
 	///
 	std::string file;
-
 	///
 	std::string path;
 };
+
+
+} // namespace lyx
 
 #endif

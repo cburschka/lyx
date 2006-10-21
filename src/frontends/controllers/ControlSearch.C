@@ -28,7 +28,7 @@ ControlSearch::ControlSearch(Dialog & parent)
 void ControlSearch::find(string const & search, bool casesensitive,
 			 bool matchword, bool forward)
 {
-	string const data = find::find2string(search, casesensitive,
+	string const data = find2string(search, casesensitive,
 					      matchword, forward);
 	kernel().dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
@@ -39,7 +39,7 @@ void ControlSearch::replace(string const & search, string const & replace,
 			    bool forward, bool all)
 {
 	string const data =
-		find::replace2string(search, replace, casesensitive,
+		replace2string(search, replace, casesensitive,
 				     matchword, all, forward);
 	kernel().dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }

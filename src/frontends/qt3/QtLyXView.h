@@ -13,5 +13,8 @@
  * src/Timeout.h. Uggghh.
  */
 
+
+
+} // namespace lyx
 #undef emit
 #undef signals

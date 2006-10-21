@@ -17,6 +17,9 @@
 
 #include <algorithm>
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -53,13 +56,13 @@ bool Branch::setSelected(bool b)
 }
 
 
-lyx::RGBColor const & Branch::getColor() const
+RGBColor const & Branch::getColor() const
 {
 	return color_;
 }
 
 
-void Branch::setColor(lyx::RGBColor const & c)
+void Branch::setColor(RGBColor const & c)
 {
 	color_ = c;
 }
@@ -68,7 +71,7 @@ void Branch::setColor(lyx::RGBColor const & c)
 void Branch::setColor(string const & c)
 {
 	if (c.size() == 7 && c[0] == '#')
-		color_ = lyx::RGBColor(c);
+		color_ = RGBColor(c);
 	else
 		// no color set or invalid color - use normal background
 		theApp->getRgbColor(LColor::background, color_);
@@ -123,7 +126,10 @@ bool BranchList::add(string const & s)
 
 bool BranchList::remove(string const & s)
 {
-	List::size_type const size = list.size();
+	size_t const size = list.size();
 	list.remove_if(BranchNamesEqual(s));
 	return size != list.size();
 }
+
+
+} // namespace lyx

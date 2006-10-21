@@ -16,6 +16,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 ///
 class Spacing {
 public:
@@ -85,5 +88,8 @@ inline
 bool operator!=(Spacing const & a, Spacing const & b)
 {
 	return !(a == b);
+
+
+} // namespace lyx
 }
 #endif

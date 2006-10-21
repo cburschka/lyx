@@ -16,6 +16,9 @@
 #include <boost/assert.hpp>
 
 
+namespace lyx {
+
+
 InsetIterator::InsetIterator(InsetBase & inset)
 	: DocIterator(inset)
 {
@@ -34,3 +37,6 @@ InsetIterator inset_iterator_end(InsetBase & inset)
 {
 	return InsetIterator(inset);
 }
+
+
+} // namespace lyx

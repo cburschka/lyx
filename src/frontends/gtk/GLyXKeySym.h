@@ -14,6 +14,9 @@
 
 #include "frontends/LyXKeySym.h"
 
+
+namespace lyx {
+
 class GLyXKeySym : public LyXKeySym {
 public:
 	GLyXKeySym();
@@ -31,5 +34,8 @@ public:
 private:
 	unsigned int keyval_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -31,6 +31,9 @@
 
 #include <cerrno>
 
+
+namespace lyx {
+
 #if defined (_WIN32)
 # include <io.h>
 #endif
@@ -47,7 +50,7 @@ using std::string;
 // that can connect at the same time.
 LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 	: func(f),
-	  fd_(lyx::support::socktools::listen(addr, 3)),
+	  fd_(support::socktools::listen(addr, 3)),
 	  address_(addr)
 {
 	if (fd_ == -1) {
@@ -57,9 +60,9 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 
 	// These env vars are used by DVI inverse search
 	// Needed by xdvi
-	lyx::support::setEnv("XEDITOR", "lyxclient -g %f %l");
+	support::setEnv("XEDITOR", "lyxclient -g %f %l");
 	// Needed by lyxclient
-	lyx::support::setEnv("LYXSOCKET", address_);
+	support::setEnv("LYXSOCKET", address_);
 
 	theApp->registerSocketCallback(
 		fd_,
@@ -80,7 +83,7 @@ LyXServerSocket::~LyXServerSocket()
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
 	}
-	lyx::support::unlink(address_);
+	support::unlink(address_);
 	lyxerr[Debug::LYXSERVER] << "lyx: Server socket quitting" << endl;
 }
 
@@ -95,7 +98,7 @@ string const & LyXServerSocket::address() const
 // is OK and if the number of clients does not exceed MAX_CLIENTS
 void LyXServerSocket::serverCallback()
 {
-	int const client_fd = lyx::support::socktools::accept(fd_);
+	int const client_fd = support::socktools::accept(fd_);
 
 	if (fd_ == -1) {
 		lyxerr[Debug::LYXSERVER] << "lyx: Failed to accept new client"
@@ -140,7 +143,7 @@ void LyXServerSocket::dataCallback(int fd)
 		if (key == "LYXCMD") {
 			string const cmd = line.substr(pos + 1);
 			func->dispatch(lyxaction.lookupFunc(cmd));
-			string const rval = lyx::to_utf8(func->getMessage());
+			string const rval = to_utf8(func->getMessage());
 			if (func->errorStat()) {
 				client->writeln("ERROR:" + cmd + ':' + rval);
 			} else {
@@ -280,3 +283,6 @@ void LyXDataSocket::writeln(string const & line)
 		connected_ = false;
 	}
 }
+
+
+} // namespace lyx

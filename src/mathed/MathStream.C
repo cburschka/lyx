@@ -13,6 +13,9 @@
 #include "MathStream.h"
 #include "MathMLStream.h"
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -26,7 +29,7 @@ WriteStream & operator<<(WriteStream & ws, string const & s)
 NormalStream & operator<<(NormalStream & ns, string const & s)
 {
 	// FIXME UNICODE
-	ns.os() << lyx::from_utf8(s);
+	ns.os() << from_utf8(s);
 	return ns;
 }
 
@@ -34,7 +37,7 @@ NormalStream & operator<<(NormalStream & ns, string const & s)
 MapleStream & operator<<(MapleStream & ms, string const & s)
 {
 	// FIXME UNICODE
-	ms.os() << lyx::from_utf8(s);
+	ms.os() << from_utf8(s);
 	return ms;
 }
 
@@ -42,7 +45,7 @@ MapleStream & operator<<(MapleStream & ms, string const & s)
 MaximaStream & operator<<(MaximaStream & ms, string const & s)
 {
 	// FIXME UNICODE
-	ms.os() << lyx::from_utf8(s);
+	ms.os() << from_utf8(s);
 	return ms;
 }
 
@@ -50,7 +53,7 @@ MaximaStream & operator<<(MaximaStream & ms, string const & s)
 MathematicaStream & operator<<(MathematicaStream & ms, string const & s)
 {
 	// FIXME UNICODE
-	ms.os() << lyx::from_utf8(s);
+	ms.os() << from_utf8(s);
 	return ms;
 }
 
@@ -58,7 +61,7 @@ MathematicaStream & operator<<(MathematicaStream & ms, string const & s)
 MathMLStream & operator<<(MathMLStream & ms, string const & s)
 {
 	// FIXME UNICODE
-	ms.os() << lyx::from_utf8(s);
+	ms.os() << from_utf8(s);
 	return ms;
 }
 
@@ -66,6 +69,9 @@ MathMLStream & operator<<(MathMLStream & ms, string const & s)
 OctaveStream & operator<<(OctaveStream & os, string const & s)
 {
 	// FIXME UNICODE
-	os.os() << lyx::from_utf8(s);
+	os.os() << from_utf8(s);
 	return os;
 }
+
+
+} // namespace lyx

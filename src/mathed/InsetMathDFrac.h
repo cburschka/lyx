@@ -15,6 +15,9 @@
 #include "InsetMathFrac.h"
 
 
+namespace lyx {
+
+
 /// \dfrac support
 class InsetMathDFrac : public InsetMathFrac {
 public:
@@ -33,5 +36,8 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

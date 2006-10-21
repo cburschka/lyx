@@ -12,11 +12,15 @@
 #ifndef PARAGRAPH_LIST_FWD_H
 #define PARAGRAPH_LIST_FWD_H
 
+namespace lyx {
+
 template <class T>
 class RandomAccessList;
 
 class Paragraph;
 
 typedef RandomAccessList<Paragraph> ParagraphList;
+
+} // namespace lyx
 
 #endif

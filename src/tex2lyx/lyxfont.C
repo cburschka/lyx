@@ -14,6 +14,9 @@
 #include "lyxlex.h"
 #include "support/lstrings.h"
 
+
+namespace lyx {
+
 using lyx::support::ascii_lowercase;
 
 using std::string;
@@ -50,3 +53,6 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 	}
 	return *this;
 }
+
+
+} // namespace lyx

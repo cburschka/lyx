@@ -17,6 +17,9 @@
 #include "MathStream.h"
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -78,3 +81,6 @@ void InsetMathFontOld::infoize(std::ostream & os) const
 {
 	os << "Font: " << key_->name;
 }
+
+
+} // namespace lyx

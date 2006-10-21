@@ -32,13 +32,11 @@
 
 #include <boost/bind.hpp>
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
-
-namespace graphics = lyx::graphics;
-namespace support  = lyx::support;
 
 
 LyXRC_PreviewStatus RenderPreview::status()
@@ -99,7 +97,7 @@ string const statusMessage(BufferView const * bv, string const & snippet)
 	}
 
 	// FIXME UNICODE
-	return lyx::to_utf8(message);
+	return to_utf8(message);
 }
 
 } // namespace anon
@@ -132,7 +130,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 		// FIXME UNICODE
-		docstring const stat = lyx::from_utf8(statusMessage(mi.base.bv, snippet_));
+		docstring const stat = from_utf8(statusMessage(mi.base.bv, snippet_));
 		dim.wid = 15 + theFontMetrics(font).width(stat);
 	}
 
@@ -166,7 +164,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
 		// FIXME UNICODE
-		docstring const stat = lyx::from_utf8(statusMessage(pi.base.bv, snippet_));
+		docstring const stat = from_utf8(statusMessage(pi.base.bv, snippet_));
 		pi.pain.text(x + offset + 6,
 			     y - theFontMetrics(font).maxAscent() - 4,
 			     stat, font);
@@ -203,7 +201,7 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
 
 	// FIXME UNICODE
 	// We have to make sure that we call latex with the right encoding
-	snippet_ = support::trim(lyx::to_utf8(latex_snippet));
+	snippet_ = support::trim(to_utf8(latex_snippet));
 	if (snippet_.empty())
 		return;
 
@@ -266,3 +264,5 @@ RenderMonitoredPreview::fileChanged(slot_type const & slot)
 {
 	return monitor_.connect(slot);
 }
+
+} // namespace lyx

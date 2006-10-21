@@ -14,6 +14,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 namespace id_sc
 {
 
@@ -24,5 +27,8 @@ std::string const shortcut(std::string const &);
 std::string const id(std::string const &);
 
 }
+
+
+} // namespace lyx
 
 #endif

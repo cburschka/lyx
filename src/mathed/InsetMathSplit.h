@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
+
 class InsetMathSplit : public InsetMathGrid {
 public:
 	///
@@ -42,4 +45,7 @@ private:
 	std::string name_;
 };
 
+
+
+} // namespace lyx
 #endif

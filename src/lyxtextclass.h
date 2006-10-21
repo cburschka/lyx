@@ -17,6 +17,9 @@
 
 #include <vector>
 
+
+namespace lyx {
+
 class LyXLex;
 class Counters;
 class FloatList;
@@ -266,5 +269,8 @@ void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p);
+
+
+} // namespace lyx
 
 #endif

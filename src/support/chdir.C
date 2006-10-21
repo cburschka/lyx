@@ -12,6 +12,9 @@
 
 #include "support/lyxlib.h"
 
+
+namespace lyx {
+
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -28,3 +31,6 @@ int lyx::support::chdir(std::string const & name)
 	return ::chdir(name.c_str());
 #endif
 }
+
+
+} // namespace lyx

@@ -17,6 +17,9 @@
 #include <iosfwd>
 
 
+namespace lyx {
+
+
 /*!
  * Small helper struct that holds font properties.
  * The names are in LyX language, not LaTeX.
@@ -147,5 +150,8 @@ public:
 	/// font attributes of normal text
 	static Font normalfont;
 };
+
+
+} // namespace lyx
 
 #endif

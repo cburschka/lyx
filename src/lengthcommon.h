@@ -18,6 +18,9 @@
 #include "lyxlength.h"
 
 
+namespace lyx {
+
+
 /// the number of units possible
 extern int const num_units;
 
@@ -32,5 +35,8 @@ extern char const * const unit_name_gui[];
 /// return the unit given a string representation such as "cm"
 LyXLength::UNIT unitFromString(std::string const & data);
 
+
+
+} // namespace lyx
 
 #endif // LENGTH_COMMON_H

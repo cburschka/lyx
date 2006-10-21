@@ -15,6 +15,8 @@
 #include "InsetMath.h"
 
 
+namespace lyx {
+
 /// The base character inset.
 class InsetMathChar : public InsetMath {
 public:
@@ -53,4 +55,7 @@ private:
 	/// cached width
 	mutable int width_;
 };
+
+} // namespace lyx
+
 #endif

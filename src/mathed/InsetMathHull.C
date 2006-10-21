@@ -60,13 +60,12 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::odocstringstream;
 
-using lyx::cap::grabAndEraseSelection;
-using lyx::support::bformat;
-using lyx::support::subst;
+namespace lyx {
+
+using cap::grabAndEraseSelection;
+using support::bformat;
+using support::subst;
 
 using std::endl;
 using std::max;
@@ -278,7 +277,7 @@ char const * InsetMathHull::standardFont() const
 bool InsetMathHull::previewState(BufferView * bv) const
 {
 	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
-		lyx::graphics::PreviewImage const * pimage =
+		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(*bv->buffer());
 		return pimage && pimage->image();
 	}
@@ -399,7 +398,7 @@ docstring const latex_string(InsetMathHull const & inset)
 } // namespace anon
 
 
-void InsetMathHull::addPreview(lyx::graphics::PreviewLoader & ploader) const
+void InsetMathHull::addPreview(graphics::PreviewLoader & ploader) const
 {
 	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
 		docstring const snippet = latex_string(*this);
@@ -470,7 +469,7 @@ void InsetMathHull::getLabelList(Buffer const &, vector<docstring> & labels) con
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
 			// FIXME UNICODE
-			labels.push_back(lyx::from_utf8(label_[row]));
+			labels.push_back(from_utf8(label_[row]));
 }
 
 
@@ -670,9 +669,9 @@ docstring InsetMathHull::nicelabel(row_type row) const
 	if (nonum_[row])
 		return docstring();
 	if (label_[row].empty())
-		return lyx::from_ascii("(#)");
+		return from_ascii("(#)");
 	// FIXME UNICODE
-	return lyx::from_utf8('(' + label_[row] + ')');
+	return from_utf8('(' + label_[row] + ')');
 }
 
 
@@ -956,11 +955,11 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 {
 	docstring dlang;
 	docstring extra;
-	lyx::idocstringstream iss(func.argument());
+	idocstringstream iss(func.argument());
 	iss >> dlang >> extra;
 	if (extra.empty())
-		extra = lyx::from_ascii("noextra");
-	string const lang = lyx::to_ascii(dlang);
+		extra = from_ascii("noextra");
+	string const lang = to_ascii(dlang);
 
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
@@ -985,7 +984,7 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 		MathArray ar;
 		if (cur.inMathed() && cur.selection()) {
 			// FIXME UNICODE
-			asArray(lyx::from_utf8(grabAndEraseSelection(cur)), ar);
+			asArray(from_utf8(grabAndEraseSelection(cur)), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
@@ -1093,8 +1092,8 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_LABEL_INSERT: {
 		recordUndoInset(cur);
 		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-		docstring old_label = lyx::from_utf8(label(r));
-		docstring const default_label = lyx::from_ascii(
+		docstring old_label = from_utf8(label(r));
+		docstring const default_label = from_ascii(
 			(lyxrc.label_init_length >= 0) ? "eq:" : "");
 		if (old_label.empty())
 			old_label = default_label;
@@ -1113,15 +1112,15 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		//lyxerr << "arg: " << lyx::to_utf8(cmd.argument()) << endl;
+		//lyxerr << "arg: " << to_utf8(cmd.argument()) << endl;
 		string const name = cmd.getArg(0);
 		if (name == "label") {
 			InsetCommandParams p("label");
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()), p);
-			string str = lyx::to_utf8(p["name"]);
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), p);
+			string str = to_utf8(p["name"]);
 			recordUndoInset(cur);
 			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-			str = lyx::support::trim(str);
+			str = support::trim(str);
 			if (!str.empty())
 				numbered(r, true);
 			string old = label(r);
@@ -1145,7 +1144,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndoInset(cur);
 		row_type row = cur.row();
 		col_type col = cur.col();
-		mutate(hullType(lyx::to_utf8(cmd.argument())));
+		mutate(hullType(to_utf8(cmd.argument())));
 		cur.idx() = row * ncols() + col;
 		if (cur.idx() > cur.lastidx()) {
 			cur.idx() = cur.lastidx();
@@ -1202,7 +1201,7 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	case LFUN_TABULAR_FEATURE: {
-		istringstream is(lyx::to_utf8(cmd.argument()));
+		istringstream is(to_utf8(cmd.argument()));
 		string s;
 		is >> s;
 		if (!rowChangeOK()
@@ -1210,8 +1209,8 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "delete-row"
 			|| s == "copy-row")) {
 			status.message(bformat(
-				lyx::from_utf8(N_("Can't change number of rows in '%1$s'")),
-				lyx::from_utf8(hullName(type_))));
+				from_utf8(N_("Can't change number of rows in '%1$s'")),
+				from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
@@ -1220,8 +1219,8 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "delete-column"
 			|| s == "copy-column")) {
 			status.message(bformat(
-				lyx::from_utf8(N_("Can't change number of columns in '%1$s'")),
-				lyx::from_utf8(hullName(type_))));
+				from_utf8(N_("Can't change number of columns in '%1$s'")),
+				from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
@@ -1230,15 +1229,15 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 		  || type_ == hullNone) &&
 		    (s == "add-hline-above" || s == "add-hline-below")) {
 			status.message(bformat(
-				lyx::from_utf8(N_("Can't add horizontal grid lines in '%1$s'")),
-				lyx::from_utf8(hullName(type_))));
+				from_utf8(N_("Can't add horizontal grid lines in '%1$s'")),
+				from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			status.message(bformat(
-				lyx::from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
-				lyx::from_utf8(hullName(type_))));
+				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
+				from_utf8(hullName(type_))));
 			status.enabled(false);
 			return true;
 		}
@@ -1280,7 +1279,7 @@ void InsetMathHull::mutateToText()
 		view_->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
 
 	// remove ourselves
-	//lyx::dispatch(LFUN_ESCAPE);
+	//dispatch(LFUN_ESCAPE);
 #endif
 }
 
@@ -1332,7 +1331,7 @@ void InsetMathHull::revealCodes(LCursor & cur) const
 		return;
 	ostringstream os;
 	cur.info(os);
-	cur.message(lyx::from_utf8(os.str()));
+	cur.message(from_utf8(os.str()));
 /*
 	// write something to the minibuffer
 	// translate to latex
@@ -1420,7 +1419,7 @@ void InsetMathHull::write(Buffer const &, std::ostream & os) const
 	WriteStream wi(oss, false, false);
 	oss << "Formula ";
 	write(wi);
-	os << lyx::to_utf8(oss.str());
+	os << to_utf8(oss.str());
 }
 
 
@@ -1477,7 +1476,7 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 		// so we strip LyX' math environment
 		WriteStream wi(ls, false, false);
 		InsetMathGrid::write(wi);
-		ms << subst(subst(lyx::to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
+		ms << subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
 		ms << ETag("alt");
 		ms << MTag("math");
 		InsetMathGrid::mathmlize(ms);
@@ -1485,7 +1484,7 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 	} else {
 		ms << MTag("alt role=\"tex\"");
 		res = latex(buf, ls, runparams);
-		ms << subst(subst(lyx::to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
+		ms << subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
 		ms << ETag("alt");
 	}
 
@@ -1510,3 +1509,6 @@ int InsetMathHull::textString(Buffer const & buf, odocstream & os,
 {
 	return plaintext(buf, os, op);
 }
+
+
+} // namespace lyx

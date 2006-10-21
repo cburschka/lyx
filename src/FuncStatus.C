@@ -12,9 +12,11 @@
 
 #include "FuncStatus.h"
 
-using lyx::docstring;
 
-FuncStatus::FuncStatus() : v_(OK)
+namespace lyx {
+
+FuncStatus::FuncStatus()
+	: v_(OK)
 {
 }
 
@@ -90,3 +92,6 @@ docstring const & FuncStatus::message() const
 {
 	return message_;
 }
+
+
+} // namespace lyx

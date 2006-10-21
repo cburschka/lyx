@@ -23,6 +23,8 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/utility.hpp>
 
+namespace lyx {
+
 class Buffer;
 class InsetBase;
 class Menubar;
@@ -34,13 +36,11 @@ class LyXFont;
 class Timeout;
 class FuncRequest;
 
-namespace lyx {
 namespace frontend {
 class WorkArea;
 class ControlCommandBuffer;
 } // namespace frontend
 
-} // namespace lyx
 
 /**
  * LyXView - main LyX window
@@ -62,7 +62,7 @@ public:
 
 	virtual ~LyXView();
 
-	void setWorkArea(lyx::frontend::WorkArea * work_area);
+	void setWorkArea(frontend::WorkArea * work_area);
 
 	/**
 	 * This is called after the concrete view has been created.
@@ -130,7 +130,7 @@ public:
 	boost::signal<void()> focus_command_buffer;
 
 	/// display a message in the view
-	virtual void message(lyx::docstring const &) = 0;
+	virtual void message(docstring const &) = 0;
 
 	/// clear any temporary message and replace with current status
 	virtual void clearMessage() = 0;
@@ -157,7 +157,7 @@ public:
 
 	/// Temporary method to access the current workArea.
 	/// This is needed for the qt3 and gtk frontend.
-	lyx::frontend::WorkArea * workArea();
+	frontend::WorkArea * workArea();
 
 	/// show the error list to the user
 	void showErrorList(std::string const &);
@@ -172,7 +172,7 @@ protected:
 	/**
 	\todo FIXME: there is only one workArea per LyXView for now.
 	*/
-	lyx::frontend::WorkArea * work_area_;
+	frontend::WorkArea * work_area_;
 
 	/// view's menubar
 	boost::scoped_ptr<Menubar> menubar_;
@@ -183,7 +183,7 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(lyx::docstring const & t, lyx::docstring const & it) = 0;
+	virtual void setWindowTitle(docstring const & t, docstring const & it) = 0;
 
 	/// called on timeout
 	void autoSave();
@@ -244,10 +244,12 @@ protected:
 	/// view's command buffer controller
 	// this has to be declared _after_ lyxfunc_ as its initialization depends
 	// on it!
-	typedef boost::scoped_ptr<lyx::frontend::ControlCommandBuffer>
+	typedef boost::scoped_ptr<frontend::ControlCommandBuffer>
 	CommandBufferPtr;
 
 	CommandBufferPtr const controlcommand_;
 };
+
+} // namespace lyx
 
 #endif // LYXVIEW_H

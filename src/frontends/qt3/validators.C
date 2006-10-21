@@ -169,3 +169,9 @@ PathValidator * getPathValidator(QLineEdit * ed)
 }
 
 #include "validators_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

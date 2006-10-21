@@ -13,12 +13,12 @@
 #define QBIBTEX_CONTROLLER_H
 
 #include "QDialogView.h"
+#include "QBibtexDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlBibtex;
-class QBibtexDialog;
 
 class QBibtex
 	: public QController<ControlBibtex, QView<QBibtexDialog> >

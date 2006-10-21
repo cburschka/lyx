@@ -16,21 +16,18 @@
 
 #include "support/types.h"
 
+namespace lyx {
+
 class LyXText;
 class BufferView;
 class PainterInfo;
 class ViewMetricsInfo;
 
-namespace lyx {
-namespace frontend {
-class Painter;
-}
-}
-
+namespace frontend { class Painter; }
 
 /// paint visible paragraph of main text
 void paintText(BufferView & bv, ViewMetricsInfo const & vi,
-			   lyx::frontend::Painter & painter);
+			   frontend::Painter & painter);
 
 /// paint the rows of a text inset
 void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y);
@@ -44,5 +41,6 @@ inline int changebarMargin() { return 12; }
 /// right margin
 inline int rightMargin() { return 10; }
 
+} // namespace lyx
 
 #endif // ROWPAINTER_H

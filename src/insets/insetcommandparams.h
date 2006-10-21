@@ -19,8 +19,9 @@
 #include <vector>
 
 
-class LyXLex;
+namespace lyx {
 
+class LyXLex;
 
 class InsetCommandParams {
 public:
@@ -34,7 +35,7 @@ public:
 	///
 	void write(std::ostream &) const;
 	/// Build the complete LaTeX command
-	lyx::docstring const getCommand() const;
+	docstring const getCommand() const;
 	/// Return the command name
 	std::string const & getCmdName() const { return name_; }
 	/// FIXME remove
@@ -54,9 +55,9 @@ public:
 	/// FIXME remove
 	void setContents(std::string const &);
 	/// get parameter \p name
-	lyx::docstring const & operator[](std::string const & name) const;
+	docstring const & operator[](std::string const & name) const;
 	/// set parameter \p name
-	lyx::docstring & operator[](std::string const & name);
+	docstring & operator[](std::string const & name);
 	///
 	bool preview() const { return preview_; }
 	///
@@ -82,7 +83,7 @@ private:
 	/// The name of this command as it appears in .lyx and .tex files
 	std::string name_;
 	///
-	typedef std::vector<lyx::docstring> ParamVector;
+	typedef std::vector<docstring> ParamVector;
 	/// The parameters (both optional and required ones). The order is
 	/// the same that is required for LaTeX output. The size of params_
 	/// is always info_->n.
@@ -100,5 +101,8 @@ bool operator==(InsetCommandParams const &, InsetCommandParams const &);
 
 ///
 bool operator!=(InsetCommandParams const &, InsetCommandParams const &);
+
+
+} // namespace lyx
 
 #endif

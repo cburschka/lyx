@@ -18,7 +18,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -46,7 +47,7 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
-	lyx::frontend::FontMetrics const & fm =
+	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
 	
 	if (editable_)
@@ -72,3 +73,6 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 				 LColor::commandbg, LColor::commandframe);
 	}
 }
+
+
+} // namespace lyx

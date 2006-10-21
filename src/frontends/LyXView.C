@@ -42,6 +42,9 @@
 
 #include <boost/bind.hpp>
 
+
+namespace lyx {
+
 #ifdef HAVE_SYS_TIME_H
 # include <sys/time.h>
 #endif
@@ -298,9 +301,8 @@ void LyXView::autoSave()
 {
 	lyxerr[Debug::INFO] << "Running autoSave()" << endl;
 
-	if (view()->buffer()) {
-		::autoSave(view());
-	}
+	if (view()->buffer())
+		lyx::autoSave(view());
 }
 
 
@@ -381,3 +383,6 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 	}
 	return buffer_ptr;
 }
+
+
+} // namespace lyx

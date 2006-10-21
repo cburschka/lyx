@@ -18,6 +18,9 @@
 #include "insetbase.h"
 #include "dimension.h"
 
+
+namespace lyx {
+
 class LColor_color;
 
 
@@ -78,5 +81,8 @@ public:
 	InsetBase_code(InsetBase::Code val) : val_(val) {}
 	operator InsetBase::Code() const { return val_; }
 };
+
+
+} // namespace lyx
 
 #endif

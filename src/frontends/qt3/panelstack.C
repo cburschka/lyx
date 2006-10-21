@@ -134,3 +134,9 @@ void PanelStack::switchPanel(QListViewItem * item)
 }
 
 #include "panelstack_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

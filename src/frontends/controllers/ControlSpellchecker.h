@@ -16,9 +16,10 @@
 #include "WordLangTuple.h"
 #include <boost/scoped_ptr.hpp>
 
+namespace lyx {
+
 class SpellBase;
 
-namespace lyx {
 namespace frontend {
 
 /** A controller for Spellchecker dialogs.

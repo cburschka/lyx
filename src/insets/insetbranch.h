@@ -12,11 +12,13 @@
 #ifndef INSETBRANCH_H
 #define INSETBRANCH_H
 
-
 #include "insetcollapsable.h"
+#include "mailinset.h"
+
+
+namespace lyx {
 
 class Buffer;
-
 
 class InsetBranchParams {
 public:
@@ -41,7 +43,7 @@ public:
 	///
 	~InsetBranch();
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::BRANCH_CODE; }
 	///
@@ -53,13 +55,12 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-			OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const & runparams) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -89,7 +90,6 @@ private:
 	InsetBranchParams params_;
 };
 
-#include "mailinset.h"
 
 class InsetBranchMailer : public MailInset {
 public:
@@ -113,6 +113,6 @@ private:
 	InsetBranch & inset_;
 };
 
-
+} // namespace lyx
 
 #endif

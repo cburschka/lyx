@@ -14,6 +14,9 @@
 
 #include <deque>
 
+
+namespace lyx {
+
 /**
  * limited_stack - A stack of limited size.
  *
@@ -90,5 +93,8 @@ private:
 // Make pointer type an error.
 template <typename T>
 class limited_stack<T*>;
+
+
+} // namespace lyx
 
 #endif // LIMITED_STACK_H

@@ -13,6 +13,9 @@
 #include "support/filetools.h"
 #include "support/package.h"
 
+
+namespace lyx {
+
 using lyx::support::package;
 using std::string;
 
@@ -144,3 +147,6 @@ string const Messages::get(string const & msg) const
 {
 	return pimpl_->get(msg);
 }
+
+
+} // namespace lyx

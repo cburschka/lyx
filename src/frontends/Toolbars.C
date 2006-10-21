@@ -23,6 +23,9 @@
 #include "lyxtextclass.h"
 #include "LyXView.h"
 
+
+namespace lyx {
+
 using std::endl;
 using std::string;
 
@@ -176,3 +179,6 @@ void layoutSelected(LyXView & lv, string const & name)
 	lyxerr << "ERROR (layoutSelected): layout not found!"
 	       << endl;
 }
+
+
+} // namespace lyx

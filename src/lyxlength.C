@@ -23,6 +23,9 @@
 #include <iomanip>
 
 
+namespace lyx {
+
+
 using std::ostringstream;
 using std::string;
 
@@ -264,3 +267,6 @@ bool operator!=(LyXLength const & l1, LyXLength const & l2)
 {
 	return !(l1 == l2);
 }
+
+
+} // namespace lyx

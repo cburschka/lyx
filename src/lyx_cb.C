@@ -55,28 +55,30 @@
 #include <cerrno>
 #include <fstream>
 
-using lyx::docstring;
-using lyx::support::addName;
-using lyx::support::bformat;
-using lyx::support::FileFilterList;
-using lyx::support::ForkedProcess;
-using lyx::support::isLyXFilename;
-using lyx::support::libFileSearch;
-using lyx::support::makeAbsPath;
-using lyx::support::makeDisplayPath;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::package;
-using lyx::support::removeAutosaveFile;
-using lyx::support::rename;
-using lyx::support::split;
-using lyx::support::Systemcall;
-using lyx::support::tempName;
-using lyx::support::unlink;
+
+namespace lyx {
+
+using support::addName;
+using support::bformat;
+using support::FileFilterList;
+using support::ForkedProcess;
+using support::isLyXFilename;
+using support::libFileSearch;
+using support::makeAbsPath;
+using support::makeDisplayPath;
+using support::onlyFilename;
+using support::onlyPath;
+using support::package;
+using support::removeAutosaveFile;
+using support::rename;
+using support::split;
+using support::Systemcall;
+using support::tempName;
+using support::unlink;
 
 using boost::shared_ptr;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
 
 using std::back_inserter;
@@ -129,8 +131,8 @@ bool writeAs(Buffer * buffer, string const & filename)
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Choose a filename to save document as"),
 			LFUN_BUFFER_WRITE_AS,
-			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
-			make_pair(_("Templates|#T#t"), lyx::from_utf8(lyxrc.template_path)));
+			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
+			make_pair(_("Templates|#T#t"), from_utf8(lyxrc.template_path)));
 
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
@@ -138,14 +140,14 @@ bool writeAs(Buffer * buffer, string const & filename)
 		FileFilterList const filter (_("LyX Documents (*.lyx)"));
 
 		FileDialog::Result result =
-			fileDlg.save(lyx::from_utf8(onlyPath(fname)),
+			fileDlg.save(from_utf8(onlyPath(fname)),
 				     filter,
-				     lyx::from_utf8(onlyFilename(fname)));
+				     from_utf8(onlyFilename(fname)));
 
 		if (result.first == FileDialog::Later)
 			return false;
 
-		fname = lyx::to_utf8(result.second);
+		fname = to_utf8(result.second);
 
 		if (fname.empty())
 			return false;
@@ -210,7 +212,7 @@ private:
 
 int AutoSaveBuffer::start()
 {
-	command_ = lyx::to_utf8(bformat(_("Auto-saving %1$s"), lyx::from_utf8(fname_)));
+	command_ = to_utf8(bformat(_("Auto-saving %1$s"), from_utf8(fname_)));
 	return run(DontWait);
 }
 
@@ -322,7 +324,7 @@ void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		return;
 
 	// FIXME: We don't know the encoding of the file
-	docstring const tmpstr = lyx::from_utf8(getContentsOfAsciiFile(bv, f, asParagraph));
+	docstring const tmpstr = from_utf8(getContentsOfAsciiFile(bv, f, asParagraph));
 	if (tmpstr.empty())
 		return;
 
@@ -348,20 +350,20 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
 		FileDialog::Result result =
-			fileDlg.open(lyx::from_utf8(bv->buffer()->filePath()),
+			fileDlg.open(from_utf8(bv->buffer()->filePath()),
 				     FileFilterList(), docstring());
 
 		if (result.first == FileDialog::Later)
 			return string();
 
-		fname = lyx::to_utf8(result.second);
+		fname = to_utf8(result.second);
 
 		if (fname.empty())
 			return string();
 	}
 
 	if (!fs::is_readable(fname)) {
-		docstring const error = lyx::from_ascii(strerror(errno));
+		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname, 50);
 		docstring const text = bformat(_("Could not read the specified document\n"
 							   "%1$s\ndue to the error: %2$s"), file, error);
@@ -371,7 +373,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		docstring const error = lyx::from_ascii(strerror(errno));
+		docstring const error = from_ascii(strerror(errno));
 		docstring const file = makeDisplayPath(fname, 50);
 		docstring const text = bformat(_("Could not open the specified document\n"
 							   "%1$s\ndue to the error: %2$s"), file, error);
@@ -408,7 +410,7 @@ void reconfigure(BufferView * bv)
 	bv->buffer()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	lyx::support::Path p(package().user_support());
+	support::Path p(package().user_support());
 	string const configure_command = package().configure_command();
 	Systemcall one;
 	one.startscript(Systemcall::Wait, configure_command);
@@ -424,3 +426,6 @@ void reconfigure(BufferView * bv)
 					  "You need to restart LyX to make use of any\n"
 					  "updated document class specifications."));
 }
+
+
+} // namespace lyx

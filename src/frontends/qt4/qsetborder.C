@@ -242,3 +242,9 @@ bool QSetBorder::getBottom()
 }
 
 #include "qsetborder_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

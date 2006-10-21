@@ -22,6 +22,9 @@
 #include <qfont.h>
 
 
+namespace lyx {
+
+
 /**
  * Qt font loader for LyX. Matches LyXFonts against
  * actual QFont instances, and also caches metrics.
@@ -82,5 +85,8 @@ private:
 };
 
 extern GuiFontLoader fontloader;
+
+
+} // namespace lyx
 
 #endif // QFONT_LOADER_H

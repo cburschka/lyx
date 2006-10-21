@@ -20,6 +20,9 @@
 #include <iosfwd>
 
 
+namespace lyx {
+
+
 /**
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
@@ -42,13 +45,13 @@ public:
 	FuncRequest(kb_action act, int x, int y, mouse_button::state button,
 		    Origin o = INTERNAL);
 	/// actions with extra argument
-	FuncRequest(kb_action act, lyx::docstring const & arg,
+	FuncRequest(kb_action act, docstring const & arg,
 		    Origin o = INTERNAL);
 	/// actions with extra argument. FIXME: remove this
 	FuncRequest(kb_action act, std::string const & arg,
 		    Origin o = INTERNAL);
 	/// for changing requests a bit
-	FuncRequest(FuncRequest const & cmd, lyx::docstring const & arg,
+	FuncRequest(FuncRequest const & cmd, docstring const & arg,
 		    Origin o = INTERNAL);
 	/// for changing requests a bit. FIXME: remove this
 	FuncRequest(FuncRequest const & cmd, std::string const & arg,
@@ -61,14 +64,14 @@ public:
 	std::string getArg(unsigned int i) const;
 
 	/// access the whole argument
-	lyx::docstring const & argument() const { return argument_; }
+	docstring const & argument() const { return argument_; }
 
 public:  // should be private
 	/// the action
 	kb_action action;
 private:
 	/// the action's string argument
-	lyx::docstring argument_;
+	docstring argument_;
 public:  // should be private
 	/// who initiated the action
 	Origin origin;
@@ -84,5 +87,8 @@ public:  // should be private
 bool operator==(FuncRequest const & lhs, FuncRequest const & rhs);
 
 std::ostream & operator<<(std::ostream &, FuncRequest const &);
+
+
+} // namespace lyx
 
 #endif // FUNCREQUEST_H

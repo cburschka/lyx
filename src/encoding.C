@@ -18,6 +18,9 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 
+
+namespace lyx {
+
 #ifndef CXX_GLOBAL_CSTD
 using std::strtol;
 #endif
@@ -361,3 +364,6 @@ void Encodings::read(string const & filename)
 		}
 	}
 }
+
+
+} // namespace lyx

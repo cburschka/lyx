@@ -15,6 +15,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 // An inset for super- and subscripts or both.  The 'nucleus' is always
 // cell 0.  If there is just one script, it's cell 1 and cell_1_is_up_
 // is set accordingly.  If both are used, cell 1 is up and cell 2 is down.
@@ -130,4 +133,7 @@ private:
 	int limits_;
 };
 
+
+
+} // namespace lyx
 #endif

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "QBibtexDialog.h"
+#include "QBibtex.h"
 
 #include <QCloseEvent>
 
@@ -121,7 +122,7 @@ void QBibtexDialog::browsePressed()
 
 	if (!file.empty()) {
 		// FIXME UNICODE
-		docstring const filen = lyx::from_utf8(changeExtension(lyx::to_utf8(file), ""));
+		docstring const filen = from_utf8(changeExtension(to_utf8(file), ""));
 		bool present = false;
 		unsigned int pres = 0;
 
@@ -147,7 +148,7 @@ void QBibtexDialog::browseBibPressed()
 
 	if (!file.empty()) {
 		// FIXME UNICODE
-		QString const f = toqstr(lyx::from_utf8(changeExtension(lyx::to_utf8(file), "")));
+		QString const f = toqstr(from_utf8(changeExtension(to_utf8(file), "")));
 		bool present = false;
 
 		for (int i = 0; i < add_->bibLW->count(); ++i) {
@@ -195,7 +196,7 @@ void QBibtexDialog::addDatabase()
 
 	if (!file.empty()) {
 		add_->bibED->clear();
-		QString const f = toqstr(lyx::from_utf8(changeExtension(lyx::to_utf8(file), "")));
+		QString const f = toqstr(from_utf8(changeExtension(to_utf8(file), "")));
 		QList<QListWidgetItem *> matches =
 			databaseLW->findItems(f, Qt::MatchExactly);
 		if (matches.empty())

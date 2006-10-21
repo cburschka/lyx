@@ -14,6 +14,9 @@
 
 
 #include "InsetMathCommand.h"
+
+
+namespace lyx {
 class Buffer;
 
 // for \ref
@@ -28,16 +31,16 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 	///
-	lyx::docstring const screenLabel() const;
+	docstring const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	virtual RefInset * asRefInset() { return this; }
 
 	/// plain text output in ucs4 encoding
-	int plaintext(lyx::odocstream &, OutputParams const &) const;
+	int plaintext(odocstream &, OutputParams const &) const;
 	/// docbook output
-	int docbook(Buffer const & buf, lyx::odocstream & os, OutputParams const &) const;
+	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
 
 	struct ref_type_info {
 		///
@@ -62,4 +65,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

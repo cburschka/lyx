@@ -17,6 +17,9 @@
 
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -50,18 +53,18 @@ void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 	FontSetChanger dummy(pi.base, "textnormal");
 	drawMarkers(pi, x, y);
 
-	drawStrBlack(pi, x, y, lyx::from_ascii("["));
+	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(0).draw(pi, x, y);
 	x += cell(0).width();
-	drawStrBlack(pi, x, y, lyx::from_ascii("]"));
+	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 2;
 
-	drawStrBlack(pi, x, y, lyx::from_ascii("["));
+	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(1).draw(pi, x, y);
 	x += cell(1).width();
-	drawStrBlack(pi, x, y, lyx::from_ascii("]"));
+	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 2;
 
 	cell(2).draw(pi, x, y);
@@ -90,3 +93,6 @@ void InsetMathMakebox::infoize(std::ostream & os) const
 	os << "Makebox (width: " << cell(0)
 	    << " pos: " << cell(1) << ")";
 }
+
+
+} // namespace lyx

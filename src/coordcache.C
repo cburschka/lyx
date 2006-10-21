@@ -21,6 +21,15 @@
 
 namespace lyx {
 
+Point::Point(int x, int y)
+	: x_(x), y_(y)
+{
+	BOOST_ASSERT(x > -1000000);
+	BOOST_ASSERT(x <  1000000);
+	BOOST_ASSERT(y > -1000000);
+	BOOST_ASSERT(y <  1000000);
+}
+
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {
@@ -40,7 +49,7 @@ void CoordCache::clear()
 }
 
 
-Point CoordCache::get(LyXText const * text, lyx::pit_type pit)
+Point CoordCache::get(LyXText const * text, pit_type pit)
 {
 	ParPosCache::iterator const it = pars_.find(text);
 	BOOST_ASSERT(it != pars_.end());
@@ -62,7 +71,7 @@ CoordCache::dump() const {
 			Point p = (*j).second;
 			lyxerr << "Paragraph " << pit << ": \"";
 			for (int k = 0; k < std::min(10, par.size()); ++k) {
-				lyxerr << lyx::to_utf8(docstring(1,par.getChar(k)));
+				lyxerr << to_utf8(docstring(1,par.getChar(k)));
 			}
 			lyxerr << "\" has point " << p.x_ << "," << p.y_ << std::endl;
 		}

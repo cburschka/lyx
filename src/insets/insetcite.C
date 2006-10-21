@@ -30,16 +30,17 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/exception.hpp>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::ascii_lowercase;
-using lyx::support::contains;
-using lyx::support::getStringFromVector;
-using lyx::support::getVectorFromString;
-using lyx::support::ltrim;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::tokenPos;
+
+namespace lyx {
+
+using support::ascii_lowercase;
+using support::contains;
+using support::getStringFromVector;
+using support::getVectorFromString;
+using support::ltrim;
+using support::rtrim;
+using support::split;
+using support::tokenPos;
 
 using std::endl;
 using std::replace;
@@ -48,7 +49,6 @@ using std::ostream;
 using std::vector;
 using std::map;
 
-namespace biblio = lyx::biblio;
 namespace fs = boost::filesystem;
 
 
@@ -325,7 +325,7 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 	}
 
 	// FIXME UNICODE
-	return lyx::from_utf8(label);
+	return from_utf8(label);
 }
 
 
@@ -396,7 +396,7 @@ int InsetCitation::docbook(Buffer const &, odocstream & os, OutputParams const &
 {
         // FIXME UNICODE
 	os << "<citation>"
-           << lyx::from_ascii(cleanupWhitespace(getContents()))
+           << from_ascii(cleanupWhitespace(getContents()))
            << "</citation>";
 	return 0;
 }
@@ -418,7 +418,7 @@ int InsetCitation::latex(Buffer const & buffer, odocstream & os,
 {
 	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
 	// FIXME UNICODE
-	docstring const cite_str = lyx::from_utf8(
+	docstring const cite_str = from_utf8(
 		biblio::asValidLatexCommand(getCmdName(), cite_engine));
 
 	os << "\\" << cite_str;
@@ -431,7 +431,7 @@ int InsetCitation::latex(Buffer const & buffer, odocstream & os,
 		os << '[' << after << ']';
 
 	// FIXME UNICODE
-	os << '{' << lyx::from_utf8(cleanupWhitespace(getContents())) << '}';
+	os << '{' << from_utf8(cleanupWhitespace(getContents())) << '}';
 
 	return 0;
 }
@@ -461,3 +461,6 @@ void InsetCitation::replaceContents(string const & from, string const & to)
 		setContents(getStringFromVector(items));
 	}
 }
+
+
+} // namespace lyx

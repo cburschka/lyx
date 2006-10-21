@@ -26,8 +26,8 @@
 #include "outputparams.h"
 #include "sgml.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -62,7 +62,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ref") {
 			MathArray ar;
-			if (createInsetMath_fromDialogStr(lyx::to_utf8(cmd.argument()), ar)) {
+			if (createInsetMath_fromDialogStr(to_utf8(cmd.argument()), ar)) {
 				*this = *ar[0].nucleus()->asRefInset();
 				break;
 			}
@@ -130,7 +130,7 @@ docstring const RefInset::screenLabel() const
 			break;
 		}
 	// FIXME UNICODE
-	str += lyx::from_utf8(asString(cell(0)));
+	str += from_utf8(asString(cell(0)));
 
 	//if (/* !isLatex && */ !cell(0).empty()) {
 	//	str += "||";
@@ -149,10 +149,10 @@ void RefInset::validate(LaTeXFeatures & features) const
 }
 
 
-int RefInset::plaintext(lyx::odocstream & os, OutputParams const &) const
+int RefInset::plaintext(odocstream & os, OutputParams const &) const
 {
 	// FIXME UNICODE
-	os << '[' << lyx::from_utf8(asString(cell(0))) << ']';
+	os << '[' << from_utf8(asString(cell(0))) << ']';
 	return 0;
 }
 
@@ -162,7 +162,7 @@ int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & 
 	if (cell(1).empty()) {
                 // FIXME UNICODE
 		os << "<xref linkend=\""
-                   << lyx::from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))));
+                   << from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))));
 		if (runparams.flavor == OutputParams::XML)
 			os << "\"/>";
 		else
@@ -170,9 +170,9 @@ int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & 
 	} else {
                 // FIXME UNICODE
 		os << "<link linkend=\""
-                   << lyx::from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))))
+                   << from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))))
 		   << "\">"
-                   << lyx::from_ascii(asString(cell(1)))
+                   << from_ascii(asString(cell(1)))
                    << "</link>";
 	}
 
@@ -189,3 +189,6 @@ RefInset::ref_type_info RefInset::types[] = {
 	{ "prettyref", N_("PrettyRef"),             N_("PrettyRef: ")},
 	{ "", "", "" }
 };
+
+
+} // namespace lyx

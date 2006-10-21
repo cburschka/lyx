@@ -15,6 +15,9 @@
 #include "frontends/LyXKeySymFactory.h"
 
 
+namespace lyx {
+
+
 namespace LyXKeySymFactory {
 
 LyXKeySym * create()
@@ -23,3 +26,6 @@ LyXKeySym * create()
 }
 
 }
+
+
+} // namespace lyx

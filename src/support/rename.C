@@ -15,6 +15,9 @@
 #include <cstdio>
 
 
+namespace lyx {
+
+
 using std::string;
 
 
@@ -28,3 +31,6 @@ bool lyx::support::rename(string const & from, string const & to)
 			return false;
 	return true;
 }
+
+
+} // namespace lyx

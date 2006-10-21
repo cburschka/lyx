@@ -37,12 +37,13 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::ltrim;
-using lyx::support::prefixIs;
-using lyx::support::rtrim;
-using lyx::support::suffixIs;
+
+namespace lyx {
+
+using support::prefixIs;
+using support::ltrim;
+using support::rtrim;
+using support::suffixIs;
 
 using boost::shared_ptr;
 using boost::dynamic_pointer_cast;
@@ -1911,7 +1912,7 @@ int LyXTabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 	if (isMultiColumn(cell)) {
 		os << "\\multicolumn{" << cells_in_multicolumn(cell) << "}{";
 		if (!cellinfo_of_cell(cell).align_special.empty()) {
-			os << lyx::from_ascii(cellinfo_of_cell(cell).align_special)
+			os << from_ascii(cellinfo_of_cell(cell).align_special)
 			   << "}{";
 		} else {
 			if (leftLine(cell) &&
@@ -1934,7 +1935,7 @@ int LyXTabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 					break;
 				}
 				os << '{'
-				   << lyx::from_ascii(getPWidth(cell).asLatexString())
+				   << from_ascii(getPWidth(cell).asLatexString())
 				   << '}';
 			} else {
 				switch (getAlignment(cell)) {
@@ -1970,7 +1971,7 @@ int LyXTabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 			os << 'b';
 			break;
 		}
-		os << "]{" << lyx::from_ascii(getPWidth(cell).asLatexString())
+		os << "]{" << from_ascii(getPWidth(cell).asLatexString())
 		   << "}{";
 	} else if (getUsebox(cell) == BOX_MINIPAGE) {
 		os << "\\begin{minipage}[";
@@ -1985,7 +1986,7 @@ int LyXTabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 			os << 'b';
 			break;
 		}
-		os << "]{" << lyx::from_ascii(getPWidth(cell).asLatexString())
+		os << "]{" << from_ascii(getPWidth(cell).asLatexString())
 		   << "}\n";
 		++ret;
 	}
@@ -2128,11 +2129,11 @@ int LyXTabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 	} else if(!row_info[i].top_space.zero()) {
 		if (use_booktabs)
 			os << "\\addlinespace["
-			   << lyx::from_ascii(row_info[i].top_space.asLatexString())
+			   << from_ascii(row_info[i].top_space.asLatexString())
 			   << "]\n";
 		else {
 			os << "\\noalign{\\vskip"
-			   << lyx::from_ascii(row_info[i].top_space.asLatexString())
+			   << from_ascii(row_info[i].top_space.asLatexString())
 			   << "}\n";
 		}
 		++ret;
@@ -2172,7 +2173,7 @@ int LyXTabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 		if (use_booktabs)
 			os << "\\addlinespace";
 		os << '['
-		   << lyx::from_ascii(row_info[i].bottom_space.asLatexString())
+		   << from_ascii(row_info[i].bottom_space.asLatexString())
 		   << ']';
 	}
 	os << '\n';
@@ -2186,11 +2187,11 @@ int LyXTabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 	} else if (!row_info[i].interline_space.zero()) {
 		if (use_booktabs)
 			os << "\\addlinespace["
-			   << lyx::from_ascii(row_info[i].interline_space.asLatexString())
+			   << from_ascii(row_info[i].interline_space.asLatexString())
 			   << "]\n";
 		else
 			os << "\\noalign{\\vskip"
-			   << lyx::from_ascii(row_info[i].interline_space.asLatexString())
+			   << from_ascii(row_info[i].interline_space.asLatexString())
 			   << "}\n";
 		++ret;
 	}
@@ -2217,7 +2218,7 @@ int LyXTabular::latex(Buffer const & buf, odocstream & os,
 		os << "\\begin{tabular}{";
 	for (col_type i = 0; i < columns_; ++i) {
 		if (!column_info[i].align_special.empty()) {
-			os << lyx::from_ascii(column_info[i].align_special);
+			os << from_ascii(column_info[i].align_special);
 		} else {
 			if (!use_booktabs && column_info[i].left_line)
 				os << '|';
@@ -2251,7 +2252,7 @@ int LyXTabular::latex(Buffer const & buf, odocstream & os,
 					break;
 			}
 				os << '{'
-				   << lyx::from_ascii(column_info[i].p_width.asLatexString())
+				   << from_ascii(column_info[i].p_width.asLatexString())
 				   << '}';
 			} else {
 				switch (column_info[i].alignment) {
@@ -2443,7 +2444,7 @@ int LyXTabular::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-int LyXTabular::asciiTopHLine(lyx::odocstream & os, row_type row,
+int LyXTabular::asciiTopHLine(odocstream & os, row_type row,
 			      vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
@@ -2459,7 +2460,7 @@ int LyXTabular::asciiTopHLine(lyx::odocstream & os, row_type row,
 	if (!tmp)
 		return 0;
 
-	lyx::char_type ch;
+	char_type ch;
 	for (idx_type i = fcell; i < n; ++i) {
 		if (topLine(i)) {
 			if (leftLine(i))
@@ -2491,7 +2492,7 @@ int LyXTabular::asciiTopHLine(lyx::odocstream & os, row_type row,
 }
 
 
-int LyXTabular::asciiBottomHLine(lyx::odocstream & os, row_type row,
+int LyXTabular::asciiBottomHLine(odocstream & os, row_type row,
 				 vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
@@ -2507,7 +2508,7 @@ int LyXTabular::asciiBottomHLine(lyx::odocstream & os, row_type row,
 	if (!tmp)
 		return 0;
 
-	lyx::char_type ch;
+	char_type ch;
 	for (idx_type i = fcell; i < n; ++i) {
 		if (bottomLine(i)) {
 			if (leftLine(i))
@@ -2539,13 +2540,13 @@ int LyXTabular::asciiBottomHLine(lyx::odocstream & os, row_type row,
 }
 
 
-int LyXTabular::asciiPrintCell(Buffer const & buf, lyx::odocstream & os,
+int LyXTabular::asciiPrintCell(Buffer const & buf, odocstream & os,
 			       OutputParams const & runparams,
 			       idx_type cell, row_type row, col_type column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
 {
-	lyx::odocstringstream sstr;
+	odocstringstream sstr;
 	int const ret = getCellInset(cell)->plaintext(buf, sstr, runparams);
 
 	if (onlydata) {
@@ -2592,7 +2593,7 @@ int LyXTabular::asciiPrintCell(Buffer const & buf, lyx::odocstream & os,
 }
 
 
-int LyXTabular::plaintext(Buffer const & buf, lyx::odocstream & os,
+int LyXTabular::plaintext(Buffer const & buf, odocstream & os,
 		      OutputParams const & runparams,
 		      int const depth,
 		      bool onlydata, unsigned char delim) const
@@ -2610,7 +2611,7 @@ int LyXTabular::plaintext(Buffer const & buf, lyx::odocstream & os,
 				idx_type cell = getCellNumber(i, j);
 				if (isMultiColumnReal(cell))
 					continue;
-				lyx::odocstringstream sstr;
+				odocstringstream sstr;
 				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				if (clen[j] < sstr.str().length())
 					clen[j] = sstr.str().length();
@@ -2622,7 +2623,7 @@ int LyXTabular::plaintext(Buffer const & buf, lyx::odocstream & os,
 				idx_type cell = getCellNumber(i, j);
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
-				lyx::odocstringstream sstr;
+				odocstringstream sstr;
 				getCellInset(cell)->plaintext(buf, sstr, runparams);
 				int len = int(sstr.str().length());
 				idx_type const n = cells_in_multicolumn(cell);
@@ -2733,3 +2734,6 @@ LyXTabular::BoxType LyXTabular::useParbox(idx_type cell) const
 
 	return BOX_NONE;
 }
+
+
+} // namespace lyx

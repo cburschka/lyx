@@ -18,6 +18,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class Spacing {
 public:
 	///
@@ -33,5 +36,8 @@ public:
 	///
 	void set(Spacing::Space, std::string const &) {}
 };
+
+
+} // namespace lyx
 
 #endif // NOT SPACING_H

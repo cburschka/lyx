@@ -42,9 +42,11 @@ public:
 };
 
 } // namespace frontend
-} // namespace lyx
 
 /// Implementation is in Application.C
-extern lyx::frontend::Clipboard & theClipboard();
+extern frontend::Clipboard & theClipboard();
+
+} // namespace lyx
+
 
 #endif // BASE_CLIPBOARD_H

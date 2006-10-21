@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "QBibtex.h"
+
 #include "QBibtexDialog.h"
 #include "ui/QBibtexAddUi.h"
 #include "Qt2BC.h"

@@ -14,7 +14,6 @@
 #define FILEDIALOG_H
 
 #include "lfuns.h"
-
 #include "support/docstring.h"
 
 #include <utility>
@@ -22,13 +21,8 @@
 
 
 namespace lyx {
-namespace support {
 
-class FileFilterList;
-
-} // namespace support
-} // namespace lyx
-
+namespace support { class FileFilterList; } 
 
 
 /**
@@ -39,7 +33,7 @@ class FileDialog
 {
 public:
 	/// label, directory path button
-	typedef std::pair<lyx::docstring, lyx::docstring> Button;
+	typedef std::pair<docstring, docstring> Button;
 
 	/// result type
 	enum ResultType {
@@ -48,7 +42,7 @@ public:
 	};
 
 	/// result return
-	typedef std::pair<FileDialog::ResultType, lyx::docstring> Result;
+	typedef std::pair<FileDialog::ResultType, docstring> Result;
 
 	/**
 	 * Constructs a file dialog with title \param title.
@@ -61,27 +55,27 @@ public:
 	 * additional directories in the navigation (an empty
 	 * directory is interpreted as getcwd())
 	 */
-	FileDialog(lyx::docstring const & title,
+	FileDialog(docstring const & title,
 		   kb_action a = LFUN_SELECT_FILE_SYNC,
-		   Button b1 = Button(lyx::docstring(), lyx::docstring()),
-		   Button b2 = Button(lyx::docstring(), lyx::docstring()));
+		   Button b1 = Button(docstring(), docstring()),
+		   Button b2 = Button(docstring(), docstring()));
 
 
 	~FileDialog();
 
 	/// Choose a file for opening, starting in directory \c path.
-	Result const open(lyx::docstring const & path,
-			  lyx::support::FileFilterList const & filters,
-			  lyx::docstring const & suggested);
+	Result const open(docstring const & path,
+			  support::FileFilterList const & filters,
+			  docstring const & suggested);
 
 	/// Choose a directory, starting in directory \c path.
-	Result const opendir(lyx::docstring const & path = lyx::docstring(),
-			     lyx::docstring const & suggested = lyx::docstring());
+	Result const opendir(docstring const & path = docstring(),
+			     docstring const & suggested = docstring());
 
 	/// Choose a file for saving, starting in directory \c  path.
-	Result const save(lyx::docstring const & path,
-			  lyx::support::FileFilterList const & filters,
-			  lyx::docstring const & suggested);
+	Result const save(docstring const & path,
+			  support::FileFilterList const & filters,
+			  docstring const & suggested);
 
 private:
 	class Private;
@@ -89,11 +83,12 @@ private:
 	Private * private_;
 
 	/// the dialog title
-	lyx::docstring title_;
+	docstring title_;
 
 	/// success action to perform if not synchronous
 	kb_action success_;
-
 };
+
+} // namespace lyx
 
 #endif // FILEDIALOG_H

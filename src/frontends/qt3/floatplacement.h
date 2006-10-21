@@ -16,6 +16,9 @@
 #include <qwidget.h>
 #include <string>
 
+
+namespace lyx {
+
 class QCheckBox;
 class QVBoxLayout;
 class InsetFloatParams;
@@ -59,5 +62,8 @@ private:
 	QCheckBox * bottomCB;
 	QCheckBox * topCB;
 };
+
+
+} // namespace lyx
 
 #endif

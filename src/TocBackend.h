@@ -23,13 +23,13 @@
 
 #include "pariterator.h"
 
+namespace lyx {
+
 class Buffer;
 class LyXView;
 class Paragraph;
 class FuncRequest;
 class LCursor;
-
-namespace lyx {
 
 ///
 /**
@@ -37,7 +37,6 @@ namespace lyx {
 class TocBackend
 {
 public:
-
 	///
 	/**
 	*/
@@ -51,7 +50,7 @@ public:
 		Item(
 			ParConstIterator const & par_it = ParConstIterator(),
 			int d = -1,
-			lyx::docstring const & s = lyx::docstring());
+			docstring const & s = docstring());
 		///
 		~Item() {}
 		///
@@ -61,9 +60,9 @@ public:
 		///
 		int const depth() const;
 		///
-		lyx::docstring const & str() const;
+		docstring const & str() const;
 		///
-		lyx::docstring const asString() const;
+		docstring const asString() const;
 		/// set cursor in LyXView to this Item
 		void goTo(LyXView & lv_) const;
 		/// the action corresponding to the goTo above
@@ -77,7 +76,7 @@ public:
 		int depth_;
 
 		/// Full item string
-		lyx::docstring str_;
+		docstring str_;
 	};
 
 	///
@@ -109,7 +108,7 @@ public:
 	/// Return the first Toc Item before the cursor
 	TocIterator const item(std::string const & type, ParConstIterator const &);
 
-	void asciiTocList(std::string const & type, lyx::odocstream & os) const;
+	void asciiTocList(std::string const & type, odocstream & os) const;
 
 private:
 	/// 

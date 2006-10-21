@@ -16,6 +16,9 @@
 #include "support/debugstream.h"
 #include "support/docstring.h"
 
+
+namespace lyx {
+
 /** Ideally this should have been a namespace, but since we try to be
  *  compilable on older C++ compilators too, we use a struct instead.
  *  This is all the different debug levels that we have.
@@ -116,5 +119,8 @@ typedef basic_debugstream<lyx_debug_trait> LyXErr;
 typedef LyXErr::debug Debug;
 
 extern LyXErr lyxerr;
+
+
+} // namespace lyx
 
 #endif

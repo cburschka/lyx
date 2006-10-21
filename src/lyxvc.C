@@ -26,18 +26,19 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 
-using lyx::support::bformat;
-using lyx::support::isFileReadable;
-using lyx::support::makeDisplayPath;
-using lyx::support::tempName;
 
-using lyx::docstring;
+namespace lyx {
+
+using support::bformat;
+using support::isFileReadable;
+using support::makeDisplayPath;
+using support::tempName;
 
 using std::endl;
 using std::string;
 using std::pair;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 
 
 LyXVC::LyXVC()
@@ -107,14 +108,14 @@ void LyXVC::registrer()
 		if (isFileReadable(cvs_entries)) {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< lyx::to_utf8(makeDisplayPath(filename))
+				<< to_utf8(makeDisplayPath(filename))
 				<< " with CVS" << endl;
 			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< lyx::to_utf8(makeDisplayPath(filename))
+				<< to_utf8(makeDisplayPath(filename))
 				<< " with RCS" << endl;
 			vcs.reset(new RCS(filename));
 		}
@@ -132,7 +133,7 @@ void LyXVC::registrer()
 		return;
 	}
 
-	vcs->registrer(lyx::to_utf8(tmp.second));
+	vcs->registrer(to_utf8(tmp.second));
 }
 
 
@@ -145,7 +146,7 @@ void LyXVC::checkIn()
 		if (tmp.second.empty()) {
 			tmp.second = _("(no log message)");
 		}
-		vcs->checkIn(lyx::to_utf8(tmp.second));
+		vcs->checkIn(to_utf8(tmp.second));
 	} else {
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
 	}
@@ -236,3 +237,6 @@ string const LyXVC::getLogFile() const
 	vcs->getLog(tmpf);
 	return tmpf;
 }
+
+
+} // namespace lyx

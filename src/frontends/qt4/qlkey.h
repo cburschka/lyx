@@ -16,6 +16,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 /**
  * Return true if the key event is a modifier.
  */
@@ -516,5 +519,8 @@ std::string const qkey_to_string(int lkey)
 	case Qt::Key_unknown: return "";
 	}
 }
+
+
+} // namespace lyx
 
 #endif // QLKEY_H

@@ -17,9 +17,8 @@
 
 #include <boost/assert.hpp>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::pos_type;
+
+namespace lyx {
 
 using std::endl;
 using std::string;
@@ -370,10 +369,10 @@ int Changes::latexMarkChange(odocstream & os,
 	if (!output || old == change)
 		return 0;
 
-	static docstring const start(lyx::from_ascii("\\changestart{}"));
-	static docstring const end(lyx::from_ascii("\\changeend{}"));
-	static docstring const son(lyx::from_ascii("\\overstrikeon{}"));
-	static docstring const soff(lyx::from_ascii("\\overstrikeoff{}"));
+	static docstring const start(from_ascii("\\changestart{}"));
+	static docstring const end(from_ascii("\\changeend{}"));
+	static docstring const son(from_ascii("\\overstrikeon{}"));
+	static docstring const soff(from_ascii("\\overstrikeoff{}"));
 
 	int column = 0;
 
@@ -410,7 +409,7 @@ int Changes::latexMarkChange(odocstream & os,
 
 
 void Changes::lyxMarkChange(std::ostream & os, int & column,
-			    lyx::time_type const curtime,
+			    time_type const curtime,
 			    Change const & old, Change const & change)
 {
 	if (old == change)
@@ -424,7 +423,7 @@ void Changes::lyxMarkChange(std::ostream & os, int & column,
 			break;
 
 		case Change::DELETED: {
-			lyx::time_type t = change.changetime;
+			time_type t = change.changetime;
 			if (!t)
 				t = curtime;
 			os << "\n\\change_deleted " << change.author
@@ -434,7 +433,7 @@ void Changes::lyxMarkChange(std::ostream & os, int & column,
 		}
 
 	case Change::INSERTED: {
-			lyx::time_type t = change.changetime;
+			time_type t = change.changetime;
 			if (!t)
 				t = curtime;
 			os << "\n\\change_inserted " << change.author
@@ -443,3 +442,6 @@ void Changes::lyxMarkChange(std::ostream & os, int & column,
 	}
 	}
 }
+
+
+} // namespace lyx

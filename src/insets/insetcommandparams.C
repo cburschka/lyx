@@ -21,8 +21,9 @@
 #include <boost/assert.hpp>
 
 
-using lyx::docstring;
-using lyx::support::findToken;
+namespace lyx {
+
+using support::findToken;
 
 using std::string;
 using std::endl;
@@ -228,7 +229,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lyxerr << "Command <" <<  cmd
-		       << "> == <" << lyx::to_utf8(getCommand())
+		       << "> == <" << to_utf8(getCommand())
 		       << "> == <" << getCmdName()
 		       << '|' << getContents()
 		       << '|' << getOptions()
@@ -279,14 +280,14 @@ void InsetCommandParams::write(ostream & os) const
 		if (!params_[i].empty())
 			// FIXME UNICODE
 			os << info_->paramnames[i] << ' '
-			   << LyXLex::quoteString(lyx::to_utf8(params_[i]))
+			   << LyXLex::quoteString(to_utf8(params_[i]))
 			   << '\n';
 }
 
 
 docstring const InsetCommandParams::getCommand() const
 {
-	docstring s = '\\' + lyx::from_ascii(name_);
+	docstring s = '\\' + from_ascii(name_);
 	for (size_t i = 0; i < info_->n; ++i) {
 		if (info_->optional[i]) {
 			if (params_[i].empty()) {
@@ -314,7 +315,7 @@ std::string const InsetCommandParams::getOptions() const
 {
 	for (size_t i = 0; i < info_->n; ++i)
 		if (info_->optional[i])
-			return lyx::to_utf8(params_[i]);
+			return to_utf8(params_[i]);
 	lyxerr << "Programming error: get nonexisting option in "
 	       << name_ << " inset." << endl;; 
 	return string();
@@ -329,7 +330,7 @@ std::string const InsetCommandParams::getSecOptions() const
 			if (first)
 				first = false;
 			else
-				return lyx::to_utf8(params_[i]);
+				return to_utf8(params_[i]);
 		}
 	// Happens in InsetCitation
 	lyxerr << "Programming error: get nonexisting second option in "
@@ -342,7 +343,7 @@ std::string const InsetCommandParams::getContents() const
 {
 	for (size_t i = 0; i < info_->n; ++i)
 		if (!info_->optional[i])
-			return lyx::to_utf8(params_[i]);
+			return to_utf8(params_[i]);
 	BOOST_ASSERT(false);
 	return string();
 }
@@ -352,7 +353,7 @@ void InsetCommandParams::setOptions(std::string const & o)
 {
 	for (size_t i = 0; i < info_->n; ++i)
 		if (info_->optional[i]) {
-			params_[i] = lyx::from_utf8(o);
+			params_[i] = from_utf8(o);
 			return;
 		}
 	lyxerr << "Programming error: set nonexisting option in "
@@ -368,7 +369,7 @@ void InsetCommandParams::setSecOptions(std::string const & s)
 			if (first)
 				first = false;
 			else {
-				params_[i] = lyx::from_utf8(s);
+				params_[i] = from_utf8(s);
 				return;
 			}
 		}
@@ -382,7 +383,7 @@ void InsetCommandParams::setContents(std::string const & c)
 {
 	for (size_t i = 0; i < info_->n; ++i)
 		if (!info_->optional[i]) {
-			params_[i] = lyx::from_utf8(c);
+			params_[i] = from_utf8(c);
 			return;
 		}
 	BOOST_ASSERT(false);
@@ -427,3 +428,6 @@ bool operator!=(InsetCommandParams const & o1,
 {
 	return !(o1 == o2);
 }
+
+
+} // namespace lyx

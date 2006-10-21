@@ -46,19 +46,18 @@
 #include <iostream>
 #include <limits>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::Point;
 
-using lyx::cap::dirtyTabularStack;
-using lyx::cap::tabularStackDirty;
+namespace lyx {
 
-using lyx::graphics::PreviewLoader;
+using cap::dirtyTabularStack;
+using cap::tabularStackDirty;
 
-using lyx::support::ltrim;
+using graphics::PreviewLoader;
 
-using lyx::frontend::Painter;
-using lyx::frontend::Clipboard;
+using support::ltrim;
+
+using frontend::Painter;
+using frontend::Clipboard;
 
 using boost::shared_ptr;
 
@@ -72,7 +71,7 @@ using std::ostringstream;
 using std::swap;
 using std::vector;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 
 
 namespace {
@@ -313,7 +312,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
 
-	static lyx::frontend::NullPainter nop;
+	static frontend::NullPainter nop;
 	static PainterInfo nullpi(bv, nop);
 
 	resetPos(bv->cursor());
@@ -653,7 +652,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_TABULAR_FEATURE:
-		if (!tabularFeatures(cur, lyx::to_utf8(cmd.argument())))
+		if (!tabularFeatures(cur, to_utf8(cmd.argument())))
 			cur.undispatched();
 		break;
 
@@ -661,9 +660,9 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_FILE_INSERT_ASCII: {
 		// FIXME: We don't know the encoding of filenames
-		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), lyx::to_utf8(cmd.argument()), false);
+		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), to_utf8(cmd.argument()), false);
 		// FIXME: We don't know the encoding of the file
-		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), lyx::from_utf8(tmpstr), false))
+		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), from_utf8(tmpstr), false))
 			cur.undispatched();
 		break;
 	}
@@ -708,7 +707,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		// pass to InsertAsciiString, but
 		// only if we have multi-cell content
-		if (clip.find_first_of(lyx::from_ascii("\t\n")) != docstring::npos) {
+		if (clip.find_first_of(from_ascii("\t\n")) != docstring::npos) {
 			if (insertAsciiString(cur.bv(), clip, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
@@ -800,7 +799,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		int i = 0;
 		for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
 			string const tmp = tabularFeature[i].feature;
-			if (tmp == lyx::to_utf8(cmd.argument()).substr(0, tmp.length())) {
+			if (tmp == to_utf8(cmd.argument()).substr(0, tmp.length())) {
 				action = tabularFeature[i].action;
 				break;
 			}
@@ -812,7 +811,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		}
 
 		string const argument
-			= ltrim(lyx::to_utf8(cmd.argument()).substr(tabularFeature[i].feature.length()));
+			= ltrim(to_utf8(cmd.argument()).substr(tabularFeature[i].feature.length()));
 
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;
@@ -1793,14 +1792,14 @@ bool InsetTabular::copySelection(LCursor & cur)
 	paste_tabular->setRightLine(paste_tabular->getLastCellInRow(0),
 				    true, true);
 
-	lyx::odocstringstream os;
+	odocstringstream os;
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
 	theClipboard().put(os.str());
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.
-	lyx::cap::dirtyTabularStack(true);
+	cap::dirtyTabularStack(true);
 
 	return true;
 }
@@ -1875,7 +1874,7 @@ bool InsetTabular::isRightToLeft(LCursor & cur) const
 {
 	BOOST_ASSERT(cur.depth() > 1);
 	Paragraph const & parentpar = cur[cur.depth() - 2].paragraph();
-	LCursor::pos_type const parentpos = cur[cur.depth() - 2].pos();
+	pos_type const parentpos = cur[cur.depth() - 2].pos();
 	return parentpar.getFontSettings(cur.bv().buffer()->params(),
 					 parentpos).language()->rightToLeft();
 }
@@ -1934,7 +1933,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 	docstring::size_type p = 0;
 
 	while (p < len &&
-	       (p = buf.find_first_of(lyx::from_ascii("\t\n"), p)) != docstring::npos) {
+	       (p = buf.find_first_of(from_ascii("\t\n"), p)) != docstring::npos) {
 		switch (buf[p]) {
 		case '\t':
 			++cols;
@@ -1974,7 +1973,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 	col_type const columns = loctab->columns();
 
 	while (cell < cells && p < len && row < rows &&
-	       (p = buf.find_first_of(lyx::from_ascii("\t\n"), p)) != docstring::npos)
+	       (p = buf.find_first_of(from_ascii("\t\n"), p)) != docstring::npos)
 	{
 		if (p >= len)
 			break;
@@ -2092,3 +2091,6 @@ string const InsetTabularMailer::params2string(InsetTabular const & inset)
 	data << "\\end_inset\n";
 	return data.str();
 }
+
+
+} // namespace lyx

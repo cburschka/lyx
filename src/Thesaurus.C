@@ -15,6 +15,9 @@
 #include <algorithm>
 #include <string>
 
+
+namespace lyx {
+
 using std::string;
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -92,3 +95,6 @@ Thesaurus::Meanings Thesaurus::lookup(string const &)
 
 // Global instance
 Thesaurus thesaurus;
+
+
+} // namespace lyx

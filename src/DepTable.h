@@ -16,6 +16,9 @@
 #include <map>
 #include <string>
 
+
+namespace lyx {
+
 ///
 class DepTable {
 public:
@@ -62,5 +65,8 @@ private:
 	///
 	DepList deplist;
 };
+
+
+} // namespace lyx
 
 #endif

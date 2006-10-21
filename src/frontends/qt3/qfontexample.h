@@ -15,6 +15,9 @@
 #include <qwidget.h>
 #include <qfont.h>
 
+
+namespace lyx {
+
 class QFontExample : public QWidget {
 
 public:
@@ -32,5 +35,8 @@ private:
 	QFont font_;
 	QString text_;
 };
+
+
+} // namespace lyx
 
 #endif

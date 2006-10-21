@@ -22,6 +22,9 @@
 #include <qobject.h>
 
 
+namespace lyx {
+
+
 /**
  * This class executes the callback when the timeout expires
  * using Qt mechanisms
@@ -47,5 +50,8 @@ private:
 	/// timout id
 	int timeout_id;
 };
+
+
+} // namespace lyx
 
 #endif // QTTIMEOUT_H

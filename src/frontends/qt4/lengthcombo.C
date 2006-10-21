@@ -19,27 +19,28 @@
 LengthCombo::LengthCombo(QWidget * parent)
 	: QComboBox(parent)
 {
-	for (int i = 0; i < num_units; i++)
-		addItem(unit_name_gui[i]);
+	for (int i = 0; i < lyx::num_units; i++)
+		addItem(lyx::unit_name_gui[i]);
 
 	connect(this, SIGNAL(activated(int)),
 		this, SLOT(has_activated(int)));
 }
 
-LyXLength::UNIT LengthCombo::currentLengthItem() const
+
+lyx::LyXLength::UNIT LengthCombo::currentLengthItem() const
 {
-	return static_cast<LyXLength::UNIT>(currentIndex());
+	return static_cast<lyx::LyXLength::UNIT>(currentIndex());
 }
 
 
 void LengthCombo::has_activated(int)
 {
-        // emit signal
+  // emit signal
 	selectionChanged(currentLengthItem());
 }
 
 
-void LengthCombo::setCurrentItem(LyXLength::UNIT unit)
+void LengthCombo::setCurrentItem(lyx::LyXLength::UNIT unit)
 {
 	QComboBox::setCurrentIndex(int(unit));
 }
@@ -63,8 +64,8 @@ void LengthCombo::noPercents()
 	for (int i = 0; i < num; i++) {
 		if (QComboBox::itemText(i).contains('%') > 0) {
 			QComboBox::removeItem(i);
-			i -= 1;
-			num -= 1;
+			--i;
+			--num;
 		}
 	}
 }

@@ -38,8 +38,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -160,7 +160,7 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		string s(params_.type);
 		if (undefined())
 			// FIXME UNICODE
-			s = lyx::to_utf8(_("Undef: ")) + s;
+			s = to_utf8(_("Undef: ")) + s;
 		docstring ds(s.begin(), s.end());
 		theFontMetrics(font).rectText(ds, w, a, d);
 		dim.wid = max(dim.wid, w);
@@ -208,7 +208,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		string s(params_.type);
 		if (undefined())
 			// FIXME UNICODE
-			s = lyx::to_utf8(_("Undef: ")) + s;
+			s = to_utf8(_("Undef: ")) + s;
 		docstring ds(s.begin(), s.end());
 		theFontMetrics(font).rectText(ds, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
@@ -288,9 +288,9 @@ int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
 {
 	if (!undefined()) {
 		// FIXME UNICODE
-		os << '\\' << lyx::from_utf8(params_.latexname);
+		os << '\\' << from_utf8(params_.latexname);
 		if (!params_.latexparam.empty())
-			os << lyx::from_utf8(params_.latexparam);
+			os << from_utf8(params_.latexparam);
 		os << '{';
 	}
 	int i = InsetText::latex(buf, os, runparams);
@@ -376,3 +376,6 @@ void InsetCharStyleParams::read(LyXLex & lex)
 		}
 	}
 }
+
+
+} // namespace lyx

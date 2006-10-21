@@ -19,6 +19,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class Buffer;
 class ErrorList;
 class Format;
@@ -156,5 +159,8 @@ private:
 extern Converters converters;
 
 extern Converters system_converters;
+
+
+} // namespace lyx
 
 #endif //CONVERTER_H

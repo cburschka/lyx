@@ -15,7 +15,11 @@
 #include "inset.h"
 #include "insetcommandparams.h"
 #include "render_button.h"
+#include "mailinset.h"
+
 #include <boost/scoped_ptr.hpp>
+
+namespace lyx {
 
 class Buffer;
 class Dimension;
@@ -24,7 +28,7 @@ class RenderMonitoredPreview;
 
 
 /// for including tex/lyx files
-class InsetInclude: public InsetOld {
+class InsetInclude : public InsetOld {
 public:
 	///
 	InsetInclude(InsetCommandParams const &);
@@ -38,7 +42,7 @@ public:
 	virtual bool display() const;
 
 	/// get the parameters
-	InsetCommandParams const & params(void) const;
+	InsetCommandParams const & params() const;
 
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::INCLUDE_CODE; }
@@ -47,7 +51,7 @@ public:
 	 *  \param list the list of labels in the child buffer.
 	 */
 	void getLabelList(Buffer const & buffer,
-			  std::vector<lyx::docstring> & list) const;
+			  std::vector<docstring> & list) const;
 	/** Fills \c keys
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param keys the list of bibkeys in the child buffer.
@@ -75,18 +79,18 @@ public:
 	///
 	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
-		    OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &,
+	    OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
+	void addPreview(graphics::PreviewLoader &) const;
 	///
 	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 protected:
@@ -106,7 +110,7 @@ private:
 	/// set the parameters
 	void set(InsetCommandParams const & params, Buffer const &);
 	/// get the text displayed on the button
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	void write(std::ostream &) const;
 	///
@@ -125,8 +129,6 @@ private:
 	mutable RenderButton button_;
 };
 
-
-#include "mailinset.h"
 
 class InsetIncludeMailer : public MailInset {
 public:
@@ -148,5 +150,8 @@ private:
 	///
 	InsetInclude & inset_;
 };
+
+
+} // namespace lyx
 
 #endif // INSETINCLUDE_H

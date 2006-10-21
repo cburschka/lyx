@@ -20,9 +20,10 @@
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 
+namespace lyx {
+
 class LyXView;
 
-namespace lyx {
 namespace frontend {
 
 class ButtonController;
@@ -30,7 +31,7 @@ class ButtonController;
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
-class Dialog : boost::noncopyable {
+class Dialog /*: boost::noncopyable*/ {
 public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent

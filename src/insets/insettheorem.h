@@ -15,6 +15,9 @@
 
 #include "insetcollapsable.h"
 
+
+namespace lyx {
+
 /** The theorem inset
 
 */
@@ -31,15 +34,18 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
 	mutable unsigned int center_indent_;
 };
+
+
+} // namespace lyx
 
 #endif

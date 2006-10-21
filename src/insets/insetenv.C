@@ -19,8 +19,7 @@
 #include "texrow.h"
 
 
-using lyx::docstring;
-using lyx::odocstream;
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -64,7 +63,7 @@ void InsetEnvironment::read(Buffer const & buf, LyXLex & lex)
 docstring const InsetEnvironment::editMessage() const
 {
 	// FIXME UNICODE
-	return _("Opened Environment Inset: ") + lyx::from_utf8(getInsetName());
+	return _("Opened Environment Inset: ") + from_utf8(getInsetName());
 }
 
 
@@ -72,12 +71,12 @@ int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 			    OutputParams const & runparams) const
 {
 	// FIXME UNICODE
-	os << lyx::from_utf8(layout_->latexheader);
+	os << from_utf8(layout_->latexheader);
 	TexRow texrow;
 	latexParagraphs(buf, paragraphs(), os, texrow, runparams,
 			layout_->latexparagraph);
 	// FIXME UNICODE
-	os << lyx::from_utf8(layout_->latexfooter);
+	os << from_utf8(layout_->latexfooter);
 	return texrow.rows();
 }
 
@@ -86,3 +85,6 @@ LyXLayout_ptr const & InsetEnvironment::layout() const
 {
 	return layout_;
 }
+
+
+} // namespace lyx

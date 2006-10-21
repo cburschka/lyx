@@ -16,6 +16,9 @@
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -78,3 +81,6 @@ void InsetMathBoldSymbol::infoize(std::ostream & os) const
 {
 	os << "Boldsymbol ";
 }
+
+
+} // namespace lyx

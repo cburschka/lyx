@@ -31,11 +31,9 @@ using std::ostringstream;
 using std::pair;
 using std::string;
 using std::vector;
-
+using lyx::support::FileFilterList;
 
 namespace lyx {
-
-using support::FileFilterList;
 
 namespace frontend {
 
@@ -49,10 +47,10 @@ ControlPrefs::ControlPrefs(Dialog & parent)
 bool ControlPrefs::initialiseParams(std::string const &)
 {
 	rc_ = lyxrc;
-	formats_ = ::formats;
-	converters_ = ::converters;
+	formats_ = lyx::formats;
+	converters_ = lyx::converters;
 	converters_.update(formats_);
-	movers_ = ::movers;
+	movers_ = lyx::movers;
 	colors_.clear();
 	update_screen_font_ = false;
 
@@ -69,13 +67,13 @@ void ControlPrefs::dispatchParams()
 	// FIXME: these need lfuns
 	theBufferList().setCurrentAuthor(rc_.user_name, rc_.user_email);
 
-	::formats = formats_;
+	lyx::formats = formats_;
 
-	::converters = converters_;
-	::converters.update(::formats);
-	::converters.buildGraph();
+	lyx::converters = converters_;
+	lyx::converters.update(lyx::formats);
+	lyx::converters.buildGraph();
 
-	::movers = movers_;
+	lyx::movers = movers_;
 
 	vector<string>::const_iterator it = colors_.begin();
 	vector<string>::const_iterator const end = colors_.end();

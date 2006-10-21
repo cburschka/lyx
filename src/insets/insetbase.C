@@ -34,10 +34,7 @@
 #include <typeinfo>
 
 
-using lyx::odocstream;
-
-
-namespace {
+namespace lyx {
 
 class InsetName {
 public:
@@ -51,7 +48,7 @@ public:
 typedef std::map<std::string, InsetBase::Code> TranslatorMap;
 
 
-TranslatorMap const build_translator()
+static TranslatorMap const build_translator()
 {
 	InsetName const insetnames[] = {
 		InsetName("toc", InsetBase::TOC_CODE),
@@ -107,16 +104,6 @@ TranslatorMap const build_translator()
 
 	return data;
 }
-
-} // namespace anon
-
-
-InsetBase::InsetBase()
-{}
-
-
-InsetBase::InsetBase(InsetBase const &)
-{}
 
 
 std::auto_ptr<InsetBase> InsetBase::clone() const
@@ -231,7 +218,7 @@ int InsetBase::plaintext(Buffer const &,
 
 
 int InsetBase::docbook(Buffer const &,
-	lyx::odocstream &, OutputParams const &) const
+	odocstream &, OutputParams const &) const
 {
 	return 0;
 }
@@ -255,7 +242,7 @@ bool InsetBase::autoDelete() const
 }
 
 
-lyx::docstring const InsetBase::editMessage() const
+docstring const InsetBase::editMessage() const
 {
 	return _("Opened inset");
 }
@@ -373,3 +360,6 @@ bool isHighlyEditableInset(InsetBase const * inset)
 {
 	return inset && inset->editable() == InsetBase::HIGHLY_EDITABLE;
 }
+
+
+} // namespace lyx

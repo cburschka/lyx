@@ -19,6 +19,9 @@
 
 #include <boost/scoped_ptr.hpp>
 
+
+namespace lyx {
+
 class LyXText;
 class Trans;
 
@@ -194,5 +197,8 @@ std::string const TransManager::deadkey(char c, KmodInfo t)
 {
 	return trans_fsm_.currentState->deadkey(c, t);
 }
+
+
+} // namespace lyx
 
 #endif // TRANS_MANAGER_H

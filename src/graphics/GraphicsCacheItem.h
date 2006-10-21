@@ -35,8 +35,6 @@
 #include <boost/signal.hpp>
 
 
-class InsetGraphics;
-
 namespace lyx {
 namespace graphics {
 

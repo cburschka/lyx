@@ -16,6 +16,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 /// \c InsetMathSqrt The square root inset.
 class InsetMathSqrt : public InsetMathNest {
 public:
@@ -45,4 +48,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 #endif

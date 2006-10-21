@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 #include <boost/scoped_ptr.hpp>
 
+
+namespace lyx {
+
 class RenderPreview;
 
 
@@ -53,7 +56,7 @@ public:
 	bool ams() const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
-			  std::vector<lyx::docstring> & list) const;
+			  std::vector<docstring> & list) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset
@@ -100,13 +103,13 @@ public:
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 
 	/// get notification when the cursor leaves this inset
@@ -114,7 +117,7 @@ public:
 	///
 	//bool insetAllowed(Code code) const;
 	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
+	void addPreview(graphics::PreviewLoader &) const;
 
 	///
 	static int displayMargin() { return 12; }
@@ -141,7 +144,7 @@ private:
 	///
 	void footer_write(WriteStream &) const;
 	///
-	lyx::docstring nicelabel(row_type row) const;
+	docstring nicelabel(row_type row) const;
 	///
 	void doExtern(LCursor & cur, FuncRequest & func);
 	///
@@ -186,7 +189,7 @@ private:
 //
 public:
 	/// what appears in the minibuffer when opening
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	virtual void mutateToText();
 	///
@@ -212,4 +215,7 @@ protected:
 	bool previewState(BufferView * bv) const;
 };
 
+
+
+} // namespace lyx
 #endif

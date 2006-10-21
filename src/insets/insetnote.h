@@ -13,7 +13,10 @@
 #define INSETNOTE_H
 
 #include "insetcollapsable.h"
+#include "mailinset.h"
 
+
+namespace lyx {
 
 class InsetNoteParams {
 public:
@@ -45,7 +48,7 @@ public:
 	///
 	~InsetNote();
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::NOTE_CODE; }
 	///
@@ -57,14 +60,11 @@ public:
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-	       OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
-	       OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
-	       OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -87,8 +87,6 @@ private:
 };
 
 
-#include "mailinset.h"
-
 class InsetNoteMailer : public MailInset {
 public:
 	///
@@ -110,5 +108,8 @@ private:
 	///
 	InsetNote & inset_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -45,8 +45,6 @@
 
 #include <boost/bind.hpp>
 
-using lyx::support::subst;
-
 using std::string;
 using std::endl;
 
@@ -69,17 +67,17 @@ int getDPI()
 } // namespace anon
 
 
-lyx::frontend::GuiApplication * guiApp;
-
 namespace lyx {
 
-lyx::frontend::Application * createApplication(int & argc, char * argv[])
+frontend::Application * createApplication(int & argc, char * argv[])
 {
-	return new lyx::frontend::GuiApplication(argc, argv);
+	return new frontend::GuiApplication(argc, argv);
 }
 
 
 namespace frontend {
+
+GuiApplication * guiApp;
 
 
 GuiApplication::~GuiApplication()

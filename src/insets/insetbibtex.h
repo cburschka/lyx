@@ -16,6 +16,9 @@
 #include <vector>
 #include "insetcommand.h"
 
+
+namespace lyx {
+
 /** Used to insert BibTeX's information
   */
 class InsetBibtex : public InsetCommand {
@@ -23,7 +26,7 @@ public:
 	///
 	InsetBibtex(InsetCommandParams const &);
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -31,8 +34,7 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	void fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<std::string,std::string> > & keys) const;
@@ -50,5 +52,8 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 };
+
+
+} // namespace lyx
 
 #endif // INSET_BIBTEX_H

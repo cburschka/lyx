@@ -18,6 +18,9 @@
 #include "support/std_ostream.h"
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::max;
 using std::auto_ptr;
 
@@ -106,3 +109,6 @@ void InsetMathBrace::infoize(std::ostream & os) const
 {
 	os << "Nested Block: ";
 }
+
+
+} // namespace lyx

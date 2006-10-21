@@ -25,8 +25,9 @@
 #include "support/lstrings.h"
 
 
-using lyx::docstring;
-using lyx::support::bformat;
+namespace lyx {
+
+using support::bformat;
 
 using std::endl;
 using std::max;
@@ -91,7 +92,7 @@ bool InsetMathCases::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.enabled(false);
 			flag.message(bformat(
-				lyx::from_utf8(N_("No vertical grid lines in '%1$s'")),
+				from_utf8(N_("No vertical grid lines in '%1$s'")),
 				s));
 			return true;
 		}
@@ -141,3 +142,6 @@ void InsetMathCases::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathGrid::validate(features);
 }
+
+
+} // namespace lyx

@@ -15,6 +15,10 @@
 
 #include "insetcollapsable.h"
 #include "toc.h"
+#include "mailinset.h"
+
+
+namespace lyx {
 
 
 class InsetFloatParams {
@@ -54,13 +58,13 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::FLOAT_CODE; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	bool insetAllowed(InsetBase::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
@@ -72,7 +76,7 @@ public:
 	///
 	void sideways(bool s, BufferParams const &);
 	///
-	void addToToc(lyx::toc::TocList &, Buffer const &) const;
+	void addToToc(toc::TocList &, Buffer const &) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///
@@ -87,9 +91,6 @@ private:
 	///
 	InsetFloatParams params_;
 };
-
-
-#include "mailinset.h"
 
 
 class InsetFloatMailer : public MailInset {
@@ -112,5 +113,8 @@ private:
 	///
 	InsetFloat & inset_;
 };
+
+
+} // namespace lyx
 
 #endif

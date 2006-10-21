@@ -20,6 +20,9 @@
 #include "support/lstrings.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 
@@ -77,9 +80,8 @@ void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 	// mathed_draw_deco does not use the leading backslash, so remove it.
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
 	// would treat it as |.
-	string const delim = (delim_ == "\\|") ?
-		"Vert" :
-		lyx::support::ltrim(delim_, "\\");
+	string const delim = (delim_ == "\\|") ?  "Vert" :
+		support::ltrim(delim_, "\\");
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
 	                 delim);
 	setPosCache(pi, x, y);
@@ -118,5 +120,8 @@ bool InsetMathBig::isBigInsetDelim(string const & delim)
 		"\\uparrow", "\\Uparrow",
 		"\\updownarrow", "\\Updownarrow", ""
 	};
-	return (lyx::support::findToken(delimiters, delim) >= 0);
+	return (support::findToken(delimiters, delim) >= 0);
 }
+
+
+} // namespace lyx

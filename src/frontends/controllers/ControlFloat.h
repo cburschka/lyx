@@ -14,9 +14,10 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+
 class InsetFloatParams;
 
-namespace lyx {
 namespace frontend {
 
 class ControlFloat : public Dialog::Controller {

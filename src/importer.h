@@ -18,6 +18,8 @@
 #include <vector>
 
 
+namespace lyx {
+
 class LyXView;
 class ErrorList;
 class Format;
@@ -25,16 +27,16 @@ class Format;
 class Importer {
 public:
 	///
-	static
-	bool Import(LyXView * lv, std::string const & filename,
+	static bool Import(LyXView * lv, std::string const & filename,
 		    std::string const & format, ErrorList & errorList);
 
 	///
-	static
-	std::vector<Format const *> const GetImportableFormats();
+	static std::vector<Format const *> const GetImportableFormats();
 private:
 	///
-	static
-	std::vector<std::string> const Loaders();
+	static std::vector<std::string> const Loaders();
 };
+
+} // namespace lyx
+
 #endif

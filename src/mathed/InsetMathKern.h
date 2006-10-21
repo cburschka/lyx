@@ -16,6 +16,9 @@
 #include "lyxlength.h"
 
 
+namespace lyx {
+
+
 /// The \kern primitive
 /// Some hack for visual effects
 
@@ -45,4 +48,7 @@ private:
 	mutable int wid_pix_;
 
 };
+
+
+} // namespace lyx
 #endif

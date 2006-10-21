@@ -17,9 +17,10 @@
 #include "character.h"
 
 
+namespace lyx {
+
 class LColor_color;
 
-namespace lyx {
 namespace frontend {
 
 class ControlCharacter : public Dialog::Controller {

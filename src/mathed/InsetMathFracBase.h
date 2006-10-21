@@ -15,6 +15,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 class InsetMathFracBase : public InsetMathNest {
 public:
 	///
@@ -27,4 +30,7 @@ public:
 	bool idxRight(LCursor &) const;
 };
 
+
+
+} // namespace lyx
 #endif

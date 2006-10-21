@@ -17,6 +17,9 @@
 #include "cursor.h"
 #include "LaTeXFeatures.h"
 
+
+namespace lyx {
+
 using std::max;
 using std::auto_ptr;
 
@@ -84,3 +87,6 @@ void InsetMathOverset::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathNest::validate(features);
 }
+
+
+} // namespace lyx

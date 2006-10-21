@@ -16,6 +16,9 @@
 #include "lyxlength.h"
 
 
+namespace lyx {
+
+
 /** Gridded math inset base class.
  *  This is the base to all grid-like editable math objects
  */
@@ -242,4 +245,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

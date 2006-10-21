@@ -20,8 +20,7 @@
 #include "language.h"
 #include "LColor.h"
 
-using bv_funcs::font2string;
-
+using lyx::bv_funcs::font2string;
 using std::string;
 
 namespace lyx {

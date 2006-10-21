@@ -16,6 +16,9 @@
 #include "insettext.h"
 #include "lyxtextclass.h"
 
+
+namespace lyx {
+
 /** A caption inset
 */
 class InsetCaption : public InsetText {
@@ -33,7 +36,7 @@ public:
 	///
 	virtual InsetBase::Code lyxCode() const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
@@ -48,13 +51,13 @@ public:
 	///
 	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 	///
-	virtual int latex(Buffer const & buf, lyx::odocstream & os,
+	virtual int latex(Buffer const & buf, odocstream & os,
 			  OutputParams const &) const;
 	///
-	int plaintext(Buffer const & buf, lyx::odocstream & os,
+	int plaintext(Buffer const & buf, odocstream & os,
 		  OutputParams const & runparams) const;
 	///
-	int docbook(Buffer const & buf, lyx::odocstream & os,
+	int docbook(Buffer const & buf, odocstream & os,
 		    OutputParams const & runparams) const;
 	///
 	void setCount(int c) { counter_ = c; }
@@ -86,5 +89,8 @@ InsetBase::Code InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }
+
+
+} // namespace lyx
 
 #endif

@@ -15,6 +15,9 @@
 #include "MathMLStream.h"
 
 
+namespace lyx {
+
+
 using std::max;
 using std::auto_ptr;
 
@@ -63,3 +66,6 @@ void InsetMathStackrel::normalize(NormalStream & os) const
 {
 	os << "[stackrel " << cell(0) << ' ' << cell(1) << ']';
 }
+
+
+} // namespace lyx

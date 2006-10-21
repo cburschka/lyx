@@ -18,8 +18,11 @@
 #include "debug.h"
 #include "trans_mgr.h"
 
-using lyx::support::contains;
-using lyx::support::libFileSearch;
+
+namespace lyx {
+
+using support::contains;
+using support::libFileSearch;
 
 using std::endl;
 using std::string;
@@ -362,3 +365,6 @@ tex_accent getkeymod(string const & p)
 	}
 	return TEX_NOACCENT;
 }
+
+
+} // namespace lyx

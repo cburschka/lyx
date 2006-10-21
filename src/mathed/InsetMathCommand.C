@@ -18,7 +18,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -73,16 +74,19 @@ void CommandInset::write(WriteStream & os) const
 
 docstring const CommandInset::screenLabel() const
 {
-	return lyx::from_ascii(name_);
+	return from_ascii(name_);
 }
 
 
 string const CommandInset::createDialogStr(string const & name) const
 {
-	lyx::odocstringstream os;
-	os << lyx::from_ascii(name) << " LatexCommand ";
+	odocstringstream os;
+	os << from_ascii(name) << " LatexCommand ";
 	WriteStream ws(os);
 	write(ws);
 	ws << "\n\\end_inset\n\n";
-	return lyx::to_utf8(os.str());
+	return to_utf8(os.str());
 }
+
+
+} // namespace lyx

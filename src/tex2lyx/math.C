@@ -16,6 +16,9 @@
 
 #include <iostream>
 
+
+namespace lyx {
+
 using std::cerr;
 using std::endl;
 
@@ -237,3 +240,6 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 
 // }])
+
+
+} // namespace lyx

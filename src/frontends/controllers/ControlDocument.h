@@ -16,10 +16,11 @@
 #include "support/types.h"
 #include <boost/scoped_ptr.hpp>
 
+namespace lyx {
+
 class BufferParams;
 class LyXTextClass;
 
-namespace lyx {
 namespace frontend {
 
 /** A controller for Document dialogs.

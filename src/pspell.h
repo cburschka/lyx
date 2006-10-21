@@ -17,6 +17,9 @@
 
 #include <map>
 
+
+namespace lyx {
+
 class PspellManager;
 class PspellStringEmulation;
 class PspellCanHaveError;
@@ -53,7 +56,7 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual lyx::docstring const error();
+	virtual docstring const error();
 
 private:
 	/// add a manager of the given language
@@ -74,5 +77,8 @@ private:
 	/// FIXME
 	PspellCanHaveError * spell_error_object;
 };
+
+
+} // namespace lyx
 
 #endif // LYX_PSPELL_H

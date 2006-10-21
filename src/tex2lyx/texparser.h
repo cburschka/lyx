@@ -17,6 +17,9 @@
 #include <utility>
 
 
+namespace lyx {
+
+
 enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, MATHTEXT_MODE, TABLE_MODE};
 
 mode_type asMode(mode_type oldmode, std::string const & str);
@@ -204,5 +207,8 @@ private:
 	unsigned pos_;
 };
 
+
+
+} // namespace lyx
 
 #endif

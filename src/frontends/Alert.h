@@ -30,21 +30,21 @@ namespace Alert {
  * "Yes" or "No", I will personally come around to your house and
  * slap you with fish, and not in an enjoyable way either.
  */
-int prompt(lyx::docstring const & title, lyx::docstring const & question,
+int prompt(docstring const & title, docstring const & question,
 	   int default_button, int cancel_button,
-	   lyx::docstring const & b1, lyx::docstring const & b2, lyx::docstring const & b3 = lyx::docstring());
+	   docstring const & b1, docstring const & b2, docstring const & b3 = docstring());
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
-void warning(lyx::docstring const & title, lyx::docstring const & message);
+void warning(docstring const & title, docstring const & message);
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  */
-void error(lyx::docstring const & title, lyx::docstring const & message);
+void error(docstring const & title, docstring const & message);
 
 /**
  * Informational message. Use very very sparingly. That is, you must
@@ -52,15 +52,14 @@ void error(lyx::docstring const & title, lyx::docstring const & message);
  * and reciting the Nicene Creed, whilst running uphill and also
  * eating.
  */
-void information(lyx::docstring const & title, lyx::docstring const & message);
+void information(docstring const & title, docstring const & message);
 
 /// Asks for a text. DO NOT USE !!
-std::pair<bool, lyx::docstring> const
-askForText(lyx::docstring const & msg,
-	   lyx::docstring const & dflt = lyx::docstring());
+std::pair<bool, docstring> const
+askForText(docstring const & msg, docstring const & dflt = docstring());
 
-}
-}
-}
+} // namespace Alert
+} // namespace frontend
+} // namespace lyx
 
 #endif // LYX_ALERT_H

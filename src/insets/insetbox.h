@@ -13,10 +13,12 @@
 #ifndef INSETBOX_H
 #define INSETBOX_H
 
-
 #include "insetcollapsable.h"
 #include "lyxlength.h"
+#include "mailinset.h"
 
+
+namespace lyx {
 
 class InsetBoxParams {
 public:
@@ -60,7 +62,7 @@ public:
 	///
 	~InsetBox();
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::BOX_CODE; }
 	///
@@ -82,13 +84,11 @@ public:
 	///
 	bool noFontChange() const { return true; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-			OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
-		    OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -120,8 +120,6 @@ private:
 };
 
 
-#include "mailinset.h"
-
 class InsetBoxMailer : public MailInset {
 public:
 	///
@@ -143,5 +141,8 @@ private:
 	///
 	InsetBox & inset_;
 };
+
+
+} // namespace lyx
 
 #endif // INSET_BOX_H

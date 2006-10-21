@@ -44,13 +44,6 @@
 
 #include <sstream>
 
-namespace support = lyx::support;
-namespace external = lyx::external;
-namespace graphics = lyx::graphics;
-
-using lyx::docstring;
-using lyx::odocstream;
-
 using std::endl;
 using std::string;
 using std::auto_ptr;
@@ -62,7 +55,7 @@ using std::vector;
 
 namespace {
 
-external::DisplayType const defaultDisplayType = external::NoDisplay;
+lyx::external::DisplayType const defaultDisplayType = lyx::external::NoDisplay;
 
 unsigned int const defaultLyxScale = 100;
 
@@ -72,6 +65,7 @@ string defaultTemplateName = "RasterImage";
 
 
 namespace lyx {
+
 namespace external {
 
 TempName::TempName()
@@ -133,7 +127,6 @@ Translator<DisplayType, string> const & displayTranslator()
 }
 
 } // namespace external
-} // namespace lyx
 
 
 InsetExternalParams::InsetExternalParams()
@@ -439,7 +432,7 @@ void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_EXTERNAL_EDIT: {
 		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
+		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, p);
 		external::editExternal(p, buffer);
 		break;
 	}
@@ -447,7 +440,7 @@ void InsetExternal::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
-		InsetExternalMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
+		InsetExternalMailer::string2params(to_utf8(cmd.argument()), buffer, p);
 		setParams(p, buffer);
 		break;
 	}
@@ -564,7 +557,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 	if (gparams.display == graphics::DefaultDisplay)
 		gparams.display = lyxrc.display_graphics;
 	// Override the above if we're not using a gui
-	if (!lyx::use_gui)
+	if (!use_gui)
 		gparams.display = graphics::NoDisplay;
 
 	return gparams;
@@ -579,9 +572,9 @@ docstring const getScreenLabel(InsetExternalParams const & params,
 	if (!ptr)
 		// FIXME UNICODE
 		return support::bformat((_("External template %1$s is not installed")),
-					lyx::from_utf8(params.templatename()));
+					from_utf8(params.templatename()));
 	// FIXME UNICODE
-	return lyx::from_utf8(external::doSubstitution(params, buffer,
+	return from_utf8(external::doSubstitution(params, buffer,
 				ptr->guiName, false));
 }
 
@@ -684,7 +677,7 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 	if (params_.draft) {
 		// FIXME UNICODE
 		os << "\\fbox{\\ttfamily{}"
-		   << lyx::from_utf8(params_.filename.outputFilename(buf.filePath()))
+		   << from_utf8(params_.filename.outputFilename(buf.filePath()))
 		   << "}\n";
 		return 1;
 	}
@@ -799,7 +792,6 @@ namespace {
 bool preview_wanted(InsetExternalParams const & params)
 {
 	string const included_file = params.filename.absFilename();
-
 	return params.display == external::PreviewDisplay &&
 		support::isFileReadable(included_file);
 }
@@ -807,11 +799,10 @@ bool preview_wanted(InsetExternalParams const & params)
 
 docstring const latex_string(InsetExternal const & inset, Buffer const & buffer)
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
-
 	return os.str();
 }
 
@@ -901,3 +892,5 @@ InsetExternalMailer::params2string(InsetExternalParams const & params,
 	data << "\\end_inset\n";
 	return data.str();
 }
+
+} // namespace lyx

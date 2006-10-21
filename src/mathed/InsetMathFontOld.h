@@ -15,6 +15,9 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
+
 class latexkeys;
 
 /// Old-style font changes
@@ -46,4 +49,7 @@ private:
 	/// the font to be used on screen
 	latexkeys const * key_;
 };
+
+
+} // namespace lyx
 #endif

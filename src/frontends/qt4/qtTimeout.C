@@ -17,6 +17,9 @@
 #include "debug.h"
 
 
+namespace lyx {
+
+
 Timeout::Timeout(unsigned int msec, Type t)
 	: pimpl_(new qtTimeout(*this)), type(t), timeout_ms(msec)
 {}
@@ -60,3 +63,6 @@ void qtTimeout::stop()
 	if (running())
 		reset();
 }
+
+
+} // namespace lyx

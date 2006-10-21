@@ -20,7 +20,10 @@
 
 #include <boost/assert.hpp>
 
-using lyx::docstring;
+
+namespace lyx {
+
+using docstring;
 
 using std::string;
 
@@ -142,5 +145,8 @@ docstring const ASpell::error()
 		err = aspell_error_message(spell_error_object);
 	}
 
-	return (err ? lyx::from_utf8(err) : docstring());
+	return (err ? from_utf8(err) : docstring());
 }
+
+
+} // namespace lyx

@@ -20,22 +20,22 @@
 
 #include <vector>
 
+namespace lyx {
+
 class Buffer;
 class ErrorList;
 class InsetText;
 class LyXTextClass;
 class LCursor;
 
-///
-namespace lyx {
 namespace cap {
 
 ///
-std::vector<lyx::docstring> const availableSelections(Buffer const & buffer);
+std::vector<docstring> const availableSelections(Buffer const & buffer);
 ///
-lyx::size_type numberOfSelections();
+size_type numberOfSelections();
 ///
-lyx::docstring getSelection(Buffer const & buffer, size_t sel_index);
+docstring getSelection(Buffer const & buffer, size_t sel_index);
 
 ///
 void cutSelection(LCursor & cur, bool doclear, bool realcut);
@@ -65,8 +65,7 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
  *  for a list of paragraphs beginning with the specified par.
  *  It changes layouts and character styles.
  */
-void switchBetweenClasses(lyx::textclass_type c1,
-                          lyx::textclass_type c2,
+void switchBetweenClasses(textclass_type c1, textclass_type c2,
                           InsetText & in, ErrorList &);
 
 ///

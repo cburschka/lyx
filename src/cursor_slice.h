@@ -23,6 +23,9 @@
 #include <cstddef>
 #include <iosfwd>
 
+
+namespace lyx {
+
 class BufferView;
 class InsetBase;
 class MathInset;
@@ -41,10 +44,6 @@ class CursorSlice {
 public:
 	/// type for cell number in inset
 	typedef size_t idx_type;
-	/// type for paragraph numbers positions within a cell
-	typedef lyx::pit_type pit_type;
-	/// type for cursor positions within a cell
-	typedef lyx::pos_type pos_type;
 	/// type for row indices
 	typedef size_t row_type;
 	/// type for col indices
@@ -153,5 +152,8 @@ bool operator<(CursorSlice const &, CursorSlice const &);
 bool operator>(CursorSlice const &, CursorSlice const &);
 /// test for order
 bool operator<=(CursorSlice const &, CursorSlice const &);
+
+
+} // namespace lyx
 
 #endif

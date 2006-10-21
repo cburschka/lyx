@@ -15,6 +15,9 @@
 #include "cursor.h"
 
 
+namespace lyx {
+
+
 InsetMathFracBase::InsetMathFracBase()
 	: InsetMathNest(2)
 {}
@@ -41,3 +44,6 @@ bool InsetMathFracBase::idxUpDown(LCursor & cur, bool up) const
 	cur.pos() = cell(target).x2pos(cur.x_target());
 	return true;
 }
+
+
+} // namespace lyx

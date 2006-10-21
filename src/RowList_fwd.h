@@ -17,6 +17,9 @@
 #include <vector>
 #include <map>
 
+
+namespace lyx {
+
 /**
  * Each paragraph is broken up into a number of rows on the screen.
  * This is a list of such on-screen rows, ordered from the top row
@@ -24,6 +27,9 @@
  */
 typedef std::vector<Row> RowList;
 ///
-typedef std::map<lyx::size_type, lyx::size_type> RowSignature;
+typedef std::map<size_type, size_type> RowSignature;
+
+
+} // namespace lyx
 
 #endif

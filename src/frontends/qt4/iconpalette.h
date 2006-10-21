@@ -12,7 +12,6 @@
 #ifndef ICONPALETTE_H
 #define ICONPALETTE_H
 
-
 #include <QWidget>
 
 #include <string>
@@ -24,6 +23,8 @@ class QPixmap;
 class QPushButton;
 class QGridLayout;
 class QResizeEvent;
+
+namespace lyx {
 
 /**
  * For holding an arbitrary set of icons.
@@ -50,5 +51,8 @@ private:
 
 	std::vector<Button> buttons_;
 };
+
+
+} // namespace lyx
 
 #endif // ICONPALETTE_H

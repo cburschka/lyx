@@ -16,13 +16,14 @@
 #include "ui/QBibtexAddUi.h"
 
 #include "ButtonController.h"
-#include "QBibtex.h"
 
 #include <QCloseEvent>
 #include <QDialog>
 
 namespace lyx {
 namespace frontend {
+
+class QBibtex;
 
 template<class UI>
 	class UiDialog: public QDialog, public UI

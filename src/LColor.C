@@ -23,8 +23,11 @@
 
 #include <map>
 
-using lyx::support::compare_ascii_no_case;
-using lyx::support::ascii_lowercase;
+
+namespace lyx {
+
+using support::compare_ascii_no_case;
+using support::ascii_lowercase;
 
 using std::endl;
 using std::string;
@@ -177,7 +180,7 @@ string const LColor::getGUIName(LColor::color c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
-		return lyx::to_utf8(_(it->second.guiname));
+		return to_utf8(_(it->second.guiname));
 	return "none";
 }
 
@@ -254,7 +257,7 @@ LColor::color LColor::getFromGUIName(string const & guiname) const
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.begin();
 	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; it != end; ++it) {
-		if (!compare_ascii_no_case(lyx::to_utf8(_(it->second.guiname)), guiname))
+		if (!compare_ascii_no_case(to_utf8(_(it->second.guiname)), guiname))
 			return it->first;
 	}
 	return LColor::inherit;
@@ -297,3 +300,6 @@ LColor::color LColor::getFromLaTeXName(string const & latexname) const
 LColor lcolor;
 // An equally evil global system LColor instance
 LColor system_lcolor;
+
+
+} // namespace lyx

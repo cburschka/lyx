@@ -12,6 +12,8 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 
+namespace lyx {
+
 class Buffer;
 class BufferView;
 class FuncRequest;
@@ -24,5 +26,8 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd);
 
 /// read inset from a file
 InsetBase * readInset(LyXLex & lex, Buffer const & buf);
+
+
+} // namespace lyx
 
 #endif // FACTORY_H

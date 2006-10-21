@@ -30,9 +30,9 @@
 #include "support/lstrings.h"
 
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::prefixIs;
+namespace lyx {
+
+using support::prefixIs;
 
 using std::endl;
 using std::string;
@@ -93,21 +93,21 @@ InsetQuotes::InsetQuotes(quote_language l, quote_side s, quote_times t)
 {}
 
 
-InsetQuotes::InsetQuotes(lyx::char_type c, BufferParams const & params)
+InsetQuotes::InsetQuotes(char_type c, BufferParams const & params)
 	: language_(params.quotes_language), times_(params.quotes_times)
 {
 	getPosition(c);
 }
 
 
-InsetQuotes::InsetQuotes(lyx::char_type c, quote_language l, quote_times t)
+InsetQuotes::InsetQuotes(char_type c, quote_language l, quote_times t)
 	: language_(l), times_(t)
 {
 	getPosition(c);
 }
 
 
-void InsetQuotes::getPosition(lyx::char_type c)
+void InsetQuotes::getPosition(char_type c)
 {
 	// Decide whether left or right
 	switch (c) {
@@ -200,7 +200,7 @@ string const InsetQuotes::dispString(Language const * loclang) const
 void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
-	lyx::frontend::FontMetrics const & fm =
+	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
@@ -297,7 +297,7 @@ int InsetQuotes::latex(Buffer const &, odocstream & os,
 	if (prefixIs(qstr, "`"))
 		qstr.insert(0, "{}");
 
-	os << lyx::from_ascii(qstr);
+	os << from_ascii(qstr);
 	return 0;
 }
 
@@ -374,3 +374,6 @@ InsetBase::Code InsetQuotes::lyxCode() const
 {
   return InsetBase::QUOTE_CODE;
 }
+
+
+} // namespace lyx

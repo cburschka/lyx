@@ -36,24 +36,25 @@
 
 #include <boost/filesystem/operations.hpp>
 
-using lyx::support::addName;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::contains;
-using lyx::support::makeAbsPath;
-using lyx::support::makeDisplayPath;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::package;
-using lyx::support::prefixIs;
 
-using lyx::docstring;
+namespace lyx {
+
+using support::addName;
+using support::bformat;
+using support::changeExtension;
+using support::contains;
+using support::makeAbsPath;
+using support::makeDisplayPath;
+using support::onlyFilename;
+using support::onlyPath;
+using support::package;
+using support::prefixIs;
 
 using std::find;
 using std::string;
 using std::vector;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
 
 namespace {
@@ -322,7 +323,7 @@ void ExportData::addExternalFile(string const & format,
 				 string const & sourceName,
 				 string const & exportName)
 {
-	BOOST_ASSERT(lyx::support::absolutePath(sourceName));
+	BOOST_ASSERT(support::absolutePath(sourceName));
 
 	// Make sure that we have every file only once, otherwise copyFile()
 	// would ask several times if it should overwrite a file.
@@ -348,3 +349,6 @@ ExportData::externalFiles(string const & format) const
 		return cit->second;
 	return vector<ExportedFile>();
 }
+
+
+} // namespace lyx

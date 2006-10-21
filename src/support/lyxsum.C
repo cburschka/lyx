@@ -49,10 +49,13 @@ template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
+
 #include <sys/mman.h>
 
 
-unsigned long lyx::support::sum(string const & file)
+namespace lyx {
+
+unsigned long support::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"
 			     << endl;
@@ -84,6 +87,9 @@ unsigned long lyx::support::sum(string const & file)
 
 	return result;
 }
+
+} // namespace lyx
+
 #else // No mmap
 
 #include <fstream>
@@ -101,13 +107,16 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 	return crc.checksum();
 }
 
-} // namespace
+} // namespace anon
+
+
+namespace lyx {
 
 using std::ifstream;
 #if HAVE_DECL_ISTREAMBUF_ITERATOR
 using std::istreambuf_iterator;
 
-unsigned long lyx::support::sum(string const & file)
+unsigned long support::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
@@ -125,7 +134,7 @@ unsigned long lyx::support::sum(string const & file)
 using std::istream_iterator;
 using std::ios;
 
-unsigned long lyx::support::sum(string const & file)
+unsigned long support::sum(string const & file)
 {
 	lyxerr[Debug::FILES]
 		<< "lyx::sum() using istream_iterator (slow as a snail)"
@@ -141,4 +150,7 @@ unsigned long lyx::support::sum(string const & file)
 	return do_crc(beg,end);
 }
 #endif
+
+} // namespace lyx
+
 #endif // mmap

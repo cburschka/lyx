@@ -26,7 +26,10 @@
 
 #include <sstream>
 
-using lyx::support::i18nLibFileSearch;
+
+namespace lyx {
+
+using support::i18nLibFileSearch;
 
 using std::endl;
 using std::string;
@@ -342,3 +345,6 @@ kb_keymap::find1keybinding(FuncRequest const & func) const
 
 	return std::make_pair<LyXKeySym const *, key_modifier::state>(0, key_modifier::none);
 }
+
+
+} // namespace lyx

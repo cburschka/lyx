@@ -19,10 +19,10 @@
 
 #include <sstream>
 
-using std::ostringstream;
-using std::string;
 
-namespace support = lyx::support;
+namespace lyx {
+
+using std::string;
 
 Movers movers;
 Movers system_movers;
@@ -88,3 +88,6 @@ string const Movers::command(string  const & fmt) const
 	SpecialsMap::const_iterator const it = specials_.find(fmt);
 	return (it == specials_.end()) ? string() : it->second.command();
 }
+
+
+} // namespace lyx

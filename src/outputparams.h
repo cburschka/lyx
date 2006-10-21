@@ -18,6 +18,9 @@
 #include <boost/shared_ptr.hpp>
 
 
+namespace lyx {
+
+
 class ExportData;
 class LyXFont;
 
@@ -76,7 +79,7 @@ public:
 
 	/** Line length to use with plaintext export.
 	*/
-	lyx::size_type linelen;
+	size_type linelen;
 
 	/** The depth of the current paragraph, set for plaintext
 	 *  export and used by InsetTabular
@@ -100,18 +103,21 @@ public:
 	/** allow output of only part of the top-level paragraphs 
 	 *  par_begin: beginning paragraph
 	 */
-	lyx::pit_type par_begin;
+	pit_type par_begin;
 
 	/** allow output of only part of the top-level paragraphs 
 	 *  par_end: par_end-1 is the ending paragraph
 	 *  if par_begin=par_end, output all paragraphs
 	 */
-	lyx::pit_type par_end;
+	pit_type par_end;
 
 	/** whether or not do actual file copying and image conversion 
 	 *  This mode will be used to preview the source code
 	 */
 	bool dryrun;
 };
+
+
+} // namespace lyx
 
 #endif // NOT OUTPUTPARAMS_H

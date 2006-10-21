@@ -81,3 +81,9 @@ void LyXFileDialog::buttonClicked()
 }
 
 #include "FileDialog_private_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

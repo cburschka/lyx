@@ -24,9 +24,9 @@
 #include <vector>
 
 
-class InsetExternalParams;
-
 namespace lyx {
+
+class InsetExternalParams;
 
 namespace external {
 

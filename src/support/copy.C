@@ -15,6 +15,9 @@
 #include "support/lyxlib.h"
 
 
+namespace lyx {
+
+
 using std::ifstream;
 using std::ofstream;
 using std::ios;
@@ -34,3 +37,6 @@ bool lyx::support::copy(string const & from, string const & to)
 	ofs << ifs.rdbuf();
 	return ofs.good();
 }
+
+
+} // namespace lyx

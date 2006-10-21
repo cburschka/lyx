@@ -15,6 +15,9 @@
 
 #include "inset.h"
 
+
+namespace lyx {
+
 class InsetNewline : public InsetOld {
 public:
 
@@ -26,13 +29,13 @@ public:
 
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
-	virtual int latex(Buffer const &, lyx::odocstream &,
+	virtual int latex(Buffer const &, odocstream &,
 			  OutputParams const &) const;
 
-	virtual int plaintext(Buffer const &, lyx::odocstream &,
+	virtual int plaintext(Buffer const &, odocstream &,
 			  OutputParams const &) const;
 
-	virtual int docbook(Buffer const &, lyx::odocstream &,
+	virtual int docbook(Buffer const &, odocstream &,
 			    OutputParams const &) const;
 
 	virtual void read(Buffer const &, LyXLex & lex);
@@ -49,5 +52,8 @@ private:
 		return std::auto_ptr<InsetBase>(new InsetNewline);
 	}
 };
+
+
+} // namespace lyx
 
 #endif // INSET_NEWLINE_H

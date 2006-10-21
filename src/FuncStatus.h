@@ -14,6 +14,9 @@
 
 #include "support/docstring.h"
 
+
+namespace lyx {
+
 /// The status of a function.
 
 class FuncStatus
@@ -41,7 +44,7 @@ private:
 
 	unsigned int v_;
 
-	lyx::docstring message_;
+	docstring message_;
 
 public:
 	///
@@ -67,9 +70,12 @@ public:
 	bool onoff(bool b) const;
 
 	///
-	void message(lyx::docstring const & m);
+	void message(docstring const & m);
 	///
-	lyx::docstring const & message() const;
+	docstring const & message() const;
 };
+
+
+} // namespace lyx
 
 #endif

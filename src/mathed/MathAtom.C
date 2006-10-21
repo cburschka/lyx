@@ -13,6 +13,9 @@
 #include "MathAtom.h"
 #include "InsetMath.h"
 
+
+namespace lyx {
+
 using std::swap;
 
 
@@ -48,3 +51,6 @@ MathAtom::~MathAtom()
 {
 	delete nucleus_;
 }
+
+
+} // namespace lyx

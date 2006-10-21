@@ -17,6 +17,9 @@
 #include "MathSupport.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 
@@ -42,14 +45,14 @@ auto_ptr<InsetBase> InsetMathExFunc::doClone() const
 void InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
 {
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, lyx::from_utf8(name_), dim_);
+	mathed_string_dim(mi.base.font, from_utf8(name_), dim_);
 }
 
 
 void InsetMathExFunc::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME UNICODE
-	drawStrBlack(pi, x, y, lyx::from_utf8(name_));
+	drawStrBlack(pi, x, y, from_utf8(name_));
 }
 
 
@@ -125,3 +128,6 @@ void InsetMathExFunc::octave(OctaveStream & os) const
 {
 	os << name_ << '(' << cell(0) << ')';
 }
+
+
+} // namespace lyx

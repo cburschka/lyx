@@ -2286,3 +2286,9 @@ void QtTableView::updateTableSize()
 #endif
 
 #include "qttableview_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

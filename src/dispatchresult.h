@@ -13,6 +13,8 @@
 #ifndef DISPATCH_RESULT_H
 #define DISPATCH_RESULT_H
 
+namespace lyx {
+
 /// Maybe this can go entirely
 class DispatchResult {
 public:
@@ -34,5 +36,8 @@ private:
 	/// do we need to redraw the screen afterwards?
 	bool update_;
 };
+
+
+} // namespace lyx
 
 #endif // DISPATCH_RESULT_H

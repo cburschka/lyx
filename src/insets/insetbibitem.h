@@ -15,6 +15,9 @@
 
 #include "insetcommand.h"
 
+
+namespace lyx {
+
 /** Used to insert bibitem's information (key and label)
 
   Must be automatically inserted as the first object in a
@@ -27,7 +30,7 @@ public:
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -37,10 +40,9 @@ public:
 	///
 	int getCounter() const { return counter; }
 	///
-	lyx::docstring const getBibLabel() const;
+	docstring const getBibLabel() const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
-		      OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
@@ -55,6 +57,9 @@ private:
 
 
 /// Return the widest label in the Bibliography.
-lyx::docstring const bibitemWidest(Buffer const &);
+docstring const bibitemWidest(Buffer const &);
+
+
+} // namespace lyx
 
 #endif // INSET_BIBITEM_H

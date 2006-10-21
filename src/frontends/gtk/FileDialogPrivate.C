@@ -24,6 +24,9 @@
 #include "support/filefilterlist.h"
 #include "debug.h"
 
+
+namespace lyx {
+
 using lyx::docstring;
 
 using std::string;
@@ -112,3 +115,6 @@ FileDialog::Result const FileDialog::Private::showChooser(docstring const & path
 		result.second = docstring();
 	return result;
 }
+
+
+} // namespace lyx

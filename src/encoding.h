@@ -17,6 +17,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 ///
 typedef unsigned short int Uchar;
 
@@ -104,5 +107,8 @@ private:
 };
 
 extern Encodings encodings;
+
+
+} // namespace lyx
 
 #endif

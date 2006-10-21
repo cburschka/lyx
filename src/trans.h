@@ -19,6 +19,9 @@
 #include <map>
 
 
+namespace lyx {
+
+
 class LyXLex;
 
 class TransManager;
@@ -80,5 +83,8 @@ std::string const & Trans::match(unsigned char c)
 	static std::string dummy;
 	return dummy;
 }
+
+
+} // namespace lyx
 
 #endif // TRANS_H

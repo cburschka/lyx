@@ -14,7 +14,7 @@
 #include "insetgraphicsParams.h"
 
 #include "debug.h"
-#include "lyx_main.h" // for lyx::use_gui
+#include "lyx_main.h" // for use_gui
 #include "lyxlex.h"
 #include "lyxrc.h"
 
@@ -26,9 +26,12 @@
 #include "support/lstrings.h"
 #include "support/translator.h"
 
-using lyx::support::float_equal;
-using lyx::support::readBB_from_PSFile;
-using lyx::support::token;
+
+namespace lyx {
+
+using support::float_equal;
+using support::readBB_from_PSFile;
+using support::token;
 
 using std::string;
 using std::ostream;
@@ -64,7 +67,7 @@ void InsetGraphicsParams::init()
 {
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
-	display = lyx::graphics::DefaultDisplay; // display mode; see preferences
+	display = graphics::DefaultDisplay; // display mode; see preferences
 	scale = string();			// output scaling in percentage
 	width = LyXLength();
 	height = LyXLength();
@@ -151,8 +154,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	}
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
-	if (display != lyx::graphics::DefaultDisplay)
-		os << "\tdisplay " << lyx::graphics::displayTranslator().find(display) << '\n';
+	if (display != graphics::DefaultDisplay)
+		os << "\tdisplay " << graphics::displayTranslator().find(display) << '\n';
 	if (!scale.empty() && !float_equal(convert<double>(scale), 0.0, 0.05)) {
 		if (!float_equal(convert<double>(scale), 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
@@ -200,7 +203,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 	} else if (token == "display") {
 		lex.next();
 		string const type = lex.getString();
-		display = lyx::graphics::displayTranslator().find(type);
+		display = graphics::displayTranslator().find(type);
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getString();
@@ -260,9 +263,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 }
 
 
-lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
+graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
-	lyx::graphics::Params pars;
+	graphics::Params pars;
 	pars.filename = filename.absFilename();
 	pars.scale = lyxscale;
 	pars.angle = convert<double>(rotateAngle);
@@ -314,16 +317,19 @@ lyx::graphics::Params InsetGraphicsParams::as_grfxParams() const
 		}
 	}
 
-	if (display == lyx::graphics::DefaultDisplay) {
+	if (display == graphics::DefaultDisplay) {
 		pars.display = lyxrc.display_graphics;
 	} else {
 		pars.display = display;
 	}
 
 	// Override the above if we're not using a gui
-	if (!lyx::use_gui) {
-		pars.display = lyx::graphics::NoDisplay;
+	if (!use_gui) {
+		pars.display = graphics::NoDisplay;
 	}
 
 	return pars;
 }
+
+
+} // namespace lyx

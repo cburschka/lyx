@@ -16,6 +16,9 @@
 
 #include "insetfootlike.h"
 
+
+namespace lyx {
+
 /** The marginal note inset
 
 */
@@ -26,17 +29,20 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::MARGIN_CODE; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const & runparams) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 protected:
 	InsetMarginal(InsetMarginal const &);
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

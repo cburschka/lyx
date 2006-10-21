@@ -15,9 +15,11 @@
 #include "Dialog.h"
 #include <vector>
 
-class Format;
 
 namespace lyx {
+
+class Format;
+
 namespace frontend {
 
 /** A controller for the Custom Export dialogs.

@@ -40,16 +40,16 @@
 #include <algorithm>
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::odocstringstream;
-using lyx::support::cmd_ret;
-using lyx::support::getVectorFromString;
-using lyx::support::libFileSearch;
-using lyx::support::runCommand;
-using lyx::support::subst;
 
-using lyx::frontend::function_names;
+namespace lyx {
+
+using support::cmd_ret;
+using support::getVectorFromString;
+using support::libFileSearch;
+using support::runCommand;
+using support::subst;
+
+using frontend::function_names;
 
 using std::string;
 using std::endl;
@@ -1049,11 +1049,11 @@ namespace {
 
 	MathArray pipeThroughMaxima(docstring const &, MathArray const & ar)
 	{
-		lyx::odocstringstream os;
+		odocstringstream os;
 		MaximaStream ms(os);
 		ms << ar;
 		// FIXME UNICODE Is utf8 encoding correct?
-		string expr = lyx::to_utf8(os.str());
+		string expr = to_utf8(os.str());
 		string const header = "simpsum:true;";
 
 		string out;
@@ -1173,11 +1173,11 @@ namespace {
 		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
 
 		string trailer = "quit;";
-		lyx::odocstringstream os;
+		odocstringstream os;
 		MapleStream ms(os);
 		ms << ar;
 		// FIXME UNICODE Is utf8 encoding correct?
-		string expr = lyx::to_utf8(os.str());
+		string expr = to_utf8(os.str());
 		lyxerr << "ar: '" << ar << "'\n"
 		       << "ms: '" << expr << "'" << endl;
 
@@ -1209,7 +1209,7 @@ namespace {
 		}
 
 		// FIXME UNICODE Is utf8 encoding correct?
-		string full = "latex(" + lyx::to_utf8(extra) + '(' + expr + "));";
+		string full = "latex(" + to_utf8(extra) + '(' + expr + "));";
 		string out = captureOutput("maple -q", header + full + trailer);
 
 		// change \_ into _
@@ -1223,11 +1223,11 @@ namespace {
 
 	MathArray pipeThroughOctave(docstring const &, MathArray const & ar)
 	{
-		lyx::odocstringstream os;
+		odocstringstream os;
 		OctaveStream vs(os);
 		vs << ar;
 		// FIXME UNICODE Is utf8 encoding correct?
-		string expr = lyx::to_utf8(os.str());
+		string expr = to_utf8(os.str());
 		string out;
 
 		lyxerr << "pipe: ar: '" << ar << "'\n"
@@ -1341,11 +1341,11 @@ namespace {
 
 	MathArray pipeThroughMathematica(docstring const &, MathArray const & ar)
 	{
-		lyx::odocstringstream os;
+		odocstringstream os;
 		MathematicaStream ms(os);
 		ms << ar;
 		// FIXME UNICODE Is utf8 encoding correct?
-		string const expr = lyx::to_utf8(os.str());
+		string const expr = to_utf8(os.str());
 		string out;
 
 		lyxerr << "expr: '" << expr << "'" << endl;
@@ -1393,13 +1393,13 @@ MathArray pipeThroughExtern(string const & lang, docstring const & extra,
 		return pipeThroughMathematica(extra, ar);
 
 	// create normalized expression
-	lyx::odocstringstream os;
+	odocstringstream os;
 	NormalStream ns(os);
 	os << '[' << extra << ' ';
 	ns << ar;
 	os << ']';
 	// FIXME UNICODE Is utf8 encoding correct?
-	string data = lyx::to_utf8(os.str());
+	string data = to_utf8(os.str());
 
 	// search external script
 	string file = libFileSearch("mathed", "extern_" + lang);
@@ -1414,3 +1414,6 @@ MathArray pipeThroughExtern(string const & lang, docstring const & extra,
 	mathed_parse_cell(res, out);
 	return res;
 }
+
+
+} // namespace lyx

@@ -27,10 +27,12 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 
-using lyx::docstring;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::makeDisplayPath;
+
+namespace lyx {
+
+using support::bformat;
+using support::changeExtension;
+using support::makeDisplayPath;
 
 using std::find;
 using std::string;
@@ -59,13 +61,14 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
-			lyx::frontend::Alert::error(_("Couldn't import file"),
+			frontend::Alert::error(_("Couldn't import file"),
 				     bformat(_("No information for importing the format %1$s."),
 					 formats.prettyName(format)));
 			return false;
 		}
-	} else
+	} else {
 		loader_format = format;
+	}
 
 
 	if (loader_format == "lyx") {
@@ -113,3 +116,6 @@ vector<string> const Importer::Loaders()
 	v.push_back("textparagraph");
 	return v;
 }
+
+
+} // namespace lyx

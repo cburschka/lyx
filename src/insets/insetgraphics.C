@@ -76,8 +76,8 @@ TODO
 
 #include "support/convert.h"
 #include "support/filetools.h"
-#include "support/lyxalgo.h" // lyx::count
-#include "support/lyxlib.h" // lyx::sum
+#include "support/lyxalgo.h" // count
+#include "support/lyxlib.h" // sum
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/systemcall.h"
@@ -87,31 +87,26 @@ TODO
 
 #include <sstream>
 
-using lyx::odocstream;
 
-namespace support = lyx::support;
+namespace lyx {
 
-using lyx::odocstream;
-
-using lyx::support::absolutePath;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::compare_timestamps;
-using lyx::support::contains;
-using lyx::support::FileName;
-using lyx::support::float_equal;
-using lyx::support::getExtension;
-using lyx::support::isFileReadable;
-using lyx::support::latex_path;
-using lyx::support::onlyFilename;
-using lyx::support::removeExtension;
-using lyx::support::rtrim;
-using lyx::support::subst;
-using lyx::support::Systemcall;
-using lyx::support::unzipFile;
-using lyx::support::unzippedFileName;
-
-namespace os = lyx::support::os;
+using support::absolutePath;
+using support::bformat;
+using support::changeExtension;
+using support::compare_timestamps;
+using support::contains;
+using support::FileName;
+using support::float_equal;
+using support::getExtension;
+using support::isFileReadable;
+using support::latex_path;
+using support::onlyFilename;
+using support::removeExtension;
+using support::rtrim;
+using support::subst;
+using support::Systemcall;
+using support::unzipFile;
+using support::unzippedFileName;
 
 using std::endl;
 using std::string;
@@ -186,7 +181,7 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_GRAPHICS_EDIT: {
 		Buffer const & buffer = *cur.bv().buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
+		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
 		editGraphics(p, buffer);
 		break;
 	}
@@ -194,7 +189,7 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY: {
 		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
-		InsetGraphicsMailer::string2params(lyx::to_utf8(cmd.argument()), buffer, p);
+		InsetGraphicsMailer::string2params(to_utf8(cmd.argument()), buffer, p);
 		if (!p.filename.empty())
 			setParams(p);
 		else
@@ -477,9 +472,9 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 	if (!success) {
 		// FIXME UNICODE
 		lyxerr[Debug::GRAPHICS]
-			<< lyx::to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
+			<< to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
 							   "into the temporary directory."),
-					    lyx::from_utf8(file_in)))
+					    from_utf8(file_in)))
 			<< std::endl;
 	}
 
@@ -527,12 +522,12 @@ string const stripExtensionIfPossible(string const & file)
 	// The automatic format selection does not work if the file
 	// name is escaped.
 	string const latex_name = latex_path(file,
-					     lyx::support::EXCLUDE_EXTENSION);
+					     support::EXCLUDE_EXTENSION);
 	if (contains(latex_name, '"'))
 		return latex_name;
 	return latex_path(removeExtension(file),
-			  lyx::support::PROTECT_EXTENSION,
-			  lyx::support::ESCAPE_DOTS);
+			  support::PROTECT_EXTENSION,
+			  support::ESCAPE_DOTS);
 }
 
 
@@ -547,7 +542,7 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 	    (to_format == "eps" && file_format ==  "ps") ||
 	    (to_format ==  "ps" && file_format == "eps"))
 		return stripExtensionIfPossible(file);
-	return latex_path(file, lyx::support::EXCLUDE_EXTENSION);
+	return latex_path(file, support::EXCLUDE_EXTENSION);
 }
 
 } // namespace anon
@@ -598,7 +593,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// buffer.
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
-	string output_file = os::external_path(runparams.nice ?
+	string output_file = support::os::external_path(runparams.nice ?
 		params().filename.outputFilename(m_buffer->filePath()) :
 		onlyFilename(temp_file));
 	string source_file = runparams.nice ? orig_file : temp_file;
@@ -640,7 +635,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// We can't strip the extension, because we don't know
 			// the unzipped file format
 			return latex_path(output_file,
-					  lyx::support::EXCLUDE_EXTENSION);
+					  support::EXCLUDE_EXTENSION);
 		}
 
 		string const unzipped_temp_file = unzippedFileName(temp_file);
@@ -684,7 +679,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			// the file format from the extension, so we must
 			// change it.
 			string const new_file = changeExtension(temp_file, ext);
-			if (lyx::support::rename(temp_file, new_file)) {
+			if (support::rename(temp_file, new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
 				source_file = changeExtension(source_file, ext);
@@ -710,8 +705,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (compare_timestamps(temp_file, to_file) < 0) {
 		// FIXME UNICODE
 		lyxerr[Debug::GRAPHICS]
-			<< lyx::to_utf8(bformat(_("No conversion of %1$s is needed after all"),
-				   lyx::from_utf8(rel_file)))
+			<< to_utf8(bformat(_("No conversion of %1$s is needed after all"),
+				   from_utf8(rel_file)))
 			<< std::endl;
 		runparams.exportdata->addExternalFile(tex_format, to_file,
 						      output_to_file);
@@ -800,7 +795,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	latex_str += prepareFile(buf, runparams);
 	latex_str += '}' + after;
 	// FIXME UNICODE
-	os << lyx::from_utf8(latex_str);
+	os << from_utf8(latex_str);
 
 	lyxerr[Debug::GRAPHICS] << "InsetGraphics::latex outputting:\n"
 				<< latex_str << endl;
@@ -820,7 +815,7 @@ int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 	// FIXME UNICODE
 	// FIXME: We have no idea what the encoding of the filename is
 	os << '<' << bformat(_("Graphics file: %1$s"),
-			     lyx::from_utf8(params().filename.absFilename()))
+			     from_utf8(params().filename.absFilename()))
 	   << ">\n";
 	return 0;
 }
@@ -839,11 +834,11 @@ int writeImageObject(char * format, odocstream & os, OutputParams const & runpar
 		}
                 // FIXME UNICODE
 		os <<"<imageobject><imagedata fileref=\"&"
-		   << lyx::from_ascii(graphic_label)
+		   << from_ascii(graphic_label)
                    << ";."
                    << format
                    << "\" "
-                   << lyx::from_ascii(attributes);
+                   << from_ascii(attributes);
 		if (runparams.flavor == OutputParams::XML) {
 			os <<  " role=\"" << format << "\"/>" ;
 		}
@@ -995,3 +990,6 @@ InsetGraphicsMailer::params2string(InsetGraphicsParams const & params,
 	data << "\\end_inset\n";
 	return data.str();
 }
+
+
+} // namespace lyx

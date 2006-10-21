@@ -18,6 +18,9 @@
 #include "metricsinfo.h"
 
 
+namespace lyx {
+
+
 InsetMathDim::InsetMathDim()
 {}
 
@@ -45,3 +48,6 @@ void InsetMathDim::setPosCache(PainterInfo const & pi, int x, int y) const
 	//lyxerr << "InsetMathDim: cache to " << x << " " << y << std::endl;
 	pi.base.bv->coordCache().insets().add(this, x, y);
 }
+
+
+} // namespace lyx

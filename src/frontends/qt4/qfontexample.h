@@ -12,10 +12,14 @@
 #ifndef QT_QFONTEXAMPLE_H
 #define QT_QFONTEXAMPLE_H
 
-#include <qwidget.h>
-#include <qfont.h>
-//Added by qt3to4:
-#include <QPaintEvent>
+#include <QWidget>
+#include <QFont>
+#include <QString>
+
+class QPaintEvent;
+
+
+//namespace lyx {
 
 class QFontExample : public QWidget {
 
@@ -34,5 +38,8 @@ private:
 	QFont font_;
 	QString text_;
 };
+
+
+//} // namespace lyx
 
 #endif

@@ -100,34 +100,35 @@
 
 #include <sstream>
 
+
+namespace lyx {
+
 using bv_funcs::freefont2string;
 
-using lyx::docstring;
-
-using lyx::support::absolutePath;
-using lyx::support::addName;
-using lyx::support::addPath;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::contains;
-using lyx::support::FileFilterList;
-using lyx::support::fileSearch;
-using lyx::support::ForkedcallsController;
-using lyx::support::i18nLibFileSearch;
-using lyx::support::isDirWriteable;
-using lyx::support::isFileReadable;
-using lyx::support::isStrInt;
-using lyx::support::makeAbsPath;
-using lyx::support::makeDisplayPath;
-using lyx::support::package;
-using lyx::support::quoteName;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::subst;
-using lyx::support::Systemcall;
-using lyx::support::token;
-using lyx::support::trim;
-using lyx::support::prefixIs;
+using support::absolutePath;
+using support::addName;
+using support::addPath;
+using support::bformat;
+using support::changeExtension;
+using support::contains;
+using support::FileFilterList;
+using support::fileSearch;
+using support::ForkedcallsController;
+using support::i18nLibFileSearch;
+using support::isDirWriteable;
+using support::isFileReadable;
+using support::isStrInt;
+using support::makeAbsPath;
+using support::makeDisplayPath;
+using support::package;
+using support::quoteName;
+using support::rtrim;
+using support::split;
+using support::subst;
+using support::Systemcall;
+using support::token;
+using support::trim;
+using support::prefixIs;
 
 using std::endl;
 using std::make_pair;
@@ -136,8 +137,7 @@ using std::string;
 using std::istringstream;
 using std::ostringstream;
 
-namespace Alert = lyx::frontend::Alert;
-namespace biblio = lyx::biblio;
+namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
 
 
@@ -147,7 +147,7 @@ extern tex_accent_struct get_accent(kb_action action);
 
 namespace {
 
-bool getStatus(LCursor cursor,
+bool getLocalStatus(LCursor cursor,
 	       FuncRequest const & cmd, FuncStatus & status)
 {
 	// Try to fix cursor in case it is broken.
@@ -301,7 +301,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// num_bytes == 0? (Lgb)
 
 	if (keyseq->length() > 1) {
-		lyx_view_->message(lyx::from_utf8(keyseq->print()));
+		lyx_view_->message(from_utf8(keyseq->print()));
 	}
 
 
@@ -335,7 +335,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 			dispatch(FuncRequest(LFUN_SELF_INSERT, arg,
 					     FuncRequest::KEYBOARD));
 			lyxerr[Debug::KEY]
-				<< "SelfInsert arg[`" << lyx::to_utf8(arg) << "']" << endl;
+				<< "SelfInsert arg[`" << to_utf8(arg) << "']" << endl;
 		}
 	} else {
 		dispatch(func);
@@ -364,7 +364,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		buf = lyx_view_->buffer();
 
 	if (cmd.action == LFUN_NOACTION) {
-		flag.message(lyx::from_utf8(N_("Nothing to do")));
+		flag.message(from_utf8(N_("Nothing to do")));
 		flag.enabled(false);
 		return flag;
 	}
@@ -383,20 +383,20 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	if (flag.unknown()) {
-		flag.message(lyx::from_utf8(N_("Unknown action")));
+		flag.message(from_utf8(N_("Unknown action")));
 		return flag;
 	}
 
 	if (!flag.enabled()) {
 		if (flag.message().empty())
-			flag.message(lyx::from_utf8(N_("Command disabled")));
+			flag.message(from_utf8(N_("Command disabled")));
 		return flag;
 	}
 
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
 		// no, exit directly
-		flag.message(lyx::from_utf8(N_("Command not allowed with"
+		flag.message(from_utf8(N_("Command not allowed with"
 				    "out any document open")));
 		flag.enabled(false);
 		return flag;
@@ -415,13 +415,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		if (lyx::to_utf8(cmd.argument()) == buf->fileName())
+		if (to_utf8(cmd.argument()) == buf->fileName())
 			flag.setOnOff(true);
 		break;
 
 	case LFUN_BUFFER_EXPORT:
 		enable = cmd.argument() == "custom"
-			|| Exporter::isExportable(*buf, lyx::to_utf8(cmd.argument()));
+			|| Exporter::isExportable(*buf, to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_BUFFER_CHKTEX:
@@ -562,7 +562,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	// solution, we consider only the first action of the sequence
 	case LFUN_COMMAND_SEQUENCE: {
 		// argument contains ';'-terminated commands
-		string const firstcmd = token(lyx::to_utf8(cmd.argument()), ';', 0);
+		string const firstcmd = token(to_utf8(cmd.argument()), ';', 0);
 		FuncRequest func(lyxaction.lookupFunc(firstcmd));
 		func.origin = cmd.origin;
 		flag = getStatus(func);
@@ -623,8 +623,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 
 	default:
-
-		if (!::getStatus(cur, cmd, flag))
+		if (!getLocalStatus(cur, cmd, flag))
 			flag = view()->getStatus(cmd);
 	}
 
@@ -635,7 +634,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	if (buf && buf->isReadonly()
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
-		flag.message(lyx::from_utf8(N_("Document is read-only")));
+		flag.message(from_utf8(N_("Document is read-only")));
 		flag.enabled(false);
 	}
 
@@ -643,13 +642,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	if (buf && lookupChangeType(cur, true) == Change::DELETED
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
-		flag.message(lyx::from_utf8(N_("This portion of the document is deleted.")));
+		flag.message(from_utf8(N_("This portion of the document is deleted.")));
 		flag.enabled(false);
 	}
 
 	// the default error message if we disable the command
 	if (!flag.enabled() && flag.message().empty())
-		flag.message(lyx::from_utf8(N_("Command disabled")));
+		flag.message(from_utf8(N_("Command disabled")));
 
 	return flag;
 }
@@ -689,7 +688,7 @@ void showPrintError(string const & name)
 
 void loadTextclass(string const & name)
 {
-	std::pair<bool, lyx::textclass_type> const tc_pair =
+	std::pair<bool, textclass_type> const tc_pair =
 		textclasslist.numberOfClass(name);
 
 	if (!tc_pair.first) {
@@ -699,12 +698,12 @@ void loadTextclass(string const & name)
 		return;
 	}
 
-	lyx::textclass_type const tc = tc_pair.second;
+	textclass_type const tc = tc_pair.second;
 
 	if (!textclasslist[tc].load()) {
 		docstring s = bformat(_("The document could not be converted\n"
 						  "into the document class %1$s."),
-				   lyx::from_utf8(textclasslist[tc].name()));
+				   from_utf8(textclasslist[tc].name()));
 		Alert::error(_("Could not change class"), s);
 	}
 }
@@ -718,7 +717,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
 	BOOST_ASSERT(view());
-	string const argument = lyx::to_utf8(cmd.argument());
+	string const argument = to_utf8(cmd.argument());
 	kb_action const action = cmd.action;
 
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
@@ -762,13 +761,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			bool const fw = action == LFUN_WORD_FIND_FORWARD;
 			string const data =
-				lyx::find::find2string(searched_string, true, false, fw);
-			lyx::find::find(view(), FuncRequest(LFUN_WORD_FIND, data));
+				find2string(searched_string, true, false, fw);
+			find(view(), FuncRequest(LFUN_WORD_FIND, data));
 			break;
 		}
 
 		case LFUN_COMMAND_PREFIX:
-			lyx_view_->message(lyx::from_utf8(keyseq->printOptions()));
+			lyx_view_->message(from_utf8(keyseq->printOptions()));
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
@@ -787,7 +786,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_META_PREFIX:
 			meta_fake_bit = key_modifier::alt;
-			setMessage(lyx::from_utf8(keyseq->print()));
+			setMessage(from_utf8(keyseq->print()));
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -934,7 +933,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			// Push directory path.
 			string const path = buffer->temppath();
-			lyx::support::Path p(path);
+			support::Path p(path);
 
 			// there are three cases here:
 			// 1. we print to a file
@@ -1111,20 +1110,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_MENU_OPEN:
-			lyx_view_->getMenubar().openByName(lyx::from_utf8(argument));
+			lyx_view_->getMenubar().openByName(from_utf8(argument));
 			break;
 
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_NAME:
-			setMessage(lyx::from_utf8(lyx_view_->buffer()->fileName()));
+			setMessage(from_utf8(lyx_view_->buffer()->fileName()));
 			lyxerr[Debug::INFO] << "FNAME["
 							 << lyx_view_->buffer()->fileName()
 							 << "] " << endl;
 			break;
 
 		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = lyx::from_utf8(keyseq->print());
-			theLyXServer().notifyClient(lyx::to_utf8(dispatch_buffer));
+			dispatch_buffer = from_utf8(keyseq->print());
+			theLyXServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW: {
@@ -1157,7 +1156,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_SHOW: {
 			string const name = cmd.getArg(0);
-			string data = trim(lyx::to_utf8(cmd.argument()).substr(name.size()));
+			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
 
 			if (name == "character") {
 				data = freefont2string();
@@ -1187,7 +1186,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
 			string const name = cmd.getArg(0);
-			string data = trim(lyx::to_utf8(cmd.argument()).substr(name.size()));
+			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
 			if (name == "bibitem" ||
 			    name == "bibtex" ||
 			    name == "index" ||
@@ -1350,7 +1349,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_PREFERENCES_SAVE: {
-			lyx::support::Path p(package().user_support());
+			support::Path p(package().user_support());
 			lyxrc.write("preferences", false);
 			break;
 		}
@@ -1381,7 +1380,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 						bformat(_("Set-color \"%1$s\" failed "
 								       "- color is undefined or "
 								       "may not be redefined"),
-									   lyx::from_utf8(lyx_name)));
+									   from_utf8(lyx_name)));
 				break;
 			}
 
@@ -1392,14 +1391,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 #warning FIXME!! The graphics cache no longer has a changeDisplay method.
 #endif
 #if 0
-				lyx::graphics::GCache::get().changeDisplay(true);
+				graphics::GCache::get().changeDisplay(true);
 #endif
 			}
 			break;
 		}
 
 		case LFUN_MESSAGE:
-			lyx_view_->message(lyx::from_utf8(argument));
+			lyx_view_->message(from_utf8(argument));
 			break;
 
 		case LFUN_EXTERNAL_EDIT: {
@@ -1530,18 +1529,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_TEXTCLASS_APPLY: {
 			Buffer * buffer = lyx_view_->buffer();
 
-			lyx::textclass_type const old_class =
+			textclass_type const old_class =
 				buffer->params().textclass;
 
 			loadTextclass(argument);
 
-			std::pair<bool, lyx::textclass_type> const tc_pair =
+			std::pair<bool, textclass_type> const tc_pair =
 				textclasslist.numberOfClass(argument);
 
 			if (!tc_pair.first)
 				break;
 
-			lyx::textclass_type const new_class = tc_pair.second;
+			textclass_type const new_class = tc_pair.second;
 			if (old_class == new_class)
 				// nothing to do
 				break;
@@ -1551,7 +1550,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			buffer->params().textclass = new_class;
 			StableDocIterator backcur(view()->cursor());
 			ErrorList & el = buffer->errorList("Class Switch");
-			lyx::cap::switchBetweenClasses(
+			cap::switchBetweenClasses(
 				old_class, new_class,
 				static_cast<InsetText &>(buffer->inset()), el);
 
@@ -1617,7 +1616,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	}
 	if (!quitting)
 		// FIXME UNICODE: _() does not support anything but ascii.
-		// Do we need a lyx::to_ascii() method?
+		// Do we need a to_ascii() method?
 		sendDispatchMessage(getMessage(), cmd);
 }
 
@@ -1638,7 +1637,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 			      || cmd.origin == FuncRequest::COMMANDBUFFER);
 
 	if (cmd.action == LFUN_SELF_INSERT || !verbose) {
-		lyxerr[Debug::ACTION] << "dispatch msg is " << lyx::to_utf8(msg) << endl;
+		lyxerr[Debug::ACTION] << "dispatch msg is " << to_utf8(msg) << endl;
 		if (!msg.empty())
 			lyx_view_->message(msg);
 		return;
@@ -1654,7 +1653,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 
 	if (!cmd.argument().empty()) {
 		if (cmd.action != LFUN_UNKNOWN_ACTION) {
-			comname += ' ' + lyx::to_utf8(cmd.argument());
+			comname += ' ' + to_utf8(cmd.argument());
 			argsadded = true;
 		}
 	}
@@ -1664,15 +1663,15 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 	if (!shortcuts.empty())
 		comname += ": " + shortcuts;
 	else if (!argsadded && !cmd.argument().empty())
-		comname += ' ' + lyx::to_utf8(cmd.argument());
+		comname += ' ' + to_utf8(cmd.argument());
 
 	if (!comname.empty()) {
 		comname = rtrim(comname);
-		dispatch_msg += lyx::from_utf8('(' + rtrim(comname) + ')');
+		dispatch_msg += from_utf8('(' + rtrim(comname) + ')');
 	}
 
 	lyxerr[Debug::ACTION] << "verbose dispatch msg "
-		<< lyx::to_utf8(dispatch_msg) << endl;
+		<< to_utf8(dispatch_msg) << endl;
 	if (!dispatch_msg.empty())
 		lyx_view_->message(dispatch_msg);
 }
@@ -1708,11 +1707,11 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (fromTemplate) {
 		FileDialog fileDlg(_("Select template file"),
 			LFUN_SELECT_FILE_SYNC,
-			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
-			make_pair(_("Templates|#T#t"), lyx::from_utf8(lyxrc.template_path)));
+			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
+			make_pair(_("Templates|#T#t"), from_utf8(lyxrc.template_path)));
 
 		FileDialog::Result result =
-			fileDlg.open(lyx::from_utf8(lyxrc.template_path),
+			fileDlg.open(from_utf8(lyxrc.template_path),
 				     FileFilterList(_("LyX Documents (*.lyx)")),
 				     docstring());
 
@@ -1720,7 +1719,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 			return;
 		if (result.second.empty())
 			return;
-		templname = lyx::to_utf8(result.second);
+		templname = to_utf8(result.second);
 	}
 
 	Buffer * const b = newFile(filename, templname, !name.empty());
@@ -1745,18 +1744,18 @@ void LyXFunc::open(string const & fname)
 	if (fname.empty()) {
 		FileDialog fileDlg(_("Select document to open"),
 			LFUN_FILE_OPEN,
-			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
-			make_pair(_("Examples|#E#e"), lyx::from_utf8(addPath(package().system_support(), "examples"))));
+			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
+			make_pair(_("Examples|#E#e"), from_utf8(addPath(package().system_support(), "examples"))));
 
 		FileDialog::Result result =
-			fileDlg.open(lyx::from_utf8(initpath),
+			fileDlg.open(from_utf8(initpath),
 				     FileFilterList(_("LyX Documents (*.lyx)")),
 				     docstring());
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = lyx::to_utf8(result.second);
+		filename = to_utf8(result.second);
 
 		// check selected filename
 		if (filename.empty()) {
@@ -1820,25 +1819,25 @@ void LyXFunc::doImport(string const & argument)
 
 		FileDialog fileDlg(text,
 			LFUN_BUFFER_IMPORT,
-			make_pair(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path)),
+			make_pair(_("Documents|#o#O"), from_utf8(lyxrc.document_path)),
 			make_pair(_("Examples|#E#e"),
-				  lyx::from_utf8(addPath(package().system_support(), "examples"))));
+				  from_utf8(addPath(package().system_support(), "examples"))));
 
 		docstring filter = formats.prettyName(format);
 		filter += " (*.";
 		// FIXME UNICODE
-		filter += lyx::from_utf8(formats.extension(format));
+		filter += from_utf8(formats.extension(format));
 		filter += ')';
 
 		FileDialog::Result result =
-			fileDlg.open(lyx::from_utf8(initpath),
+			fileDlg.open(from_utf8(initpath),
 				     FileFilterList(filter),
 				     docstring());
 
 		if (result.first == FileDialog::Later)
 			return;
 
-		filename = lyx::to_utf8(result.second);
+		filename = to_utf8(result.second);
 
 		// check selected filename
 		if (filename.empty())
@@ -1854,7 +1853,7 @@ void LyXFunc::doImport(string const & argument)
 	string const lyxfile = changeExtension(filename, ".lyx");
 
 	// Check if the document already is open
-	if (lyx::use_gui && theBufferList().exists(lyxfile)) {
+	if (use_gui && theBufferList().exists(lyxfile)) {
 		if (!theBufferList().close(theBufferList().getBuffer(lyxfile), true)) {
 			lyx_view_->message(_("Canceled."));
 			return;
@@ -1932,7 +1931,7 @@ string const LyXFunc::viewStatusMessage()
 		return keyseq->printOptions();
 
 	if (!view()->buffer())
-		return lyx::to_utf8(_("Welcome to LyX!"));
+		return to_utf8(_("Welcome to LyX!"));
 
 	return view()->cursor().currentState();
 }
@@ -1991,8 +1990,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		if (lyxrc_orig.document_path != lyxrc_new.document_path) {
 			if (fs::exists(lyxrc_new.document_path) &&
 			    fs::is_directory(lyxrc_new.document_path)) {
-				using lyx::support::package;
-				package().document_dir() = lyxrc.document_path;
+				support::package().document_dir() = lyxrc.document_path;
 			}
 		}
 	case LyXRC::RC_ESC_CHARS:
@@ -2017,8 +2015,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_NUMLASTFILES:
 	case LyXRC::RC_PATH_PREFIX:
 		if (lyxrc_orig.path_prefix != lyxrc_new.path_prefix) {
-			using lyx::support::prependEnvPath;
-			prependEnvPath("PATH", lyxrc.path_prefix);
+			support::prependEnvPath("PATH", lyxrc.path_prefix);
 		}
 	case LyXRC::RC_PERS_DICT:
 	case LyXRC::RC_POPUP_BOLD_FONT:
@@ -2069,8 +2066,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_TEX_ALLOWS_SPACES:
 	case LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS:
 		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
-			namespace os = lyx::support::os;
-			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
+			support::os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
 	case LyXRC::RC_UIFILE:
 	case LyXRC::RC_USER_EMAIL:
@@ -2089,3 +2085,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 }
 
 } // namespace anon
+
+
+} // namespace lyx

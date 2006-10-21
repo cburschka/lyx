@@ -19,6 +19,9 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 /// This class contains the macro definition.
 class MathMacroTemplate : public InsetMathNest {
 public:
@@ -63,7 +66,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// prefix in inset
-	lyx::docstring prefix() const;
+	docstring prefix() const;
 
 	///
 	int numargs_;
@@ -72,5 +75,8 @@ private:
 	/// newcommand or renewcommand or def
 	std::string type_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -18,11 +18,10 @@
 #include <QDialog>
 #include "QCharacter.h"
 
+namespace lyx {
+
 class LyXFont;
 
-
-
-namespace lyx {
 namespace frontend {
 
 class QCharacterDialog : public QDialog, public Ui::QCharacterUi {

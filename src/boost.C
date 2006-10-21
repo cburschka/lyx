@@ -18,6 +18,9 @@
 
 #include <exception>
 
+
+namespace lyx {
+
 using std::endl;
 
 namespace boost {
@@ -54,8 +57,11 @@ void assertion_failed(char const * expr, char const * function,
 	       << " by failing check \"" << expr << "\""
 	       << " in file " << file << ":" << line << endl;
 	emergencyCleanup();
-	lyx::support::abort();
+	support::abort();
 }
 
 
 }
+
+
+} // namespace lyx

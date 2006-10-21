@@ -21,11 +21,14 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 
-using lyx::support::compare;
-using lyx::support::isStrDbl;
-using lyx::support::ltrim;
-using lyx::support::prefixIs;
-using lyx::support::rtrim;
+
+namespace lyx {
+
+using support::compare;
+using support::isStrDbl;
+using support::ltrim;
+using support::prefixIs;
+using support::rtrim;
 
 using std::string;
 
@@ -484,26 +487,26 @@ string const VSpace::asGUIName() const
 	string result;
 	switch (kind_) {
 	case DEFSKIP:
-		result = lyx::to_utf8(_("Default skip"));
+		result = to_utf8(_("Default skip"));
 		break;
 	case SMALLSKIP:
-		result = lyx::to_utf8(_("Small skip"));
+		result = to_utf8(_("Small skip"));
 		break;
 	case MEDSKIP:
-		result = lyx::to_utf8(_("Medium skip"));
+		result = to_utf8(_("Medium skip"));
 		break;
 	case BIGSKIP:
-		result = lyx::to_utf8(_("Big skip"));
+		result = to_utf8(_("Big skip"));
 		break;
 	case VFILL:
-		result = lyx::to_utf8(_("Vertical fill"));
+		result = to_utf8(_("Vertical fill"));
 		break;
 	case LENGTH:
 		result = len_.asString();
 		break;
 	}
 	if (keep_)
-		result += ", " + lyx::to_utf8(_("protected"));
+		result += ", " + to_utf8(_("protected"));
 	return result;
 }
 
@@ -541,3 +544,6 @@ int VSpace::inPixels(BufferView const & bv) const
 		return 0;
 	}
 }
+
+
+} // namespace lyx

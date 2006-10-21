@@ -18,6 +18,9 @@
 #include <vector>
 
 
+namespace lyx {
+
+
 class Buffer;
 class Format;
 
@@ -92,5 +95,8 @@ private:
 	 */
 	FileMap externalfiles;
 };
+
+
+} // namespace lyx
 
 #endif

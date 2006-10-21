@@ -14,6 +14,9 @@
 
 #include "InsetMathNest.h"
 
+
+namespace lyx {
+
 class InsetMathPhantom : public InsetMathNest {
 public:
 	///
@@ -41,4 +44,7 @@ private:
 	Kind kind_;
 };
 
+
+
+} // namespace lyx
 #endif

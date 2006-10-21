@@ -14,6 +14,9 @@
 
 #include <iosfwd>
 
+
+namespace lyx {
+
 /**
  * A simple class representing rectangular regions.
  * It is expected that the box be constructed in
@@ -44,5 +47,8 @@ public:
 
 
 std::ostream & operator<<(std::ostream &, Box const &);
+
+
+} // namespace lyx
 
 #endif // BOX_H

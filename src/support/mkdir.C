@@ -19,6 +19,9 @@
 # include <sys/types.h>
 #endif
 #include <fcntl.h>
+
+
+namespace lyx {
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -49,3 +52,6 @@ int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 #   error "Don't know how to create a directory on this system."
 #endif
 }
+
+
+} // namespace lyx

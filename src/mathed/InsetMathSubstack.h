@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
+
 /// support for AMS's \\substack
 
 class InsetMathSubstack : public InsetMathGrid {
@@ -45,4 +48,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

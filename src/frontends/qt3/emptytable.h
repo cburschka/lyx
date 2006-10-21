@@ -14,6 +14,9 @@
 
 #include "qttableview.h"
 
+
+namespace lyx {
+
 /**
  * A simple widget for a quick "preview" in TabularCreateDialog.
  * The user can drag on the widget to change the table dimensions.
@@ -46,5 +49,8 @@ private:
 	/// number of current rows
 	unsigned int rows;
 };
+
+
+} // namespace lyx
 
 #endif

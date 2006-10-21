@@ -25,7 +25,10 @@
 
 #include "support/lstrings.h"
 
-using lyx::support::split;
+
+namespace lyx {
+
+using support::split;
 
 using std::endl;
 using std::string;
@@ -286,7 +289,7 @@ void TransManager::insert(string const & str, LyXText * text)
 		InsetLatexAccent ins(str);
 		if (ins.canDisplay()) {
 			LCursor & cur = text->bv()->cursor();
-			lyx::cap::replaceSelection(cur);
+			cap::replaceSelection(cur);
 			cur.insert(new InsetLatexAccent(ins));
 			cur.posRight();
 		} else {
@@ -324,3 +327,6 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		translateAndInsert(c, t);
 	}
 }
+
+
+} // namespace lyx

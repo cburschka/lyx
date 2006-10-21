@@ -18,6 +18,9 @@
 #include "debug.h"
 
 
+namespace lyx {
+
+
 using std::max;
 
 
@@ -88,7 +91,7 @@ void InsetMathXYArrow::metrics(MetricsInfo & mi) const
 	target_ = mi.inset ? mi.inset->asXYMatrixInset() : 0;
 
 	if (editing()) {
-		int w    = mathed_string_width(mi.base.font, lyx::from_ascii("target: "));
+		int w    = mathed_string_width(mi.base.font, from_ascii("target: "));
 		width_   = w + max(cell(0).width(), cell(1).width());
 		ascent_  = cell(0).ascent();
 		descent_ = cell(0).descent() + cell(1).height() + 10;
@@ -155,3 +158,6 @@ void InsetMathXYArrow::normalize(NormalStream & os) const
 	InsetMathNest::normalize(os);
 	os << ']';
 }
+
+
+} // namespace lyx

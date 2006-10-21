@@ -14,6 +14,9 @@
 #include "MathData.h"
 #include "MathMLStream.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -107,3 +110,6 @@ void InsetMathMatrix::octave(OctaveStream & os) const
 	}
 	os << ']';
 }
+
+
+} // namespace lyx

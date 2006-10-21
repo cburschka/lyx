@@ -21,9 +21,10 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::frontend::Painter;
+
+namespace lyx {
+
+using frontend::Painter;
 
 using std::endl;
 using std::ostream;
@@ -98,3 +99,6 @@ int InsetPagebreak::docbook(Buffer const &, odocstream & os,
 	os << '\n';
 	return 0;
 }
+
+
+} // namespace lyx

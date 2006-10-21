@@ -14,6 +14,9 @@
 
 #include "support/docstream.h"
 
+
+namespace lyx {
+
 class Buffer;
 class OutputParams;
 class Paragraph;
@@ -24,13 +27,15 @@ void writeFileAscii(Buffer const & buf, std::string const &,
 	OutputParams const &);
 
 ///
-void writeFileAscii(Buffer const & buf, lyx::odocstream &, OutputParams const &);
+void writeFileAscii(Buffer const & buf, odocstream &, OutputParams const &);
 
 ///
 void asciiParagraph(Buffer const & buf,
 		    Paragraph const & paragraphs,
-		    lyx::odocstream & ofs,
+		    odocstream & ofs,
 		    OutputParams const &,
 		    bool & ref_printed);
+
+} // namespace lyx
 
 #endif

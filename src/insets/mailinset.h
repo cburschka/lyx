@@ -15,6 +15,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class InsetBase;
 class Buffer;
 class BufferView;
@@ -44,5 +47,8 @@ void print_mailer_error(std::string const & class_name,
 			std::string const & data,
 			int arg_id, std::string const & arg);
 
+
+
+} // namespace lyx
 
 #endif // MAILINSET_H

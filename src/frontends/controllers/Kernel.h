@@ -14,12 +14,13 @@
 
 #include <string>
 
+namespace lyx {
+
 class Buffer;
 class BufferView;
 class FuncRequest;
 class LyXView;
 
-namespace lyx {
 namespace frontend {
 
 /** \c Kernel is a wrapper making the LyX kernel available to the dialog.

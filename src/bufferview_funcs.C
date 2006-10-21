@@ -40,10 +40,10 @@
 
 #include <sstream>
 
-using lyx::Point;
-using lyx::CoordCache;
 
-using lyx::support::bformat;
+namespace lyx {
+
+using support::bformat;
 
 using std::istringstream;
 using std::ostringstream;
@@ -321,3 +321,6 @@ void gotoInset(BufferView * bv, InsetBase_code code, bool same_content)
 
 
 } // namespace bv_funcs
+
+
+} // namespace lyx

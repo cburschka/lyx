@@ -32,12 +32,10 @@
 #include "support/convert.h"
 #include "support/types.h"
 
-#ifdef HAVE_LOCALE
-#endif
 
-using lyx::pos_type;
-using lyx::odocstream;
-using lyx::support::subst;
+namespace lyx {
+
+using support::subst;
 
 using std::endl;
 using std::ostream;
@@ -46,52 +44,58 @@ using std::string;
 
 namespace {
 
-ParagraphList::const_iterator searchParagraph(ParagraphList::const_iterator const & par,
-					      ParagraphList::const_iterator const & pend)
+ParagraphList::const_iterator searchParagraph(
+	ParagraphList::const_iterator const & par,
+  ParagraphList::const_iterator const & pend)
 {
 	ParagraphList::const_iterator p = boost::next(par);
 
-	for( ; p != pend && p->layout()->latextype == LATEX_PARAGRAPH; ++p);
+	for (; p != pend && p->layout()->latextype == LATEX_PARAGRAPH; ++p)
+		;
 
 	return p;
 }
 
 
-ParagraphList::const_iterator searchCommand(ParagraphList::const_iterator const & par,
-					    ParagraphList::const_iterator const & pend)
+ParagraphList::const_iterator searchCommand(
+		ParagraphList::const_iterator const & par,
+		ParagraphList::const_iterator const & pend)
 {
 	LyXLayout_ptr const & bstyle = par->layout();
 	ParagraphList::const_iterator p = boost::next(par);
 
-	for( ; p != pend; ++p) {
+	for ( ; p != pend; ++p) {
 		LyXLayout_ptr const & style = p->layout();
-		if( style->latextype == LATEX_COMMAND && style->commanddepth <= bstyle->commanddepth)
+		if (style->latextype == LATEX_COMMAND
+				&& style->commanddepth <= bstyle->commanddepth)
 			return p;
 	}
 	return pend;
 }
 
 
-ParagraphList::const_iterator searchEnvironment(ParagraphList::const_iterator const & par,
-						ParagraphList::const_iterator const & pend)
+ParagraphList::const_iterator searchEnvironment(
+		ParagraphList::const_iterator const & par,
+		ParagraphList::const_iterator const & pend)
 {
 	LyXLayout_ptr const & bstyle = par->layout();
 	ParagraphList::const_iterator p = boost::next(par);
-	for( ; p != pend; ++p) {
+	for (; p != pend; ++p) {
 		LyXLayout_ptr const & style = p->layout();
-		if( style->latextype == LATEX_COMMAND)
+		if (style->latextype == LATEX_COMMAND)
 			return p;
 
-		if( style->latextype == LATEX_PARAGRAPH) {
+		if (style->latextype == LATEX_PARAGRAPH) {
 			if (p->params().depth() > par->params().depth())
 				continue;
 			return p;
 		}
 
-		if(p->params().depth() < par->params().depth())
+		if (p->params().depth() < par->params().depth())
 			return p;
 
-		if( style->latexname() != bstyle->latexname() && p->params().depth() == par->params().depth() )
+		if (style->latexname() != bstyle->latexname()
+				&& p->params().depth() == par->params().depth() )
 			return p;
 	}
 	return pend;
@@ -105,8 +109,9 @@ ParagraphList::const_iterator makeParagraph(Buffer const & buf,
 					    ParagraphList::const_iterator const & pbegin,
 					    ParagraphList::const_iterator const & pend)
 {
-	LyXLayout_ptr const & defaultstyle = buf.params().getLyXTextClass().defaultLayout();
-	for(ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
+	LyXLayout_ptr const & defaultstyle =
+		buf.params().getLyXTextClass().defaultLayout();
+	for (ParagraphList::const_iterator par = pbegin; par != pend; ++par) {
 		if (par != pbegin)
 			os << '\n';
 		if (par->layout() == defaultstyle && par->emptyTag()) {
@@ -170,7 +175,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		switch (style->latextype) {
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
-			if(par->params().depth() == pbegin->params().depth()) {
+			if (par->params().depth() == pbegin->params().depth()) {
 				sgml::openTag(os, wrapper);
 				par->simpleDocBookOnePar(buf, os, runparams, outerFont(std::distance(paragraphs.begin(), par), paragraphs), sep);
 				sgml::closeTag(os, wrapper);
@@ -327,3 +332,6 @@ void docbookParagraphs(ParagraphList const & paragraphs,
 			break;
 	}
 }
+
+
+} // namespace lyx

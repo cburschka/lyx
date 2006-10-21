@@ -66,6 +66,9 @@ string const Variables::expand(string const & s) const
 #ifdef TEST
 
 #include <iostream>
+
+
+namespace lyx {
 using std::endl;
 using std::cout;
 
@@ -77,3 +80,6 @@ int main() {
 }
 
 #endif
+
+
+} // namespace lyx

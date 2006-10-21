@@ -45,13 +45,14 @@
 
 #include <algorithm>
 
-using lyx::char_type;
-using lyx::docstring;
-using lyx::support::compare_no_case;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::contains;
-using lyx::support::makeDisplayPath;
-using lyx::support::token;
+
+namespace lyx {
+
+using support::compare_no_case;
+using support::compare_ascii_no_case;
+using support::contains;
+using support::makeDisplayPath;
+using support::token;
 
 using boost::bind;
 
@@ -140,12 +141,12 @@ docstring const MenuItem::binding() const
 	kb_keymap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
 
 	if (bindings.size()) {
-		return lyx::from_utf8(bindings.begin()->print());
+		return from_utf8(bindings.begin()->print());
 	} else {
 		lyxerr[Debug::KBMAP]
 			<< "No binding for "
 			<< lyxaction.getActionName(func_.action)
-			<< '(' << lyx::to_utf8(func_.argument()) << ')' << endl;
+			<< '(' << to_utf8(func_.argument()) << ')' << endl;
 		return docstring();
 	}
 
@@ -164,10 +165,8 @@ Menu & Menu::addWithStatusCheck(MenuItem const & i)
 	switch (i.kind()) {
 
 	case MenuItem::Command: {
-		FuncStatus status =
-			lyx::getStatus(i.func());
-		if (status.unknown()
-		    || (!status.enabled() && i.optional()))
+		FuncStatus status = lyx::getStatus(i.func());
+		if (status.unknown() || (!status.enabled() && i.optional()))
 			break;
 		items_.push_back(i);
 		items_.back().status(status);
@@ -337,7 +336,7 @@ Menu & Menu::read(LyXLex & lex)
 			lex.next(true);
 			docstring const mlabel = _(lex.getString());
 			lex.next(true);
-			docstring const mname = lyx::from_utf8(lex.getString());
+			docstring const mname = from_utf8(lex.getString());
 			add(MenuItem(MenuItem::Submenu, mlabel, mname,
 				     optional));
 			optional = false;
@@ -383,14 +382,14 @@ void Menu::checkShortcuts() const
 			continue;
 		if (!contains(it1->label(), shortcut))
 			lyxerr << "Menu warning: menu entry \""
-			       << lyx::to_utf8(it1->label())
+			       << to_utf8(it1->label())
 			       << "\" does not contain shortcut `"
-			       << lyx::to_utf8(shortcut) << "'." << endl;
+			       << to_utf8(shortcut) << "'." << endl;
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
 			if (!compare_no_case(it2->shortcut(), shortcut)) {
 				lyxerr << "Menu warning: menu entries "
-				       << '"' << lyx::to_utf8(it1->fulllabel())
-				       << "\" and \"" << lyx::to_utf8(it2->fulllabel())
+				       << '"' << to_utf8(it1->fulllabel())
+				       << "\" and \"" << to_utf8(it2->fulllabel())
 				       << "\" share the same shortcut."
 				       << endl;
 			}
@@ -502,7 +501,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 	for (; fit != end ; ++fit) {
 		if ((*fit)->dummy())
 			continue;
-		docstring label = lyx::from_utf8((*fit)->prettyname());
+		docstring label = from_utf8((*fit)->prettyname());
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
@@ -523,7 +522,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 			break;
 		}
 		if (!(*fit)->shortcut().empty())
-			label += char_type('|') + lyx::from_utf8((*fit)->shortcut());
+			label += char_type('|') + from_utf8((*fit)->shortcut());
 
 		if (buf)
 			tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
@@ -593,7 +592,7 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 	CharStyles::iterator cit = charstyles.begin();
 	CharStyles::iterator end = charstyles.end();
 	for (; cit != end; ++cit) {
-		docstring const label = lyx::from_utf8(cit->name);
+		docstring const label = from_utf8(cit->name);
 		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_CHARSTYLE_INSERT,
 						cit->name)));
@@ -718,7 +717,7 @@ void expandPasteRecent(Menu & tomenu, Buffer const * buf)
 		return;
 
 	vector<docstring> const sel =
-		lyx::cap::availableSelections(*buf);
+		cap::availableSelections(*buf);
 
 	vector<docstring>::const_iterator cit = sel.begin();
 	vector<docstring>::const_iterator end = sel.end();
@@ -741,7 +740,7 @@ void expandBranches(Menu & tomenu, Buffer const * buf)
 	BranchList::const_iterator end = params.branchlist().end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
-		docstring label = lyx::from_utf8(cit->getBranch());
+		docstring label = from_utf8(cit->getBranch());
 		if (ii < 10)
 			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
 		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
@@ -866,7 +865,7 @@ void MenuBackend::read(LyXLex & lex)
 			break;
 		case md_menu: {
 			lex.next(true);
-			docstring const name = lyx::from_utf8(lex.getString());
+			docstring const name = from_utf8(lex.getString());
 			if (hasMenu(name)) {
 				getMenu(name).read(lex);
 			} else {
@@ -905,7 +904,7 @@ Menu const & MenuBackend::getMenu(docstring const & name) const
 {
 	const_iterator cit = find_if(begin(), end(), MenuNamesEqual(name));
 	if (cit == end())
-		lyxerr << "No submenu named " << lyx::to_utf8(name) << endl;
+		lyxerr << "No submenu named " << to_utf8(name) << endl;
 	BOOST_ASSERT(cit != end());
 	return (*cit);
 }
@@ -915,7 +914,7 @@ Menu & MenuBackend::getMenu(docstring const & name)
 {
 	iterator it = find_if(begin(), end(), MenuNamesEqual(name));
 	if (it == end())
-		lyxerr << "No submenu named " << lyx::to_utf8(name) << endl;
+		lyxerr << "No submenu named " << to_utf8(name) << endl;
 	BOOST_ASSERT(it != end());
 	return (*it);
 }
@@ -925,3 +924,6 @@ Menu const & MenuBackend::getMenubar() const
 {
 	return menubar_;
 }
+
+
+} // namespace lyx

@@ -16,6 +16,9 @@
 #include "metricsinfo.h"
 
 
+namespace lyx {
+
+
 class latexkeys;
 
 /// An inset for \scriptsize etc.
@@ -44,4 +47,7 @@ private:
 	Styles const style_;
 };
 
+
+
+} // namespace lyx
 #endif

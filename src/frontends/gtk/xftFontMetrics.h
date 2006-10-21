@@ -17,6 +17,9 @@
 #include <gtkmm.h>
 #include <X11/Xft/Xft.h>
 
+
+namespace lyx {
+
 class font_metrics: public lyx::frontend::FontMetrics
 {
 public:
@@ -44,5 +47,8 @@ public:
 private:
 	XftFont * font;
 	XftFont * fontS;
+
+
+} // namespace lyx
 };
 #endif // XFT_FONT_METRICS_H

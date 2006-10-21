@@ -26,6 +26,9 @@
 #include <vector>
 #include <map>
 
+
+namespace lyx {
+
 using std::cerr;
 using std::endl;
 using std::istringstream;
@@ -1118,3 +1121,6 @@ void handle_tabular(Parser & p, ostream & os, bool is_long_tabular,
 
 
 // }])
+
+
+} // namespace lyx

@@ -24,6 +24,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class BufferParams;
 class BufferView;
 class LCursor;
@@ -76,9 +79,9 @@ public:
 	/// the position of the cell described
 	StableDocIterator cell;
 	/// counted from begin of cell
-	lyx::pit_type from;
+	pit_type from;
 	/// complement to end of this cell
-	lyx::pit_type end;
+	pit_type end;
 	/// the contents of the saved Paragraphs (for texted)
 	ParagraphList pars;
 	/// the stringified contents of the saved MathArray (for mathed)
@@ -116,10 +119,10 @@ void finishUndo();
 
 /// The general case: prepare undo for an arbitrary range.
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
-	lyx::pit_type from, lyx::pit_type to);
+	pit_type from, pit_type to);
 
 /// Convenience: prepare undo for the range between 'from' and cursor.
-void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::pit_type from);
+void recordUndo(LCursor & cur, Undo::undo_kind kind, pit_type from);
 
 /// Convenience: prepare undo for the single paragraph or cell
 /// containing the cursor
@@ -131,5 +134,8 @@ void recordUndoSelection(LCursor & cur, Undo::undo_kind kind = Undo::ATOMIC);
 
 /// Convenience: prepare undo for the whole buffer
 void recordUndoFullDocument(BufferView * bv);
+
+
+} // namespace lyx
 
 #endif // UNDO_FUNCS_H

@@ -15,6 +15,9 @@
 #include "insetcommand.h"
 
 
+namespace lyx {
+
+
 /// The reference inset
 class InsetRef : public InsetCommand {
 public:
@@ -36,24 +39,21 @@ public:
 	InsetRef(InsetCommandParams const &, Buffer const &);
 
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetBase::Code lyxCode() const { return InsetBase::REF_CODE; }
+	Code lyxCode() const { return REF_CODE; }
 	///
 	bool display() const { return false; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
-		    OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -69,4 +69,7 @@ private:
 	///
 	bool isLatex;
 };
+
+} // namespace lyx
+
 #endif

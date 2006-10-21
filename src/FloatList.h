@@ -18,6 +18,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 ///
 class FloatList {
 public:
@@ -47,5 +50,8 @@ private:
 	///
 	List list;
 };
+
+
+} // namespace lyx
 
 #endif

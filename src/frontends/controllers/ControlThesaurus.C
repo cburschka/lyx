@@ -45,7 +45,7 @@ void ControlThesaurus::replace(string const & newstr)
 	 * deletion/change !
 	 */
 	string const data =
-		find::replace2string(oldstr_, newstr,
+		replace2string(oldstr_, newstr,
 				     true,  // case sensitive
 				     true,  // match word
 				     false, // all words

@@ -14,6 +14,9 @@
 
 #include "InsetMath.h"
 
+
+namespace lyx {
+
 class latexkeys;
 
 
@@ -76,4 +79,7 @@ private:
 	///
 	mutable bool scriptable_;
 };
+
+
+} // namespace lyx
 #endif

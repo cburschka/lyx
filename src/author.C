@@ -18,8 +18,11 @@
 
 #include "support/std_istream.h"
 
-using lyx::support::token;
-using lyx::support::trim;
+
+namespace lyx {
+
+using support::token;
+using support::trim;
 
 using std::string;
 
@@ -93,3 +96,6 @@ AuthorList::Authors::const_iterator AuthorList::end() const
 {
 	return authors_.end();
 }
+
+
+} // namespace lyx

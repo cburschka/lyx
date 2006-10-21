@@ -16,10 +16,11 @@
 
 #include "Dialog.h"
 
+namespace lyx {
+
 class BranchList;
 class InsetBranchParams;
 
-namespace lyx {
 namespace frontend {
 
 class ControlBranch : public Dialog::Controller {

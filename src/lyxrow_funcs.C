@@ -17,7 +17,8 @@
 #include "lyxrow.h"
 #include "paragraph.h"
 
-using lyx::pos_type;
+
+namespace lyx {
 
 
 bool hfillExpansion(Paragraph const & par, Row const & row, pos_type pos)
@@ -51,3 +52,6 @@ bool hfillExpansion(Paragraph const & par, Row const & row, pos_type pos)
 
 	return i != pos;
 }
+
+
+} // namespace lyx

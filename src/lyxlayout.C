@@ -19,8 +19,11 @@
 
 #include "support/lstrings.h"
 
-using lyx::support::subst;
-using lyx::support::trim;
+
+namespace lyx {
+
+using support::subst;
+using support::trim;
 
 using std::endl;
 using std::string;
@@ -816,3 +819,6 @@ string const & LyXLayout::depends_on() const
 {
 	return depends_on_;
 }
+
+
+} // namespace lyx

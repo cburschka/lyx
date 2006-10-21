@@ -44,7 +44,7 @@ TocIterator const getCurrentTocItem(Buffer const &, LCursor const &,
 									  std::string const & type);
 
 ///
-void asciiTocList(std::string const &, Buffer const &, lyx::odocstream &);
+void asciiTocList(std::string const &, Buffer const &, odocstream &);
 
 /** Given the cmdName of the TOC param, returns the type used
     by ControlToc::getContents() */

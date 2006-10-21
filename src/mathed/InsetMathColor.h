@@ -16,6 +16,9 @@
 
 #include "InsetMathNest.h"
 
+
+namespace lyx {
+
 /// Change colours.
 
 class InsetMathColor : public InsetMathNest {
@@ -49,5 +52,8 @@ private:
 	/// Our color. Only valid LaTeX colors are allowed.
 	std::string color_;
 };
+
+
+} // namespace lyx
 
 #endif

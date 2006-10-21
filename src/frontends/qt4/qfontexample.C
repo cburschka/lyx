@@ -15,6 +15,9 @@
 #include <QPainter>
 #include <QPaintEvent>
 
+
+//namespace lyx {
+
 void QFontExample::set(QFont const & font, QString const & text)
 {
 	font_ = font;
@@ -41,3 +44,6 @@ void QFontExample::paintEvent(QPaintEvent *)
 	p.drawText(5, 3 + m.ascent(), text_);
 	p.end();
 }
+
+
+//} // namespace lyx

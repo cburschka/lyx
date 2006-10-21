@@ -40,6 +40,8 @@ Andre'
 
 */
 
+namespace lyx {
+
 class InsetBase;
 class InsetMath;
 
@@ -69,5 +71,8 @@ private:
 	///
 	InsetMath * nucleus_;
 };
+
+
+} // namespace lyx
 
 #endif

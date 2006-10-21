@@ -18,6 +18,9 @@
 #include "frontends/Painter.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::max;
 using std::auto_ptr;
@@ -72,3 +75,6 @@ void InsetMathDFrac::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathNest::validate(features);
 }
+
+
+} // namespace lyx

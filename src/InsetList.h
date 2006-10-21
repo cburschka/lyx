@@ -16,6 +16,9 @@
 
 #include <vector>
 
+
+namespace lyx {
+
 class InsetBase;
 class Buffer;
 
@@ -27,9 +30,9 @@ public:
 	class InsetTable {
 	public:
 		///
-		InsetTable(lyx::pos_type p, InsetBase * i) : pos(p), inset(i) {}
+		InsetTable(pos_type p, InsetBase * i) : pos(p), inset(i) {}
 		///
-		lyx::pos_type pos;
+		pos_type pos;
 		///
 		InsetBase * inset;
 	};
@@ -53,25 +56,28 @@ public:
 	///
 	bool empty() const { return list_.empty(); }
 	///
-	iterator insetIterator(lyx::pos_type pos);
+	iterator insetIterator(pos_type pos);
 	///
-	const_iterator insetIterator(lyx::pos_type pos) const;
+	const_iterator insetIterator(pos_type pos) const;
 	///
-	void insert(InsetBase * inset, lyx::pos_type pos);
+	void insert(InsetBase * inset, pos_type pos);
 	///
-	void erase(lyx::pos_type pos);
+	void erase(pos_type pos);
 	///
-	InsetBase * release(lyx::pos_type);
+	InsetBase * release(pos_type);
 	///
-	InsetBase * get(lyx::pos_type pos) const;
+	InsetBase * get(pos_type pos) const;
 	///
-	void increasePosAfterPos(lyx::pos_type pos);
+	void increasePosAfterPos(pos_type pos);
 	///
-	void decreasePosAfterPos(lyx::pos_type pos);
+	void decreasePosAfterPos(pos_type pos);
 
 private:
 	///
 	List list_;
 };
+
+
+} // namespace lyx
 
 #endif

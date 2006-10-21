@@ -18,6 +18,9 @@
 #include <X11/Xlib.h>
 
 
+namespace lyx {
+
+
 inline Display * getDisplay()
 {
 	return gdk_x11_get_default_xdisplay();
@@ -61,5 +64,8 @@ inline Colormap getColormap()
 	return colormap;
 }
 
+
+
+} // namespace lyx
 
 #endif

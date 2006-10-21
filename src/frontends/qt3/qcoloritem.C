@@ -14,6 +14,9 @@
 
 #include <qpainter.h>
 
+
+namespace lyx {
+
 QColorItem::QColorItem(QColor c, QString const & t)
 	: color_(c), text_(t)
 {
@@ -31,3 +34,6 @@ void QColorItem::paint(QPainter * p)
 	p->fillRect(2, 2, 35, height_, color_);
 	p->drawText(40, 3 + ascent_, text_);
 }
+
+
+} // namespace lyx

@@ -25,15 +25,18 @@
 
 #include <fstream>
 
+
+namespace lyx {
+
 #ifndef CXX_GLOBAL_CSTD
 using std::time;
 #endif
 
-using lyx::support::ltrim;
-using lyx::support::makeAbsPath;
-using lyx::support::onlyFilename;
-using lyx::support::suffixIs;
-using lyx::support::sum;
+using support::ltrim;
+using support::makeAbsPath;
+using support::onlyFilename;
+using support::suffixIs;
+using support::sum;
 
 using std::endl;
 using std::flush;
@@ -77,7 +80,7 @@ void DepTable::insert(string const & fi, bool upd)
 void DepTable::update()
 {
 	lyxerr[Debug::DEPEND] << "Updating DepTable..." << endl;
-	lyx::time_type const start_time = lyx::current_time();
+	time_type const start_time = current_time();
 
 	DepList::iterator itr = deplist.begin();
 	while (itr != deplist.end()) {
@@ -112,7 +115,7 @@ void DepTable::update()
 		}
 		++itr;
 	}
-	lyx::time_type const time_sec = lyx::current_time() - start_time;
+	time_type const time_sec = current_time() - start_time;
 	lyxerr[Debug::DEPEND] << "Finished updating DepTable ("
 		<< time_sec << " sec)." << endl;
 }
@@ -255,3 +258,6 @@ bool DepTable::read(string const & f)
 	}
 	return deplist.size();
 }
+
+
+} // namespace lyx

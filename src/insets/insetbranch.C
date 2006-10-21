@@ -26,8 +26,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -98,7 +98,7 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 
 	// FIXME UNICODE
-	docstring s = _("Branch: ") + lyx::from_utf8(params_.branch);
+	docstring s = _("Branch: ") + from_utf8(params_.branch);
 	font.setColor(LColor::foreground);
 	if (!params_.branch.empty()) {
 		LColor_color c = lcolor.getFromLyXName(params_.branch);
@@ -126,7 +126,7 @@ void InsetBranch::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
 		InsetBranchParams params;
-		InsetBranchMailer::string2params(lyx::to_utf8(cmd.argument()), params);
+		InsetBranchMailer::string2params(to_utf8(cmd.argument()), params);
 		params_.branch = params.branch;
 		setButtonLabel();
 		break;
@@ -311,3 +311,5 @@ void InsetBranchParams::read(LyXLex & lex)
 {
 	lex >> branch;
 }
+
+} // namespace lyx

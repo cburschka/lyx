@@ -20,6 +20,9 @@
 #include <map>
 #include <string>
 
+
+namespace lyx {
+
 class FuncRequest;
 
 /**
@@ -102,5 +105,8 @@ private:
 
 /// singleton instance
 extern LyXAction lyxaction;
+
+
+} // namespace lyx
 
 #endif // LYXACTION_H

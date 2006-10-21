@@ -18,6 +18,9 @@
 #include <iosfwd>
 #include <vector>
 
+
+namespace lyx {
+
 class Buffer;
 class BufferView;
 class FuncStatus;
@@ -85,7 +88,7 @@ public:
 	///
 	void selHandle(bool selecting);
 	//
-	lyx::docstring selectionAsString(bool label) const;
+	docstring selectionAsString(bool label) const;
 	///
 	std::string currentState();
 
@@ -111,7 +114,7 @@ public:
 	/// insert an inset
 	void insert(InsetBase *);
 	/// insert a single char
-	void insert(lyx::char_type c);
+	void insert(char_type c);
 	/// insert a string
 	void insert(std::string const & str);
 
@@ -282,9 +285,9 @@ public:
 	void handleFont(std::string const & font);
 
 	/// display a message
-	void message(lyx::docstring const & msg) const;
+	void message(docstring const & msg) const;
 	/// display an error message
-	void errorMessage(lyx::docstring const & msg) const;
+	void errorMessage(docstring const & msg) const;
 	///
 	std::string getPossibleLabel();
 
@@ -303,5 +306,8 @@ public:
 	LyXFont getFont() const;
 };
 
+
+
+} // namespace lyx
 
 #endif // LYXCURSOR_H

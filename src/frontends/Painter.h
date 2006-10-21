@@ -18,12 +18,11 @@
 #include "support/docstring.h"
 
 
+namespace lyx {
+
 class LyXFont;
 
-namespace lyx {
-namespace graphics {
-	class Image;
-}
+namespace graphics { class Image; }
 
 namespace frontend {
 
@@ -129,14 +128,14 @@ public:
 	/// draw an image from the image cache
 	virtual void image(int x, int y,
 		int w, int h,
-		lyx::graphics::Image const & image) = 0;
+		graphics::Image const & image) = 0;
 
 	/// draw a string at position x, y (y is the baseline)
 	/**
 	* \return the width of the drawn text.
 	*/
 	virtual int text(int x, int y,
-		lyx::docstring const & str, LyXFont const & f) = 0;
+		docstring const & str, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string at position x, y (y is the baseline)
@@ -144,15 +143,13 @@ public:
 	 * \return the width of the drawn text.
 	 */
 	virtual int text(int x, int y,
-		lyx::char_type const * str, size_t l,
-		LyXFont const & f) = 0;
+		char_type const * str, size_t l, LyXFont const & f) = 0;
 
 	/// draw a char at position x, y (y is the baseline)
 	/**
 	* \return the width of the drawn text.
 	*/
-	virtual int text(int x, int y,
-			  lyx::char_type c, LyXFont const & f) = 0;
+	virtual int text(int x, int y, char_type c, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string and enclose it inside a rectangle. If
@@ -161,15 +158,14 @@ public:
 	 * around the text with the given color.
 	 */
 	virtual void rectText(int x, int baseline,
-		lyx::docstring const & str,
+		docstring const & str,
 		LyXFont const & font,
 		LColor_color back,
 		LColor_color frame);
 
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x,
-		int baseline, lyx::docstring const & s,
-		LyXFont const & font);
+		int baseline, docstring const & s, LyXFont const & font);
 
 protected:
 	/// check the font, and if set, draw an underline

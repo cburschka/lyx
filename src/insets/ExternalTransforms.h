@@ -23,9 +23,10 @@
 #include <map>
 #include <memory>
 
+namespace lyx {
+
 class LyXLex;
 
-namespace lyx {
 namespace external {
 
 /*
@@ -35,7 +36,7 @@ class ClipData {
 public:
 	ClipData() : clip(false) {}
 
-	lyx::graphics::BoundingBox bbox;
+	graphics::BoundingBox bbox;
 	bool clip;
 };
 

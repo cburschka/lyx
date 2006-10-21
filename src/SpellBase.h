@@ -17,6 +17,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class BufferParams;
 class WordLangTuple;
 
@@ -61,7 +64,10 @@ public:
 	virtual std::string const nextMiss();
 
 	/// give an error message on messy exit
-	virtual lyx::docstring const error();
+	virtual docstring const error();
 };
+
+
+} // namespace lyx
 
 #endif // SPELL_BASE_H

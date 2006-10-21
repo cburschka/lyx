@@ -26,6 +26,7 @@
 #include <cerrno>
 #include <fcntl.h>
 
+
 // BOOST_POSIX or BOOST_WINDOWS specify which API to use.
 # if !defined( BOOST_WINDOWS ) && !defined( BOOST_POSIX )
 #   if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
@@ -116,10 +117,10 @@ void copy_file(path const & source, path const & target, bool noclobber)
 
 	int const flags = O_WRONLY | O_CREAT | (noclobber ? O_EXCL : O_TRUNC);
 
-        int const outfile = ::open(target.string().c_str(), flags, source_stat.st_mode);
-        if (outfile == -1) {
+	int const outfile = ::open(target.string().c_str(), flags, source_stat.st_mode);
+	if (outfile == -1) {
 		int err = errno;
-                ::close(infile);
+		::close(infile);
 		boost::throw_exception(
 			filesystem_path_error(
 				"boost::filesystem::copy_file",
@@ -173,3 +174,4 @@ void copy_file(path const & source, path const & target, bool noclobber)
 
 }
 }
+

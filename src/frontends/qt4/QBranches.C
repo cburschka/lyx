@@ -44,10 +44,6 @@ QBranches::QBranches(QWidget * parent, Qt::WFlags f)
 	branchesTW->headerItem()->setText(1, qt_("Activated"));
 }
 
-QBranches::~QBranches()
-{
-}
-
 void QBranches::update(BufferParams const & params)
 {
 	branchlist_ = params.branchlist();

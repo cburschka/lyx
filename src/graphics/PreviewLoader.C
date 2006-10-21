@@ -41,10 +41,6 @@
 #include <fstream>
 #include <iomanip>
 
-namespace support = lyx::support;
-
-using lyx::odocstream;
-
 using std::endl;
 using std::find;
 using std::fill;
@@ -72,12 +68,99 @@ typedef list<string> PendingSnippets;
 // Each item in the vector is a pair<snippet, image file name>.
 typedef vector<StrPair> BitmapFile;
 
-string const unique_filename(string const bufferpath);
 
-Converter const * setConverter();
+string const unique_filename(string const & bufferpath)
+{
+	static int theCounter = 0;
+	string const filename = lyx::convert<string>(theCounter++) + "lyxpreview";
+	return lyx::support::addName(bufferpath, filename);
+}
+
+
+lyx::Converter const * setConverter()
+{
+	string const from = "lyxpreview";
+
+	typedef vector<string> FmtList;
+	typedef lyx::graphics::Cache GCache;
+	FmtList const loadableFormats = GCache::get().loadableFormats();
+	FmtList::const_iterator it = loadableFormats.begin();
+	FmtList::const_iterator const end = loadableFormats.end();
+
+	for (; it != end; ++it) {
+		string const to = *it;
+		if (from == to)
+			continue;
+
+		lyx::Converter const * ptr = lyx::converters.getConverter(from, to);
+		if (ptr)
+			return ptr;
+	}
+
+	static bool first = true;
+	if (first) {
+		first = false;
+		lyx::lyxerr << "PreviewLoader::startLoading()\n"
+		       << "No converter from \"lyxpreview\" format has been "
+			"defined."
+		       << endl;
+	}
+	return 0;
+}
+
 
 void setAscentFractions(vector<double> & ascent_fractions,
-			string const & metrics_file);
+			string const & metrics_file)
+{
+	// If all else fails, then the images will have equal ascents and
+	// descents.
+	vector<double>::iterator it  = ascent_fractions.begin();
+	vector<double>::iterator end = ascent_fractions.end();
+	fill(it, end, 0.5);
+
+	ifstream in(metrics_file.c_str());
+	if (!in.good()) {
+		lyx::lyxerr[lyx::Debug::GRAPHICS]
+			<< "setAscentFractions(" << metrics_file << ")\n"
+			<< "Unable to open file!" << endl;
+		return;
+	}
+
+	bool error = false;
+
+	int snippet_counter = 1;
+	while (!in.eof() && it != end) {
+		string snippet;
+		int id;
+		double ascent_fraction;
+
+		in >> snippet >> id >> ascent_fraction;
+
+		if (!in.good())
+			// eof after all
+			break;
+
+		error = snippet != "Snippet";
+		if (error)
+			break;
+
+		error = id != snippet_counter;
+		if (error)
+			break;
+
+		*it = ascent_fraction;
+
+		++snippet_counter;
+		++it;
+	}
+
+	if (error) {
+		lyx::lyxerr[lyx::Debug::GRAPHICS]
+			<< "setAscentFractions(" << metrics_file << ")\n"
+			<< "Error reading file!\n" << endl;
+	}
+}
+
 
 class FindFirst : public std::unary_function<StrPair, bool> {
 public:
@@ -120,7 +203,9 @@ typedef InProgressProcesses::value_type InProgressProcess;
 } // namespace anon
 
 
+
 namespace lyx {
+
 namespace graphics {
 
 class PreviewLoader::Impl : public boost::signals::trackable {
@@ -188,8 +273,10 @@ private:
 Converter const * PreviewLoader::Impl::pconverter_;
 
 
+//
 // The public interface, defined in PreviewLoader.h
-// ================================================
+//
+
 PreviewLoader::PreviewLoader(Buffer const & b)
 	: pimpl_(new Impl(*this, b))
 {}
@@ -297,16 +384,16 @@ InProgress::InProgress(string const & filename_base,
 void InProgress::stop() const
 {
 	if (pid)
-		support::ForkedcallsController::get().kill(pid, 0);
+		lyx::support::ForkedcallsController::get().kill(pid, 0);
 
 	if (!metrics_file.empty())
-		support::unlink(metrics_file);
+		lyx::support::unlink(metrics_file);
 
 	BitmapFile::const_iterator vit  = snippets.begin();
 	BitmapFile::const_iterator vend = snippets.end();
 	for (; vit != vend; ++vit) {
 		if (!vit->second.empty())
-			support::unlink(vit->second);
+			lyx::support::unlink(vit->second);
 	}
 }
 
@@ -469,7 +556,7 @@ void PreviewLoader::Impl::startLoading()
 	// As used by the LaTeX file and by the resulting image files
 	string const directory = buffer_.temppath();
 
-	string const filename_base(unique_filename(directory));
+	string const filename_base = unique_filename(directory);
 
 	// Create an InProgress instance to place in the map of all
 	// such processes if it starts correctly.
@@ -484,7 +571,7 @@ void PreviewLoader::Impl::startLoading()
 	// FIXME UNICODE
 	// This creates an utf8 encoded file, but the proper inputenc
 	// command is missing.
-	lyx::odocfstream of(latexfile.c_str());
+	odocfstream of(latexfile.c_str());
 	if (!of) {
 		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
 					<< "Unable to create LaTeX file\n"
@@ -644,7 +731,7 @@ void PreviewLoader::Impl::dumpData(odocstream & os,
 	for (; it != end; ++it) {
 		// FIXME UNICODE
 		os << "\\begin{preview}\n"
-		   << lyx::from_utf8(it->first)
+		   << from_utf8(it->first)
 		   << "\n\\end{preview}\n\n";
 	}
 }
@@ -652,99 +739,3 @@ void PreviewLoader::Impl::dumpData(odocstream & os,
 } // namespace graphics
 } // namespace lyx
 
-namespace {
-
-string const unique_filename(string const bufferpath)
-{
-	static int theCounter = 0;
-	string const filename = convert<string>(theCounter++) + "lyxpreview";
-	return support::addName(bufferpath, filename);
-}
-
-
-Converter const * setConverter()
-{
-	string const from = "lyxpreview";
-
-	typedef vector<string> FmtList;
-	typedef lyx::graphics::Cache GCache;
-	FmtList const loadableFormats = GCache::get().loadableFormats();
-	FmtList::const_iterator it  = loadableFormats.begin();
-	FmtList::const_iterator const end = loadableFormats.end();
-
-	for (; it != end; ++it) {
-		string const to = *it;
-		if (from == to)
-			continue;
-
-		Converter const * ptr = converters.getConverter(from, to);
-		if (ptr)
-			return ptr;
-	}
-
-	static bool first = true;
-	if (first) {
-		first = false;
-		lyxerr << "PreviewLoader::startLoading()\n"
-		       << "No converter from \"lyxpreview\" format has been "
-			"defined."
-		       << endl;
-	}
-
-	return 0;
-}
-
-
-void setAscentFractions(vector<double> & ascent_fractions,
-			string const & metrics_file)
-{
-	// If all else fails, then the images will have equal ascents and
-	// descents.
-	vector<double>::iterator it  = ascent_fractions.begin();
-	vector<double>::iterator end = ascent_fractions.end();
-	fill(it, end, 0.5);
-
-	ifstream in(metrics_file.c_str());
-	if (!in.good()) {
-		lyxerr[Debug::GRAPHICS]
-			<< "setAscentFractions(" << metrics_file << ")\n"
-			<< "Unable to open file!" << endl;
-		return;
-	}
-
-	bool error = false;
-
-	int snippet_counter = 1;
-	while (!in.eof() && it != end) {
-		string snippet;
-		int id;
-		double ascent_fraction;
-
-		in >> snippet >> id >> ascent_fraction;
-
-		if (!in.good())
-			// eof after all
-			break;
-
-		error = snippet != "Snippet";
-		if (error)
-			break;
-
-		error = id != snippet_counter;
-		if (error)
-			break;
-
-		*it = ascent_fraction;
-
-		++snippet_counter;
-		++it;
-	}
-
-	if (error) {
-		lyxerr[Debug::GRAPHICS]
-			<< "setAscentFractions(" << metrics_file << ")\n"
-			<< "Error reading file!\n" << endl;
-	}
-}
-
-} // namespace anon

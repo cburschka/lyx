@@ -21,6 +21,9 @@
 #include <string>
 #include <vector>
 
+
+namespace lyx {
+
 class LyXLayout;
 
 /// Reads the style files
@@ -39,18 +42,18 @@ public:
 	const_iterator end() const { return classlist_.end(); }
 
 	/// Gets textclass number from name, -1 if textclass name does not exist
-	std::pair<bool, lyx::textclass_type> const
+	std::pair<bool, textclass_type> const
 	numberOfClass(std::string const & textclass) const;
 
 	///
-	LyXTextClass const & operator[](lyx::textclass_type textclass) const;
+	LyXTextClass const & operator[](textclass_type textclass) const;
 
 	/// Read textclass list.  Returns false if this fails.
 	bool read();
 	
 	/// add a textclass from user local directory. 
  	/// Return ture/false, and textclass number
- 	std::pair<bool, lyx::textclass_type> const
+ 	std::pair<bool, textclass_type> const
  	addTextClass(std::string const & textclass, std::string const & path);
 
 private:
@@ -60,5 +63,8 @@ private:
 
 ///
 extern LyXTextClassList textclasslist;
+
+
+} // namespace lyx
 
 #endif

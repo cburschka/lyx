@@ -17,6 +17,9 @@
 #include <vector>
 #include <iosfwd>
 
+
+namespace lyx {
+
 class LyXText;
 class MathAtom;
 class Paragraph;
@@ -38,10 +41,6 @@ class DocIterator // : public std::vector<CursorSlice>
 public:
 	/// type for cell number in inset
 	typedef CursorSlice::idx_type idx_type;
-	/// type for paragraph numbers positions within a cell
-	typedef CursorSlice::pit_type pit_type;
-	/// type for cursor positions within a cell
-	typedef CursorSlice::pos_type pos_type;
 	/// type for row indices
 	typedef CursorSlice::row_type row_type;
 	/// type for col indices
@@ -281,8 +280,6 @@ public:
 	DocIterator asDocIterator(InsetBase * start) const;
 	///
 	size_t size() const { return data_.size(); }
-	/// type for cursor positions within a cell
-	typedef CursorSlice::pos_type pos_type;
 	///  return the position within the paragraph
 	pos_type pos() const { return data_.back().pos(); }
 	///  return the position within the paragraph
@@ -299,5 +296,8 @@ public:
 private:
 	std::vector<CursorSlice> data_;
 };
+
+
+} // namespace lyx
 
 #endif

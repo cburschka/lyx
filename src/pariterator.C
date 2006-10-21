@@ -18,8 +18,8 @@
 
 #include "insets/inset.h"
 
-using lyx::pit_type;
 
+namespace lyx {
 
 ///
 /// ParIterator
@@ -118,7 +118,7 @@ bool operator!=(ParIterator const & iter1, ParIterator const & iter2)
 }
 
 
-DocIterator makeDocIterator(ParIterator const & par, lyx::pos_type pos)
+DocIterator makeDocIterator(ParIterator const & par, pos_type pos)
 {
 	DocIterator dit(par);
 	dit.pos() = pos;
@@ -193,3 +193,6 @@ ParConstIterator par_const_iterator_end(InsetBase const & inset)
 {
 	return ParConstIterator(doc_iterator_end(const_cast<InsetBase &>(inset)));
 }
+
+
+} // namespace lyx

@@ -18,6 +18,9 @@
 
 #include <boost/shared_ptr.hpp>
 
+
+namespace lyx {
+
 /**
  * This is a base class for representing a keypress.
  * Each frontend has to implement this to provide
@@ -66,5 +69,8 @@ public:
 bool operator==(LyXKeySym const & k1, LyXKeySym const & k2);
 
 typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
+
+
+} // namespace lyx
 
 #endif

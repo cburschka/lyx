@@ -17,6 +17,9 @@
 
 #include "vspace.h"
 
+
+namespace lyx {
+
 /**
  * A combo box for selecting LyXLength::UNIT types.
  */
@@ -43,5 +46,8 @@ signals:
 	void selectionChanged(LyXLength::UNIT unit);
 
 };
+
+
+} // namespace lyx
 
 #endif // LENGTHCOMBO_H

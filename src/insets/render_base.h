@@ -16,6 +16,9 @@
 
 #include <memory>
 
+
+namespace lyx {
+
 class InsetBase;
 class MetricsInfo;
 class PainterInfo;
@@ -50,5 +53,8 @@ protected:
 	/// Cached
 	mutable Dimension dim_;
 };
+
+
+} // namespace lyx
 
 #endif // NOT RENDER_BASE_H

@@ -17,13 +17,12 @@
 
 #include <string>
 
+
+namespace lyx {
+
 // Solaris/x86 version 9 and earlier define these
-#ifdef PC
-#  undef PC
-#endif
-#ifdef SP
-#  undef SP
-#endif
+#undef PC
+#undef SP
 
 
 /**
@@ -115,5 +114,8 @@ bool operator!=(LyXLength const & l1, LyXLength const & l2);
 bool isValidLength(std::string const & data, LyXLength * result = 0);
 /// return the LyX name of the given unit number
 char const * stringFromUnit(int unit);
+
+
+} // namespace lyx
 
 #endif // LYXLENGTH_H

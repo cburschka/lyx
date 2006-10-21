@@ -22,6 +22,9 @@
 #include <iterator>
 #include <sstream>
 
+
+namespace lyx {
+
 using std::getline;
 
 using std::string;
@@ -118,7 +121,7 @@ void InsetMathArray::write(WriteStream & os) const
 void InsetMathArray::infoize(std::ostream & os) const
 {
 	string name = name_;
-	name[0] = lyx::support::uppercase(name[0]);
+	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }
 
@@ -145,3 +148,6 @@ void InsetMathArray::validate(LaTeXFeatures & features) const
 		features.require("amsmath");
 	InsetMathGrid::validate(features);
 }
+
+
+} // namespace lyx

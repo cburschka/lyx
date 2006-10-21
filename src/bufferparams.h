@@ -26,6 +26,8 @@
 #include <vector>
 
 
+namespace lyx {
+
 class AuthorList;
 class BranchList;
 class Bullet;
@@ -37,7 +39,6 @@ class VSpace;
 class Language;
 
 
-namespace lyx {
 namespace biblio {
 
 enum CiteEngine {
@@ -55,7 +56,6 @@ public:
 };
 
 } // namespace biblio
-} // namespace lyx
 
 
 /** Buffer parameters.
@@ -86,7 +86,7 @@ public:
 	 *  the BufferParams and a LyXRC variable).
 	 *  This returned value can then be passed to the insets...
 	 */
-	bool writeLaTeX(lyx::odocstream &, LaTeXFeatures &, TexRow &) const;
+	bool writeLaTeX(odocstream &, LaTeXFeatures &, TexRow &) const;
 
 	///
 	void useClassDefaults();
@@ -111,7 +111,7 @@ public:
 	///
 	std::string fontsize;
 	///
-	lyx::textclass_type textclass;
+	textclass_type textclass;
 	///
 	LyXTextClass const & getLyXTextClass() const;
 
@@ -198,11 +198,11 @@ public:
 	///
 	std::string pagestyle;
 	/// \param index should lie in the range 0 <= \c index <= 3.
-	Bullet & temp_bullet(lyx::size_type index);
-	Bullet const & temp_bullet(lyx::size_type index) const;
+	Bullet & temp_bullet(size_type index);
+	Bullet const & temp_bullet(size_type index) const;
 	/// \param index should lie in the range 0 <= \c index <= 3.
-	Bullet & user_defined_bullet(lyx::size_type index);
-	Bullet const & user_defined_bullet(lyx::size_type index) const;
+	Bullet & user_defined_bullet(size_type index);
+	Bullet const & user_defined_bullet(size_type index) const;
 	///
 	void readPreamble(LyXLex &);
 	///
@@ -222,7 +222,7 @@ public:
 	};
 	AMS use_amsmath;
 	///
-	lyx::biblio::CiteEngine cite_engine;
+	biblio::CiteEngine cite_engine;
 	///
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?
@@ -270,7 +270,9 @@ private:
 		static Impl * clone(Impl const *);
 		static void destroy(Impl *);
 	};
-	lyx::support::copied_ptr<Impl, MemoryTraits> pimpl_;
+	support::copied_ptr<Impl, MemoryTraits> pimpl_;
 };
+
+} // namespace lyx
 
 #endif

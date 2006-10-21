@@ -63,7 +63,10 @@
 
 #include <sstream>
 
-using lyx::support::compare_ascii_no_case;
+
+namespace lyx {
+
+using support::compare_ascii_no_case;
 
 using std::auto_ptr;
 using std::endl;
@@ -132,7 +135,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 
 	case LFUN_FLOAT_INSERT: {
 		// check if the float type exists
-		string const argument = lyx::to_utf8(cmd.argument());
+		string const argument = to_utf8(cmd.argument());
 		if (params.getLyXTextClass().floats().typeExist(argument))
 			return new InsetFloat(params, argument);
 		lyxerr << "Non-existent float type: " << argument << endl;
@@ -141,7 +144,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 
 	case LFUN_FLOAT_WIDE_INSERT: {
 		// check if the float type exists
-		string const argument = lyx::to_utf8(cmd.argument());
+		string const argument = to_utf8(cmd.argument());
 		if (params.getLyXTextClass().floats().typeExist(argument)) {
 			auto_ptr<InsetFloat> p(new InsetFloat(params, argument));
 			p->wide(true, params);
@@ -152,7 +155,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	}
 
 	case LFUN_WRAP_INSERT: {
-		string const argument = lyx::to_utf8(cmd.argument());
+		string const argument = to_utf8(cmd.argument());
 		if (argument == "figure")
 			return new InsetWrap(params, argument);
 		lyxerr << "Non-existent floatflt type: " << argument << endl;
@@ -163,7 +166,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		// Try and generate a valid index entry.
 		InsetCommandParams icp("index");
 		icp["name"] = cmd.argument().empty() ?
-			lyx::from_utf8(bv->getLyXText()->getStringToIndex(bv->cursor())) :
+			from_utf8(bv->getLyXText()->getStringToIndex(bv->cursor())) :
 			cmd.argument();
 		return new InsetIndex(icp);
 	}
@@ -171,7 +174,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	case LFUN_TABULAR_INSERT: {
 		if (cmd.argument().empty())
 			return 0;
-		std::istringstream ss(lyx::to_utf8(cmd.argument()));
+		std::istringstream ss(to_utf8(cmd.argument()));
 		int r = 0, c = 0;
 		ss >> r >> c;
 		if (r <= 0)
@@ -196,7 +199,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		return new InsetTOC(InsetCommandParams("tableofcontents"));
 
 	case LFUN_ENVIRONMENT_INSERT:
-		return new InsetEnvironment(params, lyx::to_utf8(cmd.argument()));
+		return new InsetEnvironment(params, to_utf8(cmd.argument()));
 
 #if 0
 	case LFUN_LIST_INSERT:
@@ -211,31 +214,31 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		if (name == "bibitem") {
 			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetBibitem(icp);
 
 		} else if (name == "bibtex") {
 			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetBibtex(icp);
 
 		} else if (name == "citation") {
 			InsetCommandParams icp("cite");
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetCitation(icp);
 
 		} else if (name == "ert") {
 			InsetCollapsable::CollapseStatus st;
-			InsetERTMailer::string2params(lyx::to_utf8(cmd.argument()), st);
+			InsetERTMailer::string2params(to_utf8(cmd.argument()), st);
 			return new InsetERT(params, st);
 
 		} else if (name == "external") {
 			Buffer const & buffer = *bv->buffer();
 			InsetExternalParams iep;
-			InsetExternalMailer::string2params(lyx::to_utf8(cmd.argument()),
+			InsetExternalMailer::string2params(to_utf8(cmd.argument()),
 							   buffer, iep);
 			auto_ptr<InsetExternal> inset(new InsetExternal);
 			inset->setParams(iep, buffer);
@@ -244,7 +247,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		} else if (name == "graphics") {
 			Buffer const & buffer = *bv->buffer();
 			InsetGraphicsParams igp;
-			InsetGraphicsMailer::string2params(lyx::to_utf8(cmd.argument()),
+			InsetGraphicsMailer::string2params(to_utf8(cmd.argument()),
 							   buffer, igp);
 			auto_ptr<InsetGraphics> inset(new InsetGraphics);
 			inset->setParams(igp);
@@ -252,48 +255,48 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 
 		} else if (name == "include") {
 			InsetCommandParams iip(name);
-			InsetIncludeMailer::string2params(lyx::to_utf8(cmd.argument()), iip);
+			InsetIncludeMailer::string2params(to_utf8(cmd.argument()), iip);
 			return new InsetInclude(iip);
 
 		} else if (name == "index") {
 			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetIndex(icp);
 
 		} else if (name == "label") {
 			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetLabel(icp);
 
 		} else if (name == "ref") {
 			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetRef(icp, *bv->buffer());
 
 		} else if (name == "toc") {
 			InsetCommandParams icp("tableofcontents");
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetTOC(icp);
 
 		} else if (name == "url") {
 			InsetCommandParams icp(name);
-			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetUrl(icp);
 
 		} else if (name == "vspace") {
 			VSpace vspace;
-			InsetVSpaceMailer::string2params(lyx::to_utf8(cmd.argument()), vspace);
+			InsetVSpaceMailer::string2params(to_utf8(cmd.argument()), vspace);
 			return new InsetVSpace(vspace);
 		}
 	}
 
 	case LFUN_SPACE_INSERT: {
-		string const name = lyx::to_utf8(cmd.argument());
+		string const name = to_utf8(cmd.argument());
 		if (name == "normal")
 			return new InsetSpace(InsetSpace::NORMAL);
 		else if (name == "protected")
@@ -495,3 +498,6 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 
 	return inset.release();
 }
+
+
+} // namespace lyx

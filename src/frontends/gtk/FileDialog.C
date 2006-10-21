@@ -20,6 +20,9 @@
 
 #include "FileDialogPrivate.h"
 
+
+namespace lyx {
+
 using lyx::docstring;
 
 using std::string;
@@ -64,3 +67,6 @@ FileDialog::save(docstring const & path,
 {
 	return private_->save(path, filters, suggested);
 }
+
+
+} // namespace lyx

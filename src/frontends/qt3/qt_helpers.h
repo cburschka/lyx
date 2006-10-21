@@ -19,6 +19,9 @@
 
 #include <qstring.h>
 
+
+namespace lyx {
+
 class LengthCombo;
 class QComboBox;
 class QLineEdit;
@@ -103,8 +106,11 @@ std::string const fromqstr(QString const & str);
  */
 lyx::docstring const qstring_to_ucs4(QString const & str);
 
+
 void ucs4_to_qstring(lyx::docstring const & str, QString & s);
 
 QString ucs4_to_qstring(lyx::docstring const & str);
+
+} // namespace lyx
 
 #endif // QTHELPERS_H

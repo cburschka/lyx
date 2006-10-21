@@ -21,6 +21,9 @@
 #include <gtkmm.h>
 #include <X11/Xft/Xft.h>
 
+
+namespace lyx {
+
 class GWorkArea;
 
 
@@ -92,5 +95,8 @@ private:
 
 ///
 extern xftFontLoader fontLoader;
+
+
+} // namespace lyx
 
 #endif

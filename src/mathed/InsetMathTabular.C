@@ -21,6 +21,9 @@
 #include <iterator>
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 
@@ -87,7 +90,7 @@ void InsetMathTabular::write(WriteStream & os) const
 void InsetMathTabular::infoize(std::ostream & os) const
 {
 	string name = name_;
-	name[0] = lyx::support::uppercase(name[0]);
+	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }
 
@@ -106,3 +109,6 @@ void InsetMathTabular::maple(MapleStream & os) const
 	InsetMathGrid::maple(os);
 	os << ')';
 }
+
+
+} // namespace lyx

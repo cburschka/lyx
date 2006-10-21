@@ -23,7 +23,8 @@
 
 #include <boost/assert.hpp>
 
-using lyx::char_type;
+
+namespace lyx {
 
 using std::string;
 using std::max;
@@ -622,3 +623,6 @@ void InsetMathScript::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	InsetMathNest::doDispatch(cur, cmd);
 }
+
+
+} // namespace lyx

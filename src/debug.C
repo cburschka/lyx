@@ -20,10 +20,12 @@
 #include <iostream>
 #include <iomanip>
 
-using lyx::docstring;
-using lyx::support::ascii_lowercase;
-using lyx::support::bformat;
-using lyx::support::isStrInt;
+
+namespace lyx {
+
+using support::ascii_lowercase;
+using support::bformat;
+using support::isStrInt;
 
 using std::setw;
 using std::string;
@@ -108,10 +110,10 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 		if (errorTags[i].level != Debug::ANY
 		    && errorTags[i].level != Debug::NONE
 		    && errorTags[i].level & level) {
-			// avoid lyx::to_utf8(_(...)) re-entrance problem
+			// avoid to_utf8(_(...)) re-entrance problem
 			docstring const s = _(errorTags[i].desc);
-			os << lyx::to_utf8(bformat(_("Debugging `%1$s' (%2$s)"),
-					lyx::from_utf8(errorTags[i].name), s))
+			os << to_utf8(bformat(_("Debugging `%1$s' (%2$s)"),
+					from_utf8(errorTags[i].name), s))
 			   << '\n';
 		}
 	}
@@ -124,9 +126,12 @@ void lyx_debug_trait::showTags(ostream & os)
 	for (int i = 0; i < numErrorTags ; ++i)
 		os << setw(7) << static_cast<unsigned int>(errorTags[i].level)
 		   << setw(10) << errorTags[i].name
-		   << "  " << lyx::to_utf8(_(errorTags[i].desc)) << '\n';
+		   << "  " << to_utf8(_(errorTags[i].desc)) << '\n';
 	os.flush();
 }
 
 
 LyXErr lyxerr;
+
+
+} // namespace lyx

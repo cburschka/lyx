@@ -17,6 +17,9 @@
 #include "lyxtextclass.h"
 
 
+namespace lyx {
+
+
 class InsetCharStyleParams {
 public:
 	///
@@ -57,7 +60,7 @@ public:
 	/// (Re-)set the character style parameters from \p cs
 	void setDefined(CharStyles::iterator cs);
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::CHARSTYLE_CODE; }
 	///
@@ -73,16 +76,16 @@ public:
 	///
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures &) const;
@@ -109,5 +112,8 @@ private:
 	///
 	InsetCharStyleParams params_;
 };
+
+
+} // namespace lyx
 
 #endif

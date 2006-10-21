@@ -18,6 +18,9 @@
 #include "support/std_ostream.h"
 
 
+namespace lyx {
+
+
 InsetMathXYMatrix::InsetMathXYMatrix()
 	: InsetMathGrid(1, 1)
 {}
@@ -78,3 +81,6 @@ void InsetMathXYMatrix::maple(MapleStream & os) const
 	InsetMathGrid::maple(os);
 	os << ')';
 }
+
+
+} // namespace lyx

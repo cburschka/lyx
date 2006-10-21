@@ -18,6 +18,8 @@
 #include <string>
 
 
+namespace lyx {
+
 /// a class for mapping char strings such as "\^{A}" to the integer value
 class CharacterSet {
 public:
@@ -47,4 +49,7 @@ private:
 	/// mapping from string representation to encoded value
 	Cdef map_;
 };
+
+} // namespace lyx
+
 #endif

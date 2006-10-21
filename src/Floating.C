@@ -14,6 +14,9 @@
 
 #include "Floating.h"
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -76,3 +79,6 @@ bool Floating::builtin() const
 {
 	return builtin_;
 }
+
+
+} // namespace lyx

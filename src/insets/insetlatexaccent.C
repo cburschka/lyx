@@ -24,11 +24,11 @@
 
 #include "support/lstrings.h"
 
-using lyx::char_type;
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::contains;
-using lyx::support::trim;
+
+namespace lyx {
+
+using support::contains;
+using support::trim;
 
 using std::endl;
 using std::string;
@@ -245,7 +245,7 @@ void InsetLatexAccent::checkContents()
 void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
+	frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	// This function is a bit too simplistic and is just a
 	// "try to make a fit for all accents" approach, to
@@ -329,7 +329,7 @@ void InsetLatexAccent::drawAccent(PainterInfo const & pi, int x, int y,
 	char_type accent) const
 {
 	LyXFont const & font = pi.base.font;
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
+	frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	x -= fm.center(accent);
 	y -= fm.ascent(ic);
@@ -353,7 +353,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		font.setLanguage(english_language);
 
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
+	frontend::FontMetrics const & fm =	theFontMetrics(font);
 
 	if (candisp) {
 		int x2 = int(x + (fm.rbearing(ic) - fm.lbearing(ic)) / 2);
@@ -575,7 +575,7 @@ void InsetLatexAccent::read(Buffer const &, LyXLex & lex)
 int InsetLatexAccent::latex(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
-	os << lyx::from_ascii(contents);
+	os << from_ascii(contents);
 	return 0;
 }
 
@@ -583,7 +583,7 @@ int InsetLatexAccent::latex(Buffer const &, odocstream & os,
 int InsetLatexAccent::plaintext(Buffer const &, odocstream & os,
 			    OutputParams const &) const
 {
-	os << lyx::from_ascii(contents);
+	os << from_ascii(contents);
 	return 0;
 }
 
@@ -592,7 +592,7 @@ int InsetLatexAccent::docbook(Buffer const &, odocstream & os,
 			      OutputParams const &) const
 {
         // FIXME UNICODE
-        os << lyx::from_ascii(contents);
+        os << from_ascii(contents);
 	return 0;
 }
 
@@ -620,3 +620,6 @@ ostream & operator<<(ostream & o, InsetLatexAccent::ACCENT_TYPES at)
 {
 	return o << int(at);
 }
+
+
+} // namespace lyx

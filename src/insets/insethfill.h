@@ -15,6 +15,9 @@
 
 #include "insetcommand.h"
 
+
+namespace lyx {
+
 class InsetHFill : public InsetCommand {
 public:
 	///
@@ -22,17 +25,17 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::HFILL_CODE; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const & runparams) const;
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
@@ -44,5 +47,8 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

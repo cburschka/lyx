@@ -15,9 +15,10 @@
 #include "Dialog.h"
 #include "layout.h" // for LyXAlignment
 
+namespace lyx {
+
 class ParagraphParameters;
 
-namespace lyx {
 namespace frontend {
 
 class ControlParagraph : public Dialog::Controller {

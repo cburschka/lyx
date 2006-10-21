@@ -28,6 +28,9 @@ namespace io = boost::iostreams;
 #include <stack>
 #include <vector>
 
+
+namespace lyx {
+
 ///
 class LyXLex::Pimpl : boost::noncopyable {
 public:
@@ -36,7 +39,7 @@ public:
 	///
 	std::string const getString() const;
 	///
-	lyx::docstring const getDocString() const;
+	docstring const getDocString() const;
 	///
 	void printError(std::string const & message) const;
 	///
@@ -107,4 +110,7 @@ private:
 	///
 	std::stack<pushed_table> pushed;
 };
+
+} // namespace lyx
+
 #endif

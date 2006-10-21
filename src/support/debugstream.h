@@ -16,6 +16,9 @@
 
 #include <boost/version.hpp>
 
+
+//namespace lyx {
+
 #if BOOST_VERSION < 103300
 #  include <boost/test/detail/nullstream.hpp>
 #else
@@ -104,5 +107,8 @@ private:
 };
 
 typedef basic_debugstream<debug_trait> debugstream;
+
+
+//} // namespace lyx
 
 #endif

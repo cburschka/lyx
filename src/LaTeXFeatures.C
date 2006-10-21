@@ -32,10 +32,13 @@
 
 #include <sstream>
 
-using lyx::support::isSGMLFilename;
-using lyx::support::libFileSearch;
-using lyx::support::makeRelPath;
-using lyx::support::onlyPath;
+
+namespace lyx {
+
+using support::isSGMLFilename;
+using support::libFileSearch;
+using support::makeRelPath;
+using support::onlyPath;
 
 using std::endl;
 using std::find;
@@ -44,9 +47,6 @@ using std::list;
 using std::ostream;
 using std::ostringstream;
 using std::set;
-
-namespace biblio = lyx::biblio;
-
 
 LaTeXFeatures::PackagesList LaTeXFeatures::packages_;
 
@@ -314,7 +314,7 @@ string const LaTeXFeatures::getPackages() const
 	}
 	// shadecolor for shaded
 	if (isRequired("framed")) {
-	lyx::RGBColor c = lyx::RGBColor(lcolor.getX11Name(LColor::shadedbg));
+		RGBColor c = RGBColor(lcolor.getX11Name(LColor::shadedbg));
 		packages << "\\definecolor{shadecolor}{rgb}{" 
 			<< c.r/255 << ',' << c.g/255 << ',' << c.b/255 << "}\n";
 	}
@@ -614,3 +614,6 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 		}
 	}
 }
+
+
+} // namespace lyx

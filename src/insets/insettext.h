@@ -22,6 +22,9 @@
 
 #include "frontends/mouse_state.h"
 
+
+namespace lyx {
+
 class Buffer;
 class BufferParams;
 class BufferView;
@@ -55,7 +58,7 @@ public:
 	/// are we inside the area covered by the inset?
 	virtual bool covers(BufferView & bv, int x, int y) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -63,14 +66,11 @@ public:
 	///
 	InsetText const * asTextInset() const { return this; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
-		    OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 
@@ -80,7 +80,7 @@ public:
 	///
 	Code lyxCode() const { return TEXT_CODE; }
 	///
-	void setText(lyx::docstring const &, LyXFont const &, bool trackChanges);
+	void setText(docstring const &, LyXFont const &, bool trackChanges);
 	///
 	void setAutoBreakRows(bool);
 	///
@@ -109,7 +109,7 @@ public:
 	void appendParagraphs(Buffer * bp, ParagraphList &);
 
 	///
-	void addPreview(lyx::graphics::PreviewLoader &) const;
+	void addPreview(graphics::PreviewLoader &) const;
 
 	///
 	void edit(LCursor & cur, bool left);
@@ -150,7 +150,7 @@ private:
 	 */
 	int frame_color_;
 	///
-	mutable lyx::pit_type old_pit;
+	mutable pit_type old_pit;
 	///
 	static int border_;
 	///
@@ -161,4 +161,7 @@ public:
 	///
 	mutable LyXFont font_;
 };
+
+} // namespace lyx
+
 #endif

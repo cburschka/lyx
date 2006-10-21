@@ -18,6 +18,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class Buffer;
 class DocIterator;
 class ErrorList;
@@ -66,5 +69,8 @@ void updateLabels(Buffer const & buf,
 
 /// updates all counters
 void updateLabels(Buffer const &);
+
+
+} // namespace lyx
 
 #endif // BUFFER_FUNCS_H

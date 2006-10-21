@@ -14,6 +14,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class MathAtom;
 class MathArray;
 
@@ -25,5 +28,8 @@ MathAtom createInsetMath(std::string const &);
  *  The function returns true if successful.
  */
 bool createInsetMath_fromDialogStr(std::string const &, MathArray &);
+
+
+} // namespace lyx
 
 #endif

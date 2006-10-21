@@ -65,7 +65,7 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 	QTreeWidgetItem * item;
 
 	QString name;
-	ucs4_to_qstring(n, name);
+	lyx::ucs4_to_qstring(n, name);
 
 	cout << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
 
@@ -143,3 +143,9 @@ void PanelStack::switchPanel(QTreeWidgetItem * item,
 }
 
 #include "panelstack_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

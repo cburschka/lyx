@@ -17,6 +17,9 @@
 
 #include <qstring.h>
 
+
+namespace lyx {
+
 class QKeyEvent;
 
 /**
@@ -70,5 +73,8 @@ private:
 	/// the event string value
 	QString text_;
 };
+
+
+} // namespace lyx
 
 #endif // QLYXKEYSYM_H

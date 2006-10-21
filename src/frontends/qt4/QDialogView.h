@@ -31,7 +31,7 @@ class QDialogView : public QObject, public Dialog::View {
 	Q_OBJECT
 public:
 	///
-	QDialogView(Dialog &, lyx::docstring const &);
+	QDialogView(Dialog &, docstring const &);
 	///
 	virtual ~QDialogView() {}
 	///
@@ -87,7 +87,7 @@ private:
 template <class GUIDialog>
 class QView: public QDialogView {
 protected:
-	QView(Dialog &, lyx::docstring const &);
+	QView(Dialog &, docstring const &);
 
 	/// update the dialog
 	virtual void update();
@@ -105,7 +105,7 @@ protected:
 
 
 template <class GUIDialog>
-QView<GUIDialog>::QView(Dialog & p, lyx::docstring const & t)
+QView<GUIDialog>::QView(Dialog & p, docstring const & t)
 	: QDialogView(p, t)
 {}
 

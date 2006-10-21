@@ -21,6 +21,9 @@
 #include <boost/scoped_array.hpp>
 
 #include <cstdlib>
+
+
+namespace lyx {
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -112,3 +115,6 @@ string const lyx::support::tempName(string const & dir, string const & mask)
 		return string();
 	}
 }
+
+
+} // namespace lyx

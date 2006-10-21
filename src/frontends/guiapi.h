@@ -12,6 +12,8 @@
 #ifndef GUIAPI_H
 #define GUIAPI_H
 
+namespace lyx {
+
 class Dialogs;
 
 extern "C" {
@@ -19,5 +21,8 @@ extern "C" {
 void gui_show_dialog(Dialogs *, char const * name, char const * data);
 
 } // extern "C"
+
+
+} // namespace lyx
 
 #endif // GUIAPI_H

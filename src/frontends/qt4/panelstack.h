@@ -19,9 +19,12 @@
 #include <map>
 #include <string>
 
+
 class QTreeWidget;
 class QTreeWidgetItem;
 class QStackedWidget;
+
+//namespace lyx {
 
 class PanelStack : public QWidget
 {
@@ -59,5 +62,8 @@ private:
 	/// contains the panes
 	QStackedWidget * stack_;
 };
+
+
+//} // namespace lyx
 
 #endif // PANELSTACK_H

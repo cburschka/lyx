@@ -29,9 +29,8 @@
 
 #include <boost/next_prior.hpp>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::pos_type;
+
+namespace lyx {
 
 using std::endl;
 using std::upper_bound;
@@ -51,10 +50,10 @@ struct special_phrase {
 };
 
 special_phrase const special_phrases[] = {
-	{ "LyX", lyx::from_ascii("\\LyX{}"), false },
-	{ "TeX", lyx::from_ascii("\\TeX{}"), true },
-	{ "LaTeX2e", lyx::from_ascii("\\LaTeXe{}"), true },
-	{ "LaTeX", lyx::from_ascii("\\LaTeX{}"), true },
+	{ "LyX", from_ascii("\\LyX{}"), false },
+	{ "TeX", from_ascii("\\TeX{}"), true },
+	{ "LaTeX2e", from_ascii("\\LaTeXe{}"), true },
+	{ "LaTeX", from_ascii("\\LaTeX{}"), true },
 };
 
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
@@ -792,3 +791,6 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		}
 	}
 }
+
+
+} // namespace lyx

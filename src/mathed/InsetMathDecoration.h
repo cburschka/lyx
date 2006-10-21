@@ -16,6 +16,8 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
 class latexkeys;
 
 /// Decorations and accents over (below) a math object
@@ -58,4 +60,7 @@ private:
 	/// width for non-wide deco
 	mutable int dw_;
 };
+
+} // namespace lyx
+
 #endif

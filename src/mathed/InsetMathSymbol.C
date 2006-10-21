@@ -20,7 +20,8 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -63,7 +64,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	int const em = mathed_char_width(mi.base.font, 'M');
 	FontSetChanger dummy(mi.base, sym_->inset.c_str());
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, lyx::from_utf8(sym_->draw), dim);
+	mathed_string_dim(mi.base.font, from_utf8(sym_->draw), dim);
 	// correct height for broken cmex and wasy font
 #if defined(__APPLE__) && defined(__GNUC__)
 	if (sym_->inset == "cmex") {
@@ -112,7 +113,7 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 
 	FontSetChanger dummy(pi.base, sym_->inset.c_str());
 	// FIXME UNICODE
-	pi.draw(x, y - h_, lyx::from_utf8(sym_->draw));
+	pi.draw(x, y - h_, from_utf8(sym_->draw));
 }
 
 
@@ -222,3 +223,6 @@ void InsetMathSymbol::infoize2(std::ostream & os) const
 {
 	os << "Symbol: " << name();
 }
+
+
+} // namespace lyx

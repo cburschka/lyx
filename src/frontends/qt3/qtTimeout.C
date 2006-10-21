@@ -14,6 +14,9 @@
 
 #include "debug.h"
 
+
+namespace lyx {
+
 // stupid Qt
 #undef emit
 
@@ -60,3 +63,6 @@ void qtTimeout::stop()
 	if (running())
 		reset();
 }
+
+
+} // namespace lyx

@@ -17,6 +17,9 @@
 #include <string>
 #include <vector>
 
+
+namespace lyx {
+
 class Buffer;
 class OutputParams;
 
@@ -101,5 +104,8 @@ private:
 
 /// Implementation is in lyx_main.C
 extern BufferList & theBufferList();
+
+
+} // namespace lyx
 
 #endif // BUFFERLIST_H

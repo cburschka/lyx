@@ -23,6 +23,9 @@
 #include <iosfwd>
 #include <vector>
 
+
+namespace lyx {
+
 class InsetTabular;
 class LCursor;
 class OutputParams;
@@ -310,13 +313,11 @@ public:
 	///
 	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	//
-	int docbook(Buffer const & buf, lyx::odocstream & os,
-		    OutputParams const &) const;
+	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams,
 		  int const depth,
 		  bool onlydata, unsigned char delim) const;
@@ -587,42 +588,45 @@ public:
 	///
 	// helper function for Latex returns number of newlines
 	///
-	int TeXTopHLine(lyx::odocstream &, row_type row) const;
+	int TeXTopHLine(odocstream &, row_type row) const;
 	///
-	int TeXBottomHLine(lyx::odocstream &, row_type row) const;
+	int TeXBottomHLine(odocstream &, row_type row) const;
 	///
-	int TeXCellPreamble(lyx::odocstream &, idx_type cell) const;
+	int TeXCellPreamble(odocstream &, idx_type cell) const;
 	///
-	int TeXCellPostamble(lyx::odocstream &, idx_type cell) const;
+	int TeXCellPostamble(odocstream &, idx_type cell) const;
 	///
-	int TeXLongtableHeaderFooter(lyx::odocstream &, Buffer const & buf,
+	int TeXLongtableHeaderFooter(odocstream &, Buffer const & buf,
 				     OutputParams const &) const;
 	///
 	bool isValidRow(row_type const row) const;
 	///
-	int TeXRow(lyx::odocstream &, row_type const row, Buffer const & buf,
+	int TeXRow(odocstream &, row_type const row, Buffer const & buf,
 		   OutputParams const &) const;
 	///
 	// helper function for ASCII returns number of newlines
 	///
-	int asciiTopHLine(lyx::odocstream &, row_type row,
+	int asciiTopHLine(odocstream &, row_type row,
 			  std::vector<unsigned int> const &) const;
 	///
-	int asciiBottomHLine(lyx::odocstream &, row_type row,
+	int asciiBottomHLine(odocstream &, row_type row,
 			     std::vector<unsigned int> const &) const;
 	///
-	int asciiPrintCell(Buffer const &, lyx::odocstream &,
+	int asciiPrintCell(Buffer const &, odocstream &,
 			   OutputParams const &,
 			   idx_type cell, row_type row, col_type column,
 			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
-	int docbookRow(Buffer const & buf, lyx::odocstream & os, row_type,
+	int docbookRow(Buffer const & buf, odocstream & os, row_type,
 		       OutputParams const &) const;
 
 private:
 	/// renumber cells after structural changes
 	void fixCellNums();
 };
+
+
+} // namespace lyx
 
 #endif

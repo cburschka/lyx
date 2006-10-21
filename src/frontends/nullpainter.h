@@ -55,20 +55,20 @@ public:
 	///
 	void button(int, int, int, int) {}
 	///
-	void image(int, int, int, int, lyx::graphics::Image const &) {}
+	void image(int, int, int, int, graphics::Image const &) {}
 	///
-	int text(int, int, lyx::docstring const &, LyXFont const &) { return 0; }
+	int text(int, int, docstring const &, LyXFont const &) { return 0; }
 // 	///
 // 	int text(int, int, char const *, size_t, LyXFont const &) { return 0; }
 	///
-	int text(int, int, lyx::char_type const *, size_t, LyXFont const &) { return 0; }
+	int text(int, int, char_type const *, size_t, LyXFont const &) { return 0; }
 	///
-	int text(int, int, lyx::char_type, LyXFont const &) { return 0; }
+	int text(int, int, char_type, LyXFont const &) { return 0; }
 	///
-	void rectText(int, int, lyx::docstring const &,
+	void rectText(int, int, docstring const &,
 		LyXFont const &, LColor_color, LColor_color) {}
 	///
-	void buttonText(int, int, lyx::docstring const &, LyXFont const &) {}
+	void buttonText(int, int, docstring const &, LyXFont const &) {}
 	///
 	void underline(LyXFont const &, int, int, int) {}
 	///

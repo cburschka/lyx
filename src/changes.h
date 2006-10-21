@@ -21,6 +21,9 @@
 #include <vector>
 
 
+namespace lyx {
+
+
 class Change {
 public:
 	/// the type of change
@@ -30,14 +33,14 @@ public:
 		DELETED // deleted text
 	};
 
-	explicit Change(Type t, int a = 0, lyx::time_type ct = 0)
+	explicit Change(Type t, int a = 0, time_type ct = 0)
 		: type(t), author(a), changetime(ct) {}
 
 	Type type;
 
 	int author;
 
-	lyx::time_type changetime;
+	time_type changetime;
 };
 
 bool operator==(Change const & l, Change const & r);
@@ -46,49 +49,49 @@ bool operator!=(Change const & l, Change const & r);
 class Changes {
 public:
 	/// set the pos to the given change
-	void set(Change const & change, lyx::pos_type pos);
+	void set(Change const & change, pos_type pos);
 	/// set the range to the given change
-	void set(Change const & change, lyx::pos_type start, lyx::pos_type end);
+	void set(Change const & change, pos_type start, pos_type end);
 
 	/// mark the given change and adjust
-	void record(Change const & change, lyx::pos_type pos);
+	void record(Change const & change, pos_type pos);
 
 	/// return the change at the given position
-	Change const lookup(lyx::pos_type pos) const;
+	Change const lookup(pos_type pos) const;
 
 	/// return true if there is a change in the given range
-	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
+	bool isChanged(pos_type start, pos_type end) const;
 
 	/// remove the given entry. This implies that a character was
 	/// deleted at pos, and will adjust all range bounds past it
-	void erase(lyx::pos_type pos);
+	void erase(pos_type pos);
 
 	/// output latex to mark a transition between two changetypes
 	/// returns length of text outputted
-	static int latexMarkChange(lyx::odocstream & os, Change::Type old,
+	static int latexMarkChange(odocstream & os, Change::Type old,
 		Change::Type change, bool const & output);
 
 	/// output .lyx file format for transitions between changes
 	static void lyxMarkChange(std::ostream & os, int & column,
-		lyx::time_type curtime, Change const & old, Change const & change);
+		time_type curtime, Change const & old, Change const & change);
 
 private:
 	class Range {
 	public:
-		Range(lyx::pos_type s, lyx::pos_type e)
+		Range(pos_type s, pos_type e)
 			: start(s), end(e) {}
 
 		// does this range contain r ?
 		bool contains(Range const & r) const;
 
 		// does this range contain pos ?
-		bool contains(lyx::pos_type pos) const;
+		bool contains(pos_type pos) const;
 
 		// do the ranges intersect ?
 		bool intersects(Range const & r) const;
 
-		lyx::pos_type start;
-		lyx::pos_type end; // Caution: end is not in the range!
+		pos_type start;
+		pos_type end; // Caution: end is not in the range!
 	};
 
 	friend bool operator==(Range const & r1, Range const & r2);
@@ -96,7 +99,7 @@ private:
 
 	class ChangeRange {
 	public:
-		ChangeRange(lyx::pos_type s, lyx::pos_type e, Change const & c)
+		ChangeRange(pos_type s, pos_type e, Change const & c)
 			: range(Range(s, e)), change(c) {}
 		Range range;
 		Change change;
@@ -117,5 +120,8 @@ private:
 	/// (as done by set())
 	void merge();
 };
+
+
+} // namespace lyx
 
 #endif // CHANGES_H

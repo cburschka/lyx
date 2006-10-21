@@ -17,6 +17,9 @@
 
 #include <vector>
 
+
+namespace lyx {
+
 // FIXME: Abdel 16/10/2006
 // This TextPainter class is never used, this is dead code.
 /* Georg explanation of current situation:
@@ -32,25 +35,25 @@ class TextPainter {
 		///
 		TextPainter(int xmax, int ymax);
 		///
-		void draw(int x, int y, lyx::char_type const * str);
+		void draw(int x, int y, char_type const * str);
 		///
-		void draw(int x, int y, lyx::char_type c);
+		void draw(int x, int y, char_type c);
 		///
-		void show(lyx::odocstream & os, int offset = 0) const;
+		void show(odocstream & os, int offset = 0) const;
 		///
 		int textheight() const { return ymax_; }
 		///
-		void horizontalLine(int x, int y, int len, lyx::char_type c = '-');
+		void horizontalLine(int x, int y, int len, char_type c = '-');
 		///
-		void verticalLine(int x, int y, int len, lyx::char_type c = '|');
+		void verticalLine(int x, int y, int len, char_type c = '|');
 
 	private:
 		///
-		typedef std::vector<lyx::char_type> data_type;
+		typedef std::vector<char_type> data_type;
 		///
-		lyx::char_type at(int x, int y) const;
+		char_type at(int x, int y) const;
 		///
-		lyx::char_type & at(int x, int y);
+		char_type & at(int x, int y);
 
 		/// xsize of the painter area
 		int xmax_;
@@ -59,5 +62,8 @@ class TextPainter {
 		/// the image
 		data_type data_;
 };
+
+
+} // namespace lyx
 
 #endif

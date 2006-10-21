@@ -15,6 +15,9 @@
 #include "support/docstring.h"
 
 
+namespace lyx {
+
+
 class NormalStream;
 class MapleStream;
 class MaximaStream;
@@ -35,7 +38,10 @@ void octave(MathArray const &, OctaveStream &);
 bool extractNumber(MathArray const & ar, int & i);
 bool extractNumber(MathArray const & ar, double & i);
 
-MathArray pipeThroughExtern(std::string const & lang, lyx::docstring const & extra,
+MathArray pipeThroughExtern(std::string const & lang, docstring const & extra,
 	MathArray const & ar);
+
+
+} // namespace lyx
 
 #endif

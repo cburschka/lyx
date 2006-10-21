@@ -15,6 +15,9 @@
 #include "InsetMath.h"
 
 
+namespace lyx {
+
+
 /** Some collection of chars with similar properties
  *  mainly for math-extern
  */
@@ -52,4 +55,7 @@ private:
 	/// the string
 	std::string str_;
 };
+
+
+} // namespace lyx
 #endif

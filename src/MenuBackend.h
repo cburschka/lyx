@@ -20,6 +20,9 @@
 
 #include <vector>
 
+
+namespace lyx {
+
 class LyXLex;
 class Buffer;
 class Menu;
@@ -74,23 +77,23 @@ public:
 	explicit MenuItem(Kind kind);
 
 	MenuItem(Kind kind,
-		 lyx::docstring const & label,
-		 lyx::docstring const & submenu = lyx::docstring(),
+		 docstring const & label,
+		 docstring const & submenu = docstring(),
 		 bool optional = false);
 
 	MenuItem(Kind kind,
-		 lyx::docstring const & label,
+		 docstring const & label,
 		 FuncRequest const & func,
 		 bool optional = false);
 
 	/// This one is just to please boost::shared_ptr<>
 	~MenuItem();
 	/// The label of a given menuitem
-	lyx::docstring const label() const;
+	docstring const label() const;
 	/// The keyboard shortcut (usually underlined in the entry)
-	lyx::docstring const shortcut() const;
+	docstring const shortcut() const;
 	/// The complete label, with label and shortcut separated by a '|'
-	lyx::docstring const fulllabel() const { return label_;}
+	docstring const fulllabel() const { return label_;}
 	/// The kind of entry
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
@@ -104,11 +107,11 @@ public:
 	/// returns the status of the lfun associated with this entry
 	void status(FuncStatus const & status) { status_ = status; }
 	/// returns the binding associated to this action
-	lyx::docstring const binding() const;
+	docstring const binding() const;
 	/// the description of the  submenu (if relevant)
-	lyx::docstring const & submenuname() const { return submenuname_; }
+	docstring const & submenuname() const { return submenuname_; }
 	/// set the description of the  submenu
-	void submenuname(lyx::docstring const & name) { submenuname_ = name; }
+	void submenuname(docstring const & name) { submenuname_ = name; }
 	///
 	Menu * submenu() const { return submenu_.get(); }
 	///
@@ -119,11 +122,11 @@ private:
 	///
 	Kind kind_;
 	///
-	lyx::docstring label_;
+	docstring label_;
 	///
 	FuncRequest func_;
 	///
-	lyx::docstring submenuname_;
+	docstring submenuname_;
 	///
 	bool optional_;
 	///
@@ -143,7 +146,7 @@ public:
 	///
 	typedef ItemList::size_type size_type;
 	///
-	explicit Menu(lyx::docstring const & name = lyx::docstring())
+	explicit Menu(docstring const & name = docstring())
 		: name_(name) {}
 	/// Add the menu item unconditionally
 	Menu & add(MenuItem const &);
@@ -153,7 +156,7 @@ public:
 	///
 	Menu & read(LyXLex &);
 	///
-	lyx::docstring const & name() const { return name_; }
+	docstring const & name() const { return name_; }
 	///
 	bool empty() const { return items_.empty(); }
 	/// Clear the menu content.
@@ -181,7 +184,7 @@ private:
 	///
 	ItemList items_;
 	///
-	lyx::docstring name_;
+	docstring name_;
 };
 
 
@@ -201,11 +204,11 @@ public:
 	///
 	void add(Menu const &);
 	///
-	bool hasMenu(lyx::docstring const &) const;
+	bool hasMenu(docstring const &) const;
 	///
-	Menu & getMenu(lyx::docstring const &);
+	Menu & getMenu(docstring const &);
 	///
-	Menu const & getMenu(lyx::docstring const &) const;
+	Menu const & getMenu(docstring const &) const;
 	///
 	Menu const & getMenubar() const;
 	///
@@ -214,7 +217,7 @@ public:
 	    will be removed by expand() in other menus. This is used by
 	    the Qt/Mac code
 	*/
-	void specialMenu(lyx::docstring const &);
+	void specialMenu(docstring const &);
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
@@ -249,5 +252,8 @@ private:
 
 ///
 extern MenuBackend menubackend;
+
+
+} // namespace lyx
 
 #endif /* MENUBACKEND_H */

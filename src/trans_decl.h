@@ -19,6 +19,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 ///
 struct Keyexc {
 	/// character to make exception
@@ -46,5 +49,8 @@ public:
 	///
 	KmodInfo();
 };
+
+
+} // namespace lyx
 
 #endif

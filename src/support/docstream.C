@@ -18,6 +18,11 @@
 #include <iconv.h>
 #include <locale>
 
+
+using lyx::ucs4_codeset;
+using lyx::ucs2_codeset;
+
+
 namespace {
 
 char const * utf8_codeset = "UTF-8";
@@ -183,7 +188,7 @@ private:
 	iconv_t out_cd_;
 };
 
-}
+} // namespace anon
 
 
 namespace lyx {

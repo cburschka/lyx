@@ -16,6 +16,9 @@
 #include <map>
 #include <string>
 
+
+namespace lyx {
+
 class QListView;
 class QListViewItem;
 class QWidgetStack;
@@ -54,5 +57,8 @@ private:
 	/// contains the panes
 	QWidgetStack * stack_;
 };
+
+
+} // namespace lyx
 
 #endif // PANELSTACK_H

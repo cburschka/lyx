@@ -14,9 +14,11 @@
 
 #include "Dialog.h"
 
-class InsetWrapParams;
 
 namespace lyx {
+
+class InsetWrapParams;
+
 namespace frontend {
 
 class ControlWrap : public Dialog::Controller  {

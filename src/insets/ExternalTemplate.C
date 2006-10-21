@@ -21,26 +21,33 @@
 #include "support/package.h"
 #include "support/path.h"
 
-namespace support = lyx::support;
-
 using std::endl;
 using std::for_each;
-
 using std::string;
 using std::ostream;
 using std::vector;
 
-
 namespace lyx {
 namespace external {
 
-namespace {
 
 typedef Translator<TransformID, string> TransformIDTranslator;
-TransformIDTranslator const & transformIDTranslator();
 
-} // namespace anon
+static TransformIDTranslator const initIDTranslator()
+{
+	TransformIDTranslator translator(TransformID(-1), "");
+	translator.addPair(Rotate, "Rotate");
+	translator.addPair(Resize, "Resize");
+	translator.addPair(Clip,   "Clip");
+	translator.addPair(Extra,  "Extra");
+	return translator;
+}
 
+static TransformIDTranslator const & transformIDTranslator()
+{
+	static TransformIDTranslator const translator = initIDTranslator();
+	return translator;
+}
 
 // We have to have dummy default commands for security reasons!
 Template::Template()
@@ -555,27 +562,6 @@ void Template::Format::readFormat(LyXLex & lex)
 		}
 	}
 }
-
-namespace {
-
-TransformIDTranslator const initIDTranslator()
-{
-	TransformIDTranslator translator(TransformID(-1), "");
-	translator.addPair(Rotate, "Rotate");
-	translator.addPair(Resize, "Resize");
-	translator.addPair(Clip,   "Clip");
-	translator.addPair(Extra,  "Extra");
-	return translator;
-}
-
-
-TransformIDTranslator const & transformIDTranslator()
-{
-	static TransformIDTranslator const translator = initIDTranslator();
-	return translator;
-}
-
-} // namespace anon
 
 } // namespace external
 } // namespace lyx

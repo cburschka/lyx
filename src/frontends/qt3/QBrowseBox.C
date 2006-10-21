@@ -305,3 +305,9 @@ void QBrowseBox::moveDown()
 }
 
 #include "QBrowseBox_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

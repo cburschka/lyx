@@ -24,6 +24,9 @@
 #include "support/std_ostream.h"
 
 
+namespace lyx {
+
+
 InsetMathDecoration::InsetMathDecoration(latexkeys const * key)
 	: InsetMathNest(1), key_(key)
 {
@@ -158,3 +161,6 @@ void InsetMathDecoration::validate(LaTeXFeatures & features) const
 		features.require("amsmath");
 	InsetMathNest::validate(features);
 }
+
+
+} // namespace lyx

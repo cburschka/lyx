@@ -30,14 +30,14 @@ using std::vector;
 using std::string;
 
 
-QStringList toQStringList(vector<string> const & v)
+static QStringList toQStringList(vector<string> const & v)
 {
 	QStringList qlist;
 
 	for (size_t i=0; i != v.size(); ++i) {
 		if (v[i].empty())
 			continue;
-		qlist.append(toqstr(v[i]));
+		qlist.append(lyx::toqstr(v[i]));
 	}
 	return qlist;
 }
@@ -150,7 +150,7 @@ void QCitation::downKey(QModelIndex const & index)
 
 QStringList QCitation::citationStyles(int sel)
 {
-	string key = fromqstr(selected_keys_.stringList()[sel]);
+	string const key = fromqstr(selected_keys_.stringList()[sel]);
 	return toQStringList(getCiteStrings(key));
 }
 

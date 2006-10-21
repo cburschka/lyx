@@ -21,6 +21,9 @@
 #include <vector>
 #include <map>
 
+
+namespace lyx {
+
 class Context;
 
 /// in preamble.C
@@ -112,5 +115,8 @@ extern std::string getParentFilePath();
  *  \return true if the conversion was successful, else false.
  */
 bool tex2lyx(std::string const & infilename, std::string const & outfilename);
+
+
+} // namespace lyx
 
 #endif

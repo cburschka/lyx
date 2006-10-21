@@ -16,6 +16,9 @@
 #include "MathMLStream.h"
 #include "MathStream.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -52,7 +55,7 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, lyx::from_utf8(name_), dim);
+	mathed_string_dim(mi.base.font, from_utf8(name_), dim);
 	dim_ = dim;
 }
 
@@ -61,9 +64,9 @@ void InsetMathUnknown::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME UNICODE
 	if (black_)
-		drawStrBlack(pi, x, y, lyx::from_utf8(name_));
+		drawStrBlack(pi, x, y, from_utf8(name_));
 	else
-		drawStrRed(pi, x, y, lyx::from_utf8(name_));
+		drawStrRed(pi, x, y, from_utf8(name_));
 	setPosCache(pi, x, y);
 }
 
@@ -102,3 +105,6 @@ void InsetMathUnknown::octave(OctaveStream & os) const
 {
 	os << name_;
 }
+
+
+} // namespace lyx

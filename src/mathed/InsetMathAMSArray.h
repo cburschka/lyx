@@ -15,6 +15,8 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
 /// Inset for things like [pbvV]matrix, psmatrix etc
 class InsetMathAMSArray : public InsetMathGrid {
 public:
@@ -52,5 +54,7 @@ private:
 	///
 	std::string name_;
 };
+
+} // namespace lyx
 
 #endif

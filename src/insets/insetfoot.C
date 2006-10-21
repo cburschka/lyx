@@ -23,8 +23,8 @@
 
 #include "support/std_ostream.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -89,3 +89,6 @@ int InsetFoot::docbook(Buffer const & buf, odocstream & os,
 
 	return i;
 }
+
+
+} // namespace lyx

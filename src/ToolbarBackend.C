@@ -23,11 +23,13 @@
 
 #include "frontends/controllers/ControlMath.h"
 
-using lyx::docstring;
-using lyx::support::compare_ascii_no_case;
-using lyx::support::getVectorFromString;
-using lyx::support::libFileSearch;
-using lyx::support::subst;
+
+namespace lyx {
+
+using support::compare_ascii_no_case;
+using support::getVectorFromString;
+using support::libFileSearch;
+using support::subst;
 
 using std::endl;
 using std::make_pair;
@@ -56,7 +58,7 @@ struct keyword_item toolTags[TO_LAST - 1] = {
 	{ "separator", TO_SEPARATOR }
 };
 
-} // end of anon namespace
+} // namespace anon
 
 
 ToolbarBackend::ToolbarBackend()
@@ -214,25 +216,25 @@ void ToolbarBackend::add(Toolbar & tb,
 
 string const ToolbarBackend::getIcon(FuncRequest const & f)
 {
-	using lyx::frontend::find_xpm;
+	using frontend::find_xpm;
 
 	string fullname;
 
 	switch (f.action) {
 	case LFUN_MATH_INSERT:
 		if (!f.argument().empty())
-			fullname = find_xpm(lyx::to_utf8(f.argument()).substr(1));
+			fullname = find_xpm(to_utf8(f.argument()).substr(1));
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
-		fullname = find_xpm(lyx::to_utf8(f.argument()));
+		fullname = find_xpm(to_utf8(f.argument()));
 		break;
 	default:
 		string const name = lyxaction.getActionName(f.action);
 		string xpm_name(name);
 
 		if (!f.argument().empty())
-			xpm_name = subst(name + ' ' + lyx::to_utf8(f.argument()), ' ', '_');
+			xpm_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
 
 		fullname = libFileSearch("images", xpm_name, "xpm");
 
@@ -250,6 +252,9 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 
 	lyxerr[Debug::GUI] << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
-			   << '(' << lyx::to_utf8(f.argument()) << ")\"" << endl;
+			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
 	return libFileSearch("images", "unknown", "xpm");
 }
+
+
+} // namespace lyx

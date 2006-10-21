@@ -23,8 +23,10 @@
 #include "support/lstrings.h"
 
 
-using lyx::docstring;
-using lyx::support::bformat;
+namespace lyx {
+
+using support::bformat;
+
 using std::string;
 using std::auto_ptr;
 
@@ -67,7 +69,7 @@ bool InsetMathSubstack::getStatus(LCursor & cur, FuncRequest const & cmd,
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
-				lyx::from_utf8(N_("Can't add vertical grid lines in '%1$s'")), lyx::from_utf8(name)));
+				from_utf8(N_("Can't add vertical grid lines in '%1$s'")), lyx::from_utf8(name)));
 			flag.enabled(false);
 			return true;
 		}
@@ -114,3 +116,6 @@ void InsetMathSubstack::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathGrid::validate(features);
 }
+
+
+} // namespace lyx

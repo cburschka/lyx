@@ -22,7 +22,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::endl;
 using std::ostringstream;
@@ -84,7 +85,7 @@ void Counters::newCounter(docstring const & newc)
 	// if already exist give warning and return
 	if (cit != counterList.end()) {
 		lyxerr << "New counter already exists: "
-		       << lyx::to_utf8(newc)
+		       << to_utf8(newc)
 		       << endl;
 		return;
 	}
@@ -100,7 +101,7 @@ void Counters::newCounter(docstring const & newc,
 	// if already existant give warning and return
 	if (cit != counterList.end()) {
 		lyxerr << "New counter already exists: "
-		       << lyx::to_utf8(newc)
+		       << to_utf8(newc)
 		       << endl;
 		return;
 	}
@@ -109,7 +110,7 @@ void Counters::newCounter(docstring const & newc,
 	// if not give warning and return
 	if (it == counterList.end()) {
 		lyxerr << "Master counter does not exist: "
-		       << lyx::to_utf8(masterc)
+		       << to_utf8(masterc)
 		       << endl;
 		return;
 	}
@@ -123,7 +124,7 @@ void Counters::set(docstring const & ctr, int const val)
 	CounterList::iterator const it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "set: Counter does not exist: "
-		       << lyx::to_utf8(ctr) << endl;
+		       << to_utf8(ctr) << endl;
 		return;
 	}
 	it->second.set(val);
@@ -135,7 +136,7 @@ void Counters::addto(docstring const & ctr, int const val)
 	CounterList::iterator const it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "addto: Counter does not exist: "
-		       << lyx::to_utf8(ctr) << endl;
+		       << to_utf8(ctr) << endl;
 		return;
 	}
 	it->second.addto(val);
@@ -147,7 +148,7 @@ int Counters::value(docstring const & ctr) const
 	CounterList::const_iterator const cit = counterList.find(ctr);
 	if (cit == counterList.end()) {
 		lyxerr << "value: Counter does not exist: "
-		       << lyx::to_utf8(ctr) << endl;
+		       << to_utf8(ctr) << endl;
 		return 0;
 	}
 	return cit->second.value();
@@ -159,7 +160,7 @@ void Counters::step(docstring const & ctr)
 	CounterList::iterator it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "step: Counter does not exist: "
-		       << lyx::to_utf8(ctr) << endl;
+		       << to_utf8(ctr) << endl;
 		return;
 	}
 
@@ -251,8 +252,8 @@ docstring const lowerromanCounter(int const n)
 	};
 
 	if (n < 1 || n > 20)
-		return lyx::from_ascii("??");
-	return lyx::from_ascii(roman[n - 1]);
+		return from_ascii("??");
+	return from_ascii(roman[n - 1]);
 }
 
 
@@ -266,8 +267,8 @@ docstring const romanCounter(int const n)
 	};
 
 	if (n < 1 || n > 20)
-		return lyx::from_ascii("??");
-	return lyx::from_ascii(roman[n - 1]);
+		return from_ascii("??");
+	return from_ascii(roman[n - 1]);
 }
 
 } // namespace anon
@@ -278,7 +279,7 @@ docstring Counters::labelItem(docstring const & ctr,
 {
 	if (counterList.find(ctr) == counterList.end()) {
 		lyxerr << "Counter "
-		       << lyx::to_utf8(ctr)
+		       << to_utf8(ctr)
 		       << " does not exist." << endl;
 		return docstring();
 	}
@@ -329,3 +330,6 @@ docstring Counters::counterLabel(docstring const & format)
 	//lyxerr << "counterLabel: " << format  << " -> "	<< label << endl;
 	return label;
 }
+
+
+} // namespace lyx

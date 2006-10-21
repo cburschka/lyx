@@ -33,12 +33,11 @@
 
 #include <sstream>
 
-using lyx::support::lowercase;
-using lyx::support::uppercase;
-using lyx::support::split;
+namespace lyx {
 
-using lyx::pit_type;
-using lyx::pos_type;
+using support::lowercase;
+using support::uppercase;
+using support::split;
 
 using std::advance;
 using std::ostringstream;
@@ -57,7 +56,7 @@ bool parse_bool(string & howto)
 }
 
 
-class MatchString : public std::binary_function<Paragraph, lyx::pos_type, bool>
+class MatchString : public std::binary_function<Paragraph, pos_type, bool>
 {
 public:
 	MatchString(string const & str, bool cs, bool mw)
@@ -65,11 +64,11 @@ public:
 	{}
 
 	// returns true if the specified string is at the specified position
-	bool operator()(Paragraph const & par, lyx::pos_type pos) const
+	bool operator()(Paragraph const & par, pos_type pos) const
 	{
 		string::size_type const size = str.length();
-		lyx::pos_type i = 0;
-		lyx::pos_type const parsize = par.size();
+		pos_type i = 0;
+		pos_type const parsize = par.size();
 		for (i = 0; pos + i < parsize; ++i) {
 			if (string::size_type(i) >= size)
 				break;
@@ -86,7 +85,7 @@ public:
 		if (mw) {
 			if (pos > 0 && par.isLetter(pos - 1))
 				return false;
-			if (pos + lyx::pos_type(size) < parsize
+			if (pos + pos_type(size) < parsize
 			    && par.isLetter(pos + size))
 				return false;
 		}
@@ -137,7 +136,7 @@ bool findChange(DocIterator & cur)
 bool searchAllowed(BufferView * bv, string const & str)
 {
 	if (str.empty()) {
-		lyx::frontend::Alert::error(_("Search error"),
+		frontend::Alert::error(_("Search error"),
 		                            _("Search string is empty"));
 		return false;
 	}
@@ -182,7 +181,7 @@ int replaceAll(BufferView * bv,
 
 	DocIterator cur = doc_iterator_begin(buf.inset());
 	while (findForward(cur, match)) {
-		lyx::pos_type pos = cur.pos();
+		pos_type pos = cur.pos();
 		LyXFont const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.paragraph().erase(pos, pos + ssize,
@@ -209,7 +208,7 @@ bool stringSelected(BufferView * bv, string const & searchstr,
 	// if nothing selected or selection does not equal search
 	// string search and select next occurance and return
 	string const & str1 = searchstr;
-	string const str2 = lyx::to_utf8(bv->cursor().selectionAsString(false));
+	string const str2 = to_utf8(bv->cursor().selectionAsString(false));
 	if ((cs && str1 != str2) || lowercase(str1) != lowercase(str2)) {
 		find(bv, searchstr, cs, mw, fw);
 		return false;
@@ -229,7 +228,7 @@ int replace(BufferView * bv, string const & searchstr,
 		return 0;
 
 	LCursor & cur = bv->cursor();
-	lyx::cap::replaceSelectionWithString(cur, replacestr, fw);
+	cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();
@@ -239,9 +238,6 @@ int replace(BufferView * bv, string const & searchstr,
 
 } // namespace anon
 
-
-namespace lyx {
-namespace find {
 
 string const find2string(string const & search,
 			 bool casesensitive, bool matchword, bool forward)
@@ -281,13 +277,13 @@ void find(BufferView * bv, FuncRequest const & ev)
 	// "<search>
 	//  <casesensitive> <matchword> <forward>"
 	string search;
-	string howto = split(lyx::to_utf8(ev.argument()), search, '\n');
+	string howto = split(to_utf8(ev.argument()), search, '\n');
 
 	bool casesensitive = parse_bool(howto);
 	bool matchword     = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	bool const found = ::find(bv, search,
+	bool const found = find(bv, search,
 				  casesensitive, matchword, forward);
 
 	if (!found)
@@ -306,9 +302,9 @@ void replace(BufferView * bv, FuncRequest const & ev)
 	//  <replace>
 	//  <casesensitive> <matchword> <all> <forward>"
 	string search;
-	string replace;
-	string howto = split(lyx::to_utf8(ev.argument()), search, '\n');
-	howto = split(howto, replace, '\n');
+	string rplc;
+	string howto = split(to_utf8(ev.argument()), search, '\n');
+	howto = split(howto, rplc, '\n');
 
 	bool casesensitive = parse_bool(howto);
 	bool matchword     = parse_bool(howto);
@@ -318,8 +314,8 @@ void replace(BufferView * bv, FuncRequest const & ev)
 	Buffer * buf = bv->buffer();
 
 	int const replace_count = all
-		? ::replaceAll(bv, search, replace, casesensitive, matchword)
-		: ::replace(bv, search, replace, casesensitive, matchword, forward);
+		? replaceAll(bv, search, rplc, casesensitive, matchword)
+		: replace(bv, search, rplc, casesensitive, matchword, forward);
 
 	if (replace_count == 0) {
 		// emit message signal.
@@ -370,5 +366,4 @@ bool findNextChange(BufferView * bv)
 	return true;
 }
 
-} // find namespace
 } // lyx namespace

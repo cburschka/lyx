@@ -12,9 +12,10 @@
 #ifndef LYX_FONTLOADER_H
 #define LYX_FONTLOADER_H
 
+namespace lyx {
+
 class LyXFont;
 
-namespace lyx {
 namespace frontend {
 
 class FontMetrics;
@@ -38,10 +39,12 @@ public:
 	virtual FontMetrics const & metrics(LyXFont const & f) = 0;
 };
 
+
 } // namespace frontend
-} // namespace lyx
 
 /// Implementation is in Application.C
-extern lyx::frontend::FontLoader & theFontLoader();
+extern frontend::FontLoader & theFontLoader();
+
+} // namespace lyx
 
 #endif // QFONT_LOADER_H

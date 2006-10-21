@@ -5,3 +5,9 @@
 //(tex2lyx/lengthcommon.C) is not present in POTFILES.in we do a
 // include trick. (Lgb)
 #include "../lengthcommon.C"
+
+
+namespace lyx {
+
+
+} // namespace lyx

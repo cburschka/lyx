@@ -15,6 +15,9 @@
 #include "messages.h"
 
 
+namespace lyx {
+
+
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>
 #endif
@@ -59,3 +62,6 @@ void locale_init()
 }
 
 #endif
+
+
+} // namespace lyx

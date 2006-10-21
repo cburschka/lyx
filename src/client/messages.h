@@ -14,6 +14,9 @@
 #include <boost/scoped_ptr.hpp>
 #include <string>
 
+
+namespace lyx {
+
 ///
 class Messages {
 public:
@@ -29,5 +32,8 @@ private:
 	class Pimpl;
 	boost::scoped_ptr<Pimpl> pimpl_;
 };
+
+
+} // namespace lyx
 
 #endif

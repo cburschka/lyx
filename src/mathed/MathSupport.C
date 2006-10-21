@@ -27,8 +27,10 @@
 #include <map>
 #include <sstream>
 
-using lyx::docstring;
-using lyx::frontend::Painter;
+
+namespace lyx {
+
+using frontend::Painter;
 
 using std::string;
 using std::max;
@@ -365,16 +367,16 @@ deco_struct const * search_deco(string const & name)
 } // namespace anon
 
 
-void mathed_char_dim(LyXFont const & font, lyx::char_type c, Dimension & dim)
+void mathed_char_dim(LyXFont const & font, char_type c, Dimension & dim)
 {
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
+	frontend::FontMetrics const & fm = theFontMetrics(font);
 	dim.des = fm.descent(c);
 	dim.asc = fm.ascent(c);
 	dim.wid = fm.width(c);
 }
 
 
-int mathed_char_width(LyXFont const & font, lyx::char_type c)
+int mathed_char_width(LyXFont const & font, char_type c)
 {
 	return theFontMetrics(font).width(c);
 }
@@ -382,7 +384,7 @@ int mathed_char_width(LyXFont const & font, lyx::char_type c)
 
 void mathed_string_dim(LyXFont const & font, docstring const & s, Dimension & dim)
 {
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
+	frontend::FontMetrics const & fm = theFontMetrics(font);
 	dim.asc = 0;
 	dim.des = 0;
 	for (docstring::const_iterator it = s.begin(); it != s.end(); ++it) {
@@ -487,7 +489,7 @@ void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & str)
 
 void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 {
-	lyx::frontend::FontMetrics const & fm =	theFontMetrics(font);
+	frontend::FontMetrics const & fm = theFontMetrics(font);
 	asc = fm.maxAscent();
 	des = fm.maxDescent();
 }
@@ -671,35 +673,38 @@ void augmentFont(LyXFont & font, string const & name)
 
 string asString(MathArray const & ar)
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	WriteStream ws(os);
 	ws << ar;
 	// FIXME UNICODE
-	return lyx::to_utf8(os.str());
+	return to_utf8(os.str());
 }
 
 
 void asArray(docstring const & str, MathArray & ar)
 {
-	mathed_parse_cell(ar, lyx::to_utf8(str));
+	mathed_parse_cell(ar, to_utf8(str));
 }
 
 
 string asString(InsetMath const & inset)
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	WriteStream ws(os);
 	inset.write(ws);
 	// FIXME UNICODE
-	return lyx::to_utf8(os.str());
+	return to_utf8(os.str());
 }
 
 
 string asString(MathAtom const & at)
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	WriteStream ws(os);
 	at->write(ws);
 	// FIXME UNICODE
-	return lyx::to_utf8(os.str());
+	return to_utf8(os.str());
 }
+
+
+} // namespace lyx

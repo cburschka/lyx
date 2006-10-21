@@ -20,6 +20,9 @@
 #include <algorithm>
 #include <functional>
 
+
+namespace lyx {
+
 /**
  * This class template is used to translate between two elements, specifically
  * it was worked out to translate between an enum and strings when reading
@@ -110,5 +113,8 @@ private:
 	///
 	T2 const default_t2;
 };
+
+
+} // namespace lyx
 
 #endif // TRANSLATOR_H

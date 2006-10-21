@@ -23,6 +23,9 @@
 
 #include <sstream>
 
+
+namespace lyx {
+
 using std::endl;
 using std::istringstream;
 using std::map;
@@ -46,7 +49,7 @@ void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 {
 	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
 	// FIXME UNICODE
-	asArray(lyx::from_utf8(disp_.empty() ? def_ : disp_), inset.cell(0));
+	asArray(from_utf8(disp_.empty() ? def_ : disp_), inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
 	for (DocIterator it = doc_iterator_begin(inset); it; it.forwardChar()) {
@@ -123,3 +126,6 @@ void MacroTable::dump()
 			<< endl;
 	lyxerr << "------------------------------------------" << endl;
 }
+
+
+} // namespace lyx

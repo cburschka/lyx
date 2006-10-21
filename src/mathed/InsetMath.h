@@ -17,6 +17,9 @@
 
 #include "insets/insetbase.h"
 
+
+namespace lyx {
+
 enum HullType {
 	hullNone,
 	hullSimple,
@@ -199,9 +202,12 @@ public:
 ///
 std::ostream & operator<<(std::ostream &, MathAtom const &);
 ///
-lyx::odocstream & operator<<(lyx::odocstream &, MathAtom const &);
+odocstream & operator<<(odocstream &, MathAtom const &);
 
 // initialize math
 void initMath();
+
+
+} // namespace lyx
 
 #endif

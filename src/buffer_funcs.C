@@ -48,21 +48,22 @@
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
 
+
+namespace lyx {
+
 using namespace std;
 
-using lyx::pit_type;
-using lyx::docstring;
-using lyx::support::bformat;
-using lyx::support::libFileSearch;
-using lyx::support::makeDisplayPath;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::unlink;
+using support::bformat;
+using support::libFileSearch;
+using support::makeDisplayPath;
+using support::onlyFilename;
+using support::onlyPath;
+using support::unlink;
 
 using std::min;
 using std::string;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
 
 namespace {
@@ -234,8 +235,8 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr,
 							  pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
-		errorList.push_back(ErrorItem(lyx::from_utf8(cit->error_desc),
-			lyx::from_utf8(cit->error_text), id_start, pos_start, pos_end));
+		errorList.push_back(ErrorItem(from_utf8(cit->error_desc),
+			from_utf8(cit->error_text), id_start, pos_start, pos_end));
 	}
 }
 
@@ -275,9 +276,9 @@ int countWords(DocIterator const & from, DocIterator const & to)
 
 namespace {
 
-lyx::depth_type getDepth(DocIterator const & it)
+depth_type getDepth(DocIterator const & it)
 {
-	lyx::depth_type depth = 0;
+	depth_type depth = 0;
 	for (size_t i = 0 ; i < it.depth() ; ++i)
 		if (!it[i].inset().inMathed())
 			depth += it[i].paragraph().getDepth() + 1;
@@ -285,7 +286,7 @@ lyx::depth_type getDepth(DocIterator const & it)
 	return depth - 1;
 }
 
-lyx::depth_type getItemDepth(ParIterator const & it)
+depth_type getItemDepth(ParIterator const & it)
 {
 	Paragraph const & par = *it;
 	LYX_LABEL_TYPES const labeltype = par.layout()->labeltype;
@@ -294,7 +295,7 @@ lyx::depth_type getItemDepth(ParIterator const & it)
 		return 0;
 
 	// this will hold the lowest depth encountered up to now.
-	lyx::depth_type min_depth = getDepth(it);
+	depth_type min_depth = getDepth(it);
 	ParIterator prev_it = it;
 	while (true) {
 		if (prev_it.pit())
@@ -311,7 +312,7 @@ lyx::depth_type getItemDepth(ParIterator const & it)
 		// We search for the first paragraph with same label
 		// that is not more deeply nested.
 		Paragraph & prev_par = *prev_it;
-		lyx::depth_type const prev_depth = getDepth(prev_it);
+		depth_type const prev_depth = getDepth(prev_it);
 		if (labeltype == prev_par.layout()->labeltype) {
 			if (prev_depth < min_depth) {
 				return prev_par.itemdepth + 1;
@@ -334,7 +335,7 @@ bool needEnumCounterReset(ParIterator const & it)
 {
 	Paragraph const & par = *it;
 	BOOST_ASSERT(par.layout()->labeltype == LABEL_ENUMERATE);
-	lyx::depth_type const cur_depth = par.getDepth();
+	depth_type const cur_depth = par.getDepth();
 	ParIterator prev_it = it;
 	while (prev_it.pit()) {
 		--prev_it.top().pit();
@@ -399,16 +400,16 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		docstring itemlabel;
 		switch (par.itemdepth) {
 		case 0:
-			itemlabel = lyx::char_type(0x2022);
+			itemlabel = char_type(0x2022);
 			break;
 		case 1:
-			itemlabel = lyx::char_type(0x2013);
+			itemlabel = char_type(0x2013);
 			break;
 		case 2:
-			itemlabel = lyx::char_type(0x2217);
+			itemlabel = char_type(0x2217);
 			break;
 		case 3:
-			itemlabel += lyx::char_type(0x2219); // or 0x00b7
+			itemlabel += char_type(0x2219); // or 0x00b7
 			break;
 		}
 
@@ -417,7 +418,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		// FIXME
 		// Yes I know this is a really, really! bad solution
 		// (Lgb)
-		docstring enumcounter = lyx::from_ascii("enum");
+		docstring enumcounter = from_ascii("enum");
 
 		switch (par.itemdepth) {
 		case 2:
@@ -463,8 +464,8 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 		par.params().labelString(counters.counterLabel(buf.B_(format)));
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		counters.step(lyx::from_ascii("bibitem"));
-		int number = counters.value(lyx::from_ascii("bibitem"));
+		counters.step(from_ascii("bibitem"));
+		int number = counters.value(from_ascii("bibitem"));
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
 		// FIXME UNICODE
@@ -488,7 +489,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(type);
 			// FIXME UNICODE
-			counters.step(lyx::from_ascii(fl.type()));
+			counters.step(from_ascii(fl.type()));
 
 			// Doesn't work... yet.
 			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
@@ -586,7 +587,7 @@ void updateLabels(Buffer const & buf)
 		setLabel(buf, it);
 	}
 
-	lyx::toc::updateToc(buf);
+	toc::updateToc(buf);
 }
 
 
@@ -607,10 +608,13 @@ docstring expandLabel(Buffer const & buf,
 		if (j != docstring::npos) {
 			docstring parent(fmt, i + 1, j - i - 1);
 			// FIXME UNICODE
-			docstring label = expandLabel(buf, tclass[lyx::to_utf8(parent)], appendix);
+			docstring label = expandLabel(buf, tclass[to_utf8(parent)], appendix);
 			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
 		}
 	}
 
 	return tclass.counters().counterLabel(fmt);
 }
+
+
+} // namespace lyx

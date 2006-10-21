@@ -70,17 +70,16 @@
 #include <clocale>
 #include <sstream>
 
-using lyx::char_type;
-using lyx::docstring;
-using lyx::pos_type;
 
-using lyx::cap::copySelection;
-using lyx::cap::cutSelection;
-using lyx::cap::pasteSelection;
-using lyx::cap::replaceSelection;
+namespace lyx {
 
-using lyx::support::isStrUnsignedInt;
-using lyx::support::token;
+using cap::copySelection;
+using cap::cutSelection;
+using cap::pasteSelection;
+using cap::replaceSelection;
+
+using support::isStrUnsignedInt;
+using support::token;
 
 using std::endl;
 using std::string;
@@ -137,7 +136,7 @@ namespace {
 	void mathDispatch(LCursor & cur, FuncRequest const & cmd, bool display)
 	{
 		recordUndo(cur);
-		string sel = lyx::to_utf8(cur.selectionAsString(false));
+		string sel = to_utf8(cur.selectionAsString(false));
 		//lyxerr << "selection is: '" << sel << "'" << endl;
 
 		// It may happen that sel is empty but there is a selection
@@ -179,7 +178,7 @@ namespace {
 			} else
 				cur.insert(new MathMacroTemplate(is));
 		}
-		cur.message(lyx::from_utf8(N_("Math editor mode")));
+		cur.message(from_utf8(N_("Math editor mode")));
 	}
 
 } // namespace anon
@@ -201,7 +200,7 @@ string const freefont2string()
 bool LyXText::cursorPrevious(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
-	lyx::pit_type cpar = cur.pit();
+	pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
 
@@ -224,7 +223,7 @@ bool LyXText::cursorPrevious(LCursor & cur)
 bool LyXText::cursorNext(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
-	lyx::pit_type cpar = cur.pit();
+	pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
 	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
@@ -247,7 +246,7 @@ namespace {
 
 void specialChar(LCursor & cur, InsetSpecialChar::Kind kind)
 {
-	lyx::cap::replaceSelection(cur);
+	cap::replaceSelection(cur);
 	cur.insert(new InsetSpecialChar(kind));
 	cur.posRight();
 }
@@ -554,7 +553,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_SELECT: {
-		selectWord(cur, lyx::WHOLE_WORD);
+		selectWord(cur, WHOLE_WORD);
 		finishChange(cur, true);
 		break;
 	}
@@ -562,7 +561,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BREAK_LINE: {
 		// Not allowed by LaTeX (labels or empty par)
 		if (cur.pos() > cur.paragraph().beginOfBody()) {
-			lyx::cap::replaceSelection(cur);
+			cap::replaceSelection(cur);
 			cur.insert(new InsetNewline);
 			cur.posRight();
 			moveCursor(cur, false);
@@ -634,14 +633,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_BREAK_PARAGRAPH:
-		lyx::cap::replaceSelection(cur);
+		cap::replaceSelection(cur);
 		breakParagraph(cur, 0);
 		cur.resetAnchor();
 		bv->switchKeyMap();
 		break;
 
 	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
-		lyx::cap::replaceSelection(cur);
+		cap::replaceSelection(cur);
 		breakParagraph(cur, 1);
 		cur.resetAnchor();
 		bv->switchKeyMap();
@@ -650,7 +649,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BREAK_PARAGRAPH_SKIP: {
 		// When at the beginning of a paragraph, remove
 		// indentation.  Otherwise, do the same as LFUN_BREAK_PARAGRAPH.
-		lyx::cap::replaceSelection(cur);
+		cap::replaceSelection(cur);
 		if (cur.pos() == 0)
 			cur.paragraph().params().labelWidthString(docstring());
 		else
@@ -667,7 +666,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cur_spacing == Spacing::Other)
 			cur_value = par.params().spacing().getValueAsString();
 
-		istringstream is(lyx::to_utf8(cmd.argument()));
+		istringstream is(to_utf8(cmd.argument()));
 		string tmp;
 		is >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -691,8 +690,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		} else if (tmp == "default") {
 			new_spacing = Spacing::Default;
 		} else {
-			lyxerr << lyx::to_utf8(_("Unknown spacing argument: "))
-			       << lyx::to_utf8(cmd.argument()) << endl;
+			lyxerr << to_utf8(_("Unknown spacing argument: "))
+			       << to_utf8(cmd.argument()) << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value)
 			par.params().spacing(Spacing(new_spacing, new_value));
@@ -765,10 +764,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PASTE:
 		cur.message(_("Paste"));
-		lyx::cap::replaceSelection(cur);
-		if (isStrUnsignedInt(lyx::to_utf8(cmd.argument())))
+		cap::replaceSelection(cur);
+		if (isStrUnsignedInt(to_utf8(cmd.argument())))
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
-			convert<unsigned int>(lyx::to_utf8(cmd.argument())));
+			convert<unsigned int>(to_utf8(cmd.argument())));
 		else
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
 			0);
@@ -789,7 +788,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_SERVER_GET_XY:
-		cur.message(lyx::from_utf8(
+		cur.message(from_utf8(
 			convert<string>(cursorX(cur.top(), cur.boundary())) + ' '
 			  + convert<string>(cursorY(cur.top(), cur.boundary()))));
 		break;
@@ -797,11 +796,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SERVER_SET_XY: {
 		int x = 0;
 		int y = 0;
-		istringstream is(lyx::to_utf8(cmd.argument()));
+		istringstream is(to_utf8(cmd.argument()));
 		is >> x >> y;
 		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"
-			       << lyx::to_utf8(cmd.argument()) << std::endl;
+			       << to_utf8(cmd.argument()) << std::endl;
 		else
 			setCursorFromCoordinates(cur, x, y);
 		break;
@@ -809,20 +808,20 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_FONT:
 		if (current_font.shape() == LyXFont::ITALIC_SHAPE)
-			cur.message(lyx::from_ascii("E"));
+			cur.message(from_ascii("E"));
 		else if (current_font.shape() == LyXFont::SMALLCAPS_SHAPE)
-			cur.message(lyx::from_ascii("N"));
+			cur.message(from_ascii("N"));
 		else
-			cur.message(lyx::from_ascii("0"));
+			cur.message(from_ascii("0"));
 		break;
 
 	case LFUN_SERVER_GET_LAYOUT:
-		cur.message(lyx::from_utf8(cur.paragraph().layout()->name()));
+		cur.message(from_utf8(cur.paragraph().layout()->name()));
 		break;
 
 	case LFUN_LAYOUT: {
 		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
-		  << lyx::to_utf8(cmd.argument()) << endl;
+		  << to_utf8(cmd.argument()) << endl;
 
 		// This is not the good solution to the empty argument
 		// problem, but it will hopefully suffice for 1.2.0.
@@ -837,8 +836,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
 		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
-		bool hasLayout = tclass.hasLayout(lyx::to_utf8(cmd.argument()));
-		string layout = lyx::to_utf8(cmd.argument());
+		bool hasLayout = tclass.hasLayout(to_utf8(cmd.argument()));
+		string layout = to_utf8(cmd.argument());
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
@@ -848,8 +847,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (!hasLayout) {
-			cur.errorMessage(lyx::from_utf8(N_("Layout ")) + cmd.argument() +
-				lyx::from_utf8(N_(" not known")));
+			cur.errorMessage(from_utf8(N_("Layout ")) + cmd.argument() +
+				from_utf8(N_(" not known")));
 			break;
 		}
 
@@ -906,10 +905,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_QUOTE_INSERT: {
-		lyx::cap::replaceSelection(cur);
+		cap::replaceSelection(cur);
 		Paragraph & par = cur.paragraph();
-		lyx::pos_type pos = cur.pos();
-		lyx::char_type c;
+		pos_type pos = cur.pos();
+		char_type c;
 		if (pos == 0)
 			c = ' ';
 		else if (cur.prevInset() && cur.prevInset()->isSpace())
@@ -922,7 +921,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		BufferParams const & bufparams = bv->buffer()->params();
 		if (!style->pass_thru
 		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
-			string arg = lyx::to_utf8(cmd.argument());
+			string arg = to_utf8(cmd.argument());
 			if (arg == "single")
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
@@ -941,10 +940,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_DATE_INSERT:
 		if (cmd.argument().empty())
 			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT,
-				lyx::formatted_time(lyx::current_time())));
+				formatted_time(current_time())));
 		else
 			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT,
-				lyx::formatted_time(lyx::current_time(), lyx::to_utf8(cmd.argument()))));
+				formatted_time(current_time(), to_utf8(cmd.argument()))));
 		break;
 
 	case LFUN_MOUSE_TRIPLE:
@@ -960,7 +959,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_DOUBLE:
 		if (cmd.button() == mouse_button::button1) {
-			selectWord(cur, lyx::WHOLE_WORD_STRICT);
+			selectWord(cur, WHOLE_WORD_STRICT);
 			bv->cursor() = cur;
 			theSelection().haveSelection(cur.selection());
 		}
@@ -1103,7 +1102,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Try to generate a valid label
 		p["name"] = (cmd.argument().empty()) ?
 			// FIXME UNICODE
-			lyx::from_utf8(cur.getPossibleLabel()) :
+			from_utf8(cur.getPossibleLabel()) :
 			cmd.argument();
 		string const data = InsetCommandMailer::params2string("label", p);
 
@@ -1203,9 +1202,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MACRO:
 		if (cmd.argument().empty())
-			cur.errorMessage(lyx::from_utf8(N_("Missing argument")));
+			cur.errorMessage(from_utf8(N_("Missing argument")));
 		else {
-			string s = lyx::to_utf8(cmd.argument());
+			string s = to_utf8(cmd.argument());
 			string const s1 = token(s, ' ', 1);
 			int const nargs = s1.empty() ? 0 : convert<int>(s1);
 			string const s2 = token(s, ' ', 2);
@@ -1290,13 +1289,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_FONT_SIZE: {
 		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLyXSize(lyx::to_utf8(cmd.argument()));
+		font.setLyXSize(to_utf8(cmd.argument()));
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
 	case LFUN_LANGUAGE: {
-		Language const * lang = languages.getLanguage(lyx::to_utf8(cmd.argument()));
+		Language const * lang = languages.getLanguage(to_utf8(cmd.argument()));
 		if (!lang)
 			break;
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -1316,7 +1315,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_FREE_UPDATE: {
 		LyXFont font;
 		bool toggle;
-		if (bv_funcs::string2font(lyx::to_utf8(cmd.argument()), font, toggle)) {
+		if (bv_funcs::string2font(to_utf8(cmd.argument()), font, toggle)) {
 			freefont = font;
 			toggleall = toggle;
 			toggleAndShow(cur, this, freefont, toggleall);
@@ -1390,7 +1389,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_FLOAT_LIST: {
 		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
-		if (tclass.floats().typeExist(lyx::to_utf8(cmd.argument()))) {
+		if (tclass.floats().typeExist(to_utf8(cmd.argument()))) {
 			// not quite sure if we want this...
 			recordUndo(cur);
 			cur.clearSelection();
@@ -1403,11 +1402,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 			setLayout(cur, tclass.defaultLayoutName());
 			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
-			insertInset(cur, new InsetFloatList(lyx::to_utf8(cmd.argument())));
+			insertInset(cur, new InsetFloatList(to_utf8(cmd.argument())));
 			cur.posRight();
 		} else {
 			lyxerr << "Non-existent float type: "
-			       << lyx::to_utf8(cmd.argument()) << endl;
+			       << to_utf8(cmd.argument()) << endl;
 		}
 		break;
 	}
@@ -1429,11 +1428,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
-				selectWordWhenUnderCursor(cur, lyx::WHOLE_WORD);
+				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				arg = cur.selectionAsString(false);
 			}
 		}
-		bv->showDialogWithData("thesaurus", lyx::to_utf8(arg));
+		bv->showDialogWithData("thesaurus", to_utf8(arg));
 		break;
 	}
 
@@ -1441,7 +1440,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Given data, an encoding of the ParagraphParameters
 		// generated in the Paragraph dialog, this function sets
 		// the current paragraph appropriately.
-		istringstream is(lyx::to_utf8(cmd.argument()));
+		istringstream is(to_utf8(cmd.argument()));
 		LyXLex lex(0, 0);
 		lex.setStream(is);
 		ParagraphParameters params;
@@ -1450,7 +1449,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		setParagraph(cur,
 			     params.spacing(),
 			     params.align(),
-			     lyx::to_ascii(params.labelWidthString()),
+			     to_ascii(params.labelWidthString()),
 			     params.noindent());
 		cur.message(_("Paragraph layout set"));
 		break;
@@ -1692,7 +1691,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_PASTE:
-		enable = lyx::cap::numberOfSelections() > 0;
+		enable = cap::numberOfSelections() > 0;
 		break;
 
 	case LFUN_PARAGRAPH_MOVE_UP:
@@ -1821,3 +1820,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	flag.enabled(enable);
 	return true;
 }
+
+
+} // namespace lyx

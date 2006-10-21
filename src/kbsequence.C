@@ -21,6 +21,9 @@
 #include "frontends/LyXKeySym.h"
 #include "frontends/LyXKeySymFactory.h"
 
+
+namespace lyx {
+
 using std::make_pair;
 using std::string;
 
@@ -157,7 +160,7 @@ string const kb_sequence::printOptions() const
 	if (!curmap)
 		return buf;
 
-	buf += lyx::to_utf8(_("   options: "));
+	buf += to_utf8(_("   options: "));
 	buf += curmap->print();
 	return buf;
 }
@@ -180,3 +183,6 @@ void kb_sequence::clear()
 	sequence.clear();
 	reset();
 }
+
+
+} // namespace lyx

@@ -22,6 +22,9 @@
 #include <boost/bind.hpp>
 
 
+namespace lyx {
+
+
 using std::string;
 using lyx::frontend::Dialog;
 
@@ -245,3 +248,6 @@ void Dialogs::checkStatus()
 			dialog->checkStatus();
 	}
 }
+
+
+} // namespace lyx

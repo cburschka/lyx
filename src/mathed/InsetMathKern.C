@@ -16,6 +16,9 @@
 #include "MathSupport.h"
 #include "dimension.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -69,3 +72,6 @@ void InsetMathKern::normalize(NormalStream & os) const
 {
 	os << "[kern " << wid_.asLatexString() << ']';
 }
+
+
+} // namespace lyx

@@ -53,26 +53,27 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::addName;
-using lyx::support::absolutePath;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::contains;
-using lyx::support::copy;
-using lyx::support::FileName;
-using lyx::support::getFileContents;
-using lyx::support::isFileReadable;
-using lyx::support::isLyXFilename;
-using lyx::support::latex_path;
-using lyx::support::makeAbsPath;
-using lyx::support::makeDisplayPath;
-using lyx::support::makeRelPath;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::subst;
-using lyx::support::sum;
+
+namespace lyx {
+
+using support::addName;
+using support::absolutePath;
+using support::bformat;
+using support::changeExtension;
+using support::contains;
+using support::copy;
+using support::FileName;
+using support::getFileContents;
+using support::isFileReadable;
+using support::isLyXFilename;
+using support::latex_path;
+using support::makeAbsPath;
+using support::makeDisplayPath;
+using support::makeRelPath;
+using support::onlyFilename;
+using support::onlyPath;
+using support::subst;
+using support::sum;
 
 using std::endl;
 using std::string;
@@ -81,7 +82,7 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 
-namespace Alert = lyx::frontend::Alert;
+namespace Alert = frontend::Alert;
 namespace fs = boost::filesystem;
 
 
@@ -128,7 +129,7 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p("include");
-		InsetIncludeMailer::string2params(lyx::to_utf8(cmd.argument()), p);
+		InsetIncludeMailer::string2params(to_utf8(cmd.argument()), p);
 		if (!p.getCmdName().empty()) {
 			set(p, cur.buffer());
 			cur.buffer().updateBibfilesCache();
@@ -222,7 +223,7 @@ string const parentFilename(Buffer const & buffer)
 string const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
-	return makeAbsPath(lyx::to_utf8(params["filename"]),
+	return makeAbsPath(to_utf8(params["filename"]),
 			   onlyPath(parentFilename(buffer)));
 }
 
@@ -259,7 +260,7 @@ void InsetInclude::write(Buffer const &, ostream & os) const
 
 void InsetInclude::write(ostream & os) const
 {
-	os << "Include " << lyx::to_utf8(params_.getCommand()) << '\n'
+	os << "Include " << to_utf8(params_.getCommand()) << '\n'
 	   << "preview " << convert<string>(params_.preview()) << '\n';
 }
 
@@ -301,7 +302,7 @@ docstring const InsetInclude::getScreenLabel(Buffer const &) const
 		temp += "???";
 	else
 		// FIXME: We don't know the encoding of the filename
-		temp += lyx::from_ascii(onlyFilename(lyx::to_utf8(params_["filename"])));
+		temp += from_ascii(onlyFilename(to_utf8(params_["filename"])));
 
 	return temp;
 }
@@ -354,7 +355,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			OutputParams const & runparams) const
 {
-	string incfile(lyx::to_utf8(params_["filename"]));
+	string incfile(to_utf8(params_["filename"]));
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
@@ -394,8 +395,8 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 						"has textclass `%2$s'\n"
 							     "while parent file has textclass `%3$s'."),
 					      makeDisplayPath(included_file),
-					      lyx::from_utf8(tmp->params().getLyXTextClass().name()),
-					      lyx::from_utf8(m_buffer->params().getLyXTextClass().name()));
+					      from_utf8(tmp->params().getLyXTextClass().name()),
+					      from_utf8(m_buffer->params().getLyXTextClass().name()));
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
@@ -423,9 +424,9 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 			if (!copy(included_file, writefile)) {
 				// FIXME UNICODE
 				lyxerr[Debug::LATEX]
-					<< lyx::to_utf8(bformat(_("Could not copy the file\n%1$s\n"
+					<< to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 								  "into the temporary directory."),
-						   lyx::from_utf8(included_file)))
+						   from_utf8(included_file)))
 					<< endl;
 				return 0;
 			}
@@ -437,8 +438,8 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	if (isVerbatim(params_)) {
 		incfile = latex_path(incfile);
 		// FIXME UNICODE
-		os << '\\' << lyx::from_ascii(params_.getCmdName()) << '{'
-		   << lyx::from_utf8(incfile) << '}';
+		os << '\\' << from_ascii(params_.getCmdName()) << '{'
+		   << from_utf8(incfile) << '}';
 	} else if (type(params_) == INPUT) {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
 						      exportfile);
@@ -447,14 +448,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		if (!isLyXFilename(included_file)) {
 			incfile = latex_path(incfile);
 			// FIXME UNICODE
-			os << '\\' << lyx::from_ascii(params_.getCmdName())
-			   << '{' << lyx::from_utf8(incfile) << '}';
+			os << '\\' << from_ascii(params_.getCmdName())
+			   << '{' << from_utf8(incfile) << '}';
 		} else {
 		incfile = changeExtension(incfile, ".tex");
 		incfile = latex_path(incfile);
 			// FIXME UNICODE
-			os << '\\' << lyx::from_ascii(params_.getCmdName())
-			   << '{' << lyx::from_utf8(incfile) <<  '}';
+			os << '\\' << from_ascii(params_.getCmdName())
+			   << '{' << from_utf8(incfile) <<  '}';
 		}
 	} else {
 		runparams.exportdata->addExternalFile(tex_format, writefile,
@@ -465,8 +466,8 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		incfile = changeExtension(incfile, string());
 		incfile = latex_path(incfile);
 		// FIXME UNICODE
-		os << '\\' << lyx::from_ascii(params_.getCmdName()) << '{'
-		   << lyx::from_utf8(incfile) << '}';
+		os << '\\' << from_ascii(params_.getCmdName()) << '{'
+		   << from_utf8(incfile) << '}';
 	}
 
 	return 0;
@@ -478,7 +479,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 {
 	if (isVerbatim(params_)) {
 		// FIXME: We don't know the encoding of the file
-		docstring const str = lyx::from_utf8(
+		docstring const str = from_utf8(
 			getFileContents(includedFilename(buffer, params_)));
 		os << str;
 		// Return how many newlines we issued.
@@ -491,7 +492,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 			  OutputParams const & runparams) const
 {
-	string incfile(lyx::to_utf8(params_["filename"]));
+	string incfile = to_utf8(params_["filename"]);
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
@@ -527,10 +528,10 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
         // FIXME UNICODE
 	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""
-		   << '&' << lyx::from_ascii(include_label) << ';'
+		   << '&' << from_ascii(include_label) << ';'
 		   << "\" format=\"linespecific\">";
 	} else
-                os << '&' << lyx::from_ascii(include_label) << ';';
+                os << '&' << from_ascii(include_label) << ';';
 
 	return 0;
 }
@@ -538,7 +539,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 
 void InsetInclude::validate(LaTeXFeatures & features) const
 {
-	string incfile(lyx::to_utf8(params_["filename"]));
+	string incfile(to_utf8(params_["filename"]));
 	string writefile;
 
 	Buffer const & buffer = features.buffer();
@@ -637,7 +638,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
-		lyx::graphics::PreviewImage const * pimage =
+		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(*mi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
 	}
@@ -668,7 +669,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 
 	bool use_preview = false;
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
-		lyx::graphics::PreviewImage const * pimage =
+		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(*pi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
 	}
@@ -716,7 +717,7 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 
 docstring const latex_string(InsetInclude const & inset, Buffer const & buffer)
 {
-	lyx::odocstringstream os;
+	odocstringstream os;
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
@@ -740,7 +741,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 } // namespace anon
 
 
-void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
+void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 {
 	Buffer const & buffer = ploader.buffer();
 	if (preview_wanted(params(), buffer)) {
@@ -803,3 +804,6 @@ InsetIncludeMailer::params2string(InsetCommandParams const & params)
 	data << "\\end_inset\n";
 	return data.str();
 }
+
+
+} // namespace lyx

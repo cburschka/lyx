@@ -14,6 +14,9 @@
 
 #include "support/std_ostream.h"
 
+
+namespace lyx {
+
 ///
 struct NewLineAndDepth_ {
 	int depth_;
@@ -35,5 +38,8 @@ std::ostream & operator<<(std::ostream & os, NewLineAndDepth_ const & nlad_)
 	os << std::string(nlad_.depth_, ' ');
 	return os;
 }
+
+
+} // namespace lyx
 
 #endif

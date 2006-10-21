@@ -17,6 +17,9 @@
 #include "support/docstring.h"
 
 
+namespace lyx {
+
+
 class RenderButton : public RenderBase
 {
 public:
@@ -30,7 +33,7 @@ public:
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 
 	/// Provide the text for the button
-	void update(lyx::docstring const &, bool editable);
+	void update(docstring const &, bool editable);
 
 	/// The "sensitive area" box, i.e., the button area
 	Box box() const { return button_box_; }
@@ -42,9 +45,12 @@ public:
 
 private:
 	/// The stored data.
-	lyx::docstring text_;
+	docstring text_;
 	bool editable_;
 	Box button_box_;
 };
+
+
+} // namespace lyx
 
 #endif // NOT RENDER_BUTTON_H

@@ -27,6 +27,9 @@
 #include <vector>
 #include <map>
 
+
+namespace lyx {
+
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
@@ -505,3 +508,6 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 }
 
 // }])
+
+
+} // namespace lyx

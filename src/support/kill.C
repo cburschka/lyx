@@ -23,32 +23,31 @@
 
 #include <windows.h>
 #include <cerrno>
-
-using std::endl;
 #endif //_WIN32
 
-int lyx::support::kill(int pid, int sig)
+namespace lyx {
+
+int support::kill(int pid, int sig)
 {
 #ifdef _WIN32
-	if (pid == (int)GetCurrentProcessId()) {
-		return -(raise(sig));
-	} else {
-		HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, TRUE, pid);
-		if (!hProcess) {
-			lyxerr << "kill OpenProcess failed!" << endl;
-			return -1;
-		} else {
-			if (!TerminateProcess(hProcess, sig)){
-				lyxerr << "kill process failed!" << endl;
-				CloseHandle(hProcess);
-				return -1;
-			}
-		CloseHandle(hProcess);
-		}
+	if (pid == (int)GetCurrentProcessId()) 
+		return -raise(sig);
+	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, TRUE, pid);
+	if (!hProcess) {
+		lyxerr << "kill OpenProcess failed!" << std::endl;
+		return -1;
 	}
+	if (!TerminateProcess(hProcess, sig)) {
+		lyxerr << "kill process failed!" << endl;
+		CloseHandle(hProcess);
+		return -1;
+	}
+	CloseHandle(hProcess);
 	return 0;
-
 #else
 	return ::kill(pid, sig);
 #endif
 }
+
+
+} // namespace lyx

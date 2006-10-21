@@ -17,6 +17,9 @@
 
 #include "inset.h"
 
+
+namespace lyx {
+
 class LaTeXFeatures;
 
 ///  Used to insert special chars
@@ -53,16 +56,16 @@ public:
 	/// Will not be used when lyxf3
 	void read(Buffer const &, LyXLex & lex);
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::SPECIALCHAR_CODE; }
@@ -83,5 +86,8 @@ private:
 	/// And which kind is this?
 	Kind kind_;
 };
+
+
+} // namespace lyx
 
 #endif

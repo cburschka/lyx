@@ -16,6 +16,9 @@
 #include "lyxtext.h"
 
 
+namespace lyx {
+
+
 // almost a substitute for the real text inset...
 
 class InsetMathMBox : public InsetMathDim {
@@ -36,7 +39,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	int latex(Buffer const &, lyx::odocstream & os,
+	int latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const;
 	///
 	LyXText * getText(int) const;
@@ -54,4 +57,7 @@ private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
 
+
+
+} // namespace lyx
 #endif

@@ -16,6 +16,9 @@
 #include <string>
 #include <vector>
 
+
+namespace lyx {
+
 class MathArray;
 
 
@@ -68,5 +71,8 @@ public:
 	/// the local list hack
 	//static MacroTable & localMacros();
 };
+
+
+} // namespace lyx
 
 #endif

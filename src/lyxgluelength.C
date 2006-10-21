@@ -17,6 +17,9 @@
 
 #include <sstream>
 
+
+namespace lyx {
+
 using std::ostringstream;
 using std::string;
 
@@ -132,3 +135,6 @@ bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2)
 {
 	return !(l1 == l2);
 }
+
+
+} // namespace lyx

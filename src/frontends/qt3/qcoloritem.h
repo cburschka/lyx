@@ -15,6 +15,9 @@
 #include <qlistbox.h>
 #include <qcolor.h>
 
+
+namespace lyx {
+
 class QColorItem : public QListBoxItem {
 
 public:
@@ -50,5 +53,8 @@ private:
 
 	QString text_;
 };
+
+
+} // namespace lyx
 
 #endif

@@ -16,6 +16,9 @@
 #include "MathMLStream.h"
 
 
+namespace lyx {
+
+
 using std::max;
 using std::auto_ptr;
 
@@ -87,3 +90,6 @@ void InsetMathBinom::normalize(NormalStream & os) const
 {
 	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
 }
+
+
+} // namespace lyx

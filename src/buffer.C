@@ -92,39 +92,35 @@
 #include <fstream>
 
 
-using lyx::docstring;
-using lyx::odocfstream;
-using lyx::odocstream;
-using lyx::pos_type;
-using lyx::pit_type;
+namespace lyx {
 
-using lyx::support::addName;
-using lyx::support::bformat;
-using lyx::support::changeExtension;
-using lyx::support::cmd_ret;
-using lyx::support::createBufferTmpDir;
-using lyx::support::destroyDir;
-using lyx::support::getFormatFromContents;
-using lyx::support::isDirWriteable;
-using lyx::support::libFileSearch;
-using lyx::support::latex_path;
-using lyx::support::ltrim;
-using lyx::support::makeAbsPath;
-using lyx::support::makeDisplayPath;
-using lyx::support::makeLatexName;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::quoteName;
-using lyx::support::removeAutosaveFile;
-using lyx::support::rename;
-using lyx::support::runCommand;
-using lyx::support::split;
-using lyx::support::subst;
-using lyx::support::tempName;
-using lyx::support::trim;
+using support::addName;
+using support::bformat;
+using support::changeExtension;
+using support::cmd_ret;
+using support::createBufferTmpDir;
+using support::destroyDir;
+using support::getFormatFromContents;
+using support::isDirWriteable;
+using support::libFileSearch;
+using support::latex_path;
+using support::ltrim;
+using support::makeAbsPath;
+using support::makeDisplayPath;
+using support::makeLatexName;
+using support::onlyFilename;
+using support::onlyPath;
+using support::quoteName;
+using support::removeAutosaveFile;
+using support::rename;
+using support::runCommand;
+using support::split;
+using support::subst;
+using support::tempName;
+using support::trim;
 
-namespace Alert = lyx::frontend::Alert;
-namespace os = lyx::support::os;
+namespace Alert = frontend::Alert;
+namespace os = support::os;
 namespace fs = boost::filesystem;
 namespace io = boost::iostreams;
 
@@ -232,11 +228,11 @@ Buffer::~Buffer()
 	if (!temppath().empty() && !destroyDir(temppath())) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
-			lyx::from_utf8(temppath())));
+			from_utf8(temppath())));
 	}
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
-	lyx::graphics::Previews::get().removeLoader(*this);
+	graphics::Previews::get().removeLoader(*this);
 }
 
 
@@ -391,7 +387,7 @@ void unknownClass(string const & unknown)
 {
 	Alert::warning(_("Unknown document class"),
 		       bformat(_("Using the default document class, because the "
-					      "class %1$s is unknown."), lyx::from_utf8(unknown)));
+					      "class %1$s is unknown."), from_utf8(unknown)));
 }
 
 } // anon
@@ -447,8 +443,8 @@ int Buffer::readHeader(LyXLex & lex)
 				++unknown_tokens;
 				docstring const s = bformat(_("Unknown token: "
 									"%1$s %2$s\n"),
-							 lyx::from_utf8(token),
-							 lyx::from_utf8(lex.getString()));
+							 from_utf8(token),
+							 from_utf8(lex.getString()));
 				errorList.push_back(ErrorItem(_("Document header error"),
 					s, -1, 0, 0));
 			}
@@ -488,7 +484,7 @@ bool Buffer::readDocument(LyXLex & lex)
 		string theclass = params().getLyXTextClass().name();
 		Alert::error(_("Can't load document class"), bformat(
 			_("Using the default document class, because the "
-				     " class %1$s could not be loaded."), lyx::from_utf8(theclass)));
+				     " class %1$s could not be loaded."), from_utf8(theclass)));
 		params().textclass = 0;
 	}
 
@@ -600,7 +596,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
-			     bformat(_("%1$s could not be read."), lyx::from_utf8(filename)));
+			     bformat(_("%1$s could not be read."), from_utf8(filename)));
 		return false;
 	}
 
@@ -609,7 +605,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
-			     bformat(_("%1$s could not be read."), lyx::from_utf8(filename)));
+			     bformat(_("%1$s could not be read."), from_utf8(filename)));
 		return false;
 	}
 
@@ -619,7 +615,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s is not a LyX document."),
-				       lyx::from_utf8(filename)));
+				       from_utf8(filename)));
 		return false;
 	}
 
@@ -642,7 +638,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
 							    " not be created."),
-					      lyx::from_utf8(filename)));
+					      from_utf8(filename)));
 			return false;
 		}
 		string const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
@@ -652,7 +648,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
 							    " could not be found."),
-					       lyx::from_utf8(filename)));
+					       from_utf8(filename)));
 			return false;
 		}
 		ostringstream command;
@@ -672,7 +668,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 				     bformat(_("%1$s is from an earlier version"
 					      " of LyX, but the lyx2lyx script"
 							    " failed to convert it."),
-					      lyx::from_utf8(filename)));
+					      from_utf8(filename)));
 			return false;
 		} else {
 			bool const ret = readFile(tmpfile);
@@ -686,7 +682,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
-				       lyx::from_utf8(filename)));
+				       from_utf8(filename)));
 	}
 
 	//lyxerr << "removing " << MacroTable::localMacros().size()
@@ -723,7 +719,7 @@ bool Buffer::save() const
 			Alert::error(_("Backup failure"),
 				     bformat(_("LyX was not able to make a backup copy in %1$s.\n"
 							    "Please check if the directory exists and is writeable."),
-					  lyx::from_utf8(fs::path(s).branch_path().native_directory_string())));
+					  from_utf8(fs::path(s).branch_path().native_directory_string())));
 			lyxerr[Debug::DEBUG] << "Fs error: "
 					     << fe.what() << endl;
 		}
@@ -826,7 +822,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	// FIXME UNICODE
 	// This creates an utf8 encoded file, but the inputenc commands
 	// specify other encodings
-	lyx::odocfstream ofs;
+	odocfstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
 
@@ -887,7 +883,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		if (!original_path.empty()) {
 			// FIXME UNICODE
 			// We don't know the encoding of inputpath
-			docstring const inputpath = lyx::from_utf8(latex_path(original_path));
+			docstring const inputpath = from_utf8(latex_path(original_path));
 			os << "\\makeatletter\n"
 			   << "\\def\\input@path{{"
 			   << inputpath << "/}}\n"
@@ -911,7 +907,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 
 	if (!lyxrc.language_auto_begin) {
 		// FIXME UNICODE
-		os << lyx::from_utf8(subst(lyxrc.language_command_begin,
+		os << from_utf8(subst(lyxrc.language_command_begin,
 		                           "$$lang",
 		                           params().language->babel()))
 		   << '\n';
@@ -939,7 +935,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 	texrow().newline();
 
 	if (!lyxrc.language_auto_end) {
-		os << lyx::from_utf8(subst(lyxrc.language_command_end,
+		os << from_utf8(subst(lyxrc.language_command_end,
 		                           "$$lang",
 		                           params().language->babel()))
 		   << '\n';
@@ -1019,11 +1015,11 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			os << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
                 // FIXME UNICODE
-		os << "<!DOCTYPE " << lyx::from_ascii(top_element) << ' ';
+		os << "<!DOCTYPE " << from_ascii(top_element) << ' ';
 
                 // FIXME UNICODE
 		if (! tclass.class_header().empty())
-                        os << lyx::from_ascii(tclass.class_header());
+                        os << from_ascii(tclass.class_header());
 		else if (runparams.flavor == OutputParams::XML)
 			os << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
 			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
@@ -1044,7 +1040,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
-                        os << "\n [ " << lyx::from_ascii(preamble) << " ]";
+                        os << "\n [ " << from_ascii(preamble) << " ]";
 		}
 		os << ">\n\n";
 	}
@@ -1086,7 +1082,7 @@ int Buffer::runChktex()
 	string const path = temppath();
 	string const org_path = filePath();
 
-	lyx::support::Path p(path); // path to LaTeX file
+	support::Path p(path); // path to LaTeX file
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary
@@ -1288,7 +1284,7 @@ bool Buffer::dispatch(FuncRequest const & func, bool * result)
 
 	switch (func.action) {
 		case LFUN_BUFFER_EXPORT: {
-			bool const tmp = Exporter::Export(this, lyx::to_utf8(func.argument()), false);
+			bool const tmp = Exporter::Export(this, to_utf8(func.argument()), false);
 			if (result)
 				*result = tmp;
 			break;
@@ -1367,25 +1363,25 @@ bool Buffer::hasParWithID(int const id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ::par_iterator_begin(inset());
+	return lyx::par_iterator_begin(inset());
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ::par_iterator_end(inset());
+	return lyx::par_iterator_end(inset());
 }
 
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return ::par_const_iterator_begin(inset());
+	return lyx::par_const_iterator_begin(inset());
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return ::par_const_iterator_end(inset());
+	return lyx::par_const_iterator_end(inset());
 }
 
 
@@ -1397,9 +1393,8 @@ Language const * Buffer::getLanguage() const
 
 docstring const Buffer::B_(string const & l10n) const
 {
-	if (pimpl_->messages.get()) {
+	if (pimpl_->messages.get()) 
 		return pimpl_->messages->get(l10n);
-	}
 
 	return _(l10n);
 }
@@ -1461,9 +1456,8 @@ void Buffer::markDirty()
 	DepClean::iterator it = pimpl_->dep_clean.begin();
 	DepClean::const_iterator const end = pimpl_->dep_clean.end();
 
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		it->second = false;
-	}
 }
 
 
@@ -1583,12 +1577,12 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBas
 
 		for (; bit != bend; ++bit)
 			// FIXME UNICODE
-			labels.push_back(lyx::from_utf8(bit->first));
+			labels.push_back(from_utf8(bit->first));
 	} else
 		getLabelList(labels);
 
 	// FIXME UNICODE
-	if (lyx::count(labels.begin(), labels.end(), lyx::from_utf8(from)) > 1)
+	if (lyx::count(labels.begin(), labels.end(), from_utf8(from)) > 1)
 		return;
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
@@ -1600,7 +1594,7 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBas
 }
 
 
-void Buffer::getSourceCode(odocstream & os, lyx::pit_type par_begin, lyx::pit_type par_end, bool full_source)
+void Buffer::getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source)
 {
 	OutputParams runparams;
 	runparams.nice = true;
@@ -1651,3 +1645,6 @@ ErrorList & Buffer::errorList(string const & type)
 {
 	return errorLists_[type];
 }
+
+
+} // namespace lyx

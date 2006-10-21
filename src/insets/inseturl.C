@@ -22,9 +22,10 @@
 
 #include "support/std_ostream.h"
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::subst;
+
+namespace lyx {
+
+using support::subst;
 
 using std::string;
 using std::ostream;
@@ -85,7 +86,7 @@ int InsetUrl::docbook(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {
 	os << "<ulink url=\"" 
-	   << subst(getParam("target"), lyx::from_ascii("&"), lyx::from_ascii("&amp;"))
+	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
 	   << "\">" 
 	   << getParam("name")
 	   << "</ulink>";
@@ -104,3 +105,6 @@ void InsetUrl::validate(LaTeXFeatures & features) const
 {
 	features.require("url");
 }
+
+
+} // namespace lyx

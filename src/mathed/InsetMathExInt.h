@@ -21,6 +21,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 // cell(0) is stuff before the 'd', cell(1) the stuff after
 class InsetMathExInt : public InsetMathNest {
 public:
@@ -53,5 +56,8 @@ private:
 	///
 	std::string symbol_;
 };
+
+
+} // namespace lyx
 
 #endif

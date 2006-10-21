@@ -17,6 +17,9 @@
 
 #include <string>
 
+
+namespace lyx {
+
 class PainterInfo;
 class LyXFont;
 class Dimension;
@@ -25,17 +28,17 @@ class MathAtom;
 class InsetMath;
 
 
-void mathed_char_dim(LyXFont const &, lyx::char_type c, Dimension & dim);
-int mathed_char_width(LyXFont const &, lyx::char_type c);
+void mathed_char_dim(LyXFont const &, char_type c, Dimension & dim);
+int mathed_char_width(LyXFont const &, char_type c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	std::string const & name);
 
-void mathed_string_dim(LyXFont const & font, lyx::docstring const & s, Dimension & dim);
-int mathed_string_width(LyXFont const &, lyx::docstring const & s);
+void mathed_string_dim(LyXFont const & font, docstring const & s, Dimension & dim);
+int mathed_string_width(LyXFont const &, docstring const & s);
 
-void drawStrRed(PainterInfo & pi, int x, int y, lyx::docstring const & s);
-void drawStrBlack(PainterInfo & pi, int x, int y, lyx::docstring const & s);
+void drawStrRed(PainterInfo & pi, int x, int y, docstring const & s);
+void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & s);
 
 void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 
@@ -49,6 +52,9 @@ std::string asString(MathArray const & ar);
 std::string asString(InsetMath const &);
 std::string asString(MathAtom const &);
 // converts string to single cell
-void asArray(lyx::docstring const & str, MathArray & ar);
+void asArray(docstring const & str, MathArray & ar);
+
+
+} // namespace lyx
 
 #endif

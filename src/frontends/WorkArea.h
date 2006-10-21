@@ -25,12 +25,12 @@
 // FIXME: defined in X.h, spuriously pulled in by Qt 3 headers
 #undef CursorShape
 
+namespace lyx {
+
 class BufferView;
 class FuncRequest;
 class LyXView;
 
-
-namespace lyx {
 namespace frontend {
 
 class Painter;
@@ -135,7 +135,7 @@ private:
 	///
 	void checkAndGreyOut();
 	///
-	void displayMessage(lyx::docstring const &);
+	void displayMessage(docstring const &);
 	/// buffer messages signal connection
 	boost::signals::connection message_connection_;
 

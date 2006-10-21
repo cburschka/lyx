@@ -15,6 +15,9 @@
 #include "InsetMathGrid.h"
 
 
+namespace lyx {
+
+
 /// Inset for things like \begin{tabular}...\end{tabular}
 class InsetMathTabular : public InsetMathGrid {
 public:
@@ -49,4 +52,7 @@ private:
 	std::string name_;
 };
 
+
+
+} // namespace lyx
 #endif

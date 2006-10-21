@@ -54,12 +54,10 @@
 #include <stack>
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::pos_type;
-using lyx::char_type;
 
-using lyx::support::subst;
+namespace lyx {
+
+using support::subst;
 
 using std::distance;
 using std::endl;
@@ -156,7 +154,7 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 
 	Change running_change = Change(Change::UNCHANGED);
-	lyx::time_type const curtime(lyx::current_time());
+	time_type const curtime = current_time();
 
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
@@ -328,10 +326,10 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 }
 
 
-FontSpan Paragraph::fontSpan(lyx::pos_type pos) const
+FontSpan Paragraph::fontSpan(pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
-	lyx::pos_type start = 0;
+	pos_type start = 0;
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
@@ -585,13 +583,13 @@ bool Paragraph::hasSameLayout(Paragraph const & par) const
 }
 
 
-Paragraph::depth_type Paragraph::getDepth() const
+depth_type Paragraph::getDepth() const
 {
 	return params().depth();
 }
 
 
-Paragraph::depth_type Paragraph::getMaxDepthAfter() const
+depth_type Paragraph::getMaxDepthAfter() const
 {
 	if (layout()->isEnvironment())
 		return params().depth() + 1;
@@ -784,7 +782,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\begin", "flushleft", ownerCode());
 		else
 			output = corrected_env("\\begin", "flushright", ownerCode());
-		os << lyx::from_ascii(output);
+		os << from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
@@ -793,13 +791,13 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\begin", "flushright", ownerCode());
 		else
 			output = corrected_env("\\begin", "flushleft", ownerCode());
-		os << lyx::from_ascii(output);
+		os << from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\\begin", "center", ownerCode());
-		os << lyx::from_ascii(output);
+		os << from_ascii(output);
 		column += output.size();
 		break;
 	}
@@ -843,7 +841,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\par\\end", "flushleft", ownerCode());
 		else
 			output = corrected_env("\\par\\end", "flushright", ownerCode());
-		os << lyx::from_ascii(output);
+		os << from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
@@ -852,13 +850,13 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 			output = corrected_env("\\par\\end", "flushright", ownerCode());
 		else
 			output = corrected_env("\\par\\end", "flushleft", ownerCode());
-		os << lyx::from_ascii(output);
+		os << from_ascii(output);
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\\par\\end", "center", ownerCode());
-		os << lyx::from_ascii(output);
+		os << from_ascii(output);
 		column += output.size();
 		break;
 	}
@@ -1186,7 +1184,7 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 			// sgml::escapeChar takes a char, not lyx::char_type
 			boost::tie(ws, str) = sgml::escapeChar(c);
                         // FIXME UNICODE
-			os << lyx::from_ascii(str);
+			os << from_ascii(str);
 		}
 	}
 	return i;
@@ -1255,7 +1253,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
                                 os.put(c);
 			else
                                 // FIXME UNICODE
-                                os << lyx::from_ascii(str);
+                                os << from_ascii(str);
 		}
 		font_old = font;
 	}
@@ -1429,7 +1427,7 @@ void Paragraph::setContentsFromPar(Paragraph const & par)
 }
 
 
-Change const Paragraph::lookupChange(lyx::pos_type pos) const
+Change const Paragraph::lookupChange(pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
 	return pimpl_->lookupChange(pos);
@@ -1448,7 +1446,7 @@ void Paragraph::setChange(Change const & change)
 }
 
 
-void Paragraph::setChange(lyx::pos_type pos, Change const & change)
+void Paragraph::setChange(pos_type pos, Change const & change)
 {
 	pimpl_->setChange(pos, change);
 }
@@ -1635,3 +1633,6 @@ void Paragraph::dump() const
 		rows_[i].dump();
 	}
 }
+
+
+} // namespace lyx

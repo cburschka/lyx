@@ -15,6 +15,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 /**
  * A word and its given language code ("en_US").
  * This is used for spellchecking.
@@ -43,5 +46,8 @@ private:
 	/// language code of word
 	std::string code_;
 };
+
+
+} // namespace lyx
 
 #endif // WORD_LANG_TUPLE_H

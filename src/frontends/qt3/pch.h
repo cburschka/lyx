@@ -25,6 +25,9 @@
 #include <utility>
 #include <vector>
 
+
+namespace lyx {
+
 // Have I said anything about the braindeadness of QT lately?
 // Just to remind you: signals slot emit as macros, pure lunacy!
 // So we are not able to have any qt headers in the pch.
@@ -35,5 +38,8 @@
 // #define qtsignals signals
 // #define qtemit emit
 // #undef signal
+
+
+} // namespace lyx
 // #undef signals
 // #undef emit

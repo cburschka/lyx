@@ -24,12 +24,13 @@
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 
-
-using lyx::docstring;
-
 using std::string;
 using std::auto_ptr;
-using lyx::support::bformat;
+
+
+namespace lyx {
+
+using support::bformat;
 
 
 InsetMathAMSArray::InsetMathAMSArray(string const & name, int m, int n)
@@ -108,8 +109,8 @@ bool InsetMathAMSArray::getStatus(LCursor & cur, FuncRequest const & cmd,
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
-			lyx::from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
-				lyx::from_utf8(name_)));
+			from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
+				from_utf8(name_)));
 			flag.enabled(false);
 			return true;
 		}
@@ -132,7 +133,7 @@ void InsetMathAMSArray::write(WriteStream & os) const
 void InsetMathAMSArray::infoize(std::ostream & os) const
 {
 	string name = name_;
-	name[0] = lyx::support::uppercase(name[0]);
+	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }
 
@@ -150,3 +151,6 @@ void InsetMathAMSArray::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathGrid::validate(features);
 }
+
+
+} // namespace lyx

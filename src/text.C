@@ -74,22 +74,19 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::char_type;
-using lyx::pit_type;
-using lyx::pos_type;
-using lyx::word_location;
 
-using lyx::support::bformat;
-using lyx::support::contains;
-using lyx::support::lowercase;
-using lyx::support::split;
-using lyx::support::uppercase;
+namespace lyx {
 
-using lyx::cap::cutSelection;
-using lyx::cap::pasteParagraphList;
+using support::bformat;
+using support::contains;
+using support::lowercase;
+using support::split;
+using support::uppercase;
 
-using lyx::frontend::FontMetrics;
+using cap::cutSelection;
+using cap::pasteParagraphList;
+
+using frontend::FontMetrics;
 
 using std::auto_ptr;
 using std::advance;
@@ -169,9 +166,9 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		for (; cit != token.end(); ++cit)
 			par.insertChar(par.size(), (*cit), font, change);
 #else
-		lyx::docstring dstr = lex.getDocString();
-		lyx::docstring::const_iterator cit = dstr.begin();
-		lyx::docstring::const_iterator cend = dstr.end();
+		docstring dstr = lex.getDocString();
+		docstring::const_iterator cit = dstr.begin();
+		docstring::const_iterator cend = dstr.end();
 		for (; cit != cend; ++cit)
 			par.insertChar(par.size(), *cit, font, change);
 #endif
@@ -193,7 +190,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		if (!hasLayout) {
 			errorList.push_back(ErrorItem(_("Unknown layout"),
 			bformat(_("Layout '%1$s' does not exist in textclass '%2$s'\nTrying to use the default instead.\n"),
-			lyx::from_utf8(layoutname), lyx::from_utf8(tclass.name())), par.id(), 0, par.size()));
+			from_utf8(layoutname), from_utf8(tclass.name())), par.id(), 0, par.size()));
 			layoutname = tclass.defaultLayoutName();
 		}
 
@@ -222,7 +219,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			par.insertInset(par.size(), inset, font, change);
 		else {
 			lex.eatLine();
-			docstring line = lyx::from_utf8(lex.getString());
+			docstring line = from_utf8(lex.getString());
 			errorList.push_back(ErrorItem(_("Unknown Inset"), line,
 					    par.id(), 0, par.size()));
 		}
@@ -329,7 +326,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lex.eatLine();
 		std::istringstream is(lex.getString());
 		unsigned int aid;
-		lyx::time_type ct;
+		time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),
@@ -343,7 +340,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lex.eatLine();
 		std::istringstream is(lex.getString());
 		unsigned int aid;
-		lyx::time_type ct;
+		time_type ct;
 		is >> aid >> ct;
 		if (aid >= bp.author_map.size()) {
 			errorList.push_back(ErrorItem(_("Change tracking error"),
@@ -356,14 +353,15 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	} else {
 		lex.eatLine();
 		errorList.push_back(ErrorItem(_("Unknown token"),
-			bformat(_("Unknown token: %1$s %2$s\n"), lyx::from_utf8(token),
-			lyx::from_utf8(lex.getString())),
+			bformat(_("Unknown token: %1$s %2$s\n"), from_utf8(token),
+			from_utf8(lex.getString())),
 			par.id(), 0, par.size()));
 	}
 }
 
 
-void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex, ErrorList & errorList)
+void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex,
+	ErrorList & errorList)
 {
 	lex.nextToken();
 	string token = lex.getString();
@@ -497,7 +495,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		l_margin += changebarMargin();
 
 	// FIXME UNICODE
-	docstring leftm = lyx::from_utf8(tclass.leftmargin());
+	docstring leftm = from_utf8(tclass.leftmargin());
 	l_margin += theFontMetrics(params.getFont()).signedWidth(leftm);
 
 	if (par.getDepth() != 0) {
@@ -530,30 +528,30 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 	case MARGIN_DYNAMIC:
 		if (!layout->leftmargin.empty()) {
 			// FIXME UNICODE
-			docstring leftm = lyx::from_utf8(layout->leftmargin);
+			docstring leftm = from_utf8(layout->leftmargin);
 			l_margin += theFontMetrics(params.getFont()).signedWidth(leftm);
 		}
 		if (!par.getLabelstring().empty()) {
 			// FIXME UNICODE
-			docstring labin = lyx::from_utf8(layout->labelindent);
+			docstring labin = from_utf8(layout->labelindent);
 			l_margin += labelfont_metrics.signedWidth(labin);
 			docstring labstr = par.getLabelstring();
 			l_margin += labelfont_metrics.width(labstr);
-			docstring labsep = lyx::from_utf8(layout->labelsep);
+			docstring labsep = from_utf8(layout->labelsep);
 			l_margin += labelfont_metrics.width(labsep);
 		}
 		break;
 
 	case MARGIN_MANUAL: {
 		// FIXME UNICODE
-		docstring labin = lyx::from_utf8(layout->labelindent);
+		docstring labin = from_utf8(layout->labelindent);
 		l_margin += labelfont_metrics.signedWidth(labin);
 		// The width of an empty par, even with manual label, should be 0
 		if (!par.empty() && pos >= par.beginOfBody()) {
 			if (!par.getLabelWidthString().empty()) {
 				docstring labstr = par.getLabelWidthString();
 				l_margin += labelfont_metrics.width(labstr);
-				docstring labsep = lyx::from_utf8(layout->labelsep);
+				docstring labsep = from_utf8(layout->labelsep);
 				l_margin += labelfont_metrics.width(labsep);
 			}
 		}
@@ -562,7 +560,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 
 	case MARGIN_STATIC: {
 		// FIXME UNICODE
-		docstring leftm = lyx::from_utf8(layout->leftmargin);
+		docstring leftm = from_utf8(layout->leftmargin);
 		l_margin += theFontMetrics(params.getFont()).signedWidth(leftm)
 			* 4	/ (par.getDepth() + 4);
 		break;
@@ -573,11 +571,11 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			if (pos >= par.beginOfBody()) {
 				// FIXME UNICODE
 				l_margin += labelfont_metrics.signedWidth(
-					lyx::from_utf8(layout->leftmargin));
+					from_utf8(layout->leftmargin));
 			} else {
 				// FIXME UNICODE
 				l_margin += labelfont_metrics.signedWidth(
-					lyx::from_utf8(layout->labelindent));
+					from_utf8(layout->labelindent));
 			}
 		} else if (pos != 0
 			   // Special case to fix problems with
@@ -586,13 +584,13 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 			       && layout->latextype == LATEX_ENVIRONMENT
 			       && !isFirstInSequence(pit, pars_))) {
 			// FIXME UNICODE
-			l_margin += labelfont_metrics.signedWidth(lyx::from_utf8(layout->leftmargin));
+			l_margin += labelfont_metrics.signedWidth(from_utf8(layout->leftmargin));
 		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
 			   && layout->labeltype != LABEL_BIBLIO
 			   && layout->labeltype !=
 			   LABEL_CENTERED_TOP_ENVIRONMENT) {
-			l_margin += labelfont_metrics.signedWidth(lyx::from_utf8(layout->labelindent));
-			l_margin += labelfont_metrics.width(lyx::from_utf8(layout->labelsep));
+			l_margin += labelfont_metrics.signedWidth(from_utf8(layout->labelindent));
+			l_margin += labelfont_metrics.width(from_utf8(layout->labelsep));
 			l_margin += labelfont_metrics.width(par.getLabelstring());
 		}
 		break;
@@ -649,7 +647,7 @@ int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 		|| bv()->buffer()->params().paragraph_separation ==
 		   BufferParams::PARSEP_INDENT))
 	{
-		docstring din = lyx::from_utf8(parindent);
+		docstring din = from_utf8(parindent);
 		l_margin += theFontMetrics(params.getFont()).signedWidth(din);
 	}
 
@@ -668,11 +666,11 @@ int LyXText::rightMargin(Paragraph const & par) const
 
 	BufferParams const & params = bv()->buffer()->params();
 	LyXTextClass const & tclass = params.getLyXTextClass();
-	docstring trmarg = lyx::from_utf8(tclass.rightmargin());
-	docstring lrmarg = lyx::from_utf8(par.layout()->rightmargin);
+	docstring trmarg = from_utf8(tclass.rightmargin());
+	docstring lrmarg = from_utf8(par.layout()->rightmargin);
 	FontMetrics const & fm = theFontMetrics(params.getFont());
 	int const r_margin =
-		::rightMargin()
+		lyx::rightMargin()
 		+ fm.signedWidth(trmarg)
 		+ fm.signedWidth(lrmarg)
 		* 4 / (par.getDepth() + 4);
@@ -755,7 +753,7 @@ void LyXText::rowBreakPoint(pit_type const pit, Row & row) const
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
-			docstring lsep = lyx::from_utf8(layout->labelsep);
+			docstring lsep = from_utf8(layout->labelsep);
 			int add = fm.width(lsep);
 			if (par.isLineSeparator(i - 1))
 				add -= singleWidth(par, i - 1);
@@ -829,7 +827,7 @@ void LyXText::setRowWidth(pit_type const pit, Row & row) const
 	pos_type const end = row.endpos();
 
 	Paragraph const & par = pars_[pit];
-	docstring const labelsep = lyx::from_utf8(par.layout()->labelsep);
+	docstring const labelsep = from_utf8(par.layout()->labelsep);
 	int w = leftMargin(pit, row.pos());
 
 	pos_type const body_pos = par.beginOfBody();
@@ -1120,7 +1118,7 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	// we need to set this before we insert the paragraph.
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
 
-	::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
+	lyx::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
 			 cur.pos(), preserve_layout);
 
 	// After this, neither paragraph contains any rows!
@@ -1182,9 +1180,9 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		par.isFreeSpacing();
 
 	if (lyxrc.auto_number) {
-		static docstring const number_operators = lyx::from_ascii("+-/*");
-		static docstring const number_unary_operators = lyx::from_ascii("+-");
-		static docstring const number_seperators = lyx::from_ascii(".,:");
+		static docstring const number_operators = from_ascii("+-/*");
+		static docstring const number_unary_operators = from_ascii("+-");
+		static docstring const number_seperators = from_ascii(".,:");
 
 		if (current_font.number() == LyXFont::ON) {
 			if (!isDigit(c) && !contains(number_operators, c) &&
@@ -1373,7 +1371,7 @@ LyXText::computeRowMetrics(pit_type const pit, Row const & row) const
 		if (body_pos > 0
 		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
 		{
-			docstring const lsep = lyx::from_utf8(layout->labelsep);
+			docstring const lsep = from_utf8(layout->labelsep);
 			result.x += theFontMetrics(getLabelFont(par)).width(lsep);
 			if (body_pos <= end)
 				result.x += result.label_hfill;
@@ -1596,7 +1594,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 		to = cur.selEnd();
 	} else {
 		from = cur.top();
-		getWord(from, to, lyx::PARTIAL_WORD);
+		getWord(from, to, PARTIAL_WORD);
 		cursorRightOneWord(cur);
 	}
 
@@ -1810,8 +1808,8 @@ bool LyXText::dissolveInset(LCursor & cur) {
 	recordUndoInset(cur);
 	cur.selHandle(false);
 	// save position
-	lyx::pos_type spos = cur.pos();
-	lyx::pit_type spit = cur.pit();
+	pos_type spos = cur.pos();
+	pit_type spit = cur.pit();
 	ParagraphList plist;
 	if (cur.lastpit() != 0 || cur.lastpos() != 0)
 		plist = paragraphs();
@@ -2132,7 +2130,7 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 {
 	Paragraph const & from_par = pars_[from.pit()];
 	switch (loc) {
-	case lyx::WHOLE_WORD_STRICT:
+	case WHOLE_WORD_STRICT:
 		if (from.pos() == 0 || from.pos() == from_par.size()
 		    || !from_par.isLetter(from.pos())
 		    || !from_par.isLetter(from.pos() - 1)) {
@@ -2141,22 +2139,22 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 		}
 		// no break here, we go to the next
 
-	case lyx::WHOLE_WORD:
+	case WHOLE_WORD:
 		// If we are already at the beginning of a word, do nothing
 		if (!from.pos() || !from_par.isLetter(from.pos() - 1))
 			break;
 		// no break here, we go to the next
 
-	case lyx::PREVIOUS_WORD:
+	case PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
 		while (from.pos() && from_par.isLetter(from.pos() - 1))
 			--from.pos();
 		break;
-	case lyx::NEXT_WORD:
+	case NEXT_WORD:
 		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet"
 		       << endl;
 		break;
-	case lyx::PARTIAL_WORD:
+	case PARTIAL_WORD:
 		// no need to move the 'from' cursor
 		break;
 	}
@@ -2171,7 +2169,7 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 {
 	ParagraphList::const_iterator pit = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
-	Paragraph::depth_type dth = 0;
+	depth_type dth = 0;
 	for (; pit != end; ++pit)
 		pit->write(buf, os, buf.params(), dth);
 }
@@ -2179,7 +2177,7 @@ void LyXText::write(Buffer const & buf, std::ostream & os) const
 
 bool LyXText::read(Buffer const & buf, LyXLex & lex, ErrorList & errorList)
 {
-	Paragraph::depth_type depth = 0;
+	depth_type depth = 0;
 
 	while (lex.isOK()) {
 		lex.nextToken();
@@ -2188,21 +2186,17 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex, ErrorList & errorList)
 		if (token.empty())
 			continue;
 
-		if (token == "\\end_inset") {
+		if (token == "\\end_inset")
 			break;
-		}
 
-		if (token == "\\end_body") {
+		if (token == "\\end_body")
 			continue;
-		}
 
-		if (token == "\\begin_body") {
+		if (token == "\\begin_body")
 			continue;
-		}
 
-		if (token == "\\end_document") {
+		if (token == "\\end_document")
 			return false;
-		}
 
 		if (token == "\\begin_layout") {
 			lex.pushToken(token);
@@ -2214,7 +2208,7 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex, ErrorList & errorList)
 
 			// FIXME: goddamn InsetTabular makes us pass a Buffer
 			// not BufferParams
-			::readParagraph(buf, pars_.back(), lex, errorList);
+			lyx::readParagraph(buf, pars_.back(), lex, errorList);
 
 		} else if (token == "\\begin_deeper") {
 			++depth;
@@ -2295,7 +2289,7 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
 			// FIXME UNICODE
-			docstring const lsep = lyx::from_utf8(par.layout()->labelsep);
+			docstring const lsep = from_utf8(par.layout()->labelsep);
 			x += m.label_hfill + labelfm.width(lsep);
 			if (par.isLineSeparator(body_pos - 1))
 				x -= singleWidth(par, body_pos - 1);
@@ -2373,11 +2367,11 @@ string LyXText::currentState(LCursor & cur)
 	if (show_change) {
 		Change change = par.lookupChange(cur.pos());
 		Author const & a = buf.params().authors().get(change.author);
-		os << lyx::to_utf8(_("Change: ")) << a.name();
+		os << to_utf8(_("Change: ")) << a.name();
 		if (!a.email().empty())
 			os << " (" << a.email() << ")";
 		if (change.changetime)
-			os << lyx::to_utf8(_(" at ")) << ctime(&change.changetime);
+			os << to_utf8(_(" at ")) << ctime(&change.changetime);
 		os << " : ";
 	}
 
@@ -2387,34 +2381,34 @@ string LyXText::currentState(LCursor & cur)
 	LyXFont font = real_current_font;
 	font.reduce(buf.params().getFont());
 
-	// avoid lyx::to_utf8(_(...)) re-entrance problem
+	// avoid to_utf8(_(...)) re-entrance problem
 	string const s = font.stateText(&buf.params());
-	os << lyx::to_utf8(bformat(_("Font: %1$s"), lyx::from_utf8(s)));
+	os << to_utf8(bformat(_("Font: %1$s"), from_utf8(s)));
 
-	// os << lyx::to_utf8(bformat(_("Font: %1$s"), font.stateText(&buf.params)));
+	// os << to_utf8(bformat(_("Font: %1$s"), font.stateText(&buf.params)));
 
 	// The paragraph depth
 	int depth = cur.paragraph().getDepth();
 	if (depth > 0)
-		os << lyx::to_utf8(bformat(_(", Depth: %1$d"), depth));
+		os << to_utf8(bformat(_(", Depth: %1$d"), depth));
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.
 	Spacing const & spacing = par.params().spacing();
 	if (!spacing.isDefault()) {
-		os << lyx::to_utf8(_(", Spacing: "));
+		os << to_utf8(_(", Spacing: "));
 		switch (spacing.getSpace()) {
 		case Spacing::Single:
-			os << lyx::to_utf8(_("Single"));
+			os << to_utf8(_("Single"));
 			break;
 		case Spacing::Onehalf:
-			os << lyx::to_utf8(_("OneHalf"));
+			os << to_utf8(_("OneHalf"));
 			break;
 		case Spacing::Double:
-			os << lyx::to_utf8(_("Double"));
+			os << to_utf8(_("Double"));
 			break;
 		case Spacing::Other:
-			os << lyx::to_utf8(_("Other (")) << spacing.getValueAsString() << ')';
+			os << to_utf8(_("Other (")) << spacing.getValueAsString() << ')';
 			break;
 		case Spacing::Default:
 			// should never happen, do nothing
@@ -2423,11 +2417,11 @@ string LyXText::currentState(LCursor & cur)
 	}
 
 #ifdef DEVEL_VERSION
-	os << lyx::to_utf8(_(", Inset: ")) << &cur.inset();
-	os << lyx::to_utf8(_(", Paragraph: ")) << cur.pit();
-	os << lyx::to_utf8(_(", Id: ")) << par.id();
-	os << lyx::to_utf8(_(", Position: ")) << cur.pos();
-	os << lyx::to_utf8(_(", Boundary: ")) << cur.boundary();
+	os << to_utf8(_(", Inset: ")) << &cur.inset();
+	os << to_utf8(_(", Paragraph: ")) << cur.pit();
+	os << to_utf8(_(", Id: ")) << par.id();
+	os << to_utf8(_(", Position: ")) << cur.pos();
+	os << to_utf8(_(", Boundary: ")) << cur.boundary();
 //	Row & row = cur.textRow();
 //	os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
 #endif
@@ -2475,7 +2469,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 		text.erase();
 
 	// FIXME UNICODE
-	string par_text = lyx::to_utf8(pars_[pit].asString(cur.buffer(), false));
+	string par_text = to_utf8(pars_[pit].asString(cur.buffer(), false));
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;
@@ -2570,3 +2564,6 @@ bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 
 	return setCursor(cur, pit, pos, true, bound);
 }
+
+
+} // namespace lyx

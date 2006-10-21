@@ -1119,7 +1119,7 @@ class SamePrettyName {
 public:
 	SamePrettyName(string const & n) : pretty_name_(n) {}
 
-	bool operator()(::Format const & fmt) const {
+	bool operator()(lyx::Format const & fmt) const {
 		return fmt.prettyname() == pretty_name_;
 	}
 
@@ -1130,8 +1130,8 @@ private:
 
 Format const * getFormat(std::string const & prettyname)
 {
-	Formats::const_iterator it = ::formats.begin();
-	Formats::const_iterator const end = ::formats.end();
+	Formats::const_iterator it = lyx::formats.begin();
+	Formats::const_iterator const end = lyx::formats.end();
 	it = std::find_if(it, end, SamePrettyName(prettyname));
 	return it == end ? 0 : &*it;
 }
@@ -1141,7 +1141,7 @@ Format const * getFormat(std::string const & prettyname)
 
 void PrefCopiers::switch_copierLB(int row)
 {
-	if (row<0)
+	if (row < 0)
 		return;
 
 	// FIXME UNICODE?

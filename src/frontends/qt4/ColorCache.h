@@ -19,8 +19,8 @@
 #include <map>
 
 namespace lyx {
+
 struct RGBColor;
-}
 
 
 // FIXME: use a fixed-size array not a map ?
@@ -46,4 +46,7 @@ private:
 
 ///
 QColor const rgb2qcolor(lyx::RGBColor const &);
+
+} // namespace lyx
+
 #endif // COLORCACHE_H

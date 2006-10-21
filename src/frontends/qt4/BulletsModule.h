@@ -19,6 +19,9 @@
 
 #include <QWidget>
 
+
+namespace lyx {
+
 class BulletsModule : public QWidget, public Ui::BulletsUi {
 	Q_OBJECT
 public:
@@ -54,5 +57,8 @@ private:
 	int current_font_;
 	int current_char_;
 };
+
+
+} // namespace lyx
 
 #endif // BULLETSMODULE_H

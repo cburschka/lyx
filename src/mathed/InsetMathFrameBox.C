@@ -17,6 +17,9 @@
 #include "LColor.h"
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -51,18 +54,18 @@ void InsetMathFrameBox::draw(PainterInfo & pi, int x, int y) const
 		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
 	x += 5;
 
-	drawStrBlack(pi, x, y, lyx::from_ascii("["));
+	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(0).draw(pi, x, y);
 	x += cell(0).width();
-	drawStrBlack(pi, x, y, lyx::from_ascii("]"));
+	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 4;
 
-	drawStrBlack(pi, x, y, lyx::from_ascii("["));
+	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w_;
 	cell(1).draw(pi, x, y);
 	x += cell(1).width();
-	drawStrBlack(pi, x, y, lyx::from_ascii("]"));
+	drawStrBlack(pi, x, y, from_ascii("]"));
 	x += w_ + 4;
 
 	cell(2).draw(pi, x, y);
@@ -84,3 +87,6 @@ void InsetMathFrameBox::normalize(NormalStream & os) const
 {
 	os << "[framebox " << cell(0) << ' ' << cell(1) << ' ' << cell(2) << ']';
 }
+
+
+} // namespace lyx

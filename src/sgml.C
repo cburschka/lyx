@@ -29,8 +29,10 @@
 #include <map>
 #include <sstream>
 
-using lyx::odocstream;
-using lyx::support::subst;
+
+namespace lyx {
+
+using support::subst;
 
 using std::make_pair;
 using std::map;
@@ -191,9 +193,9 @@ void sgml::openTag(odocstream & os, string const & name, string const & attribut
 	param = subst(param, ">", "\"");
 
 	if (!name.empty() && name != "!-- --") {
-                os << '<' << lyx::from_ascii(name);
+                os << '<' << from_ascii(name);
 		if (!param.empty())
-                    os << ' ' << lyx::from_ascii(param);
+                    os << ' ' << from_ascii(param);
 		os << '>';
 	}
 }
@@ -203,7 +205,7 @@ void sgml::closeTag(odocstream & os, string const & name)
 {
         // FIXME UNICODE
 	if (!name.empty() && name != "!-- --")
-                os << "</" << lyx::from_ascii(name) << '>';
+                os << "</" << from_ascii(name) << '>';
 }
 
 
@@ -231,8 +233,8 @@ void sgml::openTag(Buffer const & buf, odocstream & os, OutputParams const & run
 			if(!style->counter.empty())
 				counters.step(style->counter);
 			else
-				counters.step(lyx::from_ascii(name));
-			int i = counters.value(lyx::from_ascii(name));
+				counters.step(from_ascii(name));
+			int i = counters.value(from_ascii(name));
 			attribute = subst(param, "#", convert<string>(i));
 		} else {
 			attribute = param;
@@ -247,3 +249,6 @@ void sgml::closeTag(odocstream & os, Paragraph const & par)
 	LyXLayout_ptr const & style = par.layout();
 	closeTag(os, style->latexname());
 }
+
+
+} // namespace lyx

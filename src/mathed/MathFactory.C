@@ -65,8 +65,11 @@
 #include <fstream>
 #include <sstream>
 
-using lyx::support::libFileSearch;
-using lyx::support::split;
+
+namespace lyx {
+
+using support::libFileSearch;
+using support::split;
 
 using std::string;
 using std::endl;
@@ -79,6 +82,7 @@ namespace {
 
 // file scope
 typedef std::map<string, latexkeys> WordList;
+
 WordList theWordList;
 
 
@@ -383,3 +387,6 @@ bool createInsetMath_fromDialogStr(string const & str, MathArray & ar)
 
 	return ar[0].nucleus();
 }
+
+
+} // namespace lyx

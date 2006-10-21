@@ -14,6 +14,9 @@
 
 #include "InsetMathNest.h"
 
+
+namespace lyx {
+
 /// Extra nesting: \\makebox.
 // consolidate with InsetMathFrameBox?
 
@@ -39,4 +42,7 @@ private:
 	mutable int w_;
 };
 
+
+
+} // namespace lyx
 #endif

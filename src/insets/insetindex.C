@@ -20,8 +20,8 @@
 
 #include "support/std_ostream.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::ostream;
@@ -48,7 +48,7 @@ int InsetIndex::docbook(Buffer const &, odocstream & os,
 {
         // FIXME UNICODE
 	os << "<indexterm><primary>"
-           << lyx::from_ascii(sgml::escapeString(lyx::to_ascii(getParam("name"))))
+           << from_ascii(sgml::escapeString(lyx::to_ascii(getParam("name"))))
 	   << "</primary></indexterm>";
 	return 0;
 }
@@ -87,3 +87,6 @@ InsetBase::Code InsetPrintIndex::lyxCode() const
 {
 	return InsetBase::INDEX_PRINT_CODE;
 }
+
+
+} // namespace lyx

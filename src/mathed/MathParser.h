@@ -16,6 +16,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class MathAtom;
 class MathArray;
 class InsetMathGrid;
@@ -58,5 +61,8 @@ void mathed_parse_cell(MathArray & ar, std::string const &);
 void mathed_parse_cell(MathArray & ar, std::istream &);
 
 void initParser();
+
+
+} // namespace lyx
 
 #endif

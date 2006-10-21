@@ -29,12 +29,10 @@
 
 #include "support/lstrings.h"
 #include "support/os.h"
-#include "support/package.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
-using lyx::support::package;
 
 namespace lyx {
 namespace frontend {
@@ -80,15 +78,16 @@ int Application::start(std::string const & /*batch*/)
 	return exec();
 }
 
+
 } // namespace frontend
-} // namespace lyx
 
 
-lyx::frontend::FontLoader & theFontLoader()
+
+frontend::FontLoader & theFontLoader()
 {
-	static lyx::frontend::NoGuiFontLoader no_gui_font_loader;
+	static frontend::NoGuiFontLoader no_gui_font_loader;
 
-	if (!lyx::use_gui)
+	if (!use_gui)
 		return no_gui_font_loader;
 
 	BOOST_ASSERT(theApp);
@@ -96,11 +95,11 @@ lyx::frontend::FontLoader & theFontLoader()
 }
 
 
-lyx::frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
+frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
 {
-	static lyx::frontend::NoGuiFontMetrics no_gui_font_metrics;
+	static frontend::NoGuiFontMetrics no_gui_font_metrics;
 
-	if (!lyx::use_gui)
+	if (!use_gui)
 		return no_gui_font_metrics;
 
 	BOOST_ASSERT(theApp);
@@ -108,16 +107,18 @@ lyx::frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
 }
 
 
-lyx::frontend::Clipboard & theClipboard()
+frontend::Clipboard & theClipboard()
 {
 	BOOST_ASSERT(theApp);
 	return theApp->clipboard();
 }
 
 
-lyx::frontend::Selection & theSelection()
+frontend::Selection & theSelection()
 {
 	BOOST_ASSERT(theApp);
 	return theApp->selection();
 }
 
+
+} // namespace lyx

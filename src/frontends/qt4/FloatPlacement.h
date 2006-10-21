@@ -18,18 +18,18 @@
 
 #include <string>
 
-class InsetFloatParams;
+
+namespace lyx { class InsetFloatParams; }
 
 class FloatPlacement : public QWidget, public Ui::FloatPlacementUi {
 	Q_OBJECT
 public:
 	FloatPlacement(QWidget * parent = 0);
-	~FloatPlacement();
 
 	void useWide();
 	void useSideways();
 
-	void set(InsetFloatParams const & params);
+	void set(lyx::InsetFloatParams const & params);
 	void set(std::string const & placement);
 	void checkAllowed();
 
@@ -47,5 +47,8 @@ Q_SIGNALS:
 	void changed();
 
 };
+
+
+//} // namespace lyx
 
 #endif

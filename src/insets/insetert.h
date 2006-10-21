@@ -13,8 +13,11 @@
 #ifndef INSETERT_H
 #define INSETERT_H
 
-
 #include "insetcollapsable.h"
+#include "mailinset.h"
+
+
+namespace lyx {
 
 /** A collapsable text inset for LaTeX insertions.
 
@@ -45,17 +48,17 @@ public:
 	///
 	void read(Buffer const & buf, LyXLex & lex);
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	bool insetAllowed(InsetBase::Code code) const;
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures &) const {}
@@ -88,8 +91,6 @@ private:
 };
 
 
-#include "mailinset.h"
-
 class InsetERTMailer : public MailInset {
 public:
 	///
@@ -111,5 +112,8 @@ private:
 	///
 	InsetERT & inset_;
 };
+
+
+} // namespace lyx
 
 #endif

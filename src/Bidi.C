@@ -19,28 +19,28 @@
 #include "paragraph.h"
 
 
-using lyx::pos_type;
+namespace lyx {
 
 
-lyx::pos_type Bidi::log2vis(lyx::pos_type pos) const
+pos_type Bidi::log2vis(pos_type pos) const
 {
 	return (start_ == -1) ? pos : log2vis_list_[pos - start_];
 }
 
 
-lyx::pos_type Bidi::vis2log(lyx::pos_type pos) const
+pos_type Bidi::vis2log(pos_type pos) const
 {
 	return (start_ == -1) ? pos : vis2log_list_[pos - start_];
 }
 
 
-lyx::pos_type Bidi::level(lyx::pos_type pos) const
+pos_type Bidi::level(pos_type pos) const
 {
 	return (start_ == -1) ? 0 : levels_[pos - start_];
 }
 
 
-bool Bidi::inRange(lyx::pos_type pos) const
+bool Bidi::inRange(pos_type pos) const
 {
 	return start_ == -1 || (start_ <= pos && pos <= end_);
 }
@@ -208,3 +208,6 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 		: par.isRightToLeftPar(buf.params());
 	return rtl != rtl2;
 }
+
+
+} // namespace lyx

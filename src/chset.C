@@ -22,7 +22,10 @@
 
 #include <fstream>
 
-using lyx::support::libFileSearch;
+
+namespace lyx {
+
+using support::libFileSearch;
 
 using boost::regex;
 using boost::smatch;
@@ -99,3 +102,6 @@ string const & CharacterSet::getName() const
 {
 	return name_;
 }
+
+
+} // namespace lyx

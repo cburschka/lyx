@@ -19,6 +19,9 @@
 #include "MathMacroTable.h"
 
 
+namespace lyx {
+
+
 /// This class contains the data for a macro.
 class MathMacro : public InsetMathNest {
 public:
@@ -72,4 +75,7 @@ private:
 };
 
 
+
+
+} // namespace lyx
 #endif

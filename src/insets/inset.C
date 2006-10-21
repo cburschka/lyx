@@ -23,6 +23,9 @@
 #include "metricsinfo.h"
 #include "coordcache.h"
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -73,3 +76,6 @@ void InsetOld::setPosCache(PainterInfo const & pi, int x, int y) const
 	//lyxerr << "InsetOld:: position cache to " << x << " " << y << std::endl;
 	pi.base.bv->coordCache().insets().add(this, x, y);
 }
+
+
+} // namespace lyx

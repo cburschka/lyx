@@ -14,6 +14,9 @@
 
 #include "lyxrc.h"
 
+
+namespace lyx {
+
 /**
   This class contains (or should contain) all the parameters required for
   printing a buffer.  Some work still needs to be done on this class and
@@ -89,5 +92,8 @@ public:
 	///
 	PrinterParams(PrinterParams const & pp);
 };
+
+
+} // namespace lyx
 
 #endif

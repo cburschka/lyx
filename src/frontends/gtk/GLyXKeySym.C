@@ -26,6 +26,9 @@
 #include <gtkmm.h>
 #include <gdk/gdkkeysyms.h>
 
+
+namespace lyx {
+
 using std::string;
 
 
@@ -112,3 +115,6 @@ bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
 	return static_cast<GLyXKeySym const &>(k1).getKeyval()
 		== static_cast<GLyXKeySym const &>(k2).getKeyval();
 }
+
+
+} // namespace lyx

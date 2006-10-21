@@ -15,6 +15,9 @@
 #include <map>
 #include <string>
 
+
+namespace lyx {
+
 /**
  *  Utility to copy a file of a specified format from one place to another.
  *  This base class simply invokes the command support::copy().
@@ -173,5 +176,8 @@ private:
 
 extern Movers movers;
 extern Movers system_movers;
+
+
+} // namespace lyx
 
 #endif // MOVER_H

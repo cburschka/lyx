@@ -32,8 +32,10 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using lyx::docstring;
-using lyx::graphics::PreviewLoader;
+
+namespace lyx {
+
+using graphics::PreviewLoader;
 
 using std::endl;
 using std::string;
@@ -50,7 +52,7 @@ InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 
 InsetCollapsable::InsetCollapsable
 		(BufferParams const & bp, CollapseStatus status)
-	: InsetText(bp), label(lyx::from_ascii("Label")), status_(status),
+	: InsetText(bp), label(from_ascii("Label")), status_(status),
 	  openinlined_(false), autoOpen_(false)
 {
 	setAutoBreakRows(true);
@@ -414,5 +416,8 @@ docstring InsetCollapsable::floatName(string const & type, BufferParams const & 
 	FloatList const & floats = bp.getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[type];
 	// FIXME UNICODE
-	return (it == floats.end()) ? lyx::from_ascii(type) : _(it->second.name());
+	return (it == floats.end()) ? from_ascii(type) : _(it->second.name());
 }
+
+
+} // namespace lyx

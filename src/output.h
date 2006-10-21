@@ -14,7 +14,13 @@
 
 #include "support/docstream.h"
 
+
+namespace lyx {
+
 bool openFileWrite(std::ofstream & ofs, std::string const & fname);
-bool openFileWrite(lyx::odocfstream & ofs, std::string const & fname);
+bool openFileWrite(odocfstream & ofs, std::string const & fname);
+
+
+} // namespace lyx
 
 #endif

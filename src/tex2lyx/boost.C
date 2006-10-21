@@ -17,13 +17,14 @@
 #include <cstdlib>
 #include <exception>
 
+
 using std::endl;
 
 namespace boost {
 
 void throw_exception(std::exception const & e)
 {
-	lyxerr << "Exception caught:\n"
+	lyx::lyxerr << "Exception caught:\n"
 	       << e.what() << endl;
 	BOOST_ASSERT(false);
 }
@@ -32,7 +33,7 @@ void throw_exception(std::exception const & e)
 void assertion_failed(char const * expr, char const * function,
 		      char const * file, long line)
 {
-	lyxerr << "Assertion triggered in " << function
+	lyx::lyxerr << "Assertion triggered in " << function
 	       << " by failing check \"" << expr << "\""
 	       << " in file " << file << ":" << line << endl;
 	::abort();

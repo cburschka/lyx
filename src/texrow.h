@@ -17,6 +17,9 @@
 #include <list>
 
 
+namespace lyx {
+
+
 /// Represents the correspondence between paragraphs and the generated LaTeX file
 class TexRow {
 public:
@@ -92,5 +95,8 @@ private:
 	/// Last position
 	int lastpos;
 };
+
+
+} // namespace lyx
 
 #endif // TEXROW_H

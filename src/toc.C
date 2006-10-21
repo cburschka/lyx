@@ -46,7 +46,7 @@ using std::endl;
 namespace lyx {
 namespace toc {
 
-typedef map<Buffer const *, lyx::TocBackend> TocMap;
+typedef map<Buffer const *, TocBackend> TocMap;
 static TocMap toc_backend_;
 
 ///////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@ vector<string> const & getTypes(Buffer const & buf)
 }
 
 
-void asciiTocList(string const & type, Buffer const & buf, lyx::odocstream & os)
+void asciiTocList(string const & type, Buffer const & buf, odocstream & os)
 {
 	toc_backend_[&buf].asciiTocList(type, os);
 }

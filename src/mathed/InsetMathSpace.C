@@ -19,6 +19,9 @@
 
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::string;
 using std::auto_ptr;
 
@@ -156,3 +159,6 @@ void InsetMathSpace::write(WriteStream & os) const
 		os.pendingSpace(true);
 	}
 }
+
+
+} // namespace lyx

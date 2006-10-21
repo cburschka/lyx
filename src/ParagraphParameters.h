@@ -24,6 +24,9 @@
 #include <iosfwd>
 #include <string>
 
+
+namespace lyx {
+
 class BufferView;
 class LyXLength;
 class LyXLex;
@@ -53,8 +56,6 @@ public:
 	///
 	void align(LyXAlignment);
 	///
-	typedef lyx::depth_type depth_type;
-	///
 	depth_type depth() const;
 	///
 	void depth(depth_type);
@@ -67,13 +68,13 @@ public:
 	///
 	void appendix(bool);
 	///
-	lyx::docstring const & labelString() const;
+	docstring const & labelString() const;
 	///
-	void labelString(lyx::docstring const &);
+	void labelString(docstring const &);
 	///
-	lyx::docstring const & labelWidthString() const;
+	docstring const & labelWidthString() const;
 	///
-	void labelWidthString(lyx::docstring const &);
+	void labelWidthString(docstring const &);
 	///
 	LyXLength const & leftIndent() const;
 	///
@@ -102,9 +103,9 @@ private:
 	///
 	depth_type depth_;
 	///
-	lyx::docstring labelstring_;
+	docstring labelstring_;
 	///
-	lyx::docstring labelwidthstring_;
+	docstring labelwidthstring_;
 	///
 	LyXLength leftindent_;
 };
@@ -116,5 +117,8 @@ private:
     Paragraph dialog.
  */
 void params2string(Paragraph const & par, std::string & data);
+
+
+} // namespace lyx
 
 #endif

@@ -69,6 +69,9 @@ following hack as starting point to write some macros:
 
 #include <sstream>
 
+
+namespace lyx {
+
 using std::endl;
 using std::fill;
 
@@ -1221,7 +1224,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			string label = parse_verbatim_item();
 			MathArray ar;
 			// FIXME UNICODE
-			asArray(lyx::from_utf8(label), ar);
+			asArray(from_utf8(label), ar);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
 			} else {
@@ -1458,3 +1461,6 @@ void initParser()
 	theCatcode[int('~')]  = catActive;
 	theCatcode[int('%')]  = catComment;
 }
+
+
+} // namespace lyx

@@ -22,13 +22,12 @@
 
 #include <cerrno>
 
-using lyx::support::package;
-using lyx::support::getEnv;
-using lyx::support::setEnv;
 
-using lyx::char_type;
-using lyx::docstring;
-using lyx::from_ascii;
+namespace lyx {
+
+using support::package;
+using support::getEnv;
+using support::setEnv;
 
 using std::string;
 using std::endl;
@@ -114,7 +113,7 @@ public:
 	docstring const get(string const & m) const
 	{
 		if (m.empty())
-			return lyx::from_ascii(m);
+			return from_ascii(m);
 
 		// In this order, see support/filetools.C:
 		string lang = getEnv("LC_ALL");
@@ -200,7 +199,7 @@ public:
 			translated = from_ascii(tmp);
 		} else {
 			lyxerr << "We got a translation" << endl;
-			lyx::char_type const * ucs4 = reinterpret_cast<lyx::char_type const *>(msg);
+			char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
 			translated = ucs4;
 		}
 #endif
@@ -226,7 +225,7 @@ public:
 
 	docstring const get(string const & m) const
 	{
-		return lyx::from_ascii(m);
+		return from_ascii(m);
 	}
 };
 #endif
@@ -251,3 +250,6 @@ docstring const Messages::get(string const & msg) const
 {
 	return pimpl_->get(msg);
 }
+
+
+} // namespace lyx

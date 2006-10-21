@@ -33,7 +33,7 @@
 
 #include <iostream>
 
-using lyx::docstring;
+namespace lyx {
 
 using std::vector;
 using std::max;
@@ -42,7 +42,6 @@ using std::string;
 using std::cout;
 using std::endl;
 
-namespace lyx {
 
 ///////////////////////////////////////////////////////////////////////////
 // TocBackend::Item implementation
@@ -247,7 +246,7 @@ TocBackend::TocIterator const TocBackend::item(std::string const & type, ParCons
 }
 
 
-void TocBackend::asciiTocList(string const & type, lyx::odocstream & os) const
+void TocBackend::asciiTocList(string const & type, odocstream & os) const
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {

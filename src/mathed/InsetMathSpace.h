@@ -15,6 +15,9 @@
 #include "InsetMath.h"
 
 
+namespace lyx {
+
+
 /// Smart spaces
 class InsetMathSpace : public InsetMath {
 public:
@@ -56,4 +59,7 @@ private:
 	///
 	int space_;
 };
+
+
+} // namespace lyx
 #endif

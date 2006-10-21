@@ -17,6 +17,9 @@
 #include "support/std_ostream.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::auto_ptr;
 
@@ -63,3 +66,6 @@ void InsetMathEnv::infoize(std::ostream & os) const
 {
 	os << "Env: " << name_;
 }
+
+
+} // namespace lyx

@@ -56,10 +56,13 @@
 #endif
 #include <fcntl.h>
 
-using lyx::support::compare;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::unlink;
+
+namespace lyx {
+
+using support::compare;
+using support::rtrim;
+using support::split;
+using support::unlink;
 
 using std::endl;
 using std::string;
@@ -457,7 +460,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 
 
 			serv->func->dispatch(FuncRequest(lyxaction.lookupFunc(cmd), arg));
-			string const rval = lyx::to_utf8(serv->func->getMessage());
+			string const rval = to_utf8(serv->func->getMessage());
 
 			//modified june 1999 stefano@zool.su.se:
 			//all commands produce an INFO or ERROR message
@@ -496,3 +499,6 @@ void LyXServer::notifyClient(string const & s)
 	string buf = string("NOTIFY:") + s + "\n";
 	pipes.send(buf);
 }
+
+
+} // namespace lyx

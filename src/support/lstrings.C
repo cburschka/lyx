@@ -640,7 +640,7 @@ docstring const escape(docstring const & lab)
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	docstring enc;
 	for (docstring::size_type i = 0; i < lab.length(); ++i) {
-		lyx::char_type c= lab[i];
+		lyx::char_type c = lab[i];
 		// FIXME We must change the following algorithm for UCS4
 		// chars, but that will be a file format change.
 		if (c >= 128 || c == '=' || c == '%') {

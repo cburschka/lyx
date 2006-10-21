@@ -16,6 +16,9 @@
 #include <boost/signal.hpp>
 
 
+namespace lyx {
+
+
 /**
  * This class executes the callback when the timeout expires.
  */
@@ -88,5 +91,8 @@ private:
 	/// timeout value in milliseconds
 	unsigned int timeout_ms;
 };
+
+
+} // namespace lyx
 
 #endif

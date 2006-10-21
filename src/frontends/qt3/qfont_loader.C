@@ -30,6 +30,9 @@
 #include <qwidget.h>
 #include <X11/Xlib.h>
 #include <algorithm>
+
+
+namespace lyx {
 #endif
 
 using lyx::support::contains;
@@ -308,3 +311,6 @@ bool GuiFontLoader::available(LyXFont const & f)
 	cache[family] = true;
 	return true;
 }
+
+
+} // namespace lyx

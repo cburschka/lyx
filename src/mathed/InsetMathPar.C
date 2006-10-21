@@ -16,6 +16,9 @@
 #include "support/std_ostream.h"
 
 
+namespace lyx {
+
+
 using std::auto_ptr;
 
 
@@ -57,3 +60,6 @@ auto_ptr<InsetBase> InsetMathPar::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetMathPar(*this));
 }
+
+
+} // namespace lyx

@@ -23,6 +23,9 @@
 
 #include <boost/assert.hpp>
 
+
+namespace lyx {
+
 using std::endl;
 
 
@@ -56,7 +59,7 @@ Paragraph const & CursorSlice::paragraph() const
 }
 
 
-CursorSlice::pos_type CursorSlice::lastpos() const
+pos_type CursorSlice::lastpos() const
 {
 	BOOST_ASSERT(inset_);
 	return inset_->asInsetMath() ? cell().size() : paragraph().size();
@@ -134,3 +137,6 @@ std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 //	   << " y: " << item.inset().y()
 ;
 }
+
+
+} // namespace lyx

@@ -21,6 +21,9 @@
 #include "support/std_ostream.h"
 #include "frontends/Painter.h"
 
+
+namespace lyx {
+
 using std::auto_ptr;
 
 
@@ -74,3 +77,6 @@ void InsetMathBoxed::validate(LaTeXFeatures & features) const
 {
 	features.require("amsmath");
 }
+
+
+} // namespace lyx

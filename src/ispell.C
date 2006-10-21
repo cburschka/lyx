@@ -24,6 +24,9 @@
 
 #include "support/forkedcall.h"
 
+
+namespace lyx {
+
 // HP-UX 11.x doesn't have this header
 #ifdef HAVE_SYS_SELECT_H
 # include <sys/select.h>
@@ -31,8 +34,6 @@
 #ifdef HAVE_SYS_TIME_H
 # include <sys/time.h>
 #endif
-
-using lyx::docstring;
 
 using boost::shared_ptr;
 
@@ -49,8 +50,8 @@ using std::string;
 
 namespace {
 
-class LaunchIspell : public lyx::support::ForkedProcess {
-	typedef lyx::support::ForkedProcess ForkedProcess;
+class LaunchIspell : public support::ForkedProcess {
+	typedef support::ForkedProcess ForkedProcess;
 public:
 	///
 	LaunchIspell(BufferParams const & p, string const & l,
@@ -162,7 +163,7 @@ int LaunchIspell::generateChild()
 		string enc = (params.inputenc == "auto")
 			? params.language->encoding()->latexName()
 			: params.inputenc;
-		string::size_type n = enc.length();
+		size_t const n = enc.length();
 		tmp = new char[3];
 		string("-T").copy(tmp, 2);
 		tmp[2] = '\0';
@@ -264,7 +265,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 		}
 
 		/* must have read something from stderr */
-		error_ =lyx::from_utf8(buf);
+		error_ =from_utf8(buf);
 	} else {
 		// select returned error
 		error_ = _("The ispell process returned an error.\nPerhaps "
@@ -381,7 +382,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	}
 
 	if (err_read) {
-		error_ = lyx::from_utf8(buf);
+		error_ = from_utf8(buf);
 		return UNKNOWN_WORD;
 	}
 
@@ -450,3 +451,6 @@ docstring const ISpell::error()
 {
 	return error_;
 }
+
+
+} // namespace lyx

@@ -15,7 +15,8 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
-using lyx::docstring;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -35,14 +36,14 @@ auto_ptr<InsetBase> InsetMathNumber::doClone() const
 void InsetMathNumber::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// FIXME UNICODE
-	mathed_string_dim(mi.base.font, lyx::from_utf8(str_), dim);
+	mathed_string_dim(mi.base.font, from_utf8(str_), dim);
 }
 
 
 void InsetMathNumber::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME UNICODE
-	pi.draw(x, y, lyx::from_utf8(str_));
+	pi.draw(x, y, from_utf8(str_));
 }
 
 
@@ -80,3 +81,6 @@ void InsetMathNumber::write(WriteStream & os) const
 {
 	os << str_;
 }
+
+
+} // namespace lyx

@@ -17,6 +17,9 @@
 #include <string>
 
 
+namespace lyx {
+
+
 class Author {
 public:
 	Author() {}
@@ -68,5 +71,8 @@ bool operator==(Author const & l, Author const & r);
 std::ostream & operator<<(std::ostream & os, Author const & a);
 
 std::istream & operator>>(std::istream & os, Author & a);
+
+
+} // namespace lyx
 
 #endif // AUTHOR_H

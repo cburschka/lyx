@@ -15,13 +15,16 @@
 #include "insetcommand.h"
 
 
+namespace lyx {
+
+
 /// Used to insert table of contents and similar lists
 class InsetTOC : public InsetCommand {
 public:
 	///
 	explicit InsetTOC(InsetCommandParams const &);
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -29,13 +32,16 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

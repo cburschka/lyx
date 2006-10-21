@@ -18,6 +18,9 @@
 
 #include "InsetMathNest.h"
 
+
+namespace lyx {
+
 class InsetMathDiff : public InsetMathNest {
 public:
 	///
@@ -44,5 +47,8 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+
+} // namespace lyx
 
 #endif

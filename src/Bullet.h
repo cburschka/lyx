@@ -15,6 +15,9 @@
 
 #include "support/docstring.h"
 
+
+namespace lyx {
+
 ///
 class Bullet {
 public:
@@ -22,7 +25,7 @@ public:
 	Bullet(int f = -1, int c = -1, int s = -1);
 
 	///
-	explicit Bullet(lyx::docstring const &);
+	explicit Bullet(docstring const &);
 
 	///
 	void setCharacter(int);
@@ -31,7 +34,7 @@ public:
 	///
 	void setSize(int);
 	///
-	void setText(lyx::docstring const &);
+	void setText(docstring const &);
 	///
 	int getCharacter() const;
 	///
@@ -39,7 +42,7 @@ public:
 	///
 	int getSize() const;
 	///
-	lyx::docstring const & getText() const;
+	docstring const & getText() const;
 	///
 	Bullet & operator=(Bullet const &);
 	///
@@ -70,9 +73,9 @@ private:
 	///
 	void generateText() const;
 	///
-	static lyx::docstring const bulletSize(int);
+	static docstring const bulletSize(int);
 	///
-	static lyx::docstring const bulletEntry(int, int);
+	static docstring const bulletEntry(int, int);
 
 	///
 	int font;
@@ -97,7 +100,7 @@ private:
 	    or one generated internally from the font, character
 	    and size settings.
 	*/
-	mutable lyx::docstring text;
+	mutable docstring text;
 };
 
 
@@ -110,5 +113,8 @@ bool operator!=(Bullet const & b1, Bullet const & b2)
 ///
 extern
 Bullet const ITEMIZE_DEFAULTS[];
+
+
+} // namespace lyx
 
 #endif /* BULLET_H_ */

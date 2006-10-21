@@ -24,6 +24,9 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 class LyXText;
 class Paragraph;
 
@@ -32,7 +35,7 @@ class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
 {
 public:
 	///
-	FontIterator(LyXText const & text, Paragraph const & par, lyx::pos_type pos);
+	FontIterator(LyXText const & text, Paragraph const & par, pos_type pos);
 	///
 	LyXFont const & operator*() const;
 	///
@@ -46,13 +49,16 @@ private:
 	///
 	Paragraph const & par_;
 	///
-	lyx::pos_type pos_;
+	pos_type pos_;
 	///
 	LyXFont font_;
 	///
-	lyx::pos_type endspan_;
+	pos_type endspan_;
 	///
-	lyx::pos_type bodypos_;
+	pos_type bodypos_;
 };
+
+
+} // namespace lyx
 
 #endif // FONTITERATOR_H

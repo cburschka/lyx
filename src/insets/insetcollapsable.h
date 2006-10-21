@@ -22,16 +22,13 @@
 
 #include <string>
 
+namespace lyx {
+
 class LyXText;
 class Paragraph;
 class CursorSlice;
 
-namespace lyx {
-namespace frontend {
-class Painter;
-}
-}
-
+namespace frontend { class Painter; }
 
 /** A collapsable text inset
 
@@ -60,13 +57,13 @@ public:
 	///
 	bool hitButton(FuncRequest const &) const;
 	///
-	lyx::docstring const getNewLabel(lyx::docstring const & l) const;
+	docstring const getNewLabel(docstring const & l) const;
 	///
 	EDITABLE editable() const;
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
-	void setLabel(lyx::docstring const & l);
+	void setLabel(docstring const & l);
 	///
 	virtual void setButtonLabel() {}
 	///
@@ -98,7 +95,7 @@ protected:
 	///
 	void setInlined() { status_ = Inlined; }
 	///
-	lyx::docstring floatName(std::string const & type, BufferParams const &);
+	docstring floatName(std::string const & type, BufferParams const &);
 
 protected:
 	///
@@ -110,7 +107,7 @@ protected:
 	///
 	mutable int topbaseline;
 	///
-	mutable lyx::docstring label;
+	mutable docstring label;
 private:
 	///
 	mutable CollapseStatus status_;
@@ -124,5 +121,7 @@ private:
 
 // A helper function that pushes the cursor out of the inset.
 void leaveInset(LCursor & cur, InsetBase const & in);
+
+} // namespace lyx
 
 #endif

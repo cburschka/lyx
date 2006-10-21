@@ -15,6 +15,9 @@
 
 #include "insetcommand.h"
 
+
+namespace lyx {
+
 /** Used to insert table of contents
  */
 class InsetFloatList : public InsetCommand {
@@ -24,7 +27,7 @@ public:
 	///
 	InsetFloatList(std::string const & type);
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
@@ -36,13 +39,13 @@ public:
 	///
 	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const { return 0; }
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -52,5 +55,8 @@ private:
 		return std::auto_ptr<InsetBase>(new InsetFloatList(getCmdName()));
 	}
 };
+
+
+} // namespace lyx
 
 #endif

@@ -34,8 +34,8 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -62,11 +62,11 @@ NoteTranslator const init_notetranslator()
 NoteTranslator const init_notetranslator_loc()
 {
 	// FIXME UNICODE
-	NoteTranslator translator(lyx::to_utf8(_("Note")), InsetNoteParams::Note);
-	translator.addPair(lyx::to_utf8(_("Comment")), InsetNoteParams::Comment);
-	translator.addPair(lyx::to_utf8(_("Greyed out")), InsetNoteParams::Greyedout);
-	translator.addPair(lyx::to_utf8(_("Framed")), InsetNoteParams::Framed);
-	translator.addPair(lyx::to_utf8(_("Shaded")), InsetNoteParams::Shaded);
+	NoteTranslator translator(to_utf8(_("Note")), InsetNoteParams::Note);
+	translator.addPair(to_utf8(_("Comment")), InsetNoteParams::Comment);
+	translator.addPair(to_utf8(_("Greyed out")), InsetNoteParams::Greyedout);
+	translator.addPair(to_utf8(_("Framed")), InsetNoteParams::Framed);
+	translator.addPair(to_utf8(_("Shaded")), InsetNoteParams::Shaded);
 	return translator;
 }
 
@@ -168,7 +168,7 @@ void InsetNote::read(Buffer const & buf, LyXLex & lex)
 void InsetNote::setButtonLabel()
 {
 	// FIXME unicode
-	docstring const label = lyx::from_utf8(notetranslator_loc().find(params_.type));
+	docstring const label = from_utf8(notetranslator_loc().find(params_.type));
 	setLabel(label);
 
 	LyXFont font(LyXFont::ALL_SANE);
@@ -213,7 +213,7 @@ void InsetNote::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY:
-		InsetNoteMailer::string2params(lyx::to_utf8(cmd.argument()), params_);
+		InsetNoteMailer::string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		break;
 
@@ -271,10 +271,10 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 	else if (params_.type == InsetNoteParams::Shaded)
 		type = "shaded";
 
-	lyx::odocstringstream ss;
-	ss << "%\n\\begin{" << lyx::from_ascii(type) << "}\n";
+	odocstringstream ss;
+	ss << "%\n\\begin{" << from_ascii(type) << "}\n";
 	InsetText::latex(buf, ss, runparams);
-	ss << "\n\\end{" << lyx::from_ascii(type) << "}\n";
+	ss << "\n\\end{" << from_ascii(type) << "}\n";
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the
 	// following latex output:
@@ -316,7 +316,7 @@ int InsetNote::docbook(Buffer const & buf, odocstream & os,
 		os << "\n</remark>\n";
 
 	// Return how many newlines we issued.
-	//return int(lyx::count(str.begin(), str.end(), '\n'));
+	//return int(count(str.begin(), str.end(), '\n'));
         return n + 1 + 2;
 }
 
@@ -409,3 +409,6 @@ void InsetNoteMailer::string2params(string const & in,
 
 	params.read(lex);
 }
+
+
+} // namespace lyx

@@ -16,20 +16,20 @@
 #include "MathExtern.h"
 #include "support/lyxalgo.h"
 
-using lyx::odocstream;
-
-using std::strlen;
-using lyx::odocstream;
-
 
 namespace {
 
-	bool isAlpha(char c)
-	{
-		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
-	}
+bool isAlpha(char c)
+{
+	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+}
 
 }
+
+
+namespace lyx {
+
+using std::strlen;
 
 
 WriteStream::WriteStream(odocstream & os, bool fragile, bool latex)
@@ -85,7 +85,7 @@ WriteStream & operator<<(WriteStream & ws, char const * s)
 		ws.pendingSpace(false);
 	}
 	ws.os() << s;
-	ws.addlines(int(lyx::count(s, s + strlen(s), '\n')));
+	ws.addlines(int(count(s, s + strlen(s), '\n')));
 	return ws;
 }
 
@@ -374,3 +374,6 @@ NormalStream & operator<<(NormalStream & ns, int i)
 
 
 //////////////////////////////////////////////////////////////////////
+
+
+} // namespace lyx

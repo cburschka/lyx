@@ -20,6 +20,9 @@
 #include "cursor.h"
 
 
+namespace lyx {
+
+
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
  *
@@ -48,13 +51,13 @@ public:
 	/// FIXME remove
 	void scanCommand(std::string const & c) { p_.scanCommand(c); };
 	///
-	virtual int latex(Buffer const &, lyx::odocstream &,
+	virtual int latex(Buffer const &, odocstream &,
 			  OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
+	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	virtual int docbook(Buffer const &, lyx::odocstream &,
+	virtual int docbook(Buffer const &, odocstream &,
 			    OutputParams const & runparams) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::NO_CODE; }
@@ -70,13 +73,13 @@ public:
 		p_.setContents(c);
 	}
 	///
-	void setParam(std::string const & name, lyx::docstring const & value)
+	void setParam(std::string const & name, docstring const & value)
 	{
 		updateButtonLabel_ = true;
 		p_[name] = value;
 	}
 	///
-	lyx::docstring const & getParam(std::string const & name) const
+	docstring const & getParam(std::string const & name) const
 	{
 		return p_[name];
 	}
@@ -95,7 +98,7 @@ protected:
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
-	lyx::docstring const getCommand() const { return p_.getCommand(); }
+	docstring const getCommand() const { return p_.getCommand(); }
 	///
 	std::string const & getCmdName() const { return p_.getCmdName(); }
 	///
@@ -119,7 +122,7 @@ protected:
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button
-	virtual lyx::docstring const getScreenLabel(Buffer const &) const = 0;
+	virtual docstring const getScreenLabel(Buffer const &) const = 0;
 
 private:
 	///
@@ -153,5 +156,8 @@ private:
 	InsetCommand & inset_;
 };
 
+
+
+} // namespace lyx
 
 #endif

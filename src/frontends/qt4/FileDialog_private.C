@@ -47,6 +47,8 @@ docstring const getLabel(docstring const & ucs4str) {
 } // namespace anon
 
 
+namespace lyx {
+
 LyXFileDialog::LyXFileDialog(docstring const & t,
 			     docstring const & p,
 			     lyx::support::FileFilterList const & filters,
@@ -87,4 +89,7 @@ void LyXFileDialog::buttonClicked()
 		setDirectory(toqstr(b2_dir_));
 }
 
+} // namespace lyx
+
 #include "FileDialog_private_moc.cpp"
+

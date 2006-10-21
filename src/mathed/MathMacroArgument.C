@@ -17,6 +17,9 @@
 #include "MathSupport.h"
 #include "debug.h"
 
+
+namespace lyx {
+
 using std::endl;
 using std::auto_ptr;
 using std::size_t;
@@ -49,7 +52,7 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, lyx::from_utf8(str_), dim_);
+	mathed_string_dim(mi.base.font, from_utf8(str_), dim_);
 	dim = dim_;
 }
 
@@ -57,7 +60,7 @@ void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME UNICODE
-	drawStrRed(pi, x, y, lyx::from_utf8(str_));
+	drawStrRed(pi, x, y, from_utf8(str_));
 	setPosCache(pi, x, y);
 }
 
@@ -66,3 +69,6 @@ void MathMacroArgument::normalize(NormalStream & os) const
 {
 	os << "[macroarg " << str_ << "] ";
 }
+
+
+} // namespace lyx

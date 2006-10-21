@@ -220,7 +220,7 @@ std::string const makeAbsPath(std::string const & RelPath = std::string(),
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
-lyx::docstring const
+docstring const
 makeDisplayPath(std::string const & path, unsigned int threshold = 1000);
 
 /** Makes relative path out of absolute path.

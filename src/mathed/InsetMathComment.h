@@ -15,6 +15,8 @@
 #include "InsetMathNest.h"
 
 
+namespace lyx {
+
 class latexkeys;
 
 /// Inset for end-of-line comments
@@ -48,4 +50,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };
+
+} // namespace lyx
+
 #endif

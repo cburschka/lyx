@@ -18,6 +18,9 @@
 #include "MathSupport.h"
 
 
+namespace lyx {
+
+
 using std::string;
 using std::max;
 using std::auto_ptr;
@@ -185,3 +188,6 @@ void InsetMathDelim::octave(OctaveStream & os) const
 	else
 		os << left_ << cell(0) << right_;
 }
+
+
+} // namespace lyx

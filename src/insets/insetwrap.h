@@ -15,6 +15,10 @@
 #include "insetcollapsable.h"
 #include "toc.h"
 #include "lyxlength.h"
+#include "mailinset.h"
+
+
+namespace lyx {
 
 
 class InsetWrapParams {
@@ -50,17 +54,17 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::WRAP_CODE; }
 	///
-	int latex(Buffer const &, lyx::odocstream &,
+	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 	///
-	virtual lyx::docstring const editMessage() const;
+	virtual docstring const editMessage() const;
 	///
 	bool insetAllowed(InsetBase::Code) const;
 	///
-	void addToToc(lyx::toc::TocList &, Buffer const &) const;
+	void addToToc(toc::TocList &, Buffer const &) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -76,10 +80,6 @@ private:
 	///
 	InsetWrapParams params_;
 };
-
-
-
-#include "mailinset.h"
 
 
 class InsetWrapMailer : public MailInset {
@@ -102,5 +102,8 @@ private:
 	///
 	InsetWrap & inset_;
 };
+
+
+} // namespace lyx
 
 #endif

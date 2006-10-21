@@ -20,12 +20,11 @@
 
 #include "support/std_ostream.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::ostream;
-
 
 
 InsetTOC::InsetTOC(InsetCommandParams const & p)
@@ -60,7 +59,7 @@ int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	lyx::toc::asciiTocList(lyx::toc::getType(getCmdName()), buffer, os);
+	toc::asciiTocList(lyx::toc::getType(getCmdName()), buffer, os);
 
 	os << "\n";
 	return 0;
@@ -74,3 +73,6 @@ int InsetTOC::docbook(Buffer const &, odocstream & os,
 		os << "<toc></toc>";
 	return 0;
 }
+
+
+} // namespace lyx

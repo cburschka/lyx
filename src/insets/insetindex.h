@@ -15,6 +15,9 @@
 
 #include "insetcommand.h"
 
+
+namespace lyx {
+
 class LaTeXFeatures;
 
 /** Used to insert index labels
@@ -24,13 +27,13 @@ public:
 	///
 	InsetIndex(InsetCommandParams const &);
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	InsetBase::Code lyxCode() const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
+	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
@@ -52,11 +55,14 @@ public:
 	///
 	bool display() const { return true; }
 	///
-	lyx::docstring const getScreenLabel(Buffer const &) const;
+	docstring const getScreenLabel(Buffer const &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
 		return std::auto_ptr<InsetBase>(new InsetPrintIndex(params()));
 	}
 };
+
+
+} // namespace lyx
 
 #endif

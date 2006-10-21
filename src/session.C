@@ -39,8 +39,6 @@ using std::copy;
 using std::find;
 using std::ostream_iterator;
 
-namespace lyx{
-
 namespace {
 
 string const sec_lastfiles = "[recent files]";
@@ -56,6 +54,8 @@ int const id_session = 4;
 
 } // anon namespace
 
+
+namespace lyx {
 
 Session::Session(unsigned int num) :
 	default_num_last_files(4),
@@ -119,8 +119,8 @@ void Session::readFile()
 		} else if (section == id_lastfilepos) {
 			// read lastfilepos
 			// pos, file\n
-			lyx::pit_type pit;
-			lyx::pos_type pos;
+			pit_type pit;
+			pos_type pos;
 			string fname;
 			istringstream itmp(tmp);
 			itmp >> pit;
@@ -142,7 +142,7 @@ void Session::readFile()
 			// bookmarkid, id, pos, file\n
 			unsigned int num;
 			unsigned int id;
-			lyx::pos_type pos;
+			pos_type pos;
 			string fname;
 			istringstream itmp(tmp);
 			itmp >> num;

@@ -32,10 +32,7 @@
 #include "support/package.h"
 #include "support/path.h"
 
-namespace support = lyx::support;
-
 using std::endl;
-
 using std::string;
 using std::vector;
 
@@ -331,7 +328,7 @@ string const substituteOptions(InsetExternalParams const & params,
 
 int writeExternal(InsetExternalParams const & params,
 		  string const & format,
-		  Buffer const & buffer, lyx::odocstream & os,
+		  Buffer const & buffer, odocstream & os,
 		  ExportData & exportdata,
 		  bool external_in_tmpdir,
 		  bool external_in_comment)
@@ -360,7 +357,7 @@ int writeExternal(InsetExternalParams const & params,
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
 	// FIXME UNICODE
-	os << lyx::from_utf8(str);
+	os << from_utf8(str);
 	return int(lyx::count(str.begin(), str.end(),'\n'));
 }
 
@@ -511,9 +508,10 @@ string const substituteOptions(InsetExternalParams const & params,
 	}
 
 	return output;
- }
+}
 
 } // namespace anon
 
 } // namespace external
+
 } // namespace lyx

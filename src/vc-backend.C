@@ -25,15 +25,18 @@
 
 #include <fstream>
 
-using lyx::support::addName;
-using lyx::support::addPath;
-using lyx::support::contains;
-using lyx::support::onlyFilename;
-using lyx::support::onlyPath;
-using lyx::support::quoteName;
-using lyx::support::rtrim;
-using lyx::support::split;
-using lyx::support::Systemcall;
+
+namespace lyx {
+
+using support::addName;
+using support::addPath;
+using support::contains;
+using support::onlyFilename;
+using support::onlyPath;
+using support::quoteName;
+using support::rtrim;
+using support::split;
+using support::Systemcall;
 
 using boost::regex;
 using boost::regex_match;
@@ -56,7 +59,7 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 {
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
 	Systemcall one;
-	lyx::support::Path p(path);
+	support::Path p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
 }
@@ -71,7 +74,7 @@ RCS::RCS(string const & m)
 
 string const RCS::find_file(string const & file)
 {
-	string tmp(file);
+	string tmp = file;
 	// Check if *,v exists.
 	tmp += ",v";
 	lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
@@ -349,3 +352,6 @@ void CVS::getLog(string const & tmpf)
 		    + " > " + tmpf,
 		    owner_->filePath());
 }
+
+
+} // namespace lyx

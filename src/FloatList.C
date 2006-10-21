@@ -13,6 +13,9 @@
 #include "FloatList.h"
 #include "Floating.h"
 
+
+namespace lyx {
+
 using std::string;
 
 // This class is now mostly finished, except one thing, it is a global
@@ -96,3 +99,6 @@ FloatList::const_iterator FloatList::operator[](string const & t) const
 {
 	return list.find(t);
 }
+
+
+} // namespace lyx

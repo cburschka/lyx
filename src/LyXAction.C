@@ -22,8 +22,11 @@
 
 #include <boost/assert.hpp>
 
-using lyx::support::split;
-using lyx::support::trim;
+
+namespace lyx {
+
+using support::split;
+using support::trim;
 
 using std::endl;
 using std::string;
@@ -431,3 +434,6 @@ ostream & operator<<(ostream & o, kb_action action)
 {
 	return o << int(action);
 }
+
+
+} // namespace lyx

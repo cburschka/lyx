@@ -17,9 +17,11 @@
 
 #include "support/types.h"
 
+
+namespace lyx {
+
 class BufferParams;
 class Language;
-
 class LaTeXFeatures;
 
 
@@ -68,9 +70,9 @@ public:
 	explicit
 	InsetQuotes(std::string const & str = "eld");
 	/// Create the right quote inset after character c
-	InsetQuotes(lyx::char_type c, BufferParams const & params);
+	InsetQuotes(char_type c, BufferParams const & params);
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(lyx::char_type c, quote_language l, quote_times t);
+	InsetQuotes(char_type c, quote_language l, quote_times t);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -84,17 +86,14 @@ public:
 	///
 	void read(Buffer const &, LyXLex & lex);
 	///
-	int latex(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, lyx::odocstream &,
-		  OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int docbook(Buffer const &, lyx::odocstream &,
-		    OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, lyx::odocstream &,
+	virtual int textString(Buffer const &, odocstream &,
 		OutputParams const &) const;
 
 	///
@@ -119,10 +118,13 @@ private:
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
 	/// Decide whether we need left or right quotation marks
-	void getPosition(lyx::char_type c);
+	void getPosition(char_type c);
 	///
 	void parseString(std::string const &);
 	///
 	std::string const dispString(Language const *) const;
 };
+
+} // namespace lyx
+
 #endif

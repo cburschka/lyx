@@ -20,6 +20,8 @@
 #include AIKSAURUS_H_LOCATION
 #endif
 
+namespace lyx {
+
 /**
  * This class provides an interface to whatever thesauri we might support.
  */
@@ -45,5 +47,8 @@ private:
 };
 
 extern Thesaurus thesaurus;
+
+
+} // namespace lyx
 
 #endif

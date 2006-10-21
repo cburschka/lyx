@@ -23,8 +23,8 @@
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
-using lyx::docstring;
-using lyx::odocstream;
+
+namespace lyx {
 
 using std::string;
 using std::auto_ptr;
@@ -44,7 +44,7 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 
 void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	lyx::frontend::FontMetrics const & fm =
+	frontend::FontMetrics const & fm =
 		theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
@@ -73,19 +73,19 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case HYPHENATION:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, lyx::char_type('-'), font);
+		pi.pain.text(x, y, char_type('-'), font);
 		break;
 	}
 	case LIGATURE_BREAK:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, lyx::char_type('|'), font);
+		pi.pain.text(x, y, char_type('|'), font);
 		break;
 	}
 	case END_OF_SENTENCE:
 	{
 		font.setColor(LColor::special);
-		pi.pain.text(x, y, lyx::char_type('.'), font);
+		pi.pain.text(x, y, char_type('.'), font);
 		break;
 	}
 	case LDOTS:
@@ -98,13 +98,13 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	}
 	case MENU_SEPARATOR:
 	{
-		lyx::frontend::FontMetrics const & fm =
+		frontend::FontMetrics const & fm =
 			theFontMetrics(font);
 
 		// A triangle the width and height of an 'x'
-                int w = fm.width(lyx::char_type('x'));
-		int ox = fm.width(lyx::char_type(' ')) + x;
-		int h = fm.ascent(lyx::char_type('x'));
+                int w = fm.width(char_type('x'));
+		int ox = fm.width(char_type(' ')) + x;
+		int h = fm.ascent(char_type('x'));
 		int xp[4], yp[4];
 
 		xp[0] = ox;     yp[0] = y;
@@ -276,3 +276,6 @@ bool InsetSpecialChar::isLineSeparator() const
 	return false;
 #endif
 }
+
+
+} // namespace lyx

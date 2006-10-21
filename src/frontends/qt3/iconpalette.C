@@ -118,3 +118,9 @@ out:
 }
 
 #include "iconpalette_moc.cpp"
+
+
+namespace lyx {
+
+
+} // namespace lyx

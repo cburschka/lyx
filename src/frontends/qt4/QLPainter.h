@@ -17,7 +17,6 @@
 
 #include <boost/scoped_ptr.hpp>
 
-class LyXFont;
 class QPaintDevice;
 class QPainter;
 class QString;
@@ -25,6 +24,9 @@ class QPixmap;
 class QImage;
 
 namespace lyx {
+
+class LyXFont;
+
 namespace frontend {
 
 class GuiWorkArea;

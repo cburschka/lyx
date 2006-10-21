@@ -15,6 +15,9 @@
 #include "InsetMathFracBase.h"
 
 
+namespace lyx {
+
+
 /// Binom like objects
 class InsetMathBinom : public InsetMathFracBase {
 public:
@@ -37,5 +40,8 @@ private:
 	///
 	bool choose_;
 };
+
+
+} // namespace lyx
 
 #endif

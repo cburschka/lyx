@@ -34,9 +34,10 @@
 
 #include <sstream>
 
-using lyx::docstring;
-using lyx::odocstream;
-using lyx::support::bformat;
+
+namespace lyx {
+
+using support::bformat;
 
 using std::auto_ptr;
 using std::endl;
@@ -113,8 +114,8 @@ void InsetCaption::setLabel(LCursor & cur) const
 			num = convert<string>(counter_);
 
 		// Generate the label
-		label = lyx::to_utf8(
-			bformat(lyx::from_ascii("%1$s %2$s:"), _(s), lyx::from_ascii(num)));
+		label = to_utf8(
+			bformat(from_ascii("%1$s %2$s:"), _(s), from_ascii(num)));
 	}
 }
 
@@ -184,7 +185,7 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 	// This code is currently only able to handle the simple
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
-	lyx::odocstringstream ost;
+	odocstringstream ost;
 	int const l = InsetText::latex(buf, ost, runparams);
 	os << "\\caption{" << ost.str() << "}\n";
 	return l + 1;
@@ -214,3 +215,6 @@ auto_ptr<InsetBase> InsetCaption::doClone() const
 {
 	return auto_ptr<InsetBase>(new InsetCaption(*this));
 }
+
+
+} // namespace lyx
