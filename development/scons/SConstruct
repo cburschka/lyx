@@ -1951,27 +1951,26 @@ if build_msvs_projects:
     #
     build_project('lyxbase', src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files],
         inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files])
-    else:
-        build_project('lyx', 
-            src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \
-                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files] + \
-                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_files] + \
-                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files] + \
-                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
-                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files] + \
-                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files] + \
-                ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
-            inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files] + \
-                ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files] + \
-                ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_header_files] + \
-                ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files] + \
-                ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files] + \
-                ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files] + \
-                ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files] + \
-                ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
-            res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
-            rebuildTargetOnly = False,
-            full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
+    build_project('lyx', 
+        src = ['$TOP_SRCDIR/src/%s' % x for x in src_pre_files + src_post_files] + \
+            ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_files] + \
+            ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_files] + \
+            ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_files] + \
+            ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_files] + \
+            ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_files] + \
+            ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_files] + \
+            ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_files + src_frontends_qt4_moc_files],
+        inc = ['$TOP_SRCDIR/src/%s' % x for x in src_header_files] + \
+            ['$TOP_SRCDIR/src/support/%s' % x for x in src_support_header_files] + \
+            ['$TOP_SRCDIR/src/mathed/%s' % x for x in src_mathed_header_files] + \
+            ['$TOP_SRCDIR/src/insets/%s' % x for x in src_insets_header_files] + \
+            ['$TOP_SRCDIR/src/frontends/%s' % x for x in src_frontends_header_files] + \
+            ['$TOP_SRCDIR/src/graphics/%s' % x for x in src_graphics_header_files] + \
+            ['$TOP_SRCDIR/src/frontends/controllers/%s' % x for x in src_frontends_controllers_header_files] + \
+            ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
+        res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
+        rebuildTargetOnly = False,
+        full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
 
 
 if build_po:
