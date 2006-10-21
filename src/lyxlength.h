@@ -15,6 +15,7 @@
 #ifndef LYX_LENGTH_H
 #define LYX_LENGTH_H
 
+#include "support/docstring.h"
 #include <string>
 
 
@@ -81,6 +82,8 @@ public:
 	bool empty() const;
 	/// return string representation
 	std::string const asString() const;
+	/// return string representation
+	docstring const asDocstring() const;
 	/// return string representation for LaTeX
 	std::string const asLatexString() const;
 	/// return the on-screen size of this length

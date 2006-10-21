@@ -349,9 +349,9 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
-string const InsetGraphics::toDocbookLength(LyXLength const & len) const
+docstring const InsetGraphics::toDocbookLength(LyXLength const & len) const
 {
-	ostringstream result;
+	odocstringstream result;
 	switch (len.unit()) {
 		case LyXLength::SP: // Scaled point (65536sp = 1pt) TeX's smallest unit.
 			result << len.value() * 65536.0 * 72 / 72.27 << "pt";
@@ -400,13 +400,13 @@ string const InsetGraphics::toDocbookLength(LyXLength const & len) const
 			result << len.value() << "%";
 			break;
 		default:
-			result << len.asString();
+			result << len.asDocstring();
 			break;
 	}
 	return result.str();
 }
 
-string const InsetGraphics::createDocBookAttributes() const
+docstring const InsetGraphics::createDocBookAttributes() const
 {
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we copied the code from createLatexParams() ;-)
@@ -414,7 +414,7 @@ string const InsetGraphics::createDocBookAttributes() const
 	// FIXME: av: need to translate spec -> Docbook XSL spec (http://www.sagehill.net/docbookxsl/ImageSizing.html)
 	// Right now it only works with my version of db2latex :-)
 
-	ostringstream options;
+	odocstringstream options;
 	double const scl = convert<double>(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
@@ -436,11 +436,10 @@ string const InsetGraphics::createDocBookAttributes() const
 
 
 	if (!params().special.empty())
-	    options << params().special << " ";
+		options << from_ascii(params().special) << " ";
 
-	string opts = options.str();
 	// trailing blanks are ok ...
-	return opts;
+	return options.str();
 }
 
 
@@ -824,7 +823,7 @@ int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 namespace {
 
 int writeImageObject(char * format, odocstream & os, OutputParams const & runparams,
-                     string const graphic_label, string const attributes)
+                     docstring const graphic_label, docstring const attributes)
 {
 		if (runparams.flavor != OutputParams::XML) {
 			os << "<![ %output.print."
@@ -832,13 +831,12 @@ int writeImageObject(char * format, odocstream & os, OutputParams const & runpar
                            << "; ["
                            << std::endl;
 		}
-                // FIXME UNICODE
 		os <<"<imageobject><imagedata fileref=\"&"
-		   << from_ascii(graphic_label)
+		   << graphic_label
                    << ";."
                    << format
                    << "\" "
-                   << from_ascii(attributes);
+                   << attributes;
 		if (runparams.flavor == OutputParams::XML) {
 			os <<  " role=\"" << format << "\"/>" ;
 		}
@@ -874,7 +872,7 @@ int InsetGraphics::docbook(Buffer const &, odocstream & os,
 	os << "<inlinemediaobject>";
 
 	int r = 0;
-	string attributes = createDocBookAttributes();
+	docstring attributes = createDocBookAttributes();
 	r += writeImageObject("png", os, runparams, graphic_label, attributes);
 	r += writeImageObject("pdf", os, runparams, graphic_label, attributes);
 	r += writeImageObject("eps", os, runparams, graphic_label, attributes);

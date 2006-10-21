@@ -96,9 +96,9 @@ private:
 	/// Create the options for the latex command.
 	std::string const createLatexOptions() const;
 	/// Create length values for docbook export.
-	std::string const toDocbookLength(LyXLength const & len) const;
+	docstring const toDocbookLength(LyXLength const & len) const;
 	/// Create the atributes for docbook export.
-	std::string const createDocBookAttributes() const;
+	docstring const createDocBookAttributes() const;
 	/// Convert the file if needed, and return the location of the file.
 	std::string const prepareFile(Buffer const & buf, OutputParams const &) const;
 
@@ -106,7 +106,7 @@ private:
 	InsetGraphicsParams params_;
 
 	/// holds the entity name that defines the graphics location (SGML).
-	std::string const graphic_label;
+	docstring const graphic_label;
 
 	/// The thing that actually draws the image on LyX's screen.
 	boost::scoped_ptr<RenderGraphic> const graphic_;

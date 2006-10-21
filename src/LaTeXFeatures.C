@@ -28,8 +28,8 @@
 #include "lyx_sty.h"
 #include "lyxrc.h"
 
+#include "support/docstream.h"
 #include "support/filetools.h"
-
 #include <sstream>
 
 
@@ -191,7 +191,7 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 }
 
 
-void LaTeXFeatures::includeFile(string const & key, string const & name)
+void LaTeXFeatures::includeFile(docstring const & key, string const & name)
 {
 	IncludedFiles_[key] = name;
 }
@@ -498,10 +498,10 @@ string const LaTeXFeatures::getTClassPreamble() const
 }
 
 
-string const LaTeXFeatures::getLyXSGMLEntities() const
+docstring const LaTeXFeatures::getLyXSGMLEntities() const
 {
 	// Definition of entities used in the document that are LyX related.
-	ostringstream entities;
+	odocstringstream entities;
 
 	if (isRequired("lyxarrow")) {
 		entities << "<!ENTITY lyxarrow \"-&gt;\">" << '\n';
@@ -511,9 +511,9 @@ string const LaTeXFeatures::getLyXSGMLEntities() const
 }
 
 
-string const LaTeXFeatures::getIncludedFiles(string const & fname) const
+docstring const LaTeXFeatures::getIncludedFiles(string const & fname) const
 {
-	ostringstream sgmlpreamble;
+	odocstringstream sgmlpreamble;
 	string const basename = onlyPath(fname);
 
 	FileMap::const_iterator end = IncludedFiles_.end();
@@ -521,7 +521,7 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 	     fi != end; ++fi)
 		sgmlpreamble << "\n<!ENTITY " << fi->first
 			     << (isSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
-			     << makeRelPath(fi->second, basename) << "\">";
+			     << from_ascii(makeRelPath(fi->second, basename)) << "\">";
 
 	return sgmlpreamble.str();
 }

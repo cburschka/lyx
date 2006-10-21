@@ -43,7 +43,7 @@ std::string cleanID(Buffer const & buf, OutputParams const & runparams,
 		    std::string const & orig);
 
 /// returns a unique numeric id
-std::string const uniqueID(std::string const label);
+docstring const uniqueID(std::string const label);
 
 /// Opens tag
 void openTag(odocstream & os, std::string const & name,

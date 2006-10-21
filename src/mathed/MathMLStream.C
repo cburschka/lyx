@@ -140,6 +140,12 @@ MathMLStream & operator<<(MathMLStream & ms, MathArray const & ar)
 }
 
 
+MathMLStream & operator<<(MathMLStream & ms, docstring const & s)
+{
+	ms.os() << s;
+	return ms;
+}
+
 MathMLStream & operator<<(MathMLStream & ms, char const * s)
 {
 	ms.os() << s;

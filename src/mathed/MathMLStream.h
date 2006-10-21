@@ -121,6 +121,8 @@ public:
 	int & tab() { return tab_; }
 	///
 	friend MathMLStream & operator<<(MathMLStream &, char const *);
+	///
+	friend MathMLStream & operator<<(MathMLStream &, docstring const &);
 private:
 	///
 	odocstream & os_;

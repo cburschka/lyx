@@ -1026,7 +1026,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		else
 			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
-		string preamble = params().preamble;
+		docstring preamble = from_utf8(params().preamble);
 		if (runparams.flavor != OutputParams::XML ) {
 			preamble += "<!ENTITY % output.print.png \"IGNORE\">\n";
 			preamble += "<!ENTITY % output.print.pdf \"IGNORE\">\n";
@@ -1040,7 +1040,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		preamble += features.getLyXSGMLEntities();
 
 		if (!preamble.empty()) {
-                        os << "\n [ " << from_ascii(preamble) << " ]";
+                        os << "\n [ " << preamble << " ]";
 		}
 		os << ">\n\n";
 	}

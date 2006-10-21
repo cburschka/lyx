@@ -15,6 +15,7 @@
 
 
 #include "outputparams.h"
+#include "support/docstring.h"
 
 #include <set>
 #include <list>
@@ -55,11 +56,11 @@ public:
 	/// The definitions needed by the document's textclass
 	std::string const getTClassPreamble() const;
 	/// The sgml definitions needed by the document (docbook)
-	std::string const getLyXSGMLEntities() const;
+	docstring const getLyXSGMLEntities() const;
 	/// The SGML Required to include the files added with includeFile();
-	std::string const getIncludedFiles(std::string const & fname) const;
+	docstring const getIncludedFiles(std::string const & fname) const;
 	/// Include a file for use with the SGML entities
-	void includeFile(std::string const & key, std::string const & name);
+	void includeFile(docstring const & key, std::string const & name);
 	/// The float definitions.
 	void getFloatDefinitions(std::ostream & os) const;
 	/// Print requirements to lyxerr
@@ -119,7 +120,7 @@ private:
 	///
 	UsedFloats usedFloats_;
 	///
-	typedef std::map<std::string , std::string> FileMap;
+	typedef std::map<docstring , std::string> FileMap;
 	///
 	FileMap IncludedFiles_;
 	/** Buffer of the file being processed.

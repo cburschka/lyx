@@ -19,6 +19,7 @@
 #include "lengthcommon.h"
 #include "lyxrc.h"
 
+#include "support/docstream.h"
 #include <sstream>
 #include <iomanip>
 
@@ -56,6 +57,14 @@ LyXLength::LyXLength(string const & data)
 string const LyXLength::asString() const
 {
 	ostringstream os;
+	os << val_ << unit_name[unit_]; // setw?
+	return os.str();
+}
+
+
+docstring const LyXLength::asDocstring() const
+{
+	odocstringstream os;
 	os << val_ << unit_name[unit_]; // setw?
 	return os.str();
 }

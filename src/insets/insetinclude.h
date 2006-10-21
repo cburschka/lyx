@@ -119,7 +119,7 @@ private:
 	/// the parameters
 	InsetCommandParams params_;
 	/// holds the entity name that defines the file location (SGML)
-	std::string const include_label;
+	docstring const include_label;
 
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<RenderMonitoredPreview> const preview_;

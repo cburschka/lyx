@@ -46,7 +46,6 @@
 #include "support/convert.h"
 #include "support/unicode.h"
 
-#include <boost/tuple/tuple.hpp>
 #include <boost/bind.hpp>
 
 #include <algorithm>

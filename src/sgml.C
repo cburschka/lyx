@@ -105,10 +105,10 @@ docstring sgml::escapeString(docstring const & raw)
 }
 
 
-string const sgml::uniqueID(string const label)
+docstring const sgml::uniqueID(string const label)
 {
 	static unsigned int seed = 1000;
-	return label + convert<string>(++seed);
+	return from_ascii(label + convert<string>(++seed));
 }
 
 

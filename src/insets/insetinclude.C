@@ -88,10 +88,10 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-string const uniqueID()
+docstring const uniqueID()
 {
 	static unsigned int seed = 1000;
-	return "file" + convert<string>(++seed);
+	return "file" + convert<docstring>(++seed);
 }
 
 } // namespace anon
@@ -528,10 +528,10 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
         // FIXME UNICODE
 	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""
-		   << '&' << from_ascii(include_label) << ';'
+		   << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">";
 	} else
-                os << '&' << from_ascii(include_label) << ';';
+                os << '&' << include_label << ';';
 
 	return 0;
 }
