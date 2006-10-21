@@ -25,7 +25,6 @@
 #include "LColor.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
-#include "lyxrow_funcs.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
@@ -724,7 +723,7 @@ void RowPainter::paintText()
 
 			pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
 
-			if (hfillExpansion(par_, row_, pos)) {
+			if (par_.hfillExpansion(row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {

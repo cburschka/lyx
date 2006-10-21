@@ -41,7 +41,6 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
-#include "lyxrow_funcs.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
@@ -2303,7 +2302,7 @@ int LyXText::cursorX(CursorSlice const & sl, bool boundary) const
 
 		x += singleWidth(par, pos, par.getChar(pos), font);
 
-		if (hfillExpansion(par, row, pos))
+		if (par.hfillExpansion(row, pos))
 			x += (pos >= body_pos) ? m.hfill : m.label_hfill;
 		else if (par.isSeparator(pos) && pos >= body_pos)
 			x += m.separator;

@@ -14,7 +14,6 @@
 #include "buffer.h"
 #include "lyxfont.h"
 #include "lyxrow.h"
-#include "lyxrow_funcs.h"
 #include "lyxrc.h"
 #include "paragraph.h"
 

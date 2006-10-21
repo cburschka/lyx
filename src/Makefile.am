@@ -216,8 +216,6 @@ lyx_SOURCES = \
 	lyxrc.h \
 	lyxrow.C \
 	lyxrow.h \
-	lyxrow_funcs.C \
-	lyxrow_funcs.h \
 	lyxserver.C \
 	lyxserver.h \
 	lyxsocket.C \

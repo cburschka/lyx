@@ -373,6 +373,8 @@ public:
 	RowList const & rows() const { return rows_; }
 	///
 	RowSignature & rowSignature() const { return rowSignature_; }
+	///
+	bool hfillExpansion(Row const & row, pos_type pos) const;
 
 	/// LyXText::redoParagraph updates this
 	Dimension & dim() { return dim_; }

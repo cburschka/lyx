@@ -40,7 +40,6 @@
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
-#include "lyxrow_funcs.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -812,7 +811,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 				tmpx -= singleWidth(par, body_pos - 1);
 		}
 
-		if (hfillExpansion(par, row, c)) {
+		if (par.hfillExpansion(row, c)) {
 			tmpx += singleWidth(par, c);
 			if (c >= body_pos)
 				tmpx += r.hfill;
