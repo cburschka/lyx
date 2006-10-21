@@ -218,7 +218,6 @@ Change const Changes::lookup(pos_type const pos) const
 			return it->change;
 	}
 
-	BOOST_ASSERT(false && "missing changes for pos");
 	return Change(Change::UNCHANGED);
 }
 
@@ -229,44 +228,38 @@ bool Changes::isChanged(pos_type const start, pos_type const end) const
 	ChangeTable::const_iterator const itend = table_.end();
 
 	for (; it != itend; ++it) {
-		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "Looking for " << start << ","
-				<< end << " in " << it->range.start << ","
-				<< it->range.end << "of type " << it->change.type << endl;
-		}
-
-		if (it->range.intersects(Range(start, end))
-			&& it->change.type != Change::UNCHANGED) {
+		if (it->range.intersects(Range(start, end))) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "Found intersection of "
-					<< start << "," << end << " with "
-					<< it->range.start << "," << it->range.end
-					<< " of type " << it->change.type << endl;
+				lyxerr[Debug::CHANGES] << "found intersection of range ("
+					<< start << ", " << end << ") with ("
+					<< it->range.start << ", " << it->range.end
+					<< ") of type " << it->change.type << endl;
 			}
 			return true;
 		}
 	}
-
 	return false;
 }
 
 
 void Changes::merge()
 {
-	if (lyxerr.debugging(Debug::CHANGES))
-		lyxerr[Debug::CHANGES] << "Starting merge" << endl;
+	if (lyxerr.debugging(Debug::CHANGES)) {
+		lyxerr[Debug::CHANGES] << "merging changes..." << endl;
+	}
 
 	ChangeTable::iterator it = table_.begin();
 
 	while (it != table_.end()) {
 		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "Range of type " << it->change.type << " is "
-				<< it->range.start << "," << it->range.end << endl;
+			lyxerr[Debug::CHANGES] << "  found change of type " << it->change.type
+				<< " and range (" << it->range.start << ", " << it->range.end
+				<< ")" << endl;
 		}
 
 		if (it->range.start == it->range.end) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "Removing empty range for pos "
+				lyxerr[Debug::CHANGES] << "  removing empty range for pos "
 					<< it->range.start << endl;
 			}
 
@@ -279,14 +272,12 @@ void Changes::merge()
 		if (it + 1 == table_.end())
 			break;
 
-		if (it->change == (it + 1)->change) {
+		if (it->change == (it + 1)->change && it->range.end == (it + 1)->range.start) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "Merging equal ranges "
-					<< it->range.start << "," << it->range.end
-					<< " and " << (it + 1)->range.start << ","
-					<< (it + 1)->range.end << endl;
+				lyxerr[Debug::CHANGES] << "  merging ranges (" << it->range.start << ", "
+					<< it->range.end << ") and (" << (it + 1)->range.start << ", "
+					<< (it + 1)->range.end << ")" << endl;
 			}
-
 			(it + 1)->range.start = it->range.start;
 			table_.erase(it);
 			// start again
@@ -296,8 +287,6 @@ void Changes::merge()
 
 		++it;
 	}
-
-	lyxerr[Debug::CHANGES] << "Merge ended" << endl;
 }
 
 
@@ -305,6 +294,7 @@ int Changes::latexMarkChange(odocstream & os,
 			     Change::Type const old, Change::Type const change,
 			     bool const & output)
 {
+	// FIXME: change tracking (MG)
 	if (!output || old == change)
 		return 0;
 
@@ -351,6 +341,7 @@ void Changes::lyxMarkChange(std::ostream & os, int & column,
 			    time_type const curtime,
 			    Change const & old, Change const & change)
 {
+	// FIXME: change tracking (MG)
 	if (old == change)
 		return;
 
