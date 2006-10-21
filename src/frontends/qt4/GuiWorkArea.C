@@ -424,7 +424,7 @@ void GuiWorkArea::resizeEvent(QResizeEvent *)
 
 void GuiWorkArea::update(int x, int y, int w, int h)
 {
-	viewport()->update(x, y, w, h);
+	viewport()->repaint(x, y, w, h);
 }
 
 

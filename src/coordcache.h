@@ -45,6 +45,11 @@ public:
 		data_.clear();
 	}
 
+	bool const empty() const
+	{
+		return data_.empty();
+	}
+
 	void add(T const * thing, int x, int y)
 	{
 		data_[thing] = Point(x, y);

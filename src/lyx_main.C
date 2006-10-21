@@ -492,6 +492,28 @@ int LyX::execBatchCommands(int & argc, char * argv[],
 
 void LyX::restoreGuiSession(vector<string> const & files)
 {
+	LyXView * view = newLyXView();
+
+	// load files
+	for_each(files.begin(), files.end(),
+		bind(&LyXView::loadLyXFile, view, _1, true));
+
+	// if a file is specified, I assume that user wants to edit *that* file
+	if (files.empty() && lyxrc.load_session) {
+		vector<string> const & lastopened = pimpl_->session_->lastOpenedFiles();
+		// do not add to the lastfile list since these files are restored from
+		// last seesion, and should be already there (regular files), or should
+		// not be added at all (help files).
+		for_each(lastopened.begin(), lastopened.end(),
+			bind(&LyXView::loadLyXFile, view, _1, false));
+	}
+	// clear this list to save a few bytes of RAM
+	pimpl_->session_->clearLastOpenedFiles();
+}
+
+
+LyXView * LyX::newLyXView()
+{
 	// determine windows size and position, from lyxrc and/or session
 	// initial geometry
 	unsigned int width = 690;
@@ -513,6 +535,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 		if (session().loadSessionInfo("WindowIsMaximized") == "yes")
 			maximize = true;
 	}
+
 	// if user wants to restore window position
 	int posx = -1;
 	int posy = -1;
@@ -533,23 +556,8 @@ void LyX::restoreGuiSession(vector<string> const & files)
 	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize);
 	ref().addLyXView(view);
 
-	// load files
-	for_each(files.begin(), files.end(),
-		bind(&LyXView::loadLyXFile, view, _1, true));
-
-	// if a file is specified, I assume that user wants to edit *that* file
-	if (files.empty() && lyxrc.load_session) {
-		vector<string> const & lastopened = pimpl_->session_->lastOpenedFiles();
-		// do not add to the lastfile list since these files are restored from
-		// last seesion, and should be already there (regular files), or should
-		// not be added at all (help files).
-		for_each(lastopened.begin(), lastopened.end(),
-			bind(&LyXView::loadLyXFile, view, _1, false));
-	}
-	// clear this list to save a few bytes of RAM
-	pimpl_->session_->clearLastOpenedFiles();
+	return view;
 }
-
 
 /*
 Signals and Windows

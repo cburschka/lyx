@@ -619,6 +619,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_LYXRC_APPLY:
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
+	case LFUN_WINDOW_NEW:
 		// these are handled in our dispatch()
 		break;
 
@@ -1582,6 +1583,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
 			break;
 		}
+
+		case LFUN_WINDOW_NEW:
+			BOOST_ASSERT(theApp);
+			LyX::ref().newLyXView();
 
 		default: {
 			view()->cursor().dispatch(cmd);

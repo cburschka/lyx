@@ -93,7 +93,7 @@ public:
 	kb_keymap & topLevelKeymap();
 	kb_keymap const & topLevelKeymap() const;
 
-	void addLyXView(LyXView * lyxview);
+	LyXView * newLyXView();
 
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.
@@ -122,6 +122,9 @@ private:
 
 	/// Create a View and restore GUI Session.
 	void restoreGuiSession(std::vector<std::string> const & files);
+
+	///
+	void addLyXView(LyXView * lyxview);
 
 	/// Initialize RC font for the GUI.
 	void initGuiFont();

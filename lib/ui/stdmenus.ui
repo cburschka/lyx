@@ -32,6 +32,7 @@ Menuset
 #
 
 	Menu "file"
+		Item "New Window|W" "window-new"
 		Item "New|N" "buffer-new"
 		Item "New from Template...|m" "buffer-new-template"
 		Item "Open...|O" "file-open"
