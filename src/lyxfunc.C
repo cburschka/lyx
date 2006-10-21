@@ -721,7 +721,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	string const argument = to_utf8(cmd.argument());
 	kb_action const action = cmd.action;
 
-	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: cmd: " << cmd << endl;
+	lyxerr[Debug::ACTION] << endl << "LyXFunc::dispatch: cmd: " << cmd << endl;
 	//lyxerr << "LyXFunc::dispatch: cmd: " << cmd << endl;
 
 	// we have not done anything wrong yet.
@@ -1590,6 +1590,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		default: {
 			view()->cursor().dispatch(cmd);
+			update = false;
 			updateforce |= view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
 				updateforce |= view()->dispatch(cmd);

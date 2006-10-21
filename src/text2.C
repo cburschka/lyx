@@ -959,6 +959,7 @@ Row const & LyXText::getRowNearY(int y, pit_type pit) const
 InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {
+		lyxerr << "LyXText::editXY(cur, " << x << ", " << y << ")" << std::endl;
 		bv()->coordCache().dump();
 	}
 	pit_type pit = getPitNearY(y);
