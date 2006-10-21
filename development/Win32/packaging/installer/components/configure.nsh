@@ -4,7 +4,7 @@ Create uninstaller, file associations and configure LyX
 
 */
 
-!define SHORTCUT '${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\bin\lyx_32x32.ico" "" "" "" "${APP_INFO}"'
+!define SHORTCUT '${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"'
 
 ;--------------------------------
 ;Sections
@@ -81,51 +81,51 @@ Section -LaTeX
   
   ${if} $PathLaTeX != ""
     nsExec::Exec '"$PathLaTeX\initexmf.exe" --update-fndb'
+    Pop $R0 ;Return value
   ${endif}
 
 SectionEnd
 
 Section -Configure
 
-  ;Remove old configuration files
-  
-  Delete "$INSTDIR\Resources\lyxrc.defaults"
-  Delete "$INSTDIR\Resources\textclass.lst"
-  Delete "$INSTDIR\Resources\packages.lst"
-
-  ;Set a path prefix in lyxrc.dist
-  
-  Call GetPathPrefix
-  Pop $R0
+  ;Windows specific configuration in lyxrc.dist
   
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   
+  ;Path prefix
+  Call GetPathPrefix
+  Pop $R0  
   FileWrite $R1 '\path_prefix "$R0"$\r$\n'
-
+  
   ;Default screen fonts
   FileWrite $R1 '\screen_font_roman "Times New Roman"$\r$\n'
   FileWrite $R1 '\screen_font_sans "Arial"$\r$\n'
   FileWrite $R1 '\screen_font_typewriter "Courier New"$\r$\n'
+  FileWrite $R1 '\preview_scale_factor 1.0$\r$\n' ;Fit instant preview font size to screen fonts
   
   FileClose $R1
-
-  ;Create a batch file to start LyX with the environment variables set
   
-  Delete "$INSTDIR\${APP_RUN}"
-  FileOpen $R1 "$INSTDIR\${APP_RUN}" w
-
-  FileWrite $R1 '@echo off$\r$\n'  
-  FileWrite $R1 'SET LC_ALL=$LangISOCode$\r$\n'
-  FileWrite $R1 'SET AIK_DATA_DIR=$INSTDIR\aiksaurus$\r$\n'
-  FileWrite $R1 'start "${APP_NAME}" "$INSTDIR\bin\lyx.exe" %*$\r$\n'
-
-  FileClose $R1
+  ;Information in the registry for the launcher
+  
+  ;Set language
+  WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETTINGS} "Language" $LangISOCode
 
 SectionEnd
 
 ;--------------------------------
 ;Functions
+
+Function CheckDesktopShortcut
+
+  ;Enable desktop icon creation when there is an icon already
+  ;Old shortcuts need to be updated
+  
+  ${if} ${fileexists} "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
+    !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSpecial.ini" "Field 5" "State" "1"
+  ${endif}
+
+FunctionEnd
 
 Function CreateDesktopShortcut
 

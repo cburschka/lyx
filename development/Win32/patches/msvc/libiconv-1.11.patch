@@ -1,0 +1,131 @@
+diff -riwBu -Xex libiconv-1.11\config.h.msvc libiconv-1.11-modified\config.h.msvc
+--- libiconv-1.11\config.h.msvc	Wed Jul 19 21:10:22 2006
++++ libiconv-1.11-modified\config.h.msvc	Sat Oct 14 01:36:15 2006
+@@ -1,5 +1,11 @@
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
+ 
++#define EXEEXT '.exe'
++
++typedef __int8 uint8_t;
++typedef __int16 uint16_t;
++typedef __int32 uint32_t;
++
+ /* Define to the number of bits in type 'int16_t'. */
+ #undef BITSIZEOF_INT16_T
+ 
+diff -riwBu -Xex libiconv-1.11\lib\Makefile.msvc libiconv-1.11-modified\lib\Makefile.msvc
+--- libiconv-1.11\lib\Makefile.msvc	Thu Jan 06 18:37:08 2005
++++ libiconv-1.11-modified\lib\Makefile.msvc	Fri Oct 20 12:25:08 2006
+@@ -121,6 +121,7 @@
+ # iconv.dll and iconv.lib are created together.
+ iconv.lib : $(OBJECTS) $(RESOURCES)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) -LD $(OBJECTS) $(RESOURCES) -Feiconv.dll
++	mt.exe -manifest iconv.dll.manifest -outputresource:iconv.dll;2
+ 
+ iconv.res : $(srcdir)/../windows/iconv.rc
+ 	rc -Fo iconv.res $(srcdir)/../windows/iconv.rc
+diff -riwBu -Xex libiconv-1.11\libcharset\lib\Makefile.msvc libiconv-1.11-modified\libcharset\lib\Makefile.msvc
+--- libiconv-1.11\libcharset\lib\Makefile.msvc	Thu Jan 06 18:46:04 2005
++++ libiconv-1.11-modified\libcharset\lib\Makefile.msvc	Sat Oct 21 23:23:55 2006
+@@ -116,6 +116,7 @@
+ # charset.dll and charset.lib are created together.
+ charset.lib : $(OBJECTS) $(RESOURCES)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) -LD $(OBJECTS) $(RESOURCES) -Fecharset.dll
++	mt.exe -manifest charset.dll.manifest -outputresource:charset.dll;2	
+ 
+ charset.res : $(srcdir)/../windows/charset.rc
+ 	rc -Fo charset.res $(srcdir)/../windows/charset.rc
+diff -riwBu -Xex libiconv-1.11\src\Makefile.msvc libiconv-1.11-modified\src\Makefile.msvc
+--- libiconv-1.11\src\Makefile.msvc	Sun May 18 13:27:30 2003
++++ libiconv-1.11-modified\src\Makefile.msvc	Fri Oct 20 12:24:14 2006
+@@ -93,18 +93,29 @@
+ 
+ SHELL = /bin/sh
+ 
++!if $(NO_NLS)
+ all : iconv_no_i18n.exe iconv.exe
++!else
++all : iconv.exe
++!endif
+ 
+ # This is the temporary iconv executable, without internationalization.
++
++!if $(NO_NLS)
++
+ iconv_no_i18n.exe : $(srcdir)/iconv_no_i18n.c $(srcdir)/iconv.c ../srclib/icrt.lib ../lib/iconv.lib
+ 	$(CC) $(INCLUDES) -I..\lib $(CFLAGS) -DINSTALLPREFIX=\"$(IIprefix)\" -DINSTALLDIR=\"$(IIbindir)\" $(srcdir)/iconv_no_i18n.c ../srclib/icrt.lib ../lib/iconv.lib -Feiconv_no_i18n.exe
++	mt.exe -manifest iconv_no_i18n.exe.manifest -outputresource:iconv_no_i18n.exe;1
+ 	$(RM) iconv_no_i18n.obj
+ !if $(DLL)
+ 	copy ..\lib\iconv.dll iconv.dll
+ !endif
+ 
++!endif
++
+ iconv.exe : $(srcdir)/iconv.c ../srclib/icrt.lib ../lib/iconv.lib
+ 	$(CC) $(INCLUDES) -I..\lib $(CFLAGS) -DINSTALLPREFIX=\"$(IIprefix)\" -DINSTALLDIR=\"$(IIbindir)\" $(srcdir)/iconv.c ../srclib/icrt.lib $(LIBINTL) ../lib/iconv.lib -Feiconv.exe
++	mt.exe -manifest iconv.exe.manifest -outputresource:iconv.exe;1
+ 	$(RM) iconv.obj
+ !if $(DLL)
+ 	copy ..\lib\iconv.dll iconv.dll
+diff -riwBu -Xex libiconv-1.11\srclib\Makefile.msvc libiconv-1.11-modified\srclib\Makefile.msvc
+--- libiconv-1.11\srclib\Makefile.msvc	Sat Jan 24 11:11:24 2004
++++ libiconv-1.11-modified\srclib\Makefile.msvc	Fri Oct 13 22:54:03 2006
+@@ -90,7 +90,7 @@
+   xmalloc.obj xstrdup.obj \
+   \
+   relocatable.obj \
+-  setenv.obj unsetenv.obj
++  setenv.obj unsetenv.obj width.obj
+ 
+ all : icrt.lib
+ 
+@@ -120,6 +120,9 @@
+ 
+ unsetenv.obj : unsetenv.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) -c unsetenv.c
++	
++width.obj : width.c
++	$(CC) $(INCLUDES) $(CFLAGS) -c width.c	
+ 
+ icrt.lib : $(OBJECTS)
+ 	-$(RM) icrt.lib
+diff -riwBu -Xex libiconv-1.11\srclib\progreloc.c libiconv-1.11-modified\srclib\progreloc.c
+--- libiconv-1.11\srclib\progreloc.c	Wed May 17 12:12:44 2006
++++ libiconv-1.11-modified\srclib\progreloc.c	Fri Oct 13 22:23:31 2006
+@@ -313,7 +313,7 @@
+ 		 the filenames may have undergone a case conversion since
+ 		 they were packaged.  In other words, EXEEXT may be ".exe"
+ 		 on one system and ".EXE" on another.  */
+-	      static const char exeext[] = EXEEXT;
++	      static const char exeext = EXEEXT;
+ 	      const char *s1 = argv0 + argv0_len - exeext_len;
+ 	      const char *s2 = exeext;
+ 	      for (; *s1 != '\0'; s1++, s2++)
+diff -riwBu -Xex libiconv-1.11\srclib\unitypes.h libiconv-1.11-modified\srclib\unitypes.h
+--- libiconv-1.11\srclib\unitypes.h	Thu May 19 18:58:24 2005
++++ libiconv-1.11-modified\srclib\unitypes.h	Fri Oct 13 22:37:58 2006
+@@ -20,7 +20,9 @@
+ #define _UNITYPES_H
+ 
+ /* Get uint8_t, uint16_t, uint32_t.  */
++#ifdef FULL_PATH_STDINT_H
+ #include <stdint.h>
++#endif
+ 
+ /* Type representing a Unicode character.  */
+ typedef uint32_t ucs4_t;
+diff -riwBu -Xex libiconv-1.11\srclib\unsetenv.c libiconv-1.11-modified\srclib\unsetenv.c
+--- libiconv-1.11\srclib\unsetenv.c	Sat Jun 17 17:51:52 2006
++++ libiconv-1.11-modified\srclib\unsetenv.c	Fri Oct 13 22:24:29 2006
+@@ -27,7 +27,10 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #if !_LIBC
+ # define __environ	environ

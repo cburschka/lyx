@@ -10,7 +10,7 @@ Translations for installer and LyX itself
   ;To be used as input for other macros
  
   ${COMMAND} "Bokmål" nb_NO 1044
-  ${COMMAND} "Cesky" cs_CZ 1029
+  ${COMMAND} "Ceština" cs_CZ 1029
   ${COMMAND} "Dansk" da_DK 1030
   ${COMMAND} "Deutsch" de_DE 1031
   ${COMMAND} "English" en_EN 1033
@@ -22,7 +22,7 @@ Translations for installer and LyX itself
   ${COMMAND} "Nynorsk" nn_NO 2068
   ${COMMAND} "Polski" pl_PL 1045
   ${COMMAND} "Russian" ru_RU 1049
-  ${COMMAND} "Slovenský jazyk" sk_SK 1060
+  ${COMMAND} "Slovenský" sk_SK 1060
   ${COMMAND} "Suomi" fi_FI 1035
   ${COMMAND} "Türkçe" tr_TR 1055
   

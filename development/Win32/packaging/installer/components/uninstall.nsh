@@ -11,6 +11,8 @@ Section "un.Program Files" un.SecProgramFiles
 
   ;Binaries
   
+  Delete "$INSTDIR\bin\lyx.exe"
+  Delete "$INSTDIR\bin\lyxc.exe"
   !insertmacro FileListLyXBin Delete "$INSTDIR\bin\"
   !insertmacro FileListQtBin Delete "$INSTDIR\bin\"
   !insertmacro FileListMinGWBin Delete "$INSTDIR\bin\"
@@ -45,28 +47,33 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListAiksaurusData Delete "$INSTDIR\aiksaurus\"
   RMDir "$INSTDIR\aiksaurus"
   
+  ;Helper DLLs for NSIS-based tools
+  
+  !insertmacro FileListNSISDll Delete "$INSTDIR\bin\"    
+  
   ;Shortcuts
   
   Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
 
-  ;Batch file and uninstaller itself
+  ;Uninstaller itself
   
-  Delete "$INSTDIR\${APP_RUN}"
   Delete "$INSTDIR\${SETUP_UNINSTALLER}"
   RMDir "$INSTDIR\bin"
+  
+  ;Application folder
   
   SetOutPath "$PROGRAMFILES"
   RMDir "$INSTDIR"
   
-  ;Remove registry keys
+  ;Registry keys
   
   DeleteRegKey SHELL_CONTEXT "${APP_REGKEY_SETUP}"
   DeleteRegKey SHELL_CONTEXT "${APP_REGKEY}"
   DeleteRegKey SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}"
   DeleteRegKey SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"
   
-  ;Remove file association
+  ;File associations
   
   ReadRegStr $R0 SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
   

@@ -8,10 +8,10 @@ Installer User Interface
 ;General
 
 Name "${APP_NAME} ${APP_VERSION}"
+BrandingText " "
 
 ;Default installation folder
 InstallDir "${SETUP_DEFAULT_DIRECTORY}"
-
 
 ;--------------------------------
 ;Interface settings
@@ -61,6 +61,7 @@ Page custom PageLanguage PageLanguageValidate
 !define MUI_FINISHPAGE_SHOWREADME_TEXT $(TEXT_FINISH_DESKTOP)
 !define MUI_FINISHPAGE_LINK $(TEXT_FINISH_WEBSITE)
 !define MUI_FINISHPAGE_LINK_LOCATION "http://www.lyx.org/"
+!define MUI_PAGE_CUSTOMFUNCTION_PRE CheckDesktopShortcut
 !insertmacro MUI_PAGE_FINISH
 
 ;Uninstaller
@@ -81,6 +82,15 @@ Page custom PageLanguage PageLanguageValidate
 !insertmacro IncludeLang "french"
 !insertmacro IncludeLang "german"
 !insertmacro IncludeLang "italian"
+
+;--------------------------------
+;Version information
+
+VIProductVersion "${APP_VERSION_NUMBER}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
 ;--------------------------------
 ;Macros
@@ -179,7 +189,6 @@ Function InitDialogs
     !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "State" "1"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 3" "State" "0"
   ${endif}
-  
   
   Pop $R0
 

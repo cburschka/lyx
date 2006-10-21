@@ -9,7 +9,7 @@ Selection of language for LyX interface
 
 !macro SetSystemLangItem VAR LANGNAME LANGISOCODE LANGID
 
-  ${if} $R0 == ${LANGID}
+  ${if} ${VAR} == ${LANGID}
     !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 2" "State" "${LANGNAME}"
   ${endif}
 

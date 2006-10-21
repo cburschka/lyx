@@ -1,0 +1,796 @@
+diff -riwBu -Xex gettext-0.15\gettext-runtime\config.h.msvc gettext-0.15-modified\gettext-runtime\config.h.msvc
+--- gettext-0.15\gettext-runtime\config.h.msvc	Fri Jul 21 16:30:08 2006
++++ gettext-0.15-modified\gettext-runtime\config.h.msvc	Sat Oct 21 23:37:47 2006
+@@ -1,5 +1,7 @@
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
+ 
++#define EXEEXT '.exe'
++
+ /* Define to one of `_getb67', `GETB67', `getb67' for Cray-2 and Cray-YMP
+    systems. This function is required for `alloca.c' support on those systems.
+    */
+diff -riwBu -Xex gettext-0.15\gettext-runtime\intl\Makefile.msvc gettext-0.15-modified\gettext-runtime\intl\Makefile.msvc
+--- gettext-0.15\gettext-runtime\intl\Makefile.msvc	Mon Aug 01 13:14:02 2005
++++ gettext-0.15-modified\gettext-runtime\intl\Makefile.msvc	Fri Oct 20 12:23:09 2006
+@@ -204,6 +204,7 @@
+ # intl.dll and intl.lib are created together.
+ intl.lib : $(OBJECTS) $(RESOURCES)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) -LD $(OBJECTS) $(libdir)\iconv.lib $(RESOURCES) -Feintl.dll
++	mt.exe -manifest intl.dll.manifest -outputresource:intl.dll;2
+ 
+ intl.res : $(srcdir)\..\windows\intl.rc
+ 	rc -Fo intl.res $(srcdir)\..\windows\intl.rc
+diff -riwBu -Xex gettext-0.15\gettext-runtime\src\Makefile.msvc gettext-0.15-modified\gettext-runtime\src\Makefile.msvc
+--- gettext-0.15\gettext-runtime\src\Makefile.msvc	Thu Feb 10 17:49:08 2005
++++ gettext-0.15-modified\gettext-runtime\src\Makefile.msvc	Fri Oct 20 12:22:23 2006
+@@ -107,12 +107,15 @@
+ 
+ gettext.exe : $(gettext_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(gettext_OBJECTS) ..\lib\grt.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Fegettext.exe
++	mt.exe -manifest gettext.exe.manifest -outputresource:gettext.exe;1
+ 
+ ngettext.exe : $(ngettext_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(ngettext_OBJECTS) ..\lib\grt.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Fengettext.exe
++	mt.exe -manifest ngettext.exe.manifest -outputresource:ngettext.exe;1
+ 
+ envsubst.exe : $(envsubst_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(ngettext_OBJECTS) ..\lib\grt.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Feenvsubst.exe
++	mt.exe -manifest envsubst.exe.manifest -outputresource:envsubst.exe;1
+ 
+ install : all force
+ 	-mkdir $(prefix)
+diff -riwBu -Xex gettext-0.15\gettext-tools\config.h.msvc gettext-0.15-modified\gettext-tools\config.h.msvc
+--- gettext-0.15\gettext-tools\config.h.msvc	Fri Jul 21 16:30:18 2006
++++ gettext-0.15-modified\gettext-tools\config.h.msvc	Wed Oct 18 23:51:07 2006
+@@ -1,5 +1,6 @@
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
+ 
++#define EXEEXT '.exe'
+ 
+ /* Default value for alignment of strings in .mo file.  */
+ #define DEFAULT_OUTPUT_ALIGNMENT 1
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\addext.c gettext-0.15-modified\gettext-tools\lib\addext.c
+--- gettext-0.15\gettext-tools\lib\addext.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\addext.c	Sat Oct 14 00:03:13 2006
+@@ -43,7 +43,9 @@
+ # include <strings.h>
+ #endif
+ 
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "basename.h"
+ 
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\clean-temp.c gettext-0.15-modified\gettext-tools\lib\clean-temp.c
+--- gettext-0.15\gettext-tools\lib\clean-temp.c	Mon Jul 03 17:13:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\clean-temp.c	Sat Oct 14 00:04:01 2006
+@@ -28,7 +28,10 @@
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "error.h"
+ #include "fatal-signal.h"
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\copy-file.c gettext-0.15-modified\gettext-tools\lib\copy-file.c
+--- gettext-0.15\gettext-tools\lib\copy-file.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\copy-file.c	Sat Oct 14 00:05:52 2006
+@@ -28,7 +28,10 @@
+ #include <fcntl.h>
+ #include <stddef.h>
+ #include <sys/stat.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #if HAVE_UTIME || HAVE_UTIMES
+ # if HAVE_UTIME_H
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\execute.c gettext-0.15-modified\gettext-tools\lib\execute.c
+--- gettext-0.15\gettext-tools\lib\execute.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\execute.c	Sat Oct 14 00:07:17 2006
+@@ -29,7 +29,10 @@
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <signal.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "error.h"
+ #include "exit.h"
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\fatal-signal.c gettext-0.15-modified\gettext-tools\lib\fatal-signal.c
+--- gettext-0.15\gettext-tools\lib\fatal-signal.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\fatal-signal.c	Sat Oct 14 00:07:42 2006
+@@ -27,7 +27,10 @@
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <signal.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "xalloc.h"
+ 
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\findprog.c gettext-0.15-modified\gettext-tools\lib\findprog.c
+--- gettext-0.15\gettext-tools\lib\findprog.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\findprog.c	Sat Oct 14 00:08:03 2006
+@@ -27,7 +27,10 @@
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "xalloc.h"
+ #include "pathname.h"
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\getopt_.h gettext-0.15-modified\gettext-tools\lib\getopt_.h
+--- gettext-0.15\gettext-tools\lib\getopt_.h	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\getopt_.h	Fri Oct 13 23:13:47 2006
+@@ -42,7 +42,9 @@
+ #if defined __GETOPT_PREFIX && !defined __need_getopt
+ # include <stdlib.h>
+ # include <stdio.h>
++#ifdef HAVE_UNISTD_H
+ # include <unistd.h>
++#endif
+ # undef __need_getopt
+ # undef getopt
+ # undef getopt_long
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\gettext.h gettext-0.15-modified\gettext-tools\lib\gettext.h
+--- gettext-0.15\gettext-tools\lib\gettext.h	Fri Jun 09 22:29:10 2006
++++ gettext-0.15-modified\gettext-tools\lib\gettext.h	Sat Oct 14 00:28:04 2006
+@@ -142,8 +142,10 @@
+ 
+ #include <string.h>
+ 
++#ifndef _MSC_VER
+ #define _LIBGETTEXT_HAVE_VARIABLE_SIZE_ARRAYS \
+   (__GNUC__ >= 3 || defined __cplusplus)
++#endif
+ 
+ #if !_LIBGETTEXT_HAVE_VARIABLE_SIZE_ARRAYS
+ #include <stdlib.h>
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\javacomp.c gettext-0.15-modified\gettext-tools\lib\javacomp.c
+--- gettext-0.15\gettext-tools\lib\javacomp.c	Tue Jul 11 14:08:16 2006
++++ gettext-0.15-modified\gettext-tools\lib\javacomp.c	Sat Oct 14 00:08:25 2006
+@@ -29,7 +29,11 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\mkdtemp.c gettext-0.15-modified\gettext-tools\lib\mkdtemp.c
+--- gettext-0.15\gettext-tools\lib\mkdtemp.c	Fri Jun 30 16:17:32 2006
++++ gettext-0.15-modified\gettext-tools\lib\mkdtemp.c	Sat Oct 14 00:10:09 2006
+@@ -46,7 +46,9 @@
+ # include <inttypes.h>
+ #endif
+ 
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #if HAVE_GETTIMEOFDAY || _LIBC
+ # if HAVE_SYS_TIME_H || _LIBC
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\pathmax.h gettext-0.15-modified\gettext-tools\lib\pathmax.h
+--- gettext-0.15\gettext-tools\lib\pathmax.h	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\pathmax.h	Sat Oct 14 00:05:25 2006
+@@ -18,7 +18,9 @@
+ #ifndef _PATHMAX_H
+ # define _PATHMAX_H
+ 
++#ifdef HAVE_UNISTD_H
+ # include <unistd.h>
++#endif
+ 
+ /* Non-POSIX BSD systems might have gcc's limits.h, which doesn't define
+    PATH_MAX but might cause redefinition warnings when sys/param.h is
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\pipe.c gettext-0.15-modified\gettext-tools\lib\pipe.c
+--- gettext-0.15\gettext-tools\lib\pipe.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\pipe.c	Sat Oct 14 00:06:14 2006
+@@ -28,7 +28,10 @@
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <signal.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "error.h"
+ #include "exit.h"
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\pipe.h gettext-0.15-modified\gettext-tools\lib\pipe.h
+--- gettext-0.15\gettext-tools\lib\pipe.h	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\pipe.h	Sat Oct 14 00:06:34 2006
+@@ -21,7 +21,11 @@
+ 
+ /* Get pid_t.  */
+ #include <stdlib.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
++
+ #include <sys/types.h>
+ 
+ #include <stdbool.h>
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\progreloc.c gettext-0.15-modified\gettext-tools\lib\progreloc.c
+--- gettext-0.15\gettext-tools\lib\progreloc.c	Wed May 17 12:12:44 2006
++++ gettext-0.15-modified\gettext-tools\lib\progreloc.c	Sat Oct 21 23:39:19 2006
+@@ -313,7 +313,7 @@
+ 		 the filenames may have undergone a case conversion since
+ 		 they were packaged.  In other words, EXEEXT may be ".exe"
+ 		 on one system and ".EXE" on another.  */
+-	      static const char exeext[] = EXEEXT;
++	      static const char exeext = EXEEXT;
+ 	      const char *s1 = argv0 + argv0_len - exeext_len;
+ 	      const char *s2 = exeext;
+ 	      for (; *s1 != '\0'; s1++, s2++)
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\safe-read.c gettext-0.15-modified\gettext-tools\lib\safe-read.c
+--- gettext-0.15\gettext-tools\lib\safe-read.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\safe-read.c	Sat Oct 14 00:09:37 2006
+@@ -29,7 +29,10 @@
+ 
+ /* Get ssize_t.  */
+ #include <sys/types.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include <errno.h>
+ 
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\unsetenv.c gettext-0.15-modified\gettext-tools\lib\unsetenv.c
+--- gettext-0.15\gettext-tools\lib\unsetenv.c	Sat Jun 17 17:51:52 2006
++++ gettext-0.15-modified\gettext-tools\lib\unsetenv.c	Sat Oct 14 00:10:34 2006
+@@ -27,7 +27,10 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #if !_LIBC
+ # define __environ	environ
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\wait-process.h gettext-0.15-modified\gettext-tools\lib\wait-process.h
+--- gettext-0.15\gettext-tools\lib\wait-process.h	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\lib\wait-process.h	Sat Oct 14 00:06:56 2006
+@@ -21,7 +21,11 @@
+ 
+ /* Get pid_t.  */
+ #include <stdlib.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
++
+ #include <sys/types.h>
+ 
+ #include <stdbool.h>
+diff -riwBu -Xex gettext-0.15\gettext-tools\lib\xvasprintf.c gettext-0.15-modified\gettext-tools\lib\xvasprintf.c
+--- gettext-0.15\gettext-tools\lib\xvasprintf.c	Tue May 09 19:01:24 2006
++++ gettext-0.15-modified\gettext-tools\lib\xvasprintf.c	Wed Oct 18 22:21:39 2006
+@@ -22,6 +22,13 @@
+ /* Specification.  */
+ #include "xvasprintf.h"
+ 
++#ifndef va_copy
++
++/* Assumes typical stack machine */
++#define va_copy(dst, src) ((void)((dst) = (src)))
++
++#endif 
++
+ #include <errno.h>
+ #include <limits.h>
+ #include <string.h>
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\Makefile.msvc gettext-0.15-modified\gettext-tools\src\Makefile.msvc
+--- gettext-0.15\gettext-tools\src\Makefile.msvc	Wed Mar 29 13:29:20 2006
++++ gettext-0.15-modified\gettext-tools\src\Makefile.msvc	Fri Oct 20 12:20:56 2006
+@@ -122,14 +122,18 @@
+   write-stringtable.obj \
+   write-po.obj \
+   msgl-ascii.obj \
++  msgl-check.obj \
+   msgl-iconv.obj \
+   msgl-equal.obj \
+   msgl-cat.obj \
+   msgl-english.obj \
++  msgl-fsearch.obj \
+   file-list.obj \
+   msgl-charset.obj \
+   po-time.obj \
+-  plural.obj \
++  po-xerror.obj \
++  plural-exp.obj \
++  plural-eval.obj \
+   plural-table.obj \
+   format.obj \
+   format-c.obj \
+@@ -224,6 +228,9 @@
+ msgl-ascii.obj : msgl-ascii.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c msgl-ascii.c
+ 
++msgl-check.obj : msgl-check.c
++	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c msgl-check.c
++
+ msgl-iconv.obj : msgl-iconv.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c msgl-iconv.c
+ 
+@@ -245,8 +252,11 @@
+ po-time.obj : po-time.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c po-time.c
+ 
+-plural.obj : plural.c
+-	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c plural.c
++po-xerror.obj : po-xerror.c
++	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c po-xerror.c
++
++plural-exp.obj : plural-exp.c
++	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c plural-exp.c
+ 
+ plural-table.obj : plural-table.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c plural-table.c
+@@ -322,6 +332,7 @@
+ # gettextsrc.dll and gettextsrc.lib are created together.
+ gettextsrc.lib : ..\windows\gettextsrc.def $(OBJECTS) $(RESOURCES)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) -LD ..\windows\gettextsrc.def $(OBJECTS) ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(RESOURCES) -Fegettextsrc.dll
++	mt.exe -manifest gettextsrc.dll.manifest -outputresource:gettextsrc.dll;2
+ 
+ gettextsrc.res : ../windows/gettextsrc.rc
+ 	rc -Fo gettextsrc.res ../windows/gettextsrc.rc
+@@ -488,51 +499,67 @@
+ 
+ msgcmp.exe : $(msgcmp_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgcmp_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgcmp.exe
++	mt.exe -manifest msgcmp.exe.manifest -outputresource:msgcmp.exe;1
+ 
+ msgfmt.exe : $(msgfmt_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgfmt_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgfmt.exe
++	mt.exe -manifest msgfmt.exe.manifest -outputresource:msgfmt.exe;1	
+ 
+ msgmerge.exe : $(msgmerge_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgmerge_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgmerge.exe
++	mt.exe -manifest msgmerge.exe.manifest -outputresource:msgmerge.exe;1	
+ 
+ msgunfmt.exe : $(msgunfmt_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgunfmt_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgunfmt.exe
++	mt.exe -manifest msgunfmt.exe.manifest -outputresource:msgunfmt.exe;1	
+ 
+ xgettext.exe : $(xgettext_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(xgettext_OBJECTS) ..\libuniname\uniname.lib gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Fexgettext.exe
++	mt.exe -manifest xgettext.exe.manifest -outputresource:xgettext.exe;1		
+ 
+ msgattrib.exe : $(msgattrib_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgattrib_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgattrib.exe
++	mt.exe -manifest msgattrib.exe.manifest -outputresource:msgattrib.exe;1
+ 
+ msgcat.exe : $(msgcat_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgcat_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgcat.exe
++	mt.exe -manifest msgcat.exe.manifest -outputresource:msgcat.exe;1	
+ 
+ msgcomm.exe : $(msgcomm_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgcomm_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgcomm.exe
++	mt.exe -manifest msgcomm.exe.manifest -outputresource:msgcomm.exe;1	
+ 
+ msgconv.exe : $(msgconv_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgconv_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgconv.exe
++	mt.exe -manifest msgconv.exe.manifest -outputresource:msgconv.exe;1	
+ 
+ msgen.exe : $(msgen_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgen_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgen.exe
++	mt.exe -manifest msgen.exe.manifest -outputresource:msgen.exe;1	
+ 
+ msgexec.exe : $(msgexec_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgexec_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgexec.exe
++	mt.exe -manifest msgexec.exe.manifest -outputresource:msgexec.exe;1	
+ 
+ msgfilter.exe : $(msgfilter_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msgfilter_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsgfilter.exe
++	mt.exe -manifest msgfilter.exe.manifest -outputresource:msgfilter.exe;1	
+ 
+ msggrep.exe : $(msggrep_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msggrep_OBJECTS) ..\libgrep\grep.lib gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsggrep.exe
++	mt.exe -manifest msggrep.exe.manifest -outputresource:msggrep.exe;1	
+ 
+ msginit.exe : $(msginit_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msginit_OBJECTS) ..\intl\localename.obj gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsginit.exe
++	mt.exe -manifest msginit.exe.manifest -outputresource:msginit.exe;1	
+ 
+ msguniq.exe : $(msguniq_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(msguniq_OBJECTS) gettextsrc.lib ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Femsguniq.exe
++	mt.exe -manifest msguniq.exe.manifest -outputresource:msguniq.exe;1	
+ 
+ recode-sr-latin.exe : $(recode_sr_latin_OBJECTS)
+ 	$(CC) $(MFLAGS) $(DEBUGFLAGS) $(recode_sr_latin_OBJECTS) ..\lib\gettextlib.lib ..\intl\intl.lib $(libdir)\iconv.lib $(LDADD) -Ferecode-sr-latin.exe
++	mt.exe -manifest recode-sr-latin.exe.manifest -outputresource:recode-sr-latin.exe;1
+ 
+ # Compilation rules for gettextpo.lib objects, with $(PICFLAGS).
+ 
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgattrib.c gettext-0.15-modified\gettext-tools\src\msgattrib.c
+--- gettext-0.15\gettext-tools\src\msgattrib.c	Mon Apr 03 13:27:40 2006
++++ gettext-0.15-modified\gettext-tools\src\msgattrib.c	Wed Oct 18 23:53:18 2006
+@@ -147,7 +147,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgcat.c gettext-0.15-modified\gettext-tools\src\msgcat.c
+--- gettext-0.15\gettext-tools\src\msgcat.c	Mon Apr 03 13:27:40 2006
++++ gettext-0.15-modified\gettext-tools\src\msgcat.c	Wed Oct 18 23:53:18 2006
+@@ -119,7 +119,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgcmp.c gettext-0.15-modified\gettext-tools\src\msgcmp.c
+--- gettext-0.15\gettext-tools\src\msgcmp.c	Mon Apr 03 13:27:40 2006
++++ gettext-0.15-modified\gettext-tools\src\msgcmp.c	Wed Oct 18 23:53:18 2006
+@@ -90,7 +90,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgcomm.c gettext-0.15-modified\gettext-tools\src\msgcomm.c
+--- gettext-0.15\gettext-tools\src\msgcomm.c	Mon Apr 03 13:27:40 2006
++++ gettext-0.15-modified\gettext-tools\src\msgcomm.c	Wed Oct 18 23:53:18 2006
+@@ -121,7 +121,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgconv.c gettext-0.15-modified\gettext-tools\src\msgconv.c
+--- gettext-0.15\gettext-tools\src\msgconv.c	Mon Apr 03 13:27:42 2006
++++ gettext-0.15-modified\gettext-tools\src\msgconv.c	Wed Oct 18 23:53:18 2006
+@@ -111,7 +111,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgen.c gettext-0.15-modified\gettext-tools\src\msgen.c
+--- gettext-0.15\gettext-tools\src\msgen.c	Mon Apr 03 13:27:42 2006
++++ gettext-0.15-modified\gettext-tools\src\msgen.c	Wed Oct 18 23:53:18 2006
+@@ -101,10 +100,11 @@
+   /* Set locale via LC_ALL.  */
+   setlocale (LC_ALL, "");
+ #endif
+-
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgexec.c gettext-0.15-modified\gettext-tools\src\msgexec.c
+--- gettext-0.15\gettext-tools\src\msgexec.c	Tue May 02 14:28:34 2006
++++ gettext-0.15-modified\gettext-tools\src\msgexec.c	Wed Oct 18 23:53:18 2006
+@@ -29,7 +29,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/types.h>
++
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #include "closeout.h"
+ #include "dir-list.h"
+@@ -114,7 +117,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgfilter.c gettext-0.15-modified\gettext-tools\src\msgfilter.c
+--- gettext-0.15\gettext-tools\src\msgfilter.c	Mon May 22 14:15:32 2006
++++ gettext-0.15-modified\gettext-tools\src\msgfilter.c	Wed Oct 18 23:53:18 2006
+@@ -35,7 +35,10 @@
+ # include <sys/time.h>
+ #endif
+ 
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
++
+ #if defined _MSC_VER || defined __MINGW32__
+ # include <io.h>
+ #endif
+@@ -164,7 +167,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgfmt.c gettext-0.15-modified\gettext-tools\src\msgfmt.c
+--- gettext-0.15\gettext-tools\src\msgfmt.c	Tue May 02 14:28:34 2006
++++ gettext-0.15-modified\gettext-tools\src\msgfmt.c	Wed Oct 18 23:53:19 2006
+@@ -28,6 +28,10 @@
+ #include <string.h>
+ #include <locale.h>
+ 
++#ifdef _MSC_VER
++#define ENDIANNESS 0
++#endif
++
+ #include "closeout.h"
+ #include "dir-list.h"
+ #include "error.h"
+@@ -217,7 +221,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msggrep.c gettext-0.15-modified\gettext-tools\src\msggrep.c
+--- gettext-0.15\gettext-tools\src\msggrep.c	Mon Apr 24 13:17:08 2006
++++ gettext-0.15-modified\gettext-tools\src\msggrep.c	Wed Oct 18 23:53:19 2006
+@@ -31,7 +31,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
++
+ #if defined _MSC_VER || defined __MINGW32__
+ # include <io.h>
+ #endif
+@@ -161,7 +164,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msginit.c gettext-0.15-modified\gettext-tools\src\msginit.c
+--- gettext-0.15\gettext-tools\src\msginit.c	Fri Jun 30 16:34:40 2006
++++ gettext-0.15-modified\gettext-tools\src\msginit.c	Wed Oct 18 23:53:19 2006
+@@ -37,7 +37,9 @@
+ # include <pwd.h>
+ #endif
+ 
++#ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#endif
+ 
+ #if HAVE_DIRENT_H
+ # include <dirent.h>
+@@ -160,7 +162,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgmerge.c gettext-0.15-modified\gettext-tools\src\msgmerge.c
+--- gettext-0.15\gettext-tools\src\msgmerge.c	Mon Apr 03 13:27:42 2006
++++ gettext-0.15-modified\gettext-tools\src\msgmerge.c	Wed Oct 18 23:53:19 2006
+@@ -170,7 +170,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msgunfmt.c gettext-0.15-modified\gettext-tools\src\msgunfmt.c
+--- gettext-0.15\gettext-tools\src\msgunfmt.c	Mon Apr 03 13:27:42 2006
++++ gettext-0.15-modified\gettext-tools\src\msgunfmt.c	Wed Oct 18 23:53:19 2006
+@@ -130,7 +130,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\msguniq.c gettext-0.15-modified\gettext-tools\src\msguniq.c
+--- gettext-0.15\gettext-tools\src\msguniq.c	Mon Apr 03 13:27:42 2006
++++ gettext-0.15-modified\gettext-tools\src\msguniq.c	Wed Oct 18 23:53:19 2006
+@@ -114,7 +114,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\write-mo.c gettext-0.15-modified\gettext-tools\src\write-mo.c
+--- gettext-0.15\gettext-tools\src\write-mo.c	Thu Oct 06 13:08:06 2005
++++ gettext-0.15-modified\gettext-tools\src\write-mo.c	Sat Oct 14 01:02:50 2006
+@@ -38,7 +38,12 @@
+ #include "gmo.h"
+ #include "hash-string.h"
+ 
++#ifndef _MSC_VER
+ #include "byteswap.h"
++#else
++#include "byteswap_.h"
++#endif
++
+ #include "error.h"
+ #include "hash.h"
+ #include "message.h"
+diff -riwBu -Xex gettext-0.15\gettext-tools\src\xgettext.c gettext-0.15-modified\gettext-tools\src\xgettext.c
+--- gettext-0.15\gettext-tools\src\xgettext.c	Fri Jun 09 22:27:24 2006
++++ gettext-0.15-modified\gettext-tools\src\xgettext.c	Wed Oct 18 23:53:19 2006
+@@ -293,7 +293,9 @@
+ 
+   /* Set the text message domain.  */
+   bindtextdomain (PACKAGE, relocate (LOCALEDIR));
++#ifdef BISON_LOCALEDIR  
+   bindtextdomain ("bison-runtime", relocate (BISON_LOCALEDIR));
++#endif
+   textdomain (PACKAGE);
+ 
+   /* Ensure that write errors on stdout are detected.  */
+diff -riwBu -Xex gettext-0.15\gettext-tools\windows\gettextlib.def gettext-0.15-modified\gettext-tools\windows\gettextlib.def
+--- gettext-0.15\gettext-tools\windows\gettextlib.def	Tue Feb 08 13:26:08 2005
++++ gettext-0.15-modified\gettext-tools\windows\gettextlib.def	Wed Oct 18 22:18:21 2006
+@@ -40,7 +40,6 @@
+ create_pipe_bidi
+ create_pipe_in
+ create_pipe_out
+-delete_hash
+ error
+ error_at_line
+ error_one_per_line
+@@ -49,7 +48,6 @@
+ execute_csharp_program
+ execute_java_class
+ find_backup_file_name
+-find_entry
+ find_in_path
+ freesa
+ fstrcmp
+@@ -61,9 +59,6 @@
+ gnu_basename
+ gnu_mbswidth
+ gnu_stpncpy
+-init_hash
+-insert_entry
+-iterate_table
+ locale_charset
+ mallocsa
+ maybe_print_progname
+@@ -92,8 +87,6 @@
+ shell_quote_copy
+ shell_quote_length
+ stpcpy
+-strcasecmp
+-strncasecmp
+ u8_possible_linebreaks
+ u8_width_linebreaks
+ uc_width
+@@ -110,3 +103,19 @@
+ xrealloc
+ xsetenv
+ xstrdup
++cleanup_temp_dir
++unregister_temp_subdir
++unregister_temp_file
++register_temp_subdir
++register_temp_file
++create_temp_dir
++hash_destroy
++hash_iterate
++hash_init
++proper_name
++proper_name_utf8
++hash_insert_entry
++hash_find_entry
++hash_set_value
++hash_iterate_modify
++iconv_string
+diff -riwBu -Xex gettext-0.15\gettext-tools\windows\gettextsrc.def gettext-0.15-modified\gettext-tools\windows\gettextsrc.def
+--- gettext-0.15\gettext-tools\windows\gettextsrc.def	Sat Feb 12 21:07:36 2005
++++ gettext-0.15-modified\gettext-tools\windows\gettextsrc.def	Wed Oct 18 22:19:25 2006
+@@ -65,7 +65,6 @@
+ dir_list_nth
+ dir_list_restore
+ dir_list_save_reset
+-extract_plural_expression
+ get_sysdep_c_format_directives
+ iconv_message_list
+ iconv_msgdomain_list
+@@ -92,7 +91,6 @@
+ message_list_list_append
+ message_list_list_append_list
+ message_list_list_search
+-message_list_list_search_fuzzy
+ message_list_prepend
+ message_list_remove_if_not
+ message_list_search
+@@ -120,7 +118,6 @@
+ msgdomain_list_sort_by_msgid
+ msgdomain_list_sublist
+ open_po_file
+-parse_plural_expression
+ po_callback_comment
+ po_callback_comment_filepos
+ po_callback_domain
+@@ -157,3 +154,16 @@
+ string_list_init
+ string_list_join
+ string_list_member
++check_message_list
++parse_plural_expression
++plural_eval
++po_xerror
++extract_plural_expression
++message_fuzzy_index_alloc
++fuzzy_search_goal_function
++message_list_list_free
++po_charset_character_iterator
++get_python_format_unnamed_arg_count
++check_message
++textmode_xerror
++textmode_xerror2

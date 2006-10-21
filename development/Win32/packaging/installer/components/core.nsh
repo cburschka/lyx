@@ -8,29 +8,34 @@ Binaries, Resources, Python, Aspell
 ;--------------------------------
 ;Sections
 
+Section -CleanUp SecCleanUp
+
+  ;Clean-up files from previous versions
+  
+  Delete "$INSTDIR\bin\lyx.bat"
+  RMDir /r "$INSTDIR\shell"
+  RMDir /r "$INSTDIR\python\DLLs"
+  RMDir /r "$INSTDIR\python\libs"
+  RMDir "$INSTDIR\python\python24.dll"
+  RMDir /r "$INSTDIR\latextools"
+  Delete "$INSTDIR\Resources\lyxrc.defaults"
+  Delete "$INSTDIR\Resources\textclass.lst"
+  Delete "$INSTDIR\Resources\packages.lst"
+  
+SectionEnd
+
 Section -Core SecCore
 
   ;Install and register the core LyX files
 
   InitPluginsDir
   
-  ;Remove previous local MSYS installation
-  
-  RMDir /r "$INSTDIR\shell"
-  
-  ;Remove previous local Python files
-  
-  RMDir /r "$INSTDIR\python\DLLs"
-  RMDir /r "$INSTDIR\python\libs"
-  RMDir /r "$INSTDIR\python\python25.dll"
-  
-  ;Remove previous latextools folder (moved to bin)
-  
-  RMDir /r "$INSTDIR\latextools"
-  
   ;Binaries
   
   SetOutPath "$INSTDIR\bin"
+
+  File /oname=lyx.exe "${FILES_LAUNCHER}\lyx.exe"
+  File /oname=lyxc.exe "${FILES_LYX}\bin\lyx.exe"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   
@@ -92,6 +97,11 @@ Section -Core SecCore
   
   SetOutPath "$INSTDIR\aiksaurus"
   !insertmacro FileListAiksaurusData File "${FILES_AIKSAURUS}\"
+  
+  ;Helper DLLs for NSIS-based tools
+  
+  SetOutPath "$INSTDIR\bin"
+  !insertmacro FileListNSISDll File "${NSISDIR}\Plugins\"
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"

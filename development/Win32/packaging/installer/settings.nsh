@@ -11,6 +11,7 @@ Settings for LyX installer
 
 !define FILES_ICONS "..\icons"
 !define FILES_FONTS "..\bakoma"
+!define FILES_LAUNCHER "..\..\launcher"
 
 !ifdef BUILD_MSVC
   !define FILES_MSVC "${FILES_WINDOWS}\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.42_x-ww_0de06acd"
@@ -35,7 +36,7 @@ Settings for LyX installer
 ;Locations of components to download
 
 !define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.5.2449.exe"
-!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.2.9-7-Q16-windows-dll.exe"
+!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.3.0-0-Q16-windows-dll.exe"
 !define DOWNLOAD_GHOSTSCRIPT "http://superb-west.dl.sourceforge.net/sourceforge/ghostscript/gs854w32.exe"
 !define DOWNLOAD_VIEWER "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/ghostgum/gsv48w32.exe"
 
@@ -43,7 +44,7 @@ Settings for LyX installer
 ;Download size (in KB)
 
 !define SIZE_DOWNLOAD_LATEX 43127
-!define SIZE_DOWNLOAD_IMAGEMAGICK 6790
+!define SIZE_DOWNLOAD_IMAGEMAGICK 6830
 !define SIZE_DOWNLOAD_GHOSTSCRIPT 12669
 !define SIZE_DOWNLOAD_VIEWER 1459
 
@@ -59,7 +60,7 @@ Settings for LyX installer
 ;Locations of setup files for components (for bundled setup)
 
 !define INSTALL_LATEX "basic-miktex-2.5.2449.exe"
-!define INSTALL_IMAGEMAGICK "ImageMagick-6.2.9-7-Q16-windows-dll.exe"
+!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.0-0-Q16-windows-dll.exe"
 !define INSTALL_GHOSTSCRIPT "gs854w32.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 
@@ -68,16 +69,19 @@ Settings for LyX installer
 
 !define APP_NAME "LyX"
 !define /date APP_VERSION "1.4svn %Y%m%d"
+!define APP_VERSION_NUMBER "1.4.0.0"
 !define APP_SERIES_NAME "1.4"
 !define APP_SERIES_KEY "14"
 !define APP_DIR_USERDATA "LyX1.4.x"
 !define APP_INFO "${APP_NAME} - The Document Processor"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2006 LyX Team"
 
-!define APP_RUN "bin\lyx.bat"
-!define APP_EXE "bin\lyx.exe"
+!define APP_RUN "bin\lyx.exe"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}"
 !define APP_REGKEY_SETUP "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
+!define APP_REGKEY_SETTINGS "Software\${APP_NAME}${APP_SERIES_KEY}\Settings"
+
 !define APP_REGNAME_DOC "LyX.Document"
 
 !define APP_EXT ".lyx"
@@ -89,7 +93,7 @@ Settings for LyX installer
 !ifndef SETUPTYPE_BUNDLE
   !define /date SETUP_EXE "lyx-14svn-%Y%m%d.exe"
 !else
-  !define /date SETUP_EXE "lyx-14svn-%Y%m%d.exe-bundle.exe"
+  !define /date SETUP_EXE "lyx-14svn-%Y%m%d-bundle.exe"
 !endif
 
 !define SETUP_DEFAULT_DIRECTORY "$PROGRAMFILES\${APP_NAME}${APP_SERIES_KEY}"

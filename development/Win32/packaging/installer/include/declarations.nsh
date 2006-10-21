@@ -25,6 +25,7 @@ Declarations
 !include "FileFunc.nsh"
 !include "WordFunc.nsh"
 !include "Sections.nsh"
+!include "WinVer.nsh"
 
 ;--------------------------------
 ;Windows constants
@@ -108,6 +109,7 @@ Var AspellHive
 ;--------------------------------
 ;LyX installer header files  
 
+!include "include\init.nsh"
 !include "include\windows.nsh"
 !include "include\lang.nsh"
 !include "include\gui.nsh"
