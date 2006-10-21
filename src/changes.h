@@ -96,10 +96,11 @@ private:
 
 	class ChangeRange {
 	public:
-		ChangeRange(pos_type s, pos_type e, Change const & c)
-			: range(Range(s, e)), change(c) {}
-		Range range;
+		ChangeRange(Change const & c, Range const & r)
+			: change(c), range(r) {}
+
 		Change change;
+		Range range;
 	};
 
 	/// merge neighbouring ranges, assuming that they are abutting
@@ -107,7 +108,7 @@ private:
 
 	typedef std::vector<ChangeRange> ChangeTable;
 
-	/// our table of changes, every row a range and change descriptor
+	/// table of changes, every row a change and range descriptor
 	ChangeTable table_;
 };
 

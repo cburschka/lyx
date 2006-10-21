@@ -110,7 +110,7 @@ void Changes::set(Change const & change,
 
 	if (it == itend) {
 		lyxerr[Debug::CHANGES] << "Inserting change at end" << endl;
-		table_.push_back(ChangeRange(start, end, change));
+		table_.push_back(ChangeRange(change, Range(start, end)));
 		merge();
 		return;
 	}
@@ -130,7 +130,7 @@ void Changes::set(Change const & change,
 
 	// split head
 	if (c.range.start < start) {
-		it = table_.insert(it, ChangeRange(c.range.start, start, c.change));
+		it = table_.insert(it, ChangeRange(c.change, Range(c.range.start, start)));
 		if (lyxerr.debugging(Debug::CHANGES)) {
 			lyxerr[Debug::CHANGES] << "Splitting head of type " << c.change.type
 				<< " over " << c.range.start << "," << start << endl;
@@ -147,7 +147,7 @@ void Changes::set(Change const & change,
 	// split tail
 	if (c.range.end > end) {
 		++it;
-		table_.insert(it, ChangeRange(end, c.range.end, c.change));
+		table_.insert(it, ChangeRange(c.change, Range(end, c.range.end)));
 		if (lyxerr.debugging(Debug::CHANGES)) {
 			lyxerr[Debug::CHANGES] << "Splitting tail of type " << c.change.type
 				<< " over " << end << "," << c.range.end << endl;
