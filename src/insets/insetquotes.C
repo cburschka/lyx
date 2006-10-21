@@ -174,31 +174,50 @@ void InsetQuotes::parseString(string const & s)
 }
 
 
-string const InsetQuotes::dispString(Language const * loclang) const
+docstring const InsetQuotes::dispString(Language const * loclang) const
 {
 	string disp;
 	disp += quote_char[quote_index[side_][language_]];
 	if (times_ == DoubleQ)
 		disp += disp;
 
-	if (lyxrc.font_norm_type == LyXRC::ISO_8859_1
-	    || lyxrc.font_norm_type == LyXRC::ISO_8859_9
-	    || lyxrc.font_norm_type == LyXRC::ISO_8859_15) {
-		if (disp == "<<")
-			disp = '«';
-		else if (disp == ">>")
-			disp = '»';
-	}
 
+	docstring retdisp;
+	if (disp == "<<")
+		retdisp = docstring(1, 0x00ab); //'«';
+	else if (disp == ">>")
+		retdisp = docstring(1, 0x00bb); //'»';
+#if 0
+	// The below are supposed to work, but something fails.
+	else if (disp == ",,")
+		retdisp = docstring(1, 0x201e);
+	else if (disp == "''")
+		retdisp == docstring(1, 0x201d);
+	else if (disp == "``")
+		retdisp == docstring(1, 0x201c);
+	else if (disp == "<")
+		retdisp = docstring(1, 0x2039);
+	else if (disp == ">")
+		retdisp = docstring(1, 0x203a);
+	else if (disp == ",")
+		retdisp = docstring(1, 0x201a);
+	else if (disp == "'")
+		retdisp = docstring(1, 0x2019);
+	else if (disp == "`")
+		retdisp = docstring(1, 0x2018);
+#endif
+	else
+		retdisp = lyx::from_ascii(disp);
+	
 	// in french, spaces are added inside double quotes
 	if (times_ == DoubleQ && prefixIs(loclang->code(), "fr")) {
 		if (side_ == LeftQ)
-			disp += ' ';
+			retdisp += ' ';
 		else
-			disp.insert(string::size_type(0), 1, ' ');
+			retdisp.insert(docstring::size_type(0), 1, ' ');
 	}
 
-	return disp;
+	return retdisp;
 }
 
 
@@ -211,7 +230,7 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = fm.maxDescent();
 	dim.wid = 0;
 
-	string const text = dispString(font.language());
+	docstring const text = dispString(font.language());
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
 			dim.wid += fm.width('i');
@@ -239,7 +258,7 @@ LyXFont const InsetQuotes::convertFont(LyXFont const & f) const
 
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
-	string const text = dispString(pi.base.font.language());
+	docstring const text = dispString(pi.base.font.language());
 
 	if (text.length() == 2 && text[0] == text[1]) {
 		pi.pain.text(x, y, text[0], pi.base.font);
@@ -247,8 +266,7 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 			.width(',');
 		pi.pain.text(x + t, y, text[0], pi.base.font);
 	} else {
-                docstring dtext(text.begin(), text.end());
-		pi.pain.text(x, y, dtext, pi.base.font);
+		pi.pain.text(x, y, text, pi.base.font);
 	}
 	setPosCache(pi, x, y);
 }
@@ -378,7 +396,7 @@ auto_ptr<InsetBase> InsetQuotes::doClone() const
 
 InsetBase::Code InsetQuotes::lyxCode() const
 {
-  return InsetBase::QUOTE_CODE;
+	return InsetBase::QUOTE_CODE;
 }
 
 

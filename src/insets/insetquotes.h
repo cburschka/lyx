@@ -122,7 +122,7 @@ private:
 	///
 	void parseString(std::string const &);
 	///
-	std::string const dispString(Language const *) const;
+	lyx::docstring const dispString(Language const *) const;
 };
 
 } // namespace lyx
