@@ -160,31 +160,51 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 
 void Changes::erase(pos_type const pos)
 {
+	if (lyxerr.debugging(Debug::CHANGES)) {
+		lyxerr[Debug::CHANGES] << "Erasing change at position " << pos << endl;
+	}
+
 	ChangeTable::iterator it = table_.begin();
 	ChangeTable::iterator end = table_.end();
 
-	bool found = false;
-
 	for (; it != end; ++it) {
-		Range & range(it->range);
-
-		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "era:Range of type " << it->change.type << " is "
-				<< it->range.start << "," << it->range.end << endl;
+		// range (pos,pos+x) becomes (pos,pos+x-1)
+		if (it->range.start > pos) {
+			--(it->range.start);
 		}
-
-		if (range.contains(pos)) {
-			found = true;
-			--range.end;
-			continue;
-		}
-
-		if (found) {
-			--range.start;
-			--range.end;
+		// range (pos-x,pos) stays (pos-x,pos)
+		if (it->range.end > pos) {
+			--(it->range.end);
 		}
 	}
+
 	merge();
+}
+
+
+void Changes::insert(Change const & change, lyx::pos_type pos)
+{
+	if (lyxerr.debugging(Debug::CHANGES)) {
+		lyxerr[Debug::CHANGES] << "Inserting change of type " << change.type
+			<< " at position " << pos << endl;
+	}
+
+	ChangeTable::iterator it = table_.begin();
+	ChangeTable::iterator end = table_.end();
+
+	for (; it != end; ++it) {
+		// range (pos,pos+x) becomes (pos+1,pos+x+1)
+		if (it->range.start >= pos) {
+			++(it->range.start);
+		}
+
+		// range (pos-x,pos) stays as it is
+		if (it->range.end > pos) {
+			++(it->range.end);
+		}
+	}
+
+	set(change, pos, pos + 1); // set will call merge
 }
 
 
