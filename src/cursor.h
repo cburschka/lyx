@@ -74,7 +74,7 @@ public:
 	///
 	void setSelection();
 	/// set selection at given position
-	void setSelection(DocIterator const & where, size_t n);
+	void setSelection(DocIterator const & where, int n);
 	///
 	void clearSelection();
 	/// access start of selection

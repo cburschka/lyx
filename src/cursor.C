@@ -296,6 +296,7 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 	if (!disp_.dispatched()) {
 		lyxerr[Debug::DEBUG] << "RESTORING OLD CURSOR!" << endl;
 		operator=(safe);
+		disp_.update(false);
 		disp_.dispatched(false);
 	}
 }
@@ -477,7 +478,7 @@ void LCursor::setSelection()
 }
 
 
-void LCursor::setSelection(DocIterator const & where, size_t n)
+void LCursor::setSelection(DocIterator const & where, int n)
 {
 	setCursor(where);
 	selection() = true;

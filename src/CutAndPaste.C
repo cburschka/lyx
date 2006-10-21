@@ -684,7 +684,7 @@ void replaceSelectionWithString(LCursor & cur, string const & str, bool backward
 	// select the replacement
 	if (backwards) {
 		selbeg.pos() += str.length();
-		cur.setSelection(selbeg, -str.length());
+		cur.setSelection(selbeg, -int(str.length()));
 	} else
 		cur.setSelection(selbeg, str.length());
 }

@@ -223,9 +223,13 @@ void WorkArea::redraw()
 	expose(0, ymin, width(), ymax - ymin);
 	getPainter().end();
 
-	lyxerr[Debug::DEBUG]
+	lyxerr[Debug::WORKAREA]
 	<< "  ymin = " << ymin << "  width() = " << width()
 		<< "  ymax-ymin = " << ymax-ymin << std::endl;
+
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		buffer_view_->coordCache().dump();
+	}
 }
 
 
