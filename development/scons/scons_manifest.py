@@ -1477,7 +1477,6 @@ src_header_files = Split('''
     lyxlex_pimpl.h
     lyxrc.h
     lyxrow.h
-    lyxrow_funcs.h
     lyxserver.h
     lyxsocket.h
     lyxtext.h
@@ -1583,7 +1582,6 @@ src_pre_files = Split('''
     lyxlex_pimpl.C
     lyxrc.C
     lyxrow.C
-    lyxrow_funcs.C
     lyxserver.C
     lyxsocket.C
     lyxtextclass.C
