@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  *
@@ -73,85 +74,84 @@ void Changes::set(Change const & change, pos_type const pos)
 }
 
 
-void Changes::set(Change const & change,
-		  pos_type const start, pos_type const end)
+void Changes::set(Change const & change, pos_type const start, pos_type const end)
 {
+	if (lyxerr.debugging(Debug::CHANGES)) {
+		lyxerr[Debug::CHANGES] << "setting change (type: " << change.type
+			<< ", author: " << change.author << ", time: " << change.changetime
+			<< ") in range (" << start << ", " << end << ")" << endl;
+	}
+
+	Range const newRange(start, end);
+
 	ChangeTable::iterator it = table_.begin();
 
-	if (lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "changeset of " << change.type
-			<< " author " << change.author << " time " << change.changetime
-			<< " in range " << start << "," << end << endl;
+	for (; it != table_.end(); ) {
+		// find super change, check for equal types, and do nothing
+		if (it->range.contains(newRange) && it->change.type == change.type) {
+			return;	
+		}
+
+		// current change starts like or follows new change
+		if (it->range.start >= start) {
+			break;
+		}
+
+		// new change intersects with existing change
+		if (it->range.end > start) {
+			pos_type oldEnd = it->range.end;
+			it->range.end = start;
+			if (lyxerr.debugging(Debug::CHANGES)) {
+				lyxerr[Debug::CHANGES] << "  cutting tail of type " << it->change.type
+					<< " resulting in range (" << it->range.start << ", "
+					<< it->range.end << ")" << endl;
+			}
+			++it;
+			if (oldEnd >= end) {
+				if (lyxerr.debugging(Debug::CHANGES)) {
+					lyxerr[Debug::CHANGES] << "  inserting tail in range ("
+						<< end << ", " << oldEnd << ")" << endl;
+				}
+				it = table_.insert(it, ChangeRange((it-1)->change, Range(end, oldEnd)));
+			}
+			continue;
+		}
+
+		++it;
 	}
 
-	Range const new_range(start, end);
+	if (change.type != Change::UNCHANGED) {
+		if (lyxerr.debugging(Debug::CHANGES)) {
+			lyxerr[Debug::CHANGES] << "  inserting change" << endl;
+		}
+		it = table_.insert(it, ChangeRange(change, Range(start, end)));
+		++it;
+	}
 
-	// remove all sub-ranges
-	for (; it != table_.end();) {
-		if (new_range != it->range /*&& it->range.contained(new_range)*/) { // FIXME: change tracking (MG)
+	for (; it != table_.end(); ) {
+		// new change 'contains' existing change
+		if (newRange.contains(it->range)) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "Removing subrange "
-					<< it->range.start << "," << it->range.end << endl;
+				lyxerr[Debug::CHANGES] << "  removing subrange ("
+					<< it->range.start << ", " << it->range.end << ")" << endl;
 			}
 			it = table_.erase(it);
-		} else {
-			++it;
+			continue;
 		}
-	}
 
-	it = table_.begin();
-	ChangeTable::iterator const itend = table_.end();
-
-	// find a super-range
-	for (; it != itend; ++it) {
-		if (it->range.contains(new_range))
+		// new change precedes existing change
+		if (it->range.start >= end) {
 			break;
-	}
-
-	if (it == itend) {
-		lyxerr[Debug::CHANGES] << "Inserting change at end" << endl;
-		table_.push_back(ChangeRange(change, Range(start, end)));
-		merge();
-		return;
-	}
-
-	if (change.type == it->change.type) {
-		lyxerr[Debug::CHANGES] << "Change set already." << endl;
-		it->change = change;
-		return;
-	}
-
-	ChangeRange c(*it);
-
-	if (lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "Using change of type " << c.change.type
-			<< " over " << c.range.start << "," << c.range.end << endl;
-	}
-
-	// split head
-	if (c.range.start < start) {
-		it = table_.insert(it, ChangeRange(c.change, Range(c.range.start, start)));
-		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "Splitting head of type " << c.change.type
-				<< " over " << c.range.start << "," << start << endl;
 		}
-		++it;
-	}
 
-	// reset this as new type
-	it->range.start = start;
-	it->range.end = end;
-	it->change = change;
-	lyxerr[Debug::CHANGES] << "Resetting to new change" << endl;
-
-	// split tail
-	if (c.range.end > end) {
-		++it;
-		table_.insert(it, ChangeRange(c.change, Range(end, c.range.end)));
+		// new change intersects with existing change
+		it->range.start = end;
 		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "Splitting tail of type " << c.change.type
-				<< " over " << end << "," << c.range.end << endl;
+			lyxerr[Debug::CHANGES] << "  cutting head of type "
+				<< it->change.type << " resulting in range ("
+				<< end << ", " << it->range.end << ")" << endl;
 		}
+		break; // no need for another iteration
 	}
 
 	merge();
