@@ -31,13 +31,12 @@ namespace sgml {
 
 /**
  * Escape the given character, if necessary,
- * to an SGML entity. Returns true
- * if it was a whitespace character.
+ * to an SGML entity.
  */
-std::pair<bool, std::string> escapeChar(char c);
+docstring escapeChar(char_type c);
 
 /// Escape a word instead of a single character
-std::string escapeString(std::string const & raw);
+docstring escapeString(docstring const & raw);
 
 /// replaces illegal characters from SGML/XML ID attributes
 std::string cleanID(Buffer const & buf, OutputParams const & runparams,

@@ -1179,14 +1179,8 @@ pos_type Paragraph::getFirstWord(Buffer const & buf, odocstream & os, OutputPara
 			value_type c = getChar(i);
 			if (c == ' ')
 				break;
-			bool ws;
-			string str;
-			// FIXME UNICODE
-			// sgml::escapeChar takes a char, not lyx::char_type
-			boost::tie(ws, str) = sgml::escapeChar(c);
-                        // FIXME UNICODE
-			os << from_ascii(str);
-		}
+			os << sgml::escapeChar(c);
+ 		}
 	}
 	return i;
 }
@@ -1244,17 +1238,12 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			inset->docbook(buf, os, runparams);
 		} else {
 			value_type c = getChar(i);
-			bool ws;
-			string str;
-			// FIXME UNICODE
-			// sgml::escapeChar takes a char, not lyx::char_type
-			boost::tie(ws, str) = sgml::escapeChar(c);
 
 			if (style->pass_thru)
                                 os.put(c);
 			else
                                 // FIXME UNICODE
-                                os << from_ascii(str);
+                                os << sgml::escapeChar(c);
 		}
 		font_old = font;
 	}

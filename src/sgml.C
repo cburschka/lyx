@@ -20,11 +20,10 @@
 #include "outputparams.h"
 #include "paragraph.h"
 
+#include "support/docstring.h"
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 #include "support/convert.h"
-
-#include <boost/tuple/tuple.hpp>
 
 #include <map>
 #include <sstream>
@@ -34,82 +33,73 @@ namespace lyx {
 
 using support::subst;
 
-using std::make_pair;
 using std::map;
 using std::ostream;
 using std::ostringstream;
-using std::pair;
 using std::string;
 
-pair<bool, string> sgml::escapeChar(char c)
+docstring sgml::escapeChar(char_type c)
 {
-	string str;
-
+	docstring str;
 	switch (c) {
 	case ' ':
-		return make_pair(true, string(" "));
-		break;
-	case '\0': // Ignore :-)
-		str.erase();
+		str += " ";
 		break;
 	case '&':
-		str = "&amp;";
+		str += "&amp;";
 		break;
 	case '<':
-		str = "&lt;";
+		str += "&lt;";
 		break;
 	case '>':
-		str = "&gt;";
+		str += "&gt;";
 		break;
 #if 0
 	case '$':
-		str = "&dollar;";
+		str += "&dollar;";
 		break;
 	case '#':
-		str = "&num;";
+		str += "&num;";
 		break;
 	case '%':
-		str = "&percnt;";
+		str += "&percnt;";
 		break;
 	case '[':
-		str = "&lsqb;";
+		str += "&lsqb;";
 		break;
 	case ']':
-		str = "&rsqb;";
+		str += "&rsqb;";
 		break;
 	case '{':
-		str = "&lcub;";
+		str += "&lcub;";
 		break;
 	case '}':
-		str = "&rcub;";
+		str += "&rcub;";
 		break;
 	case '~':
-		str = "&tilde;";
+		str += "&tilde;";
 		break;
 	case '"':
-		str = "&quot;";
+		str += "&quot;";
 		break;
 	case '\\':
-		str = "&bsol;";
+		str += "&bsol;";
 		break;
 #endif
 	default:
-		str = c;
+		str += c;
 		break;
 	}
-	return make_pair(false, str);
+	return str;
 }
 
 
-string sgml::escapeString(string const & raw)
+docstring sgml::escapeString(docstring const & raw)
 {
-	ostringstream bin;
+	odocstringstream bin;
 
-	for(string::size_type i = 0; i < raw.size(); ++i) {
-		bool ws;
-		string str;
-		boost::tie(ws, str) = sgml::escapeChar(raw[i]);
-		bin << str;
+	for(docstring::size_type i = 0; i < raw.size(); ++i) {
+		bin  << sgml::escapeChar(raw[i]);
 	}
 	return bin.str();
 }

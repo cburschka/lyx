@@ -46,9 +46,8 @@ docstring const InsetIndex::getScreenLabel(Buffer const &) const
 int InsetIndex::docbook(Buffer const &, odocstream & os,
 			OutputParams const &) const
 {
-        // FIXME UNICODE
 	os << "<indexterm><primary>"
-           << from_ascii(sgml::escapeString(lyx::to_ascii(getParam("name"))))
+           << sgml::escapeString(getParam("name"))
 	   << "</primary></indexterm>";
 	return 0;
 }
