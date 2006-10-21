@@ -280,8 +280,6 @@ public:
 	value_type getChar(pos_type pos) const { return text_[pos]; }
 	/// Get the char, but mirror all bracket characters if it is right-to-left
 	value_type getUChar(BufferParams const &, pos_type pos) const;
-	/// The position must already exist.
-	void setChar(pos_type pos, value_type c);
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range

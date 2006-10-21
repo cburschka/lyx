@@ -1624,10 +1624,11 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 				break;
 			}
 		}
-#ifdef WITH_WARNINGS
-#warning changes
-#endif
-		pars_[pit].setChar(pos, c);
+
+		// FIXME: change tracking (MG)
+		// sorry but we are no longer allowed to set a single character directly
+		// we have to rewrite this method in terms of erase&insert operations
+		//pars_[pit].setChar(pos, c);
 		++pos;
 	}
 }

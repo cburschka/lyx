@@ -1502,12 +1502,6 @@ void Paragraph::clearContents()
 }
 
 
-void Paragraph::setChar(pos_type pos, value_type c)
-{
-	text_[pos] = c;
-}
-
-
 ParagraphParameters & Paragraph::params()
 {
 	return pimpl_->params;
