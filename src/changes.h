@@ -53,9 +53,6 @@ public:
 	/// set the range to the given change
 	void set(Change const & change, pos_type start, pos_type end);
 
-	/// mark the given change and adjust
-	void record(Change const & change, pos_type pos);
-
 	/// return the change at the given position
 	Change const lookup(pos_type pos) const;
 
@@ -105,20 +102,13 @@ private:
 		Change change;
 	};
 
+	/// merge neighbouring ranges, assuming that they are abutting
+	void merge();
+
 	typedef std::vector<ChangeRange> ChangeTable;
 
 	/// our table of changes, every row a range and change descriptor
 	ChangeTable table_;
-
-	/// handle a delete, either logical or physical (see erase)
-	void del(Change const & change, ChangeTable::size_type pos);
-
-	/// handle an add, adjusting range bounds past it
-	void add(Change const & change, ChangeTable::size_type pos);
-
-	/// merge neighbouring ranges, assuming that they are abutting
-	/// (as done by set())
-	void merge();
 };
 
 

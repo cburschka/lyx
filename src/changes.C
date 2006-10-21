@@ -67,29 +67,6 @@ bool Changes::Range::intersects(Range const & r) const
 }
 
 
-void Changes::record(Change const & change, pos_type const pos)
-{
-	if (lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "record " << change.type
-			<< " at pos " << pos << " with total "
-			<< table_.size() << " changes." << endl;
-	}
-
-	switch (change.type) {
-		case Change::INSERTED:
-			add(change, pos);
-			break;
-		case Change::DELETED:
-			del(change, pos);
-			break;
-		case Change::UNCHANGED:
-			// FIXME: change tracking (MG)
-			// set(Change::UNCHANGED, pos);
-			break;
-	}
-}
-
-
 void Changes::set(Change const & change, pos_type const pos)
 {
 	set(change, pos, pos + 1);
@@ -208,64 +185,6 @@ void Changes::erase(pos_type const pos)
 		}
 	}
 	merge();
-}
-
-
-void Changes::del(Change const & change, ChangeTable::size_type const pos)
-{
-	// this case happens when building from .lyx
-	if (table_.empty()) {
-		set(change, pos);
-		return;
-	}
-
-	ChangeTable::iterator it = table_.begin();
-
-	for (; it != table_.end(); ++it) {
-		Range & range(it->range);
-
-		if (range.contains(pos)) {
-			if (it->change.type != Change::INSERTED) {
-				set(change, pos);
-			} else {
-				erase(pos);
-			}
-			break;
-		} else if (/*range.containsOrPrecedes(pos) && it + 1 == table_.end()*/ true) { // FIXME: change tracking (MG)
-			// this case happens when building from .lyx
-			set(change, pos);
-			break;
-		}
-	}
-}
-
-
-void Changes::add(Change const & change, ChangeTable::size_type const pos)
-{
-	ChangeTable::iterator it = table_.begin();
-	ChangeTable::iterator end = table_.end();
-
-	bool found = false;
-
-	for (; it != end; ++it) {
-		Range & range(it->range);
-
-		if (!found /* && range.containsOrPrecedes(pos)*/) { // FIXME: change tracking (MG)
-			found = true;
-			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "Found range of "
-					<< range.start << "," << range.end << endl;
-			}
-			++range.end;
-			continue;
-		}
-
-		if (found) {
-			++range.start;
-			++range.end;
-		}
-	}
-	set(change, pos);
 }
 
 

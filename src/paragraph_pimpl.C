@@ -218,7 +218,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 
 	// FIXME: change tracking (MG)
 	if (false) {
-		changes_.record(change, pos);
+		// changes_.record(change, pos);
 	}
 
 	// This is actually very common when parsing buffers (and
@@ -319,7 +319,7 @@ bool Paragraph::Pimpl::erase(pos_type pos, bool /*trackChanges*/)
 
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			changes_.record(Change(Change::DELETED), pos);
+			// changes_.record(Change(Change::DELETED), pos);
 			if (pos < size() && owner_->isInset(pos))
 				// FIXME: change tracking (MG)
 				owner_->getInset(pos)->setChange(Change(Change::DELETED));
