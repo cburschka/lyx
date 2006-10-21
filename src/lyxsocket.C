@@ -31,9 +31,6 @@
 
 #include <cerrno>
 
-
-namespace lyx {
-
 #if defined (_WIN32)
 # include <io.h>
 #endif
@@ -44,6 +41,8 @@ using std::auto_ptr;
 using std::endl;
 using std::string;
 
+
+namespace lyx {
 
 // Address is the unix address for the socket.
 // MAX_CLIENTS is the maximum number of clients
