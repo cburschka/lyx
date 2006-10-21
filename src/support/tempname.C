@@ -22,8 +22,6 @@
 
 #include <cstdlib>
 
-
-namespace lyx {
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -45,6 +43,8 @@ using boost::scoped_array;
 
 using std::string;
 using std::endl;
+
+namespace lyx {
 
 namespace {
 
