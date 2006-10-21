@@ -36,7 +36,7 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-// FIXME: Implement fixed size delimiters (see qt3 frontend)
+// FIXME: Implement fixed size delimiters
 
 namespace
 {
