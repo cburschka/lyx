@@ -20,13 +20,9 @@
 
 #include <boost/assert.hpp>
 
-
-namespace lyx {
-
-using docstring;
-
 using std::string;
 
+namespace lyx {
 
 ASpell::ASpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)

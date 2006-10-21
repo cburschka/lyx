@@ -13,17 +13,19 @@
 #ifndef LYX_ASPELL_H
 #define LYX_ASPELL_H
 
-#include <map>
-
 #include "SpellBase.h"
 
+#include "support/docstring.h"
 
-namespace lyx {
+#include <map>
+
 
 class AspellSpeller;
 class AspellStringEnumeration;
 class AspellCanHaveError;
 class AspellConfig;
+
+namespace lyx {
 
 class BufferParams;
 

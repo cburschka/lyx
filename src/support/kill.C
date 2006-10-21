@@ -38,7 +38,7 @@ int support::kill(int pid, int sig)
 		return -1;
 	}
 	if (!TerminateProcess(hProcess, sig)) {
-		lyxerr << "kill process failed!" << endl;
+		lyxerr << "kill process failed!" << std::endl;
 		CloseHandle(hProcess);
 		return -1;
 	}

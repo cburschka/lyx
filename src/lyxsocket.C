@@ -79,7 +79,7 @@ LyXServerSocket::~LyXServerSocket()
 {
 	if (fd_ != -1) {
 		theApp->unregisterSocketCallback(fd_);
-		if (::close(fd_) != 0)
+		if (close(fd_) != 0)
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
 	}
@@ -169,7 +169,7 @@ void LyXServerSocket::writeln(string const & line)
 {
 	string const linen(line + '\n');
 	int const size = linen.size();
-	int const written = ::write(fd_, linen.c_str(), size);
+	int const written = write(fd_, linen.c_str(), size);
 	if (written < size) { // Always mean end of connection.
 		if ((written == -1) && (errno == EPIPE)) {
 			// The program will also receive a SIGPIPE
@@ -208,7 +208,7 @@ LyXDataSocket::LyXDataSocket(int fd)
 
 LyXDataSocket::~LyXDataSocket()
 {
-	if (::close(fd_) != 0)
+	if (close(fd_) != 0)
 		lyxerr << "lyx: Data socket " << fd_
 		       << " IO error on closing: " << strerror(errno);
 
@@ -232,7 +232,7 @@ bool LyXDataSocket::readln(string & line)
 	int count;
 
 	// read and store characters in buffer
-	while ((count = ::read(fd_, charbuf, charbuf_size - 1)) > 0) {
+	while ((count = read(fd_, charbuf, charbuf_size - 1)) > 0) {
 		buffer_.append(charbuf, charbuf + count);
 	}
 
@@ -266,7 +266,7 @@ void LyXDataSocket::writeln(string const & line)
 {
 	string const linen(line + '\n');
 	int const size = linen.size();
-	int const written = ::write(fd_, linen.c_str(), size);
+	int const written = write(fd_, linen.c_str(), size);
 	if (written < size) { // Always mean end of connection.
 		if ((written == -1) && (errno == EPIPE)) {
 			// The program will also receive a SIGPIPE
