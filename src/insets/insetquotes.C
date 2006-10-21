@@ -85,18 +85,22 @@ char const * const latex_quote_babel[2][5] =
 InsetQuotes::InsetQuotes(string const & str)
 {
 	parseString(str);
+	setInsetName("InsetQuotes");
 }
 
 
 InsetQuotes::InsetQuotes(quote_language l, quote_side s, quote_times t)
 	: language_(l), side_(s), times_(t)
-{}
+{
+	setInsetName("InsetQuotes");
+}
 
 
 InsetQuotes::InsetQuotes(char_type c, BufferParams const & params)
 	: language_(params.quotes_language), times_(params.quotes_times)
 {
 	getPosition(c);
+	setInsetName("InsetQuotes");
 }
 
 
@@ -104,6 +108,7 @@ InsetQuotes::InsetQuotes(char_type c, quote_language l, quote_times t)
 	: language_(l), times_(t)
 {
 	getPosition(c);
+	setInsetName("InsetQuotes");
 }
 
 
@@ -245,6 +250,7 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
                 docstring dtext(text.begin(), text.end());
 		pi.pain.text(x, y, dtext, pi.base.font);
 	}
+	setPosCache(pi, x, y);
 }
 
 

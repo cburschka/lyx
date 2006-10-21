@@ -32,7 +32,6 @@
 #include "vspace.h"
 
 #include "frontends/FontMetrics.h"
-#include "frontends/nullpainter.h"
 #include "frontends/Painter.h"
 
 #include "insets/insettext.h"
@@ -45,7 +44,6 @@
 namespace lyx {
 
 using frontend::Painter;
-using frontend::NullPainter;
 using frontend::FontMetrics;
 
 using std::endl;
@@ -819,8 +817,6 @@ void paintPar
 	 bool repaintAll)
 {
 //	lyxerr << "  paintPar: pit: " << pit << " at y: " << y << endl;
-	static NullPainter nop;
-	static PainterInfo nullpi(pi.base.bv, nop);
 	int const ww = pi.base.bv->workHeight();
 
 	pi.base.bv->coordCache().parPos()[&text][pit] = Point(x, y);
@@ -867,7 +863,7 @@ void paintPar
 
 			bool const inside = (y + rit->descent() >= 0
 				       && y - rit->ascent() < ww);
-			RowPainter rp(inside ? pi : nullpi, text, pit, *rit, x, y);
+			RowPainter rp(pi, text, pit, *rit, x, y);
 			// Clear background of this row
 			// (if paragraph background was not cleared)
 			if (!repaintAll &&
