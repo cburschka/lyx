@@ -96,6 +96,7 @@ void LyXView::setWorkArea(WorkArea * work_area)
 
 void LyXView::redrawWorkArea()
 {
+	lyxerr[Debug::WORKAREA] << "redrawWorkArea" << std::endl;
 	work_area_->redraw();
 	updateStatusBar();
 }

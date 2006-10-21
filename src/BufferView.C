@@ -368,6 +368,8 @@ bool BufferView::update(Update::flags flags)
 	if (!buffer_)
 		return false;
 
+	lyxerr[Debug::WORKAREA] << "BufferView::update" << std::endl;
+
 	// Update macro store
 	buffer_->buildMacros();
 

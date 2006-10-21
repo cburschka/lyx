@@ -247,7 +247,7 @@ InsetBase * InsetText::editXY(LCursor & cur, int x, int y)
 
 void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
-	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION
+	lyxerr[Debug::ACTION] << BOOST_CURRENT_FUNCTION
 			     << " [ cmd.action = "
 			     << cmd.action << ']' << endl;
 	setViewCache(&cur.bv());

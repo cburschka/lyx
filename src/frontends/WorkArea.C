@@ -216,7 +216,7 @@ void WorkArea::redraw()
 	greyed_out_ = false;
 	getPainter().start();
 	paintText(*buffer_view_, vi, getPainter());
-	lyxerr[Debug::DEBUG] << "Redraw screen" << endl;
+	lyxerr[Debug::WORKAREA] << "WorkArea::redraw screen" << endl;
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax =
 		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );

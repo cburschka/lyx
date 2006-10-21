@@ -95,6 +95,9 @@ private:
 
 	typedef std::map<T const *, Point> cache_type;
 	cache_type data_;
+
+public:
+	cache_type const & getData() const { return data_; }
 };
 
 /**

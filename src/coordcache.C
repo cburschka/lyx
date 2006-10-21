@@ -76,6 +76,13 @@ CoordCache::dump() const {
 			lyxerr << "\" has point " << p.x_ << "," << p.y_ << std::endl;
 		}
 	}
+
+	lyxerr << "InsetCache contains:" << std::endl;
+	for (CoordCacheBase<InsetBase>::cache_type::const_iterator i = getInsets().getData().begin(); i != getInsets().getData().end(); ++i) {
+		InsetBase const * inset = (*i).first;
+		Point p = (*i).second;
+		lyxerr << "Inset " << inset << "(" << inset->getInsetName() << ") has point " << p.x_ << "," << p.y_ << std::endl;
+	}
 }
 
 } // namespace lyx

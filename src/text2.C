@@ -958,6 +958,9 @@ Row const & LyXText::getRowNearY(int y, pit_type pit) const
 // sets cursor recursively descending into nested editable insets
 InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 {
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		bv()->coordCache().dump();
+	}
 	pit_type pit = getPitNearY(y);
 	BOOST_ASSERT(pit != -1);
 	Row const & row = getRowNearY(y, pit);
