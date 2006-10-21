@@ -26,12 +26,13 @@
 #include <gtkmm.h>
 
 
+namespace lyx {
+
 Timeout::Timeout(unsigned int msec, Type t)
 	: pimpl_(new lyx::frontend::GTimeout(*this)),
 	  type(t), timeout_ms(msec)
 {}
 
-namespace lyx {
 namespace frontend {
 
 GTimeout::GTimeout(Timeout & owner)

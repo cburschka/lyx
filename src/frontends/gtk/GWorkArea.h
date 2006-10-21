@@ -24,10 +24,11 @@
 // FIXME: defined in X.h, spuriously pulled in by some gui headers
 #undef CursorShape
 
+namespace lyx {
+
 class LColor_color;
 class LyXView;
 
-namespace lyx {
 namespace frontend {
 
 class ColorCache {

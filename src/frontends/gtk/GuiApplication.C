@@ -45,8 +45,6 @@
 #include <iomanip>
 
 
-using lyx::support::subst;
-
 using std::string;
 using std::endl;
 
@@ -68,6 +66,8 @@ int getDPI()
 
 
 namespace lyx {
+
+using support::subst;
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {

@@ -30,9 +30,6 @@
 #include "support/docstring.h"
 #include "lyxfunc.h"
 
-using lyx::char_type;
-using lyx::docstring;
-
 using std::string;
 
 namespace lyx {
@@ -48,7 +45,7 @@ class LyxMenu : public Gtk::Menu {
 public:
 	LyxMenu() { menu_.reset(new ::Menu); }
 
-	::Menu& getBackMenu() { return *menu_.get(); }
+	::Menu & getBackMenu() { return *menu_.get(); }
 
 	void clearBackMenu() { menu_.reset(new ::Menu); }
 private:

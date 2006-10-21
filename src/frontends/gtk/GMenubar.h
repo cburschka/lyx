@@ -19,9 +19,10 @@
 
 #include <vector>
 
+namespace lyx {
+
 class LyXView;
 
-namespace lyx {
 namespace frontend {
 
 class GMenubar : public Menubar, public sigc::trackable {

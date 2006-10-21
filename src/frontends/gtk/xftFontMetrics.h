@@ -47,8 +47,8 @@ public:
 private:
 	XftFont * font;
 	XftFont * fontS;
-
+};
 
 } // namespace lyx
-};
+
 #endif // XFT_FONT_METRICS_H

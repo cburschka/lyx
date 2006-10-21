@@ -79,9 +79,10 @@ private:
 };
 
 } // namespace frontend
-} // namespace lyx
 
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
 				  LyXView & owner);
+
+} // namespace lyx
 
 #endif // NOT GTOOLBAR_H

@@ -177,19 +177,12 @@ void GLayoutBox::selected()
 	layoutSelected(owner_, layoutGuiName);
 }
 
-} // namespace frontend
-} // namespace lyx
-
-
 Toolbars::ToolbarPtr make_toolbar(ToolbarBackend::Toolbar const & tbb,
 				  LyXView & owner)
 {
 	using lyx::frontend::GToolbar;
 	return Toolbars::ToolbarPtr(new GToolbar(tbb, owner));
 }
-
-namespace lyx {
-namespace frontend {
 
 GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	: owner_(dynamic_cast<GView &>(owner))
