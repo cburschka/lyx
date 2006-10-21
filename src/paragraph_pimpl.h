@@ -53,13 +53,9 @@ public:
 	void acceptChange(pos_type start, pos_type end);
 	/// reject change
 	void rejectChange(pos_type start, pos_type end);
-	/// are we tracking changes ?
-	bool tracking() const { return changes_.get(); }
 
 	///
 	value_type getChar(pos_type pos) const;
-	///
-	void setChar(pos_type pos, value_type c);
 	///
 	void insertChar(pos_type pos, value_type c, Change const & change);
 	///
@@ -164,8 +160,8 @@ private:
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(std::string const & str, pos_type pos) const;
 
-	/// for recording and looking up changes in revision tracking mode
-	boost::scoped_ptr<Changes> changes_;
+	/// for recording and looking up changes
+	Changes changes_;
 
 	/// Who owns us?
 	Paragraph * owner_;

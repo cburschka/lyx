@@ -70,48 +70,43 @@ Paragraph::Pimpl::Pimpl(Paragraph * owner)
 
 
 Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
-	: params(p.params), owner_(owner)
+	: params(p.params), changes_(p.changes_), owner_(owner)
 {
 	inset_owner = p.inset_owner;
 	fontlist = p.fontlist;
 	id_ = paragraph_id++;
-
-	// FIXME: change tracking (MG)
-	//if (p.tracking())
-	//		changes_.reset(new Changes(*p.changes_.get()));
 }
 
 
 void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 {
 	owner_->text_ = par.text_;
-	if (par.pimpl_->tracking()) {
-		// FIXME: change tracking (MG)
-		// changes_.reset(new Changes(*(par.pimpl_->changes_.get())));
-	}
+	// FIXME: change tracking (MG)
+	changes_ = par.pimpl_->changes_;
 }
 
 
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
 	// FIXME: change tracking (MG)
-	if (!tracking())
-		return false;
+	return false;
 
-	return changes_->isChanged(start, end);
+	return changes_.isChanged(start, end);
 }
 
 
 void Paragraph::Pimpl::setChange(Change const & change)
 {
 	// FIXME: change tracking (MG)
-	// changes_.set(change, 0, size());
+
+	return;
+
+	changes_.set(change, 0, size());
 
 	if (change.type == Change::UNCHANGED) { // only for UNCHANGED ???
 		for (pos_type i = 0; i < size(); ++i) {
 			if (owner_->isInset(i)) {
-				// FIXME: change tracking (MG)
-				// owner_->getInset(i)->setChange(change);
+				owner_->getInset(i)->setChange(change);
 			}
 		}
 	}
@@ -120,32 +115,28 @@ void Paragraph::Pimpl::setChange(Change const & change)
 
 void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 {
-	if (!tracking())
-		return;
+	// FIXME: change tracking (MG)
+	return;
 
-	changes_->set(change, pos);
+	changes_.set(change, pos);
 }
 
 
 Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
-	if (!tracking())
-		return Change(Change::UNCHANGED);
+	// FIXME: change tracking (MG)
+	return Change(Change::UNCHANGED);
 
-	return changes_->lookup(pos);
+	return changes_.lookup(pos);
 }
 
 
 void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 {
-	if (!tracking())
-		return;
+	// FIXME: change tracking (MG)
+	return;
 
-	if (!size()) {
-		// FIXME: change tracking (MG)
-		// changes_.reset(new Changes(Change::UNCHANGED));
-		return;
-	}
+	// care for empty pars
 
 	lyxerr[Debug::CHANGES] << "acceptchange" << endl;
 	pos_type i = start;
@@ -157,7 +148,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 
 			case Change::INSERTED:
 				// FIXME: change tracking (MG)
-				changes_->set(Change(Change::UNCHANGED), i);
+				changes_.set(Change(Change::UNCHANGED), i);
 				break;
 
 			case Change::DELETED:
@@ -174,20 +165,16 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 
 	lyxerr[Debug::CHANGES] << "endacceptchange" << endl;
 	// FIXME: change tracking (MG)
-	// changes_->reset(Change::UNCHANGED);
+	// changes_.reset(Change::UNCHANGED);
 }
 
 
 void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 {
-	if (!tracking())
-		return;
+	// FIXME: change tracking (MG)
+	return;
 
-	if (!size()) {
-		// FIXME: change tracking (MG)
-		// changes_.reset(new Changes(Change::UNCHANGED));
-		return;
-	}
+	// care for empty pars
 
 	pos_type i = start;
 
@@ -206,7 +193,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 			case Change::DELETED:
 				// FIXME: change tracking (MG)
-				changes_->set(Change(Change::UNCHANGED), i);
+				changes_.set(Change(Change::UNCHANGED), i);
 				// No real char at position size():
 				if (i < size() && owner_->isInset(i))
 					// FIXME: change tracking (MG)
@@ -215,7 +202,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 		}
 	}
 	// FIXME: change tracking (MG)
-	// changes_->reset(Change::UNCHANGED);
+	// changes_.reset(Change::UNCHANGED);
 }
 
 
@@ -229,8 +216,9 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 {
 	BOOST_ASSERT(pos <= size());
 
-	if (tracking()) {
-		changes_->record(change, pos);
+	// FIXME: change tracking (MG)
+	if (false) {
+		changes_.record(change, pos);
 	}
 
 	// This is actually very common when parsing buffers (and
@@ -275,7 +263,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 void Paragraph::Pimpl::erase(pos_type pos)
 {
 	// FIXME: change tracking (MG)
-	// do something like changes_->erase(i);
+	// do something like changes_.erase(i);
 	// in one of the next patches, the two erase functions 
  	// will be merged but I don't want to break too many things at the same time :-)
 
@@ -323,15 +311,15 @@ void Paragraph::Pimpl::erase(pos_type pos)
 
 bool Paragraph::Pimpl::erase(pos_type pos, bool /*trackChanges*/)
 {
-	// FIXME: change tracking (MG)
 	BOOST_ASSERT(pos <= size());
 
-	if (tracking()) {
-		Change::Type changetype(changes_->lookup(pos).type);
+	// FIXME: change tracking (MG)
+	if (false) {
+		Change::Type changetype(changes_.lookup(pos).type);
 
 		// only allow the actual removal if it was /new/ text
 		if (changetype != Change::INSERTED) {
-			changes_->record(Change(Change::DELETED), pos);
+			changes_.record(Change(Change::DELETED), pos);
 			if (pos < size() && owner_->isInset(pos))
 				// FIXME: change tracking (MG)
 				owner_->getInset(pos)->setChange(Change(Change::DELETED));
