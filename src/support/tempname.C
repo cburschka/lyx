@@ -55,7 +55,7 @@ int make_tempfile(char * templ)
 	return ::mkstemp(templ);
 #elif defined(HAVE_MKTEMP)
 	// This probably just barely works...
-	mktemp(templ);
+	::mktemp(templ);
 # if defined (HAVE_OPEN)
 # if (!defined S_IRUSR)
 #   define S_IRUSR S_IREAD
@@ -63,7 +63,7 @@ int make_tempfile(char * templ)
 # endif
 	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
 # elif defined (HAVE__OPEN)
-	return _open(templ,
+	return ::_open(templ,
 		       _O_RDWR | _O_CREAT | _O_EXCL,
 		       _S_IREAD | _S_IWRITE);
 # else
@@ -99,11 +99,11 @@ string const lyx::support::tempName(string const & dir, string const & mask)
 	if (tmpf != -1) {
 		string const t(tmpl.get());
 #if defined (HAVE_CLOSE)
-		close(tmpf);
+		::close(tmpf);
 #elif defined (HAVE__CLOSE)
 		::_close(tmpf);
 #else
-# error No close() function.
+# error No x() function.
 #endif
 		lyxerr[Debug::FILES] << "Temporary file `" << t
 				     << "' created." << endl;
