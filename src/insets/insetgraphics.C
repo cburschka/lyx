@@ -898,12 +898,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 
 	if (features.runparams().nice) {
 		Buffer const * m_buffer = features.buffer().getMasterBuffer();
-		string basename =
-			params().filename.outputFilename(m_buffer->filePath());
-		basename = removeExtension(basename);
-		if(params().filename.isZipped())
-			basename = removeExtension(basename);
-		if (contains(basename, "."))
+		string const rel_file = removeExtension(params().filename.relFilename(m_buffer->filePath()));
+		if (contains(rel_file, "."))
 			features.require("lyxdot");
 	}
 
