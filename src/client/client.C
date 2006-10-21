@@ -500,10 +500,12 @@ int p(vector<char *> const & arg)
 
 
 
+} // namespace lyx
 
 
 int main(int argc, char * argv[])
 {
+	using namespace lyx;
 	lyxerr.rdbuf(cerr.rdbuf());
 
 	CmdLineParser args;
@@ -615,4 +617,13 @@ int main(int argc, char * argv[])
 }
 
 
-} // namespace lyx
+namespace boost {
+
+void assertion_failed(char const* a, char const* b, char const* c, long d)
+{
+	lyx::lyxerr << "Assertion failed: " << a << ' ' << b << ' ' << c << ' '
+		<< d << '\n';
+}
+
+} // namespace boost
+
