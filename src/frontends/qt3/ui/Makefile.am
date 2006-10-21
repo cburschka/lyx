@@ -25,7 +25,7 @@ nodist_libqt3ui_la_SOURCES = $(UIFILES:.ui=.h) $(UIFILES:.ui=.C)
 libqt3ui_la_LINK = touch libqt3ui.la ; echo
 
 # Use _() for localization instead of tr() or trUtf8()
-UICFLAGS=-tr qt_
+UICFLAGS=-tr lyx::qt_
 
 %.h: %.ui
 	$(UIC) $(UICFLAGS) $< -o $@

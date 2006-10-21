@@ -28,9 +28,5 @@
 #include <qwhatsthis.h>
 
 
-} // namespace lyx
 #include <qwidget.h>
 #include <qwidgetstack.h>
-
-
-namespace lyx {
