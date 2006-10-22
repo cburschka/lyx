@@ -86,7 +86,7 @@ public:
 	/// access start of selection
 	DocIterator selectionEnd() const;
 	///
-	void selHandle(bool selecting);
+	bool selHandle(bool selecting);
 	//
 	docstring selectionAsString(bool label) const;
 	///
@@ -158,8 +158,8 @@ public:
 	void undispatched();
 	/// the event was already dispatched
 	void dispatched();
-	/// call update() when done
-	void needsUpdate();
+	/// Set which update should be done
+	void updateFlags(Update::flags f);
 	/**
 	 * don't call update() when done
 	 *

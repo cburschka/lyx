@@ -729,9 +729,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 	// redraw the screen at the end (first of the two drawing steps).
 	//This is done unless explicitely requested otherwise
-	bool update = true;
-	// also do the second redrawing step. Only done if requested.
-	bool updateforce = false;
+	Update::flags updateFlags = Update::FitCursor;
 
 	FuncStatus const flag = getStatus(cmd);
 	if (!flag.enabled()) {
@@ -819,12 +817,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				lyx_view_->message(str + _(" done."));
 			} else
 				writeAs(lyx_view_->buffer());
-			update = false;
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_WRITE_AS:
 			writeAs(lyx_view_->buffer(), argument);
-			update = false;
+			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_RELOAD: {
@@ -1425,7 +1423,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 			// ideally, the update flag should be set by the insets,
 			// but this is not possible currently
-			updateforce = true;
+			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 
@@ -1449,7 +1447,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 					it->dispatch(tmpcur, fr);
 				}
 			}
-			updateforce = true;
+			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 
@@ -1558,7 +1556,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			buffer->errors("Class Switch");
 			updateLabels(*buffer);
-			updateforce = true;
+			updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 
@@ -1589,10 +1587,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		default: {
 			view()->cursor().dispatch(cmd);
-			update = false;
-			updateforce |= view()->cursor().result().update();
+			updateFlags = view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
-				updateforce |= view()->dispatch(cmd);
+				if (view()->dispatch(cmd)) 
+					updateFlags = Update::Force | Update::FitCursor;
 			break;
 		}
 		}
@@ -1601,13 +1599,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.
-			if (updateforce)
-				view()->update(Update::FitCursor | Update::Force);
-			else if (update)
-				view()->update(Update::FitCursor);
+			bool needSecondUpdate = false;
+			if (updateFlags != Update::None)
+				view()->update(updateFlags);
+			else
+				needSecondUpdate = view()->fitCursor();
 
-			view()->buffer()->changed();
-			lyx_view_->updateStatusBar();
+			if (needSecondUpdate || updateFlags != Update::None) {
+				view()->buffer()->changed();
+				lyx_view_->updateStatusBar();
+			}
 
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (flag.enabled()

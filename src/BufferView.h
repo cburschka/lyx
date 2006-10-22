@@ -18,7 +18,7 @@
 #include "coordcache.h"
 #include "cursor.h"
 #include "metricsinfo.h"
-
+#include "UpdateFlags.h"
 #include "support/types.h"
 
 #include <boost/utility.hpp>
@@ -40,26 +40,6 @@ class LCursor;
 class LyXText;
 class ParIterator;
 class ViewMetricsInfo;
-
-namespace Update {
-	enum flags {
-		FitCursor = 1,
-		Force = 2,
-		SinglePar = 4,
-		MultiParSel = 8
-	};
-
-inline flags operator|(flags const f, flags const g)
-{
-	return static_cast<flags>(int(f) | int(g));
-}
-
-inline flags operator&(flags const f, flags const g)
-{
-	return static_cast<flags>(int(f) & int(g));
-}
-
-} // namespace
 
 /// Scrollbar Parameters
 struct ScrollbarParameters

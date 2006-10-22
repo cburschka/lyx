@@ -140,6 +140,7 @@ void ControlDocument::dispatchParams()
 			"assign branch"));
 	}
 	// update the bufferview
+	// If we used an LFUN, we would not need that
 	kernel().bufferview()->update();
 }
 

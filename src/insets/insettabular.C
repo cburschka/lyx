@@ -1251,7 +1251,7 @@ void InsetTabular::resetPos(LCursor & cur) const
 			scx_ = 0;
 	}
 
-	cur.needsUpdate();
+	cur.updateFlags(Update::Force | Update::FitCursor);
 
 	InsetTabularMailer(*this).updateDialog(&bv);
 }

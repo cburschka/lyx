@@ -13,28 +13,30 @@
 #ifndef DISPATCH_RESULT_H
 #define DISPATCH_RESULT_H
 
+#include "UpdateFlags.h"
+
 namespace lyx {
 
 /// Maybe this can go entirely
 class DispatchResult {
 public:
 	///
-	DispatchResult() : dispatched_(false), update_(false) {}
+	DispatchResult() : dispatched_(false), update_(Update::None) {}
 	///
-	DispatchResult(bool disp, bool upd) : dispatched_(disp), update_(upd) {}
+	DispatchResult(bool disp, Update::flags f) : dispatched_(disp), update_(f) {}
 	//
 	bool dispatched() const { return dispatched_; }
 	///
 	void dispatched(bool disp) { dispatched_ = disp; }
 	///
-	bool update() const { return update_; }
+	Update::flags update() const { return update_; }
 	///
-	void update(bool up) { update_ = up; }
+	void update(Update::flags f) { update_ = f; }
 private:
 	/// was the event fully dispatched?
 	bool dispatched_;
 	/// do we need to redraw the screen afterwards?
-	bool update_;
+	Update::flags update_;
 };
 
 

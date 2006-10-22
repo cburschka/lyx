@@ -285,7 +285,7 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 		// The common case is 'LFUN handled, need update', so make the
 		// LFUN handler's life easier by assuming this as default value.
 		// The handler can reset the update and val flags if necessary.
-		disp_.update(true);
+		disp_.update(Update::FitCursor | Update::Force);
 		disp_.dispatched(true);
 		inset().dispatch(*this, cmd);
 		if (disp_.dispatched())
@@ -296,7 +296,7 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 	if (!disp_.dispatched()) {
 		lyxerr[Debug::DEBUG] << "RESTORING OLD CURSOR!" << endl;
 		operator=(safe);
-		disp_.update(false);
+		disp_.update(Update::None);
 		disp_.dispatched(false);
 	}
 }
@@ -527,14 +527,15 @@ void LCursor::info(odocstream & os) const
 }
 
 
-void LCursor::selHandle(bool sel)
+bool LCursor::selHandle(bool sel)
 {
 	//lyxerr << "LCursor::selHandle" << endl;
 	if (sel == selection())
-		return;
+		return false;
 
 	resetAnchor();
 	selection() = sel;
+	return true;
 }
 
 
@@ -1212,15 +1213,15 @@ void LCursor::dispatched()
 }
 
 
-void LCursor::needsUpdate()
+void LCursor::updateFlags(Update::flags f)
 {
-	disp_.update(true);
+	disp_.update(f);
 }
 
 
 void LCursor::noUpdate()
 {
-	disp_.update(false);
+	disp_.update(Update::None);
 }
 
 

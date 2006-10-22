@@ -306,6 +306,7 @@ void ControlSpellchecker::replace(string const & replacement)
 	BufferView & bufferview = *kernel().bufferview();
 	cap::replaceSelectionWithString(bufferview.cursor(), replacement, true);
 	kernel().buffer().markDirty();
+	// If we used an LFUN, we would not need that
 	bufferview.update();
 	// fix up the count
 	--count_;

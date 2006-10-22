@@ -283,14 +283,6 @@ bool doInsertInset(LCursor & cur, LyXText * text,
 }
 
 
-void update(LCursor & cur)
-{
-	//we don't call update(true, false) directly to save a metrics call
-	if (cur.bv().fitCursor())
-		cur.bv().update(Update::Force);
-}
-
-
 } // anon namespace
 
 
@@ -404,7 +396,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_BUFFER_BEGIN:
 	case LFUN_BUFFER_BEGIN_SELECT:
-		cur.selHandle(cmd.action == LFUN_BUFFER_BEGIN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_BUFFER_BEGIN_SELECT);
 		if (cur.depth() == 1) {
 			needsUpdate |= cursorTop(cur);
 		} else {
@@ -414,7 +406,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_BUFFER_END:
 	case LFUN_BUFFER_END_SELECT:
-		cur.selHandle(cmd.action == LFUN_BUFFER_END_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_BUFFER_END_SELECT);
 		if (cur.depth() == 1) {
 			needsUpdate |= cursorBottom(cur);
 		} else {
@@ -426,7 +418,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_FORWARD_SELECT:
 		//lyxerr << BOOST_CURRENT_FUNCTION
 		//       << " LFUN_CHAR_FORWARD[SEL]:\n" << cur << endl;
-		cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
 		if (isRTL(cur.paragraph()))
 			needsUpdate |= cursorLeft(cur);
 		else
@@ -442,7 +434,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_BACKWARD_SELECT:
 		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
-		cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
 		if (isRTL(cur.paragraph()))
 			needsUpdate |= cursorRight(cur);
 		else
@@ -457,11 +449,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_UP:
 	case LFUN_UP_SELECT:
-		update(cur);
 		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
-		cur.selHandle(cmd.action == LFUN_UP_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_UP_SELECT);
 
 		needsUpdate |= cursorUp(cur);
+
 		if (!needsUpdate && oldTopSlice == cur.top()
 			  && cur.boundary() == oldBoundary) {
 			cur.undispatched();
@@ -471,10 +463,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWN:
 	case LFUN_DOWN_SELECT:
-		update(cur);
 		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
-		cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_DOWN_SELECT);
 		needsUpdate |= cursorDown(cur);
+
 		if (!needsUpdate && oldTopSlice == cur.top() &&
 		    cur.boundary() == oldBoundary)
 		{
@@ -485,20 +477,19 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_UP_SELECT:
-		cur.selHandle(cmd.action == LFUN_PARAGRAPH_UP_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_PARAGRAPH_UP_SELECT);
 		needsUpdate |= cursorUpParagraph(cur);
 		break;
 
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
-		cur.selHandle(cmd.action == LFUN_PARAGRAPH_DOWN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_PARAGRAPH_DOWN_SELECT);
 		needsUpdate |= cursorDownParagraph(cur);
 		break;
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_UP_SELECT:
-		update(cur);
-		cur.selHandle(cmd.action == LFUN_SCREEN_UP_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_SCREEN_UP_SELECT);
 		if (cur.pit() == 0 && cur.textRow().pos() == 0) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
@@ -509,8 +500,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_SCREEN_DOWN:
 	case LFUN_SCREEN_DOWN_SELECT:
-		update(cur);
-		cur.selHandle(cmd.action == LFUN_SCREEN_DOWN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_SCREEN_DOWN_SELECT);
 		if (cur.pit() == cur.lastpit()
 			  && cur.textRow().endpos() == cur.lastpos()) {
 			cur.undispatched();
@@ -522,21 +512,19 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_LINE_BEGIN:
 	case LFUN_LINE_BEGIN_SELECT:
-		update(cur);
-		cur.selHandle(cmd.action == LFUN_LINE_BEGIN_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_BEGIN_SELECT);
 		needsUpdate |= cursorHome(cur);
 		break;
 
 	case LFUN_LINE_END:
 	case LFUN_LINE_END_SELECT:
-		update(cur);
-		cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
 		needsUpdate |= cursorEnd(cur);
 		break;
 
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
-		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT);
 		if (isRTL(cur.paragraph()))
 			needsUpdate |= cursorLeftOneWord(cur);
 		else
@@ -545,7 +533,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:
-		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT);
+		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT);
 		if (isRTL(cur.paragraph()))
 			needsUpdate |= cursorRightOneWord(cur);
 		else
@@ -1473,15 +1461,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	needsUpdate |= (cur.pos() != cur.lastpos()) && cur.selection();
 	if (singleParUpdate)
 		// Inserting characters does not change par height
 		if (cur.bottom().paragraph().dim().height()
 		    == olddim.height()) {
 			// if so, update _only_ this paragraph
-			cur.bv().update(Update::SinglePar |
-					Update::FitCursor |
-					Update::MultiParSel);
-			cur.noUpdate();
+			cur.updateFlags(Update::SinglePar |
+				Update::FitCursor |
+				Update::MultiParSel);
 			return;
 		} else
 			needsUpdate = true;
@@ -1492,7 +1480,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	    && !cur.selection())
 		cur.noUpdate();
 	else
-		cur.needsUpdate();
+		cur.updateFlags(Update::Force | Update::FitCursor);
 }
 
 

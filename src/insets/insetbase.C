@@ -125,7 +125,7 @@ InsetBase::Code InsetBase::translate(std::string const & name)
 
 void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
 {
-	cur.needsUpdate();
+	cur.updateFlags(Update::Force | Update::FitCursor);
 	cur.dispatched();
 	doDispatch(cur, cmd);
 }
