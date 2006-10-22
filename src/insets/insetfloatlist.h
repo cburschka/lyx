@@ -52,7 +52,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const
 	{
-		return std::auto_ptr<InsetBase>(new InsetFloatList(getCmdName()));
+		return std::auto_ptr<InsetBase>(new InsetFloatList(to_ascii(getParam("type"))));
 	}
 };
 

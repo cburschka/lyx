@@ -45,14 +45,14 @@ InsetFloatList::InsetFloatList()
 InsetFloatList::InsetFloatList(string const & type)
 	: InsetCommand(InsetCommandParams("floatlist"), "toc")
 {
-	setCmdName(type);
+	setParam("type", from_ascii(type));
 }
 
 
 docstring const InsetFloatList::getScreenLabel(Buffer const & buf) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
-	FloatList::const_iterator it = floats[getCmdName()];
+	FloatList::const_iterator it = floats[to_ascii(getParam("type"))];
 	if (it != floats.end())
 		return buf.B_(it->second.listName());
 	else
@@ -68,16 +68,33 @@ InsetBase::Code InsetFloatList::lyxCode() const
 
 void InsetFloatList::write(Buffer const &, ostream & os) const
 {
-	os << "FloatList " << getCmdName() << "\n";
+	os << "FloatList " << to_ascii(getParam("type")) << "\n";
 }
 
 
 void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 {
-	InsetCommand::read(buf, lex);
-	lyxerr[Debug::INSETS] << "FloatList::float_type: " << getCmdName() << endl;
-	if (!buf.params().getLyXTextClass().floats().typeExist(getCmdName()))
-		lex.printError("InsetFloatList: Unknown float type: `$$Token'");
+	FloatList const & floats = buf.params().getLyXTextClass().floats();
+	string token;
+
+	if (lex.eatLine()) {
+		setParam("type", lex.getDocString());
+		lyxerr[Debug::INSETS] << "FloatList::float_type: "
+		                      << to_ascii(getParam("type")) << endl;
+		if (!floats.typeExist(to_ascii(getParam("type"))))
+			lex.printError("InsetFloatList: Unknown float type: `$$Token'");
+	} else
+		lex.printError("InsetFloatList: Parse error: `$$Token'");
+	while (lex.isOK()) {
+		lex.next();
+		token = lex.getString();
+		if (token == "\\end_inset")
+			break;
+	}
+	if (token != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
+	}
 }
 
 
@@ -85,7 +102,7 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 			  OutputParams const &) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
-	FloatList::const_iterator cit = floats[getCmdName()];
+	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
 
 	if (cit != floats.end()) {
 		if (cit->second.builtin()) {
@@ -99,13 +116,11 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 				os << "%% unknown builtin float\n";
 			}
 		} else {
-			// FIXME UNICODE
-			os << "\\listof{" << from_ascii(getCmdName()) << "}{"
+			os << "\\listof{" << getParam("type") << "}{"
 			   << buf.B_(cit->second.listName()) << "}\n";
 		}
 	} else {
-		// FIXME UNICODE
-		os << "%%\\listof{" << from_ascii(getCmdName()) << "}{"
+		os << "%%\\listof{" << getParam("type") << "}{"
 		   << bformat(_("List of %1$s"), from_utf8(cit->second.name()))
 		   << "}\n";
 	}
@@ -118,7 +133,7 @@ int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	toc::asciiTocList(getCmdName(), buffer, os);
+	toc::asciiTocList(to_ascii(getParam("type")), buffer, os);
 
 	os << "\n";
 	return 0;
@@ -127,7 +142,7 @@ int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
 
 void InsetFloatList::validate(LaTeXFeatures & features) const
 {
-	features.useFloat(getCmdName());
+	features.useFloat(to_ascii(getParam("type")));
 }
 
 
