@@ -70,7 +70,7 @@ CoordCache::dump() const {
 			Paragraph const & par = lt->getPar(pit);
 			Point p = (*j).second;
 			lyxerr << "Paragraph " << pit << ": \"";
-			for (int k = 0; k < std::min(10, par.size()); ++k) {
+			for (int k = 0; k < std::min(static_cast<lyx::pos_type>(10), par.size()); ++k) {
 				lyxerr << to_utf8(docstring(1,par.getChar(k)));
 			}
 			lyxerr << "\" has point " << p.x_ << "," << p.y_ << std::endl;
