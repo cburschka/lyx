@@ -184,7 +184,7 @@ int replaceAll(BufferView * bv,
 		pos_type pos = cur.pos();
 		LyXFont const font
 			= cur.paragraph().getFontSettings(buf.params(), pos);
-		int striked = ssize - cur.paragraph().erase(pos, pos + ssize,
+		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,
 							    buf.params().trackChanges);
 		cur.paragraph().insert(pos, from_utf8(replacestr), font,
 		                       Change(buf.params().trackChanges ?

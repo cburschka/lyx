@@ -309,7 +309,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	// Start and end is inside same paragraph
 	if (endpit == pit_type(pars.size()) ||
 	    startpit == endpit) {
-		endpos -= pars[startpit].erase(startpos, endpos, false);
+		endpos -= pars[startpit].eraseChars(startpos, endpos, false);
 		return PitPosPair(endpit, endpos);
 	}
 
@@ -325,7 +325,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		pos_type const right = ( pit == endpit ? endpos :
 				pars[pit].size() + 1 );
 		// Logical erase only:
-		pars[pit].erase(left, right, false);
+		pars[pit].eraseChars(left, right, false);
 		// Separate handling of para break:
 		if (merge && pit != endpit &&
 		   (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
@@ -363,11 +363,13 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 
 	// Cut out the end of the last paragraph.
 	Paragraph & back = paragraphs.back();
-	back.erase(end, back.size(), false);
+	// do not track deletion here; it is an internal action not visible to the user
+	back.eraseChars(end, back.size(), false);
 
 	// Cut out the begin of the first paragraph
 	Paragraph & front = paragraphs.front();
-	front.erase(0, start, false);
+	// again, do not track deletion
+	front.eraseChars(0, start, false);
 
 	theCuts.push(make_pair(paragraphs, tc));
 }

@@ -151,7 +151,7 @@ void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
 				// Suppress access to nonexistent
 				// "end-of-paragraph char":
 				if (i < size()) {
-					eraseChar(i);
+					eraseChar(i, false);
 					--end;
 					--i;
 				}
@@ -181,7 +181,7 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 			case Change::INSERTED:
 				if (i < size()) {
-					eraseChar(i);
+					eraseChar(i, false);
 					--end;
 					--i;
 				}
@@ -253,8 +253,29 @@ void Paragraph::Pimpl::insertInset(pos_type pos, InsetBase * inset,
 }
 
 
-void Paragraph::Pimpl::eraseChar(pos_type pos)
+bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 {
+	BOOST_ASSERT(pos <= size());
+
+	if (trackChanges) {
+		Change::Type changetype(changes_.lookup(pos).type);
+
+		if (changetype == Change::UNCHANGED) {
+			setChange(pos, Change(Change::DELETED));
+			return false;
+		}
+
+		if (changetype == Change::DELETED)
+			return false;
+	}
+
+	// Don't physically access nonexistent end-of-paragraph char
+	if (pos == size()) {
+		// FIXME: change tracking (MG)
+		// how do we handle end-of-pars previously marked inserted?
+		return false;
+	}
+
 	// track change
 	changes_.erase(pos);
 
@@ -297,36 +318,12 @@ void Paragraph::Pimpl::eraseChar(pos_type pos)
 
 	// Update the insetlist
 	owner_->insetlist.decreasePosAfterPos(pos);
+
+	return true;
 }
 
 
-bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
-{
-	BOOST_ASSERT(pos <= size());
-
-	if (trackChanges) {
-		Change::Type changetype(changes_.lookup(pos).type);
-
-		if (changetype == Change::UNCHANGED) {
-			setChange(pos, Change(Change::DELETED));
-			return false;
-		}
-
-		if (changetype == Change::DELETED)
-			return false;
-	}
-
-	// Don't physically access nonexistent end-of-paragraph char
-	if (pos < size()) {
-		eraseChar(pos);
-		return true;
-	}
-
-	return false;
-}
-
-
-int Paragraph::Pimpl::erase(pos_type start, pos_type end, bool trackChanges)
+int Paragraph::Pimpl::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {

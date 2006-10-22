@@ -241,9 +241,9 @@ bool Paragraph::eraseChar(pos_type pos, bool trackChanges)
 }
 
 
-int Paragraph::erase(pos_type start, pos_type end, bool trackChanges)
+int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
-	return pimpl_->erase(start, end, trackChanges);
+	return pimpl_->eraseChars(start, end, trackChanges);
 }
 
 

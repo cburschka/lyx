@@ -240,10 +240,10 @@ public:
 	///
 	void applyLayout(LyXLayout_ptr const & new_layout);
 
-	/// erase the char at the given position
+	/// (logically) erase the char at pos; return true if it was actually erased
 	bool eraseChar(pos_type pos, bool trackChanges);
-	/// erase the given range. Returns the number of chars actually erased
-	int erase(pos_type start, pos_type end, bool trackChanges);
+	/// (logically) erase the given range; return the number of chars actually erased
+	int eraseChars(pos_type start, pos_type end, bool trackChanges);
 
 	/** Get uninstantiated font setting. Returns the difference
 	    between the characters font and the layoutfont.

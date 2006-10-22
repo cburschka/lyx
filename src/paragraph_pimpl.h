@@ -60,12 +60,10 @@ public:
 	void insertChar(pos_type pos, value_type c, Change const & change);
 	///
 	void insertInset(pos_type pos, InsetBase * inset, Change const & change);
-	/// definite erase
-	void eraseChar(pos_type pos);
-	/// erase the given position. Returns true if it was actually erased
+	/// (logically) erase the char at pos; return true if it was actually erased
 	bool eraseChar(pos_type pos, bool trackChanges);
-	/// erase the given range
-	int erase(pos_type start, pos_type end, bool trackChanges);
+	/// (logically) erase the given range; return the number of chars actually erased
+	int eraseChars(pos_type start, pos_type end, bool trackChanges);
 	///
 	InsetBase * inset_owner;
 
