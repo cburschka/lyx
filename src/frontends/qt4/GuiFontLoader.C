@@ -162,6 +162,7 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 	upper[0] = toupper(family[0]);
 
 	QFont font;
+	font.setKerning(false);
 	font.setFamily(toqstr(family));
 
 	if (isChosenFont(font, family)) {
@@ -219,6 +220,7 @@ void GuiFontLoader::update()
 
 QLFontInfo::QLFontInfo(LyXFont const & f)
 {
+	font.setKerning(false);
 	string const pat = symbolFamily(f.family());
 	if (!pat.empty()) {
 		bool tmp;
@@ -290,6 +292,7 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 		LyXFont smallfont = f;
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		QFont font2(font);
+		font2.setKerning(false);
 		font2.setPointSizeF(convert<double>(lyxrc.font_sizes[smallfont.size()])
 			       * lyxrc.zoom / 100.0);
 

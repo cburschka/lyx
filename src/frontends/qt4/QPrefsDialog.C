@@ -128,6 +128,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	// for bug 1063. Qt makes baby Jesus cry.
 
 	QFont font;
+	font.setKerning(false);
 
 	if (family == theApp->romanFontName()) {
 		font.setStyleHint(QFont::Serif);

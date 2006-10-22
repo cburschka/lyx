@@ -180,6 +180,7 @@ void GuiApplication::exit(int status)
 string const GuiApplication::romanFontName()
 {
 	QFont font;
+	font.setKerning(false);
 	font.setStyleHint(QFont::Serif);
 	font.setFamily("serif");
 
@@ -190,6 +191,7 @@ string const GuiApplication::romanFontName()
 string const GuiApplication::sansFontName()
 {
 	QFont font;
+	font.setKerning(false);
 	font.setStyleHint(QFont::SansSerif);
 	font.setFamily("sans");
 
@@ -200,6 +202,7 @@ string const GuiApplication::sansFontName()
 string const GuiApplication::typewriterFontName()
 {
 	QFont font;
+	font.setKerning(false);
 	font.setStyleHint(QFont::TypeWriter);
 	font.setFamily("monospace");
 
