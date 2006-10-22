@@ -256,7 +256,7 @@ bool isHex(docstring const & str)
 {
 	int index = 0;
 
-	if (str.length() > 2 and str[0] == '0' &&
+	if (str.length() > 2 && str[0] == '0' &&
 	    (str[1] == 'x' || str[1] == 'X'))
 		index = 2;
 
