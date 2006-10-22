@@ -267,6 +267,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 	str += par_.getChar(pos);
 #else
 	std::vector<char_type> str;
+	str.reserve(100);
 	str.push_back(par_.getChar(pos));
 #endif
 	if (arabic) {

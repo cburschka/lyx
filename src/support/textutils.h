@@ -50,7 +50,7 @@ bool isPrintable(lyx::char_type c)
 inline
 bool isPrintableNonspace(lyx::char_type c)
 {
-	return isPrintable(c) && c != ' ';
+	return (c & 127) > ' ';
 }
 
 /// return true if a unicode char is a digit.
