@@ -150,7 +150,8 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	bool mangle = false;
 	for (; it != end; ++it) {
 		char c = *it;
-		if (isalpha(c) || isdigit(c) || c == '-' || c == '.' || allowed.find(c) < allowed.size())
+		if (isalpha(c) || isdigit(c) || c == '-' || c == '.'
+		      || allowed.find(c) < allowed.size())
 			content += c;
 		else if (c == '_' || c == ' ') {
 			mangle = true;
@@ -185,9 +186,9 @@ void sgml::openTag(odocstream & os, string const & name, string const & attribut
 	param = subst(param, ">", "\"");
 
 	if (!name.empty() && name != "!-- --") {
-                os << '<' << from_ascii(name);
+		os << '<' << from_ascii(name);
 		if (!param.empty())
-                    os << ' ' << from_ascii(param);
+			os << ' ' << from_ascii(param);
 		os << '>';
 	}
 }
@@ -195,13 +196,13 @@ void sgml::openTag(odocstream & os, string const & name, string const & attribut
 
 void sgml::closeTag(odocstream & os, string const & name)
 {
-        // FIXME UNICODE
 	if (!name.empty() && name != "!-- --")
-                os << "</" << from_ascii(name) << '>';
+		os << "</" << from_ascii(name) << '>';
 }
 
 
-void sgml::openTag(Buffer const & buf, odocstream & os, OutputParams const & runparams, Paragraph const & par)
+void sgml::openTag(Buffer const & buf, odocstream & os,
+	OutputParams const & runparams, Paragraph const & par)
 {
 	LyXLayout_ptr const & style = par.layout();
 	string const & name = style->latexname();
