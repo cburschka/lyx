@@ -343,9 +343,10 @@ public:
 	///
 	StableDocIterator getAnchor() const { return anchor_; }
 	///
-	void changeRefsIfUnique(std::string const & from, std::string const & to, InsetBase::Code code);
-	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
-	/// including preamble
+	void changeRefsIfUnique(docstring const & from, docstring const & to,
+		InsetBase::Code code);
+/// get source code (latex/docbook) for some paragraphs, or all paragraphs
+/// including preamble
 	void getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source);
 
 	/// errorLists_ accessors.

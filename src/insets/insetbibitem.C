@@ -66,9 +66,8 @@ void InsetBibitem::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		if (p["key"] != params()["key"])
-			// FIXME UNICODE
-			cur.bv().buffer()->changeRefsIfUnique(to_utf8(params()["key"]),
-						       to_utf8(p["key"]), InsetBase::CITE_CODE);
+			cur.bv().buffer()->changeRefsIfUnique(params()["key"],
+						       p["key"], InsetBase::CITE_CODE);
 		setParams(p);
 	}
 
@@ -99,7 +98,7 @@ void InsetBibitem::read(Buffer const & buf, LyXLex & lex)
 docstring const InsetBibitem::getBibLabel() const
 {
 	docstring const & label = getParam("label");
-	return label.empty() ?  convert<docstring>(counter) : label;
+	return label.empty() ? convert<docstring>(counter) : label;
 }
 
 

@@ -144,8 +144,6 @@ libmathed_la_SOURCES = \
 	MathMacroTable.h \
 	MathMacroTemplate.C \
 	MathMacroTemplate.h \
-	MathMLStream.C \
-	MathMLStream.h \
 	MathParser.C \
 	MathParser.h \
 	MathReplace.h \

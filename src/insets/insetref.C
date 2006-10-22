@@ -109,16 +109,16 @@ int InsetRef::docbook(Buffer const & buf, odocstream & os,
 	if (name.empty()) {
 		if (runparams.flavor == OutputParams::XML) {
 			os << "<xref linkend=\"" 
-			   << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
+			   << sgml::cleanID(buf, runparams, getParam("reference")) 
 			   << "\" />";
 		} else {
 			os << "<xref linkend=\"" 
-			   << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference")))) 
+			   << sgml::cleanID(buf, runparams, getParam("reference")) 
 			   << "\">";
 		}
 	} else {
 		os << "<link linkend=\"" 
-		   << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("reference"))))
+		   << sgml::cleanID(buf, runparams, getParam("reference"))
 		   << "\">" 
 		   << getParam("name")
 		   << "</link>";

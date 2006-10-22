@@ -1122,7 +1122,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 				numbered(r, true);
 			docstring old = label(r);
 			if (str != old) {
-				cur.bv().buffer()->changeRefsIfUnique(to_utf8(old), to_utf8(str),
+				cur.bv().buffer()->changeRefsIfUnique(old, str,
 							InsetBase::REF_CODE);
 				label(r, str);
 			}
@@ -1462,7 +1462,7 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 
 	docstring bname = name;
 	if (!label(0).empty())
-		bname += from_ascii(" id='" + sgml::cleanID(buf, runparams, to_utf8(label(0))) + "'");
+		bname += " id='" + sgml::cleanID(buf, runparams, label(0)) + "'";
 	ms << MTag(bname);
 
 	odocstringstream ls;
@@ -1476,6 +1476,8 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag(from_ascii("alt"));
 		ms << MTag(from_ascii("math"));
+		ms << ETag(from_ascii("alt"));
+		ms << MTag(from_ascii("math"));
 		InsetMathGrid::mathmlize(ms);
 		ms << ETag(from_ascii("math"));
 	} else {
@@ -1487,9 +1489,9 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 
 	ms << from_ascii("<graphic fileref=\"eqn/");
 	if (!label(0).empty())
-		ms << from_utf8(sgml::cleanID(buf, runparams, to_utf8(label(0))));
+		ms << sgml::cleanID(buf, runparams, label(0));
 	else
-		ms << from_utf8(sgml::uniqueID("anon"));
+		ms << sgml::uniqueID(from_ascii("anon"));
 
 	if (runparams.flavor == OutputParams::XML)
 		ms << from_ascii("\"/>");

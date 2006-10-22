@@ -148,7 +148,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 
 
 InsetGraphics::InsetGraphics()
-	: graphic_label(sgml::uniqueID("graph")),
+	: graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(this))
 {}
 
@@ -156,7 +156,7 @@ InsetGraphics::InsetGraphics()
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: InsetOld(ig),
 	  boost::signals::trackable(),
-	  graphic_label(sgml::uniqueID("graph")),
+		graphic_label(sgml::uniqueID(from_ascii("graph"))),
 	  graphic_(new RenderGraphic(*ig.graphic_, this))
 {
 	setParams(ig.params());

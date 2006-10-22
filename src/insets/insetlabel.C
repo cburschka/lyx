@@ -72,8 +72,8 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		if (p["name"] != params()["name"])
         		// FIXME UNICODE
-			cur.bv().buffer()->changeRefsIfUnique(to_utf8(params()["name"]),
-						       to_utf8(p["name"]), InsetBase::REF_CODE);
+			cur.bv().buffer()->changeRefsIfUnique(params()["name"],
+						       p["name"], InsetBase::REF_CODE);
 		setParams(p);
 		break;
 	}
@@ -106,7 +106,7 @@ int InsetLabel::docbook(Buffer const & buf, odocstream & os,
 {
         // FIXME UNICODE
 	os << "<!-- anchor id=\""
-           << from_ascii(sgml::cleanID(buf, runparams, lyx::to_ascii(getParam("name"))))
+           << sgml::cleanID(buf, runparams, getParam("name"))
            << "\" -->";
 	return 0;
 }

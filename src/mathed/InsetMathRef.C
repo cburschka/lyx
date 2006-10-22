@@ -157,20 +157,19 @@ int RefInset::plaintext(odocstream & os, OutputParams const &) const
 }
 
 
-int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & runparams) const
+int RefInset::docbook(Buffer const & buf, odocstream & os,
+		OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
-                // FIXME UNICODE
 		os << "<xref linkend=\""
-		   << from_utf8(sgml::cleanID(buf, runparams, to_utf8(asString(cell(0)))));
+		   << sgml::cleanID(buf, runparams, asString(cell(0)));
 		if (runparams.flavor == OutputParams::XML)
 			os << "\"/>";
 		else
 			os << "\">";
 	} else {
-                // FIXME UNICODE
 		os << "<link linkend=\""
-		   << from_ascii(sgml::cleanID(buf, runparams, to_utf8(asString(cell(0)))))
+		   << sgml::cleanID(buf, runparams, asString(cell(0)))
 		   << "\">"
 		   << asString(cell(1))
 		   << "</link>";

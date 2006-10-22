@@ -1562,7 +1562,8 @@ void Buffer::saveCursor(StableDocIterator cur, StableDocIterator anc)
 }
 
 
-void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBase::Code code)
+void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
+	InsetBase::Code code)
 {
 	//FIXME: This does not work for child documents yet.
 	BOOST_ASSERT(code == InsetBase::CITE_CODE || code == InsetBase::REF_CODE);
@@ -1582,19 +1583,20 @@ void Buffer::changeRefsIfUnique(string const & from, string const & to, InsetBas
 		getLabelList(labels);
 
 	// FIXME UNICODE
-	if (lyx::count(labels.begin(), labels.end(), from_utf8(from)) > 1)
+	if (lyx::count(labels.begin(), labels.end(), from) > 1)
 		return;
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == code) {
 			InsetCommand & inset = dynamic_cast<InsetCommand &>(*it);
-			inset.replaceContents(from, to);
+			inset.replaceContents(to_utf8(from), to_utf8(to));
 		}
 	}
 }
 
 
-void Buffer::getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end, bool full_source)
+void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
+	pit_type par_end, bool full_source)
 {
 	OutputParams runparams;
 	runparams.nice = true;
@@ -1617,7 +1619,8 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin, pit_type par_end
 		if (par_begin + 1 == par_end)
 			os << "% Preview source code for paragraph " << par_begin << "\n\n";
 		else
-			os << "% Preview source code from paragraph " << par_begin << " to " << par_end - 1 << "\n\n";
+			os << "% Preview source code from paragraph " << par_begin
+			   << " to " << par_end - 1 << "\n\n";
 		// output paragraphs
 		if (isLatex()) {
 			texrow().reset();

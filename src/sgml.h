@@ -39,11 +39,11 @@ docstring escapeChar(char_type c);
 docstring escapeString(docstring const & raw);
 
 /// replaces illegal characters from SGML/XML ID attributes
-std::string cleanID(Buffer const & buf, OutputParams const & runparams,
-		    std::string const & orig);
+docstring cleanID(Buffer const & buf, OutputParams const & runparams,
+		    docstring const & orig);
 
 /// returns a unique numeric id
-docstring const uniqueID(std::string const label);
+docstring const uniqueID(docstring const label);
 
 /// Opens tag
 void openTag(odocstream & os, std::string const & name,
