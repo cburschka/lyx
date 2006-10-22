@@ -152,10 +152,6 @@ public:
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
 
-	/// Temporary method to access the current workArea.
-	/// This is needed for the gtk frontend.
-	frontend::WorkArea * workArea();
-
 	/// show the error list to the user
 	void showErrorList(std::string const &);
 

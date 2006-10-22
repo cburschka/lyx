@@ -94,12 +94,6 @@ void LyXView::setWorkArea(WorkArea * work_area)
 }
 
 
-WorkArea * LyXView::workArea()
-{
-	return work_area_;
-}
-
-
 Buffer * LyXView::buffer() const
 {
 	return work_area_->bufferView().buffer();

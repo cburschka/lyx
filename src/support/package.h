@@ -72,7 +72,6 @@ public:
 	std::string const & binary_dir() const;
 
 	/** The top of the LyX source code tree.
-	 *  Used by the GTK frontend when searching for .glade files.
 	 */
 	std::string const & top_srcdir() const;
 

@@ -126,7 +126,7 @@ opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
     EnumOption('frontend', 'Main GUI', default_frontend,
-        allowed_values = ('qt4', 'gtk') ),
+        allowed_values = ('qt4') ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
         allowed_values = ('debug', 'release') ),

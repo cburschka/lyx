@@ -89,25 +89,21 @@ public:
 	/// grey out (no buffer)
 	void greyOut();
 
-	/// FIXME: should be protected, public until the gtk frontend are
-	/// cleaned up.
-	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
-
 protected:
+	///
+	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
 
-public:
-	/// FIXME: This is public because of gtk, should be protected
+	///
 	void dispatch(FuncRequest const & cmd0);
 
-	/// FIXME: This is public because of gtk, should be protected
+	///
 	void resizeBufferView();
 
-	/// FIXME: This is public because of gtk, should be protected
+	///
 	void scrollBufferView(int position);
 
-protected:
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
 

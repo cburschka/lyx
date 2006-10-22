@@ -78,7 +78,6 @@ command 'scons -h'.
 Components to use/build:
 
   * frontend=qt4: qt4 is the only option right now.
-    gtk is not currently supported.
   * mode=debug/release: lyx will be built under the debug or release
     directory, with different default build options.
   * boost=included/system/auto: whether or not use included boost, system

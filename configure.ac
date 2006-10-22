@@ -179,19 +179,6 @@ dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
 for frontend in $FRONTENDS ; do
   case "$frontend" in
-    gtk)
-	  PKG_CHECK_MODULES(GTK_FRONTEND, gtkmm-2.4 libglademm-2.4 xft)
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-gtk\$(EXEEXT)"
-	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS gtk"
-	  RPM_FRONTEND="gtk"
-	  GTKMM_VERSION=`pkg-config --modversion gtkmm-2.4`
-	  LIBGLADEMM_VERSION=`pkg-config --modversion libglademm-2.4`
-	  FRONTEND_INFO="${FRONTEND_INFO}\
-  GTK Frontend:\n\
-    libgtkmm version:\t\t${GTKMM_VERSION}\n\
-    libglademm version:\t\t${LIBGLADEMM_VERSION}\n"
-	  ;;
-
     qt4)
 	  QT4_DO_IT_ALL
 	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt4\$(EXEEXT)"
@@ -434,9 +421,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/controllers/tests/Makefile \
-       src/frontends/gtk/Makefile \
-       src/frontends/gtk/gimages/Makefile \
-       src/frontends/gtk/glade/Makefile \
        src/frontends/qt4/Makefile \
        src/frontends/qt4/ui/Makefile \
 ])
