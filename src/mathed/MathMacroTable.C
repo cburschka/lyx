@@ -78,14 +78,6 @@ MacroTable & MacroTable::globalMacros()
 }
 
 
-// The local table.
-//MacroTable & MacroTable::localMacros()
-//{
-//	static MacroTable theLocalMacros;
-//	return theLocalMacros;
-//}
-
-
 bool MacroTable::has(docstring const & name) const
 {
 	return find(name) != end();
@@ -102,14 +94,14 @@ MacroData const & MacroTable::get(docstring const & name) const
 
 void MacroTable::insert(docstring const & name, MacroData const & data)
 {
-	//lyxerr << "MacroTable::insert: " << name << endl;
+	//lyxerr << "MacroTable::insert: " << to_utf8(name) << endl;
 	operator[](name) = data;
 }
 
 
 void MacroTable::insert(docstring const & def)
 {
-	//lyxerr << "MacroTable::insert, def: " << def << endl;
+	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
 	std::istringstream is(to_utf8(def));
 	MathMacroTemplate mac(is);
 	insert(mac.name(), mac.asMacroData());

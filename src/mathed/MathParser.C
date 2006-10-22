@@ -325,7 +325,7 @@ private:
 	///
 	void tokenize(docstring const & s);
 	///
-	void skipSpaceTokens(istream & is, char c);
+	void skipSpaceTokens(idocstream & is, char_type c);
 	///
 	void push_back(Token const & t);
 	///
@@ -451,7 +451,7 @@ docstring Parser::getArg(char_type left, char_type right)
 }
 
 
-void Parser::skipSpaceTokens(istream & is, char c)
+void Parser::skipSpaceTokens(idocstream & is, char_type c)
 {
 	// skip trailing spaces
 	while (catcode(c) == catSpace || catcode(c) == catNewline)
@@ -466,7 +466,7 @@ void Parser::tokenize(istream & is)
 {
 	// eat everything up to the next \end_inset or end of stream
 	// and store it in s for further tokenization
-	docstring s;
+	std::string s;
 	char c;
 	while (is.get(c)) {
 		s += c;
@@ -480,15 +480,15 @@ void Parser::tokenize(istream & is)
 		is.unget();
 
 	// tokenize buffer
-	tokenize(s);
+	tokenize(from_utf8(s));
 }
 
 
 void Parser::tokenize(docstring const & buffer)
 {
-	istringstream is(to_utf8(buffer), ios::in | ios::binary);
+	idocstringstream is(buffer, ios::in | ios::binary);
 
-	char c;
+	char_type c;
 	while (is.get(c)) {
 		//lyxerr << "reading c: " << c << endl;
 
