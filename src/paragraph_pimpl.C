@@ -82,15 +82,13 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 {
 	owner_->text_ = par.text_;
 	// FIXME: change tracking (MG)
+	// check whether this method is really needed
 	changes_ = par.pimpl_->changes_;
 }
 
 
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
-	// FIXME: change tracking (MG)
-	return false;
-
 	return changes_.isChanged(start, end);
 }
 
@@ -98,9 +96,7 @@ bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 void Paragraph::Pimpl::setChange(Change const & change)
 {
 	// FIXME: change tracking (MG)
-
-	return;
-
+	// how about end-of-line? size()+1?
 	changes_.set(change, 0, size());
 
 	if (change.type == Change::UNCHANGED) { // only for UNCHANGED ???
@@ -115,18 +111,18 @@ void Paragraph::Pimpl::setChange(Change const & change)
 
 void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 {
-	// FIXME: change tracking (MG)
-	return;
-
 	changes_.set(change, pos);
+
+	// FIXME: change tracking (MG)
+	// do we have to set the change recursively?
+	if (pos < size() && owner_->isInset(pos)) {
+		owner_->getInset(pos)->setChange(change);
+	}
 }
 
 
 Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
-	// FIXME: change tracking (MG)
-	return Change(Change::UNCHANGED);
-
 	return changes_.lookup(pos);
 }
 
@@ -216,10 +212,8 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 {
 	BOOST_ASSERT(pos <= size());
 
-	// FIXME: change tracking (MG)
-	if (false) {
-		// changes_.record(change, pos);
-	}
+	// track change
+	changes_.insert(change, pos);
 
 	// This is actually very common when parsing buffers (and
 	// maybe inserting ascii text)
@@ -233,9 +227,8 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
-	for (FontList::iterator it = lower_bound(fontlist.begin(),
-						      fontlist.end(),
-						      search_font, matchFT());
+	for (FontList::iterator it 
+	      = lower_bound(fontlist.begin(), fontlist.end(), search_font, matchFT());
 	     it != fontlist.end(); ++it)
 	{
 		it->pos(it->pos() + 1);
@@ -246,8 +239,8 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & cha
 }
 
 
-void Paragraph::Pimpl::insertInset(pos_type pos,
-				   InsetBase * inset, Change const & change)
+void Paragraph::Pimpl::insertInset(pos_type pos, InsetBase * inset,
+                                   Change const & change)
 {
 	BOOST_ASSERT(inset);
 	BOOST_ASSERT(pos <= size());
@@ -262,10 +255,8 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 
 void Paragraph::Pimpl::eraseChar(pos_type pos)
 {
-	// FIXME: change tracking (MG)
-	// do something like changes_.erase(i);
-	// in one of the next patches, the two erase functions 
- 	// will be merged but I don't want to break too many things at the same time :-)
+	// track change
+	changes_.erase(pos);
 
 	// if it is an inset, delete the inset entry
 	if (owner_->text_[pos] == Paragraph::META_INSET) {
@@ -309,22 +300,20 @@ void Paragraph::Pimpl::eraseChar(pos_type pos)
 }
 
 
-bool Paragraph::Pimpl::eraseChar(pos_type pos, bool /*trackChanges*/)
+bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 {
 	BOOST_ASSERT(pos <= size());
 
-	// FIXME: change tracking (MG)
-	if (false) {
+	if (trackChanges) {
 		Change::Type changetype(changes_.lookup(pos).type);
 
-		// only allow the actual removal if it was /new/ text
-		if (changetype != Change::INSERTED) {
-			// changes_.record(Change(Change::DELETED), pos);
-			if (pos < size() && owner_->isInset(pos))
-				// FIXME: change tracking (MG)
-				owner_->getInset(pos)->setChange(Change(Change::DELETED));
+		if (changetype == Change::UNCHANGED) {
+			setChange(pos, Change(Change::DELETED));
 			return false;
 		}
+
+		if (changetype == Change::DELETED)
+			return false;
 	}
 
 	// Don't physically access nonexistent end-of-paragraph char

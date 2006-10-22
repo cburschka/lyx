@@ -1246,8 +1246,7 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 		}
 	}
 
-	// FIXME: change tracking (MG)
-	par.insertChar(cur.pos(), c, current_font, Change(Change::INSERTED));
+	par.insertChar(cur.pos(), c, current_font, cur.buffer().params().trackChanges);
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }
