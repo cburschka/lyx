@@ -152,9 +152,6 @@ public:
 	/// returns true if this view has the focus.
 	virtual bool hasFocus() const = 0;
 
-	/// Temporary method used by the kernel to redraw the work area.
-	virtual void redrawWorkArea();
-
 	/// Temporary method to access the current workArea.
 	/// This is needed for the gtk frontend.
 	frontend::WorkArea * workArea();
@@ -197,6 +194,8 @@ private:
 	/// dialogs for this view
 	boost::scoped_ptr<Dialogs> dialogs_;
 
+	/// buffer changed signal connection
+	boost::signals::connection bufferChangedConnection_;
 	/// buffer errors signal connection
 	boost::signals::connection errorsConnection_;
 	/// buffer messages signal connection

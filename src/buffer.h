@@ -118,6 +118,8 @@ public:
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;
 
+	/// This signal is emitted when the buffer is changed.
+	boost::signal<void()> changed;
 	/// This signal is emitted when some parsing error shows up.
 	boost::signal<void(std::string)> errors;
 	/// This signal is emitted when some message shows up.

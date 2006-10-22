@@ -1606,7 +1606,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			else if (update)
 				view()->update(Update::FitCursor);
 
-			lyx_view_->redrawWorkArea();
+			view()->buffer()->changed();
+			lyx_view_->updateStatusBar();
 
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (flag.enabled()

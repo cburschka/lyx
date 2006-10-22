@@ -94,14 +94,6 @@ void LyXView::setWorkArea(WorkArea * work_area)
 }
 
 
-void LyXView::redrawWorkArea()
-{
-	lyxerr[Debug::WORKAREA] << "LyXView::redrawWorkArea" << std::endl;
-	work_area_->redraw();
-	updateStatusBar();
-}
-
-
 WorkArea * LyXView::workArea()
 {
 	return work_area_;
@@ -136,7 +128,8 @@ void LyXView::setBuffer(Buffer * b)
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
-	redrawWorkArea();
+	updateStatusBar();
+	work_area_->redraw();
 }
 
 
@@ -155,7 +148,8 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 		connectBuffer(*work_area_->bufferView().buffer());
 		showErrorList("Parse");
 	}
-	redrawWorkArea();
+	updateStatusBar();
+	work_area_->redraw();
 	return loaded;
 }
 
@@ -164,6 +158,10 @@ void LyXView::connectBuffer(Buffer & buf)
 {
 	if (errorsConnection_.connected())
 		disconnectBuffer();
+
+	bufferChangedConnection_ =
+		buf.changed.connect(
+			boost::bind(&WorkArea::redraw, work_area_));
 
 	errorsConnection_ =
 		buf.errors.connect(
@@ -197,6 +195,8 @@ void LyXView::connectBuffer(Buffer & buf)
 
 void LyXView::disconnectBuffer()
 {
+	errorsConnection_.disconnect();
+	bufferChangedConnection_.disconnect();
 	messageConnection_.disconnect();
 	busyConnection_.disconnect();
 	titleConnection_.disconnect();
