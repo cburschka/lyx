@@ -126,7 +126,7 @@ opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
     EnumOption('frontend', 'Main GUI', default_frontend,
-        allowed_values = ('qt4') ),
+        allowed_values = ('qt4',) ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
         allowed_values = ('debug', 'release') ),
@@ -1862,10 +1862,6 @@ if build_lyx:
             socket_libs +
             system_libs
     )
-    # [/path/to/lyx.ext] => lyx-qt3.ext
-    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
-    Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
-        [Copy('$TARGET', '$SOURCE')]))
     Alias('lyx', lyx)
 else:
     # define lyx even if lyx is not built with rebuild=no
