@@ -186,6 +186,7 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 	verticalScrollBar()->setRange(0, scroll_max_);
 	verticalScrollBar()->setSliderPosition(scroll_pos);
 	verticalScrollBar()->setSingleStep(scroll_line_step);
+	verticalScrollBar()->setValue(scroll_pos);
 
 	verticalScrollBar()->setTracking(true);
 }
