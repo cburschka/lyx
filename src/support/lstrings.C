@@ -226,6 +226,59 @@ bool isStrDbl(string const & str)
 }
 
 
+namespace {
+
+inline
+bool isHexChar(char_type c)
+{
+	return c == '0' ||
+		c == '1' ||
+		c == '2' ||
+		c == '3' ||
+		c == '4' ||
+		c == '5' ||
+		c == '6' ||
+		c == '7' ||
+		c == '8' ||
+		c == '9' ||
+		c == 'a' || c == 'A' ||
+		c == 'b' || c == 'B' ||
+		c == 'c' || c == 'C' ||
+		c == 'd' || c == 'D' ||
+		c == 'e' || c == 'E' ||
+		c == 'f' || c == 'F';
+}
+
+} // anon namespace
+
+
+bool isHex(docstring const & str)
+{
+	int index = 0;
+
+	if (str.length() > 2 and str[0] == '0' &&
+	    (str[1] == 'x' || str[1] == 'X'))
+		index = 2;
+
+	int const len = str.length();
+
+	for (; index < len; ++index) {
+		if (!isHexChar(str[index]))
+			return false;
+	}
+	return true;
+}
+
+
+int hexToInt(docstring const & str)
+{
+	string s = to_ascii(str);
+	int h;
+	sscanf(s.c_str(), "%x", &h);
+	return h;
+}
+
+
 char lowercase(char c)
 {
 	return char(tolower(c));

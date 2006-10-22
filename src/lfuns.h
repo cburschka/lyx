@@ -369,8 +369,9 @@ enum kb_action {
 	// 280
 	LFUN_INSET_DISSOLVE,                 // jspitzm 20060807
 	LFUN_CHANGE_NEXT,
-	LFUN_WINDOW_NEW,                 // Abdel 20062110
-
+	LFUN_WINDOW_NEW,                 // Abdel 20061021
+	LFUN_UNICODE_INSERT,             // Lgb 20061022
+	
 	LFUN_LASTACTION                  // end of the table
 };
 

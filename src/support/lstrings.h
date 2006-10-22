@@ -68,6 +68,10 @@ bool isStrUnsignedInt(std::string const & str);
 ///
 bool isStrDbl(std::string const & str);
 
+bool isHex(lyx::docstring const & str);
+
+int hexToInt(lyx::docstring const & str);
+
 ///
 char lowercase(char c);
 
