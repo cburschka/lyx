@@ -16,13 +16,13 @@
 #include "support/docstring.h"
 
 #include <QChar>
+#include <QString>
 
 #include <vector>
 #include <utility>
 
 class QComboBox;
 class QLineEdit;
-class QString;
 
 class LengthCombo;
 
@@ -45,12 +45,15 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 docstring const formatted(docstring const & text, int w = 80);
 
 /**
- * toqstr - convert char * into unicode
+ * toqstr - convert char * into Qt's unicode (UTF16)
  *
  * Use this whenever there's a user-visible string that is encoded
  * for the locale (menus, dialogs etc.)
  */
-QString const toqstr(char const * str);
+inline QString const toqstr(char const * str)
+{
+	return QString::fromUtf8(str);
+}
 
 
 /**
@@ -59,7 +62,10 @@ QString const toqstr(char const * str);
  * Use this whenever there's a user-visible string that is encoded
  * for the locale (menus, dialogs etc.)
  */
-QString const toqstr(std::string const & str);
+inline QString const toqstr(std::string const & str)
+{
+	return toqstr(str.c_str());
+}
 
 
 /**
@@ -67,18 +73,6 @@ QString const toqstr(std::string const & str);
  *
  * QString uses utf16 internally.
  */
-QString const toqstr(docstring const & ucs4);
-
-void ucs4_to_qstring(char_type const * str, size_t ls, QString & s);
-
-void ucs4_to_qstring(docstring const & str, QString & s);
-
-QString ucs4_to_qstring(docstring const & str);
-
-docstring const qstring_to_ucs4(QString const & qstr);
-
-void qstring_to_ucs4(QString const & qstr, std::vector<char_type> & ucs4);
-
 inline char_type const qchar_to_ucs4(QChar const & qchar) {
 	return static_cast<char_type>(qchar.unicode());
 }
@@ -86,6 +80,24 @@ inline char_type const qchar_to_ucs4(QChar const & qchar) {
 inline QChar const ucs4_to_qchar(char_type const ucs4) {
 	return QChar(static_cast<unsigned short>(ucs4));
 }
+
+QString const toqstr(docstring const & ucs4);
+
+void ucs4_to_qstring(docstring const & str, QString & s);
+
+inline void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
+{
+	s.resize(ls);
+	for (int i = ls; --i >= 0; )
+		s[i] = ucs4_to_qchar(str[i]);
+}
+
+
+QString ucs4_to_qstring(docstring const & str);
+
+docstring const qstring_to_ucs4(QString const & qstr);
+
+void qstring_to_ucs4(QString const & qstr, std::vector<char_type> & ucs4);
 
 /**
  * qt_ - i18nize string and convert to unicode

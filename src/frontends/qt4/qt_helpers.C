@@ -111,36 +111,12 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 }
 
 
-QString const toqstr(char const * str)
-{
-	return QString::fromUtf8(str);
-}
-
-
-QString const toqstr(string const & str)
-{
-	return toqstr(str.c_str());
-}
-
-
-void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
-{
-	s.reserve(ls);
-	s.clear();
-
-	for (size_t i = 0; i < ls; ++i)
-		s.append(ucs4_to_qchar(str[i]));
-}
-
-
 void ucs4_to_qstring(lyx::docstring const & str, QString & s)
 {
-	size_t ls = str.size(); 
-	s.reserve(ls);
-	s.clear();
-
-	for (size_t i = 0; i < ls; ++i)
-		s.append(ucs4_to_qchar(str[i]));
+	size_t const ls = str.size(); 
+	s.resize(ls);
+	for (int i = ls; --i >= 0; )
+		s[i] = ucs4_to_qchar(str[i]);
 }
 
 
@@ -156,7 +132,6 @@ QString const toqstr(docstring const & ucs4)
 {
 	QString s;
 	ucs4_to_qstring(ucs4, s);
-
 	return s;
 }
 
@@ -167,7 +142,6 @@ docstring const qstring_to_ucs4(QString const & qstr)
 	docstring ucs4;
 	for (int i = 0; i < ls; ++i)
 		ucs4 += static_cast<char_type>(qstr[i].unicode());
-
 	return ucs4;
 }
 
