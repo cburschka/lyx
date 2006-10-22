@@ -163,7 +163,4 @@
 #define uintmax_t UINT_MAX
 #endif
 
-
-#include "../trunk/stdafx.h"
-
 #endif
