@@ -24,9 +24,6 @@
 
 #include "support/forkedcall.h"
 
-
-namespace lyx {
-
 // HP-UX 11.x doesn't have this header
 #ifdef HAVE_SYS_SELECT_H
 # include <sys/select.h>
@@ -34,6 +31,9 @@ namespace lyx {
 #ifdef HAVE_SYS_TIME_H
 # include <sys/time.h>
 #endif
+
+
+namespace lyx {
 
 using boost::shared_ptr;
 
