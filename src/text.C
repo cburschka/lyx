@@ -331,7 +331,6 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			errorList.push_back(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for insertion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
-
 			change = Change(Change::UNCHANGED);
 		} else
 			change = Change(Change::INSERTED, bp.author_map[aid], ct);
@@ -345,7 +344,6 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			errorList.push_back(ErrorItem(_("Change tracking error"),
 					    bformat(_("Unknown author index for deletion: %1$d\n"), aid),
 					    par.id(), 0, par.size()));
-
 			change = Change(Change::UNCHANGED);
 		} else
 			change = Change(Change::DELETED, bp.author_map[aid], ct);
@@ -368,7 +366,6 @@ void readParagraph(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	Change change(Change::UNCHANGED);
 
 	while (lex.isOK()) {
-
 		readParToken(buf, par, lex, token, font, change, errorList);
 
 		lex.nextToken();
@@ -2357,14 +2354,12 @@ string LyXText::currentState(LCursor & cur)
 	Paragraph const & par = cur.paragraph();
 	std::ostringstream os;
 
-	// FIXME: change tracking (MG)
-	bool const show_change = par.lookupChange(cur.pos()) != Change(Change::UNCHANGED);
-
 	if (buf.params().trackChanges)
 		os << "[C] ";
 
-	if (show_change) {
-		Change change = par.lookupChange(cur.pos());
+	Change change = par.lookupChange(cur.pos());
+
+	if (change.type != Change::UNCHANGED) {
 		Author const & a = buf.params().authors().get(change.author);
 		os << to_utf8(_("Change: ")) << a.name();
 		if (!a.email().empty())
