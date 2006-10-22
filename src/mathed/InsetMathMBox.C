@@ -12,7 +12,6 @@
 
 #include "InsetMathMBox.h"
 #include "MathData.h"
-#include "MathMLStream.h"
 
 #include "BufferView.h"
 #include "buffer.h"

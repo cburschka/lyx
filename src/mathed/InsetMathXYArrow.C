@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "InsetMathXYArrow.h"
-#include "MathMLStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "frontends/Painter.h"

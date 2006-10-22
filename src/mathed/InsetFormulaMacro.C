@@ -14,7 +14,6 @@
 #include "InsetFormulaMacro.h"
 #include "MathMacroTable.h"
 #include "MathMacroTemplate.h"
-#include "MathMLStream.h"
 
 #include "BufferView.h"
 #include "cursor.h"
