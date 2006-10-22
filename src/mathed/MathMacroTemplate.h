@@ -33,7 +33,7 @@ public:
 		MathArray const & = MathArray(),
 		MathArray const & = MathArray());
 	///
-	explicit MathMacroTemplate(std::istream & is);
+	explicit MathMacroTemplate(const docstring & str);
 	///
 	void edit(LCursor & cur, bool left);
 	///

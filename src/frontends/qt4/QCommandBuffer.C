@@ -17,21 +17,20 @@
 #include "QCommandBuffer.h"
 #include "QCommandEdit.h"
 #include "qt_helpers.h"
-//Added by qt3to4:
-#include <QVBoxLayout>
-#include <QMouseEvent>
-#include <QPixmap>
-#include <QHBoxLayout>
-#include <QKeyEvent>
 
 #include "controllers/ControlCommandBuffer.h"
 
 #include "support/filetools.h"
 
-#include <QListWidget>
+#include <QHBoxLayout>
+#include <QKeyEvent>
 #include <QLayout>
-#include <QToolTip>
+#include <QListWidget>
+#include <QMouseEvent>
+#include <QPixmap>
 #include <QPushButton>
+#include <QToolTip>
+#include <QVBoxLayout>
 
 using lyx::support::libFileSearch;
 
@@ -53,29 +52,30 @@ public:
 		setAttribute(Qt::WA_DeleteOnClose);
 	}
 protected:
-	void mouseReleaseEvent(QMouseEvent * e) {
-		if (e->x() < 0 || e->y() < 0
-		    || e->x() > width() || e->y() > height()) {
+	void mouseReleaseEvent(QMouseEvent * ev) {
+		if (ev->x() < 0 || ev->y() < 0
+		    || ev->x() > width() || ev->y() > height()) {
 			hide();
 		} else {
-                        // emit signal
+			// emit signal
 			itemPressed(currentItem());
 		}
 	}
 
-	void keyPressEvent(QKeyEvent * e) {
-		if (e->key() == Qt::Key_Escape) {
+	void keyPressEvent(QKeyEvent * ev) {
+		if (ev->key() == Qt::Key_Escape) {
 			hide();
 			return;
 		}
-		QListWidget::keyPressEvent(e);
+		QListWidget::keyPressEvent(ev);
 	}
 };
 
 } // end of anon
 
 
-QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control, QWidget * parent)
+QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control,
+			QWidget * parent)
 	: QWidget(parent), view_(view), controller_(control)
 {
 	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm")));
@@ -104,7 +104,9 @@ QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control, Q
 	layout->addWidget(up, 0);
 	layout->addWidget(down, 0);
 	layout->addWidget(edit_, 10);
+	layout->setMargin(0);
 	top->addLayout(layout);
+	top->setMargin(0);
 }
 
 
@@ -118,7 +120,7 @@ void QCommandBuffer::focus_command()
 void QCommandBuffer::cancel()
 {
 	view_->centralWidget()->setFocus();
-	edit_->setText("");
+	edit_->setText(QString());
 }
 
 
@@ -126,7 +128,7 @@ void QCommandBuffer::dispatch()
 {
 	controller_.dispatch(fromqstr(edit_->text()));
 	view_->centralWidget()->setFocus();
-	edit_->setText("");
+	edit_->setText(QString());
 	edit_->clearFocus();
 }
 
@@ -138,7 +140,7 @@ void QCommandBuffer::complete()
 	vector<string> comp = controller_.completions(input, new_input);
 
 	if (comp.empty() && new_input == input) {
-	//	show_info_suffix(qt_("[no match]"), input);
+		// show_info_suffix(qt_("[no match]"), input);
 		return;
 	}
 
@@ -156,17 +158,13 @@ void QCommandBuffer::complete()
 	// than the number of actual items...
 	vector<string>::const_iterator cit = comp.begin();
 	vector<string>::const_iterator end = comp.end();
-	for (; cit != end; ++cit) {
+	for (; cit != end; ++cit)
 		list->addItem(toqstr(*cit));
-	}
-
-	// width() is not big enough by a few pixels. Qt Sucks.
-//	list->setMinimumWidth(list->sizeHint().width() + 10);
 
 	list->resize(list->sizeHint());
-	QPoint pos(edit_->mapToGlobal(QPoint(0, 0)));
+	QPoint const pos = edit_->mapToGlobal(QPoint(0, 0));
 
-	int y = std::max(0, pos.y() - list->height());
+	int const y = std::max(0, pos.y() - list->height());
 
 	list->move(pos.x(), y);
 
@@ -189,8 +187,8 @@ void QCommandBuffer::complete_selected(QListWidgetItem * item)
 
 void QCommandBuffer::up()
 {
-	string const input(fromqstr(edit_->text()));
-	string const h(controller_.historyUp());
+	string const input = fromqstr(edit_->text());
+	string const h = controller_.historyUp();
 
 	if (h.empty()) {
 	//	show_info_suffix(qt_("[Beginning of history]"), input);
@@ -202,8 +200,8 @@ void QCommandBuffer::up()
 
 void QCommandBuffer::down()
 {
-	string const input(fromqstr(edit_->text()));
-	string const h(controller_.historyDown());
+	string const input = fromqstr(edit_->text());
+	string const h = controller_.historyDown();
 
 	if (h.empty()) {
 	//	show_info_suffix(qt_("[End of history]"), input);

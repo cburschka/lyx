@@ -136,7 +136,7 @@ namespace {
 	void mathDispatch(LCursor & cur, FuncRequest const & cmd, bool display)
 	{
 		recordUndo(cur);
-		string sel = to_utf8(cur.selectionAsString(false));
+		docstring sel = cur.selectionAsString(false);
 		//lyxerr << "selection is: '" << sel << "'" << endl;
 
 		// It may happen that sel is empty but there is a selection
@@ -162,11 +162,11 @@ namespace {
 			// create a macro if we see "\\newcommand"
 			// somewhere, and an ordinary formula
 			// otherwise
-			istringstream is(sel);
-			if (sel.find("\\newcommand") == string::npos
-			    && sel.find("\\def") == string::npos)
+			if (sel.find(from_ascii("\\newcommand")) == string::npos
+			    && sel.find(from_ascii("\\def")) == string::npos)
 			{
 				InsetMathHull * formula = new InsetMathHull;
+				istringstream is(to_utf8(sel));
 				LyXLex lex(0, 0);
 				lex.setStream(is);
 				formula->read(cur.buffer(), lex);
@@ -175,8 +175,9 @@ namespace {
 					// delimiters are left out
 					formula->mutate(hullSimple);
 				cur.insert(formula);
-			} else
-				cur.insert(new MathMacroTemplate(is));
+			} else {
+				cur.insert(new MathMacroTemplate(sel));
+			}
 		}
 		cur.message(from_utf8(N_("Math editor mode")));
 	}

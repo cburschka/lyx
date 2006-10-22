@@ -39,12 +39,12 @@
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
 
+#include <QAction>
 #include <QApplication>
+#include <QCloseEvent>
 #include <QPixmap>
 #include <QStatusBar>
 #include <QToolBar>
-#include <QCloseEvent>
-#include <QAction>
 
 
 #include <boost/bind.hpp>
@@ -93,13 +93,15 @@ GuiView::~GuiView()
 void GuiView::init()
 {
 	menubar_.reset(new QLMenubar(this, menubackend));
-	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)), this, SLOT(updateMenu(QAction *)));
+	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)),
+		this, SLOT(updateMenu(QAction *)));
 
 	getToolbars().init();
 
 	statusBar()->setSizeGripEnabled(false);
 
-	QObject::connect(&statusbar_timer_, SIGNAL(timeout()), this, SLOT(update_view_state_qt()));
+	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
+		this, SLOT(update_view_state_qt()));
 
 	// make sure the buttons are disabled if needed
 	updateToolbars();

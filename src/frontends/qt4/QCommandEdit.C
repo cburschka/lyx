@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "QCommandEdit.h"
-//Added by qt3to4:
+
 #include <QKeyEvent>
 #include <QEvent>
 
@@ -29,17 +29,17 @@ void QCommandEdit::keyPressEvent(QKeyEvent * e)
 {
 	switch (e->key()) {
 	case Qt::Key_Escape:
-                // emit signal
+		// emit signal
 		escapePressed();
 		break;
 
 	case Qt::Key_Up:
-                // emit signal
+		// emit signal
 		upPressed();
 		break;
 
 	case Qt::Key_Down:
-                // emit signal
+		// emit signal
 		downPressed();
 		break;
 
@@ -60,7 +60,7 @@ bool QCommandEdit::event(QEvent * e)
 	if (ev->key() != Qt::Key_Tab)
 		return QLineEdit::event(e);
 
-        // emit signal
+	// emit signal
 	tabPressed();
 	return true;
 }

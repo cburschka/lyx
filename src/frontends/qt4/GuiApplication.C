@@ -90,7 +90,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application(argc, argv)
 {
 #ifdef Q_WS_X11
-	// doubleClickInterval() is 400 ms on X11 witch is just too long.
+	// doubleClickInterval() is 400 ms on X11 which is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
 	// On Microsoft Windows, calling this function sets the double
 	// click interval for all applications. So we don't!

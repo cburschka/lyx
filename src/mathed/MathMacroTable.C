@@ -102,8 +102,7 @@ void MacroTable::insert(docstring const & name, MacroData const & data)
 void MacroTable::insert(docstring const & def)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
-	std::istringstream is(to_utf8(def));
-	MathMacroTemplate mac(is);
+	MathMacroTemplate mac(def);
 	insert(mac.name(), mac.asMacroData());
 }
 

@@ -333,9 +333,10 @@ int LyX::priv_exec(int & argc, char * argv[])
 		// Start the real execution loop.
 
 		// FIXME
-		/* Create a CoreApplication class that will provide the main event loop and 
-		 * the socket callback registering. With Qt4, only QtCore library would be needed.
-		 * When this done, a server_mode could be created and the following two
+		/* Create a CoreApplication class that will provide the main event loop
+		 * and the socket callback registering. With Qt4, only QtCore
+		 * library would be needed.
+		 * When this is done, a server_mode could be created and the following two
 		 * line would be moved out from here.
 		 */
 		pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));

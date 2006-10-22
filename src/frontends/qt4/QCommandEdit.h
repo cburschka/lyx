@@ -26,19 +26,17 @@ public:
 Q_SIGNALS:
 	/// cancel
 	void escapePressed();
-
 	/// up history
 	void upPressed();
-
 	/// down history
 	void downPressed();
-
 	/// complete
 	void tabPressed();
 
 protected:
+	///
 	virtual bool event(QEvent * e);
-
+	///
 	virtual void keyPressEvent(QKeyEvent * e);
 };
 

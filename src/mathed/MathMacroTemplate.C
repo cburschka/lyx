@@ -57,15 +57,15 @@ MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
 }
 
 
-MathMacroTemplate::MathMacroTemplate(std::istream & is)
+MathMacroTemplate::MathMacroTemplate(docstring const & str)
 	: InsetMathNest(2), numargs_(0), name_()
 {
 	initMath();
 
 	MathArray ar;
-	mathed_parse_cell(ar, is);
+	mathed_parse_cell(ar, str);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
-		lyxerr << "cannot read macro from '" << ar << "'" << endl;
+		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		return;
 	}
 	operator=( *(ar[0]->asMacroTemplate()) );
@@ -173,9 +173,15 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 {
 	MathArray ar;
-	mathed_parse_cell(ar, lex.getDocString());
+	lex.next(); // eat \begin_inset FormulaMacro line
+	docstring const str = lex.getDocString();
+	lex.next(); // eat that macro definition
+	lex.next(); // eat the \\end_insrt line
+	lyxerr << "Got to read from: " << to_utf8(str) << endl;
+	mathed_parse_cell(ar, str);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
-		lyxerr << "cannot read macro from '" << ar << "'" << endl;
+		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
+		lyxerr << "Read: " << to_utf8(asString(ar)) << endl;
 		return;
 	}
 	operator=( *(ar[0]->asMacroTemplate()) );
