@@ -369,17 +369,17 @@ def convert_commandparams(document):
             if commandparams_info[name][0] == "":
                 document.warning("Ignoring invalid option `%s' of command `%s'." % (option1[1:-1], name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][0], option1[1:-1].replace('"', '\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][0], option1[1:-1].replace('"', '\\"')))
         if option2 != None:
             if commandparams_info[name][1] == "":
                 document.warning("Ignoring invalid second option `%s' of command `%s'." % (option2[1:-1], name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][1], option2[1:-1].replace('"', '\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][1], option2[1:-1].replace('"', '\\"')))
         if argument != None:
             if commandparams_info[name][2] == "":
                 document.warning("Ignoring invalid argument `%s' of command `%s'." % (argument[1:-1], name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][2], argument[1:-1].replace('"', '\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][2], argument[1:-1].replace('"', '\\"')))
         document.body[i:i+1] = lines
         i = i + 1
 
