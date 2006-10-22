@@ -231,7 +231,6 @@ src_mathed_header_files = Split('''
     MathExtern.h
     MathFactory.h
     MathGridInfo.h
-    MathMLStream.h
     MathMacroArgument.h
     MathMacroTable.h
     MathMacroTemplate.h
@@ -308,7 +307,6 @@ src_mathed_files = Split('''
     MathData.C
     MathExtern.C
     MathFactory.C
-    MathMLStream.C
     MathMacroArgument.C
     MathMacroTable.C
     MathMacroTemplate.C
