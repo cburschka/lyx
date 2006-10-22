@@ -55,6 +55,7 @@ QLPainter::QLPainter(GuiWorkArea * qwa)
 
 void QLPainter::start()
 {
+	lyxerr << "QLPainter::start()" << endl;
 	qp_.reset(new QPainter(qwa_->paintDevice()));
 	// new QPainter has default QPen:
 	current_color_ = LColor::black;
@@ -66,6 +67,7 @@ void QLPainter::start()
 void QLPainter::end()
 {
 	qp_->end();
+	lyxerr << "QLPainter::end()" << endl;
 }
 
 

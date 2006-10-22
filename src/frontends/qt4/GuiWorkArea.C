@@ -170,11 +170,6 @@ GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 }
 
 
-GuiWorkArea::~GuiWorkArea()
-{
-}
-
-
 void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 {
 	verticalScrollBar()->setTracking(false);
@@ -431,6 +426,10 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 
 void GuiWorkArea::paintEvent(QPaintEvent * e)
 {
+	lyxerr << "paintEvent begin: x: " << e->rect().x()
+		<< " y: " << e->rect().y()
+		<< " w: " << e->rect().width()
+		<< " h: " << e->rect().height() << endl;
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n QWidget width\t" << this->width()
@@ -454,32 +453,31 @@ void GuiWorkArea::paintEvent(QPaintEvent * e)
 
 	if (show_hcursor_)
 		q.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
+
+	lyxerr << "paintEvent end" << endl;
 }
 
 
 QPixmap GuiWorkArea::copyScreen(int x, int y, int w, int h) const
 {
+	lyxerr << "copyScreen begin: x: " << x << " y: " << y << endl; 
 	return paint_device_.copy(x, y, w, h);
+	lyxerr << "copyScreen end " << endl; 
 }
 
 
-void GuiWorkArea::drawScreen(int x, int y, QPixmap pixmap)
+void GuiWorkArea::drawScreen(int x, int y, const QPixmap & pixmap)
 {
+	lyxerr << "drawScreen begin: x: " << x << " y: " << y << endl; 
 	QPainter q(&paint_device_);
 	q.drawPixmap(x, y, pixmap);
 	update(x, y, pixmap.width(), pixmap.height());
+	lyxerr << "drawScreen end" << endl;
 }
 
 
 void GuiWorkArea::expose(int x, int y, int w, int h)
 {
-	/*
-	if (x == 0 && y == 0 && w == viewport()->width() && h == viewport()->height()) {
-		viewport()->repaint(x, y, w, h);
-		return;
-	}
-	*/
-
 	update(x, y, w, h);
 }
 

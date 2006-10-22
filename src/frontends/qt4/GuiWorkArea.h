@@ -22,24 +22,23 @@
 
 #include <QAbstractScrollArea>
 #include <QMouseEvent>
-#include <QWheelEvent>
 #include <QResizeEvent>
 #include <QKeyEvent>
-#include <QPaintEvent>
 #include <QTimer>
-#include <QImage>
 #include <QPixmap>
 
 #include <queue>
 
-class Painter;
-
 class QWidget;
 class QDragEnterEvent;
 class QDropEvent;
-class QMouseEvent;
+class QWheelEvent;
+class QPaintEvent;
 
 namespace lyx {
+
+class Painter;
+
 namespace frontend {
 
 class GuiView;
@@ -95,13 +94,11 @@ class GuiWorkArea: public QAbstractScrollArea, public WorkArea
 	Q_OBJECT
 
 public:
-
+	///
 	GuiWorkArea(int width, int height, LyXView & lyx_view);
 
-	virtual ~GuiWorkArea();
 	/// return the width of the content pane
 	virtual int width() const { return viewport()->width(); }
-
 	/// return the height of the content pane
 	virtual int height() const { return viewport()->height(); }
 	///
@@ -126,10 +123,7 @@ public:
 	QPixmap copyScreen(int x, int y, int w, int h) const;
 
 	/// Draw a pixmap onto the backing pixmap.
-	/**
-	QPixmap is implicitely shared so no need to pass by reference.
-	*/
-	void drawScreen(int x, int y, QPixmap pixmap);
+	void drawScreen(int x, int y, const QPixmap & pixmap);
 
 	/// copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int exp_width, int exp_height);

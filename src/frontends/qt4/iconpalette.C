@@ -34,7 +34,7 @@ using std::vector;
 
 namespace lyx {
 
-int const button_size = 40;
+int const button_size = 32;
 
 
 IconPalette::IconPalette(QWidget * parent)
@@ -63,11 +63,11 @@ void IconPalette::add(QPixmap const & pixmap, string name, string tooltip)
 
 void IconPalette::clicked()
 {
-	vector<Button>::const_iterator it(buttons_.begin());
-	vector<Button>::const_iterator const end(buttons_.end());
+	vector<Button>::const_iterator it = buttons_.begin();
+	vector<Button>::const_iterator const end = buttons_.end();
 	for (; it != end; ++it) {
 		if (sender() == it->first) {
-                        // emit signal
+ 			// emit signal
 			button_clicked(it->second);
 			return;
 		}
