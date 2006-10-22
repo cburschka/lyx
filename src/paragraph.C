@@ -1158,7 +1158,7 @@ string Paragraph::getID(Buffer const & buf, OutputParams const & runparams) cons
 			InsetBase::Code lyx_code = inset->lyxCode();
 			if (lyx_code == InsetBase::LABEL_CODE) {
 				string const id = static_cast<InsetCommand const *>(inset)->getContents();
-				return "id=\"" + sgml::cleanID(buf, runparams, id) + "\"";
+				return "id='" + to_utf8(sgml::cleanID(buf, runparams, from_utf8(id))) + "'";
 			}
 		}
 
