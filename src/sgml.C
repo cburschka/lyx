@@ -105,14 +105,15 @@ docstring sgml::escapeString(docstring const & raw)
 }
 
 
-docstring const sgml::uniqueID(string const label)
+docstring const sgml::uniqueID(docstring const label)
 {
 	static unsigned int seed = 1000;
-	return from_ascii(label + convert<string>(++seed));
+	return label + convert<docstring>(++seed);
 }
 
 
-string sgml::cleanID(Buffer const & buf, OutputParams const & runparams, std::string const & orig)
+docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
+	docstring const & orig)
 {
 	// The standard DocBook SGML declaration only allows letters,
 	// digits, '-' and '.' in a name.
@@ -123,17 +124,18 @@ string sgml::cleanID(Buffer const & buf, OutputParams const & runparams, std::st
 	// If you know what you are doing, you can set allowed==""
 	// to disable this mangling.
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
-	string const allowed = runparams.flavor == OutputParams::XML? ".-_:":tclass.options();
+	string const allowed =
+		runparams.flavor == OutputParams::XML? ".-_:":tclass.options();
 
 	if (allowed.empty())
 		return orig;
 
-	string::const_iterator it  = orig.begin();
-	string::const_iterator end = orig.end();
+	docstring::const_iterator it  = orig.begin();
+	docstring::const_iterator end = orig.end();
 
-	string content;
+	docstring content;
 
-	typedef map<string, string> MangledMap;
+	typedef map<docstring, docstring> MangledMap;
 	static MangledMap mangledNames;
 	static int mangleID = 1;
 
@@ -163,7 +165,7 @@ string sgml::cleanID(Buffer const & buf, OutputParams const & runparams, std::st
 		}
 	}
 	if (mangle) {
-		content += "-" + convert<string>(mangleID++);
+		content += "-" + convert<docstring>(mangleID++);
 	}
 	else if (isdigit(content[content.size() - 1])) {
 		content += ".";
