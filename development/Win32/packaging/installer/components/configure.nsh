@@ -49,13 +49,12 @@ Section -InstallData
   !define REG_UNINSTALL 'WriteRegStr SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"'
   
   ${if} $CurrentUserInstall == ${TRUE}
-    ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}" /CurrentUser'
     ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION} $(TEXT_INSTALL_CURRENTUSER)"
   ${else}
-    ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}" /AllUsers'
     ${REG_UNINSTALL} "DisplayName" "${APP_NAME} ${APP_VERSION}"
   ${endif}
   
+  ${REG_UNINSTALL} "UninstallString" '"$INSTDIR\${SETUP_UNINSTALLER}"'
   ${REG_UNINSTALL} "DisplayVersion" "${APP_VERSION}"
   ${REG_UNINSTALL} "DisplayIcon" "$INSTDIR\bin\lyx_32x32.ico"
   ${REG_UNINSTALL} "URLUpdateInfo" "http://www.lyx.org/"

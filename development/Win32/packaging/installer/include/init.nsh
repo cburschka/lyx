@@ -5,9 +5,9 @@ Installer and uninstaller initialization
 */
 
 ;--------------------------------
-;Macros
+;Functions
 
-!macro CommandLineParameter UNINSTALL
+Function CommandLineParameter
 
   Exch $R0
   Push $R1
@@ -17,7 +17,7 @@ Installer and uninstaller initialization
   
   Push $CMDLINE
   Push $R0
-  Call ${UNINSTALL}StrStr
+  Call StrStr
   Pop $R2
   
   StrCpy $R2 $R2 $R1
@@ -32,17 +32,6 @@ Installer and uninstaller initialization
   Push $R1
   Exch $R0
 
-!macroend
-
-;--------------------------------
-;Functions
-
-Function CommandLineParameter
-  !insertmacro CommandLineParameter ""
-FunctionEnd
-
-Function un.CommandLineParameter
-  !insertmacro CommandLineParameter un.
 FunctionEnd
 
 Function .onInit
@@ -125,9 +114,11 @@ Function un.LoadUnInstaller
   ;Set the correct shell context depending on whether LyX has been installed
   ;for the current user or all users
 
-  Push "/CurrentUser"
-  Call un.CommandLineParameter
-  Pop $CurrentUserInstall
+  ReadRegStr $R0 HKCU ${APP_REGKEY} ""
+  
+  ${if} $R0 == $INSTDIR
+    StrCpy $CurrentUserInstall ${TRUE}
+  ${endif}
 
   ${if} $CurrentUserInstall == ${TRUE}
   

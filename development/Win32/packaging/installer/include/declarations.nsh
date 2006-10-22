@@ -75,7 +75,6 @@ Var AspellHive
 ;Include standard functions
 
 !insertmacro FUNCTION_STRING_StrStr
-!insertmacro FUNCTION_STRING_UnStrStr
 
 !insertmacro GetParent
 !insertmacro VersionCompare

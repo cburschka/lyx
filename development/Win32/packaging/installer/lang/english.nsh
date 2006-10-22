@@ -21,7 +21,7 @@ Author: Joost Verburg
 
 !insertmacro LanguageString TEXT_REINSTALL_TITLE "Reinstall"
 !insertmacro LanguageString TEXT_REINSTALL_SUBTITLE "Choose whether you want to reinstall the $(^NameDA) program files."
-!insertmacro LanguageString TEXT_REINSTALL_INFO "$(^NameDA) is already installed. This installer will allow you to change the interface language, locations of external applications or download additional dictionaries. If you also want to reinstall the program files, check the box below. $(^ClickNext)"
+!insertmacro LanguageString TEXT_REINSTALL_INFO "$(^NameDA) is already installed. This installer will allow you to change the interface language and locations of external applications or download additional dictionaries. If you also want to reinstall the program files, check the box below. $(^ClickNext)"
 !insertmacro LanguageString TEXT_REINSTALL_ENABLE "Reinstall $(^NameDA) program files"
 
 !insertmacro LanguageString TEXT_EXTERNAL_NOPRIVILEDGES "(Administrator or Power User privileges required)"
