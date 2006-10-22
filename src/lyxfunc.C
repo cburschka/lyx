@@ -1607,8 +1607,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			if (needSecondUpdate || updateFlags != Update::None) {
 				view()->buffer()->changed();
-				lyx_view_->updateStatusBar();
 			}
+			lyx_view_->updateStatusBar();
 
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (flag.enabled()
