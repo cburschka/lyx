@@ -13,7 +13,7 @@
 
 #include "InsetMathChar.h"
 #include "MathSupport.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 #include "debug.h"
 #include "dimension.h"
@@ -31,13 +31,13 @@ extern bool has_math_fonts;
 
 namespace {
 
-	bool isBinaryOp(char c)
+	bool isBinaryOp(char_type c)
 	{
-		return support::contains("+-<>=/*", c);
+		return support::contains("+-<>=/*", static_cast<char>(c));
 	}
 
 
-	bool slanted(char c)
+	bool slanted(char_type c)
 	{
 		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 	}
@@ -45,7 +45,7 @@ namespace {
 }
 
 
-InsetMathChar::InsetMathChar(char c)
+InsetMathChar::InsetMathChar(char_type c)
 	: char_(c)
 {}
 
@@ -132,29 +132,31 @@ void InsetMathChar::drawT(TextPainter & pain, int x, int y) const
 
 void InsetMathChar::write(WriteStream & os) const
 {
-	os << char_;
+	os.os().put(char_);
 }
 
 
 void InsetMathChar::normalize(NormalStream & os) const
 {
-	os << "[char " << char_ << " mathalpha]";
+	os << "[char ";
+	os.os().put(char_);
+	os << " mathalpha]";
 }
 
 
 void InsetMathChar::octave(OctaveStream & os) const
 {
-	os << char_;
+	os.os().put(char_);
 }
 
 
-void InsetMathChar::mathmlize(MathMLStream & ms) const
+void InsetMathChar::mathmlize(MathStream & ms) const
 {
 	switch (char_) {
 		case '<': ms << "&lt;"; break;
 		case '>': ms << "&gt;"; break;
 		case '&': ms << "&amp;"; break;
-		default: ms << char_; break;
+		default: ms.os().put(char_); break;
 	}
 }
 

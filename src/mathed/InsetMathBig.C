@@ -12,7 +12,7 @@
 
 #include "InsetMathBig.h"
 #include "MathSupport.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "frontends/FontMetrics.h"
@@ -22,17 +22,15 @@
 
 namespace lyx {
 
-
-using std::string;
 using std::auto_ptr;
 
 
-InsetMathBig::InsetMathBig(string const & name, string const & delim)
+InsetMathBig::InsetMathBig(docstring const & name, docstring const & delim)
 	: name_(name), delim_(delim)
 {}
 
 
-string InsetMathBig::name() const
+docstring InsetMathBig::name() const
 {
 	return name_;
 }
@@ -80,8 +78,8 @@ void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 	// mathed_draw_deco does not use the leading backslash, so remove it.
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
 	// would treat it as |.
-	string const delim = (delim_ == "\\|") ?  "Vert" :
-		support::ltrim(delim_, "\\");
+	docstring const delim = 
+		(delim_ == "\\|") ?  from_ascii("Vert") : support::ltrim(delim_, "\\");
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 4, dim_.height(),
 	                 delim);
 	setPosCache(pi, x, y);
@@ -98,17 +96,17 @@ void InsetMathBig::write(WriteStream & os) const
 
 void InsetMathBig::normalize(NormalStream & os) const
 {
-	os << '[' << name_ << ' ' <<  delim_ << ']';
+	os << '[' << name_ << ' ' << delim_ << ']';
 }
 
 
-void InsetMathBig::infoize2(std::ostream & os) const
+void InsetMathBig::infoize2(odocstream & os) const
 {
 	os << name_;
 }
 
 
-bool InsetMathBig::isBigInsetDelim(string const & delim)
+bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 {
 	// mathed_draw_deco must handle these
 	static char const * const delimiters[] = {
@@ -120,7 +118,7 @@ bool InsetMathBig::isBigInsetDelim(string const & delim)
 		"\\uparrow", "\\Uparrow",
 		"\\updownarrow", "\\Updownarrow", ""
 	};
-	return (support::findToken(delimiters, delim) >= 0);
+	return support::findToken(delimiters, to_utf8(delim)) >= 0;
 }
 
 

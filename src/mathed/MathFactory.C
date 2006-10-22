@@ -82,12 +82,12 @@ bool has_math_fonts;
 namespace {
 
 // file scope
-typedef std::map<string, latexkeys> WordList;
+typedef std::map<docstring, latexkeys> WordList;
 
 WordList theWordList;
 
 
-bool math_font_available(string & name)
+bool math_font_available(docstring & name)
 {
 	LyXFont f;
 	augmentFont(f, name);
@@ -98,12 +98,12 @@ bool math_font_available(string & name)
 
 	// can we fake it?
 	if (name == "eufrak") {
-		name = "lyxfakefrak";
+		name = from_ascii("lyxfakefrak");
 		return true;
 	}
 
 	lyxerr[Debug::MATHED]
-		<< "font " << name << " not available and I can't fake it"
+		<< "font " << to_utf8(name) << " not available and I can't fake it"
 		<< endl;
 	return false;
 }
@@ -133,7 +133,8 @@ void initSymbols()
 			string tmp;
 			is >> tmp;
 			is >> tmp;
-			skip = !math_font_available(tmp);
+			docstring t = from_utf8(tmp);
+			skip = !math_font_available(t);
 			continue;
 		} else if (line.size() >= 4 && line.substr(0, 4) == "else") {
 			skip = !skip;
@@ -146,13 +147,13 @@ void initSymbols()
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
 			//lyxerr << "macro definition: '" << line << '\'' << endl;
-			MacroTable::globalMacros().insert(line);
+			MacroTable::globalMacros().insert(from_utf8(line));
 			continue;
 		}
 
-		istringstream is(line);
+		idocstringstream is(from_utf8(line));
 		latexkeys tmp;
-		is >> tmp.name >> tmp.inset;
+		is >> tmp.name >>	tmp.inset;
 		if (isFontName(tmp.inset))
 			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
 		else
@@ -160,7 +161,7 @@ void initSymbols()
 		if (!is) {
 			lyxerr[Debug::MATHED] << "skipping line '" << line << '\'' << endl;
 			lyxerr[Debug::MATHED]
-				<< tmp.name << ' ' << tmp.inset << ' ' << tmp.extra << endl;
+				<< to_utf8(tmp.name) << ' ' << to_utf8(tmp.inset) << ' ' << to_utf8(tmp.extra) << endl;
 			continue;
 		}
 
@@ -170,60 +171,55 @@ void initSymbols()
 
 			// store requirements as long as we can
 			if (tmp.inset == "msa" || tmp.inset == "msb")
-				tmp.requires = "amssymb";
+				tmp.requires = from_ascii("amssymb");
 			// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
 			// else if (tmp.inset == "wasy")
 			//	tmp.requires = "wasysym";
 
 			// symbol font is not available sometimes
-			string symbol_font = "lyxsymbol";
+			docstring symbol_font = from_ascii("lyxsymbol");
 
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
-				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << endl;
-				// FIXME UNICODE
-				vector<char_type> n(tmp.name.begin(), tmp.name.end());
-				tmp.draw = n;
+				lyxerr[Debug::MATHED] << "symbol abuse for " << to_utf8(tmp.name) << endl;
+				tmp.draw = tmp.name;
 			} else if (math_font_available(tmp.inset)) {
-				lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << endl;
+				lyxerr[Debug::MATHED] << "symbol available for " << to_utf8(tmp.name) << endl;
 				tmp.draw.push_back(char_type(charid));
 			} else if (fallbackid && math_font_available(symbol_font)) {
 				if (tmp.inset == "cmex")
-					tmp.inset  = "lyxsymbol";
+					tmp.inset = from_ascii("lyxsymbol");
 				else
-					tmp.inset  = "lyxboldsymbol";
-				lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << endl;
+					tmp.inset = from_ascii("lyxboldsymbol");
+				lyxerr[Debug::MATHED] << "symbol fallback for " << to_utf8(tmp.name) << endl;
 				tmp.draw.push_back(char_type(fallbackid));
 			} else {
-				lyxerr[Debug::MATHED] << "faking " << tmp.name << endl;
-				vector<char_type> n(tmp.name.begin(),
-						    tmp.name.end());
-				
-				tmp.draw = n;
-				tmp.inset = "lyxtex";
+				lyxerr[Debug::MATHED] << "faking " << to_utf8(tmp.name) << endl;
+				tmp.draw = tmp.name;
+				tmp.inset = from_ascii("lyxtex");
 			}
 		} else {
 			// it's a proper inset
-			lyxerr[Debug::MATHED] << "inset " << tmp.inset
-					      << " used for " << tmp.name
+			lyxerr[Debug::MATHED] << "inset " << to_utf8(tmp.inset)
+					      << " used for " << to_utf8(tmp.name)
 					      << endl;
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
 			lyxerr[Debug::MATHED]
-				<< "readSymbols: inset " << tmp.name
+				<< "readSymbols: inset " << to_utf8(tmp.name)
 				<< " already exists." << endl;
 		else
 			theWordList[tmp.name] = tmp;
 
 		lyxerr[Debug::MATHED]
-			<< "read symbol '" << tmp.name
-			<< "  inset: " << tmp.inset
+			<< "read symbol '" << to_utf8(tmp.name)
+			<< "  inset: " << to_utf8(tmp.inset)
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
-			<< "  extra: " << tmp.extra
+			<< "  extra: " << to_utf8(tmp.extra)
 			<< '\'' << endl;
 	}
-	string tmp = "cmm";
-	string tmp2 = "cmsy";
+	docstring tmp = from_ascii("cmm");
+	docstring tmp2 = from_ascii("cmsy");
 	has_math_fonts = math_font_available(tmp) && math_font_available(tmp2);
 }
 
@@ -242,19 +238,25 @@ void initMath()
 }
 
 
-latexkeys const * in_word_set(string const & str)
+latexkeys const * in_word_set(docstring const & str)
 {
 	WordList::iterator it = theWordList.find(str);
 	return it != theWordList.end() ? &(it->second) : 0;
 }
 
 
-MathAtom createInsetMath(string const & s)
+MathAtom createInsetMath(char const * const s)
+{
+	return createInsetMath(from_utf8(s));
+}
+
+
+MathAtom createInsetMath(docstring const & s)
 {
 	//lyxerr << "creating inset with name: '" << s << '\'' << endl;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
-		string const & inset = l->inset;
+		docstring const & inset = l->inset;
 		//lyxerr << " found inset: '" << inset << '\'' << endl;
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
@@ -371,19 +373,19 @@ MathAtom createInsetMath(string const & s)
 }
 
 
-bool createInsetMath_fromDialogStr(string const & str, MathArray & ar)
+bool createInsetMath_fromDialogStr(docstring const & str, MathArray & ar)
 {
 	// An example str:
 	// "ref LatexCommand \\ref{sec:Title}\n\\end_inset\n\n";
-	string name;
-	string body = split(str, name, ' ');
+	docstring name;
+	docstring body = split(str, name, ' ');
 
 	if (name != "ref" )
 		return false;
 
 	// body comes with a head "LatexCommand " and a
 	// tail "\nend_inset\n\n". Strip them off.
-	string trimmed;
+	docstring trimmed;
 	body = split(body, trimmed, ' ');
 	split(body, trimmed, '\n');
 

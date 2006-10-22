@@ -13,7 +13,7 @@
 
 #include "InsetMath.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "debug.h"
 
 #include "support/lstrings.h"
@@ -23,7 +23,6 @@
 
 namespace lyx {
 
-using std::string;
 using std::endl;
 
 
@@ -73,8 +72,8 @@ void InsetMath::drawT(TextPainter &, int, int) const
 
 void InsetMath::write(WriteStream & os) const
 {
-	string const s = name();
-	os << '\\' << s.c_str();
+	docstring const s = name();
+	os << "\\" << s;
 	// We need an extra ' ' unless this is a single-char-non-ASCII name
 	// or anything non-ASCII follows
 	if (s.size() != 1 || isalpha(s[0]))
@@ -84,7 +83,7 @@ void InsetMath::write(WriteStream & os) const
 
 void InsetMath::normalize(NormalStream & os) const
 {
-	os << '[' << name().c_str() << "] ";
+	os << '[' << name() << "] ";
 }
 
 
@@ -116,7 +115,7 @@ void InsetMath::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMath::mathmlize(MathMLStream & os) const
+void InsetMath::mathmlize(MathStream & os) const
 {
         NormalStream ns(os.os());
         normalize(ns);
@@ -129,9 +128,9 @@ HullType InsetMath::getType() const
 }
 
 
-string InsetMath::name() const
+docstring InsetMath::name() const
 {
-	return "unknown";
+	return from_ascii("unknown");
 }
 
 

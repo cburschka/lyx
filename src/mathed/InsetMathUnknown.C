@@ -13,7 +13,7 @@
 #include "InsetMathUnknown.h"
 #include "MathSupport.h"
 #include "MathAtom.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 
@@ -24,7 +24,7 @@ using std::auto_ptr;
 using std::vector;
 
 
-InsetMathUnknown::InsetMathUnknown(string const & nm, bool final, bool black)
+InsetMathUnknown::InsetMathUnknown(docstring const & nm, bool final, bool black)
 	: name_(nm), final_(final), black_(black)
 {}
 
@@ -35,13 +35,13 @@ auto_ptr<InsetBase> InsetMathUnknown::doClone() const
 }
 
 
-string InsetMathUnknown::name() const
+docstring InsetMathUnknown::name() const
 {
 	return name_;
 }
 
 
-void InsetMathUnknown::setName(string const & name)
+void InsetMathUnknown::setName(docstring const & name)
 {
 	name_ = name;
 }
@@ -55,20 +55,17 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 
 void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// FIXME UNICODE
-	vector<char_type> n(name_.begin(), name_.end());
-	mathed_string_dim(mi.base.font, n, dim);
+	mathed_string_dim(mi.base.font, name_, dim);
 	dim_ = dim;
 }
 
 
 void InsetMathUnknown::draw(PainterInfo & pi, int x, int y) const
 {
-	// FIXME UNICODE
 	if (black_)
-		drawStrBlack(pi, x, y, from_utf8(name_));
+		drawStrBlack(pi, x, y, name_);
 	else
-		drawStrRed(pi, x, y, from_utf8(name_));
+		drawStrRed(pi, x, y, name_);
 	setPosCache(pi, x, y);
 }
 
@@ -97,7 +94,7 @@ void InsetMathUnknown::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathUnknown::mathmlize(MathMLStream & os) const
+void InsetMathUnknown::mathmlize(MathStream & os) const
 {
 	os << MTag("mi") << name_ << ETag("mi");
 }

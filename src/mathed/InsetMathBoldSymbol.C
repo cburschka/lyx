@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathBoldSymbol.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathData.h"
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
@@ -77,7 +77,7 @@ void InsetMathBoldSymbol::write(WriteStream & os) const
 }
 
 
-void InsetMathBoldSymbol::infoize(std::ostream & os) const
+void InsetMathBoldSymbol::infoize(odocstream & os) const
 {
 	os << "Boldsymbol ";
 }

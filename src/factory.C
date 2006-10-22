@@ -491,7 +491,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 				(tmpl->name(), tmpl->asMacroData());
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
-				<< ": creating local macro " << tmpl->name()
+				<< ": creating local macro " << to_utf8(tmpl->name())
 				<< endl;
 		}
 	}

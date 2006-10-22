@@ -164,6 +164,6 @@
 #endif
 
 
-
+#include "../trunk/stdafx.h"
 
 #endif

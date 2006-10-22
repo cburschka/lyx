@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathKern.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "dimension.h"
@@ -32,8 +32,8 @@ InsetMathKern::InsetMathKern(LyXLength const & w)
 {}
 
 
-InsetMathKern::InsetMathKern(string const & s)
-	: wid_(s)
+InsetMathKern::InsetMathKern(docstring const & s)
+	: wid_(to_utf8(s))
 {}
 
 
@@ -64,13 +64,13 @@ void InsetMathKern::draw(PainterInfo &, int, int) const
 
 void InsetMathKern::write(WriteStream & os) const
 {
-	os << "\\kern" << wid_.asLatexString() << ' ';
+	os << "\\kern" << from_utf8(wid_.asLatexString()) << ' ';
 }
 
 
 void InsetMathKern::normalize(NormalStream & os) const
 {
-	os << "[kern " << wid_.asLatexString() << ']';
+	os << "[kern " << from_utf8(wid_.asLatexString()) << ']';
 }
 
 

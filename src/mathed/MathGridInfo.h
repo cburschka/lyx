@@ -23,8 +23,8 @@ class ColInfo
 public:
 	ColInfo() : align('c'), rightline(0), leftline(false) {}
 	char   align;      // column alignment
-	std::string width;      // column width
-	std::string special;    // special column alignment
+	docstring width;      // column width
+	docstring special;    // special column alignment
 	int    rightline;  // a line on the right?
 	bool   leftline;
 };
@@ -47,7 +47,7 @@ public:
 	   topline(false), bottomline(false)
 	{}
 
-	std::string content;    // cell content
+	docstring content;    // cell content
 	int multi;         // multicolumn flag
 	char align;        // cell alignment
 	bool leftline;     // do we have a line on the left?

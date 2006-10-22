@@ -33,7 +33,7 @@ public:
 		/// a dummy cell before a multicolumn cell
 		int dummy_;
 		/// special multi colums alignment
-		std::string align_;
+		docstring align_;
 		/// these should be a per-cell property, but ok to have it here
 		/// for single-column grids like paragraphs
 		mutable int glue_;
@@ -87,11 +87,11 @@ public:
 	/// sets nrows and ncols to 1
 	InsetMathGrid();
 	/// constructor from columns description, creates one row
-	InsetMathGrid(char valign, std::string const & halign);
+	InsetMathGrid(char valign, docstring const & halign);
 	/// Note: columns first!
 	InsetMathGrid(col_type m, row_type n);
 	///
-	InsetMathGrid(col_type m, row_type n, char valign, std::string const & halign);
+	InsetMathGrid(col_type m, row_type n, char valign, docstring const & halign);
 	/// Ensures that the dialog is closed.
 	~InsetMathGrid();
 	///
@@ -108,13 +108,13 @@ public:
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 	///
-	void halign(std::string const & align);
+	void halign(docstring const & align);
 	///
 	void halign(char c, col_type col);
 	///
 	char halign(col_type col) const;
 	///
-	std::string halign() const;
+	docstring halign() const;
 	///
 	void valign(char c);
 	///
@@ -208,7 +208,7 @@ public:
 	///
 	//void maple(MapleStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	//void octave(OctaveStream &) const;
 
@@ -222,12 +222,12 @@ protected:
 	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
-	virtual std::string eolString(row_type row, bool emptyline,
+	virtual docstring eolString(row_type row, bool emptyline,
 				      bool fragile) const;
 	/// returns proper 'end of column' code for LaTeX
-	virtual std::string eocString(col_type col, col_type lastcol) const;
+	virtual docstring eocString(col_type col, col_type lastcol) const;
 	/// extract number of columns from alignment string
-	col_type guessColumns(std::string const & halign) const;
+	col_type guessColumns(docstring const & halign) const;
 	/// splits cells and shifts right part to the next cell
 	void splitCell(LCursor & cur);
 

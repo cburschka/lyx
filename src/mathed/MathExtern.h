@@ -13,16 +13,15 @@
 #define MATH_EXTERN_H
 
 #include "support/docstring.h"
-
+#include <string>
 
 namespace lyx {
-
 
 class NormalStream;
 class MapleStream;
 class MaximaStream;
 class MathematicaStream;
-class MathMLStream;
+class MathStream;
 class OctaveStream;
 class WriteStream;
 class MathArray;
@@ -32,14 +31,14 @@ void normalize(MathArray const &, NormalStream &);
 void maple(MathArray const &, MapleStream &);
 void maxima(MathArray const &, MaximaStream &);
 void mathematica(MathArray const &, MathematicaStream &);
-void mathmlize(MathArray const &, MathMLStream &);
+void mathmlize(MathArray const &, MathStream &);
 void octave(MathArray const &, OctaveStream &);
 
 bool extractNumber(MathArray const & ar, int & i);
 bool extractNumber(MathArray const & ar, double & i);
 
-MathArray pipeThroughExtern(std::string const & lang, docstring const & extra,
-	MathArray const & ar);
+MathArray pipeThroughExtern(std::string const & language,
+	docstring const & extra, MathArray const & ar);
 
 
 } // namespace lyx

@@ -767,10 +767,10 @@ size_type calculateRowSignature(Row const & row, Paragraph const & par,
 {
 	boost::crc_32_type crc;
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
-		const unsigned char b[] = { par.getChar(i) };
+		char_type const b[] = { par.getChar(i) };
 		crc.process_bytes(b, 1);
 	}
-	const unsigned char b[] = { x, y, row.width() };
+	char_type const b[] = { x, y, row.width() };
 	crc.process_bytes(b, 3);
 	return crc.checksum();
 }

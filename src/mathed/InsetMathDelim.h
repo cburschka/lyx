@@ -24,9 +24,9 @@ namespace lyx {
 class InsetMathDelim : public InsetMathNest {
 public:
 	///
-	InsetMathDelim(std::string const & left, std::string const & right);
+	InsetMathDelim(docstring const & left, docstring const & right);
 	///
-	InsetMathDelim(std::string const & left, std::string const & right, MathArray const &);
+	InsetMathDelim(docstring const & left, docstring const & right, MathArray const &);
 	///
 	InsetMathDelim * asDelimInset() { return this; }
 	///
@@ -55,13 +55,13 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void octave(OctaveStream &) const;
 	///
-	std::string left_;
+	docstring left_;
 	///
-	std::string right_;
+	docstring right_;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///

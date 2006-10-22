@@ -12,7 +12,7 @@
 
 #include "InsetMathPar.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "support/std_ostream.h"
 
 
@@ -50,7 +50,7 @@ void InsetMathPar::write(WriteStream & os) const
 }
 
 
-void InsetMathPar::infoize(std::ostream & os) const
+void InsetMathPar::infoize(odocstream & os) const
 {
 	os << "Type: Paragraph ";
 }

@@ -100,14 +100,22 @@ bool suffixIs(std::string const &, char);
 bool suffixIs(std::string const &, std::string const &);
 
 ///
-template <typename B>
-bool contains(std::string const & a, B b)
+inline bool contains(std::string const & a, std::string const & b)
 {
 	return a.find(b) != std::string::npos;
 }
 
-template <typename B>
-bool contains(docstring const & a, B b)
+inline bool contains(docstring const & a, docstring const & b)
+{
+	return a.find(b) != docstring::npos;
+}
+
+inline bool contains(std::string const & a, char b)
+{
+	return a.find(b) != std::string::npos;
+}
+
+inline bool contains(docstring const & a, char_type b)
 {
 	return a.find(b) != docstring::npos;
 }
@@ -173,13 +181,15 @@ std::string const trim(std::string const & a, char const * p = " ");
     \endcode
 */
 std::string const rtrim(std::string const & a, char const * p = " ");
+docstring const rtrim(docstring const & a, char const * p = " ");
 
 /** Trims characters off the beginning of a string.
     \code
-   ltrim("ababcdef", "ab") = "cdef"
+   ("ababcdef", "ab") = "cdef"
     \endcode
 */
 std::string const ltrim(std::string const & a, char const * p = " ");
+docstring const ltrim(docstring const & a, char const * p = " ");
 
 /** Splits the string by the first delim.
     Splits the string by the first appearance of delim.

@@ -24,7 +24,7 @@ public:
 	///
 	explicit InsetMathSpace(int sp);
 	///
-	explicit InsetMathSpace(std::string const & name);
+	explicit InsetMathSpace(docstring const & name);
 	///
 	InsetMathSpace const * asSpaceInset() const { return this; }
 	///

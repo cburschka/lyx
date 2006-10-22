@@ -28,8 +28,8 @@ public:
 	///
 	MathMacroTemplate();
 	///
-	MathMacroTemplate(std::string const & name, int nargs,
-		std::string const & type,
+	MathMacroTemplate(docstring const & name, int nargs,
+		docstring const & type,
 		MathArray const & = MathArray(),
 		MathArray const & = MathArray());
 	///
@@ -49,7 +49,7 @@ public:
 	///
 	void numargs(int);
 	///
-	std::string name() const;
+	docstring name() const;
 	///
 	MacroData asMacroData() const;
 	///
@@ -71,9 +71,9 @@ private:
 	///
 	int numargs_;
 	///
-	std::string name_;
+	docstring name_;
 	/// newcommand or renewcommand or def
-	std::string type_;
+	docstring type_;
 };
 
 

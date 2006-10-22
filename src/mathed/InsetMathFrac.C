@@ -13,7 +13,7 @@
 
 #include "InsetMathFrac.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "TextPainter.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -137,20 +137,20 @@ void InsetMathFrac::write(WriteStream & os) const
 }
 
 
-string InsetMathFrac::name() const
+docstring InsetMathFrac::name() const
 {
 	switch (kind_) {
 	case FRAC:
-		return "frac";
+		return from_ascii("frac");
 	case OVER:
-		return "over";
+		return from_ascii("over");
 	case NICEFRAC:
-		return "nicefrac";
+		return from_ascii("nicefrac");
 	case ATOP:
-		return "atop";
+		return from_ascii("atop");
 	}
 	// shut up stupid compiler
-	return string();
+	return docstring();
 }
 
 
@@ -178,7 +178,7 @@ void InsetMathFrac::octave(OctaveStream & os) const
 }
 
 
-void InsetMathFrac::mathmlize(MathMLStream & os) const
+void InsetMathFrac::mathmlize(MathStream & os) const
 {
 	os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
 }

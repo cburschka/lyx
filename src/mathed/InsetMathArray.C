@@ -14,7 +14,7 @@
 #include "InsetMathArray.h"
 #include "MathData.h"
 #include "MathParser.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "support/lstrings.h"
@@ -26,36 +26,35 @@
 namespace lyx {
 
 using std::getline;
-
-using std::string;
 using std::auto_ptr;
 using std::istringstream;
 using std::istream_iterator;
 using std::vector;
+using std::string;
 
 
-InsetMathArray::InsetMathArray(string const & name, int m, int n)
+InsetMathArray::InsetMathArray(docstring const & name, int m, int n)
 	: InsetMathGrid(m, n), name_(name)
 {}
 
 
-InsetMathArray::InsetMathArray(string const & name, int m, int n,
-		char valign, string const & halign)
+InsetMathArray::InsetMathArray(docstring const & name, int m, int n,
+		char valign, docstring const & halign)
 	: InsetMathGrid(m, n, valign, halign), name_(name)
 {}
 
 
-InsetMathArray::InsetMathArray(string const & name, char valign,
-		string const & halign)
+InsetMathArray::InsetMathArray(docstring const & name, char valign,
+		docstring const & halign)
 	: InsetMathGrid(valign, halign), name_(name)
 {}
 
 
-InsetMathArray::InsetMathArray(string const & name, string const & str)
+InsetMathArray::InsetMathArray(docstring const & name, docstring const & str)
 	: InsetMathGrid(1, 1), name_(name)
 {
 	vector< vector<string> > dat;
-	istringstream is(str);
+	istringstream is(to_utf8(str));
 	string line;
 	while (getline(is, line)) {
 		istringstream ls(line);
@@ -71,7 +70,7 @@ InsetMathArray::InsetMathArray(string const & name, string const & str)
 		addCol(0);
 	for (row_type row = 0; row < dat.size(); ++row)
 		for (col_type col = 0; col < dat[0].size(); ++col)
-			mathed_parse_cell(cell(index(row, col)), dat[row][col]);
+			mathed_parse_cell(cell(index(row, col)), from_utf8(dat[row][col]));
 }
 
 
@@ -118,9 +117,9 @@ void InsetMathArray::write(WriteStream & os) const
 }
 
 
-void InsetMathArray::infoize(std::ostream & os) const
+void InsetMathArray::infoize(odocstream & os) const
 {
-	string name = name_;
+	docstring name = name_;
 	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }

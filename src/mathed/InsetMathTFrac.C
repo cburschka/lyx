@@ -13,7 +13,7 @@
 #include "InsetMathTFrac.h"
 
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -63,13 +63,13 @@ void InsetMathTFrac::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-string InsetMathTFrac::name() const
+docstring InsetMathTFrac::name() const
 {
-	return "tfrac";
+	return from_ascii("tfrac");
 }
 
 
-void InsetMathTFrac::mathmlize(MathMLStream & os) const
+void InsetMathTFrac::mathmlize(MathStream & os) const
 {
 	os << MTag("mtfrac") << cell(0) << cell(1) << ETag("mtfrac");
 }

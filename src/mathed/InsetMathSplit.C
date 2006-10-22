@@ -12,7 +12,7 @@
 
 #include "InsetMathSplit.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "funcrequest.h"
@@ -32,8 +32,8 @@ using std::string;
 using std::auto_ptr;
 
 
-InsetMathSplit::InsetMathSplit(string const & name, char valign)
-	: InsetMathGrid(1, 1, valign, string()), name_(name)
+InsetMathSplit::InsetMathSplit(docstring const & name, char valign)
+	: InsetMathGrid(1, 1, valign, docstring()), name_(name)
 {
 }
 
@@ -73,8 +73,7 @@ bool InsetMathSplit::getStatus(LCursor & cur, FuncRequest const & cmd,
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
-			from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
-			from_utf8(name_)));
+				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),	name_));
 			flag.enabled(false);
 			return true;
 		}
@@ -102,9 +101,9 @@ void InsetMathSplit::write(WriteStream & ws) const
 }
 
 
-void InsetMathSplit::infoize(std::ostream & os) const
+void InsetMathSplit::infoize(odocstream & os) const
 {
-	string name = name_;
+	docstring name = name_;
 	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }

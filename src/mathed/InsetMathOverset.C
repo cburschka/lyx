@@ -12,7 +12,7 @@
 
 #include "InsetMathOverset.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 #include "cursor.h"
 #include "LaTeXFeatures.h"

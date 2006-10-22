@@ -185,9 +185,9 @@ public:
 				  std::vector<docstring> & /* list */) const {}
 
 	/// describe content if cursor inside
-	virtual void infoize(std::ostream &) const {}
+	virtual void infoize(odocstream &) const {}
 	/// describe content if cursor behind
-	virtual void infoize2(std::ostream &) const {}
+	virtual void infoize2(odocstream &) const {}
 
 	/// plain text output in ucs4 encoding
 	virtual int plaintext(Buffer const &, odocstream &,
@@ -337,7 +337,7 @@ public:
 	virtual bool forceDefaultParagraphs(idx_type) const { return false; }
 
 	///
-	virtual std::string const & getInsetName() const;
+	virtual docstring const & getInsetName() const;
 	/// used to toggle insets
 	/// is the inset open?
 	/// should this inset be handled like a normal charater

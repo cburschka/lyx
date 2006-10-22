@@ -13,7 +13,7 @@
 #include "InsetMathBinom.h"
 #include "MathData.h"
 #include "MathSupport.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 
 namespace lyx {
@@ -64,9 +64,9 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 3 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 3 - 5);
-	mathed_draw_deco(pi, x, y - dim_.ascent(), dw(), dim_.height(), "(");
+	mathed_draw_deco(pi, x, y - dim_.ascent(), dw(), dim_.height(), from_ascii("("));
 	mathed_draw_deco(pi, x + dim_.width() - dw(), y - dim_.ascent(),
-		dw(), dim_.height(), ")");
+		dw(), dim_.height(), from_ascii(")"));
 	drawMarkers2(pi, x, y);
 }
 

@@ -30,7 +30,7 @@ public:
 	///
 	explicit InsetMathSymbol(char const * name);
 	///
-	explicit InsetMathSymbol(std::string const & name);
+	explicit InsetMathSymbol(docstring const & name);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -47,7 +47,7 @@ public:
 	/// identifies SymbolInset as such
 	InsetMathSymbol const * asSymbolInset() const { return this; }
 	/// the LaTeX name of the symbol (without the backslash)
-	std::string name() const;
+	docstring name() const;
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
 
@@ -60,13 +60,13 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void octave(OctaveStream &) const;
 	///
 	void write(WriteStream & os) const;
 	///
-	void infoize2(std::ostream & os) const;
+	void infoize2(odocstream & os) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
@@ -80,6 +80,6 @@ private:
 	mutable bool scriptable_;
 };
 
-
 } // namespace lyx
+
 #endif

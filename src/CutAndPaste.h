@@ -69,11 +69,11 @@ void switchBetweenClasses(textclass_type c1, textclass_type c2,
                           InsetText & in, ErrorList &);
 
 ///
-std::string grabSelection(LCursor const & cur);
+docstring grabSelection(LCursor const & cur);
 ///
 void eraseSelection(LCursor & cur);
 ///
-std::string grabAndEraseSelection(LCursor & cur);
+docstring grabAndEraseSelection(LCursor & cur);
 // other selection methods
 ///
 void selCut(LCursor & cur);

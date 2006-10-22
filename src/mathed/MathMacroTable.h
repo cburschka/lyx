@@ -16,11 +16,11 @@
 #include <string>
 #include <vector>
 
+#include "support/docstring.h"
 
 namespace lyx {
 
 class MathArray;
-
 
 ///
 class MacroData {
@@ -28,11 +28,11 @@ public:
 	///
 	MacroData();
 	///
-	MacroData(std::string const & def, int nargs, std::string const & disp);
+	MacroData(docstring const & def, int nargs, docstring const & disp);
 	///
-	std::string def() const { return def_; }
+	docstring def() const { return def_; }
 	///
-	std::string disp() const { return disp_; }
+	docstring disp() const { return disp_; }
 	///
 	int numargs() const { return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,..
@@ -40,11 +40,11 @@ public:
 
 private:
 	///
-	std::string def_;
+	docstring def_;
 	///
 	int numargs_;
 	///
-	std::string disp_;
+	docstring disp_;
 };
 
 
@@ -52,17 +52,17 @@ private:
 // either because they implement a feature of standard LaTeX or some
 // hack to display certain contents nicely.
 
-class MacroTable : public std::map<std::string, MacroData>
+class MacroTable : public std::map<docstring, MacroData>
 {
 public:
 	/// Parse full "\def..." or "\newcommand..." or ...
-	void insert(std::string const & definition);
+	void insert(docstring const & definition);
 	/// Insert pre-digested macro definition
-	void insert(std::string const & name, MacroData const & data);
+	void insert(docstring const & name, MacroData const & data);
 	/// Do we have a macro by that name?
-	bool has(std::string const & name) const;
+	bool has(docstring const & name) const;
 	///
-	MacroData const & get(std::string const & name) const;
+	MacroData const & get(docstring const & name) const;
 	///
 	void dump();
 

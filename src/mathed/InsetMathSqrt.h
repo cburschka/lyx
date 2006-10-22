@@ -44,7 +44,7 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };

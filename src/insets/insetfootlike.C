@@ -65,7 +65,7 @@ void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 
 void InsetFootlike::write(Buffer const & buf, std::ostream & os) const
 {
-	os << getInsetName() << "\n";
+	os << to_utf8(getInsetName()) << "\n";
 	InsetCollapsable::write(buf, os);
 }
 

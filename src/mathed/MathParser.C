@@ -88,7 +88,7 @@ using std::vector;
 
 namespace {
 
-InsetMath::mode_type asMode(InsetMath::mode_type oldmode, string const & str)
+InsetMath::mode_type asMode(InsetMath::mode_type oldmode, docstring const & str)
 {
 	//lyxerr << "handling mode: '" << str << "'" << endl;
 	if (str == "mathmode")
@@ -99,9 +99,9 @@ InsetMath::mode_type asMode(InsetMath::mode_type oldmode, string const & str)
 }
 
 
-bool stared(string const & s)
+bool stared(docstring const & s)
 {
-	string::size_type const n = s.size();
+	size_t const n = s.size();
 	return n && s[n - 1] == '*';
 }
 
@@ -112,7 +112,7 @@ bool stared(string const & s)
  * environments like "equation" that have a fixed number of rows.
  */
 bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
-	    string const & vskip)
+	    docstring const & vskip)
 {
 	++cellrow;
 	if (cellrow == grid.nrows()) {
@@ -128,12 +128,12 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 			--cellrow;
 			lyxerr << "ignoring extra row";
 			if (!vskip.empty())
-				lyxerr << " with extra space " << vskip;
+				lyxerr << " with extra space " << to_utf8(vskip);
 			lyxerr << '.' << endl;
 			return false;
 		}
 	}
-	grid.vcrskip(LyXLength(vskip), cellrow - 1);
+	grid.vcrskip(LyXLength(to_utf8(vskip)), cellrow - 1);
 	return true;
 }
 
@@ -248,26 +248,26 @@ public:
 	///
 	Token() : cs_(), char_(0), cat_(catIgnore) {}
 	///
-	Token(char c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
+	Token(char_type c, CatCode cat) : cs_(), char_(c), cat_(cat) {}
 	///
-	Token(string const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
+	Token(docstring const & cs) : cs_(cs), char_(0), cat_(catIgnore) {}
 
 	///
-	string const & cs() const { return cs_; }
+	docstring const & cs() const { return cs_; }
 	///
 	CatCode cat() const { return cat_; }
 	///
-	char character() const { return char_; }
+	char_type character() const { return char_; }
 	///
-	string asString() const { return cs_.size() ? cs_ : string(1, char_); }
+	docstring asString() const { return cs_.size() ? cs_ : docstring(1, char_); }
 	///
-	string asInput() const { return cs_.size() ? '\\' + cs_ : string(1, char_); }
+	docstring asInput() const { return cs_.size() ? '\\' + cs_ : docstring(1, char_); }
 
 private:
 	///
-	string cs_;
+	docstring cs_;
 	///
-	char char_;
+	char_type char_;
 	///
 	CatCode cat_;
 };
@@ -312,17 +312,18 @@ private:
 	///
 	void parse2(MathAtom & at, unsigned flags, mode_type mode, bool numbered);
 	/// get arg delimited by 'left' and 'right'
-	string getArg(char left, char right);
+	docstring getArg(char_type left, char_type right);
 	///
-	char getChar();
+	char_type getChar();
 	///
 	void error(string const & msg);
+	void error(docstring const & msg) { error(to_utf8(msg)); }
 	/// dump contents to screen
 	void dump() const;
 	///
 	void tokenize(istream & is);
 	///
-	void tokenize(string const & s);
+	void tokenize(docstring const & s);
 	///
 	void skipSpaceTokens(istream & is, char c);
 	///
@@ -338,13 +339,13 @@ private:
 	/// skips spaces if any
 	void skipSpaces();
 	///
-	void lex(string const & s);
+	void lex(docstring const & s);
 	///
 	bool good() const;
 	///
-	string parse_verbatim_item();
+	docstring parse_verbatim_item();
 	///
-	string parse_verbatim_option();
+	docstring parse_verbatim_option();
 
 	///
 	int lineno_;
@@ -353,7 +354,7 @@ private:
 	///
 	unsigned pos_;
 	/// Stack of active environments
-	vector<string> environments_;
+	vector<docstring> environments_;
 };
 
 
@@ -425,7 +426,7 @@ bool Parser::good() const
 }
 
 
-char Parser::getChar()
+char_type Parser::getChar()
 {
 	if (!good())
 		error("The input stream is not well...");
@@ -433,12 +434,12 @@ char Parser::getChar()
 }
 
 
-string Parser::getArg(char left, char right)
+docstring Parser::getArg(char_type left, char_type right)
 {
 	skipSpaces();
 
-	string result;
-	char c = getChar();
+	docstring result;
+	char_type c = getChar();
 
 	if (c != left)
 		putback();
@@ -465,7 +466,7 @@ void Parser::tokenize(istream & is)
 {
 	// eat everything up to the next \end_inset or end of stream
 	// and store it in s for further tokenization
-	string s;
+	docstring s;
 	char c;
 	while (is.get(c)) {
 		s += c;
@@ -483,9 +484,9 @@ void Parser::tokenize(istream & is)
 }
 
 
-void Parser::tokenize(string const & buffer)
+void Parser::tokenize(docstring const & buffer)
 {
-	istringstream is(buffer, ios::in | ios::binary);
+	istringstream is(to_utf8(buffer), ios::in | ios::binary);
 
 	char c;
 	while (is.get(c)) {
@@ -518,7 +519,7 @@ void Parser::tokenize(string const & buffer)
 				if (!is) {
 					error("unexpected end of input");
 				} else {
-					string s(1, c);
+					docstring s(1, c);
 					if (catcode(c) == catLetter) {
 						// collect letters
 						while (is.get(c) && catcode(c) == catLetter)
@@ -593,10 +594,10 @@ bool Parser::parse(MathAtom & at)
 }
 
 
-string Parser::parse_verbatim_option()
+docstring Parser::parse_verbatim_option()
 {
 	skipSpaces();
-	string res;
+	docstring res;
 	if (nextToken().character() == '[') {
 		Token t = getToken();
 		for (Token t = getToken(); t.character() != ']' && good(); t = getToken()) {
@@ -611,10 +612,10 @@ string Parser::parse_verbatim_option()
 }
 
 
-string Parser::parse_verbatim_item()
+docstring Parser::parse_verbatim_item()
 {
 	skipSpaces();
-	string res;
+	docstring res;
 	if (nextToken().cat() == catBegin) {
 		Token t = getToken();
 		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
@@ -835,7 +836,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(MathAtom(new InsetMathChar(t.character())));
 
 		else if (t.cat() == catComment) {
-			string s;
+			docstring s;
 			while (good()) {
 				Token const & t = getToken();
 				if (t.cat() == catNewline)
@@ -859,15 +860,15 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			t.cs() == "newcommand" ||
 			t.cs() == "renewcommand")
 		{
-			string const type = t.cs();
-			string name;
+			docstring const type = t.cs();
+			docstring name;
 			int nargs = 0;
 			if (t.cs() == "def") {
 				// get name
 				name = getToken().cs();
 
 				// read parameter
-				string pars;
+				docstring pars;
 				while (good() && nextToken().cat() != catBegin) {
 					pars += getToken().cs();
 					++nargs;
@@ -889,7 +890,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					return;
 				}
 
-				string const arg  = getArg('[', ']');
+				docstring const arg  = getArg('[', ']');
 				if (!arg.empty())
 					nargs = convert<int>(arg);
 
@@ -933,7 +934,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "end") {
 			if (flags & FLAG_END) {
 				// eat environment name
-				string const name = getArg('{', '}');
+				docstring const name = getArg('{', '}');
 				if (environments_.empty())
 					error("'found \\end{" + name +
 					      "}' without matching '\\begin{" +
@@ -1068,12 +1069,12 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			// \| and \Vert are equivalent, and InsetMathDelim
 			// can't handle \|
 			// FIXME: fix this in InsetMathDelim itself!
-			string const l = tl.cs() == "|" ? "Vert" : tl.asString();
+			docstring const l = tl.cs() == "|" ? from_ascii("Vert") : tl.asString();
 			MathArray ar;
 			parse(ar, FLAG_RIGHT, mode);
 			skipSpaces();
 			Token const & tr = getToken();
-			string const r = tr.cs() == "|" ? "Vert" : tr.asString();
+			docstring const r = tr.cs() == "|" ? from_ascii("Vert") : tr.asString();
 			cell->push_back(MathAtom(new InsetMathDelim(l, r, ar)));
 		}
 
@@ -1086,20 +1087,20 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "begin") {
-			string const name = getArg('{', '}');
+			docstring const name = getArg('{', '}');
 			environments_.push_back(name);
 
 			if (name == "array" || name == "subarray") {
-				string const valign = parse_verbatim_option() + 'c';
-				string const halign = parse_verbatim_item();
-				cell->push_back(MathAtom(new InsetMathArray(name, valign[0], halign)));
+				docstring const valign = parse_verbatim_option() + 'c';
+				docstring const halign = parse_verbatim_item();
+				cell->push_back(MathAtom(new InsetMathArray(name, (char)valign[0], halign)));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 
 			else if (name == "tabular") {
-				string const valign = parse_verbatim_option() + 'c';
-				string const halign = parse_verbatim_item();
-				cell->push_back(MathAtom(new InsetMathTabular(name, valign[0], halign)));
+				docstring const valign = parse_verbatim_option() + 'c';
+				docstring const halign = parse_verbatim_item();
+				cell->push_back(MathAtom(new InsetMathTabular(name, (char)valign[0], halign)));
 				parse2(cell->back(), FLAG_END, InsetMath::TEXT_MODE, false);
 			}
 
@@ -1109,10 +1110,10 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "alignedat") {
-				string const valign = parse_verbatim_option() + 'c';
+				docstring const valign = parse_verbatim_option() + 'c';
 				// ignore this for a while
 				getArg('{', '}');
-				cell->push_back(MathAtom(new InsetMathSplit(name, valign[0])));
+				cell->push_back(MathAtom(new InsetMathSplit(name, (char)valign[0])));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
 
@@ -1178,8 +1179,8 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					cell->push_back(createInsetMath(name));
 					parse2(cell->back(), FLAG_END, mode, false);
 				} else if (l->inset == "split") {
-					string const valign = parse_verbatim_option() + 'c';
-					cell->push_back(MathAtom(new InsetMathSplit(name, valign[0])));
+					docstring const valign = parse_verbatim_option() + 'c';
+					cell->push_back(MathAtom(new InsetMathSplit(name, (char)valign[0])));
 					parse2(cell->back(), FLAG_END, mode, false);
 				} else {
 					dump();
@@ -1205,7 +1206,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 #ifdef WITH_WARNINGS
 #warning A hack...
 #endif
-			string s;
+			docstring s;
 			while (true) {
 				Token const & t = getToken();
 				if (!good()) {
@@ -1213,7 +1214,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					break;
 				}
 				s += t.character();
-				if (isValidLength(s))
+				if (isValidLength(to_utf8(s)))
 					break;
 			}
 			cell->push_back(MathAtom(new InsetMathKern(s)));
@@ -1221,10 +1222,9 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "label") {
 			// FIXME: This is swallowed in inline formulas
-			string label = parse_verbatim_item();
+			docstring label = parse_verbatim_item();
 			MathArray ar;
-			// FIXME UNICODE
-			asArray(from_utf8(label), ar);
+			asArray(label, ar);
 			if (grid.asHullInset()) {
 				grid.asHullInset()->label(cellrow, label);
 			} else {
@@ -1243,14 +1243,14 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "color") {
-			string const color = parse_verbatim_item();
+			docstring const color = parse_verbatim_item();
 			cell->push_back(MathAtom(new InsetMathColor(true, color)));
 			parse(cell->back().nucleus()->cell(0), flags, mode);
 			return;
 		}
 
 		else if (t.cs() == "textcolor") {
-			string const color = parse_verbatim_item();
+			docstring const color = parse_verbatim_item();
 			cell->push_back(MathAtom(new InsetMathColor(false, color)));
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, InsetMath::TEXT_MODE);
 		}
@@ -1318,7 +1318,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (l) {
 				if (l->inset == "big") {
 					skipSpaces();
-					string const delim = getToken().asInput();
+					docstring const delim = getToken().asInput();
 					if (InsetMathBig::isBigInsetDelim(delim))
 						cell->push_back(MathAtom(
 							new InsetMathBig(t.cs(), delim)));
@@ -1400,9 +1400,9 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 } // anonymous namespace
 
 
-void mathed_parse_cell(MathArray & ar, string const & str)
+void mathed_parse_cell(MathArray & ar, docstring const & str)
 {
-	istringstream is(str);
+	istringstream is(to_utf8(str));
 	mathed_parse_cell(ar, is);
 }
 

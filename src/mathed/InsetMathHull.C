@@ -18,7 +18,7 @@
 #include "MathExtern.h"
 #include "MathFactory.h"
 #include "InsetMathHull.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "InsetMathSpace.h"
 #include "MathStream.h"
@@ -69,11 +69,9 @@ using support::subst;
 
 using std::endl;
 using std::max;
-using std::string;
 using std::ostream;
 using std::auto_ptr;
 using std::istringstream;
-using std::ostream;
 using std::ostringstream;
 using std::pair;
 using std::swap;
@@ -119,7 +117,7 @@ namespace {
 } // end anon namespace
 
 
-HullType hullType(std::string const & s)
+HullType hullType(docstring const & s)
 {
 	if (s == "none")      return hullNone;
 	if (s == "simple")    return hullSimple;
@@ -132,28 +130,28 @@ HullType hullType(std::string const & s)
 	if (s == "multline")  return hullMultline;
 	if (s == "gather")    return hullGather;
 	if (s == "flalign")   return hullFlAlign;
-	lyxerr << "unknown hull type '" << s << "'" << endl;
+	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
 	return HullType(-1);
 }
 
 
-std::string hullName(HullType type)
+docstring hullName(HullType type)
 {
 	switch (type) {
-		case hullNone:       return "none";
-		case hullSimple:     return "simple";
-		case hullEquation:   return "equation";
-		case hullEqnArray:   return "eqnarray";
-		case hullAlign:      return "align";
-		case hullAlignAt:    return "alignat";
-		case hullXAlignAt:   return "xalignat";
-		case hullXXAlignAt:  return "xxalignat";
-		case hullMultline:   return "multline";
-		case hullGather:     return "gather";
-		case hullFlAlign:    return "flalign";
+		case hullNone:       return from_ascii("none");
+		case hullSimple:     return from_ascii("simple");
+		case hullEquation:   return from_ascii("equation");
+		case hullEqnArray:   return from_ascii("eqnarray");
+		case hullAlign:      return from_ascii("align");
+		case hullAlignAt:    return from_ascii("alignat");
+		case hullXAlignAt:   return from_ascii("xalignat");
+		case hullXXAlignAt:  return from_ascii("xxalignat");
+		case hullMultline:   return from_ascii("multline");
+		case hullGather:     return from_ascii("gather");
+		case hullFlAlign:    return from_ascii("flalign");
 		default:
 			lyxerr << "unknown hull type '" << type << "'" << endl;
-			return "none";
+			return from_ascii("none");
 	}
 }
 
@@ -268,9 +266,9 @@ int InsetMathHull::defaultColSpace(col_type col)
 }
 
 
-char const * InsetMathHull::standardFont() const
+docstring InsetMathHull::standardFont() const
 {
-	return type_ == hullNone ? "lyxnochange" : "mathnormal";
+	return from_ascii(type_ == hullNone ? "lyxnochange" : "mathnormal");
 }
 
 
@@ -309,7 +307,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	if (numberedType()) {
-		FontSetChanger dummy(mi.base, "mathbf");
+		FontSetChanger dummy(mi.base, from_ascii("mathbf"));
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
@@ -348,7 +346,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			FontSetChanger dummy(pi.base, "mathrm");
+			FontSetChanger dummy(pi.base, from_ascii("mathrm"));
 			docstring const nl = nicelabel(row);
 			pi.draw(xx, yy, nl);
 		}
@@ -419,14 +417,14 @@ bool InsetMathHull::notifyCursorLeaves(LCursor & cur)
 }
 
 
-string InsetMathHull::label(row_type row) const
+docstring InsetMathHull::label(row_type row) const
 {
 	BOOST_ASSERT(row < nrows());
 	return label_[row];
 }
 
 
-void InsetMathHull::label(row_type row, string const & label)
+void InsetMathHull::label(row_type row, docstring const & label)
 {
 	//lyxerr << "setting label '" << label << "' for row " << row << endl;
 	label_[row] = label;
@@ -468,8 +466,7 @@ void InsetMathHull::getLabelList(Buffer const &, vector<docstring> & labels) con
 {
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
-			// FIXME UNICODE
-			labels.push_back(from_utf8(label_[row]));
+			labels.push_back(label_[row]);
 }
 
 
@@ -617,7 +614,7 @@ void InsetMathHull::addRow(row_type row)
 	if (!rowChangeOK())
 		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
-	label_.insert(label_.begin() + row + 1, string());
+	label_.insert(label_.begin() + row + 1, docstring());
 	InsetMathGrid::addRow(row);
 }
 
@@ -671,7 +668,7 @@ docstring InsetMathHull::nicelabel(row_type row) const
 	if (label_[row].empty())
 		return from_ascii("(#)");
 	// FIXME UNICODE
-	return from_utf8('(' + label_[row] + ')');
+	return '(' + label_[row] + ')';
 }
 
 
@@ -824,7 +821,7 @@ void InsetMathHull::mutate(HullType newtype)
 					allnonum = false;
 
 			// set first non-empty label
-			string label;
+			docstring label;
 			for (row_type row = 0; row < nrows(); ++row) {
 				if (!label_[row].empty()) {
 					label = label_[row];
@@ -896,16 +893,16 @@ void InsetMathHull::mutate(HullType newtype)
 	}
 
 	else {
-		lyxerr << "mutation from '" << hullName(type_)
-		       << "' to '" << hullName(newtype)
+		lyxerr << "mutation from '" << to_utf8(hullName(type_))
+		       << "' to '" << to_utf8(hullName(newtype))
 		       << "' not implemented" << endl;
 	}
 }
 
 
-string InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) const
+docstring InsetMathHull::eolString(row_type row, bool emptyline, bool fragile) const
 {
-	string res;
+	docstring res;
 	if (numberedType()) {
 		if (!label_[row].empty() && !nonum_[row])
 			res += "\\label{" + label_[row] + '}';
@@ -932,13 +929,13 @@ void InsetMathHull::normalize(NormalStream & os) const
 }
 
 
-void InsetMathHull::mathmlize(MathMLStream & os) const
+void InsetMathHull::mathmlize(MathStream & os) const
 {
 	InsetMathGrid::mathmlize(os);
 }
 
 
-void InsetMathHull::infoize(ostream & os) const
+void InsetMathHull::infoize(odocstream & os) const
 {
 	os << "Type: " << hullName(type_);
 }
@@ -959,7 +956,7 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 	iss >> dlang >> extra;
 	if (extra.empty())
 		extra = from_ascii("noextra");
-	string const lang = to_ascii(dlang);
+	std::string const lang = to_ascii(dlang);
 
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
@@ -984,7 +981,7 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 		MathArray ar;
 		if (cur.inMathed() && cur.selection()) {
 			// FIXME UNICODE
-			asArray(from_utf8(grabAndEraseSelection(cur)), ar);
+			asArray(grabAndEraseSelection(cur), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
@@ -1092,7 +1089,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_LABEL_INSERT: {
 		recordUndoInset(cur);
 		row_type r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-		docstring old_label = from_utf8(label(r));
+		docstring old_label = label(r);
 		docstring const default_label = from_ascii(
 			(lyxrc.label_init_length >= 0) ? "eq:" : "");
 		if (old_label.empty())
@@ -1100,7 +1097,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		InsetCommandParams p("label");
 		p["name"] = cmd.argument().empty() ? old_label : cmd.argument();
-		string const data = InsetCommandMailer::params2string("label", p);
+		std::string const data = InsetCommandMailer::params2string("label", p);
 
 		if (cmd.argument().empty())
 			cur.bv().showInsetDialog("label", data, 0);
@@ -1113,19 +1110,19 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_INSERT: {
 		//lyxerr << "arg: " << to_utf8(cmd.argument()) << endl;
-		string const name = cmd.getArg(0);
+		std::string const name = cmd.getArg(0);
 		if (name == "label") {
 			InsetCommandParams p("label");
 			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()), p);
-			string str = to_utf8(p["name"]);
+			docstring str = p["name"];
 			recordUndoInset(cur);
 			row_type const r = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			str = support::trim(str);
 			if (!str.empty())
 				numbered(r, true);
-			string old = label(r);
+			docstring old = label(r);
 			if (str != old) {
-				cur.bv().buffer()->changeRefsIfUnique(old, str,
+				cur.bv().buffer()->changeRefsIfUnique(to_utf8(old), to_utf8(str),
 							InsetBase::REF_CODE);
 				label(r, str);
 			}
@@ -1144,7 +1141,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndoInset(cur);
 		row_type row = cur.row();
 		col_type col = cur.col();
-		mutate(hullType(to_utf8(cmd.argument())));
+		mutate(hullType(cmd.argument()));
 		cur.idx() = row * ncols() + col;
 		if (cur.idx() > cur.lastidx()) {
 			cur.idx() = cur.lastidx();
@@ -1202,7 +1199,7 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(to_utf8(cmd.argument()));
-		string s;
+		std::string s;
 		is >> s;
 		if (!rowChangeOK()
 		    && (s == "append-row"
@@ -1210,7 +1207,7 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "copy-row")) {
 			status.message(bformat(
 				from_utf8(N_("Can't change number of rows in '%1$s'")),
-				from_utf8(hullName(type_))));
+				hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
@@ -1220,7 +1217,7 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "copy-column")) {
 			status.message(bformat(
 				from_utf8(N_("Can't change number of columns in '%1$s'")),
-				from_utf8(hullName(type_))));
+				hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
@@ -1230,14 +1227,14 @@ bool InsetMathHull::getStatus(LCursor & cur, FuncRequest const & cmd,
 		    (s == "add-hline-above" || s == "add-hline-below")) {
 			status.message(bformat(
 				from_utf8(N_("Can't add horizontal grid lines in '%1$s'")),
-				from_utf8(hullName(type_))));
+				hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			status.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
-				from_utf8(hullName(type_))));
+				hullName(type_)));
 			status.enabled(false);
 			return true;
 		}
@@ -1284,14 +1281,14 @@ void InsetMathHull::mutateToText()
 }
 
 
-void InsetMathHull::handleFont(LCursor & cur, string const & arg,
-	string const & font)
+void InsetMathHull::handleFont(LCursor & cur, docstring const & arg,
+	docstring const & font)
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
 	recordUndo(cur);
 	if (cur.inset().asInsetMath()->name() == font)
-		cur.handleFont(font);
+		cur.handleFont(to_utf8(font));
 	else {
 		cur.handleNest(createInsetMath(font));
 		cur.insert(arg);
@@ -1299,12 +1296,12 @@ void InsetMathHull::handleFont(LCursor & cur, string const & arg,
 }
 
 
-void InsetMathHull::handleFont2(LCursor & cur, string const & arg)
+void InsetMathHull::handleFont2(LCursor & cur, docstring const & arg)
 {
 	recordUndo(cur);
 	LyXFont font;
 	bool b;
-	bv_funcs::string2font(arg, font, b);
+	bv_funcs::string2font(to_utf8(arg), font, b);
 	if (font.color() != LColor::inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(true, font.color()));
 		cur.handleNest(at, 0);
@@ -1329,9 +1326,9 @@ void InsetMathHull::revealCodes(LCursor & cur) const
 {
 	if (!cur.inMathed())
 		return;
-	ostringstream os;
+	odocstringstream os;
 	cur.info(os);
-	cur.message(from_utf8(os.str()));
+	cur.message(os.str());
 /*
 	// write something to the minibuffer
 	// translate to latex
@@ -1455,51 +1452,51 @@ int InsetMathHull::plaintext(Buffer const &, odocstream & os,
 int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 			  OutputParams const & runparams) const
 {
-	MathMLStream ms(os);
+	MathStream ms(os);
 	int res = 0;
-	string name;
+	docstring name;
 	if (getType() == hullSimple)
-		name = "inlineequation";
+		name = from_ascii("inlineequation");
 	else
-		name = "informalequation";
+		name = from_ascii("informalequation");
 
-	string bname = name;
+	docstring bname = name;
 	if (!label(0).empty())
-		bname += " id=\"" + sgml::cleanID(buf, runparams, label(0)) + "\"";
-	ms << MTag(bname.c_str());
+		bname += from_ascii(" id='" + sgml::cleanID(buf, runparams, to_utf8(label(0))) + "'");
+	ms << MTag(bname);
 
 	odocstringstream ls;
 	if (runparams.flavor == OutputParams::XML) {
-		ms << MTag("alt role=\"tex\" ");
+		ms << MTag(from_ascii("alt role='tex' "));
 		// Workaround for db2latex: db2latex always includes equations with
 		// \ensuremath{} or \begin{display}\end{display}
 		// so we strip LyX' math environment
 		WriteStream wi(ls, false, false);
 		InsetMathGrid::write(wi);
-		ms << subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
-		ms << ETag("alt");
-		ms << MTag("math");
+		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
+		ms << ETag(from_ascii("alt"));
+		ms << MTag(from_ascii("math"));
 		InsetMathGrid::mathmlize(ms);
-		ms << ETag("math");
+		ms << ETag(from_ascii("math"));
 	} else {
-		ms << MTag("alt role=\"tex\"");
+		ms << MTag(from_ascii("alt role='tex'"));
 		res = latex(buf, ls, runparams);
-		ms << subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;");
-		ms << ETag("alt");
+		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
+		ms << ETag(from_ascii("alt"));
 	}
 
-	ms <<  "<graphic fileref=\"eqn/";
-	if ( !label(0).empty())
-		ms << sgml::cleanID(buf, runparams, label(0));
+	ms << from_ascii("<graphic fileref=\"eqn/");
+	if (!label(0).empty())
+		ms << from_utf8(sgml::cleanID(buf, runparams, to_utf8(label(0))));
 	else
-		ms << sgml::uniqueID("anon");
+		ms << from_utf8(sgml::uniqueID("anon"));
 
 	if (runparams.flavor == OutputParams::XML)
-		ms << "\"/>";
+		ms << from_ascii("\"/>");
 	else
-		ms << "\">";
+		ms << from_ascii("\">");
 
-	ms << ETag(name.c_str());
+	ms << ETag(name);
 	return ms.line() + res;
 }
 

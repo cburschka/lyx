@@ -12,7 +12,7 @@
 
 #include "InsetMathExInt.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "InsetMathSymbol.h"
 #include "debug.h"
@@ -28,7 +28,7 @@ using std::auto_ptr;
 using std::endl;
 
 
-InsetMathExInt::InsetMathExInt(string const & name)
+InsetMathExInt::InsetMathExInt(docstring const & name)
 	: InsetMathNest(4), symbol_(name)
 {}
 
@@ -44,7 +44,7 @@ auto_ptr<InsetBase> InsetMathExInt::doClone() const
 }
 
 
-void InsetMathExInt::symbol(string const & symbol)
+void InsetMathExInt::symbol(docstring const & symbol)
 {
 	symbol_ = symbol;
 }
@@ -128,7 +128,7 @@ void InsetMathExInt::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathExInt::mathmlize(MathMLStream & os) const
+void InsetMathExInt::mathmlize(MathStream & os) const
 {
 	boost::scoped_ptr<InsetMathSymbol> sym(new InsetMathSymbol(symbol_));
 	//if (hasScripts())

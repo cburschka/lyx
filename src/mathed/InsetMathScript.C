@@ -12,7 +12,7 @@
 
 #include "InsetMathScript.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "InsetMathSymbol.h"
 #include "dispatchresult.h"
@@ -298,10 +298,10 @@ bool InsetMathScript::hasLimits() const
 
 	if (nuc().back()->asSymbolInset()) {
 		// \intop is an alias for \int\limits, \ointop == \oint\limits
-		if (nuc().back()->asSymbolInset()->name().find("intop") != string::npos)
+		if (nuc().back()->asSymbolInset()->name().find(from_ascii("intop")) != string::npos)
 			return true;
 		// per default \int has limits beside the \int even in displayed formulas
-		if (nuc().back()->asSymbolInset()->name().find("int") != string::npos)
+		if (nuc().back()->asSymbolInset()->name().find(from_ascii("int")) != string::npos)
 			return false;
 	}
 
@@ -510,7 +510,7 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathScript::mathmlize(MathMLStream & os) const
+void InsetMathScript::mathmlize(MathStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
@@ -547,13 +547,13 @@ void InsetMathScript::octave(OctaveStream & os) const
 }
 
 
-void InsetMathScript::infoize(std::ostream & os) const
+void InsetMathScript::infoize(odocstream & os) const
 {
 	os << "Scripts";
 }
 
 
-void InsetMathScript::infoize2(std::ostream & os) const
+void InsetMathScript::infoize2(odocstream & os) const
 {
 	if (limits_)
 		os << (limits_ == 1 ? ", Displayed limits" : ", Inlined limits");

@@ -25,11 +25,11 @@ public:
 	///
 	RefInset();
 	///
-	explicit RefInset(std::string const & data);
+	explicit RefInset(docstring const & data);
 	///
 	//void write(WriteStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	docstring const screenLabel() const;
 	///
@@ -44,17 +44,17 @@ public:
 
 	struct ref_type_info {
 		///
-		std::string latex_name;
+		docstring latex_name;
 		///
-		std::string gui_name;
+		docstring gui_name;
 		///
-		std::string short_gui_name;
+		docstring short_gui_name;
 	};
 	static ref_type_info types[];
 	///
-	static int getType(std::string const & name);
+	static int getType(docstring const & name);
 	///
-	static std::string const & getName(int type);
+	static docstring const & getName(int type);
 protected:
 	///
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);

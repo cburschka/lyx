@@ -247,7 +247,7 @@ int Paragraph::erase(pos_type start, pos_type end, bool trackChanges)
 }
 
 
-void Paragraph::insert(pos_type start, string const & str,
+void Paragraph::insert(pos_type start, docstring const & str,
                        LyXFont const & font, Change const & change)
 {
 	for (size_t i = 0, n = str.size(); i != n ; ++i)
@@ -655,8 +655,8 @@ void Paragraph::setBeginOfBody()
 	pos_type end = size();
 	if (i < end && !isNewline(i)) {
 		++i;
-		char previous_char = 0;
-		char temp = 0;
+		char_type previous_char = 0;
+		char_type temp = 0;
 		if (i < end) {
 			previous_char = text_[i];
 			if (!isNewline(i)) {

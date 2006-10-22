@@ -45,7 +45,7 @@ public:
 	/// identifies FracInsets
 	InsetMathFrac const * asFracInset() const;
 	///
-	std::string name() const;
+	docstring name() const;
 	///
 	bool extraBraces() const;
 
@@ -58,7 +58,7 @@ public:
 	///
 	void octave(OctaveStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 public:

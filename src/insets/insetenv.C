@@ -30,7 +30,7 @@ InsetEnvironment::InsetEnvironment
 		(BufferParams const & bp, string const & name)
 	: InsetText(bp), layout_(bp.getLyXTextClass()[name])
 {
-	setInsetName(name);
+	setInsetName(from_utf8(name));
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 }
@@ -49,7 +49,7 @@ auto_ptr<InsetBase> InsetEnvironment::doClone() const
 
 void InsetEnvironment::write(Buffer const & buf, ostream & os) const
 {
-	os << "Environment " << getInsetName() << "\n";
+	os << "Environment " << to_utf8(getInsetName()) << "\n";
 	InsetText::write(buf, os);
 }
 
@@ -62,8 +62,7 @@ void InsetEnvironment::read(Buffer const & buf, LyXLex & lex)
 
 docstring const InsetEnvironment::editMessage() const
 {
-	// FIXME UNICODE
-	return _("Opened Environment Inset: ") + from_utf8(getInsetName());
+	return _("Opened Environment Inset: ") + getInsetName();
 }
 
 

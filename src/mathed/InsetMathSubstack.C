@@ -13,7 +13,7 @@
 #include "LaTeXFeatures.h"
 #include "InsetMathSubstack.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "support/std_ostream.h"
 
 #include "funcrequest.h"
@@ -81,7 +81,7 @@ bool InsetMathSubstack::getStatus(LCursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetMathSubstack::infoize(std::ostream & os) const
+void InsetMathSubstack::infoize(odocstream & os) const
 {
 	os << "Substack ";
 }

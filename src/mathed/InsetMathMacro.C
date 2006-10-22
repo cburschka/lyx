@@ -14,7 +14,7 @@
 #include "InsetMathMacro.h"
 #include "MathSupport.h"
 #include "MathExtern.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 #include "buffer.h"
 #include "cursor.h"
@@ -33,7 +33,7 @@ using std::endl;
 using std::vector;
 
 
-MathMacro::MathMacro(string const & name, int numargs)
+MathMacro::MathMacro(docstring const & name, int numargs)
 	: InsetMathNest(numargs), name_(name)
 {}
 
@@ -44,7 +44,7 @@ auto_ptr<InsetBase> MathMacro::doClone() const
 }
 
 
-string MathMacro::name() const
+docstring MathMacro::name() const
 {
 	return name_;
 }
@@ -62,17 +62,15 @@ void MathMacro::cursorPos(BufferView const & bv,
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
-		string t = "Unknown: " + name();
-		vector<char_type> n(t.begin(), t.end());
-		mathed_string_dim(mi.base.font, n, dim);
+		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
 	} else if (editing(mi.base.bv)) {
 		// FIXME UNICODE
-		asArray(from_utf8(MacroTable::globalMacros().get(name()).def()), tmpl_);
+		asArray(MacroTable::globalMacros().get(name()).def(), tmpl_);
 		LyXFont font = mi.base.font;
-		augmentFont(font, "lyxtex");
+		augmentFont(font, from_ascii("lyxtex"));
 		tmpl_.metrics(mi, dim);
 		// FIXME UNICODE
-		dim.wid += mathed_string_width(font, from_utf8(name())) + 10;
+		dim.wid += mathed_string_width(font, name()) + 10;
 		// FIXME UNICODE
 		int ww = mathed_string_width(font, from_ascii("#1: "));
 		for (idx_type i = 0; i < nargs(); ++i) {
@@ -94,21 +92,18 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
 		// FIXME UNICODE
-		drawStrRed(pi, x, y, from_utf8("Unknown: " + name()));
+		drawStrRed(pi, x, y, "Unknown: " + name());
 	} else if (editing(pi.base.bv)) {
 		LyXFont font = pi.base.font;
-		augmentFont(font, "lyxtex");
+		augmentFont(font, from_ascii("lyxtex"));
 		int h = y - dim_.ascent() + 2 + tmpl_.ascent();
-		// FIXME UNICODE
-		docstring dn = from_utf8(name());
-		pi.pain.text(x + 3, h, dn, font);
-		int const w = mathed_string_width(font, dn);
+		pi.pain.text(x + 3, h, name(), font);
+		int const w = mathed_string_width(font, name());
 		tmpl_.draw(pi, x + w + 12, h);
 		h += tmpl_.descent();
 		Dimension ldim;
 		string t = "#1: ";
-		vector<char_type> n(t.begin(), t.end());
-		mathed_string_dim(font, n, ldim);
+		mathed_string_dim(font, name(), ldim);
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathArray const & c = cell(i);
 			h += max(c.ascent(), ldim.asc) + 5;
@@ -136,7 +131,7 @@ void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 void MathMacro::validate(LaTeXFeatures & features) const
 {
 	if (name() == "binom" || name() == "mathcircumflex")
-		features.require(name());
+		features.require(to_utf8(name()));
 }
 
 
@@ -165,7 +160,7 @@ void MathMacro::maple(MapleStream & os) const
 }
 
 
-void MathMacro::mathmlize(MathMLStream & os) const
+void MathMacro::mathmlize(MathStream & os) const
 {
 	updateExpansion();
 	lyx::mathmlize(expanded_, os);
@@ -185,13 +180,13 @@ void MathMacro::updateExpansion() const
 }
 
 
-void MathMacro::infoize(std::ostream & os) const
+void MathMacro::infoize(odocstream & os) const
 {
 	os << "Macro: " << name();
 }
 
 
-void MathMacro::infoize2(std::ostream & os) const
+void MathMacro::infoize2(odocstream & os) const
 {
 	os << "Macro: " << name();
 

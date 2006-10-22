@@ -12,25 +12,24 @@
 
 #include "InsetMathExFunc.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
 
 namespace lyx {
 
-
-using std::string;
 using std::auto_ptr;
 using std::vector;
+using std::string;
 
 
-InsetMathExFunc::InsetMathExFunc(string const & name)
+InsetMathExFunc::InsetMathExFunc(docstring const & name)
 	: InsetMathNest(1), name_(name)
 {}
 
 
-InsetMathExFunc::InsetMathExFunc(string const & name, MathArray const & ar)
+InsetMathExFunc::InsetMathExFunc(docstring const & name, MathArray const & ar)
 	: InsetMathNest(1), name_(name)
 {
 	cell(0) = ar;
@@ -45,20 +44,17 @@ auto_ptr<InsetBase> InsetMathExFunc::doClone() const
 
 void InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
 {
-	// FIXME UNICODE
-	vector<char_type> n(name_.begin(), name_.end());
-	mathed_string_dim(mi.base.font, n, dim_);
+	mathed_string_dim(mi.base.font, name_, dim_);
 }
 
 
 void InsetMathExFunc::draw(PainterInfo & pi, int x, int y) const
 {
-	// FIXME UNICODE
-	drawStrBlack(pi, x, y, from_utf8(name_));
+	drawStrBlack(pi, x, y, name_);
 }
 
 
-string InsetMathExFunc::name() const
+docstring InsetMathExFunc::name() const
 {
 	return name_;
 }
@@ -82,7 +78,7 @@ void InsetMathExFunc::maxima(MaximaStream & os) const
 }
 
 
-string asMathematicaName(string const & name)
+static string asMathematicaName(string const & name)
 {
 	if (name == "sin")    return "Sin";
 	if (name == "sinh")   return "Sinh";
@@ -114,13 +110,19 @@ string asMathematicaName(string const & name)
 }
 
 
+static docstring asMathematicaName(docstring const & name)
+{
+	return from_utf8(asMathematicaName(to_utf8(name)));
+}
+
+
 void InsetMathExFunc::mathematica(MathematicaStream & os) const
 {
 	os << asMathematicaName(name_) << '[' << cell(0) << ']';
 }
 
 
-void InsetMathExFunc::mathmlize(MathMLStream & os) const
+void InsetMathExFunc::mathmlize(MathStream & os) const
 {
 	os << MTag(name_.c_str()) << cell(0) << ETag(name_.c_str());
 }

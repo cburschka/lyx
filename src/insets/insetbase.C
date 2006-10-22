@@ -248,9 +248,9 @@ docstring const InsetBase::editMessage() const
 }
 
 
-std::string const & InsetBase::getInsetName() const
+docstring const & InsetBase::getInsetName() const
 {
-	static std::string const name = "unknown";
+	static docstring const name = from_ascii("unknown");
 	return name;
 }
 

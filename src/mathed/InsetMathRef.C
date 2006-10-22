@@ -35,11 +35,11 @@ using std::endl;
 
 
 RefInset::RefInset()
-	: CommandInset("ref")
+	: CommandInset(from_ascii("ref"))
 {}
 
 
-RefInset::RefInset(string const & data)
+RefInset::RefInset(docstring const & data)
 	: CommandInset(data)
 {}
 
@@ -50,7 +50,7 @@ auto_ptr<InsetBase> RefInset::doClone() const
 }
 
 
-void RefInset::infoize(std::ostream & os) const
+void RefInset::infoize(odocstream & os) const
 {
 	os << "Ref: " << cell(0);
 }
@@ -62,7 +62,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ref") {
 			MathArray ar;
-			if (createInsetMath_fromDialogStr(to_utf8(cmd.argument()), ar)) {
+			if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 				*this = *ar[0].nucleus()->asRefInset();
 				break;
 			}
@@ -78,7 +78,7 @@ void RefInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
-			lyxerr << "trying to goto ref '" << asString(cell(0)) << "'" << endl;
+			lyxerr << "trying to goto ref '" << to_utf8(asString(cell(0))) << "'" << endl;
 			cur.bv().dispatch(FuncRequest(LFUN_LABEL_GOTO, asString(cell(0))));
 			break;
 		}
@@ -124,13 +124,13 @@ bool RefInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 docstring const RefInset::screenLabel() const
 {
 	docstring str;
-	for (int i = 0; !types[i].latex_name.empty(); ++i)
+	for (int i = 0; !types[i].latex_name.empty(); ++i) {
 		if (commandname() == types[i].latex_name) {
-			str = _(types[i].short_gui_name);
+			str = _(to_utf8(types[i].short_gui_name));
 			break;
 		}
-	// FIXME UNICODE
-	str += from_utf8(asString(cell(0)));
+	}
+	str += asString(cell(0));
 
 	//if (/* !isLatex && */ !cell(0).empty()) {
 	//	str += "||";
@@ -152,7 +152,7 @@ void RefInset::validate(LaTeXFeatures & features) const
 int RefInset::plaintext(odocstream & os, OutputParams const &) const
 {
 	// FIXME UNICODE
-	os << '[' << from_utf8(asString(cell(0))) << ']';
+	os << '[' << asString(cell(0)) << ']';
 	return 0;
 }
 
@@ -162,7 +162,7 @@ int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & 
 	if (cell(1).empty()) {
                 // FIXME UNICODE
 		os << "<xref linkend=\""
-                   << from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))));
+		   << from_utf8(sgml::cleanID(buf, runparams, to_utf8(asString(cell(0)))));
 		if (runparams.flavor == OutputParams::XML)
 			os << "\"/>";
 		else
@@ -170,10 +170,10 @@ int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & 
 	} else {
                 // FIXME UNICODE
 		os << "<link linkend=\""
-                   << from_ascii(sgml::cleanID(buf, runparams, asString(cell(0))))
+		   << from_ascii(sgml::cleanID(buf, runparams, to_utf8(asString(cell(0)))))
 		   << "\">"
-                   << from_ascii(asString(cell(1)))
-                   << "</link>";
+		   << asString(cell(1))
+		   << "</link>";
 	}
 
 	return 0;
@@ -181,13 +181,13 @@ int RefInset::docbook(Buffer const & buf, odocstream & os, OutputParams const & 
 
 
 RefInset::ref_type_info RefInset::types[] = {
-	{ "ref",       N_("Standard"),              N_("Ref: ")},
-	{ "eqref",     N_("Equation"),              N_("EqRef: ")},
-	{ "pageref",   N_("Page Number"),           N_("Page: ")},
-	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
-	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
-	{ "prettyref", N_("PrettyRef"),             N_("PrettyRef: ")},
-	{ "", "", "" }
+	{ from_ascii("ref"),       from_ascii(N_("Standard")),              from_ascii(N_("Ref: "))},
+	{ from_ascii("eqref"),     from_ascii(N_("Equation")),              from_ascii(N_("EqRef: "))},
+	{ from_ascii("pageref"),   from_ascii(N_("Page Number")),           from_ascii(N_("Page: "))},
+	{ from_ascii("vpageref"),  from_ascii(N_("Textual Page Number")),   from_ascii(N_("TextPage: "))},
+	{ from_ascii("vref"),      from_ascii(N_("Standard+Textual Page")), from_ascii(N_("Ref+Text: "))},
+	{ from_ascii("prettyref"), from_ascii(N_("PrettyRef")),             from_ascii(N_("PrettyRef: "))},
+	{ from_ascii(""), from_ascii(""), from_ascii("") }
 };
 
 

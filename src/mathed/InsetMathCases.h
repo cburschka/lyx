@@ -35,7 +35,7 @@ public:
 		FuncStatus & flag) const;
 
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void normalize(NormalStream &) const;
 	///

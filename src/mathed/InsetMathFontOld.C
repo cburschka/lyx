@@ -12,7 +12,7 @@
 
 #include "InsetMathFontOld.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "support/std_ostream.h"
@@ -77,7 +77,7 @@ void InsetMathFontOld::normalize(NormalStream & os) const
 }
 
 
-void InsetMathFontOld::infoize(std::ostream & os) const
+void InsetMathFontOld::infoize(odocstream & os) const
 {
 	os << "Font: " << key_->name;
 }

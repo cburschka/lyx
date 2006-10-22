@@ -101,21 +101,21 @@ void InsetCaption::setLabel(LCursor & cur) const
 				InsetBase * const in = &cur[i].inset();
 				if (in->lyxCode() == InsetBase::FLOAT_CODE
 				    || in->lyxCode() == InsetBase::WRAP_CODE) {
-					s = in->getInsetName();
+					s = to_utf8(in->getInsetName());
 					break;
 				}
 			}
 		Floating const & fl = textclass_.floats().getType(s);
 		s = fl.name();
-		string num;
+		docstring num;
 		if (s.empty())
 			s = "Senseless";
 		else
-			num = convert<string>(counter_);
+			num = convert<docstring>(counter_);
 
 		// Generate the label
 		label = to_utf8(
-			bformat(from_ascii("%1$s %2$s:"), _(s), from_ascii(num)));
+			bformat(from_ascii("%1$s %2$s:"), _(s), num));
 	}
 }
 

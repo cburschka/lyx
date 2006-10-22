@@ -32,7 +32,7 @@ public:
 	/// are we in math mode, text mode, or unsure?
 	mode_type currentMode() const;
 	///
-	std::string name() const;
+	docstring name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -44,7 +44,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;

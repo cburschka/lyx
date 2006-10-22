@@ -12,7 +12,6 @@
 
 #include "InsetMathGrid.h"
 #include "MathData.h"
-#include "MathMLStream.h"
 #include "MathStream.h"
 
 #include "BufferView.h"
@@ -80,9 +79,9 @@ void mathed_parse_normal(InsetMathGrid &, string const & argument);
 
 namespace {
 
-string verboseHLine(int n)
+docstring verboseHLine(int n)
 {
-	string res;
+	docstring res;
 	for (int i = 0; i < n; ++i)
 		res += "\\hline";
 	if (n)
@@ -138,7 +137,7 @@ InsetMathGrid::ColInfo::ColInfo()
 //////////////////////////////////////////////////////////////
 
 
-InsetMathGrid::InsetMathGrid(char v, string const & h)
+InsetMathGrid::InsetMathGrid(char v, docstring const & h)
 	: InsetMathNest(guessColumns(h)),
 	  rowinfo_(2),
 	  colinfo_(guessColumns(h) + 1),
@@ -173,7 +172,7 @@ InsetMathGrid::InsetMathGrid(col_type m, row_type n)
 }
 
 
-InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, string const & h)
+InsetMathGrid::InsetMathGrid(col_type m, row_type n, char v, docstring const & h)
 	: InsetMathNest(m * n),
 	  rowinfo_(n + 1),
 	  colinfo_(m + 1),
@@ -218,18 +217,18 @@ void InsetMathGrid::setDefaults()
 }
 
 
-void InsetMathGrid::halign(string const & hh)
+void InsetMathGrid::halign(docstring const & hh)
 {
 	col_type col = 0;
-	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it) {
-		char c = *it;
+	for (docstring::const_iterator it = hh.begin(); it != hh.end(); ++it) {
+		char_type c = *it;
 		if (c == '|') {
 			colinfo_[col].lines_++;
 		} else if (col >= ncols()) {
 			// Only '|' is allowed in the last dummy column
 			break;
 		} else if (c == 'c' || c == 'l' || c == 'r') {
-			colinfo_[col].align_ = c;
+			colinfo_[col].align_ = (char)c;
 			++col;
 			colinfo_[col].lines_ = 0;
 		} else {
@@ -247,10 +246,10 @@ void InsetMathGrid::halign(string const & hh)
 }
 
 
-InsetMathGrid::col_type InsetMathGrid::guessColumns(string const & hh) const
+InsetMathGrid::col_type InsetMathGrid::guessColumns(docstring const & hh) const
 {
 	col_type col = 0;
-	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it)
+	for (docstring::const_iterator it = hh.begin(); it != hh.end(); ++it)
 		if (*it == 'c' || *it == 'l' || *it == 'r')
 			++col;
 	// let's have at least one column, even if we did not recognize its
@@ -273,14 +272,14 @@ char InsetMathGrid::halign(col_type col) const
 }
 
 
-string InsetMathGrid::halign() const
+docstring InsetMathGrid::halign() const
 {
-	string res;
+	docstring res;
 	for (col_type col = 0; col < ncols(); ++col) {
-		res += string(colinfo_[col].lines_, '|');
+		res += docstring(colinfo_[col].lines_, '|');
 		res += colinfo_[col].align_;
 	}
-	return res + string(colinfo_[ncols()].lines_, '|');
+	return res + docstring(colinfo_[ncols()].lines_, '|');
 }
 
 
@@ -608,12 +607,12 @@ void InsetMathGrid::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-string InsetMathGrid::eolString(row_type row, bool emptyline, bool fragile) const
+docstring InsetMathGrid::eolString(row_type row, bool emptyline, bool fragile) const
 {
-	string eol;
+	docstring eol;
 
 	if (!rowinfo_[row].crskip_.zero())
-		eol += '[' + rowinfo_[row].crskip_.asLatexString() + ']';
+		eol += '[' + from_utf8(rowinfo_[row].crskip_.asLatexString()) + ']';
 
 	// make sure an upcoming '[' does not break anything
 	if (row + 1 < nrows()) {
@@ -625,17 +624,17 @@ string InsetMathGrid::eolString(row_type row, bool emptyline, bool fragile) cons
 
 	// only add \\ if necessary
 	if (eol.empty() && row + 1 == nrows() && (nrows() == 1 || !emptyline))
-		return string();
+		return docstring();
 
 	return (fragile ? "\\protect\\\\" : "\\\\") + eol;
 }
 
 
-string InsetMathGrid::eocString(col_type col, col_type lastcol) const
+docstring InsetMathGrid::eocString(col_type col, col_type lastcol) const
 {
 	if (col + 1 == lastcol)
-		return string();
-	return " & ";
+		return docstring();
+	return from_ascii(" & ");
 }
 
 
@@ -938,7 +937,7 @@ void InsetMathGrid::normalize(NormalStream & os) const
 }
 
 
-void InsetMathGrid::mathmlize(MathMLStream & os) const
+void InsetMathGrid::mathmlize(MathStream & os) const
 {
 	os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -953,7 +952,7 @@ void InsetMathGrid::mathmlize(MathMLStream & os) const
 
 void InsetMathGrid::write(WriteStream & os) const
 {
-	string eol;
+	docstring eol;
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
 		// don't write & and empty cells at end of line
@@ -973,7 +972,7 @@ void InsetMathGrid::write(WriteStream & os) const
 		if (!emptyline && row + 1 < nrows())
 			os << "\n";
 	}
-	string const s = verboseHLine(rowinfo_[nrows()].lines_);
+	docstring const s = verboseHLine(rowinfo_[nrows()].lines_);
 	if (!s.empty()) {
 		if (eol.empty()) {
 			if (os.fragile())

@@ -11,19 +11,18 @@
 #include <config.h>
 
 #include "InsetMathString.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
 
 namespace lyx {
 
-using std::string;
 using std::auto_ptr;
 using std::vector;
 
 
-InsetMathString::InsetMathString(string const & s)
+InsetMathString::InsetMathString(docstring const & s)
 	: str_(s)
 {}
 
@@ -36,18 +35,13 @@ auto_ptr<InsetBase> InsetMathString::doClone() const
 
 void InsetMathString::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// FIXME UNICODE
-	vector<char_type> n(str_.begin(), str_.end());
-	mathed_string_dim(mi.base.font, n, dim);
+	mathed_string_dim(mi.base.font, str_, dim);
 }
 
 
 void InsetMathString::draw(PainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
-	// FIXME UNICODE
-	docstring dstr = from_utf8(str_);
-	pi.draw(x, y, dstr);
+	pi.draw(x, y, str_);
 }
 
 
@@ -66,7 +60,7 @@ void InsetMathString::maple(MapleStream & os) const
 
 	// insert '*' between adjacent chars if type is LM_TC_VAR
 	os << str_[0];
-	for (string::size_type i = 1; i < str_.size(); ++i)
+	for (size_t i = 1; i < str_.size(); ++i)
 		os << str_[i];
 }
 
@@ -86,12 +80,12 @@ void InsetMathString::octave(OctaveStream & os) const
 
 	// insert '*' between adjacent chars if type is LM_TC_VAR
 	os << str_[0];
-	for (string::size_type i = 1; i < str_.size(); ++i)
+	for (size_t i = 1; i < str_.size(); ++i)
 		os << str_[i];
 }
 
 
-void InsetMathString::mathmlize(MathMLStream & os) const
+void InsetMathString::mathmlize(MathStream & os) const
 {
 /*
 	if (code_ == LM_TC_VAR)

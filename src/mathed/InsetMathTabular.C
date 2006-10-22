@@ -12,7 +12,7 @@
 
 #include "InsetMathTabular.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "support/lstrings.h"
@@ -28,19 +28,19 @@ using std::string;
 using std::auto_ptr;
 
 
-InsetMathTabular::InsetMathTabular(string const & name, int m, int n)
+InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n)
 	: InsetMathGrid(m, n), name_(name)
 {}
 
 
-InsetMathTabular::InsetMathTabular(string const & name, int m, int n,
-		char valign, string const & halign)
+InsetMathTabular::InsetMathTabular(docstring const & name, int m, int n,
+		char valign, docstring const & halign)
 	: InsetMathGrid(m, n, valign, halign), name_(name)
 {}
 
 
-InsetMathTabular::InsetMathTabular(string const & name, char valign,
-		string const & halign)
+InsetMathTabular::InsetMathTabular(docstring const & name, char valign,
+		docstring const & halign)
 	: InsetMathGrid(valign, halign), name_(name)
 {}
 
@@ -87,9 +87,9 @@ void InsetMathTabular::write(WriteStream & os) const
 }
 
 
-void InsetMathTabular::infoize(std::ostream & os) const
+void InsetMathTabular::infoize(odocstream & os) const
 {
-	string name = name_;
+	docstring name = name_;
 	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }

@@ -12,7 +12,7 @@
 
 #include "InsetMathBoxed.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "LaTeXFeatures.h"
@@ -67,7 +67,7 @@ void InsetMathBoxed::normalize(NormalStream & os) const
 }
 
 
-void InsetMathBoxed::infoize(std::ostream & os) const
+void InsetMathBoxed::infoize(odocstream & os) const
 {
 	os << "Boxed: ";
 }

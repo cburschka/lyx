@@ -127,7 +127,7 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 	params_.type = type;
-	setInsetName(type);
+	setInsetName(from_utf8(type));
 }
 
 

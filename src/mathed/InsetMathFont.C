@@ -12,7 +12,7 @@
 
 #include "InsetMathFont.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
@@ -20,7 +20,6 @@
 
 namespace lyx {
 
-using std::string;
 using std::auto_ptr;
 
 
@@ -47,7 +46,7 @@ InsetMath::mode_type InsetMathFont::currentMode() const
 
 void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontSetChanger dummy(mi.base, key_->name.c_str());
+	FontSetChanger dummy(mi.base, key_->name);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 	dim_ = dim;
@@ -75,7 +74,7 @@ void InsetMathFont::drawT(TextPainter & pain, int x, int y) const
 }
 
 
-string InsetMathFont::name() const
+docstring InsetMathFont::name() const
 {
 	return key_->name;
 }
@@ -95,7 +94,7 @@ void InsetMathFont::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetMathFont::infoize(std::ostream & os) const
+void InsetMathFont::infoize(odocstream & os) const
 {
 	os << "Font: " << key_->name;
 }

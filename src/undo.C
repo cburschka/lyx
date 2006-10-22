@@ -96,7 +96,7 @@ void doRecordUndo(Undo::undo_kind kind,
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
 		// simply use the whole cell
-		undo.array = asString(cell.cell());
+		undo.array = to_utf8(asString(cell.cell()));
 	} else {
 		// some more effort needed here as 'the whole cell' of the
 		// main LyXText _is_ the whole document.

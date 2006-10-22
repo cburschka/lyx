@@ -40,7 +40,7 @@ MacroData::MacroData()
 {}
 
 
-MacroData::MacroData(string const & def, int numargs, string const & disp)
+MacroData::MacroData(docstring const & def, int numargs, docstring const & disp)
 	: def_(def), numargs_(numargs), disp_(disp)
 {}
 
@@ -49,7 +49,7 @@ void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 {
 	InsetMathSqrt inset; // Hack. Any inset with a cell would do.
 	// FIXME UNICODE
-	asArray(from_utf8(disp_.empty() ? def_ : disp_), inset.cell(0));
+	asArray(disp_.empty() ? def_ : disp_, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
 	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
 	for (DocIterator it = doc_iterator_begin(inset); it; it.forwardChar()) {
@@ -86,13 +86,13 @@ MacroTable & MacroTable::globalMacros()
 //}
 
 
-bool MacroTable::has(string const & name) const
+bool MacroTable::has(docstring const & name) const
 {
 	return find(name) != end();
 }
 
 
-MacroData const & MacroTable::get(string const & name) const
+MacroData const & MacroTable::get(docstring const & name) const
 {
 	const_iterator it = find(name);
 	BOOST_ASSERT(it != end());
@@ -100,17 +100,17 @@ MacroData const & MacroTable::get(string const & name) const
 }
 
 
-void MacroTable::insert(string const & name, MacroData const & data)
+void MacroTable::insert(docstring const & name, MacroData const & data)
 {
 	//lyxerr << "MacroTable::insert: " << name << endl;
 	operator[](name) = data;
 }
 
 
-void MacroTable::insert(string const & def)
+void MacroTable::insert(docstring const & def)
 {
 	//lyxerr << "MacroTable::insert, def: " << def << endl;
-	istringstream is(def);
+	std::istringstream is(to_utf8(def));
 	MathMacroTemplate mac(is);
 	insert(mac.name(), mac.asMacroData());
 }
@@ -120,9 +120,9 @@ void MacroTable::dump()
 {
 	lyxerr << "\n------------------------------------------" << endl;
 	for (const_iterator it = begin(); it != end(); ++it)
-		lyxerr << it->first
-			<< " [" << it->second.def() << "] : "
-			<< " [" << it->second.disp() << "] : "
+		lyxerr << to_utf8(it->first)
+			<< " [" << to_utf8(it->second.def()) << "] : "
+			<< " [" << to_utf8(it->second.disp()) << "] : "
 			<< endl;
 	lyxerr << "------------------------------------------" << endl;
 }

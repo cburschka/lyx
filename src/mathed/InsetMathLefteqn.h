@@ -25,13 +25,13 @@ public:
 	///
 	InsetMathLefteqn();
 	///
-	std::string name() const;
+	docstring name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };

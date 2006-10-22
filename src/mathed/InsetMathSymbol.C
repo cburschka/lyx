@@ -12,7 +12,7 @@
 
 #include "InsetMathSymbol.h"
 #include "dimension.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MathParser.h"
@@ -33,12 +33,12 @@ InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
 
 
 InsetMathSymbol::InsetMathSymbol(char const * name)
-	: sym_(in_word_set(name)), h_(0), width_(0), scriptable_(false)
+	: sym_(in_word_set(from_ascii(name))), h_(0), width_(0), scriptable_(false)
 {}
 
 
-InsetMathSymbol::InsetMathSymbol(string const & name)
-	: sym_(in_word_set(name.c_str())), h_(0), width_(0), scriptable_(false)
+InsetMathSymbol::InsetMathSymbol(docstring const & name)
+	: sym_(in_word_set(name)), h_(0), width_(0), scriptable_(false)
 {}
 
 
@@ -48,7 +48,7 @@ auto_ptr<InsetBase> InsetMathSymbol::doClone() const
 }
 
 
-string InsetMathSymbol::name() const
+docstring InsetMathSymbol::name() const
 {
 	return sym_->name;
 }
@@ -62,8 +62,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	//	<< "'" << std::endl;
 
 	int const em = mathed_char_width(mi.base.font, 'M');
-	FontSetChanger dummy(mi.base, sym_->inset.c_str());
-	// FIXME UNICODE
+	FontSetChanger dummy(mi.base, sym_->inset);
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	// correct height for broken cmex and wasy font
 #if defined(__APPLE__) && defined(__GNUC__)
@@ -142,7 +141,7 @@ bool InsetMathSymbol::takesLimits() const
 void InsetMathSymbol::validate(LaTeXFeatures & features) const
 {
 	if (!sym_->requires.empty())
-		features.require(sym_->requires);
+		features.require(to_utf8(sym_->requires));
 }
 
 
@@ -184,7 +183,7 @@ void InsetMathSymbol::mathematica(MathematicaStream & os) const
 }
 
 
-char const * MathMLtype(string const & s)
+char const * MathMLtype(docstring const & s)
 {
 	if (s == "mathop")
 		return "mo";
@@ -192,7 +191,7 @@ char const * MathMLtype(string const & s)
 }
 
 
-void InsetMathSymbol::mathmlize(MathMLStream & os) const
+void InsetMathSymbol::mathmlize(MathStream & os) const
 {
 	char const * type = MathMLtype(sym_->extra);
 	os << '<' << type << "> ";
@@ -220,7 +219,7 @@ void InsetMathSymbol::write(WriteStream & os) const
 }
 
 
-void InsetMathSymbol::infoize2(std::ostream & os) const
+void InsetMathSymbol::infoize2(odocstream & os) const
 {
 	os << "Symbol: " << name();
 }

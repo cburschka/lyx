@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathNumber.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -22,7 +22,7 @@ using std::string;
 using std::auto_ptr;
 using std::vector;
 
-InsetMathNumber::InsetMathNumber(string const & s)
+InsetMathNumber::InsetMathNumber(docstring const & s)
 	: str_(s)
 {}
 
@@ -35,16 +35,13 @@ auto_ptr<InsetBase> InsetMathNumber::doClone() const
 
 void InsetMathNumber::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	// FIXME UNICODE
-	vector<char_type> n(str_.begin(), str_.end());
-	mathed_string_dim(mi.base.font, n, dim);
+	mathed_string_dim(mi.base.font, str_, dim);
 }
 
 
 void InsetMathNumber::draw(PainterInfo & pi, int x, int y) const
 {
-	// FIXME UNICODE
-	pi.draw(x, y, from_utf8(str_));
+	pi.draw(x, y, str_);
 }
 
 
@@ -72,7 +69,7 @@ void InsetMathNumber::octave(OctaveStream & os) const
 }
 
 
-void InsetMathNumber::mathmlize(MathMLStream & os) const
+void InsetMathNumber::mathmlize(MathStream & os) const
 {
 	os << "<mi> " << str_ << " </mi>";
 }

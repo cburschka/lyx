@@ -112,7 +112,7 @@ void InsetNoteParams::read(LyXLex & lex)
 
 void InsetNote::init()
 {
-	setInsetName("Note");
+	setInsetName(from_utf8("Note"));
 	setButtonLabel();
 }
 

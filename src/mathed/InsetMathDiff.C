@@ -12,7 +12,7 @@
 
 #include "InsetMathDiff.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "debug.h"
 
 
@@ -98,7 +98,7 @@ void InsetMathDiff::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDiff::mathmlize(MathMLStream & os) const
+void InsetMathDiff::mathmlize(MathStream & os) const
 {
 	os << "diff(";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {

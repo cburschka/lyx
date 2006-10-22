@@ -12,7 +12,7 @@
 
 #include "InsetMathSpace.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 #include "LaTeXFeatures.h"
 #include "LColor.h"
@@ -40,7 +40,7 @@ InsetMathSpace::InsetMathSpace(int sp)
 {}
 
 
-InsetMathSpace::InsetMathSpace(string const & name)
+InsetMathSpace::InsetMathSpace(docstring const & name)
 	: space_(1)
 {
 	for (int i = 0; i < nSpace; ++i)

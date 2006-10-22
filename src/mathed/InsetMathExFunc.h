@@ -26,15 +26,15 @@ namespace lyx {
 class InsetMathExFunc : public InsetMathNest {
 public:
 	///
-	explicit InsetMathExFunc(std::string const & name);
+	explicit InsetMathExFunc(docstring const & name);
 	///
-	InsetMathExFunc(std::string const & name, MathArray const & ar);
+	InsetMathExFunc(docstring const & name, MathArray const & ar);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	std::string name() const;
+	docstring name() const;
 
 	///
 	void maple(MapleStream &) const;
@@ -43,14 +43,14 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void octave(OctaveStream &) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	std::string const name_;
+	docstring const name_;
 };
 
 } // namespace lyx

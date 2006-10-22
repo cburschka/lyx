@@ -34,8 +34,8 @@ enum HullType {
 	hullGather
 };
 
-HullType hullType(std::string const & name);
-std::string hullName(HullType type);
+HullType hullType(docstring const & name);
+docstring hullName(HullType type);
 
 /**
 
@@ -77,7 +77,7 @@ class OctaveStream;
 class MapleStream;
 class MaximaStream;
 class MathematicaStream;
-class MathMLStream;
+class MathStream;
 class WriteStream;
 class InfoStream;
 
@@ -153,12 +153,12 @@ public:
 	virtual bool extraBraces() const { return false; }
 
 	/// return the content as char if the inset is able to do so
-	virtual char getChar() const { return 0; }
+	virtual char_type getChar() const { return 0; }
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 
 	/// char char code if possible
-	virtual void handleFont(std::string const &) {}
+	virtual void handleFont(docstring const &) {}
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?
@@ -179,7 +179,7 @@ public:
 	/// write content as something readable by Mathematica
 	virtual void mathematica(MathematicaStream &) const;
 	/// write content as something resembling MathML
-	virtual void mathmlize(MathMLStream &) const;
+	virtual void mathmlize(MathStream &) const;
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
 
@@ -193,7 +193,7 @@ public:
 	/// change type
 	virtual void mutate(HullType /*newtype*/) {}
 	/// usually the latex name
-	virtual std::string name() const;
+	virtual docstring name() const;
 
 	/// math stuff usually isn't allowed in text mode
 	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }

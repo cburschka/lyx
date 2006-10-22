@@ -469,11 +469,11 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
 		// FIXME UNICODE
-		par.params().labelString(buf.B_(lyx::to_ascii(layout->labelstring())));
+		par.params().labelString(buf.B_(to_ascii(layout->labelstring())));
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
-		string type;
+		docstring type;
 		size_t i = it.depth();
 		while (i > 0) {
 			--i;
@@ -487,7 +487,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 		docstring s;
 		if (!type.empty()) {
-			Floating const & fl = textclass.floats().getType(type);
+			Floating const & fl = textclass.floats().getType(to_ascii(type));
 			// FIXME UNICODE
 			counters.step(from_ascii(fl.type()));
 
@@ -496,7 +496,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		} else {
 			// par->SetLayout(0);
 			// FIXME UNICODE
-			s = buf.B_(lyx::to_ascii(layout->labelstring()));
+			s = buf.B_(to_ascii(layout->labelstring()));
 		}
 
 		par.params().labelString(s);
@@ -504,7 +504,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		par.params().labelString(docstring());
 	else
 		// FIXME UNICODE
-		par.params().labelString(buf.B_(lyx::to_ascii(layout->labelstring())));
+		par.params().labelString(buf.B_(to_ascii(layout->labelstring())));
 }
 
 } // anon namespace
@@ -597,7 +597,7 @@ docstring expandLabel(Buffer const & buf,
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 
 	// FIXME UNICODE
-	docstring fmt = buf.B_(lyx::to_ascii(appendix ? layout->labelstring_appendix()
+	docstring fmt = buf.B_(to_ascii(appendix ? layout->labelstring_appendix()
 					     : layout->labelstring()));
 
 	// handle 'inherited level parts' in 'fmt',

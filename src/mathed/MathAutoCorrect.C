@@ -42,24 +42,24 @@ public:
 	///
 	Correction() {}
 	///
-	bool correct(MathAtom & at, char c) const;
+	bool correct(MathAtom & at, char_type c) const;
 	///
-	bool read(istream & is);
+	bool read(idocstream & is);
 	///
-	void write(ostream & os) const;
+	void write(odocstream & os) const;
 private:
 	///
 	MathAtom from1_;
 	///
-	char from2_;
+	char_type from2_;
 	///
 	MathAtom to_;
 };
 
 
-bool Correction::read(istream & is)
+bool Correction::read(idocstream & is)
 {
-	string s1, s2, s3;
+	docstring s1, s2, s3;
 	is >> s1 >> s2 >> s3;
 	if (!is)
 		return false;
@@ -77,14 +77,14 @@ bool Correction::read(istream & is)
 }
 
 
-void Correction::write(ostream & os) const
+void Correction::write(odocstream & os) const
 {
 	os << "from: '" << from1_ << "' and '" << from2_
 	   << "' to '" << to_ << '\'' << endl;
 }
 
 
-bool Correction::correct(MathAtom & at, char c) const
+bool Correction::correct(MathAtom & at, char_type c) const
 {
 	//lyxerr[Debug::MATHED]
 	//	<< "trying to correct ar: " << at << " from: '" << from1_ << '\'' << endl;
@@ -100,14 +100,14 @@ bool Correction::correct(MathAtom & at, char c) const
 }
 
 
-istream & operator>>(istream & is, Correction & corr)
+idocstream & operator>>(idocstream & is, Correction & corr)
 {
 	corr.read(is);
 	return is;
 }
 
 
-ostream & operator<<(ostream & os, Correction & corr)
+odocstream & operator<<(odocstream & os, Correction & corr)
 {
 	corr.write(os);
 	return os;
@@ -125,14 +125,14 @@ public:
 	///
 	void insert(const Correction & corr) { data_.push_back(corr); }
 	///
-	bool correct(MathAtom & at, char c) const;
+	bool correct(MathAtom & at, char_type c) const;
 private:
 	///
 	vector<Correction> data_;
 };
 
 
-bool Corrections::correct(MathAtom & at, char c) const
+bool Corrections::correct(MathAtom & at, char_type c) const
 {
 	for (const_iterator it = data_.begin(); it != data_.end(); ++it)
 		if (it->correct(at, c))
@@ -159,7 +159,7 @@ void initAutoCorrect()
 			//lyxerr[Debug::MATHED] << "ignoring line '" << line << '\'' << endl;
 			continue;
 		}
-		istringstream il(line);
+		idocstringstream il(from_utf8(line));
 
 		//lyxerr[Debug::MATHED] << "line '" << line << '\'' << endl;
 		Correction corr;

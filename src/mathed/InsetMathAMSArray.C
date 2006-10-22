@@ -13,7 +13,7 @@
 #include "LaTeXFeatures.h"
 #include "InsetMathAMSArray.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -24,21 +24,19 @@
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
 
-using std::string;
 using std::auto_ptr;
-
 
 namespace lyx {
 
 using support::bformat;
 
 
-InsetMathAMSArray::InsetMathAMSArray(string const & name, int m, int n)
+InsetMathAMSArray::InsetMathAMSArray(docstring const & name, int m, int n)
 	: InsetMathGrid(m, n), name_(name)
 {}
 
 
-InsetMathAMSArray::InsetMathAMSArray(string const & name)
+InsetMathAMSArray::InsetMathAMSArray(docstring const & name)
 	: InsetMathGrid(1, 1), name_(name)
 {}
 
@@ -94,8 +92,8 @@ void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 {
 	int const yy = y - dim_.ascent();
 	// Drawing the deco after an ArrayChanger does not work
-	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), name_left());
-	mathed_draw_deco(pi, x + dim_.width() - 8, yy, 5, dim_.height(), name_right());
+	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), from_ascii(name_left()));
+	mathed_draw_deco(pi, x + dim_.width() - 8, yy, 5, dim_.height(), from_ascii(name_right()));
 	ArrayChanger dummy(pi.base);
 	InsetMathGrid::drawWithMargin(pi, x, y, 6, 8);
 }
@@ -109,8 +107,7 @@ bool InsetMathAMSArray::getStatus(LCursor & cur, FuncRequest const & cmd,
 		docstring const & s = cmd.argument();
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
-			from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
-				from_utf8(name_)));
+				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),	name_));
 			flag.enabled(false);
 			return true;
 		}
@@ -130,9 +127,9 @@ void InsetMathAMSArray::write(WriteStream & os) const
 }
 
 
-void InsetMathAMSArray::infoize(std::ostream & os) const
+void InsetMathAMSArray::infoize(odocstream & os) const
 {
-	string name = name_;
+	docstring name = name_;
 	name[0] = support::uppercase(name[0]);
 	os << name << ' ';
 }

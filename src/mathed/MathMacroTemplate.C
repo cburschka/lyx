@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "MathMacroTemplate.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 
@@ -31,22 +31,21 @@ namespace lyx {
 
 using support::bformat;
 
-using std::string;
 using std::auto_ptr;
 using std::ostream;
 using std::endl;
 
 
 MathMacroTemplate::MathMacroTemplate()
-	: InsetMathNest(2), numargs_(0), name_(), type_("newcommand")
+	: InsetMathNest(2), numargs_(0), name_(), type_(from_ascii("newcommand"))
 {
 	initMath();
 }
 
 
-MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs,
-		string const & type, MathArray const & ar1, MathArray const & ar2)
-	: InsetMathNest(2), numargs_(numargs), name_(nm), type_(type)
+MathMacroTemplate::MathMacroTemplate(docstring const & name, int numargs,
+		docstring const & type, MathArray const & ar1, MathArray const & ar2)
+	: InsetMathNest(2), numargs_(numargs), name_(name), type_(type)
 {
 	initMath();
 
@@ -98,7 +97,7 @@ void MathMacroTemplate::numargs(int numargs)
 }
 
 
-string MathMacroTemplate::name() const
+docstring MathMacroTemplate::name() const
 {
 	return name_;
 }
@@ -109,7 +108,7 @@ docstring MathMacroTemplate::prefix() const
 	// FIXME UNICODE
 	// delete the conversion when bformat() will return a docstring.
 	// delete the conversion when bformat() takes a docstring arg.
-	return bformat(_(" Macro: %1$s: "), from_utf8(name_));
+	return bformat(_(" Macro: %1$s: "), name_);
 }
 
 
@@ -174,7 +173,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 {
 	MathArray ar;
-	mathed_parse_cell(ar, lex.getStream());
+	mathed_parse_cell(ar, lex.getDocString());
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "cannot read macro from '" << ar << "'" << endl;
 		return;

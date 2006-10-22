@@ -14,6 +14,7 @@ FIND_PATH(ZLIB_INCLUDE_DIR zlib.h
 set(POTENTIAL_Z_LIBS z zlib zdll)
 FIND_LIBRARY(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
 PATHS
+ "C:\\Programme\\Microsoft Visual Studio 8\\VC\\lib"
  /usr/lib
  /usr/local/lib
 )

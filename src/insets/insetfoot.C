@@ -35,7 +35,7 @@ InsetFoot::InsetFoot(BufferParams const & bp)
 	: InsetFootlike(bp)
 {
 	setLabel(_("foot"));
-	setInsetName("Foot");
+	setInsetName(from_ascii("Foot"));
 }
 
 
@@ -43,7 +43,7 @@ InsetFoot::InsetFoot(InsetFoot const & in)
 	: InsetFootlike(in)
 {
 	setLabel(_("foot"));
-	setInsetName("Foot");
+	setInsetName(from_ascii("Foot"));
 }
 
 

@@ -21,18 +21,16 @@ namespace lyx {
 class InsetMathSplit : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathSplit(std::string const & name, char valign = 'c');
-
+	explicit InsetMathSplit(docstring const & name, char valign = 'c');
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-
 	///
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 
 	void write(WriteStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -40,11 +38,11 @@ public:
 	///
 	char defaultColAlign(col_type);
 private:
+	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	std::string name_;
+	docstring name_;
 };
-
 
 
 } // namespace lyx

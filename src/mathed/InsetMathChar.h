@@ -21,7 +21,7 @@ namespace lyx {
 class InsetMathChar : public InsetMath {
 public:
 	///
-	explicit InsetMathChar(char c);
+	explicit InsetMathChar(char_type c);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -40,18 +40,18 @@ public:
 	///
 	void octave(OctaveStream & os) const;
 	///
-	void mathmlize(MathMLStream & ms) const;
+	void mathmlize(MathStream & ms) const;
 	/// identifies Charinsets
 	InsetMathChar const * asCharInset() const { return this; }
 	///
-	char getChar() const { return char_; }
+	char_type getChar() const { return char_; }
 	///
 	bool isRelOp() const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the character
-	char char_;
+	char_type char_;
 	/// cached width
 	mutable int width_;
 };

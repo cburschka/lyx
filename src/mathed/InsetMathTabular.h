@@ -22,12 +22,12 @@ namespace lyx {
 class InsetMathTabular : public InsetMathGrid {
 public:
 	///
-	InsetMathTabular(std::string const &, int m, int n);
+	InsetMathTabular(docstring const &, int m, int n);
 	///
-	InsetMathTabular(std::string const &, int m, int n,
-		char valign, std::string const & halign);
+	InsetMathTabular(docstring const &, int m, int n,
+		char valign, docstring const & halign);
 	///
-	InsetMathTabular(std::string const &, char valign, std::string const & halign);
+	InsetMathTabular(docstring const &, char valign, docstring const & halign);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -40,7 +40,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void normalize(NormalStream &) const;
 	///
@@ -49,10 +49,9 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	std::string name_;
+	docstring name_;
 };
 
-
-
 } // namespace lyx
+
 #endif

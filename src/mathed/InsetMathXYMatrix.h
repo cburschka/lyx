@@ -37,7 +37,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void normalize(NormalStream &) const;
 	///

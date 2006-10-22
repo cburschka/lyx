@@ -12,7 +12,7 @@
 
 #include "InsetMathMakebox.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 
 #include "support/std_ostream.h"
@@ -36,7 +36,7 @@ auto_ptr<InsetBase> InsetMathMakebox::doClone() const
 
 void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontSetChanger dummy(mi.base, "textnormal");
+	FontSetChanger dummy(mi.base, from_ascii("textnormal"));
 	w_ = mathed_char_width(mi.base.font, '[');
 	InsetMathNest::metrics(mi);
 	dim   = cell(0).dim();
@@ -50,7 +50,7 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, "textnormal");
+	FontSetChanger dummy(pi.base, from_ascii("textnormal"));
 	drawMarkers(pi, x, y);
 
 	drawStrBlack(pi, x, y, from_ascii("["));
@@ -88,7 +88,7 @@ void InsetMathMakebox::normalize(NormalStream & os) const
 }
 
 
-void InsetMathMakebox::infoize(std::ostream & os) const
+void InsetMathMakebox::infoize(odocstream & os) const
 {
 	os << "Makebox (width: " << cell(0)
 	    << " pos: " << cell(1) << ")";

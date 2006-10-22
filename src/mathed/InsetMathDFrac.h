@@ -28,9 +28,9 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	std::string name() const;
+	docstring name() const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 private:

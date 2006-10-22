@@ -62,7 +62,7 @@ void InsetERT::init()
 	text_.current_font.setLanguage(latex_language);
 	text_.real_current_font.setLanguage(latex_language);
 
-	setInsetName("ERT");
+	setInsetName(from_ascii("ERT"));
 }
 
 

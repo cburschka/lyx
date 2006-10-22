@@ -23,9 +23,9 @@ namespace lyx {
 class InsetMathBig : public InsetMathDim {
 public:
 	///
-	InsetMathBig(std::string const & name, std::string const & delim);
+	InsetMathBig(docstring const & name, docstring const & delim);
 	///
-	std::string name() const;
+	docstring name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -35,9 +35,9 @@ public:
 	///
 	void normalize(NormalStream & os) const;
 	///
-	void infoize2(std::ostream & os) const;
+	void infoize2(odocstream & os) const;
 	///
-	static bool isBigInsetDelim(std::string const &);
+	static bool isBigInsetDelim(docstring const &);
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
@@ -47,9 +47,9 @@ private:
 	double increase() const;
 
 	/// \\bigl or what?
-	std::string const name_;
+	docstring const name_;
 	/// ( or [ or \\Vert...
-	std::string const delim_;
+	docstring const delim_;
 };
 
 

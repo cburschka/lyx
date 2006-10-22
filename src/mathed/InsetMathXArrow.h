@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathXArrow : public InsetMathFracBase {
 public:
 	///
-	explicit InsetMathXArrow(std::string const & name);
+	explicit InsetMathXArrow(docstring const & name);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -39,7 +39,7 @@ private:
 	///
 	bool upper() const;
 	///
-	std::string const name_;
+	docstring const name_;
 };
 
 

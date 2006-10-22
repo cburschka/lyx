@@ -43,9 +43,9 @@ public:
 	///
 	void drawT(TextPainter &, int x, int y) const;
 	///
-	std::string label(row_type row) const;
+	docstring label(row_type row) const;
 	///
-	void label(row_type row, std::string const & label);
+	void label(row_type row, docstring const & label);
 	///
 	void numbered(row_type row, bool num);
 	///
@@ -92,11 +92,11 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void normalize(NormalStream &) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 
 	///
 	void write(Buffer const &, std::ostream & os) const;
@@ -131,7 +131,7 @@ protected:
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 	///
-	std::string eolString(row_type row, bool emptyline, bool fragile) const;
+	docstring eolString(row_type row, bool emptyline, bool fragile) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
@@ -166,7 +166,7 @@ private:
 	/// change number of columns, split or combine columns if necessary.
 	void changeCols(col_type);
 	///
-	char const * standardFont() const;
+	docstring standardFont() const;
 	/// consistency check
 	void check() const;
 	/// can this change its number of rows?
@@ -179,7 +179,7 @@ private:
 	///
 	std::vector<int> nonum_;
 	///
-	std::vector<std::string> label_;
+	std::vector<docstring> label_;
 	///
 	boost::scoped_ptr<RenderPreview> preview_;
 	///
@@ -207,10 +207,10 @@ public:
 
 protected:
 	///
-	void handleFont(LCursor & cur, std::string const & arg,
-		std::string const & font);
+	void handleFont(LCursor & cur, docstring const & arg,
+		docstring const & font);
 	///
-	void handleFont2(LCursor & cur, std::string const & arg);
+	void handleFont2(LCursor & cur, docstring const & arg);
 	///
 	bool previewState(BufferView * bv) const;
 };

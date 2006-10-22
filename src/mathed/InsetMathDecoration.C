@@ -15,7 +15,7 @@
 #include "MathData.h"
 #include "MathSupport.h"
 #include "MathParser.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "LaTeXFeatures.h"
@@ -149,7 +149,7 @@ void InsetMathDecoration::normalize(NormalStream & os) const
 }
 
 
-void InsetMathDecoration::infoize(std::ostream & os) const
+void InsetMathDecoration::infoize(odocstream & os) const
 {
 	os << "Deco: " << key_->name;
 }

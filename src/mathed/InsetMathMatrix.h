@@ -25,7 +25,7 @@ public:
 	///
 	explicit InsetMathMatrix(InsetMathGrid const &);
 	///
-	explicit InsetMathMatrix(std::string const & str);
+	explicit InsetMathMatrix(docstring const & str);
 	/// identifies MatrixInsets
 	InsetMathMatrix const * asMatrixInset() const { return this; }
 
@@ -40,7 +40,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void octave(OctaveStream &) const;
 private:

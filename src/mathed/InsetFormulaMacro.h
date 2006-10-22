@@ -31,9 +31,9 @@ public:
 	///
 	InsetFormulaMacro();
 	/// construct a macro hull from its name and the number of arguments
-	InsetFormulaMacro(std::string const & name, int nargs, std::string const & t);
+	InsetFormulaMacro(docstring const & name, int nargs, docstring const & t);
 	/// constructs a mocro from its LaTeX definition
-	explicit InsetFormulaMacro(std::string const & s);
+	explicit InsetFormulaMacro(docstring const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -58,7 +58,7 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
 	///
-	std::string const & getInsetName() const { return name_; }
+	docstring const & getInsetName() const { return name_; }
 	///
 	EDITABLE editable() const { return HIGHLY_EDITABLE; }
 private:
@@ -67,9 +67,9 @@ private:
 	///
 	void read(std::istream & is);
 	/// prefix in inset
-	std::string prefix() const;
+	docstring prefix() const;
 	///
-	std::string name_;
+	docstring name_;
 };
 
 

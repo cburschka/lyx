@@ -207,7 +207,7 @@ public:
 	*/
 	std::string const getLatexName(bool no_path = true) const;
 
-	/// Get the name and type of the log.
+	/// Get thee name and type of the log.
 	std::pair<LogType, std::string> const getLogName() const;
 
 	/// Change name of buffer. Updates "read-only" flag.
@@ -328,11 +328,12 @@ public:
 	///
 	void buildMacros();
 	///
-	bool hasMacro(std::string const & name) const;
+	bool hasMacro(docstring const & name) const;
 	///
-	MacroData const & getMacro(std::string const & name) const;
+	MacroData const & getMacro(docstring const & name) const;
 	///
-	void insertMacro(std::string const & name, MacroData const & data);
+	void insertMacro(docstring const & name, MacroData const & data);
+
 	///
 	void saveCursor(StableDocIterator cursor, StableDocIterator anchor);
 	///

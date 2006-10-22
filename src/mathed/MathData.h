@@ -165,7 +165,6 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar);
 odocstream & operator<<(odocstream & os, MathArray const & ar);
 
 
-
 } // namespace lyx
 
 #endif

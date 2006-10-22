@@ -379,11 +379,11 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 
 namespace cap {
 
-string grabAndEraseSelection(LCursor & cur)
+docstring grabAndEraseSelection(LCursor & cur)
 {
 	if (!cur.selection())
-		return string();
-	string res = grabSelection(cur);
+		return docstring();
+	docstring res = grabSelection(cur);
 	eraseSelection(cur);
 	return res;
 }
@@ -748,10 +748,10 @@ void selClearOrDel(LCursor & cur)
 }
 
 
-string grabSelection(LCursor const & cur)
+docstring grabSelection(LCursor const & cur)
 {
 	if (!cur.selection())
-		return string();
+		return docstring();
 
 	// FIXME: What is wrong with the following?
 #if 0
@@ -770,7 +770,7 @@ string grabSelection(LCursor const & cur)
 			MathArray::const_iterator it = i1.cell().begin();
 			return asString(MathArray(it + i1.pos(), it + i2.pos()));
 		} else {
-			return "unknown selection 1";
+			return from_ascii("unknown selection 1");
 		}
 	}
 
@@ -778,7 +778,7 @@ string grabSelection(LCursor const & cur)
 	InsetBase::col_type c1, c2;
 	region(i1, i2, r1, r2, c1, c2);
 
-	string data;
+	docstring data;
 	if (i1.inset().asInsetMath()) {
 		for (InsetBase::row_type row = r1; row <= r2; ++row) {
 			if (row > r1)
@@ -791,7 +791,7 @@ string grabSelection(LCursor const & cur)
 			}
 		}
 	} else {
-		data = "unknown selection 2";
+		data = from_ascii("unknown selection 2");
 	}
 	return data;
 }

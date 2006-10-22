@@ -31,7 +31,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void write(WriteStream & os) const;
 private:

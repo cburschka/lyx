@@ -12,7 +12,7 @@
 
 #include "InsetMathSize.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "MathStream.h"
 
@@ -65,7 +65,7 @@ void InsetMathSize::normalize(NormalStream & os) const
 }
 
 
-void InsetMathSize::infoize(std::ostream & os) const
+void InsetMathSize::infoize(odocstream & os) const
 {
 	os << "Size: " << key_->name;
 }

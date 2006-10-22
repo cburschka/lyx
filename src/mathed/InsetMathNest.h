@@ -107,22 +107,24 @@ protected:
 		FuncStatus & status) const;
 	///
 	void handleFont(LCursor & cur,
-		std::string const & arg, std::string const & font);
+		docstring const & arg, docstring const & font);
+	void handleFont(LCursor & cur,
+		docstring const & arg, char const * const font);
 	///
-	void handleFont2(LCursor & cur, std::string const & arg);
+	void handleFont2(LCursor & cur, docstring const & arg);
 
 	/// interpret \p c and insert the result at the current position of
 	/// of \p cur. Return whether the cursor should stay in the formula.
 	bool interpretChar(LCursor & cur, char_type c);
 	///
 	bool script(LCursor & cur, bool,
-		std::string const & save_selection = std::string());
+		docstring const & save_selection = docstring());
 
 public:
 	/// interpret \p str and insert the result at the current position of
 	/// \p cur if it is something known. Return whether \p cur was
 	/// inserted.
-	bool interpretString(LCursor & cur, std::string const & str);
+	bool interpretString(LCursor & cur, docstring const & str);
 
 private:
 	/// lfun handler

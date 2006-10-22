@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "InsetMathDots.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "MathParser.h"
 
@@ -68,7 +68,7 @@ void InsetMathDots::draw(PainterInfo & pain, int x, int y) const
 }
 
 
-string InsetMathDots::name() const
+docstring InsetMathDots::name() const
 {
 	return key_->name;
 }

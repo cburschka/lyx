@@ -24,7 +24,7 @@ namespace lyx {
 class InsetMathEnv : public InsetMathNest {
 public:
 	///
-	InsetMathEnv(std::string const & name_);
+	InsetMathEnv(docstring const & name_);
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
@@ -34,12 +34,12 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// name of that environment
-	std::string name_;
+	docstring name_;
 };
 
 

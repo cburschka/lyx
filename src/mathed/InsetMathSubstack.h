@@ -35,7 +35,7 @@ public:
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void write(WriteStream & os) const;
 	///

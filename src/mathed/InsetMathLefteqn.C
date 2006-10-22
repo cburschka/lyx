@@ -51,13 +51,13 @@ void InsetMathLefteqn::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-string InsetMathLefteqn::name() const
+docstring InsetMathLefteqn::name() const
 {
-	return "lefteqn";
+	return from_ascii("lefteqn");
 }
 
 
-void InsetMathLefteqn::infoize(std::ostream & os) const
+void InsetMathLefteqn::infoize(odocstream & os) const
 {
 	os << "Lefteqn ";
 }

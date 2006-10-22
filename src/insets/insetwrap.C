@@ -54,7 +54,7 @@ InsetWrap::InsetWrap(BufferParams const & bp, string const & type)
 	setLabelFont(font);
 	params_.type = type;
 	params_.width = LyXLength(50, LyXLength::PCW);
-	setInsetName(type);
+	setInsetName(from_utf8(type));
 }
 
 

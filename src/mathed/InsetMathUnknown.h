@@ -22,16 +22,16 @@ namespace lyx {
 class InsetMathUnknown : public InsetMathDim {
 public:
 	///
-	explicit InsetMathUnknown(std::string const & name,
+	explicit InsetMathUnknown(docstring const & name,
 		bool final = true, bool black = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void setName(std::string const & name);
+	void setName(docstring const & name);
 	///
-	std::string name() const;
+	docstring name() const;
 	/// identifies UnknownInsets
 	InsetMathUnknown const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets
@@ -44,7 +44,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void octave(OctaveStream &) const;
 	///
@@ -54,7 +54,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	std::string name_;
+	docstring name_;
 	/// are we finished creating the name?
 	bool final_;
 	///

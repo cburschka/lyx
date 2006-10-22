@@ -43,7 +43,7 @@ private:
 	/// A number between 1 and 9
 	std::size_t number_;
 	///
-	char str_[3];
+	docstring str_;
 };
 
 

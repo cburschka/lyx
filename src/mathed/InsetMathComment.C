@@ -12,7 +12,7 @@
 
 #include "InsetMathComment.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "support/std_ostream.h"
 
@@ -28,11 +28,11 @@ InsetMathComment::InsetMathComment()
 {}
 
 
-InsetMathComment::InsetMathComment(string const & str)
+InsetMathComment::InsetMathComment(docstring const & str)
 	: InsetMathNest(1)
 {
 	// FIXME UNICODE
-	asArray(from_utf8(str), cell(0));
+	asArray(str, cell(0));
 }
 
 
@@ -89,13 +89,13 @@ void InsetMathComment::octave(OctaveStream &) const
 {}
 
 
-void InsetMathComment::mathmlize(MathMLStream & os) const
+void InsetMathComment::mathmlize(MathStream & os) const
 {
 	os << MTag("comment") << cell(0) << cell(1) << ETag("comment");
 }
 
 
-void InsetMathComment::infoize(std::ostream & os) const
+void InsetMathComment::infoize(odocstream & os) const
 {
 	os << "Comment";
 }

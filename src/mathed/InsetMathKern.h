@@ -29,7 +29,7 @@ public:
 	///
 	explicit InsetMathKern(LyXLength const & wid);
 	///
-	explicit InsetMathKern(std::string const & wid);
+	explicit InsetMathKern(docstring const & wid);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

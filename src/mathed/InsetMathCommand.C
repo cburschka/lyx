@@ -12,7 +12,7 @@
 
 #include "InsetMathCommand.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 
@@ -21,11 +21,10 @@
 
 namespace lyx {
 
-using std::string;
 using std::auto_ptr;
+using std::string;
 
-
-CommandInset::CommandInset(string const & name)
+CommandInset::CommandInset(docstring const & name)
 	: InsetMathNest(2), name_(name), set_label_(false)
 {
 	lock_ = true;
@@ -74,18 +73,17 @@ void CommandInset::write(WriteStream & os) const
 
 docstring const CommandInset::screenLabel() const
 {
-	return from_ascii(name_);
+	return name_;
 }
 
 
 string const CommandInset::createDialogStr(string const & name) const
 {
 	odocstringstream os;
-	os << from_ascii(name) << " LatexCommand ";
+	os << from_ascii(name + " LatexCommand ");
 	WriteStream ws(os);
 	write(ws);
-	ws << "\n\\end_inset\n\n";
-	return to_utf8(os.str());
+	return to_utf8(os.str()) + "\n\\end_inset\n\n";
 }
 
 

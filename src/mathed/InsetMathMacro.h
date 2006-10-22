@@ -26,7 +26,7 @@ namespace lyx {
 class MathMacro : public InsetMathNest {
 public:
 	/// A macro can be built from an existing template
-	MathMacro(std::string const & name, int numargs);
+	MathMacro(docstring const & name, int numargs);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -41,7 +41,7 @@ public:
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	///
-	std::string name() const;
+	docstring name() const;
 	///
 	void setExpansion(MathArray const & exp, MathArray const & args) const;
 
@@ -51,13 +51,13 @@ public:
 	///
 	void maple(MapleStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void octave(OctaveStream &) const;
 	///
-	void infoize(std::ostream &) const;
+	void infoize(odocstream &) const;
 	///
-	void infoize2(std::ostream &) const;
+	void infoize2(odocstream &) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
@@ -67,7 +67,7 @@ private:
 	void expand() const;
 
 	/// name of macro
-	std::string name_;
+	docstring name_;
 	/// the unexpanded macro defintition
 	mutable MathArray tmpl_;
 	/// the macro substituted with our args

@@ -17,7 +17,6 @@
 
 namespace lyx {
 
-
 /** Some collection of chars with similar properties
  *  mainly for math-extern
  */
@@ -25,13 +24,13 @@ namespace lyx {
 class InsetMathString : public InsetMath {
 public:
 	///
-	explicit InsetMathString(std::string const & s);
+	explicit InsetMathString(docstring const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	std::string str() const { return str_; }
+	docstring str() const { return str_; }
 	///
 	InsetMathString * asStringInset() { return this; }
 	///
@@ -46,16 +45,16 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void write(WriteStream & os) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the string
-	std::string str_;
+	docstring str_;
 };
 
-
 } // namespace lyx
+
 #endif

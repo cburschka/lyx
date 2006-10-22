@@ -12,7 +12,7 @@
 
 #include "InsetMathFrameBox.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "LColor.h"
 #include "frontends/Painter.h"

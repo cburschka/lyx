@@ -116,7 +116,7 @@ public:
 	/// insert a single char
 	void insert(char_type c);
 	/// insert a string
-	void insert(std::string const & str);
+	void insert(docstring const & str);
 
 	/// in pixels from left of screen
 	int targetX() const;
@@ -138,7 +138,7 @@ public:
 	/// access to owning Buffer
 	Buffer & buffer() const;
 	/// get some interesting description of top position
-	void info(std::ostream & os) const;
+	void info(odocstream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode();
 	/// reset cursor bottom to the beginning of the given inset
@@ -251,7 +251,7 @@ public:
 	///
 	void niceInsert(MathAtom const & at);
 	///
-	void niceInsert(std::string const & str);
+	void niceInsert(docstring const & str);
 
 	/// in pixels from top of screen
 	void setScreenPos(int x, int y);
@@ -295,7 +295,7 @@ public:
 	bool goUpDown(bool up);
 
 	/// the name of the macro we are currently inputting
-	std::string macroName();
+	docstring macroName();
 	/// where in the curent cell does the macro name start?
 	int macroNamePos();
 	/// can we enter the inset?

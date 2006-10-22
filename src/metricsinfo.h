@@ -14,6 +14,7 @@
 
 #include "lyxfont.h"
 #include "support/docstring.h"
+#include <string>
 
 class BufferView;
 
@@ -140,7 +141,8 @@ protected:
 class FontChanger : public Changer<LyXFont> {
 public:
 	///
-	FontChanger(LyXFont & orig, char const * font);
+	FontChanger(LyXFont & orig, docstring const & font);
+	FontChanger(MetricsBase & mb, char const * const font);
 	///
 	~FontChanger();
 };
@@ -150,7 +152,8 @@ public:
 class FontSetChanger : public Changer<MetricsBase> {
 public:
 	///
-	FontSetChanger(MetricsBase & mb, char const * font);
+	FontSetChanger(MetricsBase & mb, docstring const & font);
+	FontSetChanger(MetricsBase & mb, char const * const font);
 	///
 	~FontSetChanger();
 };

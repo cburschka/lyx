@@ -12,7 +12,7 @@
 
 #include "InsetMathSqrt.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "TextPainter.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
@@ -106,7 +106,7 @@ void InsetMathSqrt::octave(OctaveStream & os) const
 }
 
 
-void InsetMathSqrt::mathmlize(MathMLStream & os) const
+void InsetMathSqrt::mathmlize(MathStream & os) const
 {
 	os << MTag("msqrt") << cell(0) << ETag("msqrt");
 }

@@ -88,7 +88,7 @@ BoxTranslator const & boxtranslator_loc()
 
 void InsetBox::init()
 {
-	setInsetName("Box");
+	setInsetName(from_ascii("Box"));
 	setButtonLabel();
 }
 

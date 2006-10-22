@@ -59,7 +59,7 @@ void closeTag(odocstream & os, std::string const & name);
 /// Close tag
 void closeTag(odocstream & os, Paragraph const & par);
 
-
+} // namespace sgml
 } // namespace lyx
-}
+
 #endif // SGML_H

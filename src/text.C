@@ -2448,13 +2448,11 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 	// for captions, we want the abbreviation of the float type
 	if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
-		size_t i = cur.depth();
-		while (i > 0) {
-			--i;
+		for (int i = cur.depth(); --i >= 0; ) {
 			InsetBase * const in = &cur[i].inset();
 			if (in->lyxCode() == InsetBase::FLOAT_CODE
 			    || in->lyxCode() == InsetBase::WRAP_CODE) {
-				name = in->getInsetName();
+				name = to_utf8(in->getInsetName());
 				break;
 			}
 		}

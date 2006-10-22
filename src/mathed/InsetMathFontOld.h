@@ -42,7 +42,7 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;

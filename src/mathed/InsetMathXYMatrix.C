@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathXYMatrix.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "LaTeXFeatures.h"
@@ -60,7 +60,7 @@ void InsetMathXYMatrix::write(WriteStream & os) const
 }
 
 
-void InsetMathXYMatrix::infoize(std::ostream & os) const
+void InsetMathXYMatrix::infoize(odocstream & os) const
 {
 	os << "xymatrix ";
 	InsetMathGrid::infoize(os);

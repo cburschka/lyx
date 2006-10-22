@@ -12,8 +12,8 @@
 #ifndef MATH_FACTORY_H
 #define MATH_FACTORY_H
 
+#include "support/docstring.h"
 #include <string>
-
 
 namespace lyx {
 
@@ -21,13 +21,14 @@ class MathAtom;
 class MathArray;
 
 
-MathAtom createInsetMath(std::string const &);
+MathAtom createInsetMath(docstring const &);
+MathAtom createInsetMath(char const * const);
 
 /** Fills ar with the contents of str.
  *  str is created by the frontend dialog's and returned to the LyX core.
  *  The function returns true if successful.
  */
-bool createInsetMath_fromDialogStr(std::string const &, MathArray &);
+bool createInsetMath_fromDialogStr(docstring const &, MathArray &);
 
 
 } // namespace lyx

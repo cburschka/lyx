@@ -12,7 +12,7 @@
 
 #include "InsetMathFBox.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "LColor.h"
@@ -74,7 +74,7 @@ void InsetMathFBox::normalize(NormalStream & os) const
 }
 
 
-void InsetMathFBox::infoize(std::ostream & os) const
+void InsetMathFBox::infoize(odocstream & os) const
 {
 	os << "FBox: ";
 }

@@ -1511,19 +1511,19 @@ Buffer * Buffer::getMasterBuffer()
 }
 
 
-MacroData const & Buffer::getMacro(std::string const & name) const
+MacroData const & Buffer::getMacro(docstring const & name) const
 {
 	return pimpl_->macros.get(name);
 }
 
 
-bool Buffer::hasMacro(string const & name) const
+bool Buffer::hasMacro(docstring const & name) const
 {
 	return pimpl_->macros.has(name);
 }
 
 
-void Buffer::insertMacro(string const & name, MacroData const & data)
+void Buffer::insertMacro(docstring const & name, MacroData const & data)
 {
 	MacroTable::globalMacros().insert(name, data);
 	pimpl_->macros.insert(name, data);

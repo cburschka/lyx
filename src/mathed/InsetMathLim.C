@@ -12,7 +12,7 @@
 
 #include "InsetMathLim.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "debug.h"
 
 
@@ -74,7 +74,7 @@ void InsetMathLim::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathLim::mathmlize(MathMLStream & os) const
+void InsetMathLim::mathmlize(MathStream & os) const
 {
 	os << "lim(" << cell(0) << ',' << cell(1) << ',' << cell(2) << ')';
 }

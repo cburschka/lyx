@@ -18,19 +18,16 @@
 
 #include "InsetMathNest.h"
 
-#include <string>
-
 
 namespace lyx {
-
 
 // cell(0) is stuff before the 'd', cell(1) the stuff after
 class InsetMathExInt : public InsetMathNest {
 public:
 	///
-	explicit InsetMathExInt(std::string const & name_);
+	explicit InsetMathExInt(docstring const & name_);
 	///
-	void symbol(std::string const &);
+	void symbol(docstring const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -45,7 +42,7 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void write(WriteStream & os) const;
 private:
@@ -54,10 +51,11 @@ private:
 	bool hasScripts() const;
 
 	///
-	std::string symbol_;
+	docstring symbol_;
 };
 
 
 } // namespace lyx
+
 
 #endif

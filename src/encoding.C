@@ -33,7 +33,7 @@ Encodings encodings;
 
 namespace {
 
-Uchar tab_iso8859_1[256] = {
+char_type tab_iso8859_1[256] = {
    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
    0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
@@ -53,7 +53,7 @@ Uchar tab_iso8859_1[256] = {
 };
 
 #ifdef USE_UNICODE_FOR_SYMBOLS
-Uchar tab_symbol[256] = {
+char_type tab_symbol[256] = {
    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
 
@@ -106,7 +106,7 @@ Uchar tab_symbol[256] = {
 #endif
 
 
-unsigned char arabic_table2[63][4] = {
+char_type arabic_table2[63][4] = {
 	{0x41, 0x41, 0x41, 0x41}, // 0xc1 = hamza
 	{0x42, 0xa1, 0x42, 0xa1}, // 0xc2 = ligature madda on alef
 	{0x43, 0xa2, 0x43, 0xa2}, // 0xc3 = ligature hamza on alef
@@ -176,7 +176,7 @@ unsigned char arabic_table2[63][4] = {
 };
 
 
-unsigned char arabic_table[63][2] = {
+char_type arabic_table[63][2] = {
 	{0xc1, 0xc1}, // 0xc1 = hamza
 	{0xc2, 0xc2}, // 0xc2 = ligature madda on alef
 	{0xc3, 0xc3}, // 0xc3 = ligature hamza on alef
@@ -246,12 +246,20 @@ unsigned char arabic_table[63][2] = {
 };
 
 
-unsigned char const arabic_start = 0xc1;
+char_type const arabic_start = 0xc1;
 
 } // namespace anon
 
 
-bool Encodings::isComposeChar_hebrew(unsigned char c)
+
+char_type Encoding::ucs(char_type c) const
+{
+	BOOST_ASSERT(c < 256);
+	return encoding_table[c];
+}
+
+
+bool Encodings::isComposeChar_hebrew(char_type c)
 {
 	return c <= 0xd2 && c >= 0xc0 &&
 		c != 0xce && c != 0xd0;
@@ -262,7 +270,7 @@ bool Encodings::isComposeChar_hebrew(unsigned char c)
 // they are hamza, alef_madda, alef_hamza, waw_hamza, alef_hamza_under,
 // alef, tah_marbota, dal, thal, rah, zai, wow, alef_maksoura
 
-bool Encodings::is_arabic_special(unsigned char c)
+bool Encodings::is_arabic_special(char_type c)
 {
 	return	(c >= 0xc1 && c <= 0xc5) ||
 		 c == 0xc7 || c  == 0xc9  ||
@@ -271,19 +279,19 @@ bool Encodings::is_arabic_special(unsigned char c)
 		 c == 0xe9;
 }
 
-bool Encodings::isComposeChar_arabic(unsigned char c)
+bool Encodings::isComposeChar_arabic(char_type c)
 {
 	return c >= 0xeb && c <= 0xf2;
 }
 
 
-bool Encodings::is_arabic(unsigned char c)
+bool Encodings::is_arabic(char_type c)
 {
 	return c >= arabic_start && arabic_table[c-arabic_start][0];
 }
 
 
-unsigned char Encodings::transformChar(unsigned char c,
+char_type Encodings::transformChar(char_type c,
 				      Encodings::Letter_Form form)
 {
 	if (!is_arabic(c))
@@ -340,7 +348,7 @@ void Encodings::read(string const & filename)
 			lex.next();
 			string const latexname = lex.getString();
 			lyxerr[Debug::INFO] << "Reading encoding " << name << endl;
-			Uchar table[256];
+			char_type table[256];
 			for (unsigned int i = 0; i < 256; ++i) {
 				lex.next();
 				string const tmp = lex.getString();

@@ -25,7 +25,7 @@ namespace lyx {
 class CommandInset : public InsetMathNest {
 public:
 	///
-	explicit CommandInset(std::string const & name);
+	explicit CommandInset(docstring const & name);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -35,18 +35,18 @@ public:
 	///
 	void write(WriteStream & os) const;
 	//
-	// void infoize(std::ostream & os) const;
+	// void infoize(odocstream & os) const;
 	///
 	virtual docstring const screenLabel() const;
 	/// generate something that will be understood by the Dialogs.
 	std::string const createDialogStr(std::string const & name) const;
 	///
-	std::string const & commandname() const { return name_; }
+	docstring const & commandname() const { return name_; }
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 
 	///
-	std::string name_;
+	docstring name_;
 	///
 	mutable bool set_label_;
 	///

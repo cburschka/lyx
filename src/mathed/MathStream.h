@@ -9,33 +9,307 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef MATH_STREAMSTR_H
-#define MATH_STREAMSTR_H
+#ifndef MATH_MATHMLSTREAM_H
+#define MATH_MATHMLSTREAM_H
 
-#include <string>
+
+// Please keep all four streams in one file until the interface has
+// settled.
+
+
+#include "metricsinfo.h"
+#include "support/docstream.h"
+#include "support/docstring.h"
 
 
 namespace lyx {
 
-class WriteStream;
-class NormalStream;
-class MapleStream;
-class MaximaStream;
-class MathematicaStream;
-class MathMLStream;
-class OctaveStream;
+class MathArray;
+class InsetMath;
+class MathAtom;
 
 //
-// writing strings directly
+// LaTeX/LyX
 //
 
-WriteStream & operator<<(WriteStream & ws, std::string const & s);
-NormalStream & operator<<(NormalStream & ns, std::string const & s);
-MapleStream & operator<<(MapleStream & ms, std::string const & s);
-MaximaStream & operator<<(MaximaStream & ms, std::string const & s);
-MathematicaStream & operator<<(MathematicaStream & ms, std::string const & s);
-MathMLStream & operator<<(MathMLStream & ms, std::string const & s);
-OctaveStream & operator<<(OctaveStream & os, std::string const & s);
+class WriteStream {
+public:
+	///
+	WriteStream(odocstream & os, bool fragile, bool latex);
+	///
+	explicit WriteStream(odocstream & os);
+	///
+	~WriteStream();
+	///
+	int line() const { return line_; }
+	///
+	bool fragile() const { return fragile_; }
+	///
+	bool latex() const { return latex_; }
+	///
+	odocstream & os() { return os_; }
+	///
+	bool & firstitem() { return firstitem_; }
+	///
+	void addlines(unsigned int);
+	/// writes space if next thing is isalpha()
+	void pendingSpace(bool how);
+	/// writes space if next thing is isalpha()
+	bool pendingSpace() const { return pendingspace_; }
+private:
+	///
+	odocstream & os_;
+	/// do we have to write \\protect sometimes
+	bool fragile_;
+	/// are we at the beginning of an MathArray?
+	bool firstitem_;
+	/// are we writing to .tex?
+	int latex_;
+	/// do we have a space pending?
+	bool pendingspace_;
+	///
+	int line_;
+};
+
+///
+WriteStream & operator<<(WriteStream &, MathAtom const &);
+///
+WriteStream & operator<<(WriteStream &, MathArray const &);
+///
+WriteStream & operator<<(WriteStream &, docstring const &);
+///
+WriteStream & operator<<(WriteStream &, char const * const);
+///
+WriteStream & operator<<(WriteStream &, char);
+///
+WriteStream & operator<<(WriteStream &, int);
+///
+WriteStream & operator<<(WriteStream &, unsigned int);
+
+
+
+//
+//  MathML
+//
+
+class MTag {
+public:
+	///
+	MTag(docstring const tag) : tag_(tag) {}
+	///
+	MTag(char const * const tag) : tag_(from_ascii(tag)) {}
+	///
+	docstring const tag_;
+};
+
+class ETag {
+public:
+	///
+	ETag(docstring const tag) : tag_(tag) {}
+	///
+	ETag(char const * const tag) : tag_(from_ascii(tag)) {}
+	///
+	docstring const tag_;
+};
+
+class MathStream {
+public:
+	///
+	explicit MathStream(odocstream & os);
+	///
+	void cr();
+	///
+	odocstream & os() { return os_; }
+	///
+	int line() const { return line_; }
+	///
+	int & tab() { return tab_; }
+	///
+	friend MathStream & operator<<(MathStream &, char const *);
+private:
+	///
+	odocstream & os_;
+	///
+	int tab_;
+	///
+	int line_;
+	///
+	char lastchar_;
+};
+
+///
+MathStream & operator<<(MathStream &, MathAtom const &);
+///
+MathStream & operator<<(MathStream &, MathArray const &);
+///
+MathStream & operator<<(MathStream &, docstring const &);
+///
+MathStream & operator<<(MathStream &, char const *);
+///
+MathStream & operator<<(MathStream &, char);
+///
+MathStream & operator<<(MathStream &, MTag const &);
+///
+MathStream & operator<<(MathStream &, ETag const &);
+
+
+
+//
+// Debugging
+//
+
+class NormalStream {
+public:
+	///
+	explicit NormalStream(odocstream & os) : os_(os) {}
+	///
+	odocstream & os() { return os_; }
+private:
+	///
+	odocstream & os_;
+};
+
+///
+NormalStream & operator<<(NormalStream &, MathAtom const &);
+///
+NormalStream & operator<<(NormalStream &, MathArray const &);
+///
+NormalStream & operator<<(NormalStream &, docstring const &);
+///
+NormalStream & operator<<(NormalStream &, char const *);
+///
+NormalStream & operator<<(NormalStream &, char);
+///
+NormalStream & operator<<(NormalStream &, int);
+
+
+//
+// Maple
+//
+
+
+class MapleStream {
+public:
+	///
+	explicit MapleStream(odocstream & os) : os_(os) {}
+	///
+	odocstream & os() { return os_; }
+private:
+	///
+	odocstream & os_;
+};
+
+
+///
+MapleStream & operator<<(MapleStream &, MathAtom const &);
+///
+MapleStream & operator<<(MapleStream &, MathArray const &);
+///
+MapleStream & operator<<(MapleStream &, docstring const &);
+///
+MapleStream & operator<<(MapleStream &, char_type);
+///
+MapleStream & operator<<(MapleStream &, char const *);
+///
+MapleStream & operator<<(MapleStream &, char);
+///
+MapleStream & operator<<(MapleStream &, int);
+
+
+//
+// Maxima
+//
+
+
+class MaximaStream {
+public:
+	///
+	explicit MaximaStream(odocstream & os) : os_(os) {}
+	///
+	odocstream & os() { return os_; }
+private:
+	///
+	odocstream & os_;
+};
+
+
+///
+MaximaStream & operator<<(MaximaStream &, MathAtom const &);
+///
+MaximaStream & operator<<(MaximaStream &, MathArray const &);
+///
+MaximaStream & operator<<(MaximaStream &, docstring const &);
+///
+MaximaStream & operator<<(MaximaStream &, char_type);
+///
+MaximaStream & operator<<(MaximaStream &, char const *);
+///
+MaximaStream & operator<<(MaximaStream &, char);
+///
+MaximaStream & operator<<(MaximaStream &, int);
+
+
+//
+// Mathematica
+//
+
+
+class MathematicaStream {
+public:
+	///
+	explicit MathematicaStream(odocstream & os) : os_(os) {}
+	///
+	odocstream & os() { return os_; }
+private:
+	///
+	odocstream & os_;
+};
+
+
+///
+MathematicaStream & operator<<(MathematicaStream &, MathAtom const &);
+///
+MathematicaStream & operator<<(MathematicaStream &, MathArray const &);
+///
+MathematicaStream & operator<<(MathematicaStream &, docstring const &);
+///
+MathematicaStream & operator<<(MathematicaStream &, char const *);
+///
+MathematicaStream & operator<<(MathematicaStream &, char);
+///
+MathematicaStream & operator<<(MathematicaStream &, int);
+
+
+//
+// Octave
+//
+
+
+class OctaveStream {
+public:
+	///
+	explicit OctaveStream(odocstream & os) : os_(os) {}
+	///
+	odocstream & os() { return os_; }
+private:
+	///
+	odocstream & os_;
+};
+
+///
+OctaveStream & operator<<(OctaveStream &, MathAtom const &);
+///
+OctaveStream & operator<<(OctaveStream &, MathArray const &);
+///
+OctaveStream & operator<<(OctaveStream &, docstring const &);
+///
+OctaveStream & operator<<(OctaveStream &, char_type);
+///
+OctaveStream & operator<<(OctaveStream &, char const *);
+///
+OctaveStream & operator<<(OctaveStream &, char);
+///
+OctaveStream & operator<<(OctaveStream &, int);
 
 } // namespace lyx
 

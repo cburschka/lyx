@@ -12,7 +12,7 @@
 
 #include "InsetMathMatrix.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 
 namespace lyx {
@@ -91,7 +91,7 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathMatrix::mathmlize(MathMLStream & os) const
+void InsetMathMatrix::mathmlize(MathStream & os) const
 {
 	InsetMathGrid::mathmlize(os);
 }

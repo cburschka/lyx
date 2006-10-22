@@ -12,7 +12,7 @@
 
 #include "InsetMathBox.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "support/std_ostream.h"
 
@@ -23,7 +23,7 @@ using std::string;
 using std::auto_ptr;
 
 
-InsetMathBox::InsetMathBox(string const & name)
+InsetMathBox::InsetMathBox(docstring const & name)
 	: InsetMathNest(1), name_(name)
 {}
 
@@ -65,7 +65,7 @@ void InsetMathBox::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathBox::infoize(std::ostream & os) const
+void InsetMathBox::infoize(odocstream & os) const
 {
 	os << "Box: " << name_;
 }

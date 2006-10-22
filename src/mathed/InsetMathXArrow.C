@@ -12,7 +12,7 @@
 
 #include "InsetMathXArrow.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -25,7 +25,7 @@ using std::string;
 using std::auto_ptr;
 
 
-InsetMathXArrow::InsetMathXArrow(string const & name)
+InsetMathXArrow::InsetMathXArrow(docstring const & name)
 	: InsetMathFracBase(), name_(name)
 {}
 

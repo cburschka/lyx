@@ -12,7 +12,7 @@
 
 #include "InsetMathEnv.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "support/std_ostream.h"
 
@@ -24,7 +24,7 @@ using std::string;
 using std::auto_ptr;
 
 
-InsetMathEnv::InsetMathEnv(string const & name)
+InsetMathEnv::InsetMathEnv(docstring const & name)
 	: InsetMathNest(1), name_(name)
 {}
 
@@ -62,7 +62,7 @@ void InsetMathEnv::normalize(NormalStream & os) const
 }
 
 
-void InsetMathEnv::infoize(std::ostream & os) const
+void InsetMathEnv::infoize(odocstream & os) const
 {
 	os << "Env: " << name_;
 }

@@ -22,14 +22,14 @@ namespace lyx {
 class InsetMathArray : public InsetMathGrid {
 public:
 	///
-	InsetMathArray(std::string const &, int m, int n);
+	InsetMathArray(docstring const &, int m, int n);
 	///
-	InsetMathArray(std::string const &, int m, int n,
-		char valign, std::string const & halign);
+	InsetMathArray(docstring const &, int m, int n,
+		char valign, docstring const & halign);
 	///
-	InsetMathArray(std::string const &, char valign, std::string const & halign);
+	InsetMathArray(docstring const &, char valign, docstring const & halign);
 	/// convenience constructor from whitespace/newline separated data
-	InsetMathArray(std::string const &, std::string const & str);
+	InsetMathArray(docstring const &, docstring const & str);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -42,7 +42,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	void normalize(NormalStream & os) const;
 	///
@@ -52,7 +52,7 @@ public:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	std::string name_;
+	docstring name_;
 };
 
 

@@ -14,6 +14,7 @@
 #define MATH_PARSER_H
 
 #include "support/types.h"
+#include "support/docstring.h"
 
 #include <string>
 #include <vector>
@@ -31,34 +32,34 @@ class LyXLex;
 class latexkeys {
 public:
 	/// name of the macro or primitive
-	std::string name;
+	docstring name;
 	/// name of a inset that handles that macro
-	std::string inset;
-	/// position of the ting in a font
-        std::vector<char_type> draw;
+	docstring inset;
+	/// position of the thing in a font	
+	docstring draw;
 	/// operator/..., fontname e
-	std::string extra;
+	docstring extra;
 	/// how is this called as XML entity?
-	std::string xmlname;
+	docstring xmlname;
 	/// required LaTeXFeatures
-	std::string requires;
+	docstring requires;
 };
 
 
 /// check whether this is a well-known (La)TeX macro or primitive
-latexkeys const * in_word_set(std::string const & str);
+latexkeys const * in_word_set(docstring const & str);
 
 /// parse formula from a string
-bool mathed_parse_normal(MathAtom &, std::string const &);
+bool mathed_parse_normal(MathAtom &, docstring const &);
 /// ... a stream
 bool mathed_parse_normal(MathAtom &, std::istream &);
 /// ... the LyX lexxer
 bool mathed_parse_normal(MathAtom &, LyXLex &);
 /// ... the LyX lexxer
-void mathed_parse_normal(InsetMathGrid &, std::string const &);
+void mathed_parse_normal(InsetMathGrid &, docstring const &);
 
 /// parse a single cell from a string
-void mathed_parse_cell(MathArray & ar, std::string const &);
+void mathed_parse_cell(MathArray & ar, docstring const &);
 /// ... a stream
 void mathed_parse_cell(MathArray & ar, std::istream &);
 

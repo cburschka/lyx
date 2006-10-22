@@ -727,10 +727,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	}
 
 	// custom, A3, B3 and B4 paper sizes need geometry
-	bool nonstandard_papersize = (papersize == PAPER_B3) ||
-				     (papersize == PAPER_B4) ||
-				     (papersize == PAPER_A3) ||
-				     (papersize == PAPER_CUSTOM);
+	bool nonstandard_papersize = papersize == PAPER_B3 
+		|| papersize == PAPER_B4
+		|| papersize == PAPER_A3
+		|| papersize == PAPER_CUSTOM;
 
 	if (!use_geometry) {
 		switch (papersize) {
@@ -993,7 +993,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			break;
 		case VSpace::LENGTH:
 			os << "\\setlength\\parskip{"
-			   << from_ascii(getDefSkip().length().asLatexString())
+			   << from_utf8(getDefSkip().length().asLatexString())
 			   << "}\n";
 			break;
 		default: // should never happen // Then delete it.

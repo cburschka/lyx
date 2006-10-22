@@ -558,18 +558,25 @@ string const rtrim(string const & a, char const * p)
 string const ltrim(string const & a, char const * p)
 {
 	BOOST_ASSERT(p);
-
 	if (a.empty() || !*p)
 		return a;
-
 	string::size_type l = a.find_first_not_of(p);
-
 	if (l == string::npos)
 		return string();
-
 	return a.substr(l, string::npos);
 }
 
+
+docstring const ltrim(docstring const & a, char const * p)
+{
+	BOOST_ASSERT(p);
+	if (a.empty() || !*p)
+		return a;
+	size_t l = a.find_first_not_of(from_ascii(p));
+	if (l == docstring::npos)
+		return docstring();
+	return a.substr(l, docstring::npos);
+}
 
 namespace {
 

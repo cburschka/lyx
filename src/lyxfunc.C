@@ -223,11 +223,10 @@ void LyXFunc::setLyXView(LyXView * lv)
 
 void LyXFunc::handleKeyFunc(kb_action action)
 {
-	char c = encoded_last_key;
+	char_type c = encoded_last_key;
 
-	if (keyseq->length()) {
+	if (keyseq->length())
 		c = 0;
-	}
 
 	lyx_view_->view()->getIntl().getTransManager()
 		.deadkey(c, get_accent(action).accent, view()->getLyXText());

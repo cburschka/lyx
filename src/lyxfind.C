@@ -186,7 +186,7 @@ int replaceAll(BufferView * bv,
 			= cur.paragraph().getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.paragraph().erase(pos, pos + ssize,
 							    buf.params().trackChanges);
-		cur.paragraph().insert(pos, replacestr, font,
+		cur.paragraph().insert(pos, from_utf8(replacestr), font,
 		                       Change(buf.params().trackChanges ?
 		                              Change::INSERTED : Change::UNCHANGED));
 		for (int i = 0; i < rsize + striked; ++i)

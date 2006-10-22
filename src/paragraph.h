@@ -286,7 +286,7 @@ public:
 	LyXFont_size highestFontInRange(pos_type startpos,
 					pos_type endpos, LyXFont_size def_size) const;
 	///
-	void insert(pos_type pos, std::string const & str,
+	void insert(pos_type pos, docstring const & str,
 	            LyXFont const & font, Change const & change);
 	///
 	void insertChar(pos_type pos, value_type c, bool trackChanges);

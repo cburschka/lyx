@@ -514,7 +514,7 @@ void LCursor::clearTargetX()
 
 
 
-void LCursor::info(std::ostream & os) const
+void LCursor::info(odocstream & os) const
 {
 	for (int i = 1, n = depth(); i < n; ++i) {
 		operator[](i).inset().infoize(os);
@@ -569,13 +569,13 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 ///////////////////////////////////////////////////////////////////
 
 #include "mathed/InsetMathChar.h"
-#include "mathed/MathFactory.h"
 #include "mathed/InsetMathGrid.h"
-#include "mathed/MathMacroArgument.h"
-#include "mathed/MathMLStream.h"
 #include "mathed/InsetMathScript.h"
-#include "mathed/MathSupport.h"
 #include "mathed/InsetMathUnknown.h"
+#include "mathed/MathFactory.h"
+#include "mathed/MathMacroArgument.h"
+#include "mathed/MathStream.h"
+#include "mathed/MathSupport.h"
 
 
 namespace lyx {
@@ -657,7 +657,7 @@ void LCursor::plainInsert(MathAtom const & t)
 }
 
 
-void LCursor::insert(string const & str)
+void LCursor::insert(docstring const & str)
 {
 	for_each(str.begin(), str.end(),
 		 boost::bind(static_cast<void(LCursor::*)(char_type)>
@@ -696,11 +696,10 @@ void LCursor::insert(InsetBase * inset)
 }
 
 
-void LCursor::niceInsert(string const & t)
+void LCursor::niceInsert(docstring const & t)
 {
 	MathArray ar;
-	// FIXME UNICODE
-	asArray(from_utf8(t), ar);
+	asArray(t, ar);
 	if (ar.size() == 1)
 		niceInsert(ar[0]);
 	else
@@ -711,7 +710,7 @@ void LCursor::niceInsert(string const & t)
 void LCursor::niceInsert(MathAtom const & t)
 {
 	macroModeClose();
-	string const safe = cap::grabAndEraseSelection(*this);
+	docstring const safe = cap::grabAndEraseSelection(*this);
 	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
 	if (t->isActive()) {
@@ -721,8 +720,7 @@ void LCursor::niceInsert(MathAtom const & t)
 		pushLeft(*nextInset());
 		// We may not use niceInsert here (recursion)
 		MathArray ar;
-		// FIXME UNICODE
-		asArray(from_utf8(safe), ar);
+		asArray(safe, ar);
 		insert(ar);
 	}
 }
@@ -847,7 +845,7 @@ bool LCursor::macroModeClose()
 		return false;
 	InsetMathUnknown * p = activeMacro();
 	p->finalize();
-	string const s = p->name();
+	docstring const s = p->name();
 	--pos();
 	cell().erase(pos());
 
@@ -858,7 +856,7 @@ bool LCursor::macroModeClose()
 	// prevent entering of recursive macros
 	// FIXME: this is only a weak attempt... only prevents immediate
 	// recursion
-	string const name = s.substr(1);
+	docstring const name = s.substr(1);
 	InsetBase const * macro = innerInsetOfType(InsetBase::MATHMACRO_CODE);
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
@@ -871,9 +869,9 @@ bool LCursor::macroModeClose()
 }
 
 
-string LCursor::macroName()
+docstring LCursor::macroName()
 {
-	return inMacroMode() ? activeMacro()->name() : string();
+	return inMacroMode() ? activeMacro()->name() : docstring();
 }
 
 
@@ -881,8 +879,7 @@ void LCursor::handleNest(MathAtom const & a, int c)
 {
 	//lyxerr << "LCursor::handleNest: " << c << endl;
 	MathAtom t = a;
-	// FIXME UNICODE
-	asArray(from_utf8(cap::grabAndEraseSelection(*this)), t.nucleus()->cell(c));
+	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
 	insert(t);
 	posLeft();
 	pushLeft(*nextInset());
@@ -1077,7 +1074,7 @@ bool LCursor::goUpDown(bool up)
 void LCursor::handleFont(string const & font)
 {
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << ": " << font << endl;
-	string safe;
+	docstring safe;
 	if (selection()) {
 		macroModeClose();
 		safe = cap::grabAndEraseSelection(*this);
@@ -1094,7 +1091,7 @@ void LCursor::handleFont(string const & font)
 		} else {
 			// cursor in between. split cell
 			MathArray::iterator bt = cell().begin();
-			MathAtom at = createInsetMath(font);
+			MathAtom at = createInsetMath(from_utf8(font));
 			at.nucleus()->cell(0) = MathArray(bt, bt + pos());
 			cell().erase(bt, bt + pos());
 			popLeft();
@@ -1156,7 +1153,7 @@ docstring LCursor::selectionAsString(bool label) const
 	}
 
 	if (inMathed())
-		return from_utf8(cap::grabSelection(*this));
+		return cap::grabSelection(*this);
 
 	return docstring();
 }
@@ -1165,9 +1162,9 @@ docstring LCursor::selectionAsString(bool label) const
 string LCursor::currentState()
 {
 	if (inMathed()) {
-		std::ostringstream os;
+		odocstringstream os;
 		info(os);
-		return os.str();
+		return to_utf8(os.str());
 	}
 
 	if (inTexted())

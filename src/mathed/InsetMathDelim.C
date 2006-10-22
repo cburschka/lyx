@@ -13,7 +13,7 @@
 
 #include "InsetMathDelim.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -25,42 +25,26 @@ using std::string;
 using std::max;
 using std::auto_ptr;
 
-namespace {
 
-string convertDelimToLatexName(string const & name)
+static docstring convertDelimToLatexName(docstring const & name)
 {
-	if (name == "<")
-		return name;
-	if (name == "(")
-		return name;
-	if (name == "[")
-		return name;
-	if (name == ".")
-		return name;
-	if (name == ">")
-		return name;
-	if (name == ")")
-		return name;
-	if (name == "]")
-		return name;
-	if (name == "/")
-		return name;
-	if (name == "|")
-		return name;
+	if (name.size() == 1) {
+		char_type const c = name[0];
+		if (c == '<' || c == '(' || c == '[' || c == '.' 
+		    || c == '>' || c == ')' || c == ']' || c == '/' || c == '|')
+			return name;
+	}
 	return '\\' + name + ' ';
 }
 
-}
 
-
-
-InsetMathDelim::InsetMathDelim(string const & l, string const & r)
+InsetMathDelim::InsetMathDelim(docstring const & l, docstring const & r)
 	: InsetMathNest(1), left_(l), right_(r)
 {}
 
 
 InsetMathDelim::InsetMathDelim
-		(string const & l, string const & r, MathArray const & ar)
+		(docstring const & l, docstring const & r, MathArray const & ar)
 	: InsetMathNest(1), left_(l), right_(r)
 {
 	cell(0) = ar;
@@ -148,6 +132,7 @@ void InsetMathDelim::maple(MapleStream & os) const
 		os << left_ << cell(0) << right_;
 }
 
+
 void InsetMathDelim::maxima(MaximaStream & os) const
 {
 	if (isAbs()) {
@@ -174,7 +159,7 @@ void InsetMathDelim::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathDelim::mathmlize(MathMLStream & os) const
+void InsetMathDelim::mathmlize(MathStream & os) const
 {
 	os << "<fenced open=\"" << left_ << "\" close=\""
 		<< right_ << "\">" << cell(0) << "</fenced>";

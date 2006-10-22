@@ -35,7 +35,7 @@ public:
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width of '[' in current font

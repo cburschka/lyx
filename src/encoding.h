@@ -16,12 +16,9 @@
 #include <map>
 #include <string>
 
+#include "support/types.h"
 
 namespace lyx {
-
-
-///
-typedef unsigned short int Uchar;
 
 ///
 class Encoding {
@@ -29,30 +26,25 @@ public:
 	///
 	Encoding() {}
 	///
-	Encoding(std::string const & n, std::string const & l, Uchar const * e)
-		: Name_(n), LatexName_(l) {
+	Encoding(std::string const & n, std::string const & l, char_type const * e)
+		: Name_(n), LatexName_(l)
+	{
 		for (int i = 0; i < 256; ++i)
 			encoding_table[i] = e[i];
 	}
 	///
-	std::string const & name() const {
-		return Name_;
-	}
+	std::string const & name() const { return Name_; }
 	///
-	std::string const & latexName() const {
-		return LatexName_;
-	}
+	std::string const & latexName() const { return LatexName_; }
 	///
-	Uchar ucs(unsigned char c) const {
-		return encoding_table[c];
-	}
+	char_type ucs(char_type c) const;
 private:
 	///
 	std::string Name_;
 	///
 	std::string LatexName_;
 	///
-	Uchar encoding_table[256];
+	char_type encoding_table[256];
 };
 
 extern Encoding symbol_encoding;
@@ -68,9 +60,7 @@ public:
 	///
 	Encoding const * getEncoding(std::string const & encoding) const;
 	///
-	Encoding const * symbol_encoding() {
-		return &symbol_encoding_;
-	}
+	Encoding const * symbol_encoding() { return &symbol_encoding_; }
 
 	///
 	enum Letter_Form {
@@ -84,20 +74,15 @@ public:
 		FORM_MEDIAL
 	};
 	///
-	static
-	bool isComposeChar_hebrew(unsigned char c);
+	static bool isComposeChar_hebrew(char_type c);
 	///
-	static
-	bool isComposeChar_arabic(unsigned char c);
+	static bool isComposeChar_arabic(char_type c);
 	///
-	static
-	bool is_arabic_special(unsigned char c);
+	static bool is_arabic_special(char_type c);
 	///
-	static
-	bool is_arabic(unsigned char c);
+	static bool is_arabic(char_type c);
 	///
-	static
-	unsigned char transformChar(unsigned char c, Letter_Form form);
+	static char_type transformChar(char_type c, Letter_Form form);
 
 private:
 	///

@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "InsetMathPhantom.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathStream.h"
 
 #include "LColor.h"
@@ -155,7 +155,7 @@ void InsetMathPhantom::normalize(NormalStream & os) const
 }
 
 
-void InsetMathPhantom::infoize(std::ostream & os) const
+void InsetMathPhantom::infoize(odocstream & os) const
 {
 	switch (kind_) {
 	case phantom:

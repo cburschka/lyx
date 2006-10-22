@@ -24,13 +24,13 @@ namespace lyx {
 class InsetMathNumber : public InsetMath {
 public:
 	///
-	explicit InsetMathNumber(std::string const & s);
+	explicit InsetMathNumber(docstring const & s);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	std::string str() const { return str_; }
+	docstring str() const { return str_; }
 	///
 	InsetMathNumber * asNumberInset() { return this; }
 
@@ -43,14 +43,14 @@ public:
 	///
 	void mathematica(MathematicaStream &) const;
 	///
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	///
 	void write(WriteStream & os) const;
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// the number as string
-	std::string str_;
+	docstring str_;
 };
 
 

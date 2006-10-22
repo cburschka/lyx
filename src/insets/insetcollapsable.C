@@ -58,7 +58,7 @@ InsetCollapsable::InsetCollapsable
 	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(LColor::collapsableframe);
-	setInsetName("Collapsable");
+	setInsetName(from_ascii("Collapsable"));
 	setButtonLabel();
 }
 

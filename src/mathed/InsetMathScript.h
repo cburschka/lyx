@@ -61,7 +61,7 @@ public:
 	/// write content as something readable by Mathematica
 	void mathematica(MathematicaStream &) const;
 	/// write content as something resembling MathML
-	void mathmlize(MathMLStream &) const;
+	void mathmlize(MathStream &) const;
 	/// write content as something readable by Octave
 	void octave(OctaveStream &) const;
 
@@ -99,9 +99,9 @@ public:
 	/// make sure a script is accessible
 	void ensure(bool up);
 	/// say that we have scripts
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	/// say whether we have displayed limits
-	void infoize2(std::ostream & os) const;
+	void infoize2(odocstream & os) const;
 protected:
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
 private:

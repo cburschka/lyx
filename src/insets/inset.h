@@ -43,9 +43,9 @@ public:
 	int width() const;
 
 	///
-	void setInsetName(std::string const & s) { name_ = s; }
+	void setInsetName(docstring const & s) { name_ = s; }
 	///
-	virtual std::string const & getInsetName() const { return name_; }
+	virtual docstring const & getInsetName() const { return name_; }
 	///
 	virtual void setBackgroundColor(LColor_color);
 	///
@@ -63,7 +63,7 @@ private:
 	InsetOld & operator=(InsetOld const &) const;
 
 	///
-	std::string name_;
+	docstring name_;
 	/** We store the LColor::color value as an int to get LColor.h out
 	 *  of the header file.
 	 */

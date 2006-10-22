@@ -32,10 +32,10 @@ void mathed_char_dim(LyXFont const &, char_type c, Dimension & dim);
 int mathed_char_width(LyXFont const &, char_type c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
-	std::string const & name);
+	docstring const & name);
 
 void mathed_string_dim(LyXFont const & font,
-		       std::vector<char_type> const & s,
+		       docstring const & s,
 		       Dimension & dim);
 
 int mathed_string_width(LyXFont const &, docstring const & s);
@@ -45,18 +45,17 @@ void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & s);
 
 void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 
-void augmentFont(LyXFont & f, std::string const & cmd);
+void augmentFont(LyXFont & f, docstring const & cmd);
 
-bool isFontName(std::string const & name);
+bool isFontName(docstring const & name);
 
 // converts single cell to string
-std::string asString(MathArray const & ar);
+docstring asString(MathArray const & ar);
 // converts single inset to string
-std::string asString(InsetMath const &);
-std::string asString(MathAtom const &);
+docstring asString(InsetMath const &);
+docstring asString(MathAtom const &);
 // converts string to single cell
 void asArray(docstring const & str, MathArray & ar);
-
 
 } // namespace lyx
 

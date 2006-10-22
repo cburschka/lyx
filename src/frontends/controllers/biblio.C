@@ -465,7 +465,7 @@ searchKeys(InfoMap const & theMap,
 		// (See Meyer's Effective STL, Item 28.)
 		return (++rit).base();
 	}
-	catch (boost::regex_error & regerr) {
+	catch (boost::regex_error &) {
 		return keys.end();
 	}
 }

@@ -14,7 +14,7 @@
 #include "MathSupport.h"
 #include "MathData.h"
 #include "InsetMath.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathParser.h"
 
 #include "debug.h"
@@ -32,7 +32,6 @@ namespace lyx {
 
 using frontend::Painter;
 
-using std::string;
 using std::max;
 using std::endl;
 using std::vector;
@@ -339,7 +338,7 @@ named_deco_struct deco_table[] = {
 };
 
 
-std::map<string, deco_struct> deco_list;
+std::map<docstring, deco_struct> deco_list;
 
 // sort the table on startup
 class init_deco_table {
@@ -350,7 +349,7 @@ public:
 			deco_struct d;
 			d.data  = p->data;
 			d.angle = p->angle;
-			deco_list[p->name]= d;
+			deco_list[from_ascii(p->name)] = d;
 		}
 	}
 };
@@ -358,10 +357,10 @@ public:
 static init_deco_table dummy;
 
 
-deco_struct const * search_deco(string const & name)
+deco_struct const * search_deco(docstring const & name)
 {
-	std::map<string, deco_struct>::const_iterator p = deco_list.find(name);
-	return (p == deco_list.end()) ? 0 : &(p->second);
+	std::map<docstring, deco_struct>::const_iterator p = deco_list.find(name);
+	return p == deco_list.end() ? 0 : &(p->second);
 }
 
 
@@ -384,13 +383,13 @@ int mathed_char_width(LyXFont const & font, char_type c)
 
 
 void mathed_string_dim(LyXFont const & font,
-		       vector<char_type> const & s,
+		       docstring const & s,
 		       Dimension & dim)
 {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 	dim.asc = 0;
 	dim.des = 0;
-	for (vector<char_type>::const_iterator it = s.begin();
+	for (docstring::const_iterator it = s.begin();
 	     it != s.end();
 	     ++it) {
 		dim.asc = max(dim.asc, fm.ascent(*it));
@@ -407,7 +406,7 @@ int mathed_string_width(LyXFont const & font, docstring const & s)
 
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
-	string const & name)
+	docstring const & name)
 {
 	if (name == ".") {
 		pi.pain.line(x + w/2, y, x + w/2, y + h,
@@ -418,7 +417,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	deco_struct const * mds = search_deco(name);
 	if (!mds) {
 		lyxerr << "Deco was not found. Programming error?" << endl;
-		lyxerr << "name: '" << name << "'" << endl;
+		lyxerr << "name: '" << to_utf8(name) << "'" << endl;
 		return;
 	}
 
@@ -501,7 +500,7 @@ void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 
 
 struct fontinfo {
-	string cmd_;
+	std::string cmd_;
 	LyXFont::FONT_FAMILY family_;
 	LyXFont::FONT_SERIES series_;
 	LyXFont::FONT_SHAPE  shape_;
@@ -601,10 +600,11 @@ fontinfo fontinfos[] = {
 };
 
 
-fontinfo * lookupFont(string const & name)
+fontinfo * lookupFont(docstring const & name0)
 {
 	//lyxerr << "searching font '" << name << "'" << endl;
 	int const n = sizeof(fontinfos) / sizeof(fontinfo);
+	std::string name = to_utf8(name0);
 	for (int i = 0; i < n; ++i)
 		if (fontinfos[i].cmd_ == name) {
 			//lyxerr << "found '" << i << "'" << endl;
@@ -614,7 +614,7 @@ fontinfo * lookupFont(string const & name)
 }
 
 
-fontinfo * searchFont(string const & name)
+fontinfo * searchFont(docstring const & name)
 {
 	fontinfo * f = lookupFont(name);
 	return f ? f : fontinfos;
@@ -623,13 +623,13 @@ fontinfo * searchFont(string const & name)
 }
 
 
-bool isFontName(string const & name)
+bool isFontName(docstring const & name)
 {
 	return lookupFont(name);
 }
 
 
-LyXFont getFont(string const & name)
+LyXFont getFont(docstring const & name)
 {
 	LyXFont font;
 	augmentFont(font, name);
@@ -637,7 +637,7 @@ LyXFont getFont(string const & name)
 }
 
 
-void fakeFont(string const & orig, string const & fake)
+void fakeFont(docstring const & orig, docstring const & fake)
 {
 	fontinfo * forig = searchFont(orig);
 	fontinfo * ffake = searchFont(fake);
@@ -647,22 +647,22 @@ void fakeFont(string const & orig, string const & fake)
 		forig->shape_  = ffake->shape_;
 		forig->color_  = ffake->color_;
 	} else {
-		lyxerr << "Can't fake font '" << orig << "' with '"
-		       << fake << "'" << endl;
+		lyxerr << "Can't fake font '" << to_utf8(orig) << "' with '"
+		       << to_utf8(fake) << "'" << endl;
 	}
 }
 
 
-void augmentFont(LyXFont & font, string const & name)
+void augmentFont(LyXFont & font, docstring const & name)
 {
 	static bool initialized = false;
 	if (!initialized) {
 		initialized = true;
 		// fake fonts if necessary
-		if (!theFontLoader().available(getFont("mathfrak")))
-			fakeFont("mathfrak", "lyxfakefrak");
-		if (!theFontLoader().available(getFont("mathcal")))
-			fakeFont("mathcal", "lyxfakecal");
+		if (!theFontLoader().available(getFont(from_ascii("mathfrak"))))
+			fakeFont(from_ascii("mathfrak"), from_ascii("lyxfakefrak"));
+		if (!theFontLoader().available(getFont(from_ascii("mathcal"))))
+			fakeFont(from_ascii("mathcal"), from_ascii("lyxfakecal"));
 	}
 	fontinfo * info = searchFont(name);
 	if (info->family_ != inh_family)
@@ -676,39 +676,36 @@ void augmentFont(LyXFont & font, string const & name)
 }
 
 
-string asString(MathArray const & ar)
+docstring asString(MathArray const & ar)
 {
 	odocstringstream os;
 	WriteStream ws(os);
 	ws << ar;
-	// FIXME UNICODE
-	return to_utf8(os.str());
+	return os.str();
 }
 
 
 void asArray(docstring const & str, MathArray & ar)
 {
-	mathed_parse_cell(ar, to_utf8(str));
+	mathed_parse_cell(ar, str);
 }
 
 
-string asString(InsetMath const & inset)
+docstring asString(InsetMath const & inset)
 {
 	odocstringstream os;
 	WriteStream ws(os);
 	inset.write(ws);
-	// FIXME UNICODE
-	return to_utf8(os.str());
+	return os.str();
 }
 
 
-string asString(MathAtom const & at)
+docstring asString(MathAtom const & at)
 {
 	odocstringstream os;
 	WriteStream ws(os);
 	at->write(ws);
-	// FIXME UNICODE
-	return to_utf8(os.str());
+	return os.str();
 }
 
 

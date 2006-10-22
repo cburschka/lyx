@@ -13,7 +13,7 @@
 
 #include "InsetMathRoot.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "cursor.h"
 #include "LColor.h"
 
@@ -106,7 +106,7 @@ void InsetMathRoot::octave(OctaveStream & os) const
 }
 
 
-void InsetMathRoot::mathmlize(MathMLStream & os) const
+void InsetMathRoot::mathmlize(MathStream & os) const
 {
 	os << MTag("mroot") << cell(1) << cell(0) << ETag("mroot");
 }

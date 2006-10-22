@@ -27,7 +27,7 @@ public:
 	explicit InsetMathColor(bool oldstyle,
 		LColor_color const & color = LColor::none);
 	/// Create a color inset from LaTeX color name
-	explicit InsetMathColor(bool oldstyle, std::string const & color);
+	explicit InsetMathColor(bool oldstyle, docstring const & color);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// we write extra braces in any case...
@@ -42,7 +42,7 @@ public:
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	/// width of '[' in current font
@@ -50,7 +50,7 @@ private:
 	///
 	bool oldstyle_;
 	/// Our color. Only valid LaTeX colors are allowed.
-	std::string color_;
+	docstring color_;
 };
 
 

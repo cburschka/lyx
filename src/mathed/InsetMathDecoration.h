@@ -34,7 +34,7 @@ public:
 	///
 	void normalize(NormalStream & os) const;
 	///
-	void infoize(std::ostream & os) const;
+	void infoize(odocstream & os) const;
 	///
 	bool isScriptable() const;
 	///

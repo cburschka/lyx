@@ -13,7 +13,7 @@
 
 #include "MathMacroArgument.h"
 #include "InsetMathMacro.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "debug.h"
 
@@ -33,8 +33,9 @@ MathMacroArgument::MathMacroArgument(size_t n)
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << endl;
 	}
+	str_.resize(3);
 	str_[0] = '#';
-	str_[1] = static_cast<unsigned char>('0' + n);
+	str_[1] = static_cast<char_type>('0' + n);
 	str_[2] = '\0';
 }
 
@@ -53,16 +54,14 @@ void MathMacroArgument::write(WriteStream & os) const
 
 void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	vector<char_type> n(str_, str_ + 3);
-	mathed_string_dim(mi.base.font, n, dim_);
+	mathed_string_dim(mi.base.font, str_, dim_);
 	dim = dim_;
 }
 
 
 void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 {
-	// FIXME UNICODE
-	drawStrRed(pi, x, y, from_utf8(str_));
+	drawStrRed(pi, x, y, str_);
 	setPosCache(pi, x, y);
 }
 

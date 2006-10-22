@@ -12,7 +12,7 @@
 
 #include "InsetMathCases.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
@@ -33,13 +33,11 @@ using std::endl;
 using std::max;
 using std::min;
 using std::swap;
-using std::string;
-
 using std::auto_ptr;
 
 
 InsetMathCases::InsetMathCases(row_type n)
-	: InsetMathGrid(2, n, 'c', "ll")
+	: InsetMathGrid(2, n, 'c', from_ascii("ll"))
 {}
 
 
@@ -59,7 +57,7 @@ void InsetMathCases::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 {
-	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
+	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), from_ascii("{"));
 	InsetMathGrid::drawWithMargin(pi, x, y, 8, 0);
 	setPosCache(pi, x, y);
 }
@@ -131,7 +129,7 @@ void InsetMathCases::maple(MapleStream & os) const
 }
 
 
-void InsetMathCases::infoize(std::ostream & os) const
+void InsetMathCases::infoize(odocstream & os) const
 {
 	os << "Cases ";
 }

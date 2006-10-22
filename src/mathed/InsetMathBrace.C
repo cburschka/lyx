@@ -12,7 +12,7 @@
 
 #include "InsetMathBrace.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "MathSupport.h"
 #include "LColor.h"
 #include "support/std_ostream.h"
@@ -93,7 +93,7 @@ void InsetMathBrace::octave(OctaveStream & os) const
 }
 
 
-void InsetMathBrace::mathmlize(MathMLStream & os) const
+void InsetMathBrace::mathmlize(MathStream & os) const
 {
 	os << MTag("mrow") << cell(0) << ETag("mrow");
 }
@@ -105,7 +105,7 @@ void InsetMathBrace::mathematica(MathematicaStream & os) const
 }
 
 
-void InsetMathBrace::infoize(std::ostream & os) const
+void InsetMathBrace::infoize(odocstream & os) const
 {
 	os << "Nested Block: ";
 }

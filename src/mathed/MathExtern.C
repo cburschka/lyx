@@ -26,7 +26,7 @@
 #include "InsetMathFrac.h"
 #include "InsetMathLim.h"
 #include "InsetMathMatrix.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 #include "InsetMathNumber.h"
 #include "InsetMathScript.h"
 #include "InsetMathString.h"
@@ -51,15 +51,16 @@ using support::subst;
 
 using frontend::function_names;
 
-using std::string;
 using std::endl;
 using std::find_if;
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::swap;
+using std::string;
 using std::vector;
 
+static size_t const npos = lyx::docstring::npos;
 
 // define a function for tests
 typedef bool TestItemFunc(MathAtom const &);
@@ -152,10 +153,10 @@ MathArray::iterator extractArgument(MathArray & ar,
 
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
-string charSequence
+docstring charSequence
 	(MathArray::const_iterator it, MathArray::const_iterator end)
 {
-	string s;
+	docstring s;
 	for (; it != end && (*it)->asCharInset(); ++it)
 		s += (*it)->getChar();
 	return s;
@@ -168,7 +169,7 @@ void extractStrings(MathArray & ar)
 	for (size_t i = 0; i < ar.size(); ++i) {
 		if (!ar[i]->asCharInset())
 			continue;
-		string s = charSequence(ar.begin() + i, ar.end());
+		docstring s = charSequence(ar.begin() + i, ar.end());
 		ar[i] = MathAtom(new InsetMathString(s));
 		ar.erase(i + 1, i + s.size());
 	}
@@ -200,10 +201,10 @@ void extractMatrices(MathArray & ar)
 
 
 // convert this inset somehow to a string
-bool extractString(MathAtom const & at, string & str)
+bool extractString(MathAtom const & at, docstring & str)
 {
 	if (at->getChar()) {
-		str = string(1, at->getChar());
+		str = docstring(1, at->getChar());
 		return true;
 	}
 	if (at->asStringInset()) {
@@ -215,7 +216,7 @@ bool extractString(MathAtom const & at, string & str)
 
 
 // is this a known function?
-bool isKnownFunction(string const & str)
+bool isKnownFunction(docstring const & str)
 {
 	for (int i = 0; *function_names[i]; ++i) {
 		if (str == function_names[i])
@@ -226,7 +227,7 @@ bool isKnownFunction(string const & str)
 
 
 // extract a function name from this inset
-bool extractFunctionName(MathAtom const & at, string & str)
+bool extractFunctionName(MathAtom const & at, docstring & str)
 {
 	if (at->asSymbolInset()) {
 		str = at->asSymbolInset()->name();
@@ -250,7 +251,7 @@ bool extractFunctionName(MathAtom const & at, string & str)
 // convert this inset somehow to a number
 bool extractNumber(MathArray const & ar, int & i)
 {
-	istringstream is(charSequence(ar.begin(), ar.end()));
+	idocstringstream is(charSequence(ar.begin(), ar.end()));
 	is >> i;
 	return is;
 }
@@ -258,18 +259,23 @@ bool extractNumber(MathArray const & ar, int & i)
 
 bool extractNumber(MathArray const & ar, double & d)
 {
-	istringstream is(charSequence(ar.begin(), ar.end()));
+	idocstringstream is(charSequence(ar.begin(), ar.end()));
 	is >> d;
 	return is;
 }
 
 
-bool testString(MathAtom const & at, string const & str)
+bool testString(MathAtom const & at, docstring const & str)
 {
-	string s;
+	docstring s;
 	return extractString(at, s) && str == s;
 }
 
+
+bool testString(MathAtom const & at, char const * const str)
+{
+	return testString(at, from_ascii(str));
+}
 
 // search end of nested sequence
 MathArray::iterator endNestSearch(
@@ -389,7 +395,7 @@ void extractExps(MathArray & ar)
 			continue;
 
 		// create a proper exp-inset as replacement
-		ar[i] = MathAtom(new InsetMathExFunc("exp", sup->cell(1)));
+		ar[i] = MathAtom(new InsetMathExFunc(from_ascii("exp"), sup->cell(1)));
 		ar.erase(i + 1);
 	}
 	//lyxerr << "\nExps to: " << ar << endl;
@@ -408,7 +414,7 @@ void extractDets(MathArray & ar)
 			continue;
 		if (!del->isAbs())
 			continue;
-		*it = MathAtom(new InsetMathExFunc("det", del->cell(0)));
+		*it = MathAtom(new InsetMathExFunc(from_ascii("det"), del->cell(0)));
 	}
 	//lyxerr << "\ndet to: " << ar << endl;
 }
@@ -418,17 +424,17 @@ void extractDets(MathArray & ar)
 // search numbers
 //
 
-bool isDigitOrSimilar(char c)
+bool isDigitOrSimilar(char_type c)
 {
 	return ('0' <= c && c <= '9') || c == '.';
 }
 
 
 // returns sequence of digits
-string digitSequence
+docstring digitSequence
 	(MathArray::const_iterator it, MathArray::const_iterator end)
 {
-	string s;
+	docstring s;
 	for (; it != end && (*it)->asCharInset(); ++it) {
 		if (!isDigitOrSimilar((*it)->getChar()))
 			break;
@@ -447,7 +453,7 @@ void extractNumbers(MathArray & ar)
 		if (!isDigitOrSimilar(ar[i]->asCharInset()->getChar()))
 			continue;
 
-		string s = digitSequence(ar.begin() + i, ar.end());
+		docstring s = digitSequence(ar.begin() + i, ar.end());
 
 		ar[i] = MathAtom(new InsetMathNumber(s));
 		ar.erase(i + 1, i + s.size());
@@ -475,7 +481,7 @@ bool testCloseParen(MathAtom const & at)
 
 MathAtom replaceParenDelims(const MathArray & ar)
 {
-	return MathAtom(new InsetMathDelim("(", ")", ar));
+	return MathAtom(new InsetMathDelim(from_ascii("("), from_ascii(")"), ar));
 }
 
 
@@ -493,7 +499,7 @@ bool testCloseBracket(MathAtom const & at)
 
 MathAtom replaceBracketDelims(const MathArray & ar)
 {
-	return MathAtom(new InsetMathDelim("[", "]", ar));
+	return MathAtom(new InsetMathDelim(from_ascii("["), from_ascii("]"), ar));
 }
 
 
@@ -526,7 +532,7 @@ void extractFunctions(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 		MathArray::iterator jt = it + 1;
 
-		string name;
+		docstring name;
 		// is it a function?
 		// it certainly is if it is well known...
 		if (!extractFunctionName(*it, name)) {
@@ -573,15 +579,21 @@ void extractFunctions(MathArray & ar)
 // search integrals
 //
 
-bool testSymbol(MathAtom const & at, string const & name)
+bool testSymbol(MathAtom const & at, docstring const & name)
 {
 	return at->asSymbolInset() && at->asSymbolInset()->name() == name;
 }
 
 
+bool testSymbol(MathAtom const & at, char const * const name)
+{
+	return at->asSymbolInset() && at->asSymbolInset()->name() == from_ascii(name);
+}
+
+
 bool testIntSymbol(MathAtom const & at)
 {
-	return testSymbol(at, "int");
+	return testSymbol(at, from_ascii("int"));
 }
 
 
@@ -627,7 +639,7 @@ void extractIntegrals(MathArray & ar)
 			continue;
 
 		// core ist part from behind the scripts to the 'd'
-		auto_ptr<InsetMathExInt> p(new InsetMathExInt("int"));
+		auto_ptr<InsetMathExInt> p(new InsetMathExInt(from_ascii("int")));
 
 		// handle scripts if available
 		if (!testIntSymbol(*it)) {
@@ -679,7 +691,7 @@ bool testEqualSign(MathAtom const & at)
 
 bool testSumSymbol(MathAtom const & p)
 {
-	return testSymbol(p, "sum");
+	return testSymbol(p, from_ascii("sum"));
 }
 
 
@@ -710,7 +722,7 @@ void extractSums(MathArray & ar)
 			continue;
 
 		// create a proper inset as replacement
-		auto_ptr<InsetMathExInt> p(new InsetMathExInt("sum"));
+		auto_ptr<InsetMathExInt> p(new InsetMathExInt(from_ascii("sum")));
 
 		// collect lower bound and summation index
 		InsetMathScript const * sub = ar[i]->asScriptInset();
@@ -985,7 +997,7 @@ void mathematica(MathArray const & dat, MathematicaStream & os)
 }
 
 
-void mathmlize(MathArray const & dat, MathMLStream & os)
+void mathmlize(MathArray const & dat, MathStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
@@ -1006,21 +1018,22 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 
 namespace {
 
-	string captureOutput(string const & cmd, string const & data)
+	std::string captureOutput(std::string const & cmd, std::string const & data)
 	{
-		string command =  "echo '" + data + "' | " + cmd;
+		std::string command =  "echo '" + data + "' | " + cmd;
 		lyxerr << "calling: " << command << endl;
 		cmd_ret const ret = runCommand(command);
 		return ret.second;
 	}
 
-	string::size_type get_matching_brace(string const & str, string::size_type i)
+	size_t get_matching_brace(std::string const & str, size_t i)
 	{
 		int count = 1;
-		string::size_type n = str.size();
+		size_t n = str.size();
 		while (i < n) {
 			i = str.find_first_of("{}", i+1);
-			if (i == string::npos) return i;
+			if (i == npos)
+				return i;
 			if (str[i] == '{')
 				++count;
 			else
@@ -1028,15 +1041,16 @@ namespace {
 			if (count == 0)
 				return i;
 		}
-		return string::npos;
+		return npos;
 	}
 
-	string::size_type get_matching_brace_back(string const & str, string::size_type i)
+	size_t get_matching_brace_back(std::string const & str, size_t i)
 	{
 		int count = 1;
 		while (i > 0) {
 			i = str.find_last_of("{}", i-1);
-			if (i == string::npos) return i;
+			if (i == npos)
+				return i;
 			if (str[i] == '}')
 				++count;
 			else
@@ -1044,7 +1058,7 @@ namespace {
 			if (count == 0)
 				return i;
 		}
-		return string::npos;
+		return npos;
 	}
 
 	MathArray pipeThroughMaxima(docstring const &, MathArray const & ar)
@@ -1052,11 +1066,10 @@ namespace {
 		odocstringstream os;
 		MaximaStream ms(os);
 		ms << ar;
-		// FIXME UNICODE Is utf8 encoding correct?
-		string expr = to_utf8(os.str());
-		string const header = "simpsum:true;";
+		docstring expr = os.str();
+		docstring const header = from_ascii("simpsum:true;");
 
-		string out;
+		std::string out;
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			// try to fix missing '*' the hard way
 			//
@@ -1066,53 +1079,52 @@ namespace {
 			// 2x;
 			//  ^
 			//
-			lyxerr << "checking expr: '" << expr << "'" << endl;
-			string full = header + "tex(" + expr + ");";
-			out = captureOutput("maxima", full);
+			lyxerr << "checking expr: '" << to_utf8(expr) << "'" << endl;
+			docstring full = header + "tex(" + expr + ");";
+			out = captureOutput("maxima", to_utf8(full));
 
 			// leave loop if expression syntax is probably ok
-			if (out.find("Incorrect syntax") == string::npos)
+			if (out.find("Incorrect syntax") == npos)
 				break;
 
 			// search line with "Incorrect syntax"
 			istringstream is(out);
-			string line;
+			std::string line;
 			while (is) {
 				getline(is, line);
-				if (line.find("Incorrect syntax") != string::npos)
+				if (line.find("Incorrect syntax") != npos)
 					break;
 			}
 
 			// 2nd next line is the one with caret
 			getline(is, line);
 			getline(is, line);
-			string::size_type pos = line.find('^');
+			size_t pos = line.find('^');
 			lyxerr << "found caret at pos: '" << pos << "'" << endl;
-			if (pos == string::npos || pos < 4)
+			if (pos == npos || pos < 4)
 				break; // caret position not found
 			pos -= 4; // skip the "tex(" part
 			if (expr[pos] == '*')
 				break; // two '*' in a row are definitely bad
-			expr.insert(pos,  "*");
+			expr.insert(pos, from_ascii("*"));
 		}
 
-		vector<string> tmp = getVectorFromString(out, "$$");
+		vector<std::string> tmp = getVectorFromString(out, "$$");
 		if (tmp.size() < 2)
 			return MathArray();
 
-		out = subst(tmp[1],"\\>", "");
+		out = subst(tmp[1], "\\>", std::string());
 		lyxerr << "out: '" << out << "'" << endl;
 
 		// Ugly code that tries to make the result prettier
-
-		string::size_type i = out.find("\\mathchoice");
-		while (i != string::npos) {
-			string::size_type j = get_matching_brace(out, i + 12);
-			string::size_type k = get_matching_brace(out, j + 1);
+		size_t i = out.find("\\mathchoice");
+		while (i != npos) {
+			size_t j = get_matching_brace(out, i + 12);
+			size_t k = get_matching_brace(out, j + 1);
 			k = get_matching_brace(out, k + 1);
 			k = get_matching_brace(out, k + 1);
-			string mid = out.substr(i + 13,j - i - 13);
-			if (mid.find("\\over") != string::npos)
+			std::string mid = out.substr(i + 13, j - i - 13);
+			if (mid.find("\\over") != npos)
 				mid = '{' + mid + '}';
 			out = out.substr(0,i)
 				+ mid
@@ -1123,11 +1135,13 @@ namespace {
 		}
 
 		i = out.find("\\over");
-		while (i != string::npos) {
-			string::size_type j = get_matching_brace_back(out, i - 1);
-			if (j == string::npos || j == 0) break;
-			string::size_type k = get_matching_brace(out, i + 5);
-			if (k == string::npos || k + 1 == out.size()) break;
+		while (i != npos) {
+			size_t j = get_matching_brace_back(out, i - 1);
+			if (j == npos || j == 0)
+				break;
+			size_t k = get_matching_brace(out, i + 5);
+			if (k == npos || k + 1 == out.size())
+				break;
 			out = out.substr(0,j - 1)
 				+ "\\frac"
 				+ out.substr(j,i - j)
@@ -1137,14 +1151,14 @@ namespace {
 			i = out.find("\\over", i + 4);
 		}
 		MathArray res;
-		mathed_parse_cell(res, out);
+		mathed_parse_cell(res, from_utf8(out));
 		return res;
 	}
 
 
 	MathArray pipeThroughMaple(docstring const & extra, MathArray const & ar)
 	{
-		string header = "readlib(latex):\n";
+		std::string header = "readlib(latex):\n";
 
 		// remove the \\it for variable names
 		//"#`latex/csname_font` := `\\it `:"
@@ -1172,12 +1186,11 @@ namespace {
 		//"#`latex/latex/symbol` "
 		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
 
-		string trailer = "quit;";
+		std::string trailer = "quit;";
 		odocstringstream os;
 		MapleStream ms(os);
 		ms << ar;
-		// FIXME UNICODE Is utf8 encoding correct?
-		string expr = to_utf8(os.str());
+		std::string expr = to_utf8(os.str());
 		lyxerr << "ar: '" << ar << "'\n"
 		       << "ms: '" << expr << "'" << endl;
 
@@ -1199,7 +1212,7 @@ namespace {
 			if (line.find("on line") != 0)
 				break; // error message not identified
 			getline(is, line);
-			string::size_type pos = line.find('^');
+			size_t pos = line.find('^');
 			if (pos == string::npos || pos < 15)
 				break; // caret position not found
 			pos -= 15; // skip the "on line ..." part
@@ -1216,7 +1229,7 @@ namespace {
 
 		//
 		MathArray res;
-		mathed_parse_cell(res, out);
+		mathed_parse_cell(res, from_utf8(out));
 		return res;
 	}
 
@@ -1226,7 +1239,6 @@ namespace {
 		odocstringstream os;
 		OctaveStream vs(os);
 		vs << ar;
-		// FIXME UNICODE Is utf8 encoding correct?
 		string expr = to_utf8(os.str());
 		string out;
 
@@ -1260,7 +1272,7 @@ namespace {
 
 			// found line with error, next line is the one with caret
 			getline(is, line);
-			string::size_type pos = line.find('^');
+			size_t pos = line.find('^');
 			lyxerr << "caret line: '" << line << "'" << endl;
 			lyxerr << "found caret at pos: '" << pos << "'" << endl;
 			if (pos == string::npos || pos < 4)
@@ -1278,13 +1290,13 @@ namespace {
 		out = out.substr(6);
 
 		// parse output as matrix or single number
-		MathAtom at(new InsetMathArray("array", out));
+		MathAtom at(new InsetMathArray(from_ascii("array"), from_utf8(out)));
 		InsetMathArray const * mat = at->asArrayInset();
 		MathArray res;
 		if (mat->ncols() == 1 && mat->nrows() == 1)
 			res.append(mat->cell(0));
 		else {
-			res.push_back(MathAtom(new InsetMathDelim("(", ")")));
+			res.push_back(MathAtom(new InsetMathDelim(from_ascii("("), from_ascii(")"))));
 			res.back().nucleus()->cell(0).push_back(at);
 		}
 		return res;
@@ -1323,11 +1335,11 @@ namespace {
 			bool roman, bool translate)
 	{
 		string const macro = "\\" + macroName + "{";
-		string::size_type const len = macro.length();
-		string::size_type i = out.find(macro);
+		size_t const len = macro.length();
+		size_t i = out.find(macro);
 
-		while (i != string::npos) {
-			string::size_type const j = get_matching_brace(out, i + len);
+		while (i != npos) {
+			size_t const j = get_matching_brace(out, i + len);
 			string const name = out.substr(i + len, j - i - len);
 			out = out.substr(0, i)
 				+ (roman ? "\\mathrm{" : "")
@@ -1354,8 +1366,8 @@ namespace {
 		out = captureOutput("math", full);
 		lyxerr << "out: '" << out << "'" << endl;
 
-		string::size_type pos1 = out.find("Out[1]//TeXForm= ");
-		string::size_type pos2 = out.find("In[2]:=");
+		size_t pos1 = out.find("Out[1]//TeXForm= ");
+		size_t pos2 = out.find("In[2]:=");
 
 		if (pos1 == string::npos || pos2 == string::npos)
 			return MathArray();
@@ -1370,7 +1382,7 @@ namespace {
 		prettifyMathematicaOutput(out, "Mvariable", false, false);
 
 		MathArray res;
-		mathed_parse_cell(res, out);
+		mathed_parse_cell(res, from_utf8(out));
 		return res;
 	}
 
@@ -1411,7 +1423,7 @@ MathArray pipeThroughExtern(string const & lang, docstring const & extra,
 	// run external sript
 	string out = captureOutput(file, data);
 	MathArray res;
-	mathed_parse_cell(res, out);
+	mathed_parse_cell(res, from_utf8(out));
 	return res;
 }
 

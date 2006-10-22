@@ -12,7 +12,7 @@
 
 #include "InsetMathStackrel.h"
 #include "MathData.h"
-#include "MathMLStream.h"
+#include "MathStream.h"
 
 
 namespace lyx {
