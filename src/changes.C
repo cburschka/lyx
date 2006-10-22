@@ -210,6 +210,9 @@ void Changes::insert(Change const & change, lyx::pos_type pos)
 
 Change const Changes::lookup(pos_type const pos) const
 {
+	if (table_.empty()) {
+		return Change(Change::UNCHANGED);
+	}
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator const end = table_.end();
 

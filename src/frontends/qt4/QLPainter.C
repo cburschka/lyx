@@ -57,6 +57,7 @@ void QLPainter::start()
 {
 	lyxerr << "QLPainter::start()" << endl;
 	qp_.reset(new QPainter(qwa_->paintDevice()));
+	qp_->setRenderHint(QPainter::TextAntialiasing);
 	// new QPainter has default QPen:
 	current_color_ = LColor::black;
 	current_ls_ = line_solid;
@@ -248,7 +249,9 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());
-		qp_->setFont(fi.font);
+		if (qp_->font() != fi.font) {
+			qp_->setFont(fi.font);
+		}
 		// We need to draw the text as LTR as we use our own bidi code.
 		qp_->setLayoutDirection(Qt::LeftToRight);
 		qp_->drawText(x, y, str);

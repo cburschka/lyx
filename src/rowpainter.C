@@ -79,7 +79,7 @@ private:
 	void paintForeignMark(double orig_x, LyXFont const & font, int desc = 0);
 	void paintHebrewComposeChar(pos_type & vpos, LyXFont const & font);
 	void paintArabicComposeChar(pos_type & vpos, LyXFont const & font);
-	void paintChars(pos_type & vpos, LyXFont font,
+	void paintChars(pos_type & vpos, LyXFont const & font,
 			bool hebrew, bool arabic);
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos);
@@ -252,24 +252,20 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 	pain_.text(int(x_) + dx, yo_, str, font);
 }
 
-
-void RowPainter::paintChars(pos_type & vpos, LyXFont font,
+void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 			    bool hebrew, bool arabic)
 {
+	// This method takes up 70% of time when typing
 	pos_type pos = text_.bidi.vis2log(vpos);
 	pos_type const end = row_.endpos();
 	FontSpan const font_span = par_.fontSpan(pos);
 	Change::Type const prev_change = par_.lookupChange(pos).type;
 
 	// first character
-#if 0
-	string str;
-	str += par_.getChar(pos);
-#else
 	std::vector<char_type> str;
 	str.reserve(100);
 	str.push_back(par_.getChar(pos));
-#endif
+
 	if (arabic) {
 		char_type c = str[0];
 		str[0] = par_.transformChar(c, pos);
@@ -298,26 +294,20 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont font,
 		if (arabic)
 			c = par_.transformChar(c, pos);
 
-#if 0
-		str += c;
-#else
 		str.push_back(c);
-#endif
 	}
 
-	if (prev_change == Change::DELETED)
-		font.setColor(LColor::strikeout);
-	else if (prev_change == Change::INSERTED)
-		font.setColor(LColor::newtext);
-
-	// Draw text and set the new x position
-	//lyxerr << "paint row: yo_ " << yo_ << "\n";
-#if 0
-	int width = pain_.text(int(x_), yo_, str, font);
-#else
-	int width = pain_.text(int(x_), yo_, &str[0], str.size(), font);
-#endif
-	x_ += width;
+	if (prev_change != Change::UNCHANGED) {
+		LyXFont copy(font);
+		if (prev_change == Change::DELETED) {
+			copy.setColor(LColor::strikeout);
+		} else if (prev_change == Change::INSERTED) {
+			copy.setColor(LColor::newtext);
+		}
+		x_ += pain_.text(int(x_), yo_, &str[0], str.size(), copy);
+	} else {
+		x_ += pain_.text(int(x_), yo_, &str[0], str.size(), font);
+	}
 }
 
 

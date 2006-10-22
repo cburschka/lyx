@@ -119,12 +119,6 @@ public:
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
 
-	/// return a screen copy of the defined area.
-	QPixmap copyScreen(int x, int y, int w, int h) const;
-
-	/// Draw a pixmap onto the backing pixmap.
-	void drawScreen(int x, int y, const QPixmap & pixmap);
-
 	/// copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int exp_width, int exp_height);
 
