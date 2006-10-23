@@ -806,6 +806,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_CLOSE:
 			closeBuffer();
+			view()->update();
 			break;
 
 		case LFUN_BUFFER_WRITE:

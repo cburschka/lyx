@@ -184,6 +184,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 	: WorkArea(lyx_view)
 {
 	cursor_ = new frontend::CursorWidget(this);
+	cursor_->hide();
 
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -478,6 +479,7 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 
 void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
+	cursor_->hide();
 	verticalScrollBar()->setPageStep(viewport()->height());
 	//paint_device_ = QPixmap(viewport()->width(), viewport()->height());
 	QAbstractScrollArea::resizeEvent(ev);
@@ -597,10 +599,7 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
-	if (!qApp->focusWidget())
-		return;
-
-	cursor_->move(x, y);
+	cursor_->setGeometry(x, y, x + 2, y - h);
 	cursor_->shape_ = shape;
 	cursor_->on_ = true;
 	cursor_->show();
@@ -609,6 +608,8 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 
 void GuiWorkArea::removeCursor()
 {
+	if (!qApp->focusWidget())
+		return;
 	cursor_->hide();
 }
 
