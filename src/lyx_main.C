@@ -475,6 +475,9 @@ void LyX::init()
 	// Query the OS to know what formats are viewed natively
 	formats.setAutoOpen();
 
+	// Read lyxrc.dist again to be able to override viewer auto-detection.
+	readRcFile("lyxrc.dist");
+
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	system_converters = converters;
