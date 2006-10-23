@@ -35,7 +35,7 @@ endif(ASPELL_FOUND)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-lyx_add_msvc_pch(lyx_sources)
+lyx_add_msvc_pch(lyx)
 
 set(lyx_sources ${lyx_sources} ${CMAKE_CURRENT_BINARY_DIR}/version.C)
 
@@ -54,7 +54,6 @@ target_link_libraries(lyx-${qt_postfix}
 	intl
 	${QT_QTMAIN_LIBRARY}
 	boost_iostreams
-	${pchlibname}
 )
 
 if(ASPELL_FOUND)

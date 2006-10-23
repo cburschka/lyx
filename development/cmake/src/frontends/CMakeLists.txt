@@ -12,15 +12,12 @@ add_subdirectory(controllers)
 add_subdirectory(${qt_postfix}) 
 
 
-
 file(GLOB frontends_sources ${TOP_SRC_DIR}/src/frontends/*.C)
 file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/*.h)
 
-lyx_add_msvc_pch(frontends_sources)
+lyx_add_msvc_pch(frontends)
 
 add_library(frontends STATIC ${frontends_sources} ${frontends_headers})
-
-add_dependencies(frontends ${pchlibname})
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

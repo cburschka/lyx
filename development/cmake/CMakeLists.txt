@@ -96,27 +96,18 @@ endif(MSVC)
 
 if(pch AND MSVC)
 	set(pch TRUE CACHE TYPE STRING)
-
-	macro(lyx_add_msvc_pch _sources)
-		SET_SOURCE_FILES_PROPERTIES(${${_sources}} PROPERTIES COMPILE_FLAGS 
-			"/Yuconfig.h /Fp${CMAKE_BINARY_DIR}/config.pch /Fd${CMAKE_BINARY_DIR}/pchlib.pdb")
-		add_definitions(-DLYX_PRECOMPILED_HEADERS)
+	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h    ${CMAKE_BINARY_DIR}/pcheaders.h)
+	macro(lyx_add_msvc_pch name_)
+		configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.C)
+		SET_SOURCE_FILES_PROPERTIES(${${name_}_sources} PROPERTIES COMPILE_FLAGS /Yuconfig.h)
+		SET_SOURCE_FILES_PROPERTIES(${CMAKE_CURRENT_BINARY_DIR}/config.C PROPERTIES COMPILE_FLAGS /Ycconfig.h)
+		add_definitions(/DLYX_PRECOMPILED_HEADERS)
+		set(${name_}_sources ${${name_}_sources} ${CMAKE_CURRENT_BINARY_DIR}/config.C ${CMAKE_BINARY_DIR}/pcheaders.h)
 	endmacro(lyx_add_msvc_pch)
-	
-	configure_file(config.C.cmake ${CMAKE_BINARY_DIR}/config.C)
-	configure_file(pcheaders.h ${CMAKE_BINARY_DIR}/pcheaders.h)
-	SET_SOURCE_FILES_PROPERTIES(${CMAKE_BINARY_DIR}/config.C PROPERTIES COMPILE_FLAGS  
-		"/Ycconfig.h /Fp${CMAKE_BINARY_DIR}/config.pch /Fd${CMAKE_BINARY_DIR}/pchlib.pdb -DLYX_PRECOMPILED_HEADERS")
-		
-	include_directories(${CMAKE_CURRENT_BINARY_DIR} ${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
-	add_library(pchlib STATIC ${CMAKE_BINARY_DIR}/config.C ${CMAKE_BINARY_DIR}/pcheaders.h)
-	
-	set(pchlibname pchlib )
 	set(PRECOMPILED_HEADERS TRUE)
 else(pch AND MSVC)
 	macro(lyx_add_msvc_pch)
 	endmacro(lyx_add_msvc_pch)
-	set(pchlibname boost_signals) # dummy 
 endif(pch AND MSVC)
 
 

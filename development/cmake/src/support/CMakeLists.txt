@@ -20,17 +20,15 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/atexit.c
 	${TOP_SRC_DIR}/src/support/strerror.c)
 
-lyx_add_msvc_pch(support_sources)
-
 set(support_sources ${support_sources} ${CMAKE_CURRENT_BINARY_DIR}/package.C)
+
+lyx_add_msvc_pch(support)
 	
 include_directories(${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
 
 add_library(support STATIC ${support_sources} ${support_headers})
 
 target_link_libraries(support boost_signals)
-
-add_dependencies(support ${pchlibname})
 
 if(WIN32)
 	target_link_libraries(support shlwapi)

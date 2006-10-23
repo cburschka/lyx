@@ -11,13 +11,11 @@ file(GLOB insets_headers ${TOP_SRC_DIR}/src/insets/*.h)
 
 list(REMOVE_ITEM insets_sources ${TOP_SRC_DIR}/src/insets/insettheorem.C)
 
-lyx_add_msvc_pch(insets_sources)
+lyx_add_msvc_pch(insets)
 
 include_directories(${TOP_SRC_DIR}/src/insets)
 
 add_library(insets STATIC ${insets_sources} ${insets_headers})
-
-add_dependencies(insets ${pchlibname})
 
 project_source_group("${GROUP_CODE}" insets_sources insets_headers)
 
