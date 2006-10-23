@@ -354,7 +354,6 @@
 #include <mathed/MathExtern.h>
 #include <mathed/MathFactory.h>
 #include <mathed/MathGridInfo.h>
-#include <mathed/MathMLStream.h>
 #include <mathed/MathMacroArgument.h>
 #include <mathed/MathMacroTable.h>
 #include <mathed/MathMacroTemplate.h>
