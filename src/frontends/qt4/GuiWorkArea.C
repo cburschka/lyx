@@ -55,18 +55,11 @@
  #define USE_EVENT_PRUNING 0
 #endif
 
+
 using std::endl;
 using std::string;
 
 namespace os = lyx::support::os;
-
-
-volatile int NN;
-
-void recCalled()
-{
-	++NN;
-}
 
 
 namespace lyx {
@@ -106,7 +99,7 @@ static mouse_button::state q_button_state(Qt::MouseButton button)
 }
 
 
-/// retddurn the LyX mouse button state from Qt's
+/// return the LyX mouse button state from Qt's
 mouse_button::state q_motion_state(Qt::MouseButton state)
 {
 	mouse_button::state b = mouse_button::none;
@@ -122,6 +115,63 @@ mouse_button::state q_motion_state(Qt::MouseButton state)
 
 namespace frontend {
 
+class CursorWidget : public QWidget {
+public:
+	CursorWidget(QWidget * parent)
+		: QWidget(parent)
+	{
+		resize(2, 20);
+	}
+
+	void paintEvent(QPaintEvent *)
+	{
+		QColor const & col = guiApp->colorCache().get(LColor::cursor);
+
+/*	
+		int cursor_w_;
+		int cursor_h_;
+
+		switch (cursor_shape_) {
+		case BAR_SHAPE:
+			// FIXME the cursor width shouldn't be hard-coded!
+			cursor_w_ = 2;
+			lshape_cursor_ = false;
+			break;
+		case L_SHAPE:
+			cursor_w_ = cursor_h_ / 3;
+			lshape_cursor_ = true;
+			break;
+		case REVERSED_L_SHAPE:
+			cursor_w_ = cursor_h_ / 3;
+			//cursor_x_ -= cursor_w_ - 1;
+			lshape_cursor_ = true;
+			break;
+		}
+*/
+
+		// We cache two pixmaps:
+		// 1 the vertical line of the cursor.
+		// 2 the horizontal line of the L-shaped cursor (if necessary).
+
+		// Draw the new (vertical) cursor.
+		QPainter pain(this);
+		pain.fillRect(rect(), col);
+/*
+		// Draw the new (horizontal) cursor if necessary.
+		if (lshape_cursor_) {
+			hcursor_ = QPixmap(cursor_w_, 1);
+			hcursor_.fill(col);
+			show_hcursor_ = true;
+		}
+*/
+	}
+	/// shown?
+	bool on_;
+	///
+	CursorShape shape_;
+};
+
+
 // This is a 'heartbeat' generating synthetic mouse move events when the
 // cursor is at the top or bottom edge of the viewport. One scroll per 0.2 s
 SyntheticMouseEvent::SyntheticMouseEvent()
@@ -133,6 +183,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
 	: WorkArea(lyx_view)
 {
+	cursor_ = new frontend::CursorWidget(this);
+
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
@@ -485,47 +537,6 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
-	//setAttribute(Qt::WA_PaintOutsidePaintEvent, true);
-	QRect const rc = ev->rect(); 
-	lyxerr << "paintEvent begin: x: " << rc.x()
-		<< " y: " << rc.y()
-		<< " w: " << rc.width()
-		<< " h: " << rc.height() << endl;
-
-	if (!buffer_view_) {
-		lyxerr << "no bufferview" << endl;
-		return;
-	}
-
-	QLPainter pain(viewport());
-
-	if (rc.width() == 3) { // FIXME HACK
-		// Assume splash screen drawing is requested when
-		// widht == 3
-		doGreyOut(pain);
-		return;
-	}
-
-	if (!buffer_view_->buffer()) {
-		lyxerr << "no buffer: " << endl;
-		doGreyOut(pain);
-		updateScrollbar();
-		return;
-	}
-
-
-	if (rc.width() != 2)  { // FIXME HACK
-		// Assumes cursor drawing is requested when the
-		// width is 2
-		lyxerr << "Real drawing requested" << endl;
-		ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
-		paintText(*buffer_view_, vi, pain);
-	}
-	else {
-		//
-		lyxerr << "only cursor drawing requested" << endl;
-	}
-
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n QWidget width\t" << this->width()
@@ -541,15 +552,41 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		<< endl;
 	*/
 
-	//pain.drawPixmap(e->rect(), paint_device_, e->rect());
+	QRect const rc = ev->rect(); 
+	//lyxerr << "paintEvent begin: x: " << rc.x()
+	//	<< " y: " << rc.y()
+	//	<< " w: " << rc.width()
+	//	<< " h: " << rc.height() << endl;
 
-	if (show_vcursor_)
-		pain.drawPixmap(cursor_x_, cursor_y_, vcursor_);
+	if (!buffer_view_) {
+		lyxerr << "no bufferview" << endl;
+		return;
+	}
 
-	if (show_hcursor_)
-		pain.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
-	lyxerr << "paintEvent end" << endl;
+
+	if (rc.width() == 3) { // FIXME HACK
+		// Assume splash screen drawing is requested when
+		// width == 3
+		lyxerr << "splash screen requested" << endl;
+		QLPainter pain(viewport());
+		doGreyOut(pain);
+		return;
+	}
+
+	if (!buffer_view_->buffer()) {
+		lyxerr << "no buffer: " << endl;
+		QLPainter pain(viewport());
+		doGreyOut(pain);
+		updateScrollbar();
+		return;
+	}
+
+	//lyxerr << "real drawing" << endl;
+	QLPainter pain(viewport());
+	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
+	paintText(*buffer_view_, vi, pain);
 }
+
 
 
 void GuiWorkArea::expose(int x, int y, int w, int h)
@@ -563,67 +600,16 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 	if (!qApp->focusWidget())
 		return;
 
-	show_vcursor_ = true;
-
-	QColor const & required_color = guiApp->colorCache().get(LColor::cursor);
-
-	if (x==cursor_x_ && y==cursor_y_ && h==cursor_h_
-		&& cursor_color_ == required_color
-		&& cursor_shape_ == shape) {
-		show_hcursor_ = lshape_cursor_;
-		update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
-		return;
-	}
-
-	// Cache the dimensions of the cursor.
-	cursor_x_ = x;
-	cursor_y_ = y;
-	cursor_h_ = h;
-	cursor_color_ = required_color;
-	cursor_shape_ = shape;
-
-	switch (cursor_shape_) {
-	case BAR_SHAPE:
-		// FIXME the cursor width shouldn't be hard-coded!
-		cursor_w_ = 2;
-		lshape_cursor_ = false;
-		break;
-	case L_SHAPE:
-		cursor_w_ = cursor_h_ / 3;
-		lshape_cursor_ = true;
-		break;
-	case REVERSED_L_SHAPE:
-		cursor_w_ = cursor_h_ / 3;
-		cursor_x_ -= cursor_w_ - 1;
-		lshape_cursor_ = true;
-		break;
-	}
-
-	// We cache two pixmaps:
-	// 1 the vertical line of the cursor.
-	// 2 the horizontal line of the L-shaped cursor (if necessary).
-
-	// Draw the new (vertical) cursor.
-	vcursor_ = QPixmap(cursor_w_, cursor_h_);
-	vcursor_.fill(cursor_color_);
-
-	// Draw the new (horizontal) cursor if necessary.
-	if (lshape_cursor_) {
-		hcursor_ = QPixmap(cursor_w_, 1);
-		hcursor_.fill(cursor_color_);
-		show_hcursor_ = true;
-	}
-
-	update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+	cursor_->move(x, y);
+	cursor_->shape_ = shape;
+	cursor_->on_ = true;
+	cursor_->show();
 }
 
 
 void GuiWorkArea::removeCursor()
 {
-	show_vcursor_ = false;
-	show_hcursor_ = false;
-
-	update(cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+	cursor_->hide();
 }
 
 

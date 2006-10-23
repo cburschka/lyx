@@ -23,7 +23,6 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 #include <QTimer>
-#include <QPixmap>
 
 #include <queue>
 
@@ -85,6 +84,7 @@ public:
  * Qt-specific implementation of the work area
  * (buffer view GUI)
 */
+	class CursorWidget;
 class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 {
 	Q_OBJECT
@@ -115,30 +115,29 @@ public:
 private:
 	void doGreyOut(QLPainter & pain);
 	///
-	void dragEnterEvent(QDragEnterEvent * event);
+	void dragEnterEvent(QDragEnterEvent * ev);
 	///
-	void dropEvent(QDropEvent* event);
+	void dropEvent(QDropEvent * ev);
 	/// repaint part of the widget
-	void paintEvent(QPaintEvent * e);
+	void paintEvent(QPaintEvent * ev);
 	/// widget has been resized
-	void resizeEvent(QResizeEvent * e);
+	void resizeEvent(QResizeEvent * ev);
 	/// mouse button press
-	void mousePressEvent(QMouseEvent * e);
+	void mousePressEvent(QMouseEvent * ev);
 	/// mouse button release
-	void mouseReleaseEvent(QMouseEvent * e);
+	void mouseReleaseEvent(QMouseEvent * ev);
 	/// mouse double click of button
-	void mouseDoubleClickEvent(QMouseEvent * e);
+	void mouseDoubleClickEvent(QMouseEvent * ev);
 	/// mouse motion
-	void mouseMoveEvent(QMouseEvent * e);
+	void mouseMoveEvent(QMouseEvent * ev);
 	/// wheel event
-	void wheelEvent(QWheelEvent * e);
+	void wheelEvent(QWheelEvent * ev);
 	/// key press
-	void keyPressEvent(QKeyEvent * e);
+	void keyPressEvent(QKeyEvent * ev);
 	/// IM events
-	void inputMethodEvent(QInputMethodEvent * e);
+	void inputMethodEvent(QInputMethodEvent * ev);
 
 public Q_SLOTS:
-
 	/// Timeout event Slot for keyboard bufferring.
 	/// \todo This is not used currently in the code, remove?
 	void keyeventTimeout();
@@ -157,30 +156,13 @@ private:
 
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
-
-	/// Our client side painting device.
-	//QPixmap paint_device_;
-
 	/// \todo remove
 	QTimer step_timer_;
-
 	/// \todo remove
 	std::queue<boost::shared_ptr<QKeyEvent> > keyeventQueue_;
-
+	///
 	double_click dc_event_;
 
-	///
-	int cursor_x_;
-	///
-	int cursor_y_;
-	///
-	int cursor_w_;
-	///
-	int cursor_h_;
-	///
-	QPixmap hcursor_;
-	///
-	QPixmap vcursor_;
 	///
 	bool show_hcursor_;
 	///
@@ -191,6 +173,8 @@ private:
 	QColor cursor_color_;
 	///
 	CursorShape cursor_shape_;
+	///	
+	CursorWidget * cursor_;
 };
 
 } // namespace frontend

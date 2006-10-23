@@ -177,7 +177,7 @@ void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 	docstring const str = lex.getDocString();
 	lex.next(); // eat that macro definition
 	lex.next(); // eat the \\end_insrt line
-	lyxerr << "Got to read from: " << to_utf8(str) << endl;
+	//lyxerr << "Got to read from: " << to_utf8(str) << endl;
 	mathed_parse_cell(ar, str);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
