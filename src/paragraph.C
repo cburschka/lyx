@@ -568,7 +568,7 @@ int Paragraph::stripLeadingSpaces()
 
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))
-		&& (lookupChange(0).type != Change::DELETED)) {
+		&& !isDeleted(0)) {
 		eraseChar(0, false); // no change tracking here
 		++i;
 	}
