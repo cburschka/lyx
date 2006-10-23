@@ -124,4 +124,3 @@ MACRO (LYX_AUTOMOC)
       endif (EXISTS ${_abs_FILE} AND NOT _skip)
    endforeach (_current_FILE)
 endmacro (LYX_AUTOMOC)
-

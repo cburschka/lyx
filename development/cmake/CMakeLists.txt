@@ -88,13 +88,34 @@ if(MSVC)
 		SET(CMAKE_EXE_LINKER_FLAGS /MANIFEST)
 	endif(MSVC_IDE)
 
-	SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Zi -wd4996 -wd4800" CACHE STRING "runtime-library flags" FORCE)
-	SET(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} -wd4996 -wd4800" CACHE STRING "runtime-library flags" FORCE)
-	SET(CMAKE_C_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG})
-	SET(CMAKE_C_FLAGS_RELEASE ${CMAKE_CXX_FLAGS_RELEASE})
+ 	ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE)	
+
 else(MSVC)
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 endif(MSVC)
+
+if(pch AND MSVC)
+	set(pch TRUE CACHE TYPE STRING)
+
+	macro(lyx_add_msvc_pch _sources)
+		SET_SOURCE_FILES_PROPERTIES(${${_sources}} PROPERTIES COMPILE_FLAGS 
+			"/Yuconfig.h /Fp${CMAKE_BINARY_DIR}/config.pch /Fd${CMAKE_BINARY_DIR}/pchlib.pdb")
+	endmacro(lyx_add_msvc_pch)
+	
+	configure_file(config.C.cmake ${CMAKE_BINARY_DIR}/config.C)
+	SET_SOURCE_FILES_PROPERTIES(${CMAKE_BINARY_DIR}/config.C PROPERTIES COMPILE_FLAGS  
+		"/Ycconfig.h /Fp${CMAKE_BINARY_DIR}/config.pch /Fd${CMAKE_BINARY_DIR}/pchlib.pdb")
+		
+	include_directories(${CMAKE_CURRENT_BINARY_DIR} ${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
+	add_library(pchlib STATIC ${CMAKE_BINARY_DIR}/config.C)
+	
+	set(pchlibname pchlib )
+	set(PRECOMPILED_HEADERS TRUE)
+else(pch AND MSVC)
+	macro(lyx_add_msvc_pch)
+	endmacro(lyx_add_msvc_pch)
+	set(pchlibname boost_signals) # dummy 
+endif(pch AND MSVC)
 
 
 #TODO: insource is not the best place

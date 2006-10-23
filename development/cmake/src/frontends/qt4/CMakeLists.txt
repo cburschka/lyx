@@ -11,6 +11,7 @@ file(GLOB frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/*.C)
 file(GLOB frontends_qt4_headers ${TOP_SRC_DIR}/src/frontends/qt4/*.h)
 file(GLOB frontend_qt4_UI       ${TOP_SRC_DIR}/src/frontends/qt4/ui/*.ui)
 
+lyx_add_msvc_pch(frontends_qt4_sources)
 
 lyx_automoc(${frontends_qt4_sources})
 
@@ -23,6 +24,7 @@ add_definitions(
 		-DQT_NO_KEYWORDS
 		)
 
+
 include_directories(	${TOP_SRC_DIR}/src/frontends/qt4 
 			${TOP_SRC_DIR}/src/frontends/controllers
 			${CMAKE_CURRENT_BINARY_DIR})
@@ -30,6 +32,8 @@ include_directories(	${TOP_SRC_DIR}/src/frontends/qt4
 add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers})
 
 target_link_libraries(frontend_qt4 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} controllers)
+
+add_dependencies(frontend_qt4 ${pchlibname})
 
 if(WIN32)
 	target_link_libraries(frontend_qt4 Gdi32)

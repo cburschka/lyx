@@ -163,4 +163,9 @@
 #define uintmax_t UINT_MAX
 #endif
 
+#ifdef _MSC_VER
+#pragma warning( disable : 4800 ) //: forcing value to bool 'true' or 'false' (performance warning)
+#endif
+
+
 #endif

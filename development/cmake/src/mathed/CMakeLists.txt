@@ -14,9 +14,13 @@ list(REMOVE_ITEM mathed_sources
 	${TOP_SRC_DIR}/src/mathed/InsetMathMBox.C
 	${TOP_SRC_DIR}/src/mathed/InsetFormulaMacro.C)
 
+lyx_add_msvc_pch(mathed_sources)
+
 include_directories(${TOP_SRC_DIR}/src/mathed)
 
 add_library(mathed STATIC ${mathed_sources} ${mathed_headers})
+
+add_dependencies(mathed ${pchlibname})
 
 project_source_group("${GROUP_CODE}" mathed_sources mathed_headers)
 

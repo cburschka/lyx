@@ -9,11 +9,15 @@ project(controllers)
 file(GLOB controllers_sources ${TOP_SRC_DIR}/src/frontends/controllers/*.C)
 file(GLOB controllers_headers ${TOP_SRC_DIR}/src/frontends/controllers/*.h)
 
+lyx_add_msvc_pch(controllers_sources)
+
 include_directories(${TOP_SRC_DIR}/src/frontends/controllers)
 
 add_library(controllers STATIC ${controllers_sources} ${controllers_headers})
 
 target_link_libraries(controllers boost_regex boost_filesystem)
+
+add_dependencies(controllers ${pchlibname})
 
 project_source_group("${GROUP_CODE}" controllers_sources controllers_headers)
 
