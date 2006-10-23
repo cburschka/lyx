@@ -65,10 +65,6 @@ public:
 	///
 	BufferView const & bufferView() const;
 
-
-	/// return the painter object for this work area
-	virtual Painter & getPainter() = 0;
-
 	/// return the width of the work area in pixels
 	virtual int width() const = 0;
 
@@ -85,58 +81,48 @@ public:
 
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw();
-
-	/// grey out (no buffer)
-	void greyOut();
+	///
+	void checkAndGreyOut();
 
 protected:
+	/// grey out (no buffer)
+	virtual void greyOut();
 	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
-
 	///
 	void dispatch(FuncRequest const & cmd0);
-
 	///
 	void resizeBufferView();
-
 	///
 	void scrollBufferView(int position);
-
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
-
 	/// show the cursor if it is not visible
 	void showCursor();
-
 	/// toggle the cursor's visibility
 	void toggleCursor();
-
 	/// hide the cursor
 	virtual void removeCursor() = 0;
-
 	/// paint the cursor and store the background
 	virtual void showCursor(int x, int y, int h, CursorShape shape) = 0;
+	///
+	void updateScrollbar();
 
 	///
 	BufferView * buffer_view_;
 
 	///
 	LyXView & lyx_view_;
+	///
+	bool greyed_out_;
 
 private:
-	///
-	void updateScrollbar();
-	///
-	void checkAndGreyOut();
 	///
 	void displayMessage(docstring const &);
 	/// buffer messages signal connection
 	boost::signals::connection message_connection_;
-
-	///
-	bool greyed_out_;
 
 	/// is the cursor currently displayed
 	bool cursor_visible_;

@@ -38,10 +38,6 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 #include "rowpainter.h"
-#include "version.h"
-
-#include "graphics/GraphicsImage.h"
-#include "graphics/GraphicsLoader.h"
 
 #include "gettext.h"
 #include "support/filetools.h" // LibFileSearch
@@ -60,74 +56,6 @@ using std::max;
 using std::string;
 
 
-namespace lyx {
-namespace frontend {
-
-// FIXME: The SplashScreen should be transfered to the
-// LyXView and create a WorkArea only when a new buffer exists. This
-// will allow to call WorkArea::redraw() in the constructor.
-class SplashScreen : boost::noncopyable, boost::signals::trackable {
-public:
-	/// This is a singleton class. Get the instance.
-	static SplashScreen const & get();
-	///
-	lyx::graphics::Image const * image() const { return loader_.image(); }
-	///
-	string const & text() const { return text_; }
-	///
-	LyXFont const & font() const { return font_; }
-	///
-	void connect(lyx::graphics::Loader::slot_type const & slot) const {
-		loader_.connect(slot);
-	}
-	///
-	void startLoading() const {
-		if (loader_.status() == lyx::graphics::WaitingToLoad)
-			loader_.startLoading();
-	}
-
-private:
-	/** Make the c-tor private so we can control how many objects
-	 *  are instantiated.
-	 */
-	SplashScreen();
-
-	///
-	lyx::graphics::Loader loader_;
-	/// The text to be written on top of the pixmap
-	string const text_;
-	/// in this font...
-	LyXFont font_;
-};
-
-
-SplashScreen const & SplashScreen::get()
-{
-	static SplashScreen singleton;
-	return singleton;
-}
-
-
-SplashScreen::SplashScreen()
-	: text_(lyx_version ? lyx_version : "unknown")
-{
-	if (!lyxrc.show_banner)
-		return;
-
-	string const file = libFileSearch("images", "banner", "ppm");
-	if (file.empty())
-		return;
-
-	// The font used to display the version info
-	font_.setFamily(LyXFont::SANS_FAMILY);
-	font_.setSeries(LyXFont::BOLD_SERIES);
-	font_.setSize(LyXFont::SIZE_NORMAL);
-	font_.setColor(LColor::yellow);
-
-	// Load up the graphics file
-	loader_.reset(file);
-}
-
 namespace {
 
 // All the below connection objects are needed because of a bug in some
@@ -139,16 +67,17 @@ boost::signals::connection timecon;
 
 } // anon namespace
 
+namespace lyx {
+namespace frontend {
+
 WorkArea::WorkArea(LyXView & lyx_view)
-	:  buffer_view_(0), lyx_view_(lyx_view), greyed_out_(true),
-	cursor_visible_(false), cursor_timeout_(400)
+	: buffer_view_(0), lyx_view_(lyx_view), greyed_out_(true),
+	  cursor_visible_(false), cursor_timeout_(400)
 {
 	// Start loading the pixmap as soon as possible
-	if (lyxrc.show_banner) {
-		SplashScreen const & splash = SplashScreen::get();
-		splash.connect(boost::bind(&WorkArea::checkAndGreyOut, this));
-		splash.startLoading();
-	}
+	//if (lyxrc.show_banner) {
+	//	showBanner();
+	//}
 
 	// Setup the signals
 	timecon = cursor_timeout_.timeout
@@ -203,8 +132,7 @@ void WorkArea::redraw()
 		return;
 
 	if (!buffer_view_->buffer()) {
-		greyOut();
-		updateScrollbar();
+		checkAndGreyOut();
 		return;
 	}
 
@@ -214,22 +142,19 @@ void WorkArea::redraw()
 
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 	greyed_out_ = false;
-	getPainter().start();
-	paintText(*buffer_view_, vi, getPainter());
+
 	lyxerr[Debug::WORKAREA] << "WorkArea::redraw screen" << endl;
 	int const ymin = std::max(vi.y1, 0);
-	int const ymax =
-		( vi.p2 < vi.size - 1 ?  vi.y2 : height() );
+	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : height();
+
 	expose(0, ymin, width(), ymax - ymin);
-	getPainter().end();
 
-	lyxerr[Debug::WORKAREA]
-	<< "  ymin = " << ymin << "  width() = " << width()
-		<< "  ymax-ymin = " << ymax-ymin << std::endl;
+	//lyxerr[Debug::WORKAREA]
+	//<< "  ymin = " << ymin << "  width() = " << width()
+//		<< "  ymax-ymin = " << ymax-ymin << std::endl;
 
-	if (lyxerr.debugging(Debug::WORKAREA)) {
+	if (lyxerr.debugging(Debug::WORKAREA))
 		buffer_view_->coordCache().dump();
-	}
 }
 
 
@@ -318,34 +243,7 @@ void WorkArea::scrollBufferView(int position)
 void WorkArea::greyOut()
 {
 	greyed_out_ = true;
-	getPainter().start();
-
-	getPainter().fillRectangle(0, 0,
-		width(),
-		height(),
-		LColor::bottomarea);
-
-	// Add a splash screen to the centre of the work area
-	SplashScreen const & splash = SplashScreen::get();
-	lyx::graphics::Image const * const splash_image = splash.image();
-	if (splash_image) {
-		int const w = splash_image->getWidth();
-		int const h = splash_image->getHeight();
-
-		int x = (width() - w) / 2;
-		int y = (height() - h) / 2;
-
-		getPainter().image(x, y, w, h, *splash_image);
-
-		x += 260;
-		y += 265;
-
-		string stext = splash.text();
-		docstring dstext(stext.begin(), stext.end());
-		getPainter().text(x, y, dstext, splash.font());
-	}
-	expose(0, 0, width(), height());
-	getPainter().end();
+	expose(4, 5, 3, 3);
 }
 
 

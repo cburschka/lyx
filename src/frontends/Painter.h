@@ -63,10 +63,10 @@ public:
 	virtual ~Painter() {}
 
 	/// begin painting
-	virtual void start() {}
+	//virtual void start() {}
 
 	/// end painting
-	virtual void end() {}
+	////virtual void end() {}
 
 	/// return the width of the work area in pixels
 	virtual int paperWidth() const = 0;
