@@ -921,7 +921,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// Do we have an open font change?
 	bool open_font = false;
 
-	Change::Type running_change = Change::UNCHANGED;
+	Change::Type runningChangeType = Change::UNCHANGED;
 
 	texrow.start(id(), 0);
 
@@ -1009,15 +1009,15 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			open_font = true;
 		}
 
-		Change::Type change = pimpl_->lookupChange(i).type;
+		Change::Type changeType = pimpl_->lookupChange(i).type;
 
-		column += Changes::latexMarkChange(os, running_change,
-			change, output);
-		running_change = change;
+		column += Changes::latexMarkChange(os, runningChangeType,
+			changeType, output);
+		runningChangeType = changeType;
 
 		// do not output text which is marked deleted
 		// if change tracking output is not desired
-		if (output || running_change != Change::DELETED) {
+		if (output || runningChangeType != Change::DELETED) {
 			OutputParams rp = runparams;
 			rp.free_spacing = style->free_spacing;
 			rp.local_font = &font;
@@ -1026,13 +1026,13 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 						os, texrow, rp,
 						font, running_font,
 						basefont, outerfont, open_font,
-						running_change,
+						runningChangeType,
 						*style, i, column, c);
 		}
 	}
 
 	column += Changes::latexMarkChange(os,
-			running_change, Change::UNCHANGED, output);
+			runningChangeType, Change::UNCHANGED, output);
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
