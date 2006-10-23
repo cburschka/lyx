@@ -47,36 +47,27 @@ class GuiView : public QMainWindow, public LyXView {
 	Q_OBJECT
 public:
 	/// create a main window of the given dimensions
-	GuiView();
+	GuiView(int id);
 
 	~GuiView();
 
-	/// initialize the object
 	virtual void init();
-
-	///
+	virtual void close();
 	virtual void setGeometry(
 		unsigned int width,
 		unsigned int height,
 		int posx, int posy,
 		bool maximize);
+	virtual void saveGeometry();
+	virtual void busy(bool) const;
+	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
+	virtual void updateStatusBar();
+	virtual void message(lyx::docstring const & str);
+	virtual void clearMessage();
+	virtual bool hasFocus() const;
 
 	/// show - display the top-level window
 	void show();
-
-	/// show busy cursor
-	virtual void busy(bool) const;
-
-	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
-
-	/// display a status message
-	virtual void message(lyx::docstring const & str);
-
-	/// clear status message
-	virtual void clearMessage();
-
-	/// update the status bar
-	virtual void updateStatusBar();
 
 	/// add the command buffer
 	void addCommandBuffer(QToolBar * toolbar);
@@ -84,8 +75,9 @@ public:
 	/// menu item has been selected
 	void activated(FuncRequest const &);
 
-	/// returns true if this view has the focus.
-	virtual bool hasFocus() const;
+
+Q_SIGNALS:
+	void closing(int);
 
 public Q_SLOTS:
 	/// idle timeout

@@ -34,7 +34,6 @@ libqt4_la_SOURCES = \
 	ColorCache.h ColorCache.C \
 	Dialogs.C \
 	FileDialog.C \
-	GuiApplication.C GuiApplication.h \
 	GuiClipboard.h GuiClipboard.C \
 	GuiFontLoader.h GuiFontLoader.C \
 	GuiFontMetrics.h GuiFontMetrics.C \

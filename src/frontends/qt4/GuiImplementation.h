@@ -15,7 +15,7 @@
 
 #include "frontends/Gui.h"
 
-#include <boost/shared_ptr.hpp>
+#include <QObject>
 
 #include <map>
 
@@ -30,25 +30,41 @@ class GuiView;
 /**
  * The GuiImplementation class is the interface to all Qt4 components.
  */
-class GuiImplementation: public Gui
+class GuiImplementation: public QObject, public Gui
 {
+	Q_OBJECT
+
 public:
 	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
 	int newView();
 	LyXView& view(int id);
-	void destroyView(int id);
 	int newWorkArea(unsigned int width, unsigned int height, int view_id);
 	WorkArea& workArea(int id);
-	void destroyWorkArea(int id);
 
+private Q_SLOTS:
+	///
+	void cleanupViews(QObject * view);
 
 private:
 	///
-	std::map<int, boost::shared_ptr<GuiView> > views_;
-	///
-	std::map<int, boost::shared_ptr<GuiWorkArea> > work_areas_;
+	void buildViewIds();
+
+	/// Multiple views container.
+	/**
+	* Warning: This must not be a smart pointer as the destruction of the
+	* object is handled by Qt when the view is closed 
+	* \sa Qt::WA_DeleteOnClose attribute.
+	*/
+	std::map<int, GuiView *> views_;
+
+	/// Multiple workareas container.
+	/**
+	* Warning: This must not be a smart pointer as the destruction of the
+	* object is handled by Qt when its parent view is closed.
+	*/
+	std::map<int, GuiWorkArea *> work_areas_;
 	///
 	size_t max_view_id_;
 	///

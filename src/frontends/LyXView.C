@@ -67,8 +67,8 @@ using lyx::frontend::ControlCommandBuffer;
 string current_layout;
 
 
-LyXView::LyXView()
-	: work_area_(0),
+LyXView::LyXView(int id)
+	: id_(id), work_area_(0),
 	  toolbars_(new Toolbars(*this)),
 	  autosave_timeout_(new Timeout(5000)),
 	  dialogs_(new Dialogs(*this)),
@@ -88,9 +88,12 @@ LyXView::~LyXView()
 }
 
 
+// FIXME, there's only one WorkArea per LyXView possible for now.
 void LyXView::setWorkArea(WorkArea * work_area)
 {
 	work_area_ = work_area;
+	work_area_ids_.clear();
+	work_area_ids_.push_back(work_area_->id());
 }
 
 
@@ -363,6 +366,12 @@ void LyXView::updateWindowTitle()
 
 void LyXView::dispatch(FuncRequest const & cmd)
 {
+	if (cmd.action == LFUN_WINDOW_CLOSE) {
+		close();
+		closed(id_);
+		return;
+	}
+
 	theLyXFunc().setLyXView(this);
 	lyx::dispatch(cmd);
 }

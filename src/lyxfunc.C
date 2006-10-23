@@ -78,6 +78,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontLoader.h"
+#include "frontends/Gui.h"
 #include "frontends/LyXKeySym.h"
 #include "frontends/LyXView.h"
 #include "frontends/Menubar.h"
@@ -346,6 +347,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 {
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
+
+	if (cmd.action == LFUN_LYX_QUIT) {
+		flag.message(from_utf8(N_("Exiting")));
+		flag.enabled(true);
+		return flag;
+	}
+
 	LCursor & cur = view()->cursor();
 
 	/* In LyX/Mac, when a dialog is open, the menus of the
@@ -580,7 +588,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_UPDATE:
 	case LFUN_BUFFER_VIEW:
 	case LFUN_BUFFER_IMPORT:
-	case LFUN_LYX_QUIT:
 	case LFUN_TOC_VIEW:
 	case LFUN_BUFFER_AUTO_SAVE:
 	case LFUN_RECONFIGURE:
@@ -619,6 +626,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
 	case LFUN_WINDOW_NEW:
+	case LFUN_WINDOW_CLOSE:
 		// these are handled in our dispatch()
 		break;
 
@@ -716,7 +724,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 
 void LyXFunc::dispatch(FuncRequest const & cmd)
 {
-	BOOST_ASSERT(view());
 	string const argument = to_utf8(cmd.argument());
 	kb_action const action = cmd.action;
 
@@ -744,6 +751,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_WORD_FIND_FORWARD:
 		case LFUN_WORD_FIND_BACKWARD: {
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			static string last_search;
 			string searched_string;
 
@@ -765,15 +773,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_COMMAND_PREFIX:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->message(from_utf8(keyseq->printOptions()));
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->getToolbars().display("minibuffer", true);
 			lyx_view_->focus_command_buffer();
 			break;
 
 		case LFUN_CANCEL:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
 			keyseq->reset();
 			meta_fake_bit = key_modifier::none;
 			if (view()->buffer())
@@ -788,6 +799,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->view() && lyx_view_->buffer());
 			if (lyx_view_->buffer()->lyxvc().inUse())
 				lyx_view_->buffer()->lyxvc().toggleReadOnly();
 			else
@@ -810,6 +822,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_WRITE:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (!lyx_view_->buffer()->isUnnamed()) {
 				docstring const str = bformat(_("Saving document %1$s..."),
 					 makeDisplayPath(lyx_view_->buffer()->fileName()));
@@ -822,11 +835,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_WRITE_AS:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			writeAs(lyx_view_->buffer(), argument);
 			updateFlags = Update::None;
 			break;
 
 		case LFUN_BUFFER_RELOAD: {
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			docstring const file = makeDisplayPath(view()->buffer()->fileName(), 20);
 			docstring text = bformat(_("Any changes will be lost. Are you sure "
 							     "you want to revert to the saved version of the document %1$s?"), file);
@@ -839,22 +854,27 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_UPDATE:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			Exporter::Export(lyx_view_->buffer(), argument, true);
 			break;
 
 		case LFUN_BUFFER_VIEW:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			Exporter::preview(lyx_view_->buffer(), argument);
 			break;
 
 		case LFUN_BUILD_PROGRAM:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			Exporter::Export(lyx_view_->buffer(), "program", true);
 			break;
 
 		case LFUN_BUFFER_CHKTEX:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			lyx_view_->buffer()->runChktex();
 			break;
 
 		case LFUN_BUFFER_EXPORT:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (argument == "custom")
 				lyx_view_->getDialogs().show("sendto");
 			else {
@@ -863,6 +883,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_BUFFER_EXPORT_CUSTOM: {
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			string format_name;
 			string command = split(argument, format_name, ' ');
 			Format const * format = formats.getFormat(format_name);
@@ -905,6 +926,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_PRINT: {
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			string target;
 			string target_name;
 			string command = split(split(argument, target, ' '),
@@ -1000,7 +1022,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYX_QUIT:
-			if (view()->buffer()) {
+			if (lyx_view_ && lyx_view_->view()->buffer()) {
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().saveFilePosition(lyx_view_->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
@@ -1011,6 +1033,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_TOC_VIEW: {
+			BOOST_ASSERT(lyx_view_);
 			InsetCommandParams p("tableofcontents");
 			string const data = InsetCommandMailer::params2string("toc", p);
 			lyx_view_->getDialogs().show("toc", data, 0);
@@ -1026,6 +1049,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_HELP_OPEN: {
+			BOOST_ASSERT(lyx_view_);
 			string const arg = argument;
 			if (arg.empty()) {
 				setErrorMessage(_("Missing argument"));
@@ -1045,6 +1069,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		// --- version control -------------------------------
 		case LFUN_VC_REGISTER:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (!ensureBufferClean(view()))
 				break;
 			if (!lyx_view_->buffer()->lyxvc().inUse()) {
@@ -1054,6 +1079,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_VC_CHECK_IN:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (!ensureBufferClean(view()))
 				break;
 			if (lyx_view_->buffer()->lyxvc().inUse()
@@ -1064,6 +1090,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_VC_CHECK_OUT:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			if (!ensureBufferClean(view()))
 				break;
 			if (lyx_view_->buffer()->lyxvc().inUse()
@@ -1074,46 +1101,56 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_VC_REVERT:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			lyx_view_->buffer()->lyxvc().revert();
 			view()->reload();
 			break;
 
 		case LFUN_VC_UNDO_LAST:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			lyx_view_->buffer()->lyxvc().undoLast();
 			view()->reload();
 			break;
 
 		// --- buffers ----------------------------------------
 		case LFUN_BUFFER_SWITCH:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().getBuffer(argument));
 			break;
 
 		case LFUN_BUFFER_NEXT:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().next(view()->buffer()));
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->setBuffer(theBufferList().previous(view()->buffer()));
 			break;
 
 		case LFUN_FILE_NEW:
+			BOOST_ASSERT(lyx_view_);
 			newFile(view(), argument);
 			break;
 
 		case LFUN_FILE_OPEN:
+			BOOST_ASSERT(lyx_view_);
 			open(argument);
 			break;
 
 		case LFUN_DROP_LAYOUTS_CHOICE:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->getToolbars().openLayoutList();
 			break;
 
 		case LFUN_MENU_OPEN:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->getMenubar().openByName(from_utf8(argument));
 			break;
 
 		// --- lyxserver commands ----------------------------
 		case LFUN_SERVER_GET_NAME:
+			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			setMessage(from_utf8(lyx_view_->buffer()->fileName()));
 			lyxerr[Debug::INFO] << "FNAME["
 							 << lyx_view_->buffer()->fileName()
@@ -1126,6 +1163,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW: {
+			BOOST_ASSERT(lyx_view_);
 			string file_name;
 			int row;
 			istringstream is(argument);
@@ -1154,6 +1192,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_DIALOG_SHOW: {
+			BOOST_ASSERT(lyx_view_);
 			string const name = cmd.getArg(0);
 			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
 
@@ -1184,6 +1223,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
+			BOOST_ASSERT(lyx_view_);
 			string const name = cmd.getArg(0);
 			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
 			if (name == "bibitem" ||
@@ -1236,6 +1276,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_DIALOG_UPDATE: {
+			BOOST_ASSERT(lyx_view_);
 			string const & name = argument;
 			// Can only update a dialog connected to an existing inset
 			InsetBase * inset = lyx_view_->getDialogs().getOpenInset(name);
@@ -1255,11 +1296,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_DIALOG_DISCONNECT_INSET:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->getDialogs().disconnect(argument);
 			break;
 
 
 		case LFUN_CITATION_INSERT: {
+			BOOST_ASSERT(lyx_view_);
 			if (!argument.empty()) {
 				// we can have one optional argument, delimited by '|'
 				// citation-insert <key>|<text_before>
@@ -1283,6 +1326,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_CHILD_OPEN: {
+			BOOST_ASSERT(lyx_view_);
 			string const filename =
 				makeAbsPath(argument, lyx_view_->buffer()->filePath());
 			// FIXME Should use bformat
@@ -1302,22 +1346,27 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TOGGLE_CURSOR_FOLLOWS_SCROLLBAR:
+			BOOST_ASSERT(lyx_view_);
 			lyxrc.cursor_follows_scrollbar = !lyxrc.cursor_follows_scrollbar;
 			break;
 
 		case LFUN_KEYMAP_OFF:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->view()->getIntl().keyMapOn(false);
 			break;
 
 		case LFUN_KEYMAP_PRIMARY:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->view()->getIntl().keyMapPrim();
 			break;
 
 		case LFUN_KEYMAP_SECONDARY:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->view()->getIntl().keyMapSec();
 			break;
 
 		case LFUN_KEYMAP_TOGGLE:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->view()->getIntl().toggleKeyMap();
 			break;
 
@@ -1354,6 +1403,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_SCREEN_FONT_UPDATE:
+			BOOST_ASSERT(lyx_view_);
 			// handle the screen font changes.
 			lyxrc.set_font_norm_type();
 			theFontLoader().update();
@@ -1397,10 +1447,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_MESSAGE:
+			BOOST_ASSERT(lyx_view_);
 			lyx_view_->message(from_utf8(argument));
 			break;
 
 		case LFUN_EXTERNAL_EDIT: {
+			BOOST_ASSERT(lyx_view_);
 			FuncRequest fr(action, argument);
 			InsetExternal().dispatch(view()->cursor(), fr);
 			break;
@@ -1413,6 +1465,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_INSET_APPLY: {
+			BOOST_ASSERT(lyx_view_);
 			string const name = cmd.getArg(0);
 			InsetBase * inset = lyx_view_->getDialogs().getOpenInset(name);
 			if (inset) {
@@ -1429,6 +1482,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_ALL_INSETS_TOGGLE: {
+			BOOST_ASSERT(lyx_view_);
 			string action;
 			string const name = split(argument, action, ' ');
 			InsetBase::Code const inset_code =
@@ -1453,6 +1507,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_LANGUAGE: {
+			BOOST_ASSERT(lyx_view_);
 			Buffer & buffer = *lyx_view_->buffer();
 			Language const * oldL = buffer.params().language;
 			Language const * newL = languages.getLanguage(argument);
@@ -1495,6 +1550,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_BUFFER_PARAMS_APPLY: {
+			BOOST_ASSERT(lyx_view_);
 			biblio::CiteEngine const engine =
 				lyx_view_->buffer()->params().cite_engine;
 
@@ -1526,6 +1582,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_TEXTCLASS_APPLY: {
+			BOOST_ASSERT(lyx_view_);
 			Buffer * buffer = lyx_view_->buffer();
 
 			textclass_type const old_class =
@@ -1583,10 +1640,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_WINDOW_NEW:
-			BOOST_ASSERT(theApp);
 			LyX::ref().newLyXView();
+			break;
+
+		case LFUN_WINDOW_CLOSE:
+			BOOST_ASSERT(lyx_view_);
+			BOOST_ASSERT(theApp);
+			lyx_view_->close();
+			// We return here because lyx_view does not exists anymore.
+			return;
 
 		default: {
+			BOOST_ASSERT(lyx_view_);
 			view()->cursor().dispatch(cmd);
 			updateFlags = view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
@@ -1596,7 +1661,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 		}
 
-		if (view()->buffer()) {
+		if (lyx_view_ && view()->buffer()) {
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.

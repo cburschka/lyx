@@ -54,9 +54,11 @@ enum CursorShape {
  */
 class WorkArea : public boost::signals::trackable {
 public:
-	WorkArea(LyXView & lyx_view);
+	WorkArea(int id, LyXView & lyx_view);
 
 	virtual ~WorkArea() {}
+
+	int const id() const { return id_; }
 
 	void setBufferView(BufferView * buffer_view);
 
@@ -119,6 +121,8 @@ protected:
 	bool greyed_out_;
 
 private:
+	///
+	int id_;
 	///
 	void displayMessage(docstring const &);
 	/// buffer messages signal connection

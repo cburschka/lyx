@@ -23,6 +23,8 @@
 #include <boost/signals/trackable.hpp>
 #include <boost/utility.hpp>
 
+#include <vector>
+
 namespace lyx {
 
 class Buffer;
@@ -58,11 +60,20 @@ class ControlCommandBuffer;
 class LyXView : public boost::signals::trackable, boost::noncopyable {
 public:
 
-	LyXView();
+	LyXView(int id);
 
 	virtual ~LyXView();
 
+	int const id() const { return id_; }
+
+	virtual void close() = 0;
+
+	std::vector<int> const & workAreaIds() const { return work_area_ids_; }
+
 	void setWorkArea(frontend::WorkArea * work_area);
+
+	/// This signal is emitted with the LyXView id when it is closed.
+	boost::signal<void(int)> closed;
 
 	/**
 	 * This is called after the concrete view has been created.
@@ -71,11 +82,15 @@ public:
 	 */
 	virtual void init() = 0;
 
+	///
 	virtual void setGeometry(
 		unsigned int width,
 		unsigned int height,
 		int posx, int posy,
 		bool maximize) = 0;
+
+	/// save the geometry state in the session manager.
+	virtual void saveGeometry() = 0;
 
 	/// show busy cursor
 	virtual void busy(bool) const = 0;
@@ -243,6 +258,10 @@ protected:
 	CommandBufferPtr;
 
 	CommandBufferPtr const controlcommand_;
+
+private:
+	int id_;
+	std::vector<int> work_area_ids_;
 };
 
 } // namespace lyx

@@ -27,7 +27,9 @@
 #include "BufferView.h"
 #include "Color.h"
 #include "debug.h"
+#include "funcrequest.h"
 #include "lyx_main.h"
+#include "lyxfunc.h"
 #include "lyxrc.h"
 
 #include <QApplication>
@@ -149,7 +151,21 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	LoaderQueue::setPriority(10,100);
 
+	setQuitOnLastWindowClosed(false);
+	QObject::connect(this, SIGNAL(lastWindowClosed()),
+		this, SLOT(quitLyX()));
+
 	guiApp = this;
+}
+
+
+void GuiApplication::quitLyX()
+{
+	theLyXFunc().setLyXView(0);
+
+	// trigger LFUN_LYX_QUIT instead of QApplication::quit() directly
+	// since LFUN_LYX_QUIT may have more cleanup stuff
+	dispatch(FuncRequest(LFUN_LYX_QUIT));
 }
 
 
@@ -374,3 +390,5 @@ bool GuiApplication::macEventFilter(EventRef event)
 
 } // namespace frontend
 } // namespace lyx
+
+#include "GuiApplication_moc.cpp"

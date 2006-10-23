@@ -17,6 +17,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <map>
+#include <vector>
 
 namespace lyx {
 
@@ -40,19 +41,20 @@ public:
 	virtual int newView() = 0;
 	///
 	virtual LyXView & view(int id) = 0;
-	///
-	virtual void destroyView(int id) = 0;
 
 	///
 	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id) = 0;
 	///
 	virtual WorkArea & workArea(int id) = 0;
+
 	///
-	virtual void destroyWorkArea(int id) = 0;
+	std::vector<int> const & viewIds() { return view_ids_; };
 
 protected:
 	/// view of a buffer. Eventually there will be several.
 	std::map<int, boost::shared_ptr<BufferView> > buffer_views_;
+
+	std::vector<int> view_ids_;
 };
 
 } // namespace frontend

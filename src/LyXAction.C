@@ -363,6 +363,7 @@ void LyXAction::init()
 		{ LFUN_PARAGRAPH_MOVE_DOWN, "paragraph-move-down", Noop },
 		{ LFUN_PARAGRAPH_MOVE_UP, "paragraph-move-up", Noop },
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer },
+		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer },
 		{ LFUN_UNICODE_INSERT, "unicode-insert", Noop },
 		
 		{ LFUN_NOACTION, "", Noop }

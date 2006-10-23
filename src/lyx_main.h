@@ -17,7 +17,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
-#include <list>
 #include <string>
 #include <vector>
 
@@ -123,9 +122,6 @@ private:
 	/// Create a View and restore GUI Session.
 	void restoreGuiSession(std::vector<std::string> const & files);
 
-	///
-	void addLyXView(LyXView * lyxview);
-
 	/// Initialize RC font for the GUI.
 	void initGuiFont();
 
@@ -163,9 +159,6 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	struct Singletons;
 	boost::scoped_ptr<Singletons> pimpl_;
-	///
-	typedef std::list<LyXView *> ViewList;
-	ViewList views_;
 
 	///
 	bool geometryOption_;

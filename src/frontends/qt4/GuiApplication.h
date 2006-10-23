@@ -50,6 +50,8 @@ comon to all frontends.
 */
 class GuiApplication : public QApplication, public Application
 {
+	Q_OBJECT
+
 public:
 	GuiApplication(int & argc, char ** argv);
 	///
@@ -80,6 +82,10 @@ public:
 	///
 	///
 	GuiFontLoader & guiFontLoader() { return font_loader_; }
+
+private Q_SLOTS:
+	/// request an LFUN_LYX_QUIT
+	void quitLyX();
 
 private:
 	///

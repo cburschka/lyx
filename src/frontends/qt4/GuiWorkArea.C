@@ -180,8 +180,8 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 {}
 
 
-GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
-	: WorkArea(lyx_view)
+GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
+	: WorkArea(id, lyx_view)
 {
 	cursor_ = new frontend::CursorWidget(this);
 	cursor_->hide();

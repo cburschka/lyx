@@ -67,9 +67,12 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
-GuiView::GuiView()
-	: QMainWindow(), LyXView(), commandbuffer_(0)
+GuiView::GuiView(int id)
+	: QMainWindow(), LyXView(id), commandbuffer_(0)
 {
+	setAttribute(Qt::WA_DeleteOnClose, true);
+	setAttribute(Qt::WA_QuitOnClose, true);
+
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));
 
@@ -87,6 +90,12 @@ GuiView::GuiView()
 
 GuiView::~GuiView()
 {
+}
+
+
+void GuiView::close()
+{
+	QMainWindow::close();
 }
 
 
@@ -110,6 +119,33 @@ void GuiView::init()
 }
 
 
+void GuiView::saveGeometry()
+{
+	// FIXME:
+	// change the ifdef to 'geometry = normalGeometry();' only
+	// when Trolltech has fixed the broken normalGeometry on X11:
+	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
+	// Then also the moveEvent, resizeEvent, and the
+	// code for floatingGeometry_ can be removed;
+	// adjust GuiView::setGeometry()
+#ifdef Q_OS_WIN32
+	QRect geometry = normalGeometry();
+#else
+	updateFloatingGeometry();
+	QRect geometry = floatingGeometry_;
+#endif
+
+	// save windows size and position
+	Session & session = LyX::ref().session();
+	session.saveSessionInfo("WindowWidth", convert<string>(geometry.width()));
+	session.saveSessionInfo("WindowHeight", convert<string>(geometry.height()));
+	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
+	if (lyxrc.geometry_xysaved) {
+		session.saveSessionInfo("WindowPosX", convert<string>(geometry.x()));
+		session.saveSessionInfo("WindowPosY", convert<string>(geometry.y()));
+	}
+}
+						  
 void GuiView::setGeometry(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
@@ -230,32 +266,7 @@ void GuiView::moveEvent(QMoveEvent *)
 
 void GuiView::closeEvent(QCloseEvent *)
 {
-	// FIXME:
-	// change the ifdef to 'geometry = normalGeometry();' only
-	// when Trolltech has fixed the broken normalGeometry on X11:
-	// http://www.trolltech.com/developer/task-tracker/index_html?id=119684+&method=entry
-	// Then also the moveEvent, resizeEvent, and the
-	// code for floatingGeometry_ can be removed;
-	// adjust GuiView::setGeometry()
-#ifdef Q_OS_WIN32
-	QRect geometry = normalGeometry();
-#else
-	updateFloatingGeometry();
-	QRect geometry = floatingGeometry_;
-#endif
-
-	// save windows size and position
-	Session & session = LyX::ref().session();
-	session.saveSessionInfo("WindowWidth", convert<string>(geometry.width()));
-	session.saveSessionInfo("WindowHeight", convert<string>(geometry.height()));
-	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
-	if (lyxrc.geometry_xysaved) {
-		session.saveSessionInfo("WindowPosX", convert<string>(geometry.x()));
-		session.saveSessionInfo("WindowPosY", convert<string>(geometry.y()));
-	}
-	// trigger LFUN_LYX_QUIT instead of quit directly
-	// since LFUN_LYX_QUIT may have more cleanup stuff
-	dispatch(FuncRequest(LFUN_LYX_QUIT));
+	saveGeometry();
 }
 
 

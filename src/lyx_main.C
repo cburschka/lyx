@@ -44,6 +44,7 @@
 
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
+#include "frontends/Gui.h"
 #include "frontends/LyXView.h"
 
 #include "support/environment.h"
@@ -284,11 +285,6 @@ kb_keymap const & LyX::topLevelKeymap() const
 	return *pimpl_->toplevel_keymap_.get();
 }
 
-void LyX::addLyXView(LyXView * lyxview)
-{
-	views_.push_back(lyxview);
-}
-
 
 Buffer const * const LyX::updateInset(InsetBase const * inset) const
 {
@@ -296,10 +292,12 @@ Buffer const * const LyX::updateInset(InsetBase const * inset) const
 		return 0;
 
 	Buffer const * buffer_ptr = 0;
-	ViewList::const_iterator it = views_.begin();
-	ViewList::const_iterator const end = views_.end();
+	vector<int> const & view_ids = pimpl_->application_->gui().viewIds();
+	vector<int>::const_iterator it = view_ids.begin();
+	vector<int>::const_iterator const end = view_ids.end();
 	for (; it != end; ++it) {
-		Buffer const * ptr = (*it)->updateInset(inset);
+		Buffer const * ptr =
+			pimpl_->application_->gui().view(*it).updateInset(inset);
 		if (ptr)
 			buffer_ptr = ptr;
 	}
@@ -402,6 +400,13 @@ void LyX::quit(bool noask)
 	if (use_gui) {
 		if (!noask && !pimpl_->buffer_list_.quitWriteAll())
 			return;
+
+		// The LyXView Geometry settings are stored when LyXView::close
+		// is called explicitely but a straight quit() command would not
+		// guarante that. So we make sure this is done here:
+		vector<int> const & view_ids = pimpl_->application_->gui().viewIds();
+		for (size_t i = 0; i < view_ids.size(); ++i)
+			pimpl_->application_->gui().view(view_ids[i]).saveGeometry();
 
 		pimpl_->session_->writeFile();
 	}
@@ -515,6 +520,9 @@ void LyX::restoreGuiSession(vector<string> const & files)
 
 LyXView * LyX::newLyXView()
 {
+	if (!lyx::use_gui)
+		return 0;
+
 	// determine windows size and position, from lyxrc and/or session
 	// initial geometry
 	unsigned int width = 690;
@@ -555,7 +563,6 @@ LyXView * LyX::newLyXView()
 	}
 	// create the main window
 	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize);
-	ref().addLyXView(view);
 
 	return view;
 }

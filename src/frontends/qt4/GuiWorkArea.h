@@ -91,7 +91,7 @@ class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 
 public:
 	///
-	GuiWorkArea(int width, int height, LyXView & lyx_view);
+	GuiWorkArea(int width, int height, int id, LyXView & lyx_view);
 
 	/// return the width of the content pane
 	virtual int width() const { return viewport()->width(); }
