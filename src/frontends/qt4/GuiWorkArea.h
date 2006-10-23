@@ -15,8 +15,6 @@
 
 #include "frontends/WorkArea.h"
 
-#include "QLPainter.h"
-
 #include "funcrequest.h"
 #include "frontends/Timeout.h"
 
@@ -36,12 +34,10 @@ class QWheelEvent;
 class QPaintEvent;
 
 namespace lyx {
-
-class Painter;
-
 namespace frontend {
 
 class GuiView;
+class QLPainter;
 
 /// for emulating triple click
 class double_click {
@@ -89,7 +85,7 @@ public:
  * Qt-specific implementation of the work area
  * (buffer view GUI)
 */
-class GuiWorkArea: public QAbstractScrollArea, public WorkArea
+class GuiWorkArea : public QAbstractScrollArea, public WorkArea
 {
 	Q_OBJECT
 
@@ -104,18 +100,6 @@ public:
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 
-	///
-	virtual void dragEnterEvent(QDragEnterEvent * event);
-
-	///
-	virtual void dropEvent(QDropEvent* event);
-
-	/// return the widget's painter
-	virtual Painter & getPainter() { return (Painter &) painter_; }
-
-	/// return the backing pixmap
-	QPaintDevice * paintDevice() { return &paint_device_; }
-
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
 
@@ -128,8 +112,12 @@ public:
 	/// hide the cursor
 	virtual void removeCursor();
 
-protected:
-
+private:
+	void doGreyOut(QLPainter & pain);
+	///
+	void dragEnterEvent(QDragEnterEvent * event);
+	///
+	void dropEvent(QDropEvent* event);
 	/// repaint part of the widget
 	void paintEvent(QPaintEvent * e);
 	/// widget has been resized
@@ -164,10 +152,6 @@ public Q_SLOTS:
 	void adjustViewWithScrollBar(int action = 0);
 
 private:
-
-	/// Our painter.
-	QLPainter painter_;
-
 	/// The slot connected to SyntheticMouseEvent::timeout.
 	void generateSyntheticMouseEvent();
 
@@ -175,7 +159,7 @@ private:
 	SyntheticMouseEvent synthetic_mouse_event_;
 
 	/// Our client side painting device.
-	QPixmap paint_device_;
+	//QPixmap paint_device_;
 
 	/// \todo remove
 	QTimer step_timer_;

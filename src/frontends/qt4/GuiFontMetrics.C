@@ -116,9 +116,10 @@ int GuiFontMetrics::smallcapsWidth(QString const & s) const
 int GuiFontMetrics::width(char_type const * s, size_t ls) const
 {
 	if (ls == 1 && !smallcaps_shape_) {
-		QChar c = ucs4_to_qchar(s[0]);
+		QChar const c = ucs4_to_qchar(s[0]);
 		return width(c.unicode());
 	}
+
 	QString ucs2;
 	ucs4_to_qstring(s, ls, ucs2);
 

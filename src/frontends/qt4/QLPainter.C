@@ -33,8 +33,6 @@
 #include <QPixmap>
 #include <QImage>
 
-using lyx::char_type;
-using lyx::docstring;
 
 using std::endl;
 using std::string;
@@ -42,22 +40,12 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-QLPainter::~QLPainter()
+QLPainter::QLPainter(QWidget * qwa)
+	: qwa_(qwa)
 {
-}
-
-
-QLPainter::QLPainter(GuiWorkArea * qwa)
-	: Painter(), qwa_(qwa)
-{
-}
-
-
-void QLPainter::start()
-{
-	lyxerr << "QLPainter::start()" << endl;
-	qp_.reset(new QPainter(qwa_->paintDevice()));
-	qp_->setRenderHint(QPainter::TextAntialiasing);
+	//lyxerr << "QLPainter::start()" << endl;
+	QPainter::begin(qwa_);
+	setRenderHint(QPainter::TextAntialiasing);
 	// new QPainter has default QPen:
 	current_color_ = LColor::black;
 	current_ls_ = line_solid;
@@ -65,23 +53,24 @@ void QLPainter::start()
 }
 
 
-void QLPainter::end()
+QLPainter::~QLPainter()
 {
-	qp_->end();
-	lyxerr << "QLPainter::end()" << endl;
+	QPainter::end();
+	//lyxerr << "QLPainter::end()" << endl;
 }
 
 
 int QLPainter::paperWidth() const
 {
-	return qwa_->viewport()->width();
+	return qwa_->width();
 }
 
 
 int QLPainter::paperHeight() const
 {
-	return qwa_->viewport()->height();
+	return qwa_->height();
 }
+
 
 void QLPainter::setQPainterPen(LColor_color col,
 	Painter::line_style ls, Painter::line_width lw)
@@ -93,7 +82,7 @@ void QLPainter::setQPainterPen(LColor_color col,
 	current_ls_ = ls;
 	current_lw_ = lw;
 
-	QPen pen = qp_.get()->pen();
+	QPen pen = QPainter::pen();
 
 	pen.setColor(guiApp->colorCache().get(col));
 
@@ -107,14 +96,14 @@ void QLPainter::setQPainterPen(LColor_color col,
 		case line_thick: pen.setWidth(3); break;
 	}
 
-	qp_.get()->setPen(pen);
+	setPen(pen);
 }
 
 
 void QLPainter::point(int x, int y, LColor_color col)
 {
 	setQPainterPen(col);
-	qp_->drawPoint(x, y);
+	drawPoint(x, y);
 }
 
 
@@ -124,7 +113,7 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 	line_width lw)
 {
 	setQPainterPen(col, ls, lw);
-	qp_->drawLine(x1, y1, x2, y2);
+	drawLine(x1, y1, x2, y2);
 }
 
 
@@ -144,7 +133,7 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 	}
 
 	setQPainterPen(col, ls, lw);
-	qp_->drawPolyline(points.get(), np);
+	drawPolyline(points.get(), np);
 }
 
 
@@ -154,13 +143,13 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 	line_width lw)
 {
 	setQPainterPen(col, ls, lw);
-	qp_->drawRect(x, y, w, h);
+	drawRect(x, y, w, h);
 }
 
 
 void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 {
-	qp_->fillRect(x, y, w, h, guiApp->colorCache().get(col));
+	fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
 
@@ -169,25 +158,24 @@ void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setQPainterPen(col);
-	qp_->drawArc(x, y, w, h, a1 / 4, a2 / 4);
+	drawArc(x, y, w, h, a1 / 4, a2 / 4);
 }
 
 
-void QLPainter::image(int x, int y, int w, int h,
-	lyx::graphics::Image const & i)
+void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 {
-	lyx::graphics::QLImage const & qlimage =
-		static_cast<lyx::graphics::QLImage const &>(i);
+	graphics::QLImage const & qlimage =
+		static_cast<graphics::QLImage const &>(i);
 
 	fillRectangle(x, y, w, h, LColor::graphicsbg);
 
-	qp_->drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
+	drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
 }
 
 
 int QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
 {
-    return text(x, y, reinterpret_cast<char_type const *>(s.data()), s.length(), f);
+	 return text(x, y, reinterpret_cast<char_type const *>(s.data()), s.length(), f);
 }
 
 
@@ -209,16 +197,16 @@ int QLPainter::smallCapsText(int x, int y,
 
 	setQPainterPen(f.realColor());
 	int textwidth = 0;
-	size_t ls = s.length();
+	size_t const ls = s.length();
 	for (unsigned int i = 0; i < ls; ++i) {
 		QChar const c = s[i].toUpper();
 		if (c != s.at(i)) {
-			qp_->setFont(qsmallfont);
+			setFont(qsmallfont);
 		} else {
-			qp_->setFont(qfont);
+			setFont(qfont);
 		}
-		qp_->drawText(x + textwidth, y, c);
-		textwidth += qp_->fontMetrics().width(c);
+		drawText(x + textwidth, y, c);
+		textwidth += fontMetrics().width(c);
 	}
 	return textwidth;
 }
@@ -249,13 +237,12 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());
-		if (qp_->font() != fi.font) {
-			qp_->setFont(fi.font);
-		}
+		if (font() != fi.font)
+			setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
-		qp_->setLayoutDirection(Qt::LeftToRight);
-		qp_->drawText(x, y, str);
-		textwidth = qp_->fontMetrics().width(str);
+		setLayoutDirection(Qt::LeftToRight);
+		drawText(x, y, str);
+		textwidth = fontMetrics().width(str);
 	} else {
 		textwidth = smallCapsText(x, y, str, f);
 	}
@@ -267,17 +254,6 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	return textwidth;
 }
 
-
-void QLPainter::drawPixmap(int x, int y, QPixmap const & pixmap)
-{
-	qp_->drawPixmap(x, y, pixmap);
-}
-
-
-void QLPainter::drawImage(int x, int y, QImage const & image)
-{
-	qp_->drawImage(x, y, image);
-}
 
 } // namespace frontend
 } // namespace lyx

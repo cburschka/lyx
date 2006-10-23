@@ -21,11 +21,18 @@
 #include "LyXView.h"
 
 #include "BufferView.h"
+#include "rowpainter.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
+#include "version.h"
+#include "lyxrc.h"
 
+#include "support/filetools.h" // LibFileSearch
 #include "support/os.h"
+
+#include "graphics/GraphicsImage.h"
+#include "graphics/GraphicsLoader.h"
 
 #include <QLayout>
 #include <QMainWindow>
@@ -52,6 +59,15 @@ using std::endl;
 using std::string;
 
 namespace os = lyx::support::os;
+
+
+volatile int NN;
+
+void recCalled()
+{
+	++NN;
+}
+
 
 namespace lyx {
 
@@ -115,17 +131,15 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::GuiWorkArea(int w, int h, LyXView & lyx_view)
-	: WorkArea(lyx_view), painter_(this)
+	: WorkArea(lyx_view)
 {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
 	setAcceptDrops(true);
-
 	setMinimumSize(100, 70);
 
-	viewport()->setAutoFillBackground(false);
-	viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
+	//viewport()->setAutoFillBackground(false);
+	//viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
 	setFocusPolicy(Qt::WheelFocus);
 
 	viewport()->setCursor(Qt::IBeamCursor);
@@ -410,10 +424,11 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 }
 
 
-void GuiWorkArea::resizeEvent(QResizeEvent *)
+void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
 	verticalScrollBar()->setPageStep(viewport()->height());
-	paint_device_ = QPixmap(viewport()->width(), viewport()->height());
+	//paint_device_ = QPixmap(viewport()->width(), viewport()->height());
+	QAbstractScrollArea::resizeEvent(ev);
 	resizeBufferView();
 }
 
@@ -424,12 +439,93 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 }
 
 
-void GuiWorkArea::paintEvent(QPaintEvent * e)
+void GuiWorkArea::doGreyOut(QLPainter & pain)
 {
-	lyxerr << "paintEvent begin: x: " << e->rect().x()
-		<< " y: " << e->rect().y()
-		<< " w: " << e->rect().width()
-		<< " h: " << e->rect().height() << endl;
+	greyed_out_ = true;
+	pain.fillRectangle(0, 0, width(), height(),
+		LColor::bottomarea);
+
+	//if (!lyxrc.show_banner)
+	//	return;
+	lyxerr << "show banner: " << lyxrc.show_banner << endl;
+	/// The text to be written on top of the pixmap
+	string const text = lyx_version ? lyx_version : "unknown";
+	string const file = support::libFileSearch("images", "banner", "ppm");
+	if (file.empty())
+		return;
+
+	QPixmap pm(toqstr(file));
+	if (!pm) {
+		lyxerr << "could not load splash screen: '" << file << "'" << endl;
+		return;
+	}
+
+	QFont font;
+	// The font used to display the version info
+	font.setStyleHint(QFont::SansSerif);
+	font.setWeight(QFont::Bold);
+	font.setPointSize(LyXFont::SIZE_NORMAL);
+
+	int const w = pm.width();
+	int const h = pm.height();
+
+	int x = (width() - w) / 2;
+	int y = (height() - h) / 2;
+
+	pain.drawPixmap(x, y, pm);
+
+	x += 260;
+	y += 265;
+
+	pain.setPen(QColor(255, 255, 0));
+	pain.setFont(font);
+	pain.drawText(x, y, toqstr(text));
+}
+
+
+void GuiWorkArea::paintEvent(QPaintEvent * ev)
+{
+	//setAttribute(Qt::WA_PaintOutsidePaintEvent, true);
+	QRect const rc = ev->rect(); 
+	lyxerr << "paintEvent begin: x: " << rc.x()
+		<< " y: " << rc.y()
+		<< " w: " << rc.width()
+		<< " h: " << rc.height() << endl;
+
+	if (!buffer_view_) {
+		lyxerr << "no bufferview" << endl;
+		return;
+	}
+
+	QLPainter pain(viewport());
+
+	if (rc.width() == 3) { // FIXME HACK
+		// Assume splash screen drawing is requested when
+		// widht == 3
+		doGreyOut(pain);
+		return;
+	}
+
+	if (!buffer_view_->buffer()) {
+		lyxerr << "no buffer: " << endl;
+		doGreyOut(pain);
+		updateScrollbar();
+		return;
+	}
+
+
+	if (rc.width() != 2)  { // FIXME HACK
+		// Assumes cursor drawing is requested when the
+		// width is 2
+		lyxerr << "Real drawing requested" << endl;
+		ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
+		paintText(*buffer_view_, vi, pain);
+	}
+	else {
+		//
+		lyxerr << "only cursor drawing requested" << endl;
+	}
+
 	/*
 	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
 		<< "\n QWidget width\t" << this->width()
@@ -445,15 +541,13 @@ void GuiWorkArea::paintEvent(QPaintEvent * e)
 		<< endl;
 	*/
 
-	QPainter q(viewport());
-	q.drawPixmap(e->rect(), paint_device_, e->rect());
+	//pain.drawPixmap(e->rect(), paint_device_, e->rect());
 
 	if (show_vcursor_)
-		q.drawPixmap(cursor_x_, cursor_y_, vcursor_);
+		pain.drawPixmap(cursor_x_, cursor_y_, vcursor_);
 
 	if (show_hcursor_)
-		q.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
-
+		pain.drawPixmap(cursor_x_, cursor_y_ + cursor_h_ - 1, hcursor_);
 	lyxerr << "paintEvent end" << endl;
 }
 
@@ -550,8 +644,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 			key = Qt::Key_AsciiCircum;
 		// FIXME: Needs for investigation, this key is not really used,
 		// the ctor below just check if key is different from 0.
-		QKeyEvent ev(QEvent::KeyPress, key,
-			Qt::NoModifier, text);
+		QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, text);
 		keyPressEvent(&ev);
 	}
 	e->accept();

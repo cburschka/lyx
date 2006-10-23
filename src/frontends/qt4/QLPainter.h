@@ -17,6 +17,8 @@
 
 #include <boost/scoped_ptr.hpp>
 
+#include <QPainter>
+
 class QPaintDevice;
 class QPainter;
 class QString;
@@ -34,18 +36,8 @@ class GuiWorkArea;
 /**
  * QLPainter - a painter implementation for Qt4
  */
-class QLPainter : public Painter {
+class QLPainter : public QPainter, public Painter {
 public:
-	QLPainter(GuiWorkArea *);
-
-	~QLPainter();
-
-	/// begin painting
-	virtual void start();
-
-	/// end painting
-	virtual void end();
-
 	/// return the width of the work area in pixels
 	virtual int paperWidth() const;
 	/// return the height of the work area in pixels
@@ -119,13 +111,11 @@ public:
 	virtual int text(int x, int y,
                 lyx::char_type c, LyXFont const & f);
 
-	/// draw a pixmap from the image cache
-	virtual void drawPixmap(int x, int y, QPixmap const & pixmap);
-
-	/// draw a pixmap from the image cache
-	virtual void drawImage(int x, int y, QImage const & image);
-
 private:
+	friend class GuiWorkArea;
+	QLPainter(QWidget *);
+	~QLPainter();
+
 	/// draw small caps text
 	/**
 	\return width of the drawn text.
@@ -138,11 +128,8 @@ private:
 		line_style ls = line_solid,
 		line_width lw = line_thin);
 
-	/// our qt painter
-	boost::scoped_ptr<QPainter> qp_;
-
 	/// the working area
-	GuiWorkArea * qwa_;
+	QWidget * qwa_;
 
 	LColor::color current_color_;
 	Painter::line_style current_ls_;
