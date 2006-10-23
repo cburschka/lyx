@@ -167,5 +167,8 @@
 #pragma warning( disable : 4800 ) //: forcing value to bool 'true' or 'false' (performance warning)
 #endif
 
+#ifdef LYX_PRECOMPILED_HEADERS
+#include "pcheaders.h"
+#endif
 
 #endif
