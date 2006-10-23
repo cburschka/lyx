@@ -675,6 +675,8 @@ src_frontends_qt4_moc_files = Split('''
     emptytable.C
     FileDialog_private.C
     FloatPlacement.C
+    GuiApplication.C
+    GuiImplementation.C
     iconpalette.C
     lengthcombo.C
     InsertTableWidget.C
