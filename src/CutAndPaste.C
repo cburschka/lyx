@@ -307,9 +307,8 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		return PitPosPair(endpit, endpos);
 
 	// Start and end is inside same paragraph
-	if (endpit == pit_type(pars.size()) ||
-	    startpit == endpit) {
-		endpos -= pars[startpit].eraseChars(startpos, endpos, false);
+	if (endpit == pit_type(pars.size()) || startpit == endpit) {
+		endpos -= pars[startpit].eraseChars(startpos, endpos, params.trackChanges);
 		return PitPosPair(endpit, endpos);
 	}
 
