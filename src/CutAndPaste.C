@@ -319,8 +319,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	for (pit_type pit = startpit; pit != endpit + 1;) {
 		// FIXME: Change tracking (MG)
 		bool const merge = !params.trackChanges ||
-			pars[pit].lookupChange(pars[pit].size()) ==
-			Change(Change::INSERTED);
+		                   pars[pit].isInserted(pars[pit].size());
 		pos_type const left  = ( pit == startpit ? startpos : 0 );
 		pos_type const right = ( pit == endpit ? endpos :
 				pars[pit].size() + 1 );

@@ -1229,10 +1229,8 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 			return;
 		}
 		BOOST_ASSERT(cur.pos() > 0);
-		if ((par.isLineSeparator(cur.pos() - 1)
-		    || par.isNewline(cur.pos() - 1))
-		    // FIXME: change tracking (MG)
-		    && par.lookupChange(cur.pos() - 1) != Change(Change::DELETED)) {
+		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
+		    && !par.isDeleted(cur.pos() - 1)) {
 			static bool sent_space_message = false;
 			if (!sent_space_message) {
 				cur.message(_("You cannot type two spaces this way. "
@@ -1461,14 +1459,14 @@ void LyXText::acceptChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	Change::Type const type = pars_[pit].lookupChange(it.pos()).type;
+	bool isDeleted = pars_[pit].isDeleted(it.pos());
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =
 		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
 		pars_[pit].acceptChange(left, right);
 	}
-	if (type == Change::DELETED) {
+	if (isDeleted) {
 		ParagraphList & plist = paragraphs();
 		if (it.pit() + 1 < et.pit())
 			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
@@ -1476,8 +1474,7 @@ void LyXText::acceptChange(LCursor & cur)
 
 		// Paragraph merge if appropriate:
 		// FIXME: change tracking (MG)
-		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size())
-			== Change(Change::DELETED)) {
+		if (pars_[it.pit()].isDeleted(pars_[it.pit()].size())) {
 			setCursorIntern(cur, it.pit() + 1, 0);
 			backspacePos0(cur);
 		}
@@ -1499,22 +1496,21 @@ void LyXText::rejectChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	Change::Type const type = pars_[pit].lookupChange(it.pos()).type;
+	bool isInserted = pars_[pit].isInserted(it.pos());
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =
 		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
 		pars_[pit].rejectChange(left, right);
 	}
-	if (type == Change::INSERTED) {
+	if (isInserted) {
 		ParagraphList & plist = paragraphs();
 		if (it.pit() + 1 < et.pit())
 			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
 				    boost::next(plist.begin(), et.pit()));
 		// Paragraph merge if appropriate:
 		// FIXME: change tracking (MG)
-		if (pars_[it.pit()].lookupChange(pars_[it.pit()].size())
-			== Change(Change::INSERTED)) {
+		if (pars_[it.pit()].isInserted(pars_[it.pit()].size())) {
 			setCursorIntern(cur, it.pit() + 1, 0);
 			backspacePos0(cur);
 		}
@@ -1640,7 +1636,7 @@ bool LyXText::erase(LCursor & cur)
 		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 		needsUpdate = backspace(cur);
 		// FIXME: change tracking (MG)
-		if (cur.paragraph().lookupChange(cur.pos()) == Change(Change::DELETED))
+		if (cur.paragraph().isDeleted(cur.pos()))
 			cur.posRight();
 	} else if (cur.pit() != cur.lastpit()) {
 		LCursor scur = cur;
@@ -1654,7 +1650,7 @@ bool LyXText::erase(LCursor & cur)
 				// move forward after the paragraph break is DELETED
 				Paragraph & par = cur.paragraph();
 				// FIXME: change tracking (MG)
-				if (par.lookupChange(par.size()) == Change(Change::DELETED))
+				if (par.isDeleted(par.size()))
 					setCursorIntern(cur, cur.pit() + 1, 0);
 				}
 		} else {
@@ -1762,7 +1758,7 @@ bool LyXText::backspace(LCursor & cur)
 			Paragraph & par = pars_[cur.pit() - 1];
 			// Take care of a just inserted para break:
 			// FIXME: change tracking (MG)
-			if (par.lookupChange(par.size()) != Change(Change::INSERTED)) {
+			if (!par.isInserted(par.size())) {
 				// FIXME: change tracking (MG)
 				par.setChange(par.size(), Change(Change::DELETED));
 				setCursorIntern(cur, cur.pit() - 1, par.size());
