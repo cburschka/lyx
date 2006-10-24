@@ -106,6 +106,7 @@ dist_examples_DATA = \
 	examples/fr_mathed.lyx \
 	examples/fr_multicol.lyx \
 	examples/fr_splash.lyx \
+	examples/gl_splash.lyx \
 	examples/he_example_raw.lyx \
 	examples/he_he_example_lyxified.lyx \
 	examples/he_he_example_raw.lyx \
