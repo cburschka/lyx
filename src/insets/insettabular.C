@@ -1914,6 +1914,13 @@ void InsetTabular::setChange(Change const & change)
 }
 
 
+void InsetTabular::acceptChanges()
+{
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		cell(idx)->acceptChanges();
+}
+
+
 bool InsetTabular::forceDefaultParagraphs(idx_type cell) const
 {
 	return tabular.getPWidth(cell).zero();

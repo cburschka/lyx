@@ -117,6 +117,8 @@ public:
 
 	/// set the change for the entire inset
 	void setChange(Change const & change);
+	/// accept the changes within the inset
+	void acceptChanges();
 
 	// this should return true if we have a "normal" cell, otherwise false.
 	// "normal" means without width set!

@@ -400,6 +400,8 @@ public:
 
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
+	/// accept the changes within the inset
+	virtual void acceptChanges() {};
 
 	/// pretty arbitrary
 	virtual int width() const { return 10; }

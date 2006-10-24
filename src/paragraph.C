@@ -1441,9 +1441,9 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 }
 
 
-void Paragraph::acceptChange(pos_type start, pos_type end)
+void Paragraph::acceptChanges(pos_type start, pos_type end)
 {
-	return pimpl_->acceptChange(start, end);
+	return pimpl_->acceptChanges(start, end);
 }
 
 

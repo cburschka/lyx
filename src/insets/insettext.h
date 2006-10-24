@@ -104,6 +104,8 @@ public:
 
 	/// set the change for the entire inset
 	void setChange(Change const & change);
+	/// accept the changes within the inset
+	void acceptChanges();
 
 	/// append text onto the existing text
 	void appendParagraphs(Buffer * bp, ParagraphList &);

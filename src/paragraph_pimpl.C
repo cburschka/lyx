@@ -127,41 +127,33 @@ Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::acceptChange(pos_type start, pos_type end)
+void Paragraph::Pimpl::acceptChanges(pos_type start, pos_type end)
 {
-	// FIXME: change tracking (MG)
-	return;
-
-	// care for empty pars
-
-	lyxerr[Debug::CHANGES] << "acceptchange" << endl;
-	pos_type i = start;
-
-	for (; i < end; ++i) {
-		switch (lookupChange(i).type) {
+	for (pos_type pos = start; pos < end; ++pos) {
+		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
 				break;
 
 			case Change::INSERTED:
-				// FIXME: change tracking (MG)
-				changes_.set(Change(Change::UNCHANGED), i);
+				changes_.set(Change(Change::UNCHANGED), pos);
 				break;
 
 			case Change::DELETED:
 				// Suppress access to nonexistent
 				// "end-of-paragraph char":
-				if (i < size()) {
-					eraseChar(i, false);
+				if (pos < size()) {
+					eraseChar(pos, false);
 					--end;
-					--i;
+					--pos;
 				}
 				break;
 		}
-	}
 
-	lyxerr[Debug::CHANGES] << "endacceptchange" << endl;
-	// FIXME: change tracking (MG)
-	// changes_.reset(Change::UNCHANGED);
+		// also accept changes in nested insets
+		if (pos < size() && owner_->isInset(pos)) {
+			owner_->getInset(pos)->acceptChanges();
+		}
+	}
 }
 
 

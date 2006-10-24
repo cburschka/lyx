@@ -49,8 +49,8 @@ public:
         void setChange(Change const & change);
 	/// set change at given pos
 	void setChange(pos_type pos, Change const & change);
-	/// accept change
-	void acceptChange(pos_type start, pos_type end);
+	/// accept changes within the given range
+	void acceptChanges(pos_type start, pos_type end);
 	/// reject change
 	void rejectChange(pos_type start, pos_type end);
 
