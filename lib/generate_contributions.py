@@ -1,4 +1,4 @@
-﻿#! /usr/bin/env python
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
 '''
@@ -342,6 +342,14 @@ contributers = [
                  "23 February 2005",
                  u"Added support for unix sockets and thence the 'inverse DVI' feature"),
 
+     contributer(u"Ozgur Ugras Baran",
+                 "ugras.baran () gmail ! com",
+                 "GPL",
+                 "Re: [patch] new InsetCommandParams",
+                 "m=116124030512963",
+                 "19 October 2006",
+                 u"New commandparams structure"),
+
      contributer(u"Yves Bastide",
                  "yves.bastide () irisa ! fr",
                  "GPL",
@@ -502,6 +510,14 @@ contributers = [
                  "31 March 2005",
                  u"Maintainer of the OS X port(s)"),
 
+     contributer(u"José Ramom Flores d'as Seixas",
+                 "fa2ramon () usc ! es",
+                 "GPL",
+                 "Re: Galician translation",
+                 "m=116136920230072",
+                 "20 October 2006",
+                 u"Galician documentation and localization"),
+
      contributer(u"John Michael Floyd",
                  "jmf () pwd ! nsw ! gov ! au",
                  "",
@@ -540,7 +556,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=110909251110103",
                  "22 February 2005",
-                 u"lots of bug reports, German localization, bug fixes"),
+                 u"Change tracking, German localization, bug fixes"),
 
      contributer(u"Stefano Ghirlanda",
                  "stefano.ghirlanda () unibo ! it",
@@ -735,7 +751,7 @@ contributers = [
                  u"Xforms dialogs and GUI related code"),
 
      contributer(u"Jean-Marc Lasgouttes",
-                 "jean-marc.lasgouttes () inria ! fr",
+                 "lasgouttes () lyx ! org",
                  "GPL",
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899928510452",
