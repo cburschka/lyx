@@ -32,8 +32,6 @@ Menuset
 #
 
 	Menu "file"
-		Item "New Window|W" "window-new"
-		Item "Close Window|d" "window-close"
 		Item "New|N" "buffer-new"
 		Item "New from Template...|m" "buffer-new-template"
 		Item "Open...|O" "file-open"
@@ -49,6 +47,9 @@ Menuset
 		Submenu "Export|E" "file_export"
 		Item "Print...|P" "dialog-show print"
 		OptItem "Fax...|F" "buffer-export fax"
+		Separator
+		Item "New Window|W" "window-new"
+		Item "Close Window|d" "window-close"
 		Separator
 		Item "Exit|x" "lyx-quit"
 	End
