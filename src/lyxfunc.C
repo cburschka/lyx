@@ -1039,7 +1039,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				view()->saveSavedPositions();
 			}
 
-			LyX::ref().quit(argument == "force");
+			LyX::ref().quit();
 			break;
 
 		case LFUN_TOC_VIEW: {
