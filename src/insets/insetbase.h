@@ -402,6 +402,8 @@ public:
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset
 	virtual void acceptChanges() {};
+	/// reject the changes within the inset
+	virtual void rejectChanges() {};
 
 	/// pretty arbitrary
 	virtual int width() const { return 10; }

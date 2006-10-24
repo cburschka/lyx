@@ -1501,7 +1501,7 @@ void LyXText::rejectChange(LCursor & cur)
 		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
 		pos_type right =
 		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
-		pars_[pit].rejectChange(left, right);
+		pars_[pit].rejectChanges(left, right);
 	}
 	if (isInserted) {
 		ParagraphList & plist = paragraphs();

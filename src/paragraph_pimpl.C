@@ -89,6 +89,9 @@ void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
+	BOOST_ASSERT(start >= 0 && start <= size());
+	BOOST_ASSERT(end > start && end <= size() + 1);
+
 	return changes_.isChanged(start, end);
 }
 
@@ -111,6 +114,8 @@ void Paragraph::Pimpl::setChange(Change const & change)
 
 void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 {
+	BOOST_ASSERT(pos >= 0 && pos <= size());
+
 	changes_.set(change, pos);
 
 	// FIXME: change tracking (MG)
@@ -123,12 +128,17 @@ void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 
 Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
+	BOOST_ASSERT(pos >= 0 && pos <= size());
+
 	return changes_.lookup(pos);
 }
 
 
 void Paragraph::Pimpl::acceptChanges(pos_type start, pos_type end)
 {
+	BOOST_ASSERT(start >= 0 && start <= size());
+	BOOST_ASSERT(end > start && end <= size() + 1);
+	
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
@@ -139,8 +149,8 @@ void Paragraph::Pimpl::acceptChanges(pos_type start, pos_type end)
 				break;
 
 			case Change::DELETED:
-				// Suppress access to nonexistent
-				// "end-of-paragraph char":
+				// Suppress access to non-existent
+				// "end-of-paragraph char"
 				if (pos < size()) {
 					eraseChar(pos, false);
 					--end;
@@ -157,52 +167,50 @@ void Paragraph::Pimpl::acceptChanges(pos_type start, pos_type end)
 }
 
 
-void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
+void Paragraph::Pimpl::rejectChanges(pos_type start, pos_type end)
 {
-	// FIXME: change tracking (MG)
-	return;
+	BOOST_ASSERT(start >= 0 && start <= size());
+	BOOST_ASSERT(end > start && end <= size() + 1);
 
-	// care for empty pars
-
-	pos_type i = start;
-
-	for (; i < end; ++i) {
-		switch (lookupChange(i).type) {
+	for (pos_type pos = start; pos < end; ++pos) {
+		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
 				break;
 
 			case Change::INSERTED:
-				if (i < size()) {
-					eraseChar(i, false);
+				// Suppress access to non-existent
+				// "end-of-paragraph char"
+				if (pos < size()) {
+					eraseChar(pos, false);
 					--end;
-					--i;
+					--pos;
 				}
 				break;
 
 			case Change::DELETED:
-				// FIXME: change tracking (MG)
-				changes_.set(Change(Change::UNCHANGED), i);
-				// No real char at position size():
-				if (i < size() && owner_->isInset(i))
-					// FIXME: change tracking (MG)
-					owner_->getInset(i)->setChange(Change(Change::UNCHANGED));
+				changes_.set(Change(Change::UNCHANGED), pos);
 				break;
 		}
+
+		// also reject changes in nested insets
+		if (pos < size() && owner_->isInset(pos)) {
+			owner_->getInset(pos)->rejectChanges();
+		}
 	}
-	// FIXME: change tracking (MG)
-	// changes_.reset(Change::UNCHANGED);
 }
 
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
+	BOOST_ASSERT(pos >= 0 && pos <= size());
+
 	return owner_->getChar(pos);
 }
 
 
 void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change const & change)
 {
-	BOOST_ASSERT(pos <= size());
+	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	// track change
 	changes_.insert(change, pos);
@@ -235,7 +243,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos, InsetBase * inset,
                                    Change const & change)
 {
 	BOOST_ASSERT(inset);
-	BOOST_ASSERT(pos <= size());
+	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	insertChar(pos, META_INSET, change);
 	BOOST_ASSERT(owner_->text_[pos] == META_INSET);
@@ -247,7 +255,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos, InsetBase * inset,
 
 bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 {
-	BOOST_ASSERT(pos <= size());
+	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	if (trackChanges) {
 		Change::Type changetype(changes_.lookup(pos).type);
@@ -317,6 +325,9 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 
 int Paragraph::Pimpl::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
+	BOOST_ASSERT(start >= 0 && start <= size());
+	BOOST_ASSERT(end > start && end <= size() + 1);
+
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {
 		if (!eraseChar(i, trackChanges))

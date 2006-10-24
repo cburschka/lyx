@@ -1447,9 +1447,9 @@ void Paragraph::acceptChanges(pos_type start, pos_type end)
 }
 
 
-void Paragraph::rejectChange(pos_type start, pos_type end)
+void Paragraph::rejectChanges(pos_type start, pos_type end)
 {
-	return pimpl_->rejectChange(start, end);
+	return pimpl_->rejectChanges(start, end);
 }
 
 

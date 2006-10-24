@@ -1921,6 +1921,13 @@ void InsetTabular::acceptChanges()
 }
 
 
+void InsetTabular::rejectChanges()
+{
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		cell(idx)->rejectChanges();
+}
+
+
 bool InsetTabular::forceDefaultParagraphs(idx_type cell) const
 {
 	return tabular.getPWidth(cell).zero();

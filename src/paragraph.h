@@ -220,8 +220,8 @@ public:
 	/// accept changes within the given range
 	void acceptChanges(pos_type start, pos_type end);
 
-	/// reject change
-	void rejectChange(pos_type start, pos_type end);
+	/// reject changes within the given range
+	void rejectChanges(pos_type start, pos_type end);
 
 	/// Paragraphs can contain "manual labels", for example, Description
 	/// environment. The text for this user-editable label is stored in

@@ -51,8 +51,8 @@ public:
 	void setChange(pos_type pos, Change const & change);
 	/// accept changes within the given range
 	void acceptChanges(pos_type start, pos_type end);
-	/// reject change
-	void rejectChange(pos_type start, pos_type end);
+	/// reject changes within the given range
+	void rejectChanges(pos_type start, pos_type end);
 
 	///
 	value_type getChar(pos_type pos) const;

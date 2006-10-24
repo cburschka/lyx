@@ -284,6 +284,18 @@ void InsetText::acceptChanges()
 }
 
 
+void InsetText::rejectChanges()
+{
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
+	for (; pit != end; ++pit) {
+		// FIXME: change tracking (MG)
+		// we must handle end-of-par chars!
+		pit->rejectChanges(0, pit->size() + 1);
+	}
+}
+
+
 int InsetText::latex(Buffer const & buf, odocstream & os,
 		     OutputParams const & runparams) const
 {
