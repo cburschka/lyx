@@ -599,7 +599,7 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
-	cursor_->setGeometry(x, y, x + 2, y - h);
+	cursor_->setGeometry(x, y, 2, h);
 	cursor_->shape_ = shape;
 	cursor_->on_ = true;
 	cursor_->show();
