@@ -198,6 +198,7 @@ cat <<EOF
 	'eu' => 'Basque',
 	'fi' => 'Finnish',
 	'fr' => 'French',
+	'gl' => 'Galician',
 	'he' => 'Hebrew',
 	'hu' => 'Hungarian',
 	'it' => 'Italian',
