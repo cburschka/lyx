@@ -121,6 +121,9 @@ void LyXView::setBuffer(Buffer * b)
 		connectBuffer(*work_area_->bufferView().buffer());
 	}
 
+	if (quitting)
+		return;
+
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
