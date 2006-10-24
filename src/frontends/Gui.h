@@ -46,6 +46,8 @@ public:
 	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id) = 0;
 	///
 	virtual WorkArea & workArea(int id) = 0;
+	///
+	virtual bool closeAll() = 0;
 
 	///
 	std::vector<int> const & viewIds() { return view_ids_; };

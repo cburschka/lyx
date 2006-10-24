@@ -38,14 +38,15 @@ public:
 	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
-	int newView();
-	LyXView& view(int id);
-	int newWorkArea(unsigned int width, unsigned int height, int view_id);
-	WorkArea& workArea(int id);
+	virtual int newView();
+	virtual LyXView& view(int id);
+	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id);
+	virtual WorkArea& workArea(int id);
+	virtual bool closeAll();
 
-private Q_SLOTS:
+public Q_SLOTS:
 	///
-	void cleanupViews(QObject * view);
+	void unregisterView(GuiView * view);
 
 private:
 	///

@@ -42,6 +42,10 @@ QWidget* mainWindow();
  * GuiView - Qt4 implementation of LyXView
  *
  * qt4-private implementation of the main LyX window.
+ *
+ * Note: any QObject emits a destroyed(QObject *) Qt signal when it
+ *       is deleted.This might be useful for closing other dialogs
+ *       depending on a given GuiView.
  */
 class GuiView : public QMainWindow, public LyXView {
 	Q_OBJECT

@@ -28,14 +28,27 @@
 
 #include <algorithm>
 
+using std::pair;
+using std::make_pair;
 
 namespace lyx {
 
 using lyx::support::bformat;
 using lyx::docstring;
 
-using std::pair;
-using std::make_pair;
+namespace {
+
+class MessageBox: public QMessageBox
+{
+public:
+	MessageBox(QWidget * parent = 0): QMessageBox(parent)
+	{
+		setAttribute(Qt::WA_DeleteOnClose, true);
+		setAttribute(Qt::WA_QuitOnClose, false);
+	}
+};
+
+} // anonymous namespace
 
 
 int prompt_pimpl(docstring const & tit, docstring const & question,
@@ -44,8 +57,10 @@ int prompt_pimpl(docstring const & tit, docstring const & question,
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
 
+	MessageBox mb;
+
 	// FIXME replace that with theApp->gui()->currentView()
-	int res = QMessageBox::information(qApp->focusWidget(),
+	int res = mb.information(qApp->focusWidget(),
 					   toqstr(title),
 					   toqstr(formatted(question)),
 					   toqstr(b1),
@@ -63,7 +78,9 @@ int prompt_pimpl(docstring const & tit, docstring const & question,
 void warning_pimpl(docstring const & tit, docstring const & message)
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::warning(qApp->focusWidget(),
+
+	MessageBox mb;
+	mb.warning(qApp->focusWidget(),
 			     toqstr(title),
 			     toqstr(formatted(message)));
 }
@@ -72,7 +89,8 @@ void warning_pimpl(docstring const & tit, docstring const & message)
 void error_pimpl(docstring const & tit, docstring const & message)
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::critical(qApp->focusWidget(),
+	MessageBox mb;
+	mb.critical(qApp->focusWidget(),
 			      toqstr(title),
 			      toqstr(formatted(message)));
 }
@@ -81,7 +99,8 @@ void error_pimpl(docstring const & tit, docstring const & message)
 void information_pimpl(docstring const & tit, docstring const & message)
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
-	QMessageBox::information(qApp->focusWidget(),
+	MessageBox mb;
+	mb.information(qApp->focusWidget(),
 				 toqstr(title),
 				 toqstr(formatted(message)));
 }

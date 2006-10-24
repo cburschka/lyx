@@ -66,7 +66,7 @@ public:
 	In GUI mode, after this function has been called, application_ leaves
 	the main event loop and returns from the call to Application::start().
 	*/
-	void quit(bool noask);
+	void quit();
 
 	///
 	BufferList & bufferList();

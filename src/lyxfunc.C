@@ -1022,13 +1022,23 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYX_QUIT:
+			if (argument != "force") {
+				if (!theApp->gui().closeAll())
+					break;
+				lyx_view_ = 0;
+			}
+
+			// FIXME: this code needs to be transfered somewhere else
+			// as lyx_view_ will most certainly be null and a same buffer
+			// might be visible in more than one LyXView.
 			if (lyx_view_ && lyx_view_->view()->buffer()) {
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().saveFilePosition(lyx_view_->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
-			}			
+			}
+
 			LyX::ref().quit(argument == "force");
 			break;
 

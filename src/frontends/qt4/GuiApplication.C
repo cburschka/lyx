@@ -165,7 +165,7 @@ void GuiApplication::quitLyX()
 
 	// trigger LFUN_LYX_QUIT instead of QApplication::quit() directly
 	// since LFUN_LYX_QUIT may have more cleanup stuff
-	dispatch(FuncRequest(LFUN_LYX_QUIT));
+	dispatch(FuncRequest(LFUN_LYX_QUIT, "force"));
 }
 
 

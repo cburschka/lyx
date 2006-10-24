@@ -393,27 +393,14 @@ void LyX::earlyExit(int status)
 }
 
 
-void LyX::quit(bool noask)
+void LyX::quit()
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
-
-	if (use_gui) {
-		if (!noask && !pimpl_->buffer_list_.quitWriteAll())
-			return;
-
-		// The LyXView Geometry settings are stored when LyXView::close
-		// is called explicitely but a straight quit() command would not
-		// guarante that. So we make sure this is done here:
-		vector<int> const & view_ids = pimpl_->application_->gui().viewIds();
-		for (size_t i = 0; i < view_ids.size(); ++i)
-			pimpl_->application_->gui().view(view_ids[i]).saveGeometry();
-
-		pimpl_->session_->writeFile();
-	}
 
 	prepareExit();
 
 	if (use_gui) {
+		pimpl_->session_->writeFile();
 		pimpl_->lyx_server_.reset();
 		pimpl_->lyx_socket_.reset();
 		pimpl_->application_->exit(0);

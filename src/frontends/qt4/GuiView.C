@@ -12,25 +12,6 @@
 
 #include <config.h>
 
-#include "BufferView.h"
-#include "lyx_cb.h"
-#include "lyxrc.h"
-#include "lyx_main.h"
-#include "session.h"
-#include "lyxfunc.h"
-#include "MenuBackend.h"
-#include "funcrequest.h"
-#include "funcrequest.h"
-
-#include "debug.h"
-
-#include "frontends/WorkArea.h"
-#include "support/filetools.h"
-#include "support/convert.h"
-#include "support/lstrings.h"
-
-// This include must be declared before everything else because
-// of boost/Qt/LyX clash...
 #include "GuiImplementation.h"
 
 #include "GuiView.h"
@@ -39,6 +20,25 @@
 #include "QCommandBuffer.h"
 #include "qt_helpers.h"
 
+#include "frontends/Application.h"
+#include "frontends/Gui.h"
+#include "frontends/WorkArea.h"
+
+#include "support/filetools.h"
+#include "support/convert.h"
+#include "support/lstrings.h"
+
+#include "BufferView.h"
+#include "bufferlist.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "lyx_cb.h"
+#include "lyxrc.h"
+#include "lyx_main.h"
+#include "session.h"
+#include "lyxfunc.h"
+#include "MenuBackend.h"
+
 #include <QAction>
 #include <QApplication>
 #include <QCloseEvent>
@@ -46,12 +46,11 @@
 #include <QStatusBar>
 #include <QToolBar>
 
-
 #include <boost/bind.hpp>
 
-
-using std::string;
 using std::endl;
+using std::string;
+using std::vector;
 
 namespace lyx {
 
@@ -264,9 +263,20 @@ void GuiView::moveEvent(QMoveEvent *)
 }
 
 
-void GuiView::closeEvent(QCloseEvent *)
+void GuiView::closeEvent(QCloseEvent * close_event)
 {
+	GuiImplementation & gui 
+		= static_cast<GuiImplementation &>(theApp->gui());
+
+	vector<int> const & view_ids = gui.viewIds();
+
+	if (view_ids.size() == 1 && !theBufferList().quitWriteAll()) {
+		close_event->ignore();
+		return;
+	}
+
 	saveGeometry();
+	gui.unregisterView(this);
 }
 
 
