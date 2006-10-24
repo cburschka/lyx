@@ -43,6 +43,7 @@ public:
 	/// set current panel by logical name
 	void setCurrentPanel(lyx::docstring const &);
 
+	virtual QSize sizeHint() const;
 public Q_SLOTS:
 	/// set current panel from an item
 	void switchPanel(QTreeWidgetItem * i, QTreeWidgetItem* previous=0);

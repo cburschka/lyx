@@ -15,10 +15,9 @@
 #include "qt_helpers.h"
 
 #include <QStackedWidget>
-#include <QFontMetrics>
 #include <QTreeWidget>
 #include <QHBoxLayout>
-#include <QLayout>
+#include <QHeaderView>
 
 #include <boost/assert.hpp>
 
@@ -37,17 +36,6 @@ PanelStack::PanelStack(QWidget * parent)
 	stack_ = new QStackedWidget(this);
 
 	list_->setColumnCount(1);
-	list_->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-	stack_->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
-
-	list_->setSortingEnabled(false);
-//	list_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//	list_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//	list_->addColumn("");
-//	list_->setColumnWidthMode(0, QTreeWidget::Maximum);
-
-//	list_->setResizeMode(QTreeWidget::AllColumns);
-
 	QStringList HeaderLabels; HeaderLabels << QString("Category");
 	list_->setHeaderLabels(HeaderLabels);
 
@@ -72,7 +60,6 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 	if (parent.empty()) {
 		item = new QTreeWidgetItem(list_);
 		item->setText(0, name);
-		//list_->addTopLevelItem(item);
 	}
 	else {
 		PanelMap::iterator it = panel_map_.find(parent);
@@ -85,23 +72,11 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 
 		item = new QTreeWidgetItem(it->second);
 		item->setText(0, name);
-		//it->second->addChild(item);
 	}
 
 	panel_map_[n] = item;
 
-	list_->setFixedWidth(list_->sizeHint().width());
-/*
-	item->setFlags(false);
-	item->setOpen(true);
-
-	// calculate the real size the current item needs in the listview
-	int itemsize = item->width(list_->fontMetrics(), list_, 0) + 10
-		   + list_->treeStepSize() * (item->depth() + 1) + list_->itemMargin();
-	// adjust the listview width to the max. itemsize
-	if (itemsize > list_->minimumWidth())
-		list_->setMinimumWidth(itemsize);
-		*/
+	list_->setMinimumWidth(list_->header()->sectionSize(0) + list_->indentation());
 }
 
 
@@ -109,9 +84,6 @@ void PanelStack::addPanel(QWidget * panel, docstring const & name, docstring con
 {
 	addCategory(name, parent);
 	QTreeWidgetItem * item = panel_map_.find(name)->second;
-
-	// reset the selectability set by addCategory
-//	item->setSelectable(true);
 
 	widget_map_[item] = panel;
 	stack_->addWidget(panel);
@@ -142,10 +114,11 @@ void PanelStack::switchPanel(QTreeWidgetItem * item,
 	stack_->setCurrentWidget(cit->second);
 }
 
+
+QSize PanelStack::sizeHint() const
+{
+	return QSize(list_->width() + stack_->width(),
+		qMax(list_->height(), stack_->height()));
+}
+
 #include "panelstack_moc.cpp"
-
-
-namespace lyx {
-
-
-} // namespace lyx
