@@ -44,17 +44,17 @@ QTabularDialog::QTabularDialog(QTabular * form)
 
 	connect(topspaceED, SIGNAL(returnPressed()),
 	        this, SLOT(topspace_changed()));
-	connect(topspaceUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 	        this, SLOT(topspace_changed()));
 	connect(topspaceCO, SIGNAL(activated(int)), this, SLOT(topspace_changed()));
 	connect(bottomspaceED, SIGNAL(returnPressed()),
 	        this, SLOT(bottomspace_changed()));
-	connect(bottomspaceUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 	        this, SLOT(bottomspace_changed()));
 	connect(bottomspaceCO, SIGNAL(activated(int)), this, SLOT(bottomspace_changed()));
 	connect(interlinespaceED, SIGNAL(returnPressed()),
 	        this, SLOT(interlinespace_changed()));
-	connect(interlinespaceUnit, SIGNAL(selectionChanged(LyXLength::UNIT)),
+	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 	        this, SLOT(interlinespace_changed()));
 	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
 	connect(booktabsRB, SIGNAL(clicked()), this, SLOT(on_booktabsRB_toggled()));
@@ -82,7 +82,7 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	connect(lastfooterNoContentsCB, SIGNAL(clicked()), this, SLOT(ltLastFooterEmpty_clicked()));
 	connect(specialAlignmentED, SIGNAL(returnPressed()), this, SLOT(specialAlignment_changed()));
 	connect(widthED, SIGNAL(returnPressed()), this, SLOT(width_changed()));
-	connect(widthUnit, SIGNAL(selectionChanged(LyXLength::UNIT)), this, SLOT(width_changed()));
+	connect(widthUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)), this, SLOT(width_changed()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(close_clicked()));
 	connect(borders, SIGNAL(topSet(bool)), this, SLOT(topBorder_changed()));
 	connect(borders, SIGNAL(bottomSet(bool)), this, SLOT(bottomBorder_changed()));
