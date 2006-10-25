@@ -282,7 +282,7 @@ void LyXRC::setDefaults() {
 	show_banner = true;
 	windows_style_tex_paths = false;
 	tex_allows_spaces = false;
-	date_insert_format = "%A, %e %B %Y";
+	date_insert_format = "%x";
 	cursor_follows_scrollbar = false;
 	dialogs_iconify_with_main = false;
 	label_init_length = 3;
