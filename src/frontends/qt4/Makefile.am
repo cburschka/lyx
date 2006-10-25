@@ -38,7 +38,6 @@ libqt4_la_SOURCES = \
 	GuiFontLoader.h GuiFontLoader.C \
 	GuiFontMetrics.h GuiFontMetrics.C \
 	GuiSelection.h GuiSelection.C \
-	GuiImplementation.h GuiImplementation.C \
 	LyXKeySymFactory.C \
 	QLMenubar.C QLMenubar.h \
 	QAbout.C QAbout.h \
