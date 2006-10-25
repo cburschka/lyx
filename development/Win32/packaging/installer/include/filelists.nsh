@@ -90,9 +90,16 @@ Lists of files to include in the installer
   
 !macroend
 
-!macro FileListWinScripts COMMAND DIRECTORY
+!macro FileListPDFToolsBin COMMAND DIRECTORY
 
-  ${FILE}clean_dvi.py"
+  ${FILE}pdfopen.exe"
+  ${FILE}pdfclose.exe"
+  
+!macroend
+
+!macro FileListPDFViewBin COMMAND DIRECTORY
+
+  ${FILE}pdfview.exe"
 
 !macroend
 

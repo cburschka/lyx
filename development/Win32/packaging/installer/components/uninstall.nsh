@@ -29,6 +29,8 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListNetpbmBin Delete "$INSTDIR\bin\"
   !insertmacro FileListDvipostBin Delete "$INSTDIR\bin\"
   !insertmacro FileListDTLBin Delete "$INSTDIR\bin\"
+  !insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
+  !insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
   
   ;Icons
   

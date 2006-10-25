@@ -12,6 +12,7 @@ Settings for LyX installer
 !define FILES_ICONS "..\icons"
 !define FILES_FONTS "..\bakoma"
 !define FILES_LAUNCHER "..\..\launcher"
+!define FILES_PDFVIEW "..\..\pdfview"
 
 !ifdef BUILD_MSVC
   !define FILES_MSVC "${FILES_WINDOWS}\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.42_x-ww_0de06acd"
@@ -20,12 +21,14 @@ Settings for LyX installer
   !define FILES_AIKSAURUS "${FILES_DEPS}\aiksaurus\"
   !define FILES_DVIPOST "${FILES_DEPS}\dvipost"
   !define FILES_DVIPOST_PKG "${FILES_DVIPOST}"
+  !define FILES_PDFTOOLS "${FILES_DEPS}\pdftools"
 !else
   !define FILES_NETPBM "${FILES_DEPS}\bin"
   !define FILES_DTL "${FILES_DEPS}\bin"
   !define FILES_AIKSAURUS "${FILES_DEPS}\share\Aiksaurus\"
   !define FILES_DVIPOST "${FILES_DEPS}\bin"
   !define FILES_DVIPOST_PKG "${FILES_DEPS}\dvipost"
+  !define FILES_PDFTOOLS "${FILES_DEPS}\bin"  
 !endif
 
 !define FILES_QT "${FILES_DEPS}\qt-3"

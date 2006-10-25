@@ -17,6 +17,11 @@ in the file COPYING or at http://www.lyx.org/about/license.php
 !system '"${NSISDIR}\makensis.exe" "${FILES_LAUNCHER}\launcher.nsi"'
 
 ;--------------------------------
+;Compile Windows PDF view helper
+
+!system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
+
+;--------------------------------
 ;LyX Installer
 
 OutFile "${SETUP_EXE}"

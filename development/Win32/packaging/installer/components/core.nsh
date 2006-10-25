@@ -34,8 +34,9 @@ Section -Core SecCore
   
   SetOutPath "$INSTDIR\bin"
 
-  File /oname=lyx.exe "${FILES_LAUNCHER}\lyx.exe"
+  File "${FILES_LAUNCHER}\lyx.exe"
   File /oname=lyxc.exe "${FILES_LYX}\bin\lyx.exe"
+  
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
   
@@ -57,6 +58,8 @@ Section -Core SecCore
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
+  !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
+  !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
 
   ;Icons
   
