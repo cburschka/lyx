@@ -54,6 +54,10 @@ What's new
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
+- Fix deletion of empty paragraph in various situations: paragraphs
+  with different layouts, layouts with KeepEmpty property, ERT insets
+  (bugs 2587 and 2882)
+
 - Fix cursor positioning when opening the VSpace dialog (bug 2869).
 
 - Give a better error message for missing layout include files

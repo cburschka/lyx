@@ -1,3 +1,11 @@
+2006-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (backspacePos0): rewrite to make it simple and allow
+	deleting empty paragraphs even when keepempty is true. Do not rely
+	on dEPM, since this was silly (bugs 2587 and 2882)
+	(Delete): simplify also and avoid calling backspace.
+	(backspace): small tweak.
+
 2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* buffer.[Ch] (changeRefsIfUnique): extend to handle bibitems 
