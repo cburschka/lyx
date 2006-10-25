@@ -359,27 +359,78 @@ def convert_commandparams(document):
         if i == -1:
             break
         command = document.body[i][26:].strip()
-        match = re.match(regex, command)
-        name = match.group(1)
-        option1 = match.group(2)
-        option2 = match.group(3)
-        argument = match.group(4)
+        if command == "":
+            document.warning("Malformed LyX document: Missing LatexCommand name.")
+            i = i + 1
+            continue
+
+        # The following parser is taken from the original InsetCommandParams::scanCommand
+        name = ""
+        option1 = ""
+        option2 = ""
+        argument = ""
+        state = "WS"
+        # Used to handle things like \command[foo[bar]]{foo{bar}}
+        nestdepth = 0
+        for j in range(len(command)):
+            c = command[j]
+            if ((state == "CMDNAME" and c == ' ') or
+                (state == "CMDNAME" and c == '[') or
+                (state == "CMDNAME" and c == '{')):
+                state = "WS"
+            if ((state == "OPTION" and c == ']') or
+                (state == "SECOPTION" and c == ']') or
+                (state == "CONTENT" and c == '}')):
+                if nestdepth == 0:
+                    state = "WS"
+                else:
+                    --nestdepth
+            if ((state == "OPTION" and c == '[') or
+                (state == "SECOPTION" and c == '[') or
+                (state == "CONTENT" and c == '{')):
+                ++nestdepth
+            if state == "CMDNAME":
+                    name += c
+            elif state == "OPTION":
+                    option1 += c
+            elif state == "SECOPTION":
+                    option2 += c
+            elif state == "CONTENT":
+                    argument += c
+            elif state == "WS":
+                if j > 0:
+                    b = command[j-1]
+                else:
+                    b = 0
+                if c == '\\':
+                    state = "CMDNAME"
+                elif c == '[' and b != ']':
+                    state = "OPTION"
+                    nestdepth = 0 # Just to be sure
+                elif c == '[' and b == ']':
+                    state = "SECOPTION"
+                    nestdepth = 0 # Just to be sure
+                elif c == '{':
+                    state = "CONTENT"
+                    nestdepth = 0 # Just to be sure
+
+        # Now we have parsed the command, output the parameters
         lines = ["\\begin_inset LatexCommand %s" % name]
-        if option1 != None:
+        if option1 != "":
             if commandparams_info[name][0] == "":
-                document.warning("Ignoring invalid option `%s' of command `%s'." % (option1[1:-1], name))
+                document.warning("Ignoring invalid option `%s' of command `%s'." % (option1, name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][0], option1[1:-1].replace('"', '\\"')))
-        if option2 != None:
+                lines.append('%s "%s"' % (commandparams_info[name][0], option1.replace('"', '\\"')))
+        if option2 != "":
             if commandparams_info[name][1] == "":
-                document.warning("Ignoring invalid second option `%s' of command `%s'." % (option2[1:-1], name))
+                document.warning("Ignoring invalid second option `%s' of command `%s'." % (option2, name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][1], option2[1:-1].replace('"', '\\"')))
-        if argument != None:
+                lines.append('%s "%s"' % (commandparams_info[name][1], option2.replace('"', '\\"')))
+        if argument != "":
             if commandparams_info[name][2] == "":
-                document.warning("Ignoring invalid argument `%s' of command `%s'." % (argument[1:-1], name))
+                document.warning("Ignoring invalid argument `%s' of command `%s'." % (argument, name))
             else:
-                lines.append('%s "%s"' % (commandparams_info[name][2], argument[1:-1].replace('"', '\\"')))
+                lines.append('%s "%s"' % (commandparams_info[name][2], argument.replace('"', '\\"')))
         document.body[i:i+1] = lines
         i = i + 1
 
