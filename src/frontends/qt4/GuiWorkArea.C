@@ -599,6 +599,9 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
+	// FIXME: the BufferView (via Cursor) should provide the correct positioning
+	// for the moment we put the cursor 2 pixels to the right
+	//cursor_->setGeometry(x, y, 2, h);
 	cursor_->setGeometry(x + 2, y, 2, h);
 	cursor_->shape_ = shape;
 	cursor_->on_ = true;
