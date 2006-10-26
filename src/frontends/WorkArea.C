@@ -119,6 +119,18 @@ BufferView const & WorkArea::bufferView() const
 }
 
 
+void WorkArea::stopBlinkingCursor()
+{
+	cursor_timeout_.stop();
+}
+
+
+void WorkArea::startBlinkingCursor()
+{
+	cursor_timeout_.restart();
+}
+
+
 void WorkArea::checkAndGreyOut()
 {
 	if (greyed_out_)

@@ -898,6 +898,9 @@ void paintPar
 void paintText(BufferView & bv, ViewMetricsInfo const & vi,
 	       Painter & pain)
 {
+	if (!bv.buffer())
+		return;
+
 	LyXText & text = bv.buffer()->text();
 	bool const select = bv.cursor().selection();
 

@@ -93,7 +93,7 @@ public:
 	virtual void saveGeometry() = 0;
 
 	/// show busy cursor
-	virtual void busy(bool) const = 0;
+	virtual void busy(bool) = 0;
 
 	virtual Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb) = 0;
 

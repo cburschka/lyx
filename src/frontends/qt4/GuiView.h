@@ -63,7 +63,7 @@ public:
 		int posx, int posy,
 		bool maximize);
 	virtual void saveGeometry();
-	virtual void busy(bool) const;
+	virtual void busy(bool);
 	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
 	virtual void updateStatusBar();
 	virtual void message(lyx::docstring const & str);

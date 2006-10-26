@@ -12,9 +12,10 @@
 
 #include <config.h>
 
-#include "GuiImplementation.h"
-
 #include "GuiView.h"
+
+#include "GuiImplementation.h"
+#include "GuiWorkArea.h"
 #include "QLMenubar.h"
 #include "QLToolbar.h"
 #include "QCommandBuffer.h"
@@ -288,12 +289,18 @@ void GuiView::show()
 }
 
 
-void GuiView::busy(bool yes) const
+void GuiView::busy(bool yes)
 {
-	if (yes)
+	static_cast<GuiWorkArea *>(work_area_)->setUpdatesEnabled(!yes);
+
+	if (yes) {
+		work_area_->stopBlinkingCursor();
 		QApplication::setOverrideCursor(Qt::WaitCursor);
-	else
+	}
+	else {
+		work_area_->startBlinkingCursor();
 		QApplication::restoreOverrideCursor();
+	}
 }
 
 

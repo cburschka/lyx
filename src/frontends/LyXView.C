@@ -105,6 +105,8 @@ Buffer * LyXView::buffer() const
 
 void LyXView::setBuffer(Buffer * b)
 {
+	busy(true);
+
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
@@ -129,12 +131,15 @@ void LyXView::setBuffer(Buffer * b)
 	updateLayoutChoice();
 	updateWindowTitle();
 	updateStatusBar();
+	busy(false);
 	work_area_->redraw();
 }
 
 
 bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 {
+	busy(true);
+
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
@@ -149,6 +154,7 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 		showErrorList("Parse");
 	}
 	updateStatusBar();
+	busy(false);
 	work_area_->redraw();
 	return loaded;
 }

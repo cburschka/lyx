@@ -246,6 +246,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 		if (!theBufferList().close(theBufferList().getBuffer(s), false))
 			return false;
 		// Fall through to new load. (Asger)
+		buffer_ = 0;
 	}
 
 	Buffer * b = 0;

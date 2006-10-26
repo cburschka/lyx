@@ -85,6 +85,9 @@ public:
 	virtual void redraw();
 	///
 	void checkAndGreyOut();
+	///
+	void stopBlinkingCursor();
+	void startBlinkingCursor();
 
 protected:
 	/// grey out (no buffer)
