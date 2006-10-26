@@ -123,7 +123,7 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 
 
 BufferView::BufferView()
-	: buffer_(0), wh_(0),
+	: buffer_(0), wh_(0), width_(0), height_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
 	  intl_(new Intl)
@@ -431,11 +431,14 @@ void BufferView::updateScrollbar()
 		sumh += h2;
 		nh++;
 	}
+
+	BOOST_ASSERT(nh);
 	int const hav = sumh / nh;
 	// More realistic average paragraph height
 	if (hav > wh_)
 		wh_ = hav;
 
+	BOOST_ASSERT(h);
 	scrollbarParameters_.height = (parsize + 1) * wh_;
 	scrollbarParameters_.position = anchor_ref_ * wh_ + int(offset_ref_ * wh_ / float(h));
 	scrollbarParameters_.lineScrollHeight = int(wh_ * defaultRowHeight() / float(h));
