@@ -273,14 +273,19 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
 	if (trackChanges) {
-		Change::Type changetype(changes_.lookup(pos).type);
+		Change change = changes_.lookup(pos);
 
-		if (changetype == Change::UNCHANGED) {
+		// set the character to DELETED if 
+		//  a) it was previously unchanged or
+		//  b) it was inserted by a co-author
+
+		if (change.type == Change::UNCHANGED ||
+		    (change.type == Change::INSERTED && change.author != 0)) {
 			setChange(pos, Change(Change::DELETED));
 			return false;
 		}
 
-		if (changetype == Change::DELETED)
+		if (change.type == Change::DELETED)
 			return false;
 	}
 
