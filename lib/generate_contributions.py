@@ -1022,6 +1022,14 @@ contributers = [
                  "22 February 2005",
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
 
+     contributer(u"Ran Rutenberg",
+                 "ran.rutenberg () gmail ! com",
+                 "GPL",
+                 "The New Hebrew Translation of the Introduction",
+                 "m=116172457024967",
+                 "24 October 2006",
+                 u"Hebrew translation"),
+
      contributer(u"Szõke Sándor",
                  "alex () lyx ! hu",
                  "GPL",
