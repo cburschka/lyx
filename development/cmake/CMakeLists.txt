@@ -15,11 +15,6 @@ set(LYX_DATE "not released yet")
 #TODO
 set(VERSION_INFO "CMake Build")
 
-#TODO: add command line option
-#      enable by default because the cmake 
-#      build is mostly used for development
-set(ENABLE_ASSERTIONS 1)
-
 if(WIN32)
 	set(USE_WINDOWS_PACKAGING 1)
 else(WIN32)
