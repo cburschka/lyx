@@ -2360,8 +2360,7 @@ string LyXText::currentState(LCursor & cur)
 		os << to_utf8(_("Change: ")) << a.name();
 		if (!a.email().empty())
 			os << " (" << a.email() << ")";
-		if (change.changetime)
-			os << to_utf8(_(" at ")) << ctime(&change.changetime);
+		os << to_utf8(_(" at ")) << ctime(&change.changetime);
 		os << " : ";
 	}
 

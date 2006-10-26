@@ -23,12 +23,33 @@ namespace lyx {
 
 using std::endl;
 using std::string;
+using std::max;
 
+/*
+ * Class Change has a changetime field that specifies the exact time at which
+ * a specific change was made. The change time is used as a guidance for the
+ * user while editing his document. Presently, it is not considered for LaTeX
+ * export. To avoid that every keystroke results in a separate change, a 
+ * tolerance interval of 5 minutes is used. That means if there are two adjacent
+ * changes that only differ in their change time with abs(ct1 - ct2) < 300 sec,
+ * they will be merged (and the later change time is preserved).
+ * Technically, the check for equality (or similarity) is made in operator==(...).
+ * The merging of similar changes happens in method merge().
+ */
 
 bool operator==(Change const & l, Change const & r)
 {
-	return l.type == r.type && l.author == r.author
-		&& l.changetime == r.changetime;
+	if (l.type != r.type) {
+		return false;
+	}
+
+	if (l.type == Change::UNCHANGED) {
+		return true;
+	}
+
+	return l.author == r.author
+	       // both changes made within 5 minutes?
+	       && abs(l.changetime - r.changetime) < 300;
 }
 
 
@@ -87,11 +108,6 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 	ChangeTable::iterator it = table_.begin();
 
 	for (; it != table_.end(); ) {
-		// find super change, check for equal types, and do nothing
-		if (it->range.contains(newRange) && it->change.type == change.type) {
-			return;	
-		}
-
 		// current change starts like or follows new change
 		if (it->range.start >= start) {
 			break;
@@ -282,6 +298,8 @@ void Changes::merge()
 					<< (it + 1)->range.end << ")" << endl;
 			}
 			(it + 1)->range.start = it->range.start;
+			(it + 1)->change.changetime = max(it->change.changetime,
+			                                  (it + 1)->change.changetime);
 			table_.erase(it);
 			// start again
 			it = table_.begin();
@@ -294,11 +312,10 @@ void Changes::merge()
 
 
 int Changes::latexMarkChange(odocstream & os,
-			     Change::Type const old, Change::Type const change,
+			     Change::Type const oldChangeType, Change::Type const changeType,
 			     bool const & output)
 {
-	// FIXME: change tracking (MG)
-	if (!output || old == change)
+	if (!output || oldChangeType == changeType)
 		return 0;
 
 	static docstring const start(from_ascii("\\changestart{}"));
@@ -308,19 +325,19 @@ int Changes::latexMarkChange(odocstream & os,
 
 	int column = 0;
 
-	if (old == Change::DELETED) {
+	if (oldChangeType == Change::DELETED) {
 		os << soff;
 		column += soff.length();
 	}
 
-	switch (change) {
+	switch (changeType) {
 		case Change::UNCHANGED:
 			os << end;
 			column += end.length();
 			break;
 
 		case Change::DELETED:
-			if (old == Change::UNCHANGED) {
+			if (oldChangeType == Change::UNCHANGED) {
 				os << start;
 				column += start.length();
 			}
@@ -329,7 +346,7 @@ int Changes::latexMarkChange(odocstream & os,
 			break;
 
 		case Change::INSERTED:
-			if (old == Change::UNCHANGED) {
+			if (oldChangeType == Change::UNCHANGED) {
 				os << start;
 				column += start.length();
 			}
@@ -341,10 +358,8 @@ int Changes::latexMarkChange(odocstream & os,
 
 
 void Changes::lyxMarkChange(std::ostream & os, int & column,
-			    time_type const curtime,
 			    Change const & old, Change const & change)
 {
-	// FIXME: change tracking (MG)
 	if (old == change)
 		return;
 
@@ -356,23 +371,16 @@ void Changes::lyxMarkChange(std::ostream & os, int & column,
 			break;
 
 		case Change::DELETED: {
-			time_type t = change.changetime;
-			if (!t)
-				t = curtime;
 			os << "\n\\change_deleted " << change.author
-				<< " " << t << "\n";
-
+				<< " " << change.changetime << "\n";
 			break;
 		}
 
-	case Change::INSERTED: {
-			time_type t = change.changetime;
-			if (!t)
-				t = curtime;
+		case Change::INSERTED: {
 			os << "\n\\change_inserted " << change.author
-				<< " " << t << "\n";
+				<< " " << change.changetime << "\n";
 			break;
-	}
+		}
 	}
 }
 

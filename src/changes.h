@@ -33,7 +33,7 @@ public:
 		DELETED // deleted text
 	};
 
-	explicit Change(Type t, int a = 0, time_type ct = 0)
+	explicit Change(Type t, int a = 0, time_type ct = current_time())
 		: type(t), author(a), changetime(ct) {}
 
 	Type type;
@@ -73,12 +73,12 @@ public:
 
 	/// output latex to mark a transition between two change types
 	/// returns length of text outputted
-	static int latexMarkChange(odocstream & os, Change::Type old,
-		Change::Type change, bool const & output);
+	static int latexMarkChange(odocstream & os, Change::Type oldChangeType,
+		Change::Type changeType, bool const & output);
 
 	/// output .lyx file format for transitions between changes
 	static void lyxMarkChange(std::ostream & os, int & column,
-		time_type curtime, Change const & old, Change const & change);
+		Change const & old, Change const & change);
 
 private:
 	class Range {

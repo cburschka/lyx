@@ -153,13 +153,12 @@ void Paragraph::write(Buffer const & buf, ostream & os,
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
 
 	Change running_change = Change(Change::UNCHANGED);
-	time_type const curtime = current_time();
 
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
 
 		Change change = pimpl_->lookupChange(i);
-		Changes::lyxMarkChange(os, column, curtime, running_change, change);
+		Changes::lyxMarkChange(os, column, running_change, change);
 		running_change = change;
 
 		if (i == size())
