@@ -71,8 +71,8 @@ namespace lyx {
 namespace frontend {
 
 WorkArea::WorkArea(int id, LyXView & lyx_view)
-	: id_(id), buffer_view_(0), lyx_view_(lyx_view), greyed_out_(true),
-	  cursor_visible_(false), cursor_timeout_(400)
+	: buffer_view_(0), lyx_view_(lyx_view), greyed_out_(true),
+	  cursor_visible_(false), cursor_timeout_(400), id_(id)
 {
 	// Start loading the pixmap as soon as possible
 	//if (lyxrc.show_banner) {

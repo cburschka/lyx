@@ -68,11 +68,11 @@ string current_layout;
 
 
 LyXView::LyXView(int id)
-	: id_(id), work_area_(0),
+	: work_area_(0),
 	  toolbars_(new Toolbars(*this)),
 	  autosave_timeout_(new Timeout(5000)),
 	  dialogs_(new Dialogs(*this)),
-	  controlcommand_(new ControlCommandBuffer(*this))
+	  controlcommand_(new ControlCommandBuffer(*this)), id_(id)
 {
 	// Start autosave timer
 	if (lyxrc.autosave) {
