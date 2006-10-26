@@ -195,9 +195,9 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 		y += par.rows()[rit].height();
 	y += par.rows()[rend].ascent();
 	x += dit.bottom().text()->cursorX(dit.bottom(), boundary && dit.depth() == 1);
-	// The following correction should not be there at all.
-	// The cursor looks much better with the -1, though.
-	--x;
+	// FIXME: The following correction should not be there at all.
+	// The cursor looks much better with the +1, though.
+	++x;
 	return Point(x, y);
 }
 
