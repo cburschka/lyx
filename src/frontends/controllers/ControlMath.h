@@ -43,9 +43,11 @@ public:
 	void dispatchCubeRoot() const;
 	/// Insert a matrix
 	void dispatchMatrix(std::string const & str) const;
-	/// Insert a delimiter
+	/// Insert a variable size delimiter
 	void dispatchDelim(std::string const & str) const;
-	/// Wwitch between display and inline
+	/// Insert a big delimiter
+	void dispatchBigDelim(std::string const & str) const;
+	/// Switch between display and inline
 	void dispatchToggleDisplay() const;
 	/** A request to the kernel to launch a dialog.
 	 *  \param name the dialog identifier.

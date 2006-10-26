@@ -534,6 +534,18 @@ string const getStringFromVector(vector<string> const & vec,
 }
 
 
+int findToken(char const * const str[], string const & search_token)
+{
+	int i = 0;
+
+	while (str[i][0] && str[i] != search_token)
+		++i;
+	if (!str[i][0])
+		i = -1;
+	return i;
+}
+
+
 #ifndef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
 #if USE_BOOST_FORMAT
 

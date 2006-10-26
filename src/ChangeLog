@@ -1,3 +1,14 @@
+2006-10-26  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* lfuns.h (enum kb_action): New lfun LFUN_MATH_BIGDELIM
+	* LyXAction.C (init): New lfun LFUN_MATH_BIGDELIM
+	* cursor.C (macroModeClose): try to intepret the current macro before
+	it is simply inserted
+	* ParagraphParameters.C (findToken): move from here to lstrings.[Ch]
+	* text3.C (dispatch): handle LFUN_MATH_BIGDELIM
+	(getStatus): ditto
+	* ToolbarBackend.C (getIcon): handle LFUN_MATH_BIGDELIM
+
 2006-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (backspacePos0): rewrite to make it simple and allow

@@ -1,3 +1,27 @@
+2006-10-26  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* math_biginset.[Ch] (name): implement
+	(isBigInsetDelim): new, test whether a given token is a valid
+	MathBigInset delimiter.
+	(infoize2): implement to show name if the cursor is to the right.
+	* math_biginset.C (size, increase): handle Big, bigg and Bigg.
+	(draw): fix deco drawing.
+	(write): don't write space before delimiter but append one if necessary
+	* math_factory.C (createMathInset): handle l->inset == "big"
+	* math_parser.C (asInput): return a token as input, stolen from tex2lyx
+	(parse1): create a MathBigInset when needed.
+	* math_nestinset.C (doDispatch): try to intepret the argument of
+	LFUN_SELFINSERT also if it is longer than one character.
+	(doDispatch): remove debug message.
+	(doDispatch): remove LFUN_MATH_DELIM test for multiple cells (now
+	in getStatus).
+	(doDispatch): handle LFUN_MATH_BIGDELIM.
+	(getStatus): Disable LFUN_MATH_DELIM and LFUN_MATH_BIGDELIM when
+	the selection spans multiple cells.
+	* math_nestinset.[Ch] (interpret): new, combine the previous math
+	atom with the new character to a MathBigInset if possible.
+	* math_support.C (deco_table): add lbrace and rbrace.
+
 2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_hullinset.C (doDispatch): changeRefsIfUnique needs a

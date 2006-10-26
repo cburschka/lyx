@@ -18,9 +18,14 @@
 
 #include "controllers/ControlMath.h"
 
+#include "gettext.h"
+
 #include <qlabel.h>
 #include <qpixmap.h>
 #include <qcheckbox.h>
+#include <qcombobox.h>
+
+#include <sstream>
 
 
 using std::string;
@@ -36,6 +41,12 @@ char const * delim[] = {
 	"uparrow", "Uparrow", "downarrow", "Downarrow",
 	"|", "Vert", "slash", "backslash", ""
 };
+
+
+char const * const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
+char const * const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
+char const * const biggui[]   = {N_("big size"), N_("Big size"),
+	N_("bigg size"), N_("Bigg size"), ""};
 
 
 string do_match(const string & str)
@@ -59,7 +70,7 @@ string do_match(const string & str)
 }
 
 
-string fix_name(const string & str)
+string fix_name(const string & str, bool big)
 {
 	if (str == "slash")
 		return "/";
@@ -67,7 +78,10 @@ string fix_name(const string & str)
 		return "\\";
 	if (str == "empty")
 		return ".";
-	return str;
+	if (!big || str == "(" || str == ")" || str == "[" || str == "]")
+		return str;
+
+	return "\\" + str;
 }
 
 } // namespace anon
@@ -89,11 +103,17 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 	leftIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
 	rightIP->add(QPixmap(toqstr(empty_xpm)), "empty", "empty");
+	delimSize->insertItem(qt_("Variable size"));
+	for (int i = 0; *biggui[i]; ++i)
+		delimSize->insertItem(qt_(biggui[i]));
+	size_ = 0;
 	// Leave these std:: qualifications alone !
 	connect(leftIP, SIGNAL(button_clicked(const std::string &)),
 		this, SLOT(ldelim_clicked(const std::string &)));
 	connect(rightIP, SIGNAL(button_clicked(const std::string &)),
 		this, SLOT(rdelim_clicked(const std::string &)));
+	connect(delimSize, SIGNAL(activated(int)),
+		this, SLOT(size_selected(int)) );
 	ldelim_clicked("(");
 	rdelim_clicked(")");
 }
@@ -101,7 +121,18 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 
 void QDelimiterDialog::insertClicked()
 {
-	form_->controller().dispatchDelim(fix_name(left_) + ' ' + fix_name(right_));
+	if (size_ == 0) {
+		form_->controller().dispatchDelim(
+			fix_name(left_, false) + ' ' +
+			fix_name(right_, false));
+	} else {
+		std::ostringstream os;
+		os << '"' << bigleft[size_ - 1] << "\" \""
+		   << fix_name(left_, true) << "\" \""
+		   << bigright[size_ - 1] << "\" \""
+		   << fix_name(right_, true) << '"';
+		form_->controller().dispatchBigDelim(os.str());
+	}
 }
 
 
@@ -135,6 +166,12 @@ void QDelimiterDialog::rdelim_clicked(const string & str)
 		left_ = do_match(right_);
 		set_label(leftPI, left_);
 	}
+}
+
+
+void QDelimiterDialog::size_selected(int index)
+{
+	size_ = index;
 }
 
 } // namespace frontend

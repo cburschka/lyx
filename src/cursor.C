@@ -39,6 +39,7 @@
 #include "mathed/math_inset.h"
 #include "mathed/math_scriptinset.h"
 #include "mathed/math_macrotable.h"
+#include "mathed/math_parser.h"
 
 #include "support/limited_stack.h"
 
@@ -857,6 +858,9 @@ bool LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
+	MathNestInset * const in = inset().asMathInset()->asNestInset();
+	if (in && in->interpret(*this, s))
+		return true;
 	plainInsert(createMathInset(name));
 	return true;
 }

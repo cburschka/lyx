@@ -40,6 +40,7 @@ following hack as starting point to write some macros:
 
 #include "math_parser.h"
 #include "math_arrayinset.h"
+#include "math_biginset.h"
 #include "math_braceinset.h"
 #include "math_charinset.h"
 #include "math_colorinset.h"
@@ -257,6 +258,8 @@ public:
 	char character() const { return char_; }
 	///
 	string asString() const { return cs_.size() ? cs_ : string(1, char_); }
+	///
+	string asInput() const { return cs_.size() ? '\\' + cs_ : string(1, char_); }
 
 private:
 	///
@@ -1316,7 +1319,19 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cs().size()) {
 			latexkeys const * l = in_word_set(t.cs());
 			if (l) {
-				if (l->inset == "font") {
+				if (l->inset == "big") {
+					skipSpaces();
+					string const delim = getToken().asInput();
+					if (MathBigInset::isBigInsetDelim(delim))
+						cell->push_back(MathAtom(
+							new MathBigInset(t.cs(), delim)));
+					else {
+						cell->push_back(createMathInset(t.cs()));
+						putback();
+					}
+				}
+
+				else if (l->inset == "font") {
 					cell->push_back(createMathInset(t.cs()));
 					parse(cell->back().nucleus()->cell(0),
 						FLAG_ITEM, asMode(mode, l->extra));

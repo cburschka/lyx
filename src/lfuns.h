@@ -363,8 +363,9 @@ enum kb_action {
 	LFUN_OUTLINE_IN,
 	LFUN_OUTLINE_OUT,
 	LFUN_TOGGLE_COMPRESSION,         // bpeng 20060427
-	// 275
-	LFUN_INSET_DISSOLVE,                 // jspitzm 20060807
+	LFUN_INSET_DISSOLVE,             // jspitzm 20060807
+	// 280
+	LFUN_MATH_BIGDELIM,
 
 	LFUN_LASTACTION                  // end of the table
 };

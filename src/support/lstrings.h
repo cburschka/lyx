@@ -176,6 +176,10 @@ std::vector<std::string> const getVectorFromString(std::string const & str,
 std::string const getStringFromVector(std::vector<std::string> const & vec,
 				 std::string const & delim = std::string(","));
 
+/// Search \p search_token in \p str and return the position if it is
+/// found, else -1. The last item in \p str must be "".
+int findToken(char const * const str[], std::string const & search_token);
+
 
 #ifdef I_AM_NOT_AFRAID_OF_HEADER_LIBRARIES
 

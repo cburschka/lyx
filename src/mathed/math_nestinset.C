@@ -13,6 +13,7 @@
 #include "math_nestinset.h"
 
 #include "math_arrayinset.h"
+#include "math_biginset.h"
 #include "math_boxinset.h"
 #include "math_braceinset.h"
 #include "math_colorinset.h"
@@ -657,7 +658,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_SELFINSERT:
 		if (cmd.argument.size() != 1) {
 			recordUndo(cur);
-			cur.insert(cmd.argument);
+			if (!interpret(cur, cmd.argument))
+				cur.insert(cmd.argument);
 			break;
 		}
 		// Don't record undo steps if we are in macro mode and
@@ -840,7 +842,6 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MATH_DELIM: {
-		lyxerr << "MathNestInset::LFUN_MATH_DELIM" << endl;
 		string ls;
 		string rs = lyx::support::split(cmd.argument, ls, ' ');
 		// Reasonable default values
@@ -849,9 +850,37 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (rs.empty())
 			rs = ')';
 		recordUndo(cur, Undo::ATOMIC);
-		// Don't do this with multi-cell selections
-		if (cur.selBegin().idx() == cur.selEnd().idx())
-			cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		break;
+	}
+
+	case LFUN_MATH_BIGDELIM: {
+		string const lname = cmd.getArg(0);
+		string const ldelim = cmd.getArg(1);
+		string const rname = cmd.getArg(2);
+		string const rdelim = cmd.getArg(3);
+		latexkeys const * l = in_word_set(lname);
+		bool const have_l = l && l->inset == "big" &&
+		                    MathBigInset::isBigInsetDelim(ldelim);
+		l = in_word_set(rname);
+		bool const have_r = l && l->inset == "big" &&
+		                    MathBigInset::isBigInsetDelim(rdelim);
+		// We mimic LFUN_MATH_DELIM in case we have an empty left
+		// or right delimiter.
+		if (have_l || have_r) {
+			recordUndo(cur, Undo::ATOMIC);
+			string const selection = grabAndEraseSelection(cur);
+			selClearOrDel(cur);
+			if (have_l)
+				cur.insert(MathAtom(new MathBigInset(lname,
+								ldelim)));
+			cur.niceInsert(selection);
+			if (have_r)
+				cur.insert(MathAtom(new MathBigInset(rname,
+								rdelim)));
+		}
+		// Don't call cur.undispatched() if we did nothing, this would
+		// lead to infinite recursion via LyXText::dispatch().
 		break;
 	}
 
@@ -909,7 +938,7 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
+bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
@@ -985,6 +1014,13 @@ bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 	case LFUN_INSERT_MATRIX:
 		flag.enabled(currentMode() == MATH_MODE);
 		break;
+
+	case LFUN_MATH_DELIM:
+	case LFUN_MATH_BIGDELIM:
+		// Don't do this with multi-cell selections
+		flag.enabled(cur.selBegin().idx() == cur.selEnd().idx());
+		break;
+
 	default:
 		ret = false;
 		break;
@@ -1138,6 +1174,36 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 			return true;
 		}
 
+		// One character big delimiters. The others are handled in
+		// the other interpret() method.
+		latexkeys const * l = in_word_set(name.substr(1));
+		if (name[0] == '\\' && l && l->inset == "big") {
+			string delim;
+			switch (c) {
+			case '{':
+				delim = "\\{";
+				break;
+			case '}':
+				delim = "\\}";
+				break;
+			default:
+				delim = string(1, c);
+				break;
+			}
+			if (MathBigInset::isBigInsetDelim(delim)) {
+				// name + delim ared a valid MathBigInset.
+				// We can't use cur.macroModeClose() because
+				// it does not handle delim.
+				MathUnknownInset * p = cur.activeMacro();
+				p->finalize();
+				--cur.pos();
+				cur.cell().erase(cur.pos());
+				cur.plainInsert(MathAtom(
+					new MathBigInset(name.substr(1), delim)));
+				return true;
+			}
+		}
+
 		// leave macro mode and try again if necessary
 		cur.macroModeClose();
 		if (c == '{')
@@ -1214,8 +1280,8 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 		}
 	}
 
-	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' || c == '%'
-      || c == '_' || c == '^') {
+	if (c == '{' || c == '}' || c == '&' || c == '$' || c == '#' ||
+	    c == '%' || c == '_' || c == '^') {
 		cur.niceInsert(createMathInset(string(1, c)));
 		return true;
 	}
@@ -1229,6 +1295,29 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	cur.insert(c);
 	cur.autocorrect() = true;
 	return true;
+}
+
+
+bool MathNestInset::interpret(LCursor & cur, string const & str)
+{
+	// Create a MathBigInset from cur.cell()[cur.pos() - 1] and t if
+	// possible
+	if (!cur.empty() && cur.pos() > 0 &&
+	    cur.cell()[cur.pos() - 1]->asUnknownInset()) {
+		if (MathBigInset::isBigInsetDelim(str)) {
+			string prev = asString(cur.cell()[cur.pos() - 1]);
+			if (prev[0] == '\\') {
+				prev = prev.substr(1);
+				latexkeys const * l = in_word_set(prev);
+				if (l && l->inset == "big") {
+					cur.cell()[cur.pos() - 1] =
+						MathAtom(new MathBigInset(prev, str));
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 

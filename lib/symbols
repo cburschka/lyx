@@ -41,6 +41,28 @@ dotso             dots        none
 ldots             dots        none
 vdots             dots        none
 
+# big delimiters
+bigl              big         none
+bigm              big         none
+bigr              big         none
+Bigl              big         none
+Bigm              big         none
+Bigr              big         none
+biggl             big         none
+biggm             big         none
+biggr             big         none
+Biggl             big         none
+Biggm             big         none
+Biggr             big         none
+# The following are not standard LaTeX, but defined in the lucida font
+# packages. No 'm' versions!
+# See lucidabr.dtx for a possible implementation if you want to use these
+# with other fonts.
+bigggl            big         none
+bigggr            big         none
+Bigggl            big         none
+Bigggr            big         none
+
 # font changes
 # name           "font"       math/text family  series  shape  color
 # mathnormal should stay the first

@@ -283,6 +283,8 @@ named_deco_struct deco_table[] = {
 	{")",              parenth,    2 },
 	{"{",              brace,      0 },
 	{"}",              brace,      2 },
+	{"lbrace",         brace,      0 },
+	{"rbrace",         brace,      2 },
 	{"[",              brack,      0 },
 	{"]",              brack,      2 },
 	{"|",              vert,       0 },

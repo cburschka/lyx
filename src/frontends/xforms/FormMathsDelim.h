@@ -40,6 +40,8 @@ private:
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	///
 	virtual void update();
+	/// size of delimiters
+	int size_;
 };
 
 } // namespace frontend

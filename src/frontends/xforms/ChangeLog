@@ -1,3 +1,11 @@
+2006-10-26  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* forms/form_maths_delim.fd: Add combobox for selecting delimiter size.
+	* FormMathsDelim.h: Add private variable to store delimiter size.
+	* FormMathsDelim.C: Correct entry in delim_rversion[].
+	(fix_name): new, return correct name for fixed size delimiter.
+	(build, apply, update): allow for fixed size delimiters.
+
 2006-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* FormErrorList.C (update): do not call updateContents if the

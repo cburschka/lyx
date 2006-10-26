@@ -212,6 +212,7 @@ void LyXAction::init()
 		{ LFUN_MARK_ON, "mark-on", ReadOnly },
 		{ LFUN_SETMARK, "mark-toggle", ReadOnly },
 		{ LFUN_MATH_DELIM, "math-delim", Noop },
+		{ LFUN_MATH_BIGDELIM, "math-bigdelim", Noop },
 		{ LFUN_MATH_DISPLAY, "math-display", Noop },
 		{ LFUN_INSERT_MATH, "math-insert", Noop },
 		{ LFUN_SUBSCRIPT, "math-subscript", Noop },

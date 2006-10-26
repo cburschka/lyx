@@ -278,6 +278,10 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathAMSArrayInset(s));
 		if (inset == "split")
 			return MathAtom(new MathSplitInset(s));
+		if (inset == "big")
+			// we can't create a MathBigInset, since the argument
+			// is missing.
+			return MathAtom(new MathUnknownInset(s));
 		return MathAtom(new MathSymbolInset(l));
 	}
 

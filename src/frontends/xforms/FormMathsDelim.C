@@ -18,13 +18,16 @@
 #include "ControlMath.h"
 
 #include "bmtable.h"
+#include "xforms_helpers.h"
 #include "xformsBC.h"
 
 #include "controllers/ButtonController.h"
 
 #include <sstream>
+#include <string>
 
 using std::ostringstream;
+using std::string;
 
 #include "delim.xbm"
 #include "delim0.xpm"
@@ -37,7 +40,7 @@ namespace {
 
 int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
-	3,13,15,15,16,17,19,19,20,21,22
+	13,13,15,15,16,17,19,19,20,21,22
 };
 int const delim_size =
 	sizeof(delim_rversion) / sizeof(delim_rversion[0]);
@@ -49,6 +52,20 @@ char const * delim_values[] = {
 	"langle",  "rangle", "|", "Vert", ".", 0
 };
 
+
+string fix_name(string const & str)
+{
+	if (str == "(" || str == ")" || str == "[" || str == "]" ||
+			  str == "/" || str == "|" || str == ".")
+		return str;
+
+	return "\\" + str;
+}
+
+
+char const * const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
+char const * const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
+char const * const biggui[]   = {N_("big"), N_("Big"), N_("bigg"), N_("Bigg"), ""};
 
 } // namespace anon
 
@@ -63,6 +80,11 @@ FormMathsDelim::FormMathsDelim(Dialog & parent)
 void FormMathsDelim::build()
 {
 	dialog_.reset(build_maths_delim(this));
+
+	size_ = 0;
+	fl_addto_choice(dialog_->choice_size, _(N_("Variable")).c_str());
+	for (int i = 0; *biggui[i]; ++i)
+		fl_addto_choice(dialog_->choice_size, _(biggui[i]).c_str());
 
 	fl_set_button(dialog_->radio_left, 1);
 	// Initialize button_pix to "()" as found in images/delim0.xpm:
@@ -91,15 +113,26 @@ void FormMathsDelim::apply()
 {
 	int const left  = int(dialog_->radio_left->u_ldata);
 	int const right = int(dialog_->radio_right->u_ldata);
+	size_ = fl_get_choice(dialog_->choice_size) - 1;
 
 	ostringstream os;
-	os << delim_values[left] << ' ' << delim_values[right];
-	controller().dispatchDelim(os.str());
+	if (size_ == 0) {
+		os << delim_values[left] << ' ' << delim_values[right];
+		controller().dispatchDelim(os.str());
+	} else {
+		os << '"' << bigleft[size_ - 1] << "\" \""
+		   << fix_name(delim_values[left]) << "\" \""
+		   << bigright[size_ - 1] << "\" \""
+		   << fix_name(delim_values[right]) << '"';
+		controller().dispatchBigDelim(os.str());
+	}
 }
 
 
 void FormMathsDelim::update()
 {
+	fl_set_choice(dialog_->choice_size, size_ + 1);
+	setEnabled(dialog_->choice_size, true);
 	bc().valid();
 }
 

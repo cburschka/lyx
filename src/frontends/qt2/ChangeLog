@@ -1,3 +1,10 @@
+2006-10-26  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* QDelimiterDialog.[Ch] (fix_name, QDelimiterDialog, insertClicked,
+	size_selected): Allow for fixed size delimiters.
+	* ui/QDelimiterDialogBase.ui: Added a combobox for selecting
+	delimiter size.
+
 2006-10-16  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QDocumentDialog.C (updateNumbering): don't include headings
