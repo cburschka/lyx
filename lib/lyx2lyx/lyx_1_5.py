@@ -372,8 +372,8 @@ def convert_commandparams(document):
         state = "WS"
         # Used to handle things like \command[foo[bar]]{foo{bar}}
         nestdepth = 0
-        for j in range(len(command)):
-            c = command[j]
+        b = 0
+        for c in command:
             if ((state == "CMDNAME" and c == ' ') or
                 (state == "CMDNAME" and c == '[') or
                 (state == "CMDNAME" and c == '{')):
@@ -398,10 +398,6 @@ def convert_commandparams(document):
             elif state == "CONTENT":
                     argument += c
             elif state == "WS":
-                if j > 0:
-                    b = command[j-1]
-                else:
-                    b = 0
                 if c == '\\':
                     state = "CMDNAME"
                 elif c == '[' and b != ']':
@@ -413,6 +409,7 @@ def convert_commandparams(document):
                 elif c == '{':
                     state = "CONTENT"
                     nestdepth = 0 # Just to be sure
+            b = c
 
         # Now we have parsed the command, output the parameters
         lines = ["\\begin_inset LatexCommand %s" % name]
