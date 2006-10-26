@@ -84,7 +84,9 @@ if(MSVC)
 	endif(MSVC_IDE)
 
  	ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE)	
-
+ 	
+ 	# disable checked iterators for msvc release builds to get maximum speed
+	set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
 else(MSVC)
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 endif(MSVC)
