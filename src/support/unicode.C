@@ -20,6 +20,7 @@
 
 #include <cerrno>
 #include <iomanip>
+#include <map>
 
 
 namespace lyx {
@@ -225,5 +226,26 @@ ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls)
 				   ucs4str, ls);
 }
 
+
+std::vector<lyx::char_type>
+eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding)
+{
+	static std::map<std::string, iconv_t> cd;
+	if (cd.find(encoding) == cd.end())
+		cd[encoding] = (iconv_t)(-1);
+	return iconv_convert<char_type>(&cd[encoding], ucs4_codeset,
+	                                encoding.c_str(), s, ls);
+}
+
+
+std::vector<char>
+ucs4_to_eightbit(lyx::char_type const * ucs4str, size_t ls, std::string const & encoding)
+{
+	static std::map<std::string, iconv_t> cd;
+	if (cd.find(encoding) == cd.end())
+		cd[encoding] = (iconv_t)(-1);
+	return iconv_convert<char>(&cd[encoding], encoding.c_str(),
+	                           ucs4_codeset, ucs4str, ls);
+}
 
 } // namespace lyx

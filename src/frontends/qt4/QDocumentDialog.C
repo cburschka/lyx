@@ -58,6 +58,10 @@ namespace frontend {
 
 namespace {
 
+// FIXME: This list is incomplete. It should not be hardcoded but come from
+// the available encodings in src/encodings.C
+// FIXME: "default" is no valid encoding anymore. Nevertheless it occurs also
+// in other source files.
 char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 	"latin3", "latin4", "latin5", "latin9",
 	"koi8-r", "koi8-u", "cp866", "cp1251",
@@ -938,15 +942,20 @@ void QDocumentDialog::update(BufferParams const & params)
 
 	if (params.inputenc != "auto") {
 		langModule->defaultencodingCB->setChecked(false);
+		// FIXME: "default" is no valid encoding anymore
 		if (params.inputenc == "default") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
 			int i = 0;
 			while (encodings[i]) {
-				if (encodings[i] == params.inputenc)
+				if (encodings[i] == params.inputenc) {
 					langModule->encodingCO->setCurrentIndex(i);
+					break;
+				}
 				++i;
 			}
+			// FIXME: possible data loss because of encodings is
+			// incomplete
 		}
 	}
 

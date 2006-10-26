@@ -19,6 +19,12 @@
 
 namespace lyx {
 
+class iconv_codecvt_facet_exception : public std::exception {
+public:
+	virtual ~iconv_codecvt_facet_exception() throw() {}
+	virtual const char * what() const throw();
+};
+
 /// Base class for UCS4 input streams
 typedef std::basic_istream<char_type> idocstream;
 
@@ -45,14 +51,15 @@ public:
 	~idocfstream() {}
 };
 
-/// File stream for writing UTF8-encoded files with automatic conversion from
-/// UCS4.
+/// File stream for writing files in 8bit encoding \p encoding with automatic
+/// conversion from UCS4.
 class odocfstream : public std::basic_ofstream<char_type> {
 	typedef std::basic_ofstream<char_type> base;
 public:
-	odocfstream();
+	odocfstream(std::string const & encoding = "UTF-8");
 	explicit odocfstream(const char* s,
-		std::ios_base::openmode mode = std::ios_base::out|std::ios_base::trunc);
+		std::ios_base::openmode mode = std::ios_base::out|std::ios_base::trunc,
+		std::string const & encoding = "UTF-8");
 	~odocfstream() {}
 };
 

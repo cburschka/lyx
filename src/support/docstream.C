@@ -22,6 +22,8 @@
 using lyx::ucs4_codeset;
 using lyx::ucs2_codeset;
 
+using std::string;
+
 
 namespace {
 
@@ -31,51 +33,42 @@ char const * utf8_codeset = "UTF-8";
 // lyxerr in the future.
 
 
-class utf8_codecvt_facet_exception : public std::exception {
-public:
-	virtual ~utf8_codecvt_facet_exception() throw() {}
-	virtual const char* what() const throw()
-	{
-		return "iconv problem in utf8_codecvt_facet initialization";
-	}
-};
-
-
 /// codecvt facet for conversion of UCS4 (internal representation) to UTF8
 /// (external representation) or vice versa
-class utf8_codecvt_facet : public std::codecvt<lyx::char_type, char, std::mbstate_t>
+class iconv_codecvt_facet : public std::codecvt<lyx::char_type, char, std::mbstate_t>
 {
 	typedef std::codecvt<lyx::char_type, char, std::mbstate_t> base;
 public:
 	/// Constructor. You have to specify with \p inout whether you want
 	/// to use this facet only for input, only for output or for both.
-	explicit utf8_codecvt_facet(std::ios_base::openmode inout = std::ios_base::in | std::ios_base::out,
+	explicit iconv_codecvt_facet(string const & encoding = "UTF-8",
+			std::ios_base::openmode inout = std::ios_base::in | std::ios_base::out,
 			size_t refs = 0)
-		: base(refs)
+		: base(refs), utf8_(encoding == "UTF-8")
 	{
 		if (inout & std::ios_base::in) {
-			in_cd_ = iconv_open(ucs4_codeset, utf8_codeset);
+			in_cd_ = iconv_open(ucs4_codeset, encoding.c_str());
 			if (in_cd_ == (iconv_t)(-1)) {
 				fprintf(stderr, "Error %d returned from iconv_open(in_cd_): %s\n",
 				        errno, strerror(errno));
 				fflush(stderr);
-				throw utf8_codecvt_facet_exception();
+				throw lyx::iconv_codecvt_facet_exception();
 			}
 		} else
 			in_cd_ = (iconv_t)(-1);
 		if (inout & std::ios_base::out) {
-			out_cd_ = iconv_open(utf8_codeset, ucs4_codeset);
+			out_cd_ = iconv_open(encoding.c_str(), ucs4_codeset);
 			if (out_cd_ == (iconv_t)(-1)) {
 				fprintf(stderr, "Error %d returned from iconv_open(out_cd_): %s\n",
 				        errno, strerror(errno));
 				fflush(stderr);
-				throw utf8_codecvt_facet_exception();
+				throw lyx::iconv_codecvt_facet_exception();
 			}
 		} else
 			out_cd_ = (iconv_t)(-1);
 	}
 protected:
-	virtual ~utf8_codecvt_facet()
+	virtual ~iconv_codecvt_facet()
 	{
 		if (in_cd_ != (iconv_t)(-1))
 			if (iconv_close(in_cd_) == -1) {
@@ -155,8 +148,10 @@ protected:
 	}
 	virtual int do_max_length() const throw()
 	{
-		// UTF8 uses at most 6 bytes to represent one code point
-		return 6;
+		// UTF8 uses at most 6 bytes to represent one UCS4 code point.
+		// All other encodings encode one UCS4 code point in one byte
+		// (and can therefore only encode a subset of UCS4)
+		return utf8_ ? 6 : 1;
 	}
 private:
 	/// Do the actual conversion. The interface is equivalent to that of
@@ -186,6 +181,8 @@ private:
 	}
 	iconv_t in_cd_;
 	iconv_t out_cd_;
+	/// Is the narrow encoding UTF8?
+	bool utf8_;
 };
 
 } // namespace anon
@@ -194,10 +191,16 @@ private:
 namespace lyx {
 
 
+const char * iconv_codecvt_facet_exception::what() const throw()
+{
+	return "iconv problem in iconv_codecvt_facet initialization";
+}
+
+
 idocfstream::idocfstream() : base()
 {
 	std::locale global;
-	std::locale locale(global, new utf8_codecvt_facet(in));
+	std::locale locale(global, new iconv_codecvt_facet(utf8_codeset, in));
 	imbue(locale);
 }
 
@@ -207,26 +210,27 @@ idocfstream::idocfstream(const char* s, std::ios_base::openmode mode)
 {
 	// We must imbue the stream before openening the file
 	std::locale global;
-	std::locale locale(global, new utf8_codecvt_facet(in));
+	std::locale locale(global, new iconv_codecvt_facet(utf8_codeset, in));
 	imbue(locale);
 	open(s, mode);
 }
 
 
-odocfstream::odocfstream() : base()
+odocfstream::odocfstream(string const & encoding) : base()
 {
 	std::locale global;
-	std::locale locale(global, new utf8_codecvt_facet(out));
+	std::locale locale(global, new iconv_codecvt_facet(encoding, out));
 	imbue(locale);
 }
 
-	
-odocfstream::odocfstream(const char* s, std::ios_base::openmode mode)
+
+odocfstream::odocfstream(const char* s, std::ios_base::openmode mode,
+                         string const & encoding)
 	: base()
 {
 	// We must imbue the stream before openening the file
 	std::locale global;
-	std::locale locale(global, new utf8_codecvt_facet(out));
+	std::locale locale(global, new iconv_codecvt_facet(encoding, out));
 	imbue(locale);
 	open(s, mode);
 }
@@ -236,7 +240,7 @@ odocfstream::odocfstream(const char* s, std::ios_base::openmode mode)
 #if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)
 // We get undefined references to these virtual methods. This looks like
 // a bug in gcc. The implementation here does not do anything useful, since
-// it is overriden in utf8_codecvt_facet.
+// it is overriden in iconv_codecvt_facet.
 namespace std {
 template<> codecvt<lyx::char_type, char, mbstate_t>::result
 codecvt<lyx::char_type, char, mbstate_t>::do_out(mbstate_t &, const lyx::char_type *, const lyx::char_type *, const lyx::char_type *&,

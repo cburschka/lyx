@@ -812,26 +812,44 @@ bool Buffer::do_writeFile(ostream & ofs) const
 }
 
 
-void Buffer::makeLaTeXFile(string const & fname,
+bool Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
 			   OutputParams const & runparams,
 			   bool output_preamble, bool output_body)
 {
-	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
+	string const encoding = (params().inputenc == "auto") ?
+		params().language->encoding()->iconvName() :
+		encodings.getEncoding(params().inputenc)->iconvName();
+	lyxerr[Debug::LATEX] << "makeLaTeXFile encoding: "
+		<< encoding << "..." << endl;
 
-	// FIXME UNICODE
-	// This creates an utf8 encoded file, but the inputenc commands
-	// specify other encodings
-	odocfstream ofs;
+	odocfstream ofs(encoding);
 	if (!openFileWrite(ofs, fname))
-		return;
+		return false;
 
-	writeLaTeXSource(ofs, original_path,
+	try {
+		writeLaTeXSource(ofs, original_path,
 		      runparams, output_preamble, output_body);
+	}
+	catch (iconv_codecvt_facet_exception &) {
+		Alert::error(_("Encoding error"),
+			_("Some characters of your document are not "
+			  "representable in the chosen encoding.\n"
+			  "Changing the document encoding to utf8 could help."));
+		return false;
+	}
 
 	ofs.close();
-	if (ofs.fail())
+	if (ofs.fail()) {
 		lyxerr << "File '" << fname << "' was not closed properly." << endl;
+		Alert::error(_("Error closing file"),
+			_("The output file could not be closed properly.\n"
+			  " Probably some characters of your document are not "
+			  "representable in the chosen encoding.\n"
+			  "Changing the document encoding to utf8 could help."));
+		return false;
+	}
+	return true;
 }
 
 

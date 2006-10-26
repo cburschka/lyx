@@ -29,6 +29,7 @@
 #include "insets/insetoptarg.h"
 
 #include "support/lstrings.h"
+#include "support/unicode.h"
 
 
 namespace lyx {
@@ -236,7 +237,7 @@ ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::const_iterator pit,
-	  odocstream & os, TexRow & texrow,
+	  odocstream & ucs4, TexRow & texrow,
 	  OutputParams const & runparams_in,
 	  string const & everypar)
 {
@@ -274,34 +275,40 @@ TeXOnePar(Buffer const & buf,
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel())
 		{
-			os << from_ascii(subst(lyxrc.language_command_end,
+			ucs4 << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
 				previous_language->babel()))
-			   << endl;
+			     << endl;
 			texrow.newline();
 		}
 
 		if (lyxrc.language_command_end.empty() ||
 		    language->babel() != doc_language->babel())
 		{
-			os << from_ascii(subst(
+			ucs4 << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
 				language->babel()))
-			   << endl;
+			     << endl;
 			texrow.newline();
 		}
 	}
 
-	if (false) {
-		if (bparams.inputenc == "auto" &&
-			language->encoding() != previous_language->encoding()) {
-			os << "\\inputencoding{"
-			   << from_ascii(language->encoding()->latexName())
-			   << "}\n";
-			texrow.newline();
-		}
+	if (bparams.inputenc == "auto" &&
+	    language->encoding() != previous_language->encoding()) {
+		ucs4 << "\\inputencoding{"
+		     << from_ascii(language->encoding()->latexName())
+		     << "}\n";
+		texrow.newline();
 	}
+	// We need to output the paragraph to a temporary stream if we
+	// need to change the encoding. Don't do this if the result does
+	// not go to a file but to the builtin source viewer.
+	odocstringstream par_stream;
+	bool const change_encoding = !runparams_in.dryrun &&
+			bparams.inputenc == "auto" &&
+			language->encoding() != doc_language->encoding();
+	odocstream & os(change_encoding ? par_stream : ucs4);
 
 	// In an an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
@@ -474,6 +481,33 @@ TeXOnePar(Buffer const & buf,
 	if (boost::next(pit) != paragraphs.end() &&
 	    lyxerr.debugging(Debug::LATEX))
 		lyxerr << "TeXOnePar...done " << &*boost::next(pit) << endl;
+
+	if (change_encoding) {
+		lyxerr[Debug::LATEX] << "Converting paragraph to encoding "
+			<< language->encoding()->iconvName() << endl;
+		docstring const par = par_stream.str();
+		// Convert the paragraph to the 8bit encoding that we need to
+		// output.
+		std::vector<char> const encoded = lyx::ucs4_to_eightbit(par.c_str(),
+			par.size(), language->encoding()->iconvName());
+		// Interpret this as if it was in the 8 bit encoding of the
+		// document language and convert it back to UCS4. That means
+		// that faked does not contain pure UCS4 anymore, but what
+		// will be written to the output file will be correct, because
+		// the real output stream will do a UCS4 -> document language
+		// encoding conversion.
+		// This is of course a hack, but not a bigger one than mixing
+		// two encodings in one file.
+		// FIXME: Catch iconv conversion errors and display an error
+		// dialog. 
+		std::vector<char_type> const faked = lyx::eightbit_to_ucs4(encoded.data(),
+			encoded.size(), doc_language->encoding()->iconvName());
+		std::vector<char_type>::const_iterator const end = faked.end();
+		std::vector<char_type>::const_iterator it = faked.begin();
+		for (; it != end; ++it)
+			ucs4.put(*it);
+	}
+
 	return ++pit;
 }
 

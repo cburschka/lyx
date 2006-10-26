@@ -203,7 +203,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;
-		buffer->makeLaTeXFile(filename, string(), runparams);
+		if (!buffer->makeLaTeXFile(filename, string(), runparams))
+			return false;
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(buffer->filePath(), ' ')) {
 		Alert::error(_("File name error"),
@@ -211,7 +212,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		return false;
 	} else {
 		runparams.nice = false;
-		buffer->makeLaTeXFile(filename, buffer->filePath(), runparams);
+		if (!buffer->makeLaTeXFile(filename, buffer->filePath(), runparams))
+			return false;
 	}
 
 	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);

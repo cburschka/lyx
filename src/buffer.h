@@ -146,7 +146,7 @@ public:
 	bool writeFile(std::string const &) const;
 
 	/// Just a wrapper for the method below, first creating the ofstream.
-	void makeLaTeXFile(std::string const & filename,
+	bool makeLaTeXFile(std::string const & filename,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,

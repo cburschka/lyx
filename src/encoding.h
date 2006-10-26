@@ -26,25 +26,24 @@ public:
 	///
 	Encoding() {}
 	///
-	Encoding(std::string const & n, std::string const & l, char_type const * e)
-		: Name_(n), LatexName_(l)
+	Encoding(std::string const & n, std::string const & l,
+	         std::string const & i)
+		: Name_(n), LatexName_(l), iconvName_(i)
 	{
-		for (int i = 0; i < 256; ++i)
-			encoding_table[i] = e[i];
 	}
 	///
 	std::string const & name() const { return Name_; }
 	///
 	std::string const & latexName() const { return LatexName_; }
 	///
-	char_type ucs(char_type c) const;
+	std::string const & iconvName() const { return iconvName_; }
 private:
 	///
 	std::string Name_;
 	///
 	std::string LatexName_;
 	///
-	char_type encoding_table[256];
+	std::string iconvName_;
 };
 
 extern Encoding symbol_encoding;
