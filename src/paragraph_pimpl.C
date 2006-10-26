@@ -187,6 +187,10 @@ void Paragraph::Pimpl::rejectChanges(pos_type start, pos_type end)
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
+				// also reject changes inside of insets
+				if (pos < size() && owner_->isInset(pos)) {
+					owner_->getInset(pos)->rejectChanges();
+				}
 				break;
 
 			case Change::INSERTED:
@@ -201,12 +205,11 @@ void Paragraph::Pimpl::rejectChanges(pos_type start, pos_type end)
 
 			case Change::DELETED:
 				changes_.set(Change(Change::UNCHANGED), pos);
-				break;
-		}
 
-		// also reject changes in nested insets
-		if (pos < size() && owner_->isInset(pos)) {
-			owner_->getInset(pos)->rejectChanges();
+				// Do NOT reject changes within a deleted inset!
+				// There may be insertions of a co-author inside of it!
+
+				break;
 		}
 	}
 }
