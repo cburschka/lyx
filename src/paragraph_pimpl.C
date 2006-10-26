@@ -98,14 +98,25 @@ bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 
 void Paragraph::Pimpl::setChange(Change const & change)
 {
-	// FIXME: change tracking (MG)
-	// how about end-of-line? size()+1?
-	changes_.set(change, 0, size());
+	// beware of the imaginary end-of-par character!
+	changes_.set(change, 0, size() + 1);
 
-	if (change.type == Change::UNCHANGED) { // only for UNCHANGED ???
-		for (pos_type i = 0; i < size(); ++i) {
-			if (owner_->isInset(i)) {
-				owner_->getInset(i)->setChange(change);
+	/*
+	 * Propagate the change recursively - but not in case of DELETED!
+	 *
+	 * Imagine that your co-author makes changes in an existing inset. He
+	 * sends your document to you and you come to the conclusion that the
+	 * inset should go completely. If you erase it, LyX must not delete all
+	 * text within the inset. Otherwise, the change tracked insertions of
+	 * your co-author get lost and there is no way to restore them later.
+	 *
+	 * Conclusion: An inset's content should remain untouched if you delete it
+	 */
+
+	if (change.type != Change::DELETED) {
+		for (pos_type pos = 0; pos < size(); ++pos) {
+			if (owner_->isInset(pos)) {
+				owner_->getInset(pos)->setChange(change);
 			}
 		}
 	}
@@ -118,9 +129,10 @@ void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 
 	changes_.set(change, pos);
 
-	// FIXME: change tracking (MG)
-	// do we have to set the change recursively?
-	if (pos < size() && owner_->isInset(pos)) {
+	// see comment in setChange(Change const &) above
+
+	if (change.type != Change::DELETED &&
+	    pos < size() && owner_->isInset(pos)) {
 		owner_->getInset(pos)->setChange(change);
 	}
 }
