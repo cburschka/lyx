@@ -500,7 +500,7 @@ TeXOnePar(Buffer const & buf,
 		// two encodings in one file.
 		// FIXME: Catch iconv conversion errors and display an error
 		// dialog. 
-		std::vector<char_type> const faked = lyx::eightbit_to_ucs4(encoded.data(),
+		std::vector<char_type> const faked = lyx::eightbit_to_ucs4(&(encoded[0]),
 			encoded.size(), doc_language->encoding()->iconvName());
 		std::vector<char_type>::const_iterator const end = faked.end();
 		std::vector<char_type>::const_iterator it = faked.begin();
