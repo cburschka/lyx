@@ -2158,8 +2158,7 @@ int LyXTabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 
 		ret += TeXCellPostamble(os, cell);
 		if (!isLastCellInRow(cell)) { // not last cell in row
-			os << "&\n";
-			++ret;
+			os << " & ";
 		}
 		++cell;
 	}
