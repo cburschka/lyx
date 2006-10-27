@@ -46,6 +46,7 @@
 #include <QPixmap>
 #include <QStatusBar>
 #include <QToolBar>
+#include <QDesktopWidget>
 
 #include <boost/bind.hpp>
 
