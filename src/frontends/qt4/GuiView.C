@@ -154,6 +154,15 @@ void GuiView::setGeometry(unsigned int width,
 	// only true when the -geometry option was NOT used
 	if (width != 0 && height != 0) {
 		if (posx != -1 && posy != -1) {
+			// if there are ever startup positioning problems 
+			// on a virtual desktop then check the 6 lines below
+			// http://doc.trolltech.com/4.2/qdesktopwidget.html 
+			QDesktopWidget& dw = *qApp->desktop();
+			QRect desk = dw.availableGeometry(dw.primaryScreen());
+			if (posx >= desk.width())
+				   posx = 0.1 * desk.width();
+			if (posy >= desk.height())
+				   posy = 0.1 * desk.height();
 #ifdef Q_WS_WIN
 			// FIXME: use only setGeoemtry when Trolltech has
 			// fixed the qt4/X11 bug
