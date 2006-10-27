@@ -14,6 +14,8 @@ also included.
 
 !include "MUI.nsh"
 !include "LogicLib.nsh"
+!include "FileFunc.nsh"
+!insertmacro GetParameters
 
 !include "..\packaging\installer\settings.nsh" ;Version info from installer
 
@@ -50,6 +52,7 @@ ShowInstDetails show
 ;--------------------------------
 ;Variables
 
+Var Parameters
 Var LyXLanguage
 Var Geometry
 Var ReturnValue
@@ -87,6 +90,10 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 Section -Prepare
 
   HideWindow
+
+  ;Command line parameters
+  Call GetParameters
+  Pop $Parameters
 
   ;LyX Language
   !insertmacro GetLyXSetting "Language" $LyXLanguage
@@ -157,7 +164,7 @@ Section -Launch
   
   ;Start LyX and capture the command line output
   
-  Push '"$EXEDIR\lyxc.exe" -geometry $Geometry'
+  Push '"$EXEDIR\lyxc.exe" -geometry $Geometry $Parameters'
   CallInstDLL "$EXEDIR\nsExec.dll" ExecToLog
   Pop $ReturnValue ;Return value
   
