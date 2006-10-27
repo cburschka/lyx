@@ -14,6 +14,7 @@
 #include "QLPainter.h"
 
 #include "GuiApplication.h"
+#include "GuiFontMetrics.h"
 #include "GuiWorkArea.h"
 #include "QLImage.h"
 
@@ -24,7 +25,6 @@
 #include "language.h"
 #include "LColor.h"
 
-#include "frontends/FontMetrics.h"
 
 #include "support/unicode.h"
 
@@ -245,7 +245,7 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 		// Here we use the font width cache instead of
 		//   textwidth = fontMetrics().width(str);
 		// because the above is awfully expensive on MacOSX
-		textwidth = guiApp->guiFontLoader().metrics(f).width(s, ls);
+		textwidth = fi.metrics->width(str);
 	} else {
 		textwidth = smallCapsText(x, y, str, f);
 	}

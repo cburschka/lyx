@@ -134,6 +134,24 @@ int GuiFontMetrics::width(char_type const * s, size_t ls) const
 }
 
 
+int GuiFontMetrics::width(QString const & ucs2) const
+{
+	int const ls = ucs2.size();
+	if (ls == 1 && !smallcaps_shape_) {
+		return width(ucs2[0].unicode());
+	}
+
+	if (smallcaps_shape_)
+		return smallcapsWidth(ucs2);
+
+	int w = 0;
+	for (int i = 0; i < ls; ++i)
+		w += width(ucs2[i].unicode());
+
+	return w;
+}
+
+
 int GuiFontMetrics::signedWidth(docstring const & s) const
 {
 	if (s[0] == '-')

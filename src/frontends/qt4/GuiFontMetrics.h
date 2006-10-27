@@ -53,6 +53,8 @@ public:
 		int & width,
 		int & ascent,
 		int & descent) const;
+	///
+	int width(QString const & str) const;
 
 private:
 	int smallcapsWidth(QString const & s) const;
