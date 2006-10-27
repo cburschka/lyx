@@ -33,6 +33,8 @@ using std::getline;
 using std::string;
 using std::ifstream;
 using std::ofstream;
+using std::istream;
+using std::ostream;
 using std::endl;
 using std::istringstream;
 using std::copy;
@@ -46,32 +48,57 @@ string const sec_lastfilepos = "[cursor positions]";
 string const sec_lastopened = "[last opened files]";
 string const sec_bookmarks = "[bookmarks]";
 string const sec_session = "[session info]";
-int const id_lastfiles = 0;
-int const id_lastfilepos = 1;
-int const id_lastopened = 2;
-int const id_bookmarks = 3;
-int const id_session = 4;
 
 } // anon namespace
 
 
 namespace lyx {
 
-Session::Session(unsigned int num) :
+LastFilesSection::LastFilesSection(unsigned int num) :
 	default_num_last_files(4),
-	absolute_max_last_files(100),
-	num_lastfilepos(100)
+	absolute_max_last_files(100)
 {
 	setNumberOfLastFiles(num);
-	// locate the session file
-	// note that the session file name 'session' is hard-coded
-	session_file = addName(package().user_support(), "session");
-	//
-	readFile();
 }
 
 
-void Session::setNumberOfLastFiles(unsigned int no)
+void LastFilesSection::read(istream & is)
+{
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+		// read lastfiles
+		if (!fs::exists(tmp) || lastfiles.size() >= num_lastfiles)
+			continue;
+		lastfiles.push_back(tmp);
+	} while (is.good());
+}
+
+
+void LastFilesSection::write(ostream & os) const
+{
+	os << '\n' << sec_lastfiles << '\n';
+	copy(lastfiles.begin(), lastfiles.end(),
+	     ostream_iterator<string>(os, "\n"));
+}
+
+
+void LastFilesSection::add(string const & file)
+{
+	// If file already exist, delete it and reinsert at front.
+	LastFiles::iterator it = find(lastfiles.begin(), lastfiles.end(), file);
+	if (it != lastfiles.end())
+		lastfiles.erase(it);
+	lastfiles.push_front(file);
+	if (lastfiles.size() > num_lastfiles)
+		lastfiles.pop_back();
+}
+
+
+void LastFilesSection::setNumberOfLastFiles(unsigned int no)
 {
 	if (0 < no && no <= absolute_max_last_files)
 		num_lastfiles = no;
@@ -84,152 +111,86 @@ void Session::setNumberOfLastFiles(unsigned int no)
 }
 
 
-void Session::readFile()
+void LastOpenedSection::read(istream & is)
 {
-	// we will not complain if we can't find session_file nor will
-	// we issue a warning. (Lgb)
-	ifstream ifs(session_file.c_str());
 	string tmp;
-	int section = -1;
-
-	// the following is currently not implemented very
-	// robustly. (Manually editing of the session file may crash lyx)
-	//
-	while (getline(ifs, tmp)) {
-		// Ignore comments, empty line or line stats with ' '
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+		if (!fs::exists(tmp))
 			continue;
+		lastopened.push_back(tmp);
+	} while (is.good());
+}
 
-		// Determine section id
-		if (tmp == sec_lastfiles) {
-			section = id_lastfiles;
-		} else if (tmp == sec_lastfilepos) {
-			section = id_lastfilepos;
-		} else if (tmp == sec_lastopened) {
-			section = id_lastopened;
-		} else if (tmp == sec_bookmarks) {
-			section = id_bookmarks;
-		} else if (tmp == sec_session) {
-			section = id_session;
-		} else if (section == id_lastfiles) {
-			// read lastfiles
-			if (!fs::exists(tmp) || lastfiles.size() >= num_lastfiles)
-				continue;
-			lastfiles.push_back(tmp);
-		} else if (section == id_lastfilepos) {
-			// read lastfilepos
-			// pos, file\n
-			pit_type pit;
-			pos_type pos;
-			string fname;
-			istringstream itmp(tmp);
-			itmp >> pit;
-			itmp.ignore(2);  // ignore ", "
-			itmp >> pos;
-			itmp.ignore(2);  // ignore ", "
-			itmp >> fname;
-			if (!fs::exists(fname) || lastfilepos.size() >= num_lastfilepos)
-				continue;
-			lastfilepos[fname] = boost::tie(pit, pos);
-		} else if (section == id_lastopened) {
-			// read lastopened
-			// files
-			if (!fs::exists(tmp))
-				continue;
-			lastopened.push_back(tmp);
-		} else if (section == id_bookmarks) {
-			// read bookmarks
-			// bookmarkid, id, pos, file\n
-			unsigned int num;
-			unsigned int id;
-			pos_type pos;
-			string fname;
-			istringstream itmp(tmp);
-			itmp >> num;
-			itmp.ignore(2);  // ignore ", "
-			itmp >> id;
-			itmp.ignore(2);  // ignore ", "
-			itmp >> pos;
-			itmp.ignore(2);  // ignore ", "
-			itmp >> fname;
-			// only load valid bookmarks
-			if (fs::exists(fname))
-				bookmarks.push_back(boost::tie(num, fname, id, pos));
-		} else if (section == id_session) {
-			// Read session info, saved as key/value pairs
-			// would better yell if pos returns npos
-			string::size_type pos = tmp.find_first_of(" = ");
-			string key = tmp.substr(0, pos);
-			string value = tmp.substr(pos + 3);
-			sessioninfo[key] = value;
-		}
+
+void LastOpenedSection::write(ostream & os) const
+{
+	os << '\n' << sec_lastopened << '\n';
+	copy(lastopened.begin(), lastopened.end(),
+	     ostream_iterator<string>(os, "\n"));
+}
+
+
+void LastOpenedSection::add(string const & file)
+{
+	lastopened.push_back(file);
+}
+
+
+void LastOpenedSection::clear()
+{
+	lastopened.clear();
+}
+
+
+void LastFilePosSection::read(istream & is)
+{
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+		// read lastfilepos
+		// pos, file\n
+		pit_type pit;
+		pos_type pos;
+		string fname;
+		istringstream itmp(tmp);
+		itmp >> pit;
+		itmp.ignore(2);  // ignore ", "
+		itmp >> pos;
+		itmp.ignore(2);  // ignore ", "
+		itmp >> fname;
+		if (!fs::exists(fname) || lastfilepos.size() >= num_lastfilepos)
+			continue;
+		lastfilepos[fname] = boost::tie(pit, pos);
+	} while (is.good());
+}
+
+
+void LastFilePosSection::write(ostream & os) const
+{
+	os << '\n' << sec_lastfilepos << '\n';
+	for (FilePosMap::const_iterator file = lastfilepos.begin();
+		file != lastfilepos.end(); ++file) {
+		os << file->second.get<0>() << ", "
+		    << file->second.get<1>() << ", "
+		    << file->first << '\n';
 	}
 }
 
 
-void Session::writeFile() const
-{
-	ofstream ofs(session_file.c_str());
-	if (ofs) {
-		ofs << "## Automatically generated lyx session file \n"
-		    << "## Editing this file manually may cause lyx to crash.\n";
-		// first section
-		ofs << '\n' << sec_lastfiles << '\n';
-		copy(lastfiles.begin(), lastfiles.end(),
-		     ostream_iterator<string>(ofs, "\n"));
-		// second section
-		ofs << '\n' << sec_lastfilepos << '\n';
-		for (FilePosMap::const_iterator file = lastfilepos.begin();
-			file != lastfilepos.end(); ++file) {
-			ofs << file->second.get<0>() << ", "
-			    << file->second.get<1>() << ", "
-			    << file->first << '\n';
-		}
-		// third section
-		ofs << '\n' << sec_lastopened << '\n';
-		copy(lastopened.begin(), lastopened.end(),
-		     ostream_iterator<string>(ofs, "\n"));
-		// fourth section
-		ofs << '\n' << sec_bookmarks << '\n';
-		for (BookmarkList::const_iterator bm = bookmarks.begin();
-			bm != bookmarks.end(); ++bm) {
-			// save bookmark number, id, pos, fname
-			ofs << bm->get<0>() << ", "
-				<< bm->get<2>() << ", "
-				<< bm->get<3>() << ", "
-				<< bm->get<1>() << '\n';
-		}
-		// fifth section
-		ofs << '\n' << sec_session << '\n';
-		for (MiscInfo::const_iterator val = sessioninfo.begin();
-			val != sessioninfo.end(); ++val) {
-			ofs << val->first << " = " << val->second << '\n';
-		}
-	} else
-		lyxerr << "LyX: Warning: unable to save Session: "
-		       << session_file << endl;
-}
-
-
-void Session::addLastFile(string const & file)
-{
-	// If file already exist, delete it and reinsert at front.
-	LastFiles::iterator it = find(lastfiles.begin(), lastfiles.end(), file);
-	if (it != lastfiles.end())
-		lastfiles.erase(it);
-	lastfiles.push_front(file);
-	if (lastfiles.size() > num_lastfiles)
-		lastfiles.pop_back();
-}
-
-
-void Session::saveFilePosition(string const & fname, FilePos pos)
+void LastFilePosSection::save(string const & fname, FilePos pos)
 {
 	lastfilepos[fname] = pos;
 }
 
 
-Session::FilePos Session::loadFilePosition(string const & fname) const
+LastFilePosSection::FilePos LastFilePosSection::load(string const & fname) const
 {
 	FilePosMap::const_iterator entry = lastfilepos.find(fname);
 	// Has position information, return it.
@@ -241,31 +202,94 @@ Session::FilePos Session::loadFilePosition(string const & fname) const
 }
 
 
-void Session::clearLastOpenedFiles()
+void BookmarksSection::read(istream & is)
 {
-	lastopened.clear();
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+		// read bookmarks
+		// bookmarkid, id, pos, file\n
+		unsigned int num;
+		unsigned int id;
+		pos_type pos;
+		string fname;
+		istringstream itmp(tmp);
+		itmp >> num;
+		itmp.ignore(2);  // ignore ", "
+		itmp >> id;
+		itmp.ignore(2);  // ignore ", "
+		itmp >> pos;
+		itmp.ignore(2);  // ignore ", "
+		itmp >> fname;
+		// only load valid bookmarks
+		if (fs::exists(fname))
+			bookmarks.push_back(boost::tie(num, fname, id, pos));
+	} while (is.good());
 }
 
 
-void Session::addLastOpenedFile(string const & file)
+void BookmarksSection::write(ostream & os) const
 {
-	lastopened.push_back(file);
+	os << '\n' << sec_bookmarks << '\n';
+	for (BookmarkList::const_iterator bm = bookmarks.begin();
+		bm != bookmarks.end(); ++bm) {
+		// save bookmark number, id, pos, fname
+		os << bm->get<0>() << ", "
+			<< bm->get<2>() << ", "
+			<< bm->get<3>() << ", "
+			<< bm->get<1>() << '\n';
+	}
 }
 
 
-void Session::saveBookmark(Bookmark const & bookmark)
+void BookmarksSection::save(Bookmark const & bookmark)
 {
 	bookmarks.push_back(bookmark);
 }
 
 
-void Session::saveSessionInfo(string const & key, string const & value)
+void SessionInfoSection::read(istream & is)
+{
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+
+		// Read session info, saved as key/value pairs
+		// would better yell if pos returns npos
+		string::size_type pos = tmp.find_first_of(" = ");
+		// silently ignore lines without " = "
+		if (pos != string::npos) {
+			string key = tmp.substr(0, pos);
+			string value = tmp.substr(pos + 3);
+			sessioninfo[key] = value;
+		}
+	} while (is.good());
+}
+
+
+void SessionInfoSection::write(ostream & os) const
+{
+	os << '\n' << sec_session << '\n';
+	for (MiscInfo::const_iterator val = sessioninfo.begin();
+		val != sessioninfo.end(); ++val) {
+		os << val->first << " = " << val->second << '\n';
+	}
+}
+
+
+void SessionInfoSection::save(string const & key, string const & value)
 {
 	sessioninfo[key] = value;
 }
 
 
-string const Session::loadSessionInfo(string const & key, bool release)
+string const SessionInfoSection::load(string const & key, bool release)
 {
 	MiscInfo::const_iterator pos = sessioninfo.find(key);
 	string value;
@@ -274,6 +298,65 @@ string const Session::loadSessionInfo(string const & key, bool release)
 	if (release)
 		sessioninfo.erase(key);
 	return value;
+}
+
+
+
+Session::Session(unsigned int num) :
+	last_files(num)
+{
+	// locate the session file
+	// note that the session file name 'session' is hard-coded
+	session_file = addName(package().user_support(), "session");
+	//
+	readFile();
+}
+
+
+void Session::readFile()
+{
+	// we will not complain if we can't find session_file nor will
+	// we issue a warning. (Lgb)
+	ifstream is(session_file.c_str());
+	string tmp;
+
+	while (getline(is, tmp)) {
+		// Ignore comments, empty line or line stats with ' '
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+			continue;
+
+		// Determine section id
+		if (tmp == sec_lastfiles)
+			LastFiles().read(is);
+		else if (tmp == sec_lastopened)
+			LastOpened().read(is);
+		else if (tmp == sec_lastfilepos)
+			LastFilePos().read(is);
+		else if (tmp == sec_bookmarks)
+			Bookmarks().read(is);
+		else if (tmp == sec_session)
+			SessionInfo().read(is);
+		else
+			lyxerr << "LyX: Warning: unknown Session section: " << tmp << endl;
+	}
+}
+
+
+void Session::writeFile() const
+{
+	ofstream os(session_file.c_str());
+	if (os) {
+		os << "## Automatically generated lyx session file \n"
+		    << "## Editing this file manually may cause lyx to crash.\n";
+
+		LastFiles().write(os);
+		LastOpened().write(os);
+		LastFilePos().write(os);
+		Bookmarks().write(os);
+		SessionInfo().write(os);
+	} else
+		lyxerr << "LyX: Warning: unable to save Session: "
+		       << session_file << endl;
 }
 
 }

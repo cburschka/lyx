@@ -138,12 +138,12 @@ void GuiView::saveGeometry()
 
 	// save windows size and position
 	Session & session = LyX::ref().session();
-	session.saveSessionInfo("WindowWidth", convert<string>(geometry.width()));
-	session.saveSessionInfo("WindowHeight", convert<string>(geometry.height()));
-	session.saveSessionInfo("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
+	session.SessionInfo().save("WindowWidth", convert<string>(geometry.width()));
+	session.SessionInfo().save("WindowHeight", convert<string>(geometry.height()));
+	session.SessionInfo().save("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
 	if (lyxrc.geometry_xysaved) {
-		session.saveSessionInfo("WindowPosX", convert<string>(geometry.x()));
-		session.saveSessionInfo("WindowPosY", convert<string>(geometry.y()));
+		session.SessionInfo().save("WindowPosX", convert<string>(geometry.x()));
+		session.SessionInfo().save("WindowPosY", convert<string>(geometry.y()));
 	}
 }
 						  

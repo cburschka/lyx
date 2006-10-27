@@ -427,8 +427,8 @@ docstring const limit_string_length(docstring const & str)
 
 void expandLastfiles(Menu & tomenu)
 {
-	lyx::Session::LastFiles const & lf = LyX::cref().session().lastFiles();
-	lyx::Session::LastFiles::const_iterator lfit = lf.begin();
+	lyx::LastFilesSection::LastFiles const & lf = LyX::cref().session().LastFiles().lastFiles();
+	lyx::LastFilesSection::LastFiles::const_iterator lfit = lf.begin();
 
 	int ii = 1;
 

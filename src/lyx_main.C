@@ -493,7 +493,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 
 	// if a file is specified, I assume that user wants to edit *that* file
 	if (files.empty() && lyxrc.load_session) {
-		vector<string> const & lastopened = pimpl_->session_->lastOpenedFiles();
+		vector<string> const & lastopened = pimpl_->session_->LastOpened().getfiles();
 		// do not add to the lastfile list since these files are restored from
 		// last seesion, and should be already there (regular files), or should
 		// not be added at all (help files).
@@ -501,7 +501,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 			bind(&LyXView::loadLyXFile, view, _1, false));
 	}
 	// clear this list to save a few bytes of RAM
-	pimpl_->session_->clearLastOpenedFiles();
+	pimpl_->session_->LastOpened().clear();
 }
 
 
@@ -522,13 +522,13 @@ LyXView * LyX::newLyXView()
 	}
 	// if lyxrc returns (0,0), then use session info
 	else {
-		string val = session().loadSessionInfo("WindowWidth");
+		string val = session().SessionInfo().load("WindowWidth");
 		if (!val.empty())
 			width = convert<unsigned int>(val);
-		val = session().loadSessionInfo("WindowHeight");
+		val = session().SessionInfo().load("WindowHeight");
 		if (!val.empty())
 			height = convert<unsigned int>(val);
-		if (session().loadSessionInfo("WindowIsMaximized") == "yes")
+		if (session().SessionInfo().load("WindowIsMaximized") == "yes")
 			maximize = true;
 	}
 
@@ -536,10 +536,10 @@ LyXView * LyX::newLyXView()
 	int posx = -1;
 	int posy = -1;
 	if (lyxrc.geometry_xysaved) {
-		string val = session().loadSessionInfo("WindowPosX");
+		string val = session().SessionInfo().load("WindowPosX");
 		if (!val.empty())
 			posx = convert<int>(val);
-		val = session().loadSessionInfo("WindowPosY");
+		val = session().SessionInfo().load("WindowPosY");
 		if (!val.empty())
 			posy = convert<int>(val);
 	}

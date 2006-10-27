@@ -132,8 +132,8 @@ BufferView::BufferView()
 
 	saved_positions.resize(saved_positions_num);
 	// load saved bookmarks
-	Session::BookmarkList & bmList = LyX::ref().session().loadBookmarks();
-	for (Session::BookmarkList::iterator bm = bmList.begin();
+	BookmarksSection::BookmarkList & bmList = LyX::ref().session().Bookmarks().load();
+	for (BookmarksSection::BookmarkList::iterator bm = bmList.begin();
 		bm != bmList.end(); ++bm)
 		if (bm->get<0>() < saved_positions_num)
 			saved_positions[bm->get<0>()] = Position( bm->get<1>(), bm->get<2>(), bm->get<3>() );
@@ -167,7 +167,7 @@ void BufferView::setBuffer(Buffer * b)
 		buffer_->saveCursor(cursor_.selectionBegin(),
 				    cursor_.selectionEnd());
 		// current buffer is going to be switched-off, save cursor pos
-		LyX::ref().session().saveFilePosition(buffer_->fileName(),
+		LyX::ref().session().LastFilePos().save(buffer_->fileName(),
 			boost::tie(cursor_.pit(), cursor_.pos()) );
 	}
 
@@ -280,7 +280,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 	if (lyxrc.use_lastfilepos) {
 		pit_type pit;
 		pos_type pos;
-		boost::tie(pit, pos) = LyX::ref().session().loadFilePosition(s);
+		boost::tie(pit, pos) = LyX::ref().session().LastFilePos().load(s);
 		// I am not sure how to separate the following part to a function
 		// so I will leave this to Lars.
 		//
@@ -299,7 +299,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 
 	if (tolastfiles)
-		LyX::ref().session().addLastFile(b->fileName());
+		LyX::ref().session().LastFiles().add(b->fileName());
 
 	return true;
 }
@@ -574,7 +574,7 @@ void BufferView::saveSavedPositions()
 	// par_id and pit.
 	for (unsigned int i=1; i < saved_positions_num; ++i) {
 		if ( isSavedPosition(i) )
-			LyX::ref().session().saveBookmark( boost::tie(
+			LyX::ref().session().Bookmarks().save( boost::tie(
 				i,
 				saved_positions[i].filename,
 				saved_positions[i].par_id,

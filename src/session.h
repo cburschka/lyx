@@ -35,23 +35,203 @@ const long maxlastfiles = 20;
  */
 namespace lyx {
 
-class Session : boost::noncopyable {
+/** base class for all sections in the session file
+*/
+class SessionSection : boost::noncopyable {
+
+public:
+	/// read section from std::istream
+	virtual void read(std::istream & is) = 0;
+
+	/// write to std::ostream
+	virtual void write(std::ostream & os) const = 0;
+};
+
+
+class LastFilesSection : SessionSection
+{
+public:
+	///
+	typedef std::deque<std::string> LastFiles;
 
 public:
 	///
-	typedef boost::tuple<pit_type, pos_type> FilePos;
+	explicit LastFilesSection(unsigned int num = 4);
+
 	///
-	typedef std::map<std::string, FilePos> FilePosMap;
+	void read(std::istream & is);
+
 	///
-	typedef std::deque<std::string> LastFiles;
+	void write(std::ostream & os) const;
+
+	/// Return lastfiles container (deque)
+	LastFiles const lastFiles() const { return lastfiles; }
+
+	/** Insert #file# into the lastfile dequeue.
+	    This funtion inserts #file# into the last files list. If the file
+	    already exists it is moved to the top of the list, else exist it
+	    is placed on the top of the list. If the list is full the last
+	    file in the list is popped from the end.
+	    @param file the file to insert in the lastfile list.
+	*/
+	void add(std::string const & file);
+
+private:
+	/// Default number of lastfiles.
+	unsigned int const default_num_last_files;
+
+	/// Max number of lastfiles.
+	unsigned int const absolute_max_last_files;
+
+	/// a list of lastfiles
+	LastFiles lastfiles;
+
+	/// number of files in the lastfiles list.
+	unsigned int num_lastfiles;
+
+	/** Used by the constructor to set the number of stored last files.
+	    @param num the number of lastfiles to set.
+	*/
+	void setNumberOfLastFiles(unsigned int num);
+};
+
+
+class LastOpenedSection : SessionSection
+{
+public:
 	///
 	typedef std::vector<std::string> LastOpened;
+
+public:
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	/// Return lastopened container (vector)
+	LastOpened const getfiles() const { return lastopened; }
+
+	/** add file to lastopened file list
+	    @param file filename to add
+	*/
+	void add(std::string const & file);
+
+	/** clear lastopened file list
+	 */
+	void clear();
+
+private:
+	/// a list of lastopened files
+	LastOpened lastopened;
+};
+
+
+class LastFilePosSection : SessionSection
+{
+public:
+	///
+	typedef boost::tuple<pit_type, pos_type> FilePos;
+
+	///
+	typedef std::map<std::string, FilePos> FilePosMap;
+
+public:
+	///
+	LastFilePosSection() : num_lastfilepos(100) {}
+
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	/** add cursor position to the fname entry in the filepos map
+	    @param fname file entry for which to save position information
+	    @param pos position of the cursor when the file is closed.
+	*/
+	void save(std::string const & fname, FilePos pos);
+
+	/** load saved cursor position from the fname entry in the filepos map
+	    @param fname file entry for which to load position information
+	*/
+	FilePos load(std::string const & fname) const;
+
+private:
+	/// default number of lastfilepos to save */
+	unsigned int const num_lastfilepos;
+
+
+	/// a map of file positions
+	FilePosMap lastfilepos;
+};
+
+
+class BookmarksSection : SessionSection
+{
+public:
 	///
 	typedef boost::tuple<unsigned int, std::string, unsigned int, pos_type> Bookmark;
+
 	///
 	typedef std::vector<Bookmark> BookmarkList;
+
+public:
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	/** save a bookmark
+		@bookmark bookmark to be saved
+	*/
+	void save(Bookmark const & bookmark);
+
+	/** return bookmark list. Non-const container is used since
+		bookmarks will be cleaned after use.
+	*/
+	BookmarkList & load() { return bookmarks; }
+
+private:
+	/// a list of bookmarks
+	BookmarkList bookmarks;
+};
+
+
+class SessionInfoSection : SessionSection
+{
+public:
 	///
 	typedef std::map<std::string, std::string> MiscInfo;
+
+public:
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	/** set session info
+		@param key key of the value to store
+		@param value value, a string without newline ('\n')
+	*/
+	void save(std::string const & key, std::string const & value);
+
+	/** load session info
+		@param key a key to extract value from the session file
+		@param release whether or not clear the value. Default to true
+			since most of such values are supposed to be used only once.
+	*/
+	std::string const load(std::string const & key, bool release = true);
+
+private:
+	/// a map to save session info
+	MiscInfo sessioninfo;
+};
+
+
+class Session : boost::noncopyable {
 
 public:
 	/** Read the session file.
@@ -63,93 +243,39 @@ public:
 	*/
 	void writeFile() const;
 
-	/** Insert #file# into the lastfile dequeue.
-	    This funtion inserts #file# into the last files list. If the file
-	    already exists it is moved to the top of the list, else exist it
-	    is placed on the top of the list. If the list is full the last
-	    file in the list is popped from the end.
-	    @param file the file to insert in the lastfile list.
-	*/
-	void addLastFile(std::string const & file);
+	///
+	LastFilesSection & LastFiles() { return last_files; }
+	
+	///
+	LastFilesSection const & LastFiles() const { return last_files; }
 
-	/** add cursor position to the fname entry in the filepos map
-	    @param fname file entry for which to save position information
-	    @param pos position of the cursor when the file is closed.
-	*/
-	void saveFilePosition(std::string const & fname, FilePos pos);
+	///
+	LastOpenedSection & LastOpened() { return last_opened; }
 
-	/** clear lastopened file list
-	 */
-	void clearLastOpenedFiles();
+	///
+	LastOpenedSection const & LastOpened() const { return last_opened; }
+	
+	///
+	LastFilePosSection & LastFilePos() { return last_file_pos; }
+	
+	///
+	LastFilePosSection const & LastFilePos() const { return last_file_pos; }
 
-	/** add file to lastopened file list
-	    @param file filename to add
-	*/
-	void addLastOpenedFile(std::string const & file);
+	///
+	BookmarksSection & Bookmarks() { return bookmarks; }
 
-	/** load saved cursor position from the fname entry in the filepos map
-	    @param fname file entry for which to load position information
-	*/
-	FilePos loadFilePosition(std::string const & fname) const;
+	///
+	BookmarksSection const & Bookmarks() const { return bookmarks; }
 
-	/// Return lastfiles container (deque)
-	LastFiles const lastFiles() const { return lastfiles; }
+	///
+	SessionInfoSection & SessionInfo() { return session_info; }
 
-	/// Return lastopened container (vector)
-	LastOpened const lastOpenedFiles() const { return lastopened; }
+	///
+	SessionInfoSection const & SessionInfo() const { return session_info; }
 
-	/** save a bookmark
-		@bookmark bookmark to be saved
-	*/
-	void saveBookmark(Bookmark const & bookmark);
-
-	/** return bookmark list. Non-const container is used since
-		bookmarks will be cleaned after use.
-	*/
-	BookmarkList & loadBookmarks() { return bookmarks; }
-
-	/** set session info
-		@param key key of the value to store
-		@param value value, a string without newline ('\n')
-	*/
-	void saveSessionInfo(std::string const & key, std::string const & value);
-
-	/** load session info
-		@param key a key to extract value from the session file
-		@param release whether or not clear the value. Default to true
-			since most of such values are supposed to be used only once.
-	*/
-	std::string const loadSessionInfo(std::string const & key, bool release = true);
 private:
-	/// Default number of lastfiles.
-	unsigned int const default_num_last_files;
-
-	/// Max number of lastfiles.
-	unsigned int const absolute_max_last_files;
-
-	/// default number of lastfilepos to save */
-	unsigned int const num_lastfilepos;
-
 	/// file to save session, determined in the constructor.
 	std::string session_file;
-
-	/// a list of lastfiles
-	LastFiles lastfiles;
-
-	/// a list of bookmarks
-	BookmarkList bookmarks;
-
-	/// a map to save session info
-	MiscInfo sessioninfo;
-
-	/// number of files in the lastfiles list.
-	unsigned int num_lastfiles;
-
-	/// a map of file positions
-	FilePosMap lastfilepos;
-
-	/// a list of lastopened files
-	LastOpened lastopened;
 
 	/** Read the session file.
 	    Reads the #.lyx/session# at the beginning of the LyX session.
@@ -158,10 +284,20 @@ private:
 	*/
 	void readFile();
 
-	/** Used by the constructor to set the number of stored last files.
-	    @param num the number of lastfiles to set.
-	*/
-	void setNumberOfLastFiles(unsigned int num);
+	///
+	LastFilesSection last_files;
+
+	///
+	LastOpenedSection last_opened;
+
+	///
+	LastFilePosSection last_file_pos;
+
+	///
+	BookmarksSection bookmarks;
+
+	///
+	SessionInfoSection session_info;
 };
 
 }

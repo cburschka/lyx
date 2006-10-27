@@ -101,7 +101,7 @@ bool quitting;	// flag, that we are quitting the program
 bool menuWrite(Buffer * buffer)
 {
 	if (buffer->save()) {
-		LyX::ref().session().addLastFile(buffer->fileName());
+		LyX::ref().session().LastFiles().add(buffer->fileName());
 		return true;
 	}
 
