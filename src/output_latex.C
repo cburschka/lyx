@@ -308,7 +308,7 @@ TeXOnePar(Buffer const & buf,
 	bool const change_encoding = !runparams_in.dryrun &&
 			bparams.inputenc == "auto" &&
 			language->encoding() != doc_language->encoding();
-	odocstream & os(change_encoding ? par_stream : ucs4);
+	odocstream & os = *(change_encoding ? &par_stream : &ucs4);
 
 	// In an an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
