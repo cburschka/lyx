@@ -285,6 +285,18 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 }
 
 
+void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
+{
+	startBlinkingCursor();
+}
+
+
+void GuiWorkArea::focusOutEvent(QFocusEvent * /*event*/)
+{
+	stopBlinkingCursor();
+}
+
+
 void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 {
 	if (dc_event_.active && dc_event_ == *e) {

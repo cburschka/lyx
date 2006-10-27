@@ -118,6 +118,10 @@ private:
 	void dragEnterEvent(QDragEnterEvent * ev);
 	///
 	void dropEvent(QDropEvent * ev);
+	///
+	void focusInEvent(QFocusEvent *);
+	///
+	void focusOutEvent(QFocusEvent *);
 	/// repaint part of the widget
 	void paintEvent(QPaintEvent * ev);
 	/// widget has been resized
