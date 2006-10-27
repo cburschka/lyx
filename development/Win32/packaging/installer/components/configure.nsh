@@ -66,6 +66,24 @@ SectionEnd
 
 Section -LaTeX
 
+  ;Let MiKTeX ask the user again to download packages if needed
+  
+  ;MiKTeX 2.5
+  
+  ReadRegStr $R0 HKCU "Software\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall"  
+  
+  ${if} $R0 == 0
+    WriteRegStr HKCU "Software\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall" 2
+  ${endif}
+  
+  ;MiKTeX 2.4
+  
+  ReadRegStr $R0 HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly"
+  
+  ${if} $R0 == 0
+    WriteRegStr HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly" 2
+  ${endif}
+  
   ;dvipost package
 
   Call SearchLaTeXLocalRoot
