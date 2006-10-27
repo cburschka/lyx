@@ -73,9 +73,8 @@ private:
 	/// Return pixel width for the given unicode char
 	int width(unsigned short val) const;
 
-	typedef std::map<unsigned short, int> WidthCache;
 	/// Cache of char widths
-	mutable WidthCache widthcache;
+	mutable int widthcache_[65536];
 #endif // USE_LYX_FONTCACHE
 };
 

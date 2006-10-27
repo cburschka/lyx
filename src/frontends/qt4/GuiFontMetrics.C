@@ -31,6 +31,10 @@ namespace frontend {
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
+#ifdef USE_LYX_FONTCACHE
+  for (int i = 0; i != 65536; ++i)
+    widthcache_[i] = -1;
+#endif
 }
 
 
@@ -184,13 +188,9 @@ void GuiFontMetrics::buttonText(docstring const & str,
 #ifdef USE_LYX_FONTCACHE
 int GuiFontMetrics::width(unsigned short val) const
 {
-	GuiFontMetrics::WidthCache::const_iterator cit = widthcache.find(val);
-	if (cit != widthcache.end())
-		return cit->second;
-
-	int const w = metrics_.width(QChar(val));
-	widthcache[val] = w;
-	return w;
+	if (widthcache_[val] == -1)
+		widthcache_[val] = metrics_.width(QChar(val));
+	return widthcache_[val];
 }
 #endif
 
