@@ -242,7 +242,10 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		drawText(x, y, str);
-		textwidth = fontMetrics().width(str);
+		// Here we use the font width cache instead of
+		//   textwidth = fontMetrics().width(str);
+		// because the above is awfully expensive on MacOSX
+		textwidth = guiApp->guiFontLoader().metrics(f).width(s, ls);
 	} else {
 		textwidth = smallCapsText(x, y, str, f);
 	}
