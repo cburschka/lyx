@@ -16,6 +16,7 @@
 #include "changes.h"
 #include "debug.h"
 
+#include <cmath>
 #include <boost/assert.hpp>
 
 
