@@ -21,6 +21,7 @@
 
 namespace lyx {
 
+using std::abs;
 using std::endl;
 using std::string;
 using std::max;
@@ -49,7 +50,7 @@ bool operator==(Change const & l, Change const & r)
 
 	return l.author == r.author
 	       // both changes made within 5 minutes?
-	       && abs(l.changetime - r.changetime) < 300;
+	       && abs(static_cast<int>(l.changetime - r.changetime)) < 300;
 }
 
 
