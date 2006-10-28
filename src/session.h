@@ -40,6 +40,9 @@ namespace lyx {
 class SessionSection : boost::noncopyable {
 
 public:
+	///
+	virtual ~SessionSection() {}
+
 	/// read section from std::istream
 	virtual void read(std::istream & is) = 0;
 
