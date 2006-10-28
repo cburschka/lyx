@@ -15,7 +15,6 @@
 
 #include "GuiApplication.h"
 #include "GuiFontMetrics.h"
-#include "GuiWorkArea.h"
 #include "QLImage.h"
 
 #include "GuiApplication.h"
@@ -25,14 +24,7 @@
 #include "language.h"
 #include "LColor.h"
 
-
 #include "support/unicode.h"
-
-#include <QPainter>
-#include <QPicture>
-#include <QPixmap>
-#include <QImage>
-
 
 using std::endl;
 using std::string;

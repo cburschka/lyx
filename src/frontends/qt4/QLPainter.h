@@ -15,15 +15,9 @@
 
 #include "Painter.h"
 
-#include <boost/scoped_ptr.hpp>
-
 #include <QPainter>
 
-class QPaintDevice;
-class QPainter;
 class QString;
-class QPixmap;
-class QImage;
 
 namespace lyx {
 

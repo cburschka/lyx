@@ -493,7 +493,6 @@ void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
 	cursor_->hide();
 	verticalScrollBar()->setPageStep(viewport()->height());
-	//paint_device_ = QPixmap(viewport()->width(), viewport()->height());
 	QAbstractScrollArea::resizeEvent(ev);
 	resizeBufferView();
 }
@@ -557,8 +556,6 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		<< "\n QWidget height\t" << this->height()
 		<< "\n viewport width\t" << viewport()->width()
 		<< "\n viewport height\t" << viewport()->height()
-		<< "\n pixmap width\t" << pixmap_->width()
-		<< "\n pixmap height\t" << pixmap_->height()
 		<< "\n QPaintEvent x\t" << e->rect().x()
 		<< "\n QPaintEvent y\t" << e->rect().y()
 		<< "\n QPaintEvent w\t" << e->rect().width()
