@@ -81,7 +81,7 @@ public:
 	///
 	int no_items;
 	///
-	std::vector<char> buff;
+	std::string buff;
 	///
 	int status;
 	///

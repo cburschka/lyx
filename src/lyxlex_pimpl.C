@@ -70,15 +70,13 @@ LyXLex::Pimpl::Pimpl(keyword_item * tab, int num)
 
 string const LyXLex::Pimpl::getString() const
 {
-	return string(buff.begin(), buff.end());
+	return buff;
 }
 
 
 docstring const LyXLex::Pimpl::getDocString() const
 {
-	std::vector<char_type> res = utf8_to_ucs4(buff);
-	docstring dstr(res.begin(), res.end());
-	return dstr;
+	return from_utf8(buff);
 }
 
 
@@ -206,13 +204,12 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		// we extract the first word and leaves the rest
 		// in pushTok. (Lgb)
 		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
-			string tmp;
-			pushTok = split(pushTok, tmp, ' ');
-			buff.assign(tmp.begin(), tmp.end());
+			buff.clear();
+			pushTok = split(pushTok, buff, ' ');
 			return true;
 		} else {
-			buff.assign(pushTok.begin(), pushTok.end());
-			pushTok.erase();
+			buff = pushTok;
+			pushTok.clear();
 			return true;
 		}
 	}
@@ -256,7 +253,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						++lineno;
 				}
 
-				buff.pop_back();
+				buff.resize(buff.size()-1);
 				status = LEX_DATA;
 				break;
 			}
@@ -377,7 +374,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 						++lineno;
 				}
 
-				buff.pop_back();
+				buff.resize(buff.size() -1);
 				status = LEX_DATA;
 				break;
 			}
@@ -456,7 +453,7 @@ bool LyXLex::Pimpl::eatLine()
 
 	if (c == '\n') {
 		++lineno;
-		buff.pop_back();
+		buff.resize(buff.size() - 1);
 		status = LEX_DATA;
 		return true;
 	} else {
@@ -472,13 +469,12 @@ bool LyXLex::Pimpl::nextToken()
 		// we extract the first word and leaves the rest
 		// in pushTok. (Lgb)
 		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
-			string tmp;
-			pushTok = split(pushTok, tmp, ' ');
-			buff.assign(tmp.begin(), tmp.end());
+			buff.clear();
+			pushTok = split(pushTok, buff, ' ');
 			return true;
 		} else {
-			buff.assign(pushTok.begin(), pushTok.end());
-			pushTok.erase();
+			buff = pushTok;
+			pushTok.clear();
 			return true;
 		}
 	}

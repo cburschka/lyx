@@ -66,6 +66,16 @@ eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding);
 std::vector<char>
 ucs4_to_eightbit(lyx::char_type const * ucs4str, size_t ls, std::string const & encoding);
 
+/// convert any data from \c fromcode to \c tocode unicode format.
+/// \return the number of bytes of the converted output buffer.
+extern int iconv_convert(int & cd,
+	      char const * tocode,
+	      char const * fromcode,
+	      char const * buf, ///< maximum input buffer
+	      size_t buflen,    ///< maximum input buffer size in bytes
+		  char * outbuf,    ///< maximum output buffer
+		  size_t maxoutsize);    ///< maximum output buffer size in bytes
+
 extern char const * ucs4_codeset;
 extern char const * ucs2_codeset;
 

@@ -20,6 +20,7 @@
 
 namespace lyx {
 
+
 docstring const from_ascii(char const * ascii)
 {
 	docstring s;
@@ -53,11 +54,33 @@ std::string const to_ascii(docstring const & ucs4)
 }
 
 
+void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
+{
+	size_t n = utf8.size();
+	// as utf8 is a multi-byte encoding, there would be at most
+	// n characters:
+	ucs4.resize(n);
+	if (n == 0)
+		return;
+
+	int maxoutsize = n * 4;
+	int cd = -1;
+	// basic_string::data() is not recognized by some old gcc version
+	// so we use &(ucs4[0]) instead.
+	char * outbuf = (char *)(&(ucs4[0]));
+	int bytes = iconv_convert(cd, ucs4_codeset, "UTF-8",
+		utf8.c_str(), n, outbuf, maxoutsize);
+
+	// adjust to the real converted size
+	ucs4.resize(bytes/4);
+}
+
+
 docstring const from_utf8(std::string const & utf8)
 {
-	std::vector<lyx::char_type> const ucs4 =
-		utf8_to_ucs4(utf8.data(), utf8.size());
-	return docstring(ucs4.begin(), ucs4.end());
+	docstring ucs4;
+	utf8_to_ucs4(utf8, ucs4);
+	return ucs4;
 }
 
 
