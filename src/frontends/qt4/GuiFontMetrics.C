@@ -61,28 +61,14 @@ int GuiFontMetrics::maxDescent() const
 int GuiFontMetrics::ascent(char_type c) const
 {
 	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
-	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
-	// value by the height: (x, -y-height, width, height).
-	// Other versions return: (x, -y, width, height)
-#if defined(Q_WS_WIN) && (QT_VERSION == 0x030201)
-	return -r.top() - r.height();
-#else
 	return -r.top();
-#endif
 }
 
 
 int GuiFontMetrics::descent(char_type c) const
 {
 	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
-	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
-	// value by the height: (x, -y-height, width, height).
-	// Other versions return: (x, -y, width, height)
-#if defined(Q_WS_WIN) && (QT_VERSION == 0x030201)
-	return r.bottom() + r.height() + 1;
-#else
 	return r.bottom() + 1;
-#endif
 }
 
 
