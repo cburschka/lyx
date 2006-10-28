@@ -26,6 +26,8 @@
 
 #include "support/unicode.h"
 
+#include <QWidget>
+
 using std::endl;
 using std::string;
 
