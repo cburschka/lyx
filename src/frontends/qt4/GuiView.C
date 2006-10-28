@@ -160,10 +160,8 @@ void GuiView::setGeometry(unsigned int width,
 			// http://doc.trolltech.com/4.2/qdesktopwidget.html 
 			QDesktopWidget& dw = *qApp->desktop();
 			QRect desk = dw.availableGeometry(dw.primaryScreen());
-			if (posx >= desk.width())
-				   posx = 0.1 * desk.width();
-			if (posy >= desk.height())
-				   posy = 0.1 * desk.height();
+			(posx >= desk.width() ? posx = 50 : true);
+			(posy >= desk.height()? posy = 50 : true);
 #ifdef Q_WS_WIN
 			// FIXME: use only setGeoemtry when Trolltech has
 			// fixed the qt4/X11 bug
