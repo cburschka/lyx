@@ -895,13 +895,14 @@ void paintPar
 } // namespace anon
 
 
-void paintText(BufferView & bv, ViewMetricsInfo const & vi,
+void paintText(BufferView & bv,
 	       Painter & pain)
 {
 	BOOST_ASSERT(bv.buffer());
 	LyXText & text = bv.buffer()->text();
 	bool const select = bv.cursor().selection();
-
+	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
+	
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
 	// Should the whole screen, including insets, be refreshed?
 	bool repaintAll = select || !vi.singlepar;

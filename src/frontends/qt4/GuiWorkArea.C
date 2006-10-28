@@ -594,8 +594,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	//lyxerr << "real drawing" << endl;
 	QLPainter pain(viewport());
-	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
-	paintText(*buffer_view_, vi, pain);
+	paintText(*buffer_view_, pain);
 }
 
 

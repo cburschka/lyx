@@ -26,8 +26,7 @@ class ViewMetricsInfo;
 namespace frontend { class Painter; }
 
 /// paint visible paragraph of main text
-void paintText(BufferView & bv, ViewMetricsInfo const & vi,
-			   frontend::Painter & painter);
+void paintText(BufferView & bv, frontend::Painter & painter);
 
 /// paint the rows of a text inset
 void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y);
