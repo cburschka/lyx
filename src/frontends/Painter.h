@@ -68,11 +68,6 @@ public:
 	/// end painting
 	////virtual void end() {}
 
-	/// return the width of the work area in pixels
-	virtual int paperWidth() const = 0;
-	/// return the height of the work area in pixels
-	virtual int paperHeight() const = 0;
-
 	/// draw a line from point to point
 	virtual void line(
 		int x1, int y1,

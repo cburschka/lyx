@@ -463,7 +463,6 @@ src_frontends_files = Split('''
     Toolbars.C
     WorkArea.C
     guiapi.C
-    nullpainter.C
 ''')
 
 

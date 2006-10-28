@@ -32,11 +32,6 @@ class GuiWorkArea;
  */
 class QLPainter : public QPainter, public Painter {
 public:
-	/// return the width of the work area in pixels
-	virtual int paperWidth() const;
-	/// return the height of the work area in pixels
-	virtual int paperHeight() const;
-
 	/// draw a line from point to point
 	virtual void line(
 		int x1, int y1,

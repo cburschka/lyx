@@ -32,11 +32,6 @@ public:
 	void end() {}
 
 	///
-	int paperWidth() const { return 0; }
-	///
-	int paperHeight() const;
-
-	///
 	void line(int, int, int, int, LColor_color,
 		       line_style = line_solid, line_width = line_thin) {}
 	///

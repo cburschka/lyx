@@ -52,18 +52,6 @@ QLPainter::~QLPainter()
 }
 
 
-int QLPainter::paperWidth() const
-{
-	return qwa_->width();
-}
-
-
-int QLPainter::paperHeight() const
-{
-	return qwa_->height();
-}
-
-
 void QLPainter::setQPainterPen(LColor_color col,
 	Painter::line_style ls, Painter::line_width lw)
 {

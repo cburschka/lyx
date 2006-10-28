@@ -278,7 +278,8 @@ void MathArray::metrics(MetricsInfo & mi) const
 void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
-	setXY(*pi.base.bv, x, y);
+	BufferView & bv  = *pi.base.bv;
+	setXY(bv, x, y);
 
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
@@ -287,16 +288,15 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 
 	// don't draw outside the workarea
 	if (y + descent() <= 0
-		|| y - ascent() >= pi.pain.paperHeight()
+		|| y - ascent() >= bv.workHeight()
 		|| x + width() <= 0
-		|| x >= pi.pain.paperWidth())
+		|| x >= bv. workWidth())
 		return;
 
-	//BufferView & bv  = *pi.base.bv;
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 #if 0
-	Buffer const & buf = *bv.buffer();
+	Buffer const & buf = bv.buffer();
 		// special macro handling
 		MathMacro const * mac = at->asMacro();
 		if (mac && buf.hasMacro(mac->name())) {
@@ -312,8 +312,7 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 			}
 		}
 #endif
-		//BufferView & bv  = *pi.base.bv;
-		pi.base.bv->coordCache().insets().add(at.nucleus(), x, y);
+		bv.coordCache().insets().add(at.nucleus(), x, y);
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
 		x += at->width();
