@@ -56,6 +56,8 @@ std::string const to_ascii(docstring const & ucs4)
 
 void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
 {
+	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
+
 	size_t n = utf8.size();
 	// as utf8 is a multi-byte encoding, there would be at most
 	// n characters:
@@ -68,8 +70,7 @@ void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
 	// basic_string::data() is not recognized by some old gcc version
 	// so we use &(ucs4[0]) instead.
 	char * outbuf = (char *)(&(ucs4[0]));
-	int bytes = iconv_convert(cd, ucs4_codeset, "UTF-8",
-		utf8.c_str(), n, outbuf, maxoutsize);
+	int bytes = iconv.convert(utf8.c_str(), n, outbuf, maxoutsize);
 
 	// adjust to the real converted size
 	ucs4.resize(bytes/4);

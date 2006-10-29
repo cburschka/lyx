@@ -15,10 +15,38 @@
 
 #include "support/types.h"
 
+#include <string>
 #include <vector>
 
 
 namespace lyx {
+
+class IconvProcessor
+{
+public:
+	IconvProcessor(
+		char const * tocode = "",
+		char const * fromcode = "");
+	~IconvProcessor();
+
+	/// convert any data from \c fromcode to \c tocode unicode format.
+	/// \return the number of bytes of the converted output buffer.
+	int convert(
+		char const * in_buffer,
+		size_t in_size,
+		char * out_buffer,
+		size_t max_out_size);
+private:
+	/// open iconv.
+	/// \return true if the processor is ready to use.
+	bool init();
+
+	std::string const tocode_;
+	std::string const fromcode_;
+
+	struct Private;
+	Private * pimpl_;
+};
 
 // utf8_to_ucs4
 
@@ -65,16 +93,6 @@ eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding);
 /// \p encoding must be a valid iconv 8bit encoding
 std::vector<char>
 ucs4_to_eightbit(lyx::char_type const * ucs4str, size_t ls, std::string const & encoding);
-
-/// convert any data from \c fromcode to \c tocode unicode format.
-/// \return the number of bytes of the converted output buffer.
-extern int iconv_convert(int & cd,
-	      char const * tocode,
-	      char const * fromcode,
-	      char const * buf, ///< maximum input buffer
-	      size_t buflen,    ///< maximum input buffer size in bytes
-		  char * outbuf,    ///< maximum output buffer
-		  size_t maxoutsize);    ///< maximum output buffer size in bytes
 
 extern char const * ucs4_codeset;
 extern char const * ucs2_codeset;

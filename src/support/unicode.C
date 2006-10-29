@@ -22,10 +22,9 @@
 #include <iomanip>
 #include <map>
 
+using std::endl;
 
 namespace lyx {
-
-using std::endl;
 
 #ifdef WORDS_BIGENDIAN
 	char const * ucs4_codeset = "UCS-4BE";
@@ -35,52 +34,93 @@ using std::endl;
 	char const * ucs2_codeset = "UCS-2LE";
 #endif
 
-int iconv_convert(int & cd,
-	      char const * tocode,
-	      char const * fromcode,
-	      char const * buf,
-	      size_t buflen,
-		  char * outbuf,
-		  size_t maxoutsize)
+static const iconv_t invalid_cd = (iconv_t)(-1);
+
+
+struct IconvProcessor::Private {
+	Private(): cd(invalid_cd) {}
+	iconv_t cd;
+};
+
+
+IconvProcessor::IconvProcessor(char const * tocode,
+		char const * fromcode): tocode_(tocode), fromcode_(fromcode),
+		pimpl_(new IconvProcessor::Private)
+{
+}
+
+
+IconvProcessor::~IconvProcessor()
+{
+	if (iconv_close(pimpl_->cd) == -1) {
+		lyxerr << "Error returned from iconv_close("
+			<< errno << ")" << endl;
+	}
+	delete pimpl_;
+}
+
+
+bool IconvProcessor::init()
+{
+	if (pimpl_->cd != invalid_cd)
+		return true;
+
+	pimpl_->cd = iconv_open(tocode_.c_str(), fromcode_.c_str());
+	if (pimpl_->cd != invalid_cd)
+		return true;
+
+	lyxerr << "Error returned from iconv_open" << endl;
+	switch (errno) {
+		case EINVAL:
+			lyxerr << "EINVAL The conversion from " << fromcode_
+				<< " to " << tocode_
+				<< " is not supported by the implementation."
+				<< endl;
+			break;
+		default:
+			lyxerr << "\tSome other error: " << errno << endl;
+			break;
+	}
+	return false;
+}
+
+
+int IconvProcessor::convert(char const * buf, size_t buflen,
+		char * outbuf, size_t maxoutsize)
 {
 	if (buflen == 0)
 		return 0;
 
-	if (cd == -1) {
-		cd = (int)(iconv_open(tocode, fromcode));
-		if (cd == -1) {
-			lyxerr << "Error returned from iconv_open" << endl;
-			switch (errno) {
-			case EINVAL:
-				lyxerr << "EINVAL The conversion from " << fromcode
-				       << " to " << tocode
-				       << " is not supported by the implementation."
-				       << endl;
-				break;
-			default:
-				lyxerr << "\tSome other error: " << errno << endl;
-				break;
-			}
-		}
+	if (pimpl_->cd == invalid_cd) {
+		if (!init())
+			return -1;
 	}
 
 	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(buf);
 	size_t inbytesleft = buflen;
 	size_t outbytesleft = maxoutsize;
 
-	int res = iconv((iconv_t)(cd), &inbuf, &inbytesleft, &outbuf, &outbytesleft);
+	int res = iconv(pimpl_->cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);
 
-	if (res == -1) {
-		lyxerr << "Error returned from iconv" << endl;
-		switch (errno) {
+	//lyxerr << std::dec;
+	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
+	//lyxerr << "Outbytesleft: " << outbytesleft << endl;
+
+	if (res != -1)
+		// Everything went well.
+		return maxoutsize - outbytesleft;
+
+	// There are some errors in the conversion
+	lyxerr << "Error returned from iconv" << endl;
+	switch (errno) {
 		case E2BIG:
 			lyxerr << "E2BIG  There is not sufficient room at *outbuf." << endl;
 			break;
 		case EILSEQ:
 			lyxerr << "EILSEQ An invalid multibyte sequence"
-			       << " has been encountered in the input.\n"
-			       << "When converting from " << fromcode
-			       << " to " << tocode << ".\n";
+				<< " has been encountered in the input.\n"
+				<< "When converting from " << fromcode_
+				<< " to " << tocode_ << ".\n";
 			lyxerr << "Input: " << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				boost::uint32_t const b = buf[i];
@@ -90,9 +130,9 @@ int iconv_convert(int & cd,
 			break;
 		case EINVAL:
 			lyxerr << "EINVAL An incomplete multibyte sequence"
-			       << " has been encountered in the input.\n"
-			       << "When converting from " << fromcode
-			       << " to " << tocode << ".\n";
+				<< " has been encountered in the input.\n"
+				<< "When converting from " << fromcode_
+				<< " to " << tocode_ << ".\n";
 			lyxerr << "Input: " << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				boost::uint32_t const b = buf[i];
@@ -103,20 +143,14 @@ int iconv_convert(int & cd,
 		default:
 			lyxerr << "\tSome other error: " << errno << endl;
 			break;
-		}
-		// We got an error so we close down the conversion engine
-		if (iconv_close((iconv_t)(cd)) == -1) {
-			lyxerr << "Error returned from iconv_close("
-			       << errno << ")" << endl;
-		}
-		cd = -1;
 	}
-
-	//lyxerr << std::dec;
-	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
-	//lyxerr << "Outbytesleft: " << outbytesleft << endl;
-
-	return maxoutsize - outbytesleft;
+	// We got an error so we close down the conversion engine
+	if (iconv_close(pimpl_->cd) == -1) {
+		lyxerr << "Error returned from iconv_close("
+			<< errno << ")" << endl;
+	}
+	pimpl_->cd = invalid_cd;
+	return -1;
 }
 
 
@@ -125,9 +159,7 @@ namespace {
 
 template<typename RetType, typename InType>
 std::vector<RetType>
-iconv_convert(int & cd,
-	      char const * tocode,
-	      char const * fromcode,
+iconv_convert(IconvProcessor & processor,
 	      InType const * buf,
 	      size_t buflen)
 {
@@ -141,7 +173,7 @@ iconv_convert(int & cd,
 	static char out[outsize];
 	char * outbuf = out;
 
-	int bytes = lyx::iconv_convert(cd, tocode, fromcode, inbuf, inbytesleft, outbuf, outsize);
+	int bytes = processor.convert(inbuf, inbytesleft, outbuf, outsize);
 
 	RetType const * tmp = reinterpret_cast<RetType const *>(out);
 	return std::vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
@@ -162,9 +194,8 @@ std::vector<lyx::char_type> utf8_to_ucs4(std::vector<char> const & utf8str)
 std::vector<lyx::char_type>
 utf8_to_ucs4(char const * utf8str, size_t ls)
 {
-	static int cd = -1;
-	return iconv_convert<lyx::char_type>(cd, ucs4_codeset, "UTF-8",
-					      utf8str, ls);
+	static IconvProcessor processor(ucs4_codeset, "UTF-8");
+	return iconv_convert<lyx::char_type>(processor, utf8str, ls);
 }
 
 
@@ -188,9 +219,8 @@ ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str)
 std::vector<lyx::char_type>
 ucs2_to_ucs4(unsigned short const * ucs2str, size_t ls)
 {
-	static int cd = -1;
-	return iconv_convert<lyx::char_type>(cd, ucs4_codeset, ucs2_codeset,
-					      ucs2str, ls);
+	static IconvProcessor processor(ucs4_codeset, ucs2_codeset);
+	return iconv_convert<lyx::char_type>(processor, ucs2str, ls);
 }
 
 
@@ -214,17 +244,16 @@ ucs4_to_ucs2(std::vector<lyx::char_type> const & ucs4str)
 std::vector<unsigned short>
 ucs4_to_ucs2(lyx::char_type const * s, size_t ls)
 {
-	static int cd = -1;
-	return iconv_convert<unsigned short>(cd, ucs2_codeset, ucs4_codeset,
-					     s, ls);
+	static IconvProcessor processor(ucs2_codeset, ucs4_codeset);
+	return iconv_convert<unsigned short>(processor, s, ls);
 }
 
 
 std::vector<char>
 ucs4_to_utf8(lyx::char_type c)
 {
-	static int cd = -1;
-	return iconv_convert<char>(cd, "UTF-8", ucs4_codeset, &c, 1);
+	static IconvProcessor processor("UTF-8", ucs4_codeset);
+	return iconv_convert<char>(processor, &c, 1);
 }
 
 
@@ -241,31 +270,32 @@ ucs4_to_utf8(std::vector<lyx::char_type> const & ucs4str)
 std::vector<char>
 ucs4_to_utf8(lyx::char_type const * ucs4str, size_t ls)
 {
-	static int cd = -1;
-	return iconv_convert<char>(cd, "UTF-8", ucs4_codeset,
-				   ucs4str, ls);
+	static IconvProcessor processor("UTF-8", ucs4_codeset);
+	return iconv_convert<char>(processor, ucs4str, ls);
 }
 
 
 std::vector<lyx::char_type>
 eightbit_to_ucs4(char const * s, size_t ls, std::string const & encoding)
 {
-	static std::map<std::string, int> cd;
-	if (cd.find(encoding) == cd.end())
-		cd[encoding] = -1;
-	return iconv_convert<char_type>(cd[encoding], ucs4_codeset,
-	                                encoding.c_str(), s, ls);
+	static std::map<std::string, IconvProcessor> processors;
+	if (processors.find(encoding) == processors.end()) {
+		IconvProcessor processor(ucs4_codeset, encoding.c_str());
+		processors.insert(std::make_pair(encoding, processor));
+	}
+	return iconv_convert<char_type>(processors[encoding], s, ls);
 }
 
 
 std::vector<char>
 ucs4_to_eightbit(lyx::char_type const * ucs4str, size_t ls, std::string const & encoding)
 {
-	static std::map<std::string, int> cd;
-	if (cd.find(encoding) == cd.end())
-		cd[encoding] = -1;
-	return iconv_convert<char>(cd[encoding], encoding.c_str(),
-	                           ucs4_codeset, ucs4str, ls);
+	static std::map<std::string, IconvProcessor> processors;
+	if (processors.find(encoding) == processors.end()) {
+		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
+		processors.insert(std::make_pair(encoding, processor));
+	}
+	return iconv_convert<char>(processors[encoding], ucs4str, ls);
 }
 
 } // namespace lyx
