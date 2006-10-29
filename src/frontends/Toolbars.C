@@ -65,7 +65,7 @@ void Toolbars::display(string const & name, bool show)
 }
 
 
-void Toolbars::update(bool in_math, bool in_table, bool change_tracking)
+void Toolbars::update(bool in_math, bool in_table, bool review)
 {
 	update();
 
@@ -79,7 +79,7 @@ void Toolbars::update(bool in_math, bool in_table, bool change_tracking)
 		else if (cit->flags & ToolbarBackend::TABLE)
 			displayToolbar(*cit, in_table);
 		else if (cit->flags & ToolbarBackend::REVIEW)
-			displayToolbar(*cit, change_tracking);
+			displayToolbar(*cit, review);
 	}
 }
 

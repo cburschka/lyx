@@ -84,7 +84,7 @@ public:
 	void display(std::string const & name, bool show);
 
 	/// Update the state of the toolbars.
-	void update(bool in_math, bool in_table, bool change_tracking);
+	void update(bool in_math, bool in_table, bool review);
 
 	/// Select the right layout in the combox.
 	void setLayout(std::string const & layout);
