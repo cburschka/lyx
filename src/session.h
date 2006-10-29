@@ -247,34 +247,34 @@ public:
 	void writeFile() const;
 
 	///
-	LastFilesSection & LastFiles() { return last_files; }
+	LastFilesSection & lastFiles() { return last_files; }
 	
 	///
-	LastFilesSection const & LastFiles() const { return last_files; }
+	LastFilesSection const & lastFiles() const { return last_files; }
 
 	///
-	LastOpenedSection & LastOpened() { return last_opened; }
+	LastOpenedSection & lastOpened() { return last_opened; }
 
 	///
-	LastOpenedSection const & LastOpened() const { return last_opened; }
+	LastOpenedSection const & lastOpened() const { return last_opened; }
 	
 	///
-	LastFilePosSection & LastFilePos() { return last_file_pos; }
+	LastFilePosSection & lastFilePos() { return last_file_pos; }
 	
 	///
-	LastFilePosSection const & LastFilePos() const { return last_file_pos; }
+	LastFilePosSection const & lastFilePos() const { return last_file_pos; }
 
 	///
-	BookmarksSection & Bookmarks() { return bookmarks; }
+	BookmarksSection & bookmarks() { return bookmarks_; }
 
 	///
-	BookmarksSection const & Bookmarks() const { return bookmarks; }
+	BookmarksSection const & bookmarks() const { return bookmarks_; }
 
 	///
-	SessionInfoSection & SessionInfo() { return session_info; }
+	SessionInfoSection & sessionInfo() { return session_info; }
 
 	///
-	SessionInfoSection const & SessionInfo() const { return session_info; }
+	SessionInfoSection const & sessionInfo() const { return session_info; }
 
 private:
 	/// file to save session, determined in the constructor.
@@ -297,7 +297,7 @@ private:
 	LastFilePosSection last_file_pos;
 
 	///
-	BookmarksSection bookmarks;
+	BookmarksSection bookmarks_;
 
 	///
 	SessionInfoSection session_info;

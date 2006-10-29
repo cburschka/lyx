@@ -1033,7 +1033,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// might be visible in more than one LyXView.
 			if (lyx_view_ && lyx_view_->view()->buffer()) {
 				// save cursor Position for opened files to .lyx/session
-				LyX::ref().session().LastFilePos().save(lyx_view_->buffer()->fileName(),
+				LyX::ref().session().lastFilePos().save(lyx_view_->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 				// save bookmarks to .lyx/session
 				view()->saveSavedPositions();
@@ -1968,7 +1968,7 @@ void LyXFunc::doImport(string const & argument)
 void LyXFunc::closeBuffer()
 {
 	// save current cursor position
-	LyX::ref().session().LastFilePos().save(lyx_view_->buffer()->fileName(),
+	LyX::ref().session().lastFilePos().save(lyx_view_->buffer()->fileName(),
 		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 	if (theBufferList().close(lyx_view_->buffer(), true) && !quitting) {
 		if (theBufferList().empty()) {

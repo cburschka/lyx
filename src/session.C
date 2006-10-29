@@ -327,15 +327,15 @@ void Session::readFile()
 
 		// Determine section id
 		if (tmp == sec_lastfiles)
-			LastFiles().read(is);
+			lastFiles().read(is);
 		else if (tmp == sec_lastopened)
-			LastOpened().read(is);
+			lastOpened().read(is);
 		else if (tmp == sec_lastfilepos)
-			LastFilePos().read(is);
+			lastFilePos().read(is);
 		else if (tmp == sec_bookmarks)
-			Bookmarks().read(is);
+			bookmarks().read(is);
 		else if (tmp == sec_session)
-			SessionInfo().read(is);
+			sessionInfo().read(is);
 		else
 			lyxerr << "LyX: Warning: unknown Session section: " << tmp << endl;
 	}
@@ -349,11 +349,11 @@ void Session::writeFile() const
 		os << "## Automatically generated lyx session file \n"
 		    << "## Editing this file manually may cause lyx to crash.\n";
 
-		LastFiles().write(os);
-		LastOpened().write(os);
-		LastFilePos().write(os);
-		Bookmarks().write(os);
-		SessionInfo().write(os);
+		lastFiles().write(os);
+		lastOpened().write(os);
+		lastFilePos().write(os);
+		bookmarks().write(os);
+		sessionInfo().write(os);
 	} else
 		lyxerr << "LyX: Warning: unable to save Session: "
 		       << session_file << endl;

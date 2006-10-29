@@ -135,7 +135,7 @@ bool BufferList::quitWriteAll()
 		// if master/slave are both open, do not save slave since it
 		// will be automatically loaded when the master is loaded
 		if ((*it)->getMasterBuffer() == (*it))
-			LyX::ref().session().LastOpened().add((*it)->fileName());
+			LyX::ref().session().lastOpened().add((*it)->fileName());
 	}
 
 	return true;
