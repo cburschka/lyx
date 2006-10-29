@@ -290,7 +290,10 @@ void LyXView::updateToolbars()
 	bool const math = work_area_->bufferView().cursor().inMathed();
 	bool const table =
 		lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
-	toolbars_->update(math, table);
+	// TODO: How should we handle the CT toolbar?
+	bool const change_tracking = true;
+		
+	toolbars_->update(math, table, change_tracking);
 	// update redaonly status of open dialogs. This could also be in
 	// updateMenubar(), but since updateToolbars() and updateMenubar()
 	// are always called together it is only here.

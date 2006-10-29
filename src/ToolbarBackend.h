@@ -52,7 +52,8 @@ public:
 		TOP = 16, //< show at top
 		BOTTOM = 32, //< show at bottom
 		LEFT = 64, //< show at left
-		RIGHT = 128 //< show at right
+		RIGHT = 128, //< show at right
+		REVIEW = 256 //< shown when change tracking is enabled
 	};
 
 	/// a toolbar

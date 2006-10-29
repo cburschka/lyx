@@ -82,8 +82,9 @@ public:
 
 	/// Show/hide the named toolbar.
 	void display(std::string const & name, bool show);
+
 	/// Update the state of the toolbars.
-	void update(bool in_math, bool in_table);
+	void update(bool in_math, bool in_table, bool change_tracking);
 
 	/// Select the right layout in the combox.
 	void setLayout(std::string const & layout);

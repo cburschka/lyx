@@ -186,6 +186,8 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 				flag = MATH;
 			else if (!compare_ascii_no_case(*cit, "table"))
 				flag = TABLE;
+			else if (!compare_ascii_no_case(*cit, "review"))
+				flag = REVIEW;
 			else if (!compare_ascii_no_case(*cit, "top"))
 				flag = TOP;
 			else if (!compare_ascii_no_case(*cit, "bottom"))
