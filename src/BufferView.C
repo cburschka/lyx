@@ -123,7 +123,7 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 
 
 BufferView::BufferView()
-	: buffer_(0), wh_(0), width_(0), height_(0),
+	: width_(0), height_(0), buffer_(0), wh_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
 	  intl_(new Intl)
