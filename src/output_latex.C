@@ -499,7 +499,34 @@ TeXOnePar(Buffer const & buf,
 		// This is of course a hack, but not a bigger one than mixing
 		// two encodings in one file.
 		// FIXME: Catch iconv conversion errors and display an error
-		// dialog. 
+		// dialog.
+
+		// Here follows an explanation how I (gb) came to the current
+		// solution:
+
+		// codecvt facets are only used by file streams -> OK, maybe
+		// we could use file streams and not generic streams in the
+		// latex() methods? No, that does not  work, we use them at
+		// several places to write to string streams.
+		// Next try: Maybe we could do something else than codecvt
+		// in our streams, and  add a setEncoding() method? That
+		// does not work unless we rebuild the functionality of file
+		// and string streams, since both odocfstream and
+		// odocstringstream inherit from std::basic_ostream<docstring>
+		// and we can  neither add a method to that class nor change
+		// the inheritance of the file and string streams.
+
+		// What might be possible is to encapsulate the real file and
+		// string streams in our own version, and use a homemade
+		// streambuf that would do the encoding conversion and then
+		// forward to the real stream. That would probably work, but
+		// would require far more code and a good understanding of
+		// stream buffers to get it right.
+
+		// Another idea by JMarc is to use a modifier like
+		// os << setencoding("iso-8859-1");
+		// That currently looks like the best idea.
+
 		std::vector<char_type> const faked = lyx::eightbit_to_ucs4(&(encoded[0]),
 			encoded.size(), doc_language->encoding()->iconvName());
 		std::vector<char_type>::const_iterator const end = faked.end();
