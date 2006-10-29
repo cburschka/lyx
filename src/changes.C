@@ -16,7 +16,6 @@
 #include "changes.h"
 #include "debug.h"
 
-#include <cmath>
 #include <boost/assert.hpp>
 
 
@@ -31,27 +30,32 @@ using std::max;
  * Class Change has a changetime field that specifies the exact time at which
  * a specific change was made. The change time is used as a guidance for the
  * user while editing his document. Presently, it is not considered for LaTeX
- * export. To avoid that every keystroke results in a separate change, a 
- * tolerance interval of 5 minutes is used. That means if there are two adjacent
- * changes that only differ in their change time with abs(ct1 - ct2) < 300 sec,
- * they will be merged (and the later change time is preserved).
- * Technically, the check for equality (or similarity) is made in operator==(...).
- * The merging of similar changes happens in method merge().
+ * export.
+ * When merging two adjacent changes, the changetime is not considered,
+ * only the equality of the change type and author is checked (in method
+ * isSimilarTo(...)). If two changes are in fact merged (in method merge()),
+ * the later change time is preserved. 
  */
 
-bool operator==(Change const & l, Change const & r)
+bool Change::isSimilarTo(Change const & change)
 {
-	if (l.type != r.type) {
+	if (type != change.type) {
 		return false;
 	}
 
-	if (l.type == Change::UNCHANGED) {
+	if (type == Change::UNCHANGED) {
 		return true;
 	}
 
-	return l.author == r.author
-	       // both changes made within 5 minutes?
-	       && abs(difftime(l.changetime, r.changetime)) < 300;
+	return author == change.author;
+}
+
+
+bool operator==(Change const & l, Change const & r)
+{
+	return l.type == r.type &&
+	       l.author == r.author &&
+	       l.changetime == r.changetime;
 }
 
 
@@ -293,7 +297,7 @@ void Changes::merge()
 		if (it + 1 == table_.end())
 			break;
 
-		if (it->change == (it + 1)->change && it->range.end == (it + 1)->range.start) {
+		if (it->change.isSimilarTo((it + 1)->change) && it->range.end == (it + 1)->range.start) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
 				lyxerr[Debug::CHANGES] << "  merging ranges (" << it->range.start << ", "
 					<< it->range.end << ") and (" << (it + 1)->range.start << ", "

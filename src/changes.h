@@ -36,6 +36,9 @@ public:
 	explicit Change(Type t, int a = 0, time_type ct = current_time())
 		: type(t), author(a), changetime(ct) {}
 
+	/// is the change similar to the given change such that both can be merged?
+	bool isSimilarTo(Change const & change);
+
 	Type type;
 
 	int author;
