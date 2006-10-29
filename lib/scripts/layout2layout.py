@@ -135,7 +135,7 @@ def convert(lines):
                                 return
                         error('Cannot convert file format %s' % format)
                 else:
-	                lines.insert(i, "Format 2")
+                        lines.insert(i, "Format 2")
                         only_comment = 0
                         continue
 
@@ -282,7 +282,7 @@ def convert(lines):
                 i = i + 1
 
             # Add the TocLevel setting for sectioning styles
-	    if toclevels.has_key(style) and maxcounter <= toclevels[style]:
+            if toclevels.has_key(style) and maxcounter <= toclevels[style]:
                 lines.insert(i, '%sTocLevel %d' % (space1, toclevels[style]))
                 i = i + 1
 
