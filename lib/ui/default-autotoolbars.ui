@@ -1,0 +1,40 @@
+# -*- text -*-
+
+# file default.ui
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author John Levon
+
+# Full author contact details are available in file CREDITS.
+
+# This is the default LyX user interface definition file.
+# The syntax should be straightforward enough.
+
+# The interface is designed (partially) following the KDE Human Interface
+# Guidelines (http://usability.kde.org/hig/)
+
+Include "stdmenus.ui"
+
+Include "stdtoolbars.ui"
+
+# Which toolbars to use.
+#
+# The second parameter are the flags :
+#
+# on: the toolbar is visible
+# off: the toolbar is not visible
+# math: the toolbar is visible only when in math
+# table: the toolbar is visible only when in a table
+# top: the toolbar should be at the top of the window
+# bottom: the toolbar should be at the bottom of the window
+# left: the toolbar should be at the left of the window
+# right: the toolbar should be at the right of the window
+#
+Toolbars
+	"standard" "on,top"
+	"extra" "on,top"
+	"table" "table,bottom"
+	"math" "math,bottom"
+	"minibuffer" "off,bottom"
+End
