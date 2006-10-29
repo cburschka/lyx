@@ -122,11 +122,6 @@ void Toolbars::add(ToolbarBackend::Toolbar const & tbb)
 	ToolbarPtr tb_ptr = owner_.makeToolbar(tbb);
 	toolbars_[tbb.name] = tb_ptr;
 
-	if (tbb.flags & ToolbarBackend::ON)
-		tb_ptr->show(false);
-	else
-		tb_ptr->hide(false);
-
 	if (tb_ptr->layout())
 		layout_ = tb_ptr->layout();
 }
