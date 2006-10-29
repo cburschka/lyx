@@ -852,8 +852,6 @@ void paintPar
 			// Add to row signature cache
 			par.rowSignature()[rowno] = row_sig;
 
-			bool const inside = (y + rit->descent() >= 0
-				       && y - rit->ascent() < ww);
 			RowPainter rp(pi, text, pit, *rit, x, y);
 			// Clear background of this row
 			// (if paragraph background was not cleared)
