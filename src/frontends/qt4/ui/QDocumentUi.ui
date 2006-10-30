@@ -34,7 +34,7 @@
     <number>6</number>
    </property>
    <item>
-    <widget class="PanelStack" name="docPS" />
+    <widget class="lyx::frontend::PanelStack" name="docPS" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -163,7 +163,7 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>PanelStack</class>
+   <class>lyx::frontend::PanelStack</class>
    <extends></extends>
    <header>panelstack.h</header>
    <container>1</container>

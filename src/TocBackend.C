@@ -39,7 +39,6 @@ using std::vector;
 using std::max;
 using std::ostream;
 using std::string;
-using std::cout;
 using std::endl;
 
 
@@ -205,8 +204,6 @@ void TocBackend::update()
 				tocstring = pit->asString(*buffer_, true);
 			Item const item(pit, toclevel - min_toclevel, tocstring);
 			tocs_["TOC"].push_back(item);
-			//cout << "item inserted str " << item.str()
-			//	<< "  id " << item.id() << endl;
 		}
 	}
 

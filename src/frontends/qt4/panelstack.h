@@ -24,7 +24,9 @@ class QTreeWidget;
 class QTreeWidgetItem;
 class QStackedWidget;
 
-//namespace lyx {
+namespace lyx {
+namespace frontend {
+
 
 class PanelStack : public QWidget
 {
@@ -64,7 +66,7 @@ private:
 	QStackedWidget * stack_;
 };
 
-
-//} // namespace lyx
+} // namespace frontend
+} // namespace lyx
 
 #endif // PANELSTACK_H

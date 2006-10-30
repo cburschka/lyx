@@ -40,7 +40,6 @@ using std::vector;
 using std::max;
 using std::ostream;
 using std::string;
-using std::cout;
 using std::endl;
 
 namespace lyx {

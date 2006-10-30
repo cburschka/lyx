@@ -14,6 +14,8 @@
 
 #include "qt_helpers.h"
 
+#include "debug.h"
+
 #include <QStackedWidget>
 #include <QTreeWidget>
 #include <QHBoxLayout>
@@ -23,10 +25,12 @@
 
 #include <iostream>
 
-using lyx::docstring;
 
 using std::endl;
 using std::cout;
+
+namespace lyx {
+namespace frontend {
 
 
 PanelStack::PanelStack(QWidget * parent)
@@ -55,7 +59,7 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 	QString name;
 	lyx::ucs4_to_qstring(n, name);
 
-	cout << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
+	lyxerr[Debug::GUI] << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
 
 	if (parent.empty()) {
 		item = new QTreeWidgetItem(list_);
@@ -120,5 +124,8 @@ QSize PanelStack::sizeHint() const
 	return QSize(list_->width() + stack_->width(),
 		qMax(list_->height(), stack_->height()));
 }
+
+} // namespace frontend
+} // namespace lyx
 
 #include "panelstack_moc.cpp"
