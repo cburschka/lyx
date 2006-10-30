@@ -106,7 +106,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 #endif
 
 	// install translation file for Qt built-in dialogs
-	// These are only installed since Qt 3.2.x
 	QTranslator qt_trans;
 	QString language_name = QString("qt_") + QLocale::system().name();
 	language_name.truncate(5);

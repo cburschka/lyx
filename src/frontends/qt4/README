@@ -15,9 +15,6 @@ to use QWhatsThis too, but this must be done in the derived class's
 constructor, and use _("..."). Non-trivial means that things like "OK"
 /must not/ have a tooltip.
 
-*DO NOT USE DESIGNER FROM Qt 3*. You must use a designer from Qt 2 to
-maintain compatibility.
-
 moc is incredibly stupid and sometimes you need a fully qualified
 "std::string" for .connect() statements to work. Be very, very careful.
 
