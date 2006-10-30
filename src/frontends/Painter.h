@@ -175,7 +175,7 @@ protected:
 	virtual void buttonFrame(int x, int y, int w, int h);
 
 	/// Indicate wether real screen drawing shall be done or not.
-	bool const isDrawingEnabled() { return drawing_enabled_; }
+	bool isDrawingEnabled() const { return drawing_enabled_; }
 
 private:
 	///
