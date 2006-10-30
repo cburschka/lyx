@@ -66,7 +66,6 @@ void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
 		return;
 
 	int maxoutsize = n * 4;
-	int cd = -1;
 	// basic_string::data() is not recognized by some old gcc version
 	// so we use &(ucs4[0]) instead.
 	char * outbuf = (char *)(&(ucs4[0]));
