@@ -446,7 +446,6 @@ src_frontends_header_files = Split('''
     Timeout.h
     Toolbars.h
     WorkArea.h
-    guiapi.h
     key_state.h
     mouse_state.h
     nullpainter.h
@@ -462,7 +461,6 @@ src_frontends_files = Split('''
     Timeout.C
     Toolbars.C
     WorkArea.C
-    guiapi.C
 ''')
 
 

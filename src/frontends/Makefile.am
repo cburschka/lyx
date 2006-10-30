@@ -41,8 +41,6 @@ libfrontends_la_SOURCES = \
 	Selection.h \
 	WorkArea.C \
 	WorkArea.h \
-	guiapi.h \
-	guiapi.C \
 	key_state.h \
 	mouse_state.h \
 	nullpainter.h
