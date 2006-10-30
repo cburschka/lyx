@@ -52,7 +52,6 @@
 
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
-#include "frontends/nullpainter.h"
 
 #include "funcrequest.h"
 #include "lyxserver.h"

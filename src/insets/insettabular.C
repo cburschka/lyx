@@ -40,7 +40,6 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
-#include "frontends/nullpainter.h"
 
 #include <sstream>
 #include <iostream>
