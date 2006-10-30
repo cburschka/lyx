@@ -516,7 +516,7 @@ bool updateCurrentLabel(Buffer const & buf,
     if (it == par_iterator_end(buf.inset()))
 	return false;
 
-//	if (it.lastpit == 0 && LyXText::isMainText())
+//	if (it.lastpit == 0 && LyXText::isMainText(buf))
 //		return false;
 
 	switch (it->layout()->labeltype) {

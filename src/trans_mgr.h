@@ -22,6 +22,7 @@
 
 namespace lyx {
 
+class LCursor;
 class LyXText;
 class Trans;
 
@@ -150,9 +151,9 @@ private:
 	///
 	CharacterSet chset_;
 	///
-	void insert(std::string const &, LyXText *);
+	void insert(std::string const &, LyXText *, LCursor & cur);
 	///
-	void insertVerbatim(std::string const &, LyXText *);
+	void insertVerbatim(std::string const &, LyXText *, LCursor & cur);
 public:
 	///
 	TransManager();
@@ -175,13 +176,13 @@ public:
 		return trans_fsm_.currentState->backspace();
 	}
 	///
-	void translateAndInsert(char, LyXText *);
+	void translateAndInsert(char, LyXText *, LCursor &);
 	///
 	std::string const deadkey(char, KmodInfo);
 	///
 	std::string const normalkey(char);
 	///
-	void deadkey(char, tex_accent, LyXText *);
+	void deadkey(char, tex_accent, LyXText *, LCursor &);
 };
 
 

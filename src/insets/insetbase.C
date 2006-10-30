@@ -314,19 +314,19 @@ bool InsetBase::editing(BufferView * bv) const
 }
 
 
-int InsetBase::xo(BufferView & bv) const
+int InsetBase::xo(BufferView const & bv) const
 {
 	return bv.coordCache().getInsets().x(this);
 }
 
 
-int InsetBase::yo(BufferView & bv) const
+int InsetBase::yo(BufferView const & bv) const
 {
 	return bv.coordCache().getInsets().y(this);
 }
 
 
-bool InsetBase::covers(BufferView & bv, int x, int y) const
+bool InsetBase::covers(BufferView const & bv, int x, int y) const
 {
 	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y
 	//	<< " xo: " << xo(bv) << " yo: " << yo()

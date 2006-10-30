@@ -32,7 +32,7 @@ public:
 	///
 	virtual bool display() const;
 	///
-	virtual bool neverIndent() const { return true; }
+	virtual bool neverIndent(Buffer const &) const { return true; }
 	///
 	virtual InsetBase::Code lyxCode() const;
 	///

@@ -80,7 +80,7 @@ public:
 	///
 	bool forceDefaultParagraphs(idx_type) const;
 	///
-	bool neverIndent() const { return true; }
+	bool neverIndent(Buffer const &) const { return true; }
 	///
 	bool noFontChange() const { return true; }
 	///

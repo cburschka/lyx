@@ -129,7 +129,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_.width())
 {
-	RowMetrics m = text_.computeRowMetrics(pit, row_);
+	RowMetrics m = text_.computeRowMetrics(*bv_.buffer(), pit, row_);
 	x_ = m.x + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
@@ -146,13 +146,13 @@ RowPainter::RowPainter(PainterInfo & pi,
 
 LyXFont const RowPainter::getLabelFont() const
 {
-	return text_.getLabelFont(par_);
+	return text_.getLabelFont(*bv_.buffer(), par_);
 }
 
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(pit_, row_.pos());
+	return text_.leftMargin(*bv_.buffer(), pit_, row_.pos());
 }
 
 
@@ -203,7 +203,8 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 		if (!Encodings::isComposeChar_hebrew(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 =
-					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
+					text_.singleWidth(*bv_.buffer(), par_, i, c,
+						text_.getFont(*bv_.buffer(), par_, i));
 				// FIXME UNICODE
 				// This does not work anymore, and non-ascii
 				// characters in source files are forbidden
@@ -242,7 +243,8 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 		if (!Encodings::isComposeChar_arabic(c)) {
 			if (isPrintableNonspace(c)) {
 				int const width2 =
-					text_.singleWidth(par_, i, c, text_.getFont(par_, i));
+					text_.singleWidth(*bv_.buffer(), par_, i, c,
+						text_.getFont(*bv_.buffer(), par_, i));
 				dx = (width2 - width) / 2;
 			}
 			break;
@@ -328,7 +330,7 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & font, int desc)
 void RowPainter::paintFromPos(pos_type & vpos)
 {
 	pos_type const pos = text_.bidi.vis2log(vpos);
-	LyXFont orig_font = text_.getFont(par_, pos);
+	LyXFont orig_font = text_.getFont(*bv_.buffer(), par_, pos);
 
 	double const orig_x = x_;
 
@@ -423,7 +425,7 @@ void RowPainter::paintDepthBar()
 		int const w = nestMargin() / 5;
 		int x = int(xo_) + w * i;
 		// only consider the changebar space if we're drawing outermost text
-		if (text_.isMainText())
+		if (text_.isMainText(*bv_.buffer()))
 			x += changebarMargin();
 
 		int const starty = yo_ - row_.ascent();
@@ -494,7 +496,7 @@ void RowPainter::paintFirst()
 		}
 	}
 
-	bool const is_rtl = text_.isRTL(par_);
+	bool const is_rtl = text_.isRTL(buffer, par_);
 	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << std::endl;
 
@@ -576,7 +578,7 @@ void RowPainter::paintFirst()
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				if (is_rtl)
 					x = leftMargin();
-				x += (width_ - text_.rightMargin(par_) - leftMargin()) / 2;
+				x += (width_ - text_.rightMargin(buffer, par_) - leftMargin()) / 2;
 				x -= fm.width(str) / 2;
 			} else if (is_rtl) {
 				x = width_ - leftMargin() -	fm.width(str);
@@ -589,7 +591,7 @@ void RowPainter::paintFirst()
 
 void RowPainter::paintLast()
 {
-	bool const is_rtl = text_.isRTL(par_);
+	bool const is_rtl = text_.isRTL(*bv_.buffer(), par_);
 	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
 	// draw an endlabel
@@ -618,7 +620,7 @@ void RowPainter::paintLast()
 		docstring const & str = par_.layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - fm.width(str)
-			: - text_.rightMargin(par_) - row_.width();
+			: - text_.rightMargin(*bv_.buffer(), par_) - row_.width();
 		pain_.text(int(x), yo_, str, font);
 		break;
 	}
@@ -647,6 +649,7 @@ void RowPainter::paintText()
 	// Use font span to speed things up, see below
 	FontSpan font_span;
 	LyXFont font;
+	Buffer const & buffer = *bv_.buffer();
 
 	for (pos_type vpos = row_.pos(); vpos < end; ) {
 		if (x_ > bv_.workWidth())
@@ -662,11 +665,11 @@ void RowPainter::paintText()
 		// Use font span to speed things up, see above
 		if (vpos < font_span.first || vpos > font_span.last) {
 			font_span = par_.fontSpan(vpos);
-			font = text_.getFont(par_, vpos);
+			font = text_.getFont(buffer, par_, vpos);
 		}
 
-		const int width_pos =
-			text_.singleWidth(par_, pos, par_.getChar(pos), font);
+		const int width_pos = text_.singleWidth(buffer, par_, pos,
+			par_.getChar(pos), font);
 
 		if (x_ + width_pos < 0) {
 			x_ += width_pos;
@@ -872,7 +875,7 @@ void paintPar
 
 			// Instrumentation for testing row cache (see also
 			// 12 lines lower):
-			if (text.isMainText())
+			if (text.isMainText(*pi.base.bv->buffer()))
 				lyxerr[Debug::PAINTING] << "#";
 			else
 				lyxerr[Debug::PAINTING] << "[" <<
@@ -904,7 +907,8 @@ void paintText(BufferView & bv,
 	       Painter & pain)
 {
 	BOOST_ASSERT(bv.buffer());
-	LyXText & text = bv.buffer()->text();
+	Buffer const & buffer = *bv.buffer();
+	LyXText & text = buffer.text();
 	bool const select = bv.cursor().selection();
 	ViewMetricsInfo const & vi = bv.viewMetricsInfo();
 	
@@ -936,13 +940,13 @@ void paintText(BufferView & bv,
 	// Try viewing the User Guide Mobius figure
 
 	if (vi.p1 > 0) {
-		text.redoParagraph(vi.p1 - 1);
+		text.redoParagraph(bv, vi.p1 - 1);
 		bv.coordCache().parPos()[&text][vi.p1 - 1] =
 			Point(0, vi.y1 - text.getPar(vi.p1 - 1).descent());
 	}
 
 	if (vi.p2 < pit_type(text.paragraphs().size()) - 1) {
-		text.redoParagraph(vi.p2 + 1);
+		text.redoParagraph(bv, vi.p2 + 1);
 		bv.coordCache().parPos()[&text][vi.p2 + 1] =
 			Point(0, vi.y2 + text.getPar(vi.p2 + 1).ascent());
 	}

@@ -117,13 +117,13 @@ public:
 	void touch() const;
 
 	/// access to cached x coordinate of last drawing
-	int xo(BufferView & bv) const;
+	int xo(BufferView const & bv) const;
 	/// access to cached y coordinate of last drawing
-	int yo(BufferView & bv) const;
+	int yo(BufferView const & bv) const;
 	/// access to cached x coordinate of mid point of last drawing
-	int xm(BufferView & bv) const { return xo(bv) + dim_.wid / 2; }
+	int xm(BufferView const & bv) const { return xo(bv) + dim_.wid / 2; }
 	/// access to cached y coordinate of mid point of last drawing
-	int ym(BufferView & bv) const { return yo(bv) + (dim_.des - dim_.asc) / 2; }
+	int ym(BufferView const & bv) const { return yo(bv) + (dim_.des - dim_.asc) / 2; }
 	/// write access to coordinate;
 	void setXY(BufferView & bv, int x, int y) const;
 	/// returns x coordinate of given position in the array
@@ -136,7 +136,7 @@ public:
 	size_type x2pos(int targetx, int glue) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
-	int dist(BufferView & bv, int x, int y) const;
+	int dist(BufferView const & bv, int x, int y) const;
 
 	/// ascent of this cell above the baseline
 	int ascent() const { return dim_.asc; }

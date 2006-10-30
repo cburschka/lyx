@@ -52,29 +52,32 @@ class Spacing;
 class LyXText {
 public:
 	/// constructor
-	explicit LyXText(BufferView *);
+	explicit LyXText(BufferView * bv = 0);
 	///
 	void init(BufferView *);
 
 	///
-	LyXFont getFont(Paragraph const & par, pos_type pos) const;
+	LyXFont getFont(Buffer const & buffer, Paragraph const & par,
+		pos_type pos) const;
 	///
-	void applyOuterFont(LyXFont &) const;
+	void applyOuterFont(Buffer const & buffer, LyXFont &) const;
 	///
-	LyXFont getLayoutFont(pit_type pit) const;
+	LyXFont getLayoutFont(Buffer const & buffer, pit_type pit) const;
 	///
-	LyXFont getLabelFont(Paragraph const & par) const;
+	LyXFont getLabelFont(Buffer const & buffer,
+		Paragraph const & par) const;
 	///
-	void setCharFont(pit_type pit, pos_type pos, LyXFont const & font);
+	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
+		LyXFont const & font);
 	///
-	void setCharFont(pit_type pit, pos_type pos, LyXFont const & font,
-		bool toggleall);
+	void setCharFont(Buffer const & buffer, pit_type pit, pos_type pos,
+		LyXFont const & font, bool toggleall);
 
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(LCursor & cur, bool keep_layout = false);
 
 	/// set layout over selection
-	void setLayout(pit_type start, pit_type end,
+	void setLayout(Buffer const & buffer, pit_type start, pit_type end,
 		std::string const & layout);
 	///
 	void setLayout(LCursor & cur, std::string const & layout);
@@ -94,10 +97,10 @@ public:
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	/// rebreaks the given par
-	bool redoParagraph(pit_type pit);
+	bool redoParagraph(BufferView &, pit_type pit);
 
 	/// returns pos in given par at given x coord
-	pos_type x2pos(pit_type pit, int row, int x) const;
+	pos_type x2pos(BufferView const &, pit_type pit, int row, int x) const;
 	int pos2x(pit_type pit, pos_type pos) const;
 
 	///
@@ -124,9 +127,6 @@ public:
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
 
-	/// access to out BufferView. This should go...
-	BufferView * bv() const;
-
 	/// read-only access to individual paragraph
 	Paragraph const & getPar(pit_type pit) const { return pars_[pit]; }
 	/// read-write access to individual paragraph
@@ -137,13 +137,14 @@ public:
 	/** returns row near the specified
 	  * y-coordinate in given paragraph (relative to the screen).
 	  */
-	Row const & getRowNearY(int y, pit_type pit) const;
-	pit_type getPitNearY(int y) const;
+	Row const & getRowNearY(BufferView const & bv, int y,
+		pit_type pit) const;
+	pit_type getPitNearY(BufferView const & bv, int y) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	pos_type getColumnNearX(pit_type pit,
+	pos_type getColumnNearX(BufferView const & bv, pit_type pit,
 		Row const & row, int & x, bool & boundary) const;
 
 	/** Find the word under \c from in the relative location
@@ -172,9 +173,9 @@ public:
 	void setCurrentFont(LCursor & cur);
 
 	///
-	void recUndo(pit_type first, pit_type last) const;
+	void recUndo(LCursor & cur, pit_type first, pit_type last) const;
 	///
-	void recUndo(pit_type first) const;
+	void recUndo(LCursor & cur, pit_type first) const;
 	/// returns true if par was empty and was removed
 	bool setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
@@ -269,12 +270,13 @@ public:
 	int height() const;
 
 	/// Returns an inset if inset was hit, or 0 if not.
-	InsetBase * checkInsetHit(int x, int y) const;
+	InsetBase * checkInsetHit(BufferView const &, int x, int y) const;
 
 	///
-	int singleWidth(Paragraph const & par, pos_type pos) const;
+	int singleWidth(Buffer const &, Paragraph const & par,
+		pos_type pos) const;
 	///
-	int singleWidth(Paragraph const & par,
+	int singleWidth(Buffer const &, Paragraph const & par,
 		pos_type pos, char_type c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
@@ -286,20 +288,21 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(pit_type pit, pos_type pos) const;
-	int leftMargin(pit_type pit) const;
+	int leftMargin(Buffer const &, pit_type pit, pos_type pos) const;
+	int leftMargin(Buffer const &, pit_type pit) const;
 	///
-	int rightMargin(Paragraph const & par) const;
+	int rightMargin(Buffer const &, Paragraph const & par) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	RowMetrics computeRowMetrics(pit_type pit, Row const & row) const;
+	RowMetrics computeRowMetrics(Buffer const &, pit_type pit,
+		Row const & row) const;
 
 	/// access to our paragraphs
 	ParagraphList const & paragraphs() const { return pars_; }
 	ParagraphList & paragraphs() { return pars_; }
 	/// return true if this is the main text
-	bool isMainText() const;
+	bool isMainText(Buffer const &) const;
 
 	/// return first row of text
 	Row const & firstRow() const;
@@ -310,11 +313,11 @@ public:
 	bool isFirstRow(pit_type pit, Row const & row) const;
 
 	///
-	double spacing(Paragraph const & par) const;
+	double spacing(Buffer const & buffer, Paragraph const & par) const;
 	/// make a suggestion for a label
 	std::string getPossibleLabel(LCursor & cur) const;
 	/// is this paragraph right-to-left?
-	bool isRTL(Paragraph const & par) const;
+	bool isRTL(Buffer const &, Paragraph const & par) const;
 	///
 	bool checkAndActivateInset(LCursor & cur, bool front);
 
@@ -328,7 +331,8 @@ public:
 	///
 	int descent() const;
 	///
-	int cursorX(CursorSlice const & cursor, bool boundary) const;
+	int cursorX(Buffer const &, CursorSlice const & cursor,
+		bool boundary) const;
 	///
 	int cursorY(CursorSlice const & cursor, bool boundary) const;
 
@@ -347,9 +351,6 @@ public:
 	///
 	int background_color_;
 
-	/// only the top-level LyXText has this non-zero
-	BufferView * bv_owner;
-
 	///
 	mutable Bidi bidi;
 	///
@@ -367,7 +368,7 @@ private:
 	pit_type undoSpan(pit_type pit);
 
 	/// Calculate and set the height of the row
-	void setHeightOfRow(pit_type, Row & row);
+	void setHeightOfRow(BufferView const &, pit_type, Row & row);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
@@ -382,13 +383,13 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(pit_type pit, Row & row) const;
+	void rowBreakPoint(Buffer const &, pit_type pit, Row & row) const;
 	/// sets row.width to the minimum space a row needs on the screen in pixel
-	void setRowWidth(pit_type pit, Row & row) const;
+	void setRowWidth(Buffer const &, pit_type pit, Row & row) const;
 	/// the minimum space a manual label needs on the screen in pixels
-	int labelFill(Paragraph const & par, Row const & row) const;
+	int labelFill(Buffer const &, Paragraph const & par, Row const & row) const;
 	/// FIXME
-	int labelEnd(pit_type pit) const;
+	int labelEnd(Buffer const &, pit_type pit) const;
 
 	///
 	void charInserted();

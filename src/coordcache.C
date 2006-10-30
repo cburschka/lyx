@@ -49,11 +49,11 @@ void CoordCache::clear()
 }
 
 
-Point CoordCache::get(LyXText const * text, pit_type pit)
+Point CoordCache::get(LyXText const * text, pit_type pit) const
 {
-	ParPosCache::iterator const it = pars_.find(text);
+	ParPosCache::const_iterator const it = pars_.find(text);
 	BOOST_ASSERT(it != pars_.end());
-	InnerParPosCache::iterator const posit = it->second.find(pit);
+	InnerParPosCache::const_iterator const posit = it->second.find(pit);
 	BOOST_ASSERT(posit != it->second.end());
 	return posit->second;
 }

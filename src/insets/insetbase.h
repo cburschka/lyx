@@ -120,13 +120,13 @@ public:
 	/// add space for markers
 	void metricsMarkers2(Dimension & dim, int framesize = 1) const;
 	/// last drawn position for 'important' insets
-	int xo(BufferView & bv) const;
+	int xo(BufferView const & bv) const;
 	/// last drawn position for 'important' insets
-	int yo(BufferView & bv) const;
+	int yo(BufferView const & bv) const;
 	/// set x/y drawing position cache if available
 	virtual void setPosCache(PainterInfo const &, int, int) const {}
 	/// do we cover screen position x/y?
-	virtual bool covers(BufferView & bv, int x, int y) const;
+	virtual bool covers(BufferView const & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in cursor.C)
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
@@ -352,7 +352,7 @@ public:
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
 	/// should paragraph indendation be ommitted in any case?
-	virtual bool neverIndent() const { return false; }
+	virtual bool neverIndent(Buffer const &) const { return false; }
 	/// dumps content to lyxerr
 	virtual void dump() const;
 	/// write inset in .lyx format

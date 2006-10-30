@@ -407,7 +407,7 @@ MathArray::size_type MathArray::x2pos(int targetx, int glue) const
 }
 
 
-int MathArray::dist(BufferView & bv, int x, int y) const
+int MathArray::dist(BufferView const & bv, int x, int y) const
 {
 	int xx = 0;
 	int yy = 0;
@@ -436,13 +436,13 @@ void MathArray::setXY(BufferView & bv, int x, int y) const
 }
 
 
-int MathArray::xo(BufferView & bv) const
+int MathArray::xo(BufferView const & bv) const
 {
 	return bv.coordCache().getArrays().x(this);
 }
 
 
-int MathArray::yo(BufferView & bv) const
+int MathArray::yo(BufferView const & bv) const
 {
 	return bv.coordCache().getArrays().y(this);
 }

@@ -956,15 +956,14 @@ void toggleFixedWidth(LCursor & cur, InsetText * inset, bool fixedWidth)
 		return;
 
 	// merge all paragraphs to one
-	BufferParams const & bp =
-		inset->getText(0)->bv_owner->buffer()->params();
+	BufferParams const & bp = cur.bv().buffer()->params();
 	while (inset->paragraphs().size() > 1)
 		mergeParagraph(bp, inset->paragraphs(), 0);
 
 	// reset layout
 	cur.push(*inset);
 	// undo information has already been recorded
-	inset->getText(0)->setLayout(0, cur.lastpit() + 1,
+	inset->getText(0)->setLayout(*cur.bv().buffer(), 0, cur.lastpit() + 1,
 			bp.getLyXTextClass().defaultLayoutName());
 	cur.pop();
 }

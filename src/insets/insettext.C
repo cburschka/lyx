@@ -88,7 +88,7 @@ InsetText::InsetText(BufferParams const & bp)
 
 
 InsetText::InsetText(InsetText const & in)
-	: InsetOld(in), text_(in.text_.bv_owner)
+	: InsetOld(in), text_()
 {
 	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
@@ -167,7 +167,6 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
-	setViewCache(mi.base.bv);
 	mi.base.textwidth -= 2 * border_;
 	font_ = mi.base.font;
 	// Hand font through to contained lyxtext:
@@ -211,7 +210,7 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetText::covers(BufferView & bv, int x, int y) const
+bool InsetText::covers(BufferView const & bv, int x, int y) const
 {
 	return bv.coordCache().getInsets().has(this)
 			&& x >= xo(bv)
@@ -230,7 +229,6 @@ docstring const InsetText::editMessage() const
 void InsetText::edit(LCursor & cur, bool left)
 {
 	//lyxerr << "InsetText: edit left/right" << endl;
-	setViewCache(&cur.bv());
 	int const pit = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
 	text_.setCursor(cur.top(), pit, pos);
@@ -250,7 +248,6 @@ void InsetText::doDispatch(LCursor & cur, FuncRequest & cmd)
 	lyxerr[Debug::ACTION] << BOOST_CURRENT_FUNCTION
 			     << " [ cmd.action = "
 			     << cmd.action << ']' << endl;
-	setViewCache(&cur.bv());
 	text_.dispatch(cur, cmd);
 }
 
@@ -338,10 +335,10 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::cursorPos(BufferView const & /*bv*/,
+void InsetText::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(sl, boundary) + border_;
+	x = text_.cursorX(*bv.buffer(), sl, boundary) + border_;
 	y = text_.cursorY(sl, boundary);
 }
 
@@ -400,16 +397,6 @@ void InsetText::setFrameColor(LColor_color col)
 }
 
 
-void InsetText::setViewCache(BufferView const * bv) const
-{
-	if (bv && bv != text_.bv_owner) {
-		//lyxerr << "setting view cache from "
-		//	<< text_.bv_owner << " to " << bv << "\n";
-		text_.bv_owner = const_cast<BufferView *>(bv);
-	}
-}
-
-
 void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 {
 	// There is little we can do here to keep track of changes.
@@ -446,10 +433,10 @@ void InsetText::addPreview(PreviewLoader & loader) const
 
 //FIXME: instead of this hack, which only works by chance,
 // cells should have their own insetcell type, which returns CELL_CODE!
-bool InsetText::neverIndent() const
+bool InsetText::neverIndent(Buffer const & buffer) const
 {
 	// this is only true for tabular cells
-	return !text_.isMainText() && lyxCode() == TEXT_CODE;
+	return !text_.isMainText(buffer) && lyxCode() == TEXT_CODE;
 }
 
 

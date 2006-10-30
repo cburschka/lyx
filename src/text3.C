@@ -295,9 +295,9 @@ void LyXText::number(LCursor & cur)
 }
 
 
-bool LyXText::isRTL(Paragraph const & par) const
+bool LyXText::isRTL(Buffer const & buffer, Paragraph const & par) const
 {
-	return par.isRightToLeftPar(bv()->buffer()->params());
+	return par.isRightToLeftPar(buffer.params());
 }
 
 
@@ -324,7 +324,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_MOVE_DOWN: {
 		pit_type const pit = cur.pit();
-		recUndo(pit, pit + 1);
+		recUndo(cur, pit, pit + 1);
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit + 1]);
 
@@ -339,7 +339,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_MOVE_UP: {
 		pit_type const pit = cur.pit();
-		recUndo(pit - 1, pit);
+		recUndo(cur, pit - 1, pit);
 		finishUndo();
 		std::swap(pars_[pit], pars_[pit - 1]);
 
@@ -363,7 +363,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// ensure that we have only one start_of_appendix in this document
 		for (pit_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
 			if (pars_[tmp].params().startOfAppendix()) {
-				recUndo(tmp);
+				recUndo(cur, tmp);
 				pars_[tmp].params().startOfAppendix(false);
 				break;
 			}
@@ -420,7 +420,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		//lyxerr << BOOST_CURRENT_FUNCTION
 		//       << " LFUN_CHAR_FORWARD[SEL]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
-		if (isRTL(cur.paragraph()))
+		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
 			needsUpdate |= cursorLeft(cur);
 		else
 			needsUpdate |= cursorRight(cur);
@@ -436,7 +436,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD_SELECT:
 		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
-		if (isRTL(cur.paragraph()))
+		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
 			needsUpdate |= cursorRight(cur);
 		else
 			needsUpdate |= cursorLeft(cur);
@@ -526,7 +526,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT);
-		if (isRTL(cur.paragraph()))
+		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
 			needsUpdate |= cursorLeftOneWord(cur);
 		else
 			needsUpdate |= cursorRightOneWord(cur);
@@ -535,7 +535,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_BACKWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT);
-		if (isRTL(cur.paragraph()))
+		if (isRTL(*cur.bv().buffer(), cur.paragraph()))
 			needsUpdate |= cursorRightOneWord(cur);
 		else
 			needsUpdate |= cursorLeftOneWord(cur);
@@ -778,8 +778,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_XY:
 		cur.message(from_utf8(
-			convert<string>(cursorX(cur.top(), cur.boundary())) + ' '
-			  + convert<string>(cursorY(cur.top(), cur.boundary()))));
+			convert<string>(cursorX(cur.buffer(), cur.top(), cur.boundary()))
+			+ ' ' + convert<string>(cursorY(cur.top(), cur.boundary()))));
 		break;
 
 	case LFUN_SERVER_SET_XY: {
@@ -1388,7 +1388,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (!cmd.argument().empty())
 			// FIXME: Are all these characters encoded in one byte in utf8?
 			bv->getIntl().getTransManager()
-				.translateAndInsert(cmd.argument()[0], this);
+				.translateAndInsert(cmd.argument()[0], this, cur);
 		break;
 
 	case LFUN_FLOAT_LIST: {
@@ -1707,7 +1707,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_DISSOLVE:
-		enable = !isMainText() && cur.inset().nargs() == 1;
+		enable = !isMainText(*cur.bv().buffer()) && cur.inset().nargs() == 1;
 		break;
 
 	case LFUN_CHANGE_ACCEPT:

@@ -467,7 +467,7 @@ void BufferView::scrollDocView(int value)
 	anchor_ref_ = int(bar * t.paragraphs().size());
 	if (anchor_ref_ >  int(t.paragraphs().size()) - 1)
 		anchor_ref_ = int(t.paragraphs().size()) - 1;
-	t.redoParagraph(anchor_ref_);
+	t.redoParagraph(*this, anchor_ref_);
 	int const h = t.getPar(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
 }
@@ -607,7 +607,7 @@ void BufferView::center()
 {
 	CursorSlice & bot = cursor_.bottom();
 	pit_type const pit = bot.pit();
-	bot.text()->redoParagraph(pit);
+	bot.text()->redoParagraph(*this, pit);
 	Paragraph const & par = bot.text()->paragraphs()[pit];
 	anchor_ref_ = pit;
 	offset_ref_ = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary()).y_
@@ -1290,7 +1290,7 @@ void BufferView::updateMetrics(bool singlepar)
 	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	if (!singlepar || pit == cursor_.bottom().pit())
-		buftext.redoParagraph(pit);
+		buftext.redoParagraph(*this, pit);
 	int y0 = buftext.getPar(pit).ascent() - offset_ref_;
 
 	// Redo paragraphs above anchor if necessary; again, in Single Par
@@ -1300,7 +1300,7 @@ void BufferView::updateMetrics(bool singlepar)
 		y1 -= buftext.getPar(pit1).ascent();
 		--pit1;
 		if (!singlepar || pit1 == cursor_.bottom().pit())
-			buftext.redoParagraph(pit1);
+			buftext.redoParagraph(*this, pit1);
 		y1 -= buftext.getPar(pit1).descent();
 	}
 
@@ -1326,7 +1326,7 @@ void BufferView::updateMetrics(bool singlepar)
 		y2 += buftext.getPar(pit2).descent();
 		++pit2;
 		if (!singlepar || pit2 == cursor_.bottom().pit())
-			buftext.redoParagraph(pit2);
+			buftext.redoParagraph(*this, pit2);
 		y2 += buftext.getPar(pit2).ascent();
 	}
 

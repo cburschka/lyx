@@ -50,7 +50,7 @@ public:
 	void write(Buffer const & buf, std::ostream & os) const;
 
 	/// should paragraph indendation be ommitted in any case?
-	virtual bool neverIndent() const { return true; }
+	virtual bool neverIndent(Buffer const &) const { return true; }
 protected:
 	InsetOptArg(InsetOptArg const &);
 private:

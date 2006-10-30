@@ -75,7 +75,6 @@ LyXText::LyXText(BufferView * bv)
 	: maxwidth_(bv ? bv->workWidth() : 100),
 	  current_font(LyXFont::ALL_INHERIT),
 	  background_color_(LColor::background),
-	  bv_owner(bv),
 	  autoBreakRows_(false)
 {}
 
@@ -83,7 +82,6 @@ LyXText::LyXText(BufferView * bv)
 void LyXText::init(BufferView * bv)
 {
 	BOOST_ASSERT(bv);
-	bv_owner = bv;
 	maxwidth_ = bv->workWidth();
 	dim_.wid = maxwidth_;
 	dim_.asc = 10;
@@ -97,16 +95,16 @@ void LyXText::init(BufferView * bv)
 }
 
 
-bool LyXText::isMainText() const
+bool LyXText::isMainText(Buffer const & buffer) const
 {
-	return &bv()->buffer()->text() == this;
+	return &buffer.text() == this;
 }
 
 
 //takes screen x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y) const
+InsetBase * LyXText::checkInsetHit(BufferView const & bv, int x, int y) const
 {
-	pit_type pit = getPitNearY(y);
+	pit_type pit = getPitNearY(bv, y);
 	BOOST_ASSERT(pit != -1);
 
 	Paragraph const & par = pars_[pit];
@@ -126,21 +124,21 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 			<< BOOST_CURRENT_FUNCTION
 			<< ": examining inset " << inset << endl;
 
-		if (bv()->coordCache().getInsets().has(inset))
+		if (bv.coordCache().getInsets().has(inset))
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
-				<< ": xo: " << inset->xo(*bv()) << "..."
-				<< inset->xo(*bv()) + inset->width()
-				<< " yo: " << inset->yo(*bv()) - inset->ascent()
+				<< ": xo: " << inset->xo(bv) << "..."
+				<< inset->xo(bv) + inset->width()
+				<< " yo: " << inset->yo(bv) - inset->ascent()
 				<< "..."
-				<< inset->yo(*bv()) + inset->descent()
+				<< inset->yo(bv) + inset->descent()
 				<< endl;
 		else
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
 				<< ": inset has no cached position" << endl;
 #endif
-		if (inset->covers(*bv(), x, y)) {
+		if (inset->covers(bv, x, y)) {
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION
 				<< ": Hit inset: " << inset << endl;
@@ -160,7 +158,8 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)
-LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
+LyXFont LyXText::getFont(Buffer const & buffer, Paragraph const & par,
+		pos_type const pos) const
 {
 	BOOST_ASSERT(pos >= 0);
 
@@ -168,14 +167,14 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 #ifdef WITH_WARNINGS
 #warning broken?
 #endif
-	BufferParams const & params = bv()->buffer()->params();
+	BufferParams const & params = buffer.params();
 	pos_type const body_pos = par.beginOfBody();
 
 	// We specialize the 95% common case:
 	if (!par.getDepth()) {
 		LyXFont f = par.getFontSettings(params, pos);
-		if (!isMainText())
-			applyOuterFont(f);
+		if (!isMainText(buffer))
+			applyOuterFont(buffer, f);
 		LyXFont lf;
 		LyXFont rlf;
 		if (layout->labeltype == LABEL_MANUAL && pos < body_pos) {
@@ -201,8 +200,8 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 	LyXFont font = par.getFontSettings(params, pos);
 	font.realize(layoutfont);
 
-	if (!isMainText())
-		applyOuterFont(font);
+	if (!isMainText(buffer))
+		applyOuterFont(buffer, font);
 
 	// Find the pit value belonging to paragraph. This will not break
 	// even if pars_ would not be a vector anymore.
@@ -233,16 +232,16 @@ LyXFont LyXText::getFont(Paragraph const & par, pos_type const pos) const
 // the pi/mi parameters, and stored locally in a lyxtext in font_.
 // This is where the two are integrated in the final fully realized
 // font.
-void LyXText::applyOuterFont(LyXFont & font) const {
+void LyXText::applyOuterFont(Buffer const & buffer, LyXFont & font) const {
 	LyXFont lf(font_);
-	lf.reduce(bv()->buffer()->params().getFont());
+	lf.reduce(buffer.params().getFont());
 	lf.realize(font);
 	lf.setLanguage(font.language());
 	font = lf;
 }
 
 
-LyXFont LyXText::getLayoutFont(pit_type const pit) const
+LyXFont LyXText::getLayoutFont(Buffer const & buffer, pit_type const pit) const
 {
 	LyXLayout_ptr const & layout = pars_[pit].layout();
 
@@ -250,20 +249,20 @@ LyXFont LyXText::getLayoutFont(pit_type const pit) const
 		LyXFont lf = layout->resfont;
 		// In case the default family has been customized
 		if (layout->font.family() == LyXFont::INHERIT_FAMILY)
-			lf.setFamily(bv()->buffer()->params().getFont().family());
+			lf.setFamily(buffer.params().getFont().family());
 		return lf;
 	}
 
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
 	//font.realize(outerFont(pit, paragraphs()));
-	font.realize(bv()->buffer()->params().getFont());
+	font.realize(buffer.params().getFont());
 
 	return font;
 }
 
 
-LyXFont LyXText::getLabelFont(Paragraph const & par) const
+LyXFont LyXText::getLabelFont(Buffer const & buffer, Paragraph const & par) const
 {
 	LyXLayout_ptr const & layout = par.layout();
 
@@ -271,19 +270,20 @@ LyXFont LyXText::getLabelFont(Paragraph const & par) const
 		LyXFont lf = layout->reslabelfont;
 		// In case the default family has been customized
 		if (layout->labelfont.family() == LyXFont::INHERIT_FAMILY)
-			lf.setFamily(bv()->buffer()->params().getFont().family());
+			lf.setFamily(buffer.params().getFont().family());
 		return lf;
 	}
 
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.
-	font.realize(bv()->buffer()->params().getFont());
+	font.realize(buffer.params().getFont());
 
 	return font;
 }
 
 
-void LyXText::setCharFont(pit_type pit, pos_type pos, LyXFont const & fnt)
+void LyXText::setCharFont(Buffer const & buffer, pit_type pit,
+		pos_type pos, LyXFont const & fnt)
 {
 	LyXFont font = fnt;
 	LyXLayout_ptr const & layout = pars_[pit].layout();
@@ -310,10 +310,10 @@ void LyXText::setCharFont(pit_type pit, pos_type pos, LyXFont const & fnt)
 
 	// Inside inset, apply the inset's font attributes if any
 	// (charstyle!)
-	if (!isMainText())
+	if (!isMainText(buffer))
 		layoutfont.realize(font_);
 
-	layoutfont.realize(bv()->buffer()->params().getFont());
+	layoutfont.realize(buffer.params().getFont());
 
 	// Now, reduce font against full layout font
 	font.reduce(layoutfont);
@@ -341,11 +341,12 @@ pit_type LyXText::undoSpan(pit_type pit)
 }
 
 
-void LyXText::setLayout(pit_type start, pit_type end, string const & layout)
+void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
+		string const & layout)
 {
 	BOOST_ASSERT(start != end);
 
-	BufferParams const & bufparams = bv()->buffer()->params();
+	BufferParams const & bufparams = buffer.params();
 	LyXLayout_ptr const & lyxlayout = bufparams.getLyXTextClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
@@ -380,8 +381,8 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 	pit_type start = cur.selBegin().pit();
 	pit_type end = cur.selEnd().pit() + 1;
 	pit_type undopit = undoSpan(end - 1);
-	recUndo(start, undopit - 1);
-	setLayout(start, end, layout);
+	recUndo(cur, start, undopit - 1);
+	setLayout(cur.buffer(), start, end, layout);
 	updateLabels(cur.buffer());
 }
 
@@ -455,9 +456,9 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 		LyXFont layoutfont;
 		pit_type pit = cur.pit();
 		if (cur.pos() < pars_[pit].beginOfBody())
-			layoutfont = getLabelFont(pars_[pit]);
+			layoutfont = getLabelFont(cur.buffer(), pars_[pit]);
 		else
-			layoutfont = getLayoutFont(pit);
+			layoutfont = getLayoutFont(cur.buffer(), pit);
 
 		// Update current font
 		real_current_font.update(font,
@@ -487,9 +488,9 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 	// nested insets.
 	for (; dit != ditend; dit.forwardPosNoDescend()) {
 		if (dit.pos() != dit.lastpos()) {
-			LyXFont f = getFont(dit.paragraph(), dit.pos());
+			LyXFont f = getFont(cur.buffer(), dit.paragraph(), dit.pos());
 			f.update(font, params.language, toggleall);
-			setCharFont(dit.pit(), dit.pos(), f);
+			setCharFont(cur.buffer(), dit.pit(), dit.pos(), f);
 		}
 	}
 }
@@ -608,7 +609,7 @@ void LyXText::setParagraph(LCursor & cur,
 	BOOST_ASSERT(cur.text());
 	// make sure that the depth behind the selection are restored, too
 	pit_type undopit = undoSpan(cur.selEnd().pit());
-	recUndo(cur.selBegin().pit(), undopit - 1);
+	recUndo(cur, cur.selBegin().pit(), undopit - 1);
 
 	for (pit_type pit = cur.selBegin().pit(), end = cur.selEnd().pit();
 	     pit <= end; ++pit) {
@@ -750,7 +751,7 @@ void LyXText::setCurrentFont(LCursor & cur)
 
 	BufferParams const & bufparams = cur.buffer().params();
 	current_font = par.getFontSettings(bufparams, pos);
-	real_current_font = getFont(par, pos);
+	real_current_font = getFont(cur.buffer(), par, pos);
 
 	if (cur.pos() == cur.lastpos()
 	    && bidi.isBoundary(cur.buffer(), par, cur.pos())
@@ -767,12 +768,13 @@ void LyXText::setCurrentFont(LCursor & cur)
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
-pos_type LyXText::getColumnNearX(pit_type const pit,
+pos_type LyXText::getColumnNearX(BufferView const & bv, pit_type const pit,
 				 Row const & row, int & x, bool & boundary) const
 {
-	int const xo = bv()->coordCache().get(this, pit).x_;
+	Buffer const & buffer = *bv.buffer();
+	int const xo = bv.coordCache().get(this, pit).x_;
 	x -= xo;
-	RowMetrics const r = computeRowMetrics(pit, row);
+	RowMetrics const r = computeRowMetrics(buffer, pit, row);
 	Paragraph const & par = pars_[pit];
 
 	pos_type vc = row.pos();
@@ -798,7 +800,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 	}
 
 	frontend::FontMetrics const & fm 
-		= theFontMetrics(getLabelFont(par));
+		= theFontMetrics(getLabelFont(buffer, par));
 
 	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
@@ -808,21 +810,21 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 			docstring const lsep = from_utf8(layout->labelsep);
 			tmpx += r.label_hfill + fm.width(lsep);
 			if (par.isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(par, body_pos - 1);
+				tmpx -= singleWidth(buffer, par, body_pos - 1);
 		}
 
 		if (par.hfillExpansion(row, c)) {
-			tmpx += singleWidth(par, c);
+			tmpx += singleWidth(buffer, par, c);
 			if (c >= body_pos)
 				tmpx += r.hfill;
 			else
 				tmpx += r.label_hfill;
 		} else if (par.isSeparator(c)) {
-			tmpx += singleWidth(par, c);
+			tmpx += singleWidth(buffer, par, c);
 			if (c >= body_pos)
 				tmpx += r.separator;
 		} else {
-			tmpx += singleWidth(par, c);
+			tmpx += singleWidth(buffer, par, c);
 		}
 		++vc;
 	}
@@ -841,7 +843,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
-	bool const rtl = lastrow ? isRTL(par) : false;
+	bool const rtl = lastrow ? isRTL(buffer, par) : false;
 	if (lastrow &&
 	    ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 	     (!rtl && !left_side && vc == end  && x > tmpx + 5)))
@@ -855,7 +857,7 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 		bool const rtl = (bidi.level(c) % 2 == 1);
 		if (left_side == rtl) {
 			++c;
-			boundary = bidi.isBoundary(*bv()->buffer(), par, c);
+			boundary = bidi.isBoundary(buffer, par, c);
 		}
 	}
 
@@ -869,9 +871,9 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 	// Newline inset, air gap below:
 	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
 		if (bidi.level(end -1) % 2 == 0)
-			tmpx -= singleWidth(par, end - 1);
+			tmpx -= singleWidth(buffer, par, end - 1);
 		else
-			tmpx += singleWidth(par, end - 1);
+			tmpx += singleWidth(buffer, par, end - 1);
 		c = end - 1;
 	}
 
@@ -903,11 +905,11 @@ pos_type LyXText::getColumnNearX(pit_type const pit,
 
 
 // y is screen coordinate
-pit_type LyXText::getPitNearY(int y) const
+pit_type LyXText::getPitNearY(BufferView const & bv, int y) const
 {
 	BOOST_ASSERT(!paragraphs().empty());
-	BOOST_ASSERT(bv()->coordCache().getParPos().find(this) != bv()->coordCache().getParPos().end());
-	CoordCache::InnerParPosCache const & cc = bv()->coordCache().getParPos().find(this)->second;
+	BOOST_ASSERT(bv.coordCache().getParPos().find(this) != bv.coordCache().getParPos().end());
+	CoordCache::InnerParPosCache const & cc = bv.coordCache().getParPos().find(this)->second;
 	lyxerr[Debug::DEBUG]
 		<< BOOST_CURRENT_FUNCTION
 		<< ": y: " << y << " cache size: " << cc.size()
@@ -940,10 +942,10 @@ pit_type LyXText::getPitNearY(int y) const
 }
 
 
-Row const & LyXText::getRowNearY(int y, pit_type pit) const
+Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) const
 {
 	Paragraph const & par = pars_[pit];
-	int yy = bv()->coordCache().get(this, pit).y_ - par.ascent();
+	int yy = bv.coordCache().get(this, pit).y_ - par.ascent();
 	BOOST_ASSERT(!par.rows().empty());
 	RowList::const_iterator rit = par.rows().begin();
 	RowList::const_iterator const rlast = boost::prior(par.rows().end());
@@ -960,22 +962,22 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		lyxerr << "LyXText::editXY(cur, " << x << ", " << y << ")" << std::endl;
-		bv()->coordCache().dump();
+		cur.bv().coordCache().dump();
 	}
-	pit_type pit = getPitNearY(y);
+	pit_type pit = getPitNearY(cur.bv(), y);
 	BOOST_ASSERT(pit != -1);
-	Row const & row = getRowNearY(y, pit);
+	Row const & row = getRowNearY(cur.bv(), y, pit);
 	bool bound = false;
 
 	int xx = x; // is modified by getColumnNearX
-	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
+	pos_type const pos = row.pos() + getColumnNearX(cur.bv(), pit, row, xx, bound);
 	cur.pit() = pit;
 	cur.pos() = pos;
 	cur.boundary(bound);
 	cur.x_target() = x;
 
 	// try to descend into nested insets
-	InsetBase * inset = checkInsetHit(x, y);
+	InsetBase * inset = checkInsetHit(cur.bv(), x, y);
 	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset) {
 		// Either we deconst editXY or better we move current_font
@@ -1108,12 +1110,12 @@ bool LyXText::cursorUp(LCursor & cur)
 
 	if (row > 0) {
 		updateNeeded |= setCursor(cur, cur.pit(),
-					  x2pos(cur.pit(), row - 1, x));
+			x2pos(cur.bv(), cur.pit(), row - 1, x));
 	} else if (cur.pit() > 0) {
 		--cur.pit();
 		//cannot use 'par' now
 		updateNeeded |= setCursor(cur, cur.pit(),
-					  x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
+			x2pos(cur.bv(), cur.pit(), cur.paragraph().rows().size() - 1, x));
 	}
 
 	cur.x_target() = x;
@@ -1162,11 +1164,11 @@ bool LyXText::cursorDown(LCursor & cur)
 
 	if (row + 1 < int(par.rows().size())) {
 		updateNeeded |= setCursor(cur, cur.pit(),
-					  x2pos(cur.pit(), row + 1, x));
+			x2pos(cur.bv(), cur.pit(), row + 1, x));
 	} else if (cur.pit() + 1 < int(paragraphs().size())) {
 		++cur.pit();
 		updateNeeded |= setCursor(cur, cur.pit(),
-					  x2pos(cur.pit(), 0, x));
+			x2pos(cur.bv(), cur.pit(), 0, x));
 	}
 
 	cur.x_target() = x;
@@ -1327,15 +1329,15 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 }
 
 
-void LyXText::recUndo(pit_type first, pit_type last) const
+void LyXText::recUndo(LCursor & cur, pit_type first, pit_type last) const
 {
-	recordUndo(bv()->cursor(), Undo::ATOMIC, first, last);
+	recordUndo(cur, Undo::ATOMIC, first, last);
 }
 
 
-void LyXText::recUndo(pit_type par) const
+void LyXText::recUndo(LCursor & cur, pit_type par) const
 {
-	recordUndo(bv()->cursor(), Undo::ATOMIC, par, par);
+	recordUndo(cur, Undo::ATOMIC, par, par);
 }
 
 

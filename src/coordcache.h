@@ -107,13 +107,13 @@ public:
  * updates. (x,y) == (0,0) is the upper left screen corner, x increases
  * to the right, y increases downwords.
  * The cache is built in BufferView::updateMetrics which is called
- * from BufferView::Pimpl::update. The individual points are added
+ * from BufferView::update. The individual points are added
  * while we paint them. See for instance paintPar in RowPainter.C.
  */
 class CoordCache {
 public:
 	void clear();
-	Point get(LyXText const *, pit_type);
+	Point get(LyXText const *, pit_type) const;
 
 	/// A map from paragraph index number to screen point
 	typedef std::map<pit_type, Point> InnerParPosCache;

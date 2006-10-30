@@ -573,7 +573,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.idx() = tabular.getCellBelow(cur.idx());
 				cur.pit() = 0;
 				cur.pos() = cell(cur.idx())->getText(0)->x2pos(
-					cur.pit(), 0, cur.targetX());
+					cur.bv(), cur.pit(), 0, cur.targetX());
 			}
 		if (sl == cur.top()) {
 			// we trick it to go to the RIGHT after leaving the
@@ -596,6 +596,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.pit() = cur.lastpit();
 				LyXText const * text = cell(cur.idx())->getText(0);
 				cur.pos() = text->x2pos(
+					cur.bv(),
 					cur.pit(),
 					text->paragraphs().back().rows().size()-1,
 					cur.targetX());
@@ -1938,6 +1939,8 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 	if (buf.length() <= 0)
 		return true;
 
+	Buffer const & buffer = *bv.buffer();
+
 	col_type cols = 1;
 	row_type rows = 1;
 	col_type maxCols = 1;
@@ -1966,7 +1969,7 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 	row_type row = 0;
 	if (usePaste) {
 		paste_tabular.reset(
-			new LyXTabular(bv.buffer()->params(), rows, maxCols));
+			new LyXTabular(buffer.params(), rows, maxCols));
 		loctab = paste_tabular.get();
 		cols = 0;
 		dirtyTabularStack(true);
@@ -1994,11 +1997,10 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = loctab->getCellInset(cell);
-				inset->setViewCache(&bv);
 				Paragraph & par = inset->text_.getPar(0);
-				LyXFont const font = inset->text_.getFont(par, 0);
+				LyXFont const font = inset->text_.getFont(buffer, par, 0);
 				inset->setText(buf.substr(op, p - op), font,
-				               bv.buffer()->params().trackChanges);
+				               buffer.params().trackChanges);
 				++cols;
 				++cell;
 			}
@@ -2007,11 +2009,10 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 			// we can only set this if we are not too far right
 			if (cols < columns) {
 				shared_ptr<InsetText> inset = tabular.getCellInset(cell);
-				inset->setViewCache(&bv);
 				Paragraph & par = inset->text_.getPar(0);
-				LyXFont const font = inset->text_.getFont(par, 0);
+				LyXFont const font = inset->text_.getFont(buffer, par, 0);
 				inset->setText(buf.substr(op, p - op), font,
-				               bv.buffer()->params().trackChanges);
+				               buffer.params().trackChanges);
 			}
 			cols = ocol;
 			++row;
@@ -2025,11 +2026,10 @@ bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if (cell < cells && op < len) {
 		shared_ptr<InsetText> inset = loctab->getCellInset(cell);
-		inset->setViewCache(&bv);
 		Paragraph & par = inset->text_.getPar(0);
-		LyXFont const font = inset->text_.getFont(par, 0);
+		LyXFont const font = inset->text_.getFont(buffer, par, 0);
 		inset->setText(buf.substr(op, len - op), font,
-		               bv.buffer()->params().trackChanges);
+			buffer.params().trackChanges);
 	}
 	return true;
 }

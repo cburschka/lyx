@@ -56,7 +56,7 @@ public:
 	/// draw inset selection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	/// are we inside the area covered by the inset?
-	virtual bool covers(BufferView & bv, int x, int y) const;
+	virtual bool covers(BufferView const & bv, int x, int y) const;
 	///
 	virtual docstring const editMessage() const;
 	///
@@ -91,8 +91,6 @@ public:
 	LColor_color frameColor() const;
 	///
 	void setFrameColor(LColor_color);
-	///
-	void setViewCache(BufferView const * bv) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -131,7 +129,7 @@ public:
 	///
 	bool allowSpellCheck() const { return true; }
 	/// should paragraph indendation be ommitted in any case?
-	bool neverIndent() const;
+	bool neverIndent(Buffer const &) const;
 	///
 	InsetText(InsetText const &);
 	///

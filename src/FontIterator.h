@@ -27,6 +27,7 @@
 
 namespace lyx {
 
+class Buffer;
 class LyXText;
 class Paragraph;
 
@@ -35,7 +36,8 @@ class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
 {
 public:
 	///
-	FontIterator(LyXText const & text, Paragraph const & par, pos_type pos);
+	FontIterator(Buffer const & buffer, LyXText const & text,
+		Paragraph const & par, pos_type pos);
 	///
 	LyXFont const & operator*() const;
 	///
@@ -44,6 +46,8 @@ public:
 	LyXFont * operator->();
 
 private:
+	///
+	Buffer const & buffer_;
 	///
 	LyXText const & text_;
 	///

@@ -13,6 +13,7 @@
 
 #include "trans_mgr.h"
 
+#include "buffer.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "cursor.h"
@@ -253,7 +254,7 @@ void TransManager::disableKeymap()
 }
 
 
-void  TransManager::translateAndInsert(char c, LyXText * text)
+void  TransManager::translateAndInsert(char c, LyXText * text, LCursor & cur)
 {
 	string res = active_->process(c, *this);
 
@@ -262,19 +263,19 @@ void  TransManager::translateAndInsert(char c, LyXText * text)
 
 	while (res.length() > 0) {
 		res = split(res, temp, TransState::TOKEN_SEP);
-		insert(temp, text);
+		insert(temp, text, cur);
 	}
 }
 
 
-void TransManager::insertVerbatim(string const & str, LyXText * text)
+void TransManager::insertVerbatim(string const & str, LyXText * text, LCursor & cur)
 {
 	for (string::size_type i = 0, n = str.size(); i < n; ++i)
-		text->insertChar(text->bv()->cursor(), str[i]);
+		text->insertChar(cur, str[i]);
 }
 
 
-void TransManager::insert(string const & str, LyXText * text)
+void TransManager::insert(string const & str, LyXText * text, LCursor & cur)
 {
 	// Go through the character encoding only if the current
 	// encoding (chset_->name()) matches the current font_norm
@@ -288,21 +289,20 @@ void TransManager::insert(string const & str, LyXText * text)
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
 		if (ins.canDisplay()) {
-			LCursor & cur = text->bv()->cursor();
 			cap::replaceSelection(cur);
 			cur.insert(new InsetLatexAccent(ins));
 			cur.posRight();
 		} else {
-			insertVerbatim(str, text);
+			insertVerbatim(str, text, cur);
 		}
 		return;
 	}
 	string const tmp(1, static_cast<char>(enc.second));
-	insertVerbatim(tmp, text);
+	insertVerbatim(tmp, text, cur);
 }
 
 
-void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
+void TransManager::deadkey(char c, tex_accent accent, LyXText * t, LCursor & cur)
 {
 	if (c == 0 && active_ != &default_) {
 		// A deadkey was pressed that cannot be printed
@@ -311,7 +311,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		if (active_->isAccentDefined(accent, i) == true) {
 			string const res = trans_fsm_
 				.currentState->deadkey(c, i);
-			insert(res, t);
+			insert(res, t, cur);
 			return;
 		}
 	}
@@ -321,10 +321,10 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		i.accent = accent;
 		i.data.erase();
 		string res = trans_fsm_.currentState->deadkey(c, i);
-		insert(res, t);
+		insert(res, t, cur);
 	} else {
 		// Go through the translation
-		translateAndInsert(c, t);
+		translateAndInsert(c, t, cur);
 	}
 }
 
