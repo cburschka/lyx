@@ -84,6 +84,9 @@ void QLPainter::setQPainterPen(LColor_color col,
 
 void QLPainter::point(int x, int y, LColor_color col)
 {
+	if (!isDrawingEnabled())
+		return;
+
 	setQPainterPen(col);
 	drawPoint(x, y);
 }
@@ -94,6 +97,9 @@ void QLPainter::line(int x1, int y1, int x2, int y2,
 	line_style ls,
 	line_width lw)
 {
+	if (!isDrawingEnabled())
+		return;
+
 	setQPainterPen(col, ls, lw);
 	drawLine(x1, y1, x2, y2);
 }
@@ -114,6 +120,9 @@ void QLPainter::lines(int const * xp, int const * yp, int np,
 		points[i].setY(yp[i]);
 	}
 
+	if (!isDrawingEnabled())
+		return;
+
 	setQPainterPen(col, ls, lw);
 	drawPolyline(points.get(), np);
 }
@@ -124,6 +133,9 @@ void QLPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	line_width lw)
 {
+	if (!isDrawingEnabled())
+		return;
+
 	setQPainterPen(col, ls, lw);
 	drawRect(x, y, w, h);
 }
@@ -138,6 +150,9 @@ void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
+	if (!isDrawingEnabled())
+		return;
+
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setQPainterPen(col);
 	drawArc(x, y, w, h, a1 / 4, a2 / 4);
@@ -150,6 +165,9 @@ void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 		static_cast<graphics::QLImage const &>(i);
 
 	fillRectangle(x, y, w, h, LColor::graphicsbg);
+
+	if (!isDrawingEnabled())
+		return;
 
 	drawImage(x, y, qlimage.qimage(), 0, 0, w, h);
 }
@@ -187,7 +205,8 @@ int QLPainter::smallCapsText(int x, int y,
 		} else {
 			setFont(qfont);
 		}
-		drawText(x + textwidth, y, c);
+		if (isDrawingEnabled())
+			drawText(x + textwidth, y, c);
 		textwidth += fontMetrics().width(c);
 	}
 	return textwidth;
@@ -223,7 +242,8 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 			setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
-		drawText(x, y, str);
+		if (isDrawingEnabled())
+			drawText(x, y, str);
 		// Here we use the font width cache instead of
 		//   textwidth = fontMetrics().width(str);
 		// because the above is awfully expensive on MacOSX

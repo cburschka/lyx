@@ -48,6 +48,7 @@ namespace frontend {
  */
 class Painter {
 public:
+	Painter(): drawing_enabled_(true) {}
 	/// possible line widths
 	enum line_width {
 		line_thin, //< thin line
@@ -132,6 +133,9 @@ public:
 	virtual int text(int x, int y,
 		docstring const & str, LyXFont const & f) = 0;
 
+	void setDrawingEnabled(bool drawing_enabled = true)
+	{ drawing_enabled_ = drawing_enabled; }
+
 	/**
 	 * Draw a string at position x, y (y is the baseline)
 	 * This is just for fast drawing
@@ -169,6 +173,13 @@ protected:
 
 	/// draw a bevelled button border
 	virtual void buttonFrame(int x, int y, int w, int h);
+
+	/// Indicate wether real screen drawing shall be done or not.
+	bool const isDrawingEnabled() { return drawing_enabled_; }
+
+private:
+	///
+	bool drawing_enabled_;
 };
 
 } // namespace frontend

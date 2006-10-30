@@ -448,7 +448,6 @@ src_frontends_header_files = Split('''
     WorkArea.h
     key_state.h
     mouse_state.h
-    nullpainter.h
 ''')
 
 

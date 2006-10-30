@@ -241,10 +241,9 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 		return;
 
 	// FIXME: hack to get position cache warm
-	static frontend::NullPainter nop;
-	PainterInfo pinop(pi);
-	pinop.pain = nop;
-	draw(pinop, x, y);
+	pi.pain.setDrawingEnabled(false);
+	draw(pi, x, y);
+	pi.pain.setDrawingEnabled(true);
 
 	CursorSlice s1 = cur.selBegin();
 	CursorSlice s2 = cur.selEnd();

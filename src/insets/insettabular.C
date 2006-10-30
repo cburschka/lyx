@@ -312,9 +312,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
 
-	static frontend::NullPainter nop;
-	static PainterInfo nullpi(bv, nop);
-
 	resetPos(bv->cursor());
 
 	x += scx_;
@@ -338,8 +335,10 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			    || nx > bv->workWidth()
 			    || y + d < 0
 			    || y - a > bv->workHeight()) {
-				cell(idx)->draw(nullpi, cx, y);
-				drawCellLines(nop, nx, y, i, idx, pi.erased_);
+				pi.pain.setDrawingEnabled(false);
+				cell(idx)->draw(pi, cx, y);
+				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);
+				pi.pain.setDrawingEnabled(true);
 			} else {
 				cell(idx)->draw(pi, cx, y);
 				drawCellLines(pi.pain, nx, y, i, idx, pi.erased_);

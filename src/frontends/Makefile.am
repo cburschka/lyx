@@ -42,5 +42,4 @@ libfrontends_la_SOURCES = \
 	WorkArea.C \
 	WorkArea.h \
 	key_state.h \
-	mouse_state.h \
-	nullpainter.h
+	mouse_state.h
