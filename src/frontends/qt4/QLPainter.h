@@ -103,7 +103,7 @@ public:
 private:
 	friend class GuiWorkArea;
 	QLPainter(QWidget *);
-	~QLPainter();
+	virtual ~QLPainter();
 
 	/// draw small caps text
 	/**
