@@ -574,26 +574,24 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		return;
 	}
 
+	QLPainter pain(viewport());
 
 	if (rc.width() == 3) { // FIXME HACK
 		// Assume splash screen drawing is requested when
 		// width == 3
 		lyxerr << "splash screen requested" << endl;
-		QLPainter pain(viewport());
 		doGreyOut(pain);
 		return;
 	}
 
 	if (!buffer_view_->buffer()) {
 		lyxerr << "no buffer: " << endl;
-		QLPainter pain(viewport());
 		doGreyOut(pain);
 		updateScrollbar();
 		return;
 	}
 
 	//lyxerr << "real drawing" << endl;
-	QLPainter pain(viewport());
 	paintText(*buffer_view_, pain);
 }
 
