@@ -13,13 +13,11 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
-#include "LColor.h"
-
 #include "support/docstring.h"
-
 
 namespace lyx {
 
+class LColor_color;
 class LyXFont;
 
 namespace graphics { class Image; }
@@ -62,12 +60,6 @@ public:
 	};
 
 	virtual ~Painter() {}
-
-	/// begin painting
-	//virtual void start() {}
-
-	/// end painting
-	////virtual void end() {}
 
 	/// draw a line from point to point
 	virtual void line(

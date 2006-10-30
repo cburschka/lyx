@@ -13,7 +13,9 @@
 #ifndef QLPAINTER_H
 #define QLPAINTER_H
 
-#include "Painter.h"
+#include "frontends/Painter.h"
+
+#include "LColor.h"
 
 #include <QPainter>
 
