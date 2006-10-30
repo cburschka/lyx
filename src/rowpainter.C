@@ -202,9 +202,8 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 		c = par_.getChar(i);
 		if (!Encodings::isComposeChar_hebrew(c)) {
 			if (isPrintableNonspace(c)) {
-				int const width2 =
-					text_.singleWidth(*bv_.buffer(), par_, i, c,
-						text_.getFont(*bv_.buffer(), par_, i));
+				int const width2 = text_.singleWidth(par_, i, c,
+					text_.getFont(*bv_.buffer(), par_, i));
 				// FIXME UNICODE
 				// This does not work anymore, and non-ascii
 				// characters in source files are forbidden
@@ -242,8 +241,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 		c = par_.getChar(i);
 		if (!Encodings::isComposeChar_arabic(c)) {
 			if (isPrintableNonspace(c)) {
-				int const width2 =
-					text_.singleWidth(*bv_.buffer(), par_, i, c,
+				int const width2 = text_.singleWidth(par_, i, c,
 						text_.getFont(*bv_.buffer(), par_, i));
 				dx = (width2 - width) / 2;
 			}
@@ -668,8 +666,8 @@ void RowPainter::paintText()
 			font = text_.getFont(buffer, par_, vpos);
 		}
 
-		const int width_pos = text_.singleWidth(buffer, par_, pos,
-			par_.getChar(pos), font);
+		const int width_pos =
+			text_.singleWidth(par_, pos, par_.getChar(pos), font);
 
 		if (x_ + width_pos < 0) {
 			x_ += width_pos;

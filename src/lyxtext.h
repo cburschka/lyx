@@ -276,8 +276,8 @@ public:
 	int singleWidth(Buffer const &, Paragraph const & par,
 		pos_type pos) const;
 	///
-	int singleWidth(Buffer const &, Paragraph const & par,
-		pos_type pos, char_type c, LyXFont const & Font) const;
+	int singleWidth(Paragraph const & par, pos_type pos, char_type c,
+		LyXFont const & Font) const;
 
 	/// return the color of the canvas
 	LColor_color backgroundColor() const;

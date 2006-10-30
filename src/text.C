@@ -427,12 +427,12 @@ int LyXText::height() const
 int LyXText::singleWidth(Buffer const & buffer, Paragraph const & par,
 		pos_type pos) const
 {
-	return singleWidth(buffer, par, pos, par.getChar(pos),
+	return singleWidth(par, pos, par.getChar(pos),
 		getFont(buffer, par, pos));
 }
 
 
-int LyXText::singleWidth(Buffer const & buffer, Paragraph const & par,
+int LyXText::singleWidth(Paragraph const & par,
 			 pos_type pos, char_type c, LyXFont const & font) const
 {
 	// The most common case is handled first (Asger)
@@ -742,7 +742,7 @@ void LyXText::rowBreakPoint(Buffer const & buffer, pit_type const pit,
 	FontMetrics const & fm = theFontMetrics(getLabelFont(buffer, par));
 	for ( ; i < end; ++i, ++fi) {
 		char_type const c = par.getChar(i);
-		int thiswidth = singleWidth(buffer, par, i, c, *fi);
+		int thiswidth = singleWidth(par, i, c, *fi);
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
@@ -838,7 +838,7 @@ void LyXText::setRowWidth(Buffer const & buffer, pit_type const pit, Row & row) 
 				w = max(w, labelEnd(buffer, pit));
 			}
 			char_type const c = par.getChar(i);
-			w += singleWidth(buffer, par, i, c, *fi);
+			w += singleWidth(par, i, c, *fi);
 		}
 	}
 
@@ -2328,7 +2328,7 @@ int LyXText::cursorX(Buffer const & buffer, CursorSlice const & sl,
 			font = getFont(buffer, par, pos);
 		}
 
-		x += singleWidth(buffer, par, pos, par.getChar(pos), font);
+		x += singleWidth(par, pos, par.getChar(pos), font);
 
 		if (par.hfillExpansion(row, pos))
 			x += (pos >= body_pos) ? m.hfill : m.label_hfill;
