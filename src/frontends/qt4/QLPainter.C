@@ -26,19 +26,15 @@
 
 #include "support/unicode.h"
 
-#include <QWidget>
-
 using std::endl;
 using std::string;
 
 namespace lyx {
 namespace frontend {
 
-QLPainter::QLPainter(QWidget * qwa)
-	: qwa_(qwa)
+QLPainter::QLPainter(QPaintDevice * device)
+	: QPainter(device), Painter()
 {
-	//lyxerr << "QLPainter::start()" << endl;
-	QPainter::begin(qwa_);
 	setRenderHint(QPainter::TextAntialiasing);
 	// new QPainter has default QPen:
 	current_color_ = LColor::black;

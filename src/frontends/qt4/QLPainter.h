@@ -25,13 +25,14 @@ class LyXFont;
 
 namespace frontend {
 
-class GuiWorkArea;
-
 /**
  * QLPainter - a painter implementation for Qt4
  */
 class QLPainter : public QPainter, public Painter {
 public:
+	QLPainter(QPaintDevice *);
+	virtual ~QLPainter();
+
 	/// draw a line from point to point
 	virtual void line(
 		int x1, int y1,
@@ -101,10 +102,6 @@ public:
                 lyx::char_type c, LyXFont const & f);
 
 private:
-	friend class GuiWorkArea;
-	QLPainter(QWidget *);
-	virtual ~QLPainter();
-
 	/// draw small caps text
 	/**
 	\return width of the drawn text.
@@ -116,9 +113,6 @@ private:
 	void setQPainterPen(LColor_color col,
 		line_style ls = line_solid,
 		line_width lw = line_thin);
-
-	/// the working area
-	QWidget * qwa_;
 
 	LColor::color current_color_;
 	Painter::line_style current_ls_;
