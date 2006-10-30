@@ -148,23 +148,23 @@ public:
 	 * the given color. If frame is specified, a thin frame is drawn
 	 * around the text with the given color.
 	 */
-	virtual void rectText(int x, int baseline,
+	void rectText(int x, int baseline,
 		docstring const & str,
 		LyXFont const & font,
 		LColor_color back,
 		LColor_color frame);
 
 	/// draw a string and enclose it inside a button frame
-	virtual void buttonText(int x,
+	void buttonText(int x,
 		int baseline, docstring const & s, LyXFont const & font);
 
 protected:
 	/// check the font, and if set, draw an underline
-	virtual void underline(LyXFont const & f,
+	void underline(LyXFont const & f,
 		int x, int y, int width);
 
 	/// draw a bevelled button border
-	virtual void buttonFrame(int x, int y, int w, int h);
+	void buttonFrame(int x, int y, int w, int h);
 
 	/// Indicate wether real screen drawing shall be done or not.
 	bool isDrawingEnabled() const { return drawing_enabled_; }
