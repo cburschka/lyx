@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-10-30 20:53+0100\n"
+"POT-Creation-Date: 2006-10-30 21:36+0100\n"
 "PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -10017,13 +10017,9 @@ msgstr "Indstillinger...|l"
 msgid "Quit LyX"
 msgstr "Om LyX"
 
-#: lib/ui/classic.ui:447 lib/ui/default.ui:34
+#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
-msgstr "Værktøjslinjer"
-
-#: lib/ui/default-alltoolbars.ui:34 lib/ui/default-autotoolbars.ui:34
-#, fuzzy
-msgid "Toolbars\r"
 msgstr "Værktøjslinjer"
 
 #: lib/ui/stdmenus.ui:25
@@ -16103,19 +16099,3 @@ msgstr "&Lodret:"
 #, fuzzy
 msgid "protected"
 msgstr "&Beskyt:"
-
-#~ msgid " of "
-#~ msgstr " fra "
-
-#, fuzzy
-#~ msgid "Theorem:"
-#~ msgstr "Teorem"
-
-#~ msgid "Scrolling"
-#~ msgstr "Rulning"
-
-#~ msgid "W&heel mouse scroll:"
-#~ msgstr "Muse&hjulsskridt:"
-
-#~ msgid "Insert cases"
-#~ msgstr "Indsæt cases"

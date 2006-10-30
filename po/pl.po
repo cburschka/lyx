@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-10-30 20:53+0100\n"
+"POT-Creation-Date: 2006-10-30 21:36+0100\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -9586,13 +9586,9 @@ msgstr "Ustawienia..."
 msgid "Quit LyX"
 msgstr "Zamknij LyX-a"
 
-#: lib/ui/classic.ui:447 lib/ui/default.ui:34
+#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
-msgstr "Paski narzêdzi"
-
-#: lib/ui/default-alltoolbars.ui:34 lib/ui/default-autotoolbars.ui:34
-#, fuzzy
-msgid "Toolbars\r"
 msgstr "Paski narzêdzi"
 
 #: lib/ui/stdmenus.ui:25
@@ -15454,6 +15450,3 @@ msgstr "Wype³nij pionowo"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "chronione"
-
-#~ msgid " of "
-#~ msgstr " z "

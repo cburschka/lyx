@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-10-30 20:53+0100\n"
+"POT-Creation-Date: 2006-10-30 21:36+0100\n"
 "PO-Revision-Date: 2006-09-17 16:27+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
@@ -9575,13 +9575,9 @@ msgstr "Beállítások ..."
 msgid "Quit LyX"
 msgstr "Kilépés LyX-bõl"
 
-#: lib/ui/classic.ui:447 lib/ui/default.ui:34
+#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
-msgstr "Eszköztárak"
-
-#: lib/ui/default-alltoolbars.ui:34 lib/ui/default-autotoolbars.ui:34
-#, fuzzy
-msgid "Toolbars\r"
 msgstr "Eszköztárak"
 
 #: lib/ui/stdmenus.ui:25
@@ -15526,6 +15522,3 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "védett"
-
-#~ msgid " of "
-#~ msgstr " készült "

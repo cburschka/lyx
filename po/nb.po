@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-10-30 20:53+0100\n"
+"POT-Creation-Date: 2006-10-30 21:36+0100\n"
 "PO-Revision-Date: 2005-12-18 15:10+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -9627,14 +9627,10 @@ msgstr "Preferanser..."
 msgid "Quit LyX"
 msgstr "Avslutt LyX"
 
-#: lib/ui/classic.ui:447 lib/ui/default.ui:34
+#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
 msgstr ""
-
-#: lib/ui/default-alltoolbars.ui:34 lib/ui/default-autotoolbars.ui:34
-#, fuzzy
-msgid "Toolbars\r"
-msgstr "Verktøy|V"
 
 #: lib/ui/stdmenus.ui:25
 msgid "Document|D"
@@ -15432,15 +15428,3 @@ msgstr "vertikalt fyll, \\vfill"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "beskyttet"
-
-#~ msgid " of "
-#~ msgstr " av "
-
-#~ msgid "Theorem:"
-#~ msgstr "Teorem:"
-
-#~ msgid "Scrolling"
-#~ msgstr "Rulling"
-
-#~ msgid "W&heel mouse scroll:"
-#~ msgstr "Musehjul linjer:"

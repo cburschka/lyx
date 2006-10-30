@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-10-30 20:53+0100\n"
+"POT-Creation-Date: 2006-10-30 21:36+0100\n"
 "PO-Revision-Date: 2006-09-16 15:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -9666,13 +9666,9 @@ msgstr "Einstellungen..."
 msgid "Quit LyX"
 msgstr "LyX beenden"
 
-#: lib/ui/classic.ui:447 lib/ui/default.ui:34
+#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
-msgstr "Werkzeugleisten"
-
-#: lib/ui/default-alltoolbars.ui:34 lib/ui/default-autotoolbars.ui:34
-#, fuzzy
-msgid "Toolbars\r"
 msgstr "Werkzeugleisten"
 
 #: lib/ui/stdmenus.ui:25
@@ -15656,9 +15652,3 @@ msgstr "Variabel"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "geschützt"
-
-#~ msgid " of "
-#~ msgstr " vom "
-
-#~ msgid "Theorem:"
-#~ msgstr "Theorem:"
