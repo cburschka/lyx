@@ -41,8 +41,8 @@ private:
 	/// \return true if the processor is ready to use.
 	bool init();
 
-	std::string const tocode_;
-	std::string const fromcode_;
+	std::string tocode_;
+	std::string fromcode_;
 
 	struct Private;
 	Private * pimpl_;
