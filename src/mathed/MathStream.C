@@ -25,6 +25,12 @@ bool isAlpha(char c)
 	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 }
 
+
+bool isAlpha(lyx::char_type c)
+{
+	return c < 0x80 && isAlpha(static_cast<char>(c));
+}
+
 }
 
 
@@ -93,7 +99,19 @@ NormalStream & operator<<(NormalStream & ns, int i)
 
 WriteStream & operator<<(WriteStream & ws, docstring const & s)
 {
+	if (ws.pendingSpace() && s.length() > 0) {
+		if (isAlpha(s[0]))
+			ws.os() << ' ';
+		ws.pendingSpace(false);
+	}
 	ws.os() << s;
+	int lf = 0;
+	docstring::const_iterator dit = s.begin();
+	docstring::const_iterator end = s.end();
+	for (; dit != end; ++dit)
+		if ((*dit) == '\n')
+			++lf;
+	ws.addlines(lf);
 	return ws;
 }
 
