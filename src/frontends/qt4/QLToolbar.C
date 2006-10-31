@@ -152,9 +152,8 @@ QLToolbar::QLToolbar(ToolbarBackend::Toolbar const & tbb, GuiView & owner)
 	// give visual separation between adjacent toolbars
 	addSeparator();
 
-	// allowing the toolbars to tear off is too easily done,
-	// and we don't save their orientation anyway. Disable the handle.
-	setMovable(false);
+	// TODO: save toolbar position
+	setMovable(true);
 
 	ToolbarBackend::item_iterator it = tbb.items.begin();
 	ToolbarBackend::item_iterator end = tbb.items.end();
