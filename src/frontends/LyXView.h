@@ -153,6 +153,9 @@ public:
 	/// updates the title of the window
 	void updateWindowTitle();
 
+	/// updates the tab view
+	virtual void updateTab() = 0;
+
 	/// reset autosave timer
 	void resetAutosaveTimer();
 

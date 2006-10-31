@@ -26,7 +26,6 @@
 #include <QCloseEvent>
 
 class QToolBar;
-
 //class FuncRequest;
 
 //class string;
@@ -70,6 +69,8 @@ public:
 	virtual void clearMessage();
 	virtual bool hasFocus() const;
 
+	virtual void updateTab();
+
 	/// show - display the top-level window
 	void show();
 
@@ -79,6 +80,7 @@ public:
 	/// menu item has been selected
 	void activated(FuncRequest const &);
 
+	void initTab(QWidget* workArea);
 
 Q_SIGNALS:
 	void closing(int);
@@ -89,6 +91,8 @@ public Q_SLOTS:
 
 	/// populate a toplevel menu and all its children on demand
 	void updateMenu(QAction *);
+
+	void currentTabChanged (int index); 
 
 protected:
 	/// make sure we quit cleanly
@@ -120,6 +124,9 @@ private:
 	void updateFloatingGeometry();
 	///
 	QRect floatingGeometry_;
+
+	struct GuiViewPrivate;
+	GuiViewPrivate& d;
 };
 
 } // namespace frontend

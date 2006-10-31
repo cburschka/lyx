@@ -131,6 +131,7 @@ void LyXView::setBuffer(Buffer * b)
 	updateLayoutChoice();
 	updateWindowTitle();
 	updateStatusBar();
+	updateTab();
 	busy(false);
 	work_area_->redraw();
 }
@@ -149,6 +150,7 @@ bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
 	updateToolbars();
 	updateLayoutChoice();
 	updateWindowTitle();
+	updateTab();
 	if (loaded) {
 		connectBuffer(*work_area_->bufferView().buffer());
 		showErrorList("Parse");

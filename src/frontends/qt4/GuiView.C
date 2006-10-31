@@ -39,6 +39,8 @@
 #include "session.h"
 #include "lyxfunc.h"
 #include "MenuBackend.h"
+#include "buffer.h"
+#include "bufferlist.h"
 
 #include <QAction>
 #include <QApplication>
@@ -54,6 +56,8 @@ using std::endl;
 using std::string;
 using std::vector;
 
+using lyx::support::onlyFilename;
+
 namespace lyx {
 
 using support::subst;
@@ -68,8 +72,38 @@ int const statusbar_timer_value = 3000;
 } // namespace anon
 
 
+class WidgetWithTabBar : public QWidget
+{
+public:
+	QTabBar* tabbar;
+	WidgetWithTabBar(QWidget* w)
+	{
+		tabbar = new QTabBar;
+		QVBoxLayout* l = new QVBoxLayout;
+		l->addWidget(tabbar);
+		l->addWidget(w);
+		l->setMargin(0);
+		setLayout(l);
+	}
+};
+
+struct GuiView::GuiViewPrivate
+{
+	typedef std::map<int, FuncRequest> FuncMap;
+	typedef std::pair<int, FuncRequest> FuncMapPair;
+	typedef std::map<string, QString> NameMap;
+	typedef std::pair<string, QString> NameMapPair;
+
+	FuncMap funcmap;
+	NameMap namemap;
+	WidgetWithTabBar* wt;
+
+	GuiViewPrivate()
+	{}
+};
+
 GuiView::GuiView(int id)
-	: QMainWindow(), LyXView(id), commandbuffer_(0)
+	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
 {
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setAttribute(Qt::WA_QuitOnClose, true);
@@ -91,6 +125,7 @@ GuiView::GuiView(int id)
 
 GuiView::~GuiView()
 {
+	delete &d;
 }
 
 
@@ -228,6 +263,123 @@ void GuiView::update_view_state_qt()
 {
 	statusBar()->showMessage(toqstr(theLyXFunc().viewStatusMessage()));
 	statusbar_timer_.stop();
+}
+
+void GuiView::initTab(QWidget* workarea)
+{
+	d.wt = new WidgetWithTabBar(workarea);
+	setCentralWidget(d.wt);
+	QObject::connect(d.wt->tabbar, SIGNAL(currentChanged(int)),
+			this, SLOT(currentTabChanged(int)));
+}
+
+void GuiView::updateTab()
+{
+	QTabBar& tb = *d.wt->tabbar;
+
+	// update when all  is done
+	tb.blockSignals(true);
+
+	typedef std::vector<string> Strings;
+	Strings const names = theBufferList().getFileNames();
+	size_t n_size = names.size();
+
+	Strings addtab;
+	// show tabs only when there is more 
+	// than one file opened
+	if (n_size > 1)
+	{
+		for (size_t i = 0; i != n_size; i++) 
+			if (d.namemap.find(names[i]) == d.namemap.end())
+				addtab.push_back(names.at(i));
+	}
+
+	for(size_t i = 0; i<addtab.size(); i++)
+	{
+		QString tab_name = lyx::toqstr(onlyFilename(addtab.at(i))); 
+		d.namemap.insert(GuiViewPrivate::NameMapPair(addtab.at(i), tab_name));
+		tb.addTab(tab_name);
+	}
+
+	// check if all names showed by the tabs
+	// are also in the current bufferlist
+	Strings removetab;
+	bool notall = true;
+	if (n_size < 2)
+		notall = false;
+	std::map<string, QString>::iterator tabit = d.namemap.begin();
+	for (;tabit != d.namemap.end(); ++tabit)
+	{
+		bool found = false;
+		for (size_t i = 0; i != n_size; i++) 
+			if (tabit->first == names.at(i) && notall)
+				found = true;
+		if (!found)
+			removetab.push_back(tabit->first);
+	}
+	
+
+	// remove tabs
+	for(size_t i = 0; i<removetab.size(); i++)
+	{
+		if (d.namemap.find(removetab.at(i)) != d.namemap.end())
+		{
+			tabit = d.namemap.find(removetab.at(i));
+			for (int i = 0; i < tb.count(); i++)
+				if (tb.tabText(i) == tabit->second)
+				{
+					tb.removeTab(i);
+					break;
+				}
+			d.namemap.erase(tabit);
+		}
+	}
+
+	// rebuild func map
+	if (removetab.size() > 0 || addtab.size() > 0)
+	{
+		d.funcmap.clear();
+		tabit = d.namemap.begin();
+		for (;tabit != d.namemap.end(); ++tabit)
+		{
+			QTabBar& tb = *d.wt->tabbar;
+			for (int i = 0; i < tb.count(); i++)
+			{
+				if (tb.tabText(i) == tabit->second)
+				{
+					FuncRequest func(LFUN_BUFFER_SWITCH, tabit->first);
+					d.funcmap.insert(GuiViewPrivate::FuncMapPair(i, func));
+					break;
+				}
+			}
+		}
+	}
+
+	// set current tab
+	if (view()->buffer()) 
+	{
+		string cur_title = view()->buffer()->fileName();
+		if (d.namemap.find(cur_title) != d.namemap.end())
+		{
+			QString tabname = d.namemap.find(cur_title)->second;
+			for (int i = 0; i < tb.count(); i++)
+				if (tb.tabText(i) == tabname)
+				{
+					tb.setCurrentIndex(i);
+					break;
+				}
+		}
+	}
+
+	tb.blockSignals(false);
+	d.wt->update();
+}
+
+void GuiView::currentTabChanged (int index)
+{
+	std::map<int, FuncRequest>::const_iterator it = d.funcmap.find(index);
+	if (it != d.funcmap.end())
+		activated(it->second);
 }
 
 
