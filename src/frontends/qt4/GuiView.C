@@ -50,6 +50,7 @@
 #include <QToolBar>
 #include <QTabBar>
 #include <QDesktopWidget>
+#include <QVBoxLayout>
 
 #include <boost/bind.hpp>
 
