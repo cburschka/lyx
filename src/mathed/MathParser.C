@@ -1267,7 +1267,10 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "xymatrix") {
-			cell->push_back(createInsetMath(t.cs()));
+			odocstringstream os;
+			while (good() && nextToken().cat() != catBegin)
+				os << getToken().asInput();
+			cell->push_back(createInsetMath(t.cs() + os.str()));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
 		}
 

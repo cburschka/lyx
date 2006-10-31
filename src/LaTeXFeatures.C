@@ -383,6 +383,9 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage[dot]{bibtopic}\n";
 	}
 
+	if (isRequired("xy"))
+		packages << "\\usepackage[all]{xy}\n";
+
 	return packages.str();
 }
 

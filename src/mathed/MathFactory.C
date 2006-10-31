@@ -310,8 +310,33 @@ MathAtom createInsetMath(docstring const & s)
 		return MathAtom(new InsetMathMakebox);
 	if (s == "kern")
 		return MathAtom(new InsetMathKern);
-	if (s == "xymatrix")
-		return MathAtom(new InsetMathXYMatrix);
+	if (s.substr(0, 8) == "xymatrix") {
+		char spacing_code = '\0';
+		LyXLength spacing;
+		size_t const len = s.length();
+		size_t i = 8;
+		if (i < len && s[i] == '@') {
+			++i;
+			if (i < len) {
+				switch (s[i]) {
+				case 'R':
+				case 'C':
+				case 'M':
+				case 'W':
+				case 'H':
+				case 'L':
+					spacing_code = s[i];
+					++i;
+					break;
+				}
+			}
+			if (i < len && s[i] == '=') {
+				++i;
+				spacing = LyXLength(to_ascii(s.substr(i)));
+			}
+		}
+		return MathAtom(new InsetMathXYMatrix(spacing, spacing_code));
+	}
 	if (s == "xrightarrow" || s == "xleftarrow")
 		return MathAtom(new InsetMathXArrow(s));
 	if (s == "split" || s == "gathered" || s == "aligned" || s == "alignedat")

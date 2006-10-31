@@ -22,7 +22,7 @@ namespace lyx {
 class InsetMathXYMatrix : public InsetMathGrid {
 public:
 	///
-	InsetMathXYMatrix();
+	InsetMathXYMatrix(LyXLength const & = LyXLength(), char c = '\0');
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
@@ -42,9 +42,15 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void maple(MapleStream &) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
+	/// extra spacing, may be empty
+	LyXLength spacing_;
+	///
+	char spacing_code_;
 };
 
 

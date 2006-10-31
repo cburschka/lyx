@@ -12,7 +12,6 @@
 
 #include "InsetMathXYMatrix.h"
 #include "MathStream.h"
-#include "MathStream.h"
 
 #include "LaTeXFeatures.h"
 #include "support/std_ostream.h"
@@ -21,8 +20,8 @@
 namespace lyx {
 
 
-InsetMathXYMatrix::InsetMathXYMatrix()
-	: InsetMathGrid(1, 1)
+InsetMathXYMatrix::InsetMathXYMatrix(LyXLength const & s, char c)
+	: InsetMathGrid(1, 1), spacing_(s), spacing_code_(c)
 {}
 
 
@@ -54,7 +53,22 @@ void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathXYMatrix::write(WriteStream & os) const
 {
-	os << "\\xymatrix{";
+	os << "\\xymatrix";
+	switch (spacing_code_) {
+	case 'R':
+	case 'C':
+	case 'M':
+	case 'W':
+	case 'H':
+	case 'L':
+		os << '@' << spacing_code_ << '='
+		   << from_ascii(spacing_.asLatexString());
+		break;
+	default:
+		if (!spacing_.empty())
+			os << "@=" << from_ascii(spacing_.asLatexString());
+	}
+	os << '{';
 	InsetMathGrid::write(os);
 	os << "}\n";
 }
@@ -63,6 +77,20 @@ void InsetMathXYMatrix::write(WriteStream & os) const
 void InsetMathXYMatrix::infoize(odocstream & os) const
 {
 	os << "xymatrix ";
+	switch (spacing_code_) {
+	case 'R':
+	case 'C':
+	case 'M':
+	case 'W':
+	case 'H':
+	case 'L':
+		os << spacing_code_ << ' '
+		   << from_ascii(spacing_.asLatexString()) << ' ';
+		break;
+	default:
+		if (!spacing_.empty())
+			os << from_ascii(spacing_.asLatexString()) << ' ';
+	}
 	InsetMathGrid::infoize(os);
 }
 
@@ -80,6 +108,13 @@ void InsetMathXYMatrix::maple(MapleStream & os) const
 	os << "xymatrix(";
 	InsetMathGrid::maple(os);
 	os << ')';
+}
+
+
+void InsetMathXYMatrix::validate(LaTeXFeatures & features) const
+{
+	features.require("xy");
+	InsetMathGrid::validate(features);
 }
 
 
