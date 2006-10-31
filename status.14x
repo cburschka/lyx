@@ -49,6 +49,9 @@ What's new
 
 - Update bibliography references when the entry has been changed (bug 2744).
 
+- Fixed layout2layout (spurious tabs), so layout files from 1.3 can be read 
+  again.
+
 * User Interface:
 
 - Fix a crash that occured on exit if the clipboard was not empty (only on
