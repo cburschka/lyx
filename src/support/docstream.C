@@ -148,10 +148,13 @@ protected:
 	}
 	virtual int do_max_length() const throw()
 	{
-		// UTF8 uses at most 6 bytes to represent one UCS4 code point.
+		// UTF8 uses at most 4 bytes to represent one UCS4 code point
+		// (see RFC 3629). RFC 2279 specifies 6 bytes, but that
+		// information is outdated, and RFC 2279 has been superseded by
+		// RFC 3629.
 		// All other encodings encode one UCS4 code point in one byte
 		// (and can therefore only encode a subset of UCS4)
-		return utf8_ ? 6 : 1;
+		return utf8_ ? 4 : 1;
 	}
 private:
 	/// Do the actual conversion. The interface is equivalent to that of
