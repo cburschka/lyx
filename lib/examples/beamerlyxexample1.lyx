@@ -26,6 +26,10 @@
 
 \newcommand{\Lang}[1]{\operatorname{\text{\textsc{#1}}}}
 
+% This gets defined by beamerbasecolor.sty, but only at the beginning of
+% the document
+\colorlet{averagebackgroundcolor}{normal text.bg}
+
 \newcommand{\tape}[3]{%
   \color{structure!30!averagebackgroundcolor}
   \pgfmoveto{\pgfxy(-0.5,0)}
