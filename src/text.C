@@ -1836,6 +1836,7 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 {
 	// remove rows of paragraph, keep track of height changes
 	Paragraph & par = pars_[pit];
+	Buffer const & buffer = *bv.buffer();
 
 	// Add bibitem insets if necessary
 	if (par.layout()->labeltype == LABEL_BIBLIO) {
@@ -1850,8 +1851,9 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 		if (!hasbibitem) {
 			InsetBibitem * inset(new
 				InsetBibitem(InsetCommandParams("bibitem")));
-			// FIXME: change tracking (MG)
-			par.insertInset(0, static_cast<InsetBase *>(inset), Change(Change::INSERTED));
+			par.insertInset(0, static_cast<InsetBase *>(inset),
+			                Change(buffer.params().trackChanges ?
+			                       Change::INSERTED : Change::UNCHANGED));
 			bv.cursor().posRight();
 		}
 	}
@@ -1859,7 +1861,6 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in insetbase.h.
-	Buffer const & buffer = *bv.buffer();
 	LyXFont const bufferfont = buffer.params().getFont();
 	InsetList::iterator ii = par.insetlist.begin();
 	InsetList::iterator iend = par.insetlist.end();
