@@ -42,6 +42,9 @@ What's new
 
 * Document Input/Output
 
+- Write inherited colors correctly as "inherit" to the .lyx file. Previously
+  they where written as "default", which was then read in as "none".
+
 - Parse the optional argument of the AMS math environments aligned, gathered
   and alignedat.
 

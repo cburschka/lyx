@@ -718,14 +718,8 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 	if (orgfont.noun() != noun()) {
 		os << "\\noun " << LyXMiscNames[noun()] << "\n";
 	}
-	if (orgfont.color() != color()) {
-		// To make us file compatible with older
-		// lyx versions we emit "default" instead
-		// of "inherit"
-		string col_str(lcolor.getLyXName(color()));
-		if (col_str == "inherit") col_str = "default";
-		os << "\\color " << col_str << "\n";
-	}
+	if (orgfont.color() != color())
+		os << "\\color " << lcolor.getLyXName(color()) << '\n';
 	if (orgfont.language() != language() &&
 	    language() != latex_language) {
 		if (language())
