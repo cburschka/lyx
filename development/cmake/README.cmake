@@ -23,6 +23,10 @@ Building Visual C++ 2005 project files:
 TIPS: - rename Microsoft Visual Studio 8\VC\vcpackages\feacp.dll 
         to disable Intellisense
       - the Release build links much faster
+      - for the Debug and Release build all precompiled headers are enabled
+        to compile without pch (to check if all necessary headers are included)
+          * use MinSizeRel which only precompiles the STL and Boost headers
+          * use RelWithDebInfo which does not use any precompiled headers
 
 
 Building with GCC/Linux:

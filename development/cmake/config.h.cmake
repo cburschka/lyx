@@ -168,6 +168,8 @@
 #pragma warning( disable : 4800 ) //: forcing value to bool 'true' or 'false' (performance warning)
 #endif
 
+#ifdef LYX_ENABLE_PCH
 #include "pcheaders.h"
+#endif
 
 #endif
