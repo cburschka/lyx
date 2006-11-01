@@ -103,9 +103,6 @@ namespace Alert = frontend::Alert;
 
 namespace {
 
-unsigned int const saved_positions_num = 20;
-
-
 /// Return an inset of this class if it exists at the current cursor position
 template <class T>
 T * getInsetByCode(LCursor & cur, InsetBase::Code code)
@@ -129,17 +126,6 @@ BufferView::BufferView()
 	  intl_(new Intl)
 {
 	xsel_cache_.set = false;
-
-	saved_positions.resize(saved_positions_num);
-	// load saved bookmarks
-	BookmarksSection::BookmarkList & bmList = LyX::ref().session().bookmarks().load();
-	for (BookmarksSection::BookmarkList::iterator bm = bmList.begin();
-		bm != bmList.end(); ++bm)
-		if (bm->get<0>() < saved_positions_num)
-			saved_positions[bm->get<0>()] = Position( bm->get<1>(), bm->get<2>(), bm->get<3>() );
-	// and then clear them
-	bmList.clear();
-
 	intl_->initKeyMapper(lyxrc.use_kbmap);
 }
 
@@ -514,73 +500,31 @@ Change const BufferView::getCurrentChange() const
 }
 
 
-void BufferView::savePosition(unsigned int i)
+void BufferView::saveBookmark(bool persistent)
 {
-	if (i >= saved_positions_num)
-		return;
-	BOOST_ASSERT(cursor_.inTexted());
-	saved_positions[i] = Position(buffer_->fileName(),
-				      cursor_.paragraph().id(),
-				      cursor_.pos());
-	if (i > 0)
+	LyX::ref().session().bookmarks().save(
+		buffer_->fileName(),
+		cursor_.paragraph().id(),
+		cursor_.pos(),
+		persistent
+	);
+	if (persistent)
 		// emit message signal.
-		message(bformat(_("Saved bookmark %1$d"), i));
+		message(_("Save bookmark"));
 }
 
 
-void BufferView::restorePosition(unsigned int i)
+void BufferView::moveToPosition(int par_id, pos_type par_pos)
 {
-	if (i >= saved_positions_num)
-		return;
-
-	string const fname = saved_positions[i].filename;
-
 	cursor_.clearSelection();
 
-	if (fname != buffer_->fileName()) {
-		Buffer * b = 0;
-		if (theBufferList().exists(fname))
-			b = theBufferList().getBuffer(fname);
-		else {
-			b = theBufferList().newBuffer(fname);
-			// Don't ask, just load it
-			lyx::loadLyXFile(b, fname);
-		}
-		if (b)
-			setBuffer(b);
-	}
-
-	ParIterator par = buffer_->getParFromID(saved_positions[i].par_id);
+	ParIterator par = buffer_->getParFromID(par_id);
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	setCursor(makeDocIterator(par, min(par->size(), saved_positions[i].par_pos)));
-
-	if (i > 0)
-		// emit message signal.
-		message(bformat(_("Moved to bookmark %1$d"), i));
+	setCursor(makeDocIterator(par, min(par->size(), par_pos)));
 }
 
-
-bool BufferView::isSavedPosition(unsigned int i)
-{
-	return i < saved_positions_num && !saved_positions[i].filename.empty();
-}
-
-void BufferView::saveSavedPositions()
-{
-	// save bookmarks. It is better to use the pit interface
-	// but I do not know how to effectively convert between
-	// par_id and pit.
-	for (unsigned int i=1; i < saved_positions_num; ++i) {
-		if ( isSavedPosition(i) )
-			LyX::ref().session().bookmarks().save( boost::tie(
-				i,
-				saved_positions[i].filename,
-				saved_positions[i].par_id,
-				saved_positions[i].par_pos) );
-	}
-}
 
 void BufferView::switchKeyMap()
 {
@@ -662,10 +606,6 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		    || getInsetByCode<InsetRef>(cursor_, InsetBase::REF_CODE));
 		break;
 	}
-
-	case LFUN_BOOKMARK_GOTO:
-		flag.enabled(isSavedPosition(convert<unsigned int>(to_utf8(cmd.argument()))));
-		break;
 
 	case LFUN_CHANGES_TRACK:
 		flag.enabled(true);
@@ -760,11 +700,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
-		savePosition(convert<unsigned int>(to_utf8(cmd.argument())));
-		break;
-
-	case LFUN_BOOKMARK_GOTO:
-		restorePosition(convert<unsigned int>(to_utf8(cmd.argument())));
+		saveBookmark(convert<unsigned int>(to_utf8(cmd.argument())));
 		break;
 
 	case LFUN_LABEL_GOTO: {
@@ -775,7 +711,8 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 							 InsetBase::REF_CODE);
 			if (inset) {
 				label = inset->getParam("reference");
-				savePosition(0);
+				// persistent=false: use temp_bookmark
+				saveBookmark(false);
 			}
 		}
 

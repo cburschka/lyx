@@ -215,6 +215,7 @@ Menu & Menu::read(LyXLex & lex)
 		md_item = 1,
 		md_branches,
 		md_documents,
+		md_bookmarks,
 		md_charstyles,
 		md_endmenu,
 		md_exportformats,
@@ -237,6 +238,7 @@ Menu & Menu::read(LyXLex & lex)
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
 		{ "documents", md_documents },
+		{ "bookmarks", md_bookmarks },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
 		{ "floatinsert", md_floatinsert },
@@ -291,6 +293,10 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_documents:
 			add(MenuItem(MenuItem::Documents));
+			break;
+
+		case md_bookmarks:
+			add(MenuItem(MenuItem::Bookmarks));
 			break;
 
 		case md_toc:
@@ -460,6 +466,22 @@ void expandDocuments(Menu & tomenu)
 		if (ii < 10)
 			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
 		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BUFFER_SWITCH, *docit)));
+	}
+}
+
+
+void expandBookmarks(Menu & tomenu)
+{
+	lyx::BookmarksSection const & bm = LyX::cref().session().bookmarks();
+
+	for (size_t i = 1; i <= bm.size(); ++i) {
+		if (bm.isValid(i)) {
+			docstring const label = convert<docstring>(i) + ". "
+				+ makeDisplayPath(bm.bookmark(i).filename, 20)
+				+ char_type('|') + convert<docstring>(i);
+			tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BOOKMARK_GOTO, 
+				convert<docstring>(i))));
+		}
 	}
 }
 
@@ -768,6 +790,10 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 		case MenuItem::Documents:
 			expandDocuments(tomenu);
+			break;
+
+		case MenuItem::Bookmarks:
+			expandBookmarks(tomenu);
 			break;
 
 		case MenuItem::ImportFormats:

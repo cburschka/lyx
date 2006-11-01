@@ -173,23 +173,51 @@ private:
 class BookmarksSection : SessionSection
 {
 public:
-	///
-	typedef boost::tuple<unsigned int, std::string, unsigned int, pos_type> Bookmark;
+	/// bookmarks
+	class Bookmark {
+	public:
+		/// Filename
+		std::string filename;
+		/// Cursor paragraph Id
+		int par_id;
+		/// Cursor position
+		pos_type par_pos;
+		///
+		Bookmark() : par_id(0), par_pos(0) {}
+		///
+		Bookmark(std::string const & f, int id, pos_type pos)
+			: filename(f), par_id(id), par_pos(pos) {}
+	};
 
 	///
-	typedef std::vector<Bookmark> BookmarkList;
+	typedef std::deque<Bookmark> BookmarkList;
 
 public:
+	/// constructor, set max_bookmarks
+	/// allow 20 regular bookmarks
+	BookmarksSection::BookmarksSection() : max_bookmarks(20), bookmarks(0) {}
+
+	/// Save the current position as bookmark
+	/// if save==false, save to temp_bookmark
+	void save(std::string const & fname, int par_id, pos_type par_pos, bool persistent);
+
+	/// return bookmark, return temp_bookmark if i==0
+	Bookmark const & bookmark(unsigned int i) const;
+
+	/// does the given bookmark have a saved position ?
+	bool isValid(unsigned int i) const;
+
+	///
+	unsigned int size() const { return bookmarks.size(); }
+
+	/// clear all bookmarks
+	void clear() { bookmarks.clear(); }
+
 	///
 	void read(std::istream & is);
 
 	///
 	void write(std::ostream & os) const;
-
-	/** save a bookmark
-		@bookmark bookmark to be saved
-	*/
-	void save(Bookmark const & bookmark);
 
 	/** return bookmark list. Non-const container is used since
 		bookmarks will be cleaned after use.
@@ -197,8 +225,16 @@ public:
 	BookmarkList & load() { return bookmarks; }
 
 private:
+	/// temp bookmark (previously saved_positions[0]), this is really ugly
+	/// c.f. ./frontends/controllers/ControlRef.C
+	/// FIXME: a separate LFUN may be a better solution
+	Bookmark temp_bookmark;
+
 	/// a list of bookmarks
 	BookmarkList bookmarks;
+
+	///
+	unsigned int const max_bookmarks;
 };
 
 

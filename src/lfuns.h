@@ -372,6 +372,8 @@ enum kb_action {
 	LFUN_WINDOW_NEW,                 // Abdel 20061021
 	LFUN_WINDOW_CLOSE,               // Abdel 20061023
 	LFUN_UNICODE_INSERT,             // Lgb 20061022
+	// 285
+	LFUN_BOOKMARK_CLEAR,             // bpeng 20061031
 	
 	LFUN_LASTACTION                  // end of the table
 };

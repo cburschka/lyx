@@ -44,6 +44,8 @@ public:
 		/** This is the list of opened Documents,
 		    typically for the Documents menu. */
 		Documents,
+		/** This is the bookmarks */
+		Bookmarks,
 		///
 		Toc,
 		/** This is a list of viewable formats

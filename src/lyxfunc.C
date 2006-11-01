@@ -630,6 +630,19 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		// these are handled in our dispatch()
 		break;
 
+	// FIXME: will move to the front of this function when SWITCH_TO_BUFFER
+	// is valid for a newly created window 
+	case LFUN_BOOKMARK_GOTO:
+		// bookmarks can be valid even if there is no opened buffer
+		flag.enabled(LyX::ref().session().bookmarks().isValid(convert<unsigned int>(to_utf8(cmd.argument()))));
+		break;
+
+	// FIXME: will move to the front of this function when SWITCH_TO_BUFFER
+	// is valid for a newly created window 
+	case LFUN_BOOKMARK_CLEAR:
+		flag.enabled(LyX::ref().session().bookmarks().size() > 0);
+		break;
+
 	default:
 		if (!getLocalStatus(cur, cmd, flag))
 			flag = view()->getStatus(cmd);
@@ -1035,8 +1048,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// save cursor Position for opened files to .lyx/session
 				LyX::ref().session().lastFilePos().save(lyx_view_->buffer()->fileName(),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
-				// save bookmarks to .lyx/session
-				view()->saveSavedPositions();
 			}
 
 			LyX::ref().quit();
@@ -1343,7 +1354,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// FIXME Should use bformat
 			setMessage(_("Opening child document ") +
 					 makeDisplayPath(filename) + "...");
-			view()->savePosition(0);
+			view()->saveBookmark(false);
 			string const parentfilename = lyx_view_->buffer()->fileName();
 			if (theBufferList().exists(filename))
 				lyx_view_->setBuffer(theBufferList().getBuffer(filename));
@@ -1660,6 +1671,31 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			lyx_view_->close();
 			// We return here because lyx_view does not exists anymore.
 			return;
+
+		case LFUN_BOOKMARK_GOTO: {
+			BOOST_ASSERT(lyx_view_);
+			unsigned int idx = convert<unsigned int>(to_utf8(cmd.argument()));
+			BookmarksSection::Bookmark const bm = LyX::ref().session().bookmarks().bookmark(idx);
+			BOOST_ASSERT(!bm.filename.empty());
+			// if the file is not opened, open it.
+			if (!theBufferList().exists(bm.filename))
+				dispatch(FuncRequest(LFUN_FILE_OPEN, bm.filename));
+			// open may fail, so we need to test it again
+			if (theBufferList().exists(bm.filename)) {
+				// if the current buffer is not that one, switch to it.
+				// FIXME: swtich buffer to a newly created window will crash lyx
+				// because of invalid view.
+				if (lyx_view_->buffer()->fileName() != bm.filename)
+					dispatch(FuncRequest(LFUN_BUFFER_SWITCH, bm.filename));
+				// BOOST_ASSERT(lyx_view_->buffer()->fileName() != bm.filename);
+				view()->moveToPosition(bm.par_id, bm.par_pos);
+			} 
+			break;
+		}
+
+		case LFUN_BOOKMARK_CLEAR:
+			LyX::ref().session().bookmarks().clear();
+			break;
 
 		default: {
 			BOOST_ASSERT(lyx_view_);

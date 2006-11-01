@@ -424,17 +424,10 @@ Menuset
 	End
 
 	Menu "navigate_bookmarks"
-		Item "Go to Bookmark 1|1" "bookmark-goto 1"
-		Item "Go to Bookmark 2|2" "bookmark-goto 2"
-		Item "Go to Bookmark 3|3" "bookmark-goto 3"
-		Item "Go to Bookmark 4|4" "bookmark-goto 4"
-		Item "Go to Bookmark 5|5" "bookmark-goto 5"
+		Item "Save Bookmark|S" "bookmark-save 1"
+		Item "Clear Bookmarks|C" "bookmark-clear"
 		Separator
-		Item "Save Bookmark 1|S" "bookmark-save 1"
-		Item "Save Bookmark 2" "bookmark-save 2"
-		Item "Save Bookmark 3" "bookmark-save 3"
-		Item "Save Bookmark 4" "bookmark-save 4"
-		Item "Save Bookmark 5" "bookmark-save 5"
+		Bookmarks
 	End
 
 #

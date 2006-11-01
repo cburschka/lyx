@@ -102,15 +102,10 @@ public:
 	/// return the Scrollbar Parameters
 	ScrollbarParameters const & scrollbarParameters() const;
 
-	/// Save the current position as bookmark i
-	void savePosition(unsigned int i);
-	/// Restore the position from bookmark i
-	void restorePosition(unsigned int i);
-	/// does the given bookmark have a saved position ?
-	bool isSavedPosition(unsigned int i);
-	/// save bookmarks to .lyx/session
-	void saveSavedPositions();
-
+	/// Save the current position as bookmark, if persistent=false, save to temp_bookmark
+	void saveBookmark(bool persistent);
+	/// goto a specified position
+	void moveToPosition(int par_id, pos_type par_pos);
 	/// return the current change at the cursor
 	Change const getCurrentChange() const;
 
@@ -237,22 +232,6 @@ private:
 	/// Estimated average par height for scrollbar
 	int wh_;
 	///
-	class Position {
-	public:
-		/// Filename
-		std::string filename;
-		/// Cursor paragraph Id
-		int par_id;
-		/// Cursor position
-		pos_type par_pos;
-		///
-		Position() : par_id(0), par_pos(0) {}
-		///
-		Position(std::string const & f, int id, pos_type pos)
-			: filename(f), par_id(id), par_pos(pos) {}
-	};
-	///
-	std::vector<Position> saved_positions;
 	///
 	void menuInsertLyXFile(std::string const & filen);
 

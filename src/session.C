@@ -211,22 +211,19 @@ void BookmarksSection::read(istream & is)
 			break;
 		getline(is, tmp);
 		// read bookmarks
-		// bookmarkid, id, pos, file\n
-		unsigned int num;
+		// id, pos, file\n
 		unsigned int id;
 		pos_type pos;
 		string fname;
 		istringstream itmp(tmp);
-		itmp >> num;
-		itmp.ignore(2);  // ignore ", "
 		itmp >> id;
 		itmp.ignore(2);  // ignore ", "
 		itmp >> pos;
 		itmp.ignore(2);  // ignore ", "
 		itmp >> fname;
 		// only load valid bookmarks
-		if (fs::exists(fname))
-			bookmarks.push_back(boost::tie(num, fname, id, pos));
+		if (bookmarks.size() < max_bookmarks && fs::exists(fname))
+			bookmarks.push_back(Bookmark(fname, id, pos));
 	} while (is.good());
 }
 
@@ -234,20 +231,39 @@ void BookmarksSection::read(istream & is)
 void BookmarksSection::write(ostream & os) const
 {
 	os << '\n' << sec_bookmarks << '\n';
-	for (BookmarkList::const_iterator bm = bookmarks.begin();
-		bm != bookmarks.end(); ++bm) {
-		// save bookmark number, id, pos, fname
-		os << bm->get<0>() << ", "
-			<< bm->get<2>() << ", "
-			<< bm->get<3>() << ", "
-			<< bm->get<1>() << '\n';
+	for (size_t i = 0; i < bookmarks.size(); ++i) {
+		os << bookmarks[i].par_id << ", "
+		   << bookmarks[i].par_pos << ", "
+		   << bookmarks[i].filename << '\n';
 	}
 }
 
 
-void BookmarksSection::save(Bookmark const & bookmark)
+void BookmarksSection::save(std::string const & fname, int par_id, pos_type par_pos, bool persistent)
 {
-	bookmarks.push_back(bookmark);
+	if (persistent) {
+		bookmarks.push_front(Bookmark(fname, par_id, par_pos));
+		if (bookmarks.size() > max_bookmarks)
+			bookmarks.pop_back();
+		}
+	else
+		temp_bookmark = Bookmark(fname, par_id, par_pos);
+}
+
+
+bool BookmarksSection::isValid(unsigned int i) const
+{
+	// i == 0, or in the queue
+	return i <= bookmarks.size();
+}
+
+
+BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) const
+{
+	if (i == 0)
+		return temp_bookmark;
+	else
+		return bookmarks[i-1];
 }
 
 
@@ -299,7 +315,6 @@ string const SessionInfoSection::load(string const & key, bool release)
 		sessioninfo.erase(key);
 	return value;
 }
-
 
 
 Session::Session(unsigned int num) :

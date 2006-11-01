@@ -102,6 +102,7 @@ void LyXAction::init()
 		{ LFUN_APPENDIX, "appendix", Noop },
 		{ LFUN_BOOKMARK_GOTO, "bookmark-goto", ReadOnly },
 		{ LFUN_BOOKMARK_SAVE, "bookmark-save", ReadOnly },
+		{ LFUN_BOOKMARK_CLEAR, "bookmark-clear", ReadOnly },
 		{ LFUN_BREAK_LINE, "break-line", Noop },
 		{ LFUN_BREAK_PARAGRAPH, "break-paragraph", Noop },
 		{ LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT, "break-paragraph-keep-layout", Noop },
