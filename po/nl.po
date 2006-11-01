@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-01 13:52+0100\n"
+"POT-Creation-Date: 2006-11-01 16:33+0100\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -538,8 +538,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:90
-#: src/bufferlist.C:198 src/lyx_cb.C:115 src/lyx_cb.C:167 src/lyxfunc.C:677
-#: src/lyxfunc.C:849 src/lyxfunc.C:1954 src/lyxvc.C:173
+#: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:677
+#: src/lyxfunc.C:849 src/lyxfunc.C:1955 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Annuleren"
 
@@ -9566,23 +9566,23 @@ msgstr "Kies document ter invoeging"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:95
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
-#: src/lyxfunc.C:1793 src/lyxfunc.C:1830 src/lyxfunc.C:1905
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
+#: src/lyxfunc.C:1794 src/lyxfunc.C:1831 src/lyxfunc.C:1906
 msgid "Documents|#o#O"
 msgstr "Documenten|#o#O"
 
-#: src/BufferView.C:1399 src/lyxfunc.C:1831 src/lyxfunc.C:1906
+#: src/BufferView.C:1399 src/lyxfunc.C:1832 src/lyxfunc.C:1907
 msgid "Examples|#E#e"
 msgstr "Voorbeelden|#E#e"
 
-#: src/BufferView.C:1403 src/lyx_cb.C:140 src/lyxfunc.C:1798
-#: src/lyxfunc.C:1835
+#: src/BufferView.C:1403 src/lyx_cb.C:141 src/lyxfunc.C:1799
+#: src/lyxfunc.C:1836
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Documenten (*.lyx)"
 
-#: src/BufferView.C:1415 src/lyxfunc.C:1845 src/lyxfunc.C:1927
-#: src/lyxfunc.C:1941 src/lyxfunc.C:1957
+#: src/BufferView.C:1415 src/lyxfunc.C:1846 src/lyxfunc.C:1928
+#: src/lyxfunc.C:1942 src/lyxfunc.C:1958
 msgid "Canceled."
 msgstr "Afgebroken."
 
@@ -10444,7 +10444,7 @@ msgid "Over-write file?"
 msgstr "Het bestand bekijken"
 
 # Schrijfmachine
-#: src/exporter.C:86 src/lyx_cb.C:167 src/lyxfunc.C:1954
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1955
 #, fuzzy
 msgid "&Over-write"
 msgstr "T&ypemachine:"
@@ -12293,7 +12293,7 @@ msgstr "Rechtsboven"
 msgid "Page Height %"
 msgstr "Rechtsboven"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12301,25 +12301,25 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "r Omgekeerde vlg.|#R"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:133
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1794
+#: src/lyx_cb.C:136 src/lyxfunc.C:1795
 msgid "Templates|#T#t"
 msgstr "Sjablonen|#S#s"
 
-#: src/lyx_cb.C:164 src/lyxfunc.C:1951
+#: src/lyx_cb.C:165 src/lyxfunc.C:1952
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12327,31 +12327,31 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1953
+#: src/lyx_cb.C:167 src/lyxfunc.C:1954
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Document opslaan?"
 
-#: src/lyx_cb.C:215
+#: src/lyx_cb.C:216
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-opslaan"
 
-#: src/lyx_cb.C:255
+#: src/lyx_cb.C:256
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Auto-opslaan mislukte!"
 
-#: src/lyx_cb.C:282
+#: src/lyx_cb.C:283
 msgid "Autosaving current document..."
 msgstr "Bezig met Auto-opslaan huidig document..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12359,12 +12359,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, fuzzy
 msgid "Could not read file"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12372,25 +12372,25 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:380 src/output.C:40
+#: src/lyx_cb.C:381 src/output.C:40
 #, fuzzy
 msgid "Could not open file"
 msgstr "Kan niet naar bestand schrijven"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "\"configure\" draait..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Herladen configuratiegegevens..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Systeem opnieuw geconfigureerd."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -12714,73 +12714,73 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1065 src/text3.C:1209
+#: src/lyxfunc.C:1066 src/text3.C:1209
 msgid "Missing argument"
 msgstr "Argument ontbreekt"
 
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1075
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Openen helpbestand"
 
-#: src/lyxfunc.C:1343
+#: src/lyxfunc.C:1344
 msgid "Opening child document "
 msgstr "Open subdocument "
 
-#: src/lyxfunc.C:1428
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1439
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1555
+#: src/lyxfunc.C:1556
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Documentstandaard|#D"
 
-#: src/lyxfunc.C:1558
+#: src/lyxfunc.C:1559
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Als documentstandaard opslaan"
 
-#: src/lyxfunc.C:1614
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Vorm document om tot nieuwe documentklasse..."
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1792
 #, fuzzy
 msgid "Select template file"
 msgstr "Volgende regel selecteren"
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1829
 #, fuzzy
 msgid "Select document to open"
 msgstr "Kies document ter opening"
 
-#: src/lyxfunc.C:1869
+#: src/lyxfunc.C:1870
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Document %1$s openen... "
 
-#: src/lyxfunc.C:1873
+#: src/lyxfunc.C:1874
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s geopend."
 
-#: src/lyxfunc.C:1875
+#: src/lyxfunc.C:1876
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Kies document ter invoeging"
 
-#: src/lyxfunc.C:2017
+#: src/lyxfunc.C:2018
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 

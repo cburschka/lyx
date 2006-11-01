@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-01 13:52+0100\n"
+"POT-Creation-Date: 2006-11-01 16:33+0100\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -520,8 +520,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:90
-#: src/bufferlist.C:198 src/lyx_cb.C:115 src/lyx_cb.C:167 src/lyxfunc.C:677
-#: src/lyxfunc.C:849 src/lyxfunc.C:1954 src/lyxvc.C:173
+#: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:677
+#: src/lyxfunc.C:849 src/lyxfunc.C:1955 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Отменить"
 
@@ -9300,23 +9300,23 @@ msgstr "Выберите документ LyX для вставки"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:95
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
-#: src/lyxfunc.C:1793 src/lyxfunc.C:1830 src/lyxfunc.C:1905
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
+#: src/lyxfunc.C:1794 src/lyxfunc.C:1831 src/lyxfunc.C:1906
 msgid "Documents|#o#O"
 msgstr "Документы|#o#O"
 
-#: src/BufferView.C:1399 src/lyxfunc.C:1831 src/lyxfunc.C:1906
+#: src/BufferView.C:1399 src/lyxfunc.C:1832 src/lyxfunc.C:1907
 msgid "Examples|#E#e"
 msgstr "Примеры|#E#e"
 
-#: src/BufferView.C:1403 src/lyx_cb.C:140 src/lyxfunc.C:1798
-#: src/lyxfunc.C:1835
+#: src/BufferView.C:1403 src/lyx_cb.C:141 src/lyxfunc.C:1799
+#: src/lyxfunc.C:1836
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Документы LyX (*.lyx)"
 
-#: src/BufferView.C:1415 src/lyxfunc.C:1845 src/lyxfunc.C:1927
-#: src/lyxfunc.C:1941 src/lyxfunc.C:1957
+#: src/BufferView.C:1415 src/lyxfunc.C:1846 src/lyxfunc.C:1928
+#: src/lyxfunc.C:1942 src/lyxfunc.C:1958
 msgid "Canceled."
 msgstr "Отменено."
 
@@ -10168,7 +10168,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Просмотреть файл"
 
-#: src/exporter.C:86 src/lyx_cb.C:167 src/lyxfunc.C:1954
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1955
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Машинописный:"
@@ -11956,7 +11956,7 @@ msgstr "Справа сверху"
 msgid "Page Height %"
 msgstr "Справа сверху"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -11964,24 +11964,24 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "&Удалить"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:133
 msgid "Choose a filename to save document as"
 msgstr "Введите название файла для сохраняемого документа"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1794
+#: src/lyx_cb.C:136 src/lyxfunc.C:1795
 msgid "Templates|#T#t"
 msgstr "Шаблоны"
 
-#: src/lyx_cb.C:164 src/lyxfunc.C:1951
+#: src/lyx_cb.C:165 src/lyxfunc.C:1952
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11989,29 +11989,29 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1953
+#: src/lyx_cb.C:167 src/lyxfunc.C:1954
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Сохранить документ?"
 
-#: src/lyx_cb.C:215
+#: src/lyx_cb.C:216
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автоматическое сохранение %1$s"
 
-#: src/lyx_cb.C:255
+#: src/lyx_cb.C:256
 msgid "Autosave failed!"
 msgstr "Автосохранение не удалось!"
 
-#: src/lyx_cb.C:282
+#: src/lyx_cb.C:283
 msgid "Autosaving current document..."
 msgstr "Автосохранение текущего документа..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "Выберите файл для вставки"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12019,12 +12019,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, fuzzy
 msgid "Could not read file"
 msgstr "Ошибка запуска с файлом:"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12032,25 +12032,25 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:380 src/output.C:40
+#: src/lyx_cb.C:381 src/output.C:40
 #, fuzzy
 msgid "Could not open file"
 msgstr "Невозможно открыть файл"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "Выполняю конфигурирование..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Перезагружаю конфигурацию..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Система была переконфигурирована."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -12368,73 +12368,73 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1065 src/text3.C:1209
+#: src/lyxfunc.C:1066 src/text3.C:1209
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1075
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Открываем файл помощи %1$s..."
 
-#: src/lyxfunc.C:1343
+#: src/lyxfunc.C:1344
 msgid "Opening child document "
 msgstr "Открываю подчинённый документ "
 
-#: src/lyxfunc.C:1428
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Синтакс: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1439
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Установка цвета не удалась \"%1$s\" - цвет не определён или не может быть "
 "переопределён"
 
-#: src/lyxfunc.C:1555
+#: src/lyxfunc.C:1556
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "По умолчанию для документа|#Д"
 
-#: src/lyxfunc.C:1558
+#: src/lyxfunc.C:1559
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Сохранить как параметры документа по умолчанию"
 
-#: src/lyxfunc.C:1614
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Преобразую документ к новому классу документа..."
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1792
 msgid "Select template file"
 msgstr "Выберите файл шаблона"
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1829
 msgid "Select document to open"
 msgstr "Выберите документ для открытия"
 
-#: src/lyxfunc.C:1869
+#: src/lyxfunc.C:1870
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Открывается документ %1$s..."
 
-#: src/lyxfunc.C:1873
+#: src/lyxfunc.C:1874
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Документ %1$s открыт."
 
-#: src/lyxfunc.C:1875
+#: src/lyxfunc.C:1876
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Нвозможно открыть документ %1$s"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Выбрать %1$s файл для импорта"
 
-#: src/lyxfunc.C:2017
+#: src/lyxfunc.C:2018
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 

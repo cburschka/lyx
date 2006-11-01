@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-01 13:52+0100\n"
+"POT-Creation-Date: 2006-11-01 16:33+0100\n"
 "PO-Revision-Date: 2006-10-22 19:37+0200\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -503,8 +503,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:90
-#: src/bufferlist.C:198 src/lyx_cb.C:115 src/lyx_cb.C:167 src/lyxfunc.C:677
-#: src/lyxfunc.C:849 src/lyxfunc.C:1954 src/lyxvc.C:173
+#: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:677
+#: src/lyxfunc.C:849 src/lyxfunc.C:1955 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Avbryt"
 
@@ -8764,22 +8764,22 @@ msgstr "Velg LyX dokument som skal settes inn"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:95
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
-#: src/lyxfunc.C:1793 src/lyxfunc.C:1830 src/lyxfunc.C:1905
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
+#: src/lyxfunc.C:1794 src/lyxfunc.C:1831 src/lyxfunc.C:1906
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView.C:1399 src/lyxfunc.C:1831 src/lyxfunc.C:1906
+#: src/BufferView.C:1399 src/lyxfunc.C:1832 src/lyxfunc.C:1907
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.C:1403 src/lyx_cb.C:140 src/lyxfunc.C:1798
-#: src/lyxfunc.C:1835
+#: src/BufferView.C:1403 src/lyx_cb.C:141 src/lyxfunc.C:1799
+#: src/lyxfunc.C:1836
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
-#: src/BufferView.C:1415 src/lyxfunc.C:1845 src/lyxfunc.C:1927
-#: src/lyxfunc.C:1941 src/lyxfunc.C:1957
+#: src/BufferView.C:1415 src/lyxfunc.C:1846 src/lyxfunc.C:1928
+#: src/lyxfunc.C:1942 src/lyxfunc.C:1958
 msgid "Canceled."
 msgstr "Avbrutt."
 
@@ -9605,7 +9605,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Overskrive filen?"
 
-#: src/exporter.C:86 src/lyx_cb.C:167 src/lyxfunc.C:1954
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1955
 msgid "&Over-write"
 msgstr "Overskrive"
 
@@ -11323,7 +11323,7 @@ msgstr "Total høyde"
 msgid "Page Height %"
 msgstr "Total høyde"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -11334,23 +11334,23 @@ msgstr ""
 "\n"
 "Vil du prøve å lagre det under et annet navn?"
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr "Bytte navn og lagre?"
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 msgid "&Rename"
 msgstr "&Bytte navn"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:133
 msgid "Choose a filename to save document as"
 msgstr "Velg filnavn som dokumentet skal lagres som"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1794
+#: src/lyx_cb.C:136 src/lyxfunc.C:1795
 msgid "Templates|#T#t"
 msgstr "Maler"
 
-#: src/lyx_cb.C:164 src/lyxfunc.C:1951
+#: src/lyx_cb.C:165 src/lyxfunc.C:1952
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11361,28 +11361,28 @@ msgstr ""
 "\n"
 "Vil du overskrive det dokumentet?"
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1953
+#: src/lyx_cb.C:167 src/lyxfunc.C:1954
 msgid "Over-write document?"
 msgstr "OVerskrive dokument?"
 
-#: src/lyx_cb.C:215
+#: src/lyx_cb.C:216
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autolagrer %1$s"
 
-#: src/lyx_cb.C:255
+#: src/lyx_cb.C:256
 msgid "Autosave failed!"
 msgstr "Autolagring feilet!"
 
-#: src/lyx_cb.C:282
+#: src/lyx_cb.C:283
 msgid "Autosaving current document..."
 msgstr "Autolagrer gjelende dokument..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "Velg fil som skal settes inn"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11393,11 +11393,11 @@ msgstr ""
 "%1$s.\n"
 "på grunn av feilen: %2$s"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 msgid "Could not read file"
 msgstr "Kunne ikke lese filen"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11408,23 +11408,23 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/lyx_cb.C:380 src/output.C:40
+#: src/lyx_cb.C:381 src/output.C:40
 msgid "Could not open file"
 msgstr "Kan ikke åpne fil"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "Kjører \"configure\"..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Leser konfigurasjon om igjen..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 msgid "System reconfigured"
 msgstr "Systemed har blitt rekonfigurert."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11746,69 +11746,69 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1065 src/text3.C:1209
+#: src/lyxfunc.C:1066 src/text3.C:1209
 msgid "Missing argument"
 msgstr "Mangler argument"
 
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1075
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Åpner hjelpefil %1$s..."
 
-#: src/lyxfunc.C:1343
+#: src/lyxfunc.C:1344
 msgid "Opening child document "
 msgstr "Åpner subdokument "
 
-#: src/lyxfunc.C:1428
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1439
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1555
+#: src/lyxfunc.C:1556
 msgid "Document defaults saved in "
 msgstr "Standardverdier for dokumenter lagret i "
 
-#: src/lyxfunc.C:1558
+#: src/lyxfunc.C:1559
 msgid "Unable to save document defaults"
 msgstr "Fikk ikke lagret dokumentstandarder"
 
-#: src/lyxfunc.C:1614
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny tekstklasse..."
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1792
 msgid "Select template file"
 msgstr "Velg mal"
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1829
 msgid "Select document to open"
 msgstr "Velg dokument som skal åpnes"
 
-#: src/lyxfunc.C:1869
+#: src/lyxfunc.C:1870
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åpner dokument %1$s...\""
 
-#: src/lyxfunc.C:1873
+#: src/lyxfunc.C:1874
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s åpnet."
 
-#: src/lyxfunc.C:1875
+#: src/lyxfunc.C:1876
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åpne dokumentet %1$s"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Velg %1$s fil som skal importeres"
 
-#: src/lyxfunc.C:2017
+#: src/lyxfunc.C:2018
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 

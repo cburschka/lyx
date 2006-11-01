@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-01 13:52+0100\n"
+"POT-Creation-Date: 2006-11-01 16:33+0100\n"
 "PO-Revision-Date: 2006-09-17 16:27+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
@@ -499,8 +499,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:90
-#: src/bufferlist.C:198 src/lyx_cb.C:115 src/lyx_cb.C:167 src/lyxfunc.C:677
-#: src/lyxfunc.C:849 src/lyxfunc.C:1954 src/lyxvc.C:173
+#: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:677
+#: src/lyxfunc.C:849 src/lyxfunc.C:1955 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Mégsem"
 
@@ -8681,22 +8681,22 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:95
-#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:134
-#: src/lyxfunc.C:1793 src/lyxfunc.C:1830 src/lyxfunc.C:1905
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
+#: src/lyxfunc.C:1794 src/lyxfunc.C:1831 src/lyxfunc.C:1906
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.C:1399 src/lyxfunc.C:1831 src/lyxfunc.C:1906
+#: src/BufferView.C:1399 src/lyxfunc.C:1832 src/lyxfunc.C:1907
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.C:1403 src/lyx_cb.C:140 src/lyxfunc.C:1798
-#: src/lyxfunc.C:1835
+#: src/BufferView.C:1403 src/lyx_cb.C:141 src/lyxfunc.C:1799
+#: src/lyxfunc.C:1836
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.C:1415 src/lyxfunc.C:1845 src/lyxfunc.C:1927
-#: src/lyxfunc.C:1941 src/lyxfunc.C:1957
+#: src/BufferView.C:1415 src/lyxfunc.C:1846 src/lyxfunc.C:1928
+#: src/lyxfunc.C:1942 src/lyxfunc.C:1958
 msgid "Canceled."
 msgstr "Törölve."
 
@@ -9536,7 +9536,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Felülírjam a fájlt?"
 
-#: src/exporter.C:86 src/lyx_cb.C:167 src/lyxfunc.C:1954
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1955
 msgid "&Over-write"
 msgstr "&Kicserél"
 
@@ -11236,7 +11236,7 @@ msgstr "Teljes magasság"
 msgid "Page Height %"
 msgstr "Teljes magasság"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -11247,23 +11247,23 @@ msgstr ""
 "\n"
 "Átnevezi a dokumentumot és megpróbálja újra?"
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr "Átnevezzem és mentsem?"
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:116
 msgid "&Rename"
 msgstr "&Átnevezés"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:133
 msgid "Choose a filename to save document as"
 msgstr "Mentés másként ..."
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1794
+#: src/lyx_cb.C:136 src/lyxfunc.C:1795
 msgid "Templates|#T#t"
 msgstr "Sablonok|#a#A"
 
-#: src/lyx_cb.C:164 src/lyxfunc.C:1951
+#: src/lyx_cb.C:165 src/lyxfunc.C:1952
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11274,28 +11274,28 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1953
+#: src/lyx_cb.C:167 src/lyxfunc.C:1954
 msgid "Over-write document?"
 msgstr "Felülírjam a dokumentumot?"
 
-#: src/lyx_cb.C:215
+#: src/lyx_cb.C:216
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatikus mentése: %1$s"
 
-#: src/lyx_cb.C:255
+#: src/lyx_cb.C:256
 msgid "Autosave failed!"
 msgstr "Automatikus mentés sikertelen!"
 
-#: src/lyx_cb.C:282
+#: src/lyx_cb.C:283
 msgid "Autosaving current document..."
 msgstr "Aktuális dokumentum automatikus mentése ..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "Válassza ki a beszúrandó fájlt"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11306,11 +11306,11 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11321,23 +11321,23 @@ msgstr ""
 "nem nyitható meg,\n"
 "%2$s hiba miatt"
 
-#: src/lyx_cb.C:380 src/output.C:40
+#: src/lyx_cb.C:381 src/output.C:40
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "Beállítás folyamatban ..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Beállítások újratöltése ..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 msgid "System reconfigured"
 msgstr "A rendszer beállítása megtörtént"
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11665,71 +11665,71 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/lyxfunc.C:1065 src/text3.C:1209
+#: src/lyxfunc.C:1066 src/text3.C:1209
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/lyxfunc.C:1074
+#: src/lyxfunc.C:1075
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s ..."
 
-#: src/lyxfunc.C:1343
+#: src/lyxfunc.C:1344
 msgid "Opening child document "
 msgstr "Aldokumentum megnyitása"
 
-#: src/lyxfunc.C:1428
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Szintaxis: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1439
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/lyxfunc.C:1555
+#: src/lyxfunc.C:1556
 msgid "Document defaults saved in "
 msgstr "Dokumentum alapértékek elmentve ide:"
 
-#: src/lyxfunc.C:1558
+#: src/lyxfunc.C:1559
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/lyxfunc.C:1614
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra ..."
 
-#: src/lyxfunc.C:1791
+#: src/lyxfunc.C:1792
 msgid "Select template file"
 msgstr "Sablon kiválasztása"
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1829
 msgid "Select document to open"
 msgstr "Megnyitandó dokumentum kiválasztása"
 
-#: src/lyxfunc.C:1869
+#: src/lyxfunc.C:1870
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása %1$s ..."
 
-#: src/lyxfunc.C:1873
+#: src/lyxfunc.C:1874
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentum megnyitva."
 
-#: src/lyxfunc.C:1875
+#: src/lyxfunc.C:1876
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentum nem nyitható meg %1$s"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
-#: src/lyxfunc.C:2017
+#: src/lyxfunc.C:2018
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
