@@ -67,6 +67,16 @@ dist_examples_DATA = \
 	examples/aas_sample.lyx \
 	examples/amsart-test.lyx \
 	examples/amsbook-test.lyx \
+	examples/beamer-icsi-logo.pdf \
+	examples/beamer-knight1-mask.png \
+	examples/beamer-knight1.png \
+	examples/beamer-knight2-mask.png \
+	examples/beamer-knight2.png \
+	examples/beamer-knight3-mask.png \
+	examples/beamer-knight3.png \
+	examples/beamer-knight4-mask.png \
+	examples/beamer-knight4.png \
+	examples/beamerlyxexample1.lyx \
 	examples/ca_splash.lyx \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
@@ -784,6 +794,7 @@ dist_layouts_DATA =\
 	layouts/amsmaths.inc \
 	layouts/apa.layout \
 	layouts/article.layout \
+	layouts/beamer.layout \
 	layouts/book.layout \
 	layouts/broadway.layout \
 	layouts/chess.layout \

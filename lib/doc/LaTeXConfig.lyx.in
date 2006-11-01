@@ -1,4 +1,4 @@
-#LyX 1.4.2 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -611,6 +611,24 @@ agums.layout
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+beamer
+\end_layout
+
+\begin_layout Description
+Found: @chk_beamer@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/beamer
+\end_layout
+
+\begin_layout Description
+Notes: A LaTeX class for producing presentations and slides.
+\end_layout
+
 \begin_layout Subsection
 broadway
 \end_layout

@@ -1310,6 +1310,16 @@ lib_examples_files = Split('''
     aas_sample.lyx
     amsart-test.lyx
     amsbook-test.lyx
+    beamer-icsi-logo.pdf
+    beamer-knight1-mask.png
+    beamer-knight1.png
+    beamer-knight2-mask.png
+    beamer-knight2.png
+    beamer-knight3-mask.png
+    beamer-knight3.png
+    beamer-knight4-mask.png
+    beamer-knight4.png
+    beamerlyxexample1.lyx
     ca_splash.lyx
     chess-article.lyx
     chessgame.lyx
@@ -2030,6 +2040,7 @@ lib_layouts_files = Split('''
     amsmaths.inc
     apa.layout
     article.layout
+    beamer.layout
     book.layout
     broadway.layout
     chess.layout
