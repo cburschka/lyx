@@ -82,8 +82,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-10-30 21:36+0100\n"
-"PO-Revision-Date: 2006-09-16 15:21+0200\n"
+"POT-Creation-Date: 2006-10-31 20:36+0100\n"
+"PO-Revision-Date: 2006-11-01 11:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3173,16 +3173,15 @@ msgstr "Rechtes Trennzeichen"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:321
 msgid "&Keep matched"
-msgstr "&Zusammengehörige Trennzeichen"
+msgstr "&Zusammenpassend"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:329
 msgid "Match delimiter types"
-msgstr "Trennzeichen paarweise wählen"
+msgstr "Wählen Sie zusammengehörige Trennzeichen"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:366
-#, fuzzy
 msgid "Choose delimiter size"
-msgstr "Linkes Trennzeichen"
+msgstr "Wählen Sie die Größe der Trennzeichen"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:394
 msgid "&Insert"
@@ -4875,29 +4874,24 @@ msgid "Contents list"
 msgstr "Inhaltsverzeichnis"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:171
-#, fuzzy
 msgid "U&pdate"
-msgstr "&Aktualisieren"
+msgstr "Ak&tualisieren"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:182
-#, fuzzy
 msgid "&Up"
-msgstr "&Aktualisieren"
+msgstr "&Kap. auf"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:193
-#, fuzzy
 msgid "&Down"
-msgstr "Stadt"
+msgstr "Ka&p. ab"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:204
-#, fuzzy
 msgid "&In"
-msgstr "&Ignorieren"
+msgstr "&Ebene ab"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:215
-#, fuzzy
 msgid "&Out"
-msgstr "Außen"
+msgstr "E&bene auf"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
 msgid "&URL:"
@@ -7457,26 +7451,22 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "Vermutung @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/isprs.layout:38
-#, fuzzy
 msgid "ABSTRACT:"
-msgstr "ZUSAMMENFASSUNG"
+msgstr "ZUSAMMENFASSUNG:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "SCHLÜSSELWÖRTER:"
 
 #: lib/layouts/isprs.layout:135
-#, fuzzy
 msgid "Commission"
-msgstr "Bedingung"
+msgstr ""
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
-msgstr "Legende"
+msgstr "Legende."
 
 #: lib/layouts/isprs.layout:248
-#, fuzzy
 msgid "ACKNOWLEDGEMENTS"
 msgstr "DANKSAGUNGEN"
 
@@ -9889,9 +9879,8 @@ msgid "Phonetic Symbols|y"
 msgstr "Phonetische Symbole|P"
 
 #: lib/ui/stdmenus.ui:294
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Aufzählung"
+msgstr "Nummerierte Formel|N"
 
 #: lib/ui/stdmenus.ui:304
 msgid "Aligned Environment"
@@ -12100,32 +12089,28 @@ msgid "Next command"
 msgstr "Nächster Befehl"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "big size"
-msgstr "Groß"
+msgstr "Größe 'big'"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "Big size"
-msgstr "Groß"
+msgstr "Größe 'Big'"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
 msgid "bigg size"
-msgstr ""
+msgstr "Größe 'bigg'"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
-#, fuzzy
 msgid "Bigg size"
-msgstr "Groß"
+msgstr "Größe 'Bigg'"
 
 #: src/frontends/qt2/QDelimiterDialog.C:94
 msgid "LyX: Delimiters"
 msgstr "LyX: Trennzeichen"
 
 #: src/frontends/qt2/QDelimiterDialog.C:106
-#, fuzzy
 msgid "Variable size"
-msgstr "Tabelle (Linie)"
+msgstr "Variable Größe"
 
 #: src/frontends/qt2/QDocument.C:78
 msgid "Author-year"
@@ -13157,25 +13142,23 @@ msgstr "Lade die Datei."
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "big"
-msgstr ""
+msgstr "big"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
-#, fuzzy
 msgid "Big"
-msgstr "Groß"
+msgstr "Big"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "bigg"
-msgstr ""
+msgstr "bigg"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "Bigg"
-msgstr ""
+msgstr "Bigg"
 
 #: src/frontends/xforms/FormMathsDelim.C:85
-#, fuzzy
 msgid "Variable"
-msgstr "Tabelle"
+msgstr "Variabel"
 
 #: src/frontends/xforms/FormMathsMatrix.C:72
 msgid "Top | Middle | Bottom"
