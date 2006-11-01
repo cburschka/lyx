@@ -260,9 +260,8 @@ msgid "Custom Bullet:"
 msgstr "Kunde"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:177
-#, fuzzy
 msgid "&Level:"
-msgstr "&Marke:"
+msgstr "&Ebene:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
 #, fuzzy
@@ -329,9 +328,8 @@ msgid "Use &Old Style Figures"
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:73
-#, fuzzy
 msgid "Sizes"
-msgstr "Größe"
+msgstr "Größen"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
 #, fuzzy
@@ -349,9 +347,8 @@ msgid "S&cale Sans Serif %:"
 msgstr "&Serifenfrei:"
 
 #: src/frontends/qt4/ui/FontUi.ui:150
-#, fuzzy
 msgid "Families"
-msgstr "Rahmenlos"
+msgstr "Familien"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
 #, fuzzy
@@ -7143,7 +7140,7 @@ msgstr "Neu von Vorlage...|V"
 
 #: lib/ui/classic.ui:49 lib/ui/stdmenus.ui:37
 msgid "Open...|O"
-msgstr "Öffnen...|f"
+msgstr "Öffnen...|Ö"
 
 #: lib/ui/classic.ui:51 lib/ui/stdmenus.ui:40
 msgid "Close|C"
@@ -7279,11 +7276,11 @@ msgstr "Neu konfigurieren|o"
 
 #: lib/ui/classic.ui:115 lib/ui/stdmenus.ui:130
 msgid "Selection as Lines|L"
-msgstr "Auswahl als Zeilen|Z"
+msgstr "Auswahl als Zeilen|A"
 
 #: lib/ui/classic.ui:116 lib/ui/stdmenus.ui:131
 msgid "Selection as Paragraphs|P"
-msgstr "Auswahl als Absätze|A"
+msgstr "Auswahl als Absätze|u"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.ui:150
 msgid "Multicolumn|M"
@@ -7966,11 +7963,11 @@ msgstr "Zuletzt geöffnet|Z"
 
 #: lib/ui/stdmenus.ui:51
 msgid "New Window|W"
-msgstr ""
+msgstr "Neues Fenster|F"
 
 #: lib/ui/stdmenus.ui:52
 msgid "Close Window|d"
-msgstr ""
+msgstr "Fenster schließen|t"
 
 #: lib/ui/stdmenus.ui:85
 msgid "Redo|R"
@@ -7997,9 +7994,8 @@ msgid "Paste Recent"
 msgstr "Vorherige Auswahl einfügen"
 
 #: lib/ui/stdmenus.ui:91
-#, fuzzy
 msgid "Paste External Clipboard/Selection"
-msgstr "Externe Auswahl einfügen|u"
+msgstr "Externe Ablage/Auswahl einfügen|E"
 
 #: lib/ui/stdmenus.ui:95
 #, fuzzy
@@ -8012,9 +8008,8 @@ msgid "Move Paragraph Down|v"
 msgstr ", Absatz: "
 
 #: lib/ui/stdmenus.ui:98
-#, fuzzy
 msgid "Text Style|S"
-msgstr "Textstil"
+msgstr "Text-Stil|T"
 
 #: lib/ui/stdmenus.ui:99
 msgid "Paragraph Settings...|P"
@@ -8069,14 +8064,12 @@ msgid "Table Settings...|a"
 msgstr "Tabellen-Einstellungen...|l"
 
 #: lib/ui/stdmenus.ui:128
-#, fuzzy
 msgid "Clipboard as Lines|C"
-msgstr "Auswahl als Zeilen|Z"
+msgstr "Zwischenablage als Zeilen|Z"
 
 #: lib/ui/stdmenus.ui:129
-#, fuzzy
 msgid "Clipboard as Paragraphs|a"
-msgstr "Auswahl als Absätze|A"
+msgstr "Zwischenablage als Absätze|w"
 
 #: lib/ui/stdmenus.ui:141
 #, fuzzy
@@ -8135,9 +8128,8 @@ msgid "Text Style|T"
 msgstr "Textstil"
 
 #: lib/ui/stdmenus.ui:190
-#, fuzzy
 msgid "Split Cell|C"
-msgstr "Spezial Zelle"
+msgstr "Zelle aufteilen|Z"
 
 #: lib/ui/stdmenus.ui:192
 msgid "Add Line Above"
@@ -8172,18 +8164,16 @@ msgid "Delete Line to Right"
 msgstr "Linie rechts löschen"
 
 #: lib/ui/stdmenus.ui:261
-#, fuzzy
 msgid "Open All Insets|O"
-msgstr "Gleitobjekt-Einfügung geöffnet"
+msgstr "Alle Einfügungen öffnen|ö"
 
 #: lib/ui/stdmenus.ui:262
 msgid "Close All Insets|C"
-msgstr ""
+msgstr "Alle Einfügungen schließen|s"
 
 #: lib/ui/stdmenus.ui:264
-#, fuzzy
 msgid "View source|s"
-msgstr "Sichtb. Leerzeichen|#L"
+msgstr "Quelle ansehen|Q"
 
 #: lib/ui/stdmenus.ui:284
 msgid "Special Formatting|o"
