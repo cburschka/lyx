@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-11-01 13:52+0100\n"
-"PO-Revision-Date: 2006-10-22 19:41+0200\n"
+"PO-Revision-Date: 2005-12-18 15:13+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,6 @@ msgid "Alter Co&lor..."
 msgstr "&Ændr farve..."
 
 #: src/frontends/qt4/ui/BulletsUi.ui:37
-#, fuzzy
 msgid "&Font:"
 msgstr "&Skrift: "
 
@@ -196,7 +195,7 @@ msgstr "&Mærkat"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
 #, fuzzy
 msgid "Form"
-msgstr "Normal"
+msgstr "Formater"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -261,7 +260,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FontUi.ui:73
 #, fuzzy
 msgid "Sizes"
-msgstr "Størrelse:"
+msgstr "Størrelse"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
 #, fuzzy
@@ -991,9 +990,8 @@ msgid "&Keep matched"
 msgstr "&Hold parvis"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:104
-#, fuzzy
 msgid "&Size:"
-msgstr "Størrelse:"
+msgstr "St&ørrelse:"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:138
 msgid "Insert the delimiters"
@@ -1583,9 +1581,8 @@ msgid "&Greyed out"
 msgstr "&Grånet"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:93
-#, fuzzy
 msgid "Framed in box"
-msgstr "Første Navn"
+msgstr ""
 
 #: src/frontends/qt4/ui/QNoteUi.ui:96
 #, fuzzy
@@ -1643,7 +1640,6 @@ msgid "In&dent paragraph"
 msgstr "In&dryk afsnit"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:173
-#, fuzzy
 msgid "Label Width"
 msgstr "Mærkatbredde"
 
@@ -2264,9 +2260,8 @@ msgid "Restore cursor positions"
 msgstr "Aktuelle rækkeplacering"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
-#, fuzzy
 msgid "Restore to cursor position when the file was last closed"
-msgstr "Aktuelle rækkeplacering"
+msgstr ""
 
 #: src/frontends/qt4/ui/QPrefUi.ui:177
 #, fuzzy
@@ -2544,7 +2539,6 @@ msgid "&Table Settings"
 msgstr "&Tabelindstillinger"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:53
-#, fuzzy
 msgid "Column Width"
 msgstr "Kolonnebredde"
 
@@ -2663,7 +2657,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QTabularUi.ui:670
 #, fuzzy
 msgid "Additional Space"
-msgstr "Lodret afstand"
+msgstr "Yderligere lodret afstand."
 
 #: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
@@ -2727,9 +2721,8 @@ msgid "Border below"
 msgstr "Nedre kant"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:902
-#, fuzzy
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Udskriver siderne i omvendt rækkefølge."
+msgstr ""
 
 #: src/frontends/qt4/ui/QTabularUi.ui:905
 #: src/frontends/qt4/ui/QTabularUi.ui:918
@@ -2744,9 +2737,8 @@ msgid "This row is the header of the first page"
 msgstr "Udskriver siderne i omvendt rækkefølge."
 
 #: src/frontends/qt4/ui/QTabularUi.ui:925
-#, fuzzy
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr "Udskriver siderne i omvendt rækkefølge."
+msgstr ""
 
 #: src/frontends/qt4/ui/QTabularUi.ui:935
 #, fuzzy
@@ -4189,14 +4181,12 @@ msgid "MM"
 msgstr ""
 
 #: lib/layouts/beamer.layout:100
-#, fuzzy
 msgid "BeginFrame"
-msgstr "Første Navn"
+msgstr ""
 
 #: lib/layouts/beamer.layout:115
-#, fuzzy
 msgid "Frame   "
-msgstr "Første Navn"
+msgstr ""
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
@@ -4209,7 +4199,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:179
 #, fuzzy
 msgid "EndFrame"
-msgstr "Første Navn"
+msgstr "Printer&navn:"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
@@ -4247,7 +4237,7 @@ msgstr "Underundersektion"
 #: lib/layouts/beamer.layout:347
 #, fuzzy
 msgid "AgainFrame"
-msgstr "Første Navn"
+msgstr "billedtekstramme"
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
@@ -4275,21 +4265,20 @@ msgstr "Korollar"
 #: lib/layouts/beamer.layout:537
 #, fuzzy
 msgid "Column"
-msgstr "&Kolonner:"
+msgstr "Kolonner"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:560
-#, fuzzy
 msgid "Columns"
-msgstr "&Kolonner:"
+msgstr "Kolonner"
 
 #: lib/layouts/beamer.layout:572
 #, fuzzy
 msgid "columns "
-msgstr "&Kolonner:"
+msgstr "Kolonner"
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
@@ -4369,7 +4358,7 @@ msgstr "LyX-kode"
 #: lib/layouts/beamer.layout:819
 #, fuzzy
 msgid "NoteItem"
-msgstr "Notat"
+msgstr "Ny indgang"
 
 #: lib/layouts/beamer.layout:830
 #, fuzzy
@@ -4418,7 +4407,7 @@ msgstr "Korrektur"
 #: lib/layouts/beamer.layout:953
 #, fuzzy
 msgid "Separator"
-msgstr "Menuadskillelse|M"
+msgstr "Adskillelse"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
@@ -5870,7 +5859,7 @@ msgstr ""
 #: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
 #, fuzzy
 msgid "Step"
-msgstr "Stil"
+msgstr "State"
 
 #: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
 #, fuzzy
@@ -8441,7 +8430,7 @@ msgstr "Catalansk"
 #: lib/ui/stdmenus.ui:144
 #, fuzzy
 msgid "Uppercase|U"
-msgstr "Gennemtving &versaler"
+msgstr "Opdatér|O"
 
 #: lib/ui/stdmenus.ui:145
 msgid "Lowercase|L"
@@ -8489,8 +8478,9 @@ msgid "Text Style|T"
 msgstr "Tekststil"
 
 #: lib/ui/stdmenus.ui:190
+#, fuzzy
 msgid "Split Cell|C"
-msgstr ""
+msgstr "Specialcelle"
 
 #: lib/ui/stdmenus.ui:192
 #, fuzzy
@@ -8667,12 +8657,12 @@ msgstr "Indstillinger...|I"
 #: lib/ui/stdmenus.ui:406
 #, fuzzy
 msgid "Accept Change|A"
-msgstr "Acceptér alle ændringer|A"
+msgstr "Acceptér ændring|#A"
 
 #: lib/ui/stdmenus.ui:407
 #, fuzzy
 msgid "Reject Change|R"
-msgstr "Afvis alle ændringer|f"
+msgstr "Afvis ændring|#A"
 
 #: lib/ui/stdmenus.ui:408
 #, fuzzy
@@ -8687,7 +8677,7 @@ msgstr "Afvis alle ændringer|f"
 #: lib/ui/stdmenus.ui:419
 #, fuzzy
 msgid "Next Change|C"
-msgstr "&Næste ændring"
+msgstr "Næste ændring|#N"
 
 #: lib/ui/stdmenus.ui:420
 #, fuzzy
@@ -9007,12 +8997,12 @@ msgstr "&Næste ændring"
 #: lib/ui/stdtoolbars.ui:153
 #, fuzzy
 msgid "Accept change"
-msgstr "Acceptér alle ændringer|A"
+msgstr "Acceptér ændring|#A"
 
 #: lib/ui/stdtoolbars.ui:154
 #, fuzzy
 msgid "Reject change"
-msgstr "Afvis alle ændringer|f"
+msgstr "Afvis ændring|#A"
 
 #: lib/ui/stdtoolbars.ui:156
 #, fuzzy
@@ -10659,7 +10649,7 @@ msgstr "Grenindstillinger"
 #: src/frontends/qt4/QBranches.C:43
 #, fuzzy
 msgid "Branch"
-msgstr "Gren|G"
+msgstr "Gren"
 
 #: src/frontends/qt4/QBranches.C:44
 msgid "Activated"
@@ -11491,7 +11481,7 @@ msgstr "&Grånet"
 #: src/insets/insetnote.C:68
 #, fuzzy
 msgid "Framed"
-msgstr "Første Navn"
+msgstr "Uden ramme"
 
 #: src/insets/insetnote.C:69
 #, fuzzy
@@ -11740,7 +11730,7 @@ msgstr "mu"
 #: src/lengthcommon.C:39
 #, fuzzy
 msgid "Text Width %"
-msgstr "Mærkatbredde"
+msgstr "Fast bredde"
 
 #: src/lengthcommon.C:39
 #, fuzzy
@@ -12965,7 +12955,7 @@ msgstr ""
 #: src/tex-strings.C:70
 #, fuzzy
 msgid "Bookman"
-msgstr "Bogmærker|B"
+msgstr "Ordinær"
 
 #: src/tex-strings.C:70
 msgid "Utopia"
@@ -13007,7 +12997,7 @@ msgstr ""
 #: src/tex-strings.C:80
 #, fuzzy
 msgid "CM Bright"
-msgstr "Ophavsret"
+msgstr "Øverst til højre"
 
 #: src/tex-strings.C:89
 msgid "Computer Modern Typewriter"

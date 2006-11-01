@@ -4,8 +4,6 @@
 # Peter Sütterlin <P.Suetterlin@astro.uu.nl>
 # Michael Gerz <Michael.Gerz@teststep.org>
 # 
-# !!! M. Gerz: Check translations of "quote" and "reference"!!!
-# 
 # Ein paar generelle Richtlinien für eine einheitliche Übersetzung (Vorschlag von M. Gerz):
 #
 #   1. In Tooltips die "Sie"-Form verwenden. Beispiel:
@@ -52,6 +50,7 @@
 #   merge                -> zusammenfassen
 #   miscellaneous        -> Verschiedenes
 #   multicolumn          -> Mehrfachspalte
+#   (proper) noun        -> Eigenname
 #   note                 -> Notiz / Hinweis (je nach Kontext)
 #   option               -> Option
 #   pipe                 -> Weiterleitung
@@ -81,10 +80,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.4.0\n"
+"Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-11-01 13:52+0100\n"
-"PO-Revision-Date: 2006-10-22 19:40+0200\n"
+"PO-Revision-Date: 2006-11-01 11:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -181,7 +180,6 @@ msgid "Alter Co&lor..."
 msgstr "&Farbe ändern..."
 
 #: src/frontends/qt4/ui/BulletsUi.ui:37
-#, fuzzy
 msgid "&Font:"
 msgstr "&Schrift:"
 
@@ -269,7 +267,7 @@ msgstr "&Marke:"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
 #, fuzzy
 msgid "Form"
-msgstr "Normal"
+msgstr "Formate"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -333,7 +331,7 @@ msgstr ""
 #: src/frontends/qt4/ui/FontUi.ui:73
 #, fuzzy
 msgid "Sizes"
-msgstr "Größe:"
+msgstr "Größe"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
 #, fuzzy
@@ -972,18 +970,16 @@ msgid "Move the selected citation up"
 msgstr "Ausgewähltes Zitat nach vorne verschieben"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
-#, fuzzy
 msgid "&Up"
-msgstr "&Aktualisieren"
+msgstr "&Kap. auf"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
 msgid "Move the selected citation down"
 msgstr "Ausgewähltes Zitat nach hinten verschieben"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
-#, fuzzy
 msgid "&Down"
-msgstr "Stadt"
+msgstr "Ka&p. ab"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:149
 msgid "D&elete"
@@ -1045,16 +1041,15 @@ msgstr "&Übernehmen"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:49
 msgid "Match delimiter types"
-msgstr "Trennzeichen paarweise wählen"
+msgstr "Wählen Sie zusammengehörige Trennzeichen"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:52
 msgid "&Keep matched"
-msgstr "&Zusammengehörige Trennzeichen"
+msgstr "&Zusammenpassend"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:104
-#, fuzzy
 msgid "&Size:"
-msgstr "Größe:"
+msgstr "&Größe:"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:138
 msgid "Insert the delimiters"
@@ -1377,7 +1372,7 @@ msgstr "Te&ilabbildung"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:620
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Bild vor dem Exportieren nach LaTeX nicht entpacken"
+msgstr "Bild vor dem Exportieren nach LaTeX nicht dekomprimieren"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:623
 msgid "Don't un&zip on export"
@@ -1640,9 +1635,8 @@ msgid "&Greyed out"
 msgstr "&Grauschrift"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:93
-#, fuzzy
 msgid "Framed in box"
-msgstr "Vorname"
+msgstr ""
 
 #: src/frontends/qt4/ui/QNoteUi.ui:96
 #, fuzzy
@@ -1700,7 +1694,6 @@ msgid "In&dent paragraph"
 msgstr "Absatz &einrücken"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:173
-#, fuzzy
 msgid "Label Width"
 msgstr "Markenbreite"
 
@@ -1795,21 +1788,18 @@ msgid "&Copier:"
 msgstr "&Kopierer:"
 
 #: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:34
-#, fuzzy
 msgid ""
 "Select if LyX should output Windows-style paths rather than Posix-style "
 "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 "rather than the Cygwin teTeX."
 msgstr ""
-"Bitte wählen, wenn LyX anstelle von Windows-konformen Pfaden Cygwin-konforme "
-"Pfade ausgeben soll. Dies ist nützlich, wenn Sie Cygwin teTeX anstelle des "
-"nativen Windows MikTeX verwenden. Beachten Sie aber, dass Sie für alle Ihre "
-"Konverter Shell-Skript-Wrapper schreiben müssen."
+"Bitte wählen, wenn LyX anstelle von Posix-konformen Pfaden Windows-konforme "
+"Pfade in LaTex-Dateien ausgeben soll. Dies ist nützlich, wenn Sie das native "
+"Windows MikTeX anstelle von Cygwin teTeX verwenden."
 
 #: src/frontends/qt4/ui/QPrefCygwinPathUi.ui:37
-#, fuzzy
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr "Verwende &Cygwin-konforme Pfade"
+msgstr "Verwende &Windows-konforme Pfade in LaTeX-Dateien"
 
 #: src/frontends/qt4/ui/QPrefDateUi.ui:36
 msgid "&Date format:"
@@ -2049,7 +2039,7 @@ msgstr "Befehl und Optionen für Stichwortverzeichnis (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:190
 msgid "Index command:"
-msgstr "Befehl für Stichwortverz.:"
+msgstr "Befehl für Stichwortverzeichnis:"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:200
 msgid "DVI viewer paper size options:"
@@ -2101,7 +2091,7 @@ msgstr "Druckernamen explizit verwenden"
 
 #: src/frontends/qt4/ui/QPrefPrinterUi.ui:57
 msgid "Adapt outp&ut"
-msgstr "&Namen angeben"
+msgstr "&Ausgabe anpassen"
 
 #: src/frontends/qt4/ui/QPrefPrinterUi.ui:64
 msgid "Command Options"
@@ -2317,9 +2307,8 @@ msgid "Restore cursor positions"
 msgstr "Aktuelle Zeilenposition"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
-#, fuzzy
 msgid "Restore to cursor position when the file was last closed"
-msgstr "Aktuelle Zeilenposition"
+msgstr ""
 
 #: src/frontends/qt4/ui/QPrefUi.ui:177
 #, fuzzy
@@ -2417,11 +2406,11 @@ msgstr "Anzahl der Kopien"
 
 #: src/frontends/qt4/ui/QPrintUi.ui:180
 msgid "Collate copies"
-msgstr "Wiederhole Kopien"
+msgstr "Kopien sortieren"
 
 #: src/frontends/qt4/ui/QPrintUi.ui:183
 msgid "&Collate"
-msgstr "&Wiederholen"
+msgstr "&Sortieren"
 
 #: src/frontends/qt4/ui/QPrintUi.ui:233
 msgid "&Print"
@@ -2594,7 +2583,6 @@ msgid "&Table Settings"
 msgstr "&Tabellen-Einstellungen"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:53
-#, fuzzy
 msgid "Column Width"
 msgstr "Spaltenbreite"
 
@@ -2712,7 +2700,7 @@ msgstr "Setzen Sie die Rahmen der aktuellen (ausgewählten) Zelle(n)"
 #: src/frontends/qt4/ui/QTabularUi.ui:670
 #, fuzzy
 msgid "Additional Space"
-msgstr "Vertikaler Abstand"
+msgstr "Zusätzlicher vertikaler Abstand."
 
 #: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
@@ -3487,9 +3475,8 @@ msgid "Biography"
 msgstr "Biographie"
 
 #: lib/layouts/IEEEtran.layout:421
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Biographie"
+msgstr "Biographie ohne Foto"
 
 #: lib/layouts/IEEEtran.layout:439 lib/layouts/aa.layout:58
 #: lib/layouts/aa.layout:216 lib/layouts/aa.layout:227
@@ -4152,14 +4139,12 @@ msgid "MM"
 msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
-#, fuzzy
 msgid "BeginFrame"
-msgstr "Vorname"
+msgstr ""
 
 #: lib/layouts/beamer.layout:115
-#, fuzzy
 msgid "Frame   "
-msgstr "Vorname"
+msgstr ""
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
@@ -4172,7 +4157,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:179
 #, fuzzy
 msgid "EndFrame"
-msgstr "Vorname"
+msgstr "Absendername:"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
@@ -4209,7 +4194,7 @@ msgstr "\\arabic{chapter}.\\arabic{section}"
 #: lib/layouts/beamer.layout:347
 #, fuzzy
 msgid "AgainFrame"
-msgstr "Vorname"
+msgstr "Legende (Rahmen)"
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
@@ -4237,21 +4222,20 @@ msgstr "Korollar."
 #: lib/layouts/beamer.layout:537
 #, fuzzy
 msgid "Column"
-msgstr "&Spalten:"
+msgstr "Spalten"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:560
-#, fuzzy
 msgid "Columns"
-msgstr "&Spalten:"
+msgstr "Spalten"
 
 #: lib/layouts/beamer.layout:572
 #, fuzzy
 msgid "columns "
-msgstr "&Spalten:"
+msgstr "Spalten"
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
@@ -4331,7 +4315,7 @@ msgstr "LyX-Code"
 #: lib/layouts/beamer.layout:819
 #, fuzzy
 msgid "NoteItem"
-msgstr "Notiz"
+msgstr "Neuer Begriff"
 
 #: lib/layouts/beamer.layout:830
 #, fuzzy
@@ -4380,7 +4364,7 @@ msgstr "Beweis."
 #: lib/layouts/beamer.layout:953
 #, fuzzy
 msgid "Separator"
-msgstr "Menütrenner|M"
+msgstr "Absatztrennung"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
@@ -4747,11 +4731,11 @@ msgstr "Journal:"
 
 #: lib/layouts/egs.layout:358
 msgid "msnumber"
-msgstr "Manuscript-Nummer"
+msgstr "Manuskript-Nummer"
 
 #: lib/layouts/egs.layout:373
 msgid "MS_number:"
-msgstr "Manuscript-Nummer:"
+msgstr "Manuskript-Nummer:"
 
 #: lib/layouts/egs.layout:383
 msgid "FirstAuthor"
@@ -5691,27 +5675,23 @@ msgstr "Stichwörter:"
 
 #: lib/layouts/ijmpc.layout:95
 msgid "Classification Codes"
-msgstr ""
+msgstr "Klassifikationscodes"
 
 #: lib/layouts/ijmpc.layout:164 lib/layouts/ijmpd.layout:161
-#, fuzzy
 msgid "Step"
-msgstr "Stil"
+msgstr "Schritt"
 
 #: lib/layouts/ijmpc.layout:168 lib/layouts/ijmpd.layout:165
-#, fuzzy
 msgid "Step \\arabic{step}."
-msgstr "Notiz \\arabic{note}."
+msgstr "Schritt \\arabic{step}."
 
 #: lib/layouts/ijmpc.layout:280 lib/layouts/ijmpd.layout:287
-#, fuzzy
 msgid "Prop"
-msgstr "Zuschneiden"
+msgstr "Eigenschaft"
 
 #: lib/layouts/ijmpc.layout:284
-#, fuzzy
 msgid "Prop \\arabic{prop}."
-msgstr "Problem \\arabic{problem}."
+msgstr "Eigenschaft \\arabic{prop}."
 
 #: lib/layouts/ijmpc.layout:290 lib/layouts/ijmpd.layout:298
 #: lib/layouts/llncs.layout:394 lib/layouts/svjour.inc:457
@@ -5719,110 +5699,90 @@ msgid "Question"
 msgstr "Frage"
 
 #: lib/layouts/ijmpc.layout:294
-#, fuzzy
 msgid "Question \\arabic{question}."
-msgstr "Definition \\arabic{definition}."
+msgstr "Frage \\arabic{question}."
 
 #: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:320
-#, fuzzy
 msgid "Conjecture "
-msgstr "Vermutung"
+msgstr "Vermutung "
 
 #: lib/layouts/ijmpc.layout:317 lib/layouts/ijmpd.layout:327
-#, fuzzy
 msgid "Appendices Section"
-msgstr "Anhänge"
+msgstr "Abschnitt Anhänge"
 
 #: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:337
-#, fuzzy
 msgid "--- Appendices ---"
-msgstr "Anhänge"
+msgstr "--- Anhänge ---"
 
 #: lib/layouts/ijmpc.layout:349 lib/layouts/ijmpd.layout:360
-#, fuzzy
 msgid "Appendix \\Alph{appendix}."
-msgstr "Anhang \\Alph{chapter}"
+msgstr "Anhang \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:150
-#, fuzzy
 msgid "Definition @Section@.\\arabic{definition}."
-msgstr "Definition \\arabic{definition}."
+msgstr "Definition @Section@.\\arabic{definition}."
 
 #: lib/layouts/ijmpd.layout:179
-#, fuzzy
 msgid "Example @Section@.\\arabic{example}."
-msgstr "Beispiel @Section@.\\arabic{theorem}."
+msgstr "Beispiel @Section@.\\arabic{example}."
 
 #: lib/layouts/ijmpd.layout:190
-#, fuzzy
 msgid "Remark @Section@.\\arabic{remark}."
-msgstr "Bemerkung @Section@.\\arabic{theorem}."
+msgstr "Bemerkung @Section@.\\arabic{remark}."
 
 #: lib/layouts/ijmpd.layout:201
-#, fuzzy
 msgid "Notation @Section@.\\arabic{notation}."
-msgstr "Notation @Section@.\\arabic{theorem}."
+msgstr "Notation @Section@.\\arabic{notation}."
 
 #: lib/layouts/ijmpd.layout:222 lib/layouts/amsmaths.inc:79
 msgid "Theorem @Section@.\\arabic{theorem}."
 msgstr "Theorem @Section@.\\arabic{theorem}."
 
 #: lib/layouts/ijmpd.layout:255
-#, fuzzy
 msgid "Corollary @Section@.\\arabic{corollary}."
-msgstr "Korollar \\arabic{corollary}."
+msgstr "Korollar @Section@.\\arabic{corollary}."
 
 #: lib/layouts/ijmpd.layout:269
-#, fuzzy
 msgid "Lemma @Section@.\\arabic{lemma}."
-msgstr "Lemma @Section@.\\arabic{theorem}."
+msgstr "Lemma @Section@.\\arabic{lemma}."
 
 #: lib/layouts/ijmpd.layout:280
-#, fuzzy
 msgid "Proposition @Section@.\\arabic{proposition}."
-msgstr "Feststellung \\arabic{proposition}."
+msgstr "Feststellung @Section@.\\arabic{proposition}."
 
 #: lib/layouts/ijmpd.layout:291
-#, fuzzy
 msgid "Prop @Section@.\\arabic{prop}."
-msgstr "Problem @Section@.\\arabic{theorem}."
+msgstr "Eigenschaft @Section@.\\arabic{prop}."
 
 #: lib/layouts/ijmpd.layout:302
-#, fuzzy
 msgid "Question @Section@.\\arabic{question}."
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Frage @Section@.\\arabic{question}."
 
 #: lib/layouts/ijmpd.layout:313
-#, fuzzy
 msgid "Claim @Section@.\\arabic{claim}."
-msgstr "Behauptung @Section@.\\arabic{theorem}."
+msgstr "Behauptung @Section@.\\arabic{claim}."
 
 #: lib/layouts/ijmpd.layout:324
-#, fuzzy
 msgid "Conjecture @Section@.\\arabic{conjecture}."
-msgstr "Vermutung \\arabic{conjecture}."
+msgstr "Vermutung @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/isprs.layout:38
-#, fuzzy
 msgid "ABSTRACT:"
-msgstr "ZUSAMMENFASSUNG"
+msgstr "ZUSAMMENFASSUNG:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "SCHLÜSSELWÖRTER:"
 
 #: lib/layouts/isprs.layout:135
-#, fuzzy
 msgid "Commission"
-msgstr "Bedingung"
+msgstr ""
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
-msgstr "Legende"
+msgstr "Legende."
 
 #: lib/layouts/isprs.layout:248
-#, fuzzy
 msgid "ACKNOWLEDGEMENTS"
 msgstr "DANKSAGUNGEN"
 
@@ -6009,7 +5969,7 @@ msgstr "\\Alph{chapter}"
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:25
 #: lib/layouts/scrclass.inc:32
 msgid "Labeling"
-msgstr "Labeling"
+msgstr "Liste"
 
 #: lib/layouts/scrlettr.layout:52
 msgid "L"
@@ -6950,9 +6910,8 @@ msgid "Austrian"
 msgstr "Deutsch (Österreich)"
 
 #: lib/languages:6
-#, fuzzy
 msgid "Austrian (new spelling)"
-msgstr "Deutsch (neue Rechtschreibung)"
+msgstr "Deutsch (Österreich, neue Rechtschreibung)"
 
 #: lib/languages:7
 msgid "Bahasa"
@@ -7304,7 +7263,7 @@ msgstr "Wörter zählen|W"
 
 #: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:448
 msgid "Check TeX|h"
-msgstr "TeX prüfen|X"
+msgstr "TeX prüfen|T"
 
 #: lib/ui/classic.ui:108
 msgid "Change Tracking|g"
@@ -7645,7 +7604,7 @@ msgstr "Fortsetzungspunkte|F"
 
 #: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:311
 msgid "End of Sentence|E"
-msgstr "Satzendepunkt|p"
+msgstr "Satzendepunkt|S"
 
 #: lib/ui/classic.ui:252
 msgid "Single Quote|Q"
@@ -7851,7 +7810,7 @@ msgstr "Hervorhebung|H"
 
 #: lib/ui/classic.ui:340
 msgid "Noun Style|N"
-msgstr "Kapitälchen|K"
+msgstr "Eigenname|E"
 
 #: lib/ui/classic.ui:341
 msgid "Bold Style|B"
@@ -8066,7 +8025,6 @@ msgid "Table|T"
 msgstr "Tabelle|T"
 
 #: lib/ui/stdmenus.ui:104
-#, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Zeilen & Spalten|Z"
 
@@ -8133,7 +8091,7 @@ msgstr "Katalanisch"
 #: lib/ui/stdmenus.ui:144
 #, fuzzy
 msgid "Uppercase|U"
-msgstr "&Großschreibung erzwingen"
+msgstr "Aktualisieren|A"
 
 #: lib/ui/stdmenus.ui:145
 msgid "Lowercase|L"
@@ -8177,8 +8135,9 @@ msgid "Text Style|T"
 msgstr "Textstil"
 
 #: lib/ui/stdmenus.ui:190
+#, fuzzy
 msgid "Split Cell|C"
-msgstr ""
+msgstr "Spezial Zelle"
 
 #: lib/ui/stdmenus.ui:192
 msgid "Add Line Above"
@@ -8264,7 +8223,7 @@ msgstr "TeX-Code|X"
 
 #: lib/ui/stdmenus.ui:312
 msgid "Ordinary Quote|Q"
-msgstr "Normales Anführungszeichen|A"
+msgstr "Normales Anführungszeichen|N"
 
 #: lib/ui/stdmenus.ui:313
 msgid "Single Quote|S"
@@ -8272,12 +8231,11 @@ msgstr "Einfaches Anführungszeichen|E"
 
 #: lib/ui/stdmenus.ui:315
 msgid "Phonetic Symbols|y"
-msgstr ""
+msgstr "Phonetische Symbole|P"
 
 #: lib/ui/stdmenus.ui:338
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Nummerierte Liste"
+msgstr "Nummerierte Formel|N"
 
 #: lib/ui/stdmenus.ui:348
 msgid "Aligned Environment"
@@ -8333,36 +8291,32 @@ msgstr "Anhang hier beginnen|A"
 
 #: lib/ui/stdmenus.ui:399
 msgid "Compressed|o"
-msgstr ""
+msgstr "Komprimiert|K"
 
 #: lib/ui/stdmenus.ui:400
 msgid "Settings...|S"
 msgstr "Einstellungen...|E"
 
 #: lib/ui/stdmenus.ui:406
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Alle Änderungen akzeptieren|a"
+msgstr "Änderung akzeptieren|a"
 
 #: lib/ui/stdmenus.ui:407
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Alle Änderungen ablehnen|b"
+msgstr "Änderung ablehnen|b"
 
 #: lib/ui/stdmenus.ui:408
-#, fuzzy
 msgid "Accept All Changes|c"
-msgstr "Alle Änderungen akzeptieren|a"
+msgstr "Alle Änderungen akzeptieren|k"
 
 #: lib/ui/stdmenus.ui:409
-#, fuzzy
 msgid "Reject All Changes|e"
-msgstr "Alle Änderungen ablehnen|b"
+msgstr "Alle Änderungen ablehnen|h"
 
 #: lib/ui/stdmenus.ui:419
 #, fuzzy
 msgid "Next Change|C"
-msgstr "&Nächste Änderung"
+msgstr "Nächste Änderung|#N"
 
 #: lib/ui/stdmenus.ui:420
 #, fuzzy
@@ -8439,11 +8393,11 @@ msgstr "Extra"
 
 #: lib/ui/stdtoolbars.ui:66
 msgid "Numbered list"
-msgstr "Nummerierte Liste"
+msgstr "Aufzählung"
 
 #: lib/ui/stdtoolbars.ui:67
 msgid "Itemized list"
-msgstr "Unsortierte Liste"
+msgstr "Auflisting"
 
 #: lib/ui/stdtoolbars.ui:70
 msgid "Increase depth"
@@ -8642,13 +8596,12 @@ msgid "Insert { }"
 msgstr "{ } einfügen"
 
 #: lib/ui/stdtoolbars.ui:137
-#, fuzzy
 msgid "Insert cases environment"
-msgstr "Cases-Umgebung|C"
+msgstr "Cases-Umgebung einfügen"
 
 #: lib/ui/stdtoolbars.ui:144
 msgid "minibuffer"
-msgstr "Minibuffer"
+msgstr "Minipuffer"
 
 #: lib/ui/stdtoolbars.ui:148
 #, fuzzy
@@ -8675,12 +8628,12 @@ msgstr "&Nächste Änderung"
 #: lib/ui/stdtoolbars.ui:153
 #, fuzzy
 msgid "Accept change"
-msgstr "Alle Änderungen akzeptieren|a"
+msgstr "Änderung akzeptieren|#a"
 
 #: lib/ui/stdtoolbars.ui:154
 #, fuzzy
 msgid "Reject change"
-msgstr "Alle Änderungen ablehnen|b"
+msgstr "Änderung ablehnen|#a"
 
 #: lib/ui/stdtoolbars.ui:156
 #, fuzzy
@@ -8690,12 +8643,12 @@ msgstr "Änderungen zusammenfassen"
 #: lib/ui/stdtoolbars.ui:157
 #, fuzzy
 msgid "Accept all changes"
-msgstr "Alle Änderungen akzeptieren|a"
+msgstr "Alle Änderungen akzeptieren|k"
 
 #: lib/ui/stdtoolbars.ui:158
 #, fuzzy
 msgid "Reject all changes"
-msgstr "Alle Änderungen ablehnen|b"
+msgstr "Alle Änderungen ablehnen|h"
 
 #: lib/ui/stdtoolbars.ui:161
 #, fuzzy
@@ -8911,7 +8864,7 @@ msgstr "Türkis"
 
 #: src/LColor.C:102
 msgid "magenta"
-msgstr "Magenta"
+msgstr "Purpurrot"
 
 #: src/LColor.C:103
 msgid "yellow"
@@ -9255,9 +9208,8 @@ msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s endete unerwartet, daher ist es vermutlich beschädigt."
 
 #: src/buffer.C:719
-#, fuzzy
 msgid "Backup failure"
-msgstr "ChkTeX ist fehlgeschlagen"
+msgstr "Die Sicherung ist fehlgeschlagen"
 
 #: src/buffer.C:720
 #, c-format
@@ -9265,6 +9217,8 @@ msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
+"LyX konnte keine Sicherungskopie in %1$s erstellen.\n"
+"Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
 #: src/buffer.C:835
 #, fuzzy
@@ -9281,7 +9235,7 @@ msgstr ""
 #: src/buffer.C:845
 #, fuzzy
 msgid "Error closing file"
-msgstr "Fehler beim Laden der Datei in den Speicher"
+msgstr "Fehler beim Lesen der Datei!"
 
 #: src/buffer.C:846
 msgid ""
@@ -9497,7 +9451,7 @@ msgid ""
 msgstr ""
 "Keine Information vorhanden, um Dateien im %1$s-Format nach %2$s zu "
 "konvertieren.\n"
-"Versuchen Sie einen Konverter in den Einstellungen zu definieren."
+"Definieren Sie einen Konverter in den Einstellungen."
 
 #: src/converter.C:410 src/format.C:319 src/format.C:378
 msgid "Executing command: "
@@ -9514,7 +9468,10 @@ msgstr "Während des Erstellungsprozesses sind Fehler aufgetreten."
 #: src/converter.C:456 src/format.C:326 src/format.C:385
 #, c-format
 msgid "An error occurred whilst running %1$s"
-msgstr "Bei der Ausführung von %1$s ist ein Fehler aufgetreten"
+msgstr ""
+"Bei der Ausführung von\n"
+"%1$s\n"
+"ist ein Fehler aufgetreten"
 
 #: src/converter.C:480 src/converter.C:521
 #, c-format
@@ -9646,7 +9603,7 @@ msgstr "Externe Vorlagen/Einfügungs-Meldungen"
 
 #: src/debug.C:69
 msgid "RowPainter profiling"
-msgstr ""
+msgstr "RowPainter-Profiling"
 
 #: src/exporter.C:81
 #, c-format
@@ -9720,9 +9677,9 @@ msgid "Cannot view file"
 msgstr "Die Datei kann nicht angesehen werden."
 
 #: src/format.C:270 src/format.C:340
-#, fuzzy, c-format
+#, c-format
 msgid "File does not exist: %1$s"
-msgstr "Die Datei existiert nicht."
+msgstr "Die Datei existiert nicht: %1$s"
 
 #: src/format.C:283
 #, c-format
@@ -9730,9 +9687,9 @@ msgid "No information for viewing %1$s"
 msgstr "Keine Informationen vorhanden, um %1$s anzusehen"
 
 #: src/format.C:293
-#, fuzzy, c-format
+#, c-format
 msgid "Auto-view file %1$s failed"
-msgstr "Die automatische Speicherung ist fehlgeschlagen!"
+msgstr "Die automatische Ansicht der Datei %1$s ist fehlgeschlagen"
 
 #: src/format.C:339 src/format.C:352 src/format.C:362 src/format.C:384
 msgid "Cannot edit file"
@@ -9746,7 +9703,7 @@ msgstr "Keine Informationen vorhanden, um %1$s zu bearbeiten"
 #: src/format.C:363
 #, c-format
 msgid "Auto-edit file %1$s failed"
-msgstr ""
+msgstr "Das automatische Bearbeiten der Datei %1$s ist fehlgeschlagen"
 
 #: src/frontends/LyXView.C:368
 msgid " (changed)"
@@ -9788,9 +9745,9 @@ msgid ""
 "any later version."
 msgstr ""
 "Bei diesem Programm handelt es sich um freie Software; Sie dürfen sie "
-"entsprechend der Bestimmungen der GNU General Public License weitergeben und/"
-"oder verändern. Entweder Version 2, oder (nach ihrer Entscheidung) jede "
-"spätere Version der Lizenz ist verbindlich."
+"entsprechend der Bestimmungen der GNU General Public License der Free "
+"Software Foundation weitergeben und/oder verändern. Verwenden Sie Version 2 "
+"oder (nach Ihrer Entscheidung) eine spätere Version der Lizenz."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
 msgid ""
@@ -9910,7 +9867,7 @@ msgstr "Unten links"
 #: src/frontends/controllers/ControlExternal.C:235
 #: src/frontends/controllers/ControlGraphics.C:171
 msgid "Baseline left"
-msgstr "Grundline links"
+msgstr "Grundlinie links"
 
 #: src/frontends/controllers/ControlExternal.C:236
 #: src/frontends/controllers/ControlGraphics.C:172
@@ -10152,7 +10109,7 @@ msgstr "Unterstrichen"
 
 #: src/frontends/controllers/character.C:197
 msgid "Noun"
-msgstr "Kapitälchen"
+msgstr "Eigenname"
 
 #: src/frontends/controllers/character.C:219
 msgid "No color"
@@ -10184,7 +10141,7 @@ msgstr "Türkis"
 
 #: src/frontends/controllers/character.C:247
 msgid "Magenta"
-msgstr "Magenta"
+msgstr "Purpurrot"
 
 #: src/frontends/controllers/character.C:251
 msgid "Yellow"
@@ -10199,14 +10156,13 @@ msgid "User files|#U#u"
 msgstr "Benutzerdateien|#B#b"
 
 #: src/frontends/controllers/tex_helpers.C:64
-#, fuzzy
 msgid "Could not update TeX information"
-msgstr "Nichts mehr zu wiederholen"
+msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
 #: src/frontends/controllers/tex_helpers.C:65
-#, fuzzy, c-format
+#, c-format
 msgid "The script `%s' failed."
-msgstr "Das Rechtschreibprogramm ist fehlgeschlagen.\n"
+msgstr "Das Skript `%s' ist fehlgeschlagen."
 
 #: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:80
 #: src/frontends/qt4/Alert_pimpl.C:91 src/frontends/qt4/Alert_pimpl.C:101
@@ -10275,7 +10231,7 @@ msgstr "Zweig-Einstellungen"
 #: src/frontends/qt4/QBranches.C:43
 #, fuzzy
 msgid "Branch"
-msgstr "Zweig|w"
+msgstr "Zweig: "
 
 #: src/frontends/qt4/QBranches.C:44
 msgid "Activated"
@@ -10321,23 +10277,20 @@ msgid "Next command"
 msgstr "Nächster Befehl"
 
 #: src/frontends/qt4/QDelimiterDialog.C:48
-#, fuzzy
 msgid "big size"
-msgstr "Groß"
+msgstr "Größe 'big'"
 
 #: src/frontends/qt4/QDelimiterDialog.C:48
-#, fuzzy
 msgid "Big size"
-msgstr "Groß"
+msgstr "Größe 'Big'"
 
 #: src/frontends/qt4/QDelimiterDialog.C:49
 msgid "bigg size"
-msgstr ""
+msgstr "Größe 'bigg'"
 
 #: src/frontends/qt4/QDelimiterDialog.C:49
-#, fuzzy
 msgid "Bigg size"
-msgstr "Groß"
+msgstr "Größe 'Bigg'"
 
 #: src/frontends/qt4/QDelimiterDialog.C:98
 msgid "LyX: Delimiters"
@@ -10350,9 +10303,8 @@ msgid "(None)"
 msgstr "Keine"
 
 #: src/frontends/qt4/QDelimiterDialog.C:110
-#, fuzzy
 msgid "Variable size"
-msgstr "Tabelle (Linie)"
+msgstr "Variable Größe"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -10782,9 +10734,8 @@ msgid "File formats"
 msgstr "Dateiformate"
 
 #: src/frontends/qt4/QPrefsDialog.C:1517
-#, fuzzy
 msgid "Format in use"
-msgstr "Formate"
+msgstr "Format wird verwendet"
 
 #: src/frontends/qt4/QPrefsDialog.C:1518
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
@@ -11096,7 +11047,7 @@ msgstr "Grauschrift"
 #: src/insets/insetnote.C:68
 #, fuzzy
 msgid "Framed"
-msgstr "Vorname"
+msgstr "Rahmenlos"
 
 #: src/insets/insetnote.C:69
 #, fuzzy
@@ -11117,7 +11068,7 @@ msgstr "Einfügung für optionales Argument geöffnet"
 
 #: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
 msgid "Ref: "
-msgstr "Verweis: "
+msgstr "Querverweis: "
 
 #: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:184
 msgid "Equation"
@@ -11125,7 +11076,7 @@ msgstr "Gleichung"
 
 #: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:184
 msgid "EqRef: "
-msgstr "Gleichung: "
+msgstr "(Querverweis): "
 
 #: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:185
 msgid "Page Number"
@@ -11149,7 +11100,7 @@ msgstr "Standard+Seite in Textform"
 
 #: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:187
 msgid "Ref+Text: "
-msgstr "Verweis+Text: "
+msgstr "Querverweis+Text: "
 
 #: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:188
 msgid "PrettyRef"
@@ -11346,7 +11297,7 @@ msgstr "mu"
 #: src/lengthcommon.C:39
 #, fuzzy
 msgid "Text Width %"
-msgstr "Markenbreite"
+msgstr "Feste Breite"
 
 #: src/lengthcommon.C:39
 #, fuzzy
@@ -11554,14 +11505,12 @@ msgstr ""
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
 #: src/lyx_main.C:939
-#, fuzzy
 msgid "&Create directory"
-msgstr "Verzeichnis &erstellen."
+msgstr "Verzeichnis &erstellen"
 
 #: src/lyx_main.C:940
-#, fuzzy
 msgid "&Exit LyX"
-msgstr "LyX &beenden."
+msgstr "LyX &beenden"
 
 #: src/lyx_main.C:941
 msgid "No user LyX directory. Exiting."
@@ -11586,7 +11535,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
 #: src/lyx_main.C:1121
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11609,9 +11557,9 @@ msgid ""
 msgstr ""
 "Aufruf: lyx [ Befehlszeilenoptionen ] [ name.lyx ... ]\n"
 "Befehlszeilenoptionen (groß/klein beachten):\n"
-"\t-help              LyX Benutzung zusammenfassen\n"
-"\t-userdir dir       Setze das Benutzerverzeichnis auf dir\n"
-"\t-sysdir dir        Setze das Systemverzeichnis auf dir\n"
+"\t-help              Fasst LyX-Benutzung zusammen\n"
+"\t-userdir dir       Setzt das Benutzerverzeichnis auf dir\n"
+"\t-sysdir dir        Setzt das Systemverzeichnis auf dir\n"
 "\t-geometry WxH+X+Y  Legt Höhe/Breite/Position des Fensters fest.\n"
 "\t-dbg Feature[,Feature]...\n"
 "                     Wählt die Themenbereiche aus, für die eine\n"
@@ -11625,7 +11573,7 @@ msgstr ""
 "\t-i [--import] fmt file.xxx\n"
 "                     fmt ist das gewünschte Import-Format, \n"
 "                     file.xxx ist die zu importierende Datei.\n"
-"\t-version           Zusammenfassung von Version und Erstellungsdatum.\n"
+"\t-version           Fasst Version und Erstellungsdatum zusammen.\n"
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
@@ -11710,7 +11658,7 @@ msgstr "Unterstrichen %1$s, "
 #: src/lyxfont.C:517
 #, c-format
 msgid "Noun %1$s, "
-msgstr "Kapitälchen %1$s, "
+msgstr "Eigenname %1$s, "
 
 #: src/lyxfont.C:522
 #, c-format
@@ -11895,7 +11843,6 @@ msgstr ""
 "verwendet wird. Voreingestellt ist die Sprache des Dokuments."
 
 #: src/lyxrc.C:2145
-#, fuzzy
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -11903,8 +11850,8 @@ msgid ""
 msgstr ""
 "Hier können Sie ein externes Programm festlegen, das zur Formatierung von "
 "Tabellen in der Text-Ausgabe verwendet wird. Beispiel: \"groff -t -Tlatin1 $"
-"$FName\" wobei $$FName die Eingabedatei ist. Wird \"none\" angegeben, "
-"verwendet LyX eine interne Routine."
+"$FName\", wobei $$FName die Eingabedatei ist. Wird \"\" angegeben, verwendet "
+"LyX eine interne Routine."
 
 #: src/lyxrc.C:2149
 msgid ""
@@ -12195,7 +12142,7 @@ msgstr "Skaliere die Größe der Vorschau geeignet."
 
 #: src/lyxrc.C:2346
 msgid "The option for specifying whether the copies should be collated."
-msgstr "Die Option, um 'collate' für mehrere Kopien zu aktivieren."
+msgstr "Die Option, um Kopien zu sortieren."
 
 #: src/lyxrc.C:2350
 msgid "The option for specifying the number of copies to print."
@@ -12555,7 +12502,7 @@ msgstr ""
 "werden"
 
 #: src/support/package.C.in:562
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
 "\t%1$s\n"
@@ -12632,7 +12579,7 @@ msgstr ""
 #: src/tex-strings.C:70
 #, fuzzy
 msgid "Bookman"
-msgstr "Lesezeichen|L"
+msgstr "Roman"
 
 #: src/tex-strings.C:70
 msgid "Utopia"
@@ -12674,7 +12621,7 @@ msgstr ""
 #: src/tex-strings.C:80
 #, fuzzy
 msgid "CM Bright"
-msgstr "Urheberrecht"
+msgstr "Oben rechts"
 
 #: src/tex-strings.C:89
 msgid "Computer Modern Typewriter"
@@ -12721,19 +12668,18 @@ msgid "Unknown Inset"
 msgstr "Unbekannte Einfügung"
 
 #: src/text.C:331 src/text.C:344
-#, fuzzy
 msgid "Change tracking error"
-msgstr "Änderungsverfolgung"
+msgstr "Fehler der Änderungsverfolgung"
 
 #: src/text.C:332
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
-msgstr ""
+msgstr "Unbekannter Autor-Index für die Einfügung: %1$d\n"
 
 #: src/text.C:345
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
-msgstr ""
+msgstr "Unbekannter Autor-Index für die Löschung: %1$d\n"
 
 #: src/text.C:352
 msgid "Unknown token"
