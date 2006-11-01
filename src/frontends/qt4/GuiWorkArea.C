@@ -288,6 +288,9 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 
 void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 {
+	// FIXME: it would be better to send a signal "newBuffer()"
+	// in BufferList that could be connected to the different tabbar.
+	lyx_view_.updateTab();
 	startBlinkingCursor();
 }
 

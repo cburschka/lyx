@@ -150,6 +150,9 @@ void GuiView::init()
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(update_view_state_qt()));
 
+	if (!work_area_->bufferView().buffer() && !theBufferList().empty())
+		setBuffer(theBufferList().first());
+
 	// make sure the buttons are disabled if needed
 	updateToolbars();
 	updateLayoutChoice();
