@@ -937,7 +937,7 @@ status collapsed
 A 
 \color red
 tournament
-\color default
+\color inherit
  is a
 \end_layout
 
@@ -1172,7 +1172,7 @@ only<10->{the Approximation Problem}}
 A 
 \color red
 graph
-\color default
+\color inherit
  
 \begin_inset Formula $G=(V,E)$
 \end_inset
@@ -1180,7 +1180,7 @@ graph
 , a 
 \color red
 source
-\color default
+\color inherit
  
 \begin_inset Formula $s\in V$
 \end_inset
@@ -1188,7 +1188,7 @@ source
  and a 
 \color red
 target
-\color default
+\color inherit
  
 \begin_inset Formula $t\in V$
 \end_inset
@@ -1210,7 +1210,7 @@ status collapsed
 A 
 \color red
 maximum distance
-\color default
+\color inherit
 \InsetSpace ~
 
 \begin_inset Formula $d$
@@ -1246,7 +1246,7 @@ status collapsed
 An 
 \color red
 approximation ratio
-\color default
+\color inherit
  
 \begin_inset Formula $r>1$
 \end_inset
@@ -3451,7 +3451,7 @@ Let
 \end_inset
 
 
-\color default
+\color inherit
  contain all triples 
 \begin_inset Formula $(T,s,t)$
 \end_inset
@@ -3572,7 +3572,7 @@ Let
 \end_inset
 
  
-\color default
+\color inherit
 contain all tuples 
 \begin_inset Formula $(T,s,t,d)$
 \end_inset
@@ -5656,7 +5656,7 @@ approximation scheme for
 \end_inset
 
 
-\color default
+\color inherit
  gets as input
 \end_layout
 
@@ -5798,7 +5798,7 @@ status inlined
 Tournament 
 \color red
 reachability
-\color default
+\color inherit
  is in
 \color red
  
@@ -5806,7 +5806,7 @@ reachability
 \end_inset
 
 
-\color default
+\color inherit
 .
  
 \end_layout
@@ -5815,11 +5815,11 @@ reachability
 There exists a 
 \color red
 logspace approximation scheme
-\color default
+\color inherit
  for 
 \color red
 approximating
-\color default
+\color inherit
  shortest paths in tournaments.
 \end_layout
 
@@ -5827,7 +5827,7 @@ approximating
 Finding 
 \color red
 shortest paths
-\color default
+\color inherit
  in tournaments is
 \color red
  
@@ -5835,7 +5835,7 @@ shortest paths
 \end_inset
 
 -complete
-\color default
+\color inherit
 .
 \end_layout
 
@@ -6122,7 +6122,7 @@ Definition of Independence Number of a Graph
 The 
 \color red
 independence number
-\color default
+\color inherit
  
 \begin_inset Formula $\alpha(G)$
 \end_inset
@@ -6156,7 +6156,7 @@ For each\InsetSpace ~
 , 
 \color red
 reachability
-\color default
+\color inherit
  in graphs with independence number
 \newline
 at most\InsetSpace ~
@@ -6184,7 +6184,7 @@ For each\InsetSpace ~
 , there exists a 
 \color red
 logspace approximation scheme
-\color default
+\color inherit
  for approximating the shortest path in graphs with independence number
  at most\InsetSpace ~
 
@@ -6207,7 +6207,7 @@ For each\InsetSpace ~
 , finding the 
 \color red
 shortest path
-\color default
+\color inherit
  in graphs with independence number at most\InsetSpace ~
 
 \begin_inset Formula $k$
@@ -6220,7 +6220,7 @@ shortest path
 \end_inset
 
 -complete
-\color default
+\color inherit
 .
 \end_layout
 
