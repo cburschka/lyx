@@ -178,8 +178,6 @@ public:
 	///
 	bool empty() const { return text_.empty(); }
 	///
-	void setContentsFromPar(Paragraph const & par);
-	///
 	void clearContents();
 
 	///

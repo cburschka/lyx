@@ -78,15 +78,6 @@ Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
 }
 
 
-void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
-{
-	owner_->text_ = par.text_;
-	// FIXME: change tracking (MG)
-	// check whether this method is really needed
-	changes_ = par.pimpl_->changes_;
-}
-
-
 bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 {
 	BOOST_ASSERT(start >= 0 && start <= size());

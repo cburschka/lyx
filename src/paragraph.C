@@ -1409,12 +1409,6 @@ void Paragraph::setInsetOwner(InsetBase * inset)
 }
 
 
-void Paragraph::setContentsFromPar(Paragraph const & par)
-{
-	pimpl_->setContentsFromPar(par);
-}
-
-
 Change const Paragraph::lookupChange(pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());

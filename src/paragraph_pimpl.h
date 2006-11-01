@@ -35,8 +35,6 @@ public:
 	Pimpl(Paragraph * owner);
 	/// "Copy constructor"
 	Pimpl(Pimpl const &, Paragraph * owner);
-	///
-	void setContentsFromPar(Paragraph const & par);
 
 	//
 	// Change tracking
