@@ -34,6 +34,7 @@
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
 #include "frontends/FileDialog.h"
+#include "frontends/LyXView.h"
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
@@ -404,10 +405,10 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 // This function runs "configure" and then rereads lyx.defaults to
 // reconfigure the automatic settings.
-void reconfigure(BufferView * bv)
+void reconfigure(LyXView & lv)
 {
 	// emit message signal.
-	bv->buffer()->message(_("Running configure..."));
+	lv.message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	support::Path p(package().user_support());
@@ -416,7 +417,7 @@ void reconfigure(BufferView * bv)
 	one.startscript(Systemcall::Wait, configure_command);
 	p.pop();
 	// emit message signal.
-	bv->buffer()->message(_("Reloading configuration..."));
+	lv.message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(string(), "lyxrc.defaults"));
 	// Re-read packages.lst
 	LaTeXFeatures::getAvailable();

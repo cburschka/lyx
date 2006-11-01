@@ -1055,7 +1055,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_RECONFIGURE:
-			reconfigure(view());
+			BOOST_ASSERT(lyx_view_);
+			reconfigure(*lyx_view_);
 			break;
 
 		case LFUN_HELP_OPEN: {
