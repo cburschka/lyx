@@ -1,52 +1,52 @@
-diff -riwbBu -Xex aspell-setter-sep06/common/config.cpp aspell-setter-sep06-modified/common/config.cpp
---- aspell-setter-sep06/common/config.cpp	Mon Dec 12 17:41:06 2005
-+++ aspell-setter-sep06-modified/common/config.cpp	Sun Sep 17 20:55:02 2006
-@@ -78,6 +78,11 @@
+diff -riwBu -Xex aspell-setter-sep06\common\config.cpp aspell-setter-sep06-modified\common\config.cpp
+--- aspell-setter-sep06\common\config.cpp	Mon Dec 12 17:41:06 2005
++++ aspell-setter-sep06-modified\common\config.cpp	Sun Oct 22 13:03:46 2006
+@@ -78,6 +78,10 @@
  
  namespace aspell {
  
 +#ifdef WIN32PORT
-+	HKEY GetRegHive();
-+	aspell::String ReadRegString(HKEY type, aspell::String key, aspell::String name);
++	String GetWindowsDir(String registry_name, String default_directory);
 +#endif
 +
    const char * const keyinfo_type_name[4] = {
      N_("string"), N_("integer"), N_("boolean"), N_("list")
    };
-@@ -642,20 +647,30 @@
+@@ -642,20 +646,19 @@
  
        } else if (strcmp(i, "home-dir") == 0) { 
  
 -        //get the personal folder (e.g. "c:\My Documents")
-+        //get the personal folder
-+
-+        //get from registry
-+		HKEY hive;
-+		hive = GetRegHive();
-+		final_str = ReadRegString(hive, "Software\\Aspell", "Base Path");
-+
-+		//default location
-+		if (final_str == "") {
-         char * dir = new char[MAX_PATH];
-         LPITEMIDLIST items = 0;
+-        char * dir = new char[MAX_PATH];
+-        LPITEMIDLIST items = 0;
 -        HRESULT hand = SHGetSpecialFolderLocation(0, CSIDL_PERSONAL, &items);
-+          HRESULT hand = SHGetSpecialFolderLocation(0, CSIDL_APPDATA, &items);
-         if ((NOERROR == hand) && items) {
-           if (SHGetPathFromIDList(items, dir)) {
-             for (char *ptr = dir; *ptr; ++ptr)
-               if ('\\' == *ptr)
-                 *ptr = '/';
-             final_str = dir;
-+	  		final_str.append("/Aspell");
-           }
-           CoTaskMemFree(items);
-         }
-         delete [] dir;
-+		}
+-        if ((NOERROR == hand) && items) {
+-          if (SHGetPathFromIDList(items, dir)) {
+-            for (char *ptr = dir; *ptr; ++ptr)
+-              if ('\\' == *ptr)
+-                *ptr = '/';
+-            final_str = dir;
+-          }
+-          CoTaskMemFree(items);
+-        }
+-        delete [] dir;
++		  final_str = GetWindowsDir("Base Path", "");
++
++      } else if (strcmp(i, "dict-dir") == 0) { 
++
++		  final_str = GetWindowsDir("Dictionary Path", "Dictionaries");
++
++      } else if (strcmp(i, "data-dir") == 0) { 
++
++		  final_str = GetWindowsDir("Data Path", "Data");
++
++      } else if (strcmp(i, "personal-dir") == 0) { 
++
++		  final_str = GetWindowsDir("Personal Path", "Personal");
  
        }
  #endif
-@@ -1394,20 +1409,6 @@
+@@ -1394,20 +1397,6 @@
      return no_err;
    }
  
@@ -67,7 +67,7 @@ diff -riwbBu -Xex aspell-setter-sep06/common/config.cpp aspell-setter-sep06-modi
    static const KeyInfo config_keys[] = {
      // the description should be under 50 chars
      {"actual-dict-dir", KeyInfoString, "<dict-dir^master>", 0}
-@@ -1484,7 +1485,7 @@
+@@ -1484,7 +1473,7 @@
      , {"per-conf-path", KeyInfoString, "<home-dir/per-conf>", 0}
      , {"personal", KeyInfoString, PERSONAL,
         N_("personal dictionary file name")}
@@ -76,21 +76,20 @@ diff -riwbBu -Xex aspell-setter-sep06/common/config.cpp aspell-setter-sep06-modi
      , {"prefix",   KeyInfoString, PREFIX,
         N_("prefix directory")}
      , {"repl",     KeyInfoString, REPL,
-@@ -1525,10 +1526,12 @@
+@@ -1525,10 +1514,8 @@
      , {"warn", KeyInfoBool, "true",
         N_("enable warnings")}
  #ifdef WIN32PORT
 -    , {"dict-subdir", KeyInfoString, "dicts",
-+    , {"dict-subdir", KeyInfoString, "Dictionaries",
-        N_("sub directory for dictionaries")}
-     , {"data-subdir", KeyInfoString, "data",
-        N_("sub directory for other data")}
-+    , {"personal-subdir", KeyInfoString, "Personal",
-+       N_("sub directory for personal data")}
+-       N_("sub directory for dictionaries")}
+-    , {"data-subdir", KeyInfoString, "data",
+-       N_("sub directory for other data")}
++    , {"personal-dir", KeyInfoString, PERSONAL_DIR,
++       N_("directory for personal dictionaries")}
  #endif
      
      //
-@@ -1587,5 +1590,53 @@
+@@ -1587,5 +1574,88 @@
                        config_impl_keys_begin,
                        config_impl_keys_end);
    }
@@ -132,21 +131,56 @@ diff -riwbBu -Xex aspell-setter-sep06/common/config.cpp aspell-setter-sep06-modi
 +	
 +    String value;
 +	
-+    if (ReadRegString(HKEY_LOCAL_MACHINE, "Software\\Aspell", "Dictionary Path") == "")
++    if (ReadRegString(HKEY_CURRENT_USER, "Software\\Aspell", "Base Path").empty())
 +    {
-+      return HKEY_CURRENT_USER;
-+    } else {
 +      return HKEY_LOCAL_MACHINE;
++    } else {
++      return HKEY_CURRENT_USER;
 +    }
 +	
++  }
++
++  String GetWindowsDir(String registry_name, String default_dir)
++  {
++
++    String final_dir;
++
++    // Get directory from registry
++	HKEY hive;
++	hive = GetRegHive();
++	final_dir = ReadRegString(hive, "Software\\Aspell", registry_name);
++
++	// Default location in "Documents and Settings"
++	if (final_dir.empty()) {
++
++	  char * dir = new char[MAX_PATH];
++      LPITEMIDLIST items = 0;
++      HRESULT hand = SHGetSpecialFolderLocation(0, CSIDL_APPDATA, &items);
++
++      if ((NOERROR == hand) && items) {
++        if (SHGetPathFromIDList(items, dir)) {
++          for (char *ptr = dir; *ptr; ++ptr)
++            if ('\\' == *ptr)
++              *ptr = '/';
++          final_dir = dir;
++          final_dir.append("/Aspell/");
++          final_dir.append(default_dir.c_str());
++        }
++        CoTaskMemFree(items);
++      }
++
++    }
++
++	return final_dir;
++
 +  }
 +
 +#endif
    
  }
-diff -riwbBu -Xex aspell-setter-sep06/common/vector.hpp aspell-setter-sep06-modified/common/vector.hpp
---- aspell-setter-sep06/common/vector.hpp	Thu Oct 13 09:42:54 2005
-+++ aspell-setter-sep06-modified/common/vector.hpp	Sun Sep 17 19:50:46 2006
+diff -riwBu -Xex aspell-setter-sep06\common\vector.hpp aspell-setter-sep06-modified\common\vector.hpp
+--- aspell-setter-sep06\common\vector.hpp	Thu Oct 13 08:42:54 2005
++++ aspell-setter-sep06-modified\common\vector.hpp	Sun Sep 17 18:50:45 2006
 @@ -50,10 +50,10 @@
      T * data_end() {return &*this->end();}
  
@@ -160,10 +194,10 @@ diff -riwbBu -Xex aspell-setter-sep06/common/vector.hpp aspell-setter-sep06-modi
  
      template <typename U>
      U * datap() { 
-diff -riwbBu -Xex aspell-setter-sep06/win32/dirs.h aspell-setter-sep06-modified/win32/dirs.h
---- aspell-setter-sep06/win32/dirs.h	Thu Oct 13 13:29:34 2005
-+++ aspell-setter-sep06-modified/win32/dirs.h	Sun Sep 17 20:26:26 2006
-@@ -1,16 +1,26 @@
+diff -riwBu -Xex aspell-setter-sep06\win32\dirs.h aspell-setter-sep06-modified\win32\dirs.h
+--- aspell-setter-sep06\win32\dirs.h	Thu Oct 13 12:29:34 2005
++++ aspell-setter-sep06-modified\win32\dirs.h	Sun Oct 22 12:55:10 2006
+@@ -1,16 +1,27 @@
  #ifndef dirs_h
  #define dirs_h
  
@@ -171,20 +205,19 @@ diff -riwbBu -Xex aspell-setter-sep06/win32/dirs.h aspell-setter-sep06-modified/
 -# define DATA_DIR "<prefix/data-subdir>"
 -# define CONF_DIR "<prefix>"
 -# define DICT_DIR "<prefix/dict-subdir>"
-+# define DATA_DIR "<home-dir/data-subdir>"
-+# define CONF_DIR "<home-dir>"
-+# define DICT_DIR "<home-dir/dict-subdir>"
-+# define PERSONAL_DIR "<home-dir/personal>"
++# define DATA_DIR "!data-dir"
++# define DICT_DIR "!dict-dir"
++# define PERSONAL_DIR "!personal-dir"
 +
 +#if defined(WIN32_USE_EXECUTABLE_DIR)
 +# define HOME_DIR "<prefix>"
-+# define PERSONAL "<personal-subdir>/<lang>.pws"
-+# define REPL     "<personal-subdir>/<lang>.prepl"
++# define PERSONAL "<personal-dir>/<lang>.pws"
++# define REPL     "<personal-dir>/<lang>.prepl"
  # define PREFIX "!prefix"
 +#elif defined(WIN32_USE_PERSONAL_DIR)
 +# define HOME_DIR "!home-dir"
-+# define PERSONAL "<personal-subdir>/<lang>.pws"
-+# define REPL     "<personal-subdir>/<lang>.prepl"
++# define PERSONAL "<personal-dir>/<lang>.pws"
++# define REPL     "<personal-dir>/<lang>.prepl"
 +# define PREFIX "<home-dir>"
  #else
 -# define DATA_DIR "aspell-win32/data"
@@ -192,15 +225,17 @@ diff -riwbBu -Xex aspell-setter-sep06/win32/dirs.h aspell-setter-sep06-modified/
 -# define DICT_DIR "dicts"
 -# define PREFIX "aspell-win32"
 +# define HOME_DIR "<$HOME|./>"
-+# define PERSONAL "<personal-subdir>/.aspell.<lang>.pws"
-+# define REPL     "<personal-subdir>/.aspell.<lang>.prepl"
++# define PERSONAL "<personal-dir>/.aspell.<lang>.pws"
++# define REPL     "<personal-dir>/.aspell.<lang>.prepl"
 +# define PREFIX "<home-dir>"
  #endif
++
++#define CONF_DIR HOME_DIR
  
  #endif
-diff -riwbBu -Xex aspell-setter-sep06/win32/settings.h aspell-setter-sep06-modified/win32/settings.h
---- aspell-setter-sep06/win32/settings.h	Wed Sep  6 10:51:16 2006
-+++ aspell-setter-sep06-modified/win32/settings.h	Sun Sep 17 18:55:23 2006
+diff -riwBu -Xex aspell-setter-sep06\win32\settings.h aspell-setter-sep06-modified\win32\settings.h
+--- aspell-setter-sep06\win32\settings.h	Wed Sep 06 09:51:16 2006
++++ aspell-setter-sep06-modified\win32\settings.h	Sun Sep 17 17:55:23 2006
 @@ -9,9 +9,6 @@
  /* Defined if curses like POSIX Functions should be used */
  #undef CURSES_ONLY

@@ -74,10 +74,10 @@ External Components: MiKTeX, ImageMagick, Ghostscript
     download_${COMPONENT}:
 
       ;Download using HTTP
-      NSISdl::download "${DOWNLOAD_${COMPONENT}}" "$PLUGINSDIR\${COMPONENT}Setup.exe"
+      InetLoad::load "${DOWNLOAD_${COMPONENT}}" "$PLUGINSDIR\${COMPONENT}Setup.exe" /END
       Pop $R0
  
-      ${if} $R0 != "success"
+      ${if} $R0 != "OK"
         ;Download failed
         MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${COMPONENT}) ($R0)" IDYES download_${COMPONENT}
         Goto noinstall_${COMPONENT}
