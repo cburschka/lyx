@@ -48,6 +48,7 @@ What's new
 
 - Write inherited colors correctly as "inherit" to the .lyx file. Previously
   they where written as "default", which was then read in as "none".
+  Fix some help documents that contained this invalid color.
 
 - Parse the optional argument of the AMS math environments aligned, gathered
   and alignedat.
