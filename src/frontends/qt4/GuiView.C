@@ -478,8 +478,9 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 	if (tbb.flags & ToolbarBackend::BOTTOM) {
 		addToolBar(Qt::BottomToolBarArea, Tb);
 		/*
-		// Qt bug. Doesn't work because the
-		// toolbar will evtl. be hidden.
+		// Qt bug:
+		// http://www.trolltech.com/developer/task-tracker/index_html?id=137015&method=entry
+		// Doesn't work because the toolbar will evtl. be hidden.
 		if (lastTb)
 			insertToolBarBreak(lastTb);
 		lastTb = Tb;
