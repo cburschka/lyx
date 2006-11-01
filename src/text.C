@@ -317,9 +317,6 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	} else if (token == "\\newpage") {
 		par.insertInset(par.size(), new InsetPagebreak, font, change);
 	} else if (token == "\\change_unchanged") {
-		// Hack ! Needed for empty paragraphs :/
-		// FIXME: change tracking (MG)
-		// set empty 'par' to INSERTED???
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
 		lex.eatLine();
