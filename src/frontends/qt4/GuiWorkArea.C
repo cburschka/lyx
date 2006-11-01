@@ -245,6 +245,7 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 	h += height() / 4;
 	int scroll_max_ = std::max(0, h - height());
 
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	verticalScrollBar()->setRange(0, scroll_max_);
 	verticalScrollBar()->setSliderPosition(scroll_pos);
 	verticalScrollBar()->setSingleStep(scroll_line_step);
