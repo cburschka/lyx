@@ -10,6 +10,7 @@
  */
 
 
+#ifdef LYX_PCH_BOOST
 #include <boost/any.hpp>
 #include <boost/array.hpp>
 #include <boost/assert.hpp>
@@ -34,14 +35,15 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/utility.hpp>
 #include <boost/version.hpp>
-
 #if BOOST_VERSION < 103300
 # include <boost/test/detail/nullstream.hpp>
 #else
 # include <boost/test/utils/nullstream.hpp>
 #endif
+#endif
 
 
+#ifdef LYX_PCH_STL
 #include <algorithm>
 #include <cerrno>
 #include <cassert>
@@ -69,3 +71,10 @@
 #include <string>
 #include <utility>
 #include <vector>
+#endif
+
+
+#if defined(LYX_PCH_QT4) && defined(LYX_BUILD_QT4_FRONTEND)
+#include <QtCore>
+#include <QtGUI>
+#endif

@@ -168,12 +168,6 @@
 #pragma warning( disable : 4800 ) //: forcing value to bool 'true' or 'false' (performance warning)
 #endif
 
-#ifdef LYX_PRECOMPILED_HEADERS
-#  include "pcheaders.h"
-#  ifdef LYX_BUILD_QT4_FRONTEND
-#    include <QtCore>
-#    include <QtGUI>
-#  endif
-#endif
+#include "pcheaders.h"
 
 #endif
