@@ -352,7 +352,15 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.message(from_utf8(N_("Exiting")));
 		flag.enabled(true);
 		return flag;
+	}  else if (cmd.action == LFUN_BOOKMARK_GOTO) {
+		// bookmarks can be valid even if there is no opened buffer
+		flag.enabled(LyX::ref().session().bookmarks().isValid(convert<unsigned int>(to_utf8(cmd.argument()))));
+		return flag;
+	} else if (cmd.action == LFUN_BOOKMARK_CLEAR) {
+		flag.enabled(LyX::ref().session().bookmarks().size() > 0);
+		return flag;
 	}
+
 
 	LCursor & cur = view()->cursor();
 
@@ -628,19 +636,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_WINDOW_NEW:
 	case LFUN_WINDOW_CLOSE:
 		// these are handled in our dispatch()
-		break;
-
-	// FIXME: will move to the front of this function when SWITCH_TO_BUFFER
-	// is valid for a newly created window 
-	case LFUN_BOOKMARK_GOTO:
-		// bookmarks can be valid even if there is no opened buffer
-		flag.enabled(LyX::ref().session().bookmarks().isValid(convert<unsigned int>(to_utf8(cmd.argument()))));
-		break;
-
-	// FIXME: will move to the front of this function when SWITCH_TO_BUFFER
-	// is valid for a newly created window 
-	case LFUN_BOOKMARK_CLEAR:
-		flag.enabled(LyX::ref().session().bookmarks().size() > 0);
 		break;
 
 	default:
@@ -1683,8 +1678,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// open may fail, so we need to test it again
 			if (theBufferList().exists(bm.filename)) {
 				// if the current buffer is not that one, switch to it.
-				// FIXME: swtich buffer to a newly created window will crash lyx
-				// because of invalid view.
 				if (lyx_view_->buffer()->fileName() != bm.filename)
 					dispatch(FuncRequest(LFUN_BUFFER_SWITCH, bm.filename));
 				// BOOST_ASSERT(lyx_view_->buffer()->fileName() != bm.filename);
