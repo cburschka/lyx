@@ -195,7 +195,7 @@ public:
 public:
 	/// constructor, set max_bookmarks
 	/// allow 20 regular bookmarks
-	BookmarksSection::BookmarksSection() : max_bookmarks(20), bookmarks(0) {}
+	BookmarksSection() : max_bookmarks(20), bookmarks(0) {}
 
 	/// Save the current position as bookmark
 	/// if save==false, save to temp_bookmark
