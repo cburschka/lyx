@@ -1,5 +1,7 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
+#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 245
+\begin_document
+\begin_header
 \textclass beamer
 \begin_preamble
 \beamertemplateshadingbackground{red!5}{structure!5}
@@ -148,588 +150,1032 @@
 \fontscheme times
 \graphics default
 \paperfontsize default
-\spacing single 
-\papersize Default
-\paperpackage a4
-\use_geometry 0
-\use_amsmath 1
-\use_natbib 0
-\use_numerical_citations 0
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 2
+\cite_engine basic
+\use_bibtopic false
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
 \quotes_language english
-\quotes_times 2
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes false
+\output_changes true
+\end_header
 
-\layout Title
+\begin_body
 
+\begin_layout Title
 The Complexity of
-\newline 
+\newline
 Finding Paths in Tournaments
-\layout Author
+\end_layout
 
+\begin_layout Author
 Till Tantau
-\layout Institute
+\end_layout
 
+\begin_layout Institute
 International Computer Schience Institute
-\newline 
+\newline
 Berkeley, California
 \begin_inset OptArg
-collapsed true
+status collapsed
 
-\layout Standard
-
+\begin_layout Standard
 ICSI
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Date
+\end_layout
 
+\begin_layout Date
 January 30th, 2004
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Outline
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset LatexCommand \tableofcontents{}
 
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 [pausesections]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout EndFrame
+\end_layout
 
-\layout Standard
+\begin_layout EndFrame
 
+\end_layout
 
+\begin_layout Standard
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 % Show the table of contents at the beginning
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
 % of every subsection.
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 AtBeginSubsection[]{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 frame<handout:0>{ 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 frametitle{Outline}   
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 tableofcontents[current,currentsubsection] 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
 
+\begin_layout Section
 Introduction
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 What are Tournaments?
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Tournaments Consist of Jousts Between Knights
-\layout Columns
+\end_layout
 
-\begin_deeper 
-\layout Column
+\begin_layout Columns
 
+\end_layout
+
+\begin_deeper
+\begin_layout Column
 5.75cm
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{1.25cm}{-1cm}{7cm}{4cm}      
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodebox{A}[virtual]{
-\backslash 
+\backslash
 pgfxy(2,1)}{
-\backslash 
+\backslash
 pgfuseimage{knight1}}{2pt}{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodebox{B}[virtual]{
-\backslash 
+\backslash
 pgfxy(6,1)}{
-\backslash 
+\backslash
 pgfuseimage{knight2}}{2pt}{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodebox{C}[virtual]{
-\backslash 
+\backslash
 pgfxy(4,-1)}{
-\backslash 
+\backslash
 pgfuseimage{knight3}}{2pt}{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodebox{D}[virtual]{
-\backslash 
+\backslash
 pgfxy(4,3)}{
-\backslash 
+\backslash
 pgfuseimage{knight4}}{2pt}{2pt}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<3->{
-\backslash 
+\backslash
 pgfsetendarrow{
-\backslash 
+\backslash
 pgfarrowto}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A}{B}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A}{C}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D}{A}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C}{B}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B}{D}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C}{D}}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture} 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Column
+\end_layout
 
+\begin_layout Column
 6cm
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {What is a Tournament?}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
-
+\begin_deeper
+\begin_layout Itemize
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <1->
-\end_inset 
+\end_layout
+
+\end_inset
 
 A group of knights.
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <2->
-\end_inset 
+\end_layout
+
+\end_inset
 
 Every pair has a joust.
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <3->
-\end_inset 
+\end_layout
+
+\end_inset
 
 In every joust one knight wins.
-\end_deeper 
-\end_deeper 
-\layout BeginFrame
+\end_layout
 
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
 Tournaments are Complete Directed Graphs
-\layout Columns
+\end_layout
 
-\begin_deeper 
-\layout Column
+\begin_layout Columns
 
+\end_layout
+
+\begin_deeper
+\begin_layout Column
 5cm
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{1.5cm}{-1cm}{6.5cm}{4cm}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{A}{
-\backslash 
+\backslash
 pgfxy(2.5,1)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{B}{
-\backslash 
+\backslash
 pgfxy(5.5,1)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{C}{
-\backslash 
+\backslash
 pgfxy(4,-0.5)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{D}{
-\backslash 
+\backslash
 pgfxy(4,2.5)}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{white}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{A}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$v_2$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{B}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$v_3$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{C}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$v_4$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{D}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$v_1$}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetendarrow{
-\backslash 
+\backslash
 pgfarrowto}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodesetsepstart{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodesetsepend{4pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{A}{B}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{A}{C}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{D}{A}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{C}{B}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{B}{D} 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{D}{C}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture} 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Column
+\end_layout
 
+\begin_layout Column
 6cm
-\layout Definition
+\end_layout
 
-
+\begin_layout Definition
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <2->
-\end_inset 
+\end_layout
+
+\end_inset
 
 A 
 \color red
 tournament
 \color default
  is a
-\begin_deeper 
-\layout Enumerate
+\end_layout
 
+\begin_deeper
+\begin_layout Enumerate
 directed graphs,
-\layout Enumerate
+\end_layout
 
+\begin_layout Enumerate
 with exactly one edge between
-\newline 
+\newline
 any two different vertices.
-\end_deeper 
-\end_deeper 
-\layout BeginFrame
+\end_layout
 
-
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 [<+>]
-\end_inset 
+\end_layout
+
+\end_inset
 
 Tournaments Arise Naturally in Different Situations
-\layout ExampleBlock
+\end_layout
 
-
+\begin_layout ExampleBlock
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Applicatins in Ordering Theory}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
+\begin_deeper
+\begin_layout Standard
 Elements in a set need to be sorted.
  
-\newline 
+\newline
 The comparison relation may be cyclic, however.
-\end_deeper 
-\layout Separator
+\end_layout
 
-\layout ExampleBlock
+\end_deeper
+\begin_layout Separator
 
+\end_layout
 
+\begin_layout ExampleBlock
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Applications in Sociology}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
+\begin_deeper
+\begin_layout Standard
 Several candidates apply for a position.
-\newline 
-Reviewers decide for any two candidates whom they prefer.
+\newline
+Reviewers decide for any two candidates
+ whom they prefer.
  
-\end_deeper 
-\layout Separator
+\end_layout
 
-\layout ExampleBlock
+\end_deeper
+\begin_layout Separator
 
+\end_layout
 
+\begin_layout ExampleBlock
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Applications in Structural Complexity Theory}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
+\begin_deeper
+\begin_layout Standard
 A language 
 \begin_inset Formula $L$
-\end_inset 
+\end_inset
 
  is given and a selector function 
 \begin_inset Formula $f$
-\end_inset 
+\end_inset
 
 .
-\newline 
+\newline
 It chooses from any two words the one more likely to be in 
 \begin_inset Formula $f$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout Subsection
+\end_layout
 
+\end_deeper
+\begin_layout Subsection
 What Does ``Finding Paths'' Mean?
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 ``Finding Paths'' is Ambiguous
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {
-\backslash 
+\backslash
 strut Input for 
-\backslash 
+\backslash
 ignorespaces
-\backslash 
+\backslash
 def
-\backslash 
+\backslash
 par{}% because LyX inserts superfluous paragraphs
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 only<1>{Path Finding Problems}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 only<2-3>{$
-\backslash 
+\backslash
 Lang{reach}$}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 only<4-5>{the Construction Problem}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 only<6-7>{the Optimization Problem}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 only<8-9>{$
-\backslash 
+\backslash
 Lang{distance}$}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 only<10->{the Approximation Problem}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 A 
 \color red
 graph
 \color default
  
 \begin_inset Formula $G=(V,E)$
-\end_inset 
+\end_inset
 
 , a 
 \color red
@@ -737,7 +1183,7 @@ source
 \color default
  
 \begin_inset Formula $s\in V$
-\end_inset 
+\end_inset
 
  and a 
 \color red
@@ -745,48 +1191,57 @@ target
 \color default
  
 \begin_inset Formula $t\in V$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <only@-9| visible@8->
-\end_inset 
+\end_layout
+
+\end_inset
 
 A 
 \color red
 maximum distance
 \color default
-\SpecialChar ~
+\InsetSpace ~
 
 \begin_inset Formula $d$
-\end_inset 
+\end_inset
 
 .
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 phantom{p}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <only@10->
-\end_inset 
+\end_layout
+
+\end_inset
 
 An 
 \color red
@@ -794,2569 +1249,4552 @@ approximation ratio
 \color default
  
 \begin_inset Formula $r>1$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout Standard
+\end_layout
 
-
+\end_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 nointerlineskip
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Overprint
+\end_layout
 
-\begin_deeper 
-\layout Standard
+\begin_layout Overprint
 
+\end_layout
 
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 onslide<1,3,5,7,9,11-12>
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Columns
+\end_layout
 
-
+\begin_layout Columns
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 [t,onlytextwidth]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
-
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 alt<1-2>{
-\backslash 
+\backslash
 column{
-\backslash 
+\backslash
 textwidth}}{
-\backslash 
+\backslash
 column{5cm}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout ExampleBlock
+\end_layout
 
-
+\begin_layout ExampleBlock
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Example Input}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
-
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{2.5cm}{-0.6cm}{7.5cm}{2.6cm}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{A}{
-\backslash 
+\backslash
 pgfxy(3,1)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{B}{
-\backslash 
+\backslash
 pgfxy(5,1)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{C}{
-\backslash 
+\backslash
 pgfxy(4,0)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{D}{
-\backslash 
+\backslash
 pgfxy(4,2)}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{white}
-\layout Standard
-  
-\backslash 
-pgfputat{
-\backslash 
-pgfnodecenter{B}}{
-\backslash 
-pgfbox[center,center]{$t$}}
-\layout Standard
-  
-\backslash 
-pgfputat{
-\backslash 
-pgfnodecenter{D}}{
-\backslash 
-pgfbox[center,center]{$s$}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
+pgfputat{
+\backslash
+pgfnodecenter{B}}{
+\backslash
+pgfbox[center,center]{$t$}}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+  
+\backslash
+pgfputat{
+\backslash
+pgfnodecenter{D}}{
+\backslash
+pgfbox[center,center]{$s$}}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+  
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetendarrow{
-\backslash 
+\backslash
 pgfarrowto}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodesetsepstart{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodesetsepend{4pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{A}{B}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{A}{C}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{D}{A}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodeconnline{C}{B}
-\layout Standard
-  
-\backslash 
-pgfnodeconnline{B}{D}
-\layout Standard
-  
-\backslash 
-pgfnodeconnline{D}{C}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
+pgfnodeconnline{B}{D}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+  
+\backslash
+pgfnodeconnline{D}{C}
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+  
+\backslash
 only<9> {
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(5.3,1)}{
-\backslash 
+\backslash
 pgfbox[left,center]{, $d=2$}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<11>{
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(5.3,1)}{
-\backslash 
+\backslash
 pgfbox[left,center]{, $r=1.5$}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<12>{
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(5.3,1)}{
-\backslash 
+\backslash
 pgfbox[left,center]{, $r=1.25$}}}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\layout Standard
+\end_layout
 
-
+\end_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 only<3->{
-\backslash 
+\backslash
 column{5cm}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout ExampleBlock
+\end_layout
 
-
+\begin_layout ExampleBlock
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <only@3->{Example Output}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
-
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{2.5cm}{-0.6cm}{7.5cm}{2.6cm}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<5-8,10->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{A}{
-\backslash 
+\backslash
 pgfxy(3,1)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{B}{
-\backslash 
+\backslash
 pgfxy(5,1)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{C}{
-\backslash 
+\backslash
 pgfxy(4,0)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{D}{
-\backslash 
+\backslash
 pgfxy(4,2)}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color{white}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{B}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$t$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{D}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$s$}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfsetendarrow{
-\backslash 
+\backslash
 pgfarrowto}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodesetsepstart{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodesetsepend{4pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
                       
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<7,12>{
-\backslash 
+\backslash
 pgfnodeconnline{A}{B}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<5,11>{
-\backslash 
+\backslash
 pgfnodeconnline{A}{C}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<5,7,11-12>{
-\backslash 
+\backslash
 pgfnodeconnline{D}{A}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<5,11>{
-\backslash 
+\backslash
 pgfnodeconnline{C}{B}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B}{D}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D}{C}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<3,9>{
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(2.75,1)}{
-\backslash 
+\backslash
 pgfbox[left,center]{
-\backslash 
+\backslash
 alert{``Yes''}}}}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\end_deeper 
-\layout Standard
+\end_layout
 
-
+\end_deeper
+\end_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 onslide<2,4,6,8,10>
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Variants of Path Finding Problems}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Standard
+\end_layout
 
-
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 usedescriptionitemofwidthas{Approximation Problem:}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Description
+\end_layout
 
-Reachability\SpecialChar ~
+\begin_layout Description
+Reachability\InsetSpace ~
 Problem: 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <2->
-\end_inset 
+\end_layout
+
+\end_inset
 
 Is there a path from 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- to\SpecialChar ~
+ to\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
 ?
-\layout Description
+\end_layout
 
-Construction\SpecialChar ~
+\begin_layout Description
+Construction\InsetSpace ~
 Problem: 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <4->
-\end_inset 
+\end_layout
+
+\end_inset
 
 Construct a path from 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- to\SpecialChar ~
+ to\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
 ? 
-\layout Description
+\end_layout
 
-Optimization\SpecialChar ~
+\begin_layout Description
+Optimization\InsetSpace ~
 Problem: 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <6->
-\end_inset 
+\end_layout
+
+\end_inset
 
 Construct a shortest path from 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- to\SpecialChar ~
+ to\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
 .
-\layout Description
+\end_layout
 
-Distance\SpecialChar ~
+\begin_layout Description
+Distance\InsetSpace ~
 Problem: 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <8->
-\end_inset 
+\end_layout
+
+\end_inset
 
 Is the distance of 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- and\SpecialChar ~
+ and\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
- at most\SpecialChar ~
+ at most\InsetSpace ~
 
 \begin_inset Formula $d$
-\end_inset 
+\end_inset
 
 ?
-\layout Description
+\end_layout
 
-Approximation\SpecialChar ~
+\begin_layout Description
+Approximation\InsetSpace ~
 Problem: 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <10->
-\end_inset 
+\end_layout
+
+\end_inset
 
 Construct a path from 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- to\SpecialChar ~
+ to\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
  of length
-\newline 
+\newline
 approximately their distance.
-\end_deeper 
-\end_deeper 
-\layout Section
+\end_layout
 
+\end_deeper
+\end_deeper
+\begin_layout Section
 Review
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Standard Complexity Classes
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 pgfdeclaremask{computer-mask}{beamer-g4-mask} 
-\backslash 
-pgfdeclareimage[height=2cm,mask=computer-mask,interpolate=true]{computer}{beamer-g4} 
-\end_inset 
+\backslash
+pgfdeclareimage[height=2cm,mask=computer-mask,interpolate=true]{computer}{beamer
+-g4} 
+\end_layout
+
+\end_inset
 
 
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 The Classes L and NL are Defined via
-\newline 
+\newline
 Logspace Turing Machines
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Open
+status open
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{-0.5cm}{0cm}{8cm}{5cm}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(0,4)}{
-\backslash 
+\backslash
 tape{input tape (read only), $n$ symbols}{}{3401234*3143223=}} 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 uncover<2->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(0,0.5)}{
-\backslash 
+\backslash
 tape{}{output tape (write only)}{10690836937182}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 uncover<3->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(7,2)}{
-\backslash 
+\backslash
 shorttape{work tape (read/write), $O(
-\backslash 
+\backslash
 log n)$ symbols}{}{42}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(1.75,2.5)}{
-\backslash 
+\backslash
 pgfbox[center,center]{
-\backslash 
+\backslash
 pgfuseimage{computer}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{structure}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetendarrow{
-\backslash 
+\backslash
 pgfarrowto}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfxycurve(1.75,3.5)(1.75,3.75)(0,3.5)(0,3.85)
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 uncover<2->{
-\backslash 
+\backslash
 pgfxycurve(1.75,1.5)(1.75,1)(0,1.5)(0,1.05)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 uncover<3->{
-\backslash 
+\backslash
 pgfxycurve(2.65,2.5)(3.75,2.5)(7,1)(7,1.9)}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture}   
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Logspace Turing Machines Are Quite Powerful
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Deterministic logspace machines can compute}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 addition, multiplication, and even division
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 reductions used in completeness proofs,
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 reachability in forests.
-\end_deeper 
-\layout Pause
+\end_layout
 
-\layout Block
+\end_deeper
+\begin_layout Pause
 
+\end_layout
 
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Non-deterministic logspace machines can compute}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 reachability in graphs,
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 non-reachability in graphs,
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 satisfiability with two literals per clause.
-\end_deeper 
-\layout BeginFrame
+\end_layout
 
-
+\end_deeper
+\begin_layout BeginFrame
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <1>[label=hierarchy]
-\end_inset 
+\end_layout
+
+\end_inset
 
 The Complexity Class Hierarchy
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{-5.4cm}{0cm}{5.4cm}{5.5cm}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetlinewidth{0.8pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 heap{5.5}{3.5}{$
-\backslash 
+\backslash
 Class P$}{black}{1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetdash{{2pt}}{0pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2->{
-\backslash 
+\backslash
 heap{4.5}{3}{$
-\backslash 
+\backslash
 Class{NC}^2$}{black!50!structure}{2}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 heap{3.5}{2.5}{$
-\backslash 
+\backslash
 Class{NL}$}{black!50!structure}{3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 heap{2.5}{2}{$
-\backslash 
+\backslash
 Class{L}$}{black!50!structure}{4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2->{
-\backslash 
+\backslash
 heap{1.75}{1.5}{$
-\backslash 
+\backslash
 vphantom{A}
-\backslash 
+\backslash
 smash{
-\backslash 
+\backslash
 Class{NC}^1}$}{black!50!structure}{5}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetdash{}{0pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2->{
-\backslash 
+\backslash
 heap{1.1}{1}{$
-\backslash 
+\backslash
 vphantom{A}
-\backslash 
+\backslash
 smash{
-\backslash 
+\backslash
 Class{AC}^0}$}{black}{6}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetlinewidth{1.0pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{black}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfxyline(-5,0)(5,0)
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<1-2>{
-\backslash 
+\backslash
 langat{3.375}{$
-\backslash 
+\backslash
 Lang{reach}$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<1-2>{
-\backslash 
+\backslash
 langat{2.375}{$
-\backslash 
+\backslash
 Lang{reach}_{
-\backslash 
+\backslash
 operatorname{forest}}$}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2>{
-\backslash 
+\backslash
 langat{0.975}{$
-\backslash 
+\backslash
 Lang{addition}$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2>{
-\backslash 
+\backslash
 langatother{1.6}{
-\backslash 
+\backslash
 vbox{
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{division}$,}
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{parity}$}}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<3-5>{
-\backslash 
+\backslash
 langat{3.375}{
-\backslash 
+\backslash
 vbox{
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{distance}$,}
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{reach}$}}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<4->{
-\backslash 
+\backslash
 langatother{2.375}{
-\backslash 
+\backslash
 vbox{
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{distance}_{
-\backslash 
+\backslash
 operatorname{forest}}$,}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{reach}_{
-\backslash 
+\backslash
 operatorname{forest}}$,}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{distance}_{
-\backslash 
+\backslash
 operatorname{path}}$,}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{reach}_{
-\backslash 
+\backslash
 operatorname{path}}$}}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<5->{
-\backslash 
+\backslash
 langat{0.975}{$
-\backslash 
+\backslash
 Lang{reach}_{
-\backslash 
+\backslash
 operatorname{tourn}}$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<6->{
-\backslash 
+\backslash
 langat{3.375}{
-\backslash 
+\backslash
 vbox{
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{distance}_{
-\backslash 
+\backslash
 operatorname{tourn}}$,}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{distance}$,}
-\backslash 
+\backslash
 ignorespaces
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 hbox{$
-\backslash 
+\backslash
 Lang{reach}$}}}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<7->{
-\backslash 
+\backslash
 pgfsetdash{{1pt}}{0pt}
-\backslash 
+\backslash
 langat{2.375}{``$
-\backslash 
+\backslash
 Lang{approx}_{
-\backslash 
+\backslash
 operatorname{tourn}}$''}}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture} 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 The Circuit Complexity Classes AC
 \begin_inset Formula $^{0}$
-\end_inset 
+\end_inset
 
 , NC
 \begin_inset Formula $^{1}$
-\end_inset 
+\end_inset
 
 , and NC
 \begin_inset Formula $^{2}$
-\end_inset 
+\end_inset
 
 
-\newline 
+\newline
 Limit the Circuit Depth
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 setlength
-\backslash 
+\backslash
 leftmargini{1em}
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 nointerlineskip 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Columns
+\end_layout
 
-
+\begin_layout Columns
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 [t]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Column
+\end_layout
 
+\begin_deeper
+\begin_layout Column
 3.6cm
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 {
-\end_inset 
+\end_layout
+
+\end_inset
 
 Circuit Class 
 \begin_inset Formula $\Class{AC}^{0}$
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
-
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Formula $O(1)$
-\end_inset 
+\end_inset
 
  depth
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 unbounded fan-in
-\end_deeper 
-\layout Examples
+\end_layout
 
-\begin_deeper 
-\layout Itemize
+\end_deeper
+\begin_layout Examples
 
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Formula $\Lang{addition}\in\Class{AC}^{0}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Formula $\Lang{parity}\notin\Class{AC}^{0}$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout Pause
+\end_layout
 
-\layout Column
+\end_deeper
+\begin_layout Pause
 
+\end_layout
+
+\begin_layout Column
 3.6cm
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 {
-\end_inset 
+\end_layout
+
+\end_inset
 
 Circuit Class 
 \begin_inset Formula $\Class{NC}^{1}$
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
-
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Formula $O(\log n)$
-\end_inset 
+\end_inset
 
  depth
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 bounded fan-in
-\end_deeper 
-\layout Examples
+\end_layout
 
-\begin_deeper 
-\layout Itemize
+\end_deeper
+\begin_layout Examples
 
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Formula $\Lang{parity}\in\Class{NC}^{1}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Formula $\Lang{mutiply}\in\Class{NC}^{1}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Formula $\Lang{divide}\in\Class{NC}^{1}$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout Pause
+\end_layout
 
-\layout Column
+\end_deeper
+\begin_layout Pause
 
+\end_layout
+
+\begin_layout Column
 3.6cm
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 {
-\end_inset 
+\end_layout
+
+\end_inset
 
 Circuit Class 
 \begin_inset Formula $\Class{NC}^{2}$
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
-
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Formula $O(\log^{2}n)$
-\end_inset 
+\end_inset
 
  depth
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 bounded fan-in
-\end_deeper 
-\layout Examples
+\end_layout
 
-\begin_deeper 
-\layout Itemize
+\end_deeper
+\begin_layout Examples
 
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 \begin_inset Formula $\Class{NL}\subseteq\Class{NC}^{2}$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\end_deeper 
-\layout AgainFrame
+\end_layout
 
-
+\end_deeper
+\end_deeper
+\begin_layout AgainFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <2>
-\end_inset 
+\end_layout
+
+\end_inset
 
 hierarchy
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Standard Complexity Results on Finding Paths
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 All Variants of Finding Paths in Directed Graphs
-\newline 
+\newline
 Are Equally Difficult
-\layout Fact
+\end_layout
 
-
+\begin_layout Fact
 \begin_inset Formula $\Lang{reach}$
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula $\Lang{distance}$
-\end_inset 
+\end_inset
 
  are 
 \begin_inset Formula $\Class{NL}$
-\end_inset 
+\end_inset
 
 -complete.
  
-\layout Pause
+\end_layout
 
-\layout Corollary
+\begin_layout Pause
 
+\end_layout
+
+\begin_layout Corollary
 For directed graphs, we can solve
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 the reachability problem in logspace iff 
 \begin_inset Formula $\Class{L}=\Class{NL}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 the construction problem in logspace iff 
 \begin_inset Formula $\Class{L}=\Class{NL}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 the optimization problem in logspace iff 
 \begin_inset Formula $\Class{L}=\Class{NL}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 the approximation problem in logspace iff 
 \begin_inset Formula $\Class{L}=\Class{NL}$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout AgainFrame
+\end_layout
 
-
+\end_deeper
+\begin_layout AgainFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <3>
-\end_inset 
+\end_layout
+
+\end_inset
 
 hierarchy
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 FindingPaths in Forests and Directed Paths is Easy,
-\newline 
+\newline
 But Not Trivial
-\layout Fact
+\end_layout
 
-
+\begin_layout Fact
 \begin_inset Formula $\Lang{reach}_{\operatorname{forest}}$
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula $\Lang{distance}_{\operatorname{forest}}$
-\end_inset 
+\end_inset
 
  are 
 \begin_inset Formula $\Class{L}$
-\end_inset 
+\end_inset
 
 -complete.
-\layout Separator
+\end_layout
 
-\layout Fact
+\begin_layout Separator
 
+\end_layout
 
+\begin_layout Fact
 \begin_inset Formula $\Lang{reach}_{\operatorname{path}}$
-\end_inset 
+\end_inset
 
  and 
 \begin_inset Formula $\Lang{distance}_{\operatorname{path}}$
-\end_inset 
+\end_inset
 
  are 
 \begin_inset Formula $\Class{L}$
-\end_inset 
+\end_inset
 
 -complete.
-\layout AgainFrame
+\end_layout
 
-
+\begin_layout AgainFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <4>
-\end_inset 
+\end_layout
+
+\end_inset
 
 hierarchy
-\layout Section
+\end_layout
 
+\begin_layout Section
 Finding Paths in Tournaments
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Complexity of: Does a Path Exist?
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Definition of the Tournament Reachability Problem
-\layout Definition
+\end_layout
 
+\begin_layout Definition
 Let 
 \color red
 
 \begin_inset Formula $\Lang{reach}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
 
 \color default
  contain all triples 
 \begin_inset Formula $(T,s,t)$
-\end_inset 
+\end_inset
 
  such that
-\begin_deeper 
-\layout Enumerate
+\end_layout
 
-
+\begin_deeper
+\begin_layout Enumerate
 \begin_inset Formula $T=(V,E)$
-\end_inset 
+\end_inset
 
  is a tournament and
-\layout Enumerate
+\end_layout
 
-there exists a path from\SpecialChar ~
+\begin_layout Enumerate
+there exists a path from\InsetSpace ~
 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- to\SpecialChar ~
+ to\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout BeginFrame
+\end_layout
 
+\end_deeper
+\begin_layout BeginFrame
 The Tournament Reachability Problem is Very Easy
-\layout Theorem
+\end_layout
 
-
+\begin_layout Theorem
 \begin_inset Formula $\Lang{reach}_{\operatorname{tourn}}\in\Class{AC}^{0}$
-\end_inset 
+\end_inset
 
 .
-\layout Pause
+\end_layout
 
-\layout AlertBlock
+\begin_layout Pause
 
+\end_layout
 
+\begin_layout AlertBlock
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Implications}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 The problem is 
 \begin_inset Quotes eld
-\end_inset 
+\end_inset
 
 easier
 \begin_inset Quotes erd
-\end_inset 
+\end_inset
 
  than 
 \begin_inset Formula $\Lang{reach}$
-\end_inset 
+\end_inset
 
  and even 
 \begin_inset Formula $\Lang{reach}_{\operatorname{path}}$
-\end_inset 
+\end_inset
 
 .
-\layout Itemize
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Formula $\Lang{reach}\not\le_{\operatorname{m}}^{\Class{AC}^{0}}\Lang{reach}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout AgainFrame
+\end_layout
 
-
+\end_deeper
+\begin_layout AgainFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <5>
-\end_inset 
+\end_layout
+
+\end_inset
 
 hierarchy
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Complexity of: Construct a Shortest Path
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Finding a Shortest Path Is as Difficult as
-\newline 
+\newline
 the Distance Problem
-\layout Definition
+\end_layout
 
+\begin_layout Definition
 Let 
 \color red
 
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
  
 \color default
 contain all tuples 
 \begin_inset Formula $(T,s,t,d)$
-\end_inset 
+\end_inset
 
  such that 
-\begin_deeper 
-\layout Enumerate
+\end_layout
 
-
+\begin_deeper
+\begin_layout Enumerate
 \begin_inset Formula $T=(V,E)$
-\end_inset 
+\end_inset
 
  is a tournament in which
-\layout Enumerate
+\end_layout
 
+\begin_layout Enumerate
 the distance of 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- and\SpecialChar ~
+ and\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
- is at most\SpecialChar ~
+ is at most\InsetSpace ~
 
 \begin_inset Formula $d$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout BeginFrame
+\end_layout
 
+\end_deeper
+\begin_layout BeginFrame
 The Tournament Distance Problem is Hard
-\layout Theorem
+\end_layout
 
-
+\begin_layout Theorem
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
  is 
 \begin_inset Formula $\Class{NL}$
-\end_inset 
+\end_inset
 
 -complete.
-\layout Standard
+\end_layout
 
+\begin_layout Standard
 
-\hfill 
+\hfill
 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 hyperlink{hierarchy<6>}{
-\backslash 
+\backslash
 beamerskipbutton{Skip Proof}} 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Pause
+\end_layout
 
-\layout Corollary
+\begin_layout Pause
 
+\end_layout
+
+\begin_layout Corollary
 Shortest path in tournaments can be constructed
-\newline 
-in logarithmic space, iff 
+\newline
+in logarithmic space, iff
+ 
 \begin_inset Formula $\Class{L}=\Class{NL}$
-\end_inset 
+\end_inset
 
 .
-\layout Pause
+\end_layout
 
-\layout Corollary
+\begin_layout Pause
 
+\end_layout
 
+\begin_layout Corollary
 \begin_inset Formula $\Lang{distance}\le_{\operatorname{m}}^{\Class{AC}^{0}}\Lang{distance}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
 .
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Proof That 
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
  is NL-complete
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 nointerlineskip
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Columns
+\end_layout
 
-
+\begin_layout Columns
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 [t,onlytextwidth]
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Column
+\end_layout
 
+\begin_deeper
+\begin_layout Column
 5.7cm
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 setlength
-\backslash 
+\backslash
 leftmargini{1.5em}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 {
-\end_inset 
+\end_layout
+
+\end_inset
 
 Reduce 
 \begin_inset Formula $\Lang{reach}$
-\end_inset 
+\end_inset
 
  to 
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Enumerate
+\end_layout
 
-
+\begin_deeper
+\begin_layout Enumerate
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <alert@1>
-\end_inset 
+\end_layout
+
+\end_inset
 
 Is input 
 \begin_inset Formula $(G,s,t)$
-\end_inset 
+\end_inset
 
  in 
 \begin_inset Formula $\Lang{reach}$
-\end_inset 
+\end_inset
 
 ?
-\layout Enumerate
+\end_layout
 
-
+\begin_layout Enumerate
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <2-| alert@2-8>
-\end_inset 
+\end_layout
+
+\end_inset
 
 Map 
 \begin_inset Formula $G$
-\end_inset 
+\end_inset
 
  to 
 \begin_inset Formula $G'$
-\end_inset 
+\end_inset
 
 .
-\layout Enumerate
+\end_layout
 
-
+\begin_layout Enumerate
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <9-| alert@9>
-\end_inset 
+\end_layout
+
+\end_inset
 
 Query:
-\newline 
+\newline
 
 \begin_inset Formula $(G',s',t',3)\in\Lang{distance}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
 ?
-\end_deeper 
-\layout Separator
+\end_layout
 
-\layout Block
+\end_deeper
+\begin_layout Separator
 
+\end_layout
 
+\begin_layout Block
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 {
-\end_inset 
+\end_layout
+
+\end_inset
 
 Correctness
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 }
-\end_inset 
+\end_layout
+
+\end_inset
 
 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <10->
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Enumerate
+\end_layout
 
-
+\begin_deeper
+\begin_layout Enumerate
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <10-| alert@10-11>
-\end_inset 
+\end_layout
 
-A path in\SpecialChar ~
+\end_inset
+
+A path in\InsetSpace ~
 
 \begin_inset Formula $G$
-\end_inset 
+\end_inset
 
  induces
-\newline 
-a length-3 path in\SpecialChar ~
+\newline
+a length-3 path in\InsetSpace ~
 
 \begin_inset Formula $G'$
-\end_inset 
+\end_inset
 
 .
-\layout Enumerate
+\end_layout
 
-
+\begin_layout Enumerate
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <12-| alert@12-13>
-\end_inset 
+\end_layout
 
-A length-3 path in\SpecialChar ~
+\end_inset
+
+A length-3 path in\InsetSpace ~
 
 \begin_inset Formula $G'$
-\end_inset 
+\end_inset
 
  induces
-\newline 
-a path in\SpecialChar ~
+\newline
+a path in\InsetSpace ~
 
 \begin_inset Formula $G'$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout Column
+\end_layout
 
+\end_deeper
+\begin_layout Column
 4.5cm
-\layout Example
+\end_layout
 
-
+\begin_layout Example
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 begin{pgfpicture}{0cm}{-1.25cm}{4.5cm}{3.75cm}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{A}{
-\backslash 
+\backslash
 pgfxy(1,3.3)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{B}{
-\backslash 
+\backslash
 pgfxy(2,3.3)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{C}{
-\backslash 
+\backslash
 pgfxy(3,3.3)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 graphnode{D}{
-\backslash 
+\backslash
 pgfxy(4,3.3)}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{white}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{A}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$s$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{D}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$t$}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfsetendarrow{
-\backslash 
+\backslash
 pgfarrowto}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodesetsepstart{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfnodesetsepend{2pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 alert<3>{
-\backslash 
+\backslash
 pgfnodeconnline{B}{A}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 alert<4>{
-\backslash 
+\backslash
 pgfnodeconnline{B}{C}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 alert<5,10-11,13>{
-\backslash 
+\backslash
 pgfnodeconnline{C}{D}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 alert<6,10-11,13>{
-\backslash 
+\backslash
 pgfnodeconncurve{A}{C}{45}{135}{15pt}{15pt}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
    
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(0,3.3)}{
-\backslash 
+\backslash
 pgfbox[left,center]{$G
-\backslash 
+\backslash
 colon$}}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<2->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfxy(0,2.25)}{
-\backslash 
+\backslash
 pgfbox[left,center]{$G'
-\backslash 
+\backslash
 colon$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{A1}{
-\backslash 
+\backslash
 pgfxy(1,2.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{B1}{
-\backslash 
+\backslash
 pgfxy(2,2.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{C1}{
-\backslash 
+\backslash
 pgfxy(3,2.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{D1}{
-\backslash 
+\backslash
 pgfxy(4,2.25)}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{A2}{
-\backslash 
+\backslash
 pgfxy(1,1.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{B2}{
-\backslash 
+\backslash
 pgfxy(2,1.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{C2}{
-\backslash 
+\backslash
 pgfxy(3,1.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{D2}{
-\backslash 
+\backslash
 pgfxy(4,1.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{A3}{
-\backslash 
+\backslash
 pgfxy(1,0.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{B3}{
-\backslash 
+\backslash
 pgfxy(2,0.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{C3}{
-\backslash 
+\backslash
 pgfxy(3,0.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{D3}{
-\backslash 
+\backslash
 pgfxy(4,0.25)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{A4}{
-\backslash 
+\backslash
 pgfxy(1,-.75)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{B4}{
-\backslash 
+\backslash
 pgfxy(2,-.75)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{C4}{
-\backslash 
+\backslash
 pgfxy(3,-.75)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 graphnode{D4}{
-\backslash 
+\backslash
 pgfxy(4,-.75)}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
      {
-\backslash 
+\backslash
 color{white}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
       
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{A1}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$s'$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
       
-\backslash 
+\backslash
 pgfputat{
-\backslash 
+\backslash
 pgfnodecenter{D4}}{
-\backslash 
+\backslash
 pgfbox[center,center]{$t'$}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
    
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<8->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfsetlinewidth{0.4pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color{beamerexample!25!averagebackgroundcolor}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A2}{C1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A2}{D1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{A1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{C1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{D1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C2}{D1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D2}{A1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D2}{B1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A3}{C2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A3}{D2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{A2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{C2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{D2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C3}{D2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D3}{A2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D3}{B2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A4}{C3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A4}{D3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B4}{A3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B4}{C3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B4}{D3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C4}{D3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D4}{A3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D4}{B3}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfsetstartarrow{
-\backslash 
+\backslash
 pgfarrowto}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A1}{B1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B1}{C1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C1}{D1}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A2}{B2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{C2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C2}{D2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A3}{B3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{C3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C3}{D3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A4}{B4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B4}{C4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C4}{D4}
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfclearstartarrow
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{A3}{A1}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{A4}{A2}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{A4}{A1}{135}{-135}{15pt}{15pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{B3}{B1}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{B4}{B2}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{B4}{B1}{135}{-135}{15pt}{15pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{C3}{C1}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{C4}{C2}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{C4}{C1}{135}{-135}{15pt}{15pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{D3}{D1}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{D4}{D2}{135}{-135}{10pt}{10pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconncurve{D4}{D1}{135}{-135}{15pt}{15pt}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color{beamerexample}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfsetlinewidth{0.6pt}
-\layout Standard
-  }
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+  }
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<3->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color<3>{red}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B1}{A2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{A3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{A4}
-\layout Standard
-  }
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+  }
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<4->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color<4>{red}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B1}{C2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{C3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{C4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<5->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color<5>{red}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C1}{D2} 
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<11>{
-\backslash 
+\backslash
 pgfnodeconnline{C2}{D3}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<12-13>{
-\backslash 
+\backslash
 pgfnodeconnline{C3}{D4}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
  
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<6->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color<6>{red}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<11>{
-\backslash 
+\backslash
 pgfnodeconnline{A1}{C2}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<12-13>{
-\backslash 
+\backslash
 pgfnodeconnline{A2}{C3}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A3}{C4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   } 
-\layout Standard
+\end_layout
 
-\layout Standard
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   
-\backslash 
+\backslash
 only<7->{
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 color<7>{red}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<12-13>{
-\backslash 
+\backslash
 pgfnodeconnline{A1}{A2}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A2}{A3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{A3}{A4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B1}{B2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B2}{B3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{B3}{B4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C1}{C2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C2}{C3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{C3}{C4}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D1}{D2}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 pgfnodeconnline{D2}{D3}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
     
-\backslash 
+\backslash
 alert<11>{
-\backslash 
+\backslash
 pgfnodeconnline{D3}{D4}}
-\layout Standard
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
   }
-\layout Standard
+\end_layout
 
-\backslash 
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
 end{pgfpicture} 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\layout AgainFrame
+\end_layout
 
-
+\end_deeper
+\begin_layout AgainFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <6>
-\end_inset 
+\end_layout
+
+\end_inset
 
 hierarchy
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Complexity of: Approximating the Shortest Path
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Approximators Compute Paths that Are Nearly As Short As a Shortest Path
-\layout Definition
+\end_layout
 
+\begin_layout Definition
 An 
 \color red
 approximation scheme for 
 \begin_inset Formula $\Lang{tournament-shortest-path}$
-\end_inset 
+\end_inset
 
 
 \color default
  gets as input
-\begin_deeper 
-\layout Enumerate
+\end_layout
 
+\begin_deeper
+\begin_layout Enumerate
 a tuple 
 \begin_inset Formula $(T,s,t)\in\Lang{reach}_{\operatorname{tourn}}$
-\end_inset 
+\end_inset
 
  and
-\layout Enumerate
+\end_layout
 
+\begin_layout Enumerate
 a number 
 \begin_inset Formula $r>1$
-\end_inset 
+\end_inset
 
 .
-\layout Standard
+\end_layout
 
+\begin_layout Standard
 It outputs
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 a path from 
 \begin_inset Formula $s$
-\end_inset 
+\end_inset
 
- to\SpecialChar ~
+ to\InsetSpace ~
 
 \begin_inset Formula $t$
-\end_inset 
+\end_inset
 
  of length at most 
 \begin_inset Formula $r\operatorname{d_{T}}(s,t)$
-\end_inset 
+\end_inset
 
 .
-\end_deeper 
-\layout BeginFrame
+\end_layout
 
+\end_deeper
+\begin_layout BeginFrame
 There Exists a Logspace Approximation Scheme for
-\newline 
-the Tournament Shortest Path Problem
-\layout Theorem
+\newline
+the Tournament Shortest
+ Path Problem
+\end_layout
 
+\begin_layout Theorem
 There exists an approximation scheme for 
 \begin_inset Formula $\Lang{tournament-shortest-path}$
-\end_inset 
+\end_inset
 
  that for 
 \begin_inset Formula $1<r<2$
-\end_inset 
+\end_inset
 
  needs space
 \begin_inset Formula \[
 O\left(\log|V|\log\frac{1}{r-1}\right).\]
 
-\end_inset 
+\end_inset
 
 
-\layout Pause
+\end_layout
 
-\layout Corollary
+\begin_layout Pause
 
+\end_layout
+
+\begin_layout Corollary
 In tournaments, paths can be constructed in logarithmic space.
-\layout Standard
+\end_layout
 
+\begin_layout Standard
 
-\hfill 
+\hfill
 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 hyperlink{optimality}{
-\backslash 
+\backslash
 beamergotobutton{More Details}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout AgainFrame
+\end_layout
 
-
+\begin_layout AgainFrame
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
+
 <7>
-\end_inset 
+\end_layout
+
+\end_inset
 
 hierarchy
-\layout Section*
+\end_layout
 
+\begin_layout Section*
 Summary
-\layout Subsection*
+\end_layout
 
+\begin_layout Subsection*
 Summary
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 Summary
-\layout Block
+\end_layout
 
-
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Summary}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 Tournament 
 \color red
 reachability
@@ -3365,14 +5803,15 @@ reachability
 \color red
  
 \begin_inset Formula $\Class{AC}^{0}$
-\end_inset 
+\end_inset
 
 
 \color default
 .
  
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 There exists a 
 \color red
 logspace approximation scheme
@@ -3382,8 +5821,9 @@ logspace approximation scheme
 approximating
 \color default
  shortest paths in tournaments.
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 Finding 
 \color red
 shortest paths
@@ -3392,489 +5832,594 @@ shortest paths
 \color red
  
 \begin_inset Formula $\Class{NL}$
-\end_inset 
+\end_inset
 
 -complete
 \color default
 .
-\end_deeper 
-\layout Separator
+\end_layout
 
-\layout Block
+\end_deeper
+\begin_layout Separator
 
+\end_layout
 
+\begin_layout Block
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 {Outlook}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 The same results apply to graphs with
-\newline 
+\newline
 bounded independence number.
-\hfill 
+\hfill
 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 hyperlink{independence}{
-\backslash 
+\backslash
 beamergotobutton{More Details}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 The complexity of finding paths in undirected graphs
-\newline 
+\newline
 is partly open.
-\hfill 
+\hfill
 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 hyperlink{undirected}{
-\backslash 
+\backslash
 beamergotobutton{More Details}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\layout Subsection*
+\end_layout
 
+\end_deeper
+\begin_layout Subsection*
 For Further Reading
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 For Further Reading
-\layout Standard
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 beamertemplatebookbibitems
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
+
 \bibitem {Moon1968}
-
-\SpecialChar ~
+\InsetSpace ~
 John Moon.
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  
-\emph on 
+\emph on
 Topics on Tournaments.
 
-\emph default 
+\emph default
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  Holt, Rinehart, and Winston, 1968.
  
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 beamertemplatearticlebibitems
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Bibliography
+\end_layout
+
+\begin_layout Bibliography
+
 \bibitem {NickelsenT2002}
-
-\SpecialChar ~
+\InsetSpace ~
 Arfst Nickelsen and Till Tantau.
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  On reachability in graphs with bounded independence number.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  In 
-\emph on 
+\emph on
 Proc.
  of COCOON 2002
-\emph default 
+\emph default
 , Springer-Verlag, 2002.
-\layout Bibliography
-\bibitem {Tantau2004b}
+\end_layout
 
-\SpecialChar ~
+\begin_layout Bibliography
+
+\bibitem {Tantau2004b}
+\InsetSpace ~
 Till Tantau 
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  A logspace approximation scheme for the shortest path problem for graphs
  with bounded independence number.
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  In 
-\emph on 
+\emph on
 Proc.
  of STACS 2004
-\emph default 
+\emph default
 , Springer-Verlag, 2004.
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 newblock
-\end_inset 
+\end_layout
+
+\end_inset
 
  In press.
-\layout EndFrame
+\end_layout
 
-\layout Standard
-\start_of_appendix 
+\begin_layout EndFrame
 
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 AtBeginSubsection[]{} 
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\layout Section
+\end_layout
 
+\begin_layout Section
 Appendix
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Graphs With Bounded Independence Number
-\layout BeginFrame
+\end_layout
 
-
+\begin_layout BeginFrame
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 [label=independence]
-\end_inset 
+\end_layout
+
+\end_inset
 
 Definition of Independence Number of a Graph
-\layout Definition
+\end_layout
 
+\begin_layout Definition
 The 
 \color red
 independence number
 \color default
  
 \begin_inset Formula $\alpha(G)$
-\end_inset 
+\end_inset
 
  of a directed graph
-\newline 
+\newline
 is the maximum number of vertices we can pick,
-\newline 
-such that there is no edge between them.
-\layout Example
+\newline
+such that
+ there is no edge between them.
+\end_layout
 
+\begin_layout Example
 Tournaments have independence number 1.
  
-\layout BeginFrame
+\end_layout
 
+\begin_layout BeginFrame
 The Results for Tournaments also Apply to
-\newline 
-Graphs With Bounded Independence Number
-\layout Theorem
+\newline
+Graphs With Bounded Independence
+ Number
+\end_layout
 
-For each\SpecialChar ~
+\begin_layout Theorem
+For each\InsetSpace ~
 
 \begin_inset Formula $k$
-\end_inset 
+\end_inset
 
 , 
 \color red
 reachability
 \color default
  in graphs with independence number
-\newline 
-at most\SpecialChar ~
+\newline
+at most\InsetSpace ~
 
 \begin_inset Formula $k$
-\end_inset 
+\end_inset
 
  is in 
 \begin_inset Formula $\Class{AC}^{0}$
-\end_inset 
+\end_inset
 
 .
-\layout Separator
+\end_layout
 
-\layout Theorem
+\begin_layout Separator
 
-For each\SpecialChar ~
+\end_layout
+
+\begin_layout Theorem
+For each\InsetSpace ~
 
 \begin_inset Formula $k$
-\end_inset 
+\end_inset
 
 , there exists a 
 \color red
 logspace approximation scheme
 \color default
  for approximating the shortest path in graphs with independence number
- at most\SpecialChar ~
+ at most\InsetSpace ~
 
 \begin_inset Formula $k$
-\end_inset 
+\end_inset
 
 
-\layout Separator
+\end_layout
 
-\layout Theorem
+\begin_layout Separator
 
-For each\SpecialChar ~
+\end_layout
+
+\begin_layout Theorem
+For each\InsetSpace ~
 
 \begin_inset Formula $k$
-\end_inset 
+\end_inset
 
 , finding the 
 \color red
 shortest path
 \color default
- in graphs with independence number at most\SpecialChar ~
+ in graphs with independence number at most\InsetSpace ~
 
 \begin_inset Formula $k$
-\end_inset 
+\end_inset
 
  is 
 \color red
 
 \begin_inset Formula $\Class{NL}$
-\end_inset 
+\end_inset
 
 -complete
 \color default
 .
-\layout Subsection
+\end_layout
 
+\begin_layout Subsection
 Finding Paths in Undirected Graphs
-\layout BeginFrame
+\end_layout
 
-
+\begin_layout BeginFrame
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 <1-2>[label=undirected]
-\end_inset 
+\end_layout
+
+\end_inset
 
 The Complexity of Finding Paths in Undirected Graphs
-\newline 
+\newline
 Is Party Unknown.
-\layout Fact
+\end_layout
 
-
+\begin_layout Fact
 \begin_inset Formula $\Lang{reach}_{\operatorname{undirected}}$
-\end_inset 
+\end_inset
 
  is 
 \begin_inset Formula $\Class{SL}$
-\end_inset 
+\end_inset
 
 -complete.
-\layout Corollary
+\end_layout
 
+\begin_layout Corollary
 For undirected graphs, we can solve
-\begin_deeper 
-\layout Itemize
+\end_layout
 
+\begin_deeper
+\begin_layout Itemize
 the reachability problem in logspace iff 
 \begin_inset Formula $\Class L=\Class{SL}$
-\end_inset 
+\end_inset
 
 ,
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 the construction problem in logspace iff 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 alt<1>{?}{
-\backslash 
+\backslash
 alert{$
-\backslash 
+\backslash
 Class L = 
-\backslash 
+\backslash
 Class{SL}$}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 the optimization problem in logspace iff 
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 alt<1>{?}{
-\backslash 
+\backslash
 alert{$
-\backslash 
+\backslash
 Class L = 
-\backslash 
+\backslash
 Class{NL}$}}
-\end_inset 
+\end_layout
+
+\end_inset
 
 , 
-\layout Itemize
+\end_layout
 
+\begin_layout Itemize
 the approximation problem in logspace iff ?.
  
-\end_deeper 
-\layout Subsection
+\end_layout
 
+\end_deeper
+\begin_layout Subsection
 The Approximation Scheme is Optimal
-\layout BeginFrame
+\end_layout
 
-
+\begin_layout BeginFrame
 \begin_inset ERT
-status Inlined
+status inlined
 
-\layout Standard
+\begin_layout Standard
+
 [label=optimality]
-\end_inset 
+\end_layout
+
+\end_inset
 
 The Approximation Scheme is Optimal
-\layout Theorem
+\end_layout
 
+\begin_layout Theorem
 Suppose there exists an approximation scheme for 
 \begin_inset Formula $\Lang{tournament-shortest-path}$
-\end_inset 
+\end_inset
 
  that needs space 
 \begin_inset Formula $O\bigl(\log|V|\log^{1-\epsilon}\frac{1}{r-1}\bigr)$
-\end_inset 
+\end_inset
 
 .
  Then 
 \begin_inset Formula $\Class{NL}\subseteq\Class{DSPACE}\bigl[\log^{2-\epsilon}n\bigr]$
-\end_inset 
+\end_inset
 
 .
-\layout Proof
+\end_layout
 
-\begin_deeper 
-\layout Enumerate
+\begin_layout Proof
 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
 Suppose the approximation scheme exists.
-\newline 
+\newline
 We show 
 \begin_inset Formula $\Lang{distance}_{\operatorname{tourn}}\in\Class{DSPACE}\bigl[\log^{2-\epsilon}n\bigr]$
-\end_inset 
+\end_inset
 
 .
  
-\layout Enumerate
+\end_layout
 
+\begin_layout Enumerate
 Let 
 \begin_inset Formula $(T,s,t)$
-\end_inset 
+\end_inset
 
  be an input.
  Let 
 \begin_inset Formula $n$
-\end_inset 
+\end_inset
 
  be the number of vertices.
-\layout Enumerate
+\end_layout
 
+\begin_layout Enumerate
 Run the approximation scheme for 
 \begin_inset Formula $r:=1+\smash{\frac{1}{n+1}}$
-\end_inset 
+\end_inset
 
 .
-\newline 
+\newline
 This needs space 
 \begin_inset Formula $\smash{O(\log^{2-\epsilon}n)}$
-\end_inset 
+\end_inset
 
 .
-\layout Enumerate
+\end_layout
 
+\begin_layout Enumerate
 The resulting path has optimal length.
  
 \begin_inset ERT
-status Collapsed
+status collapsed
 
-\layout Standard
+\begin_layout Standard
 
-\backslash 
+
+\backslash
 qedhere
-\end_inset 
+\end_layout
+
+\end_inset
 
 
-\end_deeper 
-\layout EndFrame
+\end_layout
 
-\the_end
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

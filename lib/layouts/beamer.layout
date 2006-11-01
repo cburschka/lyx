@@ -5,6 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
+Format 2
 Input stdcounters.inc
 
 # General textclass parameters
@@ -13,7 +14,6 @@ Sides			1
 SecNumDepth		2
 TocDepth		2
 DefaultStyle 		Standard
-MaxCounter		Counter_Section
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
@@ -51,7 +51,7 @@ Style Itemize
   ParSep		0.3
   Align			Left
   AlignPossible		Left
-  LabelType		Static
+  LabelType		Itemize
   LabelString		*
 End
 
@@ -70,7 +70,7 @@ Style Enumerate
   ParSep		0.3
   Align			Left
   AlignPossible		Left
-  LabelType		Counter_EnumI
+  LabelType		Enumerate
 End
 
 # Description style definition
@@ -275,8 +275,9 @@ Style Section
   ParSep		0.7
   Align			Left
   AlignPossible		Left
-  LabelType		Counter_Section
-  LabelString		"Section "
+  LabelType		Counter
+  LabelCounter section
+  LabelString		"Section \arabic{section}"
   OptionalArgs				1
 
   Font 
@@ -288,6 +289,8 @@ Style Section
   LabelFont 
     Color           latex
   EndFont
+  LabelStringAppendix "\Alph{section}"
+  TocLevel 1
 End
 
 # Section* style definition
@@ -313,8 +316,9 @@ Style Subsection
   ParSep		0.5
   Align			Left
   AlignPossible		Left
-  LabelType		Counter_Subsection
-  LabelString		"Subsection "
+  LabelType		Counter
+  LabelCounter subsection
+  LabelString		"Subsection \arabic{section}.\arabic{subsection}"
   OptionalArgs				1
 
   # standard font definition
@@ -327,6 +331,8 @@ Style Subsection
   LabelFont 
     Color           latex
   EndFont
+  LabelStringAppendix "\arabic{section}.\arabic{subsection}"
+  TocLevel 2
 End
 
 # Subsection* style definition
@@ -433,7 +439,7 @@ End
 # Bibliography style definition
 Style Bibliography
   Margin		First_Dynamic
-  LatexType		Item_Environment
+  LatexType		Bib_Environment
   LatexName		thebibliography
   NextNoIndent		1
   LeftMargin		MM
