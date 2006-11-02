@@ -573,6 +573,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_TOOLBAR_TOGGLE_STATE: {
+		ToolbarBackend::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
+		if (!(flags & ToolbarBackend::AUTO))
+			flag.setOnOff(flags & ToolbarBackend::ON);
+		break;
+	}
+
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
 	case LFUN_COMMAND_SEQUENCE: {
@@ -635,7 +642,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_PREVIOUS:
 	case LFUN_WINDOW_NEW:
 	case LFUN_WINDOW_CLOSE:
-	case LFUN_TOOLBAR_TOGGLE_STATE:
 		// these are handled in our dispatch()
 		break;
 

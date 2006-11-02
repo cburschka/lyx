@@ -88,6 +88,9 @@ public:
 	/// Show/hide the named toolbar.
 	void display(std::string const & name, bool show);
 
+	/// get toolbar state (on/off/auto)
+	ToolbarBackend::Flags getToolbarState(std::string const & name);
+	
 	/// toggle the state of toolbars (on/off/auto)
 	void toggleToolbarState(std::string const & name);
 

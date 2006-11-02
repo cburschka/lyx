@@ -305,6 +305,12 @@ void LyXView::updateToolbars()
 }
 
 
+ToolbarBackend::Flags LyXView::getToolbarState(string const & name)
+{
+	return toolbars_->getToolbarState(name);
+}
+
+
 void LyXView::toggleToolbarState(string const & name)
 {
 	// it is possible to get current toolbar status like this,...

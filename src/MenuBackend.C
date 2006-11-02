@@ -768,17 +768,16 @@ void expandToolbars(Menu & tomenu, Buffer const * buf)
 	int i = 1;
 	for (; cit != end; ++cit, ++i) {
 		docstring label = convert<docstring>(i) + ". " + _(cit->name);
-		// frontend does not update ToolbarBackend::flags when it changes toolbar
-		// Therefore, I can not tell from the flags if the toolbar is on or off
-		// it is then less confusing to say:
-		// this is: always on/off/auto
-		// frontend toolbar change is temporary.
+		// frontends are not supposed to turn on/off toolbars, if they can not
+		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
+		// should reflect the true state of toolbars.
 		// 
-		if (cit->flags & ToolbarBackend::ON)
-			label += _(" (always on)");
-		else if (cit->flags & ToolbarBackend::OFF)
-			label += _(" (always off)");
-		else if (cit->flags & ToolbarBackend::AUTO)
+		// menu is displayed as 
+		//       on/off review
+		// and 
+		//              review (auto)
+		// in the case of auto.
+		if (cit->flags & ToolbarBackend::AUTO)
 			label += _(" (auto)");
 		label += char_type('|') + convert<docstring>(i);
 		tomenu.add(MenuItem(MenuItem::Command, label,

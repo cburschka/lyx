@@ -136,6 +136,8 @@ public:
 
 	/// update the toolbar
 	void updateToolbars();
+	/// get toolbar state
+	ToolbarBackend::Flags getToolbarState(std::string const & name);
 	/// toggle toolbar state
 	void toggleToolbarState(std::string const & name);
 	/// update the menubar

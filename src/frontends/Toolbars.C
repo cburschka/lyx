@@ -129,6 +129,21 @@ void Toolbars::display(string const & name, bool show)
 }
 
 
+ToolbarBackend::Flags Toolbars::getToolbarState(string const & name)
+{	
+	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+
+	for (; cit != end; ++cit) {
+		if (cit->name == name)
+			return cit->flags;
+	}
+
+	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
+		<< name << endl;
+}
+
+
 void Toolbars::toggleToolbarState(string const & name)
 {
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
@@ -154,9 +169,11 @@ void Toolbars::toggleToolbarState(string const & name)
 				TurnOnFlag(ON);
 			}
 			cit->flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
-			break;
+			return;
 		}
 	}
+	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
+		<< name << endl;
 }
 #undef TurnOnFlag
 #undef TurnOffFlag
