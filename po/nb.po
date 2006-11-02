@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-11-01 16:33+0100\n"
-"PO-Revision-Date: 2006-10-22 19:37+0200\n"
+"PO-Revision-Date: 2006-11-01 18:49+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,6 @@ msgid "Alter Co&lor..."
 msgstr "&Endre farge..."
 
 #: src/frontends/qt4/ui/BulletsUi.ui:37
-#, fuzzy
 msgid "&Font:"
 msgstr "&Font:"
 
@@ -178,19 +177,16 @@ msgid "Huger"
 msgstr "Gigantisk"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:147
-#, fuzzy
 msgid "Custom Bullet:"
-msgstr "Kunde"
+msgstr "Egendefinert bombe:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:177
-#, fuzzy
 msgid "&Level:"
-msgstr "&Merke:"
+msgstr "&Nivå:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
-#, fuzzy
 msgid "Form"
-msgstr "Normal"
+msgstr ""
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -209,7 +205,6 @@ msgid "&Ignore LaTeX rules"
 msgstr "Ignorer LaTeX regler"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:61
-#, fuzzy
 msgid "Here de&finitely"
 msgstr "Her, uansett"
 
@@ -251,14 +246,12 @@ msgid "Use &Old Style Figures"
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:73
-#, fuzzy
 msgid "Sizes"
-msgstr "Størrelse:"
+msgstr "Størrelser"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
-#, fuzzy
 msgid "&Base Size:"
-msgstr "&Størrelse:"
+msgstr "&Basis størrelse:"
 
 #: src/frontends/qt4/ui/FontUi.ui:107
 #, fuzzy
@@ -271,13 +264,12 @@ msgid "S&cale Sans Serif %:"
 msgstr "Sans Serif:"
 
 #: src/frontends/qt4/ui/FontUi.ui:150
-#, fuzzy
 msgid "Families"
-msgstr "Uten ramme"
+msgstr "Familier"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
 msgid "&Default Family:"
-msgstr ""
+msgstr "Standard familie:"
 
 #: src/frontends/qt4/ui/FontUi.ui:220
 msgid "&Typewriter:"
@@ -319,9 +311,8 @@ msgid "&Use language's default encoding"
 msgstr "Bruk \"input-encod&ing\""
 
 #: src/frontends/qt4/ui/LanguageUi.ui:131
-#, fuzzy
 msgid "&Encoding:"
-msgstr "&Avstand:"
+msgstr "&Enkoding:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:141
 msgid "&Quote Style:"
@@ -333,9 +324,8 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Tilbake til standardinnstillinger for dokumentklassen"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
-#, fuzzy
 msgid "&Default Margins"
-msgstr "Stan&dardspråk:"
+msgstr "Standard marger"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
 msgid "&Top:"
@@ -366,7 +356,7 @@ msgstr "&Høyde:"
 #: src/frontends/qt4/ui/MarginsUi.ui:167
 #, fuzzy
 msgid "&Foot skip:"
-msgstr "Fontstørrelse"
+msgstr ""
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
 msgid "&Use AMS math package automatically"
@@ -439,9 +429,8 @@ msgid "Version"
 msgstr "Versjon"
 
 #: src/frontends/qt4/ui/QAboutUi.ui:50
-#, fuzzy
 msgid "Version goes here"
-msgstr "Versjonskontroll"
+msgstr ""
 
 #: src/frontends/qt4/ui/QAboutUi.ui:64
 msgid "Credits"
@@ -472,9 +461,8 @@ msgid "&Close"
 msgstr "&Lukk"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:16
-#, fuzzy
 msgid "LyX: Enter text"
-msgstr "LyX: Sett inn matrise"
+msgstr "LyX: Skriv inn tekst"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:47
 msgid "&Dummy"
@@ -561,7 +549,6 @@ msgid "This bibliography section contains..."
 msgstr "Denne bibliografiseksjonen inneholder..."
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:55
-#, fuzzy
 msgid "&Content:"
 msgstr "Innh&old"
 
@@ -643,14 +630,12 @@ msgid "Supported box types"
 msgstr "Tilgjengelige bokstyper"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:66
-#, fuzzy
 msgid "Inner Bo&x:"
 msgstr "&Indre boks:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:79
-#, fuzzy
 msgid "&Decoration:"
-msgstr "Dediserting:"
+msgstr ""
 
 #: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
 msgid "Height value"
@@ -695,9 +680,8 @@ msgid "Stretch"
 msgstr "Strekk"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:190
-#, fuzzy
 msgid "Horizontal"
-msgstr "&Horisontal:"
+msgstr "Horisontal"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
@@ -722,23 +706,20 @@ msgid "Bottom"
 msgstr "Nederst"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:222
-#, fuzzy
 msgid "&Box:"
-msgstr "Boks"
+msgstr "&Boks:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:232
-#, fuzzy
 msgid "Co&ntent:"
-msgstr "Innh&old"
+msgstr "Innh&old:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
 msgid "Vertical alignment of the content inside the box"
 msgstr "Vertikal justering av innholdet i boksen"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:272
-#, fuzzy
 msgid "Vertical"
-msgstr "&Vertikal:"
+msgstr "Vertikal"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
@@ -839,9 +820,8 @@ msgid "&Color:"
 msgstr "Farge:"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:200
-#, fuzzy
 msgid "Never Toggled"
-msgstr "Bytt"
+msgstr ""
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:212
 #: src/frontends/qt4/ui/QCharacterUi.ui:233
@@ -854,9 +834,8 @@ msgid "Other font settings"
 msgstr "Andre font innstillinger"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:246
-#, fuzzy
 msgid "Always Toggled"
-msgstr "Bytt"
+msgstr ""
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:258
 msgid "&Misc:"
@@ -867,9 +846,8 @@ msgid "toggle font on all of the above"
 msgstr ""
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:293
-#, fuzzy
 msgid "&Toggle all"
-msgstr "Bytt"
+msgstr ""
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:300
 msgid "Apply each change automatically"
@@ -903,18 +881,16 @@ msgid "Move the selected citation up"
 msgstr "Flytt den valgte litteraturreferansen opp"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
-#, fuzzy
 msgid "&Up"
-msgstr "&Oppdater"
+msgstr "&Opp"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
 msgid "Move the selected citation down"
 msgstr "Flytt den valgte litteraturreferansen ned"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
-#, fuzzy
 msgid "&Down"
-msgstr "By"
+msgstr "&Ned"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:149
 msgid "D&elete"
@@ -926,9 +902,8 @@ msgid "&Find:"
 msgstr "&Finn:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:191
-#, fuzzy
 msgid "Formatting"
-msgstr "Formater"
+msgstr "Formatering"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:211
 msgid "Natbib citation style to use"
@@ -983,9 +958,8 @@ msgid "&Keep matched"
 msgstr "Samme sort"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:104
-#, fuzzy
 msgid "&Size:"
-msgstr "Størrelse:"
+msgstr "&Størrelse:"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:138
 msgid "Insert the delimiters"
@@ -1012,9 +986,8 @@ msgid "Save as Document Defaults"
 msgstr "Lagre som dokumentstandard"
 
 #: src/frontends/qt4/ui/QERTUi.ui:31
-#, fuzzy
 msgid "Display"
-msgstr "Visning:"
+msgstr ""
 
 #: src/frontends/qt4/ui/QERTUi.ui:43
 #, fuzzy
@@ -1031,9 +1004,8 @@ msgid "Show ERT button only"
 msgstr ""
 
 #: src/frontends/qt4/ui/QERTUi.ui:56
-#, fuzzy
 msgid "&Collapsed"
-msgstr "&Lukk"
+msgstr "&Kollapset"
 
 #: src/frontends/qt4/ui/QERTUi.ui:63
 #, fuzzy
@@ -1569,9 +1541,8 @@ msgid "Export to LaTeX/Docbook but don't print"
 msgstr "Eksporteres til LaTeX/Docbook, men skrives ikke ut"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:76
-#, fuzzy
 msgid "&Comment"
-msgstr "Kommentar"
+msgstr "&Kommentar"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:83
 msgid "Print as grey text"
@@ -1597,9 +1568,8 @@ msgid "Box with shaded background"
 msgstr "notis bakgrunn"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:106
-#, fuzzy
 msgid "&Shaded"
-msgstr "Lagre"
+msgstr "&Skyggelagt"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
 #: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2426
@@ -1692,9 +1662,8 @@ msgid "&Modify"
 msgstr "Modifiser"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:105
-#, fuzzy
 msgid "&From:"
-msgstr "F&ra:"
+msgstr "&Fra:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:130
 msgid "E&xtra flag:"
@@ -1819,9 +1788,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
-#, fuzzy
 msgid "&Document format"
-msgstr "Feil med dokumentformatet"
+msgstr "&Dokumentformat"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:175
 msgid "&File formats"
@@ -2251,7 +2219,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QPrefUi.ui:164
 #, fuzzy
 msgid "Restore cursor positions"
-msgstr "rad nr"
+msgstr ""
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 #, fuzzy
@@ -2530,7 +2498,6 @@ msgid "&Table Settings"
 msgstr "&Tabellinnstillinger"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:53
-#, fuzzy
 msgid "Column Width"
 msgstr "Kolonnebredde"
 
@@ -4177,23 +4144,20 @@ msgid "Corollary.  "
 msgstr "Korollar."
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
-msgstr "&Kolonner:"
+msgstr "Kolonne"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:560
-#, fuzzy
 msgid "Columns"
-msgstr "&Kolonner:"
+msgstr "Kolonner"
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
-msgstr "&Kolonner:"
+msgstr "kolonner "
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
@@ -4217,29 +4181,24 @@ msgid "Definition.  "
 msgstr "Definisjon."
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
-msgstr "Definisjon"
+msgstr "Definisjoner"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Definisjon."
+msgstr "Definisjoner.  "
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
-msgstr "Eksempel."
+msgstr "Eksempel.  "
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Eksempel"
+msgstr "Eksempler"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Eksempel."
+msgstr "Eksempler.  "
 
 #: lib/layouts/beamer.layout:702
 #, fuzzy
@@ -4251,9 +4210,8 @@ msgid "block showing an example "
 msgstr ""
 
 #: lib/layouts/beamer.layout:734
-#, fuzzy
 msgid "Fact.  "
-msgstr "Faktum."
+msgstr "Faktum.  "
 
 #: lib/layouts/beamer.layout:737
 #, fuzzy
@@ -4276,14 +4234,12 @@ msgid "NoteItem"
 msgstr "Notis"
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
-msgstr "notis"
+msgstr "notis:  "
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "På"
+msgstr "Bare"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
@@ -4307,9 +4263,8 @@ msgid "overlayarea "
 msgstr ""
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
-msgstr "Del"
+msgstr "Del "
 
 #: lib/layouts/beamer.layout:949
 #, fuzzy
@@ -8084,9 +8039,8 @@ msgid "Customized...|C"
 msgstr "Egendefinert...|E"
 
 #: lib/ui/stdmenus.ui:143
-#, fuzzy
 msgid "Capitalize|a"
-msgstr "Katalansk"
+msgstr ""
 
 #: lib/ui/stdmenus.ui:144
 #, fuzzy
@@ -8298,14 +8252,12 @@ msgid "Settings...|S"
 msgstr "Innstillinger...|I"
 
 #: lib/ui/stdmenus.ui:406
-#, fuzzy
 msgid "Accept Change|A"
-msgstr "Godta alle endringer|G"
+msgstr "Godta endring|G"
 
 #: lib/ui/stdmenus.ui:407
-#, fuzzy
 msgid "Reject Change|R"
-msgstr "Forkast alle endringer|k"
+msgstr "Forkast endring|k"
 
 #: lib/ui/stdmenus.ui:408
 #, fuzzy
@@ -8313,7 +8265,6 @@ msgid "Accept All Changes|c"
 msgstr "Godta alle endringer|G"
 
 #: lib/ui/stdmenus.ui:409
-#, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Forkast alle endringer|k"
 
