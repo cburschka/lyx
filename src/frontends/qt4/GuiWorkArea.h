@@ -23,6 +23,7 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QPixmap>
 
 #include <queue>
 
@@ -167,18 +168,10 @@ private:
 	///
 	double_click dc_event_;
 
-	///
-	bool show_hcursor_;
-	///
-	bool show_vcursor_;
-	///
-	bool lshape_cursor_;
-	///
-	QColor cursor_color_;
-	///
-	CursorShape cursor_shape_;
 	///	
 	CursorWidget * cursor_;
+	///
+	QPixmap screen_;
 };
 
 } // namespace frontend

@@ -39,7 +39,6 @@
 #include <QMimeData>
 #include <QUrl>
 #include <QDragEnterEvent>
-#include <QPixmap>
 #include <QPainter>
 #include <QScrollBar>
 
@@ -50,8 +49,10 @@
 // On windows-XP the UserGuide PageDown scroll test is faster without event pruning (16 s)
 // than with it (23 s).
 #ifdef Q_WS_WIN
+int const CursorWidth = 2;
  #define USE_EVENT_PRUNING 0
 #else
+int const CursorWidth = 1;
  #define USE_EVENT_PRUNING 0
 #endif
 
@@ -120,7 +121,7 @@ public:
 	CursorWidget(QWidget * parent)
 		: QWidget(parent)
 	{
-		resize(2, 20);
+		resize(CursorWidth, 20);
 	}
 
 	void paintEvent(QPaintEvent *)
@@ -165,10 +166,16 @@ public:
 		}
 */
 	}
-	/// shown?
-	bool on_;
 	///
 	CursorShape shape_;
+	///
+	bool show_hcursor_;
+	///
+	bool show_vcursor_;
+	///
+	bool lshape_cursor_;
+	///
+	QColor cursor_color_;
 };
 
 
@@ -496,6 +503,7 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
 	cursor_->hide();
+	screen_ = QPixmap(ev->size().width(), ev->size().height());
 	verticalScrollBar()->setPageStep(viewport()->height());
 	QAbstractScrollArea::resizeEvent(ev);
 	resizeBufferView();
@@ -554,64 +562,45 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
-	/*
-	lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
-		<< "\n QWidget width\t" << this->width()
-		<< "\n QWidget height\t" << this->height()
-		<< "\n viewport width\t" << viewport()->width()
-		<< "\n viewport height\t" << viewport()->height()
-		<< "\n QPaintEvent x\t" << e->rect().x()
-		<< "\n QPaintEvent y\t" << e->rect().y()
-		<< "\n QPaintEvent w\t" << e->rect().width()
-		<< "\n QPaintEvent h\t" << e->rect().height()
-		<< endl;
-	*/
-
 	QRect const rc = ev->rect(); 
-	//lyxerr << "paintEvent begin: x: " << rc.x()
-	//	<< " y: " << rc.y()
-	//	<< " w: " << rc.width()
-	//	<< " h: " << rc.height() << endl;
+	lyxerr[Debug::PAINTING] << "paintEvent begin: x: " << rc.x()
+		<< " y: " << rc.y()
+		<< " w: " << rc.width()
+		<< " h: " << rc.height() << endl;
 
-	if (!buffer_view_) {
-		lyxerr << "no bufferview" << endl;
-		return;
-	}
-
-	QLPainter pain(viewport());
-
-	if (rc.width() == 3) { // FIXME HACK
-		// Assume splash screen drawing is requested when
-		// width == 3
-		lyxerr << "splash screen requested" << endl;
-		doGreyOut(pain);
-		return;
-	}
-
-	if (!buffer_view_->buffer()) {
-		lyxerr << "no buffer: " << endl;
-		doGreyOut(pain);
-		updateScrollbar();
-		return;
-	}
-
-	//lyxerr << "real drawing" << endl;
-	paintText(*buffer_view_, pain);
+	QPainter pain(viewport());
+	pain.drawPixmap(rc, screen_, rc);
 }
 
 
 
 void GuiWorkArea::expose(int x, int y, int w, int h)
 {
+	QLPainter pain(&screen_);
+
+	if (w == 3) { // FIXME HACK
+		// Assume splash screen drawing is requested when
+		// width == 3
+		lyxerr << "splash screen requested" << endl;
+		doGreyOut(pain);
+	}
+	else if (!buffer_view_->buffer()) {
+		lyxerr << "no buffer: " << endl;
+		doGreyOut(pain);
+		updateScrollbar();
+	}
+	else {
+		paintText(*buffer_view_, pain);
+	}
+
 	update(x, y, w, h);
 }
 
 
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
-	cursor_->setGeometry(x, y, 2, h);
+	cursor_->setGeometry(x, y, CursorWidth, h);
 	cursor_->shape_ = shape;
-	cursor_->on_ = true;
 	cursor_->show();
 }
 
