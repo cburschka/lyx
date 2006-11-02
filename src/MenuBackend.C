@@ -54,6 +54,7 @@ using support::compare_ascii_no_case;
 using support::contains;
 using support::makeDisplayPath;
 using support::token;
+using support::uppercase;
 
 using boost::bind;
 
@@ -767,7 +768,7 @@ void expandToolbars(Menu & tomenu, Buffer const * buf)
 
 	int i = 1;
 	for (; cit != end; ++cit, ++i) {
-		docstring label = convert<docstring>(i) + ". " + _(cit->name);
+		docstring label = char_type(uppercase(cit->name[0])) + _(cit->name.substr(1));
 		// frontends are not supposed to turn on/off toolbars, if they can not
 		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
 		// should reflect the true state of toolbars.
@@ -779,7 +780,6 @@ void expandToolbars(Menu & tomenu, Buffer const * buf)
 		// in the case of auto.
 		if (cit->flags & ToolbarBackend::AUTO)
 			label += _(" (auto)");
-		label += char_type('|') + convert<docstring>(i);
 		tomenu.add(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_TOOLBAR_TOGGLE_STATE, _(cit->name))));
 	}

@@ -152,21 +152,23 @@ void Toolbars::toggleToolbarState(string const & name)
 	for (; cit != end; ++cit) {
 		if (cit->name == name) {
 			int flags = cit->flags;
-			if (flags & ToolbarBackend::ON) {
-				TurnOffFlag(ON);
-				TurnOnFlag(OFF);
+			// off -> on
+			if (flags & ToolbarBackend::OFF) {
+				TurnOffFlag(OFF);
+				TurnOnFlag(ON);
+			// auto -> off
 			} else if (flags & ToolbarBackend::AUTO) {
 				TurnOffFlag(AUTO);
-				TurnOnFlag(ON);
+				TurnOnFlag(OFF);
 			} else if ((flags & ToolbarBackend::MATH) || (flags & ToolbarBackend::TABLE)
 				|| (flags & ToolbarBackend::REVIEW)) {
-				// for math etc, toggle from off -> auto
-				TurnOffFlag(OFF);
+				// for math etc, toggle from on -> auto
+				TurnOffFlag(ON);
 				TurnOnFlag(AUTO);
 			} else {
-				// for others, toggle from off -> on
-				TurnOffFlag(OFF);
-				TurnOnFlag(ON);
+				// for others, toggle from on -> off
+				TurnOffFlag(ON);
+				TurnOnFlag(OFF);
 			}
 			cit->flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
 			return;

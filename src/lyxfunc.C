@@ -352,15 +352,19 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		flag.message(from_utf8(N_("Exiting")));
 		flag.enabled(true);
 		return flag;
-	}  else if (cmd.action == LFUN_BOOKMARK_GOTO) {
+	} else if (cmd.action == LFUN_BOOKMARK_GOTO) {
 		// bookmarks can be valid even if there is no opened buffer
 		flag.enabled(LyX::ref().session().bookmarks().isValid(convert<unsigned int>(to_utf8(cmd.argument()))));
 		return flag;
 	} else if (cmd.action == LFUN_BOOKMARK_CLEAR) {
 		flag.enabled(LyX::ref().session().bookmarks().size() > 0);
 		return flag;
+	} else if (cmd.action == LFUN_TOOLBAR_TOGGLE_STATE) {
+		ToolbarBackend::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
+		if (!(flags & ToolbarBackend::AUTO))
+			flag.setOnOff(flags & ToolbarBackend::ON);
+		return flag;
 	}
-
 
 	LCursor & cur = view()->cursor();
 
@@ -573,12 +577,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
-	case LFUN_TOOLBAR_TOGGLE_STATE: {
-		ToolbarBackend::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
-		if (!(flags & ToolbarBackend::AUTO))
-			flag.setOnOff(flags & ToolbarBackend::ON);
-		break;
-	}
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
