@@ -185,6 +185,7 @@ void GuiView::saveGeometry()
 		session.sessionInfo().save("WindowPosX", convert<string>(geometry.x()));
 		session.sessionInfo().save("WindowPosY", convert<string>(geometry.y()));
 	}
+	getToolbars().saveToolbarInfo();
 }
 						  
 void GuiView::setGeometry(unsigned int width,

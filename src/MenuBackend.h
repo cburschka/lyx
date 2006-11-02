@@ -72,6 +72,8 @@ public:
 		/** This is the list of selections that can
 		    be pasted. */
 		PasteRecent,
+		/** toolbars */
+		Toolbars,
 		/** Available branches in document */
 		Branches
 	};

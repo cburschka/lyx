@@ -214,6 +214,32 @@ void QLToolbar::show(bool)
 }
 
 
+void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & info)
+{
+	// if info.state == auto *do not* set on/off
+	if (info.state != ToolbarSection::ToolbarInfo::AUTO) {
+		if (QLToolbar::isVisible())
+			info.state = ToolbarSection::ToolbarInfo::ON;
+		else
+			info.state = ToolbarSection::ToolbarInfo::OFF;
+	}
+	//	
+	// no need to save it here.
+	Qt::ToolBarArea loc = owner_.toolBarArea(this);
+
+	if (loc == Qt::TopToolBarArea)
+		info.location = ToolbarSection::ToolbarInfo::TOP;
+	else if (loc == Qt::BottomToolBarArea)
+		info.location = ToolbarSection::ToolbarInfo::BOTTOM;
+	else if (loc == Qt::RightToolBarArea)
+		info.location = ToolbarSection::ToolbarInfo::RIGHT;
+	else if (loc == Qt::LeftToolBarArea)
+		info.location = ToolbarSection::ToolbarInfo::LEFT;
+	else
+		info.location = ToolbarSection::ToolbarInfo::NOTSET;
+}
+
+
 void QLToolbar::update()
 {
 	// This is a speed bottleneck because this is called on every keypress

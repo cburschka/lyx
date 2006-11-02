@@ -48,6 +48,7 @@ string const sec_lastfilepos = "[cursor positions]";
 string const sec_lastopened = "[last opened files]";
 string const sec_bookmarks = "[bookmarks]";
 string const sec_session = "[session info]";
+string const sec_toolbars = "[toolbars]";
 
 } // anon namespace
 
@@ -267,6 +268,51 @@ BookmarksSection::Bookmark const & BookmarksSection::bookmark(unsigned int i) co
 }
 
 
+void ToolbarSection::read(istream & is)
+{
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+
+		// Read session info, saved as key/value pairs
+		// would better yell if pos returns npos
+		string::size_type pos = tmp.find_first_of(" = ");
+		// silently ignore lines without " = "
+		if (pos != string::npos) {
+			string key = tmp.substr(0, pos);
+			int state;
+			int location;
+			istringstream value(tmp.substr(pos + 3));
+			value >> state;
+			value.ignore(1); // ignore " "
+			value >> location;
+			toolbars[key] = ToolbarInfo(state, location);
+		}
+	} while (is.good());
+}
+
+
+void ToolbarSection::write(ostream & os) const
+{
+	os << '\n' << sec_toolbars << '\n';
+	for (ToolbarMap::const_iterator tb = toolbars.begin();
+		tb != toolbars.end(); ++tb) {
+		os << tb->first << " = "
+		  << static_cast<int>(tb->second.state) << " "
+		  << static_cast<int>(tb->second.location) << '\n';
+	}
+}
+
+
+ToolbarSection::ToolbarInfo & ToolbarSection::load(string const & name)
+{
+	return toolbars[name];
+}
+
+
 void SessionInfoSection::read(istream & is)
 {
 	string tmp;
@@ -349,6 +395,8 @@ void Session::readFile()
 			lastFilePos().read(is);
 		else if (tmp == sec_bookmarks)
 			bookmarks().read(is);
+		else if (tmp == sec_toolbars)
+			toolbars().read(is);
 		else if (tmp == sec_session)
 			sessionInfo().read(is);
 		else
@@ -368,6 +416,7 @@ void Session::writeFile() const
 		lastOpened().write(os);
 		lastFilePos().write(os);
 		bookmarks().write(os);
+		toolbars().write(os);
 		sessionInfo().write(os);
 	} else
 		lyxerr << "LyX: Warning: unable to save Session: "

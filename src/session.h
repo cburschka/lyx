@@ -238,6 +238,65 @@ private:
 };
 
 
+class ToolbarSection : SessionSection
+{
+public:
+	/// information about a toolbar, not all information can be
+	/// saved/restored by all frontends, but this class provides
+	/// a superset of things that can be managed by session.
+	class ToolbarInfo
+	{
+	public:
+		///
+		ToolbarInfo() :
+			state(ON), location(NOTSET) { }
+		///
+		ToolbarInfo(int s, int loc) :
+			state(static_cast<State>(s)), location(static_cast<Location>(loc)) { }
+
+	public:
+		enum State {
+			ON,
+			OFF,
+			AUTO
+		};
+
+		/// on/off/auto
+		State state;
+
+		/// location: this can be intepreted differently.
+		enum Location {
+			TOP,
+			BOTTOM,
+			LEFT,
+			RIGHT,
+			NOTSET
+		};
+
+		Location location;
+
+		/// potentially, icons
+	};
+
+	/// info for each toolbar
+	typedef std::map<std::string, ToolbarInfo> ToolbarMap;
+
+public:
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	/// return reference to toolbar info, create a new one if needed
+	ToolbarInfo & load(std::string const & name);
+
+private:
+	/// toolbar information
+	ToolbarMap toolbars;
+};
+
+
 class SessionInfoSection : SessionSection
 {
 public:
@@ -307,6 +366,12 @@ public:
 	BookmarksSection const & bookmarks() const { return bookmarks_; }
 
 	///
+	ToolbarSection & toolbars() { return toolbars_; }
+
+	///
+	ToolbarSection const & toolbars() const { return toolbars_; }
+
+	///
 	SessionInfoSection & sessionInfo() { return session_info; }
 
 	///
@@ -334,6 +399,9 @@ private:
 
 	///
 	BookmarksSection bookmarks_;
+
+	///
+	ToolbarSection toolbars_;
 
 	///
 	SessionInfoSection session_info;

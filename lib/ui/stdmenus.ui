@@ -265,6 +265,8 @@ Menuset
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
+		Submenu "Toolbars|b" "toolbars"
+		Separator
 	    Documents
 	End
 
@@ -272,6 +274,9 @@ Menuset
 		UpdateFormats
 	End
 
+	Menu "toolbars"
+		Toolbars
+	End
 #
 # INSERT MENU
 #

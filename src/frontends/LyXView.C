@@ -305,6 +305,20 @@ void LyXView::updateToolbars()
 }
 
 
+void LyXView::toggleToolbarState(string const & name)
+{
+	// it is possible to get current toolbar status like this,...
+	// but I decide to obey the order of ToolbarBackend::flags
+	// and disregard real toolbar status.
+	// toolbars_->saveToolbarInfo();
+	//
+	// toggle state on/off/auto
+	toolbars_->toggleToolbarState(name);
+	// update toolbar
+	updateToolbars();
+}
+
+
 void LyXView::updateMenubar()
 {
 	menubar_->update();

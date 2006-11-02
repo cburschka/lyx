@@ -36,6 +36,7 @@
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "toc.h"
+#include "ToolbarBackend.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -231,6 +232,7 @@ Menu & Menu::read(LyXLex & lex)
 		md_floatlistinsert,
 		md_floatinsert,
 		md_pasterecent,
+		md_toolbars,
 		md_last
 	};
 
@@ -253,6 +255,7 @@ Menu & Menu::read(LyXLex & lex)
 		{ "submenu", md_submenu },
 		{ "toc", md_toc },
 		{ "updateformats", md_updateformats },
+		{ "toolbars", md_toolbars },
 		{ "viewformats", md_viewformats }
 	};
 
@@ -329,6 +332,10 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_pasterecent:
 			add(MenuItem(MenuItem::PasteRecent));
+			break;
+
+		case md_toolbars:
+			add(MenuItem(MenuItem::Toolbars));
 			break;
 
 		case md_branches:
@@ -751,6 +758,35 @@ void expandPasteRecent(Menu & tomenu, Buffer const * buf)
 }
 
 
+void expandToolbars(Menu & tomenu, Buffer const * buf)
+{
+	//
+	// extracts the toolbars from the backend
+	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+
+	int i = 1;
+	for (; cit != end; ++cit, ++i) {
+		docstring label = convert<docstring>(i) + ". " + _(cit->name);
+		// frontend does not update ToolbarBackend::flags when it changes toolbar
+		// Therefore, I can not tell from the flags if the toolbar is on or off
+		// it is then less confusing to say:
+		// this is: always on/off/auto
+		// frontend toolbar change is temporary.
+		// 
+		if (cit->flags & ToolbarBackend::ON)
+			label += _(" (always on)");
+		else if (cit->flags & ToolbarBackend::OFF)
+			label += _(" (always off)");
+		else if (cit->flags & ToolbarBackend::AUTO)
+			label += _(" (auto)");
+		label += char_type('|') + convert<docstring>(i);
+		tomenu.add(MenuItem(MenuItem::Command, label,
+				    FuncRequest(LFUN_TOOLBAR_TOGGLE_STATE, _(cit->name))));
+	}
+}
+
+
 void expandBranches(Menu & tomenu, Buffer const * buf)
 {
 	if (!buf)
@@ -817,6 +853,10 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 		case MenuItem::PasteRecent:
 			expandPasteRecent(tomenu, buf);
+			break;
+
+		case MenuItem::Toolbars:
+			expandToolbars(tomenu, buf);
 			break;
 
 		case MenuItem::Branches:

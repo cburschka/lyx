@@ -366,6 +366,7 @@ void LyXAction::init()
 		{ LFUN_WINDOW_NEW, "window-new", NoBuffer },
 		{ LFUN_WINDOW_CLOSE, "window-close", NoBuffer },
 		{ LFUN_UNICODE_INSERT, "unicode-insert", Noop },
+		{ LFUN_TOOLBAR_TOGGLE_STATE, "", Noop },
 		
 		{ LFUN_NOACTION, "", Noop }
 	};

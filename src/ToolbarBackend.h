@@ -53,7 +53,8 @@ public:
 		BOTTOM = 32, //< show at bottom
 		LEFT = 64, //< show at left
 		RIGHT = 128, //< show at right
-		REVIEW = 256 //< shown when change tracking is enabled
+		REVIEW = 256, //< shown when change tracking is enabled
+		AUTO = 512  //< only if AUTO is set, will MATH, TABLE and REIVEW is used
 	};
 
 	/// a toolbar
@@ -78,6 +79,10 @@ public:
 	Toolbars::const_iterator begin() const { return usedtoolbars.begin(); }
 
 	Toolbars::const_iterator end() const { return usedtoolbars.end(); }
+
+	Toolbars::iterator begin() { return usedtoolbars.begin(); }
+
+	Toolbars::iterator end() { return usedtoolbars.end(); }
 
 	/// read a toolbar from the file
 	void read(LyXLex &);

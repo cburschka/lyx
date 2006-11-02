@@ -635,6 +635,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_PREVIOUS:
 	case LFUN_WINDOW_NEW:
 	case LFUN_WINDOW_CLOSE:
+	case LFUN_TOOLBAR_TOGGLE_STATE:
 		// these are handled in our dispatch()
 		break;
 
@@ -1688,6 +1689,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BOOKMARK_CLEAR:
 			LyX::ref().session().bookmarks().clear();
+			break;
+
+		case LFUN_TOOLBAR_TOGGLE_STATE:
+			lyx_view_->toggleToolbarState(argument);
 			break;
 
 		default: {

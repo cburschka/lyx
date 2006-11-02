@@ -21,6 +21,7 @@
 
 #include <QToolBar>
 #include <vector>
+#include "session.h"
 
 class QComboBox;
 
@@ -67,6 +68,7 @@ public:
 	void add(FuncRequest const & func, lyx::docstring const & tooltip);
 	void hide(bool);
 	void show(bool);
+	void saveInfo(ToolbarSection::ToolbarInfo & info);
 	void update();
 	LayoutBox * layout() const { return layout_.get(); }
 

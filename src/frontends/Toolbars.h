@@ -26,6 +26,7 @@
 #include "ToolbarBackend.h"
 #include <boost/shared_ptr.hpp>
 #include <map>
+#include "session.h"
 
 
 namespace lyx {
@@ -64,6 +65,10 @@ public:
 	 *  metrics should be updated.
 	 */
 	virtual void show(bool update_metrics) = 0;
+	/** update toolbar information
+	* ToolbarInfo will then be saved by session
+	*/
+	virtual void saveInfo(ToolbarSection::ToolbarInfo & info) = 0;
 
 	/// Refresh the contents of the bar.
 	virtual void update() = 0;
@@ -83,8 +88,14 @@ public:
 	/// Show/hide the named toolbar.
 	void display(std::string const & name, bool show);
 
+	/// toggle the state of toolbars (on/off/auto)
+	void toggleToolbarState(std::string const & name);
+
 	/// Update the state of the toolbars.
 	void update(bool in_math, bool in_table, bool review);
+
+	/// save toolbar information
+	void saveToolbarInfo();
 
 	/// Select the right layout in the combox.
 	void setLayout(std::string const & layout);
@@ -128,6 +139,9 @@ private:
 
 	/// The last textclass layout list in the layout choice selector
 	int last_textclass_;
+
+	// load flags with saved values
+	void initFlags(ToolbarBackend::Toolbar & tbb);
 };
 
 /// Set the layout in the kernel when an entry has been selected
