@@ -52,19 +52,19 @@ ${DICT} gl-0.50-0 "Galego" gl 2973
 ${DICT} el-0.50-3 "Greek" el 3206
 ${DICT} he-1.0-0 "Hebrew" he 2026
 ${DICT} hr-0.51-0 "Hrvatski" hr 1967
-${DICT} is-0.51.1-0 "Icelandic" is 1537
+${DICT} is-0.51.1-0 "Íslenska" is 1537
 ${DICT} it-2.2_20050523-0 "Italiano" it 696
 ${DICT} hu-0.99.4.2-0 "Magyar" hu 1608
 ${DICT} nl-0.50-2 "Nederlands" nl 1526
 ${DICT} nn-0.50.1-1 "Nynorsk" nn 1942
 ${DICT} pl-0.51-0 "Polski" pl 13685
 ${DICT} pt-0.50-2 "Português" pt 2291
-${DICT} ro-0.50-2 "Romana" ro 342
+${DICT} ro-0.50-2 "Româna" ro 342
 ${DICT} ru-0.99f7-1 "Russian" ru 1460
 ${DICT} gd-0.1.1-1 "Scottish" gd 195
 ${DICT} sr-0.02 "Serbian" sr 3684
-${DICT} sk-0.52-0 "Slovenský" sk 4602
-${DICT} sl-0.50-0 "Slovenski jezik" sl 5227
+${DICT} sk-0.52-0 "Slovencina" sk 4602
+${DICT} sl-0.50-0 "Slovenšcina" sl 5227
 ${DICT} fi-0.7-0 "Suomi" fi 660
 ${DICT} sv-0.51-0 "Svenska" sv 1029
 ${DICT} tr-0.50-0 "Türkçe" tr 549
