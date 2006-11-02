@@ -65,13 +65,14 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		InsetCommandParams p("label");
+		// FIXME UNICODE
 		InsetCommandMailer::string2params("label", to_utf8(cmd.argument()), p);
 		if (p.getCmdName().empty()) {
 			cur.noUpdate();
 			break;
 		}
 		if (p["name"] != params()["name"])
-        		// FIXME UNICODE
+			// FIXME UNICODE
 			cur.bv().buffer()->changeRefsIfUnique(params()["name"],
 						       p["name"], InsetBase::REF_CODE);
 		setParams(p);
@@ -104,7 +105,6 @@ int InsetLabel::plaintext(Buffer const &, odocstream & os,
 int InsetLabel::docbook(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
-        // FIXME UNICODE
 	os << "<!-- anchor id=\""
            << sgml::cleanID(buf, runparams, getParam("name"))
            << "\" -->";
