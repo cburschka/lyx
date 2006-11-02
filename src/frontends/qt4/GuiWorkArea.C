@@ -100,7 +100,7 @@ static mouse_button::state q_button_state(Qt::MouseButton button)
 
 
 /// return the LyX mouse button state from Qt's
-mouse_button::state q_motion_state(Qt::MouseButton state)
+mouse_button::state q_motion_state(Qt::MouseButtons state)
 {
 	mouse_button::state b = mouse_button::none;
 	if (state & Qt::LeftButton)
@@ -332,7 +332,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
-			      q_motion_state(e->button()));
+			      q_motion_state(e->buttons()));
 
 	// If we're above or below the work area...
 	if (e->y() <= 20 || e->y() >= viewport()->height() - 20) {
