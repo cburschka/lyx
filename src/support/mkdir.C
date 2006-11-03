@@ -19,9 +19,6 @@
 # include <sys/types.h>
 #endif
 #include <fcntl.h>
-
-
-namespace lyx {
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -31,6 +28,9 @@ namespace lyx {
 #ifdef _WIN32
 # include <windows.h>
 #endif
+
+namespace lyx {
+
 
 int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 {
