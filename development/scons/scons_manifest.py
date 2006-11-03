@@ -1408,6 +1408,8 @@ lib_examples_files = Split('''
 
 
 lib_images_files = Split('''
+    all-changes-reject.xpm
+    all-changes-accept.xpm
     amssymb.xpm
     banner.ppm
     bookmark-goto.xpm
@@ -1427,6 +1429,12 @@ lib_images_files = Split('''
     buffer-write-as.xpm
     buffer-write.xpm
     build-program.xpm
+    change-accept.xpm
+    change-next.xpm
+    change-reject.xpm
+    changes-merge.xpm
+    changes-output.xpm
+    changes-track.xpm
     copy.xpm
     cut.xpm
     depth-decrement.xpm
