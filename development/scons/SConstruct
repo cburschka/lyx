@@ -1790,14 +1790,15 @@ if build_tex2lyx:
     tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
     tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
 
-    for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C',
+    for file in ['FloatList.C', 'Floating.C', 'counters.C', 'gettext.h', 'gettext.C', 
+        'lyxlayout.h', 'lyxlayout.C', 'messages.h', 'messages.C',
         'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
         env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
             [Copy('$TARGET', '$SOURCE')])
 
     tex2lyx = tex2lyx_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
-        LIBS = ['support'] + boost_libraries + system_libs,
+        LIBS = ['support'] + boost_libraries + intl_libs + system_libs,
         source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files]
     )
     Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
