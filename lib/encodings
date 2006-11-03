@@ -1,14 +1,13 @@
 # FIXME: Have a look at the encodings known by the inputenc package and add
-# missing ones.
+# missing ones. Caution: File format change!
 # FIXME: Find out whether this file is used for more than LaTeX file.
 # generation. If not it doews not make make sense to have encodings with
 # "unknown" LaTeX name.
 
 # Order of names: LyX name LaTeX name iconv name
 
-# FIXME: Add this (file format change):
-#Encoding utf8 utf8 UTF-8
-#End
+Encoding utf8 utf8 UTF-8
+End
 
 Encoding iso8859-1 latin1 ISO-8859-1
 End
