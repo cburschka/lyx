@@ -495,7 +495,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex >> outputChanges;
 	} else if (token == "\\branch") {
 		lex.next();
-		string branch = lex.getString();
+		docstring branch = lex.getDocString();
 		branchlist().add(branch);
 		while (true) {
 			lex.next();
@@ -517,7 +517,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 				// Update also the LColor table:
 				if (color == "none")
 					color = lcolor.getX11Name(LColor::background);
-				lcolor.setColor(branch, color);
+				// FIXME UNICODE
+				lcolor.setColor(to_utf8(branch), color);
 
 			}
 		}
@@ -639,7 +640,7 @@ void BufferParams::writeFile(ostream & os) const
 	BranchList::const_iterator it = branchlist().begin();
 	BranchList::const_iterator end = branchlist().end();
 	for (; it != end; ++it) {
-		os << "\\branch " << it->getBranch()
+		os << "\\branch " << to_utf8(it->getBranch())
 		   << "\n\\selected " << it->getSelected()
 		   << "\n\\color " << lyx::X11hexname(it->getColor())
 		   << "\n\\end_branch"

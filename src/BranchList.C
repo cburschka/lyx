@@ -29,13 +29,13 @@ Branch::Branch()
 }
 
 
-string const & Branch::getBranch() const
+docstring const & Branch::getBranch() const
 {
 	return branch_;
 }
 
 
-void Branch::setBranch(string const & s)
+void Branch::setBranch(docstring const & s)
 {
 	branch_ = s;
 }
@@ -78,7 +78,7 @@ void Branch::setColor(string const & c)
 }
 
 
-Branch * BranchList::find(std::string const & name)
+Branch * BranchList::find(docstring const & name)
 {
 	List::iterator it =
 		std::find_if(list.begin(), list.end(), BranchNamesEqual(name));
@@ -86,7 +86,7 @@ Branch * BranchList::find(std::string const & name)
 }
 
 
-Branch const * BranchList::find(std::string const & name) const
+Branch const * BranchList::find(docstring const & name) const
 {
 	List::const_iterator it =
 		std::find_if(list.begin(), list.end(), BranchNamesEqual(name));
@@ -94,14 +94,14 @@ Branch const * BranchList::find(std::string const & name) const
 }
 
 
-bool BranchList::add(string const & s)
+bool BranchList::add(docstring const & s)
 {
 	bool added = false;
-	string::size_type i = 0;
+	docstring::size_type i = 0;
 	while (true) {
-		string::size_type const j = s.find_first_of(separator_, i);
-		string name;
-		if (j == string::npos)
+		docstring::size_type const j = s.find_first_of(separator_, i);
+		docstring name;
+		if (j == docstring::npos)
 			name = s.substr(i);
 		else
 			name = s.substr(i, j - i);
@@ -116,7 +116,7 @@ bool BranchList::add(string const & s)
 			br.setSelected(false);
 			list.push_back(br);
 		}
-		if (j == string::npos)
+		if (j == docstring::npos)
 			break;
 		i = j + 1;
 	}
@@ -124,7 +124,7 @@ bool BranchList::add(string const & s)
 }
 
 
-bool BranchList::remove(string const & s)
+bool BranchList::remove(docstring const & s)
 {
 	size_t const size = list.size();
 	list.remove_if(BranchNamesEqual(s));

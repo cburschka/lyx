@@ -97,11 +97,11 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
-	// FIXME UNICODE
-	docstring s = _("Branch: ") + from_utf8(params_.branch);
+	docstring s = _("Branch: ") + params_.branch;
 	font.setColor(LColor::foreground);
 	if (!params_.branch.empty()) {
-		LColor_color c = lcolor.getFromLyXName(params_.branch);
+		// FIXME UNICODE
+		LColor_color c = lcolor.getFromLyXName(to_utf8(params_.branch));
 		if (c == LColor::none) {
 			c = LColor::error;
 			s = _("Undef: ") + s;
@@ -303,7 +303,7 @@ void InsetBranchMailer::string2params(string const & in,
 
 void InsetBranchParams::write(ostream & os) const
 {
-	os << "Branch " << branch << '\n';
+	os << "Branch " << to_utf8(branch) << '\n';
 }
 
 

@@ -126,12 +126,13 @@ void ControlDocument::dispatchParams()
 		BranchList::const_iterator it = branchlist.begin();
 		BranchList::const_iterator const end = branchlist.end();
 		for (; it != end; ++it) {
-			string const & current_branch = it->getBranch();
+			docstring const & current_branch = it->getBranch();
 			Branch const * branch = branchlist.find(current_branch);
 			string const x11hexname =
 					lyx::X11hexname(branch->getColor());
 			// display the new color
-			string const str = current_branch  + ' ' + x11hexname;
+			// FIXME UNICODE
+			string const str = to_utf8(current_branch) + ' ' + x11hexname;
 			kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
 

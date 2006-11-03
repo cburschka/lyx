@@ -23,8 +23,6 @@
 
 #include <QPushButton>
 
-using std::string;
-
 namespace lyx {
 namespace frontend {
 
@@ -50,7 +48,7 @@ void QBranch::update_contents()
 	typedef BranchList::const_iterator const_iterator;
 
 	BranchList const & branchlist = controller().branchlist();
-	string const cur_branch = controller().params().branch;
+	docstring const cur_branch = controller().params().branch;
 
 	dialog_->branchCO->clear();
 
@@ -59,7 +57,7 @@ void QBranch::update_contents()
 	int id = 0;
 	int count = 0;
 	for (const_iterator it = begin; it != end; ++it, ++count) {
-		string const & branch = it->getBranch();
+		docstring const & branch = it->getBranch();
 		dialog_->branchCO->addItem(toqstr(branch));
 
 		if (cur_branch == branch)
@@ -71,7 +69,7 @@ void QBranch::update_contents()
 
 void QBranch::apply()
 {
-	string const type = fromqstr(dialog_->branchCO->currentText());
+	docstring const type = qstring_to_ucs4(dialog_->branchCO->currentText());
 	controller().params().branch = type;
 }
 

@@ -138,6 +138,8 @@ public:
 
 	/// extract string
 	LyXLex & operator>>(std::string &);
+	/// extract docstring
+	LyXLex & operator>>(docstring &);
 	/// extract double
 	LyXLex & operator>>(double &);
 	/// extract integer

@@ -797,7 +797,7 @@ void expandBranches(Menu & tomenu, Buffer const * buf)
 	BranchList::const_iterator end = params.branchlist().end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
-		docstring label = from_utf8(cit->getBranch());
+		docstring label = cit->getBranch();
 		if (ii < 10)
 			label = convert<docstring>(ii) + ". " + label + char_type('|') + convert<docstring>(ii);
 		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,

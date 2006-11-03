@@ -32,7 +32,8 @@
 
 #include "Color.h"
 
-#include <string>
+#include "support/docstring.h"
+
 #include <list>
 
 
@@ -44,9 +45,9 @@ public:
 	///
 	Branch();
 	///
-	std::string const & getBranch() const;
+	docstring const & getBranch() const;
 	///
-	void setBranch(std::string const &);
+	void setBranch(docstring const &);
 	///
 	bool getSelected() const;
 	/** Select/deselect the branch.
@@ -67,7 +68,7 @@ public:
 
 private:
 	///
-	std::string branch_;
+	docstring branch_;
 	///
 	bool selected_;
 	///
@@ -82,7 +83,7 @@ public:
 	typedef List::const_iterator const_iterator;
 
 	///
-	BranchList() : separator_("|") {}
+	BranchList() : separator_(from_ascii("|")) {}
 
 	///
 	bool empty() const { return list.empty(); }
@@ -94,36 +95,36 @@ public:
 
 	/** \returns the Branch with \c name. If not found, returns 0.
 	 */
-	Branch * find(std::string const & name);
-	Branch const * find(std::string const & name) const;
+	Branch * find(docstring const & name);
+	Branch const * find(docstring const & name) const;
 
 	/** Add (possibly multiple (separated by separator())) branches to list
 	 *  \returns true if a branch is added.
 	 */
-	bool add(std::string const &);
+	bool add(docstring const &);
 	/** remove a branch from list by name
 	 *  \returns true if a branch is removed.
 	 */
-	bool remove(std::string const &);
+	bool remove(docstring const &);
 
 private:
 	///
 	List list;
 	///
-	std::string separator_;
+	docstring separator_;
 };
 
 
 class BranchNamesEqual : public std::unary_function<Branch, bool> {
 public:
-	BranchNamesEqual(std::string const & name)
+	BranchNamesEqual(docstring const & name)
 		: name_(name) {}
 	bool operator()(Branch const & branch) const
 	{
 		return branch.getBranch() == name_;
 	}
 private:
-	std::string name_;
+	docstring name_;
 };
 
 

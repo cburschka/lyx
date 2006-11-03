@@ -112,9 +112,9 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	}
 
 	case LFUN_BRANCH_INSERT: {
-		string arg = cmd.getArg(0);
+		docstring arg = cmd.argument();
 		if (arg.empty())
-			arg = "none";
+			arg = from_ascii("none");
 		return new InsetBranch(params, InsetBranchParams(arg));
 	}
 

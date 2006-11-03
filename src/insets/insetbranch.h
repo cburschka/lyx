@@ -22,14 +22,14 @@ class Buffer;
 
 class InsetBranchParams {
 public:
-	explicit InsetBranchParams(std::string const & b = std::string())
+	explicit InsetBranchParams(docstring const & b = docstring())
 		: branch(b) {}
 	///
 	void write(std::ostream & os) const;
 	///
 	void read(LyXLex & lex);
 	///
-	std::string branch;
+	docstring branch;
 };
 
 

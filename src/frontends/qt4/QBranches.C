@@ -29,7 +29,6 @@
 #include <QColor>
 #include <QColorDialog>
 
-using std::string;
 
 namespace lyx {
 namespace frontend {
@@ -95,7 +94,7 @@ void QBranches::on_addBranchPB_pressed()
 {
 	QString const new_branch = newBranchLE->text();
 	if (!new_branch.isEmpty()) {
-		branchlist_.add(fromqstr(new_branch));
+		branchlist_.add(qstring_to_ucs4(new_branch));
 		newBranchLE->clear();
 		update();
 	}
@@ -110,7 +109,7 @@ void QBranches::on_removePB_pressed()
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
 	if (!sel_branch.isEmpty()) {
-		branchlist_.remove(fromqstr(sel_branch));
+		branchlist_.remove(qstring_to_ucs4(sel_branch));
 		newBranchLE->clear();
 		update();
 	}
@@ -137,7 +136,7 @@ void QBranches::toggleBranch(QTreeWidgetItem * item)
 	QString sel_branch = item->text(0);
 	if (!sel_branch.isEmpty()) {
 		bool const selected = item->text(1) == qt_("Yes");
-		Branch * branch = branchlist_.find(fromqstr(sel_branch));
+		Branch * branch = branchlist_.find(qstring_to_ucs4(sel_branch));
 		if (branch && branch->setSelected(!selected)) {
 			newBranchLE->clear();
 			update();
@@ -154,7 +153,7 @@ void QBranches::on_colorPB_clicked()
 	if (selItem != 0)
 		sel_branch = selItem->text(0);
 	if (!sel_branch.isEmpty()) {
-		string current_branch = fromqstr(sel_branch);
+		docstring current_branch = qstring_to_ucs4(sel_branch);
 		Branch * branch =
 			branchlist_.find(current_branch);
 		if (!branch)

@@ -266,6 +266,16 @@ LyXLex & LyXLex::operator>>(std::string & s)
 }
 
 
+LyXLex & LyXLex::operator>>(docstring & s)
+{
+	if (isOK()) {
+		next();
+		s = getDocString();
+	}
+	return *this;
+}
+
+
 LyXLex & LyXLex::operator>>(double & s)
 {
 	if (isOK()) {
