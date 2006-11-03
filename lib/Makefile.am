@@ -149,6 +149,8 @@ dist_examples_DATA = \
 
 imagesdir = $(pkgdatadir)/images
 dist_images_DATA = \
+	images/all-changes-accept.xpm \
+	images/all-changes-reject.xpm \
 	images/amssymb.xpm \
 	images/banner.ppm \
 	images/bookmark-goto.xpm \
@@ -168,6 +170,12 @@ dist_images_DATA = \
 	images/buffer-write-as.xpm \
 	images/buffer-write.xpm \
 	images/build-program.xpm \
+	images/change-accept.xpm \
+	images/change-next.xpm \
+	images/change-reject.xpm \
+	images/changes-merge.xpm \
+	images/changes-output.xpm \
+	images/changes-track.xpm \
 	images/copy.xpm \
 	images/cut.xpm \
 	images/depth-decrement.xpm \
