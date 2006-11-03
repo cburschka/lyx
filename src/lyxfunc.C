@@ -1721,7 +1721,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				needSecondUpdate = view()->fitCursor();
 
 			if (needSecondUpdate || updateFlags != Update::None) {
-				view()->buffer()->changed();
+				view()->buffer()->changed(updateFlags & Update::SinglePar);
 			}
 			lyx_view_->updateStatusBar();
 

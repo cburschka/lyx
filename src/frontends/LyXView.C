@@ -169,7 +169,7 @@ void LyXView::connectBuffer(Buffer & buf)
 
 	bufferChangedConnection_ =
 		buf.changed.connect(
-			boost::bind(&WorkArea::redraw, work_area_));
+			boost::bind(&WorkArea::redraw, work_area_, _1));
 
 	errorsConnection_ =
 		buf.errors.connect(

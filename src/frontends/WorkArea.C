@@ -138,7 +138,7 @@ void WorkArea::checkAndGreyOut()
 }
 
 
-void WorkArea::redraw()
+void WorkArea::redraw(bool singlePar)
 {
 	if (!buffer_view_)
 		return;
@@ -148,7 +148,7 @@ void WorkArea::redraw()
 		return;
 	}
 
-	buffer_view_->updateMetrics(false);
+	buffer_view_->updateMetrics(singlePar);
 
 	updateScrollbar();
 
