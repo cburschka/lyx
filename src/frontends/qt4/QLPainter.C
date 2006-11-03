@@ -35,7 +35,6 @@ namespace frontend {
 QLPainter::QLPainter(QPaintDevice * device)
 	: QPainter(device), Painter()
 {
-	setRenderHint(QPainter::TextAntialiasing);
 	// new QPainter has default QPen:
 	current_color_ = LColor::black;
 	current_ls_ = line_solid;
@@ -238,8 +237,10 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 			setFont(fi.font);
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
-		if (isDrawingEnabled())
+		if (isDrawingEnabled()) {
+			lyxerr << "draw " << std::string(str.toUtf8()) << " at " << x << "," << y << std::endl;
 			drawText(x, y, str);
+		}
 		// Here we use the font width cache instead of
 		//   textwidth = fontMetrics().width(str);
 		// because the above is awfully expensive on MacOSX

@@ -238,10 +238,10 @@ Menu & Menu::read(LyXLex & lex)
 	};
 
 	struct keyword_item menutags[md_last - 1] = {
+		{ "bookmarks", md_bookmarks },
 		{ "branches", md_branches },
 		{ "charstyles", md_charstyles },
 		{ "documents", md_documents },
-		{ "bookmarks", md_bookmarks },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
 		{ "floatinsert", md_floatinsert },
@@ -255,8 +255,8 @@ Menu & Menu::read(LyXLex & lex)
 		{ "separator", md_separator },
 		{ "submenu", md_submenu },
 		{ "toc", md_toc },
-		{ "updateformats", md_updateformats },
 		{ "toolbars", md_toolbars },
+		{ "updateformats", md_updateformats },
 		{ "viewformats", md_viewformats }
 	};
 
