@@ -65,7 +65,7 @@ namespace {
 char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 	"latin3", "latin4", "latin5", "latin9",
 	"koi8-r", "koi8-u", "cp866", "cp1251",
-	"iso88595", "pt154", 0
+	"iso88595", "pt154", "utf8", 0
 };
 
 }
