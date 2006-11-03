@@ -141,6 +141,9 @@ ToolbarBackend::Flags Toolbars::getToolbarState(string const & name)
 
 	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
 		<< name << endl;
+
+	// return dummy for msvc
+	return ToolbarBackend::OFF;
 }
 
 
