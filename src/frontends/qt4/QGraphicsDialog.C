@@ -57,6 +57,8 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT( change_adaptor() ) );
 	connect(clip, SIGNAL( stateChanged(int) ),
 		this, SLOT( change_adaptor() ) );
+	connect(displayGB, SIGNAL( toggled(bool) ),
+		this, SLOT( change_adaptor() ) );
 	connect(showCB, SIGNAL( currentIndexChanged(int) ),
 		this, SLOT( change_adaptor() ) );
 	connect(displayscale, SIGNAL( textChanged(const QString&) ),

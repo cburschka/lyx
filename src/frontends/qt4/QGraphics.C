@@ -219,10 +219,8 @@ void QGraphics::update_contents()
 		case graphics::NoDisplay: item = 0; break;
 	}
 	dialog_->showCB->setCurrentIndex(item);
-	dialog_->showCB->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
-	dialog_->displayGB->setChecked(igp.display != graphics::NoDisplay);
-	dialog_->displayscale->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
+	dialog_->displayGB->setChecked(igp.display != graphics::NoDisplay);
 
 	// the output section (width/height)
 	dialog_->Scale->setText(toqstr(igp.scale));
