@@ -156,6 +156,11 @@ int RowPainter::leftMargin() const
 }
 
 
+// If you want to debug inset metrics uncomment the following line:
+// #define DEBUG_METRICS
+// This draws green lines around each inset.
+
+
 void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 {
 	InsetBase const * inset = par_.getInset(pos);
@@ -168,6 +173,9 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 		font;
 	pi.ltr_pos = (text_.bidi.level(pos) % 2 == 0);
 	pi.erased_ = erased_ || par_.isDeleted(pos);
+#ifdef DEBUG_METRICS
+	int const x1 = int(x_);
+#endif
 	bv_.coordCache().insets().add(inset, int(x_), yo_);
 	InsetText const * const in = inset->asTextInset();
 	// non-wide insets are painted completely. Recursive
@@ -181,6 +189,35 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	inset->draw(pi, int(x_), yo_);
 	refreshInside = tmp;
 	x_ += inset->width();
+#ifdef DEBUG_METRICS
+	Dimension dim;
+	BOOST_ASSERT(text_.maxwidth_ > 0);
+	int const w = text_.maxwidth_ - leftMargin() - text_.rightMargin(*bv_.buffer(), par_);
+	MetricsInfo mi(&bv_, font, w);
+	inset->metrics(mi, dim);
+	if (inset->width() > dim.wid) 
+		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
+		       << " draw width " << inset->width()
+		       << "> metrics width " << dim.wid << "." << std::endl;
+	if (inset->ascent() > dim.asc) 
+		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
+		       << " draw ascent " << inset->ascent()
+		       << "> metrics ascent " << dim.asc << "." << std::endl;
+	if (inset->descent() > dim.des) 
+		lyxerr << "Error: inset " << to_ascii(inset->getInsetName())
+		       << " draw ascent " << inset->descent()
+		       << "> metrics descent " << dim.des << "." << std::endl;
+	BOOST_ASSERT(inset->width() <= dim.wid);
+	BOOST_ASSERT(inset->ascent() <= dim.asc);
+	BOOST_ASSERT(inset->descent() <= dim.des);
+	int const x2 = x1 + dim.wid;
+	int const y1 = yo_ + dim.des;
+	int const y2 = yo_ - dim.asc;
+	pi.pain.line(x1, y1, x1, y2, LColor::green);
+	pi.pain.line(x1, y1, x2, y1, LColor::green);
+	pi.pain.line(x2, y1, x2, y2, LColor::green);
+	pi.pain.line(x1, y2, x2, y2, LColor::green);
+#endif
 }
 
 
