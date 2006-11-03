@@ -56,8 +56,10 @@ public:
 	Encodings();
 	///
 	void read(std::string const & filename);
-	///
-	Encoding const * getEncoding(std::string const & encoding) const;
+	/// Get encoding from LyX name \p name
+	Encoding const * getFromLyXName(std::string const & name) const;
+	/// Get encoding from LaTeX name \p name
+	Encoding const * getFromLaTeXName(std::string const & name) const;
 	///
 	Encoding const * symbol_encoding() { return &symbol_encoding_; }
 

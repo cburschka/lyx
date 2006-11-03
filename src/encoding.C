@@ -224,14 +224,44 @@ char_type Encodings::transformChar(char_type c,
 }
 
 
-Encoding const * Encodings::getEncoding(string const & encoding) const
+Encoding const * Encodings::getFromLyXName(string const & name) const
 {
-	EncodingList::const_iterator it = encodinglist.find(encoding);
+	EncodingList::const_iterator it = encodinglist.find(name);
 	if (it != encodinglist.end())
 		return &it->second;
 	else
 		return 0;
 }
+
+
+namespace {
+
+class LaTeXNamesEqual : public std::unary_function<std::pair<std::string, Encoding>, bool> {
+	public:
+		LaTeXNamesEqual(string const & LaTeXName)
+			: LaTeXName_(LaTeXName) {}
+		bool operator()(std::pair<std::string, Encoding> const & encoding) const
+		{
+			return encoding.second.latexName() == LaTeXName_;
+		}
+	private:
+		string LaTeXName_;
+};
+
+} // namespace anon
+
+
+Encoding const * Encodings::getFromLaTeXName(string const & name) const
+{
+	EncodingList::const_iterator const it =
+		std::find_if(encodinglist.begin(), encodinglist.end(),
+		             LaTeXNamesEqual(name));
+	if (it != encodinglist.end())
+		return &it->second;
+	else
+		return 0;
+}
+
 
 Encodings::Encodings()
 {
