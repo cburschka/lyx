@@ -724,7 +724,7 @@ contributers = [
                  "License",
                  "m=114968828021007",
                  "7 June 2006",
-                 u"Testing, clean ups and profiling"),
+                 u"Qt4 coding, CMake build system, bug fixing, testing, clean ups, and profiling"),
 
      contributer(u"Bernd Kümmerlen",
                  "bkuemmer () gmx ! net",
