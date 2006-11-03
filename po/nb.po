@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-11-01 16:33+0100\n"
-"PO-Revision-Date: 2006-11-01 18:49+0100\n"
+"PO-Revision-Date: 2006-11-03 15:48+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -4176,9 +4176,8 @@ msgid "columns (top aligned) "
 msgstr ""
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
-msgstr "Definisjon."
+msgstr "Definisjon.  "
 
 #: lib/layouts/beamer.layout:679
 msgid "Definitions"
@@ -4267,28 +4266,24 @@ msgid "Part "
 msgstr "Del "
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
-msgstr "Bevis."
+msgstr "Bevis.  "
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
-msgstr "Menyseparator|M"
+msgstr "Separator"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1001
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Grafikk"
+msgstr "Tittelgrafikk"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
-msgstr "Teorem."
+msgstr "Teorem.  "
 
 #: lib/layouts/beamer.layout:1055
 #, fuzzy
@@ -6387,9 +6382,8 @@ msgid "AGU-pages"
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:282
-#, fuzzy
 msgid "AGU-pages:"
-msgstr "Oddetallssider:"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:287
 msgid "Words"
@@ -7966,9 +7960,8 @@ msgid "Move Paragraph Down|v"
 msgstr "Flytt avsnitt ned|v"
 
 #: lib/ui/stdmenus.ui:98
-#, fuzzy
 msgid "Text Style|S"
-msgstr "Tekststil"
+msgstr "Tekststil|s"
 
 #: lib/ui/stdmenus.ui:99
 msgid "Paragraph Settings...|P"
@@ -7979,9 +7972,8 @@ msgid "Table|T"
 msgstr "Tabell|T"
 
 #: lib/ui/stdmenus.ui:104
-#, fuzzy
 msgid "Rows & Columns|C"
-msgstr "Rader og kolonner"
+msgstr "Rader og kolonner|k"
 
 #: lib/ui/stdmenus.ui:106
 msgid "Increase List Depth|I"
@@ -8034,7 +8026,6 @@ msgid "Clipboard as Paragraphs|a"
 msgstr "som avsnitt|a"
 
 #: lib/ui/stdmenus.ui:141
-#, fuzzy
 msgid "Customized...|C"
 msgstr "Egendefinert...|E"
 
@@ -8084,9 +8075,8 @@ msgid "Delete Column"
 msgstr "Slett kolonne"
 
 #: lib/ui/stdmenus.ui:186
-#, fuzzy
 msgid "Text Style|T"
-msgstr "Tekststil"
+msgstr "Tekststil|T"
 
 #: lib/ui/stdmenus.ui:190
 msgid "Split Cell|C"
@@ -8125,18 +8115,16 @@ msgid "Delete Line to Right"
 msgstr "Fjern linje på høyre side"
 
 #: lib/ui/stdmenus.ui:261
-#, fuzzy
 msgid "Open All Insets|O"
-msgstr "Åpnet \"float inset\""
+msgstr "Åpne alle \"insets\"|a"
 
 #: lib/ui/stdmenus.ui:262
 msgid "Close All Insets|C"
 msgstr ""
 
 #: lib/ui/stdmenus.ui:264
-#, fuzzy
 msgid "View source|s"
-msgstr "Synlig mellomrom"
+msgstr "Vis kode|s"
 
 #: lib/ui/stdmenus.ui:284
 msgid "Special Formatting|o"
@@ -8187,9 +8175,8 @@ msgid "Phonetic Symbols|y"
 msgstr ""
 
 #: lib/ui/stdmenus.ui:338
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Nummerert liste"
+msgstr "Nummerert formel|N"
 
 #: lib/ui/stdmenus.ui:348
 msgid "Aligned Environment"
@@ -8260,7 +8247,6 @@ msgid "Reject Change|R"
 msgstr "Forkast endring|k"
 
 #: lib/ui/stdmenus.ui:408
-#, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Godta alle endringer|G"
 
@@ -8269,14 +8255,12 @@ msgid "Reject All Changes|e"
 msgstr "Forkast alle endringer|k"
 
 #: lib/ui/stdmenus.ui:419
-#, fuzzy
 msgid "Next Change|C"
-msgstr "&Neste endring"
+msgstr "Neste endring|N"
 
 #: lib/ui/stdmenus.ui:420
-#, fuzzy
 msgid "Next Reference|R"
-msgstr "Referanse"
+msgstr "Neste referanse|r"
 
 #: lib/ui/stdmenus.ui:446
 msgid "Thesaurus...|T"
@@ -8560,9 +8544,8 @@ msgid "minibuffer"
 msgstr "minibuffer"
 
 #: lib/ui/stdtoolbars.ui:148
-#, fuzzy
 msgid "review"
-msgstr "Forhåndsvisning"
+msgstr "forhåndsvisning"
 
 #: lib/ui/stdtoolbars.ui:149
 #, fuzzy
@@ -8600,14 +8583,12 @@ msgid "Accept all changes"
 msgstr "Godta alle endringer|G"
 
 #: lib/ui/stdtoolbars.ui:158
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Forkast alle endringer|k"
+msgstr "Forkast alle endringer"
 
 #: lib/ui/stdtoolbars.ui:161
-#, fuzzy
 msgid "Next note"
-msgstr "Neste notis|n"
+msgstr "Neste notis"
 
 #: src/BufferView.C:235
 #, c-format
@@ -10114,7 +10095,6 @@ msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
 #: src/frontends/qt4/BulletsModule.C:47
-#, fuzzy
 msgid "Maths"
 msgstr "Matte"
 
