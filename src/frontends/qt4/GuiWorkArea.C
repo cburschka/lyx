@@ -193,7 +193,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	cursor_ = new frontend::CursorWidget(this);
 	cursor_->hide();
 
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
 	setMinimumSize(100, 70);
