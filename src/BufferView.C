@@ -982,13 +982,10 @@ void BufferView::workAreaResize(int width, int height)
 	width_ = width;
 	height_ = height;
 
-	if (buffer_ && widthChange) {
-		// The WorkArea content needs a resize
+	if (buffer_)
 		resize();
-	}
 
-	if (widthChange || heightChange)
-		update();
+	update();
 }
 
 
