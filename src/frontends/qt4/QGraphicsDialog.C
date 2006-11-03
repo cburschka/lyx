@@ -14,8 +14,6 @@
 
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
-//Added by qt3to4:
-#include <QCloseEvent>
 
 #include "lengthcombo.h"
 #include "validators.h"
@@ -25,9 +23,10 @@
 
 #include "controllers/ControlGraphics.h"
 
-#include <qpushbutton.h>
-#include <qlineedit.h>
-#include <qvalidator.h>
+#include <QCloseEvent>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QValidator>
 
 
 using std::string;
@@ -48,41 +47,62 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
-	connect(editPB, SIGNAL(clicked()),
-		this, SLOT(edit_clicked()));
+	connect(filename, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(subcaption, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(subfigure, SIGNAL( toggled(bool) ),
+		this, SLOT( change_adaptor() ) );
+	connect(latexoptions, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(clip, SIGNAL( stateChanged(int) ),
+		this, SLOT( change_adaptor() ) );
+	connect(showCB, SIGNAL( currentIndexChanged(int) ),
+		this, SLOT( change_adaptor() ) );
+	connect(displayscale, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(Width, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(aspectratio, SIGNAL( stateChanged(int) ),
+		this, SLOT( change_adaptor() ) );
+	connect(draftCB, SIGNAL( stateChanged(int) ),
+		this, SLOT( change_adaptor() ) );
+	connect(unzipCB, SIGNAL( stateChanged(int) ),
+		this, SLOT( change_adaptor() ) );
+	connect(Height, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(heightUnit, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ),
+		this, SLOT( change_adaptor() ) );
+	connect(widthUnit, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ),
+		this, SLOT( change_adaptor() ) );
+	connect(angle, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
+	connect(origin, SIGNAL( activated(int) ),
+		this, SLOT( change_adaptor() ) );
+	connect(getPB, SIGNAL( clicked() ),
+		this, SLOT( change_adaptor() ) );
+	connect(scaleCB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()) );
+	connect(Scale, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_adaptor() ) );
 
-	connect( subfigure, SIGNAL( toggled(bool) ), subcaption, SLOT( setEnabled(bool) ) );
-	connect( browsePB, SIGNAL( clicked() ), this, SLOT( browse_clicked() ) );
-	connect( filename, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( filename, SIGNAL( textChanged(const QString&) ), this, SLOT( filenameChanged(const QString&) ) );
-	connect( subcaption, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( subfigure, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
-	connect( latexoptions, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( clip, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
-	connect( lbX, SIGNAL( textChanged(const QString&) ), this, SLOT( change_bb() ) );
-	connect( showCB, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
-	connect( displayscale, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( Width, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( widthUnit, SIGNAL( activated(int) ), this, SLOT( change_WUnit() ) );
-	connect( aspectratio, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
-	connect( displayCB, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
-	connect( draftCB, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
-	connect( unzipCB, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
-	connect( displayCB, SIGNAL( toggled(bool) ), showCB, SLOT( setEnabled(bool) ) );
-	connect( displayCB, SIGNAL( toggled(bool) ), displayscale, SLOT( setEnabled(bool) ) );
-	connect( Height, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( heightUnit, SIGNAL( selectionChanged(LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
-	connect( angle, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-	connect( origin, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
-	connect( getPB, SIGNAL( clicked() ), this, SLOT( getBB_clicked() ) );
-	connect( getPB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
-	connect( lbY, SIGNAL( textChanged(const QString&) ), this, SLOT( change_bb() ) );
-	connect( rtX, SIGNAL( textChanged(const QString&) ), this, SLOT( change_bb() ) );
-	connect( rtY, SIGNAL( textChanged(const QString&) ), this, SLOT( change_bb() ) );
-	connect( lbXunit, SIGNAL( activated(int) ), this, SLOT( change_bb() ) );
-	connect( lbYunit, SIGNAL( activated(int) ), this, SLOT( change_bb() ) );
-	connect( rtXunit, SIGNAL( activated(int) ), this, SLOT( change_bb() ) );
-	connect( rtYunit, SIGNAL( activated(int) ), this, SLOT( change_bb() ) );
+	connect(lbY, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_bb() ) );
+	connect(lbYunit, SIGNAL( activated(int) ),
+		this, SLOT( change_bb() ) );
+	connect(rtY, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_bb() ) );
+	connect(rtYunit, SIGNAL( activated(int) ),
+		this, SLOT( change_bb() ) );
+
+	connect(lbX, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_bb() ) );
+	connect(lbXunit, SIGNAL( activated(int) ),
+		this, SLOT( change_bb() ) );
+	connect(rtX, SIGNAL( textChanged(const QString&) ),
+		this, SLOT( change_bb() ) );
+	connect(rtXunit, SIGNAL( activated(int) ),
+		this, SLOT( change_bb() ) );
 
 	angle->setValidator(new QDoubleValidator(-360, 360, 2, angle));
 
@@ -121,16 +141,6 @@ void QGraphicsDialog::change_bb()
 }
 
 
-void QGraphicsDialog::change_WUnit()
-{
-	bool useHeight = (widthUnit->currentIndex() > 0);
-	Height->setEnabled(useHeight);
-	heightUnit->setEnabled(useHeight);
-	heightL->setEnabled(useHeight);
-	form_->changed();
-}
-
-
 void QGraphicsDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
@@ -138,7 +148,7 @@ void QGraphicsDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void QGraphicsDialog::browse_clicked()
+void QGraphicsDialog::on_browsePB_clicked()
 {
 	docstring const str =
 		form_->controller().browse(qstring_to_ucs4(filename->text()));
@@ -147,20 +157,35 @@ void QGraphicsDialog::browse_clicked()
 }
 
 
-void QGraphicsDialog::getBB_clicked()
+void QGraphicsDialog::on_getPB_clicked()
 {
 	form_->getBB();
 }
 
 
-void QGraphicsDialog::edit_clicked()
+void QGraphicsDialog::on_editPB_clicked()
 {
 	form_->controller().editGraphics();
 }
 
-void QGraphicsDialog::filenameChanged(const QString & filename)
+
+void QGraphicsDialog::on_filename_textChanged(const QString & filename)
 {
 	editPB->setDisabled(filename.isEmpty());
+}
+
+
+void QGraphicsDialog::on_scaleCB_toggled(bool setscale)
+{
+	Scale->setEnabled(setscale);
+	widthL->setDisabled(setscale);
+	Width->setDisabled(setscale);
+	widthUnit->setDisabled(setscale);
+	aspectratio->setDisabled(setscale);
+	bool noheight = setscale || aspectratio->checkState()==Qt::Checked;
+	heightL->setDisabled(noheight);
+	Height->setDisabled(noheight);
+	heightUnit->setDisabled(noheight);
 }
 
 } // namespace frontend

@@ -33,10 +33,10 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qcheckbox.h>
-#include <qlabel.h>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QLabel>
 
 #include <cmath>
 
@@ -70,38 +70,20 @@ void QGraphics::build_dialog()
 	bcview().setRestore(dialog_->restorePB);
 	bcview().setCancel(dialog_->closePB);
 
-	bcview().addReadOnly(dialog_->rotateGB);
 	bcview().addReadOnly(dialog_->latexoptions);
 	bcview().addReadOnly(dialog_->subfigure);
-	bcview().addReadOnly(dialog_->subcaption);
 	bcview().addReadOnly(dialog_->filenameL);
 	bcview().addReadOnly(dialog_->filename);
 	bcview().addReadOnly(dialog_->browsePB);
 	bcview().addReadOnly(dialog_->unzipCB);
 	bcview().addReadOnly(dialog_->filename);
-	bcview().addReadOnly(dialog_->lbX);
-	bcview().addReadOnly(dialog_->lbY);
-	bcview().addReadOnly(dialog_->rtX);
-	bcview().addReadOnly(dialog_->rtY);
-	bcview().addReadOnly(dialog_->lbXunit);
-	bcview().addReadOnly(dialog_->lbYunit);
-	bcview().addReadOnly(dialog_->rtXunit);
-	bcview().addReadOnly(dialog_->rtYunit);
+	bcview().addReadOnly(dialog_->bbFrame);
 	bcview().addReadOnly(dialog_->draftCB);
 	bcview().addReadOnly(dialog_->clip);
 	bcview().addReadOnly(dialog_->unzipCB);
-	bcview().addReadOnly(dialog_->subfigure);
-	bcview().addReadOnly(dialog_->subcaption);
-	bcview().addReadOnly(dialog_->showCB);
-	bcview().addReadOnly(dialog_->Width);
-	bcview().addReadOnly(dialog_->Height);
-	bcview().addReadOnly(dialog_->displayCB);
-	bcview().addReadOnly(dialog_->displayscale);
-	bcview().addReadOnly(dialog_->widthUnit);
-	bcview().addReadOnly(dialog_->heightUnit);
-	bcview().addReadOnly(dialog_->aspectratio);
-	bcview().addReadOnly(dialog_->angle);
-	bcview().addReadOnly(dialog_->origin);
+	bcview().addReadOnly(dialog_->displayGB);
+	bcview().addReadOnly(dialog_->sizeGB);
+	bcview().addReadOnly(dialog_->rotationGB);
 	bcview().addReadOnly(dialog_->latexoptions);
 	bcview().addReadOnly(dialog_->getPB);
 
@@ -238,46 +220,24 @@ void QGraphics::update_contents()
 	}
 	dialog_->showCB->setCurrentIndex(item);
 	dialog_->showCB->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
-	dialog_->displayCB->setChecked(igp.display != graphics::NoDisplay);
+	dialog_->displayGB->setChecked(igp.display != graphics::NoDisplay);
 	dialog_->displayscale->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
-	dialog_->displayscaleL->setEnabled(igp.display != graphics::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
 
-	//// the output section (width/height)
-	// set the length combo boxes
-	// only the width has the possibility for scale%. The original
-	// units are defined in lengthcommon.C
-	// 1. the width (a listttype)
-	dialog_->widthUnit->clear();
-	dialog_->widthUnit->addItem(qt_("Scale%"));
-	for (int i = 0; i < num_units; i++)
-		dialog_->widthUnit->addItem(unit_name_gui[i]);
+	// the output section (width/height)
+	dialog_->Scale->setText(toqstr(igp.scale));
 
-	if (!igp.scale.empty()
-	    && !float_equal(convert<double>(igp.scale), 0.0, 0.05)
-	    || igp.width.empty()) {
-		dialog_->Width->setText(toqstr(igp.scale));
-		dialog_->widthUnit->setCurrentIndex(0);
-	} else {
-		// no scale means default width/height
-		dialog_->Width->setText(toqstr(convert<string>(igp.width.value())));
-		// the width cannot have a unitDefault, because
-		// it is a "Scale%" or another user defined unit!
-		// +1 instead of the "Scale%" option
-		int unit_ = igp.width.unit();
-		dialog_->widthUnit->setCurrentIndex(unit_ + 1);
-	}
-	// 2. the height (a lengthgcombo type)
+	lengthToWidgets(dialog_->Width, dialog_->widthUnit,
+		igp.width.asString(), unitDefault);
+
 	lengthToWidgets(dialog_->Height, dialog_->heightUnit,
 		igp.height.asString(), unitDefault);
 
-	// enable height input in case of non "Scale%" as width-unit
-	bool use_height = (dialog_->widthUnit->currentIndex() > 0);
-	dialog_->heightL->setEnabled(use_height);
-	dialog_->Height->setEnabled(use_height);
-	dialog_->heightUnit->setEnabled(use_height);
-
 	dialog_->aspectratio->setChecked(igp.keepAspectRatio);
+
+	dialog_->scaleCB->setChecked(!igp.scale.empty() || igp.width.empty());
+
+	dialog_->Scale->setEnabled(!igp.scale.empty() || igp.width.empty());
 
 	dialog_->angle->setText(toqstr(igp.rotateAngle));
 
@@ -358,23 +318,19 @@ void QGraphics::apply()
 		default:;
 	}
 
-	if (!dialog_->displayCB->isChecked())
+	if (!dialog_->displayGB->isChecked())
 		igp.display = graphics::NoDisplay;
 
-	string value = fromqstr(dialog_->Width->text());
-	if (dialog_->widthUnit->currentIndex() > 0 || isValidLength(value)) {
-		// width/height combination
-		igp.width =
-			widgetsToLength(dialog_->Width, dialog_->widthUnit);
-		igp.scale = string();
+	if (dialog_->scaleCB->isChecked()
+		&& !dialog_->Scale->text().isEmpty()) {
+		igp.scale = fromqstr(dialog_->Scale->text());
 	} else {
-		// scaling instead of a width
-		igp.scale = value;
-		igp.width = LyXLength();
+		igp.scale = string();
 	}
-	value = fromqstr(dialog_->Height->text());
-	igp.height =
-		LyXLength(widgetsToLength(dialog_->Height, dialog_->heightUnit));
+
+	igp.width = LyXLength(widgetsToLength(dialog_->Width, dialog_->widthUnit));
+
+	igp.height = LyXLength(widgetsToLength(dialog_->Height, dialog_->heightUnit));
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 

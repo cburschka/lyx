@@ -33,11 +33,11 @@ public:
 protected Q_SLOTS:
 	virtual void change_adaptor();
 	virtual void change_bb();
-	virtual void change_WUnit();
-	virtual void browse_clicked();
-	virtual void getBB_clicked();
-	virtual void edit_clicked();
-	virtual void filenameChanged(const QString &);
+	virtual void on_browsePB_clicked();
+	virtual void on_getPB_clicked();
+	virtual void on_editPB_clicked();
+	virtual void on_filename_textChanged(const QString &);
+	virtual void on_scaleCB_toggled(bool);
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:
