@@ -816,9 +816,13 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cell->back() = MathAtom(new InsetMathScript(cell->back(), up));
 			InsetMathScript * p = cell->back().nucleus()->asScriptInset();
 			// special handling of {}-bases
+			// Test for empty brace inset, otherwise \xxx{\vec{H}}_{0}
+			// where \xxx is an unknown command gets misparsed to
+			// \xxx\vec{H}_{0}, and that is invalid LaTeX.
 			// is this always correct?
-			if (p->nuc().size() == 1 
-			    && p->nuc().back()->asBraceInset())
+			if (p->nuc().size() == 1 &&
+			    p->nuc().back()->asBraceInset() &&
+			    p->nuc().back()->asBraceInset()->cell(0).empty())
 				p->nuc() = p->nuc().back()->asNestInset()->cell(0);
 			parse(p->cell(p->idxOfScript(up)), FLAG_ITEM, mode);
 			if (limits) {
