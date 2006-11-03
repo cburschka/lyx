@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-01 16:33+0100\n"
+"POT-Creation-Date: 2006-11-03 21:16+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -126,7 +126,7 @@ msgstr "Ve&likost:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:69
 #: src/frontends/qt4/ui/QExternalUi.ui:192
-#: src/frontends/qt4/ui/QGraphicsUi.ui:138
+#: src/frontends/qt4/ui/QGraphicsUi.ui:601
 #: src/frontends/qt4/ui/QParagraphUi.ui:32
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:704
@@ -410,13 +410,13 @@ msgstr "Velikost papirja"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/QBoxUi.ui:122
 #: src/frontends/qt4/ui/QExternalUi.ui:507
-#: src/frontends/qt4/ui/QGraphicsUi.ui:239
+#: src/frontends/qt4/ui/QGraphicsUi.ui:177
 msgid "&Height:"
 msgstr "&Vi¹ina:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:138
 #: src/frontends/qt4/ui/QExternalUi.ui:484
-#: src/frontends/qt4/ui/QGraphicsUi.ui:179
+#: src/frontends/qt4/ui/QGraphicsUi.ui:197
 #: src/frontends/qt4/ui/QTabularUi.ui:103 src/frontends/qt4/ui/QWrapUi.ui:39
 msgid "&Width:"
 msgstr "©i&rina:"
@@ -506,7 +506,7 @@ msgstr "Povzetek"
 #: src/frontends/qt4/ui/QCitationUi.ui:329
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
-#: src/frontends/qt4/ui/QGraphicsUi.ui:791
+#: src/frontends/qt4/ui/QGraphicsUi.ui:699
 #: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
 #: src/frontends/qt4/ui/QNoteUi.ui:31 src/frontends/qt4/ui/QParagraphUi.ui:258
@@ -521,8 +521,8 @@ msgstr "&V redu"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:90
-#: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:677
-#: src/lyxfunc.C:849 src/lyxfunc.C:1955 src/lyxvc.C:173
+#: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
+#: src/lyxfunc.C:862 src/lyxfunc.C:1993 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Preklièi"
 
@@ -555,7 +555,7 @@ msgstr "Zbirka podatkov BibTeX"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QSendtoUi.ui:95
-#: src/BufferView.C:265 src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:793
+#: src/BufferView.C:251 src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Preklièi"
 
@@ -567,7 +567,7 @@ msgstr "Zbirka podatkov BibTeX za rabo"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:126
 #: src/frontends/qt4/ui/QBibtexUi.ui:106
 #: src/frontends/qt4/ui/QExternalUi.ui:99
-#: src/frontends/qt4/ui/QGraphicsUi.ui:375
+#: src/frontends/qt4/ui/QGraphicsUi.ui:81
 #: src/frontends/qt4/ui/QIncludeUi.ui:148 src/frontends/qt4/ui/QPrintUi.ui:316
 msgid "&Browse..."
 msgstr "&Brskaj..."
@@ -775,7 +775,7 @@ msgstr "&Navpièno:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
-#: src/frontends/qt4/ui/QGraphicsUi.ui:762
+#: src/frontends/qt4/ui/QGraphicsUi.ui:670
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
 #: src/frontends/qt4/ui/QPrefsUi.ui:50 src/frontends/qt4/ui/QWrapUi.ui:164
 msgid "&Restore"
@@ -784,7 +784,7 @@ msgstr "&Obnovi"
 #: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:362
 #: src/frontends/qt4/ui/QDocumentUi.ui:145
 #: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:812
+#: src/frontends/qt4/ui/QGraphicsUi.ui:720
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
 #: src/frontends/qt4/ui/QPrefsUi.ui:86 src/frontends/qt4/ui/QRefUi.ui:90
 #: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:161
@@ -920,7 +920,7 @@ msgid "Apply changes immediately"
 msgstr "Samodejni uporabi vsako spremembo"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:372 src/frontends/qt4/ui/QERTUi.ui:110
-#: src/frontends/qt4/ui/QGraphicsUi.ui:833
+#: src/frontends/qt4/ui/QGraphicsUi.ui:741
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:177
 #: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:75
@@ -1115,7 +1115,7 @@ msgid "Filename"
 msgstr "Ime datoteke"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:109
-#: src/frontends/qt4/ui/QGraphicsUi.ui:385
+#: src/frontends/qt4/ui/QGraphicsUi.ui:68
 #: src/frontends/qt4/ui/QIncludeUi.ui:158 src/frontends/qt4/ui/QPrintUi.ui:296
 msgid "&File:"
 msgstr "&Datoteka:"
@@ -1135,25 +1135,25 @@ msgstr "Poglej LyX"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:188
 #: src/frontends/qt4/ui/QExternalUi.ui:261
-#: src/frontends/qt4/ui/QGraphicsUi.ui:90
-#: src/frontends/qt4/ui/QGraphicsUi.ui:134
+#: src/frontends/qt4/ui/QGraphicsUi.ui:584
+#: src/frontends/qt4/ui/QGraphicsUi.ui:597
 msgid "Screen display"
 msgstr "Zaslonski prikaz"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:197
-#: src/frontends/qt4/ui/QGraphicsUi.ui:143
+#: src/frontends/qt4/ui/QGraphicsUi.ui:606
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:66
 msgid "Monochrome"
 msgstr "èrno-belo"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:202
-#: src/frontends/qt4/ui/QGraphicsUi.ui:148
+#: src/frontends/qt4/ui/QGraphicsUi.ui:611
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:71
 msgid "Grayscale"
 msgstr "v sivini"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:207
-#: src/frontends/qt4/ui/QGraphicsUi.ui:153
+#: src/frontends/qt4/ui/QGraphicsUi.ui:616
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:76
 msgid "Color"
 msgstr "barve"
@@ -1165,35 +1165,31 @@ msgstr "Predogled|#P"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:239
 #: src/frontends/qt4/ui/QExternalUi.ui:274
-#: src/frontends/qt4/ui/QGraphicsUi.ui:114
-#: src/frontends/qt4/ui/QGraphicsUi.ui:121
+#: src/frontends/qt4/ui/QGraphicsUi.ui:624
+#: src/frontends/qt4/ui/QGraphicsUi.ui:648
 msgid "Percentage to scale by in LyX"
 msgstr "Odstotek raztega v LyXu"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:252
-#: src/frontends/qt4/ui/QGraphicsUi.ui:73
 msgid "%"
 msgstr "%"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:264
-#: src/frontends/qt4/ui/QGraphicsUi.ui:93
+#: src/frontends/qt4/ui/QGraphicsUi.ui:587
 #, fuzzy
 msgid "&Display:"
 msgstr "Zaslon:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:277
-#: src/frontends/qt4/ui/QGraphicsUi.ui:124
 #, fuzzy
 msgid "Sca&le:"
 msgstr "Poveèava:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:300
-#: src/frontends/qt4/ui/QGraphicsUi.ui:80
 msgid "Display image in LyX"
 msgstr "Prika¾i sliko v LyXu"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:303
-#: src/frontends/qt4/ui/QGraphicsUi.ui:83
 msgid "&Show in LyX"
 msgstr "&Prika¾i v LyXu"
 
@@ -1204,15 +1200,15 @@ msgstr "Dr¾ava"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:381
 #: src/frontends/qt4/ui/QExternalUi.ui:411
-#: src/frontends/qt4/ui/QGraphicsUi.ui:277
-#: src/frontends/qt4/ui/QGraphicsUi.ui:298
+#: src/frontends/qt4/ui/QGraphicsUi.ui:238
+#: src/frontends/qt4/ui/QGraphicsUi.ui:259
 msgid "Angle to rotate image by"
 msgstr "Kot zasuka slike"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:391
 #: src/frontends/qt4/ui/QExternalUi.ui:404
-#: src/frontends/qt4/ui/QGraphicsUi.ui:305
-#: src/frontends/qt4/ui/QGraphicsUi.ui:318
+#: src/frontends/qt4/ui/QGraphicsUi.ui:266
+#: src/frontends/qt4/ui/QGraphicsUi.ui:279
 msgid "The origin of the rotation"
 msgstr "Izhodi¹èe zasuka"
 
@@ -1222,7 +1218,6 @@ msgid "&Origin:"
 msgstr "&Izhodi¹èe:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:414
-#: src/frontends/qt4/ui/QGraphicsUi.ui:280
 msgid "A&ngle:"
 msgstr "&Kot:"
 
@@ -1232,22 +1227,22 @@ msgid "Scale"
 msgstr "Razteg%"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:448
-#: src/frontends/qt4/ui/QGraphicsUi.ui:229
+#: src/frontends/qt4/ui/QGraphicsUi.ui:167
 msgid "Height of image in output"
 msgstr "Vi¹ina slike na izhodu"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:458
-#: src/frontends/qt4/ui/QGraphicsUi.ui:252
+#: src/frontends/qt4/ui/QGraphicsUi.ui:210
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Ohrani pojavno razmerje pri veèjih dimenzijah"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:461
-#: src/frontends/qt4/ui/QGraphicsUi.ui:255
+#: src/frontends/qt4/ui/QGraphicsUi.ui:213
 msgid "&Maintain aspect ratio"
 msgstr "&Ohrani pojavno razmerje"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:497
-#: src/frontends/qt4/ui/QGraphicsUi.ui:192
+#: src/frontends/qt4/ui/QGraphicsUi.ui:133
 msgid "Width of image in output"
 msgstr "©irina slike na izhodu"
 
@@ -1257,45 +1252,41 @@ msgid "Crop"
 msgstr "Prepi¹i"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:530
-#: src/frontends/qt4/ui/QGraphicsUi.ui:545
+#: src/frontends/qt4/ui/QGraphicsUi.ui:443
 msgid "Get bounding box from the (EPS) file"
 msgstr "Okvirno ¹katlo vzemi iz datoteke (EPS)"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:533
-#: src/frontends/qt4/ui/QGraphicsUi.ui:548
+#: src/frontends/qt4/ui/QGraphicsUi.ui:446
 #, fuzzy
 msgid "&Get from File"
 msgstr "&Vzemi iz datoteke"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:553
-#: src/frontends/qt4/ui/QGraphicsUi.ui:535
+#: src/frontends/qt4/ui/QGraphicsUi.ui:315
 msgid "Clip to bounding box values"
 msgstr "Obre¾i v vrednosti okvirne ¹katle"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:556
-#: src/frontends/qt4/ui/QGraphicsUi.ui:538
+#: src/frontends/qt4/ui/QGraphicsUi.ui:318
 msgid "Clip to &bounding box"
 msgstr "Obre¾i v &okvirno ¹katlo"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:573
-#: src/frontends/qt4/ui/QGraphicsUi.ui:436
+#: src/frontends/qt4/ui/QGraphicsUi.ui:351
 msgid "&Left bottom:"
 msgstr "&Levo dno:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:586
-#: src/frontends/qt4/ui/QGraphicsUi.ui:446
+#: src/frontends/qt4/ui/QGraphicsUi.ui:389
 msgid "Right &top:"
 msgstr "Desni &vrh:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:612
-#: src/frontends/qt4/ui/QGraphicsUi.ui:464
-#: src/frontends/qt4/ui/QGraphicsUi.ui:504
 msgid "x"
 msgstr "x"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:619
-#: src/frontends/qt4/ui/QGraphicsUi.ui:481
-#: src/frontends/qt4/ui/QGraphicsUi.ui:517
 msgid "y"
 msgstr "y"
 
@@ -1313,94 +1304,116 @@ msgstr "&Pojasnilo:"
 msgid "Forma&t:"
 msgstr "F&ormat:"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:43
+#: src/frontends/qt4/ui/QGraphicsUi.ui:46
 msgid "&Graphics"
 msgstr "&Grafika"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:55
-msgid "LyX Display"
-msgstr "Zaslon LyXa"
+#: src/frontends/qt4/ui/QGraphicsUi.ui:58
+#: src/frontends/qt4/ui/QGraphicsUi.ui:65
+msgid "File name of image"
+msgstr "Ime datoteke s sliko"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:164
-msgid "Output"
-msgstr "Izhod"
+#: src/frontends/qt4/ui/QGraphicsUi.ui:78
+msgid "Select an image file"
+msgstr "Izberite ime datoteke s sliko"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:219
-msgid "Units of height value"
-msgstr "Enote vrednosti vi¹ine"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:265
-msgid "Rotation"
-msgstr "Zasuk"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:308
-#, fuzzy
-msgid "Or&igin:"
-msgstr "&Izhodi¹èe:"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:352
+#: src/frontends/qt4/ui/QGraphicsUi.ui:88
 #, fuzzy
 msgid "&Edit"
 msgstr "&Uredi..."
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:365
-#: src/frontends/qt4/ui/QGraphicsUi.ui:382
-msgid "File name of image"
-msgstr "Ime datoteke s sliko"
+#: src/frontends/qt4/ui/QGraphicsUi.ui:101
+#, fuzzy
+msgid "Output Size"
+msgstr "Izhod"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:372
-msgid "Select an image file"
-msgstr "Izberite ime datoteke s sliko"
+#: src/frontends/qt4/ui/QGraphicsUi.ui:187
+#, fuzzy
+msgid "&Scale Graphics (%):"
+msgstr "&Grafika"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:398
+#: src/frontends/qt4/ui/QGraphicsUi.ui:223
+#, fuzzy
+msgid "Rotate Graphics"
+msgstr "Grafika"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:241
+msgid "A&ngle (Degrees):"
+msgstr ""
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:269
+#, fuzzy
+msgid "Or&igin:"
+msgstr "&Izhodi¹èe:"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:290
 msgid "&Clipping"
 msgstr "&Obrezovanje"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:598
+#: src/frontends/qt4/ui/QGraphicsUi.ui:399
+#: src/frontends/qt4/ui/QGraphicsUi.ui:406
+#, fuzzy
+msgid "y:"
+msgstr "y"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:413
+#: src/frontends/qt4/ui/QGraphicsUi.ui:420
+#, fuzzy
+msgid "x:"
+msgstr "x"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:454
 msgid "E&xtra options"
 msgstr "&Dodatne izbire"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:610
-msgid "Is this just one part of a figure float ?"
-msgstr "Je to le en del slikovne plovke?"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:613
-msgid "Su&bfigure"
-msgstr "Po&dslika"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:620
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Ne odkomprimiraj slike preden se izvozi v LaTeX"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:623
-msgid "Don't un&zip on export"
-msgstr "Ne od&zipaj pri izvozu"
-
-#: src/frontends/qt4/ui/QGraphicsUi.ui:630
-#: src/frontends/qt4/ui/QGraphicsUi.ui:643
+#: src/frontends/qt4/ui/QGraphicsUi.ui:466
+#: src/frontends/qt4/ui/QGraphicsUi.ui:487
 msgid "Additional LaTeX options"
 msgstr "Dodatne izbire za LaTeX"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:633
+#: src/frontends/qt4/ui/QGraphicsUi.ui:469
 msgid "LaTeX &options:"
 msgstr "&Izbire za LaTeX"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:650
+#: src/frontends/qt4/ui/QGraphicsUi.ui:494
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr "Ne odkomprimiraj slike preden se izvozi v LaTeX"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:497
+msgid "Don't un&zip on export"
+msgstr "Ne od&zipaj pri izvozu"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:504
 msgid "Draft mode"
 msgstr "Naèin osnutka"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:653
+#: src/frontends/qt4/ui/QGraphicsUi.ui:507
 msgid "&Draft mode"
 msgstr "Naèin &osnutka"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:711
-#: src/frontends/qt4/ui/QGraphicsUi.ui:727
+#: src/frontends/qt4/ui/QGraphicsUi.ui:514
+#, fuzzy
+msgid "Subfigure"
+msgstr "Po&dslika"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:535
+#: src/frontends/qt4/ui/QGraphicsUi.ui:556
 msgid "The caption for the sub-figure"
 msgstr "Pojasnilo za podsliko"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:714
+#: src/frontends/qt4/ui/QGraphicsUi.ui:538
 msgid "Ca&ption:"
 msgstr "&Pojasnilo:"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:566
+#, fuzzy
+msgid "Show in LyX"
+msgstr "&Prika¾i v LyXu"
+
+#: src/frontends/qt4/ui/QGraphicsUi.ui:627
+#, fuzzy
+msgid "Sca&le on Screen (%):"
+msgstr "&brez serifov:"
 
 #: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "Show LaTeX preview"
@@ -1657,7 +1670,7 @@ msgid "&Shaded"
 msgstr "&Shrani"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2426
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2424
 msgid "Single"
 msgstr "Enojni"
 
@@ -1666,7 +1679,7 @@ msgid "1.5"
 msgstr "1,5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:130 src/text.C:2432
+#: src/frontends/qt4/QDocumentDialog.C:130 src/text.C:2430
 msgid "Double"
 msgstr "Dvojni"
 
@@ -2363,7 +2376,7 @@ msgid "&Maximum last files:"
 msgstr "&Najveè zadnjih datotek:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:90
-#: src/bufferlist.C:198 src/lyxfunc.C:676
+#: src/bufferlist.C:198 src/lyxfunc.C:689
 msgid "&Save"
 msgstr "&Shrani"
 
@@ -3544,7 +3557,7 @@ msgstr "Literatura"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:458
+#: src/rowpainter.C:495
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -3699,7 +3712,7 @@ msgstr "Po¹ta"
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.ui:297
+#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.ui:302
 msgid "Date"
 msgstr "Datum"
 
@@ -7656,7 +7669,7 @@ msgstr "Tabela|T"
 msgid "Math|M"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:445
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:443
 msgid "Spellchecker...|S"
 msgstr "Èrkovalnik...|r"
 
@@ -7664,12 +7677,12 @@ msgstr "Èrkovalnik...|r"
 msgid "Thesaurus..."
 msgstr "Tezaver..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:447
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:445
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Trenutna beseda"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:448
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:446
 msgid "Check TeX|h"
 msgstr "Preveri TeX|T"
 
@@ -7678,11 +7691,11 @@ msgstr "Preveri TeX|T"
 msgid "Change Tracking|g"
 msgstr "Jezik"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:455
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:453
 msgid "Preferences...|P"
 msgstr "Izbire...|I"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:454
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:452
 msgid "Reconfigure|R"
 msgstr "Vnovièno ukroji|V"
 
@@ -7866,7 +7879,7 @@ msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:260 lib/ui/stdmenus.ui:246
-#: lib/ui/stdmenus.ui:336
+#: lib/ui/stdmenus.ui:341
 #, fuzzy
 msgid "Inline Formula|I"
 msgstr "Vstavi sliko|#V"
@@ -7903,37 +7916,37 @@ msgstr "Okolje Gather"
 msgid "Multline Environment"
 msgstr "Okolje Multline"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.ui:282
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.ui:287
 msgid "Math|h"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:216 lib/ui/stdmenus.ui:283
+#: lib/ui/classic.ui:216 lib/ui/stdmenus.ui:288
 msgid "Special Character|S"
 msgstr "Posebni znak|z"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:293
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:298
 #, fuzzy
 msgid "Citation...|C"
 msgstr "Citat"
 
-#: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:294
+#: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:299
 #, fuzzy
 msgid "Cross-reference...|r"
 msgstr "Navzkri¾ni sklic...|s"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:295
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:300
 msgid "Label...|L"
 msgstr "Oznaka...|z"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:303
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:308
 msgid "Footnote|F"
 msgstr "Opombo pod èrto|p"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:304
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:309
 msgid "Marginal Note|M"
 msgstr "Opomba ob robu|r"
 
-#: lib/ui/classic.ui:222 lib/ui/stdmenus.ui:305
+#: lib/ui/classic.ui:222 lib/ui/stdmenus.ui:310
 msgid "Short Title"
 msgstr "Kratek naslov"
 
@@ -7942,11 +7955,11 @@ msgstr "Kratek naslov"
 msgid "Index Entry|I"
 msgstr "Vnos za stvarno kazalo...|t"
 
-#: lib/ui/classic.ui:224 lib/ui/stdmenus.ui:302
+#: lib/ui/classic.ui:224 lib/ui/stdmenus.ui:307
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:288
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:293
 msgid "Note|N"
 msgstr "Opomba|O"
 
@@ -7963,7 +7976,7 @@ msgstr "TeX|T"
 msgid "Minipage|p"
 msgstr "Ministran|s"
 
-#: lib/ui/classic.ui:230 lib/ui/stdmenus.ui:301
+#: lib/ui/classic.ui:230 lib/ui/stdmenus.ui:306
 msgid "Graphics...|G"
 msgstr "Grafika...|G"
 
@@ -7987,55 +8000,55 @@ msgstr "Vstavi datoteko|t"
 msgid "External Material...|x"
 msgstr "Zunanji material...|Z"
 
-#: lib/ui/classic.ui:240 lib/ui/stdmenus.ui:319
+#: lib/ui/classic.ui:240 lib/ui/stdmenus.ui:324
 msgid "Superscript|S"
 msgstr "Eksponent|E"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.ui:320
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.ui:325
 msgid "Subscript|u"
 msgstr "Indeks|I"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.ui:325
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.ui:330
 #, fuzzy
 msgid "Horizontal Fill|H"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:329
+#: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:334
 msgid "Hyphenation Point|P"
 msgstr "Mesto delitve|M"
 
-#: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:330
+#: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:335
 msgid "Ligature Break|k"
 msgstr "Prelom ligature|P"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:322
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:327
 #, fuzzy
 msgid "Protected Space|r"
 msgstr "Za¹èiten presledek|Z"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.ui:323
+#: lib/ui/classic.ui:246 lib/ui/stdmenus.ui:328
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:324
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:329
 msgid "Thin Space|T"
 msgstr ""
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:327
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:332
 #, fuzzy
 msgid "Vertical Space..."
 msgstr "Navpièni presledek:|#N"
 
-#: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:331
+#: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:336
 #, fuzzy
 msgid "Line Break|L"
 msgstr "Prelom vrstice|P"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.ui:310
+#: lib/ui/classic.ui:250 lib/ui/stdmenus.ui:315
 msgid "Ellipsis|i"
 msgstr "Tropièje|T"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:311
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:316
 msgid "End of Sentence|E"
 msgstr "Konec stavka|K"
 
@@ -8049,60 +8062,60 @@ msgstr "Navaden navedek|N"
 msgid "Ordinary Quote|O"
 msgstr "Navaden navedek|N"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.ui:314
+#: lib/ui/classic.ui:254 lib/ui/stdmenus.ui:319
 msgid "Menu Separator|M"
 msgstr "Loènica v menuju|L"
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:326
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:331
 #, fuzzy
 msgid "Horizontal Line"
 msgstr "&Vodoravna poravnava:"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.ui:332 src/insets/insetpagebreak.C:56
+#: lib/ui/classic.ui:256 lib/ui/stdmenus.ui:337 src/insets/insetpagebreak.C:56
 #, fuzzy
 msgid "Page Break"
 msgstr "Prelomi &strani"
 
-#: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:337
+#: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:342
 msgid "Display Formula|D"
 msgstr "Prikazna formula|P"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:339
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:344
 msgid "Eqnarray Environment|E"
 msgstr "Okolje Eqnarray|E"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:340
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:345
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "Okolje AMS align|A"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:341
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:346
 msgid "AMS alignat Environment|t"
 msgstr "Okolje AMS alignat|t"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:342
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:347
 msgid "AMS flalign Environment|f"
 msgstr "Okolje AMS flalign|f"
 
-#: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:343
+#: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:348
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Okolje AMS gather"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:344
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:349
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "Okolje AMS multline"
 
-#: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:346
+#: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:351
 msgid "Array Environment|y"
 msgstr "Okolje Array|y"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:347
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:352
 msgid "Cases Environment|C"
 msgstr "Okolje Cases|C"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:351
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:356
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Poravnava"
@@ -8198,39 +8211,39 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "PrilagodiSliko"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:359 lib/ui/stdmenus.ui:363
+#: lib/ui/classic.ui:310 lib/ui/classic.ui:359 lib/ui/stdmenus.ui:368
 msgid "Table of Contents|C"
 msgstr "Vsebinsko kazalo|V"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.ui:365
+#: lib/ui/classic.ui:312 lib/ui/stdmenus.ui:370
 msgid "Index List|I"
 msgstr "Stvarno kazalo|v"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:366
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:371
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Literatura"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.ui:370
+#: lib/ui/classic.ui:317 lib/ui/stdmenus.ui:375
 msgid "LyX Document...|X"
 msgstr "Dokument v LyXu...|X"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.ui:371
+#: lib/ui/classic.ui:318 lib/ui/stdmenus.ui:376
 #, fuzzy
 msgid "Plain Text as Lines...|L"
 msgstr "Ascii kot vrstice...|v"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:372
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:377
 #, fuzzy
 msgid "Plain Text as Paragraphs...|P"
 msgstr "Ascii kot odstavki...|o"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:404
+#: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:409
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:405
+#: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:410
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Zapi¹i spremembe...|Z"
@@ -8243,7 +8256,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:410
+#: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:415
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "©irina slike na izhodu"
@@ -8288,7 +8301,7 @@ msgstr "Poveèaj globino okolja|v"
 msgid "Start Appendix Here|S"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/classic.ui:355 lib/ui/stdmenus.ui:394
+#: lib/ui/classic.ui:355 lib/ui/stdmenus.ui:399
 msgid "Build Program|B"
 msgstr "Zgradi program|Z"
 
@@ -8296,7 +8309,7 @@ msgstr "Zgradi program|Z"
 msgid "Update|U"
 msgstr "Osve¾i|O"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.ui:395
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.ui:400
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Dnevnik LaTeXa"
@@ -8305,120 +8318,116 @@ msgstr "Dnevnik LaTeXa"
 msgid "TeX Information|X"
 msgstr "Podatki za TeX|X"
 
-#: lib/ui/classic.ui:373 lib/ui/stdmenus.ui:418
+#: lib/ui/classic.ui:373 lib/ui/stdmenus.ui:423
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:421
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:426
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Naj&dalj¹a oznaka"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:417
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:422
 msgid "Bookmarks|B"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/classic.ui:379 lib/ui/stdmenus.ui:433
+#: lib/ui/classic.ui:379
 msgid "Save Bookmark 1|S"
 msgstr "Shrani zaznamek 1|S"
 
-#: lib/ui/classic.ui:380 lib/ui/stdmenus.ui:434
+#: lib/ui/classic.ui:380
 msgid "Save Bookmark 2"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:381 lib/ui/stdmenus.ui:435
+#: lib/ui/classic.ui:381
 msgid "Save Bookmark 3"
 msgstr "Shrani zaznamek 3"
 
-#: lib/ui/classic.ui:382 lib/ui/stdmenus.ui:436
+#: lib/ui/classic.ui:382
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:383 lib/ui/stdmenus.ui:437
+#: lib/ui/classic.ui:383
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:385 lib/ui/stdmenus.ui:427
+#: lib/ui/classic.ui:385
 #, fuzzy
 msgid "Go to Bookmark 1|1"
 msgstr "Pojdi na zaznamek 1|1"
 
-#: lib/ui/classic.ui:386 lib/ui/stdmenus.ui:428
+#: lib/ui/classic.ui:386
 #, fuzzy
 msgid "Go to Bookmark 2|2"
 msgstr "Pojdi na zaznamek 2|2"
 
-#: lib/ui/classic.ui:387 lib/ui/stdmenus.ui:429
+#: lib/ui/classic.ui:387
 #, fuzzy
 msgid "Go to Bookmark 3|3"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:388 lib/ui/stdmenus.ui:430
+#: lib/ui/classic.ui:388
 #, fuzzy
 msgid "Go to Bookmark 4|4"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:389 lib/ui/stdmenus.ui:431
+#: lib/ui/classic.ui:389
 #, fuzzy
 msgid "Go to Bookmark 5|5"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:404 lib/ui/stdmenus.ui:462
+#: lib/ui/classic.ui:404 lib/ui/stdmenus.ui:460
 msgid "Introduction|I"
 msgstr "Uvod|U"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.ui:463
+#: lib/ui/classic.ui:405 lib/ui/stdmenus.ui:461
 msgid "Tutorial|T"
 msgstr "Uèbenik|b"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:464
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:462
 msgid "User's Guide|U"
 msgstr "Uporabni¹ki vodnik|v"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:465
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:463
 msgid "Extended Features|E"
 msgstr "Dodatne lastnosti|l"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:466
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:464
 msgid "Customization|C"
 msgstr "Prilagoditev|P"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:467
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:465
 msgid "FAQ|F"
 msgstr "Pogosta vpra¹anja|v"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.ui:468
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.ui:466
 msgid "Table of Contents|a"
 msgstr "Vsebinsko kazalo|k"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:469
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:467
 msgid "LaTeX Configuration|L"
 msgstr "Prikrojitev LaTeXa|L"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:471
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:469
 msgid "About LyX|X"
 msgstr "O LyXu|X"
 
-#: lib/ui/classic.ui:422 lib/ui/stdmenus.ui:479 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:422 lib/ui/stdmenus.ui:477 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr "O programu LyX"
 
-#: lib/ui/classic.ui:423 lib/ui/stdmenus.ui:480
+#: lib/ui/classic.ui:423 lib/ui/stdmenus.ui:478
 #, fuzzy
 msgid "Preferences..."
 msgstr "Izbire...|I"
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:481
+#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:479
 #, fuzzy
 msgid "Quit LyX"
 msgstr "O programu LyX"
-
-#: lib/ui/classic.ui:444 lib/ui/default.ui:34
-msgid "Toolbars"
-msgstr ""
 
 #: lib/ui/stdmenus.ui:25
 #, fuzzy
@@ -8689,173 +8698,188 @@ msgstr ""
 msgid "View source|s"
 msgstr "Vidni presledek|#s"
 
-#: lib/ui/stdmenus.ui:284
+#: lib/ui/stdmenus.ui:268
+#, fuzzy
+msgid "Toolbars|b"
+msgstr "Orodni nasveti|O"
+
+#: lib/ui/stdmenus.ui:289
 #, fuzzy
 msgid "Special Formatting|o"
 msgstr "Posebna celica"
 
-#: lib/ui/stdmenus.ui:285
+#: lib/ui/stdmenus.ui:290
 #, fuzzy
 msgid "List / TOC|i"
 msgstr "Seznami in kazala|k"
 
-#: lib/ui/stdmenus.ui:286
+#: lib/ui/stdmenus.ui:291
 #, fuzzy
 msgid "Float|a"
 msgstr "Plovke|P"
 
-#: lib/ui/stdmenus.ui:289
+#: lib/ui/stdmenus.ui:294
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:290
+#: lib/ui/stdmenus.ui:295
 #, fuzzy
 msgid "File|e"
 msgstr "Datoteka|D"
 
-#: lib/ui/stdmenus.ui:291 src/insets/insetbox.C:153
+#: lib/ui/stdmenus.ui:296 src/insets/insetbox.C:153
 msgid "Box"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:296
+#: lib/ui/stdmenus.ui:301
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "Vnos v stvarno kazalo"
 
-#: lib/ui/stdmenus.ui:300
+#: lib/ui/stdmenus.ui:305
 #, fuzzy
 msgid "Table...|T"
 msgstr "Tabela...|T"
 
-#: lib/ui/stdmenus.ui:306
+#: lib/ui/stdmenus.ui:311
 msgid "TeX Code|X"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:312
+#: lib/ui/stdmenus.ui:317
 msgid "Ordinary Quote|Q"
 msgstr "Navaden navedek|N"
 
-#: lib/ui/stdmenus.ui:313
+#: lib/ui/stdmenus.ui:318
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Enojni|#E"
 
-#: lib/ui/stdmenus.ui:315
+#: lib/ui/stdmenus.ui:320
 msgid "Phonetic Symbols|y"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:338
+#: lib/ui/stdmenus.ui:343
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "©tevilka"
 
-#: lib/ui/stdmenus.ui:348
+#: lib/ui/stdmenus.ui:353
 #, fuzzy
 msgid "Aligned Environment"
 msgstr "Poravnava"
 
-#: lib/ui/stdmenus.ui:349
+#: lib/ui/stdmenus.ui:354
 #, fuzzy
 msgid "AlignedAt Environment"
 msgstr "Okolje AlignAt"
 
-#: lib/ui/stdmenus.ui:350
+#: lib/ui/stdmenus.ui:355
 #, fuzzy
 msgid "Gathered Environment"
 msgstr "Okolje Gather"
 
-#: lib/ui/stdmenus.ui:353
+#: lib/ui/stdmenus.ui:358
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "Matematièna plo¹èa|l"
 
-#: lib/ui/stdmenus.ui:359
+#: lib/ui/stdmenus.ui:364
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdmenus.ui:374
+#: lib/ui/stdmenus.ui:379
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Zunanji material...|Z"
 
-#: lib/ui/stdmenus.ui:375
+#: lib/ui/stdmenus.ui:380
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Spis...|S"
 
-#: lib/ui/stdmenus.ui:379
+#: lib/ui/stdmenus.ui:384
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/stdmenus.ui:380
+#: lib/ui/stdmenus.ui:385
 #, fuzzy
 msgid "Comment|C"
 msgstr "Komentar"
 
-#: lib/ui/stdmenus.ui:381
+#: lib/ui/stdmenus.ui:386
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:393
+#: lib/ui/stdmenus.ui:398
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Jezik"
 
-#: lib/ui/stdmenus.ui:396
+#: lib/ui/stdmenus.ui:401
 msgid "Table of Contents|T"
 msgstr "Vsebinsko kazalo|V"
 
-#: lib/ui/stdmenus.ui:397
+#: lib/ui/stdmenus.ui:402
 #, fuzzy
 msgid "Start Appendix Here|A"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/stdmenus.ui:399
+#: lib/ui/stdmenus.ui:404
 msgid "Compressed|o"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:400
+#: lib/ui/stdmenus.ui:405
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Nastavitve"
 
-#: lib/ui/stdmenus.ui:406
+#: lib/ui/stdmenus.ui:411
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdmenus.ui:407
+#: lib/ui/stdmenus.ui:412
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdmenus.ui:408
+#: lib/ui/stdmenus.ui:413
 msgid "Accept All Changes|c"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:409
+#: lib/ui/stdmenus.ui:414
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdmenus.ui:419
+#: lib/ui/stdmenus.ui:424
 #, fuzzy
 msgid "Next Change|C"
 msgstr " (Spremenjeno)"
 
-#: lib/ui/stdmenus.ui:420
+#: lib/ui/stdmenus.ui:425
 #, fuzzy
 msgid "Next Reference|R"
 msgstr "Sklic"
 
-#: lib/ui/stdmenus.ui:446
+#: lib/ui/stdmenus.ui:432
+#, fuzzy
+msgid "Save Bookmark|S"
+msgstr "Shrani zaznamek 1|S"
+
+#: lib/ui/stdmenus.ui:433
+#, fuzzy
+msgid "Clear Bookmarks|C"
+msgstr "Zaznamki|Z"
+
+#: lib/ui/stdmenus.ui:444
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Tezaver..."
 
-#: lib/ui/stdmenus.ui:449
+#: lib/ui/stdmenus.ui:447
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Podatki za TeX|X"
@@ -8884,11 +8908,11 @@ msgstr "®elite shraniti spis?"
 msgid "Print document"
 msgstr "Uvozi spis"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:723
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:663
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:734
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:674
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -9240,7 +9264,7 @@ msgstr "Prebrskaj|#r"
 msgid "Next note"
 msgstr "Opomba|O"
 
-#: src/BufferView.C:235
+#: src/BufferView.C:221
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -9248,22 +9272,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:238 src/lyxfunc.C:848
+#: src/BufferView.C:224 src/lyxfunc.C:861
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Vrni se k shranjenemu"
 
-#: src/BufferView.C:239 src/lyxfunc.C:849 src/lyxvc.C:173
+#: src/BufferView.C:225 src/lyxfunc.C:862 src/lyxvc.C:173
 #, fuzzy
 msgid "&Revert"
 msgstr "Obnovi|O"
 
-#: src/BufferView.C:239
+#: src/BufferView.C:225
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Zamenjaj s prej¹njim spisom"
 
-#: src/BufferView.C:261
+#: src/BufferView.C:247
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -9271,115 +9295,110 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.C:264
+#: src/BufferView.C:250
 #, fuzzy
 msgid "Create new document?"
 msgstr "®elite ustvariti nov spis s tem imenom?"
 
-#: src/BufferView.C:265
+#: src/BufferView.C:251
 #, fuzzy
 msgid "&Create"
 msgstr "primerjano"
 
-#: src/BufferView.C:527
-#, c-format
-msgid "Saved bookmark %1$d"
-msgstr "Shranjen zaznamek %1$d"
+#: src/BufferView.C:513
+#, fuzzy
+msgid "Save bookmark"
+msgstr "Shrani zaznamek 2"
 
-#: src/BufferView.C:561
-#, c-format
-msgid "Moved to bookmark %1$d"
-msgstr "Premaknjen v zaznamek %1$d"
-
-#: src/BufferView.C:726
+#: src/BufferView.C:666
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView.C:737
+#: src/BufferView.C:677
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView.C:888
+#: src/BufferView.C:825
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/BufferView.C:895
+#: src/BufferView.C:832
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/BufferView.C:902
+#: src/BufferView.C:839
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:842
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView.C:951
+#: src/BufferView.C:888
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d words checked."
 
-#: src/BufferView.C:954
+#: src/BufferView.C:891
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d words checked."
 
-#: src/BufferView.C:959
+#: src/BufferView.C:896
 #, fuzzy
 msgid "One word in selection."
 msgstr "Zaznana ena napaka"
 
-#: src/BufferView.C:961
+#: src/BufferView.C:898
 #, fuzzy
 msgid "One word in document."
 msgstr "Vstavlja se spis "
 
-#: src/BufferView.C:964
+#: src/BufferView.C:901
 #, fuzzy
 msgid "Count words"
 msgstr "Trenutna beseda"
 
-#: src/BufferView.C:1396
+#: src/BufferView.C:1330
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/BufferView.C:1398 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1332 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:95
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1794 src/lyxfunc.C:1831 src/lyxfunc.C:1906
+#: src/lyxfunc.C:1832 src/lyxfunc.C:1869 src/lyxfunc.C:1944
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
-#: src/BufferView.C:1399 src/lyxfunc.C:1832 src/lyxfunc.C:1907
+#: src/BufferView.C:1333 src/lyxfunc.C:1870 src/lyxfunc.C:1945
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/BufferView.C:1403 src/lyx_cb.C:141 src/lyxfunc.C:1799
-#: src/lyxfunc.C:1836
+#: src/BufferView.C:1337 src/lyx_cb.C:141 src/lyxfunc.C:1837
+#: src/lyxfunc.C:1874
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/BufferView.C:1415 src/lyxfunc.C:1846 src/lyxfunc.C:1928
-#: src/lyxfunc.C:1942 src/lyxfunc.C:1958
+#: src/BufferView.C:1349 src/lyxfunc.C:1884 src/lyxfunc.C:1966
+#: src/lyxfunc.C:1980 src/lyxfunc.C:1996
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView.C:1426
+#: src/BufferView.C:1360
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView.C:1436
+#: src/BufferView.C:1370
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView.C:1438
+#: src/BufferView.C:1372
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
@@ -9689,24 +9708,28 @@ msgstr "Izvaja se MakeIndex."
 msgid "Running BibTeX."
 msgstr "Izvaja se BibTeX."
 
-#: src/MenuBackend.C:450 src/MenuBackend.C:471 src/MenuBackend.C:541
-#: src/MenuBackend.C:563 src/MenuBackend.C:586 src/MenuBackend.C:672
+#: src/MenuBackend.C:464 src/MenuBackend.C:501 src/MenuBackend.C:571
+#: src/MenuBackend.C:593 src/MenuBackend.C:616 src/MenuBackend.C:702
 msgid "No Documents Open!"
 msgstr "Ni odprtih spisov!"
 
-#: src/MenuBackend.C:509
+#: src/MenuBackend.C:539
 #, fuzzy
 msgid "Plain Text as Lines"
 msgstr "Besedilo ASCII kot vrstice"
 
-#: src/MenuBackend.C:511
+#: src/MenuBackend.C:541
 #, fuzzy
 msgid "Plain Text as Paragraphs"
 msgstr "Besedilo ASCII kot odstavki"
 
-#: src/MenuBackend.C:706
+#: src/MenuBackend.C:736
 msgid "No Table of contents"
 msgstr "Ni vsebinskega kazala"
+
+#: src/MenuBackend.C:782
+msgid " (auto)"
+msgstr ""
 
 #: src/SpellBase.C:51
 #, fuzzy
@@ -9733,7 +9756,7 @@ msgstr "v izbrani razred spisa"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:444 src/text.C:353
+#: src/buffer.C:444 src/text.C:350
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznana akcija"
@@ -9835,24 +9858,24 @@ msgid ""
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:835
+#: src/buffer.C:846
 #, fuzzy
 msgid "Encoding error"
 msgstr "&Kodiranje:"
 
-#: src/buffer.C:836
+#: src/buffer.C:847
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:845
+#: src/buffer.C:856
 #, fuzzy
 msgid "Error closing file"
 msgstr "Napaka med branjem "
 
-#: src/buffer.C:846
+#: src/buffer.C:857
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9860,15 +9883,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1104
+#: src/buffer.C:1115
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:1117
+#: src/buffer.C:1128
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1118
+#: src/buffer.C:1129
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex uspe¹no zagnan"
@@ -9982,7 +10005,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/bufferlist.C:89 src/bufferlist.C:197 src/lyxfunc.C:675
+#: src/bufferlist.C:89 src/bufferlist.C:197 src/lyxfunc.C:688
 #, fuzzy
 msgid "Save changed document?"
 msgstr "®elite shraniti spis?"
@@ -10227,7 +10250,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Poglej datoteko"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1955
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1993
 #, fuzzy
 msgid "&Over-write"
 msgstr "&pisalni stroj:"
@@ -10320,12 +10343,12 @@ msgstr "Ni podatkov za ogled "
 msgid "Auto-edit file %1$s failed"
 msgstr ""
 
-#: src/frontends/LyXView.C:368
+#: src/frontends/LyXView.C:388
 #, fuzzy
 msgid " (changed)"
 msgstr " (Spremenjeno)"
 
-#: src/frontends/LyXView.C:372
+#: src/frontends/LyXView.C:392
 msgid " (read only)"
 msgstr " (le za branje)"
 
@@ -10890,7 +10913,7 @@ msgstr "&Oznaka"
 msgid "Directories"
 msgstr "Uporabni¹ki imenik: "
 
-#: src/frontends/qt4/GuiView.C:448
+#: src/frontends/qt4/GuiView.C:452
 msgid "LyX"
 msgstr "LyX"
 
@@ -10909,26 +10932,26 @@ msgstr "Literatura"
 msgid "Box Settings"
 msgstr "Nastavitve"
 
-#: src/frontends/qt4/QBranch.C:35
+#: src/frontends/qt4/QBranch.C:33
 #, fuzzy
 msgid "Branch Settings"
 msgstr "Postavka literature"
 
-#: src/frontends/qt4/QBranches.C:43
+#: src/frontends/qt4/QBranches.C:42
 #, fuzzy
 msgid "Branch"
 msgstr "Pot za varnostne kopije:|#P"
 
-#: src/frontends/qt4/QBranches.C:44
+#: src/frontends/qt4/QBranches.C:43
 msgid "Activated"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:72 src/frontends/qt4/QBranches.C:139
+#: src/frontends/qt4/QBranches.C:71 src/frontends/qt4/QBranches.C:138
 #: src/frontends/qt4/QDocumentDialog.C:623
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:72 src/frontends/qt4/QDocumentDialog.C:622
+#: src/frontends/qt4/QBranches.C:71 src/frontends/qt4/QDocumentDialog.C:622
 #, fuzzy
 msgid "No"
 msgstr "velike èrke "
@@ -11006,7 +11029,7 @@ msgstr "Spisi"
 msgid "Length"
 msgstr "Dol¾ina"
 
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2429
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2427
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
@@ -11172,7 +11195,7 @@ msgstr "Nastavitve za LaTeX"
 msgid "External Material"
 msgstr "Zunanji material"
 
-#: src/frontends/qt4/QExternal.C:339 src/frontends/qt4/QGraphics.C:252
+#: src/frontends/qt4/QExternal.C:339
 msgid "Scale%"
 msgstr "Razteg%"
 
@@ -11646,7 +11669,7 @@ msgstr "Odprta zabele¾ka"
 msgid "Opened Branch Inset"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/insetbranch.C:101
+#: src/insets/insetbranch.C:100
 msgid "Branch: "
 msgstr ""
 
@@ -12112,11 +12135,11 @@ msgstr "&Odstrani"
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1795
+#: src/lyx_cb.C:136 src/lyxfunc.C:1833
 msgid "Templates|#T#t"
 msgstr "Vzorci|#V#v"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1952
+#: src/lyx_cb.C:165 src/lyxfunc.C:1990
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12124,7 +12147,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1954
+#: src/lyx_cb.C:167 src/lyxfunc.C:1992
 #, fuzzy
 msgid "Over-write document?"
 msgstr "®elite shraniti spis?"
@@ -12443,33 +12466,33 @@ msgstr "Neznana akcija"
 msgid "Exiting"
 msgstr "Izhod|I"
 
-#: src/lyxfunc.C:374
+#: src/lyxfunc.C:386
 #, fuzzy
 msgid "Nothing to do"
 msgstr "Nièesar ni moè storiti"
 
-#: src/lyxfunc.C:393
+#: src/lyxfunc.C:405
 msgid "Unknown action"
 msgstr "Neznana akcija"
 
-#: src/lyxfunc.C:399 src/lyxfunc.C:659
+#: src/lyxfunc.C:411 src/lyxfunc.C:672
 #, fuzzy
 msgid "Command disabled"
 msgstr "ukaz"
 
-#: src/lyxfunc.C:406
+#: src/lyxfunc.C:418
 msgid "Command not allowed without any document open"
 msgstr "Ukaz ni dovoljen brez odprtega spisa"
 
-#: src/lyxfunc.C:645
+#: src/lyxfunc.C:658
 msgid "Document is read-only"
 msgstr "Spis je le za branje"
 
-#: src/lyxfunc.C:653
+#: src/lyxfunc.C:666
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/lyxfunc.C:672
+#: src/lyxfunc.C:685
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12477,110 +12500,110 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/lyxfunc.C:690
+#: src/lyxfunc.C:703
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:693
+#: src/lyxfunc.C:706
 #, fuzzy
 msgid "Print document failed"
 msgstr "Tiskaj na"
 
-#: src/lyxfunc.C:712
+#: src/lyxfunc.C:725
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr "Spis uporablja neznani razred besedila \""
 
-#: src/lyxfunc.C:715
+#: src/lyxfunc.C:728
 msgid "Could not change class"
 msgstr ""
 
-#: src/lyxfunc.C:827
+#: src/lyxfunc.C:840
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Spis se shranjuje"
 
-#: src/lyxfunc.C:831
+#: src/lyxfunc.C:844
 msgid " done."
 msgstr " opravljeno."
 
-#: src/lyxfunc.C:846
+#: src/lyxfunc.C:859
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1066 src/text3.C:1209
+#: src/lyxfunc.C:1077 src/text3.C:1209
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
-#: src/lyxfunc.C:1075
+#: src/lyxfunc.C:1086
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/lyxfunc.C:1344
+#: src/lyxfunc.C:1355
 msgid "Opening child document "
 msgstr "Odpira se podrejeni spis "
 
-#: src/lyxfunc.C:1429
+#: src/lyxfunc.C:1440
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1440
+#: src/lyxfunc.C:1451
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1556
+#: src/lyxfunc.C:1567
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Videz spisa"
 
-#: src/lyxfunc.C:1559
+#: src/lyxfunc.C:1570
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/lyxfunc.C:1615
+#: src/lyxfunc.C:1626
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/lyxfunc.C:1792
+#: src/lyxfunc.C:1830
 msgid "Select template file"
 msgstr "Izberite vzorèno datoteko"
 
-#: src/lyxfunc.C:1829
+#: src/lyxfunc.C:1867
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/lyxfunc.C:1870
+#: src/lyxfunc.C:1908
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/lyxfunc.C:1874
+#: src/lyxfunc.C:1912
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je odprt."
 
-#: src/lyxfunc.C:1876
+#: src/lyxfunc.C:1914
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1939
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyxfunc.C:2018
+#: src/lyxfunc.C:2056
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
@@ -13293,27 +13316,27 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Neznana akcija"
 
-#: src/text.C:331 src/text.C:344
+#: src/text.C:328 src/text.C:341
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Jezik"
 
-#: src/text.C:332
+#: src/text.C:329
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:345
+#: src/text.C:342
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:352
+#: src/text.C:349
 #, fuzzy
 msgid "Unknown token"
 msgstr "Neznana akcija"
 
-#: src/text.C:1228
+#: src/text.C:1225
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -13321,59 +13344,59 @@ msgid ""
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1239
+#: src/text.C:1236
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:2395
+#: src/text.C:2393
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/text.C:2398
+#: src/text.C:2396
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/text.C:2410
+#: src/text.C:2408
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/text.C:2417
+#: src/text.C:2415
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/text.C:2423
+#: src/text.C:2421
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/text.C:2435
+#: src/text.C:2433
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/text.C:2444
+#: src/text.C:2442
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/text.C:2445
+#: src/text.C:2443
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/text.C:2446
+#: src/text.C:2444
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:2447
+#: src/text.C:2445
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/text.C:2448
+#: src/text.C:2446
 msgid ", Boundary: "
 msgstr ""
 
@@ -13450,3 +13473,21 @@ msgstr "&Navpièno:"
 #, fuzzy
 msgid "protected"
 msgstr "Za¹èiten presledek|Z"
+
+#~ msgid "LyX Display"
+#~ msgstr "Zaslon LyXa"
+
+#~ msgid "Units of height value"
+#~ msgstr "Enote vrednosti vi¹ine"
+
+#~ msgid "Rotation"
+#~ msgstr "Zasuk"
+
+#~ msgid "Is this just one part of a figure float ?"
+#~ msgstr "Je to le en del slikovne plovke?"
+
+#~ msgid "Saved bookmark %1$d"
+#~ msgstr "Shranjen zaznamek %1$d"
+
+#~ msgid "Moved to bookmark %1$d"
+#~ msgstr "Premaknjen v zaznamek %1$d"
