@@ -768,7 +768,8 @@ void expandToolbars(Menu & tomenu, Buffer const * buf)
 
 	int i = 1;
 	for (; cit != end; ++cit, ++i) {
-		docstring label = char_type(uppercase(cit->name[0])) + _(cit->name.substr(1));
+		docstring label = _(cit->name);
+        	label = char_type(uppercase(label[0])) + label.substr(1);
 		// frontends are not supposed to turn on/off toolbars, if they can not
 		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
 		// should reflect the true state of toolbars.
@@ -781,7 +782,7 @@ void expandToolbars(Menu & tomenu, Buffer const * buf)
 		if (cit->flags & ToolbarBackend::AUTO)
 			label += _(" (auto)");
 		tomenu.add(MenuItem(MenuItem::Command, label,
-				    FuncRequest(LFUN_TOOLBAR_TOGGLE_STATE, _(cit->name))));
+				    FuncRequest(LFUN_TOOLBAR_TOGGLE_STATE, cit->name)));
 	}
 }
 
