@@ -372,11 +372,9 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		}
 	}
 
-
-
+	// branches
 	branchesModule = new QBranches;
 	connect(branchesModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
-
 
 	// preamble
 	preambleModule = new UiWidget<Ui::PreambleUi>;

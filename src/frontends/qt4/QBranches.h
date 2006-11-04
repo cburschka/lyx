@@ -45,6 +45,7 @@ Q_SIGNALS:
 
 protected:
 	void toggleBranch(QTreeWidgetItem *);
+	void toggleColor(QTreeWidgetItem *);
 	void update();
 
 protected Q_SLOTS:

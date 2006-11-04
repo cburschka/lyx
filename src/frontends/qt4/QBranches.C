@@ -38,9 +38,11 @@ QBranches::QBranches(QWidget * parent, Qt::WFlags f)
 	: QWidget(parent, f)
 {
 	setupUi(this);
-	branchesTW->setColumnCount(2);
+	branchesTW->setColumnCount(3);
 	branchesTW->headerItem()->setText(0, qt_("Branch"));
 	branchesTW->headerItem()->setText(1, qt_("Activated"));
+	branchesTW->headerItem()->setText(2, qt_("Color"));
+	branchesTW->setSortingEnabled(true);
 }
 
 void QBranches::update(BufferParams const & params)
@@ -73,13 +75,15 @@ void QBranches::update()
 
 		QColor const itemcolor = rgb2qcolor(it->getColor());
 		if (itemcolor.isValid()) {
-			QPixmap coloritem(32, 32);
+			QPixmap coloritem(30, 10);
 			coloritem.fill(itemcolor);
-			newItem->setIcon(0, QIcon(coloritem));
+			newItem->setIcon(2, QIcon(coloritem));
 		}
 		// restore selected branch
-		if (bname == sel_branch)
+		if (bname == sel_branch) {
+			branchesTW->setCurrentItem(newItem);
 			branchesTW->setItemSelected(newItem, true);
+		}
 	}
 	// emit signal
 	changed();
@@ -122,9 +126,12 @@ void QBranches::on_activatePB_pressed()
 }
 
 
-void QBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int /*col*/)
+void QBranches::on_branchesTW_itemDoubleClicked(QTreeWidgetItem * item, int col)
 {
-	toggleBranch(item);
+	if (col < 2)
+		toggleBranch(item);
+	else
+		toggleColor(item);
 }
 
 
@@ -147,11 +154,16 @@ void QBranches::toggleBranch(QTreeWidgetItem * item)
 
 void QBranches::on_colorPB_clicked()
 {
-	QTreeWidgetItem * selItem =
-		branchesTW->currentItem();
-	QString sel_branch;
-	if (selItem != 0)
-		sel_branch = selItem->text(0);
+	toggleColor(branchesTW->currentItem());
+}
+
+
+void QBranches::toggleColor(QTreeWidgetItem * item)
+{
+	if (item == 0)
+		return;
+
+	QString sel_branch = item->text(0);
 	if (!sel_branch.isEmpty()) {
 		docstring current_branch = qstring_to_ucs4(sel_branch);
 		Branch * branch =
