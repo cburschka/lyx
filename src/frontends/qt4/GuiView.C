@@ -473,7 +473,7 @@ void GuiView::busy(bool yes)
 Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 {
 	QLToolbar * Tb = new QLToolbar(tbb, *this);
-	static QLToolbar * lastTb = 0;
+	//static QLToolbar * lastTb = 0;
 
 	if (tbb.flags & ToolbarBackend::TOP) {
 			addToolBar(Qt::TopToolBarArea, Tb);
