@@ -94,6 +94,9 @@ public:
 	///
 	GuiWorkArea(int width, int height, int id, LyXView & lyx_view);
 
+	///
+	bool hasFocus() const { return QAbstractScrollArea::hasFocus(); }
+
 	/// return the width of the content pane
 	virtual int width() const { return viewport()->width(); }
 	/// return the height of the content pane

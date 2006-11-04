@@ -65,6 +65,9 @@ public:
 	///
 	BufferView const & bufferView() const;
 
+	/// \return true if has the keyboard input focus.
+	virtual bool hasFocus() const = 0;
+	
 	/// return the width of the work area in pixels
 	virtual int width() const = 0;
 

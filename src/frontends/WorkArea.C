@@ -148,7 +148,7 @@ void WorkArea::redraw(bool singlePar)
 		return;
 	}
 
-	buffer_view_->updateMetrics(singlePar);
+	buffer_view_->updateMetrics(singlePar && hasFocus());
 
 	updateScrollbar();
 
