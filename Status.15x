@@ -1,0 +1,111 @@
+Debugging spree:
+
+Rules:
+1. bugs that aim for 1.5.0 should be listed here.
+2. whoever fixes a bug sign his name before the bug and move it to the
+end of this file,
+  along with a lyx-devel announcement.
+3. we need to figure out a price for the champion (and second place).
+
+
+BUGS:
+
+* Spell checking cannot be invoked a second time!
+
+* In the TOC dialog, switching between the different TOC types (TOC,
+Table, Float, etc.) is broken
+
+* TOC crashes (simply make a few sections, subsections, sections; then
+add TOC before all sections and click on the left button)
+
+* If you open Document>Settings... for the first time,
+the dialog is much too small to show its content; if
+you invoke it the second time, everything is fine
+
+* If you open Edit>Test Style... for the first time,
+the choice text for "Never Toggled>Size" doesn't fit
+in the selection box (note that in German, texts
+are a bit longer than in English). Interestingly,
+if you invoke the dialog a second time, its button sizes
+are adjusted to their content.
+
+* In the math control panel, "Detach panel" is broken
+(only 1 button is visible in the detached panel)
+
+* In the math control panel, switching between different
+"functions" is broken (retry a couple of times)
+
+* edit->text style->capitalize/lower/upper case doesn't work
+due to the change tracking-related changes
+
+* The multi-window thing is broken. When I switch windows I get crashes
+all the time.
+
+* Spell checking is broken. The first time I run it an empty window is
+shown instead of the first misspelled word. After clicking a button I'm
+able to correct some words, but afterwards the spell checker will never
+run again.
+
+* Window positions are not remembered correctly. Each time I open a
+window again it has moved towards the bottom of the screen. Maybe the
+inner window position is applied to the outer window?
+
+* The visual table size selection on the the "Insert Table" dialog is gone.
+
+* Icons in the toolbars do not have the correct size, they are stretched
+a few pixels compared to 1.4. This makes the images look jagged and the
+initial window size has also become to small to show the whole toolbar.
+
+* Toolbars always show on the top of the screen, even though they are
+set to "bottom" in the ui file.
+
+* The initial size of Preferences window is too small. When I try to
+resize it the window jumps to the right size.
+
+* There should be a close button on the tabs.
+
+* Polishing:
+
+- No icon for "note-next" in the "review" toolbar
+
+- In TOC, the buttons "Up", "Down", "Promote", and
+"Demote" are not self-explaining. Why don't we group
+them in two pairs: Section Up/Down, Level Up/Down?
+The arrangement of the buttons may also give some hint
+to the user.
+
+- In the math control panel, there is no icon for
+"Set Math Font"
+
+- In the math control panel, the buttons are too small
+
+- In the "Math Delimiters" dialog, there is no need
+to repeat the term "Size" for all values in the selection box;
+the label is already named "Size"
+
+- some English menu items don't have a '&' character.
+(box,date,paste...)
+
+- src/frontends/qt4/ui/QCitationUi.ui:70
+"&Selected citations:" should be "&Selected Citations:"
+
+
+
+CREDITS:
+
+* Performance on Windows is bad. On my system, scrolling the User Guide
+takes 10 seconds with LyX 1.4 and more than 30 seconds with LyX 1.5.
+Although I have a modern computer, it all feels very slow.
+
+FIXED (Abdel 04/10/06): This was due to spurious message in QLPainter.C,
+I've put that in Debug::PAINTING, so 1.5 is faster than 1.4 on Windows XP
+on my 3 years old laptop (18s for the UserGuide test).
+
+
+* The multi-window thing is broken. When I have the same document in two
+windows, only the last selected paragraph in one of the windows gets
+updated.
+
+FIXED (Abdel 04/10/06): This was due my singlePar optimization. With my
+last commit, the optimization is enabled only if the WorkArea has the
+focus.
