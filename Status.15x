@@ -15,6 +15,9 @@ BUGS:
 * In the TOC dialog, switching between the different TOC types (TOC,
 Table, Float, etc.) is broken
 
+* In the TOC dialog, the slider for altering the display level is
+non-functional (not implemented).
+
 * TOC crashes (simply make a few sections, subsections, sections; then
 add TOC before all sections and click on the left button)
 
@@ -65,8 +68,6 @@ resize it the window jumps to the right size.
 * There should be a close button on the tabs.
 
 * Polishing:
-
-- No icon for "note-next" in the "review" toolbar
 
 - In TOC, the buttons "Up", "Down", "Promote", and
 "Demote" are not self-explaining. Why don't we group
@@ -206,3 +207,7 @@ updated.
 FIXED (Abdel 04/10/06): This was due my singlePar optimization. With my
 last commit, the optimization is enabled only if the WorkArea has the
 focus.
+
+* No icon for "note-next" in the "review" toolbar
+
+ADDED (JSpitzm 2006-11-04).
