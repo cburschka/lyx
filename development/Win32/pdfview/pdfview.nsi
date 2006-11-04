@@ -35,7 +35,9 @@ SilentInstall silent
 ;Variables
 
 Var Dummy
-Var FileName
+Var OriginalFile
+Var OriginalFileName
+Var PDFFile
 Var Viewer
 Var OriginalTimeHigh
 Var OriginalTimeLow
@@ -69,24 +71,33 @@ Var CurrentTimeLow
 
 Section "View PDF file"
 
+  InitPluginsDir ;Temporary directory for PDF file
+
   ;Command line parameters
   Call GetParameters
-  Pop $FileName
+  Pop $OriginalFile
 
   ;Trim quotes
-  StrCpy $Dummy $FileName 1
+  StrCpy $Dummy $OriginalFile 1
   ${if} $Dummy == '"'
-    StrCpy $FileName $FileName "" 1
+    StrCpy $OriginalFile $OriginalFile "" 1
   ${endif}
-  StrCpy $Dummy $FileName 1 -1
+  StrCpy $Dummy $OriginalFile 1 -1
   ${if} $Dummy == '"'
-    StrCpy $FileName $FileName -1
+    StrCpy $OriginalFile $OriginalFile -1
   ${endif}
 
-  GetFullPathName $FileName $FileName
+  GetFullPathName $OriginalFile $OriginalFile
+  Push $OriginalFile
+  Call GetFileName
+  Pop $OriginalFileName
+
+  SetOutPath $TEMP ;The LyX tmpbuf should not be locked
+
+  StrCpy $PDFFile $PLUGINSDIR\$OriginalFileName
 
   ;Check whether the file will be opened with Adobe Reader or Adobe Acrobat
-  Push $FileName
+  Push $OriginalFile
   !insertmacro SystemCall "shell32::FindExecutable(t s, t '', t .s)"
   Call GetFileName
   Pop $Viewer
@@ -97,51 +108,49 @@ Section "View PDF file"
     ;Using Adobe viewer
     
     ;Close existing view
-    ${if} ${fileexists} $FileName~
-      !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$FileName~"'
+    ${if} ${fileexists} $PDFFile
+      !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
     ${endif}
     
     ;Copy PDF to temporary file to allow LyX to overwrite the original
-    CopyFiles /SILENT $FileName $FileName~
+    CopyFiles /SILENT $OriginalFile $PDFFile
     
     ;Open a new view
-    !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$FileName~"'
+    !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$PDFFile"'
     
     ;Monitor for updates of the original file
     
-    GetFileTime $FileName $OriginalTimeHigh $OriginalTimeLow
+    GetFileTime $OriginalFile $OriginalTimeHigh $OriginalTimeLow
     
     ${do}
     
       Sleep 500
       
-      FileOpen $Dummy $FileName~ a
+      FileOpen $Dummy $PDFFile a
       
       ${if} $Dummy != ""
         ;File no longer locked, reader closed
         FileClose $Dummy
-        Delete $FileName~
+        Delete $PDFFile
         Quit
       ${endif}
       
-      ${unless} ${fileexists} $FileName
-        ;Original no longer exists
-        Delete $FileName~
-        Quit
-      ${endif}
-      
-      GetFileTime $FileName $CurrentTimeHigh $CurrentTimeLow
-      
-      ${if} $OriginalTimeHigh != $CurrentTimeHigh
-        ${orif} $OriginalTimeLow != $CurrentTimeLow
+      ${if} ${fileexists} $OriginalFile
         
-        ;Original has been modified, update!
+        GetFileTime $OriginalFile $CurrentTimeHigh $CurrentTimeLow
         
-        StrCpy $OriginalTimeHigh $CurrentTimeHigh
-        StrCpy $OriginalTimeLow  $CurrentTimeLow
-        !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$FileName~"'
-        CopyFiles /SILENT $FileName $FileName~
-        !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$FileName~"'
+        ${if} $OriginalTimeHigh != $CurrentTimeHigh
+          ${orif} $OriginalTimeLow != $CurrentTimeLow
+          
+          ;Original has been modified, update!
+          
+          StrCpy $OriginalTimeHigh $CurrentTimeHigh
+          StrCpy $OriginalTimeLow  $CurrentTimeLow
+          !insertmacro HideConsole '"$EXEDIR\pdfclose.exe" --file "$PDFFile"'
+          CopyFiles /SILENT $OriginalFile $PDFFile
+          !insertmacro HideConsole '"$EXEDIR\pdfopen.exe" --back --file "$PDFFile"'
+          
+        ${endif}
         
       ${endif}
     
@@ -151,7 +160,7 @@ Section "View PDF file"
   
     ;Another PDF viewer like GSView is used
     ;No need for special actions, just forward to ShellExecute
-    ExecShell open $FileName
+    ExecShell open $OriginalFile
     
   ${endif}
     
