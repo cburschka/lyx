@@ -1,0 +1,360 @@
+diff -riwbBu -Xex dvipost-1.1/dvi.c dvipost-1.1-modified/dvi.c
+--- dvipost-1.1/dvi.c	Wed Mar 22 14:59:58 2006
++++ dvipost-1.1-modified/dvi.c	Wed May 31 11:27:44 2006
+@@ -502,8 +502,12 @@
+ 		for (i = 0; i < pos_changed.dim; i++)
+ 		{
+ 			POS *p = pos_changed.tab + i;
++			if (!p->type)
++				dout_special(out, osstart);	
+ 			cmd_goto(out, p->end, cbcol);
+ 			dout_putrule(out, p->end - p->beg, cbrule);
++			if (!p->type)
++				dout_special(out, osend);
+ 		}
+ 
+ 		dout_special(out, cbend);
+@@ -625,10 +629,9 @@
+ 	mv_right(w);
+ 	text_cnt++;
+ 
+-	if	(!cbmode[page_stat])	return;
+-
++	if	(!cbmode[page_stat] && !osmode[page_stat])	return;
+ 	pos_add(&pos_changed, dvi_stat.v - text_height - cbexp,
+-		dvi_stat.v + text_depth + cbexp);
++		dvi_stat.v + text_depth + cbexp, cbmode[page_stat]);
+ 
+ 	if	(cbframe)
+ 	{
+diff -riwbBu -Xex dvipost-1.1/dvipost.c dvipost-1.1-modified/dvipost.c
+--- dvipost-1.1/dvipost.c	Mon Nov  4 08:44:46 2002
++++ dvipost-1.1-modified/dvipost.c	Mon Sep 18 13:11:58 2006
+@@ -1,6 +1,7 @@
+ /*	dvi file post processing
+ 
+ $Copyright (C) 2002 Erich Fruehstueck
++Modified version by LyX Team
+ 
+ Dvipost is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public
+@@ -18,13 +19,20 @@
+ 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+ 
+-
+ #include "dvipost.h"
+ #include "dvi.h"
++#if !defined(_MSC_VER)
+ #include <unistd.h>
+ #include <dirent.h>
++#else
++#include "dirent.h"
++#endif
+ #include <sys/stat.h>
+ 
++#ifdef _WIN32
++#include <windows.h>
++#endif
++
+ int dvipost (const char *iname, const char *oname)
+ {
+ 	FILE *input, *tmp, *output;
+@@ -33,7 +41,19 @@
+ 
+ /*	open temporary file
+ */
++#ifndef _WIN32
+ 	tmp = tmpfile();
++#else
++	/* create temporary file in Windows temp directory */
++
++	char tmppath[MAX_PATH-14];
++	char tmpname[MAX_PATH];
++
++	GetTempPath(MAX_PATH-14, tmppath);
++	GetTempFileName(tmppath, "dvp", 0, tmpname);
++
++	tmp = fopen(tmpname, "r+b");
++#endif
+ 
+ 	if	(!tmp)
+ 	{
+@@ -57,8 +77,10 @@
+ 	}
+ 	else
+ 	{
++#ifndef _WIN32
+ 		iname = "<stdin>";
+ 		input = stdin;
++#endif
+ 	}
+ 
+ /*	check magic and process input
+@@ -94,6 +116,8 @@
+ 
+ /*	copy file to output
+ */
++
++#ifndef _WIN32
+ 	rewind(tmp);
+ 
+ 	if	(oname && strcmp(oname, "-") != 0)
+@@ -113,23 +137,20 @@
+ 		oname = "<stdout>";
+ 		output = stdout;
+ 	}
++#endif
+ 
+ 	message(NOTE, "$!: Copy data to %s\n", oname);
+ 
+-	while ((c = getc(tmp)) != EOF)
+-		putc(c, output);
+-
++#ifndef _WIN32
++	while ((c = getc(tmp)) != EOF) putc(c, output);
+ 	fclose(tmp);
++#else
++	/* Copy file directly */
++	fclose(tmp);
++	CopyFile(tmpname, oname, FALSE);
++	DeleteFile(tmpname);
++#endif
+ 
+-	if	(ferror(output))
+-	{
+-		fprintf(stderr, "%s: ", pname);
+-		perror(oname);
+-		stat = EXIT_FAILURE;
+-	}
+-	else	stat = EXIT_SUCCESS;
+-
+-	fclose(output);
+ 	return stat;
+ }
+diff -riwbBu -Xex dvipost-1.1/dvipost.h dvipost-1.1-modified/dvipost.h
+--- dvipost-1.1/dvipost.h	Mon Nov  4 08:44:46 2002
++++ dvipost-1.1-modified/dvipost.h	Sun Sep 17 22:03:51 2006
+@@ -1,6 +1,7 @@
+ /*	postfilter
+ 
+ $Copyright (C) 2002 Erich Fruehstueck
++Modified version by LyX Team
+ 
+ Dvipost is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public
+@@ -44,6 +45,7 @@
+ typedef struct {
+ 	int beg;
+ 	int end;
++	int type;
+ } POS;
+ 
+ typedef struct {
+@@ -53,7 +55,7 @@
+ } PosTab;
+ 
+ void pos_init (PosTab *pos);
+-void pos_add (PosTab *pos, int beg, int end);
++void pos_add (PosTab *pos, int beg, int end, int type);
+ 
+ extern int process_dvi (const char *id, FILE *in, FILE *out);
+ extern int dvipost (const char *iname, const char *oname);
+diff -riwbBu -Xex dvipost-1.1/main.c dvipost-1.1-modified/main.c
+--- dvipost-1.1/main.c	Wed Nov 27 15:19:14 2002
++++ dvipost-1.1-modified/main.c	Sun Sep 17 21:56:42 2006
+@@ -24,15 +24,19 @@
+ #define	TEX_ACCEPT_OPTIONS	1
+ #endif
+ 
+-static char *version = "dvipost version 1.0\n\
++static char *version = "dvipost version 1.1 with modifications by LyX Team (sep 2006)\n\
+ Dvipost is copyright (C) 2002 Erich Fruehstueck.\n";
+ 
+ #include "dvipost.h"
+ #include "dvi.h"
++#if !defined(_MSC_VER)
+ #include <unistd.h>
++#endif
+ #include <string.h>
+ #include <sys/types.h>
++#ifndef _WIN32
+ #include <sys/wait.h>
++#endif
+ 
+ char **tex_argv = NULL;
+ int tex_argc = 0;
+@@ -233,17 +237,26 @@
+ 	return stat;
+ }
+ 
+-static char *get_dvi_name (const char *arg)
++static char *get_dvi_name (char *arg)
+ {
+ 	char *p, *dvi;
+ 	
++#ifdef _WIN32	
++	int i;
++
++	for (i=0; i < strlen(arg); ++i) {
++		if (arg[i] == '\\')
++			arg[i] = '/';
++	}
++#endif
++	
+ 	p = strrchr(arg, '/');
+ 
+ 	if	(p && p[1])
+ 		arg = p + 1;
+ 
+-	dvi = strcpy(xalloc(strlen(arg) + 4), arg);
+-	p = strchr(dvi, '.');
++	dvi = strcpy(xalloc(strlen(arg) + 5), arg);
++	p = strrchr(dvi, '.');
+ 
+ 	if	(p && strcmp(p, ".tex") == 0)
+ 		*p = 0;
+@@ -267,14 +280,32 @@
+ 	char *dviname;
+ 	int flag;
+ 	int i, n;
++#ifdef _WIN32
++	char *cmd;
++	char *qch;
++	char *p;
++#else
+ 	int status;
+ 	pid_t pid;
++#endif
+ 	time_t stamp;
+ 
+ 	tex_argv = xalloc((1 + argc) * sizeof(char*));
+ 	tex_argv[0] = argv[0];
+ 	tex_argc = 1;
+ 
++#ifdef _WIN32
++	for (i=0; i < strlen(argv[0]); ++i) {
++		if (argv[0][i] == '\\')
++			argv[0][i] = '/';
++	}
++	
++	p = strrchr(argv[0], '.');
++
++	if	(p && strcmp(p, ".exe") == 0)
++		*p = 0;
++#endif
++
+ 	pname = strrchr(argv[0], '/');
+ 
+ 	if	(pname == NULL)	pname = argv[0];
+@@ -356,6 +387,34 @@
+ 	fflush(stdout);
+ 
+ 	time(&stamp);
++#ifdef _WIN32
++	for (i=0, n=0; i < tex_argc; ++i) {
++	    n += strlen(tex_argv[i]);
++	    qch = tex_argv[i];
++	    while ((qch = strchr(qch, '"'))) {
++		++qch;
++		++n;
++	    }
++	}
++
++	cmd = xalloc(1 + n + 3*(tex_argc-1));
++	strcpy(cmd, tex_argv[0]);
++
++	for (i=1, n=strlen(cmd); i < tex_argc; ++i)
++	{
++	    cmd[n++] = ' ';
++	    cmd[n++] = '"';
++	    for (qch=tex_argv[i]; *qch; ++qch) {
++		if (*qch == '"')
++		    cmd[n++] = '\\';
++		cmd[n++] = *qch;
++	    }
++	    cmd[n++] = '"';
++	}
++	cmd[n] = '\0';
++	system(cmd);
++	xfree(cmd);
++#else
+ 	pid = fork();
+ 
+ 	if	(pid == -1)
+@@ -368,6 +427,7 @@
+ 		execvp(tex_argv[0], tex_argv);
+ 
+ 	waitpid(pid, &status, 0);
++#endif
+ 
+ 	if	(dviname)
+ 		return dvipost(dviname, dviname);
+diff -riwbBu -Xex dvipost-1.1/pos.c dvipost-1.1-modified/pos.c
+--- dvipost-1.1/pos.c	Tue Oct 29 12:54:02 2002
++++ dvipost-1.1-modified/pos.c	Sun Sep 17 22:03:41 2006
+@@ -1,6 +1,7 @@
+ /*	position table
+ 
+ $Copyright (C) 2002 Erich Fruehstueck
++Modified version by LyX Team
+ 
+ Dvipost is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public
+@@ -39,7 +40,7 @@
+ 	pos->dim = 0;
+ }
+ 
+-void pos_add (PosTab *pos, int beg, int end)
++void pos_add (PosTab *pos, int beg, int end, int type)
+ {
+ 	if	(beg > end)
+ 	{
+@@ -56,7 +57,7 @@
+ 		{
+ 			if	(last->end < end)	last->end = end;
+ 			if	(last->beg > beg)	last->beg = beg;
+-
++			if      (last->type < type)     last->type = type;
+ 			return;
+ 		}
+ 	}
+@@ -64,5 +65,6 @@
+ 	pos_expand(pos);
+ 	pos->tab[pos->dim].beg = beg;
+ 	pos->tab[pos->dim].end = end;
++	pos->tab[pos->dim].type = type;
+ 	pos->dim++;
+ }
+diff -riwbBu -Xex dvipost-1.1/tfm.c dvipost-1.1-modified/tfm.c
+--- dvipost-1.1/tfm.c	Sun Nov  3 09:52:04 2002
++++ dvipost-1.1-modified/tfm.c	Sun Sep 17 22:03:44 2006
+@@ -1,6 +1,7 @@
+ /*	tfm data
+ 
+ $Copyright (C) 2002 Erich Fruehstueck
++Modified version by LyX Team
+ 
+ Dvipost is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public
+@@ -22,6 +23,11 @@
+ #include "dvi.h"
+ #include <ctype.h>
+ 
++#if defined(_MSC_VER)
++#define popen _popen
++#define pclose _pclose
++#endif
++
+ static char tfm_buf[1024];
+ static int tfm_err = 0;
+ static int tfm_pos = 0;
+@@ -112,6 +118,8 @@
+ 	{
+ 		if	(tfm_buf[n] == '\n')
+ 		{
++			if (n && tfm_buf[n-1] == '\r')
++			    n--;
+ 			tfm_buf[n] = 0;
+ 			break;
+ 		}

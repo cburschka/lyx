@@ -1,0 +1,131 @@
+Index: base/Aiksaurus.cpp
+===================================================================
+RCS file: /cvsroot/aiksaurus/base/Aiksaurus.cpp,v
+retrieving revision 1.5
+diff -u -r1.5 Aiksaurus.cpp
+--- base/Aiksaurus.cpp	3 Apr 2005 19:10:55 -0000	1.5
++++ base/Aiksaurus.cpp	12 Jul 2006 21:00:20 -0000
+@@ -36,36 +36,69 @@
+ using namespace std;
+ 
+ #if defined WIN32
++
+ #ifdef AIK_DATA_DIR
+ #undef AIK_DATA_DIR
+ #endif
+-	#include <windows.h>
+-	#define WIN32_LEAN_AND_MEAN
+-	// Default aik_data_dir is local directory
+-	std::string AIK_DATA_DIR(".\\");
+-	// Regestry Reading for AIK_DATA_DIR
+-	void ReadRegistry()
+-	{
+-		HKEY hKey;
+-		unsigned long lType;	
+-		DWORD dwSize;
+-		unsigned char* szValue = NULL;
+-		if( ::RegOpenKeyEx( HKEY_LOCAL_MACHINE, "Software\\Aiksaurus", 0, KEY_READ, &hKey) == ERROR_SUCCESS )
+-		{
+-			// Determine size of string
+-			if( ::RegQueryValueEx( hKey, "Data_Dir", NULL, &lType, NULL, &dwSize) == ERROR_SUCCESS )
+-			{
+-				szValue = new unsigned char[dwSize + 1];
+-				::RegQueryValueEx( hKey, "Data_Dir", NULL, &lType, szValue, &dwSize);
+-				AIK_DATA_DIR = (char*) szValue;
+-				delete[] szValue;
+-			}
+-		}
+-	}
++
++#ifndef HAVE_GETENV
++#define HAVE_GETENV
++#endif
++
++#include <windows.h>
++#define WIN32_LEAN_AND_MEAN
++	
++// Default aik_data_dir is local directory
++std::string AIK_DATA_DIR(".\\");
++	
++	std::string ReadRegString(HKEY hive, std::string key, std::string name)
++    {
++
++        // Reads a string from the Windows registry (used to get paths)
++
++        HKEY hKey;
++        unsigned long lType;
++        DWORD dwSize;
++        unsigned char* szValue = NULL;
++
++        if (::RegOpenKeyEx(hive, key.c_str(), 0, KEY_READ, &hKey) == ERROR_SUCCESS)
++        {
++            if(::RegQueryValueEx(hKey, name.c_str(), NULL, &lType, NULL, &dwSize) == ERROR_SUCCESS)
++            {
++                szValue = new unsigned char[dwSize + 1];
++                ::RegQueryValueEx(hKey, name.c_str(), NULL, &lType, szValue, &dwSize);
++                std::string RegistryReturn((char*)szValue);
++                delete[] szValue;
++                return RegistryReturn;
++            } else {
++                return "";
++            }
++        } else {
++            return "";
++        }
++    }
++
++    HKEY GetRegHive()
++    {
++
++        // Check whether Aiksaurus is installed for the current user or for all users
++
++        std::string value;
++
++        if (ReadRegString(HKEY_LOCAL_MACHINE, "Software\\Aiksaurus", "Data Path") == "")
++        {
++            return HKEY_CURRENT_USER;
++        } else {
++            return HKEY_LOCAL_MACHINE;
++        }
++
++    }
++	
+ 	#if defined _DLL_BUILD
+ 		//Add a DllMain Entry point
+ 		BOOL APIENTRY DllMain( HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { return TRUE; }
+ 	#endif
++
+ #endif
+ 
+ namespace AiksaurusImpl
+@@ -256,14 +289,25 @@
+     try
+     {
+ #if defined WIN32
+-		ReadRegistry();
++        std::string base(AIK_DATA_DIR);
++        std::string value;
++        HKEY hive;
++
++        hive = GetRegHive();
++        value = (hive, "Software\\Aiksaurus", "Data Path");
++        if (value != "") base == value;
+ #endif
+-	std::string base(AIK_DATA_DIR);
++		
+ #ifdef HAVE_GETENV
+-	char * aikdatadir_envvar = getenv ("AIK_DATA_DIR");
+-	if (aikdatadir_envvar) base = std::string(aikdatadir_envvar);
++        char * aikdatadir_envvar = getenv ("AIK_DATA_DIR");
++        if (aikdatadir_envvar) base = std::string(aikdatadir_envvar);
++#endif
++
++#if defined WIN32
++        if (base.substr(base.length() - 1, 1) != "\\") base.append("\\");
+ #endif
+-	std::string mfile(base + "meanings.dat");
++
++        std::string mfile(base + "meanings.dat");
+         std::string wfile(base + "words.dat");
+         d_impl_ptr = new ThesaurusImpl(mfile.c_str(), wfile.c_str());
+     }

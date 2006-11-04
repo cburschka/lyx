@@ -1,32 +1,17 @@
-================
-README for Win32
-================
+LyX for Windows
+===============
 
-If you just want to use LyX, get the official Windows installer and
-use that. More detailed help can be found on the wiki at 
-http://wiki.lyx.org/Windows.
+Since July 2005, an official native Windows version of LyX is available.
+It requires Windows 2000, XP, Server 2003 or later.
 
-If you want to compile LyX yourself, there are a number of ways to do
-that.
+Binary Releases
+===============
 
-LyX has been ported to Win32 using three different compilers:
-Microsoft Visual Studio C++ compiler (VC). MinGW gcc, or Cygwin gcc.
+Ready-to-use installers can be downloaded from http://wiki.lyx.org/Windows
+Additional information and tips are also available on this site.
 
-There are also three different build solutions avaiable: Scons, Cmake
-or using the traditional Unix autoconf machinery.
+Compiling
+=========
 
-INSTALL.scons covers how to build using SCons, using any of the three
-compilers.
-
-development/cmake/README.cmake explains how to build using CMake. This
-is especially good with VC, because it produces real .sln files.
-
-See INSTALL.win32 for info about how to build using Cygwin.
-
-Joost has prepared a .zip package with most of the stuff that you'll
-need to compile LyX yourself. Get that from 
-ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc.zip.
-Unzip in c:\program files\ and rename the directory to gnuwin32, and 
-you will find that the CMake solution works almost out of the box,
-if you have Visual Studio.
-
+If you want to participate in the development of LyX and need to compile
+LyX for Windows yourself, please follow the instructions in INSTALL.Win32

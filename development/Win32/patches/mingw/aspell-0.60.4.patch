@@ -1,0 +1,253 @@
+diff -riwbBuN -Xex aspell-0.60.4/Makefile.am aspell-0.60.4-modified/Makefile.am
+--- aspell-0.60.4/Makefile.am	Wed Oct 19 11:12:02 2005
++++ aspell-0.60.4-modified/Makefile.am	Thu Jun 15 14:45:47 2006
+@@ -32,6 +32,7 @@
+ endif
+ 
+ libaspell_la_SOURCES =\
++  common/aspell_win.cpp\
+   common/cache.cpp\
+   common/string.cpp\
+   common/getdata.cpp\
+diff -riwbBuN -Xex aspell-0.60.4/common/aspell_win.cpp aspell-0.60.4-modified/common/aspell_win.cpp
+--- aspell-0.60.4/common/aspell_win.cpp	Thu Jan  1 01:00:00 1970
++++ aspell-0.60.4-modified/common/aspell_win.cpp	Fri Jun 16 01:19:04 2006
+@@ -0,0 +1,54 @@
++#ifdef _WIN32
++
++#include <windows.h>
++#include "string.hpp"
++
++namespace acommon {
++
++  String ReadRegString(HKEY hive, String key, String name)
++  {
++  
++    // Reads a string from the Windows registry (used to get paths)  
++	
++    HKEY hKey;
++    unsigned long lType;
++    DWORD dwSize;
++    unsigned char* szValue = NULL;
++	
++    if (::RegOpenKeyEx(hive, key.c_str(), 0, KEY_READ, &hKey) == ERROR_SUCCESS)
++    {
++      if(::RegQueryValueEx(hKey, name.c_str(), NULL, &lType, NULL, &dwSize) == ERROR_SUCCESS)
++      {
++        szValue = new unsigned char[dwSize + 1];
++        ::RegQueryValueEx(hKey, name.c_str(), NULL, &lType, szValue, &dwSize);
++        String RegistryReturn((char*)szValue);
++        delete[] szValue;
++        return RegistryReturn;
++	  } else {
++	    return "";
++      }
++    } else {
++	  return "";
++	}
++  
++  }
++  
++  HKEY GetRegHive()
++  {
++    
++    // Check whether Aspell is installed for the current user or for all users
++	
++    String value;
++	
++    if (ReadRegString(HKEY_LOCAL_MACHINE, "Software\\Aspell", "Dictionary Path") == "")
++    {
++      return HKEY_CURRENT_USER;
++    } else {
++      return HKEY_LOCAL_MACHINE;
++    }
++	
++  }
++
++}  
++	
++#endif
+diff -riwbBuN -Xex aspell-0.60.4/common/aspell_win.hpp aspell-0.60.4-modified/common/aspell_win.hpp
+--- aspell-0.60.4/common/aspell_win.hpp	Thu Jan  1 01:00:00 1970
++++ aspell-0.60.4-modified/common/aspell_win.hpp	Thu Jun 15 15:33:58 2006
+@@ -0,0 +1,18 @@
++#ifdef _WIN32
++
++#ifndef ASPELL_WIN__HPP
++#define ASPELL_WIN__HPP
++
++#include "string.hpp"
++#include <windows.h>
++
++namespace acommon {
++
++  extern HKEY GetRegHive();
++  extern String ReadRegString(HKEY type, String key, String name);
++
++}
++
++#endif
++
++#endif
+diff -riwbBuN -Xex aspell-0.60.4/common/config.cpp aspell-0.60.4-modified/common/config.cpp
+--- aspell-0.60.4/common/config.cpp	Wed Jun 22 07:32:30 2005
++++ aspell-0.60.4-modified/common/config.cpp	Wed Jun 14 20:44:29 2006
+@@ -39,6 +39,7 @@
+ #include "string_list.hpp"
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ #include "iostream.hpp"
+ 
+diff -riwbBuN -Xex aspell-0.60.4/common/convert.cpp aspell-0.60.4-modified/common/convert.cpp
+--- aspell-0.60.4/common/convert.cpp	Thu Sep 29 05:20:04 2005
++++ aspell-0.60.4-modified/common/convert.cpp	Sat May 27 12:08:02 2006
+@@ -23,6 +23,7 @@
+ #include "iostream.hpp"
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ namespace acommon {
+ 
+diff -riwbBuN -Xex aspell-0.60.4/common/file_util.cpp aspell-0.60.4-modified/common/file_util.cpp
+--- aspell-0.60.4/common/file_util.cpp	Mon Nov 15 13:29:54 2004
++++ aspell-0.60.4-modified/common/file_util.cpp	Sat May 27 12:08:02 2006
+@@ -26,6 +26,7 @@
+ 
+ #ifdef WIN32
+ 
++#  include "asc_ctype.hpp"
+ #  include <io.h>
+ #  define ACCESS _access
+ #  include <windows.h>
+diff -riwbBuN -Xex aspell-0.60.4/common/gettext_init.cpp aspell-0.60.4-modified/common/gettext_init.cpp
+--- aspell-0.60.4/common/gettext_init.cpp	Tue Nov  9 09:20:24 2004
++++ aspell-0.60.4-modified/common/gettext_init.cpp	Thu Jun 15 15:31:02 2006
+@@ -1,5 +1,13 @@
++#include "settings.h"
++#include "string.hpp"
++
++#ifdef _WIN32
++  #include <windows.h>
++  #include "aspell_win.hpp"
++#endif
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ #if ENABLE_NLS
+ 
+@@ -11,12 +19,24 @@
+ 
+ extern "C" void aspell_gettext_init()
+ {
+-  {
+     acommon::Lock l(&lock);
+     if (did_init) return;
+     did_init = true;
+-  }
++  
++#ifdef _WIN32
++  // Registry key for Locale Path
++  
++  acommon::String value;
++  HKEY hive;
++  
++  hive = acommon::GetRegHive();
++  value = acommon::ReadRegString(hive, "Software\\Aspell", "Locale Path");
++  if (value == "") value = LOCALEDIR;
++  
++  bindtextdomain("aspell", value.c_str());
++#else
+   bindtextdomain("aspell", LOCALEDIR);
++#endif
+ }
+ 
+ #else
+diff -riwbBuN -Xex aspell-0.60.4/common/info.cpp aspell-0.60.4-modified/common/info.cpp
+--- aspell-0.60.4/common/info.cpp	Wed Nov 10 07:18:46 2004
++++ aspell-0.60.4-modified/common/info.cpp	Fri Jun 16 01:20:52 2006
+@@ -15,9 +15,11 @@
+  /* BSDi defines u_intXX_t types in machine/types.h */
+ #include <machine/types.h>
+ #endif
++
+ #ifdef WIN32
+ #  include <windows.h>
+ #  include <winbase.h>
++#include "aspell_win.hpp"
+ #endif
+ 
+ #include "iostream.hpp"
+@@ -38,6 +40,7 @@
+ #include "string_map.hpp"
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ namespace acommon {
+ 
+@@ -492,8 +495,22 @@
+   void get_data_dirs (Config * config,
+ 		      StringList & lst)
+   {
++    String dictpath;
++	HKEY hive;
++	
+     lst.clear();
+-    lst.add(config->retrieve("data-dir"));
++
++    hive = GetRegHive();
++	
++#ifdef _WIN32
++    // Registry key for dictionary path
++    dictpath = ReadRegString(hive, "Software\\Aspell", "Dictionary Path");;
++    if (dictpath == "") dictpath = config->retrieve("data-dir");
++#else
++    dictpath = config->retrieve("data-dir");
++#endif
++
++    lst.add(dictpath);
+     lst.add(config->retrieve("dict-dir"));
+   }
+ 
+diff -riwbBuN -Xex aspell-0.60.4/common/posib_err.cpp aspell-0.60.4-modified/common/posib_err.cpp
+--- aspell-0.60.4/common/posib_err.cpp	Sun Nov 21 03:52:22 2004
++++ aspell-0.60.4-modified/common/posib_err.cpp	Sat May 27 12:08:02 2006
+@@ -13,6 +13,7 @@
+ #include "posib_err.hpp"
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ 
+ namespace acommon {
+diff -riwbBuN -Xex aspell-0.60.4/modules/speller/default/language.cpp aspell-0.60.4-modified/modules/speller/default/language.cpp
+--- aspell-0.60.4/modules/speller/default/language.cpp	Sun Feb 20 22:47:08 2005
++++ aspell-0.60.4-modified/modules/speller/default/language.cpp	Wed Jun 14 19:55:47 2006
+@@ -21,10 +21,11 @@
+ #include "file_util.hpp"
+ 
+ #ifdef ENABLE_NLS
+-#  include <langinfo.h>
++//#include <langinfo.h>
+ #endif
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ namespace aspeller {
+ 
+diff -riwbBuN -Xex aspell-0.60.4/prog/aspell.cpp aspell-0.60.4-modified/prog/aspell.cpp
+--- aspell-0.60.4/prog/aspell.cpp	Sun Jun 19 14:00:46 2005
++++ aspell-0.60.4-modified/prog/aspell.cpp	Wed Jun 14 20:46:09 2006
+@@ -60,6 +60,7 @@
+ #include "hash_fun.hpp"
+ 
+ #include "gettext.h"
++#undef printf
+ 
+ using namespace acommon;
+ 
