@@ -213,11 +213,19 @@ enum CatCode {
 	catInvalid     // 15   <delete>
 };
 
-CatCode theCatcode[256];
+CatCode theCatcode[128];
 
 
-inline CatCode catcode(unsigned char c)
+inline CatCode catcode(lyx::char_type c)
 {
+	/* The fact that we use unicode internally does not change Knuth's TeX
+	engine. It is still 7bit only, not even latin1 or something like that.
+	Therefore, the catcode table needs only to have 128 entries.
+	Everything not in that range is catOther.
+	*/
+	if (c >= 128)
+		return catOther;
+
 	return theCatcode[c];
 }
 
@@ -1448,7 +1456,7 @@ void mathed_parse_normal(InsetMathGrid & grid, string const & str)
 
 void initParser()
 {
-	fill(theCatcode, theCatcode + 256, catOther);
+	fill(theCatcode, theCatcode + 128, catOther);
 	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
 	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
 
