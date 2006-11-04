@@ -166,7 +166,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		// Try and generate a valid index entry.
 		InsetCommandParams icp("index");
 		icp["name"] = cmd.argument().empty() ?
-			from_utf8(bv->getLyXText()->getStringToIndex(bv->cursor())) :
+			bv->getLyXText()->getStringToIndex(bv->cursor()) :
 			cmd.argument();
 		return new InsetIndex(icp);
 	}

@@ -576,7 +576,7 @@ void LyXText::toggleFree(LCursor & cur, LyXFont const & font, bool toggleall)
 }
 
 
-string LyXText::getStringToIndex(LCursor const & cur)
+docstring LyXText::getStringToIndex(LCursor const & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -598,7 +598,7 @@ string LyXText::getStringToIndex(LCursor const & cur)
 			idxstring = tmpcur.selectionAsString(false);
 	}
 
-	return to_utf8(idxstring);
+	return idxstring;
 }
 
 
