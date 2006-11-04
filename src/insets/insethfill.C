@@ -47,14 +47,6 @@ docstring const InsetHFill::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetHFill::latex(Buffer const &, odocstream & os,
-		      OutputParams const &) const
-{
-	os << getCommand() << "{}";
-	return 0;
-}
-
-
 int InsetHFill::plaintext(Buffer const &, odocstream & os,
 		      OutputParams const &) const
 {

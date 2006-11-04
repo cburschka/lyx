@@ -29,9 +29,6 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::HFILL_CODE; }
 	///
-	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
-	///
 	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///

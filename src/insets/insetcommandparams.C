@@ -307,6 +307,10 @@ docstring const InsetCommandParams::getCommand() const
 		} else
 			s += '{' + params_[i] + '}';
 	}
+	if (info_->n == 0)
+		// Make sure that following stuff does not change the
+		// command name.
+		s += "{}";
 	return s;
 }
 
