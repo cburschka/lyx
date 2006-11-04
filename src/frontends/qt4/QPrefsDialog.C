@@ -938,10 +938,13 @@ void PrefConverters::updateGui()
 
 void PrefConverters::switch_converter(int nr)
 {
-	if (nr<0)
+	if (nr < 0)
 		return;
 
 	int const cnr = convertersLW->currentItem()->type();
+	// FIXME: why is there now valid current item?
+	if (cnr < 0) 
+		return;
 	Converter const & c(form_->converters().get(cnr));
 	converterFromCO->setCurrentIndex(form_->formats().getNumber(c.from));
 	converterToCO->setCurrentIndex(form_->formats().getNumber(c.to));
@@ -970,6 +973,9 @@ void PrefConverters::updateButtons()
 		|| from.name() == to.name());
 
 	int const cnr = convertersLW->currentItem()->type();
+	// FIXME: why is there now valid current item?
+	if (cnr < 0) 
+		return;
 	Converter const & c(form_->converters().get(cnr));
 	string const old_command = c.command;
 	string const old_flag = c.flags;
