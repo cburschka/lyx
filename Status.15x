@@ -1,166 +1,205 @@
 Debugging spree:
+----------------
 
 Rules:
 1. bugs that aim for 1.5.0 should be listed here.
-2. whoever fixes a bug sign his name before the bug and move it to the
-end of this file,
-  along with a lyx-devel announcement.
+2. whoever fixes a bug sign his name before the bug and move it to the end of
+   this file, along with a lyx-devel announcement.
 3. we need to figure out a price for the champion (and second place).
 
 
 BUGS:
+-----
 
-* Spell checking cannot be invoked a second time!
+SPELL CHECKING (Joost 4/11/06)
 
-* In the TOC dialog, switching between the different TOC types (TOC,
-Table, Float, etc.) is broken
+* Spell checking cannot be invoked a second time.
+
+* The first time the spell checker is started, an empty window shown instead
+of the first misspelled word.
+
+
+TABLE OF CONTENTS
+
+* In the TOC dialog, switching between the different TOC types (TOC, Table,
+Float, etc.) is broken.
 
 * In the TOC dialog, the slider for altering the display level is
 non-functional (not implemented).
 
-* TOC crashes (simply make a few sections, subsections, sections; then
-add TOC before all sections and click on the left button)
+* TOC crashes (simply make a few sections, subsections, sections; then add TOC
+before all sections and click on the left button)
 
-* If you open Document>Settings... for the first time,
-the dialog is much too small to show its content; if
-you invoke it the second time, everything is fine
+* Items in the TOC cannot be moved using drag & drop (Joost 4/11/06).
 
-* If you open Edit>Test Style... for the first time,
-the choice text for "Never Toggled>Size" doesn't fit
-in the selection box (note that in German, texts
-are a bit longer than in English). Interestingly,
-if you invoke the dialog a second time, its button sizes
-are adjusted to their content.
-
-* In the math control panel, "Detach panel" is broken
-(only 1 button is visible in the detached panel)
-
-* In the math control panel, switching between different
-"functions" is broken (retry a couple of times)
-
-* edit->text style->capitalize/lower/upper case doesn't work
-due to the change tracking-related changes
-
-* The multi-window thing is broken. When I switch windows I get crashes
-all the time.
-
-* Spell checking is broken. The first time I run it an empty window is
-shown instead of the first misspelled word. After clicking a button I'm
-able to correct some words, but afterwards the spell checker will never
-run again.
-
-* Window positions are not remembered correctly. Each time I open a
-window again it has moved towards the bottom of the screen. Maybe the
-inner window position is applied to the outer window?
-
-* The visual table size selection on the the "Insert Table" dialog is gone.
-
-* Icons in the toolbars do not have the correct size, they are stretched
-a few pixels compared to 1.4. This makes the images look jagged and the
-initial window size has also become to small to show the whole toolbar.
-
-* Toolbars always show on the top of the screen, even though they are
-set to "bottom" in the ui file.
-
-* The initial size of Preferences window is too small. When I try to
-resize it the window jumps to the right size.
-
-* There should be a close button on the tabs.
-
-* Polishing:
-
-- In TOC, the buttons "Up", "Down", "Promote", and
-"Demote" are not self-explaining. Why don't we group
-them in two pairs: Section Up/Down, Level Up/Down?
-The arrangement of the buttons may also give some hint
-to the user.
-
-- In the math control panel, there is no icon for
-"Set Math Font"
-
-- In the math control panel, the buttons are too small
-
-- In the "Math Delimiters" dialog, there is no need
-to repeat the term "Size" for all values in the selection box;
-the label is already named "Size"
-
-- some English menu items don't have a '&' character.
-(box,date,paste...)
-
-- src/frontends/qt4/ui/QCitationUi.ui:70
-"&Selected citations:" should be "&Selected Citations:"
+* In TOC, the buttons "Up", "Down", "Promote", and "Demote" are not
+self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
+Up/Down? The arrangement of the buttons may also give some hint to the user.
 
 
-* Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put the cursor
-in another part of the text) the screen is repainted *twice* whereas
-it seems to me that no repainting is necessary at all.
+DIALOGS
 
-* Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going on when
-selecting text. When selecting a word the whole screen is repainted.
+* If you open Document>Settings... or Tools>Preferences... for the first time,
+the dialog is much too small to show its content; if you invoke it the second
+time, everything is fine.
 
-* Too much painting 3 (Edwin 3/11/2006): the screen is repainted even when the selection
-does not change (moving the mouse with the left button pushed down 
+* If you open Edit>Test Style... for the first time, the choice text for
+"Never Toggled>Size" doesn't fit in the selection box (note that in German,
+texts are a bit longer than in English). Interestingly, if you invoke the
+dialog a second time, its button sizes are adjusted to their content.
+
+* Window positions are not remembered correctly. Each time a window is openend
+window again it has moved towards the bottom of the screen. (Joost 3/11/06)
+
+
+MATH CONTROL PANEL
+
+* In the math control panel, "Detach panel" is broken (only 1 button is
+visible in the detached panel).
+
+* In the math control panel, switching between different "functions" is broken
+(retry a couple of times).
+
+- In the math control panel, there is no icon for "Set Math Font".
+
+- In the math control panel, the buttons are too small.
+
+- In the "Math Delimiters" dialog, there is no need to repeat the term "Size"
+for all values in the selection box; the label is already named "Size"
+
+
+OTHER PANELS
+
+* The visual table size selection on the the "Insert Table" dialog is gone
+(Joost 3/11/06).
+
+* The UI for bullet selection in the documents settings looks weird
+(Joost 4/11/06):
+There is a big listbox just to select one of the four levels.
+Isn't this supposed to be a drop-down list or something like that?
+
+
+MULTIPLE WINDOWS / DOCUMENTS
+
+* There are cursor problems when the same document is opened in two windows
+(Joost 4/11/06).
+
+Information from Abdel:
+
+Yes, this is the famous dEPM bug (delete Empty Paragraph Mechanism).
+There are two ways to fix that:
+
+1) the correct way: fix the dEPM to not invalidate the cursor.
+
+2) the easy way: disable the cursor on focus out event and re-enable it at
+focus in event and jump the saved position (at focus out).
+
+* The title bar does not contain the document name when a new window is opened
+(Joost 4/11/06).
+
+* There should be a close button on the tabs (Joost 3/11/06).
+
+
+TOOLBARS
+
+* Toolbars always show on the top of the screen, even though they are set to
+"bottom" in the ui file (Joost 3/11/06).
+
+* When toolbars are hidden, they pop up again after clicking on the document
+area (Joost 4/11/06).
+
+* Icons in the toolbars do not have the correct size, they are stretched a few
+pixels compared to 1.4. This makes the images look jagged and the initial
+window size has also become to small to show the whole toolbar
+(Joost 4/11/06).
+
+
+EDITING
+
+* edit->text style->capitalize/lower/upper case doesn't work due to the change
+tracking-related changes.
+
+
+MENUS
+
+* Some English menu items don't have a '&' character. (box, date, paste...)
+
+- src/frontends/qt4/ui/QCitationUi.ui:70 "&Selected citations:" should be
+"&Selected Citations:".
+
+
+PAINING & PERFORMANCE
+
+* Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put
+the cursor in another part of the text) the screen is repainted *twice*
+whereas it seems to me that no repainting is necessary at all.
+
+* Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going
+on when selecting text. When selecting a word the whole screen is repainted.
+
+* Too much painting 3 (Edwin 3/11/2006): the screen is repainted even when the
+selection does not change (moving the mouse with the left button pushed down 
 always triggers a repaint).
 
 * Slowness on MAC 1 (Bennett 3/11/06):
-There seems to be a fraction of a second lag
-between when I press a key and when the letter appears on screen --
-but the time lag doesn't obviously vary with the amount of text on
-the screen (as was the case previously). Right now, the speed of 
-normal text entry makes LyX-1.5 usable on my 
-not-fast-but-still-not-outdated computer. (Not sure how it would be
-on my slow-but-still-usable laptop.)
+There seems to be a fraction of a second lag between when I press a key and
+when the letter appears on screen -- but the time lag doesn't obviously vary
+with the amount of text on the screen (as was the case previously). Right now,
+the speed of normal text entry makes LyX-1.5 usable on my
+not-fast-but-still-not-outdated computer. (Not sure how it would be on my
+slow-but-still-usable laptop.)
 
 * Slowness on MAC 2 (Bennett 3/11/06):
-Speed is still an issue typing in insets: noticeable lag between 
-typing and text appearing on screen. This does not seem to be
-compounded by having nested insets, and it seems to be compounded 
-only a little by the amount of text in the inset. (This is
+Speed is still an issue typing in insets: noticeable lag between typing and
+text appearing on screen. This does not seem to be compounded by having nested
+insets, and it seems to be compounded only a little by the amount of text in
+the inset. (This is
 especially a problem in math environments.)
 
-* Slowness on MAC 3 (Bennett 3/11/06): Some operations that with
-1.4 are pretty much instantaneous (inserting a footnote, dragging 
-the mouse, switching to LyX from another application, opening
-dialogs, etc.) take quite a long time to complete in 1.5.
+* Slowness on MAC 3 (Bennett 3/11/06): Some operations that with 1.4 are
+pretty much instantaneous (inserting a footnote, dragging the mouse, switching
+to LyX from another application, opening dialogs, etc.) take quite a long time
+to complete in 1.5.
 
-* Bennett 3/11/06: Cursor is still not visible on MAC.
+
+MAC OS X
+
+* Cursor is still not visible on MAC Bennett (3/11/06).
 
 * Drawing oddities on MAC (Bennett 3/11/06):
-lines occasionally overlapping vertically, math characters not properly
-aligned vertically. Not sure if anyone else has seen these.
+Lines occasionally overlapping vertically, math characters not properly
+aligned vertically.
 
 * Many issues with toolbars on MAC (Bennett 3/11/06):
-Most obvious of which are that icons are spaced too widely and that
-changes in the visibility of the toolbars with the GUI do not stick
-after the screen is redrawn).
+Most obvious of which are that icons are spaced too widely and that changes in
+the visibility of the toolbars with the GUI do not stick after the screen is
+redrawn).
 
 * Many issue with dialogs on MAC (Bennett 3/11/06):
-Mmost obviously: the Preferences dialog -- which can only be
-accessed now via keyboard command, not from the menu -- appears 
-initially too small and must be resized; not possible to select
-buttons with the keyboard).
+Mmost obviously: the Preferences dialog -- which can only be accessed now via
+keyboard command, not from the menu -- appears initially too small and must be
+resized; not possible to select buttons with the keyboard).
 
-* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not
-appear in the menu, even though a converter and viewer are defined
-in Preferences.
+* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
+in the menu, even though a converter and viewer are defined in Preferences.
 
-* Menu bar disappears on MAC (instead of being disabled) when dialogs
-appear.
+* Menu bar disappears on MAC (instead of being disabled) when dialogs appear.
 
 * Mac Crash (Bennett 3/11/06):
-On launch from GUI (by double-clicking on the LyX
-icon). As I reported before, this happens only when using the GUI;
-I can successfully start LyX from the Terminal, with or without gdb.
-Hence the only debug information I get is this, printed out in Console.app
-when I try launching from the GUI (note that the number changes everytime):
+On launch from GUI (by double-clicking on the LyX icon). As I reported before,
+this happens only when using the GUI; I can successfully start LyX from the
+Terminal, with or without gdb. Hence the only debug information I get is this,
+printed out in Console.app when I try launching from the GUI (note that the
+number changes everytime):
 
 Wrong command line option `-psn_0_182321153'. Exiting.
 
-Hint from Andreas Vox: LyX must accept any option starting with '-psn' and pass it oon to the
-Qt initialisation. On Mac this gives the app a link to the Window system.
+Hint from Andreas Vox: LyX must accept any option starting with '-psn' and
+pass it oon to the Qt initialisation. On Mac this gives the app a link to the
+Window system.
 
-
-* Mac Crash On quit (Bennett). Here's the backtrace:
+* Mac Crash On quit (Bennett).
+Here's the backtrace:
 #0  std::string::compare (this=0x65646f75, __str=@0xdab7edc) at /opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_lang_gcc42/work/build/powerpc-apple-darwin8.8.0/libstdc++-v3/include/bits/basic_string.h:595
 #1  0x006052ec in std::operator< <char, std::char_traits<char>, std::allocator<char> > (__lhs=@0xda5da00, __rhs=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_pair.h:2217
 #2  0x0070421c in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > > >::find (this=0x11e8eb70, __k=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1376
@@ -189,29 +228,28 @@ Qt initialisation. On Mac this gives the app a link to the Window system.
 #25 0x000c25f4 in lyx::graphics::Previews::~Previews (this=0x65646f75) at Previews.C:58
 #26 0x00002f38 in cxa_atexit_wrapper (routine_param=0xc260c) at ../../gcc-4.2-20060729/gcc/config/darwin-crt3.c:402 
 
+
 CREDITS:
+--------
 
-* Performance on Windows is bad. On my system, scrolling the User Guide
-takes 10 seconds with LyX 1.4 and more than 30 seconds with LyX 1.5.
-Although I have a modern computer, it all feels very slow.
+* Performance on Windows is bad. On my system, scrolling the User Guide takes
+10 seconds with LyX 1.4 and more than 30 seconds with LyX 1.5. Although I have
+a modern computer, it all feels very slow.
 
-FIXED (Abdel 04/10/06): This was due to spurious message in QLPainter.C,
-I've put that in Debug::PAINTING, so 1.5 is faster than 1.4 on Windows XP
-on my 3 years old laptop (18s for the UserGuide test).
-
+FIXED (Abdel 04/10/06): This was due to spurious message in QLPainter.C, I've
+put that in Debug::PAINTING, so 1.5 is faster than 1.4 on Windows XP on my 3
+years old laptop (18s for the UserGuide test).
 
 * The multi-window thing is broken. When I have the same document in two
-windows, only the last selected paragraph in one of the windows gets
-updated.
+windows, only the last selected paragraph in one of the windows gets updated.
 
-FIXED (Abdel 04/10/06): This was due my singlePar optimization. With my
-last commit, the optimization is enabled only if the WorkArea has the
-focus.
+FIXED (Abdel 04/10/06): This was due my singlePar optimization. With my last
+commit, the optimization is enabled only if the WorkArea has the focus.
 
-* No icon for "note-next" in the "review" toolbar
+* No icon for "note-next" in the "review" toolbar.
 
 ADDED (JSpitzm 2006-11-04).
 
-* Branches gui broken (buttons do nothing)
+* Branches gui broken (buttons do nothing).
 
 FIXED (JSpitzm 2006-11-04).
