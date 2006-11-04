@@ -488,6 +488,102 @@ def revert_commandparams(document):
         i = j + 1
 
 
+def revert_nomenclature(document):
+    " Convert nomenclature entry to ERT. "
+    regex = re.compile(r'(\S+)\s+(.+)')
+    i = 0
+    use_nomencl = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset LatexCommand nomenclature", i)
+        if i == -1:
+            break
+        use_nomencl = 1
+        j = find_end_of_inset(document.body, i + 1)
+        preview_line = ""
+        symbol = ""
+        description = ""
+        prefix = ""
+        for k in range(i + 1, j):
+            match = re.match(regex, document.body[k])
+            if match:
+                name = match.group(1)
+                value = match.group(2)
+                if name == "preview":
+                    preview_line = document.body[k]
+                elif name == "symbol":
+                    symbol = value.strip('"').replace('\\"', '"')
+                elif name == "description":
+                    description = value.strip('"').replace('\\"', '"')
+                elif name == "prefix":
+                    prefix = value.strip('"').replace('\\"', '"')
+            elif document.body[k].strip() != "":
+                document.warning("Ignoring unknown contents `%s' in nomenclature inset." % document.body[k])
+        if prefix == "":
+            command = 'nomenclature{%s}{%s}' % (symbol, description)
+        else:
+            command = 'nomenclature[%s]{%s}{%s}' % (prefix, symbol, description)
+        document.body[i:j+1] = ['\\begin_inset ERT',
+                                'status collapsed',
+                                '',
+                                '\\begin_layout %s' % document.default_layout,
+                                '',
+                                '',
+                                '\\backslash',
+                                command,
+                                '\\end_layout',
+                                '',
+                                '\\end_inset']
+        i = i + 11
+    if use_nomencl and find_token(document.preamble, '\\usepackage{nomencl}[2005/09/22]', 0) == -1:
+        document.preamble.append('\\usepackage{nomencl}[2005/09/22]')
+        document.preamble.append('\\makenomenclature')
+
+
+def revert_printnomenclature(document):
+    " Convert printnomenclature to ERT. "
+    regex = re.compile(r'(\S+)\s+(.+)')
+    i = 0
+    use_nomencl = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset LatexCommand printnomenclature", i)
+        if i == -1:
+            break
+        use_nomencl = 1
+        j = find_end_of_inset(document.body, i + 1)
+        preview_line = ""
+        labelwidth = ""
+        for k in range(i + 1, j):
+            match = re.match(regex, document.body[k])
+            if match:
+                name = match.group(1)
+                value = match.group(2)
+                if name == "preview":
+                    preview_line = document.body[k]
+                elif name == "labelwidth":
+                    labelwidth = value.strip('"').replace('\\"', '"')
+            elif document.body[k].strip() != "":
+                document.warning("Ignoring unknown contents `%s' in printnomenclature inset." % document.body[k])
+        if labelwidth == "":
+            command = 'nomenclature{}'
+        else:
+            command = 'nomenclature[%s]' % labelwidth
+        document.body[i:j+1] = ['\\begin_inset ERT',
+                                'status collapsed',
+                                '',
+                                '\\begin_layout %s' % document.default_layout,
+                                '',
+                                '',
+                                '\\backslash',
+                                command,
+                                '\\end_layout',
+                                '',
+                                '\\end_inset']
+        i = i + 11
+    if use_nomencl and find_token(document.preamble, '\\usepackage{nomencl}[2005/09/22]', 0) == -1:
+        document.preamble.append('\\usepackage{nomencl}[2005/09/22]')
+        document.preamble.append('\\makenomenclature')
+
+
 ##
 # Conversion hub
 #
@@ -499,9 +595,11 @@ convert = [[246, []],
            [249, [convert_utf8]],
            [250, []],
            [251, []],
-           [252, [convert_commandparams, convert_bibitem]]]
+           [252, [convert_commandparams, convert_bibitem]],
+           [253, []]]
 
-revert =  [[251, [revert_commandparams]],
+revert =  [[252, [revert_nomenclature, revert_printnomenclature]],
+           [251, [revert_commandparams]],
            [250, [revert_cs_label]],
            [249, []],
            [248, [revert_utf8]],

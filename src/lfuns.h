@@ -375,7 +375,9 @@ enum kb_action {
 	// 285
 	LFUN_BOOKMARK_CLEAR,             // bpeng 20061031
 	LFUN_TOOLBAR_TOGGLE_STATE,       // bpeng 20061101
-	
+	LFUN_NOMENCL_INSERT,			// Ugras
+	LFUN_NOMENCL_PRINT,			// Ugras
+
 	LFUN_LASTACTION                  // end of the table
 };
 

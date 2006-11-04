@@ -1252,6 +1252,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			    name == "bibtex" ||
 			    name == "index" ||
 			    name == "label" ||
+			    name == "nomenclature" ||
 			    name == "ref" ||
 			    name == "toc" ||
 			    name == "url") {

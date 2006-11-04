@@ -352,6 +352,8 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_INSET_INSERT:
 		case LFUN_PARAGRAPH_PARAMS_APPLY:
 		case LFUN_PARAGRAPH_UPDATE:
+		case LFUN_NOMENCL_INSERT:
+		case LFUN_NOMENCL_PRINT:
 		case LFUN_NOACTION:
 			status.enabled(false);
 			return true;

@@ -386,6 +386,11 @@ string const LaTeXFeatures::getPackages() const
 	if (isRequired("xy"))
 		packages << "\\usepackage[all]{xy}\n";
 
+	if (isRequired("nomencl")) {
+		packages << "\\usepackage{nomencl}[2005/09/22]\n"
+			 << "\\makenomenclature\n";
+	}
+ 
 	return packages.str();
 }
 

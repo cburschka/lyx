@@ -1,6 +1,13 @@
 LyX file-format changes
 -----------------------§
 
+2006-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 253: new nomenclature and printnomenclature
+	insets. These are standard InsetCommand with the following parameters:
+	\nomenclature[prefix]{symbol}{description}
+	\printnomenclature[labelwidth]
+
 2006-10-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 252: changed command inset syntax
@@ -27,7 +34,6 @@ LyX file-format changes
 
 	The order of the parameters and for each parameter the name and
 	optional/required bit is now stored in InsetCommandParams.
-
 
 2006-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 

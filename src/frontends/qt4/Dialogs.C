@@ -61,6 +61,7 @@
 #include "QGraphics.h"
 #include "QInclude.h"
 #include "QIndex.h"
+#include "QNomencl.h"
 #include "QLog.h"
 #include "QViewSource.h"
 #include "QMath.h"
@@ -101,7 +102,7 @@ namespace {
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
 "citation", "document", "errorlist", "ert", "external", "file",
-"findreplace", "float", "graphics", "include", "index", "label", "log", "view-source",
+"findreplace", "float", "graphics", "include", "index", "nomenclature", "label", "log",
 "mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph",
 "prefs", "print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
 
@@ -109,7 +110,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"texinfo", "toc", "url", "vspace", "wrap" };
+"texinfo", "toc", "url", "view-source", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -218,6 +219,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QIndex(*dialog,
 					   _("Index Entry"),
 					   qt_("&Keyword:")));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "nomenclature") {
+		dialog->setController(new ControlCommand(*dialog, name, name));
+		dialog->setView(new QNomencl(*dialog, _("Notation Entry")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "label") {
 		dialog->setController(new ControlCommand(*dialog, name, name));

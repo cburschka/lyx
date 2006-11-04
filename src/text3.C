@@ -1160,7 +1160,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.dispatch(FuncRequest(LFUN_LAYOUT, "Caption"));
 		break;
 
-	case LFUN_INDEX_INSERT: {
+	case LFUN_INDEX_INSERT:
+	case LFUN_NOMENCL_INSERT: {
 		InsetBase * inset = createInset(&cur.bv(), cmd);
 		if (!inset)
 			break;
@@ -1169,11 +1170,17 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.clearSelection();
 		insertInset(cur, inset);
 		inset->edit(cur, true);
+		// Show the dialog for the nomenclature entry, since the
+		// description entry still needs to be filled in.
+		if (cmd.action == LFUN_NOMENCL_INSERT)
+			InsetCommandMailer("nomenclature",
+				*reinterpret_cast<InsetCommand *>(inset)).showDialog(&cur.bv());
 		cur.posRight();
 		break;
 	}
 
 	case LFUN_INDEX_PRINT:
+	case LFUN_NOMENCL_PRINT:
 	case LFUN_TOC_INSERT:
 	case LFUN_HFILL_INSERT:
 	case LFUN_LINE_INSERT:
@@ -1550,6 +1557,8 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 			code = InsetBase::INCLUDE_CODE;
 		else if (cmd.argument() == "index")
 			code = InsetBase::INDEX_CODE;
+		else if (cmd.argument() == "nomenclature")
+			code = InsetBase::NOMENCL_CODE;
 		else if (cmd.argument() == "label")
 			code = InsetBase::LABEL_CODE;
 		else if (cmd.argument() == "note")
@@ -1631,6 +1640,12 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	case LFUN_INDEX_PRINT:
 		code = InsetBase::INDEX_PRINT_CODE;
+		break;
+	case LFUN_NOMENCL_INSERT:
+		code = InsetBase::NOMENCL_CODE;
+		break;
+	case LFUN_NOMENCL_PRINT:
+		code = InsetBase::NOMENCL_PRINT_CODE;
 		break;
 	case LFUN_TOC_INSERT:
 		code = InsetBase::TOC_CODE;

@@ -117,6 +117,22 @@ InsetCommandParams::findInfo(std::string const & name)
 		return &info;
 	}
 
+	// InsetNomencl
+	if (name == "nomenclature") {
+		static const char * const paramnames[] = {"prefix", "symbol", "description", ""};
+		static const bool isoptional[] = {true, false, false};
+		static const CommandInfo info = {3, paramnames, isoptional};
+		return &info;
+	}
+
+	// InsetPrintNomencl
+	if (name == "printnomenclature") {
+		static const char * const paramnames[] = {"labelwidth", ""};
+		static const bool isoptional[] = {true};
+		static const CommandInfo info = {1, paramnames, isoptional};
+		return &info;
+	}
+
 	// InsetRef
 	if (name == "eqref" || name == "pageref" || name == "vpageref" ||
 	    name == "vref" || name == "prettyref" || name == "ref") {
@@ -288,6 +304,7 @@ void InsetCommandParams::write(ostream & os) const
 docstring const InsetCommandParams::getCommand() const
 {
 	docstring s = '\\' + from_ascii(name_);
+	bool noparam = true;
 	for (size_t i = 0; i < info_->n; ++i) {
 		if (info_->optional[i]) {
 			if (params_[i].empty()) {
@@ -299,15 +316,20 @@ docstring const InsetCommandParams::getCommand() const
 						break;
 					if (!params_[j].empty()) {
 						s += "[]";
+						noparam = false;
 						break;
 					}
 				}
-			} else
+			} else {
 				s += '[' + params_[i] + ']';
-		} else
+				noparam = false;
+			}
+		} else {
 			s += '{' + params_[i] + '}';
+			noparam = false;
+		}
 	}
-	if (info_->n == 0)
+	if (noparam)
 		// Make sure that following stuff does not change the
 		// command name.
 		s += "{}";

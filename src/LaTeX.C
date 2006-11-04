@@ -158,6 +158,10 @@ void LaTeX::deleteFilesOnError() const
 	string const ind = changeExtension(ofname, ".ind");
 	unlink(ind);
 
+	// nomencl file
+	string const nls = changeExtension(ofname, ".nls");
+	unlink(nls);
+
 	// Also remove the aux file
 	string const aux = changeExtension(ofname, ".aux");
 	unlink(aux);
@@ -283,6 +287,12 @@ int LaTeX::run(TeXErrors & terr)
 		message(_("Running MakeIndex."));
 		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
+	if (head.haschanged(onlyFilename(changeExtension(file, ".nlo")))) {
+		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
+		message(_("Running Makeindex for nomencl."));
+		string const nomenclstr = " -s nomencl.ist -o " + changeExtension(file, ".nls");
+		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".nlo")), runparams, nomenclstr);
+	}
 
 	// run bibtex
 	// if (scanres & UNDEF_CIT || scanres & RERUN || run_bibtex)
@@ -352,6 +362,14 @@ int LaTeX::run(TeXErrors & terr)
 		rerun = runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
 	}
 
+	// I am not pretty sure if need this twice. 
+	if (head.haschanged(onlyFilename(changeExtension(file, ".nlo")))) {
+		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
+		message(_("Running Makeindex for nomencl. "));
+		string nomenclstr = " -s nomencl.ist -o " + changeExtension(file, ".nls");
+		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".nlo")), runparams, nomenclstr);
+	}
+
 	// 2
 	// we will only run latex more if the log file asks for it.
 	// or if the sumchange() is true.
@@ -396,13 +414,17 @@ int LaTeX::startscript()
 }
 
 
-bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams)
+bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
+                         string const & params)
 {
-	lyxerr[Debug::LATEX] << "idx file has been made,"
-		" running makeindex on file " <<  f << endl;
-	string tmp = lyxrc.index_command + " ";
+	lyxerr[Debug::LATEX]
+		<< "idx file has been made, running makeindex on file "
+		<< f << endl;
+	string tmp = lyxrc.index_command + ' ';
+	
 	tmp = subst(tmp, "$$lang", runparams.document_language);
 	tmp += quoteName(f);
+	tmp += params;
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);
 	return true;
@@ -761,6 +783,7 @@ void LaTeX::deplog(DepTable & head)
 	// but instead only a line like this into the log:
 	//   Writing index file sample.idx
 	static regex reg5("Writing index file ([^ ]+).*");
+	static regex regnomencl("Writing nomenclature file ([^ ]+).*");
 	// If a toc should be created, MikTex does not write a line like
 	//    \openout# = `sample.toc'.
 	// but only a line like this into the log:
@@ -808,6 +831,8 @@ void LaTeX::deplog(DepTable & head)
 		else if (regex_match(token, sub, reg4))
 			handleFoundFile(sub.str(1), head);
 		else if (regex_match(token, sub, reg5))
+			handleFoundFile(sub.str(1), head);
+		else if (regex_match(token, sub, regnomencl))
 			handleFoundFile(sub.str(1), head);
 		else if (regex_match(token, sub, miktexTocReg))
 			handleFoundFile(changeExtension(file, ".toc"), head);

@@ -37,6 +37,7 @@
 #include "insets/insethfill.h"
 #include "insets/insetinclude.h"
 #include "insets/insetindex.h"
+#include "insets/insetnomencl.h"
 #include "insets/insetlabel.h"
 #include "insets/insetline.h"
 #include "insets/insetmarginal.h"
@@ -171,6 +172,14 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		return new InsetIndex(icp);
 	}
 
+	case LFUN_NOMENCL_INSERT: {
+		InsetCommandParams icp("nomenclature");
+		icp["symbol"] = cmd.argument().empty() ?
+			bv->getLyXText()->getStringToIndex(bv->cursor()) :
+			cmd.argument();
+		return new InsetNomencl(icp);
+	}
+
 	case LFUN_TABULAR_INSERT: {
 		if (cmd.argument().empty())
 			return 0;
@@ -194,6 +203,9 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 
 	case LFUN_INDEX_PRINT:
 		return new InsetPrintIndex(InsetCommandParams("printindex"));
+
+	case LFUN_NOMENCL_PRINT:
+		return new InsetPrintNomencl(InsetCommandParams("printnomenclature"));
 
 	case LFUN_TOC_INSERT:
 		return new InsetTOC(InsetCommandParams("tableofcontents"));
@@ -263,6 +275,12 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 			InsetCommandMailer::string2params(name, to_utf8(cmd.argument()),
 							  icp);
 			return new InsetIndex(icp);
+
+		} else if (name == "nomenclature") {
+			InsetCommandParams icp(name);
+			InsetCommandMailer::string2params(name, lyx::to_utf8(cmd.argument()),
+							  icp);
+			return new InsetNomencl(icp);
 
 		} else if (name == "label") {
 			InsetCommandParams icp(name);
@@ -369,6 +387,8 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetBibtex(inscmd));
 		} else if (cmdName == "index") {
 			inset.reset(new InsetIndex(inscmd));
+		} else if (cmdName == "nomenclature") {
+			inset.reset(new InsetNomencl(inscmd));
 		} else if (cmdName == "include") {
 			inset.reset(new InsetInclude(inscmd));
 		} else if (cmdName == "label") {
@@ -396,6 +416,8 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetFloatList("table"));
 		} else if (cmdName == "printindex") {
 			inset.reset(new InsetPrintIndex(inscmd));
+		} else if (cmdName == "printnomenclature") {
+			inset.reset(new InsetPrintNomencl(inscmd));
 		} else {
 			lyxerr << "unknown CommandInset '" << cmdName
 			       << "'" << std::endl;

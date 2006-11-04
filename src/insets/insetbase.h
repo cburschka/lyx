@@ -322,7 +322,11 @@ public:
 		///
 		VSPACE_CODE,
 		///
-		MATHMACROARG_CODE
+		MATHMACROARG_CODE,
+		///
+		NOMENCL_CODE, // 45
+		///
+		NOMENCL_PRINT_CODE
 	};
 
 	/** returns the Code corresponding to the \c name.

@@ -350,6 +350,7 @@ src_insets_header_files = Split('''
     insetline.h
     insetmarginal.h
     insetnewline.h
+    insetnomencl.h
     insetnote.h
     insetoptarg.h
     insetpagebreak.h
@@ -405,6 +406,7 @@ src_insets_files = Split('''
     insetline.C
     insetmarginal.C
     insetnewline.C
+    insetnomencl.C
     insetnote.C
     insetoptarg.C
     insetpagebreak.C
@@ -627,6 +629,7 @@ src_frontends_qt4_ui_files = Split('''
     QLogUi.ui
     QMathMatrixUi.ui
     QMathUi.ui
+    QNomenclUi.ui
     QNoteUi.ui
     QParagraphUi.ui
     QPrefAsciiUi.ui
@@ -706,6 +709,8 @@ src_frontends_qt4_moc_files = Split('''
     QLPrintDialog.C
     QMathDialog.C
     QMathMatrixDialog.C
+    QNomencl.C
+    QNomenclDialog.C
     QNoteDialog.C
     QParagraphDialog.C
     QPrefsDialog.C
@@ -798,6 +803,8 @@ src_frontends_qt4_header_files = Split('''
     QMath.h
     QMathDialog.h
     QMathMatrixDialog.h
+    QNomencl.h
+    QNomenclDialog.h
     QNote.h
     QNoteDialog.h
     QParagraph.h
@@ -918,6 +925,8 @@ src_frontends_qt4_files = Split('''
     QMath.C
     QMathDialog.C
     QMathMatrixDialog.C
+    QNomencl.C
+    QNomenclDialog.C
     QNote.C
     QNoteDialog.C
     QParagraph.C
