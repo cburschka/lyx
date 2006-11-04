@@ -105,16 +105,7 @@ void QAbout::build_dialog()
 	}
 #endif
 
-	// Try and grab the latin1 codec
-	QTextCodec * const codec =
-		QTextCodec::codecForName("ISO8859-1");
-	if (!codec)
-		lyxerr << "Unable to find ISO8859-1 codec" << std::endl;
-
-	QString const qtext = codec ?
-		codec->toUnicode(out.str().c_str()) :
-		toqstr(out.str());
-	dialog_->creditsTB->setHtml(qtext);
+	dialog_->creditsTB->setHtml(toqstr(out.str()));
 
 	// try to resize to a good size
 	dialog_->copyrightTB->hide();

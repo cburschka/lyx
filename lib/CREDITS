@@ -4,15 +4,15 @@
 @bAsger Alstrup
 @iE-mail: aalstrup@laerdal.dk
    General hacking of user interface stuff and those other bits and pieces
-@bPascal AndrÈ
+@bPascal Andr√©
 @iE-mail: andre@via.ecp.fr
    External style definition files, linuxdoc sgml support and more ftp-site ftp.lyx.org
-@bJo„o Luis Meloni Assirati
+@bJo√£o Luis Meloni Assirati
 @iE-mail: assirati@nonada.if.usp.br
    Added support for unix sockets and thence the 'inverse DVI' feature
-@bOzgur Ugras Baran
+@b√ñzg√ºr Uƒüra≈ü Baran
 @iE-mail: ugras.baran@gmail.com
-   New commandparams structure
+   New commandparams structure, Nomenclature inset
 @bYves Bastide
 @iE-mail: yves.bastide@irisa.fr
    Bug fixes
@@ -28,7 +28,7 @@
 @bGraham Biswell
 @iE-mail: graham@gbiswell.com
    Small bugfixes that were very hard to find
-@bLars Gullik Bj¯nnes
+@bLars Gullik Bj√∏nnes
 @iE-mail: larsbj@gullik.net
    Improvements to user interface (menus and keyhandling) including a configurable toolbar and a few other (not so) minor things, like rewriting most of the LyX kernel. Also current source maintainer
 @bAlfredo Braunstein
@@ -43,16 +43,16 @@
 @bFrancesc Burrull i Mestres
 @iE-mail: fburrull@mat.upc.es
    Catalan translation
-@bHumberto Nicol·s CastejÛn
+@bHumberto Nicol√°s Castej√≥n
 @iE-mail: beconico@gmail.com
    Spanish translation of the Windows installer
-@bMatej Cepl
+@bMatƒõj Cepl
 @iE-mail: matej@ceplovi.cz
    Improvements to the czech keymaps
 @bAlbert Chin
 @iE-mail: lyx-devel@mlists.thewrittenword.com
    Bug fixes
-@bJean-Pierre ChrÈtien
+@bJean-Pierre Chr√©tien
 @iE-mail: chretien@cert.fr
    French translation of the Windows installer
 @bClaudio Coco
@@ -73,7 +73,7 @@
 @bRonald Florence
 @iE-mail: ron@18james.com
    Maintainer of the OS X port(s)
-@bJosÈ Ramom Flores d'as Seixas
+@bJos√© Ramom Flores d'as Seixas
 @iE-mail: fa2ramon@usc.es
    Galician documentation and localization
 @bJohn Michael Floyd
@@ -150,10 +150,10 @@
 @bPeter Kremer
 @iE-mail: kremer@bme-tel.ttt.bme.hu
    Hungarian translation and bind file for menu shortcuts
-@bPeter K¸mmel
+@bPeter K√ºmmel
 @iE-mail: syntheticpp@gmx.net
    Qt4 coding, CMake build system, bug fixing, testing, clean ups, and profiling
-@bBernd K¸mmerlen
+@bBernd K√ºmmerlen
 @iE-mail: bkuemmer@gmx.net
    Initial version of the koma-script textclasses
 @bFelix Kurth
@@ -181,10 +181,10 @@
 @bLing Li
 @iE-mail: ling@caltech.edu
    Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file
-@bTomasz Luczak
+@bTomasz ≈Åuczak
 @iE-mail: tlu@technodat.com.pl
    Polish translation and mw* layouts files
-@bJosÈ Matos
+@bJos√© Matos
 @iE-mail: jamatos@fc.up.pt
    linuxdoc sgml support
 @bRoman Maurer
@@ -193,7 +193,7 @@
 @bTino Meinen
 @iE-mail: a.t.meinen@chello.nl
    Dutch translation coordinator
-@bIÒaki LarraÒaga Murgoitio
+@bI√±aki Larra√±aga Murgoitio
 @iE-mail: dooteo@euskalgnu.org
    Basque documentation and localization
 @bDaniel Naber
@@ -229,10 +229,10 @@
 @bNeoklis Polyzotis
 @iE-mail: alkis@soe.ucsc.edu
    Keymap work
-@bAndrÈ Pˆnitz
+@bAndr√© P√∂nitz
 @iE-mail: andre.poenitz@mathematik.tu-chemnitz.de
    mathed rewrite to use STL file io with streams --export and --import command line options
-@bKornelia Pˆnitz
+@bKornelia P√∂nitz
 @iE-mail: kornelia.poenitz@mathematik.tu-chemnitz.de
    heavy mathed testing; provided siamltex document class
 @bBernhard Psaier
@@ -261,20 +261,20 @@
 @bMichael Ressler
 @iE-mail: mike.ressler@alum.mit.edu
    documentation maintainer, AASTeX support
-@bChristian Ridderstrˆm
+@bChristian Ridderstr√∂m
 @iE-mail: christian.ridderstrom@home.se
    The driving force behind, and maintainer of, the LyX wiki wiki.
    Swedish translation of the Windows installer
 @bRan Rutenberg
 @iE-mail: ran.rutenberg@gmail.com
    Hebrew translation
-@bSzıke S·ndor
+@bSz√µke S√°ndor
 @iE-mail: alex@lyx.hu
    Hungarian translation
 @bJanus Sandsgaard
 @iE-mail: janus@janus.dk
    Danish translation of the Windows installer
-@bEulogio Serradilla RodrÌguez
+@bEulogio Serradilla Rodr√≠guez
 @iE-mail: eulogio.sr@terra.es
    contribution to the spanish internationalization
 @bHubert Schreier
@@ -295,7 +295,7 @@
 @bAndre Spiegel
 @iE-mail: spiegel@gnu.org
    vertical spaces
-@bJ¸rgen Spitzm¸ller
+@bJ√ºrgen Spitzm√ºller
 @iE-mail: juergen.sp@t-online.de
    Qt frontend, bugfixes
 @bJohn Spray
@@ -304,13 +304,13 @@
 @bBen Stanley
 @iE-mail: ben.stanley@exemail.com.au
    fix bugs with error insets placement
-@bUwe Stˆhr
+@bUwe St√∂hr
 @iE-mail: uwestoehr@web.de
    German translation of the Windows installer
-@bDavid Su·rez de Lis
+@bDavid Su√°rez de Lis
 @iE-mail: excalibor@iname.com
    maintaining es.po since v1.0.0 and other small i18n issues small fixes
-@bPeter S¸tterlin
+@bPeter S√ºtterlin
 @iE-mail: p.suetterlin@astro.uu.nl
    aapaper support, german documentation translation, bug reports
 @bKayvan Aghaiepour Sylvan
@@ -337,13 +337,13 @@
 @bMartin Vermeer
 @iE-mail: martin.vermeer@hut.fi
    support for optional argument in sections/captions svjour/svjog, egs and llncs document classes. Lot of bug hunting (and fixing!)
-@bJ¸rgen Vigna
+@bJ√ºrgen Vigna
 @iE-mail: jug@lyx.org
    complete rewrite of the tabular, text inset; fax- and Ascii-Export support; iletter and dinbrief support
 @bPauli Virtanen
 @iE-mail: pauli.virtanen@hut.fi
    Finnish localization of the interface
-@bHerbert Voﬂ
+@bHerbert Vo√ü
 @iE-mail: herbert.voss@alumni.tu-berlin.de
    The one who answers all questions on lyx-users mailing list and maintains www.lyx.org/help/ Big insetgraphics and bibliography cleanups
 @bAndreas Vox

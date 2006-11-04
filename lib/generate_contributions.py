@@ -286,12 +286,7 @@ def main(argv, contributers):
      if len(argv) != 4:
           error(usage(argv[0]))
 
-     txt_credits_data = unicode(as_txt_credits(contributers)) \
-                        .encode("latin1", "xmlcharrefreplace")
-     # This is a fudge to give a 'reasonable' spelling of Matej's name.
-     txt_credits_data = txt_credits_data.replace('&#283;', 'e')
-     # This is a fudge to give a 'reasonable' spelling of Tomasz' name.
-     txt_credits_data = txt_credits_data.replace('&#321;', 'L')
+     txt_credits_data = unicode(as_txt_credits(contributers)).encode("utf-8")
      txt_credits = open(argv[1], "w")
      txt_credits.write(txt_credits_data)
 
@@ -342,13 +337,13 @@ contributers = [
                  "23 February 2005",
                  u"Added support for unix sockets and thence the 'inverse DVI' feature"),
 
-     contributer(u"Ozgur Ugras Baran",
+     contributer(u"Özgür Uğraş Baran",
                  "ugras.baran () gmail ! com",
                  "GPL",
                  "Re: [patch] new InsetCommandParams",
                  "m=116124030512963",
                  "19 October 2006",
-                 u"New commandparams structure"),
+                 u"New commandparams structure, Nomenclature inset"),
 
      contributer(u"Yves Bastide",
                  "yves.bastide () irisa ! fr",
