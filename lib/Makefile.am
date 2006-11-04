@@ -221,6 +221,7 @@ dist_images_DATA = \
 	images/math-subscript.xpm \
 	images/math-superscript.xpm \
 	images/note-insert.xpm \
+	images/note-next.xpm \
 	images/paste.xpm \
 	images/psnfss1.xpm \
 	images/psnfss2.xpm \

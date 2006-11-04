@@ -1480,6 +1480,7 @@ lib_images_files = Split('''
     math-subscript.xpm
     math-superscript.xpm
     note-insert.xpm
+    note-next.xpm
     paste.xpm
     psnfss1.xpm
     psnfss2.xpm
