@@ -113,7 +113,7 @@ Section -Prepare
   
   ;Point to the Aiksaurus data in the LyX folder
   Push AIK_DATA_DIR
-  Push "$EXEDIR\aiksaurus"
+  Push "$EXEDIR\..\aiksaurus"
   Call SetEnvironmentVariable
   
   ;LyX window geometry
