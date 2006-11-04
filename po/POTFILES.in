@@ -12,7 +12,6 @@ src/bufferlist.C
 src/bufferparams.C
 src/bufferview_funcs.C
 src/client/debug.C
-src/client/gettext.h
 src/converter.C
 src/debug.C
 src/exporter.C
@@ -103,6 +102,7 @@ src/insets/insethfill.C
 src/insets/insetinclude.C
 src/insets/insetindex.C
 src/insets/insetmarginal.C
+src/insets/insetnomencl.C
 src/insets/insetnote.C
 src/insets/insetoptarg.C
 src/insets/insetpagebreak.C

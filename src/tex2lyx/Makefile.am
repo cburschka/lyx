@@ -42,7 +42,6 @@ tex2lyx_SOURCES = \
 	context.C \
 	context.h \
 	gettext.C \
-	gettext.h \
 	lengthcommon.C \
 	lyxfont.C \
 	lyxfont.h \

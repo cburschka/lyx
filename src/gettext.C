@@ -14,7 +14,6 @@
 #include "gettext.h"
 #include "messages.h"
 #include "support/environment.h"
-#include "support/docstring.h"
 
 
 namespace lyx {

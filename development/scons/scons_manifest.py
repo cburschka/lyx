@@ -981,7 +981,6 @@ src_frontends_qt4_files = Split('''
 
 src_client_header_files = Split('''
     debug.h
-    gettext.h
     messages.h
 ''')
 
@@ -998,7 +997,6 @@ src_client_files = Split('''
 src_tex2lyx_header_files = Split('''
     Spacing.h
     context.h
-    gettext.h
     lyxfont.h
     messages.h
     tex2lyx.h

@@ -16,12 +16,10 @@
 
 namespace lyx {
 
-using std::string;
 
-
-string const _(string const & str)
+docstring const _(std::string const & str)
 {
-	return str;
+	return from_ascii(str);
 }
 
 

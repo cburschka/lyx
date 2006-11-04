@@ -24,7 +24,6 @@ lyxclient_SOURCES = \
 	debug.C \
 	debug.h \
 	gettext.C \
-	gettext.h \
 	messages.C \
 	messages.h
 

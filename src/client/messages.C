@@ -17,6 +17,7 @@
 namespace lyx {
 
 using lyx::support::package;
+using std::endl;
 using std::string;
 
 
@@ -90,21 +91,63 @@ public:
 
 	~Pimpl() {}
 
-	string const get(string const & m) const
+	docstring const get(string const & m) const
 	{
 		if (m.empty())
-			return m;
+			return from_ascii(m);
 
-		char * old = strdup(setlocale(LC_ALL, 0));
+		char * o = setlocale(LC_ALL, 0);
+		string old;
+		if (o)
+			old = o;
 		char * n = setlocale(LC_ALL, lang_.c_str());
-		bindtextdomain(PACKAGE, package().locale_dir().c_str());
+		if (!n)
+			// If we are unable to honour the request we just
+			// return what we got in.
+			return from_ascii(m);
+		errno = 0;
+		char const * c = bindtextdomain(PACKAGE, package().locale_dir().c_str());
+		int e = errno;
+		if (e) {
+			lyxerr[Debug::DEBUG]
+				<< BOOST_CURRENT_FUNCTION << '\n'
+				<< "Error code: " << errno << '\n'
+				<< "Lang, mess: " << lang_ << " " << m << '\n'
+				<< "Directory : " << package().locale_dir() << '\n'
+				<< "Rtn value : " << c << endl;
+		}
+
+#ifdef WORDS_BIGENDIAN
+		static const char * codeset = "UCS-4BE";
+#else
+		static const char * codeset = "UCS-4LE";
+#endif
+		if (!bind_textdomain_codeset(PACKAGE, codeset)) {
+			lyxerr[Debug::DEBUG]
+				<< BOOST_CURRENT_FUNCTION << '\n'
+				<< "Error code: " << errno << '\n'
+				<< "Codeset   : " << codeset << '\n'
+				<< endl;
+		}
+
 		textdomain(PACKAGE);
-		const char* msg = gettext(m.c_str());
-		setlocale(LC_ALL, old);
-		free(old);
-		// If we are unable to honour the request we just
-		// return what we got in.
-		return (!n ? m : string(msg));
+
+		char const * tmp = m.c_str();
+		char const * msg = gettext(tmp);
+		docstring translated;
+		if (!msg) {
+			lyxerr << "Undefined result from gettext" << endl;
+			translated = from_ascii(tmp);
+		} else if (msg == tmp) {
+			//lyxerr << "Same as entered returned" << endl;
+			translated = from_ascii(tmp);
+		} else {
+			lyxerr[Debug::DEBUG] << "We got a translation" << endl;
+			char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
+			translated = ucs4;
+		}
+		setlocale(LC_ALL, old.c_str());
+		return translated;
 	}
 private:
 	///
@@ -120,7 +163,7 @@ public:
 
 	~Pimpl() {}
 
-	string const get(string const & m) const
+	docstring const get(string const & m) const
 	{
 		return m;
 	}
@@ -143,7 +186,7 @@ Messages::~Messages()
 {}
 
 
-string const Messages::get(string const & msg) const
+docstring const Messages::get(string const & msg) const
 {
 	return pimpl_->get(msg);
 }

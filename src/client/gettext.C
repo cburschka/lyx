@@ -37,7 +37,7 @@ Messages & getLyXMessages()
 } // anon namespace
 
 
-string const _(string const & str)
+docstring const _(string const & str)
 {
 	return getLyXMessages().get(str);
 }

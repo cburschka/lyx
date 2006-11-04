@@ -88,10 +88,10 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 		    && errorTags[i].level & level) {
 			// avoid _(...) re-entrance problem
 			// FIXME: should we use _() from gettext.h here?
-			string const s = _(errorTags[i].desc);
-			os << lyx::to_utf8(bformat(lyx::from_utf8(_("Debugging `%1$s' (%2$s)")),
+			lyx::docstring const s = _(errorTags[i].desc);
+			os << lyx::to_utf8(bformat(_("Debugging `%1$s' (%2$s)"),
 						   lyx::from_utf8(errorTags[i].name), 
-						   lyx::from_utf8(s)))
+						   s))
 			   << '\n';
 		}
 	}
@@ -104,7 +104,7 @@ void lyx_debug_trait::showTags(ostream & os)
 	for (int i = 0; i < numErrorTags ; ++i)
 		os << setw(7) << static_cast<unsigned int>(errorTags[i].level)
 		   << setw(10) << errorTags[i].name
-		   << "  " << _(errorTags[i].desc) << '\n';
+		   << "  " << lyx::to_utf8(_(errorTags[i].desc)) << '\n';
 	os.flush();
 }
 
