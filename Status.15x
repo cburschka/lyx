@@ -90,6 +90,103 @@ the label is already named "Size"
 "&Selected citations:" should be "&Selected Citations:"
 
 
+* Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put the cursor
+in another part of the text) the screen is repainted *twice* whereas
+it seems to me that no repainting is necessary at all.
+
+* Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going on when
+selecting text. When selecting a word the whole screen is repainted.
+
+* Too much painting 3 (Edwin 3/11/2006): the screen is repainted even when the selection
+does not change (moving the mouse with the left button pushed down 
+always triggers a repaint).
+
+* Slowness on MAC 1 (Bennett 3/11/06):
+There seems to be a fraction of a second lag
+between when I press a key and when the letter appears on screen --
+but the time lag doesn't obviously vary with the amount of text on
+the screen (as was the case previously). Right now, the speed of 
+normal text entry makes LyX-1.5 usable on my 
+not-fast-but-still-not-outdated computer. (Not sure how it would be
+on my slow-but-still-usable laptop.)
+
+* Slowness on MAC 2 (Bennett 3/11/06):
+Speed is still an issue typing in insets: noticeable lag between 
+typing and text appearing on screen. This does not seem to be
+compounded by having nested insets, and it seems to be compounded 
+only a little by the amount of text in the inset. (This is
+especially a problem in math environments.)
+
+* Slowness on MAC 3 (Bennett 3/11/06): Some operations that with
+1.4 are pretty much instantaneous (inserting a footnote, dragging 
+the mouse, switching to LyX from another application, opening
+dialogs, etc.) take quite a long time to complete in 1.5.
+
+* Bennett 3/11/06: Cursor is still not visible on MAC.
+
+* Drawing oddities on MAC (Bennett 3/11/06):
+lines occasionally overlapping vertically, math characters not properly
+aligned vertically. Not sure if anyone else has seen these.
+
+* Many issues with toolbars on MAC (Bennett 3/11/06):
+Most obvious of which are that icons are spaced too widely and that
+changes in the visibility of the toolbars with the GUI do not stick
+after the screen is redrawn).
+
+* Many issue with dialogs on MAC (Bennett 3/11/06):
+Mmost obviously: the Preferences dialog -- which can only be
+accessed now via keyboard command, not from the menu -- appears 
+initially too small and must be resized; not possible to select
+buttons with the keyboard).
+
+* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not
+appear in the menu, even though a converter and viewer are defined
+in Preferences.
+
+* Menu bar disappears on MAC (instead of being disabled) when dialogs
+appear.
+
+* Mac Crash (Bennett 3/11/06):
+On launch from GUI (by double-clicking on the LyX
+icon). As I reported before, this happens only when using the GUI;
+I can successfully start LyX from the Terminal, with or without gdb.
+Hence the only debug information I get is this, printed out in Console.app
+when I try launching from the GUI (note that the number changes everytime):
+
+Wrong command line option `-psn_0_182321153'. Exiting.
+
+Hint from Andreas Vox: LyX must accept any option starting with '-psn' and pass it oon to the
+Qt initialisation. On Mac this gives the app a link to the Window system.
+
+
+* Mac Crash On quit (Bennett). Here's the backtrace:
+#0  std::string::compare (this=0x65646f75, __str=@0xdab7edc) at /opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_lang_gcc42/work/build/powerpc-apple-darwin8.8.0/libstdc++-v3/include/bits/basic_string.h:595
+#1  0x006052ec in std::operator< <char, std::char_traits<char>, std::allocator<char> > (__lhs=@0xda5da00, __rhs=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_pair.h:2217
+#2  0x0070421c in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > > >::find (this=0x11e8eb70, __k=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1376
+#3  0x007042c0 in std::map<std::string, boost::shared_ptr<lyx::graphics::CacheItem>, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > > >::find (this=0x11e8eb70, __x=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_map.h:541
+#4  0x002857d8 in lyx::graphics::Cache::remove (this=0xb8e248, file=@0xbffff0d8) at GraphicsCache.C:90
+#5  0x00286744 in lyx::graphics::Loader::Impl::resetFile (this=0x11e1f670, file=@0xbffff178) at GraphicsLoader.C:223
+#6  0x00286950 in lyx::graphics::Loader::Impl::~Impl (this=0x11e1f670) at GraphicsLoader.C:204
+#7  0x00706188 in boost::checked_delete<lyx::graphics::Loader::Impl> (x=0x11e1f670) at ../../boost/boost/checked_delete.hpp:34
+#8  0x0014c01c in lyx::graphics::PreviewImage::Impl::~Impl (this=0x140606c0) at PreviewImage.C:121
+#9  0x006b1f80 in boost::checked_delete<lyx::graphics::PreviewImage::Impl> (x=0x140606c0) at ../../boost/boost/checked_delete.hpp:34
+#10 0x006aeea4 in boost::checked_delete<lyx::graphics::PreviewImage> (x=0x11e4d8a0) at ../../boost/boost/checked_delete.hpp:34
+#11 0x005fc478 in boost::detail::sp_counted_base::release (this=0x132a3db0) at ../boost/boost/detail/sp_counted_base_gcc_ppc.hpp:153
+#12 0x006ae044 in std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >::~pair (this=0x1405efe0) at /opt/local/include/gcc42/c++/bits/stl_pair.h:69
+#13 0x006ae32c in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > > >::destroy_node (this=0x11e60e80, __p=0x1405efd0) at /opt/local/include/gcc42/c++/bits/stl_tree.h:400
+#14 0x006ae388 in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > > >::_M_erase (this=0x11e60e80, __x=0x1405efd0) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1325
+#15 0x006ae3c0 in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > > >::~_Rb_tree (this=0x65646f75) at /opt/local/include/gcc42/c++/bits/stl_tree.h:592
+#16 0x00141000 in lyx::graphics::PreviewLoader::Impl::~Impl (this=0x11e60e60) at PreviewLoader.C:428
+#17 0x006b03d0 in boost::checked_delete<lyx::graphics::PreviewLoader::Impl> (x=0x11e60e60) at ../../boost/boost/checked_delete.hpp:34
+#18 0x00141560 in lyx::graphics::PreviewLoader::~PreviewLoader (this=0x65646f75) at PreviewLoader.C:286
+#19 0x00680eec in boost::checked_delete<lyx::graphics::PreviewLoader> (x=0x11e618d0) at ../../boost/boost/checked_delete.hpp:34
+#20 0x005fc478 in boost::detail::sp_counted_base::release (this=0x11e5b040) at ../boost/boost/detail/sp_counted_base_gcc_ppc.hpp:153
+#21 0x00680d08 in std::_Rb_tree<lyx::Buffer const*, std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> >, std::_Select1st<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > >, std::less<lyx::Buffer const*>, std::allocator<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > > >::destroy_node (this=0x11e6ebd0, __p=0x11e5e780) at /opt/local/include/gcc42/c++/bits/stl_tree.h:400
+#22 0x00680d64 in std::_Rb_tree<lyx::Buffer const*, std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> >, std::_Select1st<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > >, std::less<lyx::Buffer const*>, std::allocator<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > > >::_M_erase (this=0x11e6ebd0, __x=0x11e5e780) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1325
+#23 0x00680d9c in std::_Rb_tree<lyx::Buffer const*, std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> >, std::_Select1st<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > >, std::less<lyx::Buffer const*>, std::allocator<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > > >::~_Rb_tree (this=0x65646f75) at /opt/local/include/gcc42/c++/bits/stl_tree.h:592
+#24 0x00680dd8 in boost::checked_delete<lyx::graphics::Previews::Impl> (x=0x11e6ebd0) at ../../boost/boost/checked_delete.hpp:34
+#25 0x000c25f4 in lyx::graphics::Previews::~Previews (this=0x65646f75) at Previews.C:58
+#26 0x00002f38 in cxa_atexit_wrapper (routine_param=0xc260c) at ../../gcc-4.2-20060729/gcc/config/darwin-crt3.c:402 
 
 CREDITS:
 
