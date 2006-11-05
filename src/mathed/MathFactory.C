@@ -325,7 +325,7 @@ MathAtom createInsetMath(docstring const & s)
 				case 'W':
 				case 'H':
 				case 'L':
-					spacing_code = s[i];
+					spacing_code = static_cast<char>(s[i]);
 					++i;
 					break;
 				}
