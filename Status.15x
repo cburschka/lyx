@@ -125,9 +125,6 @@ MENUS
 
 * Some English menu items don't have a '&' character. (box, date, paste...)
 
-* src/frontends/qt4/ui/QCitationUi.ui:70 "&Selected citations:" should be
-  "&Selected Citations:".
-
 * All label and button texts in the Qt4 dialogs are not translated.
 
 
@@ -262,3 +259,9 @@ CREDITS:
   in LyXView::updateWindowTitle() and also due to a potential bug in Qt:
   an update command to the window title seems to be ignored up until the window
   is shown.
+
+* src/frontends/qt4/ui/QCitationUi.ui:70 "&Selected citations:" should be
+  "&Selected Citations:".
+
+  FIXED (MGerz 2006-11-05)
+
