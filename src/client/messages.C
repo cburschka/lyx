@@ -10,6 +10,7 @@
 #include <config.h>
 
 #include "messages.h"
+#include "debug.h"
 #include "support/filetools.h"
 #include "support/package.h"
 
