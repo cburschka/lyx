@@ -16,6 +16,7 @@
 
 #include "debug.h"
 
+#include <QFontMetrics>
 #include <QStackedWidget>
 #include <QTreeWidget>
 #include <QHBoxLayout>
@@ -40,8 +41,11 @@ PanelStack::PanelStack(QWidget * parent)
 	stack_ = new QStackedWidget(this);
 
 	list_->setColumnCount(1);
-	QStringList HeaderLabels; HeaderLabels << QString("Category");
-	list_->setHeaderLabels(HeaderLabels);
+	// Hide the pointless list header
+	list_->header()->hide();
+// 	QStringList HeaderLabels;
+// 	HeaderLabels << QString("Category");
+// 	list_->setHeaderLabels(HeaderLabels);
 
 	connect(list_, SIGNAL(currentItemChanged (QTreeWidgetItem*, QTreeWidgetItem*)),
 		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
@@ -61,6 +65,8 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 
 	lyxerr[Debug::GUI] << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
 
+	int depth = 1;
+
 	if (parent.empty()) {
 		item = new QTreeWidgetItem(list_);
 		item->setText(0, name);
@@ -76,11 +82,18 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 
 		item = new QTreeWidgetItem(it->second);
 		item->setText(0, name);
+		depth = 2;
 	}
 
 	panel_map_[n] = item;
 
-	list_->setMinimumWidth(list_->header()->sectionSize(0) + list_->indentation());
+	QFontMetrics fm(list_->font());
+	// calculate the real size the current item needs in the listview
+	int itemsize = fm.width(name) + 10
+		+ list_->indentation() * depth;
+	// adjust the listview width to the max. itemsize
+	if (itemsize > list_->minimumWidth())
+		list_->setMinimumWidth(itemsize);
 }
 
 
