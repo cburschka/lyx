@@ -45,8 +45,8 @@ char const * const bigleft[]  = {"bigl", "Bigl", "biggl", "Biggl", ""};
 char const * const bigright[] = {"bigr", "Bigr", "biggr", "Biggr", ""};
 
 
-char const * const biggui[]   = {N_("big size"), N_("Big size"),
-	N_("bigg size"), N_("Bigg size"), ""};
+char const * const biggui[]   = {N_("big[[delimiter size]]"), N_("Big[[delimiter size]]"),
+	N_("bigg[[delimiter size]]"), N_("Bigg[[delimiter size]]"), ""};
 
 
 string do_match(const string & str)

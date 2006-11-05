@@ -69,9 +69,6 @@ MATH CONTROL PANEL
 
 * In the math control panel, the buttons are too small.
 
-* In the "Math Delimiters" dialog, there is no need to repeat the term "Size"
-  for all values in the selection box; the label is already named "Size"
-
 
 OTHER PANELS
 
@@ -127,8 +124,10 @@ MENUS
 
 * All label and button texts in the Qt4 dialogs are not translated.
 
+* Special handling of [[...]] in text messages is disabled in messages.C
 
-PAINING & PERFORMANCE
+
+PAINTING & PERFORMANCE
 
 * Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put
   the cursor in another part of the text) the screen is repainted *twice*
@@ -264,4 +263,10 @@ CREDITS:
   "&Selected Citations:".
 
   FIXED (MGerz 2006-11-05)
+
+* In the "Math Delimiters" dialog, there is no need to repeat the term "Size"
+  for all values in the selection box; the label is already named "Size"
+
+  FIXED (MGerz 2006-11-05)
+
 
