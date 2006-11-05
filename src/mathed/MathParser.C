@@ -216,13 +216,16 @@ enum CatCode {
 CatCode theCatcode[128];
 
 
-inline CatCode catcode(lyx::char_type c)
+inline CatCode catcode(char_type c)
 {
-	/* The fact that we use unicode internally does not change Knuth's TeX
-	engine. It is still 7bit only, not even latin1 or something like that.
-	Therefore, the catcode table needs only to have 128 entries.
-	Everything not in that range is catOther.
-	*/
+	/* The only characters that are not catOther lie in the pure ASCII
+	 * range. Therefore theCatcode has only 128 entries.
+	 * TeX itself deals with 8bit characters, so if needed this table
+	 * could be enlarged to 256 entries.
+	 * Any larger value does not make sense, since the fact that we use
+	 * unicode internally does not change Knuth's TeX engine.
+	 * Apart from that a table for the full 21bit UCS4 range would waste
+	 * too much memory. */
 	if (c >= 128)
 		return catOther;
 
