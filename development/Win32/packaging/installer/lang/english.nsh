@@ -61,14 +61,14 @@ Author: Joost Verburg
 
 !insertmacro LanguageString TEXT_VIEWER_TITLE "Document Viewer"
 !insertmacro LanguageString TEXT_VIEWER_SUBTITLE "A viewer is required to be able to display typeset documents on your screen."
-!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "There is no viewer installed on your system to preview both PDF and Postscript files, which are common formats for typeset documents. If you check the box below, the PDF/Postscript viewer GSView will be downloaded. $_CLICK"
-!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "There is no viewer installed on your system to preview both PDF and Postscript files, which are common formats for typeset documents. If you check the box below, the PDF/Postscript viewer GSView will be installed. $_CLICK"
+!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "There is no viewer installed on your system to preview both PDF and Postscript files, which are common formats for typeset documents. If you check the box below, the PDF/Postscript viewer GSView will be downloaded. $(^ClickNext)"
+!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "There is no viewer installed on your system to preview both PDF and Postscript files, which are common formats for typeset documents. If you check the box below, the PDF/Postscript viewer GSView will be installed. $(^ClickNext)"
 !insertmacro LanguageString TEXT_VIEWER_DOWNLOAD "Download GSView"
 !insertmacro LanguageString TEXT_VIEWER_INSTALL "Install GSView"
 
 !insertmacro LanguageString TEXT_DICT_TITLE "Spell Checker Dictionaries"
 !insertmacro LanguageString TEXT_DICT_SUBTITLE "Choose the languages you want the spell checker to support."
-!insertmacro LanguageString TEXT_DICT_TOP "In order to spell check documents in a certain language, a dictionary with valid words has to be downloaded. Select the dictionaries to download. $_CLICK"
+!insertmacro LanguageString TEXT_DICT_TOP "In order to spell check documents in a certain language, a dictionary with valid words has to be downloaded. $_CLICK"
 !insertmacro LanguageString TEXT_DICT_LIST "Select dictionaries to download:"
 
 !insertmacro LanguageString TEXT_LANGUAGE_TITLE "Choose Language"

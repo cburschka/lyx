@@ -59,8 +59,8 @@ Author: Jean-Pierre Chrétien
 
 !insertmacro LanguageString TEXT_VIEWER_TITLE "Visualisation des documents"
 !insertmacro LanguageString TEXT_VIEWER_SUBTITLE "Un afficheur est requis pour présenter les résultats des traitements à l'écran."
-!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "Il n'y a pas d'afficheur installé sur votre système pour prévisualiser les fichiers PDF et PostScript , formats courants de la version typographique des documents. Si vous cochez la case ci-dessous, l'afficheur PDF/PostScript Gaviez sera téléchargé. $_CLICK"
-!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "Il n'y a pas d'afficheur installé sur votre système pour prévisualiser les fichiers PDF et PostScript , formats courants de la version typographique des documents. Si vous cochez la case ci-dessous, l'afficheur PDF/PostScript GSView sera installé. $_CLICK"
+!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "Il n'y a pas d'afficheur installé sur votre système pour prévisualiser les fichiers PDF et PostScript , formats courants de la version typographique des documents. Si vous cochez la case ci-dessous, l'afficheur PDF/PostScript Gaviez sera téléchargé. $(^ClickNext)"
+!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "Il n'y a pas d'afficheur installé sur votre système pour prévisualiser les fichiers PDF et PostScript , formats courants de la version typographique des documents. Si vous cochez la case ci-dessous, l'afficheur PDF/PostScript GSView sera installé. $(^ClickNext)"
 !insertmacro LanguageString TEXT_VIEWER_DOWNLOAD "Télécharger GSView"
 !insertmacro LanguageString TEXT_VIEWER_INSTALL "Installer GSView"
 
