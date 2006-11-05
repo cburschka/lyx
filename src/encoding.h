@@ -46,8 +46,6 @@ private:
 	std::string iconvName_;
 };
 
-extern Encoding symbol_encoding;
-
 class Encodings {
 public:
 	///
@@ -60,8 +58,6 @@ public:
 	Encoding const * getFromLyXName(std::string const & name) const;
 	/// Get encoding from LaTeX name \p name
 	Encoding const * getFromLaTeXName(std::string const & name) const;
-	///
-	Encoding const * symbol_encoding() { return &symbol_encoding_; }
 
 	///
 	enum Letter_Form {
@@ -88,8 +84,6 @@ public:
 private:
 	///
 	EncodingList encodinglist;
-	///
-	Encoding symbol_encoding_;
 };
 
 extern Encodings encodings;

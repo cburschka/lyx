@@ -211,12 +211,6 @@ int QLPainter::smallCapsText(int x, int y,
 int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	LyXFont const & f)
 {
-#if 0
-	Encoding const * encoding = f.language()->encoding();
-	if (f.isSymbolFont())
-		encoding = encodings.symbol_encoding();
-#endif
-
 	QString str;
 	ucs4_to_qstring(s, ls, str);
 

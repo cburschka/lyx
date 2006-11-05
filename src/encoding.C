@@ -265,7 +265,6 @@ Encoding const * Encodings::getFromLaTeXName(string const & name) const
 
 Encodings::Encodings()
 {
-	symbol_encoding_ = Encoding("symbol", "", "");
 }
 
 void Encodings::read(string const & filename)
