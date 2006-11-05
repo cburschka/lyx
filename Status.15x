@@ -129,6 +129,9 @@ MENUS
 
 PAINTING & PERFORMANCE
 
+* Selection highlighting is broken. Test case: two paragraphs with "Hello"
+  and "World"; move cursor past "Wor", press Shift+Up 
+
 * Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put
   the cursor in another part of the text) the screen is repainted *twice*
   whereas it seems to me that no repainting is necessary at all.
