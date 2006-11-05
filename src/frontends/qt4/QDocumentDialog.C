@@ -60,8 +60,6 @@ namespace {
 
 // FIXME: This list is incomplete. It should not be hardcoded but come from
 // the available encodings in src/encodings.C
-// FIXME: "default" is no valid encoding anymore. Nevertheless it occurs also
-// in other source files.
 char const * encodings[] = { "LaTeX default", "latin1", "latin2",
 	"latin3", "latin4", "latin5", "latin9",
 	"koi8-r", "koi8-u", "cp866", "cp1251",
@@ -284,8 +282,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 
 	langModule = new UiWidget<Ui::LanguageUi>;
-    connect( langModule->defaultencodingCB, SIGNAL( toggled(bool) ), langModule->encodingL, SLOT( setDisabled(bool) ) );
-    connect( langModule->defaultencodingCB, SIGNAL( toggled(bool) ), langModule->encodingCO, SLOT( setDisabled(bool) ) );
+	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), langModule->encodingL, SLOT(setDisabled(bool)));
+	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), langModule->encodingCO, SLOT(setDisabled(bool)));
 	// language & quote
 	connect(langModule->languageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
@@ -940,7 +938,6 @@ void QDocumentDialog::update(BufferParams const & params)
 
 	if (params.inputenc != "auto") {
 		langModule->defaultencodingCB->setChecked(false);
-		// FIXME: "default" is no valid encoding anymore
 		if (params.inputenc == "default") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
