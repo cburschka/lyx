@@ -22,29 +22,29 @@ namespace lyx {
 using std::string;
 
 
-static bool moveItem(Paragraph & from, Paragraph & to,
-	BufferParams const & params, pos_type i, pos_type j,
-	Change change = Change(Change::INSERTED))
+static bool moveItem(Paragraph & fromPar, pos_type fromPos,
+	Paragraph & toPar, pos_type toPos, BufferParams const & params)
 {
-	Paragraph::value_type const tmpchar = from.getChar(i);
-	LyXFont tmpfont = from.getFontSettings(params, i);
+	Paragraph::value_type const tmpChar = fromPar.getChar(fromPos);
+	LyXFont const tmpFont = fromPar.getFontSettings(params, fromPos);
+	Change const tmpChange = fromPar.lookupChange(fromPos);
 
-	if (tmpchar == Paragraph::META_INSET) {
-		InsetBase * tmpinset = 0;
-		if (from.getInset(i)) {
+	if (tmpChar == Paragraph::META_INSET) {
+		InsetBase * tmpInset = 0;
+		if (fromPar.getInset(fromPos)) {
 			// the inset is not in a paragraph anymore
-			tmpinset = from.insetlist.release(i);
-			from.insetlist.erase(i);
+			tmpInset = fromPar.insetlist.release(fromPos);
+			fromPar.insetlist.erase(fromPos);
 		}
 
-		if (!to.insetAllowed(tmpinset->lyxCode())) {
-			delete tmpinset;
+		if (!toPar.insetAllowed(tmpInset->lyxCode())) {
+			delete tmpInset;
 			return false;
 		}
-		if (tmpinset)
-			to.insertInset(j, tmpinset, tmpfont, change);
+		if (tmpInset)
+			toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
 	} else {
-		to.insertChar(j, tmpchar, tmpfont, change);
+		toPar.insertChar(toPos, tmpChar, tmpFont, tmpChange);
 	}
 	return true;
 }
@@ -106,10 +106,7 @@ void breakParagraph(BufferParams const & bparams,
 		pos_type pos_end = par.size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			Change::Type change = par.lookupChange(i).type;
-			if (moveItem(par, *tmp, bparams, i, j - pos)) {
-				// FIXME: change tracking (MG)
-				tmp->setChange(j - pos, Change(change));
+			if (moveItem(par, i, *tmp, j - pos, bparams)) {
 				++j;
 			}
 		}
@@ -173,10 +170,9 @@ void breakParagraphConservative(BufferParams const & bparams,
 		pos_type pos_end = par.size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			Change::Type change = par.lookupChange(i).type;
-			// FIXME: change tracking (MG)
-			if (moveItem(par, tmp, bparams, i, j - pos, Change(change)))
+			if (moveItem(par, i, tmp, j - pos, bparams)) {
 				++j;
+			}
 		}
 		// Move over end-of-par change attr
 		// FIXME: change tracking (MG)
@@ -221,10 +217,9 @@ void mergeParagraph(BufferParams const & bparams,
 	Change::Type cr = next.lookupChange(next.size()).type;
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
-		Change::Type change = next.lookupChange(i).type;
-		// FIXME: change tracking (MG)
-		if (moveItem(next, par, bparams, i, pos_insert + j, Change(change)))
+		if (moveItem(next, i, par, pos_insert + j, bparams)) {
 			++j;
+		}
 	}
 	// Move the change status of "carriage return" over
 	// FIXME: change tracking (MG)
