@@ -96,9 +96,6 @@ MULTIPLE WINDOWS / DOCUMENTS
   2) the easy way: disable the cursor on focus out event and re-enable it at
   focus in event and jump the saved position (at focus out).
 
-* The title bar does not contain the document name when a new window is opened
-  (Joost 4/11/06).
-
 * There should be a close button on the tabs (Joost 3/11/06).
 
 
@@ -240,12 +237,12 @@ CREDITS:
 * Performance on Windows is bad. On my system, scrolling the User Guide takes
   10 seconds with LyX 1.4 and more than 30 seconds with LyX 1.5. 
 
-  FIXED (Abdel 04/10/06): This was due to spurious message in QLPainter.C,
+  FIXED (Abdel 04/11/06): This was due to spurious message in QLPainter.C,
 
 * When I have the same document in two windows, only the last selected paragraph
   in one of the windows gets updated.
 
-  FIXED (Abdel 04/10/06): This was due my singlePar optimization. With my last
+  FIXED (Abdel 04/11/06): This was due my singlePar optimization. With my last
   commit, the optimization is enabled only if the WorkArea has the focus.
 
 * No icon for "note-next" in the "review" toolbar.
@@ -255,3 +252,11 @@ CREDITS:
 * Branches gui broken (buttons do nothing).
 
   FIXED (JSpitzm 2006-11-04).
+
+* The title bar does not contain the document name when a new window is opened
+  (Joost 4/11/06).
+
+  FIXED (Abdel 05/11/06): This was due to "last_title" being a static variable
+  in LyXView::updateWindowTitle() and also due to a potential bug in Qt:
+  an update command to the window title seems to be ignored up until the window
+  is shown.

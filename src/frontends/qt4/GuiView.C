@@ -220,6 +220,10 @@ void GuiView::setGeometry(unsigned int width,
 	}
 	
 	show();
+
+	// For an unknown reason, the Window title update is not effective for
+	// the second windows up until it is shown on screen (Qt bug?).
+	updateWindowTitle();
 }
 
 
@@ -231,8 +235,12 @@ void GuiView::updateMenu(QAction * /*action*/)
 
 void GuiView::setWindowTitle(docstring const & t, docstring const & it)
 {
-	QMainWindow::setWindowTitle(toqstr(t));
-	QMainWindow::setWindowIconText(toqstr(it));
+	QString title = windowTitle();
+	QString new_title = toqstr(t);
+	if (title != new_title) {
+		QMainWindow::setWindowTitle(new_title);
+		QMainWindow::setWindowIconText(toqstr(it));
+	}
 }
 
 

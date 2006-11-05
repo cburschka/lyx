@@ -375,7 +375,6 @@ void LyXView::updateLayoutChoice()
 
 void LyXView::updateWindowTitle()
 {
-	static docstring last_title = lyx::from_ascii("LyX");
 	docstring maximize_title = lyx::from_ascii("LyX");
 	docstring minimize_title = lyx::from_ascii("LyX");
 
@@ -393,10 +392,7 @@ void LyXView::updateWindowTitle()
 		}
 	}
 
-	if (maximize_title != last_title) {
-		setWindowTitle(maximize_title, minimize_title);
-		last_title = maximize_title;
-	}
+	setWindowTitle(maximize_title, minimize_title);
 }
 
 
