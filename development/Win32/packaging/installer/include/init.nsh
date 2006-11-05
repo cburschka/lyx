@@ -96,6 +96,7 @@ Function LoadInstaller
       ${endif}
       
       SetShellVarContext current
+      StrCpy $CurrentUserInstall ${TRUE}
     
     ${endif}
     
