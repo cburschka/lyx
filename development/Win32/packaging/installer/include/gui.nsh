@@ -180,6 +180,7 @@ Function InitDialogs
   StrCpy $R0 ""
   !insertmacro LanguageList '!insertmacro InitDialogLang $R0'
   !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 2" "ListItems" $R0
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 2" "State" "English" ;Default language
   
   ;Set state of user dialog
   ${if} $CurrentUserInstall == ${TRUE}

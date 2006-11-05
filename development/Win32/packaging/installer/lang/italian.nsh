@@ -59,8 +59,8 @@ Author: Enrico Forestieri
 
 !insertmacro LanguageString TEXT_VIEWER_TITLE "Visualizzatore di Documenti"
 !insertmacro LanguageString TEXT_VIEWER_SUBTITLE "Un visualizzatore è necessario per mostrare sullo schermo i documenti compilati."
-!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "Non è installato nessun visualizzatore in grado di mostrare file sia PDF che Postscript, ovvero i formati comuni per i documenti compilati. Selezionando la casella sottostante, verrà scaricato dalla rete il visualizzatore PDF/Postscript GSView. $_CLICK"
-!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "Non è installato nessun visualizzatore in grado di mostrare file sia PDF che Postscript, ovvero i formati comuni per i documenti compilati. Selezionando la casella sottostante, verrà installato il visualizzatore PDF/Postscript GSView. $_CLICK"
+!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "Non è installato nessun visualizzatore in grado di mostrare file sia PDF che Postscript, ovvero i formati comuni per i documenti compilati. Selezionando la casella sottostante, verrà scaricato dalla rete il visualizzatore PDF/Postscript GSView. $(^ClickNext)"
+!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "Non è installato nessun visualizzatore in grado di mostrare file sia PDF che Postscript, ovvero i formati comuni per i documenti compilati. Selezionando la casella sottostante, verrà installato il visualizzatore PDF/Postscript GSView. $(^ClickNext)"
 !insertmacro LanguageString TEXT_VIEWER_DOWNLOAD "Scarica GSView"
 !insertmacro LanguageString TEXT_VIEWER_INSTALL "Installa GSView"
 

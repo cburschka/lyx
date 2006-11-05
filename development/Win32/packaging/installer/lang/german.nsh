@@ -59,14 +59,14 @@ Author: Andreas Deininger
 
 !insertmacro LanguageString TEXT_VIEWER_TITLE "Dokumentenbetrachter"
 !insertmacro LanguageString TEXT_VIEWER_SUBTITLE "Um von Ihnen verfasste Dokumente auf Ihrem Bildschirm anzuzeigen, wird ein Anzeigeprogramm benötigt."
-!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "Auf Ihrem System ist kein Anzeigeprogramm für die Vorschauansicht von sowohl PDF- als auch Postscript-Dateien installiert, beides sind gebräuchliche Formate beim Dokumentensatz. Falls Sie das untenstehende Kästchen markieren, wird GSView heruntergeladen, ein Anzeigeprogramm für PDF- und Postscript-Dateien. $_CLICK"
-!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "Auf Ihrem System ist kein Anzeigeprogramm für die Vorschauansicht von sowohl PDF- als auch Postscript-Dateien installiert, beides sind gebräuchliche Formate beim Dokumentensatz. Falls Sie das untenstehende Kästchen markieren, wird GSView installiert, ein Anzeigeprogramm für PDF- und Postscript-Dateien. $_CLICK"
+!insertmacro LanguageString TEXT_VIEWER_INFO_DOWNLOAD "Auf Ihrem System ist kein Anzeigeprogramm für die Vorschauansicht von sowohl PDF- als auch Postscript-Dateien installiert, beides sind gebräuchliche Formate beim Dokumentensatz. Falls Sie das untenstehende Kästchen markieren, wird GSView heruntergeladen, ein Anzeigeprogramm für PDF- und Postscript-Dateien. $(^ClickNext)"
+!insertmacro LanguageString TEXT_VIEWER_INFO_INSTALL "Auf Ihrem System ist kein Anzeigeprogramm für die Vorschauansicht von sowohl PDF- als auch Postscript-Dateien installiert, beides sind gebräuchliche Formate beim Dokumentensatz. Falls Sie das untenstehende Kästchen markieren, wird GSView installiert, ein Anzeigeprogramm für PDF- und Postscript-Dateien. $(^ClickNext)"
 !insertmacro LanguageString TEXT_VIEWER_DOWNLOAD "GSView herunterladen"
 !insertmacro LanguageString TEXT_VIEWER_INSTALL "GSView installieren"
 
 !insertmacro LanguageString TEXT_DICT_TITLE "Wörterbücher zur Rechtschreibprüfung"
 !insertmacro LanguageString TEXT_DICT_SUBTITLE "Wählen Sie die Sprachen aus, für die eine Rechtschreibprüfung möglich sein soll."
-!insertmacro LanguageString TEXT_DICT_TOP "Um für Dokumente in einer bestimmten Sprache die Rechtschreibprüfung durchführen zu können, muss ein jeweils ein Wörterbuch mit dem nötigen Wortschatz heruntergeladen werden. Wählen Sie die Wörterbucher aus, die Sie herunterladen möchten. $_CLICK"
+!insertmacro LanguageString TEXT_DICT_TOP "Um für Dokumente in einer bestimmten Sprache die Rechtschreibprüfung zu benutzen, muss ein Wörterbuch heruntergeladen werden. $_CLICK"
 !insertmacro LanguageString TEXT_DICT_LIST "Wählen Sie die Wörterbucher aus, die Sie herunterladen möchten:"
 
 !insertmacro LanguageString TEXT_LANGUAGE_TITLE "Wählen Sie die Sprache aus"
@@ -86,6 +86,6 @@ Author: Andreas Deininger
 !insertmacro LanguageString TEXT_NOTINSTALLED_DICT "Die Installation der Wörterbucher für die ${DICT_NAME} Rechtschreibprüfung konnte nicht erfolgreich abgeschlossen werden. Möchten Sie die Installation erneut versuchen?"
 
 !insertmacro LanguageString TEXT_FINISH_DESKTOP "Ein Symbol auf der Arbeitsoberfläche erzeugen"
-!insertmacro LanguageString TEXT_FINISH_WEBSITE "Besuchen Sie lyx.org für aktuelle Neuigkeiten, für Tips und Tricks sowie für sonstige Hinweise"
+!insertmacro LanguageString TEXT_FINISH_WEBSITE "Besuchen Sie lyx.org für aktuelle Neuigkeiten"
 
 !insertmacro LanguageString UNTEXT_WELCOME "Dieses Installationsprogramm wird Sie durch die Deinstallation von $(^NameDA) leiten. Bitte schließen Sie $(^NameDA) bevor Sie fortfahren.\r\n\r\nBeachten Sie bitte, dass im folgenden nur LyX selbst deinstalliert wird. Falls Sie andere Anwendungen aus ihrem System entfernen möchten, die zur Nutzung von Lyx installiert wurden, benutzen Sie hierzu bitte den Eintrag Software im Menü Systemsteuerung und wählen Sie dort dann den entsprechenden Eintrag für das Programm aus.\r\n\r\n$_CLICK"

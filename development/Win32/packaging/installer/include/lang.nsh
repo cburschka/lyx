@@ -22,7 +22,7 @@ Translations for installer and LyX itself
   ${COMMAND} "Nynorsk" nn_NO 2068
   ${COMMAND} "Polski" pl_PL 1045
   ${COMMAND} "Russian" ru_RU 1049
-  ${COMMAND} "Slovenský" sk_SK 1060
+  ${COMMAND} "Slovencina" sk_SK 1060
   ${COMMAND} "Suomi" fi_FI 1035
   ${COMMAND} "Türkçe" tr_TR 1055
   
