@@ -9,6 +9,8 @@ in the file COPYING or at http://www.lyx.org/about/license.php
 
 */
 
+SetCompressor /SOLID lzma
+
 !include "include\declarations.nsh"
 
 ;--------------------------------
