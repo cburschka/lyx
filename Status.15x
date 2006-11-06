@@ -96,7 +96,7 @@ MULTIPLE WINDOWS / DOCUMENTS
 * There should be a close button on the tabs (Joost 3/11/06).
 
 
-TOOLBARS
+TOOLBARS & MINIBUFFER
 
 * Toolbars always show on the top of the screen, even though they are set to
   "bottom" in the ui file (Joost 3/11/06).
@@ -108,6 +108,11 @@ TOOLBARS
   pixels compared to 1.4. This makes the images look jagged and the initial
   window size has also become to small to show the whole toolbar
   (Joost 4/11/06).
+
+* M-x is broken (does not bring up the minibuffer).
+
+* Command completion in the minibuffer shows a huge blank area below the proposed
+  commands. Clicking in that empty area crashes LyX.
 
 
 EDITING
