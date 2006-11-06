@@ -168,7 +168,7 @@ public:
 
 	docstring const get(string const & m) const
 	{
-		return m;
+		return from_ascii(m);
 	}
 };
 #endif
