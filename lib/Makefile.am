@@ -220,6 +220,7 @@ dist_images_DATA = \
 	images/math-mode.xpm \
 	images/math-subscript.xpm \
 	images/math-superscript.xpm \
+	images/nomencl-insert.xpm \
 	images/note-insert.xpm \
 	images/note-next.xpm \
 	images/paste.xpm \

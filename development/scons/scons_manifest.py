@@ -1486,6 +1486,7 @@ lib_images_files = Split('''
     math-mode.xpm
     math-subscript.xpm
     math-superscript.xpm
+    nomencl-insert.xpm
     note-insert.xpm
     note-next.xpm
     paste.xpm
