@@ -26,6 +26,8 @@ Settings for LyX installer
 !define FILES_DVIPOSTDATA "${FILES_DEPS}\dvipost"
 !define FILES_ASPELLDATA "${FILES_DEPS}\aspell"
 
+!define FILES_NSISPLUGINS "${FILES_DEPS}\nsis"
+
 ;--------------------------------
 ;Locations of components to download
 
@@ -56,7 +58,7 @@ Settings for LyX installer
 ;Locations of setup files for components (for bundled setup)
 
 !define INSTALL_LATEX "basic-miktex-2.5.2471.exe"
-!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.0-0-Q16-windows-dll.exe"
+!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.0-2-Q16-windows-dll.exe"
 !define INSTALL_GHOSTSCRIPT "gs854w32.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 
@@ -105,6 +107,11 @@ Settings for LyX installer
 !define BIN_LATEX "tex.exe"
 !define BIN_IMAGEMAGICK "convert.exe"
 !define BIN_GHOSTSCRIPT "gswin32c.exe"
+
+;--------------------------------
+;Custom NSIS plug-ins
+
+!addplugindir "${FILES_NSISPLUGINS}"
 
 ;--------------------------------
 ;Compession

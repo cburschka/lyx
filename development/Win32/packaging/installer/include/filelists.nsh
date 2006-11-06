@@ -273,9 +273,14 @@ Lists of files to include in the installer
   
 !macroend
 
-!macro FileListNSISDll COMMAND DIRECTORY
+!macro FileListNSISPluginsStandard COMMAND DIRECTORY
 
-  ${FILE}nsExec.dll"
   ${FILE}System.dll"
+
+!macroend
+
+!macro FileListNSISPlugins COMMAND DIRECTORY
+
+  ${FILE}Console.dll"
 
 !macroend

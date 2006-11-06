@@ -77,7 +77,8 @@ Section -Core SecCore
   ;Helper DLLs for NSIS-based tools
   
   SetOutPath "$INSTDIR\bin"
-  !insertmacro FileListNSISDll File "${NSISDIR}\Plugins\"
+  !insertmacro FileListNSISPluginsStandard File "${NSISDIR}\Plugins\"
+  !insertmacro FileListNSISPlugins File "${FILES_NSISPLUGINS}\"
   
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"

@@ -44,10 +44,6 @@ Creating the Installer
 	To create an installer with LyX and all related components, download
 	and install the latest NSIS from http://nsis.sourceforge.net
 	
-	Also download the InetLoad plug-in from
-	http://nsis.sourceforge.net/InetLoad_plug-in and save InetLoad.dll in
-	the NSIS Plugins directory.
-	
 	Open development\Win32\packaging\installer\setttings.user.nsh and modify
 	the settings depending on your build environment.
 	
