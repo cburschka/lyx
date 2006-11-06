@@ -168,7 +168,7 @@ void layoutSelected(LyXView & lv, string const & name)
 		// Yes, the _() is correct
 		if (_(itname) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
-					       FuncRequest::UI);
+					       FuncRequest::TOOLBAR);
 			lv.getLyXFunc().dispatch(func);
 			return;
 		}

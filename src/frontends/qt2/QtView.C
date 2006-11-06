@@ -149,11 +149,7 @@ void QtView::activated(FuncRequest const & func)
 
 bool QtView::hasFocus() const
 {
-#if 0
 	return qApp->activeWindow() == this;
-#else
-	return true;
-#endif
 }
 
 

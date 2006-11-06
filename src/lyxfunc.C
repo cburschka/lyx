@@ -345,7 +345,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
 	*/
 	Buffer * buf;
-	if (cmd.origin == FuncRequest::UI && !owner->hasFocus())
+	if (cmd.origin == FuncRequest::MENU && !owner->hasFocus())
 		buf = 0;
 	else
 		buf = owner->buffer();
@@ -1609,23 +1609,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->owner()->updateLayoutChoice();
 		}
 	}
+	owner->updateMenubar();
+	owner->updateToolbars();
 	sendDispatchMessage(_(getMessage()), cmd);
 }
 
 
 void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & cmd)
 {
-	/* When an action did not originate from the UI/kbd, it makes
-	 * sense to avoid updating the GUI. It turns out that this
-	 * fixes bug 1941, for reasons that are described here:
-	 * http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4 
-	 */
-	if (cmd.origin != FuncRequest::INTERNAL) {
-		owner->updateMenubar();
-		owner->updateToolbars();
-	}
-
-	const bool verbose = (cmd.origin == FuncRequest::UI
+	const bool verbose = (cmd.origin == FuncRequest::MENU
+			      || cmd.origin == FuncRequest::TOOLBAR
 			      || cmd.origin == FuncRequest::COMMANDBUFFER);
 
 	if (cmd.action == LFUN_SELFINSERT || !verbose) {

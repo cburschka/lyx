@@ -1,3 +1,18 @@
+2006-10-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* MenuBackend.C (expandToc2, expandToc): add a view argument in
+	order to disable correctly the entries when needed.
+
+	* lyxfunc.C (dispatch): update menus and toolbars here
+	(getStatus): only honor LyXView::hasFocus when command originates
+	from a menu (bug 2877)
+
+	* funcrequest.h: split the UI enum value into TOOLBAR and MENU.
+
+	* lyxfunc.C (sendDispatchMessage): 
+	* MenuBackend.C (MenuItem): 
+	* ToolbarBackend.C (add): adapt to the change above.
+
 2006-10-26  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* lfuns.h (enum kb_action): New lfun LFUN_MATH_BIGDELIM

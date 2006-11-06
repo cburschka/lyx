@@ -106,7 +106,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 		   FuncRequest const & func, bool optional)
 	: kind_(kind), label_(label), func_(func), optional_(optional)
 {
-	func_.origin = FuncRequest::UI;
+	func_.origin = FuncRequest::MENU;
 }
 
 
@@ -606,7 +606,7 @@ void expandCharStyleInsert(Menu & tomenu, LyXView const * view)
 
 Menu::size_type const max_number_of_items = 25;
 
-void expandToc2(Menu & tomenu,
+void expandToc2(Menu & tomenu, LyXView const * view,
 		lyx::toc::Toc const & toc_list,
 		lyx::toc::Toc::size_type from,
 		lyx::toc::Toc::size_type to, int depth)
@@ -654,7 +654,7 @@ void expandToc2(Menu & tomenu,
 			} else {
 				MenuItem item(MenuItem::Submenu, label);
 				item.submenu(new Menu);
-				expandToc2(*item.submenu(),
+				expandToc2(*item.submenu(), view,
 					   toc_list, pos, new_pos, depth + 1);
 				tomenu.add(item);
 			}
@@ -666,12 +666,6 @@ void expandToc2(Menu & tomenu,
 
 void expandToc(Menu & tomenu, LyXView const * view)
 {
-	// To make things very cleanly, we would have to pass view to
-	// all MenuItem constructors and to expandToc2. However, we
-	// know that all the entries in a TOC will be have status_ ==
-	// OK, so we avoid this unnecessary overhead (JMarc)
-
-
 	Buffer const * buf = view->buffer();
 	if (!buf) {
 		tomenu.add(MenuItem(MenuItem::Command,
@@ -698,12 +692,12 @@ void expandToc(Menu & tomenu, LyXView const * view)
 			string const label = limit_string_length(ccit->str);
 			menu->add(MenuItem(MenuItem::Command,
 					   label,
-					   FuncRequest(ccit->action())));
+					   FuncRequest(ccit->action())), view);
 		}
 		string const & floatName = floatlist.getType(cit->first).listName();
 		MenuItem item(MenuItem::Submenu, _(floatName));
 		item.submenu(menu.release());
-		tomenu.add(item);
+		tomenu.add(item, view);
 	}
 
 	// Handle normal TOC
@@ -714,7 +708,7 @@ void expandToc(Menu & tomenu, LyXView const * view)
 				    FuncRequest()),
 			   view);
 	} else {
-		expandToc2(tomenu, cit->second, 0, cit->second.size(), 0);
+		expandToc2(tomenu, view, cit->second, 0, cit->second.size(), 0);
 	}
 }
 
