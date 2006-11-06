@@ -44,6 +44,11 @@ TABLE OF CONTENTS
 
 DIALOGS
 
+* If you open Document>Settings... or Tools>Preferences... for the first time,
+  the dialog is much too small to show its content; if you invoke it the second
+  time, everything is fine. This happens with qt 4.2.1, it does not seem to
+  happen with 4.1.4.
+
 * If you open Edit>Test Style... for the first time, the choice text for
   "Never Toggled>Size" doesn't fit in the selection box (note that in German,
   texts are a bit longer than in English). Interestingly, if you invoke the
@@ -188,8 +193,6 @@ MAC OS X
   keyboard command, not from the menu -- appears initially too small and must be
   resized; not possible to select buttons with the keyboard).
 
-  The preferences dialog issue should be fixed now. See below (JSpitzm 2006-11-06).
-
 * Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
   in the menu, even though a converter and viewer are defined in Preferences.
 
@@ -278,13 +281,5 @@ CREDITS:
   for all values in the selection box; the label is already named "Size"
 
   FIXED (MGerz 2006-11-05)
-
-* If you open Document>Settings... or Tools>Preferences... for the first time,
-  the dialog is much too small to show its content; if you invoke it the second
-  time, everything is fine. This happens with qt 4.2.1, it does not seem to
-  happen with 4.1.4. (Postscriptum JSpitzm: I think it was not the qt version.
-  but the qt font settings that triggered this bug).
-
-  FIXED (JSpitzm 2006-11-06)
 
 

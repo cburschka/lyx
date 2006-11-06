@@ -104,11 +104,7 @@ void PanelStack::addPanel(QWidget * panel, docstring const & name, docstring con
 
 	widget_map_[item] = panel;
 	stack_->addWidget(panel);
-	// adjust the stack size to the largest panel
-	if (panel->minimumWidth() > stack_->minimumWidth())
-		stack_->setMinimumWidth(panel->minimumWidth());
-	if (panel->minimumHeight() > stack_->minimumHeight())
-		stack_->setMinimumHeight(panel->minimumHeight());
+	stack_->setMinimumSize(panel->minimumSize());
 }
 
 
