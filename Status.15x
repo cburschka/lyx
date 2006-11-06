@@ -46,7 +46,8 @@ DIALOGS
 
 * If you open Document>Settings... or Tools>Preferences... for the first time,
   the dialog is much too small to show its content; if you invoke it the second
-  time, everything is fine.
+  time, everything is fine. This happens with qt 4.2.1, it does not seem to
+  happen with 4.1.4.
 
 * If you open Edit>Test Style... for the first time, the choice text for
   "Never Toggled>Size" doesn't fit in the selection box (note that in German,
