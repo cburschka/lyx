@@ -14,6 +14,8 @@
 #include "support/filetools.h"
 #include "support/package.h"
 
+#include <boost/current_function.hpp>
+
 #include <cerrno>
 
 
