@@ -121,8 +121,3 @@ Settings for LyX installer
 ;Custom NSIS plug-ins
 
 !addplugindir "${FILES_NSISPLUGINS}"
-
-;--------------------------------
-;Compession
-
-SetCompressor /SOLID lzma
