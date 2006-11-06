@@ -21,6 +21,7 @@ http://magic.aladdin.cs.cmu.edu/2005/07/15/pdfopen-and-pdfclose/
 ;--------------------------------
 ;Settings
 
+Caption "PDF Viewer"
 OutFile pdfview.exe
 Icon "..\packaging\icons\lyx_32x32.ico"
 SilentInstall silent
@@ -57,7 +58,7 @@ Var CurrentTimeLow
 !macro HideConsole COMMAND_LINE
 
   Push `${COMMAND_LINE}`
-  CallInstDLL "$EXEDIR\nsExec.dll" Exec
+  CallInstDLL "$EXEDIR\Console.dll" Exec
   Pop $Dummy
   
   ${if} $Dummy == "error"
@@ -101,7 +102,13 @@ Section "View PDF file"
   !insertmacro SystemCall "shell32::FindExecutable(t s, t '', t .s)"
   Call GetFileName
   Pop $Viewer
-  
+
+  ${if} $Viewer == ""
+    MessageBox MB_OK|MB_ICONEXCLAMATION "No PDF viewer is installed. \
+        Please install a PDF viewer such as Adobe Reader."
+    Quit        
+  ${endif}
+
   ${if} $Viewer == "AcroRd32.exe"
     ${orif} $Viewer == "Acrobat.exe"
     

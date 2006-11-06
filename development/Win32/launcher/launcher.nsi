@@ -165,7 +165,7 @@ Section -Launch
   ;Start LyX and capture the command line output
   
   Push '"$EXEDIR\lyxc.exe" -geometry $Geometry $Parameters'
-  CallInstDLL "$EXEDIR\nsExec.dll" ExecToLog
+  CallInstDLL "$EXEDIR\Console.dll" ExecToLog
   Pop $ReturnValue ;Return value
   
 SectionEnd

@@ -50,8 +50,9 @@ Section "un.Program Files" un.SecProgramFiles
   RMDir "$INSTDIR\aiksaurus"
   
   ;Helper DLLs for NSIS-based tools
-  
-  !insertmacro FileListNSISDll Delete "$INSTDIR\bin\"    
+
+  !insertmacro FileListNSISPluginsStandard Delete "$INSTDIR\bin\"
+  !insertmacro FileListNSISPlugins Delete "$INSTDIR\bin\"
   
   ;Shortcuts
   
