@@ -44,16 +44,6 @@ TABLE OF CONTENTS
 
 DIALOGS
 
-* If you open Document>Settings... or Tools>Preferences... for the first time,
-  the dialog is much too small to show its content; if you invoke it the second
-  time, everything is fine. This happens with qt 4.2.1, it does not seem to
-  happen with 4.1.4.
-
-* If you open Edit>Test Style... for the first time, the choice text for
-  "Never Toggled>Size" doesn't fit in the selection box (note that in German,
-  texts are a bit longer than in English). Interestingly, if you invoke the
-  dialog a second time, its button sizes are adjusted to their content.
-
 * Window positions are not remembered correctly. Each time a window is openend
   window again it has moved towards the bottom of the screen. (Joost 3/11/06)
 
@@ -113,6 +103,9 @@ TOOLBARS & MINIBUFFER
   pixels compared to 1.4. This makes the images look jagged and the initial
   window size has also become to small to show the whole toolbar
   (Joost 4/11/06).
+
+* When changing the toolbar settings in the right-button context menu of a 
+  visible toolbar, the modified settings are not considered for session management
 
 * M-x is broken (does not bring up the minibuffer).
 
@@ -282,4 +275,15 @@ CREDITS:
 
   FIXED (MGerz 2006-11-05)
 
+* If you open Document>Settings... or Tools>Preferences... for the first time,
+  the dialog is much too small to show its content; if you invoke it the second
+  time, everything is fine.
 
+  WONTFIX: This happens with qt 4.2.1 only, it does not happen with 4.1.4/4.1.5!
+
+* If you open Edit>Test Style... for the first time, the choice text for
+  "Never Toggled>Size" doesn't fit in the selection box (note that in German,
+  texts are a bit longer than in English). Interestingly, if you invoke the
+  dialog a second time, its button sizes are adjusted to their content.
+
+  WONTFIX: This happens with qt 4.2.1 only, it does not happen with 4.1.4/4.1.5!
