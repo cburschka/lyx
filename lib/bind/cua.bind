@@ -31,7 +31,6 @@
 #\bind "C-a"
 #\bind "C-h"
 #\bind "C-j"
-#\bind "C-y"
 
 
 ###
@@ -73,6 +72,7 @@
 \bind "C-S-v"			"primary-selection-paste paragraph"
 
 \bind "C-z"			"undo"
+\bind "C-y"			"redo"
 \bind "C-S-Z"			"redo"
 
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
