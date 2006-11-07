@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-03 21:16+0100\n"
+"POT-Creation-Date: 2006-11-07 23:31+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -135,7 +135,7 @@ msgstr "Ve&likost:"
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:212 src/lyxfont.C:520
+#: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:520
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "privzeta"
@@ -509,8 +509,9 @@ msgstr "Povzetek"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:699
 #: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
-#: src/frontends/qt4/ui/QNoteUi.ui:31 src/frontends/qt4/ui/QParagraphUi.ui:258
-#: src/frontends/qt4/ui/QRefUi.ui:80 src/frontends/qt4/ui/QSendtoUi.ui:75
+#: src/frontends/qt4/ui/QNomenclUi.ui:124 src/frontends/qt4/ui/QNoteUi.ui:31
+#: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
+#: src/frontends/qt4/ui/QSendtoUi.ui:75
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:68
 #: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:148
 #: src/frontends/qt4/ui/QWrapUi.ui:193
@@ -522,7 +523,7 @@ msgstr "&V redu"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:97
 #: src/buffer_funcs.C:123 src/buffer_funcs.C:164 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1993 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1994 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Preklièi"
 
@@ -537,7 +538,7 @@ msgid "The label as it appears in the document"
 msgstr "Sklic, kot je videti v izhodu"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
-#: src/frontends/qt4/Dialogs.C:226
+#: src/frontends/qt4/Dialogs.C:231
 #, fuzzy
 msgid "&Label:"
 msgstr "&Oznaka"
@@ -554,8 +555,9 @@ msgstr "Zbirka podatkov BibTeX"
 
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
-#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QSendtoUi.ui:95
-#: src/BufferView.C:251 src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
+#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:137
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:251
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Preklièi"
 
@@ -860,8 +862,8 @@ msgstr "Vrste pisav"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:111
 #: src/frontends/qt4/ui/QCharacterUi.ui:148
-#: src/frontends/qt4/QDocumentDialog.C:400
-#: src/frontends/qt4/QPrefsDialog.C:1534
+#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QPrefsDialog.C:1540
 msgid "Language"
 msgstr "Jezik"
 
@@ -935,7 +937,7 @@ msgstr "Dostopni sklici"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:70
 #, fuzzy
-msgid "&Selected citations:"
+msgid "&Selected Citations:"
 msgstr "&Izbor:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:88
@@ -1154,7 +1156,7 @@ msgstr "v sivini"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:207
 #: src/frontends/qt4/ui/QGraphicsUi.ui:616
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:76
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
 msgid "Color"
 msgstr "barve"
 
@@ -1581,7 +1583,7 @@ msgstr "Razno AMS"
 msgid "&Functions"
 msgstr "&Funkcije"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:125
+#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:126
 msgid "Insert root"
 msgstr "Vstavi koren"
 
@@ -1602,21 +1604,36 @@ msgstr "Doloèi matematièno pisavo"
 msgid "Toggle between display and inline mode"
 msgstr "Preklopi med naèinom prikaza"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:123
+#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:124
 msgid "Subscript"
 msgstr "Indeks"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:124
+#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:125
 msgid "Superscript"
 msgstr "Eksponent"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:136
+#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:137
 msgid "Insert matrix"
 msgstr "Vstavi matriko"
 
 #: src/frontends/qt4/ui/QMathUi.ui:443
 msgid "Show delimiter and bracket dialog"
 msgstr "Prika¾i pogovorno okno z loèili in oklepaji"
+
+#: src/frontends/qt4/ui/QNomenclUi.ui:48
+#, fuzzy
+msgid "Symbol:"
+msgstr "simboli"
+
+#: src/frontends/qt4/ui/QNomenclUi.ui:55
+#, fuzzy
+msgid "Description:"
+msgstr "Opis"
+
+#: src/frontends/qt4/ui/QNomenclUi.ui:62
+#, fuzzy
+msgid "Sort as:"
+msgstr "Cesta"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:51
 #, fuzzy
@@ -1670,7 +1687,7 @@ msgid "&Shaded"
 msgstr "&Shrani"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2424
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2345
 msgid "Single"
 msgstr "Enojni"
 
@@ -1679,7 +1696,7 @@ msgid "1.5"
 msgstr "1,5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:130 src/text.C:2430
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2351
 msgid "Double"
 msgstr "Dvojni"
 
@@ -1688,8 +1705,8 @@ msgstr "Dvojni"
 #: src/frontends/qt4/ui/QTabularUi.ui:728
 #: src/frontends/qt4/ui/QTabularUi.ui:776
 #: src/frontends/qt4/ui/QVSpaceUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:132
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/QDocumentDialog.C:130
+#: src/frontends/qt4/QDocumentDialog.C:211
 msgid "Custom"
 msgstr "Po meri"
 
@@ -2001,37 +2018,37 @@ msgid "Te&X encoding:"
 msgstr "Kodiranje v TeXu:"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:214
+#: src/frontends/qt4/QDocumentDialog.C:212
 msgid "US letter"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:215
+#: src/frontends/qt4/QDocumentDialog.C:213
 msgid "US legal"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:216
+#: src/frontends/qt4/QDocumentDialog.C:214
 msgid "US executive"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:217
+#: src/frontends/qt4/QDocumentDialog.C:215
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:218
+#: src/frontends/qt4/QDocumentDialog.C:216
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:219
+#: src/frontends/qt4/QDocumentDialog.C:217
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:222
+#: src/frontends/qt4/QDocumentDialog.C:220
 msgid "B5"
 msgstr "B5"
 
@@ -2949,7 +2966,7 @@ msgstr "Poka¾i &pot"
 msgid "Index entry"
 msgstr "Vnos v stvarno kazalo"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:220
+#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:221
 msgid "&Keyword:"
 msgstr "&Kljuèna beseda:"
 
@@ -3038,17 +3055,17 @@ msgid "DefSkip"
 msgstr "Privzeti razmak"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:117
 msgid "SmallSkip"
 msgstr "Mali razmak"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:120
+#: src/frontends/qt4/QDocumentDialog.C:118
 msgid "MedSkip"
 msgstr "Srednji razmak"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:121
+#: src/frontends/qt4/QDocumentDialog.C:119
 msgid "BigSkip"
 msgstr "Velik razmak"
 
@@ -3298,7 +3315,7 @@ msgstr "Definicija"
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:324
+#: src/frontends/qt4/QDocumentDialog.C:322
 msgid "Example"
 msgstr "Zgled"
 
@@ -3549,7 +3566,7 @@ msgstr "Vnos v stvarno kazalo"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:402
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:398
 msgid "Bibliography"
 msgstr "Literatura"
 
@@ -3557,7 +3574,7 @@ msgstr "Literatura"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:495
+#: src/rowpainter.C:497
 msgid "Appendix"
 msgstr "Dodatek"
 
@@ -3712,7 +3729,7 @@ msgstr "Po¹ta"
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.ui:302
+#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.ui:310
 msgid "Date"
 msgstr "Datum"
 
@@ -3753,7 +3770,7 @@ msgid "Email"
 msgstr "Enaslov"
 
 #: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.ui:91 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.ui:92 src/frontends/qt4/QThesaurus.C:29
 msgid "Thesaurus"
 msgstr "Tezaver"
 
@@ -7734,7 +7751,7 @@ msgstr "Èrta desno|d"
 msgid "Alignment|i"
 msgstr "Poravnava|P"
 
-#: lib/ui/classic.ui:129
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.ui:168
 #, fuzzy
 msgid "Add Row|A"
 msgstr "Dodaj vrsto|D"
@@ -7743,15 +7760,15 @@ msgstr "Dodaj vrsto|D"
 msgid "Delete Row|w"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/classic.ui:131 lib/ui/classic.ui:172 lib/ui/stdmenus.ui:170
+#: lib/ui/classic.ui:131 lib/ui/classic.ui:172
 msgid "Copy Row"
 msgstr "Prepi¹i vrstico"
 
-#: lib/ui/classic.ui:132 lib/ui/classic.ui:173 lib/ui/stdmenus.ui:171
+#: lib/ui/classic.ui:132 lib/ui/classic.ui:173
 msgid "Swap Rows"
 msgstr "Zamenjaj vrstici"
 
-#: lib/ui/classic.ui:134
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.ui:173
 msgid "Add Column|u"
 msgstr "Dodaj stolpec|o"
 
@@ -7759,11 +7776,11 @@ msgstr "Dodaj stolpec|o"
 msgid "Delete Column|D"
 msgstr "Odstrani stolpec|r"
 
-#: lib/ui/classic.ui:136 lib/ui/classic.ui:177 lib/ui/stdmenus.ui:175
+#: lib/ui/classic.ui:136 lib/ui/classic.ui:177
 msgid "Copy Column"
 msgstr "Prepi¹i stolpec"
 
-#: lib/ui/classic.ui:137 lib/ui/classic.ui:178 lib/ui/stdmenus.ui:176
+#: lib/ui/classic.ui:137 lib/ui/classic.ui:178
 msgid "Swap Columns"
 msgstr "Zamenjaj stolpca"
 
@@ -7825,7 +7842,7 @@ msgstr "Poravnava|P"
 msgid "Add Row|R"
 msgstr "Dodaj vrsto|D"
 
-#: lib/ui/classic.ui:171
+#: lib/ui/classic.ui:171 lib/ui/stdmenus.ui:169
 msgid "Delete Row|D"
 msgstr "Odstrani vrsto|d"
 
@@ -7833,7 +7850,7 @@ msgstr "Odstrani vrsto|d"
 msgid "Add Column|C"
 msgstr "Dodaj stolpec|o"
 
-#: lib/ui/classic.ui:176
+#: lib/ui/classic.ui:176 lib/ui/stdmenus.ui:174
 msgid "Delete Column|e"
 msgstr "Odstrani stolpec|r"
 
@@ -7850,36 +7867,36 @@ msgstr "Prika¾i|P"
 msgid "Inline|I"
 msgstr "Vstavi|V"
 
-#: lib/ui/classic.ui:188 lib/ui/stdmenus.ui:235
+#: lib/ui/classic.ui:188
 msgid "Octave"
 msgstr "Octave"
 
-#: lib/ui/classic.ui:189 lib/ui/stdmenus.ui:236
+#: lib/ui/classic.ui:189
 msgid "Maxima"
 msgstr "Maxima"
 
-#: lib/ui/classic.ui:190 lib/ui/stdmenus.ui:237
+#: lib/ui/classic.ui:190
 msgid "Mathematica"
 msgstr "Mathematica"
 
-#: lib/ui/classic.ui:192 lib/ui/stdmenus.ui:239
+#: lib/ui/classic.ui:192
 msgid "Maple, simplify"
 msgstr "Maple, simplify"
 
-#: lib/ui/classic.ui:193 lib/ui/stdmenus.ui:240
+#: lib/ui/classic.ui:193
 msgid "Maple, factor"
 msgstr "Maple, factor"
 
-#: lib/ui/classic.ui:194 lib/ui/stdmenus.ui:241
+#: lib/ui/classic.ui:194
 msgid "Maple, evalm"
 msgstr "Maple, evalm"
 
-#: lib/ui/classic.ui:195 lib/ui/stdmenus.ui:242
+#: lib/ui/classic.ui:195
 msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:260 lib/ui/stdmenus.ui:246
-#: lib/ui/stdmenus.ui:341
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.ui:246
+#: lib/ui/stdmenus.ui:340
 #, fuzzy
 msgid "Inline Formula|I"
 msgstr "Vstavi sliko|#V"
@@ -7920,33 +7937,33 @@ msgstr "Okolje Multline"
 msgid "Math|h"
 msgstr "Matematika|M"
 
-#: lib/ui/classic.ui:216 lib/ui/stdmenus.ui:288
+#: lib/ui/classic.ui:216
 msgid "Special Character|S"
 msgstr "Posebni znak|z"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:298
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.ui:297
 #, fuzzy
 msgid "Citation...|C"
 msgstr "Citat"
 
-#: lib/ui/classic.ui:218 lib/ui/stdmenus.ui:299
+#: lib/ui/classic.ui:218
 #, fuzzy
 msgid "Cross-reference...|r"
 msgstr "Navzkri¾ni sklic...|s"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:300
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.ui:299
 msgid "Label...|L"
 msgstr "Oznaka...|z"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:308
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.ui:306
 msgid "Footnote|F"
 msgstr "Opombo pod èrto|p"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:309
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.ui:307
 msgid "Marginal Note|M"
 msgstr "Opomba ob robu|r"
 
-#: lib/ui/classic.ui:222 lib/ui/stdmenus.ui:310
+#: lib/ui/classic.ui:222
 msgid "Short Title"
 msgstr "Kratek naslov"
 
@@ -7955,476 +7972,484 @@ msgstr "Kratek naslov"
 msgid "Index Entry|I"
 msgstr "Vnos za stvarno kazalo...|t"
 
-#: lib/ui/classic.ui:224 lib/ui/stdmenus.ui:307
+#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:225
+msgid "Glossary Entry"
+msgstr ""
+
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:305
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:293
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.ui:292
 msgid "Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:226
+#: lib/ui/classic.ui:227
 msgid "Lists & TOC|O"
 msgstr "Seznami in kazala|k"
 
-#: lib/ui/classic.ui:228
+#: lib/ui/classic.ui:229
 #, fuzzy
 msgid "TeX Code|T"
 msgstr "TeX|T"
 
-#: lib/ui/classic.ui:229
+#: lib/ui/classic.ui:230
 msgid "Minipage|p"
 msgstr "Ministran|s"
 
-#: lib/ui/classic.ui:230 lib/ui/stdmenus.ui:306
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.ui:304
 msgid "Graphics...|G"
 msgstr "Grafika...|G"
 
-#: lib/ui/classic.ui:231
+#: lib/ui/classic.ui:232
 msgid "Tabular Material...|b"
 msgstr "Material v tabeli...|t"
 
-#: lib/ui/classic.ui:232
+#: lib/ui/classic.ui:233
 msgid "Floats|a"
 msgstr "Plovke|P"
 
-#: lib/ui/classic.ui:234
+#: lib/ui/classic.ui:235
 msgid "Include File...|d"
 msgstr "Vkljuèi datoteko...|V"
 
-#: lib/ui/classic.ui:235
+#: lib/ui/classic.ui:236
 msgid "Insert File|e"
 msgstr "Vstavi datoteko|t"
 
-#: lib/ui/classic.ui:236
+#: lib/ui/classic.ui:237
 msgid "External Material...|x"
 msgstr "Zunanji material...|Z"
 
-#: lib/ui/classic.ui:240 lib/ui/stdmenus.ui:324
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.ui:323
 msgid "Superscript|S"
 msgstr "Eksponent|E"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.ui:325
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.ui:324
 msgid "Subscript|u"
 msgstr "Indeks|I"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.ui:330
+#: lib/ui/classic.ui:243
 #, fuzzy
 msgid "Horizontal Fill|H"
 msgstr "Vodoravna poravnava:|#r"
 
-#: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:334
+#: lib/ui/classic.ui:244
 msgid "Hyphenation Point|P"
 msgstr "Mesto delitve|M"
 
-#: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:335
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:334
 msgid "Ligature Break|k"
 msgstr "Prelom ligature|P"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.ui:327
+#: lib/ui/classic.ui:246
 #, fuzzy
 msgid "Protected Space|r"
 msgstr "Za¹èiten presledek|Z"
 
-#: lib/ui/classic.ui:246 lib/ui/stdmenus.ui:328
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:327
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.ui:329
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:328
 msgid "Thin Space|T"
 msgstr ""
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.ui:332
+#: lib/ui/classic.ui:249
 #, fuzzy
 msgid "Vertical Space..."
 msgstr "Navpièni presledek:|#N"
 
-#: lib/ui/classic.ui:249 lib/ui/stdmenus.ui:336
+#: lib/ui/classic.ui:250
 #, fuzzy
 msgid "Line Break|L"
 msgstr "Prelom vrstice|P"
 
-#: lib/ui/classic.ui:250 lib/ui/stdmenus.ui:315
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:314
 msgid "Ellipsis|i"
 msgstr "Tropièje|T"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.ui:316
+#: lib/ui/classic.ui:252 lib/ui/stdmenus.ui:315
 msgid "End of Sentence|E"
 msgstr "Konec stavka|K"
 
-#: lib/ui/classic.ui:252
+#: lib/ui/classic.ui:253
 #, fuzzy
 msgid "Single Quote|Q"
 msgstr "Navaden navedek|N"
 
-#: lib/ui/classic.ui:253
+#: lib/ui/classic.ui:254
 #, fuzzy
 msgid "Ordinary Quote|O"
 msgstr "Navaden navedek|N"
 
-#: lib/ui/classic.ui:254 lib/ui/stdmenus.ui:319
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:318
 msgid "Menu Separator|M"
 msgstr "Loènica v menuju|L"
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.ui:331
+#: lib/ui/classic.ui:256
 #, fuzzy
 msgid "Horizontal Line"
 msgstr "&Vodoravna poravnava:"
 
-#: lib/ui/classic.ui:256 lib/ui/stdmenus.ui:337 src/insets/insetpagebreak.C:56
+#: lib/ui/classic.ui:257 src/insets/insetpagebreak.C:56
 #, fuzzy
 msgid "Page Break"
 msgstr "Prelomi &strani"
 
-#: lib/ui/classic.ui:261 lib/ui/stdmenus.ui:342
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:341
 msgid "Display Formula|D"
 msgstr "Prikazna formula|P"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:344
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:343
 msgid "Eqnarray Environment|E"
 msgstr "Okolje Eqnarray|E"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:345
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:344
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "Okolje AMS align|A"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:346
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:345
 msgid "AMS alignat Environment|t"
 msgstr "Okolje AMS alignat|t"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:347
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:346
 msgid "AMS flalign Environment|f"
 msgstr "Okolje AMS flalign|f"
 
-#: lib/ui/classic.ui:268 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:348
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:347
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Okolje AMS gather"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:349
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:348
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "Okolje AMS multline"
 
-#: lib/ui/classic.ui:271 lib/ui/stdmenus.ui:351
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:350
 msgid "Array Environment|y"
 msgstr "Okolje Array|y"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:352
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:351
 msgid "Cases Environment|C"
 msgstr "Okolje Cases|C"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:356
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.ui:355
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Poravnava"
 
-#: lib/ui/classic.ui:275
+#: lib/ui/classic.ui:276
 #, fuzzy
 msgid "Font Change|o"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/classic.ui:276
+#: lib/ui/classic.ui:277
 msgid "Math Panel|l"
 msgstr "Matematièna plo¹èa|l"
 
-#: lib/ui/classic.ui:280 lib/ui/stdmenus.ui:210
+#: lib/ui/classic.ui:281
 #, fuzzy
 msgid "Math Normal Font"
 msgstr "Obièajna matematièna pisava"
 
-#: lib/ui/classic.ui:282 lib/ui/stdmenus.ui:212
+#: lib/ui/classic.ui:283
 #, fuzzy
 msgid "Math Calligraphic Family"
 msgstr "Matematièna kaligrafska dru¾ina"
 
-#: lib/ui/classic.ui:283 lib/ui/stdmenus.ui:213
+#: lib/ui/classic.ui:284
 #, fuzzy
 msgid "Math Fraktur Family"
 msgstr "Matematièna dru¾ina fraktur"
 
-#: lib/ui/classic.ui:284 lib/ui/stdmenus.ui:214
+#: lib/ui/classic.ui:285
 #, fuzzy
 msgid "Math Roman Family"
 msgstr "Matematièna pokonèna dru¾ina"
 
-#: lib/ui/classic.ui:285 lib/ui/stdmenus.ui:215
+#: lib/ui/classic.ui:286
 #, fuzzy
 msgid "Math Sans Serif Family"
 msgstr "Matematièna dru¾ina sans serif"
 
-#: lib/ui/classic.ui:287 lib/ui/stdmenus.ui:217
+#: lib/ui/classic.ui:288
 #, fuzzy
 msgid "Math Bold Series"
 msgstr "Matematièni naèin"
 
-#: lib/ui/classic.ui:289 lib/ui/stdmenus.ui:219
+#: lib/ui/classic.ui:290
 #, fuzzy
 msgid "Text Normal Font"
 msgstr "Besedilo po"
 
-#: lib/ui/classic.ui:291 lib/ui/stdmenus.ui:221
+#: lib/ui/classic.ui:292 lib/ui/stdmenus.ui:221
 #, fuzzy
 msgid "Text Roman Family"
 msgstr "Dru¾ina:|#D"
 
-#: lib/ui/classic.ui:292 lib/ui/stdmenus.ui:222
+#: lib/ui/classic.ui:293 lib/ui/stdmenus.ui:222
 #, fuzzy
 msgid "Text Sans Serif Family"
 msgstr "Matematièna dru¾ina sans serif"
 
-#: lib/ui/classic.ui:293 lib/ui/stdmenus.ui:223
+#: lib/ui/classic.ui:294 lib/ui/stdmenus.ui:223
 #, fuzzy
 msgid "Text Typewriter Family"
 msgstr "pisalni stroj"
 
-#: lib/ui/classic.ui:295 lib/ui/stdmenus.ui:225
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.ui:225
 #, fuzzy
 msgid "Text Bold Series"
 msgstr "Besedilo prej|#p"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.ui:226
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.ui:226
 #, fuzzy
 msgid "Text Medium Series"
 msgstr "Besedilo prej|#p"
 
-#: lib/ui/classic.ui:298 lib/ui/stdmenus.ui:228
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.ui:228
 msgid "Text Italic Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.ui:229
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.ui:229
 #, fuzzy
 msgid "Text Small Caps Shape"
 msgstr "majhne velike"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.ui:230
+#: lib/ui/classic.ui:301 lib/ui/stdmenus.ui:230
 msgid "Text Slanted Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:301 lib/ui/stdmenus.ui:231
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.ui:231
 msgid "Text Upright Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:306
+#: lib/ui/classic.ui:307
 #, fuzzy
 msgid "Floatflt Figure"
 msgstr "PrilagodiSliko"
 
-#: lib/ui/classic.ui:310 lib/ui/classic.ui:359 lib/ui/stdmenus.ui:368
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.ui:367
 msgid "Table of Contents|C"
 msgstr "Vsebinsko kazalo|V"
 
-#: lib/ui/classic.ui:312 lib/ui/stdmenus.ui:370
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:369
 msgid "Index List|I"
 msgstr "Stvarno kazalo|v"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:371
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.ui:370
+msgid "Glossary|G"
+msgstr ""
+
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.ui:371
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Literatura"
 
-#: lib/ui/classic.ui:317 lib/ui/stdmenus.ui:375
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:375
 msgid "LyX Document...|X"
 msgstr "Dokument v LyXu...|X"
 
-#: lib/ui/classic.ui:318 lib/ui/stdmenus.ui:376
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:376
 #, fuzzy
 msgid "Plain Text as Lines...|L"
 msgstr "Ascii kot vrstice...|v"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:377
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:377
 #, fuzzy
 msgid "Plain Text as Paragraphs...|P"
 msgstr "Ascii kot odstavki...|o"
 
-#: lib/ui/classic.ui:323 lib/ui/stdmenus.ui:409
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:409
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/classic.ui:324 lib/ui/stdmenus.ui:410
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:410
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/classic.ui:325
+#: lib/ui/classic.ui:327
 msgid "Accept All Changes|A"
 msgstr ""
 
-#: lib/ui/classic.ui:326
+#: lib/ui/classic.ui:328
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:327 lib/ui/stdmenus.ui:415
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.ui:415
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "©irina slike na izhodu"
 
-#: lib/ui/classic.ui:334
+#: lib/ui/classic.ui:336
 msgid "Character...|C"
 msgstr "Znak...|Z"
 
-#: lib/ui/classic.ui:335
+#: lib/ui/classic.ui:337
 msgid "Paragraph...|P"
 msgstr "Odstavek...|O"
 
-#: lib/ui/classic.ui:336
+#: lib/ui/classic.ui:338
 msgid "Document...|D"
 msgstr "Spis...|S"
 
-#: lib/ui/classic.ui:337
+#: lib/ui/classic.ui:339
 msgid "Tabular...|T"
 msgstr "Tabela...|T"
 
-#: lib/ui/classic.ui:339
+#: lib/ui/classic.ui:341
 msgid "Emphasize Style|E"
 msgstr "Poudari slog|P"
 
-#: lib/ui/classic.ui:340
+#: lib/ui/classic.ui:342
 msgid "Noun Style|N"
 msgstr "Slog velikih èrk|v"
 
-#: lib/ui/classic.ui:341
+#: lib/ui/classic.ui:343
 msgid "Bold Style|B"
 msgstr "Polkrepki slog|k"
 
-#: lib/ui/classic.ui:344
+#: lib/ui/classic.ui:346
 msgid "Decrease Environment Depth|v"
 msgstr "Zmanj¹aj globino okolja|m"
 
-#: lib/ui/classic.ui:345
+#: lib/ui/classic.ui:347
 msgid "Increase Environment Depth|i"
 msgstr "Poveèaj globino okolja|v"
 
-#: lib/ui/classic.ui:346
+#: lib/ui/classic.ui:348
 msgid "Start Appendix Here|S"
 msgstr "Tu zaèni dodatek|d"
 
-#: lib/ui/classic.ui:355 lib/ui/stdmenus.ui:399
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.ui:399
 msgid "Build Program|B"
 msgstr "Zgradi program|Z"
 
-#: lib/ui/classic.ui:356 lib/ui/stdmenus.ui:265
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.ui:265
 msgid "Update|U"
 msgstr "Osve¾i|O"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.ui:400
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.ui:400
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "Dnevnik LaTeXa"
 
-#: lib/ui/classic.ui:360
+#: lib/ui/classic.ui:362
 msgid "TeX Information|X"
 msgstr "Podatki za TeX|X"
 
-#: lib/ui/classic.ui:373 lib/ui/stdmenus.ui:423
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:423
 #, fuzzy
 msgid "Next Note|N"
 msgstr "Opomba|O"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:426
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:426
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Naj&dalj¹a oznaka"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:422
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.ui:422
 msgid "Bookmarks|B"
 msgstr "Zaznamki|Z"
 
-#: lib/ui/classic.ui:379
+#: lib/ui/classic.ui:381
 msgid "Save Bookmark 1|S"
 msgstr "Shrani zaznamek 1|S"
 
-#: lib/ui/classic.ui:380
+#: lib/ui/classic.ui:382
 msgid "Save Bookmark 2"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:381
+#: lib/ui/classic.ui:383
 msgid "Save Bookmark 3"
 msgstr "Shrani zaznamek 3"
 
-#: lib/ui/classic.ui:382
+#: lib/ui/classic.ui:384
 #, fuzzy
 msgid "Save Bookmark 4"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:383
+#: lib/ui/classic.ui:385
 #, fuzzy
 msgid "Save Bookmark 5"
 msgstr "Shrani zaznamek 2"
 
-#: lib/ui/classic.ui:385
+#: lib/ui/classic.ui:387
 #, fuzzy
 msgid "Go to Bookmark 1|1"
 msgstr "Pojdi na zaznamek 1|1"
 
-#: lib/ui/classic.ui:386
+#: lib/ui/classic.ui:388
 #, fuzzy
 msgid "Go to Bookmark 2|2"
 msgstr "Pojdi na zaznamek 2|2"
 
-#: lib/ui/classic.ui:387
+#: lib/ui/classic.ui:389
 #, fuzzy
 msgid "Go to Bookmark 3|3"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:388
+#: lib/ui/classic.ui:390
 #, fuzzy
 msgid "Go to Bookmark 4|4"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:389
+#: lib/ui/classic.ui:391
 #, fuzzy
 msgid "Go to Bookmark 5|5"
 msgstr "Pojdi na zaznamek 3|3"
 
-#: lib/ui/classic.ui:404 lib/ui/stdmenus.ui:460
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:460
 msgid "Introduction|I"
 msgstr "Uvod|U"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.ui:461
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:461
 msgid "Tutorial|T"
 msgstr "Uèbenik|b"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:462
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:462
 msgid "User's Guide|U"
 msgstr "Uporabni¹ki vodnik|v"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:463
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:463
 msgid "Extended Features|E"
 msgstr "Dodatne lastnosti|l"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:464
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:464
 msgid "Customization|C"
 msgstr "Prilagoditev|P"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:465
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:465
 msgid "FAQ|F"
 msgstr "Pogosta vpra¹anja|v"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.ui:466
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:466
 msgid "Table of Contents|a"
 msgstr "Vsebinsko kazalo|k"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:467
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:467
 msgid "LaTeX Configuration|L"
 msgstr "Prikrojitev LaTeXa|L"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:469
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:469
 msgid "About LyX|X"
 msgstr "O LyXu|X"
 
-#: lib/ui/classic.ui:422 lib/ui/stdmenus.ui:477 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:477 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr "O programu LyX"
 
-#: lib/ui/classic.ui:423 lib/ui/stdmenus.ui:478
+#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:478
 #, fuzzy
 msgid "Preferences..."
 msgstr "Izbire...|I"
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:479
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:479
 #, fuzzy
 msgid "Quit LyX"
 msgstr "O programu LyX"
@@ -8446,7 +8471,7 @@ msgstr "Nova po vzorcu...|V"
 
 #: lib/ui/stdmenus.ui:38
 #, fuzzy
-msgid "Open recent|t"
+msgid "Open Recent|t"
 msgstr "Odpira se spis "
 
 #: lib/ui/stdmenus.ui:51
@@ -8479,8 +8504,9 @@ msgid "Paste"
 msgstr "Prilepi"
 
 #: lib/ui/stdmenus.ui:90
-msgid "Paste Recent"
-msgstr ""
+#, fuzzy
+msgid "Paste Recent|e"
+msgstr "Usredini|U"
 
 #: lib/ui/stdmenus.ui:91
 #, fuzzy
@@ -8517,18 +8543,18 @@ msgstr "Tabela"
 msgid "Rows & Columns|C"
 msgstr "Zamenjaj stolpca"
 
-#: lib/ui/stdmenus.ui:106
+#: lib/ui/stdmenus.ui:111
 #, fuzzy
 msgid "Increase List Depth|I"
 msgstr "Poveèaj globino okolja|v"
 
-#: lib/ui/stdmenus.ui:107
+#: lib/ui/stdmenus.ui:112
 #, fuzzy
 msgid "Decrease List Depth|D"
 msgstr "Zmanj¹aj globino okolja|m"
 
-#: lib/ui/stdmenus.ui:108
-msgid "Dissolve Inset|s"
+#: lib/ui/stdmenus.ui:113
+msgid "Dissolve Inset|l"
 msgstr ""
 
 #: lib/ui/stdmenus.ui:114
@@ -8614,25 +8640,25 @@ msgstr "Izberi naslednjo vrstico"
 msgid "Right Line|R"
 msgstr "Desno|#D"
 
-#: lib/ui/stdmenus.ui:168
+#: lib/ui/stdmenus.ui:170
 #, fuzzy
-msgid "Add Row"
-msgstr "Dodaj vrsto|D"
+msgid "Copy Row|o"
+msgstr "Prepi¹i vrstico"
 
-#: lib/ui/stdmenus.ui:169
+#: lib/ui/stdmenus.ui:171
 #, fuzzy
-msgid "Delete Row"
-msgstr "Odstrani vrsto|d"
+msgid "Swap Rows|S"
+msgstr "Zamenjaj vrstici"
 
-#: lib/ui/stdmenus.ui:173
+#: lib/ui/stdmenus.ui:175
 #, fuzzy
-msgid "Add Column"
-msgstr "Dodaj stolpec|o"
+msgid "Copy Column|p"
+msgstr "Prepi¹i stolpec"
 
-#: lib/ui/stdmenus.ui:174
+#: lib/ui/stdmenus.ui:176
 #, fuzzy
-msgid "Delete Column"
-msgstr "Odstrani stolpec|r"
+msgid "Swap Columns|w"
+msgstr "Zamenjaj stolpca"
 
 #: lib/ui/stdmenus.ui:186
 #, fuzzy
@@ -8646,22 +8672,22 @@ msgstr "Posebna celica"
 
 #: lib/ui/stdmenus.ui:192
 #, fuzzy
-msgid "Add Line Above"
+msgid "Add Line Above|A"
 msgstr "Meja na vrhu"
 
 #: lib/ui/stdmenus.ui:193
 #, fuzzy
-msgid "Add Line Below"
+msgid "Add Line Below|B"
 msgstr "Meja spodaj"
 
 #: lib/ui/stdmenus.ui:194
 #, fuzzy
-msgid "Delete Line Above"
+msgid "Delete Line Above|D"
 msgstr "Odstrani to vrsto"
 
 #: lib/ui/stdmenus.ui:195
 #, fuzzy
-msgid "Delete Line Below"
+msgid "Delete Line Below|e"
 msgstr "Odstrani to vrsto"
 
 #: lib/ui/stdmenus.ui:197
@@ -8684,6 +8710,76 @@ msgstr "Izberite spis za vstavitev"
 msgid "Delete Line to Right"
 msgstr "Izberite spis za vstavitev"
 
+#: lib/ui/stdmenus.ui:210
+#, fuzzy
+msgid "Math Normal Font|N"
+msgstr "Obièajna matematièna pisava"
+
+#: lib/ui/stdmenus.ui:212
+#, fuzzy
+msgid "Math Calligraphic Family|C"
+msgstr "Matematièna kaligrafska dru¾ina"
+
+#: lib/ui/stdmenus.ui:213
+#, fuzzy
+msgid "Math Fraktur Family|F"
+msgstr "Matematièna dru¾ina fraktur"
+
+#: lib/ui/stdmenus.ui:214
+#, fuzzy
+msgid "Math Roman Family|R"
+msgstr "Matematièna pokonèna dru¾ina"
+
+#: lib/ui/stdmenus.ui:215
+#, fuzzy
+msgid "Math Sans Serif Family|S"
+msgstr "Matematièna dru¾ina sans serif"
+
+#: lib/ui/stdmenus.ui:217
+#, fuzzy
+msgid "Math Bold Series|B"
+msgstr "Matematièni naèin"
+
+#: lib/ui/stdmenus.ui:219
+#, fuzzy
+msgid "Text Normal Font|T"
+msgstr "Besedilo po"
+
+#: lib/ui/stdmenus.ui:235
+#, fuzzy
+msgid "Octave|O"
+msgstr "Octave"
+
+#: lib/ui/stdmenus.ui:236
+#, fuzzy
+msgid "Maxima|M"
+msgstr "Maxima"
+
+#: lib/ui/stdmenus.ui:237
+#, fuzzy
+msgid "Mathematica|a"
+msgstr "Mathematica"
+
+#: lib/ui/stdmenus.ui:239
+#, fuzzy
+msgid "Maple, simplify|s"
+msgstr "Maple, simplify"
+
+#: lib/ui/stdmenus.ui:240
+#, fuzzy
+msgid "Maple, factor|f"
+msgstr "Maple, factor"
+
+#: lib/ui/stdmenus.ui:241
+#, fuzzy
+msgid "Maple, evalm|e"
+msgstr "Maple, evalm"
+
+#: lib/ui/stdmenus.ui:242
+#, fuzzy
+msgid "Maple, evalf|v"
+msgstr "Maple, evalf"
+
 #: lib/ui/stdmenus.ui:261
 #, fuzzy
 msgid "Open All Insets|O"
@@ -8695,13 +8791,18 @@ msgstr ""
 
 #: lib/ui/stdmenus.ui:264
 #, fuzzy
-msgid "View source|s"
+msgid "View Source|S"
 msgstr "Vidni presledek|#s"
 
 #: lib/ui/stdmenus.ui:268
 #, fuzzy
 msgid "Toolbars|b"
 msgstr "Orodni nasveti|O"
+
+#: lib/ui/stdmenus.ui:288
+#, fuzzy
+msgid "Special Character|p"
+msgstr "Posebni znak|z"
 
 #: lib/ui/stdmenus.ui:289
 #, fuzzy
@@ -8718,72 +8819,121 @@ msgstr "Seznami in kazala|k"
 msgid "Float|a"
 msgstr "Plovke|P"
 
-#: lib/ui/stdmenus.ui:294
+#: lib/ui/stdmenus.ui:293
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:295
+#: lib/ui/stdmenus.ui:294
 #, fuzzy
 msgid "File|e"
 msgstr "Datoteka|D"
 
-#: lib/ui/stdmenus.ui:296 src/insets/insetbox.C:153
+#: lib/ui/stdmenus.ui:295 src/insets/insetbox.C:153
 msgid "Box"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:301
+#: lib/ui/stdmenus.ui:298
+#, fuzzy
+msgid "Cross-Reference...|R"
+msgstr "Navzkri¾ni sklic...|s"
+
+#: lib/ui/stdmenus.ui:300
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "Vnos v stvarno kazalo"
 
-#: lib/ui/stdmenus.ui:305
+#: lib/ui/stdmenus.ui:301
+msgid "Glossary Entry|y"
+msgstr ""
+
+#: lib/ui/stdmenus.ui:303
 #, fuzzy
 msgid "Table...|T"
 msgstr "Tabela...|T"
 
-#: lib/ui/stdmenus.ui:311
+#: lib/ui/stdmenus.ui:308
+#, fuzzy
+msgid "Short Title|S"
+msgstr "Kratek naslov"
+
+#: lib/ui/stdmenus.ui:309
 msgid "TeX Code|X"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:317
+#: lib/ui/stdmenus.ui:316
 msgid "Ordinary Quote|Q"
 msgstr "Navaden navedek|N"
 
-#: lib/ui/stdmenus.ui:318
+#: lib/ui/stdmenus.ui:317
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Enojni|#E"
 
-#: lib/ui/stdmenus.ui:320
+#: lib/ui/stdmenus.ui:319
 msgid "Phonetic Symbols|y"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:343
+#: lib/ui/stdmenus.ui:326
+#, fuzzy
+msgid "Protected Space|P"
+msgstr "Za¹èiten presledek|Z"
+
+#: lib/ui/stdmenus.ui:329
+#, fuzzy
+msgid "Horizontal Fill|F"
+msgstr "Vodoravna poravnava:|#r"
+
+#: lib/ui/stdmenus.ui:330
+#, fuzzy
+msgid "Horizontal Line|L"
+msgstr "&Vodoravna poravnava:"
+
+#: lib/ui/stdmenus.ui:331
+#, fuzzy
+msgid "Vertical Space...|V"
+msgstr "Navpièni presledek:|#N"
+
+#: lib/ui/stdmenus.ui:333
+#, fuzzy
+msgid "Hyphenation Point|H"
+msgstr "Mesto delitve|M"
+
+#: lib/ui/stdmenus.ui:335
+#, fuzzy
+msgid "Line Break|B"
+msgstr "Prelom vrstice|P"
+
+#: lib/ui/stdmenus.ui:336
+#, fuzzy
+msgid "Page Break|a"
+msgstr "Prelomi &strani"
+
+#: lib/ui/stdmenus.ui:342
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "©tevilka"
 
+#: lib/ui/stdmenus.ui:352
+#, fuzzy
+msgid "Aligned Environment|l"
+msgstr "Poravnava"
+
 #: lib/ui/stdmenus.ui:353
 #, fuzzy
-msgid "Aligned Environment"
-msgstr "Poravnava"
+msgid "AlignedAt Environment|v"
+msgstr "Okolje AlignAt"
 
 #: lib/ui/stdmenus.ui:354
 #, fuzzy
-msgid "AlignedAt Environment"
-msgstr "Okolje AlignAt"
-
-#: lib/ui/stdmenus.ui:355
-#, fuzzy
-msgid "Gathered Environment"
+msgid "Gathered Environment|h"
 msgstr "Okolje Gather"
 
-#: lib/ui/stdmenus.ui:358
+#: lib/ui/stdmenus.ui:357
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "Matematièna plo¹èa|l"
 
-#: lib/ui/stdmenus.ui:364
+#: lib/ui/stdmenus.ui:363
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Vstavi tabelo"
@@ -8861,7 +9011,7 @@ msgstr " (Spremenjeno)"
 
 #: lib/ui/stdmenus.ui:425
 #, fuzzy
-msgid "Next Reference|R"
+msgid "Next Cross-Reference|R"
 msgstr "Sklic"
 
 #: lib/ui/stdmenus.ui:432
@@ -8908,11 +9058,11 @@ msgstr "®elite shraniti spis?"
 msgid "Print document"
 msgstr "Uvozi spis"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:663
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:667
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:674
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:678
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -9004,262 +9154,267 @@ msgstr "Vnesi citat"
 msgid "Insert index entry"
 msgstr "Vstavi postavko stvarnega kazala"
 
-#: lib/ui/stdtoolbars.ui:80
+#: lib/ui/stdtoolbars.ui:79
+#, fuzzy
+msgid "Insert glossary entry"
+msgstr "Vstavi postavko stvarnega kazala"
+
+#: lib/ui/stdtoolbars.ui:81
 #, fuzzy
 msgid "Insert footnote"
 msgstr "Vstavi opombo pod èrto"
 
-#: lib/ui/stdtoolbars.ui:81
+#: lib/ui/stdtoolbars.ui:82
 #, fuzzy
 msgid "Insert margin note"
 msgstr "Vstavi opombo ob robu"
 
-#: lib/ui/stdtoolbars.ui:82 lib/ui/stdtoolbars.ui:160
+#: lib/ui/stdtoolbars.ui:83 lib/ui/stdtoolbars.ui:161
 #, fuzzy
 msgid "Insert note"
 msgstr "Vstavi narekovaj"
 
-#: lib/ui/stdtoolbars.ui:83
+#: lib/ui/stdtoolbars.ui:84
 msgid "Insert URL"
 msgstr "Vstavi URL"
 
-#: lib/ui/stdtoolbars.ui:84
+#: lib/ui/stdtoolbars.ui:85
 #, fuzzy
-msgid "Insert TeX Code"
+msgid "Insert TeX code"
 msgstr "Vstavi bibtex"
 
-#: lib/ui/stdtoolbars.ui:85
+#: lib/ui/stdtoolbars.ui:86
 msgid "Include file"
 msgstr "Vkljuèi datoteko"
 
-#: lib/ui/stdtoolbars.ui:87
+#: lib/ui/stdtoolbars.ui:88
 #, fuzzy
 msgid "Text style"
 msgstr "Slogi za LaTeX"
 
-#: lib/ui/stdtoolbars.ui:88
+#: lib/ui/stdtoolbars.ui:89
 #, fuzzy
 msgid "Paragraph settings"
 msgstr "Nastavitve tiskalnika"
 
-#: lib/ui/stdtoolbars.ui:89
+#: lib/ui/stdtoolbars.ui:90
 msgid "Table of contents"
 msgstr "Vsebinsko kazalo"
 
-#: lib/ui/stdtoolbars.ui:90
+#: lib/ui/stdtoolbars.ui:91
 #, fuzzy
 msgid "Check spelling"
 msgstr "Preveri TeX"
 
-#: lib/ui/stdtoolbars.ui:94
+#: lib/ui/stdtoolbars.ui:95
 #, fuzzy
 msgid "table"
 msgstr "Tabela"
 
-#: lib/ui/stdtoolbars.ui:95 lib/ui/stdtoolbars.ui:138
+#: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
 #, fuzzy
 msgid "Add row"
 msgstr "Dodaj vrsto|D"
 
-#: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
+#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
 #, fuzzy
 msgid "Add column"
 msgstr "Dodaj stolpec|o"
 
-#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
+#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
 #, fuzzy
 msgid "Delete row"
 msgstr "Odstrani vrsto|d"
 
-#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
+#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
 #, fuzzy
 msgid "Delete column"
 msgstr "Odstrani stolpec|r"
 
-#: lib/ui/stdtoolbars.ui:100
+#: lib/ui/stdtoolbars.ui:101
 #, fuzzy
 msgid "Set top line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.ui:101
+#: lib/ui/stdtoolbars.ui:102
 #, fuzzy
 msgid "Set bottom line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.ui:102
+#: lib/ui/stdtoolbars.ui:103
 #, fuzzy
 msgid "Set left line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.ui:103
+#: lib/ui/stdtoolbars.ui:104
 #, fuzzy
 msgid "Set right line"
 msgstr "Izberi naslednjo vrstico"
 
-#: lib/ui/stdtoolbars.ui:104
+#: lib/ui/stdtoolbars.ui:105
 #, fuzzy
 msgid "Set all lines"
 msgstr "Nastavi vse meje"
 
-#: lib/ui/stdtoolbars.ui:105
+#: lib/ui/stdtoolbars.ui:106
 #, fuzzy
 msgid "Unset all lines"
 msgstr "Iznièi vse meje"
 
-#: lib/ui/stdtoolbars.ui:107
+#: lib/ui/stdtoolbars.ui:108
 #, fuzzy
 msgid "Align left"
 msgstr "Poravnaj levo|e"
 
-#: lib/ui/stdtoolbars.ui:108
+#: lib/ui/stdtoolbars.ui:109
 #, fuzzy
 msgid "Align center"
 msgstr "Usredini|U"
 
-#: lib/ui/stdtoolbars.ui:109
+#: lib/ui/stdtoolbars.ui:110
 #, fuzzy
 msgid "Align right"
 msgstr "Poravnaj desno|d"
 
-#: lib/ui/stdtoolbars.ui:111
+#: lib/ui/stdtoolbars.ui:112
 #, fuzzy
 msgid "Align top"
 msgstr "Èrta zgoraj|z"
 
-#: lib/ui/stdtoolbars.ui:112
+#: lib/ui/stdtoolbars.ui:113
 #, fuzzy
 msgid "Align middle"
 msgstr "Poravnava"
 
-#: lib/ui/stdtoolbars.ui:113
+#: lib/ui/stdtoolbars.ui:114
 #, fuzzy
 msgid "Align bottom"
 msgstr "Èrta spodaj|s"
 
-#: lib/ui/stdtoolbars.ui:115
+#: lib/ui/stdtoolbars.ui:116
 #, fuzzy
 msgid "Rotate cell"
 msgstr "Zavrti &celico"
 
-#: lib/ui/stdtoolbars.ui:116
+#: lib/ui/stdtoolbars.ui:117
 #, fuzzy
 msgid "Rotate table"
 msgstr "&Zavrti tabelo"
 
-#: lib/ui/stdtoolbars.ui:117
+#: lib/ui/stdtoolbars.ui:118
 #, fuzzy
 msgid "Set multi-column"
 msgstr "Poseben veèstolpec"
 
-#: lib/ui/stdtoolbars.ui:120 src/LColor.C:123
+#: lib/ui/stdtoolbars.ui:121 src/LColor.C:123
 msgid "math"
 msgstr "matematika"
 
-#: lib/ui/stdtoolbars.ui:121
+#: lib/ui/stdtoolbars.ui:122
 #, fuzzy
 msgid "Show math panel"
 msgstr "Poka¾i &pot"
 
-#: lib/ui/stdtoolbars.ui:122
+#: lib/ui/stdtoolbars.ui:123
 #, fuzzy
 msgid "Set display mode"
 msgstr "Preklopi med naèinom prikaza"
 
-#: lib/ui/stdtoolbars.ui:126
+#: lib/ui/stdtoolbars.ui:127
 #, fuzzy
 msgid "Insert square root"
 msgstr "Vstavi koren"
 
-#: lib/ui/stdtoolbars.ui:127
+#: lib/ui/stdtoolbars.ui:128
 #, fuzzy
 msgid "Insert sum"
 msgstr "Vstavi narekovaj"
 
-#: lib/ui/stdtoolbars.ui:128
+#: lib/ui/stdtoolbars.ui:129
 #, fuzzy
 msgid "Insert integral"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdtoolbars.ui:129
+#: lib/ui/stdtoolbars.ui:130
 #, fuzzy
 msgid "Insert product"
 msgstr "Vstavi koren"
 
-#: lib/ui/stdtoolbars.ui:131
+#: lib/ui/stdtoolbars.ui:132
 #, fuzzy
 msgid "Insert fraction"
 msgstr "Vnesi ulomek"
 
-#: lib/ui/stdtoolbars.ui:132
+#: lib/ui/stdtoolbars.ui:133
 #, fuzzy
 msgid "Insert ( )"
 msgstr "&Vstavi"
 
-#: lib/ui/stdtoolbars.ui:133
+#: lib/ui/stdtoolbars.ui:134
 #, fuzzy
 msgid "Insert [ ]"
 msgstr "&Vstavi"
 
-#: lib/ui/stdtoolbars.ui:134
+#: lib/ui/stdtoolbars.ui:135
 #, fuzzy
 msgid "Insert { }"
 msgstr "&Vstavi"
 
-#: lib/ui/stdtoolbars.ui:137
+#: lib/ui/stdtoolbars.ui:138
 #, fuzzy
 msgid "Insert cases environment"
 msgstr "Okolje Cases|C"
 
-#: lib/ui/stdtoolbars.ui:144
+#: lib/ui/stdtoolbars.ui:145
 msgid "minibuffer"
 msgstr ""
 
-#: lib/ui/stdtoolbars.ui:148
+#: lib/ui/stdtoolbars.ui:149
 #, fuzzy
 msgid "review"
 msgstr "Predogled|#P"
 
-#: lib/ui/stdtoolbars.ui:149
+#: lib/ui/stdtoolbars.ui:150
 #, fuzzy
 msgid "Track changes"
 msgstr "Zapi¹i spremembe...|Z"
 
-#: lib/ui/stdtoolbars.ui:150
+#: lib/ui/stdtoolbars.ui:151
 #, fuzzy
 msgid "Show changes in output"
 msgstr "©irina slike na izhodu"
 
-#: lib/ui/stdtoolbars.ui:152
+#: lib/ui/stdtoolbars.ui:153
 #, fuzzy
 msgid "Next change"
 msgstr " (Spremenjeno)"
 
-#: lib/ui/stdtoolbars.ui:153
+#: lib/ui/stdtoolbars.ui:154
 #, fuzzy
 msgid "Accept change"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdtoolbars.ui:154
+#: lib/ui/stdtoolbars.ui:155
 #, fuzzy
 msgid "Reject change"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdtoolbars.ui:156
+#: lib/ui/stdtoolbars.ui:157
 #, fuzzy
 msgid "Merge changes"
 msgstr "Zdru¾i celice"
 
-#: lib/ui/stdtoolbars.ui:157
+#: lib/ui/stdtoolbars.ui:158
 #, fuzzy
 msgid "Accept all changes"
 msgstr "Sprememba pisave|p"
 
-#: lib/ui/stdtoolbars.ui:158
+#: lib/ui/stdtoolbars.ui:159
 #, fuzzy
 msgid "Reject all changes"
 msgstr "Prebrskaj|#r"
 
-#: lib/ui/stdtoolbars.ui:161
+#: lib/ui/stdtoolbars.ui:162
 #, fuzzy
 msgid "Next note"
 msgstr "Opomba|O"
@@ -9305,100 +9460,100 @@ msgstr "®elite ustvariti nov spis s tem imenom?"
 msgid "&Create"
 msgstr "primerjano"
 
-#: src/BufferView.C:513
+#: src/BufferView.C:517
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Shrani zaznamek 2"
 
-#: src/BufferView.C:666
+#: src/BufferView.C:670
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView.C:677
+#: src/BufferView.C:681
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView.C:825
+#: src/BufferView.C:829
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/BufferView.C:832
+#: src/BufferView.C:836
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/BufferView.C:839
+#: src/BufferView.C:843
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView.C:842
+#: src/BufferView.C:846
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView.C:888
+#: src/BufferView.C:892
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d words checked."
 
-#: src/BufferView.C:891
+#: src/BufferView.C:895
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d words checked."
 
-#: src/BufferView.C:896
+#: src/BufferView.C:900
 #, fuzzy
 msgid "One word in selection."
 msgstr "Zaznana ena napaka"
 
-#: src/BufferView.C:898
+#: src/BufferView.C:902
 #, fuzzy
 msgid "One word in document."
 msgstr "Vstavlja se spis "
 
-#: src/BufferView.C:901
+#: src/BufferView.C:905
 #, fuzzy
 msgid "Count words"
 msgstr "Trenutna beseda"
 
-#: src/BufferView.C:1330
+#: src/BufferView.C:1334
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/BufferView.C:1332 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1336 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:95
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1832 src/lyxfunc.C:1869 src/lyxfunc.C:1944
+#: src/lyxfunc.C:1833 src/lyxfunc.C:1870 src/lyxfunc.C:1945
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
-#: src/BufferView.C:1333 src/lyxfunc.C:1870 src/lyxfunc.C:1945
+#: src/BufferView.C:1337 src/lyxfunc.C:1871 src/lyxfunc.C:1946
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/BufferView.C:1337 src/lyx_cb.C:141 src/lyxfunc.C:1837
-#: src/lyxfunc.C:1874
+#: src/BufferView.C:1341 src/lyx_cb.C:141 src/lyxfunc.C:1838
+#: src/lyxfunc.C:1875
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/BufferView.C:1349 src/lyxfunc.C:1884 src/lyxfunc.C:1966
-#: src/lyxfunc.C:1980 src/lyxfunc.C:1996
+#: src/BufferView.C:1353 src/lyxfunc.C:1885 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1981 src/lyxfunc.C:1997
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView.C:1360
+#: src/BufferView.C:1364
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView.C:1370
+#: src/BufferView.C:1374
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView.C:1372
+#: src/BufferView.C:1376
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
@@ -9413,7 +9568,7 @@ msgstr "Opozorilo ChkTeXa #"
 msgid "ChkTeX warning id # "
 msgstr "Opozorilo ChkTeXa #"
 
-#: src/CutAndPaste.C:415
+#: src/CutAndPaste.C:407
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9426,12 +9581,12 @@ msgstr ""
 "zaradi pretvorbe razreda iz\n"
 "%3$s v %4$s"
 
-#: src/CutAndPaste.C:420
+#: src/CutAndPaste.C:412
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Znakovni slog"
 
-#: src/CutAndPaste.C:439
+#: src/CutAndPaste.C:431
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9442,7 +9597,7 @@ msgstr ""
 "zaradi pretvorbe razreda iz\n"
 "%3$s v %4$s"
 
-#: src/CutAndPaste.C:446
+#: src/CutAndPaste.C:438
 msgid "Undefined character style"
 msgstr ""
 
@@ -9700,13 +9855,23 @@ msgstr "prezri"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Tek LaTeXa ¹tevilka "
 
-#: src/LaTeX.C:283 src/LaTeX.C:351
+#: src/LaTeX.C:287 src/LaTeX.C:361
 msgid "Running MakeIndex."
 msgstr "Izvaja se MakeIndex."
 
-#: src/LaTeX.C:295
+#: src/LaTeX.C:292
+#, fuzzy
+msgid "Running Makeindex for nomencl."
+msgstr "Izvaja se MakeIndex."
+
+#: src/LaTeX.C:305
 msgid "Running BibTeX."
 msgstr "Izvaja se BibTeX."
+
+#: src/LaTeX.C:368
+#, fuzzy
+msgid "Running Makeindex for nomencl. "
+msgstr "Izvaja se MakeIndex."
 
 #: src/MenuBackend.C:464 src/MenuBackend.C:501 src/MenuBackend.C:571
 #: src/MenuBackend.C:593 src/MenuBackend.C:616 src/MenuBackend.C:702
@@ -9727,7 +9892,7 @@ msgstr "Besedilo ASCII kot odstavki"
 msgid "No Table of contents"
 msgstr "Ni vsebinskega kazala"
 
-#: src/MenuBackend.C:782
+#: src/MenuBackend.C:783
 msgid " (auto)"
 msgstr ""
 
@@ -10250,7 +10415,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Poglej datoteko"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1993
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1994
 #, fuzzy
 msgid "&Over-write"
 msgstr "&pisalni stroj:"
@@ -10343,16 +10508,16 @@ msgstr "Ni podatkov za ogled "
 msgid "Auto-edit file %1$s failed"
 msgstr ""
 
-#: src/frontends/LyXView.C:388
+#: src/frontends/LyXView.C:387
 #, fuzzy
 msgid " (changed)"
 msgstr " (Spremenjeno)"
 
-#: src/frontends/LyXView.C:392
+#: src/frontends/LyXView.C:391
 msgid " (read only)"
 msgstr " (le za branje)"
 
-#: src/frontends/WorkArea.C:224
+#: src/frontends/WorkArea.C:229
 msgid "Formatting document..."
 msgstr "Urejanje spisa..."
 
@@ -10898,12 +11063,12 @@ msgstr "Ding 3|#n"
 msgid "Dings 4"
 msgstr "Ding 4|#g"
 
-#: src/frontends/qt4/Dialogs.C:219
+#: src/frontends/qt4/Dialogs.C:220
 #, fuzzy
 msgid "Index Entry"
 msgstr "Vnos v stvarno kazalo"
 
-#: src/frontends/qt4/Dialogs.C:225
+#: src/frontends/qt4/Dialogs.C:230
 #, fuzzy
 msgid "Label"
 msgstr "&Oznaka"
@@ -10913,7 +11078,7 @@ msgstr "&Oznaka"
 msgid "Directories"
 msgstr "Uporabni¹ki imenik: "
 
-#: src/frontends/qt4/GuiView.C:452
+#: src/frontends/qt4/GuiView.C:460
 msgid "LyX"
 msgstr "LyX"
 
@@ -10946,12 +11111,12 @@ msgstr "Pot za varnostne kopije:|#P"
 msgid "Activated"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:71 src/frontends/qt4/QBranches.C:138
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
 #: src/frontends/qt4/QDocumentDialog.C:623
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:71 src/frontends/qt4/QDocumentDialog.C:622
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:622
 #, fuzzy
 msgid "No"
 msgstr "velike èrke "
@@ -10987,23 +11152,20 @@ msgid "Next command"
 msgstr "Naslednji ukaz"
 
 #: src/frontends/qt4/QDelimiterDialog.C:48
-#, fuzzy
-msgid "big size"
-msgstr "Velik razmak"
+msgid "big[[delimiter size]]"
+msgstr ""
 
 #: src/frontends/qt4/QDelimiterDialog.C:48
-#, fuzzy
-msgid "Big size"
-msgstr "Velik razmak"
-
-#: src/frontends/qt4/QDelimiterDialog.C:49
-msgid "bigg size"
+msgid "Big[[delimiter size]]"
 msgstr ""
 
 #: src/frontends/qt4/QDelimiterDialog.C:49
-#, fuzzy
-msgid "Bigg size"
-msgstr "Velik razmak"
+msgid "bigg[[delimiter size]]"
+msgstr ""
+
+#: src/frontends/qt4/QDelimiterDialog.C:49
+msgid "Bigg[[delimiter size]]"
+msgstr ""
 
 #: src/frontends/qt4/QDelimiterDialog.C:98
 msgid "LyX: Delimiters"
@@ -11025,163 +11187,163 @@ msgstr "Oznaèevanje"
 msgid "Document Settings"
 msgstr "Spisi"
 
-#: src/frontends/qt4/QDocumentDialog.C:122
+#: src/frontends/qt4/QDocumentDialog.C:120
 msgid "Length"
 msgstr "Dol¾ina"
 
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2427
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2348
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
 
-#: src/frontends/qt4/QDocumentDialog.C:158
-#: src/frontends/qt4/QDocumentDialog.C:164
-#: src/frontends/qt4/QDocumentDialog.C:170
+#: src/frontends/qt4/QDocumentDialog.C:156
+#: src/frontends/qt4/QDocumentDialog.C:162
+#: src/frontends/qt4/QDocumentDialog.C:168
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:174
-#: src/frontends/qt4/QDocumentDialog.C:200
+#: src/frontends/qt4/QDocumentDialog.C:172
+#: src/frontends/qt4/QDocumentDialog.C:198
 #: src/frontends/qt4/QDocumentDialog.C:532
 msgid "default"
 msgstr "privzeta"
 
-#: src/frontends/qt4/QDocumentDialog.C:175
+#: src/frontends/qt4/QDocumentDialog.C:173
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocumentDialog.C:176
+#: src/frontends/qt4/QDocumentDialog.C:174
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocumentDialog.C:177
+#: src/frontends/qt4/QDocumentDialog.C:175
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocumentDialog.C:201
+#: src/frontends/qt4/QDocumentDialog.C:199
 #, fuzzy
 msgid "empty"
 msgstr "Globina"
 
-#: src/frontends/qt4/QDocumentDialog.C:202
+#: src/frontends/qt4/QDocumentDialog.C:200
 #, fuzzy
 msgid "plain"
 msgstr "Dejstvo-navadno"
 
-#: src/frontends/qt4/QDocumentDialog.C:203
+#: src/frontends/qt4/QDocumentDialog.C:201
 #, fuzzy
 msgid "headings"
 msgstr "GlavaProsojnice"
 
-#: src/frontends/qt4/QDocumentDialog.C:204
+#: src/frontends/qt4/QDocumentDialog.C:202
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:220
+#: src/frontends/qt4/QDocumentDialog.C:218
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocumentDialog.C:221
+#: src/frontends/qt4/QDocumentDialog.C:219
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocumentDialog.C:308
+#: src/frontends/qt4/QDocumentDialog.C:306
 msgid "``text''"
 msgstr "``besedilo''"
 
-#: src/frontends/qt4/QDocumentDialog.C:309
+#: src/frontends/qt4/QDocumentDialog.C:307
 msgid "''text''"
 msgstr "''besedilo''"
 
-#: src/frontends/qt4/QDocumentDialog.C:310
+#: src/frontends/qt4/QDocumentDialog.C:308
 msgid ",,text``"
 msgstr ",,besedilo``"
 
-#: src/frontends/qt4/QDocumentDialog.C:311
+#: src/frontends/qt4/QDocumentDialog.C:309
 msgid ",,text''"
 msgstr ",,besedilo''"
 
-#: src/frontends/qt4/QDocumentDialog.C:312
+#: src/frontends/qt4/QDocumentDialog.C:310
 msgid "<<text>>"
 msgstr "<<besedilo>>"
 
-#: src/frontends/qt4/QDocumentDialog.C:313
+#: src/frontends/qt4/QDocumentDialog.C:311
 msgid ">>text<<"
 msgstr ">>besedilo<<"
 
-#: src/frontends/qt4/QDocumentDialog.C:325
+#: src/frontends/qt4/QDocumentDialog.C:323
 #, fuzzy
 msgid "Numbered"
 msgstr "©tevilèenje"
 
-#: src/frontends/qt4/QDocumentDialog.C:326
+#: src/frontends/qt4/QDocumentDialog.C:324
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:339
+#: src/frontends/qt4/QDocumentDialog.C:337
 msgid "Author-year"
 msgstr "Avtor-leto"
 
-#: src/frontends/qt4/QDocumentDialog.C:340
+#: src/frontends/qt4/QDocumentDialog.C:338
 #, fuzzy
 msgid "Numerical"
 msgstr "ameri¹ko"
 
-#: src/frontends/qt4/QDocumentDialog.C:370
+#: src/frontends/qt4/QDocumentDialog.C:368
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Dostopni"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
-#: src/frontends/qt4/QDocumentDialog.C:408
+#: src/frontends/qt4/QDocumentDialog.C:391
+#: src/frontends/qt4/QDocumentDialog.C:404
 #, fuzzy
 msgid "Document Class"
 msgstr "&Razred spisa:"
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:392
 #, fuzzy
 msgid "Fonts"
 msgstr "Pisava: "
 
-#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:393
 #, fuzzy
 msgid "Text Layout"
 msgstr "Videz "
 
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocumentDialog.C:394
 #, fuzzy
 msgid "Page Layout"
 msgstr "Videz odstavka"
 
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocumentDialog.C:395
 #, fuzzy
 msgid "Page Margins"
 msgstr "Robovi"
 
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocumentDialog.C:397
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "©tevilèenje"
 
-#: src/frontends/qt4/QDocumentDialog.C:403
+#: src/frontends/qt4/QDocumentDialog.C:399
 #, fuzzy
 msgid "Math Options"
 msgstr "Izbire za plovke"
 
-#: src/frontends/qt4/QDocumentDialog.C:404
+#: src/frontends/qt4/QDocumentDialog.C:400
 #, fuzzy
 msgid "Float Placement"
 msgstr "Postavitev plovk:|#l"
 
-#: src/frontends/qt4/QDocumentDialog.C:405
+#: src/frontends/qt4/QDocumentDialog.C:401
 msgid "Bullets"
 msgstr "Pike"
 
-#: src/frontends/qt4/QDocumentDialog.C:406
+#: src/frontends/qt4/QDocumentDialog.C:402
 msgid "Branches"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:407
+#: src/frontends/qt4/QDocumentDialog.C:403
 #: src/frontends/qt4/QDocumentDialog.C:419
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
@@ -11471,33 +11633,33 @@ msgstr ""
 msgid "Converters"
 msgstr "Pretvorniki"
 
-#: src/frontends/qt4/QPrefsDialog.C:1045
+#: src/frontends/qt4/QPrefsDialog.C:1051
 #, fuzzy
 msgid "Copiers"
 msgstr "Izvodi"
 
-#: src/frontends/qt4/QPrefsDialog.C:1289
+#: src/frontends/qt4/QPrefsDialog.C:1295
 msgid "File formats"
 msgstr "Datoteèni formati"
 
-#: src/frontends/qt4/QPrefsDialog.C:1517
+#: src/frontends/qt4/QPrefsDialog.C:1523
 #, fuzzy
 msgid "Format in use"
 msgstr "Formati"
 
-#: src/frontends/qt4/QPrefsDialog.C:1518
+#: src/frontends/qt4/QPrefsDialog.C:1524
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:1610
+#: src/frontends/qt4/QPrefsDialog.C:1616
 msgid "Printer"
 msgstr "Tiskalnik"
 
-#: src/frontends/qt4/QPrefsDialog.C:1702 src/frontends/qt4/QPrefsDialog.C:1883
+#: src/frontends/qt4/QPrefsDialog.C:1708 src/frontends/qt4/QPrefsDialog.C:1889
 msgid "User interface"
 msgstr "Uporabni¹ki vmesnik"
 
-#: src/frontends/qt4/QPrefsDialog.C:1814
+#: src/frontends/qt4/QPrefsDialog.C:1820
 #, fuzzy
 msgid "Identity"
 msgstr "&Zamik"
@@ -11606,7 +11768,7 @@ msgstr "Ni podatkov za pretvarjanje iz "
 msgid "imported."
 msgstr "uvo¾ena."
 
-#: src/insets/insetbase.C:247
+#: src/insets/insetbase.C:249
 msgid "Opened inset"
 msgstr "Odprt vstavek"
 
@@ -11699,7 +11861,7 @@ msgstr "Odprta zabele¾ka"
 msgid "Opened ERT Inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/insetert.C:386
+#: src/insets/insetert.C:388
 msgid "ERT"
 msgstr ""
 
@@ -11803,6 +11965,15 @@ msgstr "Robovi"
 #, fuzzy
 msgid "Opened Marginal Note Inset"
 msgstr "Odprta zabele¾ka"
+
+#: src/insets/insetnomencl.C:35
+#, fuzzy
+msgid "Glo"
+msgstr "&Globalni"
+
+#: src/insets/insetnomencl.C:74
+msgid "Glossary"
+msgstr ""
 
 #: src/insets/insetnote.C:66
 msgid "Comment"
@@ -12135,11 +12306,11 @@ msgstr "&Odstrani"
 msgid "Choose a filename to save document as"
 msgstr "Vnesite ime datoteke, pod katerim naj se shrani spis"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1833
+#: src/lyx_cb.C:136 src/lyxfunc.C:1834
 msgid "Templates|#T#t"
 msgstr "Vzorci|#V#v"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1990
+#: src/lyx_cb.C:165 src/lyxfunc.C:1991
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12147,7 +12318,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1992
+#: src/lyx_cb.C:167 src/lyxfunc.C:1993
 #, fuzzy
 msgid "Over-write document?"
 msgstr "®elite shraniti spis?"
@@ -12539,7 +12710,7 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1077 src/text3.C:1209
+#: src/lyxfunc.C:1077 src/text3.C:1216
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -12548,62 +12719,62 @@ msgstr "Manjkajoèi argument"
 msgid "Opening help file %1$s..."
 msgstr "Odpira se datoteko s pomoèjo"
 
-#: src/lyxfunc.C:1355
+#: src/lyxfunc.C:1356
 msgid "Opening child document "
 msgstr "Odpira se podrejeni spis "
 
-#: src/lyxfunc.C:1440
+#: src/lyxfunc.C:1441
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1451
+#: src/lyxfunc.C:1452
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1567
+#: src/lyxfunc.C:1568
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Videz spisa"
 
-#: src/lyxfunc.C:1570
+#: src/lyxfunc.C:1571
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Shrani kot privzeto za spis"
 
-#: src/lyxfunc.C:1626
+#: src/lyxfunc.C:1627
 msgid "Converting document to new document class..."
 msgstr "Spis se spreminja v nov razred spisa..."
 
-#: src/lyxfunc.C:1830
+#: src/lyxfunc.C:1831
 msgid "Select template file"
 msgstr "Izberite vzorèno datoteko"
 
-#: src/lyxfunc.C:1867
+#: src/lyxfunc.C:1868
 msgid "Select document to open"
 msgstr "Izberite spis za odprtje"
 
-#: src/lyxfunc.C:1908
+#: src/lyxfunc.C:1909
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Odpira se spis %1$s..."
 
-#: src/lyxfunc.C:1912
+#: src/lyxfunc.C:1913
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je odprt."
 
-#: src/lyxfunc.C:1914
+#: src/lyxfunc.C:1915
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Spisa ni moè odpreti"
 
-#: src/lyxfunc.C:1939
+#: src/lyxfunc.C:1940
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Izberite spis za vstavitev"
 
-#: src/lyxfunc.C:2056
+#: src/lyxfunc.C:2057
 msgid "Welcome to LyX!"
 msgstr "Dobrodo¹li v LyXu!"
 
@@ -13349,54 +13520,54 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:2393
+#: src/text.C:2314
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/text.C:2396
+#: src/text.C:2317
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/text.C:2408
+#: src/text.C:2329
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/text.C:2415
+#: src/text.C:2336
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/text.C:2421
+#: src/text.C:2342
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/text.C:2433
+#: src/text.C:2354
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/text.C:2442
+#: src/text.C:2363
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/text.C:2443
+#: src/text.C:2364
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/text.C:2444
+#: src/text.C:2365
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:2445
+#: src/text.C:2366
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/text.C:2446
+#: src/text.C:2367
 msgid ", Boundary: "
 msgstr ""
 
@@ -13435,12 +13606,12 @@ msgstr "Videz "
 msgid " not known"
 msgstr " ni znan"
 
-#: src/text3.C:1314 src/text3.C:1326
+#: src/text3.C:1321 src/text3.C:1333
 #, fuzzy
 msgid "Character set"
 msgstr "Znakovni nabor:|#Z"
 
-#: src/text3.C:1458
+#: src/text3.C:1465
 msgid "Paragraph layout set"
 msgstr "Nastavljen videz odstavka"
 
@@ -13473,21 +13644,3 @@ msgstr "&Navpièno:"
 #, fuzzy
 msgid "protected"
 msgstr "Za¹èiten presledek|Z"
-
-#~ msgid "LyX Display"
-#~ msgstr "Zaslon LyXa"
-
-#~ msgid "Units of height value"
-#~ msgstr "Enote vrednosti vi¹ine"
-
-#~ msgid "Rotation"
-#~ msgstr "Zasuk"
-
-#~ msgid "Is this just one part of a figure float ?"
-#~ msgstr "Je to le en del slikovne plovke?"
-
-#~ msgid "Saved bookmark %1$d"
-#~ msgstr "Shranjen zaznamek %1$d"
-
-#~ msgid "Moved to bookmark %1$d"
-#~ msgstr "Premaknjen v zaznamek %1$d"
