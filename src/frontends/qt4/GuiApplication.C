@@ -286,7 +286,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 {
 	BufferView * bv = currentView().view();
 
-	switch (ev->type) {
+	switch (xev->type) {
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
 		if (bv) {
