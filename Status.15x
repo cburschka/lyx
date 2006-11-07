@@ -127,8 +127,6 @@ MENUS
 
 * Some English menu items don't have a '&' character. (box, date, paste...)
 
-* All label and button texts in the Qt4 dialogs are not translated.
-
 * Special handling of [[...]] in text messages is disabled in messages.C
 
 
@@ -295,3 +293,7 @@ CREDITS:
 
   WONTFIX: This happens with qt >= 4.2 only, it does not happen with 4.1.4/4.1.5!
   (or maybe try to add an updateGeonetry() call somewhere as well; JSpitzm).
+
+* All label and button texts in the Qt4 dialogs are not translated.
+
+  FIXED (MGerz 2006-11-07)

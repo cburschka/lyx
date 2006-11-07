@@ -104,7 +104,7 @@ void qstring_to_ucs4(QString const & qstr, std::vector<char_type> & ucs4);
  *
  * Use this in qt4/ instead of qt_()
  */
-QString const qt_(char const * str);
+QString const qt_(char const * str, const char * comment);
 
 
 /**

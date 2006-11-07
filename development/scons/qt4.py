@@ -262,7 +262,7 @@ def generate(env):
 	#env['QT4_UIC4COM'] = [
 	#	CLVar('$QT4_UIC $QT4_UICDECLFLAGS -o ${TARGETS[0]} $SOURCE'),
 	#	]
-	env['QT4_UIC4COM'] = '$QT4_UIC -o $TARGET $SOURCE'
+	env['QT4_UIC4COM'] = '$QT4_UIC -tr lyx::qt_ -o $TARGET $SOURCE'
 	uic4builder = Builder(
 		action='$QT4_UIC4COM',
 		src_suffix='$QT4_UISUFFIX',

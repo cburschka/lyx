@@ -8,7 +8,7 @@ EXTRA_DIST = $(UIFILES)
 BUILT_SOURCES = $(UIFILES:.ui=.h)
 
 # Use _() for localization instead of tr() or trUtf8()
-UICFLAGS=-tr qt_
+UIC4FLAGS=-tr lyx::qt_
 
 %.h: %.ui
 	$(UIC4) $(UIC4FLAGS) $< -o $@
