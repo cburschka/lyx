@@ -1887,6 +1887,10 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	add(new PrefIdentity);
 
 	prefsPS->setCurrentPanel(_("User interface"));
+// FIXME: hack to work around resizing bug in Qt >= 4.2
+#if QT_VERSION >= 0x040200
+	prefsPS->updateGeometry();
+#endif
 
 	form_->bcview().setOK(savePB);
 	form_->bcview().setApply(applyPB);

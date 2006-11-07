@@ -188,6 +188,8 @@ MAC OS X
   keyboard command, not from the menu -- appears initially too small and must be
   resized; not possible to select buttons with the keyboard).
 
+  The prefs dialog size should be better now. See below (JSpitzm-2006-11-07).
+
 * Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
   in the menu, even though a converter and viewer are defined in Preferences.
 
@@ -281,11 +283,15 @@ CREDITS:
   the dialog is much too small to show its content; if you invoke it the second
   time, everything is fine.
 
-  WONTFIX: This happens with qt 4.2.1 only, it does not happen with 4.1.4/4.1.5!
+  This happens with qt 4.2.1 only, it does not happen with 4.1.4/4.1.5!
+
+  FIXED (JSpitzm-2006-11-06): force updateGeometry() after the panelstack has 
+  been created (with Qt >= 4.2 only). A brute method, but it works.
 
 * If you open Edit>Test Style... for the first time, the choice text for
   "Never Toggled>Size" doesn't fit in the selection box (note that in German,
   texts are a bit longer than in English). Interestingly, if you invoke the
   dialog a second time, its button sizes are adjusted to their content.
 
-  WONTFIX: This happens with qt 4.2.1 only, it does not happen with 4.1.4/4.1.5!
+  WONTFIX: This happens with qt >= 4.2 only, it does not happen with 4.1.4/4.1.5!
+  (or maybe try to add an updateGeonetry() call somewhere as well; JSpitzm).

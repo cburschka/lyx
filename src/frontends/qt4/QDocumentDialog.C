@@ -402,6 +402,10 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	docPS->addPanel(branchesModule, _("Branches"));
 	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
 	docPS->setCurrentPanel(_("Document Class"));
+// FIXME: hack to work around resizing bug in Qt >= 4.2
+#if QT_VERSION >= 0x040200
+	docPS->updateGeometry();
+#endif
 }
 
 
