@@ -236,8 +236,10 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 		// We need to draw the text as LTR as we use our own bidi code.
 		setLayoutDirection(Qt::LeftToRight);
 		if (isDrawingEnabled()) {
-			lyxerr[Debug::PAINTING] << "draw " << std::string(str.toUtf8())
-				<< " at " << x << "," << y << std::endl;
+			if (lyxerr.debugging(Debug::PAINTING)) {
+				lyxerr[Debug::PAINTING] << "draw " << std::string(str.toUtf8())
+					<< " at " << x << "," << y << std::endl;
+			}
 			drawText(x, y, str);
 		}
 		// Here we use the font width cache instead of
@@ -258,3 +260,4 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 
 } // namespace frontend
 } // namespace lyx
+
