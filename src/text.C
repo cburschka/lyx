@@ -1953,89 +1953,7 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-#if 0
 // only used for inset right now. should also be used for main text
-void LyXText::drawSelection(PainterInfo & pi, int x , int) const
-{
-	LCursor & cur = pi.base.bv->cursor();
-	if (!cur.selection())
-		return;
-	if (!ptr_cmp(cur.text(), this))
-		return;
-
-	lyxerr << "draw selection at " << x << endl;
-
-	DocIterator beg = cur.selectionBegin();
-	DocIterator end = cur.selectionEnd();
-
-	BufferView & bv = pi.base.bv;
-	Buffer const & buffer = *bv.buffer();
-
-	// the selection doesn't touch the visible screen
-	if (bv_funcs::status(&bv, beg) == bv_funcs::CUR_BELOW
-	    || bv_funcs::status(&bv, end) == bv_funcs::CUR_ABOVE)
-		return;
-
-	Paragraph const & par1 = pars_[beg.pit()];
-	Paragraph const & par2 = pars_[end.pit()];
-
-	Row const & row1 = par1.getRow(beg.pos(), beg.boundary());
-	Row const & row2 = par2.getRow(end.pos(), end.boundary());
-
-	int y1,x1,x2;
-	if (bv_funcs::status(&bv, beg) == bv_funcs::CUR_ABOVE) {
-		y1 = 0;
-		x1 = 0;
-		x2 = 0;
-	} else {
-		y1 = bv_funcs::getPos(beg).y_ - row1.ascent();
-		int const startx = cursorX(buffer, beg.top(), begin.boundary());
-		if (isRTL(buffer, par1)) {
-			x1 = startx;
-			x2 = 0 + dim_.wid;
-		}
-		else {
-			x1 = 0;
-			x2 = startx;
-		}
-	}
-
-	int y2,X1,X2;
-	if (bv_funcs::status(&bv, end) == bv_funcs::CUR_BELOW) {
-		y2 = bv.workHeight();
-		X1 = 0;
-		X2 = 0;
-	} else {
-		y2 = bv_funcs::getPos(end).y_ + row2.descent();
-		int const endx = cursorX(buffer, end.top(), end.boundary());
-		if (isRTL(buffer, par2)) {
-			X1 = 0;
-			X2 = endx;
-		}
-		else {
-			X1 = endx;
-			X2 = 0 + dim_.wid;
-		}
-	}
-
-	lyxerr << " y1: " << y1 << " y2: " << y2
-		<< " xo: " << xo_ << " wid: " << dim_.wid
-		<< endl;
-
-	// paint big rectangle in one go
-	pi.pain.fillRectangle(x, y1, dim_.wid, y2 - y1, LColor::selection);
-
-	// reset background at begin of first selected line
-	pi.pain.fillRectangle(x + x1, y1, x2 - x1, row1.height(),
-		LColor::background);
-
-	// reset background at end of last selected line
-	pi.pain.fillRectangle(x + X1, y2  - row2.height(),
-		X2 - X1, row2.height(), LColor::background);
-}
-
-#else
-
 void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 {
 	LCursor & cur = pi.base.bv->cursor();
@@ -2133,7 +2051,6 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	pi.pain.fillRectangle(x, y2, dim_.wid,
 			      Y1 - y2, LColor::selection);
 }
-#endif
 
 bool LyXText::isLastRow(pit_type pit, Row const & row) const
 {
