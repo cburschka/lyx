@@ -35,7 +35,7 @@ Menuset
 		Item "New|N" "buffer-new"
 		Item "New from Template...|m" "buffer-new-template"
 		Item "Open...|O" "file-open"
-		Submenu "Open recent|t" "file_lastfiles"
+		Submenu "Open Recent|t" "file_lastfiles"
 		Separator
 		Item "Close|C" "buffer-close"
 		Item "Save|S" "buffer-write"
@@ -261,7 +261,7 @@ Menuset
 		Item "Open All Insets|O" "all-insets-toggle open"
 		Item "Close All Insets|C" "all-insets-toggle close"
 		Separator
-		Item "View source|s" "dialog-show view-source"
+		Item "View Source|S" "dialog-show view-source"
 		Submenu "Update|U" "view_update"
 		ViewFormats
 		Separator
@@ -285,31 +285,29 @@ Menuset
 # commonly used to good positions (exception being mathed, but
 # most people using mathed learn key shortcuts quite quickly anyway)
 		Submenu "Math|h" "insert_math"
-		Submenu "Special Character|S" "insert_special"
+		Submenu "Special Character|p" "insert_special"
 		Submenu "Special Formatting|o" "insert_formatting"
 		Submenu "List / TOC|i" "insert_toc"
 		Submenu "Float|a" "insert_float"
-# YUCK
 		Submenu "Note|N" "insert_note"
 		OptSubmenu "Branch|B" "insert_branches"
 		Submenu "File|e" "insert_file"
 		Item "Box" "box-insert Frameless"
 		Separator
 		Item "Citation...|C" "dialog-show-new-inset citation"
-		Item "Cross-reference...|r" "dialog-show-new-inset ref"
+		Item "Cross-Reference...|R" "dialog-show-new-inset ref"
 		Item "Label...|L" "label-insert"
 		Item "Index Entry|d" "index-insert"
-		Item "Notation Entry" "nomencl-insert"
-		Item "Date" "date-insert"
-# I'm going to kill this dumb dialog, but for now ...
+		Item "Glossary Entry|y" "nomencl-insert"
 		Separator
 		Item "Table...|T" "tabular-insert"
 		Item "Graphics...|G" "dialog-show-new-inset graphics"
 		Item "URL...|U" "url-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
-		Item "Short Title" "optional-insert"
+		Item "Short Title|S" "optional-insert"
 		Item "TeX Code|X" "ert-insert"
+		Item "Date" "date-insert"
 	End
 
 	Menu "insert_special"
@@ -369,7 +367,7 @@ Menuset
 		Item "Table of Contents|C" "toc-insert"
 		FloatListInsert
 		Item "Index List|I" "index-print"
-		Item "Notation List" "nomencl-print"
+		Item "Glossary|G" "nomencl-print"
 		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End
 
@@ -424,7 +422,7 @@ Menuset
 		Submenu "Bookmarks|B" "navigate_bookmarks"
 		Item "Next Note|N" "note-next"
 		Item "Next Change|C" "change-next"
-		Item "Next Reference|R" "reference-next"
+		Item "Next Cross-Reference|R" "reference-next"
 		Item "Go to Label|L" "label-goto"
 		Separator
 		Toc
