@@ -111,9 +111,7 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 		x += static_cast<int>(0.0833*em+0.5);
 
 	FontSetChanger dummy(pi.base, sym_->inset.c_str());
-	// FIXME UNICODE
-	docstring n(sym_->draw.begin(), sym_->draw.end());
-	pi.draw(x, y - h_, n);
+	pi.draw(x, y - h_, sym_->draw);
 }
 
 
