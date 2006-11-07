@@ -133,7 +133,7 @@ public:
 	///
 	InsetText(InsetText const &);
 	///
-	bool Wide() const { return wide_inset_; }
+	bool wide() const { return wide_inset_; }
 	///
 	void setWide(bool wide_inset) { wide_inset_ = wide_inset; }
 

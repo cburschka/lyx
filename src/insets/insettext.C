@@ -193,7 +193,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 		int const w = text_.width() + 2 * border_;
 		int const a = text_.ascent() + border_;
 		int const h = a + text_.descent() + border_;
-		pi.pain.rectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h,
+		pi.pain.rectangle(x, y - a, (wide() ? text_.maxwidth_ : w), h,
 			frameColor());
 	}
 }
@@ -204,7 +204,7 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 	int const w = text_.width() + 2 * border_;
 	int const a = text_.ascent() + border_;
 	int const h = a + text_.descent() + border_;
-	pi.pain.fillRectangle(x, y - a, (Wide() ? text_.maxwidth_ : w), h,
+	pi.pain.fillRectangle(x, y - a, (wide() ? text_.maxwidth_ : w), h,
 		backgroundColor());
 	text_.drawSelection(pi, x, y);
 }
@@ -214,7 +214,7 @@ bool InsetText::covers(BufferView const & bv, int x, int y) const
 {
 	return bv.coordCache().getInsets().has(this)
 			&& x >= xo(bv)
-			&& x <= xo(bv) + width() + (Wide() ? text_.maxwidth_ : 0)
+			&& x <= xo(bv) + width() + (wide() ? text_.maxwidth_ : 0)
 			&& y >= yo(bv) - ascent()
 			&& y <= yo(bv) + descent();
 }

@@ -180,7 +180,7 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	InsetText const * const in = inset->asTextInset();
 	// non-wide insets are painted completely. Recursive
 	bool tmp = refreshInside;
-	if (!in || !in->Wide()) {
+	if (!in || !in->wide()) {
 		refreshInside = true;
 		lyxerr[Debug::PAINTING] << endl << "Paint inset fully" << endl;
 	}
