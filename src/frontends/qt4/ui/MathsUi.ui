@@ -58,6 +58,9 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <tabstops>
   <tabstop>amsautoCB</tabstop>
  </tabstops>

@@ -145,6 +145,9 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction/>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

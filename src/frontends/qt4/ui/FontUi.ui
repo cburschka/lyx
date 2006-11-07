@@ -251,6 +251,9 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <tabstops>
   <tabstop>fontsRomanCO</tabstop>
   <tabstop>fontsizeCO</tabstop>

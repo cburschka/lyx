@@ -205,6 +205,9 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <tabstops>
   <tabstop>languageCO</tabstop>
   <tabstop>defaultencodingCB</tabstop>

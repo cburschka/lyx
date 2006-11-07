@@ -169,6 +169,9 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <tabstops>
   <tabstop>workingDirED</tabstop>
   <tabstop>workingDirPB</tabstop>

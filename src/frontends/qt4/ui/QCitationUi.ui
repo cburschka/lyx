@@ -358,6 +358,9 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <tabstops>
   <tabstop>availableLV</tabstop>
   <tabstop>selectedLV</tabstop>

@@ -750,6 +750,9 @@
   </layout>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
