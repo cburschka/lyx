@@ -114,14 +114,19 @@ public:
 	LyXView & createView(unsigned int width, unsigned int height,
 		int posx, int posy, bool maximize);
 	
-	///
-	void setBufferView(BufferView * buffer_view);
+	/// 
+	LyXView const & currentView() const;
 
-protected:
-	/// This BufferView is the one receiving Clipboard and Selection
+	/// 
+	LyXView & currentView();
+
+	///
+	void setCurrentView(LyXView & current_view);
+
+private:
+	/// This LyXView is the one receiving Clipboard and Selection
 	/// Events
-	/// FIXME: \todo use Gui::currentView() in the future
-	BufferView * buffer_view_;
+	LyXView * current_view_;
 
 }; // Application
 

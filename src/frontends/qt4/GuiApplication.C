@@ -18,6 +18,8 @@
 #include "QLImage.h"
 #include "socket_callback.h"
 
+#include "frontends/LyXView.h"
+
 #include "graphics/LoaderQueue.h"
 
 #include "support/lstrings.h"
@@ -282,19 +284,21 @@ void GuiApplication::unregisterSocketCallback(int fd)
 #ifdef Q_WS_X11
 bool GuiApplication::x11EventFilter(XEvent * xev)
 {
-	switch (xev->type) {
+	BufferView * bv = currentView().view();
+
+	switch (ev->type) {
 	case SelectionRequest:
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
-		if (buffer_view_) {
-			lyx::docstring const sel = buffer_view_->requestSelection();
+		if (bv) {
+			lyx::docstring const sel = bv->requestSelection();
 			if (!sel.empty())
 				selection_.put(sel);
 		}
 		break;
 	case SelectionClear:
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
-		if (buffer_view_)
-			buffer_view_->clearSelection();
+		if (bv)
+			bv->clearSelection();
 		break;
 	}
 	return false;
@@ -360,7 +364,7 @@ OSErr GuiApplication::handleOpenDocuments(const AppleEvent* inEvent,
 					FSRefMakePath(&ref, (UInt8*)qstr_buf,
 						      1024);
 					s_arg=QString::fromUtf8(qstr_buf);
-//					buffer_view_->workAreaDispatch(
+//					bv->workAreaDispatch(
 //						FuncRequest(LFUN_FILE_OPEN,
 //							    fromqstr(s_arg)));
 					break;

@@ -48,12 +48,6 @@ Application::Application(int &, char **)
 }
 
 
-void Application::setBufferView(BufferView * buffer_view)
-{
-	buffer_view_ = buffer_view;
-}
-
-
 LyXView & Application::createView(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
@@ -69,7 +63,27 @@ LyXView & Application::createView(unsigned int width,
 	view.init();
 	view.setGeometry(width, height, posx, posy, maximize);
 
+	setCurrentView(view);
+
 	return view;
+}
+
+
+LyXView const & Application::currentView() const
+{
+	return *current_view_;
+}
+
+
+LyXView & Application::currentView()
+{
+	return *current_view_;
+}
+
+
+void Application::setCurrentView(LyXView & current_view)
+{
+	current_view_ = &current_view;
 }
 
 

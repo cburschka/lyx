@@ -94,8 +94,6 @@ void WorkArea::setBufferView(BufferView * buffer_view)
 		lyx_view_.disconnectBufferView();
 	}
 
-	theApp->setBufferView(buffer_view);
-
 	hideCursor();
 	buffer_view_ = buffer_view;
 	toggleCursor();
@@ -200,7 +198,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 
 	theLyXFunc().setLyXView(&lyx_view_);
 
-	buffer_view_->workAreaDispatch(cmd0);
+	bool needRedraw = buffer_view_->workAreaDispatch(cmd0);
 
 	// Skip these when selecting
 	if (cmd0.action != LFUN_MOUSE_MOTION) {
@@ -214,7 +212,12 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 	// of the new status here.
 	lyx_view_.clearMessage();
 
-	redraw();
+	// Show the cursor immediately after any operation.
+	hideCursor();
+	toggleCursor();
+
+	if (needRedraw)
+		redraw();
 }
 
 
