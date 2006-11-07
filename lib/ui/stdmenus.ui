@@ -87,7 +87,7 @@ Menuset
 		Item "Cut" "cut"
 		Item "Copy" "copy"
 		Item "Paste" "paste"
-		Submenu "Paste Recent" "edit_pasterecent"
+		Submenu "Paste Recent|e" "edit_pasterecent"
 		Submenu "Paste External Clipboard/Selection" "edit_paste"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
@@ -103,14 +103,14 @@ Menuset
 		OptSubmenu "Math|M" "edit_math"
 		OptSubmenu "Rows & Columns|C" "edit_tabular_features"
 		Separator
-		OptItem "Increase List Depth|I" "depth-increment"
-		OptItem "Decrease List Depth|D" "depth-decrement"
-		OptItem "Dissolve Inset|s" "inset-dissolve"
 # This is where the context-specific stuff is supposed to go.
 # The idea is that everything on here can disappear and should
 # only appear when relevant (getStatus). Only stuff that needs
 # a right-click to bring up the dialog should appear here (it is not
 # obvious what the context is for the others)
+		OptItem "Increase List Depth|I" "depth-increment"
+		OptItem "Decrease List Depth|D" "depth-decrement"
+		OptItem "Dissolve Inset|l" "inset-dissolve"
 		OptItem "TeX Code Settings...|C" "inset-settings ert"
 # 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
 		OptItem "Float Settings...|a" "inset-settings float"
@@ -165,15 +165,15 @@ Menuset
 		Item "Middle|M" "tabular-feature valign-middle"
 		Item "Bottom|B" "tabular-feature valign-bottom"
 		Separator
-		Item "Add Row" "tabular-feature append-row"
-		Item "Delete Row" "tabular-feature delete-row"
-		Item "Copy Row" "tabular-feature copy-row"
-		Item "Swap Rows" "tabular-feature swap-row"
+		Item "Add Row|A" "tabular-feature append-row"
+		Item "Delete Row|D" "tabular-feature delete-row"
+		Item "Copy Row|o" "tabular-feature copy-row"
+		Item "Swap Rows|S" "tabular-feature swap-row"
 		Separator
-		Item "Add Column" "tabular-feature append-column"
-		Item "Delete Column" "tabular-feature delete-column"
-		Item "Copy Column" "tabular-feature copy-column"
-		Item "Swap Columns" "tabular-feature swap-column"
+		Item "Add Column|u" "tabular-feature append-column"
+		Item "Delete Column|e" "tabular-feature delete-column"
+		Item "Copy Column|p" "tabular-feature copy-column"
+		Item "Swap Columns|w" "tabular-feature swap-column"
 	End
 
 	Menu "edit_math"
@@ -189,10 +189,10 @@ Menuset
 		Separator
 		Item "Split Cell|C" "cell-split"
 		Separator
-		Item "Add Line Above" "tabular-feature add-hline-above"
-		Item "Add Line Below" "tabular-feature add-hline-below"
-		Item "Delete Line Above" "tabular-feature delete-hline-above"
-		Item "Delete Line Below" "tabular-feature delete-hline-below"
+		Item "Add Line Above|A" "tabular-feature add-hline-above"
+		Item "Add Line Below|B" "tabular-feature add-hline-below"
+		Item "Delete Line Above|D" "tabular-feature delete-hline-above"
+		Item "Delete Line Below|e" "tabular-feature delete-hline-below"
 		Separator
 		Item "Add Line to Left" "tabular-feature add-vline-left"
 		Item "Add Line to Right" "tabular-feature add-vline-right"
@@ -207,16 +207,16 @@ Menuset
 	End
 
 	Menu "edit_math_textstyles"
-		Item "Math Normal Font" "math-insert \mathnormal"
+		Item "Math Normal Font|N" "math-insert \mathnormal"
 		Separator
-		Item "Math Calligraphic Family" "math-insert \mathcal"
-		Item "Math Fraktur Family" "math-insert \mathfrak"
-		Item "Math Roman Family" "math-insert \mathrm"
-		Item "Math Sans Serif Family" "math-insert \mathsf"
+		Item "Math Calligraphic Family|C" "math-insert \mathcal"
+		Item "Math Fraktur Family|F" "math-insert \mathfrak"
+		Item "Math Roman Family|R" "math-insert \mathrm"
+		Item "Math Sans Serif Family|S" "math-insert \mathsf"
 		Separator
-		Item "Math Bold Series" "math-insert \mathbf"
+		Item "Math Bold Series|B" "math-insert \mathbf"
 		Separator
-		Item "Text Normal Font" "math-insert \textnormal"
+		Item "Text Normal Font|T" "math-insert \textnormal"
 		Separator
 		Item "Text Roman Family" "math-insert \textrm"
 		Item "Text Sans Serif Family" "math-insert \textsf"
@@ -232,14 +232,14 @@ Menuset
 	End
 
 	Menu "edit_math_extern"
-		Item "Octave" "math-extern octave"
-		Item "Maxima" "math-extern maxima"
-		Item "Mathematica" "math-extern mathematica"
+		Item "Octave|O" "math-extern octave"
+		Item "Maxima|M" "math-extern maxima"
+		Item "Mathematica|a" "math-extern mathematica"
 		Separator
-		Item "Maple, simplify" "math-extern maple simplify"
-		Item "Maple, factor" "math-extern maple factor"
-		Item "Maple, evalm" "math-extern maple evalm"
-		Item "Maple, evalf" "math-extern maple evalf"
+		Item "Maple, simplify|s" "math-extern maple simplify"
+		Item "Maple, factor|f" "math-extern maple factor"
+		Item "Maple, evalm|e" "math-extern maple evalm"
+		Item "Maple, evalf|v" "math-extern maple evalf"
 	End
 
 	Menu "edit_math_mutate"
@@ -323,17 +323,17 @@ Menuset
 		Item "Superscript|S" "command-sequence math-mode on; math-superscript; math-insert \text;"
 		Item "Subscript|u" "command-sequence math-mode on; math-subscript; math-insert \text;"
 		Separator
-		Item "Protected Space|r" "space-insert protected"
+		Item "Protected Space|P" "space-insert protected"
 		Item "Inter-word Space|w" "space-insert normal"
 		Item "Thin Space|T" "space-insert thin"
-		Item "Horizontal Fill|H" "hfill-insert"
-		Item "Horizontal Line" "line-insert"
-		Item "Vertical Space..." "dialog-show-new-inset vspace"
+		Item "Horizontal Fill|F" "hfill-insert"
+		Item "Horizontal Line|L" "line-insert"
+		Item "Vertical Space...|V" "dialog-show-new-inset vspace"
 		Separator
-		Item "Hyphenation Point|P" "hyphenation-point-insert"
+		Item "Hyphenation Point|H" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
-		Item "Line Break|L" "break-line"
-		Item "Page Break" "pagebreak-insert"
+		Item "Line Break|B" "break-line"
+		Item "Page Break|a" "pagebreak-insert"
 	End
 
 	Menu "insert_math"
@@ -349,9 +349,9 @@ Menuset
 		Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "command-sequence math-mode on; math-insert \cases"
-		Item "Aligned Environment" "command-sequence math-mode on; math-insert \aligned; tabular-feature append-column"
-		Item "AlignedAt Environment" "command-sequence math-mode on; math-insert \alignedat; tabular-feature append-column"
-		Item "Gathered Environment" "command-sequence math-mode on; math-insert \gathered"
+		Item "Aligned Environment|l" "command-sequence math-mode on; math-insert \aligned; tabular-feature append-column"
+		Item "AlignedAt Environment|v" "command-sequence math-mode on; math-insert \alignedat; tabular-feature append-column"
+		Item "Gathered Environment|h" "command-sequence math-mode on; math-insert \gathered"
 		Item "Split Environment|S" "command-sequence math-mode on; math-insert \split; tabular-feature append-column"
 		Separator
 		Item "Math Panel|P" "dialog-show mathpanel"
