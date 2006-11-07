@@ -182,7 +182,9 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	bool tmp = refreshInside;
 	if (!in || !in->wide()) {
 		refreshInside = true;
-		lyxerr[Debug::PAINTING] << endl << "Paint inset fully" << endl;
+		if (lyxerr.debugging(Debug::PAINTING)) { 
+			lyxerr << endl << "Paint inset fully" << endl;
+		}
 	}
 	if (refreshInside)
 		inset->drawSelection(pi, int(x_), yo_);
@@ -921,12 +923,14 @@ void paintPar
 
 			// Instrumentation for testing row cache (see also
 			// 12 lines lower):
-			if (text.isMainText(*pi.base.bv->buffer()))
-				lyxerr[Debug::PAINTING] << "#";
-			else
-				lyxerr[Debug::PAINTING] << "[" <<
-				    repaintAll << row_has_changed <<
-				    cursor_on_row << "]";
+			if (lyxerr.debugging(Debug::PAINTING)) {
+				if (text.isMainText(*pi.base.bv->buffer()))
+					lyxerr[Debug::PAINTING] << "#";
+				else
+					lyxerr[Debug::PAINTING] << "[" <<
+						repaintAll << row_has_changed <<
+						cursor_on_row << "]";
+			}
 			rp.paintAppendix();
 			rp.paintDepthBar();
 			rp.paintChangeBar();
@@ -943,7 +947,9 @@ void paintPar
 	// Re-enable screen drawing for future use of the painter.
 	pi.pain.setDrawingEnabled(true);
 
-	lyxerr[Debug::PAINTING] << "." << endl;
+	if (lyxerr.debugging(Debug::PAINTING)) {
+		lyxerr[Debug::PAINTING] << "." << endl;
+	}
 }
 
 } // namespace anon

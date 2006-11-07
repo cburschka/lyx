@@ -1962,10 +1962,12 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 	if (!ptr_cmp(cur.text(), this))
 		return;
 
-	lyxerr[Debug::DEBUG]
-		<< BOOST_CURRENT_FUNCTION
-		<< "draw selection at " << x
-		<< endl;
+	if (lyxerr.debugging(Debug::DEBUG)) {
+		lyxerr[Debug::DEBUG]
+			<< BOOST_CURRENT_FUNCTION
+			<< "draw selection at " << x
+			<< endl;
+	}
 
 	DocIterator beg = cur.selectionBegin();
 	DocIterator end = cur.selectionEnd();
@@ -2037,9 +2039,11 @@ void LyXText::drawSelection(PainterInfo & pi, int x, int) const
 		return;
 	}
 
-	lyxerr[Debug::DEBUG] << " y1: " << y1 << " y2: " << y2
-	       << "X1:" << X1 << " x2: " << X2 << " wid: " << dim_.wid
-		<< endl;
+	if (lyxerr.debugging(Debug::DEBUG)) {
+		lyxerr[Debug::DEBUG] << " y1: " << y1 << " y2: " << y2
+			   << "X1:" << X1 << " x2: " << X2 << " wid: " << dim_.wid
+			<< endl;
+	}
 
 	// paint upper rectangle
 	pi.pain.fillRectangle(x + x1, y1, x2 - x1, y2 - y1,

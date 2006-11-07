@@ -355,7 +355,9 @@ bool BufferView::update(Update::flags flags)
 	if (!buffer_)
 		return false;
 
-	lyxerr[Debug::WORKAREA] << "BufferView::update" << std::endl;
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		lyxerr[Debug::WORKAREA] << "BufferView::update" << std::endl;
+	}
 
 	// Update macro store
 	buffer_->buildMacros();
@@ -388,11 +390,13 @@ void BufferView::updateScrollbar()
 		offset_ref_ = 0;
 	}
 
-	lyxerr[Debug::GUI]
-		<< BOOST_CURRENT_FUNCTION
-		<< " Updating scrollbar: height: " << t.paragraphs().size()
-		<< " curr par: " << cursor_.bottom().pit()
-		<< " default height " << defaultRowHeight() << endl;
+	if (lyxerr.debugging(Debug::GUI)) {
+		lyxerr[Debug::GUI]
+			<< BOOST_CURRENT_FUNCTION
+			<< " Updating scrollbar: height: " << t.paragraphs().size()
+			<< " curr par: " << cursor_.bottom().pit()
+			<< " default height " << defaultRowHeight() << endl;
+	}
 
 	// It would be better to fix the scrollbar to understand
 	// values in [0..1] and divide everything by wh

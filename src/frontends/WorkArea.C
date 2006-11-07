@@ -153,7 +153,9 @@ void WorkArea::redraw(bool singlePar)
 	ViewMetricsInfo const & vi = buffer_view_->viewMetricsInfo();
 	greyed_out_ = false;
 
-	lyxerr[Debug::WORKAREA] << "WorkArea::redraw screen" << endl;
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		lyxerr[Debug::WORKAREA] << "WorkArea::redraw screen" << endl;
+	}
 	int const ymin = std::max(vi.y1, 0);
 	int const ymax = vi.p2 < vi.size - 1 ? vi.y2 : height();
 
