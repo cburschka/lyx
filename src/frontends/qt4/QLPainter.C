@@ -211,6 +211,10 @@ int QLPainter::smallCapsText(int x, int y,
 int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 	LyXFont const & f)
 {
+	// Caution: The following ucs4_to_qstring conversion works for
+	// symbol fonts only because it is no real conversion but a simple
+	// cast in reality.
+
 	QString str;
 	ucs4_to_qstring(s, ls, str);
 

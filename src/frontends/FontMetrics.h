@@ -38,6 +38,11 @@
  *               <-  width ->
  * --------------+----------+-------<maxDescent
  *
+ * Caution: All char_type and docstring arguments of any method of this class
+ * are no UCS4 chars or strings if the font is a symbol font. They simply
+ * denote the code points of the font instead. You have to keep this in mind
+ * when you implement the methods in a frontend. You must not pass these
+ * parameters to a unicode conversion function in particular.
  */
 
 namespace lyx {

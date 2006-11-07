@@ -35,11 +35,23 @@ public:
 	docstring name;
 	/// name of a inset that handles that macro
 	docstring inset;
-	/// position of the thing in a font	
+	/**
+	 * The string or symbol to draw.
+	 * This is a string of length 1 if \p name is a known symbol, and
+	 * the corresponding font is available. In this case it is
+	 * NO UCS4 STRING! The only "character" of the string simply denotes
+	 * the code point of the symbol in the font. Therefore you have to
+	 * be very careful if you pass \c draw to any function that takes a
+	 * docstring argument.
+	 * If \p name is a known symbol, but the corresponding font is not
+	 * available, or if it is a function name, then \c draw contains a
+	 * regular UCS4 string (actuallay \c draw == \c name) that is painted
+	 * on screen.
+	 */
 	docstring draw;
 	/// operator/..., fontname e
 	docstring extra;
-	/// how is this called as XML entity?
+	/// how is this called as XML entity in MathML?
 	docstring xmlname;
 	/// required LaTeXFeatures
 	docstring requires;
