@@ -21,7 +21,7 @@ namespace lyx {
 
 class LaTeXFeatures;
 
-/** Used to insert notation labels
+/** Used to insert glossary labels
   */
 class InsetNomencl : public InsetCommand {
 public:

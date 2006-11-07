@@ -32,7 +32,7 @@ InsetNomencl::InsetNomencl(InsetCommandParams const & p)
 
 docstring const InsetNomencl::getScreenLabel(Buffer const &) const
 {
-	return _("Not");
+	return _("Glo");
 }
 
 
@@ -71,7 +71,7 @@ InsetPrintNomencl::InsetPrintNomencl(InsetCommandParams const & p)
 
 docstring const InsetPrintNomencl::getScreenLabel(Buffer const &) const
 {
-	return _("Notation");
+	return _("Glossary");
 }
 
 
