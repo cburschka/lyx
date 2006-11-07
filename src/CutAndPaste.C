@@ -75,26 +75,6 @@ CutStack theCuts(10);
 // when we (hopefully) have a one-for-all paste mechanism.
 bool dirty_tabular_stack_;
 
-class resetParagraph : public std::unary_function<Paragraph, Buffer const &> {
-public:
-	resetParagraph(Buffer const & b) : buffer_(b) {}
-	void operator()(Paragraph & p) const {
-		// FIXME: change tracking (MG)
-		// set p's text to INSERTED in CT mode; clear CT info otherwise
-
-		// ERT paragraphs have the Language latex_language.
-		// This is invalid outside of ERT, so we need to change it
-		// to the buffer language.
-		if (p.ownerCode() == InsetBase::ERT_CODE) {
-			p.changeLanguage(buffer_.params(), latex_language,
-					 buffer_.getLanguage());
-		}
-		p.setInsetOwner(0);
-	}
-private:
-	Buffer const & buffer_;
-};
-
 
 void region(CursorSlice const & i1, CursorSlice const & i2,
 	InsetBase::row_type & r1, InsetBase::row_type & r2,
@@ -210,8 +190,8 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 				tmpbuf->eraseChar(i--, false);
 		}
 
-		// FIXME: Change tracking (MG)
-		// set tmpbuf's text to INSERTED in CT mode; clear CT info otherwise
+		tmpbuf->setChange(Change(buffer.params().trackChanges ?
+		                         Change::INSERTED : Change::UNCHANGED));
 	}
 
 	bool const empty = pars[pit].empty();
@@ -357,7 +337,19 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	ParagraphList paragraphs(boost::next(pars.begin(), startpit),
 				 boost::next(pars.begin(), endpit + 1));
 
-	for_each(paragraphs.begin(), paragraphs.end(), resetParagraph(buf));
+	ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator it_end = paragraphs.end();
+
+	for (; it != it_end; it++) {
+		// ERT paragraphs have the Language latex_language.
+		// This is invalid outside of ERT, so we need to change it
+		// to the buffer language.
+		if (it->ownerCode() == InsetBase::ERT_CODE) {
+			it->changeLanguage(buf.params(), latex_language,
+			                   buf.getLanguage());
+		}
+		it->setInsetOwner(0);
+	}
 
 	// Cut out the end of the last paragraph.
 	Paragraph & back = paragraphs.back();
@@ -602,12 +594,11 @@ void copySelection(LCursor & cur)
 	if (cur.inMathed()) {
 		//lyxerr << "copySelection in mathed" << endl;
 		ParagraphList pars;
-		pars.push_back(Paragraph());
+		Paragraph par;
 		BufferParams const & bp = cur.buffer().params();
-		pars.back().layout(bp.getLyXTextClass().defaultLayout());
-		for_each(pars.begin(), pars.end(), resetParagraph(cur.buffer()));
-		// FIXME: change tracking (MG)
-		pars.back().insert(0, grabSelection(cur), LyXFont(), Change(Change::UNCHANGED));
+		par.layout(bp.getLyXTextClass().defaultLayout());
+		par.insert(0, grabSelection(cur), LyXFont(), Change(Change::UNCHANGED));
+		pars.push_back(par);
 		theCuts.push(make_pair(pars, bp.textclass));
 	}
 	// tell tabular that a recent copy happened
