@@ -133,7 +133,9 @@ public:
 	///
 	InsetText(InsetText const &);
 	///
-	bool & Wide() const { return wide_inset_; }
+	bool Wide() const { return wide_inset_; }
+	///
+	void setWide(bool wide_inset) { wide_inset_ = wide_inset; }
 
 protected:
 	///
@@ -156,7 +158,7 @@ private:
 	///
 	static int border_;
 	///
-	mutable bool wide_inset_;
+	bool wide_inset_;
 public:
 	///
 	mutable LyXText text_;

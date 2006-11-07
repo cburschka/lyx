@@ -880,12 +880,17 @@ void paintPar
 			text);
 
 		// If this is the only object on the row, we can make it wide
+		//
+		// FIXME: there is a const_cast here because paintPar() is not supposed
+		// to touch the paragraph contents. So either we move this "wide"
+		// property out of InsetText or we localize the feature to the painting
+		// done here.
 		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
 			InsetBase const * const in = par.getInset(i);
 			if (in) {
-				InsetText const * const t = in->asTextInset();
+				InsetText * t = const_cast<InsetText *>(in->asTextInset());
 				if (t)
-					t->Wide() = in_inset_alone_on_row;
+					t->setWide(in_inset_alone_on_row);
 			}
 		}
 
