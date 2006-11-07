@@ -125,8 +125,6 @@ EDITING
 
 MENUS
 
-* Some English menu items don't have a '&' character. (box, date, paste...)
-
 * Special handling of [[...]] in text messages is disabled in messages.C
 
 
@@ -297,3 +295,9 @@ CREDITS:
 * All label and button texts in the Qt4 dialogs are not translated.
 
   FIXED (MGerz 2006-11-07)
+
+* Some English menu items don't have a '&' character. (box, date, paste...)
+
+  FIXED (MGerz 2006-11-07). I added shortcut whereever possible.
+
+
