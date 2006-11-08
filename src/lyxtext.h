@@ -178,8 +178,15 @@ public:
 	void recUndo(LCursor & cur, pit_type first) const;
 	/// returns true if par was empty and was removed
 	bool setCursorFromCoordinates(LCursor & cur, int x, int y);
-	///
+
+	/// sets cursor recursively descending into nested editable insets
+	/**
+	\return the inset pointer if x,y is covering that inset
+	\param x,y are absolute screen coordinates.
+	\retval inset is non-null if the cursor is positionned inside
+	*/
 	InsetBase * editXY(LCursor & cur, int x, int y);
+	
 	/// Move cursor one line up.
 	/**
 	 * Returns true if an update is needed after the move.
@@ -383,7 +390,8 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(Buffer const &, pit_type pit, Row & row) const;
+	void rowBreakPoint(Buffer const &, int right_margin, pit_type pit,
+		Row & row) const;
 	/// sets row.width to the minimum space a row needs on the screen in pixel
 	void setRowWidth(Buffer const &, pit_type pit, Row & row) const;
 	/// the minimum space a manual label needs on the screen in pixels

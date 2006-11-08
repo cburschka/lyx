@@ -695,8 +695,8 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 };
 
 
-void LyXText::rowBreakPoint(Buffer const & buffer, pit_type const pit,
-		Row & row) const
+void LyXText::rowBreakPoint(Buffer const & buffer, int right_margin,
+		pit_type const pit,	Row & row) const
 {
 	Paragraph const & par = pars_[pit];
 	pos_type const end = par.size();
@@ -707,7 +707,7 @@ void LyXText::rowBreakPoint(Buffer const & buffer, pit_type const pit,
 	}
 
 	// maximum pixel width of a row
-	int width = maxwidth_ - rightMargin(buffer, par); // - leftMargin(buffer, pit, row);
+	int width = maxwidth_ - right_margin; // - leftMargin(buffer, pit, row);
 	if (width < 0) {
 		row.endpos(end);
 		return;
@@ -1837,6 +1837,10 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 		}
 	}
 
+	// Optimisation: this is used in the next two loops
+	// so better to calculate that once here.
+	int right_margin = rightMargin(buffer, par);
+
 	// redo insets
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in insetbase.h.
@@ -1846,7 +1850,7 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	for (; ii != iend; ++ii) {
 		Dimension dim;
 		int const w = maxwidth_ - leftMargin(buffer, pit, ii->pos)
-			- rightMargin(buffer, par);
+			- right_margin;
 		LyXFont const & font = ii->inset->noFontChange() ?
 			bufferfont :
 			getFont(buffer, par, ii->pos);
@@ -1862,7 +1866,7 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	pos_type z = 0;
 	do {
 		Row row(z);
-		rowBreakPoint(buffer, pit, row);
+		rowBreakPoint(buffer, right_margin, pit, row);
 		setRowWidth(buffer, pit, row);
 		setHeightOfRow(bv, pit, row);
 		par.rows().push_back(row);
