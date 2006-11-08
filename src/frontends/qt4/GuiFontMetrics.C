@@ -148,6 +148,9 @@ int GuiFontMetrics::width(QString const & ucs2) const
 
 int GuiFontMetrics::signedWidth(docstring const & s) const
 {
+	if (s.empty())
+		return 0;
+
 	if (s[0] == '-')
 		return -width(&(s[1]), s.length() - 1);
 	else
