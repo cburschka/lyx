@@ -569,10 +569,8 @@ IF (QT4_QMAKE_FOUND)
 
   # Set QT_QTMAIN_LIBRARY
   IF(WIN32)
-    FIND_LIBRARY(QT_QTMAIN_LIBRARY_RELEASE NAMES qtmain PATHS ${QT_LIBRARY_DIR}
-      NO_DEFAULT_PATH)
-    FIND_LIBRARY(QT_QTMAIN_LIBRARY_DEBUG NAMES qtmaind PATHS ${QT_LIBRARY_DIR}
-      NO_DEFAULT_PATH)
+    FIND_LIBRARY(QT_QTMAIN_LIBRARY_RELEASE NAMES qtmain  PATHS ${QT_LIBRARY_DIR}  NO_DEFAULT_PATH)
+    FIND_LIBRARY(QT_QTMAIN_LIBRARY_DEBUG   NAMES qtmaind PATHS ${QT_LIBRARY_DIR}  NO_DEFAULT_PATH)
   ENDIF(WIN32)
 
   ############################################
@@ -582,7 +580,7 @@ IF (QT4_QMAKE_FOUND)
   ############################################
 
   MACRO (_QT4_ADJUST_LIB_VARS basename)
-    IF (QT_${basename}_INCLUDE_DIR)
+    IF (QT_${basename}_LIBRARY_RELEASE OR QT_${basename}_LIBRARY_DEBUG)   
 
       # if only the release version was found, set the debug variable also to the release version
       IF (QT_${basename}_LIBRARY_RELEASE AND NOT QT_${basename}_LIBRARY_DEBUG)
@@ -615,8 +613,10 @@ IF (QT4_QMAKE_FOUND)
       IF (QT_${basename}_LIBRARY)
         SET(QT_${basename}_FOUND 1)
       ENDIF (QT_${basename}_LIBRARY)
+    ENDIF (QT_${basename}_LIBRARY_RELEASE OR QT_${basename}_LIBRARY_DEBUG)
 
       #add the include directory to QT_INCLUDES
+    IF (QT_${basename}_INCLUDE_DIR)
       SET(QT_INCLUDES ${QT_INCLUDES} "${QT_${basename}_INCLUDE_DIR}")
     ENDIF (QT_${basename}_INCLUDE_DIR )
 
@@ -624,22 +624,14 @@ IF (QT4_QMAKE_FOUND)
     MARK_AS_ADVANCED(QT_${basename}_LIBRARY QT_${basename}_LIBRARY_RELEASE QT_${basename}_LIBRARY_DEBUG QT_${basename}_INCLUDE_DIR)
   ENDMACRO (_QT4_ADJUST_LIB_VARS)
 
-  IF(WIN32)
-    # there is no include for qtmain but adjust macro needs it set
-    SET(QT_QTMAIN_INCLUDE_DIR 1)
-    _QT4_ADJUST_LIB_VARS(QTMAIN)
-    SET(QT_QTMAIN_INCLUDE_DIR )
-  ENDIF(WIN32)
 
-
+  # Set QT_xyz_LIBRARY variable and add 
+  # library include path to QT_INCLUDES
   _QT4_ADJUST_LIB_VARS(QTCORE)
   _QT4_ADJUST_LIB_VARS(QTGUI)
   _QT4_ADJUST_LIB_VARS(QT3SUPPORT)
   _QT4_ADJUST_LIB_VARS(QTASSISTANT)
   _QT4_ADJUST_LIB_VARS(QTDESIGNER)
-  IF(Q_WS_X11)
-    _QT4_ADJUST_LIB_VARS(QTMOTIF)
-  ENDIF(Q_WS_X11)
   _QT4_ADJUST_LIB_VARS(QTNETWORK)
   _QT4_ADJUST_LIB_VARS(QTNSPLUGIN)
   _QT4_ADJUST_LIB_VARS(QTOPENGL)
@@ -649,7 +641,13 @@ IF (QT4_QMAKE_FOUND)
   _QT4_ADJUST_LIB_VARS(QTUITOOLS)
   _QT4_ADJUST_LIB_VARS(QTTEST)
 
-
+  # platform dependent libraries
+  IF(Q_WS_X11)
+    _QT4_ADJUST_LIB_VARS(QTMOTIF)
+  ENDIF(Q_WS_X11)
+  IF(WIN32)
+    _QT4_ADJUST_LIB_VARS(QTMAIN)
+  ENDIF(WIN32)
 
   #######################################
   #
