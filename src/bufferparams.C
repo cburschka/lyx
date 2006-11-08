@@ -1012,13 +1012,13 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// Now insert the LyX specific LaTeX commands...
 
 	// The optional packages;
-	string lyxpreamble(features.getPackages());
+	docstring lyxpreamble(from_ascii(features.getPackages()));
 
 	// this might be useful...
 	lyxpreamble += "\n\\makeatletter\n";
 
 	// Some macros LyX will need
-	string tmppreamble(features.getMacros());
+	docstring tmppreamble(from_ascii(features.getMacros()));
 
 	if (!tmppreamble.empty()) {
 		lyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
@@ -1036,9 +1036,10 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	/* the user-defined preamble */
 	if (!preamble.empty()) {
+		// FIXME UNICODE
 		lyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
 			"User specified LaTeX commands.\n"
-			+ preamble + '\n';
+			+ from_utf8(preamble) + '\n';
 	}
 
 	// Itemize bullet settings need to be last in case the user
@@ -1047,11 +1048,11 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// Actually it has to be done much later than that
 	// since some packages like frenchb make modifications
 	// at \begin{document} time -- JMarc
-	string bullets_def;
+	docstring bullets_def;
 	for (int i = 0; i < 4; ++i) {
 		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
 			if (bullets_def.empty())
-				bullets_def="\\AtBeginDocument{\n";
+				bullets_def += "\\AtBeginDocument{\n";
 			bullets_def += "  \\def\\labelitemi";
 			switch (i) {
 				// `i' is one less than the item to modify
@@ -1067,9 +1068,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 				bullets_def += 'v';
 				break;
 			}
-			// FIXME UNICODE
 			bullets_def += '{' +
-				lyx::to_ascii(user_defined_bullet(i).getText())
+				user_defined_bullet(i).getText()
 				+ "}\n";
 		}
 	}
@@ -1081,8 +1081,9 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	// with other packages.
 	// Jurabib has to be called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")) {
-		lyxpreamble += babelCall(language_options.str()) + '\n';
-		lyxpreamble += features.getBabelOptions();
+		// FIXME UNICODE
+		lyxpreamble += from_utf8(babelCall(language_options.str())) + '\n';
+		lyxpreamble += from_utf8(features.getBabelOptions());
 	}
 
 	lyxpreamble += "\\makeatother\n";
@@ -1103,8 +1104,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	// FIXME UNICODE
-	os << from_utf8(lyxpreamble);
+	os << lyxpreamble;
 	return use_babel;
 }
 

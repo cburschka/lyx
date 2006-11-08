@@ -34,7 +34,7 @@ public:
 	std::string latexparam;
 	LyXFont font;
 	LyXFont labelfont;
-	std::string preamble;
+	docstring preamble;
 };
 
 
@@ -122,7 +122,7 @@ public:
 	///
 	std::string const & pagestyle() const;
 	///
-	std::string const & preamble() const;
+	docstring const & preamble() const;
 
 	/// Packages that are already loaded by the class
 	enum Provides {
@@ -205,7 +205,7 @@ private:
 	///
 	std::string defaultlayout_;
 	/// preamble text to support layout styles
-	std::string preamble_;
+	docstring preamble_;
 	/// latex packages loaded by document class.
 	Provides provides_;
 	///

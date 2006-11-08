@@ -379,7 +379,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 			break;
 
 		case TC_PREAMBLE:
-			preamble_ = lexrc.getLongString("EndPreamble");
+			preamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
 		case TC_PROVIDESAMSMATH:
@@ -681,7 +681,7 @@ void LyXTextClass::readCharStyle(LyXLex & lexrc, string const & name)
 		cs.latexparam = latexparam;
 		cs.font = font;
 		cs.labelfont = labelfont;
-		cs.preamble = preamble;
+		cs.preamble = from_utf8(preamble);
 		charstyles().push_back(cs);
 	}
 
@@ -1036,7 +1036,7 @@ string const & LyXTextClass::pagestyle() const
 }
 
 
-string const & LyXTextClass::preamble() const
+docstring const & LyXTextClass::preamble() const
 {
 	return preamble_;
 }

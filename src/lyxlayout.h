@@ -63,7 +63,7 @@ public:
 	///
 	lyx::docstring const & endlabelstring() const { return endlabelstring_; }
 	///
-	std::string const & preamble() const { return preamble_; }
+	docstring const & preamble() const { return preamble_; }
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
@@ -226,7 +226,7 @@ private:
 	/// Internal tag to surround the item text in a list)
 	std::string itemtag_;
 	/// Macro definitions needed for this layout
-	std::string preamble_;
+	docstring preamble_;
 };
 
 

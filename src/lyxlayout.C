@@ -360,7 +360,7 @@ bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_PREAMBLE:
-			preamble_ = lexrc.getLongString("EndPreamble");
+			preamble_ = from_utf8(lexrc.getLongString("EndPreamble"));
 			break;
 
 		case LT_LABELTYPE:

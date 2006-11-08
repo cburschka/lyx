@@ -481,11 +481,11 @@ string const LaTeXFeatures::getBabelOptions() const
 }
 
 
-string const LaTeXFeatures::getTClassPreamble() const
+docstring const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble
 	LyXTextClass const & tclass = params_.getLyXTextClass();
-	ostringstream tcpreamble;
+	odocstringstream tcpreamble;
 
 	tcpreamble << tclass.preamble();
 
@@ -539,7 +539,7 @@ void LaTeXFeatures::showStruct() const {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()
 	       << "\n***** Macros:" << getMacros()
-	       << "\n***** Textclass stuff:" << getTClassPreamble()
+	       << "\n***** Textclass stuff:" << to_utf8(getTClassPreamble())
 	       << "\n***** done." << endl;
 }
 
