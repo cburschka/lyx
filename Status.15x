@@ -103,9 +103,6 @@ MULTIPLE WINDOWS / DOCUMENTS
 
 TOOLBARS & MINIBUFFER
 
-* Toolbars always show on the top of the screen, even though they are set to
-  "bottom" in the ui file (Joost 3/11/06).
-
 * When toolbars are hidden, they pop up again after clicking on the document
   area (Joost 4/11/06).
 
@@ -114,7 +111,7 @@ TOOLBARS & MINIBUFFER
   window size has also become to small to show the whole toolbar
   (Joost 4/11/06).
   
-* TODO toolbar popup menu, currently disabled (Kuemmel 9/11/06)  
+* TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
 
 * M-x is broken (does not bring up the minibuffer).
 
@@ -310,6 +307,10 @@ CREDITS:
 * When changing the toolbar settings in the right-button context menu of a 
   visible toolbar, the modified settings are not considered for session management
   
-  REPLACED with a new entry, popup disabled (Kuemmel 2006-11-09)
+  REPLACED with a new entry, popup disabled (Peter 2006-11-09)
   
+* Toolbars always show on the top of the screen, even though they are set to
+  "bottom" in the ui file (Joost 3/11/06).
   
+  FIXED: use the defaul.ui value only when there is no valid position stored 
+         (1st start of lyx)  (Peter 7/11/2006)
