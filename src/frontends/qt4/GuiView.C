@@ -136,6 +136,12 @@ void GuiView::close()
 	QMainWindow::close();
 }
 
+QMenu* GuiView::createPopupMenu()
+{
+	// disable toolbar popup menu 
+	// Qt docs: Ownership of the popup menu is transferred to the caller.
+	return new QMenu;
+}
 
 void GuiView::init()
 {

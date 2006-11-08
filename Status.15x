@@ -113,9 +113,8 @@ TOOLBARS & MINIBUFFER
   pixels compared to 1.4. This makes the images look jagged and the initial
   window size has also become to small to show the whole toolbar
   (Joost 4/11/06).
-
-* When changing the toolbar settings in the right-button context menu of a 
-  visible toolbar, the modified settings are not considered for session management
+  
+* TODO toolbar popup menu, currently disabled (Kuemmel 9/11/06)  
 
 * M-x is broken (does not bring up the minibuffer).
 
@@ -308,4 +307,9 @@ CREDITS:
 
   FIXED (MGerz 2006-11-07). I added shortcut whereever possible.
 
-
+* When changing the toolbar settings in the right-button context menu of a 
+  visible toolbar, the modified settings are not considered for session management
+  
+  REPLACED with a new entry, popup disabled (Kuemmel 2006-11-09)
+  
+  

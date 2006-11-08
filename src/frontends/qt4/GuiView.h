@@ -26,9 +26,8 @@
 #include <QCloseEvent>
 
 class QToolBar;
-//class FuncRequest;
+class QMenu;
 
-//class string;
 
 namespace lyx {
 namespace frontend {
@@ -81,6 +80,8 @@ public:
 	void activated(FuncRequest const &);
 
 	void initTab(QWidget* workArea);
+
+	QMenu* createPopupMenu();
 
 Q_SIGNALS:
 	void closing(int);
