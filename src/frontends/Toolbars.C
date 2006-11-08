@@ -45,7 +45,10 @@ void Toolbars::initFlags(ToolbarBackend::Toolbar & tbb)
 	ToolbarSection::ToolbarInfo & info = LyX::ref().session().toolbars().load(tbb.name);
 
 	unsigned int flags = static_cast<unsigned int>(tbb.flags);
-	// remove position
+
+	// Remove default.ui positions. Only when a valid postion is stored 
+	// in the session file the default.ui value will be overwritten
+	unsigned int save = flags;
 	TurnOffFlag(TOP);
 	TurnOffFlag(BOTTOM);
 	TurnOffFlag(RIGHT);
@@ -62,7 +65,8 @@ void Toolbars::initFlags(ToolbarBackend::Toolbar & tbb)
 	else if (info.location == ToolbarSection::ToolbarInfo::LEFT)
 		TurnOnFlag(LEFT);
 	else {
-		TurnOnFlag(TOP);
+		// use setting from default.ui
+		flags = save;
 		valid_location = false;
 	}
 
