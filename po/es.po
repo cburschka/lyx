@@ -5,19 +5,19 @@
 # David Suárez de lis <fafefito@usc.es>, 1999, 2000.
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
 # Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
-# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004, 2005, 2006.
+# Eulogio Serradilla <eulogio.sr@terra.es>, 2003, 2004, 2005, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-07 23:31+0100\n"
-"PO-Revision-Date: 2006-09-17 18:10+0200\n"
+"POT-Creation-Date: 2006-11-08 17:07+0100\n"
+"PO-Revision-Date: 2006-11-07 18:46+0100\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 "\n"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
@@ -183,19 +183,16 @@ msgid "Huger"
 msgstr "Más enorme"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:147
-#, fuzzy
 msgid "Custom Bullet:"
-msgstr "Cliente"
+msgstr "Marca personalizada:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:177
-#, fuzzy
 msgid "&Level:"
-msgstr "&Etiqueta:"
+msgstr "&Nivel:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
-#, fuzzy
 msgid "Form"
-msgstr "Formatos"
+msgstr "Forma"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -214,9 +211,8 @@ msgid "&Ignore LaTeX rules"
 msgstr "&Ignorar reglas de LaTeX"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:61
-#, fuzzy
 msgid "Here de&finitely"
-msgstr "Aquí definitivamente"
+msgstr "Aquí &definitivamente"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:68
 msgid "&Here if possible"
@@ -224,7 +220,7 @@ msgstr "&Aquí si es posible"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:75
 msgid "&Page of floats"
-msgstr "&Página de flotantes"
+msgstr "Página de f&lotantes"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:82
 msgid "&Bottom of page"
@@ -239,60 +235,50 @@ msgid "&Rotate sideways"
 msgstr "&Girar hacia un lado"
 
 #: src/frontends/qt4/ui/FontUi.ui:16
-#, fuzzy
 msgid "FontUi"
-msgstr "&Fuente:"
+msgstr "FuenteUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:44
 msgid "Advanced Options"
 msgstr "Opciones avanzadas"
 
 #: src/frontends/qt4/ui/FontUi.ui:56
-#, fuzzy
 msgid "Use true S&mall Caps"
-msgstr "Versalitas"
+msgstr "Usar &versalitas verdaderas"
 
 #: src/frontends/qt4/ui/FontUi.ui:63
 msgid "Use &Old Style Figures"
-msgstr ""
+msgstr "Usar estilo a&ntiguo de figuras"
 
 #: src/frontends/qt4/ui/FontUi.ui:73
-#, fuzzy
 msgid "Sizes"
-msgstr "Tamaño"
+msgstr "Tamaños"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
-#, fuzzy
 msgid "&Base Size:"
-msgstr "&Tamaño:"
+msgstr "Tamaño &base:"
 
 #: src/frontends/qt4/ui/FontUi.ui:107
-#, fuzzy
 msgid "Sc&ale Typewriter %:"
-msgstr "T&ypewriter:"
+msgstr "Escala t&ypewriter %:"
 
 #: src/frontends/qt4/ui/FontUi.ui:137
-#, fuzzy
 msgid "S&cale Sans Serif %:"
-msgstr "Sa&ns Serif:"
+msgstr "Escala Sa&ns Serif %:"
 
 #: src/frontends/qt4/ui/FontUi.ui:150
-#, fuzzy
 msgid "Families"
-msgstr "Sin marco"
+msgstr "Familias"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
-#, fuzzy
 msgid "&Default Family:"
-msgstr "&Márgenes predeterminados"
+msgstr "Familia &predeterminada:"
 
 #: src/frontends/qt4/ui/FontUi.ui:220
-#, fuzzy
 msgid "&Typewriter:"
 msgstr "T&ypewriter:"
 
 #: src/frontends/qt4/ui/FontUi.ui:230
-#, fuzzy
 msgid "&Sans Serif:"
 msgstr "Sa&ns Serif:"
 
@@ -644,14 +630,12 @@ msgid "Supported box types"
 msgstr "Tipos de cuadros implementados"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:66
-#, fuzzy
 msgid "Inner Bo&x:"
 msgstr "Cuadro &interior:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:79
-#, fuzzy
 msgid "&Decoration:"
-msgstr "Dedicatoria:"
+msgstr "&Decoración:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
 msgid "Height value"
@@ -696,9 +680,8 @@ msgid "Stretch"
 msgstr "Estirar"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:190
-#, fuzzy
 msgid "Horizontal"
-msgstr "&Horizontal:"
+msgstr "Horizontal"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
@@ -723,23 +706,20 @@ msgid "Bottom"
 msgstr "Inferior"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:222
-#, fuzzy
 msgid "&Box:"
-msgstr "Cuadro"
+msgstr "&Cuadro:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:232
-#, fuzzy
 msgid "Co&ntent:"
-msgstr "&Contenido:"
+msgstr "Con&tenido:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
 msgid "Vertical alignment of the content inside the box"
 msgstr "Alineación vertical del contenido dentro del cuadro"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:272
-#, fuzzy
 msgid "Vertical"
-msgstr "&Vertical:"
+msgstr "Vertical"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
@@ -887,32 +867,29 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:47
-#, fuzzy
 msgid "&Available Citations:"
-msgstr "&Ramas disponibles:"
+msgstr "Citas &disponibles:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:70
 #, fuzzy
 msgid "&Selected Citations:"
-msgstr "&Selección:"
+msgstr "Citas &seleccionadas:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:88
 msgid "Move the selected citation up"
 msgstr "Mover arriba la cita seleccionada"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
-#, fuzzy
 msgid "&Up"
-msgstr "&Actualizar"
+msgstr "&Subir"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
 msgid "Move the selected citation down"
 msgstr "Mover abajo la cita seleccionada"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
-#, fuzzy
 msgid "&Down"
-msgstr "Ciudad"
+msgstr "&Bajar"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:149
 msgid "D&elete"
@@ -924,9 +901,8 @@ msgid "&Find:"
 msgstr "&Encontrar:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:191
-#, fuzzy
 msgid "Formatting"
-msgstr "Formatos"
+msgstr "Formato"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:211
 msgid "Natbib citation style to use"
@@ -1349,7 +1325,7 @@ msgstr "&Mostrar en LyX"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:627
 #, fuzzy
 msgid "Sca&le on Screen (%):"
-msgstr "Sa&ns Serif:"
+msgstr "Escala Sa&ns Serif %:"
 
 #: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "Show LaTeX preview"
@@ -1598,25 +1574,22 @@ msgstr "&Resaltado en gris"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:93
 msgid "Framed in box"
-msgstr ""
+msgstr "Enmarcado en cuadro"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:96
-#, fuzzy
 msgid "&Framed"
-msgstr "Nombre"
+msgstr "&Enmarcado"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:103
-#, fuzzy
 msgid "Box with shaded background"
-msgstr "fondo de nota"
+msgstr "Cuadro con fondo sombreado"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:106
-#, fuzzy
 msgid "&Shaded"
-msgstr "&Guardar"
+msgstr "&Sombreado"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2345
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2328
 msgid "Single"
 msgstr "Sencillo"
 
@@ -1625,7 +1598,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2351
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2334
 msgid "Double"
 msgstr "Doble"
 
@@ -1725,11 +1698,16 @@ msgid ""
 "indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
 "body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
+"white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
+"top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
+"indent:0; text-indent:0px;\">[[como en 'De formato x a formato y']]</p></"
+"body></html>"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:153
-#, fuzzy
 msgid "&To:"
-msgstr "&Superior:"
+msgstr "&A:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:171
 msgid "&Converters"
@@ -1820,23 +1798,23 @@ msgstr "&Visor:"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:152
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Especifica si este formato puede contener gráficos vectoriales."
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:155
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Seleccionar archivo de imágenes"
+msgstr "Formato de gráfico &vectorial"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
 msgid ""
 "Tell whether this format is a document format. A document can not be "
 "exported to or viewed in a non-document format."
 msgstr ""
+"Especifica si este formato es un formato de documento. Un documento no puede "
+"ser exportado o visto en un formato no documental."
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
-#, fuzzy
 msgid "&Document format"
-msgstr "Fallo al formatear documento"
+msgstr "Formato de &documento"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:175
 msgid "&File formats"
@@ -2228,7 +2206,7 @@ msgstr "Usar cod&ificación de entrada"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:36
 msgid "Scrolling"
-msgstr ""
+msgstr "Desplazamiento"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:51
 msgid "Cursor follows &scrollbar"
@@ -2247,31 +2225,30 @@ msgid "&Bind file:"
 msgstr "&Archivo de asociaciones:"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:122
-#, fuzzy
 msgid "Session"
-msgstr "Versión"
+msgstr "Sesión"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:134
 msgid "Save/restore window size, or use fixed window"
-msgstr ""
+msgstr "Guardar/restaurar tamaño de la ventana, o usar ventana fija"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:157
 msgid "Load opened files from last session"
-msgstr ""
+msgstr "Cargar archivos abiertos de la última sesión"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:164
-#, fuzzy
 msgid "Restore cursor positions"
-msgstr "Posición actual de fila"
+msgstr "Restaurar posiciones de los cursores"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Restore to cursor position when the file was last closed"
 msgstr ""
+"Restaurar a la posición del cursor cuando el archivo fue cerrado por última "
+"vez"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:177
-#, fuzzy
 msgid "Save/restore window position"
-msgstr "Posición actual de fila"
+msgstr "Guardar/restaurar posición de la ventana"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:211
 #: src/frontends/controllers/ControlBox.C:85 src/frontends/qt4/QBox.C:194
@@ -2628,21 +2605,19 @@ msgstr "Estilo"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr ""
+msgstr "Usar estilo de borde (sin bordes verticales) formal (alias booktabs)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:316
-#, fuzzy
 msgid "Fo&rmal"
-msgstr "Normal"
+msgstr "Fo&rmal"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:323
 msgid "Use default (grid-like) border style"
-msgstr ""
+msgstr "Usar estilo de borde predeterminado (tipo cuadrícula)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:326
-#, fuzzy
 msgid "De&fault"
-msgstr "Predeterminado"
+msgstr "Pre&determinado"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:349
 msgid "Set Borders"
@@ -2653,22 +2628,20 @@ msgid "Set borders of the current (selected) cell(s)"
 msgstr "Establecer bordes de las celda(s) actual(es) (seleccionada(s))"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:670
-#, fuzzy
 msgid "Additional Space"
-msgstr "Espacio vertical adicional."
+msgstr "Espacio adicional"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
-msgstr ""
+msgstr "&Superior de la fila:"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:742
-#, fuzzy
 msgid "Botto&m of row:"
-msgstr "&Fin de página"
+msgstr "&Inferior de la fila:"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:755
 msgid "Bet&ween rows:"
-msgstr ""
+msgstr "En&tre las filas:"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:793
 msgid "&Longtable"
@@ -2856,16 +2829,15 @@ msgstr "&Selección:"
 
 #: src/frontends/qt4/ui/QThesaurusUi.ui:108
 msgid "Replace the entry with the selection"
-msgstr "Reemplazar el ítem con la selección"
+msgstr "Reemplazar entrada con la selección"
 
 #: src/frontends/qt4/ui/QTocUi.ui:50
-#, fuzzy
 msgid "<- &Promote"
-msgstr "&Proteger:"
+msgstr "<- &Ascender"
 
 #: src/frontends/qt4/ui/QTocUi.ui:57
 msgid "&Demote ->"
-msgstr ""
+msgstr "&Degradar ->"
 
 #: src/frontends/qt4/ui/QTocUi.ui:130
 msgid "&Type:"
@@ -2948,14 +2920,19 @@ msgid ""
 "paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; "
 "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"
 msgstr ""
+"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
+"white-space: pre-wrap; font-family:Sans Serif; font-size:13pt; font-"
+"weight:400; font-style:normal; text-decoration:none;\"><p style=\"-qt-"
+"paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:49
 msgid "Display complete source"
-msgstr ""
+msgstr "Mostrar fuente completa"
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:56
 msgid "Automatic update"
-msgstr ""
+msgstr "Actualización automática"
 
 #: src/frontends/qt4/ui/QWrapUi.ui:53
 msgid "Default (outer)"
@@ -4093,167 +4070,147 @@ msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
 msgid "BeginFrame"
-msgstr ""
+msgstr "ComenzarFotograma"
 
 #: lib/layouts/beamer.layout:115
 msgid "Frame   "
-msgstr ""
+msgstr "Fotograma   "
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
-msgstr ""
+msgstr "ComenzarFotogramaSencillo"
 
 #: lib/layouts/beamer.layout:156
 msgid "Frame (no head/foot/sidebars)  "
-msgstr ""
+msgstr "Fotograma (sin encabezado/pie/barras laterales)  "
 
 #: lib/layouts/beamer.layout:179
-#, fuzzy
 msgid "EndFrame"
-msgstr "Nombre del remitente:"
+msgstr "TerminarFotograma"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
-msgstr ""
+msgstr "________________________________ "
 
 #: lib/layouts/beamer.layout:207
-#, fuzzy
 msgid "Pause"
-msgstr "Pegar"
+msgstr "Pausa"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:280
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Sección \\arabic{section}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:321
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "@Subsection@.\\arabic{subsubsection}"
+msgstr "Subsección \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:334
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "\\arabic{chapter}.\\arabic{section}"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
-#, fuzzy
 msgid "AgainFrame"
-msgstr "marco de descripciones"
+msgstr "FotogramaDeNuevo"
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
-msgstr ""
+msgstr "Fotograma de nuevo con etiqueta   "
 
 #: lib/layouts/beamer.layout:386
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Justificado"
+msgstr "BloqueAviso"
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
-msgstr ""
+msgstr "bloque con texto de aviso "
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "block "
-msgstr "Justificado"
+msgstr "bloque "
 
 #: lib/layouts/beamer.layout:520
-#, fuzzy
 msgid "Corollary.  "
-msgstr "Corolario."
+msgstr "Corolario.  "
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
-msgstr "Columnas"
+msgstr "Columna"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
-msgstr ""
+msgstr "comenzar columna de ancho:  "
 
 #: lib/layouts/beamer.layout:560
 msgid "Columns"
 msgstr "Columnas"
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
-msgstr "Columnas"
+msgstr "columnas "
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "ColumnasAlineaciónCentro"
 
 #: lib/layouts/beamer.layout:600
 msgid "columns (center aligned) "
-msgstr ""
+msgstr "columnas (alineadas al centro) "
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "ColumnasAlineaciónSuperior"
 
 #: lib/layouts/beamer.layout:630
 msgid "columns (top aligned) "
-msgstr ""
+msgstr "columnas (alineadas a la parte superior) "
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
-msgstr "Definición."
+msgstr "Definición.  "
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
-msgstr "Definición"
+msgstr "Definiciones"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Definición."
+msgstr "Definiciones.  "
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
-msgstr "Ejemplo."
+msgstr "Ejemplo.  "
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Ejemplo"
+msgstr "Ejemplos"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Ejemplo."
+msgstr "Ejemplos.  "
 
 #: lib/layouts/beamer.layout:702
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Ejemplo"
+msgstr "BloqueEjemplo"
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
-msgstr ""
+msgstr "bloque mostrando un ejemplo "
 
 #: lib/layouts/beamer.layout:734
-#, fuzzy
 msgid "Fact.  "
-msgstr "Hecho."
+msgstr "Hecho.  "
 
 #: lib/layouts/beamer.layout:737
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "Subtítulo"
+msgstr "SubtítuloFotograma"
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
@@ -4266,81 +4223,68 @@ msgid "LyX-Code"
 msgstr "Código-LyX"
 
 #: lib/layouts/beamer.layout:819
-#, fuzzy
 msgid "NoteItem"
-msgstr "Nuevo Ítem"
+msgstr "ÍtemNota"
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
-msgstr "nota"
+msgstr "nota:  "
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "Activado"
+msgstr "Solo"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
-msgstr ""
+msgstr "solo en diapositivas  "
 
 #: lib/layouts/beamer.layout:866
-#, fuzzy
 msgid "Overprint"
-msgstr "Separata"
+msgstr "SobreImprimir"
 
 #: lib/layouts/beamer.layout:876
-#, fuzzy
 msgid "overprint "
-msgstr "Preprint"
+msgstr "imprimir en lo ya impreso "
 
 #: lib/layouts/beamer.layout:892
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Superpuesto"
+msgstr "ÁreaRecubrimiento"
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "overlayarea "
-msgstr "Superpuesto"
+msgstr "área de recubrimiento "
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
-msgstr "Parte"
+msgstr "Parte "
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
-msgstr "Demostración."
+msgstr "Demostración.  "
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
-msgstr "Separación"
+msgstr "Separador"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1001
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Gráficos"
+msgstr "GráficoTítulo"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
-msgstr "Teorema."
+msgstr "Teorema.  "
 
 #: lib/layouts/beamer.layout:1055
-#, fuzzy
 msgid "Uncover"
-msgstr "&Recuperar"
+msgstr "SinCubrir"
 
 #: lib/layouts/beamer.layout:1064
 msgid "uncovered on slides  "
-msgstr ""
+msgstr "sin cubrir en diapositivas  "
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
 msgid "Table"
@@ -5720,26 +5664,22 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "Conjetura @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/isprs.layout:38
-#, fuzzy
 msgid "ABSTRACT:"
-msgstr "RESUMEN"
+msgstr "RESUMEN:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "PALABRAS CLAVE:"
 
 #: lib/layouts/isprs.layout:135
-#, fuzzy
 msgid "Commission"
-msgstr "Condición"
+msgstr "Comisión"
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
-msgstr "Encabezado"
+msgstr "Leyenda."
 
 #: lib/layouts/isprs.layout:248
-#, fuzzy
 msgid "ACKNOWLEDGEMENTS"
 msgstr "AGRADECIMIENTOS"
 
@@ -7733,7 +7673,7 @@ msgstr "Texto simple como párrafos...|p"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:409
 msgid "Track Changes|T"
-msgstr "Seguir cambios...|S"
+msgstr "Seguir cambios|S"
 
 #: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:410
 msgid "Merge Changes...|M"
@@ -7926,11 +7866,11 @@ msgstr "Abrir reciente|t"
 
 #: lib/ui/stdmenus.ui:51
 msgid "New Window|W"
-msgstr ""
+msgstr "Ventana nueva|V"
 
 #: lib/ui/stdmenus.ui:52
 msgid "Close Window|d"
-msgstr ""
+msgstr "Cerrar ventana|C"
 
 #: lib/ui/stdmenus.ui:85
 msgid "Redo|R"
@@ -7958,24 +7898,20 @@ msgid "Paste Recent|e"
 msgstr "Pegar reciente"
 
 #: lib/ui/stdmenus.ui:91
-#, fuzzy
 msgid "Paste External Clipboard/Selection"
-msgstr "Pegar selección externa"
+msgstr "Pegar selección/portapapeles externa"
 
 #: lib/ui/stdmenus.ui:95
-#, fuzzy
 msgid "Move Paragraph Up|o"
-msgstr ", Párrafo: "
+msgstr "Mover párrafo arriba|a"
 
 #: lib/ui/stdmenus.ui:96
-#, fuzzy
 msgid "Move Paragraph Down|v"
-msgstr ", Párrafo: "
+msgstr "Mover párrafo abajo|b"
 
 #: lib/ui/stdmenus.ui:98
-#, fuzzy
 msgid "Text Style|S"
-msgstr "Estilo del texto"
+msgstr "Estilo del texto|t"
 
 #: lib/ui/stdmenus.ui:99
 msgid "Paragraph Settings...|P"
@@ -7998,8 +7934,9 @@ msgid "Decrease List Depth|D"
 msgstr "Disminuir profundidad de lista|i"
 
 #: lib/ui/stdmenus.ui:113
+#, fuzzy
 msgid "Dissolve Inset|l"
-msgstr ""
+msgstr "Disolver recuadro|D"
 
 #: lib/ui/stdmenus.ui:114
 msgid "TeX Code Settings...|C"
@@ -8030,33 +7967,28 @@ msgid "Table Settings...|a"
 msgstr "Configuración de la tabla...|b"
 
 #: lib/ui/stdmenus.ui:128
-#, fuzzy
 msgid "Clipboard as Lines|C"
-msgstr "Selección como líneas|l"
+msgstr "Portapapeles como líneas|l"
 
 #: lib/ui/stdmenus.ui:129
-#, fuzzy
 msgid "Clipboard as Paragraphs|a"
-msgstr "Selección como párrafos|p"
+msgstr "Portapapeles como párrafos|p"
 
 #: lib/ui/stdmenus.ui:141
-#, fuzzy
 msgid "Customized...|C"
 msgstr "Personalizado...|e"
 
 #: lib/ui/stdmenus.ui:143
-#, fuzzy
 msgid "Capitalize|a"
-msgstr "Catalán"
+msgstr "Poner en mayúscula|P"
 
 #: lib/ui/stdmenus.ui:144
-#, fuzzy
 msgid "Uppercase|U"
-msgstr "Actualizar|A"
+msgstr "Mayúsculas|M"
 
 #: lib/ui/stdmenus.ui:145
 msgid "Lowercase|L"
-msgstr ""
+msgstr "Minúsculas|n"
 
 #: lib/ui/stdmenus.ui:152
 msgid "Top Line|T"
@@ -8095,14 +8027,12 @@ msgid "Swap Columns|w"
 msgstr "Intercambiar columnas"
 
 #: lib/ui/stdmenus.ui:186
-#, fuzzy
 msgid "Text Style|T"
-msgstr "Estilo del texto"
+msgstr "Estilo del texto|t"
 
 #: lib/ui/stdmenus.ui:190
-#, fuzzy
 msgid "Split Cell|C"
-msgstr "Celda especial"
+msgstr "Dividir celda|D"
 
 #: lib/ui/stdmenus.ui:192
 #, fuzzy
@@ -8211,18 +8141,17 @@ msgid "Maple, evalf|v"
 msgstr "Maple, evalf"
 
 #: lib/ui/stdmenus.ui:261
-#, fuzzy
 msgid "Open All Insets|O"
-msgstr "Recuadro flotante abierto"
+msgstr "Abrir todos los recuadros|A"
 
 #: lib/ui/stdmenus.ui:262
 msgid "Close All Insets|C"
-msgstr ""
+msgstr "Cerrar todos los recuadros|C"
 
 #: lib/ui/stdmenus.ui:264
 #, fuzzy
 msgid "View Source|S"
-msgstr "Espacio visible|#s"
+msgstr "Ver fuente|f"
 
 #: lib/ui/stdmenus.ui:268
 #, fuzzy
@@ -8332,9 +8261,8 @@ msgid "Page Break|a"
 msgstr "Salto de página"
 
 #: lib/ui/stdmenus.ui:342
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Enumeración"
+msgstr "Ecuación numerada|n"
 
 #: lib/ui/stdmenus.ui:352
 #, fuzzy
@@ -8416,14 +8344,13 @@ msgid "Reject All Changes|e"
 msgstr "Descartar todos los cambios|e"
 
 #: lib/ui/stdmenus.ui:424
-#, fuzzy
 msgid "Next Change|C"
-msgstr "Cambio siguiente|#s"
+msgstr "Cambio siguiente|s"
 
 #: lib/ui/stdmenus.ui:425
 #, fuzzy
 msgid "Next Cross-Reference|R"
-msgstr "Referencia"
+msgstr "Referencia siguiente|R"
 
 #: lib/ui/stdmenus.ui:432
 #, fuzzy
@@ -8722,54 +8649,44 @@ msgid "minibuffer"
 msgstr "minibúfer"
 
 #: lib/ui/stdtoolbars.ui:149
-#, fuzzy
 msgid "review"
-msgstr "Vista preliminar"
+msgstr "revisar"
 
 #: lib/ui/stdtoolbars.ui:150
-#, fuzzy
 msgid "Track changes"
-msgstr "Seguir cambios...|S"
+msgstr "Seguir cambios"
 
 #: lib/ui/stdtoolbars.ui:151
-#, fuzzy
 msgid "Show changes in output"
-msgstr "Mostrar cambios en la salida|M"
+msgstr "Mostrar cambios en la salida"
 
 #: lib/ui/stdtoolbars.ui:153
-#, fuzzy
 msgid "Next change"
-msgstr "Cambio &siguiente"
+msgstr "Cambio siguiente"
 
 #: lib/ui/stdtoolbars.ui:154
-#, fuzzy
 msgid "Accept change"
-msgstr "Aceptar cambio|#A"
+msgstr "Aceptar cambio"
 
 #: lib/ui/stdtoolbars.ui:155
-#, fuzzy
 msgid "Reject change"
-msgstr "Descartar cambio|#c"
+msgstr "Descartar cambio"
 
 #: lib/ui/stdtoolbars.ui:157
-#, fuzzy
 msgid "Merge changes"
 msgstr "Fusionar cambios"
 
 #: lib/ui/stdtoolbars.ui:158
-#, fuzzy
 msgid "Accept all changes"
-msgstr "Aceptar todos los cambios|t"
+msgstr "Aceptar todos los cambios"
 
 #: lib/ui/stdtoolbars.ui:159
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Descartar todos los cambios|e"
+msgstr "Descartar todos los cambios"
 
 #: lib/ui/stdtoolbars.ui:162
-#, fuzzy
 msgid "Next note"
-msgstr "Nota siguiente|N"
+msgstr "Nota siguiente"
 
 #: src/BufferView.C:221
 #, c-format
@@ -9031,9 +8948,8 @@ msgid "greyedout inset background"
 msgstr "fondo de recuadro resaltado en gris"
 
 #: src/LColor.C:116
-#, fuzzy
 msgid "shaded box"
-msgstr "Marco con sombra"
+msgstr "cuadro sombreado"
 
 #: src/LColor.C:117
 msgid "depth bar"
@@ -9265,13 +9181,13 @@ msgid "Can't load document class"
 msgstr "No se puede cargar la clase de documento"
 
 #: src/buffer.C:486
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Using the default document class, because the  class %1$s could not be "
 "loaded."
 msgstr ""
-"Usando la clase de documento predeterminada, ya que la clase %1$s es "
-"desconocida."
+"Usando la clase de documento predeterminada, ya que la clase %1$s no se pudo "
+"cargar."
 
 #: src/buffer.C:598 src/buffer.C:607
 msgid "Document could not be read"
@@ -9351,9 +9267,8 @@ msgstr ""
 "Compruebe si existe el directorio y se puede escribir."
 
 #: src/buffer.C:846
-#, fuzzy
 msgid "Encoding error"
-msgstr "&Codificación:"
+msgstr "Error de codificación"
 
 #: src/buffer.C:847
 msgid ""
@@ -9361,11 +9276,13 @@ msgid ""
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
+"Algunos caracteres del documento no son representables en la codificación "
+"elegida.\n"
+"Cambiar la codificación del documento a utf8 podría ayudar."
 
 #: src/buffer.C:856
-#, fuzzy
 msgid "Error closing file"
-msgstr "¡Error al leer archivo!"
+msgstr "Error al cerrar archivo"
 
 #: src/buffer.C:857
 msgid ""
@@ -9374,6 +9291,10 @@ msgid ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
+"El archivo de salida no se pudo cerrar adecuadamente.\n"
+"Probablemente algunos caracteres del documento no son representables en la "
+"codificación elegida.\n"
+"Cambiar la codificación del documento a utf8 podría ayudar."
 
 #: src/buffer.C:1115
 msgid "Running chktex..."
@@ -9573,7 +9494,7 @@ msgid "Cannot convert file"
 msgstr "No se puede convertir archivo"
 
 #: src/converter.C:324
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
@@ -10296,29 +10217,24 @@ msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
 #: src/frontends/qt4/BulletsModule.C:47
-#, fuzzy
 msgid "Maths"
-msgstr "&Ecuaciones"
+msgstr "Ecuaciones"
 
 #: src/frontends/qt4/BulletsModule.C:48
-#, fuzzy
 msgid "Dings 1"
-msgstr "Dings &1"
+msgstr "Dings 1"
 
 #: src/frontends/qt4/BulletsModule.C:49
-#, fuzzy
 msgid "Dings 2"
-msgstr "Dings &2"
+msgstr "Dings 2"
 
 #: src/frontends/qt4/BulletsModule.C:50
-#, fuzzy
 msgid "Dings 3"
-msgstr "Dings &3"
+msgstr "Dings 3"
 
 #: src/frontends/qt4/BulletsModule.C:51
-#, fuzzy
 msgid "Dings 4"
-msgstr "Dings &4"
+msgstr "Dings 4"
 
 #: src/frontends/qt4/Dialogs.C:220
 msgid "Index Entry"
@@ -10353,9 +10269,8 @@ msgid "Branch Settings"
 msgstr "Configuración de rama"
 
 #: src/frontends/qt4/QBranches.C:42
-#, fuzzy
 msgid "Branch"
-msgstr "Rama: "
+msgstr "Rama"
 
 #: src/frontends/qt4/QBranches.C:43
 msgid "Activated"
@@ -10418,18 +10333,16 @@ msgstr ""
 
 #: src/frontends/qt4/QDelimiterDialog.C:98
 msgid "LyX: Delimiters"
-msgstr "LyX: Delimitadores"
+msgstr "LyX: delimitadores"
 
 #: src/frontends/qt4/QDelimiterDialog.C:107
 #: src/frontends/qt4/QDelimiterDialog.C:108
-#, fuzzy
 msgid "(None)"
-msgstr "Ninguno"
+msgstr "(Ninguno)"
 
 #: src/frontends/qt4/QDelimiterDialog.C:110
-#, fuzzy
 msgid "Variable size"
-msgstr "línea tabular"
+msgstr "Tamaño variable"
 
 #: src/frontends/qt4/QDocument.C:48
 msgid "Document Settings"
@@ -10439,7 +10352,7 @@ msgstr "Configuración del documento"
 msgid "Length"
 msgstr "Longitud"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2348
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2331
 msgid "OneHalf"
 msgstr "Uno y medio"
 
@@ -10447,7 +10360,7 @@ msgstr "Uno y medio"
 #: src/frontends/qt4/QDocumentDialog.C:162
 #: src/frontends/qt4/QDocumentDialog.C:168
 msgid " (not installed)"
-msgstr ""
+msgstr " (no instalado)"
 
 #: src/frontends/qt4/QDocumentDialog.C:172
 #: src/frontends/qt4/QDocumentDialog.C:198
@@ -10542,9 +10455,8 @@ msgid "Document Class"
 msgstr "Clase del documento"
 
 #: src/frontends/qt4/QDocumentDialog.C:392
-#, fuzzy
 msgid "Fonts"
-msgstr "&Fuente:"
+msgstr "Fuentes"
 
 #: src/frontends/qt4/QDocumentDialog.C:393
 msgid "Text Layout"
@@ -10684,35 +10596,32 @@ msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Índice de índice (más pequeño)"
 
 #: src/frontends/qt4/QMathDialog.C:139
-#, fuzzy
 msgid "LyX: Fractions"
-msgstr "LyX: fuentes de ecuaciones"
+msgstr "LyX: fracciones"
 
 #: src/frontends/qt4/QMathDialog.C:141
-#, fuzzy
 msgid "Standard\t\\frac"
-msgstr "Normal"
+msgstr "Normal\t\\frac"
 
 #: src/frontends/qt4/QMathDialog.C:142
-#, fuzzy
 msgid "No hor. line\t\\atop"
-msgstr "No más recuadros"
+msgstr "No hor. line\t\\atop"
 
 #: src/frontends/qt4/QMathDialog.C:143
 msgid "Nice\t\\nicefrac"
-msgstr ""
+msgstr "Nice\t\\nicefrac"
 
 #: src/frontends/qt4/QMathDialog.C:144
 msgid "Text frac (amsmath)\t\\tfrac"
-msgstr ""
+msgstr "Fracción de texto (amsmath)\t\\tfrac"
 
 #: src/frontends/qt4/QMathDialog.C:145
 msgid "Display frac (amsmath)\t\\dfrac"
-msgstr ""
+msgstr "Fracción en presentación (amsmath)\t\\dfrac"
 
 #: src/frontends/qt4/QMathDialog.C:146
 msgid "Binomial\t\\choose"
-msgstr ""
+msgstr "Binomio\t\\choose"
 
 #: src/frontends/qt4/QMathDialog.C:150
 msgid "LyX: Math Fonts"
@@ -10925,9 +10834,8 @@ msgid "TeX Information"
 msgstr "Información TeX"
 
 #: src/frontends/qt4/QTocDialog.C:42
-#, fuzzy
 msgid "Toc"
-msgstr "Tema"
+msgstr "IG"
 
 #: src/frontends/qt4/QVSpace.C:132
 msgid "Vertical Space Settings"
@@ -10992,13 +10900,12 @@ msgstr ""
 "BibTeX no será capaz de encontrarlas."
 
 #: src/insets/insetbibtex.C:251
-#, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Hay espacios en las rutas a sus bases de datos BibTeX.\n"
-"BibTeX no será capaz de encontrarlas."
+"Hay espacios en las rutas a su archivo de estilo BibTeX.\n"
+"BibTeX no podrá encontrarlo."
 
 #: src/insets/insetbox.C:63
 msgid "Boxed"
@@ -11118,9 +11025,8 @@ msgid "Graphics file: %1$s"
 msgstr "Archivo gráfico: %1$s"
 
 #: src/insets/insethfill.C:46
-#, fuzzy
 msgid "Horizontal Fill"
-msgstr "Relleno horizontal|h"
+msgstr "Relleno horizontal"
 
 #: src/insets/insetinclude.C:289
 msgid "Verbatim Input"
@@ -11179,14 +11085,12 @@ msgid "Greyed out"
 msgstr "Resaltado en gris"
 
 #: src/insets/insetnote.C:68
-#, fuzzy
 msgid "Framed"
-msgstr "Sin marco"
+msgstr "Enmarcado"
 
 #: src/insets/insetnote.C:69
-#, fuzzy
 msgid "Shaded"
-msgstr "&Forma:"
+msgstr "Sombreado"
 
 #: src/insets/insetnote.C:149
 msgid "Opened Note Inset"
@@ -11425,34 +11329,28 @@ msgid "mu"
 msgstr "mu"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Text Width %"
-msgstr "Ancho fijo"
+msgstr "Ancho del texto %"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Column Width %"
-msgstr "Ancho de columna"
+msgstr "Ancho de columna %"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Page Width %"
-msgstr "Ancho de etiqueta"
+msgstr "Ancho de página %"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Line Width %"
-msgstr "Ancho de etiqueta"
+msgstr "Ancho de línea %"
 
 #: src/lengthcommon.C:40
-#, fuzzy
 msgid "Text Height %"
-msgstr "Alto total"
+msgstr "Alto del texto %"
 
 #: src/lengthcommon.C:40
-#, fuzzy
 msgid "Page Height %"
-msgstr "Alto total"
+msgstr "Alto de página %"
 
 #: src/lyx_cb.C:113
 #, c-format
@@ -11800,9 +11698,8 @@ msgid "Unknown function."
 msgstr "Función desconocida."
 
 #: src/lyxfunc.C:352
-#, fuzzy
 msgid "Exiting"
-msgstr "Salir|S"
+msgstr "Saliendo"
 
 #: src/lyxfunc.C:386
 msgid "Nothing to do"
@@ -12184,13 +12081,14 @@ msgstr ""
 "documento es el idioma predeterminado."
 
 #: src/lyxrc.C:2290
-#, fuzzy
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "Deseleccionar si no quiere que LyX cree copias de seguridad."
+msgstr "Deseleccionar si no se quiere que LyX avance a la posición guardada."
 
 #: src/lyxrc.C:2294
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
+"Deseleccionar para prevenir cargar archivos abiertos de la última sesión de "
+"LyX."
 
 #: src/lyxrc.C:2298
 msgid "De-select if you don't want LyX to create backup files."
@@ -12403,10 +12301,14 @@ msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
+"Especifica la geometría de la vista principal en ancho x alto (no se usarán "
+"valores de la última sesión si se especifican valores no nulos)."
 
 #: src/lyxrc.C:2459
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
+"Permitir al administrador de sesión guardar y restaurar la posición de las "
+"ventanas."
 
 #: src/lyxrc.C:2463
 msgid ""
@@ -12652,107 +12554,99 @@ msgstr "Usuario desconocido"
 
 #: src/tex-strings.C:68
 msgid "Computer Modern Roman"
-msgstr ""
+msgstr "Computer Modern Roman"
 
 #: src/tex-strings.C:68
 msgid "Latin Modern Roman"
-msgstr ""
+msgstr "Latin Modern Roman"
 
 #: src/tex-strings.C:69
 msgid "AE (Almost European)"
-msgstr ""
+msgstr "AE (Almost European)"
 
 #: src/tex-strings.C:69
-#, fuzzy
 msgid "Times Roman"
-msgstr "Roman"
+msgstr "Times Roman"
 
 #: src/tex-strings.C:69
-#, fuzzy
 msgid "Palatino"
-msgstr "Lámina"
+msgstr "Palatino"
 
 #: src/tex-strings.C:69
 msgid "Bitstream Charter"
-msgstr ""
+msgstr "Bitstream Charter"
 
 #: src/tex-strings.C:70
 msgid "New Century Schoolbook"
-msgstr ""
+msgstr "New Century Schoolbook"
 
 #: src/tex-strings.C:70
-#, fuzzy
 msgid "Bookman"
-msgstr "Roman"
+msgstr "Bookman"
 
 #: src/tex-strings.C:70
 msgid "Utopia"
-msgstr ""
+msgstr "Utopia"
 
 #: src/tex-strings.C:70
-#, fuzzy
 msgid "Bera Serif"
-msgstr "Sans Serif"
+msgstr "Bera Serif"
 
 #: src/tex-strings.C:71
 msgid "Concrete Roman"
-msgstr ""
+msgstr "Concrete Roman"
 
 #: src/tex-strings.C:71
 msgid "Zapf Chancery"
-msgstr ""
+msgstr "Zapf Chancery"
 
 #: src/tex-strings.C:79
 msgid "Computer Modern Sans"
-msgstr ""
+msgstr "Computer Modern Sans"
 
 #: src/tex-strings.C:79
 msgid "Latin Modern Sans"
-msgstr ""
+msgstr "Latin Modern Sans"
 
 #: src/tex-strings.C:80
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: src/tex-strings.C:80
 msgid "Avant Garde"
-msgstr ""
+msgstr "Avant Garde"
 
 #: src/tex-strings.C:80
 msgid "Bera Sans"
-msgstr ""
+msgstr "Bera Sans"
 
 #: src/tex-strings.C:80
-#, fuzzy
 msgid "CM Bright"
-msgstr "Arriba derecha"
+msgstr "CM Bright"
 
 #: src/tex-strings.C:89
 msgid "Computer Modern Typewriter"
-msgstr ""
+msgstr "Computer Modern Typewriter"
 
 #: src/tex-strings.C:90
-#, fuzzy
 msgid "Latin Modern Typewriter"
-msgstr "Typewriter"
+msgstr "Latin Modern Typewriter"
 
 #: src/tex-strings.C:90
-#, fuzzy
 msgid "Courier"
-msgstr "Copiadoras"
+msgstr "Courier"
 
 #: src/tex-strings.C:90
 msgid "Bera Mono"
-msgstr ""
+msgstr "Bera Mono"
 
 #: src/tex-strings.C:90
 msgid "LuxiMono"
-msgstr ""
+msgstr "LuxiMono"
 
 #: src/tex-strings.C:91
-#, fuzzy
 msgid "CM Typewriter Light"
-msgstr "Typewriter"
+msgstr "CM Typewriter Light"
 
 #: src/text.C:190
 msgid "Unknown layout"
@@ -12802,49 +12696,49 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
-#: src/text.C:2314
+#: src/text.C:2297
 msgid "Change: "
 msgstr "Cambio: "
 
-#: src/text.C:2317
+#: src/text.C:2300
 msgid " at "
 msgstr " en "
 
-#: src/text.C:2329
+#: src/text.C:2312
 #, c-format
 msgid "Font: %1$s"
 msgstr "Fuente: %1$s"
 
-#: src/text.C:2336
+#: src/text.C:2319
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profundidad: %1$d"
 
-#: src/text.C:2342
+#: src/text.C:2325
 msgid ", Spacing: "
 msgstr ", Espaciado: "
 
-#: src/text.C:2354
+#: src/text.C:2337
 msgid "Other ("
 msgstr "Otro ("
 
-#: src/text.C:2363
+#: src/text.C:2346
 msgid ", Inset: "
 msgstr ", recuadro: "
 
-#: src/text.C:2364
+#: src/text.C:2347
 msgid ", Paragraph: "
 msgstr ", Párrafo: "
 
-#: src/text.C:2365
+#: src/text.C:2348
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2366
+#: src/text.C:2349
 msgid ", Position: "
 msgstr ", posición: "
 
-#: src/text.C:2367
+#: src/text.C:2350
 msgid ", Boundary: "
 msgstr ", frontera: "
 
