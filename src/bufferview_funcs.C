@@ -202,7 +202,7 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 }
 
 
-Point getPos(BufferView & bv, DocIterator const & dit, bool boundary)
+Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 {
 	CursorSlice const & bot = dit.bottom();
 	CoordCache::ParPosCache::const_iterator cache_it = 
