@@ -454,7 +454,7 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetBranch(buf.params(),
 						    InsetBranchParams()));
 		} else if (tmptok == "Include") {
-			InsetCommandParams p("Include");
+			InsetCommandParams p("include");
 			inset.reset(new InsetInclude(p));
 		} else if (tmptok == "Environment") {
 			lex.next();
