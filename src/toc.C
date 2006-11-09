@@ -18,19 +18,16 @@
 #include "bufferparams.h"
 #include "FloatList.h"
 #include "funcrequest.h"
+#include "lyxtext.h"
 #include "LyXAction.h"
 #include "paragraph.h"
+#include "pariterator.h"
 #include "cursor.h"
 #include "debug.h"
 #include "undo.h"
 
-#include "insets/insetfloat.h"
-#include "insets/insetoptarg.h"
-#include "insets/insetwrap.h"
-
 #include "support/convert.h"
 
-#include <iostream>
 #include <map>
 
 using std::map;
