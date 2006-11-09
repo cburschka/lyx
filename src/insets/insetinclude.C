@@ -273,7 +273,27 @@ void InsetInclude::read(Buffer const &, LyXLex & lex)
 
 void InsetInclude::read(LyXLex & lex)
 {
-	params_.read(lex);
+	if (lex.isOK()) {
+		lex.next();
+		string const command = lex.getString();
+		params_.scanCommand(command);
+	}
+	string token;
+	while (lex.isOK()) {
+		lex.next();
+		token = lex.getString();
+		if (token == "\\end_inset")
+			break;
+		if (token == "preview") {
+			lex.next();
+			params_.preview(lex.getBool());
+		} else
+			lex.printError("Unknown parameter name `$$Token' for command " + params_.getCmdName());
+	}
+	if (token != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point. "
+		               "Read: `$$Token'");
+	}
 }
 
 
