@@ -970,7 +970,8 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 	bool bound = false;
 
 	int xx = x; // is modified by getColumnNearX
-	pos_type const pos = row.pos() + getColumnNearX(cur.bv(), pit, row, xx, bound);
+	pos_type const pos = row.pos()
+		+ getColumnNearX(cur.bv(), pit, row, xx, bound);
 	cur.pit() = pit;
 	cur.pos() = pos;
 	cur.boundary(bound);
@@ -986,18 +987,22 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 		return 0;
 	}
 
+	InsetBase * insetBefore = pars_[pit].getInset(pos - 1);
+	//InsetBase * insetBehind = pars_[pit].getInset(pos);
+
 	// This should be just before or just behind the
 	// cursor position set above.
-        InsetBase * inset2 = pars_[pit].getInset(pos - 1);
-        InsetBase * inset3 = pars_[pit].getInset(pos);
-        
-	BOOST_ASSERT((pos != 0 && inset == inset2)
-		     || inset == inset3);
+	BOOST_ASSERT((pos != 0 && inset == insetBefore)
+		|| inset == pars_[pit].getInset(pos));
+
 	// Make sure the cursor points to the position before
 	// this inset.
-	if (inset == pars_[pit].getInset(pos - 1))
+	if (inset == insetBefore)
 		--cur.pos();
+
+	// Try to descend recursively inside the inset.
 	inset = inset->editXY(cur, x, y);
+
 	if (cur.top().text() == this)
 		setCurrentFont(cur);
 	return inset;
