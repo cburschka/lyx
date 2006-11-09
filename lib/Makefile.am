@@ -4,7 +4,7 @@ SUBDIRS = doc lyx2lyx
 
 CHMOD = chmod
 
-dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx \
+dist_pkgdata_DATA = CREDITS chkconfig.ltx \
 	       external_templates encodings languages symbols syntax.default
 
 # Note that we "chmod 755" manually this file in install-data-hook.

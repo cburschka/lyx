@@ -1262,7 +1262,6 @@ src_post_files = Split('''
 
 
 lib_files = Split('''
-    lyxrc.example
     CREDITS
     chkconfig.ltx
     external_templates
