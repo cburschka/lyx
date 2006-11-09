@@ -858,11 +858,11 @@ PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
 	setupUi(this);
 
 	connect(converterNewPB, SIGNAL(clicked()),
-		this, SLOT(new_converter()));
+		this, SLOT(update_converter()));
 	connect(converterRemovePB, SIGNAL(clicked()),
 		this, SLOT(remove_converter()));
 	connect(converterModifyPB, SIGNAL(clicked()),
-		this, SLOT(modify_converter()));
+		this, SLOT(update_converter()));
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switch_converter(int)));
 	connect(converterFromCO, SIGNAL(activated(const QString&)),
@@ -909,16 +909,18 @@ void PrefConverters::updateGui()
 		converterToCO->addItem(toqstr(cit->prettyname()));
 	}
 
+	// currentRowChanged(int) is also triggered when updating the listwidget
+	// block signals to avoid unnecessary calls to switch_converter(int nr)
 	convertersLW->blockSignals(true);
 	convertersLW->clear();
 
 	Converters::const_iterator ccit = form_->converters().begin();
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
-		std::string const name = ccit->From->prettyname() + " -> "
-								+ ccit->To->prettyname();
-		new QListWidgetItem(toqstr(name), convertersLW,
-							form_->converters().getNumber(ccit->From->name(), ccit->To->name()));
+		std::string const name =
+			ccit->From->prettyname() + " -> " + ccit->To->prettyname();
+		int type = form_->converters().getNumber(ccit->From->name(), ccit->To->name());
+		new QListWidgetItem(toqstr(name), convertersLW, type);
 	}
 	convertersLW->sortItems(Qt::AscendingOrder);
 	convertersLW->blockSignals(false);
@@ -930,6 +932,7 @@ void PrefConverters::updateGui()
 		if (item.size()>0)
 			convertersLW->setCurrentItem(item.at(0));
 	}
+
 	// select first element if restoring failed
 	if (convertersLW->currentRow() == -1)
 		convertersLW->setCurrentRow(0);
@@ -959,10 +962,8 @@ void PrefConverters::converter_changed()
 
 void PrefConverters::updateButtons()
 {
-	Format const & from(form_->formats().get(
-		converterFromCO->currentIndex()));
-	Format const & to(form_->formats().get(
-		converterToCO->currentIndex()));
+	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
+	Format const & to(form_->formats().get(converterToCO->currentIndex()));
 	int const sel = form_->converters().getNumber(from.name(), to.name());
 	bool const known = !(sel < 0);
 	bool const valid = !(converterED->text().isEmpty()
@@ -985,49 +986,21 @@ void PrefConverters::updateButtons()
 
 // FIXME: user must
 // specify unique from/to or it doesn't appear. This is really bad UI
-void PrefConverters::new_converter()
+// this is why we can use the same function for both new and modify
+void PrefConverters::update_converter()
 {
 	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
 	Format const & to(form_->formats().get(converterToCO->currentIndex()));
-	string const command(fromqstr(converterED->text()));
-	string const flags(fromqstr(converterFlagED->text()));
+	string const flags = fromqstr(converterFlagED->text());
+	string const command = fromqstr(converterED->text());
 
 	Converter const * old = form_->converters().getConverter(from.name(), to.name());
 	form_->converters().add(from.name(), to.name(), command, flags);
 	if (!old) {
 		form_->converters().updateLast(form_->formats());
 	}
+
 	updateGui();
-
-	QString const name = toqstr(from.name() + " -> " + to.name());
-	QList<QListWidgetItem *> const item =
-		convertersLW->findItems(name, Qt::MatchExactly);
-	if (item.size()>0)
-		convertersLW->setCurrentItem(item.at(0));
-}
-
-
-void PrefConverters::modify_converter()
-{
-	QString const current_text =
-		convertersLW->currentItem()->text();
-
-	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
-	Format const & to(form_->formats().get(converterToCO->currentIndex()));
-	string flags(fromqstr(converterFlagED->text()));
-	string name(fromqstr(converterED->text()));
-
-	Converter const * old = form_->converters().getConverter(from.name(), to.name());
-	form_->converters().add(from.name(), to.name(), name, flags);
-	if (!old) {
-		form_->converters().updateLast(form_->formats());
-	}
-	updateGui();
-
-	QList<QListWidgetItem *> const item =
-		convertersLW->findItems(current_text, Qt::MatchExactly);
-	if (item.size()>0)
-		convertersLW->setCurrentItem(item.at(0));
 }
 
 
@@ -1036,6 +1009,7 @@ void PrefConverters::remove_converter()
 	Format const & from(form_->formats().get(converterFromCO->currentIndex()));
 	Format const & to(form_->formats().get(converterToCO->currentIndex()));
 	form_->converters().erase(from.name(), to.name());
+
 	updateGui();
 }
 
@@ -1289,19 +1263,30 @@ PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
 {
 	setupUi(this);
 
-	connect(formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
-	connect(formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
-	connect(formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
+	connect(formatNewPB, SIGNAL(clicked()),
+		this, SLOT(new_format()));
+	connect(formatRemovePB, SIGNAL(clicked()),
+		this, SLOT(remove_format()));
+	connect(formatModifyPB, SIGNAL(clicked()),
+		this, SLOT(modify_format()));
 	connect(formatsLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(switch_format(int)));
-	connect(formatED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(guiNameED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(shortcutED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(extensionED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(viewerED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(editorED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
-	connect(documentCB, SIGNAL(toggled(bool)), this, SLOT(fileformat_changed()));
-	connect(vectorCB, SIGNAL(toggled(bool)), this, SLOT(fileformat_changed()));
+	connect(formatED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileformat_changed()));
+	connect(guiNameED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileformat_changed()));
+	connect(shortcutED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileformat_changed()));
+	connect(extensionED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileformat_changed()));
+	connect(viewerED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileformat_changed()));
+	connect(editorED, SIGNAL(textChanged(const QString&)),
+		this, SLOT(fileformat_changed()));
+	connect(documentCB, SIGNAL(toggled(bool)),
+		this, SLOT(fileformat_changed()));
+	connect(vectorCB, SIGNAL(toggled(bool)),
+		this, SLOT(fileformat_changed()));
 	connect(formatNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(formatRemovePB, SIGNAL(clicked()),
@@ -1327,8 +1312,9 @@ void PrefFileformats::update()
 	// save current selection
 	QString current = guiNameED->text();
 
+	// update listwidget with formats
+	formatsLW->blockSignals(true);
 	formatsLW->clear();
-
 	Formats::const_iterator cit = form_->formats().begin();
 	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
@@ -1337,6 +1323,7 @@ void PrefFileformats::update()
 							form_->formats().getNumber(cit->name()) );
 	}
 	formatsLW->sortItems(Qt::AscendingOrder);
+	formatsLW->blockSignals(false);
 
 	// restore selection
 	if (!current.isEmpty()) {
@@ -1352,11 +1339,8 @@ void PrefFileformats::update()
 
 void PrefFileformats::switch_format(int nr)
 {
-	if (nr<0)
-		return;
-
 	int const ftype = formatsLW->item(nr)->type();
-	Format const f(form_->formats().get(ftype));
+	Format const f = form_->formats().get(ftype);
 
 	formatED->setText(toqstr(f.name()));
 	guiNameED->setText(toqstr(f.prettyname()));
@@ -1366,8 +1350,6 @@ void PrefFileformats::switch_format(int nr)
 	editorED->setText(toqstr(f.editor()));
 	documentCB->setChecked((f.documentFormat()));
 	vectorCB->setChecked((f.vectorFormat()));
-	formatRemovePB->setEnabled(
-		!form_->converters().formatIsUsed(f.name()));
 
 	updateButtons();
 }
@@ -1423,16 +1405,11 @@ void PrefFileformats::updateButtons()
 		|| old_editor != new_editor || old_document != new_document
 		|| old_vector != new_vector);
 
-	formatModifyPB->setEnabled(
-		valid && known && modified && !known_otherwise);
+	formatModifyPB->setEnabled(valid && known && modified && !known_otherwise);
 	formatNewPB->setEnabled(valid && !known && !gui_name_known);
 	formatRemovePB->setEnabled(known);
 }
 
-void PrefFileformats::setConverters(PrefConverters * converters)
-{
-	converters_ = converters;
-}
 
 void PrefFileformats::new_format()
 {
@@ -1451,67 +1428,27 @@ void PrefFileformats::new_format()
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
 	                     editor, flags);
 	form_->formats().sort();
-	update();
-
-	QList<QListWidgetItem *>  const item =
-		formatsLW->findItems(toqstr(prettyname), Qt::MatchExactly);
-	if (item.size()>0)
-		formatsLW->setCurrentItem(item.at(0));
-
 	form_->converters().update(form_->formats());
 
-	converters_->updateGui();
+	update();
 	updateButtons();
+	formatsChanged();
 }
 
 
 void PrefFileformats::modify_format()
 {
 	int const current_item = formatsLW->currentItem()->type();
-	QString const current_text =
-		formatsLW->currentItem()->text();
-
-	Format const & oldformat(form_->formats().get(current_item));
-	string const oldpretty(oldformat.prettyname());
-	string const name(fromqstr(formatED->text()));
+	Format const & oldformat = form_->formats().get(current_item);
 	form_->formats().erase(oldformat.name());
 
-	string const prettyname = fromqstr(guiNameED->text());
-	string const extension = fromqstr(extensionED->text());
-	string const shortcut = fromqstr(shortcutED->text());
-	string const viewer = fromqstr(viewerED->text());
-	string const editor = fromqstr(editorED->text());
-	int flags = Format::none;
-	if (documentCB->isChecked())
-		flags |= Format::document;
-	if (vectorCB->isChecked())
-		flags |= Format::vector;
-
-	form_->formats().add(name, extension, prettyname, shortcut, viewer,
-	                     editor, flags);
-	form_->formats().sort();
-	form_->converters().update(form_->formats());
-
-	formatsLW->setUpdatesEnabled(false);
-	update();
-	formatsLW->setUpdatesEnabled(true);
-	formatsLW->update();
-
-	converters_->updateGui();
-	updateButtons();
-
-	QList<QListWidgetItem *>  const item =
-		formatsLW->findItems(current_text, Qt::MatchExactly);
-	if (item.size()>0)
-		formatsLW->setCurrentItem(item.at(0));
+	new_format();
 }
 
 
 void PrefFileformats::remove_format()
 {
 	int const nr = formatsLW->currentItem()->type();
-	if (nr < 0)
-		return;
 	string const current_text = form_->formats().get(nr).name();
 	if (form_->converters().formatIsUsed(current_text)) {
 		Alert::error(_("Format in use"),
@@ -1521,11 +1458,11 @@ void PrefFileformats::remove_format()
 	}
 
 	form_->formats().erase(current_text);
-	update();
 	form_->converters().update(form_->formats());
 
-	converters_->updateGui();
+	update();
 	updateButtons();
+	formatsChanged();
 }
 
 
@@ -1869,7 +1806,8 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	PrefConverters * converters = new PrefConverters(form_);
 	PrefFileformats * formats = new PrefFileformats(form_);
-	formats->setConverters(converters);
+	connect(formats, SIGNAL(formatsChanged()),
+			converters, SLOT(updateGui()));
 	add(converters);
 	add(formats);
 

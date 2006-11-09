@@ -249,13 +249,13 @@ public:
 	void apply(LyXRC & rc) const;
 	void update(LyXRC const & rc);
 
+public Q_SLOTS:
 	void updateGui();
 
 private Q_SLOTS:
+	void update_converter();
 	void switch_converter(int);
 	void converter_changed();
-	void new_converter();
-	void modify_converter();
 	void remove_converter();
 
 private:
@@ -299,9 +299,8 @@ public:
 	void update(LyXRC const & rc);
 
 	void update();
-
-	void setConverters(PrefConverters *);
-
+Q_SIGNALS:
+	void formatsChanged();
 private:
 	void updateButtons();
 
@@ -311,10 +310,6 @@ private Q_SLOTS:
 	void new_format();
 	void modify_format();
 	void remove_format();
-
-private:
-	PrefConverters * converters_;
-
 };
 
 
