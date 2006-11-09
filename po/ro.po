@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-11-07 23:31+0100\n"
-"PO-Revision-Date: 2006-10-05 22:49-0400\n"
+"PO-Revision-Date: 2006-11-08 22:32-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,6 @@ msgstr ""
 "X-Generator: KBabel 1.3\n"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
-#, fuzzy
 msgid "Citation Style"
 msgstr "Stil de citare:"
 
@@ -183,19 +182,16 @@ msgid "Huger"
 msgstr "Huger"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:147
-#, fuzzy
 msgid "Custom Bullet:"
-msgstr "Client"
+msgstr "Bulini personalizate:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:177
-#, fuzzy
 msgid "&Level:"
-msgstr "&Etichetã"
+msgstr "Nivel"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
-#, fuzzy
 msgid "Form"
-msgstr "&Format:"
+msgstr "&Formular:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -215,7 +211,6 @@ msgid "&Ignore LaTeX rules"
 msgstr "&Ignorã regulile LaTeX"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:61
-#, fuzzy
 msgid "Here de&finitely"
 msgstr "Obligatoriu aici"
 
@@ -233,70 +228,58 @@ msgid "&Bottom of page"
 msgstr "&Josul paginii"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:92
-#, fuzzy
 msgid "&Span columns"
-msgstr "Celulã specialã"
+msgstr "Umple coloana"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:99
-#, fuzzy
 msgid "&Rotate sideways"
-msgstr "Roteºte cu 90 grade"
+msgstr "Roteºte lateral"
 
 #: src/frontends/qt4/ui/FontUi.ui:16
-#, fuzzy
 msgid "FontUi"
-msgstr "Fonturi:|#F"
+msgstr "Fonturi interfaþã graficã:|#F"
 
 #: src/frontends/qt4/ui/FontUi.ui:44
 msgid "Advanced Options"
 msgstr "Opþiuni avansate"
 
 #: src/frontends/qt4/ui/FontUi.ui:56
-#, fuzzy
 msgid "Use true S&mall Caps"
-msgstr "Smallest"
+msgstr "Foloseºte litere mici"
 
 #: src/frontends/qt4/ui/FontUi.ui:63
 msgid "Use &Old Style Figures"
-msgstr ""
+msgstr "Foloseºte stilul vechi de figuri"
 
 #: src/frontends/qt4/ui/FontUi.ui:73
-#, fuzzy
 msgid "Sizes"
-msgstr "Mãrime"
+msgstr "Mãrimi"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
-#, fuzzy
 msgid "&Base Size:"
 msgstr "&Mãrime:"
 
 #: src/frontends/qt4/ui/FontUi.ui:107
-#, fuzzy
 msgid "Sc&ale Typewriter %:"
-msgstr "&Maºinã de scris:"
+msgstr "Scala fontului tip \"&Maºinã de scris\" %:"
 
 #: src/frontends/qt4/ui/FontUi.ui:137
-#, fuzzy
 msgid "S&cale Sans Serif %:"
-msgstr "Sa&ns Serif:"
+msgstr "Scala fontului Sa&ns Serif %:"
 
 #: src/frontends/qt4/ui/FontUi.ui:150
-#, fuzzy
 msgid "Families"
-msgstr "Parametrii"
+msgstr "Tipuri de fonturi"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
-#, fuzzy
 msgid "&Default Family:"
-msgstr "&Implicit"
+msgstr "Tipul de Font &Implicit"
 
 #: src/frontends/qt4/ui/FontUi.ui:220
-#, fuzzy
 msgid "&Typewriter:"
-msgstr "&Maºinã de scris:"
+msgstr "Font tip \"&Maºinã de scris\":"
 
 #: src/frontends/qt4/ui/FontUi.ui:230
-#, fuzzy
 msgid "&Sans Serif:"
 msgstr "Sa&ns Serif:"
 
@@ -328,7 +311,7 @@ msgstr "&Limbaj:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:76
 msgid "&Use language's default encoding"
-msgstr "Utilizeazã setãrile de limbtã implicite"
+msgstr "Utilizeazã setãrile de limbã implicite"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:131
 msgid "&Encoding:"
@@ -343,9 +326,8 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Foloseºte marginile implicite ale clasei de document"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
-#, fuzzy
 msgid "&Default Margins"
-msgstr "&Implicit"
+msgstr "Margini &Implicite"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
 msgid "&Top:"
@@ -376,7 +358,6 @@ msgid "&Foot skip:"
 msgstr "Separaþie &subsol:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:28
-#, fuzzy
 msgid "&Use AMS math package automatically"
 msgstr "Foloseºte automat pachetul matematic AMS"
 
@@ -411,9 +392,7 @@ msgstr "&Lãþime:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:74
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
-"Alege o dimensiune speficã pentru foaie, sau creazã dimensiunile proprii cu "
-"\"Personalizeazã\""
+msgstr "Alege o dimensiune speficã pentru foaie, sau creazã dimensiunile proprii cu \"Personalizeazã\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:128
 msgid "Orientation"
@@ -519,7 +498,7 @@ msgstr "&Renunþã"
 #: src/frontends/qt4/ui/QBibitemUi.ui:39 src/frontends/qt4/ui/QBibitemUi.ui:74
 #, fuzzy
 msgid "The bibliography key"
-msgstr "Înregistrãri bibliografice:|#b"
+msgstr "Cheia bibliografica:|#b"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:54 src/frontends/qt4/ui/QBibitemUi.ui:61
 msgid "The label as it appears in the document"
@@ -527,12 +506,10 @@ msgstr "Eticheta, aºa cum apare în document"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
 #: src/frontends/qt4/Dialogs.C:231
-#, fuzzy
 msgid "&Label:"
 msgstr "&Etichetã"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:77
-#, fuzzy
 msgid "&Key:"
 msgstr "&Cheie"
 
@@ -569,28 +546,24 @@ msgid "Add bibliography to &TOC"
 msgstr "Adaugã bibliografia la &Cuprins"
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:52 src/frontends/qt4/ui/QBibtexUi.ui:65
-#, fuzzy
 msgid "This bibliography section contains..."
-msgstr "Cheie bibliograficã"
+msgstr "Partea de  bibliografie conþine..."
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:55
 msgid "&Content:"
 msgstr "Conþinut"
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:69
-#, fuzzy
 msgid "all cited references"
-msgstr "Referinþe disponibile"
+msgstr "Toate referinþele citate"
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:74
-#, fuzzy
 msgid "all uncited references"
-msgstr "Referinþe disponibile"
+msgstr "Toate referinþele necitate"
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:79
-#, fuzzy
 msgid "all references"
-msgstr "Referinþe disponibile"
+msgstr "Toate referinþele disponibile"
 
 #: src/frontends/qt4/ui/QBibtexUi.ui:103 src/frontends/qt4/ui/QBibtexUi.ui:116
 msgid "Choose a style file"
@@ -649,7 +622,6 @@ msgstr "Part"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/qt4/QBox.C:280
 #: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:159
-#, fuzzy
 msgid "Minipage"
 msgstr "Minipaginã|p"
 
@@ -712,7 +684,6 @@ msgid "Stretch"
 msgstr "Stradã"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:190
-#, fuzzy
 msgid "Horizontal"
 msgstr "&Orizontal:"
 
@@ -745,7 +716,6 @@ msgid "&Box:"
 msgstr "&Interior:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:232
-#, fuzzy
 msgid "Co&ntent:"
 msgstr "Conþinut"
 
@@ -755,7 +725,6 @@ msgid "Vertical alignment of the content inside the box"
 msgstr "Aliniere verticalã pentru coloane de lãþime fixã"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:272
-#, fuzzy
 msgid "Vertical"
 msgstr "&Vertical:"
 
@@ -1215,7 +1184,7 @@ msgstr "Copiazã"
 #: src/frontends/qt4/ui/QExternalUi.ui:530
 #: src/frontends/qt4/ui/QGraphicsUi.ui:443
 msgid "Get bounding box from the (EPS) file"
-msgstr ""
+msgstr "Obþine marginile din fiºierul EPS"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:533
 #: src/frontends/qt4/ui/QGraphicsUi.ui:446
@@ -1296,7 +1265,7 @@ msgstr "&Graficã"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:241
 msgid "A&ngle (Degrees):"
-msgstr ""
+msgstr "U&nghi (în grade)"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:269
 msgid "Or&igin:"
@@ -1310,7 +1279,7 @@ msgstr "&Tãiere"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:406
 #, fuzzy
 msgid "y:"
-msgstr "y"
+msgstr "y:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:413
 #: src/frontends/qt4/ui/QGraphicsUi.ui:420
@@ -1621,22 +1590,19 @@ msgstr ""
 
 #: src/frontends/qt4/ui/QNoteUi.ui:93
 msgid "Framed in box"
-msgstr ""
+msgstr "Încadrat în notã"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:96
-#, fuzzy
 msgid "&Framed"
-msgstr "Nume"
+msgstr "Înca&drat"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:103
-#, fuzzy
 msgid "Box with shaded background"
-msgstr "fundal notã"
+msgstr "Notã cu fundal umbrit"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:106
-#, fuzzy
 msgid "&Shaded"
-msgstr "&Salveazã"
+msgstr "&Umbrit"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
 #: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2345
@@ -1675,9 +1641,8 @@ msgid "Alig&nment:"
 msgstr "&Alinierea:"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:145
-#, fuzzy
 msgid "In&dent paragraph"
-msgstr "un paragraf"
+msgstr "Margine paragraf"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:173
 msgid "Label Width"
@@ -1728,7 +1693,6 @@ msgid "&Modify"
 msgstr "&Modificã"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:105
-#, fuzzy
 msgid "&From:"
 msgstr "&De la:"
 
@@ -1751,9 +1715,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:153
-#, fuzzy
 msgid "&To:"
-msgstr "&Sus:"
+msgstr "&Cãtre:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:171
 msgid "&Converters"
@@ -1848,23 +1811,21 @@ msgstr "&Vizualizor:"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:152
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Specificã dacã acest format poate conþine grafice de tip vector"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:155
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Selectaþi fiºierul de ieºire"
+msgstr "Formatul fiºierulului grafig de tip vector"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
 msgid ""
 "Tell whether this format is a document format. A document can not be "
 "exported to or viewed in a non-document format."
-msgstr ""
+msgstr "Specificã dacã acest format este de tip document. Un document nu poate fi exportat sau vizualizat intr-un format care nu este de tip document"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
-#, fuzzy
 msgid "&Document format"
-msgstr "Documentul "
+msgstr "Formatul &documentului "
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:175
 msgid "&File formats"
@@ -2013,9 +1974,8 @@ msgid "Chec&kTeX command:"
 msgstr "Comandã Chec&kTeX:"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:166
-#, fuzzy
 msgid "BibTeX command and options"
-msgstr "Opþiuni limbaj"
+msgstr "Comandã si opþiuni BibTeX"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:173
 msgid "&BibTeX command:"
@@ -2120,7 +2080,6 @@ msgid "E&xtra options:"
 msgstr "Opþiuni s&uplimentare:"
 
 #: src/frontends/qt4/ui/QPrefPrinterUi.ui:189
-#, fuzzy
 msgid "Spool pref&ix:"
 msgstr "prefix spooler imprimantã"
 
@@ -2277,31 +2236,28 @@ msgid "&Bind file:"
 msgstr "Fiºier de &asocieri de taste:"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:122
-#, fuzzy
 msgid "Session"
-msgstr "Versiune"
+msgstr "Sesiune"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:134
 msgid "Save/restore window size, or use fixed window"
-msgstr ""
+msgstr "Salveazã/restabileºte mãrimea ferestrei, sau foloseºte o mãrime fixã"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:157
 msgid "Load opened files from last session"
-msgstr ""
+msgstr "Incarcã fiºierele care au fost incãrcate sesiunea precedentã"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:164
-#, fuzzy
 msgid "Restore cursor positions"
-msgstr "Poziþia liniei curente"
+msgstr "Restabileºte poziþia cursorului"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Restore to cursor position when the file was last closed"
-msgstr ""
+msgstr "Restabileºte poziþia cursorului din momentul cînd acest fiºier a fost închis"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:177
-#, fuzzy
 msgid "Save/restore window position"
-msgstr "Poziþia liniei curente"
+msgstr "Salveazã/restabileºte poziþia ferestrei"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:211
 #: src/frontends/controllers/ControlBox.C:85 src/frontends/qt4/QBox.C:194
@@ -2425,12 +2381,10 @@ msgid "Send output to a file"
 msgstr "Trimite documentul în fiºier"
 
 #: src/frontends/qt4/ui/QRefUi.ui:46
-#, fuzzy
 msgid "La&bels in:"
 msgstr "Etichetare"
 
 #: src/frontends/qt4/ui/QRefUi.ui:166
-#, fuzzy
 msgid "Cross-reference as it appears in output"
 msgstr "Referinþa, aºa cum apare la tipãrire"
 
@@ -2439,9 +2393,8 @@ msgid "<reference>"
 msgstr "<referinþã>"
 
 #: src/frontends/qt4/ui/QRefUi.ui:175
-#, fuzzy
 msgid "(<reference>)"
-msgstr "<referinþã>"
+msgstr "(<referinþã>)"
 
 #: src/frontends/qt4/ui/QRefUi.ui:180
 msgid "<page>"
@@ -2476,7 +2429,6 @@ msgid "Jump to the label"
 msgstr "Sari la etichetã"
 
 #: src/frontends/qt4/ui/QRefUi.ui:253 src/frontends/qt4/QRef.C:147
-#, fuzzy
 msgid "&Go to Label"
 msgstr "&Mergi la etichetã"
 
@@ -2609,7 +2561,6 @@ msgid "&Rotate table 90 degrees"
 msgstr "Roteºte tabelul cu 90 grade"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:192
-#, fuzzy
 msgid "Rotate this cell by 90 degrees"
 msgstr "Roteºte aceastã celulã cu 90 grade"
 
@@ -2650,7 +2601,6 @@ msgid "&Set"
 msgstr "&Modificã"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:272
-#, fuzzy
 msgid "Unset all borders of the current (selected) cell(s)"
 msgstr ""
 "Reseteazã toate marginile ale celulei (celulelor) curente (selectate) la "
@@ -2675,10 +2625,9 @@ msgstr "Normal"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:323
 msgid "Use default (grid-like) border style"
-msgstr ""
+msgstr "Foloseºte stilul de margini implicit (stil-grid)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:326
-#, fuzzy
 msgid "De&fault"
 msgstr "Implicit"
 
@@ -2691,23 +2640,21 @@ msgid "Set borders of the current (selected) cell(s)"
 msgstr "Modificã marginile celulei (celulelor) curente (selectate)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:670
-#, fuzzy
 msgid "Additional Space"
-msgstr "Opþiuni LaTeX suplimentare"
+msgstr "Spaþiu adiþional"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
-msgstr ""
+msgstr "Începutul de &rînd"
 
 # format
 #: src/frontends/qt4/ui/QTabularUi.ui:742
-#, fuzzy
 msgid "Botto&m of row:"
-msgstr "&Josul paginii"
+msgstr "&Josul rîndului"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:755
 msgid "Bet&ween rows:"
-msgstr ""
+msgstr "Între rînduri"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:793
 msgid "&Longtable"
@@ -2759,9 +2706,7 @@ msgstr "Margine de desubt"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:902
 msgid "Repeat this row as header on every (except the first) page"
-msgstr ""
-"Foloseºte aceastã linie ca antent pe fiecare paginã, cu excepþia primei "
-"pagini"
+msgstr "Foloseºte aceast rînd ca antent pe fiecare paginã, cu excepþia primei pagini"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:905
 #: src/frontends/qt4/ui/QTabularUi.ui:918
@@ -2772,13 +2717,11 @@ msgstr "pe"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:912
 msgid "This row is the header of the first page"
-msgstr "Foloseºte aceastã linie ca antet pentru prima pagini"
+msgstr "Foloseºt aceast rînd ca antet pentru prima pagini"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:925
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"Foloseºte aceastã linie ca subsol pentru fiecare paginã (cu excepþia primei "
-"pagini)"
+msgstr "Foloseºte aceast rînd ca subsol pentru fiecare paginã (cu excepþia primei pagini)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:935
 msgid "This row is the footer of the last page"
@@ -2833,9 +2776,8 @@ msgid "Close this dialog"
 msgstr "Închide acest dialog"
 
 #: src/frontends/qt4/ui/QTexinfoUi.ui:94
-#, fuzzy
 msgid "Rebuild the file lists"
-msgstr "Construieºte o listã nouã de fiºiere"
+msgstr "Reconstruieºte o lista de fiºiere"
 
 #: src/frontends/qt4/ui/QTexinfoUi.ui:97
 msgid "&Rescan"
