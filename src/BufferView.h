@@ -151,7 +151,8 @@ public:
 	///
 	void workAreaResize(int width, int height);
 
-	/// a function should be executed from the workarea
+	/// dispatch method that should be executed from the workarea
+	/// \return true if a full redraw is needed.
 	bool workAreaDispatch(FuncRequest const & ev);
 
 	/// access to anchor
