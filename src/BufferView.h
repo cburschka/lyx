@@ -41,7 +41,7 @@ class LyXText;
 class ParIterator;
 class ViewMetricsInfo;
 
-/// Scrollbar Parameters
+/// Scrollbar Parameters.
 struct ScrollbarParameters
 {
 	void reset(int h = 0, int p = 0, int l = 0)
@@ -51,21 +51,25 @@ struct ScrollbarParameters
 		lineScrollHeight = l;
 	}
 
-	/// The total document height in pixels
+	/// Total document height in pixels.
 	int height;
-	/// The current position in the document, in pixels
+	/// Current position in the document in pixels.
 	int position;
-	/// the line-scroll amount, in pixels
+	/// Line-scroll amount in pixels.
 	int lineScrollHeight;
 };
 
+/// Screen view of a Buffer.
 /**
- * A buffer view encapsulates a view onto a particular
+ * A BufferView encapsulates a view onto a particular
  * buffer, and allows access to operate upon it. A view
  * is a sliding window of the entire document rendering.
- *
- * Eventually we will allow several views onto a single
- * buffer, but not yet.
+ * It is the official interface between the LyX core and
+ * the frontend WorkArea.
+ * 
+ * \sa WorkArea
+ * \sa Buffer
+ * \sa CoordCache
  */
 class BufferView : boost::noncopyable {
 public:
@@ -73,20 +77,23 @@ public:
 
 	~BufferView();
 
-	/// set the buffer we are viewing
+	/// set the buffer we are viewing.
+	/// \todo FIXME: eventually, we will create a new BufferView
+	/// when switching Buffers, so this method should go.
 	void setBuffer(Buffer * b);
-	/// return the buffer being viewed
+	/// return the buffer being viewed.
 	Buffer * buffer() const;
 
-	/// resize event has happened
+	/// resize the BufferView.
 	void resize();
 
-	/// reload the contained buffer
+	/// redisplay the referenced buffer.
 	void reload();
-	/// load a buffer into the view
+	/// load a buffer into the view.
 	bool loadLyXFile(std::string const & name, bool tolastfiles = true);
 
-	/** perform pending painting updates. \c fitcursor means first
+	/// perform pending painting updates.
+	/** \c fitcursor means first
 	 *  to do a fitcursor, and to force an update if screen
 	 *  position changes. \c forceupdate means to force an update
 	 *  in any case.
@@ -94,89 +101,105 @@ public:
 	 */
 	bool update(Update::flags flags = Update::FitCursor | Update::Force);
 
-	/// move the screen to fit the cursor. Only to be called with
-	/// good y coordinates (after a bv::metrics)
+	/// move the screen to fit the cursor.
+	/// Only to be called with good y coordinates (after a bv::metrics)
 	bool fitCursor();
-	/// reset the scrollbar to reflect current view position
+	/// reset the scrollbar to reflect current view position.
 	void updateScrollbar();
-	/// return the Scrollbar Parameters
+	/// return the Scrollbar Parameters.
 	ScrollbarParameters const & scrollbarParameters() const;
 
-	/// Save the current position as bookmark, if persistent=false, save to temp_bookmark
+	/// Save the current position as bookmark.
+	/// if persistent=false, save to temp_bookmark
 	void saveBookmark(bool persistent);
-	/// goto a specified position
-	void moveToPosition(int par_id, pos_type par_pos);
-	/// return the current change at the cursor
+	/// goto a specified position.
+	void moveToPosition(
+		int par_id, ///< Paragraph ID, \sa Paragraph
+		pos_type par_pos ///< Position in the \c Paragraph
+		);
+	/// return the current change at the cursor.
 	Change const getCurrentChange() const;
 
-	/// return the lyxtext we are using
+	/// return the lyxtext we are using.
 	LyXText * getLyXText();
 
-	/// return the lyxtext we are using
+	/// return the lyxtext we are using.
 	LyXText const * getLyXText() const;
 
-	/// move cursor to the named label
+	/// move cursor to the named label.
 	void gotoLabel(docstring const & label);
 
-	/// set the cursor based on the given TeX source row
+	/// set the cursor based on the given TeX source row.
 	void setCursorFromRow(int row);
 
-	/// center the document view around the cursor
+	/// center the document view around the cursor.
 	void center();
-	/// scroll document by the given number of lines of default height
+	/// scroll document by the given number of lines of default height.
 	void scroll(int lines);
-	/// Scroll the view by a number of pixels
+	/// Scroll the view by a number of pixels.
 	void scrollDocView(int pixels);
 	/// Set the cursor position based on the scrollbar one.
 	void setCursorFromScrollbar();
 
-	/// return the pixel width of the document view
+	/// return the pixel width of the document view.
 	int workWidth() const;
-	/// return the pixel height of the document view
+	/// return the pixel height of the document view.
 	int workHeight() const;
 
-	/// switch between primary and secondary keymaps for RTL entry
+	/// switch between primary and secondary keymaps for RTL entry.
 	void switchKeyMap();
 
-	/// return true for events that will handle
+	/// return true for events that will handle.
 	FuncStatus getStatus(FuncRequest const & cmd);
-	/// execute the given function
+	/// execute the given function.
 	bool dispatch(FuncRequest const & argument);
 
-	///
+	/// request an X11 selection.
+	/// \return the selected string.
 	docstring const requestSelection();
-	///
+	/// clear the X11 selection.
 	void clearSelection();
 
-	///
+	/// resize method helper for \c WorkArea
+	/// \sa WorkArea
+	/// \sa resise
 	void workAreaResize(int width, int height);
 
-	/// dispatch method that should be executed from the workarea
-	/// \return true if a full redraw is needed.
+	/// dispatch method helper for \c WorkArea
+	/// \sa WorkArea
+	/// \return true if a full redraw is needed
 	bool workAreaDispatch(FuncRequest const & ev);
 
-	/// access to anchor
+	/// access to anchor.
 	pit_type anchor_ref() const;
 
-	/// access to full cursor
+	/// access to full cursor.
 	LCursor & cursor();
-	/// access to full cursor
+	/// access to full cursor.
 	LCursor const & cursor() const;
-	/// sets cursor and open all relevant collapsable insets.
+	/// sets cursor.
+	/// This will also open all relevant collapsable insets.
 	void setCursor(DocIterator const &);
-	/// sets cursor; this is used when handling LFUN_MOUSE_PRESS.
+	/// sets cursor.
+	/// This is used when handling LFUN_MOUSE_PRESS.
 	void mouseSetCursor(LCursor & cur);
 
-	/* Sets the selection. When \c backwards == false, set anchor
+	/// sets the selection.
+	/* When \c backwards == false, set anchor
 	 * to \c cur and cursor to \c cur + \c length. When \c
 	 * backwards == true, set anchor to \c cur and cursor to \c
 	 * cur + \c length.
 	 */
 	void putSelectionAt(DocIterator const & cur,
 		int length, bool backwards);
-	///
+
+	/// return the internal \c ViewMetricsInfo.
+	/// This is used specifically by the \c Workrea.
+	/// \sa WorkArea
+	/// \sa ViewMetricsInfo
 	ViewMetricsInfo const & viewMetricsInfo();
-	///
+	/// update the internal \c ViewMetricsInfo.
+	/// \param singlepar indicates wether
 	void updateMetrics(bool singlepar = false);
 
 	///
@@ -187,7 +210,7 @@ public:
 	CoordCache const & coordCache() const {
 		return coord_cache_;
 	}
-	/// get this view's keyboard map handler
+	/// get this view's keyboard map handler.
 	Intl & getIntl() { return *intl_.get(); }
 	///
 	Intl const & getIntl() const { return *intl_.get(); }
@@ -199,7 +222,7 @@ public:
 	boost::signal<void(std::string name)> showDialog;
 
 	/// This signal is emitted when some dialog needs to be shown with
-	/// some data
+	/// some data.
 	boost::signal<void(std::string name,
 		std::string data)> showDialogWithData;
 
@@ -226,17 +249,17 @@ private:
 
 	///
 	ViewMetricsInfo metrics_info_;
+	///
 	CoordCache coord_cache_;
 	///
 	Buffer * buffer_;
 
-	/// Estimated average par height for scrollbar
+	/// Estimated average par height for scrollbar.
 	int wh_;
-	///
 	///
 	void menuInsertLyXFile(std::string const & filen);
 
-	/// this is used to handle XSelection events in the right manner
+	/// this is used to handle XSelection events in the right manner.
 	struct {
 		CursorSlice cursor;
 		CursorSlice anchor;
@@ -251,7 +274,7 @@ private:
 	///
 	int offset_ref_;
 
-	/// keyboard mapping object
+	/// keyboard mapping object.
 	boost::scoped_ptr<Intl> const intl_;
 };
 
