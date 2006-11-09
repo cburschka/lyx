@@ -32,7 +32,8 @@ public:
 	/// Where the request came from
 	enum Origin {
 		INTERNAL,
-		UI, // The menu or the toolbar
+		MENU, // A menu entry
+		TOOLBAR, // A toolbar icon
 		KEYBOARD, // a keyboard binding
 		COMMANDBUFFER
 	};

@@ -377,7 +377,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
 	*/
 	Buffer * buf;
-	if (cmd.origin == FuncRequest::UI && !lyx_view_->hasFocus())
+	if (cmd.origin == FuncRequest::MENU && !lyx_view_->hasFocus())
 		buf = 0;
 	else
 		buf = lyx_view_->buffer();
@@ -1737,26 +1737,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 		}
 	}
-	if (!quitting)
+	if (!quitting) {
+		lyx_view_->updateMenubar();
+		lyx_view_->updateToolbars();
 		// FIXME UNICODE: _() does not support anything but ascii.
 		// Do we need a to_ascii() method?
 		sendDispatchMessage(getMessage(), cmd);
+	}
 }
 
 
 void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd)
 {
-	/* When an action did not originate from the UI/kbd, it makes
-	 * sense to avoid updating the GUI. It turns out that this
-	 * fixes bug 1941, for reasons that are described here:
-	 * http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
-	 */
-	if (cmd.origin != FuncRequest::INTERNAL) {
-		lyx_view_->updateMenubar();
-		lyx_view_->updateToolbars();
-	}
-
-	const bool verbose = (cmd.origin == FuncRequest::UI
+	const bool verbose = (cmd.origin == FuncRequest::MENU
+			      || cmd.origin == FuncRequest::TOOLBAR
 			      || cmd.origin == FuncRequest::COMMANDBUFFER);
 
 	if (cmd.action == LFUN_SELF_INSERT || !verbose) {

@@ -333,7 +333,7 @@ void layoutSelected(LyXView & lv, string const & name)
 		// Yes, the lyx::to_utf8(_()) is correct
 		if (lyx::to_utf8(_(itname)) == name) {
 			FuncRequest const func(LFUN_LAYOUT, itname,
-					       FuncRequest::UI);
+					       FuncRequest::TOOLBAR);
 			lv.dispatch(func);
 			return;
 		}
