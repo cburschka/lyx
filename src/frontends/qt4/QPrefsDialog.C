@@ -909,6 +909,7 @@ void PrefConverters::updateGui()
 		converterToCO->addItem(toqstr(cit->prettyname()));
 	}
 
+	convertersLW->blockSignals(true);
 	convertersLW->clear();
 
 	Converters::const_iterator ccit = form_->converters().begin();
@@ -920,6 +921,7 @@ void PrefConverters::updateGui()
 							form_->converters().getNumber(ccit->From->name(), ccit->To->name()));
 	}
 	convertersLW->sortItems(Qt::AscendingOrder);
+	convertersLW->blockSignals(false);
 
 	// restore selection
 	if (!current.isEmpty()) {
@@ -938,13 +940,7 @@ void PrefConverters::updateGui()
 
 void PrefConverters::switch_converter(int nr)
 {
-	if (nr < 0)
-		return;
-
 	int const cnr = convertersLW->currentItem()->type();
-	// FIXME: why is there now valid current item?
-	if (cnr < 0) 
-		return;
 	Converter const & c(form_->converters().get(cnr));
 	converterFromCO->setCurrentIndex(form_->formats().getNumber(c.from));
 	converterToCO->setCurrentIndex(form_->formats().getNumber(c.to));
@@ -973,9 +969,6 @@ void PrefConverters::updateButtons()
 		|| from.name() == to.name());
 
 	int const cnr = convertersLW->currentItem()->type();
-	// FIXME: why is there now valid current item?
-	if (cnr < 0) 
-		return;
 	Converter const & c(form_->converters().get(cnr));
 	string const old_command = c.command;
 	string const old_flag = c.flags;
@@ -1497,6 +1490,7 @@ void PrefFileformats::modify_format()
 	form_->formats().add(name, extension, prettyname, shortcut, viewer,
 	                     editor, flags);
 	form_->formats().sort();
+	form_->converters().update(form_->formats());
 
 	formatsLW->setUpdatesEnabled(false);
 	update();
