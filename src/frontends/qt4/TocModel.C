@@ -96,7 +96,11 @@ void TocModel::populate(TocBackend::Toc const & toc)
 			top_level_item = QStandardItemModel::index(current_row, 0);
 			//setData(top_level_item, toqstr(iter->str()));
 			setData(top_level_item, toqstr(iter->str()), Qt::DisplayRole);
-			toc_map_[top_level_item] = iter;
+
+			// This looks like a gcc bug, in principle this should work:
+			//toc_map_[top_level_item] = iter;
+			// but it crashes with gcc-4.1 and 4.0.2
+			toc_map_.insert( TocPair(top_level_item, iter) );
 			model_map_[iter] = top_level_item;
 
 			lyxerr[Debug::GUI]
@@ -144,7 +148,11 @@ void TocModel::populate(TocIterator & iter,
 		child_item = QStandardItemModel::index(current_row, 0, parent);
 		//setData(child_item, toqstr(iter->str()));
 		setData(child_item, toqstr(iter->str()), Qt::DisplayRole);
-		toc_map_[child_item] = iter;
+
+		// This looks like a gcc bug, in principle this should work:
+		//toc_map_[child_item] = iter;
+		// but it crashes with gcc-4.1 and 4.0.2
+		toc_map_.insert( TocPair(child_item, iter) );
 		model_map_[iter] = child_item;
 		populate(iter, end, child_item);
 	}

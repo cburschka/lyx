@@ -55,6 +55,8 @@ private:
 	///
 	typedef std::map<QModelIndex, TocIterator> TocMap;
 	///
+	typedef std::pair<QModelIndex, TocIterator> TocPair;
+	///
 	typedef std::map<TocIterator, QModelIndex> ModelMap;
 	///
 	TocMap toc_map_;
