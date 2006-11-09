@@ -184,7 +184,6 @@ void TocBackend::update()
 					break;
 				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
 				if (!pit->getLabelstring().empty())
-					// FIXME UNICODE
 					tocstring = pit->getLabelstring() + ' ';
 				tocstring += par.asString(*buffer_, false);
 				break;
