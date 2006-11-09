@@ -67,6 +67,9 @@ MATH CONTROL PANEL
 * In the math control panel, there is no icon for "Set Math Font".
 
 * In the math control panel, the buttons are too small.
+  The reason is probably that qt resizes the icons so that they fit into the
+  button, leaving some margin. This leads to different scales for each icon.
+  qt3 did not resize the icons. Can this be set in qt4, too?
 
 
 OTHER PANELS
@@ -109,7 +112,7 @@ TOOLBARS & MINIBUFFER
 * Icons in the toolbars do not have the correct size, they are stretched a few
   pixels compared to 1.4. This makes the images look jagged and the initial
   window size has also become to small to show the whole toolbar
-  (Joost 4/11/06).
+  (Joost 4/11/06). See also the math panel buttons entry above.
   
 * TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
 
