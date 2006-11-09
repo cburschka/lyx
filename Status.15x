@@ -52,9 +52,6 @@ TABLE OF CONTENTS
 
 DIALOGS
 
-* Window positions are not remembered correctly. Each time a window is openend
-  window again it has moved towards the bottom of the screen. (Joost 3/11/06)
-
 
 MATH CONTROL PANEL
 
@@ -317,3 +314,8 @@ CREDITS:
   
   FIXED: use the defaul.ui value only when there is no valid position stored 
          (1st start of lyx)  (Peter 7/11/2006)
+
+* Window positions are not remembered correctly. Each time a window is openend
+  window again it has moved towards the bottom of the screen. (Joost 3/11/06)
+  
+  FIXED (Peter 8/11/2006)

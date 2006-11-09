@@ -100,7 +100,10 @@ struct GuiView::GuiViewPrivate
 	NameMap namemap;
 	WidgetWithTabBar* wt;
 
-	GuiViewPrivate()
+	int posx_offset;
+	int posy_offset;
+
+	GuiViewPrivate() : wt(0), posx_offset(0), posy_offset(0)
 	{}
 };
 
@@ -175,7 +178,7 @@ void GuiView::saveGeometry()
 	// Then also the moveEvent, resizeEvent, and the
 	// code for floatingGeometry_ can be removed;
 	// adjust GuiView::setGeometry()
-#ifdef Q_OS_WIN32
+#ifdef Q_WS_WIN
 	QRect geometry = normalGeometry();
 #else
 	updateFloatingGeometry();
@@ -188,8 +191,8 @@ void GuiView::saveGeometry()
 	session.sessionInfo().save("WindowHeight", convert<string>(geometry.height()));
 	session.sessionInfo().save("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
 	if (lyxrc.geometry_xysaved) {
-		session.sessionInfo().save("WindowPosX", convert<string>(geometry.x()));
-		session.sessionInfo().save("WindowPosY", convert<string>(geometry.y()));
+		session.sessionInfo().save("WindowPosX", convert<string>(geometry.x() + d.posx_offset));
+		session.sessionInfo().save("WindowPosY", convert<string>(geometry.y() + d.posy_offset));
 	}
 	getToolbars().saveToolbarInfo();
 }
@@ -210,9 +213,8 @@ void GuiView::setGeometry(unsigned int width,
 			(posx >= desk.width() ? posx = 50 : true);
 			(posy >= desk.height()? posy = 50 : true);
 #ifdef Q_WS_WIN
-			// FIXME: use only setGeoemtry when Trolltech has
-			// fixed the qt4/X11 bug
-			QMainWindow::setGeometry(posx, posy,width, height);
+			// FIXME: use setGeometry only when Trolltech has fixed the qt4/X11 bug
+			QWidget::setGeometry(posx, posy, width, height);
 #else
 			resize(width, height);
 			move(posx, posy);
@@ -224,12 +226,29 @@ void GuiView::setGeometry(unsigned int width,
 		if (maximize)
 			setWindowState(Qt::WindowMaximized);
 	}
-	
+
 	show();
 
 	// For an unknown reason, the Window title update is not effective for
 	// the second windows up until it is shown on screen (Qt bug?).
 	updateWindowTitle();
+
+	// after show geometry() has changed (Qt bug?)
+	// we compensate the drift when storing the position
+	d.posx_offset = 0;
+	d.posy_offset = 0;
+	if (width != 0 && height != 0) 
+		if (posx != -1 && posy != -1) {
+#ifdef Q_WS_WIN
+			d.posx_offset = posx - normalGeometry().x();
+			d.posy_offset = posy - normalGeometry().y();
+#else
+			if (!maximize) {
+				d.posx_offset = posx - geometry().x();
+				d.posy_offset = posy - geometry().y();
+			}
+#endif
+		}
 }
 
 
