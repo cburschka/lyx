@@ -280,10 +280,10 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 			return false;
 	}
 
-	// Don't physically access nonexistent end-of-paragraph char
+	// Don't physically access the imaginary end-of-paragraph character.
+	// eraseChar() can only mark it as DELETED. A physical deletion of
+	// end-of-par must be handled externally.
 	if (pos == size()) {
-		// FIXME: change tracking (MG)
-		// how do we handle end-of-pars previously marked inserted?
 		return false;
 	}
 
