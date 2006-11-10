@@ -18,10 +18,9 @@
 
 #include <exception>
 
-
-namespace lyx {
-
 using std::endl;
+using lyx::lyxerr;
+using lyx::LyX;
 
 namespace boost {
 
@@ -34,7 +33,6 @@ void throw_exception(std::exception const & e)
 }
 #endif
 
-namespace {
 
 void emergencyCleanup()
 {
@@ -47,8 +45,6 @@ void emergencyCleanup()
 	LyX::cref().emergencyCleanup();
 }
 
-}
-
 
 void assertion_failed(char const * expr, char const * function,
 		      char const * file, long line)
@@ -57,11 +53,7 @@ void assertion_failed(char const * expr, char const * function,
 	       << " by failing check \"" << expr << "\""
 	       << " in file " << file << ":" << line << endl;
 	emergencyCleanup();
-	support::abort();
+	lyx::support::abort();
 }
 
-
-}
-
-
-} // namespace lyx
+} // namespace boost
