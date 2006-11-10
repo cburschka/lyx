@@ -23,6 +23,8 @@ What's new
 
 - Improve Computer Algebra System support.
 
+- Add support for fixed size math delimiters in math editor.
+
 - Add the layout file and an example document for the beamer presentation
   class. These files where taken from the beamer package by Till Tantau.
 
@@ -82,13 +84,16 @@ What's new
 
 - Fix cursor positioning when opening the VSpace dialog (bug 2869).
 
+- Make clicking in a "Wide" inset always enter that inset.
+
 - Give a better error message for missing layout include files
 
 - Don't show starred sections in Document->Numbering & TOC (bug 2910)
 
-- Make clicking in a "Wide" inset always enter that inset.
+- Make sure that the size changing shortcuts ``M-s <digit>'' work on a
+  french keyboard too.
 
-- Add support for fixed size math delimiters.
+- Make all the operations that require walking over all insets faster.
 
 * Build/installation:
 
