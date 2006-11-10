@@ -104,6 +104,7 @@ void QTocDialog::on_depthSL_valueChanged(int depth)
 void QTocDialog::on_typeCO_activated(int value)
 {
 	form_->setTocModel(value);
+	tocTV->setModel(form_->tocModel());
 	enableButtons();
 }
 
@@ -204,7 +205,7 @@ void QTocDialog::updateGui()
 	// in the future, new columns may appear
 	// like labels, bookmarks, etc...
 	// tocTV->header()->hide();
-	tocTV->header()->setVisible(true);
+	tocTV->header()->setVisible(false);
 	enableButtons();
 
 	connect(tocTV->selectionModel(),
