@@ -2956,7 +2956,20 @@ renewcommand{
 nomname}{List of Symbols}
 \end_layout
 
+\begin_layout Standard
+ If you're unhappy with the amount of space for symbols, you can alter it
+ by adding following line to the preamble.
+\end_layout
+
 \begin_layout LyX-Code
+
+\backslash
+renewcommand{
+\backslash
+nomlabelwidth}{3.0cm}
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
