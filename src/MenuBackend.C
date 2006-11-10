@@ -759,17 +759,15 @@ void expandPasteRecent(Menu & tomenu, Buffer const * buf)
 }
 
 
-void expandToolbars(Menu & tomenu, Buffer const * buf)
+void expandToolbars(Menu & tomenu)
 {
 	//
 	// extracts the toolbars from the backend
 	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
 
-	int i = 1;
-	for (; cit != end; ++cit, ++i) {
-		docstring label = _(cit->name);
-        	label = char_type(uppercase(label[0])) + label.substr(1);
+	for (; cit != end; ++cit) {
+		docstring label = _(cit->gui_name);
 		// frontends are not supposed to turn on/off toolbars, if they can not
 		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
 		// should reflect the true state of toolbars.
@@ -856,7 +854,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::Toolbars:
-			expandToolbars(tomenu, buf);
+			expandToolbars(tomenu);
 			break;
 
 		case MenuItem::Branches:
