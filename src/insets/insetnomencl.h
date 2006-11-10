@@ -38,10 +38,14 @@ public:
 	///
 	int docbook(Buffer const &, odocstream &,
 		    OutputParams const &) const;
+	///
+	int docbookGlossary(odocstream &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const {
 		return std::auto_ptr<InsetBase>(new InsetNomencl(params()));
 	}
+	/// unique id for this glossary entry for docbook export
+	docstring glossary_entry_id;
 };
 
 

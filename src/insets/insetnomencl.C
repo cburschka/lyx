@@ -11,10 +11,13 @@
 #include <config.h>
 
 #include "insetnomencl.h"
+#include "insetnote.h"
 
+#include "buffer.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "insetiterator.h"
 #include "LaTeXFeatures.h"
 #include "metricsinfo.h"
 #include "sgml.h"
@@ -26,7 +29,8 @@ using std::string;
 
 
 InsetNomencl::InsetNomencl(InsetCommandParams const & p)
-	: InsetCommand(p, "nomenclature")
+	: glossary_entry_id(sgml::uniqueID(from_ascii("gloss"))),
+	  InsetCommand(p, "nomenclature")
 {}
 
 
@@ -36,19 +40,27 @@ docstring const InsetNomencl::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetNomencl::docbook(Buffer const &, odocstream & os,
-			OutputParams const &) const
+int InsetNomencl::docbook(Buffer const & buf, odocstream & os,
+		OutputParams const & params) const
 {
-	// FIXME: This does not work, because the entry needs to be put
-	// in the glossary.
-#if 0
-	os << "<glossentry><glossterm>"
+	os << "<glossterm linkend=\"" << glossary_entry_id << "\">"
 	   << sgml::escapeString(getParam("symbol"))
-	   << "</glossterm><glossdef><para>"
-	   << sgml::escapeString(getParam("description"))
-	   << "</para></glossdef></glossentry>";
-#endif
+	   << "</glossterm>";
 	return 0;
+}
+
+
+int InsetNomencl::docbookGlossary(odocstream & os) const
+{
+	os << "<glossentry id=\"" << glossary_entry_id << "\">\n"
+	   << "<glossterm>"
+	   << sgml::escapeString(getParam("symbol"))
+	   << "</glossterm>\n"
+	   << "<glossdef><para>"
+	   << sgml::escapeString(getParam("description"))
+	   << "</para></glossdef>\n"
+	   <<"</glossentry>\n";
+	return 4;
 }
 
 
@@ -75,12 +87,28 @@ docstring const InsetPrintNomencl::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetPrintNomencl::docbook(Buffer const &, odocstream & os,
-		OutputParams const &) const
+int InsetPrintNomencl::docbook(Buffer const & buf, odocstream & os,
+		OutputParams const & params) const
 {
-	// FIXME This does not work, we need to define the entries here.
-	//os << "<glossary><glossary/>";
-	return 0;
+	os << "<glossary>\n";
+	int newlines = 2;
+	for (InsetIterator it = inset_iterator_begin(buf.inset()); it;) {
+		if (it->lyxCode() == InsetBase::NOMENCL_CODE) {
+			newlines += static_cast<InsetNomencl const &>(*it).docbookGlossary(os);
+			++it;
+		} else if(it->lyxCode() == InsetBase::NOTE_CODE &&
+		          static_cast<InsetNote const &>(*it).params().type == InsetNoteParams::Note) {
+			// Don't output anything nested in note insets
+			size_t const depth = it.depth();
+			++it;
+			while (it.depth() > depth)
+				++it;
+		} else {
+			++it;
+		}
+	}
+	os << "</glossary>\n";
+	return newlines;
 }
 
 
