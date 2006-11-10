@@ -1240,7 +1240,6 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 			if (style->pass_thru)
                                 os.put(c);
 			else
-                                // FIXME UNICODE
                                 os << sgml::escapeChar(c);
 		}
 		font_old = font;

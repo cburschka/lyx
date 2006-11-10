@@ -1740,8 +1740,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	if (!quitting) {
 		lyx_view_->updateMenubar();
 		lyx_view_->updateToolbars();
-		// FIXME UNICODE: _() does not support anything but ascii.
-		// Do we need a to_ascii() method?
 		sendDispatchMessage(getMessage(), cmd);
 	}
 }
