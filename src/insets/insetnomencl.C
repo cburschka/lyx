@@ -29,8 +29,8 @@ using std::string;
 
 
 InsetNomencl::InsetNomencl(InsetCommandParams const & p)
-	: glossary_entry_id(sgml::uniqueID(from_ascii("gloss"))),
-	  InsetCommand(p, "nomenclature")
+	: InsetCommand(p, "nomenclature"),
+	  glossary_entry_id(sgml::uniqueID(from_ascii("gloss")))
 {}
 
 
@@ -40,8 +40,8 @@ docstring const InsetNomencl::getScreenLabel(Buffer const &) const
 }
 
 
-int InsetNomencl::docbook(Buffer const & buf, odocstream & os,
-		OutputParams const & params) const
+int InsetNomencl::docbook(Buffer const &, odocstream & os,
+		OutputParams const &) const
 {
 	os << "<glossterm linkend=\"" << glossary_entry_id << "\">"
 	   << sgml::escapeString(getParam("symbol"))
@@ -88,7 +88,7 @@ docstring const InsetPrintNomencl::getScreenLabel(Buffer const &) const
 
 
 int InsetPrintNomencl::docbook(Buffer const & buf, odocstream & os,
-		OutputParams const & params) const
+		OutputParams const &) const
 {
 	os << "<glossary>\n";
 	int newlines = 2;
