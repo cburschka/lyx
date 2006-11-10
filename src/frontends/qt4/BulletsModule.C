@@ -81,17 +81,17 @@ void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string 
 	lw->setMovement(QListView::Static);
 	lw->setUniformItemSizes(true);
 	lw->setGridSize( QSize(w , h) );
-	lw->resize( 6 * w + 6 , 6* h);
+	lw->resize( 6 * w + 6 , 6 * h);
 	bulletpaneSW->setMinimumSize( 6 * w + 6 , 6 * h);
 
 	// get individual bullets from pixmap
 	for (int row = 0; row < 6; ++row) {
 		for (int col = 0; col < 6; ++col) {
-			QPixmap small(w,h);
+			QPixmap small(w, h);
 			small.fill();
 			QPainter painter(&small);
 			painter.drawPixmap(small.rect(), pixmap, QRect(col * w, row * h, w, h));
-			new QListWidgetItem(QIcon(small), "" , lw, (6*row + col));
+			new QListWidgetItem(QIcon(small), "" , lw, (6 * row + col));
 		}
 	}
 
@@ -107,7 +107,7 @@ void BulletsModule::showLevel(int level)
 
 	current_font_ = bullets_[level].getFont();
 
-	if (bullets_[level].getFont()<0) {
+	if (bullets_[level].getFont() < 0) {
 		customCB->setCheckState(Qt::Checked);
 		customLE->setText(toqstr(bullets_[level].getText()));
 	} else {
@@ -146,7 +146,7 @@ void BulletsModule::bulletSelected(QListWidgetItem * item, QListWidgetItem *)
 void BulletsModule::on_customCB_toggled(bool custom)
 {
 	if (!custom) {
-		if (current_font_<0)
+		if (current_font_ < 0)
 			current_font_ = bulletpaneCO->currentIndex();
 		return;
 	}
@@ -160,7 +160,7 @@ void BulletsModule::on_customCB_toggled(bool custom)
 
 void BulletsModule::selectItem(int font, int character, bool select)
 {
-	if (font<0)
+	if (font < 0)
 		return;
 
 	QListWidget * lw = static_cast<QListWidget *>(bulletpaneSW->widget(font));
