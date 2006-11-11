@@ -451,17 +451,17 @@ bool LyXLayout::read(LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LABELSTRING:	// label string definition
 			if (lexrc.next())
-				labelstring_ = lyx::from_ascii(trim(lexrc.getString()));
+				labelstring_ = trim(lexrc.getDocString());
 			break;
 
 		case LT_ENDLABELSTRING:	// endlabel string definition
 			if (lexrc.next())
-				endlabelstring_ = lyx::from_ascii(trim(lexrc.getString()));
+				endlabelstring_ = trim(lexrc.getDocString());
 			break;
 
 		case LT_LABELSTRING_APPENDIX: // label string appendix definition
 			if (lexrc.next())
-				labelstring_appendix_ = lyx::from_ascii(trim(lexrc.getString()));
+				labelstring_appendix_ = trim(lexrc.getDocString());
 			break;
 
 		case LT_LABELCOUNTER: // name of counter to use

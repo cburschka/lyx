@@ -279,6 +279,16 @@ int hexToInt(docstring const & str)
 }
 
 
+bool isAscii(docstring const & str)
+{
+	int const len = str.length();
+	for (int i = 0; i < len; ++i)
+		if (str[i] >= 0x80)
+			return false;
+	return true;
+}
+
+
 char lowercase(char c)
 {
 	return char(tolower(c));

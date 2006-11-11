@@ -352,7 +352,7 @@ void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 	for (pit_type pit = start; pit != end; ++pit) {
 		pars_[pit].applyLayout(lyxlayout);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
-			pars_[pit].setLabelWidthString(lyxlayout->labelstring());
+			pars_[pit].setLabelWidthString(buffer.translateLabel(lyxlayout->labelstring()));
 	}
 }
 
@@ -604,7 +604,7 @@ docstring LyXText::getStringToIndex(LCursor const & cur)
 
 void LyXText::setParagraph(LCursor & cur,
 			   Spacing const & spacing, LyXAlignment align,
-			   string const & labelwidthstring, bool noindent)
+			   docstring const & labelwidthstring, bool noindent)
 {
 	BOOST_ASSERT(cur.text());
 	// make sure that the depth behind the selection are restored, too
@@ -628,8 +628,7 @@ void LyXText::setParagraph(LCursor & cur,
 			else
 				params.align(align);
 		}
-		// FIXME UNICODE
-		par.setLabelWidthString(from_ascii(labelwidthstring));
+		par.setLabelWidthString(labelwidthstring);
 		params.noindent(noindent);
 	}
 }

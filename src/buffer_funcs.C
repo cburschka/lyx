@@ -43,8 +43,6 @@
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"
 
-#include <iostream>
-
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
 
@@ -376,7 +374,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 
 	if (layout->margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
-			par.setLabelWidthString(layout->labelstring());
+			par.setLabelWidthString(buf.translateLabel(layout->labelstring()));
 	} else {
 		par.setLabelWidthString(docstring());
 	}
@@ -468,8 +466,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		int number = counters.value(from_ascii("bibitem"));
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
-		// FIXME UNICODE
-		par.params().labelString(buf.B_(to_ascii(layout->labelstring())));
+		par.params().labelString(buf.translateLabel(layout->labelstring()));
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
@@ -495,16 +492,14 @@ void setLabel(Buffer const & buf, ParIterator & it)
 			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
 		} else {
 			// par->SetLayout(0);
-			// FIXME UNICODE
-			s = buf.B_(to_ascii(layout->labelstring()));
+			s = buf.translateLabel(layout->labelstring());
 		}
 
 		par.params().labelString(s);
 	} else if (layout->labeltype == LABEL_NO_LABEL)
 		par.params().labelString(docstring());
 	else
-		// FIXME UNICODE
-		par.params().labelString(buf.B_(to_ascii(layout->labelstring())));
+		par.params().labelString(buf.translateLabel(layout->labelstring()));
 }
 
 } // anon namespace
@@ -596,9 +591,9 @@ docstring expandLabel(Buffer const & buf,
 {
 	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 
-	// FIXME UNICODE
-	docstring fmt = buf.B_(to_ascii(appendix ? layout->labelstring_appendix()
-					     : layout->labelstring()));
+	docstring fmt = buf.translateLabel(appendix ?
+			layout->labelstring_appendix() :
+			layout->labelstring());
 
 	// handle 'inherited level parts' in 'fmt',
 	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'

@@ -260,7 +260,7 @@ public:
 	void setParagraph(LCursor & cur,
 			  Spacing const & spacing,
 			  LyXAlignment align,
-			  std::string const & labelwidthstring,
+			  docstring const & labelwidthstring,
 			  bool noindent);
 
 	/* these things are for search and replace */

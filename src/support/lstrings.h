@@ -72,6 +72,9 @@ bool isHex(lyx::docstring const & str);
 
 int hexToInt(lyx::docstring const & str);
 
+/// is \p str pure ascii?
+bool isAscii(docstring const & str);
+
 ///
 char lowercase(char c);
 

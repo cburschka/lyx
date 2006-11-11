@@ -1411,7 +1411,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			}
 
 			setLayout(cur, tclass.defaultLayoutName());
-			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
+			setParagraph(cur, Spacing(), LYX_ALIGN_LAYOUT, docstring(), 0);
 			insertInset(cur, new InsetFloatList(to_utf8(cmd.argument())));
 			cur.posRight();
 		} else {
@@ -1455,11 +1455,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		lex.setStream(is);
 		ParagraphParameters params;
 		params.read(lex);
-		// FIXME UNICODE
 		setParagraph(cur,
 			     params.spacing(),
 			     params.align(),
-			     to_ascii(params.labelWidthString()),
+			     params.labelWidthString(),
 			     params.noindent());
 		cur.message(_("Paragraph layout set"));
 		break;
