@@ -108,7 +108,7 @@ void QToc::goTo(QModelIndex const & index)
 		<< "QToc::goTo " << lyx::to_utf8(it->str())
 		<< endl;
 
-	it->goTo(kernel().lyxview());
+	ControlToc::goTo(*it);
 }
 
 
@@ -127,7 +127,7 @@ void QToc::update()
 		return;
 	}
 
-	string const & selected_type = toc::getType(params().getCmdName());
+	string const & selected_type = params().getCmdName();
 	lyxerr[Debug::GUI] << "selected_type " << selected_type	<< endl;
 
 	QString gui_names_;

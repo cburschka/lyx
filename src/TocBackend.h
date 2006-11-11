@@ -17,16 +17,17 @@
 #define TOC_BACKEND_H
 
 #include <map>
-#include <iosfwd>
 #include <vector>
 #include <string>
 
 #include "pariterator.h"
 
+#include "support/docstream.h"
+
+
 namespace lyx {
 
 class Buffer;
-class LyXView;
 class Paragraph;
 class FuncRequest;
 class LCursor;
@@ -63,8 +64,7 @@ public:
 		docstring const & str() const;
 		///
 		docstring const asString() const;
-		/// set cursor in LyXView to this Item
-		void goTo(LyXView & lv_) const;
+
 		/// the action corresponding to the goTo above
 		FuncRequest action() const;
 		
@@ -98,15 +98,15 @@ public:
 	///
 	void update();
 	///
-	TocList const & tocs()
+	TocList const & tocs() const
 	{ return tocs_; }
 	///
-	std::vector<std::string> const & types()
+	std::vector<std::string> const & types() const
 	{ return types_; }
 	///
-	Toc const & toc(std::string const & type);
+	Toc const & toc(std::string const & type) const;
 	/// Return the first Toc Item before the cursor
-	TocIterator const item(std::string const & type, ParConstIterator const &);
+	TocIterator const item(std::string const & type, ParConstIterator const &) const;
 
 	void asciiTocList(std::string const & type, odocstream & os) const;
 

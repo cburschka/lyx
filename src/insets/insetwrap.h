@@ -13,9 +13,9 @@
 #define INSETWRAP_H
 
 #include "insetcollapsable.h"
-#include "toc.h"
 #include "lyxlength.h"
 #include "mailinset.h"
+#include "TocBackend.h"
 
 
 namespace lyx {
@@ -64,7 +64,7 @@ public:
 	///
 	bool insetAllowed(InsetBase::Code) const;
 	///
-	void addToToc(toc::TocList &, Buffer const &) const;
+	void addToToc(TocBackend::TocList &, Buffer const &) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///

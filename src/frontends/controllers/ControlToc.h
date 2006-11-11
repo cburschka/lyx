@@ -14,7 +14,8 @@
 
 
 #include "ControlCommand.h"
-#include "toc.h"
+#include "TocBackend.h"
+
 #include <vector>
 
 namespace lyx {
@@ -28,7 +29,7 @@ public:
 	ControlToc(Dialog &);
 
 	/// Goto this paragraph id
-	void goTo(toc::TocItem const &);
+	void goTo(TocBackend::Item const &);
 
 	/// Return the list of types available
 	std::vector<std::string> const & getTypes() const;
@@ -37,11 +38,11 @@ public:
 	std::string const getGuiName(std::string const & type) const;
 
 	/// Return the first TocItem before the cursor
-	toc::TocIterator const getCurrentTocItem(
+	TocBackend::Toc::const_iterator const getCurrentTocItem(
 		std::string const & type) const;
 
 	/// Given a type, returns the contents
-	toc::Toc const & getContents(std::string const & type) const;
+	TocBackend::Toc const & getContents(std::string const & type) const;
 
 	/// Apply the selected outlining operation
 	void outlineUp();

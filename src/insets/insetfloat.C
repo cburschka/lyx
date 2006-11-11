@@ -378,7 +378,7 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 }
 
 
-void InsetFloat::addToToc(toc::TocList & toclist, Buffer const & buf) const
+void InsetFloat::addToToc(TocBackend::TocList & toclist, Buffer const & buf) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
@@ -390,7 +390,7 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const & buf) const
 			docstring const str =
 				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			toc::TocItem const item(pit, 0, str);
+			TocBackend::Item const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}

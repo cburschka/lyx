@@ -15,44 +15,10 @@
 #ifndef TOC_H
 #define TOC_H
 
-#include "TocBackend.h"
-
 class LCursor;
 
 namespace lyx {
 namespace toc {
-
-typedef TocBackend::Item TocItem;
-typedef TocBackend::Toc::const_iterator TocIterator;
-typedef TocBackend::Toc Toc;
-typedef TocBackend::TocList TocList;
-
-///
-void updateToc(Buffer const &);
-
-///
-TocList const & getTocList(Buffer const &);
-
-///
-Toc const & getToc(Buffer const & buf, std::string const & type);
-
-///
-std::vector<std::string> const & getTypes(Buffer const &);
-
-/// Return the first TocItem before the cursor
-TocIterator const getCurrentTocItem(Buffer const &, LCursor const &,
-									  std::string const & type);
-
-///
-void asciiTocList(std::string const &, Buffer const &, odocstream &);
-
-/** Given the cmdName of the TOC param, returns the type used
-    by ControlToc::getContents() */
-std::string const getType(std::string const & cmdName);
-
-/** Returns the guiname from a given @c type
-    The localization of the names will be done in the frontends */
-std::string const getGuiName(std::string const & type, Buffer const &);
 
 /// the type of outline operation
 enum OutlineOp {

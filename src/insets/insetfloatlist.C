@@ -23,7 +23,7 @@
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
-#include "toc.h"
+#include "TocBackend.h"
 
 #include "support/lstrings.h"
 
@@ -133,7 +133,7 @@ int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	toc::asciiTocList(to_ascii(getParam("type")), buffer, os);
+	buffer.tocBackend().asciiTocList(to_ascii(getParam("type")), os);
 
 	os << "\n";
 	return 0;

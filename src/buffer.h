@@ -54,6 +54,7 @@ class ParConstIterator;
 class ParIterator;
 class TeXErrors;
 class TexRow;
+class TocBackend;
 class Undo;
 class StableDocIterator;
 
@@ -353,6 +354,11 @@ public:
 	//@{
 	ErrorList const & errorList(std::string const & type) const;
 	ErrorList & errorList(std::string const & type);
+	//@}
+
+	//@{
+	TocBackend & tocBackend();
+	TocBackend const & tocBackend() const;
 	//@}
 
 private:

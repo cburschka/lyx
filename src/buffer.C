@@ -47,6 +47,7 @@
 #include "pariterator.h"
 #include "sgml.h"
 #include "texrow.h"
+#include "TocBackend.h"
 #include "undo.h"
 #include "version.h"
 
@@ -192,13 +193,16 @@ public:
 
 	///
 	MacroTable macros;
+
+	///
+	TocBackend toc_backend;
 };
 
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
-	  filename(file), file_fully_loaded(false),
-		inset(params)
+	  filename(file), file_fully_loaded(false), inset(params),
+	  toc_backend(&parent)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
@@ -323,6 +327,18 @@ TexRow & Buffer::texrow()
 TexRow const & Buffer::texrow() const
 {
 	return pimpl_->texrow;
+}
+
+
+TocBackend & Buffer::tocBackend()
+{
+	return pimpl_->toc_backend;
+}
+
+
+TocBackend const & Buffer::tocBackend() const
+{
+	return pimpl_->toc_backend;
 }
 
 

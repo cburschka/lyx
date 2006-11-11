@@ -13,10 +13,17 @@
 #include <config.h>
 
 #include "ControlToc.h"
+#include "buffer.h"
+#include "BufferView.h"
+#include "bufferparams.h"
+#include "debug.h"
+#include "FloatList.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "BufferView.h"
-#include "debug.h"
+
+#include "frontends/LyXView.h"
+
+#include "support/convert.h"
 
 using std::vector;
 using std::string;
@@ -33,15 +40,16 @@ ControlToc::ControlToc(Dialog & d)
 {}
 
 
-void ControlToc::goTo(toc::TocItem const & item)
+void ControlToc::goTo(TocBackend::Item const & item)
 {
-	item.goTo(kernel().lyxview());
+	string const tmp = convert<string>(item.id());
+	kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
 }
 
 
 bool ControlToc::canOutline(string const & type)
 {
-	return type == "TOC";
+	return type == "tableofcontents";
 }
 
 
@@ -71,39 +79,44 @@ void ControlToc::outlineOut()
 
 vector<string> const & ControlToc::getTypes() const
 {
-	return toc::getTypes(kernel().buffer());
+	return kernel().buffer().tocBackend().types();
 }
 
 
-toc::TocIterator const ControlToc::getCurrentTocItem(
+TocBackend::Toc::const_iterator const ControlToc::getCurrentTocItem(
 	string const & type) const
 {
 	BOOST_ASSERT(kernel().bufferview());
 
-	return toc::getCurrentTocItem(kernel().buffer(),
-		kernel().bufferview()->cursor(), type);
+	ParConstIterator it(kernel().bufferview()->cursor());
+	return kernel().buffer().tocBackend().item(type, it);
 }
 
 
 string const ControlToc::getGuiName(string const & type) const
 {
-	if (type == "TOC")
+	if (type == "tableofcontents")
 		return lyx::to_utf8(_("Table of Contents"));
+
+	FloatList const & floats =
+		kernel().buffer().params().getLyXTextClass().floats();
+	if (floats.typeExist(type))
+		return floats.getType(type).name();
 	else
-		return lyx::to_utf8(_(toc::getGuiName(type, kernel().buffer())));
+		return lyx::to_utf8(_(type));
 }
 
 
-toc::Toc const empty_list;
+TocBackend::Toc const empty_list;
 
-toc::Toc const & ControlToc::getContents(string const & type) const
+TocBackend::Toc const & ControlToc::getContents(string const & type) const
 {
 	// This shouldn't be possible...
 	if (!kernel().isBufferAvailable()) {
 		return empty_list;
 	}
 
-	return toc::getToc(kernel().buffer(), type);
+	return kernel().buffer().tocBackend().toc(type);
 }
 
 } // namespace frontend

@@ -14,7 +14,7 @@
 #define INSETFLOAT_H
 
 #include "insetcollapsable.h"
-#include "toc.h"
+#include "TocBackend.h"
 #include "mailinset.h"
 
 
@@ -76,7 +76,7 @@ public:
 	///
 	void sideways(bool s, BufferParams const &);
 	///
-	void addToToc(toc::TocList &, Buffer const &) const;
+	void addToToc(TocBackend::TocList &, Buffer const &) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///

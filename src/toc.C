@@ -16,7 +16,6 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
-#include "FloatList.h"
 #include "funcrequest.h"
 #include "lyxtext.h"
 #include "LyXAction.h"
@@ -26,97 +25,9 @@
 #include "debug.h"
 #include "undo.h"
 
-#include "support/convert.h"
-
-#include <map>
-
-using std::map;
-using std::pair;
-using std::make_pair;
-using std::vector;
-using std::max;
-using std::ostream;
-using std::string;
-using std::endl;
 
 namespace lyx {
 namespace toc {
-
-typedef map<Buffer const *, TocBackend> TocMap;
-static TocMap toc_backend_;
-
-///////////////////////////////////////////////////////////////////////////
-// Interface to toc_backend_
-
-void updateToc(Buffer const & buf)
-{
-	TocMap::iterator it = toc_backend_.find(&buf);
-	if (it == toc_backend_.end()) {
-		pair<TocMap::iterator, bool> result
-			= toc_backend_.insert(make_pair(&buf, TocBackend(&buf)));
-		if (!result.second)
-			return;
-
-		it = result.first;
-	}
-
-	it->second.update();
-}
-
-
-TocList const & getTocList(Buffer const & buf)
-{
-	return toc_backend_[&buf].tocs();
-}
-
-
-Toc const & getToc(Buffer const & buf, std::string const & type)
-{
-	return toc_backend_[&buf].toc(type);
-}
-
-
-TocIterator const getCurrentTocItem(Buffer const & buf, LCursor const & cur,
-								std::string const & type)
-{
-	return toc_backend_[&buf].item(type, ParConstIterator(cur));
-}
-
-
-vector<string> const & getTypes(Buffer const & buf)
-{
-	return toc_backend_[&buf].types();
-}
-
-
-void asciiTocList(string const & type, Buffer const & buf, odocstream & os)
-{
-	toc_backend_[&buf].asciiTocList(type, os);
-}
-
-///////////////////////////////////////////////////////////////////////////
-// Other functions
-
-string const getType(string const & cmdName)
-{
-	// special case
-	if (cmdName == "tableofcontents")
-		return "TOC";
-	else
-		return cmdName;
-}
-
-
-string const getGuiName(string const & type, Buffer const & buffer)
-{
-	FloatList const & floats =
-		buffer.params().getLyXTextClass().floats();
-	if (floats.typeExist(type))
-		return floats.getType(type).name();
-	else
-		return type;
-}
-
 
 void outline(OutlineOp mode,  LCursor & cur)
 {

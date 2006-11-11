@@ -32,8 +32,8 @@
 #include "pariterator.h"
 #include "lyxvc.h"
 #include "texrow.h"
+#include "TocBackend.h"
 #include "vc-backend.h"
-#include "toc.h"
 
 #include "frontends/Alert.h"
 
@@ -587,7 +587,7 @@ void updateLabels(Buffer const & buf)
 		setLabel(buf, it);
 	}
 
-	toc::updateToc(buf);
+	const_cast<Buffer &>(buf).tocBackend().update();
 }
 
 

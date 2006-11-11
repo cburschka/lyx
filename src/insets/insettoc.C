@@ -12,11 +12,12 @@
 
 #include "insettoc.h"
 
+#include "buffer.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "metricsinfo.h"
-#include "toc.h"
+#include "TocBackend.h"
 
 #include "support/std_ostream.h"
 
@@ -59,7 +60,7 @@ int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	toc::asciiTocList(lyx::toc::getType(getCmdName()), buffer, os);
+	buffer.tocBackend().asciiTocList(getCmdName(), os);
 
 	os << "\n";
 	return 0;

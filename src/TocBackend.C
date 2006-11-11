@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "toc.h"
+#include "TocBackend.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -20,10 +20,7 @@
 #include "funcrequest.h"
 #include "LyXAction.h"
 #include "paragraph.h"
-#include "cursor.h"
 #include "debug.h"
-
-#include "frontends/LyXView.h"
 
 #include "insets/insetfloat.h"
 #include "insets/insetoptarg.h"
@@ -31,15 +28,11 @@
 
 #include "support/convert.h"
 
-#include <iostream>
 
 namespace lyx {
 
 using std::vector;
-using std::max;
-using std::ostream;
 using std::string;
-using std::endl;
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -108,12 +101,6 @@ docstring const TocBackend::Item::asString() const
 }
 
 
-void TocBackend::Item::goTo(LyXView & lv_) const
-{
-	string const tmp = convert<string>(id());
-	lv_.dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
-}
-
 FuncRequest TocBackend::Item::action() const
 {
 	return FuncRequest(LFUN_PARAGRAPH_GOTO, convert<string>(id()));
@@ -126,7 +113,7 @@ FuncRequest TocBackend::Item::action() const
 ///////////////////////////////////////////////////////////////////////////
 // TocBackend implementation
 
-TocBackend::Toc const & TocBackend::toc(std::string const & type)
+TocBackend::Toc const & TocBackend::toc(std::string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
@@ -202,7 +189,7 @@ void TocBackend::update()
 			if (tocstring.empty())
 				tocstring = pit->asString(*buffer_, true);
 			Item const item(pit, toclevel - min_toclevel, tocstring);
-			tocs_["TOC"].push_back(item);
+			tocs_["tableofcontents"].push_back(item);
 		}
 	}
 
@@ -212,9 +199,10 @@ void TocBackend::update()
 }
 
 
-TocBackend::TocIterator const TocBackend::item(std::string const & type, ParConstIterator const & par_it)
+TocBackend::TocIterator const TocBackend::item(
+	std::string const & type, ParConstIterator const & par_it) const
 {
-	TocList::iterator toclist_it = tocs_.find(type);
+	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
 	BOOST_ASSERT(toclist_it != tocs_.end());
 

@@ -224,7 +224,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetWrap::addToToc(toc::TocList & toclist, Buffer const & buf) const
+void InsetWrap::addToToc(TocBackend::TocList & toclist, Buffer const & buf) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
@@ -236,7 +236,7 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const & buf) const
 			docstring const str =
 				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			toc::TocItem const item(pit, 0, str);
+			TocBackend::Item const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}
