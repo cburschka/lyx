@@ -16,7 +16,6 @@
 #define LYX_LENGTH_H
 
 #include "support/docstring.h"
-#include <string>
 
 
 namespace lyx {

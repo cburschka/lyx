@@ -107,8 +107,7 @@ void InsetVSpace::write(Buffer const &, ostream & os) const
 docstring const InsetVSpace::label() const
 {
 	static docstring const label = _("Vertical Space");
-	// FIXME UNICODE
-	return label + " (" + from_utf8(space_.asGUIName()) + ')';
+	return label + " (" + space_.asGUIName() + ')';
 }
 
 

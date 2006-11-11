@@ -482,31 +482,31 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 }
 
 
-string const VSpace::asGUIName() const
+docstring const VSpace::asGUIName() const
 {
-	string result;
+	docstring result;
 	switch (kind_) {
 	case DEFSKIP:
-		result = to_utf8(_("Default skip"));
+		result = _("Default skip");
 		break;
 	case SMALLSKIP:
-		result = to_utf8(_("Small skip"));
+		result = _("Small skip");
 		break;
 	case MEDSKIP:
-		result = to_utf8(_("Medium skip"));
+		result = _("Medium skip");
 		break;
 	case BIGSKIP:
-		result = to_utf8(_("Big skip"));
+		result = _("Big skip");
 		break;
 	case VFILL:
-		result = to_utf8(_("Vertical fill"));
+		result = _("Vertical fill");
 		break;
 	case LENGTH:
-		result = len_.asString();
+		result = from_ascii(len_.asString());
 		break;
 	}
 	if (keep_)
-		result += ", " + to_utf8(_("protected"));
+		result += ", " + _("protected");
 	return result;
 }
 
