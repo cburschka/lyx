@@ -289,7 +289,7 @@ int LaTeX::run(TeXErrors & terr)
 	}
 	if (head.haschanged(onlyFilename(changeExtension(file, ".nlo")))) {
 		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
-		message(_("Running Makeindex for nomencl."));
+		message(_("Running MakeIndex for nomencl."));
 		string const nomenclstr = " -s nomencl.ist -o " + changeExtension(file, ".nls");
 		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".nlo")), runparams, nomenclstr);
 	}
@@ -365,7 +365,7 @@ int LaTeX::run(TeXErrors & terr)
 	// I am not pretty sure if need this twice. 
 	if (head.haschanged(onlyFilename(changeExtension(file, ".nlo")))) {
 		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
-		message(_("Running Makeindex for nomencl. "));
+		message(_("Running MakeIndex for nomencl."));
 		string nomenclstr = " -s nomencl.ist -o " + changeExtension(file, ".nls");
 		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".nlo")), runparams, nomenclstr);
 	}
