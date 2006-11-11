@@ -1403,11 +1403,7 @@ bool InsetMathNest::script(LCursor & cur, bool up,
 		}
 		--cur.pos();
 		InsetMathScript * inset = cur.nextAtom().nucleus()->asScriptInset();
-		// special handling of {}-bases
-		// is this always correct?
-		if (inset->nuc().size() == 1
-		    && inset->nuc().back()->asBraceInset())
-			inset->nuc() = inset->nuc().back()->asNestInset()->cell(0);
+		// See comment in MathParser.C for special handling of {}-bases
 
 		cur.push(*inset);
 		cur.idx() = 1;

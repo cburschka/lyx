@@ -827,14 +827,17 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				cell->back() = MathAtom(new InsetMathScript(cell->back(), up));
 			InsetMathScript * p = cell->back().nucleus()->asScriptInset();
 			// special handling of {}-bases
-			// Test for empty brace inset, otherwise \xxx{\vec{H}}_{0}
-			// where \xxx is an unknown command gets misparsed to
-			// \xxx\vec{H}_{0}, and that is invalid LaTeX.
-			// is this always correct?
-			if (p->nuc().size() == 1 &&
-			    p->nuc().back()->asBraceInset() &&
-			    p->nuc().back()->asBraceInset()->cell(0).empty())
-				p->nuc() = p->nuc().back()->asNestInset()->cell(0);
+			// Here we could remove the brace inset for things
+			// like {a'}^2 and add the braces back in
+			// InsetMathScript::write().
+			// We do not do it, since it is not possible to detect
+			// reliably whether the braces are needed because the
+			// nucleus contains more than one symbol, or whether
+			// they are needed for unknown commands like \xx{a}_0
+			// or \yy{a}{b}_0. This was done in revision 14819
+			// in an unreliable way. See this thread
+			// http://www.mail-archive.com/lyx-devel%40lists.lyx.org/msg104917.html
+			// for more details.
 			parse(p->cell(p->idxOfScript(up)), FLAG_ITEM, mode);
 			if (limits) {
 				p->limits(limits);
