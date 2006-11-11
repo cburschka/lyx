@@ -545,7 +545,6 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 
 void GuiWorkArea::doGreyOut(QLPainter & pain)
 {
-	greyed_out_ = true;
 	pain.fillRectangle(0, 0, width(), height(),
 		LColor::bottomarea);
 
@@ -600,26 +599,19 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 }
 
 
-
 void GuiWorkArea::expose(int x, int y, int w, int h)
 {
 	QLPainter pain(&screen_);
 
-	if (w == 3) { // FIXME HACK
-		// Assume splash screen drawing is requested when
-		// width == 3
+	if (greyed_out_) {
 		lyxerr << "splash screen requested" << endl;
+		verticalScrollBar()->hide();
 		doGreyOut(pain);
-	}
-	else if (!buffer_view_->buffer()) {
-		lyxerr << "no buffer: " << endl;
-		doGreyOut(pain);
-		updateScrollbar();
-	}
-	else {
-		paintText(*buffer_view_, pain);
+		update(0, 0, width(), height());
+		return;
 	}
 
+	paintText(*buffer_view_, pain);
 	update(x, y, w, h);
 }
 

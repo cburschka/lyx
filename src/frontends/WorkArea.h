@@ -85,14 +85,10 @@ public:
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw(bool singlePar = false);
 	///
-	void checkAndGreyOut();
-	///
 	void stopBlinkingCursor();
 	void startBlinkingCursor();
 
 protected:
-	/// grey out (no buffer)
-	virtual void greyOut();
 	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 	/// cause the display of the given area of the work area

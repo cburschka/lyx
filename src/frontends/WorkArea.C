@@ -129,20 +129,12 @@ void WorkArea::startBlinkingCursor()
 }
 
 
-void WorkArea::checkAndGreyOut()
-{
-	if (greyed_out_)
-		greyOut();
-}
-
-
 void WorkArea::redraw(bool singlePar)
 {
-	if (!buffer_view_)
-		return;
-
-	if (!buffer_view_->buffer()) {
-		checkAndGreyOut();
+	if (!buffer_view_ || !buffer_view_->buffer()) {
+		greyed_out_ = true;
+		// The argument here are meaningless.
+		expose(1,1,1,1);
 		return;
 	}
 
@@ -254,13 +246,6 @@ void WorkArea::scrollBufferView(int position)
 		lyx_view_.updateLayoutChoice();
 	}
 	toggleCursor();
-}
-
-
-void WorkArea::greyOut()
-{
-	greyed_out_ = true;
-	expose(4, 5, 3, 3);
 }
 
 
