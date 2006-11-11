@@ -322,7 +322,7 @@ public:
 	///
 	double spacing(Buffer const & buffer, Paragraph const & par) const;
 	/// make a suggestion for a label
-	std::string getPossibleLabel(LCursor & cur) const;
+	docstring getPossibleLabel(LCursor & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Buffer const &, Paragraph const & par) const;
 	///

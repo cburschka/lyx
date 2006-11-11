@@ -289,7 +289,7 @@ public:
 	/// display an error message
 	void errorMessage(docstring const & msg) const;
 	///
-	std::string getPossibleLabel();
+	docstring getPossibleLabel();
 
 	/// moves position somehow up or down
 	bool goUpDown(bool up);

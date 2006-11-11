@@ -1105,8 +1105,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCommandParams p("label");
 		// Try to generate a valid label
 		p["name"] = (cmd.argument().empty()) ?
-			// FIXME UNICODE
-			from_utf8(cur.getPossibleLabel()) :
+			cur.getPossibleLabel() :
 			cmd.argument();
 		string const data = InsetCommandMailer::params2string("label", p);
 

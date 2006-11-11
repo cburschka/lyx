@@ -1175,9 +1175,9 @@ string LCursor::currentState()
 }
 
 
-string LCursor::getPossibleLabel()
+docstring LCursor::getPossibleLabel()
 {
-	return inMathed() ? "eq:" : text()->getPossibleLabel(*this);
+	return inMathed() ? from_ascii("eq:") : text()->getPossibleLabel(*this);
 }
 
 

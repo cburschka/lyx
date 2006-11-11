@@ -2355,7 +2355,7 @@ string LyXText::currentState(LCursor & cur)
 }
 
 
-string LyXText::getPossibleLabel(LCursor & cur) const
+docstring LyXText::getPossibleLabel(LCursor & cur) const
 {
 	pit_type pit = cur.pit();
 
@@ -2369,7 +2369,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 		}
 	}
 
-	string name = layout->latexname();
+	docstring name = from_ascii(layout->latexname());
 
 	// for captions, we want the abbreviation of the float type
 	if (layout->labeltype == LABEL_SENSITIVE) {
@@ -2378,26 +2378,25 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 			InsetBase * const in = &cur[i].inset();
 			if (in->lyxCode() == InsetBase::FLOAT_CODE
 			    || in->lyxCode() == InsetBase::WRAP_CODE) {
-				name = to_utf8(in->getInsetName());
+				name = in->getInsetName();
 				break;
 			}
 		}
 	}
 
-	string text = name.substr(0, 3);
+	docstring text = name.substr(0, 3);
 	if (name == "theorem")
-		text = "thm"; // Create a correct prefix for prettyref
+		text = from_ascii("thm"); // Create a correct prefix for prettyref
 
 	text += ':';
 	if (layout->latextype == LATEX_PARAGRAPH || lyxrc.label_init_length < 0)
 		text.erase();
 
-	// FIXME UNICODE
-	string par_text = to_utf8(pars_[pit].asString(cur.buffer(), false));
+	docstring par_text = pars_[pit].asString(cur.buffer(), false);
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;
-		string head;
+		docstring head;
 		par_text = split(par_text, head, ' ');
 		// Is it legal to use spaces in labels ?
 		if (i > 0)
