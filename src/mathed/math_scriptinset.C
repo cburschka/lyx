@@ -418,11 +418,7 @@ bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
 void MathScriptInset::write(WriteStream & os) const
 {
 	if (nuc().size()) {
-		if (nuc().size() == 1 
-		    && ! nuc().begin()->nucleus()->asScriptInset())
-			os << nuc();
-		else
-			os << '{' << nuc() << '}';
+		os << nuc();
 		//if (nuc().back()->takesLimits()) {
 			if (limits_ == -1)
 				os << "\\nolimits ";
