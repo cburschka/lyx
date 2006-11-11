@@ -83,7 +83,6 @@ void ControlGraphics::dispatchParams()
 
 docstring const ControlGraphics::browse(docstring const & in_name) const
 {
-	// FIXME UNICODE
 	docstring const title = _("Select graphics file");
 
 	// Does user clipart directory exist?

@@ -67,7 +67,7 @@ private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	mutable std::string label;
+	mutable docstring label;
 	///
 	mutable int labelwidth_;
 	///

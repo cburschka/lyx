@@ -1639,7 +1639,6 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	} else
 		getLabelList(labels);
 
-	// FIXME UNICODE
 	if (lyx::count(labels.begin(), labels.end(), from) > 1)
 		return;
 

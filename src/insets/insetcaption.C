@@ -114,8 +114,7 @@ void InsetCaption::setLabel(LCursor & cur) const
 			num = convert<docstring>(counter_);
 
 		// Generate the label
-		label = to_utf8(
-			bformat(from_ascii("%1$s %2$s:"), _(s), num));
+		label = bformat(from_ascii("%1$s %2$s:"), _(s), num);
 	}
 }
 
@@ -125,8 +124,7 @@ void InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	LCursor cur = mi.base.bv->cursor();
 	setLabel(cur);
-	docstring dlab(label.begin(), label.end());
-	labelwidth_ = theFontMetrics(mi.base.font).width(dlab);
+	labelwidth_ = theFontMetrics(mi.base.font).width(label);
 	dim.wid = labelwidth_;
 	Dimension textdim;
 	InsetText::metrics(mi, textdim);
@@ -153,11 +151,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// belongs to.
 	LCursor cur = pi.base.bv->cursor();
 	setLabel(cur);
-	docstring dlab(label.begin(), label.end());
-	// FXIME: instead of using the fontLoader metrics, we should make
-	// painter::text() returns the drawn text witdh.
-	labelwidth_ = theFontMetrics(pi.base.font).width(dlab);
-	pi.pain.text(x, y, dlab, pi.base.font);
+	labelwidth_ = pi.pain.text(x, y, label, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);
 }

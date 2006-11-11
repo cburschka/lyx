@@ -545,7 +545,6 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 	runparams.exportdata->addExternalFile("docbook-xml", writefile,
 					      exportfile);
 
-        // FIXME UNICODE
 	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""
 		   << '&' << include_label << ';'

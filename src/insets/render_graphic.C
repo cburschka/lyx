@@ -83,7 +83,7 @@ bool displayGraphic(graphics::Params const & params)
 }
 
 
-string const statusMessage(graphics::Params const & params,
+docstring const statusMessage(graphics::Params const & params,
 			   graphics::ImageStatus status)
 {
 	docstring ret;
@@ -128,8 +128,7 @@ string const statusMessage(graphics::Params const & params,
 		}
 	}
 
-	// FIXME UNICODE
-	return to_utf8(ret);
+	return ret;
 }
 
 
@@ -168,9 +167,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 				.width(justname);
 		}
 
-		// FIXME UNICODE
-		docstring const msg = 
-			from_utf8(statusMessage(params_, loader_.status()));
+		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
@@ -216,20 +213,18 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		string const justname = onlyFilename(params_.filename);
 
 		if (!justname.empty()) {
-			docstring djust(justname.begin(), justname.end());
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
 				   y - theFontMetrics(msgFont).maxAscent() - 4,
-				   djust, msgFont);
+				   from_utf8(justname), msgFont);
 		}
 
 		// Print the message.
-		string const msg = statusMessage(params_, loader_.status());
+		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
-			docstring dmsg(msg.begin(), msg.end());
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
-				     y - 4, dmsg, msgFont);
+				     y - 4, msg, msgFont);
 		}
 	}
 }

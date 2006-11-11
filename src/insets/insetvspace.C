@@ -104,11 +104,11 @@ void InsetVSpace::write(Buffer const &, ostream & os) const
 }
 
 
-string const InsetVSpace::label() const
+docstring const InsetVSpace::label() const
 {
+	static docstring const label = _("Vertical Space");
 	// FIXME UNICODE
-	static string const label = to_utf8(_("Vertical Space"));
-	return label + " (" + space_.asGUIName() + ')';
+	return label + " (" + from_utf8(space_.asGUIName()) + ')';
 }
 
 
@@ -130,9 +130,7 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-	string lab = label();
-	docstring dlab(lab.begin(), lab.end());
-	theFontMetrics(font).rectText(dlab, w, a, d);
+	theFontMetrics(font).rectText(label(), w, a, d);
 
 	height = max(height, a + d);
 
@@ -182,13 +180,12 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	font.setColor(LColor::added_space);
 	font.decSize();
 	font.decSize();
-	string lab = label();
-	docstring dlab(lab.begin(), lab.end());
-	theFontMetrics(font).rectText(dlab, w, a, d);
+	docstring const lab = label();
+	theFontMetrics(font).rectText(lab, w, a, d);
 
 	pi.pain.rectText(x + 2 * arrow_size + 5,
 			 start + (end - start) / 2 + (a - d) / 2,
-			 dlab, font, LColor::none, LColor::none);
+			 lab, font, LColor::none, LColor::none);
 
 	// top arrow
 	pi.pain.line(x, ty1, midx, ty2, LColor::added_space);

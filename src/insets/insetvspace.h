@@ -57,7 +57,7 @@ protected:
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	std::string const label() const;
+	docstring const label() const;
 
 	///
 	VSpace space_;

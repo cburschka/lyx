@@ -157,12 +157,11 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 		int w = 0;
 		int a = 0;
 		int d = 0;
-		string s(params_.type);
+		// FIXME UNICODE
+		docstring s(from_utf8(params_.type));
 		if (undefined())
-			// FIXME UNICODE
-			s = to_utf8(_("Undef: ")) + s;
-		docstring ds(s.begin(), s.end());
-		theFontMetrics(font).rectText(ds, w, a, d);
+			s = _("Undef: ") + s;
+		theFontMetrics(font).rectText(s, w, a, d);
 		dim.wid = max(dim.wid, w);
 	}
 	dim.asc += TEXT_TO_INSET_OFFSET;
@@ -205,14 +204,13 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 		int w = 0;
 		int a = 0;
 		int d = 0;
-		string s(params_.type);
+		// FIXME UNICODE
+		docstring s(from_utf8(params_.type));
 		if (undefined())
-			// FIXME UNICODE
-			s = to_utf8(_("Undef: ")) + s;
-		docstring ds(s.begin(), s.end());
-		theFontMetrics(font).rectText(ds, w, a, d);
+			s = _("Undef: ") + s;
+		theFontMetrics(font).rectText(s, w, a, d);
 		pi.pain.rectText(x + (dim_.wid - w) / 2, y + desc + a,
-			ds, font, LColor::none, LColor::none);
+			s, font, LColor::none, LColor::none);
 	}
 
 	// a visual clue when the cursor is inside the inset

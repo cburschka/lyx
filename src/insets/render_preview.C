@@ -74,7 +74,7 @@ graphics::PreviewLoader & getPreviewLoader(Buffer const & buffer)
 }
 
 
-string const statusMessage(BufferView const * bv, string const & snippet)
+docstring const statusMessage(BufferView const * bv, string const & snippet)
 {
 	BOOST_ASSERT(bv && bv->buffer());
 
@@ -96,8 +96,7 @@ string const statusMessage(BufferView const * bv, string const & snippet)
 		break;
 	}
 
-	// FIXME UNICODE
-	return to_utf8(message);
+	return message;
 }
 
 } // namespace anon
@@ -129,8 +128,7 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		LyXFont font(mi.base.font);
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
-		// FIXME UNICODE
-		docstring const stat = from_utf8(statusMessage(mi.base.bv, snippet_));
+		docstring const stat = statusMessage(mi.base.bv, snippet_);
 		dim.wid = 15 + theFontMetrics(font).width(stat);
 	}
 
@@ -163,8 +161,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
 
-		// FIXME UNICODE
-		docstring const stat = from_utf8(statusMessage(pi.base.bv, snippet_));
+		docstring const stat = statusMessage(pi.base.bv, snippet_);
 		pi.pain.text(x + offset + 6,
 			     y - theFontMetrics(font).maxAscent() - 4,
 			     stat, font);

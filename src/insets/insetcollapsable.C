@@ -126,9 +126,8 @@ void InsetCollapsable::read(Buffer const & buf, LyXLex & lex)
 Dimension InsetCollapsable::dimensionCollapsed() const
 {
 	Dimension dim;
-	docstring dlab(label.begin(), label.end());
 	theFontMetrics(labelfont_).buttonText(
-		dlab, dim.wid, dim.asc, dim.des);
+		label, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
@@ -180,8 +179,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
-                docstring dlab(label.begin(), label.end());
-		pi.pain.buttonText(xx, top + dimc.asc, dlab, labelfont_);
+		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_);
 
 		if (status() == Open) {
 			int textx, texty;
