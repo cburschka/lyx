@@ -148,7 +148,7 @@ void QBibtexDialog::browseBibPressed()
 
 	if (!file.empty()) {
 		// FIXME UNICODE
-		QString const f = toqstr(from_utf8(changeExtension(to_utf8(file), "")));
+		QString const f = toqstr(changeExtension(to_utf8(file), ""));
 		bool present = false;
 
 		for (int i = 0; i < add_->bibLW->count(); ++i) {

@@ -394,7 +394,6 @@ string const cleanupWhitespace(string const & citelist)
 
 int InsetCitation::docbook(Buffer const &, odocstream & os, OutputParams const &) const
 {
-        // FIXME UNICODE
 	os << "<citation>"
            << from_ascii(cleanupWhitespace(getContents()))
            << "</citation>";

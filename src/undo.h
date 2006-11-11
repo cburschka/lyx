@@ -85,7 +85,7 @@ public:
 	/// the contents of the saved Paragraphs (for texted)
 	ParagraphList pars;
 	/// the stringified contents of the saved MathArray (for mathed)
-	std::string array;
+	docstring array;
 	/// Only used in case of full backups
 	BufferParams bparams;
 	/// Only used in case of full backups

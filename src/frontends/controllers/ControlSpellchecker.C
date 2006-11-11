@@ -110,7 +110,6 @@ bool ControlSpellchecker::initialiseParams(std::string const &)
 	bool const success = speller_->error().empty();
 
 	if (!success) {
-		// FIXME UNICODE
 		Alert::error(_("Spellchecker error"),
 			     _("The spellchecker could not be started\n")
 			     + speller_->error());
@@ -288,7 +287,6 @@ void ControlSpellchecker::showSummary()
 	}
 
 	docstring message;
-	// FIXME UNICODE
 	if (count_ != 1)
 		message = bformat(_("%1$d words checked."), count_);
 	else

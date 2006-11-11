@@ -96,7 +96,7 @@ void doRecordUndo(Undo::undo_kind kind,
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
 		// simply use the whole cell
-		undo.array = to_utf8(asString(cell.cell()));
+		undo.array = asString(cell.cell());
 	} else {
 		// some more effort needed here as 'the whole cell' of the
 		// main LyXText _is_ the whole document.
@@ -170,8 +170,7 @@ bool textUndoOrRedo(BufferView & bv,
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
 		//lyxerr << "undo.array=" << undo.array <<endl;
-		// FIXME UNICODE
-		asArray(from_utf8(undo.array), dit.cell());
+		asArray(undo.array, dit.cell());
 	} else {
 		// Some finer machinery is needed here.
 		LyXText * text = dit.text();

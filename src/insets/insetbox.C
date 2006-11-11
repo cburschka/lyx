@@ -149,7 +149,6 @@ void InsetBox::setButtonLabel()
 	BoxType btype = boxtranslator().find(params_.type);
 
 	docstring label;
-	// FIXME UNICODE
 	label += _("Box");
 	label += " (";
 	if (btype == Frameless) {
@@ -158,7 +157,7 @@ void InsetBox::setButtonLabel()
 		else
 			label += _("Minipage");
 	} else
-		// FXIME unicode
+		// FIXME UNICODE
 		label += from_utf8(boxtranslator_loc().find(btype));
 	label += ")";
 
