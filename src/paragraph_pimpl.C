@@ -337,7 +337,7 @@ bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 int Paragraph::Pimpl::eraseChars(pos_type start, pos_type end, bool trackChanges)
 {
 	BOOST_ASSERT(start >= 0 && start <= size());
-	BOOST_ASSERT(end > start && end <= size() + 1);
+	BOOST_ASSERT(end >= start && end <= size() + 1);
 
 	pos_type i = start;
 	for (pos_type count = end - start; count; --count) {
