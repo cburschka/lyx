@@ -14,6 +14,7 @@
 #include "unicode.h"
 
 #include <locale>
+#include <iostream>
 
 #include <boost/assert.hpp>
 
@@ -208,6 +209,17 @@ public:
 };
 
 
+class num_put_failure : public std::bad_cast {
+public:
+	num_put_failure() throw() : std::bad_cast() {}
+	virtual ~num_put_failure() throw() {}
+	virtual const char* what() const throw()
+	{
+		return "The num_put locale facet does only support ASCII characters on this platform.";
+	}
+};
+
+
 /// ctype facet for UCS4 characters. The implementation does only support pure
 /// ASCII, since we do not need anything else for now.
 /// The code is partly stolen from std::ctype<wchar_t> from gcc.
@@ -388,21 +400,59 @@ protected:
 };
 
 
-/// class to add our ascii_ctype_facet to the global locale
+/// Facet for outputting numbers to odocstreams as ascii.
+/// Here we simply need defining the virtual do_put functions.
+class ascii_num_put_facet : public std::num_put<lyx::char_type, std::ostreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > >
+{
+	typedef std::ostreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > iter_type;
+public:
+	ascii_num_put_facet(size_t refs = 0) : std::num_put<lyx::char_type, iter_type>(refs) {}
+
+	/// Facet for converting numbers to ascii strings.
+	class string_num_put_facet : public std::num_put<char, std::basic_string<char>::iterator>
+	{
+	public:
+		string_num_put_facet() : std::num_put<char, std::basic_string<char>::iterator>(1) {}
+	};
+
+protected:
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, long v) const
+	{
+		if (fill >= 0x80)
+			throw num_put_failure();
+
+		std::string s;
+		// 64 is large enough
+		s.resize(64);
+		string_num_put_facet f;
+		std::string::const_iterator cit = s.begin();
+		std::string::const_iterator end =
+			f.put(s.begin(), b, fill, v);
+		for (; cit != end; ++cit, ++oit)
+			*oit = *cit;
+
+		return oit;
+	}
+};
+
+
+/// class to add our facets to the global locale
 class locale_initializer {
 public:
 	locale_initializer()
 	{
 		std::locale global;
-		std::locale const loc(global, new ascii_ctype_facet);
-		std::locale::global(loc);
+		std::locale const loc1(global, new ascii_ctype_facet);
+		std::locale const loc2(loc1, new ascii_num_put_facet);
+		std::locale::global(loc2);
 	}
 };
 
 
 namespace {
 
-/// make sure that our ascii_ctype_facet gets used
+/// make sure that our facets get used
 static locale_initializer initializer;
 
 }
