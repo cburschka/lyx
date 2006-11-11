@@ -57,6 +57,17 @@ TABLE OF CONTENTS
   self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
   Up/Down? The arrangement of the buttons may also give some hint to the user.
 
+- The correct list is not selected when right-clicking on a LOF or
+  LOT inset.
+
+- When selecting a type which *is* already selected, the content in the 
+  browser window vanishes
+
+- The items in the treeview are editable
+
+- When content (sections/captions) is changed, the toc/lof/lot is not properly 
+  updated.
+
 
 DIALOGS
 
