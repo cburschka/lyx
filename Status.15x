@@ -74,6 +74,11 @@ DIALOGS
 * when opening an already opened document (or a document with newer backup),
   the mouse pointer turns into a clock, although it waits for confirmation
 
+* broken signal/slot connection:
+  Object::connect: No such signal LengthCombo::selectionChanged(LyXLength::UNIT)
+  Object::connect:  (sender name:   'unitCO')
+  Object::connect:  (receiver name: 'QVSpaceUi')
+
 
 MATH CONTROL PANEL
 
