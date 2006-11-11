@@ -24,6 +24,14 @@ PENDING FEATURES:
 BUGS:
 -----
 
+FILE
+
+* When I "Save as..." in /tmp, I get a Backup error popup about non writable 
+  /tmp, which is obviously not true.  The file is there, and if I try to Save
+  as again, I get the overwrite popup warning twice: once in English, once 
+  in French. (J. P. Chretien)
+
+
 SPELL CHECKING (Joost 4/11/06)
 
 * Spell checking cannot be invoked a second time.
@@ -51,6 +59,9 @@ TABLE OF CONTENTS
 
 
 DIALOGS
+
+* when opening an already opened document (or a document with newer backup),
+  the mouse pointer turns into a clock, although it waits for confirmation
 
 
 MATH CONTROL PANEL
@@ -130,6 +141,12 @@ EDITING
 MENUS
 
 * Special handling of [[...]] in text messages is disabled in messages.C
+
+
+LAYOUT
+
+* environments when using czech translation doesnt work: e.g.
+  itemize("Polozka") -> ERROR (layoutSelected): layout not found! (P. Sanda)
 
 
 PAINTING & PERFORMANCE
