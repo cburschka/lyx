@@ -165,8 +165,8 @@ public:
 		   bool ignore_system_lyxrc) const;
 	///
 	void print() const;
-	///
-	static std::string const getDescription(LyXRCTags);
+	// FIXME unused (was used for xforms. Do we still need this?)
+	//static docstring const getDescription(LyXRCTags);
 	///
 	std::string bind_file;
 	///

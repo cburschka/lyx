@@ -2127,6 +2127,7 @@ void LyXRC::set_font_norm_type()
 }
 
 
+#if 0
 string const LyXRC::getDescription(LyXRCTags tag)
 {
 	docstring str;
@@ -2519,8 +2520,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 	}
 
-				   return to_utf8(str);
+	return str;
 }
+#endif
+
 
 // The global instance
 LyXRC lyxrc;
