@@ -82,8 +82,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-07 23:31+0100\n"
-"PO-Revision-Date: 2006-11-01 11:21+0200\n"
+"POT-Creation-Date: 2006-11-08 17:07+0100\n"
+"PO-Revision-Date: 2006-11-08 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -270,7 +270,7 @@ msgstr "Formate"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
-msgstr "&Standard-Platzierung verwenden"
+msgstr "Standard-&Platzierung verwenden"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:35
 msgid "Advanced Placement Options"
@@ -285,17 +285,16 @@ msgid "&Ignore LaTeX rules"
 msgstr "&Ignoriere LaTeX-Regeln"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:61
-#, fuzzy
 msgid "Here de&finitely"
-msgstr "Hier, auf jeden Fall"
+msgstr "&Hier, auf jeden Fall"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:68
 msgid "&Here if possible"
-msgstr "&Hier, wenn möglich"
+msgstr "Hier, wenn &möglich"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:75
 msgid "&Page of floats"
-msgstr "&Seite mit Gleitobjekten"
+msgstr "Seite mit &Gleitobjekten"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:82
 msgid "&Bottom of page"
@@ -712,14 +711,12 @@ msgid "Supported box types"
 msgstr "Unterstützte Box-Arten"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:66
-#, fuzzy
 msgid "Inner Bo&x:"
 msgstr "&Innere Box:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:79
-#, fuzzy
 msgid "&Decoration:"
-msgstr "Widmung:"
+msgstr "&Verzierung:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
 msgid "Height value"
@@ -764,9 +761,8 @@ msgid "Stretch"
 msgstr "Dehnen"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:190
-#, fuzzy
 msgid "Horizontal"
-msgstr "&Horizontal:"
+msgstr "Horizontal"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
 msgid "Vertical alignment of the box (with regard to baseline)"
@@ -791,23 +787,20 @@ msgid "Bottom"
 msgstr "Unten"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:222
-#, fuzzy
 msgid "&Box:"
-msgstr "Box"
+msgstr "Bo&x:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:232
-#, fuzzy
 msgid "Co&ntent:"
-msgstr "&Inhalt:"
+msgstr "I&nhalt:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
 msgid "Vertical alignment of the content inside the box"
 msgstr "Vertikale Ausrichtung des Inhalts innerhalb der Box"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:272
-#, fuzzy
 msgid "Vertical"
-msgstr "&Vertikal:"
+msgstr "Vertikal"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
@@ -955,14 +948,12 @@ msgid "Close"
 msgstr "Schließen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:47
-#, fuzzy
 msgid "&Available Citations:"
-msgstr "&Verfügbare Zweige:"
+msgstr "&Verfügbare Zitate:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:70
-#, fuzzy
 msgid "&Selected Citations:"
-msgstr "&Auswahl:"
+msgstr "&Ausgewählte Zitate:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:88
 msgid "Move the selected citation up"
@@ -970,7 +961,7 @@ msgstr "Ausgewähltes Zitat nach vorne verschieben"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
 msgid "&Up"
-msgstr "&Kap. auf"
+msgstr "A&uf"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
 msgid "Move the selected citation down"
@@ -978,7 +969,7 @@ msgstr "Ausgewähltes Zitat nach hinten verschieben"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
 msgid "&Down"
-msgstr "Ka&p. ab"
+msgstr "A&b"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:149
 msgid "D&elete"
@@ -1000,7 +991,7 @@ msgstr "Zu verwendender Natbib-Zitat-Stil"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:218
 msgid "Citation &style:"
-msgstr "Zitat-&Stil:"
+msgstr "Z&itat-Stil:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:228
 msgid "List all authors"
@@ -1008,7 +999,7 @@ msgstr "Alle Autoren im Zitat nennen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:231
 msgid "&Full author list"
-msgstr "&Alle Autoren"
+msgstr "A&lle Autoren"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:238
 msgid "Force upper case in citation"
@@ -1246,7 +1237,7 @@ msgstr "Seitenverhältnis bzgl. größerer Abmessung beibehalten"
 #: src/frontends/qt4/ui/QExternalUi.ui:461
 #: src/frontends/qt4/ui/QGraphicsUi.ui:213
 msgid "&Maintain aspect ratio"
-msgstr "&Seitenverhältnis beibehalten"
+msgstr "Seiten&verhältnis beibehalten"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:497
 #: src/frontends/qt4/ui/QGraphicsUi.ui:133
@@ -1265,7 +1256,7 @@ msgstr "Begrenzungsbox aus der (EPS-)Datei ermitteln"
 #: src/frontends/qt4/ui/QExternalUi.ui:533
 #: src/frontends/qt4/ui/QGraphicsUi.ui:446
 msgid "&Get from File"
-msgstr "&Lese aus Datei"
+msgstr "L&ese aus Datei"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:553
 #: src/frontends/qt4/ui/QGraphicsUi.ui:315
@@ -1275,7 +1266,7 @@ msgstr "Auf die Werte der Begrenzungsbox zuschneiden"
 #: src/frontends/qt4/ui/QExternalUi.ui:556
 #: src/frontends/qt4/ui/QGraphicsUi.ui:318
 msgid "Clip to &bounding box"
-msgstr "Auf Begrenzungsbox &zuschneiden"
+msgstr "Auf &Begrenzungsbox zuschneiden"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:573
 #: src/frontends/qt4/ui/QGraphicsUi.ui:351
@@ -1325,23 +1316,20 @@ msgid "&Edit"
 msgstr "&Bearbeiten"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:101
-#, fuzzy
 msgid "Output Size"
-msgstr "Ausgabe"
+msgstr "Ausgabegröße"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:187
-#, fuzzy
 msgid "&Scale Graphics (%):"
-msgstr "&Grafik"
+msgstr "Grafik &skalieren (%):"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:223
-#, fuzzy
 msgid "Rotate Graphics"
-msgstr "Grafik"
+msgstr "Grafik drehen"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:241
 msgid "A&ngle (Degrees):"
-msgstr ""
+msgstr "&Winkel (Grad):"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:269
 msgid "Or&igin:"
@@ -1353,15 +1341,13 @@ msgstr "&Ausschnitt"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:399
 #: src/frontends/qt4/ui/QGraphicsUi.ui:406
-#, fuzzy
 msgid "y:"
-msgstr "y"
+msgstr "y:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:413
 #: src/frontends/qt4/ui/QGraphicsUi.ui:420
-#, fuzzy
 msgid "x:"
-msgstr "x"
+msgstr "x:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:454
 msgid "E&xtra options"
@@ -1393,9 +1379,8 @@ msgid "&Draft mode"
 msgstr "&Entwurfsmodus"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:514
-#, fuzzy
 msgid "Subfigure"
-msgstr "Te&ilabbildung"
+msgstr "Teilabbildung"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:535
 #: src/frontends/qt4/ui/QGraphicsUi.ui:556
@@ -1407,9 +1392,8 @@ msgid "Ca&ption:"
 msgstr "&Legende:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:566
-#, fuzzy
 msgid "Show in LyX"
-msgstr "In LyX &anzeigen"
+msgstr "In LyX anzeigen"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:627
 #, fuzzy
@@ -1552,7 +1536,7 @@ msgstr "Punkte"
 
 #: src/frontends/qt4/ui/QMathUi.ui:132
 msgid "Frame decorations"
-msgstr "Rahmen-Dekorationen"
+msgstr "Rahmen-Verzierungen"
 
 #: src/frontends/qt4/ui/QMathUi.ui:137
 msgid "Miscellaneous"
@@ -1681,7 +1665,7 @@ msgid "&Shaded"
 msgstr "&Speichern"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2345
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2328
 msgid "Single"
 msgstr "Einfach"
 
@@ -1690,7 +1674,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2351
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2334
 msgid "Double"
 msgstr "Doppelt"
 
@@ -7992,7 +7976,6 @@ msgid "New from Template...|m"
 msgstr "Neu von Vorlage...|V"
 
 #: lib/ui/stdmenus.ui:38
-#, fuzzy
 msgid "Open Recent|t"
 msgstr "Zuletzt geöffnet|Z"
 
@@ -8243,39 +8226,32 @@ msgid "Text Normal Font|T"
 msgstr "Text normale Schrift"
 
 #: lib/ui/stdmenus.ui:235
-#, fuzzy
 msgid "Octave|O"
-msgstr "Octave"
+msgstr "Octave|O"
 
 #: lib/ui/stdmenus.ui:236
-#, fuzzy
 msgid "Maxima|M"
-msgstr "Maxima"
+msgstr "Maxima|M"
 
 #: lib/ui/stdmenus.ui:237
-#, fuzzy
 msgid "Mathematica|a"
-msgstr "Mathematica"
+msgstr "Mathematica|a"
 
 #: lib/ui/stdmenus.ui:239
-#, fuzzy
 msgid "Maple, simplify|s"
-msgstr "Maple, simplify"
+msgstr "Maple, simplify|s"
 
 #: lib/ui/stdmenus.ui:240
-#, fuzzy
 msgid "Maple, factor|f"
-msgstr "Maple, factor"
+msgstr "Maple, factor|f"
 
 #: lib/ui/stdmenus.ui:241
-#, fuzzy
 msgid "Maple, evalm|e"
-msgstr "Maple, evalm"
+msgstr "Maple, evalm|e"
 
 #: lib/ui/stdmenus.ui:242
-#, fuzzy
 msgid "Maple, evalf|v"
-msgstr "Maple, evalf"
+msgstr "Maple, evalf|v"
 
 #: lib/ui/stdmenus.ui:261
 msgid "Open All Insets|O"
@@ -8286,17 +8262,14 @@ msgid "Close All Insets|C"
 msgstr "Alle Einfügungen schließen|s"
 
 #: lib/ui/stdmenus.ui:264
-#, fuzzy
 msgid "View Source|S"
 msgstr "Quelle ansehen|Q"
 
 #: lib/ui/stdmenus.ui:268
-#, fuzzy
 msgid "Toolbars|b"
-msgstr "Werkzeugleisten"
+msgstr "Werkzeugleisten|W"
 
 #: lib/ui/stdmenus.ui:288
-#, fuzzy
 msgid "Special Character|p"
 msgstr "Sonderzeichen|S"
 
@@ -8325,7 +8298,6 @@ msgid "Box"
 msgstr "Box"
 
 #: lib/ui/stdmenus.ui:298
-#, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Querverweis...|Q"
 
@@ -10506,7 +10478,7 @@ msgstr "Dokument-Einstellungen"
 msgid "Length"
 msgstr "Länge"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2348
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2331
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -12900,49 +12872,49 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2314
+#: src/text.C:2297
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2317
+#: src/text.C:2300
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2329
+#: src/text.C:2312
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2336
+#: src/text.C:2319
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2342
+#: src/text.C:2325
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2354
+#: src/text.C:2337
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2363
+#: src/text.C:2346
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2364
+#: src/text.C:2347
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2365
+#: src/text.C:2348
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2366
+#: src/text.C:2349
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2367
+#: src/text.C:2350
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
