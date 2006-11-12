@@ -177,7 +177,9 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	// Add contribution of initial rows of outermost paragraph
 	CursorSlice const & sl = dit[0];
 	Paragraph const & par = sl.text()->getPar(sl.pit());
-	// FIXME: I wonder if a case exists where this could happen:
+	if (par.rows().empty())
+		// FIXME: The special case below happens for empty paragraph creation
+		const_cast<LyXText *>(sl.text())->redoParagraph(const_cast<BufferView &>(bv), sl.pit());
 	BOOST_ASSERT(!par.rows().empty());
 	y -= par.rows()[0].ascent();
 #if 1

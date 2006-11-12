@@ -986,7 +986,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 		return 0;
 	}
 
-	InsetBase * insetBefore = pars_[pit].getInset(pos - 1);
+	InsetBase * insetBefore = pos? pars_[pit].getInset(pos - 1): 0;
 	//InsetBase * insetBehind = pars_[pit].getInset(pos);
 
 	// This should be just before or just behind the
