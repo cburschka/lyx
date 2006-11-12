@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-11 15:51+0100\n"
+"POT-Creation-Date: 2006-11-12 12:58+0100\n"
 "PO-Revision-Date: 2006-11-05 18:50+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -82,7 +82,7 @@ msgid "Remove the selected branch"
 msgstr "Kiválasztott változat eltávolítása"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:205
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:202
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:82
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:52
 msgid "&Remove"
@@ -123,7 +123,7 @@ msgstr "&Méret:"
 #: src/frontends/qt4/ui/QTabularUi.ui:771
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:169
 #: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:520
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
@@ -610,12 +610,12 @@ msgstr "Nincs"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:43 src/frontends/qt4/QBox.C:172
 #: src/frontends/qt4/QBox.C:279 src/frontends/qt4/QBox.C:287
-#: src/insets/insetbox.C:157
+#: src/insets/insetbox.C:156
 msgid "Parbox"
 msgstr "Parbox"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/qt4/QBox.C:280
-#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:159
+#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:158
 msgid "Minipage"
 msgstr "Minilap"
 
@@ -658,7 +658,7 @@ msgstr "Balra"
 #: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QParagraphUi.ui:86
 #: src/frontends/qt4/ui/QTabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 #: src/frontends/qt4/QTabular.C:261
 msgid "Center"
 msgstr "Középre"
@@ -1676,26 +1676,11 @@ msgid "C&onverter:"
 msgstr "Átala&kító:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:150
-msgid ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
-"white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-"weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-"top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-"indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
-"body></html>"
-msgstr ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
-"white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-"weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-"top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-"indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
-"body></html>"
+#, fuzzy
+msgid "&To:[[as in 'From format x to format y']]"
+msgstr "U&tolsó:"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:153
-msgid "&To:"
-msgstr "&Mire:"
-
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:171
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:168
 msgid "&Converters"
 msgstr "Á&talakítók"
 
@@ -7337,7 +7322,7 @@ msgstr "Beszúrt képlet|z"
 msgid "Displayed Formula|D"
 msgstr "Megjelenített képlet"
 
-#: lib/ui/classic.ui:201 lib/ui/stdmenus.ui:248
+#: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
 msgstr "Egyenletrendszer környezet|g"
 
@@ -7517,7 +7502,7 @@ msgstr "Oldaltörés"
 msgid "Display Formula|D"
 msgstr "Képlet megjelenítése|K"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:343
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:248 lib/ui/stdmenus.ui:343
 msgid "Eqnarray Environment|E"
 msgstr "Egyenletrendszer környezet|E"
 
@@ -8168,7 +8153,7 @@ msgstr "Változat|V"
 msgid "File|e"
 msgstr "Fájl|F"
 
-#: lib/ui/stdmenus.ui:295 src/insets/insetbox.C:153
+#: lib/ui/stdmenus.ui:295 src/insets/insetbox.C:152
 msgid "Box"
 msgstr "Doboz"
 
@@ -8770,7 +8755,7 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 #: src/BufferView.C:1336 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
-#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
 #: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1937
 msgid "Documents|#o#O"
@@ -8805,12 +8790,12 @@ msgstr "Dokumentum: %1$s beszúrása megtörtént."
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
 
-#: src/Chktex.C:70
+#: src/Chktex.C:68
 #, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "ChkTeX figyelmeztetési azonosító # %1$d"
 
-#: src/Chktex.C:72
+#: src/Chktex.C:70
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX figyelmeztetési azonosító # "
 
@@ -9436,7 +9421,7 @@ msgstr "A dokumentum-osztály nem érhetõ el"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nem tudja  elkészíteni a kimenetet."
 
-#: src/bufferview_funcs.C:308
+#: src/bufferview_funcs.C:310
 msgid "No more insets"
 msgstr "Nincs több betét"
 
@@ -9731,7 +9716,7 @@ msgstr " (megváltozott)"
 msgid " (read only)"
 msgstr " (csak olvasható)"
 
-#: src/frontends/WorkArea.C:229
+#: src/frontends/WorkArea.C:221
 msgid "Formatting document..."
 msgstr "Dokumentum formázása ..."
 
@@ -9871,55 +9856,55 @@ msgid "Select external file"
 msgstr "Külsõ fájl kiválasztása"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:170
 msgid "Top left"
 msgstr "Bal felsõ sarok"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:170
 msgid "Bottom left"
 msgstr "Bal alsó sarok"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:170
 msgid "Baseline left"
 msgstr "Alapvonal bal"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Top center"
 msgstr "Felsõ közép"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Bottom center"
 msgstr "Alsó közép"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Baseline center"
 msgstr "Alapvonal közép"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Top right"
 msgstr "Jobb felsõ sarok"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Bottom right"
 msgstr "Jobb alsó sarok"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Baseline right"
 msgstr "Alapvonal jobb"
 
-#: src/frontends/controllers/ControlGraphics.C:87
+#: src/frontends/controllers/ControlGraphics.C:86
 msgid "Select graphics file"
 msgstr "Kép fájl kiválasztása"
 
-#: src/frontends/controllers/ControlGraphics.C:94
+#: src/frontends/controllers/ControlGraphics.C:93
 msgid "Clipart|#C#c"
 msgstr "Clipart|#C#c"
 
@@ -10003,15 +9988,15 @@ msgstr "Fájlba nyomtatás"
 msgid "PostScript files (*.ps)"
 msgstr "PostScript fájlok (*.ps)"
 
-#: src/frontends/controllers/ControlSpellchecker.C:114
+#: src/frontends/controllers/ControlSpellchecker.C:113
 msgid "Spellchecker error"
 msgstr "Helyesírás-ellenõrzõ hiba"
 
-#: src/frontends/controllers/ControlSpellchecker.C:115
+#: src/frontends/controllers/ControlSpellchecker.C:114
 msgid "The spellchecker could not be started\n"
 msgstr "A helyesírás-ellenõrzõ nem indítható el\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:271
+#: src/frontends/controllers/ControlSpellchecker.C:270
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -10019,24 +10004,24 @@ msgstr ""
 "A helyesírás-ellenõrzõ váratlanul leállt.\n"
 "Lehet, hogy ki lett lõve!"
 
-#: src/frontends/controllers/ControlSpellchecker.C:274
+#: src/frontends/controllers/ControlSpellchecker.C:273
 msgid "The spellchecker has failed.\n"
 msgstr "A helyesírás-ellenõrzõ nem mûködik.\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:278
+#: src/frontends/controllers/ControlSpellchecker.C:277
 msgid "The spellchecker has failed"
 msgstr "A helyesírás-ellenõrzõ nem mûködik"
 
-#: src/frontends/controllers/ControlSpellchecker.C:293
+#: src/frontends/controllers/ControlSpellchecker.C:291
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d szó ellenõrizve."
 
-#: src/frontends/controllers/ControlSpellchecker.C:295
+#: src/frontends/controllers/ControlSpellchecker.C:293
 msgid "One word checked."
 msgstr "Egy szó ellenõrizve."
 
-#: src/frontends/controllers/ControlSpellchecker.C:298
+#: src/frontends/controllers/ControlSpellchecker.C:296
 msgid "Spelling check completed"
 msgstr "A helyesírás-ellenõrzés kész"
 
@@ -10914,7 +10899,7 @@ msgid "Branch: "
 msgstr "Változat: "
 
 #: src/insets/insetbranch.C:107 src/insets/insetcharstyle.C:163
-#: src/insets/insetcharstyle.C:211
+#: src/insets/insetcharstyle.C:210
 msgid "Undef: "
 msgstr "Undef: "
 
@@ -11153,7 +11138,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:110
+#: src/insets/insetvspace.C:109
 msgid "Vertical Space"
 msgstr "Függõleges kitöltés"
 
@@ -11817,7 +11802,7 @@ msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
-#: src/lyxrc.C:2136
+#: src/lyxrc.C:2137
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -11825,7 +11810,7 @@ msgstr ""
 "Vegye figyelembe az összetett szavakat, mint pl. \"lemezmeghajtó\" ahelyett, "
 "hogy \"lemez meghajtó\", mint helyes szavak?"
 
-#: src/lyxrc.C:2141
+#: src/lyxrc.C:2142
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
@@ -11833,7 +11818,7 @@ msgstr ""
 "Adjon meg egy alternatív nyelvet! Az alapértelmezett nyelv a dokumentum "
 "nyelve."
 
-#: src/lyxrc.C:2145
+#: src/lyxrc.C:2146
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -11843,7 +11828,7 @@ msgstr ""
 "kimenetûre. Pl. \"groff -t -Tlatin1 $$FName\" ahol $$FName a bemeneti fájl "
 "neve. Ha \"\"-t adja meg, a belsõ rutint fogja használni."
 
-#: src/lyxrc.C:2149
+#: src/lyxrc.C:2150
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
 "plain text)."
@@ -11851,7 +11836,7 @@ msgstr ""
 "Ez a maximális sorhossza az exportált ASCII fájlnak (LaTeX, SGML vagy sima "
 "szöveg)."
 
-#: src/lyxrc.C:2153
+#: src/lyxrc.C:2154
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -11859,7 +11844,7 @@ msgstr ""
 "Törölje, ha nem akarja, hogy az aktuális kijelölés automatikusan cserélõdjön "
 "azzal, amit gépel."
 
-#: src/lyxrc.C:2157
+#: src/lyxrc.C:2158
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -11867,14 +11852,14 @@ msgstr ""
 "Törölje, ha nem akarja az osztálybeállításokat alapállapotba hozni "
 "osztályváltozás után."
 
-#: src/lyxrc.C:2161
+#: src/lyxrc.C:2162
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "A biztonsági mentések között eltelt idõ (másodpercben). 0 esetén nincs "
 "biztonsági mentés."
 
-#: src/lyxrc.C:2168
+#: src/lyxrc.C:2169
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -11882,7 +11867,7 @@ msgstr ""
 "Elérési út biztonsági másolatok tárolásához. Ha nincs semmi megadva, a LyX "
 "az eredeti fájl mellé készít biztonsági mentést."
 
-#: src/lyxrc.C:2172
+#: src/lyxrc.C:2173
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -11890,7 +11875,7 @@ msgstr ""
 "Kérem adja meg a bibtex kapscolóit (lásd. man bibtex) vagy válasszon egy "
 "másik fordítót (pl. mlbibtex vagy bibulus)."
 
-#: src/lyxrc.C:2176
+#: src/lyxrc.C:2177
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -11898,11 +11883,11 @@ msgstr ""
 "Billentyûkiosztás-fájl. Megadhat teljes elérési utat is, vagy a LyX a "
 "globális és helyi bind/ könyvtárban keres."
 
-#: src/lyxrc.C:2180
+#: src/lyxrc.C:2181
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Válassza ki, az utoljára használt fájlok tárolásához használt fájlt."
 
-#: src/lyxrc.C:2184
+#: src/lyxrc.C:2185
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -11910,7 +11895,7 @@ msgstr ""
 "Adja meg, hogyan futtassa a chktex-et. Pl. \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
 "-n25 -n30 -n38\". Nézze meg a ChkTeX dokumentációját."
 
-#: src/lyxrc.C:2194
+#: src/lyxrc.C:2195
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -11918,7 +11903,7 @@ msgstr ""
 "A LyX nem módosítja a kurzor pozícióját a görgetõsáv mozgatásakor. Állítsa "
 "igazra, ha azt szeretné, hogy a kurzor mindig a képernyõn legyen."
 
-#: src/lyxrc.C:2205
+#: src/lyxrc.C:2206
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -11927,15 +11912,15 @@ msgstr ""
 "Elfogadja a szokásos strftime formát; lásd az strftime kézikönyvet a "
 "részletekért. Pl. \"%A, %e. %B %Y\"."
 
-#: src/lyxrc.C:2209
+#: src/lyxrc.C:2210
 msgid "New documents will be assigned this language."
 msgstr "Az új dokumentumokat ezen a nyelven fogja létrehozni."
 
-#: src/lyxrc.C:2213
+#: src/lyxrc.C:2214
 msgid "Specify the default paper size."
 msgstr "Adja meg az alapértelmezett papírméretet!"
 
-#: src/lyxrc.C:2217
+#: src/lyxrc.C:2218
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -11943,11 +11928,11 @@ msgstr ""
 "Ikonizálja a dialógusablakokat, amikor a fõablak is ikonizálva van. (Csak a "
 "változás után mutatott dialógusablakokra van hatása.)"
 
-#: src/lyxrc.C:2221
+#: src/lyxrc.C:2222
 msgid "Select how LyX will display any graphics."
 msgstr "Válassza ki, hogyan kezelje LyX a grafikákat."
 
-#: src/lyxrc.C:2225
+#: src/lyxrc.C:2226
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -11955,13 +11940,13 @@ msgstr ""
 "A dokumentumainak alapértelmezett helye. Üres érték esetén, a LyX indítási "
 "könyvtára."
 
-#: src/lyxrc.C:2230
+#: src/lyxrc.C:2231
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 "Adjon meg további karaktereket (betûk, jelek), amelyek egy szó részei "
 "lehetnek."
 
-#: src/lyxrc.C:2234
+#: src/lyxrc.C:2235
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -11969,7 +11954,7 @@ msgstr ""
 "A betûkészlet kódolása, amit a LaTeX2e csomaghoz használ. A T1 kódolás "
 "használata javasolt nem angol jellegû nyelvekhez."
 
-#: src/lyxrc.C:2241
+#: src/lyxrc.C:2242
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -11979,7 +11964,7 @@ msgstr ""
 "egy másik fordítót. Pl., használja a xindy/make-rules-t, a parancssor legyen "
 "\"makeindex.sh -m $$lang\"."
 
-#: src/lyxrc.C:2250
+#: src/lyxrc.C:2251
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -11987,22 +11972,22 @@ msgstr ""
 "Használja a megfelelõ billentyûzetkiosztás beállításához. Szüksége lesz "
 "erre, ha például németül szeretne gépeli egy angol billentyûzeten."
 
-#: src/lyxrc.C:2254
+#: src/lyxrc.C:2255
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Egy új címke inicializációja során használható szavak maximális száma"
 
-#: src/lyxrc.C:2258
+#: src/lyxrc.C:2259
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Válassza ki, ha nyelvváltó parancs szükséges a dokumentum elején."
 
-#: src/lyxrc.C:2262
+#: src/lyxrc.C:2263
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Válassza ki, ha nyelvváltó parancs szükséges a dokumentum végén."
 
-#: src/lyxrc.C:2266
+#: src/lyxrc.C:2267
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -12012,15 +11997,15 @@ msgstr ""
 "\\selectlanguage{$$lang}, ahol a $$lang helyére kerül a második nyelv "
 "nevével."
 
-#: src/lyxrc.C:2270
+#: src/lyxrc.C:2271
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "A dokumentum nyelvére visszaváltó LaTeX parancs."
 
-#: src/lyxrc.C:2274
+#: src/lyxrc.C:2275
 msgid "The LaTeX command for local changing of the language."
 msgstr "A helyi nyelvváltó LaTeX parancs."
 
-#: src/lyxrc.C:2278
+#: src/lyxrc.C:2279
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -12028,7 +12013,7 @@ msgstr ""
 "Törölje, ha nem akarja a nyelv(ek)et a \\documentclass paramétereként "
 "használni."
 
-#: src/lyxrc.C:2282
+#: src/lyxrc.C:2283
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -12036,7 +12021,7 @@ msgstr ""
 "A nyelvi csomagok betöltéséhez használt LaTeX parancs. Pl. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2286
+#: src/lyxrc.C:2287
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -12044,22 +12029,22 @@ msgstr ""
 "Törölje, ha nem akarja használni a babel-t, amikor a dokumentum nyelve az "
 "alapértelmezett nyelv."
 
-#: src/lyxrc.C:2290
+#: src/lyxrc.C:2291
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Törölje, amennyiben nem szeretné ha a LyX a mentett pozícióba állítsa a "
 "kurzort."
 
-#: src/lyxrc.C:2294
+#: src/lyxrc.C:2295
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
 "Törölje, ha nem akarja betölteni a lyx elõzõ kilépéskori nyitott fájlokat."
 
-#: src/lyxrc.C:2298
+#: src/lyxrc.C:2299
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Törölje, amennyiben nem szeretne biztonsági mentés funkciót használni."
 
-#: src/lyxrc.C:2302
+#: src/lyxrc.C:2303
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -12067,14 +12052,14 @@ msgstr ""
 "Válassza ki a dokumentumétól eltérõ nyelvi környezetek szavainak "
 "kiemeléséhez."
 
-#: src/lyxrc.C:2306
+#: src/lyxrc.C:2307
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Az utoljára használt fájlok max. száma. Legfeljebb %1$d jelenhet meg a fájl "
 "menüben."
 
-#: src/lyxrc.C:2311
+#: src/lyxrc.C:2312
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -12082,44 +12067,44 @@ msgstr ""
 "Adja meg azokat a könyvtárakat, amiket a PATH környezeti változóba kell "
 "rakni. Használja rendszerének formátumát."
 
-#: src/lyxrc.C:2318
+#: src/lyxrc.C:2319
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Adjon meg egy alternatív személyes szótárfájlt. Pl. \"ispell_magyar\"."
 
-#: src/lyxrc.C:2322
+#: src/lyxrc.C:2323
 msgid "The bold font in the dialogs."
 msgstr "Félkövér betûk a párbeszédablakokban."
 
-#: src/lyxrc.C:2326
+#: src/lyxrc.C:2327
 msgid "The encoding for the menu/popups fonts."
 msgstr "A menük és felbukkanó ablakok betûkészletének kódolása."
 
-#: src/lyxrc.C:2330
+#: src/lyxrc.C:2331
 msgid "The normal font in the dialogs."
 msgstr "Normál betû a párbeszédablakokban."
 
-#: src/lyxrc.C:2334
+#: src/lyxrc.C:2335
 msgid "Shows a typeset preview of things such as math"
 msgstr "Szedés elõnézetének megjelenítése, mint képlet esetén."
 
-#: src/lyxrc.C:2338
+#: src/lyxrc.C:2339
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "A képletek elõnézetének \"(#)\" címkéje lesz, számozás helyett"
 
-#: src/lyxrc.C:2342
+#: src/lyxrc.C:2343
 msgid "Scale the preview size to suit."
 msgstr "Állítsa be az elõnézet méretarányát megfelelõen."
 
-#: src/lyxrc.C:2346
+#: src/lyxrc.C:2347
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Kapcsoló, a példányok leválogatásához."
 
-#: src/lyxrc.C:2350
+#: src/lyxrc.C:2351
 msgid "The option for specifying the number of copies to print."
 msgstr "Kapcsoló, a nyomtatandó példányszám megadásához."
 
-#: src/lyxrc.C:2354
+#: src/lyxrc.C:2355
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -12127,11 +12112,11 @@ msgstr ""
 "Az alapértelmezett nyomtató. Ha nincs ilyen megadva, a LyX a PRINTER "
 "környezeti változót használja."
 
-#: src/lyxrc.C:2358
+#: src/lyxrc.C:2359
 msgid "The option to print only even pages."
 msgstr "Kapcsoló, páros oldalak nyomtatásához."
 
-#: src/lyxrc.C:2362
+#: src/lyxrc.C:2363
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -12139,35 +12124,35 @@ msgstr ""
 "Extra opciók, amiket meg kell adni a nyomtatóprogramnak, mielõtt megadjuk a "
 "DVI fájl nevét, amibe nyomtatunk."
 
-#: src/lyxrc.C:2366
+#: src/lyxrc.C:2367
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "A fájlba nyomtatáshoz a fájl kiterjesztése. Rendszerint \".ps\"."
 
-#: src/lyxrc.C:2370
+#: src/lyxrc.C:2371
 msgid "The option to print out in landscape."
 msgstr "Kapcsoló, fekvõ oldal nyomtatásához."
 
-#: src/lyxrc.C:2374
+#: src/lyxrc.C:2375
 msgid "The option to print only odd pages."
 msgstr "Kapcsoló, páratlan oldalak nyomtatásához."
 
-#: src/lyxrc.C:2378
+#: src/lyxrc.C:2379
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "A nyomtatandó oldalak megadása egy vesszõvel tagolt listával."
 
-#: src/lyxrc.C:2382
+#: src/lyxrc.C:2383
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opció, ahol meg tudja adni a nyomtatandó papírméretet."
 
-#: src/lyxrc.C:2386
+#: src/lyxrc.C:2387
 msgid "The option to specify paper type."
 msgstr "Kapcsoló, a papírtípus megadásához."
 
-#: src/lyxrc.C:2390
+#: src/lyxrc.C:2391
 msgid "The option to reverse the order of the pages printed."
 msgstr "Kapcsoló, az oldalak fordított sorrendû nyomtatásához."
 
-#: src/lyxrc.C:2394
+#: src/lyxrc.C:2395
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -12177,7 +12162,7 @@ msgstr ""
 "másik nyomtatóprogramot ezzel a fájllal, a megadott névvel és a beállított "
 "paraméterekkel."
 
-#: src/lyxrc.C:2398
+#: src/lyxrc.C:2399
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -12185,32 +12170,32 @@ msgstr ""
 "Ha megadja a nyomtató nevét az ablakban, a következõ paramétert "
 "hozzácsatolja a nyomtató nevével a nyomtatási parancs után."
 
-#: src/lyxrc.C:2402
+#: src/lyxrc.C:2403
 msgid "Option to pass to the print program to print to a file."
 msgstr "A fájlba nyomtatás kapcsolója."
 
-#: src/lyxrc.C:2406
+#: src/lyxrc.C:2407
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Adott nyomtatón való nyomtatás kapcsolója."
 
-#: src/lyxrc.C:2410
+#: src/lyxrc.C:2411
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr ""
 "Válassza, hogy megadhassa a nyomtatási parancsban használandó nyomtató nevét."
 
-#: src/lyxrc.C:2414
+#: src/lyxrc.C:2415
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "A kedvenc nyomtatóprogramja, pl. \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:2418
+#: src/lyxrc.C:2419
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Válassza ki a jobbról-balra író nyelvek támogatásához (pl. héber, arab)."
 
-#: src/lyxrc.C:2422
+#: src/lyxrc.C:2423
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -12218,15 +12203,15 @@ msgstr ""
 "A monitor felbontását (DPI = 2,54 cm-re esõ pontok száma) a LyX "
 "automatikusan felismeri. Hibás esetben itt felülírhatja ezt."
 
-#: src/lyxrc.C:2426
+#: src/lyxrc.C:2427
 msgid "The encoding for the screen fonts."
 msgstr "A képernyõ betûkészlet kódolása."
 
-#: src/lyxrc.C:2432
+#: src/lyxrc.C:2433
 msgid "The screen fonts used to display the text while editing."
 msgstr "Szerkesztés közben a képernyõn megjelenõ betûkészlet."
 
-#: src/lyxrc.C:2441
+#: src/lyxrc.C:2442
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -12237,12 +12222,12 @@ msgstr ""
 "Törölve ezt az opciót, a LyX ki fogja választani a legközelebbi bitmap "
 "betûkészletet az átméretezés helyett."
 
-#: src/lyxrc.C:2445
+#: src/lyxrc.C:2446
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "A képernyõn megjelenõ betûkészletek méretarányaihoz használt betûméretek."
 
-#: src/lyxrc.C:2450
+#: src/lyxrc.C:2451
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -12251,7 +12236,7 @@ msgstr ""
 "A képernyõn megjelenõ betûkészletek nagyítása. 100% beállítása esetén "
 "nagyjából ugyanaz a méret jelenik meg a képernyõn, mint papíron."
 
-#: src/lyxrc.C:2455
+#: src/lyxrc.C:2456
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
@@ -12259,11 +12244,11 @@ msgstr ""
 "Adja meg a fõablak méreteit, szél x mag formában (amennyiben nem nulla "
 "értéket ad meg, az elõzõ kilépéskori értékek elfelejtõdnek)"
 
-#: src/lyxrc.C:2459
+#: src/lyxrc.C:2460
 msgid "Allow session manager to save and restore windows position."
 msgstr "A munkamenet-kezelõ menti és visszaállítja az ablak pozíciókat."
 
-#: src/lyxrc.C:2463
+#: src/lyxrc.C:2464
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -12271,15 +12256,15 @@ msgstr ""
 "Ez elindítja a lyxservert. A csõ kap egy további kiterjesztést \".in\" és \"."
 "out\". Csak gyakorlott felhasználóknak."
 
-#: src/lyxrc.C:2470
+#: src/lyxrc.C:2471
 msgid "De-select if you don't want the startup banner."
 msgstr "Törölje, ha nem akarja látni a kezdõképet."
 
-#: src/lyxrc.C:2474
+#: src/lyxrc.C:2475
 msgid "What command runs the spellchecker?"
 msgstr "Melyik parancs indítja a helyesírás-ellenõrzõt?"
 
-#: src/lyxrc.C:2478
+#: src/lyxrc.C:2479
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -12287,7 +12272,7 @@ msgstr ""
 "A LyX által használt ideiglenes fájlok helye. A programból való kilépés után "
 "letörlõdnek."
 
-#: src/lyxrc.C:2482
+#: src/lyxrc.C:2483
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -12295,7 +12280,7 @@ msgstr ""
 "A LyX által felajánlott elérési út sablonválasztáshoz. Az üres érték a LyX "
 "indítási könyvtárát jelenti."
 
-#: src/lyxrc.C:2492
+#: src/lyxrc.C:2493
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -12303,7 +12288,7 @@ msgstr ""
 "Az UI (felhasználói felület) fájl. Megadhat egy abszolút útvonalat, vagy a "
 "LyX a globális és lokális ui/ könyvtáraiban fog keresni."
 
-#: src/lyxrc.C:2505
+#: src/lyxrc.C:2506
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -12313,7 +12298,7 @@ msgstr ""
 "Engedélyezze, amennyiben nem tud helyesírást ellenõrizni bizonyos ékezetes "
 "betûkkel. Ez nem biztos, hogy minden szótárral együttmûködik."
 
-#: src/lyxrc.C:2512
+#: src/lyxrc.C:2513
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Adja meg a papír parancsát a DVI-nézõhöz (hagyja üresen vagy használja a \"-"

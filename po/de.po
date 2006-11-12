@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-12 10:52+0100\n"
+"POT-Creation-Date: 2006-11-12 12:58+0100\n"
 "PO-Revision-Date: 2006-11-08 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -8883,12 +8883,12 @@ msgstr "Dokument %1$s ist eingefügt."
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/Chktex.C:70
+#: src/Chktex.C:68
 #, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "ChkTeX-Warnung Nr. %1$d"
 
-#: src/Chktex.C:72
+#: src/Chktex.C:70
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX-Warnung Nr. "
 
@@ -9509,7 +9509,7 @@ msgstr "Die Dokumentklasse ist nicht verfügbar"
 msgid "LyX will not be able to produce output."
 msgstr "LyX wird keine Ausgabe erzeugen können."
 
-#: src/bufferview_funcs.C:306
+#: src/bufferview_funcs.C:310
 msgid "No more insets"
 msgstr "Keine weiteren Einfügungen"
 
@@ -12907,7 +12907,3 @@ msgstr "Variabel"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "geschützt"
-
-#, fuzzy
-#~ msgid "&To:"
-#~ msgstr "&Oben:"

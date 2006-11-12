@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-11 15:51+0100\n"
+"POT-Creation-Date: 2006-11-12 12:58+0100\n"
 "PO-Revision-Date: 2006-11-02 00:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -79,7 +79,7 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:83
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:205
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:202
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:82
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:52
 msgid "&Remove"
@@ -120,7 +120,7 @@ msgstr "Ve&likost"
 #: src/frontends/qt4/ui/QTabularUi.ui:771
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:169
 #: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:520
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
@@ -610,12 +610,12 @@ msgstr "®ádné"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:43 src/frontends/qt4/QBox.C:172
 #: src/frontends/qt4/QBox.C:279 src/frontends/qt4/QBox.C:287
-#: src/insets/insetbox.C:157
+#: src/insets/insetbox.C:156
 msgid "Parbox"
 msgstr "Parbox"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/qt4/QBox.C:280
-#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:159
+#: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:158
 msgid "Minipage"
 msgstr "Ministránka"
 
@@ -658,7 +658,7 @@ msgstr "Nalevo"
 #: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QParagraphUi.ui:86
 #: src/frontends/qt4/ui/QTabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 #: src/frontends/qt4/QTabular.C:261
 msgid "Center"
 msgstr "Na støed"
@@ -1684,20 +1684,11 @@ msgid "C&onverter:"
 msgstr "K&onvertor:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:150
-msgid ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
-"white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-"weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-"top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-"indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
-"body></html>"
-msgstr ""
+#, fuzzy
+msgid "&To:[[as in 'From format x to format y']]"
+msgstr "&Do:[[jako v 'Od strany x do strany y']]"
 
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:153
-msgid "&To:"
-msgstr "&Do:"
-
-#: src/frontends/qt4/ui/QPrefConvertersUi.ui:171
+#: src/frontends/qt4/ui/QPrefConvertersUi.ui:168
 msgid "&Converters"
 msgstr "&Konvertory"
 
@@ -7327,7 +7318,7 @@ msgstr "Vzorec do øádky (inline)|V"
 msgid "Displayed Formula|D"
 msgstr "Vzorec na celou øádku (display)|c"
 
-#: lib/ui/classic.ui:201 lib/ui/stdmenus.ui:248
+#: lib/ui/classic.ui:201
 msgid "Eqnarray Environment|q"
 msgstr "Eqnarray prostøedí"
 
@@ -7507,7 +7498,7 @@ msgstr "Tvrdý konec stránky|e"
 msgid "Display Formula|D"
 msgstr "Vzorec na celou øádku (display)|c"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:343
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:248 lib/ui/stdmenus.ui:343
 msgid "Eqnarray Environment|E"
 msgstr "Eqnarray prostøedí|E"
 
@@ -8160,7 +8151,7 @@ msgstr "Vìtev|V"
 msgid "File|e"
 msgstr "Soubor|b"
 
-#: lib/ui/stdmenus.ui:295 src/insets/insetbox.C:153
+#: lib/ui/stdmenus.ui:295 src/insets/insetbox.C:152
 msgid "Box"
 msgstr "Rámeèek|R"
 
@@ -8767,7 +8758,7 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 #: src/BufferView.C:1336 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
-#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
 #: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1937
 msgid "Documents|#o#O"
@@ -8802,12 +8793,12 @@ msgstr "Dokument %1$s vlo¾en."
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
 
-#: src/Chktex.C:70
+#: src/Chktex.C:68
 #, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "ChkTeX varování id # %1$d"
 
-#: src/Chktex.C:72
+#: src/Chktex.C:70
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX varování id # "
 
@@ -9428,7 +9419,7 @@ msgstr "Tøída dokumentu není dostupná"
 msgid "LyX will not be able to produce output."
 msgstr "LyX nebude schopen vytvoøit výstup."
 
-#: src/bufferview_funcs.C:308
+#: src/bufferview_funcs.C:310
 msgid "No more insets"
 msgstr "®ádná dal¹í vlo¾ka"
 
@@ -9722,7 +9713,7 @@ msgstr " (zmìnìno)"
 msgid " (read only)"
 msgstr " (jen ke ètení)"
 
-#: src/frontends/WorkArea.C:229
+#: src/frontends/WorkArea.C:221
 msgid "Formatting document..."
 msgstr "Formátování dokumentu..."
 
@@ -9863,55 +9854,55 @@ msgid "Select external file"
 msgstr "Vybrat externí soubor"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:170
 msgid "Top left"
 msgstr "Vlevo nahoøe"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:170
 msgid "Bottom left"
 msgstr "Vlevo dole"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:170
 msgid "Baseline left"
 msgstr "Základní linka vlevo"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Top center"
 msgstr "V støedu nahoøe"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Bottom center"
 msgstr "V støedu dole"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Baseline center"
 msgstr "Základní linka v støedu"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Top right"
 msgstr "Vpravo nahoøe"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Bottom right"
 msgstr "Vpravo dole"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:173
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Baseline right"
 msgstr "Základní linka vpravo"
 
-#: src/frontends/controllers/ControlGraphics.C:87
+#: src/frontends/controllers/ControlGraphics.C:86
 msgid "Select graphics file"
 msgstr "Vybrat soubor s obrázkem"
 
-#: src/frontends/controllers/ControlGraphics.C:94
+#: src/frontends/controllers/ControlGraphics.C:93
 msgid "Clipart|#C#c"
 msgstr "Klipart|#K#k"
 
@@ -9995,15 +9986,15 @@ msgstr "Tisk do souboru"
 msgid "PostScript files (*.ps)"
 msgstr "Soubory PostScript-u (*.ps)"
 
-#: src/frontends/controllers/ControlSpellchecker.C:114
+#: src/frontends/controllers/ControlSpellchecker.C:113
 msgid "Spellchecker error"
 msgstr "Chyba pravopisu"
 
-#: src/frontends/controllers/ControlSpellchecker.C:115
+#: src/frontends/controllers/ControlSpellchecker.C:114
 msgid "The spellchecker could not be started\n"
 msgstr "Pravopisná kontrola nemohla být spu¹tìna\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:271
+#: src/frontends/controllers/ControlSpellchecker.C:270
 msgid ""
 "The spellchecker has died for some reason.\n"
 "Maybe it has been killed."
@@ -10011,24 +10002,24 @@ msgstr ""
 "Kontrola pravopisu selhala.\n"
 "Mo¾ná byla ukonèena pomocí pøíkazu 'kill'."
 
-#: src/frontends/controllers/ControlSpellchecker.C:274
+#: src/frontends/controllers/ControlSpellchecker.C:273
 msgid "The spellchecker has failed.\n"
 msgstr "Kontrola pravopisu selhala.\n"
 
-#: src/frontends/controllers/ControlSpellchecker.C:278
+#: src/frontends/controllers/ControlSpellchecker.C:277
 msgid "The spellchecker has failed"
 msgstr "Kontrola pravopisu selhala"
 
-#: src/frontends/controllers/ControlSpellchecker.C:293
+#: src/frontends/controllers/ControlSpellchecker.C:291
 #, c-format
 msgid "%1$d words checked."
 msgstr "%1$d slov zkontrolováno."
 
-#: src/frontends/controllers/ControlSpellchecker.C:295
+#: src/frontends/controllers/ControlSpellchecker.C:293
 msgid "One word checked."
 msgstr "Jedno slovo zkontrolováno."
 
-#: src/frontends/controllers/ControlSpellchecker.C:298
+#: src/frontends/controllers/ControlSpellchecker.C:296
 msgid "Spelling check completed"
 msgstr "Kontrola pravopisu hotova"
 
@@ -10904,7 +10895,7 @@ msgid "Branch: "
 msgstr "Vìtev: "
 
 #: src/insets/insetbranch.C:107 src/insets/insetcharstyle.C:163
-#: src/insets/insetcharstyle.C:211
+#: src/insets/insetcharstyle.C:210
 msgid "Undef: "
 msgstr "Nedef: "
 
@@ -11144,7 +11135,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:110
+#: src/insets/insetvspace.C:109
 msgid "Vertical Space"
 msgstr "Vertikální mezera"
 
@@ -11808,19 +11799,19 @@ msgstr "Vybrat soubor %1$s k importu"
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/lyxrc.C:2136
+#: src/lyxrc.C:2137
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "Pova¾ovat slo¾eniny typu \"kafemlejnek\" za legální slova ?"
 
-#: src/lyxrc.C:2141
+#: src/lyxrc.C:2142
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Nastavit alternativní jazyk. Standardnì se pou¾ívá jazyk dokumentu."
 
-#: src/lyxrc.C:2145
+#: src/lyxrc.C:2146
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -11831,7 +11822,7 @@ msgstr ""
 "pøedstavuje vstupní soubor. Pokud je nastaveno na \"\" pou¾ije se interní "
 "funkce."
 
-#: src/lyxrc.C:2149
+#: src/lyxrc.C:2150
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
 "plain text)."
@@ -11839,7 +11830,7 @@ msgstr ""
 "Toto je maximální délka øádky exportovaného (textového) souboru (LaTeX, SGML "
 "nebo prostý text)."
 
-#: src/lyxrc.C:2153
+#: src/lyxrc.C:2154
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -11847,7 +11838,7 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automaticky pøepisovat oznaèený text tím, co "
 "zrovna pí¹ete na klávesnici."
 
-#: src/lyxrc.C:2157
+#: src/lyxrc.C:2158
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -11855,14 +11846,14 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automatické standardní nastavení pro novì "
 "zvolenou tøídu."
 
-#: src/lyxrc.C:2161
+#: src/lyxrc.C:2162
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Èasový interval pro automatické ukládání (v sekundách).0 vypne automatické "
 "ukládání."
 
-#: src/lyxrc.C:2168
+#: src/lyxrc.C:2169
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -11870,7 +11861,7 @@ msgstr ""
 "Cesta pro zálo¾ní soubory. V pøípadì prázdného øetìzce LyX ulo¾í zálohy do "
 "stejného adresáøe, ve kterém je originální soubor."
 
-#: src/lyxrc.C:2172
+#: src/lyxrc.C:2173
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -11878,7 +11869,7 @@ msgstr ""
 "Zvolte nastavení pro bibtex (viz man bibtex) nebo zvolte alternativní "
 "pøkladaè (napø. mlbibtex or bibulus)."
 
-#: src/lyxrc.C:2176
+#: src/lyxrc.C:2177
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -11886,11 +11877,11 @@ msgstr ""
 "Soubor klávesových zkratek. Lze nastavit absolutní cestu; jinak bude LyX "
 "hledat v jeho lokálních a globálních adresáøích bind/ ."
 
-#: src/lyxrc.C:2180
+#: src/lyxrc.C:2181
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrolovat existenci naposledy otevøených souborù."
 
-#: src/lyxrc.C:2184
+#: src/lyxrc.C:2185
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -11898,7 +11889,7 @@ msgstr ""
 "Nastavte zpùsob spu¹tìní chktex-u. Napø. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\" Viz dokumentace ChkTeX-u."
 
-#: src/lyxrc.C:2194
+#: src/lyxrc.C:2195
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -11906,7 +11897,7 @@ msgstr ""
 "LyX za normální situace nemìní pozici kurzoru pøi pohybu posuvníkem. "
 "Nastavte true pokud chcete mít kurzor v¾dy na obrazovce."
 
-#: src/lyxrc.C:2205
+#: src/lyxrc.C:2206
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -11915,15 +11906,15 @@ msgstr ""
 "Akceptován standardní strftime formát; detaily viz man strftime. Napø.\"%A, %"
 "e. %B %Y\"."
 
-#: src/lyxrc.C:2209
+#: src/lyxrc.C:2210
 msgid "New documents will be assigned this language."
 msgstr "Nové dokumenty budou mít nastaven tento jazyk."
 
-#: src/lyxrc.C:2213
+#: src/lyxrc.C:2214
 msgid "Specify the default paper size."
 msgstr "Nastavení standardní velikosti papíru."
 
-#: src/lyxrc.C:2217
+#: src/lyxrc.C:2218
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -11931,11 +11922,11 @@ msgstr ""
 "Minimalizuj dialogová okna spoleènì s hlavním oknem LyX-u. (Vztahuje se "
 "pouze na dialogy zobrazené po zmìnì nastavení.)"
 
-#: src/lyxrc.C:2221
+#: src/lyxrc.C:2222
 msgid "Select how LyX will display any graphics."
 msgstr "Nastavení zpùsobu zobrazení obrázkù v LyX-u."
 
-#: src/lyxrc.C:2225
+#: src/lyxrc.C:2226
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -11943,11 +11934,11 @@ msgstr ""
 "Standardní cesta pro va¹e dokumenty. V pøípadì prázdného øetìzce LyX vybere "
 "adresáø, ze kterého byl spou¹tìn."
 
-#: src/lyxrc.C:2230
+#: src/lyxrc.C:2231
 msgid "Specify additional chars that can be part of a word."
 msgstr "Urèení dodateèných znakù, které mohou být souèástí slova."
 
-#: src/lyxrc.C:2234
+#: src/lyxrc.C:2235
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -11955,7 +11946,7 @@ msgstr ""
 "Kódování fontu který je pou¾íván balíèkem fontenc LaTeX2e. T1 je velmi "
 "doporuèen pro neanglické jazyky."
 
-#: src/lyxrc.C:2241
+#: src/lyxrc.C:2242
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -11965,7 +11956,7 @@ msgstr ""
 "kompilátor - napø. za pou¾ití xindy/make-rules by pøíkaz vypadal \"makeindex."
 "sh -m $$lang\"."
 
-#: src/lyxrc.C:2250
+#: src/lyxrc.C:2251
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -11973,11 +11964,11 @@ msgstr ""
 "Pou¾ijte k nastavení souboru mapy kláves pro va¹i klávesnici. To lze napø. "
 "vyu¾ít v pøípadì, ¾e chcete psát dokumnety v èe¹tinì na anglické klávesnici."
 
-#: src/lyxrc.C:2254
+#: src/lyxrc.C:2255
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Maximální poèet slov v poèáteèním øetìzci nové znaèky"
 
-#: src/lyxrc.C:2258
+#: src/lyxrc.C:2259
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
@@ -11985,14 +11976,14 @@ msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na zaèátku "
 "dokumentu."
 
-#: src/lyxrc.C:2262
+#: src/lyxrc.C:2263
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na konci "
 "dokumentu."
 
-#: src/lyxrc.C:2266
+#: src/lyxrc.C:2267
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -12001,15 +11992,15 @@ msgstr ""
 "Pøíkaz LaTeX-u, který pøepne z jazyka dokumentu na jiný jazyk. Napø. "
 "\\selectlanguage{$$lang} kde $$lang je jméno druhého jazyka."
 
-#: src/lyxrc.C:2270
+#: src/lyxrc.C:2271
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Pøíkaz LaTeX-u, který pøepne zpìt na jazyk dokumentu."
 
-#: src/lyxrc.C:2274
+#: src/lyxrc.C:2275
 msgid "The LaTeX command for local changing of the language."
 msgstr "Pøíkaz LaTeX-u pro lokální zmìnu jazyka."
 
-#: src/lyxrc.C:2278
+#: src/lyxrc.C:2279
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -12017,7 +12008,7 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ít jazyk(y) jako¾to parametr pro "
 "\\documentclass."
 
-#: src/lyxrc.C:2282
+#: src/lyxrc.C:2283
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -12025,7 +12016,7 @@ msgstr ""
 "Pøíkaz LaTeX-u pro naètení jazykového balíèku. Napø. \"\\usepackage{babel}\","
 "\"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2286
+#: src/lyxrc.C:2287
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -12033,21 +12024,21 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ívat babel v pøípadì standardního nastavení "
 "jazyka dokumentu."
 
-#: src/lyxrc.C:2290
+#: src/lyxrc.C:2291
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Zru¹te volbu, nechcete-li aby LyX nastavoval kurzor na ulo¾enou pozici."
 
-#: src/lyxrc.C:2294
+#: src/lyxrc.C:2295
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
 "Zru¹te volbu, pokud nechcete naèítat soubory otevøené v poslední relaci."
 
-#: src/lyxrc.C:2298
+#: src/lyxrc.C:2299
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Zru¹te volbu, nechcete-li vytváøet zálo¾ní kopie souborù."
 
-#: src/lyxrc.C:2302
+#: src/lyxrc.C:2303
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -12055,13 +12046,13 @@ msgstr ""
 "Zvolte pro kontrolu zvýraznìní slov napsaných jazykem odli¹ným od "
 "standardního jazyka dokumentu."
 
-#: src/lyxrc.C:2306
+#: src/lyxrc.C:2307
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Maximální poèet souborù v historii. V menu se mù¾e objevit a¾ %1$d souborù."
 
-#: src/lyxrc.C:2311
+#: src/lyxrc.C:2312
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -12069,44 +12060,44 @@ msgstr ""
 "Urèete adresáøe, které by mìly být pøidány do promìnné prostøedí PATH pøed "
 "ostatní adresáøe. Pou¾ijte formát vlastní danému operaènímu systému."
 
-#: src/lyxrc.C:2318
+#: src/lyxrc.C:2319
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Urèete soubor s vlastním slovníkem. Napø. \".ispell_english\"."
 
-#: src/lyxrc.C:2322
+#: src/lyxrc.C:2323
 msgid "The bold font in the dialogs."
 msgstr "Tuèný font v dialogových oknech."
 
-#: src/lyxrc.C:2326
+#: src/lyxrc.C:2327
 msgid "The encoding for the menu/popups fonts."
 msgstr "Kódování fontù v menu a popup oknech."
 
-#: src/lyxrc.C:2330
+#: src/lyxrc.C:2331
 msgid "The normal font in the dialogs."
 msgstr "Normální font v dialogových oknech."
 
-#: src/lyxrc.C:2334
+#: src/lyxrc.C:2335
 msgid "Shows a typeset preview of things such as math"
 msgstr "Zobrazovat náhled na vysázený text typu matematiky apod."
 
-#: src/lyxrc.C:2338
+#: src/lyxrc.C:2339
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Rovnice v náhledu budou oznaèeny pomocí \"(#)\" místo oèíslování."
 
-#: src/lyxrc.C:2342
+#: src/lyxrc.C:2343
 msgid "Scale the preview size to suit."
 msgstr "Nastavte mìøítko pro náhled."
 
-#: src/lyxrc.C:2346
+#: src/lyxrc.C:2347
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Volba urèující, zda-li mají být kopie srovnány za sebou."
 
-#: src/lyxrc.C:2350
+#: src/lyxrc.C:2351
 msgid "The option for specifying the number of copies to print."
 msgstr "Volba urèující poèet kopií pro tisk."
 
-#: src/lyxrc.C:2354
+#: src/lyxrc.C:2355
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -12114,11 +12105,11 @@ msgstr ""
 "Standardní tiskárna pro tisk. Pokud neurèena, LyX pou¾ije promìnnou "
 "prostøedí PRINTER."
 
-#: src/lyxrc.C:2358
+#: src/lyxrc.C:2359
 msgid "The option to print only even pages."
 msgstr "Volba pro tisk pouze sudých stran."
 
-#: src/lyxrc.C:2362
+#: src/lyxrc.C:2363
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -12126,35 +12117,35 @@ msgstr ""
 "Volby navíc, které dostane program pro tisk za ostatními volbami, leè pøed "
 "jménem DVI souboru k tisku."
 
-#: src/lyxrc.C:2366
+#: src/lyxrc.C:2367
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Pøípona výstupního tiskového souboru. Obvykle \".ps\"."
 
-#: src/lyxrc.C:2370
+#: src/lyxrc.C:2371
 msgid "The option to print out in landscape."
 msgstr "Volba pro tisk na ¹íøku"
 
-#: src/lyxrc.C:2374
+#: src/lyxrc.C:2375
 msgid "The option to print only odd pages."
 msgstr "Volba pro tisk pouze lichých stran."
 
-#: src/lyxrc.C:2378
+#: src/lyxrc.C:2379
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Volba urèující èárkami oddìlený seznam stránek k tisku."
 
-#: src/lyxrc.C:2382
+#: src/lyxrc.C:2383
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Volba urèující velikost papíru."
 
-#: src/lyxrc.C:2386
+#: src/lyxrc.C:2387
 msgid "The option to specify paper type."
 msgstr "Volba uèující typ papíru."
 
-#: src/lyxrc.C:2390
+#: src/lyxrc.C:2391
 msgid "The option to reverse the order of the pages printed."
 msgstr "Volba pro tisk stránek v opaèném poøadí"
 
-#: src/lyxrc.C:2394
+#: src/lyxrc.C:2395
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -12164,7 +12155,7 @@ msgstr ""
 "oddìlenì zavolá tiskový \"spool\" program, který dostane jako argumenty "
 "jméno souboru a v¹echny volby."
 
-#: src/lyxrc.C:2398
+#: src/lyxrc.C:2399
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -12172,32 +12163,32 @@ msgstr ""
 "Pokud urèíte jméno tiskárny v dialogovém oknì tisku, bude tento argument "
 "pøedøazen jménu tiskárny za pøíkazem \"spool\"-u."
 
-#: src/lyxrc.C:2402
+#: src/lyxrc.C:2403
 msgid "Option to pass to the print program to print to a file."
 msgstr "Volba pro tiskový program, je¾ nastavuje tisk do souboru."
 
-#: src/lyxrc.C:2406
+#: src/lyxrc.C:2407
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Volba pro tiskový program, je¾ nastavuje urèitou tiskárnu."
 
-#: src/lyxrc.C:2410
+#: src/lyxrc.C:2411
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Zvolte, pokud má LyX pøedávat jméno tiskárny tiskovému programu."
 
-#: src/lyxrc.C:2414
+#: src/lyxrc.C:2415
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Zvolte tiskový program, napø. \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:2418
+#: src/lyxrc.C:2419
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Zapnutí podpory pro jazyky pí¹ící zprava-doleva (napø. hebrej¹tina, "
 "arab¹tina)."
 
-#: src/lyxrc.C:2422
+#: src/lyxrc.C:2423
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -12205,15 +12196,15 @@ msgstr ""
 "DPI (poèet bodù na palec) va¹eho monitoru je automaticky detekováno LyX-em. "
 "Pøi selhání nastavte vlastní hodnotu."
 
-#: src/lyxrc.C:2426
+#: src/lyxrc.C:2427
 msgid "The encoding for the screen fonts."
 msgstr "Kódování fontù na obrazovce."
 
-#: src/lyxrc.C:2432
+#: src/lyxrc.C:2433
 msgid "The screen fonts used to display the text while editing."
 msgstr "Fonty pou¾ívané k zobrazení editovaného textu na obrazovce."
 
-#: src/lyxrc.C:2441
+#: src/lyxrc.C:2442
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -12224,11 +12215,11 @@ msgstr ""
 "je tato volba vypnuta pou¾ije LyX nejbli¾¹í dostupnou velikostbitmapového "
 "fontu."
 
-#: src/lyxrc.C:2445
+#: src/lyxrc.C:2446
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Velikosti fontu pou¾ívané pøi výpoètech zmìny mìøítka na obrazovce."
 
-#: src/lyxrc.C:2450
+#: src/lyxrc.C:2451
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -12237,7 +12228,7 @@ msgstr ""
 "Zvìt¹ení fontù na obrazovce. Nastavení 100% hrubì odpovídá jejich "
 "velikostina papíru."
 
-#: src/lyxrc.C:2455
+#: src/lyxrc.C:2456
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
@@ -12245,11 +12236,11 @@ msgstr ""
 "Nastavte velikost hlavního okna (¹íøka x vý¹ka). Nulové hodnoty "
 "zpùsobípou¾ití hodnot z poslední relace."
 
-#: src/lyxrc.C:2459
+#: src/lyxrc.C:2460
 msgid "Allow session manager to save and restore windows position."
 msgstr "Povolit ukládání a znovu-nastavení pozice okna."
 
-#: src/lyxrc.C:2463
+#: src/lyxrc.C:2464
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -12257,22 +12248,22 @@ msgstr ""
 "Spustit lyxserver. Roury (pipe) dostanou pøíponu \".in\" a \".out\". Jen pro "
 "pokroèilé u¾ivatele."
 
-#: src/lyxrc.C:2470
+#: src/lyxrc.C:2471
 msgid "De-select if you don't want the startup banner."
 msgstr "Zru¹te volbu, pokud nechcete zobrazovat úvodní obrazovku."
 
-#: src/lyxrc.C:2474
+#: src/lyxrc.C:2475
 msgid "What command runs the spellchecker?"
 msgstr "Jakým pøíkazem spustit kontrolu pravopisu ?"
 
-#: src/lyxrc.C:2478
+#: src/lyxrc.C:2479
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 "LyX umístí pomocné adresáøe do této cesty. Pøi ukonèení LyX-u budou smazány."
 
-#: src/lyxrc.C:2482
+#: src/lyxrc.C:2483
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -12280,7 +12271,7 @@ msgstr ""
 "Cesta kterou LyX nabídne pøi výbìru ¹ablony. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
-#: src/lyxrc.C:2492
+#: src/lyxrc.C:2493
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -12288,7 +12279,7 @@ msgstr ""
 "Soubor u¾ivatelského rozhraní (UI). Lze zadat absolutní cestu; jinak bude "
 "LyX hledat v jeho lokálních a globálních adresáøích ui/ ."
 
-#: src/lyxrc.C:2505
+#: src/lyxrc.C:2506
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -12298,7 +12289,7 @@ msgstr ""
 "Zapnìte tuto volbu, pokud nemù¾ete zkontrolovat pravopis pro slova s "
 "diakritikou. Tato volba nemusí fungovat se v¹emi slovníky."
 
-#: src/lyxrc.C:2512
+#: src/lyxrc.C:2513
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Urèete volbu nastavující papír v prohlí¾eèi DVI(nechte prázdné nebo pou¾ijte "
