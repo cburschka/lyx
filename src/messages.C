@@ -170,39 +170,35 @@ public:
 		}
 
 		textdomain(PACKAGE);
-#if 0
-		const char* msg = gettext(m.c_str());
-		string translated(msg ? msg : m);
-		// Some english words have different translations, depending
-		// on context. In these cases the original string is
-		// augmented by context information (e.g.
-		// "To:[[as in 'From page x to page y']]" and
-		// "To:[[as in 'From format x to format y']]".
-		// This means that we need to filter out everything in
-		// double square brackets at the end of the string,
-		// otherwise the user sees bogus messages.
-		// If we are unable to honour the request we just
-		// return what we got in.
-		static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
-		boost::smatch sub;
-		if (regex_match(translated, sub, reg))
-			translated = sub.str(1);
-#else
 		char const * tmp = m.c_str();
 		char const * msg = gettext(tmp);
 		docstring translated;
-		if (!msg) {
-			lyxerr << "Undefined result from gettext" << endl;
-			translated = from_ascii(tmp);
-		} else if (msg == tmp) {
-			//lyxerr << "Same as entered returned" << endl;
-			translated = from_ascii(tmp);
+		if (!msg || msg == tmp) {
+			if (!msg)
+				lyxerr << "Undefined result from gettext" << endl;
+			//else
+			//	lyxerr << "Same as entered returned" << endl;
+			// Some english words have different translations,
+			// depending on context. In these cases the original
+			// string is augmented by context information (e.g.
+			// "To:[[as in 'From page x to page y']]" and
+			// "To:[[as in 'From format x to format y']]".
+			// This means that we need to filter out everything
+			// in double square brackets at the end of the
+			// string, otherwise the user sees bogus messages.
+			// If we are unable to honour the request we just
+			// return what we got in.
+			static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
+			boost::smatch sub;
+			if (regex_match(m, sub, reg))
+				translated = from_ascii(sub.str(1));
+			else
+				translated = from_ascii(tmp);
 		} else {
 			lyxerr[Debug::DEBUG] << "We got a translation" << endl;
 			char_type const * ucs4 = reinterpret_cast<char_type const *>(msg);
 			translated = ucs4;
 		}
-#endif
 #ifdef HAVE_LC_MESSAGES
 		setlocale(LC_MESSAGES, lang.c_str());
 #endif

@@ -156,8 +156,6 @@ EDITING
 
 MENUS
 
-* Special handling of [[...]] in text messages is disabled in messages.C
-
 
 LAYOUT
 
@@ -341,14 +339,17 @@ CREDITS:
   visible toolbar, the modified settings are not considered for session management
   
   REPLACED with a new entry, popup disabled (Peter 2006-11-09)
-  
+
 * Toolbars always show on the top of the screen, even though they are set to
   "bottom" in the ui file (Joost 3/11/06).
-  
+
   FIXED: use the defaul.ui value only when there is no valid position stored 
          (1st start of lyx)  (Peter 7/11/2006)
 
 * Window positions are not remembered correctly. Each time a window is openend
   window again it has moved towards the bottom of the screen. (Joost 3/11/06)
-  
+
   FIXED (Peter 8/11/2006)
+
+* Special handling of [[...]] in text messages is disabled in messages.C
+  FIXED (Georg 2006-11-12)
