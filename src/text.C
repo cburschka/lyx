@@ -1149,9 +1149,10 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 			Change(Change::INSERTED));
 	}
 
-	// FIXME: back spacing have nothing to do with setting a cursor.
+	// FIXME: Breaking a paragraph has nothing to do with setting a cursor.
 	// Because of the mix between the model (the paragraph contents) and the
-	// view (the paragraph breaking in rows, we have to do this here.
+	// view (the paragraph breaking in rows, we have to do this here before
+	// the setCursor() call below.
 	redoParagraph(cur.bv(), cpit);
 	redoParagraph(cur.bv(), cpit + 1);
 
@@ -1249,7 +1250,7 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 
 	par.insertChar(cur.pos(), c, current_font, cur.buffer().params().trackChanges);
 
-	// FIXME: back spacing have nothing to do with setting a cursor.
+	// FIXME: Inserting a character has nothing to do with setting a cursor.
 	// Because of the mix between the model (the paragraph contents) and the
 	// view (the paragraph breaking in rows, we have to do this here.
 	redoParagraph(cur.bv(), cur.pit());
@@ -1775,9 +1776,10 @@ bool LyXText::backspace(LCursor & cur)
 	if (cur.pos() == cur.lastpos())
 		setCurrentFont(cur);
 
-	// FIXME: back spacing have nothing to do with setting a cursor.
-	// Because of the mix between the model (the paragraph contents) and the
-	// view (the paragraph breaking in rows, we have to do this here.
+	// FIXME: Backspacing has nothing to do with setting a cursor.
+	// Because of the mix between the model (the paragraph contents)
+	// and the view (the paragraph breaking in rows, we have to do this
+	// here before the setCursor() call.
 	redoParagraph(cur.bv(), cur.pit());
 	setCursor(cur, cur.pit(), cur.pos(), false, cur.boundary());
 
