@@ -1764,6 +1764,10 @@ bool LyXText::backspace(LCursor & cur)
 	if (cur.pos() == cur.lastpos())
 		setCurrentFont(cur);
 
+	// FIXME: back spacing have nothing to do with setting a cursor.
+	// Because of the mix between the model (the paragraph contents) and the
+	// view (the paragraph breaking in rows, we have to do this here.
+	redoParagraph(cur.bv(), cur.pit());
 	setCursor(cur, cur.pit(), cur.pos(), false, cur.boundary());
 
 	return needsUpdate;
