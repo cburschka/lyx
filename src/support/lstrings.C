@@ -702,21 +702,27 @@ string const rsplit(string const & a, string & piece, char delim)
 }
 
 
-// This function escapes 8-bit characters and other problematic
-// characters that cause problems in latex labels.
 docstring const escape(docstring const & lab)
 {
-	lyx::char_type hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
-			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	char_type hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
+	                           '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 	docstring enc;
 	for (docstring::size_type i = 0; i < lab.length(); ++i) {
-		lyx::char_type c = lab[i];
-		// FIXME We must change the following algorithm for UCS4
-		// chars, but that will be a file format change.
+		char_type c = lab[i];
 		if (c >= 128 || c == '=' || c == '%') {
+			// Although char_type is a 32 bit type we know that
+			// UCS4 occupies only 21 bits, so we don't need to
+			// encode bigger values. Test for 2^24 because we
+			// can encode that with the 6 hex digits that are
+			// needed for 21 bits anyway.
+			BOOST_ASSERT(c < (1 << 24));
 			enc += '=';
-			enc += hexdigit[c>>4];
-			enc += hexdigit[c & 15];
+			enc += hexdigit[(c>>20) & 15];
+			enc += hexdigit[(c>>16) & 15];
+			enc += hexdigit[(c>>12) & 15];
+			enc += hexdigit[(c>> 8) & 15];
+			enc += hexdigit[(c>> 4) & 15];
+			enc += hexdigit[ c      & 15];
 		} else {
 			enc += c;
 		}

@@ -202,7 +202,7 @@ def revert_space_names(document):
 
 
 def lyx_support_escape(lab):
-    " Equivalent to lyx::support::escape()"
+    " Equivalent to pre-unicode lyx::support::escape()"
     hexdigit = ['0', '1', '2', '3', '4', '5', '6', '7',
                 '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
     enc = ""

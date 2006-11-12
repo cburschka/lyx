@@ -216,7 +216,8 @@ std::string const split(std::string const & a, char delim);
 /// Same as split but uses the last delim.
 std::string const rsplit(std::string const & a, std::string & piece, char delim);
 
-/// Escapes non ASCII chars
+/// Escapes non ASCII chars and other problematic characters that cause
+/// problems in latex labels.
 docstring const escape(docstring const & lab);
 
 /// gives a vector of stringparts which have the delimiter delim
