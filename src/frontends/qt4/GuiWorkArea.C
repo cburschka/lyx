@@ -134,8 +134,10 @@ public:
 		shape_ = shape;
 	}
 
-	void show(bool set_show = false) { show_ = set_show; }
+	void show(bool set_show = true) { show_ = set_show; }
 	void hide() { show_ = false; }
+
+	QRect const & rect() { return rect_; }
 
 private:
 	///
@@ -222,7 +224,6 @@ void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step
 	h += height() / 4;
 	int scroll_max_ = std::max(0, h - height());
 
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	verticalScrollBar()->setRange(0, scroll_max_);
 	verticalScrollBar()->setSliderPosition(scroll_pos);
 	verticalScrollBar()->setSingleStep(scroll_line_step);
@@ -499,11 +500,12 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 
 void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
-	cursor_->hide();
+	stopBlinkingCursor();
 	screen_ = QPixmap(ev->size().width(), ev->size().height());
 	verticalScrollBar()->setPageStep(viewport()->height());
 	QAbstractScrollArea::resizeEvent(ev);
 	resizeBufferView();
+	startBlinkingCursor();
 }
 
 
@@ -592,14 +594,15 @@ void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
 	cursor_->update(x, y, h, shape);
 	cursor_->show();
+	viewport()->update(cursor_->rect());
 }
 
 
 void GuiWorkArea::removeCursor()
 {
-	if (!qApp->focusWidget())
-		return;
 	cursor_->hide();
+	//if (!qApp->focusWidget())
+		viewport()->update(cursor_->rect());
 }
 
 
