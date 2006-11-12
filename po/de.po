@@ -2260,7 +2260,7 @@ msgstr "Akzeptieren Sie Wörter wie \"Verzeichnisname\""
 
 #: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:156
 msgid "Accept compound &words"
-msgstr "&Zusammengesetzte Wörter erlauben"
+msgstr "&Zusammengesetzte Wörter akzeptieren"
 
 #: src/frontends/qt4/ui/QPrefSpellcheckerUi.ui:163
 msgid "Use input encod&ing"
@@ -7369,7 +7369,7 @@ msgstr "Nummerierung an/aus|N"
 
 #: lib/ui/classic.ui:160 lib/ui/stdmenus.ui:181
 msgid "Toggle Numbering of Line|u"
-msgstr "Zeilennummerierung an/aus|u"
+msgstr "Zeilennummerierung an/aus|Z"
 
 #: lib/ui/classic.ui:162 lib/ui/stdmenus.ui:182
 msgid "Change Limits Type|L"
@@ -7702,7 +7702,7 @@ msgstr "Mathe Serie Fett"
 
 #: lib/ui/classic.ui:290
 msgid "Text Normal Font"
-msgstr "Text normale Schrift"
+msgstr "Text Normale Schrift"
 
 #: lib/ui/classic.ui:292 lib/ui/stdmenus.ui:221
 msgid "Text Roman Family"
@@ -8000,7 +8000,7 @@ msgstr "Vorherige Auswahl einfügen|V"
 
 #: lib/ui/stdmenus.ui:91
 msgid "Paste External Clipboard/Selection"
-msgstr "Externe Ablage/Auswahl einfügen|E"
+msgstr "Externe Ablage/Auswahl einfügen|ü"
 
 #: lib/ui/stdmenus.ui:95
 msgid "Move Paragraph Up|o"
@@ -8020,7 +8020,7 @@ msgstr "Absatz-Einstellungen...|A"
 
 #: lib/ui/stdmenus.ui:102
 msgid "Table|T"
-msgstr "Tabelle|T"
+msgstr "Tabelle|b"
 
 #: lib/ui/stdmenus.ui:104
 msgid "Rows & Columns|C"
@@ -8032,11 +8032,11 @@ msgstr "Listentiefe erhöhen|L"
 
 #: lib/ui/stdmenus.ui:112
 msgid "Decrease List Depth|D"
-msgstr "Listentiefe verringern|v"
+msgstr "Listentiefe verringern|i"
 
 #: lib/ui/stdmenus.ui:113
 msgid "Dissolve Inset|l"
-msgstr ""
+msgstr "Einfügung auflösen|E"
 
 #: lib/ui/stdmenus.ui:114
 msgid "TeX Code Settings...|C"
@@ -8044,11 +8044,11 @@ msgstr "TeX-Code-Einstellungen...|C"
 
 #: lib/ui/stdmenus.ui:116
 msgid "Float Settings...|a"
-msgstr "Gleitobjekt-Einstellungen...|o"
+msgstr "Gleitobjekt-Einstellungen...|G"
 
 #: lib/ui/stdmenus.ui:117
 msgid "Text Wrap Settings...|W"
-msgstr "Einstellungen für umflossenes Gleitobjekt...|u"
+msgstr "Einstellungen für umflossenes Gleitobjekt...|G"
 
 #: lib/ui/stdmenus.ui:118
 msgid "Note Settings...|N"
@@ -8056,15 +8056,15 @@ msgstr "Notiz-Einstellungen...|N"
 
 #: lib/ui/stdmenus.ui:119
 msgid "Branch Settings...|B"
-msgstr "Zweig-Einstellungen...|Z"
+msgstr "Zweig-Einstellungen...|g"
 
 #: lib/ui/stdmenus.ui:120
 msgid "Box Settings...|x"
-msgstr "Box-Einstellungen...|B"
+msgstr "Box-Einstellungen...|x"
 
 #: lib/ui/stdmenus.ui:124
 msgid "Table Settings...|a"
-msgstr "Tabellen-Einstellungen...|l"
+msgstr "Tabellen-Einstellungen...|n"
 
 #: lib/ui/stdmenus.ui:128
 msgid "Clipboard as Lines|C"
@@ -8075,23 +8075,20 @@ msgid "Clipboard as Paragraphs|a"
 msgstr "Zwischenablage als Absätze|w"
 
 #: lib/ui/stdmenus.ui:141
-#, fuzzy
 msgid "Customized...|C"
 msgstr "Benutzerdefiniert...|B"
 
 #: lib/ui/stdmenus.ui:143
-#, fuzzy
 msgid "Capitalize|a"
-msgstr "Katalanisch"
+msgstr "Große Anfangsbuchstaben|A"
 
 #: lib/ui/stdmenus.ui:144
-#, fuzzy
 msgid "Uppercase|U"
-msgstr "Aktualisieren|A"
+msgstr "Großbuchstaben|G"
 
 #: lib/ui/stdmenus.ui:145
 msgid "Lowercase|L"
-msgstr ""
+msgstr "Kleinbuchstaben|K"
 
 #: lib/ui/stdmenus.ui:152
 msgid "Top Line|T"
@@ -8126,33 +8123,28 @@ msgid "Swap Columns|w"
 msgstr "Spalten vertauschen|n"
 
 #: lib/ui/stdmenus.ui:186
-#, fuzzy
 msgid "Text Style|T"
-msgstr "Textstil"
+msgstr "Text-Stil|T"
 
 #: lib/ui/stdmenus.ui:190
 msgid "Split Cell|C"
-msgstr "Zelle aufteilen|Z"
+msgstr "Zelle aufteilen|a"
 
 #: lib/ui/stdmenus.ui:192
-#, fuzzy
 msgid "Add Line Above|A"
-msgstr "Linie oberhalb hinzufügen"
+msgstr "Linie oberhalb hinzufügen|o"
 
 #: lib/ui/stdmenus.ui:193
-#, fuzzy
 msgid "Add Line Below|B"
-msgstr "Linie unterhalb hinzufügen"
+msgstr "Linie unterhalb hinzufügen|u"
 
 #: lib/ui/stdmenus.ui:194
-#, fuzzy
 msgid "Delete Line Above|D"
-msgstr "Linie oberhalb löschen"
+msgstr "Linie oberhalb löschen|b"
 
 #: lib/ui/stdmenus.ui:195
-#, fuzzy
 msgid "Delete Line Below|e"
-msgstr "Linie unterhalb löschen"
+msgstr "Linie unterhalb löschen|ö"
 
 #: lib/ui/stdmenus.ui:197
 msgid "Add Line to Left"
@@ -8180,7 +8172,7 @@ msgstr "Mathe Familie Kalligrafisch|K"
 
 #: lib/ui/stdmenus.ui:213
 msgid "Math Fraktur Family|F"
-msgstr "Mathe Familie Fraktur|a"
+msgstr "Mathe Familie Fraktur|u"
 
 #: lib/ui/stdmenus.ui:214
 msgid "Math Roman Family|R"
@@ -8196,7 +8188,7 @@ msgstr "Mathe Serie Fett|F"
 
 #: lib/ui/stdmenus.ui:219
 msgid "Text Normal Font|T"
-msgstr "Text normale Schrift|T"
+msgstr "Text Normale Schrift|T"
 
 #: lib/ui/stdmenus.ui:235
 msgid "Octave|O"
@@ -8348,7 +8340,7 @@ msgstr "AlignedAt-Umgebung|t"
 
 #: lib/ui/stdmenus.ui:354
 msgid "Gathered Environment|h"
-msgstr "Gather-Umgebung|h"
+msgstr "Gathered-Umgebung|h"
 
 #: lib/ui/stdmenus.ui:357
 msgid "Math Panel|P"
@@ -8415,24 +8407,20 @@ msgid "Reject All Changes|e"
 msgstr "Alle Änderungen ablehnen|h"
 
 #: lib/ui/stdmenus.ui:424
-#, fuzzy
 msgid "Next Change|C"
-msgstr "Nächste Änderung|#N"
+msgstr "Nächste Änderung|Ä"
 
 #: lib/ui/stdmenus.ui:425
-#, fuzzy
 msgid "Next Cross-Reference|R"
-msgstr "Referenz"
+msgstr "Nächster Querverweis|Q"
 
 #: lib/ui/stdmenus.ui:432
-#, fuzzy
 msgid "Save Bookmark|S"
-msgstr "Lesezeichen 1 speichern|s"
+msgstr "Lesezeichen speichern|L"
 
 #: lib/ui/stdmenus.ui:433
-#, fuzzy
 msgid "Clear Bookmarks|C"
-msgstr "Lesezeichen|L"
+msgstr "Lesezeichen löschen|e"
 
 #: lib/ui/stdmenus.ui:444
 msgid "Thesaurus...|T"
@@ -8563,7 +8551,6 @@ msgid "Insert URL"
 msgstr "URL einfügen"
 
 #: lib/ui/stdtoolbars.ui:85
-#, fuzzy
 msgid "Insert TeX code"
 msgstr "TeX-Code einfügen"
 
@@ -8720,56 +8707,46 @@ msgid "minibuffer"
 msgstr "Minipuffer"
 
 #: lib/ui/stdtoolbars.ui:149
-#, fuzzy
 msgid "review"
 msgstr "Vorschau"
 
 # , c-format
 # , c-format
 #: lib/ui/stdtoolbars.ui:150
-#, fuzzy
 msgid "Track changes"
-msgstr "Änderungen verfolgen|v"
+msgstr "Änderungen verfolgen"
 
 #: lib/ui/stdtoolbars.ui:151
-#, fuzzy
 msgid "Show changes in output"
-msgstr "In der Ausgabe anzeigen|I"
+msgstr "Änderungen in der Ausgabe anzeigen"
 
 #: lib/ui/stdtoolbars.ui:153
-#, fuzzy
 msgid "Next change"
-msgstr "&Nächste Änderung"
+msgstr "Nächste Änderung"
 
 #: lib/ui/stdtoolbars.ui:154
-#, fuzzy
 msgid "Accept change"
-msgstr "Änderung akzeptieren|#a"
+msgstr "Änderung akzeptieren"
 
 #: lib/ui/stdtoolbars.ui:155
-#, fuzzy
 msgid "Reject change"
-msgstr "Änderung ablehnen|#a"
+msgstr "Änderung ablehnen"
 
 #: lib/ui/stdtoolbars.ui:157
-#, fuzzy
 msgid "Merge changes"
 msgstr "Änderungen zusammenfassen"
 
 #: lib/ui/stdtoolbars.ui:158
-#, fuzzy
 msgid "Accept all changes"
-msgstr "Alle Änderungen akzeptieren|k"
+msgstr "Alle Änderungen akzeptieren"
 
 #: lib/ui/stdtoolbars.ui:159
-#, fuzzy
 msgid "Reject all changes"
-msgstr "Alle Änderungen ablehnen|h"
+msgstr "Alle Änderungen ablehnen"
 
 #: lib/ui/stdtoolbars.ui:162
-#, fuzzy
 msgid "Next note"
-msgstr "Nächste Notiz|N"
+msgstr "Nächste Notiz"
 
 #: src/BufferView.C:221
 #, c-format
