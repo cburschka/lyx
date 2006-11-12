@@ -643,6 +643,7 @@ void pasteSelection(LCursor & cur, ErrorList & errorList, size_t sel_index)
 	if (!checkPastePossible(sel_index))
 		return;
 
+	recordUndo(cur);
 	pasteParagraphList(cur, theCuts[sel_index].first,
 			   theCuts[sel_index].second, errorList);
 	cur.setSelection();
