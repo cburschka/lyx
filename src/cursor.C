@@ -900,9 +900,6 @@ int LCursor::targetX() const
 
 void LCursor::setTargetX()
 {
-	// For now this is good enough. A better solution would be to
-	// avoid this rebreak by setting cursorX only after drawing
-	bottom().text()->redoParagraph(bv(), bottom().pit());
 	int x;
 	int y;
 	getPos(x, y);
