@@ -116,66 +116,36 @@ mouse_button::state q_motion_state(Qt::MouseButtons state)
 
 namespace frontend {
 
-class CursorWidget : public QWidget {
+class CursorWidget {
 public:
-	CursorWidget(QWidget * parent)
-		: QWidget(parent)
+	CursorWidget() {}
+
+	void draw(QPainter & painter)
 	{
-		resize(CursorWidth, 20);
+		// FIXME: do something depending on the cursor shape.
+		if (show_ && rect_.isValid())
+			painter.fillRect(rect_, color_);
 	}
 
-	void paintEvent(QPaintEvent *)
+	void update(int x, int y, int h, CursorShape shape)
 	{
-		QColor const & col = guiApp->colorCache().get(LColor::cursor);
-
-/*	
-		int cursor_w_;
-		int cursor_h_;
-
-		switch (cursor_shape_) {
-		case BAR_SHAPE:
-			// FIXME the cursor width shouldn't be hard-coded!
-			cursor_w_ = 2;
-			lshape_cursor_ = false;
-			break;
-		case L_SHAPE:
-			cursor_w_ = cursor_h_ / 3;
-			lshape_cursor_ = true;
-			break;
-		case REVERSED_L_SHAPE:
-			cursor_w_ = cursor_h_ / 3;
-			//cursor_x_ -= cursor_w_ - 1;
-			lshape_cursor_ = true;
-			break;
-		}
-*/
-
-		// We cache two pixmaps:
-		// 1 the vertical line of the cursor.
-		// 2 the horizontal line of the L-shaped cursor (if necessary).
-
-		// Draw the new (vertical) cursor.
-		QPainter pain(this);
-		pain.fillRect(rect(), col);
-/*
-		// Draw the new (horizontal) cursor if necessary.
-		if (lshape_cursor_) {
-			hcursor_ = QPixmap(cursor_w_, 1);
-			hcursor_.fill(col);
-			show_hcursor_ = true;
-		}
-*/
+		color_ = guiApp->colorCache().get(LColor::cursor);
+		rect_ = QRect(x, y, CursorWidth, h);
+		shape_ = shape;
 	}
+
+	void show(bool set_show = false) { show_ = set_show; }
+	void hide() { show_ = false; }
+
+private:
 	///
 	CursorShape shape_;
 	///
-	bool show_hcursor_;
+	bool show_;
 	///
-	bool show_vcursor_;
+	QColor color_;
 	///
-	bool lshape_cursor_;
-	///
-	QColor cursor_color_;
+	QRect rect_;
 };
 
 
@@ -190,7 +160,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	: WorkArea(id, lyx_view)
 {
-	cursor_ = new frontend::CursorWidget(this);
+	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -596,6 +566,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	QPainter pain(viewport());
 	pain.drawPixmap(rc, screen_, rc);
+	cursor_->draw(pain);
 }
 
 
@@ -605,12 +576,13 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 
 	if (greyed_out_) {
 		lyxerr << "splash screen requested" << endl;
-		verticalScrollBar()->hide();
 		doGreyOut(pain);
+		verticalScrollBar()->hide();
 		update(0, 0, width(), height());
 		return;
 	}
 
+	verticalScrollBar()->show();
 	paintText(*buffer_view_, pain);
 	update(x, y, w, h);
 }
@@ -618,8 +590,7 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
-	cursor_->setGeometry(x, y, CursorWidth, h);
-	cursor_->shape_ = shape;
+	cursor_->update(x, y, h, shape);
 	cursor_->show();
 }
 
