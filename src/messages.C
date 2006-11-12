@@ -32,6 +32,10 @@ using support::setEnv;
 using std::string;
 using std::endl;
 
+
+static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
+
+
 #ifdef ENABLE_NLS
 
 
@@ -188,7 +192,6 @@ public:
 			// string, otherwise the user sees bogus messages.
 			// If we are unable to honour the request we just
 			// return what we got in.
-			static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
 			boost::smatch sub;
 			if (regex_match(m, sub, reg))
 				translated = from_ascii(sub.str(1));
@@ -221,7 +224,12 @@ public:
 
 	docstring const get(string const & m) const
 	{
-		return from_ascii(m);
+		// See comment above
+		boost::smatch sub;
+		if (regex_match(m, sub, reg))
+			return from_ascii(sub.str(1));
+		else
+			return from_ascii(m);
 	}
 };
 #endif
