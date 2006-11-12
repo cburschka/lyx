@@ -1369,6 +1369,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		ErrorList & el = buffer_->errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");
+		recordUndo(cursor_);
 		cap::pasteParagraphList(cursor_, buf.paragraphs(),
 					     buf.params().textclass, el);
 		res = _("Document %1$s inserted.");

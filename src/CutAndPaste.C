@@ -621,8 +621,6 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 		LyXText * text = cur.text();
 		BOOST_ASSERT(text);
 
-		recordUndo(cur);
-
 		pit_type endpit;
 		PitPosPair ppp;
 
