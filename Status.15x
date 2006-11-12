@@ -57,15 +57,15 @@ TABLE OF CONTENTS
   self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
   Up/Down? The arrangement of the buttons may also give some hint to the user.
 
-- The correct list is not selected when right-clicking on a LOF or
+* The correct list is not selected when right-clicking on a LOF or
   LOT inset.
 
-- When selecting a type which *is* already selected, the content in the 
+* When selecting a type which *is* already selected, the content in the 
   browser window vanishes
 
-- The items in the treeview are editable
+* The items in the treeview are editable
 
-- When content (sections/captions) is changed, the toc/lof/lot is not properly 
+* When content (sections/captions) is changed, the toc/lof/lot is not properly 
   updated.
 
 
@@ -73,11 +73,6 @@ DIALOGS
 
 * when opening an already opened document (or a document with newer backup),
   the mouse pointer turns into a clock, although it waits for confirmation
-
-* broken signal/slot connection:
-  Object::connect: No such signal LengthCombo::selectionChanged(LyXLength::UNIT)
-  Object::connect:  (sender name:   'unitCO')
-  Object::connect:  (receiver name: 'QVSpaceUi')
 
 
 MATH CONTROL PANEL
@@ -353,3 +348,9 @@ CREDITS:
 
 * Special handling of [[...]] in text messages is disabled in messages.C
   FIXED (Georg 2006-11-12)
+
+* broken signal/slot connection:
+  Object::connect: No such signal LengthCombo::selectionChanged(LyXLength::UNIT)
+  Object::connect:  (sender name:   'unitCO')
+  Object::connect:  (receiver name: 'QVSpaceUi')
+  FIXED (JSpitzm 2006-11-12)

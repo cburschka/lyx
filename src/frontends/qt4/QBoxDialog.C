@@ -39,10 +39,10 @@ QBoxDialog::QBoxDialog(QBox * form)
 		form, SLOT(slotClose()));
 
     connect( widthED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( widthUnitsLC, SIGNAL( selectionChanged(LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
+    connect( widthUnitsLC, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
     connect( valignCO, SIGNAL( highlighted(const QString&) ), this, SLOT( change_adaptor() ) );
     connect( heightED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( heightUnitsLC, SIGNAL( selectionChanged(LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
+    connect( heightUnitsLC, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
     connect( restorePB, SIGNAL( clicked() ), this, SLOT( restoreClicked() ) );
     connect( typeCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
     connect( typeCO, SIGNAL( activated(int) ), this, SLOT( typeChanged(int) ) );

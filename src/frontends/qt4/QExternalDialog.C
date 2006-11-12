@@ -65,7 +65,7 @@ QExternalDialog::QExternalDialog(QExternal * form)
 	connect( extraED, SIGNAL( textChanged(const QString&) ), this, SLOT( extraChanged(const QString&) ) );
 	connect( extraFormatCO, SIGNAL( activated(const QString&) ), this, SLOT( formatChanged(const QString&) ) );
 	connect( widthUnitCO, SIGNAL( activated(int) ), this, SLOT( widthUnitChanged() ) );
-	connect( heightUnitCO, SIGNAL( selectionChanged(LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
+	connect( heightUnitCO, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
 	connect( displayCB, SIGNAL( stateChanged(int) ), this, SLOT( change_adaptor() ) );
 	connect( displayscaleED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
 	connect( angleED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
