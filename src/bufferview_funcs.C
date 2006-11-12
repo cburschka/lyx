@@ -177,6 +177,8 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 	// Add contribution of initial rows of outermost paragraph
 	CursorSlice const & sl = dit[0];
 	Paragraph const & par = sl.text()->getPar(sl.pit());
+	// FIXME: I wonder if a case exists where this could happen:
+	BOOST_ASSERT(!par.rows().empty());
 	y -= par.rows()[0].ascent();
 #if 1
 	size_t rend;
