@@ -38,16 +38,16 @@ private:
 		///
 		Error () : error_in_line(0) {}
 		///
-		Error(int line, std::string const & desc, std::string const & text)
+		Error(int line, docstring const & desc, docstring const & text)
 			: error_in_line(line),
 			  error_desc(desc),
 			  error_text(text) {}
 		/// what line in the TeX file the error occured in
 		int error_in_line;
 		/// The kind of error
-		std::string error_desc;
+		docstring error_desc;
 		/// The line/cmd that caused the error.
-		std::string error_text;
+		docstring error_text;
 	};
 public:
 	///
@@ -57,8 +57,8 @@ public:
 	///
 	Errors::const_iterator end() const { return errors.end(); }
 	///
-	void insertError(int line, std::string const & error_desc,
-			 std::string const & error_text);
+	void insertError(int line, docstring const & error_desc,
+			 docstring const & error_text);
 private:
 	///
 	Errors errors;

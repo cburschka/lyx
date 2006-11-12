@@ -233,8 +233,8 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr,
 							  pos_end);
 		} while (found && id_start == id_end && pos_start == pos_end);
 
-		errorList.push_back(ErrorItem(from_utf8(cit->error_desc),
-			from_utf8(cit->error_text), id_start, pos_start, pos_end));
+		errorList.push_back(ErrorItem(cit->error_desc,
+			cit->error_text, id_start, pos_start, pos_end));
 	}
 }
 

@@ -16,13 +16,12 @@
 #include "LaTeX.h" // TeXErrors
 
 #include "support/convert.h"
+#include "support/docstream.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
 #include <boost/format.hpp>
-
-#include <fstream>
 
 
 namespace lyx {
@@ -61,23 +60,25 @@ int Chktex::run(TeXErrors &terr)
 
 int Chktex::scanLogFile(TeXErrors & terr)
 {
-	string token;
 	int retval = 0;
 
 	string const tmp = onlyFilename(changeExtension(file, ".log"));
 
 #if USE_BOOST_FORMAT
-	boost::format msg(to_utf8(_("ChkTeX warning id # %1$d")));
+	boost::basic_format<char_type> msg(_("ChkTeX warning id # %1$d"));
 #else
-	string const msg(to_utf8(_("ChkTeX warning id # ")));
+	docstring const msg(_("ChkTeX warning id # "));
 #endif
-	ifstream ifs(tmp.c_str());
+	docstring token;
+	// FIXME UNICODE
+	// We have no idea what the encoding of the error file is
+	idocfstream ifs(tmp.c_str());
 	while (getline(ifs, token)) {
-		string srcfile;
-		string line;
-		string pos;
-		string warno;
-		string warning;
+		docstring srcfile;
+		docstring line;
+		docstring pos;
+		docstring warno;
+		docstring warning;
 		token = split(token, srcfile, ':');
 		token = split(token, line, ':');
 		token = split(token, pos, ':');

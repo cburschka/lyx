@@ -95,8 +95,8 @@ docstring runMessage(unsigned int count)
  * CLASS TEXERRORS
  */
 
-void TeXErrors::insertError(int line, string const & error_desc,
-			    string const & error_text)
+void TeXErrors::insertError(int line, docstring const & error_desc,
+			    docstring const & error_text)
 {
 	Error newerr(line, error_desc, error_text);
 	errors.push_back(newerr);
@@ -671,7 +671,11 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					last_line = line;
 				}
 				if (line_count <= 5) {
-					terr.insertError(line, desc, errstr);
+					// FIXME UNICODE
+					// We have no idea what the encoding of the log file is
+					// (probably pure ascii, but maybe some localized
+					// latex compilers or packages exist)
+					terr.insertError(line, from_utf8(desc), from_utf8(errstr));
 					++num_errors;
 				}
 			}
