@@ -367,7 +367,7 @@ bool BufferView::update(Update::flags flags)
 
 	// The second drawing step is done in WorkArea::redraw() if needed.
 	bool const need_second_step =
-		(flags & (Update::Force | Update::FitCursor | Update::MultiParSel))
+		(flags & (Update::SinglePar | Update::Force | Update::FitCursor | Update::MultiParSel))
 		&& (fitCursor() || multiParSel());
 
 	return need_second_step;

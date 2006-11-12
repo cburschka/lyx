@@ -120,11 +120,13 @@ BufferView const & WorkArea::bufferView() const
 void WorkArea::stopBlinkingCursor()
 {
 	cursor_timeout_.stop();
+	hideCursor();
 }
 
 
 void WorkArea::startBlinkingCursor()
 {
+	showCursor();
 	cursor_timeout_.restart();
 }
 
@@ -165,20 +167,17 @@ void WorkArea::redraw(bool singlePar)
 void WorkArea::processKeySym(LyXKeySymPtr key,
 							 key_modifier::state state)
 {
-	hideCursor();
+	// In order to avoid bad surprise in the middle of an operation, we better stop
+	// the blinking cursor.
+	stopBlinkingCursor();
 
 	theLyXFunc().setLyXView(&lyx_view_);
 	theLyXFunc().processKeySym(key, state);
 
-	/* This is perhaps a bit of a hack. When we move
-	 * around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress. So
-	 * we reset the toggle timeout and force the visibility
-	 * of the cursor. Note we cannot do this inside
-	 * dispatch() itself, because that's called recursively.
+	/* When we move around, or type, it's nice to be able to see
+	 * the cursor immediately after the keypress.
 	 */
-//	if (buffer_view_->buffer())
-	toggleCursor();
+	startBlinkingCursor();
 }
 
 

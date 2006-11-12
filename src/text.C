@@ -1149,6 +1149,12 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 			Change(Change::INSERTED));
 	}
 
+	// FIXME: back spacing have nothing to do with setting a cursor.
+	// Because of the mix between the model (the paragraph contents) and the
+	// view (the paragraph breaking in rows, we have to do this here.
+	redoParagraph(cur.bv(), cpit);
+	redoParagraph(cur.bv(), cpit + 1);
+
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
 	if (cur.pos() != 0 || isempty)
@@ -1242,6 +1248,11 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 	}
 
 	par.insertChar(cur.pos(), c, current_font, cur.buffer().params().trackChanges);
+
+	// FIXME: back spacing have nothing to do with setting a cursor.
+	// Because of the mix between the model (the paragraph contents) and the
+	// view (the paragraph breaking in rows, we have to do this here.
+	redoParagraph(cur.bv(), cur.pit());
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }

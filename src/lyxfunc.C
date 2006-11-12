@@ -1717,7 +1717,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// in (at least partially) visible top-level paragraphs.
 			bool needSecondUpdate = false;
 			if (updateFlags != Update::None)
-				view()->update(updateFlags);
+				needSecondUpdate = view()->update(updateFlags);
 			else
 				needSecondUpdate = view()->fitCursor();
 
