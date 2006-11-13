@@ -79,6 +79,11 @@ DIALOGS
 * when opening an already opened document (or a document with newer backup),
   the mouse pointer turns into a clock, although it waits for confirmation
 
+* broken signal/slot connection:
+  Object::connect: No such signal QListWidget::selectionChanged()
+  Object::connect:  (sender name:   'databaseLW')
+  Object::connect:  (receiver name: 'QBibtexUi')
+
 
 MATH CONTROL PANEL
 
