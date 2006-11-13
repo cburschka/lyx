@@ -1083,13 +1083,8 @@ void MathHullInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			}
 			break;
 		}
-		MathArray ar;
-		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
-			recordUndo(cur);
-			cur.insert(ar);
-		} else
-			cur.undispatched();
-		break;
+		MathGridInset::doDispatch(cur, cmd);
+		return;
 	}
 
 	case LFUN_MATH_EXTERN:
@@ -1151,15 +1146,12 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSERT_LABEL:
 		status.enabled(type_ != "simple");
 		return true;
-	case LFUN_INSET_INSERT: {
-		// Don't test createMathInset_fromDialogStr(), since
-		// getStatus is not called with a valid reference and the
-		// dialog would not be applyable.
-		string const name = cmd.getArg(0);
-		status.enabled(name == "ref" ||
-		               (name == "label" && type_ != "simple"));
-		break;
-	}
+	case LFUN_INSET_INSERT:
+		if (cmd.getArg(0) == "label") {
+			status.enabled(type_ != "simple");
+			return true;
+		}
+		return MathGridInset::getStatus(cur, cmd, status);
 	case LFUN_TABULAR_FEATURE: {
 		istringstream is(cmd.argument);
 		string s;

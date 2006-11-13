@@ -931,6 +931,16 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_INSET_INSERT: {
+		MathArray ar;
+		if (createMathInset_fromDialogStr(cmd.argument, ar)) {
+			recordUndo(cur);
+			cur.insert(ar);
+		} else
+			cur.undispatched();
+		break;
+	}
+
 	default:
 		MathDimInset::doDispatch(cur, cmd);
 		break;
@@ -1014,6 +1024,15 @@ bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSERT_MATRIX:
 		flag.enabled(currentMode() == MATH_MODE);
 		break;
+
+	case LFUN_INSET_INSERT: {
+		// Don't test createMathInset_fromDialogStr(), since
+		// getStatus is not called with a valid reference and the
+		// dialog would not be applyable.
+		string const name = cmd.getArg(0);
+		flag.enabled(name == "ref");
+		break;
+	}
 
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
