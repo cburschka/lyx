@@ -92,6 +92,10 @@ public:
 	///
 	void addPreview(graphics::PreviewLoader &) const;
 	///
+	void addToToc(TocList &, Buffer const &) const;
+	///
+	void updateLabels(Buffer const & buffer) const;
+	///
 	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 protected:
 	InsetInclude(InsetInclude const &);

@@ -36,6 +36,7 @@ class MetricsInfo;
 class Dimension;
 class PainterInfo;
 class OutputParams;
+class TocList;
 
 
 namespace graphics { class PreviewLoader; }
@@ -381,6 +382,8 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void addPreview(graphics::PreviewLoader &) const {}
+	/// Add an antry to the TocList
+	virtual void addToToc(TocList &, Buffer const &) const {}
 
 public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)

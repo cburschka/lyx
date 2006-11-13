@@ -35,6 +35,7 @@
 #include "lyx_main.h" // for lastfiles
 #include "lyxfunc.h"
 #include "lyxlex.h"
+#include "paragraph.h"
 #include "TocBackend.h"
 #include "ToolbarBackend.h"
 
@@ -633,22 +634,22 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 Menu::size_type const max_number_of_items = 25;
 
 void expandToc2(Menu & tomenu,
-		TocBackend::Toc const & toc_list,
-		TocBackend::Toc::size_type from,
-		TocBackend::Toc::size_type to, int depth)
+		Toc const & toc_list,
+		Toc::size_type from,
+		Toc::size_type to, int depth)
 {
 	int shortcut_count = 0;
 
 	// check whether depth is smaller than the smallest depth in toc.
 	int min_depth = 1000;
-	for (TocBackend::Toc::size_type i = from; i < to; ++i)
+	for (Toc::size_type i = from; i < to; ++i)
 		min_depth = std::min(min_depth, toc_list[i].depth());
 	if (min_depth > depth)
 		depth = min_depth;
 
 
 	if (to - from <= max_number_of_items) {
-		for (TocBackend::Toc::size_type i = from; i < to; ++i) {
+		for (Toc::size_type i = from; i < to; ++i) {
 			docstring label(4 * max(0, toc_list[i].depth() - depth), char_type(' '));
 			label += limit_string_length(toc_list[i].str());
 			if (toc_list[i].depth() == depth
@@ -660,9 +661,9 @@ void expandToc2(Menu & tomenu,
 					    FuncRequest(toc_list[i].action())));
 		}
 	} else {
-		TocBackend::Toc::size_type pos = from;
+		Toc::size_type pos = from;
 		while (pos < to) {
-			TocBackend::Toc::size_type new_pos = pos + 1;
+			Toc::size_type new_pos = pos + 1;
 			while (new_pos < to &&
 			       toc_list[new_pos].depth() > depth)
 				++new_pos;
@@ -704,10 +705,19 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 		return;
 	}
 
+	// Add an entry for the master doc if this is a child doc
+	Buffer const * const master = buf->getMasterBuffer();
+	if (buf != master) {
+		ParIterator const pit = par_iterator_begin(master->inset());
+		string const arg = convert<string>(pit->id());
+		FuncRequest f(LFUN_PARAGRAPH_GOTO, arg);
+		tomenu.add(MenuItem(MenuItem::Command, _("Master Document"), f));
+	}
+
 	FloatList const & floatlist = buf->params().getLyXTextClass().floats();
-	TocBackend::TocList const & toc_list = buf->tocBackend().tocs();
-	TocBackend::TocList::const_iterator cit = toc_list.begin();
-	TocBackend::TocList::const_iterator end = toc_list.end();
+	TocList const & toc_list = buf->tocBackend().tocs();
+	TocList::const_iterator cit = toc_list.begin();
+	TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
 		// Handle this later
 		if (cit->first == "tableofcontents")
@@ -715,8 +725,8 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 
 		// All the rest is for floats
 		auto_ptr<Menu> menu(new Menu);
-		TocBackend::Toc::const_iterator ccit = cit->second.begin();
-		TocBackend::Toc::const_iterator eend = cit->second.end();
+		TocIterator ccit = cit->second.begin();
+		TocIterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
 			docstring const label = limit_string_length(ccit->str());
 			menu->add(MenuItem(MenuItem::Command,

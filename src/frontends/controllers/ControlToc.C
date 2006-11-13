@@ -40,7 +40,7 @@ ControlToc::ControlToc(Dialog & d)
 {}
 
 
-void ControlToc::goTo(TocBackend::Item const & item)
+void ControlToc::goTo(TocItem const & item)
 {
 	string const tmp = convert<string>(item.id());
 	kernel().lyxview().dispatch(FuncRequest(LFUN_PARAGRAPH_GOTO, tmp));
@@ -83,7 +83,7 @@ vector<string> const & ControlToc::getTypes() const
 }
 
 
-TocBackend::Toc::const_iterator const ControlToc::getCurrentTocItem(
+TocIterator const ControlToc::getCurrentTocItem(
 	string const & type) const
 {
 	BOOST_ASSERT(kernel().bufferview());
@@ -107,9 +107,9 @@ string const ControlToc::getGuiName(string const & type) const
 }
 
 
-TocBackend::Toc const empty_list;
+Toc const empty_list;
 
-TocBackend::Toc const & ControlToc::getContents(string const & type) const
+Toc const & ControlToc::getContents(string const & type) const
 {
 	// This shouldn't be possible...
 	if (!kernel().isBufferAvailable()) {

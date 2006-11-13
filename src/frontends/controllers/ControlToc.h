@@ -29,7 +29,7 @@ public:
 	ControlToc(Dialog &);
 
 	/// Goto this paragraph id
-	void goTo(TocBackend::Item const &);
+	void goTo(TocItem const &);
 
 	/// Return the list of types available
 	std::vector<std::string> const & getTypes() const;
@@ -38,11 +38,10 @@ public:
 	std::string const getGuiName(std::string const & type) const;
 
 	/// Return the first TocItem before the cursor
-	TocBackend::Toc::const_iterator const getCurrentTocItem(
-		std::string const & type) const;
+	TocIterator const getCurrentTocItem(std::string const & type) const;
 
 	/// Given a type, returns the contents
-	TocBackend::Toc const & getContents(std::string const & type) const;
+	Toc const & getContents(std::string const & type) const;
 
 	/// Apply the selected outlining operation
 	void outlineUp();

@@ -29,12 +29,10 @@
 #include "lyxlex.h"
 #include "outputparams.h"
 #include "paragraph.h"
-#include "pariterator.h"
+#include "TocBackend.h"
 
 #include "support/lstrings.h"
 #include "support/convert.h"
-
-#include <sstream>
 
 
 namespace lyx {
@@ -378,7 +376,7 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 }
 
 
-void InsetFloat::addToToc(TocBackend::TocList & toclist, Buffer const & buf) const
+void InsetFloat::addToToc(TocList & toclist, Buffer const & buf) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
@@ -390,7 +388,7 @@ void InsetFloat::addToToc(TocBackend::TocList & toclist, Buffer const & buf) con
 			docstring const str =
 				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			TocBackend::Item const item(pit, 0, str);
+			TocItem const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}

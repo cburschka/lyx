@@ -38,6 +38,7 @@
 #include "frontends/Alert.h"
 
 #include "insets/insetbibitem.h"
+#include "insets/insetinclude.h"
 
 #include "support/filetools.h"
 #include "support/fs_extras.h"
@@ -347,11 +348,9 @@ bool needEnumCounterReset(ParIterator const & it)
 
 
 // set the label of a paragraph. This includes the counters.
-void setLabel(Buffer const & buf, ParIterator & it)
+void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textclass)
 {
 	Paragraph & par = *it;
-	BufferParams const & bufparams = buf.params();
-	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 	LyXLayout_ptr const & layout = par.layout();
 	Counters & counters = textclass.counters();
 
@@ -393,7 +392,7 @@ void setLabel(Buffer const & buf, ParIterator & it)
 		// At some point of time we should do something more
 		// clever here, like:
 		//   par.params().labelString(
-		//    bufparams.user_defined_bullet(par.itemdepth).getText());
+		//    buf.params().user_defined_bullet(par.itemdepth).getText());
 		// for now, use a simple hardcoded label
 		docstring itemlabel;
 		switch (par.itemdepth) {
@@ -523,7 +522,7 @@ bool updateCurrentLabel(Buffer const & buf,
 	case LABEL_CENTERED_TOP_ENVIRONMENT:
 	case LABEL_STATIC:
 	case LABEL_ITEMIZE:
-		setLabel(buf, it);
+		setLabel(buf, it, buf.params().getLyXTextClass());
 		return true;
 
 	case LABEL_SENSITIVE:
@@ -539,33 +538,44 @@ bool updateCurrentLabel(Buffer const & buf,
 
 
 void updateLabels(Buffer const & buf,
-	ParIterator & from, ParIterator & to)
+	ParIterator & from, ParIterator & to, bool childonly)
 {
 	for (ParIterator it = from; it != to; ++it) {
 		if (it.pit() > it.lastpit())
 			return;
 		if (!updateCurrentLabel (buf, it)) {
-			updateLabels(buf);
+			updateLabels(buf, childonly);
 			return;
 		}
 	}
 }
 
 
-void updateLabels(Buffer const & buf,
-	ParIterator & iter)
+void updateLabels(Buffer const & buf, ParIterator & iter, bool childonly)
 {
 	if (updateCurrentLabel(buf, iter))
 		return;
 
-	updateLabels(buf);
+	updateLabels(buf, childonly);
 }
 
 
-void updateLabels(Buffer const & buf)
+void updateLabels(Buffer const & buf, bool childonly)
 {
-	// start over the counters
-	buf.params().getLyXTextClass().counters().reset();
+	// Use the master text class also for child documents
+	LyXTextClass const & textclass = buf.params().getLyXTextClass();
+
+	if (!childonly) {
+		// If this is a child document start with the master
+		Buffer const * const master = buf.getMasterBuffer();
+		if (master != &buf) {
+			updateLabels(*master);
+			return;
+		}
+
+		// start over the counters
+		textclass.counters().reset();
+	}
 
 	ParIterator const end = par_iterator_end(buf.inset());
 
@@ -579,7 +589,16 @@ void updateLabels(Buffer const & buf)
 			it->params().depth(0);
 
 		// set the counter for this paragraph
-		setLabel(buf, it);
+		setLabel(buf, it, textclass);
+
+		// Now included docs
+		InsetList::const_iterator iit = it->insetlist.begin();
+		InsetList::const_iterator end = it->insetlist.end();
+		for (; iit != end; ++iit) {
+			if (iit->inset->lyxCode() == InsetBase::INCLUDE_CODE)
+				static_cast<InsetInclude const *>(iit->inset)
+					->updateLabels(buf);
+		}
 	}
 
 	const_cast<Buffer &>(buf).tocBackend().update();

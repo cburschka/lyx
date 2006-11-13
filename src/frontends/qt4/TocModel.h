@@ -19,12 +19,9 @@
 #include <QStandardItemModel>
 
 #include <map>
-#include <string>
 
 namespace lyx {
 namespace frontend {
-
-typedef TocBackend::Toc::const_iterator TocIterator;
 
 class TocModel: public QStandardItemModel {
 	Q_OBJECT
@@ -33,15 +30,15 @@ public:
 	///
 	TocModel() {}
 	///
-	TocModel(TocBackend::Toc const & toc);
+	TocModel(Toc const & toc);
 	///
 	~TocModel() {}
 	///
-	TocModel const & operator=(TocBackend::Toc const & toc);
+	TocModel const & operator=(Toc const & toc);
 	///
 	void clear();
 	///
-	void populate(TocBackend::Toc const & toc);
+	void populate(Toc const & toc);
 	///
 	TocIterator const tocIterator(QModelIndex const & index) const;
 	///

@@ -28,7 +28,7 @@
 #include "lyxlex.h"
 #include "outputparams.h"
 #include "paragraph.h"
-#include "pariterator.h"
+#include "TocBackend.h"
 
 #include "support/convert.h"
 
@@ -224,7 +224,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetWrap::addToToc(TocBackend::TocList & toclist, Buffer const & buf) const
+void InsetWrap::addToToc(TocList & toclist, Buffer const & buf) const
 {
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
@@ -236,7 +236,7 @@ void InsetWrap::addToToc(TocBackend::TocList & toclist, Buffer const & buf) cons
 			docstring const str =
 				convert<docstring>(toclist[type].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			TocBackend::Item const item(pit, 0, str);
+			TocItem const item(pit, 0, str);
 			toclist[type].push_back(item);
 		}
 	}

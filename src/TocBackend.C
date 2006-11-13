@@ -22,9 +22,7 @@
 #include "paragraph.h"
 #include "debug.h"
 
-#include "insets/insetfloat.h"
 #include "insets/insetoptarg.h"
-#include "insets/insetwrap.h"
 
 #include "support/convert.h"
 
@@ -36,9 +34,9 @@ using std::string;
 
 
 ///////////////////////////////////////////////////////////////////////////
-// TocBackend::Item implementation
+// TocItem implementation
 
-TocBackend::Item::Item(ParConstIterator const & par_it, int d,
+TocItem::TocItem(ParConstIterator const & par_it, int d,
 		docstring const & s)
 		: par_it_(par_it), depth_(d), str_(s)
 {
@@ -71,37 +69,37 @@ TocBackend::Item::Item(ParConstIterator const & par_it, int d,
 	*/
 }
 
-bool const TocBackend::Item::isValid() const
+bool const TocItem::isValid() const
 {
 	return depth_ != -1;
 }
 
 
-int const TocBackend::Item::id() const
+int const TocItem::id() const
 {
 	return par_it_->id();
 }
 
 
-int const TocBackend::Item::depth() const
+int const TocItem::depth() const
 {
 	return depth_;
 }
 
 
-docstring const & TocBackend::Item::str() const
+docstring const & TocItem::str() const
 {
 	return str_;
 }
 
 
-docstring const TocBackend::Item::asString() const
+docstring const TocItem::asString() const
 {
 	return docstring(4 * depth_, ' ') + str_;
 }
 
 
-FuncRequest TocBackend::Item::action() const
+FuncRequest TocItem::action() const
 {
 	return FuncRequest(LFUN_PARAGRAPH_GOTO, convert<string>(id()));
 }
@@ -113,7 +111,7 @@ FuncRequest TocBackend::Item::action() const
 ///////////////////////////////////////////////////////////////////////////
 // TocBackend implementation
 
-TocBackend::Toc const & TocBackend::toc(std::string const & type) const
+Toc const & TocBackend::toc(std::string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
@@ -152,20 +150,13 @@ void TocBackend::update()
 		// the string that goes to the toc (could be the optarg)
 		docstring tocstring;
 
-		// For each paragraph, traverse its insets and look for
-		// FLOAT_CODE or WRAP_CODE
+		// For each paragraph, traverse its insets and let them add
+		// their toc items
 		InsetList::const_iterator it = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
+			it->inset->addToToc(tocs_, *buffer_);
 			switch (it->inset->lyxCode()) {
-			case InsetBase::FLOAT_CODE:
-				static_cast<InsetFloat*>(it->inset)
-					->addToToc(tocs_, *buffer_);
-				break;
-			case InsetBase::WRAP_CODE:
-				static_cast<InsetWrap*>(it->inset)
-					->addToToc(tocs_, *buffer_);
-				break;
 			case InsetBase::OPTARG_CODE: {
 				if (!tocstring.empty())
 					break;
@@ -188,7 +179,7 @@ void TocBackend::update()
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = pit->asString(*buffer_, true);
-			Item const item(pit, toclevel - min_toclevel, tocstring);
+			TocItem const item(pit, toclevel - min_toclevel, tocstring);
 			tocs_["tableofcontents"].push_back(item);
 		}
 	}
@@ -199,7 +190,7 @@ void TocBackend::update()
 }
 
 
-TocBackend::TocIterator const TocBackend::item(
+TocIterator const TocBackend::item(
 	std::string const & type, ParConstIterator const & par_it) const
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
@@ -207,8 +198,8 @@ TocBackend::TocIterator const TocBackend::item(
 	BOOST_ASSERT(toclist_it != tocs_.end());
 
 	Toc const & toc_vector = toclist_it->second;
-	TocBackend::TocIterator last = toc_vector.begin();
-	TocBackend::TocIterator it = toc_vector.end();
+	TocIterator last = toc_vector.begin();
+	TocIterator it = toc_vector.end();
 	--it;
 
 	for (; it != last; --it) {
@@ -234,8 +225,8 @@ void TocBackend::asciiTocList(string const & type, odocstream & os) const
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {
-		Toc::const_iterator ccit = cit->second.begin();
-		Toc::const_iterator end = cit->second.end();
+		TocIterator ccit = cit->second.begin();
+		TocIterator end = cit->second.end();
 		for (; ccit != end; ++ccit)
 			os << ccit->asString() << '\n';
 	}

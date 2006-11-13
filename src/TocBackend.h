@@ -35,56 +35,58 @@ class LCursor;
 ///
 /**
 */
-class TocBackend
+class TocItem
 {
+	friend class TocBackend;
+
 public:
 	///
-	/**
-	*/
-	class Item
-	{
-		friend class TocBackend;
-		friend bool operator==(Item const & a, Item const & b);
-
-	public:
-		///
-		Item(
-			ParConstIterator const & par_it = ParConstIterator(),
-			int d = -1,
-			docstring const & s = docstring());
-		///
-		~Item() {}
-		///
-		bool const isValid() const;
-		///
-		int const id() const;
-		///
-		int const depth() const;
-		///
-		docstring const & str() const;
-		///
-		docstring const asString() const;
-
-		/// the action corresponding to the goTo above
-		FuncRequest action() const;
-		
-	protected:
-		/// Current position of item.
-		ParConstIterator par_it_;
-
-		/// nesting depth
-		int depth_;
-
-		/// Full item string
-		docstring str_;
-	};
-
+	TocItem(ParConstIterator const & par_it = ParConstIterator(),
+		int d = -1,
+		docstring const & s = docstring());
 	///
-	typedef std::vector<Item> Toc;
-	typedef std::vector<Item>::const_iterator TocIterator;
+	~TocItem() {}
 	///
-	typedef std::map<std::string, Toc> TocList;
+	bool const isValid() const;
+	///
+	int const id() const;
+	///
+	int const depth() const;
+	///
+	docstring const & str() const;
+	///
+	docstring const asString() const;
 
+	/// the action corresponding to the goTo above
+	FuncRequest action() const;
+	
+protected:
+	/// Current position of item.
+	ParConstIterator par_it_;
+
+	/// nesting depth
+	int depth_;
+
+	/// Full item string
+	docstring str_;
+};
+
+
+///
+typedef std::vector<TocItem> Toc;
+typedef Toc::const_iterator TocIterator;
+/// The ToC list.
+/// A class and no typedef because we want to forward declare it.
+class TocList : public std::map<std::string, Toc>
+{
+};
+
+
+///
+/**
+*/
+class TocBackend
+{
 public:
 	///
 	TocBackend(Buffer const * buffer = NULL): buffer_(buffer) {}
@@ -121,14 +123,14 @@ private:
 }; // TocBackend
 
 inline
-bool operator==(TocBackend::Item const & a, TocBackend::Item const & b)
+bool operator==(TocItem const & a, TocItem const & b)
 {
 	return a.id() == b.id() && a.str() == b.str() && a.depth() == b.depth();
 }
 
 
 inline
-bool operator!=(TocBackend::Item const & a, TocBackend::Item const & b)
+bool operator!=(TocItem const & a, TocItem const & b)
 {
 	return !(a == b);
 }

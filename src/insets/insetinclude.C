@@ -30,6 +30,7 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 #include "outputparams.h"
+#include "TocBackend.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Painter.h"
@@ -48,10 +49,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
-
-#include "support/std_ostream.h"
-
-#include <sstream>
 
 
 namespace lyx {
@@ -768,6 +765,31 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 		docstring const snippet = latex_string(*this, buffer);
 		preview_->addPreview(snippet, ploader);
 	}
+}
+
+
+void InsetInclude::addToToc(TocList & toclist, Buffer const & buffer) const
+{
+	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
+	if (!childbuffer)
+		return;
+
+	TocList const & childtoclist = childbuffer->tocBackend().tocs();
+	TocList::const_iterator it = childtoclist.begin();
+	TocList::const_iterator const end = childtoclist.end();
+	for(; it != end; ++it)
+		toclist[it->first].insert(toclist[it->first].end(),
+				it->second.begin(), it->second.end());
+}
+
+
+void InsetInclude::updateLabels(Buffer const & buffer) const
+{
+	Buffer const * const childbuffer = getChildBuffer(buffer, params_);
+	if (!childbuffer)
+		return;
+
+	lyx::updateLabels(*childbuffer, true);
 }
 
 

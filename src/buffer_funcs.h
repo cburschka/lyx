@@ -58,17 +58,17 @@ lyx::docstring expandLabel(Buffer const & buf,
 /**
 A full updateLabels(Buffer const &) will be called if not possible.
 */
-void updateLabels(Buffer const & buf, ParIterator & it);
+void updateLabels(Buffer const & buf, ParIterator & it, bool childonly = false);
 
 /// update labels between "from" and "to" if possible.
 /**
 A full updateLabels(Buffer const &) will be called if not possible.
 */
 void updateLabels(Buffer const & buf,
-	ParIterator & from, ParIterator & to);
+	ParIterator & from, ParIterator & to, bool childonly = false);
 
 /// updates all counters
-void updateLabels(Buffer const &);
+void updateLabels(Buffer const &, bool childonly = false);
 
 
 } // namespace lyx

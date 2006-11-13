@@ -29,13 +29,13 @@ namespace lyx {
 namespace frontend {
 
 
-TocModel::TocModel(TocBackend::Toc const & toc)
+TocModel::TocModel(Toc const & toc)
 {
 	populate(toc);
 }
 
 
-TocModel const & TocModel::operator=(TocBackend::Toc const & toc)
+TocModel const & TocModel::operator=(Toc const & toc)
 {
 	populate(toc);
 	return *this;
@@ -72,7 +72,7 @@ void TocModel::clear()
 }
 
 
-void TocModel::populate(TocBackend::Toc const & toc)
+void TocModel::populate(Toc const & toc)
 {
 	clear();
 

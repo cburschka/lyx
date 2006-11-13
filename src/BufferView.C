@@ -727,21 +727,34 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 
 	case LFUN_PARAGRAPH_GOTO: {
 		int const id = convert<int>(to_utf8(cmd.argument()));
-		ParIterator par = buffer_->getParFromID(id);
-		if (par == buffer_->par_iterator_end()) {
-			lyxerr[Debug::INFO] << "No matching paragraph found! ["
-					    << id << ']' << endl;
-			break;
-		} else {
-			lyxerr[Debug::INFO] << "Paragraph " << par->id()
-					    << " found." << endl;
+		int i = 0;
+		for (Buffer * b = buffer_; i == 0 || b != buffer_; b = theBufferList().next(b)) {
+			ParIterator par = b->getParFromID(id);
+			if (par == b->par_iterator_end()) {
+				lyxerr[Debug::INFO]
+					<< "No matching paragraph found! ["
+					<< id << "]." << endl;
+			} else {
+				lyxerr[Debug::INFO]
+					<< "Paragraph " << par->id()
+					<< " found in buffer `"
+					<< b->fileName() << "'." << endl;
+
+				if (b == buffer_) {
+					// Set the cursor
+					setCursor(makeDocIterator(par, 0));
+					update();
+					switchKeyMap();
+				} else {
+					// Switch to other buffer view and resend cmd
+					theLyXFunc().dispatch(FuncRequest(
+						LFUN_BUFFER_SWITCH, b->fileName()));
+					theLyXFunc().dispatch(cmd);
+				}
+				break;
+			}
+			++i;
 		}
-
-		// Set the cursor
-		setCursor(makeDocIterator(par, 0));
-
-		update();
-		switchKeyMap();
 		break;
 	}
 
