@@ -63,7 +63,7 @@ void ControlAboutlyx::getCredits(ostream & ss) const
 
 string const ControlAboutlyx::getCopyright() const
 {
-	return _("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2001 LyX Team");
+	return _("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2006 LyX Team");
 }
 
 
@@ -75,7 +75,7 @@ string const ControlAboutlyx::getLicense() const
 
 string const ControlAboutlyx::getDisclaimer() const
 {
-	return _("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.");
+	return _("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.");
 }
 
 
