@@ -21,6 +21,9 @@
 # include <sys/types.h>
 #endif
 
+#if defined(HAVE_CHMOD) && defined(_MSC_VER)
+#include <io.h>
+#endif
 
 namespace lyx {
 

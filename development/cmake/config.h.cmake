@@ -171,6 +171,9 @@
 
 #ifdef _MSC_VER
 #pragma warning( disable : 4800 ) //: forcing value to bool 'true' or 'false' (performance warning)
+#ifdef HAVE_CHMOD
+typedef int mode_t;
+#endif
 #endif
 
 #ifdef LYX_ENABLE_PCH
