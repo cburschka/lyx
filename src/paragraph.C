@@ -1392,7 +1392,6 @@ docstring const Paragraph::asString(Buffer const & buffer,
 
 	for (pos_type i = beg; i < end; ++i) {
 		value_type const c = getUChar(buffer.params(), i);
-		// FIXME: isPrintable does not work for lyx::char_type
 		if (isPrintable(c))
 			os.put(c);
 		else if (c == META_INSET)
@@ -1570,6 +1569,7 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
 		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && isDigit(c))
+			// FIXME UNICODE What does this do?
 			return c + (0xb0 - '0');
 		else
 			return c;

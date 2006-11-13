@@ -383,6 +383,10 @@ int mkstemp(char*);
 #  define WANT_GETFILEATTRIBUTESEX_WRAPPER 1
 #endif
 
+#if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4
+#  define LIBC_WCTYPE_USES_UCS4
+#endif
+
 #endif
 ])
 

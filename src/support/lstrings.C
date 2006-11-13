@@ -32,6 +32,16 @@
 #include <algorithm>
 #include <sstream>
 
+#ifdef LIBC_WCTYPE_USES_UCS4
+// We can use the libc ctype functions because we unset the LC_CTYPE
+// category of the current locale in gettext.C
+#include <wctype.h>
+#else
+// Steal some code from somewhere else, e.g. glib (look at gunicode.h)
+// The code that we currently use does not really work.
+#endif
+
+
 using lyx::docstring;
 
 using std::transform;
@@ -76,8 +86,8 @@ int compare_no_case(docstring const & s, docstring const & s2)
 	docstring::const_iterator p2 = s2.begin();
 
 	while (p != s.end() && p2 != s2.end()) {
-		int const lc1 = tolower(*p);
-		int const lc2 = tolower(*p2);
+		char_type const lc1 = lowercase(*p);
+		char_type const lc2 = lowercase(*p2);
 		if (lc1 != lc2)
 			return (lc1 < lc2) ? -1 : 1;
 		++p;
@@ -94,18 +104,20 @@ int compare_no_case(docstring const & s, docstring const & s2)
 
 namespace {
 
-int ascii_tolower(int c) {
+template<typename Char>
+Char ascii_tolower(Char c) {
 	if (c >= 'A' && c <= 'Z')
 		return c - 'A' + 'a';
 	return c;
 }
 
+}
 
-template<typename String> inline
-int do_compare_ascii_no_case(String const & s, String const & s2)
+
+int compare_ascii_no_case(string const & s, string const & s2)
 {
-	typename String::const_iterator p = s.begin();
-	typename String::const_iterator p2 = s2.begin();
+	string::const_iterator p = s.begin();
+	string::const_iterator p2 = s2.begin();
 
 	while (p != s.end() && p2 != s2.end()) {
 		int const lc1 = ascii_tolower(*p);
@@ -123,18 +135,26 @@ int do_compare_ascii_no_case(String const & s, String const & s2)
 	return 1;
 }
 
-}
-
-
-int compare_ascii_no_case(string const & s, string const & s2)
-{
-	return do_compare_ascii_no_case(s, s2);
-}
-
 
 int compare_ascii_no_case(docstring const & s, docstring const & s2)
 {
-	return do_compare_ascii_no_case(s, s2);
+	docstring::const_iterator p = s.begin();
+	docstring::const_iterator p2 = s2.begin();
+
+	while (p != s.end() && p2 != s2.end()) {
+		char_type const lc1 = ascii_tolower(*p);
+		char_type const lc2 = ascii_tolower(*p2);
+		if (lc1 != lc2)
+			return (lc1 < lc2) ? -1 : 1;
+		++p;
+		++p2;
+	}
+
+	if (s.size() == s2.size())
+		return 0;
+	if (s.size() < s2.size())
+		return -1;
+	return 1;
 }
 
 
@@ -300,7 +320,9 @@ char uppercase(char c)
 	return char(toupper(c));
 }
 
-// FIXME for lowercase() and uppercase() function below:
+
+// FIXME UNICODE
+// for lowercase() and uppercase() function below when wchar_t is not used:
 // 1) std::tolower() and std::toupper() are templates that
 // compile fine with char_type. With the test (c >= 256) we
 // do not trust these function to do the right thing with
@@ -310,19 +332,27 @@ char uppercase(char c)
 
 char_type lowercase(char_type c)
 {
+#ifdef LIBC_WCTYPE_USES_UCS4
+	return towlower(c);
+#else
 	if (c >= 256)
 		return c;
 
 	return tolower(c);
+#endif
 }
 
 
 char_type uppercase(char_type c)
 {
+#ifdef LIBC_WCTYPE_USES_UCS4
+	return towupper(c);
+#else
 	if (c >= 256)
 		return c;
 
 	return toupper(c);
+#endif
 }
 
 
