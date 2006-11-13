@@ -50,6 +50,7 @@ public:
 		RC_CHECKLASTFILES,
 		RC_CHKTEX_COMMAND,
 		RC_CONVERTER,
+		RC_CONVERTER_CACHE_MAXAGE,
 		RC_COPIER,
 		RC_CURSOR_FOLLOWS_SCROLLBAR,
 		RC_CUSTOM_EXPORT_COMMAND,
@@ -136,6 +137,7 @@ public:
 		RC_USER_NAME,
 		RC_USETEMPDIR,
 		RC_USE_ALT_LANG,
+		RC_USE_CONVERTER_CACHE,
 		RC_USE_ESC_CHARS,
 		RC_USE_INP_ENC,
 		RC_USE_PERS_DICT,
@@ -396,6 +398,10 @@ public:
 	 *  The string is input, stored and output in native format.
 	 */
 	std::string path_prefix;
+	/// Use the cache for file converters?
+	bool use_converter_cache;
+	/// The maximum age of cache files in seconds
+	unsigned int converter_cache_maxage;
 };
 
 

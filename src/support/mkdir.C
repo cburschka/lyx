@@ -39,6 +39,9 @@ int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 # if MKDIR_TAKES_ONE_ARG
 	// MinGW32
 	return ::mkdir(pathname.c_str());
+#  ifdef WITH_WARNINGS
+#   warning "Permissions of created directories are ignored on this system."
+#  endif
 # else
 	// POSIX
 	return ::mkdir(pathname.c_str(), mode_t(mode));
@@ -46,8 +49,14 @@ int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 #elif defined(_WIN32)
 	// plain Windows 32
 	return CreateDirectory(pathname.c_str(), 0) != 0 ? 0 : -1;
+# ifdef WITH_WARNINGS
+#  warning "Permissions of created directories are ignored on this system."
+# endif
 #elif HAVE__MKDIR
 	return ::_mkdir(pathname.c_str());
+# ifdef WITH_WARNINGS
+#  warning "Permissions of created directories are ignored on this system."
+# endif
 #else
 #   error "Don't know how to create a directory on this system."
 #endif

@@ -72,6 +72,8 @@ lyx_SOURCES = \
 	Chktex.h \
 	Color.C \
 	Color.h \
+	ConverterCache.C \
+	ConverterCache.h \
 	CutAndPaste.C \
 	CutAndPaste.h \
 	DepTable.C \

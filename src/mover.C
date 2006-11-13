@@ -17,11 +17,13 @@
 #include "support/lyxlib.h"
 #include "support/systemcall.h"
 
+#include <fstream>
 #include <sstream>
 
 
 namespace lyx {
 
+using std::ios;
 using std::string;
 
 Movers movers;
@@ -29,9 +31,9 @@ Movers system_movers;
 
 
 bool Mover::do_copy(string const & from, string const & to,
-		    string const &) const
+		    string const &, unsigned long int mode) const
 {
-	return support::copy(from, to);
+	return support::copy(from, to, mode);
 }
 
 
@@ -43,10 +45,19 @@ bool Mover::do_rename(string const & from, string const & to,
 
 
 bool SpecialisedMover::do_copy(string const & from, string const & to,
-			       string const & latex) const
+			       string const & latex, unsigned long int mode) const
 {
 	if (command_.empty())
-		return Mover::do_copy(from, to, latex);
+		return Mover::do_copy(from, to, latex, mode);
+
+	if (mode != (unsigned long int)-1) {
+		std::ofstream ofs(to.c_str(), ios::binary | ios::out | ios::trunc);
+		if (!ofs)
+			return false;
+		ofs.close();
+		if (!support::chmod(to.c_str(), mode_t(mode)))
+			return false;
+	}
 
 	string command = support::libScriptSearch(command_);
 	command = support::subst(command, "$$i", from);
@@ -64,7 +75,7 @@ bool SpecialisedMover::do_rename(string const & from, string const & to,
 	if (command_.empty())
 		return Mover::do_rename(from, to, latex);
 
-	if (!do_copy(from, to, latex))
+	if (!do_copy(from, to, latex, (unsigned long int)-1))
 		return false;
 	return support::unlink(from) == 0;
 }

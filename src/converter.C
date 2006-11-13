@@ -12,6 +12,7 @@
 
 #include "converter.h"
 
+#include "ConverterCache.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferparams.h"
@@ -33,6 +34,7 @@
 
 namespace lyx {
 
+using support::absolutePath;
 using support::addName;
 using support::bformat;
 using support::changeExtension;
@@ -285,24 +287,31 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 
 
 bool Converters::convert(Buffer const * buffer,
-			 string const & from_file, string const & to_file_base,
-			 string const & from_format, string const & to_format,
-			 string & to_file, ErrorList & errorList, bool try_default)
+                         string const & from_file, string const & to_file,
+                         string const & orig_from,
+                         string const & from_format, string const & to_format,
+                         ErrorList & errorList, int conversionflags)
 {
-	string const to_ext = formats.extension(to_format);
-	to_file = changeExtension(to_file_base, to_ext);
+	BOOST_ASSERT(absolutePath(from_file));
+	BOOST_ASSERT(absolutePath(to_file));
+	BOOST_ASSERT(absolutePath(orig_from));
 
 	if (from_format == to_format)
 		return move(from_format, from_file, to_file, false);
 
+	if ((conversionflags & try_cache) &&
+	    ConverterCache::get().inCache(orig_from, to_format))
+		return ConverterCache::get().copy(orig_from, to_format, to_file);
+
 	Graph::EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
-		if (try_default) {
+		if (conversionflags & try_default) {
 			// if no special converter defined, then we take the
 			// default one from ImageMagic.
 			string const from_ext = from_format.empty() ?
 				getExtension(from_file) :
 				formats.extension(from_format);
+			string const to_ext = formats.extension(to_format);
 			string const command =
 				support::os::python() + ' ' +
 				quoteName(libFileSearch("scripts", "convertDefault.py")) +
@@ -317,6 +326,9 @@ bool Converters::convert(Buffer const * buffer,
 			Systemcall one;
 			one.startscript(Systemcall::Wait, command);
 			if (isFileReadable(to_file)) {
+				if (conversionflags & try_cache)
+					ConverterCache::get().add(orig_from,
+							to_format, to_file);
 				return true;
 			}
 		}
@@ -466,9 +478,8 @@ bool Converters::convert(Buffer const * buffer,
 		return true;
 
 	if (!conv.result_dir.empty()) {
-		to_file = addName(subst(conv.result_dir, token_base, to_base),
-				  subst(conv.result_file,
-					token_base, onlyFilename(to_base)));
+		// The converter has put the file(s) in a directory.
+		// In this case we ignore the given to_file.
 		if (from_base != to_base) {
 			string const from = subst(conv.result_dir,
 					    token_base, from_base);
@@ -477,14 +488,17 @@ bool Converters::convert(Buffer const * buffer,
 			Mover const & mover = movers(conv.from);
 			if (!mover.rename(from, to)) {
 				Alert::error(_("Cannot convert file"),
-					bformat(_("Could not move a temporary file from %1$s to %2$s."),
+					bformat(_("Could not move a temporary directory from %1$s to %2$s."),
 						from_ascii(from), from_ascii(to)));
 				return false;
 			}
 		}
 		return true;
-	} else
+	} else {
+		if (conversionflags & try_cache)
+			ConverterCache::get().add(orig_from, to_format, outfile);
 		return move(conv.to, outfile, to_file, conv.latex);
+	}
 }
 
 
@@ -524,17 +538,6 @@ bool Converters::move(string const & fmt,
 			}
 		}
 	return no_errors;
-}
-
-
-bool Converters::convert(Buffer const * buffer,
-			 string const & from_file, string const & to_file_base,
-			 string const & from_format, string const & to_format,
-			 ErrorList & errorList, bool try_default)
-{
-	string to_file;
-	return convert(buffer, from_file, to_file_base, from_format, to_format,
-		       to_file, errorList, try_default);
 }
 
 

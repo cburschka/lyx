@@ -260,7 +260,7 @@ dnl work correctly because of some conflict with stdlib.h with g++ 2.96
 dnl We aim to remove this eventually, since we should test as much as
 dnl possible with the compiler which will use the functions (JMarc)
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(close _close getpid _getpid lstat mkfifo mkstemp mktemp open _open pclose _pclose popen _popen readlink)
+AC_CHECK_FUNCS(chmod close _close getpid _getpid lstat mkfifo mkstemp mktemp open _open pclose _pclose popen _popen readlink)
 AC_LANG_POP(C)
 
 LYX_CHECK_SPELL_ENGINES

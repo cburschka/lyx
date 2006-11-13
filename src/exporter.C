@@ -217,18 +217,20 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	}
 
 	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);
-	bool const success = converters.convert(buffer, filename, filename,
-		backend_format, format, result_file,
+	string const ext = formats.extension(format);
+	string const tmp_result_file = changeExtension(filename, ext);
+	bool const success = converters.convert(buffer, filename,
+		tmp_result_file, buffer->fileName(), backend_format, format,
 		buffer->errorList(error_type));
 	// Emit the signal to show the error list.
 	buffer->errors(error_type);
 	if (!success)
 		return false;
 
-	if (!put_in_tempdir) {
-		string const tmp_result_file = result_file;
-		result_file = changeExtension(buffer->fileName(),
-					      formats.extension(format));
+	if (put_in_tempdir)
+		result_file = tmp_result_file;
+	else {
+		result_file = changeExtension(buffer->fileName(), ext);
 		// We need to copy referenced files (e. g. included graphics
 		// if format == "dvi") to the result dir.
 		vector<ExportedFile> const files =

@@ -986,6 +986,7 @@ result = utils.createConfigFile(conf,
     ],
     functions = [
         ('open', 'HAVE_OPEN', None),
+        ('chmod', 'HAVE_CHMOD', None),
         ('close', 'HAVE_CLOSE', None),
         ('popen', 'HAVE_POPEN', None),
         ('pclose', 'HAVE_PCLOSE', None),

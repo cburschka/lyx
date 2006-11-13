@@ -34,9 +34,10 @@ public:
 	 *  \returns true if successful.
 	 */
 	bool
-	copy(std::string const & from, std::string const & to) const
+	copy(std::string const & from, std::string const & to,
+	     unsigned long int mode = (unsigned long int)-1) const
 	{
-		return do_copy(from, to, to);
+		return do_copy(from, to, to, mode);
 	}
 
 	/** Copy file @c from to @c to.
@@ -49,9 +50,10 @@ public:
 	 */
 	bool
 	copy(std::string const & from, std::string const & to,
-	     std::string const & latex) const
+	     std::string const & latex,
+	     unsigned long int mode = (unsigned long int)-1) const
 	{
-		return do_copy(from, to, latex);
+		return do_copy(from, to, latex, mode);
 	}
 
 	/** Rename file @c from as @c to.
@@ -84,7 +86,7 @@ public:
 protected:
 	virtual bool
 	do_copy(std::string const & from, std::string const & to,
-		std::string const &) const;
+	        std::string const &, unsigned long int mode) const;
 
 	virtual bool
 	do_rename(std::string const & from, std::string const & to,
@@ -131,7 +133,7 @@ public:
 private:
 	virtual bool
 	do_copy(std::string const & from, std::string const & to,
-		std::string const & latex) const;
+	        std::string const & latex, unsigned long int mode) const;
 
 	virtual bool
 	do_rename(std::string const & from, std::string const & to,

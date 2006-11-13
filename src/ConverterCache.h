@@ -1,0 +1,101 @@
+// -*- C++ -*-
+/**
+ * \file ConverterCache.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Baruch Even
+ * \author Angus Leeming
+ * \author Georg Baum
+ *
+ * Full author contact details are available in file CREDITS.
+ *
+ * lyx::ConverterCache is the manager of the file cache.
+ * It is responsible for creating the lyx::ConverterCacheItem's
+ * and maintaining them.
+ *
+ * lyx::ConverterCache is a singleton class. It is possible to have
+ * only one instance of it at any moment.
+ */
+
+#ifndef CONVERTERCACHE_H
+#define CONVERTERCACHE_H
+
+#include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
+
+#include <string>
+
+
+namespace lyx {
+
+/**
+ * Cache for converted files. The cache works as follows:
+ *
+ * The key for a cache item consists of the absolute name of the original
+ * file and the format name of the target format.  The original file in the
+ * user directory is named \c orig_from in the code, the format name is named
+ * \c to_format. Example:
+ * \c orig_from = "/home/me/myfigure.fig"
+ * \c to_format = "eps"
+ * A cache item is considered up to date (inCache() returns \c true) if
+ * - The cache contains an item with key (\c orig_to, \c to_format)
+ * - The stored timestamp of the item is identical with the actual timestamp
+ *   of \c orig_from, or, if that is not the case, the stored checksum is
+ *   identical with the actual checksum of \c orig_from.
+ * Otherwise the item is not considered up to date, and add() will refresh it.
+ *
+ * There is no cache maintenance yet (max size, max age etc.)
+ */
+class ConverterCache : boost::noncopyable {
+public:
+
+	/// This is a singleton class. Get the instance.
+	static ConverterCache & get();
+
+	/// Init the cache. This must be done after package initialization.
+	static void init();
+
+	/**
+	 * Add \c converted_file (\c orig_from converted to \c to_format) to
+	 * the cache if it is not already in or not up to date.
+	 */
+	void add(std::string const & orig_from, std::string const & to_format,
+	         std::string const & converted_file) const;
+
+	/// Remove a file from the cache.
+	void remove(std::string const & orig_from,
+	            std::string const & to_format) const;
+
+	/**
+	 * Returns \c true if \c orig_from converted to \c to_format is in
+	 * the cache and up to date.
+	 */
+	bool inCache(std::string const & orig_from,
+	             std::string const & to_format) const;
+
+	/// Get the name of the cached file
+	std::string const cacheName(std::string const & orig_from,
+	                            std::string const & to_format) const;
+
+	/// Copy the file from the cache to \p dest
+	bool copy(std::string const & orig_from, std::string const & to_format,
+	          std::string const & dest) const;
+
+private:
+	/** Make the c-tor, d-tor private so we can control how many objects
+	 *  are instantiated.
+	 */
+	ConverterCache();
+	///
+	~ConverterCache();
+
+	/// Use the Pimpl idiom to hide the internals.
+	class Impl;
+	/// The pointer never changes although *pimpl_'s contents may.
+	boost::scoped_ptr<Impl> const pimpl_;
+};
+
+} // namespace lyx
+
+#endif

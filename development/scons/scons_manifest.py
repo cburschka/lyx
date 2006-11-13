@@ -1034,6 +1034,7 @@ src_header_files = Split('''
     Bullet.h
     Chktex.h
     Color.h
+    ConverterCache.h
     CutAndPaste.h
     DepTable.h
     FloatList.h
@@ -1155,6 +1156,7 @@ src_pre_files = Split('''
     Bullet.C
     Chktex.C
     Color.C
+    ConverterCache.C
     CutAndPaste.C
     DepTable.C
     FloatList.C

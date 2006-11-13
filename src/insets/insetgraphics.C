@@ -722,7 +722,9 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	if (converters.convert(&buf, temp_file, temp_file, from, to, el, true)) {
+	if (converters.convert(&buf, temp_file, to_file, orig_file,
+	                       from, to, el,
+	                       Converters::try_default | Converters::try_cache)) {
 		runparams.exportdata->addExternalFile(tex_format,
 				to_file, output_to_file);
 		runparams.exportdata->addExternalFile("dvi",

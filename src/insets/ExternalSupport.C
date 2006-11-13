@@ -305,14 +305,13 @@ void updateExternal(InsetExternalParams const & params,
 	// Yes if to_file does not exist or if from_file is newer than to_file
 	if (support::compare_timestamps(temp_file, abs_to_file) < 0)
 		return; // SUCCESS
-	string const to_file_base =
-		support::changeExtension(to_file, string());
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
 	/* bool const success = */
-		converters.convert(&buffer, temp_file, to_file_base,
-				   from_format, to_format, el, true);
+		converters.convert(&buffer, temp_file, abs_to_file,
+		                   abs_from_file, from_format, to_format, el,
+		                   Converters::try_default | Converters::try_cache);
 	// return success
 }
 

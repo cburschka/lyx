@@ -53,8 +53,11 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		for (vector<string>::const_iterator it = loaders.begin();
 		     it != loaders.end(); ++it) {
 			if (converters.isReachable(format, *it)) {
-				if (!converters.convert(0, filename, filename,
-							format, *it, errorList))
+				string const tofile =
+					changeExtension(filename,
+						formats.extension(*it));
+				if (!converters.convert(0, filename, tofile,
+							filename, format, *it, errorList))
 					return false;
 				loader_format = *it;
 				break;

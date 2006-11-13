@@ -16,6 +16,7 @@
 #include "GraphicsConverter.h"
 #include "GraphicsImage.h"
 
+#include "ConverterCache.h"
 #include "debug.h"
 #include "format.h"
 
@@ -28,7 +29,6 @@
 
 namespace lyx {
 
-using support::changeExtension;
 using support::FileMonitor;
 using support::isFileReadable;
 using support::makeDisplayPath;
@@ -108,6 +108,8 @@ public:
 	bool zipped_;
 	/// If so, store the uncompressed file in this temporary file.
 	string unzipped_filename_;
+	/// The target format
+	string to_;
 	/// What file are we trying to load?
 	string file_to_load_;
 	/** Should we delete the file after loading? True if the file is
@@ -228,6 +230,7 @@ void CacheItem::Impl::reset()
 		unlink(file_to_load_);
 	remove_loaded_file_ = false;
 	file_to_load_.erase();
+	to_.erase();
 
 	if (image_.get())
 		image_.reset();
@@ -277,6 +280,9 @@ void CacheItem::Impl::imageConverted(bool success)
 
 		return;
 	}
+
+	// Add the converted file to the file cache
+	ConverterCache::get().add(filename_, to_, file_to_load_);
 
 	loadImage();
 }
@@ -403,9 +409,9 @@ void CacheItem::Impl::convertToDisplayFormat()
 	}
 	lyxerr[Debug::GRAPHICS]
 		<< "\n\tThe file contains " << from << " format data." << endl;
-	string const to = findTargetFormat(from);
+	to_ = findTargetFormat(from);
 
-	if (from == to) {
+	if (from == to_) {
 		// No conversion needed!
 		lyxerr[Debug::GRAPHICS] << "\tNo conversion needed (from == to)!" << endl;
 		file_to_load_ = filename;
@@ -413,7 +419,15 @@ void CacheItem::Impl::convertToDisplayFormat()
 		return;
 	}
 
-	lyxerr[Debug::GRAPHICS] << "\tConverting it to " << to << " format." << endl;
+	if (ConverterCache::get().inCache(filename, to_)) {
+		lyxerr[Debug::GRAPHICS] << "\tNo conversion needed (file in file cache)!"
+		                        << endl;
+		file_to_load_ = ConverterCache::get().cacheName(filename, to_);
+		loadImage();
+		return;
+	}
+
+	lyxerr[Debug::GRAPHICS] << "\tConverting it to " << to_ << " format." << endl;
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
@@ -427,7 +441,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_.reset(new Converter(filename, to_file_base, from, to));
+	converter_.reset(new Converter(filename, to_file_base, from, to_));
 	converter_->connect(boost::bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();
 }

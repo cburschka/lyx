@@ -41,6 +41,7 @@ check_include_files(argz.h HAVE_ARGZ_H)
 
 
 check_function_exists(open HAVE_OPEN)
+check_function_exists(chmod HAVE_CHMOD)
 check_function_exists(close HAVE_CLOSE)
 check_function_exists(popen HAVE_POPEN)
 check_function_exists(pclose HAVE_PCLOSE)

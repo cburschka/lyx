@@ -25,13 +25,16 @@ namespace support {
 std::string const getcwd();
 /// change to a directory, 0 is returned on success.
 int chdir(std::string const & name);
+/// Change file permissions
+bool chmod(std::string const & file, unsigned long int mode);
 /**
  * rename a file, returns false if it fails.
  * It can handle renames across partitions.
  */
 bool rename(std::string const & from, std::string const & to);
 /// copy a file, returns false it it fails
-bool copy(std::string const & from, std::string const & to);
+bool copy(std::string const & from, std::string const & to,
+          unsigned long int mode = (unsigned long int)-1);
 /// generates a checksum of a file
 unsigned long sum(std::string const & file);
 /// FIXME: some point to this hmm ?

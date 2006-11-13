@@ -107,17 +107,21 @@ public:
 	Graph::EdgePath const getPath(std::string const & from, std::string const & to);
 	///
 	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path);
+	/// Flags for converting files
+	enum ConversionFlags {
+		/// No special flags
+		none = 0,
+		/// Use the default converter if no converter is defined
+		try_default = 1 << 0,
+		/// Get the converted file from cache if possible
+		try_cache = 1 << 1
+	};
 	///
 	bool convert(Buffer const * buffer,
-		     std::string const & from_file, std::string const & to_file_base,
-		     std::string const & from_format, std::string const & to_format,
-		     std::string & to_file, ErrorList & errorList,
-			 bool try_default = false);
-	///
-	bool convert(Buffer const * buffer,
-		     std::string const & from_file, std::string const & to_file_base,
-		     std::string const & from_format, std::string const & to_format,
-			 ErrorList & errorList, bool try_default = false);
+	             std::string const & from_file, std::string const & to_file,
+	             std::string const & orig_from,
+	             std::string const & from_format, std::string const & to_format,
+	             ErrorList & errorList, int conversionflags = none);
 	///
 	void update(Formats const & formats);
 	///

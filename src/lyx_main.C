@@ -17,6 +17,7 @@
 
 #include "lyx_main.h"
 
+#include "ConverterCache.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferlist.h"
@@ -796,6 +797,11 @@ bool LyX::init()
 
 	lyxerr[Debug::INIT] << "Reading session information '.lyx/session'..." << endl;
 	pimpl_->session_.reset(new Session(lyxrc.num_lastfiles));
+
+	// This must happen after package initialization and after lyxrc is
+	// read, therefore it can't be done by a static object.
+	ConverterCache::init();
+
 	return true;
 }
 

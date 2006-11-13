@@ -79,6 +79,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
 	{ "\\converter", LyXRC::RC_CONVERTER },
+	{ "\\converter_cache_maxage", LyXRC::RC_CONVERTER_CACHE_MAXAGE },
 	{ "\\copier", LyXRC::RC_COPIER },
 	{ "\\cursor_follows_scrollbar", LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\custom_export_command", LyXRC::RC_CUSTOM_EXPORT_COMMAND },
@@ -167,6 +168,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\tex_expects_windows_paths", LyXRC::RC_TEX_EXPECTS_WINDOWS_PATHS },
 	{ "\\ui_file", LyXRC::RC_UIFILE },
 	{ "\\use_alt_language", LyXRC::RC_USE_ALT_LANG },
+	{ "\\use_converter_cache", LyXRC::RC_USE_CONVERTER_CACHE },
 	{ "\\use_escape_chars", LyXRC::RC_USE_ESC_CHARS },
 	{ "\\use_input_encoding", LyXRC::RC_USE_INP_ENC },
 	{ "\\use_lastfilepos", LyXRC::RC_USELASTFILEPOS },
@@ -289,6 +291,8 @@ void LyXRC::setDefaults() {
 	preview = PREVIEW_OFF;
 	preview_hashed_labels  = false;
 	preview_scale_factor = "0.9";
+	use_converter_cache = false;
+	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 
 	user_name = support::user_name();
 
@@ -1187,6 +1191,17 @@ int LyXRC::read(LyXLex & lexrc)
 				path_prefix = lexrc.getString();
 			break;
 
+		case RC_USE_CONVERTER_CACHE:
+			if (lexrc.next())
+				use_converter_cache = lexrc.getBool();
+			break;
+
+		case RC_CONVERTER_CACHE_MAXAGE:
+			if (lexrc.next())
+				converter_cache_maxage =
+					convert<unsigned int>(lexrc.getString());
+			break;
+
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -1461,6 +1476,20 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    preview_scale_factor != system_lyxrc.preview_scale_factor) {
 			os << "\\preview_scale_factor "
 			   << preview_scale_factor << '\n';
+		}
+
+	case RC_USE_CONVERTER_CACHE:
+		if (ignore_system_lyxrc ||
+		    use_converter_cache != system_lyxrc.use_converter_cache) {
+			os << "\\use_converter_cache "
+			   << convert<string>(use_converter_cache) << '\n';
+		}
+
+	case RC_CONVERTER_CACHE_MAXAGE:
+		if (ignore_system_lyxrc ||
+		    converter_cache_maxage != system_lyxrc.converter_cache_maxage) {
+			os << "\\converter_cache_maxage"
+			   << converter_cache_maxage << '\n';
 		}
 
 		os << "\n#\n"

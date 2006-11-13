@@ -33,6 +33,7 @@
 #cmakedefine HAVE_IOS 1
 #cmakedefine HAVE_LOCALE 1
 #cmakedefine HAVE_OPEN 1
+#cmakedefine HAVE_CHMOD 1
 #cmakedefine HAVE_CLOSE 1
 #cmakedefine HAVE_POPEN 1
 #cmakedefine HAVE_PCLOSE 1
