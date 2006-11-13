@@ -56,7 +56,7 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		this, SLOT( deletePressed() ) );
 	connect(styleCB, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
-	connect(databaseLW, SIGNAL( selectionChanged() ),
+	connect(databaseLW, SIGNAL( itemSelectionChanged() ),
 		this, SLOT( databaseChanged() ) );
 	connect(bibtocCB, SIGNAL( toggled(bool) ),
 		this, SLOT( change_adaptor() ) );
