@@ -170,8 +170,8 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	setAcceptDrops(true);
 	setMinimumSize(100, 70);
 
-	//viewport()->setAutoFillBackground(false);
-	//viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
+	viewport()->setAutoFillBackground(false);
+	viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
 	setFocusPolicy(Qt::WheelFocus);
 
 	viewport()->setCursor(Qt::IBeamCursor);
