@@ -18,7 +18,7 @@ PENDING FEATURES:
 
 * esint (GBaum)
 
-* image cache (GBaum)
+* navigate through child docs (GBaum)
 
 
 BUGS:
@@ -30,6 +30,15 @@ FILE
   /tmp, which is obviously not true.  The file is there, and if I try to Save
   as again, I get the overwrite popup warning twice: once in English, once 
   in French. (J. P. Chretien)
+
+* Loading de_Userguide.lyx results in two parse errors:
+  Paragraph ended in line 21206
+  Missing \end_layout.
+  Paragraph ended in line 21301
+  Missing \end_layout.
+  I don't know if that is a lyx2lyx or LyX problem. LyX 1.4 can read the file.
+  Maybe related: Typesetting that document does not work (some math macro
+  problem).
 
 
 SPELL CHECKING (Joost 4/11/06)
