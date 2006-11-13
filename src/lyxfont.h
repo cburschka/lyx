@@ -62,6 +62,8 @@ public:
 		///
 		WASY_FAMILY,
 		///
+		ESINT_FAMILY,
+		///
 		INHERIT_FAMILY,
 		///
 		IGNORE_FAMILY,
@@ -379,6 +381,7 @@ bool LyXFont::isSymbolFont() const
 	case LyXFont::MSA_FAMILY:
 	case LyXFont::MSB_FAMILY:
 	case LyXFont::WASY_FAMILY:
+	case LyXFont::ESINT_FAMILY:
 		return true;
 	default:
 		return false;

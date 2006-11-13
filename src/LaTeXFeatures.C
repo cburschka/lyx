@@ -277,13 +277,19 @@ string const LaTeXFeatures::getPackages() const
 
 	if (isRequired("amsmath")
 	    && !tclass.provides(LyXTextClass::amsmath)
-	    && params_.use_amsmath != BufferParams::AMS_OFF) {
+	    && params_.use_amsmath != BufferParams::package_off) {
 		packages << "\\usepackage{amsmath}\n";
 	}
 
 	// wasysym is a simple feature, but it must be after amsmath if both
 	// are used
-	if (isRequired("wasysym"))
+	// wasysym redefines some integrals (e.g. iint) from amsmath. That
+	// leads to inconsistent integrals. We only load this package if
+	// esint is used, since esint redefines all relevant integral
+	// symbols from wasysym and amsmath.
+	// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
+	if (isRequired("wasysym") && isRequired("esint") &&
+	    params_.use_esint != BufferParams::package_off)
 		packages << "\\usepackage{wasysym}\n";
 
 	// color.sty
@@ -353,8 +359,14 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// amssymb.sty
-	if (isRequired("amssymb") || params_.use_amsmath == BufferParams::AMS_ON)
+	if (isRequired("amssymb") || params_.use_amsmath == BufferParams::package_on)
 		packages << "\\usepackage{amssymb}\n";
+
+	// esint must be after amsmath and wasysym, since it will redeclare
+	// inconsistent integral symbols
+	if (isRequired("esint") && params_.use_esint != BufferParams::package_off)
+		packages << "\\usepackage{esint}\n";
+
 	// url.sty
 	if (isRequired("url") && ! tclass.provides(LyXTextClass::url))
 		packages << "\\IfFileExists{url.sty}{\\usepackage{url}}\n"

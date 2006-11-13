@@ -40,8 +40,8 @@ MacroData::MacroData()
 {}
 
 
-MacroData::MacroData(docstring const & def, int numargs, docstring const & disp)
-	: def_(def), numargs_(numargs), disp_(disp)
+MacroData::MacroData(docstring const & def, int numargs, docstring const & disp, string const & requires)
+	: def_(def), numargs_(numargs), disp_(disp), requires_(requires)
 {}
 
 
@@ -99,11 +99,13 @@ void MacroTable::insert(docstring const & name, MacroData const & data)
 }
 
 
-void MacroTable::insert(docstring const & def)
+void MacroTable::insert(docstring const & def, string const & requires)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
 	MathMacroTemplate mac(def);
-	insert(mac.name(), mac.asMacroData());
+	MacroData data = mac.asMacroData();
+	data.requires() = requires;
+	insert(mac.name(), data);
 }
 
 

@@ -226,7 +226,7 @@ void MathMacroTemplate::write(WriteStream & os) const
 
 MacroData MathMacroTemplate::asMacroData() const
 {
-	return MacroData(asString(cell(0)), numargs(), asString(cell(1)));
+	return MacroData(asString(cell(0)), numargs(), asString(cell(1)), std::string());
 }
 
 

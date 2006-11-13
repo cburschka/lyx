@@ -147,18 +147,25 @@ void initSymbols()
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
 			//lyxerr << "macro definition: '" << line << '\'' << endl;
-			MacroTable::globalMacros().insert(from_utf8(line));
+			istringstream is(line);
+			string macro;
+			string requires;
+			is >> macro >> requires;
+			MacroTable::globalMacros().insert(from_utf8(macro), requires);
 			continue;
 		}
 
 		idocstringstream is(from_utf8(line));
 		latexkeys tmp;
-		is >> tmp.name >>	tmp.inset;
+		is >> tmp.name >> tmp.inset;
 		if (isFontName(tmp.inset))
 			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
 		else
 			is >> tmp.extra;
-		if (!is) {
+		// requires is optional
+		if (is)
+			is >> tmp.requires;
+		else {
 			lyxerr[Debug::MATHED] << "skipping line '" << line << '\'' << endl;
 			lyxerr[Debug::MATHED]
 				<< to_utf8(tmp.name) << ' ' << to_utf8(tmp.inset) << ' ' << to_utf8(tmp.extra) << endl;
@@ -170,11 +177,11 @@ void initSymbols()
 			// create fallbacks if necessary
 
 			// store requirements as long as we can
-			if (tmp.inset == "msa" || tmp.inset == "msb")
+			if (tmp.requires.empty() &&
+			    (tmp.inset == "msa" || tmp.inset == "msb"))
 				tmp.requires = from_ascii("amssymb");
-			// See http://bugzilla.lyx.org/show_bug.cgi?id=1942
-			// else if (tmp.inset == "wasy")
-			//	tmp.requires = "wasysym";
+			else if (tmp.inset == "wasy")
+				tmp.requires = from_ascii("wasysym");
 
 			// symbol font is not available sometimes
 			docstring symbol_font = from_ascii("lyxsymbol");
@@ -216,6 +223,7 @@ void initSymbols()
 			<< "  inset: " << to_utf8(tmp.inset)
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
+			<< "  requires: " << to_utf8(tmp.requires)
 			<< '\'' << endl;
 	}
 	docstring tmp = from_ascii("cmm");

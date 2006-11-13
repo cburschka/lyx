@@ -584,6 +584,29 @@ def revert_printnomenclature(document):
         document.preamble.append('\\makenomenclature')
 
 
+def convert_esint(document):
+    " Add \\use_esint setting to header. "
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing `\\cite_engine'.")
+        return
+    # 0 is off, 1 is auto, 2 is on.
+    document.header.insert(i, '\\use_esint 0')
+
+
+def revert_esint(document):
+    " Remove \\use_esint setting from header. "
+    i = find_token(document.header, "\\use_esint", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing `\\use_esint'.")
+        return
+    use_esint = document.header[i].split()[1]
+    del document.header[i]
+    # 0 is off, 1 is auto, 2 is on.
+    if (use_esint == 2):
+        document.preamble.append('\\usepackage{esint}')
+
+
 ##
 # Conversion hub
 #
@@ -596,9 +619,11 @@ convert = [[246, []],
            [250, []],
            [251, []],
            [252, [convert_commandparams, convert_bibitem]],
-           [253, []]]
+           [253, []],
+           [254, [convert_esint]]]
 
-revert =  [[252, [revert_nomenclature, revert_printnomenclature]],
+revert =  [[253, [revert_esint]],
+           [252, [revert_nomenclature, revert_printnomenclature]],
            [251, [revert_commandparams]],
            [250, [revert_cs_label]],
            [249, []],

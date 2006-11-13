@@ -214,13 +214,21 @@ public:
 	///
 	void readBulletsLaTeX(LyXLex &);
 
-	/// use AMS package, not, or auto
-	enum AMS {
-		AMS_OFF,
-		AMS_AUTO,
-		AMS_ON
+	/// Whether to load a package such as amsmath or esint.
+	/// The enum values must not be changed (file format!)
+	enum Package {
+		/// Don't load the package. For experts only.
+		package_off = 0,
+		/// Load the package if needed (recommended)
+		package_auto = 1,
+		/// Always load the package (e.g. if the document contains
+		/// some ERT that needs the package)
+		package_on = 2
 	};
-	AMS use_amsmath;
+	/// Whether and how to load amsmath
+	Package use_amsmath;
+	/// Whether and how to load esint
+	Package use_esint;
 	///
 	biblio::CiteEngine cite_engine;
 	///

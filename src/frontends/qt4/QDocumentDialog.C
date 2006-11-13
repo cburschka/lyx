@@ -341,11 +341,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 
 
 	mathsModule = new UiWidget<Ui::MathsUi>;
-    connect( mathsModule->amsautoCB, SIGNAL( toggled(bool) ), mathsModule->amsCB, SLOT( setDisabled(bool) ) );
+	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), mathsModule->amsCB, SLOT(setDisabled(bool)));
+	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)), mathsModule->esintCB, SLOT(setDisabled(bool)));
 	// maths
 	connect(mathsModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-
+	connect(mathsModule->esintCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class
@@ -717,12 +719,21 @@ void QDocumentDialog::apply(BufferParams & params)
 		fromqstr(latexModule->psdriverCO->currentText());
 
 	if (mathsModule->amsautoCB->isChecked()) {
-		params.use_amsmath = BufferParams::AMS_AUTO;
+		params.use_amsmath = BufferParams::package_auto;
 	} else {
 		if (mathsModule->amsCB->isChecked())
-			params.use_amsmath = BufferParams::AMS_ON;
+			params.use_amsmath = BufferParams::package_on;
 		else
-			params.use_amsmath = BufferParams::AMS_OFF;
+			params.use_amsmath = BufferParams::package_off;
+	}
+
+	if (mathsModule->esintautoCB->isChecked())
+		params.use_esint = BufferParams::package_auto;
+	else {
+		if (mathsModule->esintCB->isChecked())
+			params.use_esint = BufferParams::package_on;
+		else
+			params.use_esint = BufferParams::package_off;
 	}
 
 	// text layout
@@ -994,9 +1005,14 @@ void QDocumentDialog::update(BufferParams const & params)
 
 
 	mathsModule->amsCB->setChecked(
-		params.use_amsmath == BufferParams::AMS_ON);
+		params.use_amsmath == BufferParams::package_on);
 	mathsModule->amsautoCB->setChecked(
-		params.use_amsmath == BufferParams::AMS_AUTO);
+		params.use_amsmath == BufferParams::package_auto);
+
+	mathsModule->esintCB->setChecked(
+		params.use_esint == BufferParams::package_on);
+	mathsModule->esintautoCB->setChecked(
+		params.use_esint == BufferParams::package_auto);
 
 	switch (params.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;

@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------§
 
+2006-11-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 254: new header parameter \use_esint.
+	It can have the same values as \use_amsmath: 0 (off), 1 (auto) and
+	2 (on).
+
 2006-10-18  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 253: new nomenclature and printnomenclature

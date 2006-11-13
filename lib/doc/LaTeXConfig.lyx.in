@@ -2399,7 +2399,7 @@ Notes: The package
 \family sans
 color
 \family default
- is needed by LyX to handled colored text.
+ is needed by LyX to handle colored text.
  These colors will not show in the DVI preview window, but will be correct
  on the printed output or with a PostScript® previewer.
  This package is bundled with the 
@@ -2680,6 +2680,43 @@ dvipost
 dvipost 
 \family default
 needs teTeX version 2 or newer.
+\end_layout
+
+\begin_layout Subsection
+esint
+\end_layout
+
+\begin_layout Description
+Found: @chk_esint@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/esint/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+esint
+\family default
+ is used to typeset mathematical integral signs.
+ The most commonly used integral signs can be typeset without this package,
+ but they do not always look consistent, since they come from different
+ fonts.
+ The 
+\family sans
+esint
+\family default
+ package offers a consistent look of all integral symbols, and more advanced
+ integrals such as the triple integral 
+\family typewriter
+
+\backslash
+iiint
+\family default
+.
 \end_layout
 
 \begin_layout Subsection

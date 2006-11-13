@@ -245,15 +245,11 @@ bigwedge           cmex         86   0 mathop   x
 biguplus           cmex         85   0 mathop   x
 bigcap             cmex         84   0 mathop   x
 bigcup             cmex         83   0 mathop   x
-int                cmex         82 242 mathop   &int;
-intop              cmex         82 242 mathop   &int;
 prod               cmex         81 213 mathop   x
 sum                cmex         80 229 mathop   x
 bigotimes          cmex         78   0 mathop   x
 bigoplus           cmex         76   0 mathop   x
 bigodot            cmex         74   0 mathop   x
-oint               cmex         72   0 mathop   x
-ointop             cmex         72   0 mathop   x
 bigsqcup           cmex         70   0 mathop   x
 smallint           cmsy        115   0 mathop   x
 triangleleft       cmm          47   0 mathbin  x
@@ -757,10 +753,76 @@ invneg             wasy          24    0  mathrel x
 ocircle            wasy          35    0  mathbin x
 logof              wasy          22    0  mathrel x
 varint             wasy         114    0  mathop  x
-iint               wasy         115    0  mathop  x
-iiint              wasy         116    0  mathop  x
 varoint            wasy         117    0  mathop  x
-oiint              wasy         118    0  mathop  x
+
+
+# From the esint package:
+# We emulate some symbols if the esint10 font is not available.
+# It is important that they have the same requirements in both cases,
+# otherwise the LaTeX output would depend on the availability of the esint10
+# font in the GUI
+iffont esint
+int                esint        001    0  mathop  &int;  esint
+intop              esint        001    0  mathop  &int;  esint
+iint               esint        003    0  mathop  x      esint
+iintop             esint        003    0  mathop  x      esint
+iiint              esint        005    0  mathop  x      esint
+iiintop            esint        005    0  mathop  x      esint
+iiiint             esint        007    0  mathop  x      esint
+iiiintop           esint        007    0  mathop  x      esint
+dotsint            esint        009    0  mathop  x      esint
+dotsintop          esint        009    0  mathop  x      esint
+oint               esint        011    0  mathop  x      esint
+ointop             esint        011    0  mathop  x      esint
+oiint              esint        013    0  mathop  x      esint
+oiintop            esint        013    0  mathop  x      esint
+sqint              esint        015    0  mathop  x      esint
+sqintop            esint        015    0  mathop  x      esint
+sqiint             esint        017    0  mathop  x      esint
+sqiintop           esint        017    0  mathop  x      esint
+ointctrclockwise   esint        023    0  mathop  x      esint
+ointctrclockwiseop esint        023    0  mathop  x      esint
+ointclockwise      esint        025    0  mathop  x      esint
+ointclockwiseop    esint        025    0  mathop  x      esint
+else
+int                cmex          82  242  mathop  &int;  esint
+intop              cmex          82  242  mathop  &int;  esint
+iint               wasy         115    0  mathop  x      esint
+iintop             wasy         115    0  mathop  x      esint
+iiint              wasy         116    0  mathop  x      esint
+iiintop            wasy         116    0  mathop  x      esint
+\def\iiiint{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}        esint
+\def\iiiintop{\int\kern-6mu\int\kern-6mu\int\kern-6mu\int}      esint
+\def\dotsint{\int\kern-3mu\cdots\kern-3mu\int}                  esint
+\def\dotsintop{\int\kern-3mu\cdots\kern-3mu\int}                esint
+oint               cmex          72    0  mathop  x      esint
+ointop             cmex          72    0  mathop  x      esint
+oiint              wasy         118    0  mathop  x      esint
+oiintop            wasy         118    0  mathop  x      esint
+\def\sqint{\square\kern-17mu\int\kern6mu}                       esint
+\def\sqintop{\square\kern-17mu\int\kern6mu}                     esint
+\def\sqiint{\square\kern-20mu\iint\kern3mu}                     esint
+\def\sqiintop{\square\kern-20mu\iint\kern3mu}                   esint
+\def\ointctrclockwise{\circlearrowleft\kern-21mu\int\kern6mu}   esint
+\def\ointctrclockwiseop{\circlearrowleft\kern-21mu\int\kern6mu} esint
+\def\ointclockwise{\circlearrowright\kern-21mu\int\kern6mu}     esint
+\def\ointclockwiseop{\circlearrowright\kern-21mu\int\kern6mu}   esint
+endif
+
+varointclockwise   esint        027    0  mathop  x      esint
+varointclockwiseop esint        027    0  mathop  x      esint
+varointctrclockwise esint       029    0  mathop  x      esint
+varointctrclockwiseop esint     029    0  mathop  x      esint
+varoiint           esint        033    0  mathop  x      esint
+varoiintop         esint        033    0  mathop  x      esint
+landupint          esint        035    0  mathop  x      esint
+landupintop        esint        035    0  mathop  x      esint
+landdownint        esint        037    0  mathop  x      esint
+landdownintop      esint        037    0  mathop  x      esint
+
+
+# From the amsmath package:
+\def\idotsint{\int\kern-3mu\cdots\kern-3mu\int}               amsmath
 
 
 log                lyxblacktext  0   0 func     x

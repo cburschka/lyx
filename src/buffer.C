@@ -143,7 +143,7 @@ using std::string;
 
 namespace {
 
-int const LYX_FORMAT = 253;
+int const LYX_FORMAT = 254;
 
 } // namespace anon
 
@@ -1162,9 +1162,11 @@ void Buffer::validate(LaTeXFeatures & features) const
 		features.require("dvipost");
 
 	// AMS Style is at document level
-	if (params().use_amsmath == BufferParams::AMS_ON
+	if (params().use_amsmath == BufferParams::package_on
 	    || tclass.provides(LyXTextClass::amsmath))
 		features.require("amsmath");
+	if (params().use_esint == BufferParams::package_on)
+		features.require("esint");
 
 	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));

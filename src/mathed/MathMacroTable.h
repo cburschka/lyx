@@ -28,7 +28,7 @@ public:
 	///
 	MacroData();
 	///
-	MacroData(docstring const & def, int nargs, docstring const & disp);
+	MacroData(docstring const & def, int nargs, docstring const & disp, std::string const &);
 	///
 	docstring def() const { return def_; }
 	///
@@ -37,6 +37,10 @@ public:
 	int numargs() const { return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,..
 	void expand(std::vector<MathArray> const & from, MathArray & to) const;
+	///
+	std::string requires() const { return requires_; }
+	///
+	std::string & requires() { return requires_; }
 
 private:
 	///
@@ -45,6 +49,8 @@ private:
 	int numargs_;
 	///
 	docstring disp_;
+	///
+	std::string requires_;
 };
 
 
@@ -55,8 +61,8 @@ private:
 class MacroTable : public std::map<docstring, MacroData>
 {
 public:
-	/// Parse full "\def..." or "\newcommand..." or ...
-	void insert(docstring const & definition);
+	/// Parse full "\\def..." or "\\newcommand..." or ...
+	void insert(docstring const & definition, std::string const &);
 	/// Insert pre-digested macro definition
 	void insert(docstring const & name, MacroData const & data);
 	/// Do we have a macro by that name?

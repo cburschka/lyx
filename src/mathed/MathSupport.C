@@ -551,6 +551,8 @@ fontinfo fontinfos[] = {
 			  inh_shape, LColor::math},
 	{"wasy",          LyXFont::WASY_FAMILY, inh_series,
 			  inh_shape, LColor::none},
+	{"esint",         LyXFont::ESINT_FAMILY, inh_series,
+			  inh_shape, LColor::none},
 
 	// Text fonts
 	{"text",          inh_family, inh_series,

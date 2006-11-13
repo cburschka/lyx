@@ -44,7 +44,7 @@ namespace os = lyx::support::os;
 using std::string;
 
 string const win_fonts_truetype[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
-	"eufm10", "msam10", "msbm10", "wasy10"};
+	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
 const int num_fonts_truetype = sizeof(win_fonts_truetype) / sizeof(*win_fonts_truetype);
 #endif
 

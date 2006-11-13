@@ -1053,7 +1053,7 @@ void InsetMathHull::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (type_ == hullSimple || type_ == hullEquation) {
 			recordUndoInset(cur);
 			bool const align =
-				cur.bv().buffer()->params().use_amsmath == BufferParams::AMS_ON;
+				cur.bv().buffer()->params().use_amsmath == BufferParams::package_on;
 			mutate(align ? hullAlign : hullEqnArray);
 			cur.idx() = 0;
 			cur.pos() = cur.lastpos();

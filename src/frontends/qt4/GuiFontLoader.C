@@ -91,7 +91,11 @@ symbol_font symbol_fonts[] = {
 
 	{ LyXFont::WASY_FAMILY,
 		"wasy10",
-		"-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" }
+		"-*-wasy10-medium-*-*-*-*-*-*-*-*-*-*-*" },
+
+	{ LyXFont::ESINT_FAMILY,
+		"esint10",
+		"-*-esint10-medium-*-*-*-*-*-*-*-*-*-*-*" }
 };
 
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_font);
@@ -121,7 +125,7 @@ string const symbolFamily(LyXFont::FONT_FAMILY family)
 bool isSymbolFamily(LyXFont::FONT_FAMILY family)
 {
 	return family >= LyXFont::SYMBOL_FAMILY &&
-		family <= LyXFont::WASY_FAMILY;
+	       family <= LyXFont::ESINT_FAMILY;
 }
 
 
@@ -130,6 +134,10 @@ bool isChosenFont(QFont & font, string const & family)
 	lyxerr[Debug::FONT] << "raw: " << fromqstr(font.rawName()) << endl;
 
 	QFontInfo fi(font);
+	// QFontInfo won't find a font that has only a few glyphs at unusual
+	// positions, e.g. the original esint10 font.
+	// The workaround is to add dummy glyphs at least at all ASCII
+	// positions.
 
 	// Note Qt lies about family quite often
 	lyxerr[Debug::FONT] << "alleged fi family: "

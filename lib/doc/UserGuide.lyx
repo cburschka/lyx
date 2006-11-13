@@ -1,4 +1,4 @@
-#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -16,6 +16,7 @@
 % provides missing characters,
 % see note in chapter 'Character Tables'
 \usepackage{textcomp}
+\usepackage{wasysym}
 
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
@@ -18666,6 +18667,104 @@ functions
 
 \end_inset
 
+.
+\end_layout
+
+\begin_layout Subsubsection
+Special integral symbols
+\end_layout
+
+\begin_layout Standard
+Standard LaTeX does only provide a very limited set of integral symbols.
+ Therefore several packages implement additional symbols, e.g.\InsetSpace ~
+moredimensional
+ integrals like 
+\begin_inset Formula $\iint$
+\end_inset
+
+ (
+\family typewriter
+
+\backslash
+iint
+\family default
+).
+ Unfortunately they do not always look consistent, e.g.\InsetSpace ~
+the 
+\family typewriter
+
+\begin_inset Formula $\iint$
+\end_inset
+
+ (
+\backslash
+iint)
+\family default
+ symbol from the 
+\family typewriter
+wasysym
+\family default
+ package looks like 
+\family typewriter
+
+\begin_inset Formula $\varint$
+\end_inset
+
+ (
+\backslash
+varint
+\family default
+), not 
+\family typewriter
+
+\begin_inset Formula $\int$
+\end_inset
+
+ (
+\backslash
+int
+\family default
+).
+ Therefore you should enable the automatic loading of the 
+\family typewriter
+esint
+\family default
+ package in 
+\family sans
+\bar under
+D
+\bar default
+ocument\SpecialChar \menuseparator
+
+\bar under
+S
+\bar default
+ettings
+\family default
+ if you need special integrals.
+ This package defines a complete set of consistent looking integral symbols.
+ You can find most of them in the math panel.
+ This document does use the 
+\family typewriter
+wasysym
+\family default
+ package instead of the 
+\family typewriter
+esint
+\family default
+ package, because the latter is not yet included in all TeX distributions,
+ so you can see the different looking integral symbols using 
+\family sans
+\bar under
+V
+\bar default
+iew\SpecialChar \menuseparator
+
+\bar under
+D
+\bar default
+VI
+\family default
 .
 \end_layout
 

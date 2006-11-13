@@ -174,23 +174,22 @@ SidesTranslator const & sidestranslator()
 }
 
 
+// LaTeX packages
+typedef Translator<int, BufferParams::Package> PackageTranslator;
 
-// AMS
-typedef Translator<int, BufferParams::AMS> AMSTranslator;
 
-
-AMSTranslator const init_amstranslator()
+PackageTranslator const init_packagetranslator()
 {
-	AMSTranslator translator(0, BufferParams::AMS_OFF);
-	translator.addPair(1, BufferParams::AMS_AUTO);
-	translator.addPair(2, BufferParams::AMS_ON);
+	PackageTranslator translator(0, BufferParams::package_off);
+	translator.addPair(1, BufferParams::package_auto);
+	translator.addPair(2, BufferParams::package_on);
 	return translator;
 }
 
 
-AMSTranslator const & amstranslator()
+PackageTranslator const & packagetranslator()
 {
-	static AMSTranslator translator = init_amstranslator();
+	static PackageTranslator translator = init_packagetranslator();
 	return translator;
 }
 
@@ -297,7 +296,8 @@ BufferParams::BufferParams()
 	papersize = PAPER_DEFAULT;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
-	use_amsmath = AMS_AUTO;
+	use_amsmath = package_auto;
+	use_esint = package_auto;
 	cite_engine = biblio::ENGINE_BASIC;
 	use_bibtopic = false;
 	trackChanges = false;
@@ -482,7 +482,11 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\use_amsmath") {
 		int use_ams;
 		lex >> use_ams;
-		use_amsmath = amstranslator().find(use_ams);
+		use_amsmath = packagetranslator().find(use_ams);
+	} else if (token == "\\use_esint") {
+		int useesint;
+		lex >> useesint;
+		use_esint = packagetranslator().find(useesint);
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
@@ -632,6 +636,7 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\papersize " << string_papersize[papersize]
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
 	   << "\n\\use_amsmath " << use_amsmath
+	   << "\n\\use_esint " << use_esint
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\paperorientation " << string_orientation[orientation]

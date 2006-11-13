@@ -378,6 +378,8 @@ dist_imagesmath_DATA = \
 	images/math/doteq.xpm \
 	images/math/doteqdot.xpm \
 	images/math/dotplus.xpm \
+	images/math/dotsint.xpm \
+	images/math/dotsintop.xpm \
 	images/math/doublebarwedge.xpm \
 	images/math/downarrow.xpm \
 	images/math/downarrow2.xpm \
@@ -427,6 +429,12 @@ dist_imagesmath_DATA = \
 	images/math/hookrightarrow.xpm \
 	images/math/hphantom.xpm \
 	images/math/hslash.xpm \
+	images/math/iiiint.xpm \
+	images/math/iiiintop.xpm \
+	images/math/iiint.xpm \
+	images/math/iiintop.xpm \
+	images/math/iint.xpm \
+	images/math/iintop.xpm \
 	images/math/imath.xpm \
 	images/math/in.xpm \
 	images/math/infty.xpm \
@@ -556,7 +564,13 @@ dist_imagesmath_DATA = \
 	images/math/nvdash3.xpm \
 	images/math/nwarrow.xpm \
 	images/math/odot.xpm \
+	images/math/oiint.xpm \
+	images/math/oiintop.xpm \
 	images/math/oint.xpm \
+	images/math/ointclockwise.xpm \
+	images/math/ointclockwiseop.xpm \
+	images/math/ointctrclockwise.xpm \
+	images/math/ointctrclockwiseop.xpm \
 	images/math/ointop.xpm \
 	images/math/omega.xpm \
 	images/math/omega2.xpm \
@@ -630,6 +644,10 @@ dist_imagesmath_DATA = \
 	images/math/sphericalangle.xpm \
 	images/math/sqcap.xpm \
 	images/math/sqcup.xpm \
+	images/math/sqiint.xpm \
+	images/math/sqiintop.xpm \
+	images/math/sqint.xpm \
+	images/math/sqintop.xpm \
 	images/math/sqrt.xpm \
 	images/math/sqsubset.xpm \
 	images/math/sqsubseteq.xpm \

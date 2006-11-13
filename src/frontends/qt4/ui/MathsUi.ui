@@ -40,6 +40,23 @@
     </widget>
    </item>
    <item>
+    <widget class="QCheckBox" name="esintautoCB" >
+     <property name="text" >
+      <string>Use esint package &amp;automatically</string>
+     </property>
+     <property name="checked" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="esintCB" >
+     <property name="text" >
+      <string>Use &amp;esint package</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <spacer>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -63,6 +80,7 @@
  </includes>
  <tabstops>
   <tabstop>amsautoCB</tabstop>
+  <tabstop>esintautoCB</tabstop>
  </tabstops>
  <resources/>
  <connections/>

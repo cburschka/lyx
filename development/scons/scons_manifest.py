@@ -1645,6 +1645,8 @@ lib_images_math_files = Split('''
     dot.xpm
     doteq.xpm
     doteqdot.xpm
+    dotsint.xpm
+    dotsintop.xpm
     dotplus.xpm
     doublebarwedge.xpm
     downarrow.xpm
@@ -1695,6 +1697,12 @@ lib_images_math_files = Split('''
     hookrightarrow.xpm
     hphantom.xpm
     hslash.xpm
+    iiiint.xpm
+    iiiintop.xpm
+    iiint.xpm
+    iiintop.xpm
+    iintop.xpm
+    iint.xpm
     imath.xpm
     in.xpm
     infty.xpm
@@ -1824,7 +1832,13 @@ lib_images_math_files = Split('''
     nvdash3.xpm
     nwarrow.xpm
     odot.xpm
+    oiint.xpm
+    oiintop.xpm
     oint.xpm
+    ointclockwise.xpm
+    ointclockwiseop.xpm
+    ointctrclockwise.xpm
+    ointctrclockwiseop.xpm
     ointop.xpm
     omega.xpm
     omega2.xpm
@@ -1898,6 +1912,10 @@ lib_images_math_files = Split('''
     sphericalangle.xpm
     sqcap.xpm
     sqcup.xpm
+    sqiint.xpm
+    sqiintop.xpm
+    sqint.xpm
+    sqintop.xpm
     sqrt.xpm
     sqsubset.xpm
     sqsubseteq.xpm
