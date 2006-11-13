@@ -197,7 +197,7 @@ def checkDTLtools():
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
-    if (dtl_tools):
+    if (dtl_tools == 'true'):
         # Windows only: DraftDVI
         converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
 \converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""'''
@@ -287,7 +287,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
-    if (dtl_tools):
+    if (dtl_tools == 'true'):
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document,vector"')
     #
