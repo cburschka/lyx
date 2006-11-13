@@ -1672,8 +1672,14 @@ bool LyXText::erase(LCursor & cur)
 		needsUpdate = dissolveInset(cur);
 
 	// Make sure the cursor is correct. Is this really needed?
-	if (needsUpdate)
+	// FIXME: Inserting characters has nothing to do with setting a cursor.
+	// Because of the mix between the model (the paragraph contents)
+	// and the view (the paragraph breaking in rows, we have to do this
+	// here before the setCursorIntern() call.
+	if (needsUpdate) {
+		redoParagraph(cur.bv(), cur.pit());
 		setCursorIntern(cur, cur.pit(), cur.pos());
+	}
 	
 	return needsUpdate;
 }
