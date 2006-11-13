@@ -183,7 +183,7 @@ PAINTING & PERFORMANCE
   selection does not change (moving the mouse with the left button pushed down 
   always triggers a repaint).
 
-* Cursor is still not visible on MAC (Bennett 3/11/06). 
+* The cursor is not L-shaped for foreign languages
 
 * Slowness on MAC 1 (Bennett 3/11/06):
   There seems to be a fraction of a second lag between when I press a key and
@@ -206,8 +206,6 @@ PAINTING & PERFORMANCE
 
 
 MAC OS X
-
-* Cursor is still not visible on MAC Bennett (3/11/06).
 
 * Drawing oddities on MAC (Bennett 3/11/06):
   Lines occasionally overlapping vertically, math characters not properly
@@ -362,4 +360,9 @@ CREDITS:
   Object::connect: No such signal LengthCombo::selectionChanged(LyXLength::UNIT)
   Object::connect:  (sender name:   'unitCO')
   Object::connect:  (receiver name: 'QVSpaceUi')
+
   FIXED (JSpitzm 2006-11-12)
+
+* Cursor is still not visible on MAC Bennett (3/11/06).
+  FIXED (Abdel 2006-11-13)
+
