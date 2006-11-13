@@ -2092,6 +2092,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_LOADSESSION:
 	case LyXRC::RC_CHKTEX_COMMAND:
 	case LyXRC::RC_CONVERTER:
+	case LyXRC::RC_CONVERTER_CACHE_MAXAGE:
 	case LyXRC::RC_COPIER:
 	case LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR:
 	case LyXRC::RC_CUSTOM_EXPORT_COMMAND:
@@ -2188,6 +2189,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_USER_NAME:
 	case LyXRC::RC_USETEMPDIR:
 	case LyXRC::RC_USE_ALT_LANG:
+	case LyXRC::RC_USE_CONVERTER_CACHE:
 	case LyXRC::RC_USE_ESC_CHARS:
 	case LyXRC::RC_USE_INP_ENC:
 	case LyXRC::RC_USE_PERS_DICT:
