@@ -40,6 +40,7 @@ lyx_add_msvc_pch(lyx)
 set(lyx_sources ${lyx_sources} ${CMAKE_CURRENT_BINARY_DIR}/version.C)
 
 add_executable(lyx-${qt_postfix}
+	${WIN32_CONSOLE}
 	${lyx_sources} 
 	${lyx_headers}
 	)

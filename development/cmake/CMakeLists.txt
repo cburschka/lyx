@@ -67,8 +67,21 @@ if(ASPELL_FOUND)
 else(ASPELL_FOUND)	
 	message("----- No aspell, to get more information use -Daspell=1")
 endif(ASPELL_FOUND)
-message("")
 set(all)
+
+if(WIN32)
+	if(noconsole)
+		set(noconsole TRUE CACHE TYPE STRING)
+		set(WIN32_CONSOLE WIN32)
+		set(LYX_QTMAIN_LIBRARY ${QT_QTMAIN_LIBRARY})
+		message("----- Console disabled")
+	else(noconsole)
+		message("----- Console enabled, disable it with -Dnoconsole=1")
+	endif(noconsole)
+endif(WIN32)
+
+message("")
+
 
 # create config.h
 include(ConfigureChecks.cmake)
@@ -90,7 +103,7 @@ if(MSVC)
 else(MSVC)
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 endif(MSVC)
-
+	
 if(MSVC AND NOT disable-pch)
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h    ${CMAKE_BINARY_DIR}/pcheaders.h)
 	configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake ${CMAKE_CURRENT_BINARY_DIR}/config_pch.C)
