@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-12 12:58+0100\n"
+"POT-Creation-Date: 2006-11-14 18:04+0100\n"
 "PO-Revision-Date: 2006-11-02 00:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -360,6 +360,16 @@ msgstr "&Automaticky pou¾ívat balíèek AMS math"
 msgid "Use AMS &math package"
 msgstr "P&ou¾ít AMS math balíèek"
 
+#: src/frontends/qt4/ui/MathsUi.ui:45
+#, fuzzy
+msgid "Use esint package &automatically"
+msgstr "&Automaticky pou¾ívat balíèek AMS math"
+
+#: src/frontends/qt4/ui/MathsUi.ui:55
+#, fuzzy
+msgid "Use &esint package"
+msgstr "P&ou¾ít AMS math balíèek"
+
 #: src/frontends/qt4/ui/NumberingUi.ui:63
 msgid "&List in Table of Contents"
 msgstr "Seznam uvnitø O&bsahu"
@@ -484,8 +494,8 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:349
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:95
-#: src/buffer_funcs.C:121 src/buffer_funcs.C:162 src/bufferlist.C:90
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
+#: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
 #: src/lyxfunc.C:862 src/lyxfunc.C:1986 src/lyxvc.C:173
 msgid "&Cancel"
@@ -795,7 +805,7 @@ msgstr "Duktus písma"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:111
 #: src/frontends/qt4/ui/QCharacterUi.ui:148
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:398
 #: src/frontends/qt4/QPrefsDialog.C:1471
 msgid "Language"
 msgstr "Jazyk"
@@ -1349,12 +1359,12 @@ msgid "&Load"
 msgstr "&Naèíst"
 
 # TODO lze i rekurzivne
-#: src/frontends/qt4/ui/QIncludeUi.ui:117 src/insets/insetinclude.C:306
+#: src/frontends/qt4/ui/QIncludeUi.ui:117 src/insets/insetinclude.C:303
 msgid "Input"
 msgstr "Vstup (lze rekurzivnì)"
 
 # TODO nova stranka; viz wiki
-#: src/frontends/qt4/ui/QIncludeUi.ui:122 src/insets/insetinclude.C:315
+#: src/frontends/qt4/ui/QIncludeUi.ui:122 src/insets/insetinclude.C:312
 msgid "Include"
 msgstr "Zahrnout (nová stránka)"
 
@@ -1584,7 +1594,7 @@ msgid "&Shaded"
 msgstr "&Stínování"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2328
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2365
 msgid "Single"
 msgstr "Jedna"
 
@@ -1593,7 +1603,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2334
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2371
 msgid "Double"
 msgstr "Dva"
 
@@ -3351,7 +3361,7 @@ msgstr "Index Terms---"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:398
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:400
 msgid "Bibliography"
 msgstr "Literatura"
 
@@ -4011,7 +4021,7 @@ msgid "Seriate"
 msgstr "Seriate"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:450
+#: src/buffer_funcs.C:449
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -8713,49 +8723,49 @@ msgstr "®ádná dal¹í informace pro návrat zpìt (undo)"
 msgid "No further redo information"
 msgstr "®ádná dal¹í informace pro opakování akce (redo)"
 
-#: src/BufferView.C:829
+#: src/BufferView.C:842
 msgid "Mark off"
 msgstr "Znaèka vyp."
 
-#: src/BufferView.C:836
+#: src/BufferView.C:849
 msgid "Mark on"
 msgstr "Znaèka zap."
 
-#: src/BufferView.C:843
+#: src/BufferView.C:856
 msgid "Mark removed"
 msgstr "Znaèka smazána"
 
-#: src/BufferView.C:846
+#: src/BufferView.C:859
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/BufferView.C:892
+#: src/BufferView.C:905
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d slov ve výbìru."
 
-#: src/BufferView.C:895
+#: src/BufferView.C:908
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d slov v dokumentu."
 
-#: src/BufferView.C:900
+#: src/BufferView.C:913
 msgid "One word in selection."
 msgstr "Jedno slovo ve výbìru."
 
-#: src/BufferView.C:902
+#: src/BufferView.C:915
 msgid "One word in document."
 msgstr "Jedno slovo v dokumentu."
 
-#: src/BufferView.C:905
+#: src/BufferView.C:918
 msgid "Count words"
 msgstr "Spoèítat slova"
 
-#: src/BufferView.C:1334
+#: src/BufferView.C:1344
 msgid "Select LyX document to insert"
 msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 
-#: src/BufferView.C:1336 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1346 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
@@ -8764,31 +8774,31 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.C:1337 src/lyxfunc.C:1863 src/lyxfunc.C:1938
+#: src/BufferView.C:1347 src/lyxfunc.C:1863 src/lyxfunc.C:1938
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
-#: src/BufferView.C:1341 src/lyx_cb.C:141 src/lyxfunc.C:1830
+#: src/BufferView.C:1351 src/lyx_cb.C:141 src/lyxfunc.C:1830
 #: src/lyxfunc.C:1867
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/BufferView.C:1353 src/lyxfunc.C:1877 src/lyxfunc.C:1959
+#: src/BufferView.C:1363 src/lyxfunc.C:1877 src/lyxfunc.C:1959
 #: src/lyxfunc.C:1973 src/lyxfunc.C:1989
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView.C:1364
+#: src/BufferView.C:1374
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkládání dokumentu %1$s..."
 
-#: src/BufferView.C:1374
+#: src/BufferView.C:1385
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s vlo¾en."
 
-#: src/BufferView.C:1376
+#: src/BufferView.C:1387
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
@@ -9078,24 +9088,29 @@ msgstr "Spou¹tím MakeIndex (rejstøík)."
 msgid "Running BibTeX."
 msgstr "Spou¹tím BibTeX."
 
-#: src/MenuBackend.C:464 src/MenuBackend.C:501 src/MenuBackend.C:571
-#: src/MenuBackend.C:593 src/MenuBackend.C:616 src/MenuBackend.C:702
+#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:572
+#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
 msgid "No Documents Open!"
 msgstr "®ádné otevøené dokumenty !"
 
-#: src/MenuBackend.C:539
+#: src/MenuBackend.C:540
 msgid "Plain Text as Lines"
 msgstr "Prostý text jako øádky"
 
-#: src/MenuBackend.C:541
+#: src/MenuBackend.C:542
 msgid "Plain Text as Paragraphs"
 msgstr "Prostý text jako odstavce"
 
-#: src/MenuBackend.C:736
+#: src/MenuBackend.C:714
+#, fuzzy
+msgid "Master Document"
+msgstr "Ulo¾it dokument"
+
+#: src/MenuBackend.C:746
 msgid "No Table of contents"
 msgstr "Bez obsahu|B"
 
-#: src/MenuBackend.C:781
+#: src/MenuBackend.C:791
 msgid " (auto)"
 msgstr ""
 
@@ -9149,29 +9164,29 @@ msgid ""
 "loaded."
 msgstr "Pou¾ita standardní tøída dokumentu, nebo» tøída %1$s nelze naèíst."
 
-#: src/buffer.C:614 src/buffer.C:623
+#: src/buffer.C:612 src/buffer.C:621
 msgid "Document could not be read"
 msgstr "Dokument nemù¾e být pøeèten"
 
-#: src/buffer.C:615 src/buffer.C:624
+#: src/buffer.C:613 src/buffer.C:622
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s nemù¾e být pøeèten."
 
-#: src/buffer.C:632 src/buffer.C:698
+#: src/buffer.C:630 src/buffer.C:696
 msgid "Document format failure"
 msgstr "Chyba formátování dokumentu"
 
-#: src/buffer.C:633
+#: src/buffer.C:631
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s není dokumentem LyX-u."
 
-#: src/buffer.C:652
+#: src/buffer.C:650
 msgid "Conversion failed"
 msgstr "Konverze se nezdaøila"
 
-#: src/buffer.C:653
+#: src/buffer.C:651
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
@@ -9180,11 +9195,11 @@ msgstr ""
 "%1$s je z døívìj¹í verze LyX-u, ale pomocný soubor pro jehokonverzi nemù¾e "
 "být vytvoøen."
 
-#: src/buffer.C:662
+#: src/buffer.C:660
 msgid "Conversion script not found"
 msgstr "Nenalezen konverzní skript"
 
-#: src/buffer.C:663
+#: src/buffer.C:661
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
@@ -9192,11 +9207,11 @@ msgid ""
 msgstr ""
 "%1$s je z døívìj¹í verze LyX-u, ale konverzní skript lyx2lyx nebyl nalezen."
 
-#: src/buffer.C:683
+#: src/buffer.C:681
 msgid "Conversion script failed"
 msgstr "Konverzní skript selhal"
 
-#: src/buffer.C:684
+#: src/buffer.C:682
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
@@ -9204,16 +9219,16 @@ msgid ""
 msgstr ""
 "%1$s je z døívìj¹í verze LyX-u, ale skript lyx2lyx selhal pøi konverzi. "
 
-#: src/buffer.C:699
+#: src/buffer.C:697
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s skonèil neoèekávanì, co¾ znamená, ¾e je pravdìpodobnì po¹kozen."
 
-#: src/buffer.C:735
+#: src/buffer.C:733
 msgid "Backup failure"
 msgstr "Zálohování selhalo"
 
-#: src/buffer.C:736
+#: src/buffer.C:734
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
@@ -9222,11 +9237,11 @@ msgstr ""
 "LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
-#: src/buffer.C:862
+#: src/buffer.C:860
 msgid "Encoding error"
 msgstr "Chyba kódování"
 
-#: src/buffer.C:863
+#: src/buffer.C:861
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
@@ -9236,11 +9251,11 @@ msgstr ""
 "kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/buffer.C:872
+#: src/buffer.C:870
 msgid "Error closing file"
 msgstr "Chyba pøi uzavírání souboru"
 
-#: src/buffer.C:873
+#: src/buffer.C:871
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9252,19 +9267,19 @@ msgstr ""
 "zvolném kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/buffer.C:1131
+#: src/buffer.C:1129
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/buffer.C:1144
+#: src/buffer.C:1142
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/buffer.C:1145
+#: src/buffer.C:1143
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
-#: src/buffer_funcs.C:76
+#: src/buffer_funcs.C:77
 #, c-format
 msgid ""
 "The specified document\n"
@@ -9275,11 +9290,11 @@ msgstr ""
 "%1$s\n"
 "nelze pøeèíst."
 
-#: src/buffer_funcs.C:78
+#: src/buffer_funcs.C:79
 msgid "Could not read document"
 msgstr "Nelze pøeèíst dokument"
 
-#: src/buffer_funcs.C:90
+#: src/buffer_funcs.C:91
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -9290,19 +9305,19 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/buffer_funcs.C:93
+#: src/buffer_funcs.C:94
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/buffer_funcs.C:94
+#: src/buffer_funcs.C:95
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/buffer_funcs.C:94
+#: src/buffer_funcs.C:95
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/buffer_funcs.C:116
+#: src/buffer_funcs.C:117
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -9313,32 +9328,32 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/buffer_funcs.C:119
+#: src/buffer_funcs.C:120
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/buffer_funcs.C:120
+#: src/buffer_funcs.C:121
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/buffer_funcs.C:120
+#: src/buffer_funcs.C:121
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/buffer_funcs.C:159
+#: src/buffer_funcs.C:160
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Chcete obdr¾et dokument %1$s ze správy verzí ?"
 
-#: src/buffer_funcs.C:161
+#: src/buffer_funcs.C:162
 msgid "Retrieve from version control?"
 msgstr "Obdr¾et ze správy verzí"
 
-#: src/buffer_funcs.C:162
+#: src/buffer_funcs.C:163
 msgid "&Retrieve"
 msgstr "&Obdr¾et"
 
-#: src/buffer_funcs.C:195
+#: src/buffer_funcs.C:196
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -9349,23 +9364,23 @@ msgstr ""
 "%1$s\n"
 "nelze pøeèíst."
 
-#: src/buffer_funcs.C:197
+#: src/buffer_funcs.C:198
 msgid "Could not read template"
 msgstr "Nelze pøeèíst ¹ablonou"
 
-#: src/buffer_funcs.C:447
+#: src/buffer_funcs.C:446
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.C:453
+#: src/buffer_funcs.C:452
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.C:456
+#: src/buffer_funcs.C:455
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
-#: src/buffer_funcs.C:492
+#: src/buffer_funcs.C:491
 #, c-format
 msgid "%1$s #:"
 msgstr "%1$s #:"
@@ -9444,12 +9459,12 @@ msgstr "V¹echny ladící výpisy"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Ladìní `%1$s' (%2$s)"
 
-#: src/converter.C:323 src/converter.C:455 src/converter.C:479
-#: src/converter.C:518
+#: src/converter.C:335 src/converter.C:467 src/converter.C:490
+#: src/converter.C:532
 msgid "Cannot convert file"
 msgstr "Soubor nelze konvertovat"
 
-#: src/converter.C:324
+#: src/converter.C:336
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -9458,38 +9473,43 @@ msgstr ""
 "®ádná informace pro konverzi souborù formátu %1$s do %2$s.\n"
 "Definujte konvertor v nastaveních."
 
-#: src/converter.C:410 src/format.C:319 src/format.C:378
+#: src/converter.C:422 src/format.C:319 src/format.C:378
 msgid "Executing command: "
 msgstr "Spou¹tìní pøíkazu: "
 
-#: src/converter.C:450
+#: src/converter.C:462
 msgid "Build errors"
 msgstr "Chyby pøi sestavování"
 
-#: src/converter.C:451
+#: src/converter.C:463
 msgid "There were errors during the build process."
 msgstr "Nastaly chyby bìhem procesu sestavování."
 
-#: src/converter.C:456 src/format.C:326 src/format.C:385
+#: src/converter.C:468 src/format.C:326 src/format.C:385
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Chyba pøi bìhu %1$s"
 
-#: src/converter.C:480 src/converter.C:521
-#, c-format
-msgid "Could not move a temporary file from %1$s to %2$s."
+#: src/converter.C:491
+#, fuzzy, c-format
+msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Nelze pøesunout pomocný soubor z %1$s do %2$s."
 
-#: src/converter.C:520
+#: src/converter.C:534
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Nelze zkopírovat pomocný soubor z %1$s do %2$s."
 
-#: src/converter.C:589
+#: src/converter.C:535
+#, c-format
+msgid "Could not move a temporary file from %1$s to %2$s."
+msgstr "Nelze pøesunout pomocný soubor z %1$s do %2$s."
+
+#: src/converter.C:592
 msgid "Running LaTeX..."
 msgstr "Spou¹tím LaTeX..."
 
-#: src/converter.C:607
+#: src/converter.C:610
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -9497,15 +9517,15 @@ msgid ""
 msgstr ""
 "LaTeX neprobìhl úspì¹nì. Navíc nebyl LyX schopen najít výstup LaTeX-u %1$s."
 
-#: src/converter.C:610
+#: src/converter.C:613
 msgid "LaTeX failed"
 msgstr "LaTeX selhal"
 
-#: src/converter.C:612
+#: src/converter.C:615
 msgid "Output is empty"
 msgstr "Výstup je prázdný"
 
-#: src/converter.C:613
+#: src/converter.C:616
 msgid "An empty output file was generated."
 msgstr "Byl vygenerován prázdný výstupní soubor."
 
@@ -9658,16 +9678,16 @@ msgstr "Chyba ve jménì souboru"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/exporter.C:247
+#: src/exporter.C:249
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/exporter.C:253
+#: src/exporter.C:255
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/exporter.C:259
+#: src/exporter.C:261
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
@@ -9713,7 +9733,7 @@ msgstr " (zmìnìno)"
 msgid " (read only)"
 msgstr " (jen ke ètení)"
 
-#: src/frontends/WorkArea.C:221
+#: src/frontends/WorkArea.C:220
 msgid "Formatting document..."
 msgstr "Formátování dokumentu..."
 
@@ -9730,34 +9750,25 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "mno¾ství práce dal¹ích lidí na projektu LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.C:66
+#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
-"1995-2001 LyX Team"
+"1995-2006 LyX Team"
 msgstr ""
 "LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
 "1995-2001 LyX Team"
 
 #: src/frontends/controllers/ControlAboutlyx.C:72
-msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
-msgstr ""
-"Tento program je svobodný software; mù¾ete jej ¹íøit a modifikovat "
-"podleustanovení GNU General Public License, vydávané Free "
-"SoftwareFoundation; a to buï verze 2 této licence anebo (podle va¹eho "
-"uvá¾ení)kterékoli pozdìj¹í verze."
-
 #: src/frontends/controllers/ControlAboutlyx.C:78
+#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
 "FOR A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
 "You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
-"Ave, Cambridge, MA 02139, USA."
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
 "Tento program je roz¹iøován v nadìji, ¾e bude u¾iteèný, av¹ak BEZJAKÉKOLI "
 "ZÁRUKY; neposkytují se ani odvozené záruky PRODEJNOSTI aneboVHODNOSTI PRO "
@@ -10230,11 +10241,11 @@ msgid "Activated"
 msgstr "Aktivována"
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:623
+#: src/frontends/qt4/QDocumentDialog.C:625
 msgid "Yes"
 msgstr "Ano"
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:622
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
 msgid "No"
 msgstr "Ne"
 
@@ -10305,7 +10316,7 @@ msgstr "Nastavení dokumentu"
 msgid "Length"
 msgstr "Vlastní délka"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2331
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2368
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
@@ -10317,7 +10328,7 @@ msgstr " (není instalován)"
 
 #: src/frontends/qt4/QDocumentDialog.C:172
 #: src/frontends/qt4/QDocumentDialog.C:198
-#: src/frontends/qt4/QDocumentDialog.C:532
+#: src/frontends/qt4/QDocumentDialog.C:534
 msgid "default"
 msgstr "standardní"
 
@@ -10397,54 +10408,54 @@ msgstr "Autor-rok"
 msgid "Numerical"
 msgstr "Numerický"
 
-#: src/frontends/qt4/QDocumentDialog.C:368
+#: src/frontends/qt4/QDocumentDialog.C:370
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Nedostupné: %1$s"
 
-#: src/frontends/qt4/QDocumentDialog.C:391
-#: src/frontends/qt4/QDocumentDialog.C:404
+#: src/frontends/qt4/QDocumentDialog.C:393
+#: src/frontends/qt4/QDocumentDialog.C:406
 msgid "Document Class"
 msgstr "Tøída dokumentu"
 
-#: src/frontends/qt4/QDocumentDialog.C:392
+#: src/frontends/qt4/QDocumentDialog.C:394
 msgid "Fonts"
 msgstr "Fonty"
 
-#: src/frontends/qt4/QDocumentDialog.C:393
+#: src/frontends/qt4/QDocumentDialog.C:395
 msgid "Text Layout"
 msgstr "Rozvr¾ení textu"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocumentDialog.C:396
 msgid "Page Layout"
 msgstr "Rozvr¾ení Stránky"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocumentDialog.C:397
 msgid "Page Margins"
 msgstr "Okraje stránky"
 
-#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:399
 msgid "Numbering & TOC"
 msgstr "Èíslování & Obsah"
 
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocumentDialog.C:401
 msgid "Math Options"
 msgstr "Nastavení Matematiky"
 
-#: src/frontends/qt4/QDocumentDialog.C:400
+#: src/frontends/qt4/QDocumentDialog.C:402
 msgid "Float Placement"
 msgstr "Umístìní plovoucích objektù"
 
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocumentDialog.C:403
 msgid "Bullets"
 msgstr "Odrá¾ky"
 
-#: src/frontends/qt4/QDocumentDialog.C:402
+#: src/frontends/qt4/QDocumentDialog.C:404
 msgid "Branches"
 msgstr "Vìtve"
 
-#: src/frontends/qt4/QDocumentDialog.C:403
-#: src/frontends/qt4/QDocumentDialog.C:419
+#: src/frontends/qt4/QDocumentDialog.C:405
+#: src/frontends/qt4/QDocumentDialog.C:421
 msgid "LaTeX Preamble"
 msgstr "Preambule LaTeXu"
 
@@ -10817,16 +10828,16 @@ msgstr ""
 msgid "Importing %1$s..."
 msgstr "Importování %1$s..."
 
-#: src/importer.C:64
+#: src/importer.C:67
 msgid "Couldn't import file"
 msgstr "Soubor nelze importovat"
 
-#: src/importer.C:65
+#: src/importer.C:68
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "®ádná informace pro import formátu %1$s."
 
-#: src/importer.C:91
+#: src/importer.C:94
 msgid "imported."
 msgstr "importováno."
 
@@ -10924,16 +10935,16 @@ msgstr "ERT"
 msgid "External template %1$s is not installed"
 msgstr "Externí ¹ablona %1$s není instalovaná"
 
-#: src/insets/insetfloat.C:123 src/insets/insetfloat.C:364
-#: src/insets/insetfloat.C:374
+#: src/insets/insetfloat.C:121 src/insets/insetfloat.C:362
+#: src/insets/insetfloat.C:372
 msgid "float: "
 msgstr "plovoucí objekt: "
 
-#: src/insets/insetfloat.C:280
+#: src/insets/insetfloat.C:278
 msgid "Opened Float Inset"
 msgstr "Plovoucí objekt - otevøená vlo¾ka"
 
-#: src/insets/insetfloat.C:376
+#: src/insets/insetfloat.C:374
 msgid " (sideways)"
 msgstr " (na bok)"
 
@@ -10954,7 +10965,7 @@ msgstr "patièka"
 msgid "Opened Footnote Inset"
 msgstr "Poznámka pod èarou - otevøená vlo¾ka"
 
-#: src/insets/insetgraphics.C:474 src/insets/insetinclude.C:447
+#: src/insets/insetgraphics.C:474 src/insets/insetinclude.C:444
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -10970,7 +10981,7 @@ msgstr ""
 msgid "No conversion of %1$s is needed after all"
 msgstr "Konverze %1$s není vùbec potøeba"
 
-#: src/insets/insetgraphics.C:816
+#: src/insets/insetgraphics.C:818
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Soubor s obrázkem: %1$s"
@@ -10979,15 +10990,15 @@ msgstr "Soubor s obrázkem: %1$s"
 msgid "Horizontal Fill"
 msgstr "Horizontální výplò"
 
-#: src/insets/insetinclude.C:309
+#: src/insets/insetinclude.C:306
 msgid "Verbatim Input"
 msgstr "Vstup-doslovnì"
 
-#: src/insets/insetinclude.C:312
+#: src/insets/insetinclude.C:309
 msgid "Verbatim Input*"
 msgstr "Vstup-doslovnì*"
 
-#: src/insets/insetinclude.C:414
+#: src/insets/insetinclude.C:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -10998,7 +11009,7 @@ msgstr ""
 "je textové tøídy `%2$s'\n"
 "zatímco rodièovský soubor má tøídu `%3$s'."
 
-#: src/insets/insetinclude.C:420
+#: src/insets/insetinclude.C:417
 msgid "Different textclasses"
 msgstr "Rozdílné textové tøídy"
 
@@ -11415,11 +11426,11 @@ msgstr ""
 "Musíte znovu spustit LyX, aby se nechaly pou¾ívat v¹echny\n"
 "aktualizované nastavení tøíd dokumentù."
 
-#: src/lyx_main.C:119
+#: src/lyx_main.C:120
 msgid "Could not read configuration file"
 msgstr "Nelze pøeèíst konfiguraèní soubor"
 
-#: src/lyx_main.C:120
+#: src/lyx_main.C:121
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11430,37 +11441,37 @@ msgstr ""
 "%1$s.\n"
 "Zkontrolujte prosím va¹i instalaci."
 
-#: src/lyx_main.C:129
+#: src/lyx_main.C:130
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: pøekonfigurování u¾ivatelského adresáøe"
 
-#: src/lyx_main.C:133
+#: src/lyx_main.C:134
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:379
+#: src/lyx_main.C:380
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nelze smazat pomocný adresáø %1$s"
 
-#: src/lyx_main.C:381
+#: src/lyx_main.C:382
 msgid "Unable to remove temporary directory"
 msgstr "Nelze smazat pomocný adresáø"
 
-#: src/lyx_main.C:419
+#: src/lyx_main.C:420
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Chybný parametr pøíkazové øádky `%1$s'. Konec."
 
-#: src/lyx_main.C:658
+#: src/lyx_main.C:659
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:780
+#: src/lyx_main.C:781
 msgid "Could not create temporary directory"
 msgstr "Nelze vytvoøit pomocný adresáø"
 
-#: src/lyx_main.C:781
+#: src/lyx_main.C:782
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11471,11 +11482,11 @@ msgstr ""
 "%1$s. Ujistìte se, ¾e\n"
 "tato cesta existuje a má práva na zápis. Poté zkuste znovu."
 
-#: src/lyx_main.C:933
+#: src/lyx_main.C:939
 msgid "Missing user LyX directory"
 msgstr "Chybí u¾ivatelský adresáø LyX-u"
 
-#: src/lyx_main.C:934
+#: src/lyx_main.C:940
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11484,37 +11495,37 @@ msgstr ""
 "Zadal jste neexistující u¾ivatelský adresáø LyX-u, %1$s.\n"
 "Je potøebný k uchování va¹í konfigurace."
 
-#: src/lyx_main.C:939
+#: src/lyx_main.C:945
 msgid "&Create directory"
 msgstr "&ytvoøit adresáø"
 
-#: src/lyx_main.C:940
+#: src/lyx_main.C:946
 msgid "&Exit LyX"
 msgstr "&Ukonèit LyX"
 
-#: src/lyx_main.C:941
+#: src/lyx_main.C:947
 msgid "No user LyX directory. Exiting."
 msgstr "®ádný u¾ivatelský adresáø LyX-u. Konec."
 
-#: src/lyx_main.C:945
+#: src/lyx_main.C:951
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváøím adresáø %1$s"
 
-#: src/lyx_main.C:951
+#: src/lyx_main.C:957
 msgid "Failed to create directory. Exiting."
 msgstr "Selhalo vytváøení adresáøe. Konec."
 
-#: src/lyx_main.C:1106
+#: src/lyx_main.C:1112
 msgid "List of supported debug flags:"
 msgstr "Seznam podporovaných ladících pøíznakù:"
 
-#: src/lyx_main.C:1110
+#: src/lyx_main.C:1116
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
-#: src/lyx_main.C:1121
+#: src/lyx_main.C:1127
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11554,27 +11565,27 @@ msgstr ""
 "\t-version        shrnout verzi a informace o sestavení\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
-#: src/lyx_main.C:1157
+#: src/lyx_main.C:1163
 msgid "Missing directory for -sysdir switch"
 msgstr "Chybí adresáø pro pøepínaè -sysdir"
 
-#: src/lyx_main.C:1167
+#: src/lyx_main.C:1173
 msgid "Missing directory for -userdir switch"
 msgstr "Chybí adresáø pro pøepínaè -userdir"
 
-#: src/lyx_main.C:1177
+#: src/lyx_main.C:1183
 msgid "Missing command string after --execute switch"
 msgstr "Chybí pøíkaz za pøepínaèem --execute"
 
-#: src/lyx_main.C:1187
+#: src/lyx_main.C:1193
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --export"
 
-#: src/lyx_main.C:1199
+#: src/lyx_main.C:1205
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --import"
 
-#: src/lyx_main.C:1204
+#: src/lyx_main.C:1210
 msgid "Missing filename for --import"
 msgstr "Chybí jméno souboru za pøepínaèem --import"
 
@@ -11799,19 +11810,19 @@ msgstr "Vybrat soubor %1$s k importu"
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
-#: src/lyxrc.C:2137
+#: src/lyxrc.C:2166
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr "Pova¾ovat slo¾eniny typu \"kafemlejnek\" za legální slova ?"
 
-#: src/lyxrc.C:2142
+#: src/lyxrc.C:2171
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Nastavit alternativní jazyk. Standardnì se pou¾ívá jazyk dokumentu."
 
-#: src/lyxrc.C:2146
+#: src/lyxrc.C:2175
 msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
@@ -11822,7 +11833,7 @@ msgstr ""
 "pøedstavuje vstupní soubor. Pokud je nastaveno na \"\" pou¾ije se interní "
 "funkce."
 
-#: src/lyxrc.C:2150
+#: src/lyxrc.C:2179
 msgid ""
 "This is the maximum line length of an exported text file (LaTeX, SGML or "
 "plain text)."
@@ -11830,7 +11841,7 @@ msgstr ""
 "Toto je maximální délka øádky exportovaného (textového) souboru (LaTeX, SGML "
 "nebo prostý text)."
 
-#: src/lyxrc.C:2154
+#: src/lyxrc.C:2183
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -11838,7 +11849,7 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automaticky pøepisovat oznaèený text tím, co "
 "zrovna pí¹ete na klávesnici."
 
-#: src/lyxrc.C:2158
+#: src/lyxrc.C:2187
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -11846,14 +11857,14 @@ msgstr ""
 "Zru¹te volbu, pokud nechcete automatické standardní nastavení pro novì "
 "zvolenou tøídu."
 
-#: src/lyxrc.C:2162
+#: src/lyxrc.C:2191
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Èasový interval pro automatické ukládání (v sekundách).0 vypne automatické "
 "ukládání."
 
-#: src/lyxrc.C:2169
+#: src/lyxrc.C:2198
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -11861,7 +11872,7 @@ msgstr ""
 "Cesta pro zálo¾ní soubory. V pøípadì prázdného øetìzce LyX ulo¾í zálohy do "
 "stejného adresáøe, ve kterém je originální soubor."
 
-#: src/lyxrc.C:2173
+#: src/lyxrc.C:2202
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -11869,7 +11880,7 @@ msgstr ""
 "Zvolte nastavení pro bibtex (viz man bibtex) nebo zvolte alternativní "
 "pøkladaè (napø. mlbibtex or bibulus)."
 
-#: src/lyxrc.C:2177
+#: src/lyxrc.C:2206
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -11877,11 +11888,11 @@ msgstr ""
 "Soubor klávesových zkratek. Lze nastavit absolutní cestu; jinak bude LyX "
 "hledat v jeho lokálních a globálních adresáøích bind/ ."
 
-#: src/lyxrc.C:2181
+#: src/lyxrc.C:2210
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Kontrolovat existenci naposledy otevøených souborù."
 
-#: src/lyxrc.C:2185
+#: src/lyxrc.C:2214
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -11889,7 +11900,7 @@ msgstr ""
 "Nastavte zpùsob spu¹tìní chktex-u. Napø. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
 "n25 -n30 -n38\" Viz dokumentace ChkTeX-u."
 
-#: src/lyxrc.C:2195
+#: src/lyxrc.C:2224
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -11897,7 +11908,7 @@ msgstr ""
 "LyX za normální situace nemìní pozici kurzoru pøi pohybu posuvníkem. "
 "Nastavte true pokud chcete mít kurzor v¾dy na obrazovce."
 
-#: src/lyxrc.C:2206
+#: src/lyxrc.C:2235
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -11906,15 +11917,15 @@ msgstr ""
 "Akceptován standardní strftime formát; detaily viz man strftime. Napø.\"%A, %"
 "e. %B %Y\"."
 
-#: src/lyxrc.C:2210
+#: src/lyxrc.C:2239
 msgid "New documents will be assigned this language."
 msgstr "Nové dokumenty budou mít nastaven tento jazyk."
 
-#: src/lyxrc.C:2214
+#: src/lyxrc.C:2243
 msgid "Specify the default paper size."
 msgstr "Nastavení standardní velikosti papíru."
 
-#: src/lyxrc.C:2218
+#: src/lyxrc.C:2247
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -11922,11 +11933,11 @@ msgstr ""
 "Minimalizuj dialogová okna spoleènì s hlavním oknem LyX-u. (Vztahuje se "
 "pouze na dialogy zobrazené po zmìnì nastavení.)"
 
-#: src/lyxrc.C:2222
+#: src/lyxrc.C:2251
 msgid "Select how LyX will display any graphics."
 msgstr "Nastavení zpùsobu zobrazení obrázkù v LyX-u."
 
-#: src/lyxrc.C:2226
+#: src/lyxrc.C:2255
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -11934,11 +11945,11 @@ msgstr ""
 "Standardní cesta pro va¹e dokumenty. V pøípadì prázdného øetìzce LyX vybere "
 "adresáø, ze kterého byl spou¹tìn."
 
-#: src/lyxrc.C:2231
+#: src/lyxrc.C:2260
 msgid "Specify additional chars that can be part of a word."
 msgstr "Urèení dodateèných znakù, které mohou být souèástí slova."
 
-#: src/lyxrc.C:2235
+#: src/lyxrc.C:2264
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -11946,7 +11957,7 @@ msgstr ""
 "Kódování fontu který je pou¾íván balíèkem fontenc LaTeX2e. T1 je velmi "
 "doporuèen pro neanglické jazyky."
 
-#: src/lyxrc.C:2242
+#: src/lyxrc.C:2271
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -11956,7 +11967,7 @@ msgstr ""
 "kompilátor - napø. za pou¾ití xindy/make-rules by pøíkaz vypadal \"makeindex."
 "sh -m $$lang\"."
 
-#: src/lyxrc.C:2251
+#: src/lyxrc.C:2280
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -11964,11 +11975,11 @@ msgstr ""
 "Pou¾ijte k nastavení souboru mapy kláves pro va¹i klávesnici. To lze napø. "
 "vyu¾ít v pøípadì, ¾e chcete psát dokumnety v èe¹tinì na anglické klávesnici."
 
-#: src/lyxrc.C:2255
+#: src/lyxrc.C:2284
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Maximální poèet slov v poèáteèním øetìzci nové znaèky"
 
-#: src/lyxrc.C:2259
+#: src/lyxrc.C:2288
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
@@ -11976,14 +11987,14 @@ msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na zaèátku "
 "dokumentu."
 
-#: src/lyxrc.C:2263
+#: src/lyxrc.C:2292
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Vyberte v pøípadì, ¾e je tøeba pou¾ívat pøíkaz pro zmìnu jazyka na konci "
 "dokumentu."
 
-#: src/lyxrc.C:2267
+#: src/lyxrc.C:2296
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -11992,15 +12003,15 @@ msgstr ""
 "Pøíkaz LaTeX-u, který pøepne z jazyka dokumentu na jiný jazyk. Napø. "
 "\\selectlanguage{$$lang} kde $$lang je jméno druhého jazyka."
 
-#: src/lyxrc.C:2271
+#: src/lyxrc.C:2300
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Pøíkaz LaTeX-u, který pøepne zpìt na jazyk dokumentu."
 
-#: src/lyxrc.C:2275
+#: src/lyxrc.C:2304
 msgid "The LaTeX command for local changing of the language."
 msgstr "Pøíkaz LaTeX-u pro lokální zmìnu jazyka."
 
-#: src/lyxrc.C:2279
+#: src/lyxrc.C:2308
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -12008,7 +12019,7 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ít jazyk(y) jako¾to parametr pro "
 "\\documentclass."
 
-#: src/lyxrc.C:2283
+#: src/lyxrc.C:2312
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -12016,7 +12027,7 @@ msgstr ""
 "Pøíkaz LaTeX-u pro naètení jazykového balíèku. Napø. \"\\usepackage{babel}\","
 "\"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2287
+#: src/lyxrc.C:2316
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -12024,21 +12035,21 @@ msgstr ""
 "Zru¹te volbu, nechcete-li pou¾ívat babel v pøípadì standardního nastavení "
 "jazyka dokumentu."
 
-#: src/lyxrc.C:2291
+#: src/lyxrc.C:2320
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Zru¹te volbu, nechcete-li aby LyX nastavoval kurzor na ulo¾enou pozici."
 
-#: src/lyxrc.C:2295
+#: src/lyxrc.C:2324
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
 "Zru¹te volbu, pokud nechcete naèítat soubory otevøené v poslední relaci."
 
-#: src/lyxrc.C:2299
+#: src/lyxrc.C:2328
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Zru¹te volbu, nechcete-li vytváøet zálo¾ní kopie souborù."
 
-#: src/lyxrc.C:2303
+#: src/lyxrc.C:2332
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -12046,13 +12057,13 @@ msgstr ""
 "Zvolte pro kontrolu zvýraznìní slov napsaných jazykem odli¹ným od "
 "standardního jazyka dokumentu."
 
-#: src/lyxrc.C:2307
+#: src/lyxrc.C:2336
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Maximální poèet souborù v historii. V menu se mù¾e objevit a¾ %1$d souborù."
 
-#: src/lyxrc.C:2312
+#: src/lyxrc.C:2341
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -12060,44 +12071,44 @@ msgstr ""
 "Urèete adresáøe, které by mìly být pøidány do promìnné prostøedí PATH pøed "
 "ostatní adresáøe. Pou¾ijte formát vlastní danému operaènímu systému."
 
-#: src/lyxrc.C:2319
+#: src/lyxrc.C:2348
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Urèete soubor s vlastním slovníkem. Napø. \".ispell_english\"."
 
-#: src/lyxrc.C:2323
+#: src/lyxrc.C:2352
 msgid "The bold font in the dialogs."
 msgstr "Tuèný font v dialogových oknech."
 
-#: src/lyxrc.C:2327
+#: src/lyxrc.C:2356
 msgid "The encoding for the menu/popups fonts."
 msgstr "Kódování fontù v menu a popup oknech."
 
-#: src/lyxrc.C:2331
+#: src/lyxrc.C:2360
 msgid "The normal font in the dialogs."
 msgstr "Normální font v dialogových oknech."
 
-#: src/lyxrc.C:2335
+#: src/lyxrc.C:2364
 msgid "Shows a typeset preview of things such as math"
 msgstr "Zobrazovat náhled na vysázený text typu matematiky apod."
 
-#: src/lyxrc.C:2339
+#: src/lyxrc.C:2368
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Rovnice v náhledu budou oznaèeny pomocí \"(#)\" místo oèíslování."
 
-#: src/lyxrc.C:2343
+#: src/lyxrc.C:2372
 msgid "Scale the preview size to suit."
 msgstr "Nastavte mìøítko pro náhled."
 
-#: src/lyxrc.C:2347
+#: src/lyxrc.C:2376
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Volba urèující, zda-li mají být kopie srovnány za sebou."
 
-#: src/lyxrc.C:2351
+#: src/lyxrc.C:2380
 msgid "The option for specifying the number of copies to print."
 msgstr "Volba urèující poèet kopií pro tisk."
 
-#: src/lyxrc.C:2355
+#: src/lyxrc.C:2384
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -12105,11 +12116,11 @@ msgstr ""
 "Standardní tiskárna pro tisk. Pokud neurèena, LyX pou¾ije promìnnou "
 "prostøedí PRINTER."
 
-#: src/lyxrc.C:2359
+#: src/lyxrc.C:2388
 msgid "The option to print only even pages."
 msgstr "Volba pro tisk pouze sudých stran."
 
-#: src/lyxrc.C:2363
+#: src/lyxrc.C:2392
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -12117,35 +12128,35 @@ msgstr ""
 "Volby navíc, které dostane program pro tisk za ostatními volbami, leè pøed "
 "jménem DVI souboru k tisku."
 
-#: src/lyxrc.C:2367
+#: src/lyxrc.C:2396
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Pøípona výstupního tiskového souboru. Obvykle \".ps\"."
 
-#: src/lyxrc.C:2371
+#: src/lyxrc.C:2400
 msgid "The option to print out in landscape."
 msgstr "Volba pro tisk na ¹íøku"
 
-#: src/lyxrc.C:2375
+#: src/lyxrc.C:2404
 msgid "The option to print only odd pages."
 msgstr "Volba pro tisk pouze lichých stran."
 
-#: src/lyxrc.C:2379
+#: src/lyxrc.C:2408
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr "Volba urèující èárkami oddìlený seznam stránek k tisku."
 
-#: src/lyxrc.C:2383
+#: src/lyxrc.C:2412
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Volba urèující velikost papíru."
 
-#: src/lyxrc.C:2387
+#: src/lyxrc.C:2416
 msgid "The option to specify paper type."
 msgstr "Volba uèující typ papíru."
 
-#: src/lyxrc.C:2391
+#: src/lyxrc.C:2420
 msgid "The option to reverse the order of the pages printed."
 msgstr "Volba pro tisk stránek v opaèném poøadí"
 
-#: src/lyxrc.C:2395
+#: src/lyxrc.C:2424
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -12155,7 +12166,7 @@ msgstr ""
 "oddìlenì zavolá tiskový \"spool\" program, který dostane jako argumenty "
 "jméno souboru a v¹echny volby."
 
-#: src/lyxrc.C:2399
+#: src/lyxrc.C:2428
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -12163,32 +12174,32 @@ msgstr ""
 "Pokud urèíte jméno tiskárny v dialogovém oknì tisku, bude tento argument "
 "pøedøazen jménu tiskárny za pøíkazem \"spool\"-u."
 
-#: src/lyxrc.C:2403
+#: src/lyxrc.C:2432
 msgid "Option to pass to the print program to print to a file."
 msgstr "Volba pro tiskový program, je¾ nastavuje tisk do souboru."
 
-#: src/lyxrc.C:2407
+#: src/lyxrc.C:2436
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr "Volba pro tiskový program, je¾ nastavuje urèitou tiskárnu."
 
-#: src/lyxrc.C:2411
+#: src/lyxrc.C:2440
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Zvolte, pokud má LyX pøedávat jméno tiskárny tiskovému programu."
 
-#: src/lyxrc.C:2415
+#: src/lyxrc.C:2444
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Zvolte tiskový program, napø. \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:2419
+#: src/lyxrc.C:2448
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Zapnutí podpory pro jazyky pí¹ící zprava-doleva (napø. hebrej¹tina, "
 "arab¹tina)."
 
-#: src/lyxrc.C:2423
+#: src/lyxrc.C:2452
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -12196,15 +12207,15 @@ msgstr ""
 "DPI (poèet bodù na palec) va¹eho monitoru je automaticky detekováno LyX-em. "
 "Pøi selhání nastavte vlastní hodnotu."
 
-#: src/lyxrc.C:2427
+#: src/lyxrc.C:2456
 msgid "The encoding for the screen fonts."
 msgstr "Kódování fontù na obrazovce."
 
-#: src/lyxrc.C:2433
+#: src/lyxrc.C:2462
 msgid "The screen fonts used to display the text while editing."
 msgstr "Fonty pou¾ívané k zobrazení editovaného textu na obrazovce."
 
-#: src/lyxrc.C:2442
+#: src/lyxrc.C:2471
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -12215,11 +12226,11 @@ msgstr ""
 "je tato volba vypnuta pou¾ije LyX nejbli¾¹í dostupnou velikostbitmapového "
 "fontu."
 
-#: src/lyxrc.C:2446
+#: src/lyxrc.C:2475
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Velikosti fontu pou¾ívané pøi výpoètech zmìny mìøítka na obrazovce."
 
-#: src/lyxrc.C:2451
+#: src/lyxrc.C:2480
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -12228,7 +12239,7 @@ msgstr ""
 "Zvìt¹ení fontù na obrazovce. Nastavení 100% hrubì odpovídá jejich "
 "velikostina papíru."
 
-#: src/lyxrc.C:2456
+#: src/lyxrc.C:2485
 msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
@@ -12236,11 +12247,11 @@ msgstr ""
 "Nastavte velikost hlavního okna (¹íøka x vý¹ka). Nulové hodnoty "
 "zpùsobípou¾ití hodnot z poslední relace."
 
-#: src/lyxrc.C:2460
+#: src/lyxrc.C:2489
 msgid "Allow session manager to save and restore windows position."
 msgstr "Povolit ukládání a znovu-nastavení pozice okna."
 
-#: src/lyxrc.C:2464
+#: src/lyxrc.C:2493
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -12248,22 +12259,22 @@ msgstr ""
 "Spustit lyxserver. Roury (pipe) dostanou pøíponu \".in\" a \".out\". Jen pro "
 "pokroèilé u¾ivatele."
 
-#: src/lyxrc.C:2471
+#: src/lyxrc.C:2500
 msgid "De-select if you don't want the startup banner."
 msgstr "Zru¹te volbu, pokud nechcete zobrazovat úvodní obrazovku."
 
-#: src/lyxrc.C:2475
+#: src/lyxrc.C:2504
 msgid "What command runs the spellchecker?"
 msgstr "Jakým pøíkazem spustit kontrolu pravopisu ?"
 
-#: src/lyxrc.C:2479
+#: src/lyxrc.C:2508
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 "LyX umístí pomocné adresáøe do této cesty. Pøi ukonèení LyX-u budou smazány."
 
-#: src/lyxrc.C:2483
+#: src/lyxrc.C:2512
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -12271,7 +12282,7 @@ msgstr ""
 "Cesta kterou LyX nabídne pøi výbìru ¹ablony. Prázdný øetìzec zpùsobí výbìr "
 "adresáøe, ze kterého byl LyX spu¹tìn."
 
-#: src/lyxrc.C:2493
+#: src/lyxrc.C:2522
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -12279,7 +12290,7 @@ msgstr ""
 "Soubor u¾ivatelského rozhraní (UI). Lze zadat absolutní cestu; jinak bude "
 "LyX hledat v jeho lokálních a globálních adresáøích ui/ ."
 
-#: src/lyxrc.C:2506
+#: src/lyxrc.C:2535
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you cannot check the spelling of words containing accented letters. This "
@@ -12289,7 +12300,7 @@ msgstr ""
 "Zapnìte tuto volbu, pokud nemù¾ete zkontrolovat pravopis pro slova s "
 "diakritikou. Tato volba nemusí fungovat se v¹emi slovníky."
 
-#: src/lyxrc.C:2513
+#: src/lyxrc.C:2542
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Urèete volbu nastavující papír v prohlí¾eèi DVI(nechte prázdné nebo pou¾ijte "
@@ -12612,7 +12623,7 @@ msgstr "Neznámý index autora pro výmaz: %1$d\n"
 msgid "Unknown token"
 msgstr "Neznámý symbol"
 
-#: src/text.C:1225
+#: src/text.C:1232
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -12620,54 +12631,54 @@ msgstr ""
 "Nelze vlo¾it mezeru na zaèátek odstavce. Pøeètìte si prosím pøíruèku "
 "(tutorial)."
 
-#: src/text.C:1236
+#: src/text.C:1243
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/text.C:2297
+#: src/text.C:2334
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/text.C:2300
+#: src/text.C:2337
 msgid " at "
 msgstr " na "
 
-#: src/text.C:2312
+#: src/text.C:2349
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/text.C:2319
+#: src/text.C:2356
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/text.C:2325
+#: src/text.C:2362
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/text.C:2337
+#: src/text.C:2374
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/text.C:2346
+#: src/text.C:2383
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/text.C:2347
+#: src/text.C:2384
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/text.C:2348
+#: src/text.C:2385
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2349
+#: src/text.C:2386
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/text.C:2350
+#: src/text.C:2387
 msgid ", Boundary: "
 msgstr ", Okraj: "
 
@@ -12734,3 +12745,14 @@ msgstr "Výplò (VFill)"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "chránìno"
+
+#~ msgid ""
+#~ "This program is free software; you can redistribute it and/or modify it "
+#~ "under the terms of the GNU General Public License as published by the "
+#~ "Free Software Foundation; either version 2 of the License, or (at your "
+#~ "option) any later version."
+#~ msgstr ""
+#~ "Tento program je svobodný software; mù¾ete jej ¹íøit a modifikovat "
+#~ "podleustanovení GNU General Public License, vydávané Free "
+#~ "SoftwareFoundation; a to buï verze 2 této licence anebo (podle va¹eho "
+#~ "uvá¾ení)kterékoli pozdìj¹í verze."
