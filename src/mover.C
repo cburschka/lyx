@@ -55,7 +55,7 @@ bool SpecialisedMover::do_copy(string const & from, string const & to,
 		if (!ofs)
 			return false;
 		ofs.close();
-		if (!support::chmod(to.c_str(), mode_t(mode)))
+		if (!support::chmod(to.c_str(), mode))
 			return false;
 	}
 
