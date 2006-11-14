@@ -21,9 +21,6 @@
 # include <sys/types.h>
 #endif
 
-#if defined(HAVE_CHMOD) && defined(_MSC_VER)
-#include <io.h>
-#endif
 
 namespace lyx {
 
@@ -59,7 +56,7 @@ bool lyx::support::copy(string const & from, string const & to, unsigned long in
 		if (!ofs)
 			return false;
 		ofs.close();
-		if (!chmod(to, mode_t(mode)))
+		if (!support::chmod(to, mode))
 			return false;
 	}
 
