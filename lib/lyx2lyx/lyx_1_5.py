@@ -350,9 +350,6 @@ def convert_commandparams(document):
     # \begin_inset LatexCommand bibitem was not the official version (see
     # convert_bibitem()), but could be read in, so we convert it here, too.
 
-    # FIXME: Handle things like \command[foo[bar]]{foo{bar}}
-    # we need a real parser here.
-    regex = re.compile(r'\\([^\[\{]+)(\[[^\[\{]*\])?(\[[^\[\{]*\])?(\{[^}]*\})?')
     i = 0
     while 1:
         i = find_token(document.body, "\\begin_inset LatexCommand", i)
@@ -384,11 +381,11 @@ def convert_commandparams(document):
                 if nestdepth == 0:
                     state = "WS"
                 else:
-                    --nestdepth
+                    nestdepth = nestdepth - 1
             if ((state == "OPTION" and c == '[') or
                 (state == "SECOPTION" and c == '[') or
                 (state == "CONTENT" and c == '{')):
-                ++nestdepth
+                nestdepth = nestdepth + 1
             if state == "CMDNAME":
                     name += c
             elif state == "OPTION":
