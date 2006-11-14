@@ -155,6 +155,9 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	typedef boost::tokenizer<Separator, docstring::const_iterator, docstring> Tokenizer;
 
 	Separator const separator(from_ascii(",").c_str());
+	// The tokenizer must not be called with temporary strings, since
+	// it does not make a copy and uses iterators of the string further
+	// down. getParam returns a reference, so this is OK.
 	Tokenizer const tokens(getParam("bibfiles"), separator);
 	Tokenizer::const_iterator const begin = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
