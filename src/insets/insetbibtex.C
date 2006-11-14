@@ -151,19 +151,21 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	// use such filenames.)
 	// Otherwise, store the (maybe absolute) path to the original,
 	// unmangled database name.
-	typedef boost::char_separator<char> Separator;
-	typedef boost::tokenizer<Separator> Tokenizer;
+	typedef boost::char_separator<char_type> Separator;
+	typedef boost::tokenizer<Separator, docstring::const_iterator, docstring> Tokenizer;
 
-	Separator const separator(",");
-	Tokenizer const tokens(to_utf8(getParam("bibfiles")), separator);
+	Separator const separator(from_ascii(",").c_str());
+	Tokenizer const tokens(getParam("bibfiles"), separator);
 	Tokenizer::const_iterator const begin = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
 
-	std::ostringstream dbs;
+	odocstringstream dbs;
 	for (Tokenizer::const_iterator it = begin; it != end; ++it) {
-		string const input = trim(*it);
+		docstring const input = trim(*it);
+		// FIXME UNICODE
+		string utf8input(to_utf8(input));
 		string database =
-			normalize_name(buffer, runparams, input, ".bib");
+			normalize_name(buffer, runparams, utf8input, ".bib");
 		string const in_file = database + ".bib";
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
@@ -184,10 +186,10 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 
 		if (it != begin)
 			dbs << ',';
-		dbs << latex_path(database);
+		// FIXME UNICODE
+		dbs << from_utf8(latex_path(database));
 	}
-	// FIXME UNICODE
-	docstring const db_out = from_utf8(dbs.str());
+	docstring const db_out = dbs.str();
 
 	// Post this warning only once.
 	static bool warned_about_spaces = false;
