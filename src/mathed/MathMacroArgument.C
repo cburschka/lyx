@@ -15,6 +15,7 @@
 #include "InsetMathMacro.h"
 #include "MathStream.h"
 #include "MathSupport.h"
+#include "support/convert.h"
 #include "debug.h"
 
 
@@ -33,10 +34,7 @@ MathMacroArgument::MathMacroArgument(size_t n)
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << endl;
 	}
-	str_.resize(3);
-	str_[0] = '#';
-	str_[1] = static_cast<char_type>('0' + n);
-	str_[2] = '\0';
+	str_ = '#' + convert<docstring>(n);
 }
 
 
