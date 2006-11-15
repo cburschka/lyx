@@ -195,7 +195,7 @@ AC_ARG_ENABLE(stdlib-debug,
 
 AC_ARG_ENABLE(concept-checks,
   AC_HELP_STRING([--enable-concept-checks],[enable concept checks]),,
-  [ if test $lyx_devel_version = yes -o $lyx-prerelease = yes ; then
+  [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
 	enable_concept_checks=yes;
     else
         enable_concept_checks=no;
