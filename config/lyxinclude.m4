@@ -8,20 +8,16 @@ dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
 dnl sets variables "lyx_devel_version" and "lyx_prerelease"
 AC_DEFUN([LYX_CHECK_VERSION],[
 echo "configuring LyX version" AC_PACKAGE_VERSION
-if echo AC_PACKAGE_VERSION | grep 'svn' >/dev/null ; then
-  lyx_devel_version=yes
-  AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
-  LYX_DATE="not released yet"
-  echo "WARNING: This is a development version. Expect bugs."
-else
-  lyx_devel_version=no
-fi
-if echo AC_PACKAGE_VERSION | egrep 'pre|alpha' > /dev/null ; then
-    lyx_prerelease=yes
-    echo "WARNING: This is a prerelease. Be careful and backup your documents."
-else
-    lyx_prerelease=no
-fi
+lyx_devel_version=no
+lyx_prerelease=no
+case AC_PACKAGE_VERSION in
+  *svn*) lyx_devel_version=yes
+         AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
+         LYX_DATE="not released yet"
+         echo "WARNING: This is a development version. Expect bugs.";;
+  *pre*|*alpha*)lyx_prerelease=yes
+        echo "WARNING: This is a prerelease. Be careful and backup your documents.";;
+esac
 AC_SUBST(lyx_devel_version)])
 
 
