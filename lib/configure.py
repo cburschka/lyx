@@ -189,15 +189,15 @@ def checkDTLtools():
     if ((os.name == 'nt' or sys.platform == 'cygwin') and
             checkProg('DVI to DTL converter', ['dv2dt']) != ['', ''] and
             checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
-        dtl_tools = 'true'
+        dtl_tools = True
     else:
-        dtl_tools = 'false'
+        dtl_tools = False
     return dtl_tools
 
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
-    if (dtl_tools == 'true'):
+    if dtl_tools:
         # Windows only: DraftDVI
         converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
 \converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""'''
@@ -287,7 +287,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector"'])
-    if (dtl_tools == 'true'):
+    if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document,vector"')
     #
@@ -416,7 +416,7 @@ def checkConverterEntries():
         'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
         rc_entry = [ r'\converter latex      html       "%%"	"originaldir,needaux"' ])
     #
-    path, lilypond = checkProg('a LilyPond -> ESP/PDF/PNG converter', ['lilypond'])
+    path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
         version_string = cmdOutput("lilypond --version")
         match = re.match('GNU LilyPond (\S+)', version_string)
