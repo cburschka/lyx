@@ -165,7 +165,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
 	setMinimumSize(100, 70);
@@ -218,6 +218,9 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 
 void GuiWorkArea::setScrollbarParams(int h, int scroll_pos, int scroll_line_step)
 {
+	if (verticalScrollBarPolicy() != Qt::ScrollBarAlwaysOn)
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 	verticalScrollBar()->setTracking(false);
 
 	// do what cursor movement does (some grey)
@@ -517,6 +520,8 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 
 void GuiWorkArea::doGreyOut(QLPainter & pain)
 {
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
 	pain.fillRectangle(0, 0, width(), height(),
 		LColor::bottomarea);
 
