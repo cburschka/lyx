@@ -15,6 +15,8 @@
 
 #include "support/types.h"
 
+#include <boost/scoped_ptr.hpp>
+
 #include <string>
 #include <vector>
 
@@ -27,6 +29,12 @@ public:
 	IconvProcessor(
 		char const * tocode = "",
 		char const * fromcode = "");
+	/// copy constructor needed because of pimpl_
+	IconvProcessor(IconvProcessor const &);
+	/// assignment operator needed because of pimpl_
+	IconvProcessor & operator=(IconvProcessor const &);
+	/// destructor (needs to be implemented in the .C file because the
+	/// boost::scoped_ptr destructor needs a fully defined type
 	~IconvProcessor();
 
 	/// convert any data from \c fromcode to \c tocode unicode format.
@@ -45,7 +53,7 @@ private:
 	std::string fromcode_;
 
 	struct Private;
-	Private * pimpl_;
+	boost::scoped_ptr<Private> pimpl_;
 };
 
 // utf8_to_ucs4

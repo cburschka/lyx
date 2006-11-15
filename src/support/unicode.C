@@ -39,6 +39,15 @@ static const iconv_t invalid_cd = (iconv_t)(-1);
 
 struct IconvProcessor::Private {
 	Private(): cd(invalid_cd) {}
+	~Private()
+	{
+		if (cd != invalid_cd) {
+			if (iconv_close(cd) == -1) {
+				lyxerr << "Error returned from iconv_close("
+				       << errno << ")" << endl;
+			}
+		}
+	}
 	iconv_t cd;
 };
 
@@ -50,14 +59,25 @@ IconvProcessor::IconvProcessor(char const * tocode,
 }
 
 
-IconvProcessor::~IconvProcessor()
+IconvProcessor::IconvProcessor(IconvProcessor const & other)
+	: tocode_(other.tocode_), fromcode_(other.fromcode_),
+	  pimpl_(new IconvProcessor::Private)
 {
-	if (iconv_close(pimpl_->cd) == -1) {
-		lyxerr << "Error returned from iconv_close("
-			<< errno << ")" << endl;
-	}
-	delete pimpl_;
 }
+
+
+IconvProcessor & IconvProcessor::operator=(IconvProcessor const & other)
+{
+	if (&other == this)
+		return *this;
+	tocode_ = other.tocode_;
+	fromcode_ = other.fromcode_;
+	pimpl_.reset(new Private);
+	return *this;
+}
+
+
+IconvProcessor::~IconvProcessor() {}
 
 
 bool IconvProcessor::init()
