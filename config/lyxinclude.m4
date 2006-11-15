@@ -16,7 +16,7 @@ if echo AC_PACKAGE_VERSION | grep 'svn' >/dev/null ; then
 else
   lyx_devel_version=no
 fi
-if echo AC_PACKAGE_VERSION | grep 'pre' > /dev/null ; then
+if echo AC_PACKAGE_VERSION | egrep 'pre|alpha' > /dev/null ; then
     lyx_prerelease=yes
     echo "WARNING: This is a prerelease. Be careful and backup your documents."
 else
