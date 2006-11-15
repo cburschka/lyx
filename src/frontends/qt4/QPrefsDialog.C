@@ -71,9 +71,9 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-string const LookAndFeel = "Look and feel";
-string const LanguageSettings = "Language settings";
-string const Outputs = "Outputs";
+string const LookAndFeel = N_("Look and feel");
+string const LanguageSettings = N_("Language settings");
+string const Outputs = N_("Outputs");
 
 
 // FIXME: move to helper_funcs.h
