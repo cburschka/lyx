@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -10912,6 +10912,20 @@ msgstr ""
 msgid "Preferences"
 msgstr "Ayarlar"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "Paragraf ayarlarý"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Çýktý"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Düz metin"
@@ -11114,17 +11128,17 @@ msgstr ""
 msgid "BibTeX Generated Bibliography"
 msgstr ""
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Dýþarý Aktarým Uyarýsý!"
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."

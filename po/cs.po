@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-11-02 00:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -10651,6 +10651,20 @@ msgstr "Nesmyslné v tomto rozvr¾ení!"
 msgid "Preferences"
 msgstr "Nastavení"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "Nastavení odstavce"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Výstup"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Prostý text"
@@ -10849,11 +10863,11 @@ msgstr "Otevøená vlo¾ka"
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografie generovaná BibTeX-em"
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Export-varování!"
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10861,7 +10875,7 @@ msgstr ""
 "V cestách k databázím BibTeX-u jsou mezery.\n"
 "BibTeX nebude schopen tyto databáze najít."
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."

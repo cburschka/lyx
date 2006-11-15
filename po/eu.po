@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -10664,6 +10664,20 @@ msgstr "Zentzurik ez diseinu honekin!"
 msgid "Preferences"
 msgstr "Hobespenak"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "Paragrafo-ezarpenak"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Irteera"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Testu soila"
@@ -10864,11 +10878,11 @@ msgstr "Irekitako barnekoa"
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-ek sortutako bibliografia"
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Esportatze-abisua!"
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10876,7 +10890,7 @@ msgstr ""
 "BibTeX datu-basearen bide-izenetan zuriuneak daude.\n"
 "BibTeX ez da gai hauek bilatzeko."
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -11183,6 +11183,20 @@ msgstr "V tomto formáte nemá zmysel!"
 msgid "Preferences"
 msgstr "Nastavenia"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "Nastavenia tlaèiarne"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Výstup"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Jednoduchý text"
@@ -11392,18 +11406,18 @@ msgstr "Otvorená príloha"
 msgid "BibTeX Generated Bibliography"
 msgstr "Referencie generované BibTeXom"
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Varovanie!"
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."

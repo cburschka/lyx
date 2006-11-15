@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-11-13 22:26+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -10602,6 +10602,20 @@ msgstr "Értelmetlen ezzel a formátummal!"
 msgid "Preferences"
 msgstr "Beállítások"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "Bekezdés beállításai"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Kimenet mérete"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Sima szöveg"
@@ -10802,11 +10816,11 @@ msgstr "Betét kinyitva"
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX által készített irodalomjegyzék"
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Exportálási Figyelmeztetés!"
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10814,7 +10828,7 @@ msgstr ""
 "Szóközök vannak a BibTeX adatbázis elérési útjában.\n"
 "A BibTeX nem fogja tudni megtalálni õket."
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -12702,27 +12716,6 @@ msgid "protected"
 msgstr "védett"
 
 #~ msgid ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style="
-#~ "\" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-#~ "weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-#~ "top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-#~ "indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
-#~ "body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style="
-#~ "\" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-#~ "weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-#~ "top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-#~ "indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
-#~ "body></html>"
-
-#~ msgid "&To:"
-#~ msgstr "&Mire:"
-
-#~ msgid "Running Makeindex for nomencl. "
-#~ msgstr "MakeIndex futtatása nomencl-hez."
-
-#~ msgid ""
 #~ "This program is free software; you can redistribute it and/or modify it "
 #~ "under the terms of the GNU General Public License as published by the "
 #~ "Free Software Foundation; either version 2 of the License, or (at your "
@@ -12730,57 +12723,3 @@ msgstr "védett"
 #~ msgstr ""
 #~ "Ez egy szabad program; terjesztheti és/vagy módosíthatja a GNU General "
 #~ "Public License 2. és az utáni verzió szabályainak megfelelõen."
-
-#~ msgid "Notation Entry"
-#~ msgstr "Jelölõ-elem"
-
-#~ msgid "Notation List|N"
-#~ msgstr "Jelölõ-elem lista|J"
-
-#~ msgid "Add Row"
-#~ msgstr "Sor hozzáadása"
-
-#~ msgid "Delete Row"
-#~ msgstr "Sor törlése"
-
-#~ msgid "Add Column"
-#~ msgstr "Oszlop hozzáadása"
-
-#~ msgid "Delete Column"
-#~ msgstr "Oszlop törlése"
-
-#~ msgid "Notation List"
-#~ msgstr "Jelölõ-elem lista"
-
-#~ msgid "big size"
-#~ msgstr "nagy méret"
-
-#~ msgid "Big size"
-#~ msgstr "Nagy méret"
-
-#~ msgid "bigg size"
-#~ msgstr "nagy méret"
-
-#~ msgid "Bigg size"
-#~ msgstr "Nagy méret"
-
-#~ msgid "Not"
-#~ msgstr "Jel"
-
-#~ msgid "LyX Display"
-#~ msgstr "Megjelenítés LyX-ben"
-
-#~ msgid "Units of height value"
-#~ msgstr "Magasság mértékegysége"
-
-#~ msgid "Rotation"
-#~ msgstr "Elforgatás"
-
-#~ msgid "Is this just one part of a figure float ?"
-#~ msgstr "Csak egy része az úsztatott ábrának?"
-
-#~ msgid "Saved bookmark %1$d"
-#~ msgstr "Mentett könyvjelzõ: %1$d"
-
-#~ msgid "Moved to bookmark %1$d"
-#~ msgstr "Ugrás könyvjelzõre: %1$d"

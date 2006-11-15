@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-11-13 23:37+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -10641,6 +10641,20 @@ msgstr "Meiningslaust med denne stilen."
 msgid "Preferences"
 msgstr "LyX-Val"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "avsnittval"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Storleik i ferdig dokument"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Rein tekst"
@@ -10839,11 +10853,11 @@ msgstr "Opna innskot"
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX genererte referansar"
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Eksport åtvaring!"
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10851,7 +10865,7 @@ msgstr ""
 "Det er mellomrom i stigen til BibTeX databasane.\n"
 "BibTeX vil derfor ikkje kunne finne dei."
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -12718,36 +12732,6 @@ msgid "protected"
 msgstr "vern"
 
 #~ msgid ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style="
-#~ "\" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-#~ "weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-#~ "top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-#~ "indent:0; text-indent:0px;\">[[as in 'From format x to format y']]</p></"
-#~ "body></html>"
-#~ msgstr ""
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style="
-#~ "\" white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-"
-#~ "weight:400; font-style:normal; text-decoration:none;\"><p style=\" margin-"
-#~ "top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-"
-#~ "indent:0; text-indent:0px;\">[[ som i  Til format x til format y]]</p></ "
-#~ "body></html>"
-
-#~ msgid "&To:"
-#~ msgstr "&Til:"
-
-#~ msgid "Add Row"
-#~ msgstr "Legg til rad"
-
-#~ msgid "Delete Row"
-#~ msgstr "Fjern rad"
-
-#~ msgid "Add Column"
-#~ msgstr "Legg til kolonne"
-
-#~ msgid "Delete Column"
-#~ msgstr "Fjern kolonne"
-
-#~ msgid ""
 #~ "This program is free software; you can redistribute it and/or modify it "
 #~ "under the terms of the GNU General Public License as published by the "
 #~ "Free Software Foundation; either version 2 of the License, or (at your "
@@ -12757,15 +12741,3 @@ msgstr "vern"
 #~ "endre på det slik det er omtalt i GNU General Public License (GPL) i "
 #~ "versjon 2 eller seinare versjonar. GPL er publisert av «Free Software "
 #~ "Fundation»."
-
-#~ msgid "big size"
-#~ msgstr "stor storleik"
-
-#~ msgid "Big size"
-#~ msgstr "Stor storleik"
-
-#~ msgid "bigg size"
-#~ msgstr "stoor storleik"
-
-#~ msgid "Bigg size"
-#~ msgstr "Stoor storleik"

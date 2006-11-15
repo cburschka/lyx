@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-14 18:04+0100\n"
+"POT-Creation-Date: 2006-11-16 00:16+0100\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -10777,6 +10777,20 @@ msgstr "Bez sensu w tej konfiguracji!"
 msgid "Preferences"
 msgstr "Ustawienia"
 
+#: src/frontends/qt4/QPrefsDialog.C:74
+msgid "Look and feel"
+msgstr ""
+
+#: src/frontends/qt4/QPrefsDialog.C:75
+#, fuzzy
+msgid "Language settings"
+msgstr "Ustawienia akapitu"
+
+#: src/frontends/qt4/QPrefsDialog.C:76
+#, fuzzy
+msgid "Outputs"
+msgstr "Dane wyj¶ciowe"
+
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
 msgstr "Tekst ASCII"
@@ -10977,11 +10991,11 @@ msgstr "Otwarta wstawka"
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografia wygenerowana przez BibTeXa"
 
-#: src/insets/insetbibtex.C:198 src/insets/insetbibtex.C:250
+#: src/insets/insetbibtex.C:203 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr ""
 
-#: src/insets/insetbibtex.C:199
+#: src/insets/insetbibtex.C:204
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10989,7 +11003,7 @@ msgstr ""
 "W ¶cie¿ce do bazy BibTeX-a znajduj± siê spacje.\n"
 " BibTeX nie bêdzie móg³ jej znale¼æ."
 
-#: src/insets/insetbibtex.C:251
+#: src/insets/insetbibtex.C:256
 #, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
