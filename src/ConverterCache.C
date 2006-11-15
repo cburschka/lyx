@@ -25,6 +25,7 @@
 
 #include <boost/crc.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <boost/current_function.hpp>
 
 #include <fstream>
 #include <iomanip>
