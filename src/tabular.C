@@ -662,29 +662,29 @@ LyXTabular::idx_type LyXTabular::numberOfCellsInRow(idx_type const cell) const
 }
 
 
-bool LyXTabular::topLine(idx_type const cell, bool const onlycolumn) const
+bool LyXTabular::topLine(idx_type const cell, bool const wholerow) const
 {
-	if (!onlycolumn && isMultiColumn(cell) &&
+	if (!wholerow && isMultiColumn(cell) &&
 	    !(use_booktabs && row_of_cell(cell) == 0))
 		return cellinfo_of_cell(cell).top_line;
 	return row_info[row_of_cell(cell)].top_line;
 }
 
 
-bool LyXTabular::bottomLine(idx_type const cell, bool onlycolumn) const
+bool LyXTabular::bottomLine(idx_type const cell, bool wholerow) const
 {
-	if (!onlycolumn && isMultiColumn(cell) &&
+	if (!wholerow && isMultiColumn(cell) &&
 	    !(use_booktabs && isLastRow(cell)))
 		return cellinfo_of_cell(cell).bottom_line;
 	return row_info[row_of_cell(cell)].bottom_line;
 }
 
 
-bool LyXTabular::leftLine(idx_type cell, bool onlycolumn) const
+bool LyXTabular::leftLine(idx_type cell, bool wholecolumn) const
 {
 	if (use_booktabs)
 		return false;
-	if (!onlycolumn && isMultiColumn(cell) &&
+	if (!wholecolumn && isMultiColumn(cell) &&
 		(isFirstCellInRow(cell) || isMultiColumn(cell-1)))
 	{
 		if (cellinfo_of_cell(cell).align_special.empty())
@@ -697,11 +697,11 @@ bool LyXTabular::leftLine(idx_type cell, bool onlycolumn) const
 }
 
 
-bool LyXTabular::rightLine(idx_type cell, bool onlycolumn) const
+bool LyXTabular::rightLine(idx_type cell, bool wholecolumn) const
 {
 	if (use_booktabs)
 		return false;
-	if (!onlycolumn && isMultiColumn(cell) &&
+	if (!wholecolumn && isMultiColumn(cell) &&
 		(isLastCellInRow(cell) || isMultiColumn(cell + 1)))
 	{
 		if (cellinfo_of_cell(cell).align_special.empty())
@@ -1025,37 +1025,37 @@ void LyXTabular::setAllLines(idx_type cell, bool line)
 }
 
 
-void LyXTabular::setTopLine(idx_type cell, bool line, bool onlycolumn)
+void LyXTabular::setTopLine(idx_type cell, bool line, bool wholerow)
 {
 	row_type const row = row_of_cell(cell);
-	if (onlycolumn || !isMultiColumn(cell))
+	if (wholerow || !isMultiColumn(cell))
 		row_info[row].top_line = line;
 	else
 		cellinfo_of_cell(cell).top_line = line;
 }
 
 
-void LyXTabular::setBottomLine(idx_type cell, bool line, bool onlycolumn)
+void LyXTabular::setBottomLine(idx_type cell, bool line, bool wholerow)
 {
-	if (onlycolumn || !isMultiColumn(cell))
+	if (wholerow || !isMultiColumn(cell))
 		row_info[row_of_cell(cell)].bottom_line = line;
 	else
 		cellinfo_of_cell(cell).bottom_line = line;
 }
 
 
-void LyXTabular::setLeftLine(idx_type cell, bool line, bool onlycolumn)
+void LyXTabular::setLeftLine(idx_type cell, bool line, bool wholecolumn)
 {
-	if (onlycolumn || !isMultiColumn(cell))
+	if (wholecolumn || !isMultiColumn(cell))
 		column_info[column_of_cell(cell)].left_line = line;
 	else
 		cellinfo_of_cell(cell).left_line = line;
 }
 
 
-void LyXTabular::setRightLine(idx_type cell, bool line, bool onlycolumn)
+void LyXTabular::setRightLine(idx_type cell, bool line, bool wholecolumn)
 {
-	if (onlycolumn || !isMultiColumn(cell))
+	if (wholecolumn || !isMultiColumn(cell))
 		column_info[right_column_of_cell(cell)].right_line = line;
 	else
 		cellinfo_of_cell(cell).right_line = line;

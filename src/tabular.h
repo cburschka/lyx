@@ -205,13 +205,13 @@ public:
 		   row_type rows_arg);
 
 	/// Returns true if there is a topline, returns false if not
-	bool topLine(idx_type cell, bool onlycolumn = false) const;
+	bool topLine(idx_type cell, bool wholerow = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool bottomLine(idx_type cell, bool onlycolumn = false) const;
+	bool bottomLine(idx_type cell, bool wholerow = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool leftLine(idx_type cell, bool onlycolumn = false) const;
+	bool leftLine(idx_type cell, bool wholecolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool rightLine(idx_type cell, bool onlycolumn = false) const;
+	bool rightLine(idx_type cell, bool wholecolumn = false) const;
 
 	///
 	bool topAlreadyDrawn(idx_type cell) const;
@@ -246,13 +246,13 @@ public:
 	///
 	void setAllLines(idx_type cell, bool line);
 	///
-	void setTopLine(idx_type cell, bool line, bool onlycolumn = false);
+	void setTopLine(idx_type cell, bool line, bool wholerow = false);
 	///
-	void setBottomLine(idx_type cell, bool line, bool onlycolumn = false);
+	void setBottomLine(idx_type cell, bool line, bool wholerow = false);
 	///
-	void setLeftLine(idx_type cell, bool line, bool onlycolumn = false);
+	void setLeftLine(idx_type cell, bool line, bool wholecolumn = false);
 	///
-	void setRightLine(idx_type cell, bool line, bool onlycolumn = false);
+	void setRightLine(idx_type cell, bool line, bool wholecolumn = false);
 	///
 	void setAlignment(idx_type cell, LyXAlignment align,
 			  bool onlycolumn = false);
