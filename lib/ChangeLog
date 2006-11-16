@@ -1,3 +1,13 @@
+2006-11-16  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* lib/configure.py: add compatibility code for booleans and use
+	True and False instead of 'true' and 'false'.
+
+	* lib/scripts/lyxpreview_tools.py:
+	* lib/scripts/fig_copy.py:
+	* lib/scripts/TeXFiles.py: fix typo and make code compatible also
+	with python versions greater than 2.2.0
+
 2006-11-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* bind/menus.bind: digits may need the shift modifier (on french

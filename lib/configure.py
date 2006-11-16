@@ -12,6 +12,21 @@
 
 import sys, os, re, shutil, glob
 
+# compatibility with python 2.2
+if sys.version_info[:2] == (2, 2):
+    __builtins__.True = (1 == 1)
+    __builtins__.False = (1 == 0)
+    def bool(value):
+        """Demote a value to 0 or 1, depending on its truth value
+
+        This is not to be confused with types.BooleanType, which is
+        way too hard to duplicate in 2.1 to be worth the trouble.
+        """
+        return not not value
+    __builtins__.bool = bool
+    del bool
+# end compatibility chunk
+
 
 class Tee:
     ''' Writing to a Tee object will write to all file objects it keeps.
@@ -185,15 +200,15 @@ def checkDTLtools():
     if ((os.name == 'nt' or sys.platform == 'cygwin') and
             checkProg('DVI to DTL converter', ['dv2dt']) != ['', ''] and
             checkProg('DTL to DVI converter', ['dt2dv']) != ['', '']):
-        dtl_tools = 'true'
+        dtl_tools = True
     else:
-        dtl_tools = 'false'
+        dtl_tools = False
     return dtl_tools
 
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
-    if (dtl_tools == 'true'):
+    if dtl_tools:
         # Windows only: DraftDVI
         converter_entry = r'''\converter latex      dvi2       "%%"	"latex"
 \converter dvi2       dvi        "python -tt $$s/scripts/clean_dvi.py $$i $$o"	""'''
@@ -280,7 +295,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
         rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""'])
-    if (dtl_tools == 'true'):
+    if dtl_tools:
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""')
     #

@@ -21,9 +21,9 @@
 import os, sys
 
 # compatibility with python 2.2
-if sys.version_info[:3] == (2, 2, 0):
-    __builtin__.True = (1 == 1)
-    __builtin__.False = (1 == 0)
+if sys.version_info[:2] == (2, 2):
+    __builtins__.True = (1 == 1)
+    __builtins__.False = (1 == 0)
     def bool(value):
         """Demote a value to 0 or 1, depending on its truth value
 
@@ -31,7 +31,7 @@ if sys.version_info[:3] == (2, 2, 0):
         way too hard to duplicate in 2.1 to be worth the trouble.
         """
         return not not value
-    __builtin__.bool = bool
+    __builtins__.bool = bool
     del bool
 # end compatibility chunk
 
