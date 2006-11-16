@@ -31,13 +31,14 @@ namespace toc {
 
 void outline(OutlineOp mode,  LCursor & cur)
 {
-	recordUndo(cur);
 	Buffer * buf = & cur.buffer();
 	pit_type & pit = cur.pit();
 	ParagraphList & pars = buf->text().paragraphs();
 	ParagraphList::iterator bgn = pars.begin();
-	ParagraphList::iterator s = boost::next(bgn, pit);
-	ParagraphList::iterator p = s;
+	// The first paragraph of the area to be copied:
+	ParagraphList::iterator start = boost::next(bgn, pit);
+	// The final paragraph of area to be copied:
+	ParagraphList::iterator finish = start;
 	ParagraphList::iterator end = pars.end();
 
 	LyXTextClass::const_iterator lit =
@@ -45,86 +46,101 @@ void outline(OutlineOp mode,  LCursor & cur)
 	LyXTextClass::const_iterator const lend =
 		buf->params().getLyXTextClass().end();
 
-	int const thistoclevel = s->layout()->toclevel;
+	int const thistoclevel = start->layout()->toclevel;
 	int toclevel;
 	switch (mode) {
 		case Up: {
-			if (p != end)
-				++p;
-			for (; p != end; ++p) {
-				toclevel = p->layout()->toclevel;
+			// Move out (down) from this section header
+			if (finish != end)
+				++finish;
+			// Seek the one (on same level) below
+			for (; finish != end; ++finish) {
+				toclevel = finish->layout()->toclevel;
 				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
 			}
-			ParagraphList::iterator q = s;
-			if (q != bgn)
-				--q;
+			ParagraphList::iterator dest = start;
+			// Move out (up) from this header
+			if (dest != bgn)
+				--dest;
 			else
 				break;
-			for (; q != bgn; --q) {
-				toclevel = q->layout()->toclevel;
+			// Search previous same-level header above
+			for (; dest != bgn; --dest) {
+				toclevel = dest->layout()->toclevel;
 				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
 			}
-			pit_type const newpit = std::distance(pars.begin(), q);
-			pit_type const len = std::distance(s, p);
+			// Not found; do nothing
+			if (dest == bgn)
+				break;
+			pit_type const newpit = std::distance(bgn, dest);
+			pit_type const len = std::distance(start, finish);
 			pit += len;
-			pars.insert(q, s, p);
-			s = boost::next(pars.begin(), pit);
-			ParagraphList::iterator t = boost::next(s, len);
+			pit = std::min(pit, cur.lastpit());
+			recordUndo(cur, Undo::ATOMIC, newpit, pit);
+			pars.insert(dest, start, finish);
+			start = boost::next(bgn, pit);
 			pit = newpit;
-			pars.erase(s, t);
+			pars.erase(start, finish);
 		break;
 		}
 		case Down: {
-			   if (p != end)
-				++p;
-			for (; p != end; ++p) {
-				toclevel = p->layout()->toclevel;
+			// Go down out of current header:
+   			if (finish != end)
+				++finish;
+			// Find next same-level header:
+			for (; finish != end; ++finish) {
+				toclevel = finish->layout()->toclevel;
 				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
 			}
-			ParagraphList::iterator q = p;
-			if (q != end)
-				++q;
+			ParagraphList::iterator dest = finish;
+			// Go one down from *this* header:
+			if (dest != end)
+				++dest;
 			else
 				break;
-			for (; q != end; ++q) {
-				toclevel = q->layout()->toclevel;
+			// Go further down to find header to insert in front of:
+			for (; dest != end; ++dest) {
+				toclevel = dest->layout()->toclevel;
 				if (toclevel != LyXLayout::NOT_IN_TOC
 				    && toclevel <= thistoclevel) {
 					break;
 				}
 			}
-			pit_type const newpit = std::distance(pars.begin(), q);
-			pit_type const len = std::distance(s, p);
-			pars.insert(q, s, p);
-			s = boost::next(pars.begin(), pit);
-			ParagraphList::iterator t = boost::next(s, len);
+			// One such was found:
+			pit_type newpit = std::distance(bgn, dest);
+			pit_type const len = std::distance(start, finish);
+			recordUndo(cur, Undo::ATOMIC, pit, newpit -1);
+			pars.insert(dest, start, finish);
+			start = boost::next(bgn, pit);
 			pit = newpit - len;
-			pars.erase(s, t);
+			pars.erase(start, finish);
 		break;
 		}
 		case In:
+			recordUndo(cur);
 			for (; lit != lend; ++lit) {
 				if ((*lit)->toclevel == thistoclevel + 1 &&
-				    s->layout()->labeltype == (*lit)->labeltype) {
-					s->layout((*lit));
+				    start->layout()->labeltype == (*lit)->labeltype) {
+					start->layout((*lit));
 					break;
 				}
 			}
 		break;
 		case Out:
+			recordUndo(cur);
 			for (; lit != lend; ++lit) {
 				if ((*lit)->toclevel == thistoclevel - 1 &&
-				    s->layout()->labeltype == (*lit)->labeltype) {
-					s->layout((*lit));
+				    start->layout()->labeltype == (*lit)->labeltype) {
+					start->layout((*lit));
 					break;
 				}
 			}
