@@ -79,7 +79,7 @@ void QTocDialog::on_closePB_clicked()
 
 void QTocDialog::on_updatePB_clicked()
 {
-	update();
+	form_->update();
 }
 
 
@@ -105,6 +105,7 @@ void QTocDialog::on_typeCO_activated(int value)
 {
 	form_->setTocModel(value);
 	tocTV->setModel(form_->tocModel());
+	reconnectSelectionModel();
 	enableButtons();
 }
 
@@ -180,7 +181,7 @@ void QTocDialog::enableButtons(bool enable)
 
 void QTocDialog::update()
 {
-	form_->update();
+	form_->updateToc();
 	updateGui();
 }
 
@@ -197,6 +198,7 @@ void QTocDialog::updateGui()
 	}
 
 	typeCO->setModel(type_model);
+	typeCO->setCurrentIndex(form_->getType());
 
 	if (form_->tocModel())
 		tocTV->setModel(form_->tocModel());
@@ -208,12 +210,7 @@ void QTocDialog::updateGui()
 	tocTV->header()->setVisible(false);
 	enableButtons();
 
-	connect(tocTV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &,
-			const QModelIndex &)),
-		this, SLOT(selectionChanged(const QModelIndex &,
-			const QModelIndex &)));
-
+	reconnectSelectionModel();
 	select(form_->getCurrentIndex());
 
 	lyxerr[Debug::GUI]
@@ -221,6 +218,16 @@ void QTocDialog::updateGui()
 		<< "\nform_->tocModel()->columnCount " << form_->tocModel()->columnCount()
 		<< endl;
 //	setTitle(form_->guiname())
+}
+
+
+void QTocDialog::reconnectSelectionModel()
+{
+	connect(tocTV->selectionModel(),
+		SIGNAL(currentChanged(const QModelIndex &,
+			const QModelIndex &)),
+		this, SLOT(selectionChanged(const QModelIndex &,
+			const QModelIndex &)));
 }
 
 
@@ -239,7 +246,7 @@ void QTocDialog::hide()
 
 void QTocDialog::show()
 {
-	update();
+	form_->update();
 	QDialog::show();
 }
 

@@ -32,8 +32,10 @@ public:
 	QToc(Dialog &);
 
 	void update();
-
-	void updateToc(int type);
+	///
+	void updateToc();
+	///
+	void updateType();
 
 	bool canOutline();
 	
@@ -47,6 +49,8 @@ public:
 	QModelIndex const getCurrentIndex();
 	///
 	void goTo(QModelIndex const & index);
+	///
+	int getType();
 
 private:
 

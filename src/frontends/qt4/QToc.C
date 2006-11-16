@@ -112,13 +112,23 @@ void QToc::goTo(QModelIndex const & index)
 }
 
 
+int QToc::getType()
+{
+	return type_;
+}
+
+
 void QToc::update()
 {
-	toc_models_.clear();
+	updateType();
+	updateToc();
+}
+
+
+void QToc::updateType()
+{
 
 	QStringList type_list;
-
-	type_ = 0;
 
 	vector<string> const & types = getTypes();
 	if (types.empty()) {
@@ -127,8 +137,11 @@ void QToc::update()
 		return;
 	}
 
-	string const & selected_type = params().getCmdName();
-	lyxerr[Debug::GUI] << "selected_type " << selected_type	<< endl;
+	string selected_type ;
+	if(params()["type"].empty()) //Then plain toc...
+		selected_type = params().getCmdName();
+	else
+		selected_type = to_ascii(params()["type"]);
 
 	QString gui_names_;
 	for (size_t i = 0; i != types.size(); ++i) {
@@ -142,15 +155,21 @@ void QToc::update()
 			<< "\ttoc_models_.size() " << toc_models_.size()
 			<< endl;
 
-		toc_models_.push_back(new TocModel(getContents(types[i])));
 	}
 	type_model_.setStringList(type_list);
 }
 
 
-void QToc::updateToc(int type)
+void QToc::updateToc()
 {
-	toc_models_[type] = new TocModel(getContents(getTypes()[type]));
+	toc_models_.clear();
+	vector<string> const & types = getTypes();
+
+	for (size_t i = 0; i != types.size(); ++i) {
+
+		toc_models_.push_back(new TocModel(getContents(types[i])));
+	}
+	
 }
 
 
