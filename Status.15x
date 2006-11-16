@@ -42,6 +42,9 @@ SPELL CHECKING (Joost 4/11/06)
 * The first time the spell checker is started, an empty window shown instead
   of the first misspelled word.
 
+* Words with umlauts or accents do not arrive as a whole word in the spell
+  checker.
+
 
 BIBLIOGRAPHY
 
@@ -79,6 +82,10 @@ DIALOGS
 
 * when opening an already opened document (or a document with newer backup),
   the mouse pointer turns into a clock, although it waits for confirmation
+
+* If you try to view a document as postscript that cannot be typeset because
+  of LaTeX errors and export to LaTeX afterwards you will get the old error
+  list again, although the export succeded.
 
 
 MATH CONTROL PANEL
@@ -200,6 +207,12 @@ PAINTING & PERFORMANCE
   pretty much instantaneous (inserting a footnote, dragging the mouse, switching
   to LyX from another application, opening dialogs, etc.) take quite a long time
   to complete in 1.5.
+
+
+BUILDING
+
+* It is ridiculous that you have to call configure with --with-frontend=qt4.
+  The existance of config/qt.m4 does not make much sense either.
 
 
 MAC OS X
