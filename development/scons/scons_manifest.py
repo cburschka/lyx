@@ -1439,6 +1439,7 @@ lib_images_files = Split('''
     footnote-insert.xpm
     index-insert.xpm
     label-insert.xpm
+    layout.xpm
     layout-document.xpm
     layout-paragraph.xpm
     layout_Description.xpm

@@ -788,21 +788,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
 		  << cmd.argument << endl;
 
-		// This is not the good solution to the empty argument
-		// problem, but it will hopefully suffice for 1.2.0.
-		// The correct solution would be to augument the
-		// function list/array with information about what
-		// functions needs arguments and their type.
-		if (cmd.argument.empty()) {
-			cur.errorMessage(_("LyX function 'layout' needs an argument."));
-			break;
-		}
-
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
 		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
-		bool hasLayout = tclass.hasLayout(cmd.argument);
-		string layout = cmd.argument;
+		string layout = cmd.argument.empty() ?
+			tclass.defaultLayoutName() :
+			cmd.argument;
+		bool hasLayout = tclass.hasLayout(layout);
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
@@ -812,7 +804,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (!hasLayout) {
-			cur.errorMessage(string(N_("Layout ")) + cmd.argument +
+			cur.errorMessage(string(N_("Layout ")) + layout +
 				N_(" not known"));
 			break;
 		}

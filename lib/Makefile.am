@@ -196,6 +196,7 @@ dist_images_DATA = \
 	images/footnote-insert.xpm \
 	images/index-insert.xpm \
 	images/label-insert.xpm \
+	images/layout.xpm \
 	images/layout-document.xpm \
 	images/layout-paragraph.xpm \
 	images/layout_Description.xpm \

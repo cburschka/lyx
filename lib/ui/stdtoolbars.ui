@@ -63,6 +63,7 @@ Toolbar "standard" "Standard"
 End
 
 Toolbar "extra" "Extra"
+	Item "Default" "layout"
 	Item "Numbered list" "layout Enumerate"
 	Item "Itemized list" "layout Itemize"
 	Item "List" "layout List"

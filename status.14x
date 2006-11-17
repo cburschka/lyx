@@ -44,6 +44,10 @@ What's new
 - New Galician translation of the documentation (splash, Intro);
   Update Hebrew (Intro) and Italian (UserGuide) documentation.
 
+- The layout lfun without an argument does now set the layout to the default
+  layout of the text class. This is used by a new button "Default" in the
+  extra toolbar.
+
 ** Bug fixes:
 
 * Document Input/Output
