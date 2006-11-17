@@ -2528,4 +2528,61 @@ bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 }
 
 
+void LyXText::charsTranspose(LCursor & cur)
+{
+	BOOST_ASSERT(this == cur.text());
+
+	pos_type pos = cur.pos();
+
+	// If cursor is at beginning or end of paragraph, do nothing.
+	if (pos == cur.lastpos() || pos == 0)
+		return;
+
+	Paragraph & par = cur.paragraph();
+
+	// Get the positions of the characters to be transposed. 
+	pos_type pos1 = pos - 1;
+	pos_type pos2 = pos;
+
+	// In change tracking mode, ignore deleted characters.
+	while (pos2 < cur.lastpos() && par.isDeleted(pos2))
+		++pos2;
+	if (pos2 == cur.lastpos())
+		return;
+
+	while (pos1 >= 0 && par.isDeleted(pos1))
+		--pos1;
+	if (pos1 < 0)
+		return;
+
+	// Don't do anything if one of the "characters" is not regular text.
+	if (par.isInset(pos1) || par.isInset(pos2))
+		return;
+
+	// Store the characters to be transposed (including font information).
+	char_type char1 = par.getChar(pos1);
+	LyXFont const font1 =
+		par.getFontSettings(cur.buffer().params(), pos1);
+	
+	char_type char2 = par.getChar(pos2);
+	LyXFont const font2 =
+		par.getFontSettings(cur.buffer().params(), pos2);
+
+	// And finally, we are ready to perform the transposition.
+	// Track the changes if Change Tracking is enabled.
+	bool const trackChanges = cur.buffer().params().trackChanges;
+
+	recordUndo(cur);
+
+	par.eraseChar(pos2, trackChanges);
+	par.eraseChar(pos1, trackChanges);
+	par.insertChar(pos1, char2, font2, trackChanges);
+	par.insertChar(pos2, char1, font1, trackChanges);
+
+	// After the transposition, move cursor to after the transposition.
+	setCursor(cur, cur.pit(), pos2);
+	cur.forwardPos();
+}
+
+
 } // namespace lyx

@@ -748,7 +748,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHARS_TRANSPOSE:
-		recordUndo(cur);
+ 		charsTranspose(cur);
 		break;
 
 	case LFUN_PASTE:
