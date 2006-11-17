@@ -40,6 +40,9 @@ namespace frontend { class Application; }
 /// initial startup
 class LyX : boost::noncopyable {
 public:
+
+	~LyX();
+
 	/**
 	 * Execute LyX. The startup sequence is as follows:
 	 * -# LyX::exec()

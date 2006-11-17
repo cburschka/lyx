@@ -159,6 +159,17 @@ struct LyX::Singletons
 
 boost::scoped_ptr<LyX> LyX::singleton_;
 
+LyX::~LyX()
+{
+	// Static data are not treated in the same way at all on the Mac (and
+	// the LyX singleton has static methods). This is the reason why the
+	// exit command on the Mac bypasses our dispatch machinery altogether.
+	// On Linux and Windows we won't pass a second time through quit()
+	// because quitting will already be set to true.
+	if (!quitting)
+		quit();
+}
+
 
 int LyX::exec(int & argc, char * argv[])
 {
