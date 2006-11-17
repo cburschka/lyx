@@ -387,9 +387,11 @@ void LyX::prepareExit()
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
 
 	if (!destroyDir(package().temp_dir())) {
-		docstring const msg =
-			bformat(_("Unable to remove the temporary directory %1$s"),
-			from_utf8(package().temp_dir()));
+		// FIXME UNICODE: package().temp_dir() could in theory contain utf8 characters.
+		// We cannot use from_utf8() here because this involves the use of static data
+		// that may have been destroyed already on Mac systems.
+		docstring const msg = _("Unable to remove the temporary directory") + " "
+			+ package().temp_dir().c_str();
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 }
