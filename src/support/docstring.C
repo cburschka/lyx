@@ -443,6 +443,47 @@ protected:
 };
 
 
+/// Facet for inputting ascii representations of numbers from idocstreams.
+/// Here we simply need defining the virtual do_get functions.
+class ascii_num_get_facet : public std::num_get<lyx::char_type, std::istreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > >
+{
+	typedef std::istreambuf_iterator<lyx::char_type, std::char_traits<lyx::char_type> > iter_type;
+public:
+	ascii_num_get_facet(size_t refs = 0) : std::num_get<lyx::char_type, iter_type>(refs) {}
+
+	/// Facet for converting ascii representation of numbers to a value.
+	class string_num_get_facet : public std::num_get<char, std::basic_string<char>::iterator>
+	{
+	public:
+		string_num_get_facet() : std::num_get<char, std::basic_string<char>::iterator>(1) {}
+	};
+
+private:
+	bool isNumpunct(lyx::char_type const c) const
+	{
+		/// Only account for the standard numpunct "C" locale facet.
+		return c < 0x80 && (c == '-' || c == '+' || isdigit(c)
+			|| ('a' <= c && c <= 'f') || ('A' <= c && c <= 'F')
+			|| c == 'x' || c == 'X');
+	}
+
+protected:
+	iter_type
+	do_get(iter_type iit, iter_type eit, std::ios_base & b,
+		std::ios_base::iostate & err, long & v) const
+	{
+		std::string s;
+		s.resize(64);
+		for (int i = 0; iit != eit && isNumpunct(*iit); ++i, ++iit)
+			s[i] = static_cast<char>(*iit);
+		string_num_get_facet f;
+		f.get(s.begin(), s.end(), b, err, v);
+
+		return iit;
+	}
+};
+
+
 /// class to add our facets to the global locale
 class locale_initializer {
 public:
@@ -451,7 +492,8 @@ public:
 		std::locale global;
 		std::locale const loc1(global, new ascii_ctype_facet);
 		std::locale const loc2(loc1, new ascii_num_put_facet);
-		std::locale::global(loc2);
+		std::locale const loc3(loc2, new ascii_num_get_facet);
+		std::locale::global(loc3);
 	}
 };
 
