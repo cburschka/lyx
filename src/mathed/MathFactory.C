@@ -124,7 +124,7 @@ void initSymbols()
 	while (getline(fs, line)) {
 		int charid     = 0;
 		int fallbackid = 0;
-		if (!line.empty() && line[0] == '#')
+		if (line.empty() || line[0] == '#')
 			continue;
 
 		// special case of iffont/else/endif
