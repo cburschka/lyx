@@ -51,32 +51,17 @@ BIBLIOGRAPHY
 
 TABLE OF CONTENTS
 
-* In the TOC dialog, switching between the different TOC types (TOC, Table,
-  Float, etc.) is broken.
-
-* In the TOC dialog, the slider for altering the display level is
-  non-functional (not implemented).
-
-* TOC crashes (simply make a few sections, subsections, sections; then add TOC
-  before all sections and click on the left button)
-
-* Items in the TOC cannot be moved using drag & drop (Joost 4/11/06).
-
 * In TOC, the buttons "Up", "Down", "Promote", and "Demote" are not
   self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
   Up/Down? The arrangement of the buttons may also give some hint to the user.
-
-* The correct list is not selected when right-clicking on a LOF or
-  LOT inset.
-
-* When selecting a type which *is* already selected, the content in the 
-  browser window vanishes
 
 * The items in the treeview are editable
 
 * When content (sections/captions) is changed, the toc/lof/lot is not properly 
   updated.
-
+  Abdel 2006-11-17: This one is not as simple as it seems as it involves a
+  TocBackend update at each keystroke. Unless we manage to update a specific
+  TocItem, this will be a WONTFIX for 1.5.0.
 
 DIALOGS
 
@@ -382,3 +367,26 @@ CREDITS:
   3. add a bibliography
   4. View Source ->crash
   FIXED (Peter 2006-11-14)
+
+* In the TOC dialog, switching between the different TOC types (TOC, Table,
+  Float, etc.) is broken.
+  FIXED (Ugras)
+
+* In the TOC dialog, the slider for altering the display level is
+  non-functional (not implemented).
+  FIXED (Ugras 2006-11-17)
+
+* The correct list is not selected when right-clicking on a LOF or
+  LOT inset.
+  FIXED (Ugras 2006-11-17)
+
+* When selecting a type which *is* already selected, the content in the 
+  browser window vanishes
+  FIXED (Ugras 2006-11-17)
+
+* TOC crashes (simply make a few sections, subsections, sections; then add TOC
+  before all sections and click on the left button)
+  FIXED (Abdel, sometimes in november 2006).
+
+* Items in the TOC cannot be moved using drag & drop (Joost 4/11/06).
+  WONTFIX (Abdel 2006-11-17): at least not for 1.5.0, this is just candy anyway.

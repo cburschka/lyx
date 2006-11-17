@@ -79,7 +79,18 @@ void QTocDialog::on_closePB_clicked()
 
 void QTocDialog::on_updatePB_clicked()
 {
-	form_->update();
+	update();
+}
+
+/* FIXME (Ugras 17/11/06):
+I have implemented a getIndexDepth function to get the model indices. In my
+opinion, somebody should derive a new qvariant class for tocModelItem
+which saves the string data and depth information. that will save the
+depth calculation.
+*/
+int QTocDialog::getIndexDepth(QModelIndex const & index, int depth){
+	++depth;
+	return (index.parent() == QModelIndex())? depth : getIndexDepth(index.parent(),depth);
 }
 
 
@@ -89,15 +100,17 @@ void QTocDialog::on_depthSL_valueChanged(int depth)
 		return;
 
 	depth_ = depth;
-
-/*
-	while (
-	tocTv->setExpanded();
-			if (iter->depth() > depth_)
-				tocTV->collapseItem(topLevelItem);
-			else if (iter->depth() <= depth_)
-				tocTV->expandItem(topLevelItem);
-*/
+//	tocTV->expandAll(); //expanding and then collapsing is probably better, but my qt 4.1.2 doesn't have expandAll()..
+	QModelIndexList indices = 
+		form_->tocModel()->match(form_->tocModel()->index(0,0),
+		 			Qt::DisplayRole, "*", -1, 
+					Qt::MatchWildcard|Qt::MatchRecursive);
+	Q_FOREACH (QModelIndex index, indices) { // I had to use Q_FOREACH instead of foreach
+		if(getIndexDepth(index) < depth) // because compile flag -DQT_NO_KEYWORDS doesn't allow me..
+   			tocTV->expand(index); 
+		else
+    			tocTV->collapse(index); 
+	}
 }
 
 

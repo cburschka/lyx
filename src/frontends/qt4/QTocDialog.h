@@ -73,6 +73,8 @@ protected:
 	void enableButtons(bool enable = true);
 	/// Reconnects the selection model change signal when TOC changed.
 	void reconnectSelectionModel();
+	///
+	int getIndexDepth(QModelIndex const & index, int depth = -1);
 
 private:
 
