@@ -339,7 +339,7 @@ bool BufferView::multiParSel()
 }
 
 
-bool BufferView::update(Update::flags flags)
+std::pair<bool, bool> BufferView::update(Update::flags flags)
 {
 	// This is close to a hot-path.
 	if (lyxerr.debugging(Debug::DEBUG)) {
@@ -353,7 +353,7 @@ bool BufferView::update(Update::flags flags)
 
 	// Check needed to survive LyX startup
 	if (!buffer_)
-		return false;
+		return make_pair(false, false);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		lyxerr[Debug::WORKAREA] << "BufferView::update" << std::endl;
@@ -362,15 +362,31 @@ bool BufferView::update(Update::flags flags)
 	// Update macro store
 	buffer_->buildMacros();
 
-	// First drawing step
-	updateMetrics(flags & Update::SinglePar);
-
+	// Now do the first drawing step if needed. This consists on updating
+	// the CoordCache in updateMetrics().
 	// The second drawing step is done in WorkArea::redraw() if needed.
-	bool const need_second_step =
-		(flags & (Update::SinglePar | Update::Force | Update::FitCursor | Update::MultiParSel))
-		&& (fitCursor() || multiParSel());
 
-	return need_second_step;
+	// Case when no explicit update is requested.
+	if (!(flags & (Update::SinglePar | Update::Force))) {
+		if (fitCursor() || multiParSel()) {
+			// a CoordCache update is needed
+			updateMetrics(false);
+			// tell the frontend to update the screen.
+			return make_pair(true, false);
+		}
+		// no need to do anything.
+		return make_pair(false, false);
+	}
+
+	// We are now in the case (Update::SinglePar | Update::Force)
+	bool single_par = flags & Update::SinglePar;
+	updateMetrics(single_par);
+
+	// Don't forget to do check for fitCursor() and multiParSel().
+	fitCursor();
+	multiParSel();
+
+	return make_pair(true, single_par);
 }
 
 
@@ -1006,7 +1022,7 @@ void BufferView::workAreaResize(int width, int height)
 }
 
 
-bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
+std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << BOOST_CURRENT_FUNCTION << "[ cmd0 " << cmd0 << "]" << endl;
 
@@ -1016,14 +1032,11 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 	// E.g. Qt mouse press when no buffer
 	if (!buffer_)
-		return false;
-
-	bool needRedraw = false;
+		return make_pair(false, false);
 
 	LCursor cur(*this);
 	cur.push(buffer_->inset());
 	cur.selection() = cursor_.selection();
-	needRedraw |= cur.selection();
 
 	// Either the inset under the cursor or the
 	// surrounding LyXText will handle this event.
@@ -1046,7 +1059,6 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	//  cur.bv().cursor() = cur;  (or similar)
 	if (inset) {
 		inset->dispatch(cur, cmd);
-		needRedraw = true;
 	}
 
 	// Now dispatch to the temporary cursor. If the real cursor should
@@ -1054,17 +1066,12 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	if (!cur.result().dispatched())
 		cur.dispatch(cmd);
 
-	if (cur.result().dispatched()) {
-		// Redraw if requested or necessary.
-		if (cur.result().update())
-			needRedraw |= update(Update::FitCursor | Update::Force);
-		else
-			needRedraw |= update(Update::FitCursor | Update::MultiParSel);
-	}
+	// Redraw if requested and necessary.
+	if (cur.result().dispatched() && cur.result().update())
+		return update(cur.result().update());
 
 	// When the above and the inner function are fixed, we can do this:
-	//return needRedraw;
-	return true;
+	return make_pair(false, false);
 }
 
 
@@ -1217,7 +1224,7 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 void BufferView::updateMetrics(bool singlepar)
 {
 	// Clear out the position cache in case of full screen redraw.
-	//if (!singlepar)
+	if (!singlepar)
 		coord_cache_.clear();
 
 	LyXText & buftext = buffer_->text();

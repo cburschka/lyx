@@ -96,7 +96,9 @@ public:
 	/// Set font over selection paragraphs and rebreak.
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
-	/// rebreaks the given par
+	/// Rebreaks the given paragraph.
+	/// \retval true if a full screen redraw is needed.
+	/// \retval false if a single paragraph redraw is enough.
 	bool redoParagraph(BufferView &, pit_type pit);
 
 	/// returns pos in given par at given x coord

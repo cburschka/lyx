@@ -24,6 +24,7 @@
 #include <boost/utility.hpp>
 #include <boost/signal.hpp>
 
+#include <utility>
 #include <string>
 
 
@@ -97,9 +98,11 @@ public:
 	 *  to do a fitcursor, and to force an update if screen
 	 *  position changes. \c forceupdate means to force an update
 	 *  in any case.
-	 * \return true if a full updateMetrics() is needed.
+	 * \retval (false, xxx) if no redraw is required
+	 * \retval (true, true) if a single paragraph redraw is needed
+	 * \retval (true, false) if a full redraw is needed
 	 */
-	bool update(Update::flags flags = Update::FitCursor | Update::Force);
+	std::pair<bool, bool> update(Update::flags flags = Update::FitCursor | Update::Force);
 
 	/// move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
@@ -167,8 +170,10 @@ public:
 
 	/// dispatch method helper for \c WorkArea
 	/// \sa WorkArea
-	/// \return true if a full redraw is needed
-	bool workAreaDispatch(FuncRequest const & ev);
+	/// \retval (false, xxx) if no redraw is required
+	/// \retval (true, true) if a single paragraph redraw is needed
+	/// \retval (true, false) if a full redraw is needed
+	std::pair<bool, bool> workAreaDispatch(FuncRequest const & ev);
 
 	/// access to anchor.
 	pit_type anchor_ref() const;

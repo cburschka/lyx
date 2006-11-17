@@ -293,6 +293,11 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
+		if (cmd.button() == mouse_button::button1 && hitButton(cmd)) {
+			cur.dispatched();
+			cur.noUpdate();
+			break;
+		}
 		if (status() == Inlined)
 			InsetText::doDispatch(cur, cmd);
 		else if (status() == Open && !hitButton(cmd))
@@ -314,36 +319,35 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
+			// Open the Inset configuration dialog
 			showInsetDialog(&cur.bv());
 			break;
 		}
 
-		switch (status()) {
-
-		case Collapsed:
-			//lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
-			setStatus(cur, Open);
-			edit(cur, true);
-			cur.bv().cursor() = cur;
-			break;
-
-		case Open: {
-			if (hitButton(cmd)) {
-				//lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
-				setStatus(cur, Collapsed);
-				cur.bv().cursor() = cur;
-			} else {
-				//lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-				InsetText::doDispatch(cur, cmd);
-			}
-			break;
-		}
-
-		case Inlined:
-			//lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
+		if (status() == Inlined) {
+			// The mouse click has to be within the inset!
 			InsetText::doDispatch(cur, cmd);
 			break;
 		}
+
+		if (cmd.button() == mouse_button::button1 && hitButton(cmd)) {
+			// Left button is clicked, the user asks to toggle the inset
+			// visual state.
+			cur.dispatched();
+			cur.updateFlags(Update::Force | Update::FitCursor);
+			if (status() == Collapsed) {
+				setStatus(cur, Open);
+				edit(cur, true);
+			}
+			else {
+				setStatus(cur, Collapsed);
+			}
+			cur.bv().cursor() = cur;
+			break;
+		}
+
+		// The mouse click is within the opened inset.
+		InsetText::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_INSET_TOGGLE:

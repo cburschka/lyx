@@ -1715,15 +1715,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// Redraw screen unless explicitly told otherwise.
 			// This also initializes the position cache for all insets
 			// in (at least partially) visible top-level paragraphs.
-			bool needSecondUpdate = false;
-			if (updateFlags != Update::None)
-				needSecondUpdate = view()->update(updateFlags);
-			else
-				needSecondUpdate = view()->fitCursor();
+			std::pair<bool, bool> needSecondUpdate = view()->update(updateFlags);
 
-			if (needSecondUpdate || updateFlags != Update::None) {
-				view()->buffer()->changed(updateFlags & Update::SinglePar);
-			}
+			if (needSecondUpdate.first)
+				view()->buffer()->changed(needSecondUpdate.second);
+
 			lyx_view_->updateStatusBar();
 
 			// if we executed a mutating lfun, mark the buffer as dirty

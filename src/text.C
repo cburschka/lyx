@@ -1153,8 +1153,12 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	// Because of the mix between the model (the paragraph contents) and the
 	// view (the paragraph breaking in rows, we have to do this here before
 	// the setCursor() call below.
-	redoParagraph(cur.bv(), cpit);
-	redoParagraph(cur.bv(), cpit + 1);
+	bool changed_height = redoParagraph(cur.bv(), cpit);
+	changed_height |= redoParagraph(cur.bv(), cpit + 1);
+	if (changed_height)
+		// A singlePar update is not enough in this case.
+		cur.updateFlags(Update::Force);
+
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
@@ -1253,7 +1257,9 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 	// FIXME: Inserting a character has nothing to do with setting a cursor.
 	// Because of the mix between the model (the paragraph contents) and the
 	// view (the paragraph breaking in rows, we have to do this here.
-	redoParagraph(cur.bv(), cur.pit());
+	if (redoParagraph(cur.bv(), cur.pit()))
+		// A singlePar update is not enough in this case.
+		cur.updateFlags(Update::Force);
 	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }
@@ -1671,13 +1677,16 @@ bool LyXText::erase(LCursor & cur)
 	} else
 		needsUpdate = dissolveInset(cur);
 
-	// Make sure the cursor is correct. Is this really needed?
 	// FIXME: Inserting characters has nothing to do with setting a cursor.
 	// Because of the mix between the model (the paragraph contents)
 	// and the view (the paragraph breaking in rows, we have to do this
 	// here before the setCursorIntern() call.
 	if (needsUpdate) {
-		redoParagraph(cur.bv(), cur.pit());
+		if (redoParagraph(cur.bv(), cur.pit()))
+			// A singlePar update is not enough in this case.
+			cur.updateFlags(Update::Force);
+		// Make sure the cursor is correct. Is this really needed?
+		// No, not really... at least not here!
 		setCursorIntern(cur, cur.pit(), cur.pos());
 	}
 	
@@ -1786,7 +1795,9 @@ bool LyXText::backspace(LCursor & cur)
 	// Because of the mix between the model (the paragraph contents)
 	// and the view (the paragraph breaking in rows, we have to do this
 	// here before the setCursor() call.
-	redoParagraph(cur.bv(), cur.pit());
+	if (redoParagraph(cur.bv(), cur.pit()))
+		// A singlePar update is not enough in this case.
+		cur.updateFlags(Update::Force);
 	setCursor(cur, cur.pit(), cur.pos(), false, cur.boundary());
 
 	return needsUpdate;
@@ -1929,7 +1940,7 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
 
-	bool const same = dim == par.dim();
+	bool const same = dim.height() == par.dim().height();
 
 	par.dim() = dim;
 	//lyxerr << "redoParagraph: " << par.rows().size() << " rows\n";

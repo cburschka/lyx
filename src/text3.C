@@ -305,6 +305,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: cmd: " << cmd << endl;
 
+	// FIXME: We use the update flag to indicates wether a singlePar or a
+	// full screen update is needed. We reset it here but shall we restore it
+	// at the end?
+	cur.noUpdate();
+
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
 	CursorSlice oldTopSlice = cur.top();
@@ -988,6 +993,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 		}
 
+		if (cmd.button() == mouse_button::button1) {
+			needsUpdate = false;
+			cur.noUpdate();
+		}
+
 		break;
 	}
 
@@ -1037,8 +1047,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 
 		// finish selection
-		if (cmd.button() == mouse_button::button1)
-			theSelection().haveSelection(cur.selection());
+		if (cmd.button() == mouse_button::button1) {
+			if (cur.selection())
+				theSelection().haveSelection(cur.selection());
+			needsUpdate = false;
+			cur.noUpdate();
+		}
 
 		bv->switchKeyMap();
 		break;
@@ -1474,6 +1488,19 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	needsUpdate |= (cur.pos() != cur.lastpos()) && cur.selection();
+
+	// FIXME: The cursor flag is reset two lines below
+	// so we need to check here if some of the LFUN did touch that.
+	// for now only LyXText::erase() and LyXText::backspace() do that.
+	// The plan is to verify all the LFUNs and then to remove this
+	// singleParUpdate boolean altogether.
+	if (cur.result().update() & Update::Force) {
+		singleParUpdate = false;
+		needsUpdate = true;
+	}
+
+	// FIXME: the following code should go in favor of fine grained
+	// update flag treatment.
 	if (singleParUpdate)
 		// Inserting characters does not change par height
 		if (cur.bottom().paragraph().dim().height()
@@ -1485,10 +1512,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			return;
 		} else
 			needsUpdate = true;
+
 	if (!needsUpdate
 	    && &oldTopSlice.inset() == &cur.inset()
 	    && oldTopSlice.idx() == cur.idx()
-	    && !sel
+	    && !sel // sel is a backup of cur.selection() at the biginning of the function.
 	    && !cur.selection())
 		cur.noUpdate();
 	else
