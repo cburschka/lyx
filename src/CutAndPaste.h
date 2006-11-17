@@ -58,7 +58,8 @@ void copySelection(LCursor & cur);
 ///
 void pasteSelection(LCursor & cur, size_t sel_index = 0);
 
-///
+/// Paste the paragraph list \p parlist at the position given by \p cur.
+/// Does not handle undo. Does only work in text, not mathed.
 void pasteParagraphList(LCursor & cur, ParagraphList const & parlist, 
                         textclass_type textclass);
 

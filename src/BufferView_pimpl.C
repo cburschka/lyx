@@ -888,6 +888,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	Buffer buf("", false);
 	buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
 	if (::loadLyXFile(&buf, MakeAbsPath(filename))) {
+		recordUndo(cursor_);
 		lyx::cap::pasteParagraphList(cursor_, buf.paragraphs(), 
 					     buf.params().textclass);
 		res = _("Document %1$s inserted.");
