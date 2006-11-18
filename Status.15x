@@ -133,8 +133,6 @@ TOOLBARS & MINIBUFFER
   
 * TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
 
-* M-x is broken (does not bring up the minibuffer).
-
 * Command completion in the minibuffer shows a huge blank area below the proposed
   commands. Clicking in that empty area crashes LyX.
 
@@ -411,3 +409,7 @@ CREDITS:
 
 * Items in the TOC cannot be moved using drag & drop (Joost 4/11/06).
   WONTFIX (Abdel 2006-11-17): at least not for 1.5.0, this is just candy anyway.
+
+* M-x is broken (does not bring up the minibuffer).
+  FIXED (Bo, 2006-11-18): set toolbar flag in display function.
+

@@ -118,11 +118,21 @@ void Toolbars::init()
 
 void Toolbars::display(string const & name, bool show)
 {
-	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
-	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
 
 	for (; cit != end; ++cit) {
 		if (cit->name == name) {
+			unsigned int flags = cit->flags;
+			TurnOffFlag(AUTO);
+			if(show) {
+				TurnOnFlag(ON);
+				TurnOnFlag(OFF);
+			} else {
+				TurnOnFlag(OFF);
+				TurnOnFlag(ON);
+			}
+			cit->flags = static_cast<lyx::ToolbarBackend::Flags>(flags);
 			displayToolbar(*cit, show);
 			return;
 		}
