@@ -89,7 +89,7 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 
 	int cols = max(width() / button_size, 1);
 	int rows = max(int(buttons_.size() / cols), 1);
-	if (buttons_.size() % cols)
+	if (buttons_.size() % cols )
 		++rows;
 
 	lyxerr[Debug::GUI] << "Laying out " << buttons_.size() << " widgets in a "
@@ -121,13 +121,31 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 
 out:
 
-	resize(cols * button_size, rows * button_size);
+	int maxrow_ = int(buttons_.size() / cols);
+	if (!maxrow_ || buttons_.size() % cols )
+		++maxrow_;
+	if(!parent())
+		setMinimumHeight(button_size * maxrow_ + 20); //prevents the detached panel becomes unreadable
+	else 
+		resize(cols * button_size, rows * button_size);
 
 	maxcol_ = cols;
 
 	setUpdatesEnabled(true);
 	update();
 }
+
+int IconPalette::numRows() 
+{
+	return maxrow_;
+}
+
+
+int IconPalette::numButtons() 
+{
+	return buttons_.size();
+}
+
 
 
 } // namespace lyx

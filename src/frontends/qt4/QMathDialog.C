@@ -224,12 +224,15 @@ void QMathDialog::expandClicked()
 {
 	int const id = symbolsCO->currentIndex();
 	IconPalette * p = makePanel(0, panels[id]);
+	p->setFixedWidth(40 * 15 + 20);
 	string s = "LyX: ";
 	s += fromqstr(symbolsCO->currentText());
 	p->setWindowTitle(toqstr(s));
 	p->resize(40 * 5, p->height());
-	p->show();
-	p->setMaximumSize(p->width(), p->height());
+ 	p->show();
+	p->resize(40 * 5 + 20, 40 * p->numRows() + 20);
+	p->setMinimumSize(40 * 5 + 20, 40 * 1 + 20);
+	p->setMaximumWidth (40 * p->numButtons() + 20);
 }
 
 

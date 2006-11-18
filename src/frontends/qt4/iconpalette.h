@@ -36,6 +36,11 @@ public:
 
 	/// add a button
 	void add(QPixmap const & pixmap, std::string name, std::string tooltip);
+	/// get required number of rows.
+	int numRows();
+	/// get number of Buttons
+	int numButtons();
+
 Q_SIGNALS:
 	void button_clicked(const std::string &);
 protected:
@@ -44,6 +49,8 @@ protected Q_SLOTS:
 	virtual void clicked();
 private:
 	int maxcol_;
+
+	int maxrow_;
 
 	QGridLayout * layout_;
 
