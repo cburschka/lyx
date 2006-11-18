@@ -25,6 +25,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/package.h"
+#include "support/unicode.h"
 
 #include <boost/function.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -64,6 +65,13 @@ using lyx::support::rtrim;
 using lyx::support::isFileReadable;
 
 namespace fs = boost::filesystem;
+
+
+IconvProcessor & utf8ToUcs4()
+{
+	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
+	return iconv;
+}
 
 
 // Hacks to allow the thing to link in the lyxlayout stuff
