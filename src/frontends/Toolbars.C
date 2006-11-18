@@ -125,7 +125,7 @@ void Toolbars::display(string const & name, bool show)
 		if (cit->name == name) {
 			unsigned int flags = cit->flags;
 			TurnOffFlag(AUTO);
-			if(show) {
+			if (show) {
 				TurnOnFlag(ON);
 				TurnOnFlag(OFF);
 			} else {
