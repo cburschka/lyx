@@ -998,7 +998,6 @@ src_tex2lyx_header_files = Split('''
     Spacing.h
     context.h
     lyxfont.h
-    messages.h
     tex2lyx.h
     texparser.h
 ''')
@@ -1018,7 +1017,6 @@ src_tex2lyx_files = Split('''
     lyxlex_pimpl.C
     lyxtextclass.C
     math.C
-    messages.C
     preamble.C
     table.C
     tex2lyx.C

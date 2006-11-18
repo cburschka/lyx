@@ -1795,8 +1795,7 @@ if build_tex2lyx:
     tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
     tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
 
-    for file in ['FloatList.C', 'Floating.C', 'counters.C', 'gettext.h', 'gettext.C', 
-        'lyxlayout.h', 'lyxlayout.C', 'messages.h', 'messages.C',
+    for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C', 
         'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
         env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
             [Copy('$TARGET', '$SOURCE')])
