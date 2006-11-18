@@ -193,6 +193,27 @@ PAINTING & PERFORMANCE
   to LyX from another application, opening dialogs, etc.) take quite a long time
   to complete in 1.5.
 
+* Some math symbols are not displayed (from Enrico Forestieri)
+  I noticed that some math symbols are not shown on screen. This seems
+  to be platform dependent. The following is a table illustrating the
+  situation on three different platforms. Here "no" means that the
+  symbol is not shown on screen (the symbol is invisible but occupies
+  space: it is as a sort of \phantom), and "yes" that it is shown.
+  ---------------------------------------
+  Symbol         Linux   Solaris   Cygwin
+  ---------------------------------------
+  \Omega          no       no        no
+  \int            yes      yes       no
+  \oint           yes      yes       no
+  \otimes         no       no        no
+  \nleqslant      no       no        no
+  \spadesuit(*)   yes      no        yes
+  ---------------------------------------
+  (*) On solaris, a square is shown on screen instead of nothing.
+ Further comments from Georg: This is probably a qt4 font drawing problem,
+ since \Omega works fine in 1.4.3, and my debugging results showed that the
+ correct font is found and used (cmr10).
+
 
 BUILDING
 
