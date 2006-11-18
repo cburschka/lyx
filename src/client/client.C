@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "debug.h"
+#include "support/unicode.h"
 #include "support/lstrings.h"
 
 #include <boost/filesystem/operations.hpp>
@@ -67,6 +68,13 @@ using std::cout;
 using std::cerr;
 using std::cin;
 using std::endl;
+
+
+IconvProcessor & utf8ToUcs4()
+{
+	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
+	return iconv;
+}
 
 
 namespace support {
@@ -497,8 +505,6 @@ int p(vector<char *> const & arg)
 
 
 } // namespace cmdline
-
-
 
 } // namespace lyx
 
