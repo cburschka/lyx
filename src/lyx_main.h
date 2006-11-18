@@ -25,6 +25,7 @@ namespace lyx {
 class Buffer;
 class BufferList;
 class ErrorItem;
+class IconvProcessor;
 class InsetBase;
 class LyXFunc;
 class LyXServer;
@@ -41,6 +42,7 @@ namespace frontend { class Application; }
 class LyX : boost::noncopyable {
 public:
 
+	LyX();
 	~LyX();
 
 	/**
@@ -48,16 +50,14 @@ public:
 	 * -# LyX::exec()
 	 * -# LyX::priv_exec()
 	 * -# lyx::createApplication()
-	 * -# LyX::exec2()
 	 * Step 3 is omitted if no gui is wanted. We need lyx::createApplication()
 	 * only to create the QApplication object in the qt frontend. All
 	 * attempts with static and dynamically allocated QApplication
 	 * objects lead either to harmless error messages on exit
 	 * ("Mutex destroy failure") or crashes (OS X).
 	 */
-	static int exec(int & argc, char * argv[]);
-	/// Execute LyX (inner execution loop, \sa exec)
-	int exec2(int & argc, char * argv[]);
+	int exec(int & argc, char * argv[]);
+
 	static LyX & ref();
 	static LyX const & cref();
 
@@ -95,6 +95,9 @@ public:
 	kb_keymap & topLevelKeymap();
 	kb_keymap const & topLevelKeymap() const;
 
+	///
+	IconvProcessor & iconvProcessor();
+
 	LyXView * newLyXView();
 
 	/** redraw \c inset in all the BufferViews in which it is currently
@@ -103,11 +106,6 @@ public:
 	Buffer const * const updateInset(InsetBase const *) const;
 
 private:
-	static boost::scoped_ptr<LyX> singleton_;
-
-	LyX();
-	int priv_exec(int & argc, char * argv[]);
-
 	/// Do some cleanup in preparation of an exit.
 	void prepareExit();
 

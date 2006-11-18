@@ -43,5 +43,7 @@ int main(int argc, char * argv[])
 	// initialize for internationalized version *EK*
 	lyx::locale_init();
 
-	return lyx::LyX::exec(argc, argv);
+	lyx::LyX the_lyx_instance;
+
+	return the_lyx_instance.exec(argc, argv);
 }

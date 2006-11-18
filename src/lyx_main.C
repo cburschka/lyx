@@ -57,6 +57,7 @@
 #include "support/package.h"
 #include "support/path.h"
 #include "support/systemcall.h"
+#include "support/unicode.h"
 
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -114,6 +115,7 @@ namespace {
 string cl_system_support;
 string cl_user_support;
 
+LyX * singleton_ = 0;
 
 void showFileError(string const & error)
 {
@@ -140,6 +142,9 @@ void reconfigureUserLyXDir()
 /// The main application class private implementation.
 struct LyX::Singletons 
 {
+	Singletons(): iconv(ucs4_codeset, "UTF-8")
+	{
+	}
 	/// our function handler
 	LyXFunc lyxfunc_;
 	///
@@ -154,10 +159,11 @@ struct LyX::Singletons
 	boost::scoped_ptr<frontend::Application> application_;
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
 	boost::scoped_ptr<Session> session_;
+
+	///
+	IconvProcessor iconv;
 };
 
-
-boost::scoped_ptr<LyX> LyX::singleton_;
 
 LyX::~LyX()
 {
@@ -171,35 +177,24 @@ LyX::~LyX()
 }
 
 
-int LyX::exec(int & argc, char * argv[])
-{
-	BOOST_ASSERT(!singleton_.get());
-	// We must return from this before launching the gui so that
-	// other parts of the code can access singleton_ through
-	// LyX::ref and LyX::cref.
-	singleton_.reset(new LyX);
-	// Start the real execution loop.
-	return singleton_->priv_exec(argc, argv);
-}
-
-
 LyX & LyX::ref()
 {
-	BOOST_ASSERT(singleton_.get());
-	return *singleton_.get();
+	BOOST_ASSERT(singleton_);
+	return *singleton_;
 }
 
 
 LyX const & LyX::cref()
 {
-	BOOST_ASSERT(singleton_.get());
-	return *singleton_.get();
+	BOOST_ASSERT(singleton_);
+	return *singleton_;
 }
 
 
 LyX::LyX()
 	: first_start(false), geometryOption_(false)
 {
+	singleton_ = this;
 	pimpl_.reset(new Singletons);
 }
 
@@ -291,6 +286,12 @@ kb_keymap & LyX::topLevelKeymap()
 }
 
 
+IconvProcessor & LyX::iconvProcessor()
+{
+	return pimpl_->iconv;
+}
+
+
 kb_keymap const & LyX::topLevelKeymap() const
 {
 	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
@@ -317,7 +318,7 @@ Buffer const * const LyX::updateInset(InsetBase const * inset) const
 }
 
 
-int LyX::priv_exec(int & argc, char * argv[])
+int LyX::exec(int & argc, char * argv[])
 {
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
@@ -387,12 +388,9 @@ void LyX::prepareExit()
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
 
 	if (!destroyDir(package().temp_dir())) {
-		// FIXME UNICODE: package().temp_dir() could in theory contain utf8 characters.
-		// We cannot use from_utf8() here because this involves the use of static data
-		// that may have been destroyed already on Mac systems.
 		docstring const msg =
 			bformat(_("Unable to remove the temporary directory %1$s"),
-			from_ascii(package().temp_dir()));
+			from_utf8(package().temp_dir()));
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
 }
@@ -1323,6 +1321,12 @@ kb_keymap & theTopLevelKeymap()
 {
 	BOOST_ASSERT(use_gui);
 	return LyX::ref().topLevelKeymap();
+}
+
+
+IconvProcessor & utf8ToUcs4()
+{
+	return LyX::ref().iconvProcessor();
 }
 
 } // namespace lyx

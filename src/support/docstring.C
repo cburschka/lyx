@@ -57,14 +57,6 @@ std::string const to_ascii(docstring const & ucs4)
 
 void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
 {
-	// FIXME (Abdel 17/11/06): static data are evil!
-	// This function cannot be used in the final exit process on Mac because
-	// static data are already destroyed at this stage.
-	// One solution would be to instantiate the utf8 to ucs4 IconvProcessor as a 
-	// singleton inside the LyX main class to ensure that it does not get 
-	// destroyed too early.
-	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
-
 	size_t n = utf8.size();
 	// as utf8 is a multi-byte encoding, there would be at most
 	// n characters:
@@ -76,7 +68,7 @@ void utf8_to_ucs4(std::string const & utf8, docstring & ucs4)
 	// basic_string::data() is not recognized by some old gcc version
 	// so we use &(ucs4[0]) instead.
 	char * outbuf = (char *)(&(ucs4[0]));
-	int bytes = iconv.convert(utf8.c_str(), n, outbuf, maxoutsize);
+	int bytes = utf8ToUcs4().convert(utf8.c_str(), n, outbuf, maxoutsize);
 
 	// adjust to the real converted size
 	ucs4.resize(bytes/4);

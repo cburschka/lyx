@@ -56,7 +56,7 @@ private:
 	boost::scoped_ptr<Private> pimpl_;
 };
 
-// utf8_to_ucs4
+extern IconvProcessor & utf8ToUcs4();
 
 // A single codepoint conversion for utf8_to_ucs4 does not make
 // sense, so that function is left out.
