@@ -95,7 +95,7 @@ using support::bformat;
 using support::changeExtension;
 using support::compare_timestamps;
 using support::contains;
-using support::FileName;
+using support::DocFileName;
 using support::float_equal;
 using support::getExtension;
 using support::isFileReadable;
@@ -483,7 +483,7 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 
 
 std::pair<CopyStatus, string> const
-copyToDirIfNeeded(FileName const & file, string const & dir)
+copyToDirIfNeeded(DocFileName const & file, string const & dir)
 {
 	using support::rtrim;
 

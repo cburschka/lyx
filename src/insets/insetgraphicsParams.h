@@ -30,7 +30,7 @@ class InsetGraphicsParams
 {
 public:
 	/// Image filename.
-	support::FileName filename;
+	support::DocFileName filename;
 	/// Scaling the Screen inside Lyx
 	unsigned int lyxscale;
 	/// How to display the image inside LyX

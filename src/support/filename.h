@@ -19,13 +19,49 @@ namespace lyx {
 namespace support {
 
 
+/**
+ * Class for storing file names.
+ * The file name may be empty. If it is not empty it is an absolute path.
+ * The file may or may not exist.
+ */
 class FileName {
-public:
+protected:
+	/// Constructor for empty filenames (only needed for DocFileName)
 	FileName();
+public:
+	/** Constructor for nonempty filenames.
+	 * \param abs_filename the file in question. Must have an absolute path.
+	 */
+	FileName(std::string const & abs_filename);
+	/// Is this filename empty?
+	bool empty() const { return name_.empty(); }
+	/// get the absolute file name
+	std::string const absFilename() const { return name_; }
+protected:
+	/// The absolute file name.
+	/// The encoding is currently unspecified, anything else than ASCII
+	/// may or may not work.
+	std::string name_;
+};
+
+
+bool operator==(FileName const &, FileName const &);
+bool operator!=(FileName const &, FileName const &);
+
+
+/**
+ * Class for storing file names that appear in documents (e. g. child
+ * documents, included figures etc).
+ * The file name must not denote a file in our temporary directory, but a
+ * file that the user chose.
+ */
+class DocFileName : public FileName {
+public:
+	DocFileName();
 	/** \param abs_filename the file in question. Must have an absolute path.
 	 *  \param save_abs_path how is the file to be output to file?
 	 */
-	FileName(std::string const & abs_filename, bool save_abs_path = true);
+	DocFileName(std::string const & abs_filename, bool save_abs_path = true);
 
 	/** \param filename the file in question. May have either a relative
 	 *  or an absolute path.
@@ -35,10 +71,8 @@ public:
 	void set(std::string const & filename, std::string const & buffer_path);
 
 	void erase();
-	bool empty() const { return name_.empty(); }
 
 	bool saveAbsPath() const { return save_abs_path_; }
-	std::string const absFilename() const { return name_; }
 	/// \param buffer_path if empty, uses `pwd`
 	std::string const relFilename(std::string const & buffer_path = std::string()) const;
 	/// \param buf_path if empty, uses `pwd`
@@ -73,7 +107,6 @@ public:
 	std::string const unzippedFilename() const;
 
 private:
-	std::string name_;
 	bool save_abs_path_;
 	/// Cache for isZipped() because zippedFile() is expensive
 	mutable bool zipped_;
@@ -82,8 +115,8 @@ private:
 };
 
 
-bool operator==(FileName const &, FileName const &);
-bool operator!=(FileName const &, FileName const &);
+bool operator==(DocFileName const &, DocFileName const &);
+bool operator!=(DocFileName const &, DocFileName const &);
 
 
 } // namespace support

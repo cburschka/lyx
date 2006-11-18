@@ -59,7 +59,7 @@ using support::bformat;
 using support::changeExtension;
 using support::contains;
 using support::copy;
-using support::FileName;
+using support::DocFileName;
 using support::getFileContents;
 using support::isFileReadable;
 using support::isLyXFilename;
@@ -390,7 +390,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".tex");
-	string const mangled = FileName(changeExtension(included_file,
+	string const mangled = DocFileName(changeExtension(included_file,
 							".tex")).mangledFilename();
 	string const writefile = makeAbsPath(mangled, m_buffer->temppath());
 
@@ -524,7 +524,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 
-		string const mangled = FileName(writefile).mangledFilename();
+		string const mangled = DocFileName(writefile).mangledFilename();
 		writefile = makeAbsPath(mangled,
 					buffer.getMasterBuffer()->temppath());
 		if (!runparams.nice)
@@ -568,7 +568,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 		writefile = included_file;
 
 	if (!features.runparams().nice && !isVerbatim(params_)) {
-		incfile = FileName(writefile).mangledFilename();
+		incfile = DocFileName(writefile).mangledFilename();
 		writefile = makeAbsPath(incfile,
 					buffer.getMasterBuffer()->temppath());
 	}

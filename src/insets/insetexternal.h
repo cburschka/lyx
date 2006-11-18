@@ -79,7 +79,7 @@ public:
 	std::string const & templatename() const { return templatename_; }
 
 	/// The external file.
-	support::FileName filename;
+	support::DocFileName filename;
 	/// How the inset is to be displayed by LyX.
 	external::DisplayType display;
 	/// The scale of the displayed graphic (if shown).

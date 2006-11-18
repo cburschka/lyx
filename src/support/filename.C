@@ -31,18 +31,39 @@ namespace support {
 
 
 FileName::FileName()
-	: save_abs_path_(true)
 {}
 
 
-FileName::FileName(string const & abs_filename, bool save_abs)
-	: name_(abs_filename), save_abs_path_(save_abs), zipped_valid_(false)
+FileName::FileName(string const & abs_filename)
+	: name_(abs_filename)
 {
 	BOOST_ASSERT(absolutePath(name_));
 }
 
 
-void FileName::set(string const & name, string const & buffer_path)
+bool operator==(FileName const & lhs, FileName const & rhs)
+{
+	return lhs.absFilename() == rhs.absFilename();
+}
+
+
+bool operator!=(FileName const & lhs, FileName const & rhs)
+{
+	return lhs.absFilename() != rhs.absFilename();
+}
+
+
+DocFileName::DocFileName()
+	: save_abs_path_(true)
+{}
+
+
+DocFileName::DocFileName(string const & abs_filename, bool save_abs)
+	: FileName(abs_filename), save_abs_path_(save_abs), zipped_valid_(false)
+{}
+
+
+void DocFileName::set(string const & name, string const & buffer_path)
 {
 	save_abs_path_ = absolutePath(name);
 	name_ = save_abs_path_ ? name : makeAbsPath(name, buffer_path);
@@ -50,28 +71,28 @@ void FileName::set(string const & name, string const & buffer_path)
 }
 
 
-void FileName::erase()
+void DocFileName::erase()
 {
 	name_.erase();
 	zipped_valid_ = false;
 }
 
 
-string const FileName::relFilename(string const & path) const
+string const DocFileName::relFilename(string const & path) const
 {
 	return makeRelPath(name_, path);
 }
 
 
-string const FileName::outputFilename(string const & path) const
+string const DocFileName::outputFilename(string const & path) const
 {
 	return save_abs_path_ ? name_ : makeRelPath(name_, path);
 }
 
 
-string const FileName::mangledFilename(std::string const & dir) const
+string const DocFileName::mangledFilename(std::string const & dir) const
 {
-	// We need to make sure that every FileName instance for a given
+	// We need to make sure that every DocFileName instance for a given
 	// filename returns the same mangled name.
 	typedef map<string, string> MangledMap;
 	static MangledMap mangledNames;
@@ -125,7 +146,7 @@ string const FileName::mangledFilename(std::string const & dir) const
 }
 
 
-bool FileName::isZipped() const
+bool DocFileName::isZipped() const
 {
 	if (!zipped_valid_) {
 		zipped_ = zippedFile(name_);
@@ -135,20 +156,20 @@ bool FileName::isZipped() const
 }
 
 
-string const FileName::unzippedFilename() const
+string const DocFileName::unzippedFilename() const
 {
 	return unzippedFileName(name_);
 }
 
 
-bool operator==(FileName const & lhs, FileName const & rhs)
+bool operator==(DocFileName const & lhs, DocFileName const & rhs)
 {
 	return lhs.absFilename() == rhs.absFilename() &&
 		lhs.saveAbsPath() == rhs.saveAbsPath();
 }
 
 
-bool operator!=(FileName const & lhs, FileName const & rhs)
+bool operator!=(DocFileName const & lhs, DocFileName const & rhs)
 {
 	return !(lhs == rhs);
 }

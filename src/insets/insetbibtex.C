@@ -44,7 +44,7 @@ using support::ascii_lowercase;
 using support::changeExtension;
 using support::contains;
 using support::copy;
-using support::FileName;
+using support::DocFileName;
 using support::findtexfile;
 using support::isFileReadable;
 using support::latex_path;
@@ -175,7 +175,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		    isFileReadable(in_file)) {
 
 			// mangledFilename() needs the extension
-			database = removeExtension(FileName(in_file).mangledFilename());
+			database = removeExtension(DocFileName(in_file).mangledFilename());
 			string const out_file = makeAbsPath(database + ".bib",
 					buffer.getMasterBuffer()->temppath());
 
@@ -231,7 +231,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		    isFileReadable(in_file)) {
 			// use new style name
 			base = removeExtension(
-					FileName(in_file).mangledFilename());
+					DocFileName(in_file).mangledFilename());
 			string const out_file = makeAbsPath(base + ".bst",
 					buffer.getMasterBuffer()->temppath());
 			bool const success = copy(in_file, out_file);
