@@ -144,6 +144,20 @@ EDITING
 
 * Copy/paste using middle mouse button inserts musical notes.
 
+* open a file; mark with the mouse and scroll; assert will fail:
+
+  Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) const
+  {
+	Paragraph const & par = pars_[pit];
+	int yy = bv.coordCache().get(this, pit).y_ - par.ascent();
+	BOOST_ASSERT(!par.rows().empty());
+	RowList::const_iterator rit = par.rows().begin();
+	RowList::const_iterator const rlast = boost::prior(par.rows().end());
+	for (; rit != rlast; yy += rit->height(), ++rit)
+		if (yy + rit->height() > y)
+			break;
+	return *rit;
+  }
 
 MENUS
 
