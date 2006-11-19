@@ -20,10 +20,9 @@
 class QListWidgetItem;
 
 namespace lyx {
+namespace frontend {
 
 class IconPalette;
-
-namespace frontend {
 
 class QMAction : public QAction {
 	Q_OBJECT

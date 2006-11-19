@@ -14,7 +14,6 @@
 #include "QMath.h"
 
 #include <QPixmap>
-#include <QResizeEvent>
 #include <QScrollArea>
 #include <QMenu>
 #include <QPushButton>
@@ -98,11 +97,8 @@ QMathDialog::QMathDialog(QMath * form)
 	}
 	//functionsLW->setFixedWidth(functionsLW->sizeHint().width());
 
-	// add first symbol panel
-	addPanel(0);
+	// show first symbol panel
 	showingPanel(0);
-	// 5 buttons + 2 margins + 1 scrollbar
-	symbolWS->setFixedWidth(5*40 + 2*10 + 15 );
 
 	// add menu's to the buttons
 	QMenu * m = new QMenu(spacePB);
@@ -180,10 +176,7 @@ void QMathDialog::showingPanel(int num)
 
 IconPalette * QMathDialog::makePanel(QWidget * parent, char const ** entries)
 {
-	IconPalette * p = new IconPalette(parent);
-	for (int i = 0; *entries[i]; ++i) {
-		p->add(QPixmap(toqstr(find_xpm(entries[i]))), entries[i], string("\\") + entries[i]);
-	}
+	IconPalette * p = new IconPalette(parent, entries);
 	// Leave these std:: qualifications alone !
 	connect(p, SIGNAL(button_clicked(const std::string &)),
 		this, SLOT(symbol_clicked(const std::string &)));
@@ -196,7 +189,6 @@ void QMathDialog::addPanel(int num)
 {
 	QScrollArea * sc = new QScrollArea(symbolWS);
 	IconPalette * p = makePanel(this, panels[num]);
-	p->resize(40 * 5, p->height());
 	sc->setWidget(p);
 	panel_index[num] = symbolWS->addWidget(sc);
 }
@@ -223,16 +215,12 @@ void QMathDialog::delimiterClicked()
 void QMathDialog::expandClicked()
 {
 	int const id = symbolsCO->currentIndex();
-	IconPalette * p = makePanel(0, panels[id]);
-	p->setFixedWidth(40 * 15 + 20);
+	IconPalette * p = makePanel(this, panels[id]);
 	string s = "LyX: ";
 	s += fromqstr(symbolsCO->currentText());
 	p->setWindowTitle(toqstr(s));
-	p->resize(40 * 5, p->height());
+	p->setWindowFlags(Qt::Dialog);
  	p->show();
-	p->resize(40 * 5 + 20, 40 * p->numRows() + 20);
-	p->setMinimumSize(40 * 5 + 20, 40 * 1 + 20);
-	p->setMaximumWidth (40 * p->numButtons() + 20);
 }
 
 

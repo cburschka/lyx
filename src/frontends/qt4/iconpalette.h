@@ -18,13 +18,10 @@
 #include <utility>
 #include <vector>
 
-
-class QPixmap;
 class QPushButton;
-class QGridLayout;
-class QResizeEvent;
 
 namespace lyx {
+namespace frontend {
 
 /**
  * For holding an arbitrary set of icons.
@@ -32,34 +29,21 @@ namespace lyx {
 class IconPalette : public QWidget {
 	Q_OBJECT
 public:
-	IconPalette(QWidget * parent);
-
-	/// add a button
-	void add(QPixmap const & pixmap, std::string name, std::string tooltip);
-	/// get required number of rows.
-	int numRows();
-	/// get number of Buttons
-	int numButtons();
+	IconPalette(QWidget * parent, char const ** entries);
 
 Q_SIGNALS:
 	void button_clicked(const std::string &);
-protected:
-	virtual void resizeEvent(QResizeEvent * e);
+
 protected Q_SLOTS:
 	virtual void clicked();
+
 private:
-	int maxcol_;
-
-	int maxrow_;
-
-	QGridLayout * layout_;
-
 	typedef std::pair<QPushButton *, std::string> Button;
-
 	std::vector<Button> buttons_;
 };
 
 
+} // namespace frontend
 } // namespace lyx
 
 #endif // ICONPALETTE_H
