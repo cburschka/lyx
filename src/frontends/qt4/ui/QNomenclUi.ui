@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>260</width>
-    <height>170</height>
+    <width>248</width>
+    <height>130</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,139 +18,103 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="layout4" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>11</y>
-     <width>240</width>
-     <height>149</height>
-    </rect>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
    </property>
-   <layout class="QVBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="symbolLA" >
-        <property name="text" >
-         <string>&amp;Symbol:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>symbolED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="descrLA" >
-        <property name="text" >
-         <string>&amp;Description:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>descrED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="prefixLA" >
-        <property name="text" >
-         <string>Sort &amp;as:</string>
-        </property>
-        <property name="buddy" >
-         <cstring>prefixED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLineEdit" name="symbolED" >
-        <property name="toolTip" >
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLineEdit" name="descrED" />
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLineEdit" name="prefixED" />
-      </item>
-     </layout>
-    </item>
-    <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType" >
-       <enum>QSizePolicy::Expanding</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>20</width>
-        <height>16</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item>
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType" >
-         <enum>QSizePolicy::Expanding</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="okPB" >
-        <property name="text" >
-         <string>&amp;OK</string>
-        </property>
-        <property name="shortcut" >
-         <string>Alt+O</string>
-        </property>
-        <property name="default" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="closePB" >
-        <property name="text" >
-         <string>Cancel</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="2" column="1" >
+    <widget class="QLineEdit" name="prefixED" />
+   </item>
+   <item row="1" column="1" >
+    <widget class="QLineEdit" name="descrED" />
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="prefixLA" >
+     <property name="text" >
+      <string>Sort &amp;as:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>prefixED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="descrLA" >
+     <property name="text" >
+      <string>&amp;Description:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>descrED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="symbolLA" >
+     <property name="text" >
+      <string>&amp;Symbol:</string>
+     </property>
+     <property name="buddy" >
+      <cstring>symbolED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLineEdit" name="symbolED" >
+     <property name="toolTip" >
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+       <property name="shortcut" >
+        <string>Alt+O</string>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closePB" >
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
