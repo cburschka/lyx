@@ -177,6 +177,10 @@
 #endif
 #endif
 
+#ifdef HAVE_CHMOD
+#define HAVE_MODE_T
+#endif
+
 #ifdef LYX_ENABLE_PCH
 #include "pcheaders.h"
 #endif
