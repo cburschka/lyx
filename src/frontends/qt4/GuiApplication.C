@@ -152,7 +152,15 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	LoaderQueue::setPriority(10,100);
 
-	setQuitOnLastWindowClosed(false);
+	/* Qt Docs:
+	void QApplication::lastWindowClosed ()   [signal]
+	This signal is emitted from QApplication::exec() when the last visible 
+	primary window ... is closed.
+	This feature be turned off by setting quitOnLastWindowClosed to false.
+	*/
+	//setQuitOnLastWindowClosed(false);
+	// this connect should not be necessary: 
+	// we rely on a Qt bug on Windows and maybe Linux
 	QObject::connect(this, SIGNAL(lastWindowClosed()),
 		this, SLOT(quitLyX()));
 
