@@ -175,6 +175,24 @@ EDITING
   #10 0x08303536 in lyx::InsetBase::dispatch (this=0x8a081b8, cur=@0x88f3ed0, cmd=@0xbfffd7e0)
       at /home/software/lyx-trunk/src/insets/insetbase.C:132
 
+* new document; insert note; insert "hello" into note; place the cursor at the beginning of the note;
+  activate change tracking; press backspace => seg fault
+
+  #0  0x08101348 in lyx::Paragraph::Pimpl::setChange (this=0x8a9e0a0, pos=0, change=@0xbfffca70)
+      at paragraph.h:314
+  #1  0x080fda87 in lyx::Paragraph::setChange (this=0x0, pos=0, change=@0xbfffca70)
+      at /home/software/lyx-trunk/src/paragraph.C:1432
+  #2  0x08248fa0 in lyx::breakParagraphConservative (bparams=@0x8a9d838, pars=@0x8a9d9e4, par_offset=0, pos=0)
+      at changes.h:37
+  #3  0x08155fc2 in lyx::(anonymous namespace)::pasteSelectionHelper (cur=@0x88f3ed0, parlist=@0xbfffce70,
+      textclass=6, errorlist=@0x8910b44) at /home/software/lyx-trunk/src/CutAndPaste.C:233
+  #4  0x0815a98d in lyx::cap::pasteParagraphList (cur=@0x88f3ed0, parlist=@0xbfffce70, textclass=6,
+      errorList=@0x8910b44) at /home/software/lyx-trunk/src/CutAndPaste.C:630
+  #5  0x08258cb2 in lyx::LyXText::dissolveInset (this=0x8aacd38, cur=@0x88f3ed0)
+      at /home/software/lyx-trunk/src/text.C:1844
+  #6  0x082588a8 in lyx::LyXText::backspace (this=0x8aacd38, cur=@0x88f3ed0)
+      at /home/software/lyx-trunk/src/text.C:1756
+
 
 MENUS
 
