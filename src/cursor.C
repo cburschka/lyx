@@ -747,10 +747,22 @@ bool LCursor::backspace()
 	}
 
 	if (pos() == 0) {
-		if (inset().nargs() == 1 && depth() == 1 && lastpos() == 0)
+		// If empty cell, and not part of a big cell
+		if (lastpos() == 0 && inset().nargs() == 1) {
+			popLeft();
+			// Directly delete empty cell: [|[]] => [|] 
+			if (inMathed()) {
+				plainErase();
+				resetAnchor();
+				return true;
+			}
+			// [|], can not delete from inside
 			return false;
-		pullArg();
-		return true;
+		} else {
+			// move to left
+			popLeft();
+			return true;
+		}
 	}
 
 	if (inMacroMode()) {
@@ -793,12 +805,19 @@ bool LCursor::erase()
 	// special behaviour when in last position of cell
 	if (pos() == lastpos()) {
 		bool one_cell = inset().nargs() == 1;
-		if (one_cell && depth() == 1 && lastpos() == 0)
+		if (one_cell && lastpos() == 0) {
+			popLeft();
+			// Directly delete empty cell: [|[]] => [|] 
+			if (inMathed()) {
+				plainErase();
+				resetAnchor();
+				return true;
+			}
+			// [|], can not delete from inside
 			return false;
+		}
 		// remove markup
-		if (one_cell)
-			pullArg();
-		else
+		if (!one_cell)
 			inset().idxGlue(idx());
 		return true;
 	}

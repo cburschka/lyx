@@ -648,7 +648,11 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 			recordUndoInset(cur, Undo::ATOMIC);
 		else
 			recordUndo(cur, Undo::ATOMIC);
-		cur.backspace();
+		// if the inset can not be removed from within, delete it
+		if (!cur.backspace()) {
+			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
+			cur.bv().getLyXText()->dispatch(cur, cmd);
+		}
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:
@@ -658,7 +662,11 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 			recordUndoInset(cur, Undo::ATOMIC);
 		else
 			recordUndo(cur, Undo::ATOMIC);
-		cur.erase();
+		// if the inset can not be removed from within, delete it
+		if (!cur.erase()) {
+			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
+			cur.bv().getLyXText()->dispatch(cur, cmd);
+		}
 		break;
 
 	case LFUN_ESCAPE:
