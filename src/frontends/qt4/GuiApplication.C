@@ -158,7 +158,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	primary window ... is closed.
 	This feature be turned off by setting quitOnLastWindowClosed to false.
 	*/
-	//setQuitOnLastWindowClosed(false);
+	setQuitOnLastWindowClosed(false);
 	// this connect should not be necessary: 
 	// we rely on a Qt bug on Windows and maybe Linux
 	QObject::connect(this, SIGNAL(lastWindowClosed()),
