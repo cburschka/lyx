@@ -713,11 +713,11 @@ sub setup_files {
 \newline
   my($in, $out) = @_;
 \newline
-  open(INPUT, "<$in") || die "Can not read $in: $!
+  open(INPUT, "<$in") || die "Cannot read $in: $!
 \backslash
 n";
 \newline
-  open(OUTPUT, ">$out") || die "Can not write $out: $!
+  open(OUTPUT, ">$out") || die "Cannot write $out: $!
 \backslash
 n";
 \newline
@@ -1060,7 +1060,7 @@ noweb2lyx
 \newline
 open(INPUT, "<$relyx_file") ||
 \newline
-  die "Can not read $relyx_file: $!
+  die "Cannot read $relyx_file: $!
 \backslash
 n";
 \newline

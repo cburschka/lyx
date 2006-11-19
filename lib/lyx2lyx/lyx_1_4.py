@@ -1863,7 +1863,7 @@ def convert_graphics(document):
             # We could use a heuristic and take the current directory,
             # and we could try to find out if documentname has an extension,
             # but that would be just guesses and could be wrong.
-            document.warning("""Warning: Can not determine whether document
+            document.warning("""Warning: Cannot determine whether document
          %s
          needs an extension when reading from standard input.
          You may need to correct the document manually or run
