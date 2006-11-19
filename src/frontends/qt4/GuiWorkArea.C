@@ -18,6 +18,7 @@
 #include "QLyXKeySym.h"
 #include "qt_helpers.h"
 
+#include "gettext.h"
 #include "LyXView.h"
 
 #include "BufferView.h"
@@ -529,7 +530,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 	//	return;
 	lyxerr << "show banner: " << lyxrc.show_banner << endl;
 	/// The text to be written on top of the pixmap
-	string const text = lyx_version ? lyx_version : "unknown";
+	QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
 	string const file = support::libFileSearch("images", "banner", "ppm");
 	if (file.empty())
 		return;
@@ -559,7 +560,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 	pain.setPen(QColor(255, 255, 0));
 	pain.setFont(font);
-	pain.drawText(x, y, toqstr(text));
+	pain.drawText(x, y, text);
 }
 
 
