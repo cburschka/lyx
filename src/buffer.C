@@ -1451,7 +1451,7 @@ docstring const Buffer::translateLabel(docstring const & label) const
 		// Probably standard layout, try to translate
 		return B_(to_ascii(label));
 	else
-		// This must be a user defined layout. We can not translate
+		// This must be a user defined layout. We cannot translate
 		// this, since gettext accepts only ascii keys.
 		return label;
 }

@@ -778,7 +778,7 @@ void expandToolbars(Menu & tomenu)
 
 	for (; cit != end; ++cit) {
 		docstring label = _(cit->gui_name);
-		// frontends are not supposed to turn on/off toolbars, if they can not
+		// frontends are not supposed to turn on/off toolbars, if they cannot
 		// update ToolbarBackend::flags. That is to say, ToolbarsBackend::flags
 		// should reflect the true state of toolbars.
 		// 
