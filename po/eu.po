@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-16 00:16+0100\n"
+"POT-Creation-Date: 2006-11-19 14:30+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -122,7 +122,7 @@ msgstr "Ta&maina:"
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:704
 #: src/frontends/qt4/ui/QTabularUi.ui:723
-#: src/frontends/qt4/ui/QTabularUi.ui:771
+#: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.ui:66
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:169
@@ -499,7 +499,7 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
 #: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1986 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -1498,7 +1498,7 @@ msgstr "AMS hainbat"
 msgid "&Functions"
 msgstr "&Funtzioak"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:126
+#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:127
 msgid "Insert root"
 msgstr "Txertatu erroa"
 
@@ -1518,15 +1518,15 @@ msgstr "Ezarri matematika-letra"
 msgid "Toggle between display and inline mode"
 msgstr "Txandakatu adierazpen eta barneko eren artean"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:124
+#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:125
 msgid "Subscript"
 msgstr "Azpindizea"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:125
+#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:126
 msgid "Superscript"
 msgstr "Goi-indizea"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:138
 msgid "Insert matrix"
 msgstr "Txertatu matrizea"
 
@@ -1594,7 +1594,7 @@ msgid "&Shaded"
 msgstr "&Itzaldurarekin"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2365
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2376
 msgid "Single"
 msgstr "Bakuna"
 
@@ -1603,7 +1603,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2371
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2382
 msgid "Double"
 msgstr "Bikoitza"
 
@@ -1796,9 +1796,10 @@ msgid "Vector graphi&cs format"
 msgstr "Bektore &grafikoen formatua"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
+#, fuzzy
 msgid ""
-"Tell whether this format is a document format. A document can not be "
-"exported to or viewed in a non-document format."
+"Tell whether this format is a document format. A document cannot be exported "
+"to or viewed in a non-document format."
 msgstr ""
 "Adierazi formatu hau dokumentu formatua den edo ez. Dokumentu bat ezin da "
 "esportatu edota ikusi dokumentua ez den formatu batean."
@@ -2988,8 +2989,9 @@ msgstr "Bi &zutabeko dokumentua"
 #: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
 #: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 src/frontends/qt4/BulletsModule.C:46
-#: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.ui:42
+#: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:150
+#: src/mathed/InsetMathRef.C:183
 msgid "Standard"
 msgstr "Estandarra"
 
@@ -3440,7 +3442,7 @@ msgstr "Zenbatua"
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.ui:69
+#: lib/ui/stdtoolbars.ui:70
 msgid "Description"
 msgstr "Azalpena"
 
@@ -3448,7 +3450,7 @@ msgstr "Azalpena"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:127
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.ui:68
+#: lib/ui/stdtoolbars.ui:69
 msgid "List"
 msgstr "Zerrenda"
 
@@ -3574,7 +3576,7 @@ msgid "Email"
 msgstr "Helb. el."
 
 #: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.ui:92 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.ui:93 src/frontends/qt4/QThesaurus.C:29
 msgid "Thesaurus"
 msgstr "Sinonimoak"
 
@@ -4276,6 +4278,7 @@ msgid "uncovered on slides  "
 msgstr "kendu estalkia gardenkiei  "
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
+#: lib/ui/stdtoolbars.ui:96
 msgid "Table"
 msgstr "Taula"
 
@@ -7866,18 +7869,18 @@ msgid "Redo|R"
 msgstr "Berregin|B"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:771
+#: src/mathed/InsetMathNest.C:453 src/text3.C:776
 msgid "Cut"
 msgstr "Ebaki"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:776
+#: src/mathed/InsetMathNest.C:462 src/text3.C:781
 msgid "Copy"
 msgstr "Kopiatu"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
 #: src/mathed/InsetMathGrid.C:1208 src/mathed/InsetMathNest.C:437
-#: src/text3.C:755
+#: src/text3.C:760
 msgid "Paste"
 msgstr "Itsatsi"
 
@@ -8359,10 +8362,6 @@ msgstr "Sinonimoak...|S"
 msgid "TeX Information|I"
 msgstr "TeX informazioa|X"
 
-#: lib/ui/stdtoolbars.ui:42
-msgid "standard"
-msgstr "estandarra"
-
 #: lib/ui/stdtoolbars.ui:44
 msgid "New document"
 msgstr "Dokumentu berria"
@@ -8379,11 +8378,11 @@ msgstr "Gorde dokumentua"
 msgid "Print document"
 msgstr "Inprimatu dokumentua"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:667
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:683
 msgid "Undo"
 msgstr "Desegin"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:678
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:694
 msgid "Redo"
 msgstr "Berregin"
 
@@ -8416,264 +8415,264 @@ msgid "Insert table"
 msgstr "Txertatu taula"
 
 #: lib/ui/stdtoolbars.ui:65
-msgid "extra"
+#, fuzzy
+msgid "Extra"
 msgstr "gehigarria"
 
-#: lib/ui/stdtoolbars.ui:66
+#: lib/ui/stdtoolbars.ui:67
 msgid "Numbered list"
 msgstr "Zenbakidun zerrenda"
 
-#: lib/ui/stdtoolbars.ui:67
+#: lib/ui/stdtoolbars.ui:68
 msgid "Itemized list"
 msgstr "Elementuen zerrenda"
 
-#: lib/ui/stdtoolbars.ui:70
+#: lib/ui/stdtoolbars.ui:71
 msgid "Increase depth"
 msgstr "Handitu sakonera"
 
-#: lib/ui/stdtoolbars.ui:71
+#: lib/ui/stdtoolbars.ui:72
 msgid "Decrease depth"
 msgstr "Txikitu sakonera"
 
-#: lib/ui/stdtoolbars.ui:73
+#: lib/ui/stdtoolbars.ui:74
 msgid "Insert figure float"
 msgstr "Txertatu irudi mugikorra"
 
-#: lib/ui/stdtoolbars.ui:74
+#: lib/ui/stdtoolbars.ui:75
 msgid "Insert table float"
 msgstr "Txertatu taula mugikorra"
 
-#: lib/ui/stdtoolbars.ui:75
+#: lib/ui/stdtoolbars.ui:76
 msgid "Insert label"
 msgstr "Txertatu etiketa"
 
-#: lib/ui/stdtoolbars.ui:76
+#: lib/ui/stdtoolbars.ui:77
 msgid "Insert cross-reference"
 msgstr "Txertatu erreferentzia gurutzatua"
 
-#: lib/ui/stdtoolbars.ui:77
+#: lib/ui/stdtoolbars.ui:78
 msgid "Insert citation"
 msgstr "Txertatu zitazioa"
 
-#: lib/ui/stdtoolbars.ui:78
+#: lib/ui/stdtoolbars.ui:79
 msgid "Insert index entry"
 msgstr "Txertatu indize-sarrera"
 
-#: lib/ui/stdtoolbars.ui:79
+#: lib/ui/stdtoolbars.ui:80
 #, fuzzy
 msgid "Insert glossary entry"
 msgstr "Txertatu indize-sarrera"
 
-#: lib/ui/stdtoolbars.ui:81
+#: lib/ui/stdtoolbars.ui:82
 msgid "Insert footnote"
 msgstr "Txertatu oin-oharra"
 
-#: lib/ui/stdtoolbars.ui:82
+#: lib/ui/stdtoolbars.ui:83
 msgid "Insert margin note"
 msgstr "Txertatu albo-oharra"
 
-#: lib/ui/stdtoolbars.ui:83 lib/ui/stdtoolbars.ui:161
+#: lib/ui/stdtoolbars.ui:84 lib/ui/stdtoolbars.ui:162
 msgid "Insert note"
 msgstr "Txertatu oharra"
 
-#: lib/ui/stdtoolbars.ui:84
+#: lib/ui/stdtoolbars.ui:85
 msgid "Insert URL"
 msgstr "Txertatu URLa"
 
-#: lib/ui/stdtoolbars.ui:85
+#: lib/ui/stdtoolbars.ui:86
 #, fuzzy
 msgid "Insert TeX code"
 msgstr "Txertatu TeX kodea"
 
-#: lib/ui/stdtoolbars.ui:86
+#: lib/ui/stdtoolbars.ui:87
 msgid "Include file"
 msgstr "Txertatu fitxategia"
 
-#: lib/ui/stdtoolbars.ui:88
+#: lib/ui/stdtoolbars.ui:89
 msgid "Text style"
 msgstr "TeX estiloa"
 
-#: lib/ui/stdtoolbars.ui:89
+#: lib/ui/stdtoolbars.ui:90
 msgid "Paragraph settings"
 msgstr "Paragrafo-ezarpenak"
 
-#: lib/ui/stdtoolbars.ui:90
+#: lib/ui/stdtoolbars.ui:91
 msgid "Table of contents"
 msgstr "Gaien aurkibidea"
 
-#: lib/ui/stdtoolbars.ui:91
+#: lib/ui/stdtoolbars.ui:92
 msgid "Check spelling"
 msgstr "Egiaztatu ortografia"
 
-#: lib/ui/stdtoolbars.ui:95
-msgid "table"
-msgstr "taula"
-
-#: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
+#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
 msgid "Add row"
 msgstr "Gehitu errenkada"
 
-#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
+#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
 msgid "Add column"
 msgstr "Gehitu zutabea"
 
-#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
+#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
 msgid "Delete row"
 msgstr "Ezabatu errenkada"
 
-#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
+#: lib/ui/stdtoolbars.ui:100 lib/ui/stdtoolbars.ui:143
 msgid "Delete column"
 msgstr "Ezabatu zutabea"
 
-#: lib/ui/stdtoolbars.ui:101
+#: lib/ui/stdtoolbars.ui:102
 msgid "Set top line"
 msgstr "Ezarri goiko ertza"
 
-#: lib/ui/stdtoolbars.ui:102
+#: lib/ui/stdtoolbars.ui:103
 msgid "Set bottom line"
 msgstr "Ezarri beheko ertza"
 
-#: lib/ui/stdtoolbars.ui:103
+#: lib/ui/stdtoolbars.ui:104
 msgid "Set left line"
 msgstr "Ezarri ezkerreko ertza"
 
-#: lib/ui/stdtoolbars.ui:104
+#: lib/ui/stdtoolbars.ui:105
 msgid "Set right line"
 msgstr "Ezarri eskuineko ertza"
 
-#: lib/ui/stdtoolbars.ui:105
+#: lib/ui/stdtoolbars.ui:106
 msgid "Set all lines"
 msgstr "Ezarri ertz guztiak"
 
-#: lib/ui/stdtoolbars.ui:106
+#: lib/ui/stdtoolbars.ui:107
 msgid "Unset all lines"
 msgstr "Kendu ertz guztiak"
 
-#: lib/ui/stdtoolbars.ui:108
+#: lib/ui/stdtoolbars.ui:109
 msgid "Align left"
 msgstr "Lerrokatu ezkerrean"
 
-#: lib/ui/stdtoolbars.ui:109
+#: lib/ui/stdtoolbars.ui:110
 msgid "Align center"
 msgstr "Lerrokatu erdian"
 
-#: lib/ui/stdtoolbars.ui:110
+#: lib/ui/stdtoolbars.ui:111
 msgid "Align right"
 msgstr "Lerrokatu eskuinean"
 
-#: lib/ui/stdtoolbars.ui:112
+#: lib/ui/stdtoolbars.ui:113
 msgid "Align top"
 msgstr "Lerrokatu goian"
 
-#: lib/ui/stdtoolbars.ui:113
+#: lib/ui/stdtoolbars.ui:114
 msgid "Align middle"
 msgstr "Lerrokatu erdian"
 
-#: lib/ui/stdtoolbars.ui:114
+#: lib/ui/stdtoolbars.ui:115
 msgid "Align bottom"
 msgstr "Lerrokatu behean"
 
-#: lib/ui/stdtoolbars.ui:116
+#: lib/ui/stdtoolbars.ui:117
 msgid "Rotate cell"
 msgstr "Biratu gelaxka"
 
-#: lib/ui/stdtoolbars.ui:117
+#: lib/ui/stdtoolbars.ui:118
 msgid "Rotate table"
 msgstr "Biratu taula"
 
-#: lib/ui/stdtoolbars.ui:118
+#: lib/ui/stdtoolbars.ui:119
 msgid "Set multi-column"
 msgstr "Ezarri zutabe anitza"
 
-#: lib/ui/stdtoolbars.ui:121 src/LColor.C:123
-msgid "math"
-msgstr "matematika"
-
 #: lib/ui/stdtoolbars.ui:122
+#, fuzzy
+msgid "Math"
+msgstr "Matematikak"
+
+#: lib/ui/stdtoolbars.ui:123
 msgid "Show math panel"
 msgstr "Erakutsi matematika-panela"
 
-#: lib/ui/stdtoolbars.ui:123
+#: lib/ui/stdtoolbars.ui:124
 msgid "Set display mode"
 msgstr "Ezarri adierazpen era"
 
-#: lib/ui/stdtoolbars.ui:127
+#: lib/ui/stdtoolbars.ui:128
 msgid "Insert square root"
 msgstr "Txertatu erro karratua"
 
-#: lib/ui/stdtoolbars.ui:128
+#: lib/ui/stdtoolbars.ui:129
 msgid "Insert sum"
 msgstr "Txertatu batuketa"
 
-#: lib/ui/stdtoolbars.ui:129
+#: lib/ui/stdtoolbars.ui:130
 msgid "Insert integral"
 msgstr "Txertatu integrala"
 
-#: lib/ui/stdtoolbars.ui:130
+#: lib/ui/stdtoolbars.ui:131
 msgid "Insert product"
 msgstr "Txertatu biderketa"
 
-#: lib/ui/stdtoolbars.ui:132
+#: lib/ui/stdtoolbars.ui:133
 msgid "Insert fraction"
 msgstr "Txertatu zatikia"
 
-#: lib/ui/stdtoolbars.ui:133
+#: lib/ui/stdtoolbars.ui:134
 msgid "Insert ( )"
 msgstr "Txertatu ( )"
 
-#: lib/ui/stdtoolbars.ui:134
+#: lib/ui/stdtoolbars.ui:135
 msgid "Insert [ ]"
 msgstr "Txertatu [ ]"
 
-#: lib/ui/stdtoolbars.ui:135
+#: lib/ui/stdtoolbars.ui:136
 msgid "Insert { }"
 msgstr "Txertatu { }"
 
-#: lib/ui/stdtoolbars.ui:138
+#: lib/ui/stdtoolbars.ui:139
 msgid "Insert cases environment"
 msgstr "Txertatu kasu-ingurunea"
 
-#: lib/ui/stdtoolbars.ui:145
-msgid "minibuffer"
-msgstr "buffertxoa"
-
-#: lib/ui/stdtoolbars.ui:149
-msgid "review"
-msgstr "berraztertu"
+#: lib/ui/stdtoolbars.ui:146
+#, fuzzy
+msgid "Command Buffer"
+msgstr "Amaierako k&omandoa:"
 
 #: lib/ui/stdtoolbars.ui:150
+#, fuzzy
+msgid "Review"
+msgstr "berraztertu"
+
+#: lib/ui/stdtoolbars.ui:151
 msgid "Track changes"
 msgstr "Aldaketen aztarna"
 
-#: lib/ui/stdtoolbars.ui:151
+#: lib/ui/stdtoolbars.ui:152
 msgid "Show changes in output"
 msgstr "Erakutsi aldaketak irteeran"
 
-#: lib/ui/stdtoolbars.ui:153
+#: lib/ui/stdtoolbars.ui:154
 msgid "Next change"
 msgstr "Hurrengo aldaketa"
 
-#: lib/ui/stdtoolbars.ui:154
+#: lib/ui/stdtoolbars.ui:155
 msgid "Accept change"
 msgstr "Onartu aldaketa"
 
-#: lib/ui/stdtoolbars.ui:155
+#: lib/ui/stdtoolbars.ui:156
 msgid "Reject change"
 msgstr "Baztertu aldaketa"
 
-#: lib/ui/stdtoolbars.ui:157
+#: lib/ui/stdtoolbars.ui:158
 msgid "Merge changes"
 msgstr "Batu aldaketak"
 
-#: lib/ui/stdtoolbars.ui:158
+#: lib/ui/stdtoolbars.ui:159
 msgid "Accept all changes"
 msgstr "Onartu aldaketa guztiak"
 
-#: lib/ui/stdtoolbars.ui:159
+#: lib/ui/stdtoolbars.ui:160
 msgid "Reject all changes"
 msgstr "Baztertu aldaketa guztiak"
 
-#: lib/ui/stdtoolbars.ui:162
+#: lib/ui/stdtoolbars.ui:163
 msgid "Next note"
 msgstr "Hurrengo oharra"
 
@@ -8719,95 +8718,95 @@ msgstr "Sortu dokumentu berria?"
 msgid "&Create"
 msgstr "&Sortu"
 
-#: src/BufferView.C:517
+#: src/BufferView.C:533
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Gorde 5. laster-marka"
 
-#: src/BufferView.C:670
+#: src/BufferView.C:686
 msgid "No further undo information"
 msgstr "Gehiago desegiteko infomaziorik ez"
 
-#: src/BufferView.C:681
+#: src/BufferView.C:697
 msgid "No further redo information"
 msgstr "Gehiago berregiteko informaziorik ez"
 
-#: src/BufferView.C:842
+#: src/BufferView.C:858
 msgid "Mark off"
 msgstr "Marka desaktibatua"
 
-#: src/BufferView.C:849
+#: src/BufferView.C:865
 msgid "Mark on"
 msgstr "Marka aktibatua"
 
-#: src/BufferView.C:856
+#: src/BufferView.C:872
 msgid "Mark removed"
 msgstr "Marka ezabatuta"
 
-#: src/BufferView.C:859
+#: src/BufferView.C:875
 msgid "Mark set"
 msgstr "Marka ezarrita"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:921
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d hitz hautapenean."
 
-#: src/BufferView.C:908
+#: src/BufferView.C:924
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d hitz dokumentuan."
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 msgid "One word in selection."
 msgstr "Hitz bat hautapenean."
 
-#: src/BufferView.C:915
+#: src/BufferView.C:931
 msgid "One word in document."
 msgstr "Hitz bat dokumentuan."
 
-#: src/BufferView.C:918
+#: src/BufferView.C:934
 msgid "Count words"
 msgstr "Zenbatu hitzak"
 
-#: src/BufferView.C:1344
+#: src/BufferView.C:1351
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.C:1346 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1353 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1937
+#: src/lyxfunc.C:1821 src/lyxfunc.C:1858 src/lyxfunc.C:1933
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.C:1347 src/lyxfunc.C:1863 src/lyxfunc.C:1938
+#: src/BufferView.C:1354 src/lyxfunc.C:1859 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.C:1351 src/lyx_cb.C:141 src/lyxfunc.C:1830
-#: src/lyxfunc.C:1867
+#: src/BufferView.C:1358 src/lyx_cb.C:141 src/lyxfunc.C:1826
+#: src/lyxfunc.C:1863
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.C:1363 src/lyxfunc.C:1877 src/lyxfunc.C:1959
-#: src/lyxfunc.C:1973 src/lyxfunc.C:1989
+#: src/BufferView.C:1370 src/lyxfunc.C:1873 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.C:1374
+#: src/BufferView.C:1381
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.C:1385
+#: src/BufferView.C:1392
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.C:1387
+#: src/BufferView.C:1394
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
@@ -8962,6 +8961,10 @@ msgstr "barneko komandoaren markoa"
 #: src/LColor.C:122
 msgid "special character"
 msgstr "karaktere berezia"
+
+#: src/LColor.C:123
+msgid "math"
+msgstr "matematika"
 
 #: src/LColor.C:124
 msgid "math background"
@@ -9651,7 +9654,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1986
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1982
 msgid "&Over-write"
 msgstr "&Gainidatzi"
 
@@ -10229,6 +10232,11 @@ msgstr "Direktorioak"
 msgid "LyX"
 msgstr "LyX"
 
+#: src/frontends/qt4/GuiWorkArea.C:533
+#, fuzzy
+msgid "unknown version"
+msgstr "Ekintza ezezaguna"
+
 #: src/frontends/qt4/QBibitem.C:31
 msgid "Bibliography Entry Settings"
 msgstr "Bibliografia-sarreren ezarpenak"
@@ -10329,7 +10337,7 @@ msgstr "Dokumentu-ezarpenak"
 msgid "Length"
 msgstr "Luzera"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2368
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2379
 msgid "OneHalf"
 msgstr "Bat eta erdi"
 
@@ -11366,11 +11374,11 @@ msgstr "&aldatu izenez"
 msgid "Choose a filename to save document as"
 msgstr "Aukeratu izena dokumentua gordetzeko"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1826
+#: src/lyx_cb.C:136 src/lyxfunc.C:1822
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1983
+#: src/lyx_cb.C:165 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11381,7 +11389,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1985
+#: src/lyx_cb.C:167 src/lyxfunc.C:1981
 msgid "Over-write document?"
 msgstr "Gainidatzi dokumentua?"
 
@@ -11454,11 +11462,11 @@ msgstr ""
 "LyX berrabiarazi behar duzu eguneratutako \n"
 "dokumentu-klasearen zehaztasunak erabiltzeko."
 
-#: src/lyx_main.C:120
+#: src/lyx_main.C:122
 msgid "Could not read configuration file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"
 
-#: src/lyx_main.C:121
+#: src/lyx_main.C:123
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11469,37 +11477,37 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:132
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: erabiltzaile-direktorioa birkonfiguratzen"
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:136
 msgid "Done!"
 msgstr "Eginda!"
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:392
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Ezin izan da aldi-baterako %1$s direktorioa kendu"
 
-#: src/lyx_main.C:382
+#: src/lyx_main.C:394
 msgid "Unable to remove temporary directory"
 msgstr "Ezin da aldi baterako direktorioa ezabatu"
 
-#: src/lyx_main.C:420
+#: src/lyx_main.C:433
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:672
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:781
+#: src/lyx_main.C:794
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/lyx_main.C:782
+#: src/lyx_main.C:795
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11510,11 +11518,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/lyx_main.C:939
+#: src/lyx_main.C:952
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/lyx_main.C:940
+#: src/lyx_main.C:953
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11523,37 +11531,37 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/lyx_main.C:945
+#: src/lyx_main.C:958
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/lyx_main.C:946
+#: src/lyx_main.C:959
 msgid "&Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/lyx_main.C:947
+#: src/lyx_main.C:960
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/lyx_main.C:951
+#: src/lyx_main.C:964
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/lyx_main.C:957
+#: src/lyx_main.C:970
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/lyx_main.C:1112
+#: src/lyx_main.C:1125
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/lyx_main.C:1116
+#: src/lyx_main.C:1129
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/lyx_main.C:1127
+#: src/lyx_main.C:1140
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11594,29 +11602,29 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/lyx_main.C:1163
+#: src/lyx_main.C:1176
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:1173
+#: src/lyx_main.C:1186
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:1183
+#: src/lyx_main.C:1196
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/lyx_main.C:1193
+#: src/lyx_main.C:1206
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:1205
+#: src/lyx_main.C:1218
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:1210
+#: src/lyx_main.C:1223
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 
@@ -11774,7 +11782,7 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/lyxfunc.C:1077 src/text3.C:1215
+#: src/lyxfunc.C:1077 src/text3.C:1220
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
@@ -11810,35 +11818,35 @@ msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
-#: src/lyxfunc.C:1823
+#: src/lyxfunc.C:1819
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/lyxfunc.C:1860
+#: src/lyxfunc.C:1856
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/lyxfunc.C:1905
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekita."
 
-#: src/lyxfunc.C:1907
+#: src/lyxfunc.C:1903
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki"
 
-#: src/lyxfunc.C:1932
+#: src/lyxfunc.C:1928
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/lyxfunc.C:2049
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
@@ -12666,60 +12674,60 @@ msgstr "Egileen indize ezezaguna ezabatzeko: %1$d\n"
 msgid "Unknown token"
 msgstr "Token ezezaguna"
 
-#: src/text.C:1232
+#: src/text.C:1236
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Paragrafo baten hasieran ezin duzu zuriune bat sartu. Irakurri Tutoretza."
 
-#: src/text.C:1243
+#: src/text.C:1247
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Ezin duzu bi zuriune honela idatzi. Irakurri Tutoretza."
 
-#: src/text.C:2334
+#: src/text.C:2345
 msgid "Change: "
 msgstr "Aldaketa: "
 
-#: src/text.C:2337
+#: src/text.C:2348
 msgid " at "
 msgstr " hemen "
 
-#: src/text.C:2349
+#: src/text.C:2360
 #, c-format
 msgid "Font: %1$s"
 msgstr "Letra-tipoa: %1$s"
 
-#: src/text.C:2356
+#: src/text.C:2367
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Sakonera: %1$d"
 
-#: src/text.C:2362
+#: src/text.C:2373
 msgid ", Spacing: "
 msgstr ", Tartea: "
 
-#: src/text.C:2374
+#: src/text.C:2385
 msgid "Other ("
 msgstr "Bestea ("
 
-#: src/text.C:2383
+#: src/text.C:2394
 msgid ", Inset: "
 msgstr ", Barnekoa: "
 
-#: src/text.C:2384
+#: src/text.C:2395
 msgid ", Paragraph: "
 msgstr ", Paragrafoa: "
 
-#: src/text.C:2385
+#: src/text.C:2396
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2386
+#: src/text.C:2397
 msgid ", Position: "
 msgstr ", Posizioa: "
 
-#: src/text.C:2387
+#: src/text.C:2398
 msgid ", Boundary: "
 msgstr ", Muga: "
 
@@ -12739,27 +12747,23 @@ msgstr "Ezer ez indexatzeko!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Ezin da paragrafo bat baino gehiago indexatu!"
 
-#: src/text3.C:682
+#: src/text3.C:687
 msgid "Unknown spacing argument: "
 msgstr "Tartekatze-argumentu ezezaguna: "
 
-#: src/text3.C:821
-msgid "LyX function 'layout' needs an argument."
-msgstr "LyX-eko 'layout' funtzioak argumentu bat behar du."
-
-#: src/text3.C:839
+#: src/text3.C:835
 msgid "Layout "
 msgstr "Diseinua "
 
-#: src/text3.C:840
+#: src/text3.C:836
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/text3.C:1320 src/text3.C:1332
+#: src/text3.C:1325 src/text3.C:1337
 msgid "Character set"
 msgstr "Karaktere-mota"
 
-#: src/text3.C:1463
+#: src/text3.C:1468
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa"
 

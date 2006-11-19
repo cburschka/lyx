@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-16 00:16+0100\n"
+"POT-Creation-Date: 2006-11-19 14:30+0100\n"
 "PO-Revision-Date: 2006-11-08 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -195,7 +195,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:704
 #: src/frontends/qt4/ui/QTabularUi.ui:723
-#: src/frontends/qt4/ui/QTabularUi.ui:771
+#: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.ui:66
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:169
@@ -584,7 +584,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
 #: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1986 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
@@ -1576,7 +1576,7 @@ msgstr "AMS Verschiedenes"
 msgid "&Functions"
 msgstr "&Funktionen"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:126
+#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:127
 msgid "Insert root"
 msgstr "Wurzel einfügen"
 
@@ -1596,15 +1596,15 @@ msgstr "Mathe-Schrift festlegen"
 msgid "Toggle between display and inline mode"
 msgstr "Zwischen 'display'- und 'inline'-Modus umschalten"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:124
+#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:125
 msgid "Subscript"
 msgstr "Tiefgestellt"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:125
+#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:126
 msgid "Superscript"
 msgstr "Hochgestellt"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:138
 msgid "Insert matrix"
 msgstr "Matrix einfügen"
 
@@ -1672,7 +1672,7 @@ msgid "&Shaded"
 msgstr "&Speichern"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2365
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2376
 msgid "Single"
 msgstr "Einfach"
 
@@ -1681,7 +1681,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2371
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2382
 msgid "Double"
 msgstr "Doppelt"
 
@@ -1876,8 +1876,8 @@ msgstr "Wählen Sie eine Grafikdatei"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
 msgid ""
-"Tell whether this format is a document format. A document can not be "
-"exported to or viewed in a non-document format."
+"Tell whether this format is a document format. A document cannot be exported "
+"to or viewed in a non-document format."
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
@@ -3077,8 +3077,9 @@ msgstr "&Zweispaltiges Dokument"
 #: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
 #: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 src/frontends/qt4/BulletsModule.C:46
-#: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.ui:42
+#: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:150
+#: src/mathed/InsetMathRef.C:183
 msgid "Standard"
 msgstr "Standard"
 
@@ -3529,7 +3530,7 @@ msgstr "Aufzählung"
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.ui:69
+#: lib/ui/stdtoolbars.ui:70
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -3537,7 +3538,7 @@ msgstr "Beschreibung"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:127
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.ui:68
+#: lib/ui/stdtoolbars.ui:69
 msgid "List"
 msgstr "Liste"
 
@@ -3663,7 +3664,7 @@ msgid "Email"
 msgstr "EMail"
 
 #: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.ui:92 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.ui:93 src/frontends/qt4/QThesaurus.C:29
 msgid "Thesaurus"
 msgstr "Thesaurus"
 
@@ -4398,6 +4399,7 @@ msgid "uncovered on slides  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
+#: lib/ui/stdtoolbars.ui:96
 msgid "Table"
 msgstr "Tabelle"
 
@@ -7989,18 +7991,18 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:771
+#: src/mathed/InsetMathNest.C:453 src/text3.C:776
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:776
+#: src/mathed/InsetMathNest.C:462 src/text3.C:781
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
 #: src/mathed/InsetMathGrid.C:1208 src/mathed/InsetMathNest.C:437
-#: src/text3.C:755
+#: src/text3.C:760
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -8440,10 +8442,6 @@ msgstr "Thesaurus...|T"
 msgid "TeX Information|I"
 msgstr "TeX-Informationen|X"
 
-#: lib/ui/stdtoolbars.ui:42
-msgid "standard"
-msgstr "Standard"
-
 #: lib/ui/stdtoolbars.ui:44
 msgid "New document"
 msgstr "Neues Dokument"
@@ -8460,11 +8458,11 @@ msgstr "Dokument speichern"
 msgid "Print document"
 msgstr "Dokument drucken"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:667
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:683
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:678
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:694
 msgid "Redo"
 msgstr "Wiederholen"
 
@@ -8497,264 +8495,264 @@ msgid "Insert table"
 msgstr "Tabelle einfügen"
 
 #: lib/ui/stdtoolbars.ui:65
-msgid "extra"
+#, fuzzy
+msgid "Extra"
 msgstr "Extra"
 
-#: lib/ui/stdtoolbars.ui:66
+#: lib/ui/stdtoolbars.ui:67
 msgid "Numbered list"
 msgstr "Aufzählung"
 
-#: lib/ui/stdtoolbars.ui:67
+#: lib/ui/stdtoolbars.ui:68
 msgid "Itemized list"
 msgstr "Auflisting"
 
-#: lib/ui/stdtoolbars.ui:70
+#: lib/ui/stdtoolbars.ui:71
 msgid "Increase depth"
 msgstr "Tiefe erhöhen"
 
-#: lib/ui/stdtoolbars.ui:71
+#: lib/ui/stdtoolbars.ui:72
 msgid "Decrease depth"
 msgstr "Tiefe verringern"
 
-#: lib/ui/stdtoolbars.ui:73
+#: lib/ui/stdtoolbars.ui:74
 msgid "Insert figure float"
 msgstr "Abbildungs-Gleitobjekt einfügen"
 
-#: lib/ui/stdtoolbars.ui:74
+#: lib/ui/stdtoolbars.ui:75
 msgid "Insert table float"
 msgstr "Tabellen-Gleitobjekt einfügen"
 
-#: lib/ui/stdtoolbars.ui:75
+#: lib/ui/stdtoolbars.ui:76
 msgid "Insert label"
 msgstr "Marke einfügen"
 
-#: lib/ui/stdtoolbars.ui:76
+#: lib/ui/stdtoolbars.ui:77
 msgid "Insert cross-reference"
 msgstr "Querverweis einfügen"
 
-#: lib/ui/stdtoolbars.ui:77
+#: lib/ui/stdtoolbars.ui:78
 msgid "Insert citation"
 msgstr "Zitat einfügen"
 
-#: lib/ui/stdtoolbars.ui:78
+#: lib/ui/stdtoolbars.ui:79
 msgid "Insert index entry"
 msgstr "Stichwort einfügen"
 
-#: lib/ui/stdtoolbars.ui:79
+#: lib/ui/stdtoolbars.ui:80
 msgid "Insert glossary entry"
 msgstr "Glossareintrag einfügen"
 
-#: lib/ui/stdtoolbars.ui:81
+#: lib/ui/stdtoolbars.ui:82
 msgid "Insert footnote"
 msgstr "Fußnote einfügen"
 
-#: lib/ui/stdtoolbars.ui:82
+#: lib/ui/stdtoolbars.ui:83
 msgid "Insert margin note"
 msgstr "Randnotiz einfügen"
 
-#: lib/ui/stdtoolbars.ui:83 lib/ui/stdtoolbars.ui:161
+#: lib/ui/stdtoolbars.ui:84 lib/ui/stdtoolbars.ui:162
 msgid "Insert note"
 msgstr "Notiz einfügen"
 
-#: lib/ui/stdtoolbars.ui:84
+#: lib/ui/stdtoolbars.ui:85
 msgid "Insert URL"
 msgstr "URL einfügen"
 
-#: lib/ui/stdtoolbars.ui:85
+#: lib/ui/stdtoolbars.ui:86
 msgid "Insert TeX code"
 msgstr "TeX-Code einfügen"
 
-#: lib/ui/stdtoolbars.ui:86
+#: lib/ui/stdtoolbars.ui:87
 msgid "Include file"
 msgstr "Datei einbinden"
 
-#: lib/ui/stdtoolbars.ui:88
+#: lib/ui/stdtoolbars.ui:89
 msgid "Text style"
 msgstr "Textstil"
 
-#: lib/ui/stdtoolbars.ui:89
+#: lib/ui/stdtoolbars.ui:90
 msgid "Paragraph settings"
 msgstr "Absatz-Einstellungen"
 
-#: lib/ui/stdtoolbars.ui:90
+#: lib/ui/stdtoolbars.ui:91
 msgid "Table of contents"
 msgstr "Inhaltsverzeichnis"
 
-#: lib/ui/stdtoolbars.ui:91
+#: lib/ui/stdtoolbars.ui:92
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
 
-#: lib/ui/stdtoolbars.ui:95
-msgid "table"
-msgstr "Tabelle"
-
-#: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
+#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
 msgid "Add row"
 msgstr "Zeile hinzufügen"
 
-#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
+#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
 msgid "Add column"
 msgstr "Spalte hinzufügen"
 
-#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
+#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
 msgid "Delete row"
 msgstr "Zeile löschen"
 
-#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
+#: lib/ui/stdtoolbars.ui:100 lib/ui/stdtoolbars.ui:143
 msgid "Delete column"
 msgstr "Spalte löschen"
 
-#: lib/ui/stdtoolbars.ui:101
+#: lib/ui/stdtoolbars.ui:102
 msgid "Set top line"
 msgstr "Obere Linie setzen"
 
-#: lib/ui/stdtoolbars.ui:102
+#: lib/ui/stdtoolbars.ui:103
 msgid "Set bottom line"
 msgstr "Untere Linie setzen"
 
-#: lib/ui/stdtoolbars.ui:103
+#: lib/ui/stdtoolbars.ui:104
 msgid "Set left line"
 msgstr "Linke Linie setzen"
 
-#: lib/ui/stdtoolbars.ui:104
+#: lib/ui/stdtoolbars.ui:105
 msgid "Set right line"
 msgstr "Rechte Linie setzen"
 
-#: lib/ui/stdtoolbars.ui:105
+#: lib/ui/stdtoolbars.ui:106
 msgid "Set all lines"
 msgstr "Alle Linien setzen"
 
-#: lib/ui/stdtoolbars.ui:106
+#: lib/ui/stdtoolbars.ui:107
 msgid "Unset all lines"
 msgstr "Alle Linien entfernen"
 
-#: lib/ui/stdtoolbars.ui:108
+#: lib/ui/stdtoolbars.ui:109
 msgid "Align left"
 msgstr "Linksbündig ausrichten"
 
-#: lib/ui/stdtoolbars.ui:109
+#: lib/ui/stdtoolbars.ui:110
 msgid "Align center"
 msgstr "Zentriert ausrichten"
 
-#: lib/ui/stdtoolbars.ui:110
+#: lib/ui/stdtoolbars.ui:111
 msgid "Align right"
 msgstr "Rechtsbündig ausrichten"
 
-#: lib/ui/stdtoolbars.ui:112
+#: lib/ui/stdtoolbars.ui:113
 msgid "Align top"
 msgstr "Oben ausrichten"
 
-#: lib/ui/stdtoolbars.ui:113
+#: lib/ui/stdtoolbars.ui:114
 msgid "Align middle"
 msgstr "Mittig ausrichten"
 
-#: lib/ui/stdtoolbars.ui:114
+#: lib/ui/stdtoolbars.ui:115
 msgid "Align bottom"
 msgstr "Unten ausrichten"
 
-#: lib/ui/stdtoolbars.ui:116
+#: lib/ui/stdtoolbars.ui:117
 msgid "Rotate cell"
 msgstr "Zelle drehen"
 
-#: lib/ui/stdtoolbars.ui:117
+#: lib/ui/stdtoolbars.ui:118
 msgid "Rotate table"
 msgstr "Tabelle drehen"
 
-#: lib/ui/stdtoolbars.ui:118
+#: lib/ui/stdtoolbars.ui:119
 msgid "Set multi-column"
 msgstr "Mehrfachspalte festlegen"
 
-#: lib/ui/stdtoolbars.ui:121 src/LColor.C:123
-msgid "math"
+#: lib/ui/stdtoolbars.ui:122
+#, fuzzy
+msgid "Math"
 msgstr "Mathe"
 
-#: lib/ui/stdtoolbars.ui:122
+#: lib/ui/stdtoolbars.ui:123
 msgid "Show math panel"
 msgstr "Mathe-Kontrollfläche anzeigen"
 
-#: lib/ui/stdtoolbars.ui:123
+#: lib/ui/stdtoolbars.ui:124
 msgid "Set display mode"
 msgstr "Darstellungsmodus festlegen"
 
-#: lib/ui/stdtoolbars.ui:127
+#: lib/ui/stdtoolbars.ui:128
 msgid "Insert square root"
 msgstr "Quadratwurzel einfügen"
 
-#: lib/ui/stdtoolbars.ui:128
+#: lib/ui/stdtoolbars.ui:129
 msgid "Insert sum"
 msgstr "Summe einfügen"
 
-#: lib/ui/stdtoolbars.ui:129
+#: lib/ui/stdtoolbars.ui:130
 msgid "Insert integral"
 msgstr "Integral einfügen"
 
-#: lib/ui/stdtoolbars.ui:130
+#: lib/ui/stdtoolbars.ui:131
 msgid "Insert product"
 msgstr "Produkt einfügen"
 
-#: lib/ui/stdtoolbars.ui:132
+#: lib/ui/stdtoolbars.ui:133
 msgid "Insert fraction"
 msgstr "Bruch einfügen"
 
-#: lib/ui/stdtoolbars.ui:133
+#: lib/ui/stdtoolbars.ui:134
 msgid "Insert ( )"
 msgstr "( ) einfügen"
 
-#: lib/ui/stdtoolbars.ui:134
+#: lib/ui/stdtoolbars.ui:135
 msgid "Insert [ ]"
 msgstr "[ ] einfügen"
 
-#: lib/ui/stdtoolbars.ui:135
+#: lib/ui/stdtoolbars.ui:136
 msgid "Insert { }"
 msgstr "{ } einfügen"
 
-#: lib/ui/stdtoolbars.ui:138
+#: lib/ui/stdtoolbars.ui:139
 msgid "Insert cases environment"
 msgstr "Cases-Umgebung einfügen"
 
-#: lib/ui/stdtoolbars.ui:145
-msgid "minibuffer"
-msgstr "Minipuffer"
+#: lib/ui/stdtoolbars.ui:146
+#, fuzzy
+msgid "Command Buffer"
+msgstr "Befehl &Ende:"
 
-#: lib/ui/stdtoolbars.ui:149
-msgid "review"
+#: lib/ui/stdtoolbars.ui:150
+#, fuzzy
+msgid "Review"
 msgstr "Vorschau"
 
 # , c-format
 # , c-format
-#: lib/ui/stdtoolbars.ui:150
+#: lib/ui/stdtoolbars.ui:151
 msgid "Track changes"
 msgstr "Änderungen verfolgen"
 
-#: lib/ui/stdtoolbars.ui:151
+#: lib/ui/stdtoolbars.ui:152
 msgid "Show changes in output"
 msgstr "Änderungen in der Ausgabe anzeigen"
 
-#: lib/ui/stdtoolbars.ui:153
+#: lib/ui/stdtoolbars.ui:154
 msgid "Next change"
 msgstr "Nächste Änderung"
 
-#: lib/ui/stdtoolbars.ui:154
+#: lib/ui/stdtoolbars.ui:155
 msgid "Accept change"
 msgstr "Änderung akzeptieren"
 
-#: lib/ui/stdtoolbars.ui:155
+#: lib/ui/stdtoolbars.ui:156
 msgid "Reject change"
 msgstr "Änderung ablehnen"
 
-#: lib/ui/stdtoolbars.ui:157
+#: lib/ui/stdtoolbars.ui:158
 msgid "Merge changes"
 msgstr "Änderungen zusammenfassen"
 
-#: lib/ui/stdtoolbars.ui:158
+#: lib/ui/stdtoolbars.ui:159
 msgid "Accept all changes"
 msgstr "Alle Änderungen akzeptieren"
 
-#: lib/ui/stdtoolbars.ui:159
+#: lib/ui/stdtoolbars.ui:160
 msgid "Reject all changes"
 msgstr "Alle Änderungen ablehnen"
 
-#: lib/ui/stdtoolbars.ui:162
+#: lib/ui/stdtoolbars.ui:163
 msgid "Next note"
 msgstr "Nächste Notiz"
 
@@ -8800,95 +8798,95 @@ msgstr "Möchten Sie ein neues Dokument erstellen?"
 msgid "&Create"
 msgstr "&Erstellen"
 
-#: src/BufferView.C:517
+#: src/BufferView.C:533
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Lesezeichen 5 speichern"
 
-#: src/BufferView.C:670
+#: src/BufferView.C:686
 msgid "No further undo information"
 msgstr "Nichts mehr rückgängig zu machen"
 
-#: src/BufferView.C:681
+#: src/BufferView.C:697
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.C:842
+#: src/BufferView.C:858
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.C:849
+#: src/BufferView.C:865
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.C:856
+#: src/BufferView.C:872
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.C:859
+#: src/BufferView.C:875
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:921
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView.C:908
+#: src/BufferView.C:924
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView.C:915
+#: src/BufferView.C:931
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView.C:918
+#: src/BufferView.C:934
 msgid "Count words"
 msgstr "Wörter zählen"
 
-#: src/BufferView.C:1344
+#: src/BufferView.C:1351
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView.C:1346 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1353 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1937
+#: src/lyxfunc.C:1821 src/lyxfunc.C:1858 src/lyxfunc.C:1933
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView.C:1347 src/lyxfunc.C:1863 src/lyxfunc.C:1938
+#: src/BufferView.C:1354 src/lyxfunc.C:1859 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView.C:1351 src/lyx_cb.C:141 src/lyxfunc.C:1830
-#: src/lyxfunc.C:1867
+#: src/BufferView.C:1358 src/lyx_cb.C:141 src/lyxfunc.C:1826
+#: src/lyxfunc.C:1863
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView.C:1363 src/lyxfunc.C:1877 src/lyxfunc.C:1959
-#: src/lyxfunc.C:1973 src/lyxfunc.C:1989
+#: src/BufferView.C:1370 src/lyxfunc.C:1873 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView.C:1374
+#: src/BufferView.C:1381
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.C:1385
+#: src/BufferView.C:1392
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.C:1387
+#: src/BufferView.C:1394
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
@@ -9044,6 +9042,10 @@ msgstr "Befehlseinfügung (Rahmen)"
 #: src/LColor.C:122
 msgid "special character"
 msgstr "Sonderzeichen"
+
+#: src/LColor.C:123
+msgid "math"
+msgstr "Mathe"
 
 #: src/LColor.C:124
 msgid "math background"
@@ -9737,7 +9739,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Datei überschreiben?"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1986
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1982
 msgid "&Over-write"
 msgstr "&Überschreiben"
 
@@ -10315,6 +10317,11 @@ msgstr "Verzeichnisse"
 msgid "LyX"
 msgstr "LyX"
 
+#: src/frontends/qt4/GuiWorkArea.C:533
+#, fuzzy
+msgid "unknown version"
+msgstr "Unbekannte Aktion"
+
 #: src/frontends/qt4/QBibitem.C:31
 msgid "Bibliography Entry Settings"
 msgstr "Literatureintrag-Einstellungen"
@@ -10417,7 +10424,7 @@ msgstr "Dokument-Einstellungen"
 msgid "Length"
 msgstr "Länge"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2368
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2379
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -11472,11 +11479,11 @@ msgstr "&Umbenennen"
 msgid "Choose a filename to save document as"
 msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1826
+#: src/lyx_cb.C:136 src/lyxfunc.C:1822
 msgid "Templates|#T#t"
 msgstr "Vorlagen|#V"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1983
+#: src/lyx_cb.C:165 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11487,7 +11494,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument überschreiben?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1985
+#: src/lyx_cb.C:167 src/lyxfunc.C:1981
 msgid "Over-write document?"
 msgstr "Dokument überschreiben?"
 
@@ -11560,11 +11567,11 @@ msgstr ""
 "Sie müssen LyX neu starten, um die aktualisierten Dokumentklassen-"
 "Spezifikationen zu nutzen."
 
-#: src/lyx_main.C:120
+#: src/lyx_main.C:122
 msgid "Could not read configuration file"
 msgstr "Die Konfigurationsdatei konnte nicht gelesen werden"
 
-#: src/lyx_main.C:121
+#: src/lyx_main.C:123
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11575,37 +11582,37 @@ msgstr ""
 "%1$s.\n"
 "Bitte prüfen Sie Ihre Installation."
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:132
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Konfiguriere das Benutzerverzeichnis neu"
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:136
 msgid "Done!"
 msgstr "Fertig!"
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:392
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Das temporäre Verzeichnis %1$s konnte nicht entfernt werden"
 
-#: src/lyx_main.C:382
+#: src/lyx_main.C:394
 msgid "Unable to remove temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
 
-#: src/lyx_main.C:420
+#: src/lyx_main.C:433
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm terminiert."
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:672
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:781
+#: src/lyx_main.C:794
 msgid "Could not create temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht erstellt werden"
 
-#: src/lyx_main.C:782
+#: src/lyx_main.C:795
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11616,11 +11623,11 @@ msgstr ""
 "%1$s erstellt werden. Stellen Sie sicher, dass dieser\n"
 "Pfad existiert und beschreibbar ist und versuchen Sie es noch einmal."
 
-#: src/lyx_main.C:939
+#: src/lyx_main.C:952
 msgid "Missing user LyX directory"
 msgstr "Kein LyX-Benutzerverzeichnis"
 
-#: src/lyx_main.C:940
+#: src/lyx_main.C:953
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11629,37 +11636,37 @@ msgstr ""
 "Sie haben ein nicht vorhandenes LyX-Benutzerverzeichnis angegeben, %1$s.\n"
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
-#: src/lyx_main.C:945
+#: src/lyx_main.C:958
 msgid "&Create directory"
 msgstr "Verzeichnis &erstellen"
 
-#: src/lyx_main.C:946
+#: src/lyx_main.C:959
 msgid "&Exit LyX"
 msgstr "LyX &beenden"
 
-#: src/lyx_main.C:947
+#: src/lyx_main.C:960
 msgid "No user LyX directory. Exiting."
 msgstr "Kein LyX-Benutzerverzeichnis. LyX wird beendet."
 
-#: src/lyx_main.C:951
+#: src/lyx_main.C:964
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Erstellen des Verzeichnisses %1$s"
 
-#: src/lyx_main.C:957
+#: src/lyx_main.C:970
 msgid "Failed to create directory. Exiting."
 msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
 
-#: src/lyx_main.C:1112
+#: src/lyx_main.C:1125
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Testoptionen:"
 
-#: src/lyx_main.C:1116
+#: src/lyx_main.C:1129
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
-#: src/lyx_main.C:1127
+#: src/lyx_main.C:1140
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11702,29 +11709,29 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:1163
+#: src/lyx_main.C:1176
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:1173
+#: src/lyx_main.C:1186
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:1183
+#: src/lyx_main.C:1196
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/lyx_main.C:1193
+#: src/lyx_main.C:1206
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:1205
+#: src/lyx_main.C:1218
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:1210
+#: src/lyx_main.C:1223
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
@@ -11883,7 +11890,7 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/lyxfunc.C:1077 src/text3.C:1215
+#: src/lyxfunc.C:1077 src/text3.C:1220
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -11919,35 +11926,35 @@ msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/lyxfunc.C:1823
+#: src/lyxfunc.C:1819
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/lyxfunc.C:1860
+#: src/lyxfunc.C:1856
 msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/lyxfunc.C:1905
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/lyxfunc.C:1907
+#: src/lyxfunc.C:1903
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/lyxfunc.C:1932
+#: src/lyxfunc.C:1928
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/lyxfunc.C:2049
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
@@ -12810,7 +12817,7 @@ msgstr "Unbekannter Autor-Index für die Löschung: %1$d\n"
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/text.C:1232
+#: src/text.C:1236
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -12818,55 +12825,55 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/text.C:1243
+#: src/text.C:1247
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2334
+#: src/text.C:2345
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2337
+#: src/text.C:2348
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2349
+#: src/text.C:2360
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2356
+#: src/text.C:2367
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2362
+#: src/text.C:2373
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2374
+#: src/text.C:2385
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2383
+#: src/text.C:2394
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2384
+#: src/text.C:2395
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2385
+#: src/text.C:2396
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2386
+#: src/text.C:2397
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2387
+#: src/text.C:2398
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
@@ -12886,27 +12893,23 @@ msgstr "Nichts zu indizieren!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
-#: src/text3.C:682
+#: src/text3.C:687
 msgid "Unknown spacing argument: "
 msgstr "Unbekanntes Abstandsargument: "
 
-#: src/text3.C:821
-msgid "LyX function 'layout' needs an argument."
-msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
-
-#: src/text3.C:839
+#: src/text3.C:835
 msgid "Layout "
 msgstr "Format "
 
-#: src/text3.C:840
+#: src/text3.C:836
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/text3.C:1320 src/text3.C:1332
+#: src/text3.C:1325 src/text3.C:1337
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1463
+#: src/text3.C:1468
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 

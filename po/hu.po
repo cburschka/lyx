@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-16 00:16+0100\n"
+"POT-Creation-Date: 2006-11-19 14:30+0100\n"
 "PO-Revision-Date: 2006-11-13 22:26+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -120,7 +120,7 @@ msgstr "&Méret:"
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:704
 #: src/frontends/qt4/ui/QTabularUi.ui:723
-#: src/frontends/qt4/ui/QTabularUi.ui:771
+#: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.ui:66
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:169
@@ -495,7 +495,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
 #: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1986 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Mégsem"
 
@@ -1487,7 +1487,7 @@ msgstr "AMS egyéb jelek"
 msgid "&Functions"
 msgstr "&Függvények"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:126
+#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:127
 msgid "Insert root"
 msgstr "Általános gyökjel beszúrása"
 
@@ -1507,15 +1507,15 @@ msgstr "Képletben használt betûkészlet beállítása"
 msgid "Toggle between display and inline mode"
 msgstr "Megjelenítés módjának váltása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:124
+#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:125
 msgid "Subscript"
 msgstr "Alsó index"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:125
+#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:126
 msgid "Superscript"
 msgstr "Felsõ index"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:138
 msgid "Insert matrix"
 msgstr "Mátrix beszúrása"
 
@@ -1580,7 +1580,7 @@ msgid "&Shaded"
 msgstr "Árnyé&kolt"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2365
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2376
 msgid "Single"
 msgstr "Egyszeres"
 
@@ -1589,7 +1589,7 @@ msgid "1.5"
 msgstr "Másfélszeres"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2371
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2382
 msgid "Double"
 msgstr "Kétszeres"
 
@@ -1779,9 +1779,10 @@ msgid "Vector graphi&cs format"
 msgstr "Vektorgraf&ikus formátum"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
+#, fuzzy
 msgid ""
-"Tell whether this format is a document format. A document can not be "
-"exported to or viewed in a non-document format."
+"Tell whether this format is a document format. A document cannot be exported "
+"to or viewed in a non-document format."
 msgstr ""
 "Jelölje be, ha ez egy dokumentum-formátum. Egy dokumentumot nem lehet "
 "exportálni, egy nem dokumentum formátumba."
@@ -2973,8 +2974,9 @@ msgstr "&Kéthasábos dokumentum"
 #: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
 #: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 src/frontends/qt4/BulletsModule.C:46
-#: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.ui:42
+#: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:150
+#: src/mathed/InsetMathRef.C:183
 msgid "Standard"
 msgstr "Normál szöveg"
 
@@ -3425,7 +3427,7 @@ msgstr "Számozott felsorolás"
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.ui:69
+#: lib/ui/stdtoolbars.ui:70
 msgid "Description"
 msgstr "Leírás"
 
@@ -3433,7 +3435,7 @@ msgstr "Leírás"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:127
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.ui:68
+#: lib/ui/stdtoolbars.ui:69
 msgid "List"
 msgstr "Lista"
 
@@ -3559,7 +3561,7 @@ msgid "Email"
 msgstr "E-mail"
 
 #: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.ui:92 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.ui:93 src/frontends/qt4/QThesaurus.C:29
 msgid "Thesaurus"
 msgstr "Szótár"
 
@@ -4261,6 +4263,7 @@ msgid "uncovered on slides  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
+#: lib/ui/stdtoolbars.ui:96
 msgid "Table"
 msgstr "Táblázat"
 
@@ -7850,18 +7853,18 @@ msgid "Redo|R"
 msgstr "Mégis alkalmaz|M"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:771
+#: src/mathed/InsetMathNest.C:453 src/text3.C:776
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:776
+#: src/mathed/InsetMathNest.C:462 src/text3.C:781
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
 #: src/mathed/InsetMathGrid.C:1208 src/mathed/InsetMathNest.C:437
-#: src/text3.C:755
+#: src/text3.C:760
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -8301,10 +8304,6 @@ msgstr "Szinonímák...|o"
 msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
-#: lib/ui/stdtoolbars.ui:42
-msgid "standard"
-msgstr "Normál szöveg"
-
 #: lib/ui/stdtoolbars.ui:44
 msgid "New document"
 msgstr "Új dokumentum"
@@ -8321,11 +8320,11 @@ msgstr "Dokumentum mentése"
 msgid "Print document"
 msgstr "Dokumentum nyomtatása"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:667
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:683
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:678
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:694
 msgid "Redo"
 msgstr "Mégis"
 
@@ -8358,262 +8357,262 @@ msgid "Insert table"
 msgstr "Táblázat beszúrása"
 
 #: lib/ui/stdtoolbars.ui:65
-msgid "extra"
+#, fuzzy
+msgid "Extra"
 msgstr "extra"
 
-#: lib/ui/stdtoolbars.ui:66
+#: lib/ui/stdtoolbars.ui:67
 msgid "Numbered list"
 msgstr "Számozott lista"
 
-#: lib/ui/stdtoolbars.ui:67
+#: lib/ui/stdtoolbars.ui:68
 msgid "Itemized list"
 msgstr "Felsorolás"
 
-#: lib/ui/stdtoolbars.ui:70
+#: lib/ui/stdtoolbars.ui:71
 msgid "Increase depth"
 msgstr "Környezeti mélység növelése"
 
-#: lib/ui/stdtoolbars.ui:71
+#: lib/ui/stdtoolbars.ui:72
 msgid "Decrease depth"
 msgstr "Környezeti mélység csökkentése"
 
-#: lib/ui/stdtoolbars.ui:73
+#: lib/ui/stdtoolbars.ui:74
 msgid "Insert figure float"
 msgstr "Úsztatott ábra beszúrása"
 
-#: lib/ui/stdtoolbars.ui:74
+#: lib/ui/stdtoolbars.ui:75
 msgid "Insert table float"
 msgstr "Úsztatott táblázat beszúrása"
 
-#: lib/ui/stdtoolbars.ui:75
+#: lib/ui/stdtoolbars.ui:76
 msgid "Insert label"
 msgstr "Címke beszúrása"
 
-#: lib/ui/stdtoolbars.ui:76
+#: lib/ui/stdtoolbars.ui:77
 msgid "Insert cross-reference"
 msgstr "Kereszthivatkozás beszúrása"
 
-#: lib/ui/stdtoolbars.ui:77
+#: lib/ui/stdtoolbars.ui:78
 msgid "Insert citation"
 msgstr "Idézet beszúrása"
 
-#: lib/ui/stdtoolbars.ui:78
+#: lib/ui/stdtoolbars.ui:79
 msgid "Insert index entry"
 msgstr "Tárgymutató-bejegyzés beszúrása"
 
-#: lib/ui/stdtoolbars.ui:79
+#: lib/ui/stdtoolbars.ui:80
 msgid "Insert glossary entry"
 msgstr "Szószedet beszúrása"
 
-#: lib/ui/stdtoolbars.ui:81
+#: lib/ui/stdtoolbars.ui:82
 msgid "Insert footnote"
 msgstr "Lábjegyzet beszúrása"
 
-#: lib/ui/stdtoolbars.ui:82
+#: lib/ui/stdtoolbars.ui:83
 msgid "Insert margin note"
 msgstr "Széljegyzet beszúrása"
 
-#: lib/ui/stdtoolbars.ui:83 lib/ui/stdtoolbars.ui:161
+#: lib/ui/stdtoolbars.ui:84 lib/ui/stdtoolbars.ui:162
 msgid "Insert note"
 msgstr "Megjegyzés beszúrása"
 
-#: lib/ui/stdtoolbars.ui:84
+#: lib/ui/stdtoolbars.ui:85
 msgid "Insert URL"
 msgstr "URL beszúrása"
 
-#: lib/ui/stdtoolbars.ui:85
+#: lib/ui/stdtoolbars.ui:86
 msgid "Insert TeX code"
 msgstr "TeX kód beszúrása"
 
-#: lib/ui/stdtoolbars.ui:86
+#: lib/ui/stdtoolbars.ui:87
 msgid "Include file"
 msgstr "Fájl csatolása"
 
-#: lib/ui/stdtoolbars.ui:88
+#: lib/ui/stdtoolbars.ui:89
 msgid "Text style"
 msgstr "Szöveg stílus"
 
-#: lib/ui/stdtoolbars.ui:89
+#: lib/ui/stdtoolbars.ui:90
 msgid "Paragraph settings"
 msgstr "Bekezdés beállításai"
 
-#: lib/ui/stdtoolbars.ui:90
+#: lib/ui/stdtoolbars.ui:91
 msgid "Table of contents"
 msgstr "Tartalomjegyzék"
 
-#: lib/ui/stdtoolbars.ui:91
+#: lib/ui/stdtoolbars.ui:92
 msgid "Check spelling"
 msgstr "Helyesírás-ellenõrzés"
 
-#: lib/ui/stdtoolbars.ui:95
-msgid "table"
-msgstr "táblázat"
-
-#: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
+#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
 msgid "Add row"
 msgstr "Sor hozzáadása"
 
-#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
+#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
 msgid "Add column"
 msgstr "Oszlop hozzáadása"
 
-#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
+#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
 msgid "Delete row"
 msgstr "Sor törlése"
 
-#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
+#: lib/ui/stdtoolbars.ui:100 lib/ui/stdtoolbars.ui:143
 msgid "Delete column"
 msgstr "Oszlop törlése"
 
-#: lib/ui/stdtoolbars.ui:101
+#: lib/ui/stdtoolbars.ui:102
 msgid "Set top line"
 msgstr "Felsõ szegély be"
 
-#: lib/ui/stdtoolbars.ui:102
+#: lib/ui/stdtoolbars.ui:103
 msgid "Set bottom line"
 msgstr "Alsó szegély be"
 
-#: lib/ui/stdtoolbars.ui:103
+#: lib/ui/stdtoolbars.ui:104
 msgid "Set left line"
 msgstr "Bal szegély be"
 
-#: lib/ui/stdtoolbars.ui:104
+#: lib/ui/stdtoolbars.ui:105
 msgid "Set right line"
 msgstr "Jobb szegély be"
 
-#: lib/ui/stdtoolbars.ui:105
+#: lib/ui/stdtoolbars.ui:106
 msgid "Set all lines"
 msgstr "Minden szegély megjelenik"
 
-#: lib/ui/stdtoolbars.ui:106
+#: lib/ui/stdtoolbars.ui:107
 msgid "Unset all lines"
 msgstr "Minden szegély eltûnik"
 
-#: lib/ui/stdtoolbars.ui:108
+#: lib/ui/stdtoolbars.ui:109
 msgid "Align left"
 msgstr "Balra igazít"
 
-#: lib/ui/stdtoolbars.ui:109
+#: lib/ui/stdtoolbars.ui:110
 msgid "Align center"
 msgstr "Középre igazít"
 
-#: lib/ui/stdtoolbars.ui:110
+#: lib/ui/stdtoolbars.ui:111
 msgid "Align right"
 msgstr "Jobbra igazít"
 
-#: lib/ui/stdtoolbars.ui:112
+#: lib/ui/stdtoolbars.ui:113
 msgid "Align top"
 msgstr "Igazítás fel"
 
-#: lib/ui/stdtoolbars.ui:113
+#: lib/ui/stdtoolbars.ui:114
 msgid "Align middle"
 msgstr "Igazítás középre"
 
-#: lib/ui/stdtoolbars.ui:114
+#: lib/ui/stdtoolbars.ui:115
 msgid "Align bottom"
 msgstr "Igazítás le"
 
-#: lib/ui/stdtoolbars.ui:116
+#: lib/ui/stdtoolbars.ui:117
 msgid "Rotate cell"
 msgstr "Cella forgatása"
 
-#: lib/ui/stdtoolbars.ui:117
+#: lib/ui/stdtoolbars.ui:118
 msgid "Rotate table"
 msgstr "Táblázat forgatása"
 
-#: lib/ui/stdtoolbars.ui:118
+#: lib/ui/stdtoolbars.ui:119
 msgid "Set multi-column"
 msgstr "Cellák egyesítése"
 
-#: lib/ui/stdtoolbars.ui:121 src/LColor.C:123
-msgid "math"
-msgstr "képlet"
-
 #: lib/ui/stdtoolbars.ui:122
+#, fuzzy
+msgid "Math"
+msgstr "Képlet"
+
+#: lib/ui/stdtoolbars.ui:123
 msgid "Show math panel"
 msgstr "Képletszerkesztõ megjelenítése"
 
-#: lib/ui/stdtoolbars.ui:123
+#: lib/ui/stdtoolbars.ui:124
 msgid "Set display mode"
 msgstr "Megjelenítés módjának váltása"
 
-#: lib/ui/stdtoolbars.ui:127
+#: lib/ui/stdtoolbars.ui:128
 msgid "Insert square root"
 msgstr "Négyzetgyök-jel beszúrása"
 
-#: lib/ui/stdtoolbars.ui:128
+#: lib/ui/stdtoolbars.ui:129
 msgid "Insert sum"
 msgstr "Szumma beszúrása"
 
-#: lib/ui/stdtoolbars.ui:129
+#: lib/ui/stdtoolbars.ui:130
 msgid "Insert integral"
 msgstr "Integrál beszúrása"
 
-#: lib/ui/stdtoolbars.ui:130
+#: lib/ui/stdtoolbars.ui:131
 msgid "Insert product"
 msgstr "Szorzat beszúrása"
 
-#: lib/ui/stdtoolbars.ui:132
+#: lib/ui/stdtoolbars.ui:133
 msgid "Insert fraction"
 msgstr "Törtjel beszúrása"
 
-#: lib/ui/stdtoolbars.ui:133
+#: lib/ui/stdtoolbars.ui:134
 msgid "Insert ( )"
 msgstr "() beszúrása"
 
-#: lib/ui/stdtoolbars.ui:134
+#: lib/ui/stdtoolbars.ui:135
 msgid "Insert [ ]"
 msgstr "[] beszúrása"
 
-#: lib/ui/stdtoolbars.ui:135
+#: lib/ui/stdtoolbars.ui:136
 msgid "Insert { }"
 msgstr "{} beszúrása"
 
-#: lib/ui/stdtoolbars.ui:138
+#: lib/ui/stdtoolbars.ui:139
 msgid "Insert cases environment"
 msgstr "Esetek környezet beszúrása"
 
-#: lib/ui/stdtoolbars.ui:145
-msgid "minibuffer"
-msgstr "minibuffer"
-
-#: lib/ui/stdtoolbars.ui:149
-msgid "review"
-msgstr "Korrektúra"
+#: lib/ui/stdtoolbars.ui:146
+#, fuzzy
+msgid "Command Buffer"
+msgstr "Záró paran&cs:"
 
 #: lib/ui/stdtoolbars.ui:150
+#, fuzzy
+msgid "Review"
+msgstr "Korrektúra"
+
+#: lib/ui/stdtoolbars.ui:151
 msgid "Track changes"
 msgstr "Változások követése"
 
-#: lib/ui/stdtoolbars.ui:151
+#: lib/ui/stdtoolbars.ui:152
 msgid "Show changes in output"
 msgstr "Változások mutatása a kimenetben"
 
-#: lib/ui/stdtoolbars.ui:153
+#: lib/ui/stdtoolbars.ui:154
 msgid "Next change"
 msgstr "Következõ változás"
 
-#: lib/ui/stdtoolbars.ui:154
+#: lib/ui/stdtoolbars.ui:155
 msgid "Accept change"
 msgstr "Elfogadás"
 
-#: lib/ui/stdtoolbars.ui:155
+#: lib/ui/stdtoolbars.ui:156
 msgid "Reject change"
 msgstr "Visszautasítás"
 
-#: lib/ui/stdtoolbars.ui:157
+#: lib/ui/stdtoolbars.ui:158
 msgid "Merge changes"
 msgstr "Változások elfogadása"
 
-#: lib/ui/stdtoolbars.ui:158
+#: lib/ui/stdtoolbars.ui:159
 msgid "Accept all changes"
 msgstr "Minden változás elfogadása"
 
-#: lib/ui/stdtoolbars.ui:159
+#: lib/ui/stdtoolbars.ui:160
 msgid "Reject all changes"
 msgstr "Minden változás elvetése"
 
-#: lib/ui/stdtoolbars.ui:162
+#: lib/ui/stdtoolbars.ui:163
 msgid "Next note"
 msgstr "Következõ megjegyzés"
 
@@ -8659,94 +8658,94 @@ msgstr "Létrehozzam az új dokumentumot?"
 msgid "&Create"
 msgstr "&Létrehozás"
 
-#: src/BufferView.C:517
+#: src/BufferView.C:533
 msgid "Save bookmark"
 msgstr "Könyvjelzõ mentése"
 
-#: src/BufferView.C:670
+#: src/BufferView.C:686
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.C:681
+#: src/BufferView.C:697
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.C:842
+#: src/BufferView.C:858
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.C:849
+#: src/BufferView.C:865
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.C:856
+#: src/BufferView.C:872
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.C:859
+#: src/BufferView.C:875
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:921
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d szó van a kijelölésben."
 
-#: src/BufferView.C:908
+#: src/BufferView.C:924
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d szó van a dokumentumban."
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 msgid "One word in selection."
 msgstr "Egy szó van a kijelölésben."
 
-#: src/BufferView.C:915
+#: src/BufferView.C:931
 msgid "One word in document."
 msgstr "Egy szó van a dokumentumban."
 
-#: src/BufferView.C:918
+#: src/BufferView.C:934
 msgid "Count words"
 msgstr "Szavak megszámolása"
 
-#: src/BufferView.C:1344
+#: src/BufferView.C:1351
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.C:1346 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1353 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1937
+#: src/lyxfunc.C:1821 src/lyxfunc.C:1858 src/lyxfunc.C:1933
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.C:1347 src/lyxfunc.C:1863 src/lyxfunc.C:1938
+#: src/BufferView.C:1354 src/lyxfunc.C:1859 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.C:1351 src/lyx_cb.C:141 src/lyxfunc.C:1830
-#: src/lyxfunc.C:1867
+#: src/BufferView.C:1358 src/lyx_cb.C:141 src/lyxfunc.C:1826
+#: src/lyxfunc.C:1863
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.C:1363 src/lyxfunc.C:1877 src/lyxfunc.C:1959
-#: src/lyxfunc.C:1973 src/lyxfunc.C:1989
+#: src/BufferView.C:1370 src/lyxfunc.C:1873 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Törölve."
 
-#: src/BufferView.C:1374
+#: src/BufferView.C:1381
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.C:1385
+#: src/BufferView.C:1392
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.C:1387
+#: src/BufferView.C:1394
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
@@ -8901,6 +8900,10 @@ msgstr "parancsbetét kerete"
 #: src/LColor.C:122
 msgid "special character"
 msgstr "speciális jel"
+
+#: src/LColor.C:123
+msgid "math"
+msgstr "képlet"
 
 #: src/LColor.C:124
 msgid "math background"
@@ -9592,7 +9595,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Felülírjam a fájlt?"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1986
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1982
 msgid "&Over-write"
 msgstr "&Kicserél"
 
@@ -10167,6 +10170,11 @@ msgstr "Könyvtárak"
 msgid "LyX"
 msgstr "LyX"
 
+#: src/frontends/qt4/GuiWorkArea.C:533
+#, fuzzy
+msgid "unknown version"
+msgstr "Ismeretlen mûvelet"
+
 #: src/frontends/qt4/QBibitem.C:31
 msgid "Bibliography Entry Settings"
 msgstr "Irodalomjegyzék elem beállítások"
@@ -10267,7 +10275,7 @@ msgstr "Dokumentumbeállítások"
 msgid "Length"
 msgstr "Hossza"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2368
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2379
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -11302,11 +11310,11 @@ msgstr "&Átnevezés"
 msgid "Choose a filename to save document as"
 msgstr "Mentés másként..."
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1826
+#: src/lyx_cb.C:136 src/lyxfunc.C:1822
 msgid "Templates|#T#t"
 msgstr "Sablonok|#a#A"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1983
+#: src/lyx_cb.C:165 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11317,7 +11325,7 @@ msgstr ""
 "\n"
 "Szeretné a tartalmát kicserélni?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1985
+#: src/lyx_cb.C:167 src/lyxfunc.C:1981
 msgid "Over-write document?"
 msgstr "Felülírjam a dokumentumot?"
 
@@ -11390,11 +11398,11 @@ msgstr ""
 "Újra kell indítania a LyX-et az új beállítások\n"
 "használatba vételéhez."
 
-#: src/lyx_main.C:120
+#: src/lyx_main.C:122
 msgid "Could not read configuration file"
 msgstr "Konfiguráció fájl nem olvasható"
 
-#: src/lyx_main.C:121
+#: src/lyx_main.C:123
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11405,37 +11413,37 @@ msgstr ""
 "a konfigurációs fájl olvasása közben.\n"
 "Ellenõrizze a programot. (Please check your installation.)"
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:132
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: felhasználói könyvtár újra beállítása"
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:136
 msgid "Done!"
 msgstr "Kész!"
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:392
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Az %1$s ideiglenes könyvtár nem törölhetõ"
 
-#: src/lyx_main.C:382
+#: src/lyx_main.C:394
 msgid "Unable to remove temporary directory"
 msgstr "Ideiglenes könyvtár nem törölhetõ"
 
-#: src/lyx_main.C:420
+#: src/lyx_main.C:433
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hibás parancssori kapcsoló `%1$s'. Kilépek."
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:672
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:781
+#: src/lyx_main.C:794
 msgid "Could not create temporary directory"
 msgstr "Ideiglenes könyvtár nem hozható létre"
 
-#: src/lyx_main.C:782
+#: src/lyx_main.C:795
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11446,11 +11454,11 @@ msgstr ""
 "%1$s. Ellenõrizze, hogy az elérési út létezik és\n"
 "írható, majd próbálja újra!"
 
-#: src/lyx_main.C:939
+#: src/lyx_main.C:952
 msgid "Missing user LyX directory"
 msgstr "Nincs felhasználói LyX könyvtár"
 
-#: src/lyx_main.C:940
+#: src/lyx_main.C:953
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11459,37 +11467,37 @@ msgstr ""
 "Nem létezõ LyX felhasználói könyvtárat adott meg, %1$s.\n"
 "Valahol tárolnia kell a saját beállításait."
 
-#: src/lyx_main.C:945
+#: src/lyx_main.C:958
 msgid "&Create directory"
 msgstr "&Könyvtár létrehozása"
 
-#: src/lyx_main.C:946
+#: src/lyx_main.C:959
 msgid "&Exit LyX"
 msgstr "&Kilépés LyX-bõl"
 
-#: src/lyx_main.C:947
+#: src/lyx_main.C:960
 msgid "No user LyX directory. Exiting."
 msgstr "Nincs felhasználói LyX könyvtár. Kilépek."
 
-#: src/lyx_main.C:951
+#: src/lyx_main.C:964
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Könyvtár létrehozása %1$s"
 
-#: src/lyx_main.C:957
+#: src/lyx_main.C:970
 msgid "Failed to create directory. Exiting."
 msgstr "Nem sikerült létrehozni a könyvtárat. Kilépek."
 
-#: src/lyx_main.C:1112
+#: src/lyx_main.C:1125
 msgid "List of supported debug flags:"
 msgstr "Támogatott nyomkövetési jelzõk listája:"
 
-#: src/lyx_main.C:1116
+#: src/lyx_main.C:1129
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nyomkövetési szint beállítása: %1$s"
 
-#: src/lyx_main.C:1127
+#: src/lyx_main.C:1140
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11529,27 +11537,27 @@ msgstr ""
 "\t-version        megadja a verziószámot és a fordítási információkat\n"
 "Olvassa el a LyX kézikönyvet a további részletekért!"
 
-#: src/lyx_main.C:1163
+#: src/lyx_main.C:1176
 msgid "Missing directory for -sysdir switch"
 msgstr "Hiányzó könyvtár a -sysdir kapcsolóhoz"
 
-#: src/lyx_main.C:1173
+#: src/lyx_main.C:1186
 msgid "Missing directory for -userdir switch"
 msgstr "Hiányzó könyvtár a -userdir kapcsolóhoz"
 
-#: src/lyx_main.C:1183
+#: src/lyx_main.C:1196
 msgid "Missing command string after --execute switch"
 msgstr "Hiányzó parancs az --execute kapcsoló után"
 
-#: src/lyx_main.C:1193
+#: src/lyx_main.C:1206
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --export kapcsoló után"
 
-#: src/lyx_main.C:1205
+#: src/lyx_main.C:1218
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --import kapcsoló után"
 
-#: src/lyx_main.C:1210
+#: src/lyx_main.C:1223
 msgid "Missing filename for --import"
 msgstr "Hiányzó fájlnév --import-hoz"
 
@@ -11707,7 +11715,7 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/lyxfunc.C:1077 src/text3.C:1215
+#: src/lyxfunc.C:1077 src/text3.C:1220
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
@@ -11743,35 +11751,35 @@ msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
-#: src/lyxfunc.C:1823
+#: src/lyxfunc.C:1819
 msgid "Select template file"
 msgstr "Sablon kiválasztása"
 
-#: src/lyxfunc.C:1860
+#: src/lyxfunc.C:1856
 msgid "Select document to open"
 msgstr "Megnyitandó dokumentum kiválasztása"
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Dokumentum megnyitása %1$s..."
 
-#: src/lyxfunc.C:1905
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentum megnyitva."
 
-#: src/lyxfunc.C:1907
+#: src/lyxfunc.C:1903
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "A dokumentum nem nyitható meg %1$s"
 
-#: src/lyxfunc.C:1932
+#: src/lyxfunc.C:1928
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Válasszon egy %1$s fájlt az importáláshoz"
 
-#: src/lyxfunc.C:2049
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Üdvözli a LyX!"
 
@@ -12594,60 +12602,60 @@ msgstr "Ismeretlen szerzõlista törléshez: %1$d\n"
 msgid "Unknown token"
 msgstr "Ismeretlen szimbólum"
 
-#: src/text.C:1232
+#: src/text.C:1236
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Bekezdés nem kezdõdhet szóközzel. Kérem, olvassa el a Tankönyvet."
 
-#: src/text.C:1243
+#: src/text.C:1247
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
 
-#: src/text.C:2334
+#: src/text.C:2345
 msgid "Change: "
 msgstr "Változás: "
 
-#: src/text.C:2337
+#: src/text.C:2348
 msgid " at "
 msgstr " itt "
 
-#: src/text.C:2349
+#: src/text.C:2360
 #, c-format
 msgid "Font: %1$s"
 msgstr "Betûkészlet: %1$s"
 
-#: src/text.C:2356
+#: src/text.C:2367
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Mélység: %1$d"
 
-#: src/text.C:2362
+#: src/text.C:2373
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/text.C:2374
+#: src/text.C:2385
 msgid "Other ("
 msgstr "Egyéb ("
 
-#: src/text.C:2383
+#: src/text.C:2394
 msgid ", Inset: "
 msgstr ", Betét: "
 
-#: src/text.C:2384
+#: src/text.C:2395
 msgid ", Paragraph: "
 msgstr ", Bekezdés: "
 
-#: src/text.C:2385
+#: src/text.C:2396
 msgid ", Id: "
 msgstr ", Azon.: "
 
-#: src/text.C:2386
+#: src/text.C:2397
 msgid ", Position: "
 msgstr ", Pozíció: "
 
-#: src/text.C:2387
+#: src/text.C:2398
 msgid ", Boundary: "
 msgstr ", Határ: "
 
@@ -12667,27 +12675,23 @@ msgstr "Nincs mit a szójegyzékbe rakni!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
-#: src/text3.C:682
+#: src/text3.C:687
 msgid "Unknown spacing argument: "
 msgstr "Ismeretlen térköz paraméter: "
 
-#: src/text3.C:821
-msgid "LyX function 'layout' needs an argument."
-msgstr "A 'layout' LyX funkciónak szüksége van egy paraméterre."
-
-#: src/text3.C:839
+#: src/text3.C:835
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/text3.C:840
+#: src/text3.C:836
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/text3.C:1320 src/text3.C:1332
+#: src/text3.C:1325 src/text3.C:1337
 msgid "Character set"
 msgstr "Betûkészlet"
 
-#: src/text3.C:1463
+#: src/text3.C:1468
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-16 00:16+0100\n"
+"POT-Creation-Date: 2006-11-19 14:30+0100\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -131,7 +131,7 @@ msgstr "Ра&змер:"
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:704
 #: src/frontends/qt4/ui/QTabularUi.ui:723
-#: src/frontends/qt4/ui/QTabularUi.ui:771
+#: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.ui:66
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:169
@@ -532,7 +532,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
 #: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1986 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Отменить"
 
@@ -1586,7 +1586,7 @@ msgstr "Различное AMS"
 msgid "&Functions"
 msgstr "&Функции"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:126
+#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.ui:127
 msgid "Insert root"
 msgstr "Вставить корень"
 
@@ -1607,15 +1607,15 @@ msgstr "Установить математический шрифт"
 msgid "Toggle between display and inline mode"
 msgstr "Переключить между выключным режимом и режимом в строке"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:124
+#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.ui:125
 msgid "Subscript"
 msgstr "Нижний индекс"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:125
+#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.ui:126
 msgid "Superscript"
 msgstr "Верхний индекс"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.ui:138
 msgid "Insert matrix"
 msgstr "Вставить матрицу"
 
@@ -1690,7 +1690,7 @@ msgid "&Shaded"
 msgstr "&Сохранить"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2365
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2376
 msgid "Single"
 msgstr "Одинарный"
 
@@ -1699,7 +1699,7 @@ msgid "1.5"
 msgstr "Полуторный"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2371
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2382
 msgid "Double"
 msgstr "Двойной"
 
@@ -1904,8 +1904,8 @@ msgstr "Выберите файл с изображением"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
 msgid ""
-"Tell whether this format is a document format. A document can not be "
-"exported to or viewed in a non-document format."
+"Tell whether this format is a document format. A document cannot be exported "
+"to or viewed in a non-document format."
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
@@ -3134,8 +3134,9 @@ msgstr "Двух&колоночный документ"
 #: lib/layouts/slides.layout:60 lib/layouts/agu_stdclass.inc:22
 #: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
-#: lib/layouts/svjour.inc:27 src/frontends/qt4/BulletsModule.C:46
-#: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
+#: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.ui:42
+#: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:150
+#: src/mathed/InsetMathRef.C:183
 msgid "Standard"
 msgstr "Обычный"
 
@@ -3608,7 +3609,7 @@ msgstr "Нумерация"
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
 #: lib/layouts/scrclass.inc:26 lib/layouts/stdlists.inc:47
-#: lib/ui/stdtoolbars.ui:69
+#: lib/ui/stdtoolbars.ui:70
 msgid "Description"
 msgstr "Описание"
 
@@ -3616,7 +3617,7 @@ msgstr "Описание"
 #: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:127
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
-#: lib/ui/stdtoolbars.ui:68
+#: lib/ui/stdtoolbars.ui:69
 msgid "List"
 msgstr "Список"
 
@@ -3744,7 +3745,7 @@ msgid "Email"
 msgstr "Email"
 
 #: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
-#: lib/ui/stdtoolbars.ui:92 src/frontends/qt4/QThesaurus.C:29
+#: lib/ui/stdtoolbars.ui:93 src/frontends/qt4/QThesaurus.C:29
 msgid "Thesaurus"
 msgstr "Тезаурус"
 
@@ -4519,6 +4520,7 @@ msgid "uncovered on slides  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
+#: lib/ui/stdtoolbars.ui:96
 msgid "Table"
 msgstr "Таблица"
 
@@ -8439,18 +8441,18 @@ msgid "Redo|R"
 msgstr "Повторить|П"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:771
+#: src/mathed/InsetMathNest.C:453 src/text3.C:776
 msgid "Cut"
 msgstr "Вырезать"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:776
+#: src/mathed/InsetMathNest.C:462 src/text3.C:781
 msgid "Copy"
 msgstr "Запомнить"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
 #: src/mathed/InsetMathGrid.C:1208 src/mathed/InsetMathNest.C:437
-#: src/text3.C:755
+#: src/text3.C:760
 msgid "Paste"
 msgstr "Вставить"
 
@@ -8982,11 +8984,6 @@ msgstr "Тезаурус..."
 msgid "TeX Information|I"
 msgstr "Информация о LaTeX|X"
 
-#: lib/ui/stdtoolbars.ui:42
-#, fuzzy
-msgid "standard"
-msgstr "Обычный"
-
 #: lib/ui/stdtoolbars.ui:44
 msgid "New document"
 msgstr "Создать документ"
@@ -9006,11 +9003,11 @@ msgstr "Сохранить документ?"
 msgid "Print document"
 msgstr "Импортировать документ"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:667
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:683
 msgid "Undo"
 msgstr "Отменить"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:678
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:694
 msgid "Redo"
 msgstr "Вернуть"
 
@@ -9050,318 +9047,315 @@ msgstr "Вставить таблицу"
 
 #: lib/ui/stdtoolbars.ui:65
 #, fuzzy
-msgid "extra"
+msgid "Extra"
 msgstr "Дополнительно"
 
-#: lib/ui/stdtoolbars.ui:66
+#: lib/ui/stdtoolbars.ui:67
 #, fuzzy
 msgid "Numbered list"
 msgstr "  Номер "
 
-#: lib/ui/stdtoolbars.ui:67
+#: lib/ui/stdtoolbars.ui:68
 #, fuzzy
 msgid "Itemized list"
 msgstr "Перечисление"
 
-#: lib/ui/stdtoolbars.ui:70
+#: lib/ui/stdtoolbars.ui:71
 #, fuzzy
 msgid "Increase depth"
 msgstr "Увеличить"
 
-#: lib/ui/stdtoolbars.ui:71
+#: lib/ui/stdtoolbars.ui:72
 #, fuzzy
 msgid "Decrease depth"
 msgstr "Уменьшить"
 
-#: lib/ui/stdtoolbars.ui:73
+#: lib/ui/stdtoolbars.ui:74
 #, fuzzy
 msgid "Insert figure float"
 msgstr "Вставить широкий плавающий объект"
 
-#: lib/ui/stdtoolbars.ui:74
+#: lib/ui/stdtoolbars.ui:75
 #, fuzzy
 msgid "Insert table float"
 msgstr "Вставить плавающий объект"
 
-#: lib/ui/stdtoolbars.ui:75
+#: lib/ui/stdtoolbars.ui:76
 #, fuzzy
 msgid "Insert label"
 msgstr "Вставить метку"
 
-#: lib/ui/stdtoolbars.ui:76
+#: lib/ui/stdtoolbars.ui:77
 #, fuzzy
 msgid "Insert cross-reference"
 msgstr "Вставить перекрёстную ссылку"
 
-#: lib/ui/stdtoolbars.ui:77
+#: lib/ui/stdtoolbars.ui:78
 msgid "Insert citation"
 msgstr "Вставить ссылку"
 
-#: lib/ui/stdtoolbars.ui:78
+#: lib/ui/stdtoolbars.ui:79
 #, fuzzy
 msgid "Insert index entry"
 msgstr "Вставить вхождение слова в предметный указатель"
 
-#: lib/ui/stdtoolbars.ui:79
+#: lib/ui/stdtoolbars.ui:80
 #, fuzzy
 msgid "Insert glossary entry"
 msgstr "Вставить вхождение слова в предметный указатель"
 
-#: lib/ui/stdtoolbars.ui:81
+#: lib/ui/stdtoolbars.ui:82
 #, fuzzy
 msgid "Insert footnote"
 msgstr "Вставить сноску"
 
-#: lib/ui/stdtoolbars.ui:82
+#: lib/ui/stdtoolbars.ui:83
 msgid "Insert margin note"
 msgstr "Вставить примечание на полях"
 
-#: lib/ui/stdtoolbars.ui:83 lib/ui/stdtoolbars.ui:161
+#: lib/ui/stdtoolbars.ui:84 lib/ui/stdtoolbars.ui:162
 #, fuzzy
 msgid "Insert note"
 msgstr "Вставить кавычку"
 
-#: lib/ui/stdtoolbars.ui:84
+#: lib/ui/stdtoolbars.ui:85
 msgid "Insert URL"
 msgstr "Вставить URL"
 
-#: lib/ui/stdtoolbars.ui:85
+#: lib/ui/stdtoolbars.ui:86
 #, fuzzy
 msgid "Insert TeX code"
 msgstr "Вставить BibTeX"
 
-#: lib/ui/stdtoolbars.ui:86
+#: lib/ui/stdtoolbars.ui:87
 msgid "Include file"
 msgstr "Включить файл"
 
-#: lib/ui/stdtoolbars.ui:88
+#: lib/ui/stdtoolbars.ui:89
 #, fuzzy
 msgid "Text style"
 msgstr "Стили LaTeX"
 
-#: lib/ui/stdtoolbars.ui:89
+#: lib/ui/stdtoolbars.ui:90
 #, fuzzy
 msgid "Paragraph settings"
 msgstr "Настройки принтера"
 
-#: lib/ui/stdtoolbars.ui:90
+#: lib/ui/stdtoolbars.ui:91
 #, fuzzy
 msgid "Table of contents"
 msgstr "&Содержания:"
 
-#: lib/ui/stdtoolbars.ui:91
+#: lib/ui/stdtoolbars.ui:92
 #, fuzzy
 msgid "Check spelling"
 msgstr "Проверить TeX"
 
-#: lib/ui/stdtoolbars.ui:95
-#, fuzzy
-msgid "table"
-msgstr "Таблица"
-
-#: lib/ui/stdtoolbars.ui:96 lib/ui/stdtoolbars.ui:139
+#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
 #, fuzzy
 msgid "Add row"
 msgstr "Добавить строку|Д"
 
-#: lib/ui/stdtoolbars.ui:97 lib/ui/stdtoolbars.ui:140
+#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
 #, fuzzy
 msgid "Add column"
 msgstr "Добавить столбец|т"
 
-#: lib/ui/stdtoolbars.ui:98 lib/ui/stdtoolbars.ui:141
+#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
 #, fuzzy
 msgid "Delete row"
 msgstr "Удалить строку|У"
 
-#: lib/ui/stdtoolbars.ui:99 lib/ui/stdtoolbars.ui:142
+#: lib/ui/stdtoolbars.ui:100 lib/ui/stdtoolbars.ui:143
 #, fuzzy
 msgid "Delete column"
 msgstr "Удалить столбец|б"
 
-#: lib/ui/stdtoolbars.ui:101
+#: lib/ui/stdtoolbars.ui:102
 #, fuzzy
 msgid "Set top line"
 msgstr "Выделить следующую строку"
 
-#: lib/ui/stdtoolbars.ui:102
+#: lib/ui/stdtoolbars.ui:103
 #, fuzzy
 msgid "Set bottom line"
 msgstr "Верхняя/нижняя линия"
 
-#: lib/ui/stdtoolbars.ui:103
+#: lib/ui/stdtoolbars.ui:104
 #, fuzzy
 msgid "Set left line"
 msgstr "Выделить следующую строку"
 
-#: lib/ui/stdtoolbars.ui:104
+#: lib/ui/stdtoolbars.ui:105
 #, fuzzy
 msgid "Set right line"
 msgstr "Выделить следующую строку"
 
-#: lib/ui/stdtoolbars.ui:105
+#: lib/ui/stdtoolbars.ui:106
 #, fuzzy
 msgid "Set all lines"
 msgstr "Установить все рамки"
 
-#: lib/ui/stdtoolbars.ui:106
+#: lib/ui/stdtoolbars.ui:107
 #, fuzzy
 msgid "Unset all lines"
 msgstr "Убрать все рамки"
 
-#: lib/ui/stdtoolbars.ui:108
+#: lib/ui/stdtoolbars.ui:109
 #, fuzzy
 msgid "Align left"
 msgstr "Прижать влево|Е"
 
-#: lib/ui/stdtoolbars.ui:109
+#: lib/ui/stdtoolbars.ui:110
 #, fuzzy
 msgid "Align center"
 msgstr "По середине горизонтально|Ц"
 
-#: lib/ui/stdtoolbars.ui:110
+#: lib/ui/stdtoolbars.ui:111
 #, fuzzy
 msgid "Align right"
 msgstr "Прижать вправо|В"
 
-#: lib/ui/stdtoolbars.ui:112
+#: lib/ui/stdtoolbars.ui:113
 #, fuzzy
 msgid "Align top"
 msgstr "Прижать кверху|К"
 
-#: lib/ui/stdtoolbars.ui:113
+#: lib/ui/stdtoolbars.ui:114
 #, fuzzy
 msgid "Align middle"
 msgstr "Выровнять"
 
-#: lib/ui/stdtoolbars.ui:114
+#: lib/ui/stdtoolbars.ui:115
 #, fuzzy
 msgid "Align bottom"
 msgstr "Прижать книзу|н"
 
-#: lib/ui/stdtoolbars.ui:116
+#: lib/ui/stdtoolbars.ui:117
 #, fuzzy
 msgid "Rotate cell"
 msgstr "Повернуть &ячейку"
 
-#: lib/ui/stdtoolbars.ui:117
+#: lib/ui/stdtoolbars.ui:118
 #, fuzzy
 msgid "Rotate table"
 msgstr "&Повернуть таблицу"
 
-#: lib/ui/stdtoolbars.ui:118
+#: lib/ui/stdtoolbars.ui:119
 #, fuzzy
 msgid "Set multi-column"
 msgstr "Многоколоночное"
 
-#: lib/ui/stdtoolbars.ui:121 src/LColor.C:123
-msgid "math"
-msgstr "Математические формулы"
-
 #: lib/ui/stdtoolbars.ui:122
+#, fuzzy
+msgid "Math"
+msgstr "Пути"
+
+#: lib/ui/stdtoolbars.ui:123
 #, fuzzy
 msgid "Show math panel"
 msgstr "Показать &путь"
 
-#: lib/ui/stdtoolbars.ui:123
+#: lib/ui/stdtoolbars.ui:124
 #, fuzzy
 msgid "Set display mode"
 msgstr "Переключить между выключным режимом и режимом в строке"
 
-#: lib/ui/stdtoolbars.ui:127
+#: lib/ui/stdtoolbars.ui:128
 #, fuzzy
 msgid "Insert square root"
 msgstr "Вставить корень"
 
-#: lib/ui/stdtoolbars.ui:128
+#: lib/ui/stdtoolbars.ui:129
 #, fuzzy
 msgid "Insert sum"
 msgstr "Вставить кавычку"
 
-#: lib/ui/stdtoolbars.ui:129
+#: lib/ui/stdtoolbars.ui:130
 #, fuzzy
 msgid "Insert integral"
 msgstr "Вставить таблицу"
 
-#: lib/ui/stdtoolbars.ui:130
+#: lib/ui/stdtoolbars.ui:131
 #, fuzzy
 msgid "Insert product"
 msgstr "Вставить корень"
 
-#: lib/ui/stdtoolbars.ui:132
+#: lib/ui/stdtoolbars.ui:133
 msgid "Insert fraction"
 msgstr "Вставить дробь"
 
-#: lib/ui/stdtoolbars.ui:133
+#: lib/ui/stdtoolbars.ui:134
 #, fuzzy
 msgid "Insert ( )"
 msgstr "&Вставить"
 
-#: lib/ui/stdtoolbars.ui:134
+#: lib/ui/stdtoolbars.ui:135
 #, fuzzy
 msgid "Insert [ ]"
 msgstr "&Вставить"
 
-#: lib/ui/stdtoolbars.ui:135
+#: lib/ui/stdtoolbars.ui:136
 #, fuzzy
 msgid "Insert { }"
 msgstr "&Вставить"
 
-#: lib/ui/stdtoolbars.ui:138
+#: lib/ui/stdtoolbars.ui:139
 #, fuzzy
 msgid "Insert cases environment"
 msgstr "Блок вариантов|в"
 
-#: lib/ui/stdtoolbars.ui:145
-msgid "minibuffer"
-msgstr ""
-
-#: lib/ui/stdtoolbars.ui:149
+#: lib/ui/stdtoolbars.ui:146
 #, fuzzy
-msgid "review"
-msgstr "Предварительный просмотр|#П"
+msgid "Command Buffer"
+msgstr "Команда &окончания:"
 
 #: lib/ui/stdtoolbars.ui:150
+#, fuzzy
+msgid "Review"
+msgstr "Предварительный просмотр|#П"
+
+#: lib/ui/stdtoolbars.ui:151
 #, fuzzy
 msgid "Track changes"
 msgstr "Внести изменения...|В"
 
-#: lib/ui/stdtoolbars.ui:151
+#: lib/ui/stdtoolbars.ui:152
 #, fuzzy
 msgid "Show changes in output"
 msgstr "Ширина изображения в выводе"
 
-#: lib/ui/stdtoolbars.ui:153
+#: lib/ui/stdtoolbars.ui:154
 #, fuzzy
 msgid "Next change"
 msgstr "Без изменений"
 
-#: lib/ui/stdtoolbars.ui:154
+#: lib/ui/stdtoolbars.ui:155
 #, fuzzy
 msgid "Accept change"
 msgstr "Изменить шрифт|ш"
 
-#: lib/ui/stdtoolbars.ui:155
+#: lib/ui/stdtoolbars.ui:156
 #, fuzzy
 msgid "Reject change"
 msgstr "Обновить|#О"
 
-#: lib/ui/stdtoolbars.ui:157
+#: lib/ui/stdtoolbars.ui:158
 #, fuzzy
 msgid "Merge changes"
 msgstr "Объединить ячейки"
 
-#: lib/ui/stdtoolbars.ui:158
+#: lib/ui/stdtoolbars.ui:159
 #, fuzzy
 msgid "Accept all changes"
 msgstr "Изменить шрифт|ш"
 
-#: lib/ui/stdtoolbars.ui:159
+#: lib/ui/stdtoolbars.ui:160
 #, fuzzy
 msgid "Reject all changes"
 msgstr "Обновить|#О"
 
-#: lib/ui/stdtoolbars.ui:162
+#: lib/ui/stdtoolbars.ui:163
 #, fuzzy
 msgid "Next note"
 msgstr "Заметку|З"
@@ -9407,101 +9401,101 @@ msgstr "Создать новый документ с таким названием?"
 msgid "&Create"
 msgstr "&Собирать"
 
-#: src/BufferView.C:517
+#: src/BufferView.C:533
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Заложить закладку 2"
 
-#: src/BufferView.C:670
+#: src/BufferView.C:686
 msgid "No further undo information"
 msgstr "Больше нет информации для отмены"
 
-#: src/BufferView.C:681
+#: src/BufferView.C:697
 msgid "No further redo information"
 msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
-#: src/BufferView.C:842
+#: src/BufferView.C:858
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/BufferView.C:849
+#: src/BufferView.C:865
 msgid "Mark on"
 msgstr "Метка включена"
 
-#: src/BufferView.C:856
+#: src/BufferView.C:872
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/BufferView.C:859
+#: src/BufferView.C:875
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:921
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d слов проверено."
 
-#: src/BufferView.C:908
+#: src/BufferView.C:924
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d слов проверено."
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 #, fuzzy
 msgid "One word in selection."
 msgstr "Одно слово проверено."
 
-#: src/BufferView.C:915
+#: src/BufferView.C:931
 #, fuzzy
 msgid "One word in document."
 msgstr "Документ вставляется "
 
-#: src/BufferView.C:918
+#: src/BufferView.C:934
 #, fuzzy
 msgid "Count words"
 msgstr "Текущее слово"
 
-#: src/BufferView.C:1344
+#: src/BufferView.C:1351
 msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
-#: src/BufferView.C:1346 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1353 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1937
+#: src/lyxfunc.C:1821 src/lyxfunc.C:1858 src/lyxfunc.C:1933
 msgid "Documents|#o#O"
 msgstr "Документы|#o#O"
 
-#: src/BufferView.C:1347 src/lyxfunc.C:1863 src/lyxfunc.C:1938
+#: src/BufferView.C:1354 src/lyxfunc.C:1859 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Примеры|#E#e"
 
-#: src/BufferView.C:1351 src/lyx_cb.C:141 src/lyxfunc.C:1830
-#: src/lyxfunc.C:1867
+#: src/BufferView.C:1358 src/lyx_cb.C:141 src/lyxfunc.C:1826
+#: src/lyxfunc.C:1863
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Документы LyX (*.lyx)"
 
-#: src/BufferView.C:1363 src/lyxfunc.C:1877 src/lyxfunc.C:1959
-#: src/lyxfunc.C:1973 src/lyxfunc.C:1989
+#: src/BufferView.C:1370 src/lyxfunc.C:1873 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Отменено."
 
 # c-format
-#: src/BufferView.C:1374
+#: src/BufferView.C:1381
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Документ вставляется %1$s..."
 
-#: src/BufferView.C:1385
+#: src/BufferView.C:1392
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Документ %1$s вставлен."
 
 # c-format
-#: src/BufferView.C:1387
+#: src/BufferView.C:1394
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Невозможно вставить документ %1$s"
@@ -9663,6 +9657,10 @@ msgstr "Рамка вкладки команд"
 #: src/LColor.C:122
 msgid "special character"
 msgstr "Специальный символ"
+
+#: src/LColor.C:123
+msgid "math"
+msgstr "Математические формулы"
 
 #: src/LColor.C:124
 msgid "math background"
@@ -10356,7 +10354,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Просмотреть файл"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1986
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1982
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Машинописный:"
@@ -10973,6 +10971,11 @@ msgstr "Каталоги"
 msgid "LyX"
 msgstr "LyX"
 
+#: src/frontends/qt4/GuiWorkArea.C:533
+#, fuzzy
+msgid "unknown version"
+msgstr "Неизвестная команда"
+
 #: src/frontends/qt4/QBibitem.C:31
 #, fuzzy
 msgid "Bibliography Entry Settings"
@@ -11081,7 +11084,7 @@ msgstr "Настройки документа"
 msgid "Length"
 msgstr "Указать длину"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2368
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2379
 msgid "OneHalf"
 msgstr "Полуторный"
 
@@ -12176,11 +12179,11 @@ msgstr "&Удалить"
 msgid "Choose a filename to save document as"
 msgstr "Введите название файла для сохраняемого документа"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1826
+#: src/lyx_cb.C:136 src/lyxfunc.C:1822
 msgid "Templates|#T#t"
 msgstr "Шаблоны"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1983
+#: src/lyx_cb.C:165 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12188,7 +12191,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1985
+#: src/lyx_cb.C:167 src/lyxfunc.C:1981
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Сохранить документ?"
@@ -12256,12 +12259,12 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:120
+#: src/lyx_main.C:122
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Ошибка запуска с файлом:"
 
-#: src/lyx_main.C:121
+#: src/lyx_main.C:123
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12269,38 +12272,38 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:132
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: конфигурация пользователя создаётся заново"
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:136
 msgid "Done!"
 msgstr "Готово!"
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:392
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Невозможно создать временный каталог"
 
-#: src/lyx_main.C:382
+#: src/lyx_main.C:394
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Выберите временный каталог"
 
-#: src/lyx_main.C:420
+#: src/lyx_main.C:433
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Неверный параметр командной строки `%1$s'. Выходим."
 
-#: src/lyx_main.C:659
+#: src/lyx_main.C:672
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:781
+#: src/lyx_main.C:794
 msgid "Could not create temporary directory"
 msgstr "Невозможно создать временный каталог"
 
-#: src/lyx_main.C:782
+#: src/lyx_main.C:795
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12311,51 +12314,51 @@ msgstr ""
 "%1$s. Проверьте, что этот путь существует,\n"
 "доступен для записи и попробуйте ещё раз."
 
-#: src/lyx_main.C:939
+#: src/lyx_main.C:952
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Нет каталога пользователя LyX. Завершение работы."
 
-#: src/lyx_main.C:940
+#: src/lyx_main.C:953
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Вы указали несуществующий каталог LyX."
 
-#: src/lyx_main.C:945
+#: src/lyx_main.C:958
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: создаю каталог "
 
-#: src/lyx_main.C:946
+#: src/lyx_main.C:959
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Выйти"
 
-#: src/lyx_main.C:947
+#: src/lyx_main.C:960
 msgid "No user LyX directory. Exiting."
 msgstr "Нет каталога пользователя LyX. Завершение работы."
 
-#: src/lyx_main.C:951
+#: src/lyx_main.C:964
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Создаётся каталог  %1$s"
 
-#: src/lyx_main.C:957
+#: src/lyx_main.C:970
 msgid "Failed to create directory. Exiting."
 msgstr "Ошибка при создании каталога. Завершение работы."
 
-#: src/lyx_main.C:1112
+#: src/lyx_main.C:1125
 msgid "List of supported debug flags:"
 msgstr "Список поддерживаемых флагов отладки:"
 
-#: src/lyx_main.C:1116
+#: src/lyx_main.C:1129
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Установить уровень отладки на %1$s"
 
-#: src/lyx_main.C:1127
+#: src/lyx_main.C:1140
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12394,27 +12397,27 @@ msgstr ""
 "                  импортировать заданный файл в указанном формата\n"
 "Более подробное описание командной строки можно найти в документации (man)."
 
-#: src/lyx_main.C:1163
+#: src/lyx_main.C:1176
 msgid "Missing directory for -sysdir switch"
 msgstr "Отсутствует каталог для ключа -sysdir"
 
-#: src/lyx_main.C:1173
+#: src/lyx_main.C:1186
 msgid "Missing directory for -userdir switch"
 msgstr "Отсутствует каталог для ключа -userdir"
 
-#: src/lyx_main.C:1183
+#: src/lyx_main.C:1196
 msgid "Missing command string after --execute switch"
 msgstr "Отсутствует команда после ключа --execute"
 
-#: src/lyx_main.C:1193
+#: src/lyx_main.C:1206
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --export"
 
-#: src/lyx_main.C:1205
+#: src/lyx_main.C:1218
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --import"
 
-#: src/lyx_main.C:1210
+#: src/lyx_main.C:1223
 msgid "Missing filename for --import"
 msgstr "Не указано название файла для --import"
 
@@ -12567,7 +12570,7 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1077 src/text3.C:1215
+#: src/lyxfunc.C:1077 src/text3.C:1220
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
@@ -12605,35 +12608,35 @@ msgstr "Сохранить как параметры документа по умолчанию"
 msgid "Converting document to new document class..."
 msgstr "Преобразую документ к новому классу документа..."
 
-#: src/lyxfunc.C:1823
+#: src/lyxfunc.C:1819
 msgid "Select template file"
 msgstr "Выберите файл шаблона"
 
-#: src/lyxfunc.C:1860
+#: src/lyxfunc.C:1856
 msgid "Select document to open"
 msgstr "Выберите документ для открытия"
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Открывается документ %1$s..."
 
-#: src/lyxfunc.C:1905
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Документ %1$s открыт."
 
-#: src/lyxfunc.C:1907
+#: src/lyxfunc.C:1903
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Нвозможно открыть документ %1$s"
 
-#: src/lyxfunc.C:1932
+#: src/lyxfunc.C:1928
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Выбрать %1$s файл для импорта"
 
-#: src/lyxfunc.C:2049
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
@@ -13461,7 +13464,7 @@ msgstr ""
 msgid "Unknown token"
 msgstr "Неизвестный токен: "
 
-#: src/text.C:1232
+#: src/text.C:1236
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -13469,61 +13472,61 @@ msgstr ""
 "Вы не можете вставлять пробелы в начале абзаца. Пожалуйста, прочитайте "
 "Самоучитель."
 
-#: src/text.C:1243
+#: src/text.C:1247
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Вы не можете вводить два пробела подряд таким способом.  Пожалуйста, "
 "прочитайте Самоучитель."
 
-#: src/text.C:2334
+#: src/text.C:2345
 #, fuzzy
 msgid "Change: "
 msgstr "Стр. от:"
 
-#: src/text.C:2337
+#: src/text.C:2348
 #, fuzzy
 msgid " at "
 msgstr " в "
 
 # c-format
-#: src/text.C:2349
+#: src/text.C:2360
 #, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт: %1$s"
 
 # c-format
-#: src/text.C:2356
+#: src/text.C:2367
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Уровень: %1$d"
 
-#: src/text.C:2362
+#: src/text.C:2373
 msgid ", Spacing: "
 msgstr ", Промежутки: "
 
-#: src/text.C:2374
+#: src/text.C:2385
 msgid "Other ("
 msgstr "Другой ("
 
-#: src/text.C:2383
+#: src/text.C:2394
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Уровень: "
 
-#: src/text.C:2384
+#: src/text.C:2395
 msgid ", Paragraph: "
 msgstr ", Абзацев: "
 
-#: src/text.C:2385
+#: src/text.C:2396
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:2386
+#: src/text.C:2397
 #, fuzzy
 msgid ", Position: "
 msgstr "Утверждение"
 
-#: src/text.C:2387
+#: src/text.C:2398
 msgid ", Boundary: "
 msgstr ""
 
@@ -13543,27 +13546,23 @@ msgstr "Нечего индексировать!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Нельзя индексировать более чем один абзац!"
 
-#: src/text3.C:682
+#: src/text3.C:687
 msgid "Unknown spacing argument: "
 msgstr "Неизвестный межстрочный промежуток: "
 
-#: src/text3.C:821
-msgid "LyX function 'layout' needs an argument."
-msgstr "Функции LyX 'layout' необходим аргумент."
-
-#: src/text3.C:839
+#: src/text3.C:835
 msgid "Layout "
 msgstr "Формат "
 
-#: src/text3.C:840
+#: src/text3.C:836
 msgid " not known"
 msgstr " неизвестен"
 
-#: src/text3.C:1320 src/text3.C:1332
+#: src/text3.C:1325 src/text3.C:1337
 msgid "Character set"
 msgstr "Кодировка символов"
 
-#: src/text3.C:1463
+#: src/text3.C:1468
 msgid "Paragraph layout set"
 msgstr "Установлено размещение абзаца"
 
