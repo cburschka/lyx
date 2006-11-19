@@ -33,7 +33,7 @@ using std::string;
 
 bool lyx::support::chmod(string const & file, unsigned long int mode)
 {
-#ifdef HAVE_CHMOD
+#if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
 	if (::chmod(file.c_str(), mode_t(mode)) != 0)
 		return false;
 #else

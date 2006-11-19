@@ -1018,6 +1018,7 @@ return std::count(a, a+5, 'l');
         ('std::istreambuf_iterator<std::istream>', 'HAVE_DECL_ISTREAMBUF_ITERATOR',
             '#include <streambuf>\n#include <istream>'),
         ('wchar_t', 'HAVE_WCHAR_T', None),
+        ('mode_t', 'HAVE_MODE_T', "#include <sys/types.h>"),
     ],
     libs = [
         ('gdi32', 'HAVE_LIBGDI32'),
