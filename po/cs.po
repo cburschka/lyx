@@ -361,14 +361,12 @@ msgid "Use AMS &math package"
 msgstr "P&ou¾ít AMS math balíèek"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
-#, fuzzy
 msgid "Use esint package &automatically"
-msgstr "&Automaticky pou¾ívat balíèek AMS math"
+msgstr "Automaticky pou¾ívat balíèek &esint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
-#, fuzzy
 msgid "Use &esint package"
-msgstr "P&ou¾ít AMS math balíèek"
+msgstr "Pou¾ít e&sint balíèek"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:63
 msgid "&List in Table of Contents"
@@ -875,7 +873,6 @@ msgid "&Available Citations:"
 msgstr "&Dostupné citace:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:70
-#, fuzzy
 msgid "&Selected Citations:"
 msgstr "&Vybrané citace:"
 
@@ -1239,23 +1236,20 @@ msgid "&Edit"
 msgstr "&Editace"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:101
-#, fuzzy
 msgid "Output Size"
-msgstr "Výstup"
+msgstr "Velikost na výstupu"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:187
-#, fuzzy
 msgid "&Scale Graphics (%):"
-msgstr "&Obrázek"
+msgstr "&Mìøítko obrázku (%):"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:223
-#, fuzzy
 msgid "Rotate Graphics"
-msgstr "Obrázek"
+msgstr "Rotace obrázku"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:241
 msgid "A&ngle (Degrees):"
-msgstr ""
+msgstr "Ú&hel (stupnì):"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:269
 msgid "Or&igin:"
@@ -1267,15 +1261,13 @@ msgstr "Seøíz&nutí"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:399
 #: src/frontends/qt4/ui/QGraphicsUi.ui:406
-#, fuzzy
 msgid "y:"
-msgstr "y"
+msgstr "y:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:413
 #: src/frontends/qt4/ui/QGraphicsUi.ui:420
-#, fuzzy
 msgid "x:"
-msgstr "x"
+msgstr "x:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:454
 msgid "E&xtra options"
@@ -1307,9 +1299,8 @@ msgid "&Draft mode"
 msgstr "&Mód konceptu"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:514
-#, fuzzy
 msgid "Subfigure"
-msgstr "Po&dobrázek"
+msgstr "Podobrázek"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:535
 #: src/frontends/qt4/ui/QGraphicsUi.ui:556
@@ -1321,14 +1312,12 @@ msgid "Ca&ption:"
 msgstr "Popis&ek"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:566
-#, fuzzy
 msgid "Show in LyX"
-msgstr "&Zobrazit v LyX-u"
+msgstr "Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:627
-#, fuzzy
 msgid "Sca&le on Screen (%):"
-msgstr "Mìøítko - B&ezpatkové %:"
+msgstr "Mìøítko na o&brazovce (%):"
 
 #: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "Show LaTeX preview"
@@ -1535,19 +1524,16 @@ msgid "Show delimiter and bracket dialog"
 msgstr "Dialog pro oddìlovaèe a závorky"
 
 #: src/frontends/qt4/ui/QNomenclUi.ui:48
-#, fuzzy
 msgid "&Symbol:"
-msgstr "Symbol"
+msgstr "&Symbol:"
 
 #: src/frontends/qt4/ui/QNomenclUi.ui:58
-#, fuzzy
 msgid "&Description:"
-msgstr "Popis"
+msgstr "&Popis:"
 
 #: src/frontends/qt4/ui/QNomenclUi.ui:68
-#, fuzzy
 msgid "Sort &as:"
-msgstr "Strasse:"
+msgstr "&Tøídit jako::"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:51
 msgid "Type"
@@ -1694,9 +1680,8 @@ msgid "C&onverter:"
 msgstr "K&onvertor:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:150
-#, fuzzy
 msgid "&To:[[as in 'From format x to format y']]"
-msgstr "&Do:[[jako v 'Od strany x do strany y']]"
+msgstr "&Do:[[jako v 'Z formátu x do formátu y']]"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:168
 msgid "&Converters"
@@ -7185,7 +7170,7 @@ msgstr "Zarovnání|a"
 
 #: lib/ui/classic.ui:129 lib/ui/stdmenus.ui:168
 msgid "Add Row|A"
-msgstr "Pøidat øádek|p"
+msgstr "Pøidat øádek|a"
 
 #: lib/ui/classic.ui:130
 msgid "Delete Row|w"
@@ -7269,7 +7254,7 @@ msgstr "Pøidat øádek|P"
 
 #: lib/ui/classic.ui:171 lib/ui/stdmenus.ui:169
 msgid "Delete Row|D"
-msgstr "Smazat øádek|S"
+msgstr "Smazat øádek|t"
 
 #: lib/ui/classic.ui:175
 msgid "Add Column|C"
@@ -7390,7 +7375,7 @@ msgstr "Heslo do rejstøíku|r"
 
 #: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:225
 msgid "Glossary Entry"
-msgstr ""
+msgstr "Heslo slovníèku"
 
 #: lib/ui/classic.ui:225 lib/ui/stdmenus.ui:305
 msgid "URL...|U"
@@ -7630,7 +7615,7 @@ msgstr "Rejstøík|j"
 
 #: lib/ui/classic.ui:314 lib/ui/stdmenus.ui:370
 msgid "Glossary|G"
-msgstr ""
+msgstr "Slovníèek|v"
 
 #: lib/ui/classic.ui:315 lib/ui/stdmenus.ui:371
 msgid "BibTeX Bibliography...|B"
@@ -7837,7 +7822,6 @@ msgid "New from Template...|m"
 msgstr "Nový ze ¹ablony...|b"
 
 #: lib/ui/stdmenus.ui:38
-#, fuzzy
 msgid "Open Recent|t"
 msgstr "Otevøít poslední|l"
 
@@ -7847,7 +7831,7 @@ msgstr "Nové okno|v"
 
 #: lib/ui/stdmenus.ui:52
 msgid "Close Window|d"
-msgstr "Zavøít okno|v"
+msgstr "Zavøít okno|a"
 
 #: lib/ui/stdmenus.ui:85
 msgid "Redo|R"
@@ -7870,9 +7854,8 @@ msgid "Paste"
 msgstr "Vlo¾it"
 
 #: lib/ui/stdmenus.ui:90
-#, fuzzy
 msgid "Paste Recent|e"
-msgstr "Vlo¾it poslední"
+msgstr "Vlo¾it poslední|p"
 
 #: lib/ui/stdmenus.ui:91
 msgid "Paste External Clipboard/Selection"
@@ -7911,7 +7894,6 @@ msgid "Decrease List Depth|D"
 msgstr "Zmen¹it hloubku seznamu|m"
 
 #: lib/ui/stdmenus.ui:113
-#, fuzzy
 msgid "Dissolve Inset|l"
 msgstr "Rozpustit vlo¾ky do textu|R"
 
@@ -7985,22 +7967,18 @@ msgid "Right Line|R"
 msgstr "Linka vpravo|r"
 
 #: lib/ui/stdmenus.ui:170
-#, fuzzy
 msgid "Copy Row|o"
 msgstr "Zkopírovat øádek|k"
 
 #: lib/ui/stdmenus.ui:171
-#, fuzzy
 msgid "Swap Rows|S"
 msgstr "Pøehodit øádky|h"
 
 #: lib/ui/stdmenus.ui:175
-#, fuzzy
 msgid "Copy Column|p"
 msgstr "Zkopírovat sloupec|o"
 
 #: lib/ui/stdmenus.ui:176
-#, fuzzy
 msgid "Swap Columns|w"
 msgstr "Pøehodit sloupce|i"
 
@@ -8013,24 +7991,20 @@ msgid "Split Cell|C"
 msgstr "Rozdìl buòku|R"
 
 #: lib/ui/stdmenus.ui:192
-#, fuzzy
 msgid "Add Line Above|A"
-msgstr "Pøidej linku nad"
+msgstr "Pøidej linku nad|a"
 
 #: lib/ui/stdmenus.ui:193
-#, fuzzy
 msgid "Add Line Below|B"
-msgstr "Pøidej linku pod"
+msgstr "Pøidej linku pod|o"
 
 #: lib/ui/stdmenus.ui:194
-#, fuzzy
 msgid "Delete Line Above|D"
-msgstr "Sma¾ linku nad"
+msgstr "Sma¾ linku nad|d"
 
 #: lib/ui/stdmenus.ui:195
-#, fuzzy
 msgid "Delete Line Below|e"
-msgstr "Sma¾ linku pod"
+msgstr "Sma¾ linku pod|p"
 
 #: lib/ui/stdmenus.ui:197
 msgid "Add Line to Left"
@@ -8049,74 +8023,60 @@ msgid "Delete Line to Right"
 msgstr "Sma¾ linku napravo"
 
 #: lib/ui/stdmenus.ui:210
-#, fuzzy
 msgid "Math Normal Font|N"
-msgstr "Mat. normální"
+msgstr "Mat. normální|n"
 
 #: lib/ui/stdmenus.ui:212
-#, fuzzy
 msgid "Math Calligraphic Family|C"
-msgstr "Mat. kaligrafická rodina písma"
+msgstr "Mat. kaligrafická rodina písma|k"
 
 #: lib/ui/stdmenus.ui:213
-#, fuzzy
 msgid "Math Fraktur Family|F"
-msgstr "Mat. rodina písma Fraktur"
+msgstr "Mat. rodina písma Fraktur|F"
 
 #: lib/ui/stdmenus.ui:214
-#, fuzzy
 msgid "Math Roman Family|R"
-msgstr "Mat. rodina písma antikva (Roman)"
+msgstr "Mat. rodina písma antikva (Roman)|a"
 
 #: lib/ui/stdmenus.ui:215
-#, fuzzy
 msgid "Math Sans Serif Family|S"
-msgstr "Mat. rodina bezpatkového písma (Sans Serif)"
+msgstr "Mat. rodina bezpatkového písma (Sans Serif)|b"
 
 #: lib/ui/stdmenus.ui:217
-#, fuzzy
 msgid "Math Bold Series|B"
-msgstr "Mat. tuèný duktus"
+msgstr "Mat. tuèný duktus|t"
 
 #: lib/ui/stdmenus.ui:219
-#, fuzzy
 msgid "Text Normal Font|T"
 msgstr "Text. normální písmo"
 
 #: lib/ui/stdmenus.ui:235
-#, fuzzy
 msgid "Octave|O"
-msgstr "Octave"
+msgstr "Octave|O"
 
 #: lib/ui/stdmenus.ui:236
-#, fuzzy
 msgid "Maxima|M"
-msgstr "Maxima"
+msgstr "Maxima|M"
 
 #: lib/ui/stdmenus.ui:237
-#, fuzzy
 msgid "Mathematica|a"
-msgstr "Mathematica"
+msgstr "Mathematica|a"
 
 #: lib/ui/stdmenus.ui:239
-#, fuzzy
 msgid "Maple, simplify|s"
-msgstr "Maple, simplify (zjednodu¹it)"
+msgstr "Maple, simplify (zjednodu¹it)|z"
 
 #: lib/ui/stdmenus.ui:240
-#, fuzzy
 msgid "Maple, factor|f"
-msgstr "Maple, factor (rozlo¾it)"
+msgstr "Maple, factor (rozlo¾it)|r"
 
 #: lib/ui/stdmenus.ui:241
-#, fuzzy
 msgid "Maple, evalm|e"
-msgstr "Maple, evalm (vyhodnotit)"
+msgstr "Maple, evalm (vyhodnotit)|v"
 
 #: lib/ui/stdmenus.ui:242
-#, fuzzy
 msgid "Maple, evalf|v"
-msgstr "Maple, evalf (plovoucí èárka)"
+msgstr "Maple, evalf (plovoucí èárka)|e"
 
 #: lib/ui/stdmenus.ui:261
 msgid "Open All Insets|O"
@@ -8127,17 +8087,14 @@ msgid "Close All Insets|C"
 msgstr "Zavøi v¹echny vlo¾ky|Z"
 
 #: lib/ui/stdmenus.ui:264
-#, fuzzy
 msgid "View Source|S"
-msgstr "Zobrazit zdrojový text|x"
+msgstr "Zdrojový text pro LaTeX|x"
 
 #: lib/ui/stdmenus.ui:268
-#, fuzzy
 msgid "Toolbars|b"
-msgstr "Panel nástrojù"
+msgstr "Panely nástrojù|n"
 
 #: lib/ui/stdmenus.ui:288
-#, fuzzy
 msgid "Special Character|p"
 msgstr "Speciální znak|z"
 
@@ -8166,7 +8123,6 @@ msgid "Box"
 msgstr "Rámeèek|R"
 
 #: lib/ui/stdmenus.ui:298
-#, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Køí¾ový odkaz...|K"
 
@@ -8176,14 +8132,13 @@ msgstr "Heslo rejstøíku|H"
 
 #: lib/ui/stdmenus.ui:301
 msgid "Glossary Entry|y"
-msgstr ""
+msgstr "Heslo slovníèku|s"
 
 #: lib/ui/stdmenus.ui:303
 msgid "Table...|T"
 msgstr "Tabulka...|T"
 
 #: lib/ui/stdmenus.ui:308
-#, fuzzy
 msgid "Short Title|S"
 msgstr "Krátký titulek|i"
 
@@ -8204,37 +8159,30 @@ msgid "Phonetic Symbols|y"
 msgstr "Fonetické symboly|F"
 
 #: lib/ui/stdmenus.ui:326
-#, fuzzy
 msgid "Protected Space|P"
 msgstr "Chránìná mezera|r"
 
 #: lib/ui/stdmenus.ui:329
-#, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Horizontální výplò|n"
 
 #: lib/ui/stdmenus.ui:330
-#, fuzzy
 msgid "Horizontal Line|L"
 msgstr "Horizontální linka|o"
 
 #: lib/ui/stdmenus.ui:331
-#, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Vertikální mezera...|V"
 
 #: lib/ui/stdmenus.ui:333
-#, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Znaèka dìlení slova|a"
 
 #: lib/ui/stdmenus.ui:335
-#, fuzzy
 msgid "Line Break|B"
 msgstr "Konec øádku|K"
 
 #: lib/ui/stdmenus.ui:336
-#, fuzzy
 msgid "Page Break|a"
 msgstr "Tvrdý konec stránky|e"
 
@@ -8243,17 +8191,14 @@ msgid "Numbered Formula|N"
 msgstr "Oèíslovaný vzorec|l"
 
 #: lib/ui/stdmenus.ui:352
-#, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Prostøedí Aligned"
 
 #: lib/ui/stdmenus.ui:353
-#, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Prostøedí AlignedAt"
 
 #: lib/ui/stdmenus.ui:354
-#, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Prostøedí Gathered"
 
@@ -8326,19 +8271,16 @@ msgid "Next Change|C"
 msgstr "Dal¹í zmìna|D"
 
 #: lib/ui/stdmenus.ui:425
-#, fuzzy
 msgid "Next Cross-Reference|R"
-msgstr "Dal¹í odkaz|z"
+msgstr "Dal¹í køí¾ový odkaz|k"
 
 #: lib/ui/stdmenus.ui:432
-#, fuzzy
 msgid "Save Bookmark|S"
 msgstr "Nastav 1.zálo¾ku|N"
 
 #: lib/ui/stdmenus.ui:433
-#, fuzzy
 msgid "Clear Bookmarks|C"
-msgstr "Zálo¾ky|l"
+msgstr "Zru¹it zálo¾ky|Z"
 
 #: lib/ui/stdmenus.ui:444
 msgid "Thesaurus...|T"
@@ -8449,9 +8391,8 @@ msgid "Insert index entry"
 msgstr "Vlo¾it heslo rejstøíku"
 
 #: lib/ui/stdtoolbars.ui:79
-#, fuzzy
 msgid "Insert glossary entry"
-msgstr "Vlo¾it heslo rejstøíku"
+msgstr "Vlo¾it heslo slovníèku (glossary)"
 
 #: lib/ui/stdtoolbars.ui:81
 msgid "Insert footnote"
@@ -8626,11 +8567,9 @@ msgstr "Vlo¾it prostøedí \"cases\""
 msgid "minibuffer"
 msgstr "minibuffer"
 
-# TODO
 #: lib/ui/stdtoolbars.ui:149
-#, fuzzy
 msgid "review"
-msgstr "Náhled"
+msgstr "revize"
 
 #: lib/ui/stdtoolbars.ui:150
 msgid "Track changes"
@@ -8711,9 +8650,8 @@ msgid "&Create"
 msgstr "&Vytvoøit"
 
 #: src/BufferView.C:517
-#, fuzzy
 msgid "Save bookmark"
-msgstr "Nastav 5.zálo¾ku|v"
+msgstr "Nastav zálo¾ku"
 
 #: src/BufferView.C:670
 msgid "No further undo information"
@@ -9080,9 +9018,8 @@ msgid "Running MakeIndex."
 msgstr "Spou¹tím MakeIndex (rejstøík)."
 
 #: src/LaTeX.C:292 src/LaTeX.C:368
-#, fuzzy
 msgid "Running MakeIndex for nomencl."
-msgstr "Spou¹tím MakeIndex (rejstøík)."
+msgstr "Spou¹tím MakeIndex pro nomencl."
 
 #: src/LaTeX.C:305
 msgid "Running BibTeX."
@@ -9102,9 +9039,8 @@ msgid "Plain Text as Paragraphs"
 msgstr "Prostý text jako odstavce"
 
 #: src/MenuBackend.C:714
-#, fuzzy
 msgid "Master Document"
-msgstr "Ulo¾it dokument"
+msgstr "Hlavní dokument"
 
 #: src/MenuBackend.C:746
 msgid "No Table of contents"
@@ -9491,9 +9427,9 @@ msgid "An error occurred whilst running %1$s"
 msgstr "Chyba pøi bìhu %1$s"
 
 #: src/converter.C:491
-#, fuzzy, c-format
+#, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
-msgstr "Nelze pøesunout pomocný soubor z %1$s do %2$s."
+msgstr "Nelze pøesunout pomocný adresáø z %1$s do %2$s."
 
 #: src/converter.C:534
 #, c-format
@@ -9750,17 +9686,15 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "mno¾ství práce dal¹ích lidí na projektu LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.C:66
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 msgstr ""
 "LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Team"
+"1995-2006 LyX Team"
 
 #: src/frontends/controllers/ControlAboutlyx.C:72
 #: src/frontends/controllers/ControlAboutlyx.C:78
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -9770,12 +9704,12 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
-"Tento program je roz¹iøován v nadìji, ¾e bude u¾iteèný, av¹ak BEZJAKÉKOLI "
-"ZÁRUKY; neposkytují se ani odvozené záruky PRODEJNOSTI aneboVHODNOSTI PRO "
-"URÈITÝ ÚÈEL. Dal¹í podrobnosti hledejte ve GNU General Public License.Kopii "
-"GNU General Public License jste mìli obdr¾et spolu s tímtoprogramem; pokud "
-"se tak nestalo, napi¹te o ni Free Software Foundation,Inc., 675 Mass Ave, "
-"Cambridge, MA 02139, USA."
+"Tento program je roz¹iøován v nadìji, ¾e bude u¾iteèný, av¹ak BEZ JAKÉKOLI "
+"ZÁRUKY; neposkytují se ani odvozené záruky PRODEJNOSTI anebo VHODNOSTI PRO "
+"URÈITÝ ÚÈEL. Dal¹í podrobnosti hledejte ve GNU General Public License. Kopii "
+"GNU General Public License jste mìli obdr¾et spolu s tímto programem; pokud "
+"se tak nestalo, napi¹te si o ni: Free Software Foundation,Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:86
 msgid "LyX Version "
@@ -10279,6 +10213,7 @@ msgstr "Pøedchozí pøíkaz"
 msgid "Next command"
 msgstr "Dal¹í pøíkaz"
 
+#TODO
 #: src/frontends/qt4/QDelimiterDialog.C:48
 msgid "big[[delimiter size]]"
 msgstr ""
@@ -10653,15 +10588,13 @@ msgstr "Nastavení"
 
 #: src/frontends/qt4/QPrefsDialog.C:74
 msgid "Look and feel"
-msgstr ""
+msgstr "Vzhled"
 
 #: src/frontends/qt4/QPrefsDialog.C:75
-#, fuzzy
 msgid "Language settings"
-msgstr "Nastavení odstavce"
+msgstr "Jazyková nastavení"
 
 #: src/frontends/qt4/QPrefsDialog.C:76
-#, fuzzy
 msgid "Outputs"
 msgstr "Výstup"
 
@@ -11044,13 +10977,12 @@ msgid "Opened Marginal Note Inset"
 msgstr "Poznámka na okraj - otevøená vlo¾ka"
 
 #: src/insets/insetnomencl.C:39
-#, fuzzy
 msgid "Glo"
-msgstr "&Globálnì"
+msgstr "Slv"
 
 #: src/insets/insetnomencl.C:86
 msgid "Glossary"
-msgstr ""
+msgstr "Slovníèek"
 
 #: src/insets/insetnote.C:66
 msgid "Comment"
@@ -11316,10 +11248,9 @@ msgstr "©íøka sloupce %"
 msgid "Page Width %"
 msgstr "©íøka stránky %"
 
-# TODO ?
 #: src/lengthcommon.C:39
 msgid "Line Width %"
-msgstr "©íøka linky %"
+msgstr "©íøka øádku %"
 
 #: src/lengthcommon.C:40
 msgid "Text Height %"
