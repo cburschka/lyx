@@ -1,11 +1,18 @@
-#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 253
 \begin_document
 \begin_header
 \textclass article
 \language czech
 \inputencoding auto
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
@@ -25,20 +32,21 @@
 \paperpagestyle default
 \tracking_changes false
 \output_changes true
+\author "Pavel Sanda" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Vítejte v LyXu !
+VÃ­tejte v LyXu !
 \end_layout
 
 \begin_layout Section*
-Co byste mìli vìdìt pro pou¾ívání LyXu
+Co byste mÄ›li vÄ›dÄ›t pro pouÅ¾Ã­vÃ¡nÃ­ LyXu
 \end_layout
 
 \begin_layout Enumerate
-LyX pøichází s
+LyX pÅ™ichÃ¡zÃ­ s
 \family roman
 \series medium
 \shape up
@@ -56,30 +64,30 @@ LyX pøichází s
 \bar default
 \noun default
 \color inherit
-vıbornou dokumentací---prosíme pou¾ívejte ji! Èeskı úvod mù¾ete najít v
- menu Nápovìda -> Prùvodce\InsetSpace ~
+vÃ½bornou dokumentacÃ­---prosÃ­me pouÅ¾Ã­vejte ji! ÄŒeskÃ½ Ãºvod mÅ¯Å¾ete najÃ­t v
+ menu NÃ¡povÄ›da -> PrÅ¯vodce\InsetSpace ~
 LyXem.
  
 \end_layout
 
 \begin_layout Enumerate
-LyX nazıváme 
+LyX nazÃ½vÃ¡me 
 \begin_inset Quotes eld
 \end_inset
 
-editorem dokumentù.
+editorem dokumentÅ¯.
 \begin_inset Quotes erd
 \end_inset
 
- Svım návrhem je odli¹nı od klasického textového editoru---zpùsobem, kterı
- èiní psaní dokumentù mnohem jednodu¹¹í.
- Ale nelekejte se, je odli¹nı jenom trochu.
- Prùvodce vám v tom udìlá jasno
+ SvÃ½m nÃ¡vrhem je odliÅ¡nÃ½ od klasickÃ©ho textovÃ©ho editoru---zpÅ¯sobem, kterÃ½
+ ÄinÃ­ psanÃ­ dokumentÅ¯ mnohem jednoduÅ¡Å¡Ã­.
+ Ale nelekejte se, je odliÅ¡nÃ½ jenom trochu.
+ PrÅ¯vodce vÃ¡m v tom udÄ›lÃ¡ jasno
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-U¾ jsme se zmínili o tom, ¾e byste si mohli pøeèíst dokumnetaci?
+UÅ¾ jsme se zmÃ­nili o tom, Å¾e byste si mohli pÅ™eÄÃ­st dokumnetaci?
 \end_layout
 
 \end_inset
@@ -88,52 +96,53 @@ U¾ jsme se zmínili o tom, ¾e byste si mohli pøeèíst dokumnetaci?
 \end_layout
 
 \begin_layout Enumerate
-Vıstup z LyXu vypadá skvìle! Zkuste vybrat v menu Prohlí¾et -> DVI, a» se
- pøesvìdèíte na vlastní oèi.
+VÃ½stup z LyXu vypadÃ¡ skvÄ›le! Zkuste vybrat v menu ProhlÃ­Å¾et -> DVI, aÅ¥ se
+ pÅ™esvÄ›dÄÃ­te na vlastnÃ­ oÄi.
 \end_layout
 
 \begin_layout Enumerate
-LyX umí napodobit (témìø) ve¹kerou funkcionalitu LaTeXu.
- A ano, LyX umí importovat LaTeXové soubory.
- Zku¹ení u¾ivatelé LaTeXu mohou jen zbe¾nì prolétnout zaèátek 
+LyX umÃ­ napodobit (tÃ©mÄ›Å™) veÅ¡kerou funkcionalitu LaTeXu.
+ A ano, LyX umÃ­ importovat LaTeXovÃ© soubory.
+ ZkuÅ¡enÃ­ uÅ¾ivatelÃ© LaTeXu mohou jen zbeÅ¾nÄ› prolÃ©tnout zaÄÃ¡tek 
 \emph on
-Prùvodce
+PrÅ¯vodce
 \emph default
-, a pak si pøeèíst kapitolu 
+, a pak si pÅ™eÄÃ­st kapitolu 
 \begin_inset Quotes eld
 \end_inset
 
-LyX pro u¾ivatele LaTeXu
+LyX pro uÅ¾ivatele LaTeXu
 \begin_inset Quotes erd
 \end_inset
 
 .
- (Ostatní se nemusíte znepokojovat: nepotøebujete znát LaTeX pro pou¾ívání
+ (OstatnÃ­ se nemusÃ­te znepokojovat: nepotÅ™ebujete znÃ¡t LaTeX pro pouÅ¾Ã­vÃ¡nÃ­
  LyXu.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX nabízí mnoho mo¾ností lidem, kteøí ètou a pí¹í jinım jazykem, ne¾li
- je angliètina.
- Navíc jsou klávesové zkratky, nástrojová li¹ta a i dal¹í vlasnosti dobøe
- konfigurovatelné.
- Viz Nápovìda -> Pøizpùsobení LyXu.
+LyX nabÃ­zÃ­ mnoho moÅ¾nostÃ­ lidem, kteÅ™Ã­ Ätou a pÃ­Å¡Ã­ jinÃ½m jazykem, neÅ¾li
+ je angliÄtina.
+ NavÃ­c jsou klÃ¡vesovÃ© zkratky, nÃ¡strojovÃ¡ liÅ¡ta a i dalÅ¡Ã­ vlasnosti dobÅ™e
+ konfigurovatelnÃ©.
+ Viz NÃ¡povÄ›da -> PÅ™izpÅ¯sobenÃ­ LyXu.
 \end_layout
 
 \begin_layout Enumerate
-Domácí stránka LyXu je na 
+DomÃ¡cÃ­ strÃ¡nka LyXu je na 
 \family typewriter
 
-\begin_inset LatexCommand \url{http://www.lyx.org/}
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
 
 \end_inset
 
 
 \family default
 .
- Mù¾ete zde najít dal¹í informace, pøihlásit se do konference, udìlat si
- grafickou vıpravu do Lyxu (Graphical Tour) a najít spousty rad a trikù
- v rámci wiki.
+ MÅ¯Å¾ete zde najÃ­t dalÅ¡Ã­ informace, pÅ™ihlÃ¡sit se do konference, udÄ›lat si
+ grafickou vÃ½pravu do Lyxu (Graphical Tour) a najÃ­t spousty rad a trikÅ¯
+ v rÃ¡mci wiki.
 \end_layout
 
 \end_body
