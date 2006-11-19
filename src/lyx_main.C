@@ -417,6 +417,7 @@ void LyX::quit()
 		pimpl_->lyx_server_.reset();
 		pimpl_->lyx_socket_.reset();
 		pimpl_->application_->exit(0);
+		theApp = 0;
 	}
 }
 
