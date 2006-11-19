@@ -481,7 +481,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 		} \
 		/^[^#]*Toolbar[^s]/ { \
 			line=$$0; \
-			sub(/[^"]*"/, "", line); \
+			sub(/[^"]*"[^"]*"[^"]"*/, "", line); \
 			sub(/".*/, "", line); \
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
