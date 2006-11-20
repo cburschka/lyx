@@ -236,7 +236,7 @@ AC_HEADER_STAT
 AC_HEADER_TIME
 
 # some standard types
-AC_TYPE_MODE_T
+AC_CHECK_TYPE(mode_t,[AC_DEFINE(HAVE_MODE_T, 1, [Define this to 1 if your compiler supports the mode_t type.])])
 AC_TYPE_OFF_T
 AC_TYPE_PID_T
 AC_TYPE_SIGNAL
