@@ -1653,7 +1653,7 @@ bool LyXText::Delete(LCursor & cur)
 		recordUndo(cur, Undo::DELETE);
 		par.erase(cur.pos());
 		if (par.lookupChange(cur.pos()) == Change::DELETED)
-			cur.forwardPos();
+			cur.forwardPosNoDescend();
 		needsUpdate = true;
 	} else if (cur.pit() != cur.lastpit()) {
 		if (cur.buffer().params().tracking_changes
@@ -1673,7 +1673,7 @@ bool LyXText::Delete(LCursor & cur)
 
 	// Make sure the cursor is correct. Is this really needed?
 	if (needsUpdate)
-		setCursorIntern(cur, cur.pit(), cur.pos());
+		cur.text()->setCursorIntern(cur, cur.pit(), cur.pos());
 	
 	return needsUpdate;
 }
