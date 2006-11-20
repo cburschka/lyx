@@ -1657,7 +1657,7 @@ bool LyXText::erase(LCursor & cur)
 		// FIXME: change tracking (MG)
 		par.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 		if (par.isDeleted(cur.pos()))
-			cur.forwardPos();
+			cur.forwardPosNoDescend();
 		needsUpdate = true;
 	} else if (cur.pit() != cur.lastpit()) {
 		if (cur.buffer().params().trackChanges
@@ -1687,7 +1687,7 @@ bool LyXText::erase(LCursor & cur)
 			cur.updateFlags(Update::Force);
 		// Make sure the cursor is correct. Is this really needed?
 		// No, not really... at least not here!
-		setCursorIntern(cur, cur.pit(), cur.pos());
+		cur.text()->setCursorIntern(cur, cur.pit(), cur.pos());
 	}
 	
 	return needsUpdate;
