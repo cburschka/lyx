@@ -197,9 +197,6 @@ void BufferView::setBuffer(Buffer * b)
 		}
 	}
 
-	// FIXME: in principle, a simple call to updateMetrics(false) should
-	// be enough here. But, for unknown reason, it seems that only the line
-	// of the cursor is updated in the CoordCache.
 	if (buffer_)
 		updateMetrics(false);    
 
@@ -282,7 +279,9 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 				if (it.pit() == pit) {
 					// restored pos may be bigger than it->size
 					setCursor(makeDocIterator(it, min(pos, it->size())));
-					update(Update::FitCursor);
+					// No need to update the metrics if fitCursor returns false.
+					if (fitCursor())
+						updateMetrics(false);
 					break;
 				}
 		}
