@@ -197,7 +197,11 @@ void BufferView::setBuffer(Buffer * b)
 		}
 	}
 
-	updateMetrics(false);
+	// FIXME: in principle, a simple call to updateMetrics(false) should
+	// be enough here. But, for unknown reason, it seems that only the line
+	// of the cursor is updated in the CoordCache.
+	if (buffer_)
+		updateMetrics(false);    
 
 	if (buffer_ && graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
