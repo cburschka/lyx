@@ -198,16 +198,15 @@ string const freefont2string()
 
 }
 
-bool LyXText::cursorPrevious(LCursor & cur)
+void LyXText::cursorPrevious(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
 
+	// FIXME: there would maybe a need for this 'updated' boolean in the future...
 	bool updated = setCursorFromCoordinates(cur, x, 0);
-	if (updated)
-		cur.bv().update();
 	updated |= cursorUp(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
@@ -217,19 +216,18 @@ bool LyXText::cursorPrevious(LCursor & cur)
 	}
 
 	finishUndo();
-	return updated;
+	cur.updateFlags(Update::Force | Update::FitCursor);
 }
 
 
-bool LyXText::cursorNext(LCursor & cur)
+void LyXText::cursorNext(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
 	pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
+	// FIXME: there would maybe a need for this 'updated' boolean in the future...
 	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	if (updated)
-		cur.bv().update();
 	updated |= cursorDown(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
@@ -239,7 +237,7 @@ bool LyXText::cursorNext(LCursor & cur)
 	}
 
 	finishUndo();
-	return updated;
+	cur.updateFlags(Update::Force | Update::FitCursor);
 }
 
 
@@ -500,7 +498,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		} else {
-			needsUpdate |= cursorPrevious(cur);
+			cursorPrevious(cur);
 		}
 		break;
 
@@ -512,7 +510,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		} else {
-			needsUpdate |= cursorNext(cur);
+			cursorNext(cur);
 		}
 		break;
 

@@ -144,21 +144,6 @@ EDITING
 
 * Copy/paste using middle mouse button inserts musical notes.
 
-* open a file; mark with the mouse and scroll; assert will fail:
-
-  Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) const
-  {
-	Paragraph const & par = pars_[pit];
-	int yy = bv.coordCache().get(this, pit).y_ - par.ascent();
-	BOOST_ASSERT(!par.rows().empty());
-	RowList::const_iterator rit = par.rows().begin();
-	RowList::const_iterator const rlast = boost::prior(par.rows().end());
-	for (; rit != rlast; yy += rit->height(), ++rit)
-		if (yy + rit->height() > y)
-			break;
-	return *rit;
-  }
-
 * new document; insert note; place cursor in front of the note; activate change tracking;
   press delete => 
 
@@ -205,19 +190,21 @@ LAYOUT
 
 PAINTING & PERFORMANCE
 
-* Selection highlighting is broken. Test case: two paragraphs with "Hello"
-  and "World"; move cursor past "Wor", press Shift+Up 
+* Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going
+  on when selecting text. When selecting a word the whole screen is repainted.
+  PARTLY FIXED (Abdel 2006-11-20): there's a full repaint only when the mouse is
+  released. More to come in this area.
 
 * Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put
   the cursor in another part of the text) the screen is repainted *twice*
   whereas it seems to me that no repainting is necessary at all.
-
-* Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going
-  on when selecting text. When selecting a word the whole screen is repainted.
+  PARTLY FIXED (Abdel 2006-11-20): except for math insets.
 
 * Too much painting 3 (Edwin 3/11/2006): the screen is repainted even when the
   selection does not change (moving the mouse with the left button pushed down 
   always triggers a repaint).
+  PARTLY FIXED (Abdel 2006-11-20): When within the main text inset only the
+  current line is repainted.
 
 * The cursor is not L-shaped for foreign languages
 
@@ -462,3 +449,10 @@ CREDITS:
 * M-x is broken (does not bring up the minibuffer).
   FIXED (Bo, 2006-11-18): set toolbar flag in display function.
 
+* open a file; mark with the mouse and scroll; assert will fail:
+  FIXED (Abdel 2006-11-20): side effect of updateMetrics() cleanup.
+  
+* Selection highlighting is broken. Test case: two paragraphs with "Hello"
+  and "World"; move cursor past "Wor", press Shift+Up 
+  FIXED (Abdel 2006-11-20): side effect of updateMetrics() cleanup.
+  

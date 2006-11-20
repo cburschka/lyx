@@ -197,7 +197,7 @@ void BufferView::setBuffer(Buffer * b)
 		}
 	}
 
-	update();
+	updateMetrics(false);
 
 	if (buffer_ && graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		graphics::Previews::get().generateBufferPreviews(*buffer_);
@@ -367,25 +367,22 @@ std::pair<bool, bool> BufferView::update(Update::flags flags)
 	// The second drawing step is done in WorkArea::redraw() if needed.
 
 	// Case when no explicit update is requested.
-	if (!(flags & (Update::SinglePar | Update::Force))) {
-		if (fitCursor() || multiParSel()) {
-			// a CoordCache update is needed
-			updateMetrics(false);
-			// tell the frontend to update the screen.
-			return make_pair(true, false);
-		}
+	if (!flags) {
 		// no need to do anything.
 		return make_pair(false, false);
 	}
 
-	// We are now in the case (Update::SinglePar | Update::Force)
-	bool single_par = flags & Update::SinglePar;
+	bool full_metrics = flags & Update::Force;
+	if (flags & Update::MultiParSel)
+		full_metrics |= multiParSel();
+
+	bool const single_par = !full_metrics;
 	updateMetrics(single_par);
 
-	// Don't forget to do check for fitCursor() and multiParSel().
-	fitCursor();
-	multiParSel();
+	if (flags & Update::FitCursor && fitCursor())
+		updateMetrics(false);
 
+	// tell the frontend to update the screen.
 	return make_pair(true, single_par);
 }
 
@@ -476,6 +473,7 @@ void BufferView::scrollDocView(int value)
 	t.redoParagraph(*this, anchor_ref_);
 	int const h = t.getPar(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
+	updateMetrics(false);
 }
 
 

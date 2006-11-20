@@ -131,7 +131,7 @@ void WorkArea::startBlinkingCursor()
 }
 
 
-void WorkArea::redraw(bool singlePar)
+void WorkArea::redraw()
 {
 	if (!buffer_view_ || !buffer_view_->buffer()) {
 		greyed_out_ = true;
@@ -140,7 +140,11 @@ void WorkArea::redraw(bool singlePar)
 		return;
 	}
 
-	buffer_view_->updateMetrics(singlePar && hasFocus());
+	// No need to do anything if this is the current view. The BufferView 
+	// metrics are already up to date.
+	if (&lyx_view_ != &theApp->currentView())
+		// FIXME: it would be nice to optimize for the off-screen case.
+		buffer_view_->updateMetrics(false);
 
 	updateScrollbar();
 
@@ -210,7 +214,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 	toggleCursor();
 
 	if (needRedraw.first)
-		redraw(needRedraw.second);
+		redraw();
 }
 
 

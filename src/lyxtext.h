@@ -222,9 +222,9 @@ public:
 	///
 	bool cursorEnd(LCursor & cur);
 	///
-	bool cursorPrevious(LCursor & cur);
+	void cursorPrevious(LCursor & cur);
 	///
-	bool cursorNext(LCursor & cur);
+	void cursorNext(LCursor & cur);
 	///
 	bool cursorTop(LCursor & cur);
 	///

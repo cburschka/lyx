@@ -1718,7 +1718,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			std::pair<bool, bool> needSecondUpdate = view()->update(updateFlags);
 
 			if (needSecondUpdate.first)
-				view()->buffer()->changed(needSecondUpdate.second);
+				view()->buffer()->changed();
 
 			lyx_view_->updateStatusBar();
 
