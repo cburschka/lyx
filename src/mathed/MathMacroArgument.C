@@ -15,7 +15,6 @@
 #include "InsetMathMacro.h"
 #include "MathStream.h"
 #include "MathSupport.h"
-#include "support/convert.h"
 #include "debug.h"
 
 
@@ -34,7 +33,13 @@ MathMacroArgument::MathMacroArgument(size_t n)
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << endl;
 	}
-	str_ = '#' + convert<docstring>(n);
+	// The profiler tells us not to use 
+	// str_ = '#' + convert<docstring>(n);
+	// so we do the conversion of n to ASCII manually.
+	// This works because 1 <= n <= 9.
+	str_.resize(2);
+	str_[0] = '#';
+	str_[1] = '0' + n;
 }
 
 
