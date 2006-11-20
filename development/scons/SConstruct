@@ -1715,6 +1715,8 @@ if build_qt4:
     #
     qt4env.Tool('qt4', [scons_dir])
     qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug'))
+    qt4env['QT4_AUTOSCAN'] = 0
+    qt4env['QT4_UICDECLFLAGS'] = '-tr lyx::qt_'
 
     qt4env.AppendUnique(CPPPATH = [
         '$BUILDDIR/common',
