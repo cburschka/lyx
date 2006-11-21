@@ -13,6 +13,9 @@
 #define ICONPALETTE_H
 
 #include <QWidget>
+#include <QLayout>
+#include <QRect>
+#include <QWidgetItem>
 
 #include <string>
 #include <utility>
@@ -22,6 +25,29 @@ class QPushButton;
 
 namespace lyx {
 namespace frontend {
+
+class FlowLayout : public QLayout
+{
+public:
+	FlowLayout(QWidget *parent);
+	~FlowLayout();
+
+	void addItem(QLayoutItem *item);
+	Qt::Orientations expandingDirections() const;
+	bool hasHeightForWidth() const;
+	int heightForWidth(int) const;
+	QSize minimumSize() const;
+	void setGeometry(const QRect &rect);
+	QSize sizeHint() const;
+	QLayoutItem * takeAt(int index);
+	QLayoutItem * itemAt(int index) const;
+	int count() const;
+
+private:
+	int doLayout(const QRect &rect, bool testOnly) const;
+	QList<QLayoutItem *> itemList;
+};
+
 
 /**
  * For holding an arbitrary set of icons.
