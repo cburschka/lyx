@@ -36,6 +36,66 @@ initialisation should be done before the instanciation of this class.
 
 \todo The work areas handling could be moved to a base virtual class
 common to all frontends.
+
+ Model/View/Controller separation in LyX:
+ 
+ 1) The Model: \c Buffer
+
+ The Buffer is the in-memory representation of a LyX file format. The
+ Buffer does not (should not) have any information on what part of it
+ is represented on screen. There is one unique Buffer per opened LyX
+ file.
+
+ 
+ 2) The Controller: \c BufferView / \c Painter
+
+ The BufferView is a tool used by the view that translates a part of 
+ the Buffer contents into drawing routines. The BufferView asks each
+ inset of the Buffer to draw itself onto the screen using the Painter.
+ There is only Buffer loaded per BufferView. While there is the 
+ possibility to switch Buffer inside the BufferView, the goal is to 
+ instantiate a new BufferView on each Buffer switch.
+
+ \todo Instantiate a new BufferView on each Buffer switch.
+
+ The \c Painter is just a virtual interface to formalize each kind of
+ drawing routines (text, line, rectangle, etc).
+ 
+ The \c BufferView also contains a Cursor which may or may not be
+ visible on screen. The cursor is really just a bookmark to remember
+ where the next Buffer insertion/deletion is going to take place.
+
+ 
+ 3) The View: \c WorkArea (and it's qt4 specialisation GuiWorkArea)
+
+ This contains the real screen area where the drawing is done by the
+ Painter. One WorkArea holds one unique \c BufferView. While it could be
+ possible that multiple WorkArea share one BufferView, this is not
+ possible right now.
+ The WorkArea also provide a scrollbar which position is translated
+ into scrolling command to the inner \c BufferView.
+
+ The WorkArea use the BufferView to translate each keyboard or mouse
+ events into terms that the Buffer can understand:
+ - insert/delete char
+ - select char
+ - etc.
+
+ 
+ 4) The Window: \c LyXView (and its qt4 specialisation \c GuiView)
+ 
+ This is a full window containing a menubar, toolbars, a tabbar and a
+ WorkArea. One LyXView could in theory contain multiple WorkArea
+ (ex: with split window) but this number is limited to one only for
+ now. In any case, there would be only one WorkArea that gets the focus
+ at a time.
+
+ Now, concerning the TabBar versus TabWidget issue. Right now, there is
+ only one WorkArea and the TabBar just used to tell the BufferView inside
+ the WorkArea to switch to this another Buffer.
+
+ With a TabWidget, each Tab would own its own \c WorkArea. Clicking on a tab
+ would switch a WorkArea instead of a Buffer. 
 */
 class Application
 {
