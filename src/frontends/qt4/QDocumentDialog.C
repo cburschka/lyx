@@ -560,18 +560,18 @@ void QDocumentDialog::romanChanged(int item)
 void QDocumentDialog::sansChanged(int item)
 {
 	string const font = tex_fonts_sans[item];
-	
-	fontModule->scaleSansSB->setEnabled(
-		form_->controller().providesScale(font));
+	bool scaleable = form_->controller().providesScale(font);
+	fontModule->scaleSansSB->setEnabled(scaleable);
+	fontModule->scaleSansLA->setEnabled(scaleable);
 }
 
 
 void QDocumentDialog::ttChanged(int item)
 {
 	string const font = tex_fonts_monospaced[item];
-	
-	fontModule->scaleTypewriterSB->setEnabled(
-		form_->controller().providesScale(font));
+	bool scaleable = form_->controller().providesScale(font);
+	fontModule->scaleTypewriterSB->setEnabled(scaleable);
+	fontModule->scaleTypewriterLA->setEnabled(scaleable);
 }
 
 
@@ -1085,30 +1085,27 @@ void QDocumentDialog::update(BufferParams const & params)
 			params.fontsize);
 
 	int n = findToken(tex_fonts_roman, params.fontsRoman);
-	if (n >= 0)
+	if (n >= 0) {
 		fontModule->fontsRomanCO->setCurrentIndex(n);
+		romanChanged(n);
+	}
 
 	n = findToken(tex_fonts_sans, params.fontsSans);
-	if (n >= 0)
+	if (n >= 0)	{
 		fontModule->fontsSansCO->setCurrentIndex(n);
+		sansChanged(n);
+	}
 
 	n = findToken(tex_fonts_monospaced, params.fontsTypewriter);
-	if (n >= 0)
+	if (n >= 0) {
 		fontModule->fontsTypewriterCO->setCurrentIndex(n);
+		ttChanged(n);
+	}
 
 	fontModule->fontScCB->setChecked(params.fontsSC);
 	fontModule->fontOsfCB->setChecked(params.fontsOSF);
-	fontModule->fontScCB->setEnabled(
-		form_->controller().providesSC(params.fontsRoman));
-	fontModule->fontOsfCB->setEnabled(
-		form_->controller().providesOSF(params.fontsRoman));
 	fontModule->scaleSansSB->setValue(params.fontsSansScale);
-	fontModule->scaleTypewriterSB->setValue(
-		params.fontsTypewriterScale);
-	fontModule->scaleSansSB->setEnabled(
-		form_->controller().providesScale(params.fontsSans));
-	fontModule->scaleTypewriterSB->setEnabled(
-		form_->controller().providesScale(params.fontsTypewriter));
+	fontModule->scaleTypewriterSB->setValue(params.fontsTypewriterScale);
 	n = findToken(ControlDocument::fontfamilies, params.fontsDefaultFamily);
 	if (n >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(n);
