@@ -492,8 +492,9 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_CHAR_FORWARD_SELECT:
 	case LFUN_CHAR_FORWARD:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_CHAR_FORWARD_SELECT:
 		cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
@@ -510,8 +511,9 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_BACKWARD:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_CHAR_BACKWARD_SELECT:
 		cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
 		cur.autocorrect() = false;
 		cur.clearTargetX();
@@ -529,8 +531,9 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_UP_SELECT:
 	case LFUN_UP:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_UP_SELECT:
 		// FIXME Tried to use clearTargetX and macroModeClose, crashed on cur.up()
 		if (cur.inMacroMode()) {
 			// Make Helge happy
@@ -546,8 +549,9 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.normalize();
 		break;
 
-	case LFUN_DOWN_SELECT:
 	case LFUN_DOWN:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_DOWN_SELECT:
 		if (cur.inMacroMode()) {
 			cur.macroModeClose();
 			break;
@@ -572,16 +576,18 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.idx() = cur.lastidx();
 		break;
 
-	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_UP:
-	case LFUN_PARAGRAPH_DOWN_SELECT:
 	case LFUN_PARAGRAPH_DOWN:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_PARAGRAPH_UP_SELECT:
+	case LFUN_PARAGRAPH_DOWN_SELECT:
 		break;
 
-	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_LINE_BEGIN:
-	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_BACKWARD:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_LINE_BEGIN_SELECT:
+	case LFUN_WORD_BACKWARD_SELECT:
 		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT ||
 				cmd.action == LFUN_LINE_BEGIN_SELECT);
 		cur.macroModeClose();
@@ -599,10 +605,11 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_FORWARD:
-	case LFUN_LINE_END_SELECT:
 	case LFUN_LINE_END:
+		cur.updateFlags(Update::FitCursor);
+	case LFUN_WORD_FORWARD_SELECT:
+	case LFUN_LINE_END_SELECT:
 		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT ||
 				cmd.action == LFUN_LINE_END_SELECT);
 		cur.macroModeClose();
@@ -634,10 +641,12 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CELL_FORWARD:
+		cur.updateFlags(Update::FitCursor);
 		cur.inset().idxNext(cur);
 		break;
 
 	case LFUN_CELL_BACKWARD:
+		cur.updateFlags(Update::FitCursor);
 		cur.inset().idxPrev(cur);
 		break;
 
@@ -1122,6 +1131,7 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;
 		bv.mouseSetCursor(cur);
+		cur.noUpdate();
 	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
 		if (cur.selection())
@@ -1159,6 +1169,7 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 
 	if (cmd.button() == mouse_button::button1) {
 		//theSelection().put(cur.grabSelection());
+		cur.noUpdate();
 		return;
 	}
 
@@ -1300,17 +1311,25 @@ bool InsetMathNest::interpretChar(LCursor & cur, char_type c)
 			// but suppress direct insertion of two spaces in a row
 			// the still allows typing  '<space>a<space>' and deleting the 'a', but
 			// it is better than nothing...
-			if (!cur.pos() != 0 || cur.prevAtom()->getChar() != ' ')
+			if (!cur.pos() != 0 || cur.prevAtom()->getChar() != ' ') {
 				cur.insert(c);
+				cur.updateFlags(Update::SinglePar | Update::FitCursor);
+			}
 			return true;
 		}
 		if (cur.pos() != 0 && cur.prevAtom()->asSpaceInset()) {
 			cur.prevAtom().nucleus()->asSpaceInset()->incSpace();
+			cur.updateFlags(Update::SinglePar | Update::FitCursor);
 			return true;
 		}
-		if (cur.popRight())
+
+		if (cur.popRight()) {
+			cur.updateFlags(Update::FitCursor);
 			return true;
-		// if are at the very end, leave the formula
+		}
+
+		cur.updateFlags(Update::FitCursor);
+		// if we are at the very end, leave the formula
 		return cur.pos() != cur.lastpos();
 	}
 

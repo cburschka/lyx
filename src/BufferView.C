@@ -375,6 +375,14 @@ std::pair<bool, bool> BufferView::update(Update::flags flags)
 		return make_pair(false, false);
 	}
 
+	if (flags == Update::FitCursor) {
+		bool const fit_cursor = fitCursor();
+		if (fit_cursor)
+			updateMetrics(false);
+		// tell the frontend to update the screen.
+		return make_pair(fit_cursor, false);
+	}
+
 	bool full_metrics = flags & Update::Force;
 	if (flags & Update::MultiParSel)
 		full_metrics |= multiParSel();
