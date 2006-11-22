@@ -52,9 +52,9 @@ common to all frontends.
  The BufferView is a tool used by the view that translates a part of 
  the Buffer contents into drawing routines. The BufferView asks each
  inset of the Buffer to draw itself onto the screen using the Painter.
- There is only Buffer loaded per BufferView. While there is the 
- possibility to switch Buffer inside the BufferView, the goal is to 
- instantiate a new BufferView on each Buffer switch.
+ There can be only one Buffer displayed in a BufferView. While there
+ is the possibility to switch Buffer inside the BufferView, the goal
+ is to instantiate a new BufferView on each Buffer switch.
 
  \todo Instantiate a new BufferView on each Buffer switch.
 
