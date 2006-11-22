@@ -71,10 +71,14 @@ void LastFilesSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		// read lastfiles
-		if (!fs::exists(tmp) || lastfiles.size() >= num_lastfiles)
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
 			continue;
-		lastfiles.push_back(tmp);
+		
+		// read lastfiles
+		if (fs::exists(tmp) && !fs::is_directory(tmp) && lastfiles.size() < num_lastfiles)
+			lastfiles.push_back(tmp);
+		else 
+			lyxerr << "LyX: Warning: Ignore last file: " << tmp << endl;
 	} while (is.good());
 }
 
@@ -120,9 +124,13 @@ void LastOpenedSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		if (!fs::exists(tmp))
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
 			continue;
-		lastopened.push_back(tmp);
+
+		if (fs::exists(tmp) && !fs::is_directory(tmp))
+			lastopened.push_back(tmp);
+		else
+			lyxerr << "LyX: Warning: Ignore last opened file: " << tmp << endl;
 	} while (is.good());
 }
 
@@ -155,20 +163,28 @@ void LastFilePosSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		// read lastfilepos
-		// pos, file\n
-		pit_type pit;
-		pos_type pos;
-		string fname;
-		istringstream itmp(tmp);
-		itmp >> pit;
-		itmp.ignore(2);  // ignore ", "
-		itmp >> pos;
-		itmp.ignore(2);  // ignore ", "
-		itmp >> fname;
-		if (!fs::exists(fname) || lastfilepos.size() >= num_lastfilepos)
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
 			continue;
-		lastfilepos[fname] = boost::tie(pit, pos);
+
+		try {
+			// read lastfilepos
+			// pos, file\n
+			pit_type pit;
+			pos_type pos;
+			string fname;
+			istringstream itmp(tmp);
+			itmp >> pit;
+			itmp.ignore(2);  // ignore ", "
+			itmp >> pos;
+			itmp.ignore(2);  // ignore ", "
+			itmp >> fname;
+			if (fs::exists(fname) && !fs::is_directory(fname) && lastfilepos.size() < num_lastfilepos)
+				lastfilepos[fname] = boost::tie(pit, pos);
+			else
+				lyxerr << "LyX: Warning: Ignore pos of last file: " << fname << endl;
+		} catch (...) {
+			lyxerr << "LyX: Warning: unknown pos of last file: " << tmp << endl;
+		}
 	} while (is.good());
 }
 
@@ -211,20 +227,29 @@ void BookmarksSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		// read bookmarks
-		// id, pos, file\n
-		unsigned int id;
-		pos_type pos;
-		string fname;
-		istringstream itmp(tmp);
-		itmp >> id;
-		itmp.ignore(2);  // ignore ", "
-		itmp >> pos;
-		itmp.ignore(2);  // ignore ", "
-		itmp >> fname;
-		// only load valid bookmarks
-		if (bookmarks.size() < max_bookmarks && fs::exists(fname))
-			bookmarks.push_back(Bookmark(fname, id, pos));
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+			continue;
+
+		try {
+			// read bookmarks
+			// id, pos, file\n
+			unsigned int id;
+			pos_type pos;
+			string fname;
+			istringstream itmp(tmp);
+			itmp >> id;
+			itmp.ignore(2);  // ignore ", "
+			itmp >> pos;
+			itmp.ignore(2);  // ignore ", "
+			itmp >> fname;
+			// only load valid bookmarks
+			if (fs::exists(fname) && !fs::is_directory(fname) && bookmarks.size() < max_bookmarks)
+				bookmarks.push_back(Bookmark(fname, id, pos));
+			else 
+				lyxerr << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
+		} catch (...) {
+			lyxerr << "LyX: Warning: unknown Bookmark info: " << tmp << endl;
+		}
 	} while (is.good());
 }
 
@@ -276,20 +301,27 @@ void ToolbarSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+			continue;
 
-		// Read session info, saved as key/value pairs
-		// would better yell if pos returns npos
-		string::size_type pos = tmp.find_first_of(" = ");
-		// silently ignore lines without " = "
-		if (pos != string::npos) {
-			string key = tmp.substr(0, pos);
-			int state;
-			int location;
-			istringstream value(tmp.substr(pos + 3));
-			value >> state;
-			value.ignore(1); // ignore " "
-			value >> location;
-			toolbars[key] = ToolbarInfo(state, location);
+		try {
+			// Read session info, saved as key/value pairs
+			// would better yell if pos returns npos
+			string::size_type pos = tmp.find_first_of(" = ");
+			// silently ignore lines without " = "
+			if (pos != string::npos) {
+				string key = tmp.substr(0, pos);
+				int state;
+				int location;
+				istringstream value(tmp.substr(pos + 3));
+				value >> state;
+				value.ignore(1); // ignore " "
+				value >> location;
+				toolbars[key] = ToolbarInfo(state, location);
+			} else 
+				lyxerr << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
+		} catch (...) {
+			lyxerr << "LyX: Warning: unknown Toolbar info: " << tmp << endl;
 		}
 	} while (is.good());
 }
@@ -321,15 +353,22 @@ void SessionInfoSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+			continue;
 
-		// Read session info, saved as key/value pairs
-		// would better yell if pos returns npos
-		string::size_type pos = tmp.find_first_of(" = ");
-		// silently ignore lines without " = "
-		if (pos != string::npos) {
-			string key = tmp.substr(0, pos);
-			string value = tmp.substr(pos + 3);
-			sessioninfo[key] = value;
+		try {
+			// Read session info, saved as key/value pairs
+			// would better yell if pos returns npos
+			string::size_type pos = tmp.find_first_of(" = ");
+			// silently ignore lines without " = "
+			if (pos != string::npos) {
+				string key = tmp.substr(0, pos);
+				string value = tmp.substr(pos + 3);
+				sessioninfo[key] = value;
+			} else
+				lyxerr << "LyX: Warning: Ignore session info: " << tmp << endl;
+		} catch (...) {
+			lyxerr << "LyX: Warning: unknown Session info: " << tmp << endl;
 		}
 	} while (is.good());
 }
