@@ -11,10 +11,23 @@ Compiling
 	If you don't have MSVC 2005 installed, download and install the free
 	Express edition from http://msdn.microsoft.com/vstudio/express/visualc/
 	
-	You also need to install the Platform SDK, see
+2	Install the Windows Platform SDK
+
+	see: http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
+	(You don't need to install the IIS, MDAC, and Tablet PC SDK that are
+	 delivered with the Platform SDK.)
+
+3	configure MSVC
+
+	Follow exactly the steps of
 	http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
+	(If you get later an error message that "windows.h" cannot be found,
+ 	 create the global Windows environment variable "INCLUDE" and "LIB".
+	 INCLUDE contains the paths to the "include" folders of the installed
+	 platform SDK, and of MSVC. LIB contains the corresponding "lib"
+	 folders.)
 	
-2	Install Python
+4	Install Python
 	
 	Get the latest Python 2.5 version at
 	http://www.python.org/download/releases/2.5/
@@ -23,21 +36,36 @@ Compiling
 	variable (Start > Settings > Control Panel > System > Advanced >
 	Environment Variables).
 	
-3	Install SCons
+5	Install SCons
 	
-	Download and install SCons 0.96.92 from http://www.scons.org/download.php
+	Download and install SCons 0.96.92 (or newer but not 0.96.1) from http://www.scons.org/download.php
 	
-4	Install the dependencies
+6	Install the dependencies
 	
 	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc-qt4.zip
 	and extract in the root directory of your LyX files (so you will get
 	a directory called lyx-windows-deps-msvc next to the other directories
 	like src, development etc.).
 	
-5	Compile
+7	Compile
 	
 	From MS Visual Studio command prompt (not the regular cmd.exe), 
 	run development\Win32\packaging\build_msvc.bat
+
+8	First start of LyX
+
+	To start the just compiled lyx.exe, it is necessary to copy the following
+	files to the folder where the just compiled "lyx.exe" is:
+
+	Aiksaurus.dll
+	aspell.dll
+	iconv.dll
+	intl.dll
+	QtCore4.dll
+	QtGui4.dll
+	(If the files are not on your system, you can download them from
+	 http://wiki.lyx.org/uploads/DevelTools/buildLyx/LyXWinBuildDLLs.zip)
+
 
 Creating the Installer
 ======================
