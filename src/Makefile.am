@@ -111,6 +111,7 @@ lyx_SOURCES = \
 	Thesaurus.h \
 	ToolbarBackend.C \
 	ToolbarBackend.h \
+	UpdateFlags.h \
 	WordLangTuple.h \
 	author.C \
 	author.h \

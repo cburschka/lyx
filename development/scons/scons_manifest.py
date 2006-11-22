@@ -1056,6 +1056,7 @@ src_header_files = Split('''
     Thesaurus.h
     TocBackend.h
     ToolbarBackend.h
+    UpdateFlags.h
     Variables.h
     WordLangTuple.h
     aspell_local.h

@@ -1,3 +1,14 @@
+// -*- C++ -*-
+/**
+ * \file UpdateFlags.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author The Denmark Cowboys
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #ifndef UPDATE_FLAGS_H
 #define UPDATE_FLAGS_H
 
