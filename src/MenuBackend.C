@@ -351,7 +351,7 @@ Menu & Menu::read(LyXLex & lex)
 			lex.next(true);
 			docstring const mlabel = _(lex.getString());
 			lex.next(true);
-			docstring const mname = from_utf8(lex.getString());
+			docstring const mname = lex.getDocString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname,
 				     optional));
 			optional = false;
@@ -939,7 +939,7 @@ void MenuBackend::read(LyXLex & lex)
 			break;
 		case md_menu: {
 			lex.next(true);
-			docstring const name = from_utf8(lex.getString());
+			docstring const name = lex.getDocString();
 			if (hasMenu(name)) {
 				getMenu(name).read(lex);
 			} else {

@@ -218,7 +218,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			par.insertInset(par.size(), inset, font, change);
 		else {
 			lex.eatLine();
-			docstring line = from_utf8(lex.getString());
+			docstring line = lex.getDocString();
 			errorList.push_back(ErrorItem(_("Unknown Inset"), line,
 					    par.id(), 0, par.size()));
 		}
@@ -348,7 +348,7 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lex.eatLine();
 		errorList.push_back(ErrorItem(_("Unknown token"),
 			bformat(_("Unknown token: %1$s %2$s\n"), from_utf8(token),
-			from_utf8(lex.getString())),
+			lex.getDocString()),
 			par.id(), 0, par.size()));
 	}
 }

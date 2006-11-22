@@ -460,7 +460,7 @@ int Buffer::readHeader(LyXLex & lex)
 				docstring const s = bformat(_("Unknown token: "
 									"%1$s %2$s\n"),
 							 from_utf8(token),
-							 from_utf8(lex.getString()));
+							 lex.getDocString());
 				errorList.push_back(ErrorItem(_("Document header error"),
 					s, -1, 0, 0));
 			}
