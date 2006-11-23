@@ -6,6 +6,7 @@
  * \author Jürgen Vigna
  * \author Lars Gullik Bjønnes
  * \author Alfredo Braunstein
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -292,18 +293,23 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		return PitPosPair(endpit, endpos);
 	}
 
-	// A paragraph break has to be physically removed by merging, but
-	// only if either (1) change tracking is off, or (2) the para break
-	// is "blue"
 	for (pit_type pit = startpit; pit != endpit + 1;) {
-		// FIXME: Change tracking (MG)
-		bool const merge = !params.trackChanges ||
-		                   pars[pit].isInserted(pars[pit].size());
 		pos_type const left  = (pit == startpit ? startpos : 0);
 		pos_type const right = (pit == endpit ? endpos : pars[pit].size() + 1);
-		// Logical erase only:
-		pars[pit].eraseChars(left, right, false);
-		// Separate handling of para break:
+
+		// Logically erase only, including the end-of-paragraph character
+		pars[pit].eraseChars(left, right, params.trackChanges);
+
+		// A paragraph break has to be physically removed by merging only
+		// if either (1) change tracking is off, or (2) the imaginary 
+		// end-of-paragraph character is marked as inserted even after
+		// the erase operation (please see Paragraph::Pimpl::eraseChar(...)
+		// for details on end-of-par handling)
+
+		bool const merge = !params.trackChanges ||
+		                   pars[pit].isInserted(pars[pit].size());
+
+		// Separate handling of paragraph break:
 		if (merge && pit != endpit &&
 		    (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
 			pos_type const thissize = pars[pit].size();
