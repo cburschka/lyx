@@ -1654,7 +1654,6 @@ bool LyXText::erase(LCursor & cur)
 		// this is the code for a normal delete, not pasting
 		// any paragraphs
 		recordUndo(cur, Undo::DELETE);
-		// FIXME: change tracking (MG)
 		par.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 		if (par.isDeleted(cur.pos()))
 			cur.forwardPosNoDescend();
