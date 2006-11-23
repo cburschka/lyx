@@ -21,12 +21,12 @@ Compiling
 
 	Follow exactly the steps of
 	http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
-	(If you get later an error message that "windows.h" cannot be found,
- 	 create the global Windows environment variable "INCLUDE" and "LIB".
+	In Step 3 follow also the things noted as alternative.
+	(If you later get an error message that "windows.h" cannot be found,
+ 	 create the global Windows environment variables "INCLUDE" and "LIB".
 	 INCLUDE contains the paths to the "include" folders of the installed
-	 platform SDK, and of MSVC. LIB contains the corresponding "lib"
-	 folders.)
-	
+	 platform SDK and of MSVC. LIB contains the corresponding "lib" folders.)
+		
 4	Install Python
 	
 	Get the latest Python 2.5 version at
