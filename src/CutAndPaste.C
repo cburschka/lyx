@@ -299,14 +299,13 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		// FIXME: Change tracking (MG)
 		bool const merge = !params.trackChanges ||
 		                   pars[pit].isInserted(pars[pit].size());
-		pos_type const left  = ( pit == startpit ? startpos : 0 );
-		pos_type const right = ( pit == endpit ? endpos :
-				pars[pit].size() + 1 );
+		pos_type const left  = (pit == startpit ? startpos : 0);
+		pos_type const right = (pit == endpit ? endpos : pars[pit].size() + 1);
 		// Logical erase only:
 		pars[pit].eraseChars(left, right, false);
 		// Separate handling of para break:
 		if (merge && pit != endpit &&
-		   (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
+		    (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
 			pos_type const thissize = pars[pit].size();
 			if (doclear)
 				pars[pit + 1].stripLeadingSpaces();
