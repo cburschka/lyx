@@ -425,17 +425,6 @@ void LyX::quit()
 int LyX::execBatchCommands(int & argc, char * argv[],
 	vector<string> & files)
 {
-	// check for any spurious extra arguments
-	// other than documents
-	for (int argi = 1; argi < argc ; ++argi) {
-		if (argv[argi][0] == '-') {
-			lyxerr << to_utf8(
-				bformat(_("Wrong command line option `%1$s'. Exiting."),
-				from_utf8(argv[argi]))) << endl;
-			return EXIT_FAILURE;
-		}
-	}
-
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
 	bool success = init();
@@ -443,8 +432,14 @@ int LyX::execBatchCommands(int & argc, char * argv[],
 	if (!success)
 		return EXIT_FAILURE;
 
-	for (int argi = argc - 1; argi >= 1; --argi)
+	for (int argi = argc - 1; argi >= 1; --argi) {
+		// check for any remaining extra arguments other than
+		// document file names. These will be passed out to the
+		// frontend.
+		if (argv[argi][0] == '-')
+			continue;
 		files.push_back(os::internal_path(argv[argi]));
+	}
 
 	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
