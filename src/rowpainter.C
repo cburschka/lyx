@@ -637,7 +637,21 @@ void RowPainter::paintLast()
 	bool const is_rtl = text_.isRTL(*bv_.buffer(), par_);
 	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
+	// paint imaginary end-of-paragraph character
+
+	if (par_.isInserted(par_.size()) || par_.isDeleted(par_.size())) {
+		FontMetrics const & fm = theFontMetrics(bv_.buffer()->params().getFont());
+		int const length = fm.maxAscent() / 2;
+		LColor::color col = par_.isInserted(par_.size()) ? LColor::newtext : LColor::strikeout;
+		
+		pain_.line(x_ + 1, yo_ + 2, x_ + 1, yo_ + 2 - length, col,
+		           Painter::line_solid, Painter::line_thick);
+		pain_.line(x_ + 1 - length, yo_ + 2, x_ + 1, yo_ + 2, col,
+		           Painter::line_solid, Painter::line_thick);
+	}
+
 	// draw an endlabel
+
 	switch (endlabel) {
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
@@ -936,9 +950,9 @@ void paintPar
 			rp.paintChangeBar();
 			if (rit == rb)
 				rp.paintFirst();
+			rp.paintText();
 			if (rit + 1 == re)
 				rp.paintLast();
-			rp.paintText();
 		}
 		y += rit->descent();
 		// Restore, see above
@@ -1020,7 +1034,7 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
 //	lyxerr << "  paintTextInset: y: " << y << endl;
 
 	y -= text.getPar(0).ascent();
-	// This flag can not be set from within same inset:
+	// This flag cannot be set from within same inset:
 	bool repaintAll = refreshInside;
 	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
 		y += text.getPar(pit).ascent();

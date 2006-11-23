@@ -30,7 +30,7 @@ public:
 	///
 	enum {
 		///
-		TEXT_TO_INSET_OFFSET = 2
+		TEXT_TO_INSET_OFFSET = 4
 	};
 
 	///
