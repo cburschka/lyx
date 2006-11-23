@@ -97,7 +97,7 @@ void ToolbarBackend::read(LyXLex & lex)
 		switch (lex.lex()) {
 		case TO_ADD:
 			if (lex.next(true)) {
-				docstring const tooltip = _(lex.getString());
+				docstring const tooltip = translateIfPossible(lex.getDocString());
 				lex.next(true);
 				string const func_arg = lex.getString();
 				lyxerr[Debug::PARSER]

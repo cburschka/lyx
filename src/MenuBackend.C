@@ -275,7 +275,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_item
 		case md_item: {
 			lex.next(true);
-			docstring const name = _(lex.getString());
+			docstring const name = translateIfPossible(lex.getDocString());
 			lex.next(true);
 			string const command = lex.getString();
 			FuncRequest func = lyxaction.lookupFunc(command);
@@ -349,7 +349,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_submenu
 		case md_submenu: {
 			lex.next(true);
-			docstring const mlabel = _(lex.getString());
+			docstring const mlabel = translateIfPossible(lex.getDocString());
 			lex.next(true);
 			docstring const mname = lex.getDocString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname,

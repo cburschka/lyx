@@ -13,7 +13,9 @@
 
 #include "gettext.h"
 #include "messages.h"
+
 #include "support/environment.h"
+#include "support/lstrings.h"
 
 
 namespace lyx {
@@ -66,6 +68,20 @@ void locale_init()
 }
 
 #endif
+
+
+docstring const translateIfPossible(docstring const & name)
+{
+	if (support::isAscii(name))
+		// Probably from a standard configuration file, try to
+		// translate
+		return _(to_ascii(name));
+	else
+		// This must be from a user defined configuration file. We
+		// cannot translate this, since gettext accepts only ascii
+		// keys.
+		return name;
+}
 
 
 } // namespace lyx

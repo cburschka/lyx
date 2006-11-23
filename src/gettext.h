@@ -61,6 +61,13 @@ docstring const _(std::string const &);
 
 #  define N_(str) (str)              // for detecting static strings
 
+/**
+ * Translate \p name if it is possible.
+ * This should be used to translate strings that come from configuration
+ * files like .ui files. These strings could already be in the native
+ * language if they come from a file in the personal directory. */
+docstring const translateIfPossible(docstring const & name);
+
 ///
 void locale_init();
 
