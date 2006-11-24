@@ -1742,7 +1742,13 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
-		enable = true; // FIXME: Change tracking (MG)
+		// TODO: context-sensitive enabling of LFUN_CHANGE_ACCEPT/REJECT
+		// In principle, these LFUNs should only be enabled if there
+		// is a change at the current position/in the current selection.
+		// However, without proper optimizations, this will inevitably
+		// result in unacceptable performance - just imagine a user who
+		// wants to select the complete content of a long document.
+		enable = true;
 		break;
 
 	case LFUN_WORD_DELETE_FORWARD:

@@ -653,7 +653,11 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 	case LFUN_CHANGE_NEXT:
 	case LFUN_ALL_CHANGES_ACCEPT:
 	case LFUN_ALL_CHANGES_REJECT:
-		flag.enabled(buffer_); // FIXME: Change tracking (MG)
+		// TODO: context-sensitive enabling of LFUNs
+		// In principle, these command should only be enabled if there
+		// is a change in the document. However, without proper
+		// optimizations, this will inevitably result in poor performance.
+		flag.enabled(buffer_);
 		break;
 
 	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
