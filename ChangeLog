@@ -1,3 +1,10 @@
+2006-11-24  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* autogen.sh: allow using autoconf 2.60 and 2.60a.
+
+	* configure.ac: fix up expansion of ${prefix} in ${pkgdatadir}
+	when using autoconf 2.60.
+
 2006-11-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* COPYING: update FSF address.
