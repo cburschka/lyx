@@ -231,11 +231,6 @@ public:
 	bool cursorBottom(LCursor & cur);
 	/// Erase character at cursor. Honour change tracking
 	bool erase(LCursor & cur);
-	/** At cursor position 0, merge paragraph with the one before it.
-	 * Ignore CT (this is used in \c acceptChange, \c rejectChange for
-	 * physical deletion of paragraph break)
-	 */
-	bool backspacePos0(LCursor & cur);
 	/// Delete character before cursor. Honour CT
 	bool backspace(LCursor & cur);
 	// Dissolve the inset under cursor
@@ -384,6 +379,10 @@ private:
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
+
+	// At cursor position 0, try to merge the paragraph with the one before it.
+	// Ignore change tracking, i.e., physically remove the end-of-par character
+	bool backspacePos0(LCursor & cur);
 
 	///
 	void deleteWordForward(LCursor & cur);
