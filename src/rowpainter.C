@@ -48,7 +48,6 @@ using frontend::FontMetrics;
 
 using std::endl;
 using std::max;
-using std::min;
 using std::string;
 
 
@@ -644,9 +643,9 @@ void RowPainter::paintLast()
 		int const length = fm.maxAscent() / 2;
 		LColor::color col = par_.isInserted(par_.size()) ? LColor::newtext : LColor::strikeout;
 		
-		pain_.line(x_ + 1, yo_ + 2, x_ + 1, yo_ + 2 - length, col,
+		pain_.line(int(x_) + 1, yo_ + 2, int(x_) + 1, yo_ + 2 - length, col,
 		           Painter::line_solid, Painter::line_thick);
-		pain_.line(x_ + 1 - length, yo_ + 2, x_ + 1, yo_ + 2, col,
+		pain_.line(int(x_) + 1 - length, yo_ + 2, int(x_) + 1, yo_ + 2, col,
 		           Painter::line_solid, Painter::line_thick);
 	}
 
