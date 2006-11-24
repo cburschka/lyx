@@ -1659,22 +1659,17 @@ bool LyXText::erase(LCursor & cur)
 			cur.forwardPosNoDescend();
 		needsUpdate = true;
 	} else if (cur.pit() != cur.lastpit()) {
-		if (cur.buffer().params().trackChanges
-		    && par.isInserted(cur.pos())) {
-			// mark "carriage return" as deleted:
-			// FIXME: Change tracking (MG)
+		if (!par.isMergedOnEndOfParDeletion(cur.buffer().params().trackChanges)) {
 			par.setChange(cur.pos(), Change(Change::DELETED));
 			cur.forwardPos();
 			needsUpdate = true;
 		} else {
 			setCursorIntern(cur, cur.pit() + 1, 0);
 			needsUpdate = backspacePos0(cur);
-			// FIXME: Change tracking (MG)
-			if (cur.paragraph().isDeleted(cur.pos()))
-				cur.forwardPos();
 		}
-	} else
+	} else {
 		needsUpdate = dissolveInset(cur);
+	}
 
 	// FIXME: Inserting characters has nothing to do with setting a cursor.
 	// Because of the mix between the model (the paragraph contents)
@@ -1725,7 +1720,7 @@ bool LyXText::backspacePos0(LCursor & cur)
 		needsUpdate = true;
 	}
 	// Pasting is not allowed, if the paragraphs have different
-	// layout. I think it is a real bug of all other
+	// layouts. I think it is a real bug of all other
 	// word processors to allow it. It confuses the user.
 	// Correction: Pasting is always allowed with standard-layout
 	else if (par.layout() == prevpar.layout()
@@ -1742,8 +1737,6 @@ bool LyXText::backspacePos0(LCursor & cur)
 
 	return needsUpdate;
 }
-
-
 
 
 bool LyXText::backspace(LCursor & cur)
