@@ -328,48 +328,57 @@ int LyX::exec(int & argc, char * argv[])
 				   support::top_build_dir_is_one_level_up);
 
 	vector<string> files;
-	int exit_status = execBatchCommands(argc, argv, files);
-
-	if (exit_status)
-		return exit_status;
 	
-	if (use_gui) {
-		// Force adding of font path _before_ Application is initialized
-		support::addFontResources();
-		pimpl_->application_.reset(createApplication(argc, argv));
-		initGuiFont();
-		// FIXME: this global pointer should probably go.
-		theApp = pimpl_->application_.get();
-		restoreGuiSession(files);
-		// Start the real execution loop.
-
-		// FIXME
-		/* Create a CoreApplication class that will provide the main event loop
-		 * and the socket callback registering. With Qt4, only QtCore
-		 * library would be needed.
-		 * When this is done, a server_mode could be created and the following two
-		 * line would be moved out from here.
-		 */
-		pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
-		pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
-			support::os::internal_path(package().temp_dir() + "/lyxsocket")));
-
-		// handle the batch commands the user asked for
-		if (!batch_command.empty()) {
-			pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(batch_command));
-		}
-
-		exit_status = pimpl_->application_->start(batch_command);
-		// Kill the application object before exiting. This avoid crash
-		// on exit on Linux.
-		pimpl_->application_.reset();
-		// Restore original font resources after Application is destroyed.
-		support::restoreFontResources();
-	}
-	else {
+	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
-		theApp = 0;
+		return execBatchCommands(argc, argv, files);
 	}
+
+	// Force adding of font path _before_ Application is initialized
+	support::addFontResources();
+
+	// Let the frontend parse and remove all arguments that it knows
+	pimpl_->application_.reset(createApplication(argc, argv));
+
+	// Parse and remove all known arguments in the LyX singleton
+	// Give an error for all remaining ones.
+	int exit_status = execBatchCommands(argc, argv, files);
+	if (exit_status) {
+		// Kill the application object before exiting.
+		pimpl_->application_.reset();
+		use_gui = false;
+		prepareExit();
+		return exit_status;
+	}
+
+	initGuiFont();
+	// FIXME: this global pointer should probably go.
+	theApp = pimpl_->application_.get();
+	restoreGuiSession(files);
+	// Start the real execution loop.
+
+	// FIXME
+	/* Create a CoreApplication class that will provide the main event loop
+	* and the socket callback registering. With Qt4, only QtCore
+	* library would be needed.
+	* When this is done, a server_mode could be created and the following two
+	* line would be moved out from here.
+	*/
+	pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
+	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
+		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
+
+	// handle the batch commands the user asked for
+	if (!batch_command.empty()) {
+		pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(batch_command));
+	}
+
+	exit_status = pimpl_->application_->start(batch_command);
+	// Kill the application object before exiting. This avoid crash
+	// on exit on Linux.
+	pimpl_->application_.reset();
+	// Restore original font resources after Application is destroyed.
+	support::restoreFontResources();
 
 	return exit_status;
 }
@@ -425,6 +434,17 @@ void LyX::quit()
 int LyX::execBatchCommands(int & argc, char * argv[],
 	vector<string> & files)
 {
+	// check for any spurious extra arguments
+	// other than documents
+	for (int argi = 1; argi < argc ; ++argi) {
+		if (argv[argi][0] == '-') {
+			lyxerr << to_utf8(
+				bformat(_("Wrong command line option `%1$s'. Exiting."),
+				from_utf8(argv[argi]))) << endl;
+			return EXIT_FAILURE;
+		}
+	}
+
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
 	bool success = init();
