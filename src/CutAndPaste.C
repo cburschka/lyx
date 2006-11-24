@@ -297,17 +297,10 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		pos_type const left  = (pit == startpit ? startpos : 0);
 		pos_type const right = (pit == endpit ? endpos : pars[pit].size() + 1);
 
+		bool const merge = pars[pit].isMergedOnEndOfParDeletion(params.trackChanges);
+
 		// Logically erase only, including the end-of-paragraph character
 		pars[pit].eraseChars(left, right, params.trackChanges);
-
-		// A paragraph break has to be physically removed by merging only
-		// if either (1) change tracking is off, or (2) the imaginary 
-		// end-of-paragraph character is marked as inserted even after
-		// the erase operation (please see Paragraph::Pimpl::eraseChar(...)
-		// for details on end-of-par handling)
-
-		bool const merge = !params.trackChanges ||
-		                   pars[pit].isInserted(pars[pit].size());
 
 		// Separate handling of paragraph break:
 		if (merge && pit != endpit &&
