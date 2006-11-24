@@ -82,32 +82,34 @@ What's new
 
 - Fix deletion of empty paragraph in various situations: paragraphs
   with different layouts, layouts with KeepEmpty property, ERT insets
-  (bugs 2587 and 2882)
+  (bugs 2587 and 2882).
 
 - fix bug where icons remain disabled after opening a dialog (bug
-  2877)
+  2877).
 
 - when a dialog is open in LyX/Mac, make sure that the menu entries
-  that do not make sense are disabled (bug 1720)
+  that do not make sense are disabled (bug 1720).
 
 - Fix cursor positioning when opening the VSpace dialog (bug 2869).
 
 - Make clicking in a "Wide" inset always enter that inset.
 
-- Give a better error message for missing layout include files
+- Give a better error message for missing layout include files.
 
-- Don't show starred sections in Document->Numbering & TOC (bug 2910)
+- Don't show starred sections in Document->Numbering & TOC (bug 2910).
 
 - Make sure that the size changing shortcuts ``M-s <digit>'' work on a
   french keyboard too.
 
 - Make all the operations that require walking over all insets faster.
 
-- Fix insertion position for cross-reference in superscript (bug 2789)
+- Fix insertion position for cross-reference in superscript (bug 2789).
 
-- Add support for the chars-transpose LFUN (bug 2939)
+- Add support for the chars-transpose LFUN (bug 2939).
 
-- Only one undo step is needed to undo inset-dissolve (bug 2982)
+- Only one undo step is needed to undo inset-dissolve (bug 2982).
+
+- Fix spellckecking of Norwegian documents with aspell (bug 2850).
 
 * Build/installation:
 
