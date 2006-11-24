@@ -1421,6 +1421,12 @@ bool Paragraph::isChanged(pos_type start, pos_type end) const
 }
 
 
+bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
+{
+	return pimpl_->isMergedOnEndOfParDeletion(trackChanges);
+}
+
+
 void Paragraph::setChange(Change const & change)
 {
 	pimpl_->setChange(change);

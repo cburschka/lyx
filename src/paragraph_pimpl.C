@@ -87,6 +87,19 @@ bool Paragraph::Pimpl::isChanged(pos_type start, pos_type end) const
 }
 
 
+bool Paragraph::Pimpl::isMergedOnEndOfParDeletion(bool trackChanges) const {
+	// keep the logic here in sync with the logic of eraseChars()
+
+	if (!trackChanges) {
+		return true;
+	}
+
+	Change change = changes_.lookup(size());
+
+	return change.type == Change::INSERTED && change.author == 0;
+}
+
+
 void Paragraph::Pimpl::setChange(Change const & change)
 {
 	// beware of the imaginary end-of-par character!
@@ -262,6 +275,8 @@ void Paragraph::Pimpl::insertInset(pos_type pos, InsetBase * inset,
 bool Paragraph::Pimpl::eraseChar(pos_type pos, bool trackChanges)
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
+
+	// keep the logic here in sync with the logic of isMergedOnEndOfParDeletion()
 
 	if (trackChanges) {
 		Change change = changes_.lookup(pos);

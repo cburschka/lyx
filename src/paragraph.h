@@ -209,6 +209,10 @@ public:
 		return lookupChange(pos).type == Change::DELETED;
 	}
 
+	/// will the paragraph be physically merged with the next
+	/// one if the imaginary end-of-par character is logically deleted?
+	bool isMergedOnEndOfParDeletion(bool trackChanges) const;
+
 	/// set change for the entire par
 	void setChange(Change const & change);
 

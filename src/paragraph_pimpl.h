@@ -43,8 +43,11 @@ public:
 	Change const lookupChange(pos_type pos) const;
 	/// is there a change within the given range ?
 	bool isChanged(pos_type start, pos_type end) const;
-        /// set change for the entire par
-        void setChange(Change const & change);
+	/// will the paragraph be physically merged with the next
+	/// one if the imaginary end-of-par character is logically deleted?
+	bool isMergedOnEndOfParDeletion(bool trackChanges) const;
+	/// set change for the entire par
+	void setChange(Change const & change);
 	/// set change at given pos
 	void setChange(pos_type pos, Change const & change);
 	/// accept changes within the given range
