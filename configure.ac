@@ -285,7 +285,7 @@ AC_FUNC_SELECT_ARGTYPES
 
 ### Some information on what just happened
 real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
-real_pkgdatadir=`eval "echo \`eval \"echo ${pkgdatadir}\"\`"`
+real_pkgdatadir=`eval "echo \`eval \"echo \\\`eval \\\"echo ${pkgdatadir}\\\"\\\`\"\`"`
 real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
 VERSION_INFO="Configuration\n\
   Host type:                      ${host}\n\
