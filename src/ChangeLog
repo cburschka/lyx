@@ -1,3 +1,9 @@
+2006-11-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (Delete): when deleting a text inset in change-tracking
+	mode, make the cursor jump over it; avoid crash in setCursorIntern
+	by using the right LyXText.
+
 2006-11-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* dociterator.C (forwardPar): remove debug code.
