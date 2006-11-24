@@ -25,21 +25,12 @@ add_definitions(
     )
     
     
-if(MSVC_IDE)
-	add_definitions(
-		-DLOCALEDIR="${LOCALE_DIR}" 
-		-DLOCALE_ALIAS_PATH="${LOCALE_DIR}"
-		-DLIBDIR="${TOP_SRC_DIR}"
-		-DINSTALLDIR="${PREFIX}"
-		)
-else(MSVC_IDE)
-	add_definitions(
+add_definitions(
 		-DLOCALEDIR=\\"${LOACLE_DIR}\\" 
 		-DLOCALE_ALIAS_PATH=\\"${LOACLE_DIR}\\"
 		-DLIBDIR=\\"${TOP_SRC_DIR}\\"
 		-DINSTALLDIR=\\"${PREFIX}\\" 
 		)
-endif(MSVC_IDE)
 
     
 file(GLOB intl_headers ${TOP_SRC_DIR}/intl/*.h)

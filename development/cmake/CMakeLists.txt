@@ -4,6 +4,9 @@
 # Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
+CMAKE_MINIMUM_REQUIRED(VERSION 2.4.4 FATAL_ERROR)
+
+
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 
@@ -89,20 +92,12 @@ configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
 
 
 if(MSVC)
-	if(MSVC_IDE)
-		add_definitions(-DBOOST_USER_CONFIG=&lt\;config.h&gt\;)
-	else(MSVC_IDE)
-		add_definitions(-DBOOST_USER_CONFIG="<config.h>")
-		SET(CMAKE_EXE_LINKER_FLAGS /MANIFEST)
-	endif(MSVC_IDE)
-
  	ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE)	
- 	
  	# disable checked iterators for msvc release builds to get maximum speed
 	set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
-else(MSVC)
-	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 endif(MSVC)
+
+add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	
 if(MSVC AND NOT disable-pch)
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h    ${CMAKE_BINARY_DIR}/pcheaders.h)
