@@ -25,6 +25,9 @@ using std::string;
 static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	Paragraph & toPar, pos_type toPos, BufferParams const & params)
 {
+	// Note: moveItem() does not honour change tracking!
+	// Therefore, it should only be used for breaking and merging paragraphs
+
 	Paragraph::value_type const tmpChar = fromPar.getChar(fromPos);
 	LyXFont const tmpFont = fromPar.getFontSettings(params, fromPos);
 	Change const tmpChange = fromPar.lookupChange(fromPos);
@@ -32,20 +35,23 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	if (tmpChar == Paragraph::META_INSET) {
 		InsetBase * tmpInset = 0;
 		if (fromPar.getInset(fromPos)) {
-			// the inset is not in a paragraph anymore
+			// the inset is not in the paragraph any more
 			tmpInset = fromPar.insetlist.release(fromPos);
-			fromPar.insetlist.erase(fromPos);
 		}
+
+		fromPar.eraseChar(fromPos, false);
 
 		if (!toPar.insetAllowed(tmpInset->lyxCode())) {
 			delete tmpInset;
 			return false;
 		}
-		if (tmpInset)
-			toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
+
+		toPar.insertInset(toPos, tmpInset, tmpFont, tmpChange);
 	} else {
+		fromPar.eraseChar(fromPos, false);
 		toPar.insertChar(toPos, tmpChar, tmpFont, tmpChange);
 	}
+
 	return true;
 }
 
@@ -105,20 +111,16 @@ void breakParagraph(BufferParams const & bparams,
 		 */
 		pos_type pos_end = par.size() - 1;
 
-		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			if (moveItem(par, i, *tmp, j - pos, bparams)) {
+		for (pos_type i = pos, j = 0; i <= pos_end; ++i) {
+			if (moveItem(par, pos, *tmp, j, bparams)) {
 				++j;
 			}
 		}
-
-		for (pos_type i = pos_end; i >= pos; --i)
-			// FIXME: change tracking (MG)
-			par.eraseChar(i, false); // erase without change tracking
 	}
 
 	if (pos) {
 		// Make sure that we keep the language when
-		// breaking paragrpah.
+		// breaking paragraph.
 		if (tmp->empty()) {
 			LyXFont changed = tmp->getFirstFontSettings(bparams);
 			LyXFont old = par.getFontSettings(bparams, par.size());
@@ -162,31 +164,21 @@ void breakParagraphConservative(BufferParams const & bparams,
 
 	tmp.makeSameLayout(par);
 
-	// When can pos > size()?
-	// I guess pos == size() is possible.
-	if (par.size() > pos) {
-		// copy everything behind the break-position to the new
-		// paragraph
+	BOOST_ASSERT(pos <= par.size());
+
+	if (pos < par.size()) {
+		// move everything behind the break position to the new paragraph
 		pos_type pos_end = par.size() - 1;
 
-		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			if (moveItem(par, i, tmp, j - pos, bparams)) {
+		for (pos_type i = pos, j = 0; i <= pos_end; ++i) {
+			if (moveItem(par, pos, tmp, j, bparams)) {
 				++j;
 			}
 		}
-		// Move over end-of-par change attr
-		// FIXME: change tracking (MG)
-		tmp.setChange(tmp.size(), Change(par.lookupChange(par.size()).type));
-
-		// If tracking changes, set all the text that is to be
-		// erased to Change::INSERTED.
-		for (pos_type k = pos_end; k >= pos; --k) {
-			if (bparams.trackChanges)
-				// FIXME: Change tracking (MG)
-				par.setChange(k, Change(Change::INSERTED));
-			// FIXME: change tracking (MG)
-			par.eraseChar(k, false);
-		}
+		// Move over the end-of-par change information
+		tmp.setChange(tmp.size(), par.lookupChange(par.size()));
+		par.setChange(par.size(), Change(bparams.trackChanges ?
+		                           Change::INSERTED : Change::UNCHANGED));
 	}
 }
 
@@ -209,8 +201,8 @@ void mergeParagraph(BufferParams const & bparams,
 
 	Change change = next.lookupChange(next.size());
 	// ok, now copy the paragraph
-	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
-		if (moveItem(next, i, par, pos_insert + j, bparams)) {
+	for (pos_type i = 0, j = pos_insert; i <= pos_end; ++i) {
+		if (moveItem(next, 0, par, j, bparams)) {
 			++j;
 		}
 	}
