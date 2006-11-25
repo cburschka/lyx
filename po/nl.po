@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-19 14:30+0100\n"
+"POT-Creation-Date: 2006-11-25 18:08+0100\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -264,67 +264,51 @@ msgstr "90° roteren"
 msgid "FontUi"
 msgstr "Lettertype: "
 
-#: src/frontends/qt4/ui/FontUi.ui:44
-msgid "Advanced Options"
-msgstr "Geavanceerde opties"
-
-#: src/frontends/qt4/ui/FontUi.ui:56
+#: src/frontends/qt4/ui/FontUi.ui:37
 #, fuzzy
-msgid "Use true S&mall Caps"
-msgstr "Kapiteel"
+msgid "Sc&ale (%):"
+msgstr "Kleiner"
 
-#: src/frontends/qt4/ui/FontUi.ui:63
-msgid "Use &Old Style Figures"
-msgstr ""
-
-#: src/frontends/qt4/ui/FontUi.ui:73
+#: src/frontends/qt4/ui/FontUi.ui:47
 #, fuzzy
-msgid "Sizes"
-msgstr "Grootte"
+msgid "S&cale (%):"
+msgstr "Kleiner"
 
-#: src/frontends/qt4/ui/FontUi.ui:97
+#: src/frontends/qt4/ui/FontUi.ui:57
 #, fuzzy
 msgid "&Base Size:"
 msgstr "&Grootte:"
 
-# Schrijfmachine
-#: src/frontends/qt4/ui/FontUi.ui:107
-#, fuzzy
-msgid "Sc&ale Typewriter %:"
-msgstr "T&ypemachine:"
-
 # onvertaald laten?
-#: src/frontends/qt4/ui/FontUi.ui:137
-#, fuzzy
-msgid "S&cale Sans Serif %:"
-msgstr "Zonder &schreef:"
-
-#: src/frontends/qt4/ui/FontUi.ui:150
-#, fuzzy
-msgid "Families"
-msgstr "Parameters"
-
-#: src/frontends/qt4/ui/FontUi.ui:210
-#, fuzzy
-msgid "&Default Family:"
-msgstr "&Standaard"
-
-# Schrijfmachine
-#: src/frontends/qt4/ui/FontUi.ui:220
-#, fuzzy
-msgid "&Typewriter:"
-msgstr "T&ypemachine:"
-
-# onvertaald laten?
-#: src/frontends/qt4/ui/FontUi.ui:230
+#: src/frontends/qt4/ui/FontUi.ui:80
 #, fuzzy
 msgid "&Sans Serif:"
 msgstr "Zonder &schreef:"
 
-#: src/frontends/qt4/ui/FontUi.ui:240
+# Schrijfmachine
+#: src/frontends/qt4/ui/FontUi.ui:90
+#, fuzzy
+msgid "&Typewriter:"
+msgstr "T&ypemachine:"
+
+#: src/frontends/qt4/ui/FontUi.ui:100
+#, fuzzy
+msgid "&Default Family:"
+msgstr "&Standaard"
+
+#: src/frontends/qt4/ui/FontUi.ui:110
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
 msgid "&Roman:"
 msgstr "&Romeins:"
+
+#: src/frontends/qt4/ui/FontUi.ui:120
+#, fuzzy
+msgid "Use true S&mall Caps"
+msgstr "Kapiteel"
+
+#: src/frontends/qt4/ui/FontUi.ui:127
+msgid "Use &Old Style Figures"
+msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Document &class:"
@@ -536,7 +520,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:699
 #: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
-#: src/frontends/qt4/ui/QNomenclUi.ui:133 src/frontends/qt4/ui/QNoteUi.ui:31
+#: src/frontends/qt4/ui/QNomenclUi.ui:98 src/frontends/qt4/ui/QNoteUi.ui:31
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
 #: src/frontends/qt4/ui/QSendtoUi.ui:75
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:68
@@ -550,7 +534,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
 #: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1987 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Annuleren"
 
@@ -582,8 +566,8 @@ msgstr "Database:"
 
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
-#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:146
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:251
+#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:252
 #: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Annuleren"
@@ -1672,20 +1656,20 @@ msgstr "Matrix invoegen"
 msgid "Show delimiter and bracket dialog"
 msgstr ""
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:48
+#: src/frontends/qt4/ui/QNomenclUi.ui:37
 #, fuzzy
-msgid "&Symbol:"
-msgstr "Symbool"
+msgid "Sort &as:"
+msgstr "s Opslaan"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:58
+#: src/frontends/qt4/ui/QNomenclUi.ui:47
 #, fuzzy
 msgid "&Description:"
 msgstr "Beschrijving"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:68
+#: src/frontends/qt4/ui/QNomenclUi.ui:57
 #, fuzzy
-msgid "Sort &as:"
-msgstr "s Opslaan"
+msgid "&Symbol:"
+msgstr "Symbool"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:51
 #, fuzzy
@@ -1739,7 +1723,7 @@ msgid "&Shaded"
 msgstr "Op&slaan"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2376
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2366
 msgid "Single"
 msgstr "Enkel"
 
@@ -1748,7 +1732,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2382
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2372
 msgid "Double"
 msgstr "Dubbel"
 
@@ -3667,7 +3651,7 @@ msgstr "Bibliografie"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:497
+#: src/rowpainter.C:496
 msgid "Appendix"
 msgstr "Appendix"
 
@@ -7849,7 +7833,7 @@ msgstr "Tabelformaat"
 msgid "Math|M"
 msgstr "Wisk.|#M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:443
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:446
 #, fuzzy
 msgid "Spellchecker...|S"
 msgstr "Spellingscontrole"
@@ -7859,12 +7843,12 @@ msgstr "Spellingscontrole"
 msgid "Thesaurus..."
 msgstr "Tabelformaat"
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:445
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:448
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Huidige woord"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:446
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:449
 #, fuzzy
 msgid "Check TeX|h"
 msgstr "Controleren TeX"
@@ -7874,11 +7858,11 @@ msgstr "Controleren TeX"
 msgid "Change Tracking|g"
 msgstr "Taal veranderen"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:453
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:456
 msgid "Preferences...|P"
 msgstr "Voorkeuren...|V"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:452
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:455
 msgid "Reconfigure|R"
 msgstr "Herconfigureren|r"
 
@@ -8074,7 +8058,7 @@ msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.ui:246
-#: lib/ui/stdmenus.ui:340
+#: lib/ui/stdmenus.ui:343
 #, fuzzy
 msgid "Inline Formula|I"
 msgstr "Figuur invoegen"
@@ -8287,57 +8271,57 @@ msgstr "Scheiding"
 msgid "Horizontal Line"
 msgstr "Hor. uitlijnen|#H"
 
-#: lib/ui/classic.ui:257 src/insets/insetpagebreak.C:56
+#: lib/ui/classic.ui:257 src/insets/insetpagebreak.h:49
 #, fuzzy
 msgid "Page Break"
 msgstr "Paginascheidingen"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:341
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:344
 #, fuzzy
 msgid "Display Formula|D"
 msgstr "f Venster tonen|#F"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:248 lib/ui/stdmenus.ui:343
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:248 lib/ui/stdmenus.ui:346
 #, fuzzy
 msgid "Eqnarray Environment|E"
 msgstr "Alineaomgeving ingesteld"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:344
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:347
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "Uitlijning"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:345
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:348
 #, fuzzy
 msgid "AMS alignat Environment|t"
 msgstr "Uitlijning"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:346
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:349
 #, fuzzy
 msgid "AMS flalign Environment|f"
 msgstr "Uitlijning"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:347
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:350
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Uitlijning"
 
-#: lib/ui/classic.ui:270 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:348
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:351
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "Uitlijning"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:350
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:353
 #, fuzzy
 msgid "Array Environment|y"
 msgstr "Alineaomgeving ingesteld"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:351
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:354
 #, fuzzy
 msgid "Cases Environment|C"
 msgstr "Veranderen omgevingsdiepte"
 
-#: lib/ui/classic.ui:274 lib/ui/stdmenus.ui:355
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.ui:358
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Uitlijning"
@@ -8434,46 +8418,46 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Figuur"
 
-#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.ui:367
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.ui:370
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "Inhoudsopgave"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:369
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:372
 #, fuzzy
 msgid "Index List|I"
 msgstr "i Inspringen|#I"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.ui:370
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.ui:373
 msgid "Glossary|G"
 msgstr ""
 
 # Literatuurlijst?
-#: lib/ui/classic.ui:315 lib/ui/stdmenus.ui:371
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.ui:374
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Bibliografie"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:375
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:378
 msgid "LyX Document...|X"
 msgstr "LyX-document...|X"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:376
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:379
 #, fuzzy
 msgid "Plain Text as Lines...|L"
 msgstr "Regels"
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:377
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:380
 #, fuzzy
 msgid "Plain Text as Paragraphs...|P"
 msgstr "Selecteer de volgende alinea"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:409
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:412
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "i Veranderingen inboeken"
 
-#: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:410
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:413
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "i Veranderingen inboeken"
@@ -8486,7 +8470,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.ui:415
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.ui:418
 #, fuzzy
 msgid "Show Changes in Output|S"
 msgstr "Breedte van afbeelding in uitvoer"
@@ -8537,7 +8521,7 @@ msgstr "Vergroten omgevingsdiepte"
 msgid "Start Appendix Here|S"
 msgstr ""
 
-#: lib/ui/classic.ui:357 lib/ui/stdmenus.ui:399
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.ui:402
 #, fuzzy
 msgid "Build Program|B"
 msgstr "Aanmaken programma"
@@ -8546,7 +8530,7 @@ msgstr "Aanmaken programma"
 msgid "Update|U"
 msgstr "Bijwerken|w"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.ui:400
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.ui:403
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "LaTeX-logboek"
@@ -8555,17 +8539,17 @@ msgstr "LaTeX-logboek"
 msgid "TeX Information|X"
 msgstr "TeX-informatie|X"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:423
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:426
 #, fuzzy
 msgid "Next Note|N"
 msgstr "andere"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:426
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:429
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Lange tabel"
 
-#: lib/ui/classic.ui:377 lib/ui/stdmenus.ui:422
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.ui:425
 #, fuzzy
 msgid "Bookmarks|B"
 msgstr "b Onder|#B"
@@ -8617,53 +8601,53 @@ msgstr "b Onder|#B"
 msgid "Go to Bookmark 5|5"
 msgstr "b Onder|#B"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:460
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:463
 msgid "Introduction|I"
 msgstr "Inleiding|I"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:461
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:464
 msgid "Tutorial|T"
 msgstr "Tutorial|T"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:462
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:465
 msgid "User's Guide|U"
 msgstr "Gebruikershandleiding|u"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:463
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:466
 msgid "Extended Features|E"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:464
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:467
 #, fuzzy
 msgid "Customization|C"
 msgstr "Aanhaling"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:465
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:468
 msgid "FAQ|F"
 msgstr ""
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:466
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:469
 msgid "Table of Contents|a"
 msgstr "Inhoudsopgave|n"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:467
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:470
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX Configuratie|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:469
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:472
 msgid "About LyX|X"
 msgstr "Over LyX|X"
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:477 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:480 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr "Over LyX"
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:478
+#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:481
 #, fuzzy
 msgid "Preferences..."
 msgstr "Voorkeuren...|V"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:479
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:482
 #, fuzzy
 msgid "Quit LyX"
 msgstr "Over LyX"
@@ -8702,18 +8686,18 @@ msgid "Redo|R"
 msgstr "Alsnog uitvoeren"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:776
+#: src/mathed/InsetMathNest.C:453 src/text3.C:774
 msgid "Cut"
 msgstr "Knippen"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:781
+#: src/mathed/InsetMathNest.C:462 src/text3.C:779
 msgid "Copy"
 msgstr "Kopiëren"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
 #: src/mathed/InsetMathGrid.C:1208 src/mathed/InsetMathNest.C:437
-#: src/text3.C:760
+#: src/text3.C:758
 msgid "Paste"
 msgstr "Plakken"
 
@@ -9019,8 +9003,8 @@ msgstr "Speciaal teken|S"
 
 #: lib/ui/stdmenus.ui:289
 #, fuzzy
-msgid "Special Formatting|o"
-msgstr "Speciale kolom"
+msgid "Formatting|o"
+msgstr "drijvende delen"
 
 #: lib/ui/stdmenus.ui:290
 #, fuzzy
@@ -9118,133 +9102,142 @@ msgstr "Afbreekpunt invoegen"
 msgid "Line Break|B"
 msgstr "Nieuwe regels|#N"
 
-#: lib/ui/stdmenus.ui:336
+#: lib/ui/stdmenus.ui:337
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Paginascheidingen"
 
-#: lib/ui/stdmenus.ui:342
+#: lib/ui/stdmenus.ui:338
+#, fuzzy
+msgid "Clear Page|C"
+msgstr "b Onder|#B"
+
+#: lib/ui/stdmenus.ui:339
+msgid "Clear Double Page|D"
+msgstr ""
+
+#: lib/ui/stdmenus.ui:345
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr " Getal "
 
-#: lib/ui/stdmenus.ui:352
+#: lib/ui/stdmenus.ui:355
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Uitlijning"
 
-#: lib/ui/stdmenus.ui:353
+#: lib/ui/stdmenus.ui:356
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Uitlijning"
 
-#: lib/ui/stdmenus.ui:354
+#: lib/ui/stdmenus.ui:357
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Uitlijning"
 
-#: lib/ui/stdmenus.ui:357
+#: lib/ui/stdmenus.ui:360
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "Wiskundepaneel"
 
-#: lib/ui/stdmenus.ui:363
+#: lib/ui/stdmenus.ui:366
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Tabel invoegen"
 
-#: lib/ui/stdmenus.ui:379
+#: lib/ui/stdmenus.ui:382
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Extern materiaal"
 
-#: lib/ui/stdmenus.ui:380
+#: lib/ui/stdmenus.ui:383
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Document...|D"
 
-#: lib/ui/stdmenus.ui:384
+#: lib/ui/stdmenus.ui:387
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "andere"
 
-#: lib/ui/stdmenus.ui:385
+#: lib/ui/stdmenus.ui:388
 #, fuzzy
 msgid "Comment|C"
 msgstr "Commentaar:"
 
-#: lib/ui/stdmenus.ui:386
+#: lib/ui/stdmenus.ui:389
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:398
+#: lib/ui/stdmenus.ui:401
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Taal veranderen"
 
-#: lib/ui/stdmenus.ui:401
+#: lib/ui/stdmenus.ui:404
 msgid "Table of Contents|T"
 msgstr "Inhoudsopgave|n"
 
-#: lib/ui/stdmenus.ui:402
+#: lib/ui/stdmenus.ui:405
 msgid "Start Appendix Here|A"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:404
+#: lib/ui/stdmenus.ui:407
 msgid "Compressed|o"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:405
+#: lib/ui/stdmenus.ui:408
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Instellingen"
 
-#: lib/ui/stdmenus.ui:411
+#: lib/ui/stdmenus.ui:414
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Accepteren|#A"
 
-#: lib/ui/stdmenus.ui:412
+#: lib/ui/stdmenus.ui:415
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Herlezen|#l"
 
-#: lib/ui/stdmenus.ui:413
+#: lib/ui/stdmenus.ui:416
 #, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Accepteren|#A"
 
-#: lib/ui/stdmenus.ui:414
+#: lib/ui/stdmenus.ui:417
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Herlezen|#l"
 
-#: lib/ui/stdmenus.ui:424
+#: lib/ui/stdmenus.ui:427
 #, fuzzy
 msgid "Next Change|C"
 msgstr " (Veranderd)"
 
-#: lib/ui/stdmenus.ui:425
+#: lib/ui/stdmenus.ui:428
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Verwijzing invoegen"
 
-#: lib/ui/stdmenus.ui:432
+#: lib/ui/stdmenus.ui:435
 #, fuzzy
 msgid "Save Bookmark|S"
 msgstr "b Onder|#B"
 
-#: lib/ui/stdmenus.ui:433
+#: lib/ui/stdmenus.ui:436
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "b Onder|#B"
 
-#: lib/ui/stdmenus.ui:444
+#: lib/ui/stdmenus.ui:447
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Tabelformaat"
 
-#: lib/ui/stdmenus.ui:447
+#: lib/ui/stdmenus.ui:450
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "TeX-informatie|X"
@@ -9268,11 +9261,11 @@ msgstr "Document opslaan?"
 msgid "Print document"
 msgstr "Document importeren"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:683
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:696
 msgid "Undo"
 msgstr "Herstellen"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:694
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:707
 msgid "Redo"
 msgstr "Opnieuw"
 
@@ -9630,7 +9623,7 @@ msgstr "Herlezen|#l"
 msgid "Next note"
 msgstr "andere"
 
-#: src/BufferView.C:221
+#: src/BufferView.C:222
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -9638,22 +9631,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:224 src/lyxfunc.C:861
+#: src/BufferView.C:225 src/lyxfunc.C:861
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Terug naar opgeslagen versie"
 
-#: src/BufferView.C:225 src/lyxfunc.C:862 src/lyxvc.C:173
+#: src/BufferView.C:226 src/lyxfunc.C:862 src/lyxvc.C:173
 #, fuzzy
 msgid "&Revert"
 msgstr "Registreren"
 
-#: src/BufferView.C:225
+#: src/BufferView.C:226
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Selecteren tot einde document"
 
-#: src/BufferView.C:247
+#: src/BufferView.C:248
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -9661,111 +9654,111 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.C:250
+#: src/BufferView.C:251
 #, fuzzy
 msgid "Create new document?"
 msgstr "Nieuw document onder deze naam aanmaken?"
 
-#: src/BufferView.C:251
+#: src/BufferView.C:252
 #, fuzzy
 msgid "&Create"
 msgstr "latex"
 
-#: src/BufferView.C:533
+#: src/BufferView.C:542
 #, fuzzy
 msgid "Save bookmark"
 msgstr "b Onder|#B"
 
-#: src/BufferView.C:686
+#: src/BufferView.C:699
 #, fuzzy
 msgid "No further undo information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/BufferView.C:697
+#: src/BufferView.C:710
 msgid "No further redo information"
 msgstr "Geen verdere Herhaal mogelijk"
 
-#: src/BufferView.C:858
+#: src/BufferView.C:871
 msgid "Mark off"
 msgstr "Merkteken uitgeschakeld"
 
-#: src/BufferView.C:865
+#: src/BufferView.C:878
 msgid "Mark on"
 msgstr "Merkteken ingechakeld"
 
-#: src/BufferView.C:872
+#: src/BufferView.C:885
 msgid "Mark removed"
 msgstr "Merkteken verwijderd"
 
-#: src/BufferView.C:875
+#: src/BufferView.C:888
 msgid "Mark set"
 msgstr "Merkteken geplaatst"
 
-#: src/BufferView.C:921
+#: src/BufferView.C:934
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Een woord gecontroleerd."
 
-#: src/BufferView.C:924
+#: src/BufferView.C:937
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Een woord gecontroleerd."
 
-#: src/BufferView.C:929
+#: src/BufferView.C:942
 #, fuzzy
 msgid "One word in selection."
 msgstr "Een woord gecontroleerd."
 
-#: src/BufferView.C:931
+#: src/BufferView.C:944
 #, fuzzy
 msgid "One word in document."
 msgstr "Document invoegen "
 
-#: src/BufferView.C:934
+#: src/BufferView.C:947
 #, fuzzy
 msgid "Count words"
 msgstr "Huidige woord"
 
-#: src/BufferView.C:1351
+#: src/BufferView.C:1364
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/BufferView.C:1353 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1366 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1821 src/lyxfunc.C:1858 src/lyxfunc.C:1933
+#: src/lyxfunc.C:1826 src/lyxfunc.C:1863 src/lyxfunc.C:1938
 msgid "Documents|#o#O"
 msgstr "Documenten|#o#O"
 
-#: src/BufferView.C:1354 src/lyxfunc.C:1859 src/lyxfunc.C:1934
+#: src/BufferView.C:1367 src/lyxfunc.C:1864 src/lyxfunc.C:1939
 msgid "Examples|#E#e"
 msgstr "Voorbeelden|#E#e"
 
-#: src/BufferView.C:1358 src/lyx_cb.C:141 src/lyxfunc.C:1826
-#: src/lyxfunc.C:1863
+#: src/BufferView.C:1371 src/lyx_cb.C:141 src/lyxfunc.C:1831
+#: src/lyxfunc.C:1868
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Documenten (*.lyx)"
 
-#: src/BufferView.C:1370 src/lyxfunc.C:1873 src/lyxfunc.C:1955
-#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
+#: src/BufferView.C:1383 src/lyxfunc.C:1878 src/lyxfunc.C:1960
+#: src/lyxfunc.C:1974 src/lyxfunc.C:1990
 msgid "Canceled."
 msgstr "Afgebroken."
 
-#: src/BufferView.C:1381
+#: src/BufferView.C:1394
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Document %1$s invoegen..."
 
-#: src/BufferView.C:1392
+#: src/BufferView.C:1405
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s ingevoegd."
 
-#: src/BufferView.C:1394
+#: src/BufferView.C:1407
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kon document %1$s niet invoegen"
@@ -9779,7 +9772,7 @@ msgstr "ChkTeX waarschuwing id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX waarschuwing id #"
 
-#: src/CutAndPaste.C:410
+#: src/CutAndPaste.C:405
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9791,19 +9784,19 @@ msgstr ""
 # Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
 # lettertekenstijl definieren die aan/uitgeschakeld wordt met de
 # Font-knop op de werkbalk.
-#: src/CutAndPaste.C:415
+#: src/CutAndPaste.C:410
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Tekenstijl definieren"
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:429
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:441
+#: src/CutAndPaste.C:436
 msgid "Undefined character style"
 msgstr ""
 
@@ -10127,7 +10120,7 @@ msgstr "tot de gekozen documentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:460 src/text.C:350
+#: src/buffer.C:460 src/text.C:354
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Onbekende handeling"
@@ -10636,7 +10629,7 @@ msgid "Over-write file?"
 msgstr "Het bestand bekijken"
 
 # Schrijfmachine
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1982
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1987
 #, fuzzy
 msgid "&Over-write"
 msgstr "T&ypemachine:"
@@ -10738,7 +10731,7 @@ msgstr " (veranderd)"
 msgid " (read only)"
 msgstr " (alleen lezen)"
 
-#: src/frontends/WorkArea.C:220
+#: src/frontends/WorkArea.C:224
 msgid "Formatting document..."
 msgstr "Bezig met opmaken document..."
 
@@ -11390,7 +11383,7 @@ msgstr "Document-instellingen"
 msgid "Length"
 msgstr "Lengte"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2379
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2369
 #, fuzzy
 msgid "OneHalf"
 msgstr "Een-half"
@@ -11593,148 +11586,148 @@ msgstr "Matrix"
 msgid "Math Delimiter"
 msgstr "Begrenzing"
 
-#: src/frontends/qt4/QMathDialog.C:109
+#: src/frontends/qt4/QMathDialog.C:105
 #, fuzzy
 msgid "LyX: Math Spacing"
 msgstr "Wit"
 
-#: src/frontends/qt4/QMathDialog.C:111
+#: src/frontends/qt4/QMathDialog.C:107
 msgid "Thin space\t\\,"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:112
+#: src/frontends/qt4/QMathDialog.C:108
 msgid "Medium space\t\\:"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:113
+#: src/frontends/qt4/QMathDialog.C:109
 msgid "Thick space\t\\;"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:114
+#: src/frontends/qt4/QMathDialog.C:110
 msgid "Quadratin space\t\\quad"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:115
+#: src/frontends/qt4/QMathDialog.C:111
 msgid "Double quadratin space\t\\qquad"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:116
+#: src/frontends/qt4/QMathDialog.C:112
 msgid "Negative space\t\\!"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:120
+#: src/frontends/qt4/QMathDialog.C:116
 #, fuzzy
 msgid "LyX: Math Roots"
 msgstr "LyX: Wiskundepaneel"
 
-#: src/frontends/qt4/QMathDialog.C:122
+#: src/frontends/qt4/QMathDialog.C:118
 msgid "Square root\t\\sqrt"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:123
+#: src/frontends/qt4/QMathDialog.C:119
 msgid "Cube root\t\\root"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:126
+#: src/frontends/qt4/QMathDialog.C:122
 msgid "Other root\t\\root"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:130
+#: src/frontends/qt4/QMathDialog.C:126
 #, fuzzy
 msgid "LyX: Math Styles"
 msgstr "LyX: Wiskundepaneel"
 
-#: src/frontends/qt4/QMathDialog.C:132
+#: src/frontends/qt4/QMathDialog.C:128
 msgid "Display style\t\\displaystyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:133
+#: src/frontends/qt4/QMathDialog.C:129
 msgid "Normal text style\t\\textstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:134
+#: src/frontends/qt4/QMathDialog.C:130
 msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:135
+#: src/frontends/qt4/QMathDialog.C:131
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:139
+#: src/frontends/qt4/QMathDialog.C:135
 #, fuzzy
 msgid "LyX: Fractions"
 msgstr "LyX: Wiskundepaneel"
 
-#: src/frontends/qt4/QMathDialog.C:141
+#: src/frontends/qt4/QMathDialog.C:137
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Standaard"
 
-#: src/frontends/qt4/QMathDialog.C:142
+#: src/frontends/qt4/QMathDialog.C:138
 #, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "Geen verdere notities"
 
-#: src/frontends/qt4/QMathDialog.C:143
+#: src/frontends/qt4/QMathDialog.C:139
 msgid "Nice\t\\nicefrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:144
+#: src/frontends/qt4/QMathDialog.C:140
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:145
+#: src/frontends/qt4/QMathDialog.C:141
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:146
+#: src/frontends/qt4/QMathDialog.C:142
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:150
+#: src/frontends/qt4/QMathDialog.C:146
 #, fuzzy
 msgid "LyX: Math Fonts"
 msgstr "LyX: Wiskundepaneel"
 
-#: src/frontends/qt4/QMathDialog.C:152
+#: src/frontends/qt4/QMathDialog.C:148
 msgid "Roman\t\\mathrm"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:153
+#: src/frontends/qt4/QMathDialog.C:149
 msgid "Bold\t\\mathbf"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:154
+#: src/frontends/qt4/QMathDialog.C:150
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:155
+#: src/frontends/qt4/QMathDialog.C:151
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Zonder schreef"
 
-#: src/frontends/qt4/QMathDialog.C:156
+#: src/frontends/qt4/QMathDialog.C:152
 msgid "Italic\t\\mathit"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:157
+#: src/frontends/qt4/QMathDialog.C:153
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Schrijfmachine"
 
-#: src/frontends/qt4/QMathDialog.C:158
+#: src/frontends/qt4/QMathDialog.C:154
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:159
+#: src/frontends/qt4/QMathDialog.C:155
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:160
+#: src/frontends/qt4/QMathDialog.C:156
 msgid "Calligraphic\t\\mathcal"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:161
+#: src/frontends/qt4/QMathDialog.C:157
 msgid "Normal text mode\t\\textrm"
 msgstr ""
 
@@ -12087,7 +12080,7 @@ msgstr "Voetnoot Inzet geopend"
 msgid "Opened ERT Inset"
 msgstr "ERT Inzet geopend"
 
-#: src/insets/insetert.C:388
+#: src/insets/insetert.C:390
 msgid "ERT"
 msgstr "ERT"
 
@@ -12232,6 +12225,15 @@ msgstr "t Boven|#T"
 #, fuzzy
 msgid "Opened Optional Argument Inset"
 msgstr "Voetnoot Inzet geopend"
+
+#: src/insets/insetpagebreak.h:65
+#, fuzzy
+msgid "Clear Page"
+msgstr "&Wissen"
+
+#: src/insets/insetpagebreak.h:81
+msgid "Clear Double Page"
+msgstr ""
 
 #: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
 msgid "Ref: "
@@ -12522,11 +12524,11 @@ msgstr "r Omgekeerde vlg.|#R"
 msgid "Choose a filename to save document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1822
+#: src/lyx_cb.C:136 src/lyxfunc.C:1827
 msgid "Templates|#T#t"
 msgstr "Sjablonen|#S#s"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1979
+#: src/lyx_cb.C:165 src/lyxfunc.C:1984
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12534,7 +12536,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1981
+#: src/lyx_cb.C:167 src/lyxfunc.C:1986
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Document opslaan?"
@@ -12626,31 +12628,31 @@ msgstr "LyX: Maak map aan "
 msgid "Done!"
 msgstr "Klaar!"
 
-#: src/lyx_main.C:392
+#: src/lyx_main.C:401
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:394
+#: src/lyx_main.C:403
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:433
+#: src/lyx_main.C:442
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:672
+#: src/lyx_main.C:687
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:809
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:795
+#: src/lyx_main.C:810
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12658,52 +12660,52 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:952
+#: src/lyx_main.C:967
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "U heeft geen eigen LyX-directory."
 
-#: src/lyx_main.C:953
+#: src/lyx_main.C:968
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "U heeft geen eigen LyX-map."
 
-#: src/lyx_main.C:958
+#: src/lyx_main.C:973
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:959
+#: src/lyx_main.C:974
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Afsluiten"
 
-#: src/lyx_main.C:960
+#: src/lyx_main.C:975
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:964
+#: src/lyx_main.C:979
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:970
+#: src/lyx_main.C:985
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Aanroep `createDirectory' met ongeldige naam"
 
-#: src/lyx_main.C:1125
+#: src/lyx_main.C:1140
 msgid "List of supported debug flags:"
 msgstr "Lijst van ondersteunde debug vlaggen:"
 
-#: src/lyx_main.C:1129
+#: src/lyx_main.C:1144
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Zet debugniveau op "
 
-#: src/lyx_main.C:1140
+#: src/lyx_main.C:1155
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12738,32 +12740,32 @@ msgstr ""
 "                          Type `lyx -dbg' voor een lijst met opties.\n"
 "Zie de LyX handleiding voor meer opties."
 
-#: src/lyx_main.C:1176
+#: src/lyx_main.C:1191
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:1186
+#: src/lyx_main.C:1201
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:1196
+#: src/lyx_main.C:1211
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Commando-tekst na de -x optie ontbreekt!"
 
-#: src/lyx_main.C:1206
+#: src/lyx_main.C:1221
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Ontbrekend bestandstype [bijv latex, ps,...] na "
 
-#: src/lyx_main.C:1218
+#: src/lyx_main.C:1233
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Ontbrekend bestandstype [bijv latex, ps,...] na "
 
-#: src/lyx_main.C:1223
+#: src/lyx_main.C:1238
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Kies LaTeX-bestand ter importering"
@@ -12957,37 +12959,37 @@ msgstr "Als documentstandaard opslaan"
 msgid "Converting document to new document class..."
 msgstr "Vorm document om tot nieuwe documentklasse..."
 
-#: src/lyxfunc.C:1819
+#: src/lyxfunc.C:1824
 #, fuzzy
 msgid "Select template file"
 msgstr "Volgende regel selecteren"
 
-#: src/lyxfunc.C:1856
+#: src/lyxfunc.C:1861
 #, fuzzy
 msgid "Select document to open"
 msgstr "Kies document ter opening"
 
-#: src/lyxfunc.C:1897
+#: src/lyxfunc.C:1902
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Document %1$s openen... "
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1906
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s geopend."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1908
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kon document niet openen"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1933
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Kies document ter invoeging"
 
-#: src/lyxfunc.C:2045
+#: src/lyxfunc.C:2050
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 
@@ -13509,11 +13511,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Wiskunde editor modus"
 
-#: src/mathed/InsetMathNest.C:832
+#: src/mathed/InsetMathNest.C:885
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:835
+#: src/mathed/InsetMathNest.C:888
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -13699,27 +13701,27 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Onbekende inhoudsopgavelijst"
 
-#: src/text.C:328 src/text.C:341
+#: src/text.C:332 src/text.C:345
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Taal veranderen"
 
-#: src/text.C:329
+#: src/text.C:333
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:342
+#: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:349
+#: src/text.C:353
 #, fuzzy
 msgid "Unknown token"
 msgstr "Onbekende handeling"
 
-#: src/text.C:1236
+#: src/text.C:1240
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -13728,59 +13730,59 @@ msgstr ""
 "U kunt geen spatie invoegen aan het begin van een alinea.  Lees aub de "
 "Tutorial."
 
-#: src/text.C:1247
+#: src/text.C:1251
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "U kunt twee spaties niet zo typen.  Lees aub de Tutorial."
 
-#: src/text.C:2345
+#: src/text.C:2335
 #, fuzzy
 msgid "Change: "
 msgstr "Pagina: "
 
-#: src/text.C:2348
+#: src/text.C:2338
 #, fuzzy
 msgid " at "
 msgstr " naar "
 
-#: src/text.C:2360
+#: src/text.C:2350
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Lettertype:"
 
-#: src/text.C:2367
+#: src/text.C:2357
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Diepte:"
 
-#: src/text.C:2373
+#: src/text.C:2363
 msgid ", Spacing: "
 msgstr ", Wit: "
 
-#: src/text.C:2385
+#: src/text.C:2375
 msgid "Other ("
 msgstr "Overig ("
 
-#: src/text.C:2394
+#: src/text.C:2384
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Diepte: "
 
-#: src/text.C:2395
+#: src/text.C:2385
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Alineaopmaak ingesteld"
 
-#: src/text.C:2396
+#: src/text.C:2386
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:2397
+#: src/text.C:2387
 #, fuzzy
 msgid ", Position: "
 msgstr "   opties: "
 
-#: src/text.C:2398
+#: src/text.C:2388
 msgid ", Boundary: "
 msgstr ""
 
@@ -13802,15 +13804,15 @@ msgstr "Niets te doen"
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan niet meer dan een alinea invoegen!"
 
-#: src/text3.C:687
+#: src/text3.C:685
 msgid "Unknown spacing argument: "
 msgstr "Onbekend spatiëringsargument: "
 
-#: src/text3.C:835
+#: src/text3.C:833
 msgid "Layout "
 msgstr "Opmaak "
 
-#: src/text3.C:836
+#: src/text3.C:834
 msgid " not known"
 msgstr " onbekend"
 

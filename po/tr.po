@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-19 14:30+0100\n"
+"POT-Creation-Date: 2006-11-25 18:08+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -242,63 +242,49 @@ msgstr "90 derece çevir"
 msgid "FontUi"
 msgstr "&Font:"
 
-#: src/frontends/qt4/ui/FontUi.ui:44
-msgid "Advanced Options"
-msgstr "Ýleri Seçenekler"
-
-#: src/frontends/qt4/ui/FontUi.ui:56
+#: src/frontends/qt4/ui/FontUi.ui:37
 #, fuzzy
-msgid "Use true S&mall Caps"
-msgstr "Küçük Baþlýklar"
+msgid "Sc&ale (%):"
+msgstr "Ölçek%"
 
-#: src/frontends/qt4/ui/FontUi.ui:63
-msgid "Use &Old Style Figures"
-msgstr ""
-
-#: src/frontends/qt4/ui/FontUi.ui:73
+#: src/frontends/qt4/ui/FontUi.ui:47
 #, fuzzy
-msgid "Sizes"
-msgstr "Boy"
+msgid "S&cale (%):"
+msgstr "Ölçek%"
 
-#: src/frontends/qt4/ui/FontUi.ui:97
+#: src/frontends/qt4/ui/FontUi.ui:57
 #, fuzzy
 msgid "&Base Size:"
 msgstr "&Boyut:"
 
-#: src/frontends/qt4/ui/FontUi.ui:107
-#, fuzzy
-msgid "Sc&ale Typewriter %:"
-msgstr "&Daktilo:"
-
-#: src/frontends/qt4/ui/FontUi.ui:137
-#, fuzzy
-msgid "S&cale Sans Serif %:"
-msgstr "Sa&ns Serif:"
-
-#: src/frontends/qt4/ui/FontUi.ui:150
-#, fuzzy
-msgid "Families"
-msgstr "Çerçevesiz"
-
-#: src/frontends/qt4/ui/FontUi.ui:210
-#, fuzzy
-msgid "&Default Family:"
-msgstr "&Öntanýmlý Kenar Boþluklarý"
-
-#: src/frontends/qt4/ui/FontUi.ui:220
-#, fuzzy
-msgid "&Typewriter:"
-msgstr "&Daktilo:"
-
-#: src/frontends/qt4/ui/FontUi.ui:230
+#: src/frontends/qt4/ui/FontUi.ui:80
 #, fuzzy
 msgid "&Sans Serif:"
 msgstr "Sa&ns Serif:"
 
-#: src/frontends/qt4/ui/FontUi.ui:240
+#: src/frontends/qt4/ui/FontUi.ui:90
+#, fuzzy
+msgid "&Typewriter:"
+msgstr "&Daktilo:"
+
+#: src/frontends/qt4/ui/FontUi.ui:100
+#, fuzzy
+msgid "&Default Family:"
+msgstr "&Öntanýmlý Kenar Boþluklarý"
+
+#: src/frontends/qt4/ui/FontUi.ui:110
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
 msgid "&Roman:"
 msgstr "&Roman:"
+
+#: src/frontends/qt4/ui/FontUi.ui:120
+#, fuzzy
+msgid "Use true S&mall Caps"
+msgstr "Küçük Baþlýklar"
+
+#: src/frontends/qt4/ui/FontUi.ui:127
+msgid "Use &Old Style Figures"
+msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Document &class:"
@@ -499,7 +485,7 @@ msgstr "&Dami"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:699
 #: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
-#: src/frontends/qt4/ui/QNomenclUi.ui:133 src/frontends/qt4/ui/QNoteUi.ui:31
+#: src/frontends/qt4/ui/QNomenclUi.ui:98 src/frontends/qt4/ui/QNoteUi.ui:31
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
 #: src/frontends/qt4/ui/QSendtoUi.ui:75
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:68
@@ -513,7 +499,7 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:96
 #: src/buffer_funcs.C:122 src/buffer_funcs.C:163 src/bufferlist.C:90
 #: src/bufferlist.C:198 src/lyx_cb.C:116 src/lyx_cb.C:168 src/lyxfunc.C:690
-#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:173
+#: src/lyxfunc.C:862 src/lyxfunc.C:1987 src/lyxvc.C:173
 msgid "&Cancel"
 msgstr "&Vazgeç"
 
@@ -540,8 +526,8 @@ msgstr "LyX: BibTeX Veritabaný Ekle"
 
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
-#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:146
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:251
+#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:252
 #: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Vazgeç"
@@ -1570,20 +1556,20 @@ msgstr "Matris ekle"
 msgid "Show delimiter and bracket dialog"
 msgstr "Ayraç ve parantezler"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:48
+#: src/frontends/qt4/ui/QNomenclUi.ui:37
 #, fuzzy
-msgid "&Symbol:"
-msgstr "Sembol"
+msgid "Sort &as:"
+msgstr "&Sýrala"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:58
+#: src/frontends/qt4/ui/QNomenclUi.ui:47
 #, fuzzy
 msgid "&Description:"
 msgstr "Tanýmlama"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:68
+#: src/frontends/qt4/ui/QNomenclUi.ui:57
 #, fuzzy
-msgid "Sort &as:"
-msgstr "&Sýrala"
+msgid "&Symbol:"
+msgstr "Sembol"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:51
 msgid "Type"
@@ -1634,7 +1620,7 @@ msgid "&Shaded"
 msgstr "&Kaydet"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2376
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2366
 msgid "Single"
 msgstr "Tek"
 
@@ -1643,7 +1629,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2382
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2372
 msgid "Double"
 msgstr "Çift"
 
@@ -3425,7 +3411,7 @@ msgstr "Kaynakça"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:497
+#: src/rowpainter.C:496
 msgid "Appendix"
 msgstr "Ek"
 
@@ -7374,7 +7360,7 @@ msgstr "Tablo|T"
 msgid "Math|M"
 msgstr "Matematik|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:443
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.ui:446
 msgid "Spellchecker...|S"
 msgstr "Yazým denetleme...|z"
 
@@ -7382,11 +7368,11 @@ msgstr "Yazým denetleme...|z"
 msgid "Thesaurus..."
 msgstr "Eþanlamlýlar...|E"
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:445
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:448
 msgid "Count Words|W"
 msgstr "Sözcük Say|ö"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:446
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:449
 msgid "Check TeX|h"
 msgstr "TeX denetimi|X"
 
@@ -7395,11 +7381,11 @@ msgstr "TeX denetimi|X"
 msgid "Change Tracking|g"
 msgstr "Dil deðiþtir"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:453
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.ui:456
 msgid "Preferences...|P"
 msgstr "Ayarlar...|A"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:452
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.ui:455
 msgid "Reconfigure|R"
 msgstr "Yeniden yapýlandýr|n"
 
@@ -7573,7 +7559,7 @@ msgid "Maple, evalf"
 msgstr ""
 
 #: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.ui:246
-#: lib/ui/stdmenus.ui:340
+#: lib/ui/stdmenus.ui:343
 msgid "Inline Formula|I"
 msgstr "Satýriçi Formül|F"
 
@@ -7754,50 +7740,50 @@ msgstr "Menü Ayracý|M"
 msgid "Horizontal Line"
 msgstr "Yatay Çizgi"
 
-#: lib/ui/classic.ui:257 src/insets/insetpagebreak.C:56
+#: lib/ui/classic.ui:257 src/insets/insetpagebreak.h:49
 msgid "Page Break"
 msgstr "Sayfa Bitiþi"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:341
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.ui:344
 msgid "Display Formula|D"
 msgstr "Formül"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:248 lib/ui/stdmenus.ui:343
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.ui:248 lib/ui/stdmenus.ui:346
 msgid "Eqnarray Environment|E"
 msgstr ""
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:344
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.ui:249 lib/ui/stdmenus.ui:347
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "Dizi Ortamý"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:345
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.ui:250 lib/ui/stdmenus.ui:348
 msgid "AMS alignat Environment|t"
 msgstr ""
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:346
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.ui:251 lib/ui/stdmenus.ui:349
 msgid "AMS flalign Environment|f"
 msgstr ""
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:347
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.ui:252 lib/ui/stdmenus.ui:350
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Dizi Ortamý"
 
-#: lib/ui/classic.ui:270 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:348
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.ui:253 lib/ui/stdmenus.ui:351
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "Dizi Ortamý"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:350
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.ui:353
 msgid "Array Environment|y"
 msgstr "Dizi Ortamý"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:351
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.ui:354
 msgid "Cases Environment|C"
 msgstr "Koþul Ortamý"
 
-#: lib/ui/classic.ui:274 lib/ui/stdmenus.ui:355
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.ui:358
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Dizi Ortamý"
@@ -7879,39 +7865,39 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Floatflt Figür"
 
-#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.ui:367
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.ui:370
 msgid "Table of Contents|C"
 msgstr "Ýçindekiler|Ý"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:369
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.ui:372
 msgid "Index List|I"
 msgstr "Ýndeks"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.ui:370
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.ui:373
 msgid "Glossary|G"
 msgstr ""
 
-#: lib/ui/classic.ui:315 lib/ui/stdmenus.ui:371
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.ui:374
 msgid "BibTeX Bibliography...|B"
 msgstr "BibTeX Kaynakça...|B"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:375
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:378
 msgid "LyX Document...|X"
 msgstr "LyX Belgesi...|B"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:376
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:379
 msgid "Plain Text as Lines...|L"
 msgstr "Satýrlar Olarak Düz Metin...|S"
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:377
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:380
 msgid "Plain Text as Paragraphs...|P"
 msgstr "Paragraflar Olarak Düz Metin...|P"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:409
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.ui:412
 msgid "Track Changes|T"
 msgstr "Deðiþiklikleri Takip Et|E"
 
-#: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:410
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.ui:413
 msgid "Merge Changes...|M"
 msgstr "Deðiþiklikleri Birleþtir...|B"
 
@@ -7923,7 +7909,7 @@ msgstr "Tüm Deðiþiklikleri Kabul Et|K"
 msgid "Reject All Changes|R"
 msgstr "Tüm Deðiþiklikleri Reddet|R"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.ui:415
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.ui:418
 msgid "Show Changes in Output|S"
 msgstr "Çýktýdaki Deðiþiklikleri Göster|Ç"
 
@@ -7967,7 +7953,7 @@ msgstr "Derinliði Arttýr|D"
 msgid "Start Appendix Here|S"
 msgstr "Burada Ek Baþlat|E"
 
-#: lib/ui/classic.ui:357 lib/ui/stdmenus.ui:399
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.ui:402
 msgid "Build Program|B"
 msgstr ""
 
@@ -7975,7 +7961,7 @@ msgstr ""
 msgid "Update|U"
 msgstr "Güncelle|G"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.ui:400
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.ui:403
 msgid "LaTeX Log|L"
 msgstr "LaTeX Kütüðü|K"
 
@@ -7983,15 +7969,15 @@ msgstr "LaTeX Kütüðü|K"
 msgid "TeX Information|X"
 msgstr "TeX Bilgisi|T"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:423
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:426
 msgid "Next Note|N"
 msgstr "Sonraki Not|N"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:426
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:429
 msgid "Go to Label|L"
 msgstr "Etikete Git|E"
 
-#: lib/ui/classic.ui:377 lib/ui/stdmenus.ui:422
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.ui:425
 msgid "Bookmarks|B"
 msgstr "Yerimleri|Y"
 
@@ -8035,51 +8021,51 @@ msgstr "Yerimi 4'e Git|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Yerimi 5'e Git|5"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:460
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.ui:463
 msgid "Introduction|I"
 msgstr "Tanýtým|T"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:461
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.ui:464
 msgid "Tutorial|T"
 msgstr "Eðitim|E"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:462
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.ui:465
 msgid "User's Guide|U"
 msgstr "Kullanýcý Klavuzu|K"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:463
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.ui:466
 msgid "Extended Features|E"
 msgstr "Geliþmiþ Özellikler|G"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:464
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.ui:467
 msgid "Customization|C"
 msgstr "Ayarlama|A"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:465
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.ui:468
 msgid "FAQ|F"
 msgstr "Sýkça Sorulanlar|S"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:466
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.ui:469
 msgid "Table of Contents|a"
 msgstr "Ýçindekiler|Ý"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:467
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.ui:470
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX Yapýlandýrma|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:469
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:472
 msgid "About LyX|X"
 msgstr "LyX Hakkýnda|X"
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:477 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:480 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr "LyX Hakkýnda"
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:478
+#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:481
 msgid "Preferences..."
 msgstr "Ayarlar..."
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:479
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:482
 msgid "Quit LyX"
 msgstr "Çýk"
 
@@ -8113,18 +8099,18 @@ msgid "Redo|R"
 msgstr "Ýleri al|Ý"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:776
+#: src/mathed/InsetMathNest.C:453 src/text3.C:774
 msgid "Cut"
 msgstr "Kes"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:781
+#: src/mathed/InsetMathNest.C:462 src/text3.C:779
 msgid "Copy"
 msgstr "Kopyala"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
 #: src/mathed/InsetMathGrid.C:1208 src/mathed/InsetMathNest.C:437
-#: src/text3.C:760
+#: src/text3.C:758
 msgid "Paste"
 msgstr "Yapýþtýr"
 
@@ -8402,8 +8388,9 @@ msgid "Special Character|p"
 msgstr "Özel Karakter|Ö"
 
 #: lib/ui/stdmenus.ui:289
-msgid "Special Formatting|o"
-msgstr "Özel Biçimleme|Ö"
+#, fuzzy
+msgid "Formatting|o"
+msgstr "&Biçim"
 
 #: lib/ui/stdmenus.ui:290
 msgid "List / TOC|i"
@@ -8493,126 +8480,135 @@ msgstr "Heceleme Noktasý|H"
 msgid "Line Break|B"
 msgstr "Satýr Sonu|n"
 
-#: lib/ui/stdmenus.ui:336
+#: lib/ui/stdmenus.ui:337
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Sayfa Bitiþi"
 
-#: lib/ui/stdmenus.ui:342
+#: lib/ui/stdmenus.ui:338
+#, fuzzy
+msgid "Clear Page|C"
+msgstr "Yerimleri|Y"
+
+#: lib/ui/stdmenus.ui:339
+msgid "Clear Double Page|D"
+msgstr ""
+
+#: lib/ui/stdmenus.ui:345
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "Numaralý liste"
 
-#: lib/ui/stdmenus.ui:352
+#: lib/ui/stdmenus.ui:355
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Hizalama Ortamý"
 
-#: lib/ui/stdmenus.ui:353
+#: lib/ui/stdmenus.ui:356
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Dizi Ortamý"
 
-#: lib/ui/stdmenus.ui:354
+#: lib/ui/stdmenus.ui:357
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Koþul Ortamý"
 
-#: lib/ui/stdmenus.ui:357
+#: lib/ui/stdmenus.ui:360
 msgid "Math Panel|P"
 msgstr "Matematik Paneli|P"
 
-#: lib/ui/stdmenus.ui:363
+#: lib/ui/stdmenus.ui:366
 msgid "Text Wrap Float|W"
 msgstr "Metin Dönüþ Yüzeni|t"
 
-#: lib/ui/stdmenus.ui:379
+#: lib/ui/stdmenus.ui:382
 msgid "External Material...|M"
 msgstr "Dýþ Materyal...|D"
 
-#: lib/ui/stdmenus.ui:380
+#: lib/ui/stdmenus.ui:383
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Belge...|B"
 
-#: lib/ui/stdmenus.ui:384
+#: lib/ui/stdmenus.ui:387
 msgid "LyX Note|N"
 msgstr "LyX Notu|N"
 
-#: lib/ui/stdmenus.ui:385
+#: lib/ui/stdmenus.ui:388
 msgid "Comment|C"
 msgstr "Açýklama|A"
 
-#: lib/ui/stdmenus.ui:386
+#: lib/ui/stdmenus.ui:389
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:398
+#: lib/ui/stdmenus.ui:401
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Dil deðiþtir"
 
-#: lib/ui/stdmenus.ui:401
+#: lib/ui/stdmenus.ui:404
 msgid "Table of Contents|T"
 msgstr "Ýçindekiler|Ý"
 
-#: lib/ui/stdmenus.ui:402
+#: lib/ui/stdmenus.ui:405
 msgid "Start Appendix Here|A"
 msgstr "Burada Ek Baþlat|E"
 
-#: lib/ui/stdmenus.ui:404
+#: lib/ui/stdmenus.ui:407
 msgid "Compressed|o"
 msgstr "Sýkýþmýþ|k"
 
-#: lib/ui/stdmenus.ui:405
+#: lib/ui/stdmenus.ui:408
 msgid "Settings...|S"
 msgstr "Ayarlar...|A"
 
-#: lib/ui/stdmenus.ui:411
+#: lib/ui/stdmenus.ui:414
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Tüm Deðiþiklikleri Kabul Et|K"
 
-#: lib/ui/stdmenus.ui:412
+#: lib/ui/stdmenus.ui:415
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Tüm Deðiþiklikleri Reddet|R"
 
-#: lib/ui/stdmenus.ui:413
+#: lib/ui/stdmenus.ui:416
 #, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Tüm Deðiþiklikleri Kabul Et|K"
 
-#: lib/ui/stdmenus.ui:414
+#: lib/ui/stdmenus.ui:417
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Tüm Deðiþiklikleri Reddet|R"
 
-#: lib/ui/stdmenus.ui:424
+#: lib/ui/stdmenus.ui:427
 #, fuzzy
 msgid "Next Change|C"
 msgstr "Ayný kalsýn"
 
-#: lib/ui/stdmenus.ui:425
+#: lib/ui/stdmenus.ui:428
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Referans"
 
-#: lib/ui/stdmenus.ui:432
+#: lib/ui/stdmenus.ui:435
 #, fuzzy
 msgid "Save Bookmark|S"
 msgstr "Yerimi 1 Ýþaretle"
 
-#: lib/ui/stdmenus.ui:433
+#: lib/ui/stdmenus.ui:436
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Yerimleri|Y"
 
-#: lib/ui/stdmenus.ui:444
+#: lib/ui/stdmenus.ui:447
 msgid "Thesaurus...|T"
 msgstr "Eþanlamlýlar...|E"
 
-#: lib/ui/stdmenus.ui:447
+#: lib/ui/stdmenus.ui:450
 msgid "TeX Information|I"
 msgstr "TeX Bilgisi|T"
 
@@ -8632,11 +8628,11 @@ msgstr "Belgeyi kaydet"
 msgid "Print document"
 msgstr "Belgeyi yazdýr"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:683
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:696
 msgid "Undo"
 msgstr "Geri al"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:694
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:707
 msgid "Redo"
 msgstr "Ýleri al"
 
@@ -8941,7 +8937,7 @@ msgstr "Tüm Deðiþiklikleri Reddet|R"
 msgid "Next note"
 msgstr "Sonraki Not|N"
 
-#: src/BufferView.C:221
+#: src/BufferView.C:222
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -8949,20 +8945,20 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:224 src/lyxfunc.C:861
+#: src/BufferView.C:225 src/lyxfunc.C:861
 msgid "Revert to saved document?"
 msgstr "Kayýtlý belgeye geri dön?"
 
-#: src/BufferView.C:225 src/lyxfunc.C:862 src/lyxvc.C:173
+#: src/BufferView.C:226 src/lyxfunc.C:862 src/lyxvc.C:173
 msgid "&Revert"
 msgstr "&Geri dön"
 
-#: src/BufferView.C:225
+#: src/BufferView.C:226
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Açýk bir belgeye geç"
 
-#: src/BufferView.C:247
+#: src/BufferView.C:248
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -8970,103 +8966,103 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.C:250
+#: src/BufferView.C:251
 msgid "Create new document?"
 msgstr "Yeni bir belge oluþturayým mý?"
 
-#: src/BufferView.C:251
+#: src/BufferView.C:252
 msgid "&Create"
 msgstr "&Oluþtur"
 
-#: src/BufferView.C:533
+#: src/BufferView.C:542
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Yerimi 5 Ýþaretle"
 
-#: src/BufferView.C:686
+#: src/BufferView.C:699
 msgid "No further undo information"
 msgstr "Baþka geri alma bilgisi yok"
 
-#: src/BufferView.C:697
+#: src/BufferView.C:710
 msgid "No further redo information"
 msgstr "Baþka ileri alma bilgisi yok"
 
-#: src/BufferView.C:858
+#: src/BufferView.C:871
 msgid "Mark off"
 msgstr "Ýþaret kapalý"
 
-#: src/BufferView.C:865
+#: src/BufferView.C:878
 msgid "Mark on"
 msgstr "Ýþaret açýk"
 
-#: src/BufferView.C:872
+#: src/BufferView.C:885
 msgid "Mark removed"
 msgstr "Ýþaret kaldýrýldý"
 
-#: src/BufferView.C:875
+#: src/BufferView.C:888
 msgid "Mark set"
 msgstr "Ýþaret kondu"
 
-#: src/BufferView.C:921
+#: src/BufferView.C:934
 #, c-format
 msgid "%1$d words in selection."
 msgstr "Seçimde %1$d sözcük var."
 
-#: src/BufferView.C:924
+#: src/BufferView.C:937
 #, c-format
 msgid "%1$d words in document."
 msgstr "Belgede %1$d sözcük var."
 
-#: src/BufferView.C:929
+#: src/BufferView.C:942
 msgid "One word in selection."
 msgstr "Seçimdi bir sözcük var."
 
-#: src/BufferView.C:931
+#: src/BufferView.C:944
 msgid "One word in document."
 msgstr "Belgede bir sözcük var."
 
-#: src/BufferView.C:934
+#: src/BufferView.C:947
 msgid "Count words"
 msgstr "Sözcükleri say"
 
-#: src/BufferView.C:1351
+#: src/BufferView.C:1364
 msgid "Select LyX document to insert"
 msgstr "Eklenecek LyX belgesini seçin"
 
-#: src/BufferView.C:1353 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1366 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:168
 #: src/frontends/controllers/ControlGraphics.C:94
 #: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:135
-#: src/lyxfunc.C:1821 src/lyxfunc.C:1858 src/lyxfunc.C:1933
+#: src/lyxfunc.C:1826 src/lyxfunc.C:1863 src/lyxfunc.C:1938
 msgid "Documents|#o#O"
 msgstr "Belgeler|#b#B"
 
-#: src/BufferView.C:1354 src/lyxfunc.C:1859 src/lyxfunc.C:1934
+#: src/BufferView.C:1367 src/lyxfunc.C:1864 src/lyxfunc.C:1939
 msgid "Examples|#E#e"
 msgstr "Örnekler|#ö#Ö"
 
-#: src/BufferView.C:1358 src/lyx_cb.C:141 src/lyxfunc.C:1826
-#: src/lyxfunc.C:1863
+#: src/BufferView.C:1371 src/lyx_cb.C:141 src/lyxfunc.C:1831
+#: src/lyxfunc.C:1868
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Belgeleri (*.lyx)"
 
-#: src/BufferView.C:1370 src/lyxfunc.C:1873 src/lyxfunc.C:1955
-#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
+#: src/BufferView.C:1383 src/lyxfunc.C:1878 src/lyxfunc.C:1960
+#: src/lyxfunc.C:1974 src/lyxfunc.C:1990
 msgid "Canceled."
 msgstr "Vazgeçildi."
 
-#: src/BufferView.C:1381
+#: src/BufferView.C:1394
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/BufferView.C:1392
+#: src/BufferView.C:1405
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Belge %1$s eklendi."
 
-#: src/BufferView.C:1394
+#: src/BufferView.C:1407
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Belge %1$s eklenemedi"
@@ -9080,7 +9076,7 @@ msgstr ""
 msgid "ChkTeX warning id # "
 msgstr ""
 
-#: src/CutAndPaste.C:410
+#: src/CutAndPaste.C:405
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9093,11 +9089,11 @@ msgstr ""
 "yerleþim '%1$s',\n"
 "'%2$s' a çevrildi"
 
-#: src/CutAndPaste.C:415
+#: src/CutAndPaste.C:410
 msgid "Changed Layout"
 msgstr "Yerleþim Deðiþti"
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:429
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9108,7 +9104,7 @@ msgstr ""
 "yerleþim '%1$s',\n"
 "'%2$s' a çevrildi"
 
-#: src/CutAndPaste.C:441
+#: src/CutAndPaste.C:436
 msgid "Undefined character style"
 msgstr "Bilinmeyen karakter stili"
 
@@ -9413,7 +9409,7 @@ msgstr "Bilinmeyen belge sýnýfý"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "%1$s sýnýfý bilinmediðinden, öntanýmlý belge sýnýfý kullanýlacak."
 
-#: src/buffer.C:460 src/text.C:350
+#: src/buffer.C:460 src/text.C:354
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
@@ -9899,7 +9895,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
-#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1982
+#: src/exporter.C:86 src/lyx_cb.C:168 src/lyxfunc.C:1987
 msgid "&Over-write"
 msgstr "&Üzerine Yaz"
 
@@ -9992,7 +9988,7 @@ msgstr " (deðiþti)"
 msgid " (read only)"
 msgstr " (yalnýzca okunabilir)"
 
-#: src/frontends/WorkArea.C:220
+#: src/frontends/WorkArea.C:224
 msgid "Formatting document..."
 msgstr "Belge biçimlendiriliyor..."
 
@@ -10579,7 +10575,7 @@ msgstr "Belge Ayarlarý"
 msgid "Length"
 msgstr "Boy"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2379
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2369
 msgid "OneHalf"
 msgstr "BirBuçuk"
 
@@ -10759,141 +10755,141 @@ msgstr ""
 msgid "Math Delimiter"
 msgstr "Matematik Ayraç"
 
-#: src/frontends/qt4/QMathDialog.C:109
+#: src/frontends/qt4/QMathDialog.C:105
 msgid "LyX: Math Spacing"
 msgstr "LyX: Matematik Boþluklar"
 
-#: src/frontends/qt4/QMathDialog.C:111
+#: src/frontends/qt4/QMathDialog.C:107
 msgid "Thin space\t\\,"
 msgstr "Ýnce boþluk\t\\,"
 
-#: src/frontends/qt4/QMathDialog.C:112
+#: src/frontends/qt4/QMathDialog.C:108
 msgid "Medium space\t\\:"
 msgstr "Orta boþluk\t\\:"
 
-#: src/frontends/qt4/QMathDialog.C:113
+#: src/frontends/qt4/QMathDialog.C:109
 msgid "Thick space\t\\;"
 msgstr "Geniþ boþluk\t\\;"
 
-#: src/frontends/qt4/QMathDialog.C:114
+#: src/frontends/qt4/QMathDialog.C:110
 msgid "Quadratin space\t\\quad"
 msgstr "Dörtlü boþluk\t\\quad"
 
-#: src/frontends/qt4/QMathDialog.C:115
+#: src/frontends/qt4/QMathDialog.C:111
 msgid "Double quadratin space\t\\qquad"
 msgstr "Çift dörtlü boþluk\t\\qquad"
 
-#: src/frontends/qt4/QMathDialog.C:116
+#: src/frontends/qt4/QMathDialog.C:112
 msgid "Negative space\t\\!"
 msgstr "Negatif boþluk\t\\!"
 
-#: src/frontends/qt4/QMathDialog.C:120
+#: src/frontends/qt4/QMathDialog.C:116
 msgid "LyX: Math Roots"
 msgstr "LyX: Matematik Kökler"
 
-#: src/frontends/qt4/QMathDialog.C:122
+#: src/frontends/qt4/QMathDialog.C:118
 msgid "Square root\t\\sqrt"
 msgstr "Kare kök\t\\sqrt"
 
-#: src/frontends/qt4/QMathDialog.C:123
+#: src/frontends/qt4/QMathDialog.C:119
 msgid "Cube root\t\\root"
 msgstr "Küb kök\t\\root"
 
-#: src/frontends/qt4/QMathDialog.C:126
+#: src/frontends/qt4/QMathDialog.C:122
 msgid "Other root\t\\root"
 msgstr "Diðer kök\t\\root"
 
-#: src/frontends/qt4/QMathDialog.C:130
+#: src/frontends/qt4/QMathDialog.C:126
 msgid "LyX: Math Styles"
 msgstr "LyX: Matematik Stilleri"
 
-#: src/frontends/qt4/QMathDialog.C:132
+#: src/frontends/qt4/QMathDialog.C:128
 msgid "Display style\t\\displaystyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:133
+#: src/frontends/qt4/QMathDialog.C:129
 msgid "Normal text style\t\\textstyle"
 msgstr "Normal metin stili\t\\textstyle"
 
-#: src/frontends/qt4/QMathDialog.C:134
+#: src/frontends/qt4/QMathDialog.C:130
 msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:135
+#: src/frontends/qt4/QMathDialog.C:131
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:139
+#: src/frontends/qt4/QMathDialog.C:135
 #, fuzzy
 msgid "LyX: Fractions"
 msgstr "LyX: Matematik Fontlarý"
 
-#: src/frontends/qt4/QMathDialog.C:141
+#: src/frontends/qt4/QMathDialog.C:137
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Standart"
 
-#: src/frontends/qt4/QMathDialog.C:142
+#: src/frontends/qt4/QMathDialog.C:138
 msgid "No hor. line\t\\atop"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:143
+#: src/frontends/qt4/QMathDialog.C:139
 msgid "Nice\t\\nicefrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:144
+#: src/frontends/qt4/QMathDialog.C:140
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:145
+#: src/frontends/qt4/QMathDialog.C:141
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:146
+#: src/frontends/qt4/QMathDialog.C:142
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:150
+#: src/frontends/qt4/QMathDialog.C:146
 msgid "LyX: Math Fonts"
 msgstr "LyX: Matematik Fontlarý"
 
-#: src/frontends/qt4/QMathDialog.C:152
+#: src/frontends/qt4/QMathDialog.C:148
 msgid "Roman\t\\mathrm"
 msgstr "Roman\t\\mathrm"
 
-#: src/frontends/qt4/QMathDialog.C:153
+#: src/frontends/qt4/QMathDialog.C:149
 msgid "Bold\t\\mathbf"
 msgstr "Kalýn\t\\mathbf"
 
-#: src/frontends/qt4/QMathDialog.C:154
+#: src/frontends/qt4/QMathDialog.C:150
 msgid "Bold symbol\t\\boldsymbol"
 msgstr "Kalýn sembol\t\\boldsymbol"
 
-#: src/frontends/qt4/QMathDialog.C:155
+#: src/frontends/qt4/QMathDialog.C:151
 msgid "Sans serif\t\\mathsf"
 msgstr "Sans serif\t\\mathsf"
 
-#: src/frontends/qt4/QMathDialog.C:156
+#: src/frontends/qt4/QMathDialog.C:152
 msgid "Italic\t\\mathit"
 msgstr "Ýtalik\t\\mathit"
 
-#: src/frontends/qt4/QMathDialog.C:157
+#: src/frontends/qt4/QMathDialog.C:153
 msgid "Typewriter\t\\mathtt"
 msgstr "Daktilo\t\\mathtt"
 
-#: src/frontends/qt4/QMathDialog.C:158
+#: src/frontends/qt4/QMathDialog.C:154
 msgid "Blackboard\t\\mathbb"
 msgstr "Karatahta\t\\mathbb"
 
-#: src/frontends/qt4/QMathDialog.C:159
+#: src/frontends/qt4/QMathDialog.C:155
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:160
+#: src/frontends/qt4/QMathDialog.C:156
 msgid "Calligraphic\t\\mathcal"
 msgstr "Kaligrafik\t\\mathcal"
 
-#: src/frontends/qt4/QMathDialog.C:161
+#: src/frontends/qt4/QMathDialog.C:157
 msgid "Normal text mode\t\\textrm"
 msgstr "Normal metin\t\\textrm"
 
@@ -11207,7 +11203,7 @@ msgstr "Derinliði Azalt|z"
 msgid "Opened ERT Inset"
 msgstr ""
 
-#: src/insets/insetert.C:388
+#: src/insets/insetert.C:390
 msgid "ERT"
 msgstr ""
 
@@ -11342,6 +11338,15 @@ msgstr ""
 
 #: src/insets/insetoptarg.C:59
 msgid "Opened Optional Argument Inset"
+msgstr ""
+
+#: src/insets/insetpagebreak.h:65
+#, fuzzy
+msgid "Clear Page"
+msgstr "S&il"
+
+#: src/insets/insetpagebreak.h:81
+msgid "Clear Double Page"
 msgstr ""
 
 #: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
@@ -11614,11 +11619,11 @@ msgstr "&Yeniden adlandýr"
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1822
+#: src/lyx_cb.C:136 src/lyxfunc.C:1827
 msgid "Templates|#T#t"
 msgstr "Þablonlar|#Þ#þ"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:1979
+#: src/lyx_cb.C:165 src/lyxfunc.C:1984
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11626,7 +11631,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1981
+#: src/lyx_cb.C:167 src/lyxfunc.C:1986
 msgid "Over-write document?"
 msgstr "Belgenin üzerine yazayým mý?"
 
@@ -11713,29 +11718,29 @@ msgstr "LyX: kullanýcý dizini yeniden yapýlandýrýlýyor"
 msgid "Done!"
 msgstr "Bitti!"
 
-#: src/lyx_main.C:392
+#: src/lyx_main.C:401
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Geçici dizin %1$s yaratýlamadý"
 
-#: src/lyx_main.C:394
+#: src/lyx_main.C:403
 msgid "Unable to remove temporary directory"
 msgstr "Geçici dizin silinemiyor"
 
-#: src/lyx_main.C:433
+#: src/lyx_main.C:442
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hatalý komut satýrý seçeneði `%1$s'. Çýkýyorum."
 
-#: src/lyx_main.C:672
+#: src/lyx_main.C:687
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:809
 msgid "Could not create temporary directory"
 msgstr "Geçici dizin yaratýlamadý"
 
-#: src/lyx_main.C:795
+#: src/lyx_main.C:810
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11743,48 +11748,48 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:952
+#: src/lyx_main.C:967
 msgid "Missing user LyX directory"
 msgstr "LyX kullanýcý dizini yok"
 
-#: src/lyx_main.C:953
+#: src/lyx_main.C:968
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Varolmayan bir LyX kullanýcý dizini seçtiniz."
 
-#: src/lyx_main.C:958
+#: src/lyx_main.C:973
 msgid "&Create directory"
 msgstr "&Dizin yarat"
 
-#: src/lyx_main.C:959
+#: src/lyx_main.C:974
 msgid "&Exit LyX"
 msgstr "&LyX'ten çýk"
 
-#: src/lyx_main.C:960
+#: src/lyx_main.C:975
 msgid "No user LyX directory. Exiting."
 msgstr "LyX kullanýcý dizini yok. Çýkýyorum."
 
-#: src/lyx_main.C:964
+#: src/lyx_main.C:979
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Dizin %1$s yaratýlýyor"
 
-#: src/lyx_main.C:970
+#: src/lyx_main.C:985
 msgid "Failed to create directory. Exiting."
 msgstr "Dizin oluþturulamadý. Çýkýyorum."
 
-#: src/lyx_main.C:1125
+#: src/lyx_main.C:1140
 msgid "List of supported debug flags:"
 msgstr "Desteklenen hata düzeltme seçenekleri:"
 
-#: src/lyx_main.C:1129
+#: src/lyx_main.C:1144
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Hata düzeltme seviyesi %1$s olarak ayarlandý"
 
-#: src/lyx_main.C:1140
+#: src/lyx_main.C:1155
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11823,27 +11828,27 @@ msgstr ""
 "\t-version        sürüm ve inþa bilgilerini verir\n"
 "Daha fazla bilgi için LyX man sayfasýna bakýnýz."
 
-#: src/lyx_main.C:1176
+#: src/lyx_main.C:1191
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir seçeneði için dizin eksik"
 
-#: src/lyx_main.C:1186
+#: src/lyx_main.C:1201
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir seçeneði için dizin eksik"
 
-#: src/lyx_main.C:1196
+#: src/lyx_main.C:1211
 msgid "Missing command string after --execute switch"
 msgstr "--execute seçeneði için komut eksik"
 
-#: src/lyx_main.C:1206
+#: src/lyx_main.C:1221
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--export seçeneði için biçim [latex, ps, ...] eksik"
 
-#: src/lyx_main.C:1218
+#: src/lyx_main.C:1233
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import seçeneði için biçim [latex, ps, ...] eksik"
 
-#: src/lyx_main.C:1223
+#: src/lyx_main.C:1238
 msgid "Missing filename for --import"
 msgstr "--import seçeneði için dosya adý eksik"
 
@@ -12028,35 +12033,35 @@ msgstr "Belge öntanýmlarý kaydedilemedi"
 msgid "Converting document to new document class..."
 msgstr "Belge yeni sýnýfa çevriliyor..."
 
-#: src/lyxfunc.C:1819
+#: src/lyxfunc.C:1824
 msgid "Select template file"
 msgstr "Þablon dosyasý seçin"
 
-#: src/lyxfunc.C:1856
+#: src/lyxfunc.C:1861
 msgid "Select document to open"
 msgstr "Açýlacak belgeyi seçin"
 
-#: src/lyxfunc.C:1897
+#: src/lyxfunc.C:1902
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Belge %1$s açýlýyor..."
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1906
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Belge %1$s açýldý."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1908
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Belge %1$s açýlamadý"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1933
 #, c-format
 msgid "Select %1$s file to import"
 msgstr ""
 
-#: src/lyxfunc.C:2045
+#: src/lyxfunc.C:2050
 msgid "Welcome to LyX!"
 msgstr "LyX'e Hoþgeldiniz!"
 
@@ -12572,11 +12577,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:832
+#: src/mathed/InsetMathNest.C:885
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:835
+#: src/mathed/InsetMathNest.C:888
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal metin\t\\textrm"
@@ -12762,81 +12767,81 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/text.C:328 src/text.C:341
+#: src/text.C:332 src/text.C:345
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Dil deðiþtir"
 
-#: src/text.C:329
+#: src/text.C:333
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:342
+#: src/text.C:346
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:349
+#: src/text.C:353
 #, fuzzy
 msgid "Unknown token"
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/text.C:1236
+#: src/text.C:1240
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "Paragraf baþýna boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
 
-#: src/text.C:1247
+#: src/text.C:1251
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Böyle iki boþluk koyamazsýnýz. Lütfen Yardým/Eðitim'i okuyun."
 
-#: src/text.C:2345
+#: src/text.C:2335
 #, fuzzy
 msgid "Change: "
 msgstr "Sayfa: "
 
-#: src/text.C:2348
+#: src/text.C:2338
 msgid " at "
 msgstr ""
 
-#: src/text.C:2360
+#: src/text.C:2350
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/text.C:2367
+#: src/text.C:2357
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Derinlik: %1$d"
 
-#: src/text.C:2373
+#: src/text.C:2363
 msgid ", Spacing: "
 msgstr ", Aralýk: "
 
-#: src/text.C:2385
+#: src/text.C:2375
 msgid "Other ("
 msgstr "Diðer ("
 
-#: src/text.C:2394
+#: src/text.C:2384
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Derinlik: "
 
-#: src/text.C:2395
+#: src/text.C:2385
 msgid ", Paragraph: "
 msgstr ", Paragraf: "
 
-#: src/text.C:2396
+#: src/text.C:2386
 msgid ", Id: "
 msgstr ", Ad: "
 
-#: src/text.C:2397
+#: src/text.C:2387
 msgid ", Position: "
 msgstr ", Konum: "
 
-#: src/text.C:2398
+#: src/text.C:2388
 msgid ", Boundary: "
 msgstr ", Sýnýr: "
 
@@ -12854,15 +12859,15 @@ msgstr "Ýndeksleyecek bir þey yok!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Birden fazla paragraf indekslenemez!"
 
-#: src/text3.C:687
+#: src/text3.C:685
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/text3.C:835
+#: src/text3.C:833
 msgid "Layout "
 msgstr ""
 
-#: src/text3.C:836
+#: src/text3.C:834
 msgid " not known"
 msgstr " bilinmiyor"
 
