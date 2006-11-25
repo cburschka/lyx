@@ -75,9 +75,6 @@ DIALOGS
 
 MATH CONTROL PANEL
 
-* In the math control panel, "Detach panel" is broken (only 1 button is
-  visible in the detached panel).
-
 * In the math control panel, switching between different "functions" is broken
   (retry a couple of times).
 
@@ -132,9 +129,6 @@ TOOLBARS & MINIBUFFER
   (Joost 4/11/06). See also the math panel buttons entry above.
   
 * TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
-
-* Command completion in the minibuffer shows a huge blank area below the proposed
-  commands. Clicking in that empty area crashes LyX.
 
 
 EDITING
@@ -221,6 +215,7 @@ PAINTING & PERFORMANCE
   text appearing on screen. This does not seem to be compounded by having nested
   insets, and it seems to be compounded only a little by the amount of text in
   the inset. (This is especially a problem in math environments.)
+  PARTLY FIXED (Abdel 2006-11-20): except for math insets.
 
 * Slowness on MAC 3 (Bennett 3/11/06): Some operations that with 1.4 are
   pretty much instantaneous (inserting a footnote, dragging the mouse, switching
@@ -278,18 +273,6 @@ MAC OS X
 
 * Menu bar disappears on MAC (instead of being disabled) when dialogs appear.
 
-* Mac Crash (Bennett 3/11/06):
-  On launch from GUI (by double-clicking on the LyX icon). As I reported before,
-  this happens only when using the GUI; I can successfully start LyX from the
-  Terminal, with or without gdb. Hence the only debug information I get is this,
-  printed out in Console.app when I try launching from the GUI (note that the
-  number changes everytime):
-
-  Wrong command line option `-psn_0_182321153'. Exiting.
-
-Hint from Andreas Vox: LyX must accept any option starting with '-psn' and
-pass it oon to the Qt initialisation. On Mac this gives the app a link to the
-Window system.
 
 * Mac Crash On quit (Bennett).
 Here's the backtrace:
@@ -377,7 +360,7 @@ CREDITS:
   dialog a second time, its button sizes are adjusted to their content.
 
   WONTFIX: This happens with qt >= 4.2 only, it does not happen with 4.1.4/4.1.5!
-  (or maybe try to add an updateGeonetry() call somewhere as well; JSpitzm).
+  (or maybe try to add an updateGeometry() call somewhere as well; JSpitzm).
 
 * All label and button texts in the Qt4 dialogs are not translated.
 
@@ -455,4 +438,26 @@ CREDITS:
 * Selection highlighting is broken. Test case: two paragraphs with "Hello"
   and "World"; move cursor past "Wor", press Shift+Up 
   FIXED (Abdel 2006-11-20): side effect of updateMetrics() cleanup.
+  
+* Mac Crash (Bennett 3/11/06):
+  On launch from GUI (by double-clicking on the LyX icon). As I reported before,
+  this happens only when using the GUI; I can successfully start LyX from the
+  Terminal, with or without gdb. Hence the only debug information I get is this,
+  printed out in Console.app when I try launching from the GUI (note that the
+  number changes everytime):
+
+  Wrong command line option `-psn_0_182321153'. Exiting.
+
+  Hint from Andreas Vox: LyX must accept any option starting with '-psn' and
+  pass it oon to the Qt initialisation. On Mac this gives the app a link to the
+  Window system.
+  FIXED (Abdel 2006-11-25): Arguments are now passed to QApplication.
+  
+* In the math control panel, "Detach panel" is broken (only 1 button is
+  visible in the detached panel).
+  FIXED (Edwin/Ugras 2006-11-XX)
+  
+* Command completion in the minibuffer shows a huge blank area below the proposed
+  commands. Clicking in that empty area crashes LyX.
+  FIXED (????)
   
