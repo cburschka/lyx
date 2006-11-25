@@ -110,9 +110,6 @@ struct GuiView::GuiViewPrivate
 GuiView::GuiView(int id)
 	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
 {
-	setAttribute(Qt::WA_DeleteOnClose, true);
-	setAttribute(Qt::WA_QuitOnClose, true);
-
 //	setToolButtonStyle(Qt::ToolButtonIconOnly);
 //	setIconSize(QSize(12,12));
 
@@ -476,7 +473,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	}
 
 	saveGeometry();
-	gui.unregisterView(this);
+	hide(); // don't remove this hide, it prevents a crash on exit
+	gui.unregisterView(this);	
 }
 
 

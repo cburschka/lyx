@@ -152,31 +152,8 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	LoaderQueue::setPriority(10,100);
 
-	/* Qt Docs:
-	void QApplication::lastWindowClosed ()   [signal]
-	This signal is emitted from QApplication::exec() when the last visible 
-	primary window ... is closed.
-	This feature be turned off by setting quitOnLastWindowClosed to false.
-	*/
-	setQuitOnLastWindowClosed(false);
-	// this connect should not be necessary: 
-	// we rely on a Qt bug on Windows and maybe Linux
-	QObject::connect(this, SIGNAL(lastWindowClosed()),
-		this, SLOT(quitLyX()));
-
 	guiApp = this;
 }
-
-
-void GuiApplication::quitLyX()
-{
-	theLyXFunc().setLyXView(0);
-
-	// trigger LFUN_LYX_QUIT instead of QApplication::quit() directly
-	// since LFUN_LYX_QUIT may have more cleanup stuff
-	dispatch(FuncRequest(LFUN_LYX_QUIT, "force"));
-}
-
 
 Clipboard& GuiApplication::clipboard()
 {

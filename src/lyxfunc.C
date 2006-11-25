@@ -1035,7 +1035,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYX_QUIT:
-			if (argument != "force") {
+			if (argument == "closeOnly") {
 				if (!theApp->gui().closeAll())
 					break;
 				lyx_view_ = 0;

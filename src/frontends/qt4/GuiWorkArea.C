@@ -271,7 +271,7 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 {
 	// No need to do anything if we didn't change views...
-	if (&lyx_view_ == &theApp->currentView())
+	if (theApp == 0 || &lyx_view_ == &theApp->currentView())
 		return;
 
 	theApp->setCurrentView(lyx_view_);
@@ -528,7 +528,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 	//if (!lyxrc.show_banner)
 	//	return;
-	lyxerr << "show banner: " << lyxrc.show_banner << endl;
+	lyxerr[Debug::GUI] << "show banner: " << lyxrc.show_banner << endl;
 	/// The text to be written on top of the pixmap
 	QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
 	string const file = support::libFileSearch("images", "banner", "ppm");
@@ -583,7 +583,7 @@ void GuiWorkArea::expose(int x, int y, int w, int h)
 	QLPainter pain(&screen_);
 
 	if (greyed_out_) {
-		lyxerr << "splash screen requested" << endl;
+		lyxerr[Debug::GUI] << "splash screen requested" << endl;
 		doGreyOut(pain);
 		verticalScrollBar()->hide();
 		update(0, 0, width(), height());

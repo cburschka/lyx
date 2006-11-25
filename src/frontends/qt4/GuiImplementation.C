@@ -57,6 +57,7 @@ LyXView& GuiImplementation::view(int id)
 
 bool GuiImplementation::closeAll()
 {
+	// ATM never used
 	if (!theBufferList().quitWriteAll())
 		return false;
 
@@ -105,7 +106,7 @@ void GuiImplementation::unregisterView(GuiView * view)
 
 	if (views_.empty()) {
 		theLyXFunc().setLyXView(0);
-//		dispatch(FuncRequest(LFUN_LYX_QUIT));
+		dispatch(FuncRequest(LFUN_LYX_QUIT));
 		return;
 	}
 

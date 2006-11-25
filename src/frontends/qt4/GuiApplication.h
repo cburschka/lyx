@@ -83,10 +83,6 @@ public:
 	///
 	GuiFontLoader & guiFontLoader() { return font_loader_; }
 
-private Q_SLOTS:
-	/// request an LFUN_LYX_QUIT
-	void quitLyX();
-
 private:
 	///
 	GuiImplementation gui_;
