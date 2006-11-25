@@ -1747,21 +1747,13 @@ bool LyXText::backspace(LCursor & cur)
 		if (cur.pit() == 0)
 			return dissolveInset(cur);
 
-		if (cur.buffer().params().trackChanges) {
-			// FIXME: Change tracking (MG)
-			// Previous paragraph, mark "carriage return" as
-			// deleted:
-			Paragraph & par = pars_[cur.pit() - 1];
-			// Take care of a just inserted para break:
-			// FIXME: change tracking (MG)
-			if (!par.isInserted(par.size())) {
-				// FIXME: change tracking (MG)
-				par.setChange(par.size(), Change(Change::DELETED));
-				setCursorIntern(cur, cur.pit() - 1, par.size());
-				return true;
-			}
-		}
+		Paragraph & prev_par = pars_[cur.pit() - 1];
 
+		if (!prev_par.isMergedOnEndOfParDeletion(cur.buffer().params().trackChanges)) {
+			prev_par.setChange(prev_par.size(), Change(Change::DELETED));
+			setCursorIntern(cur, cur.pit() - 1, prev_par.size());
+			return true;
+		}
 		// The cursor is at the beginning of a paragraph, so
 		// the backspace will collapse two paragraphs into one.
 		needsUpdate = backspacePos0(cur);
@@ -1776,7 +1768,6 @@ bool LyXText::backspace(LCursor & cur)
 		// without the dreaded mechanism. (JMarc)
 		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());
-		// FIXME: change tracking (MG)
 		cur.paragraph().eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 	}
 
