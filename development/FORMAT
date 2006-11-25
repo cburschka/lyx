@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------§
 
+2006-11-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 255: new insets for \clearpage and
+	\cleardoublepage. They are written inline to the file, exactly like
+	\newpage.
+
 2006-11-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 254: new header parameter \use_esint.

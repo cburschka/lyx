@@ -603,6 +603,7 @@ def revert_esint(document):
     if (use_esint == 2):
         document.preamble.append('\\usepackage{esint}')
 
+
 def revert_clearpage(document):
     " clearpage -> ERT"
     i = 0
@@ -622,7 +623,8 @@ def revert_clearpage(document):
                                 '',
                                 '\\end_inset']
     i = i + 1
-	
+
+
 def revert_cleardoublepage(document):
     " cleardoublepage -> ERT"
     i = 0
@@ -643,6 +645,7 @@ def revert_cleardoublepage(document):
                                 '\\end_inset']
     i = i + 1
 
+
 ##
 # Conversion hub
 #
@@ -656,7 +659,8 @@ convert = [[246, []],
            [251, []],
            [252, [convert_commandparams, convert_bibitem]],
            [253, []],
-           [254, [convert_esint]]]
+           [254, [convert_esint]],
+           [255, []]]
 
 revert =  [[254, [revert_clearpage, revert_cleardoublepage]],
            [253, [revert_esint]],

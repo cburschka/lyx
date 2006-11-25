@@ -90,4 +90,4 @@ private:
 
 } // namespace lyx
 
-#endif // INSET_NEWLINE_H
+#endif // INSET_PAGEBREAK_H
