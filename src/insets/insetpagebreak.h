@@ -20,7 +20,6 @@ namespace lyx {
 
 class InsetPagebreak : public InsetOld {
 public:
-
 	InsetPagebreak() {}
 
 	InsetBase::Code lyxCode() const { return InsetBase::LINE_CODE; }
@@ -29,7 +28,7 @@ public:
 
 	void draw(PainterInfo & pi, int x, int y) const;
 
-	int latex(Buffer const &, odocstream &,
+	virtual int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 
 	int plaintext(Buffer const &, odocstream &,
@@ -40,11 +39,16 @@ public:
 
 	void read(Buffer const &, LyXLex & lex);
 
-	void write(Buffer const & buf, std::ostream & os) const;
+	virtual void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 
 	bool display() const { return true; }
+
+	virtual std::string insetLabel() const { return "Page Break"; }
+
+	virtual std::string getCmdName() const { return "\\newpage"; }
+
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const
 	{
@@ -52,6 +56,37 @@ private:
 	}
 };
 
+
+class InsetClearPage : public InsetPagebreak {
+public:
+	InsetClearPage() {}
+
+	std::string insetLabel() const { return "Clear Page"; }
+	
+	std::string getCmdName() const { return "\\clearpage"; }
+
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetClearPage);
+	}
+};
+
+
+class InsetClearDoublePage : public InsetPagebreak {
+public:
+	InsetClearDoublePage() {}
+
+	std::string insetLabel() const { return "Clear Double Page"; }
+	
+	std::string getCmdName() const { return "\\cleardoublepage"; }
+
+private:
+	virtual std::auto_ptr<InsetBase> doClone() const
+	{
+		return std::auto_ptr<InsetBase>(new InsetClearDoublePage);
+	}
+};
 
 } // namespace lyx
 

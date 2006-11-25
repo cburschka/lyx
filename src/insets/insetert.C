@@ -322,6 +322,8 @@ bool InsetERT::getStatus(LCursor & cur, FuncRequest const & cmd,
 		case LFUN_BIBITEM_INSERT:
 		case LFUN_LINE_INSERT:
 		case LFUN_PAGEBREAK_INSERT:
+		case LFUN_CLEARPAGE_INSERT:
+		case LFUN_CLEARDOUBLEPAGE_INSERT:
 		case LFUN_LANGUAGE:
 		case LFUN_LAYOUT:
 		case LFUN_LAYOUT_PARAGRAPH:

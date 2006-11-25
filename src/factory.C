@@ -88,6 +88,12 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	case LFUN_PAGEBREAK_INSERT:
 		return new InsetPagebreak;
 
+	case LFUN_CLEARPAGE_INSERT:
+		return new InsetClearPage;
+
+	case LFUN_CLEARDOUBLEPAGE_INSERT:
+		return new InsetClearDoublePage;
+
 	case LFUN_CHARSTYLE_INSERT: {
 		string s = cmd.getArg(0);
 		LyXTextClass tclass = params.getLyXTextClass();

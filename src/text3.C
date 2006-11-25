@@ -1187,6 +1187,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_HFILL_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
+	case LFUN_CLEARPAGE_INSERT:
+	case LFUN_CLEARDOUBLEPAGE_INSERT:
 		// do nothing fancy
 		doInsertInset(cur, this, cmd, false, false);
 		cur.posRight();
@@ -1804,6 +1806,8 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_SELF_INSERT:
 	case LFUN_LINE_INSERT:
 	case LFUN_PAGEBREAK_INSERT:
+	case LFUN_CLEARPAGE_INSERT:
+	case LFUN_CLEARDOUBLEPAGE_INSERT:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:

@@ -603,6 +603,45 @@ def revert_esint(document):
     if (use_esint == 2):
         document.preamble.append('\\usepackage{esint}')
 
+def revert_clearpage(document):
+    " clearpage -> ERT"
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\clearpage", i)
+        if i == -1:
+            break
+        document.body[i:i+1] =  ['\\begin_inset ERT',
+                                'status collapsed',
+                                '',
+                                '\\begin_layout %s' % document.default_layout,
+                                '',
+                                '',
+                                '\\backslash',
+                                'clearpage',
+                                '\\end_layout',
+                                '',
+                                '\\end_inset']
+    i = i + 1
+	
+def revert_cleardoublepage(document):
+    " cleardoublepage -> ERT"
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\cleardoublepage", i)
+        if i == -1:
+            break
+        document.body[i:i+1] =  ['\\begin_inset ERT',
+                                'status collapsed',
+                                '',
+                                '\\begin_layout %s' % document.default_layout,
+                                '',
+                                '',
+                                '\\backslash',
+                                'cleardoublepage',
+                                '\\end_layout',
+                                '',
+                                '\\end_inset']
+    i = i + 1
 
 ##
 # Conversion hub
@@ -619,7 +658,8 @@ convert = [[246, []],
            [253, []],
            [254, [convert_esint]]]
 
-revert =  [[253, [revert_esint]],
+revert =  [[254, [revert_clearpage, revert_cleardoublepage]],
+           [253, [revert_esint]],
            [252, [revert_nomenclature, revert_printnomenclature]],
            [251, [revert_commandparams]],
            [250, [revert_cs_label]],

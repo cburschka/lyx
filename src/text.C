@@ -316,6 +316,10 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		par.insertInset(par.size(), new InsetLine, font, change);
 	} else if (token == "\\newpage") {
 		par.insertInset(par.size(), new InsetPagebreak, font, change);
+	} else if (token == "\\clearpage") {
+		par.insertInset(par.size(), new InsetClearPage, font, change);
+	} else if (token == "\\cleardoublepage") {
+		par.insertInset(par.size(), new InsetClearDoublePage, font, change);
 	} else if (token == "\\change_unchanged") {
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {

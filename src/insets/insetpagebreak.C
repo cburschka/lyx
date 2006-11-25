@@ -38,7 +38,7 @@ void InsetPagebreak::read(Buffer const &, LyXLex &)
 
 void InsetPagebreak::write(Buffer const &, ostream & os) const
 {
-	os << "\n\\newpage\n";
+	os << "\n" << getCmdName() << '\n';
 }
 
 
@@ -53,7 +53,7 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
-	static docstring const label = _("Page Break");
+	docstring const label = _(insetLabel());
 
 	LyXFont font;
 	font.setColor(LColor::pagebreak);
@@ -80,7 +80,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 int InsetPagebreak::latex(Buffer const &, odocstream & os,
 			  OutputParams const &) const
 {
-	os << "\\newpage{}";
+	os << from_ascii(getCmdName()) << "{}";
 	return 0;
 }
 
