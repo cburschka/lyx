@@ -210,8 +210,8 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 	ParIterator fend = par_iterator_end(in);
 
 	for (; fpit != fend; ++fpit) {
-		InsetList::iterator lit = fpit->insetlist.begin();
-		InsetList::iterator eit = fpit->insetlist.end();
+		InsetList::const_iterator lit = fpit->insetlist.begin();
+		InsetList::const_iterator eit = fpit->insetlist.end();
 
 		for (; lit != eit; ++lit) {
 			switch (lit->inset->lyxCode()) {
