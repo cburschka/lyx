@@ -53,8 +53,6 @@ void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 {
-	docstring const label = _(insetLabel());
-
 	LyXFont font;
 	font.setColor(LColor::pagebreak);
 	font.decSize();
@@ -62,12 +60,12 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 	int w = 0;
 	int a = 0;
 	int d = 0;
-	theFontMetrics(font).rectText(label, w, a, d);
+	theFontMetrics(font).rectText(insetLabel(), w, a, d);
 
 	int const text_start = int(x + (dim_.wid - w) / 2);
 	int const text_end = text_start + w;
 
-	pi.pain.rectText(text_start, y + d, label, font,
+	pi.pain.rectText(text_start, y + d, insetLabel(), font,
 		LColor::none, LColor::none);
 
 	pi.pain.line(x, y, text_start, y,

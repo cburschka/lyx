@@ -14,6 +14,7 @@
 
 
 #include "inset.h"
+#include "gettext.h"
 
 
 namespace lyx {
@@ -45,7 +46,7 @@ public:
 
 	bool display() const { return true; }
 
-	virtual std::string insetLabel() const { return "Page Break"; }
+	virtual docstring insetLabel() const { return _("Page Break"); }
 
 	virtual std::string getCmdName() const { return "\\newpage"; }
 
@@ -61,7 +62,7 @@ class InsetClearPage : public InsetPagebreak {
 public:
 	InsetClearPage() {}
 
-	std::string insetLabel() const { return "Clear Page"; }
+	docstring insetLabel() const { return _("Clear Page"); }
 	
 	std::string getCmdName() const { return "\\clearpage"; }
 
@@ -77,7 +78,7 @@ class InsetClearDoublePage : public InsetPagebreak {
 public:
 	InsetClearDoublePage() {}
 
-	std::string insetLabel() const { return "Clear Double Page"; }
+	docstring insetLabel() const { return _("Clear Double Page"); }
 	
 	std::string getCmdName() const { return "\\cleardoublepage"; }
 
