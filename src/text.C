@@ -1473,8 +1473,11 @@ bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 void LyXText::acceptChange(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
+
 	if (!cur.selection() && cur.lastpos() != 0)
 		return;
+
+	// FIXME: we must handle start = end = 0
 
 	recordUndoSelection(cur, Undo::INSERT);
 
@@ -1510,8 +1513,11 @@ void LyXText::acceptChange(LCursor & cur)
 void LyXText::rejectChange(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
+
 	if (!cur.selection() && cur.lastpos() != 0)
 		return;
+
+	// FIXME: we must handle start = end = 0
 
 	recordUndoSelection(cur, Undo::INSERT);
 
@@ -1812,7 +1818,6 @@ bool LyXText::dissolveInset(LCursor & cur) {
 		spos += cur.pos();
 	spit += cur.pit();
 	Buffer & b = cur.buffer();
-	// FIXME: change tracking (MG)
 	cur.paragraph().eraseChar(cur.pos(), b.params().trackChanges);
 	if (!plist.empty()) {
 		if (in_ert) {
@@ -1880,8 +1885,8 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	// FIXME: We should always use getFont(), see documentation of
 	// noFontChange() in insetbase.h.
 	LyXFont const bufferfont = buffer.params().getFont();
-	InsetList::iterator ii = par.insetlist.begin();
-	InsetList::iterator iend = par.insetlist.end();
+	InsetList::const_iterator ii = par.insetlist.begin();
+	InsetList::const_iterator iend = par.insetlist.end();
 	for (; ii != iend; ++ii) {
 		Dimension dim;
 		int const w = maxwidth_ - leftMargin(buffer, pit, ii->pos)
