@@ -286,7 +286,7 @@ Menuset
 # most people using mathed learn key shortcuts quite quickly anyway)
 		Submenu "Math|h" "insert_math"
 		Submenu "Special Character|p" "insert_special"
-		Submenu "Special Formatting|o" "insert_formatting"
+		Submenu "Formatting|o" "insert_formatting"
 		Submenu "List / TOC|i" "insert_toc"
 		Submenu "Float|a" "insert_float"
 		Submenu "Note|N" "insert_note"
@@ -333,9 +333,10 @@ Menuset
 		Item "Hyphenation Point|H" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
 		Item "Line Break|B" "break-line"
+		Separator
 		Item "Page Break|a" "pagebreak-insert"
-		Item "Clear Page" "clearpage-insert"
-		Item "Clear Double Page" "cleardoublepage-insert"
+		Item "Clear Page|C" "clearpage-insert"
+		Item "Clear Double Page|D" "cleardoublepage-insert"
 	End
 
 	Menu "insert_math"
