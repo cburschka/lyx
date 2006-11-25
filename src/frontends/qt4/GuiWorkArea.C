@@ -46,15 +46,10 @@
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
-// Abdel (26/06/2006):
-// On windows-XP the UserGuide PageDown scroll test is faster without event pruning (16 s)
-// than with it (23 s).
 #ifdef Q_WS_WIN
 int const CursorWidth = 2;
- #define USE_EVENT_PRUNING 0
 #else
 int const CursorWidth = 1;
- #define USE_EVENT_PRUNING 0
 #endif
 
 
@@ -196,20 +191,6 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 		<< "\n viewport width\t" << viewport()->width()
 		<< "\n viewport height\t" << viewport()->height()
 		<< endl;
-
-	if (USE_EVENT_PRUNING) {
-		// This is the keyboard buffering stuff...
-		// I don't see any need for this under windows. The keyboard is reactive
-		// enough...
-
-		if ( !QObject::connect(&step_timer_, SIGNAL(timeout()),
-			this, SLOT(keyeventTimeout())) )
-			lyxerr[Debug::GUI] << "ERROR: keyeventTimeout cannot connect!" << endl;
-
-		// Start the timer, one-shot.
-		step_timer_.setSingleShot(true);
-		step_timer_.start(50);
-	}
 
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
@@ -438,51 +419,9 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 		<< " key=" << e->key()
 		<< endl;
 
-	if (USE_EVENT_PRUNING) {
-		keyeventQueue_.push(boost::shared_ptr<QKeyEvent>(new QKeyEvent(*e)));
-	}
-	else {
-		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
-		sym->set(e);
-		processKeySym(sym, q_key_state(e->modifiers()));
-	}
-}
-
-
-// This is used only if USE_EVENT_PRUNING is defined...
-void GuiWorkArea::keyeventTimeout()
-{
-	bool handle_autos = true;
-
-	while (!keyeventQueue_.empty()) {
-		boost::shared_ptr<QKeyEvent> ev = keyeventQueue_.front();
-
-		// We never handle more than one auto repeated
-		// char in a list of queued up events.
-		if (!handle_autos && ev->isAutoRepeat()) {
-			keyeventQueue_.pop();
-			continue;
-		}
-
-		boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
-		sym->set(ev.get());
-
-		lyxerr[Debug::GUI] << BOOST_CURRENT_FUNCTION
-				   << " count=" << ev->count()
-				   << " text=" <<  fromqstr(ev->text())
-				   << " isAutoRepeat=" << ev->isAutoRepeat()
-				   << " key=" << ev->key()
-				   << endl;
-
-		processKeySym(sym, q_key_state(ev->modifiers()));
-		keyeventQueue_.pop();
-
-		handle_autos = false;
-	}
-
-	// Restart the timer.
-	step_timer_.setSingleShot(true);
-	step_timer_.start(25);
+	boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+	sym->set(e);
+	processKeySym(sym, q_key_state(e->modifiers()));
 }
 
 

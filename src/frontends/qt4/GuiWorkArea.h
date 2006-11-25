@@ -146,10 +146,6 @@ private:
 	void inputMethodEvent(QInputMethodEvent * ev);
 
 public Q_SLOTS:
-	/// Timeout event Slot for keyboard bufferring.
-	/// \todo This is not used currently in the code, remove?
-	void keyeventTimeout();
-
 	/// Adjust the LyX buffer view with the position of the scrollbar.
 	/**
 	* The action argument is not used in the the code, it is there
@@ -164,10 +160,6 @@ private:
 
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
-	/// \todo remove
-	QTimer step_timer_;
-	/// \todo remove
-	std::queue<boost::shared_ptr<QKeyEvent> > keyeventQueue_;
 	///
 	double_click dc_event_;
 
