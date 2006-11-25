@@ -24,6 +24,8 @@ using std::map;
 using std::vector;
 using std::string;
 using std::make_pair;
+using std::max;
+using std::min;
 
 namespace lyx {
 namespace frontend {
@@ -78,7 +80,6 @@ void TocModel::populate(Toc const & toc)
 
 	if (toc.empty())
 		return;
-
 	int current_row;
 	QModelIndex top_level_item;
 
@@ -86,11 +87,15 @@ void TocModel::populate(Toc const & toc)
 	TocIterator end = toc.end();
 
 	insertColumns(0, 1);
+	maxdepth_ = 0;
+	mindepth_ = INT_MAX;
 
 	while (iter != end) {
 
 		if (iter->isValid()) {
 
+			maxdepth_ = max(maxdepth_, iter->depth());
+			mindepth_ = min(mindepth_, iter->depth());
 			current_row = rowCount();
 			insertRows(current_row, 1);
 			top_level_item = QStandardItemModel::index(current_row, 0);
@@ -127,6 +132,7 @@ void TocModel::populate(TocIterator & iter,
 						QModelIndex const & parent)
 {
 	int curdepth = iter->depth() + 1;
+	
 	int current_row;
 	QModelIndex child_item;
 
@@ -143,6 +149,8 @@ void TocModel::populate(TocIterator & iter,
 			return;
 		}
 		
+		maxdepth_ = max(maxdepth_, iter->depth());
+		mindepth_ = min(mindepth_, iter->depth());
 		current_row = rowCount(parent);
 		insertRows(current_row, 1, parent);
 		child_item = QStandardItemModel::index(current_row, 0, parent);
@@ -158,6 +166,11 @@ void TocModel::populate(TocIterator & iter,
 	}
 }
 
+
+int TocModel::modelDepth()
+{
+	return maxdepth_ - mindepth_;
+}
 
 } // namespace frontend
 } // namespace lyx

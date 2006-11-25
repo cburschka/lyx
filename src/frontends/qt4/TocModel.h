@@ -43,6 +43,8 @@ public:
 	TocIterator const tocIterator(QModelIndex const & index) const;
 	///
 	QModelIndex const modelIndex(TocIterator const & it) const;
+	///
+	int modelDepth();
 
 private:
 	///
@@ -59,6 +61,9 @@ private:
 	TocMap toc_map_;
 	///
 	ModelMap model_map_;
+	///
+	int maxdepth_;
+	int mindepth_;
 };
 
 } // namespace frontend

@@ -75,6 +75,8 @@ protected:
 	void reconnectSelectionModel();
 	///
 	int getIndexDepth(QModelIndex const & index, int depth = -1);
+	///
+	void setTreeDepth(int depth = -1);
 
 private:
 

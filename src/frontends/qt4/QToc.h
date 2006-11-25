@@ -51,6 +51,8 @@ public:
 	void goTo(QModelIndex const & index);
 	///
 	int getType();
+	///
+	int getTocDepth();
 
 private:
 

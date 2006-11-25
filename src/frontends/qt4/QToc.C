@@ -51,6 +51,12 @@ bool QToc::canOutline()
 }
 
 
+int QToc::getTocDepth()
+{
+	return toc_models_[type_]->modelDepth();
+}
+
+
 QStandardItemModel * QToc::tocModel()
 {
 	lyxerr[Debug::GUI]
