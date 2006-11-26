@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-26 14:39+0100\n"
+"POT-Creation-Date: 2006-11-26 15:44+0100\n"
 "PO-Revision-Date: 2006-11-08 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -255,8 +255,8 @@ msgid "Huger"
 msgstr "Gigantisch"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:147
-msgid "Custom Bullet:"
-msgstr "Benutzerdef. Aufzählungszeichen:"
+msgid "&Custom Bullet:"
+msgstr "&Benutzerdef. Zeichen:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:177
 msgid "&Level:"
@@ -334,7 +334,7 @@ msgstr "&Schreibmaschine:"
 
 #: src/frontends/qt4/ui/FontUi.ui:100
 msgid "&Default Family:"
-msgstr "Standard-&Familie"
+msgstr "Standard-&Familie:"
 
 #: src/frontends/qt4/ui/FontUi.ui:110
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
@@ -1384,7 +1384,7 @@ msgstr "In LyX anzeigen"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:627
 msgid "Sca&le on Screen (%):"
-msgstr "Skalierung auf im Bildschirm (%):"
+msgstr "Skalierung auf &Bildschirm (%):"
 
 #: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "Show LaTeX preview"
@@ -1645,7 +1645,7 @@ msgid "&Shaded"
 msgstr "&Schattiert"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2355
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2344
 msgid "Single"
 msgstr "Einfach"
 
@@ -1654,7 +1654,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2361
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2350
 msgid "Double"
 msgstr "Doppelt"
 
@@ -1747,9 +1747,8 @@ msgid "C&onverter:"
 msgstr "&Konverter:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:150
-#, fuzzy
 msgid "&To:[[as in 'From format x to format y']]"
-msgstr "&Bis:"
+msgstr "&Nach:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:168
 msgid "&Converters"
@@ -1840,7 +1839,7 @@ msgstr "&Betrachter:"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:152
 msgid "Tell whether this format can contain vector graphics."
-msgstr "Geben Sie an, ob diese Format eine Vektorgrafik enthalten kann."
+msgstr "Geben Sie an, ob dieses Format eine Vektorgrafik enthalten kann."
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:155
 msgid "Vector graphi&cs format"
@@ -2288,9 +2287,8 @@ msgid "Restore to cursor position when the file was last closed"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefUi.ui:177
-#, fuzzy
 msgid "Save/restore window position"
-msgstr "Aktuelle Zeilenposition"
+msgstr "Fensterposition speichern/wieder herstellen"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:211
 #: src/frontends/controllers/ControlBox.C:85 src/frontends/qt4/QBox.C:194
@@ -2675,9 +2673,8 @@ msgid "Set borders of the current (selected) cell(s)"
 msgstr "Setzen Sie die Rahmen der aktuellen (ausgewählten) Zelle(n)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:670
-#, fuzzy
 msgid "Additional Space"
-msgstr "Zusätzlicher vertikaler Abstand."
+msgstr "Zusätzlicher Abstand"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
@@ -8221,7 +8218,7 @@ msgstr "Sonderzeichen|S"
 
 #: lib/ui/stdmenus.ui:289
 msgid "Formatting|o"
-msgstr "Formatierung|F"
+msgstr "Formatierung|e"
 
 #: lib/ui/stdmenus.ui:290
 msgid "List / TOC|i"
@@ -10397,7 +10394,7 @@ msgstr "Dokument-Einstellungen"
 msgid "Length"
 msgstr "Länge"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2358
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2347
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -12810,49 +12807,49 @@ msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2324
+#: src/text.C:2313
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2327
+#: src/text.C:2316
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2339
+#: src/text.C:2328
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2346
+#: src/text.C:2335
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2352
+#: src/text.C:2341
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2364
+#: src/text.C:2353
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2373
+#: src/text.C:2362
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2374
+#: src/text.C:2363
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2375
+#: src/text.C:2364
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2376
+#: src/text.C:2365
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2377
+#: src/text.C:2366
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
