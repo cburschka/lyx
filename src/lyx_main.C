@@ -331,7 +331,11 @@ int LyX::exec(int & argc, char * argv[])
 	
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
-		return execBatchCommands(argc, argv, files);
+		int exit_status = loadFiles(argc, argv, files);
+		if (exit_status)
+			return exit_status;
+		execBatchCommands();
+		return EXIT_SUCCESS;
 	}
 
 	// Force adding of font path _before_ Application is initialized
@@ -339,10 +343,14 @@ int LyX::exec(int & argc, char * argv[])
 
 	// Let the frontend parse and remove all arguments that it knows
 	pimpl_->application_.reset(createApplication(argc, argv));
+	// FIXME: this global pointer should probably go.
+	theApp = pimpl_->application_.get();
+
+	initGuiFont();
 
 	// Parse and remove all known arguments in the LyX singleton
 	// Give an error for all remaining ones.
-	int exit_status = execBatchCommands(argc, argv, files);
+	int exit_status = loadFiles(argc, argv, files);
 	if (exit_status) {
 		// Kill the application object before exiting.
 		pimpl_->application_.reset();
@@ -351,9 +359,6 @@ int LyX::exec(int & argc, char * argv[])
 		return exit_status;
 	}
 
-	initGuiFont();
-	// FIXME: this global pointer should probably go.
-	theApp = pimpl_->application_.get();
 	restoreGuiSession(files);
 	// Start the real execution loop.
 
@@ -368,12 +373,7 @@ int LyX::exec(int & argc, char * argv[])
 	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
 		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
 
-	// handle the batch commands the user asked for
-	if (!batch_command.empty()) {
-		pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(batch_command));
-	}
-
-	exit_status = pimpl_->application_->start(batch_command);
+	exit_status = pimpl_->application_->exec();
 	// Kill the application object before exiting. This avoid crash
 	// on exit on Linux.
 	pimpl_->application_.reset();
@@ -431,7 +431,7 @@ void LyX::quit()
 }
 
 
-int LyX::execBatchCommands(int & argc, char * argv[],
+int LyX::loadFiles(int & argc, char * argv[],
 	vector<string> & files)
 {
 	// check for any spurious extra arguments
@@ -464,51 +464,49 @@ int LyX::execBatchCommands(int & argc, char * argv[],
 	if (first_start)
 		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 
-	// Execute batch commands if available
-	if (!batch_command.empty()) {
+	Buffer * last_loaded = 0;
 
-		lyxerr[Debug::INIT] << "About to handle -x '"
-		       << batch_command << '\'' << endl;
+	vector<string>::const_iterator it = files.begin();
+	vector<string>::const_iterator end = files.end();
 
-		Buffer * last_loaded = 0;
-
-		vector<string>::const_iterator it = files.begin();
-		vector<string>::const_iterator end = files.end();
-
-		for (; it != end; ++it) {
-			// get absolute path of file and add ".lyx" to
-			// the filename if necessary
-			string s = fileSearch(string(), *it, "lyx");
-			if (s.empty()) {
-				Buffer * const b = newFile(*it, string(), true);
-				if (b)
-					last_loaded = b;
-			} else {
-				Buffer * buf = pimpl_->buffer_list_.newBuffer(s, false);
-				if (loadLyXFile(buf, s)) {
-					last_loaded = buf;
-					ErrorList const & el = buf->errorList("Parse");
-					if (!el.empty())
-						for_each(el.begin(), el.end(),
-							boost::bind(&LyX::printError, this, _1));
-				}
-				else
-					pimpl_->buffer_list_.release(buf);
+	for (; it != end; ++it) {
+		// get absolute path of file and add ".lyx" to
+		// the filename if necessary
+		string s = fileSearch(string(), *it, "lyx");
+		if (s.empty()) {
+			Buffer * const b = newFile(*it, string(), true);
+			if (b)
+				last_loaded = b;
+		} else {
+			Buffer * buf = pimpl_->buffer_list_.newBuffer(s, false);
+			if (loadLyXFile(buf, s)) {
+				last_loaded = buf;
+				ErrorList const & el = buf->errorList("Parse");
+				if (!el.empty())
+					for_each(el.begin(), el.end(),
+					boost::bind(&LyX::printError, this, _1));
 			}
+			else
+				pimpl_->buffer_list_.release(buf);
 		}
-
-		// try to dispatch to last loaded buffer first
-		if (last_loaded) {
-			success = false;
-			if (last_loaded->dispatch(batch_command, &success)) {
-				prepareExit();
-				return !success;
-			}
-		}
-		files.clear(); // the files are already loaded
 	}
 
+	files.clear(); // the files are already loaded
+
 	return EXIT_SUCCESS;
+}
+
+
+void LyX::execBatchCommands()
+{
+	// Execute batch commands if available
+	if (batch_command.empty())
+		return;
+
+	lyxerr[Debug::INIT] << "About to handle -x '"
+		<< batch_command << '\'' << endl;
+
+	pimpl_->lyxfunc_.dispatch(lyxaction.lookupFunc(batch_command));
 }
 
 

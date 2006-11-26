@@ -105,12 +105,12 @@ public:
 	///
 	virtual ~Application() {}
 
-	/// Start the main event loop, after executing the given batch
-	/// commands.
-	int start(std::string const & batch);
 	///
 	virtual Gui & gui() = 0;
-	///
+
+	/// Start the main event loop.
+	/// The batch command is programmed to be execute once
+	/// the event loop is started.
 	virtual int const exec() = 0;
 
 	/// Quit running LyX.

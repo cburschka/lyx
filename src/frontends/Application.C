@@ -86,13 +86,6 @@ void Application::setCurrentView(LyXView & current_view)
 	current_view_ = &current_view;
 }
 
-
-int Application::start(std::string const & /*batch*/)
-{
-	return exec();
-}
-
-
 } // namespace frontend
 
 

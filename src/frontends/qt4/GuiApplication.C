@@ -169,6 +169,7 @@ Selection& GuiApplication::selection()
 
 int const GuiApplication::exec()
 {
+	QTimer::singleShot(1, this, SLOT(execBatchCommands()));
 	return QApplication::exec();
 }
 
@@ -176,6 +177,12 @@ int const GuiApplication::exec()
 void GuiApplication::exit(int status)
 {
 	QApplication::exit(status);
+}
+
+
+void GuiApplication::execBatchCommands()
+{
+	LyX::ref().execBatchCommands();
 }
 
 

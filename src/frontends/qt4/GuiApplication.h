@@ -83,6 +83,10 @@ public:
 	///
 	GuiFontLoader & guiFontLoader() { return font_loader_; }
 
+private Q_SLOTS:
+	///
+	void execBatchCommands();
+
 private:
 	///
 	GuiImplementation gui_;

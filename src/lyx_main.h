@@ -105,6 +105,9 @@ public:
 	 */
 	Buffer const * const updateInset(InsetBase const *) const;
 
+	/// Execute batch commands if available.
+	void execBatchCommands();
+
 private:
 	/// Do some cleanup in preparation of an exit.
 	void prepareExit();
@@ -112,12 +115,12 @@ private:
 	/// Early exit during the initialisation process.
 	void earlyExit(int status);
 
-	/// Initialise LyX and execute batch commands if available.
+	/// Initialise LyX and load files if asked.
 	/**
 	\param files is filled in with the command-line file names.
 	\return exit code failure if any.
 	*/
-	int execBatchCommands(int & argc, char * argv[],
+	int loadFiles(int & argc, char * argv[],
 		std::vector<std::string> & files);
 
 	/// Create a View and restore GUI Session.
