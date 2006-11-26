@@ -15,11 +15,13 @@
 #include "bufferparams.h"
 #include "lyxtext.h"
 #include "paragraph_pimpl.h"
+#include "debug.h"
 
 
 namespace lyx {
 
 using std::string;
+using std::endl;
 
 
 static bool moveItem(Paragraph & fromPar, pos_type fromPos,
@@ -185,22 +187,25 @@ void mergeParagraph(BufferParams const & bparams,
 	pos_type pos_end = next.size() - 1;
 	pos_type pos_insert = par.size();
 
-	// The imaginary end-of-paragraph character (at par.size()) has to be
+	// the imaginary end-of-paragraph character (at par.size()) has to be
 	// marked as unmodified. Otherwise, its change is adopted by the first
 	// character of the next paragraph.
-	
-	// FIXME: change tracking (MG)
-	par.setChange(par.size(), Change(Change::UNCHANGED));
+	if (par.lookupChange(par.size()).type != Change::UNCHANGED) {
+		lyxerr[Debug::CHANGES] <<
+		   "merging par with inserted/deleted end-of-par character" << endl;
+		par.setChange(par.size(), Change(Change::UNCHANGED));
+	}
 
 	Change change = next.lookupChange(next.size());
-	// ok, now copy the paragraph
+
+	// move the content of the second paragraph to the end of the first one
 	for (pos_type i = 0, j = pos_insert; i <= pos_end; ++i) {
 		if (moveItem(next, 0, par, j, bparams)) {
 			++j;
 		}
 	}
-	// Move the change of the end-of-paragraph character
-	// FIXME: change tracking (MG)
+
+	// move the change of the end-of-paragraph character
 	par.setChange(par.size(), change);
 
 	pars.erase(boost::next(pars.begin(), par_offset + 1));
