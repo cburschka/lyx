@@ -1668,7 +1668,10 @@ bool LyXText::erase(LCursor & cur)
 		if (par.isDeleted(cur.pos()))
 			cur.forwardPosNoDescend();
 		needsUpdate = true;
-	} else if (cur.pit() != cur.lastpit()) {
+	} else {
+		if (cur.pit() == cur.lastpit())
+			return dissolveInset(cur);
+
 		if (!par.isMergedOnEndOfParDeletion(cur.buffer().params().trackChanges)) {
 			par.setChange(cur.pos(), Change(Change::DELETED));
 			cur.forwardPos();
@@ -1677,8 +1680,6 @@ bool LyXText::erase(LCursor & cur)
 			setCursorIntern(cur, cur.pit() + 1, 0);
 			needsUpdate = backspacePos0(cur);
 		}
-	} else {
-		needsUpdate = dissolveInset(cur);
 	}
 
 	// FIXME: Inserting characters has nothing to do with setting a cursor.
