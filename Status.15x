@@ -13,9 +13,7 @@ Prizes (donated by Michael):
   #3: LyX-labeled Mousepad
 
 
-PENDING FEATURES:
------------------
-
+**********************************************************************
 
 BUGS:
 -----
@@ -46,9 +44,6 @@ SPELL CHECKING (Joost 4/11/06)
   checker.
 
 
-BIBLIOGRAPHY
-
-
 TABLE OF CONTENTS
 
 * In TOC, the buttons "Up", "Down", "Promote", and "Demote" are not
@@ -62,6 +57,7 @@ TABLE OF CONTENTS
   Abdel 2006-11-17: This one is not as simple as it seems as it involves a
   TocBackend update at each keystroke. Unless we manage to update a specific
   TocItem, this will be a WONTFIX for 1.5.0.
+
 
 DIALOGS
 
@@ -133,7 +129,7 @@ TOOLBARS & MINIBUFFER
 
 EDITING
 
-* edit->text style->capitalize/lower/upper case doesn't work due to the change
+* edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
 
 * Copy/paste using middle mouse button inserts musical notes.
@@ -173,7 +169,16 @@ EDITING
       at /home/software/lyx-trunk/src/text.C:1756
 
 
-MENUS
+CHANGE TRACKING
+
+* No change bar is given in LaTeX output if (only) the par break has changed
+
+* In tables, cut & paste (complete cells) do not support change tracking
+
+* When accepting or rejecting changes, paragraphs with deleted par breaks are
+  not merged in nested text insets
+
+* When accepting a change, LyX may hang (same as in 1.4.3) 
 
 
 LAYOUT
@@ -304,6 +309,8 @@ Here's the backtrace:
 #25 0x000c25f4 in lyx::graphics::Previews::~Previews (this=0x65646f75) at Previews.C:58
 #26 0x00002f38 in cxa_atexit_wrapper (routine_param=0xc260c) at ../../gcc-4.2-20060729/gcc/config/darwin-crt3.c:402 
 
+
+**********************************************************************
 
 CREDITS:
 --------
