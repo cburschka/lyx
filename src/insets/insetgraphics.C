@@ -90,12 +90,12 @@ TODO
 
 namespace lyx {
 
-using support::absolutePath;
 using support::bformat;
 using support::changeExtension;
 using support::compare_timestamps;
 using support::contains;
 using support::DocFileName;
+using support::FileName;
 using support::float_equal;
 using support::getExtension;
 using support::isFileReadable;
@@ -453,12 +453,9 @@ enum CopyStatus {
 };
 
 
-std::pair<CopyStatus, string> const
-copyFileIfNeeded(string const & file_in, string const & file_out)
+std::pair<CopyStatus, FileName> const
+copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 {
-	BOOST_ASSERT(absolutePath(file_in));
-	BOOST_ASSERT(absolutePath(file_out));
-
 	unsigned long const checksum_in  = support::sum(file_in);
 	unsigned long const checksum_out = support::sum(file_out);
 
@@ -473,7 +470,7 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 		lyxerr[Debug::GRAPHICS]
 			<< to_utf8(support::bformat(_("Could not copy the file\n%1$s\n"
 							   "into the temporary directory."),
-					    from_utf8(file_in)))
+						from_utf8(file_in.absFilename())))
 			<< std::endl;
 	}
 
@@ -482,7 +479,7 @@ copyFileIfNeeded(string const & file_in, string const & file_out)
 }
 
 
-std::pair<CopyStatus, string> const
+std::pair<CopyStatus, FileName> const
 copyToDirIfNeeded(DocFileName const & file, string const & dir)
 {
 	using support::rtrim;
@@ -506,7 +503,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 	}
 	string const file_out = support::makeAbsPath(mangled, dir);
 
-	return copyFileIfNeeded(file_in, file_out);
+	return copyFileIfNeeded(file, FileName(file_out));
 }
 
 
@@ -563,7 +560,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
-	string temp_file = orig_file;
+	FileName temp_file = params().filename;
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
@@ -573,7 +570,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// not exist.
 	// We are not going to change the extension or using the name of the
 	// temporary file, the code is already complicated enough.
-	if (runparams.inComment || !isFileReadable(orig_file))
+	if (runparams.inComment || !isFileReadable(params().filename))
 		return params().filename.outputFilename(m_buffer->filePath());
 
 	// We place all temporary files in the master buffer's temp dir.
@@ -594,8 +591,8 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	//        run through the LaTeX compiler.
 	string output_file = support::os::external_path(runparams.nice ?
 		params().filename.outputFilename(m_buffer->filePath()) :
-		onlyFilename(temp_file));
-	string source_file = runparams.nice ? orig_file : temp_file;
+		onlyFilename(temp_file.absFilename()));
+	FileName source_file = runparams.nice ? FileName(params().filename) : temp_file;
 	string const tex_format = (runparams.flavor == OutputParams::LATEX) ?
 			"latex" : "pdflatex";
 
@@ -611,7 +608,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			lyxerr[Debug::GRAPHICS]
 				<< "\tpass zipped file to LaTeX.\n";
 
-			string const bb_orig_file = changeExtension(orig_file, "bb");
+			FileName const bb_orig_file = FileName(changeExtension(orig_file, "bb"));
 			if (runparams.nice) {
 				runparams.exportdata->addExternalFile(tex_format,
 						bb_orig_file,
@@ -619,7 +616,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 			} else {
 				// LaTeX needs the bounding box file in the
 				// tmp dir
-				string bb_file = changeExtension(temp_file, "bb");
+				FileName bb_file = FileName(changeExtension(temp_file.absFilename(), "bb"));
 				boost::tie(status, bb_file) =
 					copyFileIfNeeded(bb_orig_file, bb_file);
 				if (status == FAILURE)
@@ -637,9 +634,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 					  support::EXCLUDE_EXTENSION);
 		}
 
-		string const unzipped_temp_file = unzippedFileName(temp_file);
+		FileName const unzipped_temp_file =
+			FileName(unzippedFileName(temp_file.absFilename()));
 		output_file = unzippedFileName(output_file);
-		source_file = unzippedFileName(source_file);
+		source_file = FileName(unzippedFileName(source_file.absFilename()));
 		if (compare_timestamps(unzipped_temp_file, temp_file) > 0) {
 			// temp_file has been unzipped already and
 			// orig_file has not changed in the meantime.
@@ -673,15 +671,15 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (from == to) {
-		if (!runparams.nice && getExtension(temp_file) != ext) {
+		if (!runparams.nice && getExtension(temp_file.absFilename()) != ext) {
 			// The LaTeX compiler will not be able to determine
 			// the file format from the extension, so we must
 			// change it.
-			string const new_file = changeExtension(temp_file, ext);
+			FileName const new_file = FileName(changeExtension(temp_file.absFilename(), ext));
 			if (support::rename(temp_file, new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
-				source_file = changeExtension(source_file, ext);
+				source_file = FileName(changeExtension(source_file.absFilename(), ext));
 			} else
 				lyxerr[Debug::GRAPHICS]
 					<< "Could not rename file `"
@@ -696,7 +694,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		return stripExtensionIfPossible(output_file, to);
 	}
 
-	string const to_file = changeExtension(temp_file, ext);
+	FileName const to_file = FileName(changeExtension(temp_file.absFilename(), ext));
 	string const output_to_file = changeExtension(output_file, ext);
 
 	// Do we need to perform the conversion?
@@ -722,7 +720,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	if (converters.convert(&buf, temp_file, to_file, orig_file,
+	if (converters.convert(&buf, temp_file, to_file, params().filename,
 	                       from, to, el,
 	                       Converters::try_default | Converters::try_cache)) {
 		runparams.exportdata->addExternalFile(tex_format,
@@ -747,8 +745,8 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 	string const relative_file =
 		params().filename.relFilename(buf.filePath());
 
-	string const file_ = params().filename.absFilename();
-	bool const file_exists = !file_.empty() && isFileReadable(file_);
+	bool const file_exists = !params().filename.empty() &&
+	                         isFileReadable(params().filename);
 	string const message = file_exists ?
 		string() : string("bb = 0 0 200 100, draft, type=eps");
 	// if !message.empty() then there was no existing file
@@ -866,10 +864,10 @@ int InsetGraphics::docbook(Buffer const &, odocstream & os,
 	// easier to use.
 	if (runparams.flavor == OutputParams::XML) {
 		runparams.exportdata->addExternalFile("docbook-xml",
-						      params().filename.absFilename());
+						      params().filename);
 	} else {
 		runparams.exportdata->addExternalFile("docbook",
-						      params().filename.absFilename());
+						      params().filename);
 	}
 	os << "<inlinemediaobject>";
 
@@ -934,9 +932,8 @@ InsetGraphicsParams const & InsetGraphics::params() const
 void InsetGraphics::editGraphics(InsetGraphicsParams const & p,
 				 Buffer const & buffer) const
 {
-	string const file_with_path = p.filename.absFilename();
-	formats.edit(buffer, file_with_path,
-		     formats.getFormatFromFile(file_with_path));
+	formats.edit(buffer, p.filename,
+		     formats.getFormatFromFile(p.filename));
 }
 
 

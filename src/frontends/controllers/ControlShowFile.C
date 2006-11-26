@@ -11,12 +11,14 @@
 #include <config.h>
 
 #include "ControlShowFile.h"
+
 #include "support/filetools.h"
 
 using std::string;
 
 namespace lyx {
 
+using support::FileName;
 using support::onlyFilename;
 
 namespace frontend {
@@ -29,7 +31,7 @@ ControlShowFile::ControlShowFile(Dialog & parent)
 
 bool ControlShowFile::initialiseParams(string const & data)
 {
-	filename_ = data;
+	filename_ = FileName(data);
 	return true;
 }
 
@@ -48,7 +50,7 @@ string ControlShowFile::getFileContents()
 
 string ControlShowFile::getFileName()
 {
-	return onlyFilename(filename_);
+	return onlyFilename(filename_.absFilename());
 }
 
 } // namespace frontend

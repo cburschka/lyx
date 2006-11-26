@@ -14,6 +14,8 @@
 
 #include "debug.h"
 
+#include "support/filename.h"
+
 #include <boost/crc.hpp>
 
 #include <algorithm>
@@ -54,13 +56,14 @@ template struct boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 
 
 namespace lyx {
+namespace support {
 
-unsigned long support::sum(string const & file)
+unsigned long sum(FileName const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"
 			     << endl;
 
-	int fd = open(file.c_str(), O_RDONLY);
+	int fd = open(file.toFilesystemEncoding().c_str(), O_RDONLY);
 	if (!fd)
 		return 0;
 
@@ -88,6 +91,7 @@ unsigned long support::sum(string const & file)
 	return result;
 }
 
+} // namespace support
 } // namespace lyx
 
 #else // No mmap
@@ -111,17 +115,18 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 
 
 namespace lyx {
+namespace support {
 
 using std::ifstream;
 #if HAVE_DECL_ISTREAMBUF_ITERATOR
 using std::istreambuf_iterator;
 
-unsigned long support::sum(string const & file)
+unsigned long sum(FileName const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
 
-	ifstream ifs(file.c_str());
+	ifstream ifs(file.toFilesystemEncoding().c_str());
 	if (!ifs) return 0;
 
 	istreambuf_iterator<char> beg(ifs);
@@ -134,13 +139,13 @@ unsigned long support::sum(string const & file)
 using std::istream_iterator;
 using std::ios;
 
-unsigned long support::sum(string const & file)
+unsigned long sum(FileName const & file)
 {
 	lyxerr[Debug::FILES]
 		<< "lyx::sum() using istream_iterator (slow as a snail)"
 		<< endl;
 
-	ifstream ifs(file.c_str());
+	ifstream ifs(file.toFilesystemEncoding().c_str());
 	if (!ifs) return 0;
 
 	ifs.unsetf(ios::skipws);
@@ -151,6 +156,7 @@ unsigned long support::sum(string const & file)
 }
 #endif
 
+} // namespace support
 } // namespace lyx
 
 #endif // mmap

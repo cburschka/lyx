@@ -113,6 +113,7 @@ using support::bformat;
 using support::changeExtension;
 using support::contains;
 using support::FileFilterList;
+using support::FileName;
 using support::fileSearch;
 using support::ForkedcallsController;
 using support::i18nLibFileSearch;
@@ -540,7 +541,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		else if (name == "character" || name == "mathpanel")
 			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
 		else if (name == "latexlog")
-			enable = isFileReadable(buf->getLogName().second);
+			enable = isFileReadable(FileName(buf->getLogName().second));
 #if !defined (USE_ASPELL) && !defined (USE_ISPELL) && !defined (USE_PSPELL)
 		else if (name == "spellchecker")
 			enable = false;
@@ -1075,7 +1076,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				setErrorMessage(_("Missing argument"));
 				break;
 			}
-			string const fname = i18nLibFileSearch("doc", arg, "lyx");
+			string const fname = i18nLibFileSearch("doc", arg, "lyx").absFilename();
 			if (fname.empty()) {
 				lyxerr << "LyX: unable to find documentation file `"
 							 << arg << "'. Bad installation?" << endl;
@@ -1881,7 +1882,7 @@ void LyXFunc::open(string const & fname)
 
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
-	string const fullpath = fileSearch(string(), filename, "lyx");
+	string const fullpath = fileSearch(string(), filename, "lyx").absFilename();
 	if (!fullpath.empty()) {
 		filename = fullpath;
 	}

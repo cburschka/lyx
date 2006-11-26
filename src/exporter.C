@@ -43,6 +43,7 @@ using support::addName;
 using support::bformat;
 using support::changeExtension;
 using support::contains;
+using support::FileName;
 using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
@@ -106,7 +107,7 @@ enum CopyStatus {
  *  - CANCEL  if the export should be cancelled
  */
 CopyStatus copyFile(string const & format,
-		    string const & sourceFile, string const & destFile,
+		    FileName const & sourceFile, FileName const & destFile,
 		    string const & latexFile, bool force)
 {
 	CopyStatus ret = force ? FORCE : SUCCESS;
@@ -115,11 +116,11 @@ CopyStatus copyFile(string const & format,
 	// overwrite themselves. This check could be changed to
 	// boost::filesystem::equivalent(sourceFile, destFile) if export to
 	// other directories than the document directory is desired.
-	if (!prefixIs(onlyPath(sourceFile), package().temp_dir()))
+	if (!prefixIs(onlyPath(sourceFile.absFilename()), package().temp_dir()))
 		return ret;
 
 	if (!force) {
-		switch(checkOverwrite(destFile)) {
+		switch(checkOverwrite(destFile.absFilename())) {
 		case 0:
 			ret = SUCCESS;
 			break;
@@ -135,8 +136,8 @@ CopyStatus copyFile(string const & format,
 	if (!mover.copy(sourceFile, destFile, latexFile))
 		Alert::error(_("Couldn't copy file"),
 			     bformat(_("Copying %1$s to %2$s failed."),
-				     makeDisplayPath(sourceFile),
-				     makeDisplayPath(destFile)));
+				     makeDisplayPath(sourceFile.absFilename()),
+				     makeDisplayPath(destFile.absFilename())));
 
 	return ret;
 }
@@ -219,8 +220,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);
 	string const ext = formats.extension(format);
 	string const tmp_result_file = changeExtension(filename, ext);
-	bool const success = converters.convert(buffer, filename,
-		tmp_result_file, buffer->fileName(), backend_format, format,
+	bool const success = converters.convert(buffer, FileName(filename),
+		FileName(tmp_result_file), FileName(buffer->fileName()), backend_format, format,
 		buffer->errorList(error_type));
 	// Emit the signal to show the error list.
 	buffer->errors(error_type);
@@ -242,15 +243,15 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			string const fmt =
 				formats.getFormatFromFile(it->sourceName);
 			status = copyFile(fmt, it->sourceName,
-					  makeAbsPath(it->exportName, dest),
+					  FileName(makeAbsPath(it->exportName, dest)),
 					  it->exportName, status == FORCE);
 		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
 		} else if (fs::exists(tmp_result_file)) {
 			// Finally copy the main file
-			status = copyFile(format, tmp_result_file,
-					  result_file, result_file,
+			status = copyFile(format, FileName(tmp_result_file),
+					  FileName(result_file), result_file,
 					  status == FORCE);
 			buffer->message(bformat(_("Document exported as %1$s "
 							       "to file `%2$s'"),
@@ -280,7 +281,7 @@ bool Exporter::preview(Buffer * buffer, string const & format)
 	string result_file;
 	if (!Export(buffer, format, true, result_file))
 		return false;
-	return formats.view(*buffer, result_file, format);
+	return formats.view(*buffer, FileName(result_file), format);
 }
 
 
@@ -311,7 +312,7 @@ Exporter::getExportableFormats(Buffer const & buffer, bool only_viewable)
 }
 
 
-ExportedFile::ExportedFile(string const & s, string const & e) :
+ExportedFile::ExportedFile(FileName const & s, string const & e) :
 	sourceName(s), exportName(e) {}
 
 
@@ -324,11 +325,9 @@ bool operator==(ExportedFile const & f1, ExportedFile const & f2)
 
 
 void ExportData::addExternalFile(string const & format,
-				 string const & sourceName,
+				 FileName const & sourceName,
 				 string const & exportName)
 {
-	BOOST_ASSERT(support::absolutePath(sourceName));
-
 	// Make sure that we have every file only once, otherwise copyFile()
 	// would ask several times if it should overwrite a file.
 	vector<ExportedFile> & files = externalfiles[format];
@@ -339,9 +338,9 @@ void ExportData::addExternalFile(string const & format,
 
 
 void ExportData::addExternalFile(string const & format,
-				 string const & sourceName)
+				 FileName const & sourceName)
 {
-	addExternalFile(format, sourceName, onlyFilename(sourceName));
+	addExternalFile(format, sourceName, onlyFilename(sourceName.absFilename()));
 }
 
 

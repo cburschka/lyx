@@ -41,6 +41,8 @@
 #include <fstream>
 #include <iomanip>
 
+using lyx::support::FileName;
+
 using std::endl;
 using std::find;
 using std::fill;
@@ -60,13 +62,13 @@ using std::string;
 
 namespace {
 
-typedef pair<string, string> StrPair;
+typedef pair<string, FileName> SnippetPair;
 
 // A list of alll snippets to be converted to previews
 typedef list<string> PendingSnippets;
 
 // Each item in the vector is a pair<snippet, image file name>.
-typedef vector<StrPair> BitmapFile;
+typedef vector<SnippetPair> BitmapFile;
 
 
 string const unique_filename(string const & bufferpath)
@@ -110,7 +112,7 @@ lyx::Converter const * setConverter()
 
 
 void setAscentFractions(vector<double> & ascent_fractions,
-			string const & metrics_file)
+			FileName const & metrics_file)
 {
 	// If all else fails, then the images will have equal ascents and
 	// descents.
@@ -118,7 +120,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 	vector<double>::iterator end = ascent_fractions.end();
 	fill(it, end, 0.5);
 
-	ifstream in(metrics_file.c_str());
+	ifstream in(metrics_file.toFilesystemEncoding().c_str());
 	if (!in.good()) {
 		lyx::lyxerr[lyx::Debug::GRAPHICS]
 			<< "setAscentFractions(" << metrics_file << ")\n"
@@ -162,10 +164,10 @@ void setAscentFractions(vector<double> & ascent_fractions,
 }
 
 
-class FindFirst : public std::unary_function<StrPair, bool> {
+class FindFirst : public std::unary_function<SnippetPair, bool> {
 public:
 	FindFirst(string const & comp) : comp_(comp) {}
-	bool operator()(StrPair const & sp) const
+	bool operator()(SnippetPair const & sp) const
 	{
 		return sp.first == comp_;
 	}
@@ -191,7 +193,7 @@ public:
 	///
 	string command;
 	///
-	string metrics_file;
+	FileName metrics_file;
 	///
 	BitmapFile snippets;
 };
@@ -349,13 +351,13 @@ public:
 		: to_format_(to_format), base_(filename_base), counter_(1)
 	{}
 
-	StrPair const operator()(string const & snippet)
+	SnippetPair const operator()(string const & snippet)
 	{
 		ostringstream os;
 		os << base_ << counter_++ << '.' << to_format_;
 		string const file = os.str();
 
-		return make_pair(snippet, file);
+		return make_pair(snippet, FileName(file));
 	}
 
 private:
@@ -369,7 +371,7 @@ InProgress::InProgress(string const & filename_base,
 		       PendingSnippets const & pending,
 		       string const & to_format)
 	: pid(0),
-	  metrics_file(filename_base + ".metrics"),
+	  metrics_file(FileName(filename_base + ".metrics")),
 	  snippets(pending.size())
 {
 	PendingSnippets::const_iterator pit  = pending.begin();
@@ -649,7 +651,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	int metrics_counter = 0;
 	for (; it != end; ++it, ++metrics_counter) {
 		string const & snip = it->first;
-		string const & file = it->second;
+		FileName const & file = it->second;
 		double af = ascent_fractions[metrics_counter];
 
 		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));

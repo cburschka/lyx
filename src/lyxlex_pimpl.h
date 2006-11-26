@@ -31,6 +31,8 @@ namespace io = boost::iostreams;
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 ///
 class LyXLex::Pimpl : boost::noncopyable {
 public:
@@ -49,7 +51,7 @@ public:
 	///
 	void popTable();
 	///
-	bool setFile(std::string const & filename);
+	bool setFile(support::FileName const & filename);
 	///
 	void setStream(std::istream & i);
 	///

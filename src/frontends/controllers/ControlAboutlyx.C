@@ -28,6 +28,7 @@ using std::string;
 
 namespace lyx {
 
+using support::FileName;
 using support::fileSearch;
 using support::makeDisplayPath;
 using support::package;
@@ -42,12 +43,12 @@ ControlAboutlyx::ControlAboutlyx(Dialog & parent)
 
 void ControlAboutlyx::getCredits(ostream & ss) const
 {
-	string const name = fileSearch(package().system_support(), "CREDITS");
+	FileName const name = fileSearch(package().system_support(), "CREDITS");
 
 	bool found(!name.empty());
 
 	if (found) {
-		std::ifstream in(name.c_str());
+		std::ifstream in(name.toFilesystemEncoding().c_str());
 
 		ss << in.rdbuf();
 		found = ss.good();

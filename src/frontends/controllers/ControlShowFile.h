@@ -14,6 +14,8 @@
 
 #include "Dialog.h"
 
+#include "support/filename.h"
+
 namespace lyx {
 namespace frontend {
 
@@ -38,7 +40,7 @@ public:
 
 private:
 	///
-	std::string filename_;
+	support::FileName filename_;
 };
 
 } // namespace frontend

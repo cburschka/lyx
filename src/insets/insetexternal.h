@@ -41,9 +41,9 @@ public:
 	TempName(TempName const &);
 	~TempName();
 	TempName & operator=(TempName const &);
-	std::string const & operator()() const { return tempname_; }
+	support::FileName const & operator()() const { return tempname_; }
 private:
-	std::string tempname_;
+	support::FileName tempname_;
 };
 
 /// How is the image to be displayed on the LyX screen?
@@ -72,7 +72,7 @@ public:
 	bool read(Buffer const &, LyXLex &);
 
 	/// The name of the tempfile used for manipulations.
-	std::string const & tempname() const { return tempname_(); }
+	support::FileName const & tempname() const { return tempname_(); }
 
 	/// The template currently in use.
 	void settemplate(std::string const &);

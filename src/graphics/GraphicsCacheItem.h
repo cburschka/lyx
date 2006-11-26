@@ -36,6 +36,9 @@
 
 
 namespace lyx {
+
+namespace support { class FileName; }
+
 namespace graphics {
 
 class Image;
@@ -45,13 +48,13 @@ class Converter;
 class CacheItem : boost::noncopyable {
 public:
 	///
-	CacheItem(std::string const & file);
+	CacheItem(support::FileName const & file);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~CacheItem();
 
 	///
-	std::string const & filename() const;
+	support::FileName const & filename() const;
 
 	/// It's in the cache. Now start the loading process.
 	void startLoading() const;

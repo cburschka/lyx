@@ -29,6 +29,7 @@
 
 namespace lyx {
 
+using support::FileName;
 using support::i18nLibFileSearch;
 
 using std::endl;
@@ -106,7 +107,7 @@ bool kb_keymap::read(string const & bind_file)
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
 
-	string const tmp = i18nLibFileSearch("bind", bind_file, "bind");
+	FileName const tmp(i18nLibFileSearch("bind", bind_file, "bind"));
 	lexrc.setFile(tmp);
 	if (!lexrc.isOK()) {
 		lyxerr << "kb_keymap::read: cannot open bind file:"

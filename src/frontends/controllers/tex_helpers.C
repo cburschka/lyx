@@ -35,6 +35,7 @@ namespace lyx {
 
 using support::bformat;
 using support::contains;
+using support::FileName;
 using support::getExtension;
 using support::getFileContents;
 using support::getVectorFromString;
@@ -53,16 +54,16 @@ void rescanTexStyles()
 {
 	// Run rescan in user lyx directory
 	Path p(package().user_support());
-	string const command = libFileSearch("scripts", "TeXFiles.py");
+	FileName const command = libFileSearch("scripts", "TeXFiles.py");
 	Systemcall one;
 	int const status = one.startscript(Systemcall::Wait,
 			lyx::support::os::python() + ' ' +
-			quoteName(command));
+			quoteName(command.toFilesystemEncoding()));
 	if (status == 0)
 		return;
 	// FIXME UNICODE
 	Alert::error(_("Could not update TeX information"),
-		     bformat(_("The script `%s' failed."), lyx::from_utf8(command)));
+		     bformat(_("The script `%s' failed."), lyx::from_utf8(command.absFilename())));
 }
 
 
@@ -80,7 +81,7 @@ void texhash()
 void getTexFileList(string const & filename, std::vector<string> & list)
 {
 	list.clear();
-	string const file = libFileSearch("", filename);
+	FileName const file = libFileSearch("", filename);
 	if (file.empty())
 		return;
 
@@ -138,8 +139,12 @@ string const getTexFileFromList(string const & file,
 		lstfile = "bstFiles.lst";
 	else if (type == "bib")
 		lstfile = "bibFiles.lst";
-	string const allClasses = getFileContents(libFileSearch(string(),
-								lstfile));
+	FileName const abslstfile = libFileSearch(string(), lstfile);
+	if (abslstfile.empty()) {
+		lyxerr << "File `'" << lstfile << "' not found." << endl;
+		return string();
+	}
+	string const allClasses = getFileContents(abslstfile);
 	int entries = 0;
 	string classfile = token(allClasses, '\n', entries);
 	int count = 0;

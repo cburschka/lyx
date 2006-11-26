@@ -17,6 +17,8 @@
 #include "GraphicsParams.h"
 #include "LoaderQueue.h"
 
+#include "support/filename.h"
+
 #include <boost/bind.hpp>
 
 
@@ -24,6 +26,9 @@ using std::string;
 
 
 namespace lyx {
+
+using support::FileName;
+	
 namespace graphics {
 
 class Loader::Impl : public boost::signals::trackable {
@@ -33,7 +38,7 @@ public:
 	///
 	~Impl();
 	///
-	void resetFile(string const &);
+	void resetFile(FileName const &);
 	///
 	void resetParams(Params const &);
 	///
@@ -70,14 +75,14 @@ Loader::Loader()
 {}
 
 
-Loader::Loader(string const & file, DisplayType type)
+Loader::Loader(FileName const & file, DisplayType type)
 	: pimpl_(new Impl)
 {
 	reset(file, type);
 }
 
 
-Loader::Loader(string const & file, Params const & params)
+Loader::Loader(FileName const & file, Params const & params)
 	: pimpl_(new Impl)
 {
 	reset(file, params);
@@ -106,7 +111,7 @@ Loader & Loader::operator=(Loader const & other)
 }
 
 
-void Loader::reset(string const & file, DisplayType type) const
+void Loader::reset(FileName const & file, DisplayType type) const
 {
 	Params params;
 	params.display = type;
@@ -117,7 +122,7 @@ void Loader::reset(string const & file, DisplayType type) const
 }
 
 
-void Loader::reset(string const & file, Params const & params) const
+void Loader::reset(FileName const & file, Params const & params) const
 {
 	pimpl_->resetParams(params);
 	pimpl_->resetFile(file);
@@ -167,9 +172,9 @@ unsigned long Loader::checksum() const
 }
 
 
-string const & Loader::filename() const
+FileName const & Loader::filename() const
 {
-	static string const empty;
+	static FileName const empty;
 	return pimpl_->cached_item_.get() ?
 		pimpl_->cached_item_->filename() : empty;
 }
@@ -201,14 +206,14 @@ Loader::Impl::Impl()
 
 Loader::Impl::~Impl()
 {
-	resetFile(string());
+	resetFile(FileName());
 }
 
 
-void Loader::Impl::resetFile(string const & file)
+void Loader::Impl::resetFile(FileName const & file)
 {
-	string const old_file = cached_item_.get() ?
-		cached_item_->filename() : string();
+	FileName const old_file = cached_item_.get() ?
+		cached_item_->filename() : FileName();
 
 	if (file == old_file)
 		return;

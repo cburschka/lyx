@@ -14,6 +14,7 @@
 #define PATH_C
 
 #include "support/path.h"
+#include "support/filename.h"
 #include "support/lyxlib.h"
 
 
@@ -29,7 +30,7 @@ Path::Path(string const & path)
 	if (!path.empty()) {
 		pushedDir_ = getcwd();
 
-		if (pushedDir_.empty() || chdir(path)) {
+		if (pushedDir_.empty() || chdir(FileName(path))) {
 			/* FIXME: throw */
 		}
 	} else {
@@ -52,7 +53,7 @@ int Path::pop()
 		return 0;
 	}
 
-	if (chdir(pushedDir_)) {
+	if (chdir(FileName(pushedDir_))) {
 		// should throw an exception
 		// throw DirChangeError();
 	}

@@ -62,6 +62,7 @@ namespace lyx {
 using support::addName;
 using support::bformat;
 using support::FileFilterList;
+using support::FileName;
 using support::ForkedProcess;
 using support::isLyXFilename;
 using support::libFileSearch;
@@ -193,7 +194,7 @@ namespace {
 class AutoSaveBuffer : public ForkedProcess {
 public:
 	///
-	AutoSaveBuffer(BufferView & bv, string const & fname)
+	AutoSaveBuffer(BufferView & bv, FileName const & fname)
 		: bv_(bv), fname_(fname) {}
 	///
 	virtual shared_ptr<ForkedProcess> clone() const
@@ -207,13 +208,13 @@ private:
 	virtual int generateChild();
 	///
 	BufferView & bv_;
-	string fname_;
+	FileName fname_;
 };
 
 
 int AutoSaveBuffer::start()
 {
-	command_ = to_utf8(bformat(_("Auto-saving %1$s"), from_utf8(fname_)));
+	command_ = to_utf8(bformat(_("Auto-saving %1$s"), from_utf8(fname_.absFilename())));
 	return run(DontWait);
 }
 
@@ -231,9 +232,9 @@ int AutoSaveBuffer::generateChild()
 		// anyway.
 		bool failed = false;
 
-		string const tmp_ret = tempName(string(), "lyxauto");
+		FileName const tmp_ret(tempName(string(), "lyxauto"));
 		if (!tmp_ret.empty()) {
-			bv_.buffer()->writeFile(tmp_ret);
+			bv_.buffer()->writeFile(tmp_ret.absFilename());
 			// assume successful write of tmp_ret
 			if (!rename(tmp_ret, fname_)) {
 				failed = true;
@@ -248,7 +249,7 @@ int AutoSaveBuffer::generateChild()
 
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
-			if (!bv_.buffer()->writeFile(fname_)) {
+			if (!bv_.buffer()->writeFile(fname_.absFilename())) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
@@ -288,7 +289,7 @@ void autoSave(BufferView * bv)
 	fname += onlyFilename(bv->buffer()->fileName());
 	fname += '#';
 
-	AutoSaveBuffer autosave(*bv, fname);
+	AutoSaveBuffer autosave(*bv, FileName(fname));
 	autosave.start();
 
 	bv->buffer()->markBakClean();

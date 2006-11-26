@@ -32,6 +32,7 @@ namespace lyx {
 
 using support::bformat;
 using support::changeExtension;
+using support::FileName;
 using support::makeDisplayPath;
 
 using std::find;
@@ -56,8 +57,8 @@ bool Importer::Import(LyXView * lv, string const & filename,
 				string const tofile =
 					changeExtension(filename,
 						formats.extension(*it));
-				if (!converters.convert(0, filename, tofile,
-							filename, format, *it, errorList))
+				if (!converters.convert(0, FileName(filename), FileName(tofile),
+							FileName(filename), format, *it, errorList))
 					return false;
 				loader_format = *it;
 				break;

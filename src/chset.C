@@ -51,8 +51,8 @@ bool CharacterSet::loadFile(string const & fname)
 	// open definition file
 	lyxerr[Debug::KBMAP]
 		<< "Reading character set file " << fname << ".cdef" << endl;
-	string const filename = libFileSearch("kbd", fname, "cdef");
-	ifstream ifs(filename.c_str());
+	support::FileName const filename = libFileSearch("kbd", fname, "cdef");
+	ifstream ifs(filename.toFilesystemEncoding().c_str());
 	if (!ifs) {
 		lyxerr << "Unable to open character set file" << endl;
 		return true;		// no definition, use 7-bit ascii

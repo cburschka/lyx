@@ -17,22 +17,24 @@
 
 #include "debug.h"
 
+#include "support/filename.h"
 #include "support/filetools.h"
 
 #include <map>
-
-namespace support = lyx::support;
 
 using std::string;
 
 
 namespace lyx {
+
+using support::FileName;
+
 namespace graphics {
 
 /** The cache contains one item per file, so use a map to find the
  *  cache item quickly by filename.
  */
-typedef std::map<string, Cache::ItemPtr> CacheType;
+typedef std::map<FileName, Cache::ItemPtr> CacheType;
 
 class Cache::Impl {
 public:
@@ -64,15 +66,8 @@ std::vector<string> Cache::loadableFormats() const
 }
 
 
-void Cache::add(string const & file) const
+void Cache::add(FileName const & file) const
 {
-	if (!support::absolutePath(file)) {
-		lyxerr << "Cache::add(" << file << "):\n"
-		       << "The file must be have an absolute path."
-		       << std::endl;
-		return;
-	}
-
 	// Is the file in the cache already?
 	if (inCache(file)) {
 		lyxerr[Debug::GRAPHICS] << "Cache::add(" << file << "):\n"
@@ -85,7 +80,7 @@ void Cache::add(string const & file) const
 }
 
 
-void Cache::remove(string const & file) const
+void Cache::remove(FileName const & file) const
 {
 	CacheType::iterator it = pimpl_->cache.find(file);
 	if (it == pimpl_->cache.end())
@@ -101,13 +96,13 @@ void Cache::remove(string const & file) const
 }
 
 
-bool Cache::inCache(string const & file) const
+bool Cache::inCache(FileName const & file) const
 {
 	return pimpl_->cache.find(file) != pimpl_->cache.end();
 }
 
 
-Cache::ItemPtr const Cache::item(string const & file) const
+Cache::ItemPtr const Cache::item(FileName const & file) const
 {
 	CacheType::const_iterator it = pimpl_->cache.find(file);
 	if (it == pimpl_->cache.end())

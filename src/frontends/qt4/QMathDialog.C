@@ -29,9 +29,11 @@
 
 using std::string;
 
-using lyx::support::libFileSearch;
-
 namespace lyx {
+
+using support::FileName;
+using support::libFileSearch;
+
 namespace frontend {
 
 
@@ -70,26 +72,26 @@ QMathDialog::QMathDialog(QMath * form)
 	connect( equationPB, SIGNAL( clicked() ), this, SLOT( equationClicked() ) );
 	connect( symbolsCO, SIGNAL(activated(int)), this, SLOT(showingPanel(int)));
 
-	string icon_path = libFileSearch("images/math", "sqrt-square", "xpm");
-	sqrtPB->setIcon(QIcon(toqstr(icon_path)));
+	FileName icon_path = libFileSearch("images/math", "sqrt-square", "xpm");
+	sqrtPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "space", "xpm");
-	spacePB->setIcon(QIcon(toqstr(icon_path)));
+	spacePB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "style", "xpm");
-	stylePB->setIcon(QIcon(toqstr(icon_path)));
+	stylePB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "font", "xpm");
-	fontPB->setIcon(QIcon(toqstr(icon_path)));
+	fontPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "equation", "xpm");
-	equationPB->setIcon(QIcon(toqstr(icon_path)));
+	equationPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "frac-square", "xpm");
-	fracPB->setIcon(QIcon(toqstr(icon_path)));
+	fracPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "sub", "xpm");
-	subscriptPB->setIcon(QIcon(toqstr(icon_path)));
+	subscriptPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "super", "xpm");
-	superscriptPB->setIcon(QIcon(toqstr(icon_path)));
+	superscriptPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "matrix", "xpm");
-	matrixPB->setIcon(QIcon(toqstr(icon_path)));
+	matrixPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 	icon_path = libFileSearch("images/math", "delim", "xpm");
-	delimitersPB->setIcon(QIcon(toqstr(icon_path)));
+	delimitersPB->setIcon(QIcon(toqstr(icon_path.absFilename())));
 
 	// function list
 	for (int i = 0; *function_names[i]; ++i) {

@@ -101,6 +101,7 @@ using support::changeExtension;
 using support::cmd_ret;
 using support::createBufferTmpDir;
 using support::destroyDir;
+using support::FileName;
 using support::getFormatFromContents;
 using support::isDirWriteable;
 using support::libFileSearch;
@@ -571,7 +572,8 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 bool Buffer::readFile(string const & filename)
 {
 	// Check if the file is compressed.
-	string const format = getFormatFromContents(filename);
+	FileName const name(makeAbsPath(filename));
+	string const format = getFormatFromContents(name);
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		params().compressed = true;
 	}
@@ -579,7 +581,7 @@ bool Buffer::readFile(string const & filename)
 	// remove dummy empty par
 	paragraphs().clear();
 	LyXLex lex(0, 0);
-	lex.setFile(filename);
+	lex.setFile(name);
 	if (!readFile(lex, filename))
 		return false;
 
@@ -655,7 +657,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 					      from_utf8(filename)));
 			return false;
 		}
-		string const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
+		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
 			Alert::error(_("Conversion script not found"),
 				     bformat(_("%1$s is from an earlier"
@@ -666,7 +668,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 			return false;
 		}
 		ostringstream command;
-		command << os::python() << ' ' << quoteName(lyx2lyx)
+		command << os::python() << ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
 			<< " -t " << convert<string>(LYX_FORMAT)
 			<< " -o " << quoteName(tmpfile) << ' '
 			<< quoteName(filename);
@@ -745,7 +747,7 @@ bool Buffer::save() const
 	} else {
 		// Saving failed, so backup is not backup
 		if (lyxrc.make_backup)
-			rename(s, fileName());
+			rename(FileName(s), FileName(fileName()));
 		return false;
 	}
 	return true;

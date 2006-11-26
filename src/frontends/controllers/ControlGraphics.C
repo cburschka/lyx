@@ -44,6 +44,7 @@ namespace lyx {
 
 using support::addName;
 using support::FileFilterList;
+using support::FileName;
 using support::isFileReadable;
 using support::makeAbsPath;
 using support::package;
@@ -102,8 +103,7 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 
 string const ControlGraphics::readBB(string const & file)
 {
-	string const abs_file =
-		makeAbsPath(file, kernel().bufferFilepath());
+	FileName const abs_file(makeAbsPath(file, kernel().bufferFilepath()));
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -132,7 +132,7 @@ string const ControlGraphics::readBB(string const & file)
 bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	string const name = makeAbsPath(fname, kernel().bufferFilepath());
+	FileName const name(makeAbsPath(fname, kernel().bufferFilepath()));
 	return isFileReadable(name);
 }
 

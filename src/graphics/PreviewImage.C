@@ -15,23 +15,25 @@
 #include "GraphicsLoader.h"
 #include "PreviewLoader.h"
 
+#include "support/filename.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>
-
-namespace support = lyx::support;
 
 using std::string;
 
 
 namespace lyx {
+
+using support::FileName;
+
 namespace graphics {
 
 class PreviewImage::Impl : public boost::signals::trackable {
 public:
 	///
 	Impl(PreviewImage & p, PreviewLoader & l,
-	     string const & s, string const & f, double af);
+	     string const & s, FileName const & f, double af);
 	///
 	~Impl();
 	///
@@ -54,7 +56,7 @@ public:
 
 PreviewImage::PreviewImage(PreviewLoader & l,
 			   string const & s,
-			   string const & f,
+			   FileName const & f,
 			   double af)
 	: pimpl_(new Impl(*this, l, s, f, af))
 {}
@@ -106,7 +108,7 @@ Image const * PreviewImage::image() const
 
 PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 			 string const & s,
-			 string const & bf,
+			 FileName const & bf,
 			 double af)
 	: parent_(p), ploader_(l), iloader_(bf),
 	  snippet_(s), ascent_frac_(af)

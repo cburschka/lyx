@@ -26,6 +26,7 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
 
 ///
 struct keyword_item {
@@ -66,7 +67,7 @@ public:
 	/// stream is not ok
 	bool operator!() const;
 	/// return true if able to open file, else false
-	bool setFile(std::string const & filename);
+	bool setFile(support::FileName const & filename);
 	///
 	void setStream(std::istream & is);
 	///

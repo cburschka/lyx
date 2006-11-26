@@ -24,6 +24,7 @@
 #include "frontends/Application.h"
 
 #include "support/environment.h"
+#include "support/filename.h"
 #include "support/lyxlib.h"
 #include "support/socktools.h"
 
@@ -83,7 +84,7 @@ LyXServerSocket::~LyXServerSocket()
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
 	}
-	support::unlink(address_);
+	support::unlink(support::FileName(address_));
 	lyxerr[Debug::LYXSERVER] << "lyx: Server socket quitting" << endl;
 }
 

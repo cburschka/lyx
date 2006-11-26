@@ -35,6 +35,7 @@ using support::absolutePath;
 using support::bformat;
 using support::compare_ascii_no_case;
 using support::contains;
+using support::FileName;
 using support::libScriptSearch;
 using support::makeDisplayPath;
 using support::onlyPath;
@@ -136,7 +137,7 @@ Format const * Formats::getFormat(string const & name) const
 }
 
 
-string Formats::getFormatFromFile(string const & filename) const
+string Formats::getFormatFromFile(FileName const & filename) const
 {
 	if (filename.empty())
 		return string();
@@ -146,7 +147,7 @@ string Formats::getFormatFromFile(string const & filename) const
 		return format;
 
 	// try to find a format from the file extension.
-	string const ext(support::getExtension(filename));
+	string const ext(support::getExtension(filename.absFilename()));
 	if (!ext.empty()) {
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
@@ -261,14 +262,13 @@ void Formats::setViewer(string const & name, string const & command)
 }
 
 
-bool Formats::view(Buffer const & buffer, string const & filename,
+bool Formats::view(Buffer const & buffer, FileName const & filename,
 		   string const & format_name) const
 {
-	BOOST_ASSERT(absolutePath(filename));
-	if (filename.empty() || !fs::exists(filename)) {
+	if (filename.empty() || !fs::exists(filename.toFilesystemEncoding())) {
 		Alert::error(_("Cannot view file"),
 			bformat(_("File does not exist: %1$s"),
-				from_utf8(filename)));
+				from_utf8(filename.absFilename())));
 		return false;
 	}
 
@@ -286,12 +286,12 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	}
 	// viewer is 'auto'
 	if (format->viewer() == "auto") {
-		if (os::autoOpenFile(filename, os::VIEW))
+		if (os::autoOpenFile(filename.absFilename(), os::VIEW))
 			return true;
 		else {
 			Alert::error(_("Cannot view file"),
 				bformat(_("Auto-view file %1$s failed"),
-					from_utf8(filename)));
+					from_utf8(filename.absFilename())));
 			return false;
 		}
 	}
@@ -312,10 +312,11 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	if (!contains(command, token_from))
 		command += ' ' + token_from;
 
-	command = subst(command, token_from, quoteName(filename));
-	command = subst(command, token_path, quoteName(onlyPath(filename)));
+	command = subst(command, token_from, quoteName(filename.toFilesystemEncoding()));
+	command = subst(command, token_path, quoteName(onlyPath(filename.toFilesystemEncoding())));
 	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
+	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;
@@ -331,14 +332,13 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 }
 
 
-bool Formats::edit(Buffer const & buffer, string const & filename,
+bool Formats::edit(Buffer const & buffer, FileName const & filename,
 			 string const & format_name) const
 {
-	BOOST_ASSERT(absolutePath(filename));
-	if (filename.empty() || !fs::exists(filename)) {
+	if (filename.empty() || !fs::exists(filename.toFilesystemEncoding())) {
 		Alert::error(_("Cannot edit file"),
 			bformat(_("File does not exist: %1$s"),
-				from_utf8(filename)));
+				from_utf8(filename.absFilename())));
 		return false;
 	}
 
@@ -356,12 +356,12 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	}
 	// editor is 'auto'
 	if (format->editor() == "auto") {
-		if (os::autoOpenFile(filename, os::EDIT))
+		if (os::autoOpenFile(filename.absFilename(), os::EDIT))
 			return true;
 		else {
 			Alert::error(_("Cannot edit file"),
 				bformat(_("Auto-edit file %1$s failed"),
-					from_utf8(filename)));
+					from_utf8(filename.absFilename())));
 			return false;
 		}
 	}
@@ -371,10 +371,11 @@ bool Formats::edit(Buffer const & buffer, string const & filename,
 	if (!contains(command, token_from))
 		command += ' ' + token_from;
 
-	command = subst(command, token_from, quoteName(filename));
-	command = subst(command, token_path, quoteName(onlyPath(filename)));
+	command = subst(command, token_from, quoteName(filename.toFilesystemEncoding()));
+	command = subst(command, token_path, quoteName(onlyPath(filename.toFilesystemEncoding())));
 	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
+	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
 
 	Systemcall one;

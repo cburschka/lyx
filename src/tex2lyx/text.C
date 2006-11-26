@@ -32,13 +32,14 @@
 
 namespace lyx {
 
-using lyx::support::changeExtension;
-using lyx::support::makeAbsPath;
-using lyx::support::makeRelPath;
-using lyx::support::rtrim;
-using lyx::support::suffixIs;
-using lyx::support::contains;
-using lyx::support::subst;
+using support::changeExtension;
+using support::FileName;
+using support::makeAbsPath;
+using support::makeRelPath;
+using support::rtrim;
+using support::suffixIs;
+using support::contains;
+using support::subst;
 
 using std::cerr;
 using std::endl;
@@ -2149,7 +2150,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				string const lyxname =
 					changeExtension(filename, ".lyx");
 				if (t.cs() != "verbatiminput" &&
-				    tex2lyx(abstexname, abslyxname)) {
+				    tex2lyx(abstexname, FileName(abslyxname))) {
 					os << name << '{' << lyxname << "}\n";
 				} else {
 					os << name << '{' << filename << "}\n";

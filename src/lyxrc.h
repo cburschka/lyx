@@ -27,6 +27,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class LyXLex;
 
 /// This contains the runtime configuration of LyX
@@ -152,7 +154,7 @@ public:
 	///
 	void setDefaults();
 	///
-	int read(std::string const & filename);
+	int read(support::FileName const & filename);
 	///
 	int read(std::istream &);
 private:

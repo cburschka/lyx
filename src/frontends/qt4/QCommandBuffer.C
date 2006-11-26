@@ -78,8 +78,8 @@ QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control,
 			QWidget * parent)
 	: QWidget(parent), view_(view), controller_(control)
 {
-	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm")));
-	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm")));
+	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm").absFilename()));
+	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm").absFilename()));
 
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);

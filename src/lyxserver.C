@@ -45,6 +45,8 @@
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "frontends/Application.h"
+
+#include "support/filename.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 
@@ -60,6 +62,7 @@
 namespace lyx {
 
 using support::compare;
+using support::FileName;
 using support::rtrim;
 using support::split;
 using support::unlink;
@@ -166,9 +169,10 @@ void LyXComm::closeConnection()
 }
 
 
-int LyXComm::startPipe(string const & filename, bool write)
+int LyXComm::startPipe(string const & file, bool write)
 {
-	if (::access(filename.c_str(), F_OK) == 0) {
+	FileName const filename(file);
+	if (::access(filename.toFilesystemEncoding().c_str(), F_OK) == 0) {
 		lyxerr << "LyXComm: Pipe " << filename << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
@@ -176,12 +180,12 @@ int LyXComm::startPipe(string const & filename, bool write)
 		return -1;
 	}
 
-	if (::mkfifo(filename.c_str(), 0600) < 0) {
+	if (::mkfifo(filename.toFilesystemEncoding().c_str(), 0600) < 0) {
 		lyxerr << "LyXComm: Could not create pipe " << filename << '\n'
 		       << strerror(errno) << endl;
 		return -1;
 	};
-	int const fd = ::open(filename.c_str(),
+	int const fd = ::open(filename.toFilesystemEncoding().c_str(),
 			      write ? (O_RDWR) : (O_RDONLY|O_NONBLOCK));
 
 	if (fd < 0) {
@@ -214,7 +218,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 		       << '\n' << strerror(errno) << endl;
 	}
 
-	if (unlink(filename) < 0) {
+	if (unlink(FileName(filename)) < 0) {
 		lyxerr << "LyXComm: Could not remove pipe " << filename
 		       << '\n' << strerror(errno) << endl;
 	};

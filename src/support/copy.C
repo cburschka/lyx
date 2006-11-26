@@ -12,6 +12,7 @@
 
 #include <fstream>
 
+#include "support/filename.h"
 #include "support/lyxlib.h"
 
 #ifdef HAVE_SYS_STAT_H
@@ -31,10 +32,10 @@ using std::ios;
 using std::string;
 
 
-bool lyx::support::chmod(string const & file, unsigned long int mode)
+bool lyx::support::chmod(FileName const & file, unsigned long int mode)
 {
 #if defined (HAVE_CHMOD) && defined (HAVE_MODE_T)
-	if (::chmod(file.c_str(), mode_t(mode)) != 0)
+	if (::chmod(file.toFilesystemEncoding().c_str(), mode_t(mode)) != 0)
 		return false;
 #else
 # ifdef WITH_WARNINGS
@@ -45,14 +46,14 @@ bool lyx::support::chmod(string const & file, unsigned long int mode)
 }
 
 
-bool lyx::support::copy(string const & from, string const & to, unsigned long int mode)
+bool lyx::support::copy(FileName const & from, FileName const & to, unsigned long int mode)
 {
-	ifstream ifs(from.c_str(), ios::binary | ios::in);
+	ifstream ifs(from.toFilesystemEncoding().c_str(), ios::binary | ios::in);
 	if (!ifs)
 		return false;
 
 	if (mode != (unsigned long int)-1) {
-		ofstream ofs(to.c_str(), ios::binary | ios::out | ios::trunc);
+		ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
 		if (!ofs)
 			return false;
 		ofs.close();
@@ -60,7 +61,7 @@ bool lyx::support::copy(string const & from, string const & to, unsigned long in
 			return false;
 	}
 
-	ofstream ofs(to.c_str(), ios::binary | ios::out | ios::trunc);
+	ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
 	if (!ofs)
 		return false;
 

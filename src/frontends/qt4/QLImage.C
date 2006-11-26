@@ -19,6 +19,7 @@
 
 #include "graphics/GraphicsParams.h"
 
+#include "support/filename.h"
 #include "support/lstrings.h"       // lowercase
 
 #include <QPainter>
@@ -152,7 +153,7 @@ unsigned int QLImage::getHeight_impl() const
 }
 
 
-void QLImage::load_impl(string const & filename)
+void QLImage::load_impl(support::FileName const & filename)
 {
 	if (!original_.isNull()) {
 		lyxerr[Debug::GRAPHICS]
@@ -161,7 +162,7 @@ void QLImage::load_impl(string const & filename)
 		return;
 	}
 
-	if (!original_.load(toqstr(filename))) {
+	if (!original_.load(toqstr(filename.absFilename()))) {
 		lyxerr[Debug::GRAPHICS]
 			<< "Unable to open image" << endl;
 		finishedLoading(false);

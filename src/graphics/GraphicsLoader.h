@@ -30,6 +30,9 @@
 #include <boost/signal.hpp>
 
 namespace lyx {
+
+namespace support { class FileName; }
+
 namespace graphics {
 
 class Image;
@@ -40,9 +43,9 @@ public:
 	/// Must use the reset methods to make this instance usable.
 	Loader();
 	/// The image is not transformed, just displayed as-is.
-	Loader(std::string const & file_with_path, DisplayType = ColorDisplay);
+	Loader(support::FileName const & file_with_path, DisplayType = ColorDisplay);
 	/// The image is transformed before display.
-	Loader(std::string const & file_with_path, Params const &);
+	Loader(support::FileName const & file_with_path, Params const &);
 	///
 	Loader(Loader const &);
 
@@ -52,17 +55,16 @@ public:
 	Loader & operator=(Loader const &);
 
 	/// The file can be changed, or the display params, or both.
-	void reset(std::string const & file_with_path,
+	void reset(support::FileName const & file_with_path,
 		   DisplayType = ColorDisplay) const;
 	///
-	void reset(std::string const & file_with_path, Params const &) const;
+	void reset(support::FileName const & file_with_path, Params const &) const;
 	///
 	void reset(Params const &) const;
 
 	/// Returns the absolute path of the loaded (loading?) file.
-	std::string const & filename() const;
+	support::FileName const & filename() const;
 	///
-	bool empty() const { return filename().empty(); }
 
 	/** starting loading of the image is done by a urgency-based
 	 *  decision. Here we only call LoaderQueue::touch to request it.

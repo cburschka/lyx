@@ -17,6 +17,7 @@
 #include "outputparams.h"
 
 #include "support/docstring.h"
+#include "support/filename.h"
 
 #include <boost/utility.hpp>
 #include <boost/signal.hpp>
@@ -155,7 +156,7 @@ private:
 	int startscript();
 
 	/// The dependency file.
-	std::string depfile;
+	support::FileName depfile;
 
 	///
 	void deplog(DepTable & head);

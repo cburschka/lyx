@@ -13,6 +13,7 @@
 #define LYX_FILETOOL_H
 
 #include "support/docstring.h"
+#include "support/filename.h"
 
 #include <vector>
 #include <utility>
@@ -36,7 +37,7 @@ bool createDirectory(std::string const & name, int permissions);
   created and used as the temporary directory.
   \return the tmp dir name or string() if something went wrong.
  */
-std::string const createLyXTmpDir(std::string const & deflt);
+FileName const createLyXTmpDir(FileName const & deflt);
 
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
@@ -45,7 +46,7 @@ std::string const createLyXTmpDir(std::string const & deflt);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-std::string const fileOpenSearch(std::string const & path,
+FileName const fileOpenSearch(std::string const & path,
 				 std::string const & name,
 				 std::string const & ext = std::string());
 
@@ -54,7 +55,7 @@ std::string const fileOpenSearch(std::string const & path,
   The file is searched in the given path (unless it is an absolute
   file name), first directly, and then with extension .ext (if given).
   */
-std::string const fileSearch(std::string const & path,
+FileName const fileSearch(std::string const & path,
 			     std::string const & name,
 			     std::string const & ext = std::string());
 
@@ -72,7 +73,7 @@ bool isDirWriteable(std::string const & path);
 /** Is a file readable ?
   Returns true if the file `path' is readable.
  */
-bool isFileReadable (std::string const & path);
+bool isFileReadable(FileName const & path);
 
 ///
 bool isLyXFilename(std::string const & filename);
@@ -87,7 +88,7 @@ bool isSGMLFilename(std::string const & filename);
       -# system_lyxdir
     The third parameter `ext' is optional.
 */
-std::string const libFileSearch(std::string const & dir,
+FileName const libFileSearch(std::string const & dir,
 				std::string const & name,
 				std::string const & ext = std::string());
 
@@ -95,7 +96,7 @@ std::string const libFileSearch(std::string const & dir,
   internationalized version of the file by prepending $LANG_ to the
   name
   */
-std::string const
+FileName const
 i18nLibFileSearch(std::string const & dir,
 		  std::string const & name,
 		  std::string const & ext = std::string());
@@ -186,10 +187,10 @@ std::string const getExtension(std::string const & name);
  Normally you don't want to use this directly, but rather
  Formats::getFormatFromFile().
  */
-std::string const getFormatFromContents(std::string const & name);
+std::string const getFormatFromContents(FileName const & name);
 
 /// check for zipped file
-bool zippedFile(std::string const & name);
+bool zippedFile(FileName const & name);
 
 /** \return the name that LyX will give to the unzipped file \p zipped_file
   if the second argument of unzipFile() is empty.
@@ -201,8 +202,8 @@ std::string const unzippedFileName(std::string const & zipped_file);
   empty, and unzippedFileName(\p zipped_file) otherwise.
   Will overwrite an already existing unzipped file without warning.
  */
-std::string const unzipFile(std::string const & zipped_file,
-			    std::string const & unzipped_file = std::string());
+FileName const unzipFile(FileName const & zipped_file,
+                         std::string const & unzipped_file = std::string());
 
 /// Returns true is path is absolute
 bool absolutePath(std::string const & path);
@@ -245,7 +246,7 @@ std::string const normalizePath(std::string const & path);
 std::string const onlyFilename(std::string const & fname);
 
 /// Get the contents of a file as a huge std::string
-std::string const getFileContents(std::string const & fname);
+std::string const getFileContents(FileName const & fname);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the
@@ -269,7 +270,7 @@ std::string const findtexfile(std::string const & fil,
 void removeAutosaveFile(std::string const & filename);
 
 /// read the BoundingBox entry from a ps/eps/pdf-file
-std::string const readBB_from_PSFile(std::string const & file);
+std::string const readBB_from_PSFile(FileName const & file);
 
 /** \param file1, file2 the two files to be compared. Must have absolute paths.
  *  \returns 1 if \c file1 has a more recent timestamp than \c file2,
@@ -278,7 +279,7 @@ std::string const readBB_from_PSFile(std::string const & file);
  *  If one of the files does not exist, the return value indicates the file
  *  which does exist. Eg, if \c file1 exists but \c file2 does not, return 1.
  */
-int compare_timestamps(std::string const & file1, std::string const & file2);
+int compare_timestamps(FileName const & file1, FileName const & file2);
 
 typedef std::pair<int, std::string> cmd_ret;
 

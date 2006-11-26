@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+#include "support/filename.h"
 
 #ifdef HAVE_SYS_STAT_H
 # include <sys/stat.h>
@@ -30,30 +31,31 @@
 #endif
 
 namespace lyx {
+namespace support {
 
 
-int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
+int mkdir(FileName const & pathname, unsigned long int mode)
 {
 	// FIXME: why don't we have mode_t in lyx::mkdir prototype ??
 #if HAVE_MKDIR
 # if MKDIR_TAKES_ONE_ARG
 	// MinGW32
-	return ::mkdir(pathname.c_str());
+	return ::mkdir(pathname.toFilesystemEncoding().c_str());
 #  ifdef WITH_WARNINGS
 #   warning "Permissions of created directories are ignored on this system."
 #  endif
 # else
 	// POSIX
-	return ::mkdir(pathname.c_str(), mode_t(mode));
+	return ::mkdir(pathname.toFilesystemEncoding().c_str(), mode_t(mode));
 # endif
 #elif defined(_WIN32)
 	// plain Windows 32
-	return CreateDirectory(pathname.c_str(), 0) != 0 ? 0 : -1;
+	return CreateDirectory(pathname.toFilesystemEncoding().c_str(), 0) != 0 ? 0 : -1;
 # ifdef WITH_WARNINGS
 #  warning "Permissions of created directories are ignored on this system."
 # endif
 #elif HAVE__MKDIR
-	return ::_mkdir(pathname.c_str());
+	return ::_mkdir(pathname.toFilesystemEncoding().c_str());
 # ifdef WITH_WARNINGS
 #  warning "Permissions of created directories are ignored on this system."
 # endif
@@ -63,4 +65,5 @@ int lyx::support::mkdir(std::string const & pathname, unsigned long int mode)
 }
 
 
+} // namespace support
 } // namespace lyx

@@ -21,6 +21,7 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
 
 class Buffer;
 class ErrorList;
@@ -118,8 +119,8 @@ public:
 	};
 	///
 	bool convert(Buffer const * buffer,
-	             std::string const & from_file, std::string const & to_file,
-	             std::string const & orig_from,
+	             support::FileName const & from_file, support::FileName const & to_file,
+	             support::FileName const & orig_from,
 	             std::string const & from_format, std::string const & to_format,
 	             ErrorList & errorList, int conversionflags = none);
 	///
@@ -154,7 +155,7 @@ private:
 	/// If \p from = /path/file.ext and \p to = /path2/file2.ext2 then
 	/// this method moves each /path/file*.ext file to /path2/file2*.ext2
 	bool move(std::string const & fmt,
-		  std::string const & from, std::string const & to,
+		  support::FileName const & from, support::FileName const & to,
 		  bool copy);
 	///
 	Graph G_;

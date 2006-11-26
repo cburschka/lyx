@@ -99,7 +99,7 @@ void LyXLex::printError(string const & message) const
 }
 
 
-bool LyXLex::setFile(string const & filename)
+bool LyXLex::setFile(support::FileName const & filename)
 {
 	return pimpl_->setFile(filename);
 }

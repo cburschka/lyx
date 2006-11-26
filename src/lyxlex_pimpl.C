@@ -28,6 +28,7 @@
 namespace lyx {
 
 using support::compare_ascii_no_case;
+using support::FileName;
 using support::getFormatFromContents;
 using support::makeDisplayPath;
 using support::split;
@@ -143,7 +144,7 @@ void LyXLex::Pimpl::popTable()
 }
 
 
-bool LyXLex::Pimpl::setFile(string const & filename)
+bool LyXLex::Pimpl::setFile(FileName const & filename)
 {
 	// Check the format of the file.
 	string const format = getFormatFromContents(filename);
@@ -158,9 +159,9 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
 		gz_.push(io::gzip_decompressor());
-		gz_.push(io::file_source(filename));
+		gz_.push(io::file_source(filename.toFilesystemEncoding()));
 		is.rdbuf(&gz_);
-		name = filename;
+		name = filename.absFilename();
 		lineno = 0;
 		return gz_.component<io::file_source>(1)->is_open() && is.good();
 	} else {
@@ -172,9 +173,9 @@ bool LyXLex::Pimpl::setFile(string const & filename)
 		if (fb_.is_open() || istream::off_type(is.tellg()) > 0)
 			lyxerr[Debug::LYXLEX] << "Error in LyXLex::setFile: "
 				"file or stream already set." << endl;
-		fb_.open(filename.c_str(), ios::in);
+		fb_.open(filename.toFilesystemEncoding().c_str(), ios::in);
 		is.rdbuf(&fb_);
-		name = filename;
+		name = filename.absFilename();
 		lineno = 0;
 		return fb_.is_open() && is.good();
 	}

@@ -28,12 +28,15 @@
 #include "graphics/PreviewLoader.h"
 #include "graphics/Previews.h"
 
+#include "support/filename.h"
 #include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 
 
 namespace lyx {
+
+using support::FileName;
 
 using std::string;
 using std::auto_ptr;
@@ -238,11 +241,11 @@ void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 
 RenderMonitoredPreview::RenderMonitoredPreview(InsetBase const * inset)
 	: RenderPreview(inset),
-	  monitor_(std::string(), 2000)
+	  monitor_(FileName(), 2000)
 {}
 
 
-void RenderMonitoredPreview::setAbsFile(string const & file)
+void RenderMonitoredPreview::setAbsFile(FileName const & file)
 {
 	monitor_.reset(file);
 }

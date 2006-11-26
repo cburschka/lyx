@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/socktools.h"
+#include "support/filename.h"
 
 #if !defined (HAVE_FCNTL)
 // We provide stubs because we don't (yet?) support the native OS API.
@@ -114,7 +115,7 @@ int listen(string const & name, int queue)
 		lyxerr << "lyx: Could not bind address '" << name
 		       << "' to socket descriptor: " << strerror(errno) << endl;
 		::close(fd);
-		lyx::support::unlink(name);
+		unlink(FileName(name));
 		return -1;
 	}
 
@@ -127,7 +128,7 @@ int listen(string const & name, int queue)
 		lyxerr << "lyx: Could not put socket in 'listen' state: "
 		       << strerror(errno) << endl;
 		::close(fd);
-		lyx::support::unlink(name);
+		unlink(FileName(name));
 		return -1;
 	}
 

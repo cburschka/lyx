@@ -156,9 +156,9 @@ string const quoteName(string const & name, quote_style style)
 }
 
 
-// Is a file readable ?
-bool isFileReadable(string const & path)
+bool isFileReadable(FileName const & filename)
 {
+	std::string const path = filename.toFilesystemEncoding();
 	return fs::exists(path) && !fs::is_directory(path) && fs::is_readable(path);
 }
 
@@ -174,7 +174,7 @@ bool isDirWriteable(string const & path)
 	if (tmpfl.empty())
 		return false;
 
-	unlink(tmpfl);
+	unlink(FileName(tmpfl));
 	return true;
 }
 
@@ -184,10 +184,10 @@ bool isDirWriteable(string const & path)
 // If path entry begins with $$LyX/, use system_lyxdir
 // If path entry begins with $$User/, use user_lyxdir
 // Example: "$$User/doc;$$LyX/doc"
-string const fileOpenSearch(string const & path, string const & name,
+FileName const fileOpenSearch(string const & path, string const & name,
 			     string const & ext)
 {
-	string real_file;
+	FileName real_file;
 	string path_element;
 	bool notfound = true;
 	string tmppath = split(path, path_element, ';');
@@ -247,22 +247,20 @@ vector<string> const dirList(string const & dir, string const & ext)
 
 // Returns the real name of file name in directory path, with optional
 // extension ext.
-string const fileSearch(string const & path, string const & name,
+FileName const fileSearch(string const & path, string const & name,
 			string const & ext)
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
 	string const tmpname = replaceEnvironmentPath(name);
-	string fullname = makeAbsPath(tmpname, path);
+	FileName fullname(makeAbsPath(tmpname, path));
 	// search first without extension, then with it.
 	if (isFileReadable(fullname))
 		return fullname;
 	if (ext.empty())
-		return string();
-	// Is it not more reasonable to use ChangeExtension()? (SMiyata)
-	fullname += '.';
-	fullname += ext;
-	return isFileReadable(fullname) ? fullname : string();
+		return FileName();
+	fullname = FileName(changeExtension(fullname.absFilename(), ext));
+	return isFileReadable(fullname) ? fullname : FileName();
 }
 
 
@@ -270,10 +268,10 @@ string const fileSearch(string const & path, string const & name,
 //   1) user_lyxdir
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
-string const libFileSearch(string const & dir, string const & name,
+FileName const libFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	string fullname = fileSearch(addPath(package().user_support(), dir),
+	FileName fullname = fileSearch(addPath(package().user_support(), dir),
 				     name, ext);
 	if (!fullname.empty())
 		return fullname;
@@ -288,7 +286,7 @@ string const libFileSearch(string const & dir, string const & name,
 }
 
 
-string const i18nLibFileSearch(string const & dir, string const & name,
+FileName const i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext)
 {
 	// the following comments are from intl/dcigettext.c. We try
@@ -316,7 +314,7 @@ string const i18nLibFileSearch(string const & dir, string const & name,
 	string l;
 	lang = split(lang, l, ':');
 	while (!l.empty() && l != "C" && l != "POSIX") {
-		string const tmp = libFileSearch(dir,
+		FileName const tmp = libFileSearch(dir,
 						 token(l, '_', 0) + '_' + name,
 						 ext);
 		if (!tmp.empty())
@@ -345,8 +343,8 @@ string const libScriptSearch(string const & command_in, quote_style style)
 		(command.size() - start_script) : pos2 - start_script;
 
 	// Does this script file exist?
-	string const script =
-		libFileSearch(".", command.substr(start_script, size_script));
+	string const script = 
+		libFileSearch(".", command.substr(start_script, size_script)).absFilename();
 
 	if (script.empty()) {
 		// Replace "$$s/" with ""
@@ -363,26 +361,26 @@ string const libScriptSearch(string const & command_in, quote_style style)
 
 namespace {
 
-string const createTmpDir(string const & tempdir, string const & mask)
+FileName const createTmpDir(FileName const & tempdir, string const & mask)
 {
 	lyxerr[Debug::FILES]
 		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'' << endl;
 
-	string const tmpfl = tempName(tempdir, mask);
+	string const tmpfl = tempName(tempdir.absFilename(), mask);
 	// lyx::tempName actually creates a file to make sure that it
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
 	// safe because of the gap between unlink and mkdir. (Lgb)
-	unlink(tmpfl);
+	unlink(FileName(tmpfl));
 
-	if (tmpfl.empty() || mkdir(tmpfl, 0700)) {
+	if (tmpfl.empty() || mkdir(FileName(tmpfl), 0700)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;
-		return string();
+		return FileName();
 	}
 
-	return makeAbsPath(tmpfl);
+	return FileName(tmpfl);
 }
 
 } // namespace anon
@@ -409,7 +407,7 @@ string const createBufferTmpDir()
 		package().temp_dir() + "/lyx_tmpbuf" +
 		convert<string>(count++);
 
-	if (mkdir(tmpfl, 0777)) {
+	if (mkdir(FileName(tmpfl), 0777)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;
 		return string();
@@ -418,23 +416,23 @@ string const createBufferTmpDir()
 }
 
 
-string const createLyXTmpDir(string const & deflt)
+FileName const createLyXTmpDir(FileName const & deflt)
 {
-	if (!deflt.empty() && deflt != "/tmp") {
+	if (!deflt.empty() && deflt.absFilename() != "/tmp") {
 		if (mkdir(deflt, 0777)) {
-			if (isDirWriteable(deflt)) {
+			if (isDirWriteable(deflt.absFilename())) {
 				// deflt could not be created because it
 				// did exist already, so let's create our own
 				// dir inside deflt.
 				return createTmpDir(deflt, "lyx_tmpdir");
 			} else {
 				// some other error occured.
-				return createTmpDir("/tmp", "lyx_tmpdir");
+				return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
 			}
 		} else
 			return deflt;
 	} else {
-		return createTmpDir("/tmp", "lyx_tmpdir");
+		return createTmpDir(FileName("/tmp"), "lyx_tmpdir");
 	}
 }
 
@@ -443,7 +441,7 @@ bool createDirectory(string const & path, int permission)
 {
 	string temp = rtrim(os::internal_path(path), "/");
 	BOOST_ASSERT(!temp.empty());
-	return mkdir(temp, permission) == 0;
+	return mkdir(FileName(temp), permission) == 0;
 }
 
 
@@ -608,10 +606,11 @@ string const normalizePath(string const & path)
 }
 
 
-string const getFileContents(string const & fname)
+string const getFileContents(FileName const & fname)
 {
-	if (fs::exists(fname)) {
-		ifstream ifs(fname.c_str());
+	string const encodedname = fname.toFilesystemEncoding();
+	if (fs::exists(encodedname)) {
+		ifstream ifs(encodedname.c_str());
 		ostringstream ofs;
 		if (ifs && ofs) {
 			ofs << ifs.rdbuf();
@@ -790,13 +789,13 @@ string const getExtension(string const & name)
 // ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
 // Z	\037\235		UNIX compress
 
-string const getFormatFromContents(string const & filename)
+string const getFormatFromContents(FileName const & filename)
 {
 	// paranoia check
 	if (filename.empty() || !isFileReadable(filename))
 		return string();
 
-	ifstream ifs(filename.c_str());
+	ifstream ifs(filename.toFilesystemEncoding().c_str());
 	if (!ifs)
 		// Couldn't open file...
 		return string();
@@ -943,7 +942,7 @@ string const getFormatFromContents(string const & filename)
 
 
 /// check for zipped file
-bool zippedFile(string const & name)
+bool zippedFile(FileName const & name)
 {
 	string const type = getFormatFromContents(name);
 	if (contains("gzip zip compress", type) && !type.empty())
@@ -961,12 +960,15 @@ string const unzippedFileName(string const & zipped_file)
 }
 
 
-string const unzipFile(string const & zipped_file, string const & unzipped_file)
+FileName const unzipFile(FileName const & zipped_file, string const & unzipped_file)
 {
-	string const tempfile = unzipped_file.empty() ?
-		unzippedFileName(zipped_file) : unzipped_file;
+	FileName const tempfile = FileName(unzipped_file.empty() ?
+		unzippedFileName(zipped_file.toFilesystemEncoding()) :
+		unzipped_file);
 	// Run gunzip
-	string const command = "gunzip -c " + zipped_file + " > " + tempfile;
+	string const command = "gunzip -c " +
+		zipped_file.toFilesystemEncoding() + " > " +
+		tempfile.toFilesystemEncoding();
 	Systemcall one;
 	one.startscript(Systemcall::Wait, command);
 	// test that command was executed successfully (anon)
@@ -1135,12 +1137,13 @@ void removeAutosaveFile(string const & filename)
 	a += '#';
 	a += onlyFilename(filename);
 	a += '#';
-	if (fs::exists(a))
-		unlink(a);
+	FileName const autosave(a);
+	if (fs::exists(autosave.toFilesystemEncoding()))
+		unlink(autosave);
 }
 
 
-void readBB_lyxerrMessage(string const & file, bool & zipped,
+void readBB_lyxerrMessage(FileName const & file, bool & zipped,
 	string const & message)
 {
 	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] "
@@ -1153,7 +1156,7 @@ void readBB_lyxerrMessage(string const & file, bool & zipped,
 }
 
 
-string const readBB_from_PSFile(string const & file)
+string const readBB_from_PSFile(FileName const & file)
 {
 	// in a (e)ps-file it's an entry like %%BoundingBox:23 45 321 345
 	// It seems that every command in the header has an own line,
@@ -1163,7 +1166,7 @@ string const readBB_from_PSFile(string const & file)
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
 	bool zipped = zippedFile(file);
-	string const file_ = zipped ?  unzipFile(file) : file;
+	FileName const file_ = zipped ? unzipFile(file) : file;
 	string const format = getFormatFromContents(file_);
 
 	if (format != "eps" && format != "ps") {
@@ -1173,7 +1176,7 @@ string const readBB_from_PSFile(string const & file)
 
 	static boost::regex bbox_re(
 		"^%%BoundingBox:\\s*([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)\\s+([[:digit:]]+)");
-	std::ifstream is(file_.c_str());
+	std::ifstream is(file_.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
 		getline(is,s);
@@ -1196,14 +1199,13 @@ string const readBB_from_PSFile(string const & file)
 }
 
 
-int compare_timestamps(string const & file1, string const & file2)
+int compare_timestamps(FileName const & filename1, FileName const & filename2)
 {
-	BOOST_ASSERT(absolutePath(file1));
-	BOOST_ASSERT(absolutePath(file2));
-
 	// If the original is newer than the copy, then copy the original
 	// to the new directory.
 
+	string const file1 = filename1.toFilesystemEncoding();
+	string const file2 = filename2.toFilesystemEncoding();
 	int cmp = 0;
 	if (fs::exists(file1) && fs::exists(file2)) {
 		double const tmp = difftime(fs::last_write_time(file1),

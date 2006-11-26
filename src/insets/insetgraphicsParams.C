@@ -266,7 +266,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 graphics::Params InsetGraphicsParams::as_grfxParams() const
 {
 	graphics::Params pars;
-	pars.filename = filename.absFilename();
+	pars.filename = filename;
 	pars.scale = lyxscale;
 	pars.angle = convert<double>(rotateAngle);
 
@@ -274,7 +274,7 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 		pars.bb = bb;
 
 		// Get the original Bounding Box from the file
-		string const tmp = readBB_from_PSFile(filename.absFilename());
+		string const tmp = readBB_from_PSFile(filename);
 		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
 		if (!tmp.empty()) {
 #ifdef WITH_WARNINGS

@@ -21,6 +21,7 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
 
 class Encoding;
 
@@ -81,7 +82,7 @@ public:
 	///
 	typedef LanguageList::size_type size_type;
 	///
-	void read(std::string const & filename);
+	void read(support::FileName const & filename);
 	///
 	Language const * getLanguage(std::string const & language) const;
 	///

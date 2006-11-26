@@ -32,7 +32,6 @@
 
 namespace lyx {
 
-using support::absolutePath;
 using support::onlyFilename;
 
 using std::string;
@@ -68,7 +67,6 @@ void RenderGraphic::update(graphics::Params const & params)
 	params_ = params;
 
 	if (!params_.filename.empty()) {
-		BOOST_ASSERT(absolutePath(params_.filename));
 		loader_.reset(params_.filename, params_);
 	}
 }
@@ -160,7 +158,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		// FIXME UNICODE
 		docstring const justname = 
-			from_utf8(onlyFilename(params_.filename));
+			from_utf8(onlyFilename(params_.filename.absFilename()));
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			font_width = theFontMetrics(msgFont)
@@ -210,7 +208,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		// Print the file name.
 		LyXFont msgFont = pi.base.font;
 		msgFont.setFamily(LyXFont::SANS_FAMILY);
-		string const justname = onlyFilename(params_.filename);
+		string const justname = onlyFilename(params_.filename.absFilename());
 
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);

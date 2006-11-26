@@ -642,7 +642,7 @@ bool check_command_line_dir(string const & dir,
 			    string const & file,
 			    string const & command_line_switch)
 {
-	string const abs_path = fileSearch(dir, file);
+	FileName const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		// FIXME UNICODE
 		lyxerr << lyx::to_utf8(bformat(_("Invalid %1$s switch.\n"
@@ -670,7 +670,7 @@ bool check_env_var_dir(string const & dir,
 		       string const & file,
 		       string const & env_var)
 {
-	string const abs_path = fileSearch(dir, file);
+	FileName const abs_path = fileSearch(dir, file);
 	if (abs_path.empty()) {
 		// FIXME UNICODE
 		lyxerr << lyx::to_utf8(bformat(_("Invalid %1$s environment variable.\n"

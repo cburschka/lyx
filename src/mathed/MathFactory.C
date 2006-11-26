@@ -111,14 +111,14 @@ bool math_font_available(docstring & name)
 
 void initSymbols()
 {
-	string const filename = libFileSearch(string(), "symbols");
+	support::FileName const filename = libFileSearch(string(), "symbols");
 	lyxerr[Debug::MATHED] << "read symbols from " << filename << endl;
 	if (filename.empty()) {
 		lyxerr << "Could not find symbols file" << endl;
 		return;
 	}
 
-	std::ifstream fs(filename.c_str());
+	std::ifstream fs(filename.toFilesystemEncoding().c_str());
 	string line;
 	bool skip = false;
 	while (getline(fs, line)) {

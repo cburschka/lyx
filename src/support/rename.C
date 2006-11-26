@@ -11,19 +11,21 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+#include "support/filename.h"
 
 #include <cstdio>
 
 
 namespace lyx {
+namespace support {
 
 
 using std::string;
 
 
-bool lyx::support::rename(string const & from, string const & to)
+bool rename(FileName const & from, FileName const & to)
 {
-	if (::rename(from.c_str(), to.c_str()) == -1)
+	if (::rename(from.toFilesystemEncoding().c_str(), to.toFilesystemEncoding().c_str()) == -1)
 		if (copy(from, to)) {
 			unlink(from);
 			return true;
@@ -33,4 +35,5 @@ bool lyx::support::rename(string const & from, string const & to)
 }
 
 
+} // namespace support
 } // namespace lyx

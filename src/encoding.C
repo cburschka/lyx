@@ -18,6 +18,8 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 
+#include "support/filename.h"
+
 
 namespace lyx {
 
@@ -267,7 +269,7 @@ Encodings::Encodings()
 {
 }
 
-void Encodings::read(string const & filename)
+void Encodings::read(support::FileName const & filename)
 {
 	enum Encodingtags {
 		et_encoding = 1,

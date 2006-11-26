@@ -30,7 +30,9 @@
 namespace lyx {
 
 using support::bformat;
+using support::FileName;
 using support::isFileReadable;
+using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::tempName;
 
@@ -94,7 +96,7 @@ void LyXVC::registrer()
 	string const filename = owner_->fileName();
 
 	// there must be a file to save
-	if (!isFileReadable(filename)) {
+	if (!isFileReadable(FileName(makeAbsPath(filename)))) {
 		Alert::error(_("Document not saved"),
 			     _("You must save the document "
 					    "before it can be registered."));
@@ -105,7 +107,7 @@ void LyXVC::registrer()
 	if (!vcs) {
 		string const cvs_entries = "CVS/Entries";
 
-		if (isFileReadable(cvs_entries)) {
+		if (isFileReadable(FileName(makeAbsPath(cvs_entries)))) {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
 				<< to_utf8(makeDisplayPath(filename))

@@ -16,6 +16,8 @@
 
 #include "GraphicsTypes.h"
 
+#include "support/filename.h"
+
 #include <string>
 #include <iosfwd>
 
@@ -57,7 +59,7 @@ public:
 	unsigned int scale;
 
 	/// The image filename.
-	std::string filename;
+	support::FileName filename;
 
 	/** Note that the BoundingBox is always relative to the BoundingBox
 	 *  as stored in the EPS file.

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/FileMonitor.h"
+#include "support/filename.h"
 #include "support/lyxlib.h"
 
 // FIXME Interface violation
@@ -32,13 +33,13 @@ class FileMonitor::Impl : public boost::signals::trackable {
 public:
 
 	///
-	Impl(string const & file_with_path, int interval);
+	Impl(FileName const & file_with_path, int interval);
 
 	///
 	void monitorFile();
 
 	///
-	string filename_;
+	FileName filename_;
 
 	///
 	Timeout timer_;
@@ -55,7 +56,7 @@ public:
 };
 
 
-FileMonitor::FileMonitor(string const & file_with_path, int interval)
+FileMonitor::FileMonitor(FileName const & file_with_path, int interval)
 	: pimpl_(new Impl(file_with_path, interval))
 {}
 
@@ -64,7 +65,7 @@ FileMonitor::~FileMonitor()
 {}
 
 
-void FileMonitor::reset(string const & file_with_path) const
+void FileMonitor::reset(FileName const & file_with_path) const
 {
 	if (pimpl_->filename_ == file_with_path)
 		return;
@@ -80,7 +81,7 @@ void FileMonitor::reset(string const & file_with_path) const
 }
 
 
-string const & FileMonitor::filename() const
+FileName const & FileMonitor::filename() const
 {
 	return pimpl_->filename_;
 }
@@ -91,10 +92,10 @@ void FileMonitor::start() const
 	if (monitoring())
 		return;
 
-	if (!fs::exists(pimpl_->filename_))
+	if (!fs::exists(pimpl_->filename_.toFilesystemEncoding()))
 		return;
 
-	pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename_);
+	pimpl_->timestamp_ = fs::last_write_time(pimpl_->filename_.toFilesystemEncoding());
 	pimpl_->checksum_ = sum(pimpl_->filename_);
 
 	if (pimpl_->timestamp_ && pimpl_->checksum_) {
@@ -142,7 +143,7 @@ boost::signals::connection FileMonitor::connect(slot_type const & slot) const
 //------------------------------
 
 
-FileMonitor::Impl::Impl(string const & file_with_path, int interval)
+FileMonitor::Impl::Impl(FileName const & file_with_path, int interval)
 	: filename_(file_with_path),
 	  timer_(interval, Timeout::ONETIME),
 	  timestamp_(0),
@@ -156,13 +157,13 @@ void FileMonitor::Impl::monitorFile()
 {
 	bool changed = false;
 
-	if (!fs::exists(filename_)) {
+	if (!fs::exists(filename_.toFilesystemEncoding())) {
 		changed = timestamp_ || checksum_;
 		timestamp_ = 0;
 		checksum_ = 0;
 
 	} else {
-		time_t const new_timestamp = fs::last_write_time(filename_);
+		time_t const new_timestamp = fs::last_write_time(filename_.toFilesystemEncoding());
 
 		if (new_timestamp != timestamp_) {
 			timestamp_ = new_timestamp;

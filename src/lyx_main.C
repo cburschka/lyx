@@ -74,6 +74,7 @@ using support::bformat;
 using support::createDirectory;
 using support::createLyXTmpDir;
 using support::destroyDir;
+using support::FileName;
 using support::fileSearch;
 using support::getEnv;
 using support::i18nLibFileSearch;
@@ -480,7 +481,7 @@ int LyX::loadFiles(int & argc, char * argv[],
 	}
 
 	if (first_start)
-		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
+		files.push_back(i18nLibFileSearch("examples", "splash.lyx").absFilename());
 
 	Buffer * last_loaded = 0;
 
@@ -490,7 +491,7 @@ int LyX::loadFiles(int & argc, char * argv[],
 	for (; it != end; ++it) {
 		// get absolute path of file and add ".lyx" to
 		// the filename if necessary
-		string s = fileSearch(string(), *it, "lyx");
+		string s = fileSearch(string(), *it, "lyx").absFilename();
 		if (s.empty()) {
 			Buffer * const b = newFile(*it, string(), true);
 			if (b)
@@ -820,7 +821,7 @@ bool LyX::init()
 	    fs::is_directory(lyxrc.document_path))
 		package().document_dir() = lyxrc.document_path;
 
-	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
+	package().temp_dir() = createLyXTmpDir(FileName(lyxrc.tempdir_path)).absFilename();
 	if (package().temp_dir().empty()) {
 		Alert::error(_("Could not create temporary directory"),
 			     bformat(_("Could not create a temporary directory in\n"
@@ -1011,7 +1012,7 @@ bool LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "... ";
 
-	string const lyxrc_path = libFileSearch(string(), name);
+	FileName const lyxrc_path = libFileSearch(string(), name);
 	if (!lyxrc_path.empty()) {
 
 		lyxerr[Debug::INIT] << "Found in " << lyxrc_path << endl;
@@ -1060,7 +1061,7 @@ bool LyX::readUIFile(string const & name)
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const ui_path = libFileSearch("ui", name, "ui");
+	FileName const ui_path = libFileSearch("ui", name, "ui");
 
 	if (ui_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
@@ -1118,7 +1119,7 @@ bool LyX::readLanguagesFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const lang_path = libFileSearch(string(), name);
+	FileName const lang_path = libFileSearch(string(), name);
 	if (lang_path.empty()) {
 		showFileError(name);
 		return false;
@@ -1133,7 +1134,7 @@ bool LyX::readEncodingsFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string const enc_path = libFileSearch(string(), name);
+	FileName const enc_path = libFileSearch(string(), name);
 	if (enc_path.empty()) {
 		showFileError(name);
 		return false;

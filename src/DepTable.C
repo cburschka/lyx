@@ -32,6 +32,7 @@ namespace lyx {
 using std::time;
 #endif
 
+using support::FileName;
 using support::ltrim;
 using support::makeAbsPath;
 using support::onlyFilename;
@@ -52,10 +53,8 @@ bool DepTable::dep_info::changed() const
 }
 
 
-void DepTable::insert(string const & fi, bool upd)
+void DepTable::insert(FileName const & f, bool upd)
 {
-	// not quite sure if this is the correct place for MakeAbsPath
-	string const f = makeAbsPath(fi);
 	if (deplist.find(f) == deplist.end()) {
 		dep_info di;
 		di.crc_prev = 0;
@@ -64,7 +63,7 @@ void DepTable::insert(string const & fi, bool upd)
 			di.crc_cur = sum(f);
 			lyxerr[Debug::DEPEND] << "done." << endl;
 			struct stat f_info;
-			stat(fi.c_str(), &f_info);
+			stat(f.toFilesystemEncoding().c_str(), &f_info);
 			di.mtime_cur = f_info.st_mtime;
 		} else {
 			di.crc_cur = 0;
@@ -87,7 +86,7 @@ void DepTable::update()
 		dep_info &di = itr->second;
 
 		struct stat f_info;
-		if (stat(itr->first.c_str(), &f_info) == 0) {
+		if (stat(itr->first.toFilesystemEncoding().c_str(), &f_info) == 0) {
 			if (di.mtime_cur == f_info.st_mtime) {
 				di.crc_prev = di.crc_cur;
 				lyxerr[Debug::DEPEND] << itr->first << " same mtime" << endl;
@@ -132,10 +131,8 @@ bool DepTable::sumchange() const
 }
 
 
-bool DepTable::haschanged(string const & f) const
+bool DepTable::haschanged(FileName const & fil) const
 {
-	// not quite sure if this is the correct place for MakeAbsPath
-	string const fil = makeAbsPath(f);
 	DepList::const_iterator cit = deplist.find(fil);
 	if (cit != deplist.end()) {
 		if (cit->second.changed())
@@ -150,7 +147,7 @@ bool DepTable::extchanged(string const & ext) const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (suffixIs(cit->first, ext)) {
+		if (suffixIs(cit->first.absFilename(), ext)) {
 			if (cit->second.changed())
 				return true;
 		}
@@ -164,7 +161,7 @@ bool DepTable::ext_exist(string const & ext) const
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
-		if (suffixIs(cit->first, ext)) {
+		if (suffixIs(cit->first.absFilename(), ext)) {
 			return true;
 		}
 	}
@@ -172,7 +169,7 @@ bool DepTable::ext_exist(string const & ext) const
 }
 
 
-bool DepTable::exist(string const & fil) const
+bool DepTable::exist(FileName const & fil) const
 {
 	return deplist.find(fil) != deplist.end();
 }
@@ -183,7 +180,7 @@ void DepTable::remove_files_with_extension(string const & suf)
 	DepList::iterator cit = deplist.begin();
 	DepList::iterator end = deplist.end();
 	while (cit != end) {
-		if (suffixIs(cit->first, suf)) {
+		if (suffixIs(cit->first.absFilename(), suf)) {
 			// Can't erase the current iterator, but we
 			// can increment and then erase.
 			// Deplist is a map so only the erased
@@ -197,12 +194,12 @@ void DepTable::remove_files_with_extension(string const & suf)
 }
 
 
-void DepTable::remove_file(string const & filename)
+void DepTable::remove_file(FileName const & filename)
 {
 	DepList::iterator cit = deplist.begin();
 	DepList::iterator end = deplist.end();
 	while (cit != end) {
-		if (onlyFilename(cit->first) == filename) {
+		if (cit->first == filename) {
 			// Can't erase the current iterator, but we
 			// can increment and then erase.
 			// deplist is a map so only the erased
@@ -216,9 +213,9 @@ void DepTable::remove_file(string const & filename)
 }
 
 
-void DepTable::write(string const & f) const
+void DepTable::write(FileName const & f) const
 {
-	ofstream ofs(f.c_str());
+	ofstream ofs(f.toFilesystemEncoding().c_str());
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
 	for (; cit != end; ++cit) {
@@ -238,9 +235,9 @@ void DepTable::write(string const & f) const
 }
 
 
-bool DepTable::read(string const & f)
+bool DepTable::read(FileName const & f)
 {
-	ifstream ifs(f.c_str());
+	ifstream ifs(f.toFilesystemEncoding().c_str());
 	string nome;
 	dep_info di;
 	// This doesn't change through the loop.
@@ -254,7 +251,7 @@ bool DepTable::read(string const & f)
 			       << di.mtime_cur << ' '
 			       << nome << endl;
 		}
-		deplist[nome] = di;
+		deplist[FileName(nome)] = di;
 	}
 	return deplist.size();
 }

@@ -56,13 +56,14 @@ using std::string;
 using std::vector;
 using std::map;
 
-using lyx::support::changeExtension;
-using lyx::support::isStrUnsignedInt;
-using lyx::support::ltrim;
-using lyx::support::makeAbsPath;
-using lyx::support::onlyPath;
-using lyx::support::rtrim;
-using lyx::support::isFileReadable;
+using support::changeExtension;
+using support::FileName;
+using support::isStrUnsignedInt;
+using support::ltrim;
+using support::makeAbsPath;
+using support::onlyPath;
+using support::rtrim;
+using support::isFileReadable;
 
 namespace fs = boost::filesystem;
 
@@ -236,9 +237,9 @@ void read_environment(Parser & p, string const & begin,
  * has almost all of them listed. For the same reason the reLyX-specific
  * reLyXre environment is ignored.
  */
-void read_syntaxfile(string const & file_name)
+void read_syntaxfile(FileName const & file_name)
 {
-	ifstream is(file_name.c_str());
+	ifstream is(file_name.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open syntax file \"" << file_name
 		     << "\" for reading." << endl;
@@ -474,7 +475,7 @@ bool tex2lyx(string const &infilename, std::ostream &os)
 } // anonymous namespace
 
 
-bool tex2lyx(string const &infilename, string const &outfilename)
+bool tex2lyx(string const &infilename, FileName const &outfilename)
 {
 	if (isFileReadable(outfilename)) {
 		if (overwrite_files) {
@@ -488,7 +489,7 @@ bool tex2lyx(string const &infilename, string const &outfilename)
 	} else {
 		cerr << "Creating file " << outfilename << endl;
 	}
-	ofstream os(outfilename.c_str());
+	ofstream os(outfilename.toFilesystemEncoding().c_str());
 	if (!os.good()) {
 		cerr << "Could not open output file \"" << outfilename
 		     << "\" for writing." << endl;
@@ -532,14 +533,14 @@ int main(int argc, char * argv[])
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 
-	string const system_syntaxfile = lyx::support::libFileSearch("", "syntax.default");
+	FileName const system_syntaxfile = lyx::support::libFileSearch("", "syntax.default");
 	if (system_syntaxfile.empty()) {
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
 		exit(1);
 	}
 	read_syntaxfile(system_syntaxfile);
 	if (!syntaxfile.empty())
-		read_syntaxfile(syntaxfile);
+		read_syntaxfile(FileName(makeAbsPath(syntaxfile)));
 
 	masterFilePath = onlyPath(infilename);
 	parentFilePath = masterFilePath;
@@ -550,7 +551,7 @@ int main(int argc, char * argv[])
 		else
 			return EXIT_FAILURE;
 	} else {
-		if (tex2lyx(infilename, outfilename))
+		if (tex2lyx(infilename, FileName(outfilename)))
 			return EXIT_SUCCESS;
 		else
 			return EXIT_FAILURE;

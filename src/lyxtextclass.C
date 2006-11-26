@@ -34,6 +34,7 @@ namespace fs = boost::filesystem;
 
 namespace lyx {
 
+using support::FileName;
 using support::libFileSearch;
 using support::makeDisplayPath;
 using support::quoteName;
@@ -67,9 +68,9 @@ private:
 int const FORMAT = 2;
 
 
-bool layout2layout(string const & filename, string const & tempfile)
+bool layout2layout(FileName const & filename, FileName const & tempfile)
 {
-	string const script = libFileSearch("scripts", "layout2layout.py");
+	FileName const script = libFileSearch("scripts", "layout2layout.py");
 	if (script.empty()) {
 		lyxerr << "Could not find layout conversion "
 			  "script layout2layout.py." << endl;
@@ -77,9 +78,9 @@ bool layout2layout(string const & filename, string const & tempfile)
 	}
 
 	std::ostringstream command;
-	command << support::os::python() << ' ' << quoteName(script)
-		<< ' ' << quoteName(filename)
-		<< ' ' << quoteName(tempfile);
+	command << support::os::python() << ' ' << quoteName(script.toFilesystemEncoding())
+		<< ' ' << quoteName(filename.toFilesystemEncoding())
+		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
 	string const command_str = command.str();
 
 	lyxerr[Debug::TCLASS] << "Running `" << command_str << '\'' << endl;
@@ -173,7 +174,7 @@ enum TextClassTags {
 
 
 // Reads a textclass structure from file.
-bool LyXTextClass::read(string const & filename, bool merge)
+bool LyXTextClass::read(FileName const & filename, bool merge)
 {
 	if (!support::isFileReadable(filename)) {
 		lyxerr << "Cannot read layout file `" << filename << "'."
@@ -213,11 +214,11 @@ bool LyXTextClass::read(string const & filename, bool merge)
 
 	if (!merge)
 		lyxerr[Debug::TCLASS] << "Reading textclass "
-					<< to_utf8(makeDisplayPath(filename))
+					<< to_utf8(makeDisplayPath(filename.absFilename()))
 					<< endl;
 	else
 		lyxerr[Debug::TCLASS] << "Reading input file "
-				     << to_utf8(makeDisplayPath(filename))
+				     << to_utf8(makeDisplayPath(filename.absFilename()))
 				     << endl;
 
 	LyXLex lexrc(textClassTags,
@@ -260,7 +261,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
 				string const inc = lexrc.getString();
-				string tmp = libFileSearch("layouts", inc,
+				FileName tmp = libFileSearch("layouts", inc,
 							    "layout");
 
 				if (tmp.empty()) {
@@ -269,7 +270,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 					error = true;
 				} else if (read(tmp, true)) {
 					lexrc.printError("Error reading input"
-							 "file: "+tmp);
+							 "file: " + tmp.absFilename());
 					error = true;
 				}
 			}
@@ -444,7 +445,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 	if (format != FORMAT) {
 		lyxerr[Debug::TCLASS] << "Converting layout file from format "
 				      << format << " to " << FORMAT << endl;
-		string const tempfile = support::tempName();
+		FileName const tempfile(support::tempName());
 		error = !layout2layout(filename, tempfile);
 		if (!error)
 			error = read(tempfile, merge);
@@ -454,7 +455,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 
 	if (!merge) { // we are at top level here.
 		lyxerr[Debug::TCLASS] << "Finished reading textclass "
-				      << to_utf8(makeDisplayPath(filename))
+				      << to_utf8(makeDisplayPath(filename.absFilename()))
 				      << endl;
 		if (defaultlayout_.empty()) {
 			lyxerr << "Error: Textclass '" << name_
@@ -484,7 +485,7 @@ bool LyXTextClass::read(string const & filename, bool merge)
 
 	} else
 		lyxerr[Debug::TCLASS] << "Finished reading input file "
-				      << to_utf8(makeDisplayPath(filename))
+				      << to_utf8(makeDisplayPath(filename.absFilename()))
 				      << endl;
 
 	return error;
@@ -925,16 +926,16 @@ bool LyXTextClass::load(string const & path) const
 		return true;
 
 	// Read style-file, provided path is searched before the system ones
-	string layout_file;
+	FileName layout_file;
 	if (!path.empty())
-		layout_file = addName(path, name_ + ".layout");
-	if (layout_file.empty() || !fs::exists(layout_file))
+		layout_file = FileName(addName(path, name_ + ".layout"));
+	if (layout_file.empty() || !fs::exists(layout_file.toFilesystemEncoding()))
 		layout_file = libFileSearch("layouts", name_, "layout");
 	loaded_ = const_cast<LyXTextClass*>(this)->read(layout_file) == 0;
 
 	if (!loaded_) {
 		lyxerr << "Error reading `"
-		       << to_utf8(makeDisplayPath(layout_file))
+		       << to_utf8(makeDisplayPath(layout_file.absFilename()))
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;

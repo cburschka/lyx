@@ -29,6 +29,9 @@
 
 
 namespace lyx {
+
+namespace support { class FileName; }
+
 namespace graphics {
 
 class CacheItem;
@@ -46,13 +49,13 @@ public:
 	std::vector<std::string> loadableFormats() const;
 
 	/// Add a graphics file to the cache.
-	void add(std::string const & file) const;
+	void add(support::FileName const & file) const;
 
 	/// Remove a file from the cache.
-	void remove(std::string const & file) const;
+	void remove(support::FileName const & file) const;
 
 	/// Returns \c true if the file is in the cache.
-	bool inCache(std::string const & file) const;
+	bool inCache(support::FileName const & file) const;
 
 	/** Get the cache item associated with file.
 	 *  Returns an empty container if there is no such item.
@@ -66,7 +69,7 @@ public:
 	 */
 	typedef boost::shared_ptr<CacheItem> ItemPtr;
 	///
-	ItemPtr const item(std::string const & file) const;
+	ItemPtr const item(support::FileName const & file) const;
 
 private:
 	/** Make the c-tor, d-tor private so we can control how many objects

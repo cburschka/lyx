@@ -32,6 +32,9 @@
 #include <utility>
 
 namespace lyx {
+
+namespace support { class FileName; }
+
 namespace graphics {
 
 class Params;
@@ -76,7 +79,7 @@ public:
 	 *  The caller should expect this process to be asynchronous and
 	 *  so should connect to the "finished" signal above.
 	 */
-	void load(std::string const & filename);
+	void load(support::FileName const & filename);
 
 	/** Generate the pixmap.
 	 *  Uses the params to decide on color, grayscale etc.
@@ -122,7 +125,7 @@ private:
 	 *  The caller should expect this process to be asynchronous and
 	 *  so should connect to the "finished" signal above.
 	 */
-	virtual void load_impl(std::string const & filename) = 0;
+	virtual void load_impl(support::FileName const & filename) = 0;
 
 	/** Generate the pixmap.
 	 *  Uses the params to decide on color, grayscale etc.
@@ -170,7 +173,7 @@ bool Image::isDrawable() const
 
 
 inline
-void Image::load(std::string const & filename)
+void Image::load(support::FileName const & filename)
 {
 	return load_impl(filename);
 }

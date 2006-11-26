@@ -31,6 +31,7 @@
 namespace support = lyx::support;
 
 using support::changeExtension;
+using support::FileName;
 using support::Forkedcall;
 using support::ForkedCallQueue;
 using support::getExtension;
@@ -56,7 +57,7 @@ namespace graphics {
 class Converter::Impl : public boost::signals::trackable {
 public:
 	///
-	Impl(string const &, string const &, string const &, string const &);
+	Impl(FileName const &, string const &, string const &, string const &);
 
 	///
 	void startConversion();
@@ -78,9 +79,9 @@ public:
 	///
 	string script_command_;
 	///
-	string script_file_;
+	FileName script_file_;
 	///
-	string to_file_;
+	FileName to_file_;
 	///
 	bool valid_process_;
 	///
@@ -95,7 +96,7 @@ bool Converter::isReachable(string const & from_format_name,
 }
 
 
-Converter::Converter(string const & from_file,   string const & to_file_base,
+Converter::Converter(FileName const & from_file, string const & to_file_base,
 		     string const & from_format, string const & to_format)
 	: pimpl_(new Impl(from_file, to_file_base, from_format, to_format))
 {}
@@ -118,21 +119,21 @@ boost::signals::connection Converter::connect(slot_type const & slot) const
 }
 
 
-string const & Converter::convertedFile() const
+FileName const & Converter::convertedFile() const
 {
-	static string const empty;
+	static FileName const empty;
 	return pimpl_->finished_ ? pimpl_->to_file_ : empty;
 }
 
 /** Build the conversion script.
  *  The script is output to the stream \p script.
  */
-static void build_script(string const & from_file, string const & to_file_base,
+static void build_script(FileName const & from_file, string const & to_file_base,
 		  string const & from_format, string const & to_format,
 		  ostream & script);
 
 
-Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
+Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 		      string const & from_format, string const & to_format)
 	: valid_process_(false), finished_(false)
 {
@@ -145,7 +146,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 	// The converted image is to be stored in this file (we do not
 	// use ChangeExtension because this is a basename which may
 	// nevertheless contain a '.')
-	to_file_ = to_file_base + '.' +  formats.extension(to_format);
+	to_file_ = FileName(to_file_base + '.' +  formats.extension(to_format));
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
@@ -157,10 +158,10 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 	// Output the script to file.
 	static int counter = 0;
-	script_file_ = onlyPath(to_file_base) + "lyxconvert" +
-		convert<string>(counter++) + ".py";
+	script_file_ = FileName(onlyPath(to_file_base) + "lyxconvert" +
+		convert<string>(counter++) + ".py");
 
-	std::ofstream fs(script_file_.c_str());
+	std::ofstream fs(script_file_.toFilesystemEncoding().c_str());
 	if (!fs.good()) {
 		lyxerr << "Unable to write the conversion script to \""
 		       << script_file_ << '\n'
@@ -177,8 +178,8 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 	// list of forked processes.
 	// Note: 'python ' is absolutely essential, or execvp will fail.
 	script_command_ = support::os::python() + ' ' +
-		quoteName(script_file_) + ' ' +
-		quoteName(onlyFilename(from_file)) + ' ' +
+		quoteName(script_file_.toFilesystemEncoding()) + ' ' +
+		quoteName(onlyFilename(from_file.toFilesystemEncoding())) + ' ' +
 		quoteName(to_format);
 	// All is ready to go
 	valid_process_ = true;
@@ -269,7 +270,7 @@ static void build_conversion_command(string const & command, ostream & script)
 }
 
 
-static void build_script(string const & from_file,
+static void build_script(FileName const & from_file,
 		  string const & to_file_base,
 		  string const & from_format,
 		  string const & to_format,
@@ -302,14 +303,14 @@ static void build_script(string const & from_file,
 	static int counter = 0;
 	string const tmp = "gconvert" + convert<string>(counter++);
 	string const to_base = tempName(string(), tmp);
-	unlink(to_base);
+	unlink(FileName(to_base));
 
 	// Create a copy of the file in case the original name contains
 	// problematic characters like ' or ". We can work around that problem
 	// in python, but the converters might be shell scripts and have more
 	// troubles with it.
-	string outfile = changeExtension(to_base, getExtension(from_file));
-	script << "infile = " << quoteName(from_file, quote_python) << "\n"
+	string outfile = changeExtension(to_base, getExtension(from_file.absFilename()));
+	script << "infile = " << quoteName(from_file.absFilename(), quote_python) << "\n"
 	          "outfile = " << quoteName(outfile, quote_python) << "\n"
 	          "shutil.copy(infile, outfile)\n";
 

@@ -22,6 +22,9 @@
 #include <boost/utility.hpp>
 
 namespace lyx {
+
+namespace support { class FileName; }
+
 namespace graphics {
 
 class Converter : boost::noncopyable {
@@ -33,7 +36,7 @@ public:
 	/** One Converter per conversion ensures that the (hidden) signal
 	 *  is always connected to the expected slot.
 	 */
-	Converter(std::string const & from_file,   std::string const & to_file_base,
+	Converter(support::FileName const & from_file, std::string const & to_file_base,
 		  std::string const & from_format, std::string const & to_format);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
@@ -56,7 +59,7 @@ public:
 	 *  If conversion fails or has not been completed, however, it
 	 *  returns an empty string.
 	 */
-	std::string const & convertedFile() const;
+	support::FileName const & convertedFile() const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

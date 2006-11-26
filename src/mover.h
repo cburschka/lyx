@@ -18,6 +18,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 /**
  *  Utility to copy a file of a specified format from one place to another.
  *  This base class simply invokes the command support::copy().
@@ -34,11 +36,8 @@ public:
 	 *  \returns true if successful.
 	 */
 	bool
-	copy(std::string const & from, std::string const & to,
-	     unsigned long int mode = (unsigned long int)-1) const
-	{
-		return do_copy(from, to, to, mode);
-	}
+	copy(support::FileName const & from, support::FileName const & to,
+	     unsigned long int mode = (unsigned long int)-1) const;
 
 	/** Copy file @c from to @c to.
 	 *  \see SpecialisedMover::SpecialisedMover() for an explanation of
@@ -49,7 +48,7 @@ public:
 	 *  \returns true if successful.
 	 */
 	bool
-	copy(std::string const & from, std::string const & to,
+	copy(support::FileName const & from, support::FileName const & to,
 	     std::string const & latex,
 	     unsigned long int mode = (unsigned long int)-1) const
 	{
@@ -63,10 +62,7 @@ public:
 	 *  \returns true if successful.
 	 */
 	bool
-	rename(std::string const & from, std::string const & to) const
-	{
-		return do_rename(from, to, to);
-	}
+	rename(support::FileName const & from, support::FileName const & to) const;
 
 	/** Rename file @c from as @c to.
 	 *  \see SpecialisedMover::SpecialisedMover() for an explanation of
@@ -77,7 +73,7 @@ public:
 	 *  \returns true if successful.
 	 */
 	bool
-	rename(std::string const & from, std::string const & to,
+	rename(support::FileName const & from, support::FileName const & to,
 	       std::string const & latex) const
 	{
 		return do_rename(from, to, latex);
@@ -85,11 +81,11 @@ public:
 
 protected:
 	virtual bool
-	do_copy(std::string const & from, std::string const & to,
+	do_copy(support::FileName const & from, support::FileName const & to,
 	        std::string const &, unsigned long int mode) const;
 
 	virtual bool
-	do_rename(std::string const & from, std::string const & to,
+	do_rename(support::FileName const & from, support::FileName const & to,
 		  std::string const &) const;
 };
 
@@ -132,11 +128,11 @@ public:
 
 private:
 	virtual bool
-	do_copy(std::string const & from, std::string const & to,
+	do_copy(support::FileName const & from, support::FileName const & to,
 	        std::string const & latex, unsigned long int mode) const;
 
 	virtual bool
-	do_rename(std::string const & from, std::string const & to,
+	do_rename(support::FileName const & from, support::FileName const & to,
 		  std::string const & latex) const;
 
 	std::string command_;

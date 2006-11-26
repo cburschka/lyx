@@ -12,6 +12,8 @@
 
 #include "support/lyxlib.h"
 
+#include "support/filename.h"
+
 
 namespace lyx {
 
@@ -23,12 +25,12 @@ namespace lyx {
 # include <windows.h>
 #endif
 
-int lyx::support::chdir(std::string const & name)
+int support::chdir(FileName const & name)
 {
 #ifdef _WIN32
-	return SetCurrentDirectory(name.c_str()) != 0 ? 0 : -1;
+	return SetCurrentDirectory(name.toFilesystemEncoding().c_str()) != 0 ? 0 : -1;
 #else
-	return ::chdir(name.c_str());
+	return ::chdir(name.toFilesystemEncoding().c_str());
 #endif
 }
 

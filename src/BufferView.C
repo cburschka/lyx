@@ -209,7 +209,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 {
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
-	string s = fileSearch(string(), filename, "lyx");
+	string s = fileSearch(string(), filename, "lyx").absFilename();
 
 	bool const found = !s.empty();
 
@@ -1387,7 +1387,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 	// Get absolute path of file and add ".lyx"
 	// to the filename if necessary
-	filename = fileSearch(string(), filename, "lyx");
+	filename = fileSearch(string(), filename, "lyx").absFilename();
 
 	docstring const disp_fn = makeDisplayPath(filename);
 	// emit message signal.

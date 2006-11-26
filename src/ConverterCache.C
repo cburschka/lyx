@@ -32,7 +32,6 @@
 #include <map>
 #include <sstream>
 
-using lyx::support::absolutePath;
 using lyx::support::addName;
 
 using std::string;
@@ -40,6 +39,8 @@ using std::string;
 namespace fs = boost::filesystem;
 
 namespace lyx {
+
+using support::FileName;
 
 namespace {
 
@@ -51,28 +52,27 @@ unsigned long do_crc(string const & s)
 }
 
 
-static string cache_dir;
+static FileName cache_dir;
 
 
 class CacheItem {
 public:
 	CacheItem() {}
-	CacheItem(string const & orig_from, string const & to_format,
+	CacheItem(FileName const & orig_from, string const & to_format,
 	          time_t t, unsigned long c)
 		: timestamp(t), checksum(c)
 	{
-		BOOST_ASSERT(absolutePath(orig_from));
 		std::ostringstream os;
-		os << std::setw(10) << std::setfill('0') << do_crc(orig_from)
+		os << std::setw(10) << std::setfill('0') << do_crc(orig_from.absFilename())
 		   << '-' << to_format;
-		cache_name = addName(cache_dir, os.str());
+		cache_name = FileName(addName(cache_dir.absFilename(), os.str()));
 		lyxerr[Debug::FILES] << "Add file cache item " << orig_from
 		                     << ' ' << to_format << ' ' << cache_name
 		                     << ' ' << timestamp << ' ' << checksum
 		                     << '.' << std::endl;
 	}
 	~CacheItem() {}
-	string cache_name;
+	FileName cache_name;
 	time_t timestamp;
 	unsigned long checksum;
 };
@@ -84,7 +84,7 @@ public:
  *  nested map to find the cache item quickly by filename and format.
  */
 typedef std::map<string, CacheItem> FormatCacheType;
-typedef std::map<string, FormatCacheType> CacheType;
+typedef std::map<FileName, FormatCacheType> CacheType;
 
 
 class ConverterCache::Impl {
@@ -94,7 +94,7 @@ public:
 	///
 	void writeIndex();
 	///
-	CacheItem * find(string const & from, string const & format);
+	CacheItem * find(FileName const & from, string const & format);
 	CacheType cache;
 };
 
@@ -102,8 +102,8 @@ public:
 void ConverterCache::Impl::readIndex()
 {
 	time_t const now = current_time();
-	string const index = addName(cache_dir, "index");
-	std::ifstream is(index.c_str());
+	FileName const index(addName(cache_dir.absFilename(), "index"));
+	std::ifstream is(index.toFilesystemEncoding().c_str());
 	while (is.good()) {
 		string orig_from;
 		string to_format;
@@ -111,7 +111,8 @@ void ConverterCache::Impl::readIndex()
 		unsigned long checksum;
 		if (!(is >> orig_from >> to_format >> timestamp >> checksum))
 			return;
-		CacheItem item(orig_from, to_format, timestamp, checksum);
+		FileName const orig_from_name(orig_from);
+		CacheItem item(orig_from_name, to_format, timestamp, checksum);
 
 		// Don't cache files that do not exist anymore
 		if (!fs::exists(orig_from)) {
@@ -123,7 +124,7 @@ void ConverterCache::Impl::readIndex()
 		}
 
 		// Delete the cached file if it is too old
-		if (difftime(now, fs::last_write_time(item.cache_name)) >
+		if (difftime(now, fs::last_write_time(item.cache_name.toFilesystemEncoding())) >
 		    lyxrc.converter_cache_maxage) {
 			lyxerr[Debug::FILES] << "Not caching file `"
 				<< orig_from << "' (too old)." << std::endl;
@@ -131,7 +132,7 @@ void ConverterCache::Impl::readIndex()
 			continue;
 		}
 
-		cache[orig_from][to_format] = item;
+		cache[orig_from_name][to_format] = item;
 	}
 	is.close();
 }
@@ -139,12 +140,12 @@ void ConverterCache::Impl::readIndex()
 
 void ConverterCache::Impl::writeIndex()
 {
-	string const index = addName(cache_dir, "index");
-	std::ofstream os(index.c_str());
+	FileName const index(addName(cache_dir.absFilename(), "index"));
+	std::ofstream os(index.toFilesystemEncoding().c_str());
 	os.close();
-	if (!lyx::support::chmod(index.c_str(), 0600))
+	if (!lyx::support::chmod(index, 0600))
 		return;
-	os.open(index.c_str());
+	os.open(index.toFilesystemEncoding().c_str());
 	CacheType::iterator it1 = cache.begin();
 	CacheType::iterator const end1 = cache.end();
 	for (; it1 != end1; ++it1) {
@@ -159,7 +160,7 @@ void ConverterCache::Impl::writeIndex()
 }
 
 
-CacheItem * ConverterCache::Impl::find(string const & from,
+CacheItem * ConverterCache::Impl::find(FileName const & from,
 		string const & format)
 {
 	if (!lyxrc.use_converter_cache)
@@ -188,8 +189,8 @@ void ConverterCache::init()
 		return;
 	// We do this here and not in the constructor because package() gets
 	// initialized after all static variables.
-	cache_dir = addName(support::package().user_support(), "cache");
-	if (!fs::exists(cache_dir))
+	cache_dir = FileName(addName(support::package().user_support(), "cache"));
+	if (!fs::exists(cache_dir.toFilesystemEncoding()))
 		if (support::mkdir(cache_dir, 0700) != 0) {
 			lyxerr << "Could not create cache directory `"
 			       << cache_dir << "'." << std::endl;
@@ -212,21 +213,19 @@ ConverterCache::~ConverterCache()
 }
 
 
-void ConverterCache::add(string const & orig_from, string const & to_format,
-		string const & converted_file) const
+void ConverterCache::add(FileName const & orig_from, string const & to_format,
+		FileName const & converted_file) const
 {
 	if (!lyxrc.use_converter_cache)
 		return;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << ' ' << converted_file
 	                     << std::endl;
-	BOOST_ASSERT(absolutePath(orig_from));
-	BOOST_ASSERT(absolutePath(converted_file));
 
 	// Is the file in the cache already?
 	CacheItem * item = pimpl_->find(orig_from, to_format);
 
-	time_t const timestamp = fs::last_write_time(orig_from);
+	time_t const timestamp = fs::last_write_time(orig_from.toFilesystemEncoding());
 	Mover const & mover = movers(to_format);
 	if (item) {
 		lyxerr[Debug::FILES] << "ConverterCache::add(" << orig_from << "):\n"
@@ -267,14 +266,13 @@ void ConverterCache::add(string const & orig_from, string const & to_format,
 }
 
 
-void ConverterCache::remove(string const & orig_from,
+void ConverterCache::remove(FileName const & orig_from,
 		string const & to_format) const
 {
 	if (!lyxrc.use_converter_cache)
 		return;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
-	BOOST_ASSERT(absolutePath(orig_from));
 
 	CacheType::iterator const it1 = pimpl_->cache.find(orig_from);
 	if (it1 == pimpl_->cache.end())
@@ -289,21 +287,20 @@ void ConverterCache::remove(string const & orig_from,
 }
 
 
-bool ConverterCache::inCache(string const & orig_from,
+bool ConverterCache::inCache(FileName const & orig_from,
 		string const & to_format) const
 {
 	if (!lyxrc.use_converter_cache)
 		return false;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
-	BOOST_ASSERT(absolutePath(orig_from));
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	if (!item) {
 		lyxerr[Debug::FILES] << "not in cache." << std::endl;
 		return false;
 	}
-	time_t const timestamp = fs::last_write_time(orig_from);
+	time_t const timestamp = fs::last_write_time(orig_from.toFilesystemEncoding());
 	if (item->timestamp == timestamp) {
 		lyxerr[Debug::FILES] << "identical timestamp." << std::endl;
 		return true;
@@ -318,12 +315,11 @@ bool ConverterCache::inCache(string const & orig_from,
 }
 
 
-string const ConverterCache::cacheName(string const & orig_from,
+FileName const & ConverterCache::cacheName(FileName const & orig_from,
 		string const & to_format) const
 {
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
-	BOOST_ASSERT(absolutePath(orig_from));
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);
@@ -331,15 +327,13 @@ string const ConverterCache::cacheName(string const & orig_from,
 }
 
 
-bool ConverterCache::copy(string const & orig_from, string const & to_format,
-		string const & dest) const
+bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
+		FileName const & dest) const
 {
 	if (!lyxrc.use_converter_cache)
 		return false;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << ' ' << dest << std::endl;
-	BOOST_ASSERT(absolutePath(orig_from));
-	BOOST_ASSERT(absolutePath(dest));
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);

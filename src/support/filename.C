@@ -34,10 +34,34 @@ FileName::FileName()
 {}
 
 
+FileName::~FileName()
+{}
+
+
 FileName::FileName(string const & abs_filename)
 	: name_(abs_filename)
 {
 	BOOST_ASSERT(absolutePath(name_));
+}
+
+
+void FileName::set(string const & name)
+{
+	name_ = name;
+	BOOST_ASSERT(absolutePath(name_));
+}
+
+
+void FileName::erase()
+{
+	name_.erase();
+}
+
+
+string const FileName::toFilesystemEncoding() const
+{
+	// FIXME UNICODE: correct encoding not implemented yet
+	return name_;
 }
 
 
@@ -50,6 +74,24 @@ bool operator==(FileName const & lhs, FileName const & rhs)
 bool operator!=(FileName const & lhs, FileName const & rhs)
 {
 	return lhs.absFilename() != rhs.absFilename();
+}
+
+
+bool operator<(FileName const & lhs, FileName const & rhs)
+{
+	return lhs.absFilename() < rhs.absFilename();
+}
+
+
+bool operator>(FileName const & lhs, FileName const & rhs)
+{
+	return lhs.absFilename() > rhs.absFilename();
+}
+
+
+std::ostream & operator<<(std::ostream & os, FileName const & filename)
+{
+	return os << filename.absFilename();
 }
 
 
@@ -149,7 +191,7 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 bool DocFileName::isZipped() const
 {
 	if (!zipped_valid_) {
-		zipped_ = zippedFile(name_);
+		zipped_ = zippedFile(*this);
 		zipped_valid_ = true;
 	}
 	return zipped_;

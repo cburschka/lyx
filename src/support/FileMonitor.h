@@ -22,21 +22,23 @@
 namespace lyx {
 namespace support {
 
+class FileName;
+
 class FileMonitor : boost::noncopyable {
 public:
 	/** Once monitoring begins, the file will be monitored every
 	 *  interval ms.
 	 */
-	FileMonitor(std::string const & file_with_path, int interval);
+	FileMonitor(FileName const & file_with_path, int interval);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~FileMonitor();
 
 	///
-	void reset(std::string const & file_with_path) const;
+	void reset(FileName const & file_with_path) const;
 
 	///
-	std::string const & filename() const;
+	FileName const & filename() const;
 
 	/// Begin monitoring the file
 	void start() const;

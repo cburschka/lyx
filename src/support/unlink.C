@@ -11,18 +11,21 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+#include "support/filename.h"
 
 
 namespace lyx {
+namespace support {
 
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
 
-int lyx::support::unlink(std::string const & pathname)
+int unlink(FileName const & pathname)
 {
-	return ::unlink(pathname.c_str());
+	return ::unlink(pathname.toFilesystemEncoding().c_str());
 }
 
 
+} // namespace support
 } // namespace lyx

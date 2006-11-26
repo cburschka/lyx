@@ -20,6 +20,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class LyXLex;
 class Counters;
 class FloatList;
@@ -65,7 +67,7 @@ public:
 	const_iterator end() const { return layoutlist_.end(); }
 
 	/// Performs the read of the layout file.
-	bool read(std::string const & filename, bool merge = false);
+	bool read(support::FileName const & filename, bool merge = false);
 	///
 	void readOutputType(LyXLex &);
 	///

@@ -35,6 +35,7 @@ using std::string;
 namespace lyx {
 
 using support::FileFilterList;
+using support::FileName;
 using support::isFileReadable;
 using support::makeAbsPath;
 using support::onlyPath;
@@ -104,7 +105,7 @@ void ControlInclude::load(string const & file)
 		kernel().dispatch(FuncRequest(LFUN_BUFFER_CHILD_OPEN, file));
 	else
 		// tex file or other text file in verbatim mode
-		formats.edit(kernel().buffer(), file, "text");
+		formats.edit(kernel().buffer(), FileName(file), "text");
 }
 
 
@@ -114,7 +115,7 @@ bool ControlInclude::fileExists(string const & file)
 		= makeAbsPath(file,
 			      onlyPath(kernel().buffer().fileName()));
 
-	if (isFileReadable(fileWithAbsPath))
+	if (isFileReadable(FileName(fileWithAbsPath)))
 		return true;
 
 	return false;

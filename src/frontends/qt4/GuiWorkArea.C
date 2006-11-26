@@ -61,6 +61,8 @@ namespace os = lyx::support::os;
 
 namespace lyx {
 
+using support::FileName;
+
 /// return the LyX key state from Qt's
 static key_modifier::state q_key_state(Qt::KeyboardModifiers state)
 {
@@ -470,11 +472,11 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 	lyxerr[Debug::GUI] << "show banner: " << lyxrc.show_banner << endl;
 	/// The text to be written on top of the pixmap
 	QString const text = lyx_version ? QString(lyx_version) : qt_("unknown version");
-	string const file = support::libFileSearch("images", "banner", "ppm");
+	FileName const file = support::libFileSearch("images", "banner", "ppm");
 	if (file.empty())
 		return;
 
-	QPixmap pm(toqstr(file));
+	QPixmap pm(toqstr(file.absFilename()));
 	if (!pm) {
 		lyxerr << "could not load splash screen: '" << file << "'" << endl;
 		return;

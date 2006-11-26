@@ -238,11 +238,11 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 		if (!f.argument().empty())
 			xpm_name = subst(name + ' ' + to_utf8(f.argument()), ' ', '_');
 
-		fullname = libFileSearch("images", xpm_name, "xpm");
+		fullname = libFileSearch("images", xpm_name, "xpm").absFilename();
 
 		if (fullname.empty()) {
 			// try without the argument
-			fullname = libFileSearch("images", name, "xpm");
+			fullname = libFileSearch("images", name, "xpm").absFilename();
 		}
 	}
 
@@ -255,7 +255,7 @@ string const ToolbarBackend::getIcon(FuncRequest const & f)
 	lyxerr[Debug::GUI] << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
 			   << '(' << to_utf8(f.argument()) << ")\"" << endl;
-	return libFileSearch("images", "unknown", "xpm");
+	return libFileSearch("images", "unknown", "xpm").absFilename();
 }
 
 

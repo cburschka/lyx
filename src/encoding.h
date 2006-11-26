@@ -20,6 +20,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 ///
 class Encoding {
 public:
@@ -53,7 +55,7 @@ public:
 	///
 	Encodings();
 	///
-	void read(std::string const & filename);
+	void read(support::FileName const & filename);
 	/// Get encoding from LyX name \p name
 	Encoding const * getFromLyXName(std::string const & name) const;
 	/// Get encoding from LaTeX name \p name

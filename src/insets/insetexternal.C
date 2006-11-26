@@ -70,11 +70,11 @@ namespace external {
 
 TempName::TempName()
 {
-	tempname_ = support::tempName(string(), "lyxext");
+	string const tempname = support::tempName(string(), "lyxext");
 	// FIXME: This is unsafe
-	support::unlink(tempname_);
+	support::unlink(support::FileName(tempname));
 	// must have an extension for the converter code to work correctly.
-	tempname_ += ".tmp";
+	tempname_ = support::FileName(tempname + ".tmp");
 }
 
 
@@ -529,7 +529,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 {
 	graphics::Params gparams;
 
-	gparams.filename = eparams.filename.absFilename();
+	gparams.filename = eparams.filename;
 	gparams.scale = eparams.lyxscale;
 	if (eparams.clipdata.clip)
 		gparams.bb = eparams.clipdata.bbox;
@@ -791,9 +791,8 @@ namespace {
 
 bool preview_wanted(InsetExternalParams const & params)
 {
-	string const included_file = params.filename.absFilename();
 	return params.display == external::PreviewDisplay &&
-		support::isFileReadable(included_file);
+		support::isFileReadable(params.filename);
 }
 
 
@@ -815,7 +814,7 @@ void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
 
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params)) {
-		renderer.setAbsFile(params.filename.absFilename());
+		renderer.setAbsFile(params.filename);
 		docstring const snippet = latex_string(inset, buffer);
 		renderer.addPreview(snippet, buffer);
 		renderer.startLoading(buffer);
@@ -832,7 +831,7 @@ void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
 		return;
 
 	if (preview_wanted(params())) {
-		ptr->setAbsFile(params_.filename.absFilename());
+		ptr->setAbsFile(params_.filename);
 		docstring const snippet = latex_string(*this, ploader.buffer());
 		ptr->addPreview(snippet, ploader);
 	}

@@ -16,6 +16,9 @@
 #include <string>
 
 namespace lyx {
+
+namespace support { class FileName; }
+
 namespace graphics {
 
 class PreviewLoader;
@@ -28,7 +31,7 @@ public:
 	 */
 	PreviewImage(PreviewLoader & parent,
 		     std::string const & latex_snippet,
-		     std::string const & bitmap_file,
+		     support::FileName const & bitmap_file,
 		     double ascent_frac);
 	///
 	~PreviewImage();

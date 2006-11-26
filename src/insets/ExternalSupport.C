@@ -30,7 +30,6 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/package.h"
-#include "support/path.h"
 
 using std::endl;
 using std::string;
@@ -38,6 +37,9 @@ using std::vector;
 
 
 namespace lyx {
+
+using support::FileName;
+
 namespace external {
 
 Template const * getTemplatePtr(InsetExternalParams const & params)
@@ -49,9 +51,8 @@ Template const * getTemplatePtr(InsetExternalParams const & params)
 
 void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
-	string const file_with_path = params.filename.absFilename();
-	formats.edit(buffer, file_with_path,
-		     formats.getFormatFromFile(file_with_path));
+	formats.edit(buffer, params.filename,
+		     formats.getFormatFromFile(params.filename));
 }
 
 
@@ -154,7 +155,7 @@ string const doSubstitution(InsetExternalParams const & params,
 			    support::PROTECT_EXTENSION, support::ESCAPE_DOTS);
 	result = subst_path(result, "$$Extension",
 			'.' + support::getExtension(filename), use_latex_path);
-	result = subst_path(result, "$$Tempname", params.tempname(), use_latex_path);
+	result = subst_path(result, "$$Tempname", params.tempname().absFilename(), use_latex_path);
 	result = subst_path(result, "$$Sysdir",
 				support::package().system_support(), use_latex_path);
 
@@ -166,12 +167,10 @@ string const doSubstitution(InsetExternalParams const & params,
 		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
 
-		string const filepath = support::isFileReadable(file) ?
-			buffer.filePath() : m_buffer->temppath();
-		support::Path p(filepath);
-
-		if (support::isFileReadable(file))
-			contents = support::getFileContents(file);
+		FileName const absfile = FileName(
+			support::makeAbsPath(file, m_buffer->temppath()));
+		if (support::isFileReadable(absfile))
+			contents = support::getFileContents(absfile);
 
 		result = support::subst(result,
 					("$$Contents(\"" + file + "\")").c_str(),
@@ -214,14 +213,12 @@ void updateExternal(InsetExternalParams const & params,
 	if (from_format.empty())
 		return; // NOT_NEEDED
 
-	string abs_from_file = params.filename.absFilename();
-
 	if (from_format == "*") {
-		if (abs_from_file.empty())
+		if (params.filename.empty())
 			return; // NOT_NEEDED
 
 		// Try and ascertain the file format from its contents.
-		from_format = formats.getFormatFromFile(abs_from_file);
+		from_format = formats.getFormatFromFile(params.filename);
 		if (from_format.empty())
 			return; // FAILURE
 
@@ -245,20 +242,20 @@ void updateExternal(InsetExternalParams const & params,
 
 	// We copy the source file to the temp dir and do the conversion
 	// there if necessary
-	string const temp_file =
+	FileName const temp_file = FileName(
 		support::makeAbsPath(params.filename.mangledFilename(),
-				     m_buffer->temppath());
-	if (!abs_from_file.empty()) {
-		unsigned long const from_checksum = support::sum(abs_from_file);
+				     m_buffer->temppath()));
+	if (!params.filename.empty()) {
+		unsigned long const from_checksum = support::sum(params.filename);
 		unsigned long const temp_checksum = support::sum(temp_file);
 
 		if (from_checksum != temp_checksum) {
 			Mover const & mover = movers(from_format);
-			if (!mover.copy(abs_from_file, temp_file)) {
+			if (!mover.copy(params.filename, temp_file)) {
 				lyxerr[Debug::EXTERNAL]
 					<< "external::updateExternal. "
 					<< "Unable to copy "
-					<< abs_from_file << " to " << temp_file << endl;
+					<< params.filename << " to " << temp_file << endl;
 				return; // FAILURE
 			}
 		}
@@ -268,8 +265,8 @@ void updateExternal(InsetExternalParams const & params,
 	string const to_file = doSubstitution(params, buffer,
 					      outputFormat.updateResult,
 					      false, true);
-	string const abs_to_file =
-		support::makeAbsPath(to_file, m_buffer->temppath());
+	FileName const abs_to_file = FileName(
+		support::makeAbsPath(to_file, m_buffer->temppath()));
 
 	// Record the referenced files for the exporter.
 	// The exporter will copy them to the export dir.
@@ -280,10 +277,10 @@ void updateExternal(InsetExternalParams const & params,
 		vector<string>::const_iterator fit  = rit->second.begin();
 		vector<string>::const_iterator fend = rit->second.end();
 		for (; fit != fend; ++fit) {
-			string const source = support::makeAbsPath(
+			FileName const source(support::makeAbsPath(
 					doSubstitution(params, buffer, *fit,
 						       false, true),
-					m_buffer->temppath());
+					m_buffer->temppath()));
 			// The path of the referenced file is never the
 			// temp path, but the filename may be the mangled
 			// or the real name. Therefore we substitute the
@@ -310,7 +307,7 @@ void updateExternal(InsetExternalParams const & params,
 	ErrorList el;
 	/* bool const success = */
 		converters.convert(&buffer, temp_file, abs_to_file,
-		                   abs_from_file, from_format, to_format, el,
+		                   params.filename, from_format, to_format, el,
 		                   Converters::try_default | Converters::try_cache);
 	// return success
 }

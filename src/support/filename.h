@@ -25,18 +25,27 @@ namespace support {
  * The file may or may not exist.
  */
 class FileName {
-protected:
-	/// Constructor for empty filenames (only needed for DocFileName)
-	FileName();
 public:
+	/// Constructor for empty filenames
+	FileName();
 	/** Constructor for nonempty filenames.
+	 * explicit because we don't want implicit conversion of relative
+	 * paths in function arguments (e.g. of unlink).
 	 * \param abs_filename the file in question. Must have an absolute path.
 	 */
-	FileName(std::string const & abs_filename);
+	explicit FileName(std::string const & abs_filename);
+	virtual ~FileName();
+	virtual void set(std::string const & filename);
+	virtual void erase();
 	/// Is this filename empty?
 	bool empty() const { return name_.empty(); }
 	/// get the absolute file name
 	std::string const absFilename() const { return name_; }
+	/**
+	 * Get the file name in the encoding used by the file system.
+	 * Only use this for accessing the file, e.g. with an fstream.
+	 */
+	std::string const toFilesystemEncoding() const;
 protected:
 	/// The absolute file name.
 	/// The encoding is currently unspecified, anything else than ASCII
@@ -47,6 +56,9 @@ protected:
 
 bool operator==(FileName const &, FileName const &);
 bool operator!=(FileName const &, FileName const &);
+bool operator<(FileName const &, FileName const &);
+bool operator>(FileName const &, FileName const &);
+std::ostream & operator<<(std::ostream &, FileName const &);
 
 
 /**

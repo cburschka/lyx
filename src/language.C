@@ -19,6 +19,8 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 
+#include "support/filename.h"
+
 
 namespace lyx {
 
@@ -35,7 +37,7 @@ Language latex_lang("latex", "latex", "Latex", false, "", 0, "latex", "");
 Language const * latex_language = &latex_lang;
 
 
-void Languages::read(string const & filename)
+void Languages::read(support::FileName const & filename)
 {
 	// We need to set the encoding of latex_lang
 	latex_lang = Language("latex", "latex", "Latex", false, "iso8859-1",

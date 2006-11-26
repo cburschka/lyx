@@ -385,7 +385,7 @@ string const find_xpm(string const & name)
 			   << "Looking for math XPM called \""
 			   << xpm_name << '"' << std::endl;
 
-	return libFileSearch("images/math/", xpm_name, "xpm");
+	return libFileSearch("images/math/", xpm_name, "xpm").absFilename();
 }
 
 } // namespace frontend

@@ -30,7 +30,6 @@
 
 #include "support/docstream.h"
 #include "support/filetools.h"
-#include <sstream>
 
 
 namespace lyx {
@@ -77,7 +76,7 @@ void LaTeXFeatures::require(string const & name)
 void LaTeXFeatures::getAvailable()
 {
 	LyXLex lex(0, 0);
-	string real_file = libFileSearch("", "packages.lst");
+	support::FileName const real_file = libFileSearch("", "packages.lst");
 
 	if (real_file.empty())
 		return;

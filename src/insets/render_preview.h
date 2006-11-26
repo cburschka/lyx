@@ -32,6 +32,8 @@ class LyXRC_PreviewStatus;
 class MetricsInfo;
 class PainterInfo;
 
+namespace support { class FileName; }
+
 namespace graphics {
 
 class PreviewImage;
@@ -108,7 +110,7 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void setAbsFile(std::string const & file);
+	void setAbsFile(support::FileName const & file);
 	///
 	bool monitoring() const { return monitor_.monitoring(); }
 	void startMonitoring() const { monitor_.start(); }

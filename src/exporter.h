@@ -13,6 +13,8 @@
 #ifndef EXPORTER_H
 #define EXPORTER_H
 
+#include "support/filename.h"
+
 #include <map>
 #include <string>
 #include <vector>
@@ -50,9 +52,9 @@ public:
 
 class ExportedFile {
 public:
-	ExportedFile(std::string const &, std::string const &);
+	ExportedFile(support::FileName const &, std::string const &);
 	/// absolute name of the source file
-	std::string sourceName;
+	support::FileName sourceName;
 	/// final name that the exported file should get (absolute name or
 	/// relative to the directory of the master document)
 	std::string exportName;
@@ -76,7 +78,7 @@ public:
 	 *                   or relative to the exported document.
 	 */
 	void addExternalFile(std::string const & format,
-			     std::string const & sourceName,
+			     support::FileName const & sourceName,
 			     std::string const & exportName);
 	/** add a referenced file for one format.
 	 *  The final name is the source file name without path.
@@ -84,7 +86,7 @@ public:
 	 * \param sourceName source file name. Needs to be absolute
 	 */
 	void addExternalFile(std::string const & format,
-			     std::string const & sourceName);
+			     support::FileName const & sourceName);
 	/// get referenced files for \p format
 	std::vector<ExportedFile> const
 	externalFiles(std::string const & format) const;

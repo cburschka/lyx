@@ -20,6 +20,7 @@
 #include "debug.h"
 #include "format.h"
 
+#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
 #include "support/lyxlib.h"
@@ -30,6 +31,7 @@
 namespace lyx {
 
 using support::FileMonitor;
+using support::FileName;
 using support::isFileReadable;
 using support::makeDisplayPath;
 using support::onlyFilename;
@@ -48,7 +50,7 @@ class CacheItem::Impl : public boost::signals::trackable {
 public:
 
 	///
-	Impl(string const & file);
+	Impl(FileName const & file);
 
 	/** Start the image conversion process, checking first that it is
 	 *  necessary. If it is necessary, then a conversion task is started.
@@ -100,18 +102,18 @@ public:
 	void reset();
 
 	/// The filename we refer too.
-	string const filename_;
+	FileName const filename_;
 	///
 	FileMonitor const monitor_;
 
 	/// Is the file compressed?
 	bool zipped_;
 	/// If so, store the uncompressed file in this temporary file.
-	string unzipped_filename_;
+	FileName unzipped_filename_;
 	/// The target format
 	string to_;
 	/// What file are we trying to load?
-	string file_to_load_;
+	FileName file_to_load_;
 	/** Should we delete the file after loading? True if the file is
 	 *  the result of a conversion process.
 	 */
@@ -136,7 +138,7 @@ public:
 };
 
 
-CacheItem::CacheItem(string const & file)
+CacheItem::CacheItem(FileName const & file)
 	: pimpl_(new Impl(file))
 {}
 
@@ -145,7 +147,7 @@ CacheItem::~CacheItem()
 {}
 
 
-string const & CacheItem::filename() const
+FileName const & CacheItem::filename() const
 {
 	return pimpl_->filename_;
 }
@@ -199,7 +201,7 @@ boost::signals::connection CacheItem::connect(slot_type const & slot) const
 //------------------------------
 
 
-CacheItem::Impl::Impl(string const & file)
+CacheItem::Impl::Impl(FileName const & file)
 	: filename_(file),
 	  monitor_(file, 2000),
 	  zipped_(false),
@@ -264,7 +266,7 @@ void CacheItem::Impl::imageConverted(bool success)
 	lyxerr[Debug::GRAPHICS] << "Image conversion " << text << '.' << endl;
 
 	file_to_load_ = converter_.get() ?
-		converter_->convertedFile() : string();
+		FileName(converter_->convertedFile()) : FileName();
 	converter_.reset();
 	cc_.disconnect();
 
@@ -381,21 +383,21 @@ void CacheItem::Impl::convertToDisplayFormat()
 	}
 
 	// Make a local copy in case we unzip it
-	string filename;
+	FileName filename;
 	zipped_ = zippedFile(filename_);
 	if (zipped_) {
-		unzipped_filename_ = tempName(string(), filename_);
+		unzipped_filename_ = FileName(tempName(string(), filename_.toFilesystemEncoding()));
 		if (unzipped_filename_.empty()) {
 			setStatus(ErrorConverting);
 			lyxerr[Debug::GRAPHICS]
 				<< "\tCould not create temporary file." << endl;
 			return;
 		}
-		filename = unzipFile(filename_, unzipped_filename_);
+		filename = unzipFile(filename_, unzipped_filename_.toFilesystemEncoding());
 	} else
 		filename = filename_;
 
-	docstring const displayed_filename = makeDisplayPath(filename_);
+	docstring const displayed_filename = makeDisplayPath(filename_.absFilename());
 	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
 		<< "\n\twith displayed filename: " << lyx::to_utf8(displayed_filename)
@@ -436,7 +438,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Remove the temp file, we only want the name...
 	// FIXME: This is unsafe!
-	unlink(to_file_base);
+	unlink(FileName(to_file_base));
 
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file

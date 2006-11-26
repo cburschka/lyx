@@ -30,28 +30,42 @@ Movers movers;
 Movers system_movers;
 
 
-bool Mover::do_copy(string const & from, string const & to,
+bool Mover::copy(support::FileName const & from, support::FileName const & to,
+                 unsigned long int mode) const
+{
+	return do_copy(from, to, to.absFilename(), mode);
+}
+
+
+bool Mover::do_copy(support::FileName const & from, support::FileName const & to,
 		    string const &, unsigned long int mode) const
 {
 	return support::copy(from, to, mode);
 }
 
 
-bool Mover::do_rename(string const & from, string const & to,
+bool Mover::rename(support::FileName const & from,
+                   support::FileName const & to) const
+{
+	return do_rename(from, to, to.absFilename());
+}
+
+
+bool Mover::do_rename(support::FileName const & from, support::FileName const & to,
 		      string const &) const
 {
 	return support::rename(from, to);
 }
 
 
-bool SpecialisedMover::do_copy(string const & from, string const & to,
+bool SpecialisedMover::do_copy(support::FileName const & from, support::FileName const & to,
 			       string const & latex, unsigned long int mode) const
 {
 	if (command_.empty())
 		return Mover::do_copy(from, to, latex, mode);
 
 	if (mode != (unsigned long int)-1) {
-		std::ofstream ofs(to.c_str(), ios::binary | ios::out | ios::trunc);
+		std::ofstream ofs(to.toFilesystemEncoding().c_str(), ios::binary | ios::out | ios::trunc);
 		if (!ofs)
 			return false;
 		ofs.close();
@@ -60,8 +74,8 @@ bool SpecialisedMover::do_copy(string const & from, string const & to,
 	}
 
 	string command = support::libScriptSearch(command_);
-	command = support::subst(command, "$$i", from);
-	command = support::subst(command, "$$o", to);
+	command = support::subst(command, "$$i", from.toFilesystemEncoding());
+	command = support::subst(command, "$$o", to.toFilesystemEncoding());
 	command = support::subst(command, "$$l", latex);
 
 	support::Systemcall one;
@@ -69,7 +83,7 @@ bool SpecialisedMover::do_copy(string const & from, string const & to,
 }
 
 
-bool SpecialisedMover::do_rename(string const & from, string const & to,
+bool SpecialisedMover::do_rename(support::FileName const & from, support::FileName const & to,
 				 string const & latex) const
 {
 	if (command_.empty())

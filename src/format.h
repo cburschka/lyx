@@ -15,10 +15,11 @@
 #include "support/docstring.h"
 
 #include <vector>
-#include <string>
 
 
 namespace lyx {
+
+namespace support { class FileName; }
 
 class Buffer;
 
@@ -131,7 +132,7 @@ public:
 	 * \returns file format if it could be found, otherwise an empty
 	 * string.
 	 */
-	std::string getFormatFromFile(std::string const & filename) const;
+	std::string getFormatFromFile(support::FileName const & filename) const;
 	/// Set editor and/or viewer to "auto" for formats that can be
 	/// opened by the OS.
 	void setAutoOpen();
@@ -151,10 +152,10 @@ public:
 	///
 	void setViewer(std::string const & name, std::string const & command);
 	///
-	bool view(Buffer const & buffer, std::string const & filename,
+	bool view(Buffer const & buffer, support::FileName const & filename,
 		  std::string const & format_name) const;
 	///
-	bool edit(Buffer const & buffer, std::string const & filename,
+	bool edit(Buffer const & buffer, support::FileName const & filename,
 		  std::string const & format_name) const;
 	///
 	docstring const prettyName(std::string const & name) const;

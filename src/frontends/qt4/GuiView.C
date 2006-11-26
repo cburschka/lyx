@@ -58,10 +58,10 @@ using std::endl;
 using std::string;
 using std::vector;
 
-using lyx::support::onlyFilename;
-
 namespace lyx {
 
+using support::FileName;
+using support::onlyFilename;
 using support::subst;
 using support::libFileSearch;
 
@@ -118,9 +118,9 @@ GuiView::GuiView(int id)
 #ifndef Q_WS_MACX
 	//  assign an icon to main form. We do not do it under Qt/Mac,
 	//  since the icon is provided in the application bundle.
-	string const iconname = libFileSearch("images", "lyx", "xpm");
+	FileName const iconname = libFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty())
-		setWindowIcon(QPixmap(toqstr(iconname)));
+		setWindowIcon(QPixmap(toqstr(iconname.absFilename())));
 #endif
 }
 

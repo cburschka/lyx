@@ -40,7 +40,6 @@
 
 #include "insets/render_preview.h"
 
-#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
@@ -60,6 +59,7 @@ using support::changeExtension;
 using support::contains;
 using support::copy;
 using support::DocFileName;
+using support::FileName;
 using support::getFileContents;
 using support::isFileReadable;
 using support::isLyXFilename;
@@ -378,21 +378,21 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	if (incfile.empty())
 		return 0;
 
-	string const included_file = includedFilename(buffer, params_);
+	FileName const included_file(includedFilename(buffer, params_));
 	Buffer const * const m_buffer = buffer.getMasterBuffer();
 
 	// if incfile is relative, make it relative to the master
 	// buffer directory.
 	if (!absolutePath(incfile)) {
-		incfile = makeRelPath(included_file,
+		incfile = makeRelPath(included_file.absFilename(),
 				      m_buffer->filePath());
 	}
 
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".tex");
-	string const mangled = DocFileName(changeExtension(included_file,
+	string const mangled = DocFileName(changeExtension(included_file.absFilename(),
 							".tex")).mangledFilename();
-	string const writefile = makeAbsPath(mangled, m_buffer->temppath());
+	FileName const writefile(makeAbsPath(mangled, m_buffer->temppath()));
 
 	if (!runparams.nice)
 		incfile = mangled;
@@ -404,14 +404,14 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 		// Don't try to load or copy the file
 		;
 	else if (loadIfNeeded(buffer, params_)) {
-		Buffer * tmp = theBufferList().getBuffer(included_file);
+		Buffer * tmp = theBufferList().getBuffer(included_file.absFilename());
 
 		if (tmp->params().textclass != m_buffer->params().textclass) {
 			// FIXME UNICODE
 			docstring text = bformat(_("Included file `%1$s'\n"
 						"has textclass `%2$s'\n"
 							     "while parent file has textclass `%3$s'."),
-					      makeDisplayPath(included_file),
+					      makeDisplayPath(included_file.absFilename()),
 					      from_utf8(tmp->params().getLyXTextClass().name()),
 					      from_utf8(m_buffer->params().getLyXTextClass().name()));
 			Alert::warning(_("Different textclasses"), text);
@@ -427,7 +427,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 // argument. Should we set it to string(), or should makeLaTeXFile
 // make use of it somehow? (JMarc 20031002)
 #endif
-		tmp->makeLaTeXFile(writefile,
+		tmp->makeLaTeXFile(writefile.absFilename(),
 				   onlyPath(masterFilename(buffer)),
 				   runparams, false);
 	} else {
@@ -443,7 +443,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 				lyxerr[Debug::LATEX]
 					<< to_utf8(bformat(_("Could not copy the file\n%1$s\n"
 								  "into the temporary directory."),
-						   from_utf8(included_file)))
+						   from_utf8(included_file.absFilename())))
 					<< endl;
 				return 0;
 			}
@@ -462,7 +462,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 						      exportfile);
 
 		// \input wants file with extension (default is .tex)
-		if (!isLyXFilename(included_file)) {
+		if (!isLyXFilename(included_file.absFilename())) {
 			incfile = latex_path(incfile);
 			// FIXME UNICODE
 			os << '\\' << from_ascii(params_.getCmdName())
@@ -497,7 +497,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 	if (isVerbatim(params_)) {
 		// FIXME: We don't know the encoding of the file
 		docstring const str = from_utf8(
-			getFileContents(includedFilename(buffer, params_)));
+			getFileContents(FileName(includedFilename(buffer, params_))));
 		os << str;
 		// Return how many newlines we issued.
 		return int(lyx::count(str.begin(), str.end(), '\n'));
@@ -519,12 +519,12 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".sgml");
-	string writefile = changeExtension(included_file, ".sgml");
+	DocFileName writefile(changeExtension(included_file, ".sgml"));
 
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 
-		string const mangled = DocFileName(writefile).mangledFilename();
+		string const mangled = writefile.mangledFilename();
 		writefile = makeAbsPath(mangled,
 					buffer.getMasterBuffer()->temppath());
 		if (!runparams.nice)
@@ -534,7 +534,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 		lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeDocBookFile(writefile, runparams, true);
+		tmp->makeDocBookFile(writefile.absFilename(), runparams, true);
 	}
 
 	runparams.exportdata->addExternalFile("docbook", writefile,
@@ -727,7 +727,7 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 	string const included_file = includedFilename(buffer, params);
 
 	return type(params) == INPUT && params.preview() &&
-		isFileReadable(included_file);
+		isFileReadable(FileName(included_file));
 }
 
 
@@ -748,7 +748,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 	InsetCommandParams const & params = inset.params();
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params, buffer)) {
-		renderer.setAbsFile(includedFilename(buffer, params));
+		renderer.setAbsFile(FileName(includedFilename(buffer, params)));
 		docstring const snippet = latex_string(inset, buffer);
 		renderer.addPreview(snippet, buffer);
 	}
@@ -761,7 +761,7 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 {
 	Buffer const & buffer = ploader.buffer();
 	if (preview_wanted(params(), buffer)) {
-		preview_->setAbsFile(includedFilename(buffer, params()));
+		preview_->setAbsFile(FileName(includedFilename(buffer, params())));
 		docstring const snippet = latex_string(*this, buffer);
 		preview_->addPreview(snippet, ploader);
 	}

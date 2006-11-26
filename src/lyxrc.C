@@ -48,6 +48,7 @@ namespace os = support::os;
 using support::ascii_lowercase;
 using support::bformat;
 using support::expandPath;
+using support::FileName;
 using support::getEnv;
 using support::libFileSearch;
 using support::token;
@@ -315,7 +316,7 @@ void oldFontFormat(string & family, string & foundry)
 } // namespace anon
 
 
-int LyXRC::read(string const & filename)
+int LyXRC::read(FileName const & filename)
 {
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
@@ -369,12 +370,12 @@ int LyXRC::read(LyXLex & lexrc)
 		switch (static_cast<LyXRCTags>(le)) {
 		case RC_INPUT: // Include file
 			if (lexrc.next()) {
-				string const tmp =
+				FileName const tmp =
 					libFileSearch(string(),
 						      lexrc.getString());
 				if (read(tmp)) {
 					lexrc.printError("Error reading "
-							 "included file: "+tmp);
+							 "included file: " + tmp.absFilename());
 				}
 			}
 			break;

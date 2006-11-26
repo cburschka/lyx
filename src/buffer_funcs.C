@@ -53,7 +53,9 @@ namespace lyx {
 using namespace std;
 
 using support::bformat;
+using support::FileName;
 using support::libFileSearch;
+using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::onlyPath;
@@ -127,7 +129,7 @@ bool readFile(Buffer * const b, string const & s)
 			return b->readFile(a);
 		case 1:
 			// Here we delete the autosave
-			unlink(a);
+			unlink(FileName(makeAbsPath(a)));
 			break;
 		default:
 			return false;
@@ -185,7 +187,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 	string tname;
 	// use defaults.lyx as a default template if it exists.
 	if (templatename.empty())
-		tname = libFileSearch("templates", "defaults.lyx");
+		tname = libFileSearch("templates", "defaults.lyx").absFilename();
 	else
 		tname = templatename;
 

@@ -99,13 +99,14 @@ public:
 bool LyXTextClassList::read()
 {
 	LyXLex lex(0, 0);
-	string real_file = libFileSearch("", "textclass.lst");
+	support::FileName const real_file = libFileSearch("", "textclass.lst");
 	lyxerr[Debug::TCLASS] << "Reading textclasses from `"
 			      << real_file << '\'' << endl;
 
 	if (real_file.empty()) {
 		lyxerr << "LyXTextClassList::Read: unable to find "
-			"textclass file  `" << to_utf8(makeDisplayPath(real_file, 1000))
+		          "textclass file  `"
+		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'. Exiting." << endl;
 		return false;
 		// This causes LyX to end... Not a desirable behaviour. Lgb
@@ -123,7 +124,8 @@ bool LyXTextClassList::read()
 
 	if (!lex.isOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
-			"textclass file  `" << to_utf8(makeDisplayPath(real_file, 1000))
+		          "textclass file  `"
+		       << to_utf8(makeDisplayPath(real_file.absFilename(), 1000))
 		       << "'\nCheck your installation. LyX can't continue."
 		       << endl;
 		return false;

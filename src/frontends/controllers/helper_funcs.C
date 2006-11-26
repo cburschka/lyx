@@ -109,7 +109,7 @@ docstring const browseLibFile(docstring const & dir,
 				       lyx::from_utf8(addName(package().user_support(), lyx::to_utf8(dir))));
 
 	docstring const result = browseFile(lyx::from_utf8(
-		libFileSearch(lyx::to_utf8(dir), lyx::to_utf8(name), lyx::to_utf8(ext))),
+		libFileSearch(to_utf8(dir), to_utf8(name), to_utf8(ext)).absFilename()),
 		title, filters, false, dir1, dir2);
 
 	// remove the extension if it is the default one
@@ -121,7 +121,7 @@ docstring const browseLibFile(docstring const & dir,
 
 	// remove the directory, if it is the default one
 	docstring const file = lyx::from_utf8(onlyFilename(lyx::to_utf8(noextresult)));
-	if (lyx::from_utf8(libFileSearch(lyx::to_utf8(dir), lyx::to_utf8(file), lyx::to_utf8(ext))) == result)
+	if (from_utf8(libFileSearch(to_utf8(dir), to_utf8(file), to_utf8(ext)).absFilename()) == result)
 		return file;
 	else
 		return noextresult;

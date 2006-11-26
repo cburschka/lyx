@@ -24,6 +24,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class Context;
 
 /// in preamble.C
@@ -114,7 +116,7 @@ extern std::string getParentFilePath();
  *  contains a preamble.
  *  \return true if the conversion was successful, else false.
  */
-bool tex2lyx(std::string const & infilename, std::string const & outfilename);
+bool tex2lyx(std::string const & infilename, support::FileName const & outfilename);
 
 
 } // namespace lyx

@@ -146,14 +146,14 @@ Corrections theCorrections;
 void initAutoCorrect()
 {
 	lyxerr[Debug::MATHED] << "reading autocorrect file" << endl;
-	string const file = libFileSearch(string(), "autocorrect");
+	support::FileName const file = libFileSearch(string(), "autocorrect");
 	if (file.empty()) {
 		lyxerr << "Could not find autocorrect file" << endl;
 		return;
 	}
 
 	string line;
-	ifstream is(file.c_str());
+	ifstream is(file.toFilesystemEncoding().c_str());
 	while (getline(is, line)) {
 		if (line.size() == 0 || line[0] == '#') {
 			//lyxerr[Debug::MATHED] << "ignoring line '" << line << '\'' << endl;
