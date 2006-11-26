@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-11-25 18:08+0100\n"
+"POT-Creation-Date: 2006-11-26 14:39+0100\n"
 "PO-Revision-Date: 2006-11-08 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -255,18 +255,16 @@ msgid "Huger"
 msgstr "Gigantisch"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:147
-#, fuzzy
 msgid "Custom Bullet:"
-msgstr "Kunde"
+msgstr "Benutzerdef. Aufzählungszeichen:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:177
 msgid "&Level:"
 msgstr "&Ebene:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:16
-#, fuzzy
 msgid "Form"
-msgstr "Formate"
+msgstr "Form"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:28
 msgid "Use &default placement"
@@ -309,9 +307,8 @@ msgid "&Rotate sideways"
 msgstr "Seitwärts &drehen"
 
 #: src/frontends/qt4/ui/FontUi.ui:16
-#, fuzzy
 msgid "FontUi"
-msgstr "&Schrift:"
+msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:37
 #, fuzzy
@@ -324,24 +321,20 @@ msgid "S&cale (%):"
 msgstr "Größe%"
 
 #: src/frontends/qt4/ui/FontUi.ui:57
-#, fuzzy
 msgid "&Base Size:"
-msgstr "&Größe:"
+msgstr "&Basisgröße:"
 
 #: src/frontends/qt4/ui/FontUi.ui:80
-#, fuzzy
 msgid "&Sans Serif:"
-msgstr "&Serifenfrei:"
+msgstr "S&erifenfrei:"
 
 #: src/frontends/qt4/ui/FontUi.ui:90
-#, fuzzy
 msgid "&Typewriter:"
 msgstr "&Schreibmaschine:"
 
 #: src/frontends/qt4/ui/FontUi.ui:100
-#, fuzzy
 msgid "&Default Family:"
-msgstr "&Standard-Ränder"
+msgstr "Standard-&Familie"
 
 #: src/frontends/qt4/ui/FontUi.ui:110
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
@@ -349,13 +342,12 @@ msgid "&Roman:"
 msgstr "&Roman:"
 
 #: src/frontends/qt4/ui/FontUi.ui:120
-#, fuzzy
 msgid "Use true S&mall Caps"
-msgstr "Kapitälchen"
+msgstr "Echte &Kapitälchen verwenden"
 
 #: src/frontends/qt4/ui/FontUi.ui:127
 msgid "Use &Old Style Figures"
-msgstr ""
+msgstr "&Mediävalziffern verwenden"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Document &class:"
@@ -435,14 +427,12 @@ msgid "Use AMS &math package"
 msgstr "AMS-&Mathe-Paket verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
-#, fuzzy
 msgid "Use esint package &automatically"
-msgstr "&AMS-Mathe-Paket automatisch verwenden"
+msgstr "&esint-Paket automatisch verwenden"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
-#, fuzzy
 msgid "Use &esint package"
-msgstr "AMS-&Mathe-Paket verwenden"
+msgstr "e&sint-Paket verwenden"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:63
 msgid "&List in Table of Contents"
@@ -979,9 +969,8 @@ msgid "&Find:"
 msgstr "&Suchen:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:191
-#, fuzzy
 msgid "Formatting"
-msgstr "Formate"
+msgstr "Formatierung"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:211
 msgid "Natbib citation style to use"
@@ -1394,9 +1383,8 @@ msgid "Show in LyX"
 msgstr "In LyX anzeigen"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:627
-#, fuzzy
 msgid "Sca&le on Screen (%):"
-msgstr "&Serifenfrei:"
+msgstr "Skalierung auf im Bildschirm (%):"
 
 #: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "Show LaTeX preview"
@@ -1642,25 +1630,22 @@ msgstr "&Grauschrift"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:93
 msgid "Framed in box"
-msgstr ""
+msgstr "Eingerahmt in Box"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:96
-#, fuzzy
 msgid "&Framed"
-msgstr "Vorname"
+msgstr "&Eingerahmt"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:103
-#, fuzzy
 msgid "Box with shaded background"
-msgstr "Notiz (Hintergrund)"
+msgstr "Box mit schattiertem Hintergrund"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:106
-#, fuzzy
 msgid "&Shaded"
-msgstr "&Speichern"
+msgstr "&Schattiert"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2366
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2355
 msgid "Single"
 msgstr "Einfach"
 
@@ -1669,7 +1654,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2372
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2361
 msgid "Double"
 msgstr "Doppelt"
 
@@ -1855,12 +1840,11 @@ msgstr "&Betrachter:"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:152
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Geben Sie an, ob diese Format eine Vektorgrafik enthalten kann."
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:155
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Wählen Sie eine Grafikdatei"
+msgstr "&Vektorgrafik-Format"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
 msgid ""
@@ -1869,9 +1853,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
-#, fuzzy
 msgid "&Document format"
-msgstr "Dokumentformat-Fehler"
+msgstr "&Dokumentformat"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:175
 msgid "&File formats"
@@ -2285,9 +2268,8 @@ msgid "&Bind file:"
 msgstr "&Tastaturkürzel-Datei:"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:122
-#, fuzzy
 msgid "Session"
-msgstr "Version"
+msgstr "Sitzung"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:134
 msgid "Save/restore window size, or use fixed window"
@@ -2295,12 +2277,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/QPrefUi.ui:157
 msgid "Load opened files from last session"
-msgstr ""
+msgstr "Geöffnete Dateien der letzten Sitzung laden"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:164
-#, fuzzy
 msgid "Restore cursor positions"
-msgstr "Aktuelle Zeilenposition"
+msgstr ""
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Restore to cursor position when the file was last closed"
@@ -8239,9 +8220,8 @@ msgid "Special Character|p"
 msgstr "Sonderzeichen|S"
 
 #: lib/ui/stdmenus.ui:289
-#, fuzzy
 msgid "Formatting|o"
-msgstr "Formate"
+msgstr "Formatierung|F"
 
 #: lib/ui/stdmenus.ui:290
 msgid "List / TOC|i"
@@ -8325,16 +8305,15 @@ msgstr "Zeilenumbruch|Z"
 
 #: lib/ui/stdmenus.ui:337
 msgid "Page Break|a"
-msgstr "Seitenumbruch|S"
+msgstr "Seitenumbruch|u"
 
 #: lib/ui/stdmenus.ui:338
-#, fuzzy
 msgid "Clear Page|C"
-msgstr "Lesezeichen löschen|e"
+msgstr "Seite leeren|S"
 
 #: lib/ui/stdmenus.ui:339
 msgid "Clear Double Page|D"
-msgstr ""
+msgstr "Doppelseite leeren|D"
 
 #: lib/ui/stdmenus.ui:345
 msgid "Numbered Formula|N"
@@ -8493,7 +8472,6 @@ msgid "Insert table"
 msgstr "Tabelle einfügen"
 
 #: lib/ui/stdtoolbars.ui:65
-#, fuzzy
 msgid "Extra"
 msgstr "Extra"
 
@@ -8658,7 +8636,6 @@ msgid "Set multi-column"
 msgstr "Mehrfachspalte festlegen"
 
 #: lib/ui/stdtoolbars.ui:122
-#, fuzzy
 msgid "Math"
 msgstr "Mathe"
 
@@ -8707,14 +8684,12 @@ msgid "Insert cases environment"
 msgstr "Cases-Umgebung einfügen"
 
 #: lib/ui/stdtoolbars.ui:146
-#, fuzzy
 msgid "Command Buffer"
-msgstr "Befehl &Ende:"
+msgstr "Befehlspuffer"
 
 #: lib/ui/stdtoolbars.ui:150
-#, fuzzy
 msgid "Review"
-msgstr "Vorschau"
+msgstr "Überarbeitung"
 
 # , c-format
 # , c-format
@@ -10311,11 +10286,11 @@ msgstr "Marke"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt4/GuiView.C:485
+#: src/frontends/qt4/GuiView.C:483
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.C:533
+#: src/frontends/qt4/GuiWorkArea.C:472
 #, fuzzy
 msgid "unknown version"
 msgstr "Unbekannte Aktion"
@@ -10422,7 +10397,7 @@ msgstr "Dokument-Einstellungen"
 msgid "Length"
 msgstr "Länge"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2369
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2358
 msgid "OneHalf"
 msgstr "Eineinhalb"
 
@@ -11175,14 +11150,12 @@ msgid "Greyed out"
 msgstr "Grauschrift"
 
 #: src/insets/insetnote.C:68
-#, fuzzy
 msgid "Framed"
-msgstr "Rahmenlos"
+msgstr "Eingerahmt"
 
 #: src/insets/insetnote.C:69
-#, fuzzy
 msgid "Shaded"
-msgstr "F&orm:"
+msgstr "Schattiert"
 
 #: src/insets/insetnote.C:149
 msgid "Opened Note Inset"
@@ -11197,13 +11170,12 @@ msgid "Opened Optional Argument Inset"
 msgstr "Einfügung für optionales Argument geöffnet"
 
 #: src/insets/insetpagebreak.h:65
-#, fuzzy
 msgid "Clear Page"
-msgstr "&Löschen"
+msgstr "Seite leeren"
 
 #: src/insets/insetpagebreak.h:81
 msgid "Clear Double Page"
-msgstr ""
+msgstr "Doppelseite leeren"
 
 #: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
 msgid "Ref: "
@@ -11611,15 +11583,15 @@ msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm terminiert."
 
-#: src/lyx_main.C:687
+#: src/lyx_main.C:685
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:809
+#: src/lyx_main.C:807
 msgid "Could not create temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht erstellt werden"
 
-#: src/lyx_main.C:810
+#: src/lyx_main.C:808
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11630,11 +11602,11 @@ msgstr ""
 "%1$s erstellt werden. Stellen Sie sicher, dass dieser\n"
 "Pfad existiert und beschreibbar ist und versuchen Sie es noch einmal."
 
-#: src/lyx_main.C:967
+#: src/lyx_main.C:965
 msgid "Missing user LyX directory"
 msgstr "Kein LyX-Benutzerverzeichnis"
 
-#: src/lyx_main.C:968
+#: src/lyx_main.C:966
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11643,37 +11615,37 @@ msgstr ""
 "Sie haben ein nicht vorhandenes LyX-Benutzerverzeichnis angegeben, %1$s.\n"
 "Es wird benötigt, um Ihre persönliche Konfiguration abzulegen."
 
-#: src/lyx_main.C:973
+#: src/lyx_main.C:971
 msgid "&Create directory"
 msgstr "Verzeichnis &erstellen"
 
-#: src/lyx_main.C:974
+#: src/lyx_main.C:972
 msgid "&Exit LyX"
 msgstr "LyX &beenden"
 
-#: src/lyx_main.C:975
+#: src/lyx_main.C:973
 msgid "No user LyX directory. Exiting."
 msgstr "Kein LyX-Benutzerverzeichnis. LyX wird beendet."
 
-#: src/lyx_main.C:979
+#: src/lyx_main.C:977
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Erstellen des Verzeichnisses %1$s"
 
-#: src/lyx_main.C:985
+#: src/lyx_main.C:983
 msgid "Failed to create directory. Exiting."
 msgstr "Das Erstellen des Verzeichnisses ist fehlgeschlagen. LyX wird beendet."
 
-#: src/lyx_main.C:1140
+#: src/lyx_main.C:1138
 msgid "List of supported debug flags:"
 msgstr "Liste der unterstützten Testoptionen:"
 
-#: src/lyx_main.C:1144
+#: src/lyx_main.C:1142
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Festlegen des Test-Levels auf %1$s"
 
-#: src/lyx_main.C:1155
+#: src/lyx_main.C:1153
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11716,29 +11688,29 @@ msgstr ""
 "\n"
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
-#: src/lyx_main.C:1191
+#: src/lyx_main.C:1189
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:1201
+#: src/lyx_main.C:1199
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
-#: src/lyx_main.C:1211
+#: src/lyx_main.C:1209
 msgid "Missing command string after --execute switch"
 msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 
-#: src/lyx_main.C:1221
+#: src/lyx_main.C:1219
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:1233
+#: src/lyx_main.C:1231
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
-#: src/lyx_main.C:1238
+#: src/lyx_main.C:1236
 msgid "Missing filename for --import"
 msgstr "Die Option --import verlangt die Angabe eines Dateinamens"
 
@@ -12824,7 +12796,7 @@ msgstr "Unbekannter Autor-Index für die Löschung: %1$d\n"
 msgid "Unknown token"
 msgstr "Unbekanntes Token"
 
-#: src/text.C:1240
+#: src/text.C:1226
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -12832,55 +12804,55 @@ msgstr ""
 "Sie können am Anfang eines Absatzes kein Leerzeichen einfügen. Bitte lesen "
 "Sie das Tutorium."
 
-#: src/text.C:1251
+#: src/text.C:1237
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Sie können zwei Leerzeichen nicht auf diese Weise eingeben. Bitte lesen Sie "
 "das Tutorium."
 
-#: src/text.C:2335
+#: src/text.C:2324
 msgid "Change: "
 msgstr "Änderung: "
 
-#: src/text.C:2338
+#: src/text.C:2327
 msgid " at "
 msgstr " am "
 
-#: src/text.C:2350
+#: src/text.C:2339
 #, c-format
 msgid "Font: %1$s"
 msgstr "Schrift: %1$s"
 
-#: src/text.C:2357
+#: src/text.C:2346
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Tiefe: %1$d"
 
-#: src/text.C:2363
+#: src/text.C:2352
 msgid ", Spacing: "
 msgstr ", Abstand: "
 
-#: src/text.C:2375
+#: src/text.C:2364
 msgid "Other ("
 msgstr "Andere ("
 
-#: src/text.C:2384
+#: src/text.C:2373
 msgid ", Inset: "
 msgstr ", Einfügung: "
 
-#: src/text.C:2385
+#: src/text.C:2374
 msgid ", Paragraph: "
 msgstr ", Absatz: "
 
-#: src/text.C:2386
+#: src/text.C:2375
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:2387
+#: src/text.C:2376
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/text.C:2388
+#: src/text.C:2377
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
