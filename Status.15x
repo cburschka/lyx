@@ -18,6 +18,13 @@ Prizes (donated by Michael):
 BUGS:
 -----
 
+GENERAL
+
+* Check FIXME, TODO, and #warning in the LyX code
+
+* Resolve compiler warnings
+
+
 FILE
 
 * When I "Save as..." in /tmp, I get a Backup error popup about non writable 
@@ -84,7 +91,7 @@ MATH CONTROL PANEL
 
 OTHER PANELS
 
-* The visual table size selection on the the "Insert Table" dialog is gone
+* The visual table size selection on the the "Insert Table" dialog has gone
   (Joost 3/11/06).
 
 * The UI for bullet selection in the documents settings looks weird
@@ -131,42 +138,6 @@ EDITING
 
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
-
-* Copy/paste using middle mouse button inserts musical notes.
-
-* new document; insert note; place cursor in front of the note; activate change tracking;
-  press delete => 
-
-  Assertion triggered in void lyx::LyXText::setCursorIntern(lyx::LCursor&, int, int, bool, bool) by failing check "this == cur.text()" in file /home/software/lyx-trunk/src/text2.C:719
-
-  Relevant part of the stack trace
-  #6  0x082646d0 in lyx::LyXText::setCursorIntern (this=0x8a081e0, cur=@0x88f3ed0, par=0, pos=0, setfont=true,
-      boundary=false) at /home/software/lyx-trunk/src/text2.C:719
-  #7  0x08257dd7 in lyx::LyXText::erase (this=0x8a081e0, cur=@0x88f3ed0) at dociterator.h:94
-  #8  0x0811418a in lyx::LyXText::dispatch (this=0x8a081e0, cur=@0x88f3ed0, cmd=@0xbfffd7e0)
-      at /home/software/lyx-trunk/src/text3.C:571
-  #9  0x0839617e in lyx::InsetText::doDispatch (this=0x8a081b8, cur=@0x88f3ed0, cmd=@0xbfffd7e0)
-      at /home/software/lyx-trunk/src/insets/insettext.C:251
-  #10 0x08303536 in lyx::InsetBase::dispatch (this=0x8a081b8, cur=@0x88f3ed0, cmd=@0xbfffd7e0)
-      at /home/software/lyx-trunk/src/insets/insetbase.C:132
-
-* new document; insert note; insert "hello" into note; place the cursor at the beginning of the note;
-  activate change tracking; press backspace => seg fault
-
-  #0  0x08101348 in lyx::Paragraph::Pimpl::setChange (this=0x8a9e0a0, pos=0, change=@0xbfffca70)
-      at paragraph.h:314
-  #1  0x080fda87 in lyx::Paragraph::setChange (this=0x0, pos=0, change=@0xbfffca70)
-      at /home/software/lyx-trunk/src/paragraph.C:1432
-  #2  0x08248fa0 in lyx::breakParagraphConservative (bparams=@0x8a9d838, pars=@0x8a9d9e4, par_offset=0, pos=0)
-      at changes.h:37
-  #3  0x08155fc2 in lyx::(anonymous namespace)::pasteSelectionHelper (cur=@0x88f3ed0, parlist=@0xbfffce70,
-      textclass=6, errorlist=@0x8910b44) at /home/software/lyx-trunk/src/CutAndPaste.C:233
-  #4  0x0815a98d in lyx::cap::pasteParagraphList (cur=@0x88f3ed0, parlist=@0xbfffce70, textclass=6,
-      errorList=@0x8910b44) at /home/software/lyx-trunk/src/CutAndPaste.C:630
-  #5  0x08258cb2 in lyx::LyXText::dissolveInset (this=0x8aacd38, cur=@0x88f3ed0)
-      at /home/software/lyx-trunk/src/text.C:1844
-  #6  0x082588a8 in lyx::LyXText::backspace (this=0x8aacd38, cur=@0x88f3ed0)
-      at /home/software/lyx-trunk/src/text.C:1756
 
 
 CHANGE TRACKING
@@ -467,4 +438,14 @@ CREDITS:
 * Command completion in the minibuffer shows a huge blank area below the proposed
   commands. Clicking in that empty area crashes LyX.
   FIXED (????)
-  
+ 
+* Copy/paste using middle mouse button inserts musical notes.
+  FIXED (????; cannot reproduce on SuSE Linux 9.3)
+
+* new document; insert note; place cursor in front of the note; activate change tracking;
+  press delete => assertion failed
+  FIXED (JMarc)
+
+* new document; insert note; insert "hello" into note; place the cursor at the beginning of the note;
+  activate change tracking; press backspace => seg fault
+  FIXED (Michael 2006-11-25)
