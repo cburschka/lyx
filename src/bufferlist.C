@@ -235,6 +235,14 @@ Buffer * BufferList::first()
 }
 
 
+Buffer * BufferList::last()
+{
+	if (bstore.empty())
+		return 0;
+	return bstore.back();
+}
+
+
 Buffer * BufferList::getBuffer(unsigned int const choice)
 {
 	if (choice >= bstore.size())

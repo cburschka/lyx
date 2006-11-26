@@ -332,10 +332,21 @@ int LyX::exec(int & argc, char * argv[])
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
 		int exit_status = loadFiles(argc, argv, files);
-		if (exit_status)
+		if (exit_status) {
+			prepareExit();
 			return exit_status;
-		execBatchCommands();
-		return EXIT_SUCCESS;
+		}
+		Buffer * last_loaded = pimpl_->buffer_list_.last();
+		if (batch_command.empty() || !last_loaded) {
+			prepareExit();
+			return EXIT_SUCCESS;
+		}
+
+		// try to dispatch to last loaded buffer first
+		bool success = false;
+		last_loaded->dispatch(batch_command, &success);
+		prepareExit();
+		return !success;
 	}
 
 	// Force adding of font path _before_ Application is initialized

@@ -61,6 +61,9 @@ public:
 	/// return head of buffer list if any
 	Buffer * first();
 
+	/// return back of buffer list if any
+	Buffer * last();
+
 	/// returns true if the buffer exists already
 	bool exists(std::string const &) const;
 
