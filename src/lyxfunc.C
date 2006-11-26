@@ -376,11 +376,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	   Note that this code is not perfect, as bug 1941 attests:
 	   http://bugzilla.lyx.org/show_bug.cgi?id=1941#c4
 	*/
-	Buffer * buf;
-	if (cmd.origin == FuncRequest::MENU && !lyx_view_->hasFocus())
+	Buffer * buf = lyx_view_? lyx_view_->buffer() : 0;
+	if (lyx_view_ && cmd.origin == FuncRequest::MENU && !lyx_view_->hasFocus())
 		buf = 0;
-	else
-		buf = lyx_view_->buffer();
 
 	if (cmd.action == LFUN_NOACTION) {
 		flag.message(from_utf8(N_("Nothing to do")));
