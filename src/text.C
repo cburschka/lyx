@@ -1074,10 +1074,6 @@ void LyXText::setHeightOfRow(BufferView const & bv, pit_type const pit,
 }
 
 
-namespace {
-
-}
-
 void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 {
 	BOOST_ASSERT(this == cur.text());
@@ -1090,8 +1086,8 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 
 	// this is only allowed, if the current paragraph is not empty
 	// or caption and if it has not the keepempty flag active
-	if (cur.lastpos() == 0 && !cpar.allowEmpty()
-	   && layout->labeltype != LABEL_SENSITIVE)
+	if (cur.lastpos() == 0 && !cpar.allowEmpty() &&
+	    layout->labeltype != LABEL_SENSITIVE)
 		return;
 
 	// a layout change may affect also the following paragraph
@@ -1100,10 +1096,9 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	// Always break behind a space
 	// It is better to erase the space (Dekel)
 	if (cur.pos() != cur.lastpos() && cpar.isLineSeparator(cur.pos()))
-		// FIXME: change tracking (MG)
 		cpar.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
 
-	// How should the layout for the new paragraph be?
+	// What should the layout for the new paragraph be?
 	int preserve_layout = 0;
 	if (keep_layout)
 		preserve_layout = 2;
@@ -1136,7 +1131,6 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	}
 
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
-		// FIXME: change tracking (MG)
 		pars_[next_par].eraseChar(0, cur.buffer().params().trackChanges);
 
 	ParIterator current_it(cur);
@@ -1145,13 +1139,6 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	++last_it;
 
 	updateLabels(cur.buffer(), current_it, last_it);
-
-	// Mark "carriage return" as inserted if change tracking:
-	if (cur.buffer().params().trackChanges) {
-		// FIXME: Change tracking (MG)
-		cur.paragraph().setChange(cur.paragraph().size(),
-			Change(Change::INSERTED));
-	}
 
 	// FIXME: Breaking a paragraph has nothing to do with setting a cursor.
 	// Because of the mix between the model (the paragraph contents) and the
@@ -1162,7 +1149,6 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 	if (changed_height)
 		// A singlePar update is not enough in this case.
 		cur.updateFlags(Update::Force);
-
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
