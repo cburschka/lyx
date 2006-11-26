@@ -75,9 +75,6 @@ void breakParagraph(BufferParams const & bparams,
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par.inInset());
 
-	// this is an idea for a more userfriendly layout handling, I will
-	// see what the users say
-
 	// layout stays the same with latex-environments
 	if (flag) {
 		tmp->layout(par.layout());
@@ -101,7 +98,7 @@ void breakParagraph(BufferParams const & bparams,
 		tmp->params().depth(par.params().depth());
 		tmp->params().noindent(par.params().noindent());
 
-		// copy everything behind the break-position
+		// move everything behind the break position
 		// to the new paragraph
 
 		/* Note: if !keepempty, empty() == true, then we reach
@@ -117,6 +114,11 @@ void breakParagraph(BufferParams const & bparams,
 			}
 		}
 	}
+
+	// Move over the end-of-par change information
+	tmp->setChange(tmp->size(), par.lookupChange(par.size()));
+	par.setChange(par.size(), Change(bparams.trackChanges ?
+		                           Change::INSERTED : Change::UNCHANGED));
 
 	if (pos) {
 		// Make sure that we keep the language when
@@ -141,15 +143,6 @@ void breakParagraph(BufferParams const & bparams,
 		par.layout(tmp->layout());
 		par.setLabelWidthString(tmp->params().labelWidthString());
 		par.params().depth(tmp->params().depth());
-	}
-
-	// subtle, but needed to get empty pars working right
-	if (bparams.trackChanges) {
-		// FIXME: Change tracking (MG)
-		// if (!par.size())
-		//	set 'par' text to INSERTED in CT mode; clear CT info otherwise
-		// else if (!tmp->size())
-		//	set 'tmp' text to INSERTED in CT mode; clear CT info otherwise
 	}
 }
 
