@@ -160,6 +160,11 @@ LAYOUT
 
 PAINTING & PERFORMANCE
 
+* END_LABEL_* handling in RowPainer::paintLast() is broken. In regular text,
+  label boxes are not completely visible (because we shrinked the margin on 
+  screen?). Inside of insets, they don't work at all. Should we remove this
+  feature completely as the overall benefit for the user is marginal?
+
 * Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going
   on when selecting text. When selecting a word the whole screen is repainted.
   PARTLY FIXED (Abdel 2006-11-20): there's a full repaint only when the mouse is
