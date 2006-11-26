@@ -29,7 +29,17 @@ class OutputParams;
  */
 class BufferList : boost::noncopyable {
 public:
+	typedef std::vector<Buffer *>::iterator iterator;
+	typedef std::vector<Buffer *>::const_iterator const_iterator;
+
+public:
 	BufferList();
+
+	iterator begin();
+	const_iterator begin() const;
+
+	iterator end();
+	const_iterator end() const;
 
 	/// write all buffers, asking the user, returns false if cancelled
 	bool quitWriteAll();

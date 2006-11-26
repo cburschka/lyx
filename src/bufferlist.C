@@ -72,6 +72,30 @@ bool BufferList::empty() const
 }
 
 
+BufferList::iterator BufferList::begin()
+{
+	return bstore.begin();
+}
+
+
+BufferList::const_iterator BufferList::begin() const
+{
+	return bstore.begin();
+}
+
+
+BufferList::iterator BufferList::end()
+{
+	return bstore.end();
+}
+
+
+BufferList::const_iterator BufferList::end() const
+{
+	return bstore.end();
+}
+
+
 bool BufferList::quitWriteBuffer(Buffer * buf)
 {
 	BOOST_ASSERT(buf);

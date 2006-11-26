@@ -336,17 +336,24 @@ int LyX::exec(int & argc, char * argv[])
 			prepareExit();
 			return exit_status;
 		}
-		Buffer * last_loaded = pimpl_->buffer_list_.last();
-		if (batch_command.empty() || !last_loaded) {
+
+		if (batch_command.empty() || pimpl_->buffer_list_.empty()) {
 			prepareExit();
 			return EXIT_SUCCESS;
 		}
 
-		// try to dispatch to last loaded buffer first
-		bool success = false;
-		last_loaded->dispatch(batch_command, &success);
+		BufferList::iterator begin = pimpl_->buffer_list_.begin();
+		BufferList::iterator end = pimpl_->buffer_list_.end();
+
+		bool final_success = false;
+		for (BufferList::iterator I = begin; I != end; ++I) {
+			Buffer * buf = *I;
+			bool success = false;
+			buf->dispatch(batch_command, &success);
+			final_success |= success;			
+		}
 		prepareExit();
-		return !success;
+		return !final_success;
 	}
 
 	// Force adding of font path _before_ Application is initialized
