@@ -40,6 +40,7 @@
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QTextCodec>
+#include <QTimer>
 #include <QTranslator>
 #include <QWidget>
 
