@@ -1458,6 +1458,8 @@ bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 
 void LyXText::acceptChange(LCursor & cur)
 {
+	// FIXME: change tracking (MG)
+
 	BOOST_ASSERT(this == cur.text());
 
 	if (!cur.selection() && cur.lastpos() != 0)
@@ -1470,25 +1472,17 @@ void LyXText::acceptChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	bool isDeleted = pars_[pit].isDeleted(it.pos());
 	for (; pit <= et.pit(); ++pit) {
-		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
-		pos_type right =
-		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
+		pos_type left  = (pit == it.pit() ? it.pos() : 0);
+		pos_type right = (pit == et.pit() ? et.pos() : pars_[pit].size());
 		pars_[pit].acceptChanges(left, right);
-	}
-	if (isDeleted) {
-		ParagraphList & plist = paragraphs();
-		if (it.pit() + 1 < et.pit())
-			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
-				    boost::next(plist.begin(), et.pit()));
 
-		// Paragraph merge if appropriate:
-		// FIXME: change tracking (MG)
-		if (pars_[it.pit()].isDeleted(pars_[it.pit()].size())) {
-			setCursorIntern(cur, it.pit() + 1, 0);
-			backspacePos0(cur);
-		}
+		// merge paragraph if appropriate:
+		// if (right >= pars_[pit].size() && pit + 1 < et.pit() &&
+		//    pars_[pit].isDeleted(pars_[pit].size())) {
+		//	setCursorIntern(cur, pit + 1, 0);
+		//	backspacePos0(cur);
+		//}
 	}
 	finishUndo();
 	cur.clearSelection();
@@ -1498,6 +1492,8 @@ void LyXText::acceptChange(LCursor & cur)
 
 void LyXText::rejectChange(LCursor & cur)
 {
+	// FIXME: change tracking (MG)
+
 	BOOST_ASSERT(this == cur.text());
 
 	if (!cur.selection() && cur.lastpos() != 0)
@@ -1510,24 +1506,17 @@ void LyXText::rejectChange(LCursor & cur)
 	DocIterator it = cur.selectionBegin();
 	DocIterator et = cur.selectionEnd();
 	pit_type pit = it.pit();
-	bool isInserted = pars_[pit].isInserted(it.pos());
 	for (; pit <= et.pit(); ++pit) {
-		pos_type left  = ( pit == it.pit() ? it.pos() : 0 );
-		pos_type right =
-		    ( pit == et.pit() ? et.pos() : pars_[pit].size() + 1 );
+		pos_type left  = (pit == it.pit() ? it.pos() : 0);
+		pos_type right = (pit == et.pit() ? et.pos() : pars_[pit].size());
 		pars_[pit].rejectChanges(left, right);
-	}
-	if (isInserted) {
-		ParagraphList & plist = paragraphs();
-		if (it.pit() + 1 < et.pit())
-			pars_.erase(boost::next(plist.begin(), it.pit() + 1),
-				    boost::next(plist.begin(), et.pit()));
-		// Paragraph merge if appropriate:
-		// FIXME: change tracking (MG)
-		if (pars_[it.pit()].isInserted(pars_[it.pit()].size())) {
-			setCursorIntern(cur, it.pit() + 1, 0);
-			backspacePos0(cur);
-		}
+
+		// merge paragraph if appropriate:	
+		// if (right >= pars_[pit].size() && pit + 1 < et.pit() &&
+		//    pars_[pit].isInserted(pars_[pit].size())) {
+		//	setCursorIntern(cur, pit + 1, 0);
+		//	backspacePos0(cur);
+		//}
 	}
 	finishUndo();
 	cur.clearSelection();
