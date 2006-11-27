@@ -360,7 +360,7 @@ Run
 \family typewriter
 dvips
 \family default
- to convert the Dvi file to PostScript®:
+ to convert the DVI file to PostScript®:
 \end_layout
 
 \begin_deeper
@@ -577,7 +577,7 @@ eX
 \family default
 .
  The ERT box comes in three forms: collapsed, open, and inlined.
- The first two are used just like any other collapsable (foldable) box (such
+ The first two are used just like any other collapsible (foldable) box (such
  as footnotes), and are useful for significant amounts of LaTeX commands.
  An 
 \begin_inset Quotes eld
@@ -1860,7 +1860,7 @@ All right, you didn't use any of the fine-tuning options, you played by
 Do you have long sections of text where LaTeX cannot find a place to break
  a line? By default, LaTeX is rather strict about how much extra inter-word
  spacing it will add in order to break a line.
- Preferrably, you should rework the paragraph to avoid the problem.
+ Preferably, you should rework the paragraph to avoid the problem.
  If this isn't an option, you can wrap your text in 
 \family typewriter
 
@@ -2081,7 +2081,7 @@ D
 \bar default
 VI
 \family default
-, for example, you should see that BibTex and LaTeX are invoked as needed,
+, for example, you should see that BibTeX and LaTeX are invoked as needed,
  including multiple invocations of LaTeX.
  
 \end_layout
@@ -4724,7 +4724,7 @@ An alternative way to have decimal alignment in tables is through the
 dcolumn
 \family default
  package.
- Add the following to the LateX preamble:
+ Add the following to the LaTeX preamble:
 \end_layout
 
 \begin_layout LyX-Code
@@ -6012,7 +6012,7 @@ email{address}
 \end_layout
 
 \begin_layout Standard
-In all cases, the appropriate command has to be entered in LyX an marked
+In all cases, the appropriate command has to be entered in LyX and marked
  as LaTeX code.
  See the examples.
  
@@ -8026,9 +8026,22 @@ xport\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-ateX
+aTeX
 \family default
-), then make the following changes to the resulting 
+)
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Actually you have the choice between LaTeX (plain) and pdflatex.
+ If you intend to use pdflatex to prepare the paper, you should use the
+ pdflatex option so that included graphics are converted to PDF format,
+ ready for use by pdflatex.
+\end_layout
+
+\end_inset
+
+, then make the following changes to the resulting 
 \family typewriter
 .tex
 \family default
@@ -8233,9 +8246,9 @@ xport\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-ateX
+aTeX
 \family default
-.
+ (plain).
  
 \end_layout
 
@@ -8300,7 +8313,7 @@ View the resulting
 \family sans
 xdvi
 \family default
-, and check if everything is ok (it should, if you didn't make any mistake).
+, and check if everything is OK (it should, if you didn't make any mistakes).
 \end_layout
 
 \begin_layout Subsection
@@ -8393,8 +8406,9 @@ opening
 \end_inset
 
 .
- This is not implemented in LyX, so you must enter title, subtitle etc.
- between two ERT lines (
+ This is not implemented in LyX, so you must enter title, subtitle etc.\InsetSpace \space{}
+between
+ two ERT lines (
 \family typewriter
 
 \backslash
@@ -9404,8 +9418,8 @@ L
 \shape italic
 O
 \shape default
-, resp.
- in the left margin.
+, resp.\InsetSpace \space{}
+in the left margin.
  It is possible to write any number of letters in one file.
  An 
 \family sans
@@ -9533,7 +9547,7 @@ Subject
 status collapsed
 
 \begin_layout Standard
-It could be seen as a matter of inconsequence, that the types 
+It could be seen as inconsequential, that the types 
 \family sans
 Letter
 \family default
@@ -9591,8 +9605,8 @@ Telephone
 \begin_layout Standard
 The input types can also be used as empty paragraphs.
  This makes sense e.\InsetSpace ~
-g.
- for the 
+g.\InsetSpace \space{}
+for the 
 \family sans
 Signature
 \family default
@@ -9933,7 +9947,7 @@ Koma-Script version 2.8 has introduced a new letter class
 \family typewriter
 scrlttr2
 \family default
- which superceeds the now unsupported 
+ which supersedes the now unsupported 
 \family typewriter
 scrlettr
 \family default
@@ -12019,8 +12033,8 @@ invisible
 visible
 \family default
  command].
- If you don't know how to mark text as TeX, see the apprpriate section of
- the 
+ If you don't know how to mark text as TeX, see the appropriate section
+ of the 
 \emph on
 User's Guide
 \emph default
@@ -14443,8 +14457,8 @@ M-z t
 \newline
 
 \family default
-Camera movement instruction.
- e.g.
+Camera movement instruction.\InsetSpace \space{}
+e.g.
  CUT TO:
 \end_layout
 
@@ -14797,7 +14811,7 @@ Installation
 \begin_layout Standard
 All you need to do is install RevTeX 4, as described in the package's README
  file.
- the package can be found at 
+ The package can be found at 
 \begin_inset LatexCommand \url[The RevTeX 4 Web Site]{http://publish.aps.org/revtex4/}
 
 \end_inset
@@ -14876,8 +14890,8 @@ Other preamble matter, like
 \backslash
 draft
 \family default
- etc.
- goes in the 
+ etc.\InsetSpace \space{}
+goes in the 
 \family sans
 Latex\InsetSpace ~
 Preamble
@@ -15672,7 +15686,7 @@ Abstract: You may wonder why an abstract is an extra feature.
  Well, it is in book class.
  Usually books don't have abstracts.
  Memoir, however, has.
- You can use it whereever and how often you like.
+ You can use it wherever and how often you like.
 \end_layout
 
 \begin_layout Description
@@ -15738,7 +15752,7 @@ Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
 \begin_layout Description
 Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
  complex figurative poems).
- Lyx can only support a few of them.
+ LyX can only support a few of them.
  One is poemtitle, which is a centered title for poems, which will also
  be added to the table of contents (verse is the standard environment for
  poems.
@@ -16361,7 +16375,7 @@ in the preamble.
 \end_layout
 
 \begin_layout Subsubsection
-Is it possible to do write latex code which is processed only when running
+Is it possible to do write LaTeX code which is processed only when running
  pdfLaTeX?
 \begin_inset OptArg
 status collapsed
@@ -16376,54 +16390,42 @@ Conditionals with pdfLaTeX
 \end_layout
 
 \begin_layout Standard
-Yes.
+Yes, you can do this with the 
+\family typewriter
+ifpdf.sty
+\family default
+ package.
  Here is an example:
 \end_layout
 
 \begin_layout LyX-Code
 
-\backslash
-newif 
-\backslash
-ifpdf
 \end_layout
 
 \begin_layout LyX-Code
-   
-\backslash
-ifx 
-\backslash
-pdfoutput 
-\backslash
-undefined
+
 \end_layout
 
 \begin_layout LyX-Code
-      
-\backslash
-pdffalse
+
 \end_layout
 
 \begin_layout LyX-Code
-   
-\backslash
-else
+
 \end_layout
 
 \begin_layout LyX-Code
-      
-\backslash
-pdftrue
+
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-fi
-\end_layout
-
-\begin_layout LyX-Code
-
+usepackage{ifpdf} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -16488,12 +16490,16 @@ usepackage[ps2pdf]{hyperref}
 fi
 \end_layout
 
+\begin_layout LyX-Code
+
+\end_layout
+
 \begin_layout Subsubsection
-How can I make URLs clickable ?
+How can I make URLs clickable?
 \end_layout
 
 \begin_layout Standard
-See the references here :
+See the references here:
 \end_layout
 
 \begin_layout Standard
@@ -16539,8 +16545,9 @@ dialog; LyX will automatically convert the file to this point, then feed
 \end_layout
 
 \begin_layout Standard
-The converter command is also specified in the dialog.It should be a completely
- qualified command line which uses the variable 
+The converter command is also specified in the dialog.
+ It should be a completely qualified command line which uses the variable
+ 
 \family typewriter
 $$FName
 \family default
@@ -16900,7 +16907,7 @@ Document
  Syntax files.
  Input (one or more quoted, comma-separated) syntax files to read in addition
  to the default.
- (see the section Section\InsetSpace ~
+ (see Section\InsetSpace ~
 
 \begin_inset LatexCommand \ref{sub:relyx-syntax}
 
@@ -17094,7 +17101,7 @@ As mentioned above, you should be able to print out the LyX file even without
 reLyX is not guaranteed to create a LyX file which generates exactly the
  same output as the LaTeX file, but it should come close.
  reLyX will generally err on the side of translating less to ensure that
- dvi or ps files are accurate, even though this leads to more 
+ DVI or PostScript® files are accurate, even though this leads to more 
 \begin_inset Quotes eld
 \end_inset
 
@@ -17348,11 +17355,7 @@ include{foo}
 \backslash
 input
 \family default
- command 
-\begin_inset Quotes erd
-\end_inset
-
-
+ command ``
 \family typewriter
 
 \backslash
@@ -17519,7 +17522,7 @@ reLyX will also copy any preamble commands (i.e., anything before
 begin{document}
 \family default
 ) verbatim, so fancy stuff you've got in your preamble should be conserved
- in dvi and printed documents, although it will not of course show up in
+ in DVI and printed documents, although it will not of course show up in
  the LyX window.
  Check the preamble to make sure.
 \end_layout
@@ -18628,7 +18631,7 @@ If you have chosen not to use a temporary directory in the preferences,
 \begin_inset Quotes eld
 \end_inset
 
-view dvi
+View DVI
 \begin_inset Quotes erd
 \end_inset
 
@@ -18868,7 +18871,7 @@ n Project.
 \family typewriter
 sgml-tools
 \family default
- package of scripts and programs (to produce other formats, including Latex,
+ package of scripts and programs (to produce other formats, including LaTeX,
  HTML, plain text, man pages and\SpecialChar \ldots{}
 ).
  You may therefore prefer to use this document class if you want to write
@@ -19139,7 +19142,7 @@ As usual.
 \begin_layout Itemize
 
 \family sans
-Code: similar to the Lyx-Code
+Code: similar to the LyX-Code
 \family roman
  environment
 \end_layout
@@ -19162,8 +19165,8 @@ Date:
  the rule.
  You do not have to make this a date.
  Any text can be entered, e.\InsetSpace ~
-g.
- a version number.
+g.\InsetSpace \space{}
+a version number.
 \end_layout
 
 \begin_layout Itemize
@@ -19233,9 +19236,9 @@ menu to set fonts or to emphasis words.
 User's Guide
 \emph default
 .
- Although you will find some some other features on the menus e.\InsetSpace ~
-g.
- inserting footnotes.
+ Although you will find some other features on the menus e.\InsetSpace ~
+g.\InsetSpace \space{}
+inserting footnotes.
  There is some doubt about whether these will work correctly.
 \begin_inset Foot
 status collapsed
@@ -19602,8 +19605,8 @@ No space in front of/after parenthesis:
 Enforcement of normal space after common abbreviations:
 \newline
 e.
- g.
- is too wide spacing.
+ g.\InsetSpace \space{}
+is too wide spacing.
 \end_layout
 
 \begin_layout Itemize
@@ -20960,17 +20963,17 @@ Noweb
 \end_layout
 
 \begin_layout Itemize
-It can generate the documentation either in latex or html.
+It can generate the documentation either in LaTeX or HTML.
 \end_layout
 
 \begin_layout Itemize
-It has a open architecture, i.e., it is easy to plug in new filters and to
+It has an open architecture, i.e., it is easy to plug in new filters and to
  perform special processing that you may need.
  
 \end_layout
 
 \begin_layout Itemize
-There is a good selection of filters available already (the html is one
+There is a good selection of filters available already (the HTML is one
  of them).
 \end_layout
 
@@ -21271,7 +21274,7 @@ D
 \bar default
 VI 
 \family default
-menu option is chosen, a latex file is generated.
+menu option is chosen, a LaTeX file is generated.
  
 \end_layout
 
@@ -21367,7 +21370,7 @@ Generating the code
 
 \begin_layout Standard
 When the build menu option is chosen or the corresponding button in the
- toolbar is pressed, a latex file is generated just like step 1 above.
+ toolbar is pressed, a LaTeX file is generated just like step 1 above.
  Next, LyX invokes the
 \family typewriter
  Noweb->Program
@@ -22609,8 +22612,8 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-You can have have more than 3 columns if you want to, but that might not
- be very pleasant for the eye.
+You can have more than 3 columns if you want to, but that might not be very
+ pleasant for the eye.
 \end_layout
 
 \begin_layout Subsubsection
@@ -24040,8 +24043,8 @@ parshape
  set of linelength definitions.
  While this parshape may look a bit silly and useless, one could conceive
  of situations such as finely tuned dropped capitals, word wrapping around
- non-rectangular graphics, etc.
- which will benefit from such handcrafting.
+ non-rectangular graphics, etc.\InsetSpace \space{}
+which will benefit from such handcrafting.
 \end_layout
 
 \begin_layout Standard
