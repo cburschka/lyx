@@ -121,9 +121,9 @@ Section -Configure
   FileWrite $R1 '\screen_font_typewriter "Courier New"$\r$\n'
   FileWrite $R1 '\preview_scale_factor 1.0$\r$\n' ;Fit instant preview font size to screen fonts
   ;PDF view helper
-  FileWrite $R1 '\format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" ""$\r$\n'  
-  FileWrite $R1 '\format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" ""$\r$\n'
-  FileWrite $R1 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" ""$\r$\n'
+  FileWrite $R1 '\format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document"$\r$\n'  
+  FileWrite $R1 '\format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document"$\r$\n'
+  FileWrite $R1 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document"$\r$\n'
   
   FileClose $R1
   
