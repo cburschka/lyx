@@ -1,5 +1,10 @@
 2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* insettabular.C (doDispatch): do not reset cursor/selection
+	if we have selected some cells (bug 2715).
+
+2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* insetlabel (doDispatch): changeRefsIfUnique needs a
 	InsetCode argument now.
 
