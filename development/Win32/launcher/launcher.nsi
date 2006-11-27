@@ -5,17 +5,19 @@ Author: Joost Verburg
 
 This will be installed as lyx.exe.
 
-The application will setup the environment variables and geometry based
-on registry settings and obtain the command line output of lyxc.exe,
-which can be shown in case of a crash. Version information and an icon are
-also included.
+The application will setup the environment variables and geometry based on
+registry settings and obtain the command line output of lyxc.exe, which can be
+shown while debugging or in case of a crash. Version information and an icon
+are also included.
 
 */
 
 !include "MUI.nsh"
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
+!include "StrFunc.nsh"
 !insertmacro GetParameters
+${StrStr}
 
 !include "..\packaging\installer\settings.nsh" ;Version info from installer
 
@@ -24,15 +26,24 @@ OutFile lyx.exe
 BrandingText " "
 
 ;--------------------------------
+;Variables
+
+Var Parameters
+Var Debug
+Var LyXLanguage
+Var Geometry
+Var ReturnValue
+Var ResultText
+Var ResultSubText
+
+;--------------------------------
 ;User interface for debug output
 
 !define MUI_ICON "..\packaging\icons\lyx_32x32.ico"
 !define MUI_CUSTOMFUNCTION_GUIINIT InitInterface
 
-!define MUI_INSTFILESPAGE_FINISHHEADER_TEXT "Error Information"
-!define MUI_INSTFILESPAGE_FINISHHEADER_SUBTEXT "See Chapter 3 of the LyX Introduction \
-    (Help > Introduction) for information about reporting this issue."
-
+!define MUI_INSTFILESPAGE_FINISHHEADER_TEXT $ResultText
+!define MUI_INSTFILESPAGE_FINISHHEADER_SUBTEXT $ResultSubText
 !insertmacro MUI_PAGE_INSTFILES
 
 !insertmacro MUI_LANGUAGE English
@@ -48,14 +59,6 @@ ShowInstDetails show
 !define SM_CYCAPTION 4
 !define SM_CXSIZEFRAME 32
 !define SM_CYSIZEFRAME 33
-
-;--------------------------------
-;Variables
-
-Var Parameters
-Var LyXLanguage
-Var Geometry
-Var ReturnValue
 
 ;--------------------------------
 ;Version information
@@ -89,12 +92,22 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
 Section -Prepare
 
-  HideWindow
-
-  ;Command line parameters
-  Call GetParameters
-  Pop $Parameters
-
+  ${if} $Debug == ${FALSE}
+    HideWindow
+  ${endif}
+  
+  ;Hide controls we don't need
+  FindWindow $R0 "#32770" "" $HWNDPARENT
+  GetDlgItem $R0 $R0 1004
+  ShowWindow $R0 ${SW_HIDE}  
+  
+  ;Debug info
+  !insertmacro MUI_HEADER_TEXT "Debugging LyX" "The events you have chosen \
+      are being logged."
+  SetDetailsPrint textonly
+  DetailPrint "Debug log:"
+  SetDetailsPrint listonly
+  
   ;LyX Language
   !insertmacro GetLyXSetting "Language" $LyXLanguage
   
@@ -156,7 +169,7 @@ Section -Prepare
     
     StrCpy $Geometry "$R6x$R7+$R2+$R3" ;WxH+X+Y
     
-  ${endif}
+  ${endif}  
 
 SectionEnd
 
@@ -172,58 +185,88 @@ SectionEnd
 
 Section -Debug
   
-  ;Check whether something went wrong
+  ${if} $Debug == ${FALSE}
   
-  ${if} $ReturnValue == "error"
+    ;Check whether something went wrong
+    
+    ${if} $ReturnValue == "error"
   
-    ;Probably the file does not exist
-    MessageBox MB_OK|MB_ICONSTOP "Failed to start LyX."
+      ;Probably the file does not exist
+      MessageBox MB_OK|MB_ICONSTOP "Failed to start LyX."
+    
+    ${elseif} $ReturnValue != 0
+    
+      ;LyX has crashed
+      MessageBox MB_YESNO|MB_ICONSTOP \
+          "LyX has been closed because of an unexpected situation.$\n\
+          This is most likely caused by a flaw in the software.$\n$\n\
+          When you open your documents again, you will be able$\n\
+          to restore an emergency save and continue working.$\n$\n\
+          Would you like to view detailed information about this error?" \
+          IDYES debug IDNO no_debug
   
-  ${elseif} $ReturnValue != 0
-  
-    ;LyX has crashed
-    MessageBox MB_YESNO|MB_ICONSTOP \
-        "LyX has been closed because of an unexpected situation.$\n\
-        This is most likely caused by a flaw in the software.$\n$\n\
-        When you open your documents again, you will be able$\n\
-        to restore an emergency save and continue working.$\n$\n\
-        Would you like to view detailed information about this error?" \
-        IDYES debug IDNO no_debug
-  
+    ${endif}
+    
+    no_debug:
+    
+      Quit
+    
+    debug:
+    
+      ShowWindow $R0 ${SW_HIDE}
+    
   ${endif}
   
-  no_debug:
+  ${if} $ReturnValue != 0
   
-    Quit
-    
-  debug:
+    StrCpy $ResultText "Error Information"
+    StrCpy $ResultSubText "See Chapter 3 of the LyX Introduction \
+        (Help > Introduction) for information about reporting this issue."
+   
+   ${else}
+   
+    StrCpy $ResultText "Debugging Completed"
+    StrCpy $ResultSubText "The events you have chosen are logged below."
+   
+   ${endif}
   
-    ;The interface with debug information will be shown
-    
-    SetDetailsPrint textonly
-    DetailPrint "The following details are available about the error:"
-    SetDetailsPrint none
-    
-    ;Hide controls we don't need
-    FindWindow $R0 "#32770" "" $HWNDPARENT
-    GetDlgItem $R0 $R0 1004
-    ShowWindow $R0 ${SW_HIDE}
-    
+  ${if} $Debug == ${FALSE}
+
     ;Put the log window on the screen again
     Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i 133, i 100, i 0, i 0, i ${SWP_NOSIZE})"
     CallInstDLL "$EXEDIR\System.dll" Call
     BringToFront
 
+  ${endif}
+
 SectionEnd
+
 
 ;--------------------------------
 ;Functions
 
 Function InitInterface
+  
+  ;Command line parameters
+  Call GetParameters
+  Pop $Parameters
+  
+  ;Check for debug mode
+  ${StrStr} $R0 $Parameters "-dbg"
+  
+  ${if} $R0 == ""
+    StrCpy $Debug ${FALSE}
+  ${else}
+    StrCpy $Debug ${TRUE}
+  ${endif}
+  
+  ${if} $Debug == ${FALSE}
 
-  ;Keep the log window outside the screen to ensure that there will be no flickering
-  Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i -32000, i -32000, i 0, i 0, i ${SWP_NOSIZE})"
-  CallInstDLL "$EXEDIR\System.dll" Call
+    ;Keep the log window outside the screen to ensure that there will be no flickering
+    Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i -32000, i -32000, i 0, i 0, i ${SWP_NOSIZE})"
+    CallInstDLL "$EXEDIR\System.dll" Call
+  
+  ${endif}
 
 FunctionEnd
 
