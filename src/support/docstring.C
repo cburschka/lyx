@@ -465,9 +465,9 @@ protected:
 		std::ios_base::iostate & err, long & v) const
 	{
 		std::string s;
-		s.resize(64);
-		for (int i = 0; iit != eit && isNumpunct(*iit); ++i, ++iit)
-			s[i] = static_cast<char>(*iit);
+		s.reserve(64);
+		for (; iit != eit && isNumpunct(*iit); ++iit)
+			s += static_cast<char>(*iit);
 		string_num_get_facet f;
 		f.get(s.begin(), s.end(), b, err, v);
 
