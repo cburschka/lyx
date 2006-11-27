@@ -1489,7 +1489,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	case RC_CONVERTER_CACHE_MAXAGE:
 		if (ignore_system_lyxrc ||
 		    converter_cache_maxage != system_lyxrc.converter_cache_maxage) {
-			os << "\\converter_cache_maxage"
+			os << "\\converter_cache_maxage "
 			   << converter_cache_maxage << '\n';
 		}
 
