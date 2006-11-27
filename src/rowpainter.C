@@ -1000,22 +1000,6 @@ void paintText(BufferView & bv,
 		yy += par.descent();
 	}
 
-	// Cache one paragraph above and one below
-	// Note MV: this cannot be suppressed even for singlepar.
-	// Try viewing the User Guide Mobius figure
-
-	if (vi.p1 > 0) {
-		text.redoParagraph(bv, vi.p1 - 1);
-		bv.coordCache().parPos()[&text][vi.p1 - 1] =
-			Point(0, vi.y1 - text.getPar(vi.p1 - 1).descent());
-	}
-
-	if (vi.p2 < pit_type(text.paragraphs().size()) - 1) {
-		text.redoParagraph(bv, vi.p2 + 1);
-		bv.coordCache().parPos()[&text][vi.p2 + 1] =
-			Point(0, vi.y2 + text.getPar(vi.p2 + 1).ascent());
-	}
-
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text.getPar(vi.p1).ascent() << endl;
 	if (vi.y1 > 0 && !vi.singlepar)
