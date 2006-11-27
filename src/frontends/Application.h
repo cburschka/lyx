@@ -172,7 +172,7 @@ public:
 
 	/// Create the main window with given geometry settings.
 	LyXView & createView(unsigned int width, unsigned int height,
-		int posx, int posy, bool maximize);
+		int posx, int posy, bool maximize, unsigned int iconSizeXY);
 	
 	/// 
 	LyXView const & currentView() const;

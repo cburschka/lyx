@@ -560,6 +560,8 @@ LyXView * LyX::newLyXView()
 	// initial geometry
 	unsigned int width = 690;
 	unsigned int height = 510;
+	// default icon size, will be overwritten by  stored session value
+	unsigned int iconSizeXY = 26;
 	bool maximize = false;
 	// first try lyxrc
 	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {
@@ -576,6 +578,9 @@ LyXView * LyX::newLyXView()
 			height = convert<unsigned int>(val);
 		if (session().sessionInfo().load("WindowIsMaximized") == "yes")
 			maximize = true;
+		val = session().sessionInfo().load("IconSizeXY");
+		if (!val.empty())
+			iconSizeXY = convert<unsigned int>(val);
 	}
 
 	// if user wants to restore window position
@@ -595,7 +600,7 @@ LyXView * LyX::newLyXView()
 		height = 0;
 	}
 	// create the main window
-	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize);
+	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize, iconSizeXY);
 
 	return view;
 }

@@ -87,7 +87,8 @@ public:
 		unsigned int width,
 		unsigned int height,
 		int posx, int posy,
-		bool maximize) = 0;
+		bool maximize,
+		unsigned int iconSizeXY) = 0;
 
 	/// save the geometry state in the session manager.
 	virtual void saveGeometry() = 0;

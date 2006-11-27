@@ -6,6 +6,7 @@
  * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author Abdelrazak Younes
+ * \author Peter Kümmel
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -105,15 +106,20 @@ struct GuiView::GuiViewPrivate
 
 	GuiViewPrivate() : wt(0), posx_offset(0), posy_offset(0)
 	{}
+
+	static int iconSizeXY_;
 };
+
+int GuiView::GuiViewPrivate::iconSizeXY_ = -1;
 
 GuiView::GuiView(int id)
 	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
 {
-//	setToolButtonStyle(Qt::ToolButtonIconOnly);
-//	setIconSize(QSize(12,12));
+	// static var needed by the "New Window", because setGeometry will not be called
+	if (GuiViewPrivate::iconSizeXY_ != -1)
+		setIconSize(QSize(GuiViewPrivate::iconSizeXY_, GuiViewPrivate::iconSizeXY_));
 
-//	bufferview_.reset(new BufferView(this, width, height));
+	//bufferview_.reset(new BufferView(this, width, height));
 
 #ifndef Q_WS_MACX
 	//  assign an icon to main form. We do not do it under Qt/Mac,
@@ -139,8 +145,7 @@ void GuiView::close()
 QMenu* GuiView::createPopupMenu()
 {
 	// disable toolbar popup menu 
-	// Qt docs: Ownership of the popup menu is transferred to the caller.
-	return new QMenu;
+	return 0;
 }
 
 void GuiView::init()
@@ -187,6 +192,7 @@ void GuiView::saveGeometry()
 	session.sessionInfo().save("WindowWidth", convert<string>(geometry.width()));
 	session.sessionInfo().save("WindowHeight", convert<string>(geometry.height()));
 	session.sessionInfo().save("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
+	session.sessionInfo().save("IconSizeXY", convert<string>(iconSize().width()));
 	if (lyxrc.geometry_xysaved) {
 		session.sessionInfo().save("WindowPosX", convert<string>(geometry.x() + d.posx_offset));
 		session.sessionInfo().save("WindowPosY", convert<string>(geometry.y() + d.posy_offset));
@@ -197,8 +203,15 @@ void GuiView::saveGeometry()
 void GuiView::setGeometry(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
-								  bool maximize)
+								  bool maximize,
+								  unsigned int iconSizeXY)
 {
+	if (iconSizeXY > 8)
+		GuiViewPrivate::iconSizeXY_ = iconSizeXY;
+	else
+		GuiViewPrivate::iconSizeXY_ = 28;
+	setIconSize(QSize(GuiViewPrivate::iconSizeXY_, GuiViewPrivate::iconSizeXY_));
+
 	// only true when the -geometry option was NOT used
 	if (width != 0 && height != 0) {
 		if (posx != -1 && posy != -1) {

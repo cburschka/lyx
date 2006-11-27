@@ -126,11 +126,6 @@ TOOLBARS & MINIBUFFER
 * When toolbars are hidden, they pop up again after clicking on the document
   area (Joost 4/11/06).
 
-* Icons in the toolbars do not have the correct size, they are stretched a few
-  pixels compared to 1.4. This makes the images look jagged and the initial
-  window size has also become to small to show the whole toolbar
-  (Joost 4/11/06). See also the math panel buttons entry above.
-  
 * TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
 
 
@@ -457,3 +452,10 @@ CREDITS:
 * new document; insert note; insert "hello" into note; place the cursor at the beginning of the note;
   activate change tracking; press backspace => seg fault
   FIXED (Michael 2006-11-25)
+
+* Icons in the toolbars do not have the correct size, they are stretched a few
+  pixels compared to 1.4. This makes the images look jagged and the initial
+  window size has also become to small to show the whole toolbar
+  (Joost 4/11/06). See also the math panel buttons entry above.
+  FIXED (Peter, 2006-11-28)
+
