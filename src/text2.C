@@ -1024,6 +1024,9 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 
 bool LyXText::cursorLeft(LCursor & cur)
 {
+	// Tell BufferView to test for FitCursor in any case!
+	cur.updateFlags(Update::FitCursor);
+
 	if (!cur.boundary() && cur.pos() > 0 &&
 	    cur.textRow().pos() == cur.pos() &&
 	    !cur.paragraph().isLineSeparator(cur.pos()-1) &&
@@ -1052,6 +1055,9 @@ bool LyXText::cursorLeft(LCursor & cur)
 
 bool LyXText::cursorRight(LCursor & cur)
 {
+	// Tell BufferView to test for FitCursor in any case!
+	cur.updateFlags(Update::FitCursor);
+
 	if (cur.pos() != cur.lastpos()) {
 		if (cur.boundary())
 			return setCursor(cur, cur.pit(), cur.pos(),
@@ -1081,6 +1087,9 @@ bool LyXText::cursorRight(LCursor & cur)
 
 bool LyXText::cursorUp(LCursor & cur)
 {
+	// Tell BufferView to test for FitCursor in any case!
+	cur.updateFlags(Update::FitCursor);
+
 	Paragraph const & par = cur.paragraph();
 	int row;
 	int const x = cur.targetX();
@@ -1130,6 +1139,9 @@ bool LyXText::cursorUp(LCursor & cur)
 
 bool LyXText::cursorDown(LCursor & cur)
 {
+	// Tell BufferView to test for FitCursor in any case!
+	cur.updateFlags(Update::FitCursor);
+
 	Paragraph const & par = cur.paragraph();
 	int row;
 	int const x = cur.targetX();
