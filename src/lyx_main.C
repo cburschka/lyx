@@ -415,6 +415,14 @@ void LyX::prepareExit()
 	// do any other cleanup procedures now
 	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
 
+	// Prevent the deletion of /tmp if LyX was called with invalid
+	// arguments. Does not work on windows.
+	// FIXME: Fix the real bug instead.
+	if (package().temp_dir() == "/tmp") {
+		lyxerr << "Not deleting /tmp." << endl;
+		return;
+	}
+
 	if (!destroyDir(package().temp_dir())) {
 		docstring const msg =
 			bformat(_("Unable to remove the temporary directory %1$s"),
