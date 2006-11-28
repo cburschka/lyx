@@ -468,6 +468,10 @@ protected:
 		s.reserve(64);
 		for (; iit != eit && isNumpunct(*iit); ++iit)
 			s += static_cast<char>(*iit);
+		// We add another character, not part of the numpunct facet,
+		// in order to avoid setting the eofbit in the stream state,
+		// which would prevent any further read. The '\0' seems a
+		// good choice here.
 		s += '\0';
 		string_num_get_facet f;
 		f.get(s.begin(), s.end(), b, err, v);
