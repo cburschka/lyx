@@ -24,6 +24,8 @@ GENERAL
 
 * Resolve compiler warnings
 
+* LyX tries to delete /tmp if it is called with invalid arguments
+
 
 FILE
 
@@ -129,6 +131,16 @@ TOOLBARS & MINIBUFFER
   area (Joost 4/11/06).
 
 * TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
+
+
+MENUS
+
+* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
+  in the menu, even though a converter and viewer are defined in Preferences.
+  It turned out that this was a user error: a configuration file of 1.4 was
+  used without the document flag.
+  This should definitely be documented somewhere before the final release,
+  because many users will copy their old config files.
 
 
 EDITING
@@ -425,10 +437,6 @@ CREDITS:
   Lines occasionally overlapping vertically, math characters not properly
   aligned vertically.
   FIXED (JMarc 2006-11).
-
-* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
-  in the menu, even though a converter and viewer are defined in Preferences.
-  FIXED (???)
 
 * Icons in the toolbars do not have the correct size, they are stretched a few
   pixels compared to 1.4. This makes the images look jagged and the initial
