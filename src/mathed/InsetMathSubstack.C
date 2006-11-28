@@ -42,7 +42,7 @@ auto_ptr<InsetBase> InsetMathSubstack::doClone() const
 }
 
 
-void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.style == LM_ST_DISPLAY) {
 		StyleChanger dummy(mi.base, LM_ST_TEXT);
@@ -50,7 +50,10 @@ void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		InsetMathGrid::metrics(mi, dim);
 	}
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

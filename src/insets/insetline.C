@@ -42,12 +42,14 @@ void InsetLine::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 3;
 	dim.des = 3;
 	dim.wid = mi.base.textwidth;
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

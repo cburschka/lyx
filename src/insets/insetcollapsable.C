@@ -132,7 +132,7 @@ Dimension InsetCollapsable::dimensionCollapsed() const
 }
 
 
-void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	autoOpen_ = mi.base.bv->cursor().isInside(this);
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
@@ -162,7 +162,9 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

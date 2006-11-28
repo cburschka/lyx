@@ -34,7 +34,7 @@ auto_ptr<InsetBase> InsetMathFrameBox::doClone() const
 }
 
 
-void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	w_ = mathed_char_width(mi.base.font, '[');
@@ -43,7 +43,10 @@ void InsetMathFrameBox::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim += cell(1).dim();
 	dim += cell(2).dim();
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

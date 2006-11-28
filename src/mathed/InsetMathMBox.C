@@ -50,11 +50,14 @@ auto_ptr<InsetBase> InsetMathMBox::doClone() const
 }
 
 
-void InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	text_.metrics(mi, dim);
 	metricsMarkers2(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

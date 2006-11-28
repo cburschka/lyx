@@ -43,7 +43,7 @@ void RenderButton::update(docstring const & text, bool editable)
 }
 
 
-void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
+bool RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
@@ -56,6 +56,10 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 		fm.rectText(text_, dim.wid, dim.asc, dim.des);
 
 	dim.wid += 4;
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

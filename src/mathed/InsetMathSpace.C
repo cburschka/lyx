@@ -85,11 +85,15 @@ int InsetMathSpace::descent() const
 }
 
 
-void InsetMathSpace::metrics(MetricsInfo &, Dimension & dim) const
+bool InsetMathSpace::metrics(MetricsInfo &, Dimension & dim) const
 {
 	dim.wid = width();
 	dim.asc = ascent();
 	dim.des = descent();
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

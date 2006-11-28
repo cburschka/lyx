@@ -81,7 +81,7 @@ MathArray const & InsetMathXYArrow::sourceCell() const
 }
 
 
-void InsetMathXYArrow::metrics(MetricsInfo & mi) const
+bool InsetMathXYArrow::metrics(MetricsInfo & mi) const
 {
 	InsetMathNest::metrics(mi);
 	mi_   = mi;

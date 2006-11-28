@@ -63,7 +63,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

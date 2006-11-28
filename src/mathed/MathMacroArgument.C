@@ -55,10 +55,13 @@ void MathMacroArgument::write(WriteStream & os) const
 }
 
 
-void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
+bool MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, str_, dim_);
-	dim = dim_;
+	mathed_string_dim(mi.base.font, str_, dim);
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

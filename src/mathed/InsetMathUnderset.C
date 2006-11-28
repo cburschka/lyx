@@ -31,7 +31,7 @@ auto_ptr<InsetBase> InsetMathUnderset::doClone() const
 }
 
 
-void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi);
 	FracChanger dummy(mi.base);
@@ -40,7 +40,10 @@ void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(1).ascent();
 	dim.des = cell(1).descent() + cell(0).height() + 4;
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

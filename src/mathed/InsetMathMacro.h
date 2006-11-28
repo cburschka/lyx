@@ -34,7 +34,7 @@ public:
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// get cursor position
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;

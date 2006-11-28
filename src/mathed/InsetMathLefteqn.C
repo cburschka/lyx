@@ -33,14 +33,17 @@ auto_ptr<InsetBase> InsetMathLefteqn::doClone() const
 }
 
 
-void InsetMathLefteqn::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathLefteqn::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	dim.asc += 2;
 	dim.des += 2;
 	dim.wid = 4;
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

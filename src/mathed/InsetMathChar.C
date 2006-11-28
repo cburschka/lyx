@@ -57,7 +57,7 @@ auto_ptr<InsetBase> InsetMathChar::doClone() const
 }
 
 
-void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 #if 1
 	if (char_ == '=' && has_math_fonts) {
@@ -79,12 +79,16 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += static_cast<int>(0.1667*em+0.5);
 #else
 	whichFont(font_, code_, mi);
-	mathed_char_dim(font_, char_, dim_);
+	mathed_char_dim(font_, char_, dim);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * theFontMetrics(font_).width(' ');
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;
 #endif
 	width_ = dim.wid;
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

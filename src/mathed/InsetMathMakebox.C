@@ -34,7 +34,7 @@ auto_ptr<InsetBase> InsetMathMakebox::doClone() const
 }
 
 
-void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, from_ascii("textnormal"));
 	w_ = mathed_char_width(mi.base.font, '[');
@@ -44,7 +44,10 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim  += cell(2).dim();
 	dim.wid += 4 * w_ + 4;
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

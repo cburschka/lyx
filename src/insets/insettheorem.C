@@ -69,12 +69,14 @@ auto_ptr<InsetBase> InsetTheorem::doClone() const
 	return result;
 }
 
-void InsetTheorem::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetTheorem::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCollapsable::metrics(mi, dim);
 	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
 	dim.wid = mi.base.textwidth;
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

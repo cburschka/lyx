@@ -38,14 +38,17 @@ auto_ptr<InsetBase> InsetMathRoot::doClone() const
 }
 
 
-void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetMathNest::metrics(mi);
 	dim.asc = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
 	dim.des = max(cell(1).descent() + 5, cell(0).descent()) + 2;
 	dim.wid = cell(0).width() + cell(1).width() + 10;
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

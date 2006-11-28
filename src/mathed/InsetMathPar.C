@@ -28,11 +28,15 @@ InsetMathPar::InsetMathPar(MathArray const & ar)
 }
 
 
-void InsetMathPar::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathPar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	dim = dim_;
 	FontSetChanger dummy1(mi.base, "textnormal");
 	InsetMathGrid::metrics(mi);
+	if (dim_ == dim)
+		return false;
 	dim = dim_;
+	return true;
 }
 
 

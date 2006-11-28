@@ -51,7 +51,7 @@ InsetMathFrac const * InsetMathFrac::asFracInset() const
 }
 
 
-void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -66,7 +66,10 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = cell(1).height() + 2 - 5;
 	}
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

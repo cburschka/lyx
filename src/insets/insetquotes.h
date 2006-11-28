@@ -74,7 +74,7 @@ public:
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(char_type c, quote_language l, quote_times t);
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 #if 0

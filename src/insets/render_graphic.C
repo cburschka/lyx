@@ -140,7 +140,7 @@ bool readyToDisplay(graphics::Loader const & loader)
 } // namespace anon
 
 
-void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
+bool RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 
@@ -175,7 +175,9 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid = std::max(50, font_width + 15);
 	}
 
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

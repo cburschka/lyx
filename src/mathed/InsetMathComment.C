@@ -42,11 +42,14 @@ auto_ptr<InsetBase> InsetMathComment::doClone() const
 }
 
 
-void InsetMathComment::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathComment::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

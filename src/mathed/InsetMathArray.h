@@ -31,7 +31,7 @@ public:
 	/// convenience constructor from whitespace/newline separated data
 	InsetMathArray(docstring const &, docstring const & str);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

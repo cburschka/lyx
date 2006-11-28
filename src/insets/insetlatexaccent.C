@@ -242,7 +242,7 @@ void InsetLatexAccent::checkContents()
 }
 
 
-void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont & font = mi.base.font;
 	frontend::FontMetrics const & fm =	theFontMetrics(font);
@@ -273,7 +273,9 @@ void InsetLatexAccent::metrics(MetricsInfo & mi, Dimension & dim) const
 		docstring dcon(contents.begin(), contents.end());
 		dim.wid = fm.width(dcon) + 4;
 	}
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

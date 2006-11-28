@@ -68,7 +68,7 @@ public:
 	///
 	void read(Buffer const & buf, LyXLex & lex);
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo &, int, int) const;
 	///

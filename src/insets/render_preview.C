@@ -113,7 +113,7 @@ RenderPreview::getPreviewImage(Buffer const & buffer) const
 }
 
 
-void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
+bool RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
 
@@ -135,7 +135,9 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid = 15 + theFontMetrics(font).width(stat);
 	}
 
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

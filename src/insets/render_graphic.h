@@ -29,7 +29,7 @@ public:
 	std::auto_ptr<RenderBase> clone(InsetBase const *) const;
 
 	/// compute the size of the object returned in dim
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw inset
 	void draw(PainterInfo & pi, int x, int y) const;
 

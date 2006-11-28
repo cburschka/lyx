@@ -648,7 +648,7 @@ InsetInclude::getBibfilesCache(Buffer const & buffer) const
 }
 
 
-void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
 
@@ -673,7 +673,9 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	Box b(0, dim.wid, -dim.asc, dim.des);
 	button_.setBox(b);
 
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

@@ -112,7 +112,7 @@ docstring MathMacroTemplate::prefix() const
 }
 
 
-void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
+bool MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
@@ -121,7 +121,10 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 		+ theFontMetrics(mi.base.font).width(dp);
 	dim.asc = std::max(cell(0).ascent(),  cell(1).ascent())  + 7;
 	dim.des = std::max(cell(0).descent(), cell(1).descent()) + 7;
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

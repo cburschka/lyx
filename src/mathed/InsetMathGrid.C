@@ -471,10 +471,14 @@ void InsetMathGrid::metrics(MetricsInfo & mi) const
 }
 
 
-void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	metrics(mi);
 	dim = dim_;
+	metrics(mi);
+	if (dim_ == dim)
+		return false;
+	dim = dim_;
+	return true;
 }
 
 

@@ -30,7 +30,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	void metrics(MetricsInfo & mi) const;
+	bool metrics(MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

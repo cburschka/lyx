@@ -106,7 +106,7 @@ public:
 	/// rebuild cached metrics information
 	void metrics(MetricsInfo & mi) const;
 	/// rebuild cached metrics information
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// redraw cell using cache metrics information
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// rebuild cached metrics information
@@ -151,12 +151,13 @@ public:
 	/// dimensions of cell
 	void setDim(Dimension const & d) const { dim_ = d; }
 
+protected:
+	/// cached dimensions of cell
+	mutable Dimension dim_;
+
 private:
 	/// is this an exact match at this position?
 	bool find1(MathArray const & ar, size_type pos) const;
-
-	/// cached dimensions of cell
-	mutable Dimension dim_;
 };
 
 ///

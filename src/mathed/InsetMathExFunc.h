@@ -30,7 +30,7 @@ public:
 	///
 	InsetMathExFunc(docstring const & name, MathArray const & ar);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

@@ -482,10 +482,12 @@ void InsetExternal::edit(LCursor & cur, bool)
 }
 
 
-void InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	renderer_->metrics(mi, dim);
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

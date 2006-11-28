@@ -30,7 +30,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::THEOREM_CODE; }
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

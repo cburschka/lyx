@@ -43,7 +43,7 @@ auto_ptr<InsetBase> InsetMathBrace::doClone() const
 }
 
 
-void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -52,7 +52,10 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = max(cell(0).descent(), t.des);
 	dim.wid = cell(0).width() + 2 * t.wid;
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

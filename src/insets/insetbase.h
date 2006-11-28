@@ -12,9 +12,10 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
-#include "support/docstream.h"
-
 #include "changes.h"
+#include "dimension.h"
+
+#include "support/docstream.h"
 
 #include <memory>
 #include <vector>
@@ -103,7 +104,8 @@ public:
 	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 
 	/// compute the size of the object returned in dim
-	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
+	/// \retval true if metrics changed.
+	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 	/// draw inset selection if necessary
@@ -443,6 +445,9 @@ protected:
 	 *  \sa getStatus
 	 */
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+
+	/// Cached dimensions of the inset.
+	mutable Dimension dim_;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const = 0;
 };

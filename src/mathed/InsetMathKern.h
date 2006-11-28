@@ -31,7 +31,7 @@ public:
 	///
 	explicit InsetMathKern(docstring const & wid);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

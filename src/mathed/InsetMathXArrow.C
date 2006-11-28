@@ -36,7 +36,7 @@ auto_ptr<InsetBase> InsetMathXArrow::doClone() const
 }
 
 
-void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
@@ -45,7 +45,10 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = cell(0).height() + 10;
 	dim.des = cell(1).height();
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

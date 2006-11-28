@@ -1833,6 +1833,8 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	Paragraph & par = pars_[pit];
 	Buffer const & buffer = *bv.buffer();
 
+	bool changed = false;
+
 	// Add bibitem insets if necessary
 	if (par.layout()->labeltype == LABEL_BIBLIO) {
 		bool hasbibitem(false);
@@ -1871,7 +1873,7 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 			bufferfont :
 			getFont(buffer, par, ii->pos);
 		MetricsInfo mi(&bv, font, w);
-		ii->inset->metrics(mi, dim);
+		changed |= ii->inset->metrics(mi, dim);
 	}
 
 	// rebreak the paragraph
@@ -1908,16 +1910,16 @@ bool LyXText::redoParagraph(BufferView & bv, pit_type const pit)
 	dim.asc += par.rows()[0].ascent();
 	dim.des -= par.rows()[0].ascent();
 
-	bool const same = dim.height() == par.dim().height();
+	changed |= dim.height() != par.dim().height();
 
 	par.dim() = dim;
 	//lyxerr << "redoParagraph: " << par.rows().size() << " rows\n";
 
-	return !same;
+	return changed;
 }
 
 
-void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
+bool LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 {
 	//BOOST_ASSERT(mi.base.textwidth);
 	if (mi.base.textwidth)
@@ -1927,10 +1929,12 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	// save the caller's font locally:
 	font_ = mi.base.font;
 
+	bool changed = false;
+
 	unsigned int h = 0;
 	unsigned int w = 0;
 	for (pit_type pit = 0, n = paragraphs().size(); pit != n; ++pit) {
-		redoParagraph(*mi.base.bv, pit);
+		changed |= redoParagraph(*mi.base.bv, pit);
 		Paragraph & par = paragraphs()[pit];
 		h += par.height();
 		if (w < par.width())
@@ -1941,7 +1945,9 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	dim.asc = pars_[0].ascent();
 	dim.des = h - dim.asc;
 
+	changed |= dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

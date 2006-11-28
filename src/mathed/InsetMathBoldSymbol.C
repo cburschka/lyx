@@ -33,13 +33,16 @@ auto_ptr<InsetBase> InsetMathBoldSymbol::doClone() const
 }
 
 
-void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//FontSetChanger dummy(mi.base, "mathbf");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 	++dim.wid;  // for 'double stroke'
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

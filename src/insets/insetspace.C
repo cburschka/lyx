@@ -48,7 +48,7 @@ InsetSpace::Kind InsetSpace::kind() const
 }
 
 
-void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	frontend::FontMetrics const & fm =
 		theFontMetrics(mi.base.font);
@@ -75,7 +75,9 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = 10;
 			break;
 	}
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

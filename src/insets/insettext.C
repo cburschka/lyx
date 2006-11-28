@@ -164,7 +164,7 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 	mi.base.textwidth -= 2 * border_;
@@ -176,7 +176,9 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += border_;
 	dim.wid += 2 * border_;
 	mi.base.textwidth += 2 * border_;
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

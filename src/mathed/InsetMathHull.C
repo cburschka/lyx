@@ -283,7 +283,7 @@ bool InsetMathHull::previewState(BufferView * bv) const
 }
 
 
-void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
@@ -291,8 +291,10 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 1;
 		if (display())
 			dim.des += displayMargin();
+		if (dim_ == dim)
+			return false;
 		dim_ = dim;
-		return;
+		return true;
 	}
 
 	FontSetChanger dummy1(mi.base, standardFont());
@@ -323,7 +325,10 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = max(dim.asc, asc);
 	dim.des = max(dim.des, des);
 
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

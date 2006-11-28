@@ -116,8 +116,8 @@ public:
 	/// insert an inset at cursor position
 	void insertInset(LCursor & cur, InsetBase * inset);
 
-	/// compute text metrics
-	void metrics(MetricsInfo & mi, Dimension & dim);
+	/// compute text metrics.
+	bool metrics(MetricsInfo & mi, Dimension & dim);
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw textselection

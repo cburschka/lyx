@@ -59,7 +59,7 @@ void MathMacro::cursorPos(BufferView const & bv,
 }
 
 
-void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
+bool MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!MacroTable::globalMacros().has(name())) {
 		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
@@ -84,7 +84,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		expanded_.metrics(mi, dim);
 	}
 	metricsMarkers2(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

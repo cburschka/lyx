@@ -211,10 +211,14 @@ void MathArray::touch() const
 }
 
 
-void MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
+bool MathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	metrics(mi);
 	dim = dim_;
+	metrics(mi);
+	if (dim_ == dim)
+		return false;
+	dim = dim_;
+	return true;
 }
 
 

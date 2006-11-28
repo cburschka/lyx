@@ -42,9 +42,13 @@ auto_ptr<InsetBase> InsetMathExFunc::doClone() const
 }
 
 
-void InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
+bool InsetMathExFunc::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_string_dim(mi.base.font, name_, dim_);
+	mathed_string_dim(mi.base.font, name_, dim);
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

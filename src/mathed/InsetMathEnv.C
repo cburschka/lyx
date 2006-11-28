@@ -35,11 +35,14 @@ auto_ptr<InsetBase> InsetMathEnv::doClone() const
 }
 
 
-void InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

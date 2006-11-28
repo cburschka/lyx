@@ -26,7 +26,7 @@ public:
 	///
 	explicit InsetMathMBox(BufferView & bv);
 	/// this stores metrics information in cache_
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics
 	void draw(PainterInfo &, int x, int y) const;
 	///

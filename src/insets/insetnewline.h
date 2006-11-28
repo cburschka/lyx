@@ -25,7 +25,7 @@ public:
 
 	InsetBase::Code lyxCode() const { return InsetBase::NEWLINE_CODE; }
 
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 

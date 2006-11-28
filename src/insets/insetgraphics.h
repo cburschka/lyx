@@ -35,7 +35,7 @@ public:
 	///
 	~InsetGraphics();
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	EDITABLE editable() const;
 	///

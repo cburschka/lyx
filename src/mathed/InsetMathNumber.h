@@ -26,7 +26,7 @@ public:
 	///
 	explicit InsetMathNumber(docstring const & s);
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

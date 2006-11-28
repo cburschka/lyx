@@ -35,7 +35,7 @@ auto_ptr<InsetBase> InsetMathDots::doClone() const
 }
 
 
-void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim);
 	dh_ = 0;
@@ -50,7 +50,10 @@ void InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	else if (key_->name == "ddots")
 		dh_ = dim.asc;
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

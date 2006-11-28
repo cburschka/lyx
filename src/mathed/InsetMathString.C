@@ -33,9 +33,13 @@ auto_ptr<InsetBase> InsetMathString::doClone() const
 }
 
 
-void InsetMathString::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathString::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, str_, dim);
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

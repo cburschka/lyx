@@ -62,14 +62,17 @@ double InsetMathBig::increase() const
 }
 
 
-void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	double const h = theFontMetrics(mi.base.font).ascent('I');
 	double const f = increase();
-	dim_.wid = 6;
-	dim_.asc = int(h + f * h);
-	dim_.des = int(f * h);
-	dim = dim_;
+	dim.wid = 6;
+	dim.asc = int(h + f * h);
+	dim.des = int(f * h);
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

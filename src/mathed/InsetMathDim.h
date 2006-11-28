@@ -13,8 +13,6 @@
 #define MATH_DIMINSET_H
 
 #include "InsetMath.h"
-#include "dimension.h"
-
 
 namespace lyx {
 
@@ -38,10 +36,6 @@ public:
 
 	///
 	void setPosCache(PainterInfo const & pi, int x, int y) const;
-
-protected:
-	///
-	mutable Dimension dim_;
 };
 
 

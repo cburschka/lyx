@@ -24,7 +24,7 @@ public:
 	///
 	InsetMathXYMatrix(LyXLength const & = LyXLength(), char c = '\0');
 	///
-	void metrics(MetricsInfo &, Dimension &) const;
+	bool metrics(MetricsInfo &, Dimension &) const;
 	///
 	InsetMathXYMatrix const * asXYMatrixInset() const { return this; }
 	///

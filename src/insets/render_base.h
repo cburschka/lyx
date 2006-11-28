@@ -34,8 +34,9 @@ public:
 
 	virtual std::auto_ptr<RenderBase> clone(InsetBase const *) const = 0;
 
-	/// compute the size of the object returned in dim
-	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
+	/// compute the size of the object returned in dim.
+	/// \retval true if the metrics has changed.
+	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 

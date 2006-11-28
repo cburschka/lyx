@@ -53,10 +53,13 @@ void InsetMathUnknown::normalize(NormalStream & os) const
 }
 
 
-void InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathUnknown::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, name_, dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

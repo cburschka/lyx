@@ -42,7 +42,7 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 }
 
 
-void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	frontend::FontMetrics const & fm =
 		theFontMetrics(mi.base.font);
@@ -61,7 +61,9 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = fm.width(ds);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

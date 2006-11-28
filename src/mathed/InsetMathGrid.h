@@ -97,7 +97,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi) const;
 	///
-	void metrics(MetricsInfo & mi, Dimension &) const;
+	bool metrics(MetricsInfo & mi, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

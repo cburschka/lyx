@@ -56,8 +56,6 @@ public:
 protected:
 	///
 	InsetOld(InsetOld const & in);
-	///
-	mutable Dimension dim_;
 
 private:
 	InsetOld & operator=(InsetOld const &) const;

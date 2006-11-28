@@ -71,7 +71,7 @@ void InsetMathDelim::normalize(NormalStream & os) const
 }
 
 
-void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -84,10 +84,13 @@ void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 		dw_ = 8;
 	if (dw_ < 4)
 		dw_ = 4;
-	dim_.wid = cell(0).width() + 2 * dw_ + 8;
-	dim_.asc = max(a0, d0) + h0;
-	dim_.des = max(a0, d0) - h0;
-	dim = dim_;
+	dim.wid = cell(0).width() + 2 * dw_ + 8;
+	dim.asc = max(a0, d0) + h0;
+	dim.des = max(a0, d0) - h0;
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

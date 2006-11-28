@@ -54,7 +54,7 @@ docstring InsetMathSymbol::name() const
 }
 
 
-void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "metrics: symbol: '" << sym_->name
 	//	<< "' in font: '" << sym_->inset
@@ -84,6 +84,10 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 			scriptable_ = true;
 
 	width_ = dim.wid;
+	if (dim_ == dim)
+		return false;
+	dim_ = dim;
+	return true;
 }
 
 

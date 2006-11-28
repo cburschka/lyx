@@ -102,7 +102,7 @@ bool InsetMathDecoration::ams() const
 }
 
 
-void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
 
@@ -118,7 +118,10 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	metricsMarkers(dim);
+	if (dim_ == dim)
+		return false;
 	dim_ = dim;
+	return true;
 }
 
 

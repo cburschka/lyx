@@ -42,12 +42,14 @@ void InsetPagebreak::write(Buffer const &, ostream & os) const
 }
 
 
-void InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetPagebreak::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = defaultRowHeight();
 	dim.des = defaultRowHeight();
 	dim.wid = mi.base.textwidth;
+	bool const changed = dim_ != dim;
 	dim_ = dim;
+	return changed;
 }
 
 

@@ -139,7 +139,7 @@ void InsetCharStyle::read(Buffer const & buf, LyXLex & lex)
 }
 
 
-void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
+bool InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	LyXFont tmpfont = mi.base.font;
 	getDrawFont(mi.base.font);
@@ -168,9 +168,11 @@ void InsetCharStyle::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des += TEXT_TO_INSET_OFFSET;
 	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
-	dim_ = dim;
 	if (params_.show_label)
-		dim_.des += ascent();
+		dim.des += ascent();
+	bool const changed = dim_ != dim;
+	dim_ = dim;
+	return changed;
 }
 
 
