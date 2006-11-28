@@ -468,6 +468,7 @@ protected:
 		s.reserve(64);
 		for (; iit != eit && isNumpunct(*iit); ++iit)
 			s += static_cast<char>(*iit);
+		s += '\0';
 		string_num_get_facet f;
 		f.get(s.begin(), s.end(), b, err, v);
 
