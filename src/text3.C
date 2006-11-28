@@ -207,12 +207,18 @@ void LyXText::cursorPrevious(LCursor & cur)
 
 	// FIXME: there would maybe a need for this 'updated' boolean in the future...
 	bool updated = setCursorFromCoordinates(cur, x, 0);
-	updated |= cursorUp(cur);
+	if (cur.inMathed())
+		updated |= cur.up();
+	else
+		updated |= cursorUp(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
-		updated |= cursorUp(cur);
+		if (cur.inMathed())
+			updated |= cur.up();
+		else
+			updated |= cursorUp(cur);
 	}
 
 	finishUndo();
@@ -228,12 +234,18 @@ void LyXText::cursorNext(LCursor & cur)
 	int x = cur.x_target();
 	// FIXME: there would maybe a need for this 'updated' boolean in the future...
 	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	updated |= cursorDown(cur);
+	if (cur.inMathed())
+		updated |= cur.down();
+	else
+		updated |= cursorDown(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
-		updated |= cursorDown(cur);
+		if (cur.inMathed())
+			updated |= cur.down();
+		else
+			updated |= cursorDown(cur);
 	}
 
 	finishUndo();
