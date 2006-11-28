@@ -416,6 +416,7 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 		buffer_ptr = work_area_->bufferView().buffer();
 		// No FitCursor:
 		work_area_->bufferView().update(Update::Force);
+		work_area_->redraw();
 	}
 	return buffer_ptr;
 }
