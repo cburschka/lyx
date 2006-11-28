@@ -233,10 +233,6 @@ BUILDING
 
 MAC OS X
 
-* Drawing oddities on MAC (Bennett 3/11/06):
-  Lines occasionally overlapping vertically, math characters not properly
-  aligned vertically.
-
 * Many issues with toolbars on MAC (Bennett 3/11/06):
   Most obvious of which are that icons are spaced too widely and that changes in
   the visibility of the toolbars with the GUI do not stick after the screen is
@@ -249,41 +245,8 @@ MAC OS X
 
   The prefs dialog size should be better now. See below (JSpitzm-2006-11-07).
 
-* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
-  in the menu, even though a converter and viewer are defined in Preferences.
-
 * Menu bar disappears on MAC (instead of being disabled) when dialogs appear.
 
-
-* Mac Crash On quit (Bennett).
-Here's the backtrace:
-#0  std::string::compare (this=0x65646f75, __str=@0xdab7edc) at /opt/local/var/db/dports/build/_opt_local_var_db_dports_sources_rsync.rsync.darwinports.org_dpupdate_dports_lang_gcc42/work/build/powerpc-apple-darwin8.8.0/libstdc++-v3/include/bits/basic_string.h:595
-#1  0x006052ec in std::operator< <char, std::char_traits<char>, std::allocator<char> > (__lhs=@0xda5da00, __rhs=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_pair.h:2217
-#2  0x0070421c in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > > >::find (this=0x11e8eb70, __k=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1376
-#3  0x007042c0 in std::map<std::string, boost::shared_ptr<lyx::graphics::CacheItem>, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::CacheItem> > > >::find (this=0x11e8eb70, __x=@0xbffff0d8) at /opt/local/include/gcc42/c++/bits/stl_map.h:541
-#4  0x002857d8 in lyx::graphics::Cache::remove (this=0xb8e248, file=@0xbffff0d8) at GraphicsCache.C:90
-#5  0x00286744 in lyx::graphics::Loader::Impl::resetFile (this=0x11e1f670, file=@0xbffff178) at GraphicsLoader.C:223
-#6  0x00286950 in lyx::graphics::Loader::Impl::~Impl (this=0x11e1f670) at GraphicsLoader.C:204
-#7  0x00706188 in boost::checked_delete<lyx::graphics::Loader::Impl> (x=0x11e1f670) at ../../boost/boost/checked_delete.hpp:34
-#8  0x0014c01c in lyx::graphics::PreviewImage::Impl::~Impl (this=0x140606c0) at PreviewImage.C:121
-#9  0x006b1f80 in boost::checked_delete<lyx::graphics::PreviewImage::Impl> (x=0x140606c0) at ../../boost/boost/checked_delete.hpp:34
-#10 0x006aeea4 in boost::checked_delete<lyx::graphics::PreviewImage> (x=0x11e4d8a0) at ../../boost/boost/checked_delete.hpp:34
-#11 0x005fc478 in boost::detail::sp_counted_base::release (this=0x132a3db0) at ../boost/boost/detail/sp_counted_base_gcc_ppc.hpp:153
-#12 0x006ae044 in std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >::~pair (this=0x1405efe0) at /opt/local/include/gcc42/c++/bits/stl_pair.h:69
-#13 0x006ae32c in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > > >::destroy_node (this=0x11e60e80, __p=0x1405efd0) at /opt/local/include/gcc42/c++/bits/stl_tree.h:400
-#14 0x006ae388 in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > > >::_M_erase (this=0x11e60e80, __x=0x1405efd0) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1325
-#15 0x006ae3c0 in std::_Rb_tree<std::string, std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> >, std::_Select1st<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > >, std::less<std::string>, std::allocator<std::pair<std::string const, boost::shared_ptr<lyx::graphics::PreviewImage> > > >::~_Rb_tree (this=0x65646f75) at /opt/local/include/gcc42/c++/bits/stl_tree.h:592
-#16 0x00141000 in lyx::graphics::PreviewLoader::Impl::~Impl (this=0x11e60e60) at PreviewLoader.C:428
-#17 0x006b03d0 in boost::checked_delete<lyx::graphics::PreviewLoader::Impl> (x=0x11e60e60) at ../../boost/boost/checked_delete.hpp:34
-#18 0x00141560 in lyx::graphics::PreviewLoader::~PreviewLoader (this=0x65646f75) at PreviewLoader.C:286
-#19 0x00680eec in boost::checked_delete<lyx::graphics::PreviewLoader> (x=0x11e618d0) at ../../boost/boost/checked_delete.hpp:34
-#20 0x005fc478 in boost::detail::sp_counted_base::release (this=0x11e5b040) at ../boost/boost/detail/sp_counted_base_gcc_ppc.hpp:153
-#21 0x00680d08 in std::_Rb_tree<lyx::Buffer const*, std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> >, std::_Select1st<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > >, std::less<lyx::Buffer const*>, std::allocator<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > > >::destroy_node (this=0x11e6ebd0, __p=0x11e5e780) at /opt/local/include/gcc42/c++/bits/stl_tree.h:400
-#22 0x00680d64 in std::_Rb_tree<lyx::Buffer const*, std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> >, std::_Select1st<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > >, std::less<lyx::Buffer const*>, std::allocator<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > > >::_M_erase (this=0x11e6ebd0, __x=0x11e5e780) at /opt/local/include/gcc42/c++/bits/stl_tree.h:1325
-#23 0x00680d9c in std::_Rb_tree<lyx::Buffer const*, std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> >, std::_Select1st<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > >, std::less<lyx::Buffer const*>, std::allocator<std::pair<lyx::Buffer const* const, boost::shared_ptr<lyx::graphics::PreviewLoader> > > >::~_Rb_tree (this=0x65646f75) at /opt/local/include/gcc42/c++/bits/stl_tree.h:592
-#24 0x00680dd8 in boost::checked_delete<lyx::graphics::Previews::Impl> (x=0x11e6ebd0) at ../../boost/boost/checked_delete.hpp:34
-#25 0x000c25f4 in lyx::graphics::Previews::~Previews (this=0x65646f75) at Previews.C:58
-#26 0x00002f38 in cxa_atexit_wrapper (routine_param=0xc260c) at ../../gcc-4.2-20060729/gcc/config/darwin-crt3.c:402 
 
 
 **********************************************************************
@@ -445,19 +408,30 @@ CREDITS:
   FIXED (????)
  
 * Copy/paste using middle mouse button inserts musical notes.
-  FIXED (????; cannot reproduce on SuSE Linux 9.3)
+  FIXED (Abdel 2006-11): Confirmed by Michael who couldn't reproduce on SuSE Linux 9.3)
 
 * new document; insert note; place cursor in front of the note; activate change tracking;
   press delete => assertion failed
-  FIXED (JMarc)
+  FIXED (JMarc 2006-11)
 
 * new document; insert note; insert "hello" into note; place the cursor at the beginning of the note;
   activate change tracking; press backspace => seg fault
   FIXED (Michael 2006-11-25)
+
+* Mac Crash On quit (Bennett).
+  FIXED (Peter 2006-11-20)
+
+* Drawing oddities on MAC (Bennett 3/11/06):
+  Lines occasionally overlapping vertically, math characters not properly
+  aligned vertically.
+  FIXED (JMarc 2006-11).
+
+* Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
+  in the menu, even though a converter and viewer are defined in Preferences.
+  FIXED (???)
 
 * Icons in the toolbars do not have the correct size, they are stretched a few
   pixels compared to 1.4. This makes the images look jagged and the initial
   window size has also become to small to show the whole toolbar
   (Joost 4/11/06). See also the math panel buttons entry above.
   FIXED (Peter, 2006-11-28)
-
