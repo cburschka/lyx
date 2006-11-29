@@ -130,7 +130,6 @@ using std::endl;
 using std::for_each;
 using std::make_pair;
 
-using std::ifstream;
 using std::ios;
 using std::map;
 using std::ostream;

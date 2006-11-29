@@ -20,7 +20,6 @@
 #include "support/lstrings.h"
 
 #include <cctype>
-#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <vector>

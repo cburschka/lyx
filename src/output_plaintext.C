@@ -34,7 +34,6 @@ using support::contains;
 
 using std::endl;
 using std::ostream;
-using std::ofstream;
 using std::pair;
 using std::string;
 
