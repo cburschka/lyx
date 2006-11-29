@@ -113,9 +113,9 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 
 void ucs4_to_qstring(lyx::docstring const & str, QString & s)
 {
-	size_t const ls = str.size(); 
-	s.resize(ls);
-	for (int i = ls; --i >= 0; )
+	int  i = static_cast<int>(str.size()); 
+	s.resize(i);
+	for (i; --i >= 0; )
 		s[i] = ucs4_to_qchar(str[i]);
 }
 

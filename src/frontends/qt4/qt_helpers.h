@@ -87,8 +87,9 @@ void ucs4_to_qstring(docstring const & str, QString & s);
 
 inline void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
 {
-	s.resize(ls);
-	for (int i = ls; --i >= 0; )
+	int i = static_cast<int>(ls);
+	s.resize(i);
+	for (i ; --i >= 0; )
 		s[i] = ucs4_to_qchar(str[i]);
 }
 
