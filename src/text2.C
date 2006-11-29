@@ -945,7 +945,7 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 		pit = last->first + 1;
 		//  and we are not at the last paragraph in the inset.
 		if (pit == pars_.size())
-			return it->first;
+			return last->first;
 		// then this is the paragraph we are looking for.
 		// rebreak it and update the CoordCache.
 		redoParagraph(bv, pit);
