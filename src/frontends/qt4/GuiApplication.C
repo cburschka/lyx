@@ -37,6 +37,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QEventLoop>
+#include <QFileOpenEvent>
 #include <QLocale>
 #include <QLibraryInfo>
 #include <QTextCodec>
@@ -100,12 +101,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// On Microsoft Windows, calling this function sets the double
 	// click interval for all applications. So we don't!
 	QApplication::setDoubleClickInterval(300);
-#endif
-
-#ifdef Q_WS_MACX
-	AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,
-			      NewAEEventHandlerUPP(handleOpenDocuments),
-			      0, false);
 #endif
 
 	// install translation file for Qt built-in dialogs
@@ -220,6 +215,22 @@ string const GuiApplication::typewriterFontName()
 }
 
 
+bool GuiApplication::event(QEvent * e)
+{
+	switch(e->type()) {
+	case QEvent::FileOpen: {
+		// Open a file; this happens only on Mac OS X for now
+		QFileOpenEvent * foe = static_cast<QFileOpenEvent *>(e);
+		lyx::dispatch(FuncRequest(LFUN_FILE_OPEN,
+					  fromqstr(foe->file())));
+		return true;
+	}
+	default:
+		return false;
+	}
+}
+
+
 void GuiApplication::syncEvents()
 {
 	// This is the ONLY place where processEvents may be called.
@@ -298,91 +309,6 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 }
 #endif
 
-
-////////////////////////////////////////////////////////////////////////
-// Mac OSX specific stuff goes here...
-
-#ifdef Q_WS_MACX
-namespace{
-
-OSErr checkAppleEventForMissingParams(const AppleEvent& theAppleEvent)
- {
-	DescType returnedType;
-	Size actualSize;
-	OSErr err = AEGetAttributePtr(&theAppleEvent, keyMissedKeywordAttr,
-				      typeWildCard, &returnedType, nil, 0,
-				      &actualSize);
-	switch (err) {
-	case errAEDescNotFound:
-		return noErr;
-	case noErr:
-		return errAEEventNotHandled;
-	default:
-		return err;
-	}
- }
-
-} // namespace
-
-OSErr GuiApplication::handleOpenDocuments(const AppleEvent* inEvent,
-				       AppleEvent* /*reply*/, long /*refCon*/)
-{
-	QString s_arg;
-	AEDescList documentList;
-	OSErr err = AEGetParamDesc(inEvent, keyDirectObject, typeAEList,
-				   &documentList);
-	if (err != noErr)
-		return err;
-
-	err = checkAppleEventForMissingParams(*inEvent);
-	if (err == noErr) {
-		long documentCount;
-		err = AECountItems(&documentList, &documentCount);
-		for (long documentIndex = 1;
-		     err == noErr && documentIndex <= documentCount;
-		     documentIndex++) {
-			DescType returnedType;
-			Size actualSize;
-			AEKeyword keyword;
-			FSRef ref;
-			char qstr_buf[1024];
-			err = AESizeOfNthItem(&documentList, documentIndex,
-					      &returnedType, &actualSize);
-			if (err == noErr) {
-				err = AEGetNthPtr(&documentList, documentIndex,
-						  typeFSRef, &keyword,
-						  &returnedType, (Ptr)&ref,
-						  sizeof(FSRef), &actualSize);
-				if (err == noErr) {
-					FSRefMakePath(&ref, (UInt8*)qstr_buf,
-						      1024);
-					s_arg=QString::fromUtf8(qstr_buf);
-//					bv->workAreaDispatch(
-//						FuncRequest(LFUN_FILE_OPEN,
-//							    fromqstr(s_arg)));
-					break;
-				}
-			}
-		} // for ...
-	}
-	AEDisposeDesc(&documentList);
-
-	return err;
-}
-
-bool GuiApplication::macEventFilter(EventRef event)
-{
-	if (GetEventClass(event) == kEventClassAppleEvent) {
-		EventRecord eventrec;
-		ConvertEventRefToEventRecord(event, &eventrec);
-		AEProcessAppleEvent(&eventrec);
-
-		return false;
-	}
-	return false;
-}
-
-#endif  // Q_WS_MACX
 
 } // namespace frontend
 } // namespace lyx

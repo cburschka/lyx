@@ -65,6 +65,7 @@ public:
 	virtual int const exec();
 	virtual Gui & gui() { return gui_; }
 	virtual void exit(int status);
+	virtual bool event(QEvent * e);
 	void syncEvents();
 	virtual std::string const romanFontName();
 	virtual std::string const sansFontName();
@@ -106,14 +107,6 @@ public:
 	bool x11EventFilter (XEvent * ev);
 #endif
 
-#ifdef Q_WS_MACX
-public:
-	bool macEventFilter(EventRef event);
-private:
-//	static OSStatus	handleOpenDocuments(
-	static pascal OSErr	handleOpenDocuments(
-		const AppleEvent* inEvent, AppleEvent*, long);
-#endif
 }; // GuiApplication
 
 extern GuiApplication * guiApp;
