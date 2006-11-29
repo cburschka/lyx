@@ -172,7 +172,7 @@ private:
 	Aux_Info const scanAuxFile(std::string const &);
 
 	///
-	void scanAuxFile(std::string const &, Aux_Info &);
+	void scanAuxFile(support::FileName const &, Aux_Info &);
 
 	///
 	void updateBibtexDependencies(DepTable &,

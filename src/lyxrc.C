@@ -1215,9 +1215,9 @@ int LyXRC::read(LyXLex & lexrc)
 }
 
 
-void LyXRC::write(string const & filename, bool ignore_system_lyxrc) const
+void LyXRC::write(FileName const & filename, bool ignore_system_lyxrc) const
 {
-	ofstream ofs(filename.c_str());
+	ofstream ofs(filename.toFilesystemEncoding().c_str());
 	if (ofs)
 		write(ofs, ignore_system_lyxrc);
 }

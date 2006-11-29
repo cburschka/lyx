@@ -27,6 +27,8 @@
 namespace lyx {
 
 using support::changeExtension;
+using support::FileName;
+using support::makeAbsPath;
 using support::onlyFilename;
 using support::split;
 using support::Systemcall;
@@ -62,7 +64,9 @@ int Chktex::scanLogFile(TeXErrors & terr)
 {
 	int retval = 0;
 
-	string const tmp = onlyFilename(changeExtension(file, ".log"));
+	// FIXME: Find out whether we can onlyFilename() is really needed,
+	// or whether makeAbsPath(onlyFilename()) is a noop here
+	FileName const tmp(makeAbsPath(onlyFilename(changeExtension(file, ".log"))));
 
 #if USE_BOOST_FORMAT
 	boost::basic_format<char_type> msg(_("ChkTeX warning id # %1$d"));
@@ -72,7 +76,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	docstring token;
 	// FIXME UNICODE
 	// We have no idea what the encoding of the error file is
-	idocfstream ifs(tmp.c_str());
+	idocfstream ifs(tmp.toFilesystemEncoding().c_str());
 	while (getline(ifs, token)) {
 		docstring srcfile;
 		docstring line;

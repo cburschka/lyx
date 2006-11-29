@@ -27,16 +27,13 @@
 namespace lyx {
 namespace fs = boost::filesystem;
 
+using support::FileName;
 using support::libFileSearch;
 using support::makeDisplayPath;
 
 using boost::bind;
 using boost::regex;
 using boost::smatch;
-
-#ifndef CXX_GLOBAL_CSTD
-using std::exit;
-#endif
 
 using std::endl;
 using std::equal_to;
@@ -182,15 +179,15 @@ LyXTextClassList::addTextClass(std::string const & textclass, std::string const 
 {
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
 	// NOTE: latex class name is defined in textclass.layout, which can be different from textclass
-	string layout_file = path + "/" + textclass + ".layout";
-	if (fs::exists(layout_file)) {
+	FileName const layout_file(path + '/' + textclass + ".layout");
+	if (fs::exists(layout_file.toFilesystemEncoding())) {
 		lyxerr[Debug::TCLASS] << "Adding class " << textclass << " from directory " << path << endl;
 		// Read .layout file and get description, real latex classname etc
 		//
 		// This is a C++ version of function processLayoutFile in configure.py,
 		// which uses the following regex
 		//     \Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
-		ifstream ifs(layout_file.c_str());
+		ifstream ifs(layout_file.toFilesystemEncoding().c_str());
 		static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
 			"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
 		string line;

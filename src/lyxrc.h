@@ -162,7 +162,7 @@ private:
 	int read(LyXLex &);
 public:
 	///
-	void write(std::string const & filename,
+	void write(support::FileName const & filename,
 		   bool ignore_system_lyxrc) const;
 	///
 	void write(std::ostream & os,

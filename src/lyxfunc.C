@@ -1419,8 +1419,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_PREFERENCES_SAVE: {
-			support::Path p(package().user_support());
-			lyxrc.write("preferences", false);
+			lyxrc.write(FileName(makeAbsPath("preferences",
+			                                 package().user_support())),
+			            false);
 			break;
 		}
 

@@ -454,16 +454,16 @@ Aux_Info const LaTeX::scanAuxFile(string const & file)
 {
 	Aux_Info result;
 	result.aux_file = file;
-	scanAuxFile(file, result);
+	scanAuxFile(FileName(makeAbsPath(file)), result);
 	return result;
 }
 
 
-void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
+void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 {
 	lyxerr[Debug::LATEX] << "Scanning aux file: " << file << endl;
 
-	ifstream ifs(file.c_str());
+	ifstream ifs(file.toFilesystemEncoding().c_str());
 	string token;
 	static regex const reg1("\\\\citation\\{([^}]+)\\}");
 	static regex const reg2("\\\\bibdata\\{([^}]+)\\}");
@@ -504,7 +504,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 			aux_info.styles.insert(style);
 		} else if (regex_match(token, sub, reg4)) {
 			string const file2 = sub.str(1);
-			scanAuxFile(file2, aux_info);
+			scanAuxFile(FileName(makeAbsPath(file2)), aux_info);
 		}
 	}
 }
