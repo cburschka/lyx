@@ -396,9 +396,14 @@ int LyX::exec(int & argc, char * argv[])
 		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
 
 	exit_status = pimpl_->application_->exec();
+	
+	// FIXME: Do we still need this reset?
+	//        I assume it is the reason for strange Mac crashs 
+	//        Test by reverting rev 16110 (Peter)
 	// Kill the application object before exiting. This avoid crash
 	// on exit on Linux.
 	pimpl_->application_.reset();
+
 	// Restore original font resources after Application is destroyed.
 	support::restoreFontResources();
 
