@@ -1328,10 +1328,12 @@ void LyX::easyParse(int & argc, char * argv[])
 
 		// Now, remove used arguments by shifting
 		// the following ones remove places down.
-		argc -= remove;
-		for (int j = i; j < argc; ++j)
-			argv[j] = argv[j + remove];
-		--i;
+		if (remove > 0) {
+			argc -= remove;
+			for (int j = i; j < argc; ++j)
+				argv[j] = argv[j + remove];
+			--i;
+		}
 	}
 
 	batch_command = batch;
