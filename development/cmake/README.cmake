@@ -19,6 +19,16 @@ Building Visual C++ 2005 project files:
 - create a build directory, e.g. .../trunk/../build
 - call in the build directory 'cmake ..\trunk\development\cmake'
 - start lyx.sln
+- Warnings:
+	The default warning level of the msvc cmake builds is now /W4.
+	The cmake option 
+		-DDISABLEWALL=1 
+	switches to /W3, 
+		-DWALL=1 
+	re enables /W4.
+	To disable a specific warning add it to MSVC_W_DISABLE of
+	cmake/CMakeLists.txt. To make the warning an error add it
+	to MSVC_W_ERROR of the same file.
 
 TIPS: - rename Microsoft Visual Studio 8\VC\vcpackages\feacp.dll 
         to disable Intellisense

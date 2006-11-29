@@ -118,6 +118,46 @@ else(MSVC AND NOT disable-pch)
 	endmacro(lyx_add_msvc_pch)
 endif(MSVC AND NOT disable-pch)
 
+if(MSVC)
+	if(WALL)
+		set(DISABLEWALL 0 CACHE TYPE STRING FORCE)
+	endif(WALL)
+	
+	if(NOT DISABLEWALL)
+	
+		# Use the highest warning level
+		set(CMAKE_CXX_WARNING_LEVEL 4 CACHE TYPE STRING FORCE)
+		
+		if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
+			STRING(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+		else(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
+			SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+		endif(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
+		
+		if(CMAKE_C_FLAGS MATCHES "/W[0-4]")
+			STRING(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+		else(CMAKE_C_FLAGS MATCHES "/W[0-4]")
+			SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
+		endif(CMAKE_C_FLAGS MATCHES "/W[0-4]")
+		
+		# add here warings which should produce an error /weXXXX
+		SET(MSVC_W_ERROR   "  ")
+		
+		# add here warings which should be disabled /wdXXXX
+		SET(MSVC_W_DISABLE "/wd4800 /wd4996 /wd4311 /wd4312 /wd4505")
+		
+		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		
+	else(NOT DISABLEWALL)	
+	
+		set(DISABLEWALL 1 CACHE TYPE STRING FORCE)
+		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
+		
+	endif(NOT DISABLEWALL)
+endif(MSVC)
+
 
 #TODO: insource is not the best place
 configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 

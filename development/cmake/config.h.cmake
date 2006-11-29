@@ -170,8 +170,6 @@
 #endif
 
 #ifdef _MSC_VER
-#pragma warning( disable : 4800 ) //: forcing value to bool 'true' or 'false' (performance warning)
-#pragma warning( disable : 4996 ) //: was declared deprecated
 #ifdef HAVE_CHMOD
 #undef HAVE_CHMOD
 #endif
