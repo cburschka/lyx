@@ -115,6 +115,7 @@ struct GuiView::GuiViewPrivate
 
 	QMenu* toolBarPopup(GuiView *parent)
 	{
+		// FIXME: translation 
 		QMenu* menu = new QMenu(parent);
 		QActionGroup *iconSizeGroup = new QActionGroup(parent);
 
