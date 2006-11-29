@@ -138,7 +138,7 @@ struct GuiView::GuiViewPrivate
 		QObject::connect(bigIcons, SIGNAL(triggered()), parent, SLOT(bigSizedIcons()));
 		menu->addAction(bigIcons);
 
-		int cur = parent->iconSize().width();
+		unsigned int cur = parent->iconSize().width();
 		if ( cur == parent->d.smallIconSize)
 			smallIcons->setChecked(true);
 		else if (cur == parent->d.normalIconSize)
