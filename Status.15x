@@ -243,6 +243,8 @@ REGRESSIONS
   c:\> lyx-qt4.exe -geometry 800x600+100+30
   Wrong command line option `-geometry'. Exiting.
 
+* open lyx, create a new document, enter a few chars, quit. Lyx does not
+  ask if you want to save the file.
 
 BUILDING
 
