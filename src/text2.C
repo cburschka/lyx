@@ -102,7 +102,7 @@ bool LyXText::isMainText(Buffer const & buffer) const
 
 
 //takes screen x,y coordinates
-InsetBase * LyXText::checkInsetHit(BufferView const & bv, int x, int y) const
+InsetBase * LyXText::checkInsetHit(BufferView & bv, int x, int y)
 {
 	pit_type pit = getPitNearY(bv, y);
 	BOOST_ASSERT(pit != -1);
@@ -904,7 +904,7 @@ pos_type LyXText::getColumnNearX(BufferView const & bv, pit_type const pit,
 
 
 // y is screen coordinate
-pit_type LyXText::getPitNearY(BufferView const & bv, int y) const
+pit_type LyXText::getPitNearY(BufferView & bv, int y)
 {
 	BOOST_ASSERT(!paragraphs().empty());
 	BOOST_ASSERT(bv.coordCache().getParPos().find(this) != bv.coordCache().getParPos().end());
@@ -915,10 +915,45 @@ pit_type LyXText::getPitNearY(BufferView const & bv, int y) const
 		<< endl;
 
 	// look for highest numbered paragraph with y coordinate less than given y
+	bool found = false;
 	pit_type pit = 0;
 	int yy = -1;
 	CoordCache::InnerParPosCache::const_iterator it = cc.begin();
 	CoordCache::InnerParPosCache::const_iterator et = cc.end();
+	CoordCache::InnerParPosCache::const_iterator last = et; last--;
+
+	// If we are off-screen (before the visible part)
+	if (y < 0
+		// and even before the first paragraph in the cache.
+		&& y < it->second.y_ - int(pars_[it->first].ascent())) {
+		//  and we are not at the first paragraph in the inset.
+		if (it->first == 0)
+			return 0;
+		// then this is the paragraph we are looking for.
+		pit = it->first - 1;
+		// rebreak it and update the CoordCache.
+		redoParagraph(bv, pit);
+		bv.coordCache().parPos()[this][pit] =
+			Point(0, it->second.y_ - pars_[it->first].descent());
+		return pit;
+	}
+
+	// If we are off-screen (after the visible part)
+	if (y > bv.workHeight()
+		// and even after the first paragraph in the cache.
+		&& y >= last->second.y_ + int(pars_[last->first].descent())) {
+		pit = last->first + 1;
+		//  and we are not at the last paragraph in the inset.
+		if (pit == pars_.size())
+			return it->first;
+		// then this is the paragraph we are looking for.
+		// rebreak it and update the CoordCache.
+		redoParagraph(bv, pit);
+		bv.coordCache().parPos()[this][pit] =
+			Point(0, last->second.y_ + pars_[last->first].ascent());
+		return pit;
+	}
+
 	for (; it != et; ++it) {
 		lyxerr[Debug::DEBUG]
 			<< BOOST_CURRENT_FUNCTION

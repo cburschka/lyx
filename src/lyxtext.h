@@ -141,7 +141,14 @@ public:
 	  */
 	Row const & getRowNearY(BufferView const & bv, int y,
 		pit_type pit) const;
-	pit_type getPitNearY(BufferView const & bv, int y) const;
+
+	/// returns the paragraph number closest to screen y-coordinate.
+	/// This method uses the BufferView CoordCache to locate the
+	/// paragraph. The y-coodinate is allowed to be off-screen and
+	/// the CoordCache will be automatically updated if needed. This is
+	/// the reason why we need a non const BufferView and why this
+	/// method is non-const.
+	pit_type getPitNearY(BufferView & bv, int y);
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
@@ -276,7 +283,7 @@ public:
 	int height() const;
 
 	/// Returns an inset if inset was hit, or 0 if not.
-	InsetBase * checkInsetHit(BufferView const &, int x, int y) const;
+	InsetBase * checkInsetHit(BufferView &, int x, int y);
 
 	///
 	int singleWidth(Buffer const &, Paragraph const & par,
