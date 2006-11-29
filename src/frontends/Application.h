@@ -172,7 +172,8 @@ public:
 
 	/// Create the main window with given geometry settings.
 	LyXView & createView(unsigned int width, unsigned int height,
-		int posx, int posy, bool maximize, unsigned int iconSizeXY);
+		int posx, int posy, bool maximize, unsigned int iconSizeXY,
+		const std::string & geometryArg);
 	
 	/// 
 	LyXView const & currentView() const;

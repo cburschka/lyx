@@ -116,6 +116,8 @@ namespace {
 string cl_system_support;
 string cl_user_support;
 
+std::string geometryArg;
+
 LyX * singleton_ = 0;
 
 void showFileError(string const & error)
@@ -193,10 +195,11 @@ LyX const & LyX::cref()
 
 
 LyX::LyX()
-	: first_start(false), geometryOption_(false)
+	: first_start(false)
 {
 	singleton_ = this;
 	pimpl_.reset(new Singletons);
+	geometryArg.clear();
 }
 
 
@@ -603,12 +606,14 @@ LyXView * LyX::newLyXView()
 			posy = convert<int>(val);
 	}
 
-	if (geometryOption_) {
+	if (!geometryArg.empty()) 
+	{
 		width = 0;
 		height = 0;
 	}
+
 	// create the main window
-	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize, iconSizeXY);
+	LyXView * view = &pimpl_->application_->createView(width, height, posx, posy, maximize, iconSizeXY, geometryArg);
 
 	return view;
 }
@@ -1273,6 +1278,19 @@ int parse_import(string const & type, string const & file)
 	return 2;
 }
 
+int parse_geometry(string const & arg1, string const &)
+{
+	geometryArg = arg1;
+#if defined(_WIN32) || (defined(__CYGWIN__) && defined(X_DISPLAY_MISSING))
+	// remove also the arg
+	return 1;
+#else
+	// don't remove "-geometry"
+	return -1;
+#endif
+}
+
+
 } // namespace anon
 
 
@@ -1293,14 +1311,11 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["--export"] = parse_export;
 	cmdmap["-i"] = parse_import;
 	cmdmap["--import"] = parse_import;
+	cmdmap["-geometry"] = parse_geometry;
 
 	for (int i = 1; i < argc; ++i) {
 		std::map<string, cmd_helper>::const_iterator it
 			= cmdmap.find(argv[i]);
-
-		// check for X11 -geometry option
-		if (support::compare(argv[i], "-geometry") == 0)
-			geometryOption_ = true;
 
 		// don't complain if not found - may be parsed later
 		if (it == cmdmap.end())

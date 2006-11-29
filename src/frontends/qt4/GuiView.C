@@ -244,7 +244,8 @@ void GuiView::setGeometry(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
 								  bool maximize,
-								  unsigned int iconSizeXY)
+								  unsigned int iconSizeXY,
+								  const std::string & geometryArg)
 {
 	// use last value (not at startup)
 	if (d.lastIconSize != 0)
@@ -277,6 +278,21 @@ void GuiView::setGeometry(unsigned int width,
 
 		if (maximize)
 			setWindowState(Qt::WindowMaximized);
+	}
+	else
+	{
+		// FIXME: move this code into parse_geometry() (lyx_main.C)
+#ifdef Q_WS_WIN
+		int x, y;
+		int w, h;
+		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)([+-][0-9]*)){0,1}" );
+		re.indexIn( toqstr(geometryArg.c_str()));
+		w = re.cap( 1 ).toInt();
+		h = re.cap( 2 ).toInt();
+		x = re.cap( 3 ).toInt();
+		y = re.cap( 4 ).toInt();
+		QWidget::setGeometry( x, y, w, h );
+#endif
 	}
 
 	show();

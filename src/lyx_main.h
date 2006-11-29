@@ -163,9 +163,6 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	struct Singletons;
 	boost::scoped_ptr<Singletons> pimpl_;
-
-	///
-	bool geometryOption_;
 };
 
 } // namespace lyx

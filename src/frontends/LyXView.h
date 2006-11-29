@@ -88,7 +88,8 @@ public:
 		unsigned int height,
 		int posx, int posy,
 		bool maximize,
-		unsigned int iconSizeXY) = 0;
+		unsigned int iconSizeXY,
+		const std::string & geometryArg) = 0;
 
 	/// save the geometry state in the session manager.
 	virtual void saveGeometry() = 0;

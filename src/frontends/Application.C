@@ -52,7 +52,8 @@ LyXView & Application::createView(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
 								  bool maximize,
-								  unsigned int iconSizeXY)
+								  unsigned int iconSizeXY,
+								  const std::string & geometryArg)
 {
 	int view_id = gui().newView();
 	LyXView & view = gui().view(view_id);
@@ -62,7 +63,7 @@ LyXView & Application::createView(unsigned int width,
 	/*int workArea_id_ =*/ gui().newWorkArea(width, height, view_id);
 
 	view.init();
-	view.setGeometry(width, height, posx, posy, maximize, iconSizeXY);
+	view.setGeometry(width, height, posx, posy, maximize, iconSizeXY, geometryArg);
 
 	setCurrentView(view);
 

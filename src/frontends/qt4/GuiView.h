@@ -61,7 +61,8 @@ public:
 		unsigned int height,
 		int posx, int posy,
 		bool maximize,
-		unsigned int iconSizeXY);
+		unsigned int iconSizeXY,
+		const std::string & geometryArg);
 	virtual void saveGeometry();
 	virtual void busy(bool);
 	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
