@@ -915,7 +915,6 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 		<< endl;
 
 	// look for highest numbered paragraph with y coordinate less than given y
-	bool found = false;
 	pit_type pit = 0;
 	int yy = -1;
 	CoordCache::InnerParPosCache::const_iterator it = cc.begin();
