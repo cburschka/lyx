@@ -239,10 +239,6 @@ PAINTING & PERFORMANCE
 
 REGRESSIONS
 
-* The -geometry option doesn't work on Windows (it did in 1.4.x)
-  c:\> lyx-qt4.exe -geometry 800x600+100+30
-  Wrong command line option `-geometry'. Exiting.
-
 * open lyx, create a new document, enter a few chars, quit. Lyx does not
   ask if you want to save the file.
 
@@ -452,3 +448,8 @@ CREDITS:
   window size has also become to small to show the whole toolbar
   (Joost 4/11/06). See also the math panel buttons entry above.
   FIXED (Peter, 2006-11-28)
+
+* The -geometry option doesn't work on Windows (it did in 1.4.x)
+  c:\> lyx-qt4.exe -geometry 800x600+100+30
+  Wrong command line option `-geometry'. Exiting.
+  REJECTED (Peter, 2006-11-29)
