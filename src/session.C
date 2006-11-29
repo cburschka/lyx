@@ -78,7 +78,7 @@ void LastFilesSection::read(istream & is)
 		if (fs::exists(tmp) && !fs::is_directory(tmp) && lastfiles.size() < num_lastfiles)
 			lastfiles.push_back(tmp);
 		else 
-			lyxerr << "LyX: Warning: Ignore last file: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: Ignore last file: " << tmp << endl;
 	} while (is.good());
 }
 
@@ -108,7 +108,7 @@ void LastFilesSection::setNumberOfLastFiles(unsigned int no)
 	if (0 < no && no <= absolute_max_last_files)
 		num_lastfiles = no;
 	else {
-		lyxerr << "LyX: session: too many last files\n"
+		lyxerr[Debug::INIT] << "LyX: session: too many last files\n"
 		       << "\tdefault (=" << default_num_last_files
 		       << ") used." << endl;
 		num_lastfiles = default_num_last_files;
@@ -130,7 +130,7 @@ void LastOpenedSection::read(istream & is)
 		if (fs::exists(tmp) && !fs::is_directory(tmp))
 			lastopened.push_back(tmp);
 		else
-			lyxerr << "LyX: Warning: Ignore last opened file: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: Ignore last opened file: " << tmp << endl;
 	} while (is.good());
 }
 
@@ -181,9 +181,9 @@ void LastFilePosSection::read(istream & is)
 			if (fs::exists(fname) && !fs::is_directory(fname) && lastfilepos.size() < num_lastfilepos)
 				lastfilepos[fname] = boost::tie(pit, pos);
 			else
-				lyxerr << "LyX: Warning: Ignore pos of last file: " << fname << endl;
+				lyxerr[Debug::INIT] << "LyX: Warning: Ignore pos of last file: " << fname << endl;
 		} catch (...) {
-			lyxerr << "LyX: Warning: unknown pos of last file: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: unknown pos of last file: " << tmp << endl;
 		}
 	} while (is.good());
 }
@@ -246,9 +246,9 @@ void BookmarksSection::read(istream & is)
 			if (fs::exists(fname) && !fs::is_directory(fname) && bookmarks.size() < max_bookmarks)
 				bookmarks.push_back(Bookmark(fname, id, pos));
 			else 
-				lyxerr << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
+				lyxerr[Debug::INIT] << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
 		} catch (...) {
-			lyxerr << "LyX: Warning: unknown Bookmark info: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: unknown Bookmark info: " << tmp << endl;
 		}
 	} while (is.good());
 }
@@ -319,9 +319,9 @@ void ToolbarSection::read(istream & is)
 				value >> location;
 				toolbars[key] = ToolbarInfo(state, location);
 			} else 
-				lyxerr << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
+				lyxerr[Debug::INIT] << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
 		} catch (...) {
-			lyxerr << "LyX: Warning: unknown Toolbar info: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: unknown Toolbar info: " << tmp << endl;
 		}
 	} while (is.good());
 }
@@ -366,9 +366,9 @@ void SessionInfoSection::read(istream & is)
 				string value = tmp.substr(pos + 3);
 				sessioninfo[key] = value;
 			} else
-				lyxerr << "LyX: Warning: Ignore session info: " << tmp << endl;
+				lyxerr[Debug::INIT] << "LyX: Warning: Ignore session info: " << tmp << endl;
 		} catch (...) {
-			lyxerr << "LyX: Warning: unknown Session info: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: unknown Session info: " << tmp << endl;
 		}
 	} while (is.good());
 }
@@ -439,7 +439,7 @@ void Session::readFile()
 		else if (tmp == sec_session)
 			sessionInfo().read(is);
 		else
-			lyxerr << "LyX: Warning: unknown Session section: " << tmp << endl;
+			lyxerr[Debug::INIT] << "LyX: Warning: unknown Session section: " << tmp << endl;
 	}
 }
 
@@ -458,7 +458,7 @@ void Session::writeFile() const
 		toolbars().write(os);
 		sessionInfo().write(os);
 	} else
-		lyxerr << "LyX: Warning: unable to save Session: "
+		lyxerr[Debug::INIT] << "LyX: Warning: unable to save Session: "
 		       << session_file << endl;
 }
 
