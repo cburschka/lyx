@@ -450,12 +450,13 @@ void LyX::quit()
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	prepareExit();
-
 	if (use_gui) {
-		pimpl_->session_->writeFile();
+		if (pimpl_->session_)
+			pimpl_->session_->writeFile();
 		pimpl_->lyx_server_.reset();
 		pimpl_->lyx_socket_.reset();
-		pimpl_->application_->exit(0);
+		if (pimpl_->application_)
+			pimpl_->application_->exit(0);
 		theApp = 0;
 	}
 }
@@ -930,7 +931,8 @@ void LyX::emergencyCleanup() const
 
 	pimpl_->buffer_list_.emergencyWriteAll();
 	if (use_gui) {
-		pimpl_->lyx_server_->emergencyCleanup();
+		if (pimpl_->lyx_server_)
+			pimpl_->lyx_server_->emergencyCleanup();
 		pimpl_->lyx_server_.reset();
 		pimpl_->lyx_socket_.reset();
 	}
