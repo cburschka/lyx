@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-11-25 18:08+0100\n"
-"PO-Revision-Date: 2006-11-08 22:32-0500\n"
+"PO-Revision-Date: 2006-11-28 22:04-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -2213,7 +2213,7 @@ msgstr "Utilizeazã &codarea textului "
 
 #: src/frontends/qt4/ui/QPrefUi.ui:36
 msgid "Scrolling"
-msgstr ""
+msgstr "Urmãrind bara de defilare"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:51
 msgid "Cursor follows &scrollbar"
@@ -2613,12 +2613,12 @@ msgstr "Stil"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
-msgstr ""
+msgstr "Foloseºte stilul de margini formal (fãrã margini verticale)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:316
 #, fuzzy
 msgid "Fo&rmal"
-msgstr "Normal"
+msgstr "Formal"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:323
 msgid "Use default (grid-like) border style"
@@ -2937,11 +2937,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:49
 msgid "Display complete source"
-msgstr ""
+msgstr "Afiºeazã tot fiºierul sursã"
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:56
 msgid "Automatic update"
-msgstr ""
+msgstr "Actualizeazã automat"
 
 #: src/frontends/qt4/ui/QWrapUi.ui:53
 msgid "Default (outer)"
@@ -3580,7 +3580,7 @@ msgstr "Offprints"
 
 #: lib/layouts/aa.layout:178
 msgid "Correspondence to:"
-msgstr ""
+msgstr "Corespondenþã cãtre:"
 
 #: lib/layouts/aa.layout:204 lib/layouts/egs.layout:526
 #: lib/layouts/svjour.inc:308
@@ -3677,9 +3677,8 @@ msgid "Facility"
 msgstr "Fact"
 
 #: lib/layouts/aastex.layout:145 lib/layouts/aastex.layout:589
-#, fuzzy
 msgid "Objectname"
-msgstr "Octave"
+msgstr "Numele obiectului"
 
 #: lib/layouts/aastex.layout:148 lib/layouts/aastex.layout:616
 msgid "Dataset"
@@ -3700,17 +3699,14 @@ msgid "and"
 msgstr "ºi"
 
 #: lib/layouts/aastex.layout:380
-#, fuzzy
 msgid "Place Figure here:"
 msgstr "Insereazã figura aici"
 
 #: lib/layouts/aastex.layout:401
-#, fuzzy
 msgid "Place Table here:"
-msgstr "PlaceTable"
+msgstr "Insereazã tabelul aici"
 
 #: lib/layouts/aastex.layout:421
-#, fuzzy
 msgid "[Appendix]"
 msgstr "Apendix"
 
@@ -3750,7 +3746,6 @@ msgstr "Set de date"
 #: lib/layouts/amsart-plain.layout:27 lib/layouts/foils.layout:300
 #: lib/layouts/siamltex.layout:270 lib/layouts/amsmaths-plain.inc:35
 #: lib/layouts/amsmaths.inc:95
-#, fuzzy
 msgid "Theorem."
 msgstr "Teoremã"
 
@@ -4093,7 +4088,7 @@ msgstr "Parte*"
 #: lib/layouts/beamer.layout:92 lib/layouts/egs.layout:195
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
-msgstr ""
+msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
 msgid "BeginFrame"
@@ -4101,62 +4096,55 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:115
 msgid "Frame   "
-msgstr ""
+msgstr "Cadru"
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
-msgstr ""
+msgstr "Început de cadru simplu"
 
 #: lib/layouts/beamer.layout:156
 msgid "Frame (no head/foot/sidebars)  "
-msgstr ""
+msgstr "Cadru (fãrã antet/subsol/bãri laterale"
 
 #: lib/layouts/beamer.layout:179
-#, fuzzy
 msgid "EndFrame"
-msgstr "&Nume imprimantã:"
+msgstr "ªfîrºit de cadru:"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
 msgstr ""
 
 #: lib/layouts/beamer.layout:207
-#, fuzzy
 msgid "Pause"
-msgstr "Lipeºte"
+msgstr "Pauzã"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
 #: lib/layouts/beamer.layout:280
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "\\arabic{section}"
+msgstr "Secþiune \\arabic{section}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
-#, fuzzy
 msgid "\\Alph{section}"
-msgstr "selecþie"
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:321
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "Întrebare @Secþiune@. \\arabic{question}"
+msgstr "Subsecþiune \\arabic{section}.\\arabic{question}"
 
 #: lib/layouts/beamer.layout:334
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "Subsubsecþiune"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
-#, fuzzy
 msgid "AgainFrame"
-msgstr "cadru titlu"
+msgstr "Cadru de legendã "
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
-msgstr ""
+msgstr "Cadru cu titlu"
 
 #: lib/layouts/beamer.layout:386
 #, fuzzy
@@ -4168,40 +4156,36 @@ msgid "block with alerted text "
 msgstr ""
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "block "
 msgstr "Bloc"
 
 #: lib/layouts/beamer.layout:520
-#, fuzzy
 msgid "Corollary.  "
 msgstr "Corolar"
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
 msgstr "Coloane"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
-msgstr ""
+msgstr "Începe o coloanã cu lãþimea de: "
 
 #: lib/layouts/beamer.layout:560
 msgid "Columns"
 msgstr "Coloane"
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
 msgstr "Coloane"
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "Coloane centrate"
 
 #: lib/layouts/beamer.layout:600
 msgid "columns (center aligned) "
-msgstr ""
+msgstr "Coloane (centrate)"
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
@@ -4212,34 +4196,28 @@ msgid "columns (top aligned) "
 msgstr ""
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
 msgstr "Definiþie"
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
 msgstr "Definiþie"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Definiþie"
+msgstr "Definiþii"
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
 msgstr "Exemplu"
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Exemplu"
+msgstr "Exemple"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Exemplu"
+msgstr "Exemple."
 
 #: lib/layouts/beamer.layout:702
 #, fuzzy
@@ -4248,7 +4226,7 @@ msgstr "Exemplu"
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
-msgstr ""
+msgstr "Cutie cu un exemplu"
 
 #: lib/layouts/beamer.layout:734
 #, fuzzy
@@ -4256,9 +4234,8 @@ msgid "Fact.  "
 msgstr "Fapt."
 
 #: lib/layouts/beamer.layout:737
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "Subtitlu"
+msgstr "Subtitlu cadru"
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
@@ -4276,18 +4253,16 @@ msgid "NoteItem"
 msgstr "Item nou"
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
 msgstr "notã"
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "La"
+msgstr "Doar"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
-msgstr ""
+msgstr "Doar pe slideuri"
 
 #: lib/layouts/beamer.layout:866
 #, fuzzy
@@ -4300,27 +4275,22 @@ msgid "overprint "
 msgstr "Pretipãrire"
 
 #: lib/layouts/beamer.layout:892
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Suprapunere"
+msgstr "Suprafaþa de afiºare"
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "overlayarea "
-msgstr "Suprapunere"
+msgstr "Suprafaþa de afiºare"
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
-msgstr "Part"
+msgstr "Partea"
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
-msgstr "Dovadã"
+msgstr "Demonstraþie"
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
 msgstr "Separaþia"
 
@@ -4334,7 +4304,6 @@ msgid "TitleGraphic"
 msgstr "&Graficã"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
 msgstr "Teoremã"
 
@@ -4353,18 +4322,16 @@ msgid "Table"
 msgstr "Tabel"
 
 #: lib/layouts/beamer.layout:1091 lib/layouts/stdfloats.inc:15
-#, fuzzy
 msgid "List of Tables"
-msgstr "Listã"
+msgstr "Listã de tabele"
 
 #: lib/layouts/beamer.layout:1097 lib/layouts/stdfloats.inc:22
 msgid "Figure"
 msgstr "Figurã"
 
 #: lib/layouts/beamer.layout:1102 lib/layouts/stdfloats.inc:27
-#, fuzzy
 msgid "List of Figures"
-msgstr "Listã"
+msgstr "Listã de figuri"
 
 #: lib/layouts/broadway.layout:27 lib/layouts/hollywood.layout:40
 msgid "Dialogue"
@@ -4408,7 +4375,7 @@ msgstr "Între paranteze"
 
 #: lib/layouts/broadway.layout:149 lib/layouts/hollywood.layout:178
 msgid "("
-msgstr ""
+msgstr "("
 
 #: lib/layouts/broadway.layout:151 lib/layouts/hollywood.layout:180
 msgid "\tEnd)"
@@ -4492,9 +4459,8 @@ msgid "ChessBoard"
 msgstr "TablãDeªah"
 
 #: lib/layouts/chess.layout:128
-#, fuzzy
 msgid "[chessboard]"
-msgstr "TablãDeªah"
+msgstr "[TablãDeªah]"
 
 #: lib/layouts/chess.layout:137
 msgid "BoardCentered"
@@ -4534,7 +4500,7 @@ msgstr "Topicã"
 
 #: lib/layouts/cv.layout:72
 msgid "MMMMM"
-msgstr ""
+msgstr "MMMMM"
 
 #: lib/layouts/cv.layout:98 lib/layouts/foils.layout:190
 #: lib/layouts/aguplus.inc:75
@@ -4553,7 +4519,7 @@ msgstr "My_Address"
 
 #: lib/layouts/dinbrief.layout:17
 msgid "Briefkopf:"
-msgstr ""
+msgstr "Briefkopf:"
 
 #: lib/layouts/dinbrief.layout:29 lib/layouts/heb-letter.layout:15
 #: lib/layouts/stdletter.inc:36
@@ -4713,7 +4679,7 @@ msgstr "PrimulAutor"
 
 #: lib/layouts/egs.layout:397
 msgid "1st_author_surname:"
-msgstr ""
+msgstr "Numele de familie al primului autor"
 
 #: lib/layouts/egs.layout:406 lib/layouts/agu_stdtitle.inc:198
 #: lib/layouts/aguplus.inc:107
@@ -4741,7 +4707,7 @@ msgstr "Offsets"
 
 #: lib/layouts/egs.layout:466
 msgid "reprint_reqs_to:"
-msgstr ""
+msgstr "copii pentru:"
 
 #: lib/layouts/egs.layout:505 lib/layouts/kluwer.layout:271
 #: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:156
@@ -4861,7 +4827,6 @@ msgid "Keyword"
 msgstr "CuvîntCheie"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:287
-#, fuzzy
 msgid "Key words:"
 msgstr "Cuvinte cheie"
 
@@ -4887,7 +4852,7 @@ msgstr "TickList"
 
 #: lib/layouts/foils.layout:97
 msgid "_/"
-msgstr ""
+msgstr "_/"
 
 #: lib/layouts/foils.layout:103
 msgid "CrossList"
@@ -4895,14 +4860,13 @@ msgstr "CrossList"
 
 #: lib/layouts/foils.layout:118
 msgid "><"
-msgstr ""
+msgstr "><"
 
 #: lib/layouts/foils.layout:164
 msgid "My Logo"
 msgstr "My_Logo"
 
 #: lib/layouts/foils.layout:173
-#, fuzzy
 msgid "My Logo:"
 msgstr "My_Logo"
 
@@ -4911,70 +4875,60 @@ msgid "Restriction"
 msgstr "Restricþie"
 
 #: lib/layouts/foils.layout:186
-#, fuzzy
 msgid "Restriction:"
 msgstr "Restricþie"
 
 #: lib/layouts/foils.layout:194 lib/layouts/aguplus.inc:89
-#, fuzzy
 msgid "Left Header:"
-msgstr "Antet_Stînga"
+msgstr "Antet Stînga"
 
 #: lib/layouts/foils.layout:202 lib/layouts/aguplus.inc:103
-#, fuzzy
 msgid "Right Header:"
-msgstr "Antet_Dreapta"
+msgstr "Antet Dreapta"
 
 #: lib/layouts/foils.layout:206
 msgid "Right Footer"
-msgstr "Subsol_Dreapta"
+msgstr "Subsol Dreapta"
 
 #: lib/layouts/foils.layout:210
-#, fuzzy
 msgid "Right Footer:"
-msgstr "Subsol_Dreapta"
+msgstr "Subsol Dreapta"
 
 #: lib/layouts/foils.layout:237 lib/layouts/heb-article.layout:33
 #: lib/layouts/llncs.layout:418 lib/layouts/siamltex.layout:206
 #: lib/layouts/svjour.inc:481
-#, fuzzy
 msgid "Theorem #."
-msgstr "Teoremã"
+msgstr "Teoremã #."
 
 #: lib/layouts/foils.layout:251 lib/layouts/heb-article.layout:48
 #: lib/layouts/llncs.layout:357 lib/layouts/siamltex.layout:220
 #: lib/layouts/svjour.inc:418
-#, fuzzy
 msgid "Lemma #."
-msgstr "Lemã"
+msgstr "Lemã #."
 
 #: lib/layouts/foils.layout:258 lib/layouts/heb-article.layout:58
 #: lib/layouts/llncs.layout:322 lib/layouts/siamltex.layout:227
 #: lib/layouts/svjour.inc:379
-#, fuzzy
 msgid "Corollary #."
-msgstr "Corolar"
+msgstr "Corolar #."
 
 #: lib/layouts/foils.layout:265 lib/layouts/llncs.layout:391
 #: lib/layouts/siamltex.layout:234 lib/layouts/svjour.inc:453
-#, fuzzy
 msgid "Proposition #."
-msgstr "Afirmaþie"
+msgstr "Propoziþie #."
 
 #: lib/layouts/foils.layout:272 lib/layouts/heb-article.layout:78
 #: lib/layouts/llncs.layout:336 lib/layouts/siamltex.layout:241
 #: lib/layouts/svjour.inc:393
-#, fuzzy
 msgid "Definition #."
-msgstr "Definiþie"
+msgstr "Definiþie #."
 
 #: lib/layouts/foils.layout:286 lib/layouts/ijmpc.layout:239
 #: lib/layouts/ijmpd.layout:239 lib/layouts/llncs.layout:377
 #: lib/layouts/siamltex.layout:255 lib/layouts/amsdefs.inc:43
 #: lib/layouts/svjour.inc:439
-#, fuzzy
 msgid "Proof."
-msgstr "Dovadã"
+msgstr "Demonstraþie."
 
 #: lib/layouts/foils.layout:297 lib/layouts/siamltex.layout:267
 #: lib/layouts/amsmaths.inc:91
@@ -5006,7 +4960,6 @@ msgid "Brieftext"
 msgstr "Brieftext"
 
 #: lib/layouts/g-brief-de.layout:25
-#, fuzzy
 msgid "Text:"
 msgstr "Text"
 
@@ -5058,7 +5011,6 @@ msgid "Land"
 msgstr "Land"
 
 #: lib/layouts/g-brief-de.layout:84
-#, fuzzy
 msgid "Land:"
 msgstr "Land"
 
@@ -5067,7 +5019,6 @@ msgid "RetourAdresse"
 msgstr "RetourAdresse"
 
 #: lib/layouts/g-brief-de.layout:91
-#, fuzzy
 msgid "RetourAdresse:"
 msgstr "RetourAdresse"
 
@@ -5121,7 +5072,6 @@ msgid "Telex"
 msgstr "Telex"
 
 #: lib/layouts/g-brief-de.layout:133 lib/layouts/g-brief-en.layout:133
-#, fuzzy
 msgid "Telex:"
 msgstr "Telex"
 
@@ -5130,7 +5080,6 @@ msgid "EMail"
 msgstr "EMail"
 
 #: lib/layouts/g-brief-de.layout:140 lib/layouts/g-brief-en.layout:140
-#, fuzzy
 msgid "EMail:"
 msgstr "EMail"
 
@@ -5149,7 +5098,6 @@ msgstr "Bancã"
 
 #: lib/layouts/g-brief-de.layout:154 lib/layouts/g-brief-en.layout:154
 #: lib/layouts/scrlttr2.layout:220
-#, fuzzy
 msgid "Bank:"
 msgstr "Bancã"
 
@@ -5158,7 +5106,6 @@ msgid "BLZ"
 msgstr "BLZ"
 
 #: lib/layouts/g-brief-de.layout:161
-#, fuzzy
 msgid "BLZ:"
 msgstr "BLZ"
 
@@ -5167,9 +5114,8 @@ msgid "Konto"
 msgstr "Konto"
 
 #: lib/layouts/g-brief-de.layout:168
-#, fuzzy
 msgid "Konto:"
-msgstr "Konto"
+msgstr "Cont"
 
 #: lib/layouts/g-brief-de.layout:172
 msgid "Postvermerk"
@@ -5212,7 +5158,6 @@ msgstr "Scrisoare"
 #: lib/layouts/g-brief-en.layout:56 lib/layouts/g-brief2.layout:222
 #: lib/layouts/scrlettr.layout:141 lib/layouts/scrlttr2.layout:172
 #: lib/layouts/stdletter.inc:84
-#, fuzzy
 msgid "Signature:"
 msgstr "Semnãturã"
 
@@ -5221,7 +5166,6 @@ msgid "Street"
 msgstr "Stradã"
 
 #: lib/layouts/g-brief-en.layout:63
-#, fuzzy
 msgid "Street:"
 msgstr "Stradã"
 
@@ -5230,7 +5174,6 @@ msgid "Addition"
 msgstr "Adãugare"
 
 #: lib/layouts/g-brief-en.layout:70
-#, fuzzy
 msgid "Addition:"
 msgstr "Adãugare"
 
@@ -5239,7 +5182,6 @@ msgid "Town"
 msgstr "Oraº"
 
 #: lib/layouts/g-brief-en.layout:77
-#, fuzzy
 msgid "Town:"
 msgstr "Oraº"
 
@@ -5248,20 +5190,19 @@ msgid "State"
 msgstr "Stat"
 
 #: lib/layouts/g-brief-en.layout:84
-#, fuzzy
 msgid "State:"
 msgstr "Stat"
 
 #: lib/layouts/g-brief-en.layout:88 lib/layouts/g-brief2.layout:694
 msgid "ReturnAddress"
-msgstr "ReturnAddress"
+msgstr "Adresa de întoarcere"
 
 #: lib/layouts/g-brief-en.layout:91 lib/layouts/g-brief2.layout:704
-#, fuzzy
 msgid "ReturnAddress:"
-msgstr "ReturnAddress"
+msgstr "Adresa de întoarcere"
 
 #: lib/layouts/g-brief-en.layout:95 lib/layouts/g-brief2.layout:715
+#, fuzzy
 msgid "MyRef"
 msgstr "MyRef"
 
@@ -5271,6 +5212,7 @@ msgid "MyRef:"
 msgstr "MyRef"
 
 #: lib/layouts/g-brief-en.layout:102 lib/layouts/g-brief2.layout:735
+#, fuzzy
 msgid "YourRef"
 msgstr "YourRef"
 
@@ -5281,7 +5223,7 @@ msgstr "YourRef"
 
 #: lib/layouts/g-brief-en.layout:109 lib/layouts/g-brief2.layout:757
 msgid "YourMail"
-msgstr "YourMail"
+msgstr "Adresa ta poºtalã"
 
 #: lib/layouts/g-brief-en.layout:112 lib/layouts/g-brief2.layout:767
 #, fuzzy
@@ -5293,7 +5235,6 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: lib/layouts/g-brief-en.layout:119
-#, fuzzy
 msgid "Phone:"
 msgstr "Telefon"
 
@@ -5302,7 +5243,6 @@ msgid "BankCode"
 msgstr "CodBancar"
 
 #: lib/layouts/g-brief-en.layout:161
-#, fuzzy
 msgid "BankCode:"
 msgstr "CodBancar"
 
@@ -5311,7 +5251,6 @@ msgid "BankAccount"
 msgstr "ContBancar"
 
 #: lib/layouts/g-brief-en.layout:168
-#, fuzzy
 msgid "BankAccount:"
 msgstr "ContBancar"
 
@@ -5328,7 +5267,6 @@ msgstr "PostalComment"
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
 #: lib/layouts/scrlettr.layout:169 lib/layouts/scrlttr2.layout:244
 #: lib/layouts/amsdefs.inc:114
-#, fuzzy
 msgid "Date:"
 msgstr "Datã"
 
@@ -5337,35 +5275,30 @@ msgid "Reference"
 msgstr "Referinþã"
 
 #: lib/layouts/g-brief-en.layout:200 lib/layouts/g-brief2.layout:853
-#, fuzzy
 msgid "Reference:"
 msgstr "&Referinþã:"
 
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:876
 #: lib/layouts/scrlttr2.layout:104 lib/layouts/stdletter.inc:63
-#, fuzzy
 msgid "Opening:"
 msgstr "Deschidere"
 
 #: lib/layouts/g-brief-en.layout:213 lib/layouts/g-brief2.layout:889
 msgid "Encl."
-msgstr "Plic"
+msgstr "Inclus"
 
 #: lib/layouts/g-brief-en.layout:217 lib/layouts/g-brief2.layout:900
-#, fuzzy
 msgid "Encl.:"
-msgstr "Plic"
+msgstr "Inclus"
 
 #: lib/layouts/g-brief-en.layout:226 lib/layouts/g-brief2.layout:923
 #: lib/layouts/scrlettr.layout:106 lib/layouts/scrlttr2.layout:134
 #: lib/layouts/stdletter.inc:114
-#, fuzzy
 msgid "cc:"
 msgstr "cc"
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:946
 #: lib/layouts/scrlttr2.layout:118 lib/layouts/stdletter.inc:97
-#, fuzzy
 msgid "Closing:"
 msgstr "Închidere"
 
@@ -5374,7 +5307,6 @@ msgid "NameRowA"
 msgstr "NumeLiniaA"
 
 #: lib/layouts/g-brief2.layout:87
-#, fuzzy
 msgid "NameRowA:"
 msgstr "NumeLiniaA"
 
@@ -5383,7 +5315,6 @@ msgid "NameRowB"
 msgstr "NumeLiniaB"
 
 #: lib/layouts/g-brief2.layout:106
-#, fuzzy
 msgid "NameRowB:"
 msgstr "NumeLiniaB"
 
@@ -5392,7 +5323,6 @@ msgid "NameRowC"
 msgstr "NumeLiniaC"
 
 #: lib/layouts/g-brief2.layout:125
-#, fuzzy
 msgid "NameRowC:"
 msgstr "NumeLiniaC"
 
@@ -5401,7 +5331,6 @@ msgid "NameRowD"
 msgstr "NumeLiniaD"
 
 #: lib/layouts/g-brief2.layout:144
-#, fuzzy
 msgid "NameRowD:"
 msgstr "NumeLiniaD"
 
@@ -5410,7 +5339,6 @@ msgid "NameRowE"
 msgstr "NumeLiniaE"
 
 #: lib/layouts/g-brief2.layout:163
-#, fuzzy
 msgid "NameRowE:"
 msgstr "NumeLiniaE"
 
@@ -5419,7 +5347,6 @@ msgid "NameRowF"
 msgstr "NumeLiniaF"
 
 #: lib/layouts/g-brief2.layout:182
-#, fuzzy
 msgid "NameRowF:"
 msgstr "NumeLiniaF"
 
@@ -5428,7 +5355,6 @@ msgid "NameRowG"
 msgstr "NumeLiniaG"
 
 #: lib/layouts/g-brief2.layout:201
-#, fuzzy
 msgid "NameRowG:"
 msgstr "NumeLiniaG"
 
@@ -5437,7 +5363,6 @@ msgid "AddressRowA"
 msgstr "AdresãLiniaA"
 
 #: lib/layouts/g-brief2.layout:242
-#, fuzzy
 msgid "AddressRowA:"
 msgstr "AdresãLiniaA"
 
@@ -5446,7 +5371,6 @@ msgid "AddressRowB"
 msgstr "AdresãLiniaB"
 
 #: lib/layouts/g-brief2.layout:261
-#, fuzzy
 msgid "AddressRowB:"
 msgstr "AdresãLiniaB"
 
@@ -5455,7 +5379,6 @@ msgid "AddressRowC"
 msgstr "AdresãLiniaC"
 
 #: lib/layouts/g-brief2.layout:280
-#, fuzzy
 msgid "AddressRowC:"
 msgstr "AdresãLiniaC"
 
@@ -5464,7 +5387,6 @@ msgid "AddressRowD"
 msgstr "AdresãLiniaD"
 
 #: lib/layouts/g-brief2.layout:299
-#, fuzzy
 msgid "AddressRowD:"
 msgstr "AdresãLiniaD"
 
@@ -5473,7 +5395,6 @@ msgid "AddressRowE"
 msgstr "AdresãLiniaE"
 
 #: lib/layouts/g-brief2.layout:318
-#, fuzzy
 msgid "AddressRowE:"
 msgstr "AdresãLiniaE"
 
@@ -5482,7 +5403,6 @@ msgid "AddressRowF"
 msgstr "AdresãLiniaF"
 
 #: lib/layouts/g-brief2.layout:337
-#, fuzzy
 msgid "AddressRowF:"
 msgstr "AdresãLiniaF"
 
@@ -5491,7 +5411,6 @@ msgid "TelephoneRowA"
 msgstr "TelefonLiniaA"
 
 #: lib/layouts/g-brief2.layout:357
-#, fuzzy
 msgid "TelephoneRowA:"
 msgstr "TelefonLiniaA"
 
@@ -5500,7 +5419,6 @@ msgid "TelephoneRowB"
 msgstr "TelefonLiniaB"
 
 #: lib/layouts/g-brief2.layout:376
-#, fuzzy
 msgid "TelephoneRowB:"
 msgstr "TelefonLiniaB"
 
@@ -5509,7 +5427,6 @@ msgid "TelephoneRowC"
 msgstr "TelefonLiniaC"
 
 #: lib/layouts/g-brief2.layout:395
-#, fuzzy
 msgid "TelephoneRowC:"
 msgstr "TelefonLiniaC"
 
@@ -5518,7 +5435,6 @@ msgid "TelephoneRowD"
 msgstr "TelefonLiniaD"
 
 #: lib/layouts/g-brief2.layout:414
-#, fuzzy
 msgid "TelephoneRowD:"
 msgstr "TelefonLiniaD"
 
@@ -5527,7 +5443,6 @@ msgid "TelephoneRowE"
 msgstr "TelefonLiniaE"
 
 #: lib/layouts/g-brief2.layout:433
-#, fuzzy
 msgid "TelephoneRowE:"
 msgstr "TelefonLiniaE"
 
@@ -5536,7 +5451,6 @@ msgid "TelephoneRowF"
 msgstr "TelefonLiniaF"
 
 #: lib/layouts/g-brief2.layout:452
-#, fuzzy
 msgid "TelephoneRowF:"
 msgstr "TelefonLiniaF"
 
@@ -5545,7 +5459,6 @@ msgid "InternetRowA"
 msgstr "InternetLiniaA"
 
 #: lib/layouts/g-brief2.layout:472
-#, fuzzy
 msgid "InternetRowA:"
 msgstr "InternetLiniaA"
 
@@ -5554,7 +5467,6 @@ msgid "InternetRowB"
 msgstr "InternetLiniaB"
 
 #: lib/layouts/g-brief2.layout:491
-#, fuzzy
 msgid "InternetRowB:"
 msgstr "InternetLiniaB"
 
@@ -5563,7 +5475,6 @@ msgid "InternetRowC"
 msgstr "InternetLiniaC"
 
 #: lib/layouts/g-brief2.layout:510
-#, fuzzy
 msgid "InternetRowC:"
 msgstr "InternetLiniaC"
 
@@ -5572,7 +5483,6 @@ msgid "InternetRowD"
 msgstr "InternetLiniaD"
 
 #: lib/layouts/g-brief2.layout:529
-#, fuzzy
 msgid "InternetRowD:"
 msgstr "InternetLiniaD"
 
@@ -5581,7 +5491,6 @@ msgid "InternetRowE"
 msgstr "InternetLiniaE"
 
 #: lib/layouts/g-brief2.layout:548
-#, fuzzy
 msgid "InternetRowE:"
 msgstr "InternetLiniaE"
 
@@ -5590,7 +5499,6 @@ msgid "InternetRowF"
 msgstr "InternetLiniaF"
 
 #: lib/layouts/g-brief2.layout:567
-#, fuzzy
 msgid "InternetRowF:"
 msgstr "InternetLiniaF"
 
@@ -5599,7 +5507,6 @@ msgid "BankRowA"
 msgstr "BancãLiniaA"
 
 #: lib/layouts/g-brief2.layout:587
-#, fuzzy
 msgid "BankRowA:"
 msgstr "BancãLiniaA"
 
@@ -5608,7 +5515,6 @@ msgid "BankRowB"
 msgstr "BancãLiniaB"
 
 #: lib/layouts/g-brief2.layout:606
-#, fuzzy
 msgid "BankRowB:"
 msgstr "BancãLiniaB"
 
@@ -5617,7 +5523,6 @@ msgid "BankRowC"
 msgstr "BancãLiniaC"
 
 #: lib/layouts/g-brief2.layout:625
-#, fuzzy
 msgid "BankRowC:"
 msgstr "BancãLiniaC"
 
@@ -5626,7 +5531,6 @@ msgid "BankRowD"
 msgstr "BancãLiniaD"
 
 #: lib/layouts/g-brief2.layout:644
-#, fuzzy
 msgid "BankRowD:"
 msgstr "BancãLiniaD"
 
@@ -5635,7 +5539,6 @@ msgid "BankRowE"
 msgstr "BancãLiniaE"
 
 #: lib/layouts/g-brief2.layout:663
-#, fuzzy
 msgid "BankRowE:"
 msgstr "BancãLiniaE"
 
@@ -5644,7 +5547,6 @@ msgid "BankRowF"
 msgstr "BancãLiniaF"
 
 #: lib/layouts/g-brief2.layout:682
-#, fuzzy
 msgid "BankRowF:"
 msgstr "BancãLiniaF"
 
@@ -5657,7 +5559,6 @@ msgid "Remarks"
 msgstr "Remarci"
 
 #: lib/layouts/heb-article.layout:88
-#, fuzzy
 msgid "Remarks #."
 msgstr "Remarci"
 
@@ -5667,7 +5568,7 @@ msgstr "Mai mult"
 
 #: lib/layouts/hollywood.layout:68
 msgid "(MORE)"
-msgstr ""
+msgstr "Mai mult"
 
 #: lib/layouts/hollywood.layout:81 lib/layouts/hollywood.layout:93
 msgid "FADE IN:"
@@ -5686,7 +5587,6 @@ msgid "Continuing"
 msgstr "Continuare"
 
 #: lib/layouts/hollywood.layout:205
-#, fuzzy
 msgid "(continuing)"
 msgstr "Continuare"
 
@@ -5821,11 +5721,11 @@ msgstr "Conjecturã @Secþiune@. \\arabic{conjecture}"
 
 #: lib/layouts/isprs.layout:38
 msgid "ABSTRACT:"
-msgstr ""
+msgstr "ABSTRACT"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "CUVINTE CHEIE"
 
 #: lib/layouts/isprs.layout:135
 #, fuzzy
@@ -5833,9 +5733,8 @@ msgid "Commission"
 msgstr "Condiþie"
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
-msgstr "Caption"
+msgstr "Titlu"
 
 #: lib/layouts/isprs.layout:248
 msgid "ACKNOWLEDGEMENTS"
@@ -5904,7 +5803,6 @@ msgid "TOC Author"
 msgstr "AutorCuprins"
 
 #: lib/layouts/llncs.layout:209
-#, fuzzy
 msgid "TOC Author:"
 msgstr "AutorCuprins"
 
@@ -5914,35 +5812,31 @@ msgstr "Caz #."
 
 #: lib/layouts/llncs.layout:315 lib/layouts/svjour.inc:372
 msgid "Conjecture #."
-msgstr "Conjectuã"
+msgstr "Conjecturã #."
 
 #: lib/layouts/llncs.layout:343 lib/layouts/svjour.inc:400
 msgid "Example #."
-msgstr "Exemplu"
+msgstr "Exemplu #."
 
 #: lib/layouts/llncs.layout:350 lib/layouts/svjour.inc:407
-#, fuzzy
 msgid "Exercise #."
-msgstr "Exerciþiu"
+msgstr "Exerciþiu #."
 
 #: lib/layouts/llncs.layout:363 lib/layouts/svjour.inc:425
-#, fuzzy
 msgid "Note #."
-msgstr "Notã"
+msgstr "Notã #."
 
 #: lib/layouts/llncs.layout:370 lib/layouts/svjour.inc:432
-#, fuzzy
 msgid "Problem #."
-msgstr "Problemã"
+msgstr "Problemã #."
 
 #: lib/layouts/llncs.layout:381 lib/layouts/svjour.inc:443
 msgid "Property"
 msgstr "Proprietate"
 
 #: lib/layouts/llncs.layout:384 lib/layouts/svjour.inc:446
-#, fuzzy
 msgid "Property #."
-msgstr "Proprietate"
+msgstr "Proprietate #."
 
 #: lib/layouts/llncs.layout:397 lib/layouts/svjour.inc:460
 #, fuzzy
@@ -5950,18 +5844,16 @@ msgid "Question #."
 msgstr "Întrebare"
 
 #: lib/layouts/llncs.layout:404 lib/layouts/svjour.inc:467
-#, fuzzy
 msgid "Remark #."
-msgstr "Remarcã"
+msgstr "Remarcã #."
 
 #: lib/layouts/llncs.layout:408 lib/layouts/svjour.inc:471
 msgid "Solution"
 msgstr "Soluþie"
 
 #: lib/layouts/llncs.layout:411 lib/layouts/svjour.inc:474
-#, fuzzy
 msgid "Solution #."
-msgstr "Soluþie"
+msgstr "Soluþie #."
 
 #: lib/layouts/manpage.layout:145 lib/layouts/db_lyxmacros.inc:11
 msgid "Code"
@@ -6006,14 +5898,12 @@ msgid "Preprint"
 msgstr "Pretipãrire"
 
 #: lib/layouts/revtex4.layout:165 lib/layouts/amsdefs.inc:204
-#, fuzzy
 msgid "Thanks:"
 msgstr "Mulþumiri"
 
 #: lib/layouts/revtex4.layout:173
-#, fuzzy
 msgid "Electronic Address:"
-msgstr "ReturnAddress"
+msgstr "Adresã electronicã"
 
 #: lib/layouts/revtex4.layout:209
 #, fuzzy
@@ -6045,7 +5935,7 @@ msgstr "Etichetare"
 
 #: lib/layouts/scrlettr.layout:52
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: lib/layouts/scrlettr.layout:65
 #, fuzzy
@@ -6066,9 +5956,8 @@ msgstr "Plic"
 
 #: lib/layouts/scrlettr.layout:113 lib/layouts/scrlttr2.layout:141
 #: lib/layouts/stdletter.inc:122
-#, fuzzy
 msgid "encl:"
-msgstr "encl"
+msgstr "Inclus"
 
 #: lib/layouts/scrlettr.layout:152 lib/layouts/scrlttr2.layout:184
 #: lib/layouts/stdletter.inc:135
@@ -6076,18 +5965,16 @@ msgid "Telephone"
 msgstr "Telefon"
 
 #: lib/layouts/scrlettr.layout:155 lib/layouts/stdletter.inc:139
-#, fuzzy
 msgid "Telephone:"
 msgstr "Telefon"
 
 #: lib/layouts/scrlettr.layout:159 lib/layouts/scrlttr2.layout:232
 msgid "Place"
-msgstr "Place"
+msgstr "Loc"
 
 #: lib/layouts/scrlettr.layout:162 lib/layouts/scrlttr2.layout:236
-#, fuzzy
 msgid "Place:"
-msgstr "Place"
+msgstr "Loc"
 
 #: lib/layouts/scrlettr.layout:173 lib/layouts/scrlttr2.layout:248
 msgid "Backaddress"
@@ -6114,12 +6001,10 @@ msgstr "Locaþie"
 
 #: lib/layouts/scrlettr.layout:190 lib/layouts/scrlttr2.layout:268
 #: lib/layouts/stdletter.inc:131
-#, fuzzy
 msgid "Location:"
 msgstr "Locaþie"
 
 #: lib/layouts/scrlettr.layout:197 lib/layouts/scrlttr2.layout:276
-#, fuzzy
 msgid "Title:"
 msgstr "Titlu"
 
@@ -6129,7 +6014,6 @@ msgid "Subject"
 msgstr "Subiect"
 
 #: lib/layouts/scrlettr.layout:204 lib/layouts/scrlttr2.layout:284
-#, fuzzy
 msgid "Subject:"
 msgstr "Subiect"
 
@@ -6144,11 +6028,11 @@ msgstr "Yourref"
 
 #: lib/layouts/scrlettr.layout:222 lib/layouts/scrlttr2.layout:304
 msgid "Yourmail"
-msgstr "Yourmail"
+msgstr "Adresa poºtalã a dumneavoastrã"
 
 #: lib/layouts/scrlettr.layout:225 lib/layouts/scrlttr2.layout:308
 msgid "Your letter of:"
-msgstr ""
+msgstr "Scrisoarea dumneavoastrã:"
 
 #: lib/layouts/scrlettr.layout:229 lib/layouts/scrlttr2.layout:312
 msgid "Myref"
@@ -6164,9 +6048,8 @@ msgid "Customer"
 msgstr "Client"
 
 #: lib/layouts/scrlettr.layout:239 lib/layouts/scrlttr2.layout:324
-#, fuzzy
 msgid "Customer no.:"
-msgstr "Client"
+msgstr "Client cu nr.:"
 
 #: lib/layouts/scrlettr.layout:243 lib/layouts/scrlttr2.layout:328
 msgid "Invoice"
@@ -6175,26 +6058,23 @@ msgstr "Facturã"
 #: lib/layouts/scrlettr.layout:246 lib/layouts/scrlttr2.layout:332
 #, fuzzy
 msgid "Invoice no.:"
-msgstr "Facturã"
+msgstr "Facturã cu nr."
 
 #: lib/layouts/scrlttr2.layout:69
 msgid "NextAddress"
 msgstr "AdresaUrmãtoare"
 
 #: lib/layouts/scrlttr2.layout:81
-#, fuzzy
 msgid "Next Address:"
 msgstr "AdresaUrmãtoare"
 
 #: lib/layouts/scrlttr2.layout:126
-#, fuzzy
 msgid "Post Scriptum:"
 msgstr "&Driver PostScript:"
 
 #: lib/layouts/scrlttr2.layout:158
-#, fuzzy
 msgid "Sender Name:"
-msgstr "&Nume imprimantã:"
+msgstr "&Nume expeditorului:"
 
 #: lib/layouts/scrlttr2.layout:176
 msgid "SenderAddress"
@@ -6221,21 +6101,18 @@ msgid "E-Mail"
 msgstr "E-Mail"
 
 #: lib/layouts/scrlttr2.layout:204
-#, fuzzy
 msgid "Sender E-Mail:"
-msgstr "E-Mail"
+msgstr "Adres E-Mail a expeditorului"
 
 #: lib/layouts/scrlttr2.layout:212
-#, fuzzy
 msgid "Sender URL:"
-msgstr "Insereazã URL"
+msgstr "Adresa URL a expeditorului"
 
 #: lib/layouts/scrlttr2.layout:224
 msgid "Logo"
 msgstr "Logo"
 
 #: lib/layouts/scrlttr2.layout:228
-#, fuzzy
 msgid "Logo:"
 msgstr "Logo"
 
@@ -6244,18 +6121,16 @@ msgid "LandscapeSlide"
 msgstr "LandscapeSlide"
 
 #: lib/layouts/seminar.layout:52
-#, fuzzy
 msgid "Landscape Slide"
-msgstr "LandscapeSlide"
+msgstr "Slide Landscape"
 
 #: lib/layouts/seminar.layout:57
 msgid "PortraitSlide"
-msgstr "PortraitSlide"
+msgstr "Slide Portrai"
 
 #: lib/layouts/seminar.layout:63
-#, fuzzy
 msgid "Portrait Slide"
-msgstr "PortraitSlide"
+msgstr "Slide Portrait"
 
 #: lib/layouts/seminar.layout:67 lib/layouts/slides.layout:88
 msgid "Slide"
@@ -6267,29 +6142,27 @@ msgstr "Slide*"
 
 #: lib/layouts/seminar.layout:77
 msgid "SlideHeading"
-msgstr "SlideHeading"
+msgstr "Antet Slide"
 
 #: lib/layouts/seminar.layout:83
 msgid "SlideSubHeading"
-msgstr "SlideSubHeading"
+msgstr "Subantet slide"
 
 #: lib/layouts/seminar.layout:89
 msgid "ListOfSlides"
-msgstr "ListOfSlides"
+msgstr "Listã de Sliduri"
 
 #: lib/layouts/seminar.layout:95
-#, fuzzy
 msgid "List Of Slides"
-msgstr "ListOfSlides"
+msgstr "Listã de sliduri"
 
 #: lib/layouts/seminar.layout:99
 msgid "SlideContents"
-msgstr "SlideContents"
+msgstr "Cuprins Slide"
 
 #: lib/layouts/seminar.layout:105
-#, fuzzy
 msgid "Slidecontents"
-msgstr "SlideContents"
+msgstr "Cuprins Slide"
 
 #: lib/layouts/seminar.layout:109
 msgid "ProgressContents"
@@ -6311,7 +6184,6 @@ msgid "Paragraph*"
 msgstr "Paragraf*"
 
 #: lib/layouts/siamltex.layout:172
-#, fuzzy
 msgid "Key words."
 msgstr "Cuvinte cheie"
 
@@ -6320,75 +6192,66 @@ msgid "AMS"
 msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:179
-#, fuzzy
 msgid "AMS subject classifications."
-msgstr "Subjectclass"
+msgstr "Clasificarea subiectelor AMS"
 
 #: lib/layouts/slides.layout:104
-#, fuzzy
 msgid "New Slide:"
-msgstr "Slide"
+msgstr "Slide nou"
 
 #: lib/layouts/slides.layout:126
 msgid "Overlay"
-msgstr "Suprapunere"
+msgstr "Afiºare ecran"
 
 #: lib/layouts/slides.layout:142
-#, fuzzy
 msgid "New Overlay:"
-msgstr "Suprapunere"
+msgstr "Afiºare ecran nouã"
 
 #: lib/layouts/slides.layout:183
-#, fuzzy
 msgid "New Note:"
-msgstr "Item nou"
+msgstr "Notã nouã"
 
 #: lib/layouts/slides.layout:208
 msgid "InvisibleText"
 msgstr "TextInvizibil"
 
 #: lib/layouts/slides.layout:216
-#, fuzzy
 msgid "<Invisible Text Follows>"
-msgstr "TextInvizibil"
+msgstr "Urmeazã Text Invizibil"
 
 #: lib/layouts/slides.layout:233
 msgid "VisibleText"
-msgstr "TextVizibil"
+msgstr "Text Vizibil"
 
 #: lib/layouts/slides.layout:241
-#, fuzzy
 msgid "<Visible Text Follows>"
-msgstr "TextVizibil"
+msgstr "Urmeazã Text Vizibil "
 
 #: lib/layouts/spie.layout:53
 msgid "Authorinfo"
-msgstr "Authorinfo"
+msgstr "Informaþia despre autor"
 
 #: lib/layouts/spie.layout:65
-#, fuzzy
 msgid "Authorinfo:"
-msgstr "Authorinfo"
+msgstr "Informaþia despre Autor"
 
 #: lib/layouts/spie.layout:78
 msgid "ABSTRACT"
-msgstr ""
+msgstr "ABSTRACT"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
 msgstr ""
 
 #: lib/layouts/aapaper.inc:56
-#, fuzzy
 msgid "email:"
 msgstr "Email"
 
 #: lib/layouts/aapaper.inc:118
 msgid "Thesaurus not supported in recent A&A:"
-msgstr ""
+msgstr "Dicþionarul nu este disponibil în versiuni recente de A&A"
 
 #: lib/layouts/agu_stdsections.inc:79
-#, fuzzy
 msgid "Subsubparagraph"
 msgstr "Subparagraf"
 
@@ -6397,29 +6260,24 @@ msgid "Header"
 msgstr "Antet"
 
 #: lib/layouts/agu_stdtitle.inc:19
-#, fuzzy
 msgid "-- Header --"
-msgstr "Antet"
+msgstr "--Antet--"
 
 #: lib/layouts/agu_stdtitle.inc:31
-#, fuzzy
 msgid "Special-section"
-msgstr "&Selecþie:"
+msgstr "&Secþiune specialã:"
 
 #: lib/layouts/agu_stdtitle.inc:37
-#, fuzzy
 msgid "Special-section:"
-msgstr "&Selecþie:"
+msgstr "&Secþiune specialã:"
 
 #: lib/layouts/agu_stdtitle.inc:47
-#, fuzzy
 msgid "AGU-journal"
-msgstr "Jurnal"
+msgstr "Jurnal AGU"
 
 #: lib/layouts/agu_stdtitle.inc:51
-#, fuzzy
 msgid "AGU-journal:"
-msgstr "Jurnal"
+msgstr "Jurnal - AGU"
 
 #: lib/layouts/agu_stdtitle.inc:56
 #, fuzzy
