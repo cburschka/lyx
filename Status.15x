@@ -237,6 +237,13 @@ PAINTING & PERFORMANCE
  correct font is found and used (cmr10).
 
 
+REGRESSIONS
+
+* The -geometry option doesn't work on Windows (it did in 1.4.x)
+  c:\> lyx-qt4.exe -geometry 800x600+100+30
+  Wrong command line option `-geometry'. Exiting.
+
+
 BUILDING
 
 * It is ridiculous that you have to call configure with --with-frontend=qt4.
