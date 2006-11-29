@@ -569,7 +569,7 @@ LyXView * LyX::newLyXView()
 	unsigned int width = 690;
 	unsigned int height = 510;
 	// default icon size, will be overwritten by  stored session value
-	unsigned int iconSizeXY = 26;
+	unsigned int iconSizeXY = 0;
 	bool maximize = false;
 	// first try lyxrc
 	if (lyxrc.geometry_width != 0 && lyxrc.geometry_height != 0 ) {

@@ -107,17 +107,57 @@ struct GuiView::GuiViewPrivate
 	GuiViewPrivate() : wt(0), posx_offset(0), posy_offset(0)
 	{}
 
-	static int iconSizeXY_;
+	unsigned int smallIconSize;
+	unsigned int normalIconSize;
+	unsigned int bigIconSize;
+	// static needed by "New Window"
+	static unsigned int lastIconSize;
+
+	QMenu* toolBarPopup(GuiView *parent)
+	{
+		QMenu* menu = new QMenu(parent);
+		QActionGroup *iconSizeGroup = new QActionGroup(parent);
+
+		QAction *smallIcons = new QAction(iconSizeGroup);
+		smallIcons->setText("Small sized icons");
+		smallIcons->setCheckable(true);
+		QObject::connect(smallIcons, SIGNAL(triggered()), parent, SLOT(smallSizedIcons()));
+		menu->addAction(smallIcons);
+
+		QAction *normalIcons = new QAction(iconSizeGroup);
+		normalIcons->setText("Normal sized icons");
+		normalIcons->setCheckable(true);
+		QObject::connect(normalIcons, SIGNAL(triggered()), parent, SLOT(normalSizedIcons()));
+		menu->addAction(normalIcons);
+
+
+		QAction *bigIcons = new QAction(iconSizeGroup);
+		bigIcons->setText("Big sized icons");
+		bigIcons->setCheckable(true);
+		QObject::connect(bigIcons, SIGNAL(triggered()), parent, SLOT(bigSizedIcons()));
+		menu->addAction(bigIcons);
+
+		int cur = parent->iconSize().width();
+		if ( cur == parent->d.smallIconSize)
+			smallIcons->setChecked(true);
+		else if (cur == parent->d.normalIconSize)
+			normalIcons->setChecked(true);
+		else if (cur == parent->d.bigIconSize)
+			bigIcons->setChecked(true);
+
+		return menu;
+	}
 };
 
-int GuiView::GuiViewPrivate::iconSizeXY_ = -1;
+unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
 
 GuiView::GuiView(int id)
 	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
 {
-	// static var needed by the "New Window", because setGeometry will not be called
-	if (GuiViewPrivate::iconSizeXY_ != -1)
-		setIconSize(QSize(GuiViewPrivate::iconSizeXY_, GuiViewPrivate::iconSizeXY_));
+	// hardcode here the platform specific icon size
+	d.smallIconSize = 14;	// scaling problems
+	d.normalIconSize = 20;	// ok, default
+	d.bigIconSize = 26;		// better for some math icons
 
 	//bufferview_.reset(new BufferView(this, width, height));
 
@@ -144,8 +184,7 @@ void GuiView::close()
 
 QMenu* GuiView::createPopupMenu()
 {
-	// disable toolbar popup menu 
-	return 0;
+	return d.toolBarPopup(this);
 }
 
 void GuiView::init()
@@ -206,11 +245,13 @@ void GuiView::setGeometry(unsigned int width,
 								  bool maximize,
 								  unsigned int iconSizeXY)
 {
-	if (iconSizeXY > 8)
-		GuiViewPrivate::iconSizeXY_ = iconSizeXY;
+	// use last value (not at startup)
+	if (d.lastIconSize != 0)
+		setIconSize(d.lastIconSize);
+	else if (iconSizeXY != 0)
+		setIconSize(iconSizeXY);
 	else
-		GuiViewPrivate::iconSizeXY_ = 28;
-	setIconSize(QSize(GuiViewPrivate::iconSizeXY_, GuiViewPrivate::iconSizeXY_));
+		setIconSize(d.normalIconSize);
 
 	// only true when the -geometry option was NOT used
 	if (width != 0 && height != 0) {
@@ -298,6 +339,27 @@ void GuiView::message(docstring const & str)
 void GuiView::clearMessage()
 {
 	update_view_state_qt();
+}
+
+void GuiView::setIconSize(unsigned int size)
+{
+	d.lastIconSize = size;
+	QMainWindow::setIconSize(QSize(size, size));
+}
+
+void GuiView::smallSizedIcons()
+{
+	setIconSize(d.smallIconSize);
+}
+
+void GuiView::normalSizedIcons()
+{
+	setIconSize(d.normalIconSize);
+}
+
+void GuiView::bigSizedIcons()
+{
+	setIconSize(d.bigIconSize);
 }
 
 

@@ -7,6 +7,7 @@
  * \author Lars Gullik Bjornes
  * \author John Levon
  * \author Abdelrazak Younes
+ * \author Peter Kümmel
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -96,6 +97,11 @@ public Q_SLOTS:
 
 	void currentTabChanged (int index); 
 
+	/// slots to change the icon size
+	void smallSizedIcons();
+	void normalSizedIcons();
+	void bigSizedIcons();
+
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
@@ -126,6 +132,8 @@ private:
 	void updateFloatingGeometry();
 	///
 	QRect floatingGeometry_;
+
+	void setIconSize(unsigned int size);
 
 	struct GuiViewPrivate;
 	GuiViewPrivate& d;
