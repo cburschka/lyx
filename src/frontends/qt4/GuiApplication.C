@@ -277,8 +277,14 @@ void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func
 		boost::shared_ptr<socket_callback>(new socket_callback(fd, func));
 }
 
+template<>
+void Application::unregisterSocketCallback<int>(int fd)
+{
+	GuiApplication* ptr = static_cast<GuiApplication*>(this);
+	ptr->unregisterSocketCallbackImpl(fd);
+}
 
-void GuiApplication::unregisterSocketCallback(int fd)
+void GuiApplication::unregisterSocketCallbackImpl(int fd)
 {
 	socket_callbacks_.erase(fd);
 }
