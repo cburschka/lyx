@@ -919,7 +919,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 							   format->extension());
 				filename = addName(buffer->temppath(), filename);
 
-				if (!buffer->writeFile(filename))
+				if (!buffer->writeFile(FileName(filename)))
 					break;
 
 			} else {
@@ -1563,7 +1563,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				       << endl;
 			}
 
-			if (defaults.writeFile(defaults.fileName()))
+			if (defaults.writeFile(FileName(defaults.fileName())))
 				// FIXME Should use bformat
 				setMessage(_("Document defaults saved in ")
 					   + makeDisplayPath(fname));
@@ -1883,15 +1883,14 @@ void LyXFunc::open(string const & fname)
 
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
-	string const fullpath = fileSearch(string(), filename, "lyx").absFilename();
-	if (!fullpath.empty()) {
-		filename = fullpath;
-	}
+	FileName const fullname = fileSearch(string(), filename, "lyx");
+	BOOST_ASSERT(!fullname.empty());
+	filename = fullname.absFilename();
 
 	docstring const disp_fn = makeDisplayPath(filename);
 
 	// if the file doesn't exist, let the user create one
-	if (!fs::exists(filename)) {
+	if (!fs::exists(fullname.toFilesystemEncoding())) {
 		// the user specifically chose this name. Believe him.
 		Buffer * const b = newFile(filename, string(), true);
 		if (b)

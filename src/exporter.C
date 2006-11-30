@@ -76,12 +76,12 @@ vector<string> const Backends(Buffer const & buffer)
 
 
 /// ask the user what to do if a file already exists
-int checkOverwrite(string const & filename)
+int checkOverwrite(FileName const & filename)
 {
-	if (fs::exists(filename)) {
+	if (fs::exists(filename.toFilesystemEncoding())) {
 		docstring text = bformat(_("The file %1$s already exists.\n\n"
 						     "Do you want to over-write that file?"),
-				      makeDisplayPath(filename));
+				      makeDisplayPath(filename.absFilename()));
 		return Alert::prompt(_("Over-write file?"),
 				     text, 0, 2,
 				     _("&Over-write"), _("Over-write &all"),
@@ -120,7 +120,7 @@ CopyStatus copyFile(string const & format,
 		return ret;
 
 	if (!force) {
-		switch(checkOverwrite(destFile.absFilename())) {
+		switch(checkOverwrite(destFile)) {
 		case 0:
 			ret = SUCCESS;
 			break;
@@ -195,7 +195,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		writeFileAscii(*buffer, filename, runparams);
 	// no backend
 	else if (backend_format == "lyx")
-		buffer->writeFile(filename);
+		buffer->writeFile(FileName(filename));
 	// Docbook backend
 	else if (buffer->isDocBook()) {
 		runparams.nice = !put_in_tempdir;
@@ -219,9 +219,9 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 
 	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);
 	string const ext = formats.extension(format);
-	string const tmp_result_file = changeExtension(filename, ext);
+	FileName const tmp_result_file(changeExtension(filename, ext));
 	bool const success = converters.convert(buffer, FileName(filename),
-		FileName(tmp_result_file), FileName(buffer->fileName()), backend_format, format,
+		tmp_result_file, FileName(buffer->fileName()), backend_format, format,
 		buffer->errorList(error_type));
 	// Emit the signal to show the error list.
 	buffer->errors(error_type);
@@ -229,7 +229,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		return false;
 
 	if (put_in_tempdir)
-		result_file = tmp_result_file;
+		result_file = tmp_result_file.absFilename();
 	else {
 		result_file = changeExtension(buffer->fileName(), ext);
 		// We need to copy referenced files (e. g. included graphics
@@ -248,9 +248,9 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
-		} else if (fs::exists(tmp_result_file)) {
+		} else if (fs::exists(tmp_result_file.toFilesystemEncoding())) {
 			// Finally copy the main file
-			status = copyFile(format, FileName(tmp_result_file),
+			status = copyFile(format, tmp_result_file,
 					  FileName(result_file), result_file,
 					  status == FORCE);
 			buffer->message(bformat(_("Document exported as %1$s "

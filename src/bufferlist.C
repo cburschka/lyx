@@ -39,6 +39,7 @@ namespace lyx {
 
 using support::addName;
 using support::bformat;
+using support::FileName;
 using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
@@ -356,7 +357,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 		string s = buf->fileName();
 		s += ".emergency";
 		lyxerr << "  " << s << endl;
-		if (buf->writeFile(s)) {
+		if (buf->writeFile(FileName(s))) {
 			buf->markClean();
 			lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
 			return;
@@ -369,7 +370,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	string s = addName(package().home_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
-	if (buf->writeFile(s)) {
+	if (buf->writeFile(FileName(s))) {
 		buf->markClean();
 		lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
 		return;
@@ -383,7 +384,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	s = addName(package().temp_dir(), buf->fileName());
 	s += ".emergency";
 	lyxerr << ' ' << s << endl;
-	if (buf->writeFile(s)) {
+	if (buf->writeFile(FileName(s))) {
 		buf->markClean();
 		lyxerr << to_utf8(_("  Save seems successful. Phew.")) << endl;
 		return;

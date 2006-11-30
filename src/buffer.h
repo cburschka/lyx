@@ -35,6 +35,7 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
 
 class BufferParams;
 class ErrorItem;
@@ -144,7 +145,7 @@ public:
 	bool save() const;
 
 	/// Write file. Returns \c false if unsuccesful.
-	bool writeFile(std::string const &) const;
+	bool writeFile(support::FileName const &) const;
 
 	/// Just a wrapper for the method below, first creating the ofstream.
 	bool makeLaTeXFile(std::string const & filename,
@@ -201,7 +202,7 @@ public:
 	void markDirty();
 
 	/// Returns the buffer's filename. It is always an absolute path.
-	std::string const & fileName() const;
+	std::string const fileName() const;
 
 	/// Returns the the path where the buffer lives.
 	/// It is always an absolute path.

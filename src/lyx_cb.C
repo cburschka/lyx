@@ -234,7 +234,7 @@ int AutoSaveBuffer::generateChild()
 
 		FileName const tmp_ret(tempName(string(), "lyxauto"));
 		if (!tmp_ret.empty()) {
-			bv_.buffer()->writeFile(tmp_ret.absFilename());
+			bv_.buffer()->writeFile(tmp_ret);
 			// assume successful write of tmp_ret
 			if (!rename(tmp_ret, fname_)) {
 				failed = true;
@@ -249,7 +249,7 @@ int AutoSaveBuffer::generateChild()
 
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
-			if (!bv_.buffer()->writeFile(fname_.absFilename())) {
+			if (!bv_.buffer()->writeFile(fname_)) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)

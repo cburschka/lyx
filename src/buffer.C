@@ -153,7 +153,7 @@ typedef std::map<string, bool> DepClean;
 class Buffer::Impl
 {
 public:
-	Impl(Buffer & parent, string const & file, bool readonly);
+	Impl(Buffer & parent, FileName const & file, bool readonly);
 
 	limited_stack<Undo> undostack;
 	limited_stack<Undo> redostack;
@@ -178,7 +178,7 @@ public:
 	bool read_only;
 
 	/// name of the file the buffer is associated with.
-	string filename;
+	FileName filename;
 
 	boost::scoped_ptr<Messages> messages;
 
@@ -199,7 +199,7 @@ public:
 };
 
 
-Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
+Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
 	  toc_backend(&parent)
@@ -207,7 +207,7 @@ Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
 	temppath = createBufferTmpDir();
-	params.filepath = onlyPath(file);
+	params.filepath = onlyPath(file.absFilename());
 	// FIXME: And now do something if temppath == string(), because we
 	// assume from now on that temppath points to a valid temp dir.
 	// See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg67406.html
@@ -215,7 +215,7 @@ Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
 
 
 Buffer::Buffer(string const & file, bool readonly)
-	: pimpl_(new Impl(*this, file, readonly))
+	: pimpl_(new Impl(*this, FileName(file), readonly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 }
@@ -358,23 +358,24 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 	string const path = temppath();
 
-	string const fname = addName(path,
+	FileName const fname(addName(temppath(),
 				     onlyFilename(changeExtension(filename,
-								  ".log")));
-	string const bname =
+								  ".log"))));
+	FileName const bname(
 		addName(path, onlyFilename(
 			changeExtension(filename,
-					formats.extension("literate") + ".out")));
+					formats.extension("literate") + ".out"))));
 
 	// If no Latex log or Build log is newer, show Build log
 
-	if (fs::exists(bname) &&
-	    (!fs::exists(fname) || fs::last_write_time(fname) < fs::last_write_time(bname))) {
+	if (fs::exists(bname.toFilesystemEncoding()) &&
+	    (!fs::exists(fname.toFilesystemEncoding()) ||
+	     fs::last_write_time(fname.toFilesystemEncoding()) < fs::last_write_time(bname.toFilesystemEncoding()))) {
 		lyxerr[Debug::FILES] << "Log name calculated as: " << bname << endl;
-		return make_pair(Buffer::buildlog, bname);
+		return make_pair(Buffer::buildlog, bname.absFilename());
 	}
 	lyxerr[Debug::FILES] << "Log name calculated as: " << fname << endl;
-	return make_pair(Buffer::latexlog, fname);
+	return make_pair(Buffer::latexlog, fname.absFilename());
 }
 
 
@@ -389,9 +390,10 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(string const & newfile)
 {
-	pimpl_->filename = makeAbsPath(newfile);
-	params().filepath = onlyPath(pimpl_->filename);
-	setReadonly(fs::is_readonly(pimpl_->filename));
+	string const filename = makeAbsPath(newfile);
+	pimpl_->filename = FileName(filename);
+	params().filepath = onlyPath(filename);
+	setReadonly(fs::is_readonly(pimpl_->filename.toFilesystemEncoding()));
 	updateTitles();
 }
 
@@ -717,7 +719,7 @@ bool Buffer::save() const
 
 	// make a backup if the file already exists
 	string s;
-	if (lyxrc.make_backup && fs::exists(fileName())) {
+	if (lyxrc.make_backup && fs::exists(pimpl_->filename.toFilesystemEncoding())) {
 		s = fileName() + '~';
 		if (!lyxrc.backupdir_path.empty())
 			s = addName(lyxrc.backupdir_path,
@@ -728,7 +730,7 @@ bool Buffer::save() const
 		// But to use this we need fs::copy_file to actually do a copy,
 		// even when the target file exists. (Lgb)
 		try {
-		    fs::copy_file(fileName(), s, false);
+		    fs::copy_file(pimpl_->filename.toFilesystemEncoding(), s, false);
 		}
 		catch (fs::filesystem_error const & fe) {
 			Alert::error(_("Backup failure"),
@@ -740,34 +742,34 @@ bool Buffer::save() const
 		}
 	}
 
-	if (writeFile(fileName())) {
+	if (writeFile(pimpl_->filename)) {
 		markClean();
 		removeAutosaveFile(fileName());
 	} else {
 		// Saving failed, so backup is not backup
 		if (lyxrc.make_backup)
-			rename(FileName(s), FileName(fileName()));
+			rename(FileName(s), pimpl_->filename);
 		return false;
 	}
 	return true;
 }
 
 
-bool Buffer::writeFile(string const & fname) const
+bool Buffer::writeFile(FileName const & fname) const
 {
-	if (pimpl_->read_only && fname == fileName())
+	if (pimpl_->read_only && fname == pimpl_->filename)
 		return false;
 
 	bool retval = false;
 
 	if (params().compressed) {
-		io::filtering_ostream ofs(io::gzip_compressor() | io::file_sink(fname));
+		io::filtering_ostream ofs(io::gzip_compressor() | io::file_sink(fname.toFilesystemEncoding()));
 		if (!ofs)
 			return false;
 
 		retval = do_writeFile(ofs);
 	} else {
-		ofstream ofs(fname.c_str(), ios::out|ios::trunc);
+		ofstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
@@ -1078,7 +1080,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			preamble += "<!ENTITY % output.print.bmp \"IGNORE\">\n";
 		}
 
-		string const name = runparams.nice ? changeExtension(pimpl_->filename, ".sgml")
+		string const name = runparams.nice ? changeExtension(fileName(), ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
 		preamble += features.getLyXSGMLEntities();
@@ -1519,9 +1521,9 @@ void Buffer::markDirty()
 }
 
 
-string const & Buffer::fileName() const
+string const Buffer::fileName() const
 {
-	return pimpl_->filename;
+	return pimpl_->filename.absFilename();
 }
 
 
