@@ -99,8 +99,8 @@ frontend::FontLoader & theFontLoader()
 	if (!use_gui)
 		return no_gui_font_loader;
 
-	BOOST_ASSERT(theApp);
-	return theApp->fontLoader();
+	BOOST_ASSERT(theApp());
+	return theApp()->fontLoader();
 }
 
 
@@ -111,22 +111,22 @@ frontend::FontMetrics const & theFontMetrics(LyXFont const & f)
 	if (!use_gui)
 		return no_gui_font_metrics;
 
-	BOOST_ASSERT(theApp);
-	return theApp->fontLoader().metrics(f);
+	BOOST_ASSERT(theApp());
+	return theApp()->fontLoader().metrics(f);
 }
 
 
 frontend::Clipboard & theClipboard()
 {
-	BOOST_ASSERT(theApp);
-	return theApp->clipboard();
+	BOOST_ASSERT(theApp());
+	return theApp()->clipboard();
 }
 
 
 frontend::Selection & theSelection()
 {
-	BOOST_ASSERT(theApp);
-	return theApp->selection();
+	BOOST_ASSERT(theApp());
+	return theApp()->selection();
 }
 
 

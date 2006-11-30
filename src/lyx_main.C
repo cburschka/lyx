@@ -99,8 +99,6 @@ using std::signal;
 using std::system;
 #endif
 
-///
-frontend::Application * theApp = 0;
 
 /// are we using the GUI at all?
 /** 
@@ -166,6 +164,15 @@ struct LyX::Singletons
 	///
 	IconvProcessor iconv;
 };
+
+///
+frontend::Application * theApp()
+{
+	if (singleton_)
+		return &singleton_->application();
+	else
+		return 0;
+}
 
 
 LyX::~LyX()
@@ -365,8 +372,6 @@ int LyX::exec(int & argc, char * argv[])
 
 	// Let the frontend parse and remove all arguments that it knows
 	pimpl_->application_.reset(createApplication(argc, argv));
-	// FIXME: this global pointer should probably go.
-	theApp = pimpl_->application_.get();
 
 	initGuiFont();
 
@@ -462,7 +467,6 @@ void LyX::quit()
 		pimpl_->lyx_socket_.reset();
 		if (pimpl_->application_)
 			pimpl_->application_->exit(0);
-		theApp = 0;
 	}
 }
 

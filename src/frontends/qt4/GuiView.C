@@ -555,7 +555,7 @@ void GuiView::moveEvent(QMoveEvent *)
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	GuiImplementation & gui 
-		= static_cast<GuiImplementation &>(theApp->gui());
+		= static_cast<GuiImplementation &>(theApp()->gui());
 
 	vector<int> const & view_ids = gui.viewIds();
 

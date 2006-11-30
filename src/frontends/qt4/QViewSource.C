@@ -91,7 +91,7 @@ void QViewSource::build_dialog()
 	dialog_->viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
-	QFont font(toqstr(theApp->typewriterFontName()));
+	QFont font(toqstr(theApp()->typewriterFontName()));
 	font.setKerning(false);
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);

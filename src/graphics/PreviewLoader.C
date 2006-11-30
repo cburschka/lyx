@@ -592,8 +592,8 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
 	   << support::quoteName(latexfile) << ' '
 	   << int(font_scaling_factor_) << ' '
-	   << theApp->hexName(LColor::preview) << ' '
-	   << theApp->hexName(LColor::background);
+	   << theApp()->hexName(LColor::preview) << ' '
+	   << theApp()->hexName(LColor::background);
 
 	string const command = support::libScriptSearch(cs.str());
 

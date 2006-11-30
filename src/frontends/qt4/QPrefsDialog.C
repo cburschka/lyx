@@ -130,13 +130,13 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	QFont font;
 	font.setKerning(false);
 
-	if (family == theApp->romanFontName()) {
+	if (family == theApp()->romanFontName()) {
 		font.setStyleHint(QFont::Serif);
 		font.setFamily(family.c_str());
-	} else if (family == theApp->sansFontName()) {
+	} else if (family == theApp()->sansFontName()) {
 		font.setStyleHint(QFont::SansSerif);
 		font.setFamily(family.c_str());
-	} else if (family == theApp->typewriterFontName()) {
+	} else if (family == theApp()->typewriterFontName()) {
 		font.setStyleHint(QFont::TypeWriter);
 		font.setFamily(family.c_str());
 	} else {

@@ -64,7 +64,7 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 	// Needed by lyxclient
 	support::setEnv("LYXSOCKET", address_);
 
-	theApp->registerSocketCallback(
+	theApp()->registerSocketCallback(
 		fd_,
 		boost::bind(&LyXServerSocket::serverCallback, this)
 		);
@@ -78,8 +78,8 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 LyXServerSocket::~LyXServerSocket()
 {
 	if (fd_ != -1) {
-		BOOST_ASSERT (theApp);
-		theApp->unregisterSocketCallback(fd_);
+		BOOST_ASSERT (theApp());
+		theApp()->unregisterSocketCallback(fd_);
 		if (::close(fd_) != 0)
 			lyxerr << "lyx: Server socket " << fd_
 			       << " IO error on closing: " << strerror(errno);
@@ -115,7 +115,7 @@ void LyXServerSocket::serverCallback()
 	// Register the new client.
 	clients[client_fd] =
 		shared_ptr<LyXDataSocket>(new LyXDataSocket(client_fd));
-	theApp->registerSocketCallback(
+	theApp()->registerSocketCallback(
 		client_fd,
 		boost::bind(&LyXServerSocket::dataCallback,
 			    this, client_fd)
@@ -213,7 +213,7 @@ LyXDataSocket::~LyXDataSocket()
 		lyxerr << "lyx: Data socket " << fd_
 		       << " IO error on closing: " << strerror(errno);
 
-	theApp->unregisterSocketCallback(fd_);
+	theApp()->unregisterSocketCallback(fd_);
 	lyxerr[Debug::LYXSERVER] << "lyx: Data socket " << fd_ << " quitting."
 				 << endl;
 }

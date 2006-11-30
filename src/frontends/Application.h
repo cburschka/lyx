@@ -194,7 +194,7 @@ private:
 
 } // namespace frontend
 
-extern frontend::Application * theApp;
+frontend::Application * theApp();
 frontend::Application * createApplication(int & argc, char * argv[]);
 
 

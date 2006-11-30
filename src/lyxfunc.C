@@ -1035,7 +1035,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_LYX_QUIT:
 			if (argument == "closeOnly") {
-				if (!theApp->gui().closeAll())
+				if (!theApp()->gui().closeAll())
 					break;
 				lyx_view_ = 0;
 			}
@@ -1456,7 +1456,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			}
 
-			theApp->updateColor(lcolor.getFromLyXName(lyx_name));
+			theApp()->updateColor(lcolor.getFromLyXName(lyx_name));
 
 			if (graphicsbg_changed) {
 #ifdef WITH_WARNINGS

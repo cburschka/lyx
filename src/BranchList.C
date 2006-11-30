@@ -25,7 +25,7 @@ using std::string;
 
 Branch::Branch()
 {
-	theApp->getRgbColor(LColor::background, color_);
+	theApp()->getRgbColor(LColor::background, color_);
 }
 
 
@@ -74,7 +74,7 @@ void Branch::setColor(string const & c)
 		color_ = RGBColor(c);
 	else
 		// no color set or invalid color - use normal background
-		theApp->getRgbColor(LColor::background, color_);
+		theApp()->getRgbColor(LColor::background, color_);
 }
 
 

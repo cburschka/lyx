@@ -254,10 +254,10 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 {
 	// No need to do anything if we didn't change views...
-	if (theApp == 0 || &lyx_view_ == &theApp->currentView())
+	if (theApp() == 0 || &lyx_view_ == &theApp()->currentView())
 		return;
 
-	theApp->setCurrentView(lyx_view_);
+	theApp()->setCurrentView(lyx_view_);
 
 	// FIXME: it would be better to send a signal "newBuffer()"
 	// in BufferList that could be connected to the different tabbars.
@@ -286,7 +286,7 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 void GuiWorkArea::focusOutEvent(QFocusEvent * /*event*/)
 {
 	// No need to do anything if we didn't change views...
-	if (&lyx_view_ == &theApp->currentView())
+	if (&lyx_view_ == &theApp()->currentView())
 		return;
 
 	stopBlinkingCursor();
