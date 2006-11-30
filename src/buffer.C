@@ -715,9 +715,9 @@ bool Buffer::save() const
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
-	// make a backup
+	// make a backup if the file already exists
 	string s;
-	if (lyxrc.make_backup) {
+	if (lyxrc.make_backup && fs::exists(fileName())) {
 		s = fileName() + '~';
 		if (!lyxrc.backupdir_path.empty())
 			s = addName(lyxrc.backupdir_path,

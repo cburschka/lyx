@@ -29,11 +29,6 @@ GENERAL
 
 FILE
 
-* When I "Save as..." in /tmp, I get a Backup error popup about non writable 
-  /tmp, which is obviously not true.  The file is there, and if I try to Save
-  as again, I get the overwrite popup warning twice: once in English, once 
-  in French. (J. P. Chretien)
-
 * Loading de_Userguide.lyx results in two parse errors:
   Paragraph ended in line 21206
   Missing \end_layout.
@@ -453,3 +448,10 @@ CREDITS:
   c:\> lyx-qt4.exe -geometry 800x600+100+30
   Wrong command line option `-geometry'. Exiting.
   FIXED (Peter, 2006-11-29)
+
+* When I "Save as..." in /tmp, I get a Backup error popup about non writable 
+  /tmp, which is obviously not true.  The file is there, and if I try to Save
+  as again, I get the overwrite popup warning twice: once in English, once 
+  in French. (J. P. Chretien)
+  FIXED (Michael (found the problem), Georg (fix), 2006-11-30)
+
