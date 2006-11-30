@@ -1668,7 +1668,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_WINDOW_CLOSE:
 			BOOST_ASSERT(lyx_view_);
-			BOOST_ASSERT(theApp);
+			BOOST_ASSERT(theApp());
 			lyx_view_->close();
 			// We return here because lyx_view does not exists anymore.
 			return;

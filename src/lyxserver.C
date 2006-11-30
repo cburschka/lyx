@@ -196,7 +196,7 @@ int LyXComm::startPipe(string const & file, bool write)
 	}
 
 	if (!write) {
-		theApp->registerSocketCallback(fd,
+		theApp()->registerSocketCallback(fd,
 			boost::bind(&LyXComm::read_ready, this));
 	}
 
@@ -210,7 +210,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 		return;
 
 	if (!write) {
-		theApp->unregisterSocketCallback(fd);
+		theApp()->unregisterSocketCallback(fd);
 	}
 
 	if (::close(fd) < 0) {
