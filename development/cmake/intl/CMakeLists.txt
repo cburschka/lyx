@@ -21,7 +21,6 @@ add_definitions(
     -Dset_relocation_prefix=libintl_set_relocation_prefix
     -Drelocate=libintl_relocate
     -DDEPENDS_ON_LIBICONV=1
-    -DICONV_CONST=const
     )
     
     
