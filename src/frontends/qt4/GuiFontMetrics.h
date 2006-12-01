@@ -27,6 +27,8 @@
 namespace lyx {
 namespace frontend {
 
+size_t const MaxCharType = 65536;
+
 struct CharMetrics
 {
 	int width;
@@ -88,7 +90,7 @@ private:
 	* this turns out to be too much, we can switch to a \c QHash based
 	* solution.
 	**/
-	mutable CharMetrics metrics_cache_[65536];
+	mutable CharMetrics metrics_cache_[MaxCharType];
 #endif // USE_LYX_FONTCACHE
 };
 

@@ -24,15 +24,20 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
+namespace {
+// Used for checking initialisation state of the C-ish metrics table.
+const int BadMetrics = -1000;
+}
+
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
 #ifdef USE_LYX_FONTCACHE
- for (int i = 0; i != 65536; ++i) {
-	 metrics_cache_[i].width = -1000;
-	 metrics_cache_[i].ascent = -1000;
-	 metrics_cache_[i].descent = -1000;
+ for (int i = 0; i != MaxCharType; ++i) {
+	 metrics_cache_[i].width = BadMetrics;
+	 metrics_cache_[i].ascent = BadMetrics;
+	 metrics_cache_[i].descent = BadMetrics;
  }
 #endif
 }
@@ -193,8 +198,13 @@ void GuiFontMetrics::fillCache(unsigned short val) const
 
 int GuiFontMetrics::width(char_type c) const
 {
+	// FIXME: The following cast is not a real conversion but it work
+	// for the ucs2 subrange of unicode. Instead of an assertion we should
+	// give the metrics of some special characters that indicates that
+	// its display is not supported.
+	BOOST_ASSERT(c < MaxCharType);
 	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].width == -1000)
+	if (metrics_cache_[val].width == BadMetrics)
 		metrics_cache_[val].width = metrics_.width(QChar(val));
 
 	return metrics_cache_[val].width;
@@ -203,8 +213,13 @@ int GuiFontMetrics::width(char_type c) const
 
 int GuiFontMetrics::ascent(char_type c) const
 {
+	// FIXME: The following cast is not a real conversion but it work
+	// for the ucs2 subrange of unicode. Instead of an assertion we should
+	// give the metrics of some special characters that indicates that
+	// its display is not supported.
+	BOOST_ASSERT(c < MaxCharType);
 	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].ascent == -1000)
+	if (metrics_cache_[val].ascent == BadMetrics)
 		fillCache(val);
 
 	return metrics_cache_[val].ascent;
@@ -213,8 +228,13 @@ int GuiFontMetrics::ascent(char_type c) const
 
 int GuiFontMetrics::descent(char_type c) const
 {
+	// FIXME: The following cast is not a real conversion but it work
+	// for the ucs2 subrange of unicode. Instead of an assertion we should
+	// give the metrics of some special characters that indicates that
+	// its display is not supported.
+	BOOST_ASSERT(c < MaxCharType);
 	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].descent == -1000)
+	if (metrics_cache_[val].descent == BadMetrics)
 		fillCache(val);
 
 	return metrics_cache_[val].descent;
