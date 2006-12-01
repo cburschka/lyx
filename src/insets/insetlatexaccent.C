@@ -493,8 +493,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		}
 
 		case HUNGARIAN_UMLAUT:
-			drawAccent(pi, x2 - fm.center('´'), baseline, '´');
-			drawAccent(pi, x2 + fm.center('´'), baseline, '´');
+			drawAccent(pi, x2, baseline, 0x02DD);
 			break;
 
 		case UMLAUT:
