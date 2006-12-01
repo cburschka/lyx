@@ -31,9 +31,9 @@ size_t const MaxCharType = 65536;
 
 struct CharMetrics
 {
-	int width;
-	int ascent;
-	int descent;
+	short int width;
+	short int ascent;
+	short int descent;
 };
 
 

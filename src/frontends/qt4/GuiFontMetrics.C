@@ -26,7 +26,7 @@ namespace frontend {
 
 namespace {
 // Used for checking initialisation state of the C-ish metrics table.
-const int BadMetrics = -1000;
+const short int BadMetrics = -1000;
 }
 
 
@@ -34,7 +34,7 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
 #ifdef USE_LYX_FONTCACHE
- for (int i = 0; i != MaxCharType; ++i) {
+ for (size_t i = 0; i != MaxCharType; ++i) {
 	 metrics_cache_[i].width = BadMetrics;
 	 metrics_cache_[i].ascent = BadMetrics;
 	 metrics_cache_[i].descent = BadMetrics;
@@ -188,8 +188,8 @@ int GuiFontMetrics::descent(char_type c) const
 void GuiFontMetrics::fillCache(unsigned short val) const
 {
 	QRect const & r = metrics_.boundingRect(QChar(val));
-	metrics_cache_[val].descent = r.bottom() + 1;
-	metrics_cache_[val].ascent = -r.top();
+	metrics_cache_[val].descent = static_cast<short>(r.bottom() + 1);
+	metrics_cache_[val].ascent = static_cast<short>(-r.top());
 	// We could as well compute the width but this is not really
 	// needed for now as it is done directly in width() below.
 	//metrics_cache_[val].width = metrics_.width(QChar(val));
@@ -204,8 +204,10 @@ int GuiFontMetrics::width(char_type c) const
 	// its display is not supported.
 	BOOST_ASSERT(c < MaxCharType);
 	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].width == BadMetrics)
-		metrics_cache_[val].width = metrics_.width(QChar(val));
+	if (metrics_cache_[val].width == BadMetrics) {
+		metrics_cache_[val].width 
+			= static_cast<short>(metrics_.width(QChar(val)));
+	}
 
 	return metrics_cache_[val].width;
 }
