@@ -1081,7 +1081,7 @@ cmd_ret const runCommand(string const & cmd)
 }
 
 
-string const findtexfile(string const & fil, string const & /*format*/)
+FileName const findtexfile(string const & fil, string const & /*format*/)
 {
 	/* There is no problem to extend this function too use other
 	   methods to look for files. It could be setup to look
@@ -1094,8 +1094,9 @@ string const findtexfile(string const & fil, string const & /*format*/)
 
 	// If the file can be found directly, we just return a
 	// absolute path version of it.
-	if (fs::exists(fil))
-		return makeAbsPath(fil);
+	FileName const absfile(makeAbsPath(fil));
+	if (fs::exists(absfile.toFilesystemEncoding()))
+		return absfile;
 
 	// No we try to find it using kpsewhich.
 	// It seems from the kpsewhich manual page that it is safe to use
@@ -1125,9 +1126,9 @@ string const findtexfile(string const & fil, string const & /*format*/)
 		 << "kpse result = `" << rtrim(c.second, "\n")
 		 << '\'' << endl;
 	if (c.first != -1)
-		return os::internal_path(rtrim(c.second, "\n\r"));
+		return FileName(os::internal_path(rtrim(c.second, "\n\r")));
 	else
-		return string();
+		return FileName();
 }
 
 

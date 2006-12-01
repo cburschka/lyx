@@ -523,16 +523,16 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 	     it != bibtex_info.end(); ++it) {
 		for (set<string>::const_iterator it2 = it->databases.begin();
 		     it2 != it->databases.end(); ++it2) {
-			string file = findtexfile(*it2, "bib");
+			FileName const file = findtexfile(*it2, "bib");
 			if (!file.empty())
-				dep.insert(FileName(makeAbsPath(file)), true);
+				dep.insert(file, true);
 		}
 
 		for (set<string>::const_iterator it2 = it->styles.begin();
 		     it2 != it->styles.end(); ++it2) {
-			string file = findtexfile(*it2, "bst");
+			FileName const file = findtexfile(*it2, "bst");
 			if (!file.empty())
-				dep.insert(FileName(makeAbsPath(file)), true);
+				dep.insert(file, true);
 		}
 	}
 }

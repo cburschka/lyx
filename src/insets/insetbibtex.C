@@ -305,18 +305,18 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 }
 
 
-vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
+vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
 {
 	Path p(buffer.filePath());
 
-	vector<string> vec;
+	vector<FileName> vec;
 
 	string tmp;
 	// FIXME UNICODE
 	string bibfiles = to_utf8(getParam("bibfiles"));
 	bibfiles = split(bibfiles, tmp, ',');
 	while (!tmp.empty()) {
-		string file = findtexfile(changeExtension(tmp, "bib"), "bib");
+		FileName const file = findtexfile(changeExtension(tmp, "bib"), "bib");
 		lyxerr[Debug::LATEX] << "Bibfile: " << file << endl;
 
 		// If we didn't find a matching file name just fail silently
@@ -335,14 +335,14 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 				  std::vector<std::pair<string, string> > & keys) const
 {
-	vector<string> const files = getFiles(buffer);
-	for (vector<string>::const_iterator it = files.begin();
+	vector<FileName> const files = getFiles(buffer);
+	for (vector<FileName>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {
 		// This is a _very_ simple parser for Bibtex database
 		// files. All it does is to look for lines starting
 		// in @ and not being @preamble and @string entries.
 		// It does NOT do any syntax checking!
-		ifstream ifs(it->c_str());
+		ifstream ifs(it->toFilesystemEncoding().c_str());
 		string linebuf0;
 		while (getline(ifs, linebuf0)) {
 			string linebuf = trim(linebuf0);

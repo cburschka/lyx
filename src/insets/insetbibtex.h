@@ -16,6 +16,8 @@
 #include <vector>
 #include "insetcommand.h"
 
+#include "support/filename.h"
+
 
 namespace lyx {
 
@@ -39,7 +41,7 @@ public:
 	void fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<std::string,std::string> > & keys) const;
 	///
-	std::vector<std::string> const getFiles(Buffer const &) const;
+	std::vector<support::FileName> const getFiles(Buffer const &) const;
 	///
 	bool addDatabase(std::string const &);
 	///

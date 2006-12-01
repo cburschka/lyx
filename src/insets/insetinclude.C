@@ -633,17 +633,17 @@ void InsetInclude::updateBibfilesCache(Buffer const & buffer)
 }
 
 
-std::vector<string> const &
+std::vector<FileName> const &
 InsetInclude::getBibfilesCache(Buffer const & buffer) const
 {
 	Buffer * const tmp = getChildBuffer(buffer, params_);
 	if (tmp) {
 		tmp->setParentName("");
-		std::vector<string> const & cache = tmp->getBibfilesCache();
+		std::vector<FileName> const & cache = tmp->getBibfilesCache();
 		tmp->setParentName(parentFilename(buffer));
 		return cache;
 	}
-	static std::vector<string> const empty;
+	static std::vector<FileName> const empty;
 	return empty;
 }
 

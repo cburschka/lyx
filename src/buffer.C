@@ -1274,7 +1274,7 @@ void Buffer::updateBibfilesCache()
 		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				dynamic_cast<InsetBibtex const &>(*it);
-			vector<string> const bibfiles = inset.getFiles(*this);
+			vector<FileName> const bibfiles = inset.getFiles(*this);
 			bibfilesCache_.insert(bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
@@ -1282,7 +1282,7 @@ void Buffer::updateBibfilesCache()
 			InsetInclude & inset =
 				dynamic_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache(*this);
-			vector<string> const & bibfiles =
+			vector<FileName> const & bibfiles =
 					inset.getBibfilesCache(*this);
 			bibfilesCache_.insert(bibfilesCache_.end(),
 				bibfiles.begin(),
@@ -1292,7 +1292,7 @@ void Buffer::updateBibfilesCache()
 }
 
 
-vector<string> const & Buffer::getBibfilesCache() const
+vector<FileName> const & Buffer::getBibfilesCache() const
 {
 	// if this is a child document and the parent is already loaded
 	// use the parent's cache instead

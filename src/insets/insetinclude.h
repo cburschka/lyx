@@ -17,6 +17,8 @@
 #include "render_button.h"
 #include "mailinset.h"
 
+#include "support/filename.h"
+
 #include <boost/scoped_ptr.hpp>
 
 namespace lyx {
@@ -70,7 +72,7 @@ public:
 	 *  Return an empty vector if the child doc is not loaded.
 	 *  \param buffer the Buffer containing this inset.
 	 */
-	std::vector<std::string> const &
+	std::vector<support::FileName> const &
 	getBibfilesCache(Buffer const & buffer) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }

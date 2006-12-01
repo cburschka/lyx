@@ -263,7 +263,7 @@ bool readLink(std::string const & file,
 	      bool resolve = false);
 
 /// Uses kpsewhich to find tex files
-std::string const findtexfile(std::string const & fil,
+FileName const findtexfile(std::string const & fil,
 			      std::string const & format);
 
 /// remove the autosave-file and give a Message if it can't be done

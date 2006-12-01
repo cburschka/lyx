@@ -18,6 +18,7 @@
 #include "dociterator.h"
 #include "ParagraphList_fwd.h"
 
+#include "support/filename.h"
 #include "support/limited_stack.h"
 #include "support/types.h"
 #include "support/docstring.h"
@@ -34,8 +35,6 @@
 
 
 namespace lyx {
-
-namespace support { class FileName; }
 
 class BufferParams;
 class ErrorItem;
@@ -262,7 +261,7 @@ public:
 	void updateBibfilesCache();
 	/// Return the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	std::vector<std::string> const & getBibfilesCache() const;
+	std::vector<support::FileName> const & getBibfilesCache() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;
 
@@ -384,7 +383,7 @@ private:
 	StableDocIterator anchor_;
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	std::vector<std::string> bibfilesCache_;
+	std::vector<support::FileName> bibfilesCache_;
 
 	/// Container for all sort of Buffer dependant errors.
 	std::map<std::string, ErrorList> errorLists_;

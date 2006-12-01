@@ -35,6 +35,7 @@ namespace lyx {
 
 using support::ascii_lowercase;
 using support::contains;
+using support::FileName;
 using support::getStringFromVector;
 using support::getVectorFromString;
 using support::ltrim;
@@ -68,18 +69,18 @@ string const getNatbibLabel(Buffer const & buffer,
 	static CachedMap cached_keys;
 
 	// and cache the timestamp of the bibliography files.
-	static std::map<string, time_t> bibfileStatus;
+	static std::map<FileName, time_t> bibfileStatus;
 
 	biblio::InfoMap infomap;
 
-	vector<string> const & bibfilesCache = buffer.getBibfilesCache();
+	vector<FileName> const & bibfilesCache = buffer.getBibfilesCache();
 	// compare the cached timestamps with the actual ones.
 	bool changed = false;
-	for (vector<string>::const_iterator it = bibfilesCache.begin();
+	for (vector<FileName>::const_iterator it = bibfilesCache.begin();
 			it != bibfilesCache.end(); ++ it) {
-		string const f = *it;
+		FileName const f = *it;
 		try {
-			std::time_t lastw = fs::last_write_time(f);
+			std::time_t lastw = fs::last_write_time(f.toFilesystemEncoding());
 			if (lastw != bibfileStatus[f]) {
 				changed = true;
 				bibfileStatus[f] = lastw;
