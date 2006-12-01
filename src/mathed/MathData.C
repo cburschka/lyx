@@ -241,7 +241,7 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 
 void MathArray::metrics(MetricsInfo & mi) const
 {
-	mathed_char_dim(mi.base.font, 'I', dim_);
+	dim_.set(mi.base.font, 'I');
 
 	if (empty())
 		return;

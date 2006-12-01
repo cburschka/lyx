@@ -28,7 +28,6 @@ class MathAtom;
 class InsetMath;
 
 
-void mathed_char_dim(LyXFont const &, char_type c, Dimension & dim);
 int mathed_char_width(LyXFont const &, char_type c);
 
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,

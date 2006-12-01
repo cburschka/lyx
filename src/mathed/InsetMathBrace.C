@@ -46,8 +46,7 @@ auto_ptr<InsetBase> InsetMathBrace::doClone() const
 bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
-	Dimension t;
-	mathed_char_dim(mi.base.font, '{', t);
+	Dimension t(mi.base.font, '{');
 	dim.asc = max(cell(0).ascent(), t.asc);
 	dim.des = max(cell(0).descent(), t.des);
 	dim.wid = cell(0).width() + 2 * t.wid;
@@ -63,8 +62,7 @@ void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont font = pi.base.font;
 	font.setColor(LColor::latex);
-	Dimension t;
-	mathed_char_dim(font, '{', t);
+	Dimension t(font, '{');
 	pi.pain.text(x, y, '{', font);
 	cell(0).draw(pi, x + t.wid, y);
 	pi.pain.text(x + t.wid + cell(0).width(), y, '}', font);

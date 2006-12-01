@@ -75,7 +75,7 @@ bool InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
-	mathed_char_dim(mi.base.font, 'I', t);
+	t.set(mi.base.font, 'I');
 	int h0 = (t.asc + t.des) / 2;
 	int a0 = max(cell(0).ascent(), t.asc)   - h0;
 	int d0 = max(cell(0).descent(), t.des)  + h0;

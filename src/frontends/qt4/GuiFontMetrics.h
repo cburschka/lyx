@@ -27,6 +27,14 @@
 namespace lyx {
 namespace frontend {
 
+struct CharMetrics
+{
+	int width;
+	int ascent;
+	int descent;
+};
+
+
 class GuiFontMetrics: public FontMetrics
 {
 public:
@@ -38,17 +46,24 @@ public:
 
 	virtual int maxAscent() const;
 	virtual int maxDescent() const;
-	virtual int ascent(lyx::char_type c) const;
-	int descent(lyx::char_type c) const;
-	virtual int lbearing(lyx::char_type c) const;
-	virtual int rbearing(lyx::char_type c) const;
-	virtual int width(lyx::char_type const * s, size_t n) const;
-	virtual int signedWidth(lyx::docstring const & s) const;
-	virtual void rectText(lyx::docstring const & str,
+#ifndef USE_LYX_FONTCACHE
+	virtual int width(char_type c) const {
+		return metrics_.width(QChar(static_cast<short int>(c)));
+	}
+#else
+	virtual int width(char_type c) const;
+#endif
+	virtual int ascent(char_type c) const;
+	virtual int descent(char_type c) const;
+	virtual int lbearing(char_type c) const;
+	virtual int rbearing(char_type c) const;
+	virtual int width(char_type const * s, size_t n) const;
+	virtual int signedWidth(docstring const & s) const;
+	virtual void rectText(docstring const & str,
 		int & width,
 		int & ascent,
 		int & descent) const;
-	virtual void buttonText(lyx::docstring const & str,
+	virtual void buttonText(docstring const & str,
 		int & width,
 		int & ascent,
 		int & descent) const;
@@ -64,16 +79,16 @@ private:
 
 	bool smallcaps_shape_;
 
-#ifndef USE_LYX_FONTCACHE
-	/// Return pixel width for the given unicode char
-	int width(unsigned short val) const { return metrics_.width(QChar(val)); }
-
-#else
-	/// Return pixel width for the given unicode char
-	int width(unsigned short val) const;
-
+#ifdef USE_LYX_FONTCACHE
+	/// fill in \c metrics_cache_ at specified value.
+	void fillCache(unsigned short val) const;
 	/// Cache of char widths
-	mutable int widthcache_[65536];
+	/** This cache adds 20Mo of memory to the LyX executable when
+	* loading UserGuide.lyx which contains a good number of fonts. If
+	* this turns out to be too much, we can switch to a \c QHash based
+	* solution.
+	**/
+	mutable CharMetrics metrics_cache_[65536];
 #endif // USE_LYX_FONTCACHE
 };
 

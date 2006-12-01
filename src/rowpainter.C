@@ -949,7 +949,7 @@ void paintPar
 			rp.paintChangeBar();
 			if (rit == rb)
 				rp.paintFirst();
-			rp.paintText();
+ 			rp.paintText();
 			if (rit + 1 == re)
 				rp.paintLast();
 		}

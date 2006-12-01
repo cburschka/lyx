@@ -31,6 +31,8 @@ public:
 
 	virtual int maxDescent() const { return 1; }
 	
+	virtual int width(char_type) const { return 1; }
+
 	virtual int ascent(char_type) const { return 1; }
 	
 	int descent(char_type) const { return 1; }

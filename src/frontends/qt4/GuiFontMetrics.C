@@ -19,9 +19,6 @@
 
 #include "support/unicode.h"
 
-using lyx::char_type;
-using lyx::docstring;
-
 using std::string;
 
 namespace lyx {
@@ -32,8 +29,11 @@ GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
 #ifdef USE_LYX_FONTCACHE
-  for (int i = 0; i != 65536; ++i)
-    widthcache_[i] = -1;
+ for (int i = 0; i != 65536; ++i) {
+	 metrics_cache_[i].width = -1000;
+	 metrics_cache_[i].ascent = -1000;
+	 metrics_cache_[i].descent = -1000;
+ }
 #endif
 }
 
@@ -55,20 +55,6 @@ int GuiFontMetrics::maxDescent() const
 	// We add 1 as the value returned by QT is different than X
 	// See http://doc.trolltech.com/2.3/qfontmetrics.html#200b74
 	return metrics_.descent() + 1;
-}
-
-
-int GuiFontMetrics::ascent(char_type c) const
-{
-	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
-	return -r.top();
-}
-
-
-int GuiFontMetrics::descent(char_type c) const
-{
-	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
-	return r.bottom() + 1;
 }
 
 
@@ -110,19 +96,18 @@ int GuiFontMetrics::width(char_type const * s, size_t ls) const
 	// casts in reality.
 
 	if (ls == 1 && !smallcaps_shape_) {
-		QChar const c = ucs4_to_qchar(s[0]);
-		return width(c.unicode());
+		return width(s[0]);
 	}
 
-	QString ucs2;
-	ucs4_to_qstring(s, ls, ucs2);
-
-	if (smallcaps_shape_)
+	if (smallcaps_shape_) {
+		QString ucs2;
+		ucs4_to_qstring(s, ls, ucs2);
 		return smallcapsWidth(ucs2);
+	}
 
 	int w = 0;
 	for (unsigned int i = 0; i < ls; ++i)
-		w += width(ucs2[i].unicode());
+		w += width(s[i]);
 
 	return w;
 }
@@ -178,14 +163,64 @@ void GuiFontMetrics::buttonText(docstring const & str,
 	descent = metrics_.descent() + d;
 }
 
-#ifdef USE_LYX_FONTCACHE
-int GuiFontMetrics::width(unsigned short val) const
+#ifndef USE_LYX_FONTCACHE
+
+int GuiFontMetrics::ascent(char_type c) const
 {
-	if (widthcache_[val] == -1)
-		widthcache_[val] = metrics_.width(QChar(val));
-	return widthcache_[val];
+	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
+	return -r.top();
 }
+
+
+int GuiFontMetrics::descent(char_type c) const
+{
+	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
+	return r.bottom() + 1;
+}
+
+#else
+
+void GuiFontMetrics::fillCache(unsigned short val) const
+{
+	QRect const & r = metrics_.boundingRect(QChar(val));
+	metrics_cache_[val].descent = r.bottom() + 1;
+	metrics_cache_[val].ascent = -r.top();
+	// We could as well compute the width but this is not really
+	// needed for now as it is done directly in width() below.
+	//metrics_cache_[val].width = metrics_.width(QChar(val));
+}
+
+
+int GuiFontMetrics::width(char_type c) const
+{
+	unsigned short val = static_cast<unsigned short>(c);
+	if (metrics_cache_[val].width == -1000)
+		metrics_cache_[val].width = metrics_.width(QChar(val));
+
+	return metrics_cache_[val].width;
+}
+
+
+int GuiFontMetrics::ascent(char_type c) const
+{
+	unsigned short val = static_cast<unsigned short>(c);
+	if (metrics_cache_[val].ascent == -1000)
+		fillCache(val);
+
+	return metrics_cache_[val].ascent;
+}
+
+
+int GuiFontMetrics::descent(char_type c) const
+{
+	unsigned short val = static_cast<unsigned short>(c);
+	if (metrics_cache_[val].descent == -1000)
+		fillCache(val);
+
+	return metrics_cache_[val].descent;
+}
+
 #endif
 
-}
-}
+} // frontend
+} // lyx

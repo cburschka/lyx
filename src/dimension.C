@@ -36,4 +36,12 @@ void Dimension::clear(LyXFont const & font)
 }
 
 
+void Dimension::set(LyXFont const & font, char_type c)
+{
+	frontend::FontMetrics const & fm = theFontMetrics(font);
+	des = fm.descent(c);
+	asc = fm.ascent(c);
+	wid = fm.width(c);
+}
+
 } // namespace lyx

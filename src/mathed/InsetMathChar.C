@@ -62,15 +62,15 @@ bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 #if 1
 	if (char_ == '=' && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmr");
-		mathed_char_dim(mi.base.font, char_, dim);
+		dim.set(mi.base.font, char_);
 	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
 		FontSetChanger dummy(mi.base, "cmm");
-		mathed_char_dim(mi.base.font, char_, dim);
+		dim.set(mi.base.font, char_);
 	} else if (!slanted(char_) && mi.base.fontname == "mathnormal") {
 		ShapeChanger dummy(mi.base.font, LyXFont::UP_SHAPE);
-		mathed_char_dim(mi.base.font, char_, dim);
+		dim.set(mi.base.font, char_);
 	} else {
-		mathed_char_dim(mi.base.font, char_, dim);
+		dim.set(mi.base.font, char_);
 	}
 	int const em = mathed_char_width(mi.base.font, 'M');
 	if (isBinaryOp(char_))
@@ -79,7 +79,7 @@ bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += static_cast<int>(0.1667*em+0.5);
 #else
 	whichFont(font_, code_, mi);
-	mathed_char_dim(font_, char_, dim);
+	dim.set(font_, char_);
 	if (isBinaryOp(char_, code_))
 		width_ += 2 * theFontMetrics(font_).width(' ');
 	lyxerr << "InsetMathChar::metrics: " << dim << endl;

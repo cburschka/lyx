@@ -367,15 +367,6 @@ deco_struct const * search_deco(docstring const & name)
 } // namespace anon
 
 
-void mathed_char_dim(LyXFont const & font, char_type c, Dimension & dim)
-{
-	frontend::FontMetrics const & fm = theFontMetrics(font);
-	dim.des = fm.descent(c);
-	dim.asc = fm.ascent(c);
-	dim.wid = fm.width(c);
-}
-
-
 int mathed_char_width(LyXFont const & font, char_type c)
 {
 	return theFontMetrics(font).width(c);

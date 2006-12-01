@@ -37,7 +37,7 @@ auto_ptr<InsetBase> InsetMathDots::doClone() const
 
 bool InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mathed_char_dim(mi.base.font, 'M', dim);
+	dim.set(mi.base.font, 'M');
 	dh_ = 0;
 	if (key_->name == "cdots" || key_->name == "dotsb"
 			|| key_->name == "dotsm" || key_->name == "dotsi")

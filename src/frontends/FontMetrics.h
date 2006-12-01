@@ -58,6 +58,8 @@ public:
 	virtual int maxAscent() const = 0;
 	/// return the maximum descent of the font
 	virtual int maxDescent() const = 0;
+	/// return the width of the char in the font
+	virtual int width(char_type c) const = 0;
 	/// return the ascent of the char in the font
 	virtual int ascent(char_type c) const = 0;
 	/// return the descent of the char in the font
@@ -101,13 +103,6 @@ public:
 	/// return the inner width of the char in the font
 	inline int center(char_type c) const {
 		return (rbearing(c) - lbearing(c)) / 2;
-	}
-
-	/// return the width of the char in the font
-	inline int width(char_type c) const
-	{
-		char_type tmp[2] = { c, L'\0'};
-		return width(tmp, 1);
 	}
 
 	/// return the width of the string in the font
