@@ -83,8 +83,10 @@ namespace lyx {
 using support::addPath;
 using support::bformat;
 using support::FileFilterList;
+using support::FileName;
 using support::fileSearch;
 using support::isDirWriteable;
+using support::isFileReadable;
 using support::makeDisplayPath;
 using support::makeAbsPath;
 using support::package;
@@ -153,7 +155,7 @@ void BufferView::setBuffer(Buffer * b)
 		buffer_->saveCursor(cursor_.selectionBegin(),
 				    cursor_.selectionEnd());
 		// current buffer is going to be switched-off, save cursor pos
-		LyX::ref().session().lastFilePos().save(buffer_->fileName(),
+		LyX::ref().session().lastFilePos().save(FileName(buffer_->fileName()),
 			boost::tie(cursor_.pit(), cursor_.pos()) );
 	}
 
@@ -205,20 +207,11 @@ void BufferView::setBuffer(Buffer * b)
 }
 
 
-bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
+bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 {
-	// Get absolute path of file and add ".lyx"
-	// to the filename if necessary
-	string s = fileSearch(string(), filename, "lyx").absFilename();
-
-	bool const found = !s.empty();
-
-	if (!found)
-		s = filename;
-
 	// File already open?
-	if (theBufferList().exists(s)) {
-		docstring const file = makeDisplayPath(s, 20);
+	if (theBufferList().exists(filename.absFilename())) {
+		docstring const file = makeDisplayPath(filename.absFilename(), 20);
 		docstring text = bformat(_("The document %1$s is already "
 						     "loaded.\n\nDo you want to revert "
 						     "to the saved version?"), file);
@@ -226,11 +219,11 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret != 0) {
-			setBuffer(theBufferList().getBuffer(s));
+			setBuffer(theBufferList().getBuffer(filename.absFilename()));
 			return true;
 		}
 		// FIXME: should be LFUN_REVERT
-		if (!theBufferList().close(theBufferList().getBuffer(s), false))
+		if (!theBufferList().close(theBufferList().getBuffer(filename.absFilename()), false))
 			return false;
 		// Fall through to new load. (Asger)
 		buffer_ = 0;
@@ -238,21 +231,21 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 
 	Buffer * b = 0;
 
-	if (found) {
-		b = theBufferList().newBuffer(s);
-		if (!lyx::loadLyXFile(b, s)) {
+	if (isFileReadable(filename)) {
+		b = theBufferList().newBuffer(filename.absFilename());
+		if (!lyx::loadLyXFile(b, filename)) {
 			theBufferList().release(b);
 			return false;
 		}
 	} else {
 		docstring text = bformat(_("The document %1$s does not yet "
 						     "exist.\n\nDo you want to create "
-						     "a new document?"), from_utf8(s));
+						     "a new document?"), from_utf8(filename.absFilename()));
 		int const ret = Alert::prompt(_("Create new document?"),
 			 text, 0, 1, _("&Create"), _("Cancel"));
 
 		if (ret == 0) {
-			b = newFile(s, string(), true);
+			b = newFile(filename.absFilename(), string(), true);
 			if (!b)
 				return false;
 		} else
@@ -267,7 +260,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 	if (lyxrc.use_lastfilepos) {
 		pit_type pit;
 		pos_type pos;
-		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(s);
+		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
 		// I am not sure how to separate the following part to a function
 		// so I will leave this to Lars.
 		//
@@ -288,7 +281,7 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 	}
 
 	if (tolastfiles)
-		LyX::ref().session().lastFiles().add(b->fileName());
+		LyX::ref().session().lastFiles().add(FileName(b->fileName()));
 
 	return true;
 }
@@ -296,9 +289,8 @@ bool BufferView::loadLyXFile(string const & filename, bool tolastfiles)
 
 void BufferView::reload()
 {
-	string const fn = buffer_->fileName();
 	if (theBufferList().close(buffer_, false))
-		loadLyXFile(fn);
+		loadLyXFile(FileName(buffer_->fileName()));
 }
 
 
@@ -532,7 +524,7 @@ Change const BufferView::getCurrentChange() const
 void BufferView::saveBookmark(bool persistent)
 {
 	LyX::ref().session().bookmarks().save(
-		buffer_->fileName(),
+		FileName(buffer_->fileName()),
 		cursor_.paragraph().id(),
 		cursor_.pos(),
 		persistent
@@ -1395,7 +1387,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 
 	docstring res;
 	Buffer buf("", false);
-	if (lyx::loadLyXFile(&buf, makeAbsPath(filename))) {
+	if (lyx::loadLyXFile(&buf, FileName(filename))) {
 		ErrorList & el = buffer_->errorList("Parse");
 		// Copy the inserted document error list into the current buffer one.
 		el = buf.errorList("Parse");

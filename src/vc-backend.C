@@ -31,6 +31,7 @@ namespace lyx {
 using support::addName;
 using support::addPath;
 using support::contains;
+using support::FileName;
 using support::onlyFilename;
 using support::onlyPath;
 using support::quoteName;
@@ -65,44 +66,42 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 }
 
 
-RCS::RCS(string const & m)
+RCS::RCS(FileName const & m)
 {
 	master_ = m;
 	scanMaster();
 }
 
 
-string const RCS::find_file(string const & file)
+FileName const RCS::find_file(FileName const & file)
 {
-	string tmp = file;
 	// Check if *,v exists.
-	tmp += ",v";
+	FileName tmp(file.absFilename() + ",v");
 	lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
 			     << tmp << endl;
-	if (fs::is_readable(tmp)) {
+	if (fs::is_readable(tmp.toFilesystemEncoding())) {
 		lyxerr[Debug::LYXVC] << "Yes " << file
 				     << " is under rcs." << endl;
 		return tmp;
 	} else {
 		// Check if RCS/*,v exists.
-		tmp = addName(addPath(onlyPath(file), "RCS"), file);
-		tmp += ",v";
+		tmp = FileName(addName(addPath(onlyPath(file.absFilename()), "RCS"), file.absFilename()) + ",v");
 		lyxerr[Debug::LYXVC] << "Checking if file is under rcs: "
 				     << tmp << endl;
-		if (fs::is_readable(tmp)) {
+		if (fs::is_readable(tmp.toFilesystemEncoding())) {
 			lyxerr[Debug::LYXVC] << "Yes " << file
 					     << " it is under rcs."<< endl;
 			return tmp;
 		}
 	}
-	return string();
+	return FileName();
 }
 
 
-void RCS::retrieve(string const & file)
+void RCS::retrieve(FileName const & file)
 {
 	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrieve.\n\t" << file << endl;
-	VCS::doVCCommand("co -q -r " + quoteName(file),
+	VCS::doVCCommand("co -q -r " + quoteName(file.toFilesystemEncoding()),
 			 string());
 }
 
@@ -111,7 +110,7 @@ void RCS::scanMaster()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC::RCS: scanMaster." << endl;
 
-	ifstream ifs(master_.c_str());
+	ifstream ifs(master_.toFilesystemEncoding().c_str());
 
 	string token;
 	bool read_enough = false;
@@ -216,15 +215,15 @@ void RCS::undoLast()
 }
 
 
-void RCS::getLog(string const & tmpf)
+void RCS::getLog(FileName const & tmpf)
 {
 	doVCCommand("rlog " + quoteName(onlyFilename(owner_->fileName()))
-		    + " > " + tmpf,
+		    + " > " + tmpf.toFilesystemEncoding(),
 		    owner_->filePath());
 }
 
 
-CVS::CVS(string const & m, string const & f)
+CVS::CVS(FileName const & m, FileName const & f)
 {
 	master_ = m;
 	file_ = f;
@@ -232,26 +231,27 @@ CVS::CVS(string const & m, string const & f)
 }
 
 
-string const CVS::find_file(string const & file)
+FileName const CVS::find_file(FileName const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
-	string const dir = onlyPath(file) + "/CVS/Entries";
-	string const tmpf = "/" + onlyFilename(file) + "/";
+	FileName const dir(onlyPath(file.absFilename()) + "/CVS/Entries");
+	string const tmpf = '/' + onlyFilename(file.absFilename()) + '/';
 	lyxerr[Debug::LYXVC] << "LyXVC: checking in `" << dir
 			     << "' for `" << tmpf << '\'' << endl;
-	if (fs::is_readable(dir)) {
+	if (fs::is_readable(dir.toFilesystemEncoding())) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and
 		// dirty parse here.
-		ifstream ifs(dir.c_str());
+		ifstream ifs(dir.toFilesystemEncoding().c_str());
 		string line;
 		while (getline(ifs, line)) {
 			lyxerr[Debug::LYXVC] << "\tEntries: " << line << endl;
-			if (contains(line, tmpf)) return dir;
+			if (contains(line, tmpf))
+				return dir;
 		}
 	}
-	return string();
+	return FileName();
 }
 
 
@@ -260,8 +260,8 @@ void CVS::scanMaster()
 	lyxerr[Debug::LYXVC] << "LyXVC::CVS: scanMaster. \n     Checking: "
 			     << master_ << endl;
 	// Ok now we do the real scan...
-	ifstream ifs(master_.c_str());
-	string tmpf = "/" + onlyFilename(file_) + "/";
+	ifstream ifs(master_.toFilesystemEncoding().c_str());
+	string tmpf = '/' + onlyFilename(file_.absFilename()) + '/';
 	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << '\'' << endl;
 	string line;
 	static regex const reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
@@ -281,7 +281,7 @@ void CVS::scanMaster()
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
 			// FIXME: must double check file is stattable/existing
-			time_t mod = fs::last_write_time(file_);
+			time_t mod = fs::last_write_time(file_.toFilesystemEncoding());
 			string mod_date = rtrim(asctime(gmtime(&mod)), "\n");
 			lyxerr[Debug::LYXVC]
 				<<  "Date in Entries: `" << file_date
@@ -346,10 +346,10 @@ void CVS::undoLast()
 }
 
 
-void CVS::getLog(string const & tmpf)
+void CVS::getLog(FileName const & tmpf)
 {
 	doVCCommand("cvs log " + quoteName(onlyFilename(owner_->fileName()))
-		    + " > " + tmpf,
+		    + " > " + tmpf.toFilesystemEncoding(),
 		    owner_->filePath());
 }
 

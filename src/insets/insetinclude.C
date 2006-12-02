@@ -354,10 +354,11 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 	Buffer * buf = theBufferList().getBuffer(included_file);
 	if (!buf) {
 		// the readonly flag can/will be wrong, not anymore I think.
-		if (!fs::exists(included_file))
+		FileName const fullname(included_file);
+		if (!fs::exists(fullname.toFilesystemEncoding()))
 			return false;
 		buf = theBufferList().newBuffer(included_file);
-		if (!loadLyXFile(buf, included_file))
+		if (!loadLyXFile(buf, fullname))
 			return false;
 	}
 	if (buf)

@@ -27,6 +27,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class Buffer;
 class InsetBase;
 class Menubar;
@@ -128,7 +130,7 @@ public:
 	//@}
 
 	/// load a buffer into the current workarea
-	bool loadLyXFile(std::string const &  name, bool tolastfiles = true);
+	bool loadLyXFile(support::FileName const &  name, bool tolastfiles = true);
 
 	/// set a buffer to the current workarea
 	void setBuffer(Buffer * b);

@@ -20,6 +20,7 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
 
 class Buffer;
 class DocIterator;
@@ -31,7 +32,7 @@ class ParIterator;
  *  Loads a LyX file \c filename into \c Buffer
  *  and \return success status.
  */
-bool loadLyXFile(Buffer *, std::string const & filename);
+bool loadLyXFile(Buffer *, support::FileName const & filename);
 
 /* Make a new file (buffer) with name \c filename based on a template
  * named \c templatename

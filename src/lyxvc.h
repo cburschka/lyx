@@ -19,6 +19,7 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
 
 class VCS;
 class Buffer;
@@ -50,7 +51,7 @@ public:
 	  the appropiate actions is taken. Returns true if the file is under
 	  control by a VCS.
 	  */
-	bool file_found_hook(std::string const & fn);
+	bool file_found_hook(support::FileName const & fn);
 
 	/** This function should be run when a file is requested for loading,
 	  but it does not exist. This function will then check for a VC master
@@ -59,7 +60,7 @@ public:
 	  viewing/editing. Returns true if the file is under control by a VCS
 	  and the user wants to view/edit it.
 	  */
-	static bool file_not_found_hook(std::string const & fn);
+	static bool file_not_found_hook(support::FileName const & fn);
 
 	///
 	void buffer(Buffer *);

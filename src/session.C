@@ -23,7 +23,9 @@
 #include <algorithm>
 #include <iterator>
 
+using lyx::support::absolutePath;
 using lyx::support::addName;
+using lyx::support::FileName;
 using lyx::support::package;
 
 namespace fs = boost::filesystem;
@@ -71,12 +73,15 @@ void LastFilesSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !absolutePath(tmp))
 			continue;
 		
 		// read lastfiles
-		if (fs::exists(tmp) && !fs::is_directory(tmp) && lastfiles.size() < num_lastfiles)
-			lastfiles.push_back(tmp);
+		FileName const file(tmp);
+		if (fs::exists(file.toFilesystemEncoding()) &&
+		    !fs::is_directory(file.toFilesystemEncoding()) &&
+		    lastfiles.size() < num_lastfiles)
+			lastfiles.push_back(file);
 		else 
 			lyxerr[Debug::INIT] << "LyX: Warning: Ignore last file: " << tmp << endl;
 	} while (is.good());
@@ -87,11 +92,11 @@ void LastFilesSection::write(ostream & os) const
 {
 	os << '\n' << sec_lastfiles << '\n';
 	copy(lastfiles.begin(), lastfiles.end(),
-	     ostream_iterator<string>(os, "\n"));
+	     ostream_iterator<FileName>(os, "\n"));
 }
 
 
-void LastFilesSection::add(string const & file)
+void LastFilesSection::add(FileName const & file)
 {
 	// If file already exist, delete it and reinsert at front.
 	LastFiles::iterator it = find(lastfiles.begin(), lastfiles.end(), file);
@@ -124,11 +129,13 @@ void LastOpenedSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, tmp);
-		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ')
+		if (tmp == "" || tmp[0] == '#' || tmp[0] == ' ' || !absolutePath(tmp))
 			continue;
 
-		if (fs::exists(tmp) && !fs::is_directory(tmp))
-			lastopened.push_back(tmp);
+		FileName const file(tmp);
+		if (fs::exists(file.toFilesystemEncoding()) &&
+		    !fs::is_directory(file.toFilesystemEncoding()))
+			lastopened.push_back(file);
 		else
 			lyxerr[Debug::INIT] << "LyX: Warning: Ignore last opened file: " << tmp << endl;
 	} while (is.good());
@@ -139,11 +146,11 @@ void LastOpenedSection::write(ostream & os) const
 {
 	os << '\n' << sec_lastopened << '\n';
 	copy(lastopened.begin(), lastopened.end(),
-	     ostream_iterator<string>(os, "\n"));
+	     ostream_iterator<FileName>(os, "\n"));
 }
 
 
-void LastOpenedSection::add(string const & file)
+void LastOpenedSection::add(FileName const & file)
 {
 	lastopened.push_back(file);
 }
@@ -178,8 +185,13 @@ void LastFilePosSection::read(istream & is)
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
 			itmp >> fname;
-			if (fs::exists(fname) && !fs::is_directory(fname) && lastfilepos.size() < num_lastfilepos)
-				lastfilepos[fname] = boost::tie(pit, pos);
+			if (!absolutePath(fname))
+				continue;
+			FileName const file(fname);
+			if (fs::exists(file.toFilesystemEncoding()) &&
+			    !fs::is_directory(file.toFilesystemEncoding()) &&
+			    lastfilepos.size() < num_lastfilepos)
+				lastfilepos[file] = boost::tie(pit, pos);
 			else
 				lyxerr[Debug::INIT] << "LyX: Warning: Ignore pos of last file: " << fname << endl;
 		} catch (...) {
@@ -201,13 +213,13 @@ void LastFilePosSection::write(ostream & os) const
 }
 
 
-void LastFilePosSection::save(string const & fname, FilePos pos)
+void LastFilePosSection::save(FileName const & fname, FilePos pos)
 {
 	lastfilepos[fname] = pos;
 }
 
 
-LastFilePosSection::FilePos LastFilePosSection::load(string const & fname) const
+LastFilePosSection::FilePos LastFilePosSection::load(FileName const & fname) const
 {
 	FilePosMap::const_iterator entry = lastfilepos.find(fname);
 	// Has position information, return it.
@@ -242,10 +254,15 @@ void BookmarksSection::read(istream & is)
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
 			itmp >> fname;
+			if (!absolutePath(fname))
+				continue;
+			FileName const file(fname);
 			// only load valid bookmarks
-			if (fs::exists(fname) && !fs::is_directory(fname) && bookmarks.size() < max_bookmarks)
-				bookmarks.push_back(Bookmark(fname, id, pos));
-			else 
+			if (fs::exists(file.toFilesystemEncoding()) &&
+			    !fs::is_directory(file.toFilesystemEncoding()) &&
+			    bookmarks.size() < max_bookmarks)
+				bookmarks.push_back(Bookmark(file, id, pos));
+			else
 				lyxerr[Debug::INIT] << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
 		} catch (...) {
 			lyxerr[Debug::INIT] << "LyX: Warning: unknown Bookmark info: " << tmp << endl;
@@ -265,7 +282,7 @@ void BookmarksSection::write(ostream & os) const
 }
 
 
-void BookmarksSection::save(std::string const & fname, int par_id, pos_type par_pos, bool persistent)
+void BookmarksSection::save(FileName const & fname, int par_id, pos_type par_pos, bool persistent)
 {
 	if (persistent) {
 		bookmarks.push_front(Bookmark(fname, par_id, par_pos));
@@ -407,7 +424,7 @@ Session::Session(unsigned int num) :
 {
 	// locate the session file
 	// note that the session file name 'session' is hard-coded
-	session_file = addName(package().user_support(), "session");
+	session_file = FileName(addName(package().user_support(), "session"));
 	//
 	readFile();
 }
@@ -417,7 +434,7 @@ void Session::readFile()
 {
 	// we will not complain if we can't find session_file nor will
 	// we issue a warning. (Lgb)
-	ifstream is(session_file.c_str());
+	ifstream is(session_file.toFilesystemEncoding().c_str());
 	string tmp;
 
 	while (getline(is, tmp)) {
@@ -446,7 +463,7 @@ void Session::readFile()
 
 void Session::writeFile() const
 {
-	ofstream os(session_file.c_str());
+	ofstream os(session_file.toFilesystemEncoding().c_str());
 	if (os) {
 		os << "## Automatically generated lyx session file \n"
 		    << "## Editing this file manually may cause lyx to crash.\n";

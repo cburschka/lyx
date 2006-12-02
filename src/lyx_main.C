@@ -338,7 +338,7 @@ int LyX::exec(int & argc, char * argv[])
 	support::init_package(argv[0], cl_system_support, cl_user_support,
 				   support::top_build_dir_is_one_level_up);
 
-	vector<string> files;
+	vector<FileName> files;
 	
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
@@ -472,7 +472,7 @@ void LyX::quit()
 
 
 int LyX::loadFiles(int & argc, char * argv[],
-	vector<string> & files)
+	vector<FileName> & files)
 {
 	// check for any spurious extra arguments
 	// other than documents
@@ -498,28 +498,27 @@ int LyX::loadFiles(int & argc, char * argv[],
 		// frontend.
 		if (argv[argi][0] == '-')
 			continue;
-		files.push_back(os::internal_path(argv[argi]));
+		// get absolute path of file and add ".lyx" to
+		// the filename if necessary
+		files.push_back(fileSearch(string(), os::internal_path(argv[argi]), "lyx"));
 	}
 
 	if (first_start)
-		files.push_back(i18nLibFileSearch("examples", "splash.lyx").absFilename());
+		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 
 	Buffer * last_loaded = 0;
 
-	vector<string>::const_iterator it = files.begin();
-	vector<string>::const_iterator end = files.end();
+	vector<FileName>::const_iterator it = files.begin();
+	vector<FileName>::const_iterator end = files.end();
 
 	for (; it != end; ++it) {
-		// get absolute path of file and add ".lyx" to
-		// the filename if necessary
-		string s = fileSearch(string(), *it, "lyx").absFilename();
-		if (s.empty()) {
-			Buffer * const b = newFile(*it, string(), true);
+		if (it->empty()) {
+			Buffer * const b = newFile(it->absFilename(), string(), true);
 			if (b)
 				last_loaded = b;
 		} else {
-			Buffer * buf = pimpl_->buffer_list_.newBuffer(s, false);
-			if (loadLyXFile(buf, s)) {
+			Buffer * buf = pimpl_->buffer_list_.newBuffer(it->absFilename(), false);
+			if (loadLyXFile(buf, *it)) {
 				last_loaded = buf;
 				ErrorList const & el = buf->errorList("Parse");
 				if (!el.empty())
@@ -550,7 +549,7 @@ void LyX::execBatchCommands()
 }
 
 
-void LyX::restoreGuiSession(vector<string> const & files)
+void LyX::restoreGuiSession(vector<FileName> const & files)
 {
 	LyXView * view = newLyXView();
 
@@ -560,7 +559,7 @@ void LyX::restoreGuiSession(vector<string> const & files)
 
 	// if a file is specified, I assume that user wants to edit *that* file
 	if (files.empty() && lyxrc.load_session) {
-		vector<string> const & lastopened = pimpl_->session_->lastOpened().getfiles();
+		vector<FileName> const & lastopened = pimpl_->session_->lastOpened().getfiles();
 		// do not add to the lastfile list since these files are restored from
 		// last seesion, and should be already there (regular files), or should
 		// not be added at all (help files).

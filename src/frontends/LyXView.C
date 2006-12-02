@@ -52,12 +52,12 @@ namespace lyx {
 # include <unistd.h>
 #endif
 
-using lyx::frontend::WorkArea;
+using frontend::WorkArea;
 
-using lyx::docstring;
-using lyx::support::bformat;
-using lyx::support::makeDisplayPath;
-using lyx::support::onlyFilename;
+using support::bformat;
+using support::FileName;
+using support::makeDisplayPath;
+using support::onlyFilename;
 
 using std::endl;
 using std::string;
@@ -137,7 +137,7 @@ void LyXView::setBuffer(Buffer * b)
 }
 
 
-bool LyXView::loadLyXFile(string const & filename, bool tolastfiles)
+bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 {
 	busy(true);
 

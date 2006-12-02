@@ -55,7 +55,6 @@ using namespace std;
 using support::bformat;
 using support::FileName;
 using support::libFileSearch;
-using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::onlyPath;
@@ -69,13 +68,13 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-bool readFile(Buffer * const b, string const & s)
+bool readFile(Buffer * const b, FileName const & s)
 {
 	BOOST_ASSERT(b);
 
 	// File information about normal file
-	if (!fs::exists(s)) {
-		docstring const file = makeDisplayPath(s, 50);
+	if (!fs::exists(s.toFilesystemEncoding())) {
+		docstring const file = makeDisplayPath(s.absFilename(), 50);
 		docstring text = bformat(_("The specified document\n%1$s"
 						     "\ncould not be read."), file);
 		Alert::error(_("Could not read document"), text);
@@ -83,12 +82,13 @@ bool readFile(Buffer * const b, string const & s)
 	}
 
 	// Check if emergency save file exists and is newer.
-	string const e = onlyPath(s) + onlyFilename(s) + ".emergency";
+	FileName const e(s.absFilename() + ".emergency");
 
-	if (fs::exists(e) && fs::exists(s)
-	    && fs::last_write_time(e) > fs::last_write_time(s))
+	if (fs::exists(e.toFilesystemEncoding()) &&
+	    fs::exists(s.toFilesystemEncoding()) &&
+	    fs::last_write_time(e.toFilesystemEncoding()) > fs::last_write_time(s.toFilesystemEncoding()))
 	{
-		docstring const file = makeDisplayPath(s, 20);
+		docstring const file = makeDisplayPath(s.absFilename(), 20);
 		docstring const text =
 			bformat(_("An emergency save of the document "
 				  "%1$s exists.\n\n"
@@ -100,7 +100,7 @@ bool readFile(Buffer * const b, string const & s)
 		case 0:
 			// the file is not saved if we load the emergency file.
 			b->markDirty();
-			return b->readFile(e);
+			return b->readFile(e.absFilename());
 		case 1:
 			break;
 		default:
@@ -109,12 +109,13 @@ bool readFile(Buffer * const b, string const & s)
 	}
 
 	// Now check if autosave file is newer.
-	string const a = onlyPath(s) + '#' + onlyFilename(s) + '#';
+	FileName const a(onlyPath(s.absFilename()) + '#' + onlyFilename(s.absFilename()) + '#');
 
-	if (fs::exists(a) && fs::exists(s)
-	    && fs::last_write_time(a) > fs::last_write_time(s))
+	if (fs::exists(a.toFilesystemEncoding()) &&
+	    fs::exists(s.toFilesystemEncoding()) &&
+	    fs::last_write_time(a.toFilesystemEncoding()) > fs::last_write_time(s.toFilesystemEncoding()))
 	{
-		docstring const file = makeDisplayPath(s, 20);
+		docstring const file = makeDisplayPath(s.absFilename(), 20);
 		docstring const text =
 			bformat(_("The backup of the document "
 				  "%1$s is newer.\n\nLoad the "
@@ -126,16 +127,16 @@ bool readFile(Buffer * const b, string const & s)
 		case 0:
 			// the file is not saved if we load the autosave file.
 			b->markDirty();
-			return b->readFile(a);
+			return b->readFile(a.absFilename());
 		case 1:
 			// Here we delete the autosave
-			unlink(FileName(makeAbsPath(a)));
+			unlink(a);
 			break;
 		default:
 			return false;
 		}
 	}
-	return b->readFile(s);
+	return b->readFile(s.absFilename());
 }
 
 
@@ -143,19 +144,19 @@ bool readFile(Buffer * const b, string const & s)
 
 
 
-bool loadLyXFile(Buffer * b, string const & s)
+bool loadLyXFile(Buffer * b, FileName const & s)
 {
 	BOOST_ASSERT(b);
 
-	if (fs::is_readable(s)) {
+	if (fs::is_readable(s.toFilesystemEncoding())) {
 		if (readFile(b, s)) {
 			b->lyxvc().file_found_hook(s);
-			if (!fs::is_writable(s))
+			if (!fs::is_writable(s.toFilesystemEncoding()))
 				b->setReadonly(true);
 			return true;
 		}
 	} else {
-		docstring const file = makeDisplayPath(s, 20);
+		docstring const file = makeDisplayPath(s.absFilename(), 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
 			docstring const text =

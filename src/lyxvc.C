@@ -54,9 +54,9 @@ LyXVC::~LyXVC()
 {}
 
 
-bool LyXVC::file_found_hook(string const & fn)
+bool LyXVC::file_found_hook(FileName const & fn)
 {
-	string found_file;
+	FileName found_file;
 	// Check if file is under RCS
 	if (!(found_file = RCS::find_file(fn)).empty()) {
 		vcs.reset(new RCS(found_file));
@@ -74,7 +74,7 @@ bool LyXVC::file_found_hook(string const & fn)
 }
 
 
-bool LyXVC::file_not_found_hook(string const & fn)
+bool LyXVC::file_not_found_hook(FileName const & fn)
 {
 	// Check if file is under RCS
 	if (!RCS::find_file(fn).empty())
@@ -93,10 +93,10 @@ void LyXVC::buffer(Buffer * buf)
 
 void LyXVC::registrer()
 {
-	string const filename = owner_->fileName();
+	FileName const filename(owner_->fileName());
 
 	// there must be a file to save
-	if (!isFileReadable(FileName(makeAbsPath(filename)))) {
+	if (!isFileReadable(filename)) {
 		Alert::error(_("Document not saved"),
 			     _("You must save the document "
 					    "before it can be registered."));
@@ -105,19 +105,19 @@ void LyXVC::registrer()
 
 	// it is very likely here that the vcs is not created yet...
 	if (!vcs) {
-		string const cvs_entries = "CVS/Entries";
+		FileName const cvs_entries(makeAbsPath("CVS/Entries"));
 
-		if (isFileReadable(FileName(makeAbsPath(cvs_entries)))) {
+		if (isFileReadable(cvs_entries)) {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< to_utf8(makeDisplayPath(filename))
+				<< to_utf8(makeDisplayPath(filename.absFilename()))
 				<< " with CVS" << endl;
 			vcs.reset(new CVS(cvs_entries, filename));
 
 		} else {
 			lyxerr[Debug::LYXVC]
 				<< "LyXVC: registering "
-				<< to_utf8(makeDisplayPath(filename))
+				<< to_utf8(makeDisplayPath(filename.absFilename()))
 				<< " with RCS" << endl;
 			vcs.reset(new RCS(filename));
 		}
@@ -229,7 +229,7 @@ string const LyXVC::getLogFile() const
 	if (!vcs)
 		return string();
 
-	string tmpf = tempName(string(), "lyxvclog");
+	FileName const tmpf(tempName(string(), "lyxvclog"));
 	if (tmpf.empty()) {
 		lyxerr[Debug::LYXVC] << "Could not generate logfile "
 				     << tmpf << endl;
@@ -237,7 +237,7 @@ string const LyXVC::getLogFile() const
 	}
 	lyxerr[Debug::LYXVC] << "Generating logfile " << tmpf << endl;
 	vcs->getLog(tmpf);
-	return tmpf;
+	return tmpf.absFilename();
 }
 
 

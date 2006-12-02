@@ -12,6 +12,8 @@
 #ifndef VC_BACKEND_H
 #define VC_BACKEND_H
 
+#include "support/filename.h"
+
 #include <string>
 
 
@@ -44,7 +46,7 @@ public:
 	 * getLog - read the revision log into the given file
 	 * @param fname file name to read into
 	 */
-	virtual void getLog(std::string const &) = 0;
+	virtual void getLog(support::FileName const &) = 0;
 	/// return the current version description
 	virtual std::string const versionString() const = 0;
 	/// return the current version
@@ -75,7 +77,7 @@ protected:
 	 * The master VC file. For RCS this is *,v or RCS/ *,v. master should
 	 * have full path.
 	 */
-	std::string master_;
+	support::FileName master_;
 
 	/// The status of the VC controlled file.
 	VCStatus vcstatus;
@@ -98,12 +100,12 @@ class RCS : public VCS {
 public:
 
 	explicit
-	RCS(std::string const & m);
+	RCS(support::FileName const & m);
 
 	/// return the revision file for the given file, if found
-	static std::string const find_file(std::string const & file);
+	static support::FileName const find_file(support::FileName const & file);
 
-	static void retrieve(std::string const & file);
+	static void retrieve(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
 
@@ -115,7 +117,7 @@ public:
 
 	virtual void undoLast();
 
-	virtual void getLog(std::string const &);
+	virtual void getLog(support::FileName const &);
 
 	virtual std::string const versionString() const {
 		return "RCS: " + version_;
@@ -131,10 +133,10 @@ class CVS : public VCS {
 public:
 	///
 	explicit
-	CVS(std::string const & m, std::string const & f);
+	CVS(support::FileName const & m, support::FileName const & f);
 
 	/// return the revision file for the given file, if found
-	static std::string const find_file(std::string const & file);
+	static support::FileName const find_file(support::FileName const & file);
 
 	virtual void registrer(std::string const & msg);
 
@@ -146,7 +148,7 @@ public:
 
 	virtual void undoLast();
 
-	virtual void getLog(std::string const &);
+	virtual void getLog(support::FileName const &);
 
 	virtual std::string const versionString() const {
 		return "CVS: " + version_;
@@ -156,7 +158,7 @@ protected:
 	virtual void scanMaster();
 
 private:
-	std::string file_;
+	support::FileName file_;
 };
 
 } // namespace lyx

@@ -1045,7 +1045,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// might be visible in more than one LyXView.
 			if (lyx_view_ && lyx_view_->view()->buffer()) {
 				// save cursor Position for opened files to .lyx/session
-				LyX::ref().session().lastFilePos().save(lyx_view_->buffer()->fileName(),
+				LyX::ref().session().lastFilePos().save(FileName(lyx_view_->buffer()->fileName()),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 			}
 
@@ -1076,14 +1076,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				setErrorMessage(_("Missing argument"));
 				break;
 			}
-			string const fname = i18nLibFileSearch("doc", arg, "lyx").absFilename();
+			FileName const fname = i18nLibFileSearch("doc", arg, "lyx");
 			if (fname.empty()) {
 				lyxerr << "LyX: unable to find documentation file `"
 							 << arg << "'. Bad installation?" << endl;
 				break;
 			}
 			lyx_view_->message(bformat(_("Opening help file %1$s..."),
-				makeDisplayPath(fname)));
+				makeDisplayPath(fname.absFilename())));
 			lyx_view_->loadLyXFile(fname, false);
 			break;
 		}
@@ -1196,10 +1196,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			} else {
 				// Must replace extension of the file to be .lyx
 				// and get full path
-				string const s = changeExtension(file_name, ".lyx");
+				FileName const s = fileSearch(string(), changeExtension(file_name, ".lyx"), "lyx");
 				// Either change buffer or load the file
-				if (theBufferList().exists(s)) {
-					lyx_view_->setBuffer(theBufferList().getBuffer(s));
+				if (theBufferList().exists(s.absFilename())) {
+					lyx_view_->setBuffer(theBufferList().getBuffer(s.absFilename()));
 				} else {
 					lyx_view_->loadLyXFile(s);
 				}
@@ -1359,7 +1359,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (theBufferList().exists(filename))
 				lyx_view_->setBuffer(theBufferList().getBuffer(filename));
 			else
-				lyx_view_->loadLyXFile(filename);
+				lyx_view_->loadLyXFile(FileName(filename));
 			// Set the parent name of the child document.
 			// This makes insertion of citations and references in the child work,
 			// when the target is in the parent or another child document.
@@ -1678,15 +1678,16 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			unsigned int idx = convert<unsigned int>(to_utf8(cmd.argument()));
 			BookmarksSection::Bookmark const bm = LyX::ref().session().bookmarks().bookmark(idx);
 			BOOST_ASSERT(!bm.filename.empty());
+			string const file = bm.filename.absFilename();
 			// if the file is not opened, open it.
-			if (!theBufferList().exists(bm.filename))
-				dispatch(FuncRequest(LFUN_FILE_OPEN, bm.filename));
+			if (!theBufferList().exists(file))
+				dispatch(FuncRequest(LFUN_FILE_OPEN, file));
 			// open may fail, so we need to test it again
-			if (theBufferList().exists(bm.filename)) {
+			if (theBufferList().exists(file)) {
 				// if the current buffer is not that one, switch to it.
-				if (lyx_view_->buffer()->fileName() != bm.filename)
-					dispatch(FuncRequest(LFUN_BUFFER_SWITCH, bm.filename));
-				// BOOST_ASSERT(lyx_view_->buffer()->fileName() != bm.filename);
+				if (lyx_view_->buffer()->fileName() != file)
+					dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
+				// BOOST_ASSERT(lyx_view_->buffer()->fileName() != file);
 				view()->moveToPosition(bm.par_id, bm.par_pos);
 			} 
 			break;
@@ -1795,6 +1796,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 
 void LyXFunc::menuNew(string const & name, bool fromTemplate)
 {
+	// FIXME: initpath is not used. What to do?
 	string initpath = lyxrc.document_path;
 	string filename(name);
 
@@ -1884,10 +1886,8 @@ void LyXFunc::open(string const & fname)
 	// get absolute path of file and add ".lyx" to the filename if
 	// necessary
 	FileName const fullname = fileSearch(string(), filename, "lyx");
-	BOOST_ASSERT(!fullname.empty());
-	filename = fullname.absFilename();
-
-	docstring const disp_fn = makeDisplayPath(filename);
+	if (!fullname.empty())
+		filename = fullname.absFilename();
 
 	// if the file doesn't exist, let the user create one
 	if (!fs::exists(fullname.toFilesystemEncoding())) {
@@ -1898,10 +1898,11 @@ void LyXFunc::open(string const & fname)
 		return;
 	}
 
+	docstring const disp_fn = makeDisplayPath(filename);
 	lyx_view_->message(bformat(_("Opening document %1$s..."), disp_fn));
 
 	docstring str2;
-	if (lyx_view_->loadLyXFile(filename)) {
+	if (lyx_view_->loadLyXFile(fullname)) {
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);
@@ -1963,13 +1964,13 @@ void LyXFunc::doImport(string const & argument)
 		return;
 
 	// get absolute path of file
-	filename = makeAbsPath(filename);
+	FileName const fullname(makeAbsPath(filename));
 
-	string const lyxfile = changeExtension(filename, ".lyx");
+	FileName const lyxfile(changeExtension(fullname.absFilename(), ".lyx"));
 
 	// Check if the document already is open
-	if (use_gui && theBufferList().exists(lyxfile)) {
-		if (!theBufferList().close(theBufferList().getBuffer(lyxfile), true)) {
+	if (use_gui && theBufferList().exists(lyxfile.absFilename())) {
+		if (!theBufferList().close(theBufferList().getBuffer(lyxfile.absFilename()), true)) {
 			lyx_view_->message(_("Canceled."));
 			return;
 		}
@@ -1977,8 +1978,8 @@ void LyXFunc::doImport(string const & argument)
 
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
-	if (fs::exists(lyxfile) && filename != lyxfile) {
-		docstring const file = makeDisplayPath(lyxfile, 30);
+	if (fs::exists(lyxfile.toFilesystemEncoding()) && fullname != lyxfile) {
+		docstring const file = makeDisplayPath(lyxfile.absFilename(), 30);
 
 		docstring text = bformat(_("The document %1$s already exists.\n\n"
 						     "Do you want to over-write that document?"), file);
@@ -1992,7 +1993,7 @@ void LyXFunc::doImport(string const & argument)
 	}
 
 	ErrorList errorList;
-	Importer::Import(lyx_view_, filename, format, errorList);
+	Importer::Import(lyx_view_, fullname, format, errorList);
 	// FIXME (Abdel 12/08/06): Is there a need to display the error list here?
 }
 
@@ -2000,7 +2001,7 @@ void LyXFunc::doImport(string const & argument)
 void LyXFunc::closeBuffer()
 {
 	// save current cursor position
-	LyX::ref().session().lastFilePos().save(lyx_view_->buffer()->fileName(),
+	LyX::ref().session().lastFilePos().save(FileName(lyx_view_->buffer()->fileName()),
 		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 	if (theBufferList().close(lyx_view_->buffer(), true) && !quitting) {
 		if (theBufferList().empty()) {

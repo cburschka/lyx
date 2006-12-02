@@ -40,13 +40,13 @@ using std::string;
 using std::vector;
 
 
-bool Importer::Import(LyXView * lv, string const & filename,
+bool Importer::Import(LyXView * lv, FileName const & filename,
 		      string const & format, ErrorList & errorList)
 {
-	docstring const displaypath = makeDisplayPath(filename);
+	docstring const displaypath = makeDisplayPath(filename.absFilename());
 	lv->message(bformat(_("Importing %1$s..."), displaypath));
 
-	string const lyxfile = changeExtension(filename, ".lyx");
+	FileName const lyxfile(changeExtension(filename.absFilename(), ".lyx"));
 
 	string loader_format;
 	vector<string> loaders = Loaders();
@@ -55,10 +55,10 @@ bool Importer::Import(LyXView * lv, string const & filename,
 		     it != loaders.end(); ++it) {
 			if (converters.isReachable(format, *it)) {
 				string const tofile =
-					changeExtension(filename,
+					changeExtension(filename.absFilename(),
 						formats.extension(*it));
-				if (!converters.convert(0, FileName(filename), FileName(tofile),
-							FileName(filename), format, *it, errorList))
+				if (!converters.convert(0, filename, FileName(tofile),
+							filename, format, *it, errorList))
 					return false;
 				loader_format = *it;
 				break;
@@ -78,14 +78,14 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	if (loader_format == "lyx") {
 		lv->loadLyXFile(lyxfile);
 	} else {
-		Buffer * const b = newFile(lyxfile, string(), true);
+		Buffer * const b = newFile(lyxfile.absFilename(), string(), true);
 		if (b)
 			lv->setBuffer(b);
 		else
 			return false;
 		bool as_paragraphs = loader_format == "textparagraph";
-		string filename2 = (loader_format == format) ? filename
-			: changeExtension(filename,
+		string filename2 = (loader_format == format) ? filename.absFilename()
+			: changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
 		insertAsciiFile(lv->view(), filename2, as_paragraphs);
 		lv->dispatch(FuncRequest(LFUN_MARK_OFF));

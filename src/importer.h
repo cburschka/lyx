@@ -20,6 +20,8 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class LyXView;
 class ErrorList;
 class Format;
@@ -27,7 +29,7 @@ class Format;
 class Importer {
 public:
 	///
-	static bool Import(LyXView * lv, std::string const & filename,
+	static bool Import(LyXView * lv, support::FileName const & filename,
 		    std::string const & format, ErrorList & errorList);
 
 	///

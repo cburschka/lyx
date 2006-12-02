@@ -14,6 +14,8 @@
 #ifndef LYX_MAIN_H
 #define LYX_MAIN_H
 
+#include "support/filename.h"
+
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
@@ -121,10 +123,10 @@ private:
 	\return exit code failure if any.
 	*/
 	int loadFiles(int & argc, char * argv[],
-		std::vector<std::string> & files);
+		std::vector<support::FileName> & files);
 
 	/// Create a View and restore GUI Session.
-	void restoreGuiSession(std::vector<std::string> const & files);
+	void restoreGuiSession(std::vector<support::FileName> const & files);
 
 	/// Initialize RC font for the GUI.
 	void initGuiFont();

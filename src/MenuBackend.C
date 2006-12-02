@@ -448,10 +448,11 @@ void expandLastfiles(Menu & tomenu)
 	int ii = 1;
 
 	for (; lfit != lf.end() && ii < 10; ++lfit, ++ii) {
+		string const file = lfit->absFilename();
 		docstring const label = convert<docstring>(ii) + ". "
-			+ makeDisplayPath((*lfit), 30)
+			+ makeDisplayPath(file, 30)
 			+ char_type('|') + convert<docstring>(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))));
+		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, file)));
 	}
 }
 
@@ -486,7 +487,7 @@ void expandBookmarks(Menu & tomenu)
 	for (size_t i = 1; i <= bm.size(); ++i) {
 		if (bm.isValid(i)) {
 			docstring const label = convert<docstring>(i) + ". "
-				+ makeDisplayPath(bm.bookmark(i).filename, 20)
+				+ makeDisplayPath(bm.bookmark(i).filename.absFilename(), 20)
 				+ char_type('|') + convert<docstring>(i);
 			tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_BOOKMARK_GOTO, 
 				convert<docstring>(i))));

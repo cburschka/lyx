@@ -13,7 +13,8 @@
 #ifndef SESSION_H
 #define SESSION_H
 
-#include <support/types.h>
+#include "support/filename.h"
+#include "support/types.h"
 
 #include <boost/utility.hpp>
 #include <boost/tuple/tuple.hpp>
@@ -55,7 +56,7 @@ class LastFilesSection : SessionSection
 {
 public:
 	///
-	typedef std::deque<std::string> LastFiles;
+	typedef std::deque<support::FileName> LastFiles;
 
 public:
 	///
@@ -77,7 +78,7 @@ public:
 	    file in the list is popped from the end.
 	    @param file the file to insert in the lastfile list.
 	*/
-	void add(std::string const & file);
+	void add(support::FileName const & file);
 
 private:
 	/// Default number of lastfiles.
@@ -103,7 +104,7 @@ class LastOpenedSection : SessionSection
 {
 public:
 	///
-	typedef std::vector<std::string> LastOpened;
+	typedef std::vector<support::FileName> LastOpened;
 
 public:
 	///
@@ -118,7 +119,7 @@ public:
 	/** add file to lastopened file list
 	    @param file filename to add
 	*/
-	void add(std::string const & file);
+	void add(support::FileName const & file);
 
 	/** clear lastopened file list
 	 */
@@ -137,7 +138,7 @@ public:
 	typedef boost::tuple<pit_type, pos_type> FilePos;
 
 	///
-	typedef std::map<std::string, FilePos> FilePosMap;
+	typedef std::map<support::FileName, FilePos> FilePosMap;
 
 public:
 	///
@@ -153,12 +154,12 @@ public:
 	    @param fname file entry for which to save position information
 	    @param pos position of the cursor when the file is closed.
 	*/
-	void save(std::string const & fname, FilePos pos);
+	void save(support::FileName const & fname, FilePos pos);
 
 	/** load saved cursor position from the fname entry in the filepos map
 	    @param fname file entry for which to load position information
 	*/
-	FilePos load(std::string const & fname) const;
+	FilePos load(support::FileName const & fname) const;
 
 private:
 	/// default number of lastfilepos to save */
@@ -177,7 +178,7 @@ public:
 	class Bookmark {
 	public:
 		/// Filename
-		std::string filename;
+		support::FileName filename;
 		/// Cursor paragraph Id
 		int par_id;
 		/// Cursor position
@@ -185,7 +186,7 @@ public:
 		///
 		Bookmark() : par_id(0), par_pos(0) {}
 		///
-		Bookmark(std::string const & f, int id, pos_type pos)
+		Bookmark(support::FileName const & f, int id, pos_type pos)
 			: filename(f), par_id(id), par_pos(pos) {}
 	};
 
@@ -199,7 +200,7 @@ public:
 
 	/// Save the current position as bookmark
 	/// if save==false, save to temp_bookmark
-	void save(std::string const & fname, int par_id, pos_type par_pos, bool persistent);
+	void save(support::FileName const & fname, int par_id, pos_type par_pos, bool persistent);
 
 	/// return bookmark, return temp_bookmark if i==0
 	Bookmark const & bookmark(unsigned int i) const;
@@ -379,7 +380,7 @@ public:
 
 private:
 	/// file to save session, determined in the constructor.
-	std::string session_file;
+	support::FileName session_file;
 
 	/** Read the session file.
 	    Reads the #.lyx/session# at the beginning of the LyX session.
