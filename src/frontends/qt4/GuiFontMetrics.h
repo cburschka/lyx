@@ -17,6 +17,7 @@
 #include "support/docstring.h"
 
 #include <QFontMetrics>
+#include <QHash>
 
 // Starting with version 3.1.0, Qt/X11 does its own caching of
 // character width, so it is not necessary to provide ours.
@@ -26,16 +27,6 @@
 
 namespace lyx {
 namespace frontend {
-
-size_t const MaxCharType = 65536;
-
-struct CharMetrics
-{
-	short int width;
-	short int ascent;
-	short int descent;
-};
-
 
 class GuiFontMetrics: public FontMetrics
 {
@@ -82,15 +73,23 @@ private:
 	bool smallcaps_shape_;
 
 #ifdef USE_LYX_FONTCACHE
-	/// fill in \c metrics_cache_ at specified value.
-	void fillCache(unsigned short val) const;
+
 	/// Cache of char widths
 	/** This cache adds 20Mo of memory to the LyX executable when
 	* loading UserGuide.lyx which contains a good number of fonts. If
 	* this turns out to be too much, we can switch to a \c QHash based
 	* solution.
 	**/
-	mutable CharMetrics metrics_cache_[MaxCharType];
+	mutable QHash<char_type, int> width_cache_;
+
+	struct AscendDescend {
+		short int ascent;
+		short int descent;
+	};
+	mutable QHash<char_type, AscendDescend> metrics_cache_;
+	/// fill in \c metrics_cache_ at specified value.
+	void fillMetricsCache(char_type) const;
+
 #endif // USE_LYX_FONTCACHE
 };
 

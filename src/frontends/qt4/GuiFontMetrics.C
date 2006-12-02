@@ -24,22 +24,9 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-namespace {
-// Used for checking initialisation state of the C-ish metrics table.
-const short int BadMetrics = -1000;
-}
-
-
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 : metrics_(font), smallcaps_metrics_(font), smallcaps_shape_(false)
 {
-#ifdef USE_LYX_FONTCACHE
- for (size_t i = 0; i != MaxCharType; ++i) {
-	 metrics_cache_[i].width = BadMetrics;
-	 metrics_cache_[i].ascent = BadMetrics;
-	 metrics_cache_[i].descent = BadMetrics;
- }
-#endif
 }
 
 
@@ -185,61 +172,41 @@ int GuiFontMetrics::descent(char_type c) const
 
 #else
 
-void GuiFontMetrics::fillCache(unsigned short val) const
+void GuiFontMetrics::fillMetricsCache(char_type c) const
 {
-	QRect const & r = metrics_.boundingRect(QChar(val));
-	metrics_cache_[val].descent = static_cast<short>(r.bottom() + 1);
-	metrics_cache_[val].ascent = static_cast<short>(-r.top());
+	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
+	AscendDescend ad = { -r.top(), r.bottom() + 1};
 	// We could as well compute the width but this is not really
 	// needed for now as it is done directly in width() below.
-	//metrics_cache_[val].width = metrics_.width(QChar(val));
+	metrics_cache_.insert(c, ad);
 }
 
 
 int GuiFontMetrics::width(char_type c) const
 {
-	// FIXME: The following cast is not a real conversion but it work
-	// for the ucs2 subrange of unicode. Instead of an assertion we should
-	// give the metrics of some special characters that indicates that
-	// its display is not supported.
-	BOOST_ASSERT(c < MaxCharType);
-	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].width == BadMetrics) {
-		metrics_cache_[val].width 
-			= static_cast<short>(metrics_.width(QChar(val)));
+	if (!width_cache_.contains(c)) {
+		width_cache_.insert(c, metrics_.width(ucs4_to_qchar(c)));
 	}
 
-	return metrics_cache_[val].width;
+	return width_cache_.value(c);
 }
 
 
 int GuiFontMetrics::ascent(char_type c) const
 {
-	// FIXME: The following cast is not a real conversion but it work
-	// for the ucs2 subrange of unicode. Instead of an assertion we should
-	// give the metrics of some special characters that indicates that
-	// its display is not supported.
-	BOOST_ASSERT(c < MaxCharType);
-	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].ascent == BadMetrics)
-		fillCache(val);
+	if (!metrics_cache_.contains(c))
+		fillMetricsCache(c);
 
-	return metrics_cache_[val].ascent;
+	return metrics_cache_.value(c).ascent;
 }
 
 
 int GuiFontMetrics::descent(char_type c) const
 {
-	// FIXME: The following cast is not a real conversion but it work
-	// for the ucs2 subrange of unicode. Instead of an assertion we should
-	// give the metrics of some special characters that indicates that
-	// its display is not supported.
-	BOOST_ASSERT(c < MaxCharType);
-	unsigned short val = static_cast<unsigned short>(c);
-	if (metrics_cache_[val].descent == BadMetrics)
-		fillCache(val);
+	if (!metrics_cache_.contains(c))
+		fillMetricsCache(c);
 
-	return metrics_cache_[val].descent;
+	return metrics_cache_.value(c).descent;
 }
 
 #endif
