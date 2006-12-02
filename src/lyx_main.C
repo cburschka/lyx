@@ -177,13 +177,6 @@ frontend::Application * theApp()
 
 LyX::~LyX()
 {
-	// Static data are not treated in the same way at all on the Mac (and
-	// the LyX singleton has static methods). This is the reason why the
-	// exit command on the Mac bypasses our dispatch machinery altogether.
-	// On Linux and Windows we won't pass a second time through quit()
-	// because quitting will already be set to true.
-	if (!quitting)
-		quit();
 }
 
 
@@ -402,12 +395,7 @@ int LyX::exec(int & argc, char * argv[])
 
 	exit_status = pimpl_->application_->exec();
 	
-	// FIXME: Do we still need this reset?
-	//        I assume it is the reason for strange Mac crashs 
-	//        Test by reverting rev 16110 (Peter)
-	// Kill the application object before exiting. This avoid crash
-	// on exit on Linux.
-	pimpl_->application_.reset();
+	prepareExit();
 
 	// Restore original font resources after Application is destroyed.
 	support::restoreFontResources();
@@ -442,6 +430,19 @@ void LyX::prepareExit()
 			from_utf8(package().temp_dir()));
 		Alert::warning(_("Unable to remove temporary directory"), msg);
 	}
+
+	if (use_gui) {
+		if (pimpl_->session_)
+			pimpl_->session_->writeFile();
+		pimpl_->session_.reset();
+		pimpl_->lyx_server_.reset();
+		pimpl_->lyx_socket_.reset();
+	}
+
+	// Kill the application object before exiting. This avoid crash
+	// on exit on Linux.
+	if (pimpl_->application_)
+		pimpl_->application_.reset();
 }
 
 
@@ -452,22 +453,6 @@ void LyX::earlyExit(int status)
 	// point so it's safe to just exit after some cleanup.
 	prepareExit();
 	exit(status);
-}
-
-
-void LyX::quit()
-{
-	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
-
-	prepareExit();
-	if (use_gui) {
-		if (pimpl_->session_)
-			pimpl_->session_->writeFile();
-		pimpl_->lyx_server_.reset();
-		pimpl_->lyx_socket_.reset();
-		if (pimpl_->application_)
-			pimpl_->application_->exit(0);
-	}
 }
 
 

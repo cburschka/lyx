@@ -168,8 +168,7 @@ public:
 	* remove a I/O read callback
 	* @param fd socket descriptor (file/socket/etc)
 	*/
-	template<class T>
-	void unregisterSocketCallback(T fd);
+	virtual void unregisterSocketCallback(int fd) = 0;
 
 	/// Create the main window with given geometry settings.
 	LyXView & createView(unsigned int width, unsigned int height,

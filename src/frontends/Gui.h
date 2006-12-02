@@ -38,23 +38,26 @@ public:
 	virtual ~Gui() {}
 
 	///
-	virtual int newView() = 0;
+	virtual LyXView& createRegisteredView() = 0;
 	///
-	virtual LyXView & view(int id) = 0;
+	virtual bool unregisterView(int id) = 0;
+	///
+	virtual bool closeAllViews()= 0;
 
 	///
+	virtual LyXView& view(int id) const = 0;
+	///
+	std::vector<int> const & viewIds() 
+	{ 
+		return view_ids_; 
+	}
+
+
 	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id) = 0;
 	///
 	virtual WorkArea & workArea(int id) = 0;
-	///
-	virtual bool closeAll() = 0;
-
-	///
-	std::vector<int> const & viewIds() { return view_ids_; };
 
 protected:
-	/// view of a buffer. Eventually there will be several.
-	std::map<int, boost::shared_ptr<BufferView> > buffer_views_;
 
 	std::vector<int> view_ids_;
 };

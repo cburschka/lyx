@@ -66,13 +66,6 @@ public:
 	/// in the case of failure
 	void emergencyCleanup() const;
 
-	/// Ask the LyX class to exit.
-	/**
-	In GUI mode, after this function has been called, application_ leaves
-	the main event loop and returns from the call to Application::start().
-	*/
-	void quit();
-
 	///
 	BufferList & bufferList();
 	BufferList const & bufferList() const;

@@ -17,6 +17,7 @@
 #include "Toolbars.h"
 #include "Menubar.h"
 #include "WorkArea.h"
+#include "Gui.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -398,12 +399,6 @@ void LyXView::updateWindowTitle()
 
 void LyXView::dispatch(FuncRequest const & cmd)
 {
-	if (cmd.action == LFUN_WINDOW_CLOSE) {
-		close();
-		closed(id_);
-		return;
-	}
-
 	theLyXFunc().setLyXView(this);
 	lyx::dispatch(cmd);
 }

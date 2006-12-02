@@ -38,19 +38,17 @@ public:
 	GuiImplementation();
 	virtual ~GuiImplementation() {}
 
-	virtual int newView();
-	virtual LyXView& view(int id);
+
+	virtual LyXView& createRegisteredView();
+	virtual bool closeAllViews();
+	virtual bool unregisterView(int id);
+
+	virtual LyXView& view(int id) const;
+
 	virtual int newWorkArea(unsigned int width, unsigned int height, int view_id);
 	virtual WorkArea& workArea(int id);
-	virtual bool closeAll();
-
-public Q_SLOTS:
-	///
-	void unregisterView(GuiView * view);
 
 private:
-	///
-	void buildViewIds();
 
 	/// Multiple views container.
 	/**
@@ -67,9 +65,14 @@ private:
 	*/
 	std::map<int, GuiWorkArea *> work_areas_;
 	///
-	size_t max_view_id_;
-	///
-	size_t max_wa_id_;
+
+	/// view of a buffer. Eventually there will be several.
+	std::map<int, boost::shared_ptr<BufferView> > buffer_views_;
+
+
+	std::vector<int> const & workAreaIds();
+
+	std::vector<int> work_area_ids_;
 };
 
 } // namespace frontend

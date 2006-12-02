@@ -155,6 +155,12 @@ unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
 GuiView::GuiView(int id)
 	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
 {
+	// Qt bug? signal lastWindowClosed does not work
+	setAttribute(Qt::WA_QuitOnClose, false);
+	// FIXME: enable to avoid memory leaks but it prduces a crash 
+	//        after a new window has been close (click into the menu)
+	//setAttribute(Qt::WA_DeleteOnClose, false);
+
 	// hardcode here the platform specific icon size
 	d.smallIconSize = 14;	// scaling problems
 	d.normalIconSize = 20;	// ok, default
@@ -210,9 +216,30 @@ void GuiView::init()
 	updateMenubar();
 }
 
+void GuiView::closeEvent(QCloseEvent * close_event)
+{
+	theApp()->gui().unregisterView(id());	
+	if (theApp()->gui().viewIds().empty())
+	{
+		// this is the place were we leave the frontend
+		// and is the only point were we begin to quit
+		saveGeometry();
+		theBufferList().quitWriteAll();
+		close_event->accept();
+		// quit the event loop
+		qApp->quit();
+	}
+	close_event->accept();
+}
 
 void GuiView::saveGeometry()
 {
+	static bool done = false;
+	if (done)
+		return;
+	else
+		done = true;
+
 	// FIXME:
 	// change the ifdef to 'geometry = normalGeometry();' only
 	// when Trolltech has fixed the broken normalGeometry on X11:
@@ -549,24 +576,6 @@ void GuiView::resizeEvent(QResizeEvent *)
 void GuiView::moveEvent(QMoveEvent *)
 {
 	updateFloatingGeometry();
-}
-
-
-void GuiView::closeEvent(QCloseEvent * close_event)
-{
-	GuiImplementation & gui 
-		= static_cast<GuiImplementation &>(theApp()->gui());
-
-	vector<int> const & view_ids = gui.viewIds();
-
-	if (view_ids.size() == 1 && !theBufferList().quitWriteAll()) {
-		close_event->ignore();
-		return;
-	}
-
-	saveGeometry();
-	hide(); // don't remove this hide, it prevents a crash on exit
-	gui.unregisterView(this);	
 }
 
 

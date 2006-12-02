@@ -1034,12 +1034,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYX_QUIT:
-			if (argument == "closeOnly") {
-				if (!theApp()->gui().closeAll())
-					break;
-				lyx_view_ = 0;
-			}
-
 			// FIXME: this code needs to be transfered somewhere else
 			// as lyx_view_ will most certainly be null and a same buffer
 			// might be visible in more than one LyXView.
@@ -1048,8 +1042,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				LyX::ref().session().lastFilePos().save(FileName(lyx_view_->buffer()->fileName()),
 					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
 			}
-
-			LyX::ref().quit();
+			
+			// save the geometry of the current view 
+			lyx_view_->saveGeometry();
+			// quitting is trigged by the gui code (leaving the event loop)
+			theApp()->gui().closeAllViews();
 			break;
 
 		case LFUN_TOC_VIEW: {
@@ -1670,7 +1667,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			BOOST_ASSERT(theApp());
 			lyx_view_->close();
-			// We return here because lyx_view does not exists anymore.
+			lyx_view_->closed(lyx_view_->id());
 			return;
 
 		case LFUN_BOOKMARK_GOTO: {

@@ -75,7 +75,7 @@ public:
 	virtual void updateColor(LColor_color col);
 	virtual void registerSocketCallback(
 		int fd, boost::function<void()> func);
-	void unregisterSocketCallbackImpl(int fd);
+	void unregisterSocketCallback(int fd);
 	//@}
 
 	///

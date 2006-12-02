@@ -95,6 +95,9 @@ GuiApplication::~GuiApplication()
 GuiApplication::GuiApplication(int & argc, char ** argv)
 	: QApplication(argc, argv), Application(argc, argv)
 {
+	// Qt bug? setQuitOnLastWindowClosed(true); does not work
+	setQuitOnLastWindowClosed(false);
+
 #ifdef Q_WS_X11
 	// doubleClickInterval() is 400 ms on X11 which is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
@@ -277,14 +280,8 @@ void GuiApplication::registerSocketCallback(int fd, boost::function<void()> func
 		boost::shared_ptr<socket_callback>(new socket_callback(fd, func));
 }
 
-template<>
-void Application::unregisterSocketCallback<int>(int fd)
-{
-	GuiApplication* ptr = static_cast<GuiApplication*>(this);
-	ptr->unregisterSocketCallbackImpl(fd);
-}
 
-void GuiApplication::unregisterSocketCallbackImpl(int fd)
+void GuiApplication::unregisterSocketCallback(int fd)
 {
 	socket_callbacks_.erase(fd);
 }

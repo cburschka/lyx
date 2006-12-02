@@ -55,9 +55,9 @@ LyXView & Application::createView(unsigned int width,
 								  unsigned int iconSizeXY,
 								  const std::string & geometryArg)
 {
-	int view_id = gui().newView();
-	LyXView & view = gui().view(view_id);
-
+	LyXView & view = gui().createRegisteredView();
+	int view_id = view.id();
+	
 	theLyXFunc().setLyXView(&view);
 
 	/*int workArea_id_ =*/ gui().newWorkArea(width, height, view_id);
