@@ -101,7 +101,6 @@ inline void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
 
 docstring const qstring_to_ucs4(QString const & qstr);
 
-void qstring_to_ucs4(QString const & qstr, std::vector<char_type> & ucs4);
 
 /**
  * qt_ - i18nize string and convert to unicode

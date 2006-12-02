@@ -138,15 +138,6 @@ docstring const qstring_to_ucs4(QString const & qstr)
 }
 
 
-void qstring_to_ucs4(QString const & qstr, vector<char_type> & ucs4)
-{
-	int const ls = qstr.size();
-	ucs4.clear();
-	for (int i = 0; i < ls; ++i)
-		ucs4.push_back(static_cast<lyx::char_type>(qstr[i].unicode()));
-}
-
-
 QString const qt_(char const * str, const char *)
 {
 	return toqstr(_(str));
