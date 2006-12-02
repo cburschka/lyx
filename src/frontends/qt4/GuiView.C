@@ -157,8 +157,8 @@ GuiView::GuiView(int id)
 {
 	// Qt bug? signal lastWindowClosed does not work
 	setAttribute(Qt::WA_QuitOnClose, false);
-	// FIXME: enable to avoid memory leaks but it prduces a crash 
-	//        after a new window has been close (click into the menu)
+	// FIXME: the following statement avoids memory leaks but produces a
+	//        crash after a new window has been closed (click into the menu)
 	//setAttribute(Qt::WA_DeleteOnClose, false);
 
 	// hardcode here the platform specific icon size
@@ -221,8 +221,8 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	theApp()->gui().unregisterView(id());	
 	if (theApp()->gui().viewIds().empty())
 	{
-		// this is the place were we leave the frontend
-		// and is the only point were we begin to quit
+		// this is the place where we leave the frontend.
+		// it is the only point at which we start quitting.
 		saveGeometry();
 		theBufferList().quitWriteAll();
 		close_event->accept();

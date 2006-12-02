@@ -439,8 +439,8 @@ void LyX::prepareExit()
 		pimpl_->lyx_socket_.reset();
 	}
 
-	// Kill the application object before exiting. This avoid crash
-	// on exit on Linux.
+	// Kill the application object before exiting. This avoids crashes
+	// when exiting on Linux.
 	if (pimpl_->application_)
 		pimpl_->application_.reset();
 }

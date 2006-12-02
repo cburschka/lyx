@@ -1045,7 +1045,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			
 			// save the geometry of the current view 
 			lyx_view_->saveGeometry();
-			// quitting is trigged by the gui code (leaving the event loop)
+			// quitting is triggered by the gui code (leaving the event loop)
 			theApp()->gui().closeAllViews();
 			break;
 
