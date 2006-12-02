@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <utility>
+#include <boost/assert.hpp>
 
 class QComboBox;
 class QLineEdit;
