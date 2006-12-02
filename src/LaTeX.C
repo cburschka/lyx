@@ -564,7 +564,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int retval = NO_ERRORS;
 	string tmp = onlyFilename(changeExtension(file, ".log"));
 	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
-	ifstream ifs(FileName(makeAbsPath(tmp)).toFilesystemEncoding().c_str());
+	FileName const fn = FileName(makeAbsPath(tmp));
+	ifstream ifs(fn.toFilesystemEncoding().c_str());
 
 	string token;
 	while (getline(ifs, token)) {
@@ -796,7 +797,8 @@ void LaTeX::deplog(DepTable & head)
 	// This line is not present if no toc should be created.
 	static regex miktexTocReg("\\\\tf@toc=\\\\write.*");
 
-	ifstream ifs(FileName(makeAbsPath(logfile)).toFilesystemEncoding().c_str());
+	FileName const fn = FileName(makeAbsPath(logfile));
+	ifstream ifs(fn.toFilesystemEncoding().c_str());
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.
 		// Sometimes files are named by "File: xxx" only
