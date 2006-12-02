@@ -20,7 +20,6 @@
 
 
 using lyx::ucs4_codeset;
-using lyx::ucs2_codeset;
 
 using std::string;
 
