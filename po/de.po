@@ -311,14 +311,12 @@ msgid "FontUi"
 msgstr "FontUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:37
-#, fuzzy
 msgid "Sc&ale (%):"
-msgstr "Größe%"
+msgstr "Ska&lierung (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:47
-#, fuzzy
 msgid "S&cale (%):"
-msgstr "Größe%"
+msgstr "S&kalierung (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:57
 msgid "&Base Size:"
@@ -2649,20 +2647,20 @@ msgstr "Stil"
 #: src/frontends/qt4/ui/QTabularUi.ui:313
 msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr ""
+"Verwenden Sie einen formalen, auch 'booktabs' genannten Rahmenstil (ohne "
+"vertikale Rahmen)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:316
-#, fuzzy
 msgid "Fo&rmal"
-msgstr "Normal"
+msgstr "Fo&rmal"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:323
 msgid "Use default (grid-like) border style"
-msgstr ""
+msgstr "Verwenden Sie den standardmäßigen, gitterartigen Rahmenstil"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:326
-#, fuzzy
 msgid "De&fault"
-msgstr "Standard"
+msgstr "&Standard"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:349
 msgid "Set Borders"
@@ -2678,16 +2676,15 @@ msgstr "Zusätzlicher Abstand"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:682
 msgid "T&op of row:"
-msgstr ""
+msgstr "&Oberhalb der Zeile:"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:742
-#, fuzzy
 msgid "Botto&m of row:"
-msgstr "&Ende der Seite"
+msgstr "&Unterhalb der Zeile:"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:755
 msgid "Bet&ween rows:"
-msgstr ""
+msgstr "&Zwischen den Zeilen:"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:793
 msgid "&Longtable"
@@ -2879,13 +2876,12 @@ msgid "Replace the entry with the selection"
 msgstr "Eintrag durch die Auswahl ersetzen"
 
 #: src/frontends/qt4/ui/QTocUi.ui:50
-#, fuzzy
 msgid "<- &Promote"
-msgstr "&Schützen:"
+msgstr "<- Ebene &höher"
 
 #: src/frontends/qt4/ui/QTocUi.ui:57
 msgid "&Demote ->"
-msgstr ""
+msgstr "Ebene &tiefer ->"
 
 #: src/frontends/qt4/ui/QTocUi.ui:130
 msgid "&Type:"
@@ -4130,74 +4126,64 @@ msgid "Frame (no head/foot/sidebars)  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:179
-#, fuzzy
 msgid "EndFrame"
-msgstr "Absendername:"
+msgstr ""
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
 msgstr ""
 
 #: lib/layouts/beamer.layout:207
-#, fuzzy
 msgid "Pause"
-msgstr "Einfügen"
+msgstr ""
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
 #: lib/layouts/beamer.layout:280
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Abschnitt \\arabic{section}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:321
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "@Subsection@.\\arabic{subsubsection}"
+msgstr "Unterabschnitt \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:334
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "\\arabic{chapter}.\\arabic{section}"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
-#, fuzzy
 msgid "AgainFrame"
-msgstr "Legende (Rahmen)"
+msgstr ""
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
 msgstr ""
 
 #: lib/layouts/beamer.layout:386
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Blocksatz"
+msgstr ""
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
 msgstr ""
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "block "
-msgstr "Blocksatz"
+msgstr ""
 
 #: lib/layouts/beamer.layout:520
-#, fuzzy
 msgid "Corollary.  "
-msgstr "Korollar."
+msgstr "Korollar.  "
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
-msgstr "Spalten"
+msgstr "Spalte"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
@@ -4208,9 +4194,8 @@ msgid "Columns"
 msgstr "Spalten"
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
-msgstr "Spalten"
+msgstr "Spalten "
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
@@ -4229,53 +4214,44 @@ msgid "columns (top aligned) "
 msgstr ""
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
-msgstr "Definition."
+msgstr "Definition.  "
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
-msgstr "Definition"
+msgstr "Definitionen"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Definition."
+msgstr "Definitionen.  "
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
-msgstr "Beispiel."
+msgstr "Beispiel.  "
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Beispiel"
+msgstr "Beispiele"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Beispiel."
+msgstr "Beispiele.  "
 
 #: lib/layouts/beamer.layout:702
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Beispiel"
+msgstr ""
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
 msgstr ""
 
 #: lib/layouts/beamer.layout:734
-#, fuzzy
 msgid "Fact.  "
-msgstr "Tatsache."
+msgstr "Tatsache.  "
 
 #: lib/layouts/beamer.layout:737
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "Untertitel"
+msgstr ""
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
@@ -4288,19 +4264,16 @@ msgid "LyX-Code"
 msgstr "LyX-Code"
 
 #: lib/layouts/beamer.layout:819
-#, fuzzy
 msgid "NoteItem"
-msgstr "Neuer Begriff"
+msgstr ""
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
-msgstr "Notiz"
+msgstr "Notiz:  "
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "An"
+msgstr "Nur"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
@@ -4327,14 +4300,12 @@ msgid "overlayarea "
 msgstr "Overlay"
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
-msgstr "Teil"
+msgstr "Teil "
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
-msgstr "Beweis."
+msgstr "Beweis.  "
 
 #: lib/layouts/beamer.layout:953
 #, fuzzy
@@ -8769,9 +8740,8 @@ msgid "&Create"
 msgstr "&Erstellen"
 
 #: src/BufferView.C:542
-#, fuzzy
 msgid "Save bookmark"
-msgstr "Lesezeichen 5 speichern"
+msgstr "Lesezeichen speichern"
 
 #: src/BufferView.C:699
 msgid "No further undo information"
@@ -8985,7 +8955,6 @@ msgid "greyedout inset background"
 msgstr "Grauschrift-Einfügung (Hintergrund)"
 
 #: src/LColor.C:116
-#, fuzzy
 msgid "shaded box"
 msgstr "Schattierte Box"
 
@@ -9164,9 +9133,8 @@ msgid "Plain Text as Paragraphs"
 msgstr "Einfacher Text als Absätze"
 
 #: src/MenuBackend.C:714
-#, fuzzy
 msgid "Master Document"
-msgstr "Dokument speichern"
+msgstr "Hauptdokument"
 
 #: src/MenuBackend.C:746
 msgid "No Table of contents"
@@ -9304,9 +9272,8 @@ msgstr ""
 "Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
 #: src/buffer.C:863
-#, fuzzy
 msgid "Encoding error"
-msgstr "&Kodierung:"
+msgstr "Kodierungsfehler"
 
 #: src/buffer.C:864
 msgid ""
@@ -9316,9 +9283,8 @@ msgid ""
 msgstr ""
 
 #: src/buffer.C:873
-#, fuzzy
 msgid "Error closing file"
-msgstr "Fehler beim Lesen der Datei!"
+msgstr "Fehler beim Schließen der Datei"
 
 #: src/buffer.C:874
 msgid ""
@@ -9557,10 +9523,10 @@ msgstr ""
 "ist ein Fehler aufgetreten"
 
 #: src/converter.C:487
-#, fuzzy, c-format
+#, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr ""
-"Eine temporäre Datei konnte nicht von %1$s nach %2$s verschoben werden."
+"Ein temporäres Verzeichnis konnte nicht von %1$s nach %2$s verschoben werden."
 
 #: src/converter.C:530
 #, c-format
