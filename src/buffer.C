@@ -502,7 +502,7 @@ bool Buffer::readDocument(LyXLex & lex)
 		string theclass = params().getLyXTextClass().name();
 		Alert::error(_("Can't load document class"), bformat(
 			_("Using the default document class, because the "
-				     " class %1$s could not be loaded."), from_utf8(theclass)));
+				     "class %1$s could not be loaded."), from_utf8(theclass)));
 		params().textclass = 0;
 	}
 
