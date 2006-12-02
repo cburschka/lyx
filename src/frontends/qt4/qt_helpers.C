@@ -120,14 +120,6 @@ void ucs4_to_qstring(lyx::docstring const & str, QString & s)
 }
 
 
-QString ucs4_to_qstring(lyx::docstring const & str)
-{
-	QString tmp;
-	ucs4_to_qstring(str, tmp);
-	return tmp;
-}
-
-
 QString const toqstr(docstring const & ucs4)
 {
 	QString s;

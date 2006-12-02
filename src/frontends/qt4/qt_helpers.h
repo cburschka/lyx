@@ -99,8 +99,6 @@ inline void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
 }
 
 
-QString ucs4_to_qstring(docstring const & str);
-
 docstring const qstring_to_ucs4(QString const & qstr);
 
 void qstring_to_ucs4(QString const & qstr, std::vector<char_type> & ucs4);
