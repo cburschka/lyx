@@ -2246,7 +2246,7 @@ msgstr "&Eingabekodierung verwenden"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:36
 msgid "Scrolling"
-msgstr ""
+msgstr "Bilddurchlauf"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:51
 msgid "Cursor follows &scrollbar"
@@ -2269,8 +2269,8 @@ msgid "Session"
 msgstr "Sitzung"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:134
-msgid "Save/restore window size, or use fixed window"
-msgstr ""
+msgid "Save/restore window size, or use fixed size"
+msgstr "Fenstergröße speichern/wieder herstellen oder feste Größe verwenden"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:157
 msgid "Load opened files from last session"
@@ -2278,7 +2278,7 @@ msgstr "Geöffnete Dateien der letzten Sitzung laden"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:164
 msgid "Restore cursor positions"
-msgstr ""
+msgstr "Cursor-Positionen wieder herstellen"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Restore to cursor position when the file was last closed"
@@ -2968,11 +2968,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:49
 msgid "Display complete source"
-msgstr ""
+msgstr "Vollständige Quelle anzeigen"
 
 #: src/frontends/qt4/ui/QViewSourceUi.ui:56
 msgid "Automatic update"
-msgstr ""
+msgstr "Automatische Aktualisierung"
 
 #: src/frontends/qt4/ui/QWrapUi.ui:53
 msgid "Default (outer)"
@@ -4314,7 +4314,7 @@ msgstr "Absatztrennung"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1001
 #, fuzzy
@@ -9141,7 +9141,7 @@ msgstr "Kein Inhaltsverzeichnis"
 
 #: src/MenuBackend.C:791
 msgid " (auto)"
-msgstr ""
+msgstr " (automatisch)"
 
 #: src/SpellBase.C:51
 msgid "Native OS API not yet supported."
@@ -9279,7 +9279,9 @@ msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
-msgstr ""
+msgstr "Einige Zeichen Ihres Dokuments sind in der gewählten Kodierung "
+"nicht darstellbar.\n"
+"Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
 
 #: src/buffer.C:873
 msgid "Error closing file"
@@ -10363,7 +10365,7 @@ msgstr "Eineinhalb"
 #: src/frontends/qt4/QDocumentDialog.C:162
 #: src/frontends/qt4/QDocumentDialog.C:168
 msgid " (not installed)"
-msgstr ""
+msgstr " (nicht installiert)"
 
 #: src/frontends/qt4/QDocumentDialog.C:172
 #: src/frontends/qt4/QDocumentDialog.C:198
@@ -10607,9 +10609,8 @@ msgid "Standard\t\\frac"
 msgstr "Standard\t\\frac"
 
 #: src/frontends/qt4/QMathDialog.C:140
-#, fuzzy
 msgid "No hor. line\t\\atop"
-msgstr "Keine weiteren Einfügungen"
+msgstr "Keine horiz. Linie\t\\atop"
 
 #: src/frontends/qt4/QMathDialog.C:141
 msgid "Nice\t\\nicefrac"
@@ -10850,9 +10851,8 @@ msgid "TeX Information"
 msgstr "TeX-Informationen"
 
 #: src/frontends/qt4/QTocDialog.C:42
-#, fuzzy
 msgid "Toc"
-msgstr "Thema"
+msgstr "Inhaltsverzeichnis"
 
 #: src/frontends/qt4/QVSpace.C:132
 msgid "Vertical Space Settings"
@@ -10917,13 +10917,12 @@ msgstr ""
 "BiBTeX wird die Datenbanken nicht finden."
 
 #: src/insets/insetbibtex.C:259
-#, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
-"BiBTeX wird die Datenbanken nicht finden."
+"Der Pfad zu Ihrer BibTeX-Stil-Datei enthält Leerzeichen.\n"
+"BiBTeX wird sie nicht finden."
 
 #: src/insets/insetbox.C:63
 msgid "Boxed"
@@ -11043,9 +11042,8 @@ msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
 #: src/insets/insethfill.C:48
-#, fuzzy
 msgid "Horizontal Fill"
-msgstr "Variabler horiz. Abstand|V"
+msgstr "Variabler horiz. Abstand"
 
 #: src/insets/insetinclude.C:306
 msgid "Verbatim Input"
@@ -11733,9 +11731,8 @@ msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
 #: src/lyxfunc.C:353
-#, fuzzy
 msgid "Exiting"
-msgstr "Beenden|B"
+msgstr "LyX wird beendet"
 
 #: src/lyxfunc.C:385
 msgid "Nothing to do"
