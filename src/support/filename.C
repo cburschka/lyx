@@ -42,6 +42,7 @@ FileName::FileName(string const & abs_filename)
 	: name_(abs_filename)
 {
 	BOOST_ASSERT(absolutePath(name_));
+	BOOST_ASSERT(!contains(name_, '\\'));
 }
 
 
@@ -49,6 +50,7 @@ void FileName::set(string const & name)
 {
 	name_ = name;
 	BOOST_ASSERT(absolutePath(name_));
+	BOOST_ASSERT(!contains(name_, '\\'));
 }
 
 
