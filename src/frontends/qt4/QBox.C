@@ -265,7 +265,7 @@ void QBox::setSpecial(bool ibox)
 	} else if (ibox && has_special) {
 		dialog_->widthUnitsLC->clear();
 		for (int i = 0; i < num_units; i++)
-			dialog_->widthUnitsLC->addItem(unit_name_gui[i]);
+			dialog_->widthUnitsLC->addItem(qt_(unit_name_gui[i]));
 	}
 }
 

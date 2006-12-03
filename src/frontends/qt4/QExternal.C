@@ -338,7 +338,7 @@ void QExternal::build_dialog()
 	// Fill the width combo
 	dialog_->widthUnitCO->addItem(qt_("Scale%"));
 	for (int i = 0; i < num_units; i++)
-		dialog_->widthUnitCO->addItem(unit_name_gui[i]);
+		dialog_->widthUnitCO->addItem(qt_(unit_name_gui[i]));
 }
 
 

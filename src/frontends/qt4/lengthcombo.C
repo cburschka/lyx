@@ -12,15 +12,15 @@
 #include <config.h>
 
 #include "lengthcombo.h"
-
 #include "lengthcommon.h"
+#include "qt_helpers.h"
 
 
 LengthCombo::LengthCombo(QWidget * parent)
 	: QComboBox(parent)
 {
 	for (int i = 0; i < lyx::num_units; i++)
-		addItem(lyx::unit_name_gui[i]);
+		addItem(lyx::qt_(lyx::unit_name_gui[i]));
 
 	connect(this, SIGNAL(activated(int)),
 		this, SLOT(has_activated(int)));
