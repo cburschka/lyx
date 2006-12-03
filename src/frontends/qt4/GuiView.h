@@ -103,6 +103,9 @@ public Q_SLOTS:
 	void normalSizedIcons();
 	void bigSizedIcons();
 
+	/// slot needed by the Mac
+	void macQuit();
+
 protected:
 	/// make sure we quit cleanly
 	virtual void closeEvent(QCloseEvent * e);
