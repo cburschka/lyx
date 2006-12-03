@@ -72,6 +72,9 @@ void QLPopupMenu::update()
 	if (name_.empty())
 		return;
 
+	// Here, We make sure that theLyXFunc points to the correct LyXView.
+	theLyXFunc().setLyXView(owner_->view());
+
 	Menu const & fromLyxMenu = owner_->backend().getMenu(name_);
 	owner_->backend().expand(fromLyxMenu, topLevelMenu_, owner_->view()->buffer());
 
