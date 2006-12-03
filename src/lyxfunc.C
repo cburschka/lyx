@@ -1667,7 +1667,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			BOOST_ASSERT(theApp());
 			lyx_view_->close();
-			lyx_view_->closed(lyx_view_->id());
 			return;
 
 		case LFUN_BOOKMARK_GOTO: {

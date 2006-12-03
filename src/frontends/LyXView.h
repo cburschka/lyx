@@ -74,9 +74,6 @@ public:
 
 	void setWorkArea(frontend::WorkArea * work_area);
 
-	/// This signal is emitted with the LyXView id when it is closed.
-	boost::signal<void(int)> closed;
-
 	/**
 	 * This is called after the concrete view has been created.
 	 * We have to have the toolbar and the other stuff created
