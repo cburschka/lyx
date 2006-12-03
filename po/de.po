@@ -4322,9 +4322,8 @@ msgid "TitleGraphic"
 msgstr "Grafik"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
-msgstr "Theorem."
+msgstr "Theorem.  "
 
 #: lib/layouts/beamer.layout:1055
 #, fuzzy
@@ -9189,12 +9188,12 @@ msgid "Can't load document class"
 msgstr "Die Dokumentklasse kann nicht geladen werden"
 
 #: src/buffer.C:504
-#, fuzzy, c-format
+#, c-format
 msgid ""
-"Using the default document class, because the  class %1$s could not be "
+"Using the default document class, because the class %1$s could not be "
 "loaded."
 msgstr ""
-"Verwende die Standard-Dokumentenklasse, da die Klasse %1$s unbekannt ist."
+"Verwende die Standard-Dokumentenklasse, da die Klasse %1$s nicht geladen werden konnte."
 
 #: src/buffer.C:615 src/buffer.C:624
 msgid "Document could not be read"
@@ -9785,13 +9784,12 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "an Arbeit abschätzen zu können, die andere in LyX gesteckt haben."
 
 #: src/frontends/controllers/ControlAboutlyx.C:67
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 msgstr ""
-"LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Team"
+"LyX - Copyright (C) 1995 Matthias Ettrich,\n"
+"1995-2006 LyX-Team"
 
 #: src/frontends/controllers/ControlAboutlyx.C:73
 #: src/frontends/controllers/ControlAboutlyx.C:79
@@ -10254,9 +10252,8 @@ msgid "LyX"
 msgstr "LyX"
 
 #: src/frontends/qt4/GuiWorkArea.C:474
-#, fuzzy
 msgid "unknown version"
-msgstr "Unbekannte Aktion"
+msgstr "unbekannte Version"
 
 #: src/frontends/qt4/QBibitem.C:31
 msgid "Bibliography Entry Settings"
@@ -10275,9 +10272,8 @@ msgid "Branch Settings"
 msgstr "Zweig-Einstellungen"
 
 #: src/frontends/qt4/QBranches.C:42
-#, fuzzy
 msgid "Branch"
-msgstr "Zweig: "
+msgstr "Zweig"
 
 #: src/frontends/qt4/QBranches.C:43
 msgid "Activated"
@@ -10344,9 +10340,8 @@ msgstr "LyX: Trennzeichen"
 
 #: src/frontends/qt4/QDelimiterDialog.C:107
 #: src/frontends/qt4/QDelimiterDialog.C:108
-#, fuzzy
 msgid "(None)"
-msgstr "Keine"
+msgstr "(Kein)"
 
 #: src/frontends/qt4/QDelimiterDialog.C:110
 msgid "Variable size"
@@ -10463,9 +10458,8 @@ msgid "Document Class"
 msgstr "Dokumentklasse"
 
 #: src/frontends/qt4/QDocumentDialog.C:394
-#, fuzzy
 msgid "Fonts"
-msgstr "&Schrift:"
+msgstr "Schriften"
 
 #: src/frontends/qt4/QDocumentDialog.C:395
 msgid "Text Layout"
@@ -10605,14 +10599,12 @@ msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Scriptscript-Stil (kleiner)\t\\scriptscriptstyle"
 
 #: src/frontends/qt4/QMathDialog.C:137
-#, fuzzy
 msgid "LyX: Fractions"
-msgstr "LyX: Mathe-Schriften"
+msgstr "LyX: Brüche"
 
 #: src/frontends/qt4/QMathDialog.C:139
-#, fuzzy
 msgid "Standard\t\\frac"
-msgstr "Standard"
+msgstr "Standard\t\\frac"
 
 #: src/frontends/qt4/QMathDialog.C:140
 #, fuzzy
@@ -10701,17 +10693,15 @@ msgstr "Einstellungen"
 
 #: src/frontends/qt4/QPrefsDialog.C:74
 msgid "Look and feel"
-msgstr ""
+msgstr "Aussehen & Handhabung"
 
 #: src/frontends/qt4/QPrefsDialog.C:75
-#, fuzzy
 msgid "Language settings"
-msgstr "Absatz-Einstellungen"
+msgstr "Spracheinstellungen"
 
 #: src/frontends/qt4/QPrefsDialog.C:76
-#, fuzzy
 msgid "Outputs"
-msgstr "Ausgabegröße"
+msgstr "Ausgaben"
 
 #: src/frontends/qt4/QPrefsDialog.C:182
 msgid "Plain text"
@@ -11369,34 +11359,28 @@ msgid "mu"
 msgstr "mu"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Text Width %"
-msgstr "Feste Breite"
+msgstr "Textbreite %"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Column Width %"
-msgstr "Spaltenbreite"
+msgstr "Spaltenbreite %"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Page Width %"
-msgstr "Markenbreite"
+msgstr "Seitenbreite %"
 
 #: src/lengthcommon.C:39
-#, fuzzy
 msgid "Line Width %"
-msgstr "Markenbreite"
+msgstr "Zeilenbreite %"
 
 #: src/lengthcommon.C:40
-#, fuzzy
 msgid "Text Height %"
-msgstr "Gesamthöhe"
+msgstr "Texthöhe %"
 
 #: src/lengthcommon.C:40
-#, fuzzy
 msgid "Page Height %"
-msgstr "Gesamthöhe"
+msgstr "Seitenhöhe %"
 
 #: src/lyx_cb.C:114
 #, c-format
@@ -12633,44 +12617,40 @@ msgid "AE (Almost European)"
 msgstr ""
 
 #: src/tex-strings.C:69
-#, fuzzy
 msgid "Times Roman"
-msgstr "Roman"
+msgstr "Times Roman"
 
 #: src/tex-strings.C:69
-#, fuzzy
 msgid "Palatino"
-msgstr "einfach"
+msgstr "Palatino"
 
 #: src/tex-strings.C:69
 msgid "Bitstream Charter"
-msgstr ""
+msgstr "Bitstream Charter"
 
 #: src/tex-strings.C:70
 msgid "New Century Schoolbook"
-msgstr ""
+msgstr "New Century Schoolbook"
 
 #: src/tex-strings.C:70
-#, fuzzy
 msgid "Bookman"
-msgstr "Roman"
+msgstr "Bookman"
 
 #: src/tex-strings.C:70
 msgid "Utopia"
-msgstr ""
+msgstr "Utopia"
 
 #: src/tex-strings.C:70
-#, fuzzy
 msgid "Bera Serif"
-msgstr "Serifenfrei"
+msgstr "Bera Serif"
 
 #: src/tex-strings.C:71
 msgid "Concrete Roman"
-msgstr ""
+msgstr "Concrete Roman"
 
 #: src/tex-strings.C:71
 msgid "Zapf Chancery"
-msgstr ""
+msgstr "Zapf Chancery"
 
 #: src/tex-strings.C:79
 msgid "Computer Modern Sans"
@@ -12682,47 +12662,43 @@ msgstr ""
 
 #: src/tex-strings.C:80
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: src/tex-strings.C:80
 msgid "Avant Garde"
-msgstr ""
+msgstr "Avant Garde"
 
 #: src/tex-strings.C:80
 msgid "Bera Sans"
 msgstr ""
 
 #: src/tex-strings.C:80
-#, fuzzy
 msgid "CM Bright"
-msgstr "Oben rechts"
+msgstr ""
 
 #: src/tex-strings.C:89
 msgid "Computer Modern Typewriter"
 msgstr ""
 
 #: src/tex-strings.C:90
-#, fuzzy
 msgid "Latin Modern Typewriter"
-msgstr "Schreibmaschine"
+msgstr ""
 
 #: src/tex-strings.C:90
-#, fuzzy
 msgid "Courier"
-msgstr "Kopierer"
+msgstr "Courier"
 
 #: src/tex-strings.C:90
 msgid "Bera Mono"
-msgstr ""
+msgstr "Bera Mono"
 
 #: src/tex-strings.C:90
 msgid "LuxiMono"
-msgstr ""
+msgstr "LuxiMono"
 
 #: src/tex-strings.C:91
-#, fuzzy
 msgid "CM Typewriter Light"
-msgstr "Schreibmaschine"
+msgstr ""
 
 #: src/text.C:190
 msgid "Unknown layout"
