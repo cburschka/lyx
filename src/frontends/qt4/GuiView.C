@@ -90,6 +90,7 @@ public:
 	}
 };
 
+
 struct GuiView::GuiViewPrivate
 {
 	typedef std::map<int, FuncRequest> FuncMap;
@@ -150,7 +151,9 @@ struct GuiView::GuiViewPrivate
 	}
 };
 
+
 unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
+
 
 GuiView::GuiView(int id)
 	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
@@ -163,8 +166,6 @@ GuiView::GuiView(int id)
 	d.smallIconSize = 14;	// scaling problems
 	d.normalIconSize = 20;	// ok, default
 	d.bigIconSize = 26;		// better for some math icons
-
-	//bufferview_.reset(new BufferView(this, width, height));
 
 #ifndef Q_WS_MACX
 	//  assign an icon to main form. We do not do it under Qt/Mac,
@@ -188,10 +189,12 @@ void GuiView::close()
 	QMainWindow::close();
 }
 
+
 QMenu* GuiView::createPopupMenu()
 {
 	return d.toolBarPopup(this);
 }
+
 
 void GuiView::init()
 {
@@ -251,6 +254,7 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 	close_event->accept();
 }
 
+
 void GuiView::saveGeometry()
 {
 	static bool done = false;
@@ -286,6 +290,7 @@ void GuiView::saveGeometry()
 	getToolbars().saveToolbarInfo();
 }
 						  
+
 void GuiView::setGeometry(unsigned int width,
 								  unsigned int height,
 								  int posx, int posy,
@@ -404,21 +409,25 @@ void GuiView::clearMessage()
 	update_view_state_qt();
 }
 
+
 void GuiView::setIconSize(unsigned int size)
 {
 	d.lastIconSize = size;
 	QMainWindow::setIconSize(QSize(size, size));
 }
 
+
 void GuiView::smallSizedIcons()
 {
 	setIconSize(d.smallIconSize);
 }
 
+
 void GuiView::normalSizedIcons()
 {
 	setIconSize(d.normalIconSize);
 }
+
 
 void GuiView::bigSizedIcons()
 {
@@ -439,6 +448,7 @@ void GuiView::update_view_state_qt()
 	statusbar_timer_.stop();
 }
 
+
 void GuiView::initTab(QWidget* workarea)
 {
 	d.wt = new WidgetWithTabBar(workarea);
@@ -446,6 +456,7 @@ void GuiView::initTab(QWidget* workarea)
 	QObject::connect(d.wt->tabbar, SIGNAL(currentChanged(int)),
 			this, SLOT(currentTabChanged(int)));
 }
+
 
 void GuiView::updateTab()
 {
@@ -548,6 +559,7 @@ void GuiView::updateTab()
 	tb.blockSignals(false);
 	d.wt->update();
 }
+
 
 void GuiView::currentTabChanged (int index)
 {
