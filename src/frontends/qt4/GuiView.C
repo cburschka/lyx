@@ -159,7 +159,7 @@ GuiView::GuiView(int id)
 	setAttribute(Qt::WA_QuitOnClose, false);
 	// FIXME: the following statement avoids memory leaks but produces a
 	//        crash after a new window has been closed (click into the menu)
-	//setAttribute(Qt::WA_DeleteOnClose, false);
+	//setAttribute(Qt::WA_DeleteOnClose, true);
 
 	// hardcode here the platform specific icon size
 	d.smallIconSize = 14;	// scaling problems
