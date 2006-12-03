@@ -106,7 +106,7 @@ docstring const qstring_to_ucs4(QString const & qstr);
 /**
  * qt_ - i18nize string and convert to unicode
  *
- * Use this in qt4/ instead of qt_()
+ * Use this in qt4/ instead of _()
  */
 QString const qt_(char const * str, const char * comment);
 
@@ -114,7 +114,7 @@ QString const qt_(char const * str, const char * comment);
 /**
  * qt_ - i18nize string and convert to unicode
  *
- * Use this in qt4/ instead of qt_()
+ * Use this in qt4/ instead of _()
  */
 QString const qt_(std::string const & str);
 
