@@ -204,14 +204,19 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 		lyx_view_.updateToolbars();
 	}
 
-	// Slight hack: this is only called currently when we
-	// clicked somewhere, so we force through the display
-	// of the new status here.
-	lyx_view_.clearMessage();
+	
+	// GUI tweaks except with mouse motion with no button pressed.
+	if (!(cmd0.action == LFUN_MOUSE_MOTION 
+		&& cmd0.button() == mouse_button::none)) {
+		// Slight hack: this is only called currently when we
+		// clicked somewhere, so we force through the display
+		// of the new status here.
+		lyx_view_.clearMessage();
 
-	// Show the cursor immediately after any operation.
-	hideCursor();
-	toggleCursor();
+		// Show the cursor immediately after any operation.
+		hideCursor();
+		toggleCursor();
+	}
 
 	if (needRedraw.first)
 		redraw();
