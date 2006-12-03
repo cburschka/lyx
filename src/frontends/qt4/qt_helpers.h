@@ -108,7 +108,7 @@ docstring const qstring_to_ucs4(QString const & qstr);
  *
  * Use this in qt4/ instead of _()
  */
-QString const qt_(char const * str, const char * comment);
+QString const qt_(char const * str, const char * comment = 0);
 
 
 /**
