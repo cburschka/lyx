@@ -14,6 +14,8 @@
 
 #include "frontends/FontMetrics.h"
 
+#include "dimension.h"
+
 #include "support/docstring.h"
 
 namespace lyx {
@@ -31,6 +33,8 @@ public:
 
 	virtual int maxDescent() const { return 1; }
 	
+	virtual Dimension const defaultDimension() const { return Dimension(1, 1, 1); }
+
 	virtual int width(char_type) const { return 1; }
 
 	virtual int ascent(char_type) const { return 1; }
@@ -50,6 +54,8 @@ public:
 		return FontMetrics::width(s);
 	}
 	
+	virtual Dimension const dimension(char_type c) const { return Dimension(1, 1, 1); }
+
 	virtual void rectText(docstring const &,
 		int & /*width*/, int & /*ascent*/, int & /*descent*/) const {}
 	
