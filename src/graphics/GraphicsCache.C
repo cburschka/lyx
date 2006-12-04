@@ -17,7 +17,6 @@
 
 #include "debug.h"
 
-#include "support/filename.h"
 #include "support/filetools.h"
 
 #include <map>

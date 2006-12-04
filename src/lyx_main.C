@@ -49,7 +49,6 @@
 #include "frontends/LyXView.h"
 
 #include "support/environment.h"
-#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/fontutils.h"
 #include "support/lyxlib.h"

@@ -22,7 +22,6 @@
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 
-#include "support/filename.h"
 #include "support/lstrings.h"
 
 

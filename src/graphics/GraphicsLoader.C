@@ -17,8 +17,6 @@
 #include "GraphicsParams.h"
 #include "LoaderQueue.h"
 
-#include "support/filename.h"
-
 #include <boost/bind.hpp>
 
 

@@ -20,7 +20,6 @@
 #include "debug.h"
 #include "format.h"
 
-#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
 #include "support/lyxlib.h"
