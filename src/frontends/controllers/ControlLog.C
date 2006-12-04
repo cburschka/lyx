@@ -19,13 +19,14 @@
 #include <sstream>
 #include <fstream>
 
-using lyx::docstring;
-
 using std::istringstream;
 using std::ostream;
 using std::string;
 
 namespace lyx {
+
+using support::FileName;
+
 namespace frontend {
 
 ControlLog::ControlLog(Dialog & parent)
@@ -61,7 +62,7 @@ bool ControlLog::initialiseParams(string const & data)
 	else
 		return false;
 
-	logfile_ = logfile;
+	logfile_ = FileName(logfile);
 	return true;
 }
 
@@ -95,7 +96,7 @@ docstring const ControlLog::title() const
 
 void ControlLog::getContents(std::ostream & ss) const
 {
-	std::ifstream in(logfile_.c_str());
+	std::ifstream in(logfile_.toFilesystemEncoding().c_str());
 
 	bool success = false;
 

@@ -103,9 +103,11 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 
 string const getListOfOptions(string const & classname, string const & type)
 {
-	string const filename = getTexFileFromList(classname,type);
+	FileName const filename(getTexFileFromList(classname, type));
+	if (filename.empty())
+		return string();
 	string optionList = string();
-	std::ifstream is(filename.c_str());
+	std::ifstream is(filename.toFilesystemEncoding().c_str());
 	while (is) {
 		string s;
 		is >> s;

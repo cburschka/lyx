@@ -15,6 +15,8 @@
 
 #include "Dialog.h"
 
+#include "support/filename.h"
+
 namespace lyx {
 namespace frontend {
 
@@ -51,7 +53,7 @@ private:
 	};
 
 	LOGTYPE type_;
-	std::string logfile_;
+	support::FileName logfile_;
 };
 
 } // namespace frontend
