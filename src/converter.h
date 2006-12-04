@@ -144,7 +144,7 @@ private:
 	intToFormat(std::vector<int> const & input);
 	///
 	bool scanLog(Buffer const & buffer, std::string const & command,
-		     std::string const & filename, ErrorList & errorList);
+		     support::FileName const & filename, ErrorList & errorList);
 	///
 	bool runLaTeX(Buffer const & buffer, std::string const & command,
 		      OutputParams const &, ErrorList & errorList);

@@ -47,6 +47,7 @@ using support::makeAbsPath;
 using support::onlyFilename;
 using support::prefixIs;
 using support::quoteName;
+using support::removeExtension;
 using support::rtrim;
 using support::split;
 using support::subst;
@@ -125,16 +126,16 @@ bool operator!=(Aux_Info const & a, Aux_Info const & o)
  */
 
 LaTeX::LaTeX(string const & latex, OutputParams const & rp,
-	     string const & f)
+	     FileName const & f)
 	: cmd(latex), file(f), runparams(rp)
 {
 	num_errors = 0;
 	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
-		depfile = FileName(makeAbsPath(file + ".dep-pdf"));
-		output_file = changeExtension(file,".pdf");
+		depfile = FileName(file.absFilename() + ".dep-pdf");
+		output_file = FileName(changeExtension(file.absFilename(), ".pdf"));
 	} else {
-		depfile = FileName(makeAbsPath(file + ".dep"));
-		output_file = changeExtension(file,".dvi");
+		depfile = FileName(file.absFilename() + ".dep");
+		output_file = FileName(changeExtension(file.absFilename(), ".dvi"));
 	}
 }
 
@@ -151,19 +152,19 @@ void LaTeX::deleteFilesOnError() const
 	// but the reason for the error might be in a generated file...
 
 	// bibtex file
-	FileName const bbl(makeAbsPath(changeExtension(file, ".bbl")));
+	FileName const bbl(changeExtension(file.absFilename(), ".bbl"));
 	unlink(bbl);
 
 	// makeindex file
-	FileName const ind(makeAbsPath(changeExtension(file, ".ind")));
+	FileName const ind(changeExtension(file.absFilename(), ".ind"));
 	unlink(ind);
 
 	// nomencl file
-	FileName const nls(makeAbsPath(changeExtension(file, ".nls")));
+	FileName const nls(changeExtension(file.absFilename(), ".nls"));
 	unlink(nls);
 
 	// Also remove the aux file
-	FileName const aux(makeAbsPath(changeExtension(file, ".aux")));
+	FileName const aux(changeExtension(file.absFilename(), ".aux"));
 	unlink(aux);
 }
 
@@ -205,7 +206,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	bool had_depfile = fs::exists(depfile.toFilesystemEncoding());
 	bool run_bibtex = false;
-	string aux_file = onlyFilename(changeExtension(file, "aux"));
+	FileName const aux_file(changeExtension(file.absFilename(), "aux"));
 
 	if (had_depfile) {
 		lyxerr[Debug::DEPEND] << "Dependency file exists" << endl;
@@ -219,7 +220,7 @@ int LaTeX::run(TeXErrors & terr)
 		// Can't just check if anything has changed because it might have aborted
 		// on error last time... in which cas we need to re-run latex
 		// and collect the error messages (even if they are the same).
-		if (!fs::exists(output_file)) {
+		if (!fs::exists(output_file.toFilesystemEncoding())) {
 			lyxerr[Debug::DEPEND]
 				<< "re-running LaTeX because output file doesn't exist." << endl;
 		} else if (!head.sumchange()) {
@@ -277,21 +278,22 @@ int LaTeX::run(TeXErrors & terr)
 
 	// memoir (at least) writes an empty *idx file in the first place.
 	// A second latex run is needed.
-	rerun = fs::exists(changeExtension(file, ".idx"))
-		&& fs::is_empty(changeExtension(file, ".idx"));
+	FileName const idxfile(changeExtension(file.absFilename(), ".idx"));
+	rerun = fs::exists(idxfile.toFilesystemEncoding()) &&
+	        fs::is_empty(idxfile.toFilesystemEncoding());
 
 	// run makeindex
-	if (head.haschanged(FileName(makeAbsPath(onlyFilename(changeExtension(file, ".idx")))))) {
+	if (head.haschanged(idxfile)) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
+		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()), runparams);
 	}
-	if (head.haschanged(FileName(makeAbsPath(onlyFilename(changeExtension(file, ".nlo")))))) {
+	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
 		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
 		message(_("Running MakeIndex for nomencl."));
-		string const nomenclstr = " -s nomencl.ist -o " + changeExtension(file, ".nls");
-		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".nlo")), runparams, nomenclstr);
+		string const nomenclstr = " -s nomencl.ist -o " + changeExtension(file.toFilesystemEncoding(), ".nls");
+		rerun |= runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".nlo")), runparams, nomenclstr);
 	}
 
 	// run bibtex
@@ -355,19 +357,19 @@ int LaTeX::run(TeXErrors & terr)
 	// more after this.
 
 	// run makeindex if the <file>.idx has changed or was generated.
-	if (head.haschanged(FileName(makeAbsPath(onlyFilename(changeExtension(file, ".idx")))))) {
+	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
-		rerun = runMakeIndex(onlyFilename(changeExtension(file, ".idx")), runparams);
+		rerun = runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".idx")), runparams);
 	}
 
 	// I am not pretty sure if need this twice. 
-	if (head.haschanged(FileName(makeAbsPath(onlyFilename(changeExtension(file, ".nlo")))))) {
+	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
 		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
 		message(_("Running MakeIndex for nomencl."));
-		string nomenclstr = " -s nomencl.ist -o " + changeExtension(file, ".nls");
-		rerun |= runMakeIndex(onlyFilename(changeExtension(file, ".nlo")), runparams, nomenclstr);
+		string nomenclstr = " -s nomencl.ist -o " + changeExtension(file.toFilesystemEncoding(), ".nls");
+		rerun |= runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".nlo")), runparams, nomenclstr);
 	}
 
 	// 2
@@ -408,7 +410,7 @@ int LaTeX::run(TeXErrors & terr)
 
 int LaTeX::startscript()
 {
-	string tmp = cmd + ' ' + quoteName(file) + " > " + os::nulldev();
+	string tmp = cmd + ' ' + quoteName(file.toFilesystemEncoding()) + " > " + os::nulldev();
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
 }
@@ -432,17 +434,18 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 
 
 vector<Aux_Info> const
-LaTeX::scanAuxFiles(string const & file)
+LaTeX::scanAuxFiles(FileName const & file)
 {
 	vector<Aux_Info> result;
 
 	result.push_back(scanAuxFile(file));
 
+	string const basename = removeExtension(file.absFilename());
 	for (int i = 1; i < 1000; ++i) {
-		string const file2 = changeExtension(file, "")
+		FileName const file2(basename
 			+ '.' + convert<string>(i)
-			+ ".aux";
-		if (!fs::exists(file2))
+			+ ".aux");
+		if (!fs::exists(file2.toFilesystemEncoding()))
 			break;
 		result.push_back(scanAuxFile(file2));
 	}
@@ -450,11 +453,11 @@ LaTeX::scanAuxFiles(string const & file)
 }
 
 
-Aux_Info const LaTeX::scanAuxFile(string const & file)
+Aux_Info const LaTeX::scanAuxFile(FileName const & file)
 {
 	Aux_Info result;
 	result.aux_file = file;
-	scanAuxFile(FileName(makeAbsPath(file)), result);
+	scanAuxFile(file, result);
 	return result;
 }
 
@@ -548,7 +551,7 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 		result = true;
 
 		string tmp = lyxrc.bibtex_command + " ";
-		tmp += quoteName(onlyFilename(changeExtension(it->aux_file, string())));
+		tmp += quoteName(onlyFilename(removeExtension(it->aux_file.absFilename())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
 	}
@@ -562,7 +565,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int last_line = -1;
 	int line_count = 1;
 	int retval = NO_ERRORS;
-	string tmp = onlyFilename(changeExtension(file, ".log"));
+	string tmp = onlyFilename(changeExtension(file.absFilename(), ".log"));
 	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
@@ -728,17 +731,20 @@ void handleFoundFile(string const & ff, DepTable & head)
 		// On initial insert we want to do the update at once
 		// since this file cannot be a file generated by
 		// the latex run.
-		if (fs::exists(foundfile) && !fs::is_directory(foundfile))
-			head.insert(FileName(makeAbsPath(foundfile)), true);
+		FileName const absname(foundfile);
+		if (fs::exists(absname.toFilesystemEncoding()) &&
+		    !fs::is_directory(absname.toFilesystemEncoding()))
+			head.insert(absname, true);
 
 		return;
 	}
 
 	string const onlyfile = onlyFilename(foundfile);
+	FileName const absname(makeAbsPath(onlyfile));
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	if (fs::exists(onlyfile)) {
+	if (fs::exists(absname.toFilesystemEncoding())) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 		if (regex_match(onlyfile, unwanted)) {
 			lyxerr[Debug::DEPEND]
@@ -754,13 +760,13 @@ void handleFoundFile(string const & ff, DepTable & head)
 				<< "Tmpdir TeX file: "
 				<< onlyfile
 				<< endl;
-			head.insert(FileName(makeAbsPath(onlyfile)), true);
+			head.insert(absname, true);
 		} else {
 			lyxerr[Debug::DEPEND]
 				<< "In tmpdir file:"
 				<< onlyfile
 				<< endl;
-			head.insert(FileName(makeAbsPath(onlyfile)));
+			head.insert(absname);
 		}
 	} else
 		lyxerr[Debug::DEPEND]
@@ -777,7 +783,7 @@ void LaTeX::deplog(DepTable & head)
 	// files used by the LaTeX run. The files are then entered into the
 	// dependency file.
 
-	string const logfile = onlyFilename(changeExtension(file, ".log"));
+	string const logfile = onlyFilename(changeExtension(file.absFilename(), ".log"));
 
 	static regex reg1(".*\\([^)]+.*");
 	static regex reg2("File: ([^ ]+).*");
@@ -841,11 +847,11 @@ void LaTeX::deplog(DepTable & head)
 		else if (regex_match(token, sub, regnomencl))
 			handleFoundFile(sub.str(1), head);
 		else if (regex_match(token, sub, miktexTocReg))
-			handleFoundFile(changeExtension(file, ".toc"), head);
+			handleFoundFile(onlyFilename(changeExtension(file.absFilename(), ".toc")), head);
 	}
 
 	// Make sure that the main .tex file is in the dependancy file.
-	head.insert(FileName(makeAbsPath(onlyFilename(file))), true);
+	head.insert(file, true);
 }
 
 

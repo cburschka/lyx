@@ -71,7 +71,7 @@ public:
 	///
 	Aux_Info() {}
 	///
-	std::string aux_file;
+	support::FileName aux_file;
 	///
 	std::set<std::string> citations;
 	///
@@ -140,7 +140,7 @@ public:
 	   path = name of the files original path.
 	*/
 	LaTeX(std::string const & cmd, OutputParams const &,
-	      std::string const & file);
+	      support::FileName const & file);
 
 	/// runs LaTeX several times
 	int run(TeXErrors &);
@@ -166,10 +166,10 @@ private:
 	                  std::string const & = std::string());
 
 	///
-	std::vector<Aux_Info> const scanAuxFiles(std::string const &);
+	std::vector<Aux_Info> const scanAuxFiles(support::FileName const &);
 
 	///
-	Aux_Info const scanAuxFile(std::string const &);
+	Aux_Info const scanAuxFile(support::FileName const &);
 
 	///
 	void scanAuxFile(support::FileName const &, Aux_Info &);
@@ -188,13 +188,13 @@ private:
 	std::string cmd;
 
 	///
-	std::string file;
+	support::FileName file;
 
 	/// used by scanLogFile
 	int num_errors;
 
 	/// The name of the final output file.
-	std::string output_file;
+	support::FileName output_file;
 
 	///
 	OutputParams runparams;

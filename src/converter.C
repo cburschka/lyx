@@ -45,6 +45,7 @@ using support::getExtension;
 using support::isFileReadable;
 using support::libFileSearch;
 using support::libScriptSearch;
+using support::makeAbsPath;
 using support::makeRelPath;
 using support::onlyFilename;
 using support::onlyPath;
@@ -449,7 +450,7 @@ bool Converters::convert(Buffer const * buffer,
 					" < " + quoteName(infile2 + ".out") +
 					" > " + quoteName(logfile);
 				one.startscript(Systemcall::Wait, command2);
-				if (!scanLog(*buffer, command, logfile, errorList))
+				if (!scanLog(*buffer, command, FileName(makeAbsPath(logfile, path)), errorList))
 					return false;
 			}
 
@@ -550,7 +551,7 @@ bool Converters::formatIsUsed(string const & format)
 
 
 bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
-			 string const & filename, ErrorList & errorList)
+			 FileName const & filename, ErrorList & errorList)
 {
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
@@ -591,7 +592,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 
 	// do the LaTeX run(s)
 	string const name = buffer.getLatexName();
-	LaTeX latex(command, runparams, name);
+	LaTeX latex(command, runparams, FileName(makeAbsPath(name)));
 	TeXErrors terr;
 	showMessage show(buffer);
 	latex.message.connect(show);
