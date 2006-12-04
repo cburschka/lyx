@@ -41,7 +41,7 @@ FileName::~FileName()
 FileName::FileName(string const & abs_filename)
 	: name_(abs_filename)
 {
-	BOOST_ASSERT(absolutePath(name_));
+	BOOST_ASSERT(empty() || absolutePath(name_));
 	BOOST_ASSERT(!contains(name_, '\\'));
 }
 
