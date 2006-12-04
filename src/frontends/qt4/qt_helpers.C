@@ -111,30 +111,33 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 }
 
 
-void ucs4_to_qstring(lyx::docstring const & str, QString & s)
+#if QT_VERSION < 0x040200
+// We use QString::fromUcs4 in Qt 4.2 and higher
+QString const toqstr(docstring const & str)
 {
+	QString s;
 	int i = static_cast<int>(str.size()); 
 	s.resize(i);
 	for (; --i >= 0;)
 		s[i] = ucs4_to_qchar(str[i]);
-}
-
-
-QString const toqstr(docstring const & ucs4)
-{
-	QString s;
-	ucs4_to_qstring(ucs4, s);
 	return s;
 }
+#endif
 
 
 docstring const qstring_to_ucs4(QString const & qstr)
 {
+#if QT_VERSION >= 0x040200
+	QVector<uint> const ucs4 = qstr.toUcs4();
+	return docstring(ucs4.begin(), ucs4.end());
+#else
+	// This does not properly convert surrogate pairs
 	int const ls = qstr.size();
 	docstring ucs4;
 	for (int i = 0; i < ls; ++i)
 		ucs4 += static_cast<char_type>(qstr[i].unicode());
 	return ucs4;
+#endif
 }
 
 

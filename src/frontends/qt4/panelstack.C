@@ -60,8 +60,7 @@ void PanelStack::addCategory(docstring const & n, docstring const & parent)
 {
 	QTreeWidgetItem * item;
 
-	QString name;
-	lyx::ucs4_to_qstring(n, name);
+	QString const name(toqstr(n));
 
 	lyxerr[Debug::GUI] << "addCategory n= " << lyx::to_utf8(n) << "   parent= " << endl;
 

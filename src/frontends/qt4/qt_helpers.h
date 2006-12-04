@@ -87,9 +87,18 @@ inline QChar const ucs4_to_qchar(char_type const ucs4) {
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 
-QString const toqstr(docstring const & ucs4);
 
-void ucs4_to_qstring(docstring const & str, QString & s);
+#if QT_VERSION >= 0x040200
+inline QString const toqstr(docstring const & ucs4)
+{
+	// If possible we let qt do the work, since this version does not
+	// need to be superfast.
+	return QString::fromUcs4(reinterpret_cast<uint const *>(ucs4.data()), ucs4.length());
+}
+#else
+QString const toqstr(docstring const & ucs4);
+#endif
+
 
 inline void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
 {

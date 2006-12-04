@@ -24,14 +24,23 @@
 
 using std::endl;
 
+namespace {
+
+#ifdef WORDS_BIGENDIAN
+	char const * utf16_codeset = "UTF16-BE";
+#else
+	char const * utf16_codeset = "UTF16-LE";
+#endif
+
+}
+
+
 namespace lyx {
 
 #ifdef WORDS_BIGENDIAN
 	char const * ucs4_codeset = "UCS-4BE";
-	char const * ucs2_codeset = "UCS-2BE";
 #else
 	char const * ucs4_codeset = "UCS-4LE";
-	char const * ucs2_codeset = "UCS-2LE";
 #endif
 
 static const iconv_t invalid_cd = (iconv_t)(-1);
@@ -219,52 +228,18 @@ utf8_to_ucs4(char const * utf8str, size_t ls)
 }
 
 
-lyx::char_type
-ucs2_to_ucs4(unsigned short c)
+std::vector<char_type>
+utf16_to_ucs4(unsigned short const * s, size_t ls)
 {
-	return ucs2_to_ucs4(&c, 1)[0];
-}
-
-
-std::vector<lyx::char_type>
-ucs2_to_ucs4(std::vector<unsigned short> const & ucs2str)
-{
-	if (ucs2str.empty())
-		return std::vector<lyx::char_type>();
-
-	return ucs2_to_ucs4(&ucs2str[0], ucs2str.size());
-}
-
-
-std::vector<lyx::char_type>
-ucs2_to_ucs4(unsigned short const * ucs2str, size_t ls)
-{
-	static IconvProcessor processor(ucs4_codeset, ucs2_codeset);
-	return iconv_convert<lyx::char_type>(processor, ucs2str, ls);
-}
-
-
-unsigned short
-ucs4_to_ucs2(lyx::char_type c)
-{
-	return ucs4_to_ucs2(&c, 1)[0];
+	static IconvProcessor processor(ucs4_codeset, utf16_codeset);
+	return iconv_convert<char_type>(processor, s, ls);
 }
 
 
 std::vector<unsigned short>
-ucs4_to_ucs2(std::vector<lyx::char_type> const & ucs4str)
+ucs4_to_utf16(char_type const * s, size_t ls)
 {
-	if (ucs4str.empty())
-		return std::vector<unsigned short>();
-
-	return ucs4_to_ucs2(&ucs4str[0], ucs4str.size());
-}
-
-
-std::vector<unsigned short>
-ucs4_to_ucs2(lyx::char_type const * s, size_t ls)
-{
-	static IconvProcessor processor(ucs2_codeset, ucs4_codeset);
+	static IconvProcessor processor(utf16_codeset, ucs4_codeset);
 	return iconv_convert<unsigned short>(processor, s, ls);
 }
 
