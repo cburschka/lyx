@@ -142,7 +142,7 @@ void WorkArea::redraw()
 
 	// No need to do anything if this is the current view. The BufferView 
 	// metrics are already up to date.
-	if (&lyx_view_ != &theApp()->currentView())
+	if (&lyx_view_ != theApp()->currentView())
 		// FIXME: it would be nice to optimize for the off-screen case.
 		buffer_view_->updateMetrics(false);
 

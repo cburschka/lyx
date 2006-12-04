@@ -291,7 +291,10 @@ void GuiApplication::unregisterSocketCallback(int fd)
 #ifdef Q_WS_X11
 bool GuiApplication::x11EventFilter(XEvent * xev)
 {
-	BufferView * bv = currentView().view();
+	if (!currentView())
+		return false;
+
+	BufferView * bv = currentView()->view();
 
 	switch (xev->type) {
 	case SelectionRequest:

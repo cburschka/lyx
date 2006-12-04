@@ -176,10 +176,10 @@ public:
 		const std::string & geometryArg);
 	
 	/// 
-	LyXView const & currentView() const;
+	LyXView const * currentView() const;
 
 	/// 
-	LyXView & currentView();
+	LyXView * currentView();
 
 	///
 	void setCurrentView(LyXView & current_view);

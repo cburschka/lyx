@@ -71,15 +71,15 @@ LyXView & Application::createView(unsigned int width,
 }
 
 
-LyXView const & Application::currentView() const
+LyXView const * Application::currentView() const
 {
-	return *current_view_;
+	return current_view_;
 }
 
 
-LyXView & Application::currentView()
+LyXView * Application::currentView()
 {
-	return *current_view_;
+	return current_view_;
 }
 
 
