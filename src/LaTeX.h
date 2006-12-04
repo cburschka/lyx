@@ -86,7 +86,13 @@ bool operator==(Aux_Info const &, Aux_Info const &);
 bool operator!=(Aux_Info const &, Aux_Info const &);
 
 
-///
+/**
+ * Class to run the LaTeX compiler and needed auxiliary programs.
+ * The main .tex file must be in the current directory. The current directory
+ * must not change as long as an object of this class lives.
+ * This is required by the LaTeX compiler, and we also make use of it by
+ * various support::makeAbsPath() calls.
+ */
 class LaTeX : boost::noncopyable {
 public:
 	/** Return values from scanLogFile() and run() (to come)
