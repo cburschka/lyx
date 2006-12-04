@@ -345,7 +345,7 @@ void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 // Insert ascii file (if filename is empty, prompt for one)
 string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
-	string fname = f;
+	FileName fname(f);
 
 	if (fname.empty()) {
 		FileDialog fileDlg(_("Select file to insert"),
@@ -358,25 +358,25 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 		if (result.first == FileDialog::Later)
 			return string();
 
-		fname = to_utf8(result.second);
+		fname = FileName(makeAbsPath(to_utf8(result.second)));
 
 		if (fname.empty())
 			return string();
 	}
 
-	if (!fs::is_readable(fname)) {
+	if (!fs::is_readable(fname.toFilesystemEncoding())) {
 		docstring const error = from_ascii(strerror(errno));
-		docstring const file = makeDisplayPath(fname, 50);
+		docstring const file = makeDisplayPath(fname.absFilename(), 50);
 		docstring const text = bformat(_("Could not read the specified document\n"
 							   "%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not read file"), text);
 		return string();
 	}
 
-	ifstream ifs(fname.c_str());
+	ifstream ifs(fname.toFilesystemEncoding().c_str());
 	if (!ifs) {
 		docstring const error = from_ascii(strerror(errno));
-		docstring const file = makeDisplayPath(fname, 50);
+		docstring const file = makeDisplayPath(fname.absFilename(), 50);
 		docstring const text = bformat(_("Could not open the specified document\n"
 							   "%1$s\ndue to the error: %2$s"), file, error);
 		Alert::error(_("Could not open file"), text);

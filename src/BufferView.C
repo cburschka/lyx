@@ -706,17 +706,17 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FILE_INSERT:
-		// FIXME: We don't know the encoding of filenames
+		// FIXME UNICODE
 		menuInsertLyXFile(to_utf8(cmd.argument()));
 		break;
 
 	case LFUN_FILE_INSERT_ASCII_PARA:
-		// FIXME: We don't know the encoding of filenames
+		// FIXME UNICODE
 		insertAsciiFile(this, to_utf8(cmd.argument()), true);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII:
-		// FIXME: We don't know the encoding of filenames
+		// FIXME UNICODE
 		insertAsciiFile(this, to_utf8(cmd.argument()), false);
 		break;
 

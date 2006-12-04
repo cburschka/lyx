@@ -661,7 +661,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	// insert file functions
 	case LFUN_FILE_INSERT_ASCII_PARA:
 	case LFUN_FILE_INSERT_ASCII: {
-		// FIXME: We don't know the encoding of filenames
+		// FIXME UNICODE
 		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), to_utf8(cmd.argument()), false);
 		// FIXME: We don't know the encoding of the file
 		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), from_utf8(tmpstr), false))
