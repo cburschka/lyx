@@ -47,6 +47,8 @@
 
 namespace lyx {
 
+class Dimension;
+
 namespace frontend {
 
 class FontMetrics
@@ -58,6 +60,9 @@ public:
 	virtual int maxAscent() const = 0;
 	/// return the maximum descent of the font
 	virtual int maxDescent() const = 0;
+	/// return default dimension of the font.
+	/// \warning \c width is set to zero.
+	virtual Dimension const defaultDimension() const = 0;
 	/// return the width of the char in the font
 	virtual int width(char_type c) const = 0;
 	/// return the ascent of the char in the font
@@ -72,6 +77,8 @@ public:
 	virtual int width(char_type const * s, size_t n) const = 0;
 	/// FIXME ??
 	virtual int signedWidth(docstring const & s) const = 0;
+	/// return char dimension for the font.
+	virtual Dimension const dimension(char_type c) const = 0;
 	/**
 	 * fill in width,ascent,descent with the values for the
 	 * given string in the font.

@@ -19,9 +19,6 @@
 #include <QFontMetrics>
 #include <QHash>
 
-#if defined(Q_WS_MACX) || defined(Q_WS_WIN32)
-#define USE_LYX_FONTCACHE
-#endif
 
 namespace lyx {
 namespace frontend {
@@ -37,19 +34,16 @@ public:
 
 	virtual int maxAscent() const;
 	virtual int maxDescent() const;
-#ifndef USE_LYX_FONTCACHE
-	virtual int width(char_type c) const {
-		return metrics_.width(QChar(static_cast<short int>(c)));
-	}
-#else
+	virtual Dimension const defaultDimension() const;
 	virtual int width(char_type c) const;
-#endif
 	virtual int ascent(char_type c) const;
 	virtual int descent(char_type c) const;
 	virtual int lbearing(char_type c) const;
 	virtual int rbearing(char_type c) const;
 	virtual int width(char_type const * s, size_t n) const;
 	virtual int signedWidth(docstring const & s) const;
+	virtual Dimension const dimension(char_type c) const;
+
 	virtual void rectText(docstring const & str,
 		int & width,
 		int & ascent,
@@ -70,8 +64,6 @@ private:
 
 	bool smallcaps_shape_;
 
-#ifdef USE_LYX_FONTCACHE
-
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;
 
@@ -83,8 +75,6 @@ private:
 	mutable QHash<char_type, AscendDescend> metrics_cache_;
 	/// fill in \c metrics_cache_ at specified value.
 	void fillMetricsCache(char_type) const;
-
-#endif // USE_LYX_FONTCACHE
 };
 
 } // namespace frontend

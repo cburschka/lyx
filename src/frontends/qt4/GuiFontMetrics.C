@@ -16,6 +16,7 @@
 #include "qt_helpers.h"
 
 #include "language.h"
+#include "dimension.h"
 
 #include "support/unicode.h"
 
@@ -155,22 +156,18 @@ void GuiFontMetrics::buttonText(docstring const & str,
 	descent = metrics_.descent() + d;
 }
 
-#ifndef USE_LYX_FONTCACHE
 
-int GuiFontMetrics::ascent(char_type c) const
+Dimension const GuiFontMetrics::defaultDimension() const
 {
-	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
-	return -r.top();
+	return Dimension(maxAscent(), maxDescent(), 0);
 }
 
 
-int GuiFontMetrics::descent(char_type c) const
+Dimension const GuiFontMetrics::dimension(char_type c) const
 {
-	QRect const & r = metrics_.boundingRect(ucs4_to_qchar(c));
-	return r.bottom() + 1;
+	return Dimension(ascent(c), descent(c), width(c));
 }
 
-#else
 
 void GuiFontMetrics::fillMetricsCache(char_type c) const
 {
@@ -208,8 +205,6 @@ int GuiFontMetrics::descent(char_type c) const
 
 	return metrics_cache_.value(c).descent;
 }
-
-#endif
 
 } // frontend
 } // lyx
