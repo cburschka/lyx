@@ -71,7 +71,7 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	font.decSize();
 
 	if (editable_) {
-		pi.pain.buttonText(x + 2, y, text_, font);
+		pi.pain.buttonText(x + 2, y, text_, font, renderState());
 	} else {
 		pi.pain.rectText(x + 2, y, text_, font,
 				 LColor::commandbg, LColor::commandframe);

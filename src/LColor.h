@@ -166,16 +166,12 @@ public:
 		pagebreak,
 
 		// FIXME: why are the next four separate ??
-		/// Color used for top of boxes
-		top,
-		/// Color used for bottom of boxes
-		bottom,
-		/// Color used for left side of boxes
-		left,
-		/// Color used for right side of boxes
-		right,
+		/// Color used for button frame
+		buttonframe,
 		/// Color used for bottom background
 		buttonbg,
+		/// Color used for buttom under focus
+		buttonhoverbg,
 
 		// Logical attributes
 

@@ -35,6 +35,7 @@ InsetCommand::InsetCommand(InsetCommandParams const & p,
 			   string const & mailer_name)
 	: p_(p),
 	  mailer_name_(mailer_name),
+	  mouse_hover_(false),
 	  updateButtonLabel_(true)
 {}
 
@@ -60,9 +61,17 @@ bool InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+bool InsetCommand::setMouseHover(bool mouse_hover)
+{
+	mouse_hover_ = mouse_hover;
+	return true;
+}
+
+
 void InsetCommand::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
+	button_.setRenderState(mouse_hover_);
 	button_.draw(pi, x, y);
 }
 

@@ -180,6 +180,9 @@ public:
 	/// is called when the cursor leaves this inset
 	//  returns true if cursor is now invalid.
 	virtual bool notifyCursorLeaves(LCursor &) { return false; }
+	/// is called when the mouse enter or leave this inset
+	/// return true if this inset needs repaint
+	virtual bool setMouseHover(bool mouse_hover) { return false; }
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}

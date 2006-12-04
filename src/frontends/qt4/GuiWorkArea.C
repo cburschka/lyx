@@ -166,6 +166,7 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
+	setMouseTracking(true);
 	setMinimumSize(100, 70);
 
 	viewport()->setAutoFillBackground(false);

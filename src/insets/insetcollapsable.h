@@ -80,6 +80,8 @@ public:
 	bool getStatus(LCursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	void setStatus(LCursor & cur, CollapseStatus st);
+	///
+	bool setMouseHover(bool mouse_hover);
 
 protected:
 	///
@@ -117,6 +119,8 @@ private:
 	mutable bool autoOpen_;
 	///
 	mutable Dimension textdim_;
+	/// changes color when mouse enters/leaves this inset
+	bool mouse_hover_;
 };
 
 // A helper function that pushes the cursor out of the inset.

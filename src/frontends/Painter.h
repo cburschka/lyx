@@ -118,7 +118,7 @@ public:
 
 	/// draw a filled rectangle with the shape of a 3D button
 	virtual void button(int x, int y,
-		int w, int h);
+		int w, int h, bool mouseHover);
 
 	/// draw an image from the image cache
 	virtual void image(int x, int y,
@@ -162,8 +162,8 @@ public:
 		LColor_color frame);
 
 	/// draw a string and enclose it inside a button frame
-	void buttonText(int x,
-		int baseline, docstring const & s, LyXFont const & font);
+	void buttonText(int x, int baseline, docstring const & s,
+		LyXFont const & font, bool mouseHover);
 
 protected:
 	/// check the font, and if set, draw an underline

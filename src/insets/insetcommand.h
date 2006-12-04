@@ -91,6 +91,8 @@ public:
 	std::string const getSecOptions() const { return p_.getSecOptions(); }
 	///
 	RenderButton & button() const { return button_; }
+	///
+	bool setMouseHover(bool mouse_hover);
 
 protected:
 	///
@@ -128,6 +130,8 @@ private:
 	///
 	InsetCommandParams p_;
 	std::string mailer_name_;
+	/// changes color when mouse enters/leaves this inset
+	bool mouse_hover_;
 	mutable bool updateButtonLabel_;
 	mutable RenderButton button_;
 };

@@ -39,6 +39,10 @@ public:
 	virtual bool metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
+	/// render state, exact meaning of state is render-specific
+	void setRenderState(int state) { state_ = state; }
+	/// get render state
+	int renderState() const { return state_; } 
 
 	/// equivalent to dynamic_cast
 	virtual RenderButton * asButton() { return 0; }
@@ -51,6 +55,8 @@ protected:
 	RenderBase(RenderBase const &) {}
 	RenderBase & operator=(RenderBase const &) { return *this; }
 
+	/// render state. currently, render_button uses this to store mouse_hover_
+	int state_;
 	/// Cached
 	mutable Dimension dim_;
 };

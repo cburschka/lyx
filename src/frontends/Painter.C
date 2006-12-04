@@ -26,27 +26,22 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-void Painter::button(int x, int y, int w, int h)
+void Painter::button(int x, int y, int w, int h, bool mouseHover)
 {
-	fillRectangle(x, y, w, h, LColor::buttonbg);
+	if (mouseHover)
+		fillRectangle(x, y, w, h, LColor::buttonhoverbg);
+	else
+		fillRectangle(x, y, w, h, LColor::buttonbg);
 	buttonFrame(x, y, w, h);
 }
 
 
 void Painter::buttonFrame(int x, int y, int w, int h)
 {
-	//  Width of a side of the button
-	int const d = 2;
-
-	fillRectangle(x, y, w, d, LColor::top);
-	fillRectangle(x, y + h - d, w, d, LColor::bottom);
-
-	for (int i = 0 ; i < d ; ++i) {
-		line(x + i, y + i,
-		     x + i, y + h - 1 - i, LColor::left);
-		line(x + w - 1 - i, y + i + 1,
-		     x + w - 1 - i, y + h - 1 - i, LColor::right);
-	}
+	line(x, y, x, y + h - 1, LColor::buttonframe);
+	line(x - 1 + w, y, x - 1 + w, y + h - 1, LColor::buttonframe);
+	line(x, y - 1, x - 1 + w, y - 1, LColor::buttonframe);
+	line(x, y + h - 1, x - 1 + w, y + h - 1, LColor::buttonframe);
 }
 
 
@@ -74,7 +69,8 @@ void Painter::rectText(int x, int y,
 }
 
 
-void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & font)
+void Painter::buttonText(int x, int y, docstring const & str, 
+	LyXFont const & font, bool mouseHover)
 {
 	int width;
 	int ascent;
@@ -83,8 +79,11 @@ void Painter::buttonText(int x, int y, docstring const & str, LyXFont const & fo
 	FontMetrics const & fm = theFontMetrics(font);
 	fm.buttonText(str, width, ascent, descent);
 
-	button(x, y - ascent, width, descent + ascent);
-	text(x + 4, y, str, font);
+	button(x, y - ascent, width, descent + ascent, mouseHover);
+	if (mouseHover)
+		text(x + 4, y, str, font);
+	else
+		text(x + 3, y - 1, str, font);
 }
 
 

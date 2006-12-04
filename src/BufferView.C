@@ -1055,6 +1055,25 @@ std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	//lyxerr << BOOST_CURRENT_FUNCTION
 	//       << " * created temp cursor:" << cur << endl;
 
+	// NOTE: eidtXY returns the top level inset of nested insets. If you happen
+	// to move from a text (inset=0) to a text inside an inset (e.g. an opened
+	// footnote inset, again inset=0), that inset will not be redrawn.
+	static InsetBase * last_inset = NULL;
+	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
+		bool need_update = false;
+		
+		if (inset != last_inset) {
+			if (last_inset)
+				need_update |= last_inset->setMouseHover(false);
+			if (inset)
+				need_update |= inset->setMouseHover(true);
+			last_inset = inset;
+		}
+		// This event (moving without mouse click) is not passed further.
+		// This should be changed if it is further utilized.
+		return make_pair(need_update, need_update);
+	}
+
 	// Put anchor at the same position.
 	cur.resetAnchor();
 

@@ -53,7 +53,7 @@ InsetCollapsable::CollapseStatus InsetCollapsable::status() const
 InsetCollapsable::InsetCollapsable
 		(BufferParams const & bp, CollapseStatus status)
 	: InsetText(bp), label(from_ascii("Label")), status_(status),
-	  openinlined_(false), autoOpen_(false)
+	  openinlined_(false), autoOpen_(false), mouse_hover_(false)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -168,6 +168,13 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+bool InsetCollapsable::setMouseHover(bool mouse_hover)
+{
+	mouse_hover_ = mouse_hover;
+	return true;
+}
+
+
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
 	const int xx = x + TEXT_TO_INSET_OFFSET;
@@ -181,7 +188,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = top;
 		button_dim.y2 = top + dimc.height();
 
-		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_);
+		pi.pain.buttonText(xx, top + dimc.asc, label, labelfont_, mouse_hover_);
 
 		if (status() == Open) {
 			int textx, texty;
@@ -281,7 +288,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
-	if (status() == Collapsed)
+	if (status() == Collapsed || button_dim.contains(x, y))
 		return this;
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
