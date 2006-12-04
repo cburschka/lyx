@@ -79,6 +79,8 @@ What's new
 
 - Re-enable Address paragraph style in AMS article classes (bug 2890).
 
+- write \begin and \end alignment tags on their own lines (bug 3010).
+
 * User Interface:
 
 - Fix a crash that occured on exit if the clipboard was not empty (only on

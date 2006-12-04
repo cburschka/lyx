@@ -729,7 +729,10 @@ string const corrected_env(string const & suffix, string const & env,
 		output += correction(env);
 	else
 		output += env;
-	return output + "}";
+	output += "}";
+	if (suffix == "\\begin")
+		output += "\n";
+	return output;
 }
 
 } // namespace anon
@@ -830,24 +833,24 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_LEFT: {
 		string output;
 		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\par\\end", "flushleft", ownerCode());
+			output = corrected_env("\n\\par\\end", "flushleft", ownerCode());
 		else
-			output = corrected_env("\\par\\end", "flushright", ownerCode());
+			output = corrected_env("\n\\par\\end", "flushright", ownerCode());
 		os << output;
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
 		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\par\\end", "flushright", ownerCode());
+			output = corrected_env("\n\\par\\end", "flushright", ownerCode());
 		else
-			output = corrected_env("\\par\\end", "flushleft", ownerCode());
+			output = corrected_env("\n\\par\\end", "flushleft", ownerCode());
 		os << output;
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\\par\\end", "center", ownerCode());
+		output = corrected_env("\n\\par\\end", "center", ownerCode());
 		os << output;
 		column += output.size();
 		break;
