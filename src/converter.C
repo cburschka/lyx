@@ -554,7 +554,7 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 {
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
-	LaTeX latex("", runparams, filename, "");
+	LaTeX latex("", runparams, filename);
 	TeXErrors terr;
 	int const result = latex.scanLogFile(terr);
 
@@ -591,7 +591,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 
 	// do the LaTeX run(s)
 	string const name = buffer.getLatexName();
-	LaTeX latex(command, runparams, name, buffer.filePath());
+	LaTeX latex(command, runparams, name);
 	TeXErrors terr;
 	showMessage show(buffer);
 	latex.message.connect(show);
