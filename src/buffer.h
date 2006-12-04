@@ -147,7 +147,7 @@ public:
 	bool writeFile(support::FileName const &) const;
 
 	/// Just a wrapper for the method below, first creating the ofstream.
-	bool makeLaTeXFile(std::string const & filename,
+	bool makeLaTeXFile(support::FileName const & filename,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
@@ -159,7 +159,7 @@ public:
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
-	void makeDocBookFile(std::string const & filename,
+	void makeDocBookFile(support::FileName const & filename,
 			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	///

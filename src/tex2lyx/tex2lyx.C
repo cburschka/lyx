@@ -456,17 +456,16 @@ void tex2lyx(std::istream &is, std::ostream &os)
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(string const &infilename, std::ostream &os)
+bool tex2lyx(FileName const & infilename, std::ostream &os)
 {
-	BOOST_ASSERT(lyx::support::absolutePath(infilename));
-	ifstream is(infilename.c_str());
+	ifstream is(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open input file \"" << infilename
 		     << "\" for reading." << endl;
 		return false;
 	}
 	string const oldParentFilePath = parentFilePath;
-	parentFilePath = onlyPath(infilename);
+	parentFilePath = onlyPath(infilename.absFilename());
 	tex2lyx(is, os);
 	parentFilePath = oldParentFilePath;
 	return true;
@@ -499,7 +498,7 @@ bool tex2lyx(string const &infilename, FileName const &outfilename)
 	cerr << "Input file: " << infilename << "\n";
 	cerr << "Output file: " << outfilename << "\n";
 #endif
-	return tex2lyx(infilename, os);
+	return tex2lyx(FileName(infilename), os);
 }
 
 } // namespace lyx
@@ -546,7 +545,7 @@ int main(int argc, char * argv[])
 	parentFilePath = masterFilePath;
 
 	if (outfilename == "-") {
-		if (tex2lyx(infilename, cout))
+		if (tex2lyx(FileName(infilename), cout))
 			return EXIT_SUCCESS;
 		else
 			return EXIT_FAILURE;

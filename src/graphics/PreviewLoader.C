@@ -568,12 +568,12 @@ void PreviewLoader::Impl::startLoading()
 	pending_.clear();
 
 	// Output the LaTeX file.
-	string const latexfile = filename_base + ".tex";
+	FileName const latexfile(filename_base + ".tex");
 
 	// FIXME UNICODE
 	// This creates an utf8 encoded file, but the proper inputenc
 	// command is missing.
-	odocfstream of(latexfile.c_str());
+	odocfstream of(latexfile.toFilesystemEncoding().c_str());
 	if (!of) {
 		lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()\n"
 					<< "Unable to create LaTeX file\n"
@@ -590,7 +590,7 @@ void PreviewLoader::Impl::startLoading()
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command << ' ' << pconverter_->to << ' '
-	   << support::quoteName(latexfile) << ' '
+	   << support::quoteName(latexfile.toFilesystemEncoding()) << ' '
 	   << int(font_scaling_factor_) << ' '
 	   << theApp()->hexName(LColor::preview) << ' '
 	   << theApp()->hexName(LColor::background);

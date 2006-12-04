@@ -17,13 +17,15 @@
 
 namespace lyx {
 
+namespace support { class FileName; }
+
 class Buffer;
 class OutputParams;
 class Paragraph;
 
 
 ///
-void writeFileAscii(Buffer const & buf, std::string const &,
+void writeFileAscii(Buffer const & buf, support::FileName const &,
 	OutputParams const &);
 
 ///

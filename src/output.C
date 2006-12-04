@@ -22,6 +22,7 @@
 namespace lyx {
 
 using support::bformat;
+using support::FileName;
 using support::makeDisplayPath;
 
 using std::ofstream;
@@ -30,11 +31,11 @@ using std::string;
 namespace {
 
 template<typename OFStream>
-bool doOpenFileWrite(OFStream & ofs, string const & fname)
+bool doOpenFileWrite(OFStream & ofs, FileName const & fname)
 {
-	ofs.open(fname.c_str());
+	ofs.open(fname.toFilesystemEncoding().c_str());
 	if (!ofs) {
-		docstring const file = makeDisplayPath(fname, 50);
+		docstring const file = makeDisplayPath(fname.absFilename(), 50);
 		docstring text = bformat(_("Could not open the specified "
 						     "document\n%1$s."), file);
 		frontend::Alert::error(_("Could not open file"), text);
@@ -46,13 +47,13 @@ bool doOpenFileWrite(OFStream & ofs, string const & fname)
 }
 
 
-bool openFileWrite(ofstream & ofs, string const & fname)
+bool openFileWrite(ofstream & ofs, FileName const & fname)
 {
 	return doOpenFileWrite(ofs, fname);
 }
 
 
-bool openFileWrite(odocfstream & ofs, string const & fname)
+bool openFileWrite(odocfstream & ofs, FileName const & fname)
 {
 	return doOpenFileWrite(ofs, fname);
 }

@@ -829,7 +829,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 }
 
 
-bool Buffer::makeLaTeXFile(string const & fname,
+bool Buffer::makeLaTeXFile(FileName const & fname,
 			   string const & original_path,
 			   OutputParams const & runparams,
 			   bool output_preamble, bool output_body)
@@ -1025,7 +1025,7 @@ bool Buffer::isDocBook() const
 }
 
 
-void Buffer::makeDocBookFile(string const & fname,
+void Buffer::makeDocBookFile(FileName const & fname,
 			      OutputParams const & runparams,
 			      bool const body_only)
 {
@@ -1036,7 +1036,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	writeDocBookSource(ofs, fname, runparams, body_only);
+	writeDocBookSource(ofs, fname.absFilename(), runparams, body_only);
 
 	ofs.close();
 	if (ofs.fail())
@@ -1124,7 +1124,7 @@ int Buffer::runChktex()
 	busy(true);
 
 	// get LaTeX-Filename
-	string const name = getLatexName();
+	string const name = getLatexName(false);
 	string const path = temppath();
 	string const org_path = filePath();
 
@@ -1135,10 +1135,10 @@ int Buffer::runChktex()
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = false;
-	makeLaTeXFile(name, org_path, runparams);
+	makeLaTeXFile(FileName(name), org_path, runparams);
 
 	TeXErrors terr;
-	Chktex chktex(lyxrc.chktex_command, name, filePath());
+	Chktex chktex(lyxrc.chktex_command, onlyFilename(name), filePath());
 	int const res = chktex.run(terr); // run chktex
 
 	if (res == -1) {

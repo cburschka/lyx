@@ -22,6 +22,7 @@
 #include "ParagraphList.h"
 #include "ParagraphParameters.h"
 
+#include "support/filename.h"
 #include "support/lstrings.h"
 
 
@@ -31,6 +32,7 @@ using support::ascii_lowercase;
 using support::compare_ascii_no_case;
 using support::compare_no_case;
 using support::contains;
+using support::FileName;
 
 using std::endl;
 using std::ostream;
@@ -38,7 +40,7 @@ using std::pair;
 using std::string;
 
 
-void writeFileAscii(Buffer const & buf, string const & fname,
+void writeFileAscii(Buffer const & buf, FileName const & fname,
 	OutputParams const & runparams)
 {
 	odocfstream ofs;

@@ -192,19 +192,19 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 
 	// Ascii backend
 	if (backend_format == "text")
-		writeFileAscii(*buffer, filename, runparams);
+		writeFileAscii(*buffer, FileName(filename), runparams);
 	// no backend
 	else if (backend_format == "lyx")
 		buffer->writeFile(FileName(filename));
 	// Docbook backend
 	else if (buffer->isDocBook()) {
 		runparams.nice = !put_in_tempdir;
-		buffer->makeDocBookFile(filename, runparams);
+		buffer->makeDocBookFile(FileName(filename), runparams);
 	}
 	// LaTeX backend
 	else if (backend_format == format) {
 		runparams.nice = true;
-		if (!buffer->makeLaTeXFile(filename, string(), runparams))
+		if (!buffer->makeLaTeXFile(FileName(filename), string(), runparams))
 			return false;
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(buffer->filePath(), ' ')) {
@@ -213,7 +213,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		return false;
 	} else {
 		runparams.nice = false;
-		if (!buffer->makeLaTeXFile(filename, buffer->filePath(), runparams))
+		if (!buffer->makeLaTeXFile(FileName(filename), buffer->filePath(), runparams))
 			return false;
 	}
 

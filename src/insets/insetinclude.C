@@ -428,7 +428,7 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 // argument. Should we set it to string(), or should makeLaTeXFile
 // make use of it somehow? (JMarc 20031002)
 #endif
-		tmp->makeLaTeXFile(writefile.absFilename(),
+		tmp->makeLaTeXFile(writefile,
 				   onlyPath(masterFilename(buffer)),
 				   runparams, false);
 	} else {
@@ -535,7 +535,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 		lyxerr[Debug::LATEX] << "exportfile:" << exportfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeDocBookFile(writefile.absFilename(), runparams, true);
+		tmp->makeDocBookFile(writefile, runparams, true);
 	}
 
 	runparams.exportdata->addExternalFile("docbook", writefile,
