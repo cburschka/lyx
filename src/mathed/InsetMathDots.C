@@ -16,6 +16,7 @@
 #include "MathSupport.h"
 #include "MathParser.h"
 
+#include "frontends/FontMetrics.h"
 
 namespace lyx {
 
@@ -37,7 +38,7 @@ auto_ptr<InsetBase> InsetMathDots::doClone() const
 
 bool InsetMathDots::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	dim.set(mi.base.font, 'M');
+	dim = theFontMetrics(mi.base.font).dimension('M');
 	dh_ = 0;
 	if (key_->name == "cdots" || key_->name == "dotsb"
 			|| key_->name == "dotsm" || key_->name == "dotsi")

@@ -25,6 +25,7 @@
 #include "debug.h"
 #include "LColor.h"
 
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include <boost/assert.hpp>
@@ -241,7 +242,7 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 
 void MathArray::metrics(MetricsInfo & mi) const
 {
-	dim_.set(mi.base.font, 'I');
+	dim_ = theFontMetrics(mi.base.font).dimension('I');
 
 	if (empty())
 		return;

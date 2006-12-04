@@ -159,13 +159,13 @@ void GuiFontMetrics::buttonText(docstring const & str,
 
 Dimension const GuiFontMetrics::defaultDimension() const
 {
-	return Dimension(maxAscent(), maxDescent(), 0);
+	return Dimension(0, maxAscent(), maxDescent());
 }
 
 
 Dimension const GuiFontMetrics::dimension(char_type c) const
 {
-	return Dimension(ascent(c), descent(c), width(c));
+	return Dimension(width(c), ascent(c), descent(c));
 }
 
 

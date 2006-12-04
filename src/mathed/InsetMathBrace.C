@@ -15,9 +15,11 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "LColor.h"
-#include "support/std_ostream.h"
+
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
+#include "support/std_ostream.h"
 
 namespace lyx {
 
@@ -46,7 +48,7 @@ auto_ptr<InsetBase> InsetMathBrace::doClone() const
 bool InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
-	Dimension t(mi.base.font, '{');
+	Dimension t = theFontMetrics(mi.base.font).dimension('{');
 	dim.asc = max(cell(0).ascent(), t.asc);
 	dim.des = max(cell(0).descent(), t.des);
 	dim.wid = cell(0).width() + 2 * t.wid;
@@ -62,7 +64,7 @@ void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont font = pi.base.font;
 	font.setColor(LColor::latex);
-	Dimension t(font, '{');
+	Dimension t = theFontMetrics(font).dimension('{');
 	pi.pain.text(x, y, '{', font);
 	cell(0).draw(pi, x + t.wid, y);
 	pi.pain.text(x + t.wid + cell(0).width(), y, '}', font);

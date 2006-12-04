@@ -12,11 +12,7 @@
 #ifndef DIMENSION_H
 #define DIMENSION_H
 
-#include "support/types.h"
-
 namespace lyx {
-
-class LyXFont;
 
 /// Simple wrapper around three ints
 class Dimension {
@@ -25,8 +21,6 @@ public:
 	Dimension() : wid(0), asc(0), des(0) {}
 	/// initialize data
 	Dimension(int w, int a, int d) : wid(w), asc(a), des(d) {}
-
-	Dimension(LyXFont const & font, char_type c) { set(font, c); }
 
 	Dimension & operator=(Dimension const & dim) {
 		wid = dim.wid;
@@ -38,11 +32,6 @@ public:
 	void operator+=(Dimension const & dim);
 	/// set to empty box
 	void clear() { wid = asc = des = 0; }
-	/// set to empty box suitble for given font.
-	void clear(LyXFont const & font);
-	/// set to a char dimensions for a given font.
-	void set(LyXFont const & font, char_type c);
-
 	/// get height
 	int height() const { return asc + des; }
 	/// get ascent
