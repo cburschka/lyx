@@ -14,13 +14,10 @@
 #ifndef LYX_MAIN_H
 #define LYX_MAIN_H
 
-#include "support/filename.h"
-
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
 #include <string>
-#include <vector>
 
 namespace lyx {
 
@@ -47,17 +44,7 @@ public:
 	LyX();
 	~LyX();
 
-	/**
-	 * Execute LyX. The startup sequence is as follows:
-	 * -# LyX::exec()
-	 * -# LyX::priv_exec()
-	 * -# lyx::createApplication()
-	 * Step 3 is omitted if no gui is wanted. We need lyx::createApplication()
-	 * only to create the QApplication object in the qt frontend. All
-	 * attempts with static and dynamically allocated QApplication
-	 * objects lead either to harmless error messages on exit
-	 * ("Mutex destroy failure") or crashes (OS X).
-	 */
+	/// Execute LyX.
 	int exec(int & argc, char * argv[]);
 
 	static LyX & ref();
@@ -110,16 +97,20 @@ private:
 	/// Early exit during the initialisation process.
 	void earlyExit(int status);
 
-	/// Initialise LyX and load files if asked.
+	/// Initialise LyX and fills-in the vector of files to be loaded.
 	/**
-	\param files is filled in with the command-line file names.
 	\return exit code failure if any.
 	*/
-	int loadFiles(int & argc, char * argv[],
-		std::vector<support::FileName> & files);
+	int init(int & argc, char * argv[]);
 
-	/// Create a View and restore GUI Session.
-	void restoreGuiSession(std::vector<support::FileName> const & files);
+	/// Load files passed at command-line.
+	/**
+	This method is used only in non-GUI mode.
+	*/
+	void loadFiles();
+
+	/// Create a View, load files and restore GUI Session.
+	void restoreGuiSession();
 
 	/// Initialize RC font for the GUI.
 	void initGuiFont();

@@ -49,6 +49,7 @@
 #include "frontends/LyXView.h"
 
 #include "support/environment.h"
+#include "support/filename.h"
 #include "support/filetools.h"
 #include "support/fontutils.h"
 #include "support/lyxlib.h"
@@ -64,6 +65,7 @@
 
 #include <iostream>
 #include <csignal>
+#include <vector>
 
 
 namespace lyx {
@@ -163,6 +165,9 @@ struct LyX::Singletons
 
 	///
 	IconvProcessor iconv;
+
+	/// Files to load at start.
+	vector<FileName> files_to_load_;
 };
 
 ///
@@ -331,15 +336,15 @@ int LyX::exec(int & argc, char * argv[])
 	support::init_package(argv[0], cl_system_support, cl_user_support,
 				   support::top_build_dir_is_one_level_up);
 
-	vector<FileName> files;
-	
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
-		int exit_status = loadFiles(argc, argv, files);
+		int exit_status = init(argc, argv);
 		if (exit_status) {
 			prepareExit();
 			return exit_status;
 		}
+
+		loadFiles();
 
 		if (batch_command.empty() || pimpl_->buffer_list_.empty()) {
 			prepareExit();
@@ -368,20 +373,6 @@ int LyX::exec(int & argc, char * argv[])
 
 	initGuiFont();
 
-	// Parse and remove all known arguments in the LyX singleton
-	// Give an error for all remaining ones.
-	int exit_status = loadFiles(argc, argv, files);
-	if (exit_status) {
-		// Kill the application object before exiting.
-		pimpl_->application_.reset();
-		use_gui = false;
-		prepareExit();
-		return exit_status;
-	}
-
-	restoreGuiSession(files);
-	// Start the real execution loop.
-
 	// FIXME
 	/* Create a CoreApplication class that will provide the main event loop
 	* and the socket callback registering. With Qt4, only QtCore
@@ -393,6 +384,18 @@ int LyX::exec(int & argc, char * argv[])
 	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
 		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
 
+	// Parse and remove all known arguments in the LyX singleton
+	// Give an error for all remaining ones.
+	int exit_status = init(argc, argv);
+	if (exit_status) {
+		// Kill the application object before exiting.
+		pimpl_->application_.reset();
+		use_gui = false;
+		prepareExit();
+		return exit_status;
+	}
+
+	// Start the real execution loop.
 	exit_status = pimpl_->application_->exec();
 	
 	prepareExit();
@@ -456,8 +459,7 @@ void LyX::earlyExit(int status)
 }
 
 
-int LyX::loadFiles(int & argc, char * argv[],
-	vector<FileName> & files)
+int LyX::init(int & argc, char * argv[])
 {
 	// check for any spurious extra arguments
 	// other than documents
@@ -485,44 +487,46 @@ int LyX::loadFiles(int & argc, char * argv[],
 			continue;
 		// get absolute path of file and add ".lyx" to
 		// the filename if necessary
-		files.push_back(fileSearch(string(), os::internal_path(argv[argi]), "lyx"));
+		pimpl_->files_to_load_.push_back(fileSearch(string(), os::internal_path(argv[argi]), "lyx"));
 	}
 
 	if (first_start)
-		files.push_back(i18nLibFileSearch("examples", "splash.lyx"));
-
-	Buffer * last_loaded = 0;
-
-	vector<FileName>::const_iterator it = files.begin();
-	vector<FileName>::const_iterator end = files.end();
-
-	for (; it != end; ++it) {
-		if (it->empty()) {
-			Buffer * const b = newFile(it->absFilename(), string(), true);
-			if (b)
-				last_loaded = b;
-		} else {
-			Buffer * buf = pimpl_->buffer_list_.newBuffer(it->absFilename(), false);
-			if (loadLyXFile(buf, *it)) {
-				last_loaded = buf;
-				ErrorList const & el = buf->errorList("Parse");
-				if (!el.empty())
-					for_each(el.begin(), el.end(),
-					boost::bind(&LyX::printError, this, _1));
-			}
-			else
-				pimpl_->buffer_list_.release(buf);
-		}
-	}
-
-	files.clear(); // the files are already loaded
+		pimpl_->files_to_load_.push_back(i18nLibFileSearch("examples", "splash.lyx"));
 
 	return EXIT_SUCCESS;
 }
 
 
+void LyX::loadFiles()
+{
+	vector<FileName>::const_iterator it = pimpl_->files_to_load_.begin();
+	vector<FileName>::const_iterator end = pimpl_->files_to_load_.end();
+
+	for (; it != end; ++it) {
+		if (it->empty())
+			continue;
+
+		Buffer * const b = newFile(it->absFilename(), string(), true);
+		Buffer * buf = pimpl_->buffer_list_.newBuffer(it->absFilename(), false);
+		if (loadLyXFile(buf, *it)) {
+			ErrorList const & el = buf->errorList("Parse");
+			if (!el.empty())
+				for_each(el.begin(), el.end(),
+				boost::bind(&LyX::printError, this, _1));
+		}
+		else
+			pimpl_->buffer_list_.release(buf);
+	}
+}
+
+
 void LyX::execBatchCommands()
 {
+	// The advantage of doing this here is that the event loop
+	// is already started. So any need for interaction will be
+	// aknowledged.
+	restoreGuiSession();
+
 	// Execute batch commands if available
 	if (batch_command.empty())
 		return;
@@ -534,23 +538,32 @@ void LyX::execBatchCommands()
 }
 
 
-void LyX::restoreGuiSession(vector<FileName> const & files)
+void LyX::restoreGuiSession()
 {
 	LyXView * view = newLyXView();
 
-	// load files
-	for_each(files.begin(), files.end(),
-		bind(&LyXView::loadLyXFile, view, _1, true));
-
-	// if a file is specified, I assume that user wants to edit *that* file
-	if (files.empty() && lyxrc.load_session) {
-		vector<FileName> const & lastopened = pimpl_->session_->lastOpened().getfiles();
-		// do not add to the lastfile list since these files are restored from
-		// last seesion, and should be already there (regular files), or should
-		// not be added at all (help files).
-		for_each(lastopened.begin(), lastopened.end(),
-			bind(&LyXView::loadLyXFile, view, _1, false));
+	// if some files were specified at command-line we assume that the
+	// user wants to edit *these* files and not to restore the session.
+	if (!pimpl_->files_to_load_.empty()) {
+		for_each(pimpl_->files_to_load_.begin(),
+			pimpl_->files_to_load_.end(),
+			bind(&LyXView::loadLyXFile, view, _1, true));
+		// clear this list to save a few bytes of RAM
+		pimpl_->files_to_load_.clear();
+		pimpl_->session_->lastOpened().clear();
+		return;
 	}
+
+	if (!lyxrc.load_session)
+		return;
+
+	vector<FileName> const & lastopened = pimpl_->session_->lastOpened().getfiles();
+	// do not add to the lastfile list since these files are restored from
+	// last session, and should be already there (regular files), or should
+	// not be added at all (help files).
+	for_each(lastopened.begin(), lastopened.end(),
+		bind(&LyXView::loadLyXFile, view, _1, false));
+
 	// clear this list to save a few bytes of RAM
 	pimpl_->session_->lastOpened().clear();
 }
