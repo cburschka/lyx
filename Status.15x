@@ -38,8 +38,8 @@ FILE
 
 * Non-ascii filenames do not work at all and result in an assertion or garbage.
 
-* open lyx, create a new document, enter a few chars, quit. Lyx does not
-  ask if you want to save the file.
+* open lyx, create a new document, enter a few chars, quit, click cancel, lyx
+  still quits.
 
 * Change Tools->Preferences->User interface->User interface to something like
   "kornel.default.ui"; save prefs; exit LyX; restart LyX; => crash; 
@@ -77,12 +77,6 @@ TABLE OF CONTENTS
   Up/Down? The arrangement of the buttons may also give some hint to the user.
 
 * The items in the treeview are editable
-
-* When content (sections/captions) is changed, the toc/lof/lot is not properly 
-  updated.
-  Abdel 2006-11-17: This one is not as simple as it seems as it involves a
-  TocBackend update at each keystroke. Unless we manage to update a specific
-  TocItem, this will be a WONTFIX for 1.5.0.
 
 
 DIALOGS
@@ -139,17 +133,12 @@ MULTIPLE WINDOWS / DOCUMENTS
   2) the easy way: disable the cursor on focus out event and re-enable it at
   focus in event and jump the saved position (at focus out).
 
-* There should be a close button on the tabs (Joost 3/11/06).
-  There is now a Qt feature request:
-  http://www.trolltech.com/developer/task-tracker/index_html?id=137891&method=entry
-
 
 TOOLBARS & MINIBUFFER
 
 * When toolbars are hidden, they pop up again after clicking on the document
   area (Joost 4/11/06).
-
-* TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
+  Comment by Bo: Can not reproduce, details please.
 
 * Toolbar tooltips are no longer shown
 
@@ -262,11 +251,6 @@ PAINTING & PERFORMANCE
  correct font is found and used (cmr10).
 
 
-BUILDING
-
-* It is ridiculous that you have to call configure with --with-frontend=qt4.
-  The existance of config/qt.m4 does not make much sense either.
-
 
 MAC OS X
 
@@ -284,6 +268,23 @@ MAC OS X
 
 * Menu bar disappears on MAC (instead of being disabled) when dialogs appear.
 
+
+WONT FIX (for 1.5.0)
+
+* There should be a close button on the tabs (Joost 3/11/06).
+  There is now a Qt feature request:
+  http://www.trolltech.com/developer/task-tracker/index_html?id=137891&method=entry
+
+* It is ridiculous that you have to call configure with --with-frontend=qt4.
+  The existance of config/qt.m4 does not make much sense either.
+
+* TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
+
+* When content (sections/captions) is changed, the toc/lof/lot is not properly 
+  updated.
+  Abdel 2006-11-17: This one is not as simple as it seems as it involves a
+  TocBackend update at each keystroke. Unless we manage to update a specific
+  TocItem, this will be a WONTFIX for 1.5.0.
 
 
 **********************************************************************
