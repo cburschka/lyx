@@ -257,6 +257,12 @@ PAINTING & PERFORMANCE
 
 
 
+BUILDING
+
+* It is ridiculous that you have to call configure with --with-frontend=qt4.
+  The existance of config/qt.m4 does not make much sense either.
+
+
 MAC OS X
 
 * Many issues with toolbars on MAC (Bennett 3/11/06):
@@ -279,9 +285,6 @@ WONT FIX (for 1.5.0)
 * There should be a close button on the tabs (Joost 3/11/06).
   There is now a Qt feature request:
   http://www.trolltech.com/developer/task-tracker/index_html?id=137891&method=entry
-
-* It is ridiculous that you have to call configure with --with-frontend=qt4.
-  The existance of config/qt.m4 does not make much sense either.
 
 * TODO toolbar popup menu, currently disabled (Peter 9/11/06)  
 
