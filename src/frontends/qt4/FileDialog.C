@@ -20,6 +20,7 @@
 #include "gettext.h"
 
 #include "support/filefilterlist.h"
+#include "support/os.h"
 
 /** when this is defined, the code will use
  * QFileDialog::getOpenFileName and friends to create filedialogs.
@@ -44,6 +45,7 @@ using lyx::support::makeAbsPath;
 namespace lyx {
 
 using support::FileFilterList;
+using support::os::internal_path;
 using std::endl;
 
 
@@ -82,9 +84,9 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith
 		= lyx::from_utf8(makeAbsPath(lyx::to_utf8(suggested), lyx::to_utf8(path)));
-	result.second = qstring_to_ucs4(QFileDialog::getSaveFileName(
-		qApp->focusWidget(),
-		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ));
+	result.second = lyx::from_utf8(internal_path(fromqstr(
+		QFileDialog::getSaveFileName(qApp->focusWidget(),
+		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 	dlg.setFileMode(QFileDialog::AnyFile);
@@ -97,7 +99,8 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = qstring_to_ucs4(dlg.selectedFiles()[0]);
+		result.second = lyx::from_utf8(internal_path(
+					fromqstr(dlg.selectedFiles()[0])));
 	dlg.hide();
 #endif
 	return result;
@@ -117,9 +120,9 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith =
 		lyx::from_utf8(makeAbsPath(lyx::to_utf8(suggested), lyx::to_utf8(path)));
-	result.second = qstring_to_ucs4(QFileDialog::getOpenFileName(
-		qApp->focusWidget(), 
-		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ));
+	result.second = lyx::from_utf8(internal_path(fromqstr(
+		QFileDialog::getOpenFileName(qApp->focusWidget(), 
+		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
 #else
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 
@@ -130,7 +133,8 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = qstring_to_ucs4(dlg.selectedFiles()[0]);
+		result.second = lyx::from_utf8(internal_path(
+					fromqstr(dlg.selectedFiles()[0])));
 	dlg.hide();
 #endif
 	return result;
@@ -148,9 +152,9 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith
 		= lyx::from_utf8(makeAbsPath(lyx::to_utf8(suggested), lyx::to_utf8(path)));
-	result.second = qstring_to_ucs4(QFileDialog::getExistingDirectory(
-		qApp->focusWidget(),
-		toqstr(title_),toqstr(startsWith) ));
+	result.second = lyx::from_utf8(internal_path(fromqstr(
+		QFileDialog::getExistingDirectory(qApp->focusWidget(),
+		toqstr(title_),toqstr(startsWith)))));
 #else
 	FileFilterList const filter(_("Directories"));
 
@@ -165,7 +169,8 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = qstring_to_ucs4(dlg.selectedFiles()[0]);
+		result.second = lyx::from_utf8(internal_path(
+					fromqstr(dlg.selectedFiles()[0])));
 	dlg.hide();
 #endif
 	return result;
