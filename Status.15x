@@ -160,6 +160,11 @@ EDITING
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
 
+* insert->note->lyx note, enter a few chars, collapse the note. Copy the note
+  several times (three lines?), use mouse to select. Lyx crashes with
+  Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:143
+  NOTE: this is unrelated to the button face-lift patch.
+
 
 CHANGE TRACKING
 
