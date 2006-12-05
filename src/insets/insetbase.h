@@ -182,7 +182,7 @@ public:
 	virtual bool notifyCursorLeaves(LCursor &) { return false; }
 	/// is called when the mouse enter or leave this inset
 	/// return true if this inset needs repaint
-	virtual bool setMouseHover(bool mouse_hover) { return false; }
+	virtual bool setMouseHover(bool) { return false; }
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
