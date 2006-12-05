@@ -216,12 +216,13 @@ FileName const fileOpenSearch(string const & path, string const & name,
 
 
 /// Returns a vector of all files in directory dir having extension ext.
-vector<string> const dirList(string const & dir, string const & ext)
+vector<string> const dirList(FileName const & dir, string const & ext)
 {
 	// EXCEPTIONS FIXME. Rewrite needed when we turn on exceptions. (Lgb)
 	vector<string> dirlist;
 
-	if (!(fs::exists(dir) && fs::is_directory(dir))) {
+	string const encoded_dir = dir.toFilesystemEncoding();
+	if (!(fs::exists(encoded_dir) && fs::is_directory(encoded_dir))) {
 		lyxerr[Debug::FILES]
 			<< "Directory \"" << dir
 			<< "\" does not exist to DirList." << endl;
@@ -233,11 +234,12 @@ vector<string> const dirList(string const & dir, string const & ext)
 		extension += '.';
 	extension += ext;
 
-	fs::directory_iterator dit(dir);
+	fs::directory_iterator dit(encoded_dir);
 	fs::directory_iterator end;
 	for (; dit != end; ++dit) {
 		string const & fil = dit->leaf();
 		if (suffixIs(fil, extension)) {
+			// FIXME UNICODE: We need to convert from filesystem encoding to utf8
 			dirlist.push_back(fil);
 		}
 	}
@@ -386,10 +388,10 @@ FileName const createTmpDir(FileName const & tempdir, string const & mask)
 } // namespace anon
 
 
-bool destroyDir(string const & tmpdir)
+bool destroyDir(FileName const & tmpdir)
 {
 	try {
-		return fs::remove_all(tmpdir) > 0;
+		return fs::remove_all(tmpdir.toFilesystemEncoding()) > 0;
 	} catch (fs::filesystem_error const & fe){
 		lyxerr << "Could not delete " << tmpdir << ". (" << fe.what() << ")" << std::endl;
 		return false;

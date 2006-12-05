@@ -23,7 +23,7 @@ namespace lyx {
 namespace support {
 
 /// remove directory and all contents, returns true on success
-bool destroyDir(std::string const & tmpdir);
+bool destroyDir(FileName const & tmpdir);
 
 /// Creates the per buffer temporary directory
 std::string const createBufferTmpDir();
@@ -60,7 +60,7 @@ FileName const fileSearch(std::string const & path,
 			     std::string const & ext = std::string());
 
 /// Returns a vector of all files in directory dir having extension ext.
-std::vector<std::string> const dirList(std::string const & dir,
+std::vector<std::string> const dirList(FileName const & dir,
 				       std::string const & ext = std::string());
 
 /** Is directory read only?

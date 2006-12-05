@@ -88,13 +88,14 @@ docstring const ControlGraphics::browse(docstring const & in_name) const
 
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support(), "clipart");
-	if (!(fs::exists(clipdir) && fs::is_directory(clipdir)))
+	string const encoded_clipdir = FileName(clipdir).toFilesystemEncoding();
+	if (!(fs::exists(encoded_clipdir) && fs::is_directory(encoded_clipdir)))
 		// No - bail out to system clipart directory
 		clipdir = addName(package().system_support(), "clipart");
-	pair<docstring, docstring> dir1(_("Clipart|#C#c"), lyx::from_utf8(clipdir));
-	pair<docstring, docstring> dir2(_("Documents|#o#O"), lyx::from_utf8(lyxrc.document_path));
+	pair<docstring, docstring> dir1(_("Clipart|#C#c"), from_utf8(clipdir));
+	pair<docstring, docstring> dir2(_("Documents|#o#O"), from_utf8(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseRelFile(in_name, lyx::from_utf8(kernel().bufferFilepath()),
+	return browseRelFile(in_name, from_utf8(kernel().bufferFilepath()),
 			     title,
 			     FileFilterList(),
 			     false, dir1, dir2);

@@ -426,7 +426,7 @@ void LyX::prepareExit()
 		return;
 	}
 
-	if (!destroyDir(package().temp_dir())) {
+	if (!destroyDir(FileName(package().temp_dir()))) {
 		docstring const msg =
 			bformat(_("Unable to remove the temporary directory %1$s"),
 			from_utf8(package().temp_dir()));
@@ -841,8 +841,9 @@ bool LyX::init()
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", lyxrc.path_prefix);
 
-	if (fs::exists(lyxrc.document_path) &&
-	    fs::is_directory(lyxrc.document_path))
+	FileName const document_path(lyxrc.document_path);
+	if (fs::exists(document_path.toFilesystemEncoding()) &&
+	    fs::is_directory(document_path.toFilesystemEncoding()))
 		package().document_dir() = lyxrc.document_path;
 
 	package().temp_dir() = createLyXTmpDir(FileName(lyxrc.tempdir_path)).absFilename();
@@ -975,11 +976,19 @@ namespace {
 // return true if file does not exist or is older than configure.py.
 bool needsUpdate(string const & file)
 {
-	static string const configure_script =
-		addName(package().system_support(), "configure.py");
-	string const absfile =
-		addName(package().user_support(), file);
+	// We cannot initialize configure_script directly because the package
+	// is not initialized yet when  static objects are constructed.
+	static string configure_script;
+	static bool firstrun = true;
+	if (firstrun) {
+		configure_script = FileName(addName(
+				package().system_support(),
+				"configure.py")).toFilesystemEncoding();
+		firstrun = false;
+	}
 
+	string const absfile = FileName(addName(
+		package().user_support(), file)).toFilesystemEncoding();
 	return (! fs::exists(absfile))
 		|| (fs::last_write_time(configure_script)
 		    > fs::last_write_time(absfile));
@@ -991,8 +1000,9 @@ bool needsUpdate(string const & file)
 bool LyX::queryUserLyXDir(bool explicit_userdir)
 {
 	// Does user directory exist?
-	if (fs::exists(package().user_support()) &&
-	    fs::is_directory(package().user_support())) {
+	string const user_support =
+		FileName(package().user_support()).toFilesystemEncoding();
+	if (fs::exists(user_support) && fs::is_directory(user_support)) {
 		first_start = false;
 
 		return needsUpdate("lyxrc.defaults")

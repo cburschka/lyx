@@ -511,7 +511,9 @@ bool Converters::move(string const & fmt,
 	string const to_base = changeExtension(to.absFilename(), string());
 	string const to_extension = getExtension(to.absFilename());
 
-	vector<string> files = dirList(onlyPath(from.absFilename()), getExtension(from.absFilename()));
+	vector<string> const files = dirList(
+			FileName(onlyPath(from.absFilename())),
+			getExtension(from.absFilename()));
 	for (vector<string>::const_iterator it = files.begin();
 	     it != files.end(); ++it)
 		if (prefixIs(*it, base)) {

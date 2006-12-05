@@ -123,12 +123,12 @@ bool menuWrite(Buffer * buffer)
 
 
 
-bool writeAs(Buffer * buffer, string const & filename)
+bool writeAs(Buffer * buffer, string const & newname)
 {
 	string fname = buffer->fileName();
 	string const oldname = fname;
 
-	if (filename.empty()) {
+	if (newname.empty()) {
 
 		// FIXME UNICODE
 		FileDialog fileDlg(_("Choose a filename to save document as"),
@@ -159,9 +159,10 @@ bool writeAs(Buffer * buffer, string const & filename)
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
 	} else
-		fname = filename;
+		fname = newname;
 
-	if (fs::exists(fname)) {
+	FileName const filename(fname);
+	if (fs::exists(filename.toFilesystemEncoding())) {
 		docstring const file = makeDisplayPath(fname, 30);
 		docstring text = bformat(_("The document %1$s already exists.\n\n"
 						     "Do you want to over-write that document?"), file);

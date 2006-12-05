@@ -115,7 +115,7 @@ void ConverterCache::Impl::readIndex()
 		CacheItem item(orig_from_name, to_format, timestamp, checksum);
 
 		// Don't cache files that do not exist anymore
-		if (!fs::exists(orig_from)) {
+		if (!fs::exists(orig_from_name.toFilesystemEncoding())) {
 			lyxerr[Debug::FILES] << "Not caching file `"
 				<< orig_from << "' (does not exist anymore)."
 				<< std::endl;

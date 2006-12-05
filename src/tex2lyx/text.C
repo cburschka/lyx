@@ -358,7 +358,7 @@ string find_file(string const & name, string const & path,
 		// We don't use ChangeExtension() because it does the wrong
 		// thing if name contains a dot.
 		string const trial = name + '.' + (*what);
-		if (fs::exists(makeAbsPath(trial, path)))
+		if (fs::exists(FileName(makeAbsPath(trial, path)).toFilesystemEncoding()))
 			return trial;
 	}
 	return string();
@@ -1480,7 +1480,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
-			if (!fs::exists(makeAbsPath(name, path))) {
+			if (!fs::exists(FileName(makeAbsPath(name, path)).toFilesystemEncoding())) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const dvips_name =
@@ -1510,7 +1510,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name = pdftex_name;
 			}
 
-			if (fs::exists(makeAbsPath(name, path)))
+			if (fs::exists(FileName(makeAbsPath(name, path)).toFilesystemEncoding()))
 				fix_relative_filename(name);
 			else
 				cerr << "Warning: Could not find graphics file '"
@@ -2132,7 +2132,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
 			if (t.cs() == "include" &&
-			    !fs::exists(makeAbsPath(filename, path))) {
+			    !fs::exists(FileName(makeAbsPath(filename, path)).toFilesystemEncoding())) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const tex_name =
@@ -2141,7 +2141,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
-			if (fs::exists(makeAbsPath(filename, path))) {
+			if (fs::exists(FileName(makeAbsPath(filename, path)).toFilesystemEncoding())) {
 				string const abstexname =
 					makeAbsPath(filename, path);
 				string const abslyxname =

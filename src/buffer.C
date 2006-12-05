@@ -229,7 +229,7 @@ Buffer::~Buffer()
 
 	closing();
 
-	if (!temppath().empty() && !destroyDir(temppath())) {
+	if (!temppath().empty() && !destroyDir(FileName(temppath()))) {
 		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"),
 			from_utf8(temppath())));
