@@ -146,7 +146,7 @@ LColor::LColor()
 	{ bottomarea, N_("bottom area"), "bottomarea", "grey40", "bottomarea" },
 	{ pagebreak, N_("page break"), "pagebreak", "RoyalBlue", "pagebreak" },
 	{ buttonframe, N_("frame of button"), "buttonframe", "#A9ABB5", "buttonframe" },
-	{ buttonbg, N_("button background"), "buttonbg", "linen", "buttonbg" },
+	{ buttonbg, N_("button background"), "buttonbg", "#dcd2c8", "buttonbg" },
 	{ buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "buttonhoverbg" },
 	{ inherit, N_("inherit"), "inherit", "black", "inherit" },
 	{ ignore, N_("ignore"), "ignore", "black", "ignore" },
