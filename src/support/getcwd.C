@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "support/lyxlib.h"
+#include "support/os.h"
 
 #include <boost/scoped_array.hpp>
 
@@ -27,6 +28,7 @@ namespace lyx {
 #endif
 
 using boost::scoped_array;
+using support::os::internal_path;
 
 using std::string;
 
@@ -64,7 +66,7 @@ string const lyx::support::getcwd()
 	string result;
 	if (err)
 		result = tbuf.get();
-	return result;
+	return internal_path(result);
 }
 
 
