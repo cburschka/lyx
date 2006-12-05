@@ -42,6 +42,8 @@ public:
 	///
 	InsetCollapsable(BufferParams const &, CollapseStatus status = Open);
 	///
+	InsetCollapsable(InsetCollapsable const & rhs);
+	///
 	void read(Buffer const &, LyXLex &);
 	///
 	void write(Buffer const &, std::ostream &) const;
