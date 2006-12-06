@@ -651,6 +651,24 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			}
 			break;
 
+		case 0x20ac:    // EURO SIGN
+			if ((bparams.inputenc == "latin9" ||
+			     bparams.inputenc == "cp1251"||
+			     bparams.inputenc == "utf8") ||
+			    (bparams.inputenc == "auto" &&
+			     (font.language()->encoding()->latexName()
+			      == "latin9" ||
+			      font.language()->encoding()->latexName()
+			      == "cp1251"||
+			      font.language()->encoding()->latexName()
+			      == "utf8"))) {
+				os.put(c);
+			} else {
+				os << "\\texteuro{}";
+				column += 10;
+			}
+			break;
+
 		case '$': case '&':
 		case '%': case '#': case '{':
 		case '}': case '_':
@@ -801,6 +819,9 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 				break;
 			}
 		}
+		// the euro sign requires the textcomp package
+		if (getChar(i) == 0x20ac)
+			features.require("textcomp");
 	}
 }
 

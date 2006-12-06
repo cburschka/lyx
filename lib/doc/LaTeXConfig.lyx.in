@@ -2517,6 +2517,31 @@ booktabs
 \end_layout
 
 \begin_layout Subsection
+textcomp
+\end_layout
+
+\begin_layout Description
+Found: @chk_textcomp@
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/unpacked/textcomp.sty
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+textcomp
+\family default
+ is needed by LyX to output some special symbols like the EURO currency
+ sign.
+ The package is part of the LaTeX base distribution and should already be
+ installed on your system.
+\end_layout
+
+\begin_layout Subsection
 varioref
 \end_layout
 
@@ -2532,7 +2557,7 @@ macros/latex/required/tools/
 
 \begin_layout Description
 Notes: The package 
-\family typewriter
+\family sans
 varioref
 \family default
  introduces some commands to generate references with an information about
