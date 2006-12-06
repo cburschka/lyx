@@ -251,9 +251,10 @@ PAINTING & PERFORMANCE
   \spadesuit(*)   yes      no        yes
   ---------------------------------------
   (*) On solaris, a square is shown on screen instead of nothing.
- Further comments from Georg: This is probably a qt4 font drawing problem,
- since \Omega works fine in 1.4.3, and my debugging results showed that the
- correct font is found and used (cmr10).
+ - Further comments from Georg: This is probably a qt4 font drawing problem,
+   since \Omega works fine in 1.4.3, and my debugging results showed that the
+   correct font is found and used (cmr10).
+ - Solved problem with \int and \oint on Windows (Enrico 2006-12-06).
 
 
 
