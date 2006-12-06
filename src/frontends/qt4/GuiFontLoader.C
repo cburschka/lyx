@@ -131,30 +131,17 @@ bool isSymbolFamily(LyXFont::FONT_FAMILY family)
 
 bool isChosenFont(QFont & font, string const & family)
 {
-	lyxerr[Debug::FONT] << "raw: " << fromqstr(font.rawName()) << endl;
-
-	QFontInfo fi(font);
 	// QFontInfo won't find a font that has only a few glyphs at unusual
 	// positions, e.g. the original esint10 font.
 	// The workaround is to add dummy glyphs at least at all ASCII
 	// positions.
+	QFontInfo fi(font);
 
-	// Note Qt lies about family quite often
-	lyxerr[Debug::FONT] << "alleged fi family: "
-		<< fromqstr(fi.family()) << endl;
+	lyxerr[Debug::FONT] << "got: " << fromqstr(fi.family()) << endl;
 
-	// So we check rawName first
-	if (contains(fromqstr(font.rawName()), family)) {
+	if (contains(fromqstr(fi.family()), family)) {
 		lyxerr[Debug::FONT] << " got it ";
 		return true;
-	}
-
-	// Qt 4.1 returns "Multi" for all ? xft fonts
-	if (font.rawName() == "xft" || font.rawName() == "Multi") {
-		if (contains(fromqstr(fi.family()), family)) {
-			lyxerr[Debug::FONT] << " got it (Xft) ";
-			return true;
-		}
 	}
 
 	return false;
@@ -177,6 +164,7 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 		return make_pair<QFont, bool>(font, true);
 	}
 
+	lyxerr[Debug::FONT] << "Trying " << upper << " ... ";
 	font.setFamily(toqstr(upper));
 
 	if (isChosenFont(font, upper)) {
@@ -186,7 +174,9 @@ pair<QFont, bool> const getSymbolFont(string const & family)
 
 	// A simple setFamily() fails on Qt 2
 
-	font.setRawName(toqstr(getRawName(family)));
+	string const rawName = getRawName(family);
+	lyxerr[Debug::FONT] << "Trying " << rawName << " ... ";
+	font.setRawName(toqstr(rawName));
 
 	if (isChosenFont(font, family)) {
 		lyxerr[Debug::FONT] << "raw version!" << endl;
