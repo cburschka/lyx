@@ -1069,6 +1069,10 @@ std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
 				need_update |= inset->setMouseHover(true);
 			last_inset = inset;
 		}
+		// if in singlepar mode, update to get a full screen repaint.
+		// otherwise, buttons outside of the current paragraph will not be redrawn.
+		if (need_update && metrics_info_.singlepar)
+			update();
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
 		return make_pair(need_update, need_update);
