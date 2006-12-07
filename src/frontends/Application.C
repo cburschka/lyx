@@ -22,7 +22,7 @@
 
 #include "funcrequest.h"
 #include "FuncStatus.h"
-#include "lyx_main.h"
+#include "lyx_main.h"  // for lyx::use_gui
 #include "lyxfont.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
