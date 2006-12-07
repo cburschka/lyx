@@ -334,7 +334,7 @@ bool BufferView::multiParSel()
 }
 
 
-std::pair<bool, bool> BufferView::update(Update::flags flags)
+bool BufferView::update(Update::flags flags)
 {
 	// This is close to a hot-path.
 	if (lyxerr.debugging(Debug::DEBUG)) {
@@ -348,7 +348,7 @@ std::pair<bool, bool> BufferView::update(Update::flags flags)
 
 	// Check needed to survive LyX startup
 	if (!buffer_)
-		return make_pair(false, false);
+		return false;
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		lyxerr[Debug::WORKAREA] << "BufferView::update" << std::endl;
@@ -363,16 +363,16 @@ std::pair<bool, bool> BufferView::update(Update::flags flags)
 
 	// Case when no explicit update is requested.
 	if (!flags) {
-		// no need to do anything.
-		return make_pair(false, false);
+		// no need to redraw anything.
+		return false;
 	}
 
 	if (flags == Update::FitCursor) {
 		bool const fit_cursor = fitCursor();
 		if (fit_cursor)
 			updateMetrics(false);
-		// tell the frontend to update the screen.
-		return make_pair(fit_cursor, false);
+		// tell the frontend to update the screen if needed.
+		return fit_cursor;
 	}
 
 	bool full_metrics = flags & Update::Force;
@@ -386,7 +386,7 @@ std::pair<bool, bool> BufferView::update(Update::flags flags)
 		updateMetrics(false);
 
 	// tell the frontend to update the screen.
-	return make_pair(true, single_par);
+	return true;
 }
 
 
@@ -1027,7 +1027,7 @@ void BufferView::workAreaResize(int width, int height)
 }
 
 
-std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
+bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 {
 	//lyxerr << BOOST_CURRENT_FUNCTION << "[ cmd0 " << cmd0 << "]" << endl;
 
@@ -1037,7 +1037,7 @@ std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
 
 	// E.g. Qt mouse press when no buffer
 	if (!buffer_)
-		return make_pair(false, false);
+		return false;
 
 	LCursor cur(*this);
 	cur.push(buffer_->inset());
@@ -1055,27 +1055,53 @@ std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	//lyxerr << BOOST_CURRENT_FUNCTION
 	//       << " * created temp cursor:" << cur << endl;
 
-	// NOTE: eidtXY returns the top level inset of nested insets. If you happen
+	// NOTE: editXY returns the top level inset of nested insets. If you happen
 	// to move from a text (inset=0) to a text inside an inset (e.g. an opened
 	// footnote inset, again inset=0), that inset will not be redrawn.
+	// FIXME (abdel 07/12/06): I don't think the static solution will work in
+	// a multiple BufferView context.
 	static InsetBase * last_inset = NULL;
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
-		bool need_update = false;
+		bool need_redraw = false;
 		
 		if (inset != last_inset) {
 			if (last_inset)
-				need_update |= last_inset->setMouseHover(false);
+				need_redraw |= last_inset->setMouseHover(false);
 			if (inset)
-				need_update |= inset->setMouseHover(true);
+				need_redraw |= inset->setMouseHover(true);
 			last_inset = inset;
 		}
-		// if in singlepar mode, update to get a full screen repaint.
-		// otherwise, buttons outside of the current paragraph will not be redrawn.
-		if (need_update && metrics_info_.singlepar)
-			update();
+
+		// if last metrics update was in singlepar mode, WorkArea::redraw() will
+		// not expose the button for redraw. We adjust here the metrics dimension
+		// to enable a full redraw.
+		// FIXME: It is possible to redraw only the area around the button!
+		if (need_redraw && metrics_info_.singlepar) {
+			// FIXME: It should be possible to redraw only the area around 
+			// the button by doing this:
+			//
+			//metrics_info_.singlepar = false;
+			//metrics_info_.y1 = ymin of button;
+			//metrics_info_.y2 = ymax of button;
+			//
+			// Unfortunately, rowpainter.C:paintText() does not distinguish
+			// between background updates and text updates. So we use the hammer
+			// solution for now. We could also avoid the updateMetrics() below
+			// by using the first and last pit of the CoordCache. Have a look
+			// at LyXText::getPitNearY() to see what I mean.
+			//
+			//metrics_info_.pit1 = first pit of CoordCache;
+			//metrics_info_.pit2 = last pit of CoordCache;
+			//metrics_info_.singlepar = false;
+			//metrics_info_.y1 = 0;
+			//metrics_info_.y2 = height_;
+			//
+			updateMetrics(false);
+		}
+
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
-		return make_pair(need_update, need_update);
+		return need_redraw;
 	}
 
 	// Put anchor at the same position.
@@ -1098,8 +1124,7 @@ std::pair<bool, bool> BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	if (cur.result().dispatched() && cur.result().update())
 		return update(cur.result().update());
 
-	// When the above and the inner function are fixed, we can do this:
-	return make_pair(false, false);
+	return false;
 }
 
 

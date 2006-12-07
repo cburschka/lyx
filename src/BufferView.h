@@ -95,16 +95,13 @@ public:
 	/// load a buffer into the view.
 	bool loadLyXFile(support::FileName const & name, bool tolastfiles = true);
 
-	/// perform pending painting updates.
-	/** \c fitcursor means first
-	 *  to do a fitcursor, and to force an update if screen
-	 *  position changes. \c forceupdate means to force an update
-	 *  in any case.
-	 * \retval (false, xxx) if no redraw is required
-	 * \retval (true, true) if a single paragraph redraw is needed
-	 * \retval (true, false) if a full redraw is needed
+	/// perform pending metrics updates.
+	/** \c Update::FitCursor means first to do a FitCursor, and to
+	 * force an update if screen position changes.
+	 * \c Update::Force means to force an update in any case.
+	 * \retval true if a screen redraw is needed
 	 */
-	std::pair<bool, bool> update(Update::flags flags = Update::FitCursor | Update::Force);
+	bool update(Update::flags flags = Update::FitCursor | Update::Force);
 
 	/// move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
@@ -172,10 +169,8 @@ public:
 
 	/// dispatch method helper for \c WorkArea
 	/// \sa WorkArea
-	/// \retval (false, xxx) if no redraw is required
-	/// \retval (true, true) if a single paragraph redraw is needed
-	/// \retval (true, false) if a full redraw is needed
-	std::pair<bool, bool> workAreaDispatch(FuncRequest const & ev);
+	/// \retval true if a redraw is needed
+	bool workAreaDispatch(FuncRequest const & ev);
 
 	/// access to anchor.
 	pit_type anchor_ref() const;

@@ -1712,15 +1712,13 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// BufferView::update() updates the ViewMetricsInfo and
 			// also initializes the position cache for all insets in
 			// (at least partially) visible top-level paragraphs.
-			std::pair<bool, bool> needSecondUpdate 
-				= view()->update(updateFlags);
-
-			// Redraw screen unless explicitly told otherwise.
-			if (needSecondUpdate.first)
+			// We will redraw the screen only if needed.
+			if (view()->update(updateFlags)) {
 				// Buffer::changed() signals that a repaint is needed.
 				// The frontend (WorkArea) knows which area to repaint
 				// thanks to the ViewMetricsInfo updated above.
 				view()->buffer()->changed();
+			}
 
 			lyx_view_->updateStatusBar();
 

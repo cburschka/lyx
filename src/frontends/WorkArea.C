@@ -195,7 +195,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 
 	theLyXFunc().setLyXView(&lyx_view_);
 
-	std::pair<bool, bool> needRedraw = buffer_view_->workAreaDispatch(cmd0);
+	bool needRedraw = buffer_view_->workAreaDispatch(cmd0);
 
 	// Skip these when selecting
 	if (cmd0.action != LFUN_MOUSE_MOTION) {
@@ -218,7 +218,7 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 		toggleCursor();
 	}
 
-	if (needRedraw.first)
+	if (needRedraw)
 		redraw();
 }
 
