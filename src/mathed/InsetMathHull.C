@@ -40,7 +40,6 @@
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "lyx_main.h"
 #include "lyxrc.h"
 #include "outputparams.h"
 #include "sgml.h"

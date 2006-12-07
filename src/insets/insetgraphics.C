@@ -64,7 +64,6 @@ TODO
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "lyx_main.h"
 #include "lyxlength.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
