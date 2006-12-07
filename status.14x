@@ -81,6 +81,8 @@ What's new
 
 - write \begin and \end alignment tags on their own lines (bug 3010).
 
+- Import \guilsinglright correctly from .tex files
+
 * User Interface:
 
 - Fix a crash that occured on exit if the clipboard was not empty (only on
