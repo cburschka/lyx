@@ -137,7 +137,7 @@ char const * const known_quotes[] = { "glqq", "grqq", "quotedblbase",
 
 /// the same as known_quotes with .lyx names
 char const * const known_coded_quotes[] = { "gld", "grd", "gld",
-"grd", "gls", "fls", "frd", 0};
+"grd", "gls", "fls", "frs", 0};
 
 /// LaTeX names for font sizes
 char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
