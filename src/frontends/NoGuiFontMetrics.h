@@ -54,7 +54,7 @@ public:
 		return FontMetrics::width(s);
 	}
 	
-	virtual Dimension const dimension(char_type c) const { return Dimension(1, 1, 1); }
+	virtual Dimension const dimension(char_type) const { return Dimension(1, 1, 1); }
 
 	virtual void rectText(docstring const &,
 		int & /*width*/, int & /*ascent*/, int & /*descent*/) const {}
