@@ -479,11 +479,6 @@ int LyX::init(int & argc, char * argv[])
 		return EXIT_FAILURE;
 
 	for (int argi = argc - 1; argi >= 1; --argi) {
-		// check for any remaining extra arguments other than
-		// document file names. These will be passed out to the
-		// frontend.
-		if (argv[argi][0] == '-')
-			continue;
 		// get absolute path of file and add ".lyx" to
 		// the filename if necessary
 		pimpl_->files_to_load_.push_back(fileSearch(string(), os::internal_path(argv[argi]), "lyx"));
