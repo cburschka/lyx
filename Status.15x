@@ -157,6 +157,8 @@ MENUS
 
 EDITING
 
+* Open some arbitrary doc; mark some text; invoke "ert-insert" => seg fault
+
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
 
@@ -188,6 +190,12 @@ LAYOUT
 
 
 PAINTING & PERFORMANCE
+
+* Open de_Intro.lyx => The footnote text in the title section exceeds the footnote frame
+
+* Open de_UserGuide.lyx; go to the end of the document; click into the footnote (with the mouse -
+  this is important for the test case); add a character into the note 
+  => the complete footnote is expanded but only the current line is repainted
 
 * In the splash screen, the LyX version number is printed with a very, very
   small font size such that it becomes almost invisible on Windows.
