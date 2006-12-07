@@ -266,12 +266,6 @@ PAINTING & PERFORMANCE
 
 
 
-BUILDING
-
-* It is ridiculous that you have to call configure with --with-frontend=qt4.
-  The existance of config/qt.m4 does not make much sense either.
-
-
 MAC OS X
 
 * Many issues with toolbars on MAC (Bennett 3/11/06):
@@ -498,3 +492,6 @@ CREDITS:
   in French. (J. P. Chretien)
   FIXED (Michael (found the problem), Georg (fix), 2006-11-30)
 
+* It is ridiculous that you have to call configure with --with-frontend=qt4.
+  The existance of config/qt.m4 does not make much sense either.
+  The first one is FIXED, the second WONTFIX (JMarc 07-12-2006)

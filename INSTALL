@@ -9,7 +9,7 @@ These four steps will compile, test and install LyX:
 	0) Linux users beware: if compiling the Qt frontend, you need
            qt and qt-devel packages of the same version to compile LyX.
 
-	1) ./configure --with-frontend=qt4
+	1) ./configure
 	   configures LyX according to your system. 
 	   When compiling for Qt, you may have to set
              --with-qt-dir=<path-to-your-qt-installation>
@@ -106,9 +106,6 @@ to create the Makefile by typing
 
 For more complicated cases, LyX configure takes the following specific
 flags:
-
-  o --with-frontend=FRONTEND that allows to specify which frontend you
-    want to use. There is no default value: this switch is required.
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will
     find extra libraries (qt4) it needs. Defaults to NONE
@@ -232,6 +229,10 @@ cases:
     latex configuration.  This detection is automatically disabled if
     latex cannot be found.  If you find that you have to use this
     flag, please report it as a bug.
+
+  o --with-frontend=FRONTEND that allows to specify which frontend you
+    want to use. The default value is qt4, which is the only available
+    frontend for now.
 
 
 Compiling and installing LyX
