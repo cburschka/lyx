@@ -36,7 +36,6 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lyxvc.h"
-#include "lyx_main.h"
 #include "messages.h"
 #include "output.h"
 #include "output_docbook.h"
