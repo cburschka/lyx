@@ -80,10 +80,7 @@ void Painter::buttonText(int x, int y, docstring const & str,
 	fm.buttonText(str, width, ascent, descent);
 
 	button(x, y - ascent, width, descent + ascent, mouseHover);
-	if (mouseHover)
-		text(x + 4, y, str, font);
-	else
-		text(x + 3, y - 1, str, font);
+	text(x + 3, y - 1, str, font);
 }
 
 
