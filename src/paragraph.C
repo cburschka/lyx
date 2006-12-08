@@ -56,6 +56,8 @@
 
 namespace lyx {
 
+using lyx::support::contains;
+using lyx::support::rsplit;
 using support::subst;
 
 using std::distance;
@@ -742,6 +744,17 @@ string const corrected_env(string const & suffix, string const & env,
 	return output;
 }
 
+
+int adjust_column_count(string const & str, int oldcol)
+{
+	if (!contains(str, "\n"))
+		return oldcol + str.size();
+	else {
+		string tmp;
+		return rsplit(str, tmp, '\n').size();
+	}
+}
+
 } // namespace anon
 
 
@@ -785,7 +798,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\\begin", "flushright", ownerCode());
 		os << from_ascii(output);
-		column += output.size();
+		column = adjust_column_count(output, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
@@ -794,13 +807,13 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\\begin", "flushleft", ownerCode());
 		os << from_ascii(output);
-		column += output.size();
+		column = adjust_column_count(output, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\\begin", "center", ownerCode());
 		os << from_ascii(output);
-		column += output.size();
+		column = adjust_column_count(output, column);
 		break;
 	}
 	}
@@ -844,7 +857,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\n\\par\\end", "flushright", ownerCode());
 		os << from_ascii(output);
-		column += output.size();
+		column = adjust_column_count(output, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
@@ -853,13 +866,13 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\n\\par\\end", "flushleft", ownerCode());
 		os << from_ascii(output);
-		column += output.size();
+		column = adjust_column_count(output, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\n\\par\\end", "center", ownerCode());
 		os << from_ascii(output);
-		column += output.size();
+		column = adjust_column_count(output, column);
 		break;
 	}
 	}
