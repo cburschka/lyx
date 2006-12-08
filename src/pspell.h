@@ -18,12 +18,12 @@
 #include <map>
 
 
-namespace lyx {
-
 class PspellManager;
 class PspellStringEmulation;
 class PspellCanHaveError;
 class PspellConfig;
+
+namespace lyx {
 
 class BufferParams;
 

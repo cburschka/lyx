@@ -27,8 +27,6 @@ extern "C" {
 
 namespace lyx {
 
-using docstring;
-
 using std::endl;
 using std::string;
 
@@ -155,8 +153,9 @@ docstring const PSpell::error()
 	}
 
 	if (err)
-		return err;
-	return "";
+		// FIXME UNICODE: err is not in UTF8, but probably the locale encoding
+		return from_utf8(err);
+	return docstring();
 }
 
 
