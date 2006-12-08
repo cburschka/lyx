@@ -1,4 +1,4 @@
-This file contains some do's and dont's for the Qt2 frontend.
+This file contains some do's and dont's for the Qt4 frontend.
 
 General rules
 -------------
@@ -83,10 +83,11 @@ ex.
 Qt, Unicode, and LyX
 --------------------
 
-LyX isn't unicoded yet. But you should follow these simple rules :
+LyX uses a different encoding (UCS4) than Qt (UTF16), therefore there are a
+number of conversion functions in qt_helpers.[Ch]. Read the doxygen
+documentation for details when to use which function.
+
+Additionally, you should follow these simple rules :
 
 o Use qt_() not _() in code
-o Use fromqstr and toqstr NOT .latin1() / .c_str()
-
-Using these functions (in qt_helpers.h) will make sure we use
-the right locale for converting to Qt's QString, which is unicode.
+o Use the conversion functions of qt_helpers.h, NOT .latin1() / .c_str() etc.

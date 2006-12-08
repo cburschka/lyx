@@ -155,7 +155,7 @@ QString const qt_(string const & str)
 
 string const fromqstr(QString const & str)
 {
-	return str.isEmpty()? string(): string(str.toAscii());
+	return str.isEmpty() ? string() : string(str.toUtf8());
 }
 
 
