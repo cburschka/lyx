@@ -1,3 +1,8 @@
+2006-12-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* paragraph.C (startTeXParams, endTeXParams):
+	reset column count after linebreak.
+
 2006-12-04  Gregor Gorjanc  <gregor.gorjanc@bfro.uni-lj.si>
 
 	* paragraph.C (corrected_env, endTeXParams): writeout \begin
