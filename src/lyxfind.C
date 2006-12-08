@@ -218,7 +218,7 @@ bool stringSelected(BufferView * bv, string const & searchstr,
 
 
 int replace(BufferView * bv, string const & searchstr,
-	    string const & replacestr, bool cs, bool mw, bool fw)
+	    std::string const & replacestr, bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr) || bv->buffer()->isReadonly())
 		return 0;
@@ -227,7 +227,7 @@ int replace(BufferView * bv, string const & searchstr,
 		return 0;
 
 	LCursor & cur = bv->cursor();
-	cap::replaceSelectionWithString(cur, replacestr, fw);
+	cap::replaceSelectionWithString(cur, from_utf8(replacestr), fw);
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();

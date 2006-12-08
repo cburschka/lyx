@@ -173,7 +173,7 @@ WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
 			if (inword)
 				if (!word.empty() && !ignoreword) {
 					cur.setSelection();
-					return WordLangTuple(lyx::to_utf8(word), lang_code);
+					return WordLangTuple(word, lang_code);
 				} else
 					inword = false;
 		}
@@ -182,7 +182,7 @@ WordLangTuple nextWord(LCursor & cur, ptrdiff_t & progress)
 		++progress;
 	}
 
-	return WordLangTuple(string(), string());
+	return WordLangTuple(docstring(), string());
 }
 
 } // namespace anon
@@ -243,7 +243,7 @@ void ControlSpellchecker::check()
 			return;
 	}
 
-	lyxerr[Debug::GUI] << "Found word \"" << getWord() << "\"" << endl;
+	lyxerr[Debug::GUI] << "Found word \"" << to_utf8(getWord()) << "\"" << endl;
 
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
@@ -297,10 +297,10 @@ void ControlSpellchecker::showSummary()
 }
 
 
-void ControlSpellchecker::replace(string const & replacement)
+void ControlSpellchecker::replace(docstring const & replacement)
 {
 	lyxerr[Debug::GUI] << "ControlSpellchecker::replace("
-			   << replacement << ")" << std::endl;
+			   << to_utf8(replacement) << ")" << std::endl;
 	BufferView & bufferview = *kernel().bufferview();
 	cap::replaceSelectionWithString(bufferview.cursor(), replacement, true);
 	kernel().buffer().markDirty();
@@ -312,7 +312,7 @@ void ControlSpellchecker::replace(string const & replacement)
 }
 
 
-void ControlSpellchecker::replaceAll(string const & replacement)
+void ControlSpellchecker::replaceAll(docstring const & replacement)
 {
 	// TODO: add to list
 	replace(replacement);
@@ -326,13 +326,13 @@ void ControlSpellchecker::insert()
 }
 
 
-string const ControlSpellchecker::getSuggestion() const
+docstring const ControlSpellchecker::getSuggestion() const
 {
 	return speller_->nextMiss();
 }
 
 
-string const ControlSpellchecker::getWord() const
+docstring const ControlSpellchecker::getWord() const
 {
 	return word_.word();
 }

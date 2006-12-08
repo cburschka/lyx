@@ -12,7 +12,7 @@
 #ifndef WORD_LANG_TUPLE_H
 #define WORD_LANG_TUPLE_H
 
-#include <string>
+#include "support/docstring.h"
 
 
 namespace lyx {
@@ -26,12 +26,12 @@ class WordLangTuple {
 public:
 	WordLangTuple() {}
 
-	WordLangTuple(std::string const & w, std::string const & c)
+	WordLangTuple(docstring const & w, std::string const & c)
 		: word_(w), code_(c)
 	{}
 
 	/// return the word
-	std::string const & word() const {
+	docstring const & word() const {
 		return word_;
 	}
 
@@ -42,7 +42,7 @@ public:
 
 private:
 	/// the word
-	std::string word_;
+	docstring word_;
 	/// language code of word
 	std::string code_;
 };

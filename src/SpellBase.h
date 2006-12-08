@@ -15,8 +15,6 @@
 
 #include "support/docstring.h"
 
-#include <string>
-
 
 namespace lyx {
 
@@ -61,7 +59,7 @@ public:
 	virtual void accept(WordLangTuple const &);
 
 	/// return the next near miss after a SUGGESTED_WORDS result
-	virtual std::string const nextMiss();
+	virtual docstring const nextMiss();
 
 	/// give an error message on messy exit
 	virtual docstring const error();

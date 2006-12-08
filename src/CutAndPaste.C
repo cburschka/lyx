@@ -649,7 +649,7 @@ void pasteSelection(LCursor & cur, ErrorList & errorList, size_t sel_index)
 
 
 // simple replacing. The font of the first selected character is used
-void replaceSelectionWithString(LCursor & cur, string const & str, bool backwards)
+void replaceSelectionWithString(LCursor & cur, docstring const & str, bool backwards)
 {
 	recordUndo(cur);
 	DocIterator selbeg = cur.selectionBegin();
@@ -661,10 +661,10 @@ void replaceSelectionWithString(LCursor & cur, string const & str, bool backward
 	// Insert the new string
 	pos_type pos = cur.selEnd().pos();
 	Paragraph & par = cur.selEnd().paragraph();
-	string::const_iterator cit = str.begin();
-	string::const_iterator end = str.end();
+	docstring::const_iterator cit = str.begin();
+	docstring::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
-		par.insertChar(pos, (*cit), font, cur.buffer().params().trackChanges);
+		par.insertChar(pos, *cit, font, cur.buffer().params().trackChanges);
 
 	// Cut the selection
 	cutSelection(cur, true, false);

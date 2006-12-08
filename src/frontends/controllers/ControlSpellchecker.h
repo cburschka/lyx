@@ -45,10 +45,10 @@ public:
 	virtual bool exitEarly() const { return exitEarly_; }
 
 	/// replace word with replacement
-	void replace(std::string const &);
+	void replace(docstring const &);
 
 	/// replace all occurances of word
-	void replaceAll(std::string const &);
+	void replaceAll(docstring const &);
 
 	/// insert word in personal dictionary
 	void insert();
@@ -61,10 +61,10 @@ public:
 	void check();
 
 	/// get suggestion
-	std::string const getSuggestion() const;
+	docstring const getSuggestion() const;
 
 	/// get word
-	std::string const getWord() const;
+	docstring const getWord() const;
 
 	/// returns progress value
 	int getProgress() const { return oldval_; }

@@ -44,7 +44,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut);
  * the new string. When \c backwards == false, set anchor before
  * cursor; otherwise set cursor before anchor.
  */
-void replaceSelectionWithString(LCursor & cur, std::string const & str, 
+void replaceSelectionWithString(LCursor & cur, docstring const & str,
 				bool backwards);
 /// replace selection helper
 void replaceSelection(LCursor & cur);

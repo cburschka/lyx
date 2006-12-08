@@ -72,7 +72,7 @@ void QSpellchecker::ignore()
 
 void QSpellchecker::replace()
 {
-	controller().replace(fromqstr(dialog_->replaceCO->currentText()));
+	controller().replace(qstring_to_ucs4(dialog_->replaceCO->currentText()));
 }
 
 
@@ -91,7 +91,7 @@ void QSpellchecker::partialUpdate(int s)
 		dialog_->wordED->setText(toqstr(controller().getWord()));
 		dialog_->suggestionsLW->clear();
 
-		string w;
+		docstring w;
 		while (!(w = controller().getSuggestion()).empty()) {
 			dialog_->suggestionsLW->addItem(toqstr(w));
 		}

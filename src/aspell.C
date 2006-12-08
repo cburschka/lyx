@@ -87,14 +87,16 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 
 	AspellSpeller * m = it->second.speller;
 
-	int const word_ok = aspell_speller_check(m, word.word().c_str(), -1);
+	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+	int const word_ok = aspell_speller_check(m, to_utf8(word.word()).c_str(), -1);
 	BOOST_ASSERT(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
+		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		AspellWordList const * sugs =
-			aspell_speller_suggest(m, word.word().c_str(), -1);
+			aspell_speller_suggest(m, to_utf8(word.word()).c_str(), -1);
 		BOOST_ASSERT(sugs != 0);
 		els = aspell_word_list_elements(sugs);
 		if (aspell_word_list_empty(sugs))
@@ -110,7 +112,8 @@ void ASpell::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it != spellers_.end())
-		aspell_speller_add_to_personal(it->second.speller, word.word().c_str(), -1);
+		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+		aspell_speller_add_to_personal(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
 
@@ -118,18 +121,20 @@ void ASpell::accept(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it != spellers_.end())
-		aspell_speller_add_to_session(it->second.speller, word.word().c_str(), -1);
+		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+		aspell_speller_add_to_session(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
 
-string const ASpell::nextMiss()
+docstring const ASpell::nextMiss()
 {
 	char const * str = 0;
 
 	if (els)
 		str = aspell_string_enumeration_next(els);
 
-	return (str ? str : "");
+	// FIXME UNICODE: str is not in UTF8, but probably the locale encoding
+	return (str ? from_utf8(str) : docstring());
 }
 
 
@@ -141,6 +146,7 @@ docstring const ASpell::error()
 		err = aspell_error_message(spell_error_object);
 	}
 
+	// FIXME UNICODE: err is not in UTF8, but probably the locale encoding
 	return (err ? from_utf8(err) : docstring());
 }
 

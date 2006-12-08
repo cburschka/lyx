@@ -252,7 +252,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 		return;
 	}
 
-	/* Parent process: Read ispells identification message */
+	// Parent process: Read ispells identification message
 
 	bool err_read;
 	bool error = select(err_read);
@@ -264,7 +264,8 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 			return;
 		}
 
-		/* must have read something from stderr */
+		// must have read something from stderr
+		// FIXME UNICODE: buf is not in UTF8, but probably the locale encoding
 		error_ =from_utf8(buf);
 	} else {
 		// select returned error
@@ -343,18 +344,19 @@ bool ISpell::select(bool & err_read)
 }
 
 
-string const ISpell::nextMiss()
+docstring const ISpell::nextMiss()
 {
 	// Well, somebody is a sick fuck.
 
 	if (str == 0 || *(e+1) == '\0')
-		return "";
+		return docstring();
 	char * b = e + 2;
 	e = strpbrk(b, ",\n");
 	*e = '\0';
 	if (b)
-		return b;
-	return "";
+		// FIXME UNICODE: b is not in UTF8, but probably the locale encoding
+		return from_utf8(b);
+	return docstring();
 }
 
 
@@ -370,7 +372,8 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 
 	Result res;
 
-	::fputs(word.word().c_str(), out);
+	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+	::fputs(to_utf8(word.word()).c_str(), out);
 	::fputc('\n', out);
 
 	bool err_read;
@@ -382,6 +385,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	}
 
 	if (err_read) {
+		// FIXME UNICODE: buf is not in UTF8, but probably the locale encoding
 		error_ = from_utf8(buf);
 		return UNKNOWN_WORD;
 	}
@@ -434,7 +438,8 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 void ISpell::insert(WordLangTuple const & word)
 {
 	::fputc('*', out); // Insert word in personal dictionary
-	::fputs(word.word().c_str(), out);
+	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+	::fputs(to_utf8(word.word()).c_str(), out);
 	::fputc('\n', out);
 }
 
@@ -442,7 +447,8 @@ void ISpell::insert(WordLangTuple const & word)
 void ISpell::accept(WordLangTuple const & word)
 {
 	::fputc('@', out); // Accept in this session
-	::fputs(word.word().c_str(), out);
+	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+	::fputs(to_utf8(word.word()).c_str(), out);
 	::fputc('\n', out);
 }
 

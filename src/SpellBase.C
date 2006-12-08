@@ -40,9 +40,9 @@ void SpellBase::accept(WordLangTuple const &)
 {}
 
 
-string const SpellBase::nextMiss()
+docstring const SpellBase::nextMiss()
 {
-	return string();
+	return docstring();
 }
 
 
