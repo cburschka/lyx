@@ -24,6 +24,8 @@ GENERAL
 
 * Resolve compiler warnings
 
+* Watch for bugzilla.lyx.org entries
+
 
 FILE
 
@@ -96,7 +98,8 @@ MATH CONTROL PANEL
 * In the math control panel, the buttons are too small.
   The reason is probably that qt resizes the icons so that they fit into the
   button, leaving some margin. This leads to different scales for each icon.
-  qt3 did not resize the icons. Can this be set in qt4, too?
+  qt3 did not resize the icons. Can this be set in qt4, too? MG: Why don't we 
+  enlarge the buttons?
 
 
 OTHER PANELS
@@ -137,7 +140,10 @@ TOOLBARS & MINIBUFFER
   area (Joost 4/11/06).
   Comment by Bo: Can not reproduce, details please.
 
-* Toolbar tooltips are no longer shown
+
+TOOLTIPS:
+
+* Tooltips are no longer shown
 
 
 MENUS
@@ -148,8 +154,6 @@ MENUS
   used without the document flag.
   This should definitely be documented somewhere before the final release,
   because many users will copy their old config files.
-
-* Tooltips for fields are no longer shown
 
 
 EDITING
@@ -190,10 +194,12 @@ CHANGE TRACKING
 * In tables, cut & paste (complete cells) do not support change tracking
 
 * When accepting or rejecting changes, paragraphs with deleted par breaks are
-  not merged in nested text insets
+  not merged (in top-level pars & in nested text insets)
 
 * When running "find & replace", the cursor is not moved forward, such 
   that LyX always offers to replace the same string
+
+* LyX crashes if you want to accept/reject an end-of-par character only
 
 
 LAYOUT
