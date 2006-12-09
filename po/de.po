@@ -83,7 +83,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2006-12-09 15:44+0100\n"
-"PO-Revision-Date: 2006-11-08 18:21+0200\n"
+"PO-Revision-Date: 2006-12-09 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1848,6 +1848,9 @@ msgid ""
 "Tell whether this format is a document format. A document cannot be exported "
 "to or viewed in a non-document format."
 msgstr ""
+"Geben Sie an, ob dieses Format ein Dokumentenformat ist. Ein Dokument kann "
+"nicht in ein Nicht-Dokumentenformat exportiert bzw. in letzterem betrachtet "
+"werden."
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
 msgid "&Document format"
@@ -2283,6 +2286,8 @@ msgstr "Cursor-Positionen wieder herstellen"
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Restore to cursor position when the file was last closed"
 msgstr ""
+"Stellen Sie die Position wieder her, die der Cursor beim letztmaligen "
+"Schließen der Datei hatte"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:177
 msgid "Save/restore window position"
@@ -4131,7 +4136,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
-msgstr ""
+msgstr "________________________________ "
 
 #: lib/layouts/beamer.layout:207
 msgid "Pause"
@@ -4139,7 +4144,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:280
 msgid "Section \\arabic{section}"
@@ -4187,7 +4192,7 @@ msgstr "Spalte"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
-msgstr ""
+msgstr "Starte Spalte mit Breite:  "
 
 #: lib/layouts/beamer.layout:560
 msgid "Columns"
@@ -4207,11 +4212,11 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "Spalten Oben Ausgerichtet"
 
 #: lib/layouts/beamer.layout:630
 msgid "columns (top aligned) "
-msgstr ""
+msgstr "Spalten (oben ausgerichtet) "
 
 #: lib/layouts/beamer.layout:676
 msgid "Definition.  "
@@ -4280,24 +4285,20 @@ msgid "only on slides  "
 msgstr ""
 
 #: lib/layouts/beamer.layout:866
-#, fuzzy
 msgid "Overprint"
-msgstr "Sonderdruck"
+msgstr ""
 
 #: lib/layouts/beamer.layout:876
-#, fuzzy
 msgid "overprint "
-msgstr "Preprint"
+msgstr ""
 
 #: lib/layouts/beamer.layout:892
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Overlay"
+msgstr ""
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "overlayarea "
-msgstr "Overlay"
+msgstr ""
 
 #: lib/layouts/beamer.layout:932
 msgid "Part "
@@ -4308,27 +4309,24 @@ msgid "Proof.  "
 msgstr "Beweis.  "
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
-msgstr "Absatztrennung"
+msgstr ""
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
 msgstr "___"
 
 #: lib/layouts/beamer.layout:1001
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Grafik"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1027
 msgid "Theorem.  "
 msgstr "Theorem.  "
 
 #: lib/layouts/beamer.layout:1055
-#, fuzzy
 msgid "Uncover"
-msgstr "&Wieder herstellen"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1064
 msgid "uncovered on slides  "
@@ -9074,18 +9072,16 @@ msgid "page break"
 msgstr "Seitenumbruch"
 
 #: src/LColor.C:148
-#, fuzzy
 msgid "frame of button"
-msgstr "Knopf (links)"
+msgstr "Knopf (Rahmen)"
 
 #: src/LColor.C:149
 msgid "button background"
 msgstr "Knopf (Hintergrund)"
 
 #: src/LColor.C:150
-#, fuzzy
 msgid "button background under focus"
-msgstr "Knopf (Hintergrund)"
+msgstr "Knopf (Hintergrund bei Fokus)"
 
 #: src/LColor.C:151
 msgid "inherit"
@@ -9274,7 +9270,7 @@ msgid ""
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Einige Zeichen Ihres Dokuments sind in der gewählten Kodierung nicht "
+"Einige Zeichen Ihres Dokuments sind mit der gewählten Kodierung nicht "
 "darstellbar.\n"
 "Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
 
@@ -9289,6 +9285,10 @@ msgid ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
+"Die Ausgabedatei konnte nicht richtig geschlossen werden.\n"
+" Wahrscheinlich sind einige Zeichen Ihres Dokuments mit der gewählten "
+"Kodierung nicht darstellbar.\n"
+"Eine Änderung der Dokumentenkodierung auf 'utf8' könnte helfen."
 
 #: src/buffer.C:1131
 msgid "Running chktex..."
@@ -9489,7 +9489,7 @@ msgid "Cannot convert file"
 msgstr "Die Datei kann nicht konvertiert werden"
 
 #: src/converter.C:333
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
@@ -9790,7 +9790,6 @@ msgstr ""
 
 #: src/frontends/controllers/ControlAboutlyx.C:73
 #: src/frontends/controllers/ControlAboutlyx.C:79
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -9800,13 +9799,14 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
-"LyX wird in der Hoffnung weitergegeben, dass es nützlich ist, jedoch ohne "
-"irgendeine Art von Garantie, insbesondere auch keine Garantie im Hinblick "
-"auf Markttauglichkeit oder Tauglichkeit für einen bestimmten Zweck. \n"
+"LyX wird in der Hoffnung weitergegeben, dass es nützlich ist, jedoch OHNE "
+"IRGENDEINE ART VON GARANTIE, insbesondere auch keine Garantie im Hinblick "
+"auf MARKTTAUGLICHKEIT oder TAUGLICHKEIT FÜR EINEN BESTIMMTEN ZWECK.\n"
 "Näheres enthält die GNU General Public License.\n"
 "Eine Kopie der GNU General Public License sollte Bestandteil dieser Software "
 "sein. Ist dies nicht der Fall, schreiben Sie bitte an die Free Software "
-"Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:87
 msgid "LyX Version "
@@ -10317,19 +10317,19 @@ msgstr "Nächster Befehl"
 
 #: src/frontends/qt4/QDelimiterDialog.C:48
 msgid "big[[delimiter size]]"
-msgstr ""
+msgstr "big"
 
 #: src/frontends/qt4/QDelimiterDialog.C:48
 msgid "Big[[delimiter size]]"
-msgstr ""
+msgstr "Big"
 
 #: src/frontends/qt4/QDelimiterDialog.C:49
 msgid "bigg[[delimiter size]]"
-msgstr ""
+msgstr "bigg"
 
 #: src/frontends/qt4/QDelimiterDialog.C:49
 msgid "Bigg[[delimiter size]]"
-msgstr ""
+msgstr "Bigg"
 
 #: src/frontends/qt4/QDelimiterDialog.C:98
 msgid "LyX: Delimiters"
@@ -12117,11 +12117,8 @@ msgstr ""
 "werden soll falls die Sprache des Dokuments die Standardsprache ist."
 
 #: src/lyxrc.C:2321
-#, fuzzy
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
-"Deaktivieren Sie diesen Schalter, wenn LyX keine Sicherungsdateien erstellen "
-"soll."
 
 #: src/lyxrc.C:2325
 msgid "De-select to prevent loading files opened from the last lyx session."
@@ -12846,23 +12843,3 @@ msgstr "Variabel"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "geschützt"
-
-#~ msgid "top of button"
-#~ msgstr "Knopf (oben)"
-
-#~ msgid "bottom of button"
-#~ msgstr "Knopf (unten)"
-
-#~ msgid "right of button"
-#~ msgstr "Knopf (rechts)"
-
-#~ msgid ""
-#~ "This program is free software; you can redistribute it and/or modify it "
-#~ "under the terms of the GNU General Public License as published by the "
-#~ "Free Software Foundation; either version 2 of the License, or (at your "
-#~ "option) any later version."
-#~ msgstr ""
-#~ "Bei diesem Programm handelt es sich um freie Software; Sie dürfen sie "
-#~ "entsprechend der Bestimmungen der GNU General Public License der Free "
-#~ "Software Foundation weitergeben und/oder verändern. Verwenden Sie Version "
-#~ "2 oder (nach Ihrer Entscheidung) eine spätere Version der Lizenz."
