@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-03 02:31+0100\n"
+"POT-Creation-Date: 2006-12-09 15:44+0100\n"
 "PO-Revision-Date: 2006-11-13 23:37+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -125,7 +125,7 @@ msgstr "&Storleik:"
 #: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.ui:66
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:169
+#: src/frontends/controllers/ControlGraphics.C:170
 #: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:520
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
@@ -234,48 +234,48 @@ msgstr "&Over fleire spaltar"
 msgid "&Rotate sideways"
 msgstr "&Rotèr 90°"
 
-#: src/frontends/qt4/ui/FontUi.ui:16
+#: src/frontends/qt4/ui/FontUi.ui:13
 msgid "FontUi"
 msgstr "Skri&fttypeUI"
 
-#: src/frontends/qt4/ui/FontUi.ui:37
+#: src/frontends/qt4/ui/FontUi.ui:64
 #, fuzzy
 msgid "Sc&ale (%):"
 msgstr "Storleik%"
 
-#: src/frontends/qt4/ui/FontUi.ui:47
-#, fuzzy
-msgid "S&cale (%):"
-msgstr "Storleik%"
-
-#: src/frontends/qt4/ui/FontUi.ui:57
-msgid "&Base Size:"
-msgstr "&Start storleik:"
-
-#: src/frontends/qt4/ui/FontUi.ui:80
-msgid "&Sans Serif:"
-msgstr "&Sans Serif"
-
-#: src/frontends/qt4/ui/FontUi.ui:90
+#: src/frontends/qt4/ui/FontUi.ui:77
 msgid "&Typewriter:"
 msgstr "&Typewriter"
 
-#: src/frontends/qt4/ui/FontUi.ui:100
-msgid "&Default Family:"
-msgstr "&Standard familie"
-
-#: src/frontends/qt4/ui/FontUi.ui:110
+#: src/frontends/qt4/ui/FontUi.ui:90
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
 msgid "&Roman:"
 msgstr "&Romansk"
 
-#: src/frontends/qt4/ui/FontUi.ui:120
+#: src/frontends/qt4/ui/FontUi.ui:110
+#, fuzzy
+msgid "S&cale (%):"
+msgstr "Storleik%"
+
+#: src/frontends/qt4/ui/FontUi.ui:123
+msgid "&Sans Serif:"
+msgstr "&Sans Serif"
+
+#: src/frontends/qt4/ui/FontUi.ui:146
+msgid "Use &Old Style Figures"
+msgstr "Bruk &gamle figurstiler"
+
+#: src/frontends/qt4/ui/FontUi.ui:153
 msgid "Use true S&mall Caps"
 msgstr "Bruk ekte liten skrifttype"
 
-#: src/frontends/qt4/ui/FontUi.ui:127
-msgid "Use &Old Style Figures"
-msgstr "Bruk &gamle figurstiler"
+#: src/frontends/qt4/ui/FontUi.ui:160
+msgid "&Default Family:"
+msgstr "&Standard familie"
+
+#: src/frontends/qt4/ui/FontUi.ui:173
+msgid "&Base Size:"
+msgstr "&Start storleik:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Document &class:"
@@ -489,8 +489,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:98
 #: src/buffer_funcs.C:125 src/buffer_funcs.C:166 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:169 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1984 src/lyxvc.C:175
+#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
+#: src/lyxfunc.C:861 src/lyxfunc.C:1982 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Avbryt"
 
@@ -661,7 +661,7 @@ msgstr "Venstre"
 #: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QParagraphUi.ui:86
 #: src/frontends/qt4/ui/QTabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 #: src/frontends/qt4/QTabular.C:261
 msgid "Center"
 msgstr "Midten"
@@ -3215,7 +3215,7 @@ msgstr "Tilfelle #:"
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:234 lib/layouts/aapaper.layout:66
 #: lib/layouts/aapaper.layout:131 lib/layouts/aastex.layout:64
-#: lib/layouts/aastex.layout:168 lib/layouts/amsart.layout:62
+#: lib/layouts/aastex.layout:168 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
 #: lib/layouts/beamer.layout:265 lib/layouts/cv.layout:29
 #: lib/layouts/egs.layout:29 lib/layouts/ijmpc.layout:102
@@ -3236,7 +3236,7 @@ msgstr "Bolk"
 #: lib/layouts/IEEEtran.layout:279 lib/layouts/aa.layout:40
 #: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:69
 #: lib/layouts/aapaper.layout:140 lib/layouts/aastex.layout:67
-#: lib/layouts/aastex.layout:181 lib/layouts/amsart.layout:73
+#: lib/layouts/aastex.layout:181 lib/layouts/amsart.layout:72
 #: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
 #: lib/layouts/cv.layout:50 lib/layouts/egs.layout:50
 #: lib/layouts/ijmpc.layout:118 lib/layouts/ijmpd.layout:114
@@ -3255,7 +3255,7 @@ msgstr "Underbolk"
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/aa.layout:43
 #: lib/layouts/aa.layout:256 lib/layouts/aapaper.layout:72
 #: lib/layouts/aapaper.layout:151 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:81
+#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:80
 #: lib/layouts/amsbook.layout:66 lib/layouts/ijmpc.layout:127
 #: lib/layouts/ijmpd.layout:123 lib/layouts/isprs.layout:177
 #: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
@@ -3310,7 +3310,7 @@ msgstr "Underunderbolk*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:153
 msgid "Abstract"
 msgstr "Samandrag"
 
@@ -3593,7 +3593,7 @@ msgstr "Takk til"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:165
 msgid "References"
 msgstr "Referansar"
 
@@ -8750,44 +8750,44 @@ msgstr "Eit ord i dokument."
 msgid "Count words"
 msgstr "Tel ord"
 
-#: src/BufferView.C:1356
+#: src/BufferView.C:1404
 msgid "Select LyX document to insert"
 msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 
-#: src/BufferView.C:1358 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1406 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
-#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1935
+#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
-#: src/BufferView.C:1359 src/lyxfunc.C:1863 src/lyxfunc.C:1936
+#: src/BufferView.C:1407 src/lyxfunc.C:1861 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Eksempla|#E#e"
 
-#: src/BufferView.C:1363 src/lyx_cb.C:142 src/lyxfunc.C:1830
-#: src/lyxfunc.C:1867
+#: src/BufferView.C:1411 src/lyx_cb.C:142 src/lyxfunc.C:1828
+#: src/lyxfunc.C:1865
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Dokument (*.lyx)"
 
-#: src/BufferView.C:1375 src/lyxfunc.C:1877 src/lyxfunc.C:1957
-#: src/lyxfunc.C:1971 src/lyxfunc.C:1987
+#: src/BufferView.C:1423 src/lyxfunc.C:1875 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Avbroten."
 
-#: src/BufferView.C:1386
+#: src/BufferView.C:1434
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.C:1397
+#: src/BufferView.C:1445
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.C:1399
+#: src/BufferView.C:1447
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
@@ -9036,48 +9036,42 @@ msgid "page break"
 msgstr "sideskift"
 
 #: src/LColor.C:148
-msgid "top of button"
-msgstr "over knappen"
-
-#: src/LColor.C:149
-msgid "bottom of button"
-msgstr "under knappen"
-
-#: src/LColor.C:150
-msgid "left of button"
+#, fuzzy
+msgid "frame of button"
 msgstr "til venstre for knappen"
 
-#: src/LColor.C:151
-msgid "right of button"
-msgstr "til høgre for knappen"
-
-#: src/LColor.C:152
+#: src/LColor.C:149
 msgid "button background"
 msgstr "bakgrunn på knappen"
 
-#: src/LColor.C:153
+#: src/LColor.C:150
+#, fuzzy
+msgid "button background under focus"
+msgstr "bakgrunn på knappen"
+
+#: src/LColor.C:151
 msgid "inherit"
 msgstr "arv"
 
-#: src/LColor.C:154
+#: src/LColor.C:152
 msgid "ignore"
 msgstr "ignorer"
 
-#: src/LaTeX.C:91
+#: src/LaTeX.C:92
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Ventar på LaTeX køyring nummer %1$d"
 
-#: src/LaTeX.C:287 src/LaTeX.C:361
+#: src/LaTeX.C:289 src/LaTeX.C:363
 msgid "Running MakeIndex."
 msgstr "Lag indeks."
 
-#: src/LaTeX.C:292 src/LaTeX.C:368
+#: src/LaTeX.C:294 src/LaTeX.C:370
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Lag indeks."
 
-#: src/LaTeX.C:305
+#: src/LaTeX.C:307
 msgid "Running BibTeX."
 msgstr "BibTeX køyrer."
 
@@ -9111,74 +9105,74 @@ msgstr " (auto)"
 msgid "Native OS API not yet supported."
 msgstr "Dessverre er ikkje stavekontroll for ditt operativsystem støtta enno."
 
-#: src/buffer.C:233
+#: src/buffer.C:232
 msgid "Could not remove temporary directory"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen"
 
-#: src/buffer.C:234
+#: src/buffer.C:233
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Klarte ikkje å fjerna den mellombelse katalogen %1$s"
 
-#: src/buffer.C:406
+#: src/buffer.C:405
 msgid "Unknown document class"
 msgstr "Ukjent dokumentklasse"
 
-#: src/buffer.C:407
+#: src/buffer.C:406
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Brukar standard dokumentklasse sidan dokumentklassa %1$s er ukjent."
 
-#: src/buffer.C:462 src/text.C:354
+#: src/buffer.C:461 src/text.C:354
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukjent symbol %1$s %2$s\n"
 
-#: src/buffer.C:466 src/buffer.C:473 src/buffer.C:493
+#: src/buffer.C:465 src/buffer.C:472 src/buffer.C:492
 msgid "Document header error"
 msgstr "Filhovud-feil"
 
-#: src/buffer.C:472
+#: src/buffer.C:471
 msgid "\\begin_header is missing"
 msgstr "\\begin_header manglar"
 
-#: src/buffer.C:492
+#: src/buffer.C:491
 msgid "\\begin_document is missing"
 msgstr "\\begin_document manglar"
 
-#: src/buffer.C:503
+#: src/buffer.C:502
 msgid "Can't load document class"
 msgstr "Kan ikkje lese dokumentklassa"
 
-#: src/buffer.C:504
+#: src/buffer.C:503
 #, fuzzy, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr "Brukar standard dokumentklasse sidan dokumentklassa %1$s er ukjent."
 
-#: src/buffer.C:615 src/buffer.C:624
+#: src/buffer.C:614 src/buffer.C:623
 msgid "Document could not be read"
 msgstr "Kunne ikkje lese dokumentet"
 
-#: src/buffer.C:616 src/buffer.C:625
+#: src/buffer.C:615 src/buffer.C:624
 #, c-format
 msgid "%1$s could not be read."
 msgstr "Kunne ikkje lese %1$s."
 
-#: src/buffer.C:633 src/buffer.C:699
+#: src/buffer.C:632 src/buffer.C:698
 msgid "Document format failure"
 msgstr "Dokumentstil feil"
 
-#: src/buffer.C:634
+#: src/buffer.C:633
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s er ikkje eit LyX dokumentet."
 
-#: src/buffer.C:653
+#: src/buffer.C:652
 msgid "Conversion failed"
 msgstr "Feil oppstod i konverteringa"
 
-#: src/buffer.C:654
+#: src/buffer.C:653
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
@@ -9187,11 +9181,11 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX versjon, Desverre kunne vi ikkje lage ein "
 "mellombels kopi for å konvertere dokumentet."
 
-#: src/buffer.C:663
+#: src/buffer.C:662
 msgid "Conversion script not found"
 msgstr "Fann ikkje eksport programmet"
 
-#: src/buffer.C:664
+#: src/buffer.C:663
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
@@ -9200,11 +9194,11 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
 "dokumentet \"lyx2lyx\" vart ikkje funne."
 
-#: src/buffer.C:684
+#: src/buffer.C:683
 msgid "Conversion script failed"
 msgstr "Feil ved køyring av eksport programmet"
 
-#: src/buffer.C:685
+#: src/buffer.C:684
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
@@ -9213,16 +9207,16 @@ msgstr ""
 "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
 "dokumentet \"lyx2lyx\" klarte ikkje å fornye det."
 
-#: src/buffer.C:700
+#: src/buffer.C:699
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s slutta før tida, noko som truleg tyder at det er øydelagd."
 
-#: src/buffer.C:736
+#: src/buffer.C:735
 msgid "Backup failure"
 msgstr "Kan ikkje laga reservekopi"
 
-#: src/buffer.C:737
+#: src/buffer.C:736
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
@@ -9231,11 +9225,11 @@ msgstr ""
 "LyX klarte ikkje å lage reservekopi i %1$s\n"
 "Er du sikker at stigen eksiterar og du kan skrive til den?"
 
-#: src/buffer.C:863
+#: src/buffer.C:862
 msgid "Encoding error"
 msgstr "Feil med teiknsettet"
 
-#: src/buffer.C:864
+#: src/buffer.C:863
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
@@ -9244,11 +9238,11 @@ msgstr ""
 "Nokre av teikna i dokumentet er ikkje i teiknkodinga. \n"
 "Prøv å endre teiknkodinga til utf8."
 
-#: src/buffer.C:873
+#: src/buffer.C:872
 msgid "Error closing file"
 msgstr "Klarte ikkje avslutte fila"
 
-#: src/buffer.C:874
+#: src/buffer.C:873
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9259,15 +9253,15 @@ msgstr ""
 "Det kan vere teikn i dokumentet ditt som ikkje er i teiknkodinga\n"
 "Prøv å endra teiknkodinga til utf8."
 
-#: src/buffer.C:1132
+#: src/buffer.C:1131
 msgid "Running chktex..."
 msgstr "Køyrer ChkTeX ..."
 
-#: src/buffer.C:1145
+#: src/buffer.C:1144
 msgid "chktex failure"
 msgstr "ChkTeX feil"
 
-#: src/buffer.C:1146
+#: src/buffer.C:1145
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje køyre ChkTeX."
 
@@ -9451,12 +9445,12 @@ msgstr "Alle meldingane frå avlusinga"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Avlusar `%1$s' (%2$s)"
 
-#: src/converter.C:331 src/converter.C:463 src/converter.C:486
-#: src/converter.C:528
+#: src/converter.C:332 src/converter.C:464 src/converter.C:487
+#: src/converter.C:531
 msgid "Cannot convert file"
 msgstr "Kan ikkje konvertere fila"
 
-#: src/converter.C:332
+#: src/converter.C:333
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
@@ -9465,43 +9459,43 @@ msgstr ""
 "Ingen informasjon om korleis ein konverterer %1$s formatet til %2$s.\n"
 "Prøv å sett det opp sjølv i LyX-Val."
 
-#: src/converter.C:418 src/format.C:320 src/format.C:379
+#: src/converter.C:419 src/format.C:320 src/format.C:379
 msgid "Executing command: "
 msgstr "Køyrer kommando: "
 
-#: src/converter.C:458
+#: src/converter.C:459
 msgid "Build errors"
 msgstr "Byggjefeil"
 
-#: src/converter.C:459
+#: src/converter.C:460
 msgid "There were errors during the build process."
 msgstr "Det vart rapportert feil under bygginga."
 
-#: src/converter.C:464 src/format.C:327 src/format.C:386
+#: src/converter.C:465 src/format.C:327 src/format.C:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Vi fekk ein feil når vi køyrde %1$s"
 
-#: src/converter.C:487
+#: src/converter.C:488
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil frå %1$s til %2$s."
 
-#: src/converter.C:530
+#: src/converter.C:533
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil frå %1$s til %2$s."
 
-#: src/converter.C:531
+#: src/converter.C:534
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Kunne ikkje flytte ei mellombels fil frå %1$s til %2$s."
 
-#: src/converter.C:588
+#: src/converter.C:591
 msgid "Running LaTeX..."
 msgstr "Køyrer LaTeX..."
 
-#: src/converter.C:606
+#: src/converter.C:609
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -9510,15 +9504,15 @@ msgstr ""
 "Køyringa av LaTeX gjekk gale. Og i tillegg klarar ikkje LyX å finne LaTeX "
 "loggen %1$s."
 
-#: src/converter.C:609
+#: src/converter.C:612
 msgid "LaTeX failed"
 msgstr "Feil ved LaTeX køyring"
 
-#: src/converter.C:611
+#: src/converter.C:614
 msgid "Output is empty"
 msgstr "Ingenting kom ut av konverteringa"
 
-#: src/converter.C:612
+#: src/converter.C:615
 msgid "An empty output file was generated."
 msgstr "Det vart berre laga ei tom fil."
 
@@ -9633,7 +9627,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "S&krivover dokumentet?"
 
-#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1984
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1982
 msgid "&Over-write"
 msgstr "Skriv&over"
 
@@ -9726,7 +9720,7 @@ msgstr " (endra)"
 msgid " (read only)"
 msgstr " (berre lesing)"
 
-#: src/frontends/WorkArea.C:224
+#: src/frontends/WorkArea.C:229
 msgid "Formatting document..."
 msgstr "Formaterer dokumentet ..."
 
@@ -9859,47 +9853,47 @@ msgid "Select external file"
 msgstr "Vel ekstern fil"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Top left"
 msgstr "Øvst til venstre"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Bottom left"
 msgstr "Nedst til venstre"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Baseline left"
 msgstr "Venstre grunnlinje"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Top center"
 msgstr "Øvst midt på"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Bottom center"
 msgstr "Nedst midt på"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Baseline center"
 msgstr "Midt på grunnlina"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Top right"
 msgstr "Øvst til høgre"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Bottom right"
 msgstr "Nedst til høgre"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Baseline right"
 msgstr "Høgre grunnlinje"
 
@@ -9907,7 +9901,7 @@ msgstr "Høgre grunnlinje"
 msgid "Select graphics file"
 msgstr "Vel grafikk fil"
 
-#: src/frontends/controllers/ControlGraphics.C:94
+#: src/frontends/controllers/ControlGraphics.C:95
 msgid "Clipart|#C#c"
 msgstr "Biletesamling|#C#c"
 
@@ -9919,35 +9913,35 @@ msgstr "Vel eit dokument som skal inn"
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX Dokument (*.tex *.lyx)"
 
-#: src/frontends/controllers/ControlLog.C:80
+#: src/frontends/controllers/ControlLog.C:81
 msgid "LaTeX Log"
 msgstr "LaTeX-logg"
 
-#: src/frontends/controllers/ControlLog.C:83
+#: src/frontends/controllers/ControlLog.C:84
 msgid "Literate Programming Build Log"
 msgstr "Loggen til lesbar programmering"
 
-#: src/frontends/controllers/ControlLog.C:86
+#: src/frontends/controllers/ControlLog.C:87
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx feillogg"
 
-#: src/frontends/controllers/ControlLog.C:89
+#: src/frontends/controllers/ControlLog.C:90
 msgid "Version Control Log"
 msgstr "Loggen til versjonkontrollen"
 
-#: src/frontends/controllers/ControlLog.C:112
+#: src/frontends/controllers/ControlLog.C:113
 msgid "No LaTeX log file found."
 msgstr "Ingen LaTeX loggfiler."
 
-#: src/frontends/controllers/ControlLog.C:115
+#: src/frontends/controllers/ControlLog.C:116
 msgid "No literate programming build log file found."
 msgstr "Fann ingen logg for lesbar programmering."
 
-#: src/frontends/controllers/ControlLog.C:118
+#: src/frontends/controllers/ControlLog.C:119
 msgid "No lyx2lyx error log file found."
 msgstr "Fann ingen lyx2lyx loggfiler."
 
-#: src/frontends/controllers/ControlLog.C:121
+#: src/frontends/controllers/ControlLog.C:122
 msgid "No version control log file found."
 msgstr "Fann ingen versjonkontroll-logg."
 
@@ -10202,15 +10196,15 @@ msgstr "Indeksnøkkel"
 msgid "Label"
 msgstr "Etikett"
 
-#: src/frontends/qt4/FileDialog.C:155
+#: src/frontends/qt4/FileDialog.C:159
 msgid "Directories"
 msgstr "Katalogar"
 
-#: src/frontends/qt4/GuiView.C:584
+#: src/frontends/qt4/GuiView.C:615
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.C:474
+#: src/frontends/qt4/GuiWorkArea.C:475
 #, fuzzy
 msgid "unknown version"
 msgstr "Ukjend handling"
@@ -10642,7 +10636,7 @@ msgstr "Notaval"
 msgid "Paragraph Settings"
 msgstr "Val for avsnitt"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:618
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:620
 msgid "Senseless with this layout!"
 msgstr "Meiningslaust med denne stilen."
 
@@ -10978,7 +10972,7 @@ msgstr "fot"
 msgid "Opened Footnote Inset"
 msgstr "Opna botntekst innskot"
 
-#: src/insets/insetgraphics.C:473 src/insets/insetinclude.C:445
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:445
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -10989,12 +10983,12 @@ msgstr ""
 "%1$s\n"
 "til den mellombelse katalogen."
 
-#: src/insets/insetgraphics.C:707
+#: src/insets/insetgraphics.C:706
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Ingen konvertering av %1$s var naudsynt likvel"
 
-#: src/insets/insetgraphics.C:818
+#: src/insets/insetgraphics.C:817
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikk-fil: %1$s"
@@ -11252,7 +11246,7 @@ msgstr ""
 "Kunne ikkje starta ispell\n"
 "Kanskje ikkje du har rett språk installert."
 
-#: src/ispell.C:271
+#: src/ispell.C:272
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
@@ -11260,7 +11254,7 @@ msgstr ""
 "Stavekontrollen gav ein feil.\n"
 "Er den rett innstilt?"
 
-#: src/ispell.C:380
+#: src/ispell.C:383
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "Klarte ikkje å snakka med stavekontrollen."
 
@@ -11359,11 +11353,11 @@ msgstr "End&ra namn"
 msgid "Choose a filename to save document as"
 msgstr "Vel eit anna filnamn"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1826
+#: src/lyx_cb.C:137 src/lyxfunc.C:1824
 msgid "Templates|#T#t"
 msgstr "Malar|#M#m"
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1981
+#: src/lyx_cb.C:167 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11374,28 +11368,28 @@ msgstr ""
 "\n"
 "Vil du skriva over dokumentet?"
 
-#: src/lyx_cb.C:168 src/lyxfunc.C:1983
+#: src/lyx_cb.C:169 src/lyxfunc.C:1981
 msgid "Over-write document?"
 msgstr "Skriv over dokumentet?"
 
-#: src/lyx_cb.C:217
+#: src/lyx_cb.C:218
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatisk lagring %1$s"
 
-#: src/lyx_cb.C:257
+#: src/lyx_cb.C:258
 msgid "Autosave failed!"
 msgstr "Automatisk lagring feila!"
 
-#: src/lyx_cb.C:284
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Automatisk lagring av dette dokumentet..."
 
-#: src/lyx_cb.C:351
+#: src/lyx_cb.C:352
 msgid "Select file to insert"
 msgstr "Vel fil å setje inn"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11406,11 +11400,11 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/lyx_cb.C:372
+#: src/lyx_cb.C:373
 msgid "Could not read file"
 msgstr "Kan ikkje lese fila"
 
-#: src/lyx_cb.C:380
+#: src/lyx_cb.C:381
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11421,23 +11415,23 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/lyx_cb.C:382 src/output.C:40
+#: src/lyx_cb.C:383 src/output.C:41
 msgid "Could not open file"
 msgstr "Kan ikkje opnafila"
 
-#: src/lyx_cb.C:412
+#: src/lyx_cb.C:413
 msgid "Running configure..."
 msgstr "Køyrer \"stiller inn\"..."
 
-#: src/lyx_cb.C:421
+#: src/lyx_cb.C:422
 msgid "Reloading configuration..."
 msgstr "Les innstillingane om igjen..."
 
-#: src/lyx_cb.C:426
+#: src/lyx_cb.C:427
 msgid "System reconfigured"
 msgstr "Systemet har blitt sett opp på nytt"
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:428
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11447,11 +11441,11 @@ msgstr ""
 "Du må starte LyX på nytt for å\n"
 "kunne nytte endringane."
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:124
 msgid "Could not read configuration file"
 msgstr "Kan ikkje lese fila med innstillingar"
 
-#: src/lyx_main.C:124
+#: src/lyx_main.C:125
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11462,37 +11456,37 @@ msgstr ""
 "%1$s.\n"
 "Sjekk LyX installasjonen din."
 
-#: src/lyx_main.C:133
+#: src/lyx_main.C:134
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Set opp brukarstig"
 
-#: src/lyx_main.C:137
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Ferdig!"
 
-#: src/lyx_main.C:429
+#: src/lyx_main.C:431
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Klarte ikkje å fjerna mellombelskatalogen %1$s"
 
-#: src/lyx_main.C:431
+#: src/lyx_main.C:433
 msgid "Unable to remove temporary directory"
 msgstr "Klarte ikkje å fjerna mellombelskatalogen"
 
-#: src/lyx_main.C:467
+#: src/lyx_main.C:468
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolinje val:`%1$s'. Farvel."
 
-#: src/lyx_main.C:716
+#: src/lyx_main.C:723
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:838
+#: src/lyx_main.C:846
 msgid "Could not create temporary directory"
 msgstr "Klarte ikkje å laga mellombelskatalog"
 
-#: src/lyx_main.C:839
+#: src/lyx_main.C:847
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11503,11 +11497,11 @@ msgstr ""
 "%1$s. Ver sikker på at stigen eksisterar \n"
 "og er skrivbar og prøv igjen."
 
-#: src/lyx_main.C:997
+#: src/lyx_main.C:1014
 msgid "Missing user LyX directory"
 msgstr "Manglar brukerstig for LyX"
 
-#: src/lyx_main.C:998
+#: src/lyx_main.C:1015
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11516,37 +11510,37 @@ msgstr ""
 "Du har sett ein brukarstig for LyX som ikkje eksisterar  %1$s.\n"
 "LyX treng den for å lagre vala dine."
 
-#: src/lyx_main.C:1003
+#: src/lyx_main.C:1020
 msgid "&Create directory"
 msgstr "&Lag katalog."
 
-#: src/lyx_main.C:1004
+#: src/lyx_main.C:1021
 msgid "&Exit LyX"
 msgstr "&Skru av LyX."
 
-#: src/lyx_main.C:1005
+#: src/lyx_main.C:1022
 msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukarstig for LyX. Stoppar."
 
-#: src/lyx_main.C:1009
+#: src/lyx_main.C:1026
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lagar katalogen %1$s"
 
-#: src/lyx_main.C:1015
+#: src/lyx_main.C:1032
 msgid "Failed to create directory. Exiting."
 msgstr "Klarte ikkje å lage katalog. Stoppar."
 
-#: src/lyx_main.C:1170
+#: src/lyx_main.C:1187
 msgid "List of supported debug flags:"
 msgstr "Liste over val ved avlusing:"
 
-#: src/lyx_main.C:1174
+#: src/lyx_main.C:1191
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Set nivået til avlusinga til %1$s"
 
-#: src/lyx_main.C:1185
+#: src/lyx_main.C:1202
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11586,27 +11580,27 @@ msgstr ""
 "\t-version        samandrag av versjon og byggje info\n"
 "Sjå `man' sida til LyX for meir informasjon."
 
-#: src/lyx_main.C:1221
+#: src/lyx_main.C:1238
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglar katalog for -sysdir val"
 
-#: src/lyx_main.C:1231
+#: src/lyx_main.C:1248
 msgid "Missing directory for -userdir switch"
 msgstr "Manglarkatalog for -userdir val"
 
-#: src/lyx_main.C:1241
+#: src/lyx_main.C:1258
 msgid "Missing command string after --execute switch"
 msgstr "Manglar kommando etter --execute val"
 
-#: src/lyx_main.C:1251
+#: src/lyx_main.C:1268
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --export val"
 
-#: src/lyx_main.C:1263
+#: src/lyx_main.C:1280
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --import val"
 
-#: src/lyx_main.C:1268
+#: src/lyx_main.C:1285
 msgid "Missing filename for --import"
 msgstr "Manglar filnamn for --import"
 
@@ -11799,35 +11793,35 @@ msgstr "Klarte ikkje å lagre standardval for dokument "
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokumentet til ny dokument klasse ..."
 
-#: src/lyxfunc.C:1823
+#: src/lyxfunc.C:1821
 msgid "Select template file"
 msgstr "Vel mal"
 
-#: src/lyxfunc.C:1860
+#: src/lyxfunc.C:1858
 msgid "Select document to open"
 msgstr "Vel dokument"
 
-#: src/lyxfunc.C:1899
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Opnar dokumentet %1$s..."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s er ope."
 
-#: src/lyxfunc.C:1905
+#: src/lyxfunc.C:1903
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikkje opna dokumentet %1$s"
 
-#: src/lyxfunc.C:1930
+#: src/lyxfunc.C:1928
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vel %1$s filen som skal importerast"
 
-#: src/lyxfunc.C:2047
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Velkomen til LyX!"
 
@@ -12356,7 +12350,7 @@ msgstr "Gå tilbake til den siste lagra versjonen av dokumentet?"
 msgid " Macro: %1$s: "
 msgstr "Makro: %1$s: "
 
-#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1241
+#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1240
 #: src/mathed/InsetMathSplit.C:76 src/mathed/InsetMathSubstack.C:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -12388,30 +12382,30 @@ msgstr "Har inga loddrettlinje å slette"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.C:1079 src/mathed/InsetMathHull.C:1088
 msgid "No number"
 msgstr "Ingen nummer"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.C:1079 src/mathed/InsetMathHull.C:1088
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.C:1214
+#: src/mathed/InsetMathHull.C:1213
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Kan ikkje endre talet på radar i '%1$s'"
 
-#: src/mathed/InsetMathHull.C:1224
+#: src/mathed/InsetMathHull.C:1223
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 
-#: src/mathed/InsetMathHull.C:1234
+#: src/mathed/InsetMathHull.C:1233
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
 
-#: src/mathed/InsetMathHull.C:1326 src/text3.C:182
+#: src/mathed/InsetMathHull.C:1325 src/text3.C:182
 msgid "Math editor mode"
 msgstr "Mattemodus"
 
@@ -12423,7 +12417,7 @@ msgstr "Lag nytt mattemiljø ($...$)"
 msgid "entered math text mode (textrm)"
 msgstr "Nyttar mattemiljø (textrm)"
 
-#: src/output.C:38
+#: src/output.C:39
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12432,11 +12426,11 @@ msgstr ""
 "Klarte ikkje opna dokumentet\n"
 "%1$s."
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:156
 msgid "Abstract: "
 msgstr "Samandrag: "
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:168
 msgid "References: "
 msgstr "Referansar: "
 
@@ -12744,6 +12738,15 @@ msgstr "Fyll loddrett"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "vern"
+
+#~ msgid "top of button"
+#~ msgstr "over knappen"
+
+#~ msgid "bottom of button"
+#~ msgstr "under knappen"
+
+#~ msgid "right of button"
+#~ msgstr "til høgre for knappen"
 
 #~ msgid ""
 #~ "This program is free software; you can redistribute it and/or modify it "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-03 02:31+0100\n"
+"POT-Creation-Date: 2006-12-09 15:44+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -121,7 +121,7 @@ msgstr "Boy:"
 #: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.ui:66
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
-#: src/frontends/controllers/ControlGraphics.C:169
+#: src/frontends/controllers/ControlGraphics.C:170
 #: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:520
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
@@ -230,47 +230,47 @@ msgstr "Sütunlara yayýl"
 msgid "&Rotate sideways"
 msgstr "Yanlamasýna çevir"
 
-#: src/frontends/qt4/ui/FontUi.ui:16
+#: src/frontends/qt4/ui/FontUi.ui:13
 #, fuzzy
 msgid "FontUi"
 msgstr "&Font:"
 
-#: src/frontends/qt4/ui/FontUi.ui:37
+#: src/frontends/qt4/ui/FontUi.ui:64
 msgid "Sc&ale (%):"
 msgstr "&Ölçek (%):"
 
-#: src/frontends/qt4/ui/FontUi.ui:47
-msgid "S&cale (%):"
-msgstr "Ö&lçek (%):"
-
-#: src/frontends/qt4/ui/FontUi.ui:57
-msgid "&Base Size:"
-msgstr "&Taban Boyut:"
-
-#: src/frontends/qt4/ui/FontUi.ui:80
-msgid "&Sans Serif:"
-msgstr "Sa&ns Serif:"
-
-#: src/frontends/qt4/ui/FontUi.ui:90
+#: src/frontends/qt4/ui/FontUi.ui:77
 msgid "&Typewriter:"
 msgstr "&Daktilo:"
 
-#: src/frontends/qt4/ui/FontUi.ui:100
-msgid "&Default Family:"
-msgstr "&Öntanýmlý Aile:"
-
-#: src/frontends/qt4/ui/FontUi.ui:110
+#: src/frontends/qt4/ui/FontUi.ui:90
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
 msgid "&Roman:"
 msgstr "&Roman:"
 
-#: src/frontends/qt4/ui/FontUi.ui:120
+#: src/frontends/qt4/ui/FontUi.ui:110
+msgid "S&cale (%):"
+msgstr "Ö&lçek (%):"
+
+#: src/frontends/qt4/ui/FontUi.ui:123
+msgid "&Sans Serif:"
+msgstr "Sa&ns Serif:"
+
+#: src/frontends/qt4/ui/FontUi.ui:146
+msgid "Use &Old Style Figures"
+msgstr "&Eski stil figürleri kullan"
+
+#: src/frontends/qt4/ui/FontUi.ui:153
 msgid "Use true S&mall Caps"
 msgstr "Küçük baþlýklar kullan"
 
-#: src/frontends/qt4/ui/FontUi.ui:127
-msgid "Use &Old Style Figures"
-msgstr "&Eski stil figürleri kullan"
+#: src/frontends/qt4/ui/FontUi.ui:160
+msgid "&Default Family:"
+msgstr "&Öntanýmlý Aile:"
+
+#: src/frontends/qt4/ui/FontUi.ui:173
+msgid "&Base Size:"
+msgstr "&Taban Boyut:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Document &class:"
@@ -482,8 +482,8 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:98
 #: src/buffer_funcs.C:125 src/buffer_funcs.C:166 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:169 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1984 src/lyxvc.C:175
+#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
+#: src/lyxfunc.C:861 src/lyxfunc.C:1982 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Vazgeç"
 
@@ -655,7 +655,7 @@ msgstr "Sola dayalý"
 #: src/frontends/qt4/ui/QBoxUi.ui:169 src/frontends/qt4/ui/QParagraphUi.ui:86
 #: src/frontends/qt4/ui/QTabularUi.ui:150
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 #: src/frontends/qt4/QTabular.C:261
 msgid "Center"
 msgstr "Ortalý"
@@ -3207,7 +3207,7 @@ msgstr ""
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:37
 #: lib/layouts/aa.layout:234 lib/layouts/aapaper.layout:66
 #: lib/layouts/aapaper.layout:131 lib/layouts/aastex.layout:64
-#: lib/layouts/aastex.layout:168 lib/layouts/amsart.layout:62
+#: lib/layouts/aastex.layout:168 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
 #: lib/layouts/beamer.layout:265 lib/layouts/cv.layout:29
 #: lib/layouts/egs.layout:29 lib/layouts/ijmpc.layout:102
@@ -3228,7 +3228,7 @@ msgstr "Bölüm"
 #: lib/layouts/IEEEtran.layout:279 lib/layouts/aa.layout:40
 #: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:69
 #: lib/layouts/aapaper.layout:140 lib/layouts/aastex.layout:67
-#: lib/layouts/aastex.layout:181 lib/layouts/amsart.layout:73
+#: lib/layouts/aastex.layout:181 lib/layouts/amsart.layout:72
 #: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
 #: lib/layouts/cv.layout:50 lib/layouts/egs.layout:50
 #: lib/layouts/ijmpc.layout:118 lib/layouts/ijmpd.layout:114
@@ -3247,7 +3247,7 @@ msgstr "Alt bölüm"
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/aa.layout:43
 #: lib/layouts/aa.layout:256 lib/layouts/aapaper.layout:72
 #: lib/layouts/aapaper.layout:151 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:81
+#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:80
 #: lib/layouts/amsbook.layout:66 lib/layouts/ijmpc.layout:127
 #: lib/layouts/ijmpd.layout:123 lib/layouts/isprs.layout:177
 #: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
@@ -3302,7 +3302,7 @@ msgstr "Alt alt bölüm*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:153
 msgid "Abstract"
 msgstr "Özet"
 
@@ -3586,7 +3586,7 @@ msgstr "Teþekkürler"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:165
 msgid "References"
 msgstr "Referanslar"
 
@@ -8907,44 +8907,44 @@ msgstr "Belgede bir sözcük var."
 msgid "Count words"
 msgstr "Sözcükleri say"
 
-#: src/BufferView.C:1356
+#: src/BufferView.C:1404
 msgid "Select LyX document to insert"
 msgstr "Eklenecek LyX belgesini seçin"
 
-#: src/BufferView.C:1358 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1406 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
-#: src/frontends/controllers/ControlGraphics.C:95
+#: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1825 src/lyxfunc.C:1862 src/lyxfunc.C:1935
+#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
 msgid "Documents|#o#O"
 msgstr "Belgeler|#b#B"
 
-#: src/BufferView.C:1359 src/lyxfunc.C:1863 src/lyxfunc.C:1936
+#: src/BufferView.C:1407 src/lyxfunc.C:1861 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Örnekler|#ö#Ö"
 
-#: src/BufferView.C:1363 src/lyx_cb.C:142 src/lyxfunc.C:1830
-#: src/lyxfunc.C:1867
+#: src/BufferView.C:1411 src/lyx_cb.C:142 src/lyxfunc.C:1828
+#: src/lyxfunc.C:1865
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Belgeleri (*.lyx)"
 
-#: src/BufferView.C:1375 src/lyxfunc.C:1877 src/lyxfunc.C:1957
-#: src/lyxfunc.C:1971 src/lyxfunc.C:1987
+#: src/BufferView.C:1423 src/lyxfunc.C:1875 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Vazgeçildi."
 
-#: src/BufferView.C:1386
+#: src/BufferView.C:1434
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Belge %1$s ekleniyor..."
 
-#: src/BufferView.C:1397
+#: src/BufferView.C:1445
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Belge %1$s eklendi."
 
-#: src/BufferView.C:1399
+#: src/BufferView.C:1447
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Belge %1$s eklenemedi"
@@ -9198,48 +9198,42 @@ msgid "page break"
 msgstr "sayfa kesimi"
 
 #: src/LColor.C:148
-msgid "top of button"
-msgstr "düðme üst kenarý"
-
-#: src/LColor.C:149
-msgid "bottom of button"
-msgstr "düðme alt kenarý"
-
-#: src/LColor.C:150
-msgid "left of button"
+#, fuzzy
+msgid "frame of button"
 msgstr "düðme sol kenarý"
 
-#: src/LColor.C:151
-msgid "right of button"
-msgstr "düðme sað kenarý"
-
-#: src/LColor.C:152
+#: src/LColor.C:149
 msgid "button background"
 msgstr "düðme arkaplaný"
 
-#: src/LColor.C:153
+#: src/LColor.C:150
+#, fuzzy
+msgid "button background under focus"
+msgstr "düðme arkaplaný"
+
+#: src/LColor.C:151
 msgid "inherit"
 msgstr ""
 
-#: src/LColor.C:154
+#: src/LColor.C:152
 msgid "ignore"
 msgstr ""
 
-#: src/LaTeX.C:91
+#: src/LaTeX.C:92
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr ""
 
-#: src/LaTeX.C:287 src/LaTeX.C:361
+#: src/LaTeX.C:289 src/LaTeX.C:363
 msgid "Running MakeIndex."
 msgstr "MakeIndex çalýþtýrýlýyor."
 
-#: src/LaTeX.C:292 src/LaTeX.C:368
+#: src/LaTeX.C:294 src/LaTeX.C:370
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex çalýþtýrýlýyor."
 
-#: src/LaTeX.C:305
+#: src/LaTeX.C:307
 msgid "Running BibTeX."
 msgstr "BibTeX çalýþtýrýlýyor."
 
@@ -9273,96 +9267,96 @@ msgstr ""
 msgid "Native OS API not yet supported."
 msgstr "Ýþletim sisteminin kendi arabirimi henüz desteklenmiyor."
 
-#: src/buffer.C:233
+#: src/buffer.C:232
 msgid "Could not remove temporary directory"
 msgstr "Geçici dizin silinemedi"
 
-#: src/buffer.C:234
+#: src/buffer.C:233
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Geçici dizin %1$s silinemedi"
 
-#: src/buffer.C:406
+#: src/buffer.C:405
 msgid "Unknown document class"
 msgstr "Bilinmeyen belge sýnýfý"
 
-#: src/buffer.C:407
+#: src/buffer.C:406
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "%1$s sýnýfý bilinmediðinden, öntanýmlý belge sýnýfý kullanýlacak."
 
-#: src/buffer.C:462 src/text.C:354
+#: src/buffer.C:461 src/text.C:354
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
 
-#: src/buffer.C:466 src/buffer.C:473 src/buffer.C:493
+#: src/buffer.C:465 src/buffer.C:472 src/buffer.C:492
 msgid "Document header error"
 msgstr "Belge baþlýk hatasý"
 
-#: src/buffer.C:472
+#: src/buffer.C:471
 msgid "\\begin_header is missing"
 msgstr "\\begin_header eksik"
 
-#: src/buffer.C:492
+#: src/buffer.C:491
 msgid "\\begin_document is missing"
 msgstr "\\begin_document eksik"
 
-#: src/buffer.C:503
+#: src/buffer.C:502
 msgid "Can't load document class"
 msgstr "Belge sýnýfý okunamýyor"
 
-#: src/buffer.C:504
+#: src/buffer.C:503
 #, fuzzy, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr "%1$s sýnýfý bilinmediðinden, öntanýmlý belge sýnýfý kullanýlacak."
 
-#: src/buffer.C:615 src/buffer.C:624
+#: src/buffer.C:614 src/buffer.C:623
 msgid "Document could not be read"
 msgstr "Belge okunamýyor"
 
-#: src/buffer.C:616 src/buffer.C:625
+#: src/buffer.C:615 src/buffer.C:624
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s okunamadý."
 
-#: src/buffer.C:633 src/buffer.C:699
+#: src/buffer.C:632 src/buffer.C:698
 msgid "Document format failure"
 msgstr "Belge biçimi hatasý"
 
-#: src/buffer.C:634
+#: src/buffer.C:633
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s bir LyX belgesi deðil."
 
-#: src/buffer.C:653
+#: src/buffer.C:652
 msgid "Conversion failed"
 msgstr "Çevrim baþarýsýz oldu"
 
-#: src/buffer.C:654
+#: src/buffer.C:653
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:663
+#: src/buffer.C:662
 msgid "Conversion script not found"
 msgstr "Çevrim betiði bulunamadý"
 
-#: src/buffer.C:664
+#: src/buffer.C:663
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:684
+#: src/buffer.C:683
 msgid "Conversion script failed"
 msgstr "Çevrim betiði baþarýsýz oldu"
 
-#: src/buffer.C:685
+#: src/buffer.C:684
 #, fuzzy, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
@@ -9370,41 +9364,41 @@ msgid ""
 msgstr ""
 "Dosya yeni bir LyX sürümü ile oluþturulmuþ. Bu durum sorunlara yol açabilir."
 
-#: src/buffer.C:700
+#: src/buffer.C:699
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:736
+#: src/buffer.C:735
 #, fuzzy
 msgid "Backup failure"
 msgstr "chktex hatasý"
 
-#: src/buffer.C:737
+#: src/buffer.C:736
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:863
+#: src/buffer.C:862
 #, fuzzy
 msgid "Encoding error"
 msgstr "&Kodlama"
 
-#: src/buffer.C:864
+#: src/buffer.C:863
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:873
+#: src/buffer.C:872
 #, fuzzy
 msgid "Error closing file"
 msgstr "Dosya okuma hatasý!"
 
-#: src/buffer.C:874
+#: src/buffer.C:873
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9412,15 +9406,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1132
+#: src/buffer.C:1131
 msgid "Running chktex..."
 msgstr "chktex çalýþtýrýlýyor..."
 
-#: src/buffer.C:1145
+#: src/buffer.C:1144
 msgid "chktex failure"
 msgstr "chktex hatasý"
 
-#: src/buffer.C:1146
+#: src/buffer.C:1145
 msgid "Could not run chktex successfully."
 msgstr "chktex baþarýyla çalýþtýrýlamadý."
 
@@ -9598,71 +9592,71 @@ msgstr "Tüm hata bulma iletileri"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
-#: src/converter.C:331 src/converter.C:463 src/converter.C:486
-#: src/converter.C:528
+#: src/converter.C:332 src/converter.C:464 src/converter.C:487
+#: src/converter.C:531
 msgid "Cannot convert file"
 msgstr "Dosya çevrilemiyor"
 
-#: src/converter.C:332
+#: src/converter.C:333
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
 msgstr ""
 
-#: src/converter.C:418 src/format.C:320 src/format.C:379
+#: src/converter.C:419 src/format.C:320 src/format.C:379
 msgid "Executing command: "
 msgstr "Komut çalýþtýrýlýyor:"
 
-#: src/converter.C:458
+#: src/converter.C:459
 msgid "Build errors"
 msgstr "Ýnþa hatalarý"
 
-#: src/converter.C:459
+#: src/converter.C:460
 #, fuzzy
 msgid "There were errors during the build process."
 msgstr "LaTeX çalýþýrken hatalar oluþtu."
 
-#: src/converter.C:464 src/format.C:327 src/format.C:386
+#: src/converter.C:465 src/format.C:327 src/format.C:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "%1$s çalýþtýrýlýrken bir hata oldu"
 
-#: src/converter.C:487
+#: src/converter.C:488
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Geçici dizin yaratýlamadý\n"
 
-#: src/converter.C:530
+#: src/converter.C:533
 #, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Geçici dizin yaratýlamadý\n"
 
-#: src/converter.C:531
+#: src/converter.C:534
 #, fuzzy, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Geçici dizin yaratýlamadý\n"
 
-#: src/converter.C:588
+#: src/converter.C:591
 msgid "Running LaTeX..."
 msgstr "LaTeX çalýþtýrýlýyor..."
 
-#: src/converter.C:606
+#: src/converter.C:609
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
 
-#: src/converter.C:609
+#: src/converter.C:612
 msgid "LaTeX failed"
 msgstr "LaTeX baþarýsýz oldu"
 
-#: src/converter.C:611
+#: src/converter.C:614
 msgid "Output is empty"
 msgstr "Çýktý boþ"
 
-#: src/converter.C:612
+#: src/converter.C:615
 msgid "An empty output file was generated."
 msgstr "Boþ bir çýktý dosyasý oluþtu."
 
@@ -9776,7 +9770,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
-#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1984
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1982
 msgid "&Over-write"
 msgstr "&Üzerine Yaz"
 
@@ -9869,7 +9863,7 @@ msgstr " (deðiþti)"
 msgid " (read only)"
 msgstr " (yalnýzca okunabilir)"
 
-#: src/frontends/WorkArea.C:224
+#: src/frontends/WorkArea.C:229
 msgid "Formatting document..."
 msgstr "Belge biçimlendiriliyor..."
 
@@ -9994,47 +9988,47 @@ msgid "Select external file"
 msgstr "Dýþ dosya seçin"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Top left"
 msgstr "Üst sol"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Bottom left"
 msgstr "Alt sol"
 
 #: src/frontends/controllers/ControlExternal.C:235
-#: src/frontends/controllers/ControlGraphics.C:170
+#: src/frontends/controllers/ControlGraphics.C:171
 msgid "Baseline left"
 msgstr "Taban sol"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Top center"
 msgstr "Üst orta"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Bottom center"
 msgstr "Alt orta"
 
 #: src/frontends/controllers/ControlExternal.C:236
-#: src/frontends/controllers/ControlGraphics.C:171
+#: src/frontends/controllers/ControlGraphics.C:172
 msgid "Baseline center"
 msgstr "Taban orta"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Top right"
 msgstr "Üst sað"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Bottom right"
 msgstr "Alt sað"
 
 #: src/frontends/controllers/ControlExternal.C:237
-#: src/frontends/controllers/ControlGraphics.C:172
+#: src/frontends/controllers/ControlGraphics.C:173
 msgid "Baseline right"
 msgstr "Taban sað"
 
@@ -10042,7 +10036,7 @@ msgstr "Taban sað"
 msgid "Select graphics file"
 msgstr "Grafik dosyasýný seçin"
 
-#: src/frontends/controllers/ControlGraphics.C:94
+#: src/frontends/controllers/ControlGraphics.C:95
 msgid "Clipart|#C#c"
 msgstr ""
 
@@ -10054,36 +10048,36 @@ msgstr "Eklenecek belgeyi seçin"
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "LaTeX/LyX Belgeleri (*.tex *.lyx)"
 
-#: src/frontends/controllers/ControlLog.C:80
+#: src/frontends/controllers/ControlLog.C:81
 msgid "LaTeX Log"
 msgstr "LaTeX Kayýtlarý"
 
-#: src/frontends/controllers/ControlLog.C:83
+#: src/frontends/controllers/ControlLog.C:84
 msgid "Literate Programming Build Log"
 msgstr ""
 
-#: src/frontends/controllers/ControlLog.C:86
+#: src/frontends/controllers/ControlLog.C:87
 msgid "lyx2lyx Error Log"
 msgstr "lyx2lyx Hata Kütüðü"
 
-#: src/frontends/controllers/ControlLog.C:89
+#: src/frontends/controllers/ControlLog.C:90
 msgid "Version Control Log"
 msgstr "Sürüm Yönetimi Kayýtlarý"
 
-#: src/frontends/controllers/ControlLog.C:112
+#: src/frontends/controllers/ControlLog.C:113
 msgid "No LaTeX log file found."
 msgstr "LaTeX kayýt dosyasý bulunamadý."
 
-#: src/frontends/controllers/ControlLog.C:115
+#: src/frontends/controllers/ControlLog.C:116
 #, fuzzy
 msgid "No literate programming build log file found."
 msgstr "Sürüm yönetimi kayýt dosyasý bulunamadý."
 
-#: src/frontends/controllers/ControlLog.C:118
+#: src/frontends/controllers/ControlLog.C:119
 msgid "No lyx2lyx error log file found."
 msgstr "lyx2lyx hata kütük dosyasý bulunamadý."
 
-#: src/frontends/controllers/ControlLog.C:121
+#: src/frontends/controllers/ControlLog.C:122
 msgid "No version control log file found."
 msgstr "Sürüm yönetimi kayýt dosyasý bulunamadý."
 
@@ -10341,15 +10335,15 @@ msgstr "Ýndeks Giriþi"
 msgid "Label"
 msgstr "Etiket"
 
-#: src/frontends/qt4/FileDialog.C:155
+#: src/frontends/qt4/FileDialog.C:159
 msgid "Directories"
 msgstr "Dizinler"
 
-#: src/frontends/qt4/GuiView.C:584
+#: src/frontends/qt4/GuiView.C:615
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.C:474
+#: src/frontends/qt4/GuiWorkArea.C:475
 #, fuzzy
 msgid "unknown version"
 msgstr "Bilinmeyen kullanýcý"
@@ -10782,7 +10776,7 @@ msgstr "Not Ayarlarý"
 msgid "Paragraph Settings"
 msgstr "Paragraf Ayarlarý"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:618
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:620
 msgid "Senseless with this layout!"
 msgstr ""
 
@@ -11117,7 +11111,7 @@ msgstr "dipnot"
 msgid "Opened Footnote Inset"
 msgstr ""
 
-#: src/insets/insetgraphics.C:473 src/insets/insetinclude.C:445
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:445
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -11125,12 +11119,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Geçici dizin yaratýlamadý"
 
-#: src/insets/insetgraphics.C:707
+#: src/insets/insetgraphics.C:706
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:818
+#: src/insets/insetgraphics.C:817
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr ""
@@ -11384,13 +11378,13 @@ msgid ""
 "You may not have the right languages installed."
 msgstr ""
 
-#: src/ispell.C:271
+#: src/ispell.C:272
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
 
-#: src/ispell.C:380
+#: src/ispell.C:383
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "Yazým denetleyici ispell ile iletiþim kurulamýyor."
 
@@ -11492,11 +11486,11 @@ msgstr "&Yeniden adlandýr"
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1826
+#: src/lyx_cb.C:137 src/lyxfunc.C:1824
 msgid "Templates|#T#t"
 msgstr "Þablonlar|#Þ#þ"
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1981
+#: src/lyx_cb.C:167 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11504,28 +11498,28 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:168 src/lyxfunc.C:1983
+#: src/lyx_cb.C:169 src/lyxfunc.C:1981
 msgid "Over-write document?"
 msgstr "Belgenin üzerine yazayým mý?"
 
-#: src/lyx_cb.C:217
+#: src/lyx_cb.C:218
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s otomatik kaydediliyor"
 
-#: src/lyx_cb.C:257
+#: src/lyx_cb.C:258
 msgid "Autosave failed!"
 msgstr "Otokayýt baþarýsýz!"
 
-#: src/lyx_cb.C:284
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Belge otomatik kaydediliyor..."
 
-#: src/lyx_cb.C:351
+#: src/lyx_cb.C:352
 msgid "Select file to insert"
 msgstr "Eklenecek dosyayý seçin"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11533,11 +11527,11 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:372
+#: src/lyx_cb.C:373
 msgid "Could not read file"
 msgstr "Dosya okunamýyor"
 
-#: src/lyx_cb.C:380
+#: src/lyx_cb.C:381
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11545,23 +11539,23 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:382 src/output.C:40
+#: src/lyx_cb.C:383 src/output.C:41
 msgid "Could not open file"
 msgstr "Dosya açýlamýyor"
 
-#: src/lyx_cb.C:412
+#: src/lyx_cb.C:413
 msgid "Running configure..."
 msgstr "Yapýlandýrma çalýþtýrýlýyor..."
 
-#: src/lyx_cb.C:421
+#: src/lyx_cb.C:422
 msgid "Reloading configuration..."
 msgstr "Yapýlandýrma yenileniyor..."
 
-#: src/lyx_cb.C:426
+#: src/lyx_cb.C:427
 msgid "System reconfigured"
 msgstr "Sistem yeniden yapýlandýrýldý"
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:428
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11571,11 +11565,11 @@ msgstr ""
 "Güncellenen belge sýnýflarýný kullanabilmek\n"
 "için, LyX'i yeniden baþlatmalýsýnýz."
 
-#: src/lyx_main.C:123
+#: src/lyx_main.C:124
 msgid "Could not read configuration file"
 msgstr "Ayar dosyasý okunamýyor"
 
-#: src/lyx_main.C:124
+#: src/lyx_main.C:125
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11583,37 +11577,37 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:133
+#: src/lyx_main.C:134
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: kullanýcý dizini yeniden yapýlandýrýlýyor"
 
-#: src/lyx_main.C:137
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Bitti!"
 
-#: src/lyx_main.C:429
+#: src/lyx_main.C:431
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Geçici dizin %1$s yaratýlamadý"
 
-#: src/lyx_main.C:431
+#: src/lyx_main.C:433
 msgid "Unable to remove temporary directory"
 msgstr "Geçici dizin silinemiyor"
 
-#: src/lyx_main.C:467
+#: src/lyx_main.C:468
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hatalý komut satýrý seçeneði `%1$s'. Çýkýyorum."
 
-#: src/lyx_main.C:716
+#: src/lyx_main.C:723
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:838
+#: src/lyx_main.C:846
 msgid "Could not create temporary directory"
 msgstr "Geçici dizin yaratýlamadý"
 
-#: src/lyx_main.C:839
+#: src/lyx_main.C:847
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11621,48 +11615,48 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:997
+#: src/lyx_main.C:1014
 msgid "Missing user LyX directory"
 msgstr "LyX kullanýcý dizini yok"
 
-#: src/lyx_main.C:998
+#: src/lyx_main.C:1015
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Varolmayan bir LyX kullanýcý dizini seçtiniz."
 
-#: src/lyx_main.C:1003
+#: src/lyx_main.C:1020
 msgid "&Create directory"
 msgstr "&Dizin yarat"
 
-#: src/lyx_main.C:1004
+#: src/lyx_main.C:1021
 msgid "&Exit LyX"
 msgstr "&LyX'ten çýk"
 
-#: src/lyx_main.C:1005
+#: src/lyx_main.C:1022
 msgid "No user LyX directory. Exiting."
 msgstr "LyX kullanýcý dizini yok. Çýkýyorum."
 
-#: src/lyx_main.C:1009
+#: src/lyx_main.C:1026
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Dizin %1$s yaratýlýyor"
 
-#: src/lyx_main.C:1015
+#: src/lyx_main.C:1032
 msgid "Failed to create directory. Exiting."
 msgstr "Dizin oluþturulamadý. Çýkýyorum."
 
-#: src/lyx_main.C:1170
+#: src/lyx_main.C:1187
 msgid "List of supported debug flags:"
 msgstr "Desteklenen hata düzeltme seçenekleri:"
 
-#: src/lyx_main.C:1174
+#: src/lyx_main.C:1191
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Hata düzeltme seviyesi %1$s olarak ayarlandý"
 
-#: src/lyx_main.C:1185
+#: src/lyx_main.C:1202
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11701,27 +11695,27 @@ msgstr ""
 "\t-version        sürüm ve inþa bilgilerini verir\n"
 "Daha fazla bilgi için LyX man sayfasýna bakýnýz."
 
-#: src/lyx_main.C:1221
+#: src/lyx_main.C:1238
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir seçeneði için dizin eksik"
 
-#: src/lyx_main.C:1231
+#: src/lyx_main.C:1248
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir seçeneði için dizin eksik"
 
-#: src/lyx_main.C:1241
+#: src/lyx_main.C:1258
 msgid "Missing command string after --execute switch"
 msgstr "--execute seçeneði için komut eksik"
 
-#: src/lyx_main.C:1251
+#: src/lyx_main.C:1268
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--export seçeneði için biçim [latex, ps, ...] eksik"
 
-#: src/lyx_main.C:1263
+#: src/lyx_main.C:1280
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import seçeneði için biçim [latex, ps, ...] eksik"
 
-#: src/lyx_main.C:1268
+#: src/lyx_main.C:1285
 msgid "Missing filename for --import"
 msgstr "--import seçeneði için dosya adý eksik"
 
@@ -11906,35 +11900,35 @@ msgstr "Belge öntanýmlarý kaydedilemedi"
 msgid "Converting document to new document class..."
 msgstr "Belge yeni sýnýfa çevriliyor..."
 
-#: src/lyxfunc.C:1823
+#: src/lyxfunc.C:1821
 msgid "Select template file"
 msgstr "Þablon dosyasý seçin"
 
-#: src/lyxfunc.C:1860
+#: src/lyxfunc.C:1858
 msgid "Select document to open"
 msgstr "Açýlacak belgeyi seçin"
 
-#: src/lyxfunc.C:1899
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Belge %1$s açýlýyor..."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1901
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Belge %1$s açýldý."
 
-#: src/lyxfunc.C:1905
+#: src/lyxfunc.C:1903
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Belge %1$s açýlamadý"
 
-#: src/lyxfunc.C:1930
+#: src/lyxfunc.C:1928
 #, c-format
 msgid "Select %1$s file to import"
 msgstr ""
 
-#: src/lyxfunc.C:2047
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "LyX'e Hoþgeldiniz!"
 
@@ -12390,7 +12384,7 @@ msgstr "Belgeyi kayýtlý sürüme geri al?"
 msgid " Macro: %1$s: "
 msgstr ""
 
-#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1241
+#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1240
 #: src/mathed/InsetMathSplit.C:76 src/mathed/InsetMathSubstack.C:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -12422,31 +12416,31 @@ msgstr ""
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Tablo Özellikleri"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.C:1079 src/mathed/InsetMathHull.C:1088
 #, fuzzy
 msgid "No number"
 msgstr "Numaralama"
 
-#: src/mathed/InsetMathHull.C:1080 src/mathed/InsetMathHull.C:1089
+#: src/mathed/InsetMathHull.C:1079 src/mathed/InsetMathHull.C:1088
 msgid "Number"
 msgstr "Numara"
 
-#: src/mathed/InsetMathHull.C:1214
+#: src/mathed/InsetMathHull.C:1213
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1224
+#: src/mathed/InsetMathHull.C:1223
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1234
+#: src/mathed/InsetMathHull.C:1233
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1326 src/text3.C:182
+#: src/mathed/InsetMathHull.C:1325 src/text3.C:182
 msgid "Math editor mode"
 msgstr ""
 
@@ -12459,7 +12453,7 @@ msgstr ""
 msgid "entered math text mode (textrm)"
 msgstr "Normal metin\t\\textrm"
 
-#: src/output.C:38
+#: src/output.C:39
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12468,11 +12462,11 @@ msgstr ""
 "Belirtilen dosya açýlamýyor\n"
 "%1$s."
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:156
 msgid "Abstract: "
 msgstr "Özet: "
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:168
 msgid "References: "
 msgstr "Referanslar: "
 
@@ -12776,3 +12770,12 @@ msgstr "Düþey doldurma"
 #, fuzzy
 msgid "protected"
 msgstr "Korumalý Boþluk|o"
+
+#~ msgid "top of button"
+#~ msgstr "düðme üst kenarý"
+
+#~ msgid "bottom of button"
+#~ msgstr "düðme alt kenarý"
+
+#~ msgid "right of button"
+#~ msgstr "düðme sað kenarý"
