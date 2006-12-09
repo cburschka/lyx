@@ -191,8 +191,6 @@ LAYOUT
 
 PAINTING & PERFORMANCE
 
-* Open de_Intro.lyx => The footnote text in the title section exceeds the footnote frame
-
 * Open de_UserGuide.lyx; go to the end of the document; click into the footnote (with the mouse -
   this is important for the test case); add a character into the note 
   => the complete footnote is expanded but only the current line is repainted
@@ -495,3 +493,7 @@ CREDITS:
 * It is ridiculous that you have to call configure with --with-frontend=qt4.
   The existance of config/qt.m4 does not make much sense either.
   The first one is FIXED, the second WONTFIX (JMarc 07-12-2006)
+
+* Open de_Intro.lyx => The footnote text in the title section exceeds the
+  footnote frame
+  FIXED (Enrico 2006-12-09). This was due to wrong metrics for small caps.

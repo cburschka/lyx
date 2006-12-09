@@ -181,6 +181,9 @@ void GuiFontMetrics::fillMetricsCache(char_type c) const
 
 int GuiFontMetrics::width(char_type c) const
 {
+	if (smallcaps_shape_)
+		return smallcapsWidth(ucs4_to_qchar(c));
+
 	if (!width_cache_.contains(c)) {
 		width_cache_.insert(c, metrics_.width(ucs4_to_qchar(c)));
 	}
