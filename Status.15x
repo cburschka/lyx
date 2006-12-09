@@ -177,7 +177,9 @@ EDITING
 
 * insert->note->lyx note, enter a few chars, collapse the note. Copy the note
   several times (three lines?), use mouse to select. Lyx crashes with
-  Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:143
+
+  Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:323
+
   NOTE: this is unrelated to the button face-lift patch.
 
 
@@ -189,8 +191,6 @@ CHANGE TRACKING
 
 * When accepting or rejecting changes, paragraphs with deleted par breaks are
   not merged in nested text insets
-
-* When accepting a change, LyX may hang (same as in 1.4.3) 
 
 * When running "find & replace", the cursor is not moved forward, such 
   that LyX always offers to replace the same string
