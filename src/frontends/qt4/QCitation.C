@@ -54,7 +54,7 @@ QCitation::QCitation(Dialog & parent)
 
 
 void QCitation::apply(int const choice, bool const full, bool const force,
-					  QString before, QString after)
+                      QString before, QString after)
 {
 	if (!isValid())
 		return;
@@ -67,22 +67,22 @@ void QCitation::apply(int const choice, bool const full, bool const force,
 		.asLatexStr();
 
 	params().setCmdName(command);
-	params().setContents(fromqstr(selected_keys_.stringList().join(",")));
-	params().setSecOptions(fromqstr(before));
-	params().setOptions(fromqstr(after));
+	params()["key"] = qstring_to_ucs4(selected_keys_.stringList().join(","));
+	params()["before"] = qstring_to_ucs4(before);
+	params()["after"] = qstring_to_ucs4(after);
 	dispatchParams();
 }
 
 
 QString QCitation::textBefore()
 {
-	return toqstr(params().getSecOptions());
+	return toqstr(params()["before"]);
 }
 
 
 QString QCitation::textAfter()
 {
-	return toqstr(params().getOptions());
+	return toqstr(params()["after"]);
 }
 
 
@@ -93,7 +93,7 @@ void QCitation::updateModel()
 	available_keys_.setStringList(keys);
 
 	// Ditto for the keys cited in this inset
-	QString str = toqstr(params().getContents());
+	QString str = toqstr(params()["key"]);
 	if (!str.isEmpty()) {
 		keys = str.split(",");
 		selected_keys_.setStringList(keys);
