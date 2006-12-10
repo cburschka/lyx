@@ -124,8 +124,8 @@ void lyx_debug_trait::showLevel(ostream & os, lyx_debug_trait::type level)
 void lyx_debug_trait::showTags(ostream & os)
 {
 	for (int i = 0; i < numErrorTags ; ++i)
-		os << setw(7) << static_cast<unsigned int>(errorTags[i].level)
-		   << setw(10) << errorTags[i].name
+		os << setw(10) << static_cast<unsigned int>(errorTags[i].level)
+		   << setw(13) << errorTags[i].name
 		   << "  " << to_utf8(_(errorTags[i].desc)) << '\n';
 	os.flush();
 }
