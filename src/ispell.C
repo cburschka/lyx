@@ -404,7 +404,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	if (encoded.empty()) {
 		error_ = bformat(
 			_("Could not check word `%1$s' because it could not be converted to encoding `%2$s'."),
-			word.word(), encoding);
+			word.word(), from_ascii(encoding));
 		return UNKNOWN_WORD;
 	}
 	::fputs(encoded.c_str(), out);
@@ -475,7 +475,7 @@ void ISpell::insert(WordLangTuple const & word)
 	if (encoded.empty()) {
 		error_ = bformat(
 			_("Could not insert word `%1$s' because it could not be converted to encoding `%2$s'."),
-			word.word(), encoding);
+			word.word(), from_ascii(encoding));
 		return;
 	}
 	::fputc('*', out); // Insert word in personal dictionary
@@ -490,7 +490,7 @@ void ISpell::accept(WordLangTuple const & word)
 	if (encoded.empty()) {
 		error_ = bformat(
 			_("Could not accept word `%1$s' because it could not be converted to encoding `%2$s'."),
-			word.word(), encoding);
+			word.word(), from_ascii(encoding));
 		return;
 	}
 	::fputc('@', out); // Accept in this session
