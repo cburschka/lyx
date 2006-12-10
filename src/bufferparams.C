@@ -1449,4 +1449,16 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 }
 
 
+Encoding const & BufferParams::encoding() const
+{
+	if (inputenc == "auto")
+		return *(language->encoding());
+	Encoding const * const enc = encodings.getFromLaTeXName(inputenc);
+	if (enc)
+		return *enc;
+	lyxerr << "Unknown inputenc value `" << inputenc
+	       << "'. Using `auto' instead." << endl;
+	return *(language->encoding());
+}
+
 } // namespace lyx

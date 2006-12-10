@@ -23,6 +23,8 @@
 #include "WordLangTuple.h"
 
 #include "support/forkedcall.h"
+#include "support/lstrings.h"
+#include "support/unicode.h"
 
 // HP-UX 11.x doesn't have this header
 #ifdef HAVE_SYS_SELECT_H
@@ -34,6 +36,8 @@
 
 
 namespace lyx {
+
+using support::bformat;
 
 using boost::shared_ptr;
 
@@ -188,6 +192,29 @@ int LaunchIspell::generateChild()
 }
 
 
+string const to_iconv_encoding(docstring const & s, string const & encoding)
+{
+	if (lyxrc.isp_use_input_encoding) {
+		std::vector<char> const encoded =
+			ucs4_to_eightbit(s.data(), s.length(), encoding);
+		return string(encoded.begin(), encoded.end());
+	}
+	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
+	return to_utf8(s);
+}
+
+
+docstring const from_iconv_encoding(string const & s, string const & encoding)
+{
+	if (lyxrc.isp_use_input_encoding) {
+		std::vector<char_type> const ucs4 =
+			eightbit_to_ucs4(s.data(), s.length(), encoding);
+		return docstring(ucs4.begin(), ucs4.end());
+	}
+	// FIXME UNICODE: s is not in UTF8, but probably the locale encoding
+	return from_utf8(s);
+}
+
 } // namespace anon
 
 
@@ -195,6 +222,8 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 	: in(0), out(0), inerr(0), str(0)
 {
 	lyxerr[Debug::GUI] << "Created ispell" << endl;
+
+	encoding = params.encoding().iconvName();
 
 	// static due to the setvbuf. Ugly.
 	static char o_buf[BUFSIZ];
@@ -266,7 +295,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 
 		// must have read something from stderr
 		// FIXME UNICODE: buf is not in UTF8, but probably the locale encoding
-		error_ =from_utf8(buf);
+		error_ = from_utf8(buf);
 	} else {
 		// select returned error
 		error_ = _("The ispell process returned an error.\nPerhaps "
@@ -354,8 +383,7 @@ docstring const ISpell::nextMiss()
 	e = strpbrk(b, ",\n");
 	*e = '\0';
 	if (b)
-		// FIXME UNICODE: b is not in UTF8, but probably the locale encoding
-		return from_utf8(b);
+		return from_iconv_encoding(b, encoding);
 	return docstring();
 }
 
@@ -372,8 +400,14 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 
 	Result res;
 
-	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
-	::fputs(to_utf8(word.word()).c_str(), out);
+	string const encoded = to_iconv_encoding(word.word(), encoding);
+	if (encoded.empty()) {
+		error_ = bformat(
+			_("Could not check word `%1$s' because it could not be converted to encoding `%2$s'."),
+			word.word(), encoding);
+		return UNKNOWN_WORD;
+	}
+	::fputs(encoded.c_str(), out);
 	::fputc('\n', out);
 
 	bool err_read;
@@ -437,18 +471,30 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 
 void ISpell::insert(WordLangTuple const & word)
 {
+	string const encoded = to_iconv_encoding(word.word(), encoding);
+	if (encoded.empty()) {
+		error_ = bformat(
+			_("Could not insert word `%1$s' because it could not be converted to encoding `%2$s'."),
+			word.word(), encoding);
+		return;
+	}
 	::fputc('*', out); // Insert word in personal dictionary
-	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
-	::fputs(to_utf8(word.word()).c_str(), out);
+	::fputs(encoded.c_str(), out);
 	::fputc('\n', out);
 }
 
 
 void ISpell::accept(WordLangTuple const & word)
 {
+	string const encoded = to_iconv_encoding(word.word(), encoding);
+	if (encoded.empty()) {
+		error_ = bformat(
+			_("Could not accept word `%1$s' because it could not be converted to encoding `%2$s'."),
+			word.word(), encoding);
+		return;
+	}
 	::fputc('@', out); // Accept in this session
-	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
-	::fputs(to_utf8(word.word()).c_str(), out);
+	::fputs(encoded.c_str(), out);
 	::fputc('\n', out);
 }
 

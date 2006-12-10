@@ -833,20 +833,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 			   OutputParams const & runparams,
 			   bool output_preamble, bool output_body)
 {
-	string encoding;
-	if (params().inputenc == "auto")
-		encoding = params().language->encoding()->iconvName();
-	else {
-		Encoding const * enc = encodings.getFromLaTeXName(params().inputenc);
-		if (enc)
-			encoding = enc->iconvName();
-		else {
-			lyxerr << "Unknown inputenc value `"
-			       << params().inputenc
-			       << "'. Using `auto' instead." << endl;
-			encoding = params().language->encoding()->iconvName();
-		}
-	}
+	string const encoding = params().encoding().iconvName();
 	lyxerr[Debug::LATEX] << "makeLaTeXFile encoding: "
 		<< encoding << "..." << endl;
 

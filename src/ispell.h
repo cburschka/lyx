@@ -77,6 +77,9 @@ private:
 
 	boost::scoped_ptr<support::ForkedProcess> child_;
 
+	/// iconv name of the encoding that is used to communicate with ispell
+	std::string encoding;
+
 	// vileness below ... please FIXME
 	/// str ???
 	char * str;

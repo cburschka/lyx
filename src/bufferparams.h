@@ -31,6 +31,7 @@ namespace lyx {
 class AuthorList;
 class BranchList;
 class Bullet;
+class Encoding;
 class LyXLex;
 class LatexFeatures;
 class Spacing;
@@ -185,6 +186,9 @@ public:
 	 * do with this setting.
 	 */
 	std::string inputenc;
+	/// The main encoding used by this buffer for LaTeX output.
+	/// Individual pieces of text can use different encodings.
+	Encoding const & encoding() const;
 	///
 	std::string preamble;
 	///
