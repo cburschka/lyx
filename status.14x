@@ -124,6 +124,9 @@ What's new
 
 - Fix slowness with lots of math on Windows (bug 2900).
 
+- Fix a crash with PageDown/Up when the next/previous paragraph is an inset
+  taller than the workarea.
+
 * Build/installation:
 
 - Allow autoconf 2.60 for building.

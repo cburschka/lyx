@@ -1,3 +1,10 @@
+2006-12-10  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* text3.C (cursorPrevious): use cur.dispatch(FuncRequest(LFUN_UP))
+	instead of cursorUp(cur).
+	(cursorNext): ditto for cur.dispatch(FuncRequest(LFUN_DOWN)) vs
+	cursorDown(cur).
+
 2006-12-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* paragraph.C (startTeXParams, endTeXParams):
