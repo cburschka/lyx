@@ -63,13 +63,11 @@ FILE
 
 SPELL CHECKING (Joost 4/11/06)
 
-* Spell checking cannot be invoked a second time.
-
-* The first time the spell checker is started, an empty window shown instead
-  of the first misspelled word.
-
 * Words with umlauts or accents do not arrive as a whole word in the spell
   checker.
+  PARTIALLY FIXED (Georg 2006-12-10): pspell should work (untested), ispell
+  works if lyxrc.isp_use_input_encoding == true. ispell (if
+  lyxrc.isp_use_input_encoding == false) and aspell do not work yet.
 
 
 TABLE OF CONTENTS
@@ -535,3 +533,12 @@ CREDITS:
 * Open de_Intro.lyx => The footnote text in the title section exceeds the
   footnote frame
   FIXED (Enrico 2006-12-09). This was due to wrong metrics for small caps.
+
+* Spell checking cannot be invoked a second time.
+  FIXED (Georg 2006-12-10). Abdel accidentally committed some test code in
+  revision 14970 which I reverted.
+
+* The first time the spell checker is started, an empty window shown instead
+  of the first misspelled word.
+  FIXED (Georg 2006-12-10). This bug had the same resaon as the previous one.
+
