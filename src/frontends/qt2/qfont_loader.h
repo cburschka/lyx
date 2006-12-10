@@ -18,7 +18,7 @@
 #include <qfont.h>
 #include <qfontmetrics.h>
 
-#if QT_VERSION < 0x030100 || defined(Q_WS_MACX)
+#ifndef I_AM_AFRAID_OF_FONTCACHE
 #define USE_LYX_FONTCACHE
 #endif
 
@@ -36,6 +36,10 @@ public:
 
 	/// Return pixel width for the given unicode char
 	int width(Uchar val);
+	/// Return the pixel ascent for the given unicode char
+	int ascent(char val);
+	/// Return the pixel descent for the given unicode char
+	int descent(char val);
 
 	/// The font instance
 	QFont font;
@@ -43,9 +47,13 @@ public:
 	QFontMetrics metrics;
 
 #if defined(USE_LYX_FONTCACHE)
-	typedef std::map<Uchar, int> WidthCache;
+	typedef std::map<Uchar, int> MetricsCache;
 	/// Cache of char widths
-	WidthCache widthcache;
+	MetricsCache widthcache;
+	/// Cache of char ascents
+	MetricsCache ascentcache;
+	/// Cache of char descents
+	MetricsCache descentcache;
 #endif
 };
 

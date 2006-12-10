@@ -46,15 +46,7 @@ int ascent(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QRect const & r = fontloader.metrics(f).boundingRect(c);
-	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
-	// value by the height: (x, -y-height, width, height).
-	// Other versions return: (x, -y, width, height)
-#if defined(Q_WS_WIN) && (QT_VERSION == 0x030201)
-	return -r.top() - r.height();
-#else
-	return -r.top();
-#endif
+	return fontloader.fontinfo(f).ascent(c);
 }
 
 
@@ -62,15 +54,7 @@ int descent(char c, LyXFont const & f)
 {
 	if (!lyx_gui::use_gui)
 		return 1;
-	QRect const & r = fontloader.metrics(f).boundingRect(c);
-	// Qt/Win 3.2.1nc (at least) corrects the GetGlyphOutlineA|W y
-	// value by the height: (x, -y-height, width, height).
-	// Other versions return: (x, -y, width, height)
-#if defined(Q_WS_WIN) && (QT_VERSION == 0x030201)
-	return r.bottom() + r.height() + 1;
-#else
-	return r.bottom() + 1;
-#endif
+	return fontloader.fontinfo(f).descent(c);
 }
 
 

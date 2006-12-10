@@ -364,7 +364,7 @@ int QLFontInfo::width(Uchar val)
 // Starting with version 3.1.0, Qt/X11 does its own caching of
 // character width, so it is not necessary to provide ours.
 #if defined (USE_LYX_FONTCACHE)
-	QLFontInfo::WidthCache::const_iterator cit = widthcache.find(val);
+	QLFontInfo::MetricsCache::const_iterator cit = widthcache.find(val);
 	if (cit != widthcache.end())
 		return cit->second;
 
@@ -373,6 +373,44 @@ int QLFontInfo::width(Uchar val)
 	return w;
 #else
 	return metrics.width(QChar(val));
+#endif
+}
+
+
+int QLFontInfo::ascent(char c)
+{
+#if defined(USE_LYX_FONTCACHE)
+	Uchar const val = static_cast<Uchar>(c);
+	QLFontInfo::MetricsCache::const_iterator cit = ascentcache.find(val);
+	if (cit != ascentcache.end())
+		return cit->second;
+
+	QRect const & r = metrics.boundingRect(c);
+	int const w = -r.top();
+	ascentcache[val] = w;
+	return w;
+#else
+	QRect const & r = metrics.boundingRect(c);
+	return -r.top();
+#endif
+}
+
+
+int QLFontInfo::descent(char c)
+{
+#if defined(USE_LYX_FONTCACHE)
+	Uchar const val = static_cast<Uchar>(c);
+	QLFontInfo::MetricsCache::const_iterator cit = descentcache.find(val);
+	if (cit != descentcache.end())
+		return cit->second;
+
+	QRect const & r = metrics.boundingRect(c);
+	int const w = r.bottom() + 1;
+	descentcache[val] = w;
+	return w;
+#else
+	QRect const & r = metrics.boundingRect(c);
+	return r.bottom() + 1;
 #endif
 }
 

@@ -1,3 +1,14 @@
+2006-12-09  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* qfont_loader.[Ch] (width): rename WidthCache as MetricsCache.
+	(ascent, descent): New, return (possibly cached) ascent/descent values.
+
+	* qfont_loader.h: Implement cache for ascent/descent values in the
+	QLFontInfo class.
+
+	* qfont_metrics.C (ascent, descent): use the corresponding methods
+	in QLFontInfo class. Remove support for obsolete Qt/Win 3.2.1nc.
+
 2006-10-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QtView.C (hasFocus): return a correct value now (and fix bug 1720).
@@ -6,6 +17,7 @@
 
 	* QDelimiterDialog.[Ch] (fix_name, QDelimiterDialog, insertClicked,
 	size_selected): Allow for fixed size delimiters.
+
 	* ui/QDelimiterDialogBase.ui: Added a combobox for selecting
 	delimiter size.
 

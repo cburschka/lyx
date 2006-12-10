@@ -122,6 +122,8 @@ What's new
 
 - Don't reset cell selection when opening tabular dialog (bug 2715).
 
+- Fix slowness with lots of math on Windows (bug 2900).
+
 * Build/installation:
 
 - Allow autoconf 2.60 for building.
