@@ -66,6 +66,7 @@ void PSpell::addManager(string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
 	pspell_config_replace(config, "language-tag", lang.c_str());
+	pspell_config_replace(config, "encoding", "utf-8");
 	PspellCanHaveError * err = new_pspell_manager(config);
 	if (spell_error_object)
 		delete_pspell_can_have_error(spell_error_object);
@@ -97,14 +98,12 @@ enum PSpell::Result PSpell::check(WordLangTuple const & word)
 
 	PspellManager * m = it->second.manager;
 
-	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 	int word_ok = pspell_manager_check(m, to_utf8(word.word()).c_str());
 	BOOST_ASSERT(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
-		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		PspellWordList const * sugs =
 			pspell_manager_suggest(m, to_utf8(word.word()).c_str());
 		BOOST_ASSERT(sugs != 0);
@@ -122,7 +121,6 @@ void PSpell::insert(WordLangTuple const & word)
 {
 	Managers::iterator it = managers_.find(word.lang_code());
 	if (it != managers_.end())
-		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		pspell_manager_add_to_personal(it->second.manager, to_utf8(word.word()).c_str());
 }
 
@@ -131,7 +129,6 @@ void PSpell::accept(WordLangTuple const & word)
 {
 	Managers::iterator it = managers_.find(word.lang_code());
 	if (it != managers_.end())
-		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		pspell_manager_add_to_session(it->second.manager, to_utf8(word.word()).c_str());
 }
 
@@ -143,7 +140,6 @@ docstring const PSpell::nextMiss()
 	if (els)
 		str = pspell_string_emulation_next(els);
 	if (str)
-		// FIXME UNICODE: str is not in UTF8, but probably the locale encoding
 		return from_utf8(str);
 	return docstring();
 }
@@ -158,7 +154,6 @@ docstring const PSpell::error()
 	}
 
 	if (err)
-		// FIXME UNICODE: err is not in UTF8, but probably the locale encoding
 		return from_utf8(err);
 	return docstring();
 }
