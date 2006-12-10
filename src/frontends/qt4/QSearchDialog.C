@@ -22,7 +22,6 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-using std::string;
 
 namespace lyx {
 namespace frontend {
@@ -88,7 +87,7 @@ void QSearchDialog::findChanged()
 
 void QSearchDialog::findClicked()
 {
-	string const find(fromqstr(findCO->currentText()));
+	docstring const find(qstring_to_ucs4(findCO->currentText()));
 	form_->find(find,
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
@@ -99,8 +98,8 @@ void QSearchDialog::findClicked()
 
 void QSearchDialog::replaceClicked()
 {
-	string const find(fromqstr(findCO->currentText()));
-	string const replace(fromqstr(replaceCO->currentText()));
+	docstring const find(qstring_to_ucs4(findCO->currentText()));
+	docstring const replace(qstring_to_ucs4(replaceCO->currentText()));
 	form_->replace(find, replace,
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
@@ -112,8 +111,8 @@ void QSearchDialog::replaceClicked()
 
 void QSearchDialog::replaceallClicked()
 {
-	form_->replace(fromqstr(findCO->currentText()),
-		fromqstr(replaceCO->currentText()),
+	form_->replace(qstring_to_ucs4(findCO->currentText()),
+		qstring_to_ucs4(replaceCO->currentText()),
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		false, true);

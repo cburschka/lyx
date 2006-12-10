@@ -52,7 +52,7 @@ void QThesaurus::update_contents()
 
 void QThesaurus::replace()
 {
-	controller().replace(fromqstr(dialog_->replaceED->text()));
+	controller().replace(qstring_to_ucs4(dialog_->replaceED->text()));
 }
 
 } // namespace frontend

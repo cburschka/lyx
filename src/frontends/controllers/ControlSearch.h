@@ -29,11 +29,11 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// Searches occurence of string
-	void find(std::string const & search,
+	void find(docstring const & search,
 		  bool casesensitive, bool matchword, bool forward);
 
 	/// Replaces occurence of string
-	void replace(std::string const & search, std::string const & replace,
+	void replace(docstring const & search, docstring const & replace,
 		     bool casesensitive, bool matchword,
 		     bool forward, bool all);
 };

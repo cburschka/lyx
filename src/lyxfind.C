@@ -30,8 +30,7 @@
 #include "frontends/Alert.h"
 
 #include "support/convert.h"
-
-#include <sstream>
+#include "support/docstream.h"
 
 namespace lyx {
 
@@ -40,17 +39,15 @@ using support::uppercase;
 using support::split;
 
 using std::advance;
-using std::ostringstream;
-using std::string;
 
 
 namespace {
 
-bool parse_bool(string & howto)
+bool parse_bool(docstring & howto)
 {
 	if (howto.empty())
 		return false;
-	string var;
+	docstring var;
 	howto = split(howto, var, ' ');
 	return (var == "1");
 }
@@ -59,18 +56,18 @@ bool parse_bool(string & howto)
 class MatchString : public std::binary_function<Paragraph, pos_type, bool>
 {
 public:
-	MatchString(string const & str, bool cs, bool mw)
+	MatchString(docstring const & str, bool cs, bool mw)
 		: str(str), cs(cs), mw(mw)
 	{}
 
 	// returns true if the specified string is at the specified position
 	bool operator()(Paragraph const & par, pos_type pos) const
 	{
-		string::size_type const size = str.length();
+		docstring::size_type const size = str.length();
 		pos_type i = 0;
 		pos_type const parsize = par.size();
 		for (i = 0; pos + i < parsize; ++i) {
-			if (string::size_type(i) >= size)
+			if (docstring::size_type(i) >= size)
 				break;
 			if (cs && str[i] != par.getChar(pos + i))
 				break;
@@ -78,7 +75,7 @@ public:
 				break;
 		}
 
-		if (size != string::size_type(i))
+		if (size != docstring::size_type(i))
 			return false;
 
 		// if necessary, check whether string matches word
@@ -95,7 +92,7 @@ public:
 
 private:
 	// search string
-	string str;
+	docstring str;
 	// case sensitive
 	bool cs;
 	// match whole words only
@@ -132,7 +129,7 @@ bool findChange(DocIterator & cur)
 }
 
 
-bool searchAllowed(BufferView * bv, string const & str)
+bool searchAllowed(BufferView * bv, docstring const & str)
 {
 	if (str.empty()) {
 		frontend::Alert::error(_("Search error"),
@@ -143,7 +140,7 @@ bool searchAllowed(BufferView * bv, string const & str)
 }
 
 
-bool find(BufferView * bv, string const & searchstr, bool cs, bool mw, bool fw)
+bool find(BufferView * bv, docstring const & searchstr, bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr))
 		return false;
@@ -162,7 +159,7 @@ bool find(BufferView * bv, string const & searchstr, bool cs, bool mw, bool fw)
 
 
 int replaceAll(BufferView * bv,
-	       string const & searchstr, string const & replacestr,
+	       docstring const & searchstr, docstring const & replacestr,
 	       bool cs, bool mw)
 {
 	Buffer & buf = *bv->buffer();
@@ -185,7 +182,7 @@ int replaceAll(BufferView * bv,
 			= cur.paragraph().getFontSettings(buf.params(), pos);
 		int striked = ssize - cur.paragraph().eraseChars(pos, pos + ssize,
 							    buf.params().trackChanges);
-		cur.paragraph().insert(pos, from_utf8(replacestr), font,
+		cur.paragraph().insert(pos, replacestr, font,
 		                       Change(buf.params().trackChanges ?
 		                              Change::INSERTED : Change::UNCHANGED));
 		for (int i = 0; i < rsize + striked; ++i)
@@ -201,13 +198,13 @@ int replaceAll(BufferView * bv,
 }
 
 
-bool stringSelected(BufferView * bv, string const & searchstr,
+bool stringSelected(BufferView * bv, docstring const & searchstr,
 		    bool cs, bool mw, bool fw)
 {
 	// if nothing selected or selection does not equal search
 	// string search and select next occurance and return
-	string const & str1 = searchstr;
-	string const str2 = to_utf8(bv->cursor().selectionAsString(false));
+	docstring const & str1 = searchstr;
+	docstring const str2 = bv->cursor().selectionAsString(false);
 	if ((cs && str1 != str2) || lowercase(str1) != lowercase(str2)) {
 		find(bv, searchstr, cs, mw, fw);
 		return false;
@@ -217,8 +214,8 @@ bool stringSelected(BufferView * bv, string const & searchstr,
 }
 
 
-int replace(BufferView * bv, string const & searchstr,
-	    string const & replacestr, bool cs, bool mw, bool fw)
+int replace(BufferView * bv, docstring const & searchstr,
+	    docstring const & replacestr, bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr) || bv->buffer()->isReadonly())
 		return 0;
@@ -227,7 +224,7 @@ int replace(BufferView * bv, string const & searchstr,
 		return 0;
 
 	LCursor & cur = bv->cursor();
-	cap::replaceSelectionWithString(cur, from_utf8(replacestr), fw);
+	cap::replaceSelectionWithString(cur, replacestr, fw);
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();
@@ -238,10 +235,10 @@ int replace(BufferView * bv, string const & searchstr,
 } // namespace anon
 
 
-string const find2string(string const & search,
+docstring const find2string(docstring const & search,
 			 bool casesensitive, bool matchword, bool forward)
 {
-	ostringstream ss;
+	odocstringstream ss;
 	ss << search << '\n'
 	   << int(casesensitive) << ' '
 	   << int(matchword) << ' '
@@ -250,11 +247,11 @@ string const find2string(string const & search,
 }
 
 
-string const replace2string(string const & search, string const & replace,
+docstring const replace2string(docstring const & search, docstring const & replace,
 			    bool casesensitive, bool matchword,
 			    bool all, bool forward)
 {
-	ostringstream ss;
+	odocstringstream ss;
 	ss << search << '\n'
 	   << replace << '\n'
 	   << int(casesensitive) << ' '
@@ -275,8 +272,8 @@ void find(BufferView * bv, FuncRequest const & ev)
 	// data is of the form
 	// "<search>
 	//  <casesensitive> <matchword> <forward>"
-	string search;
-	string howto = split(to_utf8(ev.argument()), search, '\n');
+	docstring search;
+	docstring howto = split(ev.argument(), search, '\n');
 
 	bool casesensitive = parse_bool(howto);
 	bool matchword     = parse_bool(howto);
@@ -300,9 +297,9 @@ void replace(BufferView * bv, FuncRequest const & ev)
 	// "<search>
 	//  <replace>
 	//  <casesensitive> <matchword> <all> <forward>"
-	string search;
-	string rplc;
-	string howto = split(to_utf8(ev.argument()), search, '\n');
+	docstring search;
+	docstring rplc;
+	docstring howto = split(ev.argument(), search, '\n');
 	howto = split(howto, rplc, '\n');
 
 	bool casesensitive = parse_bool(howto);

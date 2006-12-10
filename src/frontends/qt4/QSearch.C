@@ -46,14 +46,14 @@ void QSearch::build_dialog()
 }
 
 
-void QSearch::find(string const & str, bool casesens,
+void QSearch::find(docstring const & str, bool casesens,
 		   bool words, bool backwards)
 {
 	controller().find(str, casesens, words, !backwards);
 }
 
 
-void QSearch::replace(string const & findstr, string const & replacestr,
+void QSearch::replace(docstring const & findstr, docstring const & replacestr,
 	bool casesens, bool words, bool backwards, bool all)
 {
 	controller().replace(findstr, replacestr, casesens, words,

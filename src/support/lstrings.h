@@ -92,6 +92,7 @@ std::string const ascii_lowercase(std::string const &);
 
 ///
 std::string const lowercase(std::string const &);
+docstring const lowercase(docstring const &);
 
 ///
 std::string const uppercase(std::string const &);

@@ -15,9 +15,7 @@
 #ifndef LYXFIND_H
 #define LYXFIND_H
 
-#include "support/types.h"
-
-#include <string>
+#include "support/docstring.h"
 
 namespace lyx {
 
@@ -28,7 +26,7 @@ class LyXText;
 /** Encode the parameters needed to find \c search as a string
  *  that can be dispatched to the LyX core in a FuncRequest wrapper.
  */
-std::string const find2string(std::string const & search,
+docstring const find2string(docstring const & search,
 			      bool casesensitive,
 			      bool matchword,
 			      bool forward);
@@ -37,8 +35,8 @@ std::string const find2string(std::string const & search,
  *  as a string that can be dispatched to the LyX core in a FuncRequest
  *  wrapper.
  */
-std::string const replace2string(std::string const & search,
-				 std::string const & replace,
+docstring const replace2string(docstring const & search,
+				 docstring const & replace,
 				 bool casesensitive,
 				 bool matchword,
 				 bool all,

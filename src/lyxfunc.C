@@ -764,12 +764,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_WORD_FIND_FORWARD:
 		case LFUN_WORD_FIND_BACKWARD: {
 			BOOST_ASSERT(lyx_view_ && lyx_view_->view());
-			static string last_search;
-			string searched_string;
+			static docstring last_search;
+			docstring searched_string;
 
-			if (!argument.empty()) {
-				last_search = argument;
-				searched_string = argument;
+			if (!cmd.argument().empty()) {
+				last_search = cmd.argument();
+				searched_string = cmd.argument();
 			} else {
 				searched_string = last_search;
 			}
@@ -778,7 +778,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 
 			bool const fw = action == LFUN_WORD_FIND_FORWARD;
-			string const data =
+			docstring const data =
 				find2string(searched_string, true, false, fw);
 			find(view(), FuncRequest(LFUN_WORD_FIND, data));
 			break;

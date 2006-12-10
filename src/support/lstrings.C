@@ -361,8 +361,8 @@ namespace {
 // since we cannot use std::tolower and std::toupper directly in the
 // calls to std::transform yet, we use these helper clases. (Lgb)
 
-struct local_lowercase {
-	char operator()(char c) const {
+template<typename Char> struct local_lowercase {
+	Char operator()(Char c) const {
 		return tolower(c);
 	}
 };
@@ -384,9 +384,18 @@ struct local_ascii_lowercase {
 string const lowercase(string const & a)
 {
 	string tmp(a);
-	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase<char>());
 	return tmp;
 }
+
+
+docstring const lowercase(docstring const & a)
+{
+	docstring tmp(a);
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase<char_type>());
+	return tmp;
+}
+
 
 string const uppercase(string const & a)
 {

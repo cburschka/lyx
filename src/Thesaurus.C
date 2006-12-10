@@ -12,17 +12,17 @@
 
 #include "Thesaurus.h"
 
+#include "support/lstrings.h"
+
 #include <algorithm>
-#include <string>
 
 
 namespace lyx {
 
-using std::string;
-
 #ifdef HAVE_LIBAIKSAURUS
 
 using std::sort;
+using std::string;
 
 
 Thesaurus::Thesaurus()
@@ -36,10 +36,19 @@ Thesaurus::~Thesaurus()
 }
 
 
-Thesaurus::Meanings Thesaurus::lookup(string const & text)
+Thesaurus::Meanings Thesaurus::lookup(docstring const & t)
 {
 	Meanings meanings;
 
+	// aiksaurus is for english text only, therefore it does not work
+	// with non-ascii strings.
+	// The interface of the Thesaurus class uses docstring because a
+	// non-english thesaurus is possible in theory.
+	if (!support::isAscii(t))
+		// to_ascii() would assert
+		return meanings;
+
+	string const text = to_ascii(t);
 	if (!aik_->find(text.c_str()))
 		return meanings;
 
@@ -47,29 +56,27 @@ Thesaurus::Meanings Thesaurus::lookup(string const & text)
 
 	int prev_meaning = -1;
 	int cur_meaning;
-	string meaning;
+	docstring meaning;
 
 	// correct, returns "" at the end
 	string ret = aik_->next(cur_meaning);
 
 	while (!ret.empty()) {
 		if (cur_meaning != prev_meaning) {
-			meaning = ret;
+			meaning = from_ascii(ret);
 			ret = aik_->next(cur_meaning);
 			prev_meaning = cur_meaning;
 		} else {
-			if (ret != text) {
-				meanings[meaning].push_back(ret);
-			}
+			if (ret != text)
+				meanings[meaning].push_back(from_ascii(ret));
 		}
 
 		ret = aik_->next(cur_meaning);
 	}
 
 	for (Meanings::iterator it = meanings.begin();
-		it != meanings.end(); ++it) {
-			sort(it->second.begin(), it->second.end());
-	}
+	     it != meanings.end(); ++it)
+		sort(it->second.begin(), it->second.end());
 
 	return meanings;
 }
@@ -86,7 +93,7 @@ Thesaurus::~Thesaurus()
 }
 
 
-Thesaurus::Meanings Thesaurus::lookup(string const &)
+Thesaurus::Meanings Thesaurus::lookup(docstring const &)
 {
 	return Meanings();
 }

@@ -12,9 +12,10 @@
 #ifndef THESAURUS_H
 #define THESAURUS_H
 
+#include "support/docstring.h"
+
 #include <vector>
 #include <map>
-#include <string>
 
 #ifdef HAVE_LIBAIKSAURUS
 #include AIKSAURUS_H_LOCATION
@@ -33,12 +34,12 @@ public:
 	///
 	~Thesaurus();
 
-	typedef std::map<std::string, std::vector<std::string> > Meanings;
+	typedef std::map<docstring, std::vector<docstring> > Meanings;
 
 	/**
 	 * look up some text in the thesaurus
 	 */
-	Meanings lookup(std::string const & text);
+	Meanings lookup(docstring const & text);
 
 private:
 #ifdef HAVE_LIBAIKSAURUS

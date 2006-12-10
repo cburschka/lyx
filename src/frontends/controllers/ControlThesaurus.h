@@ -35,23 +35,23 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	/// replace the particular string
-	void replace(std::string const & newstr);
+	void replace(docstring const & newstr);
 
 	/// get meanings
-	Thesaurus::Meanings const & getMeanings(std::string const & str);
+	Thesaurus::Meanings const & getMeanings(docstring const & str);
 
 	/// the text
-	std::string const & text() const { return oldstr_; }
+	docstring const & text() const { return oldstr_; }
 
 private:
 	/// last string looked up
-	std::string laststr_;
+	docstring laststr_;
 
 	/// entries for last string
 	Thesaurus::Meanings meanings_;
 
 	/// original string
-	std::string oldstr_;
+	docstring oldstr_;
 
 	/// not needed.
 	virtual void apply() {}

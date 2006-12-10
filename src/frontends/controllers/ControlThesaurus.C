@@ -27,7 +27,7 @@ ControlThesaurus::ControlThesaurus(Dialog & parent)
 
 bool ControlThesaurus::initialiseParams(string const & data)
 {
-	oldstr_ = data;
+	oldstr_ = from_utf8(data);
 	return true;
 }
 
@@ -38,13 +38,13 @@ void ControlThesaurus::clearParams()
 }
 
 
-void ControlThesaurus::replace(string const & newstr)
+void ControlThesaurus::replace(docstring const & newstr)
 {
 	/* FIXME: this is not suitable ! We need to have a "lock"
 	 * on a particular charpos in a paragraph that is broken on
 	 * deletion/change !
 	 */
-	string const data =
+	docstring const data =
 		replace2string(oldstr_, newstr,
 				     true,  // case sensitive
 				     true,  // match word
@@ -54,7 +54,7 @@ void ControlThesaurus::replace(string const & newstr)
 }
 
 
-Thesaurus::Meanings const & ControlThesaurus::getMeanings(string const & str)
+Thesaurus::Meanings const & ControlThesaurus::getMeanings(docstring const & str)
 {
 	if (str != laststr_)
 		meanings_ = thesaurus.lookup(str);
