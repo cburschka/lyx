@@ -287,12 +287,14 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
+		// onlyFilename() is needed for cygwin
 		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()), runparams);
 	}
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
 		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
 		message(_("Running MakeIndex for nomencl."));
-		string const nomenclstr = " -s nomencl.ist -o " + changeExtension(file.toFilesystemEncoding(), ".nls");
+		// onlyFilename() is needed for cygwin
+		string const nomenclstr = " -s nomencl.ist -o " + onlyFilename(changeExtension(file.toFilesystemEncoding(), ".nls"));
 		rerun |= runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".nlo")), runparams, nomenclstr);
 	}
 
@@ -361,6 +363,7 @@ int LaTeX::run(TeXErrors & terr)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
+		// onlyFilename() is needed for cygwin
 		rerun = runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".idx")), runparams);
 	}
 
@@ -368,7 +371,8 @@ int LaTeX::run(TeXErrors & terr)
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
 		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
 		message(_("Running MakeIndex for nomencl."));
-		string nomenclstr = " -s nomencl.ist -o " + changeExtension(file.toFilesystemEncoding(), ".nls");
+		// onlyFilename() is needed for cygwin
+		string nomenclstr = " -s nomencl.ist -o " + onlyFilename(changeExtension(file.toFilesystemEncoding(), ".nls"));
 		rerun |= runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".nlo")), runparams, nomenclstr);
 	}
 
@@ -410,7 +414,8 @@ int LaTeX::run(TeXErrors & terr)
 
 int LaTeX::startscript()
 {
-	string tmp = cmd + ' ' + quoteName(file.toFilesystemEncoding()) + " > " + os::nulldev();
+	// onlyFilename() is needed for cygwin
+	string tmp = cmd + ' ' + quoteName(onlyFilename(file.toFilesystemEncoding())) + " > " + os::nulldev();
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
 }
@@ -551,6 +556,7 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 		result = true;
 
 		string tmp = lyxrc.bibtex_command + " ";
+		// onlyFilename() is needed for cygwin
 		tmp += quoteName(onlyFilename(removeExtension(it->aux_file.absFilename())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
