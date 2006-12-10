@@ -107,7 +107,7 @@ QDelimiterDialog::QDelimiterDialog(QMathDelimiter * form)
 	leftCO->addItem(QIcon(QPixmap(toqstr(empty_xpm))), qt_("(None)"));
 	rightCO->addItem(QIcon(QPixmap(toqstr(empty_xpm))), qt_("(None)"));
 
-	sizeCO->addItem(qt_("Variable size"));
+	sizeCO->addItem(qt_("Variable"));
 
 	for (int i = 0; *biggui[i]; ++i)
 		sizeCO->addItem(qt_(biggui[i]));
