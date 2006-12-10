@@ -169,6 +169,14 @@ MENUS
 
 EDITING
 
+* Create a new document; enter a few chars; press return; from the 
+  environments combo box on the top left corner select anything, e.g., 'Part'; 
+  try to enter text => you can't! Even worse: click on the previous paragraph 
+  with mouse to change the focus: lyx crashes. (happens on Win XP SP2, 
+  MSVC 2005 Prof., Scons) 
+  MG: This must be a GUI problem; when using keyboard shortcuts (Alt-P-...),
+  the problem does not occur; it does not matter whether the cursor is in the last line 
+
 * Open "de_Intro.lyx"; mark first word ("Einführung"); invoke "ert-insert" => seg fault
 
   On Linux, valgrind reports:
