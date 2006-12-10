@@ -69,6 +69,9 @@ SPELL CHECKING (Joost 4/11/06)
   works if lyxrc.isp_use_input_encoding == true. ispell (if
   lyxrc.isp_use_input_encoding == false) and aspell do not work yet.
 
+* The cursor does not go to the currently checked word (or maybe it goes,
+  but the screen is not updated so that one does not see the word).
+
 
 TABLE OF CONTENTS
 
