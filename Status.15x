@@ -71,6 +71,9 @@ SPELL CHECKING (Joost 4/11/06)
 
 * The cursor does not go to the currently checked word (or maybe it goes,
   but the screen is not updated so that one does not see the word).
+  
+* When replacing a misspelled word during spell checking, the screen is not 
+  updated immediately.
 
 
 TABLE OF CONTENTS
