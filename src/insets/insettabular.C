@@ -478,8 +478,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			&& (&bvcur.selBegin().inset() != this || !tablemode(bvcur)))) {
 			cur.selection() = false;
 			setCursorFromCoordinates(cur, cmd.x, cmd.y);
-			cur.resetAnchor();
-			bvcur = cur;
+			// cares for dePM
+			cur.bv().mouseSetCursor(cur);
+			//cur.resetAnchor();
+			//bvcur = cur;
 			break;
 		}
 

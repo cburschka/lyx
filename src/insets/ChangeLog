@@ -1,3 +1,8 @@
+2006-12-11  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insettabular.C (doDispatch): call mouseSetCursor on mouse 
+	click to ensure dEPM is triggered.
+
 2006-10-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insettabular.C (doDispatch): do not reset cursor/selection
