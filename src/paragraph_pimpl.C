@@ -58,6 +58,15 @@ special_phrase const special_phrases[] = {
 
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
+
+bool isEncoding(BufferParams const & bparams, LyXFont const & font,
+		string const & encoding)
+{
+	return (bparams.inputenc == encoding
+		|| (bparams.inputenc == "auto"
+		    && font.language()->encoding()->latexName() == encoding));
+}
+
 } // namespace anon
 
 
@@ -569,13 +578,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		case 0xb9:    // ¹ SUPERSCRIPT ONE
 		case 0xac:    // ¬ NOT SIGN
 		case 0xb5:    // µ MICRO SIGN
-			if ((bparams.inputenc == "latin1" ||
-			     bparams.inputenc == "latin9") ||
-			    (bparams.inputenc == "auto" &&
-			     (font.language()->encoding()->latexName()
-			      == "latin1" ||
-			      font.language()->encoding()->latexName()
-			      == "latin9"))) {
+			if (isEncoding(bparams, font, "latin1")
+			    || isEncoding(bparams, font, "latin9")) {
 				os << "\\ensuremath{";
 				os.put(c);
 				os << '}';
@@ -652,22 +656,69 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 
 		case 0x20ac:    // EURO SIGN
-			if ((bparams.inputenc == "latin9" ||
-			     bparams.inputenc == "cp1251"||
-			     bparams.inputenc == "utf8") ||
-			    (bparams.inputenc == "auto" &&
-			     (font.language()->encoding()->latexName()
-			      == "latin9" ||
-			      font.language()->encoding()->latexName()
-			      == "cp1251"||
-			      font.language()->encoding()->latexName()
-			      == "utf8"))) {
+			if (isEncoding(bparams, font, "latin9")
+			    || isEncoding(bparams, font, "cp1251")
+			    || isEncoding(bparams, font, "utf8")) {
 				os.put(c);
 			} else {
 				os << "\\texteuro{}";
 				column += 10;
 			}
 			break;
+
+		// These characters are covered by latin1, but not
+		// by latin9 (a.o.). We have to support them because
+		// we switched the default of latin1-languages to latin9
+		case 0xa4:    // CURRENCY SYMBOL
+		case 0xa6:    // BROKEN BAR
+		case 0xa8:    // DIAERESIS
+		case 0xb4:    // ACUTE ACCENT
+		case 0xb8:    // CEDILLA
+		case 0xbd:    // 1/2 FRACTION
+		case 0xbc:    // 1/4 FRACTION
+		case 0xbe:    // 3/4 FRACTION
+			if (isEncoding(bparams, font, "latin1")
+			    || isEncoding(bparams, font, "latin5")
+			    || isEncoding(bparams, font, "utf8")) {
+				os.put(c);
+				break;
+			} else {
+				switch (c) {
+				case 0xa4:
+					os << "\\textcurrency{}";
+					column += 15;
+					break;
+				case 0xa6:
+					os << "\\textbrokenbar{}";
+					column += 16;
+					break;
+				case 0xa8:
+					os << "\\textasciidieresis{}";
+					column += 20;
+					break;
+				case 0xb4:
+					os << "\\textasciiacute{}";
+					column += 17;
+					break;
+				case 0xb8: // from latin1.def:
+					os << "\\c\\ ";
+					column += 3;
+					break;
+				case 0xbd:
+					os << "\\textonehalf{}";
+					column += 14;
+					break;
+				case 0xbc:
+					os << "\\textonequarter{}";
+					column += 17;
+					break;
+				case 0xbe:
+					os << "\\textthreequarters{}";
+					column += 20;
+					break;
+				}
+				break;
+			}
 
 		case '$': case '&':
 		case '%': case '#': case '{':
@@ -819,8 +870,11 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 				break;
 			}
 		}
-		// the euro sign requires the textcomp package
-		if (getChar(i) == 0x20ac)
+		// these glyphs require the textcomp package
+		if (getChar(i) == 0x20ac || getChar(i) == 0xa4
+		    || getChar(i) == 0xa6 || getChar(i) == 0xa8
+		    || getChar(i) == 0xb4 || getChar(i) == 0xbd
+		    || getChar(i) == 0xbc || getChar(i) == 0xbe)
 			features.require("textcomp");
 	}
 }
