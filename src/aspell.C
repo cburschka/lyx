@@ -55,7 +55,9 @@ ASpell::~ASpell()
 void ASpell::addSpeller(string const & lang)
 {
 	AspellConfig * config = new_aspell_config();
+	// FIXME The aspell documentation says to use "lang"
 	aspell_config_replace(config, "language-tag", lang.c_str());
+	aspell_config_replace(config, "encoding", "utf-8");
 	AspellCanHaveError * err = new_aspell_speller(config);
 	if (spell_error_object)
 		delete_aspell_can_have_error(spell_error_object);
@@ -87,14 +89,12 @@ ASpell::Result ASpell::check(WordLangTuple const & word)
 
 	AspellSpeller * m = it->second.speller;
 
-	// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 	int const word_ok = aspell_speller_check(m, to_utf8(word.word()).c_str(), -1);
 	BOOST_ASSERT(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
-		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		AspellWordList const * sugs =
 			aspell_speller_suggest(m, to_utf8(word.word()).c_str(), -1);
 		BOOST_ASSERT(sugs != 0);
@@ -112,7 +112,6 @@ void ASpell::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it != spellers_.end())
-		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		aspell_speller_add_to_personal(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
@@ -121,7 +120,6 @@ void ASpell::accept(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang_code());
 	if (it != spellers_.end())
-		// FIXME UNICODE: we don't need to convert to UTF8, but probably to the locale encoding
 		aspell_speller_add_to_session(it->second.speller, to_utf8(word.word()).c_str(), -1);
 }
 
@@ -133,7 +131,6 @@ docstring const ASpell::nextMiss()
 	if (els)
 		str = aspell_string_enumeration_next(els);
 
-	// FIXME UNICODE: str is not in UTF8, but probably the locale encoding
 	return (str ? from_utf8(str) : docstring());
 }
 

@@ -66,8 +66,9 @@ SPELL CHECKING (Joost 4/11/06)
 * Words with umlauts or accents do not arrive as a whole word in the spell
   checker.
   PARTIALLY FIXED (Georg 2006-12-10): pspell should work (untested), ispell
-  works if lyxrc.isp_use_input_encoding == true. ispell (if
-  lyxrc.isp_use_input_encoding == false) and aspell do not work yet.
+  works if lyxrc.isp_use_input_encoding == true, aspell works on linux,
+  cygwin and native windows (it is not clear yet whether it works on OS X).
+  ispell (if lyxrc.isp_use_input_encoding == false) does not work yet.
 
 * The cursor does not go to the currently checked word (or maybe it goes,
   but the screen is not updated so that one does not see the word).
