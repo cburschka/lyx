@@ -184,7 +184,7 @@ public:
 	void setCursor(DocIterator const &);
 	/// sets cursor.
 	/// This is used when handling LFUN_MOUSE_PRESS.
-	void mouseSetCursor(LCursor & cur);
+	bool mouseSetCursor(LCursor & cur);
 
 	/// sets the selection.
 	/* When \c backwards == false, set anchor

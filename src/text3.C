@@ -991,7 +991,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			paste_internally = true;
 		}
 
-		bv->mouseSetCursor(cur);
+		// we have to update after dePM triggered
+		bool update = bv->mouseSetCursor(cur);
 
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
@@ -1003,7 +1004,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 		}
 
-		if (cmd.button() == mouse_button::button1) {
+		if (!update && cmd.button() == mouse_button::button1) {
 			needsUpdate = false;
 			cur.noUpdate();
 		}

@@ -1211,7 +1211,7 @@ void BufferView::setCursor(DocIterator const & dit)
 }
 
 
-void BufferView::mouseSetCursor(LCursor & cur)
+bool BufferView::mouseSetCursor(LCursor & cur)
 {
 	BOOST_ASSERT(&cur.bv() == this);
 
@@ -1222,14 +1222,15 @@ void BufferView::mouseSetCursor(LCursor & cur)
 
 	// do the dEPM magic if needed
 	// FIXME: move this to InsetText::notifyCursorLeaves?
+	bool update = false;
 	if (!badcursor && cursor_.inTexted())
-		cursor_.text()->deleteEmptyParagraphMechanism(cur, cursor_);
+		update = cursor_.text()->deleteEmptyParagraphMechanism(cur, cursor_);
 
 	cursor_ = cur;
 	cursor_.clearSelection();
 	cursor_.setTargetX();
 	finishUndo();
-
+	return update;
 }
 
 
