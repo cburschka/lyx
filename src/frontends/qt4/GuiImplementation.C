@@ -100,7 +100,10 @@ bool GuiImplementation::closeAllViews()
 	std::map<int, GuiView*>::const_iterator it;
 	for (it = cmap.begin(); it != cmap.end(); ++it)
 	{
-		it->second->close();
+		// TODO: return false when close event was ignored
+		//       e.g. quitWriteAll()->'Cancel'
+		//       maybe we need something like 'bool closeView()'
+		it->second->close(); 
 		// unregisterd by the CloseEvent
 	}
 
