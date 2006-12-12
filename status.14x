@@ -81,6 +81,11 @@ What's new
 
 - Import \guilsinglright correctly from .tex files.
 
+- Don't create invalid .lyx files when importing \i{} and \j{} from .tex
+  files.
+
+- Import \l{} and \L{} natively from .tex files (do not create ERT).
+
 * User Interface:
 
 - Fix slowness with lots of math on Windows (bug 2900).

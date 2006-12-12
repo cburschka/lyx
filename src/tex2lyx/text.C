@@ -2084,7 +2084,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
 			// we need the trim as the LyX parser chokes on such spaces
 			context.check_layout(os);
-			os << "\n\\i \\" << t.cs() << "{"
+			os << "\\i \\" << t.cs() << "{"
 			   << trim(parse_text_snippet(p, FLAG_ITEM, outer, context), " ")
 			   << "}\n";
 		}
@@ -2095,9 +2095,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p); // eat {}
 		}
 
-		else if (t.cs() == "i" || t.cs() == "j") {
+		else if (t.cs() == "i" || t.cs() == "j" || t.cs() == "l" ||
+		         t.cs() == "L") {
 			context.check_layout(os);
-			os << "\\" << t.cs() << ' ';
+			os << "\\i \\" << t.cs() << "{}\n";
 			skip_braces(p); // eat {}
 		}
 
