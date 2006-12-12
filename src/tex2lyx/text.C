@@ -2099,7 +2099,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			skip_braces(p); // eat {}
 		}
 
-		else if (t.cs() == "i" || t.cs() == "j") {
+		else if (t.cs() == "i" || t.cs() == "j" || t.cs() == "l" ||
+		         t.cs() == "L") {
 			context.check_layout(os);
 			os << "\\" << t.cs() << ' ';
 			skip_braces(p); // eat {}
