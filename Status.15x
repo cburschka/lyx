@@ -38,8 +38,6 @@ FILE
   Missing \end_layout.
   I don't know if that is a lyx2lyx or LyX problem. LyX 1.4 can read the file.
 
-* Non-ascii filenames do not work at all and result in an assertion or garbage.
-
 * Change Tools->Preferences->User interface->User interface to something like
   "kornel.default.ui"; save prefs; exit LyX; restart LyX; => crash; 
   in the preferences file, there is an entry \bind_file "/Something/kornel.default"
@@ -564,4 +562,7 @@ CREDITS:
 * open lyx, create a new document, enter a few chars, quit, click cancel, lyx
   still quits.
   FIXED (Enrico 2006-12-12)
+
+* Non-ascii filenames do not work at all and result in an assertion or garbage.
+  FIXED (Georg 2006-12-12).
 
