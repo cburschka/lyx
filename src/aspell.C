@@ -57,6 +57,13 @@ void ASpell::addSpeller(string const & lang)
 	AspellConfig * config = new_aspell_config();
 	// FIXME The aspell documentation says to use "lang"
 	aspell_config_replace(config, "language-tag", lang.c_str());
+	// Set the encoding to utf-8.
+	// aspell does also understand "ucs-4", so we would not need a
+	// conversion in theory, but if this is used it expects all
+	// char const * arguments to be a cast from  uint const *, and it
+	// seems that this uint is not compatible with our char_type on some
+	// platforms (cygwin, OS X). Therefore we use utf-8, that does
+	// always work.
 	aspell_config_replace(config, "encoding", "utf-8");
 	AspellCanHaveError * err = new_aspell_speller(config);
 	if (spell_error_object)
