@@ -94,6 +94,14 @@ DIALOGS
 * If you try to view a document as postscript that cannot be typeset because
   of LaTeX errors and export to LaTeX afterwards you will get the old error
   list again, although the export succeded.
+  
+* Citation dialog: Create some citation; open the citation dialog a second time for
+  another new citation => the selected entry from the first citations is
+  already selected for the second citation (which is wrong)
+
+* Citation dialog: If you use the cursor up/down keys to browse through the
+  list of available citations, the "preview" (in the middle of the dialog)
+  is not updated
 
 
 MATH CONTROL PANEL
