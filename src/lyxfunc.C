@@ -1034,19 +1034,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_LYX_QUIT:
-			// FIXME: this code needs to be transfered somewhere else
-			// as lyx_view_ will most certainly be null and a same buffer
-			// might be visible in more than one LyXView.
-			if (lyx_view_ && lyx_view_->view()->buffer()) {
-				// save cursor Position for opened files to .lyx/session
-				LyX::ref().session().lastFilePos().save(FileName(lyx_view_->buffer()->fileName()),
-					boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
-			}
-			
-			// save the geometry of the current view 
-			lyx_view_->saveGeometry();
-			// quitting is triggered by the gui code (leaving the event loop)
-			theApp()->gui().closeAllViews();
+			// quitting is triggered by the gui code
+			// (leaving the event loop).
+			if (theBufferList().quitWriteAll())
+				theApp()->gui().closeAllViews();
 			break;
 
 		case LFUN_TOC_VIEW: {
@@ -1666,6 +1657,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_WINDOW_CLOSE:
 			BOOST_ASSERT(lyx_view_);
 			BOOST_ASSERT(theApp());
+			// ask the user for saving changes or cancel quit
+			if (!theBufferList().quitWriteAll())
+				break;
 			lyx_view_->close();
 			return;
 

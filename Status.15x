@@ -40,9 +40,6 @@ FILE
 
 * Non-ascii filenames do not work at all and result in an assertion or garbage.
 
-* open lyx, create a new document, enter a few chars, quit, click cancel, lyx
-  still quits.
-
 * Change Tools->Preferences->User interface->User interface to something like
   "kornel.default.ui"; save prefs; exit LyX; restart LyX; => crash; 
   in the preferences file, there is an entry \bind_file "/Something/kornel.default"
@@ -552,4 +549,8 @@ CREDITS:
   with mouse to change the focus: lyx crashes. (happens on Win XP SP2, 
   MSVC 2005 Prof., Scons) 
   FIXED (JSpitzm 2006-12-11)
+
+* open lyx, create a new document, enter a few chars, quit, click cancel, lyx
+  still quits.
+  FIXED (Enrico 2006-12-12)
 

@@ -156,7 +156,8 @@ unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
 
 
 GuiView::GuiView(int id)
-	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate)
+	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate),
+	  quitting_by_menu_(false)
 {
 	// Qt bug? signal lastWindowClosed does not work
 	setAttribute(Qt::WA_QuitOnClose, false);
@@ -186,7 +187,9 @@ GuiView::~GuiView()
 
 void GuiView::close()
 {
+	quitting_by_menu_ = true;
 	QMainWindow::close();
+	quitting_by_menu_ = false;
 }
 
 
@@ -240,13 +243,27 @@ void GuiView::macQuit()
 
 void GuiView::closeEvent(QCloseEvent * close_event)
 {
+	// we may have been called through the close window button
+	// which bypasses the LFUN machinery.
+	if (!quitting_by_menu_) {
+		if (!theBufferList().quitWriteAll()) {
+			close_event->ignore();
+			return;
+		}
+	}
+	if (view()->buffer()) {
+		// save cursor position for opened files to .lyx/session
+		LyX::ref().session().lastFilePos().save(
+			FileName(buffer()->fileName()),
+			boost::tie(view()->cursor().pit(),
+			view()->cursor().pos()));
+	}
 	theApp()->gui().unregisterView(id());	
 	if (theApp()->gui().viewIds().empty())
 	{
 		// this is the place where we leave the frontend.
 		// it is the only point at which we start quitting.
 		saveGeometry();
-		theBufferList().quitWriteAll();
 		close_event->accept();
 		// quit the event loop
 		qApp->quit();

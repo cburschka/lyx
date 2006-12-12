@@ -132,6 +132,9 @@ private:
 	/// command buffer
 	QCommandBuffer * commandbuffer_;
 
+	/// are we quitting by the menu?
+	bool quitting_by_menu_;
+
 	///
 	void updateFloatingGeometry();
 	///
