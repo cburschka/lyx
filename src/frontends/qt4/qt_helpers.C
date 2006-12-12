@@ -31,10 +31,7 @@
 
 namespace lyx {
 
-
-using lyx::support::isStrDbl;
-using lyx::char_type;
-using lyx::docstring;
+using support::isStrDbl;
 
 using std::vector;
 using std::make_pair;
@@ -111,36 +108,6 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 }
 
 
-#if QT_VERSION < 0x040200
-// We use QString::fromUcs4 in Qt 4.2 and higher
-QString const toqstr(docstring const & str)
-{
-	QString s;
-	int i = static_cast<int>(str.size()); 
-	s.resize(i);
-	for (; --i >= 0;)
-		s[i] = ucs4_to_qchar(str[i]);
-	return s;
-}
-#endif
-
-
-docstring const qstring_to_ucs4(QString const & qstr)
-{
-#if QT_VERSION >= 0x040200
-	QVector<uint> const ucs4 = qstr.toUcs4();
-	return docstring(ucs4.begin(), ucs4.end());
-#else
-	// This does not properly convert surrogate pairs
-	int const ls = qstr.size();
-	docstring ucs4;
-	for (int i = 0; i < ls; ++i)
-		ucs4 += static_cast<char_type>(qstr[i].unicode());
-	return ucs4;
-#endif
-}
-
-
 QString const qt_(char const * str, const char *)
 {
 	return toqstr(_(str));
@@ -150,12 +117,6 @@ QString const qt_(char const * str, const char *)
 QString const qt_(string const & str)
 {
 	return toqstr(_(str));
-}
-
-
-string const fromqstr(QString const & str)
-{
-	return str.isEmpty() ? string() : string(str.toUtf8());
 }
 
 

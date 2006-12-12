@@ -28,6 +28,14 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
 		CXXFLAGS="$CXXFLAGS $QT4_INCLUDES $QT4_LDFLAGS"
+		for libname in '-lQtCore -lQtCore4'
+		do
+			QT4_TRY_LINK($libname)
+			if test -n "$qt4_cv_libname"; then
+				QT4_CORE_LIB="$qt4_cv_libname"
+				break;
+			fi
+		done
 		for libname in '-lQtCore -lQtGui' \
 		               '-lQtCore4 -lQtGui4'
 		do
@@ -142,6 +150,15 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 	  PKG_CONFIG_PATH=$qt4_cv_dir/lib:$PKG_CONFIG_PATH
 	  export PKG_CONFIG_PATH
 	fi
+	PKG_CHECK_MODULES(QT4_CORE, QtCore)
+	if test "$pkg_failed" == "no" ; then
+		QT4_CORE_INCLUDES=$QT4_CORE_CFLAGS
+		AC_SUBST(QT4_CORE_INCLUDES)
+		QT4_CORE_LDFLAGS=`$PKG_CONFIG --libs-only-L QtCore`
+		AC_SUBST(QT4_CORE_LDFLAGS)
+		QT4_CORE_LIB=`$PKG_CONFIG --libs-only-l QtCore`
+		AC_SUBST(QT4_CORE_LIB)
+	fi
 	PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui)
 	if test "$pkg_failed" == "no" ; then
 		QT4_INCLUDES=$QT4_FRONTEND_CFLAGS
@@ -153,8 +170,6 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 		AC_SUBST(QT4_VERSION)
 		QT4_LIB=`$PKG_CONFIG --libs-only-l QtCore QtGui`
 		AC_SUBST(QT4_LIB)
-	else
-		QT4_DO_MANUAL_CONFIG
 	fi
 	PKG_CONFIG_PATH=$save_PKG_CONFIG_PATH
 ])
@@ -164,22 +179,29 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 	dnl flags for compilation
 	QT4_INCLUDES=
 	QT4_LDFLAGS=
+	QT4_CORE_INCLUDES=
+	QT4_CORE_LDFLAGS=
 	if test -n "$qt4_cv_includes"; then
 		QT4_INCLUDES="-I$qt4_cv_includes"
 		for i in Qt QtCore QtGui; do
 			QT4_INCLUDES="$QT4_INCLUDES -I$qt4_cv_includes/$i"
 		done
+		QT4_CORE_INCLUDES="-I$qt4_cv_includes -I$qt4_cv_includes/QtCore"
 	fi
 	if test -n "$qt4_cv_libraries"; then
 		QT4_LDFLAGS="-L$qt4_cv_libraries"
+		QT4_CORE_LDFLAGS="-L$qt4_cv_libraries"
 	fi
 	AC_SUBST(QT4_INCLUDES)
+	AC_SUBST(QT4_CORE_INCLUDES)
 	AC_SUBST(QT4_LDFLAGS)
+	AC_SUBST(QT4_CORE_LDFLAGS)
 
 	QT4_CHECK_COMPILE
 
 	QT4_LIB=$qt4_cv_libname;
 	AC_SUBST(QT4_LIB)
+	AC_SUBST(QT4_CORE_LIB)
 
 	if test -n "$qt4_cv_libname"; then
 		QT4_GET_VERSION

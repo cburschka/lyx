@@ -14,6 +14,9 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/qstring_helpers.h"
+
+#include <QFile>
 
 #include <boost/assert.hpp>
 
@@ -62,8 +65,8 @@ void FileName::erase()
 
 string const FileName::toFilesystemEncoding() const
 {
-	// FIXME UNICODE: correct encoding not implemented yet
-	return name_;
+	QByteArray const encoded = QFile::encodeName(toqstr(name_));
+	return string(encoded.begin(), encoded.end());
 }
 
 

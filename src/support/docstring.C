@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "docstring.h"
+#include "qstring_helpers.h"
 #include "unicode.h"
 
 #include <locale>
@@ -88,6 +89,30 @@ std::string const to_utf8(docstring const & ucs4)
 	std::vector<char> const utf8 =
 		ucs4_to_utf8(ucs4.data(), ucs4.size());
 	return std::string(utf8.begin(), utf8.end());
+}
+
+
+docstring const from_local8bit(std::string const & s)
+{
+	return qstring_to_ucs4(QString::fromLocal8Bit(s.data(), s.length()));
+}
+
+
+const char* to_local8bit_failure::what() const throw()
+{
+	return "A string could not be converted from unicode to the local 8 bit encoding.";
+}
+
+
+std::string const to_local8bit(docstring const & s)
+{
+	// This conversion can fail, depending on input.
+	if (s.empty())
+		return std::string();
+	QByteArray const local = toqstr(s).toLocal8Bit();
+	if (local.size() == 0)
+		throw to_local8bit_failure();
+	return std::string(local.begin(), local.end());
 }
 
 

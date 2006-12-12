@@ -332,8 +332,9 @@ int LyX::exec(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	easyParse(argc, argv);
 
-	support::init_package(argv[0], cl_system_support, cl_user_support,
-				   support::top_build_dir_is_one_level_up);
+	support::init_package(to_utf8(from_local8bit(argv[0])),
+	                      cl_system_support, cl_user_support,
+	                      support::top_build_dir_is_one_level_up);
 
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
@@ -481,7 +482,8 @@ int LyX::init(int & argc, char * argv[])
 	for (int argi = argc - 1; argi >= 1; --argi) {
 		// get absolute path of file and add ".lyx" to
 		// the filename if necessary
-		pimpl_->files_to_load_.push_back(fileSearch(string(), os::internal_path(argv[argi]), "lyx"));
+		pimpl_->files_to_load_.push_back(fileSearch(string(),
+			os::internal_path(to_utf8(from_local8bit(argv[argi]))), "lyx"));
 	}
 
 	if (first_start)
@@ -1333,8 +1335,8 @@ void LyX::easyParse(int & argc, char * argv[])
 		if (it == cmdmap.end())
 			continue;
 
-		string arg((i + 1 < argc) ? argv[i + 1] : "");
-		string arg2((i + 2 < argc) ? argv[i + 2] : "");
+		string const arg((i + 1 < argc) ? to_utf8(from_local8bit(argv[i + 1])) : string());
+		string const arg2((i + 2 < argc) ? to_utf8(from_local8bit(argv[i + 2])) : string());
 
 		int const remove = 1 + it->second(arg, arg2);
 

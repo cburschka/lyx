@@ -16,6 +16,7 @@
 #include "support/types.h"
 
 #include <string>
+#include <typeinfo>
 
 namespace lyx {
 
@@ -36,6 +37,24 @@ docstring const from_utf8(std::string const &);
 
 /// Creates a UTF8 string from a docstring. This should go eventually.
 std::string const to_utf8(docstring const &);
+
+/// convert \p s from the encoding of the locale to ucs4.
+docstring const from_local8bit(std::string const & s);
+
+/// Exception thrown by to_local8bit if the string could not be converted
+class to_local8bit_failure : public std::bad_cast {
+public:
+	to_local8bit_failure() throw() : std::bad_cast() {}
+	virtual ~to_local8bit_failure() throw() {}
+	virtual const char* what() const throw();
+};
+
+/**
+ * Convert \p s from ucs4 to the encoding of the locale.
+ * This may fail and throw an exception, the caller is expected to act
+ * appropriately.
+ */
+std::string const to_local8bit(docstring const & s);
 
 /// Compare a docstring with a C string of ASCII characters
 bool operator==(lyx::docstring const &, char const *);

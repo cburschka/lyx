@@ -117,6 +117,7 @@ src_support_header_files = Split('''
     os_win32.h
     package.h
     path.h
+    qstring_helpers.h
     socktools.h
     std_istream.h
     std_ostream.h
@@ -155,6 +156,7 @@ src_support_files = Split('''
     os.C
     package.C
     path.C
+    qstring_helpers.C
     rename.C
     socktools.C
     systemcall.C

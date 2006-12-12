@@ -335,7 +335,7 @@ void LyXDataSocket::writeln(string const & line)
 // Class CmdLineParser -------------------------------------------------------
 class CmdLineParser {
 public:
-	typedef int (*optfunc)(vector<char *> const & args);
+	typedef int (*optfunc)(vector<docstring> const & args);
 	std::map<string, optfunc> helper;
 	std::map<string, bool> isset;
 	bool parse(int, char * []);
@@ -347,12 +347,12 @@ bool CmdLineParser::parse(int argc, char * argv[])
 {
 	int opt = 1;
 	while (opt < argc) {
-		vector<char *> args;
+		vector<docstring> args;
 		if (helper[argv[opt]]) {
 			isset[argv[opt]] = true;
 			int arg = opt + 1;
 			while ((arg < argc) && (!helper[argv[arg]])) {
-				args.push_back(argv[arg]);
+				args.push_back(from_local8bit(argv[arg]));
 				++arg;
 			}
 			int taken = helper[argv[opt]](args);
@@ -407,16 +407,16 @@ void usage()
 }
 
 
-int h(vector<char *> const &)
+int h(vector<docstring> const &)
 {
 	usage();
 	exit(0);
 }
 
 
-string clientName(support::itoa(::getppid()) + ">" + support::itoa(::getpid()));
+docstring clientName(from_ascii(support::itoa(::getppid()) + ">" + support::itoa(::getpid())));
 
-int n(vector<char *> const & arg)
+int n(vector<docstring> const & arg)
 {
 	if (arg.size() < 1) {
 		cerr << "lyxclient: The option -n requires 1 argument."
@@ -428,10 +428,10 @@ int n(vector<char *> const & arg)
 }
 
 
-string singleCommand;
+docstring singleCommand;
 
 
-int c(vector<char *> const & arg)
+int c(vector<docstring> const & arg)
 {
 	if (arg.size() < 1) {
 		cerr << "lyxclient: The option -c requires 1 argument."
@@ -443,7 +443,7 @@ int c(vector<char *> const & arg)
 }
 
 
-int g(vector<char *> const & arg)
+int g(vector<docstring> const & arg)
 {
 	if (arg.size() < 2) {
 		cerr << "lyxclient: The option -g requires 2 arguments."
@@ -451,17 +451,17 @@ int g(vector<char *> const & arg)
 		return -1;
 	}
 	singleCommand = "LYXCMD:server-goto-file-row "
-		+ string(arg[0]) + ' '
-		+ string(arg[1]);
+		+ arg[0] + ' '
+		+ arg[1];
 	return 2;
 }
 
 
-// 0 if LYXSOCKET is not set in the environment
-char * serverAddress = getenv("LYXSOCKET");
+// empty if LYXSOCKET is not set in the environment
+docstring serverAddress;
 
 
-int a(vector<char *> const & arg)
+int a(vector<docstring> const & arg)
 {
 	if (arg.size() < 1) {
 		cerr << "lyxclient: The option -a requires 1 argument."
@@ -474,10 +474,10 @@ int a(vector<char *> const & arg)
 }
 
 
-string mainTmp("/tmp");
+docstring mainTmp(from_ascii("/tmp"));
 
 
-int t(vector<char *> const & arg)
+int t(vector<docstring> const & arg)
 {
 	if (arg.size() < 1) {
 		cerr << "lyxclient: The option -t requires 1 argument."
@@ -492,14 +492,14 @@ int t(vector<char *> const & arg)
 string serverPid; // Init to empty string
 
 
-int p(vector<char *> const & arg)
+int p(vector<docstring> const & arg)
 {
 	if (arg.size() < 1) {
 		cerr << "lyxclient: The option -p requires 1 argument."
 		     << endl;
 		return -1;
 	}
-	serverPid = arg[0];
+	serverPid = to_ascii(arg[0]);
 	return 1;
 }
 
@@ -513,6 +513,10 @@ int main(int argc, char * argv[])
 {
 	using namespace lyx;
 	lyxerr.rdbuf(cerr.rdbuf());
+
+	char const * const lyxsocket = getenv("LYXSOCKET");
+	if (lyxsocket)
+		cmdline::serverAddress = from_local8bit(lyxsocket);
 
 	CmdLineParser args;
 	args.helper["-h"] = cmdline::h;
@@ -533,17 +537,17 @@ int main(int argc, char * argv[])
 
 	scoped_ptr<LyXDataSocket> server;
 
-	if (cmdline::serverAddress) {
-		server.reset(new LyXDataSocket(cmdline::serverAddress));
+	if (!cmdline::serverAddress.empty()) {
+		server.reset(new LyXDataSocket(to_utf8(cmdline::serverAddress)));
 		if (!server->connected()) {
 			cerr << "lyxclient: " << "Could not connect to "
-			     << cmdline::serverAddress << endl;
+			     << to_utf8(cmdline::serverAddress) << endl;
 			return EXIT_FAILURE;
 		}
 	} else {
 		// We have to look for an address.
 		// serverPid can be empty.
-		vector<fs::path> addrs = support::lyxSockets(cmdline::mainTmp, cmdline::serverPid);
+		vector<fs::path> addrs = support::lyxSockets(to_utf8(cmdline::mainTmp), cmdline::serverPid);
 		vector<fs::path>::const_iterator addr = addrs.begin();
 		vector<fs::path>::const_iterator end = addrs.end();
 		for (; addr != end; ++addr) {
@@ -570,7 +574,7 @@ int main(int argc, char * argv[])
 	string answer;
 
 	// Send greeting
-	server->writeln("HELLO:" + cmdline::clientName);
+	server->writeln("HELLO:" + to_utf8(cmdline::clientName));
 	// wait at most 2 seconds until server responds
 	iowatch.wait(2.0);
 	if (iowatch.isset(serverfd) && server->readln(answer)) {
@@ -585,7 +589,7 @@ int main(int argc, char * argv[])
 	}
 
 	if (args.isset["-g"] || args.isset["-c"]) {
-		server->writeln(cmdline::singleCommand);
+		server->writeln(to_utf8(cmdline::singleCommand));
 		iowatch.wait(2.0);
 		if (iowatch.isset(serverfd) && server->readln(answer)) {
 			cout << answer;

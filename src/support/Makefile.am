@@ -9,11 +9,13 @@ EXTRA_DIST = package.C.in pch.h \
 
 noinst_LTLIBRARIES = libsupport.la
 
-libsupport_la_LIBADD = $(LIBSHLWAPI)
+libsupport_la_LIBADD = $(LIBSHLWAPI) $(QT4_CORE_LIB)
+libsupport_la_LDFLAGS = $(QT4_CORE_LDFLAGS)
 
 BUILT_SOURCES = $(PCH_FILE) package.C
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
 
 libsupport_la_SOURCES = \
 	FileMonitor.h \
@@ -67,6 +69,8 @@ libsupport_la_SOURCES = \
 	path.h \
 	package.C \
 	package.h \
+	qstring_helpers.C \
+	qstring_helpers.h \
 	rename.C \
 	socktools.C \
 	socktools.h \
