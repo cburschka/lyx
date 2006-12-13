@@ -1300,6 +1300,7 @@ if frontend == 'qt4':
         else:
             qt_lib_suffix = ''
     frontend_libs = [x + qt_lib_suffix for x in qt_libs]
+    qtcore_lib = ['QtCore' + qt_lib_suffix]
 
 
 if env['ICONV_LIB'] is None:
@@ -1624,7 +1625,8 @@ if build_support:
 
     support = env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
-        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files]
+        source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files],
+        CPPPATH = ['$CPPPATH', qt_inc_path]
     )
     Alias('support', support)
 
@@ -1700,8 +1702,6 @@ if build_controllers:
 if build_qt4:
     env.BuildDir('$BUILDDIR/$frontend', '$TOP_SRCDIR/src/frontend/$frontend', duplicate = 0)
 
-
-if build_qt4:
     print "Processing files in src/frontends/qt4..."
 
     qt4env = env.Copy()
@@ -1771,7 +1771,7 @@ if build_client:
         client = env.Program(
             target = '$BUILDDIR/common/client/lyxclient',
             LIBS = ['support'] + intl_libs + system_libs +
-                socket_libs + boost_libraries,
+                socket_libs + boost_libraries + qtcore_lib,
             source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files]
         )
         Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
@@ -1805,7 +1805,7 @@ if build_tex2lyx:
 
     tex2lyx = tex2lyx_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
-        LIBS = ['support'] + boost_libraries + intl_libs + system_libs,
+        LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
         source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files]
     )
     Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
