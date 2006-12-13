@@ -59,10 +59,7 @@ public:
 	virtual size_t getUCSEncoded() const;
 
 	/// Return a human-readable version of a key+modifier pair.
-	virtual std::string const print(key_modifier::state mod) const;
-
-	///
-	QString const qprint(key_modifier::state mod) const;
+	virtual docstring const print(key_modifier::state mod) const;
 
 	///
 	int key() const {

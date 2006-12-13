@@ -55,7 +55,7 @@ string const kb_keymap::printKeySym(LyXKeySym const & key,
 }
 
 
-string const kb_keymap::printKey(kb_key const & key) const
+docstring const kb_keymap::printKey(kb_key const & key) const
 {
 	return key.code->print(key.mod.first);
 }
@@ -220,9 +220,9 @@ kb_keymap::lookup(LyXKeySymPtr key,
 }
 
 
-string const kb_keymap::print() const
+docstring const kb_keymap::print() const
 {
-	string buf;
+	docstring buf;
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
 		buf += printKey((*cit));
@@ -252,7 +252,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 			if (r + 1 == seq->length()) {
 				lyxerr[Debug::KBMAP]
 					<< "Warning: New binding for '"
-					<< seq->print()
+					<< to_utf8(seq->print())
 					<< "' is overriding old binding..."
 					<< endl;
 				if (it->table.get()) {
@@ -262,7 +262,8 @@ void kb_keymap::defkey(kb_sequence * seq,
 				it->func.origin = FuncRequest::KEYBOARD;
 				return;
 			} else if (!it->table.get()) {
-				lyxerr << "Error: New binding for '" << seq->print()
+				lyxerr << "Error: New binding for '" 
+				       << to_utf8(seq->print())
 				       << "' is overriding old binding..."
 					       << endl;
 				return;
@@ -289,9 +290,9 @@ void kb_keymap::defkey(kb_sequence * seq,
 }
 
 
-string const kb_keymap::printbindings(FuncRequest const & func) const
+docstring const kb_keymap::printbindings(FuncRequest const & func) const
 {
-	std::ostringstream res;
+	odocstringstream res;
 	Bindings bindings = findbindings(func);
 	for (Bindings::const_iterator cit = bindings.begin();
 	     cit != bindings.end() ; ++cit)

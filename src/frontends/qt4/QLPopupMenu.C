@@ -27,11 +27,6 @@
 #include "debug.h"
 
 
-#ifdef Q_WS_MACX
-#include "kbmap.h"
-#include "QLyXKeySym.h"
-#endif
-
 using std::make_pair;
 using std::string;
 using std::pair;
@@ -146,31 +141,10 @@ docstring const QLPopupMenu::getLabel(MenuItem const & mi)
 /// \todo Mac specific binding handling.
 void QLPopupMenu::addBinding(docstring & label, MenuItem const & mi)
 {
-#ifndef Q_WS_MACX
-
-		docstring const binding(mi.binding());
-		if (!binding.empty()) {
-			label += char_type('\t') + binding;
-		}
-
-#else
-			/* There are two constraints on Qt/Mac: (1)
-			   the bindings require a unicode string to be
-			   represented meaningfully and std::string
-			   does not work (2) only 1-key bindings can
-			   be represented in menus.
-
-			   This is why the unpleasant hack bellow is
-			   needed (JMarc)
-			*/
-/*			pair<LyXKeySym const *, key_modifier::state>
-				binding = toplevel_keymap->find1keybinding(mi.func());
-			if (binding.first) {
-				QLyXKeySym const *key = static_cast<QLyXKeySym const *>(binding.first);
-				label += '\t' + key->qprint(binding.second);
-			}
-*/
-#endif
+	docstring const binding(mi.binding());
+	if (!binding.empty()) {
+		label += '\t' + binding;
+	}
 }
 
 /// \todo Fix Mac specific menu hack

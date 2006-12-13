@@ -211,7 +211,7 @@ size_t QLyXKeySym::getUCSEncoded() const
 }
 
 
-QString const QLyXKeySym::qprint(key_modifier::state mod) const
+docstring const QLyXKeySym::print(key_modifier::state mod) const
 {
 	int tmpkey = key_;
 
@@ -222,13 +222,7 @@ QString const QLyXKeySym::qprint(key_modifier::state mod) const
 	if (mod & key_modifier::alt)
 		tmpkey += Qt::ALT;
 
-	return QKeySequence(tmpkey).toString();
-}
-
-
-string const QLyXKeySym::print(key_modifier::state mod) const
-{
-	return fromqstr(qprint(mod));
+	return qstring_to_ucs4(QKeySequence(tmpkey).toString());
 }
 
 

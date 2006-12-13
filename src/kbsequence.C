@@ -130,9 +130,9 @@ string::size_type kb_sequence::parse(string const & s)
 }
 
 
-string const kb_sequence::print() const
+docstring const kb_sequence::print() const
 {
-	string buf;
+	docstring buf;
 
 	//if (deleted_)
 	//	return buf;
@@ -151,16 +151,16 @@ string const kb_sequence::print() const
 }
 
 
-string const kb_sequence::printOptions() const
+docstring const kb_sequence::printOptions() const
 {
-	string buf;
+	docstring buf;
 
 	buf += print();
 
 	if (!curmap)
 		return buf;
 
-	buf += to_utf8(_("   options: "));
+	buf += _("   options: ");
 	buf += curmap->print();
 	return buf;
 }

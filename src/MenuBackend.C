@@ -144,7 +144,7 @@ docstring const MenuItem::binding() const
 	kb_keymap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
 
 	if (bindings.size()) {
-		return from_utf8(bindings.begin()->print());
+		return bindings.begin()->print();
 	} else {
 		lyxerr[Debug::KBMAP]
 			<< "No binding for "

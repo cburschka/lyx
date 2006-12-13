@@ -293,7 +293,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		lyxerr << BOOST_CURRENT_FUNCTION
 		       << " Key [action="
 		       << func.action << "]["
-		       << keyseq->print() << ']'
+		       << to_utf8(keyseq->print()) << ']'
 		       << endl;
 	}
 
@@ -302,7 +302,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// num_bytes == 0? (Lgb)
 
 	if (keyseq->length() > 1) {
-		lyx_view_->message(from_utf8(keyseq->print()));
+		lyx_view_->message(keyseq->print());
 	}
 
 
@@ -786,7 +786,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_COMMAND_PREFIX:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->message(from_utf8(keyseq->printOptions()));
+			lyx_view_->message(keyseq->printOptions());
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
@@ -807,7 +807,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_META_PREFIX:
 			meta_fake_bit = key_modifier::alt;
-			setMessage(from_utf8(keyseq->print()));
+			setMessage(keyseq->print());
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -1167,7 +1167,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = from_utf8(keyseq->print());
+			dispatch_buffer = keyseq->print();
 			theLyXServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
 
@@ -1763,7 +1763,7 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 		}
 	}
 
-	string const shortcuts = theTopLevelKeymap().printbindings(cmd);
+	string const shortcuts = to_utf8(theTopLevelKeymap().printbindings(cmd));
 
 	if (!shortcuts.empty())
 		comname += ": " + shortcuts;
@@ -2028,12 +2028,12 @@ string const LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey())
-		return keyseq->print() + "M-";
+		return to_utf8(keyseq->print() + "M-");
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
 	if (keyseq->length() > 0 && !keyseq->deleted())
-		return keyseq->printOptions();
+		return to_utf8(keyseq->printOptions());
 
 	if (!view()->buffer())
 		return to_utf8(_("Welcome to LyX!"));

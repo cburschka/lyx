@@ -19,6 +19,8 @@
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
 
+#include "support/docstream.h"
+
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
@@ -44,7 +46,7 @@ public:
 	bool read(std::string const & bind_file);
 
 	/// print all available keysyms
-	std::string const print() const;
+	docstring const print() const;
 
 	/**
 	 * Look up a key press in the keymap.
@@ -64,7 +66,7 @@ public:
 	Bindings findbindings(FuncRequest const & func) const;
 
 	/// Given an action, print the keybindings.
-	std::string const printbindings(FuncRequest const & func) const;
+	docstring const printbindings(FuncRequest const & func) const;
 
 	/**
 	 *  Given an action, find the first 1-key binding (if it exists).
@@ -109,7 +111,7 @@ private:
 		    unsigned int r = 0);
 
 	///  Returns a string of the given key
-	std::string const printKey(kb_key const & key) const;
+	docstring const printKey(kb_key const & key) const;
 
 	/**
 	 * Given an action, find all keybindings

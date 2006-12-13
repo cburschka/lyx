@@ -65,13 +65,13 @@ public:
 	 * Return the current sequence as a string.
 	 * @see parse()
 	 */
-	std::string const print() const;
+	docstring const print() const;
 
 	/**
 	 * Return the current sequence and available options as
 	 * a string. No options are added if no curmap kb map exists.
 	 */
-	std::string const printOptions() const;
+	docstring const printOptions() const;
 
 	/// Mark the sequence as deleted.
 	void mark_deleted();
