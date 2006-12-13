@@ -1626,7 +1626,7 @@ if build_support:
     support = env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
         source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files],
-        CPPPATH = ['$CPPPATH', qt_inc_path]
+        CPPPATH = ['$CPPPATH', qt_inc_path, os.path.join(qt_inc_path, 'QtCore')]
     )
     Alias('support', support)
 
