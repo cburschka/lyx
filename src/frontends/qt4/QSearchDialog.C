@@ -52,7 +52,7 @@ QSearchDialog::QSearchDialog(QSearch * form)
     connect( findPB, SIGNAL( clicked() ), this, SLOT( findClicked() ) );
     connect( replacePB, SIGNAL( clicked() ), this, SLOT( replaceClicked() ) );
     connect( replaceallPB, SIGNAL( clicked() ), this, SLOT( replaceallClicked() ) );
-    connect( findCO, SIGNAL( textChanged(const QString&) ), this, SLOT( findChanged() ) );
+    connect( findCO, SIGNAL( editTextChanged(const QString&) ), this, SLOT( findChanged() ) );
 }
 
 
