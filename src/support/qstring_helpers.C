@@ -13,7 +13,7 @@
 
 #include "qstring_helpers.h"
 
-#include <QVector>
+#include <QtCore/QVector>
 
 
 namespace lyx {
