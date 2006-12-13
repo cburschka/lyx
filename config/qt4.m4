@@ -28,7 +28,7 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
 		CXXFLAGS="$CXXFLAGS $QT4_INCLUDES $QT4_LDFLAGS"
-		for libname in '-lQtCore -lQtCore4'
+		for libname in -lQtCore -lQtCore4
 		do
 			QT4_TRY_LINK($libname)
 			if test -n "$qt4_cv_libname"; then
@@ -36,6 +36,7 @@ AC_DEFUN([QT4_CHECK_COMPILE],
 				break;
 			fi
 		done
+		qt4_cv_libname=
 		for libname in '-lQtCore -lQtGui' \
 		               '-lQtCore4 -lQtGui4'
 		do
@@ -150,7 +151,7 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 	  PKG_CONFIG_PATH=$qt4_cv_dir/lib:$PKG_CONFIG_PATH
 	  export PKG_CONFIG_PATH
 	fi
-	PKG_CHECK_MODULES(QT4_CORE, QtCore)
+	PKG_CHECK_MODULES(QT4_CORE, QtCore,,[:])
 	if test "$pkg_failed" == "no" ; then
 		QT4_CORE_INCLUDES=$QT4_CORE_CFLAGS
 		AC_SUBST(QT4_CORE_INCLUDES)
@@ -159,7 +160,7 @@ AC_DEFUN([QT4_DO_PKG_CONFIG],
 		QT4_CORE_LIB=`$PKG_CONFIG --libs-only-l QtCore`
 		AC_SUBST(QT4_CORE_LIB)
 	fi
-	PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui)
+	PKG_CHECK_MODULES(QT4_FRONTEND, QtCore QtGui,,[:])
 	if test "$pkg_failed" == "no" ; then
 		QT4_INCLUDES=$QT4_FRONTEND_CFLAGS
 		dnl QT4_LDFLAGS=$QT4_FRONTEND_LIBS
