@@ -14,8 +14,8 @@
 
 #include "support/docstring.h"
 
-#include <QtCore/QChar>
-#include <QtCore/QString>
+#include <QChar>
+#include <QString>
 
 #include <boost/assert.hpp>
 

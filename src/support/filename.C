@@ -16,7 +16,7 @@
 #include "support/os.h"
 #include "support/qstring_helpers.h"
 
-#include <QtCore/QFile>
+#include <QFile>
 
 #include <boost/assert.hpp>
 
