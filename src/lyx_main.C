@@ -110,6 +110,9 @@ bool use_gui = true;
 
 namespace {
 
+/// Don't try to remove the temporary directory if it has not been created
+bool remove_tmpdir = false;
+
 // Filled with the command line arguments "foo" of "-sysdir foo" or
 // "-userdir foo".
 string cl_system_support;
@@ -373,17 +376,6 @@ int LyX::exec(int & argc, char * argv[])
 
 	initGuiFont();
 
-	// FIXME
-	/* Create a CoreApplication class that will provide the main event loop
-	* and the socket callback registering. With Qt4, only QtCore
-	* library would be needed.
-	* When this is done, a server_mode could be created and the following two
-	* line would be moved out from here.
-	*/
-	pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
-	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
-		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
-
 	// Parse and remove all known arguments in the LyX singleton
 	// Give an error for all remaining ones.
 	int exit_status = init(argc, argv);
@@ -394,6 +386,19 @@ int LyX::exec(int & argc, char * argv[])
 		prepareExit();
 		return exit_status;
 	}
+
+	// FIXME
+	/* Create a CoreApplication class that will provide the main event loop
+	* and the socket callback registering. With Qt4, only QtCore
+	* library would be needed.
+	* When this is done, a server_mode could be created and the following two
+	* line would be moved out from here.
+	*/
+	// Note: socket callback must be registered after init(argc, argv)
+	// such that package().temp_dir() is properly initialized.
+	pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
+	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
+		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
 
 	// Start the real execution loop.
 	exit_status = pimpl_->application_->exec();
@@ -417,21 +422,16 @@ void LyX::prepareExit()
 	pimpl_->buffer_list_.closeAll();
 
 	// do any other cleanup procedures now
-	lyxerr[Debug::INFO] << "Deleting tmp dir " << package().temp_dir() << endl;
+	if (remove_tmpdir) {
+		lyxerr[Debug::INFO] << "Deleting tmp dir "
+				    << package().temp_dir() << endl;
 
-	// Prevent the deletion of /tmp if LyX was called with invalid
-	// arguments. Does not work on windows.
-	// FIXME: Fix the real bug instead.
-	if (package().temp_dir() == "/tmp") {
-		lyxerr << "Not deleting /tmp." << endl;
-		return;
-	}
-
-	if (!destroyDir(FileName(package().temp_dir()))) {
-		docstring const msg =
-			bformat(_("Unable to remove the temporary directory %1$s"),
-			from_utf8(package().temp_dir()));
-		Alert::warning(_("Unable to remove temporary directory"), msg);
+		if (!destroyDir(FileName(package().temp_dir()))) {
+			docstring const msg =
+				bformat(_("Unable to remove the temporary directory %1$s"),
+				from_utf8(package().temp_dir()));
+			Alert::warning(_("Unable to remove temporary directory"), msg);
+		}
 	}
 
 	if (use_gui) {
@@ -857,6 +857,7 @@ bool LyX::init()
 		// trying again but simply exit.
 		return false;
 	}
+	remove_tmpdir = true;
 
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
