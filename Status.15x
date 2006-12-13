@@ -53,7 +53,6 @@ FILE
   Setting the default extension here to something invalid, is a hack, but works.
   (Invalid may be e.g. "*")
 
-  
 
 SPELL CHECKING (Joost 4/11/06)
 
@@ -175,6 +174,9 @@ MENUS
 
 
 EDITING
+
+* Create a document with an empty table; mark the whole table; insert a minipage 
+   in order to have the table inside a minipage => crash
 
 * Create a new document; enter a few chars; press return; from the 
   environments combo box on the top left corner select anything, e.g., 'Part'; 
