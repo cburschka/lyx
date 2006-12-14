@@ -577,3 +577,8 @@ CREDITS:
 * LyX tries to delete /tmp if it is called with invalid arguments
   FIXED (Enrico 2006-12-13)
 
+* Start lyx, open a document, scroll down, open a new window, move 
+  the cursor back, lyx crashes because par::rows() is cleared when the
+  new window is created.
+  FIXED (Bo 2006-12-13)
+

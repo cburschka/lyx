@@ -999,6 +999,12 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 	}
 	pit_type pit = getPitNearY(cur.bv(), y);
 	BOOST_ASSERT(pit != -1);
+	// When another window is opened with the same document, rows()
+	// will be cleared so pars_[pit].rows() might be empty when switching
+	// between windwos. A better solution is that each buffer view
+	// has its own rows() for the same buffer.
+	if (pars_[pit].rows().empty())
+		redoParagraph(cur.bv(), pit);
 	Row const & row = getRowNearY(cur.bv(), y, pit);
 	bool bound = false;
 
