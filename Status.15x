@@ -144,6 +144,12 @@ MULTIPLE WINDOWS / DOCUMENTS
   2) the easy way: disable the cursor on focus out event and re-enable it at
   focus in event and jump the saved position (at focus out).
 
+* (The same problem?) Start lyx, open a doc, open another window for the same
+  document. Now, from window A, click at paragraph X, scroll down to paragraph Y,
+  switch to window B, click, switch back to window A. When mouse moves, editXY()
+  finds the correct pit for paragraph Y, when click, editXY() finds paragraph X
+  and scroll back to it. (Bo, 12/14/2006)
+  
 
 TOOLBARS & MINIBUFFER
 
