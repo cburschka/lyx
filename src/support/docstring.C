@@ -457,6 +457,44 @@ protected:
 
 		return oit;
 	}
+
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, unsigned long v) const
+	{
+		if (fill >= 0x80)
+			throw num_put_failure();
+
+		std::string s;
+		// 64 is large enough
+		s.resize(64);
+		string_num_put_facet f;
+		std::string::const_iterator cit = s.begin();
+		std::string::const_iterator end =
+			f.put(s.begin(), b, fill, v);
+		for (; cit != end; ++cit, ++oit)
+			*oit = *cit;
+
+		return oit;
+	}
+
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, double v) const
+	{
+		if (fill >= 0x80)
+			throw num_put_failure();
+
+		std::string s;
+		// 64 is large enough
+		s.resize(64);
+		string_num_put_facet f;
+		std::string::const_iterator cit = s.begin();
+		std::string::const_iterator end =
+			f.put(s.begin(), b, fill, v);
+		for (; cit != end; ++cit, ++oit)
+			*oit = *cit;
+
+		return oit;
+	}
 };
 
 
