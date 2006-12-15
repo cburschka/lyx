@@ -440,52 +440,65 @@ public:
 
 protected:
 	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, bool v) const
+	{
+		return do_put_helper(oit, b, fill, v);
+	}
+
+	iter_type
 	do_put(iter_type oit, std::ios_base & b, char_type fill, long v) const
 	{
-		if (fill >= 0x80)
-			throw num_put_failure();
-
-		std::string s;
-		// 64 is large enough
-		s.resize(64);
-		string_num_put_facet f;
-		std::string::const_iterator cit = s.begin();
-		std::string::const_iterator end =
-			f.put(s.begin(), b, fill, v);
-		for (; cit != end; ++cit, ++oit)
-			*oit = *cit;
-
-		return oit;
+		return do_put_helper(oit, b, fill, v);
 	}
 
 	iter_type
 	do_put(iter_type oit, std::ios_base & b, char_type fill, unsigned long v) const
 	{
-		if (fill >= 0x80)
-			throw num_put_failure();
-
-		std::string s;
-		// 64 is large enough
-		s.resize(64);
-		string_num_put_facet f;
-		std::string::const_iterator cit = s.begin();
-		std::string::const_iterator end =
-			f.put(s.begin(), b, fill, v);
-		for (; cit != end; ++cit, ++oit)
-			*oit = *cit;
-
-		return oit;
+		return do_put_helper(oit, b, fill, v);
 	}
+
+#ifdef _GLIBCXX_USE_LONG_LONG
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, long long v) const
+	{
+		return do_put_helper(oit, b, fill, v);
+	}
+
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, unsigned long long v) const
+	{
+		return do_put_helper(oit, b, fill, v);
+	}
+#endif
 
 	iter_type
 	do_put(iter_type oit, std::ios_base & b, char_type fill, double v) const
 	{
+		return do_put_helper(oit, b, fill, v);
+	}
+
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, long double v) const
+	{
+		return do_put_helper(oit, b, fill, v);
+	}
+
+	iter_type
+	do_put(iter_type oit, std::ios_base & b, char_type fill, void const * v) const
+	{
+		return do_put_helper(oit, b, fill, v);
+	}
+
+private:
+	template <typename ValueType>
+	iter_type
+	do_put_helper(iter_type oit, std::ios_base & b, char_type fill, ValueType v) const
+	{
 		if (fill >= 0x80)
 			throw num_put_failure();
 
-		std::string s;
 		// 64 is large enough
-		s.resize(64);
+		std::string s(64, '\0');
 		string_num_put_facet f;
 		std::string::const_iterator cit = s.begin();
 		std::string::const_iterator end =
