@@ -42,9 +42,15 @@ if os.path.isfile('SConstruct'):
     top_src_dir = '../..'
     scons_dir = '.'
 # called as 'scons -f development/scons/SConstruct'
-else:
+elif os.path.isfile('configure.ac'):
     top_src_dir = '.'
     scons_dir = 'development/scons'
+else:
+    print "scons can only be called from top source directory, with command:"
+    print "   $ scons -f development/scons/SConstruct [other options]"
+    print "or from development/scons, with command:"
+    print "   $ scons [options]"
+    Exit(1)
 
 
 #----------------------------------------------------------
