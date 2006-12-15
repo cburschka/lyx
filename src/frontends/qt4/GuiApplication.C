@@ -58,7 +58,7 @@ using std::endl;
 extern void initEncodings();
 
 ///////////////////////////////////////////////////////////////
-// You can find other X11 and MACX specific stuff
+// You can find other X11 specific stuff
 // at the end of this file...
 ///////////////////////////////////////////////////////////////
 
@@ -124,23 +124,6 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 			<< "Could not find  Qt translations for locale "
 			<< fromqstr(language_name) << std::endl;
 
-/*#ifdef Q_WS_MACX
-	// These translations are meant to break Qt/Mac menu merging
-	// algorithm on some entries. It lists the menu names that
-	// should not be moved to the LyX menu
-	QTranslator aqua_trans(0);
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0,
-					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0,
-					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Options", 0,
-					     "do_not_merge_me"));
-	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0,
-					     "do_not_merge_me"));
-
-	qApp->installTranslator(&aqua_trans);
-#endif
-*/
 	using namespace lyx::graphics;
 
 	Image::newImage = boost::bind(&QLImage::newImage);
