@@ -343,16 +343,6 @@ WONT FIX (for 1.5.0)
   TocBackend update at each keystroke. Unless we manage to update a specific
   TocItem, this will be a WONTFIX for 1.5.0.
 
-* Start lyx, open a doc, open another window for the same
-  document. Now, from window A, click at paragraph X, scroll down to paragraph Y,
-  switch to window B, click, switch back to window A. When mouse moves, editXY()
-  finds the correct pit for paragraph Y, when click, editXY() finds paragraph X
-  and scroll back to it. (Bo, 12/14/2006)
-  Bo 2006-12-14: a resize is needed when switching between windows due to the 
-  shared rows() structure. This triggers a full update and fit the screen to
-  text cursor. A proper fix is not possible without the separation of rows()
-  from buffer.
-
   
 **********************************************************************
 
@@ -583,4 +573,11 @@ CREDITS:
   the cursor back, lyx crashes because par::rows() is cleared when the
   new window is created.
   FIXED (Bo 2006-12-13)
+
+* Start lyx, open a doc, open another window for the same
+  document. Now, from window A, click at paragraph X, scroll down to paragraph Y,
+  switch to window B, click, switch back to window A. When mouse moves, editXY()
+  finds the correct pit for paragraph Y, when click, editXY() finds paragraph X
+  and scroll back to it. (Bo, 12/14/2006)
+  FIXED (Abdel 2006-12-15)
 
