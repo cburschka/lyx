@@ -373,8 +373,8 @@ struct local_uppercase {
 	}
 };
 
-struct local_ascii_lowercase {
-	char operator()(char c) const {
+template<typename Char> struct local_ascii_lowercase {
+	Char operator()(Char c) const {
 		return ascii_tolower(c);
 	}
 };
@@ -409,7 +409,16 @@ string const ascii_lowercase(string const & a)
 {
 	string tmp(a);
 	transform(tmp.begin(), tmp.end(), tmp.begin(),
-		  local_ascii_lowercase());
+		  local_ascii_lowercase<char>());
+	return tmp;
+}
+
+
+docstring const ascii_lowercase(docstring const & a)
+{
+	docstring tmp(a);
+	transform(tmp.begin(), tmp.end(), tmp.begin(),
+		  local_ascii_lowercase<char_type>());
 	return tmp;
 }
 

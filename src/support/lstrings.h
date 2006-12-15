@@ -89,6 +89,7 @@ char_type uppercase(char_type c);
 
 /// same as lowercase(), but ignores locale
 std::string const ascii_lowercase(std::string const &);
+docstring const ascii_lowercase(docstring const &);
 
 ///
 std::string const lowercase(std::string const &);

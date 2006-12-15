@@ -26,8 +26,6 @@ using std::string;
 
 namespace {
 
-char const * utf8_codeset = "UTF-8";
-
 // We use C IO throughout this file, because the facets might be used with
 // lyxerr in the future.
 
@@ -199,20 +197,21 @@ const char * iconv_codecvt_facet_exception::what() const throw()
 }
 
 
-idocfstream::idocfstream() : base()
+idocfstream::idocfstream(string const & encoding) : base()
 {
 	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(utf8_codeset, in));
+	std::locale locale(global, new iconv_codecvt_facet(encoding, in));
 	imbue(locale);
 }
 
 	
-idocfstream::idocfstream(const char* s, std::ios_base::openmode mode)
+idocfstream::idocfstream(const char* s, std::ios_base::openmode mode,
+                         string const & encoding)
 	: base()
 {
 	// We must imbue the stream before openening the file
 	std::locale global;
-	std::locale locale(global, new iconv_codecvt_facet(utf8_codeset, in));
+	std::locale locale(global, new iconv_codecvt_facet(encoding, in));
 	imbue(locale);
 	open(s, mode);
 }

@@ -16,6 +16,7 @@
 #include "bufferparams.h"
 #include "dispatchresult.h"
 #include "debug.h"
+#include "encoding.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
@@ -31,9 +32,6 @@
 #include "support/path.h"
 
 #include <boost/tokenizer.hpp>
-
-#include <fstream>
-#include <sstream>
 
 
 namespace lyx {
@@ -66,7 +64,6 @@ namespace os = support::os;
 using std::endl;
 using std::getline;
 using std::string;
-using std::ifstream;
 using std::ostream;
 using std::pair;
 using std::vector;
@@ -342,26 +339,36 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// files. All it does is to look for lines starting
 		// in @ and not being @preamble and @string entries.
 		// It does NOT do any syntax checking!
-		ifstream ifs(it->toFilesystemEncoding().c_str());
-		string linebuf0;
+
+		// Officially bibtex does only support ASCII, but in practice
+		// you can use the encoding of the main document as long as
+		// some elements like keys and names are pure ASCII. Therefore
+		// we convert the file from the buffer encoding.
+		idocfstream ifs(it->toFilesystemEncoding().c_str(),
+		                std::ios_base::in,
+		                buffer.params().encoding().iconvName());
+		docstring linebuf0;
 		while (getline(ifs, linebuf0)) {
-			string linebuf = trim(linebuf0);
+			docstring linebuf = trim(linebuf0);
 			if (linebuf.empty()) continue;
-			if (prefixIs(linebuf, "@")) {
+			if (prefixIs(linebuf, from_ascii("@"))) {
 				linebuf = subst(linebuf, '{', '(');
-				string tmp;
+				docstring tmp;
 				linebuf = split(linebuf, tmp, '(');
 				tmp = ascii_lowercase(tmp);
-				if (!prefixIs(tmp, "@string")
-				    && !prefixIs(tmp, "@preamble")) {
+				if (!prefixIs(tmp, from_ascii("@string")) &&
+				    !prefixIs(tmp, from_ascii("@preamble"))) {
 					linebuf = split(linebuf, tmp, ',');
 					tmp = ltrim(tmp, " \t");
 					if (!tmp.empty()) {
-						keys.push_back(pair<string,string>(tmp,string()));
+						// to_ascii because bibtex keys may
+						// only consist of ASCII characters
+						keys.push_back(pair<string, string>(to_ascii(tmp), string()));
 					}
 				}
 			} else if (!keys.empty()) {
-				keys.back().second += linebuf + "\n";
+				// FIXME UNICODE
+				keys.back().second += to_utf8(linebuf + '\n');
 			}
 		}
 	}
