@@ -1013,9 +1013,10 @@ void BufferView::clearSelection()
 
 void BufferView::workAreaResize(int width, int height)
 {
-	bool const widthChange = width != width_;
-	bool const heightChange = height != height_;
-
+	// A resize is triggered whenever a window gets focus,
+	// because of the shared rows() of a buffer in multiple
+	// buffer views.
+	
 	// Update from work area
 	width_ = width;
 	height_ = height;
