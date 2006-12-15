@@ -125,7 +125,7 @@ BufferView::BufferView()
 	: width_(0), height_(0), buffer_(0), wh_(0),
 	  cursor_(*this),
 	  multiparsel_cache_(false), anchor_ref_(0), offset_ref_(0),
-	  intl_(new Intl)
+	  intl_(new Intl), last_inset_(NULL)
 {
 	xsel_cache_.set = false;
 	intl_->initKeyMapper(lyxrc.use_kbmap);
@@ -1057,18 +1057,15 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	// NOTE: editXY returns the top level inset of nested insets. If you happen
 	// to move from a text (inset=0) to a text inside an inset (e.g. an opened
 	// footnote inset, again inset=0), that inset will not be redrawn.
-	// FIXME (abdel 07/12/06): I don't think the static solution will work in
-	// a multiple BufferView context.
-	static InsetBase * last_inset = NULL;
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
 		bool need_redraw = false;
 		
-		if (inset != last_inset) {
-			if (last_inset)
-				need_redraw |= last_inset->setMouseHover(false);
+		if (inset != last_inset_) {
+			if (last_inset_)
+				need_redraw |= last_inset_->setMouseHover(false);
 			if (inset)
 				need_redraw |= inset->setMouseHover(true);
-			last_inset = inset;
+			last_inset_ = inset;
 		}
 
 		// if last metrics update was in singlepar mode, WorkArea::redraw() will

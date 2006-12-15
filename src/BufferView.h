@@ -278,6 +278,9 @@ private:
 
 	/// keyboard mapping object.
 	boost::scoped_ptr<Intl> const intl_;
+
+	/// last visited inset (kept to send setMouseHover(false)
+	InsetBase * last_inset_;
 };
 
 
