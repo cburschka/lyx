@@ -302,7 +302,7 @@ void BufferView::resize()
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
 
 	buffer_->text().init(this);
-	update();
+	updateMetrics(false);
 	switchKeyMap();
 }
 
@@ -1023,8 +1023,6 @@ void BufferView::workAreaResize(int width, int height)
 
 	if (buffer_)
 		resize();
-
-	update();
 }
 
 
