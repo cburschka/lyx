@@ -81,9 +81,8 @@
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes true
-\author "CocoC" 
 \end_header
 
 \begin_body
@@ -115,6 +114,10 @@ Claudio Coco
 \family typewriter
 <lacocio@libero.it>
 \family default
+, con il prezioso supporto di 
+\noun on
+Meris Miconi
+\noun default
 .
   Per commenti o segnalare errori di traduzione scrivete all'indirizzo indicato.
 \end_layout
@@ -18264,24 +18267,10 @@ Come creare le macro
 Per costruire il rettangolo che identifica una macro usate questa sintassi
  nel minibuffer:
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
-
-\change_inserted 0 1162569448
 I nomi delle macro non possono contenere numeri!
-\change_deleted 0 1162569448
-<
-\color blue
-???
-\color none
-> 
-\lang english
-Macro names mustn't contain numbers
-\lang italian
-!
-\change_unchanged
-
 \end_layout
 
 \end_inset
