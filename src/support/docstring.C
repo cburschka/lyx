@@ -497,8 +497,11 @@ private:
 		if (fill >= 0x80)
 			throw num_put_failure();
 
-		// 64 is large enough
-		std::string s(64, '\0');
+		std::streamsize const sz = b.width() > b.precision() ?
+					   b.width() : b.precision();
+		// 64 is large enough, unless width or precision are bigger
+		std::streamsize const wd = (sz > 56 ? sz : 56) + 8;
+		std::string s(wd, '\0');
 		string_num_put_facet f;
 		std::string::const_iterator cit = s.begin();
 		std::string::const_iterator end =
