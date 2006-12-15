@@ -1321,6 +1321,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)) {
 			oldpar.eraseChar(old.pos() - 1, false); // do not track changes in DEPM
+			// rebreak it and update the CoordCache.
+			redoParagraph(cur.bv(), old.pit());
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
