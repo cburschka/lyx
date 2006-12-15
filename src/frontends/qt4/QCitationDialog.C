@@ -57,6 +57,14 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 		this, SLOT(changed()));
     connect(textAfterED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(changed()));
+    connect(clearPB, SIGNAL(clicked()),
+		findLE, SLOT(clear()));
+	connect(availableLV->selectionModel(),
+		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
+		this, SLOT(availableChanged(const QModelIndex &, const QModelIndex &)));
+	connect(selectedLV->selectionModel(),
+		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
+		this, SLOT(selectedChanged(const QModelIndex &, const QModelIndex &)));
 }
 
 
@@ -100,12 +108,14 @@ bool QCitationDialog::isVisible() const
 void QCitationDialog::on_okPB_clicked()
 {
 	apply();
+	form_->clearSelection();
 	accept();
 }
 
 
 void QCitationDialog::on_cancelPB_clicked()
 {
+	form_->clearSelection();
 	accept();
 }
 
@@ -126,12 +136,12 @@ void QCitationDialog::update()
 {
 	form_->updateModel();
 
-	QModelIndex idxa = availableLV->currentIndex();
-	if (!idxa.isValid())
+	QModelIndex const idxa = availableLV->currentIndex();
+	if (form_->available()->rowCount() > 0 && !idxa.isValid())
 		availableLV->setCurrentIndex(availableLV->model()->index(0,0));
 
-	QModelIndex idx = selectedLV->currentIndex();
-	if (form_->isValid() && !idx.isValid()) {
+	QModelIndex const idx = selectedLV->currentIndex();
+	if (form_->selected()->rowCount() > 0 && !idx.isValid()) {
 		selectedLV->setCurrentIndex(selectedLV->model()->index(0,0));
 		updateInfo(selectedLV->currentIndex());
 	} else
@@ -158,6 +168,7 @@ void QCitationDialog::updateStyle()
 	fulllistCB->setEnabled(natbib_engine);
 	forceuppercaseCB->setEnabled(natbib_engine);
 	textBeforeED->setEnabled(!basic_engine);
+	textBeforeLA->setEnabled(!basic_engine);
 
 	string const & command = form_->params().getCmdName();
 
@@ -200,10 +211,12 @@ void QCitationDialog::fillStyles()
 		return;
 	}
 
-	if (selectedLV->selectionModel()->selectedIndexes().empty())
+	int curr = selectedLV->model()->rowCount() - 1;
+	if (curr < 0)
 		return;
-	
-	int curr = selectedLV->selectionModel()->selectedIndexes()[0].row();//selectedLV->currentItem();
+
+	if (!selectedLV->selectionModel()->selectedIndexes().empty())
+		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
 	QStringList sty = form_->citationStyles(curr);
 
@@ -212,6 +225,9 @@ void QCitationDialog::fillStyles()
 
 	citationStyleCO->setEnabled(!sty.isEmpty() && !basic_engine);
 	citationStyleLA->setEnabled(!sty.isEmpty() && !basic_engine);
+
+	if (sty.isEmpty() || basic_engine)
+		return;
 
 	citationStyleCO->insertItems(0, sty);
 
@@ -254,12 +270,37 @@ void QCitationDialog::updateInfo(const QModelIndex & idx)
 
 void QCitationDialog::on_selectedLV_clicked(const QModelIndex & idx)
 {
+	availableLV->selectionModel()->clear();
+
 	updateInfo(idx);
 	changed();
 }
 
+
+void QCitationDialog::selectedChanged(const QModelIndex & idx, const QModelIndex &)
+{
+	if (!idx.isValid())
+		return;
+
+	updateInfo(idx);
+	changed();
+}
+
+
 void QCitationDialog::on_availableLV_clicked(const QModelIndex & idx)
 {
+	selectedLV->selectionModel()->clear();
+
+	updateInfo(idx);
+	setButtons();
+}
+
+
+void QCitationDialog::availableChanged(const QModelIndex & idx, const QModelIndex &)
+{
+	if (!idx.isValid())
+		return;
+		
 	updateInfo(idx);
 	setButtons();
 }
@@ -322,7 +363,15 @@ void QCitationDialog::on_downPB_clicked()
 
 void QCitationDialog::on_findLE_textChanged(const QString & text)
 {
+	clearPB->setDisabled(text.isEmpty());
+	if (text.isEmpty())
+		findLE->setFocus();
+
 	form_->findKey(text);
+	if (form_->found()->rowCount() == 0) {
+		findLE->backspace();
+		return;
+	}
 	availableLV->setModel(form_->found());
 	changed();
 }

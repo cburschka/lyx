@@ -57,8 +57,10 @@ protected Q_SLOTS:
 	void on_downPB_clicked();
 	void on_findLE_textChanged(const QString & text);
 	void on_selectedLV_clicked(const QModelIndex &);
+	void selectedChanged(const QModelIndex &, const QModelIndex &);
 	void on_availableLV_clicked(const QModelIndex &);
 	void on_availableLV_activated(const QModelIndex &);
+	void availableChanged(const QModelIndex &, const QModelIndex &);
 	virtual void changed();
 	/// check whether key is already selected
 	bool isSelected(const QModelIndex &);

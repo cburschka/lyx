@@ -56,7 +56,7 @@ QCitation::QCitation(Dialog & parent)
 void QCitation::apply(int const choice, bool const full, bool const force,
                       QString before, QString after)
 {
-	if (!isValid())
+	if (selected_keys_.rowCount() == 0)
 		return;
 
 	vector<biblio::CiteStyle> const & styles =
@@ -74,6 +74,12 @@ void QCitation::apply(int const choice, bool const full, bool const force,
 }
 
 
+void QCitation::clearSelection()
+{
+	selected_keys_.setStringList(QStringList());
+}
+
+	
 QString QCitation::textBefore()
 {
 	return toqstr(params()["before"]);
@@ -98,12 +104,6 @@ void QCitation::updateModel()
 		keys = str.split(",");
 		selected_keys_.setStringList(keys);
 	}
-}
-
-
-bool QCitation::isValid()
-{
-	return selected_keys_.rowCount() > 0;
 }
 
 

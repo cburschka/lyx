@@ -43,6 +43,9 @@ public:
 	/// Get key description
 	QString getKeyInfo(QString const &);
 
+	/// Clear selected keys
+	void clearSelection();
+
 	/// Find keys containing the string (not case-sens)
 	void findKey(QString const &);
 
@@ -60,9 +63,6 @@ public:
 
 	/// List of example cite strings
 	QStringList citationStyles(int);
-
-	/// Check whether there are keys to select
-	virtual bool isValid();
 
 	/// Set the Params variable for the Controller.
 	virtual void apply(int const choice, bool const full, bool const force,
