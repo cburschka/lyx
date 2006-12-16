@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-09 15:44+0100\n"
+"POT-Creation-Date: 2006-12-16 13:25+0100\n"
 "PO-Revision-Date: 2006-09-19 11:57+0200\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
 "Language-Team: lyxfr \n"
@@ -224,7 +224,7 @@ msgstr "Ajoute une nouvelle branche à la liste"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:60
+#: src/frontends/qt4/ui/QCitationUi.ui:276
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:148
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:225
 msgid "&Add"
@@ -638,7 +638,7 @@ msgstr "&Bidon"
 #: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
 #: src/frontends/qt4/ui/QBranchUi.ui:31
 #: src/frontends/qt4/ui/QCharacterUi.ui:352
-#: src/frontends/qt4/ui/QCitationUi.ui:329
+#: src/frontends/qt4/ui/QCitationUi.ui:107
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:699
@@ -654,11 +654,11 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:349
+#: src/frontends/qt4/ui/QCitationUi.ui:127
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:98
 #: src/buffer_funcs.C:125 src/buffer_funcs.C:166 src/bufferlist.C:115
 #: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1982 src/lyxvc.C:175
+#: src/lyxfunc.C:861 src/lyxfunc.C:1976 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Annuler"
 
@@ -894,7 +894,7 @@ msgstr "Alignement vertical du contenu dans la boîte"
 msgid "Vertical"
 msgstr "&Vertical :"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
+#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:87
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
 #: src/frontends/qt4/ui/QGraphicsUi.ui:670
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
@@ -1039,91 +1039,95 @@ msgstr "Appliquer les changements immédiatement"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:47
-#, fuzzy
-msgid "&Available Citations:"
-msgstr "Branches &disponibles :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:70
-#, fuzzy
-msgid "&Selected Citations:"
-msgstr "&Sélection :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:88
-msgid "Move the selected citation up"
-msgstr "Remonter la citation"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
-#, fuzzy
-msgid "&Up"
-msgstr "Mise à &jour"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:136
-msgid "Move the selected citation down"
-msgstr "Descendre la citation"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
-#, fuzzy
-msgid "&Down"
-msgstr "Ville"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:149
-msgid "D&elete"
-msgstr "&Effacer"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:166
-#: src/frontends/qt4/ui/QSearchUi.ui:31
+#: src/frontends/qt4/ui/QCitationUi.ui:47 src/frontends/qt4/ui/QSearchUi.ui:31
 msgid "&Find:"
 msgstr "Rec&hercher :"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:191
+#: src/frontends/qt4/ui/QCitationUi.ui:70
+#, fuzzy
+msgid "<- Clear"
+msgstr "&Enlever"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:120
+msgid "A&pply"
+msgstr "&Appliquer"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:139
 #, fuzzy
 msgid "Formatting"
 msgstr "Formats"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:211
+#: src/frontends/qt4/ui/QCitationUi.ui:162
 msgid "Natbib citation style to use"
 msgstr "Style de citation Natbib"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:218
+#: src/frontends/qt4/ui/QCitationUi.ui:169
 msgid "Citation &style:"
 msgstr "&Style de citation :"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:228
+#: src/frontends/qt4/ui/QCitationUi.ui:179
 msgid "List all authors"
 msgstr "Donne la liste de tous les auteurs"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:231
+#: src/frontends/qt4/ui/QCitationUi.ui:182
 msgid "&Full author list"
 msgstr "&Liste complète des auteurs"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:238
+#: src/frontends/qt4/ui/QCitationUi.ui:189
 msgid "Force upper case in citation"
 msgstr "Force les majuscules dans la citation"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:241
+#: src/frontends/qt4/ui/QCitationUi.ui:192
 msgid "Force &upper case"
 msgstr "Forcer les &majuscules"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:248
+#: src/frontends/qt4/ui/QCitationUi.ui:199
 msgid "&Text after:"
 msgstr "Texte a&près :"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:266
+#: src/frontends/qt4/ui/QCitationUi.ui:217
 msgid "Text to place after citation"
 msgstr "Texte à ajouter après la citation"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:273
+#: src/frontends/qt4/ui/QCitationUi.ui:224
 msgid "Text &before:"
 msgstr "Texte a&vant :"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:291
+#: src/frontends/qt4/ui/QCitationUi.ui:242
 msgid "Text to place before citation"
 msgstr "Texte à ajouter avant la citation"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:342
-msgid "A&pply"
-msgstr "&Appliquer"
+#: src/frontends/qt4/ui/QCitationUi.ui:263
+#, fuzzy
+msgid "&Available Citations:"
+msgstr "Branches &disponibles :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:286
+#, fuzzy
+msgid "&Selected Citations:"
+msgstr "&Sélection :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:304
+msgid "Move the selected citation up"
+msgstr "Remonter la citation"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:307 src/frontends/qt4/ui/QTocUi.ui:36
+#, fuzzy
+msgid "&Up"
+msgstr "Mise à &jour"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:352
+msgid "Move the selected citation down"
+msgstr "Descendre la citation"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:355 src/frontends/qt4/ui/QTocUi.ui:43
+#, fuzzy
+msgid "&Down"
+msgstr "Ville"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:365
+msgid "D&elete"
+msgstr "&Effacer"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:49
 msgid "Match delimiter types"
@@ -9016,54 +9020,54 @@ msgstr "Un mot dans le document."
 msgid "Count words"
 msgstr "Compteur de mots"
 
-#: src/BufferView.C:1404
+#: src/BufferView.C:1401
 msgid "Select LyX document to insert"
 msgstr "Choisir le document à insérer"
 
-#: src/BufferView.C:1406 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1403 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
+#: src/lyxfunc.C:1817 src/lyxfunc.C:1854 src/lyxfunc.C:1927
 msgid "Documents|#o#O"
 msgstr "Documents|#D"
 
-#: src/BufferView.C:1407 src/lyxfunc.C:1861 src/lyxfunc.C:1934
+#: src/BufferView.C:1404 src/lyxfunc.C:1855 src/lyxfunc.C:1928
 msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
-#: src/BufferView.C:1411 src/lyx_cb.C:142 src/lyxfunc.C:1828
-#: src/lyxfunc.C:1865
+#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1822
+#: src/lyxfunc.C:1859
 msgid "LyX Documents (*.lyx)"
 msgstr "Documents LyX (*.lyx)"
 
-#: src/BufferView.C:1423 src/lyxfunc.C:1875 src/lyxfunc.C:1955
-#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
+#: src/BufferView.C:1420 src/lyxfunc.C:1869 src/lyxfunc.C:1949
+#: src/lyxfunc.C:1963 src/lyxfunc.C:1979
 msgid "Canceled."
 msgstr "Annulé."
 
-#: src/BufferView.C:1434
+#: src/BufferView.C:1431
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion du document %1$s..."
 
-#: src/BufferView.C:1445
+#: src/BufferView.C:1442
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Document %1$s inséré."
 
-#: src/BufferView.C:1447
+#: src/BufferView.C:1444
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible d'insérer le document %1$s"
 
-#: src/Chktex.C:72
+#: src/Chktex.C:71
 #, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "Avertissement ChkTeX n°%1$d"
 
-#: src/Chktex.C:74
+#: src/Chktex.C:73
 msgid "ChkTeX warning id # "
 msgstr "Avertissement ChkTeX n°"
 
@@ -9331,16 +9335,16 @@ msgstr "ignorer"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Attend l'exécution LaTeX n°%1$d"
 
-#: src/LaTeX.C:289 src/LaTeX.C:363
+#: src/LaTeX.C:289 src/LaTeX.C:365
 msgid "Running MakeIndex."
 msgstr "Exécution de MakeIndex."
 
-#: src/LaTeX.C:294 src/LaTeX.C:370
+#: src/LaTeX.C:295 src/LaTeX.C:373
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Exécution de MakeIndex."
 
-#: src/LaTeX.C:307
+#: src/LaTeX.C:309
 msgid "Running BibTeX."
 msgstr "Exécution de BibTeX."
 
@@ -9500,24 +9504,24 @@ msgstr ""
 "LyX n'a pas pu faire de copie de sauvegarde dans %1$s.\n"
 "Veuillez vérifier l'existence du répertoire et ses droits d'écriture."
 
-#: src/buffer.C:862
+#: src/buffer.C:849
 #, fuzzy
 msgid "Encoding error"
 msgstr "&Encodage :"
 
-#: src/buffer.C:863
+#: src/buffer.C:850
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:872
+#: src/buffer.C:859
 #, fuzzy
 msgid "Error closing file"
 msgstr "Erreur de lecture du fichier !"
 
-#: src/buffer.C:873
+#: src/buffer.C:860
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9525,15 +9529,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1131
+#: src/buffer.C:1118
 msgid "Running chktex..."
 msgstr "Exécution de chktex..."
 
-#: src/buffer.C:1144
+#: src/buffer.C:1131
 msgid "chktex failure"
 msgstr "échec de chktex"
 
-#: src/buffer.C:1145
+#: src/buffer.C:1132
 msgid "Could not run chktex successfully."
 msgstr "Chktex ne s'est pas exécuté correctement."
 
@@ -9900,7 +9904,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Écraser le fichier ?"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1982
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1976
 msgid "&Over-write"
 msgstr "É&craser"
 
@@ -10202,19 +10206,19 @@ msgstr "Fichier log d'erreurs lyx2lyx"
 msgid "Version Control Log"
 msgstr "Historique du Contrôle de Version"
 
-#: src/frontends/controllers/ControlLog.C:113
+#: src/frontends/controllers/ControlLog.C:116
 msgid "No LaTeX log file found."
 msgstr "Fichier log LaTeX introuvable."
 
-#: src/frontends/controllers/ControlLog.C:116
+#: src/frontends/controllers/ControlLog.C:119
 msgid "No literate programming build log file found."
 msgstr "Fichier log de compilation de programmation littéraire introuvable."
 
-#: src/frontends/controllers/ControlLog.C:119
+#: src/frontends/controllers/ControlLog.C:122
 msgid "No lyx2lyx error log file found."
 msgstr "Fichier log d'erreurs lyx2lyx introuvable."
 
-#: src/frontends/controllers/ControlLog.C:122
+#: src/frontends/controllers/ControlLog.C:125
 msgid "No version control log file found."
 msgstr "Fichier log du contrôle de version introuvable."
 
@@ -10478,7 +10482,7 @@ msgstr "Étiquette"
 msgid "Directories"
 msgstr "Répertoires"
 
-#: src/frontends/qt4/GuiView.C:615
+#: src/frontends/qt4/GuiView.C:632
 msgid "LyX"
 msgstr "LyX"
 
@@ -10579,7 +10583,7 @@ msgstr "Sans"
 
 #: src/frontends/qt4/QDelimiterDialog.C:110
 #, fuzzy
-msgid "Variable size"
+msgid "Variable"
 msgstr "ligne de tableau"
 
 #: src/frontends/qt4/QDocument.C:48
@@ -11140,15 +11144,15 @@ msgstr "importé."
 msgid "Opened inset"
 msgstr "Insert ouvert"
 
-#: src/insets/insetbibtex.C:110
+#: src/insets/insetbibtex.C:107
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliographie BibTeX"
 
-#: src/insets/insetbibtex.C:205 src/insets/insetbibtex.C:258
+#: src/insets/insetbibtex.C:202 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Alerte d'exportation !"
 
-#: src/insets/insetbibtex.C:206
+#: src/insets/insetbibtex.C:203
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -11156,7 +11160,7 @@ msgstr ""
 "Il y a des espaces dans les chemins de vos bases de données BibTeX.\n"
 "BibTeX n'arrivera pas à les trouver."
 
-#: src/insets/insetbibtex.C:259
+#: src/insets/insetbibtex.C:256
 #, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
@@ -11425,11 +11429,11 @@ msgstr "PrettyRef : "
 msgid "Opened table"
 msgstr "Tableau ouvert"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1569
 msgid "Error setting multicolumn"
 msgstr "Erreur de paramétrage de multi-colonnes"
 
-#: src/insets/insettabular.C:1571
+#: src/insets/insettabular.C:1570
 msgid "You cannot set multicolumn vertically."
 msgstr "Vous ne pouvez pas paramétrer multi-colonnes verticalement."
 
@@ -11530,15 +11534,15 @@ msgstr "Aperçu prêt"
 msgid "Preview failed"
 msgstr "Échec de l'aperçu"
 
-#: src/ispell.C:209 src/ispell.C:216 src/ispell.C:225
+#: src/ispell.C:238 src/ispell.C:245 src/ispell.C:254
 msgid "Can't create pipe for spellchecker."
 msgstr "Impossible de créer un tube pour le correcteur orthographique."
 
-#: src/ispell.C:230 src/ispell.C:235 src/ispell.C:240
+#: src/ispell.C:259 src/ispell.C:264 src/ispell.C:269
 msgid "Can't open pipe for spellchecker."
 msgstr "Impossible d'ouvrir un tube pour le correcteur orthographique."
 
-#: src/ispell.C:249
+#: src/ispell.C:278
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
@@ -11546,7 +11550,7 @@ msgstr ""
 "Impossible de créer un processus ispell.\n"
 "Vous n'avez peut-être pas les langues nécessaires installées."
 
-#: src/ispell.C:272
+#: src/ispell.C:301
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
@@ -11554,10 +11558,31 @@ msgstr ""
 "Le processus ispell a renvoyé une erreur.\n"
 "Peut-être a-t-il mal été configuré ?"
 
-#: src/ispell.C:383
+#: src/ispell.C:406
+#, c-format
+msgid ""
+"Could not check word `%1$s' because it could not be converted to encoding `%2"
+"$s'."
+msgstr ""
+
+#: src/ispell.C:417
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr ""
 "N'a pas pu communiquer avec le processus de correction orthographique ispell."
+
+#: src/ispell.C:477
+#, c-format
+msgid ""
+"Could not insert word `%1$s' because it could not be converted to encoding `%"
+"2$s'."
+msgstr ""
+
+#: src/ispell.C:492
+#, c-format
+msgid ""
+"Could not accept word `%1$s' because it could not be converted to encoding `%"
+"2$s'."
+msgstr ""
 
 #: src/kbsequence.C:163
 msgid "   options: "
@@ -11660,11 +11685,11 @@ msgstr "&Renommer"
 msgid "Choose a filename to save document as"
 msgstr "Choisir le nom sous lequel enregistrer le fichier"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1824
+#: src/lyx_cb.C:137 src/lyxfunc.C:1818
 msgid "Templates|#T#t"
 msgstr "Modèles|#M#m"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1979
+#: src/lyx_cb.C:167 src/lyxfunc.C:1973
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11675,7 +11700,7 @@ msgstr ""
 "\n"
 "Voulez-vous écrire par dessus ce document ?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:1981
+#: src/lyx_cb.C:169 src/lyxfunc.C:1975
 msgid "Over-write document?"
 msgstr "Écraser le document ?"
 
@@ -11748,11 +11773,11 @@ msgstr ""
 "Il faut redémarrer LyX pour utiliser\n"
 "les classes de document mises à jour."
 
-#: src/lyx_main.C:124
+#: src/lyx_main.C:127
 msgid "Could not read configuration file"
 msgstr "Impossible de lire le fichier de configuration"
 
-#: src/lyx_main.C:125
+#: src/lyx_main.C:128
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11763,11 +11788,11 @@ msgstr ""
 "%1$s.\n"
 "Veuillez vérifier votre installation."
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:137
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX : Reconfigure le répertoire utilisateur"
 
-#: src/lyx_main.C:138
+#: src/lyx_main.C:141
 msgid "Done!"
 msgstr "Terminé !"
 
@@ -11780,20 +11805,20 @@ msgstr "Impossible d'enlever le répertoire temporaire %1$s"
 msgid "Unable to remove temporary directory"
 msgstr "Impossible d'enlever le répertoire temporaire"
 
-#: src/lyx_main.C:468
+#: src/lyx_main.C:469
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Mauvaise option de ligne de commande « %1$s ». Sortie du programme."
 
-#: src/lyx_main.C:723
+#: src/lyx_main.C:724
 msgid "LyX: "
 msgstr "LyX : "
 
-#: src/lyx_main.C:846
+#: src/lyx_main.C:847
 msgid "Could not create temporary directory"
 msgstr "Impossible de créer un répertoire temporaire"
 
-#: src/lyx_main.C:847
+#: src/lyx_main.C:848
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11804,11 +11829,11 @@ msgstr ""
 "dans %1$s. Vérifiez que ce chemin\n"
 "existe et qu'il est ouvert en écriture puis réessayez."
 
-#: src/lyx_main.C:1014
+#: src/lyx_main.C:1016
 msgid "Missing user LyX directory"
 msgstr "Répertoire utilisateur LyX manquant"
 
-#: src/lyx_main.C:1015
+#: src/lyx_main.C:1017
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11817,37 +11842,37 @@ msgstr ""
 "Vous avez spécifié un répertoire utilisateur LyX inexistant, %1$s.\n"
 "Ce répertoire est nécessaire pour conserver votre configuration."
 
-#: src/lyx_main.C:1020
+#: src/lyx_main.C:1022
 msgid "&Create directory"
 msgstr "&Créer un répertoire"
 
-#: src/lyx_main.C:1021
+#: src/lyx_main.C:1023
 msgid "&Exit LyX"
 msgstr "&Quitter LyX"
 
-#: src/lyx_main.C:1022
+#: src/lyx_main.C:1024
 msgid "No user LyX directory. Exiting."
 msgstr "Pas de répertoire utilisateur LyX. Sortie du programme."
 
-#: src/lyx_main.C:1026
+#: src/lyx_main.C:1028
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX : Création du répertoire %1$s"
 
-#: src/lyx_main.C:1032
+#: src/lyx_main.C:1034
 msgid "Failed to create directory. Exiting."
 msgstr "Échec dans la création du répertoire. Sortie du programme."
 
-#: src/lyx_main.C:1187
+#: src/lyx_main.C:1189
 msgid "List of supported debug flags:"
 msgstr "Liste des options de débogage acceptées :"
 
-#: src/lyx_main.C:1191
+#: src/lyx_main.C:1193
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Niveau de débogage %1$s"
 
-#: src/lyx_main.C:1202
+#: src/lyx_main.C:1204
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11887,49 +11912,49 @@ msgstr ""
 "\t-version           résumé de la version et de la compilation\n"
 "Voir la page man de LyX pour les détails."
 
-#: src/lyx_main.C:1238
+#: src/lyx_main.C:1240
 msgid "Missing directory for -sysdir switch"
 msgstr "Il manque un répertoire pour l'option -sysdir"
 
-#: src/lyx_main.C:1248
+#: src/lyx_main.C:1250
 msgid "Missing directory for -userdir switch"
 msgstr "Il manque un répertoire pour l'option -userdir"
 
-#: src/lyx_main.C:1258
+#: src/lyx_main.C:1260
 msgid "Missing command string after --execute switch"
 msgstr "Il manque une commande après l'option --execute"
 
-#: src/lyx_main.C:1268
+#: src/lyx_main.C:1270
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Il manque un type de fichier [par ex. latex, ps...] après l'option --export"
 
-#: src/lyx_main.C:1280
+#: src/lyx_main.C:1282
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Il manque un type de fichier [par ex. latex, ps...] après l'option --import"
 
-#: src/lyx_main.C:1285
+#: src/lyx_main.C:1287
 msgid "Missing filename for --import"
 msgstr "Il manque le nom du fichier à importer pour --import"
 
-#: src/lyxfind.C:138
+#: src/lyxfind.C:135
 msgid "Search error"
 msgstr "Erreur de recherche"
 
-#: src/lyxfind.C:139
+#: src/lyxfind.C:136
 msgid "Search string is empty"
 msgstr "La chaîne de caractères à chercher est vide"
 
-#: src/lyxfind.C:290 src/lyxfind.C:321
+#: src/lyxfind.C:287 src/lyxfind.C:318
 msgid "String not found!"
 msgstr "Chaîne de caractères introuvable !"
 
-#: src/lyxfind.C:325
+#: src/lyxfind.C:322
 msgid "String has been replaced."
 msgstr "1 chaîne remplacée."
 
-#: src/lyxfind.C:328
+#: src/lyxfind.C:325
 msgid " strings have been replaced."
 msgstr " chaînes remplacées."
 
@@ -12068,71 +12093,71 @@ msgstr ""
 "Toutes les modifications seront perdues. Êtes-vous sûr de vouloir revenir à "
 "la dernière version enregistrée du document %1$s ?"
 
-#: src/lyxfunc.C:1073 src/text3.C:1232
+#: src/lyxfunc.C:1064 src/text3.C:1233
 msgid "Missing argument"
 msgstr "Paramètre manquant"
 
-#: src/lyxfunc.C:1082
+#: src/lyxfunc.C:1073
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ouverture du fichier d'aide %1$s..."
 
-#: src/lyxfunc.C:1352
+#: src/lyxfunc.C:1343
 msgid "Opening child document "
 msgstr "Ouverture du document fils"
 
-#: src/lyxfunc.C:1438
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaxe : set-color <nom_lyx> <nom_x11>"
 
-#: src/lyxfunc.C:1449
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color « %1$s » a échoué - la couleur n'est pas définie ou ne peut pas "
 "être redéfinie"
 
-#: src/lyxfunc.C:1565
+#: src/lyxfunc.C:1556
 msgid "Document defaults saved in "
 msgstr "Les valeurs par défaut du document ont été enregistrées dans "
 
-#: src/lyxfunc.C:1568
+#: src/lyxfunc.C:1559
 msgid "Unable to save document defaults"
 msgstr "Impossible d'enregistrer les valeurs par défaut du document"
 
-#: src/lyxfunc.C:1624
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Conversion du document vers sa nouvelle classe..."
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1815
 msgid "Select template file"
 msgstr "Choisir le modèle"
 
-#: src/lyxfunc.C:1858
+#: src/lyxfunc.C:1852
 msgid "Select document to open"
 msgstr "Choisir le document à ouvrir"
 
-#: src/lyxfunc.C:1897
+#: src/lyxfunc.C:1891
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Ouverture du document %1$s..."
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1895
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Document %1$s ouvert."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Impossible d'ouvrir le document %1$s"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1922
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Choisir le fichier %1$s à importer"
 
-#: src/lyxfunc.C:2045
+#: src/lyxfunc.C:2039
 msgid "Welcome to LyX!"
 msgstr "Bienvenue dans LyX !"
 
@@ -13067,11 +13092,11 @@ msgstr "Environnement "
 msgid " not known"
 msgstr " inconnu"
 
-#: src/text3.C:1337 src/text3.C:1349
+#: src/text3.C:1338 src/text3.C:1350
 msgid "Character set"
 msgstr "Encodage"
 
-#: src/text3.C:1480
+#: src/text3.C:1481
 msgid "Paragraph layout set"
 msgstr "Style du paragraphe redéfini"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-09 15:44+0100\n"
+"POT-Creation-Date: 2006-12-16 13:25+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -65,7 +65,7 @@ msgstr "Gehitu adar berria zerrendari"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:60
+#: src/frontends/qt4/ui/QCitationUi.ui:276
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:148
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:225
 msgid "&Add"
@@ -470,7 +470,7 @@ msgstr "&Probakoa"
 #: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
 #: src/frontends/qt4/ui/QBranchUi.ui:31
 #: src/frontends/qt4/ui/QCharacterUi.ui:352
-#: src/frontends/qt4/ui/QCitationUi.ui:329
+#: src/frontends/qt4/ui/QCitationUi.ui:107
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:699
@@ -486,11 +486,11 @@ msgid "&OK"
 msgstr "&Ados"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:349
+#: src/frontends/qt4/ui/QCitationUi.ui:127
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:98
 #: src/buffer_funcs.C:125 src/buffer_funcs.C:166 src/bufferlist.C:115
 #: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1982 src/lyxvc.C:175
+#: src/lyxfunc.C:861 src/lyxfunc.C:1976 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -718,7 +718,7 @@ msgstr "Kutxako edukiaren lerrokadura bertikala"
 msgid "Vertical"
 msgstr "Bertikala"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
+#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:87
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
 #: src/frontends/qt4/ui/QGraphicsUi.ui:670
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
@@ -863,87 +863,91 @@ msgstr "Aplikatu aldaketak berehala"
 msgid "Close"
 msgstr "Itxi"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:47
+#: src/frontends/qt4/ui/QCitationUi.ui:47 src/frontends/qt4/ui/QSearchUi.ui:31
+msgid "&Find:"
+msgstr "&Bilatu:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:70
+#, fuzzy
+msgid "<- Clear"
+msgstr "G&arbitu"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:120
+msgid "A&pply"
+msgstr "&Aplikatu"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:139
+msgid "Formatting"
+msgstr "Formatua ematea"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:162
+msgid "Natbib citation style to use"
+msgstr "Natbib zitazio-estiloa erabiltzeko"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:169
+msgid "Citation &style:"
+msgstr "Zitazio &estiloa:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:179
+msgid "List all authors"
+msgstr "Zerrendatu egile guztiak"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:182
+msgid "&Full author list"
+msgstr "&Egileen zerrenda"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:189
+msgid "Force upper case in citation"
+msgstr "Derrigortu maiuskulak zitazioetan"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:192
+msgid "Force &upper case"
+msgstr "Derrigortu &maiuskulak"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:199
+msgid "&Text after:"
+msgstr "Testuaren &ondoren:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:217
+msgid "Text to place after citation"
+msgstr "Testua, zitazioaren ondoren kokatzeko"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:224
+msgid "Text &before:"
+msgstr "Testu &aurretik:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:242
+msgid "Text to place before citation"
+msgstr "Testua, zitazioaren aurretik jartzeko"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:263
 msgid "&Available Citations:"
 msgstr "Aipu &eskuragarriak:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:70
+#: src/frontends/qt4/ui/QCitationUi.ui:286
 #, fuzzy
 msgid "&Selected Citations:"
 msgstr "&Hautatutako aipuak:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:88
+#: src/frontends/qt4/ui/QCitationUi.ui:304
 msgid "Move the selected citation up"
 msgstr "Eraman hautatutako zitazioa gora"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
+#: src/frontends/qt4/ui/QCitationUi.ui:307 src/frontends/qt4/ui/QTocUi.ui:36
 msgid "&Up"
 msgstr "&Gora"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:136
+#: src/frontends/qt4/ui/QCitationUi.ui:352
 msgid "Move the selected citation down"
 msgstr "Mugitu hautatutako zitazioa beherantz"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QCitationUi.ui:355 src/frontends/qt4/ui/QTocUi.ui:43
 msgid "&Down"
 msgstr "&Behera"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:149
+#: src/frontends/qt4/ui/QCitationUi.ui:365
 msgid "D&elete"
 msgstr "E&zabatu"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:166
-#: src/frontends/qt4/ui/QSearchUi.ui:31
-msgid "&Find:"
-msgstr "&Bilatu:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:191
-msgid "Formatting"
-msgstr "Formatua ematea"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:211
-msgid "Natbib citation style to use"
-msgstr "Natbib zitazio-estiloa erabiltzeko"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:218
-msgid "Citation &style:"
-msgstr "Zitazio &estiloa:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:228
-msgid "List all authors"
-msgstr "Zerrendatu egile guztiak"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:231
-msgid "&Full author list"
-msgstr "&Egileen zerrenda"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:238
-msgid "Force upper case in citation"
-msgstr "Derrigortu maiuskulak zitazioetan"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:241
-msgid "Force &upper case"
-msgstr "Derrigortu &maiuskulak"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:248
-msgid "&Text after:"
-msgstr "Testuaren &ondoren:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:266
-msgid "Text to place after citation"
-msgstr "Testua, zitazioaren ondoren kokatzeko"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:273
-msgid "Text &before:"
-msgstr "Testu &aurretik:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:291
-msgid "Text to place before citation"
-msgstr "Testua, zitazioaren aurretik jartzeko"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:342
-msgid "A&pply"
-msgstr "&Aplikatu"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:49
 msgid "Match delimiter types"
@@ -8771,54 +8775,54 @@ msgstr "Hitz bat dokumentuan."
 msgid "Count words"
 msgstr "Zenbatu hitzak"
 
-#: src/BufferView.C:1404
+#: src/BufferView.C:1401
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.C:1406 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1403 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
+#: src/lyxfunc.C:1817 src/lyxfunc.C:1854 src/lyxfunc.C:1927
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.C:1407 src/lyxfunc.C:1861 src/lyxfunc.C:1934
+#: src/BufferView.C:1404 src/lyxfunc.C:1855 src/lyxfunc.C:1928
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.C:1411 src/lyx_cb.C:142 src/lyxfunc.C:1828
-#: src/lyxfunc.C:1865
+#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1822
+#: src/lyxfunc.C:1859
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.C:1423 src/lyxfunc.C:1875 src/lyxfunc.C:1955
-#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
+#: src/BufferView.C:1420 src/lyxfunc.C:1869 src/lyxfunc.C:1949
+#: src/lyxfunc.C:1963 src/lyxfunc.C:1979
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.C:1434
+#: src/BufferView.C:1431
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.C:1445
+#: src/BufferView.C:1442
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.C:1447
+#: src/BufferView.C:1444
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
 
-#: src/Chktex.C:72
+#: src/Chktex.C:71
 #, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "ChkTeX id # %1$d abisua"
 
-#: src/Chktex.C:74
+#: src/Chktex.C:73
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX id # abisua "
 
@@ -9083,16 +9087,16 @@ msgstr "ez ikusi egin"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "LaTeX %1$d exekutatze-zenbakiaren zai"
 
-#: src/LaTeX.C:289 src/LaTeX.C:363
+#: src/LaTeX.C:289 src/LaTeX.C:365
 msgid "Running MakeIndex."
 msgstr "MakeIndex exekutatzen."
 
-#: src/LaTeX.C:294 src/LaTeX.C:370
+#: src/LaTeX.C:295 src/LaTeX.C:373
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex exekutatzen."
 
-#: src/LaTeX.C:307
+#: src/LaTeX.C:309
 msgid "Running BibTeX."
 msgstr "BibTeX exekutatzen."
 
@@ -9247,11 +9251,11 @@ msgstr ""
 "LyX-ek ezin izan du %1$s(r)en babeseko kopiarik egin.\n"
 "Egiaztatu direktorioa existitzen dela, eta bertan idatz daitekela."
 
-#: src/buffer.C:862
+#: src/buffer.C:849
 msgid "Encoding error"
 msgstr "Kodeketako errorea"
 
-#: src/buffer.C:863
+#: src/buffer.C:850
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
@@ -9260,11 +9264,11 @@ msgstr ""
 "Dokumentuko zenbait karaktere ezin dira erabili aukeratutako kodeketarekin.\n"
 "Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/buffer.C:872
+#: src/buffer.C:859
 msgid "Error closing file"
 msgstr "Errorea fitxategia ixtean"
 
-#: src/buffer.C:873
+#: src/buffer.C:860
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9275,15 +9279,15 @@ msgstr ""
 "Agian dokumentuko zenbait karaktere ezin dira erabili aukeratutako "
 "kodeketarekin. Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/buffer.C:1131
+#: src/buffer.C:1118
 msgid "Running chktex..."
 msgstr "chktex exekutatzen..."
 
-#: src/buffer.C:1144
+#: src/buffer.C:1131
 msgid "chktex failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/buffer.C:1145
+#: src/buffer.C:1132
 msgid "Could not run chktex successfully."
 msgstr "Ezin izan da chktex exekutatu"
 
@@ -9649,7 +9653,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1982
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1976
 msgid "&Over-write"
 msgstr "&Gainidatzi"
 
@@ -9952,19 +9956,19 @@ msgstr "lyx2lyx errore-egunkaria"
 msgid "Version Control Log"
 msgstr "Bertsio-kontrolaren egunkaria"
 
-#: src/frontends/controllers/ControlLog.C:113
+#: src/frontends/controllers/ControlLog.C:116
 msgid "No LaTeX log file found."
 msgstr "Ez da LaTeX egunkaririk aurkitu."
 
-#: src/frontends/controllers/ControlLog.C:116
+#: src/frontends/controllers/ControlLog.C:119
 msgid "No literate programming build log file found."
 msgstr "Ez da literatur-programazioko konpilazio-egunkaririk aurkitu."
 
-#: src/frontends/controllers/ControlLog.C:119
+#: src/frontends/controllers/ControlLog.C:122
 msgid "No lyx2lyx error log file found."
 msgstr "Ez da lyx2lyx errore-egunkaririk aurkitu."
 
-#: src/frontends/controllers/ControlLog.C:122
+#: src/frontends/controllers/ControlLog.C:125
 msgid "No version control log file found."
 msgstr "Ez da bertsio-kontrolaren egunkaririk aurkitu."
 
@@ -10223,7 +10227,7 @@ msgstr "Etiketa"
 msgid "Directories"
 msgstr "Direktorioak"
 
-#: src/frontends/qt4/GuiView.C:615
+#: src/frontends/qt4/GuiView.C:632
 msgid "LyX"
 msgstr "LyX"
 
@@ -10321,7 +10325,8 @@ msgid "(None)"
 msgstr "(Bat ere ez)"
 
 #: src/frontends/qt4/QDelimiterDialog.C:110
-msgid "Variable size"
+#, fuzzy
+msgid "Variable"
 msgstr "Aldakorra"
 
 #: src/frontends/qt4/QDocument.C:48
@@ -10877,15 +10882,15 @@ msgstr "inportatua."
 msgid "Opened inset"
 msgstr "Irekitako barnekoa"
 
-#: src/insets/insetbibtex.C:110
+#: src/insets/insetbibtex.C:107
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-ek sortutako bibliografia"
 
-#: src/insets/insetbibtex.C:205 src/insets/insetbibtex.C:258
+#: src/insets/insetbibtex.C:202 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Esportatze-abisua!"
 
-#: src/insets/insetbibtex.C:206
+#: src/insets/insetbibtex.C:203
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10893,7 +10898,7 @@ msgstr ""
 "BibTeX datu-basearen bide-izenetan zuriuneak daude.\n"
 "BibTeX ez da gai hauek bilatzeko."
 
-#: src/insets/insetbibtex.C:259
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -11155,11 +11160,11 @@ msgstr "ErrefGisakoa: "
 msgid "Opened table"
 msgstr "Irekitako taula"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1569
 msgid "Error setting multicolumn"
 msgstr "Errorea zutabe anitza ezartzean"
 
-#: src/insets/insettabular.C:1571
+#: src/insets/insettabular.C:1570
 msgid "You cannot set multicolumn vertically."
 msgstr "Ezin duzu zutabe anitza bertikalki ezarri."
 
@@ -11255,15 +11260,15 @@ msgstr "Aurrebista prest"
 msgid "Preview failed"
 msgstr "Aurrebistak huts egin du"
 
-#: src/ispell.C:209 src/ispell.C:216 src/ispell.C:225
+#: src/ispell.C:238 src/ispell.C:245 src/ispell.C:254
 msgid "Can't create pipe for spellchecker."
 msgstr "Ezin da zuzentzailearen kanalizaziorik sortu."
 
-#: src/ispell.C:230 src/ispell.C:235 src/ispell.C:240
+#: src/ispell.C:259 src/ispell.C:264 src/ispell.C:269
 msgid "Can't open pipe for spellchecker."
 msgstr "Ezin da zuzentzailearen kanalizaziorik ireki."
 
-#: src/ispell.C:249
+#: src/ispell.C:278
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
@@ -11271,7 +11276,7 @@ msgstr ""
 "Ezin izan da ispell prozesua sortu.\n"
 "Badirudi ez dituzula hizkuntza egokiak instalatuta."
 
-#: src/ispell.C:272
+#: src/ispell.C:301
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
@@ -11279,9 +11284,30 @@ msgstr ""
 "ispell prozesuak errore bat itzuli du.\n"
 "Gaizki konfiguratua egon daiteke?"
 
-#: src/ispell.C:383
+#: src/ispell.C:406
+#, c-format
+msgid ""
+"Could not check word `%1$s' because it could not be converted to encoding `%2"
+"$s'."
+msgstr ""
+
+#: src/ispell.C:417
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "Ezin izan da komunikatu ispell prozesuarekin."
+
+#: src/ispell.C:477
+#, c-format
+msgid ""
+"Could not insert word `%1$s' because it could not be converted to encoding `%"
+"2$s'."
+msgstr ""
+
+#: src/ispell.C:492
+#, c-format
+msgid ""
+"Could not accept word `%1$s' because it could not be converted to encoding `%"
+"2$s'."
+msgstr ""
 
 #: src/kbsequence.C:163
 msgid "   options: "
@@ -11378,11 +11404,11 @@ msgstr "&aldatu izenez"
 msgid "Choose a filename to save document as"
 msgstr "Aukeratu izena dokumentua gordetzeko"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1824
+#: src/lyx_cb.C:137 src/lyxfunc.C:1818
 msgid "Templates|#T#t"
 msgstr "Txantiloiak|#T#t"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1979
+#: src/lyx_cb.C:167 src/lyxfunc.C:1973
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11393,7 +11419,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gainidaztea?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:1981
+#: src/lyx_cb.C:169 src/lyxfunc.C:1975
 msgid "Over-write document?"
 msgstr "Gainidatzi dokumentua?"
 
@@ -11466,11 +11492,11 @@ msgstr ""
 "LyX berrabiarazi behar duzu eguneratutako \n"
 "dokumentu-klasearen zehaztasunak erabiltzeko."
 
-#: src/lyx_main.C:124
+#: src/lyx_main.C:127
 msgid "Could not read configuration file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"
 
-#: src/lyx_main.C:125
+#: src/lyx_main.C:128
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11481,11 +11507,11 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:137
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: erabiltzaile-direktorioa birkonfiguratzen"
 
-#: src/lyx_main.C:138
+#: src/lyx_main.C:141
 msgid "Done!"
 msgstr "Eginda!"
 
@@ -11498,20 +11524,20 @@ msgstr "Ezin izan da aldi-baterako %1$s direktorioa kendu"
 msgid "Unable to remove temporary directory"
 msgstr "Ezin da aldi baterako direktorioa ezabatu"
 
-#: src/lyx_main.C:468
+#: src/lyx_main.C:469
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/lyx_main.C:723
+#: src/lyx_main.C:724
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:846
+#: src/lyx_main.C:847
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/lyx_main.C:847
+#: src/lyx_main.C:848
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11522,11 +11548,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/lyx_main.C:1014
+#: src/lyx_main.C:1016
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/lyx_main.C:1015
+#: src/lyx_main.C:1017
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11535,37 +11561,37 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/lyx_main.C:1020
+#: src/lyx_main.C:1022
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/lyx_main.C:1021
+#: src/lyx_main.C:1023
 msgid "&Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/lyx_main.C:1022
+#: src/lyx_main.C:1024
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/lyx_main.C:1026
+#: src/lyx_main.C:1028
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/lyx_main.C:1032
+#: src/lyx_main.C:1034
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/lyx_main.C:1187
+#: src/lyx_main.C:1189
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/lyx_main.C:1191
+#: src/lyx_main.C:1193
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/lyx_main.C:1202
+#: src/lyx_main.C:1204
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11606,49 +11632,49 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/lyx_main.C:1238
+#: src/lyx_main.C:1240
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:1248
+#: src/lyx_main.C:1250
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:1258
+#: src/lyx_main.C:1260
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/lyx_main.C:1268
+#: src/lyx_main.C:1270
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:1280
+#: src/lyx_main.C:1282
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:1285
+#: src/lyx_main.C:1287
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 
-#: src/lyxfind.C:138
+#: src/lyxfind.C:135
 msgid "Search error"
 msgstr "Bilaketako errorea"
 
-#: src/lyxfind.C:139
+#: src/lyxfind.C:136
 msgid "Search string is empty"
 msgstr "Bilatzeko katea hutsik dago"
 
-#: src/lyxfind.C:290 src/lyxfind.C:321
+#: src/lyxfind.C:287 src/lyxfind.C:318
 msgid "String not found!"
 msgstr "Ez da katerik aurkitu!"
 
-#: src/lyxfind.C:325
+#: src/lyxfind.C:322
 msgid "String has been replaced."
 msgstr "Katea ordeztu da."
 
-#: src/lyxfind.C:328
+#: src/lyxfind.C:325
 msgid " strings have been replaced."
 msgstr " kate ordeztu dira."
 
@@ -11786,71 +11812,71 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/lyxfunc.C:1073 src/text3.C:1232
+#: src/lyxfunc.C:1064 src/text3.C:1233
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
-#: src/lyxfunc.C:1082
+#: src/lyxfunc.C:1073
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen..."
 
-#: src/lyxfunc.C:1352
+#: src/lyxfunc.C:1343
 msgid "Opening child document "
 msgstr "Ume-dokumentua irekitzen "
 
-#: src/lyxfunc.C:1438
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/lyxfunc.C:1449
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Huts egin du \"%1$s\" kolorea ezartzean - kolorea definitu gabe dago edo "
 "ezin da berriz definitu"
 
-#: src/lyxfunc.C:1565
+#: src/lyxfunc.C:1556
 msgid "Document defaults saved in "
 msgstr "Dokumentuaren lehenetsiak hemen gordeta: "
 
-#: src/lyxfunc.C:1568
+#: src/lyxfunc.C:1559
 msgid "Unable to save document defaults"
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
-#: src/lyxfunc.C:1624
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1815
 msgid "Select template file"
 msgstr "Hautatu txantiloia"
 
-#: src/lyxfunc.C:1858
+#: src/lyxfunc.C:1852
 msgid "Select document to open"
 msgstr "Hautatu dokumentua irekitzeko"
 
-#: src/lyxfunc.C:1897
+#: src/lyxfunc.C:1891
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "%1$s dokumentua irekitzen..."
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1895
 #, c-format
 msgid "Document %1$s opened."
 msgstr "%1$s dokumentua irekita."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Ezin izan da %1$s dokumentua ireki"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1922
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Hautatu %1$s fitxategia inportatzeko"
 
-#: src/lyxfunc.C:2045
+#: src/lyxfunc.C:2039
 msgid "Welcome to LyX!"
 msgstr "Ongi etorri LyX-era!"
 
@@ -12763,11 +12789,11 @@ msgstr "Diseinua "
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/text3.C:1337 src/text3.C:1349
+#: src/text3.C:1338 src/text3.C:1350
 msgid "Character set"
 msgstr "Karaktere-mota"
 
-#: src/text3.C:1480
+#: src/text3.C:1481
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa"
 

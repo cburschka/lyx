@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-09 15:44+0100\n"
+"POT-Creation-Date: 2006-12-16 13:25+0100\n"
 "PO-Revision-Date: 2006-11-13 23:37+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -65,7 +65,7 @@ msgstr "Legg til ei ny grein til lista"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:60
+#: src/frontends/qt4/ui/QCitationUi.ui:276
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:148
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:225
 msgid "&Add"
@@ -470,7 +470,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
 #: src/frontends/qt4/ui/QBranchUi.ui:31
 #: src/frontends/qt4/ui/QCharacterUi.ui:352
-#: src/frontends/qt4/ui/QCitationUi.ui:329
+#: src/frontends/qt4/ui/QCitationUi.ui:107
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:699
@@ -486,11 +486,11 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:349
+#: src/frontends/qt4/ui/QCitationUi.ui:127
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:98
 #: src/buffer_funcs.C:125 src/buffer_funcs.C:166 src/bufferlist.C:115
 #: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1982 src/lyxvc.C:175
+#: src/lyxfunc.C:861 src/lyxfunc.C:1976 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Avbryt"
 
@@ -718,7 +718,7 @@ msgstr "Loddrett justering for innhaldet i ramma"
 msgid "Vertical"
 msgstr "Loddrett"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:309
+#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:87
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
 #: src/frontends/qt4/ui/QGraphicsUi.ui:670
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
@@ -863,87 +863,91 @@ msgstr "Bruk endringane med det same"
 msgid "Close"
 msgstr "Lukk"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:47
+#: src/frontends/qt4/ui/QCitationUi.ui:47 src/frontends/qt4/ui/QSearchUi.ui:31
+msgid "&Find:"
+msgstr "&Finn:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:70
+#, fuzzy
+msgid "<- Clear"
+msgstr "&Fjern"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:120
+msgid "A&pply"
+msgstr "&Bruk"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:139
+msgid "Formatting"
+msgstr "Formatering"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:162
+msgid "Natbib citation style to use"
+msgstr "Bruk følgjande Natbib litteraturstil"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:169
+msgid "Citation &style:"
+msgstr "&Litteraturstil:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:179
+msgid "List all authors"
+msgstr "Alle forfattarane"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:182
+msgid "&Full author list"
+msgstr "&Heile forfattarlista"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:189
+msgid "Force upper case in citation"
+msgstr "Bruk store bokstavar i litteraturen"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:192
+msgid "Force &upper case"
+msgstr "Br&uk storebokstavar"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:199
+msgid "&Text after:"
+msgstr "&Tekst etter:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:217
+msgid "Text to place after citation"
+msgstr "Tekst etter litteratur-referansen"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:224
+msgid "Text &before:"
+msgstr "Tekst &før:"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:242
+msgid "Text to place before citation"
+msgstr "Tekst før litteratur-referansen"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:263
 msgid "&Available Citations:"
 msgstr "&Tilgjengelege litteratur:"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:70
+#: src/frontends/qt4/ui/QCitationUi.ui:286
 #, fuzzy
 msgid "&Selected Citations:"
 msgstr "&Valt litteratur"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:88
+#: src/frontends/qt4/ui/QCitationUi.ui:304
 msgid "Move the selected citation up"
 msgstr "Flytt den valde litteraturen oppover"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:91 src/frontends/qt4/ui/QTocUi.ui:36
+#: src/frontends/qt4/ui/QCitationUi.ui:307 src/frontends/qt4/ui/QTocUi.ui:36
 msgid "&Up"
 msgstr "&Opp"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:136
+#: src/frontends/qt4/ui/QCitationUi.ui:352
 msgid "Move the selected citation down"
 msgstr "Flytt den valde litteraturen nedover"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:139 src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QCitationUi.ui:355 src/frontends/qt4/ui/QTocUi.ui:43
 msgid "&Down"
 msgstr "&Ned"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:149
+#: src/frontends/qt4/ui/QCitationUi.ui:365
 msgid "D&elete"
 msgstr "Sle&tt"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:166
-#: src/frontends/qt4/ui/QSearchUi.ui:31
-msgid "&Find:"
-msgstr "&Finn:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:191
-msgid "Formatting"
-msgstr "Formatering"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:211
-msgid "Natbib citation style to use"
-msgstr "Bruk følgjande Natbib litteraturstil"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:218
-msgid "Citation &style:"
-msgstr "&Litteraturstil:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:228
-msgid "List all authors"
-msgstr "Alle forfattarane"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:231
-msgid "&Full author list"
-msgstr "&Heile forfattarlista"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:238
-msgid "Force upper case in citation"
-msgstr "Bruk store bokstavar i litteraturen"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:241
-msgid "Force &upper case"
-msgstr "Br&uk storebokstavar"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:248
-msgid "&Text after:"
-msgstr "&Tekst etter:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:266
-msgid "Text to place after citation"
-msgstr "Tekst etter litteratur-referansen"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:273
-msgid "Text &before:"
-msgstr "Tekst &før:"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:291
-msgid "Text to place before citation"
-msgstr "Tekst før litteratur-referansen"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:342
-msgid "A&pply"
-msgstr "&Bruk"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:49
 msgid "Match delimiter types"
@@ -8750,54 +8754,54 @@ msgstr "Eit ord i dokument."
 msgid "Count words"
 msgstr "Tel ord"
 
-#: src/BufferView.C:1404
+#: src/BufferView.C:1401
 msgid "Select LyX document to insert"
 msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 
-#: src/BufferView.C:1406 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1403 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
+#: src/lyxfunc.C:1817 src/lyxfunc.C:1854 src/lyxfunc.C:1927
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
-#: src/BufferView.C:1407 src/lyxfunc.C:1861 src/lyxfunc.C:1934
+#: src/BufferView.C:1404 src/lyxfunc.C:1855 src/lyxfunc.C:1928
 msgid "Examples|#E#e"
 msgstr "Eksempla|#E#e"
 
-#: src/BufferView.C:1411 src/lyx_cb.C:142 src/lyxfunc.C:1828
-#: src/lyxfunc.C:1865
+#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1822
+#: src/lyxfunc.C:1859
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Dokument (*.lyx)"
 
-#: src/BufferView.C:1423 src/lyxfunc.C:1875 src/lyxfunc.C:1955
-#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
+#: src/BufferView.C:1420 src/lyxfunc.C:1869 src/lyxfunc.C:1949
+#: src/lyxfunc.C:1963 src/lyxfunc.C:1979
 msgid "Canceled."
 msgstr "Avbroten."
 
-#: src/BufferView.C:1434
+#: src/BufferView.C:1431
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.C:1445
+#: src/BufferView.C:1442
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.C:1447
+#: src/BufferView.C:1444
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
 
-#: src/Chktex.C:72
+#: src/Chktex.C:71
 #, c-format
 msgid "ChkTeX warning id # %1$d"
 msgstr "ChkTeX åtvaring id # %1$d"
 
-#: src/Chktex.C:74
+#: src/Chktex.C:73
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX åtvaring id #"
 
@@ -9062,16 +9066,16 @@ msgstr "ignorer"
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Ventar på LaTeX køyring nummer %1$d"
 
-#: src/LaTeX.C:289 src/LaTeX.C:363
+#: src/LaTeX.C:289 src/LaTeX.C:365
 msgid "Running MakeIndex."
 msgstr "Lag indeks."
 
-#: src/LaTeX.C:294 src/LaTeX.C:370
+#: src/LaTeX.C:295 src/LaTeX.C:373
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Lag indeks."
 
-#: src/LaTeX.C:307
+#: src/LaTeX.C:309
 msgid "Running BibTeX."
 msgstr "BibTeX køyrer."
 
@@ -9225,11 +9229,11 @@ msgstr ""
 "LyX klarte ikkje å lage reservekopi i %1$s\n"
 "Er du sikker at stigen eksiterar og du kan skrive til den?"
 
-#: src/buffer.C:862
+#: src/buffer.C:849
 msgid "Encoding error"
 msgstr "Feil med teiknsettet"
 
-#: src/buffer.C:863
+#: src/buffer.C:850
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
@@ -9238,11 +9242,11 @@ msgstr ""
 "Nokre av teikna i dokumentet er ikkje i teiknkodinga. \n"
 "Prøv å endre teiknkodinga til utf8."
 
-#: src/buffer.C:872
+#: src/buffer.C:859
 msgid "Error closing file"
 msgstr "Klarte ikkje avslutte fila"
 
-#: src/buffer.C:873
+#: src/buffer.C:860
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9253,15 +9257,15 @@ msgstr ""
 "Det kan vere teikn i dokumentet ditt som ikkje er i teiknkodinga\n"
 "Prøv å endra teiknkodinga til utf8."
 
-#: src/buffer.C:1131
+#: src/buffer.C:1118
 msgid "Running chktex..."
 msgstr "Køyrer ChkTeX ..."
 
-#: src/buffer.C:1144
+#: src/buffer.C:1131
 msgid "chktex failure"
 msgstr "ChkTeX feil"
 
-#: src/buffer.C:1145
+#: src/buffer.C:1132
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje køyre ChkTeX."
 
@@ -9627,7 +9631,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "S&krivover dokumentet?"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1982
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1976
 msgid "&Over-write"
 msgstr "Skriv&over"
 
@@ -9929,19 +9933,19 @@ msgstr "lyx2lyx feillogg"
 msgid "Version Control Log"
 msgstr "Loggen til versjonkontrollen"
 
-#: src/frontends/controllers/ControlLog.C:113
+#: src/frontends/controllers/ControlLog.C:116
 msgid "No LaTeX log file found."
 msgstr "Ingen LaTeX loggfiler."
 
-#: src/frontends/controllers/ControlLog.C:116
+#: src/frontends/controllers/ControlLog.C:119
 msgid "No literate programming build log file found."
 msgstr "Fann ingen logg for lesbar programmering."
 
-#: src/frontends/controllers/ControlLog.C:119
+#: src/frontends/controllers/ControlLog.C:122
 msgid "No lyx2lyx error log file found."
 msgstr "Fann ingen lyx2lyx loggfiler."
 
-#: src/frontends/controllers/ControlLog.C:122
+#: src/frontends/controllers/ControlLog.C:125
 msgid "No version control log file found."
 msgstr "Fann ingen versjonkontroll-logg."
 
@@ -10200,7 +10204,7 @@ msgstr "Etikett"
 msgid "Directories"
 msgstr "Katalogar"
 
-#: src/frontends/qt4/GuiView.C:615
+#: src/frontends/qt4/GuiView.C:632
 msgid "LyX"
 msgstr "LyX"
 
@@ -10298,7 +10302,8 @@ msgid "(None)"
 msgstr "(Ingen)"
 
 #: src/frontends/qt4/QDelimiterDialog.C:110
-msgid "Variable size"
+#, fuzzy
+msgid "Variable"
 msgstr "Variabel storleik"
 
 #: src/frontends/qt4/QDocument.C:48
@@ -10852,15 +10857,15 @@ msgstr "importert."
 msgid "Opened inset"
 msgstr "Opna innskot"
 
-#: src/insets/insetbibtex.C:110
+#: src/insets/insetbibtex.C:107
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX genererte referansar"
 
-#: src/insets/insetbibtex.C:205 src/insets/insetbibtex.C:258
+#: src/insets/insetbibtex.C:202 src/insets/insetbibtex.C:255
 msgid "Export Warning!"
 msgstr "Eksport åtvaring!"
 
-#: src/insets/insetbibtex.C:206
+#: src/insets/insetbibtex.C:203
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
@@ -10868,7 +10873,7 @@ msgstr ""
 "Det er mellomrom i stigen til BibTeX databasane.\n"
 "BibTeX vil derfor ikkje kunne finne dei."
 
-#: src/insets/insetbibtex.C:259
+#: src/insets/insetbibtex.C:256
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
@@ -11130,11 +11135,11 @@ msgstr "PrettyRef: "
 msgid "Opened table"
 msgstr "Opna Tabell"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1569
 msgid "Error setting multicolumn"
 msgstr "Feil ved multikolonne"
 
-#: src/insets/insettabular.C:1571
+#: src/insets/insettabular.C:1570
 msgid "You cannot set multicolumn vertically."
 msgstr "Du kan ikkje bruke multikolonne loddrett."
 
@@ -11230,15 +11235,15 @@ msgstr "Førehandsvising klar"
 msgid "Preview failed"
 msgstr "Feil ved førehandsvising"
 
-#: src/ispell.C:209 src/ispell.C:216 src/ispell.C:225
+#: src/ispell.C:238 src/ispell.C:245 src/ispell.C:254
 msgid "Can't create pipe for spellchecker."
 msgstr "Kan ikkje starte datarøyr til stavekontrollen."
 
-#: src/ispell.C:230 src/ispell.C:235 src/ispell.C:240
+#: src/ispell.C:259 src/ispell.C:264 src/ispell.C:269
 msgid "Can't open pipe for spellchecker."
 msgstr "Kan ikkje opna datarøyr for stavekontrollen."
 
-#: src/ispell.C:249
+#: src/ispell.C:278
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
@@ -11246,7 +11251,7 @@ msgstr ""
 "Kunne ikkje starta ispell\n"
 "Kanskje ikkje du har rett språk installert."
 
-#: src/ispell.C:272
+#: src/ispell.C:301
 msgid ""
 "The ispell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
@@ -11254,9 +11259,30 @@ msgstr ""
 "Stavekontrollen gav ein feil.\n"
 "Er den rett innstilt?"
 
-#: src/ispell.C:383
+#: src/ispell.C:406
+#, c-format
+msgid ""
+"Could not check word `%1$s' because it could not be converted to encoding `%2"
+"$s'."
+msgstr ""
+
+#: src/ispell.C:417
 msgid "Could not communicate with the ispell spellchecker process."
 msgstr "Klarte ikkje å snakka med stavekontrollen."
+
+#: src/ispell.C:477
+#, c-format
+msgid ""
+"Could not insert word `%1$s' because it could not be converted to encoding `%"
+"2$s'."
+msgstr ""
+
+#: src/ispell.C:492
+#, c-format
+msgid ""
+"Could not accept word `%1$s' because it could not be converted to encoding `%"
+"2$s'."
+msgstr ""
 
 #: src/kbsequence.C:163
 msgid "   options: "
@@ -11353,11 +11379,11 @@ msgstr "End&ra namn"
 msgid "Choose a filename to save document as"
 msgstr "Vel eit anna filnamn"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1824
+#: src/lyx_cb.C:137 src/lyxfunc.C:1818
 msgid "Templates|#T#t"
 msgstr "Malar|#M#m"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1979
+#: src/lyx_cb.C:167 src/lyxfunc.C:1973
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11368,7 +11394,7 @@ msgstr ""
 "\n"
 "Vil du skriva over dokumentet?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:1981
+#: src/lyx_cb.C:169 src/lyxfunc.C:1975
 msgid "Over-write document?"
 msgstr "Skriv over dokumentet?"
 
@@ -11441,11 +11467,11 @@ msgstr ""
 "Du må starte LyX på nytt for å\n"
 "kunne nytte endringane."
 
-#: src/lyx_main.C:124
+#: src/lyx_main.C:127
 msgid "Could not read configuration file"
 msgstr "Kan ikkje lese fila med innstillingar"
 
-#: src/lyx_main.C:125
+#: src/lyx_main.C:128
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11456,11 +11482,11 @@ msgstr ""
 "%1$s.\n"
 "Sjekk LyX installasjonen din."
 
-#: src/lyx_main.C:134
+#: src/lyx_main.C:137
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Set opp brukarstig"
 
-#: src/lyx_main.C:138
+#: src/lyx_main.C:141
 msgid "Done!"
 msgstr "Ferdig!"
 
@@ -11473,20 +11499,20 @@ msgstr "Klarte ikkje å fjerna mellombelskatalogen %1$s"
 msgid "Unable to remove temporary directory"
 msgstr "Klarte ikkje å fjerna mellombelskatalogen"
 
-#: src/lyx_main.C:468
+#: src/lyx_main.C:469
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolinje val:`%1$s'. Farvel."
 
-#: src/lyx_main.C:723
+#: src/lyx_main.C:724
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:846
+#: src/lyx_main.C:847
 msgid "Could not create temporary directory"
 msgstr "Klarte ikkje å laga mellombelskatalog"
 
-#: src/lyx_main.C:847
+#: src/lyx_main.C:848
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11497,11 +11523,11 @@ msgstr ""
 "%1$s. Ver sikker på at stigen eksisterar \n"
 "og er skrivbar og prøv igjen."
 
-#: src/lyx_main.C:1014
+#: src/lyx_main.C:1016
 msgid "Missing user LyX directory"
 msgstr "Manglar brukerstig for LyX"
 
-#: src/lyx_main.C:1015
+#: src/lyx_main.C:1017
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11510,37 +11536,37 @@ msgstr ""
 "Du har sett ein brukarstig for LyX som ikkje eksisterar  %1$s.\n"
 "LyX treng den for å lagre vala dine."
 
-#: src/lyx_main.C:1020
+#: src/lyx_main.C:1022
 msgid "&Create directory"
 msgstr "&Lag katalog."
 
-#: src/lyx_main.C:1021
+#: src/lyx_main.C:1023
 msgid "&Exit LyX"
 msgstr "&Skru av LyX."
 
-#: src/lyx_main.C:1022
+#: src/lyx_main.C:1024
 msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukarstig for LyX. Stoppar."
 
-#: src/lyx_main.C:1026
+#: src/lyx_main.C:1028
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lagar katalogen %1$s"
 
-#: src/lyx_main.C:1032
+#: src/lyx_main.C:1034
 msgid "Failed to create directory. Exiting."
 msgstr "Klarte ikkje å lage katalog. Stoppar."
 
-#: src/lyx_main.C:1187
+#: src/lyx_main.C:1189
 msgid "List of supported debug flags:"
 msgstr "Liste over val ved avlusing:"
 
-#: src/lyx_main.C:1191
+#: src/lyx_main.C:1193
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Set nivået til avlusinga til %1$s"
 
-#: src/lyx_main.C:1202
+#: src/lyx_main.C:1204
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11580,47 +11606,47 @@ msgstr ""
 "\t-version        samandrag av versjon og byggje info\n"
 "Sjå `man' sida til LyX for meir informasjon."
 
-#: src/lyx_main.C:1238
+#: src/lyx_main.C:1240
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglar katalog for -sysdir val"
 
-#: src/lyx_main.C:1248
+#: src/lyx_main.C:1250
 msgid "Missing directory for -userdir switch"
 msgstr "Manglarkatalog for -userdir val"
 
-#: src/lyx_main.C:1258
+#: src/lyx_main.C:1260
 msgid "Missing command string after --execute switch"
 msgstr "Manglar kommando etter --execute val"
 
-#: src/lyx_main.C:1268
+#: src/lyx_main.C:1270
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --export val"
 
-#: src/lyx_main.C:1280
+#: src/lyx_main.C:1282
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --import val"
 
-#: src/lyx_main.C:1285
+#: src/lyx_main.C:1287
 msgid "Missing filename for --import"
 msgstr "Manglar filnamn for --import"
 
-#: src/lyxfind.C:138
+#: src/lyxfind.C:135
 msgid "Search error"
 msgstr "Søk feil"
 
-#: src/lyxfind.C:139
+#: src/lyxfind.C:136
 msgid "Search string is empty"
 msgstr "Søkje strengen er tom"
 
-#: src/lyxfind.C:290 src/lyxfind.C:321
+#: src/lyxfind.C:287 src/lyxfind.C:318
 msgid "String not found!"
 msgstr "Kan ikkje finne teksten."
 
-#: src/lyxfind.C:325
+#: src/lyxfind.C:322
 msgid "String has been replaced."
 msgstr "Teksten er bytta ut."
 
-#: src/lyxfind.C:328
+#: src/lyxfind.C:325
 msgid " strings have been replaced."
 msgstr " tekstane har blitt bytta ut."
 
@@ -11758,70 +11784,70 @@ msgstr ""
 "Alle endingar vil forsvinne. Er du sikker at du vil gå tilbake til siste "
 "lagra versjon av dokumentet %1$s?"
 
-#: src/lyxfunc.C:1073 src/text3.C:1232
+#: src/lyxfunc.C:1064 src/text3.C:1233
 msgid "Missing argument"
 msgstr "Manglande val"
 
-#: src/lyxfunc.C:1082
+#: src/lyxfunc.C:1073
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Opnar hjelpfila %1$s..."
 
-#: src/lyxfunc.C:1352
+#: src/lyxfunc.C:1343
 msgid "Opening child document "
 msgstr "Opner barne-dokumnet"
 
-#: src/lyxfunc.C:1438
+#: src/lyxfunc.C:1429
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1449
+#: src/lyxfunc.C:1440
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra"
 
-#: src/lyxfunc.C:1565
+#: src/lyxfunc.C:1556
 msgid "Document defaults saved in "
 msgstr "Standardval for dokument er lagra i "
 
-#: src/lyxfunc.C:1568
+#: src/lyxfunc.C:1559
 msgid "Unable to save document defaults"
 msgstr "Klarte ikkje å lagre standardval for dokument "
 
-#: src/lyxfunc.C:1624
+#: src/lyxfunc.C:1615
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokumentet til ny dokument klasse ..."
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1815
 msgid "Select template file"
 msgstr "Vel mal"
 
-#: src/lyxfunc.C:1858
+#: src/lyxfunc.C:1852
 msgid "Select document to open"
 msgstr "Vel dokument"
 
-#: src/lyxfunc.C:1897
+#: src/lyxfunc.C:1891
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Opnar dokumentet %1$s..."
 
-#: src/lyxfunc.C:1901
+#: src/lyxfunc.C:1895
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s er ope."
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1897
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikkje opna dokumentet %1$s"
 
-#: src/lyxfunc.C:1928
+#: src/lyxfunc.C:1922
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vel %1$s filen som skal importerast"
 
-#: src/lyxfunc.C:2045
+#: src/lyxfunc.C:2039
 msgid "Welcome to LyX!"
 msgstr "Velkomen til LyX!"
 
@@ -12707,11 +12733,11 @@ msgstr "Stil "
 msgid " not known"
 msgstr " ukjent"
 
-#: src/text3.C:1337 src/text3.C:1349
+#: src/text3.C:1338 src/text3.C:1350
 msgid "Character set"
 msgstr "Teiknsett"
 
-#: src/text3.C:1480
+#: src/text3.C:1481
 msgid "Paragraph layout set"
 msgstr "set avsnitt stil"
 
