@@ -35,7 +35,6 @@ using support::Systemcall;
 
 using std::getline;
 using std::string;
-using std::ifstream;
 
 
 Chktex::Chktex(string const & chktex, string const & f, string const & p)
