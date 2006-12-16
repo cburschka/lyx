@@ -56,8 +56,11 @@ The scons system resides under development/scons. You can invoke it from
 either development/scons by, for example:
   > cd development/scons
   > scons frontend=qt4 qt_dir=d:/qt4 -j3 lyx
-or from top source directory by:
-  > scons -f development/scons/SConstruct frontend=qt4 all
+or from any other directory and use -f option to point to the SConstruct
+file:
+  > mkdir build
+  > cd build
+  > scons -f ../development/scons/SConstruct frontend=qt4 all
 
 There are three types of command line options:
   * key=value are user options. They are used to tell scons which
@@ -104,8 +107,6 @@ Paths: Most of them will be probed if not specified.
 
 Convenience options:
 
-  * fast_start=yes/no: if true, bypass initial configuration step and use
-    existing src/config.h
   * load_option=yes/no/opt1,opt2/-opt1,opt2: if true, load previously saved
     command line options so you can run 'scons install' directly after a
     long 'scons all' building command. You can load selected options using
@@ -122,7 +123,7 @@ Installation options:
   * prefix: directory where lyx will be installed
   * exec_dir: directory where lyx binaries will be installed.
     Default to $prefix/bin
-  * dest_dir: if specified, install to this directory instead of $prefix.
+  * DESTDIR: if specified, install to this directory instead of $prefix.
   * version_suffix=yes/no/something : if specified, this suffix will be 
     appended to the user data directory.
 
@@ -156,7 +157,6 @@ directory structure is:
   $build_dir
     - common: most of the intermediate files, mostly object files
     - libs: all static libraries
-    - qt4 etc: lyx executable built with the frontend
     - executables: lyxclient, tex2lyx, lyx
 
 MSVS projects will be put to development/scons (and you should invoke
@@ -176,9 +176,7 @@ A typical working sequence:
     (working on lyx_main.C, so only need to rebuild lyxbase)
   > scons
     (build again, only lyxbase will be rebuilt)
-  > scons fast_start=no --config=force
-    (need to regenerate src/config.h)
-  > scons prefix=/usr/site dest_dir=/install/dir
+  > scons prefix=/usr/site DESTDIR=/install/dir
     (lyx is built for /usr/site, but install to /install/dir)
 
 

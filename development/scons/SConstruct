@@ -37,20 +37,11 @@ if version[0] == 0 and version[1] == 96 and version[2] < 92:
 
 # determine where I am ...
 #
-# called as 'cd development/scons; scons'
-if os.path.isfile('SConstruct'):
-    top_src_dir = '../..'
-    scons_dir = '.'
-# called as 'scons -f development/scons/SConstruct'
-elif os.path.isfile('configure.ac'):
-    top_src_dir = '.'
-    scons_dir = 'development/scons'
-else:
-    print "scons can only be called from top source directory, with command:"
-    print "   $ scons -f development/scons/SConstruct [other options]"
-    print "or from development/scons, with command:"
-    print "   $ scons [options]"
-    Exit(1)
+from SCons.Node.FS import default_fs
+# default_fs.SConstruct_dir is where SConstruct file is located.
+scons_dir = default_fs.SConstruct_dir.path
+# get the ../.. of scons_dir
+top_src_dir = os.path.split(os.path.split(default_fs.SConstruct_dir.abspath)[0])[0]
 
 
 #----------------------------------------------------------
@@ -1857,7 +1848,7 @@ if build_lyx:
     # Build lyx with given frontend
     #
     lyx = env.Program(
-        target = '$BUILDDIR/$frontend/lyx',
+        target = '$BUILDDIR/lyx',
         source = ['$BUILDDIR/common/main.C'],
         LIBS = [
             'lyxbase_pre',
@@ -1879,7 +1870,7 @@ if build_lyx:
     Alias('lyx', lyx)
 else:
     # define lyx even if lyx is not built with rebuild=no
-    lyx = [env.subst('$BUILDDIR/$frontend/${PROGPREFIX}lyx$PROGSUFFIX')]
+    lyx = [env.subst('$BUILDDIR/${PROGPREFIX}lyx$PROGSUFFIX')]
 
 
 if build_msvs_projects:
@@ -1980,7 +1971,7 @@ if build_msvs_projects:
             ['$TOP_SRCDIR/src/frontends/qt4/%s' % x for x in src_frontends_qt4_header_files],
         res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
         rebuildTargetOnly = False,
-        full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
+        full_target = File(env.subst('$BUILDDIR/lyx$PROGSUFFIX')).abspath)
 
 
 if build_po:
