@@ -54,7 +54,7 @@ top_src_dir = os.path.split(os.path.split(default_fs.SConstruct_dir.abspath)[0])
 # not have to change SConstruct during lyx release
 package_version = utils.getVerFromConfigure(top_src_dir)
 package_cygwin_version = '%s-1' % package_version
-boost_version = '1_33_1'
+boost_version = ['1_33_1', '1_34']
 
 if 'svn' in package_version:
     devel_version = True

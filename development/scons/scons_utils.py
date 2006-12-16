@@ -158,12 +158,12 @@ int main()
     return ('int', 'int *', 'struct timeval *')
 
 
-def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
+def checkBoostLibraries(conf, libs, lib_paths, inc_paths, versions, isDebug):
     ''' look for boost libraries
       libs: library names
       lib_paths: try these paths for boost libraries
       inc_paths: try these paths for boost headers
-      version:   required boost version
+      versions:   supported boost versions
       isDebug:   if true, use debug libraries
     '''
     conf.Message('Checking for boost library %s... ' % ', '.join(libs))
@@ -188,13 +188,18 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
             if len(files) > 0:
                 # runtime code includes s,g,y,d,p,n, where we should look for
                 # d,g,y for debug, s,p,n for release
+                lib_files = []
                 if isDebug:
-                    lib_files = filter(lambda x: re.search('libboost_%s-\w+-mt-[^spn]+-%s.a' % (lib, version), x), files)
+                    for ver in versions:
+                        lib_files += filter(lambda x: re.search('libboost_%s-\w+-mt-[^spn]+-%s.a' % (lib, ver), x), files)
                 else:
-                    lib_files = filter(lambda x: re.search('libboost_%s-\w+-mt-([^dgy]+-)*%s.a' % (lib, version), x), files)
+                    for ver in versions:
+                        lib_files += filter(lambda x: re.search('libboost_%s-\w+-mt-([^dgy]+-)*%s.a' % (lib, ver), x), files)
                 if len(lib_files) == 0:
                     print 'Warning: Can not find an appropriate boost library in %s.' % path
-                    lib_files = filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, version), x), files)
+                    print 'Allowed versions are ', ', '.join(versions)
+                    for ver in versions:
+                        lib_files += filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, ver), x), files)
                     if len(lib_files) > 0:
                         print 'Use library %s' % lib_files[0]
                 if len(lib_files) > 0:
@@ -209,9 +214,12 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
         return (None, None, None)
     # check version number in boost/version.hpp
     def isValidBoostDir(dir):
-        file = os.path.join(dir, 'boost', 'version.hpp')
-        version_string = '#define BOOST_LIB_VERSION "%s"' % version
-        return os.path.isfile(file) and version_string in open(file).read()
+        version_file = os.path.join(dir, 'boost', 'version.hpp')
+        if not os.path.isfile(version_file):
+            return False
+        version_file_content = open(version_file).read()
+        version_strings = ['#define BOOST_LIB_VERSION "%s"' % ver for ver in versions]
+        return True in [x in version_file_content for x in version_strings]
     # check for boost header file
     for path in inc_paths:
         if isValidBoostDir(path):
@@ -225,6 +233,7 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, version, isDebug):
     # return result
     if found_inc:
         conf.Result('yes')
+        print 'Using boost libraries', ', '.join(lib_names)
         return (lib_names, lib_path, inc_path)
     else:
         conf.Result('no')
