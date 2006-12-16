@@ -43,7 +43,7 @@
 #   index entry          -> Stichwort   (H. Haase)
 #   inline               -> eingebettet
 #   key                  -> Schlüssel
-#   keyword              -> Stichwort
+#   keyword              -> Schlagwort
 #   label                -> Marke
 #   layout               -> Format          (Hartmut Haase)
 #   math                 -> Mathe
@@ -938,9 +938,8 @@ msgid "&Find:"
 msgstr "&Suchen:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:70
-#, fuzzy
 msgid "<- Clear"
-msgstr "&Löschen"
+msgstr "<- &Entfernen"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:120
 msgid "A&pply"
@@ -1858,7 +1857,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:168
 msgid "&Document format"
-msgstr "&Dokumentformat"
+msgstr "&Dokumentenformat"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:175
 msgid "&File formats"
@@ -2865,7 +2864,7 @@ msgstr "Stichwort"
 
 #: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:221
 msgid "&Keyword:"
-msgstr "&Stichwort:"
+msgstr "&Schlagwort:"
 
 #: src/frontends/qt4/ui/QThesaurusUi.ui:55
 msgid "Entry"
@@ -3411,7 +3410,7 @@ msgstr "Zusammenfassung---"
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:194
 #: lib/layouts/svjour.inc:273
 msgid "Keywords"
-msgstr "Stichwörter"
+msgstr "Schlagwörter"
 
 #: lib/layouts/IEEEtran.layout:359
 msgid "Index Terms---"
@@ -4835,11 +4834,11 @@ msgstr "Vorspann"
 
 #: lib/layouts/entcs.layout:98
 msgid "Keyword"
-msgstr "Stichwort"
+msgstr "Schlagwort"
 
 #: lib/layouts/entcs.layout:109 lib/layouts/svjour.inc:287
 msgid "Key words:"
-msgstr "Stichwörter:"
+msgstr "Schlagwörter:"
 
 #: lib/layouts/foils.layout:42
 msgid "Foilhead"
@@ -5619,7 +5618,7 @@ msgstr "Szene"
 #: lib/layouts/revtex4.layout:235 lib/layouts/spie.layout:46
 #: lib/layouts/agu_stdtitle.inc:123
 msgid "Keywords:"
-msgstr "Stichwörter:"
+msgstr "Schlagwörter:"
 
 #: lib/layouts/ijmpc.layout:95
 msgid "Classification Codes"
@@ -5720,7 +5719,7 @@ msgstr "ZUSAMMENFASSUNG:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr "SCHLÜSSELWÖRTER:"
+msgstr "SCHLAGWÖRTER:"
 
 #: lib/layouts/isprs.layout:135
 msgid "Commission"
@@ -6163,7 +6162,7 @@ msgstr "Paragraph*"
 
 #: lib/layouts/siamltex.layout:172
 msgid "Key words."
-msgstr "Stichwörter."
+msgstr "Schlagwörter."
 
 #: lib/layouts/siamltex.layout:176
 msgid "AMS"
@@ -6479,7 +6478,7 @@ msgstr "EMail-Adresse:"
 
 #: lib/layouts/amsdefs.inc:197
 msgid "Key words and phrases:"
-msgstr "Schlüsselwörter und Ausdrücke:"
+msgstr "Schlagwörter und Ausdrücke:"
 
 #: lib/layouts/amsdefs.inc:208
 msgid "Dedicatory"
@@ -7962,7 +7961,7 @@ msgstr "Absatz nach unten verschieben|u"
 
 #: lib/ui/stdmenus.ui:98
 msgid "Text Style|S"
-msgstr "Text-Stil|T"
+msgstr "Textstil|T"
 
 #: lib/ui/stdmenus.ui:99
 msgid "Paragraph Settings...|P"
@@ -9200,7 +9199,7 @@ msgstr "%1$s konnte nicht gelesen werden."
 
 #: src/buffer.C:632 src/buffer.C:698
 msgid "Document format failure"
-msgstr "Dokumentformat-Fehler"
+msgstr "Dokumentenformat-Fehler"
 
 #: src/buffer.C:633
 #, c-format
@@ -11307,6 +11306,8 @@ msgid ""
 "Could not check word `%1$s' because it could not be converted to encoding `%2"
 "$s'."
 msgstr ""
+"Das Wort `%1$s' konnte nicht geprüft werden, weil es nicht in die Kodierung `"
+"%2$s' konvertiert werden konnte."
 
 #: src/ispell.C:417
 msgid "Could not communicate with the ispell spellchecker process."
@@ -11320,6 +11321,8 @@ msgid ""
 "Could not insert word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
+"Das Wort `%1$s' konnte nicht eingefügt werden, weil es nicht in die "
+"Kodierung `%2$s' konvertiert werden konnte."
 
 #: src/ispell.C:492
 #, c-format
@@ -11327,6 +11330,8 @@ msgid ""
 "Could not accept word `%1$s' because it could not be converted to encoding `%"
 "2$s'."
 msgstr ""
+"Das Wort `%1$s' konnte nicht akzeptiert werden, weil es nicht in die "
+"Kodierung `%2$s' konvertiert werden konnte."
 
 #: src/kbsequence.C:163
 msgid "   options: "
@@ -12144,10 +12149,14 @@ msgstr ""
 #: src/lyxrc.C:2321
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
+"Deaktivieren Sie diesen Schalter, wenn LyX nicht zur gespeicherten Position "
+"blättern soll."
 
 #: src/lyxrc.C:2325
 msgid "De-select to prevent loading files opened from the last lyx session."
 msgstr ""
+"Deaktivieren Sie diesen Schalter, um das Laden von Dateien zu verhindern, "
+"die bei der letzten LyX-Sitzung geöffnet waren."
 
 #: src/lyxrc.C:2329
 msgid "De-select if you don't want LyX to create backup files."
@@ -12365,10 +12374,15 @@ msgid ""
 "Specify geometry of the main view in width x height (values from last "
 "session will not be used if non-zero values are specified)."
 msgstr ""
+"Spezifizieren Sie die Größe der Hauptansicht in Breite x Höhe (die Werte der "
+"letzten Sitzung werden nicht verwendet, wenn Sie Werte ungleich Null "
+"angeben)."
 
 #: src/lyxrc.C:2490
 msgid "Allow session manager to save and restore windows position."
 msgstr ""
+"Erlaubt dem Sitzungsmanager, Positionen von Fenstern zu speichern und wieder "
+"herzustellen."
 
 #: src/lyxrc.C:2494
 msgid ""
@@ -12620,15 +12634,15 @@ msgstr "Unbekannter Benutzer"
 
 #: src/tex-strings.C:68
 msgid "Computer Modern Roman"
-msgstr ""
+msgstr "Computer Modern Roman"
 
 #: src/tex-strings.C:68
 msgid "Latin Modern Roman"
-msgstr ""
+msgstr "Latin Modern Roman"
 
 #: src/tex-strings.C:69
 msgid "AE (Almost European)"
-msgstr ""
+msgstr "AE (Almost European)"
 
 #: src/tex-strings.C:69
 msgid "Times Roman"
@@ -12668,11 +12682,11 @@ msgstr "Zapf Chancery"
 
 #: src/tex-strings.C:79
 msgid "Computer Modern Sans"
-msgstr ""
+msgstr "Computer Modern Sans"
 
 #: src/tex-strings.C:79
 msgid "Latin Modern Sans"
-msgstr ""
+msgstr "Latin Modern Sans"
 
 #: src/tex-strings.C:80
 msgid "Helvetica"
@@ -12684,19 +12698,19 @@ msgstr "Avant Garde"
 
 #: src/tex-strings.C:80
 msgid "Bera Sans"
-msgstr ""
+msgstr "Bera Sans"
 
 #: src/tex-strings.C:80
 msgid "CM Bright"
-msgstr ""
+msgstr "CM Bright"
 
 #: src/tex-strings.C:89
 msgid "Computer Modern Typewriter"
-msgstr ""
+msgstr "Computer Modern Typewriter"
 
 #: src/tex-strings.C:90
 msgid "Latin Modern Typewriter"
-msgstr ""
+msgstr "Latin Modern Typewriter"
 
 #: src/tex-strings.C:90
 msgid "Courier"
@@ -12712,7 +12726,7 @@ msgstr "LuxiMono"
 
 #: src/tex-strings.C:91
 msgid "CM Typewriter Light"
-msgstr ""
+msgstr "CM Typewriter Light"
 
 #: src/text.C:190
 msgid "Unknown layout"
