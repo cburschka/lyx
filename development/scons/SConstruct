@@ -682,23 +682,31 @@ if frontend == 'qt4':
     if not succ:
         # Under linux, I can test the following perfectly
         # Under windows, lib names need to passed as libXXX4.a ...
-        succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();') or \
-            conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
-    # third: try to look up the path
-    if not succ:
-        succ = True
-        for lib in ['QtCore', 'QtGui']:
-            # windows version has something like QtGui4 ...
-            if not (os.path.isfile(os.path.join(qt_lib_path, 'lib%s.a' % lib)) or \
-                os.path.isfile(os.path.join(qt_lib_path, 'lib%s4.a' % lib))):
-                succ = False
-                break
+        if platform_name == 'win32' and use_vc:
+            succ = conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
+        else:
+            succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
     # still can not find it
-    if succ:
-        print "Qt4 libraries are found."
-    else:
+    if not succ:
         print 'Did not find qt libraries, exiting!'
         Exit(1)
+    #
+    # Now, determine the correct suffix:
+    qt_libs = ['QtCore', 'QtGui']
+    if platform_name == 'win32':
+        if mode == 'debug' and use_vc and \
+            conf.CheckLibWithHeader('QtCored4', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
+            qt_lib_suffix = 'd4'
+        else:
+            qt_lib_suffix = '4'
+    else:
+        if mode == 'debug' and conf.CheckLibWithHeader('QtCore_debug', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
+            qt_lib_suffix = '_debug'
+        else:
+            qt_lib_suffix = ''
+    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
+    qtcore_lib = ['QtCore' + qt_lib_suffix]
+    
 
 # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
 if use_vc:
@@ -1278,26 +1286,6 @@ env = conf.Finish()
 # Now set up our build process accordingly
 #----------------------------------------------------------
 
-#
-# QT_LIB
-#
-# NOTE: Tool('qt') or Tool('qt4') will be loaded later
-# in their respective directory and specialized env.
-if frontend == 'qt4':
-    qt_libs = ['QtCore', 'QtGui']
-    # set the right lib names
-    if platform_name == 'win32':
-        if mode == 'debug' and use_vc:
-            qt_lib_suffix = 'd4'
-        else:
-            qt_lib_suffix = '4'
-    else:
-        if mode == 'debug':
-            qt_lib_suffix = '_debug'
-        else:
-            qt_lib_suffix = ''
-    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
-    qtcore_lib = ['QtCore' + qt_lib_suffix]
 
 
 if env['ICONV_LIB'] is None:
