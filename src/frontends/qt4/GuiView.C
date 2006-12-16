@@ -156,8 +156,8 @@ unsigned int GuiView::GuiViewPrivate::lastIconSize = 0;
 
 
 GuiView::GuiView(int id)
-	: QMainWindow(), LyXView(id), commandbuffer_(0), d(*new GuiViewPrivate),
-	  quitting_by_menu_(false)
+	: QMainWindow(), LyXView(id), commandbuffer_(0), quitting_by_menu_(false),
+	  d(*new GuiViewPrivate)
 {
 	// Qt bug? signal lastWindowClosed does not work
 	setAttribute(Qt::WA_QuitOnClose, false);
