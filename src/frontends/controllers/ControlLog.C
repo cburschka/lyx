@@ -100,6 +100,9 @@ void ControlLog::getContents(std::ostream & ss) const
 
 	bool success = false;
 
+	// FIXME UNICODE
+	// Our caller interprets the file contents as UTF8, but is that
+	// correct?
 	if (in) {
 		ss << in.rdbuf();
 		success = ss.good();
