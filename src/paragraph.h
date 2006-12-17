@@ -241,7 +241,7 @@ public:
 	docstring const getLabelWidthString() const;
 	///
 	void setLabelWidthString(docstring const & s);
-	///
+	/// Actual paragraph alignment used
 	char getAlign() const;
 	/// The nesting depth of a paragraph
 	depth_type getDepth() const;
