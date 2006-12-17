@@ -55,6 +55,7 @@ using namespace std;
 using support::bformat;
 using support::FileName;
 using support::libFileSearch;
+using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::onlyPath;
@@ -100,7 +101,7 @@ bool readFile(Buffer * const b, FileName const & s)
 		case 0:
 			// the file is not saved if we load the emergency file.
 			b->markDirty();
-			return b->readFile(e.absFilename());
+			return b->readFile(e);
 		case 1:
 			break;
 		default:
@@ -127,7 +128,7 @@ bool readFile(Buffer * const b, FileName const & s)
 		case 0:
 			// the file is not saved if we load the autosave file.
 			b->markDirty();
-			return b->readFile(a.absFilename());
+			return b->readFile(a);
 		case 1:
 			// Here we delete the autosave
 			unlink(a);
@@ -136,7 +137,7 @@ bool readFile(Buffer * const b, FileName const & s)
 			return false;
 		}
 	}
-	return b->readFile(s.absFilename());
+	return b->readFile(s);
 }
 
 
@@ -185,16 +186,16 @@ Buffer * newFile(string const & filename, string const & templatename,
 	Buffer * b = theBufferList().newBuffer(filename);
 	BOOST_ASSERT(b);
 
-	string tname;
+	FileName tname;
 	// use defaults.lyx as a default template if it exists.
 	if (templatename.empty())
-		tname = libFileSearch("templates", "defaults.lyx").absFilename();
+		tname = libFileSearch("templates", "defaults.lyx");
 	else
-		tname = templatename;
+		tname = FileName(makeAbsPath(templatename));
 
 	if (!tname.empty()) {
 		if (!b->readFile(tname)) {
-			docstring const file = makeDisplayPath(tname, 50);
+			docstring const file = makeDisplayPath(tname.absFilename(), 50);
 			docstring const text  = bformat(
 				_("The specified document template\n%1$s\ncould not be read."),
 				file);

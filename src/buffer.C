@@ -569,11 +569,10 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 }
 
 
-bool Buffer::readFile(string const & filename)
+bool Buffer::readFile(FileName const & filename)
 {
 	// Check if the file is compressed.
-	FileName const name(makeAbsPath(filename));
-	string const format = getFormatFromContents(name);
+	string const format = getFormatFromContents(filename);
 	if (format == "gzip" || format == "zip" || format == "compress") {
 		params().compressed = true;
 	}
@@ -581,7 +580,7 @@ bool Buffer::readFile(string const & filename)
 	// remove dummy empty par
 	paragraphs().clear();
 	LyXLex lex(0, 0);
-	lex.setFile(name);
+	lex.setFile(filename);
 	if (!readFile(lex, filename))
 		return false;
 
@@ -606,13 +605,13 @@ void Buffer::fully_loaded(bool const value)
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename)
+bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 {
 	BOOST_ASSERT(!filename.empty());
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
-			     bformat(_("%1$s could not be read."), from_utf8(filename)));
+			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
 		return false;
 	}
 
@@ -621,7 +620,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
-			     bformat(_("%1$s could not be read."), from_utf8(filename)));
+			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
 		return false;
 	}
 
@@ -631,7 +630,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s is not a LyX document."),
-				       from_utf8(filename)));
+				       from_utf8(filename.absFilename())));
 		return false;
 	}
 
@@ -647,14 +646,14 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	//lyxerr << "format: " << file_format << endl;
 
 	if (file_format != LYX_FORMAT) {
-		string const tmpfile = tempName();
+		FileName const tmpfile(tempName());
 		if (tmpfile.empty()) {
 			Alert::error(_("Conversion failed"),
 				     bformat(_("%1$s is from an earlier"
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
 							    " not be created."),
-					      from_utf8(filename)));
+					      from_utf8(filename.absFilename())));
 			return false;
 		}
 		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
@@ -664,14 +663,15 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
 							    " could not be found."),
-					       from_utf8(filename)));
+					       from_utf8(filename.absFilename())));
 			return false;
 		}
 		ostringstream command;
-		command << os::python() << ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
-			<< " -t " << convert<string>(LYX_FORMAT)
-			<< " -o " << quoteName(tmpfile) << ' '
-			<< quoteName(filename);
+		command << os::python()
+		        << ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
+		        << " -t " << convert<string>(LYX_FORMAT)
+		        << " -o " << quoteName(tmpfile.toFilesystemEncoding())
+		        << ' ' << quoteName(filename.toFilesystemEncoding());
 		string const command_str = command.str();
 
 		lyxerr[Debug::INFO] << "Running '"
@@ -684,7 +684,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 				     bformat(_("%1$s is from an earlier version"
 					      " of LyX, but the lyx2lyx script"
 							    " failed to convert it."),
-					      from_utf8(filename)));
+					      from_utf8(filename.absFilename())));
 			return false;
 		} else {
 			bool const ret = readFile(tmpfile);
@@ -698,7 +698,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s ended unexpectedly, which means"
 						    " that it is probably corrupted."),
-				       from_utf8(filename)));
+				       from_utf8(filename.absFilename())));
 	}
 
 	//lyxerr << "removing " << MacroTable::localMacros().size()

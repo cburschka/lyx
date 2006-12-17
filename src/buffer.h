@@ -99,7 +99,7 @@ public:
 	void loadAutoSaveFile();
 
 	/// load a new file
-	bool readFile(std::string const & filename);
+	bool readFile(support::FileName const & filename);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
@@ -367,7 +367,7 @@ private:
 	/** Inserts a file into a document
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, std::string const & filename);
+	bool readFile(LyXLex &, support::FileName const & filename);
 
 	bool do_writeFile(std::ostream & ofs) const;
 
