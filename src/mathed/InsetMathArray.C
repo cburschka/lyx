@@ -15,7 +15,6 @@
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
-#include "MathStream.h"
 
 #include "support/lstrings.h"
 

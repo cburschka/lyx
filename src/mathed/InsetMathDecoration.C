@@ -13,9 +13,8 @@
 
 #include "InsetMathDecoration.h"
 #include "MathData.h"
-#include "MathSupport.h"
 #include "MathParser.h"
-#include "MathStream.h"
+#include "MathSupport.h"
 #include "MathStream.h"
 
 #include "LaTeXFeatures.h"

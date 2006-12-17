@@ -39,7 +39,6 @@
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathScript.h"
 #include "mathed/MathMacroTable.h"
-#include "mathed/MathParser.h"
 
 #include "support/limited_stack.h"
 

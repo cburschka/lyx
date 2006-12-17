@@ -29,9 +29,6 @@ using support::libFileSearch;
 
 using std::string;
 using std::ifstream;
-using std::istream;
-using std::istringstream;
-using std::ostream;
 using std::endl;
 using std::vector;
 

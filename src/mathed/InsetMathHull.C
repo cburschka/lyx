@@ -671,7 +671,6 @@ docstring InsetMathHull::nicelabel(row_type row) const
 		return docstring();
 	if (label_[row].empty())
 		return from_ascii("(#)");
-	// FIXME UNICODE
 	return '(' + label_[row] + ')';
 }
 
@@ -984,7 +983,6 @@ void InsetMathHull::doExtern(LCursor & cur, FuncRequest & func)
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (cur.inMathed() && cur.selection()) {
-			// FIXME UNICODE
 			asArray(grabAndEraseSelection(cur), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();

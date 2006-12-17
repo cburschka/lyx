@@ -13,8 +13,6 @@
 #include "InsetMathFBox.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathParser.h"
-#include "MathStream.h"
 #include "LColor.h"
 
 #include "support/std_ostream.h"

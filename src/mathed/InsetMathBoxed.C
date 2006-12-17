@@ -13,8 +13,6 @@
 #include "InsetMathBoxed.h"
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathParser.h"
-#include "MathStream.h"
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 

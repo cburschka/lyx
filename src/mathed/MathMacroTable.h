@@ -13,7 +13,6 @@
 #define MATH_MACROTABLE_H
 
 #include <map>
-#include <string>
 #include <vector>
 
 #include "support/docstring.h"

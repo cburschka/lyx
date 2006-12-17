@@ -51,7 +51,6 @@
 #include "InsetMathXYMatrix.h"
 #include "MathMacroArgument.h"
 #include "MathMacroTable.h"
-#include "MathMacroTemplate.h"
 #include "MathParser.h"
 #include "MathSupport.h"
 
@@ -61,9 +60,6 @@
 #include "support/lstrings.h"
 
 #include "frontends/FontLoader.h"
-
-#include <fstream>
-#include <sstream>
 
 
 namespace lyx {
