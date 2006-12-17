@@ -276,6 +276,7 @@ dist_imagesmath_DATA = \
 	images/math/Game.xpm \
 	images/math/Im.xpm \
 	images/math/Lleftarrow.xpm \
+	images/math/Rrightarrow.xpm \
 	images/math/Lsh.xpm \
 	images/math/Re.xpm \
 	images/math/Rsh.xpm \

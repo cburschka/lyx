@@ -1545,6 +1545,7 @@ lib_images_math_files = Split('''
     Game.xpm
     Im.xpm
     Lleftarrow.xpm
+    Rrightarrow.xpm
     Lsh.xpm
     Re.xpm
     Rsh.xpm
