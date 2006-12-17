@@ -124,7 +124,8 @@ Package::Package(string const & command_line_arg0,
 	: explicit_user_support_dir_(false)
 {
 	home_dir_ = get_home_dir();
-	temp_dir_ = get_temp_dir();
+	system_temp_dir_ = get_temp_dir();
+	temp_dir_ = system_temp_dir_;
 	document_dir_ = get_document_dir(home_dir_);
 
 	string const abs_binary = abs_path_from_binary_name(command_line_arg0);

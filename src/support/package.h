@@ -104,8 +104,13 @@ public:
 	 */
 	std::string & document_dir() const;
 
-	/** The path to the temporary directory.
+	/** The path to the system temporary directory.
 	 *  (Eg /tmp on *nix.)
+	 */
+	std::string const & system_temp_dir() const;
+
+	/** The path to the temporary directory used by LyX.
+	 *  (Eg /tmp/lyx_tmpdir800nBI1z9 on *nix.)
 	 *  Can be reset by LyXRC.
 	 */
 	std::string & temp_dir() const;
@@ -129,6 +134,7 @@ private:
 	std::string locale_dir_;
 	mutable std::string document_dir_;
 	mutable std::string temp_dir_;
+	std::string system_temp_dir_;
 	std::string home_dir_;
 	std::string configure_command_;
 	bool explicit_user_support_dir_;
@@ -184,6 +190,12 @@ inline
 std::string & Package::temp_dir() const
 {
 	return temp_dir_;
+}
+
+inline
+std::string const & Package::system_temp_dir() const
+{
+	return system_temp_dir_;
 }
 
 inline

@@ -110,9 +110,6 @@ bool use_gui = true;
 
 namespace {
 
-/// Don't try to remove the temporary directory if it has not been created
-bool remove_tmpdir = false;
-
 // Filled with the command line arguments "foo" of "-sysdir foo" or
 // "-userdir foo".
 string cl_system_support;
@@ -422,7 +419,7 @@ void LyX::prepareExit()
 	pimpl_->buffer_list_.closeAll();
 
 	// do any other cleanup procedures now
-	if (remove_tmpdir) {
+	if (package().temp_dir() != package().system_temp_dir()) {
 		lyxerr[Debug::INFO] << "Deleting tmp dir "
 				    << package().temp_dir() << endl;
 
@@ -856,7 +853,6 @@ bool LyX::init()
 		// trying again but simply exit.
 		return false;
 	}
-	remove_tmpdir = true;
 
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << package().temp_dir() << '\'' << endl;
