@@ -163,14 +163,23 @@ void Paragraph::Pimpl::acceptChanges(pos_type start, pos_type end)
 {
 	BOOST_ASSERT(start >= 0 && start <= size());
 	BOOST_ASSERT(end > start && end <= size() + 1);
-	
+
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
+				// accept changes in nested inset
+				if (pos < size() && owner_->isInset(pos)) {
+					owner_->getInset(pos)->acceptChanges();
+				}
+
 				break;
 
 			case Change::INSERTED:
 				changes_.set(Change(Change::UNCHANGED), pos);
+				// also accept changes in nested inset
+				if (pos < size() && owner_->isInset(pos)) {
+					owner_->getInset(pos)->acceptChanges();
+				}
 				break;
 
 			case Change::DELETED:
@@ -184,10 +193,6 @@ void Paragraph::Pimpl::acceptChanges(pos_type start, pos_type end)
 				break;
 		}
 
-		// also accept changes in nested insets
-		if (pos < size() && owner_->isInset(pos)) {
-			owner_->getInset(pos)->acceptChanges();
-		}
 	}
 }
 
@@ -200,7 +205,7 @@ void Paragraph::Pimpl::rejectChanges(pos_type start, pos_type end)
 	for (pos_type pos = start; pos < end; ++pos) {
 		switch (lookupChange(pos).type) {
 			case Change::UNCHANGED:
-				// also reject changes inside of insets
+				// reject changes in nested inset
 				if (pos < size() && owner_->isInset(pos)) {
 					owner_->getInset(pos)->rejectChanges();
 				}
