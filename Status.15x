@@ -60,6 +60,15 @@ FILE
   Setting the default extension here to something invalid, is a hack, but works.
   (Invalid may be e.g. "*")
 
+* When loading a LyX file from a Windows directory with a German Umlaut, I get the 
+  following error:
+
+    Assertion triggered in __thiscall lyx::support::FileName::FileName(const class 
+    std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &)
+    by failing check "empty() || absolutePath(name_)" in file C:\...\src\support\filename.C:47
+
+  If I rename the directory (no Umlaut), I can load the file without a problem.
+
 
 SPELL CHECKING (Joost 4/11/06)
 
