@@ -279,7 +279,7 @@ get_build_dirs(string const & abs_binary,
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		if (!fs::symbolic_link_exists(binary))
+		if (!fs::symbolic_link_exists(FileName(binary).toFilesystemEncoding()))
 			break;
 
 		string link;
@@ -330,22 +330,24 @@ string const get_home_dir()
 string const get_locale_dir(string const & system_support_dir)
 {
 	// 1. Use the "LYX_LOCALEDIR" environment variable.
-	string path = extract_env_var_dir("LYX_LOCALEDIR");
-	if (!path.empty() && check_env_var_dir(path, "LYX_LOCALEDIR"))
-		return path;
+	string const path_env = extract_env_var_dir("LYX_LOCALEDIR");
+	if (!path_env.empty() && check_env_var_dir(path_env, "LYX_LOCALEDIR"))
+		return path_env;
 
 	// 2. Search for system_support_dir / <relative locale dir>
 	// The <relative locale dir> is OS-dependent. (On Unix, it will
 	// be "../locale/".)
-	path = normalizePath(addPath(system_support_dir, relative_locale_dir()));
+	FileName path(normalizePath(addPath(system_support_dir, relative_locale_dir())));
 
-	if (fs::exists(path) && fs::is_directory(path))
-		return path;
+	if (fs::exists(path.toFilesystemEncoding()) &&
+	    fs::is_directory(path.toFilesystemEncoding()))
+		return path.absFilename();
 
 	// 3. Fall back to the hard-coded LOCALEDIR.
-	path = hardcoded_localedir();
-	if (fs::exists(path) && fs::is_directory(path))
-		return path;
+	path = FileName(hardcoded_localedir());
+	if (fs::exists(path.toFilesystemEncoding()) &&
+	    fs::is_directory(path.toFilesystemEncoding()))
+		return path.absFilename();
 
 	return string();
 }
@@ -405,7 +407,7 @@ string const get_binary_path(string const & exe)
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
 	string const abs_exe_path = makeAbsPath(exe_path);
-	if (fs::exists(abs_exe_path))
+	if (fs::exists(FileName(abs_exe_path).toFilesystemEncoding()))
 		return abs_exe_path;
 
 	// 2. exe must be the name of the binary only and it
@@ -422,7 +424,7 @@ string const get_binary_path(string const & exe)
 		string const exe_dir = makeAbsPath(*it);
 
 		string const exe_path = addName(exe_dir, exe_name);
-		if (fs::exists(exe_path))
+		if (fs::exists(FileName(exe_path).toFilesystemEncoding()))
 			return exe_path;
 	}
 
@@ -501,7 +503,7 @@ get_system_support_dir(string const & abs_binary,
 
 		// Check whether binary is a symbolic link.
 		// If so, resolve it and repeat the exercise.
-		if (!fs::symbolic_link_exists(binary))
+		if (!fs::symbolic_link_exists(FileName(binary).toFilesystemEncoding()))
 			break;
 
 		string link;
@@ -519,7 +521,7 @@ get_system_support_dir(string const & abs_binary,
 		// This time test whether the directory is a symbolic link
 		// *before* looking for "chkconfig.ltx".
 		// (We've looked relative to the original already.)
-		if (!fs::symbolic_link_exists(binary))
+		if (!fs::symbolic_link_exists(FileName(binary).toFilesystemEncoding()))
 			break;
 
 		string link;
@@ -688,7 +690,8 @@ bool check_env_var_dir(string const & dir,
 bool check_env_var_dir(string const & dir,
 		       string const & env_var)
 {
-	bool const success = (fs::exists(dir) && fs::is_directory(dir));
+	string const encoded(FileName(dir).toFilesystemEncoding());
+	bool const success = (fs::exists(encoded) && fs::is_directory(encoded));
 
 	if (!success) {
 		// Put this string on a single line so that the gettext
