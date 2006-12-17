@@ -97,9 +97,9 @@ void FlowLayout::setGeometry(const QRect &rect)
 
 QSize FlowLayout::sizeHint() const
 {
-	int const ncols = 5;
-	int const rows = (itemList.size() - 1 )/ncols + 1;
-	int const cols = qMin(rows * itemList.size(), ncols);
+	// default to (max) 6 columns
+	int const cols = qMin(itemList.size(), 6);
+	int const rows = (itemList.size() - 1 )/6 + 1;
 	return QSize(cols * minimumSize().width() + 1,
 		rows * minimumSize().height() + 1);
 }

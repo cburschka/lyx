@@ -126,14 +126,20 @@ char const * latex_deco[] = {
 int const nr_latex_deco = sizeof(latex_deco) / sizeof(char const *) - 1;
 
 char const * latex_arrow[] = {
-	"downarrow", "leftarrow", "Downarrow", "Leftarrow",
-	"hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
-	"hookrightarrow", "updownarrow", "Leftrightarrow", "leftharpoonup",
-	"rightharpoonup", "rightleftharpoons", "leftrightarrow", "Updownarrow",
-	"leftharpoondown", "rightharpoondown", "mapsto",
-	"Longleftarrow", "Longrightarrow", "Longleftrightarrow",
-	"longleftrightarrow", "longleftarrow", "longrightarrow", "longmapsto",
-	"nwarrow", "nearrow", "swarrow", "searrow",  "",
+	"leftarrow", "rightarrow",
+	"downarrow", "uparrow", "updownarrow", "leftrightarrow",
+	"Leftarrow", "Rightarrow",
+	"Downarrow", "Uparrow", "Updownarrow", "Leftrightarrow",
+	"Longleftrightarrow", "Longleftarrow", "Longrightarrow",
+	"longleftrightarrow", "longleftarrow", "longrightarrow",
+	"leftharpoondown", "rightharpoondown", 
+	"mapsto", "longmapsto",
+	"nwarrow", "nearrow",
+	"leftharpoonup", "rightharpoonup", 	
+	"hookleftarrow", "hookrightarrow",
+	"swarrow", "searrow",
+	"rightleftharpoons",
+	"",
 };
 
 int const nr_latex_arrow = sizeof(latex_arrow) / sizeof(char const *);
@@ -225,50 +231,95 @@ char const * latex_ams_misc[] = {
 int const nr_latex_ams_misc = sizeof(latex_ams_misc) / sizeof(char const *);
 
 char const * latex_ams_arrows[] = {
-	"dashrightarrow", "dashleftarrow", "leftleftarrows",
-	"leftrightarrows", "Lleftarrow", "twoheadleftarrow",
-	"leftarrowtail", "looparrowleft", "leftrightharpoons",
-	"curvearrowleft", "circlearrowleft", "Lsh",
-	"upuparrows", "upharpoonleft", "downharpoonleft",
-	"multimap", "leftrightsquigarrow", "rightrightarrows",
-	"rightleftarrows", "rightrightarrows", "rightleftarrows",
-	"twoheadrightarrow", "rightarrowtail", "looparrowright",
-	"rightleftharpoons", "curvearrowright", "circlearrowright",
-	"Rsh", "downdownarrows", "upharpoonright",
-	"downharpoonright", "rightsquigarrow",
-	"nleftarrow", "nrightarrow", "nLeftarrow",
-	"nRightarrow", "nleftrightarrow", "nLeftrightarrow", ""
+	"dashleftarrow", "dashrightarrow", 
+	"leftleftarrows", "leftrightarrows",
+	"rightrightarrows", "rightleftarrows",
+	"Lleftarrow", "Rrightarrow",
+	"twoheadleftarrow", "twoheadrightarrow",
+	"leftarrowtail", "rightarrowtail",
+	"looparrowleft", "looparrowright",
+	"curvearrowleft", "curvearrowright",
+	"circlearrowleft", "circlearrowright",
+	"Lsh", "Rsh",
+	"upuparrows", "downdownarrows",
+	"upharpoonleft", "upharpoonright",
+	"downharpoonleft", "downharpoonright",
+	"leftrightharpoons", "rightleftharpoons",
+	"rightsquigarrow", "leftrightsquigarrow",
+	"nleftarrow", "nrightarrow", "nleftrightarrow",
+	"nLeftarrow", "nRightarrow", "nLeftrightarrow",
+	"multimap",
+	""
 };
 
 int const nr_latex_ams_arrows = sizeof(latex_ams_arrows) / sizeof(char const *);
 
 char const * latex_ams_rel[] = {
-	"leqq", "leqslant", "eqslantless", "eqslantgtr", "gtrsim", "gtrapprox",
-	"lesssim", "lessapprox", "approxeq", "gtrdot", "ggg", "gtrless",
-	"lessdot", "lll", "lessgtr", "gtreqless", "gtreqqless", "eqcirc",
-	"lesseqgtr", "lesseqqgtr", "doteqdot", "circeq", "triangleq", "thicksim",
-	"risingdotseq", "fallingdotseq", "backsim", "thickapprox", "supseteqq", "Supset",
-	"backsimeq", "subseteqq", "Subset", "sqsupset", "succcurlyeq", "curlyeqsucc",
-	"sqsubset", "preccurlyeq", "curlyeqprec", "succsim", "succapprox", "vartriangleright",
-	"precsim", "precapprox", "vartriangleleft", "trianglerighteq", "Vdash", "shortmid",
-	"trianglelefteq", "vDash", "Vvdash", "shortparallel", "between", "pitchfork",
-	"smallsmile", "smallfrown", "bumpeq", "varpropto", "blacktriangleleft", "therefore",
-	"Bumpeq", "geqq", "geqslant", "backepsilon", "blacktriangleright", "because", ""
+	"leqq", "geqq",
+	"leqslant", "geqslant",
+	"eqslantless", "eqslantgtr",
+	"lesssim", "gtrsim", 
+	"lessapprox", "gtrapprox",
+	"approxeq", "triangleq",
+	"lessdot", "gtrdot",
+	"lll", "ggg",
+	"lessgtr", "gtrless",
+	"lesseqgtr", "gtreqless",
+	"lesseqqgtr", "gtreqqless",
+	"eqcirc", "circeq",
+	"thicksim", "thickapprox",
+	"backsim", "backsimeq",
+	"subseteqq", "supseteqq",
+	"Subset", "Supset", 
+	"sqsubset", "sqsupset",
+	"preccurlyeq", "succcurlyeq", 
+	"curlyeqprec", "curlyeqsucc", 
+	"precsim", "succsim", 
+	"precapprox", "succapprox", 
+	"vartriangleleft", "vartriangleright", 
+	"trianglelefteq", "trianglerighteq",
+	"bumpeq", "Bumpeq", 
+	"doteqdot", "risingdotseq", "fallingdotseq",
+	"vDash", "Vvdash", "Vdash",
+	"shortmid", "shortparallel",	
+	"smallsmile", "smallfrown",
+	"blacktriangleleft", "blacktriangleright",
+	"because", "therefore", 
+	"backepsilon",
+	"varpropto",
+	"between",
+	"pitchfork",
+	""
 };
 
 int const nr_latex_ams_rel = sizeof(latex_ams_rel) / sizeof(char const *);
 
 char const * latex_ams_nrel[] = {
-	"nless", "nleq", "nleqslant", "ngeqslant", "ngeqq", "gneq",
-	"nleqq", "lneq", "lneqq", "gneqq", "gvertneqq", "gnsim",
-	"lvertneqq", "lnsim", "lnapprox", "gnapprox", "nsucc", "nsucceq",
-	"nprec", "npreceq", "precnsim","succnsim", "succnapprox", "ncong",
-	"precnapprox", "nsim", "nshortmid", "nshortparallel", "nparallel", "nvDash",
-
-	"nmid", "nvdash", "nvDash", "nVDash", "ntriangleright", "ntrianglerighteq",
-	"ntriangleleft", "ntrianglelefteq", "nsubseteq", "nsupseteq", "nsupseteqq", "supsetneq",
-	"subsetneq", "varsubsetneq", "subsetneqq", "varsupsetneq", "supsetneqq", "varsupsetneqq",
-	"varsubsetneqq", "ngtr", "ngeq", "", "", ""
+	"nless", "ngtr",
+	"nleq", "ngeq",
+	"nleqslant", "ngeqslant",
+	"nleqq", "ngeqq",
+	"lneq", "gneq",
+	"lneqq", "gneqq",
+	"lvertneqq", "gvertneqq",
+	"lnsim", "gnsim",
+	"lnapprox", "gnapprox",
+	"nprec", "nsucc",
+	"npreceq", "nsucceq",
+	"precnsim", "succnsim",
+	"precnapprox", "succnapprox",
+	"subsetneq", "supsetneq",
+	"subsetneqq", "supsetneqq",
+	"nsubseteq", "nsupseteq", "nsupseteqq",
+	"nvdash", "nvDash", "nVDash",
+	"varsubsetneq", "varsupsetneq",
+	"varsubsetneqq", "varsupsetneqq",
+	"ntriangleleft", "ntriangleright",
+	"ntrianglelefteq", "ntrianglerighteq",
+	"ncong", "nsim",
+	"nmid", "nshortmid",
+	"nparallel", "nshortparallel",
+	"", "", ""
 };
 
 int const nr_latex_ams_nrel = sizeof(latex_ams_nrel) / sizeof(char const *);
