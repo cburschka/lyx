@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QCitationUi</class>
  <widget class="QDialog" name="QCitationUi" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>392</width>
-    <height>387</height>
+    <height>491</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -50,7 +47,7 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
        <property name="buddy" >
-        <cstring>selectedLV</cstring>
+        <cstring>findLE</cstring>
        </property>
       </widget>
      </item>
@@ -370,7 +367,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>availableLV</tabstop>
   <tabstop>selectedLV</tabstop>
