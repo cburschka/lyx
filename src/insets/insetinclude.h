@@ -59,7 +59,7 @@ public:
 	 *  \param keys the list of bibkeys in the child buffer.
 	 */
 	void fillWithBibKeys(Buffer const & buffer,
-		std::vector<std::pair<std::string,std::string> > & keys) const;
+		std::vector<std::pair<std::string, docstring> > & keys) const;
 	/** Update the cache with all bibfiles in use of the child buffer
 	 *  (including bibfiles of grandchild documents).
 	 *  Does nothing if the child document is not loaded to prevent

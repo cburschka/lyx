@@ -330,7 +330,7 @@ vector<FileName> const InsetBibtex::getFiles(Buffer const & buffer) const
 
 // This method returns a comma separated list of Bibtex entries
 void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
-				  std::vector<std::pair<string, string> > & keys) const
+		std::vector<std::pair<string, docstring> > & keys) const
 {
 	vector<FileName> const files = getFiles(buffer);
 	for (vector<FileName>::const_iterator it = files.begin();
@@ -344,13 +344,17 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 		// you can use the encoding of the main document as long as
 		// some elements like keys and names are pure ASCII. Therefore
 		// we convert the file from the buffer encoding.
+		// We don't restrict keys to ASCII in LyX, since our own
+		// InsetBibitem can generate non-ASCII keys, and nonstandard
+		// 8bit clean bibtex forks exist.
 		idocfstream ifs(it->toFilesystemEncoding().c_str(),
 		                std::ios_base::in,
 		                buffer.params().encoding().iconvName());
 		docstring linebuf0;
 		while (getline(ifs, linebuf0)) {
 			docstring linebuf = trim(linebuf0);
-			if (linebuf.empty()) continue;
+			if (linebuf.empty())
+				continue;
 			if (prefixIs(linebuf, from_ascii("@"))) {
 				linebuf = subst(linebuf, '{', '(');
 				docstring tmp;
@@ -361,15 +365,13 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 					linebuf = split(linebuf, tmp, ',');
 					tmp = ltrim(tmp, " \t");
 					if (!tmp.empty()) {
-						// to_ascii because bibtex keys may
-						// only consist of ASCII characters
-						keys.push_back(pair<string, string>(to_ascii(tmp), string()));
+						// FIXME UNICODE
+						keys.push_back(pair<string, docstring>(
+							to_utf8(tmp), docstring()));
 					}
 				}
-			} else if (!keys.empty()) {
-				// FIXME UNICODE
-				keys.back().second += to_utf8(linebuf + '\n');
-			}
+			} else if (!keys.empty())
+				keys.back().second += linebuf + '\n';
 		}
 	}
 }

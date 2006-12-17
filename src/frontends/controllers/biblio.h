@@ -12,8 +12,9 @@
 #ifndef BIBLIOHELPERS_H
 #define BIBLIOHELPERS_H
 
+#include "support/docstring.h"
+
 #include <map>
-#include <string>
 #include <vector>
 
 class Buffer;
@@ -59,27 +60,27 @@ std::string const asValidLatexCommand(std::string const & input,
 				      CiteEngine_enum const & engine);
 
 /// First entry is the bibliography key, second the data
-typedef std::map<std::string, std::string> InfoMap;
+typedef std::map<std::string, docstring> InfoMap;
 
 /// Returns a vector of bibliography keys
 std::vector<std::string> const getKeys(InfoMap const &);
 
 /** Returns the BibTeX data associated with a given key.
     Empty if no info exists. */
-std::string const getInfo(InfoMap const &, std::string const &);
+docstring const getInfo(InfoMap const &, std::string const & key);
 
-// rturn the year from the bibtex data record
-std::string const getYear(InfoMap const & map, std::string const & key);
+/// return the year from the bibtex data record
+docstring const getYear(InfoMap const & map, std::string const & key);
 
 /// return the short form of an authorlist
-std::string const getAbbreviatedAuthor(InfoMap const & map, std::string const & key);
+docstring const getAbbreviatedAuthor(InfoMap const & map, std::string const & key);
 
 // return only the family name
-std::string const familyName(std::string const & name);
+docstring const familyName(docstring const & name);
 
 /** Search a BibTeX info field for the given key and return the
     associated field. */
-std::string const parseBibTeX(std::string data, std::string const & findkey);
+docstring const parseBibTeX(docstring data, std::string const & findkey);
 
 /** Returns an iterator to the first key that meets the search
     criterion, or end() if unsuccessful.
@@ -96,7 +97,7 @@ std::string const parseBibTeX(std::string data, std::string const & findkey);
 std::vector<std::string>::const_iterator
 searchKeys(InfoMap const & map,
 	   std::vector<std::string> const & keys_to_search,
-	   std::string const & search_expression,
+	   docstring const & search_expression,
 	   std::vector<std::string>::const_iterator start,
 	   Search,
 	   Direction,
@@ -137,7 +138,7 @@ std::vector<CiteStyle> const getCiteStyles(CiteEngine_enum const &);
    the InfoMap of bibkeys info,
    the available citation styles
 */
-std::vector<std::string> const
+std::vector<docstring> const
 getNumericalStrings(std::string const & key,
 		    InfoMap const & map,
 		    std::vector<CiteStyle> const & styles);
@@ -154,7 +155,7 @@ getNumericalStrings(std::string const & key,
    the InfoMap of bibkeys info,
    the available citation styles
 */
-std::vector<std::string> const
+std::vector<docstring> const
 getAuthorYearStrings(std::string const & key,
 		     InfoMap const & map,
 		     std::vector<CiteStyle> const & styles);

@@ -36,14 +36,14 @@ bool ControlCitation::initialiseParams(string const & data)
 {
 	ControlCommand::initialiseParams(data);
 
-	vector<pair<string, string> > blist;
+	vector<pair<string, docstring> > blist;
 	kernel().buffer().fillWithBibKeys(blist);
 
 	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
 
 	bool use_styles = engine != biblio::ENGINE_BASIC;
 
-	typedef std::map<string, string>::value_type InfoMapValue;
+	typedef std::map<string, docstring>::value_type InfoMapValue;
 
 	for (vector<pair<string,string> >::size_type i = 0;
 	     i < blist.size(); ++i) {
@@ -83,19 +83,15 @@ biblio::CiteEngine_enum ControlCitation::getEngine() const
 }
 
 
-vector<string> const ControlCitation::getCiteStrings(string const & key) const
+vector<docstring> const ControlCitation::getCiteStrings(string const & key) const
 {
-	vector<string> styles;
-
 	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
 	vector<biblio::CiteStyle> const cs = biblio::getCiteStyles(engine);
 
 	if (engine == biblio::ENGINE_NATBIB_NUMERICAL)
-		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);
+		return biblio::getNumericalStrings(key, bibkeysInfo_, cs);
 	else
-		styles = biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);
-
-	return styles;
+		return biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);
 }
 
 } // namespace frontend

@@ -1210,7 +1210,7 @@ void Buffer::getLabelList(vector<docstring> & list) const
 
 
 // This is also a buffer property (ale)
-void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys)
+void Buffer::fillWithBibKeys(vector<pair<string, docstring> > & keys)
 	const
 {
 	/// if this is a child document and the parent is already loaded
@@ -1234,11 +1234,12 @@ void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys)
 		} else if (it->lyxCode() == InsetBase::BIBITEM_CODE) {
 			InsetBibitem const & inset =
 				dynamic_cast<InsetBibitem const &>(*it);
-			string const key = inset.getContents();
-			string const opt = inset.getOptions();
-			string const ref; // = pit->asString(this, false);
-			string const info = opt + "TheBibliographyRef" + ref;
-			keys.push_back(pair<string, string>(key, info));
+			// FIXME UNICODE
+			string const key = to_utf8(inset.getParam("key"));
+			docstring const label = inset.getParam("label");
+			docstring const ref; // = pit->asString(this, false);
+			docstring const info = label + "TheBibliographyRef" + ref;
+			keys.push_back(pair<string, docstring>(key, info));
 		}
 	}
 }
@@ -1617,10 +1618,10 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 	vector<docstring> labels;
 
 	if (code == InsetBase::CITE_CODE) {
-		vector<pair<string, string> > keys;
+		vector<pair<string, docstring> > keys;
 		fillWithBibKeys(keys);
-		vector<pair<string, string> >::const_iterator bit  = keys.begin();
-		vector<pair<string, string> >::const_iterator bend = keys.end();
+		vector<pair<string, docstring> >::const_iterator bit  = keys.begin();
+		vector<pair<string, docstring> >::const_iterator bend = keys.end();
 
 		for (; bit != bend; ++bit)
 			// FIXME UNICODE
@@ -1681,7 +1682,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 ErrorList const & Buffer::errorList(string const & type) const
 {
 	static ErrorList const emptyErrorList;
-	std::map<std::string, ErrorList>::const_iterator I = errorLists_.find(type);
+	std::map<string, ErrorList>::const_iterator I = errorLists_.find(type);
 	if (I == errorLists_.end())
 		return emptyErrorList;
 

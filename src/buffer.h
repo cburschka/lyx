@@ -255,7 +255,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// return all bibkeys from buffer and its childs
-	void fillWithBibKeys(std::vector<std::pair<std::string, std::string> > & keys) const;
+	void fillWithBibKeys(std::vector<std::pair<std::string, docstring> > & keys) const;
 	/// Update the cache with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	void updateBibfilesCache();

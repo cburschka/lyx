@@ -666,6 +666,23 @@ string const rtrim(string const & a, char const * p)
 }
 
 
+docstring const rtrim(docstring const & a, char const * p)
+{
+	BOOST_ASSERT(p);
+
+	if (a.empty() || !*p)
+		return a;
+
+	docstring::size_type r = a.find_last_not_of(from_ascii(p));
+
+	// Is this test really needed? (Lgb)
+	if (r == docstring::npos)
+		return docstring();
+
+	return a.substr(0, r + 1);
+}
+
+
 string const ltrim(string const & a, char const * p)
 {
 	BOOST_ASSERT(p);
@@ -779,36 +796,55 @@ docstring const escape(docstring const & lab)
 }
 
 
-/// gives a vector of stringparts which have the delimiter delim
-vector<string> const getVectorFromString(string const & str,
-					 string const & delim)
+namespace {
+
+template<typename String> vector<String> const
+getVectorFromStringT(String const & str, String const & delim)
 {
 // Lars would like this code to go, but for now his replacement (below)
 // doesn't fullfil the same function. I have, therefore, reactivated the
 // old code for now. Angus 11 Nov 2002.
 #if 1
-	vector<string> vec;
+	vector<String> vec;
 	if (str.empty())
 		return vec;
-	string keys = rtrim(str);
+	String keys = rtrim(str);
 	for(;;) {
-		string::size_type const idx = keys.find(delim);
-		if (idx == string::npos) {
+		typename String::size_type const idx = keys.find(delim);
+		if (idx == String::npos) {
 			vec.push_back(ltrim(keys));
 			break;
 		}
-		string const key = trim(keys.substr(0, idx));
+		String const key = trim(keys.substr(0, idx));
 		if (!key.empty())
 			vec.push_back(key);
-		string::size_type const start = idx + delim.size();
+		typename String::size_type const start = idx + delim.size();
 		keys = keys.substr(start);
 	}
 	return vec;
 #else
-	boost::char_separator<char> sep(delim.c_str());
-	boost::tokenizer<boost::char_separator<char> > tokens(str, sep);
-	return vector<string>(tokens.begin(), tokens.end());
+	typedef boost::char_separator<typename String::value_type> Separator;
+	typedef boost::tokenizer<Separator, typename String::const_iterator, String> Tokenizer;
+	Separator sep(delim.c_str());
+	Tokenizer tokens(str, sep);
+	return vector<String>(tokens.begin(), tokens.end());
 #endif
+}
+
+}
+
+
+vector<string> const getVectorFromString(string const & str,
+                                         string const & delim)
+{
+	return getVectorFromStringT<string>(str, delim);
+}
+
+
+vector<docstring> const getVectorFromString(docstring const & str,
+                                            docstring const & delim)
+{
+	return getVectorFromStringT<docstring>(str, delim);
 }
 
 

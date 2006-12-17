@@ -55,14 +55,14 @@ namespace fs = boost::filesystem;
 
 namespace {
 
-string const getNatbibLabel(Buffer const & buffer,
+docstring const getNatbibLabel(Buffer const & buffer,
 			    string const & citeType, string const & keyList,
-			    string const & before, string const & after,
+			    docstring const & before, docstring const & after,
 			    biblio::CiteEngine engine)
 {
 	// Only start the process off after the buffer is loaded from file.
 	if (!buffer.fully_loaded())
-		return string();
+		return docstring();
 
 	// Cache the labels
 	typedef std::map<Buffer const *, biblio::InfoMap> CachedMap;
@@ -97,7 +97,7 @@ string const getNatbibLabel(Buffer const & buffer,
 
 	// build the keylist only if the bibfiles have been changed
 	if (cached_keys.empty() || bibfileStatus.empty() || changed) {
-		typedef vector<std::pair<string, string> > InfoType;
+		typedef vector<std::pair<string, docstring> > InfoType;
 		InfoType bibkeys;
 		buffer.fillWithBibKeys(bibkeys);
 
@@ -113,7 +113,7 @@ string const getNatbibLabel(Buffer const & buffer,
 		infomap = cached_keys[&buffer];
 
 	if (infomap.empty())
-		return string();
+		return docstring();
 
 	// the natbib citation-styles
 	// CITET:	author (year)
@@ -133,7 +133,7 @@ string const getNatbibLabel(Buffer const & buffer,
 	if (cite_type[cite_type.size() - 1] == '*')
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
-	string before_str;
+	docstring before_str;
 	if (!before.empty()) {
 		// In CITET and CITEALT mode, the "before" string is
 		// attached to the label associated with each and every key.
@@ -153,7 +153,7 @@ string const getNatbibLabel(Buffer const & buffer,
 			before_str = '/' + before;
 	}
 
-	string after_str;
+	docstring after_str;
 	if (!after.empty()) {
 		// The "after" key is appended only to the end of the whole.
 		after_str = ", " + after;
@@ -165,22 +165,22 @@ string const getNatbibLabel(Buffer const & buffer,
 	// puctuation mark separating citation entries.
 	char const * const sep = ";";
 
-	string const op_str(' ' + string(1, op));
-	string const cp_str(string(1, cp) + ' ');
-	string const sep_str(string(sep) + ' ');
+	docstring const op_str(' ' + docstring(1, op));
+	docstring const cp_str(docstring(1, cp) + ' ');
+	docstring const sep_str(from_ascii(sep) + ' ');
 
-	string label;
+	docstring label;
 	vector<string> keys = getVectorFromString(keyList);
 	vector<string>::const_iterator it  = keys.begin();
 	vector<string>::const_iterator end = keys.end();
 	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
-		string const author(biblio::getAbbreviatedAuthor(infomap, *it));
-		string const year(biblio::getYear(infomap, *it));
+		docstring const author(biblio::getAbbreviatedAuthor(infomap, *it));
+		docstring const year(biblio::getYear(infomap, *it));
 
 		// Something isn't right. Fail safely.
 		if (author.empty() || year.empty())
-			return string();
+			return docstring();
 
 		// authors1/<before>;  ... ;
 		//  authors_last, <after>
@@ -199,8 +199,9 @@ string const getNatbibLabel(Buffer const & buffer,
 					year + cp + sep_str;
 				break;
 			case biblio::ENGINE_NATBIB_NUMERICAL:
+				// FIXME UNICODE
 				label += author + op_str + before_str +
-					'#' + *it + cp + sep_str;
+					'#' + from_utf8(*it) + cp + sep_str;
 				break;
 			case biblio::ENGINE_JURABIB:
 				label += before_str + author + op_str +
@@ -214,7 +215,8 @@ string const getNatbibLabel(Buffer const & buffer,
 		} else if (cite_type == "citep" ||
 			   cite_type == "citealp") {
 			if (engine == biblio::ENGINE_NATBIB_NUMERICAL) {
-				label += *it + sep_str;
+				// FIXME UNICODE
+				label += from_utf8(*it) + sep_str;
 			} else {
 				label += author + ", " + year + sep_str;
 			}
@@ -228,8 +230,9 @@ string const getNatbibLabel(Buffer const & buffer,
 					year + sep_str;
 				break;
 			case biblio::ENGINE_NATBIB_NUMERICAL:
+				// FIXME UNICODE
 				label += author + ' ' + before_str +
-					'#' + *it + sep_str;
+					'#' + from_utf8(*it) + sep_str;
 				break;
 			case biblio::ENGINE_JURABIB:
 				label += before_str + author + ' ' +
@@ -272,22 +275,22 @@ string const getNatbibLabel(Buffer const & buffer,
 	}
 
 	if (cite_type == "citep" || cite_type == "citeyearpar")
-		label = string(1, op) + label + string(1, cp);
+		label = op + label + cp;
 
 	return label;
 }
 
 
-string const getBasicLabel(string const & keyList, string const & after)
+docstring const getBasicLabel(docstring const & keyList, docstring const & after)
 {
-	string keys(keyList);
-	string label;
+	docstring keys(keyList);
+	docstring label;
 
 	if (contains(keys, ',')) {
 		// Final comma allows while loop to cover all keys
 		keys = ltrim(split(keys, label, ',')) + ',';
 		while (contains(keys, ',')) {
-			string key;
+			docstring key;
 			keys = ltrim(split(keys, key, ','));
 			label += ", " + key;
 		}
@@ -310,23 +313,23 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 
 docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 {
-	string const before = getSecOptions();
-	string const after  = getOptions();
+	docstring const before = getParam("before");
+	docstring const after  = getParam("after");
 
-	string label;
+	docstring label;
 	biblio::CiteEngine const engine = buffer.params().cite_engine;
 	if (engine != biblio::ENGINE_BASIC) {
-		label = getNatbibLabel(buffer, getCmdName(), getContents(),
+		// FIXME UNICODE
+		label = getNatbibLabel(buffer, getCmdName(), to_utf8(getParam("key")),
 				       before, after, engine);
 	}
 
 	// Fallback to fail-safe
 	if (label.empty()) {
-		label = getBasicLabel(getContents(), after);
+		label = getBasicLabel(getParam("key"), after);
 	}
 
-	// FIXME UNICODE
-	return from_utf8(label);
+	return label;
 }
 
 
@@ -373,14 +376,14 @@ int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
 
 namespace {
 
-string const cleanupWhitespace(string const & citelist)
+docstring const cleanupWhitespace(docstring const & citelist)
 {
-	string::const_iterator it  = citelist.begin();
-	string::const_iterator end = citelist.end();
+	docstring::const_iterator it  = citelist.begin();
+	docstring::const_iterator end = citelist.end();
 	// Paranoia check: make sure that there is no whitespace in here
 	// -- at least not behind commas or at the beginning
-	string result;
-	char last = ',';
+	docstring result;
+	char_type last = ',';
 	for (; it != end; ++it) {
 		if (*it != ' ')
 			last = *it;
@@ -396,7 +399,7 @@ string const cleanupWhitespace(string const & citelist)
 int InsetCitation::docbook(Buffer const &, odocstream & os, OutputParams const &) const
 {
 	os << "<citation>"
-           << from_ascii(cleanupWhitespace(getContents()))
+           << cleanupWhitespace(getParam("key"))
            << "</citation>";
 	return 0;
 }
@@ -430,8 +433,7 @@ int InsetCitation::latex(Buffer const & buffer, odocstream & os,
 	else if (!after.empty())
 		os << '[' << after << ']';
 
-	// FIXME UNICODE
-	os << '{' << from_utf8(cleanupWhitespace(getContents())) << '}';
+	os << '{' << cleanupWhitespace(getParam("key")) << '}';
 
 	return 0;
 }

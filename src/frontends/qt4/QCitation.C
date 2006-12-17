@@ -30,7 +30,9 @@ using std::vector;
 using std::string;
 
 
-static QStringList toQStringList(vector<string> const & v)
+namespace {
+
+template<typename String> static QStringList toQStringList(vector<String> const & v)
 {
 	QStringList qlist;
 
@@ -40,6 +42,8 @@ static QStringList toQStringList(vector<string> const & v)
 		qlist.append(lyx::toqstr(v[i]));
 	}
 	return qlist;
+}
+
 }
 
 
