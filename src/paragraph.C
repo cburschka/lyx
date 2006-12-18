@@ -594,7 +594,10 @@ Paragraph::depth_type Paragraph::getMaxDepthAfter() const
 
 char Paragraph::getAlign() const
 {
-	return params().align();
+	if (params().align() == LYX_ALIGN_LAYOUT)
+		return layout()->align;
+	else
+		return params().align();
 }
 
 

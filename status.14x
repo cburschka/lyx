@@ -109,7 +109,9 @@ What's new
 
 - Fix cursor positioning when opening the VSpace dialog (bug 2869).
 
-- Make clicking in a "Wide" inset always enter that inset.
+- Make clicking in a "wide" inset always enter that inset.
+
+- Avoid "wide" insets in text that is centered or right-justified.
 
 - Give a better error message for missing layout include files.
 

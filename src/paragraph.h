@@ -262,7 +262,7 @@ public:
 	std::string const getLabelWidthString() const;
 	///
 	void setLabelWidthString(std::string const & s);
-	///
+	/// Actual paragraph alignment used
 	char getAlign() const;
 	/// The nesting depth of a paragraph
 	depth_type getDepth() const;

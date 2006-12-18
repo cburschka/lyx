@@ -809,6 +809,9 @@ void paintPar
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
 		bool in_inset_alone_on_row = innerCursorOnRow(pi, pit, rit,
 			text);
+		bool leftEdgeFixed = 
+			(par.getAlign() == LYX_ALIGN_LEFT ||
+			 par.getAlign() == LYX_ALIGN_BLOCK);
 
 		// If this is the only object on the row, we can make it wide
 		for (pos_type i = rit->pos() ; i != rit->endpos(); ++i) {
@@ -816,7 +819,8 @@ void paintPar
 			if (in) {
 				InsetText const * const t = in->asTextInset();
 				if (t)
-					t->Wide() = in_inset_alone_on_row;
+					t->Wide() = in_inset_alone_on_row 
+						&& leftEdgeFixed;
 			}
 		}
 
@@ -833,7 +837,8 @@ void paintPar
 			// Clear background of this row 
 			// (if paragraph background was not cleared)
 			if (!repaintAll && 
-			    (!in_inset_alone_on_row || row_has_changed)) {
+			    (!(in_inset_alone_on_row && leftEdgeFixed)
+			     || row_has_changed)) {
 				pi.pain.fillRectangle(x, y - rit->ascent(),
 				    text.maxwidth_, rit->height(),
 				    text.backgroundColor());
