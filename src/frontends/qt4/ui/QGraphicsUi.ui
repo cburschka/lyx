@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QGraphicsUi</class>
  <widget class="QDialog" name="QGraphicsUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>432</width>
-    <height>332</height>
+    <width>467</width>
+    <height>347</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -39,7 +36,7 @@
       <string/>
      </property>
      <property name="currentIndex" >
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="Graphics" >
       <attribute name="title" >
@@ -510,8 +507,11 @@
        </item>
        <item row="3" column="0" colspan="2" >
         <widget class="QGroupBox" name="subfigure" >
+         <property name="focusPolicy" >
+          <enum>Qt::StrongFocus</enum>
+         </property>
          <property name="title" >
-          <string>Subfigure</string>
+          <string>S&amp;ubfigure</string>
          </property>
          <property name="flat" >
           <bool>true</bool>
@@ -562,8 +562,11 @@
        </item>
        <item row="4" column="0" colspan="2" >
         <widget class="QGroupBox" name="displayGB" >
+         <property name="focusPolicy" >
+          <enum>Qt::StrongFocus</enum>
+         </property>
          <property name="title" >
-          <string>Show in LyX</string>
+          <string>Sho&amp;w in LyX</string>
          </property>
          <property name="flat" >
           <bool>true</bool>
@@ -749,17 +752,11 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
    <extends>QComboBox</extends>
    <header>lengthcombo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -770,11 +767,16 @@
   <tabstop>scaleCB</tabstop>
   <tabstop>Scale</tabstop>
   <tabstop>Width</tabstop>
+  <tabstop>widthUnit</tabstop>
   <tabstop>Height</tabstop>
   <tabstop>heightUnit</tabstop>
   <tabstop>aspectratio</tabstop>
   <tabstop>angle</tabstop>
   <tabstop>origin</tabstop>
+  <tabstop>restorePB</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>applyPB</tabstop>
+  <tabstop>closePB</tabstop>
   <tabstop>clip</tabstop>
   <tabstop>lbX</tabstop>
   <tabstop>lbXunit</tabstop>
@@ -788,12 +790,15 @@
   <tabstop>latexoptions</tabstop>
   <tabstop>draftCB</tabstop>
   <tabstop>unzipCB</tabstop>
+  <tabstop>subfigure</tabstop>
   <tabstop>subcaption</tabstop>
-  <tabstop>restorePB</tabstop>
-  <tabstop>okPB</tabstop>
-  <tabstop>applyPB</tabstop>
-  <tabstop>closePB</tabstop>
+  <tabstop>displayGB</tabstop>
+  <tabstop>showCB</tabstop>
+  <tabstop>displayscale</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections>
   <connection>

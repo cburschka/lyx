@@ -185,9 +185,6 @@ MENUS
   "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"
   msgstr ""
 
-* Graphics dialog: The order of fields is broken (when using <TAB> to jump from
-  one field to another)
-
 
 EDITING
 
@@ -599,4 +596,8 @@ CREDITS:
 
 * In the citation dialog, the shortcut for "&Find" does not work
   FIXED (JSpitzm 2006-12-17)
+
+* Graphics dialog: The order of fields is broken (when using <TAB> to jump from
+  one field to another)
+  FIXED (JSpitzm 2006-12-18)
 
