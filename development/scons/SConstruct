@@ -697,13 +697,17 @@ if frontend == 'qt4':
         if mode == 'debug' and use_vc and \
             conf.CheckLibWithHeader('QtCored4', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
             qt_lib_suffix = 'd4'
+            use_qt_debug_libs = True
         else:
             qt_lib_suffix = '4'
+            use_qt_debug_libs = False
     else:
         if mode == 'debug' and conf.CheckLibWithHeader('QtCore_debug', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
             qt_lib_suffix = '_debug'
+            use_qt_debug_libs = True
         else:
             qt_lib_suffix = ''
+            use_qt_debug_libs = False
     frontend_libs = [x + qt_lib_suffix for x in qt_libs]
     qtcore_lib = ['QtCore' + qt_lib_suffix]
     
@@ -1699,7 +1703,7 @@ if build_qt4:
     # process .C file!!! (add to cxx_suffixes )
     #
     qt4env.Tool('qt4', [scons_dir])
-    qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug'))
+    qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug' and use_qt_debug_libs))
     qt4env['QT4_AUTOSCAN'] = 0
     qt4env['QT4_UICDECLFLAGS'] = '-tr lyx::qt_'
 

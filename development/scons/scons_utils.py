@@ -196,8 +196,11 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, versions, isDebug):
                     for ver in versions:
                         lib_files += filter(lambda x: re.search('libboost_%s-\w+-mt-([^dgy]+-)*%s.a' % (lib, ver), x), files)
                 if len(lib_files) == 0:
-                    print 'Warning: Can not find an appropriate boost library in %s.' % path
-                    print 'Allowed versions are ', ', '.join(versions)
+                    if isDebug:
+                        print 'Failed to find the debug version of boost', ' or '.join(versions)
+                    else:
+                        print 'Failed to find the release version of boost', ' or '.join(versions)
+                    # use alternative libraries
                     for ver in versions:
                         lib_files += filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, ver), x), files)
                     if len(lib_files) > 0:
@@ -205,6 +208,8 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, versions, isDebug):
                 if len(lib_files) > 0:
                     # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
                     lib_names.append(lib_files[0].split(os.sep)[-1][3:-2])
+                else:
+                    break
         if len(lib_names) == len(libs):
             found_lib = True
             lib_path = path
