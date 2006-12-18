@@ -39,6 +39,7 @@ namespace frontend {
 
 
 Application::Application(int &, char **)
+	: current_view_(0)
 {
 	// FIXME: please confirm: with unicode, I think initEncoding()
 	// is not needed anymore!
@@ -49,11 +50,11 @@ Application::Application(int &, char **)
 
 
 LyXView & Application::createView(unsigned int width,
-								  unsigned int height,
-								  int posx, int posy,
-								  bool maximize,
-								  unsigned int iconSizeXY,
-								  const std::string & geometryArg)
+				  unsigned int height,
+				  int posx, int posy,
+				  bool maximize,
+				  unsigned int iconSizeXY,
+				  const std::string & geometryArg)
 {
 	LyXView & view = gui().createRegisteredView();
 	int view_id = view.id();
