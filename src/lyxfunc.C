@@ -1246,6 +1246,11 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				InsetCommandParams p(name);
 				data = InsetCommandMailer::params2string(name, p);
 			} else if (name == "include") {
+				// data is the include type: one of "include",
+				// "input", "verbatiminput" or "verbatiminput*"
+				if (data.empty())
+					// default type is requested
+					data = "include";
 				InsetCommandParams p(data);
 				data = InsetIncludeMailer::params2string(p);
 			} else if (name == "box") {
