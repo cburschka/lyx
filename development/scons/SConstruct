@@ -566,8 +566,6 @@ if env.has_key('dest_dir'):
 
 if env.has_key('qt_dir') and env['qt_dir']:
     env['QTDIR'] = env['qt_dir']
-elif os.path.isdir(os.environ.get('QTDIR', '/usr/lib/qt-3.3')):
-    env['QTDIR'] = os.environ.get('QTDIR', '/usr/lib/qt-3.3')
 
 # if there is a valid QTDIR, set path for lib and bin directories
 if env.has_key('QTDIR'):
@@ -587,11 +585,13 @@ elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'l
 elif os.path.isdir(os.path.join('/usr/lib/', frontend, 'lib')):
     qt_lib_path = '/usr/lib/%s/lib' % frontend
 else:
-    print "Qt library directory is not found. Please specify it using qt_lib_path"
-    Exit(1)
-env.AppendUnique(LIBPATH = [qt_lib_path])
-# qt4 seems to be using pkg_config
-env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
+    # in system directory? (No need to specify)
+    qt_lib_path = None
+
+if qt_lib_path is not None:
+    env.AppendUnique(LIBPATH = [qt_lib_path])
+    # qt4 seems to be using pkg_config
+    env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
 
 if env.has_key('qt_inc_path') and env['qt_inc_path']:
     qt_inc_path = env['qt_inc_path']
@@ -601,11 +601,12 @@ elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'i
 elif os.path.isdir('/usr/include/' + frontend):
     qt_inc_path = '/usr/include/' + frontend
 else:
-    print "Qt include directory not found. Please specify it using qt_inc_path"
-    Exit(1)
+    qt_inc_path = None
+
 # Note that this CPPPATH is for testing only
 # it will be removed before calling SConscript
-env['CPPPATH'] = [qt_inc_path]
+if qt_inc_path is not None:
+    env['CPPPATH'] = [qt_inc_path]
 
 #
 # extra_inc_path and extra_lib_path
@@ -716,9 +717,15 @@ if frontend == 'qt4':
 if use_vc:
     if frontend == 'qt4':
         if mode == 'debug':
-            manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
+            if qt_lib_path is not None:
+                manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
+            else:
+                manifest = 'QtGuid4.dll.manifest'
         else:
-            manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
+            if qt_lib_path is not None:
+                manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
+            else:
+                manifest = 'QtGui4.dll.manifest'
     if os.path.isfile(manifest):
         env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
 
@@ -1352,7 +1359,8 @@ if env['nls'] and included_gettext:
     env['CPPPATH'].append('$BUILDDIR/intl')
 #
 # QT_INC_PATH is not needed for *every* source file
-env['CPPPATH'].remove(qt_inc_path)
+if qt_inc_path is not None:
+    env['CPPPATH'].remove(qt_inc_path)
 
 #
 # A Link script for cygwin see
@@ -1612,10 +1620,15 @@ if build_support:
     env.Depends('$BUILDDIR/common/support/package.C', '$BUILDDIR/common/config.h')
     env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/package.C.in')
 
+    if qt_inc_path is None:
+        qt_CPPPATH = ['QtCore']
+    else:
+        qt_CPPPATH = [qt_inc_path, os.path.join(qt_inc_path, 'QtCore')]
+
     support = env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
         source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files],
-        CPPPATH = ['$CPPPATH', qt_inc_path, os.path.join(qt_inc_path, 'QtCore')]
+        CPPPATH = ['$CPPPATH'] + qt_CPPPATH
     )
     Alias('support', support)
 
