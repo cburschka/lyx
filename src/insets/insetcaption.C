@@ -96,15 +96,15 @@ void InsetCaption::setLabel(LCursor & cur) const
 	if (cur.top().text() == &text_) {
 		string s;
 		size_t i = cur.depth();
-			while (i > 0) {
-				--i;
-				InsetBase * const in = &cur[i].inset();
-				if (in->lyxCode() == InsetBase::FLOAT_CODE
-				    || in->lyxCode() == InsetBase::WRAP_CODE) {
-					s = to_utf8(in->getInsetName());
-					break;
-				}
+		while (i > 0) {
+			--i;
+			InsetBase * const in = &cur[i].inset();
+			if (in->lyxCode() == InsetBase::FLOAT_CODE ||
+			    in->lyxCode() == InsetBase::WRAP_CODE) {
+				s = to_utf8(in->getInsetName());
+				break;
 			}
+		}
 		Floating const & fl = textclass_.floats().getType(s);
 		s = fl.name();
 		docstring num;
