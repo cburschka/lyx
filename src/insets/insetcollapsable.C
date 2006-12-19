@@ -313,6 +313,9 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 
+		if (cur.selection())
+			break;
+
 		switch (status()) {
 
 		case Collapsed:
