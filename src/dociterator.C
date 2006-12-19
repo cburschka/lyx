@@ -15,7 +15,6 @@
 
 #include "debug.h"
 #include "lyxtext.h"
-#include "lyxrow.h"
 #include "paragraph.h"
 
 #include "mathed/MathData.h"

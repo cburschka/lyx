@@ -26,6 +26,7 @@ class BufferView;
 class FuncStatus;
 class FuncRequest;
 class LyXFont;
+class Row;
 
 // these should go
 class InsetMathUnknown;

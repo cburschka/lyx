@@ -23,7 +23,6 @@ namespace lyx {
 class LyXText;
 class MathAtom;
 class Paragraph;
-class Row;
 
 
 // only needed for gcc 2.95, remove when support terminated
