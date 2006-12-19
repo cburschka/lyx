@@ -80,32 +80,27 @@ opt_cache_file = 'opt.cache'
 
 if os.name == 'nt':
     platform_name = 'win32'
-    default_frontend = 'qt4'
     default_prefix = 'c:/program files/lyx'
     default_with_x = False
     default_packaging_method = 'windows'
 elif os.name == 'posix' and sys.platform != 'cygwin':
     platform_name = sys.platform
-    default_frontend = 'qt4'
     default_prefix = '/usr/local'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'posix' and sys.platform == 'cygwin':
     platform_name = 'cygwin'
-    default_frontend = 'qt4'
     default_prefix = '/usr'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'darwin':
     platform_name = 'macosx'
-    default_frontend = 'qt4'
     # FIXME: macOSX default prefix?
     default_prefix = '.'
     default_with_x = False
     default_packaging_method = 'macosx'
 else:  # unsupported system, assume posix behavior
     platform_name = 'others'
-    default_frontend = 'qt4'
     default_prefix = '.'
     default_with_x = True
     default_packaging_method = 'posix'
@@ -122,7 +117,7 @@ if os.path.isfile('config.py'):
 opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
-    EnumOption('frontend', 'Main GUI', default_frontend,
+    EnumOption('frontend', 'Main GUI', 'qt4',
         allowed_values = ('qt4',) ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
@@ -559,55 +554,6 @@ if env.has_key('dest_dir'):
     print "This option is obsolete. Please use DESTDIR instead."
     env['DESTDIR'] = env['dest_dir']
 
-
-#---------------------------------------------------------
-# Frontend related variables (QTDIR etc)
-#---------------------------------------------------------
-
-if env.has_key('qt_dir') and env['qt_dir']:
-    env['QTDIR'] = env['qt_dir']
-
-# if there is a valid QTDIR, set path for lib and bin directories
-if env.has_key('QTDIR'):
-    # add path to the qt tools
-    if os.path.isdir(os.path.join(env['QTDIR'], 'lib')):
-        env.AppendUnique(LIBPATH = [os.path.join(env['QTDIR'], 'lib')])
-    # set environment so that moc etc can be found even if its path is not set properly
-    if os.path.isdir(os.path.join(env['QTDIR'], 'bin')):
-        os.environ['PATH'] += os.pathsep + os.path.join(env['QTDIR'], 'bin')
-        env.PrependENVPath('PATH', os.path.join(env['QTDIR'], 'bin'))
-
-if env.has_key('qt_lib_path') and env['qt_lib_path']:
-    qt_lib_path = env.subst('$qt_lib_path')
-elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'lib')):
-    qt_lib_path = env.subst('$QTDIR/lib')
-# this is the path for cygwin.
-elif os.path.isdir(os.path.join('/usr/lib/', frontend, 'lib')):
-    qt_lib_path = '/usr/lib/%s/lib' % frontend
-else:
-    # in system directory? (No need to specify)
-    qt_lib_path = None
-
-if qt_lib_path is not None:
-    env.AppendUnique(LIBPATH = [qt_lib_path])
-    # qt4 seems to be using pkg_config
-    env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
-
-if env.has_key('qt_inc_path') and env['qt_inc_path']:
-    qt_inc_path = env['qt_inc_path']
-elif env.has_key('QTDIR') and os.path.isdir(os.path.join(env.subst('$QTDIR'), 'include')):
-    qt_inc_path = '$QTDIR/include'
-# this is the path for cygwin.
-elif os.path.isdir('/usr/include/' + frontend):
-    qt_inc_path = '/usr/include/' + frontend
-else:
-    qt_inc_path = None
-
-# Note that this CPPPATH is for testing only
-# it will be removed before calling SConscript
-if qt_inc_path is not None:
-    env['CPPPATH'] = [qt_inc_path]
-
 #
 # extra_inc_path and extra_lib_path
 #
@@ -668,66 +614,6 @@ elif conf.CheckFunc('iconv_open'):
 else:
     print 'Did not find iconv or libiconv, exiting!'
     Exit(1)
-
-
-# qt libraries?
-#
-if frontend == 'qt4':
-    succ = False
-    # first: try pkg_config
-    if env['HAS_PKG_CONFIG']:
-        succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
-        # FIXME: use pkg_config information?
-        #env['QT4_PKG_CONFIG'] = succ
-    # second: try to link to it
-    if not succ:
-        # Under linux, I can test the following perfectly
-        # Under windows, lib names need to passed as libXXX4.a ...
-        if platform_name == 'win32' and use_vc:
-            succ = conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
-        else:
-            succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
-    # still can not find it
-    if not succ:
-        print 'Did not find qt libraries, exiting!'
-        Exit(1)
-    #
-    # Now, determine the correct suffix:
-    qt_libs = ['QtCore', 'QtGui']
-    if platform_name == 'win32':
-        if mode == 'debug' and use_vc and \
-            conf.CheckLibWithHeader('QtCored4', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
-            qt_lib_suffix = 'd4'
-            use_qt_debug_libs = True
-        else:
-            qt_lib_suffix = '4'
-            use_qt_debug_libs = False
-    else:
-        if mode == 'debug' and conf.CheckLibWithHeader('QtCore_debug', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
-            qt_lib_suffix = '_debug'
-            use_qt_debug_libs = True
-        else:
-            qt_lib_suffix = ''
-            use_qt_debug_libs = False
-    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
-    qtcore_lib = ['QtCore' + qt_lib_suffix]
-    
-
-# now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
-if use_vc:
-    if frontend == 'qt4':
-        if mode == 'debug':
-            if qt_lib_path is not None:
-                manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
-            else:
-                manifest = 'QtGuid4.dll.manifest'
-        else:
-            if qt_lib_path is not None:
-                manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
-            else:
-                manifest = 'QtGui4.dll.manifest'
-    if os.path.isfile(manifest):
-        env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
 
 # check socket libs
 socket_libs = []
@@ -821,12 +707,6 @@ env['MSGFMT'] = conf.CheckCommand('msgfmt')
 # cygwin packaging requires the binaries to be stripped
 if platform_name == 'cygwin':
     env['STRIP'] = conf.CheckCommand('strip')
-
-# check uic and moc commands for qt frontends
-if frontend[:2] == 'qt' and (conf.CheckCommand('uic') == None \
-    or conf.CheckCommand('moc') == None):
-    print 'uic or moc command is not found for frontend', frontend
-    Exit(1)
 
 #
 # Customized builders
@@ -1297,8 +1177,6 @@ env = conf.Finish()
 # Now set up our build process accordingly
 #----------------------------------------------------------
 
-
-
 if env['ICONV_LIB'] is None:
     system_libs = []
 else:
@@ -1358,9 +1236,6 @@ else:
 if env['nls'] and included_gettext:
     env['CPPPATH'].append('$BUILDDIR/intl')
 #
-# QT_INC_PATH is not needed for *every* source file
-if qt_inc_path is not None:
-    env['CPPPATH'].remove(qt_inc_path)
 
 #
 # A Link script for cygwin see
@@ -1373,6 +1248,127 @@ if platform_name == 'cygwin':
     ld_script = utils.installCygwinLDScript(ld_script_path)
     env.AppendUnique(LINKFLAGS = ['-Wl,--enable-runtime-pseudo-reloc',
         '-Wl,--script,%s' % ld_script, '-Wl,-s'])
+
+
+#---------------------------------------------------------
+# Frontend related variables (QTDIR etc)
+#---------------------------------------------------------
+
+#
+# create a separate environment so that other files do not have
+# to be built with all the include directories etc
+#
+if frontend == 'qt4':
+    frontend_env = env.Copy()
+
+    # handle qt related user specified paths
+    # set environment so that moc etc can be found even if its path is not set properly
+    if frontend_env.has_key('qt_dir') and frontend_env['qt_dir']:
+        frontend_env['QTDIR'] = frontend_env['qt_dir']
+        if os.path.isdir(os.path.join(frontend_env['qt_dir'], 'bin')):
+            os.environ['PATH'] += os.pathsep + os.path.join(frontend_env['qt_dir'], 'bin')
+            frontend_env.PrependENVPath('PATH', os.path.join(frontend_env['qt_dir'], 'bin'))
+
+    # if separate qt_lib_path is given
+    if frontend_env.has_key('qt_lib_path') and frontend_env['qt_lib_path']:
+        qt_lib_path = frontend_env.subst('$qt_lib_path')
+        frontend_env.AppendUnique(LIBPATH = [qt_lib_path])
+        frontend_env.PrependENVPath('PKG_CONFIG_PATH', qt_lib_path)
+    else:
+        qt_lib_path = None
+
+    # if separate qt_inc_path is given
+    if frontend_env.has_key('qt_inc_path') and frontend_env['qt_inc_path']:
+        qt_inc_path = frontend_env['qt_inc_path']
+    else:
+        qt_inc_path = None
+
+    # local qt4 toolset from
+    # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
+    #
+    # NOTE: I have to patch qt4.py since it does not automatically
+    # process .C file!!! (add to cxx_suffixes )
+    #
+    frontend_env.Tool('qt4', [scons_dir])
+    frontend_env['QT_AUTOSCAN'] = 0
+    frontend_env['QT4_AUTOSCAN'] = 0
+    frontend_env['QT4_UICDECLFLAGS'] = '-tr lyx::qt_'
+
+    if qt_lib_path is None:
+        qt_lib_path = os.path.join(frontend_env.subst('$QTDIR'), 'lib')
+    if qt_inc_path is None:
+        qt_inc_path = os.path.join(frontend_env.subst('$QTDIR'), 'include')
+
+
+    conf = Configure(frontend_env,
+        custom_tests = { 
+            'CheckPackage' : utils.checkPackage,
+            'CheckCommand' : utils.checkCommand,
+        }
+    )
+
+    succ = False
+    # first: try pkg_config
+    if frontend_env['HAS_PKG_CONFIG']:
+        succ = conf.CheckPackage('QtCore') or conf.CheckPackage('QtCore4')
+        # FIXME: use pkg_config information?
+        #frontend_env['QT4_PKG_CONFIG'] = succ
+    # second: try to link to it
+    if not succ:
+        # Under linux, I can test the following perfectly
+        # Under windows, lib names need to passed as libXXX4.a ...
+        if platform_name == 'win32' and use_vc:
+            succ = conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
+        else:
+            succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
+    # still can not find it
+    if not succ:
+        print 'Did not find qt libraries, exiting!'
+        Exit(1)
+    #
+    # Now, determine the correct suffix:
+    qt_libs = ['QtCore', 'QtGui']
+    if platform_name == 'win32':
+        if mode == 'debug' and use_vc and \
+            conf.CheckLibWithHeader('QtCored4', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
+            qt_lib_suffix = 'd4'
+            use_qt_debug_libs = True
+        else:
+            qt_lib_suffix = '4'
+            use_qt_debug_libs = False
+    else:
+        if mode == 'debug' and conf.CheckLibWithHeader('QtCore_debug', 'QtGui/QApplication', 'c++', 'QApplication qapp();'):
+            qt_lib_suffix = '_debug'
+            use_qt_debug_libs = True
+        else:
+            qt_lib_suffix = ''
+            use_qt_debug_libs = False
+    frontend_env.EnableQt4Modules(qt_libs, debug = (mode == 'debug' and use_qt_debug_libs))
+    frontend_libs = [x + qt_lib_suffix for x in qt_libs]
+    qtcore_lib = ['QtCore' + qt_lib_suffix]
+
+    # check uic and moc commands for qt frontends
+    if conf.CheckCommand('uic') == None or conf.CheckCommand('moc') == None:
+        print 'uic or moc command is not found for frontend', frontend
+        Exit(1)
+    
+    # now, if msvc2005 is used, we will need that QT_LIB_PATH/QT_LIB.manifest file
+    if use_vc:
+        if mode == 'debug':
+            if qt_lib_path is not None:
+                manifest = os.path.join(qt_lib_path, 'QtGuid4.dll.manifest')
+            else:
+                manifest = 'QtGuid4.dll.manifest'
+        else:
+            if qt_lib_path is not None:
+                manifest = os.path.join(qt_lib_path, 'QtGui4.dll.manifest')
+            else:
+                manifest = 'QtGui4.dll.manifest'
+        if os.path.isfile(manifest):
+            env['LINKCOM'] = [env['LINKCOM'], 'mt.exe /MANIFEST %s /outputresource:$TARGET;1' % manifest]
+
+    frontend_env = conf.Finish()
+
 
 #
 # Report results
@@ -1617,18 +1613,12 @@ if build_support:
     #
     print "Processing files in src/support..."
 
-    env.Depends('$BUILDDIR/common/support/package.C', '$BUILDDIR/common/config.h')
+    frontend_env.Depends('$BUILDDIR/common/support/package.C', '$BUILDDIR/common/config.h')
     env.substFile('$BUILDDIR/common/support/package.C', '$TOP_SRCDIR/src/support/package.C.in')
 
-    if qt_inc_path is None:
-        qt_CPPPATH = ['QtCore']
-    else:
-        qt_CPPPATH = [qt_inc_path, os.path.join(qt_inc_path, 'QtCore')]
-
-    support = env.StaticLibrary(
+    support = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/support',
         source = ['$BUILDDIR/common/support/%s' % x for x in src_support_files],
-        CPPPATH = ['$CPPPATH'] + qt_CPPPATH
     )
     Alias('support', support)
 
@@ -1706,57 +1696,37 @@ if build_qt4:
 
     print "Processing files in src/frontends/qt4..."
 
-    qt4env = env.Copy()
-    qt4env['QT_AUTOSCAN'] = 0
-
-    # local qt4 toolset from
-    # http://www.iua.upf.es/~dgarcia/Codders/sconstools.html
-    #
-    # NOTE: I have to patch qt4.py since it does not automatically
-    # process .C file!!! (add to cxx_suffixes )
-    #
-    qt4env.Tool('qt4', [scons_dir])
-    qt4env.EnableQt4Modules(qt_libs, debug = (mode == 'debug' and use_qt_debug_libs))
-    qt4env['QT4_AUTOSCAN'] = 0
-    qt4env['QT4_UICDECLFLAGS'] = '-tr lyx::qt_'
-
-    qt4env.AppendUnique(CPPPATH = [
-        '$BUILDDIR/common',
-        '$BUILDDIR/common/images',
-        '$BUILDDIR/common/frontends',
-        '$BUILDDIR/common/frontends/qt4',
-        '$BUILDDIR/common/frontends/controllers',
-        qt_inc_path
-        ]
-    )
-
-    # FIXME: replace by something from pkg_config
-    qt4env.Append(CCFLAGS = [
-        '-DHAVE_CONFIG_H',
-        '-DQT_CLEAN_NAMESPACE',
-        '-DQT_GENUINE_STR',
-        '-DQT_NO_STL',
-        '-DQT_NO_KEYWORDS',
-        ]
-    )
-
-
     qt4_moc_files = ["$BUILDDIR/common/frontends/qt4/%s" % x for x in src_frontends_qt4_moc_files]
 
     #
     # Compile resources
     #
-    resources = [qt4env.Uic4(x.split('.')[0]) for x in \
+    resources = [frontend_env.Uic4(x.split('.')[0]) for x in \
         ["$BUILDDIR/common/frontends/qt4/ui/%s" % x for x in src_frontends_qt4_ui_files]]
 
     #
     # moc qt4_moc_files, the moced files are included in the original files
     #
-    qt4_moced_files = [qt4env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
+    qt4_moced_files = [frontend_env.Moc4(x.replace('.C', '_moc.cpp'), x.replace('.C', '.h')) for x in qt4_moc_files]
 
-    qt4 = qt4env.StaticLibrary(
+    qt4 = frontend_env.StaticLibrary(
         target = '$LOCALLIBPATH/qt4',
-        source = ['$BUILDDIR/common/frontends/qt4/%s' % x for x in src_frontends_qt4_files]
+        source = ['$BUILDDIR/common/frontends/qt4/%s' % x for x in src_frontends_qt4_files],
+        CPPPATH = [
+            '$CPPPATH',
+            '$BUILDDIR/common',
+            '$BUILDDIR/common/images',
+            '$BUILDDIR/common/frontends',
+            '$BUILDDIR/common/frontends/qt4',
+            '$BUILDDIR/common/frontends/controllers'
+        ],
+        CCFLAGS =  [
+            '-DHAVE_CONFIG_H',
+            '-DQT_CLEAN_NAMESPACE',
+            '-DQT_GENUINE_STR',
+            '-DQT_NO_STL',
+            '-DQT_NO_KEYWORDS',
+        ]
     )
     Alias('qt4', qt4)
 
@@ -1765,18 +1735,18 @@ if build_client:
     #
     # src/client
     #
-    env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
+    frontend_env.BuildDir('$BUILDDIR/common', '$TOP_SRCDIR/src', duplicate = 0)
 
     print "Processing files in src/client..."
 
     if env['HAVE_FCNTL']:
-        client = env.Program(
+        client = frontend_env.Program(
             target = '$BUILDDIR/common/client/lyxclient',
             LIBS = ['support'] + intl_libs + system_libs +
                 socket_libs + boost_libraries + qtcore_lib,
             source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files]
         )
-        Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
+        Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
             client, [Copy('$TARGET', '$SOURCE')]))
     else:
         client = None
@@ -1795,27 +1765,25 @@ if build_tex2lyx:
     #
     print "Processing files in src/tex2lyx..."
 
-    tex2lyx_env = env.Copy()
     #
-    tex2lyx_env.Prepend(CPPPATH = ['$BUILDDIR/common/tex2lyx'])
-    tex2lyx_env.AppendUnique(LIBPATH = ['#$LOCALLIBPATH'])
-
     for file in ['FloatList.C', 'Floating.C', 'counters.C', 'lyxlayout.h', 'lyxlayout.C', 
         'lyxtextclass.h', 'lyxtextclass.C', 'lyxlex.C', 'lyxlex_pimpl.C']:
-        env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
+        frontend_env.Command('$BUILDDIR/common/tex2lyx/'+file, '$TOP_SRCDIR/src/'+file,
             [Copy('$TARGET', '$SOURCE')])
 
-    tex2lyx = tex2lyx_env.Program(
+    tex2lyx = frontend_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
         LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
-        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files]
+        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files],
+        CPPPATH = ['$BUILDDIR/common/tex2lyx', '$CPPPATH'],
+        LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
     )
-    Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
+    Alias('tex2lyx', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
         tex2lyx, [Copy('$TARGET', '$SOURCE')]))
     Alias('tex2lyx', tex2lyx)
 else:
     # define tex2lyx even if tex2lyx is not built with rebuild=no
-    tex2lyx = [env.subst('$BUILDDIR/common/tex2lyx/${PROGPREFIX}tex2lyx$PROGSUFFIX')]
+    tex2lyx = [frontend_env.subst('$BUILDDIR/common/tex2lyx/${PROGPREFIX}tex2lyx$PROGSUFFIX')]
 
 
 if build_lyxbase:
@@ -1852,7 +1820,7 @@ if build_lyx:
     #
     # Build lyx with given frontend
     #
-    lyx = env.Program(
+    lyx = frontend_env.Program(
         target = '$BUILDDIR/lyx',
         source = ['$BUILDDIR/common/main.C'],
         LIBS = [
@@ -1875,7 +1843,7 @@ if build_lyx:
     Alias('lyx', lyx)
 else:
     # define lyx even if lyx is not built with rebuild=no
-    lyx = [env.subst('$BUILDDIR/${PROGPREFIX}lyx$PROGSUFFIX')]
+    lyx = [frontend_env.subst('$BUILDDIR/${PROGPREFIX}lyx$PROGSUFFIX')]
 
 
 if build_msvs_projects:
