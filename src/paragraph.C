@@ -69,6 +69,88 @@ using std::ostream;
 using std::ostringstream;
 
 
+ParagraphMetrics::ParagraphMetrics()
+{
+}
+
+
+ParagraphMetrics::ParagraphMetrics(ParagraphMetrics const & pm)
+	: dim_(pm.dim_), rows_(pm.rows_), rowSignature_(pm.rowSignature_)
+{
+}
+
+
+ParagraphMetrics & ParagraphMetrics::operator=(ParagraphMetrics const & pm)
+{
+	rows_ = pm.rows_;
+	dim_ = pm.dim_;
+	rowSignature_ = pm.rowSignature_;
+	return *this;
+}
+
+
+Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
+{
+	BOOST_ASSERT(!rows().empty());
+
+	// If boundary is set we should return the row on which
+	// the character before is inside.
+	if (pos > 0 && boundary)
+		--pos;
+
+	RowList::iterator rit = rows_.end();
+	RowList::iterator const begin = rows_.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return *rit;
+}
+
+
+Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
+{
+	BOOST_ASSERT(!rows().empty());
+
+	// If boundary is set we should return the row on which
+	// the character before is inside.
+	if (pos > 0 && boundary)
+		--pos;
+
+	RowList::const_iterator rit = rows_.end();
+	RowList::const_iterator const begin = rows_.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return *rit;
+}
+
+
+size_t ParagraphMetrics::pos2row(pos_type pos) const
+{
+	BOOST_ASSERT(!rows().empty());
+
+	RowList::const_iterator rit = rows_.end();
+	RowList::const_iterator const begin = rows_.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return rit - begin;
+}
+
+
+void ParagraphMetrics::dump() const
+{
+	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
+	for (size_t i = 0; i != rows_.size(); ++i) {
+		lyxerr << "  row " << i << ":   ";
+		rows_[i].dump();
+	}
+}
+
+
 Paragraph::Paragraph()
 	: begin_of_body_(0), pimpl_(new Paragraph::Pimpl(this))
 {
@@ -78,12 +160,11 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & par)
-	:	itemdepth(par.itemdepth), insetlist(par.insetlist),
-		dim_(par.dim_),
-		rows_(par.rows_), rowSignature_(par.rowSignature_),
-		layout_(par.layout_),
-		text_(par.text_), begin_of_body_(par.begin_of_body_),
-	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
+	: ParagraphMetrics(par),
+	itemdepth(par.itemdepth), insetlist(par.insetlist),
+	layout_(par.layout_),
+	text_(par.text_), begin_of_body_(par.begin_of_body_),
+	pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
 	//lyxerr << "Paragraph::Paragraph(Paragraph const&)" << endl;
 	InsetList::iterator it = insetlist.begin();
@@ -105,15 +186,14 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 		for (; it != end; ++it)
 			it->inset = it->inset->clone().release();
 
-		rows_ = par.rows_;
-		dim_ = par.dim_;
-		rowSignature_ = par.rowSignature_;
 		layout_ = par.layout();
 		text_ = par.text_;
 		begin_of_body_ = par.begin_of_body_;
 
 		delete pimpl_;
 		pimpl_ = new Pimpl(*par.pimpl_, this);
+
+		ParagraphMetrics::operator=(par);
 	}
 	return *this;
 }
@@ -1538,58 +1618,6 @@ bool Paragraph::allowEmpty() const
 }
 
 
-Row & Paragraph::getRow(pos_type pos, bool boundary)
-{
-	BOOST_ASSERT(!rows().empty());
-
-	// If boundary is set we should return the row on which
-	// the character before is inside.
-	if (pos > 0 && boundary)
-		--pos;
-
-	RowList::iterator rit = rows_.end();
-	RowList::iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return *rit;
-}
-
-
-Row const & Paragraph::getRow(pos_type pos, bool boundary) const
-{
-	BOOST_ASSERT(!rows().empty());
-
-	// If boundary is set we should return the row on which
-	// the character before is inside.
-	if (pos > 0 && boundary)
-		--pos;
-
-	RowList::const_iterator rit = rows_.end();
-	RowList::const_iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return *rit;
-}
-
-
-size_t Paragraph::pos2row(pos_type pos) const
-{
-	BOOST_ASSERT(!rows().empty());
-
-	RowList::const_iterator rit = rows_.end();
-	RowList::const_iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return rit - begin;
-}
-
-
 char_type Paragraph::transformChar(char_type c, pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
@@ -1622,16 +1650,6 @@ char_type Paragraph::transformChar(char_type c, pos_type pos) const
 			return Encodings::transformChar(c, Encodings::FORM_FINAL);
 		else
 			return Encodings::transformChar(c, Encodings::FORM_ISOLATED);
-	}
-}
-
-
-void Paragraph::dump() const
-{
-	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
-	for (size_t i = 0; i != rows_.size(); ++i) {
-		lyxerr << "  row " << i << ":   ";
-		rows_[i].dump();
 	}
 }
 
