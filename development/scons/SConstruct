@@ -1268,6 +1268,8 @@ if frontend == 'qt4':
         if os.path.isdir(os.path.join(frontend_env['qt_dir'], 'bin')):
             os.environ['PATH'] += os.pathsep + os.path.join(frontend_env['qt_dir'], 'bin')
             frontend_env.PrependENVPath('PATH', os.path.join(frontend_env['qt_dir'], 'bin'))
+        if os.path.isdir(os.path.join(frontend_env['qt_dir'], 'lib')):
+            frontend_env.PrependENVPath('PKG_CONFIG_PATH', os.path.join(frontend_env['qt_dir'], 'lib'))
 
     # if separate qt_lib_path is given
     if frontend_env.has_key('qt_lib_path') and frontend_env['qt_lib_path']:

@@ -167,40 +167,51 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, versions, isDebug):
       isDebug:   if true, use debug libraries
     '''
     conf.Message('Checking for boost library %s... ' % ', '.join(libs))
+    libprefix = conf.env['LIBPREFIX']
+    libsuffix = '(%s|%s)' % (conf.env['LIBSUFFIX'], conf.env['SHLIBSUFFIX'])
     found_lib = False
     found_inc = False
     lib_names = []
     lib_path = None
     inc_path = None
     for path in lib_paths:
+        conf.Log("Looking into %s\n" % path)
         for lib in libs:
             # get all the libs, then filter for the right library
-            files = glob.glob(os.path.join(path, 'libboost_%s-*.a' % lib))
+            files = glob.glob(os.path.join(path, '%sboost_%s-*.*' % (libprefix, lib)))
             # check things like libboost_iostreams-gcc-mt-d-1_33_1.a
             if len(files) > 0:
+                conf.Log("Find boost libraries: %s\n" % files)
                 # runtime code includes s,g,y,d,p,n, where we should look for
                 # d,g,y for debug, s,p,n for release
                 lib_files = []
                 if isDebug:
                     for ver in versions:
-                        lib_files += filter(lambda x: re.search('libboost_%s-\w+-mt-[^spn]+-%s.a' % (lib, ver), x), files)
+                        lib_files += filter(lambda x: re.search('%sboost_%s-\w+-mt-[^spn]+-%s%s' % (libprefix, lib, ver, libsuffix), x), files)
                 else:
                     for ver in versions:
-                        lib_files += filter(lambda x: re.search('libboost_%s-\w+-mt-([^dgy]+-)*%s.a' % (lib, ver), x), files)
+                        lib_files += filter(lambda x: re.search('%sboost_%s-\w+-mt-([^dgy]+-)*%s%s' % (libprefix, lib, ver, libsuffix), x), files)
                 if len(lib_files) == 0:
                     # use alternative libraries
                     for ver in versions:
-                        lib_files += filter(lambda x: re.search('libboost_%s-[\w-]+%s.a' % (lib, ver), x), files)
+                        lib_files += filter(lambda x: re.search('%sboost_%s-[\w-]+%s%s' % (libprefix, lib, ver, libsuffix), x), files)
                 if len(lib_files) > 0:
                     # get xxx-gcc-1_33_1 from /usr/local/lib/libboost_xxx-gcc-1_33_1.a
-                    lib_names.append(lib_files[0].split(os.sep)[-1][3:-2])
+                    name = lib_files[0].split(os.sep)[-1][len(libprefix):]
+                    lib_names.append(name.split('.')[0])
+                    conf.Log("Qualified libraries: %s\n" % lib_names)
                 else:
+                    conf.Log("No qualified library is found.\n")
                     break
         if len(lib_names) == len(libs):
             found_lib = True
             lib_path = path
             break
     if not found_lib:
+        if len(lib_names) == 0:
+            conf.Log("No boost library is found\n")
+        else:
+            conf.Log("Found boost libraries: %s\n" % lib_names)
         conf.Result('no')
         return (None, None, None)
     # check version number in boost/version.hpp
@@ -213,18 +224,20 @@ def checkBoostLibraries(conf, libs, lib_paths, inc_paths, versions, isDebug):
         return True in [x in version_file_content for x in version_strings]
     # check for boost header file
     for path in inc_paths:
+        conf.Log("Checking for inc path: %s\n" % path)
         if isValidBoostDir(path):
             inc_path = path
             found_inc = True
         else:   # check path/boost_1_xx_x/boost
             dirs = glob.glob(os.path.join(path, 'boost-*'))
             if len(dirs) > 0 and isValidBoostDir(dirs[0]):
+                conf.Log("Checing for sub directory: %s\n" % dirs[0])
                 inc_path = dirs[0]
                 found_inc = True
     # return result
     if found_inc:
         conf.Result('yes')
-        print 'Using boost libraries', ', '.join(lib_names)
+        conf.Log('Using boost libraries %s\n' % (', '.join(lib_names)))
         return (lib_names, lib_path, inc_path)
     else:
         conf.Result('no')
