@@ -42,13 +42,6 @@ ICONS:
 
 FILE
 
-* Loading de_Userguide.lyx results in two parse errors:
-  Paragraph ended in line 21206
-  Missing \end_layout.
-  Paragraph ended in line 21301
-  Missing \end_layout.
-  I don't know if that is a lyx2lyx or LyX problem. LyX 1.4 can read the file.
-
 * Change Tools->Preferences->User interface->User interface to something like
   "kornel.default.ui"; save prefs; exit LyX; restart LyX; => crash; 
   in the preferences file, there is an entry \bind_file "/Something/kornel.default"
@@ -607,3 +600,14 @@ CREDITS:
   "margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"
   msgstr ""
   FIXED (JSpitzm 2006-12-19)
+
+* Loading de_Userguide.lyx results in two parse errors:
+  Paragraph ended in line 21206
+  Missing \end_layout.
+  Paragraph ended in line 21301
+  Missing \end_layout.
+  I don't know if that is a lyx2lyx or LyX problem. LyX 1.4 can read the file.
+  FIXED (Georg 2006-12-17). It turned out that it was a math parser problem
+  (bug 3034). It was introduced by the conversion of mathed to unicode,
+  because two methods Parser::tokenize() with different semantics existed.
+

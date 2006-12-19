@@ -105,9 +105,6 @@ docstring MathMacroTemplate::name() const
 
 docstring MathMacroTemplate::prefix() const
 {
-	// FIXME UNICODE
-	// delete the conversion when bformat() will return a docstring.
-	// delete the conversion when bformat() takes a docstring arg.
 	return bformat(_(" Macro: %1$s: "), name_);
 }
 
@@ -176,12 +173,7 @@ void MathMacroTemplate::draw(PainterInfo & p, int x, int y) const
 void MathMacroTemplate::read(Buffer const &, LyXLex & lex)
 {
 	MathArray ar;
-	lex.next(); // eat \begin_inset FormulaMacro line
-	docstring const str = lex.getDocString();
-	lex.next(); // eat that macro definition
-	lex.next(); // eat the \\end_insrt line
-	//lyxerr << "Got to read from: " << to_utf8(str) << endl;
-	mathed_parse_cell(ar, str);
+	mathed_parse_cell(ar, lex.getStream());
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		lyxerr << "Read: " << to_utf8(asString(ar)) << endl;

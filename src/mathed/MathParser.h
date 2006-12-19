@@ -63,16 +63,15 @@ latexkeys const * in_word_set(docstring const & str);
 
 /// parse formula from a string
 bool mathed_parse_normal(MathAtom &, docstring const &);
-/// ... a stream
-bool mathed_parse_normal(MathAtom &, std::istream &);
 /// ... the LyX lexxer
 bool mathed_parse_normal(MathAtom &, LyXLex &);
-/// ... the LyX lexxer
+/// parse formula from a string into a grid
 void mathed_parse_normal(InsetMathGrid &, docstring const &);
 
 /// parse a single cell from a string
 void mathed_parse_cell(MathArray & ar, docstring const &);
-/// ... a stream
+/// parse a single cell from a stream. Only use this for reading from .lyx
+/// file format, for the reason see Parser::tokenize(std::istream &).
 void mathed_parse_cell(MathArray & ar, std::istream &);
 
 void initParser();

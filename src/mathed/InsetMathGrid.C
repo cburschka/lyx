@@ -12,6 +12,7 @@
 
 #include "InsetMathGrid.h"
 #include "MathData.h"
+#include "MathParser.h"
 #include "MathStream.h"
 
 #include "BufferView.h"
@@ -74,8 +75,6 @@ protected:
 	InsetMathGrid & inset_;
 };
 
-
-void mathed_parse_normal(InsetMathGrid &, string const & argument);
 
 namespace {
 
@@ -1215,9 +1214,7 @@ void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
 		int n = 0;
 		is >> n;
 		InsetMathGrid grid(1, 1);
-		// FIXME UNICODE
-		mathed_parse_normal(grid,
-			to_utf8(lyx::cap::getSelection(cur.buffer(), n)));
+		mathed_parse_normal(grid, cap::getSelection(cur.buffer(), n));
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
 			recordUndo(cur);

@@ -78,7 +78,6 @@ using std::fill;
 using std::string;
 using std::ios;
 using std::istream;
-using std::istringstream;
 using std::ostream;
 using std::vector;
 
@@ -302,8 +301,11 @@ public:
 
 	///
 	Parser(LyXLex & lex);
-	///
+	/// Only use this for reading from .lyx file format, for the reason
+	/// see Parser::tokenize(std::istream &).
 	Parser(istream & is);
+	///
+	Parser(docstring const & str);
 
 	///
 	bool parse(MathAtom & at);
@@ -331,7 +333,8 @@ private:
 	void error(docstring const & msg) { error(to_utf8(msg)); }
 	/// dump contents to screen
 	void dump() const;
-	///
+	/// Only use this for reading from .lyx file format (see
+	/// implementation for reason)
 	void tokenize(istream & is);
 	///
 	void tokenize(docstring const & s);
@@ -381,6 +384,13 @@ Parser::Parser(istream & is)
 	: lineno_(0), pos_(0)
 {
 	tokenize(is);
+}
+
+
+Parser::Parser(docstring const & str)
+	: lineno_(0), pos_(0)
+{
+	tokenize(str);
 }
 
 
@@ -477,7 +487,7 @@ void Parser::tokenize(istream & is)
 {
 	// eat everything up to the next \end_inset or end of stream
 	// and store it in s for further tokenization
-	std::string s;
+	string s;
 	char c;
 	while (is.get(c)) {
 		s += c;
@@ -908,7 +918,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					return;
 				}
 
-				docstring const arg  = getArg('[', ']');
+				docstring const arg = getArg('[', ']');
 				if (!arg.empty())
 					nargs = convert<int>(arg);
 
@@ -1423,8 +1433,7 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 void mathed_parse_cell(MathArray & ar, docstring const & str)
 {
-	istringstream is(to_utf8(str));
-	mathed_parse_cell(ar, is);
+	Parser(str).parse(ar, 0, InsetMath::MATH_MODE);
 }
 
 
@@ -1434,16 +1443,9 @@ void mathed_parse_cell(MathArray & ar, istream & is)
 }
 
 
-bool mathed_parse_normal(MathAtom & t, string const & str)
+bool mathed_parse_normal(MathAtom & t, docstring const & str)
 {
-	istringstream is(str);
-	return Parser(is).parse(t);
-}
-
-
-bool mathed_parse_normal(MathAtom & t, istream & is)
-{
-	return Parser(is).parse(t);
+	return Parser(str).parse(t);
 }
 
 
@@ -1453,10 +1455,9 @@ bool mathed_parse_normal(MathAtom & t, LyXLex & lex)
 }
 
 
-void mathed_parse_normal(InsetMathGrid & grid, string const & str)
+void mathed_parse_normal(InsetMathGrid & grid, docstring const & str)
 {
-	istringstream is(str);
-	Parser(is).parse1(grid, 0, InsetMath::MATH_MODE, false);
+	Parser(str).parse1(grid, 0, InsetMath::MATH_MODE, false);
 }
 
 
