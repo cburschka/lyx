@@ -154,10 +154,6 @@ public:
 	Paragraph & paragraph();
 	/// the paragraph we're in
 	Paragraph const & paragraph() const;
-	/// the row in the paragraph we're in
-	Row & textRow();
-	/// the row in the paragraph we're in
-	Row const & textRow() const;
 	///
 	LyXText * text();
 	///

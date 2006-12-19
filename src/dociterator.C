@@ -170,20 +170,6 @@ Paragraph const & DocIterator::paragraph() const
 }
 
 
-Row & DocIterator::textRow()
-{
-	BOOST_ASSERT(!paragraph().rows().empty());
-	return paragraph().getRow(pos(), boundary_);
-}
-
-
-Row const & DocIterator::textRow() const
-{
-	BOOST_ASSERT(!paragraph().rows().empty());
-	return paragraph().getRow(pos(), boundary_);
-}
-
-
 pit_type DocIterator::lastpit() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;

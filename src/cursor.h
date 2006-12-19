@@ -102,6 +102,10 @@ public:
 	bool & macromode() { return macromode_; }
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
+	/// the row in the paragraph we're in
+	Row & textRow();
+	/// the row in the paragraph we're in
+	Row const & textRow() const;
 
 	//
 	// common part

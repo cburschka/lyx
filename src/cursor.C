@@ -403,6 +403,20 @@ void LCursor::getPos(int & x, int & y) const
 }
 
 
+Row & LCursor::textRow()
+{
+	BOOST_ASSERT(!paragraph().rows().empty());
+	return paragraph().getRow(pos(), boundary());
+}
+
+
+Row const & LCursor::textRow() const
+{
+	BOOST_ASSERT(!paragraph().rows().empty());
+	return paragraph().getRow(pos(), boundary());
+}
+
+
 void LCursor::resetAnchor()
 {
 	anchor_ = *this;
