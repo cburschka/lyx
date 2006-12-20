@@ -356,8 +356,11 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 
-		if (cmd.button() == mouse_button::button1 && hitButton(cmd)
-			&& !cur.selection()) {
+		if (cmd.button() == mouse_button::button1 && hitButton(cmd)) {
+			// if we are selecting, we do not want to
+			// toggle the inset.
+			if (cur.selection())
+				break;
 			// Left button is clicked, the user asks to
 			// toggle the inset visual state.
 			cur.dispatched();
