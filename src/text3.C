@@ -1028,15 +1028,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			setCursorFromCoordinates(cur, cmd.x, y);
 			cur.x_target() = cmd.x;
 			if (cmd.y >= wh)
-				cursorDown(cur);
+				lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
 			else if (cmd.y < 0)
-				cursorUp(cur);
+				lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
 			// This is to allow jumping over large insets
 			if (cur.top() == old) {
 				if (cmd.y >= wh)
-					cursorDown(cur);
+					lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
 				else if (cmd.y < 0)
-					cursorUp(cur);
+					lyx::dispatch(FuncRequest(LFUN_UP_SELECT));
 			}
 
 			if (cur.top() == old)
