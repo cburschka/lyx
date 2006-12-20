@@ -150,6 +150,15 @@ Style Affiliation
 End
 
 
+Style AltAffiliation
+	CopyStyle             Affiliation
+	PassThru              1
+	LatexName             altaffiliation
+	OptionalArgs          1
+	LabelString           "AltAffiliation"
+End
+
+
 # Address is exactly the same as Affiliation. We just put this in so
 # that tex2lyX will know what to do with it.
 Style Address
@@ -170,6 +179,7 @@ Style Author_Email
 	CopyStyle             Affiliation
 	PassThru              1
 	LatexName             email
+	OptionalArgs          1
 	LabelString           "Electronic Address:"
 	TextFont
 	  Family              Typewriter
@@ -184,6 +194,7 @@ Style Author_URL
 	CopyStyle             Author_Email
 	PassThru              1
 	LatexName             homepage
+	OptionalArgs          1
 	LabelString           "URL:"
 End
 
