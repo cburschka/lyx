@@ -1640,6 +1640,7 @@ if build_qt2:
 
     # load qt2 tools
     qt2env.Tool('qt')
+    qt2env['QT_UICDECLFLAGS'] = '-tr lyx::qt_'
 
     qt2env.AppendUnique(CPPPATH = [
         '$BUILDDIR/common',
