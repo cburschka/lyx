@@ -2450,6 +2450,7 @@ docstring LyXText::getPossibleLabel(LCursor & cur) const
 pos_type LyXText::x2pos(BufferView const & bv, pit_type pit, int row,
 		int x) const
 {
+	BOOST_ASSERT(!pars_[pit].rows().empty());
 	BOOST_ASSERT(row < int(pars_[pit].rows().size()));
 	bool bound = false;
 	Row const & r = pars_[pit].rows()[row];
