@@ -14,6 +14,7 @@
 // All is well if the namespace is visible first.
 #include "GuiView.h"
 
+#include "Action.h"
 #include "QLMenubar.h"
 #include "QLPopupMenu.h"
 
@@ -126,6 +127,8 @@ MenuBackend const & QLMenubar::backend()
 }
 
 
+/// Some special Qt/Mac support hacks
+
 /*
   Here is what the Qt documentation says about how a menubar is chosen:
 
@@ -156,17 +159,44 @@ QMenuBar * QLMenubar::menuBar() const
 #endif
 }
 
+#ifdef Q_WS_MACX
+# define MERGE_MAC_MENUS
+# ifndef MERGE_MAC_MENUS
+extern void qt_mac_set_menubar_merge(bool b);
+# endif
+#endif
+
 void QLMenubar::macxMenuBarInit()
 {
 #ifdef Q_WS_MACX
 	mac_menubar_.reset(new QMenuBar);
 
+# ifdef MERGE_MAC_MENUS
+	/* The qt/mac menu code has a very silly hack that moves some
+	   menu entries that it recognizes by name (e.g.
+	   "Preferences...") to the "LyX" menu. This feature can only
+	   work if the menu entries are always available. Since we
+	   build menus on demand, we add the entries to a dummy menu
+	   (JMarc)
+	*/
+
 	// this is the name of the menu that contains our special entries
-	menubackend_.specialMenu(lyx::from_ascii("LyX"));
-	// make sure that the special entries are added to the first
-	// menu even before this menu has been opened.
-	//name_map_[menubackend_.getMenubar().begin()->submenuname()]->update();
-#endif
+	docstring const & specialname = from_ascii("LyX");
+	if (menubackend_.hasMenu(specialname)) {
+		QMenu * qMenu = owner_->menuBar()->addMenu("special");
+		//qMenu->setVisible(false);
+
+		menubackend_.specialMenu(specialname);
+		Menu const & special = menubackend_.getMenu(specialname);
+		Menu::const_iterator end = special.end();
+		for (Menu::const_iterator cit = special.begin();
+		     cit != end ; ++cit) 
+			qMenu->addAction(new Action(*owner_, cit->label(), cit->func()));
+	}
+# else
+	qt_mac_set_menubar_merge(false);
+# endif // MERGE_MAC_MENUS
+#endif // Q_WS_MACX
 }
 
 } // namespace frontend

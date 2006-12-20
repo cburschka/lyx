@@ -50,15 +50,10 @@ private:
 	lyx::docstring const getLabel(MenuItem const & mi);
 
 	/// add binding keys a the menu item label.
-	/// \todo Mac specific binding handling.
 	void addBinding(lyx::docstring & label, MenuItem const & mi);
 
 	/// Top Level Menu
 	Menu topLevelMenu_;
-
-	/// Mac specific menu hack
-	/// \todo Fix it
-	void specialMacXmenuHack();
 };
 
 } // namespace frontend

@@ -41,8 +41,6 @@ namespace lyx {
 namespace frontend {
 
 
-// MacOSX specific stuff is at the end.
-
 QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 						 MenuItem const & mi, bool topLevelMenu)
 	: owner_(owner)
@@ -77,8 +75,6 @@ void QLPopupMenu::update()
 		lyxerr[Debug::GUI] << "\tWARNING: menu seems empty" << lyx::to_utf8(topLevelMenu_.name()) << endl;
 	}
 	populate(this, &topLevelMenu_);
-
-	specialMacXmenuHack();
 }
 
 void QLPopupMenu::populate(QMenu* qMenu, Menu * menu)
@@ -138,38 +134,12 @@ docstring const QLPopupMenu::getLabel(MenuItem const & mi)
 	return label;
 }
 
-/// \todo Mac specific binding handling.
 void QLPopupMenu::addBinding(docstring & label, MenuItem const & mi)
 {
 	docstring const binding(mi.binding());
 	if (!binding.empty()) {
 		label += '\t' + binding;
 	}
-}
-
-/// \todo Fix Mac specific menu hack
-void QLPopupMenu::specialMacXmenuHack()
-{
-#ifdef Q_WS_MACX
-	/* The qt/mac menu code has a very silly hack that
-	   moves some menu entries that it recognizes by name
-	   (e.g. "Preferences...") to the "LyX" menu. This
-	   feature can only work if the menu entries are
-	   always available. Since we build menus on demand,
-	   we add some dummy contents to one of the menus (JMarc)
-	*/
-/*
-	static QLPopupMenu * themenu = this;
-	if (themenu == this && owner_->backend().hasMenu("LyX")) {
-		Menu special = owner_->backend().getMenu("LyX");
-		Menu::const_iterator end = special.end();
-		Menu::size_type i = 0;
-		for (Menu::const_iterator cit = special.begin();
-		     cit != end ; ++cit, ++i)
-			insertItem(toqstr(cit->label()), indexOffset + i);
-	}
-*/
-#endif
 }
 
 } // namespace frontend

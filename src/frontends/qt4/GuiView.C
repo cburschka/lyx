@@ -219,25 +219,6 @@ void GuiView::init()
 	updateToolbars();
 	updateLayoutChoice();
 	updateMenubar();
-
-#ifdef Q_WS_MACX
-	// Qt docs:
-	// "quit or exit	Application Menu | Quit <application name>	
-	// If this entry is not found a default Quit item will be created to call
-	// QApplication::quit()"
-	QMenu * lyxMenu =  menuBar()->addMenu("&LyX");
-	QAction * quitAction = new QAction(tr("&Quit"), this);
-	lyxMenu->addAction(quitAction);
-	connect(quitAction, SIGNAL(triggered()),this, SLOT(macQuit()));
-#endif
-
-}
-
-
-void GuiView::macQuit()
-{
-	// this slot is only called on Mac
-	dispatch(FuncRequest(LFUN_LYX_QUIT));
 }
 
 
