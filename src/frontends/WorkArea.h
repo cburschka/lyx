@@ -88,9 +88,10 @@ public:
 	void stopBlinkingCursor();
 	void startBlinkingCursor();
 
-protected:
-	///
+	/// Process Key pressed event.
+	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
+protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
 	///

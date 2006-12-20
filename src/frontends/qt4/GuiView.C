@@ -17,6 +17,7 @@
 
 #include "GuiImplementation.h"
 #include "GuiWorkArea.h"
+#include "QLyXKeySym.h"
 #include "QLMenubar.h"
 #include "QLToolbar.h"
 #include "QCommandBuffer.h"
@@ -54,6 +55,7 @@
 #include <QVBoxLayout>
 
 #include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
 
 using std::endl;
 using std::string;
@@ -605,6 +607,43 @@ void GuiView::resizeEvent(QResizeEvent *)
 void GuiView::moveEvent(QMoveEvent *)
 {
 	updateFloatingGeometry();
+}
+
+
+bool GuiView::event(QEvent * e)
+{
+	// Useful debug code:
+	/*
+	switch (e->type())
+	{
+	case QEvent::WindowActivate:
+	case QEvent::ActivationChange:
+	case QEvent::WindowDeactivate:
+	case QEvent::Paint:
+	case QEvent::Enter:
+	case QEvent::Leave:
+	case QEvent::HoverEnter:
+	case QEvent::HoverLeave:
+	case QEvent::HoverMove:
+	case QEvent::StatusTip:
+		break;
+	default:
+	*/
+
+	if (e->type() == QEvent::ShortcutOverride) {
+		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
+		if (ke->key() == Qt::Key_Tab) {
+			boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
+			sym->set(ke);
+			work_area_->processKeySym(sym, key_modifier::none);
+			e->accept();
+			centralWidget()->setFocus();
+			return true;
+		}
+	}
+	//} for the debug switch above.
+
+	return QMainWindow::event(e);
 }
 
 

@@ -124,6 +124,9 @@ private:
 	 */
 	virtual void setWindowTitle(lyx::docstring const & t, lyx::docstring const & it);
 
+	/// in order to catch Tab key press.
+	bool event(QEvent * e);
+
 	QTimer statusbar_timer_;
 
 	/// command buffer
