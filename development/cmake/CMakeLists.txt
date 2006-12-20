@@ -83,6 +83,17 @@ if(WIN32)
 	endif(noconsole)
 endif(WIN32)
 
+set(LYX_DIR         "${CMAKE_SOURCE_DIR}/../../lib")
+set(TOP_SRCDIR      "${CMAKE_SOURCE_DIR}/../..")
+set(PROGRAM_SUFFIX  "")
+set(LOCALEDIR       "")
+
+message("----- LYX_DIR       : ${LYX_DIR}")
+message("----- TOP_SRCDIR    : ${TOP_SRCDIR}")
+message("----- PROGRAM_SUFFIX: ${PROGRAM_SUFFIX}")
+message("----- LOCALEDIR     : ${LOCALEDIR}")
+
+
 message("")
 
 
