@@ -147,7 +147,6 @@ int GuiImplementation::newWorkArea(unsigned int w, unsigned int h, int view_id)
 
 	view->setWorkArea(work_areas_[id]);
 	view->initTab(work_areas_[id]);
-	work_areas_[id]->setFocus();
 
 	return id;
 }
