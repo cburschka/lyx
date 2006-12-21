@@ -172,28 +172,28 @@ namespace {
 // configuration-time.
 string const top_srcdir()
 {
-	static string const dir("%TOP_SRCDIR%");
+	static string const dir("@TOP_SRCDIR@");
 	return dir;
 }
 
 
 string const hardcoded_localedir()
 {
-	return string("%LOCALEDIR%");
+	return string("@LOCALEDIR@");
 }
 
 
 string const hardcoded_system_support_dir()
 {
-	return string("%LYX_DIR%");
+	return string("@LYX_DIR@");
 }
 
 
 string const & with_version_suffix()
 {
-	static string const program_suffix("%PROGRAM_SUFFIX%");
+	static string const program_suffix("@PROGRAM_SUFFIX@");
 	static string const
-		with_version_suffix(" --with-version-suffix=%PROGRAM_SUFFIX%");
+		with_version_suffix(" --with-version-suffix=@PROGRAM_SUFFIX@");
 	return program_suffix.empty() ? program_suffix : with_version_suffix;
 }
 
@@ -202,7 +202,7 @@ string const & with_version_suffix()
 
 string const & Package::top_srcdir() const
 {
-	static string const dir("%TOP_SRCDIR%");
+	static string const dir("@TOP_SRCDIR@");
 	return dir;
 }
 
