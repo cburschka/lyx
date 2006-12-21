@@ -52,6 +52,7 @@ using support::onlyPath;
 using support::Path;
 using support::prefixIs;
 using support::quoteName;
+using support::removeExtension;
 using support::split;
 using support::subst;
 using support::Systemcall;
@@ -507,12 +508,11 @@ bool Converters::move(string const & fmt,
 
 	bool no_errors = true;
 	string const path = onlyPath(from.absFilename());
-	string const base = onlyFilename(changeExtension(from.absFilename(), string()));
-	string const to_base = changeExtension(to.absFilename(), string());
+	string const base = onlyFilename(removeExtension(from.absFilename()));
+	string const to_base = removeExtension(to.absFilename());
 	string const to_extension = getExtension(to.absFilename());
 
-	vector<string> const files = dirList(
-			FileName(onlyPath(from.absFilename())),
+	vector<string> const files = dirList(FileName(path),
 			getExtension(from.absFilename()));
 	for (vector<string>::const_iterator it = files.begin();
 	     it != files.end(); ++it)
