@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-16 13:25+0100\n"
+"POT-Creation-Date: 2006-12-21 19:34+0100\n"
 "PO-Revision-Date: 2005-12-18 15:05+0100\n"
 "Last-Translator: Joacim Persson <>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:276
+#: src/frontends/qt4/ui/QCitationUi.ui:273
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:148
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:225
 #, fuzzy
@@ -126,7 +126,7 @@ msgstr "Storlek|#S"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:69
 #: src/frontends/qt4/ui/QExternalUi.ui:192
-#: src/frontends/qt4/ui/QGraphicsUi.ui:601
+#: src/frontends/qt4/ui/QGraphicsUi.ui:604
 #: src/frontends/qt4/ui/QParagraphUi.ui:32
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:78
 #: src/frontends/qt4/ui/QTabularUi.ui:704
@@ -135,58 +135,58 @@ msgstr "Storlek|#S"
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:520
+#: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Brödstil"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:74
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "Pytteliten"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:79
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "Minst"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:84
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "Mindre"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:89
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
 msgid "Small"
 msgstr "Liten"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:94
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
 msgid "Normal"
 msgstr "Brödstil"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:99
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
 msgid "Large"
 msgstr "Stor"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:104
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
 msgid "Larger"
 msgstr "Större"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:109
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
 msgid "Largest"
 msgstr "Störst"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:114
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
 msgid "Huge"
 msgstr "Störstare"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:119
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
 msgstr "Störstast"
 
@@ -422,14 +422,14 @@ msgstr "Arkformat|#f"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:43 src/frontends/qt4/ui/QBoxUi.ui:122
 #: src/frontends/qt4/ui/QExternalUi.ui:507
-#: src/frontends/qt4/ui/QGraphicsUi.ui:177
+#: src/frontends/qt4/ui/QGraphicsUi.ui:174
 #, fuzzy
 msgid "&Height:"
 msgstr "Höjd"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:138
 #: src/frontends/qt4/ui/QExternalUi.ui:484
-#: src/frontends/qt4/ui/QGraphicsUi.ui:197
+#: src/frontends/qt4/ui/QGraphicsUi.ui:194
 #: src/frontends/qt4/ui/QTabularUi.ui:103 src/frontends/qt4/ui/QWrapUi.ui:39
 #, fuzzy
 msgid "&Width:"
@@ -505,7 +505,7 @@ msgstr "Rak"
 #: src/frontends/qt4/ui/QTexinfoUi.ui:61
 #: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QTocUi.ui:74
 #: src/frontends/qt4/ui/QURLUi.ui:115 src/frontends/qt4/ui/QVSpaceUi.ui:171
-#: src/frontends/qt4/ui/QViewSourceUi.ui:118
+#: src/frontends/qt4/ui/QViewSourceUi.ui:115
 #: src/frontends/qt4/ui/QWrapUi.ui:216
 #, fuzzy
 msgid "&Close"
@@ -525,10 +525,10 @@ msgstr ""
 #: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
 #: src/frontends/qt4/ui/QBranchUi.ui:31
 #: src/frontends/qt4/ui/QCharacterUi.ui:352
-#: src/frontends/qt4/ui/QCitationUi.ui:107
+#: src/frontends/qt4/ui/QCitationUi.ui:104
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
-#: src/frontends/qt4/ui/QGraphicsUi.ui:699
+#: src/frontends/qt4/ui/QGraphicsUi.ui:702
 #: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
 #: src/frontends/qt4/ui/QNomenclUi.ui:98 src/frontends/qt4/ui/QNoteUi.ui:31
@@ -542,11 +542,11 @@ msgid "&OK"
 msgstr "OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:127
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:98
-#: src/buffer_funcs.C:125 src/buffer_funcs.C:166 src/bufferlist.C:115
+#: src/frontends/qt4/ui/QCitationUi.ui:124
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
+#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:115
 #: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1976 src/lyxvc.C:175
+#: src/lyxfunc.C:861 src/lyxfunc.C:1981 src/lyxvc.C:175
 #, fuzzy
 msgid "&Cancel"
 msgstr "Avbryt"
@@ -593,7 +593,7 @@ msgstr "Databas:"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:126
 #: src/frontends/qt4/ui/QBibtexUi.ui:106
 #: src/frontends/qt4/ui/QExternalUi.ui:99
-#: src/frontends/qt4/ui/QGraphicsUi.ui:81
+#: src/frontends/qt4/ui/QGraphicsUi.ui:78
 #: src/frontends/qt4/ui/QIncludeUi.ui:148 src/frontends/qt4/ui/QPrintUi.ui:316
 #, fuzzy
 msgid "&Browse..."
@@ -815,9 +815,9 @@ msgstr ""
 msgid "Vertical"
 msgstr "Vertikalt avstånd"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:87
+#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:84
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
-#: src/frontends/qt4/ui/QGraphicsUi.ui:670
+#: src/frontends/qt4/ui/QGraphicsUi.ui:673
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
 #: src/frontends/qt4/ui/QPrefsUi.ui:50 src/frontends/qt4/ui/QWrapUi.ui:164
 #, fuzzy
@@ -827,7 +827,7 @@ msgstr "Omvänd sidföljd|#O"
 #: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:362
 #: src/frontends/qt4/ui/QDocumentUi.ui:145
 #: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
-#: src/frontends/qt4/ui/QGraphicsUi.ui:720
+#: src/frontends/qt4/ui/QGraphicsUi.ui:723
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
 #: src/frontends/qt4/ui/QPrefsUi.ui:86 src/frontends/qt4/ui/QRefUi.ui:90
 #: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:161
@@ -973,7 +973,7 @@ msgid "Apply changes immediately"
 msgstr ""
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:372 src/frontends/qt4/ui/QERTUi.ui:110
-#: src/frontends/qt4/ui/QGraphicsUi.ui:741
+#: src/frontends/qt4/ui/QGraphicsUi.ui:744
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:177
 #: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:75
@@ -981,101 +981,101 @@ msgstr ""
 msgid "Close"
 msgstr "Stäng"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:47 src/frontends/qt4/ui/QSearchUi.ui:31
+#: src/frontends/qt4/ui/QCitationUi.ui:44 src/frontends/qt4/ui/QSearchUi.ui:31
 #, fuzzy
 msgid "&Find:"
 msgstr "Sök|#s"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:70
+#: src/frontends/qt4/ui/QCitationUi.ui:67
 #, fuzzy
 msgid "<- Clear"
 msgstr "Rensa|#R"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:120
+#: src/frontends/qt4/ui/QCitationUi.ui:117
 #, fuzzy
 msgid "A&pply"
 msgstr "Använd|#A"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:139
+#: src/frontends/qt4/ui/QCitationUi.ui:136
 #, fuzzy
 msgid "Formatting"
 msgstr "Infälld|#n"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:162
+#: src/frontends/qt4/ui/QCitationUi.ui:159
 #, fuzzy
 msgid "Natbib citation style to use"
 msgstr "Citat"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:169
+#: src/frontends/qt4/ui/QCitationUi.ui:166
 #, fuzzy
 msgid "Citation &style:"
 msgstr "Citat"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:179
+#: src/frontends/qt4/ui/QCitationUi.ui:176
 msgid "List all authors"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:182
+#: src/frontends/qt4/ui/QCitationUi.ui:179
 #, fuzzy
 msgid "&Full author list"
 msgstr "Infälld|#n"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:189
+#: src/frontends/qt4/ui/QCitationUi.ui:186
 msgid "Force upper case in citation"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:192
+#: src/frontends/qt4/ui/QCitationUi.ui:189
 msgid "Force &upper case"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:199
+#: src/frontends/qt4/ui/QCitationUi.ui:196
 #, fuzzy
 msgid "&Text after:"
 msgstr "Textläge"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:217
+#: src/frontends/qt4/ui/QCitationUi.ui:214
 msgid "Text to place after citation"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:224
+#: src/frontends/qt4/ui/QCitationUi.ui:221
 #, fuzzy
 msgid "Text &before:"
 msgstr "Textläge"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:242
+#: src/frontends/qt4/ui/QCitationUi.ui:239
 msgid "Text to place before citation"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:263
+#: src/frontends/qt4/ui/QCitationUi.ui:260
 #, fuzzy
 msgid "&Available Citations:"
 msgstr "Lägg in hänvisning"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:286
+#: src/frontends/qt4/ui/QCitationUi.ui:283
 #, fuzzy
 msgid "&Selected Citations:"
 msgstr "Citat"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:304
+#: src/frontends/qt4/ui/QCitationUi.ui:301
 #, fuzzy
 msgid "Move the selected citation up"
 msgstr "Lägg in citat"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:307 src/frontends/qt4/ui/QTocUi.ui:36
+#: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:36
 #, fuzzy
 msgid "&Up"
 msgstr "Uppdatera|#Uu"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:352
+#: src/frontends/qt4/ui/QCitationUi.ui:349
 msgid "Move the selected citation down"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCitationUi.ui:355 src/frontends/qt4/ui/QTocUi.ui:43
+#: src/frontends/qt4/ui/QCitationUi.ui:352 src/frontends/qt4/ui/QTocUi.ui:43
 #, fuzzy
 msgid "&Down"
 msgstr "Två|#v"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:365
+#: src/frontends/qt4/ui/QCitationUi.ui:362
 #, fuzzy
 msgid "D&elete"
 msgstr "Ta bort från|#b"
@@ -1187,7 +1187,7 @@ msgid "Filename"
 msgstr "Filnamn:|#F"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:109
-#: src/frontends/qt4/ui/QGraphicsUi.ui:68
+#: src/frontends/qt4/ui/QGraphicsUi.ui:65
 #: src/frontends/qt4/ui/QIncludeUi.ui:158 src/frontends/qt4/ui/QPrintUi.ui:296
 #, fuzzy
 msgid "&File:"
@@ -1210,28 +1210,28 @@ msgstr "Visa DVI"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:188
 #: src/frontends/qt4/ui/QExternalUi.ui:261
-#: src/frontends/qt4/ui/QGraphicsUi.ui:584
-#: src/frontends/qt4/ui/QGraphicsUi.ui:597
+#: src/frontends/qt4/ui/QGraphicsUi.ui:587
+#: src/frontends/qt4/ui/QGraphicsUi.ui:600
 #, fuzzy
 msgid "Screen display"
 msgstr "[inte visat]"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:197
-#: src/frontends/qt4/ui/QGraphicsUi.ui:606
+#: src/frontends/qt4/ui/QGraphicsUi.ui:609
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:66
 #, fuzzy
 msgid "Monochrome"
 msgstr "Visa som svartvitt|#o"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:202
-#: src/frontends/qt4/ui/QGraphicsUi.ui:611
+#: src/frontends/qt4/ui/QGraphicsUi.ui:614
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:71
 #, fuzzy
 msgid "Grayscale"
 msgstr "Visa som gråskala|#g"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:207
-#: src/frontends/qt4/ui/QGraphicsUi.ui:616
+#: src/frontends/qt4/ui/QGraphicsUi.ui:619
 #: src/frontends/qt4/ui/QPrefDisplayUi.ui:76 src/frontends/qt4/QBranches.C:44
 #, fuzzy
 msgid "Color"
@@ -1244,8 +1244,8 @@ msgstr "Fil"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:239
 #: src/frontends/qt4/ui/QExternalUi.ui:274
-#: src/frontends/qt4/ui/QGraphicsUi.ui:624
-#: src/frontends/qt4/ui/QGraphicsUi.ui:648
+#: src/frontends/qt4/ui/QGraphicsUi.ui:627
+#: src/frontends/qt4/ui/QGraphicsUi.ui:651
 msgid "Percentage to scale by in LyX"
 msgstr ""
 
@@ -1254,7 +1254,7 @@ msgid "%"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:264
-#: src/frontends/qt4/ui/QGraphicsUi.ui:587
+#: src/frontends/qt4/ui/QGraphicsUi.ui:590
 #, fuzzy
 msgid "&Display:"
 msgstr "Lägg in märke"
@@ -1279,15 +1279,15 @@ msgstr "Spara"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:381
 #: src/frontends/qt4/ui/QExternalUi.ui:411
-#: src/frontends/qt4/ui/QGraphicsUi.ui:238
-#: src/frontends/qt4/ui/QGraphicsUi.ui:259
+#: src/frontends/qt4/ui/QGraphicsUi.ui:235
+#: src/frontends/qt4/ui/QGraphicsUi.ui:256
 msgid "Angle to rotate image by"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:391
 #: src/frontends/qt4/ui/QExternalUi.ui:404
-#: src/frontends/qt4/ui/QGraphicsUi.ui:266
-#: src/frontends/qt4/ui/QGraphicsUi.ui:279
+#: src/frontends/qt4/ui/QGraphicsUi.ui:263
+#: src/frontends/qt4/ui/QGraphicsUi.ui:276
 msgid "The origin of the rotation"
 msgstr ""
 
@@ -1306,22 +1306,22 @@ msgid "Scale"
 msgstr "Mindre"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:448
-#: src/frontends/qt4/ui/QGraphicsUi.ui:167
+#: src/frontends/qt4/ui/QGraphicsUi.ui:164
 msgid "Height of image in output"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:458
-#: src/frontends/qt4/ui/QGraphicsUi.ui:210
+#: src/frontends/qt4/ui/QGraphicsUi.ui:207
 msgid "Maintain aspect ratio with largest dimension"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:461
-#: src/frontends/qt4/ui/QGraphicsUi.ui:213
+#: src/frontends/qt4/ui/QGraphicsUi.ui:210
 msgid "&Maintain aspect ratio"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:497
-#: src/frontends/qt4/ui/QGraphicsUi.ui:133
+#: src/frontends/qt4/ui/QGraphicsUi.ui:130
 msgid "Width of image in output"
 msgstr ""
 
@@ -1331,34 +1331,34 @@ msgid "Crop"
 msgstr "Kopiera"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:530
-#: src/frontends/qt4/ui/QGraphicsUi.ui:443
+#: src/frontends/qt4/ui/QGraphicsUi.ui:440
 msgid "Get bounding box from the (EPS) file"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:533
-#: src/frontends/qt4/ui/QGraphicsUi.ui:446
+#: src/frontends/qt4/ui/QGraphicsUi.ui:443
 #, fuzzy
 msgid "&Get from File"
 msgstr "[ingen fil]"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:553
-#: src/frontends/qt4/ui/QGraphicsUi.ui:315
+#: src/frontends/qt4/ui/QGraphicsUi.ui:312
 msgid "Clip to bounding box values"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:556
-#: src/frontends/qt4/ui/QGraphicsUi.ui:318
+#: src/frontends/qt4/ui/QGraphicsUi.ui:315
 msgid "Clip to &bounding box"
 msgstr ""
 
 #: src/frontends/qt4/ui/QExternalUi.ui:573
-#: src/frontends/qt4/ui/QGraphicsUi.ui:351
+#: src/frontends/qt4/ui/QGraphicsUi.ui:348
 #, fuzzy
 msgid "&Left bottom:"
 msgstr "Vänster|#s"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:586
-#: src/frontends/qt4/ui/QGraphicsUi.ui:389
+#: src/frontends/qt4/ui/QGraphicsUi.ui:386
 #, fuzzy
 msgid "Right &top:"
 msgstr "Höger|#H"
@@ -1386,104 +1386,104 @@ msgstr "Bildtext|#x"
 msgid "Forma&t:"
 msgstr "Infälld|#n"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:46
+#: src/frontends/qt4/ui/QGraphicsUi.ui:43
 #, fuzzy
 msgid "&Graphics"
 msgstr "Fil|#F"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:58
-#: src/frontends/qt4/ui/QGraphicsUi.ui:65
+#: src/frontends/qt4/ui/QGraphicsUi.ui:55
+#: src/frontends/qt4/ui/QGraphicsUi.ui:62
 #, fuzzy
 msgid "File name of image"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:78
+#: src/frontends/qt4/ui/QGraphicsUi.ui:75
 #, fuzzy
 msgid "Select an image file"
 msgstr "Markera nästa rad"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:88
+#: src/frontends/qt4/ui/QGraphicsUi.ui:85
 #, fuzzy
 msgid "&Edit"
 msgstr "Redigera"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:101
+#: src/frontends/qt4/ui/QGraphicsUi.ui:98
 #, fuzzy
 msgid "Output Size"
 msgstr ", Djup: "
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:187
+#: src/frontends/qt4/ui/QGraphicsUi.ui:184
 #, fuzzy
 msgid "&Scale Graphics (%):"
 msgstr "Fil|#F"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:223
+#: src/frontends/qt4/ui/QGraphicsUi.ui:220
 #, fuzzy
 msgid "Rotate Graphics"
 msgstr "Fil|#F"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:241
+#: src/frontends/qt4/ui/QGraphicsUi.ui:238
 msgid "A&ngle (Degrees):"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:269
+#: src/frontends/qt4/ui/QGraphicsUi.ui:266
 #, fuzzy
 msgid "Or&igin:"
 msgstr "Bildtext|#x"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:290
+#: src/frontends/qt4/ui/QGraphicsUi.ui:287
 #, fuzzy
 msgid "&Clipping"
 msgstr "Stäng"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:399
-#: src/frontends/qt4/ui/QGraphicsUi.ui:406
+#: src/frontends/qt4/ui/QGraphicsUi.ui:396
+#: src/frontends/qt4/ui/QGraphicsUi.ui:403
 msgid "y:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:413
-#: src/frontends/qt4/ui/QGraphicsUi.ui:420
+#: src/frontends/qt4/ui/QGraphicsUi.ui:410
+#: src/frontends/qt4/ui/QGraphicsUi.ui:417
 #, fuzzy
 msgid "x:"
 msgstr "Lutande"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:454
+#: src/frontends/qt4/ui/QGraphicsUi.ui:451
 #, fuzzy
 msgid "E&xtra options"
 msgstr "Extra val"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:466
-#: src/frontends/qt4/ui/QGraphicsUi.ui:487
+#: src/frontends/qt4/ui/QGraphicsUi.ui:463
+#: src/frontends/qt4/ui/QGraphicsUi.ui:484
 #, fuzzy
 msgid "Additional LaTeX options"
 msgstr "Extra val"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:469
+#: src/frontends/qt4/ui/QGraphicsUi.ui:466
 #, fuzzy
 msgid "LaTeX &options:"
 msgstr "Extra val"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:494
+#: src/frontends/qt4/ui/QGraphicsUi.ui:491
 msgid "Don't uncompress image before exporting to LaTeX"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:497
+#: src/frontends/qt4/ui/QGraphicsUi.ui:494
 msgid "Don't un&zip on export"
 msgstr ""
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:504
+#: src/frontends/qt4/ui/QGraphicsUi.ui:501
 #, fuzzy
 msgid "Draft mode"
 msgstr "Matematikläge"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:507
+#: src/frontends/qt4/ui/QGraphicsUi.ui:504
 #, fuzzy
 msgid "&Draft mode"
 msgstr "Matematikläge"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:514
 #, fuzzy
-msgid "Subfigure"
+msgid "S&ubfigure"
 msgstr "Underfigur|#U"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:535
@@ -1496,12 +1496,12 @@ msgstr ""
 msgid "Ca&ption:"
 msgstr "Bildtext|#x"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:566
+#: src/frontends/qt4/ui/QGraphicsUi.ui:569
 #, fuzzy
-msgid "Show in LyX"
+msgid "Sho&w in LyX"
 msgstr "Fil"
 
-#: src/frontends/qt4/ui/QGraphicsUi.ui:627
+#: src/frontends/qt4/ui/QGraphicsUi.ui:630
 msgid "Sca&le on Screen (%):"
 msgstr ""
 
@@ -1565,7 +1565,7 @@ msgid "Update the display"
 msgstr "Visa"
 
 #: src/frontends/qt4/ui/QLogUi.ui:61 src/frontends/qt4/ui/QRefUi.ui:235
-#: src/frontends/qt4/ui/QTocUi.ui:97 src/frontends/qt4/ui/QViewSourceUi.ui:95
+#: src/frontends/qt4/ui/QTocUi.ui:97 src/frontends/qt4/ui/QViewSourceUi.ui:92
 #, fuzzy
 msgid "&Update"
 msgstr "Uppdatera|#Uu"
@@ -1811,7 +1811,7 @@ msgid "&Shaded"
 msgstr "Spara"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2350
+#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2347
 #, fuzzy
 msgid "Single"
 msgstr "Enkel:|#E"
@@ -1821,7 +1821,7 @@ msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2356
+#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2353
 #, fuzzy
 msgid "Double"
 msgstr "Dubbel:|#D"
@@ -1977,7 +1977,7 @@ msgstr ""
 msgid "Display &Graphics:"
 msgstr "Lägg in märke"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "Av"
 
@@ -1986,7 +1986,7 @@ msgstr "Av"
 msgid "No math"
 msgstr "Matematik"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "På"
 
@@ -3332,20 +3332,11 @@ msgstr ""
 msgid "VFill"
 msgstr "Fil"
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:31
-msgid ""
-"<html><head><meta name=\"qrichtext\" content=\"1\" /></head><body style=\" "
-"white-space: pre-wrap; font-family:Sans Serif; font-size:13pt; font-"
-"weight:400; font-style:normal; text-decoration:none;\"><p style=\"-qt-"
-"paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; "
-"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"
-msgstr ""
-
-#: src/frontends/qt4/ui/QViewSourceUi.ui:49
+#: src/frontends/qt4/ui/QViewSourceUi.ui:46
 msgid "Display complete source"
 msgstr ""
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:56
+#: src/frontends/qt4/ui/QViewSourceUi.ui:53
 msgid "Automatic update"
 msgstr ""
 
@@ -3793,7 +3784,7 @@ msgstr "Dekoration"
 #: lib/layouts/latex8.layout:100 lib/layouts/llncs.layout:240
 #: lib/layouts/ltugboat.layout:171 lib/layouts/ltugboat.layout:186
 #: lib/layouts/paper.layout:135 lib/layouts/revtex.layout:135
-#: lib/layouts/revtex4.layout:191 lib/layouts/siamltex.layout:143
+#: lib/layouts/revtex4.layout:202 lib/layouts/siamltex.layout:143
 #: lib/layouts/spie.layout:73 lib/layouts/svglobal.layout:29
 #: lib/layouts/svjog.layout:34 lib/layouts/agu_stdtitle.inc:193
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
@@ -3811,7 +3802,7 @@ msgstr ""
 #: lib/layouts/aastex.layout:283 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpd.layout:83
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
-#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:230
+#: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:241
 #: lib/layouts/siamltex.layout:169 lib/layouts/spie.layout:39
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/amsdefs.inc:194
 #: lib/layouts/svjour.inc:273
@@ -3987,7 +3978,7 @@ msgstr ""
 #: lib/layouts/g-brief2.layout:799 lib/layouts/ijmpc.layout:53
 #: lib/layouts/ijmpd.layout:56 lib/layouts/isprs.layout:115
 #: lib/layouts/kluwer.layout:178 lib/layouts/revtex.layout:116
-#: lib/layouts/revtex4.layout:155 lib/layouts/scrlettr.layout:145
+#: lib/layouts/revtex4.layout:164 lib/layouts/scrlettr.layout:145
 #: lib/layouts/scrlttr2.layout:40 lib/layouts/aapaper.inc:30
 #: lib/layouts/amsdefs.inc:152 lib/layouts/lyxmacros.inc:43
 msgid "Address"
@@ -4528,7 +4519,7 @@ msgstr "Kolumn"
 msgid "Acknowledgements:"
 msgstr ""
 
-#: lib/layouts/apa.layout:243 lib/layouts/revtex4.layout:201
+#: lib/layouts/apa.layout:243 lib/layouts/revtex4.layout:212
 #: lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr ""
@@ -4563,7 +4554,7 @@ msgid "Seriate"
 msgstr "Lägg in"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:452
+#: src/buffer_funcs.C:453
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -5290,13 +5281,13 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:184
 #: lib/layouts/g-brief2.layout:810 lib/layouts/revtex.layout:128
-#: lib/layouts/revtex4.layout:158 lib/layouts/scrlettr.layout:148
+#: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:148
 #: lib/layouts/scrlttr2.layout:57 lib/layouts/amsdefs.inc:163
 #, fuzzy
 msgid "Address:"
 msgstr "Lägg till rad|#r"
 
-#: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:169
+#: lib/layouts/elsart.layout:149 lib/layouts/revtex4.layout:178
 #, fuzzy
 msgid "Author Email"
 msgstr "Brödstil"
@@ -5306,18 +5297,18 @@ msgstr "Brödstil"
 msgid "Email:"
 msgstr "Liten"
 
-#: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:183
+#: lib/layouts/elsart.layout:170 lib/layouts/revtex4.layout:193
 #, fuzzy
 msgid "Author URL"
 msgstr "Matematik"
 
-#: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:187
+#: lib/layouts/elsart.layout:181 lib/layouts/revtex4.layout:198
 #: lib/layouts/amsdefs.inc:190
 #, fuzzy
 msgid "URL:"
 msgstr "URL..."
 
-#: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:162
+#: lib/layouts/elsart.layout:193 lib/layouts/revtex4.layout:171
 #: lib/layouts/amsdefs.inc:201
 msgid "Thanks"
 msgstr ""
@@ -6281,7 +6272,7 @@ msgstr "Sekundärt"
 
 #: lib/layouts/ijmpc.layout:86 lib/layouts/ijmpd.layout:89
 #: lib/layouts/kluwer.layout:290 lib/layouts/paper.layout:177
-#: lib/layouts/revtex4.layout:235 lib/layouts/spie.layout:46
+#: lib/layouts/revtex4.layout:246 lib/layouts/spie.layout:46
 #: lib/layouts/agu_stdtitle.inc:123
 #, fuzzy
 msgid "Keywords:"
@@ -6594,24 +6585,29 @@ msgstr "Lägg in citat"
 msgid "Preprint"
 msgstr "Skriv ut"
 
-#: lib/layouts/revtex4.layout:165 lib/layouts/amsdefs.inc:204
+#: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
+#, fuzzy
+msgid "AltAffiliation"
+msgstr "Citat"
+
+#: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
 #, fuzzy
 msgid "Thanks:"
 msgstr "Sidor:"
 
-#: lib/layouts/revtex4.layout:173
+#: lib/layouts/revtex4.layout:183
 msgid "Electronic Address:"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:209
+#: lib/layouts/revtex4.layout:220
 msgid "acknowledgments"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:219
+#: lib/layouts/revtex4.layout:230
 msgid "PACS"
 msgstr ""
 
-#: lib/layouts/revtex4.layout:226
+#: lib/layouts/revtex4.layout:237
 #, fuzzy
 msgid "PACS number:"
 msgstr "Nummer"
@@ -8967,7 +8963,7 @@ msgid "Copy"
 msgstr "Kopiera"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
-#: src/mathed/InsetMathGrid.C:1212 src/mathed/InsetMathNest.C:437
+#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:437
 #: src/text3.C:770
 msgid "Paste"
 msgstr "Klistra in"
@@ -9994,24 +9990,24 @@ msgstr "Välj dokument som skall läsas in"
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1817 src/lyxfunc.C:1854 src/lyxfunc.C:1927
+#: src/lyxfunc.C:1822 src/lyxfunc.C:1859 src/lyxfunc.C:1932
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokument"
 
-#: src/BufferView.C:1404 src/lyxfunc.C:1855 src/lyxfunc.C:1928
+#: src/BufferView.C:1404 src/lyxfunc.C:1860 src/lyxfunc.C:1933
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exempel"
 
-#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1822
-#: src/lyxfunc.C:1859
+#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1827
+#: src/lyxfunc.C:1864
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumentet"
 
-#: src/BufferView.C:1420 src/lyxfunc.C:1869 src/lyxfunc.C:1949
-#: src/lyxfunc.C:1963 src/lyxfunc.C:1979
+#: src/BufferView.C:1420 src/lyxfunc.C:1874 src/lyxfunc.C:1954
+#: src/lyxfunc.C:1968 src/lyxfunc.C:1984
 msgid "Canceled."
 msgstr "Avbrutet."
 
@@ -10440,44 +10436,44 @@ msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/buffer.C:614 src/buffer.C:623
+#: src/buffer.C:613 src/buffer.C:622
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Dokumentstil satt"
 
-#: src/buffer.C:615 src/buffer.C:624
+#: src/buffer.C:614 src/buffer.C:623
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " stycken gick inte att konvertera"
 
-#: src/buffer.C:632 src/buffer.C:698
+#: src/buffer.C:631 src/buffer.C:698
 #, fuzzy
 msgid "Document format failure"
 msgstr "Dokumentet"
 
-#: src/buffer.C:633
+#: src/buffer.C:632
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/buffer.C:652
+#: src/buffer.C:651
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Konverteringsfel!"
 
-#: src/buffer.C:653
+#: src/buffer.C:652
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:662
+#: src/buffer.C:661
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Inga varningar."
 
-#: src/buffer.C:663
+#: src/buffer.C:662
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
@@ -10551,7 +10547,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex kört utan klagomål"
 
-#: src/buffer_funcs.C:78
+#: src/buffer_funcs.C:79
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -10559,12 +10555,12 @@ msgid ""
 "could not be read."
 msgstr "Dokumentstil satt"
 
-#: src/buffer_funcs.C:80
+#: src/buffer_funcs.C:81
 #, fuzzy
 msgid "Could not read document"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/buffer_funcs.C:93
+#: src/buffer_funcs.C:94
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -10572,20 +10568,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Det finns en nödlagrad version av detta dokument!"
 
-#: src/buffer_funcs.C:96
+#: src/buffer_funcs.C:97
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:97
+#: src/buffer_funcs.C:98
 #, fuzzy
 msgid "&Recover"
 msgstr "Omvänd sidföljd|#O"
 
-#: src/buffer_funcs.C:97
+#: src/buffer_funcs.C:98
 msgid "&Load Original"
 msgstr ""
 
-#: src/buffer_funcs.C:120
+#: src/buffer_funcs.C:121
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -10593,36 +10589,36 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:123
+#: src/buffer_funcs.C:124
 #, fuzzy
 msgid "Load backup?"
 msgstr "Svart"
 
-#: src/buffer_funcs.C:124
+#: src/buffer_funcs.C:125
 #, fuzzy
 msgid "&Load backup"
 msgstr "Svart"
 
-#: src/buffer_funcs.C:124
+#: src/buffer_funcs.C:125
 msgid "Load &original"
 msgstr ""
 
-#: src/buffer_funcs.C:163
+#: src/buffer_funcs.C:164
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Vill du öppna dokumentet?"
 
-#: src/buffer_funcs.C:165
+#: src/buffer_funcs.C:166
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Vill du öppna dokumentet?"
 
-#: src/buffer_funcs.C:166
+#: src/buffer_funcs.C:167
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Omvänd sidföljd|#O"
 
-#: src/buffer_funcs.C:199
+#: src/buffer_funcs.C:200
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -10630,26 +10626,26 @@ msgid ""
 "could not be read."
 msgstr "Dokumentstil satt"
 
-#: src/buffer_funcs.C:201
+#: src/buffer_funcs.C:202
 #, fuzzy
 msgid "Could not read template"
 msgstr "Kunde inte köra med filen:"
 
-#: src/buffer_funcs.C:449
+#: src/buffer_funcs.C:450
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Dekoration"
 
-#: src/buffer_funcs.C:455
+#: src/buffer_funcs.C:456
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:458
+#: src/buffer_funcs.C:459
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "Dekoration"
 
-#: src/buffer_funcs.C:494
+#: src/buffer_funcs.C:495
 #, c-format
 msgid "%1$s #:"
 msgstr ""
@@ -10688,17 +10684,17 @@ msgstr " Lagring misslyckades! Prövar..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Lagring misslyckades! Dokumentet förlorades."
 
-#: src/bufferparams.C:433
+#: src/bufferparams.C:434
 #, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
 msgstr ""
 
-#: src/bufferparams.C:435
+#: src/bufferparams.C:436
 #, fuzzy
 msgid "Document class not available"
 msgstr "Dokumentstil satt"
 
-#: src/bufferparams.C:436
+#: src/bufferparams.C:437
 msgid "LyX will not be able to produce output."
 msgstr ""
 
@@ -10729,76 +10725,76 @@ msgstr ""
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
-#: src/converter.C:332 src/converter.C:464 src/converter.C:487
-#: src/converter.C:531
+#: src/converter.C:333 src/converter.C:465 src/converter.C:488
+#: src/converter.C:533
 #, fuzzy
 msgid "Cannot convert file"
 msgstr "Kan inte skriva till fil"
 
-#: src/converter.C:333
+#: src/converter.C:334
 #, c-format
 msgid ""
 "No information for converting %1$s format files to %2$s.\n"
 "Define a converter in the preferences."
 msgstr ""
 
-#: src/converter.C:419 src/format.C:320 src/format.C:379
+#: src/converter.C:420 src/format.C:320 src/format.C:379
 #, fuzzy
 msgid "Executing command: "
 msgstr "Utför kommando:"
 
-#: src/converter.C:459
+#: src/converter.C:460
 #, fuzzy
 msgid "Build errors"
 msgstr "Bygg program"
 
-#: src/converter.C:460
+#: src/converter.C:461
 #, fuzzy
 msgid "There were errors during the build process."
 msgstr "Något gick fel under byggandet av programmet."
 
-#: src/converter.C:465 src/format.C:327 src/format.C:386
+#: src/converter.C:466 src/format.C:327 src/format.C:386
 #, fuzzy, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Fel under läsing "
 
-#: src/converter.C:488
+#: src/converter.C:489
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/converter.C:533
+#: src/converter.C:535
 #, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/converter.C:534
+#: src/converter.C:536
 #, fuzzy, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/converter.C:591
+#: src/converter.C:594
 msgid "Running LaTeX..."
 msgstr "LaTeX körs..."
 
-#: src/converter.C:609
+#: src/converter.C:612
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
 
-#: src/converter.C:612
+#: src/converter.C:615
 #, fuzzy
 msgid "LaTeX failed"
 msgstr "LaTeX Logg"
 
-#: src/converter.C:614
+#: src/converter.C:617
 #, fuzzy
 msgid "Output is empty"
 msgstr ", Djup: "
 
-#: src/converter.C:615
+#: src/converter.C:618
 msgid "An empty output file was generated."
 msgstr ""
 
@@ -10926,7 +10922,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Skrivmaskin"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1976
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1981
 #, fuzzy
 msgid "&Over-write"
 msgstr "Skrivmaskin"
@@ -11029,7 +11025,7 @@ msgstr " (Ändrad)"
 msgid " (read only)"
 msgstr " (Skrivskyddad)"
 
-#: src/frontends/WorkArea.C:229
+#: src/frontends/WorkArea.C:227
 msgid "Formatting document..."
 msgstr "Formaterar dokument..."
 
@@ -11138,18 +11134,18 @@ msgid "Total Height"
 msgstr "Rak"
 
 #: src/frontends/controllers/ControlDocument.C:44
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
 msgid "Roman"
 msgstr "Antikva"
 
 #: src/frontends/controllers/ControlDocument.C:44
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
 #, fuzzy
 msgid "Sans Serif"
 msgstr "Linjärer"
 
 #: src/frontends/controllers/ControlDocument.C:44
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
 msgid "Typewriter"
 msgstr "Skrivmaskin"
 
@@ -11277,42 +11273,42 @@ msgstr "Inga varningar."
 msgid "No version control log file found."
 msgstr "Inga varningar."
 
-#: src/frontends/controllers/ControlPrefs.C:111
+#: src/frontends/controllers/ControlPrefs.C:112
 #, fuzzy
 msgid "Choose bind file"
 msgstr "Välj mall"
 
-#: src/frontends/controllers/ControlPrefs.C:112
+#: src/frontends/controllers/ControlPrefs.C:113
 #, fuzzy
 msgid "LyX bind files (*.bind)"
 msgstr "Databas:"
 
-#: src/frontends/controllers/ControlPrefs.C:119
+#: src/frontends/controllers/ControlPrefs.C:120
 #, fuzzy
 msgid "Choose UI file"
 msgstr "Välj mall"
 
-#: src/frontends/controllers/ControlPrefs.C:120
+#: src/frontends/controllers/ControlPrefs.C:121
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "[ingen fil]"
 
-#: src/frontends/controllers/ControlPrefs.C:127
+#: src/frontends/controllers/ControlPrefs.C:128
 #, fuzzy
 msgid "Choose keyboard map"
 msgstr "Sakord:|#S"
 
-#: src/frontends/controllers/ControlPrefs.C:128
+#: src/frontends/controllers/ControlPrefs.C:129
 #, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Sakord:|#S"
 
-#: src/frontends/controllers/ControlPrefs.C:135
+#: src/frontends/controllers/ControlPrefs.C:136
 #, fuzzy
 msgid "Choose personal dictionary"
 msgstr "Lägg till i personlig ordlista|#L"
 
-#: src/frontends/controllers/ControlPrefs.C:136
+#: src/frontends/controllers/ControlPrefs.C:137
 #, fuzzy
 msgid "*.ispell"
 msgstr "Gul"
@@ -11380,7 +11376,7 @@ msgstr "Stavningskontroll klar!"
 msgid "Table of Contents"
 msgstr "Innehåll"
 
-#: src/frontends/controllers/biblio.C:223
+#: src/frontends/controllers/biblio.C:224
 #, c-format
 msgid "%1$s and %2$s"
 msgstr ""
@@ -11395,7 +11391,7 @@ msgstr ""
 msgid "No year"
 msgstr "Inget nummer"
 
-#: src/frontends/controllers/biblio.C:802
+#: src/frontends/controllers/biblio.C:804
 #, fuzzy
 msgid "before"
 msgstr "Textläge"
@@ -11422,23 +11418,23 @@ msgstr " (Ändrad)"
 msgid "Reset"
 msgstr "Ref: "
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
 msgid "Medium"
 msgstr "Medium"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
 msgid "Bold"
 msgstr "Fet"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
 msgid "Upright"
 msgstr "Rak"
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
 msgid "Italic"
 msgstr "Kursiv"
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
 msgid "Slanted"
 msgstr "Lutande"
 
@@ -11447,11 +11443,11 @@ msgstr "Lutande"
 msgid "Small Caps"
 msgstr "Kapitäler"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
 msgid "Increase"
 msgstr "Öka"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
 msgid "Decrease"
 msgstr "Minska"
 
@@ -11580,12 +11576,12 @@ msgstr "Tabell inlagd"
 msgid "Directories"
 msgstr "Användarkatalog: "
 
-#: src/frontends/qt4/GuiView.C:632
+#: src/frontends/qt4/GuiView.C:652
 #, fuzzy
 msgid "LyX"
 msgstr "Skriv ut"
 
-#: src/frontends/qt4/GuiWorkArea.C:475
+#: src/frontends/qt4/GuiWorkArea.C:479
 #, fuzzy
 msgid "unknown version"
 msgstr "Okänd operation"
@@ -11705,7 +11701,7 @@ msgstr "Dokument"
 msgid "Length"
 msgstr "Mått|#t"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2353
+#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2350
 msgid "OneHalf"
 msgstr ""
 
@@ -12078,7 +12074,7 @@ msgstr "Inställningar"
 msgid "Paragraph Settings"
 msgstr "Referens"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:620
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:683
 msgid "Senseless with this layout!"
 msgstr "Meningslöst för detta slag av stycke!"
 
@@ -12915,12 +12911,12 @@ msgstr "Namn:|#N"
 msgid "Choose a filename to save document as"
 msgstr "Skriv in filnamnet som dokumentet skall sparas under"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1818
+#: src/lyx_cb.C:137 src/lyxfunc.C:1823
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Mallar"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1973
+#: src/lyx_cb.C:167 src/lyxfunc.C:1978
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12928,7 +12924,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:1975
+#: src/lyx_cb.C:169 src/lyxfunc.C:1980
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Spara dokumentet?"
@@ -12998,12 +12994,12 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:127
+#: src/lyx_main.C:124
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Kunde inte köra med filen:"
 
-#: src/lyx_main.C:128
+#: src/lyx_main.C:125
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -13011,41 +13007,41 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:137
+#: src/lyx_main.C:134
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Skapar katalog "
 
-#: src/lyx_main.C:141
+#: src/lyx_main.C:138
 msgid "Done!"
 msgstr "Klar!"
 
-#: src/lyx_main.C:431
+#: src/lyx_main.C:428
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/lyx_main.C:433
+#: src/lyx_main.C:430
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/lyx_main.C:469
+#: src/lyx_main.C:466
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:724
+#: src/lyx_main.C:722
 #, fuzzy
 msgid "LyX: "
 msgstr "Skriv ut"
 
-#: src/lyx_main.C:847
+#: src/lyx_main.C:845
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/lyx_main.C:848
+#: src/lyx_main.C:846
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13053,50 +13049,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1016
+#: src/lyx_main.C:1013
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: Skapar katalog "
 
-#: src/lyx_main.C:1017
+#: src/lyx_main.C:1014
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:1022
+#: src/lyx_main.C:1019
 #, fuzzy
 msgid "&Create directory"
 msgstr "Fel! Kan inte öppna katalog:"
 
-#: src/lyx_main.C:1023
+#: src/lyx_main.C:1020
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/lyx_main.C:1024
+#: src/lyx_main.C:1021
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1028
+#: src/lyx_main.C:1025
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " och kör \"configure\"..."
 
-#: src/lyx_main.C:1034
+#: src/lyx_main.C:1031
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1189
+#: src/lyx_main.C:1186
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:1193
+#: src/lyx_main.C:1190
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Sätter avlusningsnivå till "
 
-#: src/lyx_main.C:1204
+#: src/lyx_main.C:1201
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13118,32 +13114,32 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:1240
+#: src/lyx_main.C:1237
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Katalog för -sysdir saknas!"
 
-#: src/lyx_main.C:1250
+#: src/lyx_main.C:1247
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Katalog för -sysdir saknas!"
 
-#: src/lyx_main.C:1260
+#: src/lyx_main.C:1257
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Nummer för -dbg saknas!"
 
-#: src/lyx_main.C:1270
+#: src/lyx_main.C:1267
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1279
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyx_main.C:1287
+#: src/lyx_main.C:1284
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Välj LaTeX-fil att importera"
@@ -13172,49 +13168,49 @@ msgstr "Systemet har blivit omkonfigurerat."
 msgid " strings have been replaced."
 msgstr "Systemet har blivit omkonfigurerat."
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:52
 msgid "Symbol"
 msgstr ""
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:61 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:60 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Inherit"
 msgstr "Ärv"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:62 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:61 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Ignore"
 msgstr "Ignorera"
 
-#: src/lyxfont.C:61
+#: src/lyxfont.C:60
 msgid "Smallcaps"
 msgstr "Kapitäler"
 
-#: src/lyxfont.C:70
+#: src/lyxfont.C:69
 msgid "Toggle"
 msgstr "Av/På"
 
-#: src/lyxfont.C:511
+#: src/lyxfont.C:509
 #, fuzzy, c-format
 msgid "Emphasis %1$s, "
 msgstr "Betonad "
 
-#: src/lyxfont.C:514
+#: src/lyxfont.C:512
 #, fuzzy, c-format
 msgid "Underline %1$s, "
 msgstr "Understruken "
 
-#: src/lyxfont.C:517
+#: src/lyxfont.C:515
 #, fuzzy, c-format
 msgid "Noun %1$s, "
 msgstr "Namn "
 
-#: src/lyxfont.C:522
+#: src/lyxfont.C:520
 #, fuzzy, c-format
 msgid "Language: %1$s, "
 msgstr "Språk:"
 
-#: src/lyxfont.C:525
+#: src/lyxfont.C:523
 #, fuzzy, c-format
 msgid "  Number %1$s"
 msgstr "Nummer"
@@ -13313,64 +13309,64 @@ msgstr "Argument saknas"
 msgid "Opening help file %1$s..."
 msgstr "Öppnar hjälpfil"
 
-#: src/lyxfunc.C:1343
+#: src/lyxfunc.C:1348
 msgid "Opening child document "
 msgstr "Öppnar underdokument "
 
-#: src/lyxfunc.C:1429
+#: src/lyxfunc.C:1434
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1440
+#: src/lyxfunc.C:1445
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1556
+#: src/lyxfunc.C:1561
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Dokumentstil satt"
 
-#: src/lyxfunc.C:1559
+#: src/lyxfunc.C:1564
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Pappersstil satt"
 
-#: src/lyxfunc.C:1615
+#: src/lyxfunc.C:1620
 msgid "Converting document to new document class..."
 msgstr "Konverterar dokument till ny dokumentklass..."
 
-#: src/lyxfunc.C:1815
+#: src/lyxfunc.C:1820
 #, fuzzy
 msgid "Select template file"
 msgstr "Markera nästa rad"
 
-#: src/lyxfunc.C:1852
+#: src/lyxfunc.C:1857
 #, fuzzy
 msgid "Select document to open"
 msgstr "Välj dokument som skall öppnas"
 
-#: src/lyxfunc.C:1891
+#: src/lyxfunc.C:1896
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Vill du öppna dokumentet?"
 
-#: src/lyxfunc.C:1895
+#: src/lyxfunc.C:1900
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Inga dokument öppnade!%t"
 
-#: src/lyxfunc.C:1897
+#: src/lyxfunc.C:1902
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/lyxfunc.C:1922
+#: src/lyxfunc.C:1927
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/lyxfunc.C:2039
+#: src/lyxfunc.C:2044
 msgid "Welcome to LyX!"
 msgstr "Välkommen till LyX!"
 
@@ -13824,12 +13820,12 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Markera till slutet av dokumentet"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:111
+#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
 #, fuzzy, c-format
 msgid " Macro: %1$s: "
 msgstr "Makro: "
 
-#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1240
+#: src/mathed/InsetMathAMSArray.C:112 src/mathed/InsetMathHull.C:1238
 #: src/mathed/InsetMathSplit.C:76 src/mathed/InsetMathSubstack.C:75
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -13840,55 +13836,55 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1312
+#: src/mathed/InsetMathGrid.C:1309
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1318
+#: src/mathed/InsetMathGrid.C:1315
 #, fuzzy
 msgid "Only one column"
 msgstr "Ta bort kolumn|#a"
 
-#: src/mathed/InsetMathGrid.C:1326
+#: src/mathed/InsetMathGrid.C:1323
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Ingenting att göra"
 
-#: src/mathed/InsetMathGrid.C:1335
+#: src/mathed/InsetMathGrid.C:1332
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1353
+#: src/mathed/InsetMathGrid.C:1350
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1079 src/mathed/InsetMathHull.C:1088
+#: src/mathed/InsetMathHull.C:1077 src/mathed/InsetMathHull.C:1086
 #, fuzzy
 msgid "No number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.C:1079 src/mathed/InsetMathHull.C:1088
+#: src/mathed/InsetMathHull.C:1077 src/mathed/InsetMathHull.C:1086
 #, fuzzy
 msgid "Number"
 msgstr "Nummer"
 
-#: src/mathed/InsetMathHull.C:1213
+#: src/mathed/InsetMathHull.C:1211
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1223
+#: src/mathed/InsetMathHull.C:1221
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1233
+#: src/mathed/InsetMathHull.C:1231
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1325 src/text3.C:182
+#: src/mathed/InsetMathHull.C:1323 src/text3.C:182
 msgid "Math editor mode"
 msgstr "Matematikläge"
 
@@ -13921,13 +13917,13 @@ msgstr "Lägg in hänvisning"
 msgid "All files (*)"
 msgstr "[ingen fil]"
 
-#: src/support/package.C.in:440
+#: src/support/package.C.in:443
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 
-#: src/support/package.C.in:562
+#: src/support/package.C.in:565
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -13936,21 +13932,21 @@ msgid ""
 "LYX_DIR_14x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/support/package.C.in:648
+#: src/support/package.C.in:651
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/package.C.in:676
+#: src/support/package.C.in:679
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
 
-#: src/support/package.C.in:700
+#: src/support/package.C.in:704
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -14122,52 +14118,52 @@ msgstr "Du kan inte mata in två mellanslag i rad sådär. Läs Nybörjarkursen."
 msgid "Change: "
 msgstr "Sidor:"
 
-#: src/text.C:2322
+#: src/text.C:2323
 #, fuzzy
 msgid " at "
 msgstr " av "
 
-#: src/text.C:2334
+#: src/text.C:2333
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Tecken: "
 
-#: src/text.C:2341
+#: src/text.C:2338
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Djup: "
 
-#: src/text.C:2347
+#: src/text.C:2344
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Mellanrum"
 
-#: src/text.C:2359
+#: src/text.C:2356
 #, fuzzy
 msgid "Other ("
 msgstr "Annat...|#A"
 
-#: src/text.C:2368
+#: src/text.C:2365
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Djup: "
 
-#: src/text.C:2369
+#: src/text.C:2366
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Styckesstil satt"
 
-#: src/text.C:2370
+#: src/text.C:2367
 #, fuzzy
 msgid ", Id: "
 msgstr ", Djup: "
 
-#: src/text.C:2371
+#: src/text.C:2368
 #, fuzzy
 msgid ", Position: "
 msgstr "   val: "
 
-#: src/text.C:2372
+#: src/text.C:2369
 msgid ", Boundary: "
 msgstr ""
 
