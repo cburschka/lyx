@@ -35,7 +35,6 @@ using support::FileName;
 using support::Forkedcall;
 using support::ForkedCallQueue;
 using support::getExtension;
-using support::libFileSearch;
 using support::libScriptSearch;
 using support::onlyPath;
 using support::onlyFilename;

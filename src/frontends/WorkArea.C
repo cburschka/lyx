@@ -40,14 +40,12 @@
 #include "rowpainter.h"
 
 #include "gettext.h"
-#include "support/filetools.h" // LibFileSearch
 #include "support/forkedcontr.h"
 
 #include <boost/utility.hpp>
 #include <boost/bind.hpp>
 #include <boost/current_function.hpp>
 
-using lyx::support::libFileSearch;
 using lyx::support::ForkedcallsController;
 
 using std::endl;
