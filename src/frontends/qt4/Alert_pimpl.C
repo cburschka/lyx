@@ -59,6 +59,11 @@ int prompt_pimpl(docstring const & tit, docstring const & question,
 
 	MessageBox mb;
 
+	// For some reason, sometimes Qt uses an hourglass or watch cursor when
+	// displaying the alert. Hence, we ask for the standard cursor shape.
+	// This call has no effect if the cursor has not been overridden.
+	qApp->changeOverrideCursor(Qt::ArrowCursor);
+
 	// FIXME replace that with theApp->gui()->currentView()
 	int res = mb.information(qApp->focusWidget(),
 					   toqstr(title),

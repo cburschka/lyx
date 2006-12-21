@@ -72,9 +72,6 @@ TABLE OF CONTENTS
 
 DIALOGS
 
-* when opening an already opened document (or a document with newer backup),
-  the mouse pointer turns into a clock, although it waits for confirmation
-
 * If you try to view a document as postscript that cannot be typeset because
   of LaTeX errors and export to LaTeX afterwards you will get the old error
   list again, although the export succeded.
@@ -615,4 +612,8 @@ CREDITS:
 
   If I rename the directory (no Umlaut), I can load the file without a problem.
   FIXED (Enrico and Georg 2006-12-21)
+
+* when opening an already opened document (or a document with newer backup),
+  the mouse pointer turns into a clock, although it waits for confirmation
+  FIXED (Enrico 2006-12-21)
 
