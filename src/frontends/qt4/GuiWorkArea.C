@@ -171,7 +171,10 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	setMinimumSize(100, 70);
 
 	viewport()->setAutoFillBackground(false);
-	viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
+	// We don't need double-buffering nor SystemBackground on
+	// the viewport because we have our own backing pixmap.
+	viewport()->setAttribute(Qt::WA_NoSystemBackground);
+
 	setFocusPolicy(Qt::WheelFocus);
 
 	viewport()->setCursor(Qt::IBeamCursor);
@@ -265,8 +268,6 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 	// in BufferList that could be connected to the different tabbars.
 	lyx_view_.updateTab();
 
-	startBlinkingCursor();
-
 	//FIXME: Use case: Two windows share the same buffer.
 	// The first window is resize. This modify the inner Buffer
 	// structure because Paragraph has a notion of line break and
@@ -282,6 +283,8 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 	// even though those line breaks are not adapted to the second
 	// BufferView width... such is life!
 	resizeBufferView();
+
+	startBlinkingCursor();
 }
 
 
