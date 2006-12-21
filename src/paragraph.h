@@ -64,9 +64,6 @@ public:
 /// (most probably in the \c CoordCache class along \c Point objects).
 class ParagraphMetrics  {
 public:
-	ParagraphMetrics();
-	ParagraphMetrics(ParagraphMetrics const & pm);
-	ParagraphMetrics & operator=(ParagraphMetrics const & pm);
 	///
 	Row & getRow(pos_type pos, bool boundary);
 	///

@@ -69,26 +69,6 @@ using std::ostream;
 using std::ostringstream;
 
 
-ParagraphMetrics::ParagraphMetrics()
-{
-}
-
-
-ParagraphMetrics::ParagraphMetrics(ParagraphMetrics const & pm)
-	: dim_(pm.dim_), rows_(pm.rows_), rowSignature_(pm.rowSignature_)
-{
-}
-
-
-ParagraphMetrics & ParagraphMetrics::operator=(ParagraphMetrics const & pm)
-{
-	rows_ = pm.rows_;
-	dim_ = pm.dim_;
-	rowSignature_ = pm.rowSignature_;
-	return *this;
-}
-
-
 Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 {
 	BOOST_ASSERT(!rows().empty());
