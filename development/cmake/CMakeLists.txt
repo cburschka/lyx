@@ -85,8 +85,8 @@ endif(WIN32)
 
 set(LYX_DIR         "${CMAKE_SOURCE_DIR}/../../lib")
 set(TOP_SRCDIR      "${CMAKE_SOURCE_DIR}/../..")
-set(PROGRAM_SUFFIX  "")
-set(LOCALEDIR       "")
+set(PROGRAM_SUFFIX  "${CMAKE_SOURCE_DIR}/bin")
+set(LOCALEDIR       "${CMAKE_SOURCE_DIR}/../../lib/po")
 
 message("----- LYX_DIR       : ${LYX_DIR}")
 message("----- TOP_SRCDIR    : ${TOP_SRCDIR}")
