@@ -68,7 +68,6 @@ def env_subst(target, source, env):
             # multi-line replacement
             val = val.replace('\n',r'\\n\\\n')
             contents = re.sub('@'+k+'@', val, contents)
-            contents = re.sub('%'+k+'%', val, contents)
         except:
             pass
     target_file.write(contents + "\n")
