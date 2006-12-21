@@ -512,30 +512,33 @@ bool Converters::move(string const & fmt,
 	string const to_base = removeExtension(to.absFilename());
 	string const to_extension = getExtension(to.absFilename());
 
-	vector<string> const files = dirList(FileName(path),
+	vector<FileName> const files = dirList(FileName(path),
 			getExtension(from.absFilename()));
-	for (vector<string>::const_iterator it = files.begin();
-	     it != files.end(); ++it)
-		if (prefixIs(*it, base)) {
-			string const from2 = path + *it;
-			string to2 = to_base + it->substr(base.length());
-			to2 = changeExtension(to2, to_extension);
+	for (vector<FileName>::const_iterator it = files.begin();
+	     it != files.end(); ++it) {
+		string const from2 = it->absFilename();
+		string const file2 = onlyFilename(from2);
+		if (prefixIs(file2, base)) {
+			string const to2 = changeExtension(
+				to_base + file2.substr(base.length()),
+				to_extension);
 			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
 
 			Mover const & mover = movers(fmt);
 			bool const moved = copy
-				? mover.copy(FileName(from2), FileName(to2))
-				: mover.rename(FileName(from2), FileName(to2));
+				? mover.copy(*it, FileName(to2))
+				: mover.rename(*it, FileName(to2));
 			if (!moved && no_errors) {
 				Alert::error(_("Cannot convert file"),
 					bformat(copy ?
 						_("Could not copy a temporary file from %1$s to %2$s.") :
 						_("Could not move a temporary file from %1$s to %2$s."),
-						from_ascii(from2), from_ascii(to2)));
+						from_utf8(from2), from_utf8(to2)));
 				no_errors = false;
 			}
 		}
+	}
 	return no_errors;
 }
 

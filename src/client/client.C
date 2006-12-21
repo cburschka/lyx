@@ -85,8 +85,9 @@ string itoa(unsigned int i)
 }
 
 
-// Parts stolen from lyx::support::DirList()
-// Returns the absolute pathnames of all lyx local sockets
+/// Returns the absolute pathnames of all lyx local sockets in
+/// file system encoding.
+/// Parts stolen from lyx::support::DirList().
 vector<fs::path> lyxSockets(string const & dir, string const & pid)
 {
 	vector<fs::path> dirlist;
@@ -118,6 +119,8 @@ vector<fs::path> lyxSockets(string const & dir, string const & pid)
 namespace socktools {
 
 
+/// Connect to the socket \p name.
+/// Caution: \p name is in filesystem encoding
 int connect(string const & name)
 {
 	int fd; // File descriptor for the socket
@@ -551,6 +554,7 @@ int main(int argc, char * argv[])
 		vector<fs::path>::const_iterator addr = addrs.begin();
 		vector<fs::path>::const_iterator end = addrs.end();
 		for (; addr != end; ++addr) {
+			// Caution: addr->string() is in filesystem encoding
 			server.reset(new LyXDataSocket(addr->string()));
 			if (server->connected())
 				break;

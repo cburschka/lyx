@@ -73,7 +73,7 @@ FileName const fileSearch(std::string const & path,
 			     search_mode mode = standard_mode);
 
 /// Returns a vector of all files in directory dir having extension ext.
-std::vector<std::string> const dirList(FileName const & dir,
+std::vector<FileName> const dirList(FileName const & dir,
 				       std::string const & ext = std::string());
 
 /** Is directory read only?

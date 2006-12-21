@@ -70,6 +70,13 @@ string const FileName::toFilesystemEncoding() const
 }
 
 
+FileName const FileName::fromFilesystemEncoding(string const & name)
+{
+	QByteArray const encoded(name.c_str(), name.length());
+	return FileName(fromqstr(QFile::decodeName(encoded)));
+}
+
+
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
 	return lhs.absFilename() == rhs.absFilename();

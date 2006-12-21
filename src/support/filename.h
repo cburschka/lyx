@@ -46,6 +46,13 @@ public:
 	 * Only use this for accessing the file, e.g. with an fstream.
 	 */
 	std::string const toFilesystemEncoding() const;
+	/**
+	 * Get a FileName from \p name in the encoding used by the file system.
+	 * Only use this for filenames you got directly from the file system,
+	 * e.g. from reading a directory.
+	 * \p name must have an absolute path.
+	 */
+	static FileName const fromFilesystemEncoding(std::string const & name);
 protected:
 	/// The absolute file name.
 	/// The encoding is currently unspecified, anything else than ASCII

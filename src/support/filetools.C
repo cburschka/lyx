@@ -218,10 +218,10 @@ FileName const fileOpenSearch(string const & path, string const & name,
 
 
 /// Returns a vector of all files in directory dir having extension ext.
-vector<string> const dirList(FileName const & dir, string const & ext)
+vector<FileName> const dirList(FileName const & dir, string const & ext)
 {
 	// EXCEPTIONS FIXME. Rewrite needed when we turn on exceptions. (Lgb)
-	vector<string> dirlist;
+	vector<FileName> dirlist;
 
 	string const encoded_dir = dir.toFilesystemEncoding();
 	if (!(fs::exists(encoded_dir) && fs::is_directory(encoded_dir))) {
@@ -240,10 +240,9 @@ vector<string> const dirList(FileName const & dir, string const & ext)
 	fs::directory_iterator end;
 	for (; dit != end; ++dit) {
 		string const & fil = dit->leaf();
-		if (suffixIs(fil, extension)) {
-			// FIXME UNICODE: We need to convert from filesystem encoding to utf8
-			dirlist.push_back(fil);
-		}
+		if (suffixIs(fil, extension))
+			dirlist.push_back(FileName::fromFilesystemEncoding(
+					makeAbsPath(fil, encoded_dir)));
 	}
 	return dirlist;
 }
