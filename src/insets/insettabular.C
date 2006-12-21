@@ -498,6 +498,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1 
 		    || (cmd.button() == mouse_button::button3 
 			&& (&bvcur.selBegin().inset() != this || !tablemode(bvcur)))) {
+			if (!bvcur.selection() && !cur.bv().mouseSetCursor(cur))
+				cur.noUpdate();
 			cur.selection() = false;
 			setCursorFromCoordinates(cur, cmd.x, cmd.y);
 			cur.bv().mouseSetCursor(cur);
@@ -515,6 +517,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			// only accept motions to places not deeper nested than the real anchor
 			if (bvcur.anchor_.hasPart(cur)) {
+				// only update if selection changes
+				if (bvcur.idx() == cur.idx() &&
+					!(bvcur.anchor_.idx() == cur.idx() && bvcur.pos() != cur.pos()))
+					cur.noUpdate();
 				setCursorFromCoordinates(cur, cmd.x, cmd.y);
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
