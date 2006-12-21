@@ -31,6 +31,7 @@
 
 #include "support/filetools.h" // LibFileSearch
 #include "support/os.h"
+#include "support/convert.h"
 
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsLoader.h"
@@ -487,7 +488,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 	// The font used to display the version info
 	font.setStyleHint(QFont::SansSerif);
 	font.setWeight(QFont::Bold);
-	font.setPointSize(LyXFont::SIZE_NORMAL);
+	font.setPointSize(convert<int>(lyxrc.font_sizes[LyXFont::SIZE_LARGE]));
 
 	int const w = pm.width();
 	int const h = pm.height();
@@ -497,7 +498,7 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 
 	pain.drawPixmap(x, y, pm);
 
-	x += 260;
+	x += 300;
 	y += 265;
 
 	pain.setPen(QColor(255, 255, 0));

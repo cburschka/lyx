@@ -244,9 +244,6 @@ PAINTING & PERFORMANCE
   this is important for the test case); add a character into the note 
   => the complete footnote is expanded but only the current line is repainted
 
-* In the splash screen, the LyX version number is printed with a very, very
-  small font size such that it becomes almost invisible on Windows.
-
 * END_LABEL_* handling in RowPainer::paintLast() is broken. In regular text,
   label boxes are not completely visible (because we shrinked the margin on 
   screen?). Inside of insets, they don't work at all. 
@@ -610,4 +607,8 @@ CREDITS:
   FIXED (Georg 2006-12-17). It turned out that it was a math parser problem
   (bug 3034). It was introduced by the conversion of mathed to unicode,
   because two methods Parser::tokenize() with different semantics existed.
+
+* In the splash screen, the LyX version number is printed with a very, very
+  small font size such that it becomes almost invisible on Windows.
+  FIXED (Enrico 2006-12-21)
 
