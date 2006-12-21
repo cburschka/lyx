@@ -821,7 +821,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 					     << endl;
 			features.require("noun");
 			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
-					     << fcit->font().stateText(0)
+					     << to_utf8(fcit->font().stateText(0))
 					     << endl;
 		}
 		switch (fcit->font().color()) {
@@ -836,7 +836,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		default:
 			features.require("color");
 			lyxerr[Debug::LATEX] << "Color enabled. Font: "
-					     << fcit->font().stateText(0)
+					     << to_utf8(fcit->font().stateText(0))
 					     << endl;
 		}
 

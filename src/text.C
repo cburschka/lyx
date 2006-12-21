@@ -2330,8 +2330,7 @@ docstring LyXText::currentState(LCursor & cur)
 	LyXFont font = real_current_font;
 	font.reduce(buf.params().getFont());
 
-	// FIXME UNICODE
-	os << bformat(_("Font: %1$s"), from_utf8(font.stateText(&buf.params())));
+	os << bformat(_("Font: %1$s"), font.stateText(&buf.params()));
 
 	// The paragraph depth
 	int depth = cur.paragraph().getDepth();

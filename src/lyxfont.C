@@ -37,7 +37,6 @@ using support::subst;
 using std::endl;
 using std::string;
 using std::ostream;
-using std::ostringstream;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
@@ -493,37 +492,36 @@ bool LyXFont::resolved() const
 }
 
 
-/// Build GUI description of font state
-string const LyXFont::stateText(BufferParams * params) const
+docstring const LyXFont::stateText(BufferParams * params) const
 {
-	ostringstream os;
+	odocstringstream os;
 	if (family() != INHERIT_FAMILY)
-		os << to_utf8(_(GUIFamilyNames[family()])) << ", ";
+		os << _(GUIFamilyNames[family()]) << ", ";
 	if (series() != INHERIT_SERIES)
-		os << to_utf8(_(GUISeriesNames[series()])) << ", ";
+		os << _(GUISeriesNames[series()]) << ", ";
 	if (shape() != INHERIT_SHAPE)
-		os << to_utf8(_(GUIShapeNames[shape()])) << ", ";
+		os << _(GUIShapeNames[shape()]) << ", ";
 	if (size() != INHERIT_SIZE)
-		os << to_utf8(_(GUISizeNames[size()])) << ", ";
+		os << _(GUISizeNames[size()]) << ", ";
 	if (color() != LColor::inherit)
 		os << lcolor.getGUIName(color()) << ", ";
 	if (emph() != INHERIT)
-		os << to_utf8(bformat(_("Emphasis %1$s, "),
-			      _(GUIMiscNames[emph()])));
+		os << bformat(_("Emphasis %1$s, "),
+		              _(GUIMiscNames[emph()]));
 	if (underbar() != INHERIT)
-		os << to_utf8(bformat(_("Underline %1$s, "),
-			      _(GUIMiscNames[underbar()])));
+		os << bformat(_("Underline %1$s, "),
+		              _(GUIMiscNames[underbar()]));
 	if (noun() != INHERIT)
-		os << to_utf8(bformat(_("Noun %1$s, "),
-			      _(GUIMiscNames[noun()])));
+		os << bformat(_("Noun %1$s, "),
+		              _(GUIMiscNames[noun()]));
 	if (bits == inherit)
-		os << to_utf8(_("Default")) << ", ";
+		os << _("Default") << ", ";
 	if (!params || (language() != params->language))
-		os << to_utf8(bformat(_("Language: %1$s, "),
-			      _(language()->display())));
+		os << bformat(_("Language: %1$s, "),
+		              _(language()->display()));
 	if (number() != OFF)
-		os << to_utf8(bformat(_("  Number %1$s"),
-				_(GUIMiscNames[number()])));
+		os << bformat(_("  Number %1$s"),
+		              _(GUIMiscNames[number()]));
 	return rtrim(os.str(), ", ");
 }
 

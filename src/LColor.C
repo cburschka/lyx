@@ -174,12 +174,12 @@ LColor & LColor::operator=(LColor tmp)
 }
 
 
-string const LColor::getGUIName(LColor::color c) const
+docstring const LColor::getGUIName(LColor::color c) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.find(c);
 	if (it != pimpl_->infotab.end())
-		return to_utf8(_(it->second.guiname));
-	return "none";
+		return _(it->second.guiname);
+	return from_ascii("none");
 }
 
 

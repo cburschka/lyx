@@ -19,8 +19,9 @@
 #ifndef LCOLOR_H
 #define LCOLOR_H
 
+#include "support/docstring.h"
+
 #include <boost/scoped_ptr.hpp>
-#include <string>
 
 
 namespace lyx {
@@ -203,7 +204,7 @@ public:
 	bool setColor(std::string const & lyxname, std::string const & x11name);
 
 	/// Get the GUI name of \c color.
-	std::string const getGUIName(LColor::color c) const;
+	docstring const getGUIName(LColor::color c) const;
 
 	/// Get the X11 name of \c color.
 	std::string const getX11Name(LColor::color c) const;

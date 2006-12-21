@@ -310,7 +310,7 @@ public:
 				 LyXFont const & next) const;
 
 	/// Build GUI description of font state
-	std::string const stateText(BufferParams * params) const;
+	docstring const stateText(BufferParams * params) const;
 
 	///
 	LColor_color realColor() const;

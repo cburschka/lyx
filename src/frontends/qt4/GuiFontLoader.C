@@ -262,7 +262,7 @@ QLFontInfo::QLFontInfo(LyXFont const & f)
 	}
 
 	if (lyxerr.debugging(Debug::FONT)) {
-		lyxerr[Debug::FONT] << "Font '" << f.stateText(0)
+		lyxerr[Debug::FONT] << "Font '" << to_utf8(f.stateText(0))
 			<< "' matched by\n" << fromqstr(font.family()) << endl;
 	}
 
