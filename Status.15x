@@ -44,32 +44,6 @@ ICONS:
 
 FILE
 
-* Change Tools->Preferences->User interface->User interface to something like
-  "kornel.default.ui"; save prefs; exit LyX; restart LyX; => crash; 
-  in the preferences file, there is an entry \bind_file "/Something/kornel.default"
-
-  In QPrefsDialog.C:1736, function PrefUserInterface::select_ui() calls
-	form_->controller().browseUI(qstring_to_ucs4(uiFileED->text())))
-  which in turn calls
-	ControlPrefs.C:118
-	browseLibFile(lyx::from_ascii("ui"), file, lyx::from_ascii("ui"),
-		_("Choose UI file"), FileFilterList(_("LyX UI files (*.ui)")));
-  In this function, the extension is removed, because it is the default ("ui" in 
-  this case). This behaviour applies to
-    ControlPrefs::browsebind,  ControlPrefs::browseUI
-    ControlPrefs::browsekbmap, ControlPrefs::browsedict
-  Setting the default extension here to something invalid, is a hack, but works.
-  (Invalid may be e.g. "*")
-
-* When loading a LyX file from a Windows directory with a German Umlaut, I get the 
-  following error:
-
-    Assertion triggered in __thiscall lyx::support::FileName::FileName(const class 
-    std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &)
-    by failing check "empty() || absolutePath(name_)" in file C:\...\src\support\filename.C:47
-
-  If I rename the directory (no Umlaut), I can load the file without a problem.
-
 
 SPELL CHECKING (Joost 4/11/06)
 
@@ -613,4 +587,32 @@ CREDITS:
 * In the splash screen, the LyX version number is printed with a very, very
   small font size such that it becomes almost invisible on Windows.
   FIXED (Enrico 2006-12-21)
+
+* Change Tools->Preferences->User interface->User interface to something like
+  "kornel.default.ui"; save prefs; exit LyX; restart LyX; => crash; 
+  in the preferences file, there is an entry \bind_file "/Something/kornel.default"
+
+  In QPrefsDialog.C:1736, function PrefUserInterface::select_ui() calls
+	form_->controller().browseUI(qstring_to_ucs4(uiFileED->text())))
+  which in turn calls
+	ControlPrefs.C:118
+	browseLibFile(lyx::from_ascii("ui"), file, lyx::from_ascii("ui"),
+		_("Choose UI file"), FileFilterList(_("LyX UI files (*.ui)")));
+  In this function, the extension is removed, because it is the default ("ui" in 
+  this case). This behaviour applies to
+    ControlPrefs::browsebind,  ControlPrefs::browseUI
+    ControlPrefs::browsekbmap, ControlPrefs::browsedict
+  Setting the default extension here to something invalid, is a hack, but works.
+  (Invalid may be e.g. "*")
+  FIXED (Enrico and Georg 2006-12-21)
+
+* When loading a LyX file from a Windows directory with a German Umlaut, I get the 
+  following error:
+
+    Assertion triggered in __thiscall lyx::support::FileName::FileName(const class 
+    std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &)
+    by failing check "empty() || absolutePath(name_)" in file C:\...\src\support\filename.C:47
+
+  If I rename the directory (no Umlaut), I can load the file without a problem.
+  FIXED (Enrico and Georg 2006-12-21)
 

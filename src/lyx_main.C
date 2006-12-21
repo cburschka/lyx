@@ -480,7 +480,8 @@ int LyX::init(int & argc, char * argv[])
 		// get absolute path of file and add ".lyx" to
 		// the filename if necessary
 		pimpl_->files_to_load_.push_back(fileSearch(string(),
-			os::internal_path(to_utf8(from_local8bit(argv[argi]))), "lyx"));
+			os::internal_path(to_utf8(from_local8bit(argv[argi]))),
+			"lyx", support::allow_unreadable));
 	}
 
 	if (first_start)

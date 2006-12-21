@@ -179,6 +179,7 @@ bool isDirWriteable(string const & path)
 }
 
 
+#if 0
 // Uses a string of paths separated by ";"s to find a file to open.
 // Can't cope with pathnames with a ';' in them. Returns full path to file.
 // If path entry begins with $$LyX/, use system_lyxdir
@@ -213,6 +214,7 @@ FileName const fileOpenSearch(string const & path, string const & name,
 	}
 	return real_file;
 }
+#endif
 
 
 /// Returns a vector of all files in directory dir having extension ext.
@@ -250,7 +252,7 @@ vector<string> const dirList(FileName const & dir, string const & ext)
 // Returns the real name of file name in directory path, with optional
 // extension ext.
 FileName const fileSearch(string const & path, string const & name,
-			string const & ext)
+                          string const & ext, search_mode mode)
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
@@ -260,9 +262,15 @@ FileName const fileSearch(string const & path, string const & name,
 	if (isFileReadable(fullname))
 		return fullname;
 	if (ext.empty())
-		return FileName();
-	fullname = FileName(changeExtension(fullname.absFilename(), ext));
-	return isFileReadable(fullname) ? fullname : FileName();
+		// We are done.
+		return mode == allow_unreadable ? fullname : FileName();
+	// Only add the extension if it is not already the extension of
+	// fullname.
+	if (getExtension(fullname.absFilename()) != ext)
+		fullname = FileName(addExtension(fullname.absFilename(), ext));
+	if (isFileReadable(fullname) || mode == allow_unreadable)
+		return fullname;
+	return FileName();
 }
 
 
@@ -721,11 +729,6 @@ string const addPath(string const & path, string const & path_2)
 }
 
 
-/*
- Change extension of oldname to extension.
- Strips path off if no_path == true.
- If no extension on oldname, just appends.
- */
 string const changeExtension(string const & oldname, string const & extension)
 {
 	string::size_type const last_slash = oldname.rfind('/');
@@ -747,6 +750,14 @@ string const changeExtension(string const & oldname, string const & extension)
 string const removeExtension(string const & name)
 {
 	return changeExtension(name, string());
+}
+
+
+string const addExtension(string const & name, string const & extension)
+{
+	if (!extension.empty() && extension[0] != '.')
+		return name + '.' + extension;
+	return name + extension;
 }
 
 

@@ -39,6 +39,8 @@ bool createDirectory(std::string const & name, int permissions);
  */
 FileName const createLyXTmpDir(FileName const & deflt);
 
+#if 0
+// FIXME unused. Should this be deleted or resurrected?
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
     Can't cope with pathnames with a ';' in them. Returns full path to file.
@@ -49,6 +51,16 @@ FileName const createLyXTmpDir(FileName const & deflt);
 FileName const fileOpenSearch(std::string const & path,
 				 std::string const & name,
 				 std::string const & ext = std::string());
+#endif
+
+/// How to search files
+enum search_mode {
+	// The file must exist (return an empty file name otherwise)
+	standard_mode,
+	/// Only do file name expansion, return the complete name even if
+	/// the file does not exist
+	allow_unreadable
+};
 
 /** Returns the real name of file name in directory path, with optional
   extension ext.
@@ -57,7 +69,8 @@ FileName const fileOpenSearch(std::string const & path,
   */
 FileName const fileSearch(std::string const & path,
 			     std::string const & name,
-			     std::string const & ext = std::string());
+			     std::string const & ext = std::string(),
+			     search_mode mode = standard_mode);
 
 /// Returns a vector of all files in directory dir having extension ext.
 std::vector<std::string> const dirList(FileName const & dir,
@@ -179,6 +192,14 @@ changeExtension(std::string const & oldname, std::string const & extension);
 
 /// Remove the extension from \p name
 std::string const removeExtension(std::string const & name);
+
+/** Add the extension \p ext to \p name.
+ Use this instead of changeExtension if you know that \p name is without
+ extension, because changeExtension would wrongly interpret \p name if it
+ contains a dot.
+ */
+std::string const
+addExtension(std::string const & name, std::string const & extension);
 
 /// Return the extension of the file (not including the .)
 std::string const getExtension(std::string const & name);
