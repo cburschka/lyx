@@ -112,8 +112,8 @@ docstring const printable_list(docstring const & invalid_chars)
 
 	for (; it != end; ++it) {
 		if (it != begin)
-			s += lyx::from_ascii(", ");
-		if (*it == lyx::char_type(' '))
+			s += ", ";
+		if (*it == ' ')
 			s += _("space");
 		else
 			s += *it;
@@ -135,7 +135,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 		return	acceptable_if_empty_ ?
 			QValidator::Acceptable : QValidator::Intermediate;
 
-	docstring invalid_chars = lyx::from_ascii("#$%{}()[]\"^");
+	docstring invalid_chars = from_ascii("#$%{}()[]\"^");
 	if (!tex_allows_spaces_)
 		invalid_chars += ' ';
 

@@ -822,12 +822,12 @@ void LyXTextClass::readCounter(LyXLex & lexrc)
 		switch (static_cast<CounterTags>(le)) {
 		case CT_NAME:
 			lexrc.next();
-			name = lyx::from_ascii(lexrc.getString());
+			name = from_ascii(lexrc.getString());
 			break;
 		case CT_WITHIN:
 			lexrc.next();
-			within = lyx::from_ascii(lexrc.getString());
-			if (within == lyx::from_ascii("none"))
+			within = from_ascii(lexrc.getString());
+			if (within == "none")
 				within.erase();
 			break;
 		case CT_END:
