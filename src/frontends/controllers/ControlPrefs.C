@@ -65,7 +65,8 @@ void ControlPrefs::dispatchParams()
 	kernel().dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
 
 	// FIXME: these need lfuns
-	theBufferList().setCurrentAuthor(rc_.user_name, rc_.user_email);
+	// FIXME UNICODE
+	theBufferList().setCurrentAuthor(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
 
 	lyx::formats = formats_;
 

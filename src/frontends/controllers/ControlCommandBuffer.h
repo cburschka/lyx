@@ -14,7 +14,8 @@
 #ifndef CONTROLCOMMANDBUFFER_H
 #define CONTROLCOMMANDBUFFER_H
 
-#include <string>
+#include "support/docstring.h"
+
 #include <vector>
 
 
@@ -41,7 +42,7 @@ public:
 	std::string const historyDown();
 
 	/// return the font and depth in the active BufferView as a message.
-	std::string const getCurrentState() const;
+	docstring const getCurrentState() const;
 
 	/// return the possible completions
 	std::vector<std::string> const completions(std::string const & prefix,

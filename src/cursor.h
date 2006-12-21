@@ -91,7 +91,7 @@ public:
 	//
 	docstring selectionAsString(bool label) const;
 	///
-	std::string currentState();
+	docstring currentState();
 
 	/// auto-correct mode
 	bool autocorrect() const { return autocorrect_; }

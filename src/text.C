@@ -2302,12 +2302,12 @@ int LyXText::cursorY(CursorSlice const & sl, bool boundary) const
 
 
 // Returns the current font and depth as a message.
-string LyXText::currentState(LCursor & cur)
+docstring LyXText::currentState(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	Buffer & buf = cur.buffer();
 	Paragraph const & par = cur.paragraph();
-	std::ostringstream os;
+	odocstringstream os;
 
 	if (buf.params().trackChanges)
 		os << "[C] ";
@@ -2316,10 +2316,11 @@ string LyXText::currentState(LCursor & cur)
 
 	if (change.type != Change::UNCHANGED) {
 		Author const & a = buf.params().authors().get(change.author);
-		os << to_utf8(_("Change: ")) << a.name();
+		os << _("Change: ") << a.name();
 		if (!a.email().empty())
 			os << " (" << a.email() << ")";
-		os << to_utf8(_(" at ")) << ctime(&change.changetime);
+		// FIXME ctime is english, we should translate that
+		os << _(" at ") << ctime(&change.changetime);
 		os << " : ";
 	}
 
@@ -2329,34 +2330,31 @@ string LyXText::currentState(LCursor & cur)
 	LyXFont font = real_current_font;
 	font.reduce(buf.params().getFont());
 
-	// avoid to_utf8(_(...)) re-entrance problem
-	string const s = font.stateText(&buf.params());
-	os << to_utf8(bformat(_("Font: %1$s"), from_utf8(s)));
-
-	// os << to_utf8(bformat(_("Font: %1$s"), font.stateText(&buf.params)));
+	// FIXME UNICODE
+	os << bformat(_("Font: %1$s"), from_utf8(font.stateText(&buf.params())));
 
 	// The paragraph depth
 	int depth = cur.paragraph().getDepth();
 	if (depth > 0)
-		os << to_utf8(bformat(_(", Depth: %1$d"), depth));
+		os << bformat(_(", Depth: %1$d"), depth);
 
 	// The paragraph spacing, but only if different from
 	// buffer spacing.
 	Spacing const & spacing = par.params().spacing();
 	if (!spacing.isDefault()) {
-		os << to_utf8(_(", Spacing: "));
+		os << _(", Spacing: ");
 		switch (spacing.getSpace()) {
 		case Spacing::Single:
-			os << to_utf8(_("Single"));
+			os << _("Single");
 			break;
 		case Spacing::Onehalf:
-			os << to_utf8(_("OneHalf"));
+			os << _("OneHalf");
 			break;
 		case Spacing::Double:
-			os << to_utf8(_("Double"));
+			os << _("Double");
 			break;
 		case Spacing::Other:
-			os << to_utf8(_("Other (")) << spacing.getValueAsString() << ')';
+			os << _("Other (") << from_ascii(spacing.getValueAsString()) << ')';
 			break;
 		case Spacing::Default:
 			// should never happen, do nothing
@@ -2365,11 +2363,11 @@ string LyXText::currentState(LCursor & cur)
 	}
 
 #ifdef DEVEL_VERSION
-	os << to_utf8(_(", Inset: ")) << &cur.inset();
-	os << to_utf8(_(", Paragraph: ")) << cur.pit();
-	os << to_utf8(_(", Id: ")) << par.id();
-	os << to_utf8(_(", Position: ")) << cur.pos();
-	os << to_utf8(_(", Boundary: ")) << cur.boundary();
+	os << _(", Inset: ") << &cur.inset();
+	os << _(", Paragraph: ") << cur.pit();
+	os << _(", Id: ") << par.id();
+	os << _(", Position: ") << cur.pos();
+	os << _(", Boundary: ") << cur.boundary();
 //	Row & row = cur.textRow();
 //	os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
 #endif

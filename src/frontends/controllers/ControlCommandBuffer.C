@@ -79,7 +79,7 @@ string const ControlCommandBuffer::historyDown()
 }
 
 
-string const ControlCommandBuffer::getCurrentState() const
+docstring const ControlCommandBuffer::getCurrentState() const
 {
 	return lv_.view()->cursor().currentState();
 }

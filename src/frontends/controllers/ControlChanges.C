@@ -65,12 +65,11 @@ docstring const ControlChanges::getChangeAuthor()
 
 	Author const & a(kernel().buffer().params().authors().get(c.author));
 
-	// FIXME UNICODE in Author class
-	docstring author(from_utf8(a.name()));
+	docstring author(a.name());
 
 	if (!a.email().empty()) {
 		author += " (";
-		author += from_utf8(a.email());
+		author += a.email();
 		author += ")";
 	}
 

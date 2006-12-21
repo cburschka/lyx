@@ -721,7 +721,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_FONT_STATE:
-		cur.message(from_utf8(cur.currentState()));
+		cur.message(cur.currentState());
 		break;
 
 	case LFUN_BOOKMARK_SAVE:

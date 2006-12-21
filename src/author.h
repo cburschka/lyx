@@ -12,9 +12,10 @@
 #ifndef AUTHOR_H
 #define AUTHOR_H
 
+#include "support/docstring.h"
+
 #include <map>
 #include <iosfwd>
-#include <string>
 
 
 namespace lyx {
@@ -24,23 +25,23 @@ class Author {
 public:
 	Author() {}
 
-	Author(std::string const & name, std::string const & email)
+	Author(docstring const & name, docstring const & email)
 		: name_(name), email_(email) {}
 
-	std::string const name() const {
+	docstring const name() const {
 		return name_;
 	}
 
-	std::string const email() const {
+	docstring const email() const {
 		return email_;
 	}
 
-	friend  std::istream & operator>>(std::istream & os, Author & a);
+	friend std::istream & operator>>(std::istream & os, Author & a);
 
 private:
-	std::string name_;
+	docstring name_;
 
-	std::string email_;
+	docstring email_;
 };
 
 

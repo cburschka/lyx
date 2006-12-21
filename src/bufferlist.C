@@ -435,7 +435,7 @@ Buffer * BufferList::getBufferFromTmp(string const & s)
 }
 
 
-void BufferList::setCurrentAuthor(string const & name, string const & email)
+void BufferList::setCurrentAuthor(docstring const & name, docstring const & email)
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();

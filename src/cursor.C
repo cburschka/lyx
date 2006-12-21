@@ -1203,18 +1203,18 @@ docstring LCursor::selectionAsString(bool label) const
 }
 
 
-string LCursor::currentState()
+docstring LCursor::currentState()
 {
 	if (inMathed()) {
 		odocstringstream os;
 		info(os);
-		return to_utf8(os.str());
+		return os.str();
 	}
 
 	if (inTexted())
 		return text()->currentState(*this);
 
-	return string();
+	return docstring();
 }
 
 

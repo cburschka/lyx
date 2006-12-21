@@ -12,9 +12,10 @@
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
 
+#include "support/docstring.h"
+
 #include <boost/utility.hpp>
 
-#include <string>
 #include <vector>
 
 
@@ -100,7 +101,7 @@ public:
 	Buffer * previous(Buffer const *) const;
 
 	/// reset current author for all buffers
-	void setCurrentAuthor(std::string const & name, std::string const & email);
+	void setCurrentAuthor(docstring const & name, docstring const & email);
 
 private:
 	/// ask to save a buffer on quit, returns false if should cancel

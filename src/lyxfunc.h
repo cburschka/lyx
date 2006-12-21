@@ -54,7 +54,7 @@ public:
 	void initKeySequences(kb_keymap * kb);
 
 	/// return the status bar state string
-	std::string const viewStatusMessage();
+	docstring const viewStatusMessage();
 
 	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);

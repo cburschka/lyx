@@ -35,7 +35,8 @@ bool operator==(Author const & l, Author const & r)
 
 std::ostream & operator<<(std::ostream & os, Author const & a)
 {
-	os << "\"" << a.name() << "\" " << a.email();
+	// FIXME UNICODE
+	os << "\"" << to_utf8(a.name()) << "\" " << to_utf8(a.email());
 	return os;
 }
 
@@ -43,8 +44,9 @@ std::istream & operator>>(std::istream & is, Author & a)
 {
 	string s;
 	getline(is, s);
-	a.name_ = trim(token(s, '\"', 1));
-	a.email_ = trim(token(s, '\"', 2));
+	// FIXME UNICODE
+	a.name_ = from_utf8(trim(token(s, '\"', 1)));
+	a.email_ = from_utf8(trim(token(s, '\"', 2)));
 	return is;
 }
 

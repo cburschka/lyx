@@ -134,7 +134,7 @@ public:
 	/// read-write access to individual paragraph
 	Paragraph & getPar(pit_type pit) { return pars_[pit]; }
 	// Returns the current font and depth as a message.
-	std::string currentState(LCursor & cur);
+	docstring currentState(LCursor & cur);
 
 	/** returns row near the specified
 	  * y-coordinate in given paragraph (relative to the screen).

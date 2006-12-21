@@ -261,7 +261,8 @@ BufferParams::Impl::Impl()
 	: defskip(VSpace::MEDSKIP)
 {
 	// set initial author
-	authorlist.record(Author(lyxrc.user_name, lyxrc.user_email));
+	// FIXME UNICODE
+	authorlist.record(Author(from_utf8(lyxrc.user_name), from_utf8(lyxrc.user_email)));
 }
 
 
