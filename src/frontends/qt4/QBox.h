@@ -45,11 +45,11 @@ private:
 	///
 	std::vector<std::string> ids_;
 	///
-	std::vector<std::string> gui_names_;
+	std::vector<docstring> gui_names_;
 	///
 	std::vector<std::string> ids_spec_;
 	///
-	std::vector<std::string> gui_names_spec_;
+	std::vector<docstring> gui_names_spec_;
 };
 
 } // namespace frontend
