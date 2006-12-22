@@ -191,8 +191,7 @@ vector<RotationOriginPair> getRotationOriginData()
 
 	data.resize(rorigin_size);
 	for (size_type i = 0; i < rorigin_size; ++i) {
-		// FIXME UNICODE
-		data[i] = make_pair(lyx::to_utf8(_(rorigin_gui_strs[i])),
+		data[i] = make_pair(_(rorigin_gui_strs[i]),
 				    rorigin_lyx_strs[i]);
 	}
 

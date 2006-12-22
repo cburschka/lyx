@@ -88,7 +88,7 @@ private:
 namespace external {
 
 std::vector<RotationDataType> const & all_origins();
-std::string const origin_gui_str(size_type i);
+docstring const origin_gui_str(size_type i);
 
 } // namespace external
 } // namespace lyx

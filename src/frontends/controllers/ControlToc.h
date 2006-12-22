@@ -35,7 +35,7 @@ public:
 	std::vector<std::string> const & getTypes() const;
 
 	/// Return the guiname from a given cmdName of the TOC param
-	std::string const getGuiName(std::string const & type) const;
+	docstring const getGuiName(std::string const & type) const;
 
 	/// Return the first TocItem before the cursor
 	TocIterator const getCurrentTocItem(std::string const & type) const;

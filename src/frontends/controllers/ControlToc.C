@@ -93,17 +93,17 @@ TocIterator const ControlToc::getCurrentTocItem(
 }
 
 
-string const ControlToc::getGuiName(string const & type) const
+docstring const ControlToc::getGuiName(string const & type) const
 {
 	if (type == "tableofcontents")
-		return lyx::to_utf8(_("Table of Contents"));
+		return _("Table of Contents");
 
 	FloatList const & floats =
 		kernel().buffer().params().getLyXTextClass().floats();
 	if (floats.typeExist(type))
-		return floats.getType(type).name();
+		return from_utf8(floats.getType(type).name());
 	else
-		return lyx::to_utf8(_(type));
+		return _(type);
 }
 
 

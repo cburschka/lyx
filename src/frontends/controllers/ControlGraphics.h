@@ -70,7 +70,7 @@ private:
 std::vector<std::string> const getBBUnits();
 
 /// The (tranlated) GUI std::string and it's LaTeX equivalent.
-typedef std::pair<std::string, std::string> RotationOriginPair;
+typedef std::pair<docstring, std::string> RotationOriginPair;
 ///
 std::vector<RotationOriginPair> getRotationOriginData();
 

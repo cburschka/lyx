@@ -250,12 +250,14 @@ bool LColor::setColor(string const & lyxname, string const &x11name)
 }
 
 
-LColor::color LColor::getFromGUIName(string const & guiname) const
+LColor::color LColor::getFromGUIName(docstring const & guiname) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.begin();
 	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
 	for (; it != end; ++it) {
-		if (!compare_ascii_no_case(to_utf8(_(it->second.guiname)), guiname))
+		// FIXME comparison of translated strings is problematic,
+		// and compare_ascii_no_case is probably not correct
+		if (!compare_ascii_no_case(_(it->second.guiname), guiname))
 			return it->first;
 	}
 	return LColor::inherit;

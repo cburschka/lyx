@@ -245,9 +245,9 @@ vector<RotationDataType> const & all_origins()
 	return origins;
 }
 
-string const origin_gui_str(size_type i)
+docstring const origin_gui_str(size_type i)
 {
-	return lyx::to_utf8(_(origin_gui_strs[i]));
+	return _(origin_gui_strs[i]);
 }
 
 } // namespace external

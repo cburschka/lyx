@@ -114,7 +114,7 @@ void QParagraph::update_contents()
 
 	// label width
 	docstring const & labelwidth = params.labelWidthString();
-	// lyx::to_utf8(_() is correct here (this is stupid though !))
+	// FIXME We should not compare translated strings
 	if (labelwidth != _("Senseless with this layout!")) {
 		dialog_->labelwidthGB->setEnabled(true);
 		dialog_->labelWidth->setText(toqstr(labelwidth));

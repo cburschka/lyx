@@ -26,23 +26,23 @@ vector<FamilyPair> const getFamilyData()
 
 	FamilyPair pr;
 
-	pr.first = lyx::to_utf8(_("No change"));
+	pr.first = _("No change");
 	pr.second = LyXFont::IGNORE_FAMILY;
 	family[0] = pr;
 
-	pr.first = lyx::to_utf8(_("Roman"));
+	pr.first = _("Roman");
 	pr.second = LyXFont::ROMAN_FAMILY;
 	family[1] = pr;
 
-	pr.first = lyx::to_utf8(_("Sans Serif"));
+	pr.first = _("Sans Serif");
 	pr.second = LyXFont::SANS_FAMILY;
 	family[2] = pr;
 
-	pr.first = lyx::to_utf8(_("Typewriter"));
+	pr.first = _("Typewriter");
 	pr.second = LyXFont::TYPEWRITER_FAMILY;
 	family[3] = pr;
 
-	pr.first = lyx::to_utf8(_("Reset"));
+	pr.first = _("Reset");
 	pr.second = LyXFont::INHERIT_FAMILY;
 	family[4] = pr;
 
@@ -56,19 +56,19 @@ vector<SeriesPair> const getSeriesData()
 
 	SeriesPair pr;
 
-	pr.first = lyx::to_utf8(_("No change"));
+	pr.first = _("No change");
 	pr.second = LyXFont::IGNORE_SERIES;
 	series[0] = pr;
 
-	pr.first = lyx::to_utf8(_("Medium"));
+	pr.first = _("Medium");
 	pr.second = LyXFont::MEDIUM_SERIES;
 	series[1] = pr;
 
-	pr.first = lyx::to_utf8(_("Bold"));
+	pr.first = _("Bold");
 	pr.second = LyXFont::BOLD_SERIES;
 	series[2] = pr;
 
-	pr.first = lyx::to_utf8(_("Reset"));
+	pr.first = _("Reset");
 	pr.second = LyXFont::INHERIT_SERIES;
 	series[3] = pr;
 
@@ -82,27 +82,27 @@ vector<ShapePair> const getShapeData()
 
 	ShapePair pr;
 
-	pr.first = lyx::to_utf8(_("No change"));
+	pr.first = _("No change");
 	pr.second = LyXFont::IGNORE_SHAPE;
 	shape[0] = pr;
 
-	pr.first = lyx::to_utf8(_("Upright"));
+	pr.first = _("Upright");
 	pr.second = LyXFont::UP_SHAPE;
 	shape[1] = pr;
 
-	pr.first = lyx::to_utf8(_("Italic"));
+	pr.first = _("Italic");
 	pr.second = LyXFont::ITALIC_SHAPE;
 	shape[2] = pr;
 
-	pr.first = lyx::to_utf8(_("Slanted"));
+	pr.first = _("Slanted");
 	pr.second = LyXFont::SLANTED_SHAPE;
 	shape[3] = pr;
 
-	pr.first = lyx::to_utf8(_("Small Caps"));
+	pr.first = _("Small Caps");
 	pr.second = LyXFont::SMALLCAPS_SHAPE;
 	shape[4] = pr;
 
-	pr.first = lyx::to_utf8(_("Reset"));
+	pr.first = _("Reset");
 	pr.second = LyXFont::INHERIT_SHAPE;
 	shape[5] = pr;
 
@@ -116,59 +116,59 @@ vector<SizePair> const getSizeData()
 
 	SizePair pr;
 
-	pr.first = lyx::to_utf8(_("No change"));
+	pr.first = _("No change");
 	pr.second = LyXFont::IGNORE_SIZE;
 	size[0] = pr;
 
-	pr.first = lyx::to_utf8(_("Tiny"));
+	pr.first = _("Tiny");
 	pr.second = LyXFont::SIZE_TINY;
 	size[1] = pr;
 
-	pr.first = lyx::to_utf8(_("Smallest"));
+	pr.first = _("Smallest");
 	pr.second = LyXFont::SIZE_SCRIPT;
 	size[2] = pr;
 
-	pr.first = lyx::to_utf8(_("Smaller"));
+	pr.first = _("Smaller");
 	pr.second = LyXFont::SIZE_FOOTNOTE;
 	size[3] = pr;
 
-	pr.first = lyx::to_utf8(_("Small"));
+	pr.first = _("Small");
 	pr.second = LyXFont::SIZE_SMALL;
 	size[4] = pr;
 
-	pr.first = lyx::to_utf8(_("Normal"));
+	pr.first = _("Normal");
 	pr.second = LyXFont::SIZE_NORMAL;
 	size[5] = pr;
 
-	pr.first = lyx::to_utf8(_("Large"));
+	pr.first = _("Large");
 	pr.second = LyXFont::SIZE_LARGE;
 	size[6] = pr;
 
-	pr.first = lyx::to_utf8(_("Larger"));
+	pr.first = _("Larger");
 	pr.second = LyXFont::SIZE_LARGER;
 	size[7] = pr;
 
-	pr.first = lyx::to_utf8(_("Largest"));
+	pr.first = _("Largest");
 	pr.second = LyXFont::SIZE_LARGEST;
 	size[8] = pr;
 
-	pr.first = lyx::to_utf8(_("Huge"));
+	pr.first = _("Huge");
 	pr.second = LyXFont::SIZE_HUGE;
 	size[9] = pr;
 
-	pr.first = lyx::to_utf8(_("Huger"));
+	pr.first = _("Huger");
 	pr.second = LyXFont::SIZE_HUGER;
 	size[10] = pr;
 
-	pr.first = lyx::to_utf8(_("Increase"));
+	pr.first = _("Increase");
 	pr.second = LyXFont::INCREASE_SIZE;
 	size[11] = pr;
 
-	pr.first = lyx::to_utf8(_("Decrease"));
+	pr.first = _("Decrease");
 	pr.second = LyXFont::DECREASE_SIZE;
 	size[12] = pr;
 
-	pr.first = lyx::to_utf8(_("Reset"));
+	pr.first = _("Reset");
 	pr.second = LyXFont::INHERIT_SIZE;
 	size[13] = pr;
 
@@ -182,23 +182,23 @@ vector<BarPair> const getBarData()
 
 	BarPair pr;
 
-	pr.first = lyx::to_utf8(_("No change"));
+	pr.first = _("No change");
 	pr.second = IGNORE;
 	bar[0] = pr;
 
-	pr.first = lyx::to_utf8(_("Emph"));
+	pr.first = _("Emph");
 	pr.second = EMPH_TOGGLE;
 	bar[1] = pr;
 
-	pr.first = lyx::to_utf8(_("Underbar"));
+	pr.first = _("Underbar");
 	pr.second = UNDERBAR_TOGGLE;
 	bar[2] = pr;
 
-	pr.first = lyx::to_utf8(_("Noun"));
+	pr.first = _("Noun");
 	pr.second = NOUN_TOGGLE;
 	bar[3] = pr;
 
-	pr.first = lyx::to_utf8(_("Reset"));
+	pr.first = _("Reset");
 	pr.second = INHERIT;
 	bar[4] = pr;
 
@@ -212,47 +212,47 @@ vector<ColorPair> const getColorData()
 
 	ColorPair pr;
 
-	pr.first = lyx::to_utf8(_("No change"));
+	pr.first = _("No change");
 	pr.second = LColor::ignore;
 	color[0] = pr;
 
-	pr.first = lyx::to_utf8(_("No color"));
+	pr.first = _("No color");
 	pr.second = LColor::none;
 	color[1] = pr;
 
-	pr.first = lyx::to_utf8(_("Black"));
+	pr.first = _("Black");
 	pr.second = LColor::black;
 	color[2] = pr;
 
-	pr.first = lyx::to_utf8(_("White"));
+	pr.first = _("White");
 	pr.second = LColor::white;
 	color[3] = pr;
 
-	pr.first = lyx::to_utf8(_("Red"));
+	pr.first = _("Red");
 	pr.second = LColor::red;
 	color[4] = pr;
 
-	pr.first = lyx::to_utf8(_("Green"));
+	pr.first = _("Green");
 	pr.second = LColor::green;
 	color[5] = pr;
 
-	pr.first = lyx::to_utf8(_("Blue"));
+	pr.first = _("Blue");
 	pr.second = LColor::blue;
 	color[6] = pr;
 
-	pr.first = lyx::to_utf8(_("Cyan"));
+	pr.first = _("Cyan");
 	pr.second = LColor::cyan;
 	color[7] = pr;
 
-	pr.first = lyx::to_utf8(_("Magenta"));
+	pr.first = _("Magenta");
 	pr.second = LColor::magenta;
 	color[8] = pr;
 
-	pr.first = lyx::to_utf8(_("Yellow"));
+	pr.first = _("Yellow");
 	pr.second = LColor::yellow;
 	color[9] = pr;
 
-	pr.first = lyx::to_utf8(_("Reset"));
+	pr.first = _("Reset");
 	pr.second = LColor::inherit;
 	color[10] = pr;
 

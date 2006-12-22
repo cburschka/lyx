@@ -241,12 +241,11 @@ void QGraphics::update_contents()
 
 	dialog_->origin->clear();
 
-	using namespace frontend;
 	vector<RotationOriginPair> origindata = getRotationOriginData();
-	vector<string> const origin_lang = getFirst(origindata);
+	vector<docstring> const origin_lang = getFirst(origindata);
 	QGraphics::origin_ltx = getSecond(origindata);
 
-	for (vector<string>::const_iterator it = origin_lang.begin();
+	for (vector<docstring>::const_iterator it = origin_lang.begin();
 	    it != origin_lang.end(); ++it)
 		dialog_->origin->addItem(toqstr(*it));
 
