@@ -44,6 +44,7 @@ using std::endl;
 namespace {
 
 typedef Translator<std::string, InsetBox::BoxType> BoxTranslator;
+typedef Translator<docstring, InsetBox::BoxType> BoxTranslatorLoc;
 
 BoxTranslator const init_boxtranslator()
 {
@@ -57,15 +58,14 @@ BoxTranslator const init_boxtranslator()
 }
 
 
-BoxTranslator const init_boxtranslator_loc()
+BoxTranslatorLoc const init_boxtranslator_loc()
 {
-	// FIXME UNICODE
-	BoxTranslator translator(to_utf8(_("Boxed")), InsetBox::Boxed);
-	translator.addPair(to_utf8(_("Frameless")), InsetBox::Frameless);
-	translator.addPair(to_utf8(_("ovalbox")), InsetBox::ovalbox);
-	translator.addPair(to_utf8(_("Ovalbox")), InsetBox::Ovalbox);
-	translator.addPair(to_utf8(_("Shadowbox")), InsetBox::Shadowbox);
-	translator.addPair(to_utf8(_("Doublebox")), InsetBox::Doublebox);
+	BoxTranslatorLoc translator(_("Boxed"), InsetBox::Boxed);
+	translator.addPair(_("Frameless"), InsetBox::Frameless);
+	translator.addPair(_("ovalbox"), InsetBox::ovalbox);
+	translator.addPair(_("Ovalbox"), InsetBox::Ovalbox);
+	translator.addPair(_("Shadowbox"), InsetBox::Shadowbox);
+	translator.addPair(_("Doublebox"), InsetBox::Doublebox);
 	return translator;
 }
 
@@ -77,9 +77,9 @@ BoxTranslator const & boxtranslator()
 }
 
 
-BoxTranslator const & boxtranslator_loc()
+BoxTranslatorLoc const & boxtranslator_loc()
 {
-	static BoxTranslator translator = init_boxtranslator_loc();
+	static BoxTranslatorLoc translator = init_boxtranslator_loc();
 	return translator;
 }
 
@@ -157,8 +157,7 @@ void InsetBox::setButtonLabel()
 		else
 			label += _("Minipage");
 	} else
-		// FIXME UNICODE
-		label += from_utf8(boxtranslator_loc().find(btype));
+		label += boxtranslator_loc().find(btype);
 	label += ")";
 
 	setLabel(label);

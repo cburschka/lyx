@@ -1496,7 +1496,6 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 	defaultLanguageCO->clear();
 
 	// store the lang identifiers for later
-	using lyx::frontend::LanguagePair;
 	std::vector<LanguagePair> const langs =
 		lyx::frontend::getLanguageData(false);
 	lang_ = getSecond(langs);

@@ -131,8 +131,7 @@ void ControlDocument::dispatchParams()
 			string const x11hexname =
 					lyx::X11hexname(branch->getColor());
 			// display the new color
-			// FIXME UNICODE
-			string const str = to_utf8(current_branch) + ' ' + x11hexname;
+			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
 			kernel().dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
 

@@ -14,7 +14,8 @@
 #ifndef FRNT_LANG_H
 #define FRNT_LANG_H
 
-#include <string>
+#include "support/docstring.h"
+
 #include <utility>
 #include <vector>
 
@@ -22,7 +23,7 @@ namespace lyx {
 namespace frontend {
 
 ///
-typedef std::pair<std::string, std::string> LanguagePair;
+typedef std::pair<docstring, std::string> LanguagePair;
 
 /** If the caller is the character dialog, add "No change" and "Reset"
  *  to the vector.

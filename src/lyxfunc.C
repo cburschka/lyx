@@ -1757,27 +1757,27 @@ void LyXFunc::sendDispatchMessage(docstring const & msg, FuncRequest const & cmd
 	if (!dispatch_msg.empty())
 		dispatch_msg += ' ';
 
-	string comname = lyxaction.getActionName(cmd.action);
+	docstring comname = from_utf8(lyxaction.getActionName(cmd.action));
 
 	bool argsadded = false;
 
 	if (!cmd.argument().empty()) {
 		if (cmd.action != LFUN_UNKNOWN_ACTION) {
-			comname += ' ' + to_utf8(cmd.argument());
+			comname += ' ' + cmd.argument();
 			argsadded = true;
 		}
 	}
 
-	string const shortcuts = to_utf8(theTopLevelKeymap().printbindings(cmd));
+	docstring const shortcuts = theTopLevelKeymap().printbindings(cmd);
 
 	if (!shortcuts.empty())
 		comname += ": " + shortcuts;
 	else if (!argsadded && !cmd.argument().empty())
-		comname += ' ' + to_utf8(cmd.argument());
+		comname += ' ' + cmd.argument();
 
 	if (!comname.empty()) {
 		comname = rtrim(comname);
-		dispatch_msg += from_utf8('(' + rtrim(comname) + ')');
+		dispatch_msg += '(' + rtrim(comname) + ')';
 	}
 
 	lyxerr[Debug::ACTION] << "verbose dispatch msg "

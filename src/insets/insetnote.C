@@ -47,6 +47,7 @@ using std::ostringstream;
 namespace {
 
 typedef Translator<std::string, InsetNoteParams::Type> NoteTranslator;
+typedef Translator<docstring, InsetNoteParams::Type> NoteTranslatorLoc;
 
 NoteTranslator const init_notetranslator()
 {
@@ -59,14 +60,13 @@ NoteTranslator const init_notetranslator()
 }
 
 
-NoteTranslator const init_notetranslator_loc()
+NoteTranslatorLoc const init_notetranslator_loc()
 {
-	// FIXME UNICODE
-	NoteTranslator translator(to_utf8(_("Note")), InsetNoteParams::Note);
-	translator.addPair(to_utf8(_("Comment")), InsetNoteParams::Comment);
-	translator.addPair(to_utf8(_("Greyed out")), InsetNoteParams::Greyedout);
-	translator.addPair(to_utf8(_("Framed")), InsetNoteParams::Framed);
-	translator.addPair(to_utf8(_("Shaded")), InsetNoteParams::Shaded);
+	NoteTranslatorLoc translator(_("Note"), InsetNoteParams::Note);
+	translator.addPair(_("Comment"), InsetNoteParams::Comment);
+	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
+	translator.addPair(_("Framed"), InsetNoteParams::Framed);
+	translator.addPair(_("Shaded"), InsetNoteParams::Shaded);
 	return translator;
 }
 
@@ -78,9 +78,9 @@ NoteTranslator const & notetranslator()
 }
 
 
-NoteTranslator const & notetranslator_loc()
+NoteTranslatorLoc const & notetranslator_loc()
 {
-	static NoteTranslator translator = init_notetranslator_loc();
+	static NoteTranslatorLoc translator = init_notetranslator_loc();
 	return translator;
 }
 
@@ -112,7 +112,7 @@ void InsetNoteParams::read(LyXLex & lex)
 
 void InsetNote::init()
 {
-	setInsetName(from_utf8("Note"));
+	setInsetName(from_ascii("Note"));
 	setButtonLabel();
 }
 
@@ -167,8 +167,7 @@ void InsetNote::read(Buffer const & buf, LyXLex & lex)
 
 void InsetNote::setButtonLabel()
 {
-	// FIXME unicode
-	docstring const label = from_utf8(notetranslator_loc().find(params_.type));
+	docstring const label = notetranslator_loc().find(params_.type);
 	setLabel(label);
 
 	LyXFont font(LyXFont::ALL_SANE);

@@ -627,7 +627,7 @@ void expandCharStyleInsert(Menu & tomenu, Buffer const * buf)
 		docstring const label = from_utf8(cit->name);
 		tomenu.addWithStatusCheck(MenuItem(MenuItem::Command, label,
 				    FuncRequest(LFUN_CHARSTYLE_INSERT,
-						cit->name)));
+						label)));
 	}
 }
 
