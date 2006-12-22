@@ -250,20 +250,6 @@ bool LColor::setColor(string const & lyxname, string const &x11name)
 }
 
 
-LColor::color LColor::getFromGUIName(docstring const & guiname) const
-{
-	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.begin();
-	Pimpl::InfoTab::const_iterator end = pimpl_->infotab.end();
-	for (; it != end; ++it) {
-		// FIXME comparison of translated strings is problematic,
-		// and compare_ascii_no_case is probably not correct
-		if (!compare_ascii_no_case(_(it->second.guiname), guiname))
-			return it->first;
-	}
-	return LColor::inherit;
-}
-
-
 void LColor::addColor(LColor::color c, string const & lyxname) const
 {
 	ColorEntry ce = { c, "", "", "", lyxname.c_str() };
