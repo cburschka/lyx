@@ -126,6 +126,7 @@ private:
 
 	/// in order to catch Tab key press.
 	bool event(QEvent * e);
+	bool focusNextPrevChild(bool);
 
 	QTimer statusbar_timer_;
 

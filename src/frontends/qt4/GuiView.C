@@ -632,18 +632,24 @@ bool GuiView::event(QEvent * e)
 
 	if (e->type() == QEvent::ShortcutOverride) {
 		QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-		if (ke->key() == Qt::Key_Tab) {
+		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
 			boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 			sym->set(ke);
 			work_area_->processKeySym(sym, key_modifier::none);
 			e->accept();
-			centralWidget()->setFocus();
 			return true;
 		}
 	}
 	//} for the debug switch above.
 
 	return QMainWindow::event(e);
+}
+
+
+bool GuiView::focusNextPrevChild(bool /*next*/)
+{
+	static_cast<GuiWorkArea *>(work_area_)->setFocus();
+	return true;
 }
 
 
