@@ -86,6 +86,7 @@ LyXView::LyXView(int id)
 
 LyXView::~LyXView()
 {
+	disconnectBuffer();
 }
 
 
