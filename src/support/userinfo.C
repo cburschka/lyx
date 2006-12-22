@@ -34,15 +34,15 @@ using std::string;
 namespace lyx {
 namespace support {
 
-string const user_name()
+docstring const user_name()
 {
 #if defined (_WIN32)
 
 	char name[UNLEN + 1];
 	DWORD size = UNLEN + 1;
 	if (!GetUserName(name, &size))
-		return lyx::to_utf8(_("Unknown user"));
-	return name;
+		return _("Unknown user");
+	return from_local8bit(name);
 #else
 	struct passwd * pw(getpwuid(geteuid()));
 	BOOST_ASSERT(pw);
@@ -50,17 +50,17 @@ string const user_name()
 	string name = pw->pw_gecos;
 	if (name.empty())
 		name = pw->pw_name;
-	return name;
+	return from_local8bit(name);
 #endif
 }
 
 
-string const user_email()
+docstring const user_email()
 {
 	string email = getEnv("EMAIL_ADDRESS");
 	if (email.empty())
 		email = getEnv("EMAIL");
-	return email;
+	return from_local8bit(email);
 }
 
 } // namespace support

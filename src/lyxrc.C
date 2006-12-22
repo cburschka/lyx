@@ -295,9 +295,9 @@ void LyXRC::setDefaults() {
 	use_converter_cache = false;
 	converter_cache_maxage = 6 * 30 * 24 * 3600; // 6 months
 
-	user_name = support::user_name();
+	user_name = to_utf8(support::user_name());
 
-	user_email = support::user_email();
+	user_email = to_utf8(support::user_email());
 }
 
 
