@@ -151,7 +151,7 @@ string const ControlBibtex::getStylefile() const
 		break;
 	}
 
-	docstring bst = params()["btprint"];
+	docstring bst = params()["options"];
 	if (bibtotoc()){
 		// bibstyle exists?
 		if (contains(bst, ',')) {
