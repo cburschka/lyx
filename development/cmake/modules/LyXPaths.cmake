@@ -27,6 +27,34 @@
 
 if(WIN32)
 
+
+if(WINDEPS)
+
+	FIND_PROGRAM(LYX_QMAKE NAMES qmake)
+	if(NOT LYX_QMAKE)
+		message("------ qmake not found. Add YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
+		message("------ to PATH: set PATH=%PATH%;YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
+		message(FATAL_ERROR "Exit.")
+	else(NOT LYX_QMAKE)
+		GET_FILENAME_COMPONENT(LYX_QMAKE_PATH ${LYX_QMAKE} PATH)
+		set(WINDEPSDIR "${LYX_QMAKE_PATH}/../..")
+	endif(NOT LYX_QMAKE)
+	
+	set(GNUWIN32_DIR ${WINDEPSDIR})
+	
+	# don't stop in FindQt4.cmake because qmake will
+	# report wrong paths
+	set(QT_HEADERS_DIR "${WINDEPSDIR}/qt-4/include" CACHE TYPE STRING FORCE)
+	set(QT_LIBRARY_DIR "${WINDEPSDIR}/qt-4/lib" CACHE TYPE STRING FORCE)
+	set(QT_BINARY_DIR  "${WINDEPSDIR}/qt-4/bin" CACHE TYPE STRING FORCE)
+	set(QT_MKSPECS_DIR "${WINDEPSDIR}/qt-4/mkspecs" CACHE TYPE STRING FORCE)
+	set(QT_PLUGINS_DIR "${WINDEPSDIR}/qt-4/plugins" CACHE TYPE STRING FORCE)
+	set(QT_MOC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/moc.exe" CACHE TYPE STRING FORCE)
+	set(QT_UIC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/uic.exe" CACHE TYPE STRING FORCE)
+	set(QT_RCC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/rcc.exe" CACHE TYPE STRING FORCE)
+
+endif(WINDEPS)
+
 find_package(GNUWIN32 REQUIRED)
 
 file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
