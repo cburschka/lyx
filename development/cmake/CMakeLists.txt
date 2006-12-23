@@ -84,16 +84,15 @@ if(WIN32)
 endif(WIN32)
 
 set(LYX_DIR         "")
-set(TOP_SRCDIR      "${CMAKE_SOURCE_DIR}/../..")
+set(TOP_SRCDIR      "${TOP_SRC_DIR}")
 set(PROGRAM_SUFFIX  "")
 set(LOCALEDIR       "")
 
+message("")
 message("----- LYX_DIR       : ${LYX_DIR}")
 message("----- TOP_SRCDIR    : ${TOP_SRCDIR}")
 message("----- PROGRAM_SUFFIX: ${PROGRAM_SUFFIX}")
 message("----- LOCALEDIR     : ${LOCALEDIR}")
-
-
 message("")
 
 
@@ -132,6 +131,8 @@ endif(MSVC AND NOT disable-pch)
 if(MSVC)
 	if(WALL)
 		set(DISABLEWALL 0 CACHE TYPE STRING FORCE)
+	else(WALL)
+		set(DISABLEWALL 1 CACHE TYPE STRING FORCE)
 	endif(WALL)
 	
 	if(NOT DISABLEWALL)
