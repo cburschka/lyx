@@ -52,6 +52,30 @@ FILE
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
 
+* On Windows (using scons/MSVC): Create an empty bibtex file, called 
+  'lit.bib'. Create a new LyX document 'lit.lyx' in the same directory
+  that has a bibliography inset pointing to lit.bib.
+  Now, if lit.[lyx|bib] are stored in a path with ASCII characters only,
+  class FileName is used as follows:
+    FileName::FileName(string const &): C:/foo/lit.lyx.emergency
+    FileName::FileName(string const &): C:/foo/#lit.lyx#
+    FileName::FileName(string const &): C:/foo/
+    FileName::FileName(string const &): C:/foo/lit.bib
+    FileName::FileName(string const &): C:/lyx-trunk/build-msvc/bin
+    FileName::FileName(string const &): C:/foo/lit.lyx,v
+    FileName::FileName(string const &): C:/foo/RCS/lit.lyx,v
+    FileName::FileName(string const &): C:/foo//CVS/Entries
+    FileName::FileName(string const &): C:/foo/lit.lyx
+  However, if the path contains a German Umlaut ("bäh"), LyX crashes:
+    FileName::FileName(string const &): C:/bÃ¤h/lit.lyx.emergency
+    FileName::FileName(string const &): C:/bÃ¤h/#lit.lyx#
+    FileName::FileName(string const &): C:/bÃ¤h/
+    FileName::FileName(string const &): C:/bäh/lit.bib
+    FileName::FileName(string const &): lit.bib
+    Assertion triggered in __thiscall lyx::support::FileName::FileName(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &) by failing check "empty() || absolutePath(name_)" in fil
+e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
+  Odd, isn't it?
+
 
 SPELL CHECKING (Joost 4/11/06)
 
@@ -210,6 +234,9 @@ CHANGE TRACKING
   that LyX always offers to replace the same string
 
 * LyX crashes if you want to accept/reject an end-of-par character only
+
+* accept/reject change are presently broken, because redoParagraph() and 
+  updateLabels() aren't invoked properly
 
 
 LAYOUT
