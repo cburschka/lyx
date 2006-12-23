@@ -56,6 +56,7 @@ public:
 
 	virtual void init();
 	virtual void close();
+	virtual void setFocus();
 	virtual void setGeometry(
 		unsigned int width,
 		unsigned int height,

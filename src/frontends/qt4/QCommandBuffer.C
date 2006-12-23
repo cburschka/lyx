@@ -74,9 +74,8 @@ protected:
 } // end of anon
 
 
-QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control,
-			QWidget * parent)
-	: QWidget(parent), view_(view), controller_(control)
+QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control)
+	: QWidget(view), view_(view), controller_(control)
 {
 	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm").absFilename()));
 	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm").absFilename()));
@@ -127,7 +126,7 @@ void QCommandBuffer::cancel()
 void QCommandBuffer::dispatch()
 {
 	controller_.dispatch(fromqstr(edit_->text()));
-	view_->centralWidget()->setFocus();
+	view_->setFocus();
 	edit_->setText(QString());
 	edit_->clearFocus();
 }

@@ -195,6 +195,12 @@ void GuiView::close()
 }
 
 
+void GuiView::setFocus()
+{
+	static_cast<GuiWorkArea *>(work_area_)->setFocus();
+}
+
+
 QMenu* GuiView::createPopupMenu()
 {
 	return d.toolBarPopup(this);
@@ -648,7 +654,7 @@ bool GuiView::event(QEvent * e)
 
 bool GuiView::focusNextPrevChild(bool /*next*/)
 {
-	static_cast<GuiWorkArea *>(work_area_)->setFocus();
+	setFocus();
 	return true;
 }
 

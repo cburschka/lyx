@@ -26,8 +26,7 @@ class ControlCommandBuffer;
 class QCommandBuffer : public QWidget {
 	Q_OBJECT
 public:
-	QCommandBuffer(GuiView * view, ControlCommandBuffer & control,
-		QWidget * parent=NULL);
+	QCommandBuffer(GuiView * view, ControlCommandBuffer & control);
 
 	/// focus the edit widget
 	void focus_command();

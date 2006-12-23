@@ -70,6 +70,8 @@ public:
 
 	virtual void close() = 0;
 
+	virtual void setFocus() = 0;
+
 	std::vector<int> const & workAreaIds() const { return work_area_ids_; }
 
 	void setWorkArea(frontend::WorkArea * work_area);
