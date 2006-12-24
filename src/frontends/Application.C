@@ -65,6 +65,7 @@ LyXView & Application::createView(unsigned int width,
 
 	view.init();
 	view.setGeometry(width, height, posx, posy, maximize, iconSizeXY, geometryArg);
+	view.setFocus();
 
 	setCurrentView(view);
 
