@@ -183,13 +183,6 @@ EDITING
 * Create a document with an empty table; mark the whole table; insert a minipage 
    in order to have the table inside a minipage => crash
 
-* Create a new document; enter a few chars; press return; from the 
-  environments combo box on the top left corner select anything, e.g., 'Part'; 
-  try to enter text => you can't! 
-  MG: This must be a GUI problem; when using keyboard shortcuts (Alt-P-...),
-  the problem does not occur; it does not matter whether the cursor is in the last line
-  JSpitzm: The problem is that the workarea doesn't get focus after the combo selection.
-
 * Open "de_Intro.lyx"; mark first word ("Einführung"); invoke "ert-insert" => seg fault
 
   On Linux, valgrind reports:
@@ -660,3 +653,13 @@ CREDITS:
   disappears after closing and reopening the panel.
   FIXED (Enrico 2006-12-22)
 
+* Create a new document; enter a few chars; press return; from the 
+  environments combo box on the top left corner select anything, e.g., 'Part'; 
+  try to enter text => you can't! 
+  MG: This must be a GUI problem; when using keyboard shortcuts (Alt-P-...),
+  the problem does not occur; it does not matter whether the cursor is in the last line
+  JSpitzm: The problem is that the workarea doesn't get focus after the combo selection.
+
+  FIXED (Abdel 2006-12-24): centralWidget() was not the WorkArea due to the new TabBar
+  support.
+  
