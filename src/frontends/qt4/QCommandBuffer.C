@@ -75,7 +75,7 @@ protected:
 
 
 QCommandBuffer::QCommandBuffer(GuiView * view, ControlCommandBuffer & control)
-	: QWidget(view), view_(view), controller_(control)
+	: view_(view), controller_(control)
 {
 	QPixmap qpup(toqstr(libFileSearch("images", "up", "xpm").absFilename()));
 	QPixmap qpdown(toqstr(libFileSearch("images", "down", "xpm").absFilename()));
@@ -118,7 +118,7 @@ void QCommandBuffer::focus_command()
 
 void QCommandBuffer::cancel()
 {
-	view_->centralWidget()->setFocus();
+	view_->setFocus();
 	edit_->setText(QString());
 }
 

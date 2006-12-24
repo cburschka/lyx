@@ -140,7 +140,7 @@ void QLayoutBox::selected(const QString & str)
 {
 	string const sel = fromqstr(str);
 
-	owner_.centralWidget()->setFocus();
+	owner_.setFocus();
 
 	layoutSelected(owner_, sel);
 }
