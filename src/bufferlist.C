@@ -40,7 +40,6 @@ namespace lyx {
 using support::addName;
 using support::bformat;
 using support::FileName;
-using support::makeAbsPath;
 using support::makeDisplayPath;
 using support::onlyFilename;
 using support::removeAutosaveFile;

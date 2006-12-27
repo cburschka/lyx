@@ -47,9 +47,6 @@ public:
 	///
 	virtual void read(Buffer const &, LyXLex & lex)
 		{ p_.read(lex); }
-	/// Can remove one InsetBibKey is modified
-	/// FIXME remove
-	void scanCommand(std::string const & c) { p_.scanCommand(c); };
 	///
 	virtual int latex(Buffer const &, odocstream &,
 			  OutputParams const &) const;

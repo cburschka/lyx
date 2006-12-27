@@ -34,7 +34,6 @@ using std::time;
 
 using support::FileName;
 using support::ltrim;
-using support::makeAbsPath;
 using support::onlyFilename;
 using support::suffixIs;
 using support::sum;
