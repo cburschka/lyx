@@ -87,6 +87,8 @@ What's new
 
 - Import \l{} and \L{} natively from .tex files (do not create ERT).
 
+- Import correctly Sweave macros from .tex files.
+
 * User Interface:
 
 - Fix slowness with lots of math on Windows (bug 2900).

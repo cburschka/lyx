@@ -1,5 +1,10 @@
 2006-12-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* syntax.default: add macros \Sexpr and \SweaveOpts for the
+	benefit of Sweave.
+
+2006-12-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* Makefile.am (dist_examples_DATA): 
 	* examples/gl_exemplo_bruto.lyx:
 	* examples/gl_exemplo_lyxificado.lyx: new examples for the
