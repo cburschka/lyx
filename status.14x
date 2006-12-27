@@ -138,6 +138,9 @@ What's new
 
 - Don't reset cell selection when opening tabular dialog (bug 2715).
 
+- Quotation marks can now be inserted easier into mathed, which is
+  important for phonetic notation (bug 3044)
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.
