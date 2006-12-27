@@ -32,6 +32,7 @@ docfiles = \
 	fr_Tutorial.lyx \
 	fr_UserGuide.lyx \
 	gl_Intro.lyx \
+	gl_Tutorial.lyx \
 	he_Intro.lyx \
 	he_Tutorial.lyx \
 	hu_Intro.lyx \
