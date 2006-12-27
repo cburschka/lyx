@@ -983,6 +983,12 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		interpretChar(cur, '^');
 		break;
 
+	case LFUN_QUOTE_INSERT:
+		// interpret this as if a straight " was typed
+		recordUndo(cur, Undo::ATOMIC);
+		interpretChar(cur, '\"');
+		break;
+
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and
 // math-insert only handles special math things like "matrix".
