@@ -385,7 +385,7 @@ string const abs_path_from_command_line(string const & command_line)
 		return string();
 
 	string const path = os::internal_path(command_line);
-	return os::is_absolute_path(path) ? path : makeAbsPath(path);
+	return os::is_absolute_path(path) ? path : makeAbsPath(path).absFilename();
 }
 
 
@@ -407,7 +407,7 @@ string const get_binary_path(string const & exe)
 
 	// Two possibilities present themselves.
 	// 1. The binary is relative to the CWD.
-	string const abs_exe_path = makeAbsPath(exe_path);
+	string const abs_exe_path = makeAbsPath(exe_path).absFilename();
 	if (fs::exists(FileName(abs_exe_path).toFilesystemEncoding()))
 		return abs_exe_path;
 
@@ -422,7 +422,7 @@ string const get_binary_path(string const & exe)
 	std::vector<string>::const_iterator const end = path.end();
 	for (; it != end; ++it) {
 		// This will do nothing if *it is already absolute.
-		string const exe_dir = makeAbsPath(*it);
+		string const exe_dir = makeAbsPath(*it).absFilename();
 
 		string const exe_path = addName(exe_dir, exe_name);
 		if (fs::exists(FileName(exe_path).toFilesystemEncoding()))
@@ -663,7 +663,7 @@ bool check_command_line_dir(string const & dir,
 string const extract_env_var_dir(string const & env_var)
 {
 	string const dir = os::internal_path(getEnv(env_var));
-	return dir.empty() ? dir : makeAbsPath(dir);
+	return dir.empty() ? dir : makeAbsPath(dir).absFilename();
 }
 
 

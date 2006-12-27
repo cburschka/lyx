@@ -111,11 +111,10 @@ void ControlInclude::load(string const & file)
 
 bool ControlInclude::fileExists(string const & file)
 {
-	string const fileWithAbsPath
-		= makeAbsPath(file,
-			      onlyPath(kernel().buffer().fileName()));
+	FileName const fileWithAbsPath(
+		makeAbsPath(file, onlyPath(kernel().buffer().fileName())));
 
-	if (isFileReadable(FileName(fileWithAbsPath)))
+	if (isFileReadable(fileWithAbsPath))
 		return true;
 
 	return false;

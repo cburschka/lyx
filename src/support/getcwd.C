@@ -17,8 +17,6 @@
 
 #include <cerrno>
 
-
-namespace lyx {
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -28,10 +26,12 @@ namespace lyx {
 #endif
 
 using boost::scoped_array;
-using support::os::internal_path;
 
 using std::string;
 
+
+namespace lyx {
+namespace support {
 
 namespace {
 
@@ -50,7 +50,7 @@ char * l_getcwd(char * buffer, size_t size)
 
 
 // Returns current working directory
-string const lyx::support::getcwd()
+FileName const getcwd()
 {
 	int n = 256;	// Assume path is less than 256 chars
 	char * err;
@@ -66,8 +66,8 @@ string const lyx::support::getcwd()
 	string result;
 	if (err)
 		result = tbuf.get();
-	return internal_path(result);
+	return FileName::fromFilesystemEncoding(os::internal_path(result));
 }
 
-
+} // namespace support
 } // namespace lyx

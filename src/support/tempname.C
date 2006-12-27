@@ -45,6 +45,7 @@ using std::string;
 using std::endl;
 
 namespace lyx {
+namespace support {
 
 namespace {
 
@@ -77,9 +78,10 @@ int make_tempfile(char * templ)
 } // namespace anon
 
 
-string const lyx::support::tempName(string const & dir, string const & mask)
+FileName const tempName(FileName const & dir, string const & mask)
 {
-	string const tmpdir(dir.empty() ? package().temp_dir() : dir);
+	// FIXME UNICODE encoding of package().temp_dir() is probably wrong
+	string const tmpdir(dir.empty() ? package().temp_dir() : dir.toFilesystemEncoding());
 	string tmpfl(addName(tmpdir, mask));
 #if defined (HAVE_GETPID)
 	tmpfl += convert<string>(getpid());
@@ -107,14 +109,14 @@ string const lyx::support::tempName(string const & dir, string const & mask)
 #endif
 		lyxerr[Debug::FILES] << "Temporary file `" << t
 				     << "' created." << endl;
-		return t;
+		return FileName(t);
 	} else {
 		lyxerr[Debug::FILES]
 			<< "LyX Error: Unable to create temporary file."
 			<< endl;
-		return string();
+		return FileName();
 	}
 }
 
-
+} // namespace support
 } // namespace lyx

@@ -102,7 +102,6 @@ using support::createBufferTmpDir;
 using support::destroyDir;
 using support::FileName;
 using support::getFormatFromContents;
-using support::isDirWriteable;
 using support::libFileSearch;
 using support::latex_path;
 using support::ltrim;
@@ -389,9 +388,8 @@ void Buffer::setReadonly(bool const flag)
 
 void Buffer::setFileName(string const & newfile)
 {
-	string const filename = makeAbsPath(newfile);
-	pimpl_->filename = FileName(filename);
-	params().filepath = onlyPath(filename);
+	pimpl_->filename = makeAbsPath(newfile);
+	params().filepath = onlyPath(pimpl_->filename.absFilename());
 	setReadonly(fs::is_readonly(pimpl_->filename.toFilesystemEncoding()));
 	updateTitles();
 }

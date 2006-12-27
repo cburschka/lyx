@@ -165,16 +165,16 @@ bool isFileReadable(FileName const & filename)
 
 //returns true: dir writeable
 //	  false: not writeable
-bool isDirWriteable(string const & path)
+bool isDirWriteable(FileName const & path)
 {
 	lyxerr[Debug::FILES] << "isDirWriteable: " << path << endl;
 
-	string const tmpfl = tempName(path, "lyxwritetest");
+	FileName const tmpfl(tempName(path, "lyxwritetest"));
 
 	if (tmpfl.empty())
 		return false;
 
-	unlink(FileName(tmpfl));
+	unlink(tmpfl);
 	return true;
 }
 
@@ -242,7 +242,7 @@ vector<FileName> const dirList(FileName const & dir, string const & ext)
 		string const & fil = dit->leaf();
 		if (suffixIs(fil, extension))
 			dirlist.push_back(FileName::fromFilesystemEncoding(
-					makeAbsPath(fil, encoded_dir)));
+					encoded_dir + '/' + fil));
 	}
 	return dirlist;
 }
@@ -376,20 +376,20 @@ FileName const createTmpDir(FileName const & tempdir, string const & mask)
 		<< "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'' << endl;
 
-	string const tmpfl = tempName(tempdir.absFilename(), mask);
+	FileName const tmpfl(tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
 	// safe because of the gap between unlink and mkdir. (Lgb)
-	unlink(FileName(tmpfl));
+	unlink(tmpfl);
 
-	if (tmpfl.empty() || mkdir(FileName(tmpfl), 0700)) {
+	if (tmpfl.empty() || mkdir(tmpfl, 0700)) {
 		lyxerr << "LyX could not create the temporary directory '"
 		       << tmpfl << "'" << endl;
 		return FileName();
 	}
 
-	return FileName(tmpfl);
+	return tmpfl;
 }
 
 } // namespace anon
@@ -429,7 +429,7 @@ FileName const createLyXTmpDir(FileName const & deflt)
 {
 	if (!deflt.empty() && deflt.absFilename() != "/tmp") {
 		if (mkdir(deflt, 0777)) {
-			if (isDirWriteable(deflt.absFilename())) {
+			if (isDirWriteable(deflt)) {
 				// deflt could not be created because it
 				// did exist already, so let's create our own
 				// dir inside deflt.
@@ -470,11 +470,11 @@ string const onlyPath(string const & filename)
 // Convert relative path into absolute path based on a basepath.
 // If relpath is absolute, just use that.
 // If basepath is empty, use CWD as base.
-string const makeAbsPath(string const & relPath, string const & basePath)
+FileName const makeAbsPath(string const & relPath, string const & basePath)
 {
 	// checks for already absolute path
 	if (os::is_absolute_path(relPath))
-		return relPath;
+		return FileName(relPath);
 
 	// Copies given paths
 	string tempRel = os::internal_path(relPath);
@@ -486,7 +486,7 @@ string const makeAbsPath(string const & relPath, string const & basePath)
 	if (os::is_absolute_path(basePath))
 		tempBase = basePath;
 	else
-		tempBase = addPath(getcwd(), basePath);
+		tempBase = addPath(getcwd().absFilename(), basePath);
 
 	// Handle /./ at the end of the path
 	while (suffixIs(tempBase, "/./"))
@@ -524,7 +524,7 @@ string const makeAbsPath(string const & relPath, string const & basePath)
 	}
 
 	// returns absolute path
-	return os::internal_path(tempBase);
+	return FileName(os::internal_path(tempBase));
 }
 
 
@@ -584,13 +584,13 @@ string const expandPath(string const & path)
 	rTemp = split(rTemp, temp, '/');
 
 	if (temp == ".")
-		return getcwd() + '/' + rTemp;
+		return getcwd().absFilename() + '/' + rTemp;
 
 	if (temp == "~")
 		return package().home_dir() + '/' + rTemp;
 
 	if (temp == "..")
-		return makeAbsPath(copy);
+		return makeAbsPath(copy).absFilename();
 
 	// Don't know how to handle this
 	return copy;
@@ -1035,7 +1035,7 @@ bool readLink(string const & file, string & link, bool resolve)
 		return false;
 	linkbuffer[nRead] = '\0'; // terminator
 	if (resolve)
-		link = makeAbsPath(linkbuffer, onlyPath(file));
+		link = makeAbsPath(linkbuffer, onlyPath(file)).absFilename();
 	else
 		link = linkbuffer;
 	return true;
@@ -1135,7 +1135,7 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 	cmd_ret const c = runCommand(kpsecmd);
 
 	lyxerr[Debug::LATEX] << "kpse status = " << c.first << '\n'
-		 << "kpse result = `" << rtrim(c.second, "\n")
+		 << "kpse result = `" << rtrim(c.second, "\n\r")
 		 << '\'' << endl;
 	if (c.first != -1)
 		return FileName(os::internal_path(rtrim(c.second, "\n\r")));

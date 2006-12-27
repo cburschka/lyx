@@ -63,7 +63,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 {
 	int retval = 0;
 
-	// FIXME: Find out whether we can onlyFilename() is really needed,
+	// FIXME: Find out whether onlyFilename() is really needed,
 	// or whether makeAbsPath(onlyFilename()) is a noop here
 	FileName const tmp(makeAbsPath(onlyFilename(changeExtension(file, ".log"))));
 

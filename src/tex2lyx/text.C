@@ -32,6 +32,7 @@
 
 namespace lyx {
 
+using support::addExtension;
 using support::changeExtension;
 using support::FileName;
 using support::makeAbsPath;
@@ -354,11 +355,11 @@ void translate_box_len(string const & length, string & value, string & unit, str
 string find_file(string const & name, string const & path,
 		 char const * const * extensions)
 {
+	// FIXME UNICODE encoding of name and path may be wrong (makeAbsPath
+	// expects utf8)
 	for (char const * const * what = extensions; *what; ++what) {
-		// We don't use ChangeExtension() because it does the wrong
-		// thing if name contains a dot.
-		string const trial = name + '.' + (*what);
-		if (fs::exists(FileName(makeAbsPath(trial, path)).toFilesystemEncoding()))
+		string const trial = addExtension(name, *what);
+		if (fs::exists(makeAbsPath(trial, path).toFilesystemEncoding()))
 			return trial;
 	}
 	return string();
@@ -1021,7 +1022,9 @@ void fix_relative_filename(string & name)
 {
 	if (lyx::support::absolutePath(name))
 		return;
-	name = makeRelPath(makeAbsPath(name, getMasterFilePath()),
+	// FIXME UNICODE encoding of name may be wrong (makeAbsPath expects
+	// utf8)
+	name = makeRelPath(makeAbsPath(name, getMasterFilePath()).absFilename(),
 			   getParentFilePath());
 }
 
@@ -1480,7 +1483,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
-			if (!fs::exists(FileName(makeAbsPath(name, path)).toFilesystemEncoding())) {
+			// FIXME UNICODE encoding of name and path may be
+			// wrong (makeAbsPath expects utf8)
+			if (!fs::exists(makeAbsPath(name, path).toFilesystemEncoding())) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const dvips_name =
@@ -1510,7 +1515,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					name = pdftex_name;
 			}
 
-			if (fs::exists(FileName(makeAbsPath(name, path)).toFilesystemEncoding()))
+			// FIXME UNICODE encoding of name and path may be
+			// wrong (makeAbsPath expects utf8)
+			if (fs::exists(makeAbsPath(name, path).toFilesystemEncoding()))
 				fix_relative_filename(name);
 			else
 				cerr << "Warning: Could not find graphics file '"
@@ -2132,8 +2139,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const path = getMasterFilePath();
 			// We want to preserve relative / absolute filenames,
 			// therefore path is only used for testing
+			// FIXME UNICODE encoding of filename and path may be
+			// wrong (makeAbsPath expects utf8)
 			if (t.cs() == "include" &&
-			    !fs::exists(FileName(makeAbsPath(filename, path)).toFilesystemEncoding())) {
+			    !fs::exists(makeAbsPath(filename, path).toFilesystemEncoding())) {
 				// The file extension is probably missing.
 				// Now try to find it out.
 				string const tex_name =
@@ -2142,9 +2151,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				if (!tex_name.empty())
 					filename = tex_name;
 			}
-			if (fs::exists(FileName(makeAbsPath(filename, path)).toFilesystemEncoding())) {
+			// FIXME UNICODE encoding of filename and path may be
+			// wrong (makeAbsPath expects utf8)
+			if (fs::exists(makeAbsPath(filename, path).toFilesystemEncoding())) {
 				string const abstexname =
-					makeAbsPath(filename, path);
+					makeAbsPath(filename, path).absFilename();
 				string const abslyxname =
 					changeExtension(abstexname, ".lyx");
 				fix_relative_filename(filename);

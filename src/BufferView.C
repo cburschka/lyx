@@ -88,7 +88,6 @@ using support::fileSearch;
 using support::isDirWriteable;
 using support::isFileReadable;
 using support::makeDisplayPath;
-using support::makeAbsPath;
 using support::package;
 
 using std::distance;
@@ -1393,7 +1392,7 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 		if (buffer_) {
 			string const trypath = buffer_->filePath();
 			// If directory is writeable, use this as default.
-			if (isDirWriteable(trypath))
+			if (isDirWriteable(FileName(trypath)))
 				initpath = trypath;
 		}
 

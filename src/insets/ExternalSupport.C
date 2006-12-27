@@ -91,7 +91,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		params.filename.outputFilename(parentpath);
 	string const basename = support::changeExtension(
 			support::onlyFilename(filename), string());
-	string const absname = support::makeAbsPath(filename, parentpath);
+	string const absname = support::makeAbsPath(filename, parentpath).absFilename();
 
 	string result = s;
 	if (what != ALL_BUT_PATHS) {
@@ -167,7 +167,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
 
-		FileName const absfile = FileName(
+		FileName const absfile(
 			support::makeAbsPath(file, m_buffer->temppath()));
 		if (support::isFileReadable(absfile))
 			contents = support::getFileContents(absfile);
@@ -242,7 +242,7 @@ void updateExternal(InsetExternalParams const & params,
 
 	// We copy the source file to the temp dir and do the conversion
 	// there if necessary
-	FileName const temp_file = FileName(
+	FileName const temp_file(
 		support::makeAbsPath(params.filename.mangledFilename(),
 				     m_buffer->temppath()));
 	if (!params.filename.empty()) {
@@ -265,7 +265,7 @@ void updateExternal(InsetExternalParams const & params,
 	string const to_file = doSubstitution(params, buffer,
 					      outputFormat.updateResult,
 					      false, true);
-	FileName const abs_to_file = FileName(
+	FileName const abs_to_file(
 		support::makeAbsPath(to_file, m_buffer->temppath()));
 
 	// Record the referenced files for the exporter.

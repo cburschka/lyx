@@ -30,6 +30,7 @@
 
 namespace support = lyx::support;
 
+using support::addExtension;
 using support::changeExtension;
 using support::FileName;
 using support::Forkedcall;
@@ -301,14 +302,14 @@ static void build_script(FileName const & from_file,
 	// Remember to remove the temp file because we only want the name...
 	static int counter = 0;
 	string const tmp = "gconvert" + convert<string>(counter++);
-	string const to_base = tempName(string(), tmp);
-	unlink(FileName(to_base));
+	FileName const to_base(tempName(FileName(), tmp));
+	unlink(to_base);
 
 	// Create a copy of the file in case the original name contains
 	// problematic characters like ' or ". We can work around that problem
 	// in python, but the converters might be shell scripts and have more
 	// troubles with it.
-	string outfile = changeExtension(to_base, getExtension(from_file.absFilename()));
+	string outfile = addExtension(to_base.absFilename(), getExtension(from_file.absFilename()));
 	script << "infile = " << quoteName(from_file.absFilename(), quote_python) << "\n"
 	          "outfile = " << quoteName(outfile, quote_python) << "\n"
 	          "shutil.copy(infile, outfile)\n";
@@ -363,7 +364,7 @@ static void build_script(FileName const & from_file,
 		// Build the conversion command
 		string const infile      = outfile;
 		string const infile_base = changeExtension(infile, string());
-		outfile = changeExtension(to_base, conv.To->extension());
+		outfile = addExtension(to_base.absFilename(), conv.To->extension());
 
 		// Store these names in the python script
 		script << "infile = "      << quoteName(infile, quote_python) << "\n"

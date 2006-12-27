@@ -155,7 +155,7 @@ bool writeAs(Buffer * buffer, string const & newname)
 			return false;
 
 		// Make sure the absolute filename ends with appropriate suffix
-		fname = makeAbsPath(fname);
+		fname = makeAbsPath(fname).absFilename();
 		if (!isLyXFilename(fname))
 			fname += ".lyx";
 	} else
@@ -233,7 +233,7 @@ int AutoSaveBuffer::generateChild()
 		// anyway.
 		bool failed = false;
 
-		FileName const tmp_ret(tempName(string(), "lyxauto"));
+		FileName const tmp_ret(tempName(FileName(), "lyxauto"));
 		if (!tmp_ret.empty()) {
 			bv_.buffer()->writeFile(tmp_ret);
 			// assume successful write of tmp_ret
@@ -359,7 +359,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 		if (result.first == FileDialog::Later)
 			return string();
 
-		fname = FileName(makeAbsPath(to_utf8(result.second)));
+		fname = makeAbsPath(to_utf8(result.second));
 
 		if (fname.empty())
 			return string();

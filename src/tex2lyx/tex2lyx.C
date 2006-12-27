@@ -381,8 +381,8 @@ void easyParse(int & argc, char * argv[])
 		if (it == cmdmap.end())
 			continue;
 
-		string arg((i + 1 < argc) ? argv[i + 1] : "");
-		string arg2((i + 2 < argc) ? argv[i + 2] : "");
+		string arg(to_utf8(from_local8bit((i + 1 < argc) ? argv[i + 1] : "")));
+		string arg2(to_utf8(from_local8bit((i + 2 < argc) ? argv[i + 2] : "")));
 
 		int const remove = 1 + it->second(arg, arg2);
 
@@ -518,17 +518,18 @@ int main(int argc, char * argv[])
 	}
 
 	lyx::support::os::init(argc, argv);
-	lyx::support::init_package(argv[0], cl_system_support, cl_user_support,
-				   lyx::support::top_build_dir_is_two_levels_up);
+	support::init_package(to_utf8(from_local8bit(argv[0])),
+		cl_system_support, cl_user_support,
+		support::top_build_dir_is_two_levels_up);
 
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
-	string const infilename = makeAbsPath(argv[1]);
+	string const infilename = makeAbsPath(to_utf8(from_local8bit(argv[1]))).absFilename();
 	string outfilename;
 	if (argc > 2) {
-		outfilename = argv[2];
+		outfilename = to_utf8(from_local8bit(argv[2]));
 		if (outfilename != "-")
-			outfilename = makeAbsPath(argv[2]);
+			outfilename = makeAbsPath(to_utf8(from_local8bit(argv[2]))).absFilename();
 	} else
 		outfilename = changeExtension(infilename, ".lyx");
 
@@ -539,7 +540,7 @@ int main(int argc, char * argv[])
 	}
 	read_syntaxfile(system_syntaxfile);
 	if (!syntaxfile.empty())
-		read_syntaxfile(FileName(makeAbsPath(syntaxfile)));
+		read_syntaxfile(makeAbsPath(syntaxfile));
 
 	masterFilePath = onlyPath(infilename);
 	parentFilePath = masterFilePath;

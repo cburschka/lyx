@@ -32,14 +32,19 @@ public:
 	 * explicit because we don't want implicit conversion of relative
 	 * paths in function arguments (e.g. of unlink).
 	 * \param abs_filename the file in question. Must have an absolute path.
+	 * Encoding is always UTF-8.
 	 */
 	explicit FileName(std::string const & abs_filename);
 	virtual ~FileName();
+	/** Set a new filename.
+	 * \param filename the file in question. Must have an absolute path.
+	 * Encoding is always UTF-8.
+	 */
 	virtual void set(std::string const & filename);
 	virtual void erase();
 	/// Is this filename empty?
 	bool empty() const { return name_.empty(); }
-	/// get the absolute file name
+	/// get the absolute file name in UTF-8 encoding
 	std::string const absFilename() const { return name_; }
 	/**
 	 * Get the file name in the encoding used by the file system.
@@ -81,6 +86,7 @@ public:
 	 *  \param save_abs_path how is the file to be output to file?
 	 */
 	DocFileName(std::string const & abs_filename, bool save_abs_path = true);
+	DocFileName(FileName const & abs_filename, bool save_abs_path = true);
 
 	/** \param filename the file in question. May have either a relative
 	 *  or an absolute path.

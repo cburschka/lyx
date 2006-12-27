@@ -38,7 +38,7 @@ ControlRef::ControlRef(Dialog & d)
 
 vector<docstring> const ControlRef::getLabelList(string const & name) const
 {
-	Buffer const & buf = *theBufferList().getBuffer(makeAbsPath(name));
+	Buffer const & buf = *theBufferList().getBuffer(makeAbsPath(name).absFilename());
 	vector<docstring> list;
 	buf.getLabelList(list);
 	return list;

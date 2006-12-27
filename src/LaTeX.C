@@ -184,7 +184,7 @@ int LaTeX::run(TeXErrors & terr)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	theBufferList().updateIncludedTeXfiles(getcwd(), runparams);
+	theBufferList().updateIncludedTeXfiles(getcwd().absFilename(), runparams);
 
 	// Never write the depfile if an error was encountered.
 
@@ -512,7 +512,7 @@ void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 			aux_info.styles.insert(style);
 		} else if (regex_match(token, sub, reg4)) {
 			string const file2 = sub.str(1);
-			scanAuxFile(FileName(makeAbsPath(file2)), aux_info);
+			scanAuxFile(makeAbsPath(file2), aux_info);
 		}
 	}
 }
@@ -809,7 +809,7 @@ void LaTeX::deplog(DepTable & head)
 	// This line is not present if no toc should be created.
 	static regex miktexTocReg("\\\\tf@toc=\\\\write.*");
 
-	FileName const fn = FileName(makeAbsPath(logfile));
+	FileName const fn(makeAbsPath(logfile));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 	while (ifs) {
 		// Ok, the scanning of files here is not sufficient.

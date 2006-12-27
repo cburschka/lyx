@@ -502,9 +502,9 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 		string::size_type const ext_len = file_in.length() - base.length();
 		mangled[mangled.length() - ext_len] = '.';
 	}
-	string const file_out = support::makeAbsPath(mangled, dir);
+	FileName const file_out(support::makeAbsPath(mangled, dir));
 
-	return copyFileIfNeeded(file, FileName(file_out));
+	return copyFileIfNeeded(file, file_out);
 }
 
 

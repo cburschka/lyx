@@ -12,6 +12,8 @@
 #ifndef PATH_H
 #define PATH_H
 
+#include "support/filename.h"
+
 #include <boost/utility.hpp>
 
 #include <string>
@@ -46,7 +48,7 @@ private:
 	/// whether we are in the new cwd or not
 	bool popped_;
 	/// the previous cwd
-	std::string pushedDir_;
+	FileName pushedDir_;
 };
 
 // To avoid the wrong usage:

@@ -243,7 +243,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			string const fmt =
 				formats.getFormatFromFile(it->sourceName);
 			status = copyFile(fmt, it->sourceName,
-					  FileName(makeAbsPath(it->exportName, dest)),
+					  makeAbsPath(it->exportName, dest),
 					  it->exportName, status == FORCE);
 		}
 		if (status == CANCEL) {

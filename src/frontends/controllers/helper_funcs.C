@@ -80,8 +80,8 @@ docstring const browseRelFile(docstring const & filename,
 			   pair<docstring,docstring> const & dir1,
 			   pair<docstring,docstring> const & dir2)
 {
-	docstring const fname = lyx::from_utf8(
-		makeAbsPath(lyx::to_utf8(filename), lyx::to_utf8(refpath)));
+	docstring const fname = from_utf8(makeAbsPath(
+		to_utf8(filename), to_utf8(refpath)).absFilename());
 
 	docstring const outname = browseFile(fname, title, filters, save,
 					  dir1, dir2);

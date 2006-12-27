@@ -1017,7 +1017,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				// case 1: print to a file
 				command += lyxrc.print_to_file
 					+ quoteName(makeAbsPath(target_name,
-								path))
+								path).toFilesystemEncoding())
 					+ ' '
 					+ quoteName(dviname);
 				res = one.startscript(Systemcall::DontWait,
@@ -1342,17 +1342,17 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_BUFFER_CHILD_OPEN: {
 			BOOST_ASSERT(lyx_view_);
-			string const filename =
+			FileName const filename =
 				makeAbsPath(argument, lyx_view_->buffer()->filePath());
 			// FIXME Should use bformat
 			setMessage(_("Opening child document ") +
-					 makeDisplayPath(filename) + "...");
+					 makeDisplayPath(filename.absFilename()) + "...");
 			view()->saveBookmark(false);
 			string const parentfilename = lyx_view_->buffer()->fileName();
-			if (theBufferList().exists(filename))
-				lyx_view_->setBuffer(theBufferList().getBuffer(filename));
+			if (theBufferList().exists(filename.absFilename()))
+				lyx_view_->setBuffer(theBufferList().getBuffer(filename.absFilename()));
 			else
-				lyx_view_->loadLyXFile(FileName(filename));
+				lyx_view_->loadLyXFile(filename);
 			// Set the parent name of the child document.
 			// This makes insertion of citations and references in the child work,
 			// when the target is in the parent or another child document.
@@ -1412,8 +1412,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		case LFUN_PREFERENCES_SAVE: {
-			lyxrc.write(FileName(makeAbsPath("preferences",
-			                                 package().user_support())),
+			lyxrc.write(makeAbsPath("preferences",
+			                        package().user_support()),
 			            false);
 			break;
 		}
@@ -1796,7 +1796,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 	if (view()->buffer()) {
 		string const trypath = lyx_view_->buffer()->filePath();
 		// If directory is writeable, use this as default.
-		if (isDirWriteable(trypath))
+		if (isDirWriteable(FileName(trypath)))
 			initpath = trypath;
 	}
 
@@ -1847,7 +1847,7 @@ void LyXFunc::open(string const & fname)
 	if (view()->buffer()) {
 		string const trypath = lyx_view_->buffer()->filePath();
 		// If directory is writeable, use this as default.
-		if (isDirWriteable(trypath))
+		if (isDirWriteable(FileName(trypath)))
 			initpath = trypath;
 	}
 
@@ -1920,7 +1920,7 @@ void LyXFunc::doImport(string const & argument)
 		if (view()->buffer()) {
 			string const trypath = lyx_view_->buffer()->filePath();
 			// If directory is writeable, use this as default.
-			if (isDirWriteable(trypath))
+			if (isDirWriteable(FileName(trypath)))
 				initpath = trypath;
 		}
 

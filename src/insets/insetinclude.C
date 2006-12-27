@@ -217,7 +217,7 @@ string const parentFilename(Buffer const & buffer)
 }
 
 
-string const includedFilename(Buffer const & buffer,
+FileName const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
 	return makeAbsPath(to_utf8(params["filename"]),
@@ -333,7 +333,7 @@ Buffer * getChildBuffer(Buffer const & buffer, InsetCommandParams const & params
 	if (isVerbatim(params))
 		return 0;
 
-	string const included_file = includedFilename(buffer, params);
+	string const included_file = includedFilename(buffer, params).absFilename();
 	if (!isLyXFilename(included_file))
 		return 0;
 
@@ -347,18 +347,17 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 	if (isVerbatim(params))
 		return false;
 
-	string const included_file = includedFilename(buffer, params);
-	if (!isLyXFilename(included_file))
+	FileName const included_file = includedFilename(buffer, params);
+	if (!isLyXFilename(included_file.absFilename()))
 		return false;
 
-	Buffer * buf = theBufferList().getBuffer(included_file);
+	Buffer * buf = theBufferList().getBuffer(included_file.absFilename());
 	if (!buf) {
 		// the readonly flag can/will be wrong, not anymore I think.
-		FileName const fullname(included_file);
-		if (!fs::exists(fullname.toFilesystemEncoding()))
+		if (!fs::exists(included_file.toFilesystemEncoding()))
 			return false;
-		buf = theBufferList().newBuffer(included_file);
-		if (!loadLyXFile(buf, fullname))
+		buf = theBufferList().newBuffer(included_file.absFilename());
+		if (!loadLyXFile(buf, included_file))
 			return false;
 	}
 	if (buf)
@@ -498,7 +497,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 	if (isVerbatim(params_)) {
 		// FIXME: We don't know the encoding of the file
 		docstring const str = from_utf8(
-			getFileContents(FileName(includedFilename(buffer, params_))));
+			getFileContents(includedFilename(buffer, params_)));
 		os << str;
 		// Return how many newlines we issued.
 		return int(lyx::count(str.begin(), str.end(), '\n'));
@@ -516,7 +515,7 @@ int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
 	if (incfile.empty())
 		return 0;
 
-	string const included_file = includedFilename(buffer, params_);
+	string const included_file = includedFilename(buffer, params_).absFilename();
 
 	// write it to a file (so far the complete file)
 	string const exportfile = changeExtension(incfile, ".sgml");
@@ -561,7 +560,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	Buffer const & buffer = features.buffer();
 
-	string const included_file = includedFilename(buffer, params_);
+	string const included_file = includedFilename(buffer, params_).absFilename();
 
 	if (isLyXFilename(included_file))
 		writefile = changeExtension(included_file, ".sgml");
@@ -571,7 +570,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (!features.runparams().nice && !isVerbatim(params_)) {
 		incfile = DocFileName(writefile).mangledFilename();
 		writefile = makeAbsPath(incfile,
-					buffer.getMasterBuffer()->temppath());
+					buffer.getMasterBuffer()->temppath()).absFilename();
 	}
 
 	features.includeFile(include_label, writefile);
@@ -601,7 +600,7 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 				std::vector<docstring> & list) const
 {
 	if (loadIfNeeded(buffer, params_)) {
-		string const included_file = includedFilename(buffer, params_);
+		string const included_file = includedFilename(buffer, params_).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->getLabelList(list);
@@ -614,7 +613,7 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<string, docstring> > & keys) const
 {
 	if (loadIfNeeded(buffer, params_)) {
-		string const included_file = includedFilename(buffer, params_);
+		string const included_file = includedFilename(buffer, params_).absFilename();
 		Buffer * tmp = theBufferList().getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->fillWithBibKeys(keys);
@@ -727,10 +726,10 @@ namespace {
 
 bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 {
-	string const included_file = includedFilename(buffer, params);
+	FileName const included_file = includedFilename(buffer, params);
 
 	return type(params) == INPUT && params.preview() &&
-		isFileReadable(FileName(included_file));
+		isFileReadable(included_file);
 }
 
 
@@ -751,7 +750,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 	InsetCommandParams const & params = inset.params();
 	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
 	    preview_wanted(params, buffer)) {
-		renderer.setAbsFile(FileName(includedFilename(buffer, params)));
+		renderer.setAbsFile(includedFilename(buffer, params));
 		docstring const snippet = latex_string(inset, buffer);
 		renderer.addPreview(snippet, buffer);
 	}
@@ -764,7 +763,7 @@ void InsetInclude::addPreview(graphics::PreviewLoader & ploader) const
 {
 	Buffer const & buffer = ploader.buffer();
 	if (preview_wanted(params(), buffer)) {
-		preview_->setAbsFile(FileName(includedFilename(buffer, params())));
+		preview_->setAbsFile(includedFilename(buffer, params()));
 		docstring const snippet = latex_string(*this, buffer);
 		preview_->addPreview(snippet, ploader);
 	}

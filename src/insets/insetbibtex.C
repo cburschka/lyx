@@ -113,7 +113,7 @@ namespace {
 string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 		      string const & name, string const & ext)
 {
-	string const fname = makeAbsPath(name, buffer.filePath());
+	string const fname = makeAbsPath(name, buffer.filePath()).absFilename();
 	if (absolutePath(name) || !isFileReadable(FileName(fname + ext)))
 		return name;
 	else if (!runparams.nice)
@@ -166,8 +166,8 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 		string utf8input(to_utf8(input));
 		string database =
 			normalize_name(buffer, runparams, utf8input, ".bib");
-		string const try_in_file = makeAbsPath(database + ".bib", buffer.filePath());
-		bool const not_from_texmf = isFileReadable(FileName(try_in_file));
+		FileName const try_in_file(makeAbsPath(database + ".bib", buffer.filePath()));
+		bool const not_from_texmf = isFileReadable(try_in_file);
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {
@@ -175,7 +175,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			// mangledFilename() needs the extension
 			DocFileName const in_file = DocFileName(try_in_file);
 			database = removeExtension(in_file.mangledFilename());
-			FileName const out_file = FileName(makeAbsPath(database + ".bib",
+			FileName const out_file(makeAbsPath(database + ".bib",
 					buffer.getMasterBuffer()->temppath()));
 
 			bool const success = copy(in_file, out_file);
@@ -221,8 +221,8 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 	if (!style.empty()) {
 		string base =
 			normalize_name(buffer, runparams, style, ".bst");
-		string const try_in_file = makeAbsPath(base + ".bst", buffer.filePath());
-		bool const not_from_texmf = isFileReadable(FileName(try_in_file));
+		FileName const try_in_file(makeAbsPath(base + ".bst", buffer.filePath()));
+		bool const not_from_texmf = isFileReadable(try_in_file);
 		// If this style does not come from texmf and we are not
 		// exporting to .tex copy it to the tmp directory.
 		// This prevents problems with spaces and 8bit charcaters
@@ -232,7 +232,7 @@ int InsetBibtex::latex(Buffer const & buffer, odocstream & os,
 			// use new style name
 			DocFileName const in_file = DocFileName(try_in_file);
 			base = removeExtension(in_file.mangledFilename());
-			FileName const out_file = FileName(makeAbsPath(base + ".bst",
+			FileName const out_file(makeAbsPath(base + ".bst",
 					buffer.getMasterBuffer()->temppath()));
 			bool const success = copy(in_file, out_file);
 			if (!success) {

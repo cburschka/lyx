@@ -385,7 +385,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	FileName filename;
 	zipped_ = zippedFile(filename_);
 	if (zipped_) {
-		unzipped_filename_ = FileName(tempName(string(), filename_.toFilesystemEncoding()));
+		unzipped_filename_ = tempName(FileName(), filename_.toFilesystemEncoding());
 		if (unzipped_filename_.empty()) {
 			setStatus(ErrorConverting);
 			lyxerr[Debug::GRAPHICS]
@@ -432,17 +432,17 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
-	string const to_file_base = tempName(string(), "CacheItem");
+	FileName const to_file_base(tempName(FileName(), "CacheItem"));
 	remove_loaded_file_ = true;
 
 	// Remove the temp file, we only want the name...
 	// FIXME: This is unsafe!
-	unlink(FileName(to_file_base));
+	unlink(to_file_base);
 
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_.reset(new Converter(filename, to_file_base, from, to_));
+	converter_.reset(new Converter(filename, to_file_base.absFilename(), from, to_));
 	converter_->connect(boost::bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();
 }

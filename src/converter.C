@@ -451,7 +451,7 @@ bool Converters::convert(Buffer const * buffer,
 					" < " + quoteName(infile2 + ".out") +
 					" > " + quoteName(logfile);
 				one.startscript(Systemcall::Wait, command2);
-				if (!scanLog(*buffer, command, FileName(makeAbsPath(logfile, path)), errorList))
+				if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
 					return false;
 			}
 

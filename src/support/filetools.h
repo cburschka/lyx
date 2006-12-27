@@ -81,7 +81,7 @@ std::vector<FileName> const dirList(FileName const & dir,
     true: dir writeable
     false: not writeable
 */
-bool isDirWriteable(std::string const & path);
+bool isDirWriteable(FileName const & path);
 
 /** Is a file readable ?
   Returns true if the file `path' is readable.
@@ -236,7 +236,7 @@ std::string const expandPath(std::string const & path);
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
-std::string const makeAbsPath(std::string const & RelPath = std::string(),
+FileName const makeAbsPath(std::string const & RelPath = std::string(),
 			      std::string const & BasePath = std::string());
 
 /** Creates a nice compact path for displaying. The parameter

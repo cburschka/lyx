@@ -117,10 +117,15 @@ DocFileName::DocFileName(string const & abs_filename, bool save_abs)
 {}
 
 
+DocFileName::DocFileName(FileName const & abs_filename, bool save_abs)
+	: FileName(abs_filename), save_abs_path_(save_abs), zipped_valid_(false)
+{}
+
+
 void DocFileName::set(string const & name, string const & buffer_path)
 {
 	save_abs_path_ = absolutePath(name);
-	name_ = save_abs_path_ ? name : makeAbsPath(name, buffer_path);
+	name_ = save_abs_path_ ? name : makeAbsPath(name, buffer_path).absFilename();
 	zipped_valid_ = false;
 }
 

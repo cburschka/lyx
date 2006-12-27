@@ -53,7 +53,7 @@ int Path::pop()
 		return 0;
 	}
 
-	if (chdir(FileName(pushedDir_))) {
+	if (chdir(pushedDir_)) {
 		// should throw an exception
 		// throw DirChangeError();
 	}

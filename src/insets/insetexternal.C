@@ -70,11 +70,11 @@ namespace external {
 
 TempName::TempName()
 {
-	string const tempname = support::tempName(string(), "lyxext");
+	support::FileName const tempname(support::tempName(support::FileName(), "lyxext"));
 	// FIXME: This is unsafe
-	support::unlink(support::FileName(tempname));
+	support::unlink(tempname);
 	// must have an extension for the converter code to work correctly.
-	tempname_ = support::FileName(tempname + ".tmp");
+	tempname_ = support::FileName(tempname.absFilename() + ".tmp");
 }
 
 

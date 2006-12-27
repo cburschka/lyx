@@ -15,16 +15,16 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
+#include "support/filename.h"
+
 #include <string>
 
 
 namespace lyx {
 namespace support {
 
-class FileName;
-
 /// get the current working directory
-std::string const getcwd();
+FileName const getcwd();
 /// change to a directory, 0 is returned on success.
 int chdir(FileName const & name);
 /// Change file permissions
@@ -47,8 +47,9 @@ void abort();
 int mkdir(FileName const & pathname, unsigned long int mode);
 /// unlink the given file
 int unlink(FileName const & file);
-/// (securely) create a temporary file in the given dir with the given prefix
-std::string const tempName(std::string const & dir = std::string(),
+/// (securely) create a temporary file in the given dir with the given mask
+/// \p mask must be in filesystem encoding
+FileName const tempName(FileName const & dir = FileName(),
 		      std::string const & mask = std::string());
 
 

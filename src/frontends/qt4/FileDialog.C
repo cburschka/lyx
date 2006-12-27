@@ -82,8 +82,8 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	docstring const startsWith
-		= lyx::from_utf8(makeAbsPath(lyx::to_utf8(suggested), lyx::to_utf8(path)));
+	docstring const startsWith = from_utf8(
+		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
 	result.second = lyx::from_utf8(internal_path(fromqstr(
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
 		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
@@ -118,8 +118,8 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	docstring const startsWith =
-		lyx::from_utf8(makeAbsPath(lyx::to_utf8(suggested), lyx::to_utf8(path)));
+	docstring const startsWith = from_utf8(
+		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
 	result.second = lyx::from_utf8(internal_path(fromqstr(
 		QFileDialog::getOpenFileName(qApp->focusWidget(), 
 		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
@@ -150,8 +150,8 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
-	docstring const startsWith
-		= lyx::from_utf8(makeAbsPath(lyx::to_utf8(suggested), lyx::to_utf8(path)));
+	docstring const startsWith = from_utf8(
+		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
 	result.second = lyx::from_utf8(internal_path(fromqstr(
 		QFileDialog::getExistingDirectory(qApp->focusWidget(),
 		toqstr(title_),toqstr(startsWith)))));

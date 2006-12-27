@@ -191,7 +191,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 	if (templatename.empty())
 		tname = libFileSearch("templates", "defaults.lyx");
 	else
-		tname = FileName(makeAbsPath(templatename));
+		tname = makeAbsPath(templatename);
 
 	if (!tname.empty()) {
 		if (!b->readFile(tname)) {
