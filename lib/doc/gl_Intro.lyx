@@ -40,7 +40,7 @@ Introdución ao LyX
 \begin_layout Author
 pola equipa de LyX 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Se quer facer algun comentário ou achou algun erro, agradeceremo-lle no-lo
@@ -123,7 +123,7 @@ s cruzadas, bibliografias, índices, \SpecialChar \ldots{}
  En xeral é moi bon para documentos,
  de calquer longura, nos que se requeiran as habilidades de procesado usuais:
  seccionado e paxinación automáticos, corrección ortográfica, etc.
- Alguns exemplos nos cais usa-se o LyX poden dar unha boa idea da sua utilidade:
+ Alguns exemplos nos cais se usa o LyX poden dar unha boa idea da sua utilidade:
  informes, relatórios, teses e tesiñas, cartas comerciais, apontamentos,
  discursos, actas de congresos, documentación de software, libros (sobre
  PostgreSQL, sensores remotos, cifrado, romances, poesia, e mesmo algun
@@ -147,7 +147,7 @@ O LyX é un programa que utiliza unha aproximación moderna para a escrita
  máquina de escreber.
  Foi deseñado para autores que queren un resultado profisional, con rapidez
  e con un mínimo de esforzo sen se tornaren especialistas en tipografia.
- O traballo tipográfico deixa-se­lle ao computador, de maneira que o autor
+ O traballo tipográfico deixa-se-lle ao computador, de maneira que o autor
  pode concentrar-se no contido do que está a escreber, non na forma.
 \end_layout
 
@@ -181,8 +181,8 @@ Por outras palabras, os usuários de máquinas de escreber tiñan que se preocupar
  por multitude de pequenos detalles, para obter un resultado satisfactório.
  Infelizmente esta mentalidade foi herdada pola maioria dos procesadores
  de texto, de maneira que ainda utilizan a tecla de tabulado para engadir
- espazos en branco, ou obrigan ao usuário a preocupar-se en que parte exacta
- da páxina vai ir algo.
+ espazos en branco, ou obrigan ao usuário a se preocupar de en que parte
+ exacta da páxina vai ir algo.
  Para resaltar o texto deixan que usuário mude de fonte, tal e como se trocaba
  de roda nas máquinas de escreber.
  Esta é a filosofia subxacente nun procesador WYSIWYG: 
@@ -205,8 +205,8 @@ What You See Is All You Get
 \end_layout
 
 \begin_layout Standard
-En LyX, a diferenza dun procesador de textos ordinário, o usuário non ten
- que preocupar de como conseguir que un determinado carácter vaia nalgun
+No LyX, a diferenza dun procesador de textos ordinário, o usuário non ten
+ que se preocupar de como conseguir que un determinado carácter vaia nalgun
  lugar determinado, simplesmente di-lle ao LyX que é o que quer facer, e
  o programa encarrega-se do resto, seguindo un conxunto de regras chamadas
  un 
@@ -393,8 +393,8 @@ LyX e outros procesadores de texto
 status collapsed
 
 \begin_layout Standard
-Non, non tentamos iniciar (ou gañar) unha guerra santa sobre procesadores
- de texto.
+Non, non tentamos iniciar (ou gañar) unha cruzada sobre procesadores de
+ texto.
  Mais consideramos necesário descreber as características do LyX, e unha
  das características máis importantes do LyX, WYSIWYM, é un conceito radicalment
 e diferente do que ten a maioria da xente sobre o procesamento de texto.
@@ -536,7 +536,7 @@ Certamente a maioria dos procesadores de texto actuais dan manexado símbolos
  do conceito WYSIWYM.
  Mais polo momento son novos nestes eidos, entanto que o LyX está baseado
  no sistema de preparación de documentos LaTeX.
- Sistema ten décadas de existéncia, e ademais 
+ Sistema que ten décadas de existéncia, e ademais 
 \emph on
 funciona
 \emph default
@@ -819,7 +819,6 @@ status open
  Se lle xurde algunha pergunta sobre o LyX a cal non dá atopado resposta
  nos manuais, pode achar axuda na lista de correos de usuários en lyx-user@lists.
 lyx.org.
- 
 \begin_inset Foot
 status collapsed
 
@@ -901,7 +900,7 @@ Ir á etiqueta
  do rato.
  Pode-se voltar ao lugar de orixe dixitando 
 \family sans
-C-<
+Crtl-<
 \family default
  (Que significa 
 \begin_inset Quotes eld
@@ -909,7 +908,7 @@ C-<
 
 
 \family sans
-C-<
+Crtl-<
 \family default
 
 \begin_inset Quotes erd
@@ -983,6 +982,14 @@ C-
 \begin_inset Quotes erd
 \end_inset
 
+ ou 
+\begin_inset Quotes eld
+\end_inset
+
+Crtl-
+\begin_inset Quotes erd
+\end_inset
+
 : indica a tecla
 \family sans
  Control
@@ -1025,7 +1032,7 @@ M-
 \family sans
  Meta
 \family default
- que nalguns teclados será a tecla 
+ que en moitos teclados será a tecla 
 \family sans
 Alt
 \family default
@@ -1311,81 +1318,6 @@ Reference.lyx
 
 \begin_layout Section
 Os manuais
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-[Nota do T.] Os manuais son ficheiros lyx que fican na directória 
-\family typewriter
-\size small
-.../share/lyx/doc
-\family default
-\size default
- (
-\family typewriter
-\size small
-/usr/share/lyx/doc
-\family default
-\size default
- ou 
-\family typewriter
-\size small
-/usr/local/share/lyx/doc
-\family default
-\size default
- normalmente).
- Nesta directória armacenan-se os manuais orixinais en inglés, e as diversas
- traducións que existen.
- Asi a introdución que está a ler é o ficheiro 
-\family typewriter
-gl_intro.lyx
-\family default
-, o orixinal é o ficheiro 
-\family typewriter
-intro.lyx
-\family default
-, e as versións portuguesa, española e francesa son respectivamente 
-\family typewriter
-pt_intro.lyx, es_intro.lyx
-\family default
- e 
-\family typewriter
-fr_intro.lyx
-\family default
-.
- Se olla na dita directória verá que non todos os manuais están traducidos
- a todas as línguas.
- Cando falta a tradución dalgun manual, ao aceder a ese manual mediante
- o menu de 
-\family typewriter
-A
-\bar under
-x
-\bar default
-uda
-\family default
- aparece o manual orixinal, i.e.
- en inglés.
- Se preferir lé-lo noutra língua, que teña tradución, non ten mais que abrir
- o ficheiro correspondente no menu 
-\family typewriter
-\bar under
-F
-\bar default
-icheiro
-\family sans
-\SpecialChar \menuseparator
-
-\family typewriter
-\bar under
-A
-\bar default
-brir.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1429,7 +1361,7 @@ Se esta a iniciar-se no LyX, e non coñece LaTeX, debe ler antes que nada
 
 \end_inset
 
-, desta 
+ desta 
 \emph on
 Introdución
 \emph default
@@ -1438,7 +1370,7 @@ Introdución
 \emph on
 Tutorial
 \emph default
- continue a pensar que LaTeX é algunha substáncia elástica ---
+ continue a pensar que LaTeX é algunha substáncia elástica,
 \lang english
  
 \lang galician
@@ -1466,7 +1398,7 @@ LyX para usuários de LaTeX
 \begin_inset Quotes erd
 \end_inset
 
- (dar unha ollada ao resto da documentación tampouco vai doer).
+ (unha ollada ao resto da documentación tampouco manca).
 \end_layout
 
 \begin_layout Standard
@@ -1694,6 +1626,170 @@ Senón pode frustrar-se inecesariamente.
  próprio de o facer.
 \end_layout
 
+\begin_layout Subsection
+\begin_inset LatexCommand \label{sub:manuais-traducidos}
+
+\end_inset
+
+As traducións dos manuais
+\end_layout
+
+\begin_layout Standard
+Os manuais son ficheiros lyx que fican na directória 
+\family typewriter
+\size small
+.../share/lyx/doc
+\family default
+\size default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+En linux fican normalmente en 
+\family typewriter
+\size small
+/usr/share/lyx/doc
+\family default
+\size default
+ ou 
+\family typewriter
+\size small
+/usr/local/share/lyx/doc.
+ 
+\family default
+En MSWindows en 
+\family typewriter
+C:
+\backslash
+Archivos de programa
+\backslash
+LyX
+\backslash
+Resources
+\backslash
+doc
+\family default
+\size default
+ ou similar.
+\end_layout
+
+\end_inset
+
+.
+ Nesta directória armacenan-se os manuais orixinais en inglés, e as diversas
+ traducións que existen.
+ Asi a introdución que está a ler é o ficheiro 
+\family typewriter
+gl_intro.lyx
+\family default
+, o orixinal é o ficheiro 
+\family typewriter
+intro.lyx
+\family default
+, e as versións portuguesa, española e francesa son respectivamente 
+\family typewriter
+pt_intro.lyx, es_intro.lyx
+\family default
+ e 
+\family typewriter
+fr_intro.lyx
+\family default
+.
+ Se olla na dita directória verá que non todos os manuais están traducidos
+ a todas as línguas.
+ Cando falta a tradución dalgun manual, ao aceder a ese manual mediante
+ o menu de 
+\family typewriter
+A
+\bar under
+x
+\bar default
+uda
+\family default
+ aparece o manual orixinal, i.e.
+ en inglés.
+ Se preferir lé-lo noutra língua, que teña tradución, non ten mais que abrir
+ o ficheiro correspondente no menu 
+\family typewriter
+\bar under
+F
+\bar default
+icheiro
+\family sans
+\SpecialChar \menuseparator
+
+\family typewriter
+\bar under
+A
+\bar default
+brir.
+\end_layout
+
+\begin_layout Standard
+Os manuais traducidos ao galego fan referéncia aos menus en galego, e os
+ manuais noutras línguas fan loxicamente referéncia aos menus na língua
+ correspondente.
+ Polo momento só ha traducidos 2 manuais ao galego, este que está a ler
+ e o 
+\emph on
+Tutorial
+\emph default
+, portanto terá que ler os outros manuais noutras línguas.
+ As veces as traducións dos menus son evidentes ( File, Ficheiro, Fichero,
+ Fichier, etc), mais en moitos outros casos non é tan fácil, e pode resultar
+ confuso ler un manual nunha língua, que fai reféncia aos menus nesa língua,
+ entanto o programa usado usa outra língua, ex.
+ ler o manual en inglés no LyX cos menus en galego.
+ Neses casos resulta conveniente poder executar o programa na mesma língua
+ do manual.
+\end_layout
+
+\begin_layout Standard
+Pode lanzar o LyX en distintas línguas utilizando a variábel de entorno
+ axeitada, que dependerá do seu sistema.
+ As variábeis mais utilizadas son: LANG, LC_ALL, LANGUAGE, KDE_LANG.
+ Asi para lanzar o programa em inglés dos EUA execute o seguinte comando
+ nun terminal
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+LANG=en_US lyx
+\family default
+ (ou 
+\family typewriter
+LC_ALL=en_US lyx
+\family default
+, ou 
+\family typewriter
+KDE_LANG=en_US
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+\noindent
+e se preferir en francés, use:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+LANG=fr_FR lyx
+\family default
+ (ou 
+\family typewriter
+LC_ALL=fr_FR lyx
+\family default
+, ou 
+\family typewriter
+KDE_LANG=fr_FR
+\family default
+)
+\end_layout
+
 \begin_layout Chapter
 \begin_inset LatexCommand \label{chp:Contrib}
 
@@ -1740,7 +1836,7 @@ LyX ten un sistema de seguimento de erros, ao cal se pode aceder en
 
 \family default
 .
- Antes de avisar de calquer erro deberia consultar o dito sistema, non vai
+ Antes de avisar de calquer erro deberia consultar o dito sistema, non vaia
  ser que xa exista un informe prévio do erro.
  No sistema de seguimento de erros, ademais de facer novos informes de erros,
  poden-se facer comentários nos informes abertos por calquer outra persoa.
@@ -1804,7 +1900,7 @@ Se encontra algunha operación, ou conxunto de operación, que leven ao LyX
 
 \family typewriter
 \size small
-gdb /home/oseunome/lyx-1.4.x/src/lyx
+gdb /home/usuario/lyx-1.4.x/src/lyx
 \family default
 \size default
 
@@ -1906,7 +2002,7 @@ A documentación
 Se ben é certo que a documentación de LyX é extensa, tamén o é que o programa
  está a ser desenvolvido constantemente, e cada nova versión engade novas
  funcionalidades.
- Non é portanto impensábel pensar que algun manual precisa melloras.
+ Non é portanto impensábel pensar que algun manual precise melloras.
  Esta sección descrebe que facer en caso de achar un erro, ou querer facer
  suxestións para mellorar a documentación.
 \end_layout
@@ -1959,7 +2055,7 @@ lyxdoc,
 \end_inset
 
 , e descompacte-o.
- Achara unha directória dentro da árbore principal chamada 
+ Achará unha directória dentro da árbore principal chamada 
 \family typewriter
 lib/doc/
 \family default
