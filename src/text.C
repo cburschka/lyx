@@ -1779,7 +1779,6 @@ bool LyXText::dissolveInset(LCursor & cur) {
 	if (isMainText(*cur.bv().buffer()) || cur.inset().nargs() != 1)
 		return false;
 
-	bool const in_ert = cur.inset().lyxCode() == InsetBase::ERT_CODE;
 	recordUndoInset(cur);
 	cur.selHandle(false);
 	// save position
@@ -1796,17 +1795,14 @@ bool LyXText::dissolveInset(LCursor & cur) {
 	Buffer & b = cur.buffer();
 	cur.paragraph().eraseChar(cur.pos(), b.params().trackChanges);
 	if (!plist.empty()) {
-		if (in_ert) {
-			// ERT paragraphs have the Language latex_language.
-			// This is invalid outside of ERT, so we need to
-			// change it to the buffer language.
-			ParagraphList::iterator it = plist.begin();
-			ParagraphList::iterator it_end = plist.end();
-			for (; it != it_end; it++) {
-				it->changeLanguage(b.params(),
-						latex_language,
-						b.getLanguage());
-			}
+		// ERT paragraphs have the Language latex_language.
+		// This is invalid outside of ERT, so we need to
+		// change it to the buffer language.
+		ParagraphList::iterator it = plist.begin();
+		ParagraphList::iterator it_end = plist.end();
+		for (; it != it_end; it++) {
+			it->changeLanguage(b.params(), latex_language,
+					b.getLanguage());
 		}
 
 		pasteParagraphList(cur, plist, b.params().textclass,
