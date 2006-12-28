@@ -1797,6 +1797,16 @@ bool LyXText::dissolveInset(LCursor & cur) {
 	cur.paragraph().erase(cur.pos());
 	if (!plist.empty()) {
 		Buffer & b = cur.buffer();
+		// ERT paragraphs have the Language latex_language.
+		// This is invalid outside of ERT, so we need to
+		// change it to the buffer language.
+		ParagraphList::iterator it = plist.begin();
+		ParagraphList::iterator it_end = plist.end();
+		for (; it != it_end; it++) {
+			it->changeLanguage(b.params(), latex_language,
+					b.getLanguage());
+		}
+
 		pasteParagraphList(cur, plist, b.params().textclass);
 		// restore position
 		cur.pit() = std::min(cur.lastpit(), spit);
