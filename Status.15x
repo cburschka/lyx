@@ -44,11 +44,6 @@ ICONS:
 
 FILE
 
-* On Windows, LaTeX document classes are no longer detected
-  (using Joost's build script (scons/MSVC 2005) and latest MikTeX). 
-  To verify, remove your user settings in 
-  C:\Dokumente und Einstellungen\username\Anwendungsdaten\lyx15
-  
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
 
