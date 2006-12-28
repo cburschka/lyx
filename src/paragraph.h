@@ -30,7 +30,6 @@ namespace lyx {
 
 class Buffer;
 class BufferParams;
-class BufferView;
 class Counters;
 class InsetBase;
 class InsetBibitem;
@@ -186,7 +185,7 @@ public:
 	std::string getID(Buffer const & buf,
 			  OutputParams const & runparams) const;
 
-	// Get the first word of a paragraph, return the position where it left
+	/// Get the first word of a paragraph, return the position where it left
 	pos_type getFirstWord(Buffer const & buf,
 				   odocstream & os,
 				   OutputParams const & runparams) const;
@@ -325,8 +324,7 @@ public:
 	 * The font returned by the above functions is the same in a
 	 * span of characters. This method will return the first and
 	 * the last positions in the paragraph for which that font is
-	 * the same. This can be used to avoid unnecessary calls to
-   * getFont.
+	 * the same. This can be used to avoid unnecessary calls to getFont.
 	 */
 	FontSpan fontSpan(pos_type pos) const;
 	///
@@ -382,8 +380,8 @@ public:
 	bool isSeparator(pos_type pos) const { return getChar(pos) == ' '; }
 	///
 	bool isLineSeparator(pos_type pos) const;
-	/// True if the character/inset at this point can be part of a word
-	// Note that digits in particular are considered as letters
+	/// True if the character/inset at this point can be part of a word.
+	/// Note that digits in particular are considered as letters
 	bool isLetter(pos_type pos) const;
 
 	/// returns -1 if inset not found
