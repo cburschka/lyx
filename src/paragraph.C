@@ -1521,7 +1521,8 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 void Paragraph::changeLanguage(BufferParams const & bparams,
 			       Language const * from, Language const * to)
 {
-	for (pos_type i = 0; i < size(); ++i) {
+	// change language including dummy font change at the end
+	for (pos_type i = 0; i <= size(); ++i) {
 		LyXFont font = getFontSettings(bparams, i);
 		if (font.language() == from) {
 			font.setLanguage(to);

@@ -141,6 +141,8 @@ What's new
 - Quotation marks can now be inserted easier into mathed, which is
   important for phonetic notation (bug 3044)
 
+- Fix one more case of copied ERT inset producing wrong language (bug 2476)
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.
