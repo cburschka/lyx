@@ -516,7 +516,7 @@ def checkOtherEntries():
 def processLayoutFile(file, bool_docbook, bool_linuxdoc):
     ''' process layout file and get a line of result
         
-        Declear line are like this: (article.layout, scrbook.layout, svjog.layout)
+        Declare lines look like this: (article.layout, scrbook.layout, svjog.layout)
         
         \DeclareLaTeXClass{article}
         \DeclareLaTeXClass[scrbook]{book (koma-script)}
@@ -529,7 +529,7 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
         "svjog" "svjour" "article (Springer - svjour/jog)" "false"
     '''
     classname = file.split(os.sep)[-1].split('.')[0]
-    # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclearLaTeXClass[a,b,c]{article}
+    # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
     p = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
     for line in open(file).readlines():
         res = p.search(line)
@@ -539,7 +539,7 @@ def processLayoutFile(file, bool_docbook, bool_linuxdoc):
             if opt == None:
                 opt = classname
             return '"%s" "%s" "%s" "%s"\n' % (classname, opt, desc, avai)
-    print "Layout file without \DeclearXXClass line. "
+    print "Layout file without \DeclareXXClass line. "
     sys.exit(2)
 
     
