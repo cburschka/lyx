@@ -153,14 +153,15 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.ascii_linelen;
 	vector<string> backends = Backends(*buffer);
-	// FIXME: Without this test export to lyx13 would be through
-	// latex -> lyx -> lyx13, because the first backend below with a
+	// FIXME: Without this test export to lyx1[34] would be through
+	// latex -> lyx -> lyx1[34], because the first backend below with a
 	// working conversion path is used. We should replace this test and
 	// the explicit loop below with a method
 	// getShortestPath(vector<string> const & from, string const & to)
 	// which returns the shortest path from one of the formats in 'from'
 	// to 'to'.
-	if (format == "lyx13x" && !converters.getPath("lyx", format).empty())
+	if ((format == "lyx13x" || format == "lyx14x") &&
+	    !converters.getPath("lyx", format).empty())
 		backend_format = "lyx";
 	else if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();

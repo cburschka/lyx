@@ -299,6 +299,7 @@ def checkFormatEntries(dtl_tools):
 \Format fax        ""      Fax                    "" ""	""	"document"
 \Format lyx        lyx     LyX                    "" ""	""	""
 \Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""	"document"
+\Format lyx14x     lyx14  "LyX 1.4.x"             "" ""	""	"document"
 \Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
@@ -445,6 +446,7 @@ def checkConverterEntries():
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""
 \converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
+\converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -t 245 $$i > $$o"	""
 ''')
 
 
