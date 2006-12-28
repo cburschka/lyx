@@ -203,6 +203,10 @@ iconv_convert(IconvProcessor & processor,
 	char * outbuf = out;
 
 	int bytes = processor.convert(inbuf, inbytesleft, outbuf, outsize);
+	if (bytes <= 0)
+		// Conversion failed
+		// FIXME Maybe throw an exception and handle that in the caller?
+		return std::vector<RetType>();
 
 	RetType const * tmp = reinterpret_cast<RetType const *>(out);
 	return std::vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
