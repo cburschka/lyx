@@ -72,9 +72,8 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		}
 		if (p["name"] != params()["name"])
-			// FIXME UNICODE
 			cur.bv().buffer()->changeRefsIfUnique(params()["name"],
-						       p["name"], InsetBase::REF_CODE);
+					p["name"], InsetBase::REF_CODE);
 		setParams(p);
 		break;
 	}
