@@ -59,7 +59,6 @@
 
 namespace lyx {
 
-using support::addName;
 using support::bformat;
 using support::FileFilterList;
 using support::FileName;

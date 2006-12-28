@@ -294,8 +294,15 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
+	// FIXME thailatex does not support the inputenc package, so we
+	// ignore switches from/to tis620-0 encoding here. This does of
+	// course only work as long as the non-thai text contains ASCII
+	// only, but it is the best we can do.
+	bool const use_thailatex = (language->encoding()->name() == "tis620-0" ||
+	                            previous_language->encoding()->name() == "tis620-0");
 	if (bparams.inputenc == "auto" &&
-	    language->encoding() != previous_language->encoding()) {
+	    language->encoding() != previous_language->encoding() &&
+	    !use_thailatex) {
 		ucs4 << "\\inputencoding{"
 		     << from_ascii(language->encoding()->latexName())
 		     << "}\n";
@@ -307,7 +314,8 @@ TeXOnePar(Buffer const & buf,
 	odocstringstream par_stream;
 	bool const change_encoding = !runparams_in.dryrun &&
 			bparams.inputenc == "auto" &&
-			language->encoding() != doc_language->encoding();
+			language->encoding() != doc_language->encoding() &&
+			!use_thailatex;
 	// don't trigger the copy ctor because it's private on msvc 
 	odocstream & os = *(change_encoding ? &par_stream : &ucs4);
 

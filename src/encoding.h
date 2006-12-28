@@ -52,6 +52,16 @@ class Encodings {
 public:
 	///
 	typedef std::map<std::string, Encoding> EncodingList;
+	/// iterator to iterate over all encodings.
+	/// We hide the fact that our encoding list is implemented as a map.
+	class const_iterator : public EncodingList::const_iterator {
+		typedef EncodingList::const_iterator base;
+	public:
+		const_iterator() : base() {}
+		const_iterator(base const & b) : base(b) {}
+		Encoding const & operator*() const { return base::operator*().second; }
+		Encoding const * operator->() const { return &(base::operator*().second); }
+	};
 	///
 	Encodings();
 	///
@@ -60,6 +70,11 @@ public:
 	Encoding const * getFromLyXName(std::string const & name) const;
 	/// Get encoding from LaTeX name \p name
 	Encoding const * getFromLaTeXName(std::string const & name) const;
+
+	///
+	const_iterator begin() const { return encodinglist.begin(); }
+	///
+	const_iterator end() const { return encodinglist.end(); }
 
 	///
 	enum Letter_Form {

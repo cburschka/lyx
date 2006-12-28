@@ -646,6 +646,21 @@ def revert_cleardoublepage(document):
     i = i + 1
 
 
+def revert_encodings(document):
+    " Set new encodings to auto. "
+    encodings = ["8859-6", "8859-8", "cp437", "cp437de", "cp850", "cp852",
+                 "cp855", "cp858", "cp862", "cp865", "cp866", "cp1250",
+                 "cp1252", "cp1256", "cp1257", "latin10", "pt254", "tis620-0"]
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.header.append("\\inputencoding auto")
+    else:
+        inputenc = get_value(document.header, "\\inputencoding", i)
+        if inputenc in encodings:
+            document.header[i] = "\\inputencoding auto"
+    document.inputencoding = get_value(document.header, "\\inputencoding", 0)
+
+
 ##
 # Conversion hub
 #
@@ -660,9 +675,11 @@ convert = [[246, []],
            [252, [convert_commandparams, convert_bibitem]],
            [253, []],
            [254, [convert_esint]],
-           [255, []]]
+           [255, []],
+           [256, []]]
 
-revert =  [[254, [revert_clearpage, revert_cleardoublepage]],
+revert =  [[255, [revert_encodings]],
+           [254, [revert_clearpage, revert_cleardoublepage]],
            [253, [revert_esint]],
            [252, [revert_nomenclature, revert_printnomenclature]],
            [251, [revert_commandparams]],

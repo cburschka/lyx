@@ -221,7 +221,11 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
 	LanguageList::const_iterator end = UsedLanguages_.end();
 	for (; it != end; ++it)
-		if ((*it)->encoding()->latexName() != doc_encoding)
+		// thailatex does not use the inputenc package, but sets up
+		// babel directly for tis620-0 encoding, therefore we must
+		// not add tis620-0 to the encoding set.
+		if ((*it)->encoding()->latexName() != doc_encoding &&
+		    (*it)->encoding()->name() != "tis620-0")
 			encodings.insert((*it)->encoding()->latexName());
 	return encodings;
 }

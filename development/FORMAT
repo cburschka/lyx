@@ -1,6 +1,11 @@
 LyX file-format changes
 -----------------------§
 
+2006-12-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 256: allow some new inputenc settings.
+	For the complete list, see lib/lyx2lyx/lyx_1_5.py.
+
 2006-11-25  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 255: new insets for \clearpage and

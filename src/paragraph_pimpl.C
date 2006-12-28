@@ -663,7 +663,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		case 0x20ac:    // EURO SIGN
 			if (isEncoding(bparams, font, "latin9")
 			    || isEncoding(bparams, font, "cp1251")
-			    || isEncoding(bparams, font, "utf8")) {
+			    || isEncoding(bparams, font, "utf8")
+			    || isEncoding(bparams, font, "latin10")
+			    || isEncoding(bparams, font, "cp858")) {
 				os.put(c);
 			} else {
 				os << "\\texteuro{}";

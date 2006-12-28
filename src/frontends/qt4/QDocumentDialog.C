@@ -25,6 +25,7 @@
 #include "qt_helpers.h"
 
 #include "bufferparams.h"
+#include "encoding.h"
 #include "gettext.h"
 #include "helper_funcs.h" // getSecond()
 #include "language.h"
@@ -55,18 +56,6 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-
-namespace {
-
-// FIXME: This list is incomplete. It should not be hardcoded but come from
-// the available encodings in src/encodings.C
-char const * encodings[] = { "LaTeX default", "latin1", "latin2",
-	"latin3", "latin4", "latin5", "latin9",
-	"koi8-r", "koi8-u", "cp866", "cp1251",
-	"iso88595", "pt154", "utf8", 0
-};
-
-}
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: form_(form),
@@ -298,10 +287,13 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 			toqstr(lit->first));
 	}
 
-	int k = 0;
-	while (encodings[k]) {
-		langModule->encodingCO->addItem(qt_(encodings[k++]));
-	}
+	// Always put the default encoding in the first position.
+	// It is special because the displayed text is translated.
+	langModule->encodingCO->addItem(qt_("LaTeX default"));
+	Encodings::const_iterator it = encodings.begin();
+	Encodings::const_iterator const end = encodings.end();
+	for (; it != end; ++it)
+		langModule->encodingCO->addItem(toqstr(it->latexName()));
 
 	langModule->quoteStyleCO->addItem(qt_("``text''"));
 	langModule->quoteStyleCO->addItem(qt_("''text''"));
@@ -669,11 +661,11 @@ void QDocumentDialog::apply(BufferParams & params)
 		params.inputenc = "auto";
 	} else {
 		int i = langModule->encodingCO->currentIndex();
-		if (i == 0) {
+		if (i == 0)
 			params.inputenc = "default";
-		} else {
-			params.inputenc = encodings[i];
-		}
+		else
+			params.inputenc =
+				fromqstr(langModule->encodingCO->currentText());
 	}
 
 	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
@@ -956,16 +948,13 @@ void QDocumentDialog::update(BufferParams const & params)
 		if (params.inputenc == "default") {
 			langModule->encodingCO->setCurrentIndex(0);
 		} else {
-			int i = 0;
-			while (encodings[i]) {
-				if (encodings[i] == params.inputenc) {
-					langModule->encodingCO->setCurrentIndex(i);
-					break;
-				}
-				++i;
-			}
-			// FIXME: possible data loss because of encodings is
-			// incomplete
+			int const i = langModule->encodingCO->findText(
+					toqstr(params.inputenc));
+			if (i >= 0)
+				langModule->encodingCO->setCurrentIndex(i);
+			else
+				// unknown encoding. Set to default.
+				langModule->defaultencodingCB->setChecked(true);
 		}
 	}
 
