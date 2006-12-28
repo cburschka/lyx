@@ -281,6 +281,7 @@ static void build_script(FileName const & from_file,
 	typedef Converters::EdgePath EdgePath;
 
 	script << "#!/usr/bin/env python\n"
+	          "# -*- coding: utf-8 -*-\n"
 	          "import os, shutil, sys\n\n"
 	          "def unlinkNoThrow(file):\n"
 	          "  ''' remove a file, do not throw if an error occurs '''\n"
