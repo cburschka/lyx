@@ -46,7 +46,7 @@ public:
 	/// Outputting the optional parameter of a LaTeX command
 	int latexOptional(Buffer const &, odocstream &,
 			  OutputParams const &) const;
-	/// Write out tothe .lyx file
+	/// Write out to the .lyx file
 	void write(Buffer const & buf, std::ostream & os) const;
 
 	/// should paragraph indendation be ommitted in any case?
