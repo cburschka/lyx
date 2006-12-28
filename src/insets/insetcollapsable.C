@@ -377,7 +377,8 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		// The mouse click is within the opened inset.
-		InsetText::doDispatch(cur, cmd);
+		if (status() == Open)
+			InsetText::doDispatch(cur, cmd);
 		break;
 
 	case LFUN_INSET_TOGGLE:

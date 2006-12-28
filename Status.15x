@@ -195,12 +195,6 @@ EDITING
 
 * the insertion of Ctrl-Return cannot be undone
 
-* open a document full of marginal notes (other insets should also work),
-  select multiple insets from the begining twice, lyx crashed with
-    QLayout::addChildWidget: lyx::frontend::QCommandBuffer "" in wrong parent; moved to correct parent
-    Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:323
-    Abort
-
 
 CHANGE TRACKING
 
@@ -662,4 +656,11 @@ CREDITS:
 e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
   Odd, isn't it?
   FIXED (Enrico (found problem) and Georg (fix) 2006-12-27)
+
+* open a document full of marginal notes (other insets should also work),
+  select multiple insets from the begining twice, lyx crashed with
+    QLayout::addChildWidget: lyx::frontend::QCommandBuffer "" in wrong parent; moved to correct parent
+    Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:323
+    Abort
+  FIXED (Bo 2006-12-27)
 
