@@ -25,7 +25,7 @@ eu_TOC.lyx: $(srcdir)/eu_Customization.lyx $(srcdir)/eu_Extended.lyx $(srcdir)/e
 fr_TOC.lyx: $(srcdir)/fr_Customization.lyx $(srcdir)/fr_Extended.lyx $(srcdir)/fr_FAQ.lyx $(srcdir)/fr_Intro.lyx $(srcdir)/fr_Tutorial.lyx $(srcdir)/fr_UserGuide.lyx
 	python $(srcdir)/doc_toc.py fr
 
-gl_TOC.lyx: $(srcdir)/gl_Intro.lyx
+gl_TOC.lyx: $(srcdir)/gl_Intro.lyx $(srcdir)/gl_Tutorial.lyx
 	python $(srcdir)/doc_toc.py gl
 
 he_TOC.lyx: $(srcdir)/he_Intro.lyx $(srcdir)/he_Tutorial.lyx
