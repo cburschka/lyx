@@ -2040,6 +2040,7 @@ lib_layouts_files = Split('''
     amsmaths-seq.inc
     amsmaths.inc
     apa.layout
+    arab-article.layout
     article.layout
     beamer.layout
     book.layout
