@@ -111,6 +111,8 @@ public:
 protected:
 	InsetBox(InsetBox const &);
 	virtual void doDispatch(LCursor & cur, FuncRequest & cmd);
+	/// Is the width forced to some value?
+	virtual bool hasFixedWidth() const;
 private:
 	friend class InsetBoxParams;
 

@@ -1,3 +1,14 @@
+2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetcollapsable.C (hasFixedWidth): new virtual method, returns
+	false by default.
+	(metrics): do not set to openinlined if
+	hasFixedWidth is true.
+
+	* insetbox.C (hasFixedWidth): returns true if the box has a fixed
+	width. 
+	(metrics): use hasFixedWidth.
+	
 2006-12-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetcollapsable.C (doDispatch): do nothing on mouse release if

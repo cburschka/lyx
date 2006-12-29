@@ -139,7 +139,8 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (status() == Open) {
 			InsetText::metrics(mi, textdim_);
 			// This expression should not contain mi.base.texwidth
-			openinlined_ = textdim_.wid < 0.5 * mi.base.bv->workWidth();
+			openinlined_ = !hasFixedWidth() 
+				&& textdim_.wid < 0.5 * mi.base.bv->workWidth();
 			if (openinlined_) {
 				// Correct for button width, and re-fit
 				mi.base.textwidth -= dim.wid;

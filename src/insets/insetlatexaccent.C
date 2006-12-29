@@ -460,14 +460,16 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 				    LColor::foreground);
 			break;
 
-		case CARON: {
-			int xp[3], yp[3];
-			xp[0] = int(x2 - hg35);    yp[0] = int(y + hg35);
-			xp[1] = int(x2);           yp[1] = int(y + hg);
-			xp[2] = int(x2 + hg35);    yp[2] = int(y + hg35);
-			pi.pain.lines(xp, yp, 3, LColor::foreground);
-			break;
-		}
+		case CARON: 
+			if (!contains("tlLd", ic)) {
+				int xp[3], yp[3];
+				xp[0] = int(x2 - hg35);    yp[0] = int(y + hg35);
+				xp[1] = int(x2);           yp[1] = int(y + hg);
+				xp[2] = int(x2 + hg35);    yp[2] = int(y + hg35);
+				pi.pain.lines(xp, yp, 3, LColor::foreground);
+				break;
+			}
+			//fall through
 
 		case SPECIAL_CARON: {
 			switch (ic) {

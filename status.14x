@@ -118,8 +118,11 @@ What's new
 
 - Avoid "wide" insets in text that is centered or right-justified.
 
-- when selecting with the mouse an area that ends on a collapsable
+- When selecting with the mouse an area that ends on a collapsable
   inset, do not open it by mistake.
+
+- When a box inset has been given a small width, never show it in
+  inlined mode, since it would make its contents unreadable.
 
 - Give a better error message for missing layout include files.
 
