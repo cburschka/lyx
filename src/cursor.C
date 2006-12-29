@@ -360,11 +360,12 @@ bool LCursor::popRight()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the right" << endl;
+	const pos_type lp = (depth() > 1) ? (*this)[depth() - 2].lastpos() : 0;
 	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
 		return false;
 	pop();
-	++pos();
+	pos() += lastpos() - lp + 1;
 	return true;
 }
 

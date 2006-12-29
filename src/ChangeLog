@@ -1,3 +1,9 @@
+2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* cursor.C (popRight): place cursor at the right spot:
+	notifyCursorLeaves may have killed the inset and put its contents
+	at lower level (bug 2908)
+
 2006-12-18  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* rowpainter.C (paintPar): do not use wide insets when the

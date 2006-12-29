@@ -101,6 +101,8 @@ What's new
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
+- Fix crash when exiting empty superscript in math editor (bug 2908).
+
 - Fix an undo crash crash with nested font changes in math (bug 3019).
 
 - Fix deletion of empty paragraph in various situations: paragraphs
