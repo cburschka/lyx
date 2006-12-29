@@ -824,6 +824,7 @@ dist_layouts_DATA =\
 	layouts/amsmaths-seq.inc \
 	layouts/amsmaths.inc \
 	layouts/apa.layout \
+	layouts/arab-article.layout \
 	layouts/article.layout \
 	layouts/beamer.layout \
 	layouts/book.layout \
