@@ -1468,11 +1468,18 @@ Encoding const & BufferParams::encoding() const
 {
 	if (inputenc == "auto")
 		return *(language->encoding());
-	Encoding const * const enc = encodings.getFromLaTeXName(inputenc);
+	Encoding const * const enc = (inputenc == "default") ?
+		encodings.getFromLyXName("iso8859-1") :
+		encodings.getFromLaTeXName(inputenc);
 	if (enc)
 		return *enc;
-	lyxerr << "Unknown inputenc value `" << inputenc
-	       << "'. Using `auto' instead." << endl;
+	if (inputenc == "default")
+		lyxerr << "Could not find iso8859-1 encoding for inputenc "
+		          "value `default'. Using inputenc `auto' instead."
+		       << endl;
+	else
+		lyxerr << "Unknown inputenc value `" << inputenc
+		       << "'. Using `auto' instead." << endl;
 	return *(language->encoding());
 }
 

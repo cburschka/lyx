@@ -78,8 +78,9 @@ LyX file-format changes
 	encoding of the LyX file:
 
 	\inputencoding       LyX file encoding
-	auto                 as determined by the document language
-	default              latin1
+	auto                 as determined by the document language(s)
+	default              unspecified 8bit (treated as latin1 internally,
+	                     see comment in bufferparams.h)
 	everything else      as determined by \inputencoding
 
 2006-07-03  Georg Baum  <Georg.Baum@post.rwth-aachen.de>

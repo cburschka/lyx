@@ -180,7 +180,10 @@ public:
 	 * The input encoding for LaTeX. This can be one of
 	 * - auto: find out the input encoding from the used languages
 	 * - default: Don't load the inputenc package and hope that it will
-	 *   work (unlikely)
+	 *   work (unlikely). The encoding is an unspecified 8bit encoding,
+	 *   the interpretation is up to the LaTeX compiler. Because we need
+	 *   a rule how to create this from our internal UCS4 encoded
+	 *   document contents we treat this as latin1 internally.
 	 * - any encoding supported by the inputenc package
 	 * The encoding of the LyX file is always utf8 and has nothing to
 	 * do with this setting.
