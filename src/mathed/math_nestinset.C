@@ -345,7 +345,7 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 }
 
 
-bool MathNestInset::notifyCursorLeaves(LCursor & cur)
+bool MathNestInset::notifyCursorLeaves(LCursor & /* cur */)
 {
 #ifdef WITH_WARNINGS
 #warning look here
@@ -383,11 +383,12 @@ void MathNestInset::handleFont
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	recordUndo(cur, Undo::ATOMIC);
 
-	if (cur.inset().asMathInset()->name() == font)
+	if (cur.inset().asMathInset()->name() == font) {
+		recordUndoInset(cur, Undo::ATOMIC);
 		cur.handleFont(font);
-	else {
+	} else {
+		recordUndo(cur, Undo::ATOMIC);
 		cur.handleNest(createMathInset(font));
 		cur.insert(arg);
 	}

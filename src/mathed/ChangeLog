@@ -1,3 +1,8 @@
+2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_nestinset.C (handleFont): avoid crash on undo when
+	suppressing a font inset (bug 3019).
+
 2006-12-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C (doDispatch): catch LFUN_QUOTE and insert

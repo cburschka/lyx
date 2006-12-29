@@ -100,6 +100,8 @@ What's new
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
+- Fix an undo crash crash with nested font changes in math (bug 3019).
+
 - Fix deletion of empty paragraph in various situations: paragraphs
   with different layouts, layouts with KeepEmpty property, ERT insets,
   tabular cells (bugs 2587 and 2882).
