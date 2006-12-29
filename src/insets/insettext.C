@@ -76,7 +76,7 @@ int InsetText::border_ = 2;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: drawFrame_(false), frame_color_(LColor::insetframe), text_(0)
+	: drawFrame_(false), frame_color_(LColor::insetframe)
 {
 	paragraphs().push_back(Paragraph());
 	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
@@ -103,7 +103,6 @@ InsetText::InsetText(InsetText const & in)
 
 
 InsetText::InsetText()
-	: text_(0)
 {}
 
 
@@ -166,12 +165,14 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 
 bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
+
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 	mi.base.textwidth -= 2 * border_;
 	font_ = mi.base.font;
 	// Hand font through to contained lyxtext:
 	text_.font_ = mi.base.font;
-	text_.metrics(mi, dim);
+	tm.metrics(mi, dim);
 	dim.asc += border_;
 	dim.des += border_;
 	dim.wid += 2 * border_;
@@ -184,18 +185,19 @@ bool InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(!text_.paragraphs().front().rows().empty());
 	// update our idea of where we are
 	setPosCache(pi, x, y);
+
+	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
 	text_.background_color_ = backgroundColor();
 	text_.draw(pi, x + border_, y);
 
 	if (drawFrame_) {
-		int const w = text_.width() + 2 * border_;
-		int const a = text_.ascent() + border_;
-		int const h = a + text_.descent() + border_;
-		pi.pain.rectangle(x, y - a, (wide() ? text_.maxwidth_ : w), h,
+		int const w = tm.width() + 2 * border_;
+		int const a = tm.ascent() + border_;
+		int const h = a + tm.descent() + border_;
+		pi.pain.rectangle(x, y - a, (wide() ? tm.maxWidth() : w), h,
 			frameColor());
 	}
 }
@@ -203,10 +205,12 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	int const w = text_.width() + 2 * border_;
-	int const a = text_.ascent() + border_;
-	int const h = a + text_.descent() + border_;
-	pi.pain.fillRectangle(x, y - a, (wide() ? text_.maxwidth_ : w), h,
+	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
+
+	int const w = tm.width() + 2 * border_;
+	int const a = tm.ascent() + border_;
+	int const h = a + tm.descent() + border_;
+	pi.pain.fillRectangle(x, y - a, (wide() ? tm.maxWidth() : w), h,
 		backgroundColor());
 	text_.drawSelection(pi, x, y);
 }
@@ -214,9 +218,11 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 
 bool InsetText::covers(BufferView const & bv, int x, int y) const
 {
+	TextMetrics const & tm = bv.textMetrics(&text_);
+
 	return bv.coordCache().getInsets().has(this)
 			&& x >= xo(bv)
-			&& x <= xo(bv) + width() + (wide() ? text_.maxwidth_ : 0)
+			&& x <= xo(bv) + width() + (wide() ? tm.maxWidth() : 0)
 			&& y >= yo(bv) - ascent()
 			&& y <= yo(bv) + descent();
 }
@@ -340,8 +346,8 @@ void InsetText::validate(LaTeXFeatures & features) const
 void InsetText::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(*bv.buffer(), sl, boundary) + border_;
-	y = text_.cursorY(sl, boundary);
+	x = text_.cursorX(bv, sl, boundary) + border_;
+	y = text_.cursorY(bv, sl, boundary);
 }
 
 

@@ -14,10 +14,8 @@
 #ifndef LYXTEXT_H
 #define LYXTEXT_H
 
-#include "bufferview_funcs.h"
 #include "Bidi.h"
 #include "dispatchresult.h"
-#include "dimension.h"
 #include "lyxfont.h"
 #include "layout.h"
 #include "lyxlayout_ptr_fwd.h"
@@ -32,7 +30,6 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class CursorSlice;
-class Dimension;
 class ErrorList;
 class InsetBase;
 class InsetBase_code;
@@ -41,7 +38,6 @@ class FuncStatus;
 class LColor_color;
 class LCursor;
 class LyXTextClass;
-class MetricsInfo;
 class PainterInfo;
 class Row;
 class RowMetrics;
@@ -52,9 +48,7 @@ class Spacing;
 class LyXText {
 public:
 	/// constructor
-	explicit LyXText(BufferView * bv = 0);
-	///
-	void init(BufferView *);
+	explicit LyXText();
 
 	///
 	LyXFont getFont(Buffer const & buffer, Paragraph const & par,
@@ -79,7 +73,8 @@ public:
 	/// set layout over selection
 	void setLayout(Buffer const & buffer, pit_type start, pit_type end,
 		std::string const & layout);
-	///
+	/// Set given layout to current cursor position.
+	/// FIXME: replace LCursor with DocIterator.
 	void setLayout(LCursor & cur, std::string const & layout);
 
 	/// what type of depth change to make
@@ -88,42 +83,43 @@ public:
 		DEC_DEPTH
 	};
 	/// Increase or decrease the nesting depth of the selected paragraph(s)
+	/// FIXME: replace LCursor with DocIterator.
 	void changeDepth(LCursor & cur, DEPTH_CHANGE type);
 
 	/// Returns whether something would be changed by changeDepth
+	/// FIXME: replace LCursor with DocIterator.
 	bool changeDepthAllowed(LCursor & cur, DEPTH_CHANGE type) const;
 
 	/// Set font over selection paragraphs and rebreak.
+	/// FIXME: replace LCursor with DocIterator.
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
-	/// Rebreaks the given paragraph.
-	/// \retval true if a full screen redraw is needed.
-	/// \retval false if a single paragraph redraw is enough.
-	bool redoParagraph(BufferView &, pit_type pit);
-
-	/// returns pos in given par at given x coord
+	/// returns pos in given par at given x coord.
+	/// FIXME: move to TextMetrics.
 	pos_type x2pos(BufferView const &, pit_type pit, int row, int x) const;
 	int pos2x(pit_type pit, pos_type pos) const;
 
 	///
 	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
 
-	///
+	/// ???
+	/// FIXME: replace LCursor with DocIterator.
 	docstring getStringToIndex(LCursor const & cur);
 
 	/// insert a character at cursor position
+	/// FIXME: replace LCursor with DocIterator.
 	void insertChar(LCursor & cur, char_type c);
 	/// insert an inset at cursor position
+	/// FIXME: replace LCursor with DocIterator.
 	void insertInset(LCursor & cur, InsetBase * inset);
 
-	/// compute text metrics.
-	bool metrics(MetricsInfo & mi, Dimension & dim);
 	/// draw text (only used for insets)
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw textselection
 	void drawSelection(PainterInfo & pi, int x, int y) const;
 
 	/// try to handle that request
+	/// FIXME: replace LCursor with DocIterator.
 	void dispatch(LCursor & cur, FuncRequest & cmd);
 	/// do we want to handle this event?
 	bool getStatus(LCursor & cur, FuncRequest const & cmd,
@@ -134,11 +130,13 @@ public:
 	/// read-write access to individual paragraph
 	Paragraph & getPar(pit_type pit) { return pars_[pit]; }
 	// Returns the current font and depth as a message.
+	/// FIXME: replace LCursor with DocIterator.
 	docstring currentState(LCursor & cur);
 
 	/** returns row near the specified
 	  * y-coordinate in given paragraph (relative to the screen).
 	  */
+	/// FIXME: move to TextMetrics.
 	Row const & getRowNearY(BufferView const & bv, int y,
 		pit_type pit) const;
 
@@ -148,13 +146,15 @@ public:
 	/// the CoordCache will be automatically updated if needed. This is
 	/// the reason why we need a non const BufferView and why this
 	/// method is non-const.
+	/// FIXME: move to TextMetrics.
 	pit_type getPitNearY(BufferView & bv, int y);
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	pos_type getColumnNearX(BufferView const & bv, pit_type pit,
-		Row const & row, int & x, bool & boundary) const;
+	/// FIXME: move to TextMetrics.
+	pos_type getColumnNearX(BufferView const & bv, int right_margin,
+		pit_type pit, Row const & row, int & x, bool & boundary) const;
 
 	/** Find the word under \c from in the relative location
 	 *  defined by \c word_location.
@@ -194,17 +194,20 @@ public:
 	\param x,y are absolute screen coordinates.
 	\retval inset is non-null if the cursor is positionned inside
 	*/
+	/// FIXME: move to TextMetrics.
 	InsetBase * editXY(LCursor & cur, int x, int y);
 	
 	/// Move cursor one line up.
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
+	/// FIXME: move to TextMetrics.
 	bool cursorUp(LCursor & cur);
 	/// Move cursor one line down.
 	/**
 	 * Returns true if an update is needed after the move.
 	 */
+	/// FIXME: move to TextMetrics.
 	bool cursorDown(LCursor & cur);
 	/// Move cursor one position left
 	/**
@@ -225,8 +228,10 @@ public:
 	///
 	bool cursorDownParagraph(LCursor & cur);
 	///
+	/// FIXME: move to TextMetrics.
 	bool cursorHome(LCursor & cur);
 	///
+	/// FIXME: move to TextMetrics.
 	bool cursorEnd(LCursor & cur);
 	///
 	void cursorPrevious(LCursor & cur);
@@ -237,10 +242,13 @@ public:
 	///
 	bool cursorBottom(LCursor & cur);
 	/// Erase character at cursor. Honour change tracking
+	/// FIXME: replace LCursor with DocIterator.
 	bool erase(LCursor & cur);
 	/// Delete character before cursor. Honour CT
+	/// FIXME: replace LCursor with DocIterator.
 	bool backspace(LCursor & cur);
 	// Dissolve the inset under cursor
+	/// FIXME: replace LCursor with DocIterator.
 	bool dissolveInset(LCursor & cur);
 	///
 	bool selectWordWhenUnderCursor(LCursor & cur, word_location);
@@ -272,23 +280,21 @@ public:
 	/* these things are for search and replace */
 
 	/// needed to insert the selection
+	/// FIXME: replace LCursor with DocIterator.
 	void insertStringAsLines(LCursor & cur, docstring const & str);
 	/// needed to insert the selection
+	/// FIXME: replace LCursor with DocIterator.
 	void insertStringAsParagraphs(LCursor & cur, docstring const & str);
-
-	/// current text width
-	int width() const;
-
-	/// current text heigth
-	int height() const;
 
 	/// Returns an inset if inset was hit, or 0 if not.
 	InsetBase * checkInsetHit(BufferView &, int x, int y);
 
 	///
+	/// FIXME: move to TextMetrics.
 	int singleWidth(Buffer const &, Paragraph const & par,
 		pos_type pos) const;
 	///
+	/// FIXME: move to TextMetrics.
 	int singleWidth(Paragraph const & par, pos_type pos, char_type c,
 		LyXFont const & Font) const;
 
@@ -301,15 +307,9 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(Buffer const &, pit_type pit, pos_type pos) const;
-	int leftMargin(Buffer const &, pit_type pit) const;
-	///
-	int rightMargin(Buffer const &, Paragraph const & par) const;
-
-	/** this calculates the specified parameters. needed when setting
-	 * the cursor and when creating a visible row */
-	RowMetrics computeRowMetrics(Buffer const &, pit_type pit,
-		Row const & row) const;
+	/// FIXME: move to TextMetrics.
+	int leftMargin(Buffer const &, int max_width, pit_type pit, pos_type pos) const;
+	int leftMargin(Buffer const &, int max_width, pit_type pit) const;
 
 	/// access to our paragraphs
 	ParagraphList const & paragraphs() const { return pars_; }
@@ -317,17 +317,17 @@ public:
 	/// return true if this is the main text
 	bool isMainText(Buffer const &) const;
 
-	/// return first row of text
-	Row const & firstRow() const;
-
 	/// is this row the last in the text?
+	/// FIXME: move to TextMetrics.
 	bool isLastRow(pit_type pit, Row const & row) const;
 	/// is this row the first in the text?
+	/// FIXME: move to TextMetrics.
 	bool isFirstRow(pit_type pit, Row const & row) const;
 
 	///
 	double spacing(Buffer const & buffer, Paragraph const & par) const;
 	/// make a suggestion for a label
+	/// FIXME: replace LCursor with DocIterator.
 	docstring getPossibleLabel(LCursor & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Buffer const &, Paragraph const & par) const;
@@ -340,23 +340,33 @@ public:
 	bool read(Buffer const & buf, LyXLex & lex, ErrorList & errorList);
 
 	///
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int cursorX(Buffer const &, CursorSlice const & cursor,
+	/// FIXME: move to TextMetrics.
+	int cursorX(BufferView const &, CursorSlice const & cursor,
 		bool boundary) const;
 	///
-	int cursorY(CursorSlice const & cursor, bool boundary) const;
+	/// FIXME: move to TextMetrics.
+	int cursorY(BufferView const & bv, CursorSlice const & cursor,
+		bool boundary) const;
 
 	/// delete double space or empty paragraphs around old cursor
+	/// FIXME: replace LCursor with DocIterator.
 	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old);
 
+	/// sets row.end to the pos value *after* which a row should break.
+	/// for example, the pos after which isNewLine(pos) == true
+	/// FIXME: move to TextMetrics.
+	void rowBreakPoint(Buffer const &, int right_margin, int max_width, pit_type pit,
+		Row & row) const;
+	/// sets row.width to the minimum space a row needs on the screen in pixel
+	/// FIXME: move to TextMetrics.
+	void setRowWidth(Buffer const &, int right_margin, int max_width, pit_type pit,
+		Row & row) const;
+
+	/// Calculate and set the height of the row
+	/// FIXME: move to TextMetrics.
+	void setHeightOfRow(BufferView const &, pit_type, Row & row);
+
 public:
-	///
-	Dimension dim_;
-	///
-	int maxwidth_;
 	/// the current font settings
 	LyXFont current_font;
 	/// the current font
@@ -380,9 +390,6 @@ private:
 	/// change on pit
 	pit_type undoSpan(pit_type pit);
 
-	/// Calculate and set the height of the row
-	void setHeightOfRow(BufferView const &, pit_type, Row & row);
-
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
 	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
@@ -398,26 +405,14 @@ private:
 	///
 	void deleteLineForward(LCursor & cur);
 
-	/// sets row.end to the pos value *after* which a row should break.
-	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(Buffer const &, int right_margin, pit_type pit,
-		Row & row) const;
-	/// sets row.width to the minimum space a row needs on the screen in pixel
-	void setRowWidth(Buffer const &, pit_type pit, Row & row) const;
-	/// the minimum space a manual label needs on the screen in pixels
-	int labelFill(Buffer const &, Paragraph const & par, Row const & row) const;
 	/// FIXME
-	int labelEnd(Buffer const &, pit_type pit) const;
+	int labelEnd(Buffer const &, int max_width, pit_type pit) const;
 
 	///
 	void charInserted();
 	/// set 'number' font property
 	void number(LCursor & cur);
 };
-
-/// return the default height of a row in pixels, considering font zoom
-int defaultRowHeight();
-
 
 } // namespace lyx
 

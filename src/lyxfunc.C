@@ -27,6 +27,7 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "cursor.h"
 #include "CutAndPaste.h"
 #include "debug.h"

@@ -603,10 +603,12 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				cur.idx() = tabular.getCellAbove(cur.idx());
 				cur.pit() = cur.lastpit();
 				LyXText const * text = cell(cur.idx())->getText(0);
+				ParagraphMetrics const & pm =
+					cur.bv().parMetrics(text, cur.lastpit());
 				cur.pos() = text->x2pos(
 					cur.bv(),
 					cur.pit(),
-					text->paragraphs().back().rows().size()-1,
+					pm.rows().size()-1,
 					cur.targetX());
 			}
 		if (sl == cur.top()) {

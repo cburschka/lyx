@@ -176,12 +176,9 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 
 	// Add contribution of initial rows of outermost paragraph
 	CursorSlice const & sl = dit[0];
-	Paragraph const & par = sl.text()->getPar(sl.pit());
-	if (par.rows().empty())
-		// FIXME: The special case below happens for empty paragraph creation
-		const_cast<LyXText *>(sl.text())->redoParagraph(const_cast<BufferView &>(bv), sl.pit());
-	BOOST_ASSERT(!par.rows().empty());
-	y -= par.rows()[0].ascent();
+	ParagraphMetrics const & pm = bv.parMetrics(sl.text(), sl.pit());
+	BOOST_ASSERT(!pm.rows().empty());
+	y -= pm.rows()[0].ascent();
 #if 1
 	size_t rend;
 	if (sl.pos() > 0 && dit.depth() == 1) {
@@ -189,16 +186,16 @@ Point coordOffset(BufferView const & bv, DocIterator const & dit,
 		if (pos && boundary)
 			--pos;
 //		lyxerr << "coordOffset: boundary:" << boundary << " depth:" << dit.depth() << " pos:" << pos << " sl.pos:" << sl.pos() << std::endl;
-		rend = par.pos2row(pos);
+		rend = pm.pos2row(pos);
 	} else
-		rend = par.pos2row(sl.pos());
+		rend = pm.pos2row(sl.pos());
 #else
-	size_t rend = par.pos2row(sl.pos());
+	size_t rend = pm.pos2row(sl.pos());
 #endif
 	for (size_t rit = 0; rit != rend; ++rit)
-		y += par.rows()[rit].height();
-	y += par.rows()[rend].ascent();
-	x += dit.bottom().text()->cursorX(*bv.buffer(), dit.bottom(), boundary && dit.depth() == 1);
+		y += pm.rows()[rit].height();
+	y += pm.rows()[rend].ascent();
+	x += dit.bottom().text()->cursorX(bv, dit.bottom(), boundary && dit.depth() == 1);
 
 	return Point(x, y);
 }

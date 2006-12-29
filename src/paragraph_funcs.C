@@ -68,9 +68,6 @@ void breakParagraph(BufferParams const & bparams,
 
 	Paragraph & par = pars[par_offset];
 
-	// we will invalidate the row cache
-	par.rows().clear();
-
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	tmp->layout(bparams.getLyXTextClass().defaultLayout());

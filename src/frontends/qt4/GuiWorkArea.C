@@ -259,8 +259,8 @@ void GuiWorkArea::dropEvent(QDropEvent* event)
 void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 {
 	// No need to do anything if we didn't change views...
-	if (theApp() == 0 || &lyx_view_ == theApp()->currentView())
-		return;
+//	if (theApp() == 0 || &lyx_view_ == theApp()->currentView())
+//		return;
 
 	theApp()->setCurrentView(lyx_view_);
 
@@ -268,32 +268,12 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 	// in BufferList that could be connected to the different tabbars.
 	lyx_view_.updateTab();
 
-	//FIXME: Use case: Two windows share the same buffer.
-	// The first window is resize. This modify the inner Buffer
-	// structure because Paragraph has a notion of line break and
-	// thus line width (this is very bad!).
-	// When switching to the other window which does not have the
-	// same size, LyX crashes because the line break is not adapted
-	// the this BufferView width.
-	// The following line fix the crash by resizing the BufferView 
-	// on a focusInEvent(). That is not a good fix but it is a fix
-	// nevertheless. The bad side effect is that when the two
-	// BufferViews show the same portion of the Buffer, the second 
-	// BufferView will show the same line breaks as the first one;
-	// even though those line breaks are not adapted to the second
-	// BufferView width... such is life!
-	resizeBufferView();
-
 	startBlinkingCursor();
 }
 
 
 void GuiWorkArea::focusOutEvent(QFocusEvent * /*event*/)
 {
-	// No need to do anything if we didn't change views...
-	if (&lyx_view_ == theApp()->currentView())
-		return;
-
 	stopBlinkingCursor();
 }
 

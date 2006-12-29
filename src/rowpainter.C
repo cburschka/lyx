@@ -27,8 +27,10 @@
 #include "lyxrow.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
+#include "ParagraphMetrics.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "TextMetrics.h"
 #include "vspace.h"
 
 #include "frontends/FontMetrics.h"
@@ -73,6 +75,7 @@ public:
 	void paintFirst();
 	void paintLast();
 	void paintText();
+	int maxWidth() { return max_width_; }
 
 private:
 	void paintForeignMark(double orig_x, LyXFont const & font, int desc = 0);
@@ -98,6 +101,7 @@ private:
 
 	/// LyXText for the row
 	LyXText const & text_;
+	TextMetrics & text_metrics_;
 	ParagraphList const & pars_;
 
 	/// The row to paint
@@ -106,6 +110,8 @@ private:
 	/// Row's paragraph
 	pit_type const pit_;
 	Paragraph const & par_;
+	ParagraphMetrics const & pm_;
+	int max_width_;
 
 	/// is row erased? (change tracking)
 	bool erased_;
@@ -123,12 +129,18 @@ private:
 
 RowPainter::RowPainter(PainterInfo & pi,
 	LyXText const & text, pit_type pit, Row const & row, int x, int y)
-	: bv_(*pi.base.bv), pain_(pi.pain), text_(text), pars_(text.paragraphs()),
+	: bv_(*pi.base.bv), pain_(pi.pain), text_(text),
+	  text_metrics_(pi.base.bv->textMetrics(&text)),
+	  pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
+	  pm_(text_metrics_.parMetrics(pit)),
+	  max_width_(bv_.workWidth()),
 	  erased_(pi.erased_),
-	  xo_(x), yo_(y), width_(text_.width())
+	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
-	RowMetrics m = text_.computeRowMetrics(*bv_.buffer(), pit, row_);
+	Buffer const & buffer = *bv_.buffer();
+	int const right_margin = text_metrics_.rightMargin(pm_);
+	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
 	x_ = m.x + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
@@ -151,7 +163,7 @@ LyXFont const RowPainter::getLabelFont() const
 
 int RowPainter::leftMargin() const
 {
-	return text_.leftMargin(*bv_.buffer(), pit_, row_.pos());
+	return text_.leftMargin(*bv_.buffer(), max_width_, pit_, row_.pos());
 }
 
 
@@ -192,8 +204,9 @@ void RowPainter::paintInset(pos_type const pos, LyXFont const & font)
 	x_ += inset->width();
 #ifdef DEBUG_METRICS
 	Dimension dim;
-	BOOST_ASSERT(text_.maxwidth_ > 0);
-	int const w = text_.maxwidth_ - leftMargin() - text_.rightMargin(*bv_.buffer(), par_);
+	BOOST_ASSERT(max_witdh_ > 0);
+	int right_margin = text_metrics_.rightMargin(pm_);
+	int const w = max_witdh_ - leftMargin() - right_margin;
 	MetricsInfo mi(&bv_, font, w);
 	inset->metrics(mi, dim);
 	if (inset->width() > dim.wid) 
@@ -620,7 +633,7 @@ void RowPainter::paintFirst()
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				if (is_rtl)
 					x = leftMargin();
-				x += (width_ - text_.rightMargin(buffer, par_) - leftMargin()) / 2;
+				x += (width_ - text_metrics_.rightMargin(pm_) - leftMargin()) / 2;
 				x -= fm.width(str) / 2;
 			} else if (is_rtl) {
 				x = width_ - leftMargin() -	fm.width(str);
@@ -676,7 +689,7 @@ void RowPainter::paintLast()
 		docstring const & str = par_.layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - fm.width(str)
-			: - text_.rightMargin(*bv_.buffer(), par_) - row_.width();
+			: - text_metrics_.rightMargin(pm_) - row_.width();
 		pain_.text(int(x), yo_, str, font);
 		break;
 	}
@@ -872,11 +885,12 @@ void paintPar
 	pi.base.bv->coordCache().parPos()[&text][pit] = Point(x, y);
 
 	Paragraph const & par = text.paragraphs()[pit];
-	if (par.rows().empty())
+	ParagraphMetrics const & pm = pi.base.bv->parMetrics(&text, pit);
+	if (pm.rows().empty())
 		return;
 
-	RowList::const_iterator const rb = par.rows().begin();
-	RowList::const_iterator const re = par.rows().end();
+	RowList::const_iterator const rb = pm.rows().begin();
+	RowList::const_iterator const re = pm.rows().end();
 
 	y -= rb->ascent();
 	size_type rowno = 0;
@@ -888,7 +902,7 @@ void paintPar
 
 		// Row signature; has row changed since last paint?
 		size_type const row_sig = calculateRowSignature(*rit, par, x, y);
-		bool row_has_changed = par.rowSignature()[rowno] != row_sig;
+		bool row_has_changed = pm.rowSignature()[rowno] != row_sig;
 
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
 		bool in_inset_alone_on_row = innerCursorOnRow(pi, pit, rit,
@@ -917,7 +931,7 @@ void paintPar
 		// then paint the row
 		if (repaintAll || row_has_changed || cursor_on_row) {
 			// Add to row signature cache
-			par.rowSignature()[rowno] = row_sig;
+			pm.rowSignature()[rowno] = row_sig;
 			
 			bool const inside = (y + rit->descent() >= 0
 				&& y - rit->ascent() < ww);
@@ -930,7 +944,7 @@ void paintPar
 			    (!(in_inset_alone_on_row && leftEdgeFixed) 
 				|| row_has_changed)) {
 				pi.pain.fillRectangle(x, y - rit->ascent(),
-				    text.maxwidth_, rit->height(),
+				    rp.maxWidth(), rit->height(),
 				    text.backgroundColor());
 				// If outer row has changed, force nested
 				// insets to repaint completely
@@ -998,10 +1012,10 @@ void paintText(BufferView & bv,
 	// draw contents
 	for (pit_type pit = vi.p1; pit <= vi.p2; ++pit) {
 		refreshInside = repaintAll;
-		Paragraph const & par = text.getPar(pit);
-		yy += par.ascent();
+		ParagraphMetrics const & pm = bv.parMetrics(&text, pit);
+		yy += pm.ascent();
 		paintPar(pi, text, pit, 0, yy, repaintAll);
-		yy += par.descent();
+		yy += pm.descent();
 	}
 
 	// and grey out above (should not happen later)
@@ -1020,13 +1034,15 @@ void paintTextInset(LyXText const & text, PainterInfo & pi, int x, int y)
 {
 //	lyxerr << "  paintTextInset: y: " << y << endl;
 
-	y -= text.getPar(0).ascent();
+	y -= pi.base.bv->parMetrics(&text, 0).ascent();
 	// This flag cannot be set from within same inset:
 	bool repaintAll = refreshInside;
 	for (int pit = 0; pit < int(text.paragraphs().size()); ++pit) {
-		y += text.getPar(pit).ascent();
+		ParagraphMetrics const & pmi 
+			= pi.base.bv->parMetrics(&text, pit);
+		y += pmi.ascent();
 		paintPar(pi, text, pit, x, y, repaintAll);
-		y += text.getPar(pit).descent();
+		y += pmi.descent();
 	}
 }
 

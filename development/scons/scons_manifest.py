@@ -1130,6 +1130,7 @@ src_header_files = Split('''
     paragraph.h
     paragraph_funcs.h
     paragraph_pimpl.h
+    ParagraphMetrics.h
     pariterator.h
     pspell.h
     rowpainter.h
@@ -1139,6 +1140,7 @@ src_header_files = Split('''
     tex-accent.h
     tex-strings.h
     texrow.h
+    TextMetrics.h
     toc.h
     trans.h
     trans_decl.h
@@ -1234,6 +1236,7 @@ src_pre_files = Split('''
     paragraph.C
     paragraph_funcs.C
     paragraph_pimpl.C
+    ParagraphMetrics.C
     pariterator.C
     rowpainter.C
     session.C
@@ -1244,6 +1247,7 @@ src_pre_files = Split('''
     text.C
     text2.C
     text3.C
+    TextMetrics.C
     toc.C
     trans.C
     trans_mgr.C

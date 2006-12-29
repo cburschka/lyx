@@ -24,6 +24,7 @@
 #include "buffer_funcs.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "cursor.h"
 #include "coordcache.h"
 #include "CutAndPaste.h"
@@ -207,19 +208,12 @@ void LyXText::cursorPrevious(LCursor & cur)
 
 	// FIXME: there would maybe a need for this 'updated' boolean in the future...
 	bool updated = setCursorFromCoordinates(cur, x, 0);
-	if (cur.inMathed())
-		updated |= cur.up();
-	else
-		updated |= cursorUp(cur);
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
 
-	if (cpar == cur.pit() && cpos == cur.pos()) {
+	if (cpar == cur.pit() && cpos == cur.pos())
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
-		if (cur.inMathed())
-			updated |= cur.up();
-		else
-			updated |= cursorUp(cur);
-	}
+		cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
 
 	finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
@@ -234,19 +228,13 @@ void LyXText::cursorNext(LCursor & cur)
 	int x = cur.x_target();
 	// FIXME: there would maybe a need for this 'updated' boolean in the future...
 	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	if (cur.inMathed())
-		updated |= cur.down();
-	else
-		updated |= cursorDown(cur);
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
-	if (cpar == cur.pit() && cpos == cur.pos()) {
+	if (cpar == cur.pit() && cpos == cur.pos())
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
-		if (cur.inMathed())
-			updated |= cur.down();
-		else
-			updated |= cursorDown(cur);
-	}
+		cur.dispatch(
+			FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
 	finishUndo();
 	cur.updateFlags(Update::Force | Update::FitCursor);
@@ -333,7 +321,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	bool needsUpdate = !(lyxaction.funcHasFlag(cmd.action,
 		LyXAction::NoUpdate) || singleParUpdate);
 	// Remember the old paragraph metric (_outer_ paragraph!)
-	Dimension olddim = cur.bottom().paragraph().dim();
+	ParagraphMetrics const & pm = cur.bv().parMetrics(
+		cur.bottom().text(), cur.bottom().pit());
+	Dimension olddim = pm.dim();
 
 	switch (cmd.action) {
 
@@ -793,8 +783,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_SERVER_GET_XY:
 		cur.message(from_utf8(
-			convert<string>(cursorX(cur.buffer(), cur.top(), cur.boundary()))
-			+ ' ' + convert<string>(cursorY(cur.top(), cur.boundary()))));
+			convert<string>(cursorX(cur.bv(), cur.top(), cur.boundary()))
+			+ ' ' + convert<string>(cursorY(cur.bv(), cur.top(), cur.boundary()))));
 		break;
 
 	case LFUN_SERVER_SET_XY: {
@@ -1514,9 +1504,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	// FIXME: the following code should go in favor of fine grained
 	// update flag treatment.
-	if (singleParUpdate)
+	if (singleParUpdate) {
 		// Inserting characters does not change par height
-		if (cur.bottom().paragraph().dim().height()
+		ParagraphMetrics const & pms 
+			= cur.bv().parMetrics(cur.bottom().text(), cur.bottom().pit());
+		if (pms.dim().height()
 		    == olddim.height()) {
 			// if so, update _only_ this paragraph
 			cur.updateFlags(Update::SinglePar |
@@ -1525,6 +1517,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			return;
 		} else
 			needsUpdate = true;
+	}
 
 	if (!needsUpdate
 	    && &oldTopSlice.inset() == &cur.inset()

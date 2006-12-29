@@ -18,6 +18,7 @@
 #include "buffer.h"
 #include "cursor.h"
 #include "CutAndPaste.h"
+#include "buffer_funcs.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -190,7 +191,7 @@ int replaceAll(BufferView * bv,
 		++num;
 	}
 
-	bv->buffer()->text().init(bv);
+	updateLabels(buf);
 	bv->putSelectionAt(doc_iterator_begin(buf.inset()), 0, false);
 	if (num)
 		buf.markDirty();

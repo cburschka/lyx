@@ -57,53 +57,11 @@ public:
 	pos_type first, last;
 };
 
-/// Helper class for Paragraph Metrics.
-/// \todo FIXME: this class deserves its own .[Ch] files.
-/// Then, the storage of such object should be done in \c BufferView 
-/// (most probably in the \c CoordCache class along \c Point objects).
-class ParagraphMetrics  {
-public:
-	///
-	Row & getRow(pos_type pos, bool boundary);
-	///
-	Row const & getRow(pos_type pos, bool boundary) const;
-	///
-	size_t pos2row(pos_type pos) const;
-
-	/// LyXText::redoParagraph updates this
-	Dimension & dim() { return dim_; }
-	/// total height of paragraph
-	unsigned int height() const { return dim_.height(); }
-	/// total width of paragraph, may differ from workwidth
-	unsigned int width() const { return dim_.width(); }
-	/// ascend of paragraph above baseline
-	unsigned int ascent() const { return dim_.ascent(); }
-	/// descend of paragraph below baseline
-	unsigned int descent() const { return dim_.descent(); }
-	/// LyXText updates the rows using this access point
-	RowList & rows() { return rows_; }
-	/// The painter and others use this
-	RowList const & rows() const { return rows_; }
-	///
-	RowSignature & rowSignature() const { return rowSignature_; }
-
-	/// dump some information to lyxerr
-	void dump() const;
-
-private:
-	///
-	mutable RowList rows_;
-	///
-	mutable RowSignature rowSignature_;
-	/// cached dimensions of paragraph
-	Dimension dim_;
-};
-
 
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 /// \todo FIXME: any reference to ParagraphMetrics (including inheritance)
 /// should go in order to complete the Model/View separation of this class.
-class Paragraph: public ParagraphMetrics  {
+class Paragraph  {
 public:
 	///
 	enum {
@@ -403,6 +361,10 @@ public:
 	ParagraphParameters const & params() const;
 	///
 	bool hfillExpansion(Row const & row, pos_type pos) const;
+
+	/// Check if we are in a Biblio environment.
+	/// \retval true if the cursor needs to be moved right.
+	bool checkBiblio(bool track_changes);
 
 public:
 	///

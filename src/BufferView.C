@@ -20,6 +20,7 @@
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
+#include "bufferview_funcs.h"
 #include "coordcache.h"
 #include "CutAndPaste.h"
 #include "debug.h"
@@ -186,7 +187,7 @@ void BufferView::setBuffer(Buffer * b)
 				    << "Buffer addr: " << buffer_ << endl;
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
-		buffer_->text().init(this);
+		updateLabels(*buffer_);
 		buffer_->text().setCurrentFont(cursor_);
 		if (buffer_->getCursor().size() > 0 &&
 		    buffer_->getAnchor().size() > 0)
@@ -300,7 +301,6 @@ void BufferView::resize()
 
 	lyxerr[Debug::DEBUG] << BOOST_CURRENT_FUNCTION << endl;
 
-	buffer_->text().init(this);
 	updateMetrics(false);
 	switchKeyMap();
 }
@@ -399,6 +399,8 @@ void BufferView::updateScrollbar()
 	}
 
 	LyXText & t = buffer_->text();
+	TextMetrics & tm = text_metrics_[&t];
+
 	int const parsize = int(t.paragraphs().size() - 1);
 	if (anchor_ref_ >  parsize)  {
 		anchor_ref_ = parsize;
@@ -419,13 +421,14 @@ void BufferView::updateScrollbar()
 	// estimated average paragraph height:
 	if (wh_ == 0)
 		wh_ = height_ / 4;
-	int h = t.getPar(anchor_ref_).height();
+
+	int h = tm.parMetrics(anchor_ref_).height();
 
 	// Normalize anchor/offset (MV):
 	while (offset_ref_ > h && anchor_ref_ < parsize) {
 		anchor_ref_++;
 		offset_ref_ -= h;
-		h = t.getPar(anchor_ref_).height();
+		h = tm.parMetrics(anchor_ref_).height();
 	}
 	// Look at paragraph heights on-screen
 	int sumh = 0;
@@ -433,7 +436,7 @@ void BufferView::updateScrollbar()
 	for (pit_type pit = anchor_ref_; pit <= parsize; ++pit) {
 		if (sumh > height_)
 			break;
-		int const h2 = t.getPar(pit).height();
+		int const h2 = tm.parMetrics(pit).height();
 		sumh += h2;
 		nh++;
 	}
@@ -466,14 +469,16 @@ void BufferView::scrollDocView(int value)
 		return;
 
 	LyXText & t = buffer_->text();
+	TextMetrics & tm = text_metrics_[&t];
 
 	float const bar = value / float(wh_ * t.paragraphs().size());
 
 	anchor_ref_ = int(bar * t.paragraphs().size());
 	if (anchor_ref_ >  int(t.paragraphs().size()) - 1)
 		anchor_ref_ = int(t.paragraphs().size()) - 1;
-	t.redoParagraph(*this, anchor_ref_);
-	int const h = t.getPar(anchor_ref_).height();
+
+	tm.redoParagraph(anchor_ref_);
+	int const h = tm.parMetrics(anchor_ref_).height();
 	offset_ref_ = int((bar * t.paragraphs().size() - anchor_ref_) * h);
 	updateMetrics(false);
 }
@@ -570,12 +575,14 @@ int BufferView::workWidth() const
 void BufferView::center()
 {
 	CursorSlice & bot = cursor_.bottom();
+	TextMetrics & tm = text_metrics_[bot.text()];
 	pit_type const pit = bot.pit();
-	bot.text()->redoParagraph(*this, pit);
-	Paragraph const & par = bot.text()->paragraphs()[pit];
+	int max_width = workWidth();
+	tm.redoParagraph(pit);
+	ParagraphMetrics const & pm = tm.parMetrics(pit);
 	anchor_ref_ = pit;
 	offset_ref_ = bv_funcs::coordOffset(*this, cursor_, cursor_.boundary()).y_
-		+ par.ascent() - height_ / 2;
+		+ pm.ascent() - height_ / 2;
 }
 
 
@@ -1020,6 +1027,8 @@ void BufferView::workAreaResize(int width, int height)
 	width_ = width;
 	height_ = height;
 
+	text_metrics_.clear();
+
 	if (buffer_)
 		resize();
 }
@@ -1189,6 +1198,30 @@ LyXText const * BufferView::getLyXText() const
 }
 
 
+TextMetrics const & BufferView::textMetrics(LyXText const * t) const
+{
+	return const_cast<BufferView *>(this)->textMetrics(t);
+}
+
+
+TextMetrics & BufferView::textMetrics(LyXText const * t)
+{
+	TextMetricsCache::iterator tmc_it  = text_metrics_.find(t);
+	if (tmc_it == text_metrics_.end()) {
+		tmc_it = text_metrics_.insert(
+			make_pair(t, TextMetrics(this, const_cast<LyXText *>(t)))).first;
+	}	
+	return tmc_it->second;
+}
+
+
+ParagraphMetrics const & BufferView::parMetrics(LyXText const * t,
+		pit_type pit) const
+{
+	return textMetrics(t).parMetrics(pit);
+}
+
+
 int BufferView::workHeight() const
 {
 	return height_;
@@ -1272,11 +1305,8 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 
 void BufferView::updateMetrics(bool singlepar)
 {
-	// Clear out the position cache in case of full screen redraw.
-	if (!singlepar)
-		coord_cache_.clear();
-
 	LyXText & buftext = buffer_->text();
+	TextMetrics & tm = textMetrics(&buftext);
 	pit_type size = int(buftext.paragraphs().size());
 
 	if (anchor_ref_ > int(buftext.paragraphs().size() - 1)) {
@@ -1294,23 +1324,29 @@ void BufferView::updateMetrics(bool singlepar)
 	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	if (!singlepar || pit == cursor_.bottom().pit())
-		buftext.redoParagraph(*this, pit);
-	int y0 = buftext.getPar(pit).ascent() - offset_ref_;
+		if (tm.redoParagraph(pit))
+			singlepar = false;
+	
+	// Clear out the position cache in case of full screen redraw.
+	if (!singlepar)
+		coord_cache_.clear();
+
+	int y0 = tm.parMetrics(pit).ascent() - offset_ref_;
 
 	// Redo paragraphs above anchor if necessary; again, in Single Par
 	// mode, only if we encounter the (main text) one having the cursor.
 	int y1 = y0;
 	while (y1 > 0 && pit1 > 0) {
-		y1 -= buftext.getPar(pit1).ascent();
+		y1 -= tm.parMetrics(pit1).ascent();
 		--pit1;
 		if (!singlepar || pit1 == cursor_.bottom().pit())
-			buftext.redoParagraph(*this, pit1);
-		y1 -= buftext.getPar(pit1).descent();
+			tm.redoParagraph(pit1);
+		y1 -= tm.parMetrics(pit1).descent();
 	}
 
 
 	// Take care of ascent of first line
-	y1 -= buftext.getPar(pit1).ascent();
+	y1 -= tm.parMetrics(pit1).ascent();
 
 	// Normalize anchor for next time
 	anchor_ref_ = pit1;
@@ -1327,30 +1363,30 @@ void BufferView::updateMetrics(bool singlepar)
 	// only the one containing the cursor if encountered.
 	int y2 = y0;
 	while (y2 < height_ && pit2 < int(npit) - 1) {
-		y2 += buftext.getPar(pit2).descent();
+		y2 += tm.parMetrics(pit2).descent();
 		++pit2;
 		if (!singlepar || pit2 == cursor_.bottom().pit())
-			buftext.redoParagraph(*this, pit2);
-		y2 += buftext.getPar(pit2).ascent();
+			tm.redoParagraph(pit2);
+		y2 += tm.parMetrics(pit2).ascent();
 	}
 
 	// Take care of descent of last line
-	y2 += buftext.getPar(pit2).descent();
+	y2 += tm.parMetrics(pit2).descent();
 
 	// The coordinates of all these paragraphs are correct, cache them
 	int y = y1;
 	CoordCache::InnerParPosCache & parPos = coord_cache_.parPos()[&buftext];
 	for (pit_type pit = pit1; pit <= pit2; ++pit) {
-		Paragraph const & par = buftext.getPar(pit);
-		y += par.ascent();
+		ParagraphMetrics const & pm = tm.parMetrics(pit);
+		y += pm.ascent();
 		parPos[pit] = Point(0, y);
 		if (singlepar && pit == cursor_.bottom().pit()) {
 			// In Single Paragraph mode, collect here the
 			// y1 and y2 of the (one) paragraph the cursor is in
-			y1 = y - par.ascent();
-			y2 = y + par.descent();
+			y1 = y - pm.ascent();
+			y2 = y + pm.descent();
 		}
-		y += par.descent();
+		y += pm.descent();
 	}
 
 	if (singlepar) {
@@ -1447,6 +1483,5 @@ void BufferView::menuInsertLyXFile(string const & filenm)
 	buffer_->errors("Parse");
 	resize();
 }
-
 
 } // namespace lyx

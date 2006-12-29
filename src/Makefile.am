@@ -241,6 +241,8 @@ lyx_SOURCES = \
 	paper.h \
 	paragraph.C \
 	paragraph.h \
+	ParagraphMetrics.C \
+	ParagraphMetrics.h \
 	paragraph_funcs.C \
 	paragraph_funcs.h \
 	paragraph_pimpl.C \
@@ -264,6 +266,8 @@ lyx_SOURCES = \
 	text.C \
 	text2.C \
 	text3.C \
+	TextMetrics.C \
+	TextMetrics.h \
 	TocBackend.C \
 	TocBackend.h \
 	toc.C \

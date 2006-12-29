@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "buffer.h"
 #include "cursor.h"
 #include "coordcache.h"
@@ -404,17 +405,11 @@ void LCursor::getPos(int & x, int & y) const
 }
 
 
-Row & LCursor::textRow()
-{
-	BOOST_ASSERT(!paragraph().rows().empty());
-	return paragraph().getRow(pos(), boundary());
-}
-
-
 Row const & LCursor::textRow() const
 {
-	BOOST_ASSERT(!paragraph().rows().empty());
-	return paragraph().getRow(pos(), boundary());
+	ParagraphMetrics const & pm = bv().parMetrics(text(), pit());
+	BOOST_ASSERT(!pm.rows().empty());
+	return pm.getRow(pos(), boundary());
 }
 
 

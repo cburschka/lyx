@@ -13,10 +13,11 @@
 #include "insetpagebreak.h"
 
 #include "debug.h"
+#include "gettext.h"
 #include "LColor.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
-#include "gettext.h"
+#include "TextMetrics.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

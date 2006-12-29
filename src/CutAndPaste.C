@@ -627,7 +627,7 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 					     textclass, errorList);
 		updateLabels(cur.buffer());
 		cur.clearSelection();
-		text->setCursor(cur, ppp.first, ppp.second);
+		text->setCursor(cur.top(), ppp.first, ppp.second);
 	}
 
 	// mathed is handled in InsetMathNest/InsetMathGrid

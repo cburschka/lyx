@@ -34,9 +34,14 @@
 #include "outputparams.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList_fwd.h"
+
+#include "rowpainter.h"
+
 #include "sgml.h"
 #include "texrow.h"
 #include "vspace.h"
+
+#include "frontends/FontMetrics.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
@@ -53,13 +58,6 @@
 #include <stack>
 #include <sstream>
 
-
-namespace lyx {
-
-using lyx::support::contains;
-using lyx::support::rsplit;
-using support::subst;
-
 using std::distance;
 using std::endl;
 using std::list;
@@ -68,68 +66,11 @@ using std::string;
 using std::ostream;
 using std::ostringstream;
 
+namespace lyx {
 
-Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
-{
-	BOOST_ASSERT(!rows().empty());
-
-	// If boundary is set we should return the row on which
-	// the character before is inside.
-	if (pos > 0 && boundary)
-		--pos;
-
-	RowList::iterator rit = rows_.end();
-	RowList::iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return *rit;
-}
-
-
-Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
-{
-	BOOST_ASSERT(!rows().empty());
-
-	// If boundary is set we should return the row on which
-	// the character before is inside.
-	if (pos > 0 && boundary)
-		--pos;
-
-	RowList::const_iterator rit = rows_.end();
-	RowList::const_iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return *rit;
-}
-
-
-size_t ParagraphMetrics::pos2row(pos_type pos) const
-{
-	BOOST_ASSERT(!rows().empty());
-
-	RowList::const_iterator rit = rows_.end();
-	RowList::const_iterator const begin = rows_.begin();
-
-	for (--rit; rit != begin && rit->pos() > pos; --rit)
-		;
-
-	return rit - begin;
-}
-
-
-void ParagraphMetrics::dump() const
-{
-	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
-	for (size_t i = 0; i != rows_.size(); ++i) {
-		lyxerr << "  row " << i << ":   ";
-		rows_[i].dump();
-	}
-}
-
+using support::contains;
+using support::rsplit;
+using support::subst;
 
 Paragraph::Paragraph()
 	: begin_of_body_(0), pimpl_(new Paragraph::Pimpl(this))
@@ -140,8 +81,7 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & par)
-	: ParagraphMetrics(par),
-	itemdepth(par.itemdepth), insetlist(par.insetlist),
+	: itemdepth(par.itemdepth), insetlist(par.insetlist),
 	layout_(par.layout_),
 	text_(par.text_), begin_of_body_(par.begin_of_body_),
 	pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
@@ -172,8 +112,6 @@ Paragraph & Paragraph::operator=(Paragraph const & par)
 
 		delete pimpl_;
 		pimpl_ = new Pimpl(*par.pimpl_, this);
-
-		ParagraphMetrics::operator=(par);
 	}
 	return *this;
 }
@@ -1665,5 +1603,26 @@ bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
 	return i != pos;
 }
 
+
+bool Paragraph::checkBiblio(bool track_changes)
+{
+	// Add bibitem insets if necessary
+	if (layout()->labeltype != LABEL_BIBLIO)
+		return false;
+
+	bool hasbibitem = !insetlist.empty()
+		// Insist on it being in pos 0
+		&& getChar(0) == Paragraph::META_INSET
+		&& insetlist.begin()->inset->lyxCode() == InsetBase::BIBITEM_CODE;
+
+	if (hasbibitem)
+		return false;
+
+	InsetBibitem * inset(new InsetBibitem(InsetCommandParams("bibitem")));
+	insertInset(0, static_cast<InsetBase *>(inset),
+		Change(track_changes ? Change::INSERTED : Change::UNCHANGED));
+
+	return true;
+}
 
 } // namespace lyx

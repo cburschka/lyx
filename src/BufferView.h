@@ -18,7 +18,9 @@
 #include "coordcache.h"
 #include "cursor.h"
 #include "metricsinfo.h"
+#include "TextMetrics.h"
 #include "UpdateFlags.h"
+
 #include "support/types.h"
 
 #include <boost/utility.hpp>
@@ -42,7 +44,11 @@ class Language;
 class LCursor;
 class LyXText;
 class ParIterator;
+class ParagraphMetrics;
 class ViewMetricsInfo;
+
+/// A map from paragraph index number to paragraph metrics
+typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
 
 /// Scrollbar Parameters.
 struct ScrollbarParameters
@@ -205,6 +211,12 @@ public:
 	void updateMetrics(bool singlepar = false);
 
 	///
+	TextMetrics const & textMetrics(LyXText const * t) const;
+	TextMetrics & textMetrics(LyXText const * t);
+	///
+	ParagraphMetrics const & parMetrics(LyXText const *, pit_type) const;
+
+	///
 	CoordCache & coordCache() {
 		return coord_cache_;
 	}
@@ -281,6 +293,10 @@ private:
 
 	/// last visited inset (kept to send setMouseHover(false) )
 	InsetBase * last_inset_;
+
+	/// A map from a LyXText to the associated text metrics
+	typedef std::map<LyXText const *, TextMetrics> TextMetricsCache;
+	mutable TextMetricsCache text_metrics_;
 };
 
 

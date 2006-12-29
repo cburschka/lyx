@@ -26,6 +26,7 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "Bullet.h"
 #include "coordcache.h"
 #include "cursor.h"
@@ -41,6 +42,7 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "paragraph.h"
+#include "TextMetrics.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "pariterator.h"
@@ -71,28 +73,11 @@ using std::max;
 using std::min;
 
 
-LyXText::LyXText(BufferView * bv)
-	: maxwidth_(bv ? bv->workWidth() : 100),
-	  current_font(LyXFont::ALL_INHERIT),
+LyXText::LyXText()
+	: current_font(LyXFont::ALL_INHERIT),
 	  background_color_(LColor::background),
 	  autoBreakRows_(false)
 {}
-
-
-void LyXText::init(BufferView * bv)
-{
-	BOOST_ASSERT(bv);
-	maxwidth_ = bv->workWidth();
-	dim_.wid = maxwidth_;
-	dim_.asc = 10;
-	dim_.des = 10;
-
-	pit_type const end = paragraphs().size();
-	for (pit_type pit = 0; pit != end; ++pit)
-		pars_[pit].rows().clear();
-
-	updateLabels(*bv->buffer());
-}
 
 
 bool LyXText::isMainText(Buffer const & buffer) const
@@ -502,7 +487,8 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 bool LyXText::cursorHome(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	Row const & row = cur.paragraph().getRow(cur.pos(),cur.boundary());
+	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
+	Row const & row = pm.getRow(cur.pos(),cur.boundary());
 	return setCursor(cur, cur.pit(), row.pos());
 }
 
@@ -719,7 +705,6 @@ void LyXText::setCursorIntern(LCursor & cur,
 	BOOST_ASSERT(this == cur.text());
 	cur.boundary(boundary);
 	setCursor(cur.top(), par, pos);
-	cur.setTargetX();
 	if (setfont)
 		setCurrentFont(cur);
 }
@@ -767,13 +752,15 @@ void LyXText::setCurrentFont(LCursor & cur)
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
-pos_type LyXText::getColumnNearX(BufferView const & bv, pit_type const pit,
-				 Row const & row, int & x, bool & boundary) const
+pos_type LyXText::getColumnNearX(BufferView const & bv, int right_margin,
+		pit_type const pit, Row const & row, int & x, bool & boundary) const
 {
 	Buffer const & buffer = *bv.buffer();
+	TextMetrics const & tm = bv.textMetrics(this);
 	int const xo = bv.coordCache().get(this, pit).x_;
 	x -= xo;
-	RowMetrics const r = computeRowMetrics(buffer, pit, row);
+	int max_witdh = tm.maxWidth(); 
+	RowMetrics const r = tm.computeRowMetrics(pit, row);
 	Paragraph const & par = pars_[pit];
 
 	pos_type vc = row.pos();
@@ -921,35 +908,41 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 	CoordCache::InnerParPosCache::const_iterator et = cc.end();
 	CoordCache::InnerParPosCache::const_iterator last = et; last--;
 
+	TextMetrics & tm = bv.textMetrics(this);
+	ParagraphMetrics const & pm = tm.parMetrics(it->first);
+	int max_width = tm.maxWidth();
+
 	// If we are off-screen (before the visible part)
 	if (y < 0
 		// and even before the first paragraph in the cache.
-		&& y < it->second.y_ - int(pars_[it->first].ascent())) {
+		&& y < it->second.y_ - int(pm.ascent())) {
 		//  and we are not at the first paragraph in the inset.
 		if (it->first == 0)
 			return 0;
 		// then this is the paragraph we are looking for.
 		pit = it->first - 1;
 		// rebreak it and update the CoordCache.
-		redoParagraph(bv, pit);
+		tm.redoParagraph(pit);
 		bv.coordCache().parPos()[this][pit] =
-			Point(0, it->second.y_ - pars_[it->first].descent());
+			Point(0, it->second.y_ - pm.descent());
 		return pit;
 	}
+
+	ParagraphMetrics const & pm_last = bv.parMetrics(this, last->first);
 
 	// If we are off-screen (after the visible part)
 	if (y > bv.workHeight()
 		// and even after the first paragraph in the cache.
-		&& y >= last->second.y_ + int(pars_[last->first].descent())) {
+		&& y >= last->second.y_ + int(pm_last.descent())) {
 		pit = last->first + 1;
 		//  and we are not at the last paragraph in the inset.
 		if (pit == int(pars_.size()))
 			return last->first;
 		// then this is the paragraph we are looking for.
 		// rebreak it and update the CoordCache.
-		redoParagraph(bv, pit);
+		tm.redoParagraph(pit);
 		bv.coordCache().parPos()[this][pit] =
-			Point(0, last->second.y_ + pars_[last->first].ascent());
+			Point(0, last->second.y_ + pm_last.ascent());
 		return pit;
 	}
 
@@ -960,7 +953,9 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 			<< " y: " << it->second.y_
 			<< endl;
 
-		if (it->first >= pit && int(it->second.y_) - int(pars_[it->first].ascent()) <= y) {
+		ParagraphMetrics const & pm = bv.parMetrics(this, it->first);
+
+		if (it->first >= pit && int(it->second.y_) - int(pm.ascent()) <= y) {
 			pit = it->first;
 			yy = it->second.y_;
 		}
@@ -978,10 +973,12 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) const
 {
 	Paragraph const & par = pars_[pit];
-	int yy = bv.coordCache().get(this, pit).y_ - par.ascent();
-	BOOST_ASSERT(!par.rows().empty());
-	RowList::const_iterator rit = par.rows().begin();
-	RowList::const_iterator const rlast = boost::prior(par.rows().end());
+	ParagraphMetrics const & pm = bv.parMetrics(this, pit);
+
+	int yy = bv.coordCache().get(this, pit).y_ - pm.ascent();
+	BOOST_ASSERT(!pm.rows().empty());
+	RowList::const_iterator rit = pm.rows().begin();
+	RowList::const_iterator const rlast = boost::prior(pm.rows().end());
 	for (; rit != rlast; yy += rit->height(), ++rit)
 		if (yy + rit->height() > y)
 			break;
@@ -999,18 +996,17 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 	}
 	pit_type pit = getPitNearY(cur.bv(), y);
 	BOOST_ASSERT(pit != -1);
-	// When another window is opened with the same document, rows()
-	// will be cleared so pars_[pit].rows() might be empty when switching
-	// between windwos. A better solution is that each buffer view
-	// has its own rows() for the same buffer.
-	if (pars_[pit].rows().empty())
-		redoParagraph(cur.bv(), pit);
+
 	Row const & row = getRowNearY(cur.bv(), y, pit);
 	bool bound = false;
 
+	TextMetrics const & tm = cur.bv().textMetrics(this);
+	ParagraphMetrics const & pm = tm.parMetrics(pit);
+	Buffer const & buffer = cur.buffer();
+	int right_margin = tm.rightMargin(pm);
 	int xx = x; // is modified by getColumnNearX
 	pos_type const pos = row.pos()
-		+ getColumnNearX(cur.bv(), pit, row, xx, bound);
+		+ getColumnNearX(cur.bv(), right_margin, pit, row, xx, bound);
 	cur.pit() = pit;
 	cur.pos() = pos;
 	cur.boundary(bound);
@@ -1131,13 +1127,15 @@ bool LyXText::cursorUp(LCursor & cur)
 	cur.updateFlags(Update::FitCursor);
 
 	Paragraph const & par = cur.paragraph();
+	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
+
 	int row;
 	int const x = cur.targetX();
 
 	if (cur.pos() && cur.boundary())
-		row = par.pos2row(cur.pos()-1);
+		row = pm.pos2row(cur.pos()-1);
 	else
-		row = par.pos2row(cur.pos());
+		row = pm.pos2row(cur.pos());
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
@@ -1145,7 +1143,7 @@ bool LyXText::cursorUp(LCursor & cur)
 		// Go to middle of previous row. 16 found to work OK;
 		// 12 = top/bottom margin of display math
 		int const margin = 3 * InsetMathHull::displayMargin() / 2;
-		editXY(cur, x, y - par.rows()[row].ascent() - margin);
+		editXY(cur, x, y - pm.rows()[row].ascent() - margin);
 		cur.clearSelection();
 
 		// This happens when you move out of an inset.
@@ -1167,8 +1165,9 @@ bool LyXText::cursorUp(LCursor & cur)
 	} else if (cur.pit() > 0) {
 		--cur.pit();
 		//cannot use 'par' now
+		ParagraphMetrics const & pmcur = cur.bv().parMetrics(this, cur.pit());
 		updateNeeded |= setCursor(cur, cur.pit(),
-			x2pos(cur.bv(), cur.pit(), cur.paragraph().rows().size() - 1, x));
+			x2pos(cur.bv(), cur.pit(), pmcur.rows().size() - 1, x));
 	}
 
 	cur.x_target() = x;
@@ -1183,20 +1182,22 @@ bool LyXText::cursorDown(LCursor & cur)
 	cur.updateFlags(Update::FitCursor);
 
 	Paragraph const & par = cur.paragraph();
+	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
+
 	int row;
 	int const x = cur.targetX();
 
 	if (cur.pos() && cur.boundary())
-		row = par.pos2row(cur.pos()-1);
+		row = pm.pos2row(cur.pos()-1);
 	else
-		row = par.pos2row(cur.pos());
+		row = pm.pos2row(cur.pos());
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
 		LCursor old = cur;
 		// To middle of next row
 		int const margin = 3 * InsetMathHull::displayMargin() / 2;
-		editXY(cur, x, y + par.rows()[row].descent() + margin);
+		editXY(cur, x, y + pm.rows()[row].descent() + margin);
 		cur.clearSelection();
 
 		// This happens when you move out of an inset.
@@ -1218,7 +1219,7 @@ bool LyXText::cursorDown(LCursor & cur)
 
 	bool updateNeeded = false;
 
-	if (row + 1 < int(par.rows().size())) {
+	if (row + 1 < int(pm.rows().size())) {
 		updateNeeded |= setCursor(cur, cur.pit(),
 			x2pos(cur.bv(), cur.pit(), row + 1, x));
 	} else if (cur.pit() + 1 < int(paragraphs().size())) {
@@ -1321,8 +1322,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)) {
 			oldpar.eraseChar(old.pos() - 1, false); // do not track changes in DEPM
-			// rebreak it and update the CoordCache.
-			redoParagraph(cur.bv(), old.pit());
+			TextMetrics & tm = cur.bv().textMetrics(this);
+			tm.redoParagraph(old.pit());
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
@@ -1397,12 +1398,5 @@ void LyXText::recUndo(LCursor & cur, pit_type par) const
 {
 	recordUndo(cur, Undo::ATOMIC, par, par);
 }
-
-
-int defaultRowHeight()
-{
-	return int(theFontMetrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);
-}
-
 
 } // namespace lyx

@@ -1,0 +1,158 @@
+/**
+ * \file paragraph.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Asger Alstrup
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
+ * \author André Pönitz
+ * \author Dekel Tsur
+ * \author Jürgen Vigna
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#include <config.h>
+
+#include "ParagraphMetrics.h"
+
+#include "buffer.h"
+#include "bufferparams.h"
+#include "counters.h"
+#include "encoding.h"
+#include "debug.h"
+#include "gettext.h"
+#include "language.h"
+#include "LaTeXFeatures.h"
+#include "lyxfont.h"
+#include "lyxrc.h"
+#include "lyxrow.h"
+#include "outputparams.h"
+#include "paragraph_funcs.h"
+#include "ParagraphList_fwd.h"
+
+#include "rowpainter.h"
+
+#include "sgml.h"
+#include "texrow.h"
+#include "vspace.h"
+
+#include "frontends/FontMetrics.h"
+
+#include "insets/insetbibitem.h"
+#include "insets/insetoptarg.h"
+
+#include "support/lstrings.h"
+#include "support/textutils.h"
+#include "support/convert.h"
+#include "support/unicode.h"
+
+#include <boost/bind.hpp>
+
+#include <algorithm>
+#include <list>
+#include <stack>
+#include <sstream>
+
+
+namespace lyx {
+
+using lyx::support::contains;
+using lyx::support::rsplit;
+using support::subst;
+
+using std::distance;
+using std::endl;
+using std::list;
+using std::stack;
+using std::string;
+using std::ostream;
+using std::ostringstream;
+
+
+ParagraphMetrics::ParagraphMetrics(Paragraph const & par): par_(&par)
+{
+}
+
+
+Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
+{
+	BOOST_ASSERT(!rows().empty());
+
+	// If boundary is set we should return the row on which
+	// the character before is inside.
+	if (pos > 0 && boundary)
+		--pos;
+
+	RowList::iterator rit = rows_.end();
+	RowList::iterator const begin = rows_.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return *rit;
+}
+
+
+Row const & ParagraphMetrics::getRow(pos_type pos, bool boundary) const
+{
+	BOOST_ASSERT(!rows().empty());
+
+	// If boundary is set we should return the row on which
+	// the character before is inside.
+	if (pos > 0 && boundary)
+		--pos;
+
+	RowList::const_iterator rit = rows_.end();
+	RowList::const_iterator const begin = rows_.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return *rit;
+}
+
+
+size_t ParagraphMetrics::pos2row(pos_type pos) const
+{
+	BOOST_ASSERT(!rows().empty());
+
+	RowList::const_iterator rit = rows_.end();
+	RowList::const_iterator const begin = rows_.begin();
+
+	for (--rit; rit != begin && rit->pos() > pos; --rit)
+		;
+
+	return rit - begin;
+}
+
+
+void ParagraphMetrics::dump() const
+{
+	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
+	for (size_t i = 0; i != rows_.size(); ++i) {
+		lyxerr << "  row " << i << ":   ";
+		rows_[i].dump();
+	}
+}
+
+int ParagraphMetrics::rightMargin(Buffer const & buffer) const
+{
+	BufferParams const & params = buffer.params();
+	LyXTextClass const & tclass = params.getLyXTextClass();
+	docstring trmarg = from_utf8(tclass.rightmargin());
+	docstring lrmarg = from_utf8(par_->layout()->rightmargin);
+	frontend::FontMetrics const & fm = theFontMetrics(params.getFont());
+	int const r_margin =
+		lyx::rightMargin()
+		+ fm.signedWidth(trmarg)
+		+ fm.signedWidth(lrmarg)
+		* 4 / (par_->getDepth() + 4);
+
+	return r_margin;
+}
+
+} // namespace lyx
