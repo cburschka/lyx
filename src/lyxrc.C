@@ -1053,6 +1053,7 @@ int LyXRC::read(LyXLex & lexrc)
 				shortcut = lexrc.getString();
 			}
 			string viewer, editor;
+			string flags;
 			// Hack to ensure compatibility with versions older
 			// than 1.4.0
 			int le = lexrc.lex();
@@ -1061,6 +1062,15 @@ int LyXRC::read(LyXLex & lexrc)
 				if (le == LyXLex::LEX_DATA) {
 					if (lexrc.next()) {
 						editor = lexrc.getString();
+						le = lexrc.lex();
+						if (le != LyXLex::LEX_FEOF &&
+						    le != LyXLex::LEX_UNDEF) {
+							flags = lexrc.getString();
+							if (le != LyXLex::LEX_DATA) {
+								lexrc.pushToken(flags);
+								flags.erase();
+							}
+						}
 					}
 				} else {
 					// We have got a known token.
@@ -1071,6 +1081,17 @@ int LyXRC::read(LyXLex & lexrc)
 					viewer.erase();
 				}
 			}
+			int flgs = Format::none;
+			while (!flags.empty()) {
+				string flag;
+				flags = lyx::support::split(flags, flag, ',');
+				if (flag == "vector")
+					flgs |= Format::vector;
+				else
+					lyxerr << "Ignoring unknown flag `"
+					       << flag << "' for format `"
+					       << format << "'." << endl;
+			}
 			if (prettyname.empty()) {
 				if (converters.formatIsUsed(format)) {
 					lyxerr << "Can't delete format "
@@ -1080,7 +1101,7 @@ int LyXRC::read(LyXLex & lexrc)
 				}
 			} else {
 				formats.add(format, extension, prettyname,
-					    shortcut, viewer, editor);
+				            shortcut, viewer, editor, flgs);
 			}
 			break;
 		}
@@ -1960,13 +1981,20 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			    format->prettyname() != cit->prettyname() ||
 			    format->shortcut() != cit->shortcut() ||
 			    format->viewer() != cit->viewer() ||
-			    format->editor() != cit->editor())
+			    format->editor() != cit->editor() ||
+			    format->vectorFormat() != cit->vectorFormat()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extension() << "\" \""
 				   << cit->prettyname() << "\" \""
 				   << cit->shortcut() << "\" \""
 				   << cit->viewer() << "\" \""
-				   << cit->editor() << "\"\n";
+				   << cit->editor() << "\" \"";
+				std::vector<string> flags;
+				if (cit->vectorFormat())
+					flags.push_back("vector");
+				os << lyx::support::getStringFromVector(flags);
+				os << "\"\n";
+			}
 		}
 
 		// Look for deleted formats

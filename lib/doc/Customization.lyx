@@ -1,4 +1,4 @@
-#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -1791,8 +1791,9 @@ P
 references:Conversion
 \family default
  dialog.
- This does currently only work in the Windows® port of LyX, but it is planned
- to implement this feature on all other ports that can support it, too.
+ This does currently only work in the Windows® and Mac OS X ports of LyX,
+ but it is planned to implement this feature on all other ports that can
+ support it, too.
 \end_layout
 
 \begin_layout Standard
@@ -1846,6 +1847,68 @@ For example, the file may reference other files with relative filenames,
 .
  This is done by the Copier: It copies a file to (or from) the temporary
  directory and may modify it in the process.
+\end_layout
+
+\begin_layout Standard
+Sometimes LyX needs to know a bit more about the properties of a format.
+ These bits can be specified with flags.
+ Currently there is only one flag, but more will be added in the future:
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+vector
+\family default
+ flag tells LyX whether a format can contain vector graphics.
+ This information is used to determine the target format of included graphics
+ for 
+\family typewriter
+pdflatex
+\family default
+ export.
+ Included graphics may need to be converted to either 
+\family typewriter
+pdf
+\family default
+, 
+\family typewriter
+png
+\family default
+ or 
+\family typewriter
+jpg
+\family default
+, since 
+\family typewriter
+pdflatex
+\family default
+ can not handle other image formats.
+ If an included graphic is not already in 
+\family typewriter
+pdf
+\family default
+, 
+\family typewriter
+png
+\family default
+ or 
+\family typewriter
+jpg
+\family default
+ format it is converted to 
+\family typewriter
+pdf
+\family default
+ if the 
+\family typewriter
+vector
+\family default
+ flag of the format is set, and otherwise to 
+\family typewriter
+png
+\family default
+.
 \end_layout
 
 \begin_layout Section

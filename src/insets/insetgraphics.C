@@ -135,11 +135,12 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 	// Are we using latex or pdflatex?
 	if (runparams.flavor == OutputParams::PDFLATEX) {
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode" << endl;
-		// Convert postscript to pdf
-		if (format == "eps" || format == "ps")
+		Format const * const f = formats.getFormat(format);
+		// Convert vector graphics to pdf
+		if (f && f->vectorFormat())
 			return "pdf";
 		// pdflatex can use jpeg, png and pdf directly
-		if (format == "jpg" || format == "pdf")
+		if (format == "jpg")
 			return format;
 		// Convert everything else to png
 		return "png";

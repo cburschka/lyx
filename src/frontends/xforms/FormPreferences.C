@@ -1309,6 +1309,7 @@ void FormPreferences::Formats::build()
 	setPrehandler(dialog_->input_extension);
 	setPrehandler(dialog_->input_viewer);
 	setPrehandler(dialog_->input_editor);
+	setPrehandler(dialog_->check_vector);
 	setPrehandler(dialog_->input_shrtcut);
 }
 
@@ -1338,6 +1339,9 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 	if (ob == dialog_->input_editor)
 		return  _("The command used to launch the editor application.");
 
+	if (ob == dialog_->check_vector)
+		return  _("Tell whether this format can contain vector graphics.");
+
 	if (ob == dialog_->button_delete)
 		return  _("Remove the current format from the list of available "
 			  "formats. Note: you must then \"Apply\" the change.");
@@ -1365,7 +1369,8 @@ bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 	    || ob == dialog_->input_shrtcut
 	    || ob == dialog_->input_extension
 	    || ob == dialog_->input_viewer
-	    || ob == dialog_->input_editor)
+	    || ob == dialog_->input_editor
+	    || ob == dialog_->check_vector)
 		return Input();
 
 	if (ob == dialog_->button_add)
@@ -1413,10 +1418,15 @@ bool FormPreferences::Formats::Add()
 	string const shortcut =  getString(dialog_->input_shrtcut);
 	string const viewer =  getString(dialog_->input_viewer);
 	string const editor =  getString(dialog_->input_editor);
+	bool const vector = fl_get_button(dialog_->check_vector);
 
 	Format const * old = formats().getFormat(name);
 	string const old_prettyname = old ? old->prettyname() : string();
-	formats().add(name, extension, prettyname, shortcut, viewer, editor);
+	int flags = Format::none;
+	if (vector)
+		flags |= Format::vector;
+	formats().add(name, extension, prettyname, shortcut, viewer, editor,
+	              flags);
 	if (!old || prettyname != old_prettyname) {
 		UpdateBrowser();
 		if (old)
@@ -1444,6 +1454,7 @@ bool FormPreferences::Formats::Browser()
 	fl_set_input(dialog_->input_extension, f.extension().c_str());
 	fl_set_input(dialog_->input_viewer, f.viewer().c_str());
 	fl_set_input(dialog_->input_editor, f.editor().c_str());
+	fl_set_button(dialog_->check_vector, f.vectorFormat());
 
 	fl_set_object_label(dialog_->button_add,
 			    idex(_("Modify|#M")).c_str());

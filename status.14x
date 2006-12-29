@@ -51,6 +51,11 @@ What's new
   Tutorial); Update German (all), Hebrew (Intro) and Italian
   (Tutorial, UserGuide) documentation.
 
+- Convert included vector graphics to pdf instead of png for pdflatex export
+  (bug 2868). This is implemented with the help of a new format flag "vector"
+  that you have to set manually for your self defined vector graphics formats
+  if you want to use this feature.
+
 ** Bug fixes:
 
 * Document Input/Output

@@ -59,6 +59,21 @@
                         <cstring>editorED</cstring>
                     </property>
                 </widget>
+                <widget row="7"  column="1" >
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>vectorCB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Vector graphi&amp;cs format</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Tell whether this format can contain vector graphics.</string>
+                    </property>
+                </widget>
                 <widget row="2"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
@@ -402,5 +417,6 @@
     <tabstop>extensionED</tabstop>
     <tabstop>viewerED</tabstop>
     <tabstop>editorED</tabstop>
+    <tabstop>vectorCB</tabstop>
 </tabstops>
 </UI>

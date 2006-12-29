@@ -240,13 +240,13 @@ def checkLatex(dtl_tools):
 def checkFormatEntries(dtl_tools):  
     ''' Check all formats (\Format entries) '''
     checkViewer('a Tgif viewer and editor', ['tgif'],
-        rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"'])
+        rc_entry = [r'\Format tgif       obj     Tgif                   "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a FIG viewer and editor', ['xfig'],
-        rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"'])
+        rc_entry = [r'\Format fig        fig     FIG                    "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a Grace viewer and editor', ['xmgrace'],
-        rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"'])
+        rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"'])
     #
     checkViewer('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"'])
@@ -284,38 +284,38 @@ def checkFormatEntries(dtl_tools):
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
     checkViewer('a Postscript previewer', ['gv', 'ghostview -swap', 'kghostview'],
-        rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""
-\Format ps         ps      Postscript             t  "%%"	""'''])
+        rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"
+\Format ps         ps      Postscript             t  "%%"	""	"vector"'''])
     #
     checkViewer('a PDF previewer', ['acrobat', 'acroread', 'gv', 'ghostview', \
                             'xpdf', 'kpdf', 'kghostview'],
-        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""
-\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""
-\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""'''])
+        rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"vector"
+\Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"vector"
+\Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"vector"'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi'],
-        rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""'])
+        rc_entry = [r'\Format dvi        dvi     DVI                    D  "%%"	""	"vector"'])
     if dtl_tools:
         # Windows only: DraftDVI
-        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	""')
+        addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"vector"')
     #
     checkViewer('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""'])
     #
     # entried that do not need checkProg
-    addToRC(r'''\Format date       ""     "date command"          "" ""	""
-\Format fax        ""      Fax                    "" ""	""
-\Format lyx        lyx     LyX                    "" ""	""
-\Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""
-\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""
-\Format pdftex     pdftex_t PDFTEX                "" ""	""
-\Format program    ""      Program                "" ""	""
-\Format pstex      pstex_t PSTEX                  "" ""	""
-\Format rtf        rtf    "Rich Text Format"      "" ""	""
-\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
-\Format wmf        wmf    "Windows Meta File"     "" ""	""
-\Format word       doc    "MS Word"               W  ""	""
-\Format wordhtml   html   "MS Word (HTML)"        "" ""        ""
+    addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
+\Format fax        ""      Fax                    "" ""	""	""
+\Format lyx        lyx     LyX                    "" ""	""	""
+\Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""	""
+\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
+\Format pdftex     pdftex_t PDFTEX                "" ""	""	""
+\Format program    ""      Program                "" ""	""	""
+\Format pstex      pstex_t PSTEX                  "" ""	""	""
+\Format rtf        rtf    "Rich Text Format"      "" ""	""	"vector"
+\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"vector"
+\Format wmf        wmf    "Windows Meta File"     "" ""	""	"vector"
+\Format word       doc    "MS Word"               W  ""	""	"vector"
+\Format wordhtml   html   "MS Word (HTML)"        "" ""        ""	""
 ''')
 
 

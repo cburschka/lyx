@@ -187,6 +187,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(fileformatsModule->extensionED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(fileformatsModule->viewerED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
 	connect(fileformatsModule->editorED, SIGNAL(textChanged(const QString&)), this, SLOT(fileformat_changed()));
+	connect(fileformatsModule->vectorCB, SIGNAL(toggled(bool)), this, SLOT(fileformat_changed()));
 
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
@@ -727,6 +728,7 @@ void QPrefsDialog::switch_format(int nr)
 	fileformatsModule->shortcutED->setText(toqstr(f.shortcut()));
 	fileformatsModule->viewerED->setText(toqstr(f.viewer()));
 	fileformatsModule->editorED->setText(toqstr(f.editor()));
+	fileformatsModule->vectorCB->setChecked(f.vectorFormat());
 	fileformatsModule->formatRemovePB->setEnabled(
 		!form_->converters().formatIsUsed(f.name()));
 
@@ -768,16 +770,18 @@ void QPrefsDialog::updateFormatsButtons()
 	string const old_extension(f.extension());
 	string const old_viewer(f.viewer());
 	string const old_editor(f.editor());
+	bool const old_vector(f.vectorFormat());
 
 	string const new_pretty(fromqstr(gui_name));
 	string const new_shortcut(fromqstr(fileformatsModule->shortcutED->text()));
 	string const new_extension(fromqstr(fileformatsModule->extensionED->text()));
 	string const new_viewer(fromqstr(fileformatsModule->viewerED->text()));
 	string const new_editor(fromqstr(fileformatsModule->editorED->text()));
+	bool const new_vector(fileformatsModule->vectorCB->isChecked());
 
 	bool modified = ((old_pretty != new_pretty) || (old_shortcut != new_shortcut)
 		|| (old_extension != new_extension) || (old_viewer != new_viewer)
-		|| (old_editor != new_editor));
+		|| old_editor != new_editor || old_vector != new_vector);
 
 	fileformatsModule->formatModifyPB->setEnabled(
 		valid && known && modified && !known_otherwise);
@@ -794,8 +798,12 @@ void QPrefsDialog::new_format()
 	string const shortcut = fromqstr(fileformatsModule->shortcutED->text());
 	string const viewer = fromqstr(fileformatsModule->viewerED->text());
 	string const editor = fromqstr(fileformatsModule->editorED->text());
+	int flags = Format::none;
+	if (fileformatsModule->vectorCB->isChecked())
+		flags |= Format::vector;
 
-	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
+	form_->formats().add(name, extension, prettyname, shortcut, viewer,
+	                     editor, flags);
 	form_->formats().sort();
 	updateFormats();
 	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(name));
@@ -823,8 +831,12 @@ void QPrefsDialog::modify_format()
 	string const shortcut = fromqstr(fileformatsModule->shortcutED->text());
 	string const viewer = fromqstr(fileformatsModule->viewerED->text());
 	string const editor = fromqstr(fileformatsModule->editorED->text());
+	int flags = Format::none;
+	if (fileformatsModule->vectorCB->isChecked())
+		flags |= Format::vector;
 
-	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
+	form_->formats().add(name, extension, prettyname, shortcut, viewer,
+	                     editor, flags);
 	form_->formats().sort();
 
 	fileformatsModule->formatsLB->setUpdatesEnabled(false);

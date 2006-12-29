@@ -19,9 +19,16 @@ class Buffer;
 
 class Format {
 public:
+	/// Flags for some format properties
+	enum Flags {
+		none = 0,
+		/// Set if this format can contain vector graphics.
+		vector = 1,
+	};
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
-	       std::string const & s, std::string const & v, std::string const & ed);
+	       std::string const & s, std::string const & v, std::string const & ed,
+	       int);
 	///
 	bool dummy() const;
 	///
@@ -60,6 +67,10 @@ public:
 	void setEditor(std::string const & v) {
 		editor_ = v;
 	}
+	///
+	bool vectorFormat() const {
+		return flags_ & vector;
+	}
 private:
 	std::string name_;
 	///
@@ -72,10 +83,13 @@ private:
 	std::string viewer_;
 	///
 	std::string editor_;
+	///
+	int flags_;
 };
 
 
 bool operator<(Format const & a, Format const & b);
+
 
 ///
 class Formats {
@@ -107,7 +121,8 @@ public:
 	///
 	void add(std::string const & name, std::string const & extension,
 	         std::string const & prettyname, std::string const & shortcut,
-	         std::string const & viewer, std::string const & editor);
+	         std::string const & viewer, std::string const & editor,
+	         int flags);
 	///
 	void erase(std::string const & name);
 	///
