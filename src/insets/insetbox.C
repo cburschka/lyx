@@ -168,10 +168,16 @@ void InsetBox::setButtonLabel()
 }
 
 
+bool InsetBox::hasFixedWidth() const
+{
+      return params_.inner_box || params_.special != "width";
+}
+
+
 bool InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	MetricsInfo mi = m;
-	if (params_.inner_box || params_.special != "width")
+	if (hasFixedWidth())
 		mi.base.textwidth = params_.width.inPixels(m.base.textwidth);
 	InsetCollapsable::metrics(mi, dim);
 	bool const changed = dim_ != dim;
