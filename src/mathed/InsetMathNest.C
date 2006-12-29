@@ -401,11 +401,12 @@ void InsetMathNest::handleFont
 {
 	// this whole function is a hack and won't work for incremental font
 	// changes...
-	recordUndo(cur, Undo::ATOMIC);
 
-	if (cur.inset().asInsetMath()->name() == font)
+	if (cur.inset().asInsetMath()->name() == font) {
+		recordUndoInset(cur, Undo::ATOMIC);
 		cur.handleFont(to_utf8(font));
-	else {
+	} else {
+		recordUndo(cur, Undo::ATOMIC);
 		cur.handleNest(createInsetMath(font));
 		cur.insert(arg);
 	}
