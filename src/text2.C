@@ -759,7 +759,6 @@ pos_type LyXText::getColumnNearX(BufferView const & bv, int right_margin,
 	TextMetrics const & tm = bv.textMetrics(this);
 	int const xo = bv.coordCache().get(this, pit).x_;
 	x -= xo;
-	int max_witdh = tm.maxWidth(); 
 	RowMetrics const r = tm.computeRowMetrics(pit, row);
 	Paragraph const & par = pars_[pit];
 
@@ -910,7 +909,6 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 
 	TextMetrics & tm = bv.textMetrics(this);
 	ParagraphMetrics const & pm = tm.parMetrics(it->first);
-	int max_width = tm.maxWidth();
 
 	// If we are off-screen (before the visible part)
 	if (y < 0
@@ -972,7 +970,6 @@ pit_type LyXText::getPitNearY(BufferView & bv, int y)
 
 Row const & LyXText::getRowNearY(BufferView const & bv, int y, pit_type pit) const
 {
-	Paragraph const & par = pars_[pit];
 	ParagraphMetrics const & pm = bv.parMetrics(this, pit);
 
 	int yy = bv.coordCache().get(this, pit).y_ - pm.ascent();
@@ -1002,7 +999,6 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 
 	TextMetrics const & tm = cur.bv().textMetrics(this);
 	ParagraphMetrics const & pm = tm.parMetrics(pit);
-	Buffer const & buffer = cur.buffer();
 	int right_margin = tm.rightMargin(pm);
 	int xx = x; // is modified by getColumnNearX
 	pos_type const pos = row.pos()
@@ -1070,13 +1066,15 @@ bool LyXText::cursorLeft(LCursor & cur)
 		return setCursor(cur, cur.pit(), cur.pos(), true, true);
 	}
 	if (cur.pos() != 0) {
-		bool boundary = cur.boundary();
 		bool updateNeeded = setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
 		if (!checkAndActivateInset(cur, false)) {
+			/** FIXME: What's this cause purpose???
+			bool boundary = cur.boundary();
 			if (false && !boundary &&
 			    bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
 				updateNeeded |=
 					setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
+			*/
 		}
 		return updateNeeded;
 	}
@@ -1126,7 +1124,6 @@ bool LyXText::cursorUp(LCursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
-	Paragraph const & par = cur.paragraph();
 	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
 
 	int row;
@@ -1181,7 +1178,6 @@ bool LyXText::cursorDown(LCursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
-	Paragraph const & par = cur.paragraph();
 	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
 
 	int row;

@@ -205,9 +205,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 	pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
-
-	// FIXME: there would maybe a need for this 'updated' boolean in the future...
-	bool updated = setCursorFromCoordinates(cur, x, 0);
+	setCursorFromCoordinates(cur, x, 0);
 	cur.dispatch(FuncRequest(cur.selection()? LFUN_UP_SELECT: LFUN_UP));
 
 	if (cpar == cur.pit() && cpos == cur.pos())
@@ -226,8 +224,7 @@ void LyXText::cursorNext(LCursor & cur)
 	pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
-	// FIXME: there would maybe a need for this 'updated' boolean in the future...
-	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
+	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
 	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWN_SELECT: LFUN_DOWN));
 
 	if (cpar == cur.pit() && cpos == cur.pos())

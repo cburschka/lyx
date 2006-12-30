@@ -185,8 +185,10 @@ public:
 	void recUndo(LCursor & cur, pit_type first, pit_type last) const;
 	///
 	void recUndo(LCursor & cur, pit_type first) const;
-	/// returns true if par was empty and was removed
-	bool setCursorFromCoordinates(LCursor & cur, int x, int y);
+
+	/// sets cursor only within this LyXText.
+	/// x,y are screen coordinates
+	void setCursorFromCoordinates(LCursor & cur, int x, int y);
 
 	/// sets cursor recursively descending into nested editable insets
 	/**

@@ -138,8 +138,6 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  erased_(pi.erased_),
 	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
-	Buffer const & buffer = *bv_.buffer();
-	int const right_margin = text_metrics_.rightMargin(pm_);
 	RowMetrics m = text_metrics_.computeRowMetrics(pit_, row_);
 	x_ = m.x + xo_;
 

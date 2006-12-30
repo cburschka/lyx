@@ -577,7 +577,6 @@ void BufferView::center()
 	CursorSlice & bot = cursor_.bottom();
 	TextMetrics & tm = text_metrics_[bot.text()];
 	pit_type const pit = bot.pit();
-	int max_width = workWidth();
 	tm.redoParagraph(pit);
 	ParagraphMetrics const & pm = tm.parMetrics(pit);
 	anchor_ref_ = pit;
