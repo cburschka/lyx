@@ -37,14 +37,11 @@ if version[0] == 0 and version[1] == 96 and version[2] < 92:
 
 # determine where I am ...
 #
-# called as 'cd development/scons; scons'
-if os.path.isfile('SConstruct'):
-    top_src_dir = '../..'
-    scons_dir = '.'
-# called as 'scons -f development/scons/SConstruct'
-else:
-    top_src_dir = '.'
-    scons_dir = 'development/scons'
+from SCons.Node.FS import default_fs
+# default_fs.SConstruct_dir is where SConstruct file is located.
+scons_dir = default_fs.SConstruct_dir.path
+# get the ../.. of scons_dir
+top_src_dir = os.path.split(os.path.split(default_fs.SConstruct_dir.abspath)[0])[0]
 
 
 #----------------------------------------------------------
@@ -57,7 +54,7 @@ else:
 # not have to change SConstruct during lyx release
 package_version = utils.getVerFromConfigure(top_src_dir)
 package_cygwin_version = '%s-1' % package_version
-boost_version = '1_32'
+boost_version = ['1_32']
 
 if 'svn' in package_version:
     devel_version = True
@@ -83,32 +80,27 @@ opt_cache_file = 'opt.cache'
 
 if os.name == 'nt':
     platform_name = 'win32'
-    default_frontend = 'qt2'
     default_prefix = 'c:/program files/lyx'
     default_with_x = False
     default_packaging_method = 'windows'
 elif os.name == 'posix' and sys.platform != 'cygwin':
     platform_name = sys.platform
-    default_frontend = 'qt2'
     default_prefix = '/usr/local'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'posix' and sys.platform == 'cygwin':
     platform_name = 'cygwin'
-    default_frontend = 'qt2'
     default_prefix = '/usr'
     default_with_x = True
     default_packaging_method = 'posix'
 elif os.name == 'darwin':
     platform_name = 'macosx'
-    default_frontend = 'qt2'
     # FIXME: macOSX default prefix?
     default_prefix = '.'
     default_with_x = False
     default_packaging_method = 'macosx'
 else:  # unsupported system, assume posix behavior
     platform_name = 'others'
-    default_frontend = 'qt2'
     default_prefix = '.'
     default_with_x = True
     default_packaging_method = 'posix'
@@ -125,7 +117,7 @@ if os.path.isfile('config.py'):
 opts = Options(['config.py'])
 opts.AddOptions(
     # frontend
-    EnumOption('frontend', 'Main GUI', default_frontend,
+    EnumOption('frontend', 'Main GUI', 'qt2',
         allowed_values = ('qt2',) ),
     # debug or release build
     EnumOption('mode', 'Building method', default_build_mode,
@@ -1640,7 +1632,7 @@ if build_qt2:
 
     # load qt2 tools
     qt2env.Tool('qt')
-    qt2env['QT_UICDECLFLAGS'] = '-tr lyx::qt_'
+    qt2env['QT_UICDECLFLAGS'] = '-tr qt_'
 
     qt2env.AppendUnique(CPPPATH = [
         '$BUILDDIR/common',

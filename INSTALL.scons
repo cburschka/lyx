@@ -55,9 +55,12 @@ Start scons:
 The scons system resides under development/scons. You can invoke it from
 either development/scons by, for example:
   > cd development/scons
-  > scons qt_dir=d:/qt3 -j3 lyx
-or from top source directory by:
-  > scons -f development/scons/SConstruct all
+  > scons frontend=qt4 qt_dir=d:/qt4 -j3 lyx
+or from any other directory and use -f option to point to the SConstruct
+file:
+  > mkdir build
+  > cd build
+  > scons -f ../development/scons/SConstruct frontend=qt4 all
 
 There are three types of command line options:
   * key=value are user options. They are used to tell scons which
