@@ -18,10 +18,10 @@
 #include <map>
 
 
-class AspellSpeller;
-class AspellStringEnumeration;
-class AspellCanHaveError;
-class AspellConfig;
+struct AspellSpeller;
+struct AspellStringEnumeration;
+struct AspellCanHaveError;
+struct AspellConfig;
 
 namespace lyx {
 

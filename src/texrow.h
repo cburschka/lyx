@@ -79,6 +79,7 @@ public:
 			return rownumber_;
 		}
 	private:
+		RowItem();
 		int id_;
 		int pos_;
 		int rownumber_;

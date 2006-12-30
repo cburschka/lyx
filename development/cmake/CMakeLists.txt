@@ -95,12 +95,6 @@ message("----- PROGRAM_SUFFIX: ${PROGRAM_SUFFIX}")
 message("----- LOCALEDIR     : ${LOCALEDIR}")
 message("")
 
-
-# create config.h
-include(ConfigureChecks.cmake)
-configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
-
-
 if(MSVC)
  	ADD_DEFINITIONS(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE)	
  	# disable checked iterators for msvc release builds to get maximum speed
@@ -111,7 +105,7 @@ add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	
 if(MSVC AND NOT disable-pch)
 	configure_file(${CMAKE_SOURCE_DIR}/pcheaders.h    ${CMAKE_BINARY_DIR}/pcheaders.h)
-	configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake ${CMAKE_CURRENT_BINARY_DIR}/config_pch.C)
+	configure_file(${CMAKE_SOURCE_DIR}/config.C.cmake ${CMAKE_BINARY_DIR}/config_pch.C)
 	macro(lyx_add_msvc_pch name_)
 		SET_SOURCE_FILES_PROPERTIES(${${name_}_sources} PROPERTIES COMPILE_FLAGS "/Yuconfig.h /Fp\$(IntDir)/config.pch")
 		SET_SOURCE_FILES_PROPERTIES(${CMAKE_BINARY_DIR}/config_pch.C PROPERTIES COMPILE_FLAGS "/Ycconfig.h /Fp\$(IntDir)/config.pch")
@@ -121,7 +115,6 @@ if(MSVC AND NOT disable-pch)
 	set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
 	set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       /DLYX_PCH_STL /DLYX_PCH_BOOST /DLYX_PCH_QT4")
 	set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} /DLYX_PCH_STL /DLYX_PCH_BOOST")
-	
 else(MSVC AND NOT disable-pch)
 	set(disable-pch TRUE CACHE TYPE STRING)
 	macro(lyx_add_msvc_pch)
@@ -130,6 +123,7 @@ endif(MSVC AND NOT disable-pch)
 
 if(MSVC)
 	if(WALL)
+		set(WALL 1 CACHE TYPE STRING FORCE)
 		set(DISABLEWALL 0 CACHE TYPE STRING FORCE)
 	else(WALL)
 		set(DISABLEWALL 1 CACHE TYPE STRING FORCE)
@@ -155,7 +149,7 @@ if(MSVC)
 		# add here warnings which should produce an error /weXXXX
 		SET(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
-		SET(MSVC_W_DISABLE "/wd4800 /wd4996 /wd4311 /wd4312 /wd4505")
+		SET(MSVC_W_DISABLE "/wd4800 /wd4996 /wd4311 /wd4312 /wd4505 /wd4267 /wd4512 /wd4245 /wd4127")
 		
 		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
@@ -170,7 +164,7 @@ if(MSVC)
 		# add here warnings which should produce an error /weXXXX
 		SET(MSVC_W_ERROR   "/we4101 /we4189")
 		# add here warnings which should be disabled /wdXXXX
-		SET(MSVC_W_DISABLE "/wd4800 /wd4996")
+		SET(MSVC_W_DISABLE "/wd4800 /wd4996 /wd4267")
 		
 		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
@@ -185,6 +179,9 @@ if(MSVC)
 	
 endif(MSVC)
 
+# create config.h
+include(ConfigureChecks.cmake)
+configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
 
 #TODO: insource is not the best place
 configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 
