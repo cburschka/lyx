@@ -1239,6 +1239,28 @@ void BufferView::setCursor(DocIterator const & dit)
 }
 
 
+bool BufferView::checkDepm(LCursor & cur, LCursor & old)
+{
+	// Would be wrong to delete anything if we have a selection.
+	if (cur.selection())
+		return false;
+
+	bool need_anchor_change = false;
+	bool changed = cursor_.text()->deleteEmptyParagraphMechanism(cur, old,
+		need_anchor_change);
+
+	if (need_anchor_change)
+		cur.resetAnchor();
+	
+	if (!changed)
+		return false;
+
+	updateMetrics(false);
+	buffer_->changed();
+	return true;
+}
+
+
 bool BufferView::mouseSetCursor(LCursor & cur)
 {
 	BOOST_ASSERT(&cur.bv() == this);
@@ -1252,7 +1274,7 @@ bool BufferView::mouseSetCursor(LCursor & cur)
 	// FIXME: move this to InsetText::notifyCursorLeaves?
 	bool update = false;
 	if (!badcursor && cursor_.inTexted())
-		update = cursor_.text()->deleteEmptyParagraphMechanism(cur, cursor_);
+		checkDepm(cur, cursor_);
 
 	cursor_ = cur;
 	cursor_.clearSelection();

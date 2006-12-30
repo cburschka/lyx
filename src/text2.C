@@ -671,7 +671,7 @@ bool LyXText::setCursor(LCursor & cur, pit_type par, pos_type pos,
 {
 	LCursor old = cur;
 	setCursorIntern(cur, par, pos, setfont, boundary);
-	return deleteEmptyParagraphMechanism(cur, old);
+	return cur.bv().checkDepm(cur, old);
 }
 
 
@@ -1154,7 +1154,7 @@ bool LyXText::cursorUp(LCursor & cur)
 		if (dummy == old)
 			++dummy.pos();
 
-		return deleteEmptyParagraphMechanism(dummy, old);
+		cur.bv().checkDepm(dummy, old);
 	}
 
 	bool updateNeeded = false;
@@ -1207,14 +1207,14 @@ bool LyXText::cursorDown(LCursor & cur)
 		LCursor dummy = cur;
 		if (dummy == old)
 			++dummy.pos();
-
-		bool const changed = deleteEmptyParagraphMechanism(dummy, old);
+		
+		bool const changed = cur.bv().checkDepm(dummy, old);
 
 		// Make sure that cur gets back whatever happened to dummy(Lgb)
 		if (changed)
 			cur = dummy;
 
-		return changed;
+		return false;
 	}
 
 	bool updateNeeded = false;
@@ -1276,12 +1276,9 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 }
 
 
-bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
+bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
+		LCursor & old, bool & need_anchor_change)
 {
-	// Would be wrong to delete anything if we have a selection.
-	if (cur.selection())
-		return false;
-
 	//lyxerr[Debug::DEBUG] << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
 	// old should point to us
 	BOOST_ASSERT(old.text() == this);
@@ -1322,8 +1319,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)) {
 			oldpar.eraseChar(old.pos() - 1, false); // do not track changes in DEPM
-			TextMetrics & tm = cur.bv().textMetrics(this);
-			tm.redoParagraph(old.pit());
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
@@ -1333,7 +1328,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 			// correct all cursor parts
 			if (same_par) {
 				fixCursorAfterDelete(cur.top(), old.top());
-				cur.resetAnchor();
+				need_anchor_change = true;
 			}
 			return true;
 		}
@@ -1370,19 +1365,14 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old)
 				// their address has changed. Therefore we
 				// need to `regenerate' cur. (JMarc)
 				cur.updateInsets(&(cur.bottom().inset()));
-				cur.resetAnchor();
+				need_anchor_change = true;
 			}
 		}
-		// There is a crash reported by Edwin Leuven (16/04/2006) because of:
-		//ParIterator par_it(old);
-		//updateLabels(old.buffer(), par_it);
-		// So for now we do the full update:
-		updateLabels(old.buffer());
 		return true;
 	}
 
 	if (oldpar.stripLeadingSpaces())
-		cur.resetAnchor();
+		need_anchor_change = true;
 
 	return false;
 }

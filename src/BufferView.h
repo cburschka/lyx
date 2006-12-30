@@ -184,6 +184,9 @@ public:
 	/// sets cursor.
 	/// This will also open all relevant collapsable insets.
 	void setCursor(DocIterator const &);
+	/// Check deleteEmptyParagraphMechanism and update metrics if needed.
+	/// \retval true if an update was needed.
+	bool checkDepm(LCursor & cur, LCursor & old);
 	/// sets cursor.
 	/// This is used when handling LFUN_MOUSE_PRESS.
 	bool mouseSetCursor(LCursor & cur);

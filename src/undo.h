@@ -29,6 +29,7 @@ namespace lyx {
 
 class BufferParams;
 class BufferView;
+class DocIterator;
 class LCursor;
 
 
@@ -118,6 +119,8 @@ void finishUndo();
  */
 
 /// The general case: prepare undo for an arbitrary range.
+/// FIXME: replace LCursor with DocIterator. This is not possible right
+/// now because we need access to Buffer->params()!.
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
 	pit_type from, pit_type to);
 

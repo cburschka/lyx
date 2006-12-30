@@ -30,11 +30,11 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class CursorSlice;
+class DocIterator;
 class ErrorList;
-class InsetBase;
-class InsetBase_code;
 class FuncRequest;
 class FuncStatus;
+class InsetBase;
 class LColor_color;
 class LCursor;
 class LyXTextClass;
@@ -349,8 +349,10 @@ public:
 		bool boundary) const;
 
 	/// delete double space or empty paragraphs around old cursor
-	/// FIXME: replace LCursor with DocIterator.
-	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor & old);
+	/// FIXME: replace LCursor with DocIterator. This is not possible right
+	/// now because recordUndo() is called which needs a LCursor.
+	bool deleteEmptyParagraphMechanism(LCursor & cur,
+		LCursor & old, bool & need_anchor_change);
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
