@@ -70,8 +70,6 @@ TABLE OF CONTENTS
   self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
   Up/Down? The arrangement of the buttons may also give some hint to the user.
 
-* The items in the treeview are editable
-
 * open Tutorial; click on TOC: TOC dialog has no contents; touch TOC slider
    => seg fault.
 
@@ -162,24 +160,7 @@ EDITING
 
 * Create a document with an empty table; mark the whole table; insert a minipage 
    in order to have the table inside a minipage => crash
-
-* Open "de_Intro.lyx"; mark first word ("Einführung"); invoke "ert-insert" => seg fault
-
-  On Linux, valgrind reports:
-
-  ==23645== Conditional jump or move depends on uninitialised value(s)
-  ==23645==    at 0x825942D: lyx::(anonymous namespace)::numberOfHfills(lyx::Paragraph const&, lyx::Row const&) (paragraph.h:332)
-  ==23645==    by 0x826250E: lyx::LyXText::computeRowMetrics(lyx::Buffer const&, int, lyx::Row const&) const (text.C:1307)
-  ==23645==    by 0x826815F: lyx::LyXText::cursorX(lyx::Buffer const&, lyx::CursorSlice const&, bool) const (text.C:2209)
-  ==23645==    by 0x83A3072: lyx::InsetText::cursorPos(lyx::BufferView const&, lyx::CursorSlice const&, bool, int&, int&) const (insettext.C:343)
-  ==23645==    by 0x833D909: lyx::InsetCollapsable::cursorPos(lyx::BufferView const&, lyx::CursorSlice const&, bool, int&, int&) const (insetcollapsable.C:245)
-  ==23645==    by 0x81DE9AA: lyx::bv_funcs::coordOffset(lyx::BufferView const&, lyx::DocIterator const&, bool) (cursor_slice.h:58)
-  ==23645==    by 0x81DECC4: lyx::bv_funcs::getPos(lyx::BufferView const&, lyx::DocIterator const&, bool) (bufferview_funcs.C:221)
-  ==23645==    by 0x81FCBD4: lyx::LCursor::getPos(int&, int&) const (dociterator.h:125)
-  ==23645==    by 0x81FFED5: lyx::LCursor::setTargetX() (cursor.C:938)
-  ==23645==    by 0x82716EE: lyx::LyXText::setCursorIntern(lyx::LCursor&, int, int, bool, bool) (text2.C:722)
-  ==23645==    by 0x8270EE2: lyx::LyXText::setCursor(lyx::LCursor&, int, int, bool, bool) (text2.C:687)
-  ==23645==    by 0x8161333: lyx::cap::pasteParagraphList(lyx::LCursor&, lyx::RandomAccessList<lyx::Paragraph> const&, unsigned, lyx::ErrorList&) (CutAndPaste.C:630)
+  Peter: could not reproduce it (2006-30-12)
 
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
@@ -662,3 +643,8 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
     Abort
   FIXED (Bo 2006-12-27)
 
+* Open "de_Intro.lyx"; mark first word ("Einführung"); invoke "ert-insert" => seg fault
+  FIXED (Abdel 2006-30-12)
+  
+* The items in the treeview are editable
+  FIXED (Peter 2006-30-12)
