@@ -106,16 +106,22 @@ void QTocDialog::setTreeDepth(int depth)
 {
 	if(depth!=-1)
 		depth_ = depth;
-//	tocTV->expandAll(); //expanding and then collapsing is probably better, but my qt 4.1.2 doesn't have expandAll()..
+
+	// expanding and then collapsing is probably better, 
+	// but my qt 4.1.2 doesn't have expandAll()..
+	//tocTV->expandAll(); 
 	QModelIndexList indices = 
 		form_->tocModel()->match(form_->tocModel()->index(0,0),
 		 			Qt::DisplayRole, "*", -1, 
 					Qt::MatchWildcard|Qt::MatchRecursive);
-	Q_FOREACH (QModelIndex index, indices) { // I had to use Q_FOREACH instead of foreach
-		if(getIndexDepth(index) < depth_) // because compile flag -DQT_NO_KEYWORDS doesn't allow me..
-   			tocTV->expand(index); 
+	
+	int size = indices.size();
+	for (int i = 0; i < size; i++) {
+		QModelIndex index = indices[i];
+		if (getIndexDepth(index) < depth_) 
+			tocTV->expand(index); 
 		else
-    			tocTV->collapse(index); 
+			tocTV->collapse(index); 
 	}
 }
 
