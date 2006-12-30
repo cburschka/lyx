@@ -1798,8 +1798,6 @@ int LyXText::cursorX(BufferView const & bv, CursorSlice const & sl,
 	if (pm.rows().empty())
 		return 0;
 
-	int max_width = tm.maxWidth();
-
 	pos_type ppos = sl.pos();
 	// Correct position in front of big insets
 	bool const boundary_correction = ppos != 0 && boundary;
@@ -1811,7 +1809,6 @@ int LyXText::cursorX(BufferView const & bv, CursorSlice const & sl,
 	pos_type cursor_vpos = 0;
 
 	Buffer const & buffer = *bv.buffer();
-	int const right_margin = tm.rightMargin(pm);
 	RowMetrics const m = tm.computeRowMetrics(pit, row);
 	double x = m.x;
 
@@ -2060,7 +2057,6 @@ pos_type LyXText::x2pos(BufferView const & bv, pit_type pit, int row,
 	BOOST_ASSERT(row < int(pm.rows().size()));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
-	Buffer const & buffer = *bv.buffer();
 	return r.pos() + getColumnNearX(bv, tm.rightMargin(pm), pit, r, x, bound);
 }
 
@@ -2111,7 +2107,6 @@ bool LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 
 	bool bound = false;
 	int xx = x;
-	Buffer const & buffer = cur.buffer();
 	int right_margin = tm.rightMargin(pm);
 	pos_type const pos = row.pos() + getColumnNearX(cur.bv(), right_margin, 
 		pit, row, xx, bound);
