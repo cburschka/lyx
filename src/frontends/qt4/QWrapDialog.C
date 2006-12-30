@@ -26,18 +26,21 @@ QWrapDialog::QWrapDialog(QWrap * form)
 {
 	setupUi(this);
 
-	connect(restorePB, SIGNAL(clicked()),
-		form, SLOT(slotRestore()));
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
+	Q_CONNECT_1(QPushButton, restorePB, clicked, bool,
+				QWrap, form, slotRestore, void);
+	Q_CONNECT_1(QPushButton, okPB, clicked, bool,
+				QWrap, form, slotOK, void);
+	Q_CONNECT_1(QPushButton, applyPB, clicked, bool,
+				QWrap, form, slotApply, void);
+	Q_CONNECT_1(QPushButton, closePB, clicked, bool,
+				QWrap, form, slotClose, void);
 
-    connect( widthED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( unitsLC, SIGNAL( selectionChanged(LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
-    connect( valignCO, SIGNAL( highlighted(const QString&) ), this, SLOT( change_adaptor() ) );
+    Q_CONNECT_1(QLineEdit, widthED, textChanged, const QString&, 
+				QWrapDialog, this, change_adaptor, void);
+    Q_CONNECT_1(LengthCombo, unitsLC, selectionChanged, LyXLength::UNIT, 
+				QWrapDialog, this, change_adaptor, void);
+    Q_CONNECT_1(QComboBox, valignCO, highlighted, const QString&, 
+				QWrapDialog, this, change_adaptor, void);
 }
 
 

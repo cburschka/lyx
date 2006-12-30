@@ -47,7 +47,8 @@ Action::Action(LyXView & lyxView, docstring const & text,
 	setText(toqstr(text));
 	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
-	connect(this, SIGNAL(triggered()), this, SLOT(action()));
+	Q_CONNECT_1(QAction, this, triggered, bool,
+				Action, this, action, void);
 	update();
 }
 
@@ -59,7 +60,8 @@ Action::Action(LyXView & lyxView, string const & icon, docstring const & text,
 	setText(toqstr(text));
 	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
-	connect(this, SIGNAL(triggered()), this, SLOT(action()));
+	Q_CONNECT_1(QAction, this, triggered, bool,
+				Action, this, action, void);
 	update();
 }
 

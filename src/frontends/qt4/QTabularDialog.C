@@ -42,55 +42,92 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	bottomspaceED->setValidator(new LengthValidator(bottomspaceED));
 	interlinespaceED->setValidator(new LengthValidator(interlinespaceED));
 
-	connect(topspaceED, SIGNAL(returnPressed()),
-	        this, SLOT(topspace_changed()));
-	connect(topspaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
-	        this, SLOT(topspace_changed()));
-	connect(topspaceCO, SIGNAL(activated(int)), this, SLOT(topspace_changed()));
-	connect(bottomspaceED, SIGNAL(returnPressed()),
-	        this, SLOT(bottomspace_changed()));
-	connect(bottomspaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
-	        this, SLOT(bottomspace_changed()));
-	connect(bottomspaceCO, SIGNAL(activated(int)), this, SLOT(bottomspace_changed()));
-	connect(interlinespaceED, SIGNAL(returnPressed()),
-	        this, SLOT(interlinespace_changed()));
-	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
-	        this, SLOT(interlinespace_changed()));
-	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
-	connect(booktabsRB, SIGNAL(clicked()), this, SLOT(on_booktabsRB_toggled()));
-	connect(borderSetPB, SIGNAL(clicked()), this, SLOT(borderSet_clicked()));
-	connect(borderUnsetPB, SIGNAL(clicked()), this, SLOT(borderUnset_clicked()));
-	connect(longTabularCB, SIGNAL(toggled(bool)), longtableGB, SLOT(setEnabled(bool)));
-	connect(longTabularCB, SIGNAL(toggled(bool)), newpageCB, SLOT(setEnabled(bool)));
-	connect(hAlignCB, SIGNAL(activated(int)), this, SLOT(hAlign_changed(int)));
-	connect(vAlignCB, SIGNAL(activated(int)), this, SLOT(vAlign_changed(int)));
-	connect(multicolumnCB, SIGNAL(clicked()), this, SLOT(multicolumn_clicked()));
-	connect(newpageCB, SIGNAL(clicked()), this, SLOT(ltNewpage_clicked()));
-	connect(headerStatusCB, SIGNAL(clicked()), this, SLOT(ltHeaderStatus_clicked()));
-	connect(headerBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltHeaderBorderAbove_clicked()));
-	connect(headerBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltHeaderBorderBelow_clicked()));
-	connect(firstheaderStatusCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderStatus_clicked()));
-	connect(firstheaderBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderBorderAbove_clicked()));
-	connect(firstheaderBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderBorderBelow_clicked()));
-	connect(firstheaderNoContentsCB, SIGNAL(clicked()), this, SLOT(ltFirstHeaderEmpty_clicked()));
-	connect(footerStatusCB, SIGNAL(clicked()), this, SLOT(ltFooterStatus_clicked()));
-	connect(footerBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltFooterBorderAbove_clicked()));
-	connect(footerBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltFooterBorderBelow_clicked()));
-	connect(lastfooterStatusCB, SIGNAL(clicked()), this, SLOT(ltLastFooterStatus_clicked()));
-	connect(lastfooterBorderAboveCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderAbove_clicked()));
-	connect(lastfooterBorderBelowCB, SIGNAL(clicked()), this, SLOT(ltLastFooterBorderBelow_clicked()));
-	connect(lastfooterNoContentsCB, SIGNAL(clicked()), this, SLOT(ltLastFooterEmpty_clicked()));
-	connect(specialAlignmentED, SIGNAL(returnPressed()), this, SLOT(specialAlignment_changed()));
-	connect(widthED, SIGNAL(returnPressed()), this, SLOT(width_changed()));
-	connect(widthUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)), this, SLOT(width_changed()));
-	connect(closePB, SIGNAL(clicked()), this, SLOT(close_clicked()));
-	connect(borders, SIGNAL(topSet(bool)), this, SLOT(topBorder_changed()));
-	connect(borders, SIGNAL(bottomSet(bool)), this, SLOT(bottomBorder_changed()));
-	connect(borders, SIGNAL(rightSet(bool)), this, SLOT(rightBorder_changed()));
-	connect(borders, SIGNAL(leftSet(bool)), this, SLOT(leftBorder_changed()));
-	connect(rotateTabularCB, SIGNAL(clicked()), this, SLOT(rotateTabular()));
-	connect(rotateCellCB, SIGNAL(clicked()), this, SLOT(rotateCell()));
-	connect(longTabularCB, SIGNAL(clicked()), this, SLOT(longTabular()));
+	Q_CONNECT_0(QLineEdit, topspaceED, returnPressed,
+				QTabularDialog, this, topspace_changed);
+	Q_CONNECT_1(LengthCombo, topspaceUnit, selectionChanged, lyx::LyXLength::UNIT,
+				QTabularDialog, this, topspace_changed, void);
+	Q_CONNECT_1(QComboBox, topspaceCO, activated, int,
+				QTabularDialog, this, topspace_changed, void);
+	Q_CONNECT_0(QLineEdit,  bottomspaceED, returnPressed,
+				QTabularDialog, this, bottomspace_changed);
+	Q_CONNECT_1(LengthCombo, bottomspaceUnit, selectionChanged, lyx::LyXLength::UNIT,
+				QTabularDialog, this, bottomspace_changed, void);
+	Q_CONNECT_1(QComboBox, bottomspaceCO, activated, int, 
+				QTabularDialog, this, bottomspace_changed, void);
+	Q_CONNECT_0(QLineEdit, interlinespaceED, returnPressed,
+				QTabularDialog, this, interlinespace_changed);
+	Q_CONNECT_1(LengthCombo, interlinespaceUnit, selectionChanged, lyx::LyXLength::UNIT,
+				QTabularDialog, this, interlinespace_changed, void);
+	Q_CONNECT_1(QComboBox, interlinespaceCO, activated, int,
+				QTabularDialog, this, interlinespace_changed, void);
+	Q_CONNECT_1(QRadioButton, booktabsRB, clicked, bool, 
+				QTabularDialog, this, on_booktabsRB_toggled, void);
+	Q_CONNECT_1(QPushButton, borderSetPB, clicked, bool, 
+				QTabularDialog, this, borderSet_clicked, void);
+	Q_CONNECT_1(QPushButton, borderUnsetPB, clicked, bool,  
+				QTabularDialog, this, borderUnset_clicked, void);
+	Q_CONNECT_1(QCheckBox, longTabularCB, toggled, bool, 
+				QGroupBox, longtableGB, setEnabled, bool);
+	Q_CONNECT_1(QCheckBox, longTabularCB, toggled, bool, 
+				QCheckBox, newpageCB, setEnabled, bool);
+	Q_CONNECT_1(QComboBox, hAlignCB, activated, int, 
+				QTabularDialog, this, hAlign_changed, int);
+	Q_CONNECT_1(QComboBox, vAlignCB, activated, int, 
+				QTabularDialog, this, vAlign_changed, int);
+	Q_CONNECT_1(QCheckBox, multicolumnCB, clicked, bool,
+				QTabularDialog, this, multicolumn_clicked, void);
+	Q_CONNECT_1(QCheckBox, newpageCB, clicked,  bool,
+				QTabularDialog, this, ltNewpage_clicked, void);
+	Q_CONNECT_1(QCheckBox, headerStatusCB, clicked, bool,
+				QTabularDialog, this, ltHeaderStatus_clicked, void);
+	Q_CONNECT_1(QCheckBox, headerBorderAboveCB, clicked, bool,
+				QTabularDialog, this, ltHeaderBorderAbove_clicked, void);
+	Q_CONNECT_1(QCheckBox, headerBorderBelowCB, clicked, bool,
+				QTabularDialog, this, ltHeaderBorderBelow_clicked, void);
+	Q_CONNECT_1(QCheckBox, firstheaderStatusCB, clicked, bool,
+				QTabularDialog, this, ltFirstHeaderStatus_clicked, void);
+	Q_CONNECT_1(QCheckBox, firstheaderBorderAboveCB, clicked, bool,
+				QTabularDialog, this, ltFirstHeaderBorderAbove_clicked, void);
+	Q_CONNECT_1(QCheckBox, firstheaderBorderBelowCB, clicked, bool,
+				QTabularDialog, this, ltFirstHeaderBorderBelow_clicked, void);
+	Q_CONNECT_1(QCheckBox, firstheaderNoContentsCB, clicked, bool,
+				QTabularDialog, this, ltFirstHeaderEmpty_clicked, void);
+	Q_CONNECT_1(QCheckBox, footerStatusCB, clicked, bool,
+				QTabularDialog, this, ltFooterStatus_clicked, void);
+	Q_CONNECT_1(QCheckBox, footerBorderAboveCB, clicked, bool,
+				QTabularDialog, this, ltFooterBorderAbove_clicked, void);
+	Q_CONNECT_1(QCheckBox, footerBorderBelowCB, clicked, bool,
+				QTabularDialog, this, ltFooterBorderBelow_clicked, void);
+	Q_CONNECT_1(QCheckBox, lastfooterStatusCB, clicked, bool,
+				QTabularDialog, this, ltLastFooterStatus_clicked, void);
+	Q_CONNECT_1(QCheckBox, lastfooterBorderAboveCB, clicked, bool,
+				QTabularDialog, this, ltLastFooterBorderAbove_clicked, void);
+	Q_CONNECT_1(QCheckBox, lastfooterBorderBelowCB, clicked, bool,
+				QTabularDialog, this, ltLastFooterBorderBelow_clicked, void);
+	Q_CONNECT_1(QCheckBox, lastfooterNoContentsCB, clicked, bool,
+				QTabularDialog, this, ltLastFooterEmpty_clicked, void);
+	Q_CONNECT_0(QLineEdit, specialAlignmentED, returnPressed, 
+				QTabularDialog, this, specialAlignment_changed);
+	Q_CONNECT_0(QLineEdit, widthED, returnPressed, 
+				QTabularDialog, this, width_changed);
+	Q_CONNECT_1(LengthCombo, widthUnit, selectionChanged, lyx::LyXLength::UNIT, 
+				QTabularDialog, this, width_changed, void);
+	Q_CONNECT_1(QPushButton, closePB, clicked, bool,
+				QTabularDialog, this, close_clicked, void);
+	Q_CONNECT_1(QSetBorder, borders, topSet, bool, 
+				QTabularDialog, this, topBorder_changed, void);
+	Q_CONNECT_1(QSetBorder, borders, bottomSet, bool, 
+				QTabularDialog, this, bottomBorder_changed, void);
+	Q_CONNECT_1(QSetBorder, borders, rightSet, bool, 
+				QTabularDialog, this, rightBorder_changed, void);
+	Q_CONNECT_1(QSetBorder, borders, leftSet, bool, 
+				QTabularDialog, this, leftBorder_changed, void);
+	Q_CONNECT_1(QCheckBox, rotateTabularCB, clicked, bool,
+				QTabularDialog, this, rotateTabular, void);
+	Q_CONNECT_1(QCheckBox, rotateCellCB, clicked, bool,
+				QTabularDialog, this, rotateCell, void);
+	Q_CONNECT_1(QCheckBox, longTabularCB, clicked, bool,
+				QTabularDialog, this, longTabular, void);
 }
 
 

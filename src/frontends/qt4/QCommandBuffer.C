@@ -58,7 +58,7 @@ protected:
 			hide();
 		} else {
 			// emit signal
-			itemPressed(currentItem());
+			//itemPressed(currentItem());
 		}
 	}
 

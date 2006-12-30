@@ -25,14 +25,17 @@ QURLDialog::QURLDialog(UrlView * form)
 {
 	setupUi(this);
 
-	connect(okPB, SIGNAL(clicked()),
-		form_, SLOT(slotOK()));
-	connect(closePB, SIGNAL(clicked()),
-		form_, SLOT(slotClose()));
+	Q_CONNECT_1(QPushButton, okPB, clicked, bool,
+				UrlView, form_, slotOK, void);
+	Q_CONNECT_1(QPushButton, closePB, clicked, bool,
+				UrlView, form_, slotClose, void);
 
-    connect( urlED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
-    connect( hyperlinkCB, SIGNAL( clicked() ), this, SLOT( changed_adaptor() ) );
-    connect( nameED, SIGNAL( textChanged(const QString&) ), this, SLOT( changed_adaptor() ) );
+    Q_CONNECT_1(QLineEdit, urlED, textChanged, const QString&, 
+				QURLDialog, this, changed_adaptor, void);
+    Q_CONNECT_1(QCheckBox, hyperlinkCB, clicked, bool, 
+				QURLDialog, this, changed_adaptor, void);
+    Q_CONNECT_1(QLineEdit, nameED, textChanged, const QString&, 
+				QURLDialog, this, changed_adaptor, void);
 }
 
 

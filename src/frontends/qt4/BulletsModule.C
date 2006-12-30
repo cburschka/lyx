@@ -50,8 +50,11 @@ BulletsModule::BulletsModule(QWidget * , char const * , Qt::WFlags)
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 3"), "psnfss3");
 	setupPanel(new QListWidget(bulletpaneSW), qt_("Dings 4"), "psnfss4");
 
-	connect(levelLW, SIGNAL(currentRowChanged(int)), this, SLOT(showLevel(int)));
-	connect(bulletpaneCO, SIGNAL(activated(int)), bulletpaneSW, SLOT(setCurrentIndex(int)));
+	Q_CONNECT_1(QListWidget, levelLW, currentRowChanged, int,
+				BulletsModule, this, showLevel,int);
+
+	Q_CONNECT_1(QComboBox, bulletpaneCO, activated, int,
+				QStackedWidget, bulletpaneSW, setCurrentIndex, int);
 }
 
 
@@ -62,8 +65,8 @@ BulletsModule::~BulletsModule()
 
 void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string fname)
 {
-	connect(lw, SIGNAL(currentItemChanged(QListWidgetItem*, QListWidgetItem*)),
-		this, SLOT(bulletSelected(QListWidgetItem *, QListWidgetItem*)));
+	Q_CONNECT_2(QListWidget, lw, currentItemChanged, QListWidgetItem*, QListWidgetItem*,
+				BulletsModule, this, bulletSelected, QListWidgetItem*, QListWidgetItem*);
 
 	// add panelname to combox
 	bulletpaneCO->addItem(panelname);

@@ -20,6 +20,8 @@
 
 #include <utility>
 
+#include "qt_connection_check.h"
+
 class QComboBox;
 class QLineEdit;
 
