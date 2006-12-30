@@ -88,7 +88,8 @@ opinion, somebody should derive a new qvariant class for tocModelItem
 which saves the string data and depth information. that will save the
 depth calculation.
 */
-int QTocDialog::getIndexDepth(QModelIndex const & index, int depth){
+int QTocDialog::getIndexDepth(QModelIndex const & index, int depth)
+{
 	++depth;
 	return (index.parent() == QModelIndex())? depth : getIndexDepth(index.parent(),depth);
 }
@@ -219,6 +220,7 @@ void QTocDialog::updateGui()
 		enableButtons();
 		typeCO->setModel(type_model);
 		tocTV->setModel(new QStandardItemModel);
+		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 		return;
 	}
 
@@ -226,7 +228,10 @@ void QTocDialog::updateGui()
 	typeCO->setCurrentIndex(form_->getType());
 
 	if (form_->tocModel())
+	{
 		tocTV->setModel(form_->tocModel());
+		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	}
 	tocTV->showColumn(0);
 	// hide the pointless QHeader for now
 	// in the future, new columns may appear
