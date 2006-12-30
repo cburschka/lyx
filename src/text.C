@@ -97,62 +97,6 @@ using frontend::FontMetrics;
 
 namespace {
 
-int numberOfSeparators(Paragraph const & par, Row const & row)
-{
-	pos_type const first = max(row.pos(), par.beginOfBody());
-	pos_type const last = row.endpos() - 1;
-	int n = 0;
-	for (pos_type p = first; p < last; ++p) {
-		if (par.isSeparator(p))
-			++n;
-	}
-	return n;
-}
-
-
-int numberOfLabelHfills(Paragraph const & par, Row const & row)
-{
-	pos_type last = row.endpos() - 1;
-	pos_type first = row.pos();
-
-	// hfill *DO* count at the beginning of paragraphs!
-	if (first) {
-		while (first < last && par.isHfill(first))
-			++first;
-	}
-
-	last = min(last, par.beginOfBody());
-	int n = 0;
-	for (pos_type p = first; p < last; ++p) {
-		if (par.isHfill(p))
-			++n;
-	}
-	return n;
-}
-
-
-int numberOfHfills(Paragraph const & par, Row const & row)
-{
-	pos_type const last = row.endpos();
-	pos_type first = row.pos();
-
-	// hfill *DO* count at the beginning of paragraphs!
-	if (first) {
-		while (first < last && par.isHfill(first))
-			++first;
-	}
-
-	first = max(first, par.beginOfBody());
-
-	int n = 0;
-	for (pos_type p = first; p < last; ++p) {
-		if (par.isHfill(p))
-			++n;
-	}
-	return n;
-}
-
-
 void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 	string const & token, LyXFont & font, Change & change, ErrorList & errorList)
 {
