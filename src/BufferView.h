@@ -40,15 +40,11 @@ class DocIterator;
 class FuncRequest;
 class FuncStatus;
 class Intl;
-class Language;
 class LCursor;
 class LyXText;
 class ParIterator;
 class ParagraphMetrics;
 class ViewMetricsInfo;
-
-/// A map from paragraph index number to paragraph metrics
-typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
 
 /// Scrollbar Parameters.
 struct ScrollbarParameters
