@@ -59,13 +59,16 @@ int QToc::getTocDepth()
 
 QStandardItemModel * QToc::tocModel()
 {
+	if (toc_models_.empty())
+	{
+		lyxerr[Debug::GUI] << "QToc::tocModel(): no types available " << endl;
+		return 0;
+	}
+
 	lyxerr[Debug::GUI]
 		<< "QToc: type_ " << type_
 		<< "  toc_models_.size() " << toc_models_.size()
 		<< endl;
-
-	if (toc_models_.empty())
-		return 0;
 
 	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
 	return toc_models_[type_];
@@ -140,6 +143,7 @@ void QToc::updateType()
 	if (types.empty()) {
 		type_model_.setStringList(type_list);
 		toc_models_.clear();
+		lyxerr[Debug::GUI] << "QToc::updateType(): no types available " << endl;
 		return;
 	}
 
@@ -151,7 +155,7 @@ void QToc::updateType()
 
 	QString gui_names_;
 	for (size_t i = 0; i != types.size(); ++i) {
-		string const & type_str = types[i];
+		string type_str = types[i];
 		type_list.append(toqstr(getGuiName(type_str)));
 		if (type_str == selected_type)
 			type_ = i;
