@@ -152,10 +152,9 @@ if(MSVC)
 			SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
 		endif(CMAKE_C_FLAGS MATCHES "/W[0-4]")
 		
-		# add here warings which should produce an error /weXXXX
-		SET(MSVC_W_ERROR   "  ")
-		
-		# add here warings which should be disabled /wdXXXX
+		# add here warnings which should produce an error /weXXXX
+		SET(MSVC_W_ERROR   "/we4101 /we4189")
+		# add here warnings which should be disabled /wdXXXX
 		SET(MSVC_W_DISABLE "/wd4800 /wd4996 /wd4311 /wd4312 /wd4505")
 		
 		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         /Wp64 ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
@@ -166,12 +165,24 @@ if(MSVC)
 	
 		set(DISABLEWALL 1 CACHE TYPE STRING FORCE)
 		set(CMAKE_CXX_WARNING_LEVEL 3 CACHE TYPE STRING FORCE)
+		set(WARNING_LEVEL_MESSAGE "(switch to warning level 4 with -DWALL=1)")
+	
+		# add here warnings which should produce an error /weXXXX
+		SET(MSVC_W_ERROR   "/we4101 /we4189")
+		# add here warnings which should be disabled /wdXXXX
+		SET(MSVC_W_DISABLE "/wd4800 /wd4996")
 		
-		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         /wd4800 /wd4996")
-		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       /wd4800 /wd4996")
-		set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} /wd4800 /wd4996")
+		set(CMAKE_CXX_FLAGS_DEBUG    "${CMAKE_CXX_FLAGS_DEBUG}         ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE}       ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
+		set(CMAKE_CXX_FLAGS_MINSIZEREL  "${CMAKE_CXX_FLAGS_MINSIZEREL} ${MSVC_W_ERROR} ${MSVC_W_DISABLE}")
 		
 	endif(NOT DISABLEWALL)
+	
+	message("----- Warning level      : ${CMAKE_CXX_WARNING_LEVEL}  ${WARNING_LEVEL_MESSAGE}")
+	message("----- Warnings as errors : ${MSVC_W_ERROR}")
+	message("----- Warnings disabled  : ${MSVC_W_DISABLE}")
+	message("")
+	
 endif(MSVC)
 
 
