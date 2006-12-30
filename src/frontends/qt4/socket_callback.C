@@ -13,7 +13,7 @@
 #include <config.h>
 
 #include "socket_callback.h"
-#include "qt_helpers.h"
+
 
 namespace lyx {
 
@@ -21,8 +21,7 @@ socket_callback::socket_callback(int fd, boost::function<void()> func)
 	: func_(func)
 {
 	sn_.reset(new QSocketNotifier(fd, QSocketNotifier::Read, this));
-	Q_CONNECT_1(QSocketNotifier, sn_.get(), activated, int,
-				socket_callback, this, data_received, void);
+	connect(sn_.get(), SIGNAL(activated(int)), this, SLOT(data_received()));
 }
 
 

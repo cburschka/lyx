@@ -186,8 +186,8 @@ GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 			    this));
 
 	// Initialize the vertical Scroll Bar
-	Q_CONNECT_1(QScrollBar, verticalScrollBar(), actionTriggered, int,
-				GuiWorkArea, this, adjustViewWithScrollBar, int);
+	QObject::connect(verticalScrollBar(), SIGNAL(actionTriggered(int)),
+		this, SLOT(adjustViewWithScrollBar(int)));
 
 	// PageStep only depends on the viewport height.
 	verticalScrollBar()->setPageStep(viewport()->height());

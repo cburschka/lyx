@@ -15,7 +15,6 @@
 #include "qt_helpers.h"
 //Added by qt3to4:
 #include <QCloseEvent>
-#include <QComboBox>
 
 #include "controllers/ControlSearch.h"
 
@@ -41,32 +40,19 @@ void uniqueInsert(QComboBox * box, QString const & text)
 
 };
 
+
 QSearchDialog::QSearchDialog(QSearch * form)
 	: form_(form)
 {
 	setupUi(this);
 
-	Q_CONNECT_1(QPushButton, closePB, clicked, bool,
-				QSearch, form_, slotClose, void);
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
 
-    Q_CONNECT_1(QPushButton, findPB, clicked, bool,
-				QSearchDialog, this, findClicked, void) ;
-
-    Q_CONNECT_1(QPushButton, replacePB, clicked, bool,
-				QSearchDialog, this, replaceClicked, void);
-
-    Q_CONNECT_1(QPushButton, replaceallPB, clicked, bool, 
-				QSearchDialog, this, replaceallClicked, void);
-
-	Q_CONNECT_1(QComboBox, findCO, editTextChanged, const QString&, 
-				QSearchDialog, this, findChanged, void);
-
-
-
-	//check<const QString&>(findCO);
-//	check(findCO, &QComboBox::editTextChanged);
-
-	//check<void>(this);
+    connect( findPB, SIGNAL( clicked() ), this, SLOT( findClicked() ) );
+    connect( replacePB, SIGNAL( clicked() ), this, SLOT( replaceClicked() ) );
+    connect( replaceallPB, SIGNAL( clicked() ), this, SLOT( replaceallClicked() ) );
+    connect( findCO, SIGNAL( editTextChanged(const QString&) ), this, SLOT( findChanged() ) );
 }
 
 

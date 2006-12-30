@@ -125,23 +125,20 @@ struct GuiView::GuiViewPrivate
 		QAction *smallIcons = new QAction(iconSizeGroup);
 		smallIcons->setText("Small sized icons");
 		smallIcons->setCheckable(true);
-		Q_CONNECT_1(QAction, smallIcons, triggered, bool,
-					GuiView, parent, smallSizedIcons, void);
+		QObject::connect(smallIcons, SIGNAL(triggered()), parent, SLOT(smallSizedIcons()));
 		menu->addAction(smallIcons);
 
 		QAction *normalIcons = new QAction(iconSizeGroup);
 		normalIcons->setText("Normal sized icons");
 		normalIcons->setCheckable(true);
-		Q_CONNECT_1(QAction, normalIcons, triggered, bool,
-					GuiView, parent, normalSizedIcons, void);
+		QObject::connect(normalIcons, SIGNAL(triggered()), parent, SLOT(normalSizedIcons()));
 		menu->addAction(normalIcons);
 
 
 		QAction *bigIcons = new QAction(iconSizeGroup);
 		bigIcons->setText("Big sized icons");
 		bigIcons->setCheckable(true);
-		Q_CONNECT_1(QAction, bigIcons, triggered, bool,
-					GuiView, parent, bigSizedIcons, void);
+		QObject::connect(bigIcons, SIGNAL(triggered()), parent, SLOT(bigSizedIcons()));
 		menu->addAction(bigIcons);
 
 		unsigned int cur = parent->iconSize().width();
@@ -213,15 +210,15 @@ QMenu* GuiView::createPopupMenu()
 void GuiView::init()
 {
 	menubar_.reset(new QLMenubar(this, menubackend));
-	Q_CONNECT_1(QMenuBar, menuBar(), triggered, QAction*,
-				GuiView, this, updateMenu, QAction*);
+	QObject::connect(menuBar(), SIGNAL(triggered(QAction *)),
+		this, SLOT(updateMenu(QAction *)));
 
 	getToolbars().init();
 
 	statusBar()->setSizeGripEnabled(false);
 
-	Q_CONNECT_1(QTimer, &statusbar_timer_, timeout, void,
-				GuiView, this, update_view_state_qt, void);
+	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
+		this, SLOT(update_view_state_qt()));
 
 	if (!work_area_->bufferView().buffer() && !theBufferList().empty())
 		setBuffer(theBufferList().first());
@@ -462,8 +459,8 @@ void GuiView::initTab(QWidget* workarea)
 {
 	d.wt = new WidgetWithTabBar(workarea);
 	setCentralWidget(d.wt);
-	Q_CONNECT_1(QTabBar, d.wt->tabbar, currentChanged, int,
-				GuiView, this, currentTabChanged, int);
+	QObject::connect(d.wt->tabbar, SIGNAL(currentChanged(int)),
+			this, SLOT(currentTabChanged(int)));
 }
 
 

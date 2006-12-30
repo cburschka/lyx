@@ -26,14 +26,13 @@ QViewSourceDialog::QViewSourceDialog(QViewSource * form)
 {
 	setupUi(this);
 
-	Q_CONNECT_1(QPushButton, closePB, clicked, bool,
-				QViewSource, form, slotClose, void);
-	Q_CONNECT_1(QCheckBox, viewFullSourceCB, toggled, bool,
-				QViewSourceDialog, this, slotUpdate, void);
-	Q_CONNECT_1(QCheckBox, autoUpdateCB, toggled, bool,
-				QPushButton, updatePB, setDisabled, bool);
-	Q_CONNECT_1(QPushButton, updatePB, clicked, bool,
-				QViewSourceDialog, this, slotUpdate, void);
+	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
+	connect(viewFullSourceCB, SIGNAL(toggled(bool)),
+		this, SLOT(slotUpdate()));
+	connect(autoUpdateCB, SIGNAL(toggled(bool)),
+		updatePB, SLOT(setDisabled(bool)));
+	connect(updatePB, SIGNAL(clicked()),
+		this, SLOT(slotUpdate()));
 }
 
 

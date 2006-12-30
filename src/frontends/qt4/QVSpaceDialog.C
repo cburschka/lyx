@@ -35,23 +35,18 @@ QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 {
 	setupUi(this);
 
-	Q_CONNECT_1(QPushButton, okPB, clicked, bool,
-				QVSpace, form_, slotOK, void);
-	Q_CONNECT_1(QPushButton, applyPB, clicked, bool,
-				QVSpace, form_, slotApply, void);
-	Q_CONNECT_1(QPushButton, closePB, clicked, bool,
-				QVSpace, form_, slotClose, void);
+	connect(okPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(applyPB, SIGNAL(clicked()),
+		form_, SLOT(slotApply()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
 
-    Q_CONNECT_1(QComboBox, spacingCO, highlighted, const QString&, 
-				QVSpaceDialog, this, change_adaptor, void);
-    Q_CONNECT_1(QLineEdit, valueLE, textChanged, const QString&,
-				QVSpaceDialog, this, change_adaptor, void);
-    Q_CONNECT_1(QComboBox, spacingCO, activated, int,
-				QVSpaceDialog, this, enableCustom, int);
-    Q_CONNECT_1(QCheckBox, keepCB, clicked, bool,
-				QVSpaceDialog, this, change_adaptor, void);
-    Q_CONNECT_1(LengthCombo, unitCO, selectionChanged, lyx::LyXLength::UNIT,
-				QVSpaceDialog, this, change_adaptor, void);
+    connect( spacingCO, SIGNAL( highlighted(const QString&) ), this, SLOT( change_adaptor() ) );
+    connect( valueLE, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
+    connect( spacingCO, SIGNAL( activated(int) ), this, SLOT( enableCustom(int) ) );
+    connect( keepCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( unitCO, SIGNAL( selectionChanged(lyx::LyXLength::UNIT) ), this, SLOT( change_adaptor() ) );
 
 	valueLE->setValidator(unsignedLengthValidator(valueLE));
 }
