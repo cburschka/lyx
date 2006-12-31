@@ -201,10 +201,6 @@ LAYOUT
 
 PAINTING & PERFORMANCE
 
-* Open de_UserGuide.lyx; go to the end of the document; click into the footnote (with the mouse -
-  this is important for the test case); add a character into the note 
-  => the complete footnote is expanded but only the current line is repainted
-
 * END_LABEL_* handling in RowPainer::paintLast() is broken. In regular text,
   label boxes are not completely visible (because we shrinked the margin on 
   screen?). Inside of insets, they don't work at all. 
@@ -648,3 +644,9 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
   
 * The items in the treeview are editable
   FIXED (Peter 2006-30-12)
+
+* Open de_UserGuide.lyx; go to the end of the document; click into the footnote (with the mouse -
+  this is important for the test case); add a character into the note 
+  => the complete footnote is expanded but only the current line is repainted
+  FIXED (Abdel 2006-12-29): following Paragraph and LyXText metrics cleanup.
+  
