@@ -165,13 +165,6 @@ EDITING
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
 
-* insert->note->lyx note, enter a few chars, collapse the note. Copy the note
-  several times (three lines?), use mouse to select. Lyx crashes with
-
-  Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:323
-
-  NOTE: this is unrelated to the button face-lift patch.
-
 * the insertion of Ctrl-Return cannot be undone
 
 
@@ -637,6 +630,13 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
     QLayout::addChildWidget: lyx::frontend::QCommandBuffer "" in wrong parent; moved to correct parent
     Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:323
     Abort
+  FIXED (Bo 2006-12-27)
+
+* insert->note->lyx note, enter a few chars, collapse the note. Copy the note
+  several times (three lines?), use mouse to select. Lyx crashes with
+  Assertion triggered in void lyx::LyXText::dispatch(lyx::LCursor&, lyx::FuncRequest&) by failing check "cur.text() == this" in file src/text3.C:323
+  NOTE: this is unrelated to the button face-lift patch.
+
   FIXED (Bo 2006-12-27)
 
 * Open "de_Intro.lyx"; mark first word ("Einführung"); invoke "ert-insert" => seg fault
