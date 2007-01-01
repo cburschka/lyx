@@ -1010,6 +1010,7 @@ bool LyXText::cursorUp(LCursor & cur)
 			++dummy.pos();
 
 		cur.bv().checkDepm(dummy, old);
+		return false;
 	}
 
 	bool updateNeeded = false;
