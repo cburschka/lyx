@@ -356,20 +356,6 @@ public:
 	bool deleteEmptyParagraphMechanism(LCursor & cur,
 		LCursor & old, bool & need_anchor_change);
 
-	/// sets row.end to the pos value *after* which a row should break.
-	/// for example, the pos after which isNewLine(pos) == true
-	/// FIXME: move to TextMetrics.
-	void rowBreakPoint(Buffer const &, int right_margin, int max_width, pit_type pit,
-		Row & row) const;
-	/// sets row.width to the minimum space a row needs on the screen in pixel
-	/// FIXME: move to TextMetrics.
-	void setRowWidth(Buffer const &, int right_margin, int max_width, pit_type pit,
-		Row & row) const;
-
-	/// Calculate and set the height of the row
-	/// FIXME: move to TextMetrics.
-	void setHeightOfRow(BufferView const &, pit_type, Row & row);
-
 public:
 	/// the current font settings
 	LyXFont current_font;
@@ -408,10 +394,6 @@ private:
 	void deleteWordBackward(LCursor & cur);
 	///
 	void deleteLineForward(LCursor & cur);
-
-	/// FIXME
-	int labelEnd(Buffer const &, int max_width, pit_type pit) const;
-
 	///
 	void charInserted();
 	/// set 'number' font property

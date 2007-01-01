@@ -77,6 +77,19 @@ private:
 	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(Paragraph const & par, Row const & row) const;
 
+	/// FIXME??
+	int labelEnd(pit_type const pit) const;
+
+	/// sets row.end to the pos value *after* which a row should break.
+	/// for example, the pos after which isNewLine(pos) == true
+	void rowBreakPoint(int width, pit_type const pit, Row & row) const;
+
+	/// sets row.width to the minimum space a row needs on the screen in pixel
+	void setRowWidth(int right_margin, pit_type const pit, Row & row) const;
+
+	/// Calculate and set the height of the row
+	void setHeightOfRow(pit_type, Row & row);
+
 	/// The BufferView owner.
 	BufferView * bv_;
 
@@ -91,6 +104,16 @@ private:
 	mutable ParMetricsCache par_metrics_;
 	Dimension dim_;
 	int max_width_;
+
+	/// FIXME: transfer this code in CoordCache here.
+	/*
+	/// A map from paragraph index number to screen point
+	typedef std::map<pit_type, Point> InnerParPosCache;
+	/// A map from a LyXText to the map of paragraphs to screen points
+	typedef std::map<LyXText const *, InnerParPosCache> ParPosCache;
+	/// Paragraph grouped by owning text
+	ParPosCache pars_;
+	*/
 };
 
 /// return the default height of a row in pixels, considering font zoom
