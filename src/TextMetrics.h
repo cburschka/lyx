@@ -87,17 +87,17 @@ private:
 	/// sets row.width to the minimum space a row needs on the screen in pixel
 	void setRowWidth(int right_margin, pit_type const pit, Row & row) const;
 
-// Temporary public:
-public:
 	/// Calculate and set the height of the row
 	void setHeightOfRow(pit_type, Row & row);
 
-private:
+// Temporary public:
+public:
 	/// returns the column near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
 	/// of this column.
 	pos_type getColumnNearX(pit_type pit, Row const & row, int & x,
 		bool & boundary) const;
+private:
 
 	/// The BufferView owner.
 	BufferView * bv_;

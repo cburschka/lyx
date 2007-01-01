@@ -857,8 +857,6 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y)
 	bool bound = false;
 
 	TextMetrics const & tm = cur.bv().textMetrics(this);
-	ParagraphMetrics const & pm = tm.parMetrics(pit);
-	int right_margin = tm.rightMargin(pm);
 	int xx = x; // is modified by getColumnNearX
 	pos_type const pos = row.pos()
 		+ tm.getColumnNearX(pit, row, xx, bound);
