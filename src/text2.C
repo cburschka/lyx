@@ -1281,8 +1281,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
 		LCursor & old, bool & need_anchor_change)
 {
 	//lyxerr[Debug::DEBUG] << "DEPM: cur:\n" << cur << "old:\n" << old << endl;
-	// old should point to us
-	BOOST_ASSERT(old.text() == this);
 
 	Paragraph & oldpar = old.paragraph();
 
