@@ -217,11 +217,68 @@ def revert_booktabs(document):
         i = i + 1
 
 
+def convert_multiencoding(document, forward):
+    """ Fix files with multiple encodings.
+Files with an inputencoding of "auto" and multiple languages where at least
+two languages have different default encodings are encoded in multiple
+encodings for file formats < 249. These files are incorrectly read and
+written (as if the whole file was in the encoding of the main language).
+
+This function
+- converts from fake unicode values to true unicode if forward is true, and
+- converts from true unicode values to fake unicode if forward is false.
+document.encoding must be set to the old value (format 248) in both cases.
+
+We do this here and not in LyX.py because it is far easier to do the
+necessary parsing in modern formats than in ancient ones.
+"""
+    encoding_stack = [document.encoding]
+    lang_re = re.compile(r"^\\lang\s(\S+)")
+    if document.inputencoding == "auto":
+        for i in range(len(document.body)):
+            result = lang_re.match(document.body[i])
+            if result:
+                language = result.group(1)
+                if language == "default":
+                    document.warning("Resetting encoding from %s to %s." % (encoding_stack[-1], document.encoding))
+                    encoding_stack[-1] = document.encoding
+                else:
+                    from lyx2lyx_lang import lang
+                    document.warning("Setting encoding from %s to %s." % (encoding_stack[-1], lang[language][3]))
+                    encoding_stack[-1] = lang[language][3]
+            elif find_token(document.body, "\\begin_layout", i, i + 1) == i:
+                document.warning("Adding nested encoding %s." % encoding_stack[-1])
+                encoding_stack.append(encoding_stack[-1])
+            elif find_token(document.body, "\\end_layout", i, i + 1) == i:
+                document.warning("Removing nested encoding %s." % encoding_stack[-1])
+                del encoding_stack[-1]
+            if encoding_stack[-1] != document.encoding:
+                if forward:
+                    # This line has been incorrectly interpreted as if it was
+                    # encoded in 'encoding'.
+                    # Convert back to the 8bit string that was in the file.
+                    orig = document.body[i].encode(document.encoding)
+                    # Convert the 8bit string that was in the file to unicode
+                    # with the correct encoding.
+                    document.body[i] = orig.decode(encoding_stack[-1])
+                else:
+                    # Convert unicode to the 8bit string that will be written
+                    # to the file with the correct encoding.
+                    orig = document.body[i].encode(encoding_stack[-1])
+                    # Convert the 8bit string that will be written to the
+                    # file to fake unicode with the encoding that will later
+                    # be used when writing to the file.
+                    document.body[i] = orig.decode(document.encoding)
+
+
 def convert_utf8(document):
+    " Set document encoding to UTF-8. "
+    convert_multiencoding(document, True)
     document.encoding = "utf8"
 
 
 def revert_utf8(document):
+    " Set document encoding to the value corresponding to inputencoding. "
     i = find_token(document.header, "\\inputencoding", 0)
     if i == -1:
         document.header.append("\\inputencoding auto")
@@ -229,6 +286,7 @@ def revert_utf8(document):
         document.header[i] = "\\inputencoding auto"
     document.inputencoding = get_value(document.header, "\\inputencoding", 0)
     document.encoding = get_encoding(document.language, document.inputencoding, 248)
+    convert_multiencoding(document, False)
 
 
 def revert_cs_label(document):
