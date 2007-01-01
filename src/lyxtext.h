@@ -94,11 +94,6 @@ public:
 	/// FIXME: replace LCursor with DocIterator.
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
-	/// returns pos in given par at given x coord.
-	/// FIXME: move to TextMetrics.
-	pos_type x2pos(BufferView const &, pit_type pit, int row, int x) const;
-	int pos2x(pit_type pit, pos_type pos) const;
-
 	///
 	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
 

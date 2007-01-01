@@ -919,6 +919,26 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 }
 
 
+pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
+{
+	ParagraphMetrics const & pm = parMetrics(pit);
+	BOOST_ASSERT(!pm.rows().empty());
+	BOOST_ASSERT(row < int(pm.rows().size()));
+	bool bound = false;
+	Row const & r = pm.rows()[row];
+	return r.pos() + getColumnNearX(pit, r, x, bound);
+}
+
+
+//int LyXText::pos2x(pit_type pit, pos_type pos) const
+//{
+//	ParagraphMetrics const & pm = parMetrics(pit);
+//	Row const & r = pm.rows()[row];
+//	int x = 0;
+//	pos -= r.pos();
+//}
+
+
 int defaultRowHeight()
 {
 	return int(theFontMetrics(LyXFont(LyXFont::ALL_SANE)).maxHeight() *  1.2);

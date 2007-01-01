@@ -97,6 +97,13 @@ public:
 	/// of this column.
 	pos_type getColumnNearX(pit_type pit, Row const & row, int & x,
 		bool & boundary) const;
+
+	/// returns pos in given par at given x coord.
+	pos_type x2pos(pit_type pit, int row, int x) const;
+	
+	// FIXME: is there a need for this?
+	//int pos2x(pit_type pit, pos_type pos) const;
+
 private:
 
 	/// The BufferView owner.

@@ -981,7 +981,8 @@ bool LyXText::cursorUp(LCursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
-	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
+	TextMetrics const & tm = cur.bv().textMetrics(this);
+	ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
 
 	int row;
 	int const x = cur.targetX();
@@ -1015,13 +1016,13 @@ bool LyXText::cursorUp(LCursor & cur)
 
 	if (row > 0) {
 		updateNeeded |= setCursor(cur, cur.pit(),
-			x2pos(cur.bv(), cur.pit(), row - 1, x));
+			tm.x2pos(cur.pit(), row - 1, x));
 	} else if (cur.pit() > 0) {
 		--cur.pit();
 		//cannot use 'par' now
 		ParagraphMetrics const & pmcur = cur.bv().parMetrics(this, cur.pit());
 		updateNeeded |= setCursor(cur, cur.pit(),
-			x2pos(cur.bv(), cur.pit(), pmcur.rows().size() - 1, x));
+			tm.x2pos(cur.pit(), pmcur.rows().size() - 1, x));
 	}
 
 	cur.x_target() = x;
@@ -1035,7 +1036,8 @@ bool LyXText::cursorDown(LCursor & cur)
 	// Tell BufferView to test for FitCursor in any case!
 	cur.updateFlags(Update::FitCursor);
 
-	ParagraphMetrics const & pm = cur.bv().parMetrics(this, cur.pit());
+	TextMetrics const & tm = cur.bv().textMetrics(this);
+	ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
 
 	int row;
 	int const x = cur.targetX();
@@ -1074,11 +1076,11 @@ bool LyXText::cursorDown(LCursor & cur)
 
 	if (row + 1 < int(pm.rows().size())) {
 		updateNeeded |= setCursor(cur, cur.pit(),
-			x2pos(cur.bv(), cur.pit(), row + 1, x));
+			tm.x2pos(cur.pit(), row + 1, x));
 	} else if (cur.pit() + 1 < int(paragraphs().size())) {
 		++cur.pit();
 		updateNeeded |= setCursor(cur, cur.pit(),
-			x2pos(cur.bv(), cur.pit(), 0, x));
+			tm.x2pos(cur.pit(), 0, x));
 	}
 
 	cur.x_target() = x;

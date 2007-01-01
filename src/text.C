@@ -1661,45 +1661,6 @@ docstring LyXText::getPossibleLabel(LCursor & cur) const
 }
 
 
-//pos_type LyXText::x2pos(pit_type pit, int row, int x) const
-//{
-//	int lastx = 0;
-//	int currx = 0;
-//	Paragraph const & par = pars_[pit];
-//	Row const & r = par.rows()[row];
-//	int pos = r.pos();
-//	for (; currx < x && pos < r.endpos(); ++pos) {
-//		lastx = currx;
-//		currx += singleWidth(buffer, par, pos);
-//	}
-//	if (abs(lastx - x) < abs(currx - x) && pos != r.pos())
-//		--pos;
-//	return pos;
-//}
-
-
-pos_type LyXText::x2pos(BufferView const & bv, pit_type pit, int row,
-		int x) const
-{
-	TextMetrics const & tm = bv.textMetrics(this);
-	ParagraphMetrics const & pm = tm.parMetrics(pit);
-	BOOST_ASSERT(!pm.rows().empty());
-	BOOST_ASSERT(row < int(pm.rows().size()));
-	bool bound = false;
-	Row const & r = pm.rows()[row];
-	return r.pos() + tm.getColumnNearX(pit, r, x, bound);
-}
-
-
-//int LyXText::pos2x(pit_type pit, pos_type pos) const
-//{
-//	Paragraph const & par = pars_[pit];
-//	Row const & r = par.rows()[row];
-//	int x = 0;
-//	pos -= r.pos();
-//}
-
-
 void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 {
 	BOOST_ASSERT(this == cur.text());
