@@ -1735,7 +1735,6 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 
 	bool bound = false;
 	int xx = x;
-	int right_margin = tm.rightMargin(pm);
 	pos_type const pos = row.pos() 
 		+ tm.getColumnNearX(pit, row, xx, bound);
 
