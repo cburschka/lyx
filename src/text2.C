@@ -757,7 +757,12 @@ pos_type LyXText::getColumnNearX(BufferView const & bv, int right_margin,
 {
 	Buffer const & buffer = *bv.buffer();
 	TextMetrics const & tm = bv.textMetrics(this);
-	int const xo = bv.coordCache().get(this, pit).x_;
+
+	/// For the main LyXText, it is possible that this pit is not
+	/// yet in the CoordCache when moving cursor up.
+	/// x Paragraph coordinate is always 0 for main text anyway.
+	int const xo = isMainText(*bv.buffer())?
+		0 : bv.coordCache().get(this, pit).x_;
 	x -= xo;
 	RowMetrics const r = tm.computeRowMetrics(pit, row);
 	Paragraph const & par = pars_[pit];
