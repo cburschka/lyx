@@ -30,6 +30,7 @@
 #include "FontIterator.h"
 #include "LColor.h"
 #include "lyxlength.h"
+#include "lyxrc.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
 #include "ParagraphParameters.h"
@@ -772,6 +773,149 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 
 	row.ascent(maxasc + labeladdon);
 	row.descent(maxdesc);
+}
+
+
+// x is an absolute screen coord
+// returns the column near the specified x-coordinate of the row
+// x is set to the real beginning of this column
+pos_type TextMetrics::getColumnNearX(pit_type const pit,
+		Row const & row, int & x, bool & boundary) const
+{
+	Buffer const & buffer = *bv_->buffer();
+
+	/// For the main LyXText, it is possible that this pit is not
+	/// yet in the CoordCache when moving cursor up.
+	/// x Paragraph coordinate is always 0 for main text anyway.
+	int const xo = main_text_? 0 : bv_->coordCache().get(text_, pit).x_;
+	x -= xo;
+	RowMetrics const r = computeRowMetrics(pit, row);
+	Paragraph const & par = text_->getPar(pit);
+
+	pos_type vc = row.pos();
+	pos_type end = row.endpos();
+	pos_type c = 0;
+	LyXLayout_ptr const & layout = par.layout();
+
+	bool left_side = false;
+
+	pos_type body_pos = par.beginOfBody();
+
+	double tmpx = r.x;
+	double last_tmpx = tmpx;
+
+	if (body_pos > 0 &&
+	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
+		body_pos = 0;
+
+	// check for empty row
+	if (vc == end) {
+		x = int(tmpx) + xo;
+		return 0;
+	}
+
+	frontend::FontMetrics const & fm 
+		= theFontMetrics(text_->getLabelFont(buffer, par));
+
+	while (vc < end && tmpx <= x) {
+		c = text_->bidi.vis2log(vc);
+		last_tmpx = tmpx;
+		if (body_pos > 0 && c == body_pos - 1) {
+			// FIXME UNICODE
+			docstring const lsep = from_utf8(layout->labelsep);
+			tmpx += r.label_hfill + fm.width(lsep);
+			if (par.isLineSeparator(body_pos - 1))
+				tmpx -= text_->singleWidth(buffer, par, body_pos - 1);
+		}
+
+		if (par.hfillExpansion(row, c)) {
+			tmpx += text_->singleWidth(buffer, par, c);
+			if (c >= body_pos)
+				tmpx += r.hfill;
+			else
+				tmpx += r.label_hfill;
+		} else if (par.isSeparator(c)) {
+			tmpx += text_->singleWidth(buffer, par, c);
+			if (c >= body_pos)
+				tmpx += r.separator;
+		} else {
+			tmpx += text_->singleWidth(buffer, par, c);
+		}
+		++vc;
+	}
+
+	if ((tmpx + last_tmpx) / 2 > x) {
+		tmpx = last_tmpx;
+		left_side = true;
+	}
+
+	BOOST_ASSERT(vc <= end);  // This shouldn't happen.
+
+	boundary = false;
+	// This (rtl_support test) is not needed, but gives
+	// some speedup if rtl_support == false
+	bool const lastrow = lyxrc.rtl_support && row.endpos() == par.size();
+
+	// If lastrow is false, we don't need to compute
+	// the value of rtl.
+	bool const rtl = lastrow ? text_->isRTL(buffer, par) : false;
+	if (lastrow &&
+	    ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
+	     (!rtl && !left_side && vc == end  && x > tmpx + 5)))
+		c = end;
+	else if (vc == row.pos()) {
+		c = text_->bidi.vis2log(vc);
+		if (text_->bidi.level(c) % 2 == 1)
+			++c;
+	} else {
+		c = text_->bidi.vis2log(vc - 1);
+		bool const rtl = (text_->bidi.level(c) % 2 == 1);
+		if (left_side == rtl) {
+			++c;
+			boundary = text_->bidi.isBoundary(buffer, par, c);
+		}
+	}
+
+// I believe this code is not needed anymore (Jug 20050717)
+#if 0
+	// The following code is necessary because the cursor position past
+	// the last char in a row is logically equivalent to that before
+	// the first char in the next row. That's why insets causing row
+	// divisions -- Newline and display-style insets -- must be treated
+	// specially, so cursor up/down doesn't get stuck in an air gap -- MV
+	// Newline inset, air gap below:
+	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
+		if (text_->bidi.level(end -1) % 2 == 0)
+			tmpx -= text_->singleWidth(buffer, par, end - 1);
+		else
+			tmpx += text_->singleWidth(buffer, par, end - 1);
+		c = end - 1;
+	}
+
+	// Air gap above display inset:
+	if (row.pos() < end && c >= end && end < par.size()
+	    && par.isInset(end) && par.getInset(end)->display()) {
+		c = end - 1;
+	}
+	// Air gap below display inset:
+	if (row.pos() < end && c >= end && par.isInset(end - 1)
+	    && par.getInset(end - 1)->display()) {
+		c = end - 1;
+	}
+#endif
+
+	x = int(tmpx) + xo;
+	pos_type const col = c - row.pos();
+
+	if (!c || end == par.size())
+		return col;
+
+	if (c==end && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
+		boundary = true;
+		return col;
+	}
+
+	return min(col, end - 1 - row.pos());
 }
 
 

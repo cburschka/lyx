@@ -90,6 +90,12 @@ private:
 	/// Calculate and set the height of the row
 	void setHeightOfRow(pit_type, Row & row);
 
+	/// returns the column near the specified x-coordinate of the row.
+	/// x is an absolute screen coord, it is set to the real beginning
+	/// of this column.
+	pos_type getColumnNearX(pit_type pit, Row const & row, int & x,
+		bool & boundary) const;
+
 	/// The BufferView owner.
 	BufferView * bv_;
 

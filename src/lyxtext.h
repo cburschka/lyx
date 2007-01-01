@@ -149,13 +149,6 @@ public:
 	/// FIXME: move to TextMetrics.
 	pit_type getPitNearY(BufferView & bv, int y);
 
-	/** returns the column near the specified x-coordinate of the row
-	 x is set to the real beginning of this column
-	 */
-	/// FIXME: move to TextMetrics.
-	pos_type getColumnNearX(BufferView const & bv, int right_margin,
-		pit_type pit, Row const & row, int & x, bool & boundary) const;
-
 	/** Find the word under \c from in the relative location
 	 *  defined by \c word_location.
 	 *  @param from return here the start of the word

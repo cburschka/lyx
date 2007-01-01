@@ -1687,7 +1687,7 @@ pos_type LyXText::x2pos(BufferView const & bv, pit_type pit, int row,
 	BOOST_ASSERT(row < int(pm.rows().size()));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
-	return r.pos() + getColumnNearX(bv, tm.rightMargin(pm), pit, r, x, bound);
+	return r.pos() + tm.getColumnNearX(pit, r, x, bound);
 }
 
 
@@ -1736,8 +1736,8 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 	bool bound = false;
 	int xx = x;
 	int right_margin = tm.rightMargin(pm);
-	pos_type const pos = row.pos() + getColumnNearX(cur.bv(), right_margin, 
-		pit, row, xx, bound);
+	pos_type const pos = row.pos() 
+		+ tm.getColumnNearX(pit, row, xx, bound);
 
 	lyxerr[Debug::DEBUG]
 		<< BOOST_CURRENT_FUNCTION
