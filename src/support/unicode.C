@@ -150,10 +150,13 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 				<< " has been encountered in the input.\n"
 				<< "When converting from " << fromcode_
 				<< " to " << tocode_ << ".\n";
-			lyxerr << "Input: " << std::hex;
+			lyxerr << "Input:" << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
-				boost::uint32_t const b = buf[i];
-				lyxerr << "0x" << b << " ";
+				// char may be signed, avoid output of
+				// something like 0xffffffc2
+				boost::uint32_t const b =
+					*reinterpret_cast<unsigned char const *>(buf + i);
+				lyxerr << " 0x" << b;
 			}
 			lyxerr << endl;
 			break;
@@ -162,10 +165,13 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 				<< " has been encountered in the input.\n"
 				<< "When converting from " << fromcode_
 				<< " to " << tocode_ << ".\n";
-			lyxerr << "Input: " << std::hex;
+			lyxerr << "Input:" << std::hex;
 			for (size_t i = 0; i < buflen; ++i) {
-				boost::uint32_t const b = buf[i];
-				lyxerr << "0x" << b << " ";
+				// char may be signed, avoid output of
+				// something like 0xffffffc2
+				boost::uint32_t const b =
+					*reinterpret_cast<unsigned char const *>(buf + i);
+				lyxerr << " 0x" << b;
 			}
 			lyxerr << endl;
 			break;
