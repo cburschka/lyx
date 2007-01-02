@@ -197,6 +197,7 @@ void GuiView::close()
 
 void GuiView::setFocus()
 {
+	BOOST_ASSERT(work_area_);
 	static_cast<GuiWorkArea *>(work_area_)->setFocus();
 }
 
@@ -220,6 +221,7 @@ void GuiView::init()
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(update_view_state_qt()));
 
+	BOOST_ASSERT(work_area_);
 	if (!work_area_->bufferView().buffer() && !theBufferList().empty())
 		setBuffer(theBufferList().first());
 
@@ -641,6 +643,7 @@ bool GuiView::event(QEvent * e)
 		if (ke->key() == Qt::Key_Tab || ke->key() == Qt::Key_Backtab) {
 			boost::shared_ptr<QLyXKeySym> sym(new QLyXKeySym);
 			sym->set(ke);
+			BOOST_ASSERT(work_area_);
 			work_area_->processKeySym(sym, key_modifier::none);
 			e->accept();
 			return true;
@@ -669,6 +672,7 @@ void GuiView::show()
 
 void GuiView::busy(bool yes)
 {
+	BOOST_ASSERT(work_area_);
 	static_cast<GuiWorkArea *>(work_area_)->setUpdatesEnabled(!yes);
 
 	if (yes) {

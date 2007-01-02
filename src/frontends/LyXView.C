@@ -93,6 +93,7 @@ LyXView::~LyXView()
 // FIXME, there's only one WorkArea per LyXView possible for now.
 void LyXView::setWorkArea(WorkArea * work_area)
 {
+	BOOST_ASSERT(work_area);
 	work_area_ = work_area;
 	work_area_ids_.clear();
 	work_area_ids_.push_back(work_area_->id());
@@ -101,6 +102,7 @@ void LyXView::setWorkArea(WorkArea * work_area)
 
 Buffer * LyXView::buffer() const
 {
+	BOOST_ASSERT(work_area_);
 	return work_area_->bufferView().buffer();
 }
 
@@ -109,6 +111,7 @@ void LyXView::setBuffer(Buffer * b)
 {
 	busy(true);
 
+	BOOST_ASSERT(work_area_);
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
@@ -143,6 +146,7 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 {
 	busy(true);
 
+	BOOST_ASSERT(work_area_);
 	if (work_area_->bufferView().buffer())
 		disconnectBuffer();
 
@@ -169,6 +173,7 @@ void LyXView::connectBuffer(Buffer & buf)
 	if (errorsConnection_.connected())
 		disconnectBuffer();
 
+	BOOST_ASSERT(work_area_);
 	bufferChangedConnection_ =
 		buf.changed.connect(
 			boost::bind(&WorkArea::redraw, work_area_));
@@ -285,12 +290,14 @@ void LyXView::showReadonly(bool)
 
 BufferView * LyXView::view() const
 {
+	BOOST_ASSERT(work_area_);
 	return &work_area_->bufferView();
 }
 
 
 void LyXView::updateToolbars()
 {
+	BOOST_ASSERT(work_area_);
 	bool const math =
 		work_area_->bufferView().cursor().inMathed();
 	bool const table =
@@ -362,6 +369,7 @@ void LyXView::updateLayoutChoice()
 		current_layout = buffer()->params().getLyXTextClass().defaultLayoutName();
 	}
 
+	BOOST_ASSERT(work_area_);
 	if (work_area_->bufferView().cursor().inMathed())
 		return;
 
@@ -411,6 +419,7 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 	if (inset) {
 		buffer_ptr = work_area_->bufferView().buffer();
 		// No FitCursor:
+		BOOST_ASSERT(work_area_);
 		work_area_->bufferView().update(Update::Force);
 		work_area_->redraw();
 	}
