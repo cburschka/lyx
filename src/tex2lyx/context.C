@@ -137,12 +137,11 @@ void Context::check_layout(ostream & os)
 					     font, normalfont);
 				deeper_paragraph = true;
 			}
-			need_layout = false;
 		} else {
 			// No list-like environment
 			begin_layout(os, layout, font, normalfont);
-			need_layout=false;
 		}
+		need_layout = false;
 		need_end_layout = true;
 		if (!extra_stuff.empty()) {
 			os << extra_stuff;
