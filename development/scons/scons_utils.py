@@ -76,6 +76,21 @@ def env_subst(target, source, env):
     #st = os.stat(str(source[0]))
     #os.chmod(str(target[0]), stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE)
 
+
+def createResFromIcon(env, icon_file, rc_file):
+    ''' create a rc file with icon, and return res file (windows only) '''
+    if os.name == 'nt':
+        rc_name = env.File(rc_file).abspath
+        rc = open(rc_name, 'w')
+        print >> rc, 'IDI_ICON1  ICON DISCARDABLE "%s"' % \
+            os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'development', 'win32',
+                'packaging', 'icons', icon_file)
+        rc.close()
+        return env.RES(rc_name)
+    else:
+        return []
+
+
 #
 # autoconf tests
 #

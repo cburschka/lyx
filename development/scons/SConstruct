@@ -1676,7 +1676,9 @@ if build_client:
             target = '$BUILDDIR/common/client/lyxclient',
             LIBS = ['support'] + intl_libs + system_libs +
                 socket_libs + boost_libraries,
-            source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files]
+            source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files] + \
+                utils.createResFromIcon(env, 'lyx_32x32.ico', '$LOCALLIBPATH/client.rc')
+
         )
         Alias('client', env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
             client, [Copy('$TARGET', '$SOURCE')]))
@@ -1710,7 +1712,8 @@ if build_tex2lyx:
     tex2lyx = tex2lyx_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
         LIBS = ['support'] + boost_libraries + system_libs,
-        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files]
+        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files] + \
+            utils.createResFromIcon(tex2lyx_env, 'lyx_32x32.ico', '$LOCALLIBPATH/tex2lyx.rc')
     )
     Alias('tex2lyx', env.Command(os.path.join('$BUILDDIR', os.path.split(str(tex2lyx[0]))[1]),
         tex2lyx, [Copy('$TARGET', '$SOURCE')]))
@@ -1756,7 +1759,8 @@ if build_lyx:
     #
     lyx = env.Program(
         target = '$BUILDDIR/$frontend/lyx',
-        source = ['$BUILDDIR/common/main.C'],
+        source = ['$BUILDDIR/common/main.C'] + \
+            utils.createResFromIcon(env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
         LIBS = [
             'lyxbase_pre',
             'mathed',
