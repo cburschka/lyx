@@ -41,7 +41,7 @@ public:
 	explicit iconv_codecvt_facet(string const & encoding = "UTF-8",
 			std::ios_base::openmode inout = std::ios_base::in | std::ios_base::out,
 			size_t refs = 0)
-		: base(refs), utf8_(encoding == "UTF-8")
+		: base(refs), encoding_(encoding)
 	{
 		if (inout & std::ios_base::in) {
 			in_cd_ = iconv_open(ucs4_codeset, encoding.c_str());
@@ -89,8 +89,38 @@ protected:
 		size_t outbytesleft = (to_end - to) * sizeof(extern_type);
 		from_next = from;
 		to_next = to;
-		return do_iconv(out_cd_, reinterpret_cast<char const **>(&from_next),
+		result const retval = do_iconv(out_cd_,
+				reinterpret_cast<char const **>(&from_next),
 				&inbytesleft, &to_next, &outbytesleft);
+		if (retval == base::error) {
+			fprintf(stderr,
+			        "Error %d returned from iconv when converting from %s to %s: %s\n",
+			        errno, ucs4_codeset, encoding_.c_str(),
+			        strerror(errno));
+			fputs("Converted input:", stderr);
+			for (intern_type const * i = from; i < from_next; ++i) {
+				unsigned int const c = *i;
+				fprintf(stderr, " 0x%04x", c);
+			}
+			unsigned int const c = *from_next;
+			fprintf(stderr, "\nStopped at: 0x%04x\n", c);
+			fputs("Unconverted input:", stderr);
+			for (intern_type const * i = from_next + 1; i < from_end; ++i) {
+				unsigned int const c = *i;
+				fprintf(stderr, " 0x%04x", c);
+			}
+			fputs("\nConverted output:", stderr);
+			for (extern_type const * i = to; i < to_next; ++i) {
+				// extern_type may be signed, avoid output of
+				// something like 0xffffffc2
+				unsigned int const c =
+					*reinterpret_cast<unsigned char const *>(i);
+				fprintf(stderr, " 0x%02x", c);
+			}
+			fputc('\n', stderr);
+			fflush(stderr);
+		}
+		return retval;
 	}
 	virtual result do_unshift(state_type &, extern_type * to,
 			extern_type *, extern_type *& to_next) const
@@ -109,9 +139,40 @@ protected:
 		size_t outbytesleft = (to_end - to) * sizeof(intern_type);
 		from_next = from;
 		to_next = to;
-		return do_iconv(in_cd_, &from_next, &inbytesleft,
+		result const retval = do_iconv(in_cd_, &from_next, &inbytesleft,
 				reinterpret_cast<char **>(&to_next),
 				&outbytesleft);
+		if (retval == base::error) {
+			fprintf(stderr,
+			        "Error %d returned from iconv when converting from %s to %s: %s\n",
+			        errno, encoding_.c_str(), ucs4_codeset,
+			        strerror(errno));
+			fputs("Converted input:", stderr);
+			for (extern_type const * i = from; i < from_next; ++i) {
+				// extern_type may be signed, avoid output of
+				// something like 0xffffffc2
+				unsigned int const c =
+					*reinterpret_cast<unsigned char const *>(i);
+				fprintf(stderr, " 0x%02x", c);
+			}
+			unsigned int const c =
+				*reinterpret_cast<unsigned char const *>(from_next);
+			fprintf(stderr, "\nStopped at: 0x%02x\n", c);
+			fputs("Unconverted input:", stderr);
+			for (extern_type const * i = from_next + 1; i < from_end; ++i) {
+				unsigned int const c =
+					*reinterpret_cast<unsigned char const *>(i);
+				fprintf(stderr, " 0x%02x", c);
+			}
+			fputs("\nConverted output:", stderr);
+			for (intern_type const * i = to; i < to_next; ++i) {
+				unsigned int const c = *i;
+				fprintf(stderr, " 0x%02x", c);
+			}
+			fputc('\n', stderr);
+			fflush(stderr);
+		}
+		return retval;
 	}
 	virtual int do_encoding() const throw()
 	{
@@ -151,7 +212,7 @@ protected:
 		// RFC 3629.
 		// All other encodings encode one UCS4 code point in one byte
 		// (and can therefore only encode a subset of UCS4)
-		return utf8_ ? 4 : 1;
+		return encoding_ == "UTF-8" ? 4 : 1;
 	}
 private:
 	/// Do the actual conversion. The interface is equivalent to that of
@@ -159,7 +220,7 @@ private:
 	inline base::result do_iconv(iconv_t cd, char const ** from,
 			size_t * inbytesleft, char ** to, size_t * outbytesleft) const
 	{
-		char const * to_start = *to;
+		char const * const to_start = *to;
 		size_t converted = iconv(cd, const_cast<char ICONV_CONST **>(from),
 				inbytesleft, to, outbytesleft);
 		if (converted == (size_t)(-1)) {
@@ -169,9 +230,6 @@ private:
 				return base::partial;
 			case EILSEQ:
 			default:
-				fprintf(stderr, "Error %d returned from iconv: %s\n",
-				        errno, strerror(errno));
-				fflush(stderr);
 				return base::error;
 			}
 		}
@@ -181,8 +239,8 @@ private:
 	}
 	iconv_t in_cd_;
 	iconv_t out_cd_;
-	/// Is the narrow encoding UTF8?
-	bool utf8_;
+	/// The narrow encoding
+	std::string encoding_;
 };
 
 } // namespace anon
