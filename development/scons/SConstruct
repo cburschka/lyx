@@ -1371,6 +1371,17 @@ if frontend == 'qt4':
 
     frontend_env = conf.Finish()
 
+if os.name == 'nt':
+    # if under windows, create an rc file
+    rc_file = frontend_env.File('$BUILDDIR/lyx.rc').abspath
+    rc = open(rc_file, 'w')
+    print >> rc, 'IDI_ICON1  ICON DISCARDABLE "%s"' % \
+        os.path.join(frontend_env.Dir('$TOP_SRCDIR').abspath, 'development', 'win32',
+            'packaging', 'icons', 'lyx_32x32.ico')
+    rc.close()
+    frontend_env['ICON_RES'] = frontend_env.RES(rc_file)
+else:
+    frontend_end['ICON_RES'] = []
 
 #
 # Report results
@@ -1747,7 +1758,8 @@ if build_client:
             target = '$BUILDDIR/common/client/lyxclient',
             LIBS = ['support'] + intl_libs + system_libs +
                 socket_libs + boost_libraries + qtcore_lib,
-            source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files]
+            source = ['$BUILDDIR/common/client/%s' % x for x in src_client_files] + \
+                frontend_env['ICON_RES']
         )
         Alias('client', frontend_env.Command(os.path.join('$BUILDDIR', os.path.split(str(client[0]))[1]),
             client, [Copy('$TARGET', '$SOURCE')]))
@@ -1777,7 +1789,8 @@ if build_tex2lyx:
     tex2lyx = frontend_env.Program(
         target = '$BUILDDIR/common/tex2lyx/tex2lyx',
         LIBS = ['support'] + boost_libraries + intl_libs + system_libs + qtcore_lib,
-        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files],
+        source = ['$BUILDDIR/common/tex2lyx/%s' % x for x in src_tex2lyx_files] + \
+            frontend_env['ICON_RES'],
         CPPPATH = ['$BUILDDIR/common/tex2lyx', '$CPPPATH'],
         LIBPATH = ['#$LOCALLIBPATH', '$LIBPATH'],
     )
@@ -1825,7 +1838,7 @@ if build_lyx:
     #
     lyx = frontend_env.Program(
         target = '$BUILDDIR/lyx',
-        source = ['$BUILDDIR/common/main.C'],
+        source = ['$BUILDDIR/common/main.C'] + frontend_env['ICON_RES'],
         LIBS = [
             'lyxbase_pre',
             'mathed',
