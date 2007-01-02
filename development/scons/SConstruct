@@ -1381,7 +1381,7 @@ if os.name == 'nt':
     rc.close()
     frontend_env['ICON_RES'] = frontend_env.RES(rc_file)
 else:
-    frontend_end['ICON_RES'] = []
+    frontend_env['ICON_RES'] = []
 
 #
 # Report results
