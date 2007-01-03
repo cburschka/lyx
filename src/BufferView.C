@@ -335,6 +335,10 @@ bool BufferView::multiParSel()
 
 bool BufferView::update(Update::flags flags)
 {
+	// last_inset_ points to the last visited inset. This pointer may become
+	// invalid becuase of keyboard editing. Since all such operations
+	// causes screen update(), I reset last_inset_ to avoid such a problem.
+	last_inset_ = 0;
 	// This is close to a hot-path.
 	if (lyxerr.debugging(Debug::DEBUG)) {
 		lyxerr[Debug::DEBUG]
