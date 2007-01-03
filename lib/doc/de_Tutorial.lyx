@@ -1,4 +1,4 @@
-#LyX 1.4.3svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -67,8 +67,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 20.
- Mai 2006
+letzte Änderung: 21.
+ November 2006
 \end_layout
 
 \begin_layout Standard
@@ -84,10 +84,31 @@ Einleitung
 \end_layout
 
 \begin_layout Section
-Willkommen bei LyX
+Willkommen bei Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
+ bei LaTeX, TeX usw., und als solcher gedruckt wird wie in der nächsten Zeile.
+\end_layout
+
+\end_inset
+
 Zielgruppe für dieses Dokument sind alle diejenigen, die noch niemals etwas
  von LaTeX gehört haben oder es nicht sehr gut beherrschen.
  Doch nur keine Panik -- Sie müssen kein LaTeX lernen, um LyX zu benutzen.
@@ -311,11 +332,33 @@ So, nun ist es Zeit, anzufangen und das erste Dokument zu erstellen.
 \end_layout
 
 \begin_layout Chapter
-Die ersten Schritte mit LyX
+Die ersten Schritte mit Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Section
-Ihr erstes LyX-Dokument
+Ihr erstes Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Dokument
 \end_layout
 
 \begin_layout Standard
@@ -921,7 +964,18 @@ n nutzbringend einzusetzen.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Leerzeichen in LyX
+WYSIWYM: Leerzeichen in Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard
@@ -3044,17 +3098,8 @@ opieren
  Sie können auch einfach gewöhnlichen, bereits geschriebenen Text in eine
  Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schaltfläche
  anklicken.
- Um eine Fußnote in gewöhnlichen Text zurückzuwandeln, setzen Sie den Cursor
- an den Anfang des Textes in der Fußnote und drücken Sie die 
-\family sans
-Backspace
-\family default
--Taste.
- Alternativ können Sie auch am Ende des Fußnotentextes die 
-\family sans
-Entf
-\family default
--Taste drücken.
+ Umgekehrt können Sie eine Fußnote nicht in gewöhnlichen Text zurückwandeln,
+ sondern Sie müssen den Fußnotentext kopieren und dann die Fußnote löschen.
 \end_layout
 
 \begin_layout Standard
@@ -3316,7 +3361,20 @@ Benutzerhandbuch
 \series default
 Korrigieren Sie Literaturverzeichnis und Zitate in der Datei 
 \family typewriter
-de_beispiel_ roh.lyx
+de_beispiel_roh.
+\begin_inset ERT
+status open
+
+\begin_layout Standard
+
+
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+lyx
 \family default
 .
 \end_layout
@@ -4249,7 +4307,18 @@ de_beispiel_roh.lyx
 \end_layout
 
 \begin_layout Subsection
-TeX-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
+Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Modus: Grenzwerte, Logarithmen, Trigonometrische Funktionen und anderes
 \end_layout
 
 \begin_layout Standard
@@ -4999,7 +5068,18 @@ Vermischtes
 \end_layout
 
 \begin_layout Section
-Andere wichtige LyX-Merkmale
+Andere wichtige Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Merkmale
 \end_layout
 
 \begin_layout Standard
@@ -5230,7 +5310,29 @@ Beachten Sie dabei, dass die Rechtschreibprüfung an der momentanen Position
 \end_layout
 
 \begin_layout Section
-LyX für LaTeX-Benutzer
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X für LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Benutzer
 \end_layout
 
 \begin_layout Standard
@@ -5282,7 +5384,18 @@ Geheimnisse der LaTeX-Zauberer
 \end_layout
 
 \begin_layout Subsection
-Der TeX-Modus
+Der Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Modus
 \end_layout
 
 \begin_layout Standard
@@ -5453,7 +5566,29 @@ status open
 \end_layout
 
 \begin_layout Subsection
-LaTeX-Dokumente nach LyX konvertieren -- 
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Dokumente nach Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X konvertieren -- 
 \family typewriter
 reLyX
 \end_layout
@@ -5564,7 +5699,29 @@ te nicht unterstützt werden, welche Fehler (noch) vorhanden sind und wie
 \end_layout
 
 \begin_layout Subsection
-LyX-Dokumente nach LaTeX konvertieren
+Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Dokumente nach LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X konvertieren
 \end_layout
 
 \begin_layout Standard
@@ -5618,7 +5775,18 @@ dvi
 \end_layout
 
 \begin_layout Subsection
-Der LaTeX-Vorspann
+Der LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Vorspann
 \end_layout
 
 \begin_layout Subsubsection
@@ -5693,7 +5861,7 @@ instellungen
 \SpecialChar \ldots{}
 
 \family sans
- \SpecialChar \menuseparator
+\SpecialChar \menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -5713,7 +5881,18 @@ Vorspann
 \end_layout
 
 \begin_layout Subsection
-BibTeX
+BibTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard

@@ -1,4 +1,4 @@
-#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -72,8 +72,8 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 20.
- Mai 2006
+letzte Änderung: 21.
+ November 2006
 \end_layout
 
 \begin_layout Standard
@@ -85,7 +85,18 @@ letzte Änderung: 20.
 \end_layout
 
 \begin_layout Chapter
-Die Philosophie von LyX
+Die Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Philosophie
 \end_layout
 
 \begin_layout Standard
@@ -137,10 +148,31 @@ Ganz einfach Skyler: Du hast doch gesehen was die Lebensmittelverarbeitung
 \end_layout
 
 \begin_layout Section
-Was ist LyX
+Was ist Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
+ bei LaTeX, TeX usw., und als solcher gedruckt wird wie in der nächsten Zeile.
+\end_layout
+
+\end_inset
+
 LyX ist ein komplettes System zur Erstellung von Dokumenten.
  Es ist unübertroffen beim Schreiben von komplexen wissenschaftlichen und
  technischen Artikeln mit mathematischen Formeln, Querverweisen, Literaturlisten
@@ -202,7 +234,7 @@ _
 \end_inset
 
  ist, wurde ein Standardweg, um Text hervorzuheben.
- Beim Anlegen einer Tabelle mußte man sich im voraus überlegen, wie groß
+ Beim Anlegen einer Tabelle musste man sich im voraus überlegen, wie groß
  jede Spalte sein muss, und setzte die entsprechenden Tabulatoren.
  Das gleiche gilt für Briefe oder anderen rechtsbündigen Text.
  Wort\SpecialChar \textcompwordmark{}
@@ -234,7 +266,18 @@ What you see is what you get --- Was Du siehst ist (genau das) was Du siehst
 \end_layout
 
 \begin_layout Subsubsection*
-Und heute mit LyX
+Und heute mit Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard
@@ -256,7 +299,7 @@ Stil
 status open
 
 \begin_layout Standard
-Fairerweise muß man sagen, daß die meisten aktuellen Textverarbeitungsprogramme
+Fairerweise muss man sagen, daß die meisten aktuellen Textverarbeitungsprogramme
  mittlerweile auch so etwas wie Stilvorlagen unterstützen, die ein ähnliches
  Konzept darstellen.
  Leider werden Sie, so unsere Erfahrung, in der Realität kaum genutzt.
@@ -342,7 +385,18 @@ n sind usw.
 \end_layout
 
 \begin_layout Subsubsection*
-Die Grundidee von LyX
+Die Grundidee von Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard
@@ -388,7 +442,18 @@ wollen
 \end_layout
 
 \begin_layout Section
-Unterschiede zwischen LyX und Textverarbeitungen
+Unterschiede zwischen Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X und Textverarbeitungen
 \begin_inset Foot
 status open
 
@@ -561,7 +626,18 @@ Was
 \emph on
 ist
 \emph default
- denn nun LaTeX (und muß ich das wissen)?
+ denn nun LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X (und muss ich das wissen)?
 \end_layout
 
 \begin_layout Standard
@@ -763,29 +839,29 @@ n den eigenen Wünschen anzupassen, Erscheinungsbild und Position von Fußnoten,
 Hier eine kurze Zusammenfassung:
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 TeX: Makrofähige Programmiersprache für Schriftsatz.
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 LaTeX: Makropaket auf der Basis von TeX.
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 Klasse: Beschreibung eines Dokumententyps, verwendet LaTeX.
  
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 Stil: Verändert die Standardeinstellungen von LaTeX.
  
 \end_layout
 
-\begin_layout Labeling
+\begin_layout List
 \labelwidthstring 00.00.0000
 LyX: Visuelle WYSIWYM-Textverarbeitung, die LaTeX mit all seinen Fähigkeiten
  zum Ausdruck verwendet.
@@ -901,7 +977,9 @@ n müssen usw.
 \begin_layout Standard
 Und noch eine Bitte: Wenn Ihnen in dieser Dokumentation irgendetwas unklar
  oder falsch erscheint, zögern Sie nicht, uns dies mitzuteilen! Sie erreichen
- das LyX-Dokumentations-Team über die Mailing-Liste 
+ das LyX-Dokumen\SpecialChar \-
+ta\SpecialChar \-
+tions-Team über die Mailing-Liste 
 \begin_inset LatexCommand \url{lyx-docs@lists.lyx.org}
 
 \end_inset
@@ -910,10 +988,9 @@ Und noch eine Bitte: Wenn Ihnen in dieser Dokumentation irgendetwas unklar
  Falls Sie dringende Fragen haben, die in der Dokumentation offensichtlich
  nicht beantwortet werden, gibt es eine sehr aktive Mailing-Liste, die Sie
  unter 
-\begin_inset LatexCommand \url{lyx-users@lists.lyx.org}
-
-\end_inset
-
+\family typewriter
+lyx-users@lists.lyx.org
+\family default
  erreichen können.
 \end_layout
 
@@ -1052,7 +1129,7 @@ Hervorgehoben
 \family typewriter
 Schreibmaschine
 \family default
- kennzeichnet Programmtext und Dateinamen, LaTeX- und/ oder LyX-Code und
+ kennzeichnet Programmtext und Dateinamen, LaTeX- und/oder LyX-Code und
  Funktionen.
 \end_layout
 
@@ -1098,7 +1175,7 @@ Strg
 \family sans
  Alt
 \family default
- werden in den Menüs für Tartenkürzel benutzt.
+ werden in den Menüs für Tastenkürzel benutzt.
 \end_layout
 
 \begin_layout Itemize
@@ -1227,7 +1304,7 @@ Enter
  bezeichnen dieselbe Taste.
  Manche Tastaturen haben diese beiden Tasten, manche bezeichnen sie auch
  nur mit einem abgeknickten Pfeil.
- Für LyX sind die Tasten gleichwertig, deshalb muß keine Unterscheidung
+ Für LyX sind die Tasten gleichwertig, deshalb muss keine Unterscheidung
  gemacht werden.
 \end_layout
 
@@ -1385,7 +1462,7 @@ Anpassung
 \newline
 Eine Beschreibung der Konfigurationsmöglichkeiten für Fortgeschrittene.
  Hier wird auch beschrieben, wie LyX konfiguriert wird.
- Das umfaßt Tastaturbelegung, Internationalisierung und Konfigurationsdateien.
+ Das umfasst Tastaturbelegung, Internationalisierung und Konfigurationsdateien.
  Denken Sie besser nicht daran, es zu lesen, ohne vorher das 
 \emph on
 Tutorium
@@ -1407,7 +1484,7 @@ LyX: Häufig gestellte Fragen mit Antworten
 \begin_layout Description
 
 \emph on
-Inahltsverzeichnis
+Inhaltsverzeichnis
 \emph default
  
 \size large
@@ -1501,11 +1578,33 @@ Sie ersparen sich dadurch sicherlich einiges an Frustration und werden die
 
 \end_inset
 
-Wie helfe ich beim LyX Projekt?
+Wie helfe ich beim Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Projekt?
 \end_layout
 
 \begin_layout Section
-Mithilfe bei LyX
+Mithilfe bei Ly
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X
 \end_layout
 
 \begin_layout Standard
@@ -1541,9 +1640,10 @@ LyX hat ein Web-basiertes Fehlermeldesystem, den
  Wenn Sie einen Kommentar zu einem bestehenden Fehler abgeben wollen oder
  einen neuen Fehler melden wollen, können Sie das über den Bug-Tracker tun,
  oder Sie senden einen eBrief an die Entwickler-Liste, 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
+\begin_inset LatexCommand \url{lyx-devel@lists.lyx.org}
+
+\end_inset
+
 .
  Archive der Liste erreichen Sie über die 
 \begin_inset LatexCommand \htmlurl[LyX Homepage]{http://www.lyx.org/}
@@ -1588,21 +1688,13 @@ gdb
 
 
 \family typewriter
-gdb /usr/src/lyx-1.4.0/src/
-\begin_inset ERT
-status open
+gdb 
+\family default
 
-\begin_layout Standard
-
-
-\backslash
- 
-\end_layout
+\begin_inset LatexCommand \url{/usr/src/lyx-1.4.0/src/lyx}
 
 \end_inset
 
-lyx
-\family default
 
 \begin_inset Quotes grd
 \end_inset
