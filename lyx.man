@@ -125,7 +125,7 @@ specifies the application name under which resources are to be
 obtained, rather than the default executable file name.
 .SH ENVIRONMENT
 .TP
-.B LYX_DIR_14x
+.B LYX_DIR_15x
 can be used to specify which system directory to use.
 .PP
 The system directory is determined by searching for the file
@@ -133,7 +133,7 @@ The system directory is determined by searching for the file
 .br
 1) \-sysdir command line parameter
 .br
-2) LYX_DIR_14x environment variable
+2) LYX_DIR_15x environment variable
 .br
 3) Maybe <path of binary>/TOP_SRCDIR/lib
 .br
@@ -141,14 +141,14 @@ The system directory is determined by searching for the file
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX)
 .TP
-.B LYX_USERDIR_14x
+.B LYX_USERDIR_15x
 can be used to specify which user directory to use.
 .PP
 The user directory is, in order of precedence:
 .br
 1) \-userdir command line parameter
 .br
-2) LYX_USERDIR_14x environment variable
+2) LYX_USERDIR_15x environment variable
 .br
 3) $HOME/.<name of binary> if no explicit setting is made
 
