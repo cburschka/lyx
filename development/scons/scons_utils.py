@@ -80,6 +80,9 @@ def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':
         rc_name = env.File(rc_file).abspath
+        dir = os.path.split(rc_name)[0]
+        if not os.path.isdir(dir):
+            os.makedirs(dir)
         rc = open(rc_name, 'w')
         print >> rc, 'IDI_ICON1  ICON DISCARDABLE "%s"' % \
             os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'development', 'win32',
