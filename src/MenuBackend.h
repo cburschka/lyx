@@ -202,7 +202,7 @@ public:
 	///
 	typedef MenuList::iterator iterator;
 	///
-	MenuBackend() : specialmenu_(0) {}
+	MenuBackend() {}
 	///
 	void read(LyXLex &);
 	///
@@ -218,10 +218,13 @@ public:
 	///
 	bool empty() const { return menulist_.empty(); }
 	/** This defines a menu whose entries list the FuncRequests
-	    will be removed by expand() in other menus. This is used by
-	    the Qt/Mac code
+	    that will be removed by expand() in other menus. This is
+	    used by the Qt/Mac code
 	*/
-	void specialMenu(docstring const &);
+	void specialMenu(Menu const &);
+	///
+	Menu const & specialMenu() { return specialmenu_; }
+
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
@@ -251,7 +254,7 @@ private:
 	///
 	Menu menubar_;
 	///
-	Menu * specialmenu_;
+	Menu specialmenu_;
 };
 
 ///

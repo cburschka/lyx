@@ -179,20 +179,24 @@ void QLMenubar::macxMenuBarInit()
 	   build menus on demand, we add the entries to a dummy menu
 	   (JMarc)
 	*/
-
-	// this is the name of the menu that contains our special entries
-	docstring const & specialname = from_ascii("LyX");
-	if (menubackend_.hasMenu(specialname)) {
-		QMenu * qMenu = owner_->menuBar()->addMenu("special");
-		//qMenu->setVisible(false);
-
-		menubackend_.specialMenu(specialname);
-		Menu const & special = menubackend_.getMenu(specialname);
-		Menu::const_iterator end = special.end();
-		for (Menu::const_iterator cit = special.begin();
-		     cit != end ; ++cit) 
-			qMenu->addAction(new Action(*owner_, cit->label(), cit->func()));
-	}
+	
+	Menu special;
+	special.add(MenuItem(MenuItem::Command, 
+			     qstring_to_ucs4(QMenuBar::tr("About")), 
+			     FuncRequest(LFUN_DIALOG_SHOW, "aboutlyx")));
+	special.add(MenuItem(MenuItem::Command, 
+			     qstring_to_ucs4(QMenuBar::tr("Preferences")),
+			     FuncRequest(LFUN_DIALOG_SHOW, "prefs")));
+	special.add(MenuItem(MenuItem::Command, 
+			     qstring_to_ucs4(QMenuBar::tr("Quit")),
+			     FuncRequest(LFUN_LYX_QUIT)));
+	menubackend_.specialMenu(special);
+	
+	QMenu * qMenu = owner_->menuBar()->addMenu("special");	
+	Menu::const_iterator end = menubackend_.specialMenu().end();
+	for (Menu::const_iterator cit = menubackend_.specialMenu().begin();
+	     cit != end ; ++cit) 
+		qMenu->addAction(new Action(*owner_, cit->label(), cit->func()));
 # else
 	qt_mac_set_menubar_merge(false);
 # endif // MERGE_MAC_MENUS

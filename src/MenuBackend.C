@@ -413,10 +413,9 @@ void Menu::checkShortcuts() const
 }
 
 
-void MenuBackend::specialMenu(docstring const &name)
+void MenuBackend::specialMenu(Menu const & menu)
 {
-	if (hasMenu(name))
-		specialmenu_ = &getMenu(name);
+	specialmenu_ = menu;
 }
 
 
@@ -890,8 +889,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 			break;
 
 		case MenuItem::Command:
-			if (!specialmenu_
-			    || !specialmenu_->hasFunc(cit->func()))
+			if (!specialmenu_.hasFunc(cit->func()))
 				tomenu.addWithStatusCheck(*cit);
 		}
 	}
