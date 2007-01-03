@@ -386,6 +386,12 @@ private:
 	void charInserted();
 	/// set 'number' font property
 	void number(LCursor & cur);
+
+	/// paste string at current cursor.
+	/// \param str string to paste
+	/// \param argument method for parsing ("paragraph" is special)
+	void pasteString(LCursor & cur, docstring const & str,
+		docstring const & argument);
 };
 
 } // namespace lyx

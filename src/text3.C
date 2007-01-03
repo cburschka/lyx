@@ -860,31 +860,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_CLIPBOARD_PASTE: {
-		cur.clearSelection();
-		docstring const clip = theClipboard().get();
-		if (!clip.empty()) {
-			recordUndo(cur);
-			if (cmd.argument() == "paragraph")
-				insertStringAsParagraphs(cur, clip);
-			else
-				insertStringAsLines(cur, clip);
-		}
+	case LFUN_CLIPBOARD_PASTE:
+		pasteString(cur, theClipboard().get(), cmd.argument());
 		break;
-	}
 
-	case LFUN_PRIMARY_SELECTION_PASTE: {
-		cur.clearSelection();
-		docstring const clip = theSelection().get();
-		if (!clip.empty()) {
-			recordUndo(cur);
-			if (cmd.argument() == "paragraph")
-				insertStringAsParagraphs(cur, clip);
-			else
-				insertStringAsLines(cur, clip);
-		}
+	case LFUN_PRIMARY_SELECTION_PASTE:
+		pasteString(cur, theSelection().get(), cmd.argument());
 		break;
-	}
 
 	case LFUN_UNICODE_INSERT: {
 		if (cmd.argument().empty())
@@ -1878,5 +1860,18 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	return true;
 }
 
+
+void LyXText::pasteString(LCursor & cur, docstring const & clip,
+		docstring const & argument)
+{
+	cur.clearSelection();
+	if (!clip.empty()) {
+		recordUndo(cur);
+		if (argument == "paragraph")
+			insertStringAsParagraphs(cur, clip);
+		else
+			insertStringAsLines(cur, clip);
+	}
+}
 
 } // namespace lyx
