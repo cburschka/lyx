@@ -1758,7 +1758,7 @@ if build_lyx:
     # Build lyx with given frontend
     #
     lyx = env.Program(
-        target = '$BUILDDIR/$frontend/lyx',
+        target = '$BUILDDIR/lyx',
         source = ['$BUILDDIR/common/main.C'] + \
             utils.createResFromIcon(env, 'lyx_32x32.ico', '$LOCALLIBPATH/lyx.rc'),
         LIBS = [
@@ -1778,10 +1778,6 @@ if build_lyx:
             socket_libs +
             system_libs
     )
-    # [/path/to/lyx.ext] => lyx-qt3.ext
-    target_name = os.path.split(str(lyx[0]))[1].replace('lyx', 'lyx-%s' % frontend)
-    Alias('lyx', env.Command(os.path.join('$BUILDDIR', target_name), lyx,
-        [Copy('$TARGET', '$SOURCE')]))
     Alias('lyx', lyx)
 else:
     # define lyx even if lyx is not built with rebuild=no
