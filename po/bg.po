@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-21 19:34+0100\n"
+"POT-Creation-Date: 2007-01-03 19:12+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -146,7 +146,7 @@ msgstr "Размер(Z):|#Z"
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:518
+#: src/frontends/qt4/QDocumentDialog.C:199 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Стандартно"
@@ -632,9 +632,9 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
-#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1981 src/lyxvc.C:175
+#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:690
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "(&C)Отказ"
 
@@ -678,7 +678,7 @@ msgstr "База данни:"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:245
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:805
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Отказ"
 
@@ -805,7 +805,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QBoxUi.ui:38 src/frontends/qt4/ui/QTabularUi.ui:699
 #: src/frontends/qt4/ui/QTabularUi.ui:718
 #: src/frontends/qt4/ui/QTabularUi.ui:766
-#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:170
+#: src/frontends/controllers/ControlBox.C:79 src/frontends/qt4/QBox.C:170
 #: src/frontends/qt4/QBox.C:286 src/frontends/qt4/QBoxDialog.C:74
 msgid "None"
 msgstr "Няма"
@@ -1059,7 +1059,7 @@ msgstr ""
 # src/frontends/xforms/FormPreferences.C:280
 #: src/frontends/qt4/ui/QCharacterUi.ui:111
 #: src/frontends/qt4/ui/QCharacterUi.ui:148
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocumentDialog.C:390
 #: src/frontends/qt4/QPrefsDialog.C:1471
 msgid "Language"
 msgstr "Език"
@@ -2103,7 +2103,7 @@ msgstr "Запази"
 
 # src/bufferview_funcs.C:280
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2347
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1581
 msgid "Single"
 msgstr "Единично"
 
@@ -2113,7 +2113,7 @@ msgstr ""
 
 # src/bufferview_funcs.C:286
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2353
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1587
 msgid "Double"
 msgstr "Двойно"
 
@@ -2123,8 +2123,8 @@ msgstr "Двойно"
 #: src/frontends/qt4/ui/QTabularUi.ui:728
 #: src/frontends/qt4/ui/QTabularUi.ui:776
 #: src/frontends/qt4/ui/QVSpaceUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:130
-#: src/frontends/qt4/QDocumentDialog.C:211
+#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:200
 #, fuzzy
 msgid "Custom"
 msgstr "Клиент"
@@ -2546,40 +2546,40 @@ msgstr "TeX кодировка|#T"
 
 # src/ext_l10n.h:362
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:212
+#: src/frontends/qt4/QDocumentDialog.C:201
 #, fuzzy
 msgid "US letter"
 msgstr "Държава"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/QDocumentDialog.C:202
 msgid "US legal"
 msgstr ""
 
 # src/ext_l10n.h:234
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:214
+#: src/frontends/qt4/QDocumentDialog.C:203
 #, fuzzy
 msgid "US executive"
 msgstr "Упражнение"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:215
+#: src/frontends/qt4/QDocumentDialog.C:204
 msgid "A3"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:216
+#: src/frontends/qt4/QDocumentDialog.C:205
 msgid "A4"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:217
+#: src/frontends/qt4/QDocumentDialog.C:206
 msgid "A5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:220
+#: src/frontends/qt4/QDocumentDialog.C:209
 msgid "B5"
 msgstr ""
 
@@ -3020,7 +3020,7 @@ msgstr "Допускане"
 # src/frontends/xforms/form_graphics.C:44
 # src/frontends/xforms/form_paragraph.C:219
 #: src/frontends/qt4/ui/QPrefUi.ui:211
-#: src/frontends/controllers/ControlBox.C:85 src/frontends/qt4/QBox.C:194
+#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:194
 #: src/frontends/qt4/QBox.C:228
 #, fuzzy
 msgid "Width"
@@ -3028,7 +3028,7 @@ msgstr "Ширина"
 
 # src/form1.C:157 src/frontends/xforms/form_graphics.C:46
 #: src/frontends/qt4/ui/QPrefUi.ui:234
-#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:185
+#: src/frontends/controllers/ControlBox.C:80 src/frontends/qt4/QBox.C:185
 #: src/frontends/qt4/QBox.C:219
 #, fuzzy
 msgid "Height"
@@ -3065,8 +3065,8 @@ msgid "&Maximum last files:"
 msgstr ""
 
 # src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
-#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyxfunc.C:688
+#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyxfunc.C:689
 #, fuzzy
 msgid "&Save"
 msgstr "Запази"
@@ -3893,21 +3893,21 @@ msgstr "Нормално разстояние"
 
 # src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
 #: src/frontends/qt4/ui/QVSpaceUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:117
+#: src/frontends/qt4/QDocumentDialog.C:106
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Малко разстояние"
 
 # src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
 #: src/frontends/qt4/ui/QVSpaceUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:118
+#: src/frontends/qt4/QDocumentDialog.C:107
 #, fuzzy
 msgid "MedSkip"
 msgstr "Средно разстояние"
 
 # src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
 #: src/frontends/qt4/ui/QVSpaceUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:108
 #, fuzzy
 msgid "BigSkip"
 msgstr "Голямо разстояние"
@@ -4188,7 +4188,7 @@ msgstr "Дефиниция"
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:322
+#: src/frontends/qt4/QDocumentDialog.C:314
 msgid "Example"
 msgstr "Пример"
 
@@ -4471,7 +4471,7 @@ msgstr "Индекс запис"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:400
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:392
 msgid "Bibliography"
 msgstr "Библиография"
 
@@ -4480,7 +4480,7 @@ msgstr "Библиография"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:496
+#: src/rowpainter.C:507
 msgid "Appendix"
 msgstr "Приложение"
 
@@ -10453,17 +10453,17 @@ msgstr "LaTeX конфигурация|L"
 msgid "About LyX|X"
 msgstr ""
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:480 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:424 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:68
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:481
+#: lib/ui/classic.ui:425
 #, fuzzy
 msgid "Preferences..."
 msgstr "Настройки"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:482
+#: lib/ui/classic.ui:426
 msgid "Quit LyX"
 msgstr ""
 
@@ -10507,20 +10507,20 @@ msgstr "Повтори(d)|d"
 
 # src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:786
+#: src/mathed/InsetMathNest.C:454 src/text3.C:773
 msgid "Cut"
 msgstr "Отрежи"
 
 # src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:791
+#: src/mathed/InsetMathNest.C:463 src/text3.C:778
 msgid "Copy"
 msgstr "Копирай"
 
 # src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
-#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:437
-#: src/text3.C:770
+#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:438
+#: src/text3.C:757
 msgid "Paste"
 msgstr "Залепи"
 
@@ -11186,12 +11186,12 @@ msgid "Print document"
 msgstr "Импортирай документ"
 
 # src/BufferView2.C:435 src/LyXAction.C:406
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:688
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:693
 msgid "Undo"
 msgstr "Отмени"
 
 # src/BufferView2.C:456 src/LyXAction.C:357
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:699
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:704
 msgid "Redo"
 msgstr "Повтори"
 
@@ -11633,13 +11633,13 @@ msgid ""
 msgstr "Документът използва непознат текстклас \""
 
 # src/LyXAction.C:147
-#: src/BufferView.C:218 src/lyxfunc.C:860
+#: src/BufferView.C:218 src/lyxfunc.C:861
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Записано състояние"
 
 # src/ext_l10n.h:30
-#: src/BufferView.C:219 src/lyxfunc.C:861 src/lyxvc.C:175
+#: src/BufferView.C:219 src/lyxfunc.C:862 src/lyxvc.C:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Регистрирай(R)|R"
@@ -11672,122 +11672,122 @@ msgid "&Create"
 msgstr "Latex"
 
 # src/frontends/xforms/form_paragraph.C:244
-#: src/BufferView.C:534
+#: src/BufferView.C:538
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Долу(B)|#B"
 
 # src/BufferView2.C:440
-#: src/BufferView.C:691
+#: src/BufferView.C:696
 msgid "No further undo information"
 msgstr "Няма нищо повече за отменяне"
 
 # src/BufferView2.C:461
-#: src/BufferView.C:702
+#: src/BufferView.C:707
 msgid "No further redo information"
 msgstr "Няма нищо повече за повтаряне"
 
 # src/lyxfunc.C:1949
-#: src/BufferView.C:863
+#: src/BufferView.C:868
 msgid "Mark off"
 msgstr "Маркиране изкл."
 
 # src/lyxfunc.C:1962
-#: src/BufferView.C:870
+#: src/BufferView.C:875
 msgid "Mark on"
 msgstr "Маркиране вкл."
 
 # src/lyxfunc.C:1839
-#: src/BufferView.C:877
+#: src/BufferView.C:882
 msgid "Mark removed"
 msgstr "Маркиране премахнато"
 
 # src/lyxfunc.C:1844
-#: src/BufferView.C:880
+#: src/BufferView.C:885
 msgid "Mark set"
 msgstr "Маркиране установено"
 
 # src/converter.C:783 src/converter.C:853
-#: src/BufferView.C:926
+#: src/BufferView.C:931
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Открита е една грешка"
 
 # src/lyxfunc.C:3185
-#: src/BufferView.C:929
+#: src/BufferView.C:934
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Неуспех при отварянето"
 
 # src/converter.C:783 src/converter.C:853
-#: src/BufferView.C:934
+#: src/BufferView.C:939
 #, fuzzy
 msgid "One word in selection."
 msgstr "Открита е една грешка"
 
 # src/lyxfunc.C:2761
-#: src/BufferView.C:936
+#: src/BufferView.C:941
 #, fuzzy
 msgid "One word in document."
 msgstr "Отварям поддокумент "
 
 # src/ext_l10n.h:263
-#: src/BufferView.C:939
+#: src/BufferView.C:944
 #, fuzzy
 msgid "Count words"
 msgstr "Ключови дума"
 
 # src/lyxfunc.C:3291
-#: src/BufferView.C:1401
+#: src/BufferView.C:1457
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView.C:1403 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1459 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1822 src/lyxfunc.C:1859 src/lyxfunc.C:1932
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:135
+#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView.C:1404 src/lyxfunc.C:1860 src/lyxfunc.C:1933
+#: src/BufferView.C:1460 src/lyxfunc.C:1861 src/lyxfunc.C:1934
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
 # src/ext_l10n.h:116
-#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1827
-#: src/lyxfunc.C:1864
+#: src/BufferView.C:1464 src/lyx_cb.C:141 src/lyxfunc.C:1828
+#: src/lyxfunc.C:1865
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX документ(X)...|X"
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
-#: src/BufferView.C:1420 src/lyxfunc.C:1874 src/lyxfunc.C:1954
-#: src/lyxfunc.C:1968 src/lyxfunc.C:1984
+#: src/BufferView.C:1476 src/lyxfunc.C:1875 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView.C:1431
+#: src/BufferView.C:1487
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вмъквам документ"
 
 # src/exporter.C:89
-#: src/BufferView.C:1442
+#: src/BufferView.C:1498
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/lyxfunc.C:3317
-#: src/BufferView.C:1444
+#: src/BufferView.C:1500
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неуспех при вмъкването"
@@ -12159,38 +12159,38 @@ msgid "Running BibTeX."
 msgstr "Стартирам BibTeX."
 
 # src/MenuBackend.C:263
-#: src/MenuBackend.C:466 src/MenuBackend.C:503 src/MenuBackend.C:573
-#: src/MenuBackend.C:595 src/MenuBackend.C:618 src/MenuBackend.C:704
+#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:572
+#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
 msgid "No Documents Open!"
 msgstr "Няма отворени документи!"
 
 # src/MenuBackend.C:311
-#: src/MenuBackend.C:541
+#: src/MenuBackend.C:540
 #, fuzzy
 msgid "Plain Text as Lines"
 msgstr "Ascii текст като редове"
 
 # src/MenuBackend.C:313
-#: src/MenuBackend.C:543
+#: src/MenuBackend.C:542
 #, fuzzy
 msgid "Plain Text as Paragraphs"
 msgstr "Ascii текст като абзаци"
 
 # src/bufferlist.C:113 src/bufferlist.C:189
-#: src/MenuBackend.C:715
+#: src/MenuBackend.C:714
 #, fuzzy
 msgid "Master Document"
 msgstr "Запазване на документа?"
 
 # src/frontends/xforms/Menubar_pimpl.C:339
-#: src/MenuBackend.C:747
+#: src/MenuBackend.C:746
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Няма съдържание%i"
 
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: src/MenuBackend.C:792
+#: src/MenuBackend.C:791
 #, fuzzy
 msgid " (auto)"
 msgstr "Стандартно"
@@ -12200,68 +12200,68 @@ msgid "Native OS API not yet supported."
 msgstr ""
 
 # src/support/filetools.C:453
-#: src/buffer.C:232
+#: src/buffer.C:231
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Грешка! Не мога да създам временна директория: "
 
 # src/support/filetools.C:453
-#: src/buffer.C:233
+#: src/buffer.C:232
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Грешка! Не мога да създам временна директория: "
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/buffer.C:405
+#: src/buffer.C:403
 #, fuzzy
 msgid "Unknown document class"
 msgstr " към избрания документ клас!"
 
-#: src/buffer.C:406
+#: src/buffer.C:404
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/buffer.C:461 src/text.C:354
+#: src/buffer.C:459 src/text.C:297
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Непознато действие"
 
 # src/frontends/xforms/FormError.C:26
-#: src/buffer.C:465 src/buffer.C:472 src/buffer.C:492
+#: src/buffer.C:463 src/buffer.C:470 src/buffer.C:490
 #, fuzzy
 msgid "Document header error"
 msgstr "LaTeX Грешка"
 
-#: src/buffer.C:471
+#: src/buffer.C:469
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/buffer.C:491
+#: src/buffer.C:489
 msgid "\\begin_document is missing"
 msgstr ""
 
 # src/buffer.C:546
-#: src/buffer.C:502
+#: src/buffer.C:500
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Невъзможност за зареждане на текстклас "
 
-#: src/buffer.C:503
+#: src/buffer.C:501
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
 # src/lyx_cb.C:263
-#: src/buffer.C:613 src/buffer.C:622
+#: src/buffer.C:611 src/buffer.C:620
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Документът не може да бъде записан!"
 
 # src/frontends/xforms/FormDocument.C:437
-#: src/buffer.C:614 src/buffer.C:623
+#: src/buffer.C:612 src/buffer.C:621
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " абзаци не могат да бъдат конвертирани"
@@ -12269,13 +12269,13 @@ msgstr " абзаци не могат да бъдат конвертирани"
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/buffer.C:631 src/buffer.C:698
+#: src/buffer.C:629 src/buffer.C:696
 #, fuzzy
 msgid "Document format failure"
 msgstr "Документ"
 
 # src/lyxfunc.C:3185
-#: src/buffer.C:632
+#: src/buffer.C:630
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Неуспех при отварянето"
@@ -12283,12 +12283,12 @@ msgstr "Неуспех при отварянето"
 # src/frontends/xforms/FormDocument.C:439
 # src/frontends/xforms/FormDocument.C:446
 # src/frontends/xforms/FormDocument.C:1108
-#: src/buffer.C:651
+#: src/buffer.C:649
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Грешки при конвертиране!"
 
-#: src/buffer.C:652
+#: src/buffer.C:650
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
@@ -12296,12 +12296,12 @@ msgid ""
 msgstr ""
 
 # src/LaTeXLog.C:59 src/LaTeXLog.C:62
-#: src/buffer.C:661
+#: src/buffer.C:659
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Не е намерен LaTeX файл-протокол"
 
-#: src/buffer.C:662
+#: src/buffer.C:660
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
@@ -12311,30 +12311,30 @@ msgstr ""
 # src/frontends/xforms/FormDocument.C:439
 # src/frontends/xforms/FormDocument.C:446
 # src/frontends/xforms/FormDocument.C:1108
-#: src/buffer.C:683
+#: src/buffer.C:681
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Грешки при конвертиране!"
 
-#: src/buffer.C:684
+#: src/buffer.C:682
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:699
+#: src/buffer.C:697
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
 # src/frontends/xforms/FormPreferences.C:2252
-#: src/buffer.C:735
+#: src/buffer.C:733
 #, fuzzy
 msgid "Backup failure"
 msgstr "Път за архивни копия"
 
-#: src/buffer.C:736
+#: src/buffer.C:734
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
@@ -12342,12 +12342,12 @@ msgid ""
 msgstr ""
 
 # src/frontends/xforms/form_preferences.C:132
-#: src/buffer.C:849
+#: src/buffer.C:847
 #, fuzzy
 msgid "Encoding error"
 msgstr "Кодировка"
 
-#: src/buffer.C:850
+#: src/buffer.C:848
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
@@ -12355,12 +12355,12 @@ msgid ""
 msgstr ""
 
 # src/ext_l10n.h:61
-#: src/buffer.C:859
+#: src/buffer.C:857
 #, fuzzy
 msgid "Error closing file"
 msgstr "Многоколонно(M)|M"
 
-#: src/buffer.C:860
+#: src/buffer.C:858
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -12369,16 +12369,16 @@ msgid ""
 msgstr ""
 
 # src/buffer.C:3317
-#: src/buffer.C:1118
+#: src/buffer.C:1116
 msgid "Running chktex..."
 msgstr "Стартирам chktex..."
 
-#: src/buffer.C:1131
+#: src/buffer.C:1129
 msgid "chktex failure"
 msgstr ""
 
 # src/lyx_cb.C:296
-#: src/buffer.C:1132
+#: src/buffer.C:1130
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex премина успешно"
@@ -12500,7 +12500,7 @@ msgid "%1$s #:"
 msgstr ""
 
 # src/buffer.C:534
-#: src/bufferlist.C:111 src/bufferlist.C:219
+#: src/bufferlist.C:110 src/bufferlist.C:218
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -12509,33 +12509,33 @@ msgid ""
 msgstr "Документът използва непознат текстклас \""
 
 # src/bufferlist.C:113 src/bufferlist.C:189
-#: src/bufferlist.C:114 src/bufferlist.C:222 src/lyxfunc.C:687
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:688
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Запазване на документа?"
 
-#: src/bufferlist.C:115 src/bufferlist.C:223
+#: src/bufferlist.C:114 src/bufferlist.C:222
 msgid "&Discard"
 msgstr ""
 
 # src/bufferlist.C:289
-#: src/bufferlist.C:351
+#: src/bufferlist.C:350
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "LyX: Опит за запазване на докумнета %s като..."
 
 # src/bufferlist.C:302 src/bufferlist.C:315 src/bufferlist.C:329
-#: src/bufferlist.C:362 src/bufferlist.C:375 src/bufferlist.C:389
+#: src/bufferlist.C:361 src/bufferlist.C:374 src/bufferlist.C:388
 msgid "  Save seems successful. Phew."
 msgstr "  Записът изглежда е успешен. Какъв късмет!"
 
 # src/bufferlist.C:305 src/bufferlist.C:319
-#: src/bufferlist.C:365 src/bufferlist.C:379
+#: src/bufferlist.C:364 src/bufferlist.C:378
 msgid "  Save failed! Trying..."
 msgstr "  Записът пропадна! Опитвам..."
 
 # src/bufferlist.C:332
-#: src/bufferlist.C:392
+#: src/bufferlist.C:391
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Записът пропадна! Документът е загубен."
 
@@ -12558,7 +12558,7 @@ msgid "LyX will not be able to produce output."
 msgstr "LyX не може да изработи правилен резултат."
 
 # src/BufferView2.C:636 src/BufferView2.C:640
-#: src/bufferview_funcs.C:310
+#: src/bufferview_funcs.C:307
 #, fuzzy
 msgid "No more insets"
 msgstr "Няма повече бележки"
@@ -12808,7 +12808,7 @@ msgid "Over-write file?"
 msgstr "Машинопис"
 
 # src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1981
+#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1982
 #, fuzzy
 msgid "&Over-write"
 msgstr "Машинопис"
@@ -12842,43 +12842,43 @@ msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
 # src/exporter.C:47
-#: src/exporter.C:176
+#: src/exporter.C:177
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Невъзможно е да бъде експортиран файла"
 
 # src/importer.C:58
-#: src/exporter.C:177
+#: src/exporter.C:178
 #, fuzzy, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Няма информация за импортиране от "
 
 # src/form1.C:245
-#: src/exporter.C:211
+#: src/exporter.C:212
 #, fuzzy
 msgid "File name error"
 msgstr "Име на файл(F):|#F"
 
 # src/exporter.C:75
-#: src/exporter.C:212
+#: src/exporter.C:213
 #, fuzzy
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Пътят към LyX файла не може да съдържа интервали."
 
 # src/exporter.C:89
-#: src/exporter.C:250
+#: src/exporter.C:251
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/exporter.C:89
-#: src/exporter.C:256
+#: src/exporter.C:257
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/exporter.C:89
-#: src/exporter.C:262
+#: src/exporter.C:263
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Документът ще бъде експортиран във формат "
@@ -12925,13 +12925,13 @@ msgid "Auto-edit file %1$s failed"
 msgstr ""
 
 # src/LyXView.C:370 src/minibuffer.C:242
-#: src/frontends/LyXView.C:388
+#: src/frontends/LyXView.C:397
 #, fuzzy
 msgid " (changed)"
 msgstr " (Променен)"
 
 # src/LyXView.C:372
-#: src/frontends/LyXView.C:392
+#: src/frontends/LyXView.C:401
 msgid " (read only)"
 msgstr " (само за четене)"
 
@@ -13030,41 +13030,41 @@ msgstr "База данни:"
 msgid "Select a BibTeX style"
 msgstr "Превключване на TeX стил"
 
-#: src/frontends/controllers/ControlBox.C:63
+#: src/frontends/controllers/ControlBox.C:62
 msgid "No frame drawn"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:64
+#: src/frontends/controllers/ControlBox.C:63
 msgid "Rectangular box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:65
+#: src/frontends/controllers/ControlBox.C:64
 msgid "Oval box, thin"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:66
+#: src/frontends/controllers/ControlBox.C:65
 msgid "Oval box, thick"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:67
+#: src/frontends/controllers/ControlBox.C:66
 msgid "Shadow box"
 msgstr ""
 
 # src/bufferview_funcs.C:286
-#: src/frontends/controllers/ControlBox.C:68
+#: src/frontends/controllers/ControlBox.C:67
 #, fuzzy
 msgid "Double box"
 msgstr "Двойно"
 
 # src/bufferview_funcs.C:271
-#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:188
+#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:188
 #: src/frontends/qt4/QBox.C:222
 #, fuzzy
 msgid "Depth"
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:209
-#: src/frontends/controllers/ControlBox.C:84 src/frontends/qt4/QBox.C:191
+#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:191
 #: src/frontends/qt4/QBox.C:225 src/frontends/qt4/QBox.C:258
 #: src/frontends/qt4/QBoxDialog.C:107
 #, fuzzy
@@ -13547,9 +13547,9 @@ msgstr ""
 "Възможно е да е била прекъсната с 'kill'."
 
 # src/frontends/kde/FormPrint.C:118
-#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:80
-#: src/frontends/qt4/Alert_pimpl.C:91 src/frontends/qt4/Alert_pimpl.C:101
-#: src/frontends/qt4/Alert_pimpl.C:112
+#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
+#: src/frontends/qt4/Alert_pimpl.C:96 src/frontends/qt4/Alert_pimpl.C:106
+#: src/frontends/qt4/Alert_pimpl.C:117
 #, fuzzy, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: Печат"
@@ -13596,13 +13596,13 @@ msgid "Directories"
 msgstr "Потребителска директория: "
 
 # src/frontends/kde/FormPrint.C:118
-#: src/frontends/qt4/GuiView.C:652
+#: src/frontends/qt4/GuiView.C:667
 #, fuzzy
 msgid "LyX"
 msgstr "LyX: Печат"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/frontends/qt4/GuiWorkArea.C:479
+#: src/frontends/qt4/GuiWorkArea.C:459
 #, fuzzy
 msgid "unknown version"
 msgstr "Непознато действие"
@@ -13642,12 +13642,12 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:625
+#: src/frontends/qt4/QDocumentDialog.C:617
 msgid "Yes"
 msgstr ""
 
 # src/lyxfont.C:407
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:616
 #, fuzzy
 msgid "No"
 msgstr "Съществително "
@@ -13678,13 +13678,13 @@ msgid "Text Style"
 msgstr "Стил TeX|X"
 
 # src/debug.C:47
-#: src/frontends/qt4/QCommandBuffer.C:88
+#: src/frontends/qt4/QCommandBuffer.C:87
 #, fuzzy
 msgid "Previous command"
 msgstr "Потребителски команди"
 
 # src/LyXAction.C:167
-#: src/frontends/qt4/QCommandBuffer.C:91
+#: src/frontends/qt4/QCommandBuffer.C:90
 #, fuzzy
 msgid "Next command"
 msgstr "Изпълни команда"
@@ -13736,200 +13736,206 @@ msgid "Document Settings"
 msgstr "Документи"
 
 # src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
-#: src/frontends/qt4/QDocumentDialog.C:120
+#: src/frontends/qt4/QDocumentDialog.C:109
 msgid "Length"
 msgstr "Дължина"
 
 # src/bufferview_funcs.C:283
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2350
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1584
 #, fuzzy
 msgid "OneHalf"
 msgstr "Половин"
 
-#: src/frontends/qt4/QDocumentDialog.C:156
-#: src/frontends/qt4/QDocumentDialog.C:162
-#: src/frontends/qt4/QDocumentDialog.C:168
+#: src/frontends/qt4/QDocumentDialog.C:145
+#: src/frontends/qt4/QDocumentDialog.C:151
+#: src/frontends/qt4/QDocumentDialog.C:157
 msgid " (not installed)"
 msgstr ""
 
 # src/frontends/xforms/form_graphics.C:61
 # src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: src/frontends/qt4/QDocumentDialog.C:172
-#: src/frontends/qt4/QDocumentDialog.C:198
-#: src/frontends/qt4/QDocumentDialog.C:534
+#: src/frontends/qt4/QDocumentDialog.C:161
+#: src/frontends/qt4/QDocumentDialog.C:187
+#: src/frontends/qt4/QDocumentDialog.C:526
 #, fuzzy
 msgid "default"
 msgstr "Стандартно"
 
-#: src/frontends/qt4/QDocumentDialog.C:173
+#: src/frontends/qt4/QDocumentDialog.C:162
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:174
+#: src/frontends/qt4/QDocumentDialog.C:163
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:175
+#: src/frontends/qt4/QDocumentDialog.C:164
 msgid "12"
 msgstr ""
 
 # src/frontends/kde/tocdlg.C:57
-#: src/frontends/qt4/QDocumentDialog.C:199
+#: src/frontends/qt4/QDocumentDialog.C:188
 #, fuzzy
 msgid "empty"
 msgstr "Дълбочина"
 
 # src/mathed/math_panel.C:128
-#: src/frontends/qt4/QDocumentDialog.C:200
+#: src/frontends/qt4/QDocumentDialog.C:189
 #, fuzzy
 msgid "plain"
 msgstr "Разстояние"
 
 # src/buffer.C:329
-#: src/frontends/qt4/QDocumentDialog.C:201
+#: src/frontends/qt4/QDocumentDialog.C:190
 #, fuzzy
 msgid "headings"
 msgstr "Грешка при ченете от "
 
-#: src/frontends/qt4/QDocumentDialog.C:202
+#: src/frontends/qt4/QDocumentDialog.C:191
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:218
+#: src/frontends/qt4/QDocumentDialog.C:207
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:219
+#: src/frontends/qt4/QDocumentDialog.C:208
 msgid "B4"
 msgstr ""
 
+# src/ext_l10n.h:133
+#: src/frontends/qt4/QDocumentDialog.C:292
+#, fuzzy
+msgid "LaTeX default"
+msgstr "LaTeX Протокол(L)|L"
+
 # src/LColor.C:63
-#: src/frontends/qt4/QDocumentDialog.C:306
+#: src/frontends/qt4/QDocumentDialog.C:298
 #, fuzzy
 msgid "``text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocumentDialog.C:307
+#: src/frontends/qt4/QDocumentDialog.C:299
 #, fuzzy
 msgid "''text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocumentDialog.C:308
+#: src/frontends/qt4/QDocumentDialog.C:300
 #, fuzzy
 msgid ",,text``"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocumentDialog.C:309
+#: src/frontends/qt4/QDocumentDialog.C:301
 #, fuzzy
 msgid ",,text''"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocumentDialog.C:310
+#: src/frontends/qt4/QDocumentDialog.C:302
 #, fuzzy
 msgid "<<text>>"
 msgstr "текст"
 
 # src/LColor.C:63
-#: src/frontends/qt4/QDocumentDialog.C:311
+#: src/frontends/qt4/QDocumentDialog.C:303
 #, fuzzy
 msgid ">>text<<"
 msgstr "текст"
 
 # src/mathed/formula.C:929
-#: src/frontends/qt4/QDocumentDialog.C:323
+#: src/frontends/qt4/QDocumentDialog.C:315
 #, fuzzy
 msgid "Numbered"
 msgstr "Номериране"
 
-#: src/frontends/qt4/QDocumentDialog.C:324
+#: src/frontends/qt4/QDocumentDialog.C:316
 msgid "Appears in TOC"
 msgstr ""
 
 # src/ext_l10n.h:175
-#: src/frontends/qt4/QDocumentDialog.C:337
+#: src/frontends/qt4/QDocumentDialog.C:329
 #, fuzzy
 msgid "Author-year"
 msgstr "Автор"
 
 # src/ext_l10n.h:423
-#: src/frontends/qt4/QDocumentDialog.C:338
+#: src/frontends/qt4/QDocumentDialog.C:330
 #, fuzzy
 msgid "Numerical"
 msgstr "Американски"
 
 # src/frontends/kde/citationdlg.C:35
-#: src/frontends/qt4/QDocumentDialog.C:370
+#: src/frontends/qt4/QDocumentDialog.C:362
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Достъпни клавиши"
 
 # src/exporter.C:89
-#: src/frontends/qt4/QDocumentDialog.C:393
-#: src/frontends/qt4/QDocumentDialog.C:406
+#: src/frontends/qt4/QDocumentDialog.C:385
+#: src/frontends/qt4/QDocumentDialog.C:398
 #, fuzzy
 msgid "Document Class"
 msgstr "Документът ще бъде експортиран във формат "
 
 # src/bufferview_funcs.C:267
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocumentDialog.C:386
 #, fuzzy
 msgid "Fonts"
 msgstr "Шрифт:"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocumentDialog.C:387
 #, fuzzy
 msgid "Text Layout"
 msgstr "Непознато "
 
 # src/frontends/xforms/FormParagraph.C:33
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:388
 #, fuzzy
 msgid "Page Layout"
 msgstr "Оформление на абзац"
 
 # src/frontends/xforms/form_document.C:98
-#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:389
 #, fuzzy
 msgid "Page Margins"
 msgstr "Полета"
 
 # src/mathed/formula.C:929
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocumentDialog.C:391
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Номериране"
 
 # src/frontends/xforms/form_preferences.C:926
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocumentDialog.C:393
 #, fuzzy
 msgid "Math Options"
 msgstr "допълнителни опции"
 
 # src/sp_form.C:86
-#: src/frontends/qt4/QDocumentDialog.C:402
+#: src/frontends/qt4/QDocumentDialog.C:394
 #, fuzzy
 msgid "Float Placement"
 msgstr "Замести"
 
 # src/frontends/xforms/FormDocument.C:281
-#: src/frontends/qt4/QDocumentDialog.C:403
+#: src/frontends/qt4/QDocumentDialog.C:395
 msgid "Bullets"
 msgstr "Точки"
 
 # src/ext_l10n.h:441
-#: src/frontends/qt4/QDocumentDialog.C:404
+#: src/frontends/qt4/QDocumentDialog.C:396
 #, fuzzy
 msgid "Branches"
 msgstr "Френски"
 
 # src/lyx_cb.C:675
-#: src/frontends/qt4/QDocumentDialog.C:405
-#: src/frontends/qt4/QDocumentDialog.C:421
+#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:413
 msgid "LaTeX Preamble"
 msgstr "LaTeX увод"
 
@@ -14164,7 +14170,7 @@ msgid "Paragraph Settings"
 msgstr "Библ. перо"
 
 # src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:683
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:621
 msgid "Senseless with this layout!"
 msgstr "Неизползваем с това оформление!"
 
@@ -14317,18 +14323,18 @@ msgstr ""
 "премахнете конвертора."
 
 # src/frontends/xforms/FormPreferences.C:269
-#: src/frontends/qt4/QPrefsDialog.C:1547
+#: src/frontends/qt4/QPrefsDialog.C:1546
 msgid "Printer"
 msgstr "Принтер"
 
 # src/LyXAction.C:388
-#: src/frontends/qt4/QPrefsDialog.C:1639 src/frontends/qt4/QPrefsDialog.C:1821
+#: src/frontends/qt4/QPrefsDialog.C:1638 src/frontends/qt4/QPrefsDialog.C:1820
 #, fuzzy
 msgid "User interface"
 msgstr "Вмъкни таблица"
 
 # src/frontends/xforms/form_paragraph.C:48
-#: src/frontends/qt4/QPrefsDialog.C:1751
+#: src/frontends/qt4/QPrefsDialog.C:1750
 #, fuzzy
 msgid "Identity"
 msgstr "Отместване"
@@ -14623,7 +14629,7 @@ msgid "Opened Footnote Inset"
 msgstr "Отворена бел. под линия"
 
 # src/support/filetools.C:469
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:445
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:444
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14659,7 +14665,7 @@ msgstr "Неформатиран вход"
 msgid "Verbatim Input*"
 msgstr "Неформатиран вход"
 
-#: src/insets/insetinclude.C:412
+#: src/insets/insetinclude.C:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -14667,7 +14673,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/insetinclude.C:418
+#: src/insets/insetinclude.C:417
 msgid "Different textclasses"
 msgstr ""
 
@@ -14826,17 +14832,17 @@ msgid "Opened table"
 msgstr "Отвори помощен файл"
 
 # src/ext_l10n.h:61
-#: src/insets/insettabular.C:1569
+#: src/insets/insettabular.C:1575
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Многоколонно(M)|M"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1576
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
 # src/insets/insettext.C:478
-#: src/insets/insettext.C:227
+#: src/insets/insettext.C:233
 msgid "Opened Text Inset"
 msgstr "Отворен Text Inset"
 
@@ -15105,7 +15111,7 @@ msgid "Page Height %"
 msgstr "Авторски права"
 
 # src/buffer.C:534
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:113
 #, fuzzy, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -15113,30 +15119,30 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr "Документът използва непознат текстклас \""
 
-#: src/lyx_cb.C:116
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: src/lyx_cb.C:117
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "Име"
 
 # src/lyx_cb.C:203
-#: src/lyx_cb.C:134
+#: src/lyx_cb.C:133
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Въведете име за запазване на документа"
 
 # src/lyx.C:75
-#: src/lyx_cb.C:137 src/lyxfunc.C:1823
+#: src/lyx_cb.C:136 src/lyxfunc.C:1824
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Шаблон(t)|#t"
 
 # src/buffer.C:534
-#: src/lyx_cb.C:167 src/lyxfunc.C:1978
+#: src/lyx_cb.C:166 src/lyxfunc.C:1979
 #, fuzzy, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -15145,36 +15151,36 @@ msgid ""
 msgstr "Документът използва непознат текстклас \""
 
 # src/bufferlist.C:113 src/bufferlist.C:189
-#: src/lyx_cb.C:169 src/lyxfunc.C:1980
+#: src/lyx_cb.C:168 src/lyxfunc.C:1981
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Запазване на документа?"
 
 # src/LyXAction.C:115
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:217
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Автозапазване"
 
 # src/lyx_cb.C:411
-#: src/lyx_cb.C:258
+#: src/lyx_cb.C:257
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Автозаписът пропадна!"
 
 # src/lyx_cb.C:371
-#: src/lyx_cb.C:285
+#: src/lyx_cb.C:284
 msgid "Autosaving current document..."
 msgstr "Автозапис на текущия документ..."
 
 # src/lyxfunc.C:3291
-#: src/lyx_cb.C:352
+#: src/lyx_cb.C:351
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/lyxfunc.C:3185
-#: src/lyx_cb.C:371
+#: src/lyx_cb.C:370
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -15183,13 +15189,13 @@ msgid ""
 msgstr "Неуспех при отварянето"
 
 # src/buffer.C:3331
-#: src/lyx_cb.C:373
+#: src/lyx_cb.C:372
 #, fuzzy
 msgid "Could not read file"
 msgstr "Недъзможна е работата с файл: "
 
 # src/lyxfunc.C:3185
-#: src/lyx_cb.C:381
+#: src/lyx_cb.C:380
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -15198,28 +15204,28 @@ msgid ""
 msgstr "Неуспех при отварянето"
 
 # src/converter.C:165 src/converter.C:195
-#: src/lyx_cb.C:383 src/output.C:41
+#: src/lyx_cb.C:382 src/output.C:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Не мога да покажа файла."
 
 # src/lyx_cb.C:977
-#: src/lyx_cb.C:413
+#: src/lyx_cb.C:412
 msgid "Running configure..."
 msgstr "Стартирам конфигуриране..."
 
 # src/lyx_cb.C:984
-#: src/lyx_cb.C:422
+#: src/lyx_cb.C:421
 msgid "Reloading configuration..."
 msgstr "Презареждам конфигурацията..."
 
 # src/lyx_cb.C:986
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:426
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Системата беше преконфигурирана."
 
-#: src/lyx_cb.C:428
+#: src/lyx_cb.C:427
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -15415,30 +15421,30 @@ msgid "Missing filename for --import"
 msgstr " Файл за импортиране"
 
 # src/frontends/gnome/FormCitation.C:453
-#: src/lyxfind.C:135
+#: src/lyxfind.C:136
 #, fuzzy
 msgid "Search error"
 msgstr "Търси"
 
 # src/converter.C:798 src/converter.C:865
-#: src/lyxfind.C:136
+#: src/lyxfind.C:137
 #, fuzzy
 msgid "Search string is empty"
 msgstr "Полученият файл е празен"
 
 # src/lyxfr1.C:192 src/lyxfr1.C:239
-#: src/lyxfind.C:287 src/lyxfind.C:318
+#: src/lyxfind.C:288 src/lyxfind.C:319
 msgid "String not found!"
 msgstr "Низът не е намерен!"
 
 # src/lyxfr1.C:196
-#: src/lyxfind.C:322
+#: src/lyxfind.C:323
 #, fuzzy
 msgid "String has been replaced."
 msgstr "1 низ беше заместен."
 
 # src/lyxfr1.C:199
-#: src/lyxfind.C:325
+#: src/lyxfind.C:326
 msgid " strings have been replaced."
 msgstr " низа бяха заместени."
 
@@ -15502,49 +15508,49 @@ msgid "  Number %1$s"
 msgstr " Номер "
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/lyxfunc.C:328
+#: src/lyxfunc.C:329
 #, fuzzy
 msgid "Unknown function."
 msgstr "Непознато действие"
 
 # src/ext_l10n.h:16 src/ext_l10n.h:29
-#: src/lyxfunc.C:353
+#: src/lyxfunc.C:354
 #, fuzzy
 msgid "Exiting"
 msgstr "Изход(x)|x"
 
 # src/text2.C:456
-#: src/lyxfunc.C:385
+#: src/lyxfunc.C:386
 msgid "Nothing to do"
 msgstr "Няма нищо за правене"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/lyxfunc.C:404
+#: src/lyxfunc.C:405
 msgid "Unknown action"
 msgstr "Непознато действие"
 
 # src/frontends/xforms/form_preferences.C:445
-#: src/lyxfunc.C:410 src/lyxfunc.C:671
+#: src/lyxfunc.C:411 src/lyxfunc.C:672
 #, fuzzy
 msgid "Command disabled"
 msgstr "Завърши команда(e)|#e"
 
 # src/lyxfunc.C:347
-#: src/lyxfunc.C:417
+#: src/lyxfunc.C:418
 msgid "Command not allowed without any document open"
 msgstr "Командата не е позволена без да има отворен документ"
 
 # src/lyxfunc.C:342
-#: src/lyxfunc.C:657
+#: src/lyxfunc.C:658
 msgid "Document is read-only"
 msgstr "Документът е само за четене"
 
-#: src/lyxfunc.C:665
+#: src/lyxfunc.C:666
 msgid "This portion of the document is deleted."
 msgstr ""
 
 # src/buffer.C:534
-#: src/lyxfunc.C:684
+#: src/lyxfunc.C:685
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -15552,7 +15558,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr "Документът използва непознат текстклас \""
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:703
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -15561,13 +15567,13 @@ msgstr ""
 
 # src/frontends/kde/dlg/printdlgdata.C:88
 # src/frontends/xforms/form_print.C:138
-#: src/lyxfunc.C:705
+#: src/lyxfunc.C:706
 #, fuzzy
 msgid "Print document failed"
 msgstr "Печат на"
 
 # src/buffer.C:534
-#: src/lyxfunc.C:724
+#: src/lyxfunc.C:725
 #, fuzzy, c-format
 msgid ""
 "The document could not be converted\n"
@@ -15575,24 +15581,24 @@ msgid ""
 msgstr "Документът използва непознат текстклас \""
 
 # src/converter.C:552 src/converter.C:645
-#: src/lyxfunc.C:727
+#: src/lyxfunc.C:728
 #, fuzzy
 msgid "Could not change class"
 msgstr "Невъзможно е преобразуването на файла"
 
 # src/lyxfunc.C:795
-#: src/lyxfunc.C:839
+#: src/lyxfunc.C:840
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Записвам документа"
 
 # src/LyXAction.C:183
-#: src/lyxfunc.C:843
+#: src/lyxfunc.C:844
 #, fuzzy
 msgid " done."
 msgstr "Надолу"
 
-#: src/lyxfunc.C:858
+#: src/lyxfunc.C:859
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -15600,86 +15606,86 @@ msgid ""
 msgstr ""
 
 # src/lyxfunc.C:1105 src/lyxfunc.C:2550
-#: src/lyxfunc.C:1064 src/text3.C:1233
+#: src/lyxfunc.C:1065 src/text3.C:1202
 msgid "Missing argument"
 msgstr "Липсващ аргумент"
 
 # src/lyxfunc.C:1116
-#: src/lyxfunc.C:1073
+#: src/lyxfunc.C:1074
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Отварям помощен файл"
 
 # src/lyxfunc.C:2761
-#: src/lyxfunc.C:1348
+#: src/lyxfunc.C:1349
 msgid "Opening child document "
 msgstr "Отварям поддокумент "
 
-#: src/lyxfunc.C:1434
+#: src/lyxfunc.C:1435
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
 # src/lyxfunc.C:2920
-#: src/lyxfunc.C:1445
+#: src/lyxfunc.C:1446
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "\" пропадна  - цветът не е дефиниран или не може да бъде предефиниран"
 
 # src/lyx_cb.C:263
-#: src/lyxfunc.C:1561
+#: src/lyxfunc.C:1562
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Документът не може да бъде записан!"
 
 # src/ext_l10n.h:130
-#: src/lyxfunc.C:1564
+#: src/lyxfunc.C:1565
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Запази оформлението като подразбиращо се(S)|S"
 
 # src/frontends/xforms/FormDocument.C:426
-#: src/lyxfunc.C:1620
+#: src/lyxfunc.C:1621
 msgid "Converting document to new document class..."
 msgstr "Документът се конвертира към нов документ клас..."
 
 # src/frontends/kde/printdlg.C:35
-#: src/lyxfunc.C:1820
+#: src/lyxfunc.C:1821
 #, fuzzy
 msgid "Select template file"
 msgstr "Избор на файл"
 
 # src/lyxfunc.C:3159
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1858
 #, fuzzy
 msgid "Select document to open"
 msgstr "Изберете документ за отваряне"
 
 # src/lyxfunc.C:3100 src/lyxfunc.C:3176
-#: src/lyxfunc.C:1896
+#: src/lyxfunc.C:1897
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Отварям документ"
 
 # src/MenuBackend.C:263
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Няма отворени документи!"
 
 # src/lyxfunc.C:3185
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1903
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Неуспех при отварянето"
 
 # src/lyxfunc.C:3291
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1928
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Изберете документ за вмъкване"
 
 # src/minibuffer.C:46 src/minibuffer.C:244
-#: src/lyxfunc.C:2044
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Добре дошли в LyX!"
 
@@ -16349,15 +16355,15 @@ msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
 # src/lyxfunc.C:2565 src/mathed/formula.C:486
-#: src/mathed/InsetMathHull.C:1323 src/text3.C:182
+#: src/mathed/InsetMathHull.C:1323 src/text3.C:183
 msgid "Math editor mode"
 msgstr "Матем. редактор"
 
-#: src/mathed/InsetMathNest.C:885
+#: src/mathed/InsetMathNest.C:888
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:888
+#: src/mathed/InsetMathNest.C:891
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -16541,12 +16547,12 @@ msgid "CM Typewriter Light"
 msgstr "Машинопис"
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/text.C:190
+#: src/text.C:133
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Непознато действие"
 
-#: src/text.C:191
+#: src/text.C:134
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -16554,35 +16560,35 @@ msgid ""
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/text.C:222
+#: src/text.C:165
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Непознато действие"
 
 # src/LyXAction.C:263
-#: src/text.C:332 src/text.C:345
+#: src/text.C:275 src/text.C:288
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Смяна на език"
 
-#: src/text.C:333
+#: src/text.C:276
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:346
+#: src/text.C:289
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/text.C:353
+#: src/text.C:296
 #, fuzzy
 msgid "Unknown token"
 msgstr "Непознато действие"
 
 # src/text.C:2003
-#: src/text.C:1226
+#: src/text.C:730
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -16592,118 +16598,118 @@ msgstr ""
 "Sie das Tutorium."
 
 # src/text.C:2005
-#: src/text.C:1237
+#: src/text.C:741
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
 
 # src/frontends/xforms/form_print.C:112
-#: src/text.C:2319
+#: src/text.C:1553
 #, fuzzy
 msgid "Change: "
 msgstr "Страници:"
 
 # src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
 # src/converter.C:554
-#: src/text.C:2323
+#: src/text.C:1557
 #, fuzzy
 msgid " at "
 msgstr " на "
 
 # src/bufferview_funcs.C:267
-#: src/text.C:2333
+#: src/text.C:1567
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт:"
 
 # src/bufferview_funcs.C:271
-#: src/text.C:2338
+#: src/text.C:1572
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Дълбочина: "
 
 # src/bufferview_funcs.C:277
-#: src/text.C:2344
+#: src/text.C:1578
 msgid ", Spacing: "
 msgstr ", Отместване: "
 
 # src/bufferview_funcs.C:289
-#: src/text.C:2356
+#: src/text.C:1590
 msgid "Other ("
 msgstr "Друго ("
 
 # src/bufferview_funcs.C:271
-#: src/text.C:2365
+#: src/text.C:1599
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:303
-#: src/text.C:2366
+#: src/text.C:1600
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Абзац"
 
 # src/bufferview_funcs.C:271
-#: src/text.C:2367
+#: src/text.C:1601
 #, fuzzy
 msgid ", Id: "
 msgstr ", Дълбочина: "
 
 # src/ext_l10n.h:320
-#: src/text.C:2368
+#: src/text.C:1602
 #, fuzzy
 msgid ", Position: "
 msgstr "Допускане"
 
-#: src/text.C:2369
+#: src/text.C:1603
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:552
+#: src/text2.C:538
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr ""
 
 # src/text2.C:456
-#: src/text2.C:594
+#: src/text2.C:580
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Няма нищо за правене"
 
 # src/insets/insettext.C:970
-#: src/text2.C:596
+#: src/text2.C:582
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Невъзможност за включване на повече от един абзац!"
 
 # src/frontends/xforms/FormDocument.C:440
-#: src/text3.C:697
+#: src/text3.C:684
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr " към избрания документ клас!"
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1260
-#: src/text3.C:845
+#: src/text3.C:832
 msgid "Layout "
 msgstr "Непознато "
 
 # src/insets/insettext.C:1036 src/lyxfunc.C:1261
-#: src/text3.C:846
+#: src/text3.C:833
 msgid " not known"
 msgstr " оформление"
 
 # src/form1.C:33
-#: src/text3.C:1338 src/text3.C:1350
+#: src/text3.C:1307 src/text3.C:1319
 #, fuzzy
 msgid "Character set"
 msgstr "Кодировка(H):|#H"
 
 # src/frontends/kde/FormParagraph.C:183
 # src/frontends/xforms/FormParagraph.C:148
-#: src/text3.C:1481
+#: src/text3.C:1450
 msgid "Paragraph layout set"
 msgstr "Оформяне на абзаци"
 
@@ -16742,15 +16748,3 @@ msgstr "Вертикално разстояние"
 #, fuzzy
 msgid "protected"
 msgstr "Защитен интервал(B)|B"
-
-# src/LColor.C:104
-#~ msgid "top of button"
-#~ msgstr "бутон (отгоре)"
-
-# src/LColor.C:105
-#~ msgid "bottom of button"
-#~ msgstr "бутон (отдолу)"
-
-# src/LColor.C:107
-#~ msgid "right of button"
-#~ msgstr "бутон (отдясно)"

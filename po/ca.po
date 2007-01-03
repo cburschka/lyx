@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0pre2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-21 19:34+0100\n"
+"POT-Creation-Date: 2007-01-03 19:12+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator:  Francesc Burrull i Mestres <>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -141,7 +141,7 @@ msgstr "Tamany:|#Z"
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:518
+#: src/frontends/qt4/QDocumentDialog.C:199 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Per defecte"
@@ -550,9 +550,9 @@ msgstr "D'acord"
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
-#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1981 src/lyxvc.C:175
+#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:690
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:175
 #, fuzzy
 msgid "&Cancel"
 msgstr "Cancel.lar"
@@ -587,7 +587,7 @@ msgstr "Base de dades:"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:245
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:805
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Cancel.lar"
 
@@ -691,7 +691,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QBoxUi.ui:38 src/frontends/qt4/ui/QTabularUi.ui:699
 #: src/frontends/qt4/ui/QTabularUi.ui:718
 #: src/frontends/qt4/ui/QTabularUi.ui:766
-#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:170
+#: src/frontends/controllers/ControlBox.C:79 src/frontends/qt4/QBox.C:170
 #: src/frontends/qt4/QBox.C:286 src/frontends/qt4/QBoxDialog.C:74
 #, fuzzy
 msgid "None"
@@ -914,7 +914,7 @@ msgstr "Tamany de font:|#O"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:111
 #: src/frontends/qt4/ui/QCharacterUi.ui:148
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocumentDialog.C:390
 #: src/frontends/qt4/QPrefsDialog.C:1471
 msgid "Language"
 msgstr "Idioma"
@@ -1812,7 +1812,7 @@ msgid "&Shaded"
 msgstr "Salvar"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2347
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1581
 #, fuzzy
 msgid "Single"
 msgstr "Simple|#S"
@@ -1822,7 +1822,7 @@ msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2353
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1587
 #, fuzzy
 msgid "Double"
 msgstr "Doble|#D"
@@ -1832,8 +1832,8 @@ msgstr "Doble|#D"
 #: src/frontends/qt4/ui/QTabularUi.ui:728
 #: src/frontends/qt4/ui/QTabularUi.ui:776
 #: src/frontends/qt4/ui/QVSpaceUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:130
-#: src/frontends/qt4/QDocumentDialog.C:211
+#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:200
 #, fuzzy
 msgid "Custom"
 msgstr "Tamany Personalitzat"
@@ -2168,38 +2168,38 @@ msgid "Te&X encoding:"
 msgstr "Codificació:|#D"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:212
+#: src/frontends/qt4/QDocumentDialog.C:201
 #, fuzzy
 msgid "US letter"
 msgstr "Esquerra|#e"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/QDocumentDialog.C:202
 msgid "US legal"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:214
+#: src/frontends/qt4/QDocumentDialog.C:203
 msgid "US executive"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:215
+#: src/frontends/qt4/QDocumentDialog.C:204
 msgid "A3"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:216
+#: src/frontends/qt4/QDocumentDialog.C:205
 msgid "A4"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:217
+#: src/frontends/qt4/QDocumentDialog.C:206
 msgid "A5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:220
+#: src/frontends/qt4/QDocumentDialog.C:209
 msgid "B5"
 msgstr ""
 
@@ -2558,14 +2558,14 @@ msgid "Save/restore window position"
 msgstr "Comentari:"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:211
-#: src/frontends/controllers/ControlBox.C:85 src/frontends/qt4/QBox.C:194
+#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:194
 #: src/frontends/qt4/QBox.C:228
 #, fuzzy
 msgid "Width"
 msgstr "Amplada"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:234
-#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:185
+#: src/frontends/controllers/ControlBox.C:80 src/frontends/qt4/QBox.C:185
 #: src/frontends/qt4/QBox.C:219
 #, fuzzy
 msgid "Height"
@@ -2594,8 +2594,8 @@ msgstr "Línies"
 msgid "&Maximum last files:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyxfunc.C:688
+#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyxfunc.C:689
 #, fuzzy
 msgid "&Save"
 msgstr "Salvar"
@@ -3300,19 +3300,19 @@ msgid "DefSkip"
 msgstr "Salt de línia:|#u"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:117
+#: src/frontends/qt4/QDocumentDialog.C:106
 #, fuzzy
 msgid "SmallSkip"
 msgstr "  Petita (3)"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:118
+#: src/frontends/qt4/QDocumentDialog.C:107
 #, fuzzy
 msgid "MedSkip"
 msgstr "Mig"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:108
 msgid "BigSkip"
 msgstr ""
 
@@ -3565,7 +3565,7 @@ msgstr "Destí:"
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:322
+#: src/frontends/qt4/QDocumentDialog.C:314
 #, fuzzy
 msgid "Example"
 msgstr "Exemples"
@@ -3829,7 +3829,7 @@ msgstr "Sagnat"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:400
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:392
 #, fuzzy
 msgid "Bibliography"
 msgstr "Entrada bibliogràfica"
@@ -3838,7 +3838,7 @@ msgstr "Entrada bibliogràfica"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:496
+#: src/rowpainter.C:507
 #, fuzzy
 msgid "Appendix"
 msgstr "inset obert"
@@ -9055,16 +9055,16 @@ msgstr ""
 msgid "About LyX|X"
 msgstr ""
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:480 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:424 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr ""
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:481
+#: lib/ui/classic.ui:425
 #, fuzzy
 msgid "Preferences..."
 msgstr "Inserir Referència"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:482
+#: lib/ui/classic.ui:426
 msgid "Quit LyX"
 msgstr ""
 
@@ -9102,18 +9102,18 @@ msgid "Redo|R"
 msgstr "Refer"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:786
+#: src/mathed/InsetMathNest.C:454 src/text3.C:773
 msgid "Cut"
 msgstr "Tallar"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:791
+#: src/mathed/InsetMathNest.C:463 src/text3.C:778
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
-#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:437
-#: src/text3.C:770
+#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:438
+#: src/text3.C:757
 msgid "Paste"
 msgstr "Enganxar"
 
@@ -9670,11 +9670,11 @@ msgstr "Vols salvar el document?"
 msgid "Print document"
 msgstr "Importar document"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:688
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:693
 msgid "Undo"
 msgstr "Desfer"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:699
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:704
 msgid "Redo"
 msgstr "Refer"
 
@@ -10039,12 +10039,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:218 src/lyxfunc.C:860
+#: src/BufferView.C:218 src/lyxfunc.C:861
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Revertir a document salvat"
 
-#: src/BufferView.C:219 src/lyxfunc.C:861 src/lyxvc.C:175
+#: src/BufferView.C:219 src/lyxfunc.C:862 src/lyxvc.C:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Salvar"
@@ -10072,103 +10072,103 @@ msgstr "Crear un document nou amb aquest nom?"
 msgid "&Create"
 msgstr "Inclinada"
 
-#: src/BufferView.C:534
+#: src/BufferView.C:538
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Baix|#B"
 
-#: src/BufferView.C:691
+#: src/BufferView.C:696
 #, fuzzy
 msgid "No further undo information"
 msgstr "No hi ha més informació per desfer"
 
-#: src/BufferView.C:702
+#: src/BufferView.C:707
 msgid "No further redo information"
 msgstr "No hi ha més informació per Refer"
 
-#: src/BufferView.C:863
+#: src/BufferView.C:868
 msgid "Mark off"
 msgstr "Marque Désactivée"
 
-#: src/BufferView.C:870
+#: src/BufferView.C:875
 msgid "Mark on"
 msgstr "Marque Activée"
 
-#: src/BufferView.C:877
+#: src/BufferView.C:882
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView.C:880
+#: src/BufferView.C:885
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView.C:926
+#: src/BufferView.C:931
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Detectat un error"
 
-#: src/BufferView.C:929
+#: src/BufferView.C:934
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Impossible obrir el document"
 
-#: src/BufferView.C:934
+#: src/BufferView.C:939
 #, fuzzy
 msgid "One word in selection."
 msgstr "Detectat un error"
 
-#: src/BufferView.C:936
+#: src/BufferView.C:941
 #, fuzzy
 msgid "One word in document."
 msgstr "Ouverture del document fils"
 
-#: src/BufferView.C:939
+#: src/BufferView.C:944
 #, fuzzy
 msgid "Count words"
 msgstr "Comentari:"
 
-#: src/BufferView.C:1401
+#: src/BufferView.C:1457
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Seleccionar el document a inserir"
 
-#: src/BufferView.C:1403 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1459 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1822 src/lyxfunc.C:1859 src/lyxfunc.C:1932
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:135
+#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Documents"
 
-#: src/BufferView.C:1404 src/lyxfunc.C:1860 src/lyxfunc.C:1933
+#: src/BufferView.C:1460 src/lyxfunc.C:1861 src/lyxfunc.C:1934
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exemples"
 
-#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1827
-#: src/lyxfunc.C:1864
+#: src/BufferView.C:1464 src/lyx_cb.C:141 src/lyxfunc.C:1828
+#: src/lyxfunc.C:1865
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Document"
 
-#: src/BufferView.C:1420 src/lyxfunc.C:1874 src/lyxfunc.C:1954
-#: src/lyxfunc.C:1968 src/lyxfunc.C:1984
+#: src/BufferView.C:1476 src/lyxfunc.C:1875 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Cancel.lat"
 
-#: src/BufferView.C:1431
+#: src/BufferView.C:1487
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Insertion del document en cours"
 
-#: src/BufferView.C:1442
+#: src/BufferView.C:1498
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Document renombrat com '"
 
-#: src/BufferView.C:1444
+#: src/BufferView.C:1500
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Impossible inserir el document"
@@ -10499,33 +10499,33 @@ msgstr "Executant MakeIndex."
 msgid "Running BibTeX."
 msgstr "Executant BibTeX."
 
-#: src/MenuBackend.C:466 src/MenuBackend.C:503 src/MenuBackend.C:573
-#: src/MenuBackend.C:595 src/MenuBackend.C:618 src/MenuBackend.C:704
+#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:572
+#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "No hi ha documents oberts!%t"
 
-#: src/MenuBackend.C:541
+#: src/MenuBackend.C:540
 #, fuzzy
 msgid "Plain Text as Lines"
 msgstr "Seleccionar següent paràgraf"
 
-#: src/MenuBackend.C:543
+#: src/MenuBackend.C:542
 #, fuzzy
 msgid "Plain Text as Paragraphs"
 msgstr "Seleccionar següent paràgraf"
 
-#: src/MenuBackend.C:715
+#: src/MenuBackend.C:714
 #, fuzzy
 msgid "Master Document"
 msgstr "Vols salvar el document?"
 
-#: src/MenuBackend.C:747
+#: src/MenuBackend.C:746
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Taula de continguts"
 
-#: src/MenuBackend.C:792
+#: src/MenuBackend.C:791
 #, fuzzy
 msgid " (auto)"
 msgstr "Per defecte"
@@ -10534,146 +10534,146 @@ msgstr "Per defecte"
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/buffer.C:232
+#: src/buffer.C:231
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Error! Impossible crear el directori temporal:"
 
-#: src/buffer.C:233
+#: src/buffer.C:232
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Error! Impossible crear el directori temporal:"
 
-#: src/buffer.C:405
+#: src/buffer.C:403
 #, fuzzy
 msgid "Unknown document class"
 msgstr "a la classe escollida"
 
-#: src/buffer.C:406
+#: src/buffer.C:404
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:461 src/text.C:354
+#: src/buffer.C:459 src/text.C:297
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Acció Desconeguda"
 
-#: src/buffer.C:465 src/buffer.C:472 src/buffer.C:492
+#: src/buffer.C:463 src/buffer.C:470 src/buffer.C:490
 #, fuzzy
 msgid "Document header error"
 msgstr "Error LaTeX"
 
-#: src/buffer.C:471
+#: src/buffer.C:469
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/buffer.C:491
+#: src/buffer.C:489
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/buffer.C:502
+#: src/buffer.C:500
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Impossible de carregar la classe de document"
 
-#: src/buffer.C:503
+#: src/buffer.C:501
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/buffer.C:613 src/buffer.C:622
+#: src/buffer.C:611 src/buffer.C:620
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Possibles Formats de Document"
 
-#: src/buffer.C:614 src/buffer.C:623
+#: src/buffer.C:612 src/buffer.C:621
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " paràgrafs no s'han pogut convertir"
 
-#: src/buffer.C:631 src/buffer.C:698
+#: src/buffer.C:629 src/buffer.C:696
 #, fuzzy
 msgid "Document format failure"
 msgstr "Document"
 
-#: src/buffer.C:632
+#: src/buffer.C:630
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Impossible obrir el document"
 
-#: src/buffer.C:651
+#: src/buffer.C:649
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Errors de Conversió!"
 
-#: src/buffer.C:652
+#: src/buffer.C:650
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:661
+#: src/buffer.C:659
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "No hi ha hagut avisos"
 
-#: src/buffer.C:662
+#: src/buffer.C:660
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:683
+#: src/buffer.C:681
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Errors de Conversió!"
 
-#: src/buffer.C:684
+#: src/buffer.C:682
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:699
+#: src/buffer.C:697
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:735
+#: src/buffer.C:733
 #, fuzzy
 msgid "Backup failure"
 msgstr "Per defecte"
 
-#: src/buffer.C:736
+#: src/buffer.C:734
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:849
+#: src/buffer.C:847
 #, fuzzy
 msgid "Encoding error"
 msgstr "Codificació:|#D"
 
-#: src/buffer.C:850
+#: src/buffer.C:848
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:859
+#: src/buffer.C:857
 #, fuzzy
 msgid "Error closing file"
 msgstr "Multicolumnes|#M"
 
-#: src/buffer.C:860
+#: src/buffer.C:858
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -10681,15 +10681,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1118
+#: src/buffer.C:1116
 msgid "Running chktex..."
 msgstr "Executant chktex..."
 
-#: src/buffer.C:1131
+#: src/buffer.C:1129
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1132
+#: src/buffer.C:1130
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex no ha trobat cap error"
@@ -10797,7 +10797,7 @@ msgstr "Decoració"
 msgid "%1$s #:"
 msgstr ""
 
-#: src/bufferlist.C:111 src/bufferlist.C:219
+#: src/bufferlist.C:110 src/bufferlist.C:218
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -10805,29 +10805,29 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/bufferlist.C:114 src/bufferlist.C:222 src/lyxfunc.C:687
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:688
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Vols salvar el document?"
 
-#: src/bufferlist.C:115 src/bufferlist.C:223
+#: src/bufferlist.C:114 src/bufferlist.C:222
 msgid "&Discard"
 msgstr ""
 
-#: src/bufferlist.C:351
+#: src/bufferlist.C:350
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "lyx: Intentant salvar el document"
 
-#: src/bufferlist.C:362 src/bufferlist.C:375 src/bufferlist.C:389
+#: src/bufferlist.C:361 src/bufferlist.C:374 src/bufferlist.C:388
 msgid "  Save seems successful. Phew."
 msgstr "Sembla que s'ha salvat exitosament, Bufa!"
 
-#: src/bufferlist.C:365 src/bufferlist.C:379
+#: src/bufferlist.C:364 src/bufferlist.C:378
 msgid "  Save failed! Trying..."
 msgstr "  No s'ha salvat! Intentant..."
 
-#: src/bufferlist.C:392
+#: src/bufferlist.C:391
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " No s'ha salvat! El document s'ha perdut."
 
@@ -10845,7 +10845,7 @@ msgstr "Possibles Formats de Document"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/bufferview_funcs.C:310
+#: src/bufferview_funcs.C:307
 #, fuzzy
 msgid "No more insets"
 msgstr "No hi ha més notes"
@@ -11069,7 +11069,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Màquina d'Escriure"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1981
+#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1982
 #, fuzzy
 msgid "&Over-write"
 msgstr "Màquina d'Escriure"
@@ -11094,36 +11094,36 @@ msgstr "Impossible escriure el fitxer"
 msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
-#: src/exporter.C:176
+#: src/exporter.C:177
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Impossible escriure el fitxer"
 
-#: src/exporter.C:177
+#: src/exporter.C:178
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/exporter.C:211
+#: src/exporter.C:212
 #, fuzzy
 msgid "File name error"
 msgstr "Nom del fitxer:|#F"
 
-#: src/exporter.C:212
+#: src/exporter.C:213
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/exporter.C:250
+#: src/exporter.C:251
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Document renombrat com '"
 
-#: src/exporter.C:256
+#: src/exporter.C:257
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Document renombrat com '"
 
-#: src/exporter.C:262
+#: src/exporter.C:263
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Document renombrat com '"
@@ -11163,12 +11163,12 @@ msgstr ""
 msgid "Auto-edit file %1$s failed"
 msgstr ""
 
-#: src/frontends/LyXView.C:388
+#: src/frontends/LyXView.C:397
 #, fuzzy
 msgid " (changed)"
 msgstr "(Modificat)"
 
-#: src/frontends/LyXView.C:392
+#: src/frontends/LyXView.C:401
 msgid " (read only)"
 msgstr "(Només lectura)"
 
@@ -11255,38 +11255,38 @@ msgstr "Base de dades:"
 msgid "Select a BibTeX style"
 msgstr "Passar a mode TeX"
 
-#: src/frontends/controllers/ControlBox.C:63
+#: src/frontends/controllers/ControlBox.C:62
 msgid "No frame drawn"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:64
+#: src/frontends/controllers/ControlBox.C:63
 msgid "Rectangular box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:65
+#: src/frontends/controllers/ControlBox.C:64
 msgid "Oval box, thin"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:66
+#: src/frontends/controllers/ControlBox.C:65
 msgid "Oval box, thick"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:67
+#: src/frontends/controllers/ControlBox.C:66
 msgid "Shadow box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:68
+#: src/frontends/controllers/ControlBox.C:67
 #, fuzzy
 msgid "Double box"
 msgstr "Doble|#D"
 
-#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:188
+#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:188
 #: src/frontends/qt4/QBox.C:222
 #, fuzzy
 msgid "Depth"
 msgstr ", Profunditat: "
 
-#: src/frontends/controllers/ControlBox.C:84 src/frontends/qt4/QBox.C:191
+#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:191
 #: src/frontends/qt4/QBox.C:225 src/frontends/qt4/QBox.C:258
 #: src/frontends/qt4/QBoxDialog.C:107
 #, fuzzy
@@ -11692,9 +11692,9 @@ msgstr ""
 "El procés i-spell ha mort per alguna raó.\n"
 "Potser l'han matat."
 
-#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:80
-#: src/frontends/qt4/Alert_pimpl.C:91 src/frontends/qt4/Alert_pimpl.C:101
-#: src/frontends/qt4/Alert_pimpl.C:112
+#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
+#: src/frontends/qt4/Alert_pimpl.C:96 src/frontends/qt4/Alert_pimpl.C:106
+#: src/frontends/qt4/Alert_pimpl.C:117
 #, fuzzy, c-format
 msgid "LyX: %1$s"
 msgstr "Imprimir"
@@ -11735,12 +11735,12 @@ msgstr "Taula inserida"
 msgid "Directories"
 msgstr "Directori d'Usuari :"
 
-#: src/frontends/qt4/GuiView.C:652
+#: src/frontends/qt4/GuiView.C:667
 #, fuzzy
 msgid "LyX"
 msgstr "Imprimir"
 
-#: src/frontends/qt4/GuiWorkArea.C:479
+#: src/frontends/qt4/GuiWorkArea.C:459
 #, fuzzy
 msgid "unknown version"
 msgstr "Acció Desconeguda"
@@ -11775,11 +11775,11 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:625
+#: src/frontends/qt4/QDocumentDialog.C:617
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:616
 #, fuzzy
 msgid "No"
 msgstr "Petites Majúscules"
@@ -11806,12 +11806,12 @@ msgstr ""
 msgid "Text Style"
 msgstr "Document"
 
-#: src/frontends/qt4/QCommandBuffer.C:88
+#: src/frontends/qt4/QCommandBuffer.C:87
 #, fuzzy
 msgid "Previous command"
 msgstr "Romana"
 
-#: src/frontends/qt4/QCommandBuffer.C:91
+#: src/frontends/qt4/QCommandBuffer.C:90
 #, fuzzy
 msgid "Next command"
 msgstr "Executar comana"
@@ -11855,174 +11855,179 @@ msgstr "Taula inserida"
 msgid "Document Settings"
 msgstr "Documents"
 
-#: src/frontends/qt4/QDocumentDialog.C:120
+#: src/frontends/qt4/QDocumentDialog.C:109
 #, fuzzy
 msgid "Length"
 msgstr "Llarg|#L"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2350
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1584
 msgid "OneHalf"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:156
-#: src/frontends/qt4/QDocumentDialog.C:162
-#: src/frontends/qt4/QDocumentDialog.C:168
+#: src/frontends/qt4/QDocumentDialog.C:145
+#: src/frontends/qt4/QDocumentDialog.C:151
+#: src/frontends/qt4/QDocumentDialog.C:157
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:172
-#: src/frontends/qt4/QDocumentDialog.C:198
-#: src/frontends/qt4/QDocumentDialog.C:534
+#: src/frontends/qt4/QDocumentDialog.C:161
+#: src/frontends/qt4/QDocumentDialog.C:187
+#: src/frontends/qt4/QDocumentDialog.C:526
 #, fuzzy
 msgid "default"
 msgstr "Per defecte"
 
-#: src/frontends/qt4/QDocumentDialog.C:173
+#: src/frontends/qt4/QDocumentDialog.C:162
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:174
+#: src/frontends/qt4/QDocumentDialog.C:163
 #, fuzzy
 msgid "11"
 msgstr "1|#1"
 
-#: src/frontends/qt4/QDocumentDialog.C:175
+#: src/frontends/qt4/QDocumentDialog.C:164
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:199
+#: src/frontends/qt4/QDocumentDialog.C:188
 #, fuzzy
 msgid "empty"
 msgstr ", Profunditat: "
 
-#: src/frontends/qt4/QDocumentDialog.C:200
+#: src/frontends/qt4/QDocumentDialog.C:189
 #, fuzzy
 msgid "plain"
 msgstr "Espaiat"
 
-#: src/frontends/qt4/QDocumentDialog.C:201
+#: src/frontends/qt4/QDocumentDialog.C:190
 #, fuzzy
 msgid "headings"
 msgstr "Mapeig de tecles"
 
-#: src/frontends/qt4/QDocumentDialog.C:202
+#: src/frontends/qt4/QDocumentDialog.C:191
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:218
+#: src/frontends/qt4/QDocumentDialog.C:207
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:219
+#: src/frontends/qt4/QDocumentDialog.C:208
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:306
+#: src/frontends/qt4/QDocumentDialog.C:292
+#, fuzzy
+msgid "LaTeX default"
+msgstr "Fitxer log de LaTeX"
+
+#: src/frontends/qt4/QDocumentDialog.C:298
 #, fuzzy
 msgid "``text''"
 msgstr "Inclinada"
 
-#: src/frontends/qt4/QDocumentDialog.C:307
+#: src/frontends/qt4/QDocumentDialog.C:299
 #, fuzzy
 msgid "''text''"
 msgstr "Inclinada"
 
-#: src/frontends/qt4/QDocumentDialog.C:308
+#: src/frontends/qt4/QDocumentDialog.C:300
 #, fuzzy
 msgid ",,text``"
 msgstr "Inclinada"
 
-#: src/frontends/qt4/QDocumentDialog.C:309
+#: src/frontends/qt4/QDocumentDialog.C:301
 #, fuzzy
 msgid ",,text''"
 msgstr "Inclinada"
 
-#: src/frontends/qt4/QDocumentDialog.C:310
+#: src/frontends/qt4/QDocumentDialog.C:302
 #, fuzzy
 msgid "<<text>>"
 msgstr "Inclinada"
 
-#: src/frontends/qt4/QDocumentDialog.C:311
+#: src/frontends/qt4/QDocumentDialog.C:303
 #, fuzzy
 msgid ">>text<<"
 msgstr "Inclinada"
 
-#: src/frontends/qt4/QDocumentDialog.C:323
+#: src/frontends/qt4/QDocumentDialog.C:315
 #, fuzzy
 msgid "Numbered"
 msgstr "Número"
 
-#: src/frontends/qt4/QDocumentDialog.C:324
+#: src/frontends/qt4/QDocumentDialog.C:316
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:337
+#: src/frontends/qt4/QDocumentDialog.C:329
 msgid "Author-year"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:338
+#: src/frontends/qt4/QDocumentDialog.C:330
 #, fuzzy
 msgid "Numerical"
 msgstr "Número"
 
-#: src/frontends/qt4/QDocumentDialog.C:370
+#: src/frontends/qt4/QDocumentDialog.C:362
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Inserir Referència"
 
-#: src/frontends/qt4/QDocumentDialog.C:393
-#: src/frontends/qt4/QDocumentDialog.C:406
+#: src/frontends/qt4/QDocumentDialog.C:385
+#: src/frontends/qt4/QDocumentDialog.C:398
 #, fuzzy
 msgid "Document Class"
 msgstr "Document renombrat com '"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocumentDialog.C:386
 #, fuzzy
 msgid "Fonts"
 msgstr "Comentari:"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocumentDialog.C:387
 #, fuzzy
 msgid "Text Layout"
 msgstr "Format"
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:388
 #, fuzzy
 msgid "Page Layout"
 msgstr "Format de paràgrafExtra"
 
-#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:389
 #, fuzzy
 msgid "Page Margins"
 msgstr "Marges"
 
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocumentDialog.C:391
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Número"
 
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocumentDialog.C:393
 #, fuzzy
 msgid "Math Options"
 msgstr "Opcions Extra"
 
-#: src/frontends/qt4/QDocumentDialog.C:402
+#: src/frontends/qt4/QDocumentDialog.C:394
 #, fuzzy
 msgid "Float Placement"
 msgstr "Posició dels flotants"
 
-#: src/frontends/qt4/QDocumentDialog.C:403
+#: src/frontends/qt4/QDocumentDialog.C:395
 #, fuzzy
 msgid "Bullets"
 msgstr "Profunditat de les vinyetes"
 
-#: src/frontends/qt4/QDocumentDialog.C:404
+#: src/frontends/qt4/QDocumentDialog.C:396
 #, fuzzy
 msgid "Branches"
 msgstr "Entrada bibliogràfica"
 
-#: src/frontends/qt4/QDocumentDialog.C:405
-#: src/frontends/qt4/QDocumentDialog.C:421
+#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:413
 #, fuzzy
 msgid "LaTeX Preamble"
 msgstr "Preamble LaTeX"
@@ -12234,7 +12239,7 @@ msgstr "Opcions"
 msgid "Paragraph Settings"
 msgstr "Entrada bibliogràfica"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:683
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:621
 msgid "Senseless with this layout!"
 msgstr "No té sentit amb aquest format !"
 
@@ -12363,17 +12368,17 @@ msgstr "     Normal"
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:1547
+#: src/frontends/qt4/QPrefsDialog.C:1546
 #, fuzzy
 msgid "Printer"
 msgstr "Imprimir"
 
-#: src/frontends/qt4/QPrefsDialog.C:1639 src/frontends/qt4/QPrefsDialog.C:1821
+#: src/frontends/qt4/QPrefsDialog.C:1638 src/frontends/qt4/QPrefsDialog.C:1820
 #, fuzzy
 msgid "User interface"
 msgstr "Utilitzar idioma alternatiu|#U"
 
-#: src/frontends/qt4/QPrefsDialog.C:1751
+#: src/frontends/qt4/QPrefsDialog.C:1750
 #, fuzzy
 msgid "Identity"
 msgstr "Sagnat"
@@ -12622,7 +12627,7 @@ msgstr "Peu de pàg."
 msgid "Opened Footnote Inset"
 msgstr "Nota oberta"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:445
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:444
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -12654,7 +12659,7 @@ msgstr "Entrada textual"
 msgid "Verbatim Input*"
 msgstr "Entrada textual"
 
-#: src/insets/insetinclude.C:412
+#: src/insets/insetinclude.C:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -12662,7 +12667,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/insetinclude.C:418
+#: src/insets/insetinclude.C:417
 msgid "Different textclasses"
 msgstr ""
 
@@ -12797,16 +12802,16 @@ msgstr "Ref: "
 msgid "Opened table"
 msgstr "Obrint el fitxer d'ajuda"
 
-#: src/insets/insettabular.C:1569
+#: src/insets/insettabular.C:1575
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Multicolumnes|#M"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1576
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:227
+#: src/insets/insettext.C:233
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "inset obert"
@@ -13044,7 +13049,7 @@ msgstr "Dreta"
 msgid "Page Height %"
 msgstr "Dreta"
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -13052,26 +13057,26 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:116
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:117
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "Nom"
 
-#: src/lyx_cb.C:134
+#: src/lyx_cb.C:133
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Introduiu el nom amb què es guardarà el fitxer"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1823
+#: src/lyx_cb.C:136 src/lyxfunc.C:1824
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Plantilles"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1978
+#: src/lyx_cb.C:166 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -13079,31 +13084,31 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:1980
+#: src/lyx_cb.C:168 src/lyxfunc.C:1981
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Vols salvar el document?"
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:217
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Arxivat automàtic"
 
-#: src/lyx_cb.C:258
+#: src/lyx_cb.C:257
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Ha fallat l'Autosalvat!"
 
-#: src/lyx_cb.C:285
+#: src/lyx_cb.C:284
 msgid "Autosaving current document..."
 msgstr "Autosalvat del document actual..."
 
-#: src/lyx_cb.C:352
+#: src/lyx_cb.C:351
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Seleccionar el document a inserir"
 
-#: src/lyx_cb.C:371
+#: src/lyx_cb.C:370
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13111,12 +13116,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Impossible obrir el document"
 
-#: src/lyx_cb.C:373
+#: src/lyx_cb.C:372
 #, fuzzy
 msgid "Could not read file"
 msgstr "Impossible executar amb el fitxer:"
 
-#: src/lyx_cb.C:381
+#: src/lyx_cb.C:380
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13124,25 +13129,25 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Impossible obrir el document"
 
-#: src/lyx_cb.C:383 src/output.C:41
+#: src/lyx_cb.C:382 src/output.C:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Impossible escriure el fitxer"
 
-#: src/lyx_cb.C:413
+#: src/lyx_cb.C:412
 msgid "Running configure..."
 msgstr "Reconfigurant..."
 
-#: src/lyx_cb.C:422
+#: src/lyx_cb.C:421
 msgid "Reloading configuration..."
 msgstr "Carregant la configuració..."
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:426
 #, fuzzy
 msgid "System reconfigured"
 msgstr "El sistema s'ha reconfigurat"
 
-#: src/lyx_cb.C:428
+#: src/lyx_cb.C:427
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -13299,25 +13304,25 @@ msgstr "Seleccionar el fitxer LaTeX a importer"
 msgid "Missing filename for --import"
 msgstr "Seleccionar el fitxer LaTeX a importer"
 
-#: src/lyxfind.C:135
+#: src/lyxfind.C:136
 #, fuzzy
 msgid "Search error"
 msgstr "Error LaTeX"
 
-#: src/lyxfind.C:136
+#: src/lyxfind.C:137
 msgid "Search string is empty"
 msgstr ""
 
-#: src/lyxfind.C:287 src/lyxfind.C:318
+#: src/lyxfind.C:288 src/lyxfind.C:319
 msgid "String not found!"
 msgstr "No s'ha trobat la cadena de caràcters!"
 
-#: src/lyxfind.C:322
+#: src/lyxfind.C:323
 #, fuzzy
 msgid "String has been replaced."
 msgstr "1 cadena de caràcters ha estat substituida."
 
-#: src/lyxfind.C:325
+#: src/lyxfind.C:326
 #, fuzzy
 msgid " strings have been replaced."
 msgstr "1 cadena de caràcters ha estat substituida."
@@ -13369,43 +13374,43 @@ msgstr "Idioma:"
 msgid "  Number %1$s"
 msgstr "Número"
 
-#: src/lyxfunc.C:328
+#: src/lyxfunc.C:329
 #, fuzzy
 msgid "Unknown function."
 msgstr "Acció Desconeguda"
 
-#: src/lyxfunc.C:353
+#: src/lyxfunc.C:354
 #, fuzzy
 msgid "Exiting"
 msgstr "Sortir"
 
-#: src/lyxfunc.C:385
+#: src/lyxfunc.C:386
 #, fuzzy
 msgid "Nothing to do"
 msgstr "Res a fer"
 
-#: src/lyxfunc.C:404
+#: src/lyxfunc.C:405
 msgid "Unknown action"
 msgstr "Acció Desconeguda"
 
-#: src/lyxfunc.C:410 src/lyxfunc.C:671
+#: src/lyxfunc.C:411 src/lyxfunc.C:672
 #, fuzzy
 msgid "Command disabled"
 msgstr "Inserir etiqueta"
 
-#: src/lyxfunc.C:417
+#: src/lyxfunc.C:418
 msgid "Command not allowed without any document open"
 msgstr "Commanda no autoritzada sense documents oberts"
 
-#: src/lyxfunc.C:657
+#: src/lyxfunc.C:658
 msgid "Document is read-only"
 msgstr "Document de només lectura"
 
-#: src/lyxfunc.C:665
+#: src/lyxfunc.C:666
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/lyxfunc.C:684
+#: src/lyxfunc.C:685
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13413,114 +13418,114 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:703
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:705
+#: src/lyxfunc.C:706
 #, fuzzy
 msgid "Print document failed"
 msgstr "Imprimir a"
 
-#: src/lyxfunc.C:724
+#: src/lyxfunc.C:725
 #, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr ""
 
-#: src/lyxfunc.C:727
+#: src/lyxfunc.C:728
 #, fuzzy
 msgid "Could not change class"
 msgstr "Impossible escriure el fitxer"
 
-#: src/lyxfunc.C:839
+#: src/lyxfunc.C:840
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Salvant el document"
 
-#: src/lyxfunc.C:843
+#: src/lyxfunc.C:844
 #, fuzzy
 msgid " done."
 msgstr "Anar avall"
 
-#: src/lyxfunc.C:858
+#: src/lyxfunc.C:859
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1064 src/text3.C:1233
+#: src/lyxfunc.C:1065 src/text3.C:1202
 msgid "Missing argument"
 msgstr "Argument manquant"
 
-#: src/lyxfunc.C:1073
+#: src/lyxfunc.C:1074
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Obrint el fitxer d'ajuda"
 
-#: src/lyxfunc.C:1348
+#: src/lyxfunc.C:1349
 msgid "Opening child document "
 msgstr "Ouverture del document fils"
 
-#: src/lyxfunc.C:1434
+#: src/lyxfunc.C:1435
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1445
+#: src/lyxfunc.C:1446
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1561
+#: src/lyxfunc.C:1562
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Possibles Formats de Document"
 
-#: src/lyxfunc.C:1564
+#: src/lyxfunc.C:1565
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Fixar el format del paper"
 
-#: src/lyxfunc.C:1620
+#: src/lyxfunc.C:1621
 msgid "Converting document to new document class..."
 msgstr "Convertint el document a la nova classe..."
 
-#: src/lyxfunc.C:1820
+#: src/lyxfunc.C:1821
 #, fuzzy
 msgid "Select template file"
 msgstr "Seleccionar la línia següent"
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1858
 #, fuzzy
 msgid "Select document to open"
 msgstr "Seleccioneu el document a obrir"
 
-#: src/lyxfunc.C:1896
+#: src/lyxfunc.C:1897
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Ouverture del document en cours"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "No hi ha documents oberts!%t"
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1903
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Impossible obrir el document"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1928
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Seleccionar el document a inserir"
 
-#: src/lyxfunc.C:2044
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Benvingut a LyX !"
 
@@ -14037,15 +14042,15 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1323 src/text3.C:182
+#: src/mathed/InsetMathHull.C:1323 src/text3.C:183
 msgid "Math editor mode"
 msgstr "Mode editor matemàtic"
 
-#: src/mathed/InsetMathNest.C:885
+#: src/mathed/InsetMathNest.C:888
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:888
+#: src/mathed/InsetMathNest.C:891
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -14215,142 +14220,142 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Màquina d'Escriure"
 
-#: src/text.C:190
+#: src/text.C:133
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:191
+#: src/text.C:134
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:222
+#: src/text.C:165
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:332 src/text.C:345
+#: src/text.C:275 src/text.C:288
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Idioma"
 
-#: src/text.C:333
+#: src/text.C:276
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:346
+#: src/text.C:289
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:353
+#: src/text.C:296
 #, fuzzy
 msgid "Unknown token"
 msgstr "Acció Desconeguda"
 
-#: src/text.C:1226
+#: src/text.C:730
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:1237
+#: src/text.C:741
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:2319
+#: src/text.C:1553
 #, fuzzy
 msgid "Change: "
 msgstr "Pàgina: "
 
-#: src/text.C:2323
+#: src/text.C:1557
 #, fuzzy
 msgid " at "
 msgstr " de "
 
-#: src/text.C:2333
+#: src/text.C:1567
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Comentari:"
 
-#: src/text.C:2338
+#: src/text.C:1572
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profunditat: "
 
-#: src/text.C:2344
+#: src/text.C:1578
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Espaiat"
 
-#: src/text.C:2356
+#: src/text.C:1590
 #, fuzzy
 msgid "Other ("
 msgstr "Altre...|#O"
 
-#: src/text.C:2365
+#: src/text.C:1599
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Profunditat: "
 
-#: src/text.C:2366
+#: src/text.C:1600
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Format de paràgraf modificat"
 
-#: src/text.C:2367
+#: src/text.C:1601
 #, fuzzy
 msgid ", Id: "
 msgstr ", Profunditat: "
 
-#: src/text.C:2368
+#: src/text.C:1602
 #, fuzzy
 msgid ", Position: "
 msgstr "   opcions: "
 
-#: src/text.C:2369
+#: src/text.C:1603
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:552
+#: src/text2.C:538
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
 msgstr "Canvi de font no definit. Utilitzeu Format->Caràcter per definir-lo"
 
-#: src/text2.C:594
+#: src/text2.C:580
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Res a fer"
 
-#: src/text2.C:596
+#: src/text2.C:582
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "Les cel.les d'una taula no poden incloure més d'un paràgraf!"
 
-#: src/text3.C:697
+#: src/text3.C:684
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Argument manquant"
 
-#: src/text3.C:845
+#: src/text3.C:832
 msgid "Layout "
 msgstr "Format"
 
-#: src/text3.C:846
+#: src/text3.C:833
 msgid " not known"
 msgstr " desconegut"
 
-#: src/text3.C:1338 src/text3.C:1350
+#: src/text3.C:1307 src/text3.C:1319
 #, fuzzy
 msgid "Character set"
 msgstr "Joc de caràcters:|#H"
 
-#: src/text3.C:1481
+#: src/text3.C:1450
 msgid "Paragraph layout set"
 msgstr "Format de paràgraf modificat"
 

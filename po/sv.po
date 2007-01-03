@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2006-12-21 19:34+0100\n"
+"POT-Creation-Date: 2007-01-03 19:12+0100\n"
 "PO-Revision-Date: 2005-12-18 15:05+0100\n"
 "Last-Translator: Joacim Persson <>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -135,7 +135,7 @@ msgstr "Storlek|#S"
 #: src/frontends/controllers/ControlDocument.C:44
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:210 src/lyxfont.C:518
+#: src/frontends/qt4/QDocumentDialog.C:199 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Brödstil"
@@ -544,9 +544,9 @@ msgstr "OK"
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
-#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:689
-#: src/lyxfunc.C:861 src/lyxfunc.C:1981 src/lyxvc.C:175
+#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:690
+#: src/lyxfunc.C:862 src/lyxfunc.C:1982 src/lyxvc.C:175
 #, fuzzy
 msgid "&Cancel"
 msgstr "Avbryt"
@@ -581,7 +581,7 @@ msgstr "Databas:"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:245
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:805
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:806
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -685,7 +685,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QBoxUi.ui:38 src/frontends/qt4/ui/QTabularUi.ui:699
 #: src/frontends/qt4/ui/QTabularUi.ui:718
 #: src/frontends/qt4/ui/QTabularUi.ui:766
-#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:170
+#: src/frontends/controllers/ControlBox.C:79 src/frontends/qt4/QBox.C:170
 #: src/frontends/qt4/QBox.C:286 src/frontends/qt4/QBoxDialog.C:74
 #, fuzzy
 msgid "None"
@@ -908,7 +908,7 @@ msgstr "Fontstorlek:|#s"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:111
 #: src/frontends/qt4/ui/QCharacterUi.ui:148
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocumentDialog.C:390
 #: src/frontends/qt4/QPrefsDialog.C:1471
 msgid "Language"
 msgstr "Språk"
@@ -1811,7 +1811,7 @@ msgid "&Shaded"
 msgstr "Spara"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:124 src/text.C:2347
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1581
 #, fuzzy
 msgid "Single"
 msgstr "Enkel:|#E"
@@ -1821,7 +1821,7 @@ msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:128 src/text.C:2353
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1587
 #, fuzzy
 msgid "Double"
 msgstr "Dubbel:|#D"
@@ -1831,8 +1831,8 @@ msgstr "Dubbel:|#D"
 #: src/frontends/qt4/ui/QTabularUi.ui:728
 #: src/frontends/qt4/ui/QTabularUi.ui:776
 #: src/frontends/qt4/ui/QVSpaceUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:130
-#: src/frontends/qt4/QDocumentDialog.C:211
+#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:200
 #, fuzzy
 msgid "Custom"
 msgstr "Eget arkformat"
@@ -2167,38 +2167,38 @@ msgid "Te&X encoding:"
 msgstr "Kodning:|#K"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:212
+#: src/frontends/qt4/QDocumentDialog.C:201
 #, fuzzy
 msgid "US letter"
 msgstr "Vänster|#n"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:213
+#: src/frontends/qt4/QDocumentDialog.C:202
 msgid "US legal"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:214
+#: src/frontends/qt4/QDocumentDialog.C:203
 msgid "US executive"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:215
+#: src/frontends/qt4/QDocumentDialog.C:204
 msgid "A3"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:216
+#: src/frontends/qt4/QDocumentDialog.C:205
 msgid "A4"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:217
+#: src/frontends/qt4/QDocumentDialog.C:206
 msgid "A5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:220
+#: src/frontends/qt4/QDocumentDialog.C:209
 msgid "B5"
 msgstr ""
 
@@ -2560,14 +2560,14 @@ msgid "Save/restore window position"
 msgstr "Antal:"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:211
-#: src/frontends/controllers/ControlBox.C:85 src/frontends/qt4/QBox.C:194
+#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:194
 #: src/frontends/qt4/QBox.C:228
 #, fuzzy
 msgid "Width"
 msgstr "Bredd"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:234
-#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:185
+#: src/frontends/controllers/ControlBox.C:80 src/frontends/qt4/QBox.C:185
 #: src/frontends/qt4/QBox.C:219
 #, fuzzy
 msgid "Height"
@@ -2596,8 +2596,8 @@ msgstr "Linje"
 msgid "&Maximum last files:"
 msgstr ""
 
-#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:115
-#: src/bufferlist.C:223 src/lyxfunc.C:688
+#: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyxfunc.C:689
 #, fuzzy
 msgid "&Save"
 msgstr "Spara"
@@ -3311,19 +3311,19 @@ msgid "DefSkip"
 msgstr "Avstånd, stycken:|#d"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:117
+#: src/frontends/qt4/QDocumentDialog.C:106
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Minst"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:118
+#: src/frontends/qt4/QDocumentDialog.C:107
 #, fuzzy
 msgid "MedSkip"
 msgstr "Medium"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:119
+#: src/frontends/qt4/QDocumentDialog.C:108
 msgid "BigSkip"
 msgstr ""
 
@@ -3571,7 +3571,7 @@ msgstr "Mottagare:"
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:322
+#: src/frontends/qt4/QDocumentDialog.C:314
 #, fuzzy
 msgid "Example"
 msgstr "Exempel"
@@ -3832,7 +3832,7 @@ msgstr "Indrag"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:400
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:392
 #, fuzzy
 msgid "Bibliography"
 msgstr "Referens"
@@ -3841,7 +3841,7 @@ msgstr "Referens"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:496
+#: src/rowpainter.C:507
 #, fuzzy
 msgid "Appendix"
 msgstr "Öppnat insättning"
@@ -8906,16 +8906,16 @@ msgstr ""
 msgid "About LyX|X"
 msgstr ""
 
-#: lib/ui/classic.ui:424 lib/ui/stdmenus.ui:480 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:424 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr ""
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.ui:481
+#: lib/ui/classic.ui:425
 #, fuzzy
 msgid "Preferences..."
 msgstr "Lägg in hänvisning"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.ui:482
+#: lib/ui/classic.ui:426
 msgid "Quit LyX"
 msgstr ""
 
@@ -8953,18 +8953,18 @@ msgid "Redo|R"
 msgstr "Gör om"
 
 #: lib/ui/stdmenus.ui:87 lib/ui/stdtoolbars.ui:51
-#: src/mathed/InsetMathNest.C:453 src/text3.C:786
+#: src/mathed/InsetMathNest.C:454 src/text3.C:773
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.ui:88 lib/ui/stdtoolbars.ui:52
-#: src/mathed/InsetMathNest.C:462 src/text3.C:791
+#: src/mathed/InsetMathNest.C:463 src/text3.C:778
 msgid "Copy"
 msgstr "Kopiera"
 
 #: lib/ui/stdmenus.ui:89 lib/ui/stdtoolbars.ui:53
-#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:437
-#: src/text3.C:770
+#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:438
+#: src/text3.C:757
 msgid "Paste"
 msgstr "Klistra in"
 
@@ -9521,11 +9521,11 @@ msgstr "Spara dokumentet?"
 msgid "Print document"
 msgstr "Importera dokument"
 
-#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:688
+#: lib/ui/stdtoolbars.ui:49 src/BufferView.C:693
 msgid "Undo"
 msgstr "Ångra"
 
-#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:699
+#: lib/ui/stdtoolbars.ui:50 src/BufferView.C:704
 msgid "Redo"
 msgstr "Gör om"
 
@@ -9891,12 +9891,12 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:218 src/lyxfunc.C:860
+#: src/BufferView.C:218 src/lyxfunc.C:861
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Tillbaka till senast sparade"
 
-#: src/BufferView.C:219 src/lyxfunc.C:861 src/lyxvc.C:175
+#: src/BufferView.C:219 src/lyxfunc.C:862 src/lyxvc.C:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Registrera"
@@ -9924,104 +9924,104 @@ msgstr "Skapa nytt dokument med detta namn?"
 msgid "&Create"
 msgstr "Lutande"
 
-#: src/BufferView.C:534
+#: src/BufferView.C:538
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Botten|#B"
 
-#: src/BufferView.C:691
+#: src/BufferView.C:696
 #, fuzzy
 msgid "No further undo information"
 msgstr "Inget mer att ångra"
 
-#: src/BufferView.C:702
+#: src/BufferView.C:707
 msgid "No further redo information"
 msgstr "Inget mer att göra om"
 
-#: src/BufferView.C:863
+#: src/BufferView.C:868
 msgid "Mark off"
 msgstr "Märke av"
 
-#: src/BufferView.C:870
+#: src/BufferView.C:875
 msgid "Mark on"
 msgstr "Märke på"
 
-#: src/BufferView.C:877
+#: src/BufferView.C:882
 msgid "Mark removed"
 msgstr "Märke borttaget"
 
-#: src/BufferView.C:880
+#: src/BufferView.C:885
 msgid "Mark set"
 msgstr "Märke satt"
 
-#: src/BufferView.C:926
+#: src/BufferView.C:931
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Ett fel funnet"
 
-#: src/BufferView.C:929
+#: src/BufferView.C:934
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/BufferView.C:934
+#: src/BufferView.C:939
 #, fuzzy
 msgid "One word in selection."
 msgstr "Ett fel funnet"
 
-#: src/BufferView.C:936
+#: src/BufferView.C:941
 #, fuzzy
 msgid "One word in document."
 msgstr "Öppnar underdokument "
 
 # Antal kopior
-#: src/BufferView.C:939
+#: src/BufferView.C:944
 #, fuzzy
 msgid "Count words"
 msgstr "Antal:"
 
-#: src/BufferView.C:1401
+#: src/BufferView.C:1457
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/BufferView.C:1403 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1459 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1822 src/lyxfunc.C:1859 src/lyxfunc.C:1932
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:135
+#: src/lyxfunc.C:1823 src/lyxfunc.C:1860 src/lyxfunc.C:1933
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokument"
 
-#: src/BufferView.C:1404 src/lyxfunc.C:1860 src/lyxfunc.C:1933
+#: src/BufferView.C:1460 src/lyxfunc.C:1861 src/lyxfunc.C:1934
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exempel"
 
-#: src/BufferView.C:1408 src/lyx_cb.C:142 src/lyxfunc.C:1827
-#: src/lyxfunc.C:1864
+#: src/BufferView.C:1464 src/lyx_cb.C:141 src/lyxfunc.C:1828
+#: src/lyxfunc.C:1865
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumentet"
 
-#: src/BufferView.C:1420 src/lyxfunc.C:1874 src/lyxfunc.C:1954
-#: src/lyxfunc.C:1968 src/lyxfunc.C:1984
+#: src/BufferView.C:1476 src/lyxfunc.C:1875 src/lyxfunc.C:1955
+#: src/lyxfunc.C:1969 src/lyxfunc.C:1985
 msgid "Canceled."
 msgstr "Avbrutet."
 
-#: src/BufferView.C:1431
+#: src/BufferView.C:1487
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Läser in dokumentet"
 
-#: src/BufferView.C:1442
+#: src/BufferView.C:1498
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet omdöpt till: '"
 
-#: src/BufferView.C:1444
+#: src/BufferView.C:1500
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunde inte läsa in dokumentet"
@@ -10352,33 +10352,33 @@ msgstr "MakeIndex körs..."
 msgid "Running BibTeX."
 msgstr "BibTeX körs..."
 
-#: src/MenuBackend.C:466 src/MenuBackend.C:503 src/MenuBackend.C:573
-#: src/MenuBackend.C:595 src/MenuBackend.C:618 src/MenuBackend.C:704
+#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:572
+#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
 #, fuzzy
 msgid "No Documents Open!"
 msgstr "Inga dokument öppnade!%t"
 
-#: src/MenuBackend.C:541
+#: src/MenuBackend.C:540
 #, fuzzy
 msgid "Plain Text as Lines"
 msgstr "Markera nästa stycke"
 
-#: src/MenuBackend.C:543
+#: src/MenuBackend.C:542
 #, fuzzy
 msgid "Plain Text as Paragraphs"
 msgstr "Markera nästa stycke"
 
-#: src/MenuBackend.C:715
+#: src/MenuBackend.C:714
 #, fuzzy
 msgid "Master Document"
 msgstr "Spara dokumentet?"
 
-#: src/MenuBackend.C:747
+#: src/MenuBackend.C:746
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Innehåll"
 
-#: src/MenuBackend.C:792
+#: src/MenuBackend.C:791
 #, fuzzy
 msgid " (auto)"
 msgstr "Brödstil"
@@ -10387,146 +10387,146 @@ msgstr "Brödstil"
 msgid "Native OS API not yet supported."
 msgstr ""
 
-#: src/buffer.C:232
+#: src/buffer.C:231
 #, fuzzy
 msgid "Could not remove temporary directory"
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/buffer.C:233
+#: src/buffer.C:232
 #, fuzzy, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Fel: Kunde inte skapa temporär katalog:"
 
-#: src/buffer.C:405
+#: src/buffer.C:403
 #, fuzzy
 msgid "Unknown document class"
 msgstr "till vald dokumentklass"
 
-#: src/buffer.C:406
+#: src/buffer.C:404
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:461 src/text.C:354
+#: src/buffer.C:459 src/text.C:297
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Okänd operation"
 
-#: src/buffer.C:465 src/buffer.C:472 src/buffer.C:492
+#: src/buffer.C:463 src/buffer.C:470 src/buffer.C:490
 #, fuzzy
 msgid "Document header error"
 msgstr "LaTeX-fel"
 
-#: src/buffer.C:471
+#: src/buffer.C:469
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/buffer.C:491
+#: src/buffer.C:489
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/buffer.C:502
+#: src/buffer.C:500
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Kan inte ladda textklassen "
 
-#: src/buffer.C:503
+#: src/buffer.C:501
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/buffer.C:613 src/buffer.C:622
+#: src/buffer.C:611 src/buffer.C:620
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Dokumentstil satt"
 
-#: src/buffer.C:614 src/buffer.C:623
+#: src/buffer.C:612 src/buffer.C:621
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr " stycken gick inte att konvertera"
 
-#: src/buffer.C:631 src/buffer.C:698
+#: src/buffer.C:629 src/buffer.C:696
 #, fuzzy
 msgid "Document format failure"
 msgstr "Dokumentet"
 
-#: src/buffer.C:632
+#: src/buffer.C:630
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/buffer.C:651
+#: src/buffer.C:649
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Konverteringsfel!"
 
-#: src/buffer.C:652
+#: src/buffer.C:650
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:661
+#: src/buffer.C:659
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Inga varningar."
 
-#: src/buffer.C:662
+#: src/buffer.C:660
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:683
+#: src/buffer.C:681
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Konverteringsfel!"
 
-#: src/buffer.C:684
+#: src/buffer.C:682
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:699
+#: src/buffer.C:697
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:735
+#: src/buffer.C:733
 #, fuzzy
 msgid "Backup failure"
 msgstr "Brödstil"
 
-#: src/buffer.C:736
+#: src/buffer.C:734
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:849
+#: src/buffer.C:847
 #, fuzzy
 msgid "Encoding error"
 msgstr "Kodning:|#K"
 
-#: src/buffer.C:850
+#: src/buffer.C:848
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:859
+#: src/buffer.C:857
 #, fuzzy
 msgid "Error closing file"
 msgstr "Multikolumn|#M"
 
-#: src/buffer.C:860
+#: src/buffer.C:858
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -10534,15 +10534,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1118
+#: src/buffer.C:1116
 msgid "Running chktex..."
 msgstr "Chktex körs..."
 
-#: src/buffer.C:1131
+#: src/buffer.C:1129
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1132
+#: src/buffer.C:1130
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex kört utan klagomål"
@@ -10650,7 +10650,7 @@ msgstr "Dekoration"
 msgid "%1$s #:"
 msgstr ""
 
-#: src/bufferlist.C:111 src/bufferlist.C:219
+#: src/bufferlist.C:110 src/bufferlist.C:218
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -10658,29 +10658,29 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/bufferlist.C:114 src/bufferlist.C:222 src/lyxfunc.C:687
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:688
 #, fuzzy
 msgid "Save changed document?"
 msgstr "Spara dokumentet?"
 
-#: src/bufferlist.C:115 src/bufferlist.C:223
+#: src/bufferlist.C:114 src/bufferlist.C:222
 msgid "&Discard"
 msgstr ""
 
-#: src/bufferlist.C:351
+#: src/bufferlist.C:350
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "lyx: Försöker att lagra dokument "
 
-#: src/bufferlist.C:362 src/bufferlist.C:375 src/bufferlist.C:389
+#: src/bufferlist.C:361 src/bufferlist.C:374 src/bufferlist.C:388
 msgid "  Save seems successful. Phew."
 msgstr "Lagring förefaller ha lyckats."
 
-#: src/bufferlist.C:365 src/bufferlist.C:379
+#: src/bufferlist.C:364 src/bufferlist.C:378
 msgid "  Save failed! Trying..."
 msgstr " Lagring misslyckades! Prövar..."
 
-#: src/bufferlist.C:392
+#: src/bufferlist.C:391
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Lagring misslyckades! Dokumentet förlorades."
 
@@ -10698,7 +10698,7 @@ msgstr "Dokumentstil satt"
 msgid "LyX will not be able to produce output."
 msgstr ""
 
-#: src/bufferview_funcs.C:310
+#: src/bufferview_funcs.C:307
 #, fuzzy
 msgid "No more insets"
 msgstr "Inga flera noteringar"
@@ -10922,7 +10922,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Skrivmaskin"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1981
+#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1982
 #, fuzzy
 msgid "&Over-write"
 msgstr "Skrivmaskin"
@@ -10947,36 +10947,36 @@ msgstr "Kan inte skriva till fil"
 msgid "Copying %1$s to %2$s failed."
 msgstr ""
 
-#: src/exporter.C:176
+#: src/exporter.C:177
 #, fuzzy
 msgid "Couldn't export file"
 msgstr "Kan inte skriva till fil"
 
-#: src/exporter.C:177
+#: src/exporter.C:178
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/exporter.C:211
+#: src/exporter.C:212
 #, fuzzy
 msgid "File name error"
 msgstr "Filnamn:|#F"
 
-#: src/exporter.C:212
+#: src/exporter.C:213
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/exporter.C:250
+#: src/exporter.C:251
 #, fuzzy
 msgid "Document export cancelled."
 msgstr "Dokumentet omdöpt till: '"
 
-#: src/exporter.C:256
+#: src/exporter.C:257
 #, fuzzy, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentet omdöpt till: '"
 
-#: src/exporter.C:262
+#: src/exporter.C:263
 #, fuzzy, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentet omdöpt till: '"
@@ -11016,12 +11016,12 @@ msgstr ""
 msgid "Auto-edit file %1$s failed"
 msgstr ""
 
-#: src/frontends/LyXView.C:388
+#: src/frontends/LyXView.C:397
 #, fuzzy
 msgid " (changed)"
 msgstr " (Ändrad)"
 
-#: src/frontends/LyXView.C:392
+#: src/frontends/LyXView.C:401
 msgid " (read only)"
 msgstr " (Skrivskyddad)"
 
@@ -11095,38 +11095,38 @@ msgstr "Databas:"
 msgid "Select a BibTeX style"
 msgstr "TeX-stil av/på"
 
-#: src/frontends/controllers/ControlBox.C:63
+#: src/frontends/controllers/ControlBox.C:62
 msgid "No frame drawn"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:64
+#: src/frontends/controllers/ControlBox.C:63
 msgid "Rectangular box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:65
+#: src/frontends/controllers/ControlBox.C:64
 msgid "Oval box, thin"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:66
+#: src/frontends/controllers/ControlBox.C:65
 msgid "Oval box, thick"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:67
+#: src/frontends/controllers/ControlBox.C:66
 msgid "Shadow box"
 msgstr ""
 
-#: src/frontends/controllers/ControlBox.C:68
+#: src/frontends/controllers/ControlBox.C:67
 #, fuzzy
 msgid "Double box"
 msgstr "Dubbel:|#D"
 
-#: src/frontends/controllers/ControlBox.C:83 src/frontends/qt4/QBox.C:188
+#: src/frontends/controllers/ControlBox.C:81 src/frontends/qt4/QBox.C:188
 #: src/frontends/qt4/QBox.C:222
 #, fuzzy
 msgid "Depth"
 msgstr ", Djup: "
 
-#: src/frontends/controllers/ControlBox.C:84 src/frontends/qt4/QBox.C:191
+#: src/frontends/controllers/ControlBox.C:82 src/frontends/qt4/QBox.C:191
 #: src/frontends/qt4/QBox.C:225 src/frontends/qt4/QBox.C:258
 #: src/frontends/qt4/QBoxDialog.C:107
 #, fuzzy
@@ -11533,9 +11533,9 @@ msgstr ""
 "Ispell-processen har dött av någon anledning.\n"
 "Den har kanske avbrutits."
 
-#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:80
-#: src/frontends/qt4/Alert_pimpl.C:91 src/frontends/qt4/Alert_pimpl.C:101
-#: src/frontends/qt4/Alert_pimpl.C:112
+#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
+#: src/frontends/qt4/Alert_pimpl.C:96 src/frontends/qt4/Alert_pimpl.C:106
+#: src/frontends/qt4/Alert_pimpl.C:117
 #, fuzzy, c-format
 msgid "LyX: %1$s"
 msgstr "Skriv ut"
@@ -11576,12 +11576,12 @@ msgstr "Tabell inlagd"
 msgid "Directories"
 msgstr "Användarkatalog: "
 
-#: src/frontends/qt4/GuiView.C:652
+#: src/frontends/qt4/GuiView.C:667
 #, fuzzy
 msgid "LyX"
 msgstr "Skriv ut"
 
-#: src/frontends/qt4/GuiWorkArea.C:479
+#: src/frontends/qt4/GuiWorkArea.C:459
 #, fuzzy
 msgid "unknown version"
 msgstr "Okänd operation"
@@ -11616,11 +11616,11 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:625
+#: src/frontends/qt4/QDocumentDialog.C:617
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:616
 #, fuzzy
 msgid "No"
 msgstr "Namn "
@@ -11647,12 +11647,12 @@ msgstr ""
 msgid "Text Style"
 msgstr "Dokumentet"
 
-#: src/frontends/qt4/QCommandBuffer.C:88
+#: src/frontends/qt4/QCommandBuffer.C:87
 #, fuzzy
 msgid "Previous command"
 msgstr "Antikva"
 
-#: src/frontends/qt4/QCommandBuffer.C:91
+#: src/frontends/qt4/QCommandBuffer.C:90
 #, fuzzy
 msgid "Next command"
 msgstr "Utför kommando"
@@ -11696,173 +11696,178 @@ msgstr "Tabell inlagd"
 msgid "Document Settings"
 msgstr "Dokument"
 
-#: src/frontends/qt4/QDocumentDialog.C:120
+#: src/frontends/qt4/QDocumentDialog.C:109
 #, fuzzy
 msgid "Length"
 msgstr "Mått|#t"
 
-#: src/frontends/qt4/QDocumentDialog.C:126 src/text.C:2350
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1584
 msgid "OneHalf"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:156
-#: src/frontends/qt4/QDocumentDialog.C:162
-#: src/frontends/qt4/QDocumentDialog.C:168
+#: src/frontends/qt4/QDocumentDialog.C:145
+#: src/frontends/qt4/QDocumentDialog.C:151
+#: src/frontends/qt4/QDocumentDialog.C:157
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:172
-#: src/frontends/qt4/QDocumentDialog.C:198
-#: src/frontends/qt4/QDocumentDialog.C:534
+#: src/frontends/qt4/QDocumentDialog.C:161
+#: src/frontends/qt4/QDocumentDialog.C:187
+#: src/frontends/qt4/QDocumentDialog.C:526
 #, fuzzy
 msgid "default"
 msgstr "Brödstil"
 
-#: src/frontends/qt4/QDocumentDialog.C:173
+#: src/frontends/qt4/QDocumentDialog.C:162
 msgid "10"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:174
+#: src/frontends/qt4/QDocumentDialog.C:163
 msgid "11"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:175
+#: src/frontends/qt4/QDocumentDialog.C:164
 msgid "12"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:199
+#: src/frontends/qt4/QDocumentDialog.C:188
 #, fuzzy
 msgid "empty"
 msgstr ", Djup: "
 
-#: src/frontends/qt4/QDocumentDialog.C:200
+#: src/frontends/qt4/QDocumentDialog.C:189
 #, fuzzy
 msgid "plain"
 msgstr "Mellanrum"
 
-#: src/frontends/qt4/QDocumentDialog.C:201
+#: src/frontends/qt4/QDocumentDialog.C:190
 #, fuzzy
 msgid "headings"
 msgstr "Mappning av tangentbord"
 
-#: src/frontends/qt4/QDocumentDialog.C:202
+#: src/frontends/qt4/QDocumentDialog.C:191
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:218
+#: src/frontends/qt4/QDocumentDialog.C:207
 msgid "B3"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:219
+#: src/frontends/qt4/QDocumentDialog.C:208
 msgid "B4"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:306
+#: src/frontends/qt4/QDocumentDialog.C:292
+#, fuzzy
+msgid "LaTeX default"
+msgstr "LaTeX Logg"
+
+#: src/frontends/qt4/QDocumentDialog.C:298
 #, fuzzy
 msgid "``text''"
 msgstr "Lutande"
 
-#: src/frontends/qt4/QDocumentDialog.C:307
+#: src/frontends/qt4/QDocumentDialog.C:299
 #, fuzzy
 msgid "''text''"
 msgstr "Lutande"
 
-#: src/frontends/qt4/QDocumentDialog.C:308
+#: src/frontends/qt4/QDocumentDialog.C:300
 #, fuzzy
 msgid ",,text``"
 msgstr "Lutande"
 
-#: src/frontends/qt4/QDocumentDialog.C:309
+#: src/frontends/qt4/QDocumentDialog.C:301
 #, fuzzy
 msgid ",,text''"
 msgstr "Lutande"
 
-#: src/frontends/qt4/QDocumentDialog.C:310
+#: src/frontends/qt4/QDocumentDialog.C:302
 #, fuzzy
 msgid "<<text>>"
 msgstr "Lutande"
 
-#: src/frontends/qt4/QDocumentDialog.C:311
+#: src/frontends/qt4/QDocumentDialog.C:303
 #, fuzzy
 msgid ">>text<<"
 msgstr "Lutande"
 
-#: src/frontends/qt4/QDocumentDialog.C:323
+#: src/frontends/qt4/QDocumentDialog.C:315
 #, fuzzy
 msgid "Numbered"
 msgstr "Nummer"
 
-#: src/frontends/qt4/QDocumentDialog.C:324
+#: src/frontends/qt4/QDocumentDialog.C:316
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:337
+#: src/frontends/qt4/QDocumentDialog.C:329
 msgid "Author-year"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:338
+#: src/frontends/qt4/QDocumentDialog.C:330
 #, fuzzy
 msgid "Numerical"
 msgstr "Nummer"
 
-#: src/frontends/qt4/QDocumentDialog.C:370
+#: src/frontends/qt4/QDocumentDialog.C:362
 #, fuzzy, c-format
 msgid "Unavailable: %1$s"
 msgstr "Lägg in hänvisning"
 
-#: src/frontends/qt4/QDocumentDialog.C:393
-#: src/frontends/qt4/QDocumentDialog.C:406
+#: src/frontends/qt4/QDocumentDialog.C:385
+#: src/frontends/qt4/QDocumentDialog.C:398
 #, fuzzy
 msgid "Document Class"
 msgstr "Dokumentet omdöpt till: '"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocumentDialog.C:386
 #, fuzzy
 msgid "Fonts"
 msgstr "Tecken: "
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocumentDialog.C:387
 #, fuzzy
 msgid "Text Layout"
 msgstr "Stil "
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:388
 #, fuzzy
 msgid "Page Layout"
 msgstr "Extra styckesstil"
 
-#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:389
 #, fuzzy
 msgid "Page Margins"
 msgstr "Marginaler"
 
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocumentDialog.C:391
 #, fuzzy
 msgid "Numbering & TOC"
 msgstr "Nummer"
 
-#: src/frontends/qt4/QDocumentDialog.C:401
+#: src/frontends/qt4/QDocumentDialog.C:393
 #, fuzzy
 msgid "Math Options"
 msgstr "Extra val"
 
-#: src/frontends/qt4/QDocumentDialog.C:402
+#: src/frontends/qt4/QDocumentDialog.C:394
 #, fuzzy
 msgid "Float Placement"
 msgstr "Flytande objekt, placering:|#y"
 
-#: src/frontends/qt4/QDocumentDialog.C:403
+#: src/frontends/qt4/QDocumentDialog.C:395
 #, fuzzy
 msgid "Bullets"
 msgstr "Bombdjup"
 
-#: src/frontends/qt4/QDocumentDialog.C:404
+#: src/frontends/qt4/QDocumentDialog.C:396
 #, fuzzy
 msgid "Branches"
 msgstr "Referens"
 
-#: src/frontends/qt4/QDocumentDialog.C:405
-#: src/frontends/qt4/QDocumentDialog.C:421
+#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:413
 #, fuzzy
 msgid "LaTeX Preamble"
 msgstr "LaTeX Preamble"
@@ -12074,7 +12079,7 @@ msgstr "Inställningar"
 msgid "Paragraph Settings"
 msgstr "Referens"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:683
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:621
 msgid "Senseless with this layout!"
 msgstr "Meningslöst för detta slag av stycke!"
 
@@ -12203,17 +12208,17 @@ msgstr "Infälld|#n"
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:1547
+#: src/frontends/qt4/QPrefsDialog.C:1546
 #, fuzzy
 msgid "Printer"
 msgstr "Skriv ut"
 
-#: src/frontends/qt4/QPrefsDialog.C:1639 src/frontends/qt4/QPrefsDialog.C:1821
+#: src/frontends/qt4/QPrefsDialog.C:1638 src/frontends/qt4/QPrefsDialog.C:1820
 #, fuzzy
 msgid "User interface"
 msgstr "Använd alternativt språk:|#l"
 
-#: src/frontends/qt4/QPrefsDialog.C:1751
+#: src/frontends/qt4/QPrefsDialog.C:1750
 #, fuzzy
 msgid "Identity"
 msgstr "Indrag"
@@ -12463,7 +12468,7 @@ msgstr "Fot"
 msgid "Opened Footnote Inset"
 msgstr "Öppnat insättning"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:445
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:444
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -12495,7 +12500,7 @@ msgstr "Lägg in Verbatim"
 msgid "Verbatim Input*"
 msgstr "Lägg in Verbatim"
 
-#: src/insets/insetinclude.C:412
+#: src/insets/insetinclude.C:411
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -12503,7 +12508,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/insetinclude.C:418
+#: src/insets/insetinclude.C:417
 msgid "Different textclasses"
 msgstr ""
 
@@ -12639,16 +12644,16 @@ msgstr "Ref: "
 msgid "Opened table"
 msgstr "Öppnar hjälpfil"
 
-#: src/insets/insettabular.C:1569
+#: src/insets/insettabular.C:1575
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "Multikolumn|#M"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1576
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:227
+#: src/insets/insettext.C:233
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Öppnat insättning"
@@ -12889,7 +12894,7 @@ msgstr "Rak"
 msgid "Page Height %"
 msgstr "Rak"
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:113
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12897,26 +12902,26 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:116
+#: src/lyx_cb.C:115
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:117
+#: src/lyx_cb.C:116
 #, fuzzy
 msgid "&Rename"
 msgstr "Namn:|#N"
 
-#: src/lyx_cb.C:134
+#: src/lyx_cb.C:133
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Skriv in filnamnet som dokumentet skall sparas under"
 
-#: src/lyx_cb.C:137 src/lyxfunc.C:1823
+#: src/lyx_cb.C:136 src/lyxfunc.C:1824
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Mallar"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:1978
+#: src/lyx_cb.C:166 src/lyxfunc.C:1979
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12924,31 +12929,31 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:1980
+#: src/lyx_cb.C:168 src/lyxfunc.C:1981
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Spara dokumentet?"
 
-#: src/lyx_cb.C:218
+#: src/lyx_cb.C:217
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autolagrar"
 
-#: src/lyx_cb.C:258
+#: src/lyx_cb.C:257
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Autolagring misslyckades!"
 
-#: src/lyx_cb.C:285
+#: src/lyx_cb.C:284
 msgid "Autosaving current document..."
 msgstr "Autolagrar nuvarande dokument..."
 
-#: src/lyx_cb.C:352
+#: src/lyx_cb.C:351
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/lyx_cb.C:371
+#: src/lyx_cb.C:370
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12956,12 +12961,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/lyx_cb.C:373
+#: src/lyx_cb.C:372
 #, fuzzy
 msgid "Could not read file"
 msgstr "Kunde inte köra med filen:"
 
-#: src/lyx_cb.C:381
+#: src/lyx_cb.C:380
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12969,25 +12974,25 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/lyx_cb.C:383 src/output.C:41
+#: src/lyx_cb.C:382 src/output.C:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Kan inte skriva till fil"
 
-#: src/lyx_cb.C:413
+#: src/lyx_cb.C:412
 msgid "Running configure..."
 msgstr "Kör \"configure\"..."
 
-#: src/lyx_cb.C:422
+#: src/lyx_cb.C:421
 msgid "Reloading configuration..."
 msgstr "Laddar om konfiguration..."
 
-#: src/lyx_cb.C:427
+#: src/lyx_cb.C:426
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Systemet har blivit omkonfigurerat."
 
-#: src/lyx_cb.C:428
+#: src/lyx_cb.C:427
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -13144,26 +13149,26 @@ msgstr "Välj LaTeX-fil att importera"
 msgid "Missing filename for --import"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyxfind.C:135
+#: src/lyxfind.C:136
 #, fuzzy
 msgid "Search error"
 msgstr "LaTeX-fel"
 
-#: src/lyxfind.C:136
+#: src/lyxfind.C:137
 msgid "Search string is empty"
 msgstr ""
 
-#: src/lyxfind.C:287 src/lyxfind.C:318
+#: src/lyxfind.C:288 src/lyxfind.C:319
 #, fuzzy
 msgid "String not found!"
 msgstr "Teckenkodning inte funnen!"
 
-#: src/lyxfind.C:322
+#: src/lyxfind.C:323
 #, fuzzy
 msgid "String has been replaced."
 msgstr "Systemet har blivit omkonfigurerat."
 
-#: src/lyxfind.C:325
+#: src/lyxfind.C:326
 #, fuzzy
 msgid " strings have been replaced."
 msgstr "Systemet har blivit omkonfigurerat."
@@ -13215,43 +13220,43 @@ msgstr "Språk:"
 msgid "  Number %1$s"
 msgstr "Nummer"
 
-#: src/lyxfunc.C:328
+#: src/lyxfunc.C:329
 #, fuzzy
 msgid "Unknown function."
 msgstr "Okänd operation"
 
-#: src/lyxfunc.C:353
+#: src/lyxfunc.C:354
 #, fuzzy
 msgid "Exiting"
 msgstr "Avsluta"
 
-#: src/lyxfunc.C:385
+#: src/lyxfunc.C:386
 #, fuzzy
 msgid "Nothing to do"
 msgstr "Ingenting att göra"
 
-#: src/lyxfunc.C:404
+#: src/lyxfunc.C:405
 msgid "Unknown action"
 msgstr "Okänd operation"
 
-#: src/lyxfunc.C:410 src/lyxfunc.C:671
+#: src/lyxfunc.C:411 src/lyxfunc.C:672
 #, fuzzy
 msgid "Command disabled"
 msgstr "Lägg in märke"
 
-#: src/lyxfunc.C:417
+#: src/lyxfunc.C:418
 msgid "Command not allowed without any document open"
 msgstr "Kommandot är inte tillåtet utan öppna dokument"
 
-#: src/lyxfunc.C:657
+#: src/lyxfunc.C:658
 msgid "Document is read-only"
 msgstr "Dokumentet är inte skrivbart."
 
-#: src/lyxfunc.C:665
+#: src/lyxfunc.C:666
 msgid "This portion of the document is deleted."
 msgstr ""
 
-#: src/lyxfunc.C:684
+#: src/lyxfunc.C:685
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -13259,114 +13264,114 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:703
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
 "Check that your printer is set up correctly."
 msgstr ""
 
-#: src/lyxfunc.C:705
+#: src/lyxfunc.C:706
 #, fuzzy
 msgid "Print document failed"
 msgstr "Skriv till"
 
-#: src/lyxfunc.C:724
+#: src/lyxfunc.C:725
 #, c-format
 msgid ""
 "The document could not be converted\n"
 "into the document class %1$s."
 msgstr ""
 
-#: src/lyxfunc.C:727
+#: src/lyxfunc.C:728
 #, fuzzy
 msgid "Could not change class"
 msgstr "Kan inte skriva till fil"
 
-#: src/lyxfunc.C:839
+#: src/lyxfunc.C:840
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Lagrar dokument"
 
-#: src/lyxfunc.C:843
+#: src/lyxfunc.C:844
 #, fuzzy
 msgid " done."
 msgstr "Gå ned"
 
-#: src/lyxfunc.C:858
+#: src/lyxfunc.C:859
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1064 src/text3.C:1233
+#: src/lyxfunc.C:1065 src/text3.C:1202
 msgid "Missing argument"
 msgstr "Argument saknas"
 
-#: src/lyxfunc.C:1073
+#: src/lyxfunc.C:1074
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Öppnar hjälpfil"
 
-#: src/lyxfunc.C:1348
+#: src/lyxfunc.C:1349
 msgid "Opening child document "
 msgstr "Öppnar underdokument "
 
-#: src/lyxfunc.C:1434
+#: src/lyxfunc.C:1435
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1445
+#: src/lyxfunc.C:1446
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1561
+#: src/lyxfunc.C:1562
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Dokumentstil satt"
 
-#: src/lyxfunc.C:1564
+#: src/lyxfunc.C:1565
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Pappersstil satt"
 
-#: src/lyxfunc.C:1620
+#: src/lyxfunc.C:1621
 msgid "Converting document to new document class..."
 msgstr "Konverterar dokument till ny dokumentklass..."
 
-#: src/lyxfunc.C:1820
+#: src/lyxfunc.C:1821
 #, fuzzy
 msgid "Select template file"
 msgstr "Markera nästa rad"
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1858
 #, fuzzy
 msgid "Select document to open"
 msgstr "Välj dokument som skall öppnas"
 
-#: src/lyxfunc.C:1896
+#: src/lyxfunc.C:1897
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Vill du öppna dokumentet?"
 
-#: src/lyxfunc.C:1900
+#: src/lyxfunc.C:1901
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Inga dokument öppnade!%t"
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1903
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/lyxfunc.C:1927
+#: src/lyxfunc.C:1928
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/lyxfunc.C:2044
+#: src/lyxfunc.C:2045
 msgid "Welcome to LyX!"
 msgstr "Välkommen till LyX!"
 
@@ -13884,15 +13889,15 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1323 src/text3.C:182
+#: src/mathed/InsetMathHull.C:1323 src/text3.C:183
 msgid "Math editor mode"
 msgstr "Matematikläge"
 
-#: src/mathed/InsetMathNest.C:885
+#: src/mathed/InsetMathNest.C:888
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:888
+#: src/mathed/InsetMathNest.C:891
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -14062,44 +14067,44 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Skrivmaskin"
 
-#: src/text.C:190
+#: src/text.C:133
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Okänd operation"
 
-#: src/text.C:191
+#: src/text.C:134
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:222
+#: src/text.C:165
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Okänd operation"
 
-#: src/text.C:332 src/text.C:345
+#: src/text.C:275 src/text.C:288
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Språk"
 
-#: src/text.C:333
+#: src/text.C:276
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:346
+#: src/text.C:289
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:353
+#: src/text.C:296
 #, fuzzy
 msgid "Unknown token"
 msgstr "Okänd operation"
 
-#: src/text.C:1226
+#: src/text.C:730
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -14108,66 +14113,66 @@ msgstr ""
 "Du kan inte mata in ett mellanslag i början på ett stycke. Läs "
 "Nybörjarkursen."
 
-#: src/text.C:1237
+#: src/text.C:741
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Du kan inte mata in två mellanslag i rad sådär. Läs Nybörjarkursen."
 
-#: src/text.C:2319
+#: src/text.C:1553
 #, fuzzy
 msgid "Change: "
 msgstr "Sidor:"
 
-#: src/text.C:2323
+#: src/text.C:1557
 #, fuzzy
 msgid " at "
 msgstr " av "
 
-#: src/text.C:2333
+#: src/text.C:1567
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Tecken: "
 
-#: src/text.C:2338
+#: src/text.C:1572
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Djup: "
 
-#: src/text.C:2344
+#: src/text.C:1578
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Mellanrum"
 
-#: src/text.C:2356
+#: src/text.C:1590
 #, fuzzy
 msgid "Other ("
 msgstr "Annat...|#A"
 
-#: src/text.C:2365
+#: src/text.C:1599
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Djup: "
 
-#: src/text.C:2366
+#: src/text.C:1600
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Styckesstil satt"
 
-#: src/text.C:2367
+#: src/text.C:1601
 #, fuzzy
 msgid ", Id: "
 msgstr ", Djup: "
 
-#: src/text.C:2368
+#: src/text.C:1602
 #, fuzzy
 msgid ", Position: "
 msgstr "   val: "
 
-#: src/text.C:2369
+#: src/text.C:1603
 msgid ", Boundary: "
 msgstr ""
 
-#: src/text2.C:552
+#: src/text2.C:538
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
@@ -14175,35 +14180,35 @@ msgstr ""
 "Ingen fontändring definerat. Välj Tecken under Stil-menyn för att definera "
 "fontändring."
 
-#: src/text2.C:594
+#: src/text2.C:580
 #, fuzzy
 msgid "Nothing to index!"
 msgstr "Ingenting att göra"
 
-#: src/text2.C:596
+#: src/text2.C:582
 #, fuzzy
 msgid "Cannot index more than one paragraph!"
 msgstr "En tabellcell kan bara innehålla högst ett stycke!"
 
-#: src/text3.C:697
+#: src/text3.C:684
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Argument saknas"
 
-#: src/text3.C:845
+#: src/text3.C:832
 msgid "Layout "
 msgstr "Stil "
 
-#: src/text3.C:846
+#: src/text3.C:833
 msgid " not known"
 msgstr " okänd"
 
-#: src/text3.C:1338 src/text3.C:1350
+#: src/text3.C:1307 src/text3.C:1319
 #, fuzzy
 msgid "Character set"
 msgstr "Teckenkodning:|#T"
 
-#: src/text3.C:1481
+#: src/text3.C:1450
 msgid "Paragraph layout set"
 msgstr "Styckesstil satt"
 
