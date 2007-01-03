@@ -1,5 +1,11 @@
 2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* bufferparams.C (writeLaTeX): 
+	* lyx_sty.C: use \setlength{\foo}{bar}, not \setlength\foo{bar}
+	(bug 2843)
+
+2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* cursor.C (popRight): place cursor at the right spot:
 	notifyCursorLeaves may have killed the inset and put its contents
 	at lower level (bug 2908)

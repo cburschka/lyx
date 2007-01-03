@@ -84,7 +84,10 @@ What's new
 
 - Re-enable Address paragraph style in AMS article classes (bug 2890).
 
-- write \begin and \end alignment tags on their own lines (bug 3010).
+- Write \begin and \end alignment tags on their own lines (bug 3010).
+
+- Fix output of \setlength commands, in order to please latex2html
+  (bug 2843).
 
 - Import \guilsinglright correctly from .tex files.
 
