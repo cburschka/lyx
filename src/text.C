@@ -1706,7 +1706,6 @@ void LyXText::setCursorFromCoordinates(LCursor & cur, int const x, int const y)
 		<< endl;
 
 	setCursor(cur, pit, pos, true, bound);
-	return;
 }
 
 

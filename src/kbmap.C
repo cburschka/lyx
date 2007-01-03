@@ -281,11 +281,9 @@ void kb_keymap::defkey(kb_sequence * seq,
 		newone->func = func;
 		newone->func.origin = FuncRequest::KEYBOARD;
 		newone->table.reset();
-		return;
 	} else {
 		newone->table.reset(new kb_keymap);
 		newone->table->defkey(seq, func, r + 1);
-		return;
 	}
 }
 

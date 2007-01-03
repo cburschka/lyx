@@ -104,8 +104,6 @@ void LaTeXFeatures::getAvailable()
 				packages_.push_back(name);
 		}
 	}
-
-	return;
 }
 
 

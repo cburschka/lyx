@@ -74,8 +74,6 @@ void QMathMatrixDialog::columnsChanged(int)
 
 	h_align_str[nx] = '\0';
 	halignED->setText(h_align_str);
-
-	return;
 }
 
 
