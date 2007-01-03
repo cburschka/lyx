@@ -59,8 +59,7 @@ int QToc::getTocDepth()
 
 QStandardItemModel * QToc::tocModel()
 {
-	if (toc_models_.empty())
-	{
+	if (toc_models_.empty()) {
 		lyxerr[Debug::GUI] << "QToc::tocModel(): no types available " << endl;
 		return 0;
 	}
