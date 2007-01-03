@@ -998,26 +998,26 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 	if (paragraph_separation) {
 		switch (getDefSkip().kind()) {
 		case VSpace::SMALLSKIP:
-			os << "\\setlength\\parskip{\\smallskipamount}\n";
+			os << "\\setlength{\\parskip}{\\smallskipamount}\n";
 			break;
 		case VSpace::MEDSKIP:
-			os << "\\setlength\\parskip{\\medskipamount}\n";
+			os << "\\setlength{\\parskip}{\\medskipamount}\n";
 			break;
 		case VSpace::BIGSKIP:
-			os << "\\setlength\\parskip{\\bigskipamount}\n";
+			os << "\\setlength{\\parskip}{\\bigskipamount}\n";
 			break;
 		case VSpace::LENGTH:
-			os << "\\setlength\\parskip{"
+			os << "\\setlength{\\parskip}{"
 			   << from_utf8(getDefSkip().length().asLatexString())
 			   << "}\n";
 			break;
 		default: // should never happen // Then delete it.
-			os << "\\setlength\\parskip{\\medskipamount}\n";
+			os << "\\setlength{\\parskip}{\\medskipamount}\n";
 			break;
 		}
 		texrow.newline();
 
-		os << "\\setlength\\parindent{0pt}\n";
+		os << "\\setlength{\\parindent}{0pt}\n";
 		texrow.newline();
 	}
 

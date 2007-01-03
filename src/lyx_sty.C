@@ -78,7 +78,7 @@ string const paragraphleftindent_def =
 	"\\newenvironment{LyXParagraphLeftIndent}[1]%\n"
 	"{\n"
 	"  \\begin{list}{}{%\n"
-	"    \\setlength\\topsep{0pt}%\n"
+	"    \\setlength{\\topsep}{0pt}%\n"
 	"    \\addtolength{\\leftmargin}{#1}\n"
 // ho hum, yet more things commented out with no hint as to why they
 // weren't just removed
@@ -86,7 +86,7 @@ string const paragraphleftindent_def =
 //	"%%    \\setlength{\\textwidth}{#2\\textwidth}\n"
 //	"%%    \\setlength\\listparindent\\parindent%\n"
 //	"%%    \\setlength\\itemindent\\parindent%\n"
-	"    \\setlength\\parsep{0pt plus 1pt}%\n"
+	"    \\setlength{\\parsep}{0pt plus 1pt}%\n"
 	"  }\n"
 	"  \\item[]\n"
 	"}\n"
