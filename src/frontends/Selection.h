@@ -43,6 +43,10 @@ public:
 	 * This should be called whenever some text is highlighted.
 	 */
 	virtual void put(docstring const &) = 0;
+
+	/// state of clipboard.
+	/// \retval true if the system clipboard has been set within LyX.
+	virtual bool isInternal() const = 0;
 };
 
 } // namespace frontend

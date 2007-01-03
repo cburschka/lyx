@@ -50,5 +50,11 @@ void GuiClipboard::put(docstring const & str)
 	                           QClipboard::Clipboard);
 }
 
+
+bool GuiClipboard::isInternal() const
+{
+	return qApp->clipboard()->ownsClipboard();
+}
+
 } // namespace frontend
 } // namespace lyx

@@ -62,5 +62,11 @@ void GuiSelection::put(docstring const & str)
 	                           QClipboard::Selection);
 }
 
+
+bool GuiSelection::isInternal() const
+{
+	return qApp->clipboard()->ownsSelection();
+}
+
 } // namespace frontend
 } // namespace lyx

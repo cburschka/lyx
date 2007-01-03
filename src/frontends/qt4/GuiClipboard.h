@@ -32,6 +32,7 @@ public:
 	//@{
 	docstring const get() const;
 	void put(docstring const & str);
+	bool isInternal() const;
 	//@}
 };
 
