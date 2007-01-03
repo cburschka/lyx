@@ -493,10 +493,12 @@ void GuiWorkArea::doGreyOut(QLPainter & pain)
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
 	QRect const rc = ev->rect(); 
+	/*
 	lyxerr[Debug::PAINTING] << "paintEvent begin: x: " << rc.x()
 		<< " y: " << rc.y()
 		<< " w: " << rc.width()
 		<< " h: " << rc.height() << endl;
+	*/
 
 	QPainter pain(viewport());
 	pain.drawPixmap(rc, screen_, rc);
