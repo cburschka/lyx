@@ -144,7 +144,6 @@ namespace {
 		replaceSelection(cur);
 
 		if (sel.empty()) {
-			const int old_pos = cur.pos();
 			cur.insert(new InsetMathHull(hullSimple));
 			BOOST_ASSERT(old_pos == cur.pos());
 			cur.nextInset()->edit(cur, true);

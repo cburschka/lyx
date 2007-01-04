@@ -516,9 +516,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (inset) {
 			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument());
 			FuncStatus fs;
-			bool const success = inset->getStatus(cur, fr, fs);
 			// Every inset is supposed to handle this
-			BOOST_ASSERT(success);
+			BOOST_ASSERT(inset->getStatus(cur, fr, fs));
 			flag |= fs;
 		} else {
 			FuncRequest fr(LFUN_INSET_INSERT, cmd.argument());
