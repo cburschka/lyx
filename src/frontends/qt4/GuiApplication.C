@@ -276,22 +276,24 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	if (!currentView())
 		return false;
 
-	BufferView * bv = currentView()->view();
-
 	switch (xev->type) {
-	case SelectionRequest:
+	case SelectionRequest: {
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
+		BufferView * bv = currentView()->view();
 		if (bv) {
 			lyx::docstring const sel = bv->requestSelection();
 			if (!sel.empty())
 				selection_.put(sel);
 		}
 		break;
-	case SelectionClear:
+	}
+	case SelectionClear: {
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
+		BufferView * bv = currentView()->view();
 		if (bv)
 			bv->clearSelection();
 		break;
+	}
 	}
 	return false;
 }
