@@ -58,9 +58,9 @@ public:
 
 	/**
 	 * Return a string describing the KeySym with modifier mod.
-	 * This should use the native UI format when applicable
+	 * Use the native UI format when \c forgui is true.
 	 */
-	virtual docstring const print(key_modifier::state mod) const = 0;
+	virtual docstring const print(key_modifier::state mod, bool forgui) const = 0;
 };
 
 

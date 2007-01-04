@@ -134,7 +134,7 @@ docstring const MenuItem::shortcut() const
 }
 
 
-docstring const MenuItem::binding() const
+docstring const MenuItem::binding(bool forgui) const
 {
 	if (kind_ != Command)
 		return docstring();
@@ -144,7 +144,7 @@ docstring const MenuItem::binding() const
 	kb_keymap::Bindings bindings = theTopLevelKeymap().findbindings(func_);
 
 	if (bindings.size()) {
-		return bindings.begin()->print();
+		return bindings.begin()->print(forgui);
 	} else {
 		lyxerr[Debug::KBMAP]
 			<< "No binding for "

@@ -58,8 +58,12 @@ public:
 	 */
 	virtual size_t getUCSEncoded() const;
 
-	/// Return a human-readable version of a key+modifier pair.
-	virtual docstring const print(key_modifier::state mod) const;
+	/**
+	 * Return a human-readable version of a key+modifier pair.
+	 * This will be the GUI version (translated and with special
+	 * characters for Mac OS X) when \c forgui is true.
+	 */
+	virtual docstring const print(key_modifier::state mod, bool forgui) const;
 
 	///
 	int key() const {

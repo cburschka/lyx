@@ -63,15 +63,19 @@ public:
 
 	/**
 	 * Return the current sequence as a string.
+	 * @param forgui true if the string should use translations and 
+	 *   special characters. 
 	 * @see parse()
 	 */
-	docstring const print() const;
+	docstring const print(bool forgui) const;
 
 	/**
 	 * Return the current sequence and available options as
 	 * a string. No options are added if no curmap kb map exists.
+	 * @param forgui true if the string should use translations and 
+	 *   special characters. 
 	 */
-	docstring const printOptions() const;
+	docstring const printOptions(bool forgui) const;
 
 	/// Mark the sequence as deleted.
 	void mark_deleted();

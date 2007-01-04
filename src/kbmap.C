@@ -55,12 +55,6 @@ string const kb_keymap::printKeySym(LyXKeySym const & key,
 }
 
 
-docstring const kb_keymap::printKey(kb_key const & key) const
-{
-	return key.code->print(key.mod.first);
-}
-
-
 string::size_type kb_keymap::bind(string const & seq, FuncRequest const & func)
 {
 	if (lyxerr.debugging(Debug::KBMAP)) {
@@ -220,12 +214,12 @@ kb_keymap::lookup(LyXKeySymPtr key,
 }
 
 
-docstring const kb_keymap::print() const
+docstring const kb_keymap::print(bool forgui) const
 {
 	docstring buf;
 	Table::const_iterator end = table.end();
 	for (Table::const_iterator cit = table.begin(); cit != end; ++cit) {
-		buf += printKey((*cit));
+		buf += cit->code->print(cit->mod.first, forgui);
 		buf += ' ';
 	}
 	return buf;
@@ -252,7 +246,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 			if (r + 1 == seq->length()) {
 				lyxerr[Debug::KBMAP]
 					<< "Warning: New binding for '"
-					<< to_utf8(seq->print())
+					<< to_utf8(seq->print(false))
 					<< "' is overriding old binding..."
 					<< endl;
 				if (it->table.get()) {
@@ -263,7 +257,7 @@ void kb_keymap::defkey(kb_sequence * seq,
 				return;
 			} else if (!it->table.get()) {
 				lyxerr << "Error: New binding for '" 
-				       << to_utf8(seq->print())
+				       << to_utf8(seq->print(false))
 				       << "' is overriding old binding..."
 					       << endl;
 				return;
@@ -294,7 +288,7 @@ docstring const kb_keymap::printbindings(FuncRequest const & func) const
 	Bindings bindings = findbindings(func);
 	for (Bindings::const_iterator cit = bindings.begin();
 	     cit != bindings.end() ; ++cit)
-		res << '[' << cit->print() << ']';
+		res << '[' << cit->print(true) << ']';
 	return res.str();
 }
 

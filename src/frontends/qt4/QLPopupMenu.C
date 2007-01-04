@@ -136,7 +136,11 @@ docstring const QLPopupMenu::getLabel(MenuItem const & mi)
 
 void QLPopupMenu::addBinding(docstring & label, MenuItem const & mi)
 {
-	docstring const binding(mi.binding());
+#ifdef Q_WS_MACX
+	docstring const binding(mi.binding(false));
+#else
+	docstring const binding(mi.binding(true));
+#endif
 	if (!binding.empty()) {
 		label += '\t' + binding;
 	}

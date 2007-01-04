@@ -294,7 +294,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		lyxerr << BOOST_CURRENT_FUNCTION
 		       << " Key [action="
 		       << func.action << "]["
-		       << to_utf8(keyseq->print()) << ']'
+		       << to_utf8(keyseq->print(false)) << ']'
 		       << endl;
 	}
 
@@ -303,7 +303,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	// num_bytes == 0? (Lgb)
 
 	if (keyseq->length() > 1) {
-		lyx_view_->message(keyseq->print());
+		lyx_view_->message(keyseq->print(true));
 	}
 
 
@@ -788,7 +788,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_COMMAND_PREFIX:
 			BOOST_ASSERT(lyx_view_);
-			lyx_view_->message(keyseq->printOptions());
+			lyx_view_->message(keyseq->printOptions(true));
 			break;
 
 		case LFUN_COMMAND_EXECUTE:
@@ -809,7 +809,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		case LFUN_META_PREFIX:
 			meta_fake_bit = key_modifier::alt;
-			setMessage(keyseq->print());
+			setMessage(keyseq->print(true));
 			break;
 
 		case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -1169,7 +1169,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			break;
 
 		case LFUN_SERVER_NOTIFY:
-			dispatch_buffer = keyseq->print();
+			dispatch_buffer = keyseq->print(false);
 			theLyXServer().notifyClient(to_utf8(dispatch_buffer));
 			break;
 
@@ -2035,12 +2035,12 @@ docstring const LyXFunc::viewStatusMessage()
 {
 	// When meta-fake key is pressed, show the key sequence so far + "M-".
 	if (wasMetaKey())
-		return keyseq->print() + "M-";
+		return keyseq->print(true) + "M-";
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
 	if (keyseq->length() > 0 && !keyseq->deleted())
-		return keyseq->printOptions();
+		return keyseq->printOptions(true);
 
 	if (!view()->buffer())
 		return _("Welcome to LyX!");

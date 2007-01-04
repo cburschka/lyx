@@ -130,17 +130,14 @@ string::size_type kb_sequence::parse(string const & s)
 }
 
 
-docstring const kb_sequence::print() const
+docstring const kb_sequence::print(bool forgui) const
 {
 	docstring buf;
 
-	//if (deleted_)
-	//	return buf;
+	const KeySequence::size_type length = sequence.size();
 
-	KeySequence::size_type i, length = sequence.size();
-
-	for (i = 0; i < length; ++i) {
-		buf += sequence[i]->print(modifiers[i].first);
+	for (KeySequence::size_type i = 0; i < length; ++i) {
+		buf += sequence[i]->print(modifiers[i].first, forgui);
 
 		// append a blank
 		if (i + 1 < length) {
@@ -151,17 +148,17 @@ docstring const kb_sequence::print() const
 }
 
 
-docstring const kb_sequence::printOptions() const
+docstring const kb_sequence::printOptions(bool forgui) const
 {
 	docstring buf;
 
-	buf += print();
+	buf += print(forgui);
 
 	if (!curmap)
 		return buf;
 
 	buf += _("   options: ");
-	buf += curmap->print();
+	buf += curmap->print(forgui);
 	return buf;
 }
 

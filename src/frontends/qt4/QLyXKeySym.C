@@ -211,7 +211,7 @@ size_t QLyXKeySym::getUCSEncoded() const
 }
 
 
-docstring const QLyXKeySym::print(key_modifier::state mod) const
+docstring const QLyXKeySym::print(key_modifier::state mod, bool forgui) const
 {
 	int tmpkey = key_;
 
@@ -221,8 +221,11 @@ docstring const QLyXKeySym::print(key_modifier::state mod) const
 		tmpkey += Qt::CTRL;
 	if (mod & key_modifier::alt)
 		tmpkey += Qt::ALT;
+	
+	QKeySequence seq(tmpkey);
 
-	return qstring_to_ucs4(QKeySequence(tmpkey).toString());
+	return qstring_to_ucs4(seq.toString(forgui ? QKeySequence::NativeText 
+					    : QKeySequence::PortableText));
 }
 
 

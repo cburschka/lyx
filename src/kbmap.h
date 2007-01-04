@@ -45,8 +45,12 @@ public:
 	// Parse a bind file
 	bool read(std::string const & bind_file);
 
-	/// print all available keysyms
-	docstring const print() const;
+	/**
+	 * print all available keysyms
+	 * @param forgui true if the string should use translations and 
+	 *   special characters. 
+	 */
+	docstring const print(bool forgui) const;
 
 	/**
 	 * Look up a key press in the keymap.
@@ -109,9 +113,6 @@ private:
 	 */
 	void defkey(kb_sequence * seq, FuncRequest const & func,
 		    unsigned int r = 0);
-
-	///  Returns a string of the given key
-	docstring const printKey(kb_key const & key) const;
 
 	/**
 	 * Given an action, find all keybindings
