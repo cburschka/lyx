@@ -215,8 +215,7 @@ void QTocDialog::update()
 void QTocDialog::updateGui()
 {
 	QStringListModel * type_model = form_->typeModel();
-	if (type_model->stringList().isEmpty())
-	{
+	if (type_model->stringList().isEmpty()) {
 		enableButtons();
 		typeCO->setModel(type_model);
 		tocTV->setModel(new QStandardItemModel);
@@ -227,8 +226,7 @@ void QTocDialog::updateGui()
 	typeCO->setModel(type_model);
 	typeCO->setCurrentIndex(form_->getType());
 
-	if (form_->tocModel())
-	{
+	if (form_->tocModel()) {
 		tocTV->setModel(form_->tocModel());
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
