@@ -88,7 +88,7 @@ Menuset
 		Item "Copy" "copy"
 		Item "Paste" "paste"
 		Submenu "Paste Recent|e" "edit_pasterecent"
-		Submenu "Paste External Clipboard/Selection" "edit_paste"
+		Submenu "Paste Special" "edit_paste"
 		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
 		Separator
