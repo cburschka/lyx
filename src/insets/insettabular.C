@@ -174,12 +174,6 @@ string const featureAsString(LyXTabular::Feature feature)
 }
 
 
-bool InsetTabular::hasPasteBuffer() const
-{
-	return (paste_tabular.get() != 0);
-}
-
-
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
@@ -729,7 +723,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE:
-		if (hasPasteBuffer() && tabularStackDirty()) {
+		if (tabularStackDirty()) {
 			recordUndoInset(cur, Undo::INSERT);
 			pasteSelection(cur);
 			break;
@@ -1802,7 +1796,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.
-	cap::dirtyTabularStack(true);
+	dirtyTabularStack(true);
 
 	return true;
 }

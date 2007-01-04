@@ -74,7 +74,7 @@ CutStack theCuts(10);
 // store whether the tabular stack is newer than the normal copy stack
 // FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 // when we (hopefully) have a one-for-all paste mechanism.
-bool dirty_tabular_stack_;
+bool dirty_tabular_stack_ = false;
 
 
 void region(CursorSlice const & i1, CursorSlice const & i2,

@@ -177,8 +177,6 @@ private:
 	///
 	void removeTabularRow();
 	///
-	bool hasPasteBuffer() const;
-	///
 	bool copySelection(LCursor & cur);
 	///
 	bool pasteSelection(LCursor & cur);
