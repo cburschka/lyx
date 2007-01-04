@@ -722,14 +722,9 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				bvcur.setCursor(cur);
 				break;
 			}
-		} else {
-			// so that the clipboard is used and it goes on
-			// to default
-			// and executes LFUN_PRIMARY_SELECTION_PASTE in insettext!
-			paste_tabular.reset();
-			dirtyTabularStack(false);
 		}
-		// fall through
+		// Let the cell handle normal text
+		cell(cur.idx())->dispatch(cur, cmd);
 	}
 
 	case LFUN_PASTE:
