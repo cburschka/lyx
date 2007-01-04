@@ -71,7 +71,8 @@ TABLE OF CONTENTS
   Up/Down? The arrangement of the buttons may also give some hint to the user.
 
 * open Tutorial; click on TOC: TOC dialog has no contents; touch TOC slider
-   => seg fault.
+   => seg fault 
+   (only with: qt 4.2.2, gcc 4.1.2, openSuse 10.1/x32 and 10.2/x64) 
 
 
 DIALOGS
