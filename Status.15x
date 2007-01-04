@@ -60,9 +60,6 @@ SPELL CHECKING (Joost 4/11/06)
 * The cursor does not go to the currently checked word (or maybe it goes,
   but the screen is not updated so that one does not see the word).
   
-* When replacing a misspelled word during spell checking, the screen is not 
-  updated immediately.
-
 
 TABLE OF CONTENTS
 
@@ -81,9 +78,6 @@ DIALOGS
   of LaTeX errors and export to LaTeX afterwards you will get the old error
   list again, although the export succeded.
   
-* Open thesaurus dialog; look for keyword "hello" => seg fault
-  (on Windows, strictly following Joost's recipe with MSVC and Scons)
-
 
 MATH CONTROL PANEL
 
@@ -158,10 +152,6 @@ MENUS
 
 
 EDITING
-
-* Create a document with an empty table; mark the whole table; insert a minipage 
-   in order to have the table inside a minipage => crash
-  Peter: could not reproduce it (2006-30-12)
 
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
