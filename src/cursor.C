@@ -765,7 +765,7 @@ bool LCursor::backspace()
 	autocorrect() = false;
 
 	if (selection()) {
-		cap::selDel(*this);
+		cap::eraseSelection(*this);
 		return true;
 	}
 
@@ -817,7 +817,7 @@ bool LCursor::erase()
 		return true;
 
 	if (selection()) {
-		cap::selDel(*this);
+		cap::eraseSelection(*this);
 		return true;
 	}
 
