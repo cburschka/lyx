@@ -262,7 +262,7 @@ bool operator!=(DocIterator const & di1, DocIterator const & di2)
 
 
 // The difference to a ('non stable') DocIterator is the removed
-// (overwritte by 0...) part of the CursorSlice data items. So this thing
+// (overwritten by 0...) part of the CursorSlice data items. So this thing
 // is suitable for external storage, but not for iteration as such.
 
 class StableDocIterator {
