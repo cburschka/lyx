@@ -1036,7 +1036,8 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (tabularStackDirty()) {
 			status.enabled(true);
 			return true;
-		}
+		} else
+			return cell(cur.idx())->getStatus(cur, cmd, status);
 
 	case LFUN_INSET_MODIFY:
 		if (translate(cmd.getArg(0)) == TABULAR_CODE) {
