@@ -1212,7 +1212,6 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
-		//theSelection().put(cur.grabSelection());
 		if (!cur.selection())
 			cur.noUpdate();
 		return;
