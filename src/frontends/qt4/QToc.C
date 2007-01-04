@@ -154,7 +154,7 @@ void QToc::updateType()
 
 	QString gui_names_;
 	for (size_t i = 0; i != types.size(); ++i) {
-		string type_str = types[i];
+		string const & type_str = types[i];
 		type_list.append(toqstr(getGuiName(type_str)));
 		if (type_str == selected_type)
 			type_ = i;
