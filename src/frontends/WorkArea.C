@@ -227,7 +227,6 @@ void WorkArea::resizeBufferView()
 	lyx_view_.message(_("Formatting document..."));
 	buffer_view_->workAreaResize(width(), height());
 	lyx_view_.updateLayoutChoice();
-	redraw();
 	lyx_view_.busy(false);
 	lyx_view_.clearMessage();
 }

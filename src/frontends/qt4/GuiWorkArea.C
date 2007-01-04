@@ -159,7 +159,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
-	: WorkArea(id, lyx_view)
+	: WorkArea(id, lyx_view), need_resize_(false)
 {
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
@@ -430,12 +430,9 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 
 void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
-	stopBlinkingCursor();
-	screen_ = QPixmap(ev->size().width(), ev->size().height());
 	verticalScrollBar()->setPageStep(viewport()->height());
 	QAbstractScrollArea::resizeEvent(ev);
-	resizeBufferView();
-	startBlinkingCursor();
+	need_resize_ = true;
 }
 
 
@@ -500,6 +497,13 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		<< " h: " << rc.height() << endl;
 	*/
 
+	if (need_resize_) {
+		screen_ = QPixmap(viewport()->width(), viewport()->height());
+		resizeBufferView();
+		updateScreen();
+		need_resize_ = false;
+	}
+
 	QPainter pain(viewport());
 	pain.drawPixmap(rc, screen_, rc);
 	cursor_->draw(pain);
@@ -508,19 +512,24 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 void GuiWorkArea::expose(int x, int y, int w, int h)
 {
+	updateScreen();
+	update(x, y, w, h);
+}
+
+
+void GuiWorkArea::updateScreen()
+{
 	QLPainter pain(&screen_);
 
 	if (greyed_out_) {
 		lyxerr[Debug::GUI] << "splash screen requested" << endl;
-		doGreyOut(pain);
 		verticalScrollBar()->hide();
-		update(0, 0, width(), height());
+		doGreyOut(pain);
 		return;
 	}
 
 	verticalScrollBar()->show();
 	paintText(*buffer_view_, pain);
-	update(x, y, w, h);
 }
 
 

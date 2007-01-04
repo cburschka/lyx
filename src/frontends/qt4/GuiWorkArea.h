@@ -166,7 +166,11 @@ private:
 	///	
 	CursorWidget * cursor_;
 	///
+	void updateScreen();
+	///
 	QPixmap screen_;
+	///
+	bool need_resize_;
 };
 
 } // namespace frontend
