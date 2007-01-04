@@ -144,9 +144,11 @@ namespace {
 		replaceSelection(cur);
 
 		if (sel.empty()) {
-			//const int old_pos = cur.pos();
+#ifdef ENABLE_ASSERTIONS
+			const int old_pos = cur.pos();
+#endif
 			cur.insert(new InsetMathHull(hullSimple));
-			//BOOST_ASSERT(old_pos == cur.pos());
+			BOOST_ASSERT(old_pos == cur.pos());
 			cur.nextInset()->edit(cur, true);
 			// don't do that also for LFUN_MATH_MODE
 			// unless you want end up with always changing
