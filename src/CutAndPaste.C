@@ -493,15 +493,8 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		LyXText * text = cur.text();
 		BOOST_ASSERT(text);
 		// Stuff what we got on the clipboard. Even if there is no selection.
-
-		// There is a problem with having the stuffing here in that the
-		// larger the selection the slower LyX will get. This can be
-		// solved by running the line below only when the selection has
-		// finished. The solution used currently just works, to make it
-		// faster we need to be more clever and probably also have more
-		// calls to theSelection().put. (Lgb)
-//		theSelection().put(cur.selectionAsString(true));
-
+		if (realcut)
+			theClipboard().put(cur.selectionAsString(true));
 
 		// make sure that the depth behind the selection are restored, too
 		recordUndoSelection(cur);
