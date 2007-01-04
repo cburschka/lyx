@@ -74,8 +74,6 @@ void eraseSelection(LCursor & cur);
 docstring grabAndEraseSelection(LCursor & cur);
 // other selection methods
 ///
-void selCut(LCursor & cur);
-///
 void selDel(LCursor & cur);
 /// clears or deletes selection depending on lyxrc setting
 void selClearOrDel(LCursor & cur);
