@@ -1202,10 +1202,8 @@ void InsetMathNest::lfunMouseMotion(LCursor & cur, FuncRequest & cmd)
 			bvcur.setCursor(cur);
 			bvcur.selection() = true;
 			//lyxerr << "MOTION " << bvcur << endl;
-		}
-		else {
+		} else
 			cur.undispatched();
-		}
 	}
 }
 
