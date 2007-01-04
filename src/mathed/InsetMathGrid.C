@@ -25,6 +25,7 @@
 #include "gettext.h"
 #include "undo.h"
 
+#include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 
 #include "insets/mailinset.h"
@@ -1210,11 +1211,19 @@ void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE: {
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
-		istringstream is(to_utf8(cmd.argument()));
-		int n = 0;
-		is >> n;
+		docstring topaste;
+		if (cmd.argument().empty() && !theClipboard().isInternal())
+			topaste = theClipboard().get();
+		else {
+			idocstringstream is(cmd.argument());
+			int n = 0;
+			is >> n;
+			topaste = cap::getSelection(cur.buffer(), n);
+		}
 		InsetMathGrid grid(1, 1);
-		mathed_parse_normal(grid, cap::getSelection(cur.buffer(), n));
+		if (!topaste.empty())
+			mathed_parse_normal(grid, topaste);
+
 		if (grid.nargs() == 1) {
 			// single cell/part of cell
 			recordUndo(cur);

@@ -723,7 +723,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_PASTE:
-		if (tabularStackDirty()) {
+		if (tabularStackDirty() && theClipboard().isInternal()) {
 			recordUndoInset(cur, Undo::INSERT);
 			pasteSelection(cur);
 			break;
@@ -1033,7 +1033,7 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 	}
 
 	case LFUN_PASTE:
-		if (tabularStackDirty()) {
+		if (tabularStackDirty() && theClipboard().isInternal()) {
 			status.enabled(true);
 			return true;
 		} else

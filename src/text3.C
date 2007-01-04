@@ -267,7 +267,7 @@ bool doInsertInset(LCursor & cur, LyXText * text,
 		inset->edit(cur, true);
 
 	if (gotsel && pastesel) {
-		lyx::dispatch(FuncRequest(LFUN_PASTE));
+		lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
 		// reset first par to default
 		if (cur.lastpit() != 0 || cur.lastpos() != 0) {
 			LyXLayout_ptr const layout =
@@ -756,13 +756,16 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE:
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
-		if (isStrUnsignedInt(to_utf8(cmd.argument())))
+		if (cmd.argument().empty() && !theClipboard().isInternal())
+			pasteString(cur, theClipboard().get(), docstring());
+		else {
+			string const arg(to_utf8(cmd.argument()));
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
-			convert<unsigned int>(to_utf8(cmd.argument())));
-		else
-			pasteSelection(cur, bv->buffer()->errorList("Paste"),
-			0);
-		bv->buffer()->errors("Paste");
+					isStrUnsignedInt(arg) ?
+						convert<unsigned int>(arg) :
+						0);
+			bv->buffer()->errors("Paste");
+		}
 		cur.clearSelection(); // bug 393
 		bv->switchKeyMap();
 		finishUndo();
@@ -968,7 +971,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// insert this
 		if (cmd.button() == mouse_button::button2) {
 			if (paste_internally)
-				lyx::dispatch(FuncRequest(LFUN_PASTE));
+				lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
 			else
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 		}
@@ -1721,7 +1724,23 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_PASTE:
-		enable = cap::numberOfSelections() > 0;
+		// FIXME: This is not correct, but the correct code below is
+		// expensive
+		enable = cap::numberOfSelections() > 0 ||
+			!theClipboard().isInternal();
+#if 0
+		if (cmd.argument().empty()) {
+			if (theClipboard().isInternal())
+				enable = cap::numberOfSelections() > 0;
+			else
+				enable = !theClipboard().get().empty();
+		} else if (isStrUnsignedInt(to_utf8(cmd.argument()))) {
+			int n = convert<unsigned int>(to_utf8(cmd.argument()));
+			enable = cap::numberOfSelections() > n;
+		} else
+			// unknown argument
+			enable = false;
+#endif
 		break;
 
 	case LFUN_PARAGRAPH_MOVE_UP:

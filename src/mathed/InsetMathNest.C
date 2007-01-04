@@ -50,6 +50,7 @@
 
 #include "support/lstrings.h"
 
+#include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
@@ -437,11 +438,16 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndo(cur);
 		cur.message(_("Paste"));
 		replaceSelection(cur);
-		size_t n = 0;
-		istringstream is(to_utf8(cmd.argument()));
-		is >> n;
-		docstring const selection = cap::getSelection(cur.buffer(), n);
-		cur.niceInsert(selection);
+		docstring topaste;
+		if (cmd.argument().empty() && !theClipboard().isInternal())
+			topaste = theClipboard().get();
+		else {
+			size_t n = 0;
+			idocstringstream is(cmd.argument());
+			is >> n;
+			topaste = cap::getSelection(cur.buffer(), n);
+		}
+		cur.niceInsert(topaste);
 		cur.clearSelection(); // bug 393
 		cur.bv().switchKeyMap();
 		finishUndo();
