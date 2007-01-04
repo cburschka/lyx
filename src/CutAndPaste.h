@@ -77,8 +77,6 @@ docstring grabAndEraseSelection(LCursor & cur);
 void selDel(LCursor & cur);
 /// clears or deletes selection depending on lyxrc setting
 void selClearOrDel(LCursor & cur);
-/// pastes n-th element of cut buffer
-void selPaste(LCursor & cur, size_t n);
 
 /** Tabular has its own paste stack for multiple cells
  *  but it needs to know whether there is a more recent
