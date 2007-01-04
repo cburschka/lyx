@@ -49,10 +49,6 @@ public:
 	 * from the kernel and push it to X with this method.
 	 */
 	virtual void put(docstring const &) = 0;
-
-	/// state of clipboard.
-	/// \retval true if the system clipboard has been set within LyX.
-	virtual bool isInternal() const = 0;
 };
 
 } // namespace frontend
