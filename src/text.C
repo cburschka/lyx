@@ -860,9 +860,8 @@ void LyXText::acceptChange(LCursor & cur)
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = (pit == it.pit() ? it.pos() : 0);
 		pos_type right = (pit == et.pit() ? et.pos() : pars_[pit].size());
-		pars_[pit].acceptChanges(left, right);
 
-		// handle imaginary end-of-par character
+		// handle imaginary end-of-par character first
 		if (right == pars_[pit].size() && !pars_[pit].isUnchanged(right)) {
 			if (pars_[pit].isInserted(right)) {
 				pars_[pit].setChange(right, Change(Change::UNCHANGED));
@@ -873,6 +872,8 @@ void LyXText::acceptChange(LCursor & cur)
 				// }
 			}
 		}
+
+		pars_[pit].acceptChanges(left, right);
 	}
 	finishUndo();
 	cur.clearSelection();
@@ -900,9 +901,8 @@ void LyXText::rejectChange(LCursor & cur)
 	for (; pit <= et.pit(); ++pit) {
 		pos_type left  = (pit == it.pit() ? it.pos() : 0);
 		pos_type right = (pit == et.pit() ? et.pos() : pars_[pit].size());
-		pars_[pit].rejectChanges(left, right);
 
-		// handle imaginary end-of-par character
+		// handle imaginary end-of-par character first
 		if (right == pars_[pit].size() && !pars_[pit].isUnchanged(right)) {
 			if (pars_[pit].isDeleted(right)) {
 				pars_[pit].setChange(right, Change(Change::UNCHANGED));
@@ -913,6 +913,8 @@ void LyXText::rejectChange(LCursor & cur)
 				// }
 			}
 		}
+		
+		pars_[pit].rejectChanges(left, right);
 	}
 	finishUndo();
 	cur.clearSelection();
