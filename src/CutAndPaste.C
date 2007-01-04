@@ -641,7 +641,6 @@ void pasteSelection(LCursor & cur, ErrorList & errorList, size_t sel_index)
 }
 
 
-// simple replacing. The font of the first selected character is used
 void replaceSelectionWithString(LCursor & cur, docstring const & str, bool backwards)
 {
 	recordUndo(cur);
@@ -680,7 +679,7 @@ void replaceSelection(LCursor & cur)
 
 void eraseSelection(LCursor & cur)
 {
-	//lyxerr << "LCursor::eraseSelection begin: " << cur << endl;
+	//lyxerr << "cap::eraseSelection begin: " << cur << endl;
 	CursorSlice const & i1 = cur.selBegin();
 	CursorSlice const & i2 = cur.selEnd();
 	if (i1.inset().asInsetMath()) {
@@ -707,13 +706,13 @@ void eraseSelection(LCursor & cur)
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}
-	//lyxerr << "LCursor::eraseSelection end: " << cur << endl;
+	//lyxerr << "cap::eraseSelection end: " << cur << endl;
 }
 
 
 void selDel(LCursor & cur)
 {
-	//lyxerr << "LCursor::selDel" << endl;
+	//lyxerr << "cap::selDel" << endl;
 	if (cur.selection())
 		eraseSelection(cur);
 }
@@ -721,7 +720,7 @@ void selDel(LCursor & cur)
 
 void selClearOrDel(LCursor & cur)
 {
-	//lyxerr << "LCursor::selClearOrDel" << endl;
+	//lyxerr << "cap::selClearOrDel" << endl;
 	if (lyxrc.auto_region_delete)
 		selDel(cur);
 	else

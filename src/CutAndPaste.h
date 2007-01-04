@@ -30,27 +30,40 @@ class LCursor;
 
 namespace cap {
 
-///
+/// Get all elements of the cut buffer in plain text format.
 std::vector<docstring> const availableSelections(Buffer const & buffer);
-///
+/// Get the number of available elements in the cut buffer.
 size_type numberOfSelections();
-///
+/// Get the sel_index-th element of the cut buffer in plain text format.
 docstring getSelection(Buffer const & buffer, size_t sel_index);
 
-/* Replace using the font of the first selected character and select
+/**
+ * Replace using the font of the first selected character and select
  * the new string. When \c backwards == false, set anchor before
  * cursor; otherwise set cursor before anchor.
+ * Does handle undo.
  */
 void replaceSelectionWithString(LCursor & cur, docstring const & str,
 				bool backwards);
-/// replace selection helper
+/// If a selection exists, cut it and push it to the cut buffer.
+/// Does handle undo.
 void replaceSelection(LCursor & cur);
 
-///
+/**
+ * Cut the current selection and possibly push it to the cut buffer and
+ * system clipboard.
+ * Does handle undo.
+ * \param doclear If this is true: Delete leading spaces in paragraphs before
+ *                they get merged.
+ * \param realcut If this is true: Push the selection to the cut buffer and
+ *                system clipboard. Set this to false for internal cuts that
+ *                do not directly originate from the user.
+ */
 void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
-///
+/// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(LCursor & cur);
-///
+/// Paste the sel_index-th element of the cut buffer.
+/// Does handle undo. Does only work in text, not mathed.
 void pasteSelection(LCursor & cur, ErrorList &, size_t sel_index = 0);
 
 /// Paste the paragraph list \p parlist at the position given by \p cur.
@@ -66,16 +79,21 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 void switchBetweenClasses(textclass_type c1, textclass_type c2,
                           InsetText & in, ErrorList &);
 
-///
+/// Get the current selection as a string. Does not change the selection.
+/// Does only work if the whole selection is in mathed.
 docstring grabSelection(LCursor const & cur);
-///
+/// Erase the current selection.
+/// Does not handle undo. Does only work if the whole selection is in mathed.
 void eraseSelection(LCursor & cur);
-///
+/// Erase the selection and return it as a string.
+/// Does not handle undo. Does only work if the whole selection is in mathed.
 docstring grabAndEraseSelection(LCursor & cur);
 // other selection methods
-///
+/// Erase the selection if one exists.
+/// Does not handle undo. Does only work if the whole selection is in mathed.
 void selDel(LCursor & cur);
-/// clears or deletes selection depending on lyxrc setting
+/// Clear or delete the selection if one exists, depending on lyxrc setting.
+/// Does not handle undo. Does only work if the whole selection is in mathed.
 void selClearOrDel(LCursor & cur);
 
 /** Tabular has its own paste stack for multiple cells
