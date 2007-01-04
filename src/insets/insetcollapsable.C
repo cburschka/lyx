@@ -321,8 +321,12 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 		if (cmd.button() == mouse_button::button1 && hitButton(cmd)) {
+			// reset selection if necessary (see bug 3060)
+			if (cur.selection())
+				cur.bv().cursor().clearSelection();
+			else
+				cur.noUpdate();
 			cur.dispatched();
-			cur.noUpdate();
 			break;
 		}
 		if (status() == Inlined)
