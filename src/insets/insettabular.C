@@ -725,6 +725,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 		// Let the cell handle normal text
 		cell(cur.idx())->dispatch(cur, cmd);
+		break;
 	}
 
 	case LFUN_PASTE:
