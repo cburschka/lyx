@@ -37,9 +37,6 @@ size_type numberOfSelections();
 ///
 docstring getSelection(Buffer const & buffer, size_t sel_index);
 
-///
-void cutSelection(LCursor & cur, bool doclear, bool realcut);
-
 /* Replace using the font of the first selected character and select
  * the new string. When \c backwards == false, set anchor before
  * cursor; otherwise set cursor before anchor.
