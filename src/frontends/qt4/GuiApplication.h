@@ -22,6 +22,7 @@
 #include "frontends/Application.h"
 
 #include <QApplication>
+#include <QTranslator>
 
 namespace lyx {
 
@@ -91,6 +92,8 @@ private:
 	GuiFontLoader font_loader_;
 	///
 	ColorCache color_cache_;
+	///
+	QTranslator qt_trans_;
 	///
 	std::map<int, boost::shared_ptr<socket_callback> > socket_callbacks_;
 

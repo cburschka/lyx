@@ -107,13 +107,12 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 #endif
 
 	// install translation file for Qt built-in dialogs
-	QTranslator qt_trans;
 	QString language_name = QString("qt_") + QLocale::system().name();
 	language_name.truncate(5);
-	if (qt_trans.load(language_name,
+	if (qt_trans_.load(language_name,
 		QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
 	{
-		qApp->installTranslator(&qt_trans);
+		qApp->installTranslator(&qt_trans_);
 		// even if the language calls for RtL, don't do that
 		qApp->setLayoutDirection(Qt::LeftToRight);
 		lyxerr[Debug::GUI]
