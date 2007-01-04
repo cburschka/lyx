@@ -862,16 +862,22 @@ void LyXText::acceptChange(LCursor & cur)
 		pos_type right = (pit == et.pit() ? et.pos() : pars_[pit].size());
 		pars_[pit].acceptChanges(left, right);
 
-		// merge paragraph if appropriate:
-		// if (right >= pars_[pit].size() && pit + 1 < et.pit() &&
-		//    pars_[pit].isDeleted(pars_[pit].size())) {
-		//	setCursorIntern(cur, pit + 1, 0);
-		//	backspacePos0(cur);
-		//}
+		// handle imaginary end-of-par character
+		if (right == pars_[pit].size() && !pars_[pit].isUnchanged(right)) {
+			if (pars_[pit].isInserted(right)) {
+				pars_[pit].setChange(right, Change(Change::UNCHANGED));
+			} else {
+				// if (pit + 1 < et.pit()) {
+				//	setCursorIntern(cur, pit + 1, 0);
+				//	backspacePos0(cur);
+				// }
+			}
+		}
 	}
 	finishUndo();
 	cur.clearSelection();
-	setCursorIntern(cur, it.pit(), 0);
+	setCursorIntern(cur, it.pit(), it.pos());
+	cur.updateFlags(Update::Force);
 }
 
 
@@ -896,16 +902,22 @@ void LyXText::rejectChange(LCursor & cur)
 		pos_type right = (pit == et.pit() ? et.pos() : pars_[pit].size());
 		pars_[pit].rejectChanges(left, right);
 
-		// merge paragraph if appropriate:	
-		// if (right >= pars_[pit].size() && pit + 1 < et.pit() &&
-		//    pars_[pit].isInserted(pars_[pit].size())) {
-		//	setCursorIntern(cur, pit + 1, 0);
-		//	backspacePos0(cur);
-		//}
+		// handle imaginary end-of-par character
+		if (right == pars_[pit].size() && !pars_[pit].isUnchanged(right)) {
+			if (pars_[pit].isDeleted(right)) {
+				pars_[pit].setChange(right, Change(Change::UNCHANGED));
+			} else {
+				// if (pit + 1 < et.pit()) {
+				//	setCursorIntern(cur, pit + 1, 0);
+				//	backspacePos0(cur);
+				// }
+			}
+		}
 	}
 	finishUndo();
 	cur.clearSelection();
-	setCursorIntern(cur, it.pit(), 0);
+	setCursorIntern(cur, it.pit(), it.pos());
+	cur.updateFlags(Update::Force);
 }
 
 
