@@ -459,7 +459,6 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_COPY:
 		copySelection(cur);
-		// FIXME UNICODE
 		cur.message(_("Copy"));
 		break;
 
