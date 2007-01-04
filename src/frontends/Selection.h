@@ -39,8 +39,14 @@ public:
 	virtual docstring const get() const = 0;
 	/**
 	 * Fill the X selection.
+	 * The format is plain text.
 	 * Does nothing on systems that don't have a selection.
-	 * This should be called whenever some text is highlighted.
+	 * Since the X selection protocol is asyncronous this should never be
+	 * called from the kernel.
+	 * If another application requests the current selection a
+	 * SelectionRequest XEvent will be triggered. The response of the
+	 * frontend to this event should be to retrieve the current selection
+	 * from the kernel and push it to X with this method.
 	 */
 	virtual void put(docstring const &) = 0;
 
