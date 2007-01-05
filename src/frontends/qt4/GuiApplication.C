@@ -46,6 +46,7 @@
 #include <QWidget>
 
 #ifdef Q_WS_X11
+#include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #endif
 
@@ -278,16 +279,20 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 
 	switch (xev->type) {
 	case SelectionRequest: {
+		if (xev->xselectionrequest.selection != XA_PRIMARY)
+			break;
 		lyxerr[Debug::GUI] << "X requested selection." << endl;
 		BufferView * bv = currentView()->view();
 		if (bv) {
-			lyx::docstring const sel = bv->requestSelection();
+			docstring const sel = bv->requestSelection();
 			if (!sel.empty())
 				selection_.put(sel);
 		}
 		break;
 	}
 	case SelectionClear: {
+		if (xev->xselectionclear.selection != XA_PRIMARY)
+			break;
 		lyxerr[Debug::GUI] << "Lost selection." << endl;
 		BufferView * bv = currentView()->view();
 		if (bv)
