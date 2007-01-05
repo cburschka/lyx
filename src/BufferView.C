@@ -1331,6 +1331,7 @@ ViewMetricsInfo const & BufferView::viewMetricsInfo()
 }
 
 
+// FIXME: We should split-up updateMetrics() for the singlepar case.
 void BufferView::updateMetrics(bool singlepar)
 {
 	LyXText & buftext = buffer_->text();
@@ -1342,13 +1343,10 @@ void BufferView::updateMetrics(bool singlepar)
 		offset_ref_ = 0;
 	}
 	
-	// In singlepar mode, the anchor has to be reset because
-	// there is no metrics update with keyboard mouvement or
-	// mouse clicking if this didn't resulted in scrolling.
-	// FIXME: We should splitup updateMetrics() for the singlepar
-	// case.
-	if (singlepar)
-		anchor_ref_ = cursor_.bottom().pit();
+	// If the paragraph metrics has changed, we can not
+	// use the singlepar optimisation.
+	if (singlepar && tm.redoParagraph(cursor_.bottom().pit()))
+			singlepar = false;
 
 	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
