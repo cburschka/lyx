@@ -1341,6 +1341,14 @@ void BufferView::updateMetrics(bool singlepar)
 		anchor_ref_ = int(buftext.paragraphs().size() - 1);
 		offset_ref_ = 0;
 	}
+	
+	// In singlepar mode, the anchor has to be reset because
+	// there is no metrics update with keyboard mouvement or
+	// mouse clicking if this didn't resulted in scrolling.
+	// FIXME: We should splitup updateMetrics() for the singlepar
+	// case.
+	if (singlepar)
+		anchor_ref_ = cursor_.bottom().pit();
 
 	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
@@ -1352,6 +1360,8 @@ void BufferView::updateMetrics(bool singlepar)
 	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	if (!singlepar || pit == cursor_.bottom().pit())
+		// If the paragraph metrics has changed, we can not
+		// use the singlepar optimisation.
 		if (tm.redoParagraph(pit))
 			singlepar = false;
 	
