@@ -42,7 +42,7 @@
 #include "frontends/Alert.h"
 // FIXME: those two headers are needed because of the
 // WorkArea::redraw() call below.
-#include "frontends/lyxview.h"
+#include "frontends/LyXView.h"
 #include "frontends/WorkArea.h"
 
 using std::advance;
