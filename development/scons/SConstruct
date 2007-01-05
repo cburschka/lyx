@@ -1319,7 +1319,7 @@ if frontend == 'qt4':
     if not succ:
         # Under linux, I can test the following perfectly
         # Under windows, lib names need to passed as libXXX4.a ...
-        if platform_name == 'win32' and use_vc:
+        if platform_name == 'win32':
             succ = conf.CheckLibWithHeader('QtCore4', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
         else:
             succ = conf.CheckLibWithHeader('QtCore', 'QtGui/QApplication', 'c++', 'QApplication qapp();')
