@@ -1034,7 +1034,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// finish selection
 		if (cmd.button() == mouse_button::button1) {
 			if (cur.selection())
-				theSelection().haveSelection(cur.selection());
+				theSelection().haveSelection(true);
 			needsUpdate = false;
 			cur.noUpdate();
 		}
