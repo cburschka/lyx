@@ -87,7 +87,7 @@ def createResFromIcon(env, icon_file, rc_file):
         rc = open(rc_name, 'w')
         print >> rc, 'IDI_ICON1  ICON DISCARDABLE "%s"' % \
             os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'development', 'win32',
-                'packaging', 'icons', icon_file)
+                'packaging', 'icons', icon_file).replace('\\', '\\\\')
         rc.close()
         return env.RES(rc_name)
     else:
