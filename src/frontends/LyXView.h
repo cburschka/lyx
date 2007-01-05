@@ -74,7 +74,14 @@ public:
 
 	std::vector<int> const & workAreaIds() const { return work_area_ids_; }
 
+	/// FIXME: rename to setCurrentWorkArea()
 	void setWorkArea(frontend::WorkArea * work_area);
+
+	/// return the current WorkArea (the one that has the focus).
+	frontend::WorkArea const * currentWorkArea() const;
+	/// FIXME: This non-const access is needed because of 
+	/// a mis-designed \c ControlSpellchecker.
+	frontend::WorkArea * currentWorkArea();
 
 	/**
 	 * This is called after the concrete view has been created.

@@ -100,6 +100,20 @@ void LyXView::setWorkArea(WorkArea * work_area)
 }
 
 
+// FIXME, there's only one WorkArea per LyXView possible for now.
+WorkArea const * LyXView::currentWorkArea() const
+{
+	return work_area_;
+}
+
+
+// FIXME, there's only one WorkArea per LyXView possible for now.
+WorkArea * LyXView::currentWorkArea()
+{
+	return work_area_;
+}
+
+
 Buffer * LyXView::buffer() const
 {
 	BOOST_ASSERT(work_area_);

@@ -40,6 +40,10 @@
 #include "support/docstring.h"
 
 #include "frontends/Alert.h"
+// FIXME: those two headers are needed because of the
+// WorkArea::redraw() call below.
+#include "frontends/lyxview.h"
+#include "frontends/WorkArea.h"
 
 using std::advance;
 using std::distance;
@@ -251,6 +255,8 @@ void ControlSpellchecker::check()
 	// if we used a lfun like in find/replace, dispatch would do
 	// that for us
 	kernel().bufferview()->update();
+	// FIXME: this Controller is very badly designed...
+	kernel().lyxview().currentWorkArea()->redraw();
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORED_WORD) {
