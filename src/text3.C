@@ -961,7 +961,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// we have to check this first
 		bool paste_internally = false;
 		if (cmd.button() == mouse_button::button2 && cur.selection()) {
-			lyx::dispatch(FuncRequest(LFUN_COPY));
+			// Copy the selection to the clipboard stack. This
+			// is done for two reasons:
+			// - We want it to appear in the "Edit->Paste recent"
+			//   menu.
+			// - We can then use the normal copy/paste machinery
+			//   instead of theSelection().get() to preserve
+			//   formatting of the pasted stuff.
+			cap::copySelectionToStack(cur.bv().cursor());
 			paste_internally = true;
 		}
 

@@ -559,6 +559,12 @@ void copySelection(LCursor & cur)
 	// stuff the selection onto the X clipboard, from an explicit copy request
 	theClipboard().put(cur.selectionAsString(true));
 
+	copySelectionToStack(cur);
+}
+
+
+void copySelectionToStack(LCursor & cur)
+{
 	// this doesn't make sense, if there is no selection
 	if (!cur.selection())
 		return;

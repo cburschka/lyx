@@ -62,6 +62,8 @@ void replaceSelection(LCursor & cur);
 void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(LCursor & cur);
+/// Push the current selection to the cut buffer.
+void copySelectionToStack(LCursor & cur);
 /// Paste the sel_index-th element of the cut buffer.
 /// Does handle undo. Does only work in text, not mathed.
 void pasteSelection(LCursor & cur, ErrorList &, size_t sel_index = 0);
