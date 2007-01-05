@@ -525,7 +525,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_RELEASE:
 		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
-		if (cmd.button() == mouse_button::button3)
+		if (cmd.button() == mouse_button::button1) {
+			if (bvcur.selection())
+				theSelection().haveSelection(true);
+		} else if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
 

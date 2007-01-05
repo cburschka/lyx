@@ -596,6 +596,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = true;
 		cur.pos() = cur.lastpos();
 		cur.idx() = cur.lastidx();
+		theSelection().haveSelection(true);
 		break;
 
 	case LFUN_PARAGRAPH_UP:
@@ -1218,6 +1219,8 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
+		if (cur.bv().cursor().selection())
+			theSelection().haveSelection(true);
 		if (!cur.selection())
 			cur.noUpdate();
 		return;
