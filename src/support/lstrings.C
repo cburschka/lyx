@@ -423,6 +423,14 @@ docstring const ascii_lowercase(docstring const & a)
 }
 
 
+bool prefixIs(docstring const & a, char_type c)
+{
+	if (a.empty())
+		return false;
+	return a[0] == c;
+}
+
+
 bool prefixIs(string const & a, string const & pre)
 {
 	string::size_type const prelen = pre.length();
@@ -455,6 +463,14 @@ bool prefixIs(docstring const & a, docstring const & pre)
 bool suffixIs(string const & a, char c)
 {
 	if (a.empty()) return false;
+	return a[a.length() - 1] == c;
+}
+
+
+bool suffixIs(docstring const & a, char_type c)
+{
+	if (a.empty())
+		return false;
 	return a[a.length() - 1] == c;
 }
 

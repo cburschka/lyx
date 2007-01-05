@@ -264,7 +264,7 @@ public:
 	///
 	bool setMColumnPWidth(LCursor &, idx_type, LyXLength const &);
 	///
-	void setAlignSpecial(idx_type cell, std::string const & special,
+	void setAlignSpecial(idx_type cell, docstring const & special,
 			     Feature what);
 	///
 	LyXAlignment getAlignment(idx_type cell,
@@ -279,7 +279,7 @@ public:
 	///
 	LyXLength const getMColumnPWidth(idx_type cell) const;
 	///
-	std::string const getAlignSpecial(idx_type cell, int what) const;
+	docstring const getAlignSpecial(idx_type cell, int what) const;
 	///
 	int getWidthOfCell(idx_type cell) const;
 	///
@@ -454,7 +454,7 @@ public:
 		///
 		bool rotate;
 		///
-		std::string align_special;
+		docstring align_special;
 		///
 		LyXLength p_width; // this is only set for multicolumn!!!
 		///
@@ -524,7 +524,7 @@ public:
 		///
 		LyXLength p_width;
 		///
-		std::string align_special;
+		docstring align_special;
 	};
 	///
 	typedef std::vector<columnstruct> column_vector;

@@ -355,7 +355,7 @@ void InsetBibtex::fillWithBibKeys(Buffer const & buffer,
 			docstring linebuf = trim(linebuf0);
 			if (linebuf.empty())
 				continue;
-			if (prefixIs(linebuf, from_ascii("@"))) {
+			if (prefixIs(linebuf, '@')) {
 				linebuf = subst(linebuf, '{', '(');
 				docstring tmp;
 				linebuf = split(linebuf, tmp, '(');

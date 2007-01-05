@@ -173,7 +173,7 @@ void QTabular::update_contents()
 	update_borders();
 
 	LyXLength pwidth;
-	string special;
+	docstring special;
 
 	if (multicol) {
 		special = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
@@ -424,8 +424,8 @@ void QTabular::closeGUI()
 			width2 = llen.asString();
 
 	// apply the special alignment
-	string const sa1 = fromqstr(dialog_->specialAlignmentED->text());
-	string sa2;
+	docstring const sa1 = qstring_to_ucs4(dialog_->specialAlignmentED->text());
+	docstring sa2;
 
 	if (multicol)
 		sa2 = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
@@ -434,9 +434,9 @@ void QTabular::closeGUI()
 
 	if (sa1 != sa2) {
 		if (multicol)
-			controller().set(LyXTabular::SET_SPECIAL_MULTI, sa1);
+			controller().set(LyXTabular::SET_SPECIAL_MULTI, to_utf8(sa1));
 		else
-			controller().set(LyXTabular::SET_SPECIAL_COLUMN, sa1);
+			controller().set(LyXTabular::SET_SPECIAL_COLUMN, to_utf8(sa1));
 	}
 
 	if (width != width2) {

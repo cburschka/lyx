@@ -85,6 +85,13 @@ string const write_attribute(string const & name, string const & t)
 
 
 template <>
+string const write_attribute(string const & name, docstring const & t)
+{
+	return t.empty() ? string() : " " + name + "=\"" + to_utf8(t) + "\"";
+}
+
+
+template <>
 string const write_attribute(string const & name, bool const & b)
 {
 	// we write only true attribute values so we remove a bit of the
@@ -247,6 +254,15 @@ bool getTokenValue(string const & str, char const * token, string & ret)
 		ret += str[pos];
 
 	return true;
+}
+
+
+bool getTokenValue(string const & str, char const * token, docstring & ret)
+{
+	string tmp;
+	bool const success = getTokenValue(str, token, tmp);
+	ret = from_utf8(tmp);
+	return success;
 }
 
 
@@ -689,11 +705,11 @@ bool LyXTabular::leftLine(idx_type cell, bool wholecolumn) const
 	{
 		if (cellinfo_of_cell(cell).align_special.empty())
 			return cellinfo_of_cell(cell).left_line;
-		return prefixIs(ltrim(cellinfo_of_cell(cell).align_special), "|");
+		return prefixIs(ltrim(cellinfo_of_cell(cell).align_special), '|');
 	}
 	if (column_info[column_of_cell(cell)].align_special.empty())
 		return column_info[column_of_cell(cell)].left_line;
-	return prefixIs(ltrim(column_info[column_of_cell(cell)].align_special), "|");
+	return prefixIs(ltrim(column_info[column_of_cell(cell)].align_special), '|');
 }
 
 
@@ -706,11 +722,11 @@ bool LyXTabular::rightLine(idx_type cell, bool wholecolumn) const
 	{
 		if (cellinfo_of_cell(cell).align_special.empty())
 			return cellinfo_of_cell(cell).right_line;
-		return suffixIs(rtrim(cellinfo_of_cell(cell).align_special), "|");
+		return suffixIs(rtrim(cellinfo_of_cell(cell).align_special), '|');
 	}
 	if (column_info[column_of_cell(cell)].align_special.empty())
 		return column_info[right_column_of_cell(cell)].right_line;
-	return suffixIs(rtrim(column_info[column_of_cell(cell)].align_special), "|");
+	return suffixIs(rtrim(column_info[column_of_cell(cell)].align_special), '|');
 }
 
 
@@ -1006,7 +1022,7 @@ bool LyXTabular::setMColumnPWidth(LCursor & cur, idx_type cell,
 }
 
 
-void LyXTabular::setAlignSpecial(idx_type cell, string const & special,
+void LyXTabular::setAlignSpecial(idx_type cell, docstring const & special,
 				 LyXTabular::Feature what)
 {
 	if (what == SET_SPECIAL_MULTI)
@@ -1101,7 +1117,7 @@ LyXLength const LyXTabular::getMColumnPWidth(idx_type cell) const
 }
 
 
-string const LyXTabular::getAlignSpecial(idx_type cell, int what) const
+docstring const LyXTabular::getAlignSpecial(idx_type cell, int what) const
 {
 	if (what == SET_SPECIAL_MULTI)
 		return cellinfo_of_cell(cell).align_special;
@@ -1907,8 +1923,7 @@ int LyXTabular::TeXCellPreamble(odocstream & os, idx_type cell) const
 	if (isMultiColumn(cell)) {
 		os << "\\multicolumn{" << cells_in_multicolumn(cell) << "}{";
 		if (!cellinfo_of_cell(cell).align_special.empty()) {
-			os << from_ascii(cellinfo_of_cell(cell).align_special)
-			   << "}{";
+			os << cellinfo_of_cell(cell).align_special << "}{";
 		} else {
 			if (leftLine(cell) &&
 				(isFirstCellInRow(cell) ||
@@ -2212,7 +2227,7 @@ int LyXTabular::latex(Buffer const & buf, odocstream & os,
 		os << "\\begin{tabular}{";
 	for (col_type i = 0; i < columns_; ++i) {
 		if (!column_info[i].align_special.empty()) {
-			os << from_ascii(column_info[i].align_special);
+			os << column_info[i].align_special;
 		} else {
 			if (!use_booktabs && column_info[i].left_line)
 				os << '|';

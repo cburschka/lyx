@@ -1434,7 +1434,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 
 	case LyXTabular::SET_SPECIAL_COLUMN:
 	case LyXTabular::SET_SPECIAL_MULTI:
-		tabular.setAlignSpecial(cur.idx(),value,feature);
+		tabular.setAlignSpecial(cur.idx(), from_utf8(value), feature);
 		break;
 
 	case LyXTabular::APPEND_ROW:
