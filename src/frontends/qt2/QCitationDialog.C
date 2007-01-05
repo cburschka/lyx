@@ -71,6 +71,7 @@ void QCitationDialog::setButtons()
 	int const sel_nr = selectedLB->currentItem();
 	int const avail_nr = add_->availableLB->currentItem();
 
+	addPB->setEnabled(add_->availableLB->count() != 0);
 	add_->addPB->setEnabled(avail_nr >= 0);
 	deletePB->setEnabled(sel_nr >= 0);
 	upPB->setEnabled(sel_nr > 0);
