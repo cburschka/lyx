@@ -1,10 +1,10 @@
 Compiling LyX 1.5 for Win32
 ===========================
 
-LyX 1.5 can be compiled with Microsoft Visual C++ 2005.
+LyX 1.5 can be compiled with Microsoft Visual C++ 2005 or MinGW.
 
-Compiling
-=========
+Compiling with MSVC 2005
+========================
 
 1	Install MSVC 2005
 	
@@ -65,6 +65,35 @@ Compiling
 	QtGui4.dll
 	(If the files are not on your system, you can download them from
 	 http://wiki.lyx.org/uploads/DevelTools/buildLyx/LyXWinBuildDLLs.zip)
+
+
+Compiling with MinGW
+====================
+
+1	Install MinGW, and all the gcc-related stuff, and win32api. 
+
+2	download qt-win-opensource-4.x.x-mingw.exe and install to c:\qt\4.2.2.
+
+3	install python and scons as instructed above. Set $path for python
+	   to make your life a bit easier.
+
+4	Check out lyx svn to c:\lyx-devel\lyx-1.5.x
+
+5	Download zlib binaries and developer files (zlib-1.2.3-bin.zip and
+	   zlib-1.2.3-lib.zip) from http://gnuwin32.sourceforge.net/packages/zlib.htm
+	   libiconv from http://gnuwin32.sourceforge.net/packages/libiconv.htm
+	   gettext  from http://gnuwin32.sourceforge.net/packages/gettext.htm
+	   unpack all of them to the same directory c:\lyx-devel\mingw_deps.
+
+6	start a command window, run commands:
+	   $ cd c:\lyx-devel\lyx-1.5.x
+	   $ scons -f development\scons\SConstruct \
+	       extra_lib_path=..\mingw_deps\lib  \
+		   extra_inc_path=..\mingw_deps\include \
+		   extra_bin_path=..\mingw_deps\bin \
+		   qt_dir=c:\qt\4.2.2 \
+		   DESTDIR=..\lyx-1.5-install \
+		   install
 
 
 Creating the Installer
