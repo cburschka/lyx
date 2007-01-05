@@ -27,7 +27,15 @@ class Selection
 public:
 	virtual ~Selection() {}
 
-	/// Tell the window system whether we have a selection.
+	/**
+	 * Tell the window system whether we set or cleared our selection.
+	 * This is a noop on systems that don't have a selection.
+	 * This should be called by the kernel whenever a selection is
+	 * created, changed or cleared.
+	 * \param own
+	 * If true: Tell that we got a valid selection.
+	 * If false: Tell that we cleared our selection.
+	 */
 	virtual void haveSelection(bool) = 0;
 	/**
 	 * Get the X selection contents.

@@ -35,6 +35,15 @@ void GuiSelection::haveSelection(bool own)
 	if (!qApp->clipboard()->supportsSelection())
 		return;
 
+	// Tell qt that we have a selection by setting a dummy selection.
+	// We don't use the interface provided by Qt for setting the
+	// selection for performance reasons (see documentation of
+	// Selection::put()). Instead we only tell here that we have a
+	// selection by setting the selection to the empty string.
+	// The real selection is set in GuiApplication::x11EventFilter when
+	// an application actually requests it.
+	// This way calling Selection::have() is cheap and we can do it as
+	// often as we want.
 	if (own)
 		qApp->clipboard()->setText(QString(), QClipboard::Selection);
 	// We don't need to do anything if own = false, as this case is
