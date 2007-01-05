@@ -420,6 +420,10 @@ if platform_name == 'win32':
     else:
         env.Tool('mingw')
         env.AppendUnique(CPPPATH = ['#c:/MinGW/include'])
+        # fix a scons winres bug (there is a missing space between ${RCINCPREFIX} and ${SOURCE.dir}
+        # in version 0.96.93
+        env['RCCOM'] = '$RC $_CPPDEFFLAGS $RCINCFLAGS ${RCINCPREFIX} ${SOURCE.dir} $RCFLAGS -i $SOURCE -o $TARGET'
+    
 
 # we differentiate between hard-coded options and default options
 # hard-coded options are required and will always be there
