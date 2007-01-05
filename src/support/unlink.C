@@ -13,13 +13,12 @@
 #include "support/lyxlib.h"
 #include "support/filename.h"
 
-
-namespace lyx {
-namespace support {
-
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
+
+namespace lyx {
+namespace support {
 
 int unlink(FileName const & pathname)
 {
