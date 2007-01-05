@@ -102,8 +102,8 @@ Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 17.
- November 2006
+letzte Änderung: 3.
+ Januar 2007
 \end_layout
 
 \begin_layout Standard
@@ -254,17 +254,6 @@ status collapsed
 \end_inset
 
 X
-\begin_inset Note Note
-status open
-
-\begin_layout Standard
-Die Klammerung {} verhindert, dass der Sonderbegriff LaTeX erkannt wird,
- ebenso bei LyX, TeX usw.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -299,6 +288,17 @@ X benutzt
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+Die Klammerung {} verhindert, dass der Sonderbegriff LyX erkannt wird, ebenso
+ bei LaTeX, TeX usw.
+\end_layout
+
+\end_inset
+
+
 \begin_inset LatexCommand \label{sec:lyxandlatex}
 
 \end_inset
@@ -2114,7 +2114,7 @@ status collapsed
 
 \end_inset
 
-X\InsetSpace ~
+X\InsetSpace \space{}
 
 \bar under
 P
@@ -2375,7 +2375,7 @@ erkzeuge
 \SpecialChar \menuseparator
 
 \bar default
-Neu\InsetSpace ~
+Neu\InsetSpace \space{}
 k
 \bar under
 o
@@ -2705,8 +2705,8 @@ infügen\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-iste\InsetSpace ~
-/\InsetSpace ~
+iste\InsetSpace \space{}
+/\InsetSpace \space{}
 Inhaltsverzeichnis\SpecialChar \menuseparator
 
 \bar under
@@ -3286,7 +3286,18 @@ Algorithmen
 \begin_layout Standard
 
 \emph on
-(aus der LaTeX-Konfiguration)
+(aus der LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Konfiguration)
 \end_layout
 
 \begin_layout Standard
@@ -3320,7 +3331,18 @@ Teilabbildungen
 \begin_layout Standard
 
 \emph on
-(aus der LaTeX-Konfiguration)
+(aus der LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X-Konfiguration)
 \end_layout
 
 \begin_layout Standard
@@ -4789,11 +4811,7 @@ status collapsed
 \bar under
 X
 \bar default
--
-\bar under
-A
-\bar default
-rgument
+-Argument
 \family default
  des 
 \family sans
@@ -5669,7 +5687,9 @@ status collapsed
 
 \end_inset
 
-X->HTML
+X\InsetSpace \space{}
+->\InsetSpace \space{}
+HTML
 \family default
  können Sie das im Feld 
 \family sans
@@ -5691,7 +5711,8 @@ s setzen.
 \end_layout
 
 \begin_layout Description
-Tipp: Manchmal werden Dateien mit Bildern nicht konvertiert.
+Tipp\InsetSpace \space{}
+1: Manchmal werden Dateien mit Bildern nicht konvertiert.
  Wenn Sie dann die Datei mit 
 \family sans
 \bar under
@@ -5728,6 +5749,72 @@ X
  wird es funktionieren.
 \end_layout
 
+\begin_layout Description
+Tipp\InsetSpace \space{}
+2: Wenn Sie 
+\family typewriter
+htlatex
+\family default
+ (Te
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X4ht) benutzen, sollten Sie den Eintrag in 
+\family sans
+LaTe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+X (plain) -> HTML
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Konverter:
+\family default
+ von
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+hhtlatex $$i
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+in
+\end_layout
+
+\begin_layout LyX-Code
+htlatex $$i '' 'symbol/!'
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+ändern.
+ Dann werden Sonderzeichen wie Umlaute usw.\InsetSpace \space{}
+nicht direkt übernommen, sondern
+ in Unicode umgesetzt, so daß sie in allen Browsern lesbar sind, und zwar
+ unabhängig davon, welchen Zeichnsatz Sie benutzen.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 LaTe
 \family sans
@@ -5835,6 +5922,12 @@ MS Word (HTML)
 \begin_layout Standard
 Hiermit können Sie Ihre LyX-Dokumente in ein HTML-Format exporteiren, das
  von MS Word gelesen werden kann.
+ Damit kann man Dokumemte indirekt nach MS Word konvertieren.
+ Bei einer Konvertierung mit 
+\family typewriter
+htlatex
+\family default
+ gehen aber einige Formatierungen verloren.
 \end_layout
 
 \begin_layout Subsection
@@ -8185,7 +8278,7 @@ Das Konvertierprogramm selber.
 
 \begin_layout Enumerate
 Der Parser der Fehlerdatei.
- Dieses Programm schreibt die Fehlermeldungen in ein Format um, das Lyx
+ Dieses Programm schreibt die Fehlermeldungen in ein Format um, das LyX
  verstehen kann.
  Damit kann LyX Fehlerkästchen an die richtigen Stellen in der Datei schreiben.
 \end_layout
@@ -8990,7 +9083,9 @@ E
 \bar default
 instellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
-LaT
+LaTe
+\family default
+
 \begin_inset ERT
 status collapsed
 
@@ -9001,7 +9096,9 @@ status collapsed
 
 \end_inset
 
-eX-Vorspann
+
+\family sans
+X-Vorspann
 \family default
 ) TeX-Befehle selber in den LaTeX-Vorspann einzutragen.
 \end_layout
@@ -12332,7 +12429,22 @@ Wenn Sie einen dieser Befehle verwenden wollen, müssen Sie ihn von Hand
  eingeben.
  
 \series bold
-Vergessen Sie keinesfalls, die Befehle als LaTeX-Code zu kennzeichnen!
+Vergessen Sie keinesfalls, die Befehle als LaTe
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+
+\series bold
+X-Code zu kennzeichnen!
 \end_layout
 
 \begin_layout Subsection
@@ -12592,7 +12704,11 @@ lyx
 \family default
 ).
  Es ist der Artikel, der auch im originalen Paket der Textklasse beigelegt
- ist, in LyX ,,übersetzt``.
+ ist, in LyX 
+\emph on
+übersetzt
+\emph default
+.
  Sie können ihn als Anregung verwenden und den originalen LaTeX-Text mit
  LyX' Art und Weise zu schreiben vergleichen.
 \end_layout
@@ -15314,12 +15430,12 @@ X
 \family default
 , 
 \family sans
-Zitat\InsetSpace ~
+Zitat\InsetSpace \space{}
 (lang)
 \family default
 , 
 \family sans
-Zitat\InsetSpace ~
+Zitat\InsetSpace \space{}
 (kurz)
 \family default
  und 

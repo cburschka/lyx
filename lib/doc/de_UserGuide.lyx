@@ -90,7 +90,7 @@ Uwe Stöhr
 
 \begin_layout Date
 letzte Änderung: 3.
- Dezember 2006
+ Januar 2007
 \end_layout
 
 \begin_layout Standard
@@ -32998,7 +32998,16 @@ GUI-Name
 \family sans
 Ä
 \family default
-ndern
+ndern Wenn Sie eins der obigen Felder geändert haben, müssen Sie auf 
+\family sans
+Ändern
+\family default
+ klicken, damit die Änderungen wirksam werden.
+\begin_inset LatexCommand \label{des:Ändern-Wenn-Sie}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -33026,15 +33035,26 @@ Entfernen Hiermit entfernen Sie das Element aus der Liste
 \end_layout
 
 \begin_layout Description
-Von
+Von LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{}
+\end_layout
+
+\end_inset
+
+eX (plain)
 \end_layout
 
 \begin_layout Description
-Nach
+Nach HTML
 \end_layout
 
 \begin_layout Description
-Konverter
+Konverter Legt das Konvertierungsprogramm mitsamt Parametern fest.
 \end_layout
 
 \begin_layout Description
@@ -33051,7 +33071,12 @@ Von
 \end_layout
 
 \begin_layout Description
-Ändern
+Ändern siehe 
+\begin_inset LatexCommand \ref{des:Ändern-Wenn-Sie}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -33096,15 +33121,12 @@ Format
 \end_layout
 
 \begin_layout Description
-Ändern
-\end_layout
+Ändern siehe 
+\begin_inset LatexCommand \ref{des:Ändern-Wenn-Sie}
 
-\begin_layout Standard
-Damit eine Änderung wirksam wird, müssen Sie auf Ä
-\family sans
-ndern
-\family default
- klicken, sonst wird die Änderung nicht gespeichert.
+\end_inset
+
+
 \end_layout
 
 \end_deeper
