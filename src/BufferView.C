@@ -1016,6 +1016,9 @@ void BufferView::clearSelection()
 	if (buffer_) {
 		cursor_.clearSelection();
 		xsel_cache_.set = false;
+		// The buffer did not really change, but this causes the
+		// redraw we need because we cleared the selection above.
+		buffer_->changed();
 	}
 }
 
