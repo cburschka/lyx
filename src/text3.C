@@ -759,7 +759,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			pasteString(cur, theClipboard().get(), docstring());
+			pasteString(cur, theClipboard().get(), true);
 		else {
 			string const arg(to_utf8(cmd.argument()));
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
@@ -866,11 +866,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CLIPBOARD_PASTE:
-		pasteString(cur, theClipboard().get(), cmd.argument());
+		pasteString(cur, theClipboard().get(),
+		            cmd.argument() == "paragraph");
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
-		pasteString(cur, theSelection().get(), cmd.argument());
+		pasteString(cur, theSelection().get(),
+		            cmd.argument() == "paragraph");
 		break;
 
 	case LFUN_UNICODE_INSERT: {
@@ -1890,12 +1892,12 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 void LyXText::pasteString(LCursor & cur, docstring const & clip,
-		docstring const & argument)
+		bool asParagraphs)
 {
 	cur.clearSelection();
 	if (!clip.empty()) {
 		recordUndo(cur);
-		if (argument == "paragraph")
+		if (asParagraphs)
 			insertStringAsParagraphs(cur, clip);
 		else
 			insertStringAsLines(cur, clip);

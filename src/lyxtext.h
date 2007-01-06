@@ -387,11 +387,11 @@ private:
 	/// set 'number' font property
 	void number(LCursor & cur);
 
-	/// paste string at current cursor.
+	/// paste plain text at current cursor.
 	/// \param str string to paste
-	/// \param argument method for parsing ("paragraph" is special)
+	/// \param asParagraphs whether to paste as paragraphs or as lines
 	void pasteString(LCursor & cur, docstring const & str,
-		docstring const & argument);
+			bool asParagraphs);
 };
 
 } // namespace lyx
