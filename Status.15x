@@ -47,6 +47,11 @@ FILE
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
 
+* When having at least one file in the session you get the following error
+  messages on Linux on startup:
+    QPainter::begin: Cannot paint on a null pixmap
+    QPainter::end: Painter not active, aborted
+  This does not happen if the session is empty.
 
 SPELL CHECKING (Joost 4/11/06)
 
