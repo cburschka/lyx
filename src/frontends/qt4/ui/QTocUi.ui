@@ -1,4 +1,7 @@
 <ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
  <class>QTocUi</class>
  <widget class="QDialog" name="QTocUi" >
   <property name="geometry" >
@@ -114,6 +117,9 @@
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="tickPosition" >
+      <enum>QSlider::TicksBothSides</enum>
+     </property>
     </widget>
    </item>
    <item row="0" column="0" >
@@ -169,9 +175,7 @@
    </item>
   </layout>
  </widget>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
+ <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>typeCO</tabstop>
   <tabstop>tocTV</tabstop>
@@ -183,6 +187,9 @@
   <tabstop>updatePB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
