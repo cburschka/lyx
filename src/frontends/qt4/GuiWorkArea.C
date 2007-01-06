@@ -430,7 +430,6 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 
 void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 {
-	verticalScrollBar()->setPageStep(viewport()->height());
 	QAbstractScrollArea::resizeEvent(ev);
 	need_resize_ = true;
 }
@@ -498,6 +497,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	*/
 
 	if (need_resize_) {
+		verticalScrollBar()->setPageStep(viewport()->height());
 		screen_ = QPixmap(viewport()->width(), viewport()->height());
 		resizeBufferView();
 		updateScreen();
