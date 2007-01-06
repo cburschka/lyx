@@ -1025,14 +1025,11 @@ void BufferView::clearSelection()
 
 void BufferView::workAreaResize(int width, int height)
 {
-	// A resize is triggered whenever a window gets focus,
-	// because of the shared rows() of a buffer in multiple
-	// buffer views.
-	
 	// Update from work area
 	width_ = width;
 	height_ = height;
 
+	// The complete text metrics will be redone.
 	text_metrics_.clear();
 
 	if (buffer_)
@@ -1155,8 +1152,6 @@ void BufferView::scroll(int /*lines*/)
 //
 //	scrollDocView(new_top_y);
 //
-//	// Update the scrollbar.
-//	workArea_->setScrollbarParams(t->height(), top_y(), defaultRowHeight());}
 }
 
 
