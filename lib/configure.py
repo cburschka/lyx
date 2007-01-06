@@ -291,7 +291,7 @@ def checkFormatEntries(dtl_tools):
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document,vector"')
     #
-    checkViewer('a HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
+    checkViewer('an HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
     #
     # entried that do not need checkProg
@@ -308,7 +308,7 @@ def checkFormatEntries(dtl_tools):
 \Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""	"document,vector"
 \Format wmf        wmf    "Windows Meta File"     "" ""	""	"vector"
 \Format word       doc    "MS Word"               W  ""	""	"document,vector"
-\Format wordhtml   html   "MS Word (HTML)"        "" ""        ""	"document"
+\Format wordhtml   html   "HTML (MS Word)"        "" ""        ""	"document"
 ''')
 
 
@@ -336,10 +336,10 @@ def checkConverterEntries():
     checkProg('a Noweb -> LaTeX converter', ['noweave -delay -index $$i > $$o'],
         rc_entry = [ r'\converter literate   latex      "%%"	""' ])
     #
-    checkProg('a HTML -> LaTeX converter', ['html2latex $$i'],
+    checkProg('an HTML -> LaTeX converter', ['html2latex $$i'],
         rc_entry = [ r'\converter html       latex      "%%"	""' ])
     #
-    checkProg('a MSWord -> LaTeX converter', ['wvCleanLatex $$i $$o'],
+    checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
     #
     checkProg('a LaTeX -> MS Word converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
@@ -402,7 +402,7 @@ def checkConverterEntries():
     checkProg('a WMF -> EPS converter', ['wmf2eps -o $$o $$i'],
         rc_entry = [ r'\converter wmf        eps        "%%"	""', ''])
     #
-    checkProg('a EPS -> PDF converter', ['epstopdf'],
+    checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
     #
     checkProg('a Grace -> Image converter', ['gracebat'],
