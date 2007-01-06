@@ -58,7 +58,7 @@
 \bind "C-c"			"copy"
 \bind "C-x"			"cut"
 \bind "C-v"			"paste"
-\bind "C-M-v"			"primary-selection-paste"
+\bind "C-M-v"			"clipboard-paste paragraph"
 \bind "C-S-v"			"primary-selection-paste paragraph"
 
 \bind "C-z"			"undo"
