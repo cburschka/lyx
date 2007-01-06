@@ -2299,11 +2299,11 @@ classic.ui
  erzeugt das Aussehen der 1.3.x-Versionen von LyX.
  
 \family typewriter
-stdmenus.ui
+stdmenus.inc
 \family default
  beschreibt das Aussehen der Menüleisten und 
 \family typewriter
-stdtoolbars.ui
+stdtoolbars.inc
 \family default
  das Aussehen der Werkzeugleisten.
  Auch hier ist es derzeit noch nötig, LyX neu zu starten, um Änderungen
@@ -2394,11 +2394,11 @@ default.ui
 .
  Sie benutzt 
 \family typewriter
-stdtoolbars.ui
+stdtoolbars.inc
 \family default
  und 
 \family typewriter
-stdmenus.ui
+stdmenus.inc
 \family default
  und definiert folgende Werkzeugleisten:
 \end_layout

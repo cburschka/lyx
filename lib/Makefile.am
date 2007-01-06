@@ -972,8 +972,8 @@ uidir = $(pkgdatadir)/ui
 dist_ui_DATA = \
 	ui/classic.ui \
 	ui/default.ui \
-	ui/stdmenus.ui \
-	ui/stdtoolbars.ui
+	ui/stdmenus.inc \
+	ui/stdtoolbars.inc
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py

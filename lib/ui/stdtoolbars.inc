@@ -1,6 +1,6 @@
 # -*- text -*-
 
-# file stdtoolbars.ui
+# file stdtoolbars.inc
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 

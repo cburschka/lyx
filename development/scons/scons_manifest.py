@@ -2248,8 +2248,8 @@ lib_tex_files = Split('''
 lib_ui_files = Split('''
     classic.ui
     default.ui
-    stdmenus.ui
-    stdtoolbars.ui
+    stdmenus.inc
+    stdtoolbars.inc
 ''')
 
 
