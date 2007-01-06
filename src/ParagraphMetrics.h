@@ -73,7 +73,7 @@ public:
 
 private:
 	///
-	size_type ParagraphMetrics::calculateRowSignature(Row const &);
+	size_type calculateRowSignature(Row const &);
 	///
 	mutable RowList rows_;
 	///
