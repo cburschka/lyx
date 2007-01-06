@@ -258,6 +258,10 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 	par_metrics_[pit] = pm;
 
+	// Update the row change statuses. The painter will need that info
+	// in order to know which row has to be repainted.
+	par_metrics_[pit].updateRowChangeStatus();
+
 	return changed;
 }
 

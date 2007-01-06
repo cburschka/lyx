@@ -823,20 +823,6 @@ void RowPainter::paintText()
 }
 
 
-size_type calculateRowSignature(Row const & row, Paragraph const & par,
-	int x, int y)
-{
-	boost::crc_32_type crc;
-	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
-		char_type const b[] = { par.getChar(i) };
-		crc.process_bytes(b, 1);
-	}
-	char_type const b[] = { x, y, row.width() };
-	crc.process_bytes(b, 3);
-	return crc.checksum();
-}
-
-
 bool CursorOnRow(PainterInfo & pi, pit_type const pit,
 	RowList::const_iterator rit, LyXText const & text)
 {
@@ -899,8 +885,7 @@ void paintPar
 		bool tmp = refreshInside;
 
 		// Row signature; has row changed since last paint?
-		size_type const row_sig = calculateRowSignature(*rit, par, x, y);
-		bool row_has_changed = pm.rowSignature()[rowno] != row_sig;
+		bool row_has_changed = pm.rowChangeStatus()[rowno];
 
 		bool cursor_on_row = CursorOnRow(pi, pit, rit, text);
 		bool in_inset_alone_on_row = innerCursorOnRow(pi, pit, rit,
@@ -928,9 +913,6 @@ void paintPar
 		// from cache, or cursor is inside an inset _on this row_,
 		// then paint the row
 		if (repaintAll || row_has_changed || cursor_on_row) {
-			// Add to row signature cache
-			pm.rowSignature()[rowno] = row_sig;
-			
 			bool const inside = (y + rit->descent() >= 0
 				&& y - rit->ascent() < ww);
 			// it is not needed to draw on screen if we are not inside.

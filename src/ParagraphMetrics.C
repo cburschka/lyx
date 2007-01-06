@@ -78,6 +78,42 @@ ParagraphMetrics::ParagraphMetrics(Paragraph const & par): par_(&par)
 }
 
 
+ParagraphMetrics & ParagraphMetrics::operator=(
+	ParagraphMetrics const & pm)
+{
+	rows_ = pm.rows_;
+	dim_ = pm.dim_;
+	par_ = pm.par_;
+	return *this;
+}
+
+
+size_type ParagraphMetrics::calculateRowSignature(Row const & row)
+{
+	boost::crc_32_type crc;
+	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
+		char_type const b[] = { par_->getChar(i) };
+		crc.process_bytes(b, 1);
+	}
+	return crc.checksum();
+}
+
+
+void ParagraphMetrics::updateRowChangeStatus()
+{
+	size_t const size = rows_.size();
+	row_change_status_.resize(size);
+	row_signature_.resize(size);
+
+	for (size_t i = 0; i != size; ++i) {
+		// Row signature; has row changed since last update?
+		size_type const row_sig = calculateRowSignature(rows_[i]);
+		row_change_status_[i] = row_signature_[i] != row_sig;
+		row_signature_[i] = row_sig;
+	}
+}
+
+
 Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 {
 	BOOST_ASSERT(!rows().empty());

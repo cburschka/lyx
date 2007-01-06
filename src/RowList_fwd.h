@@ -27,7 +27,7 @@ namespace lyx {
  */
 typedef std::vector<Row> RowList;
 ///
-typedef std::map<size_type, size_type> RowSignature;
+typedef std::vector<size_type> RowSignature;
 
 
 } // namespace lyx

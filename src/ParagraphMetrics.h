@@ -31,6 +31,13 @@ public:
 	ParagraphMetrics(): par_(0) {};
 	/// The only useful constructor.
 	ParagraphMetrics(Paragraph const & par);
+
+	/// Copy operator.
+	/// Important note: We don't copy \c row_change_status_ and
+	/// \c row_signature_ because those are updated externally with
+	/// \c updateRowChangeStatus() in TextMetrics::redoParagraph().
+	ParagraphMetrics & operator=(ParagraphMetrics const &);
+
 	///
 	Row & getRow(pos_type pos, bool boundary);
 	///
@@ -53,8 +60,11 @@ public:
 	RowList & rows() { return rows_; }
 	/// The painter and others use this
 	RowList const & rows() const { return rows_; }
+	/// The painter and others use this
+	std::vector<bool> const & rowChangeStatus() const 
+	{ return row_change_status_; }
 	///
-	RowSignature & rowSignature() const { return rowSignature_; }
+	void updateRowChangeStatus();
 	///
 	int rightMargin(Buffer const & buffer) const;
 
@@ -63,9 +73,13 @@ public:
 
 private:
 	///
+	size_type ParagraphMetrics::calculateRowSignature(Row const &);
+	///
 	mutable RowList rows_;
 	///
-	mutable RowSignature rowSignature_;
+	RowSignature row_signature_;
+	///
+	std::vector<bool> row_change_status_;
 	/// cached dimensions of paragraph
 	Dimension dim_;
 	///

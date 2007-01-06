@@ -1345,23 +1345,22 @@ void BufferView::updateMetrics(bool singlepar)
 	
 	// If the paragraph metrics has changed, we can not
 	// use the singlepar optimisation.
-	if (singlepar && tm.redoParagraph(cursor_.bottom().pit()))
-			singlepar = false;
+	if (singlepar
+		// In Single Paragraph mode, rebreak only
+		// the (main text, not inset!) paragraph containing the cursor.
+		// (if this paragraph contains insets etc., rebreaking will
+		// recursively descend)
+		&& tm.redoParagraph(cursor_.bottom().pit()))
+		singlepar = false;
 
 	pit_type const pit = anchor_ref_;
 	int pit1 = pit;
 	int pit2 = pit;
 	size_t const npit = buftext.paragraphs().size();
 
-	// Rebreak anchor paragraph. In Single Paragraph mode, rebreak only
-	// the (main text, not inset!) paragraph containing the cursor.
-	// (if this paragraph contains insets etc., rebreaking will
-	// recursively descend)
-	if (!singlepar || pit == cursor_.bottom().pit())
-		// If the paragraph metrics has changed, we can not
-		// use the singlepar optimisation.
-		if (tm.redoParagraph(pit))
-			singlepar = false;
+	// Rebreak anchor paragraph.
+	if (!singlepar)
+		tm.redoParagraph(pit);
 	
 	// Clear out the position cache in case of full screen redraw.
 	if (!singlepar)
@@ -1369,13 +1368,12 @@ void BufferView::updateMetrics(bool singlepar)
 
 	int y0 = tm.parMetrics(pit).ascent() - offset_ref_;
 
-	// Redo paragraphs above anchor if necessary; again, in Single Par
-	// mode, only if we encounter the (main text) one having the cursor.
+	// Redo paragraphs above anchor if necessary.
 	int y1 = y0;
 	while (y1 > 0 && pit1 > 0) {
 		y1 -= tm.parMetrics(pit1).ascent();
 		--pit1;
-		if (!singlepar || pit1 == cursor_.bottom().pit())
+		if (!singlepar)
 			tm.redoParagraph(pit1);
 		y1 -= tm.parMetrics(pit1).descent();
 	}
@@ -1395,13 +1393,12 @@ void BufferView::updateMetrics(bool singlepar)
 		anchor_ref_ = 0;
 	}
 
-	// Redo paragraphs below the anchor if necessary. Single par mode:
-	// only the one containing the cursor if encountered.
+	// Redo paragraphs below the anchor if necessary.
 	int y2 = y0;
 	while (y2 < height_ && pit2 < int(npit) - 1) {
 		y2 += tm.parMetrics(pit2).descent();
 		++pit2;
-		if (!singlepar || pit2 == cursor_.bottom().pit())
+		if (!singlepar)
 			tm.redoParagraph(pit2);
 		y2 += tm.parMetrics(pit2).ascent();
 	}
