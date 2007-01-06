@@ -51,6 +51,7 @@
 #include "support/unicode.h"
 
 #include <boost/bind.hpp>
+#include <boost/crc.hpp>
 
 #include <algorithm>
 #include <list>
