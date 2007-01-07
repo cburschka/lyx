@@ -50,7 +50,7 @@ FILE
      ...
   IOError: [Errno 2] No such file or directory: 'C:/dokumente und einstellungen/itsme/Ver\xc3\xb6ffentlichungen/figures/myfigure.pdf'
 
-  There is a problem with a German Umlaut (ö= \xc3\xb6) 
+  There is a problem with a German Umlaut (ï¿½ \xc3\xb6) 
 
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
@@ -77,8 +77,7 @@ TABLE OF CONTENTS
   self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
   Up/Down? The arrangement of the buttons may also give some hint to the user.
 
-* open Tutorial; click on TOC: TOC dialog has no contents; touch TOC slider
-   => seg fault 
+* open Tutorial; click on TOC: TOC dialog has no contents 
    (only with --enable-stdlib-debug, has been seen on qt 4.2.2, gcc 4.1.2,
     openSuse 10.1/x32 and 10.2/x64, but is probably not OS/qt specific, but
     dependant on the compiler)
@@ -658,4 +657,9 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
   This happens with qt >= 4.2 only, it does not happen with 4.1.4/4.1.5!
 
   FIXED (2007-01-07 JSpitzm). I forgot to commit the ui changes last time.
+
+* open an empty document; click on TOC (TOC dialog has no contents); touch TOC slider
+  => seg fault
+
+  FIXED (2007-01-07 JSpitzm). The slider is properly disabled now.
 
