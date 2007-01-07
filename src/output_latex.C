@@ -115,7 +115,7 @@ TeXEnvironment(Buffer const & buf,
 				lyxrc.language_command_end,
 				"$$lang",
 				previous_language->babel()))
-			   << endl;
+			   << '\n';
 			texrow.newline();
 		}
 
@@ -125,7 +125,7 @@ TeXEnvironment(Buffer const & buf,
 				lyxrc.language_command_begin,
 				"$$lang",
 				language->babel()))
-			   << endl;
+			   << '\n';
 			texrow.newline();
 		}
 	}
@@ -278,7 +278,7 @@ TeXOnePar(Buffer const & buf,
 			ucs4 << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
 				previous_language->babel()))
-			     << endl;
+			     << '\n';
 			texrow.newline();
 		}
 
@@ -289,7 +289,7 @@ TeXOnePar(Buffer const & buf,
 				lyxrc.language_command_begin,
 				"$$lang",
 				language->babel()))
-			     << endl;
+			     << '\n';
 			texrow.newline();
 		}
 	}
@@ -469,13 +469,13 @@ TeXOnePar(Buffer const & buf,
 				lyxrc.language_command_begin,
 				"$$lang",
 				doc_language->babel()))
-			   << endl;
+			   << '\n';
 		else
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
 				language->babel()))
-			   << endl;
+			   << '\n';
 		texrow.newline();
 	}
 
