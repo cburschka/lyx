@@ -376,8 +376,10 @@ TeXOnePar(Buffer const & buf,
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);
-	bool need_par = pit->simpleTeXOnePar(buf, bparams,
-					     outerFont(std::distance(paragraphs.begin(), pit), paragraphs),
+	LyXFont const outerfont =
+		outerFont(std::distance(paragraphs.begin(), pit),
+			  paragraphs);
+	bool need_par = pit->simpleTeXOnePar(buf, bparams, outerfont,
 					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
@@ -389,9 +391,6 @@ TeXOnePar(Buffer const & buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
-	LyXFont const outerfont =
-		outerFont(std::distance(paragraphs.begin(), pit),
-			  paragraphs);
 
 	LyXFont const font =
 		(pit->empty()
