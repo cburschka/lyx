@@ -57,6 +57,12 @@ public:
 	 * from the kernel and push it to X with this method.
 	 */
 	virtual void put(docstring const &) = 0;
+	/**
+	 * Is the X selection empty?
+	 * This reports only the state of the internal selection on systems
+	 * that don't have a real selection.
+	 */
+	virtual bool empty() const = 0;
 };
 
 } // namespace frontend

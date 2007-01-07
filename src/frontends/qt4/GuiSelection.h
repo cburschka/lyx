@@ -25,6 +25,7 @@ namespace frontend {
 class GuiSelection: public Selection
 {
 public:
+	GuiSelection() : empty_(true) {}
 	virtual ~GuiSelection() {}
 
 	/** Selection overloaded methods
@@ -33,7 +34,16 @@ public:
 	void haveSelection(bool own);
 	docstring const get() const;
 	void put(docstring const & str);
+	bool empty() const;
 	//@}
+private:
+	/**
+	 * Is the selection empty?
+	 * Only used on systems that don't support a real selection to
+	 * reflect the status of the internal selection of LyX.
+	 * This is needed to emulate the X selection as far as possible.
+	 */
+	bool empty_;
 };
 
 } // namespace frontend

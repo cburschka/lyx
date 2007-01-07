@@ -1736,23 +1736,28 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_PASTE:
-		// FIXME: This is not correct, but the correct code below is
-		// expensive
-		enable = cap::numberOfSelections() > 0 ||
-			!theClipboard().isInternal();
-#if 0
 		if (cmd.argument().empty()) {
 			if (theClipboard().isInternal())
 				enable = cap::numberOfSelections() > 0;
 			else
-				enable = !theClipboard().get().empty();
-		} else if (isStrUnsignedInt(to_utf8(cmd.argument()))) {
-			int n = convert<unsigned int>(to_utf8(cmd.argument()));
-			enable = cap::numberOfSelections() > n;
-		} else
-			// unknown argument
-			enable = false;
-#endif
+				enable = !theClipboard().empty();
+		} else {
+			string const arg = to_utf8(cmd.argument());
+			if (isStrUnsignedInt(arg)) {
+				unsigned int n = convert<unsigned int>(arg);
+				enable = cap::numberOfSelections() > n;
+			} else
+				// unknown argument
+				enable = false;
+		}
+		break;
+
+	case LFUN_CLIPBOARD_PASTE:
+		enable = !theClipboard().empty();
+		break;
+
+	case LFUN_PRIMARY_SELECTION_PASTE:
+		enable = !theSelection().empty();
 		break;
 
 	case LFUN_PARAGRAPH_MOVE_UP:
@@ -1825,8 +1830,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_SERVER_GET_FONT:
 	case LFUN_SERVER_GET_LAYOUT:
 	case LFUN_LAYOUT:
-	case LFUN_CLIPBOARD_PASTE:
-	case LFUN_PRIMARY_SELECTION_PASTE:
 	case LFUN_DATE_INSERT:
 	case LFUN_SELF_INSERT:
 	case LFUN_LINE_INSERT:

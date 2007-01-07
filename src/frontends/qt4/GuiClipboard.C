@@ -56,5 +56,11 @@ bool GuiClipboard::isInternal() const
 	return qApp->clipboard()->ownsClipboard();
 }
 
+
+bool GuiClipboard::empty() const
+{
+	return qApp->clipboard()->text(QClipboard::Clipboard).isEmpty();
+}
+
 } // namespace frontend
 } // namespace lyx

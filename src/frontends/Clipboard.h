@@ -43,6 +43,8 @@ public:
 	/// state of clipboard.
 	/// \retval true if the system clipboard has been set within LyX.
 	virtual bool isInternal() const = 0;
+	/// Is the clipboard empty?
+	virtual bool empty() const = 0;
 };
 
 } // namespace frontend
