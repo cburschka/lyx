@@ -77,18 +77,6 @@ bool operator!=(Changes::Range const & r1, Changes::Range const & r2)
 }
 
 
-bool Changes::Range::contains(Range const & r) const
-{
-	return r.start >= start && r.end <= end;
-}
-
-
-bool Changes::Range::contains(pos_type const pos) const
-{
-	return pos >= start && pos < end;
-}
-
-
 bool Changes::Range::intersects(Range const & r) const
 {
 	return r.start < end && r.end > start; // end itself is not in the range!
@@ -230,8 +218,10 @@ void Changes::insert(Change const & change, lyx::pos_type pos)
 }
 
 
-Change const Changes::lookup(pos_type const pos) const
+Change const & Changes::lookup(pos_type const pos) const
 {
+	static Change const noChange = Change(Change::UNCHANGED);
+		
 	ChangeTable::const_iterator it = table_.begin();
 	ChangeTable::const_iterator const end = table_.end();
 
@@ -240,7 +230,7 @@ Change const Changes::lookup(pos_type const pos) const
 			return it->change;
 	}
 
-	return Change(Change::UNCHANGED);
+	return noChange;
 }
 
 

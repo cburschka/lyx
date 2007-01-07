@@ -67,7 +67,7 @@ public:
 	///
 
 	/// return the change at the given pos
-	Change const lookup(pos_type pos) const;
+	Change const & lookup(pos_type pos) const;
 
 	/// return true if there is a change in the given range (excluding end)
 	bool isChanged(pos_type start, pos_type end) const;
@@ -89,11 +89,15 @@ private:
 		Range(pos_type s, pos_type e)
 			: start(s), end(e) {}
 
-		// does this range contain r ?
-		bool contains(Range const & r) const;
+		// does this range contain r ? (inlined as the result of profiling)
+		bool contains(Range const & r) const {
+			return r.start >= start && r.end <= end;
+		}
 
-		// does this range contain pos ?
-		bool contains(pos_type pos) const;
+		// does this range contain pos ? (inlined as the result of profiling)
+		bool contains(pos_type pos) const {
+			return pos >= start && pos < end;
+		}
 
 		// do the ranges intersect ?
 		bool intersects(Range const & r) const;
