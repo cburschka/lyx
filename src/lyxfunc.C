@@ -1673,6 +1673,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BOOKMARK_GOTO: {
 			BOOST_ASSERT(lyx_view_);
 			unsigned int idx = convert<unsigned int>(to_utf8(cmd.argument()));
+			if (!LyX::ref().session().bookmarks().isValid(idx))
+				break;
 			BookmarksSection::Bookmark const bm = LyX::ref().session().bookmarks().bookmark(idx);
 			BOOST_ASSERT(!bm.filename.empty());
 			string const file = bm.filename.absFilename();

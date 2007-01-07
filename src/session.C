@@ -296,8 +296,10 @@ void BookmarksSection::save(FileName const & fname, int par_id, pos_type par_pos
 
 bool BookmarksSection::isValid(unsigned int i) const
 {
-	// i == 0, or in the queue
-	return i <= bookmarks.size();
+	if (i == 0)
+		return !temp_bookmark.filename.empty();
+	else
+		return i <= bookmarks.size() && !bookmarks[i-1].filename.empty();
 }
 
 
