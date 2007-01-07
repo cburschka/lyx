@@ -641,8 +641,10 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 			pars_[next_par].applyLayout(tclass.defaultLayout());
 	}
 
-	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
-		pars_[next_par].eraseChar(0, cur.buffer().params().trackChanges);
+	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0)) {
+		if (!pars_[next_par].eraseChar(0, cur.buffer().params().trackChanges))
+			break; // the character couldn't be deleted physically due to change tracking
+	}
 
 	ParIterator current_it(cur);
 	ParIterator last_it(cur);
