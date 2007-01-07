@@ -898,7 +898,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// well we have to check if we are in an inset with unlimited
 	// length (all in one row) if that is true then we don't allow
 	// any special options in the paragraph and also we don't allow
-	// any environment other then "Standard" to be valid!
+	// any environment other than "Standard" to be valid!
 	bool asdefault = forceDefaultParagraphs();
 
 	if (asdefault) {
@@ -911,7 +911,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// change caused by an individual character, except for the language:
 	// It is set to the language of the first character.
 	// As long as we are in the label, this font is the base font of the
-	// label. Before the first bpdy character it is set to the base font
+	// label. Before the first body character it is set to the base font
 	// of the body.
 	LyXFont basefont;
 
