@@ -92,7 +92,8 @@ void QCharacter::build_dialog()
 	bcview().addReadOnly(dialog_->autoapplyCB);
 
 // FIXME: hack to work around resizing bug in Qt >= 4.2
-#if QT_VERSION >= 0x040200
+// bug verified with Qt 4.2.{0-2} (JSpitzm)
+#if (QT_VERSION >= 0x040200)
 	// qt resizes the comboboxes only after show(), so ...
 	dialog_->show();
 #endif
