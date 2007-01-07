@@ -15,6 +15,8 @@
 #include "Dialog.h"
 #include "ui/QCitationUi.h"
 
+#include <QCloseEvent>
+
 namespace lyx {
 namespace frontend {
 
@@ -44,6 +46,9 @@ public:
 
 	/// \return true if the dialog is visible.
 	bool isVisible() const;
+
+protected:
+	void closeEvent (QCloseEvent * e);
 
 protected Q_SLOTS:
 

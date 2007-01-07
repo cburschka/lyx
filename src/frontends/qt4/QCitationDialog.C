@@ -26,6 +26,8 @@
 #include <vector>
 #include <string>
 
+#include <QCloseEvent>
+
 using std::vector;
 using std::string;
 
@@ -47,17 +49,17 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
  	selectedLV->setModel(form_->selected());
 	availableLV->setModel(form_->available());
 
-    connect(citationStyleCO, SIGNAL(activated(int)),
+	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(changed()));
-    connect(fulllistCB, SIGNAL(clicked()),
+	connect(fulllistCB, SIGNAL(clicked()),
 		this, SLOT(changed()));
-    connect(forceuppercaseCB, SIGNAL(clicked()),
+	connect(forceuppercaseCB, SIGNAL(clicked()),
 		this, SLOT(changed()));
-    connect(textBeforeED, SIGNAL(textChanged(const QString&)),
+	connect(textBeforeED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(changed()));
-    connect(textAfterED, SIGNAL(textChanged(const QString&)),
+	connect(textAfterED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(changed()));
-    connect(clearPB, SIGNAL(clicked()),
+	connect(clearPB, SIGNAL(clicked()),
 		findLE, SLOT(clear()));
 	connect(availableLV->selectionModel(),
 		SIGNAL(currentChanged(const QModelIndex &, const QModelIndex &)),
@@ -70,6 +72,14 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 
 QCitationDialog::~QCitationDialog()
 {
+}
+
+
+void QCitationDialog::closeEvent(QCloseEvent * e)
+{
+	form_->clearSelection();
+	form_->clearParams();
+	e->accept();
 }
 
 
@@ -89,6 +99,7 @@ void QCitationDialog::apply()
 
 void QCitationDialog::hide()
 {
+	form_->clearParams();
 	accept();
 }
 
@@ -109,14 +120,14 @@ void QCitationDialog::on_okPB_clicked()
 {
 	apply();
 	form_->clearSelection();
-	accept();
+	hide();
 }
 
 
 void QCitationDialog::on_cancelPB_clicked()
 {
 	form_->clearSelection();
-	accept();
+	hide();
 }
 
 
