@@ -231,6 +231,8 @@ void QTocDialog::updateGui()
 		tocTV->setModel(form_->tocModel());
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
+	// avoid flickering
+	tocTV-> setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	tocTV->showColumn(0);
 	// hide the pointless QHeader for now
 	// in the future, new columns may appear
