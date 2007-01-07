@@ -74,7 +74,7 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 	bcview->setOK(add_->addPB);
 	bcview->setCancel(add_->closePB);
 
-	add_->bibED->setValidator(new PathValidator(false, add_->bibED));
+	add_->bibED->setValidator(new PathValidator(true, add_->bibED));
 	addCheckedLineEdit(add_bc_.view(), add_->bibED, 0);
 
 	connect(add_->bibED, SIGNAL(textChanged(const QString&)),
@@ -87,7 +87,7 @@ QBibtexDialog::QBibtexDialog(QBibtex * form)
 		this, SLOT(addDatabase()));
 	connect(add_->bibLW, SIGNAL(itemActivated(QListWidgetItem *)),
 		add_, SLOT(accept()));
-	connect(add_->bibLW, SIGNAL(itemChanged(QListWidgetItem *)),
+	connect(add_->bibLW, SIGNAL(itemSelectionChanged()),
 		this, SLOT(availableChanged()));
 	connect(add_->browsePB, SIGNAL(clicked()),
 		this, SLOT(browseBibPressed()));
@@ -168,8 +168,8 @@ void QBibtexDialog::browseBibPressed()
 
 void QBibtexDialog::addPressed()
 {
-	add_->exec();
 	add_bc_.valid(false);
+	add_->exec();
 }
 
 
@@ -210,6 +210,7 @@ void QBibtexDialog::addDatabase()
 void QBibtexDialog::deletePressed()
 {
 	databaseLW->takeItem(databaseLW->currentRow());
+	form_->changed();
 }
 
 
@@ -222,7 +223,7 @@ void QBibtexDialog::databaseChanged()
 
 void QBibtexDialog::availableChanged()
 {
-	form_->changed();
+	add_bc_.valid(true);
 }
 
 
