@@ -40,6 +40,8 @@ public:
 	///
 	void maple(MapleStream &) const;
 	///
+	void mathematica(MathematicaStream &) const;
+	///
 	void octave(OctaveStream &) const;
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
