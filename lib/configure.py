@@ -294,6 +294,9 @@ def checkFormatEntries(dtl_tools):
     checkViewer('an HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
     #
+    checkViewer('Noteedit', ['noteedit'],
+        rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"'])
+    #
     # entried that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""
 \Format fax        ""      Fax                    "" ""	""	"document"
@@ -434,6 +437,9 @@ def checkConverterEntries():
                 print '+  found LilyPond, but version %s is too old.' % version_number
         else:
             print '+  found LilyPond, but could not extract version number.'
+    #
+    checkProg('a Noteedit -> LilyPond converter', ['noteedit --export-lilypond $$i'],
+        rc_entry = [ r'\converter noteedit   lilypond   "%%"	""', ''])
     #
     # FIXME: no rc_entry? comment it out
     # checkProg('Image converter', ['convert $$i $$o'])
