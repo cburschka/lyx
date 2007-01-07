@@ -133,6 +133,7 @@ void QTocDialog::on_typeCO_activated(int value)
 	tocTV->setModel(form_->tocModel());
 	reconnectSelectionModel();
 	enableButtons();
+	update();
 }
 
 
