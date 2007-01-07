@@ -50,7 +50,7 @@ FILE
      ...
   IOError: [Errno 2] No such file or directory: 'C:/dokumente und einstellungen/itsme/Ver\xc3\xb6ffentlichungen/figures/myfigure.pdf'
 
-  There is a problem with a German Umlaut (ö = \xc3\xb6) 
+  There is a problem with a German Umlaut (ï¿½= \xc3\xb6) 
 
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
@@ -105,15 +105,6 @@ MATH CONTROL PANEL
 
 
 OTHER PANELS
-
-* If you open Edit>Text Style... for the first time, the choice text for
-  "Never Toggled>Size" doesn't fit in the selection box (note that in German,
-  texts are a bit longer than in English). Interestingly, if you invoke the
-  dialog a second time, its button sizes are adjusted to their content.
-  This happens with qt >= 4.2 only, it does not happen with 4.1.4/4.1.5!
-
-  FIXED on Linux (2006-12-24 JSpitzm). On Windows, the fix apparently doesn't
-  work (according to Michael).
 
 * The visual table size selection on the the "Insert Table" dialog has gone
   (Joost 3/11/06).
@@ -659,4 +650,12 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
   maybe it goes, but the screen is not updated so that one does not see the
   word). http://bugzilla.lyx.org/show_bug.cgi?id=3064
   FIXED (Abdel 2007-01-05):
+
+* If you open Edit>Text Style... for the first time, the choice text for
+  "Never Toggled>Size" doesn't fit in the selection box (note that in German,
+  texts are a bit longer than in English). Interestingly, if you invoke the
+  dialog a second time, its button sizes are adjusted to their content.
+  This happens with qt >= 4.2 only, it does not happen with 4.1.4/4.1.5!
+
+  FIXED (2007-01-07 JSpitzm). I forgot to commit the ui changes last time.
 
