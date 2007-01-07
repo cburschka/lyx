@@ -48,6 +48,11 @@ void GuiSelection::haveSelection(bool own)
 		qApp->clipboard()->setText(QString(), QClipboard::Selection);
 	// We don't need to do anything if own = false, as this case is
 	// handled by QT.
+	// FIXME (gb): This is wrong. What is missing here is rather a call of
+	//else
+	//	qApp->clipboard()->clear(QClipboard::Selection);
+	// Since we do not issue this call we rather implement
+	// "persistent selections" as far as X is concerned.
 }
 
 
