@@ -387,7 +387,7 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void addPreview(graphics::PreviewLoader &) const {}
-	/// Add an antry to the TocList
+	/// Add an entry to the TocList
 	virtual void addToToc(TocList &, Buffer const &) const {}
 
 public:

@@ -247,7 +247,7 @@ TeXOnePar(Buffer const & buf,
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
 
-	// In an an inset with unlimited length (all in one row),
+	// In an inset with unlimited length (all in one row),
 	// force layout to default
 	if (!pit->forceDefaultParagraphs())
 		style = pit->layout();
@@ -319,7 +319,7 @@ TeXOnePar(Buffer const & buf,
 	// don't trigger the copy ctor because it's private on msvc 
 	odocstream & os = *(change_encoding ? &par_stream : &ucs4);
 
-	// In an an inset with unlimited length (all in one row),
+	// In an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
 	if (!pit->forceDefaultParagraphs()) {
 		if (pit->params().startOfAppendix()) {
