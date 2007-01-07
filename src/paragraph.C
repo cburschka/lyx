@@ -907,6 +907,12 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		style = layout();
 	}
 
+	// Current base font for all inherited font changes, without any
+	// change caused by an individual character, except for the language:
+	// It is set to the language of the first character.
+	// As long as we are in the label, this font is the base font of the
+	// label. Before the first bpdy character it is set to the base font
+	// of the body.
 	LyXFont basefont;
 
 	LaTeXFeatures features(buf, bparams, runparams);
