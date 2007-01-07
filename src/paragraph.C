@@ -1577,29 +1577,33 @@ bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
 	if (!isHfill(pos))
 		return false;
 
-	// at the end of a row it does not count
-	// unless another hfill exists on the line
-	if (pos >= row.endpos()) {
-		for (pos_type i = row.pos(); i < pos && !isHfill(i); ++i)
-			return false;
+	BOOST_ASSERT(pos >= row.pos() && pos < row.endpos());
+
+	// expand at the end of a row only if there is another hfill on the same row
+	if (pos == row.endpos() - 1) {
+		for (pos_type i = row.pos(); i < pos; i++) {
+			if (isHfill(i))
+				return true;
+		}
+		return false;
 	}
 
-	// at the beginning of a row it does not count, if it is not
-	// the first row of a paragaph
-	if (row.pos() == 0)
-		return true;
+	// expand at the beginning of a row only if it is the first row of a paragaph
+	if (pos == row.pos()) {
+		return row.pos() == 0;
+	}
 
-	// in some labels it does not count
+	// do not expand in some labels
 	if (layout()->margintype != MARGIN_MANUAL && pos < beginOfBody())
 		return false;
 
 	// if there is anything between the first char of the row and
-	// the specified position that is not a newline and not a hfill,
-	// the hfill will count, otherwise not
+	// the specified position that is neither a newline nor an hfill,
+	// the hfill will be expanded, otherwise it won't
 	pos_type i = row.pos();
-	while (i < pos && (isNewline(i) || isHfill(i)))
+	while (i < pos && (isNewline(i) || isHfill(i))) {
 		++i;
-
+	}
 	return i != pos;
 }
 
