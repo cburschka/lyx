@@ -125,10 +125,11 @@ Menuset
 	End
 
 	Menu "edit_paste"
-		Item "Clipboard as Lines|C" "clipboard-paste"
-		Item "Clipboard as Paragraphs|a" "clipboard-paste paragraph"
-		Item "Selection as Lines|L" "primary-selection-paste"
-		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
+		Item "Plain Text as Lines|i" "clipboard-paste"
+		Item "Plain Text as Paragraphs|a" "clipboard-paste paragraph"
+		Separator
+		Item "Paste Selection as Lines|L" "primary-selection-paste"
+		Item "Paste Selection as Paragraphs|P" "primary-selection-paste paragraph"
 	End
 
 	Menu "edit_pasterecent"
