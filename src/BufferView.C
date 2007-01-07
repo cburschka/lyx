@@ -63,6 +63,7 @@
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
+#include "frontends/Selection.h"
 
 #include "graphics/Previews.h"
 
@@ -196,6 +197,7 @@ void BufferView::setBuffer(Buffer * b)
 			cursor_.resetAnchor();
 			cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
 			cursor_.setSelection();
+			theSelection().haveSelection(cursor_.selection());
 		}
 	}
 
@@ -1298,6 +1300,7 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 			cursor_.setSelection(cursor_, -length);
 		} else
 			cursor_.setSelection(cursor_, length);
+		theSelection().haveSelection(cursor_.selection());
 	}
 }
 

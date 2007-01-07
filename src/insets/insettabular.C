@@ -547,6 +547,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
+			if (cmd.action == LFUN_CHAR_FORWARD_SELECT)
+				theSelection().haveSelection(cur.selection());
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			else
@@ -559,6 +561,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cell(cur.idx())->dispatch(cur, cmd);
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
+			if (cmd.action == LFUN_CHAR_BACKWARD_SELECT)
+				theSelection().haveSelection(cur.selection());
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			else
@@ -580,6 +584,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				TextMetrics const & tm =
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
+				if (cmd.action == LFUN_DOWN_SELECT)
+					theSelection().haveSelection(cur.selection());
 			}
 		if (sl == cur.top()) {
 			// we trick it to go to the RIGHT after leaving the
@@ -605,6 +611,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
+				if (cmd.action == LFUN_UP_SELECT)
+					theSelection().haveSelection(cur.selection());
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
@@ -1868,6 +1876,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 	if (cur.pos() > cur.lastpos())
 		cur.pos() = cur.lastpos();
 	cur.clearSelection();
+	theSelection().haveSelection(false);
 }
 
 

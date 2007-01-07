@@ -1398,6 +1398,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 		MathArray const & a = top.asInsetMath()->cell(top.idx_);
 		if (a.matchpart(ar, top.pos_)) {
 			bv->cursor().setSelection(it, ar.size());
+			theSelection().haveSelection(bv->cursor().selection());
 			current = it;
 			top.pos_ += ar.size();
 			bv->update();

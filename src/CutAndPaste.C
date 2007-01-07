@@ -46,6 +46,7 @@
 #include "support/lstrings.h"
 
 #include "frontends/Clipboard.h"
+#include "frontends/Selection.h"
 
 #include <boost/tuple/tuple.hpp>
 
@@ -532,6 +533,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
 		updateLabels(cur.buffer());
+		theSelection().haveSelection(false);
 
 		// tell tabular that a recent copy happened
 		dirtyTabularStack(false);
@@ -709,6 +711,7 @@ void eraseSelection(LCursor & cur)
 		}
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
+		theSelection().haveSelection(false);
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}

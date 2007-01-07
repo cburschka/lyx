@@ -121,8 +121,7 @@ namespace {
 	{
 		if (selecting || cur.mark())
 			cur.setSelection();
-		if (!cur.selection())
-			theSelection().haveSelection(false);
+		theSelection().haveSelection(cur.selection());
 		cur.bv().switchKeyMap();
 	}
 
@@ -1065,7 +1064,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (lyxrc.auto_region_delete) {
 			if (cur.selection())
 				cutSelection(cur, false, false);
-			theSelection().haveSelection(false);
+				// cutSelection clears the X selection.
+			else
+				theSelection().haveSelection(false);
 		}
 
 		cur.clearSelection();
