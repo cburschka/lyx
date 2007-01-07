@@ -254,7 +254,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
 	void update_converter();
-	void switch_converter(int);
+	void switch_converter();
 	void converter_changed();
 	void remove_converter();
 

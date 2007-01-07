@@ -24,8 +24,6 @@ GENERAL
 
 * Resolve compiler warnings
 
-  especially this one: src/frontends/qt4/QPrefsDialog.C:944: warning: unused parameter 'nr'
-
 * Watch for bugzilla.lyx.org entries
 
    * Open bugs: http://tinyurl.com/y7hdzc
@@ -669,3 +667,6 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
 
   FIXED (2007-01-07 JSpitzm).
 
+* Resolve compiler warnings
+  src/frontends/qt4/QPrefsDialog.C:944: warning: unused parameter 'nr'
+  FIXED (2007-01-07 Bo)

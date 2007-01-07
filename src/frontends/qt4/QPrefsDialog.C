@@ -864,7 +864,7 @@ PrefConverters::PrefConverters(QPrefs * form, QWidget * parent)
 	connect(converterModifyPB, SIGNAL(clicked()),
 		this, SLOT(update_converter()));
 	connect(convertersLW, SIGNAL(currentRowChanged(int)),
-		this, SLOT(switch_converter(int)));
+		this, SLOT(switch_converter()));
 	connect(converterFromCO, SIGNAL(activated(const QString&)),
 		this, SLOT(converter_changed()));
 	connect(converterToCO, SIGNAL(activated(const QString&)),
@@ -910,7 +910,7 @@ void PrefConverters::updateGui()
 	}
 
 	// currentRowChanged(int) is also triggered when updating the listwidget
-	// block signals to avoid unnecessary calls to switch_converter(int nr)
+	// block signals to avoid unnecessary calls to switch_converter()
 	convertersLW->blockSignals(true);
 	convertersLW->clear();
 
@@ -941,7 +941,7 @@ void PrefConverters::updateGui()
 }
 
 
-void PrefConverters::switch_converter(int nr)
+void PrefConverters::switch_converter()
 {
 	int const cnr = convertersLW->currentItem()->type();
 	Converter const & c(form_->converters().get(cnr));
