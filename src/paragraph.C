@@ -1588,9 +1588,9 @@ bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
 		return false;
 	}
 
-	// expand at the beginning of a row only if it is the first row of a paragaph
+	// expand at the beginning of a row only if it is the first row of a paragraph
 	if (pos == row.pos()) {
-		return row.pos() == 0;
+		return pos == 0;
 	}
 
 	// do not expand in some labels
@@ -1600,11 +1600,11 @@ bool Paragraph::hfillExpansion(Row const & row, pos_type pos) const
 	// if there is anything between the first char of the row and
 	// the specified position that is neither a newline nor an hfill,
 	// the hfill will be expanded, otherwise it won't
-	pos_type i = row.pos();
-	while (i < pos && (isNewline(i) || isHfill(i))) {
-		++i;
+	for (pos_type i = row.pos(); i < pos; i++) {
+		if (!isNewline(i) && !isHfill(i))
+			return true;
 	}
-	return i != pos;
+	return false;
 }
 
 
