@@ -27,6 +27,11 @@
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
 
+// FIXME: those two headers are needed because of the
+// WorkArea::redraw() call below.
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
+
 #include <sstream>
 
 using std::ostringstream;
@@ -139,9 +144,9 @@ void ControlDocument::dispatchParams()
 		kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE,
 			"assign branch"));
 	}
-	// update the bufferview
-	// If we used an LFUN, we would not need that
+	// FIXME: If we used an LFUN, we would not need those two lines:
 	kernel().bufferview()->update();
+	kernel().lyxview().currentWorkArea()->redraw();
 }
 
 

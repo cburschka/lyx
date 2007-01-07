@@ -19,6 +19,11 @@
 #include "paragraph.h"
 #include "pariterator.h"
 
+// FIXME: those two headers are needed because of the
+// WorkArea::redraw() call below.
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
+
 #include "support/lstrings.h"
 
 using lyx::support::bformat;
@@ -87,8 +92,9 @@ void ControlErrorList::goTo(int item)
 	pos_type const range = end - start;
 	DocIterator const dit = makeDocIterator(pit, start);
 	kernel().bufferview()->putSelectionAt(dit, range, false);
-	// If we used an LFUN, we would not need that
+	// FIXME: If we used an LFUN, we would not need those two lines:
 	kernel().bufferview()->update();
+	kernel().lyxview().currentWorkArea()->redraw();
 }
 
 } // namespace frontend

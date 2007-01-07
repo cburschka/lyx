@@ -252,7 +252,7 @@ void ControlSpellchecker::check()
 	int const size = cur.selEnd().pos() - cur.selBegin().pos();
 	cur.pos() -= size;
 	kernel().bufferview()->putSelectionAt(cur, size, false);
-	// if we used a lfun like in find/replace, dispatch would do
+	// FIXME: if we used a lfun like in find/replace, dispatch would do
 	// that for us
 	kernel().bufferview()->update();
 	// FIXME: this Controller is very badly designed...
