@@ -221,6 +221,7 @@ void QTocDialog::updateGui()
 		typeCO->setModel(type_model);
 		tocTV->setModel(new QStandardItemModel);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
+		depthSL->setEnabled(false);
 		return;
 	}
 
@@ -242,6 +243,7 @@ void QTocDialog::updateGui()
 	enableButtons();
 
 	reconnectSelectionModel();
+	depthSL->setEnabled(true);
 	depthSL->setMaximum(form_->getTocDepth());
 	setTreeDepth();
 	select(form_->getCurrentIndex());
