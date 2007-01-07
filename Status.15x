@@ -50,7 +50,7 @@ FILE
      ...
   IOError: [Errno 2] No such file or directory: 'C:/dokumente und einstellungen/itsme/Ver\xc3\xb6ffentlichungen/figures/myfigure.pdf'
 
-  There is a problem with a German Umlaut (ö = \xc3\xb6) 
+  There is a problem with a German Umlaut (ï¿½= \xc3\xb6) 
 
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
@@ -90,10 +90,6 @@ DIALOGS
 * If you try to view a document as postscript that cannot be typeset because
   of LaTeX errors and export to LaTeX afterwards you will get the old error
   list again, although the export succeded.
-
-* If you open the graphics dialog for the first time, the "extra options"
-  tab is displayed. This is annyoing, of course the first tabe with the
-  filename should be the default.
 
 
 MATH CONTROL PANEL
@@ -666,4 +662,10 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
   => seg fault
 
   FIXED (2007-01-07 JSpitzm). The slider is properly disabled now.
+
+* If you open the graphics dialog for the first time, the "extra options"
+  tab is displayed. This is annyoing, of course the first tab with the
+  filename should be the default.
+
+  FIXED (2007-01-07 JSpitzm).
 
