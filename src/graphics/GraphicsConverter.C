@@ -282,13 +282,22 @@ static void build_script(FileName const & from_file,
 
 	script << "#!/usr/bin/env python\n"
 	          "# -*- coding: utf-8 -*-\n"
-	          "import os, shutil, sys\n\n"
+	          "import os, shutil, sys, locale\n\n"
 	          "def unlinkNoThrow(file):\n"
 	          "  ''' remove a file, do not throw if an error occurs '''\n"
 	          "  try:\n"
 	          "    os.unlink(file)\n"
 	          "  except:\n"
-	          "    pass\n\n";
+	          "    pass\n\n"
+	          "def utf8ToDefaultEncoding(file):\n"
+	          "  ''' if possible, convert to the default encoding '''\n"
+	          "  try:\n"
+	          "    language, output_encoding = locale.getdefaultlocale()\n"
+	          "    if output_encoding == None:\n"
+	          "      output_encoding = 'latin1'\n"
+	          "    return unicode(file, 'utf8').encode(output_encoding)\n"
+	          "  except:\n"
+	          "    return file\n\n";
 
 	// we do not use ChangeExtension because this is a basename
 	// which may nevertheless contain a '.'
@@ -311,7 +320,9 @@ static void build_script(FileName const & from_file,
 	// in python, but the converters might be shell scripts and have more
 	// troubles with it.
 	string outfile = addExtension(to_base.absFilename(), getExtension(from_file.absFilename()));
-	script << "infile = " << quoteName(from_file.absFilename(), quote_python) << "\n"
+	script << "infile = utf8ToDefaultEncoding("
+			<< quoteName(from_file.absFilename(), quote_python)
+			<< ")\n"
 	          "outfile = " << quoteName(outfile, quote_python) << "\n"
 	          "shutil.copy(infile, outfile)\n";
 
