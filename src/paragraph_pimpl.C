@@ -151,7 +151,7 @@ void Paragraph::Pimpl::setChange(pos_type pos, Change const & change)
 }
 
 
-Change const Paragraph::Pimpl::lookupChange(pos_type pos) const
+Change const & Paragraph::Pimpl::lookupChange(pos_type pos) const
 {
 	BOOST_ASSERT(pos >= 0 && pos <= size());
 
