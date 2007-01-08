@@ -384,12 +384,12 @@ void InsetFloat::addToToc(TocList & toclist, Buffer const & buf) const
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
 		if (pit->layout()->labeltype == LABEL_SENSITIVE) {
-			string const type = params_.type;
+			Toc & toc = toclist[params_.type];
 			docstring const str =
-				convert<docstring>(toclist[type].size() + 1)
+				convert<docstring>(toc.size() + 1)
 				+ ". " + pit->asString(buf, false);
-			TocItem const item(pit, 0, str);
-			toclist[type].push_back(item);
+			toc.push_back(TocItem(pit, 0, str));
+			return;
 		}
 	}
 }
