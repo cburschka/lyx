@@ -1757,7 +1757,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:
-		enable = !theSelection().empty();
+		enable = cur.selection() || !theSelection().empty();
 		break;
 
 	case LFUN_PARAGRAPH_MOVE_UP:

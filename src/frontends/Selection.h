@@ -59,8 +59,8 @@ public:
 	virtual void put(docstring const &) = 0;
 	/**
 	 * Is the X selection empty?
-	 * This reports only the state of the internal selection on systems
-	 * that don't have a real selection.
+	 * This does always return true on systems that don't have a real
+	 * selection.
 	 */
 	virtual bool empty() const = 0;
 };

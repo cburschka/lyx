@@ -32,10 +32,8 @@ namespace frontend {
 
 void GuiSelection::haveSelection(bool own)
 {
-	if (!qApp->clipboard()->supportsSelection()) {
-		empty_ = !own;
+	if (!qApp->clipboard()->supportsSelection())
 		return;
-	}
 
 	// Tell qt that we have a selection by setting a dummy selection.
 	// We don't use the interface provided by Qt for setting the
@@ -82,7 +80,7 @@ void GuiSelection::put(docstring const & str)
 bool GuiSelection::empty() const
 {
 	if (!qApp->clipboard()->supportsSelection())
-		return empty_;
+		return true;
 
 	return qApp->clipboard()->text(QClipboard::Selection).isEmpty();
 }
