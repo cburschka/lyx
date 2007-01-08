@@ -125,10 +125,14 @@ public:
 	///
 	void boundary(bool b) { boundary_ = b; }
 
-	/// are we in mathed?
-	bool inMathed() const;
-	/// are we in texted?
-	bool inTexted() const;
+	/// are we in mathed?.
+	/// inlined out because of profiling results under linux when
+	/// opening a document.
+	inline bool inMathed() const;
+	/// are we in texted?.
+	/// inlined out because of profiling results under linux when
+	/// opening a document.
+	inline bool inTexted() const;
 
 	//
 	// math-specific part
