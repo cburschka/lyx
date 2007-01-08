@@ -507,7 +507,6 @@ bool Buffer::readDocument(LyXLex & lex)
 	for_each(text().paragraphs().begin(),
 		 text().paragraphs().end(),
 		 bind(&Paragraph::setInsetOwner, _1, &inset()));
-	updateBibfilesCache();
 
 	return res;
 }
