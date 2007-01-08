@@ -1,6 +1,9 @@
-2007-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2007-01-08  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QBibtexDialog.C: sanitize button behaviour (bug 2895).
+
+	* QGraphicsDialog.C: do not focus filename widget for 
+	already existing insets (bug 1663).
 
 2007-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
