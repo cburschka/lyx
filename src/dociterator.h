@@ -125,14 +125,14 @@ public:
 	///
 	void boundary(bool b) { boundary_ = b; }
 
+	// the two methods below have been inlined out because of
+	// profiling results under linux when opening a document.
 	/// are we in mathed?.
-	/// inlined out because of profiling results under linux when
-	/// opening a document.
-	inline bool inMathed() const;
+	bool inMathed() const
+	{ return !empty() && inset().inMathed(); }
 	/// are we in texted?.
-	/// inlined out because of profiling results under linux when
-	/// opening a document.
-	inline bool inTexted() const;
+	bool inTexted() const
+	{ return !empty() && !inset().inMathed(); }
 
 	//
 	// math-specific part

@@ -234,18 +234,6 @@ MathArray & DocIterator::cell()
 }
 
 
-bool DocIterator::inMathed() const
-{
-	return !empty() && inset().inMathed();
-}
-
-
-bool DocIterator::inTexted() const
-{
-	return !empty() && !inset().inMathed();
-}
-
-
 LyXText * DocIterator::innerText()
 {
 	BOOST_ASSERT(!empty());
