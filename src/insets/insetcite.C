@@ -96,7 +96,7 @@ docstring const getNatbibLabel(Buffer const & buffer,
 	}
 
 	// build the keylist only if the bibfiles have been changed
-	if (cached_keys.empty() || bibfileStatus.empty() || changed) {
+	if (cached_keys[&buffer].empty() || bibfileStatus.empty() || changed) {
 		typedef vector<std::pair<string, docstring> > InfoType;
 		InfoType bibkeys;
 		buffer.fillWithBibKeys(bibkeys);
