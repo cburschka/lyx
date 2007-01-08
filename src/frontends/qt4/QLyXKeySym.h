@@ -34,6 +34,11 @@ public:
 
 	virtual ~QLyXKeySym() {}
 
+	/// .
+	/// inlined out because of profiling results under linux when
+	/// opening a document.
+	inline bool operator==(LyXKeySym const& ks) const;
+
 	/// delayed constructor
 	void set(QKeyEvent * ev);
 

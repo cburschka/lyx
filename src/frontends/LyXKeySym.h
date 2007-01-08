@@ -35,6 +35,9 @@ public:
 
 	virtual ~LyXKeySym() {}
 
+	///
+	virtual bool operator==(LyXKeySym const& ks) const = 0;
+
 	/// Initialize with the name of a key. F. ex. "space" or "a"
 	virtual void init(std::string const & symbolname) = 0;
 
@@ -63,12 +66,6 @@ public:
 	virtual docstring const print(key_modifier::state mod, bool forgui) const = 0;
 };
 
-
-/**
- * We need to be able to equality compare these for the
- * sake of the keymap business.
- */
-bool operator==(LyXKeySym const & k1, LyXKeySym const & k2);
 
 typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;
 

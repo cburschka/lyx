@@ -241,18 +241,17 @@ bool QLyXKeySym::isText() const
 }
 
 
-bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
+bool QLyXKeySym::operator==(LyXKeySym const & ks) const
 {
-	QLyXKeySym const & q1(static_cast<QLyXKeySym const &>(k1));
-	QLyXKeySym const & q2(static_cast<QLyXKeySym const &>(k2));
+	QLyXKeySym const & qks = static_cast<QLyXKeySym const &>(ks);
 
 	// we do not have enough info for a fair comparison, so return
 	// false. This works out OK because unknown text from Qt will
 	// get inserted anyway after the isText() check
-	if (q1.key() == Qt::Key_unknown || q2.key() == Qt::Key_unknown)
+	if (key_ == Qt::Key_unknown || qks.key_ == Qt::Key_unknown)
 		return false;
 
-	return q1.key() == q2.key();
+	return key_ == qks.key_;
 }
 
 
