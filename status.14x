@@ -158,15 +158,18 @@ What's new
 - Don't reset cell selection when opening tabular dialog (bug 2715).
 
 - Quotation marks can now be inserted easier into mathed, which is
-  important for phonetic notation (bug 3044)
+  important for phonetic notation (bug 3044).
 
-- Fix one more case of copied ERT inset producing wrong language (bug 2476)
+- Fix one more case of copied ERT inset producing wrong language (bug 2476).
 
-- reset the language when dissolving an ERT inset (bug 2978)
+- Reset the language when dissolving an ERT inset (bug 2978).
 
-- Sanitize button enabling in the bibtex dialog [qt only] (bug 2895)
+- Sanitize button enabling in the bibtex dialog [qt only] (bug 2895).
 
-- fix focus problems in the graphics dialog [qt only] (bug 1663)
+- Fix focus problems in the graphics dialog [qt only] (bug 1663).
+
+- On Mac OS X, make sure to view files with the same application as
+  the Finder uses.
 
 * Build/installation:
 

@@ -126,7 +126,11 @@ bool canAutoOpenFile(string const & ext, auto_open_mode const mode)
 	CFStringRef cfs_ext = CFStringCreateWithBytes(kCFAllocatorDefault,
 					(UInt8 *) ext.c_str(), ext.length(),
 					kCFStringEncodingISOLatin1, false);
-	LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	// this is what we would like to do but it seems that the
+	// viewer for PDF is often quicktime...
+	//LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	(void)mode;
+	LSRolesMask role = kLSRolesAll;
 	FSRef outAppRef;
 	OSStatus status = 
 		LSGetApplicationForInfo(kLSUnknownType, kLSUnknownCreator,
@@ -150,13 +154,17 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 {
 #ifdef __APPLE__
 // Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
-    FSRef fileref;
-    OSStatus status = 
-        FSPathMakeRef((UInt8 *) filename.c_str(), &fileref, NULL);
-    if (status != 0)
-        return false;
+	FSRef fileref;
+	OSStatus status = 
+		FSPathMakeRef((UInt8 *) filename.c_str(), &fileref, NULL);
+	if (status != 0)
+		return false;
         
-	LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	// this is what we would like to do but it seems that the
+	// viewer for PDF is often quicktime...
+	//LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
+	(void)mode;
+	LSRolesMask role = kLSRolesAll;
 	FSRef outAppRef;
 
 	status = LSGetApplicationForItem(&fileref, role, &outAppRef, NULL);

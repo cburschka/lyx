@@ -1,13 +1,21 @@
+2007-01-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* os_unix.C (canAutoOpenFile, autoOpenFile): on Mac OS X, use
+	the role kLSRolesAll for both editor and viewer, since it is what 
+	the finder does.
+
 2006-10-15  Bo Peng <ben.bob@gmail.com>
+
 	* os_win32.C: remove console-hiding code
 
 2006-09-07  Enrico Forestieri  <[EMAIL PROTECTED]>
+
 	* os_cygwin.C (is_windows_path): avoid unnecessary conversion
-		when path is relative
-		(convert_path_list): avoid unnecessary conversion when path
-		list is empty
-		(external_path, external_path_list): for an X11 build it is not
-		necessary that the output path style is windows
+	when path is relative
+	(convert_path_list): avoid unnecessary conversion when path
+	list is empty
+	(external_path, external_path_list): for an X11 build it is not
+	necessary that the output path style is windows
 
 2006-06-27  Enrico Forestieri  <forenr@tlc.unipr.it>
 
