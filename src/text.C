@@ -1562,7 +1562,7 @@ docstring LyXText::currentState(LCursor & cur)
 	odocstringstream os;
 
 	if (buf.params().trackChanges)
-		os << "[C] ";
+		os << _("[Change Tracking] ");
 
 	Change change = par.lookupChange(cur.pos());
 
