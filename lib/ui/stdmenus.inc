@@ -125,8 +125,8 @@ Menuset
 	End
 
 	Menu "edit_paste"
-		Item "Plain Text as Lines|i" "clipboard-paste"
-		Item "Plain Text as Paragraphs|a" "clipboard-paste paragraph"
+		Item "Plain Text as Lines|T" "clipboard-paste"
+		Item "Plain Text as Paragraphs|e" "clipboard-paste paragraph"
 		Separator
 		Item "Selection as Lines|L" "primary-selection-paste"
 		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
