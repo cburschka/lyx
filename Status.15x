@@ -42,14 +42,6 @@ ICONS:
 
 FILE
 
-* Preview fails due to graphics converter bug:
-
-  File "C:/Dokumente und Einstellungen/itsme/Lokale Einstellungen/Temp/lyx_tmpdir1584a02224/lyxconvert0.py", line 14, in <module>
-     ...
-  IOError: [Errno 2] No such file or directory: 'C:/dokumente und einstellungen/itsme/Ver\xc3\xb6ffentlichungen/figures/myfigure.pdf'
-
-  There is a problem with a German Umlaut (ö= \xc3\xb6) 
-
 * agu-dtd is used as the default document class, which is not a good 
   idea in 99% of all cases
 
@@ -670,3 +662,12 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
 * Resolve compiler warnings
   src/frontends/qt4/QPrefsDialog.C:944: warning: unused parameter 'nr'
   FIXED (2007-01-07 Bo)
+
+* Preview fails due to graphics converter bug:
+
+  File "C:/Dokumente und Einstellungen/itsme/Lokale Einstellungen/Temp/lyx_tmpdir1584a02224/lyxconvert0.py", line 14, in <module>
+     ...
+  IOError: [Errno 2] No such file or directory: 'C:/dokumente und einstellungen/itsme/Ver\xc3\xb6ffentlichungen/figures/myfigure.pdf'
+
+  There is a problem with a German Umlaut (ö= \xc3\xb6) 
+  FIXED (Enrico 2007-01-08)
