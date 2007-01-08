@@ -193,7 +193,7 @@ public:
 	InsetBibitem * bibitem() const;  // ale970302
 
 	/// look up change at given pos
-	Change const lookupChange(pos_type pos) const;
+	Change const & lookupChange(pos_type pos) const;
 
 	/// is there a change within the given range ?
 	bool isChanged(pos_type start, pos_type end) const;

@@ -1431,7 +1431,7 @@ void Paragraph::setInsetOwner(InsetBase * inset)
 }
 
 
-Change const Paragraph::lookupChange(pos_type pos) const
+Change const & Paragraph::lookupChange(pos_type pos) const
 {
 	BOOST_ASSERT(pos <= size());
 	return pimpl_->lookupChange(pos);
