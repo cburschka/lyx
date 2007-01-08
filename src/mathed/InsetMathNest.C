@@ -1187,9 +1187,11 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 		//cur.noUpdate();
 	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
-		if (cur.selection())
+		if (cur.selection()) {
+			// See comment in LyXText::dispatch why we do this
+			cap::copySelectionToStack(bv.cursor());
 			asArray(bv.cursor().selectionAsString(false), ar);
-		else
+		} else
 			asArray(theSelection().get(), ar);
 
 		cur.insert(ar);

@@ -501,7 +501,17 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (cmd.button() == mouse_button::button2) {
-			cmd = FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph");
+			if (bvcur.selection()) {
+				// See comment in LyXText::dispatch why we
+				// do this
+				// FIXME This does not use paste_tabular,
+				// another reason why paste_tabular should go.
+				cap::copySelectionToStack(bvcur);
+				cmd = FuncRequest(LFUN_PASTE, "0");
+			} else {
+				cmd = FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
+				                  "paragraph");
+			}
 			doDispatch(cur, cmd);
 		}
 		break;
