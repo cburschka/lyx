@@ -1286,6 +1286,10 @@ vector<FileName> const & Buffer::getBibfilesCache() const
 	if (tmp != this)
 		return tmp->getBibfilesCache();
 
+	// We update the cache when first used instead of at loading time.
+	if (bibfilesCache_.empty())
+		const_cast<Buffer *>(this)->updateBibfilesCache();
+
 	return bibfilesCache_;
 }
 

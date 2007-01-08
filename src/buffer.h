@@ -383,7 +383,7 @@ private:
 	StableDocIterator anchor_;
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	std::vector<support::FileName> bibfilesCache_;
+	mutable std::vector<support::FileName> bibfilesCache_;
 
 	/// Container for all sort of Buffer dependant errors.
 	std::map<std::string, ErrorList> errorLists_;
