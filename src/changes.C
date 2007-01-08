@@ -53,8 +53,16 @@ bool Change::isSimilarTo(Change const & change)
 
 bool operator==(Change const & l, Change const & r)
 {
-	return l.type == r.type &&
-	       l.author == r.author &&
+	if (l.type != r.type) {
+		return false;
+	}
+
+	// two changes of type UNCHANGED are always equal
+	if (l.type == Change::UNCHANGED) {
+		return true;
+	}
+	
+	return l.author == r.author &&
 	       l.changetime == r.changetime;
 }
 
