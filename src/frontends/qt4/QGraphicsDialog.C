@@ -23,6 +23,8 @@
 
 #include "controllers/ControlGraphics.h"
 
+#include "insets/insetgraphicsParams.h"
+
 #include <QCloseEvent>
 #include <QPushButton>
 #include <QLineEdit>
@@ -124,7 +126,8 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 void QGraphicsDialog::show()
 {
 	QDialog::show();
-	filename->setFocus();
+	if (form_->controller().params().filename.empty())
+		filename->setFocus();
 }
 
 
