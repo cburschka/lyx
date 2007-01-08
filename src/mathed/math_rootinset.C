@@ -97,9 +97,15 @@ void MathRootInset::maple(MapleStream & os) const
 }
 
 
+void MathRootInset::mathematica(MathematicaStream & os) const
+{
+	os << '(' << cell(1) << ")^(1/(" << cell(0) <<"))";
+}
+
+
 void MathRootInset::octave(OctaveStream & os) const
 {
-	os << "root(" << cell(1) << ',' << cell(0) << ')';
+	os << '(' << cell(1) << ")^(1/(" << cell(0) <<"))";
 }
 
 

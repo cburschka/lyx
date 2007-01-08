@@ -1,3 +1,13 @@
+2007-01-08  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* src/mathed/math_extern.C (pipeThroughOctave): take into account
+	that the output from octave may contain ansi control sequences.
+
+	* src/mathed/math_rootinset.[Ch] (mathematica): new virtual method
+	to output n-th roots in mathematica syntax.
+
+	* src/mathed/math_rootinset.C (octave): octave has not a root command.
+
 2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_nestinset.C (handleFont): avoid crash on undo when

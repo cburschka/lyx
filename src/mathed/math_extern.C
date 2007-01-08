@@ -1273,11 +1273,12 @@ namespace {
 			expr.insert(pos, 1, '*');
 		}
 
-		if (out.size() < 6)
+		// remove 'ans = ' taking into account that there may be an
+		// ansi control sequence before, such as '\033[?1034hans = '
+		size_t i = out.find("ans = ");
+		if (i == string::npos)
 			return MathArray();
-
-		// remove 'ans = '
-		out = out.substr(6);
+		out = out.substr(i + 6);
 
 		// parse output as matrix or single number
 		MathAtom at(new MathArrayInset("array", out));
