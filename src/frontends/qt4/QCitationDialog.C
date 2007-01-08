@@ -27,6 +27,7 @@
 #include <string>
 
 #include <QCloseEvent>
+#include <QKeyEvent>
 
 using std::vector;
 using std::string;
@@ -46,7 +47,7 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 
 	setWindowTitle(toqstr("LyX: " + getTitle()));
 
- 	selectedLV->setModel(form_->selected());
+	selectedLV->setModel(form_->selected());
 	availableLV->setModel(form_->available());
 
 	connect(citationStyleCO, SIGNAL(activated(int)),
@@ -72,6 +73,18 @@ QCitationDialog::QCitationDialog(Dialog & dialog, QCitation * form)
 
 QCitationDialog::~QCitationDialog()
 {
+}
+
+
+void QCitationDialog::keyPressEvent(QKeyEvent * event)
+{
+	if (event->key() == Qt::Key_Escape) {
+		form_->clearSelection();
+		form_->clearParams();
+		event->accept();
+		close();
+	} else
+		event->ignore();
 }
 
 

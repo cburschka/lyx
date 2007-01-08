@@ -16,6 +16,7 @@
 #include "ui/QCitationUi.h"
 
 #include <QCloseEvent>
+#include <QKeyEvent>
 
 namespace lyx {
 namespace frontend {
@@ -49,6 +50,7 @@ public:
 
 protected:
 	void closeEvent (QCloseEvent * e);
+	void keyPressEvent (QKeyEvent * event);
 
 protected Q_SLOTS:
 
