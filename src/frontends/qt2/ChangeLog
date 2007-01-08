@@ -1,5 +1,9 @@
 2007-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* QBibtexDialog.C: sanitize button behaviour (bug 2895).
+
+2007-01-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* QCitationDialog.C: Disallow pressing the add button in the citation 
 	dialog when no citations are available, preventing a crash (bug 3057).
 
