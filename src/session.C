@@ -285,7 +285,7 @@ void BookmarksSection::write(ostream & os) const
 void BookmarksSection::save(FileName const & fname, int par_id, pos_type par_pos, bool persistent)
 {
 	if (persistent) {
-		bookmarks.push_front(Bookmark(fname, par_id, par_pos));
+		bookmarks.push_back(Bookmark(fname, par_id, par_pos));
 		if (bookmarks.size() > max_bookmarks)
 			bookmarks.pop_back();
 		}
