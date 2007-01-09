@@ -77,6 +77,25 @@ odocstream & operator<<(odocstream & os, char c)
     return os;
 }
 
+/// Helper struct for changing stream encoding
+struct SetEnc {
+	SetEnc(std::string const & e) : encoding(e) {}
+	std::string encoding;
+};
+
+/// Helper function for changing stream encoding
+SetEnc setEncoding(std::string const & encoding);
+
+/** Change the encoding of \p os to \p e.encoding.
+    \p e.encoding must be a valid iconv name of an 8bit encoding.
+    This does nothing if the stream is not a file stream, since only
+    file streams do have an associated 8bit encoding.
+    Usage: \code
+    os << setEncoding("ISO-8859-1");
+    \endcode
+ */
+odocstream & operator<<(odocstream & os, SetEnc e);
+
 }
 
 #endif

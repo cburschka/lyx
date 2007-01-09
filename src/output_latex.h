@@ -20,11 +20,16 @@
 namespace lyx {
 
 class Buffer;
+class BufferParams;
+class Encoding;
 class OutputParams;
 class TexRow;
 
-/// Just a wrapper for the method below, first creating the ofstream.
-
+/** Export \p paragraphs of buffer \p buf to LaTeX.
+    Don't use a temporary stringstream for \p os if the final output is
+    supposed to go to a file.
+    \sa Buffer::writeLaTeXSource for the reason.
+ */
 void latexParagraphs(Buffer const & buf,
 		     ParagraphList const & paragraphs,
 		     odocstream & ofs,
@@ -32,6 +37,10 @@ void latexParagraphs(Buffer const & buf,
 		     OutputParams const &,
 		     std::string const & everypar = std::string());
 
+/// Switch the encoding of \p os from \p oldEnc to \p newEnc if needed.
+/// \return the number of characters written to \p os.
+int switchEncoding(odocstream & os, BufferParams const & bparams,
+                   Encoding const & oldEnc, Encoding const & newEnc);
 
 } // namespace lyx
 

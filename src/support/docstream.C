@@ -294,6 +294,32 @@ odocfstream::odocfstream(const char* s, std::ios_base::openmode mode,
 	open(s, mode);
 }
 
+
+SetEnc setEncoding(string const & encoding)
+{
+	return SetEnc(encoding);
+}
+
+
+odocstream & operator<<(odocstream & os, SetEnc e)
+{
+	if (std::has_facet<iconv_codecvt_facet>(os.rdbuf()->getloc())) {
+		// This stream must be a file stream, since we never imbue
+		// any other stream with a locale having a iconv_codecvt_facet.
+		// Flush the stream so that all pending output is written
+		// with the old encoding.
+		os.flush();
+		std::locale locale(os.rdbuf()->getloc(),
+			new iconv_codecvt_facet(e.encoding, std::ios_base::out));
+		// FIXME Does changing the codecvt facet of an open file
+		// stream always work? It does with gcc 4.1, but I have read
+		// somewhere that it does not with MSVC.
+		// What does the standard say?
+		os.imbue(locale);
+	}
+	return os;
+}
+
 }
 
 #if (!defined(HAVE_WCHAR_T) || SIZEOF_WCHAR_T != 4) && defined(__GNUC__)

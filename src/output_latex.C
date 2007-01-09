@@ -29,7 +29,6 @@
 #include "insets/insetoptarg.h"
 
 #include "support/lstrings.h"
-#include "support/unicode.h"
 
 
 namespace lyx {
@@ -237,7 +236,7 @@ ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::const_iterator pit,
-	  odocstream & ucs4, TexRow & texrow,
+	  odocstream & os, TexRow & texrow,
 	  OutputParams const & runparams_in,
 	  string const & everypar)
 {
@@ -275,49 +274,42 @@ TeXOnePar(Buffer const & buf,
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel())
 		{
-			ucs4 << from_ascii(subst(lyxrc.language_command_end,
+			os << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
 				previous_language->babel()))
-			     << '\n';
+			   << '\n';
 			texrow.newline();
 		}
 
 		if (lyxrc.language_command_end.empty() ||
 		    language->babel() != doc_language->babel())
 		{
-			ucs4 << from_ascii(subst(
+			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
 				language->babel()))
-			     << '\n';
+			   << '\n';
 			texrow.newline();
 		}
 	}
 
-	// FIXME thailatex does not support the inputenc package, so we
-	// ignore switches from/to tis620-0 encoding here. This does of
-	// course only work as long as the non-thai text contains ASCII
-	// only, but it is the best we can do.
-	bool const use_thailatex = (language->encoding()->name() == "tis620-0" ||
-	                            previous_language->encoding()->name() == "tis620-0");
-	if (bparams.inputenc == "auto" &&
-	    language->encoding() != previous_language->encoding() &&
-	    !use_thailatex) {
-		ucs4 << "\\inputencoding{"
-		     << from_ascii(language->encoding()->latexName())
-		     << "}\n";
+	LyXFont const outerfont =
+		outerFont(std::distance(paragraphs.begin(), pit),
+			  paragraphs);
+	// This must be identical to basefont in Paragraph::simpleTeXOnePar
+	LyXFont basefont = (pit->beginOfBody() > 0) ?
+			pit->getLabelFont(bparams, outerfont) :
+			pit->getLayoutFont(bparams, outerfont);
+	Encoding const & outer_encoding(*(outerfont.language()->encoding()));
+	// FIXME we switch from the outer encoding to the encoding of
+	// this paragraph, since I could not figure out the correct
+	// logic to take the encoding of the previous paragraph into
+	// account. This may result in some unneeded encoding changes.
+	if (switchEncoding(os, bparams, outer_encoding,
+	                   *(basefont.language()->encoding()))) {
+		os << '\n';
 		texrow.newline();
 	}
-	// We need to output the paragraph to a temporary stream if we
-	// need to change the encoding. Don't do this if the result does
-	// not go to a file but to the builtin source viewer.
-	odocstringstream par_stream;
-	bool const change_encoding = !runparams_in.dryrun &&
-			bparams.inputenc == "auto" &&
-			language->encoding() != doc_language->encoding() &&
-			!use_thailatex;
-	// don't trigger the copy ctor because it's private on msvc 
-	odocstream & os = *(change_encoding ? &par_stream : &ucs4);
 
 	// In an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
@@ -376,9 +368,6 @@ TeXOnePar(Buffer const & buf,
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);
-	LyXFont const outerfont =
-		outerFont(std::distance(paragraphs.begin(), pit),
-			  paragraphs);
 	bool need_par = pit->simpleTeXOnePar(buf, bparams, outerfont,
 					     os, texrow, runparams);
 
@@ -478,6 +467,17 @@ TeXOnePar(Buffer const & buf,
 		texrow.newline();
 	}
 
+	// FIXME we switch from the encoding of this paragraph to the
+	// outer encoding, since I could not figure out the correct logic
+	// to take the encoding of the next paragraph into account.
+	// This may result in some unneeded encoding changes.
+	basefont = pit->getLayoutFont(bparams, outerfont);
+	if (switchEncoding(os, bparams, *(basefont.language()->encoding()),
+	                   outer_encoding)) {
+		os << '\n';
+		texrow.newline();
+	}
+
 	// we don't need it for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitely in
 	// TeXEnvironment, because it is needed in this case
@@ -489,59 +489,6 @@ TeXOnePar(Buffer const & buf,
 	if (boost::next(pit) != paragraphs.end() &&
 	    lyxerr.debugging(Debug::LATEX))
 		lyxerr << "TeXOnePar...done " << &*boost::next(pit) << endl;
-
-	if (change_encoding) {
-		lyxerr[Debug::LATEX] << "Converting paragraph to encoding "
-			<< language->encoding()->iconvName() << endl;
-		docstring const par = par_stream.str();
-		// Convert the paragraph to the 8bit encoding that we need to
-		// output.
-		std::vector<char> const encoded = lyx::ucs4_to_eightbit(par.c_str(),
-			par.size(), language->encoding()->iconvName());
-		// Interpret this as if it was in the 8 bit encoding of the
-		// document language and convert it back to UCS4. That means
-		// that faked does not contain pure UCS4 anymore, but what
-		// will be written to the output file will be correct, because
-		// the real output stream will do a UCS4 -> document language
-		// encoding conversion.
-		// This is of course a hack, but not a bigger one than mixing
-		// two encodings in one file.
-		// FIXME: Catch iconv conversion errors and display an error
-		// dialog.
-
-		// Here follows an explanation how I (gb) came to the current
-		// solution:
-
-		// codecvt facets are only used by file streams -> OK, maybe
-		// we could use file streams and not generic streams in the
-		// latex() methods? No, that does not  work, we use them at
-		// several places to write to string streams.
-		// Next try: Maybe we could do something else than codecvt
-		// in our streams, and  add a setEncoding() method? That
-		// does not work unless we rebuild the functionality of file
-		// and string streams, since both odocfstream and
-		// odocstringstream inherit from std::basic_ostream<docstring>
-		// and we can  neither add a method to that class nor change
-		// the inheritance of the file and string streams.
-
-		// What might be possible is to encapsulate the real file and
-		// string streams in our own version, and use a homemade
-		// streambuf that would do the encoding conversion and then
-		// forward to the real stream. That would probably work, but
-		// would require far more code and a good understanding of
-		// stream buffers to get it right.
-
-		// Another idea by JMarc is to use a modifier like
-		// os << setencoding("iso-8859-1");
-		// That currently looks like the best idea.
-
-		std::vector<char_type> const faked = lyx::eightbit_to_ucs4(&(encoded[0]),
-			encoded.size(), doc_language->encoding()->iconvName());
-		std::vector<char_type>::const_iterator const end = faked.end();
-		std::vector<char_type>::const_iterator it = faked.begin();
-		for (; it != end; ++it)
-			ucs4.put(*it);
-	}
 
 	return ++pit;
 }
@@ -645,5 +592,25 @@ void latexParagraphs(Buffer const & buf,
 	}
 }
 
+
+int switchEncoding(odocstream & os, BufferParams const & bparams,
+                   Encoding const & oldEnc, Encoding const & newEnc)
+{
+	// FIXME thailatex does not support the inputenc package, so we
+	// ignore switches from/to tis620-0 encoding here. This does of
+	// course only work as long as the non-thai text contains ASCII
+	// only, but it is the best we can do.
+	if (bparams.inputenc == "auto" && oldEnc.name() != newEnc.name() &&
+	    oldEnc.name() != "tis620-0" && newEnc.name() != "tis620-0") {
+		lyxerr[Debug::LATEX] << "Changing LaTeX encoding from "
+		                     << oldEnc.name() << " to "
+		                     << newEnc.name() << endl;
+		os << setEncoding(newEnc.iconvName());
+		docstring const inputenc(from_ascii(newEnc.latexName()));
+		os << "\\inputencoding{" << inputenc << '}';
+		return 16 + inputenc.length();
+	}
+	return 0;
+}
 
 } // namespace lyx

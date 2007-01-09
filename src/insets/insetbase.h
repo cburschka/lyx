@@ -369,7 +369,12 @@ public:
 	virtual void write(Buffer const &, std::ostream &) const {}
 	/// read inset in .lyx format
 	virtual void read(Buffer const &, LyXLex &) {}
-	/// returns the number of rows (\n's) of generated tex code.
+	/** Export the inset to LaTeX.
+	 *  Don't use a temporary stringstream if the final output is
+	 *  supposed to go to a file.
+	 *  \sa Buffer::writeLaTeXSource for the reason.
+	 *  \return the number of rows (\n's) of generated LaTeX code.
+	 */
 	virtual int latex(Buffer const &, odocstream &,
 			  OutputParams const &) const { return 0; }
 	/// returns true to override begin and end inset in file

@@ -23,6 +23,7 @@
 #include "LColor.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
+#include "output_latex.h"
 
 #include "support/lstrings.h"
 
@@ -737,11 +738,13 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont,
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
 int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
-				    LyXFont const & prev) const
+                                    LyXFont const & prev,
+                                    BufferParams const & bparams) const
 {
-	int count = 0;
 	bool env = false;
 
+	int count = switchEncoding(os, bparams, *(prev.language()->encoding()),
+	                           *(language()->encoding()));
 	if (language()->babel() != base.language()->babel() &&
 	    language() != prev.language()) {
 		if (isRightToLeft() != prev.isRightToLeft()) {
@@ -833,7 +836,8 @@ int LyXFont::latexWriteStartChanges(odocstream & os, LyXFont const & base,
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
 int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
-				  LyXFont const & next) const
+                                  LyXFont const & next,
+                                  BufferParams const & bparams) const
 {
 	int count = 0;
 	bool env = false;
@@ -897,6 +901,8 @@ int LyXFont::latexWriteEndChanges(odocstream & os, LyXFont const & base,
 		os << '}';
 		++count;
 	}
+	count += switchEncoding(os, bparams, *(language()->encoding()),
+	                        *(next.language()->encoding()));
 
 	return count;
 }

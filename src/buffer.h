@@ -146,13 +146,31 @@ public:
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
-	/// Just a wrapper for the method below, first creating the ofstream.
+	/// Just a wrapper for writeLaTeXSource, first creating the ofstream.
 	bool makeLaTeXFile(support::FileName const & filename,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true);
-	///
+	/** Export the buffer to LaTeX.
+	    If \p os is a file stream, and params().inputenc == "auto", and
+	    the buffer contains text in different languages with more than
+	    one encoding, then this method will change the encoding
+	    associated to \p os. Therefore you must not call this method with
+	    a string stream if the output is supposed to go to a file. \code
+	    odocfstream ofs;
+	    ofs.open("test.tex");
+	    writeLaTeXSource(ofs, ...);
+	    ofs.close();
+	    \endcode is NOT equivalent to \code
+	    odocstringstream oss;
+	    writeLaTeXSource(oss, ...);
+	    odocfstream ofs;
+	    ofs.open("test.tex");
+	    ofs << oss.str();
+	    ofs.close();
+	    \endcode
+	 */
 	void writeLaTeXSource(odocstream & os,
 			   std::string const & original_path,
 			   OutputParams const &,

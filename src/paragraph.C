@@ -761,7 +761,7 @@ int adjust_column_count(string const & str, int oldcol)
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
-				 odocstream & os, bool moving_arg) const
+                                 odocstream & os, bool moving_arg) const
 {
 	int column = 0;
 
@@ -825,7 +825,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::endTeXParParams(BufferParams const & bparams,
-			       odocstream & os, bool moving_arg) const
+                               odocstream & os, bool moving_arg) const
 {
 	int column = 0;
 
@@ -913,6 +913,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// As long as we are in the label, this font is the base font of the
 	// label. Before the first body character it is set to the base font
 	// of the body.
+	// This must be identical to basefont in TeXOnePar().
 	LyXFont basefont;
 
 	LaTeXFeatures features(buf, bparams, runparams);
@@ -964,7 +965,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		if (i == body_pos) {
 			if (body_pos > 0) {
 				if (open_font) {
-					column += running_font.latexWriteEndChanges(os, basefont, basefont);
+					column += running_font.latexWriteEndChanges(
+						os, basefont, basefont, bparams);
 					open_font = false;
 				}
 				basefont = getLayoutFont(bparams, outerfont);
@@ -1004,9 +1006,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		    (font != running_font ||
 		     font.language() != running_font.language()))
 		{
-			column += running_font.latexWriteEndChanges(os,
-								    basefont,
-								    (i == body_pos-1) ? basefont : font);
+			column += running_font.latexWriteEndChanges(
+					os, basefont,
+					(i == body_pos-1) ? basefont : font,
+					bparams);
 			running_font = basefont;
 			open_font = false;
 		}
@@ -1025,8 +1028,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		     font.language() != running_font.language()) &&
 			i != body_pos - 1)
 		{
-			column += font.latexWriteStartChanges(os, basefont,
-							      last_font);
+			column += font.latexWriteStartChanges(
+					os, basefont, last_font, bparams);
 			running_font = font;
 			open_font = true;
 		}
@@ -1062,11 +1065,11 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		if (next_) {
 			running_font
 				.latexWriteEndChanges(os, basefont,
-						      next_->getFont(bparams,
-						      0, outerfont));
+					next_->getFont(bparams, 0, outerfont),
+					bparams);
 		} else {
 			running_font.latexWriteEndChanges(os, basefont,
-							  basefont);
+							  basefont, bparams);
 		}
 #else
 #ifdef WITH_WARNINGS
@@ -1074,7 +1077,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 //#warning there as we start another \selectlanguage with the next paragraph if
 //#warning we are in need of this. This should be fixed sometime (Jug)
 #endif
-		running_font.latexWriteEndChanges(os, basefont,  basefont);
+		running_font.latexWriteEndChanges(os, basefont, basefont,
+		                                  bparams);
 #endif
 	}
 
