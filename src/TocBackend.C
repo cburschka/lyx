@@ -143,6 +143,7 @@ void TocBackend::update()
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getLyXTextClass().min_toclevel();
 
+	Toc & toc = tocs_["tableofcontents"];
 	ParConstIterator pit = buffer_->par_iterator_begin();
 	ParConstIterator end = buffer_->par_iterator_end();
 	for (; pit != end; ++pit) {
@@ -155,12 +156,14 @@ void TocBackend::update()
 		InsetList::const_iterator it = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
-			it->inset->addToToc(tocs_, *buffer_);
-			switch (it->inset->lyxCode()) {
+			InsetBase & inset = *it->inset;
+			inset.addToToc(tocs_, *buffer_);
+			switch (inset.lyxCode()) {
 			case InsetBase::OPTARG_CODE: {
 				if (!tocstring.empty())
 					break;
-				Paragraph const & par = *static_cast<InsetOptArg*>(it->inset)->paragraphs().begin();
+				Paragraph const & par = 
+					*static_cast<InsetOptArg&>(inset).paragraphs().begin();
 				if (!pit->getLabelstring().empty())
 					tocstring = pit->getLabelstring() + ' ';
 				tocstring += par.asString(*buffer_, false);
@@ -179,8 +182,8 @@ void TocBackend::update()
 			// insert this into the table of contents
 			if (tocstring.empty())
 				tocstring = pit->asString(*buffer_, true);
-			TocItem const item(pit, toclevel - min_toclevel, tocstring);
-			tocs_["tableofcontents"].push_back(item);
+			toc.push_back(
+				TocItem(pit, toclevel - min_toclevel, tocstring));
 		}
 	}
 
