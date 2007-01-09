@@ -171,6 +171,9 @@ What's new
 - On Mac OS X, make sure to view files with the same application as
   the Finder uses.
 
+- The natbib labels weren't always displayed correctly when opening
+  a document. This is fixed.
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.

@@ -1,3 +1,8 @@
+2007-01-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetcite.C (getNatbibLabels): correct check for updating the 
+	natbib labels cache (we didn't consider the buffer).
+
 2006-12-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetcollapsable.C (hasFixedWidth): new virtual method, returns
