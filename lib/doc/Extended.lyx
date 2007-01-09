@@ -360,7 +360,7 @@ Run
 \family typewriter
 dvips
 \family default
- to convert the Dvi file to PostScript®:
+ to convert the DVI-file to PostScript®:
 \end_layout
 
 \begin_deeper
@@ -1836,7 +1836,7 @@ All right, you didn't use any of the fine-tuning options, you played by
 Do you have long sections of text where LaTeX cannot find a place to break
  a line? By default, LaTeX is rather strict about how much extra inter-word
  spacing it will add in order to break a line.
- Preferrably, you should rework the paragraph to avoid the problem.
+ Preferably, you should rework the paragraph to avoid the problem.
  If this isn't an option, you can wrap your text in 
 \family typewriter
 
@@ -2057,7 +2057,7 @@ D
 \bar default
 VI
 \family default
-, for example, you should see that BibTex and LaTeX are invoked as needed,
+, for example, you should see that BibTeX and LaTeX are invoked as needed,
  including multiple invocations of LaTeX.
  
 \end_layout
@@ -6592,7 +6592,7 @@ xport\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-ateX
+aTeX
 \family default
 .
  
@@ -6659,7 +6659,7 @@ View the resulting
 \family sans
 xdvi
 \family default
-, and check if everything is ok (it should, if you didn't make any mistake).
+, and check if everything is OK (it should, if you didn't make any mistake).
 \end_layout
 
 \begin_layout Subsection
@@ -8292,7 +8292,7 @@ Koma-Script version 2.8 has introduced a new letter class
 \family typewriter
 scrlttr2
 \family default
- which superceeds the now unsupported 
+ which supersedes the now unsupported 
 \family typewriter
 scrlettr
 \family default
@@ -10378,7 +10378,7 @@ invisible
 visible
 \family default
  command].
- If you don't know how to mark text as TeX, see the apprpriate section of
+ If you don't know how to mark text as TeX, see the appropriate section of
  the 
 \emph on
 User's Guide
@@ -14031,7 +14031,7 @@ Abstract: You may wonder why an abstract is an extra feature.
  Well, it is in book class.
  Usually books don't have abstracts.
  Memoir, however, has.
- You can use it whereever and how often you like.
+ You can use it wherever and how often you like.
 \end_layout
 
 \begin_layout Description
@@ -14658,7 +14658,7 @@ in the preamble.
 \end_layout
 
 \begin_layout Subsubsection
-Is it possible to do write latex code which is processed only when running
+Is it possible to do write LaTeX-code which is processed only when running
  pdfLaTeX?
 \begin_inset OptArg
 status collapsed
@@ -14786,11 +14786,11 @@ fi
 \end_layout
 
 \begin_layout Subsubsection
-How can I make URLs clickable ?
+How can I make URLs clickable?
 \end_layout
 
 \begin_layout Standard
-See the references here :
+See the references here:
 \end_layout
 
 \begin_layout Standard
@@ -15170,7 +15170,7 @@ As usual.
 \begin_layout Itemize
 
 \family sans
-Code: similar to the Lyx-Code
+Code: similar to the LyX-Code
 \family roman
  environment
 \end_layout
@@ -16991,7 +16991,7 @@ Noweb
 \end_layout
 
 \begin_layout Itemize
-It can generate the documentation either in latex or html.
+It can generate the documentation either in LaTeX or HTML.
 \end_layout
 
 \begin_layout Itemize
@@ -17001,7 +17001,7 @@ It has a open architecture, i.e., it is easy to plug in new filters and to
 \end_layout
 
 \begin_layout Itemize
-There is a good selection of filters available already (the html is one
+There is a good selection of filters available already (the HTML is one
  of them).
 \end_layout
 
@@ -17302,7 +17302,7 @@ D
 \bar default
 VI 
 \family default
-menu option is chosen, a latex file is generated.
+menu option is chosen, a LaTeX file is generated.
  
 \end_layout
 
@@ -17398,7 +17398,7 @@ Generating the code
 
 \begin_layout Standard
 When the build menu option is chosen or the corresponding button in the
- toolbar is pressed, a latex file is generated just like step 1 above.
+ toolbar is pressed, a LaTeX file is generated just like step 1 above.
  Next, LyX invokes the
 \family typewriter
  Noweb->Program
@@ -18355,7 +18355,7 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-You can have have more than 3 columns if you want to, but that might not
+You can have more than 3 columns if you want to, but that might not
  be very pleasant for the eye.
 \end_layout
 
