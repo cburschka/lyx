@@ -283,7 +283,14 @@ bool readLink(std::string const & file,
 	      std::string & link,
 	      bool resolve = false);
 
-/// Uses kpsewhich to find tex files
+/**
+ * Search a TeX file in all locations the latex compiler would search it,
+ * with the help of kpsewhich.
+ * The current working directory must be set correctly, so that relative
+ * names work.
+ * \param fil The filename to search
+ * \param format The file format as used by kpsewhich, e.g. "bib", "bst" etc.
+ */
 FileName const findtexfile(std::string const & fil,
 			      std::string const & format);
 
