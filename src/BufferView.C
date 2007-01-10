@@ -1238,6 +1238,8 @@ void BufferView::setCursor(DocIterator const & dit)
 		dit[i].inset().edit(cursor_, true);
 
 	cursor_.setCursor(dit);
+	// remember new position.
+	cursor_.setTargetX();
 	cursor_.selection() = false;
 }
 
@@ -1281,6 +1283,7 @@ bool BufferView::mouseSetCursor(LCursor & cur)
 
 	cursor_ = cur;
 	cursor_.clearSelection();
+	// remember new position.
 	cursor_.setTargetX();
 	finishUndo();
 	return update;

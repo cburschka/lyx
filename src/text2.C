@@ -985,12 +985,15 @@ bool LyXText::cursorUp(LCursor & cur)
 	ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
 
 	int row;
-	int const x = cur.targetX();
-
 	if (cur.pos() && cur.boundary())
 		row = pm.pos2row(cur.pos()-1);
 	else
 		row = pm.pos2row(cur.pos());
+
+	// remember current position only if we are not at the end of a row.
+	if (cur.pos() != pm.rows()[row].endpos())
+		cur.setTargetX();
+	int const x = cur.targetX();
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
@@ -1041,12 +1044,15 @@ bool LyXText::cursorDown(LCursor & cur)
 	ParagraphMetrics const & pm = tm.parMetrics(cur.pit());
 
 	int row;
-	int const x = cur.targetX();
-
 	if (cur.pos() && cur.boundary())
 		row = pm.pos2row(cur.pos()-1);
 	else
 		row = pm.pos2row(cur.pos());
+
+	// remember current position only if we are not at the end of a row.
+	if (cur.pos() != pm.rows()[row].endpos())
+		cur.setTargetX();
+	int const x = cur.targetX();
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur.bv(), cur, cur.boundary()).y_;
