@@ -7221,11 +7221,11 @@ msgstr "Neu konfigurieren|o"
 
 #: lib/ui/classic.ui:115 lib/ui/stdmenus.inc:131
 msgid "Selection as Lines|L"
-msgstr "Auswahl als Zeilen|A"
+msgstr "Auswahl als Zeilen|e"
 
 #: lib/ui/classic.ui:116 lib/ui/stdmenus.inc:132
 msgid "Selection as Paragraphs|P"
-msgstr "Auswahl als Absätze|u"
+msgstr "Auswahl als Absätze|b"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:151
 msgid "Multicolumn|M"
@@ -8011,14 +8011,12 @@ msgid "Table Settings...|a"
 msgstr "Tabellen-Einstellungen...|n"
 
 #: lib/ui/stdmenus.inc:128
-#, fuzzy
 msgid "Plain Text as Lines|T"
-msgstr "Einfacher Text als Zeilen"
+msgstr "Einfacher Text als Zeilen|Z"
 
 #: lib/ui/stdmenus.inc:129
-#, fuzzy
 msgid "Plain Text as Paragraphs|e"
-msgstr "Einfacher Text als Absätze"
+msgstr "Einfacher Text als Absätze|A"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Customized...|C"
@@ -12779,9 +12777,8 @@ msgstr ""
 "das Tutorium."
 
 #: src/text.C:1565
-#, fuzzy
 msgid "[Change Tracking] "
-msgstr "Änderungsverfolgung|v"
+msgstr "[Änderungsverfolgung] "
 
 #: src/text.C:1571
 msgid "Change: "
