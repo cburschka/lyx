@@ -27,13 +27,18 @@
 #   the real eps file will be overwritten by a tex file named file.eps.
 #
 
-import os, sys
+import os, sys, locale
 
 # We expect two args, the names of the input and output files.
 if len(sys.argv) != 3:
     sys.exit(1)
 
-input, output = sys.argv[1:]
+language, output_encoding = locale.getdefaultlocale()
+if output_encoding == None:
+    output_encoding = 'latin1'
+
+input = unicode(sys.argv[1], 'utf8').encode(output_encoding)
+output = unicode(sys.argv[2], 'utf8').encode(output_encoding)
 
 # Fail silently if the file doesn't exist
 if not os.path.isfile(input):

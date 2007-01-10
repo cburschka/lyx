@@ -28,7 +28,7 @@
 #
 
 
-import os, sys, re
+import os, sys, re, locale
 
 
 def runCommand(cmd):
@@ -44,7 +44,12 @@ def runCommand(cmd):
 if len(sys.argv) != 3:
     sys.exit(1)
 
-input, output = sys.argv[1:]
+language, output_encoding = locale.getdefaultlocale()
+if output_encoding == None:
+    output_encoding = 'latin1'
+
+input = unicode(sys.argv[1], 'utf8').encode(output_encoding)
+output = unicode(sys.argv[2], 'utf8').encode(output_encoding)
 
 # Fail silently if the file doesn't exist
 if not os.path.isfile(input):
