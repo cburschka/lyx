@@ -318,8 +318,7 @@ docstring const InsetInclude::getScreenLabel(Buffer const &) const
 	if (params_["filename"].empty())
 		temp += "???";
 	else
-		// FIXME: We don't know the encoding of the filename
-		temp += from_ascii(onlyFilename(to_utf8(params_["filename"])));
+		temp += from_utf8(onlyFilename(to_utf8(params_["filename"])));
 
 	return temp;
 }
