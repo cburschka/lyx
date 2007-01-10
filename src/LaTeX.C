@@ -682,10 +682,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				}
 				if (line_count <= 5) {
 					// FIXME UNICODE
-					// We have no idea what the encoding of the log file is
-					// (probably pure ascii, but maybe some localized
-					// latex compilers or packages exist)
-					terr.insertError(line, from_utf8(desc), from_utf8(errstr));
+					// We have no idea what the encoding of
+					// the log file is, but it is safe to
+					// assume it is the current locale one.
+					terr.insertError(line, from_local8bit(desc), from_local8bit(errstr));
 					++num_errors;
 				}
 			}
