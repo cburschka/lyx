@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX ??\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-06 17:41+0100\n"
+"POT-Creation-Date: 2007-01-10 22:23+0100\n"
 "PO-Revision-Date: 2005-12-18 15:11+0100\n"
 "Last-Translator: anon <>\n"
 "Language-Team: he <he@li.org>\n"
@@ -122,7 +122,7 @@ msgid "&Font:"
 msgstr "רפסמ:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:47
-#: src/frontends/qt4/ui/QCharacterUi.ui:215
+#: src/frontends/qt4/ui/QCharacterUi.ui:227
 #, fuzzy
 msgid "Si&ze:"
 msgstr "םידדצ"
@@ -135,61 +135,61 @@ msgstr "םידדצ"
 #: src/frontends/qt4/ui/QTabularUi.ui:704
 #: src/frontends/qt4/ui/QTabularUi.ui:723
 #: src/frontends/qt4/ui/QTabularUi.ui:771 lib/ui/stdtoolbars.inc:66
-#: src/frontends/controllers/ControlDocument.C:44
+#: src/frontends/controllers/ControlDocument.C:49
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:199 src/lyxfont.C:518
+#: src/frontends/qt4/QDocumentDialog.C:199 src/lyxfont.C:519
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "לדחמ תרירב"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:74
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
+#: src/frontends/controllers/character.C:123 src/lyxfont.C:65
 msgid "Tiny"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:79
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
+#: src/frontends/controllers/character.C:127 src/lyxfont.C:65
 msgid "Smallest"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:84
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
+#: src/frontends/controllers/character.C:131 src/lyxfont.C:65
 msgid "Smaller"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:89
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
+#: src/frontends/controllers/character.C:135 src/lyxfont.C:65
 msgid "Small"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:94
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
+#: src/frontends/controllers/character.C:139 src/lyxfont.C:65
 msgid "Normal"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:99
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
+#: src/frontends/controllers/character.C:143 src/lyxfont.C:65
 msgid "Large"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:104
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:147 src/lyxfont.C:66
 msgid "Larger"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:109
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:151 src/lyxfont.C:66
 msgid "Largest"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:114
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:155 src/lyxfont.C:66
 msgid "Huge"
 msgstr ""
 
 #: src/frontends/qt4/ui/BulletsUi.ui:119
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:159 src/lyxfont.C:66
 msgid "Huger"
 msgstr ""
 
@@ -324,7 +324,7 @@ msgid "Postscript &driver:"
 msgstr ""
 
 #: src/frontends/qt4/ui/LanguageUi.ui:36
-#: src/frontends/qt4/ui/QCharacterUi.ui:151
+#: src/frontends/qt4/ui/QCharacterUi.ui:163
 #, fuzzy
 msgid "&Language:"
 msgstr "הפש:"
@@ -522,7 +522,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QBibitemUi.ui:111
 #: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
 #: src/frontends/qt4/ui/QBranchUi.ui:31
-#: src/frontends/qt4/ui/QCharacterUi.ui:352
+#: src/frontends/qt4/ui/QCharacterUi.ui:370
 #: src/frontends/qt4/ui/QCitationUi.ui:104
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
@@ -544,7 +544,7 @@ msgstr "רושיא "
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
 #: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:116 src/lyx_cb.C:169 src/lyxfunc.C:691
-#: src/lyxfunc.C:863 src/lyxfunc.C:1983 src/lyxvc.C:175
+#: src/lyxfunc.C:863 src/lyxfunc.C:1985 src/lyxvc.C:175
 #, fuzzy
 msgid "&Cancel"
 msgstr "לוטיב"
@@ -577,7 +577,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:245
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:247
 #: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:807
 msgid "Cancel"
 msgstr "לוטיב"
@@ -816,7 +816,7 @@ msgstr "יכנא רושי|#V"
 msgid "&Restore"
 msgstr "r ךופה רדס|#R"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:362
+#: src/frontends/qt4/ui/QBoxUi.ui:338 src/frontends/qt4/ui/QCharacterUi.ui:380
 #: src/frontends/qt4/ui/QDocumentUi.ui:145
 #: src/frontends/qt4/ui/QExternalUi.ui:695 src/frontends/qt4/ui/QFloatUi.ui:78
 #: src/frontends/qt4/ui/QGraphicsUi.ui:723
@@ -870,17 +870,17 @@ msgstr ""
 msgid "&Reject"
 msgstr "i הפסוה"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:47
-#: src/frontends/qt4/ui/QCharacterUi.ui:126
+#: src/frontends/qt4/ui/QCharacterUi.ui:44
+#: src/frontends/qt4/ui/QCharacterUi.ui:132
 msgid "Font family"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:50
+#: src/frontends/qt4/ui/QCharacterUi.ui:47
 #, fuzzy
 msgid "&Family:"
 msgstr "f ץבוק"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:68
+#: src/frontends/qt4/ui/QCharacterUi.ui:65
 #: src/frontends/qt4/ui/QCharacterUi.ui:75
 #, fuzzy
 msgid "Font shape"
@@ -891,76 +891,76 @@ msgid "S&hape:"
 msgstr ""
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:96
-#: src/frontends/qt4/ui/QCharacterUi.ui:161
+#: src/frontends/qt4/ui/QCharacterUi.ui:173
 #, fuzzy
 msgid "Font series"
 msgstr "o טנופ לדוג:|#O"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:111
-#: src/frontends/qt4/ui/QCharacterUi.ui:148
+#: src/frontends/qt4/ui/QCharacterUi.ui:114
+#: src/frontends/qt4/ui/QCharacterUi.ui:160
 #: src/frontends/qt4/QDocumentDialog.C:390
 #: src/frontends/qt4/QPrefsDialog.C:1471
 msgid "Language"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:141
-#: src/frontends/qt4/ui/QCharacterUi.ui:177
+#: src/frontends/qt4/ui/QCharacterUi.ui:150
+#: src/frontends/qt4/ui/QCharacterUi.ui:189
 msgid "Font color"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:164
+#: src/frontends/qt4/ui/QCharacterUi.ui:176
 #, fuzzy
 msgid "&Series:"
 msgstr "i הפסוה"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:180
+#: src/frontends/qt4/ui/QCharacterUi.ui:192
 #, fuzzy
 msgid "&Color:"
 msgstr "הריגס"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:200
+#: src/frontends/qt4/ui/QCharacterUi.ui:212
 #, fuzzy
 msgid "Never Toggled"
 msgstr "רומשה קתועל הרזח"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:212
-#: src/frontends/qt4/ui/QCharacterUi.ui:233
+#: src/frontends/qt4/ui/QCharacterUi.ui:224
+#: src/frontends/qt4/ui/QCharacterUi.ui:245
 #, fuzzy
 msgid "Font size"
 msgstr "o טנופ לדוג:|#O"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:243
-#: src/frontends/qt4/ui/QCharacterUi.ui:268
+#: src/frontends/qt4/ui/QCharacterUi.ui:258
+#: src/frontends/qt4/ui/QCharacterUi.ui:283
 msgid "Other font settings"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:246
+#: src/frontends/qt4/ui/QCharacterUi.ui:261
 msgid "Always Toggled"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:258
+#: src/frontends/qt4/ui/QCharacterUi.ui:273
 #, fuzzy
 msgid "&Misc:"
 msgstr "תונוש"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:290
+#: src/frontends/qt4/ui/QCharacterUi.ui:308
 msgid "toggle font on all of the above"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:293
+#: src/frontends/qt4/ui/QCharacterUi.ui:311
 #, fuzzy
 msgid "&Toggle all"
 msgstr "(bold) הבע (toggle) יוניש"
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:300
+#: src/frontends/qt4/ui/QCharacterUi.ui:318
 msgid "Apply each change automatically"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:303
+#: src/frontends/qt4/ui/QCharacterUi.ui:321
 msgid "Apply changes immediately"
 msgstr ""
 
-#: src/frontends/qt4/ui/QCharacterUi.ui:372 src/frontends/qt4/ui/QERTUi.ui:110
+#: src/frontends/qt4/ui/QCharacterUi.ui:390 src/frontends/qt4/ui/QERTUi.ui:110
 #: src/frontends/qt4/ui/QGraphicsUi.ui:744
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:177
 #: src/frontends/qt4/ui/QNoteUi.ui:41 src/frontends/qt4/ui/QPrintUi.ui:246
@@ -1779,7 +1779,7 @@ msgid "&Shaded"
 msgstr "הרימש"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1595
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1599
 #, fuzzy
 msgid "Single"
 msgstr "חוויר"
@@ -1789,7 +1789,7 @@ msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1601
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1605
 msgid "Double"
 msgstr ""
 
@@ -1941,7 +1941,7 @@ msgstr ""
 msgid "Display &Graphics:"
 msgstr "חפסנ תפסוה"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:70
 msgid "Off"
 msgstr ""
 
@@ -1950,7 +1950,7 @@ msgstr ""
 msgid "No math"
 msgstr "m תואחסונ"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:70
 msgid "On"
 msgstr ""
 
@@ -3917,7 +3917,7 @@ msgstr "הצירטמ"
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:310
+#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:311
 msgid "Date"
 msgstr ""
 
@@ -6978,7 +6978,7 @@ msgstr "לוטיב לוטיב"
 msgid "Published-online:"
 msgstr ""
 
-#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.C:41
+#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.C:44
 msgid "Citation"
 msgstr ""
 
@@ -7905,7 +7905,7 @@ msgstr "ריינה הנבמ"
 msgid "Math|M"
 msgstr "m תואחסונ"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:446
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:447
 #, fuzzy
 msgid "Spellchecker...|S"
 msgstr "תויא תקידב"
@@ -7915,12 +7915,12 @@ msgstr "תויא תקידב"
 msgid "Thesaurus..."
 msgstr "ריינה הנבמ"
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:448
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:449
 #, fuzzy
 msgid "Count Words|W"
 msgstr "רפסמ:"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:450
 #, fuzzy
 msgid "Check TeX|h"
 msgstr "TeX תקידב"
@@ -7930,26 +7930,26 @@ msgstr "TeX תקידב"
 msgid "Change Tracking|g"
 msgstr "רפסמ ןיא"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:457
 #, fuzzy
 msgid "Preferences...|P"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:455
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:456
 msgid "Reconfigure|R"
 msgstr ""
 
-#: lib/ui/classic.ui:115 lib/ui/stdmenus.inc:130
+#: lib/ui/classic.ui:115 lib/ui/stdmenus.inc:131
 #, fuzzy
 msgid "Selection as Lines|L"
 msgstr "האבה הרושה תריחב"
 
-#: lib/ui/classic.ui:116 lib/ui/stdmenus.inc:131
+#: lib/ui/classic.ui:116 lib/ui/stdmenus.inc:132
 #, fuzzy
 msgid "Selection as Paragraphs|P"
 msgstr "הקספ תביבס"
 
-#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:150
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:151
 #, fuzzy
 msgid "Multicolumn|M"
 msgstr "m (Multicolumn)ירוט בר"
@@ -7979,7 +7979,7 @@ msgstr "r ןימימ וק"
 msgid "Alignment|i"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:168
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:169
 #, fuzzy
 msgid "Add Row|A"
 msgstr "o הרוש תפסוה"
@@ -7998,7 +7998,7 @@ msgstr "הקתעה"
 msgid "Swap Rows"
 msgstr ""
 
-#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:173
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:174
 #, fuzzy
 msgid "Add Column|u"
 msgstr "u הדומע תפסוה"
@@ -8018,55 +8018,55 @@ msgstr "u הדומע תפסוה"
 msgid "Swap Columns"
 msgstr "תודומע "
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:160
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:161
 #, fuzzy
 msgid "Left|L"
 msgstr "l לאמשמ וק"
 
-#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:162
 #, fuzzy
 msgid "Center|C"
 msgstr "םיטוטיצ"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:162
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:163
 #, fuzzy
 msgid "Right|R"
 msgstr "הבוג"
 
-#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:164
+#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:165
 #, fuzzy
 msgid "Top|T"
 msgstr "t םיינש|#T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:165
+#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:166
 #, fuzzy
 msgid "Middle|M"
 msgstr "הצירטמ"
 
-#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:166
+#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:167
 #, fuzzy
 msgid "Bottom|B"
 msgstr "b תחתמ וק"
 
-#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:180
+#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:181
 #, fuzzy
 msgid "Toggle Numbering|N"
 msgstr "רפסמ ןיא"
 
-#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:182
 #, fuzzy
 msgid "Toggle Numbering of Line|u"
 msgstr "(noun) םש ןונגס(toggle) יוניש"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:183
 msgid "Change Limits Type|L"
 msgstr ""
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:184
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:185
 msgid "Change Formula Type|F"
 msgstr ""
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:188
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:189
 msgid "Use Computer Algebra System|S"
 msgstr ""
 
@@ -8080,7 +8080,7 @@ msgstr "c זוכרמ"
 msgid "Add Row|R"
 msgstr "o הרוש תפסוה"
 
-#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:169
+#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:170
 #, fuzzy
 msgid "Delete Row|D"
 msgstr "w הרוש תקיחמ"
@@ -8090,22 +8090,22 @@ msgstr "w הרוש תקיחמ"
 msgid "Add Column|C"
 msgstr "u הדומע תפסוה"
 
-#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:174
+#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:175
 #, fuzzy
 msgid "Delete Column|e"
 msgstr "n הדומע תקיחמ"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:204
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:205
 #, fuzzy
 msgid "Default|t"
 msgstr "לדחמ תרירב"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:206
 #, fuzzy
 msgid "Display|D"
 msgstr "[ת/גצומ אל]"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:207
 #, fuzzy
 msgid "Inline|I"
 msgstr "i הפסוה"
@@ -8139,13 +8139,13 @@ msgstr ""
 msgid "Maple, evalf"
 msgstr ""
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:246
-#: lib/ui/stdmenus.inc:343
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:247
+#: lib/ui/stdmenus.inc:344
 #, fuzzy
 msgid "Inline Formula|I"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:247
+#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:248
 #, fuzzy
 msgid "Displayed Formula|D"
 msgstr "םירויא תפסוה"
@@ -8180,7 +8180,7 @@ msgstr "c זוכרמ"
 msgid "Multline Environment"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:287
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:288
 #, fuzzy
 msgid "Math|h"
 msgstr "m תואחסונ"
@@ -8190,7 +8190,7 @@ msgstr "m תואחסונ"
 msgid "Special Character|S"
 msgstr "ות ןונגס"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:297
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:298
 #, fuzzy
 msgid "Citation...|C"
 msgstr "הריזג"
@@ -8200,16 +8200,16 @@ msgstr "הריזג"
 msgid "Cross-reference...|r"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:299
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:300
 msgid "Label...|L"
 msgstr ""
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:306
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:307
 #, fuzzy
 msgid "Footnote|F"
 msgstr "f םיטנופ:|#F"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:307
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:308
 #, fuzzy
 msgid "Marginal Note|M"
 msgstr "טוטיצ תסנכה"
@@ -8228,12 +8228,12 @@ msgstr "i יקפוא גוליד|#I"
 msgid "Glossary Entry"
 msgstr ""
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:305
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:306
 #, fuzzy
 msgid "URL...|U"
 msgstr "u URL"
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:292
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:293
 #, fuzzy
 msgid "Note|N"
 msgstr "םיטוטיצ"
@@ -8252,7 +8252,7 @@ msgstr "t LaTeX|#T"
 msgid "Minipage|p"
 msgstr "o תויורשפא"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:304
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:305
 #, fuzzy
 msgid "Graphics...|G"
 msgstr "f ץבוק|#F"
@@ -8280,12 +8280,12 @@ msgstr "םירויא תפסוה"
 msgid "External Material...|x"
 msgstr ""
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:323
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:324
 #, fuzzy
 msgid "Superscript|S"
 msgstr "p Postscript|#P"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:324
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:325
 #, fuzzy
 msgid "Subscript|u"
 msgstr "p Postscript|#P"
@@ -8299,7 +8299,7 @@ msgstr "יקפוא רושי|#H"
 msgid "Hyphenation Point|P"
 msgstr ""
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:334
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:335
 #, fuzzy
 msgid "Ligature Break|k"
 msgstr "םירויא תפסוה"
@@ -8308,11 +8308,11 @@ msgstr "םירויא תפסוה"
 msgid "Protected Space|r"
 msgstr ""
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:327
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:328
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:328
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:329
 msgid "Thin Space|T"
 msgstr ""
 
@@ -8326,11 +8326,11 @@ msgstr "יכנא רושי|#V"
 msgid "Line Break|L"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:314
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:315
 msgid "Ellipsis|i"
 msgstr ""
 
-#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:315
+#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:316
 #, fuzzy
 msgid "End of Sentence|E"
 msgstr "הקספ ףוס ןמיס תפסוה"
@@ -8344,7 +8344,7 @@ msgstr "חוויר"
 msgid "Ordinary Quote|O"
 msgstr ""
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:318
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:319
 #, fuzzy
 msgid "Menu Separator|M"
 msgstr "תואקספ תדרפה"
@@ -8359,51 +8359,51 @@ msgstr "יקפוא רושי|#H"
 msgid "Page Break"
 msgstr "רפסמ ןיא"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:344
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:345
 msgid "Display Formula|D"
 msgstr ""
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:248 lib/ui/stdmenus.inc:346
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:249 lib/ui/stdmenus.inc:347
 #, fuzzy
 msgid "Eqnarray Environment|E"
 msgstr "הקספ תביבס תריחב"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:249 lib/ui/stdmenus.inc:347
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:250 lib/ui/stdmenus.inc:348
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:250 lib/ui/stdmenus.inc:348
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:349
 #, fuzzy
 msgid "AMS alignat Environment|t"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:349
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:350
 #, fuzzy
 msgid "AMS flalign Environment|f"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:350
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:351
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:352
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "c זוכרמ"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:353
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:354
 #, fuzzy
 msgid "Array Environment|y"
 msgstr "הקספ תביבס תריחב"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:354
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:355
 #, fuzzy
 msgid "Cases Environment|C"
 msgstr "הביבסה קמוע יוניש"
 
-#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:358
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:359
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "c זוכרמ"
@@ -8449,41 +8449,41 @@ msgstr "!TextClass תניעטב האיגש"
 msgid "Text Normal Font"
 msgstr "רוטיע"
 
-#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:221
+#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:222
 msgid "Text Roman Family"
 msgstr ""
 
-#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:222
+#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:223
 msgid "Text Sans Serif Family"
 msgstr ""
 
-#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:223
+#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:224
 msgid "Text Typewriter Family"
 msgstr ""
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:225
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:226
 #, fuzzy
 msgid "Text Bold Series"
 msgstr "!TextClass תניעטב האיגש"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:226
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:227
 #, fuzzy
 msgid "Text Medium Series"
 msgstr "!TextClass תניעטב האיגש"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:228
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:229
 msgid "Text Italic Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:229
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:230
 msgid "Text Small Caps Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:230
+#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:231
 msgid "Text Slanted Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:231
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:232
 msgid "Text Upright Shape"
 msgstr ""
 
@@ -8492,45 +8492,45 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "רויא"
 
-#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:370
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:371
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "םיניינעה ןכותב רופסמ קמוע:"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:372
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:373
 #, fuzzy
 msgid "Index List|I"
 msgstr "i יקפוא גוליד|#I"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:373
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:374
 msgid "Glossary|G"
 msgstr ""
 
-#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:374
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:375
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "הקספ תביבס"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:378
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:379
 #, fuzzy
 msgid "LyX Document...|X"
 msgstr "ךמסמ"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
 msgid "Plain Text as Lines...|L"
 msgstr ""
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
 #, fuzzy
 msgid "Plain Text as Paragraphs...|P"
 msgstr "הקספ תביבס"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:412
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "i רגאמב ןכדע(Check In)"
 
-#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:414
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "i רגאמב ןכדע(Check In)"
@@ -8543,7 +8543,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:418
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:419
 msgid "Show Changes in Output|S"
 msgstr ""
 
@@ -8594,17 +8594,17 @@ msgstr "הביבסה קמוע תלדגה"
 msgid "Start Appendix Here|S"
 msgstr ""
 
-#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:402
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:403
 #, fuzzy
 msgid "Build Program|B"
 msgstr "(Build program) תינכות תיינב"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:265
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:266
 #, fuzzy
 msgid "Update|U"
 msgstr "DVI ןוכדע"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:403
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:404
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "t LaTeX|#T"
@@ -8614,17 +8614,17 @@ msgstr "t LaTeX|#T"
 msgid "TeX Information|X"
 msgstr "רוטיע"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:426
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:427
 #, fuzzy
 msgid "Next Note|N"
 msgstr "םיטוטיצ"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:429
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:430
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "לוטיב"
 
-#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:425
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:426
 msgid "Bookmarks|B"
 msgstr ""
 
@@ -8668,40 +8668,40 @@ msgstr ""
 msgid "Go to Bookmark 5|5"
 msgstr ""
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:463
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:464
 msgid "Introduction|I"
 msgstr ""
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:464
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:465
 msgid "Tutorial|T"
 msgstr ""
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:466
 msgid "User's Guide|U"
 msgstr ""
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:467
 msgid "Extended Features|E"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:468
 msgid "Customization|C"
 msgstr ""
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:468
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:469
 msgid "FAQ|F"
 msgstr ""
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:469
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:470
 #, fuzzy
 msgid "Table of Contents|a"
 msgstr "םיניינעה ןכותב רופסמ קמוע:"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:470
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:471
 msgid "LaTeX Configuration|L"
 msgstr ""
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:473
 msgid "About LyX|X"
 msgstr ""
 
@@ -8752,18 +8752,18 @@ msgid "Redo|R"
 msgstr "לוטיב לוטיב"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:51
-#: src/mathed/InsetMathNest.C:460 src/text3.C:778
+#: src/mathed/InsetMathNest.C:460 src/text3.C:777
 msgid "Cut"
 msgstr "הריזג"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:52
-#: src/mathed/InsetMathNest.C:468 src/text3.C:783
+#: src/mathed/InsetMathNest.C:468 src/text3.C:782
 msgid "Copy"
 msgstr "הקתעה"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
 #: src/mathed/InsetMathGrid.C:1212 src/mathed/InsetMathNest.C:439
-#: src/text3.C:759
+#: src/text3.C:758
 msgid "Paste"
 msgstr ""
 
@@ -8857,437 +8857,437 @@ msgstr "o תויורשפא"
 
 #: lib/ui/stdmenus.inc:128
 #, fuzzy
-msgid "Clipboard as Lines|C"
-msgstr "האבה הרושה תריחב"
+msgid "Plain Text as Lines|T"
+msgstr "הקספ תביבס"
 
 #: lib/ui/stdmenus.inc:129
 #, fuzzy
-msgid "Clipboard as Paragraphs|a"
+msgid "Plain Text as Paragraphs|e"
 msgstr "הקספ תביבס"
 
-#: lib/ui/stdmenus.inc:141
+#: lib/ui/stdmenus.inc:142
 #, fuzzy
 msgid "Customized...|C"
 msgstr "הריזג"
 
-#: lib/ui/stdmenus.inc:143
+#: lib/ui/stdmenus.inc:144
 msgid "Capitalize|a"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:144
+#: lib/ui/stdmenus.inc:145
 #, fuzzy
 msgid "Uppercase|U"
 msgstr "DVI ןוכדע"
 
-#: lib/ui/stdmenus.inc:145
+#: lib/ui/stdmenus.inc:146
 msgid "Lowercase|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:152
+#: lib/ui/stdmenus.inc:153
 #, fuzzy
 msgid "Top Line|T"
 msgstr "t םיינש|#T"
 
-#: lib/ui/stdmenus.inc:153
+#: lib/ui/stdmenus.inc:154
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "b תחתמ וק"
 
-#: lib/ui/stdmenus.inc:154
+#: lib/ui/stdmenus.inc:155
 #, fuzzy
 msgid "Left Line|L"
 msgstr "l לאמשמ וק"
 
-#: lib/ui/stdmenus.inc:155
+#: lib/ui/stdmenus.inc:156
 #, fuzzy
 msgid "Right Line|R"
 msgstr "הבוג"
 
-#: lib/ui/stdmenus.inc:170
+#: lib/ui/stdmenus.inc:171
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "הקתעה"
 
-#: lib/ui/stdmenus.inc:171
+#: lib/ui/stdmenus.inc:172
 #, fuzzy
 msgid "Swap Rows|S"
 msgstr "תודומע "
 
-#: lib/ui/stdmenus.inc:175
+#: lib/ui/stdmenus.inc:176
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "u הדומע תפסוה"
 
-#: lib/ui/stdmenus.inc:176
+#: lib/ui/stdmenus.inc:177
 #, fuzzy
 msgid "Swap Columns|w"
 msgstr "תודומע "
 
-#: lib/ui/stdmenus.inc:186
+#: lib/ui/stdmenus.inc:187
 #, fuzzy
 msgid "Text Style|T"
 msgstr "ךמסמ"
 
-#: lib/ui/stdmenus.inc:190
+#: lib/ui/stdmenus.inc:191
 #, fuzzy
 msgid "Split Cell|C"
 msgstr "ות ןונגס"
 
-#: lib/ui/stdmenus.inc:192
+#: lib/ui/stdmenus.inc:193
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "חוויר"
 
-#: lib/ui/stdmenus.inc:193
+#: lib/ui/stdmenus.inc:194
 #, fuzzy
 msgid "Add Line Below|B"
 msgstr "חוויר"
 
-#: lib/ui/stdmenus.inc:194
+#: lib/ui/stdmenus.inc:195
 #, fuzzy
 msgid "Delete Line Above|D"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: lib/ui/stdmenus.inc:195
+#: lib/ui/stdmenus.inc:196
 #, fuzzy
 msgid "Delete Line Below|e"
 msgstr "w הרוש תקיחמ"
 
-#: lib/ui/stdmenus.inc:197
+#: lib/ui/stdmenus.inc:198
 #, fuzzy
 msgid "Add Line to Left"
 msgstr "l לאמשמ וק"
 
-#: lib/ui/stdmenus.inc:198
+#: lib/ui/stdmenus.inc:199
 #, fuzzy
 msgid "Add Line to Right"
 msgstr "r ןימימ וק"
 
-#: lib/ui/stdmenus.inc:199
+#: lib/ui/stdmenus.inc:200
 #, fuzzy
 msgid "Delete Line to Left"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: lib/ui/stdmenus.inc:200
+#: lib/ui/stdmenus.inc:201
 #, fuzzy
 msgid "Delete Line to Right"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: lib/ui/stdmenus.inc:210
+#: lib/ui/stdmenus.inc:211
 #, fuzzy
 msgid "Math Normal Font|N"
 msgstr "רוטיע"
 
-#: lib/ui/stdmenus.inc:212
+#: lib/ui/stdmenus.inc:213
 msgid "Math Calligraphic Family|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:213
+#: lib/ui/stdmenus.inc:214
 msgid "Math Fraktur Family|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:214
+#: lib/ui/stdmenus.inc:215
 msgid "Math Roman Family|R"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:215
+#: lib/ui/stdmenus.inc:216
 #, fuzzy
 msgid "Math Sans Serif Family|S"
 msgstr "i הפסוה"
 
-#: lib/ui/stdmenus.inc:217
+#: lib/ui/stdmenus.inc:218
 #, fuzzy
 msgid "Math Bold Series|B"
 msgstr "!TextClass תניעטב האיגש"
 
-#: lib/ui/stdmenus.inc:219
+#: lib/ui/stdmenus.inc:220
 #, fuzzy
 msgid "Text Normal Font|T"
 msgstr "רוטיע"
 
-#: lib/ui/stdmenus.inc:235
+#: lib/ui/stdmenus.inc:236
 #, fuzzy
 msgid "Octave|O"
 msgstr "רדס"
 
-#: lib/ui/stdmenus.inc:236
+#: lib/ui/stdmenus.inc:237
 msgid "Maxima|M"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:237
+#: lib/ui/stdmenus.inc:238
 #, fuzzy
 msgid "Mathematica|a"
 msgstr "הצירטמ"
 
-#: lib/ui/stdmenus.inc:239
+#: lib/ui/stdmenus.inc:240
 msgid "Maple, simplify|s"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:240
+#: lib/ui/stdmenus.inc:241
 msgid "Maple, factor|f"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:242
 msgid "Maple, evalm|e"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:242
+#: lib/ui/stdmenus.inc:243
 msgid "Maple, evalf|v"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:261
+#: lib/ui/stdmenus.inc:262
 #, fuzzy
 msgid "Open All Insets|O"
 msgstr "הביבסה קמוע יוניש"
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:263
 msgid "Close All Insets|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:264
+#: lib/ui/stdmenus.inc:265
 msgid "View Source|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:268
+#: lib/ui/stdmenus.inc:269
 #, fuzzy
 msgid "Toolbars|b"
 msgstr "t םיינש|#T"
 
-#: lib/ui/stdmenus.inc:288
+#: lib/ui/stdmenus.inc:289
 #, fuzzy
 msgid "Special Character|p"
 msgstr "ות ןונגס"
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:290
 #, fuzzy
 msgid "Formatting|o"
 msgstr "f םיטנופ:|#F"
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:291
 #, fuzzy
 msgid "List / TOC|i"
 msgstr "תואלבט תמישר תפסוה"
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:292
 msgid "Float|a"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:293
+#: lib/ui/stdmenus.inc:294
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:294
+#: lib/ui/stdmenus.inc:295
 #, fuzzy
 msgid "File|e"
 msgstr "f ץבוק|#F"
 
-#: lib/ui/stdmenus.inc:295 src/insets/insetbox.C:152
+#: lib/ui/stdmenus.inc:296 src/insets/insetbox.C:152
 msgid "Box"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:298
+#: lib/ui/stdmenus.inc:299
 #, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/stdmenus.inc:300
+#: lib/ui/stdmenus.inc:301
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "i יקפוא גוליד|#I"
 
-#: lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:302
 msgid "Glossary Entry|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:303
+#: lib/ui/stdmenus.inc:304
 #, fuzzy
 msgid "Table...|T"
 msgstr "ריינה הנבמ"
 
-#: lib/ui/stdmenus.inc:308
+#: lib/ui/stdmenus.inc:309
 #, fuzzy
 msgid "Short Title|S"
 msgstr "f ץבוק"
 
-#: lib/ui/stdmenus.inc:309
+#: lib/ui/stdmenus.inc:310
 #, fuzzy
 msgid "TeX Code|X"
 msgstr "t LaTeX|#T"
 
-#: lib/ui/stdmenus.inc:316
+#: lib/ui/stdmenus.inc:317
 msgid "Ordinary Quote|Q"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:317
+#: lib/ui/stdmenus.inc:318
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "חוויר"
 
-#: lib/ui/stdmenus.inc:319
+#: lib/ui/stdmenus.inc:320
 msgid "Phonetic Symbols|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:326
+#: lib/ui/stdmenus.inc:327
 #, fuzzy
 msgid "Protected Space|P"
 msgstr "הספדה"
 
-#: lib/ui/stdmenus.inc:329
+#: lib/ui/stdmenus.inc:330
 #, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "יקפוא רושי|#H"
 
-#: lib/ui/stdmenus.inc:330
+#: lib/ui/stdmenus.inc:331
 #, fuzzy
 msgid "Horizontal Line|L"
 msgstr "יקפוא רושי|#H"
 
-#: lib/ui/stdmenus.inc:331
+#: lib/ui/stdmenus.inc:332
 #, fuzzy
 msgid "Vertical Space...|V"
 msgstr "יכנא רושי|#V"
 
-#: lib/ui/stdmenus.inc:333
+#: lib/ui/stdmenus.inc:334
 msgid "Hyphenation Point|H"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:335
+#: lib/ui/stdmenus.inc:336
 #, fuzzy
 msgid "Line Break|B"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/stdmenus.inc:337
+#: lib/ui/stdmenus.inc:338
 #, fuzzy
 msgid "Page Break|a"
 msgstr "רפסמ ןיא"
 
-#: lib/ui/stdmenus.inc:338
+#: lib/ui/stdmenus.inc:339
 msgid "Clear Page|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:339
+#: lib/ui/stdmenus.inc:340
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:345
+#: lib/ui/stdmenus.inc:346
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "רפסמ"
 
-#: lib/ui/stdmenus.inc:355
+#: lib/ui/stdmenus.inc:356
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "c זוכרמ"
 
-#: lib/ui/stdmenus.inc:356
+#: lib/ui/stdmenus.inc:357
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "c זוכרמ"
 
-#: lib/ui/stdmenus.inc:357
+#: lib/ui/stdmenus.inc:358
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "c זוכרמ"
 
-#: lib/ui/stdmenus.inc:360
+#: lib/ui/stdmenus.inc:361
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "תואחסונ לנפ"
 
-#: lib/ui/stdmenus.inc:366
+#: lib/ui/stdmenus.inc:367
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "הלבט תסנכה"
 
-#: lib/ui/stdmenus.inc:382
+#: lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "External Material...|M"
 msgstr "הלבט תסנכה"
 
-#: lib/ui/stdmenus.inc:383
+#: lib/ui/stdmenus.inc:384
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "ךמסמ"
 
-#: lib/ui/stdmenus.inc:387
+#: lib/ui/stdmenus.inc:388
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "םיטוטיצ"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:389
 #, fuzzy
 msgid "Comment|C"
 msgstr "ךמסמ"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:390
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:401
+#: lib/ui/stdmenus.inc:402
 msgid "Change Tracking|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:404
+#: lib/ui/stdmenus.inc:405
 #, fuzzy
 msgid "Table of Contents|T"
 msgstr "םיניינעה ןכותב רופסמ קמוע:"
 
-#: lib/ui/stdmenus.inc:405
+#: lib/ui/stdmenus.inc:406
 msgid "Start Appendix Here|A"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:407
+#: lib/ui/stdmenus.inc:408
 msgid "Compressed|o"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:408
+#: lib/ui/stdmenus.inc:409
 #, fuzzy
 msgid "Settings...|S"
 msgstr "ןוויכ"
 
-#: lib/ui/stdmenus.inc:414
+#: lib/ui/stdmenus.inc:415
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "o טנופ לדוג:|#O"
 
-#: lib/ui/stdmenus.inc:415
+#: lib/ui/stdmenus.inc:416
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "r רגאמב םושר"
 
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/stdmenus.inc:417
 msgid "Accept All Changes|c"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:417
+#: lib/ui/stdmenus.inc:418
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "r רגאמב םושר"
 
-#: lib/ui/stdmenus.inc:427
+#: lib/ui/stdmenus.inc:428
 #, fuzzy
 msgid "Next Change|C"
 msgstr "(הנתשה)"
 
-#: lib/ui/stdmenus.inc:428
+#: lib/ui/stdmenus.inc:429
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "םירויא תפסוה"
 
-#: lib/ui/stdmenus.inc:435
+#: lib/ui/stdmenus.inc:436
 msgid "Save Bookmark|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:437
 msgid "Clear Bookmarks|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:447
+#: lib/ui/stdmenus.inc:448
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "ריינה הנבמ"
 
-#: lib/ui/stdmenus.inc:450
+#: lib/ui/stdmenus.inc:451
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "רוטיע"
@@ -9311,11 +9311,11 @@ msgstr "?ךמסמ רומשל"
 msgid "Print document"
 msgstr "ךמסמ אובי"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:697
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:699
 msgid "Undo"
 msgstr ""
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:708
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:710
 msgid "Redo"
 msgstr "לוטיב לוטיב"
 
@@ -9670,7 +9670,7 @@ msgstr "r רגאמב םושר"
 msgid "Next note"
 msgstr "םיטוטיצ"
 
-#: src/BufferView.C:215
+#: src/BufferView.C:217
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -9678,22 +9678,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:218 src/lyxfunc.C:862
+#: src/BufferView.C:220 src/lyxfunc.C:862
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "רומשה קתועל הרזח"
 
-#: src/BufferView.C:219 src/lyxfunc.C:863 src/lyxvc.C:175
+#: src/BufferView.C:221 src/lyxfunc.C:863 src/lyxvc.C:175
 #, fuzzy
 msgid "&Revert"
 msgstr "r רגאמב םושר"
 
-#: src/BufferView.C:219
+#: src/BufferView.C:221
 #, fuzzy
 msgid "&Switch to document"
 msgstr "ךמסמה ףוס דע הריחב"
 
-#: src/BufferView.C:241
+#: src/BufferView.C:243
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -9701,115 +9701,115 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.C:244
+#: src/BufferView.C:246
 #, fuzzy
 msgid "Create new document?"
 msgstr "?ךמסמ רומשל"
 
-#: src/BufferView.C:245
+#: src/BufferView.C:247
 #, fuzzy
 msgid "&Create"
 msgstr "c הדוקפ|#C"
 
-#: src/BufferView.C:542
+#: src/BufferView.C:544
 msgid "Save bookmark"
 msgstr ""
 
-#: src/BufferView.C:700
+#: src/BufferView.C:702
 #, fuzzy
 msgid "No further undo information"
 msgstr "רוטיע"
 
-#: src/BufferView.C:711
+#: src/BufferView.C:713
 #, fuzzy
 msgid "No further redo information"
 msgstr "רוטיע"
 
-#: src/BufferView.C:872
+#: src/BufferView.C:874
 msgid "Mark off"
 msgstr "לעפומ ןומיס"
 
-#: src/BufferView.C:879
+#: src/BufferView.C:881
 msgid "Mark on"
 msgstr "קספומ ןומיס"
 
-#: src/BufferView.C:886
+#: src/BufferView.C:888
 #, fuzzy
 msgid "Mark removed"
 msgstr "קספומ ןומיס"
 
-#: src/BufferView.C:889
+#: src/BufferView.C:891
 #, fuzzy
 msgid "Mark set"
 msgstr "קספומ ןומיס"
 
-#: src/BufferView.C:935
+#: src/BufferView.C:937
 #, c-format
 msgid "%1$d words in selection."
 msgstr ""
 
-#: src/BufferView.C:938
+#: src/BufferView.C:940
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "ךמסמה תא חותפל יתחלצה אל"
 
-#: src/BufferView.C:943
+#: src/BufferView.C:945
 msgid "One word in selection."
 msgstr ""
 
-#: src/BufferView.C:945
+#: src/BufferView.C:947
 #, fuzzy
 msgid "One word in document."
 msgstr "ןב ךמסמ חתופ - "
 
-#: src/BufferView.C:948
+#: src/BufferView.C:950
 #, fuzzy
 msgid "Count words"
 msgstr "רפסמ:"
 
-#: src/BufferView.C:1469
+#: src/BufferView.C:1470
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: src/BufferView.C:1471 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1472 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:135
-#: src/lyxfunc.C:1824 src/lyxfunc.C:1861 src/lyxfunc.C:1934
+#: src/lyxfunc.C:1826 src/lyxfunc.C:1863 src/lyxfunc.C:1936
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "ךמסמ"
 
-#: src/BufferView.C:1472 src/lyxfunc.C:1862 src/lyxfunc.C:1935
+#: src/BufferView.C:1473 src/lyxfunc.C:1864 src/lyxfunc.C:1937
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "תואמגוד"
 
-#: src/BufferView.C:1476 src/lyx_cb.C:141 src/lyxfunc.C:1829
-#: src/lyxfunc.C:1866
+#: src/BufferView.C:1477 src/lyx_cb.C:141 src/lyxfunc.C:1831
+#: src/lyxfunc.C:1868
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "ךמסמ"
 
-#: src/BufferView.C:1488 src/lyxfunc.C:1876 src/lyxfunc.C:1956
-#: src/lyxfunc.C:1970 src/lyxfunc.C:1986
+#: src/BufferView.C:1489 src/lyxfunc.C:1878 src/lyxfunc.C:1958
+#: src/lyxfunc.C:1972 src/lyxfunc.C:1988
 #, fuzzy
 msgid "Canceled."
 msgstr "לוטיב"
 
-#: src/BufferView.C:1499
+#: src/BufferView.C:1500
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "ךמסמ ףיסומ"
 
-#: src/BufferView.C:1510
+#: src/BufferView.C:1511
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "דבלב האירקל אוה ךמסמה"
 
-#: src/BufferView.C:1512
+#: src/BufferView.C:1513
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "ךמסמ ףיסוהל יתחלצה אל"
@@ -9823,7 +9823,7 @@ msgstr ""
 msgid "ChkTeX warning id # "
 msgstr ""
 
-#: src/CutAndPaste.C:405
+#: src/CutAndPaste.C:406
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9832,19 +9832,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.C:410
+#: src/CutAndPaste.C:411
 #, fuzzy
 msgid "Changed Layout"
 msgstr "ריינה הנבמ"
 
-#: src/CutAndPaste.C:429
+#: src/CutAndPaste.C:430
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:436
+#: src/CutAndPaste.C:437
 #, fuzzy
 msgid "Undefined character style"
 msgstr "ות ןונגס"
@@ -10195,7 +10195,7 @@ msgstr "דבלב האירקל אוה ךמסמה"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:459 src/text.C:297
+#: src/buffer.C:459 src/text.C:298
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "[העודי אל האיגש]"
@@ -10224,97 +10224,97 @@ msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/buffer.C:611 src/buffer.C:620
+#: src/buffer.C:610 src/buffer.C:619
 #, fuzzy
 msgid "Document could not be read"
 msgstr "ורמשנ אל םיכמסמ המכ - "
 
-#: src/buffer.C:612 src/buffer.C:621
+#: src/buffer.C:611 src/buffer.C:620
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr "ורמשנ אל םיכמסמ המכ - "
 
-#: src/buffer.C:629 src/buffer.C:696
+#: src/buffer.C:628 src/buffer.C:695
 #, fuzzy
 msgid "Document format failure"
 msgstr "ךמסמ"
 
-#: src/buffer.C:630
+#: src/buffer.C:629
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "ךמסמה תא חותפל יתחלצה אל"
 
-#: src/buffer.C:649
+#: src/buffer.C:648
 #, fuzzy
 msgid "Conversion failed"
 msgstr "םיטוטיצ"
 
-#: src/buffer.C:650
+#: src/buffer.C:649
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/buffer.C:659
+#: src/buffer.C:658
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "[ץבוק ןיא]"
 
-#: src/buffer.C:660
+#: src/buffer.C:659
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/buffer.C:681
+#: src/buffer.C:680
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "םיטוטיצ"
 
-#: src/buffer.C:682
+#: src/buffer.C:681
 #, c-format
 msgid ""
 "%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/buffer.C:697
+#: src/buffer.C:696
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:733
+#: src/buffer.C:732
 #, fuzzy
 msgid "Backup failure"
 msgstr "לדחמ תרירב"
 
-#: src/buffer.C:734
+#: src/buffer.C:733
 #, c-format
 msgid ""
 "LyX was not able to make a backup copy in %1$s.\n"
 "Please check if the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:847
+#: src/buffer.C:846
 #, fuzzy
 msgid "Encoding error"
 msgstr "d דודיק:|#D"
 
-#: src/buffer.C:848
+#: src/buffer.C:847
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:857
+#: src/buffer.C:856
 #, fuzzy
 msgid "Error closing file"
 msgstr "m (Multicolumn)ירוט בר"
 
-#: src/buffer.C:858
+#: src/buffer.C:857
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -10322,15 +10322,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1116
+#: src/buffer.C:1115
 msgid "Running chktex..."
 msgstr ""
 
-#: src/buffer.C:1129
+#: src/buffer.C:1128
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1130
+#: src/buffer.C:1129
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr ".הלבט רוזגל לוכי אל"
@@ -10704,7 +10704,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "p תספדמ|#P"
 
-#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1983
+#: src/exporter.C:87 src/lyx_cb.C:169 src/lyxfunc.C:1985
 #, fuzzy
 msgid "&Over-write"
 msgstr "p תספדמ|#P"
@@ -10913,25 +10913,25 @@ msgstr "רויאל קיר ריתנ"
 msgid "Total Height"
 msgstr "הקתעה"
 
-#: src/frontends/controllers/ControlDocument.C:44
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.C:49
+#: src/frontends/controllers/character.C:33 src/lyxfont.C:53
 #, fuzzy
 msgid "Roman"
 msgstr "בוביס"
 
-#: src/frontends/controllers/ControlDocument.C:44
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.C:49
+#: src/frontends/controllers/character.C:37 src/lyxfont.C:53
 #, fuzzy
 msgid "Sans Serif"
 msgstr "i הפסוה"
 
-#: src/frontends/controllers/ControlDocument.C:44
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
+#: src/frontends/controllers/ControlDocument.C:49
+#: src/frontends/controllers/character.C:41 src/lyxfont.C:53
 #, fuzzy
 msgid "Typewriter"
 msgstr "p תספדמ|#P"
 
-#: src/frontends/controllers/ControlErrorList.C:51
+#: src/frontends/controllers/ControlErrorList.C:56
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr ""
@@ -11197,26 +11197,26 @@ msgstr "(הנתשה)"
 msgid "Reset"
 msgstr "i הפסוה"
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:63 src/lyxfont.C:58
 #, fuzzy
 msgid "Medium"
 msgstr "ליגר|#M"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
+#: src/frontends/controllers/character.C:67 src/lyxfont.C:58
 #, fuzzy
 msgid "Bold"
 msgstr "(Build program) תינכות תיינב"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
+#: src/frontends/controllers/character.C:89 src/lyxfont.C:61
 #, fuzzy
 msgid "Upright"
 msgstr "הקתעה"
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
+#: src/frontends/controllers/character.C:93 src/lyxfont.C:61
 msgid "Italic"
 msgstr ""
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:61
 #, fuzzy
 msgid "Slanted"
 msgstr "ףלחה"
@@ -11226,12 +11226,12 @@ msgstr "ףלחה"
 msgid "Small Caps"
 msgstr "תונוש"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:163 src/lyxfont.C:66
 #, fuzzy
 msgid "Increase"
 msgstr "הביבסה קמוע תלדגה"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:167 src/lyxfont.C:66
 #, fuzzy
 msgid "Decrease"
 msgstr "הביבסה קמוע יוניש"
@@ -11399,11 +11399,11 @@ msgid "Activated"
 msgstr ""
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:617
+#: src/frontends/qt4/QDocumentDialog.C:618
 msgid "Yes"
 msgstr ""
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:616
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:617
 #, fuzzy
 msgid "No"
 msgstr "םש"
@@ -11483,7 +11483,7 @@ msgstr "חותפ ךמסמ ןיא%t"
 msgid "Length"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1598
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1602
 msgid "OneHalf"
 msgstr ""
 
@@ -11495,7 +11495,7 @@ msgstr ""
 
 #: src/frontends/qt4/QDocumentDialog.C:161
 #: src/frontends/qt4/QDocumentDialog.C:187
-#: src/frontends/qt4/QDocumentDialog.C:526
+#: src/frontends/qt4/QDocumentDialog.C:527
 #, fuzzy
 msgid "default"
 msgstr "לדחמ תרירב"
@@ -11649,7 +11649,7 @@ msgid "Branches"
 msgstr "הקספ תביבס"
 
 #: src/frontends/qt4/QDocumentDialog.C:397
-#: src/frontends/qt4/QDocumentDialog.C:413
+#: src/frontends/qt4/QDocumentDialog.C:414
 #, fuzzy
 msgid "LaTeX Preamble"
 msgstr "LaTeX תמדקה"
@@ -12245,7 +12245,7 @@ msgstr "םיטוטיצ"
 msgid "Opened Footnote Inset"
 msgstr "הביבסה קמוע יוניש"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:444
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:443
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -12276,7 +12276,7 @@ msgstr ""
 msgid "Verbatim Input*"
 msgstr ""
 
-#: src/insets/insetinclude.C:411
+#: src/insets/insetinclude.C:410
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -12284,7 +12284,7 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/insetinclude.C:417
+#: src/insets/insetinclude.C:416
 msgid "Different textclasses"
 msgstr ""
 
@@ -12414,12 +12414,12 @@ msgstr ""
 msgid "Opened table"
 msgstr "הרזע ץבוק תחיתפ"
 
-#: src/insets/insettabular.C:1569
+#: src/insets/insettabular.C:1587
 #, fuzzy
 msgid "Error setting multicolumn"
 msgstr "m (Multicolumn)ירוט בר"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1588
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
@@ -12681,12 +12681,12 @@ msgstr "f ץבוק"
 msgid "Choose a filename to save document as"
 msgstr "שדחה ךמסמל ץבוק םש דלקה"
 
-#: src/lyx_cb.C:136 src/lyxfunc.C:1825
+#: src/lyx_cb.C:136 src/lyxfunc.C:1827
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "רויאל קיר ריתנ"
 
-#: src/lyx_cb.C:166 src/lyxfunc.C:1980
+#: src/lyx_cb.C:166 src/lyxfunc.C:1982
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12694,7 +12694,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:168 src/lyxfunc.C:1982
+#: src/lyx_cb.C:168 src/lyxfunc.C:1984
 #, fuzzy
 msgid "Over-write document?"
 msgstr "?ךמסמ רומשל"
@@ -12914,75 +12914,75 @@ msgstr "אובייל LaTeX ץבוק תריחב"
 msgid "Missing filename for --import"
 msgstr "אובייל LaTeX ץבוק תריחב"
 
-#: src/lyxfind.C:136
+#: src/lyxfind.C:137
 #, fuzzy
 msgid "Search error"
 msgstr "t LaTeX|#T"
 
-#: src/lyxfind.C:137
+#: src/lyxfind.C:138
 msgid "Search string is empty"
 msgstr ""
 
-#: src/lyxfind.C:288 src/lyxfind.C:319
+#: src/lyxfind.C:289 src/lyxfind.C:320
 msgid "String not found!"
 msgstr "!האצמנ אל תזורחמה"
 
-#: src/lyxfind.C:323
+#: src/lyxfind.C:324
 #, fuzzy
 msgid "String has been replaced."
 msgstr " :ופלחוהש תוזורחמה רפסמ"
 
-#: src/lyxfind.C:326
+#: src/lyxfind.C:327
 msgid " strings have been replaced."
 msgstr " :ופלחוהש תוזורחמה רפסמ"
 
-#: src/lyxfont.C:52
+#: src/lyxfont.C:53
 msgid "Symbol"
 msgstr ""
 
-#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:60 src/lyxfont.C:66
-#: src/lyxfont.C:69
+#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:61 src/lyxfont.C:67
+#: src/lyxfont.C:70
 #, fuzzy
 msgid "Inherit"
 msgstr "i הפסוה"
 
-#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:61 src/lyxfont.C:66
-#: src/lyxfont.C:69
+#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:62 src/lyxfont.C:67
+#: src/lyxfont.C:70
 #, fuzzy
 msgid "Ignore"
 msgstr "םיטוטיצ"
 
-#: src/lyxfont.C:60
+#: src/lyxfont.C:61
 #, fuzzy
 msgid "Smallcaps"
 msgstr "תונוש"
 
-#: src/lyxfont.C:69
+#: src/lyxfont.C:70
 #, fuzzy
 msgid "Toggle"
 msgstr "(bold) הבע (toggle) יוניש"
 
-#: src/lyxfont.C:509
+#: src/lyxfont.C:510
 #, fuzzy, c-format
 msgid "Emphasis %1$s, "
 msgstr "השגדה"
 
-#: src/lyxfont.C:512
+#: src/lyxfont.C:513
 #, c-format
 msgid "Underline %1$s, "
 msgstr ""
 
-#: src/lyxfont.C:515
+#: src/lyxfont.C:516
 #, fuzzy, c-format
 msgid "Noun %1$s, "
 msgstr "םש"
 
-#: src/lyxfont.C:520
+#: src/lyxfont.C:521
 #, fuzzy, c-format
 msgid "Language: %1$s, "
 msgstr "הפש:"
 
-#: src/lyxfont.C:523
+#: src/lyxfont.C:524
 #, fuzzy, c-format
 msgid "  Number %1$s"
 msgstr "רפסמ"
@@ -13073,7 +13073,7 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1066 src/text3.C:1216
+#: src/lyxfunc.C:1066 src/text3.C:1217
 msgid "Missing argument"
 msgstr "טנמוגרא רסח"
 
@@ -13110,37 +13110,37 @@ msgstr "ריינ הנבמ (set) תצובק"
 msgid "Converting document to new document class..."
 msgstr "ךמסמ ףיסומ"
 
-#: src/lyxfunc.C:1822
+#: src/lyxfunc.C:1824
 #, fuzzy
 msgid "Select template file"
 msgstr "האבה הרושה תריחב"
 
-#: src/lyxfunc.C:1859
+#: src/lyxfunc.C:1861
 #, fuzzy
 msgid "Select document to open"
 msgstr "החיתפל ךמסמ רחב"
 
-#: src/lyxfunc.C:1898
+#: src/lyxfunc.C:1900
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "ךמסמ חתופ"
 
-#: src/lyxfunc.C:1902
+#: src/lyxfunc.C:1904
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "חותפ ךמסמ ןיא%t"
 
-#: src/lyxfunc.C:1904
+#: src/lyxfunc.C:1906
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "ךמסמה תא חותפל יתחלצה אל"
 
-#: src/lyxfunc.C:1929
+#: src/lyxfunc.C:1931
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: src/lyxfunc.C:2046
+#: src/lyxfunc.C:2048
 msgid "Welcome to LyX!"
 msgstr "!LyX-ל םיאבה םיכורב"
 
@@ -13656,7 +13656,7 @@ msgstr ""
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.C:1323 src/text3.C:185
+#: src/mathed/InsetMathHull.C:1323 src/text3.C:184
 msgid "Math editor mode"
 msgstr "תואחסונ בצמ"
 
@@ -13834,106 +13834,111 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "p תספדמ|#P"
 
-#: src/text.C:133
+#: src/text.C:134
 #, fuzzy
 msgid "Unknown layout"
 msgstr "רכומ אל ףצר:"
 
-#: src/text.C:134
+#: src/text.C:135
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:165
+#: src/text.C:166
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "[העודי אל האיגש]"
 
-#: src/text.C:275 src/text.C:288
+#: src/text.C:276 src/text.C:289
 #, fuzzy
 msgid "Change tracking error"
 msgstr "רפסמ ןיא"
 
-#: src/text.C:276
+#: src/text.C:277
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:289
+#: src/text.C:290
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:296
+#: src/text.C:297
 #, fuzzy
 msgid "Unknown token"
 msgstr "[העודי אל האיגש]"
 
-#: src/text.C:730
+#: src/text.C:733
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ".דומילה ךמסמ תא אורקל ץלמומ .הקספ תליחתב חוור ףיסוהל רשפא יא"
 
-#: src/text.C:741
+#: src/text.C:744
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ".דומילה ךמסמ תא אורקל ץלמומ .םיפוצר םיחוור ינש דילקהל רשפא יא"
 
-#: src/text.C:1567
+#: src/text.C:1565
+#, fuzzy
+msgid "[Change Tracking] "
+msgstr "רפסמ ןיא"
+
+#: src/text.C:1571
 #, fuzzy
 msgid "Change: "
 msgstr "םיפד:"
 
-#: src/text.C:1571
+#: src/text.C:1575
 #, fuzzy
 msgid " at "
 msgstr " לש "
 
-#: src/text.C:1581
+#: src/text.C:1585
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "רפסמ:"
 
-#: src/text.C:1586
+#: src/text.C:1590
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr "רפסמ:"
 
-#: src/text.C:1592
+#: src/text.C:1596
 #, fuzzy
 msgid ", Spacing: "
 msgstr "חוויר"
 
-#: src/text.C:1604
+#: src/text.C:1608
 #, fuzzy
 msgid "Other ("
 msgstr "רדס"
 
-#: src/text.C:1613
+#: src/text.C:1617
 #, fuzzy
 msgid ", Inset: "
 msgstr "הספדה"
 
-#: src/text.C:1614
+#: src/text.C:1618
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "הקספ תביבס"
 
-#: src/text.C:1615
+#: src/text.C:1619
 #, fuzzy
 msgid ", Id: "
 msgstr "הספדה"
 
-#: src/text.C:1616
+#: src/text.C:1620
 #, fuzzy
 msgid ", Position: "
 msgstr "x תופסונ תויורשפא:|#X"
 
-#: src/text.C:1617
+#: src/text.C:1621
 msgid ", Boundary: "
 msgstr ""
 
@@ -13952,27 +13957,27 @@ msgstr ""
 msgid "Cannot index more than one paragraph!"
 msgstr "!דבלב תחא הקספ ליכהל לוכי הלבטב את"
 
-#: src/text3.C:686
+#: src/text3.C:685
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "טנמוגרא רסח"
 
-#: src/text3.C:837
+#: src/text3.C:836
 #, fuzzy
 msgid "Layout "
 msgstr "l הנבמ"
 
-#: src/text3.C:838
+#: src/text3.C:837
 #, fuzzy
 msgid " not known"
 msgstr "עודי אל"
 
-#: src/text3.C:1321 src/text3.C:1333
+#: src/text3.C:1322 src/text3.C:1334
 #, fuzzy
 msgid "Character set"
 msgstr "ות ןונגס"
 
-#: src/text3.C:1464
+#: src/text3.C:1465
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "o תויורשפא"
@@ -14005,7 +14010,3 @@ msgstr "יכנא רושי|#V"
 #, fuzzy
 msgid "protected"
 msgstr "!רעטצמ"
-
-#, fuzzy
-#~ msgid "Paste External Clipboard/Selection"
-#~ msgstr "x תופסונ תויורשפא:|#X"
