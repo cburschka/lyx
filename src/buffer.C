@@ -1650,7 +1650,6 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
-        /* Support for docbook temprarily commented out. */
 	if (full_source) {
 		os << "% Preview source code\n\n";
 		if (isLatex())
