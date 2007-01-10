@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-# -*- coding: utf-8 -*-
 
 # file fen2ascii.py
 # This file is part of LyX, the document processor.
@@ -12,23 +11,12 @@
 # This script will convert a chess position in the FEN
 # format to an ascii representation of the position.
 
-import sys, string, os, locale
-
-# We expect two args, the names of the input and output files.
-if len(sys.argv) != 3:
-    sys.exit(1)
-
-language, output_encoding = locale.getdefaultlocale()
-if output_encoding == None:
-    output_encoding = 'latin1'
-
-input = unicode(sys.argv[1], 'utf8').encode(output_encoding)
-output = unicode(sys.argv[2], 'utf8').encode(output_encoding)
+import sys,string,os
 
 os.close(0)
 os.close(1)
-sys.stdin = open(input, "r")
-sys.stdout = open(output, "w")
+sys.stdin = open(sys.argv[1],"r")
+sys.stdout = open(sys.argv[2],"w")
 
 line = sys.stdin.readline()
 if line[-1] == '\n':

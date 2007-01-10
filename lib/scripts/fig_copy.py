@@ -18,31 +18,24 @@
 # picture files that are stored as relative paths are replaced
 # with the absolute path.
 
-import os, sys, locale
+import os, sys
 
 if len(sys.argv) != 3:
     print >> sys.stderr, "Usage: fig_copy.py <from file> <to file>"
     sys.exit(1)
 
-language, output_encoding = locale.getdefaultlocale()
-if output_encoding == None:
-    output_encoding = 'latin1'
-
-from_file = unicode(sys.argv[1], 'utf8').encode(output_encoding)
-to_file = unicode(sys.argv[2], 'utf8').encode(output_encoding)
-
-if not os.path.isfile(from_file):
-    print >> sys.stderr, "Unable to read", from_file
+if not os.path.isfile(sys.argv[1]):
+    print >> sys.stderr, "Unable to read", sys.argv[1]
     sys.exit(1)
 
-from_dir = os.path.split(os.path.realpath(from_file))[0]
-to_dir = os.path.split(os.path.realpath(to_file))[0]
+from_dir = os.path.split(os.path.realpath(sys.argv[1]))[0]
+to_dir = os.path.split(os.path.realpath(sys.argv[2]))[0]
 
 # The work is trivial if "to" and "from" are in the same directory.
 if from_dir == to_dir:
     import shutil
     try:
-        shutil.copy(from_file, to_file)
+        shutil.copy(sys.argv[1], sys.argv[2])
     except:
         sys.exit(1)
     sys.exit(0)
@@ -59,8 +52,8 @@ commentline = re.compile(r'^\s*#.*$')
 # we allow space in path name
 figureline  = re.compile(r'^(\s*[01]\s*)(\S[\S ]*)(\s*)$')
 
-input = open(from_file, 'r')
-output = open(to_file, 'w')
+input = open(sys.argv[1], 'r')
+output = open(sys.argv[2], 'w')
 
 # path in the fig is relative to this path
 os.chdir(from_dir)
