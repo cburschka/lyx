@@ -683,8 +683,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				if (line_count <= 5) {
 					// FIXME UNICODE
 					// We have no idea what the encoding of
-					// the log file is, but it is safe to
-					// assume it is the current locale one.
+					// the log file is.
+					// It seems that the output from the
+					// latex compiler itself is pure ASCII,
+					// but it can include bits from the
+					// document, so whatever encoding we
+					// assume here it can be wrong.
 					terr.insertError(line, from_local8bit(desc), from_local8bit(errstr));
 					++num_errors;
 				}
