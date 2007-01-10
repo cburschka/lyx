@@ -48,7 +48,7 @@ void QErrorList::select(QListWidgetItem * wi)
 
 void QErrorList::update_contents()
 {
-	setTitle(lyx::from_ascii(controller().name()));
+	setTitle(lyx::from_utf8(controller().name()));
 	dialog_->errorsLW->clear();
 	dialog_->descriptionTB->setPlainText(QString());
 
