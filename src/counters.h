@@ -38,7 +38,7 @@ public:
 	///
 	void reset();
 	/// Returns the master counter of this counter
-	lyx::docstring master() const;
+	lyx::docstring const & master() const;
 	/// sets the master counter for this counter
 	void setMaster(lyx::docstring const & m);
 private:

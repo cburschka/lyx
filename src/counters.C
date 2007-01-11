@@ -66,7 +66,7 @@ void Counter::reset()
 }
 
 
-docstring Counter::master() const
+docstring const & Counter::master() const
 {
 	return master_;
 }
@@ -318,12 +318,13 @@ docstring Counters::counterLabel(docstring const & format)
 		if (j == docstring::npos)
 			break;
 		size_t const k = label.find('}', j + 1);
-		if (k == string::npos)
+		if (k == docstring::npos)
 			break;
 		docstring const numbertype(label, i + 1, j - i - 1);
 		docstring const counter(label, j + 1, k - j - 1);
 		docstring const rep = labelItem(counter, numbertype);
-		label = docstring(label, 0, i) + rep + docstring(label, k + 1, string::npos);
+		label = docstring(label, 0, i) + rep 
+			+ docstring(label, k + 1, docstring::npos);
 		//lyxerr << "  : " << " (" << counter  << ","
 		//	<< numbertype << ") -> " << label << endl;
 	}
