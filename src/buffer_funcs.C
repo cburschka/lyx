@@ -473,17 +473,16 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
-		docstring type;
 		size_t i = it.depth();
+		InsetBase * in;
 		while (i > 0) {
 			--i;
-			InsetBase * const in = &it[i].inset();
+			in = &it[i].inset();
 			if (in->lyxCode() == InsetBase::FLOAT_CODE
-			    || in->lyxCode() == InsetBase::WRAP_CODE) {
-				type = in->getInsetName();
+			    || in->lyxCode() == InsetBase::WRAP_CODE)
 				break;
-			}
 		}
+		docstring const & type = in->getInsetName();
 
 		docstring s;
 		if (!type.empty()) {
