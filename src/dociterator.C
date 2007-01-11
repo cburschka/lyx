@@ -297,8 +297,9 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 		if (inMathed()) {
 			n = (tip.cell().begin() + tip.pos())->nucleus();
 		} else {
-			if (paragraph().isInset(tip.pos()))
-				n = paragraph().getInset(tip.pos());
+			// InsetList::get() will return a null pointer if there's
+			// no inset at this position.
+			n = paragraph().getInset(tip.pos());
 		}
 	}
 
