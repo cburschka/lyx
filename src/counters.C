@@ -277,29 +277,32 @@ docstring const romanCounter(int const n)
 docstring Counters::labelItem(docstring const & ctr,
 			      docstring const & numbertype)
 {
-	if (counterList.find(ctr) == counterList.end()) {
+	CounterList::const_iterator const cit = counterList.find(ctr);
+	if (cit == counterList.end()) {
 		lyxerr << "Counter "
 		       << to_utf8(ctr)
 		       << " does not exist." << endl;
 		return docstring();
 	}
 
+	int val = cit->second.value();
+
 	if (numbertype == "hebrew")
-		return docstring(1, hebrewCounter(value(ctr)));
+		return docstring(1, hebrewCounter(val));
 
 	if (numbertype == "alph")
-		return docstring(1, loweralphaCounter(value(ctr)));
+		return docstring(1, loweralphaCounter(val));
 
 	if (numbertype == "Alph")
-		return docstring(1, alphaCounter(value(ctr)));
+		return docstring(1, alphaCounter(val));
 
 	if (numbertype == "roman")
-		return lowerromanCounter(value(ctr));
+		return lowerromanCounter(val);
 
 	if (numbertype == "Roman")
-		return romanCounter(value(ctr));
+		return romanCounter(val);
 
-	return convert<docstring>(value(ctr));
+	return convert<docstring>(val);
 }
 
 
