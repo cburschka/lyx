@@ -707,12 +707,14 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		// environment.
 
 		pit_type prev = depthHook(pit, pars, par.getDepth());
-		if (prev != pit
-		    && pars[prev].layout() == layout
-		    && pars[prev].getDepth() == par.getDepth()
-		    && pars[prev].getLabelWidthString() == par.getLabelWidthString())
-		{
-			layoutasc = layout->itemsep * dh;
+		if (prev != pit) {
+			Paragraph const & prevpar = pars[prev];
+			if (prevpar.layout() == layout
+				&& prevpar.getDepth() == par.getDepth()
+				&& prevpar.getLabelWidthString()
+					== par.getLabelWidthString()) {
+					layoutasc = layout->itemsep * dh;
+			}
 		} else if (pit != 0 || row.pos() != 0) {
 			if (layout->topsep > 0)
 				layoutasc = layout->topsep * dh;
@@ -722,8 +724,9 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		if (prev != pit_type(pars.size())) {
 			maxasc += int(pars[prev].layout()->parsep * dh);
 		} else if (pit != 0) {
-			if (pars[pit - 1].getDepth() != 0 ||
-					pars[pit - 1].layout() == layout) {
+			Paragraph const & prevpar = pars[pit - 1];
+			if (prevpar.getDepth() != 0 ||
+					prevpar.layout() == layout) {
 				maxasc += int(layout->parsep * dh);
 			}
 		}
