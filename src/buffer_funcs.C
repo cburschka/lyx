@@ -372,9 +372,6 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 	// Compute the item depth of the paragraph
 	par.itemdepth = getItemDepth(it);
 
-	// erase what was there before
-	par.params().labelString(docstring());
-
 	if (layout->margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
 			par.setLabelWidthString(buf.translateLabel(layout->labelstring()));
@@ -382,23 +379,28 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 		par.setLabelWidthString(docstring());
 	}
 
+	// Optimisation: setLabel() can be called for each for each
+	// paragraph of the document. So we make the string static to
+	// avoid the repeated instanciation.
+	static docstring itemlabel;
+
 	// is it a layout that has an automatic label?
 	if (layout->labeltype == LABEL_COUNTER) {
 		if (layout->toclevel <= buf.params().secnumdepth
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout->counter);
-			docstring label = expandLabel(buf, layout,
+			itemlabel = expandLabel(buf, layout,
 						      par.params().appendix());
-			par.params().labelString(label);
-		}
+		} else
+			itemlabel.clear();
+
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
 		// At some point of time we should do something more
 		// clever here, like:
 		//   par.params().labelString(
 		//    buf.params().user_defined_bullet(par.itemdepth).getText());
 		// for now, use a simple hardcoded label
-		docstring itemlabel;
 		switch (par.itemdepth) {
 		case 0:
 			itemlabel = char_type(0x2022);
@@ -410,11 +412,10 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 			itemlabel = char_type(0x2217);
 			break;
 		case 3:
-			itemlabel += char_type(0x2219); // or 0x00b7
+			itemlabel = char_type(0x2219); // or 0x00b7
 			break;
 		}
 
-		par.params().labelString(itemlabel);
 	} else if (layout->labeltype == LABEL_ENUMERATE) {
 		// FIXME
 		// Yes I know this is a really, really! bad solution
@@ -463,13 +464,15 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 			break;
 		}
 
-		par.params().labelString(counters.counterLabel(buf.B_(format)));
+		itemlabel = counters.counterLabel(buf.B_(format));
+
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step(from_ascii("bibitem"));
 		int number = counters.value(from_ascii("bibitem"));
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
-		par.params().labelString(buf.translateLabel(layout->labelstring()));
+
+		itemlabel = buf.translateLabel(layout->labelstring());
 		// In biblio should't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
@@ -484,24 +487,24 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 		}
 		docstring const & type = in->getInsetName();
 
-		docstring s;
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(to_ascii(type));
 			// FIXME UNICODE
 			counters.step(from_ascii(fl.type()));
 
 			// Doesn't work... yet.
-			s = bformat(_("%1$s #:"), buf.B_(fl.name()));
+			itemlabel = bformat(_("%1$s #:"), buf.B_(fl.name()));
 		} else {
 			// par->SetLayout(0);
-			s = buf.translateLabel(layout->labelstring());
+			itemlabel = buf.translateLabel(layout->labelstring());
 		}
 
-		par.params().labelString(s);
 	} else if (layout->labeltype == LABEL_NO_LABEL)
-		par.params().labelString(docstring());
+		itemlabel.clear();
 	else
-		par.params().labelString(buf.translateLabel(layout->labelstring()));
+		itemlabel = buf.translateLabel(layout->labelstring());
+
+	par.params().labelString(itemlabel);
 }
 
 } // anon namespace
