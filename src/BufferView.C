@@ -188,7 +188,6 @@ void BufferView::setBuffer(Buffer * b)
 				    << "Buffer addr: " << buffer_ << endl;
 		cursor_.push(buffer_->inset());
 		cursor_.resetAnchor();
-		updateLabels(*buffer_);
 		buffer_->text().setCurrentFont(cursor_);
 		if (buffer_->getCursor().size() > 0 &&
 		    buffer_->getAnchor().size() > 0)
@@ -258,6 +257,8 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 	// Send the "errors" signal in case of parsing errors
 	b->errors("Parse");
 
+	// Update the labels and section numbering.
+	updateLabels(*buffer_);
 	// scroll to the position when the file was last closed
 	if (lyxrc.use_lastfilepos) {
 		pit_type pit;
