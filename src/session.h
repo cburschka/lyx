@@ -179,15 +179,23 @@ public:
 	public:
 		/// Filename
 		support::FileName filename;
-		/// Cursor paragraph Id
+		/// Cursor pit, will be saved/restored by .lyx/session
+		pit_type par_pit;
+		/// Cursor paragraph Id, used to lcoate bookmarks for opened files
 		int par_id;
-		/// Cursor position
+		/// Cursor position within a paragraph
 		pos_type par_pos;
 		///
 		Bookmark() : par_id(0), par_pos(0) {}
 		///
-		Bookmark(support::FileName const & f, int id, pos_type pos)
-			: filename(f), par_id(id), par_pos(pos) {}
+		Bookmark(support::FileName const & f, pit_type pit, int id, pos_type pos)
+			: filename(f), par_pit(pit), par_id(id), par_pos(pos) {}
+		/// set bookmark par_id, this is because newly loaded bookmark
+		/// may have zero par_id and par_pit can change during editing, see bug 3092
+		void setPos(pit_type pit, int id) { 
+			par_pit = pit;
+			par_id = id;
+		}
 	};
 
 	///
@@ -200,7 +208,7 @@ public:
 
 	/// Save the current position as bookmark
 	/// if save==false, save to temp_bookmark
-	void save(support::FileName const & fname, int par_id, pos_type par_pos, bool persistent);
+	void save(support::FileName const & fname, pit_type pit, int par_id, pos_type par_pos, bool persistent);
 
 	/// return bookmark, return temp_bookmark if i==0
 	Bookmark const & bookmark(unsigned int i) const;

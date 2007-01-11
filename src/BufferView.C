@@ -264,22 +264,10 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		pit_type pit;
 		pos_type pos;
 		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
-		// I am not sure how to separate the following part to a function
-		// so I will leave this to Lars.
-		//
-		// check pit since the document may be externally changed.
-		if ( static_cast<size_t>(pit) < b->paragraphs().size() ) {
-			ParIterator it = b->par_iterator_begin();
-			ParIterator const end = b->par_iterator_end();
-			for (; it != end; ++it)
-				if (it.pit() == pit) {
-					// restored pos may be bigger than it->size
-					setCursor(makeDocIterator(it, min(pos, it->size())));
-					// No need to update the metrics if fitCursor returns false.
-					if (fitCursor())
-						updateMetrics(false);
-					break;
-				}
+		// if successfully move to pit (returned par_id is not zero), update metrics
+		if (moveToPosition(pit, 0, pos).get<1>()) {
+			if (fitCursor())
+				updateMetrics(false);
 		}
 	}
 
@@ -536,6 +524,7 @@ void BufferView::saveBookmark(bool persistent)
 {
 	LyX::ref().session().bookmarks().save(
 		FileName(buffer_->fileName()),
+		cursor_.pit(),
 		cursor_.paragraph().id(),
 		cursor_.pos(),
 		persistent
@@ -546,15 +535,31 @@ void BufferView::saveBookmark(bool persistent)
 }
 
 
-void BufferView::moveToPosition(int par_id, pos_type par_pos)
+boost::tuple<pit_type, int> BufferView::moveToPosition(pit_type par_pit, int par_id, pos_type par_pos)
 {
 	cursor_.clearSelection();
 
-	ParIterator par = buffer_->getParFromID(par_id);
-	if (par == buffer_->par_iterator_end())
-		return;
-
-	setCursor(makeDocIterator(par, min(par->size(), par_pos)));
+	// if a valid par_id is given, try it first
+	if (par_id > 0) {
+		ParIterator par = buffer_->getParFromID(par_id);
+		if (par != buffer_->par_iterator_end()) {
+			setCursor(makeDocIterator(par, min(par->size(), par_pos)));
+			return boost::make_tuple(cursor_.pit(), par_id);
+		}
+	}
+	// if par_id == 0, or searching through par_id failed
+	if (static_cast<size_t>(par_pit) < buffer_->paragraphs().size()) {
+		ParIterator it = buffer_->par_iterator_begin();
+		ParIterator const end = buffer_->par_iterator_end();
+		for (; it != end; ++it)
+			if (it.pit() == par_pit) {
+				// restored pos may be bigger than it->size
+				setCursor(makeDocIterator(it, min(par_pos, it->size())));
+				return boost::make_tuple(par_pit, it->id());
+			}
+	}
+	// both methods fail
+	return boost::make_tuple(pit_type(0), 0);
 }
 
 

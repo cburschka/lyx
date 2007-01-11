@@ -23,6 +23,7 @@
 
 #include "support/types.h"
 
+#include <boost/tuple/tuple.hpp>
 #include <boost/utility.hpp>
 #include <boost/signal.hpp>
 
@@ -116,8 +117,10 @@ public:
 	/// Save the current position as bookmark.
 	/// if persistent=false, save to temp_bookmark
 	void saveBookmark(bool persistent);
-	/// goto a specified position.
-	void moveToPosition(
+	/// goto a specified position, try par_id first, and then par_pit
+	/// return the par_pit and par_id of the new paragraph
+	boost::tuple<pit_type, int> moveToPosition(
+		pit_type par_pit, ///< Paragraph pit, used when par_id is zero or invalid.
 		int par_id, ///< Paragraph ID, \sa Paragraph
 		pos_type par_pos ///< Position in the \c Paragraph
 		);

@@ -242,6 +242,42 @@ void LyXFunc::handleKeyFunc(kb_action action)
 }
 
 
+void LyXFunc::gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer)
+{
+	BOOST_ASSERT(lyx_view_);
+	if (!LyX::ref().session().bookmarks().isValid(idx))
+		return;
+	BookmarksSection::Bookmark const & bm = LyX::ref().session().bookmarks().bookmark(idx);
+	BOOST_ASSERT(!bm.filename.empty());
+	string const file = bm.filename.absFilename();
+	// if the file is not opened, open it.
+	if (!theBufferList().exists(file)) {
+		if (openFile)
+			dispatch(FuncRequest(LFUN_FILE_OPEN, file));
+		else
+			return;
+	}
+	// open may fail, so we need to test it again
+	if (theBufferList().exists(file)) {
+		// if the current buffer is not that one, switch to it.
+		if (lyx_view_->buffer()->fileName() != file) {
+			if (switchToBuffer)
+				dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
+			else
+				return;
+		}
+		// moveToPosition use par_id, and par_pit and return new par_id.
+		pit_type new_pit;
+		int new_id;
+		boost::tie(new_pit, new_id) = view()->moveToPosition(bm.par_pit, bm.par_id, bm.par_pos);
+		// if par_id or pit has been changed, reset par_pit and par_id
+		// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
+		if (bm.par_pit != new_pit || bm.par_id != new_id)
+			const_cast<BookmarksSection::Bookmark &>(bm).setPos(new_pit, new_id);
+	} 
+}
+
+
 void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 {
 	lyxerr[Debug::KEY] << "KeySym is " << keysym->getSymbolName() << endl;
@@ -1126,6 +1162,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- buffers ----------------------------------------
 		case LFUN_BUFFER_SWITCH:
 			BOOST_ASSERT(lyx_view_);
+			// update bookmark pit of the current buffer before switch
+			for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+				gotoBookmark(i+1, false, false);			
 			lyx_view_->setBuffer(theBufferList().getBuffer(argument));
 			break;
 
@@ -1664,33 +1703,19 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_WINDOW_CLOSE:
 			BOOST_ASSERT(lyx_view_);
 			BOOST_ASSERT(theApp());
+			// update bookmark pit of the current buffer before window close
+			for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+				gotoBookmark(i+1, false, false);
 			// ask the user for saving changes or cancel quit
 			if (!theBufferList().quitWriteAll())
 				break;
 			lyx_view_->close();
 			return;
 
-		case LFUN_BOOKMARK_GOTO: {
-			BOOST_ASSERT(lyx_view_);
-			unsigned int idx = convert<unsigned int>(to_utf8(cmd.argument()));
-			if (!LyX::ref().session().bookmarks().isValid(idx))
-				break;
-			BookmarksSection::Bookmark const bm = LyX::ref().session().bookmarks().bookmark(idx);
-			BOOST_ASSERT(!bm.filename.empty());
-			string const file = bm.filename.absFilename();
-			// if the file is not opened, open it.
-			if (!theBufferList().exists(file))
-				dispatch(FuncRequest(LFUN_FILE_OPEN, file));
-			// open may fail, so we need to test it again
-			if (theBufferList().exists(file)) {
-				// if the current buffer is not that one, switch to it.
-				if (lyx_view_->buffer()->fileName() != file)
-					dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
-				// BOOST_ASSERT(lyx_view_->buffer()->fileName() != file);
-				view()->moveToPosition(bm.par_id, bm.par_pos);
-			} 
+		case LFUN_BOOKMARK_GOTO:
+			// go to bookmark, open unopened file and switch to buffer if necessary
+			gotoBookmark(convert<unsigned int>(to_utf8(cmd.argument())), true, true);
 			break;
-		}
 
 		case LFUN_BOOKMARK_CLEAR:
 			LyX::ref().session().bookmarks().clear();
@@ -2001,6 +2026,9 @@ void LyXFunc::closeBuffer()
 	// save current cursor position
 	LyX::ref().session().lastFilePos().save(FileName(lyx_view_->buffer()->fileName()),
 		boost::tie(view()->cursor().pit(), view()->cursor().pos()) );
+	// goto bookmark to update bookmark pit.
+	for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
+		gotoBookmark(i+1, false, false);
 	if (theBufferList().close(lyx_view_->buffer(), true) && !quitting) {
 		if (theBufferList().empty()) {
 			// need this otherwise SEGV may occur while

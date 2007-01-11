@@ -244,12 +244,12 @@ void BookmarksSection::read(istream & is)
 
 		try {
 			// read bookmarks
-			// id, pos, file\n
-			unsigned int id;
+			// pit, pos, file\n
+			pit_type pit;
 			pos_type pos;
 			string fname;
 			istringstream itmp(tmp);
-			itmp >> id;
+			itmp >> pit;
 			itmp.ignore(2);  // ignore ", "
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
@@ -261,7 +261,7 @@ void BookmarksSection::read(istream & is)
 			if (fs::exists(file.toFilesystemEncoding()) &&
 			    !fs::is_directory(file.toFilesystemEncoding()) &&
 			    bookmarks.size() < max_bookmarks)
-				bookmarks.push_back(Bookmark(file, id, pos));
+				bookmarks.push_back(Bookmark(file, pit, 0, pos));
 			else
 				lyxerr[Debug::INIT] << "LyX: Warning: Ignore bookmark of file: " << fname << endl;
 		} catch (...) {
@@ -275,22 +275,22 @@ void BookmarksSection::write(ostream & os) const
 {
 	os << '\n' << sec_bookmarks << '\n';
 	for (size_t i = 0; i < bookmarks.size(); ++i) {
-		os << bookmarks[i].par_id << ", "
+		os << bookmarks[i].par_pit << ", "
 		   << bookmarks[i].par_pos << ", "
 		   << bookmarks[i].filename << '\n';
 	}
 }
 
 
-void BookmarksSection::save(FileName const & fname, int par_id, pos_type par_pos, bool persistent)
+void BookmarksSection::save(FileName const & fname, pit_type par_pit, int par_id, pos_type par_pos, bool persistent)
 {
 	if (persistent) {
-		bookmarks.push_back(Bookmark(fname, par_id, par_pos));
+		bookmarks.push_back(Bookmark(fname, par_pit, par_id, par_pos));
 		if (bookmarks.size() > max_bookmarks)
 			bookmarks.pop_back();
 		}
 	else
-		temp_bookmark = Bookmark(fname, par_id, par_pos);
+		temp_bookmark = Bookmark(fname, par_pit, par_id, par_pos);
 }
 
 

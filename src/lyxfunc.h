@@ -75,6 +75,11 @@ public:
 	docstring const getMessage() const { return dispatch_buffer; }
 	/// Handle a accented char key sequence
 	void handleKeyFunc(kb_action action);
+	/// goto a bookmark
+	/// openFile: whether or not open a file if the file is not opened
+	/// switchToBuffer: whether or not switch to buffer if the buffer is 
+	///		not the current buffer
+	void gotoBookmark(unsigned int idx, bool openFile, bool switchToBuffer);
 
 private:
 	///
