@@ -50,7 +50,6 @@
 
 #include "support/environment.h"
 #include "support/filetools.h"
-#include "support/fontutils.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
 #include "support/os.h"
@@ -366,7 +365,7 @@ int LyX::exec(int & argc, char * argv[])
 	}
 
 	// Force adding of font path _before_ Application is initialized
-	support::addFontResources();
+	support::os::addFontResources();
 
 	// Let the frontend parse and remove all arguments that it knows
 	pimpl_->application_.reset(createApplication(argc, argv));
@@ -403,7 +402,7 @@ int LyX::exec(int & argc, char * argv[])
 	prepareExit();
 
 	// Restore original font resources after Application is destroyed.
-	support::restoreFontResources();
+	support::os::restoreFontResources();
 
 	return exit_status;
 }

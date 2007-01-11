@@ -15,7 +15,10 @@
 #include "support/os.h"
 
 #ifdef __APPLE__
+#include "debug.h"
 #include <Carbon/Carbon.h>
+#include <ApplicationServices/ApplicationServices.h>
+using std::endl;
 #endif
 
 using std::string;
@@ -191,6 +194,42 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	return false;
 #endif
 }
+
+
+void addFontResources()
+{
+#ifdef __APPLE__
+	CFBundleRef  myAppBundle = CFBundleGetMainBundle();
+	CFURLRef  myAppResourcesURL, FontsURL;
+	FSRef  fontDirRef;
+	FSSpec  fontDirSpec;
+	CFStringRef  filePath = CFStringCreateWithBytes(kCFAllocatorDefault,
+					(UInt8 *) "Fonts", strlen("Fonts"),
+					kCFStringEncodingISOLatin1, false);
+
+	myAppResourcesURL = CFBundleCopyResourcesDirectoryURL(myAppBundle);
+	FontsURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault,
+			myAppResourcesURL, filePath, true);
+	if (lyxerr.debugging(Debug::FONT)) {
+		UInt8  buf[255];
+		if (CFURLGetFileSystemRepresentation(FontsURL, true, buf, 255))
+			lyxerr << "Adding Fonts directory: " << buf << endl;
+	}
+	CFURLGetFSRef (FontsURL, &fontDirRef);
+	OSStatus err = FSGetCatalogInfo (&fontDirRef, kFSCatInfoNone,
+					 NULL, NULL, &fontDirSpec, NULL);
+	if (err)
+		lyxerr << "FSGetCatalogInfo err = " << err << endl;
+	err = FMActivateFonts (&fontDirSpec, NULL, NULL,
+			       kFMLocalActivationContext);
+	if (err)
+		lyxerr << "FMActivateFonts err = " << err << endl;
+#endif
+}
+
+
+void restoreFontResources()
+{}
 
 } // namespace os
 } // namespace support

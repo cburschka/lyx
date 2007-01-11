@@ -95,14 +95,7 @@ void setEnvPath(string const & name, vector<string> const & env)
 	for (; it != end; ++it) {
 		if (it != begin)
 			ss << separator;
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-		// On cygwin, os::external_path returns either posix or
-		// pseudo-win style paths, but here we always need posix style.
-		// This fixes bug 2344.
-		ss << os::internal_path(*it);
-#else
 		ss << os::external_path(*it);
-#endif
 	}
 	setEnv(name, ss.str());
 }

@@ -38,7 +38,6 @@
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/fontutils.h"
 #include "support/forkedcall.h"
 #include "support/fs_extras.h"
 #include "support/lyxlib.h"

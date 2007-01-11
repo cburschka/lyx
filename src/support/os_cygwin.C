@@ -32,6 +32,19 @@ using std::string;
 
 using lyx::support::contains;
 
+#ifdef X_DISPLAY_MISSING
+#include "support/filetools.h"
+#include "support/package.h"
+#include "support/path.h"
+using lyx::support::addName;
+using lyx::support::addPath;
+using lyx::support::package;
+
+string const win_fonts_truetype[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
+	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
+const int num_fonts_truetype = sizeof(win_fonts_truetype) / sizeof(*win_fonts_truetype);
+#endif
+
 
 namespace lyx {
 namespace support {
@@ -188,11 +201,7 @@ string::size_type common_path(string const & p1, string const & p2)
 
 string external_path(string const & p)
 {
-#ifdef X_DISPLAY_MISSING
-	return convert_path(p, PathStyle(windows));
-#else
 	return convert_path(p, PathStyle(posix));
-#endif
 }
 
 
@@ -204,11 +213,7 @@ string internal_path(string const & p)
 
 string external_path_list(string const & p)
 {
-#ifdef X_DISPLAY_MISSING
-	return convert_path_list(p, PathStyle(windows));
-#else
 	return convert_path_list(p, PathStyle(posix));
-#endif
 }
 
 
@@ -309,6 +314,37 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 		win_path.c_str(), NULL, NULL, 1)) > 32;
 }
 
+
+void addFontResources()
+{
+#ifdef X_DISPLAY_MISSING
+	// Windows only: Add BaKoMa TrueType font resources
+	string const fonts_dir = addPath(package().system_support(), "fonts");
+	
+	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
+		string const font_current = convert_path(
+			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
+			PathStyle(windows));
+		AddFontResource(font_current.c_str());
+	}
+#endif
+}
+
+
+void restoreFontResources()
+{
+#ifdef X_DISPLAY_MISSING
+	// Windows only: Remove BaKoMa TrueType font resources
+	string const fonts_dir = addPath(package().system_support(), "fonts");
+	
+	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
+		string const font_current = convert_path(
+			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
+			PathStyle(windows));
+		RemoveFontResource(font_current.c_str());
+	}
+#endif
+}
 
 } // namespace os
 } // namespace support

@@ -18,6 +18,8 @@
 #include "support/os_win32.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
+#include "support/package.h"
+#include "support/path.h"
 
 #include "debug.h"
 
@@ -68,6 +70,13 @@ using std::string;
 
 using lyx::support::runCommand;
 using lyx::support::split;
+using lyx::support::addName;
+using lyx::support::addPath;
+using lyx::support::package;
+
+string const win_fonts_truetype[] = {"cmex10", "cmmi10", "cmr10", "cmsy10",
+	"eufm10", "msam10", "msbm10", "wasy10", "esint10"};
+const int num_fonts_truetype = sizeof(win_fonts_truetype) / sizeof(*win_fonts_truetype);
 
 
 namespace lyx {
@@ -405,6 +414,31 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 		filename.c_str(), NULL, NULL, 1)) > 32;
 }
 
+
+void addFontResources()
+{
+	// Windows only: Add BaKoMa TrueType font resources
+	string const fonts_dir = addPath(package().system_support(), "fonts");
+	
+	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
+		string const font_current = 
+			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
+		AddFontResource(external_path(font_current).c_str());
+	}
+}
+
+
+void restoreFontResources()
+{
+	// Windows only: Remove BaKoMa TrueType font resources
+	string const fonts_dir = addPath(package().system_support(), "fonts");
+	
+	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
+		string const font_current = 
+			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
+		RemoveFontResource(external_path(font_current).c_str());
+	}
+}
 
 } // namespace os
 } // namespace support
