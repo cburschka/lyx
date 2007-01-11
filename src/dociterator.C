@@ -392,8 +392,11 @@ void DocIterator::forwardPar()
 			pos_type const lastp = lastpos();
 			Paragraph const & par = paragraph();
 			pos_type & pos = top().pos();
-			while (pos < lastp && !par.isInset(pos))
-				++pos;
+			if (par.insetlist.empty())
+				pos = lastp;
+			else
+				while (pos < lastp && !par.isInset(pos))
+					++pos;
 		}
 		forwardPos();
 	}
