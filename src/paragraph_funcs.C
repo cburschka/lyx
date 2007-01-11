@@ -242,10 +242,12 @@ bool isFirstInSequence(pit_type par_offset, ParagraphList const & pars)
 
 	pit_type dhook_offset = depthHook(par_offset, pars, par.getDepth());
 
+	if (dhook_offset == par_offset)
+		return true;
+
 	Paragraph const & dhook = pars[dhook_offset];
 
-	return dhook_offset == par_offset
-		|| dhook.layout() != par.layout()
+	return dhook.layout() != par.layout()
 		|| dhook.getDepth() != par.getDepth();
 }
 
