@@ -274,7 +274,7 @@ void DocIterator::forwardPos(bool ignorecollapsed)
 		return;
 	}
 
-	InsetBase * nextinset = nextInset();
+	InsetBase * const nextinset = nextInset();
 	// jump over collapsables if they are collapsed
 	// FIXME: the check for asInsetMath() shouldn't be necessary
 	// but math insets do not return a sensible editable() state yet.
