@@ -32,6 +32,7 @@
 #include "support/convert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 
 #include <QLineEdit>
 #include <QPushButton>
@@ -42,6 +43,8 @@
 
 using lyx::support::float_equal;
 using lyx::support::token;
+
+using lyx::support::os::internal_path;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;
@@ -267,7 +270,7 @@ void QGraphics::apply()
 {
 	InsetGraphicsParams & igp = controller().params();
 
-	igp.filename.set(fromqstr(dialog_->filename->text()),
+	igp.filename.set(internal_path(fromqstr(dialog_->filename->text())),
 			 kernel().bufferFilepath());
 
 	// the bb section

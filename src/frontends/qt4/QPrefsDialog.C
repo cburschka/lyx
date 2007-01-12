@@ -170,9 +170,21 @@ QString const external_path(string const & input)
 }
 
 
+QString const external_path_list(string const & input)
+{
+	return toqstr(lyx::support::os::external_path_list(input));
+}
+
+
 string const internal_path(QString const & input)
 {
 	return lyx::support::os::internal_path(fromqstr(input));
+}
+
+
+string const internal_path_list(QString const & input)
+{
+	return lyx::support::os::internal_path_list(fromqstr(input));
 }
 
 } // end namespace anon
@@ -684,7 +696,7 @@ void PrefPaths::apply(LyXRC & rc) const
 	rc.template_path = internal_path(templateDirED->text());
 	rc.backupdir_path = internal_path(backupDirED->text());
 	rc.tempdir_path = internal_path(tempDirED->text());
-	rc.path_prefix = fromqstr(pathPrefixED->text());
+	rc.path_prefix = internal_path_list(pathPrefixED->text());
 	// FIXME: should be a checkbox only
 	rc.lyxpipes = internal_path(lyxserverDirED->text());
 }
@@ -696,7 +708,7 @@ void PrefPaths::update(LyXRC const & rc)
 	templateDirED->setText(external_path(rc.template_path));
 	backupDirED->setText(external_path(rc.backupdir_path));
 	tempDirED->setText(external_path(rc.tempdir_path));
-	pathPrefixED->setText(toqstr(rc.path_prefix));
+	pathPrefixED->setText(external_path_list(rc.path_prefix));
 	// FIXME: should be a checkbox only
 	lyxserverDirED->setText(external_path(rc.lyxpipes));
 }

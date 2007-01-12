@@ -23,6 +23,7 @@
 
 #include "support/lstrings.h"
 #include "support/convert.h"
+#include "support/os.h"
 
 #include "QExternal.h"
 #include "QExternalDialog.h"
@@ -44,6 +45,8 @@ namespace external = lyx::external;
 using lyx::support::isStrDbl;
 using lyx::support::token;
 using lyx::support::trim;
+
+using lyx::support::os::internal_path;
 
 using std::string;
 using std::vector;
@@ -452,7 +455,7 @@ void QExternal::apply()
 {
 	InsetExternalParams params = controller().params();
 
-	params.filename.set(fromqstr(dialog_->fileED->text()),
+	params.filename.set(internal_path(fromqstr(dialog_->fileED->text())),
 			    kernel().bufferFilepath());
 
 	params.settemplate(controller().getTemplate(

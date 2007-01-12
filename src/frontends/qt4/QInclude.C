@@ -10,6 +10,8 @@
 
 #include <config.h>
 
+#include "support/os.h"
+
 #include "QIncludeDialog.h"
 #include "QInclude.h"
 
@@ -27,6 +29,8 @@
 #include <qcheckbox.h>
 
 using std::string;
+
+using lyx::support::os::internal_path;
 
 namespace lyx {
 namespace frontend {
@@ -99,7 +103,7 @@ void QInclude::apply()
 {
 	InsetCommandParams params = controller().params();
 
-	params["filename"] = qstring_to_ucs4(dialog_->filenameED->text());
+	params["filename"] = from_utf8(internal_path(fromqstr(dialog_->filenameED->text())));
 	params.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentIndex();

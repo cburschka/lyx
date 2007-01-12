@@ -67,9 +67,11 @@ string const subst_path(string const & input,
 {
 	if (input.find(placeholder) == string::npos)
 		return input;
+	// Don't use external_path here when use_latex_path is false, as the
+	// path will be compared with another one in internal style later
+	// in Converters::move.
 	string const path2 = use_latex_path ?
-		support::latex_path(path, ext, dots) :
-		support::os::external_path(path);
+		support::latex_path(path, ext, dots) : path;
 	return support::subst(input, placeholder, path2);
 }
 
