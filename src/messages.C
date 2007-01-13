@@ -116,12 +116,13 @@ public:
 
 	docstring const & get(string const & m) const
 	{
-		static docstring empty_string;
-		if (m.empty())
-			return empty_string;
+		if (m.empty()) {
+			dummy_string_.clear();
+			return dummy_string_;
+		}
 
 		// Look for the translated string in the cache.
-		CacheType::iterator it = cache_.find(m);
+		TranslationCache::iterator it = cache_.find(m);
 		if (it != cache_.end())
 			return it->second;
 		// The string was not found, use gettext to generate it:
@@ -214,17 +215,26 @@ public:
 #endif
 		setlocale(LC_CTYPE, oldCTYPE.c_str());
 
+		if (!cache_.insert(std::make_pair(m, translated)).second) {
+			lyxerr << "WARNING: cannot fill-in gettext cache in Messages::get()!" << endl;
+			dummy_string_ = translated;
+			return dummy_string_;
+		}
+
 		it = cache_.insert(std::make_pair(m, translated)).first;
 		return it->second;
 	}
 private:
 	///
 	string lang_;
-	typedef std::map<string, docstring> CacheType;
+	typedef std::map<string, docstring> TranslationCache;
 	/// Internal cache for gettext translated strings.
 	/// This is needed for performance reason within \c updateLabels()
 	/// under Windows.
-	mutable CacheType cache_;
+	mutable TranslationCache cache_;
+	/// Dummy string which serves as a storage place if something goes
+	/// wrong with the translation cache.
+	mutable docstring dummy_string_;
 };
 #endif
 
