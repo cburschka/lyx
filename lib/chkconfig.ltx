@@ -60,6 +60,7 @@
 \newcommand{\AddVariable}[2]{
   \immediate\write\sed{s!@chk_#1@!#2!g}
   \immediate\write\vars{chk_#1='#2'}}
+
 \newcommand{\AddPackage}[1]{
   \immediate\write\packages{#1}}
 
@@ -93,6 +94,7 @@
 
 \newcommand{\TestPackage}[2][\default]{
   \TestItem[#1]{#2}{package}{sty}{\AddPackage{#2}}{}}
+
 \newcommand{\TestDocClass}[2]{
    \def\layoutname{#1}  % remember the name of the layout file
    \@ifundefined{layout@#1}
