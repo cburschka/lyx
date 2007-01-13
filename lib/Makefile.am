@@ -67,6 +67,8 @@ dist_examples_DATA = \
 	examples/aas_sample.lyx \
 	examples/amsart-test.lyx \
 	examples/amsbook-test.lyx \
+	examples/beamer-g4.jpg \
+	examples/beamer-g4-mask.jpg \
 	examples/beamer-icsi-logo.pdf \
 	examples/beamer-knight1-mask.png \
 	examples/beamer-knight1.png \
