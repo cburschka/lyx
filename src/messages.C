@@ -21,16 +21,16 @@
 #include <boost/regex.hpp>
 
 #include <cerrno>
+#include <map>
 
+using std::endl;
+using std::string;
 
 namespace lyx {
 
 using support::package;
 using support::getEnv;
 using support::setEnv;
-
-using std::string;
-using std::endl;
 
 
 static boost::regex const reg("^([^\\[]*)\\[\\[[^\\]]*\\]\\]$");
@@ -114,10 +114,17 @@ public:
 
 	~Pimpl() {}
 
-	docstring const get(string const & m) const
+	docstring const & get(string const & m) const
 	{
+		static docstring empty_string;
 		if (m.empty())
-			return from_ascii(m);
+			return empty_string;
+
+		// Look for the translated string in the cache.
+		CacheType::iterator it = cache_.find(m);
+		if (it != cache_.end())
+			return it->second;
+		// The string was not found, use gettext to generate it:
 
 		// In this order, see support/filetools.C:
 		string lang = getEnv("LC_ALL");
@@ -206,11 +213,18 @@ public:
 		setlocale(LC_MESSAGES, lang.c_str());
 #endif
 		setlocale(LC_CTYPE, oldCTYPE.c_str());
-		return translated;
+
+		it = cache_.insert(std::make_pair(m, translated)).first;
+		return it->second;
 	}
 private:
 	///
 	string lang_;
+	typedef std::map<string, docstring> CacheType;
+	/// Internal cache for gettext translated strings.
+	/// This is needed for performance reason within \c updateLabels()
+	/// under Windows.
+	mutable CacheType cache_;
 };
 #endif
 
@@ -250,7 +264,7 @@ Messages::~Messages()
 {}
 
 
-docstring const Messages::get(string const & msg) const
+docstring const & Messages::get(string const & msg) const
 {
 	return pimpl_->get(msg);
 }
