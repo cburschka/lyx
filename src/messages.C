@@ -215,14 +215,16 @@ public:
 #endif
 		setlocale(LC_CTYPE, oldCTYPE.c_str());
 
-		if (!cache_.insert(std::make_pair(m, translated)).second) {
+		std::pair<TranslationCache::iterator, bool> result = 
+			cache_.insert(std::make_pair(m, translated));
+
+		if (!result.second) {
 			lyxerr << "WARNING: cannot fill-in gettext cache in Messages::get()!" << endl;
 			dummy_string_ = translated;
 			return dummy_string_;
 		}
 
-		it = cache_.insert(std::make_pair(m, translated)).first;
-		return it->second;
+		return result.first->second;
 	}
 private:
 	///
