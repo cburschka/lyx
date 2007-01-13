@@ -179,6 +179,10 @@ What's new
 - The natbib labels weren't always displayed correctly when opening
   a document. This is fixed.
 
+- Allow double values for graphics' bounding box parameters again
+  (bug 3055). This also fixes problems with older LyX files
+  (bug 3066) [qt only].
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.
