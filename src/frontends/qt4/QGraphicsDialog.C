@@ -110,10 +110,10 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 
 	angle->setValidator(new QDoubleValidator(-360, 360, 2, angle));
 
-	lbX->setValidator(new QIntValidator(lbX));
-	lbY->setValidator(new QIntValidator(lbY));
-	rtX->setValidator(new QIntValidator(rtX));
-	rtY->setValidator(new QIntValidator(rtY));
+	lbX->setValidator(new QDoubleValidator(lbX));
+	lbY->setValidator(new QDoubleValidator(lbY));
+	rtX->setValidator(new QDoubleValidator(rtX));
+	rtY->setValidator(new QDoubleValidator(rtY));
 
 	displayscale->setValidator(new QIntValidator(displayscale));
 	Height->setValidator(unsignedLengthValidator(Height));
