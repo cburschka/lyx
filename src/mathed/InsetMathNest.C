@@ -440,7 +440,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		replaceSelection(cur);
 		docstring topaste;
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			topaste = theClipboard().get();
+			topaste = theClipboard().getAsText();
 		else {
 			size_t n = 0;
 			idocstringstream is(cmd.argument());

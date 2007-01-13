@@ -28,18 +28,29 @@ public:
 	virtual ~Clipboard() {}
 
 	/**
-	 * Get the window system clipboard contents.
+	 * Get the system clipboard contents. The format is as written in
+	 * .lyx files (may even be an older version than ours if it comes
+	 * from an older LyX).
+	 * Does not convert plain text to LyX if only plain text is available.
 	 * This should be called when the user requests to paste from the
 	 * clipboard.
 	 */
-	virtual docstring const get() const = 0;
+	virtual std::string const getAsLyX() const = 0;
+	/// Get the contents of the window system clipboard in plain text format.
+	virtual docstring const getAsText() const = 0;
 	/**
-	 * Fill the window system clipboard.
+	 * Fill the system clipboard. The format of \p lyx is as written in
+	 * .lyx files, the format of \p text is plain text.
+	 * We put the clipboard contents in LyX format and plain text into
+	 * the system clipboard if supported, so that it is useful for other
+	 * applications as well as other instances of LyX.
 	 * This should be called when the user requests to cut or copy to
 	 * the clipboard.
 	 */
-	virtual void put(docstring const &) = 0;
+	virtual void put(std::string const & lyx, docstring const & text) = 0;
 
+	/// Does the clipboard contain LyX contents?
+	virtual bool hasLyXContents() const = 0;
 	/// state of clipboard.
 	/// \retval true if the system clipboard has been set within LyX.
 	virtual bool isInternal() const = 0;

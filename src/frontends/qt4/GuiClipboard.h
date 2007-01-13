@@ -30,8 +30,10 @@ public:
 	/** Clipboard overloaded methods
 	 */
 	//@{
-	docstring const get() const;
-	void put(docstring const & str);
+	std::string const getAsLyX() const;
+	docstring const getAsText() const;
+	void put(std::string const & lyx, docstring const & text);
+	bool hasLyXContents() const;
 	bool isInternal() const;
 	bool empty() const;
 	//@}

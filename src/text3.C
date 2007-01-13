@@ -76,6 +76,7 @@ namespace lyx {
 
 using cap::copySelection;
 using cap::cutSelection;
+using cap::pasteClipboard;
 using cap::pasteSelection;
 using cap::replaceSelection;
 
@@ -758,15 +759,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			pasteString(cur, theClipboard().get(), true);
+			pasteClipboard(cur, bv->buffer()->errorList("Paste"));
 		else {
 			string const arg(to_utf8(cmd.argument()));
 			pasteSelection(cur, bv->buffer()->errorList("Paste"),
 					isStrUnsignedInt(arg) ?
 						convert<unsigned int>(arg) :
 						0);
-			bv->buffer()->errors("Paste");
 		}
+		bv->buffer()->errors("Paste");
 		cur.clearSelection(); // bug 393
 		bv->switchKeyMap();
 		finishUndo();
@@ -865,8 +866,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CLIPBOARD_PASTE:
-		pasteString(cur, theClipboard().get(),
-		            cmd.argument() == "paragraph");
+		cur.clearSelection();
+		pasteClipboard(cur, bv->buffer()->errorList("Paste"),
+		               cmd.argument() == "paragraph");
+		bv->buffer()->errors("Paste");
 		break;
 
 	case LFUN_PRIMARY_SELECTION_PASTE:

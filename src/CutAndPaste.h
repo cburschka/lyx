@@ -62,9 +62,19 @@ void replaceSelection(LCursor & cur);
 void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(LCursor & cur);
+/**
+ * Push the current selection to the cut buffer and the system clipboard.
+ * \param plaintext plain text version of the selection for the system
+ *        clipboard
+ */
+void copySelection(LCursor & cur, docstring const & plaintext);
 /// Push the current selection to the cut buffer.
 void copySelectionToStack(LCursor & cur);
-/// Paste the sel_index-th element of the cut buffer.
+/// Replace the current selection with the clipboard contents (internal or
+/// external: which is newer)
+/// Does handle undo. Does only work in text, not mathed.
+void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs = true);
+/// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
 void pasteSelection(LCursor & cur, ErrorList &, size_t sel_index = 0);
 

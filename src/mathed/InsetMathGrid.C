@@ -1213,7 +1213,7 @@ void InsetMathGrid::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		docstring topaste;
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			topaste = theClipboard().get();
+			topaste = theClipboard().getAsText();
 		else {
 			idocstringstream is(cmd.argument());
 			int n = 0;

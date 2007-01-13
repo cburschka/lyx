@@ -723,7 +723,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE: {
 		docstring const clip = (cmd.action == LFUN_CLIPBOARD_PASTE) ?
-			theClipboard().get() :
+			theClipboard().getAsText() :
 			theSelection().get();
 		if (clip.empty())
 			break;
@@ -1814,10 +1814,13 @@ bool InsetTabular::copySelection(LCursor & cur)
 	odocstringstream os;
 	OutputParams const runparams;
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
-	theClipboard().put(os.str());
+	// Needed for the "Edit->Paste recent" menu and the system clipboard.
+	cap::copySelection(cur, os.str());
+
 	// mark tabular stack dirty
 	// FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
 	// when we (hopefully) have a one-for-all paste mechanism.
+	// This must be called after cap::copySelection.
 	dirtyTabularStack(true);
 
 	return true;

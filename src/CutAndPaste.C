@@ -26,6 +26,7 @@
 #include "insetiterator.h"
 #include "language.h"
 #include "lfuns.h"
+#include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "lyxtextclasslist.h"
@@ -324,6 +325,21 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 }
 
 
+void putClipboard(ParagraphList const & paragraphs, textclass_type textclass,
+                  docstring const & plaintext)
+{
+	Buffer buffer(string(), false);
+	buffer.setUnnamed(true);
+	buffer.paragraphs() = paragraphs;
+	buffer.params().textclass = textclass;
+	std::ostringstream lyx;
+	if (buffer.write(lyx))
+		theClipboard().put(lyx.str(), plaintext);
+	else
+		theClipboard().put(string(), plaintext);
+}
+
+
 void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
 	int start, int end, textclass_type tc)
@@ -493,9 +509,6 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 	if (cur.inTexted()) {
 		LyXText * text = cur.text();
 		BOOST_ASSERT(text);
-		// Stuff what we got on the clipboard. Even if there is no selection.
-		if (realcut)
-			theClipboard().put(cur.selectionAsString(true));
 
 		// make sure that the depth behind the selection are restored, too
 		recordUndoSelection(cur);
@@ -511,6 +524,10 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
 				bp.textclass);
+			// Stuff what we got on the clipboard.
+			// Even if there is no selection.
+			putClipboard(theCuts[0].first, theCuts[0].second,
+				cur.selectionAsString(true));
 		}
 
 		boost::tie(endpit, endpos) =
@@ -558,10 +575,16 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 
 void copySelection(LCursor & cur)
 {
-	// stuff the selection onto the X clipboard, from an explicit copy request
-	theClipboard().put(cur.selectionAsString(true));
+	copySelection(cur, cur.selectionAsString(true));
+}
 
+
+void copySelection(LCursor & cur, docstring const & plaintext)
+{
 	copySelectionToStack(cur);
+
+	// stuff the selection onto the X clipboard, from an explicit copy request
+	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
 }
 
 
@@ -633,6 +656,42 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 
 	// mathed is handled in InsetMathNest/InsetMathGrid
 	BOOST_ASSERT(!cur.inMathed());
+}
+
+
+void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
+{
+	// Use internal clipboard if it is the most recent one
+	if (theClipboard().isInternal()) {
+		pasteSelection(cur, errorList, 0);
+		return;
+	}
+
+	// First try LyX format
+	if (theClipboard().hasLyXContents()) {
+		string lyx = theClipboard().getAsLyX();
+		if (!lyx.empty()) {
+			Buffer buffer(string(), false);
+			buffer.setUnnamed(true);
+			if (buffer.readString(lyx)) {
+				recordUndo(cur);
+				pasteParagraphList(cur, buffer.paragraphs(),
+					buffer.params().textclass, errorList);
+				cur.setSelection();
+				return;
+			}
+		}
+	}
+
+	// Then try plain text
+	docstring const text = theClipboard().getAsText();
+	if (text.empty())
+		return;
+	recordUndo(cur);
+	if (asParagraphs)
+		cur.text()->insertStringAsParagraphs(cur, text);
+	else
+		cur.text()->insertStringAsLines(cur, text);
 }
 
 

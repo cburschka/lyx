@@ -566,6 +566,39 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 }
 
 
+bool Buffer::readString(std::string const & s)
+{
+	params().compressed = false;
+
+	// remove dummy empty par
+	paragraphs().clear();
+	LyXLex lex(0, 0);
+	std::istringstream is(s);
+	lex.setStream(is);
+	FileName const name(tempName());
+	switch (readFile(lex, name)) {
+	case failure:
+		return false;
+	case wrongversion: {
+		// We need to call lyx2lyx, so write the input to a file
+		std::ofstream os(name.toFilesystemEncoding().c_str());
+		os << s;
+		os.close();
+		return readFile(name) == success;
+	}
+	case success:
+		break;
+	}
+
+	// After we have read a file, we must ensure that the buffer
+	// language is set and used in the gui.
+	// If you know of a better place to put this, please tell me. (Lgb)
+	updateDocLang(params().language);
+
+	return true;
+}
+
+
 bool Buffer::readFile(FileName const & filename)
 {
 	// Check if the file is compressed.
@@ -578,7 +611,7 @@ bool Buffer::readFile(FileName const & filename)
 	paragraphs().clear();
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
-	if (!readFile(lex, filename))
+	if (readFile(lex, filename) != success)
 		return false;
 
 	// After we have read a file, we must ensure that the buffer
@@ -602,14 +635,15 @@ void Buffer::fully_loaded(bool const value)
 }
 
 
-bool Buffer::readFile(LyXLex & lex, FileName const & filename)
+Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
+		bool fromstring)
 {
 	BOOST_ASSERT(!filename.empty());
 
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
 			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
-		return false;
+		return failure;
 	}
 
 	lex.next();
@@ -618,7 +652,7 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
 			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
-		return false;
+		return failure;
 	}
 
 	// the first token _must_ be...
@@ -628,7 +662,7 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 		Alert::error(_("Document format failure"),
 			     bformat(_("%1$s is not a LyX document."),
 				       from_utf8(filename.absFilename())));
-		return false;
+		return failure;
 	}
 
 	lex.next();
@@ -643,6 +677,11 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 	//lyxerr << "format: " << file_format << endl;
 
 	if (file_format != LYX_FORMAT) {
+
+		if (fromstring)
+			// lyx2lyx would fail
+			return wrongversion;
+
 		FileName const tmpfile(tempName());
 		if (tmpfile.empty()) {
 			Alert::error(_("Conversion failed"),
@@ -651,7 +690,7 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 					      " file for converting it could"
 							    " not be created."),
 					      from_utf8(filename.absFilename())));
-			return false;
+			return failure;
 		}
 		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
@@ -661,7 +700,7 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 					       " conversion script lyx2lyx"
 							    " could not be found."),
 					       from_utf8(filename.absFilename())));
-			return false;
+			return failure;
 		}
 		ostringstream command;
 		command << os::python()
@@ -682,11 +721,11 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 					      " of LyX, but the lyx2lyx script"
 							    " failed to convert it."),
 					      from_utf8(filename.absFilename())));
-			return false;
+			return failure;
 		} else {
 			bool const ret = readFile(tmpfile);
 			// Do stuff with tmpfile name and buffer name here.
-			return ret;
+			return ret ? success : failure;
 		}
 
 	}
@@ -703,7 +742,7 @@ bool Buffer::readFile(LyXLex & lex, FileName const & filename)
 	//MacroTable::localMacros().clear();
 
 	pimpl_->file_fully_loaded = true;
-	return true;
+	return success;
 }
 
 
@@ -763,20 +802,20 @@ bool Buffer::writeFile(FileName const & fname) const
 		if (!ofs)
 			return false;
 
-		retval = do_writeFile(ofs);
+		retval = write(ofs);
 	} else {
 		ofstream ofs(fname.toFilesystemEncoding().c_str(), ios::out|ios::trunc);
 		if (!ofs)
 			return false;
 
-		retval = do_writeFile(ofs);
+		retval = write(ofs);
 	}
 
 	return retval;
 }
 
 
-bool Buffer::do_writeFile(ostream & ofs) const
+bool Buffer::write(ostream & ofs) const
 {
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.

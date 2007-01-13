@@ -78,6 +78,13 @@ public:
 		buildlog  ///< Literate build log
 	};
 
+	/// Result of \c readFile()
+	enum ReadStatus {
+		failure, ///< The file could not be read
+		success, ///< The file could not be read
+		wrongversion ///< The version of the file does not match ours
+	};
+
 	/** Constructor
 	    \param file
 	    \param b  optional \c false by default
@@ -98,6 +105,8 @@ public:
 	/// Load the autosaved file.
 	void loadAutoSaveFile();
 
+	/// read a new document from a string
+	bool readString(std::string const &);
 	/// load a new file
 	bool readFile(support::FileName const & filename);
 
@@ -143,6 +152,8 @@ public:
 	*/
 	bool save() const;
 
+	/// Write document to stream. Returns \c false if unsuccesful.
+	bool write(std::ostream &) const;
 	/// Write file. Returns \c false if unsuccesful.
 	bool writeFile(support::FileName const &) const;
 
@@ -386,9 +397,8 @@ private:
 	/** Inserts a file into a document
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, support::FileName const & filename);
-
-	bool do_writeFile(std::ostream & ofs) const;
+	ReadStatus readFile(LyXLex &, support::FileName const & filename,
+	                    bool fromString = false);
 
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
