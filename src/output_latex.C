@@ -600,15 +600,18 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 	// ignore switches from/to tis620-0 encoding here. This does of
 	// course only work as long as the non-thai text contains ASCII
 	// only, but it is the best we can do.
-	if (bparams.inputenc == "auto" && oldEnc.name() != newEnc.name() &&
+	if ((bparams.inputenc == "auto" || bparams.inputenc == "default") &&
+	    oldEnc.name() != newEnc.name() &&
 	    oldEnc.name() != "tis620-0" && newEnc.name() != "tis620-0") {
 		lyxerr[Debug::LATEX] << "Changing LaTeX encoding from "
 		                     << oldEnc.name() << " to "
 		                     << newEnc.name() << endl;
 		os << setEncoding(newEnc.iconvName());
-		docstring const inputenc(from_ascii(newEnc.latexName()));
-		os << "\\inputencoding{" << inputenc << '}';
-		return 16 + inputenc.length();
+		if (bparams.inputenc != "default") {
+			docstring const inputenc(from_ascii(newEnc.latexName()));
+			os << "\\inputencoding{" << inputenc << '}';
+			return 16 + inputenc.length();
+		}
 	}
 	return 0;
 }

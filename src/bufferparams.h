@@ -178,15 +178,18 @@ public:
 	BranchList const & branchlist() const;
 	/**
 	 * The input encoding for LaTeX. This can be one of
-	 * - auto: find out the input encoding from the used languages
-	 * - default: Don't load the inputenc package and hope that it will
-	 *   work (unlikely). The encoding is an unspecified 8bit encoding,
-	 *   the interpretation is up to the LaTeX compiler. Because we need
-	 *   a rule how to create this from our internal UCS4 encoded
-	 *   document contents we treat this as latin1 internally.
+	 * - \c auto: find out the input encoding from the used languages
+	 * - \c default: ditto
 	 * - any encoding supported by the inputenc package
 	 * The encoding of the LyX file is always utf8 and has nothing to
 	 * do with this setting.
+	 * The difference between \c auto and \c default is that \c auto also
+	 * causes loading of the inputenc package, while \c default does not.
+	 * \c default will not work unless the user takes additional measures
+	 * (such as using special environments like the CJK environment from
+	 * CJK.sty).
+	 * \c default can be seen as an unspecified 8bit encoding, since LyX
+	 * does not interpret it in any way apart from display on screen.
 	 */
 	std::string inputenc;
 	/// The main encoding used by this buffer for LaTeX output.

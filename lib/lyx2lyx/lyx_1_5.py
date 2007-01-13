@@ -219,10 +219,11 @@ def revert_booktabs(document):
 
 def convert_multiencoding(document, forward):
     """ Fix files with multiple encodings.
-Files with an inputencoding of "auto" and multiple languages where at least
-two languages have different default encodings are encoded in multiple
-encodings for file formats < 249. These files are incorrectly read and
-written (as if the whole file was in the encoding of the main language).
+Files with an inputencoding of "auto" or "default" and multiple languages
+where at least two languages have different default encodings are encoded
+in multiple encodings for file formats < 249. These files are incorrectly
+read and written (as if the whole file was in the encoding of the main
+language).
 
 This function
 - converts from fake unicode values to true unicode if forward is true, and
@@ -234,7 +235,7 @@ necessary parsing in modern formats than in ancient ones.
 """
     encoding_stack = [document.encoding]
     lang_re = re.compile(r"^\\lang\s(\S+)")
-    if document.inputencoding == "auto":
+    if document.inputencoding == "auto" or document.inputencoding == "default":
         for i in range(len(document.body)):
             result = lang_re.match(document.body[i])
             if result:

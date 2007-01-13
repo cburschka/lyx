@@ -1466,20 +1466,14 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 
 Encoding const & BufferParams::encoding() const
 {
-	if (inputenc == "auto")
+	if (inputenc == "auto" || inputenc == "default")
 		return *(language->encoding());
-	Encoding const * const enc = (inputenc == "default") ?
-		encodings.getFromLyXName("iso8859-1") :
+	Encoding const * const enc =
 		encodings.getFromLaTeXName(inputenc);
 	if (enc)
 		return *enc;
-	if (inputenc == "default")
-		lyxerr << "Could not find iso8859-1 encoding for inputenc "
-		          "value `default'. Using inputenc `auto' instead."
-		       << endl;
-	else
-		lyxerr << "Unknown inputenc value `" << inputenc
-		       << "'. Using `auto' instead." << endl;
+	lyxerr << "Unknown inputenc value `" << inputenc
+	       << "'. Using `auto' instead." << endl;
 	return *(language->encoding());
 }
 

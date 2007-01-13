@@ -62,6 +62,10 @@ size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 bool isEncoding(BufferParams const & bparams, LyXFont const & font,
 		string const & encoding)
 {
+	// We do ignore bparams.inputenc == "default" here because characters
+	// in this encoding could be treated by TeX as something different,
+	// e.g. if they are inside a CJK environment. See also
+	// http://bugzilla.lyx.org/show_bug.cgi?id=3043.
 	return (bparams.inputenc == encoding
 		|| (bparams.inputenc == "auto"
 		    && font.language()->encoding()->latexName() == encoding));

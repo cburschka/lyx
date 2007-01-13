@@ -112,9 +112,9 @@ def get_encoding(language, inputencoding, format):
     if format > 248:
         return "utf8"
     from lyx2lyx_lang import lang
-    if inputencoding == "auto":        
+    if inputencoding == "auto" or inputencoding == "default":
         return lang[language][3]
-    if inputencoding == "default" or inputencoding == "":
+    if inputencoding == "":
         return "latin1"
     # python does not know the alias latin9
     if inputencoding == "latin9":
