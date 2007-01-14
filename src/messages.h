@@ -13,28 +13,29 @@
 
 #include "support/docstring.h"
 
-#include <boost/scoped_ptr.hpp>
+#include <map>
 #include <string>
-
 
 namespace lyx {
 
 ///
 class Messages {
 public:
-	/// messages in the language defined by the environment
-	Messages();
-	/// messages in the language \p l
-	Messages(std::string const & l);
+	/// messages in the language \p l.
+	/// If \p l is empty, the language will be defined by the environment.
+	Messages(std::string const & l = "");
 	///
-	~Messages();
-	///
-	docstring const & get(std::string const & msg) const;
+	docstring const get(std::string const & msg) const;
 private:
-	class Pimpl;
-	boost::scoped_ptr<Pimpl> pimpl_;
+	///
+	std::string lang_;
+	///
+	typedef std::map<std::string, docstring> TranslationCache;
+	/// Internal cache for gettext translated strings.
+	/// This is needed for performance reason within \c updateLabels()
+	/// under Windows.
+	mutable TranslationCache cache_;
 };
-
 
 } // namespace lyx
 
