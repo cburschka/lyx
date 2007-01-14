@@ -270,7 +270,7 @@ pasteSelectionHelper(LCursor & cur, ParagraphList const & parlist,
 			pars[last_paste].makeSameLayout(pars[last_paste + 1]);
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else {
-			pars[last_paste + 1].stripLeadingSpaces();
+			pars[last_paste + 1].stripLeadingSpaces(buffer.params().trackChanges);
 			++last_paste;
 		}
 	}
@@ -309,7 +309,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		    (pit + 1 != endpit || pars[pit].hasSameLayout(pars[pit + 1]))) {
 			pos_type const thissize = pars[pit].size();
 			if (doclear)
-				pars[pit + 1].stripLeadingSpaces();
+				pars[pit + 1].stripLeadingSpaces(params.trackChanges);
 			mergeParagraph(params, pars, pit);
 			--endpit;
 			if (pit == endpit)
@@ -539,7 +539,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 
 		// sometimes necessary
 		if (doclear)
-			text->paragraphs()[begpit].stripLeadingSpaces();
+			text->paragraphs()[begpit].stripLeadingSpaces(bp.trackChanges);
 
 		// cutSelection can invalidate the cursor so we need to set
 		// it anew. (Lgb)

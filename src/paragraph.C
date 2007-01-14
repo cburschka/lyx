@@ -560,19 +560,22 @@ void Paragraph::makeSameLayout(Paragraph const & par)
 }
 
 
-int Paragraph::stripLeadingSpaces()
+int Paragraph::stripLeadingSpaces(bool trackChanges)
 {
 	if (isFreeSpacing())
 		return 0;
 
-	int i = 0;
-	while (!empty() && (isNewline(0) || isLineSeparator(0))
-		&& !isDeleted(0)) {
-		eraseChar(0, false); // no change tracking here
-		++i;
+	int pos = 0;
+	int count = 0;
+
+	while (pos < size() && (isNewline(pos) || isLineSeparator(pos))) {
+		if (eraseChar(pos, trackChanges))
+			++count;
+		else
+			++pos;
 	}
 
-	return i;
+	return count;
 }
 
 

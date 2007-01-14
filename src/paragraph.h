@@ -346,7 +346,7 @@ public:
 	int getPositionOfInset(InsetBase const * inset) const;
 
 	/// Returns the number of line breaks and white-space stripped at the start
-	int stripLeadingSpaces();
+	int stripLeadingSpaces(bool trackChanges);
 
 	/// return true if we allow multiple spaces
 	bool isFreeSpacing() const;
