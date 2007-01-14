@@ -1,4 +1,4 @@
-#LyX 1.4.3-5 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -360,7 +360,7 @@ Run
 \family typewriter
 dvips
 \family default
- to convert the DVI-file to PostScript®:
+ to convert the DVI-file to PostScript:
 \end_layout
 
 \begin_deeper
@@ -397,7 +397,7 @@ Execute
 \family typewriter
 ghostview
 \family default
- or send the PostScript® file to the printer.
+ or send the PostScript file to the printer.
 \end_layout
 
 \begin_layout Section
@@ -1921,10 +1921,11 @@ Jürgen Spitzmüller
 STOP! If you don't know what BibTeX is, or have a reasonably good idea of
  how to use it (
 \emph on
-e.g.
-
+e.\InsetSpace \thinspace{}
+g.
 \emph default
- setting up your own bibliographic databases), 
+\InsetSpace ~
+setting up your own bibliographic databases), 
 \emph on
 run
 \emph default
@@ -2947,7 +2948,8 @@ lhead{John Q.
 You will now see your name in the upper left.
  If a field has a default entry that you would like to get rid of (often
  the page number appears in the central footer, simply include a command
- with a blank argument, e.g.
+ with a blank argument, e.\InsetSpace \thinspace{}
+g.
 \end_layout
 
 \begin_layout Standard
@@ -2967,10 +2969,12 @@ Section
 \begin_inset Quotes erd
 \end_inset
 
- (e.g.
- Section 3) in the upper left, the page number (e.g.
- Page 4) in the upper right, your name in the lower left, and the date in
- the lower right.
+ (e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+Section 3) in the upper left, the page number (e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+Page 4) in the upper
+ right, your name in the lower left, and the date in the lower right.
  The following commands should now appear in the preamble:
 \end_layout
 
@@ -3058,7 +3062,8 @@ The thicknesses of the horizontal rules drawn beneath the header and above
  the footer can also be modified.
  If you don't want one of the headers, set its thickness to 0.
  The header rule has a default thickness of 0.4pt, the footer rule is 0pt.
- Use the commands, e.g.
+ Use the commands, e.\InsetSpace \thinspace{}
+g.
  
 \family typewriter
 
@@ -3121,7 +3126,7 @@ fancyhdr.dvi
 \end_layout
 
 \begin_layout Standard
-As a final example, it is possible to include an Encapsulated PostScript®
+As a final example, it is possible to include an Encapsulated PostScript
  file in the header or footer.
  Suppose you want to put a company logo in the upper lefthand corner.
  You might try something like
@@ -4294,7 +4299,8 @@ maketitle
 \end_layout
 
 \begin_layout Standard
-If you want to place footnotes in the header block, e.g.
+If you want to place footnotes in the header block, e.\InsetSpace \thinspace{}
+g.
 \begin_inset ERT
 status collapsed
 
@@ -4371,7 +4377,7 @@ email{address}
 \end_layout
 
 \begin_layout Standard
-In all cases, the appropriate command has to be entered in LyX an marked
+In all cases, the appropriate command has to be entered in LyX and marked
  as LaTeX code.
  See the examples.
  
@@ -5803,8 +5809,9 @@ no
  space between the last author and the parenthesis setting off the year;
  
 \emph on
-e.g.
- 
+e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+
 \emph default
 type
 \family typewriter
@@ -6204,7 +6211,8 @@ Both packages use basic citations; the natbib package should not be used.
 \family typewriter
 refcite
 \family default
- command, e.g., 
+ command, e.\InsetSpace \thinspace{}
+g., 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6385,9 +6393,22 @@ xport\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-ateX
+aTeX
 \family default
-), then make the following changes to the resulting 
+)
+\begin_inset Foot
+status open
+
+\begin_layout Standard
+Actually you have the choice between LaTeX (plain) and pdflatex.
+ If you intend to use pdflatex to prepare the paper, you should use the
+ pdflatex option so that included graphics are converted to PDF format,
+ ready for use by pdflatex.
+\end_layout
+
+\end_inset
+
+, then make the following changes to the resulting 
 \family typewriter
 .tex
 \family default
@@ -6655,7 +6676,8 @@ View the resulting
 \family typewriter
 .dvi
 \family default
- document using, e.g., 
+ document using, e.\InsetSpace \thinspace{}
+g., 
 \family sans
 xdvi
 \family default
@@ -6752,8 +6774,9 @@ opening
 \end_inset
 
 .
- This is not implemented in LyX, so you must enter title, subtitle etc.
- between two ERT lines (
+ This is not implemented in LyX, so you must enter title, subtitle etc.\InsetSpace ~
+between
+ two ERT lines (
 \family typewriter
 
 \backslash
@@ -6876,8 +6899,8 @@ scrbook.cls
 \family typewriter
 scrlettr.cls
 \family default
-, resp.
- of the Koma-Script family.
+, resp.\InsetSpace ~
+of the Koma-Script family.
  They are replacements for the standard document classes 
 \family typewriter
 article.cls
@@ -7763,8 +7786,8 @@ L
 \shape italic
 O
 \shape default
-, resp.
- in the left margin.
+, resp.\InsetSpace ~
+in the left margin.
  It is possible to write any number of letters in one file.
  An 
 \family sans
@@ -7949,9 +7972,9 @@ Telephone
 
 \begin_layout Standard
 The input types can also be used as empty paragraphs.
- This makes sense e.\InsetSpace ~
-g.
- for the 
+ This makes sense e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+for the 
 \family sans
 Signature
 \family default
@@ -8586,7 +8609,8 @@ These are the layout files for some of the journal formats used by Springer
 \family typewriter
 svjour.inc
 \family default
-, which journal-specific layout files (such as, e.g., 
+, which journal-specific layout files (such as, e.\InsetSpace \thinspace{}
+g., 
 \family typewriter
 svjog.layout
 \family default
@@ -8724,7 +8748,8 @@ ejour2
 \end_layout
 
 \begin_layout Standard
-Limitations e.g.: does not display the number for theorem-like layouts, just
+Limitations e.\InsetSpace \thinspace{}
+g.: does not display the number for theorem-like layouts, just
  #.
 \end_layout
 
@@ -10378,8 +10403,8 @@ invisible
 visible
 \family default
  command].
- If you don't know how to mark text as TeX, see the appropriate section of
- the 
+ If you don't know how to mark text as TeX, see the appropriate section
+ of the 
 \emph on
 User's Guide
 \emph default
@@ -11984,8 +12009,7 @@ One problem with the support for landscape foils is the requirement that
 \family typewriter
 dvips
 \family default
- driver to generate the PostScript® output otherwise the foils won't be
- rotated.
+ driver to generate the PostScript output otherwise the foils won't be rotated.
  It is possible to get landscape foils even if you haven't got the 
 \family typewriter
 dvips
@@ -12134,10 +12158,11 @@ TeX-
  While the second is meant to provide a classification for the audience,
  
 \emph on
-e.g.
-
+e.\InsetSpace \thinspace{}
+g.
 \emph default
- Confidential.
+\InsetSpace ~
+Confidential.
  It is empty by default.
 \end_layout
 
@@ -12803,8 +12828,9 @@ M-z t
 
 \family default
 Camera movement instruction.
- e.g.
- CUT TO:
+ e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+CUT TO:
 \end_layout
 
 \begin_layout Itemize
@@ -13156,7 +13182,7 @@ Installation
 \begin_layout Standard
 All you need to do is install RevTeX 4, as described in the package's README
  file.
- the package can be found at 
+ The package can be found at 
 \begin_inset LatexCommand \url[The RevTeX 4 Web Site]{http://publish.aps.org/revtex4/}
 
 \end_inset
@@ -13235,10 +13261,10 @@ Other preamble matter, like
 \backslash
 draft
 \family default
- etc.
- goes in the 
+ etc.\InsetSpace ~
+goes in the 
 \family sans
-Latex\InsetSpace ~
+LaTeX\InsetSpace ~
 Preamble
 \family default
  dialog, also as usual.
@@ -13388,7 +13414,8 @@ The main problem with this layout is that you can't use the optional arguments
  to the Section layouts either.) This means that after you export that file
  to LaTeX (which you'll need to do eventually to send it in to APS), you'll
  need to edit the LaTeX file with a text editor to add the optional arguments
- to set, e.g., the running title for the page headers.
+ to set, e.\InsetSpace \thinspace{}
+g., the running title for the page headers.
  Lacking these layouts makes the 
 \family typewriter
 
@@ -14097,7 +14124,7 @@ Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
 \begin_layout Description
 Poemtitle: Memoir has lots of possibilities to typeset poetry (up to very
  complex figurative poems).
- Lyx can only support a few of them.
+ LyX can only support a few of them.
  One is poemtitle, which is a centered title for poems, which will also
  be added to the table of contents (verse is the standard environment for
  poems.
@@ -14308,7 +14335,7 @@ PostScript
 \end_layout
 
 \begin_layout Standard
-The next step in the conversion chain is converting a DVI file into Postscript®.
+The next step in the conversion chain is converting a DVI file into Postscript.
  You can either use 
 \family sans
 \bar under
@@ -14441,8 +14468,8 @@ Dekel Tsur
 
 \begin_layout Standard
 The fastest way to generate a basic PDF file (no tags, links, etc.) with
- any version of LyX is to save the document as a Postscript® file, then
- run the 
+ any version of LyX is to save the document as a Postscript file, then run
+ the 
 \family typewriter
 ps2pdf
 \family default
@@ -14498,8 +14525,8 @@ The problem is that bitmap fonts are displayed poorly by Acrobat Reader.
  When creating a PDF from the LyX file, you need to use outline font instead
  of the default bitmap fonts (in fact, you should also use outline fonts
  for Postscript files).
- Recent LaTeX distributions come with Postscript® Type 1 version of the
- standard (Computer Modern) fonts.
+ Recent LaTeX distributions come with Postscript Type 1 version of the standard
+ (Computer Modern) fonts.
  pdfLaTeX uses these font by default.
  Dvips doesn't use these fonts by default, so to make it use them, add the
  following to lines to your 
@@ -14531,8 +14558,10 @@ If the default LaTeX font encoding (OT1) is used, nothing else need to be
 usepackage{ae,aecompl}
 \family default
  to the preamble of the LyX file.
- However, some glyphs are missing from the CM fonts (e.g.
- eth, thorn), and they are taken from the EC fonts.
+ However, some glyphs are missing from the CM fonts (e.\InsetSpace \thinspace{}
+g.\InsetSpace ~
+eth, thorn), and
+ they are taken from the EC fonts.
  Therefore you get these glyphs as bitmaps.
 \end_layout
 
@@ -14560,17 +14589,17 @@ Misc
 \end_layout
 
 \begin_layout Standard
-An alternate option is to use the standard Postscript® fonts instead of
- the Computer Modern fonts.
+An alternate option is to use the standard Postscript fonts instead of the
+ Computer Modern fonts.
  To do that, you need to select 
 \family sans
 pslatex
 \family default
  as the global font in the document layout dialog.
- When using the Postscript® fonts, the result PDF file is smaller as the
+ When using the Postscript fonts, the result PDF file is smaller as the
  fonts are not saved into the file.
- Furthermore, the Postscript® fonts include all T1 glyphs.
- On the other hand, the Postscript® fonts have no bold symbol font, so poor
+ Furthermore, the Postscript fonts include all T1 glyphs.
+ On the other hand, the Postscript fonts have no bold symbol font, so poor
  man's bold must be used (see Section\InsetSpace ~
 
 \begin_inset LatexCommand \ref{sec:pdfbold}
@@ -14578,11 +14607,11 @@ pslatex
 \end_inset
 
 ).
- The Postscript® fonts also look different from the Computer Modern fonts.
+ The Postscript fonts also look different from the Computer Modern fonts.
 \end_layout
 
 \begin_layout Standard
-To sum up, both the Computer Modern and the Postscript® fonts gives good
+To sum up, both the Computer Modern and the Postscript fonts gives good
  results (with few exceptions).
  The decision of which one to use is a matter of taste.
 \end_layout
@@ -14617,7 +14646,7 @@ pslatex
 \end_layout
 
 \begin_layout Standard
-The Postscript® fonts do not have a bold symbol font.
+The Postscript fonts do not have a bold symbol font.
  The solution is to use the 
 \family typewriter
 
@@ -14673,110 +14702,74 @@ Conditionals with pdfLaTeX
 \end_layout
 
 \begin_layout Standard
-Yes.
- Here is an example:
+Yes you can do this with the 
+\family typewriter
+ifpdf.sty
+\family default
+ package.
+ Here is an example: 
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-newif 
+usepackage{ifpdf} 
+\end_layout
+
+\begin_layout LyX-Code
+
 \backslash
-ifpdf
+ifpdf 
 \end_layout
 
 \begin_layout LyX-Code
    
 \backslash
-ifx 
-\backslash
-pdfoutput 
-\backslash
-undefined
+pdfinfo { /Author (your name and e-mail address) 
 \end_layout
 
 \begin_layout LyX-Code
-      
-\backslash
-pdffalse
+      /Title (official title -- i.e., title element) 
 \end_layout
 
 \begin_layout LyX-Code
-   
-\backslash
-else
+      /Subject (one line description of the document) 
 \end_layout
 
 \begin_layout LyX-Code
-      
-\backslash
-pdftrue
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-fi
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-ifpdf
+   } 
 \end_layout
 
 \begin_layout LyX-Code
    
 \backslash
-pdfinfo { /Author (your name and e-mail address)
+pdfcatalog { /PageMode (/UseNone) 
 \end_layout
 
 \begin_layout LyX-Code
-      /Title (official title -- i.e., title element)
+   % /OpenAction (fitbh) 
 \end_layout
 
 \begin_layout LyX-Code
-      /Subject (one line description of the document)
-\end_layout
-
-\begin_layout LyX-Code
-   }
+   } 
 \end_layout
 
 \begin_layout LyX-Code
    
 \backslash
-pdfcatalog { /PageMode (/UseNone)
+usepackage[pdftex]{hyperref} 
 \end_layout
 
 \begin_layout LyX-Code
-   % /OpenAction (fitbh)
-\end_layout
 
-\begin_layout LyX-Code
-   }
+\backslash
+else 
 \end_layout
 
 \begin_layout LyX-Code
    
 \backslash
-usepackage[pdftex]{hyperref}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-else
-\end_layout
-
-\begin_layout LyX-Code
-   
-\backslash
-usepackage[ps2pdf]{hyperref}
+usepackage[ps2pdf]{hyperref} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -14836,8 +14829,9 @@ dialog; LyX will automatically convert the file to this point, then feed
 \end_layout
 
 \begin_layout Standard
-The converter command is also specified in the dialog.It should be a completely
- qualified command line which uses the variable 
+The converter command is also specified in the dialog.
+ It should be a completely qualified command line which uses the variable
+ 
 \family typewriter
 $$FName
 \family default
@@ -14899,7 +14893,7 @@ n Project.
 \family typewriter
 sgml-tools
 \family default
- package of scripts and programs (to produce other formats, including Latex,
+ package of scripts and programs (to produce other formats, including LaTeX,
  HTML, plain text, man pages and\SpecialChar \ldots{}
 ).
  You may therefore prefer to use this document class if you want to write
@@ -18355,8 +18349,8 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-You can have more than 3 columns if you want to, but that might not
- be very pleasant for the eye.
+You can have more than 3 columns if you want to, but that might not be very
+ pleasant for the eye.
 \end_layout
 
 \begin_layout Subsubsection
