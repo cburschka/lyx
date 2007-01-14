@@ -1,4 +1,4 @@
-#LyX 1.4.3 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -279,82 +279,6 @@ Traducción de: Ignacio García <ignacio.garcia@tele2.es>
 
 \family sans
 Versión 1.4.3-5
-\family default
-
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-La última versión de este documento (en inglés) se encuentra en:
-\newline
-
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://wiki.lyx.org/LyX/DocumentationDevelopment
-\backslash
-#Extended-Insets}{
-\end_layout
-
-\end_inset
-
-http://wiki.lyx.org/LyX/DocumentationDevelopment#Extended-Insets
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\family default
-
-\newline
-La última versión de la traducción se encuentra en:
-\family typewriter
-
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://wiki.lyx.org/LyX/Manuals
-\backslash
-#es-Extended-Insets}{
-\end_layout
-
-\end_inset
-
-http://wiki.lyx.org/LyX/Manuals#es-Extended-Insets
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -392,7 +316,7 @@ Diálogo Gráficos
 Para insertar una imagen en un documento, sitúa el cursor en el lugar del
  texto que desees y haz click en el icono 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_graphics.xpm.png
+	filename ../images/dialog-show-new-inset_graphics.xpm
 	scale 85
 
 \end_inset
@@ -538,7 +462,7 @@ x.eps.bb
 \begin_layout Standard
 Esto es un ejemplo de imagen en formato PDF
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 El formato PDF se explica en el apéndice\InsetSpace ~
@@ -558,7 +482,7 @@ El formato PDF se explica en el apéndice\InsetSpace ~
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	display color
 	scale 70
 	rotateOrigin center
@@ -575,7 +499,7 @@ Esta es la misma imagen pero en modo borrador:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	display color
 	scale 70
 	draft
@@ -618,7 +542,7 @@ Para información general sobre flotantes, echa una ojeada a la sección\InsetSpac
 \begin_layout Standard
 El botón 
 \begin_inset Graphics
-	filename clipart/float-insert_figure.xpm.png
+	filename ../images/float-insert_figure.xpm
 	scale 85
 
 \end_inset
@@ -671,7 +595,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/platypus.pdf
+	filename ../clipart/platypus.pdf
 	display color
 	width 50col%
 	rotateOrigin center
@@ -712,7 +636,7 @@ M.C.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	display color
 	scale 80
 	rotateOrigin center
@@ -753,7 +677,7 @@ Etiqueta
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/label-insert.xpm.png
+	filename ../images/label-insert.xpm
 	scale 85
 
 \end_inset
@@ -767,7 +691,7 @@ cruzada
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_ref.xpm.png
+	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
 
 \end_inset
@@ -822,7 +746,7 @@ status open
 \hfill
 
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	width 45col%
 	subcaption
 	subcaptionText "Estructura indefinible"
@@ -833,7 +757,7 @@ status open
 \hfill
 
 \begin_inset Graphics
-	filename clipart/platypus.pdf
+	filename ../clipart/platypus.pdf
 	lyxscale 60
 	width 45col%
 	subcaption
@@ -971,11 +895,9 @@ Formatos de imagen escalables pueden ser "Scalable Vector
  En estos casos sólo se añade una cabecera con las propiedades de la imagen
  a la imagen original
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
-
-\lang english
 En el caso de PDF, además se comprime la imagen original.
 \end_layout
 
@@ -1028,7 +950,7 @@ Introducción
 \begin_layout Standard
 Puede insertarse una tabla mediante el botón
 \begin_inset Graphics
-	filename clipart/tabular-insert.xpm.png
+	filename ../images/tabular-insert.xpm
 	scale 85
 
 \end_inset
@@ -1408,7 +1330,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_append-row.xpm.png
+	filename ../images/tabular-feature_append-row.xpm
 
 \end_inset
 
@@ -1418,7 +1340,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_append-column.xpm.png
+	filename ../images/tabular-feature_append-column.xpm
 
 \end_inset
 
@@ -1428,7 +1350,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_delete-row.xpm.png
+	filename ../images/tabular-feature_delete-row.xpm
 
 \end_inset
 
@@ -1438,7 +1360,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_delete-column.xpm.png
+	filename ../images/tabular-feature_delete-column.xpm
 
 \end_inset
 
@@ -1448,7 +1370,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-top.xpm.png
+	filename ../images/tabular-feature_toggle-line-top.xpm
 
 \end_inset
 
@@ -1458,7 +1380,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-bottom.xpm.png
+	filename ../images/tabular-feature_toggle-line-bottom.xpm
 
 \end_inset
 
@@ -1468,7 +1390,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-left.xpm.png
+	filename ../images/tabular-feature_toggle-line-left.xpm
 
 \end_inset
 
@@ -1478,7 +1400,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-right.xpm.png
+	filename ../images/tabular-feature_toggle-line-right.xpm
 
 \end_inset
 
@@ -1488,7 +1410,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_set-all-lines.xpm.png
+	filename ../images/tabular-feature_set-all-lines.xpm
 
 \end_inset
 
@@ -1499,7 +1421,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_unset-all-lines.xpm.png
+	filename ../images/tabular-feature_unset-all-lines.xpm
 
 \end_inset
 
@@ -1510,7 +1432,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_align-left.xpm.png
+	filename ../images/tabular-feature_align-left.xpm
 
 \end_inset
 
@@ -1520,7 +1442,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_align-center.xpm.png
+	filename ../images/tabular-feature_align-center.xpm
 
 \end_inset
 
@@ -1530,7 +1452,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_align-right.xpm.png
+	filename ../images/tabular-feature_align-right.xpm
 
 \end_inset
 
@@ -1540,7 +1462,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_valign-top.xpm.png
+	filename ../images/tabular-feature_valign-top.xpm
 
 \end_inset
 
@@ -1550,7 +1472,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_valign-middle.xpm.png
+	filename ../images/tabular-feature_valign-middle.xpm
 
 \end_inset
 
@@ -1560,7 +1482,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_valign-bottom.xpm.png
+	filename ../images/tabular-feature_valign-bottom.xpm
 
 \end_inset
 
@@ -1570,7 +1492,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_set-rotate-cell.xpm.png
+	filename ../images/tabular-feature_set-rotate-cell.xpm
 
 \end_inset
 
@@ -1580,7 +1502,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_set-rotate-tabular.xpm.png
+	filename ../images/tabular-feature_set-rotate-tabular.xpm
 
 \end_inset
 
@@ -1590,7 +1512,7 @@ La barra de herramientas tiene los siguientes iconos:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_multicolumn.xpm.png
+	filename ../images/tabular-feature_multicolumn.xpm
 
 \end_inset
 
@@ -1869,7 +1791,7 @@ Tabla
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/float-insert_table.xpm.png
+	filename ../images/float-insert_table.xpm
 	scale 85
 
 \end_inset
@@ -1984,7 +1906,7 @@ Etiqueta
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/label-insert.xpm.png
+	filename ../images/label-insert.xpm
 	scale 85
 
 \end_inset
@@ -1998,7 +1920,7 @@ cruzada
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_ref.xpm.png
+	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
 
 \end_inset
@@ -4378,7 +4300,7 @@ He aquí una pequeña tabla larga para mostrar cómo funciona:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -4772,7 +4694,7 @@ Referencias a Tablas Largas
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -5266,7 +5188,7 @@ Las tablas siguientes muestran la diferencia:
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -5614,7 +5536,7 @@ asd
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -5642,7 +5564,7 @@ LTcapwidth}{5cm}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -6079,7 +6001,7 @@ caption
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -6224,7 +6146,7 @@ TEL.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -8375,7 +8297,7 @@ TEL.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -9609,7 +9531,7 @@ Tabla con líneas múltiples en celda
 \begin_layout Standard
 líneas
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -9788,7 +9710,7 @@ en ERT antes de la palabra.
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Caption
 \begin_inset LatexCommand \label{tab:Tabla-con-y}
@@ -10054,7 +9976,7 @@ Fundamentos de Multicolumna
 Para extender una celda sobre varias columnas, se marcan las celdas que
  se desee combinar y se usa el botón 
 \begin_inset Graphics
-	filename clipart/tabular-feature_multicolumn.xpm.png
+	filename ../images/tabular-feature_multicolumn.xpm
 	scale 85
 
 \end_inset
@@ -10247,7 +10169,7 @@ LyX soporta multicolumnas directamente, pero hay que prestar atención a
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Caption
 \begin_inset LatexCommand \label{tab:Tabla-con-centrado}
@@ -10257,7 +10179,7 @@ status collapsed
 Tabla con texto centrado en multicolumna sobre dos columnas que tienen exactamen
 te la mitad de anchura que la celda multicolumna
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Tabla multicolumna perfecta
@@ -10422,7 +10344,7 @@ status open
 Tabla en la que las columnas combinadas no tienen exactamente la mitad de
  anchura que la celda multicolumna
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Tabla multicolumna imperfecta
@@ -10667,7 +10589,7 @@ Al introducir un argumento LaTeX, todas las propiedades de celda puestas
  en el diálogo se ignoran.
  
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -10781,7 +10703,7 @@ Para crear la siguiente tabla:
 \begin_layout Standard
 \align center
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -10919,7 +10841,7 @@ i
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11126,7 +11048,7 @@ Ejemplo de tabla booktabs
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11184,7 +11106,7 @@ Medipix
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11197,7 +11119,7 @@ cmidrule(r){2-2}
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11210,7 +11132,7 @@ cmidrule(l){3-4}
 
 Detector thickness [
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11323,7 +11245,7 @@ addlinespace
 
 Spatial resolution [
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -11491,7 +11413,7 @@ LSF-spatial resolution
 \begin_layout Standard
 in 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12078,7 +12000,7 @@ Medipix
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12091,7 +12013,7 @@ cmidrule(r){2-2}
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12104,7 +12026,7 @@ cmidrule(l){3-4}
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12117,7 +12039,7 @@ morecmidrules
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12130,7 +12052,7 @@ cmidrule{2-4}
 
 Detector thickness [
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12180,7 +12102,7 @@ textmu m
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12230,7 +12152,7 @@ Edge angle [°]
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12293,7 +12215,7 @@ textmu m
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12360,7 +12282,7 @@ midrule
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12512,7 +12434,7 @@ in % of pixel size
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -12614,7 +12536,7 @@ colortbl
 \series default
 
 \begin_inset OptArg
-status open
+status collapsed
 
 \begin_layout Standard
 Tabla sin colortbl
@@ -13095,7 +13017,7 @@ Tabla con colortbl
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13199,7 +13121,7 @@ h
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13496,7 +13418,7 @@ arrayrulecolor{black}}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13813,7 +13735,7 @@ sd
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -13833,7 +13755,7 @@ myHlineC}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -14744,7 +14666,7 @@ hspace{0pt}}
 \newline
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -16244,7 +16166,7 @@ de LyX.
  del flotante haciendo click-izquierda sobre ella.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
-	filename clipart/flotante.png
+	filename ../clipart/flotante.png
 	scale 70
 
 \end_inset
@@ -16576,7 +16498,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	display color
 	width 40col%
 	rotateOrigin center
@@ -16777,7 +16699,7 @@ Etiqueta
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/label-insert.xpm.png
+	filename ../images/label-insert.xpm
 	scale 85
 
 \end_inset
@@ -16786,7 +16708,7 @@ Etiqueta
  Aparece una ventana esperando la introducción del texto de la etiqueta
  y se inserta un cuadro gris como este: 
 \begin_inset Graphics
-	filename clipart/etiqueta.png
+	filename ../clipart/etiqueta.png
 	scale 85
 
 \end_inset
@@ -16816,7 +16738,7 @@ cruzada
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_ref.xpm.png
+	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
 
 \end_inset
@@ -16828,7 +16750,7 @@ cruzada
  Puedes ordenar las etiquetas alfabéticamente y elegir una.
  Se inserta un cuadro gris como este: 
 \begin_inset Graphics
-	filename clipart/referencia2.png
+	filename ../clipart/referencia2.png
 	scale 85
 
 \end_inset
@@ -18155,12 +18077,12 @@ El formato de encabezado se ha cambiado sólo para este ejemplo.
 placement !p
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	lyxscale 50
 	scale 50
 
@@ -18980,7 +18902,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	scale 75
 
 \end_inset
@@ -19277,7 +19199,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	scale 75
 
 \end_inset
@@ -19355,7 +19277,7 @@ Notas
 \begin_layout Section
 Notas en 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -19412,7 +19334,7 @@ texorpdfstring es suministrado por el paquete LaTeX hyperref para evitar
 \begin_layout Standard
 Las notas se insertan con el botón 
 \begin_inset Graphics
-	filename clipart/note-insert.xpm.png
+	filename ../images/note-insert.xpm
 	scale 85
 
 \end_inset
@@ -19435,7 +19357,7 @@ LyX Este tipo es para notas internas que no han de aparecer en la salida:
 \newline
 
 \begin_inset Graphics
-	filename clipart/NotaLyXImagen.png
+	filename ../clipart/NotaLyXImagen.png
 	display none
 	scale 85
 
@@ -19469,7 +19391,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 \newline
 
 \begin_inset Graphics
-	filename clipart/ComentNotaImagen.png
+	filename ../clipart/ComentNotaImagen.png
 	display none
 	scale 85
 
@@ -19499,7 +19421,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 \newline
 
 \begin_inset Graphics
-	filename clipart/GrisNotaImagen.png
+	filename ../clipart/GrisNotaImagen.png
 	display none
 	scale 85
 
@@ -19509,7 +19431,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 \newline
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -19536,10 +19458,9 @@ egroup}
 status open
 
 \begin_layout Standard
-Este es el texto de un comentario que se muestra resaltado en gris.
- Este es el texto
+Este es el texto
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 Esto es un ejemplo de nota al pie en una nota resaltada en gris.
@@ -19681,7 +19602,7 @@ Notas al pie
 \begin_layout Standard
 Las notas al pie se insertan con el botón 
 \begin_inset Graphics
-	filename clipart/footnote-insert.xpm.png
+	filename ../images/footnote-insert.xpm
 	scale 85
 
 \end_inset
@@ -19704,7 +19625,7 @@ Aparece un recuadro como este:
 \bar default
  
 \begin_inset Graphics
-	filename clipart/notapie.png
+	filename ../clipart/notapie.png
 	scale 80
 
 \end_inset
@@ -19755,7 +19676,7 @@ Ejemplo de nota al pie.
 \bar default
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -20103,7 +20024,7 @@ roman{footnote}}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -20130,7 +20051,7 @@ Ejemplo de nota al pie en números romanos.
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -20355,7 +20276,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/without_fntright.pdf
+	filename ../clipart/without_fntright.pdf
 	width 100col%
 
 \end_inset
@@ -20409,7 +20330,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/with_fntright.pdf
+	filename ../clipart/with_fntright.pdf
 	width 100col%
 
 \end_inset
@@ -20525,7 +20446,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/endnotes.pdf
+	filename ../clipart/endnotes.pdf
 
 \end_inset
 
@@ -20713,7 +20634,7 @@ margen
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/marginalnote-insert.xpm.png
+	filename ../images/marginalnote-insert.xpm
 	scale 85
 
 \end_inset
@@ -20779,7 +20700,7 @@ reversemarginpar
 en ERT antes de la nota.
  La nueva colocación es válida para todas las siguientes notas al margen.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21125,7 +21046,7 @@ raggedleftmarginnote
 \series medium
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21189,7 +21110,7 @@ raggedright}
 \series medium
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21328,7 +21249,7 @@ vspace{1.5mm}
 \family roman
 \series medium
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21405,7 +21326,7 @@ status collapsed
 \series medium
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -21493,7 +21414,7 @@ Cuadro (Minipágina)
 \family default
 : 
 \begin_inset Graphics
-	filename clipart/CuadroMinipag.png
+	filename ../clipart/CuadroMinipag.png
 	scale 75
 	keepAspectRatio
 
@@ -22411,7 +22332,7 @@ pt
 
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23369,7 +23290,7 @@ Esta línea es un ejemplo para mostrar cómo prevenir la división de p.\InsetSpace
 e.\InsetSpace ~
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23382,7 +23303,7 @@ mbox{
 
 estalarguísimapalabra.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23420,7 +23341,7 @@ e.\InsetSpace ~
 \newline
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23433,7 +23354,7 @@ mbox{
 
 estalarguísimapalabra.
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -23922,7 +23843,7 @@ B^V
 \begin_layout Standard
 B^
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24071,7 +23992,7 @@ B^V
 \begin_layout Standard
 B^
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24587,7 +24508,7 @@ en ERT.
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -24929,7 +24850,7 @@ Página de LyX
  seguido por una llave en ERT.
  Este es el resultado: 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25652,7 +25573,7 @@ DVI
 \family default
  o el botón 
 \begin_inset Graphics
-	filename clipart/buffer-view_dvi.png
+	filename ../clipart/buffer-view_dvi.png
 	scale 85
 
 \end_inset
@@ -25945,7 +25866,7 @@ pdftex
  que convierte directamente el archivo a PDF.
  Alternativamente se puede usar el  botón 
 \begin_inset Graphics
-	filename clipart/buffer-export_pdf2.png
+	filename ../clipart/buffer-export_pdf2.png
 	scale 85
 
 \end_inset

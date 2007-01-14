@@ -1,4 +1,4 @@
-#LyX 1.4.3-5 created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4svn created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -263,48 +263,6 @@ original author: Uwe Stöhr <uwestoehr@web.de>
 
 \family sans
 Version 1.4.3-6
-\family default
-
-\begin_inset Foot
-status open
-
-\begin_layout Standard
-The latest version of this document can be found at
-\newline
-
-\family typewriter
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-href{http://wiki.lyx.org/LyX/DocumentationDevelopment
-\backslash
-#Extended-Insets}{
-\end_layout
-
-\end_inset
-
-http://wiki.lyx.org/LyX/DocumentationDevelopment#Extended-Insets
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -342,7 +300,7 @@ Graphics Dialog
 To insert an image into your document, place the cursor at the text position
  you want and click on the toolbar icon 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_graphics.xpm.png
+	filename ../images/dialog-show-new-inset_graphics.xpm
 	scale 85
 
 \end_inset
@@ -493,7 +451,7 @@ x.eps.bb
 \newpage
 This is an example image in PDF format
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 The PDF format is explained in appendix\InsetSpace ~
@@ -513,7 +471,7 @@ The PDF format is explained in appendix\InsetSpace ~
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	display color
 	scale 70
 	rotateOrigin center
@@ -530,7 +488,7 @@ This is the same image like the one above but in draft mode:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	display color
 	scale 70
 	draft
@@ -573,7 +531,7 @@ For general explanations about floats, have a look at section\InsetSpace ~
 \begin_layout Standard
 The toolbar button 
 \begin_inset Graphics
-	filename clipart/float-insert_figure.xpm.png
+	filename ../images/float-insert_figure.xpm
 	scale 85
 
 \end_inset
@@ -629,12 +587,12 @@ Figure\InsetSpace ~
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/platypus.pdf
+	filename ../clipart/platypus.pdf
 	display color
 	width 50col%
 	rotateOrigin center
@@ -675,7 +633,7 @@ M.C.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	display color
 	scale 80
 	rotateOrigin center
@@ -715,7 +673,7 @@ Label
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/label-insert.xpm.png
+	filename ../images/label-insert.xpm
 	scale 85
 
 \end_inset
@@ -729,7 +687,7 @@ reference
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_ref.xpm.png
+	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
 
 \end_inset
@@ -788,14 +746,14 @@ Figure\InsetSpace ~
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Standard
 
 \hfill
 
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	width 45col%
 	subcaption
 	subcaptionText "Undefinable structure"
@@ -806,7 +764,7 @@ status collapsed
 \hfill
 
 \begin_inset Graphics
-	filename clipart/platypus.pdf
+	filename ../clipart/platypus.pdf
 	lyxscale 60
 	width 45col%
 	subcaption
@@ -1098,7 +1056,7 @@ can be
  In this cases only a header with the image properties is added to the original
  image
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 In the case of PDF, the original image is additionally compressed.
@@ -1153,7 +1111,7 @@ Introduction
 \begin_layout Standard
 You can insert a table using either the toolbar button 
 \begin_inset Graphics
-	filename clipart/tabular-insert.xpm.png
+	filename ../images/tabular-insert.xpm
 	scale 85
 
 \end_inset
@@ -1543,7 +1501,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_append-row.xpm.png
+	filename ../images/tabular-feature_append-row.xpm
 
 \end_inset
 
@@ -1553,7 +1511,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_append-column.xpm.png
+	filename ../images/tabular-feature_append-column.xpm
 
 \end_inset
 
@@ -1563,7 +1521,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_delete-row.xpm.png
+	filename ../images/tabular-feature_delete-row.xpm
 
 \end_inset
 
@@ -1573,7 +1531,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_delete-column.xpm.png
+	filename ../images/tabular-feature_delete-column.xpm
 
 \end_inset
 
@@ -1583,7 +1541,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-top.xpm.png
+	filename ../images/tabular-feature_toggle-line-top.xpm
 
 \end_inset
 
@@ -1593,7 +1551,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-bottom.xpm.png
+	filename ../images/tabular-feature_toggle-line-bottom.xpm
 
 \end_inset
 
@@ -1603,7 +1561,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-left.xpm.png
+	filename ../images/tabular-feature_toggle-line-left.xpm
 
 \end_inset
 
@@ -1613,7 +1571,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_toggle-line-right.xpm.png
+	filename ../images/tabular-feature_toggle-line-right.xpm
 
 \end_inset
 
@@ -1623,7 +1581,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_set-all-lines.xpm.png
+	filename ../images/tabular-feature_set-all-lines.xpm
 
 \end_inset
 
@@ -1634,7 +1592,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_unset-all-lines.xpm.png
+	filename ../images/tabular-feature_unset-all-lines.xpm
 
 \end_inset
 
@@ -1645,7 +1603,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_align-left.xpm.png
+	filename ../images/tabular-feature_align-left.xpm
 
 \end_inset
 
@@ -1655,7 +1613,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_align-center.xpm.png
+	filename ../images/tabular-feature_align-center.xpm
 
 \end_inset
 
@@ -1665,7 +1623,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_align-right.xpm.png
+	filename ../images/tabular-feature_align-right.xpm
 
 \end_inset
 
@@ -1675,7 +1633,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_valign-top.xpm.png
+	filename ../images/tabular-feature_valign-top.xpm
 
 \end_inset
 
@@ -1685,7 +1643,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_valign-middle.xpm.png
+	filename ../images/tabular-feature_valign-middle.xpm
 
 \end_inset
 
@@ -1695,7 +1653,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_valign-bottom.xpm.png
+	filename ../images/tabular-feature_valign-bottom.xpm
 
 \end_inset
 
@@ -1705,7 +1663,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_set-rotate-cell.xpm.png
+	filename ../images/tabular-feature_set-rotate-cell.xpm
 
 \end_inset
 
@@ -1715,7 +1673,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_set-rotate-tabular.xpm.png
+	filename ../images/tabular-feature_set-rotate-tabular.xpm
 
 \end_inset
 
@@ -1725,7 +1683,7 @@ The toolbar has the following icons:
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Graphics
-	filename clipart/tabular-feature_multicolumn.xpm.png
+	filename ../images/tabular-feature_multicolumn.xpm
 
 \end_inset
 
@@ -2004,7 +1962,7 @@ Table
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/float-insert_table.xpm.png
+	filename ../images/float-insert_table.xpm
 	scale 85
 
 \end_inset
@@ -2125,7 +2083,7 @@ Label
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/label-insert.xpm.png
+	filename ../images/label-insert.xpm
 	scale 85
 
 \end_inset
@@ -2139,7 +2097,7 @@ reference
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_ref.xpm.png
+	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
 
 \end_inset
@@ -10257,7 +10215,7 @@ Multicolumn Basics
 To span a cell over multiple columns, mark as much cells within a line that
  should be one spanned cell and use either the table-toolbar button 
 \begin_inset Graphics
-	filename clipart/tabular-feature_multicolumn.xpm.png
+	filename ../images/tabular-feature_multicolumn.xpm
 	scale 85
 
 \end_inset
@@ -17262,7 +17220,7 @@ Userguide
  by left-clicking on the box label.
  A closed float box looks like this: 
 \begin_inset Graphics
-	filename clipart/float.png
+	filename ../clipart/float.png
 	scale 70
 
 \end_inset
@@ -17624,7 +17582,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	display color
 	width 40col%
 	rotateOrigin center
@@ -17827,7 +17785,7 @@ Label
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/label-insert.xpm.png
+	filename ../images/label-insert.xpm
 	scale 85
 
 \end_inset
@@ -17835,7 +17793,7 @@ Label
 .
  A grey label box like this one: 
 \begin_inset Graphics
-	filename clipart/label.png
+	filename ../clipart/label.png
 	scale 85
 
 \end_inset
@@ -17861,7 +17819,7 @@ Cross-reference
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/dialog-show-new-inset_ref.xpm.png
+	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
 
 \end_inset
@@ -17869,7 +17827,7 @@ Cross-reference
 .
  A grey cross-reference box like this one: 
 \begin_inset Graphics
-	filename clipart/reference2.png
+	filename ../clipart/reference2.png
 	scale 85
 
 \end_inset
@@ -19196,7 +19154,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.pdf
+	filename ../clipart/mobius.pdf
 	lyxscale 50
 	scale 50
 
@@ -19986,7 +19944,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	scale 75
 
 \end_inset
@@ -20283,7 +20241,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/escher-lsd.pdf
+	filename ../clipart/escher-lsd.pdf
 	scale 75
 
 \end_inset
@@ -20420,7 +20378,7 @@ texorpdfstring is provided by the LaTeX-package hyperref to avoid that ligatures
 \begin_layout Standard
 Notes are inserted with the toolbar button 
 \begin_inset Graphics
-	filename clipart/note-insert.xpm.png
+	filename ../images/note-insert.xpm
 	scale 85
 
 \end_inset
@@ -20443,7 +20401,7 @@ Note This note type is for internal notes that won't appear in the output:
 \newline
 
 \begin_inset Graphics
-	filename clipart/LyXNoteImage.png
+	filename ../clipart/LyXNoteImage.png
 	display none
 	scale 85
 
@@ -20477,7 +20435,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 \newline
 
 \begin_inset Graphics
-	filename clipart/CommentNoteImage.png
+	filename ../clipart/CommentNoteImage.png
 	display none
 	scale 85
 
@@ -20505,7 +20463,7 @@ Out This note will appear in the output as grey text: Its note-box
 \newline
 
 \begin_inset Graphics
-	filename clipart/GreyedOutNoteImage.png
+	filename ../clipart/GreyedOutNoteImage.png
 	display none
 	scale 85
 
@@ -20542,10 +20500,9 @@ egroup}
 status open
 
 \begin_layout Standard
-This is text of a comment that appears in the output as grey text.
- This is text
+This is text
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 This is an example footnote within a greyed out note.
@@ -20693,7 +20650,7 @@ Footnotes
 \begin_layout Standard
 Footnotes can be inserted using the toolbar button 
 \begin_inset Graphics
-	filename clipart/footnote-insert.xpm.png
+	filename ../images/footnote-insert.xpm
 	scale 85
 
 \end_inset
@@ -20714,7 +20671,7 @@ You'll see
 \bar default
 then the following footnote-box: 
 \begin_inset Graphics
-	filename clipart/footnote.png
+	filename ../clipart/footnote.png
 	scale 80
 
 \end_inset
@@ -21353,7 +21310,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/without_fntright.pdf
+	filename ../clipart/without_fntright.pdf
 	width 100col%
 
 \end_inset
@@ -21407,7 +21364,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/with_fntright.pdf
+	filename ../clipart/with_fntright.pdf
 	width 100col%
 
 \end_inset
@@ -21531,7 +21488,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/endnotes.pdf
+	filename ../clipart/endnotes.pdf
 
 \end_inset
 
@@ -21718,7 +21675,7 @@ Note
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/marginalnote-insert.xpm.png
+	filename ../images/marginalnote-insert.xpm
 	scale 85
 
 \end_inset
@@ -22505,7 +22462,7 @@ Box (Minipage)
 \family default
 : 
 \begin_inset Graphics
-	filename clipart/BoxInsetDefault.png
+	filename ../clipart/BoxInsetDefault.png
 	scale 85
 
 \end_inset
@@ -26661,7 +26618,7 @@ DVI
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename clipart/buffer-view_dvi.png
+	filename ../clipart/buffer-view_dvi.png
 	scale 85
 
 \end_inset
@@ -26944,7 +26901,7 @@ pdftex
  that converts your file directly to PDF.
  You can alternatively use the toolbar button 
 \begin_inset Graphics
-	filename clipart/buffer-export_pdf2.png
+	filename ../clipart/buffer-export_pdf2.png
 	scale 85
 
 \end_inset

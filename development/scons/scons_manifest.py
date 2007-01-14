@@ -1297,8 +1297,6 @@ lib_bind_files = Split('''
     aqua.bind
 ''')
 
-lib_clipart_files = ['platypus.eps']
-
 
 lib_examples_files = Split('''
     Foils.lyx
@@ -2211,6 +2209,7 @@ lib_doc_files = Split('''
     de_Tutorial.lyx
     de_UserGuide.lyx
     DocStyle.lyx
+    es_Extended-Insets.lyx
     es_Intro.lyx
     es_Tutorial.lyx
     eu_Customization.lyx
@@ -2219,6 +2218,7 @@ lib_doc_files = Split('''
     eu_Intro.lyx
     eu_Tutorial.lyx
     eu_UserGuide.lyx
+    Extended-Insets.lyx
     Extended.lyx
     FAQ.lyx
     fr_Customization.lyx
@@ -2263,6 +2263,36 @@ lib_doc_files = Split('''
     platypus.eps
 ''')
 
+
+lib_clipart_files = Split('''
+    Abstract.lyx
+    Abstract.pdf
+    BoxInsetDefault.png
+    buffer-export_pdf2.png
+    buffer-view_dvi.png
+    ComentNotaImagen.png
+    CommentNoteImage.png
+    CuadroMinipag.png
+    endnotes.pdf
+    escher-lsd.pdf
+    etiqueta.png
+    float.png
+    flotante.png
+    footnote.png
+    GreyedOutNoteImage.png
+    GrisNotaImagen.png
+    label.png
+    LyXNoteImage.png
+    mobius.pdf
+    NotaLyXImagen.png
+    notapie.png
+    platypus.eps
+    platypus.pdf
+    reference2.png
+    referencia2.png
+    with_fntright.pdf
+    without_fntright.pdf
+''')
 
 lib_lyx2lyx_files = Split('''
     lyx2lyx
