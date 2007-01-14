@@ -370,10 +370,12 @@ void GuiView::setGeometry(unsigned int width,
 			d.posx_offset = posx - normalGeometry().x();
 			d.posy_offset = posy - normalGeometry().y();
 #else
+#ifndef Q_WS_MACX
 			if (!maximize) {
 				d.posx_offset = posx - geometry().x();
 				d.posy_offset = posy - geometry().y();
 			}
+#endif
 #endif
 		}
 }
