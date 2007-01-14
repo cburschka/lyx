@@ -464,6 +464,7 @@ Menuset
 		Item "Introduction|I" "help-open Intro"
 		Item "Tutorial|T" "help-open Tutorial"
 		Item "User's Guide|U" "help-open UserGuide"
+		Item "Extended-Insets|n" "help-open Extended-Insets"
 		Item "Extended Features|E" "help-open Extended"
 		Item "Customization|C" "help-open Customization"
 		Item "FAQ|F" "help-open FAQ"

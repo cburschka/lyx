@@ -1324,8 +1324,6 @@ lib_bind_files = Split('''
     aqua.bind
 ''')
 
-lib_clipart_files = ['platypus.eps']
-
 
 lib_examples_files = Split('''
     Foils.lyx
@@ -2272,6 +2270,7 @@ lib_doc_files = Split('''
     eu_Intro.lyx
     eu_Tutorial.lyx
     eu_UserGuide.lyx
+    Extended-Insets.lyx
     Extended.lyx
     FAQ.lyx
     fr_Customization.lyx
@@ -2316,6 +2315,38 @@ lib_doc_files = Split('''
     platypus.eps
 ''')
 
+
+lib_clipart_files = Split('''
+    Abstract.lyx
+    Abstract.pdf
+    BoxInsetDefaultQt4.png
+    buffer-export_pdf2.png
+    buffer-view_dvi.png
+    ComentNotaImagen.png
+    CommentNoteImageQt4.png
+    CuadroMinipag.png
+    endnotes.pdf
+    escher-lsd.pdf
+    etiqueta.png
+    floatQt4.png
+    flotante.png
+    footnoteQt4.png
+    GreyedOutNoteImageQt4.png
+    GrisNotaImagen.png
+    labelQt4.png
+    LyXNoteImageQt4.png
+    mobius.pdf
+    NotaLyXImagen.png
+    notapie.png
+    platypus.eps
+    platypus.pdf
+    referenceQt4.png
+    referencia2.png
+    with_fntright.pdf
+    without_fntright.pdf
+''')
+
+
 lib_lyx2lyx_files = Split('''
     lyx2lyx
     lyx2lyx_lang.py
@@ -2338,6 +2369,7 @@ lib_lyx2lyx_files = Split('''
     profiling.py
     test_parser_tools.py
 ''')
+
 
 win32_bakoma_fonts = Split('''
     Readme.txt   

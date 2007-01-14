@@ -15,6 +15,7 @@ docfiles = \
 	de_Tutorial.lyx \
 	de_UserGuide.lyx \
 	DocStyle.lyx \
+	es_Extended-Insets.lyx \
 	es_Intro.lyx \
 	es_Tutorial.lyx \
 	eu_Customization.lyx \
@@ -23,6 +24,7 @@ docfiles = \
 	eu_Intro.lyx \
 	eu_Tutorial.lyx \
 	eu_UserGuide.lyx \
+	Extended-Insets.lyx \
 	Extended.lyx \
 	FAQ.lyx \
 	fr_Customization.lyx \
