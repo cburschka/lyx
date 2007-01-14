@@ -752,41 +752,40 @@ bool Buffer::save() const
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
-	// make a backup if the file already exists
-	string s;
-	if (lyxrc.make_backup && fs::exists(pimpl_->filename.toFilesystemEncoding())) {
-		s = fileName() + '~';
-		if (!lyxrc.backupdir_path.empty())
-			s = addName(lyxrc.backupdir_path,
-				    subst(os::internal_path(s),'/','!'));
+	string const encodedFilename = pimpl_->filename.toFilesystemEncoding();
 
-		// It might very well be that this variant is just
-		// good enough. (Lgb)
-		// But to use this we need fs::copy_file to actually do a copy,
-		// even when the target file exists. (Lgb)
+	FileName backupName;
+	bool madeBackup = false;
+
+	// make a backup if the file already exists
+	if (lyxrc.make_backup && fs::exists(encodedFilename)) {
+		backupName = FileName(fileName() + '~');
+		if (!lyxrc.backupdir_path.empty())
+			backupName = FileName(addName(lyxrc.backupdir_path,
+			                      subst(os::internal_path(backupName.absFilename()), '/', '!')));
+
 		try {
-		    fs::copy_file(pimpl_->filename.toFilesystemEncoding(), s, false);
-		}
-		catch (fs::filesystem_error const & fe) {
+			fs::copy_file(encodedFilename, backupName.toFilesystemEncoding(), false);
+			madeBackup = true;
+		} catch (fs::filesystem_error const & fe) {
 			Alert::error(_("Backup failure"),
-				     bformat(_("LyX was not able to make a backup copy in %1$s.\n"
-							    "Please check if the directory exists and is writeable."),
-					  from_utf8(fs::path(s).branch_path().native_directory_string())));
-			lyxerr[Debug::DEBUG] << "Fs error: "
-					     << fe.what() << endl;
+			             bformat(_("Cannot create backup file %1$s.\n"
+			                       "Please check whether the directory exists and is writeable."),
+			                     from_utf8(backupName.absFilename())));
+			lyxerr[Debug::DEBUG] << "Fs error: " << fe.what() << endl;
 		}
 	}
 
 	if (writeFile(pimpl_->filename)) {
 		markClean();
 		removeAutosaveFile(fileName());
+		return true;
 	} else {
 		// Saving failed, so backup is not backup
-		if (lyxrc.make_backup)
-			rename(FileName(s), pimpl_->filename);
+		if (madeBackup)
+			rename(backupName, pimpl_->filename);
 		return false;
 	}
-	return true;
 }
 
 
