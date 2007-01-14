@@ -2318,8 +2318,6 @@ lib_doc_files = Split('''
 
 
 lib_clipart_files = Split('''
-    Abstract.lyx
-    Abstract.pdf
     BoxInsetDefaultQt4.png
     buffer-export_pdf2.png
     buffer-view_dvi.png
