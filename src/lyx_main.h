@@ -30,6 +30,7 @@ class LyXFunc;
 class LyXServer;
 class LyXServerSocket;
 class LyXView;
+class Messages;
 class Session;
 class kb_keymap;
 
@@ -76,6 +77,13 @@ public:
 	///
 	kb_keymap & topLevelKeymap();
 	kb_keymap const & topLevelKeymap() const;
+
+	///
+	Messages & getMessages(std::string const & language);
+	///
+	Messages & getGuiMessages();
+	///
+	void setGuiLanguage(std::string const & language);
 
 	///
 	IconvProcessor & iconvProcessor();

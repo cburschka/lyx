@@ -37,6 +37,13 @@ private:
 	mutable TranslationCache cache_;
 };
 
+/// Access to the unique Messages object for the passed \p language.
+/// Implementation is in lyx_main.C.
+extern Messages & getMessages(std::string const & language);
+/// Access to the unique Messages object used for GUI element.
+/// Implementation is in lyx_main.C.
+extern Messages & getGuiMessages();
+
 } // namespace lyx
 
 #endif

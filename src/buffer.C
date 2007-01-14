@@ -178,7 +178,7 @@ public:
 	/// name of the file the buffer is associated with.
 	FileName filename;
 
-	boost::scoped_ptr<Messages> messages;
+	Messages * messages;
 
 	/** Set to true only when the file is fully loaded.
 	 *  Used to prevent the premature generation of previews
@@ -200,7 +200,7 @@ public:
 Buffer::Impl::Impl(Buffer & parent, FileName const & file, bool readonly_)
 	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), file_fully_loaded(false), inset(params),
-	  toc_backend(&parent)
+	  toc_backend(&parent), messages(0)
 {
 	inset.setAutoBreakRows(true);
 	lyxvc.buffer(&parent);
@@ -1393,7 +1393,7 @@ void Buffer::updateDocLang(Language const * nlang)
 {
 	BOOST_ASSERT(nlang);
 
-	pimpl_->messages.reset(new Messages(nlang->code()));
+	pimpl_->messages = &getMessages(nlang->code());
 }
 
 
@@ -1466,7 +1466,7 @@ Language const * Buffer::getLanguage() const
 
 docstring const Buffer::B_(string const & l10n) const
 {
-	if (pimpl_->messages.get()) 
+	if (pimpl_->messages) 
 		return pimpl_->messages->get(l10n);
 
 	return _(l10n);

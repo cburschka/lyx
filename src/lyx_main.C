@@ -40,6 +40,7 @@
 #include "lyxsocket.h"
 #include "lyxtextclasslist.h"
 #include "MenuBackend.h"
+#include "messages.h"
 #include "mover.h"
 #include "ToolbarBackend.h"
 
@@ -63,6 +64,8 @@
 
 #include <iostream>
 #include <csignal>
+#include <map>
+#include <string>
 #include <vector>
 
 
@@ -89,9 +92,11 @@ namespace os = support::os;
 namespace fs = boost::filesystem;
 
 using std::endl;
+using std::for_each;
+using std::map;
+using std::make_pair;
 using std::string;
 using std::vector;
-using std::for_each;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
@@ -166,6 +171,9 @@ struct LyX::Singletons
 
 	/// Files to load at start.
 	vector<FileName> files_to_load_;
+
+	///
+	map<string, Messages> messages_;
 };
 
 ///
@@ -303,6 +311,33 @@ kb_keymap const & LyX::topLevelKeymap() const
 {
 	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
 	return *pimpl_->toplevel_keymap_.get();
+}
+
+
+Messages & LyX::getMessages(std::string const & language)
+{
+	map<string, Messages>::iterator it = pimpl_->messages_.find(language);
+
+	if (it != pimpl_->messages_.end())
+		return it->second;
+
+	std::pair<map<string, Messages>::iterator, bool> result = 
+			pimpl_->messages_.insert(std::make_pair(language, Messages(language)));
+
+	BOOST_ASSERT(result.second);
+	return result.first->second;
+}
+
+
+Messages & LyX::getGuiMessages()
+{
+	return pimpl_->messages_["GUI"];
+}
+
+
+void LyX::setGuiLanguage(std::string const & language)
+{
+	pimpl_->messages_["GUI"] = Messages(language);
 }
 
 
@@ -815,6 +850,9 @@ bool LyX::init()
 		return false;
 
 	if (use_gui) {
+		// Set the User Interface language.
+		pimpl_->messages_["GUI"] = Messages();
+
 		// Set up bindings
 		pimpl_->toplevel_keymap_.reset(new kb_keymap);
 		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
@@ -1400,6 +1438,18 @@ kb_keymap & theTopLevelKeymap()
 IconvProcessor & utf8ToUcs4()
 {
 	return LyX::ref().iconvProcessor();
+}
+
+
+Messages & getMessages(std::string const & language)
+{
+	return LyX::ref().getMessages(language);
+}
+
+
+Messages & getGuiMessages()
+{
+	return LyX::ref().getGuiMessages();
 }
 
 } // namespace lyx

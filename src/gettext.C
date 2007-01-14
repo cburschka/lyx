@@ -29,21 +29,9 @@ using support::setEnv;
 using std::string;
 
 
-namespace {
-
-static Messages & getLyXMessages()
-{
-	static Messages lyx_messages;
-
-	return lyx_messages;
-}
-
-} // anon namespace
-
-
 docstring const _(string const & str)
 {
-	return getLyXMessages().get(str);
+	return getGuiMessages().get(str);
 }
 
 
