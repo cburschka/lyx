@@ -4,7 +4,7 @@
 # First come the rules for each xx_TOC.lyx file. Then comes the
 # TOCs target, which prints all the TOC files.
 
-TOC.lyx: $(srcdir)/Intro.lyx $(srcdir)/FAQ.lyx $(srcdir)/Tutorial.lyx $(srcdir)/UserGuide.lyx $(srcdir)/Extended.lyx $(srcdir)/Customization.lyx
+TOC.lyx: $(srcdir)/Intro.lyx $(srcdir)/FAQ.lyx $(srcdir)/Tutorial.lyx $(srcdir)/UserGuide.lyx $(srcdir)/Extended-Insets.lyx $(srcdir)/Extended.lyx $(srcdir)/Customization.lyx
 	python $(srcdir)/doc_toc.py
 
 cs_TOC.lyx: $(srcdir)/cs_Tutorial.lyx
@@ -16,7 +16,7 @@ da_TOC.lyx: $(srcdir)/da_Intro.lyx
 de_TOC.lyx: $(srcdir)/de_Customization.lyx $(srcdir)/de_Extended.lyx $(srcdir)/de_FAQ.lyx $(srcdir)/de_Intro.lyx $(srcdir)/de_Tutorial.lyx $(srcdir)/de_UserGuide.lyx
 	python $(srcdir)/doc_toc.py de
 
-es_TOC.lyx: $(srcdir)/es_Intro.lyx $(srcdir)/es_Tutorial.lyx
+es_TOC.lyx: $(srcdir)/es_Extended-Insets.lyx $(srcdir)/es_Intro.lyx $(srcdir)/es_Tutorial.lyx
 	python $(srcdir)/doc_toc.py es
 
 eu_TOC.lyx: $(srcdir)/eu_Customization.lyx $(srcdir)/eu_Extended.lyx $(srcdir)/eu_FAQ.lyx $(srcdir)/eu_Intro.lyx $(srcdir)/eu_Tutorial.lyx $(srcdir)/eu_UserGuide.lyx
