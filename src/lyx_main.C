@@ -800,6 +800,9 @@ bool LyX::init()
 	if (!readRcFile("lyxrc.dist"))
 		return false;
 
+	// Set the User Interface language.
+	pimpl_->messages_["GUI"] = Messages();
+
 	// Set the PATH correctly.
 #if !defined (USE_POSIX_PACKAGING)
 	// Add the directory containing the LyX executable to the path
@@ -850,9 +853,6 @@ bool LyX::init()
 		return false;
 
 	if (use_gui) {
-		// Set the User Interface language.
-		pimpl_->messages_["GUI"] = Messages();
-
 		// Set up bindings
 		pimpl_->toplevel_keymap_.reset(new kb_keymap);
 		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
