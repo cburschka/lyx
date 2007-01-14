@@ -2209,9 +2209,9 @@ lib_doc_files = Split('''
     de_Tutorial.lyx
     de_UserGuide.lyx
     DocStyle.lyx
-    es_Extended-Insets.lyx
     es_Intro.lyx
     es_Tutorial.lyx
+    es_Extended-Insets.lyx
     eu_Customization.lyx
     eu_Extended.lyx
     eu_FAQ.lyx
@@ -2265,8 +2265,6 @@ lib_doc_files = Split('''
 
 
 lib_clipart_files = Split('''
-    Abstract.lyx
-    Abstract.pdf
     BoxInsetDefault.png
     buffer-export_pdf2.png
     buffer-view_dvi.png

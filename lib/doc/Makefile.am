@@ -15,16 +15,16 @@ docfiles = \
 	de_Tutorial.lyx \
 	de_UserGuide.lyx \
 	DocStyle.lyx \
-	es_Extended-Insets.lyx \
 	es_Intro.lyx \
 	es_Tutorial.lyx \
+	es_ExtendedInsets.lyx \
 	eu_Customization.lyx \
 	eu_Extended.lyx \
 	eu_FAQ.lyx \
 	eu_Intro.lyx \
 	eu_Tutorial.lyx \
 	eu_UserGuide.lyx \
-	Extended-Insets.lyx \
+	ExtendedInsets.lyx \
 	Extended.lyx \
 	FAQ.lyx \
 	fr_Customization.lyx \
