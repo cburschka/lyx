@@ -2211,14 +2211,14 @@ lib_doc_files = Split('''
     DocStyle.lyx
     es_Intro.lyx
     es_Tutorial.lyx
-    es_Extended-Insets.lyx
+    es_ExtendedInsets.lyx
     eu_Customization.lyx
     eu_Extended.lyx
     eu_FAQ.lyx
     eu_Intro.lyx
     eu_Tutorial.lyx
     eu_UserGuide.lyx
-    Extended-Insets.lyx
+    ExtendedInsets.lyx
     Extended.lyx
     FAQ.lyx
     fr_Customization.lyx
