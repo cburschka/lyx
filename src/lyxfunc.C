@@ -1464,8 +1464,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			// handle the screen font changes.
 			lyxrc.set_font_norm_type();
 			theFontLoader().update();
-			// All visible buffers will need resize
-			view()->resize();
+			/// FIXME: only the current view will be updated. the Gui
+			/// class is able to furnish the list of views.
+			updateFlags = Update::Force;
 			break;
 
 		case LFUN_SET_COLOR: {
@@ -1693,6 +1694,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			actOnUpdatedPrefs(lyxrc_orig, lyxrc);
+
+			/// We force the redraw in any case because there might be
+			/// some screen font changes.
+			/// FIXME: only the current view will be updated. the Gui
+			/// class is able to furnish the list of views.
+			updateFlags = Update::Force;
 			break;
 		}
 
