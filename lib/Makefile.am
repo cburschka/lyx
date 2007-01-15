@@ -54,7 +54,29 @@ dist_bind_DATA = \
 	bind/aqua.bind
 
 clipartdir = $(pkgdatadir)/clipart
-dist_clipart_DATA = clipart/platypus.eps
+dist_clipart_DATA = \
+	clipart/BoxInsetDefault.png \
+	clipart/buffer-export_pdf2.png \
+	clipart/buffer-view_dvi.png \
+	clipart/ComentNotaImagen.png \
+	clipart/CommentNoteImage.png \
+	clipart/CuadroMinipag.png \
+	clipart/endnotes.pdf \
+	clipart/etiqueta.png \
+	clipart/float.png \
+	clipart/flotante.png \
+	clipart/footnote.png \
+	clipart/GreyedOutNoteImage.png \
+	clipart/GrisNotaImagen.png \
+	clipart/label.png \
+	clipart/LyXNoteImage.png \
+	clipart/NotaLyXImagen.png \
+	clipart/notapie.png \
+	clipart/platypus.eps \
+	clipart/reference2.png \
+	clipart/referencia2.png \
+	clipart/without_fntright.pdf \
+	clipart/with_fntright.pdf
 
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
