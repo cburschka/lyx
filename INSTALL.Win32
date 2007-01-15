@@ -61,10 +61,13 @@ Compiling with MSVC 2005
 	aspell.dll
 	iconv.dll
 	intl.dll
+	Microsoft.VC80.CRT.manifest
 	QtCore4.dll
 	QtGui4.dll
-	(If the files are not on your system, you can download them from
-	 http://wiki.lyx.org/uploads/DevelTools/buildLyx/LyXWinBuildDLLs.zip)
+	
+	The Microsoft.VC80.CRT.manifest, QtCore4.dll, and QtGui4.dll should be present on your system.
+	The other files can be download from:
+	http://wiki.lyx.org/uploads/DevelTools/buildLyx/LyXWinBuildDLLs.zip
 
 
 Compiling with MinGW
