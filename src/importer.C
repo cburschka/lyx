@@ -87,7 +87,7 @@ bool Importer::Import(LyXView * lv, FileName const & filename,
 		string filename2 = (loader_format == format) ? filename.absFilename()
 			: changeExtension(filename.absFilename(),
 					  formats.extension(loader_format));
-		insertAsciiFile(lv->view(), filename2, as_paragraphs);
+		insertPlaintextFile(lv->view(), filename2, as_paragraphs);
 		lv->dispatch(FuncRequest(LFUN_MARK_OFF));
 	}
 

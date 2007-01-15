@@ -377,8 +377,8 @@ Menuset
 
 	Menu "insert_file"
 		Item "LyX Document...|X" "file-insert"
-		Item "Plain Text as Lines...|L" "file-insert-ascii"
-		Item "Plain Text as Paragraphs...|P" "file-insert-ascii-para"
+		Item "Plain Text as Lines...|L" "file-insert-plaintext"
+		Item "Plain Text as Paragraphs...|P" "file-insert-plaintext-para"
 		Separator
 		Item "External Material...|M" "dialog-show-new-inset external"
 		Item "Child Document...|d" "dialog-show-new-inset include"

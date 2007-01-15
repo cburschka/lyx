@@ -151,7 +151,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string backend_format;
 	OutputParams runparams;
 	runparams.flavor = OutputParams::LATEX;
-	runparams.linelen = lyxrc.ascii_linelen;
+	runparams.linelen = lyxrc.plaintext_linelen;
 	vector<string> backends = Backends(*buffer);
 	// FIXME: Without this test export to lyx1[34] would be through
 	// latex -> lyx -> lyx1[34], because the first backend below with a

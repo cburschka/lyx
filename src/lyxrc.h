@@ -40,8 +40,8 @@ public:
 	enum LyXRCTags {
 		RC_ACCEPT_COMPOUND = 1,
 		RC_ALT_LANG,
-		RC_ASCIIROFF_COMMAND,
-		RC_ASCII_LINELEN,
+		RC_PLAINTEXT_ROFF_COMMAND,
+		RC_PLAINTEXT_LINELEN,
 		RC_AUTOREGIONDELETE,
 		RC_AUTORESET_OPTIONS,
 		RC_AUTOSAVE,
@@ -309,9 +309,9 @@ public:
 	///
 	unsigned int autosave;
 	///
-	std::string ascii_roff_command;
+	std::string plaintext_roff_command;
 	///
-	unsigned int ascii_linelen;
+	unsigned int plaintext_linelen;
 	/// use library instead of process
 	bool use_spell_lib;
 	/// Ispell command

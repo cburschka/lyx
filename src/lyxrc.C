@@ -68,8 +68,6 @@ namespace {
 keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", LyXRC::RC_ACCEPT_COMPOUND },
 	{ "\\alternate_language", LyXRC::RC_ALT_LANG },
-	{ "\\ascii_linelen", LyXRC::RC_ASCII_LINELEN },
-	{ "\\ascii_roff_command", LyXRC::RC_ASCIIROFF_COMMAND },
 	{ "\\auto_number", LyXRC::RC_AUTO_NUMBER },
 	{ "\\auto_region_delete", LyXRC::RC_AUTOREGIONDELETE },
 	{ "\\auto_reset_options", LyXRC::RC_AUTORESET_OPTIONS },
@@ -114,6 +112,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
 	{ "\\path_prefix", LyXRC::RC_PATH_PREFIX },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
+	{ "\\plaintext_linelen", LyXRC::RC_PLAINTEXT_LINELEN },
+	{ "\\plaintext_roff_command", LyXRC::RC_PLAINTEXT_ROFF_COMMAND },
 	{ "\\popup_bold_font", LyXRC::RC_POPUP_BOLD_FONT },
 	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
 	{ "\\popup_normal_font", LyXRC::RC_POPUP_NORMAL_FONT },
@@ -254,7 +254,7 @@ void LyXRC::setDefaults() {
 	autosave = 300;
 	auto_region_delete = true;
 	auto_reset_options = false;
-	ascii_linelen = 65;
+	plaintext_linelen = 65;
 	num_lastfiles = maxlastfiles;
 	check_lastfiles = true;
 	use_lastfilepos = true;
@@ -892,14 +892,14 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 
-		case RC_ASCIIROFF_COMMAND:
+		case RC_PLAINTEXT_ROFF_COMMAND:
 			if (lexrc.next()) {
-				ascii_roff_command = lexrc.getString();
+				plaintext_roff_command = lexrc.getString();
 			}
 			break;
-		case RC_ASCII_LINELEN:
+		case RC_PLAINTEXT_LINELEN:
 			if (lexrc.next()) {
-				ascii_linelen = lexrc.getInteger();
+				plaintext_linelen = lexrc.getInteger();
 			}
 			break;
 			// Spellchecker settings:
@@ -1856,10 +1856,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		}
 	case RC_USETEMPDIR:
 		// Ignore it
-	case RC_ASCII_LINELEN:
+	case RC_PLAINTEXT_LINELEN:
 		if (ignore_system_lyxrc ||
-		    ascii_linelen != system_lyxrc.ascii_linelen) {
-			os << "\\ascii_linelen " << ascii_linelen << '\n';
+		    plaintext_linelen != system_lyxrc.plaintext_linelen) {
+			os << "\\plaintext_linelen " << plaintext_linelen << '\n';
 		}
 	case RC_MAKE_BACKUP:
 		if (ignore_system_lyxrc ||
@@ -1877,10 +1877,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		   << "# ASCII EXPORT SECTION ##############################\n"
 		   << "#\n\n";
 
-	case RC_ASCIIROFF_COMMAND:
+	case RC_PLAINTEXT_ROFF_COMMAND:
 		if (ignore_system_lyxrc ||
-		    ascii_roff_command != system_lyxrc.ascii_roff_command) {
-			os << "\\ascii_roff_command \"" << ascii_roff_command
+		    plaintext_roff_command != system_lyxrc.plaintext_roff_command) {
+			os << "\\plaintext_roff_command \"" << plaintext_roff_command
 			   << "\"\n";
 		}
 
@@ -2172,12 +2172,12 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Specify an alternate language. The default is to use the language of the document.");
 		break;
 
-	case RC_ASCIIROFF_COMMAND:
+	case RC_PLAINTEXT_ROFF_COMMAND:
 		str = _("Use to define an external program to render tables in plain text output. E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is specified, an internal routine is used.");
 		break;
 
-	case RC_ASCII_LINELEN:
-		str = _("This is the maximum line length of an exported text file (LaTeX, SGML or plain text).");
+	case RC_PLAINTEXT_LINELEN:
+		str = _("This is the maximum line length of an exported text file (LaTeX, SGML or plain text). If set to 0, paragraphs are output in a single line; if the line length is != 0, paragraphs are separated by a blank line.");
 		break;
 
 	case RC_AUTOREGIONDELETE:

@@ -188,7 +188,7 @@ private:
 	void getSelection(LCursor & cur, row_type & rs, row_type & re,
 			  col_type & cs, col_type & ce) const;
 	///
-	bool insertAsciiString(BufferView &, docstring const & buf, bool usePaste);
+	bool insertPlaintextString(BufferView &, docstring const & buf, bool usePaste);
 	/// are we operating on several cells?
 	bool tablemode(LCursor & cur) const;
 

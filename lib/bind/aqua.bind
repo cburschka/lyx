@@ -49,8 +49,8 @@
 \bind "M-~S-i o b"		"bibtex-insert"
 
 \bind "M-~S-i e x" 		"file-insert"
-\bind "M-~S-i e l" 		"file-insert-ascii"
-\bind "M-~S-i e p" 		"file-insert-ascii-para"
+\bind "M-~S-i e l" 		"file-insert-plaintext"
+\bind "M-~S-i e p" 		"file-insert-plaintext-para"
 
 \bind "M-~S-f p"		"buffer-print"
 \bind "M-~S-f n"		"buffer-new"

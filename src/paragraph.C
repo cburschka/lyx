@@ -1152,7 +1152,7 @@ void sgmlLineBreak(ostream & os, string::size_type & colcount,
 			  string::size_type newcol)
 {
 	colcount += newcol;
-	if (colcount > lyxrc.ascii_linelen) {
+	if (colcount > lyxrc.plaintext_linelen) {
 		os << "\n";
 		colcount = newcol; // assume write after this call
 	}

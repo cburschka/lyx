@@ -32,9 +32,9 @@ void autoSave(BufferView * bv);
 ///
 void newFile(BufferView * bv, std::string const & filename);
 ///
-void insertAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
+void insertPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
-std::string getContentsOfAsciiFile(BufferView * bv, std::string const & f, bool asParagraph);
+std::string getContentsOfPlaintextFile(BufferView * bv, std::string const & f, bool asParagraph);
 ///
 void reconfigure(LyXView & lv);
 

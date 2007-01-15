@@ -679,12 +679,12 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	// insert file functions
-	case LFUN_FILE_INSERT_ASCII_PARA:
-	case LFUN_FILE_INSERT_ASCII: {
+	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
+	case LFUN_FILE_INSERT_PLAINTEXT: {
 		// FIXME UNICODE
-		string const tmpstr = getContentsOfAsciiFile(&cur.bv(), to_utf8(cmd.argument()), false);
+		string const tmpstr = getContentsOfPlaintextFile(&cur.bv(), to_utf8(cmd.argument()), false);
 		// FIXME: We don't know the encoding of the file
-		if (!tmpstr.empty() && !insertAsciiString(cur.bv(), from_utf8(tmpstr), false))
+		if (!tmpstr.empty() && !insertPlaintextString(cur.bv(), from_utf8(tmpstr), false))
 			cur.undispatched();
 		break;
 	}
@@ -727,10 +727,10 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 			theSelection().get();
 		if (clip.empty())
 			break;
-		// pass to InsertAsciiString, but
+		// pass to InsertPlaintextString, but
 		// only if we have multi-cell content
 		if (clip.find_first_of(from_ascii("\t\n")) != docstring::npos) {
-			if (insertAsciiString(cur.bv(), clip, false)) {
+			if (insertPlaintextString(cur.bv(), clip, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
 				cur.pos() = cur.lastpos();
@@ -1957,7 +1957,7 @@ bool InsetTabular::forceDefaultParagraphs(idx_type cell) const
 }
 
 
-bool InsetTabular::insertAsciiString(BufferView & bv, docstring const & buf,
+bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				     bool usePaste)
 {
 	if (buf.length() <= 0)

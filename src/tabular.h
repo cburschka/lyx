@@ -604,18 +604,18 @@ public:
 	int TeXRow(odocstream &, row_type const row, Buffer const & buf,
 		   OutputParams const &) const;
 	///
-	// helper function for ASCII returns number of newlines
+	// helper functions for plain text return number of newlines
 	///
-	int asciiTopHLine(odocstream &, row_type row,
-			  std::vector<unsigned int> const &) const;
+	int plaintextTopHLine(odocstream &, row_type row,
+			std::vector<unsigned int> const &) const;
 	///
-	int asciiBottomHLine(odocstream &, row_type row,
-			     std::vector<unsigned int> const &) const;
+	int plaintextBottomHLine(odocstream &, row_type row,
+			std::vector<unsigned int> const &) const;
 	///
-	int asciiPrintCell(Buffer const &, odocstream &,
-			   OutputParams const &,
-			   idx_type cell, row_type row, col_type column,
-			   std::vector<unsigned int> const &,
+	int plaintextPrintCell(Buffer const &, odocstream &,
+			OutputParams const &,
+			idx_type cell, row_type row, col_type column,
+			std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(Buffer const & buf, odocstream & os, row_type,

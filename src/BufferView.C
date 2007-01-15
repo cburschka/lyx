@@ -610,8 +610,8 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 		flag.enabled(!buffer_->redostack().empty());
 		break;
 	case LFUN_FILE_INSERT:
-	case LFUN_FILE_INSERT_ASCII_PARA:
-	case LFUN_FILE_INSERT_ASCII:
+	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
+	case LFUN_FILE_INSERT_PLAINTEXT:
 	case LFUN_BOOKMARK_SAVE:
 		// FIXME: Actually, these LFUNS should be moved to LyXText
 		flag.enabled(cursor_.inTexted());
@@ -727,14 +727,14 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		menuInsertLyXFile(to_utf8(cmd.argument()));
 		break;
 
-	case LFUN_FILE_INSERT_ASCII_PARA:
+	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
 		// FIXME UNICODE
-		insertAsciiFile(this, to_utf8(cmd.argument()), true);
+		insertPlaintextFile(this, to_utf8(cmd.argument()), true);
 		break;
 
-	case LFUN_FILE_INSERT_ASCII:
+	case LFUN_FILE_INSERT_PLAINTEXT:
 		// FIXME UNICODE
-		insertAsciiFile(this, to_utf8(cmd.argument()), false);
+		insertPlaintextFile(this, to_utf8(cmd.argument()), false);
 		break;
 
 	case LFUN_FONT_STATE:

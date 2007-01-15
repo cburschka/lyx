@@ -1672,7 +1672,7 @@ void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	OutputParams runparams;
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
-	runparams.linelen = lyxrc.ascii_linelen;
+	runparams.linelen = lyxrc.plaintext_linelen;
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 

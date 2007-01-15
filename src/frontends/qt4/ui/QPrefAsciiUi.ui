@@ -31,12 +31,12 @@
       <number>6</number>
      </property>
      <item row="1" column="0" >
-      <widget class="QLabel" name="asciiRoffLA" >
+      <widget class="QLabel" name="plaintextRoffLA" >
        <property name="text" >
         <string>&amp;roff command:</string>
        </property>
        <property name="buddy" >
-        <cstring>asciiRoffED</cstring>
+        <cstring>plaintextRoffED</cstring>
        </property>
       </widget>
      </item>
@@ -49,7 +49,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QSpinBox" name="asciiLinelengthSB" >
+        <widget class="QSpinBox" name="plaintextLinelengthSB" >
          <property name="toolTip" >
           <string>Max. line length of exported plain text/LaTeX/SGML files</string>
          </property>
@@ -77,17 +77,17 @@
       </layout>
      </item>
      <item row="0" column="0" >
-      <widget class="QLabel" name="asciiLinelengthLA" >
+      <widget class="QLabel" name="plaintextLinelengthLA" >
        <property name="text" >
         <string>Output &amp;line length:</string>
        </property>
        <property name="buddy" >
-        <cstring>asciiLinelengthSB</cstring>
+        <cstring>plaintextLinelengthSB</cstring>
        </property>
       </widget>
      </item>
      <item row="1" column="1" >
-      <widget class="QLineEdit" name="asciiRoffED" >
+      <widget class="QLineEdit" name="plaintextRoffED" >
        <property name="toolTip" >
         <string>External app for formating tables in plain text output</string>
        </property>

@@ -390,7 +390,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(odocstream & os, TexRow & texrow,
 	if (style.pass_thru)
 		return;
 
-	if (column > lyxrc.ascii_linelen
+	if (column > lyxrc.plaintext_linelen
 	    && i
 	    && getChar(i - 1) != ' '
 	    && (i < size() - 1)

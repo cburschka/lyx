@@ -194,24 +194,24 @@ PrefAscii::PrefAscii(QWidget * parent)
 : PrefModule(_(Outputs), _("Plain text"), 0, parent)
 {
 	setupUi(this);
-	connect(asciiLinelengthSB, SIGNAL(valueChanged(int)),
+	connect(plaintextLinelengthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(asciiRoffED, SIGNAL(textChanged(const QString&)),
+	connect(plaintextRoffED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
 }
 
 
 void PrefAscii::apply(LyXRC & rc) const
 {
-	rc.ascii_linelen = asciiLinelengthSB->value();
-	rc.ascii_roff_command = fromqstr(asciiRoffED->text());
+	rc.plaintext_linelen = plaintextLinelengthSB->value();
+	rc.plaintext_roff_command = fromqstr(plaintextRoffED->text());
 }
 
 
 void PrefAscii::update(LyXRC const & rc)
 {
-	asciiLinelengthSB->setValue(rc.ascii_linelen);
-	asciiRoffED->setText(toqstr(rc.ascii_roff_command));
+	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
+	plaintextRoffED->setText(toqstr(rc.plaintext_roff_command));
 }
 
 

@@ -318,14 +318,14 @@ void newFile(BufferView * bv, string const & filename)
 }
 
 
-// Insert ascii file (if filename is empty, prompt for one)
-void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
+// Insert plain text file (if filename is empty, prompt for one)
+void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 {
 	if (!bv->buffer())
 		return;
 
 	// FIXME: We don't know the encoding of the file
-	docstring const tmpstr = from_utf8(getContentsOfAsciiFile(bv, f, asParagraph));
+	docstring const tmpstr = from_utf8(getContentsOfPlaintextFile(bv, f, asParagraph));
 	if (tmpstr.empty())
 		return;
 
@@ -341,14 +341,14 @@ void insertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 }
 
 
-// Insert ascii file (if filename is empty, prompt for one)
-string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagraph)
+// Insert plain text file (if filename is empty, prompt for one)
+string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 {
 	FileName fname(f);
 
 	if (fname.empty()) {
 		FileDialog fileDlg(_("Select file to insert"),
-			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
+			(asParagraph) ? LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT);
 
 		FileDialog::Result result =
 			fileDlg.open(from_utf8(bv->buffer()->filePath()),
