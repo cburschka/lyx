@@ -2274,7 +2274,6 @@ lib_clipart_files = Split('''
     CommentNoteImage.png
     CuadroMinipag.png
     endnotes.pdf
-    escher-lsd.pdf
     etiqueta.png
     float.png
     flotante.png
@@ -2283,11 +2282,9 @@ lib_clipart_files = Split('''
     GrisNotaImagen.png
     label.png
     LyXNoteImage.png
-    mobius.pdf
     NotaLyXImagen.png
     notapie.png
     platypus.eps
-    platypus.pdf
     reference2.png
     referencia2.png
     with_fntright.pdf
