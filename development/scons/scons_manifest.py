@@ -1308,6 +1308,8 @@ lib_examples_files = Split('''
     aas_sample.lyx
     amsart-test.lyx
     amsbook-test.lyx
+    beamer-g4.jpg
+    beamer-g4-mask.jpg
     beamer-icsi-logo.pdf
     beamer-knight1-mask.png
     beamer-knight1.png
