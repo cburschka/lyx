@@ -1472,18 +1472,6 @@ docstring const Buffer::B_(string const & l10n) const
 }
 
 
-docstring const Buffer::translateLabel(docstring const & label) const
-{
-	if (support::isAscii(label))
-		// Probably standard layout, try to translate
-		return B_(to_ascii(label));
-	else
-		// This must be a user defined layout. We cannot translate
-		// this, since gettext accepts only ascii keys.
-		return label;
-}
-
-
 bool Buffer::isClean() const
 {
 	return pimpl_->lyx_clean;

@@ -200,8 +200,6 @@ public:
 	Language const * getLanguage() const;
 	/// get l10n translated to the buffers language
 	docstring const B_(std::string const & l10n) const;
-	/// translate \p label to the buffer language if possible
-	docstring const translateLabel(docstring const & label) const;
 
 	///
 	int runChktex();

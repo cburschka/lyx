@@ -31,6 +31,7 @@
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
+#include "messages.h"
 #include "outputparams.h"
 #include "paragraph_funcs.h"
 #include "ParagraphList_fwd.h"
@@ -628,6 +629,49 @@ docstring const Paragraph::getLabelWidthString() const
 void Paragraph::setLabelWidthString(docstring const & s)
 {
 	params().labelWidthString(s);
+}
+
+
+docstring const Paragraph::translateIfPossible(docstring const & s,
+		BufferParams const & bparams) const
+{
+	if (!support::isAscii(s) || s.empty()) {
+		// This must be a user defined layout. We cannot translate
+		// this, since gettext accepts only ascii keys.
+		return s;
+	}
+	// Probably standard layout, try to translate
+	Messages & m = getMessages(getParLanguage(bparams)->code());
+	return m.get(to_ascii(s));
+}
+
+
+docstring Paragraph::expandLabel(LyXLayout_ptr const & layout,
+		BufferParams const & bparams, bool process_appendix) const
+{
+	LyXTextClass const & tclass = bparams.getLyXTextClass();
+
+	docstring fmt;
+	if (process_appendix && params().appendix())
+		fmt = translateIfPossible(layout->labelstring_appendix(),
+			bparams);
+	else
+		fmt = translateIfPossible(layout->labelstring(), bparams);
+
+	// handle 'inherited level parts' in 'fmt',
+	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
+	size_t const i = fmt.find('@', 0);
+	if (i != docstring::npos) {
+		size_t const j = fmt.find('@', i + 1);
+		if (j != docstring::npos) {
+			docstring parent(fmt, i + 1, j - i - 1);
+			// FIXME UNICODE
+			docstring label = expandLabel(tclass[to_utf8(parent)], bparams);
+			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
+		}
+	}
+
+	return tclass.counters().counterLabel(fmt);
 }
 
 

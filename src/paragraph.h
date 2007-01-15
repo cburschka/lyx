@@ -240,8 +240,14 @@ public:
 
 	/// the next two functions are for the manual labels
 	docstring const getLabelWidthString() const;
-	///
+	/// Set label width string.
 	void setLabelWidthString(docstring const & s);
+	/// translate \p label to the paragraph language if possible.
+	docstring const translateIfPossible(docstring const & label,
+		BufferParams const & bparams) const;
+	/// Expand the counters for the labelstring of \c layout
+	docstring expandLabel(LyXLayout_ptr const &, BufferParams const &,
+		bool process_appendix = true) const;
 	/// Actual paragraph alignment used
 	char getAlign() const;
 	/// The nesting depth of a paragraph

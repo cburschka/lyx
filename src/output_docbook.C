@@ -240,7 +240,8 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	// Label around sectioning number:
 	if (!bstyle->labeltag().empty()) {
 		sgml::openTag(os, bstyle->labeltag());
-		os << expandLabel(buf, bstyle, false);
+		// We don't care about appendix in DOCBOOK.
+		os << par->expandLabel(bstyle, buf.params(), false);
 		sgml::closeTag(os, bstyle->labeltag());
 	}
 

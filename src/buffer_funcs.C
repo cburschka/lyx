@@ -374,9 +374,9 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 
 	if (layout->margintype == MARGIN_MANUAL) {
 		if (par.params().labelWidthString().empty())
-			par.setLabelWidthString(buf.translateLabel(layout->labelstring()));
+			par.params().labelWidthString(par.translateIfPossible(layout->labelstring(), buf.params()));
 	} else {
-		par.setLabelWidthString(docstring());
+		par.params().labelWidthString(docstring());
 	}
 
 	// Optimisation: setLabel() can be called for each for each
@@ -390,10 +390,10 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 		    && (layout->latextype != LATEX_ENVIRONMENT
 			|| isFirstInSequence(it.pit(), it.plist()))) {
 			counters.step(layout->counter);
-			itemlabel = expandLabel(buf, layout,
-						      par.params().appendix());
+			par.params().labelString(
+				par.expandLabel(layout, buf.params()));
 		} else
-			itemlabel.clear();
+			par.params().labelString(docstring());
 
 	} else if (layout->labeltype == LABEL_ITEMIZE) {
 		// At some point of time we should do something more
@@ -415,6 +415,7 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 			itemlabel = char_type(0x2219); // or 0x00b7
 			break;
 		}
+		par.params().labelString(itemlabel);
 
 	} else if (layout->labeltype == LABEL_ENUMERATE) {
 		// FIXME
@@ -464,7 +465,8 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 			break;
 		}
 
-		itemlabel = counters.counterLabel(buf.B_(format));
+		par.params().labelString(counters.counterLabel(
+			par.translateIfPossible(from_ascii(format), buf.params())));
 
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		counters.step(from_ascii("bibitem"));
@@ -472,8 +474,9 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 		if (par.bibitem())
 			par.bibitem()->setCounter(number);
 
-		itemlabel = buf.translateLabel(layout->labelstring());
-		// In biblio should't be following counters but...
+		par.params().labelString(
+			par.translateIfPossible(layout->labelstring(), buf.params()));
+		// In biblio shouldn't be following counters but...
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
 		size_t i = it.depth();
@@ -493,18 +496,20 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 			counters.step(from_ascii(fl.type()));
 
 			// Doesn't work... yet.
-			itemlabel = bformat(_("%1$s #:"), buf.B_(fl.name()));
+			par.params().labelString(par.translateIfPossible(
+				bformat(from_ascii("%1$s #:"), from_utf8(fl.name())),
+				buf.params()));
 		} else {
 			// par->SetLayout(0);
-			itemlabel = buf.translateLabel(layout->labelstring());
+			par.params().labelString(par.translateIfPossible(
+				layout->labelstring(), buf.params()));
 		}
 
 	} else if (layout->labeltype == LABEL_NO_LABEL)
-		itemlabel.clear();
+		par.params().labelString(docstring());
 	else
-		itemlabel = buf.translateLabel(layout->labelstring());
-
-	par.params().labelString(itemlabel);
+		par.params().labelString(
+			par.translateIfPossible(layout->labelstring(), buf.params()));
 }
 
 } // anon namespace
@@ -608,32 +613,6 @@ void updateLabels(Buffer const & buf, bool childonly)
 	}
 
 	const_cast<Buffer &>(buf).tocBackend().update();
-}
-
-
-docstring expandLabel(Buffer const & buf,
-		      LyXLayout_ptr const & layout, bool appendix)
-{
-	LyXTextClass const & tclass = buf.params().getLyXTextClass();
-
-	docstring fmt = buf.translateLabel(appendix ?
-			layout->labelstring_appendix() :
-			layout->labelstring());
-
-	// handle 'inherited level parts' in 'fmt',
-	// i.e. the stuff between '@' in   '@Section@.\arabic{subsection}'
-	size_t const i = fmt.find('@', 0);
-	if (i != docstring::npos) {
-		size_t const j = fmt.find('@', i + 1);
-		if (j != docstring::npos) {
-			docstring parent(fmt, i + 1, j - i - 1);
-			// FIXME UNICODE
-			docstring label = expandLabel(buf, tclass[to_utf8(parent)], appendix);
-			fmt = docstring(fmt, 0, i) + label + docstring(fmt, j + 1, docstring::npos);
-		}
-	}
-
-	return tclass.counters().counterLabel(fmt);
 }
 
 

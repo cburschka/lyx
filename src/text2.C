@@ -335,9 +335,11 @@ void LyXText::setLayout(Buffer const & buffer, pit_type start, pit_type end,
 	LyXLayout_ptr const & lyxlayout = bufparams.getLyXTextClass()[layout];
 
 	for (pit_type pit = start; pit != end; ++pit) {
-		pars_[pit].applyLayout(lyxlayout);
+		Paragraph & par = pars_[pit];
+		par.applyLayout(lyxlayout);
 		if (lyxlayout->margintype == MARGIN_MANUAL)
-			pars_[pit].setLabelWidthString(buffer.translateLabel(lyxlayout->labelstring()));
+			par.setLabelWidthString(par.translateIfPossible(
+				lyxlayout->labelstring(), buffer.params()));
 	}
 }
 

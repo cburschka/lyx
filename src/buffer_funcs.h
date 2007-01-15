@@ -49,12 +49,6 @@ void bufferErrors(Buffer const &, TeXErrors const &, ErrorList &);
 /// Count the number of words in the text between these two iterators
 int countWords(DocIterator const & from, DocIterator const & to);
 
-/// Expand the counters for the labelstring of \c layout
-lyx::docstring expandLabel(Buffer const & buf,
-			   LyXLayout_ptr const & layout,
-			   bool appendix);
-
-
 /// update labels at "iter".
 /**
 A full updateLabels(Buffer const &) will be called if not possible.
