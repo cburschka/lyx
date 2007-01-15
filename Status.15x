@@ -1,11 +1,6 @@
 Debugging spree:
 ----------------
 
-Rules:
-  1. Bugs that aim for 1.5.0 should be listed here.
-  2. Whoever fixes a bug sign his name before the bug and move it to the end of
-     this file, along with a lyx-devel announcement.
-
 Prizes (donated by Michael):
 
   #1: LyX-labeled Tick Tock Wall Clock
@@ -35,6 +30,12 @@ GENERAL
      (unconfirmed/new/assigned/reopened + no 1.6.0 target + keyword 'patch')
 
 
+*******************************************
+* PLEASE ADD NEW BUGS TO BUGZILLA.LYX.ORG *
+*    THE DAYS OF THIS FILE ARE COUNTED    *
+******************************************* 
+
+
 ICONS:
 
 * make all icons of the same size(s)
@@ -50,6 +51,7 @@ FILE
     QPainter::begin: Cannot paint on a null pixmap
     QPainter::end: Painter not active, aborted
   This does not happen if the session is empty.
+
 
 SPELL CHECKING (Joost 4/11/06)
 
@@ -76,6 +78,7 @@ TABLE OF CONTENTS
   click on a item, switch to the other doc without closing the TOC dialog, 
   click on the TOC button -> crash
 
+
 DIALOGS
 
 * If you try to view a document as postscript that cannot be typeset because
@@ -98,7 +101,7 @@ MATH CONTROL PANEL
 
 OTHER PANELS
 
-* The visual table size selection on the the "Insert Table" dialog has gone
+* The visual table size selection on the "Insert Table" dialog has gone
   (Joost 3/11/06).
 
 * The UI for bullet selection in the documents settings looks weird
@@ -126,18 +129,6 @@ MULTIPLE WINDOWS / DOCUMENTS
 * Middle button paste does not work across windows. (Bo 12/15/06)
 
 
-TOOLBARS & MINIBUFFER
-
-* When toolbars are hidden, they pop up again after clicking on the document
-  area (Joost 4/11/06).
-  Comment by Bo: Can not reproduce, details please.
-
-
-TOOLTIPS:
-
-* Tooltips are no longer shown
-
-
 MENUS
 
 * Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
@@ -152,8 +143,6 @@ EDITING
 
 * edit->text style->capitalize/lower/upper case doesn't work due to change
   tracking-related changes.
-
-* the insertion of Ctrl-Return cannot be undone
 
 
 CHANGE TRACKING
@@ -245,7 +234,6 @@ PAINTING & PERFORMANCE
    since \Omega works fine in 1.4.3, and my debugging results showed that the
    correct font is found and used (cmr10).
  - Solved problem with \int and \oint on Windows (Enrico 2006-12-06).
-
 
 
 MAC OS X
