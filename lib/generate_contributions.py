@@ -1215,7 +1215,7 @@ contributers = [
                  "Re: Licensing of tex2lyx (and perhaps LyX itself?)",
                  "m=110899839906262",
                  "21 February 2005",
-                 u"complete rewrite of the tabular, text inset; fax- and Ascii-Export support; iletter and dinbrief support"),
+                 u"complete rewrite of the tabular, text inset; fax and plain text export support; iletter and dinbrief support"),
 
      contributer(u"Pauli Virtanen",
                  "pauli.virtanen () hut ! fi",
