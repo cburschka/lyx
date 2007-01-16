@@ -35,15 +35,20 @@
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "frontends/controllers/ControlMath.h"
 
 #include <algorithm>
 #include <sstream>
+#include <fstream>
 
 using lyx::support::cmd_ret;
 using lyx::support::getVectorFromString;
 using lyx::support::LibFileSearch;
 using lyx::support::RunCommand;
+using lyx::support::QuoteName;
+using lyx::support::tempName;
+using lyx::support::unlink;
 using lyx::support::subst;
 
 using lyx::frontend::function_names;
@@ -1014,9 +1019,22 @@ namespace {
 
 	string captureOutput(string const & cmd, string const & data)
 	{
-		string command =  "echo '" + data + "' | " + cmd;
-		lyxerr << "calling: " << command << endl;
+		// In order to avoid parsing problems with command interpreters
+		// we pass input data through a file
+		string const cas_tmpfile = tempName(string(), "casinput");
+		if (cas_tmpfile.empty()) {
+			lyxerr << "Warning: cannot create temporary file."
+			       << endl;
+			return string();
+		}
+		std::ofstream os(cas_tmpfile.c_str());
+		os << data << endl;
+		os.close();
+		string command =  cmd + " < " + QuoteName(cas_tmpfile);
+		lyxerr << "calling: " << cmd
+		       << "\ninput: '" << data << "'" << endl;
 		cmd_ret const ret = RunCommand(command);
+		unlink(cas_tmpfile);
 		return ret.second;
 	}
 
@@ -1106,7 +1124,7 @@ namespace {
 			return MathArray();
 
 		out = subst(tmp[1],"\\>", "");
-		lyxerr << "out: '" << out << "'" << endl;
+		lyxerr << "output: '" << out << "'" << endl;
 
 		// Ugly code that tries to make the result prettier
 
@@ -1122,7 +1140,7 @@ namespace {
 			out = out.substr(0,i)
 				+ mid
 				+ out.substr(k + 1);
-			//lyxerr << "out: " << out << endl;
+			//lyxerr << "output: " << out << endl;
 			i = out.find("\\mathchoice", i);
 			break;
 		}
@@ -1138,7 +1156,7 @@ namespace {
 				+ out.substr(j,i - j)
 				+ out.substr(i + 5,k - i - 4)
 				+ out.substr(k + 2);
-			//lyxerr << "out: " << out << endl;
+			//lyxerr << "output: " << out << endl;
 			i = out.find("\\over", i + 4);
 		}
 		MathArray res;
@@ -1244,7 +1262,7 @@ namespace {
 			//
 			lyxerr << "checking expr: '" << expr << "'" << endl;
 			out = captureOutput("octave -q 2>&1", expr);
-			lyxerr << "checking out: '" << out << "'" << endl;
+			lyxerr << "output: '" << out << "'" << endl;
 
 			// leave loop if expression syntax is probably ok
 			if (out.find("parse error:") == string::npos)
@@ -1336,7 +1354,7 @@ namespace {
 				+ (roman ? "\\mathrm{" : "")
 				+ (translate ? fromMathematicaName(name) : name)
 				+ out.substr(roman ? j : j + 1);
-			//lyxerr << "out: " << out << endl;
+			//lyxerr << "output: " << out << endl;
 			i = out.find(macro, i);
 		}
 	}
@@ -1354,7 +1372,7 @@ namespace {
 
 		string const full = "TeXForm[" + expr + "]";
 		out = captureOutput("math", full);
-		lyxerr << "out: '" << out << "'" << endl;
+		lyxerr << "output: '" << out << "'" << endl;
 
 		string::size_type pos1 = out.find("Out[1]//TeXForm= ");
 		string::size_type pos2 = out.find("In[2]:=");

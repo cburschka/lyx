@@ -1,3 +1,11 @@
+2007-01-16  Enrico Forestieri  <forenr@tlc.unipr.it>
+
+	* src/mathed/math_extern.C (captureOutput): redirect stdin from a file.
+	(pipeThroughMaxima, pipeThroughOctave, pipeThroughMathematica): use
+	"output:" instead of "out:" in the informational messages in order to
+	better match the "input:" message from captureOutput.
+
+
 2007-01-08  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* src/mathed/math_extern.C (pipeThroughOctave): take into account
