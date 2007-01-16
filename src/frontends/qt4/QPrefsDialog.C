@@ -190,7 +190,7 @@ string const internal_path_list(QString const & input)
 } // end namespace anon
 
 
-PrefAscii::PrefAscii(QWidget * parent)
+PrefPlaintext::PrefPlaintext(QWidget * parent)
 : PrefModule(_(Outputs), _("Plain text"), 0, parent)
 {
 	setupUi(this);
@@ -201,14 +201,14 @@ PrefAscii::PrefAscii(QWidget * parent)
 }
 
 
-void PrefAscii::apply(LyXRC & rc) const
+void PrefPlaintext::apply(LyXRC & rc) const
 {
 	rc.plaintext_linelen = plaintextLinelengthSB->value();
 	rc.plaintext_roff_command = fromqstr(plaintextRoffED->text());
 }
 
 
-void PrefAscii::update(LyXRC const & rc)
+void PrefPlaintext::update(LyXRC const & rc)
 {
 	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
 	plaintextRoffED->setText(toqstr(rc.plaintext_roff_command));
@@ -1800,7 +1800,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
 
-	add(new PrefAscii);
+	add(new PrefPlaintext);
 	add(new PrefDate);
 	add(new PrefKeyboard(form_));
 	add(new PrefLatex(form_));

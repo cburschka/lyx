@@ -56,7 +56,7 @@ uic QErrorListUi.ui -o QErrorListUi.h
 uic QFloatUi.ui -o QFloatUi.h
 uic QIndexUi.ui -o QIndexUi.h
 uic QMathMatrixUi.ui -o QMathMatrixUi.h
-uic QPrefAsciiUi.ui -o QPrefAsciiUi.h
+uic QPrefPlaintextUi.ui -o QPrefPlaintextUi.h
 uic QPrefCopiersUi.ui -o QPrefCopiersUi.h
 uic QPrefDisplayUi.ui -o QPrefDisplayUi.h
 uic QPrefKeyboardUi.ui -o QPrefKeyboardUi.h

@@ -23,7 +23,7 @@
 #include <QDialog>
 #include <QCloseEvent>
 
-#include "ui/QPrefAsciiUi.h"
+#include "ui/QPrefPlaintextUi.h"
 #include "ui/QPrefDateUi.h"
 #include "ui/QPrefKeyboardUi.h"
 #include "ui/QPrefLatexUi.h"
@@ -87,12 +87,12 @@ Q_SIGNALS:
 };
 
 
-class PrefAscii :  public PrefModule, public Ui::QPrefAsciiUi
+class PrefPlaintext :  public PrefModule, public Ui::QPrefPlaintextUi
 {
 	Q_OBJECT
 public:
-	PrefAscii(QWidget * parent = 0);
-	~PrefAscii() {}
+	PrefPlaintext(QWidget * parent = 0);
+	~PrefPlaintext() {}
 
 	virtual void apply(LyXRC & rc) const;
 	virtual void update(LyXRC const & rc);

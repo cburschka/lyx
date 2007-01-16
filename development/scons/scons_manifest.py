@@ -632,7 +632,7 @@ src_frontends_qt4_ui_files = Split('''
     QNomenclUi.ui
     QNoteUi.ui
     QParagraphUi.ui
-    QPrefAsciiUi.ui
+    QPrefPlaintextUi.ui
     QPrefColorsUi.ui
     QPrefConvertersUi.ui
     QPrefCopiersUi.ui
