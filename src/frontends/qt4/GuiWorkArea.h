@@ -103,6 +103,8 @@ public:
 	virtual int height() const { return viewport()->height(); }
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
+	///
+	virtual void sheduleRedraw() { shedule_redraw_ = true; }
 
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
@@ -171,6 +173,8 @@ private:
 	QPixmap screen_;
 	///
 	bool need_resize_;
+	///
+	bool shedule_redraw_;
 };
 
 } // namespace frontend

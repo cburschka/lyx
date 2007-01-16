@@ -431,11 +431,10 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 {
 	Buffer const * buffer_ptr = 0;
 	if (inset) {
-		buffer_ptr = work_area_->bufferView().buffer();
-		// No FitCursor:
 		BOOST_ASSERT(work_area_);
-		work_area_->bufferView().update(Update::Force);
-		work_area_->redraw();
+		work_area_->sheduleRedraw();
+
+		buffer_ptr = work_area_->bufferView().buffer();
 	}
 	return buffer_ptr;
 }
