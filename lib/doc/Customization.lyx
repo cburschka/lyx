@@ -2040,7 +2040,7 @@ makeindex.sh
 \end_layout
 
 \begin_layout Section
-ASCII export options
+Plain text export options
 \end_layout
 
 \begin_layout Standard
@@ -2060,7 +2060,7 @@ clean up
 \begin_inset Quotes erd
 \end_inset
 
- exported ASCII text files.
+ exported plain text files.
  Note that LyX automatically detects and uses the best settings for your
  system at installation time, but you can modify them if you disagree with
  its interpretation.
@@ -2070,12 +2070,12 @@ clean up
 
 \family typewriter
 \series medium
-ASCII\InsetSpace ~
+Plain text\InsetSpace ~
 roff
 \family default
  
 \series default
-This option defines the command used to produce better ASCII tables with
+This option defines the command used to produce better plain text tables with
  the 
 \family typewriter
 groff/troff/nroff
@@ -2088,13 +2088,13 @@ groff/troff/nroff
 
 \family typewriter
 \series medium
-ASCII\InsetSpace ~
+Plain text\InsetSpace ~
 line\InsetSpace ~
 length
 \family default
  
 \series default
-With this command you can set the default line length of the ASCII output
+With this command you can set the default line length of the plain text output
  file.
  Setting it to 0 means endless lines.
 \end_layout
@@ -3481,7 +3481,7 @@ Defining Own Keymaps: Keymap File Format
 
 \begin_layout Standard
 Let's look at a keyboard definition file a little closer.
- It is a plain ASCII file defining
+ It is a plain text file defining
 \end_layout
 
 \begin_layout Itemize
@@ -11746,7 +11746,7 @@ l
 \family default
  
 \family typewriter
-file-insert-ascii lines
+file-insert-plaintext lines
 \end_layout
 
 \begin_layout List
@@ -11757,7 +11757,7 @@ p
 \family default
  
 \family typewriter
-file-insert-ascii paragraphs
+file-insert-plaintext paragraphs
 \end_layout
 
 \begin_layout List
