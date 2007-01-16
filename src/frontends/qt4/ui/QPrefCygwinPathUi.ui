@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QPrefCygwinPathUi</class>
  <widget class="QWidget" name="QPrefCygwinPathUi" >
   <property name="geometry" >
@@ -15,30 +12,44 @@
   <property name="windowTitle" >
    <string/>
   </property>
-  <widget class="QCheckBox" name="pathCB" >
-   <property name="enabled" >
-    <bool>true</bool>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
    </property>
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>260</width>
-     <height>26</height>
-    </rect>
+   <property name="spacing" >
+    <number>6</number>
    </property>
-   <property name="toolTip" >
-    <string/>
-   </property>
-   <property name="whatsThis" >
-    <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
-   </property>
-   <property name="text" >
-    <string>&amp;Use Windows-style paths in LaTeX files</string>
-   </property>
-  </widget>
+   <item row="1" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QCheckBox" name="pathCB" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <property name="toolTip" >
+      <string/>
+     </property>
+     <property name="whatsThis" >
+      <string>Select if LyX should output Windows-style paths rather than Posix-style paths to LaTeX files. Useful if you're using the native Windows MikTeX rather than the Cygwin teTeX.</string>
+     </property>
+     <property name="text" >
+      <string>&amp;Use Windows-style paths in LaTeX files</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>
