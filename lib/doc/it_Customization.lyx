@@ -2149,7 +2149,7 @@ ripulire
 \family typewriter
 
 \backslash
-ascii_roff_command
+plaintext_roff_command
 \family default
  Questo comando vi permette di settare il comando per produrre migliori
  tabelle ASCII con i comandi UNIX 
@@ -2168,7 +2168,7 @@ groff/troff/nroff
 \family typewriter
 
 \backslash
-ascii_linelen
+plaintext_linelen
 \family default
  Con questo comando potete settare la lunghezza di default della riga dell'outpu
 t di un file ASCII.
@@ -2190,7 +2190,7 @@ Examples:
 \newline
 
 \backslash
-ascii_roff_command groff -t -ms -Tlatin1"
+plaintext_roff_command groff -t -ms -Tlatin1"
 \newline
 
 \newline
@@ -2201,7 +2201,7 @@ ascii_roff_command groff -t -ms -Tlatin1"
 \newline
 #
 \backslash
-ascii_roff_command "nroff"
+plaintext_roff_command "nroff"
 \newline
 # This sets the line length to 80 characters
 \newline
@@ -2209,7 +2209,7 @@ ascii_roff_command "nroff"
 \newline
 
 \backslash
-ascii_linelen 80
+plaintext_linelen 80
 \end_layout
 
 \begin_layout Section
@@ -2973,7 +2973,7 @@ view_pspic_command
 \series medium
 
 \backslash
-ascii_roff_command
+plaintext_roff_command
 \family default
 \series default
  usa 
