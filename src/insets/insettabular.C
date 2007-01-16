@@ -1271,8 +1271,6 @@ void InsetTabular::resetPos(LCursor & cur) const
 	}
 
 	cur.updateFlags(Update::Force | Update::FitCursor);
-
-	InsetTabularMailer(*this).updateDialog(&bv);
 }
 
 
@@ -1760,8 +1758,6 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::LAST_ACTION:
 		break;
 	}
-
-	InsetTabularMailer(*this).updateDialog(&bv);
 }
 
 

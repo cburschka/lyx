@@ -57,7 +57,8 @@ QTabularDialog::QTabularDialog(QTabular * form)
 	connect(interlinespaceUnit, SIGNAL(selectionChanged(lyx::LyXLength::UNIT)),
 	        this, SLOT(interlinespace_changed()));
 	connect(interlinespaceCO, SIGNAL(activated(int)), this, SLOT(interlinespace_changed()));
-	connect(booktabsRB, SIGNAL(clicked()), this, SLOT(on_booktabsRB_toggled()));
+	connect(booktabsRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
+	connect(borderDefaultRB, SIGNAL(clicked(bool)), this, SLOT(booktabsChanged(bool)));
 	connect(borderSetPB, SIGNAL(clicked()), this, SLOT(borderSet_clicked()));
 	connect(borderUnsetPB, SIGNAL(clicked()), this, SLOT(borderUnset_clicked()));
 	connect(longTabularCB, SIGNAL(toggled(bool)), longtableGB, SLOT(setEnabled(bool)));
@@ -107,7 +108,7 @@ void QTabularDialog::closeEvent(QCloseEvent * e)
 }
 
 
-void QTabularDialog::on_booktabsRB_toggled()
+void QTabularDialog::booktabsChanged(bool)
 {
 	form_->changed();
 	form_->controller().booktabs(booktabsRB->isChecked());
