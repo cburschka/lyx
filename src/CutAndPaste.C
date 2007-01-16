@@ -51,6 +51,8 @@
 
 #include <boost/tuple/tuple.hpp>
 
+#include <string>
+
 
 namespace lyx {
 
