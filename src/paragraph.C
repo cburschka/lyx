@@ -1146,18 +1146,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 namespace {
 
-// checks, if newcol chars should be put into this line
-// writes newline, if necessary.
-void sgmlLineBreak(ostream & os, string::size_type & colcount,
-			  string::size_type newcol)
-{
-	colcount += newcol;
-	if (colcount > lyxrc.plaintext_linelen) {
-		os << "\n";
-		colcount = newcol; // assume write after this call
-	}
-}
-
 enum PAR_TAG {
 	PAR_NONE=0,
 	TT = 1,
