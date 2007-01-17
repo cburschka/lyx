@@ -306,7 +306,7 @@ void InsetCollapsable::edit(LCursor & cur, bool left)
 InsetBase * InsetCollapsable::editXY(LCursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
-	if (status() == Collapsed || button_dim.contains(x, y))
+	if (status() == Collapsed || (button_dim.contains(x, y) && status() != Inlined))
 		return this;
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
@@ -320,7 +320,7 @@ void InsetCollapsable::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		if (cmd.button() == mouse_button::button1 && hitButton(cmd)) {
+		if (cmd.button() == mouse_button::button1 && hitButton(cmd) && status() != Inlined) {
 			// reset selection if necessary (see bug 3060)
 			if (cur.selection())
 				cur.bv().cursor().clearSelection();
