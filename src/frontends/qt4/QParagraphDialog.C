@@ -44,7 +44,7 @@ QParagraphDialog::QParagraphDialog(QParagraph * form)
 		this, SLOT( enableLinespacingValue(int) ) );
 	connect(linespacingValue, SIGNAL( textChanged(const QString&) ), 
 		this, SLOT( change_adaptor() ) );
-	connect(indentCB, SIGNAL( toggled(bool) ), 
+	connect(indentCB, SIGNAL( clicked() ), 
 		this, SLOT( change_adaptor() ) );
 	connect(labelWidth, SIGNAL( textChanged(const QString&) ), 
 		this, SLOT( change_adaptor() ) );

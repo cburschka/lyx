@@ -38,15 +38,15 @@ QLPrintDialog::QLPrintDialog(QPrint * f)
     connect( printerED, SIGNAL( textChanged(const QString&) ), this, SLOT( printerChanged() ) );
     connect( fileED, SIGNAL( textChanged(const QString&) ), this, SLOT( fileChanged() ) );
     connect( browsePB, SIGNAL( clicked() ), this, SLOT( browseClicked() ) );
-    connect( allRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( reverseCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( collateCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( allRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( reverseCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( collateCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
     connect( fromED, SIGNAL( textChanged(const QString&) ), this, SLOT( pagerangeChanged() ) );
     connect( fromED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
     connect( toED, SIGNAL( textChanged(const QString&) ), this, SLOT( pagerangeChanged() ) );
     connect( toED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
-    connect( fileRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( printerRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( fileRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( printerRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
     connect( rangeRB, SIGNAL( toggled(bool) ), fromED, SLOT( setEnabled(bool) ) );
     connect( rangeRB, SIGNAL( toggled(bool) ), toED, SLOT( setEnabled(bool) ) );
 }

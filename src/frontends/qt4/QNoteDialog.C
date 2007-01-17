@@ -30,11 +30,11 @@ QNoteDialog::QNoteDialog(QNote * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-    connect( noteRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( greyedoutRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( commentRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( framedRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( shadedRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( noteRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( greyedoutRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( commentRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( framedRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( shadedRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
 }
 
 

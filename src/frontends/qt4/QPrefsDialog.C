@@ -241,20 +241,7 @@ PrefKeyboard::PrefKeyboard(QPrefs * form, QWidget * parent)
 {
 	setupUi(this);
 
-	connect(keymapCB, SIGNAL( toggled(bool) ),
-		firstKeymapLA, SLOT( setEnabled(bool) ) );
-	connect(keymapCB, SIGNAL( toggled(bool) ),
-		secondKeymapLA, SLOT( setEnabled(bool) ) );
-	connect(keymapCB, SIGNAL( toggled(bool) ),
-		firstKeymapED, SLOT( setEnabled(bool) ) );
-	connect(keymapCB, SIGNAL( toggled(bool) ),
-		secondKeymapED, SLOT( setEnabled(bool) ) );
-	connect(keymapCB, SIGNAL( toggled(bool) ),
-		firstKeymapPB, SLOT( setEnabled(bool) ) );
-	connect(keymapCB, SIGNAL( toggled(bool) ),
-		secondKeymapPB, SLOT( setEnabled(bool) ) );
-
-	connect(keymapCB, SIGNAL(toggled(bool)),
+	connect(keymapCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(firstKeymapED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
@@ -276,13 +263,6 @@ void PrefKeyboard::update(LyXRC const & rc)
 {
 	// FIXME: can derive CB from the two EDs
 	keymapCB->setChecked(rc.use_kbmap);
-	// no idea why we need these. Fscking Qt.
-	firstKeymapED->setEnabled(rc.use_kbmap);
-	firstKeymapPB->setEnabled(rc.use_kbmap);
-	firstKeymapLA->setEnabled(rc.use_kbmap);
-	secondKeymapED->setEnabled(rc.use_kbmap);
-	secondKeymapPB->setEnabled(rc.use_kbmap);
-	secondKeymapLA->setEnabled(rc.use_kbmap);
 	firstKeymapED->setText(external_path(rc.primary_kbmap));
 	secondKeymapED->setText(external_path(rc.secondary_kbmap));
 }
@@ -296,7 +276,7 @@ QString PrefKeyboard::testKeymap(QString keymap)
 
 void PrefKeyboard::on_firstKeymapPB_clicked(bool)
 {
-	QString file = testKeymap(firstKeymapED->text());
+	QString const file = testKeymap(firstKeymapED->text());
 	if (!file.isEmpty())
 		firstKeymapED->setText(file);
 }
@@ -304,9 +284,20 @@ void PrefKeyboard::on_firstKeymapPB_clicked(bool)
 
 void PrefKeyboard::on_secondKeymapPB_clicked(bool)
 {
-	QString file = testKeymap(secondKeymapED->text());
+	QString const file = testKeymap(secondKeymapED->text());
 	if (!file.isEmpty())
 		secondKeymapED->setText(file);
+}
+
+
+void PrefKeyboard::on_keymapCB_toggled(bool keymap)
+{
+	firstKeymapLA->setEnabled(keymap);
+	secondKeymapLA->setEnabled(keymap);
+	firstKeymapED->setEnabled(keymap);
+	secondKeymapED->setEnabled(keymap);
+	firstKeymapPB->setEnabled(keymap);
+	secondKeymapPB->setEnabled(keymap);
 }
 
 
@@ -322,7 +313,7 @@ PrefLatex::PrefLatex(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(latexIndexED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
-	connect(latexAutoresetCB, SIGNAL(toggled(bool)),
+	connect(latexAutoresetCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(latexDviPaperED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
@@ -582,7 +573,7 @@ PrefCygwinPath::PrefCygwinPath(QWidget * parent)
 : PrefModule(_(Outputs), _("Paths"), 0, parent)
 {
 	setupUi(this);
-	connect(pathCB, SIGNAL(toggled(bool)),
+	connect(pathCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 }
 
@@ -781,9 +772,9 @@ PrefSpellchecker::PrefSpellchecker(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(persDictionaryED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
-	connect(compoundWordCB, SIGNAL(toggled(bool)),
+	connect(compoundWordCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(inputEncodingCB, SIGNAL(toggled(bool)),
+	connect(inputEncodingCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 
 	spellCommandCO->addItem(qt_("ispell"));
@@ -1295,9 +1286,9 @@ PrefFileformats::PrefFileformats(QPrefs * form, QWidget * parent)
 		this, SLOT(fileformat_changed()));
 	connect(editorED, SIGNAL(textChanged(const QString&)),
 		this, SLOT(fileformat_changed()));
-	connect(documentCB, SIGNAL(toggled(bool)),
+	connect(documentCB, SIGNAL(clicked()),
 		this, SLOT(fileformat_changed()));
-	connect(vectorCB, SIGNAL(toggled(bool)),
+	connect(vectorCB, SIGNAL(clicked()),
 		this, SLOT(fileformat_changed()));
 	connect(formatNewPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
@@ -1484,17 +1475,17 @@ PrefLanguage::PrefLanguage(QWidget * parent)
 {
 	setupUi(this);
 
-	connect(rtlCB, SIGNAL(toggled(bool)),
+	connect(rtlCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(markForeignCB, SIGNAL(toggled(bool)),
+	connect(markForeignCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(autoBeginCB, SIGNAL(toggled(bool)),
+	connect(autoBeginCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(autoEndCB, SIGNAL(toggled(bool)),
+	connect(autoEndCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(useBabelCB, SIGNAL(toggled(bool)),
+	connect(useBabelCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(globalCB, SIGNAL(toggled(bool)),
+	connect(globalCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(languagePackageED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
@@ -1559,7 +1550,7 @@ PrefPrinter::PrefPrinter(QWidget * parent)
 {
 	setupUi(this);
 
-	connect(printerAdaptCB, SIGNAL(toggled(bool)),
+	connect(printerAdaptCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(printerCommandED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
@@ -1660,31 +1651,23 @@ PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
 		this, SIGNAL(changed()));
 	connect(bindFileED, SIGNAL(textChanged(const QString&)),
 		this, SIGNAL(changed()));
-	connect(restoreCursorCB, SIGNAL(toggled(bool)),
+	connect(restoreCursorCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(loadSessionCB, SIGNAL(toggled(bool)),
+	connect(loadSessionCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
+	connect(loadWindowSizeCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
-		windowWidthLA, SLOT(setDisabled(bool)));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
-		windowHeightLA, SLOT(setDisabled(bool)));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
-		windowWidthSB, SLOT(setDisabled(bool)));
-	connect(loadWindowSizeCB, SIGNAL(toggled(bool)),
-		windowHeightSB, SLOT(setDisabled(bool)));
-	connect(loadWindowLocationCB, SIGNAL(toggled(bool)),
+	connect(loadWindowLocationCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(windowWidthSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
 	connect(windowHeightSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(cursorFollowsCB, SIGNAL(toggled(bool)),
+	connect(cursorFollowsCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(autoSaveSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
-	connect(autoSaveCB, SIGNAL(toggled(bool)),
+	connect(autoSaveCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(lastfilesSB, SIGNAL(valueChanged(int)),
 		this, SIGNAL(changed()));
@@ -1721,10 +1704,6 @@ void PrefUserInterface::update(LyXRC const & rc)
 	loadSessionCB->setChecked(rc.load_session);
 	bool loadWindowSize = rc.geometry_width == 0 && rc.geometry_height == 0;
 	loadWindowSizeCB->setChecked(loadWindowSize);
-	windowWidthSB->setEnabled(!loadWindowSize);
-	windowHeightSB->setEnabled(!loadWindowSize);
-	windowWidthLA->setEnabled(!loadWindowSize);
-	windowHeightLA->setEnabled(!loadWindowSize);
 	if (!loadWindowSize) {
 		windowWidthSB->setValue(rc.geometry_width);
 		windowHeightSB->setValue(rc.geometry_height);
@@ -1755,6 +1734,15 @@ void PrefUserInterface::select_bind()
 	docstring file(form_->controller().browsebind(qstring_to_ucs4(bindFileED->text())));
 	if (!file.empty())
 		bindFileED->setText(toqstr(file));
+}
+
+
+void PrefUserInterface::on_loadWindowSizeCB_toggled(bool loadwindowsize)
+{
+	windowWidthLA->setDisabled(loadwindowsize);
+	windowHeightLA->setDisabled(loadwindowsize);
+	windowWidthSB->setDisabled(loadwindowsize);
+	windowHeightSB->setDisabled(loadwindowsize);
 }
 
 

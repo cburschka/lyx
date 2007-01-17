@@ -38,7 +38,7 @@ QCharacterDialog::QCharacterDialog(QCharacter * form)
     connect( shapeCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
     connect( colorCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
     connect( langCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
-    connect( toggleallCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( toggleallCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
 }
 
 

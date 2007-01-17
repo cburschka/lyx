@@ -43,7 +43,7 @@ Q_SIGNALS:
 protected Q_SLOTS:
 
 	void on_bulletsizeCO_activated(int level);
-	void on_customCB_toggled(bool);
+	void on_customCB_clicked(bool);
 	void on_customLE_textEdited(const QString &);
 	void bulletSelected(QListWidgetItem *, QListWidgetItem*);
 	void showLevel(int);

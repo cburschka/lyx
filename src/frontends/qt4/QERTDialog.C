@@ -13,8 +13,7 @@
 #include "QERTDialog.h"
 #include "QERT.h"
 
-#include <qpushbutton.h>
-//Added by qt3to4:
+#include <QPushButton>
 #include <QCloseEvent>
 
 namespace lyx {
@@ -29,9 +28,9 @@ QERTDialog::QERTDialog(QERT * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-    connect( inlineRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( collapsedRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
-    connect( openRB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( inlineRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( collapsedRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
+    connect( openRB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
 }
 
 

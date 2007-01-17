@@ -183,7 +183,7 @@ void QLToolbar::add(FuncRequest const & func, docstring const & tooltip)
 		tb->setToolTip(toqstr(tooltip));
 		tb->setFocusPolicy(Qt::NoFocus);
 		InsertTableWidget * iv = new InsertTableWidget(owner_, tb);
-		connect(tb, SIGNAL(toggled(bool)), iv, SLOT(show(bool)));
+		connect(tb, SIGNAL(clicked(bool)), iv, SLOT(show(bool)));
 		connect(iv, SIGNAL(visible(bool)), tb, SLOT(setChecked(bool)));
 		connect(this, SIGNAL(updated()), iv, SLOT(updateParent()));
 		addWidget(tb);

@@ -90,14 +90,14 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
 	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(textLayoutModule->indentRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->indentRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->skipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->skipLengthCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(setSkip(int)));
 	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(enableSkip(bool)));
-	connect(textLayoutModule->twoColumnCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->twoColumnCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
@@ -136,8 +136,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(fontModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontScCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(fontModule->fontOsfCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(fontModule->fontScCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fontModule->fontOsfCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	for (int n = 0; tex_fonts_roman[n][0]; ++n) {
 		QString font = toqstr(tex_fonts_roman_gui[n]);
@@ -174,15 +174,15 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// page layout
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
-	connect(pageLayoutModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(portraitChanged()));
+	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()), this, SLOT(portraitChanged()));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->paperheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->paperwidthLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->paperwidthUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->paperheightUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->landscapeRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(pageLayoutModule->facingPagesCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->portraitRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->landscapeRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->facingPagesCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	pageLayoutModule->pagestyleCO->addItem(qt_("default"));
 	pageLayoutModule->pagestyleCO->addItem(qt_("empty"));
@@ -221,7 +221,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	marginsModule = new UiWidget<Ui::MarginsUi>;
 	// margins
 	connect(marginsModule->marginCB, SIGNAL(toggled(bool)), this, SLOT(setCustomMargins(bool)));
-	connect(marginsModule->marginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(marginsModule->marginCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(marginsModule->topLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(marginsModule->topUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(marginsModule->bottomLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -275,7 +275,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), langModule->encodingCO, SLOT(setDisabled(bool)));
 	// language & quote
 	connect(langModule->languageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(langModule->defaultencodingCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(langModule->encodingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langModule->quoteStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	// language & quotes
@@ -320,11 +320,11 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citationStyleL, SLOT( setEnabled(bool) ) );
 	connect( biblioModule->citeNatbibRB, SIGNAL( toggled(bool) ), biblioModule->citeStyleCO, SLOT( setEnabled(bool) ) );
 	// biblio
-	connect(biblioModule->citeDefaultRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeDefaultRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeNatbibRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(biblioModule->citeJurabibRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(biblioModule->bibtopicCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeJurabibRB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(biblioModule->bibtopicCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	// biblio
 	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
 	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
@@ -336,10 +336,10 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), mathsModule->amsCB, SLOT(setDisabled(bool)));
 	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)), mathsModule->esintCB, SLOT(setDisabled(bool)));
 	// maths
-	connect(mathsModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(mathsModule->esintCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(mathsModule->esintautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(mathsModule->amsCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(mathsModule->amsautoCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(mathsModule->esintCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(mathsModule->esintautoCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	latexModule = new UiWidget<Ui::LaTeXUi>;
 	// latex class

@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QPrefUi</class>
  <widget class="QWidget" name="QPrefUi" >
   <property name="geometry" >
@@ -214,6 +211,9 @@
         </item>
         <item>
          <widget class="QSpinBox" name="windowWidthSB" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="maximum" >
            <number>9999</number>
           </property>
@@ -237,6 +237,9 @@
         </item>
         <item>
          <widget class="QSpinBox" name="windowHeightSB" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="maximum" >
            <number>9999</number>
           </property>
@@ -373,10 +376,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>uiFileED</tabstop>
   <tabstop>uiFilePB</tabstop>
@@ -393,6 +392,9 @@
   <tabstop>lastfilesSB</tabstop>
   <tabstop>cursorFollowsCB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

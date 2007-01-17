@@ -33,13 +33,13 @@ QIncludeDialog::QIncludeDialog(QInclude * form)
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
 
-    connect( visiblespaceCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( visiblespaceCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
     connect( filenameED, SIGNAL( textChanged(const QString&) ), this, SLOT( change_adaptor() ) );
     connect( loadPB, SIGNAL( clicked() ), this, SLOT( loadClicked() ) );
     connect( browsePB, SIGNAL( clicked() ), this, SLOT( browseClicked() ) );
     connect( typeCO, SIGNAL( activated(int) ), this, SLOT( change_adaptor() ) );
     connect( typeCO, SIGNAL( activated(int) ), this, SLOT( typeChanged(int) ) );
-    connect( previewCB, SIGNAL( toggled(bool) ), this, SLOT( change_adaptor() ) );
+    connect( previewCB, SIGNAL( clicked() ), this, SLOT( change_adaptor() ) );
 
 	filenameED->setValidator(new PathValidator(true, filenameED));
 }

@@ -44,7 +44,7 @@ QRefDialog::QRefDialog(QRef * form)
 		this, SLOT( refHighlighted(QListWidgetItem *) ) );
 	connect( refsLW, SIGNAL(  itemActivated(QListWidgetItem *) ), 
 		this, SLOT( refSelected(QListWidgetItem *) ) );
-	connect( sortCB, SIGNAL( toggled(bool) ),
+	connect( sortCB, SIGNAL( clicked(bool) ),
 		this, SLOT( sortToggled(bool) ) );
 	connect( gotoPB, SIGNAL( clicked() ), 
 		this, SLOT( gotoClicked() ) );

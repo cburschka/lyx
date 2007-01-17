@@ -124,6 +124,7 @@ public:
 private Q_SLOTS:
 	void on_firstKeymapPB_clicked(bool);
 	void on_secondKeymapPB_clicked(bool);
+	void on_keymapCB_toggled(bool);
 
 private:
 	QString testKeymap(QString keymap);
@@ -354,6 +355,7 @@ public:
 public Q_SLOTS:
 	void select_ui();
 	void select_bind();
+	void on_loadWindowSizeCB_toggled(bool);
 
 };
 

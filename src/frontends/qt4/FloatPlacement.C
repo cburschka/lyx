@@ -31,14 +31,13 @@ FloatPlacement::FloatPlacement(QWidget *)
 	connect(pageCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
 	connect(herepossiblyCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
 	connect(defaultsCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
-
-	connect(defaultsCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
-	connect(ignoreCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
-	connect(pageCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
-	connect(heredefinitelyCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
-	connect(herepossiblyCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
-	connect(bottomCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
-	connect(topCB, SIGNAL(toggled(bool)), this, SLOT(changedSlot()));
+	connect(defaultsCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(ignoreCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(pageCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(heredefinitelyCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(herepossiblyCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(bottomCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(topCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 
 	spanCB->hide();
 	sidewaysCB->hide();
@@ -237,4 +236,5 @@ void FloatPlacement::checkAllowed()
 //} // namespace lyx
 
 #include "FloatPlacement_moc.cpp"
+
 

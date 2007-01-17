@@ -143,7 +143,7 @@ void BulletsModule::bulletSelected(QListWidgetItem * item, QListWidgetItem *)
 }
 
 
-void BulletsModule::on_customCB_toggled(bool custom)
+void BulletsModule::on_customCB_clicked(bool custom)
 {
 	if (!custom) {
 		if (current_font_ < 0)
@@ -202,4 +202,5 @@ Bullet const & BulletsModule::getBullet(int level) const
 
 
 #include "BulletsModule_moc.cpp"
+
 

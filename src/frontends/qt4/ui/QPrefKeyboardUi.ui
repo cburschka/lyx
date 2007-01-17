@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QPrefKeyboardUi</class>
  <widget class="QWidget" name="QPrefKeyboardUi" >
   <property name="geometry" >
@@ -39,13 +36,24 @@
     </spacer>
    </item>
    <item row="1" column="1" >
-    <widget class="QLineEdit" name="firstKeymapED" />
+    <widget class="QLineEdit" name="firstKeymapED" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item row="2" column="1" >
-    <widget class="QLineEdit" name="secondKeymapED" />
+    <widget class="QLineEdit" name="secondKeymapED" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item row="2" column="2" >
     <widget class="QPushButton" name="secondKeymapPB" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <property name="text" >
       <string>Bro&amp;wse...</string>
      </property>
@@ -56,6 +64,9 @@
    </item>
    <item row="2" column="0" >
     <widget class="QLabel" name="secondKeymapLA" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <property name="text" >
       <string>S&amp;econd:</string>
      </property>
@@ -66,6 +77,9 @@
    </item>
    <item row="1" column="0" >
     <widget class="QLabel" name="firstKeymapLA" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <property name="text" >
       <string>&amp;First:</string>
      </property>
@@ -76,6 +90,9 @@
    </item>
    <item row="1" column="2" >
     <widget class="QPushButton" name="firstKeymapPB" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
      <property name="text" >
       <string>Br&amp;owse...</string>
      </property>
@@ -89,14 +106,13 @@
      <property name="text" >
       <string>Use &amp;keyboard map</string>
      </property>
+     <property name="checked" >
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>keymapCB</tabstop>
   <tabstop>firstKeymapED</tabstop>
@@ -104,6 +120,9 @@
   <tabstop>secondKeymapED</tabstop>
   <tabstop>secondKeymapPB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

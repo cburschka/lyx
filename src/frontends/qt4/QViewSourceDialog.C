@@ -27,7 +27,7 @@ QViewSourceDialog::QViewSourceDialog(QViewSource * form)
 	setupUi(this);
 
 	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
-	connect(viewFullSourceCB, SIGNAL(toggled(bool)),
+	connect(viewFullSourceCB, SIGNAL(clicked()),
 		this, SLOT(slotUpdate()));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
