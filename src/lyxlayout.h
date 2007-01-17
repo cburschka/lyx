@@ -149,7 +149,13 @@ public:
 	bool free_spacing;
 	///
 	bool pass_thru;
-	///
+	/**
+	 * Whether this layout was declared with "Environment xxx" as opposed
+	 * to "Style xxx". This is part of some unfinished generic environment
+	 * handling (see also InsetEnvironment) started by Andre. No layout
+	 * that is shipped with LyX has this flag set.
+	 * Don't confuse this with isEnvironment()!
+	 */
 	bool is_environment;
 	/// show this in toc
 	int toclevel;
