@@ -182,6 +182,8 @@ What's new
   (bug 3055). This also fixes problems with older LyX files
   (bug 3066) [qt only].
 
+- fix undo when inserting a line break (bug 3111).
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.

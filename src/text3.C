@@ -530,6 +530,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BREAKLINE: {
 		// Not allowed by LaTeX (labels or empty par)
 		if (cur.pos() > cur.paragraph().beginOfBody()) {
+			if (!cur.selection())
+				recordUndo(cur);
 			lyx::cap::replaceSelection(cur);
 			cur.insert(new InsetNewline);
 			cur.posRight();
