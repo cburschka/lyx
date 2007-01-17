@@ -551,8 +551,7 @@ void latexParagraphs(Buffer const & buf,
 				par = TeXOnePar(buf, paragraphs, par, os, texrow,
 						runparams, everypar);
 			} else if (layout->isEnvironment() ||
-				!par->params().leftIndent().zero())
-			{
+			           !par->params().leftIndent().zero()) {
 				par = TeXEnvironment(buf, paragraphs, par, os,
 						     texrow, runparams);
 			} else {
