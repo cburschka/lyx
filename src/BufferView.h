@@ -93,8 +93,6 @@ public:
 	/// resize the BufferView.
 	void resize();
 
-	/// redisplay the referenced buffer.
-	void reload();
 	/// load a buffer into the view.
 	bool loadLyXFile(support::FileName const & name, bool tolastfiles = true);
 

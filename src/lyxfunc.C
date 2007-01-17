@@ -899,7 +899,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				text, 0, 1, _("&Revert"), _("&Cancel"));
 
 			if (ret == 0)
-				view()->reload();
+				reloadBuffer();
 			break;
 		}
 
@@ -1133,7 +1133,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lyx_view_->buffer()->lyxvc().inUse()
 					&& !lyx_view_->buffer()->isReadonly()) {
 				lyx_view_->buffer()->lyxvc().checkIn();
-				view()->reload();
+				reloadBuffer();
 			}
 			break;
 
@@ -1144,20 +1144,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (lyx_view_->buffer()->lyxvc().inUse()
 					&& lyx_view_->buffer()->isReadonly()) {
 				lyx_view_->buffer()->lyxvc().checkOut();
-				view()->reload();
+				reloadBuffer();
 			}
 			break;
 
 		case LFUN_VC_REVERT:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			lyx_view_->buffer()->lyxvc().revert();
-			view()->reload();
+			reloadBuffer();
 			break;
 
 		case LFUN_VC_UNDO_LAST:
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			lyx_view_->buffer()->lyxvc().undoLast();
-			view()->reload();
+			reloadBuffer();
 			break;
 
 		// --- buffers ----------------------------------------

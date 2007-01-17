@@ -278,13 +278,6 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 }
 
 
-void BufferView::reload()
-{
-	if (theBufferList().close(buffer_, false))
-		loadLyXFile(FileName(buffer_->fileName()));
-}
-
-
 void BufferView::resize()
 {
 	if (!buffer_)
