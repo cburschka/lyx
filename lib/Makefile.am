@@ -972,8 +972,8 @@ dist_ui_DATA = \
 	ui/default.ui \
 	ui/default-alltoolbars.ui \
 	ui/default-autotoolbars.ui \
-	ui/stdmenus.ui \
-	ui/stdtoolbars.ui
+	ui/stdmenus.inc \
+	ui/stdtoolbars.inc
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py

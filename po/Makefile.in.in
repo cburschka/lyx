@@ -487,7 +487,7 @@ languages_l10n.pot: $(top_srcdir)/lib/languages
 		}' \
 	${top_srcdir}/lib/languages > $@
 
-ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
+ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	LC_ALL=C ; export LC_ALL ; \
 	$(AWK) -v top_srcdir="$(top_srcdir)" ' \
 		function fixupfilename() \
@@ -515,7 +515,7 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 				fixupfilename(), FNR, line); \
 		}' \
-	${top_srcdir}/lib/ui/*.ui > $@
+	${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc > $@
 
 i18n.php: $(POFILES)
 	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@

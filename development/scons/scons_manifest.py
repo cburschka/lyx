@@ -2195,8 +2195,8 @@ lib_ui_files = Split('''
     default.ui
     default-alltoolbars.ui
     default-autotoolbars.ui    
-    stdmenus.ui
-    stdtoolbars.ui
+    stdmenus.inc
+    stdtoolbars.inc
 ''')
 
 

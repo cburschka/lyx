@@ -14,9 +14,9 @@
 # The interface is designed (partially) following the KDE Human Interface
 # Guidelines (http://usability.kde.org/hig/)
 
-Include "stdmenus.ui"
+Include "stdmenus.inc"
 
-Include "stdtoolbars.ui"
+Include "stdtoolbars.inc"
 
 # Which toolbars to use.
 #

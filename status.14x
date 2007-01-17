@@ -22,6 +22,9 @@ What's new
 - Outline support: it is now possible to move around parts of
   documents in the Table of Contents dialog.
 
+- Add new UI settings default-autotoolbars and default-alltoolbars
+  allowing to select what toolbars are active.
+
 - Improve Computer Algebra System support in math editor.
 
 - Add support for fixed size math delimiters in math editor.
@@ -160,7 +163,7 @@ What's new
 
 - Add support for the chars-transpose LFUN (bug 2939).
 
-- Make insertion of forced newline undo-able (bug 3111).
+- Fix undo when inserting a line break (bug 3111).
 
 - Only one undo step is needed to undo inset-dissolve (bug 2982).
 
@@ -189,7 +192,8 @@ What's new
   (bug 3055). This also fixes problems with older LyX files
   (bug 3066) [qt only].
 
-- fix undo when inserting a line break (bug 3111).
+- Rename lib/ui/std*.ui include files to *.inc so that the user is not
+  tempted to try them (bug 2387).
 
 * Build/installation:
 
