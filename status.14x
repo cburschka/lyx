@@ -112,6 +112,9 @@ What's new
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
+- Fix hang when deleting a forced newling character in change tracking
+  mode (bug 2865).
+
 - Fix crash when exiting empty superscript in math editor (bugs 2908
   and 2933).
 
@@ -154,6 +157,8 @@ What's new
 - Fix insertion position for cross-reference in superscript (bug 2789).
 
 - Add support for the chars-transpose LFUN (bug 2939).
+
+- Make insertion of forced newline undo-able (bug 3111).
 
 - Only one undo step is needed to undo inset-dissolve (bug 2982).
 

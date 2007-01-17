@@ -1099,7 +1099,9 @@ void LyXText::breakParagraph(LCursor & cur, bool keep_layout)
 			pars_[next_par].applyLayout(tclass.defaultLayout());
 	}
 
-	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0))
+	while (!cur.buffer().params().tracking_changes 
+		&& !pars_[next_par].empty() 
+		&& pars_[next_par].isNewline(0))
 		pars_[next_par].erase(0);
 
 	updateCounters(cur.buffer());
