@@ -412,6 +412,8 @@ void MathHullInset::label(row_type row, string const & label)
 void MathHullInset::numbered(row_type row, bool num)
 {
 	nonum_[row] = !num;
+	if (nonum_[row])
+		label_[row].clear();
 }
 
 

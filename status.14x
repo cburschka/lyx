@@ -120,6 +120,8 @@ What's new
 
 - Fix an undo crash crash with nested font changes in math (bug 3019).
 
+- Clear label when a formula is unnumbered (bug 2556).
+
 - Disallow pressing the add button in the citation dialog when no citations
   are available, preventing a crash (bug 3057).
 

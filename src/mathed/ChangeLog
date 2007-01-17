@@ -1,3 +1,8 @@
+2007-01-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_hullinset.C (numbered): clear the label when unnumbering
+	(workaround for bug 2556).
+
 2007-01-16  Enrico Forestieri  <forenr@tlc.unipr.it>
 
 	* src/mathed/math_extern.C (captureOutput): redirect stdin from a file.
