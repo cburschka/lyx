@@ -438,6 +438,8 @@ void InsetMathHull::label(row_type row, docstring const & label)
 void InsetMathHull::numbered(row_type row, bool num)
 {
 	nonum_[row] = !num;
+	if (nonum_[row])
+		label_[row].clear();
 }
 
 
