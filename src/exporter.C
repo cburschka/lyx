@@ -161,14 +161,14 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	// which returns the shortest path from one of the formats in 'from'
 	// to 'to'.
 	if ((format == "lyx13x" || format == "lyx14x") &&
-	    !converters.getPath("lyx", format).empty())
+	    !theConverters().getPath("lyx", format).empty())
 		backend_format = "lyx";
 	else if (find(backends.begin(), backends.end(), format) == backends.end()) {
 		for (vector<string>::const_iterator it = backends.begin();
 		     it != backends.end(); ++it) {
-			Graph::EdgePath p = converters.getPath(*it, format);
+			Graph::EdgePath p = theConverters().getPath(*it, format);
 			if (!p.empty()) {
-				runparams.flavor = converters.getFlavor(p);
+				runparams.flavor = theConverters().getFlavor(p);
 				backend_format = *it;
 				break;
 			}
@@ -221,7 +221,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	string const error_type = (format == "program")? "Build" : bufferFormat(*buffer);
 	string const ext = formats.extension(format);
 	FileName const tmp_result_file(changeExtension(filename, ext));
-	bool const success = converters.convert(buffer, FileName(filename),
+	bool const success = theConverters().convert(buffer, FileName(filename),
 		tmp_result_file, FileName(buffer->fileName()), backend_format, format,
 		buffer->errorList(error_type));
 	// Emit the signal to show the error list.
@@ -291,7 +291,7 @@ bool Exporter::isExportable(Buffer const & buffer, string const & format)
 	vector<string> backends = Backends(buffer);
 	for (vector<string>::const_iterator it = backends.begin();
 	     it != backends.end(); ++it)
-		if (converters.isReachable(*it, format))
+		if (theConverters().isReachable(*it, format))
 			return true;
 	return false;
 }
@@ -302,11 +302,11 @@ Exporter::getExportableFormats(Buffer const & buffer, bool only_viewable)
 {
 	vector<string> backends = Backends(buffer);
 	vector<Format const *> result =
-		converters.getReachable(backends[0], only_viewable, true);
+		theConverters().getReachable(backends[0], only_viewable, true);
 	for (vector<string>::const_iterator it = backends.begin() + 1;
 	     it != backends.end(); ++it) {
 		vector<Format const *>  r =
-			converters.getReachable(*it, only_viewable, false);
+			theConverters().getReachable(*it, only_viewable, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;

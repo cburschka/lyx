@@ -92,7 +92,7 @@ public:
 bool Converter::isReachable(string const & from_format_name,
 			    string const & to_format_name)
 {
-	return converters.isReachable(from_format_name, to_format_name);
+	return theConverters().isReachable(from_format_name, to_format_name);
 }
 
 
@@ -306,7 +306,7 @@ static void build_script(FileName const & from_file,
 
 	EdgePath const edgepath = from_format.empty() ?
 		EdgePath() :
-		converters.getPath(from_format, to_format);
+		theConverters().getPath(from_format, to_format);
 
 	// Create a temporary base file-name for all intermediate steps.
 	// Remember to remove the temp file because we only want the name...
@@ -371,7 +371,7 @@ static void build_script(FileName const & from_file,
 	EdgePath::const_iterator end = edgepath.end();
 
 	for (; it != end; ++it) {
-		lyx::Converter const & conv = converters.get(*it);
+		lyx::Converter const & conv = theConverters().get(*it);
 
 		// Build the conversion command
 		string const infile      = outfile;

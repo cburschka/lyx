@@ -23,6 +23,7 @@ namespace lyx {
 
 class Buffer;
 class BufferList;
+class Converters;
 class ErrorItem;
 class IconvProcessor;
 class InsetBase;
@@ -77,6 +78,10 @@ public:
 	///
 	kb_keymap & topLevelKeymap();
 	kb_keymap const & topLevelKeymap() const;
+	
+	///
+	Converters & converters();
+	Converters & systemConverters();
 
 	///
 	Messages & getMessages(std::string const & language);

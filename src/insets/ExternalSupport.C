@@ -230,7 +230,7 @@ void updateExternal(InsetExternalParams const & params,
 	if (to_format.empty())
 		return; // NOT_NEEDED
 
-	if (!converters.isReachable(from_format, to_format)) {
+	if (!theConverters().isReachable(from_format, to_format)) {
 		lyxerr[Debug::EXTERNAL]
 			<< "external::updateExternal. "
 			<< "Unable to convert from "
@@ -308,7 +308,7 @@ void updateExternal(InsetExternalParams const & params,
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
 	/* bool const success = */
-		converters.convert(&buffer, temp_file, abs_to_file,
+		theConverters().convert(&buffer, temp_file, abs_to_file,
 		                   params.filename, from_format, to_format, el,
 		                   Converters::try_default | Converters::try_cache);
 	// return success

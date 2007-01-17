@@ -53,11 +53,11 @@ bool Importer::Import(LyXView * lv, FileName const & filename,
 	if (find(loaders.begin(), loaders.end(), format) == loaders.end()) {
 		for (vector<string>::const_iterator it = loaders.begin();
 		     it != loaders.end(); ++it) {
-			if (converters.isReachable(format, *it)) {
+			if (theConverters().isReachable(format, *it)) {
 				string const tofile =
 					changeExtension(filename.absFilename(),
 						formats.extension(*it));
-				if (!converters.convert(0, filename, FileName(tofile),
+				if (!theConverters().convert(0, filename, FileName(tofile),
 							filename, format, *it, errorList))
 					return false;
 				loader_format = *it;
@@ -101,11 +101,11 @@ vector<Format const *> const Importer::GetImportableFormats()
 {
 	vector<string> loaders = Loaders();
 	vector<Format const *> result =
-		converters.getReachableTo(loaders[0], true);
+		theConverters().getReachableTo(loaders[0], true);
 	for (vector<string>::const_iterator it = loaders.begin() + 1;
 	     it != loaders.end(); ++it) {
 		vector<Format const *> r =
-			converters.getReachableTo(*it, false);
+			theConverters().getReachableTo(*it, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;

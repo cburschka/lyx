@@ -89,7 +89,7 @@ vector<Format const *> const ControlSendto::allFormats() const
 			// for the internal lyx-view and external latex run
 			string const name = fo_it->name();
 			if (name != "eps" && name != "xpm" && name != "png" &&
-			    converters.isReachable(*ex_it, name))
+			    theConverters().isReachable(*ex_it, name))
 				to.push_back(&(*fo_it));
 		}
 	}

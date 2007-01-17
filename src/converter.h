@@ -161,10 +161,13 @@ private:
 	Graph G_;
 };
 
-extern Converters converters;
+/// The global instance.
+/// Implementation is in lyx_main.C.
+extern Converters & theConverters();
 
-extern Converters system_converters;
-
+/// The global copy after reading lyxrc.defaults.
+/// Implementation is in lyx_main.C.
+extern Converters & theSystemConverters();
 
 } // namespace lyx
 

@@ -150,6 +150,10 @@ struct LyX::Singletons
 {
 	Singletons(): iconv(ucs4_codeset, "UTF-8")
 	{
+		// Set the default User Interface language as soon as possible.
+		// The language used will be derived from the environment
+		// variables.
+		messages_["GUI"] = Messages();
 	}
 	/// our function handler
 	LyXFunc lyxfunc_;
@@ -172,8 +176,14 @@ struct LyX::Singletons
 	/// Files to load at start.
 	vector<FileName> files_to_load_;
 
-	///
+	/// The messages translators.
 	map<string, Messages> messages_;
+
+	/// The file converters.
+	Converters converters_;
+
+	// The system converters copy after reading lyxrc.defaults.
+	Converters system_converters_;
 };
 
 ///
@@ -298,6 +308,18 @@ kb_keymap & LyX::topLevelKeymap()
 {
 	BOOST_ASSERT(pimpl_->toplevel_keymap_.get());
 	return *pimpl_->toplevel_keymap_.get();
+}
+
+
+Converters & LyX::converters()
+{
+	return pimpl_->converters_;
+}
+
+
+Converters & LyX::systemConverters()
+{
+	return pimpl_->system_converters_;
 }
 
 
@@ -800,8 +822,8 @@ bool LyX::init()
 	if (!readRcFile("lyxrc.dist"))
 		return false;
 
-	// Set the User Interface language.
-	pimpl_->messages_["GUI"] = Messages();
+	// Set the language defined by the distributor.
+	//setGuiLanguage(lyxrc.gui_language);
 
 	// Set the PATH correctly.
 #if !defined (USE_POSIX_PACKAGING)
@@ -834,7 +856,7 @@ bool LyX::init()
 
 	system_lyxrc = lyxrc;
 	system_formats = formats;
-	system_converters = converters;
+	pimpl_->system_converters_ = pimpl_->converters_;
 	system_movers = movers;
 	system_lcolor = lcolor;
 
@@ -853,6 +875,9 @@ bool LyX::init()
 		return false;
 
 	if (use_gui) {
+		// Set the language defined by the user.
+		//setGuiLanguage(lyxrc.gui_language);
+
 		// Set up bindings
 		pimpl_->toplevel_keymap_.reset(new kb_keymap);
 		defaultKeyBindings(pimpl_->toplevel_keymap_.get());
@@ -1432,6 +1457,18 @@ kb_keymap & theTopLevelKeymap()
 {
 	BOOST_ASSERT(use_gui);
 	return LyX::ref().topLevelKeymap();
+}
+
+
+Converters & theConverters()
+{
+	return  LyX::ref().converters();
+}
+
+
+Converters & theSystemConverters()
+{
+	return  LyX::ref().systemConverters();
 }
 
 

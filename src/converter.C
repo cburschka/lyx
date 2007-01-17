@@ -697,12 +697,4 @@ Converters::getPath(string const & from, string const & to)
 			  formats.getNumber(to));
 }
 
-
-/// The global instance
-Converters converters;
-
-// The global copy after reading lyxrc.defaults
-Converters system_converters;
-
-
 } // namespace lyx

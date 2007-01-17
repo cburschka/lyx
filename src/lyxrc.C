@@ -1052,9 +1052,9 @@ int LyXRC::read(LyXLex & lexrc)
 				flags = lexrc.getString();
 			}
 			if (command.empty()) {
-				converters.erase(from, to);
+				theConverters().erase(from, to);
 			} else {
-				converters.add(from, to, command, flags);
+				theConverters().add(from, to, command, flags);
 			}
 			break;
 		}
@@ -1118,7 +1118,7 @@ int LyXRC::read(LyXLex & lexrc)
 					       << format << "'." << endl;
 			}
 			if (prettyname.empty()) {
-				if (converters.formatIsUsed(format)) {
+				if (theConverters().formatIsUsed(format)) {
 					lyxerr << "Can't delete format "
 					       << format << endl;
 				} else {
@@ -1208,8 +1208,8 @@ int LyXRC::read(LyXLex & lexrc)
 	}
 
 	/// Update converters data-structures
-	converters.update(formats);
-	converters.buildGraph();
+	theConverters().update(formats);
+	theConverters().buildGraph();
 
 	return 0;
 }
@@ -2084,10 +2084,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 
 	case RC_CONVERTER:
 		// Look for new converters
-		for (Converters::const_iterator cit = converters.begin();
-		     cit != converters.end(); ++cit) {
+		for (Converters::const_iterator cit = theConverters().begin();
+		     cit != theConverters().end(); ++cit) {
 			Converter const * converter =
-				system_converters.getConverter(cit->from,
+				theSystemConverters().getConverter(cit->from,
 							       cit->to);
 			if (!converter ||
 			    converter->command != cit->command ||
@@ -2099,9 +2099,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		}
 
 		// New/modifed converters
-		for (Converters::const_iterator cit = system_converters.begin();
-		     cit != system_converters.end(); ++cit)
-			if (!converters.getConverter(cit->from, cit->to))
+		for (Converters::const_iterator cit = theSystemConverters().begin();
+		     cit != theSystemConverters().end(); ++cit)
+			if (!theConverters().getConverter(cit->from, cit->to))
 				os << "\\converter \"" << cit->from
 				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
 

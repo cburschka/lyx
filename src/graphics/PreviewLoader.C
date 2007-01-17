@@ -94,7 +94,7 @@ lyx::Converter const * setConverter()
 		if (from == to)
 			continue;
 
-		lyx::Converter const * ptr = lyx::converters.getConverter(from, to);
+		lyx::Converter const * ptr = lyx::theConverters().getConverter(from, to);
 		if (ptr)
 			return ptr;
 	}

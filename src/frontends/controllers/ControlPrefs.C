@@ -48,7 +48,7 @@ bool ControlPrefs::initialiseParams(std::string const &)
 {
 	rc_ = lyxrc;
 	formats_ = lyx::formats;
-	converters_ = lyx::converters;
+	converters_ = theConverters();
 	converters_.update(formats_);
 	movers_ = lyx::movers;
 	colors_.clear();
@@ -70,9 +70,9 @@ void ControlPrefs::dispatchParams()
 
 	lyx::formats = formats_;
 
-	lyx::converters = converters_;
-	lyx::converters.update(lyx::formats);
-	lyx::converters.buildGraph();
+	theConverters() = converters_;
+	theConverters().update(lyx::formats);
+	theConverters().buildGraph();
 
 	lyx::movers = movers_;
 
