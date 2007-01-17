@@ -1278,7 +1278,24 @@ bool BufferView::mouseSetCursor(LCursor & cur)
 	if (!badcursor && cursor_.inTexted())
 		checkDepm(cur, cursor_);
 
-	cursor_ = cur;
+	// if the cursor was in an empty script inset and the new
+	// position is in the nucleus of the inset, notifyCursorLeaves
+	// will kill the script inset itself. So we check all the
+	// elements of the cursor to make sure that they are correct.
+	// For an example, see bug 2933: 
+  	// http://bugzilla.lyx.org/show_bug.cgi?id=2933
+	// The code below could maybe be moved to a DocIterator method.
+	//lyxerr << "cur before " << cur <<std::endl;
+	DocIterator dit(cur.inset());
+	dit.push_back(cur.bottom());
+	size_t i = 1;
+	while (i < cur.depth() && dit.nextInset() == &cur[i].inset()) {
+		dit.push_back(cur[i]);
+		++i;
+	}
+	//lyxerr << "5 cur after" << dit <<std::endl;
+
+	cursor_.setCursor(dit);
 	cursor_.clearSelection();
 	// remember new position.
 	cursor_.setTargetX();
