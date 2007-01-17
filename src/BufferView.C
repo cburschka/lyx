@@ -1244,8 +1244,6 @@ void BufferView::setCursor(DocIterator const & dit)
 		dit[i].inset().edit(cursor_, true);
 
 	cursor_.setCursor(dit);
-	// remember new position.
-	cursor_.setTargetX();
 	cursor_.selection() = false;
 }
 
