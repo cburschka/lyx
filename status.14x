@@ -19,11 +19,17 @@ What's new
 
 ** Updates:
 
-- Outline support.
+- Outline support: it is now possible to move around parts of
+  documents in the Table of Contents dialog.
 
-- Improve Computer Algebra System support.
+- Improve Computer Algebra System support in math editor.
 
 - Add support for fixed size math delimiters in math editor.
+
+- Convert included vector graphics to pdf instead of png for pdflatex export
+  (bug 2868). This is implemented with the help of a new format flag "vector"
+  that you have to set manually for your self defined vector graphics formats
+  if you want to use this feature.
 
 - Add a wmf -> eps converter (bug 2845) and a latex -> rtf converter.
 
@@ -41,13 +47,9 @@ What's new
 
 - New external template for LilyPond (a music typesetter).
 
-- New manual Extended-Insets available in English and Spanish. It describes
-  in detail how to work with tables, graphics, floats, notes, and boxes
-
-- Updated documentation Intro.lyx
-
-- Updated ifpdf documentation in Extended.lyx (+ small grammar and
-  spelling fixes)
+- New manual ExtendedInsets available in English and Spanish. It describes
+  in detail how to work with tables, graphics, floats, notes, and
+  boxes; Update Intro and Extended manual (describe ifpdf package).
 
 - New Galician localization; update German, Hungarian and Romanian
   localization of the interface.
@@ -56,10 +58,6 @@ What's new
   Tutorial); Update German (all), Hebrew (Intro) and Italian
   (Tutorial, UserGuide) documentation.
 
-- Convert included vector graphics to pdf instead of png for pdflatex export
-  (bug 2868). This is implemented with the help of a new format flag "vector"
-  that you have to set manually for your self defined vector graphics formats
-  if you want to use this feature.
 
 ** Bug fixes:
 
@@ -114,7 +112,8 @@ What's new
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
-- Fix crash when exiting empty superscript in math editor (bug 2908).
+- Fix crash when exiting empty superscript in math editor (bugs 2908
+  and 2933).
 
 - Fix an undo crash crash with nested font changes in math (bug 3019).
 
