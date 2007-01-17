@@ -1121,8 +1121,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				break;
 			if (!lyx_view_->buffer()->lyxvc().inUse()) {
 				lyx_view_->buffer()->lyxvc().registrer();
-				view()->reload();
+				reloadBuffer();
 			}
+			updateFlags = Update::Force;
 			break;
 
 		case LFUN_VC_CHECK_IN:
@@ -2048,6 +2049,13 @@ void LyXFunc::closeBuffer()
 	}
 }
 
+
+void LyXFunc::reloadBuffer()
+{
+	FileName filename(lyx_view_->buffer()->fileName());
+	closeBuffer();
+	lyx_view_->loadLyXFile(filename);
+}
 
 // Each "lyx_view_" should have it's own message method. lyxview and
 // the minibuffer would use the minibuffer, but lyxserver would

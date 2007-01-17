@@ -120,6 +120,8 @@ private:
 	///
 	void closeBuffer();
 	///
+	void reloadBuffer();
+	///
 	bool ensureBufferClean(BufferView * bv);
 };
 
