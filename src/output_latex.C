@@ -393,14 +393,13 @@ TeXOnePar(Buffer const & buf,
 	} else if (is_command)
 		os << '}';
 
+	bool pending_newline = false;
 	switch (style->latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
 		if (boost::next(pit) != paragraphs.end()
-		    && (pit->params().depth() < boost::next(pit)->params().depth())) {
-			os << '\n';
-			texrow.newline();
-		}
+		    && (pit->params().depth() < boost::next(pit)->params().depth()))
+			pending_newline = true;
 		break;
 	case LATEX_ENVIRONMENT: {
 		// if its the last paragraph of the current environment
@@ -416,10 +415,8 @@ TeXOnePar(Buffer const & buf,
 		// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
-		if (boost::next(pit) != paragraphs.end()) {
-			os << '\n';
-			texrow.newline();
-		}
+		if (boost::next(pit) != paragraphs.end())
+			pending_newline = true;
 	}
 
 	if (!pit->forceDefaultParagraphs()) {
@@ -427,9 +424,12 @@ TeXOnePar(Buffer const & buf,
 			&& (boost::next(pit) == paragraphs.end()
 			    || !boost::next(pit)->hasSameLayout(*pit)))
 		{
-			os << from_ascii(pit->params().spacing().writeEnvirEnd())
-			   << '\n';
-			texrow.newline();
+			if (pending_newline) {
+				os << '\n';
+				texrow.newline();
+			}
+			os << from_ascii(pit->params().spacing().writeEnvirEnd());
+			pending_newline = true;
 		}
 	}
 
@@ -439,19 +439,21 @@ TeXOnePar(Buffer const & buf,
 		// we need to reset the language at the end of footnote or
 		// float.
 
+		if (pending_newline) {
+			os << '\n';
+			texrow.newline();
+		}
 		if (lyxrc.language_command_end.empty())
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
-				doc_language->babel()))
-			   << '\n';
+				doc_language->babel()));
 		else
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
-				language->babel()))
-			   << '\n';
-		texrow.newline();
+				language->babel()));
+		pending_newline = true;
 	}
 
 	// FIXME we switch from the encoding of this paragraph to the
@@ -459,8 +461,9 @@ TeXOnePar(Buffer const & buf,
 	// to take the encoding of the next paragraph into account.
 	// This may result in some unneeded encoding changes.
 	basefont = pit->getLayoutFont(bparams, outerfont);
-	if (switchEncoding(os, bparams, *(basefont.language()->encoding()),
-	                   outer_encoding)) {
+	switchEncoding(os, bparams, *(basefont.language()->encoding()),
+	               outer_encoding);
+	if (pending_newline) {
 		os << '\n';
 		texrow.newline();
 	}
