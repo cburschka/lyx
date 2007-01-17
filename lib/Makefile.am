@@ -192,6 +192,7 @@ dist_images_DATA = \
 	images/buffer-update_dvi.xpm \
 	images/buffer-update_ps.xpm \
 	images/buffer-view_dvi.xpm \
+	images/buffer-view_pdf2.xpm \
 	images/buffer-view_ps.xpm \
 	images/buffer-write-as.xpm \
 	images/buffer-write.xpm \

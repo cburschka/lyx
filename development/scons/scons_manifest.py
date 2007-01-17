@@ -1436,6 +1436,7 @@ lib_images_files = Split('''
     buffer-update_dvi.xpm
     buffer-update_ps.xpm
     buffer-view_dvi.xpm
+    buffer-view_pdf2.xpm
     buffer-view_ps.xpm
     buffer-write-as.xpm
     buffer-write.xpm
