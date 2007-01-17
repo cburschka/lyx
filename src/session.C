@@ -184,7 +184,7 @@ void LastFilePosSection::read(istream & is)
 			itmp.ignore(2);  // ignore ", "
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
-			itmp >> fname;
+			getline(itmp, fname);
 			if (!absolutePath(fname))
 				continue;
 			FileName const file(fname);
@@ -253,7 +253,7 @@ void BookmarksSection::read(istream & is)
 			itmp.ignore(2);  // ignore ", "
 			itmp >> pos;
 			itmp.ignore(2);  // ignore ", "
-			itmp >> fname;
+			getline(itmp, fname);
 			if (!absolutePath(fname))
 				continue;
 			FileName const file(fname);
