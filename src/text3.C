@@ -554,6 +554,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_BREAK_LINE: {
 		// Not allowed by LaTeX (labels or empty par)
 		if (cur.pos() > cur.paragraph().beginOfBody()) {
+			if (!cur.selection())
+				recordUndo(cur);
 			cap::replaceSelection(cur);
 			cur.insert(new InsetNewline);
 			cur.posRight();
