@@ -343,7 +343,7 @@ public:
 	/// returns true if the inset can hold an inset of given type
 	virtual bool insetAllowed(Code) const { return false; }
 	/// if this inset has paragraphs should they be output all as default
-	/// paragraphs with "Standard" layout?
+	/// paragraphs with the default layout of the text class?
 	virtual bool forceDefaultParagraphs(idx_type) const { return false; }
 
 	///

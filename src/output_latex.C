@@ -514,7 +514,8 @@ void latexParagraphs(Buffer const & buf,
 		// well we have to check if we are in an inset with unlimited
 		// length (all in one row) if that is true then we don't allow
 		// any special options in the paragraph and also we don't allow
-		// any environment other then "Standard" to be valid!
+		// any environment other than the default layout of the
+		// text class to be valid!
 		if (!par->forceDefaultParagraphs()) {
 			LyXLayout_ptr const & layout = par->layout();
 
