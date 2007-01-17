@@ -243,7 +243,6 @@ TeXOnePar(Buffer const & buf,
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'" << endl;
 	BufferParams const & bparams = buf.params();
-	bool further_blank_line = false;
 	LyXLayout_ptr style;
 
 	// In an inset with unlimited length (all in one row),
@@ -329,11 +328,6 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		if (style->isCommand()) {
-			os << '\n';
-			texrow.newline();
-		}
-
-		if (further_blank_line) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -429,13 +423,6 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	if (!pit->forceDefaultParagraphs()) {
-		further_blank_line = false;
-
-		if (further_blank_line) {
-			os << '\n';
-			texrow.newline();
-		}
-
 		if (!pit->params().spacing().isDefault()
 			&& (boost::next(pit) == paragraphs.end()
 			    || !boost::next(pit)->hasSameLayout(*pit)))
