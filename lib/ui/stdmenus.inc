@@ -125,11 +125,11 @@ Menuset
 	End
 
 	Menu "edit_paste"
-		Item "Plain Text as Lines|T" "clipboard-paste"
-		Item "Plain Text as Paragraphs|e" "clipboard-paste paragraph"
+		Item "Plain Text|T" "clipboard-paste"
+		Item "Plain Text, Join Lines|J" "clipboard-paste paragraph"
 		Separator
-		Item "Selection as Lines|L" "primary-selection-paste"
-		Item "Selection as Paragraphs|P" "primary-selection-paste paragraph"
+		Item "Selection|S" "primary-selection-paste"
+		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"
 	End
 
 	Menu "edit_pasterecent"
@@ -377,8 +377,8 @@ Menuset
 
 	Menu "insert_file"
 		Item "LyX Document...|X" "file-insert"
-		Item "Plain Text as Lines...|L" "file-insert-plaintext"
-		Item "Plain Text as Paragraphs...|P" "file-insert-plaintext-para"
+		Item "Plain Text...|T" "file-insert-plaintext"
+		Item "Plain Text, Join Lines...|J" "file-insert-plaintext-para"
 		Separator
 		Item "External Material...|M" "dialog-show-new-inset external"
 		Item "Child Document...|d" "dialog-show-new-inset include"
