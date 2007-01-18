@@ -182,7 +182,9 @@ docstring const formatted(docstring const & text, int w)
 
 docstring const internal_path(QString const & input)
 {
-	return lyx::support::os::internal_path(qstring_to_ucs4(input));
+	// FIXME UNICODE
+	return from_utf8(lyx::support::os::internal_path(
+		to_utf8(qstring_to_ucs4(input))));
 }
 
 

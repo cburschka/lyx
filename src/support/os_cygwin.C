@@ -211,13 +211,6 @@ string internal_path(string const & p)
 }
 
 
-docstring internal_path(docstring const & p)
-{
-	// FIXME UNICODE
-	return from_utf8(convert_path(to_utf8(p), PathStyle(posix)));
-}
-
-
 string external_path_list(string const & p)
 {
 	return convert_path_list(p, PathStyle(posix));
