@@ -44,29 +44,36 @@ shell_type shell();
 std::string const python();
 
 /// Extract the path common to both @c p1 and @c p2. DBCS aware!
+/// \p p1, \p p2 and the return value are encoded in utf8.
 std::string::size_type common_path(std::string const & p1, std::string const & p2);
 
 /// Converts a unix style path to host OS style.
+/// \p p and the return value are encoded in utf8.
 std::string external_path(std::string const & p);
 
 /// Converts a host OS style path to unix style.
+/// \p p and the return value are encoded in utf8.
 std::string internal_path(std::string const & p);
 
 /// Converts a unix style path list to host OS style.
+/// \p p and the return value are encoded in utf8.
 std::string external_path_list(std::string const & p);
 
 /// Converts a host OS style path list to unix style.
+/// \p p and the return value are encoded in utf8.
 std::string internal_path_list(std::string const & p);
 
 /**
  * Converts a unix style path into a form suitable for inclusion in a LaTeX
  * document.
+ * \p p is encoded in utf8.
  * Caution: This function handles only the OS specific part of that task.
  * Never use it directly, use lyx::support::latex_path instead.
  */
 std::string latex_path(std::string const & p);
 
 /// Is the path absolute?
+/// \p p is encoded in utf8.
 bool is_absolute_path(std::string const & p);
 
 /** Returns a string suitable to be passed to popen when
@@ -98,7 +105,7 @@ enum auto_open_mode {
 bool canAutoOpenFile(std::string const & ext, auto_open_mode const mode = VIEW);
 
 /** View or edit a file with the default viewer or editor.
- *  \param filename file to open
+ *  \param filename file to open (encoded in utf8)
  *  \param mode open in VIEW or EDIT mode
  *  \returns whether or not the file is viewed (or edited) successfully.
  */

@@ -28,8 +28,6 @@
 #include <cstdlib>
 #include <vector>
 
-#include <string>
-
 /* The GetLongPathName macro may be defined on the compiling machine,
  * but we must use a bit of trickery if the resulting executable is
  * to run on a Win95 machine.
@@ -217,8 +215,11 @@ namespace {
 
 string const get_long_path(string const & short_path)
 {
+	// GetLongPathName needs the path in file system encoding.
+	// We can use to_local8bit, since file system encoding and the
+	// local 8 bit encoding are identical on windows.
 	std::vector<char> long_path(MAX_PATH);
-	DWORD result = GetLongPathName(short_path.c_str(),
+	DWORD result = GetLongPathName(to_local8bit(from_utf8(short_path)).c_str(),
 				       &long_path[0], long_path.size());
 
 	if (result > long_path.size()) {
@@ -228,7 +229,7 @@ string const get_long_path(string const & short_path)
 		BOOST_ASSERT(result <= long_path.size());
 	}
 
-	return (result == 0) ? short_path : &long_path[0];
+	return (result == 0) ? short_path : to_utf8(from_filesystem8bit(&long_path[0]));
 }
 
 } // namespace anon
@@ -384,7 +385,7 @@ string const GetFolderPath::operator()(folder_id _id) const
 	HRESULT const result = (folder_path_func_)(0, id, 0,
 						   SHGFP_TYPE_CURRENT,
 						   folder_path);
-	return (result == 0) ? os::internal_path(folder_path) : string();
+	return (result == 0) ? os::internal_path(to_utf8(from_filesystem8bit(folder_path))) : string();
 }
 
 
@@ -411,7 +412,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 	//                 /platform/shell/reference/functions/shellexecute.asp
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action,
-		filename.c_str(), NULL, NULL, 1)) > 32;
+		to_local8bit(from_utf8(filename)).c_str(), NULL, NULL, 1)) > 32;
 }
 
 
@@ -421,9 +422,9 @@ void addFontResources()
 	string const fonts_dir = addPath(package().system_support(), "fonts");
 	
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = 
+		string const font_current =
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		AddFontResource(external_path(font_current).c_str());
+		AddFontResource(to_local8bit(from_utf8(external_path(font_current))).c_str());
 	}
 }
 
@@ -434,9 +435,9 @@ void restoreFontResources()
 	string const fonts_dir = addPath(package().system_support(), "fonts");
 	
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = 
+		string const font_current =
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf");
-		RemoveFontResource(external_path(font_current).c_str());
+		RemoveFontResource(to_local8bit(from_utf8(external_path(font_current))).c_str());
 	}
 }
 

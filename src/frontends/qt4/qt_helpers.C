@@ -179,13 +179,4 @@ docstring const formatted(docstring const & text, int w)
 	return sout;
 }
 
-
-docstring const internal_path(QString const & input)
-{
-	// FIXME UNICODE
-	return from_utf8(lyx::support::os::internal_path(
-		to_utf8(qstring_to_ucs4(input))));
-}
-
-
 } // namespace lyx

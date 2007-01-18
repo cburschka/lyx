@@ -78,6 +78,9 @@ enum PathStyle {
 };
 
 
+/// Convert a path to or from posix style.
+/// \p p is encoded in local 8bit encoding or utf8.
+/// The result is returned in the same encoding as \p p.
 string convert_path(string const & p, PathStyle const & target)
 {
 	char path_buf[PATH_MAX];
@@ -88,6 +91,8 @@ string convert_path(string const & p, PathStyle const & target)
 
 	path_buf[0] = '\0';
 
+	// cygwin_conv_to_posix_path and cygwin_conv_to_win32_path do not
+	// care about the encoding.
 	if (target == posix)
 		cygwin_conv_to_posix_path(p.c_str(), path_buf);
 	else
@@ -97,6 +102,9 @@ string convert_path(string const & p, PathStyle const & target)
 }
 
 
+/// Convert a path list to or from posix style.
+/// \p p is encoded in local 8bit encoding or utf8.
+/// The result is returned in the same encoding as \p p.
 string convert_path_list(string const & p, PathStyle const & target)
 {
 	if (p.empty())
@@ -113,6 +121,7 @@ string convert_path_list(string const & p, PathStyle const & target)
 		char * ptr = new char[target_size];
 
 		if (ptr) {
+			// FIXME: See comment in convert_path() above
 			if (target == posix)
 				cygwin_win32_to_posix_path_list(pc, ptr);
 			else
@@ -308,7 +317,7 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode)
 {
 	// reference: http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc
 	//                 /platform/shell/reference/functions/shellexecute.asp
-	string const win_path = convert_path(filename, PathStyle(windows));
+	string const win_path = to_local8bit(from_utf8(convert_path(filename, PathStyle(windows))));
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	return reinterpret_cast<int>(ShellExecute(NULL, action,
 		win_path.c_str(), NULL, NULL, 1)) > 32;
@@ -322,9 +331,9 @@ void addFontResources()
 	string const fonts_dir = addPath(package().system_support(), "fonts");
 	
 	for (int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = convert_path(
+		string const font_current = to_local8bit(from_utf8(convert_path(
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
-			PathStyle(windows));
+			PathStyle(windows))));
 		AddFontResource(font_current.c_str());
 	}
 #endif
@@ -338,9 +347,9 @@ void restoreFontResources()
 	string const fonts_dir = addPath(package().system_support(), "fonts");
 	
 	for(int i = 0 ; i < num_fonts_truetype ; ++i) {
-		string const font_current = convert_path(
+		string const font_current = to_local8bit(from_utf8(convert_path(
 			addName(fonts_dir, win_fonts_truetype[i] + ".ttf"),
-			PathStyle(windows));
+			PathStyle(windows))));
 		RemoveFontResource(font_current.c_str());
 	}
 #endif

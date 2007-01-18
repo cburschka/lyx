@@ -32,8 +32,7 @@ string const getEnv(string const & envname)
 {
 	// f.ex. what about error checking?
 	char const * const ch = getenv(envname.c_str());
-	string const envstr = !ch ? "" : ch;
-	return envstr;
+	return ch ? to_utf8(from_local8bit(ch)) : string();
 }
 
 
@@ -61,13 +60,14 @@ bool setEnv(string const & name, string const & value)
 	// CHECK Look at and fix this.
 	// f.ex. what about error checking?
 
+	string const encoded(to_local8bit(from_utf8(value)));
 #if defined (HAVE_SETENV)
-	int const retval = ::setenv(name.c_str(), value.c_str(), true);
+	int const retval = ::setenv(name.c_str(), encoded.c_str(), true);
 
 #elif defined (HAVE_PUTENV)
 	static std::map<string, char *> varmap;
 
-	string envstr = name + '=' + value;
+	string envstr = name + '=' + encoded;
 	char * newptr = new char[envstr.size() + 1];
 	envstr.copy(newptr, envstr.length());
 	newptr[envstr.length()] = '\0';

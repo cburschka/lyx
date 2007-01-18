@@ -57,6 +57,10 @@
 #include <sstream>
 
 using lyx::support::compare_no_case;
+using lyx::support::os::external_path;
+using lyx::support::os::external_path_list;
+using lyx::support::os::internal_path;
+using lyx::support::os::internal_path_list;
 
 using std::distance;
 using std::endl;
@@ -163,24 +167,6 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	       << foundry << "', '" << family << '\'' <<endl;
 }
 
-
-QString const external_path(string const & input)
-{
-	return toqstr(lyx::support::os::external_path(input));
-}
-
-
-QString const external_path_list(string const & input)
-{
-	return toqstr(lyx::support::os::external_path_list(input));
-}
-
-
-string const internal_path_list(QString const & input)
-{
-	return lyx::support::os::internal_path_list(fromqstr(input));
-}
-
 } // end namespace anon
 
 
@@ -249,9 +235,8 @@ void PrefKeyboard::apply(LyXRC & rc) const
 	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymapCB->isChecked();
 
-	// FIXME: UNICODE
-	rc.primary_kbmap = to_utf8(internal_path(firstKeymapED->text()));
-	rc.secondary_kbmap = to_utf8(internal_path(secondKeymapED->text()));
+	rc.primary_kbmap = internal_path(fromqstr(firstKeymapED->text()));
+	rc.secondary_kbmap = internal_path(fromqstr(secondKeymapED->text()));
 }
 
 
@@ -259,8 +244,8 @@ void PrefKeyboard::update(LyXRC const & rc)
 {
 	// FIXME: can derive CB from the two EDs
 	keymapCB->setChecked(rc.use_kbmap);
-	firstKeymapED->setText(external_path(rc.primary_kbmap));
-	secondKeymapED->setText(external_path(rc.secondary_kbmap));
+	firstKeymapED->setText(toqstr(external_path(rc.primary_kbmap)));
+	secondKeymapED->setText(toqstr(external_path(rc.secondary_kbmap)));
 }
 
 
@@ -679,32 +664,32 @@ PrefPaths::PrefPaths(QPrefs * form, QWidget * parent)
 
 void PrefPaths::apply(LyXRC & rc) const
 {
-	// FIXME: UNICODE
-	rc.document_path = to_utf8(internal_path(workingDirED->text()));
-	rc.template_path = to_utf8(internal_path(templateDirED->text()));
-	rc.backupdir_path = to_utf8(internal_path(backupDirED->text()));
-	rc.tempdir_path = to_utf8(internal_path(tempDirED->text()));
-	rc.path_prefix = internal_path_list(pathPrefixED->text());
+	rc.document_path = internal_path(fromqstr(workingDirED->text()));
+	rc.template_path = internal_path(fromqstr(templateDirED->text()));
+	rc.backupdir_path = internal_path(fromqstr(backupDirED->text()));
+	rc.tempdir_path = internal_path(fromqstr(tempDirED->text()));
+	rc.path_prefix = internal_path_list(fromqstr(pathPrefixED->text()));
 	// FIXME: should be a checkbox only
-	rc.lyxpipes = to_utf8(internal_path(lyxserverDirED->text()));
+	rc.lyxpipes = internal_path(fromqstr(lyxserverDirED->text()));
 }
 
 
 void PrefPaths::update(LyXRC const & rc)
 {
-	workingDirED->setText(external_path(rc.document_path));
-	templateDirED->setText(external_path(rc.template_path));
-	backupDirED->setText(external_path(rc.backupdir_path));
-	tempDirED->setText(external_path(rc.tempdir_path));
-	pathPrefixED->setText(external_path_list(rc.path_prefix));
+	workingDirED->setText(toqstr(external_path(rc.document_path)));
+	templateDirED->setText(toqstr(external_path(rc.template_path)));
+	backupDirED->setText(toqstr(external_path(rc.backupdir_path)));
+	tempDirED->setText(toqstr(external_path(rc.tempdir_path)));
+	pathPrefixED->setText(toqstr(external_path_list(rc.path_prefix)));
 	// FIXME: should be a checkbox only
-	lyxserverDirED->setText(external_path(rc.lyxpipes));
+	lyxserverDirED->setText(toqstr(external_path(rc.lyxpipes)));
 }
+
 
 void PrefPaths::select_templatedir()
 {
 	docstring file(form_->controller().browsedir(
-		internal_path(templateDirED->text()),
+		from_utf8(internal_path(fromqstr(templateDirED->text()))),
 		_("Select a document templates directory")));
 	if (!file.empty())
 		templateDirED->setText(toqstr(file));
@@ -714,7 +699,7 @@ void PrefPaths::select_templatedir()
 void PrefPaths::select_tempdir()
 {
 	docstring file(form_->controller().browsedir(
-		internal_path(tempDirED->text()),
+		from_utf8(internal_path(fromqstr(tempDirED->text()))),
 		_("Select a temporary directory")));
 	if (!file.empty())
 		tempDirED->setText(toqstr(file));
@@ -724,7 +709,7 @@ void PrefPaths::select_tempdir()
 void PrefPaths::select_backupdir()
 {
 	docstring file(form_->controller().browsedir(
-		internal_path(backupDirED->text()),
+		from_utf8(internal_path(fromqstr(backupDirED->text()))),
 		_("Select a backups directory")));
 	if (!file.empty())
 		backupDirED->setText(toqstr(file));
@@ -734,7 +719,7 @@ void PrefPaths::select_backupdir()
 void PrefPaths::select_workingdir()
 {
 	docstring file(form_->controller().browsedir(
-		internal_path(workingDirED->text()),
+		from_utf8(internal_path(fromqstr(workingDirED->text()))),
 		_("Select a document directory")));
 	if (!file.empty())
 		workingDirED->setText(toqstr(file));
@@ -744,7 +729,7 @@ void PrefPaths::select_workingdir()
 void PrefPaths::select_lyxpipe()
 {
 	docstring file(form_->controller().browse(
-		internal_path(lyxserverDirED->text()),
+		from_utf8(internal_path(fromqstr(lyxserverDirED->text()))),
 		_("Give a filename for the LyX server pipe")));
 	if (!file.empty())
 		lyxserverDirED->setText(toqstr(file));
@@ -807,9 +792,8 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 	// FIXME: remove isp_use_esc_chars
 	rc.isp_esc_chars = fromqstr(escapeCharactersED->text());
 	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
-	// FIXME: UNICODE
 	// FIXME: remove isp_use_pers_dict
-	rc.isp_pers_dict = to_utf8(internal_path(persDictionaryED->text()));
+	rc.isp_pers_dict = internal_path(fromqstr(persDictionaryED->text()));
 	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
 	rc.isp_accept_compound = compoundWordCB->isChecked();
 	rc.isp_use_input_encoding = inputEncodingCB->isChecked();
@@ -839,7 +823,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 	// FIXME: remove isp_use_esc_chars
 	escapeCharactersED->setText(toqstr(rc.isp_esc_chars));
 	// FIXME: remove isp_use_pers_dict
-	persDictionaryED->setText(external_path(rc.isp_pers_dict));
+	persDictionaryED->setText(toqstr(external_path(rc.isp_pers_dict)));
 	compoundWordCB->setChecked(rc.isp_accept_compound);
 	inputEncodingCB->setChecked(rc.isp_use_input_encoding);
 }
@@ -848,7 +832,7 @@ void PrefSpellchecker::update(LyXRC const & rc)
 void PrefSpellchecker::select_dict()
 {
 	docstring file(form_->controller().browsedict(
-		internal_path(persDictionaryED->text())));
+		from_utf8(internal_path(fromqstr(persDictionaryED->text())))));
 	if (!file.empty())
 		persDictionaryED->setText(toqstr(file));
 }
@@ -1605,8 +1589,7 @@ void PrefPrinter::apply(LyXRC & rc) const
 	rc.print_oddpage_flag = fromqstr(printerOddED->text());
 	rc.print_collcopies_flag = fromqstr(printerCollatedED->text());
 	rc.print_landscape_flag = fromqstr(printerLandscapeED->text());
-	// FIXME: UNICODE
-	rc.print_to_file = to_utf8(internal_path(printerToFileED->text()));
+	rc.print_to_file = internal_path(fromqstr(printerToFileED->text()));
 	rc.print_extra_options = fromqstr(printerExtraED->text());
 	rc.print_spool_printerprefix = fromqstr(printerSpoolPrefixED->text());
 	rc.print_paper_dimension_flag = fromqstr(printerPaperSizeED->text());
@@ -1630,7 +1613,7 @@ void PrefPrinter::update(LyXRC const & rc)
 	printerOddED->setText(toqstr(rc.print_oddpage_flag));
 	printerCollatedED->setText(toqstr(rc.print_collcopies_flag));
 	printerLandscapeED->setText(toqstr(rc.print_landscape_flag));
-	printerToFileED->setText(external_path(rc.print_to_file));
+	printerToFileED->setText(toqstr(external_path(rc.print_to_file)));
 	printerExtraED->setText(toqstr(rc.print_extra_options));
 	printerSpoolPrefixED->setText(toqstr(rc.print_spool_printerprefix));
 	printerPaperSizeED->setText(toqstr(rc.print_paper_dimension_flag));
@@ -1677,9 +1660,8 @@ PrefUserInterface::PrefUserInterface(QPrefs * form, QWidget * parent)
 
 void PrefUserInterface::apply(LyXRC & rc) const
 {
-	// FIXME: UNICODE
-	rc.ui_file = to_utf8(internal_path(uiFileED->text()));
-	rc.bind_file = to_utf8(internal_path(bindFileED->text()));
+	rc.ui_file = internal_path(fromqstr(uiFileED->text()));
+	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
 	if (loadWindowSizeCB->isChecked()) {
@@ -1699,8 +1681,8 @@ void PrefUserInterface::apply(LyXRC & rc) const
 
 void PrefUserInterface::update(LyXRC const & rc)
 {
-	uiFileED->setText(external_path(rc.ui_file));
-	bindFileED->setText(external_path(rc.bind_file));
+	uiFileED->setText(toqstr(external_path(rc.ui_file)));
+	bindFileED->setText(toqstr(external_path(rc.bind_file)));
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
 	bool loadWindowSize = rc.geometry_width == 0 && rc.geometry_height == 0;
@@ -1725,7 +1707,7 @@ void PrefUserInterface::update(LyXRC const & rc)
 void PrefUserInterface::select_ui()
 {
 	docstring const name =
-		internal_path(uiFileED->text());
+		from_utf8(internal_path(fromqstr(uiFileED->text())));
 	docstring file(form_->controller().browseUI(name));
 	if (!file.empty())
 		uiFileED->setText(toqstr(file));
@@ -1735,7 +1717,7 @@ void PrefUserInterface::select_ui()
 void PrefUserInterface::select_bind()
 {
 	docstring const name =
-		internal_path(bindFileED->text());
+		from_utf8(internal_path(fromqstr(bindFileED->text())));
 	docstring file(form_->controller().browsebind(name));
 	if (!file.empty())
 		bindFileED->setText(toqstr(file));

@@ -59,9 +59,6 @@ QString const qt_(char const * str, const char * comment = 0);
  */
 QString const qt_(std::string const & str);
 
-///
-docstring const internal_path(QString const & input);
-
 } // namespace lyx
 
 #endif // QTHELPERS_H

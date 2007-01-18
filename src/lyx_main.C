@@ -457,7 +457,7 @@ int LyX::exec(int & argc, char * argv[])
 	// such that package().temp_dir() is properly initialized.
 	pimpl_->lyx_server_.reset(new LyXServer(&pimpl_->lyxfunc_, lyxrc.lyxpipes));
 	pimpl_->lyx_socket_.reset(new LyXServerSocket(&pimpl_->lyxfunc_, 
-		support::os::internal_path(package().temp_dir() + "/lyxsocket")));
+		os::internal_path(package().temp_dir() + "/lyxsocket")));
 
 	// Start the real execution loop.
 	exit_status = pimpl_->application_->exec();

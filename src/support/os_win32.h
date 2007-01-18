@@ -74,7 +74,7 @@ public:
 	~GetFolderPath();
 
 	/** Wrapper for SHGetFolderPathA, returning
-	 *  the path asscociated with @c id.
+	 *  the path asscociated with @c id in utf8 encoding.
 	 */
 	std::string const operator()(folder_id id) const;
 private:

@@ -66,7 +66,7 @@ FileName const getcwd()
 	string result;
 	if (err)
 		result = tbuf.get();
-	return FileName::fromFilesystemEncoding(os::internal_path(result));
+	return FileName(os::internal_path(to_utf8(from_filesystem8bit(result))));
 }
 
 } // namespace support

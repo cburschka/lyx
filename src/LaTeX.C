@@ -836,6 +836,10 @@ void LaTeX::deplog(DepTable & head)
 
 		smatch sub;
 
+		// FIXME UNICODE: We assume that the file names in the log
+		// file are in the file system encoding.
+		token = to_utf8(from_filesystem8bit(token));
+
 		if (regex_match(token, sub, reg1)) {
 			static regex reg1_1("\\(([^()]+)");
 			smatch what;

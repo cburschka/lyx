@@ -999,7 +999,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 		str = subst(str, home, "~");
 
 	if (str.length() <= threshold)
-		return lyx::from_utf8(os::external_path(str));
+		return from_utf8(os::external_path(str));
 
 	string const prefix = ".../";
 	string temp;
@@ -1020,7 +1020,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 		str = head + "..." + tail;
 	}
 
-	return lyx::from_utf8(os::external_path(prefix + str));
+	return from_utf8(os::external_path(prefix + str));
 }
 
 
@@ -1138,7 +1138,8 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 		 << "kpse result = `" << rtrim(c.second, "\n\r")
 		 << '\'' << endl;
 	if (c.first != -1)
-		return FileName(os::internal_path(rtrim(c.second, "\n\r")));
+		return FileName(os::internal_path(rtrim(to_utf8(from_filesystem8bit(c.second)),
+		                                        "\n\r")));
 	else
 		return FileName();
 }

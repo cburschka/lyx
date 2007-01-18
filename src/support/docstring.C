@@ -17,6 +17,8 @@
 #include <locale>
 #include <iostream>
 
+#include <QFile>
+
 #include <boost/assert.hpp>
 
 
@@ -113,6 +115,13 @@ std::string const to_local8bit(docstring const & s)
 	if (local.size() == 0)
 		throw to_local8bit_failure();
 	return std::string(local.begin(), local.end());
+}
+
+
+docstring const from_filesystem8bit(std::string const & s)
+{
+	QByteArray const encoded(s.c_str(), s.length());
+	return qstring_to_ucs4(QFile::decodeName(encoded));
 }
 
 
