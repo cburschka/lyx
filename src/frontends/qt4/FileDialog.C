@@ -75,16 +75,16 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 					  FileFilterList const & filters,
 					  docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "Select with path \"" << lyx::to_utf8(path)
-			   << "\", mask \"" << lyx::to_utf8(filters.as_string())
-			   << "\", suggested \"" << lyx::to_utf8(suggested) << '"' << endl;
+	lyxerr[Debug::GUI] << "Select with path \"" << to_utf8(path)
+			   << "\", mask \"" << to_utf8(filters.as_string())
+			   << "\", suggested \"" << to_utf8(suggested) << '"' << endl;
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith = from_utf8(
 		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
-	result.second = lyx::from_utf8(internal_path(fromqstr(
+	result.second = from_utf8(internal_path(fromqstr(
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
 		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
 #else
@@ -99,7 +99,7 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = lyx::from_utf8(internal_path(
+		result.second = from_utf8(internal_path(
 					fromqstr(dlg.selectedFiles()[0])));
 	dlg.hide();
 #endif
@@ -111,16 +111,16 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 					  FileFilterList const & filters,
 					  docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "Select with path \"" << lyx::to_utf8(path)
-			   << "\", mask \"" << lyx::to_utf8(filters.as_string())
-			   << "\", suggested \"" << lyx::to_utf8(suggested) << '"' << endl;
+	lyxerr[Debug::GUI] << "Select with path \"" << to_utf8(path)
+			   << "\", mask \"" << to_utf8(filters.as_string())
+			   << "\", suggested \"" << to_utf8(suggested) << '"' << endl;
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith = from_utf8(
 		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
-	result.second = lyx::from_utf8(internal_path(fromqstr(
+	result.second = from_utf8(internal_path(fromqstr(
 		QFileDialog::getOpenFileName(qApp->focusWidget(), 
 		toqstr(title_), toqstr(startsWith), toqstr(filters.as_string()) ))));
 #else
@@ -133,7 +133,7 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = lyx::from_utf8(internal_path(
+		result.second = from_utf8(internal_path(
 					fromqstr(dlg.selectedFiles()[0])));
 	dlg.hide();
 #endif
@@ -144,15 +144,15 @@ FileDialog::Result const FileDialog::open(docstring const & path,
 FileDialog::Result const FileDialog::opendir(docstring const & path,
 					    docstring const & suggested)
 {
-	lyxerr[Debug::GUI] << "Select with path \"" << lyx::to_utf8(path)
-			   << "\", suggested \"" << lyx::to_utf8(suggested) << '"' << endl;
+	lyxerr[Debug::GUI] << "Select with path \"" << to_utf8(path)
+			   << "\", suggested \"" << to_utf8(suggested) << '"' << endl;
 	FileDialog::Result result;
 	result.first = FileDialog::Chosen;
 
 #ifdef USE_NATIVE_FILEDIALOG
 	docstring const startsWith = from_utf8(
 		makeAbsPath(to_utf8(suggested), to_utf8(path)).absFilename());
-	result.second = lyx::from_utf8(internal_path(fromqstr(
+	result.second = from_utf8(internal_path(fromqstr(
 		QFileDialog::getExistingDirectory(qApp->focusWidget(),
 		toqstr(title_),toqstr(startsWith)))));
 #else
@@ -169,7 +169,7 @@ FileDialog::Result const FileDialog::opendir(docstring const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = lyx::from_utf8(internal_path(
+		result.second = from_utf8(internal_path(
 					fromqstr(dlg.selectedFiles()[0])));
 	dlg.hide();
 #endif
