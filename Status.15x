@@ -234,6 +234,9 @@ PAINTING & PERFORMANCE
    since \Omega works fine in 1.4.3, and my debugging results showed that the
    correct font is found and used (cmr10).
  - Solved problem with \int and \oint on Windows (Enrico 2006-12-06).
+ - On my linux box it looks a bit different: \int is shown if it was a \square,
+   bot about half as wide and in black instead of blue. For \Omega I see the
+   same as Enrico. (Georg 2007-01-18)
 
 
 MAC OS X
