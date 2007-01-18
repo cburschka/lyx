@@ -218,8 +218,6 @@ void QRef::redoRefs()
 void QRef::updateRefs()
 {
 	refs_.clear();
-	if (at_ref_)
-		gotoRef();
 	string const name = controller().getBufferName(dialog_->bufferCO->currentIndex());
 	refs_ = controller().getLabelList(name);
 	dialog_->sortCB->setEnabled(!refs_.empty());
