@@ -270,7 +270,8 @@ void QGraphics::apply()
 {
 	InsetGraphicsParams & igp = controller().params();
 
-	igp.filename.set(internal_path(fromqstr(dialog_->filename->text())),
+	// FIXME: UNICODE
+	igp.filename.set(to_utf8(internal_path(dialog_->filename->text())),
 			 kernel().bufferFilepath());
 
 	// the bb section

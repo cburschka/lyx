@@ -240,6 +240,13 @@ string internal_path(string const & p)
 }
 
 
+docstring internal_path(docstring const & p)
+{
+	// FIXME UNICODE
+	return from_utf8(subst(get_long_path(to_utf8(p)), "\\", "/"));
+}
+
+
 string external_path_list(string const & p)
 {
 	return subst(p, '/', '\\');

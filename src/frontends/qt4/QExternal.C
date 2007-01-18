@@ -455,7 +455,8 @@ void QExternal::apply()
 {
 	InsetExternalParams params = controller().params();
 
-	params.filename.set(internal_path(fromqstr(dialog_->fileED->text())),
+	// FIXME: UNICODE
+	params.filename.set(to_utf8(internal_path(dialog_->fileED->text())),
 			    kernel().bufferFilepath());
 
 	params.settemplate(controller().getTemplate(

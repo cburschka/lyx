@@ -70,6 +70,12 @@ string internal_path(string const & p)
 }
 
 
+docstring internal_path(docstring const & p)
+{
+	return p;
+}
+
+
 string external_path_list(string const & p)
 {
 	return p;

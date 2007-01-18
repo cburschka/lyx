@@ -103,7 +103,7 @@ void QInclude::apply()
 {
 	InsetCommandParams params = controller().params();
 
-	params["filename"] = from_utf8(internal_path(fromqstr(dialog_->filenameED->text())));
+	params["filename"] = internal_path(dialog_->filenameED->text());
 	params.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentIndex();

@@ -17,6 +17,7 @@
 #include "lengthcommon.h"
 #include "gettext.h"
 
+#include "support/os.h"
 #include "support/lstrings.h"
 #include "support/convert.h"
 
@@ -176,6 +177,12 @@ docstring const formatted(docstring const & text, int w)
 	}
 
 	return sout;
+}
+
+
+docstring const internal_path(QString const & input)
+{
+	return lyx::support::os::internal_path(qstring_to_ucs4(input));
 }
 
 
