@@ -195,6 +195,8 @@ What's new
 - Rename lib/ui/std*.ui include files to *.inc so that the user is not
   tempted to try them (bug 2387).
 
+- Determine PDF image size within LyX correctly (bug 2418).
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.
