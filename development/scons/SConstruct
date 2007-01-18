@@ -1888,7 +1888,7 @@ if build_msvs_projects:
                 ['$TOP_SRCDIR/src/frontends/qt2/%s' % x for x in src_frontends_qt2_header_files],
             res = ['$TOP_SRCDIR/src/frontends/qt2/ui/%s' % x for x in src_frontends_qt2_ui_files],
             rebuildTargetOnly = False,
-            full_target = File(env.subst('$BUILDDIR/$frontend/lyx$PROGSUFFIX')).abspath)
+            full_target = File(env.subst('$BUILDDIR/lyx$PROGSUFFIX')).abspath)
 
  
 if build_po:
