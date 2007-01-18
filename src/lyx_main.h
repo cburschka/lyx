@@ -32,6 +32,8 @@ class LyXServer;
 class LyXServerSocket;
 class LyXView;
 class Messages;
+class Mover;
+class Movers;
 class Session;
 class kb_keymap;
 
@@ -162,6 +164,11 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	struct Singletons;
 	boost::scoped_ptr<Singletons> pimpl_;
+
+	friend Movers & theMovers();
+	friend Mover const & getMover(std::string  const & fmt);
+	friend void setMover(std::string const & fmt, std::string const & command);
+	friend Movers & theSystemMovers();
 };
 
 } // namespace lyx

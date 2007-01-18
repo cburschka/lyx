@@ -1066,7 +1066,7 @@ void PrefCopiers::update()
 	// The browser widget
 	AllCopiersLW->clear();
 
-	for (Movers::iterator it = form_->movers().begin(),
+	for (Movers::const_iterator it = form_->movers().begin(),
 		     end = form_->movers().end();
 	     it != end; ++it) {
 		std::string const & command = it->second.command();

@@ -431,7 +431,7 @@ bool Converters::convert(Buffer const * buffer,
 				res = one.startscript(type, command);
 
 			if (!real_outfile.empty()) {
-				Mover const & mover = movers(conv.to);
+				Mover const & mover = getMover(conv.to);
 				if (!mover.rename(outfile, real_outfile))
 					res = -1;
 				else
@@ -483,7 +483,7 @@ bool Converters::convert(Buffer const * buffer,
 					    token_base, from_base);
 			string const to = subst(conv.result_dir,
 					  token_base, to_base);
-			Mover const & mover = movers(conv.from);
+			Mover const & mover = getMover(conv.from);
 			if (!mover.rename(FileName(from), FileName(to))) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary directory from %1$s to %2$s."),
@@ -525,7 +525,7 @@ bool Converters::move(string const & fmt,
 			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
 
-			Mover const & mover = movers(fmt);
+			Mover const & mover = getMover(fmt);
 			bool const moved = copy
 				? mover.copy(*it, FileName(to2))
 				: mover.rename(*it, FileName(to2));

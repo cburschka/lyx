@@ -184,6 +184,12 @@ struct LyX::Singletons
 
 	// The system converters copy after reading lyxrc.defaults.
 	Converters system_converters_;
+	
+	///
+	Movers movers_;
+	
+	///
+	Movers system_movers_;
 };
 
 ///
@@ -857,7 +863,7 @@ bool LyX::init()
 	system_lyxrc = lyxrc;
 	system_formats = formats;
 	pimpl_->system_converters_ = pimpl_->converters_;
-	system_movers = movers;
+	pimpl_->system_movers_ = pimpl_->movers_;
 	system_lcolor = lcolor;
 
 	// This one is edited through the preferences dialog.
@@ -1469,6 +1475,30 @@ Converters & theConverters()
 Converters & theSystemConverters()
 {
 	return  LyX::ref().systemConverters();
+}
+
+
+Movers & theMovers()
+{
+	return  LyX::ref().pimpl_->movers_;
+}
+
+
+Mover const & getMover(std::string  const & fmt)
+{
+	return  LyX::ref().pimpl_->movers_(fmt);
+}
+
+
+void setMover(std::string const & fmt, std::string const & command)
+{
+	LyX::ref().pimpl_->movers_.set(fmt, command);
+}
+
+
+Movers & theSystemMovers()
+{
+	return  LyX::ref().pimpl_->system_movers_;
 }
 
 

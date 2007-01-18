@@ -226,7 +226,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 	CacheItem * item = pimpl_->find(orig_from, to_format);
 
 	time_t const timestamp = fs::last_write_time(orig_from.toFilesystemEncoding());
-	Mover const & mover = movers(to_format);
+	Mover const & mover = getMover(to_format);
 	if (item) {
 		lyxerr[Debug::FILES] << "ConverterCache::add(" << orig_from << "):\n"
 		                        "The file is already in the cache."
@@ -337,7 +337,7 @@ bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 
 	CacheItem * const item = pimpl_->find(orig_from, to_format);
 	BOOST_ASSERT(item);
-	Mover const & mover = movers(to_format);
+	Mover const & mover = getMover(to_format);
 	return mover.copy(item->cache_name, dest);
 }
 

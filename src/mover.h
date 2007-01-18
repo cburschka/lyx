@@ -104,6 +104,8 @@ class SpecialisedMover : public Mover
 public:
 	SpecialisedMover() {}
 
+	virtual ~SpecialisedMover() {}
+
 	/** @c command should be of the form
 	 *  <code>
 	 *      python $$s/scripts/fig_copy.py $$i $$o $$l
@@ -162,9 +164,9 @@ private:
 	typedef std::map<std::string, SpecialisedMover> SpecialsMap;
 
 public:
-	typedef SpecialsMap::const_iterator iterator;
-	iterator begin() const { return specials_.begin(); }
-	iterator end() const { return specials_.end(); }
+	typedef SpecialsMap::const_iterator const_iterator;
+	const_iterator begin() const { return specials_.begin(); }
+	const_iterator end() const { return specials_.end(); }
 
 private:
 	Mover default_;
@@ -172,8 +174,14 @@ private:
 };
 
 
-extern Movers movers;
-extern Movers system_movers;
+extern Movers & theMovers();
+/// @c returns the Mover registered for format @c fmt.
+extern Mover const & getMover(std::string  const & fmt);
+/** Register a specialised @c command to be used to copy a file
+ *  of format @c fmt.
+ */
+extern void setMover(std::string const & fmt, std::string const & command);
+extern Movers & theSystemMovers();
 
 
 } // namespace lyx

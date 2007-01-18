@@ -1033,7 +1033,7 @@ int LyXRC::read(LyXLex & lexrc)
 			if (lexrc.next()) {
 				command = lexrc.getString();
 			}
-			movers.set(fmt, command);
+			setMover(fmt, command);
 			break;
 		}
 
@@ -2111,12 +2111,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		   << "#\n\n";
 
 		// Look for new movers
-		Movers::iterator const sysbegin = system_movers.begin();
-		Movers::iterator const sysend = system_movers.end();
+		Movers::const_iterator const sysbegin = theSystemMovers().begin();
+		Movers::const_iterator const sysend = theSystemMovers().end();
+		Movers::const_iterator it = theMovers().begin();
+		Movers::const_iterator end = theMovers().end();
 
-		for (Movers::iterator it = movers.begin(), end = movers.end();
-		     it != end; ++it) {
-			Movers::iterator const sysit =
+		for (; it != end; ++it) {
+			Movers::const_iterator const sysit =
 				std::find_if(sysbegin, sysend, SameMover(*it));
 			if (sysit == sysend) {
 				std::string const & fmt = it->first;

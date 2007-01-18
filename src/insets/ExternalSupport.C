@@ -252,7 +252,7 @@ void updateExternal(InsetExternalParams const & params,
 		unsigned long const temp_checksum = support::sum(temp_file);
 
 		if (from_checksum != temp_checksum) {
-			Mover const & mover = movers(from_format);
+			Mover const & mover = getMover(from_format);
 			if (!mover.copy(params.filename, temp_file)) {
 				lyxerr[Debug::EXTERNAL]
 					<< "external::updateExternal. "

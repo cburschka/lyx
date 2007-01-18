@@ -50,7 +50,7 @@ bool ControlPrefs::initialiseParams(std::string const &)
 	formats_ = lyx::formats;
 	converters_ = theConverters();
 	converters_.update(formats_);
-	movers_ = lyx::movers;
+	movers_ = theMovers();
 	colors_.clear();
 	update_screen_font_ = false;
 
@@ -74,7 +74,7 @@ void ControlPrefs::dispatchParams()
 	theConverters().update(lyx::formats);
 	theConverters().buildGraph();
 
-	lyx::movers = movers_;
+	theMovers() = movers_;
 
 	vector<string>::const_iterator it = colors_.begin();
 	vector<string>::const_iterator const end = colors_.end();

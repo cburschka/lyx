@@ -464,7 +464,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 		// Nothing to do...
 		return std::make_pair(IDENTICAL_CONTENTS, file_out);
 
-	Mover const & mover = movers(formats.getFormatFromFile(file_in));
+	Mover const & mover = getMover(formats.getFormatFromFile(file_in));
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		// FIXME UNICODE

@@ -20,15 +20,10 @@
 #include <fstream>
 #include <sstream>
 
-
-namespace lyx {
-
 using std::ios;
 using std::string;
 
-Movers movers;
-Movers system_movers;
-
+namespace lyx {
 
 bool Mover::copy(support::FileName const & from, support::FileName const & to,
                  unsigned long int mode) const
@@ -104,7 +99,9 @@ void Movers::set(string const & fmt, string const & command)
 Mover const & Movers::operator()(string const & fmt) const
 {
 	SpecialsMap::const_iterator const it = specials_.find(fmt);
-	return (it == specials_.end()) ? default_ : it->second;
+	if (it == specials_.end())
+		return default_;
+	return  it->second;
 }
 
 
