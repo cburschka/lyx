@@ -104,7 +104,7 @@ public:
 	///
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 	///
-	virtual void sheduleRedraw() { shedule_redraw_ = true; }
+	virtual void scheduleRedraw() { schedule_redraw_ = true; }
 
 	/// update the passed area.
 	void update(int x, int y, int w, int h);
@@ -174,7 +174,7 @@ private:
 	///
 	bool need_resize_;
 	///
-	bool shedule_redraw_;
+	bool schedule_redraw_;
 };
 
 } // namespace frontend

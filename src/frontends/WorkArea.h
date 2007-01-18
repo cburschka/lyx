@@ -83,7 +83,7 @@ public:
 	virtual void setScrollbarParams(int height, int pos, int line_height) = 0;
 
 	///
-	virtual void sheduleRedraw() = 0;
+	virtual void scheduleRedraw() = 0;
 
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw();

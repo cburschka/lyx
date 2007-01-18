@@ -432,7 +432,7 @@ Buffer const * const LyXView::updateInset(InsetBase const * inset) const
 	Buffer const * buffer_ptr = 0;
 	if (inset) {
 		BOOST_ASSERT(work_area_);
-		work_area_->sheduleRedraw();
+		work_area_->scheduleRedraw();
 
 		buffer_ptr = work_area_->bufferView().buffer();
 	}

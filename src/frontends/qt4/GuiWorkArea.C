@@ -159,7 +159,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
-	: WorkArea(id, lyx_view), need_resize_(false), shedule_redraw_(false)
+	: WorkArea(id, lyx_view), need_resize_(false), schedule_redraw_(false)
 {
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
@@ -535,13 +535,13 @@ void GuiWorkArea::updateScreen()
 
 void GuiWorkArea::showCursor(int x, int y, int h, CursorShape shape)
 {
-	if (shedule_redraw_) {
+	if (schedule_redraw_) {
 		if (buffer_view_ && buffer_view_->buffer()) {
 			buffer_view_->update(Update::Force);
 			updateScreen();
 			viewport()->update(QRect(0, 0, viewport()->width(), viewport()->height()));
 		}
-		shedule_redraw_ = false;
+		schedule_redraw_ = false;
 		// Show the cursor immediately after the update.
 		hideCursor();
 		toggleCursor();
