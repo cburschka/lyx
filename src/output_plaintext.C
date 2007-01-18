@@ -39,17 +39,17 @@ using std::pair;
 using std::string;
 
 
-void writeFileAscii(Buffer const & buf, FileName const & fname,
+void writePlaintextFile(Buffer const & buf, FileName const & fname,
 	OutputParams const & runparams)
 {
 	odocfstream ofs;
 	if (!openFileWrite(ofs, fname))
 		return;
-	writeFileAscii(buf, ofs, runparams);
+	writePlaintextFile(buf, ofs, runparams);
 }
 
 
-void writeFileAscii(Buffer const & buf, odocstream & os,
+void writePlaintextFile(Buffer const & buf, odocstream & os,
 	OutputParams const & runparams)
 {
 	bool ref_printed = false;
@@ -58,7 +58,7 @@ void writeFileAscii(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = par.end();
 	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
-		asciiParagraph(buf, *it, os, runparams, ref_printed);
+		writePlaintextParagraph(buf, *it, os, runparams, ref_printed);
 	}
 	os << "\n";
 }
@@ -77,7 +77,7 @@ pair<int, docstring> const addDepth(int depth, int ldepth)
 }
 
 
-void asciiParagraph(Buffer const & buf,
+void writePlaintextParagraph(Buffer const & buf,
 		    Paragraph const & par,
 		    odocstream & os,
 		    OutputParams const & runparams,
@@ -228,7 +228,7 @@ void asciiParagraph(Buffer const & buf,
 
 		case '\0':
 			lyxerr[Debug::INFO] <<
-				"writeAsciiFile: NULL char in structure." << endl;
+				"writePlaintextFile: NULL char in structure." << endl;
 			break;
 
 		default:

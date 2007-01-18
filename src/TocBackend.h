@@ -110,7 +110,7 @@ public:
 	/// Return the first Toc Item before the cursor
 	TocIterator const item(std::string const & type, ParConstIterator const &) const;
 
-	void asciiTocList(std::string const & type, odocstream & os) const;
+	void writePlaintextTocList(std::string const & type, odocstream & os) const;
 
 private:
 	/// 

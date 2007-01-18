@@ -60,7 +60,7 @@ int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	buffer.tocBackend().asciiTocList(getCmdName(), os);
+	buffer.tocBackend().writePlaintextTocList(getCmdName(), os);
 
 	os << "\n";
 	return 0;

@@ -319,7 +319,7 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 	bool ref_printed = false;
 	odocstringstream oss;
 	for (; it != end; ++it)
-		asciiParagraph(buf, *it, oss, runparams, ref_printed);
+		writePlaintextParagraph(buf, *it, oss, runparams, ref_printed);
 
 	docstring const str = oss.str();
 	os << str;

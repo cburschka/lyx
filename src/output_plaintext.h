@@ -25,14 +25,14 @@ class Paragraph;
 
 
 ///
-void writeFileAscii(Buffer const & buf, support::FileName const &,
+void writePlaintextFile(Buffer const & buf, support::FileName const &,
 	OutputParams const &);
 
 ///
-void writeFileAscii(Buffer const & buf, odocstream &, OutputParams const &);
+void writePlaintextFile(Buffer const & buf, odocstream &, OutputParams const &);
 
 ///
-void asciiParagraph(Buffer const & buf,
+void writePlaintextParagraph(Buffer const & buf,
 		    Paragraph const & paragraphs,
 		    odocstream & ofs,
 		    OutputParams const &,

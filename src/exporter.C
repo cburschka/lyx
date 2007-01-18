@@ -191,9 +191,9 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	filename = changeExtension(filename,
 				   formats.extension(backend_format));
 
-	// Ascii backend
+	// Plain text backend
 	if (backend_format == "text")
-		writeFileAscii(*buffer, FileName(filename), runparams);
+		writePlaintextFile(*buffer, FileName(filename), runparams);
 	// no backend
 	else if (backend_format == "lyx")
 		buffer->writeFile(FileName(filename));

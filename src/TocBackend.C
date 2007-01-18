@@ -224,7 +224,7 @@ TocIterator const TocBackend::item(
 }
 
 
-void TocBackend::asciiTocList(string const & type, odocstream & os) const
+void TocBackend::writePlaintextTocList(string const & type, odocstream & os) const
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {

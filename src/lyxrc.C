@@ -1874,7 +1874,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		}
 
 		os << "\n#\n"
-		   << "# ASCII EXPORT SECTION ##############################\n"
+		   << "# PLAIN TEXT EXPORT SECTION ##############################\n"
 		   << "#\n\n";
 
 	case RC_PLAINTEXT_ROFF_COMMAND:

@@ -133,7 +133,7 @@ int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	buffer.tocBackend().asciiTocList(to_ascii(getParam("type")), os);
+	buffer.tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os);
 
 	os << "\n";
 	return 0;
