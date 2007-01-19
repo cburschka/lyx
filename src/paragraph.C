@@ -1400,38 +1400,7 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 // Used for building the table of contents
 docstring const Paragraph::asString(Buffer const & buffer, bool label) const
 {
-	OutputParams runparams;
-	return asString(buffer, runparams, label);
-}
-
-
-docstring const Paragraph::asString(Buffer const & buffer,
-				 OutputParams const & runparams,
-				 bool label) const
-{
-#if 0
-	string s;
-	if (label && !params().labelString().empty())
-		s += params().labelString() + ' ';
-
-	for (pos_type i = 0; i < size(); ++i) {
-		value_type c = getChar(i);
-		if (isPrintable(c))
-			s += c;
-		else if (c == META_INSET &&
-			 getInset(i)->lyxCode() == InsetBase::MATH_CODE) {
-			ostringstream os;
-			getInset(i)->plaintext(buffer, os, runparams);
-			s += subst(STRCONV(os.str()),'\n',' ');
-		}
-	}
-
-	return s;
-#else
-	// This should really be done by the caller and not here.
-	docstring ret = asString(buffer, runparams, 0, size(), label);
-	return subst(ret, '\n', ' ');
-#endif
+	return asString(buffer, 0, size(), label);
 }
 
 
@@ -1439,16 +1408,7 @@ docstring const Paragraph::asString(Buffer const & buffer,
 				 pos_type beg, pos_type end, bool label) const
 {
 
-	OutputParams const runparams;
-	return asString(buffer, runparams, beg, end, label);
-}
-
-
-docstring const Paragraph::asString(Buffer const & buffer,
-				 OutputParams const & runparams,
-				 pos_type beg, pos_type end, bool label) const
-{
-	lyx::odocstringstream os;
+	odocstringstream os;
 
 	if (beg == 0 && label && !params().labelString().empty())
 		os << params().labelString() << ' ';
@@ -1458,7 +1418,7 @@ docstring const Paragraph::asString(Buffer const & buffer,
 		if (isPrintable(c))
 			os.put(c);
 		else if (c == META_INSET)
-			getInset(i)->textString(buffer, os, runparams);
+			getInset(i)->textString(buffer, os);
 	}
 
 	return os.str();

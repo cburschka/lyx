@@ -332,10 +332,9 @@ int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetCharStyle::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetCharStyle::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	os << paragraphs().begin()->asString(buf, true);
 }
 
 

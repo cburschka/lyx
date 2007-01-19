@@ -328,10 +328,10 @@ int InsetQuotes::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetQuotes::plaintext(Buffer const &, odocstream & os,
-		       OutputParams const &) const
+int InsetQuotes::plaintext(Buffer const & buf, odocstream & os,
+			   OutputParams const &) const
 {
-	os << '"';
+	os << dispString(buf.params().language);
 	return 0;
 }
 
@@ -354,10 +354,9 @@ int InsetQuotes::docbook(Buffer const &, odocstream & os,
 }
 
 
-int InsetQuotes::textString(Buffer const & buf, odocstream & os,
-		       OutputParams const & op) const
+void InsetQuotes::textString(Buffer const & buf, odocstream & os) const
 {
-	return plaintext(buf, os, op);
+	os << dispString(buf.params().language);
 }
 
 

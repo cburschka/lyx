@@ -101,19 +101,9 @@ public:
 	bool isMultiLingual(BufferParams const &) const;
 
 	///
-	docstring const asString(Buffer const &,
-				   OutputParams const & runparams,
-				   bool label) const;
-	///
 	docstring const asString(Buffer const &, bool label) const;
 	///
 	docstring const asString(Buffer const & buffer,
-				   pos_type beg,
-				   pos_type end,
-				   bool label) const;
-	///
-	docstring const asString(Buffer const &,
-				   OutputParams const & runparams,
 				   pos_type beg,
 				   pos_type end,
 				   bool label) const;

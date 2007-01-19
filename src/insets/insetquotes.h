@@ -93,8 +93,7 @@ public:
 	int docbook(Buffer const &, odocstream &, OutputParams const &) const;
 
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, odocstream &,
-		OutputParams const &) const;
+	virtual void textString(Buffer const &, odocstream &) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

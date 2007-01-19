@@ -202,8 +202,7 @@ public:
 	virtual int docbook(Buffer const &, odocstream & os,
 		OutputParams const &) const;
 	/// the string that is passed to the TOC
-	virtual int textString(Buffer const &, odocstream &,
-		OutputParams const &) const { return 0; };
+	virtual void textString(Buffer const &, odocstream &) const {}
 
 	/** This enum indicates by which means the inset can be modified:
 	- NOT_EDITABLE: the inset's content cannot be modified at all
