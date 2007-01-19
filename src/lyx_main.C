@@ -74,6 +74,7 @@ namespace lyx {
 using support::addName;
 using support::addPath;
 using support::bformat;
+using support::changeExtension;
 using support::createDirectory;
 using support::createLyXTmpDir;
 using support::destroyDir;
@@ -1126,7 +1127,7 @@ bool LyX::readRcFile(string const & name)
 
 
 // Read the ui file `name'
-bool LyX::readUIFile(string const & name)
+bool LyX::readUIFile(string const & name, bool include)
 {
 	enum Uitags {
 		ui_menuset = 1,
@@ -1158,13 +1159,23 @@ bool LyX::readUIFile(string const & name)
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	FileName const ui_path = libFileSearch("ui", name, "ui");
-
+	
+	FileName ui_path;
+	if (include) {
+		ui_path = libFileSearch("ui", name, "inc");
+		if (ui_path.empty())
+			ui_path = libFileSearch("ui",
+						changeExtension(name, "inc"));
+	}
+	else
+		ui_path = libFileSearch("ui", name, "ui");
+	
 	if (ui_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
 		showFileError(name);
 		return false;
 	}
+
 	uifiles.push_back(name);
 
 	lyxerr[Debug::INIT] << "Found " << name
@@ -1184,7 +1195,7 @@ bool LyX::readUIFile(string const & name)
 		case ui_include: {
 			lex.next(true);
 			string const file = lex.getString();
-			if (!readUIFile(file))
+			if (!readUIFile(file, true))
 				return false;
 			break;
 		}
