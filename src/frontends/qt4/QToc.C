@@ -103,7 +103,7 @@ QModelIndex const QToc::getCurrentIndex()
 
 void QToc::goTo(QModelIndex const & index)
 {
-	if (!index.isValid() || index.model()!=tocModel()) {
+	if (!index.isValid() || index.model() != tocModel()) {
 		lyxerr[Debug::GUI]
 			<< "QToc::goTo(): QModelIndex is invalid!"
 			<< endl;
