@@ -481,6 +481,9 @@ void LaTeX::scanAuxFile(FileName const & file, Aux_Info & aux_info)
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
 		smatch sub;
+		// FIXME UNICODE: We assume that citation keys and filenames
+		// in the aux file are in the file system encoding.
+		token = to_utf8(from_filesystem8bit(token));
 		if (regex_match(token, sub, reg1)) {
 			string data = sub.str(1);
 			while (!data.empty()) {
