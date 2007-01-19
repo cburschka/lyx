@@ -63,6 +63,8 @@ public:
 	int plaintext(Buffer const &, odocstream &,
 		  OutputParams const & runparams) const;
 	///
+	void textString(Buffer const & buf, odocstream &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetBranchParams const & params() const { return params_; }

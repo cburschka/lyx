@@ -245,6 +245,13 @@ int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
 }
 
 
+void InsetBranch::textString(Buffer const & buf, odocstream & os) const
+{
+	if (isBranchSelected(buf))
+		os << paragraphs().begin()->asString(buf, true);
+}
+
+
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
 	InsetText::validate(features);
