@@ -199,11 +199,9 @@ void writePlaintextParagraph(Buffer const & buf,
 		switch (c) {
 		case Paragraph::META_INSET: {
 			InsetBase const * inset = par.getInset(i);
-			if (runparams.linelen > 0) {
-				os << word;
-				currlinelen += word.length();
-				word.erase();
-			}
+			os << word;
+			currlinelen += word.length();
+			word.erase();
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
 			if (inset->plaintext(buf, os, rp)) {
