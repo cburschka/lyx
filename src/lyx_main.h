@@ -85,7 +85,7 @@ private:
 	/// read lyxrc/preferences
 	void readRcFile(std::string const & name);
 	/// read the given ui (menu/toolbar) file
-	void readUIFile(std::string const & name);
+	void readUIFile(std::string const & name, bool include = false);
 	/// read the given languages file
 	void readLanguagesFile(std::string const & name);
 	/// read the given encodings file

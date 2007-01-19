@@ -1,3 +1,8 @@
+2007-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_main.C (readUIFile): when reading an include file which name
+	ends in .ui, try the .inc version too (support for user ui files)
+
 2007-01-17  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C (breakParagraph): when tracking changes, do not remove

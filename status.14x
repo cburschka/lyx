@@ -86,7 +86,7 @@ What's new
 
 - Revert fix from 1.4.3 for better display of script insets with a nucleus
   with more than one element (like {a'}^{2}), since it was buggy and it is
-  very difficult to do it right.
+  very difficult to do it right (bug 2921)
 
 - Re-enable Address paragraph style in AMS article classes (bug 2890).
 
