@@ -1,3 +1,8 @@
+2007-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetbranch.C (textString): implement, so that branches appear
+	in the ToC.
+
 2007-01-09  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetcite.C (getNatbibLabels): correct check for updating the 

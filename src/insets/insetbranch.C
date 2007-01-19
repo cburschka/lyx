@@ -249,6 +249,13 @@ int InsetBranch::plaintext(Buffer const & buf, std::ostream & os,
 }
 
 
+int InsetBranch::textString(Buffer const & buf, ostream & os,
+			    OutputParams const & runparams) const
+{
+	return plaintext(buf, os, runparams);
+}
+
+
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
 	InsetText::validate(features);

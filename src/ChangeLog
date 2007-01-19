@@ -1,5 +1,10 @@
 2007-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* output_plaintext.C (asciiParagraph): output things in the right
+	order when there is an inset and runparams.linelen == 0.
+
+2007-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
 	* lyx_main.C (readUIFile): when reading an include file which name
 	ends in .ui, try the .inc version too (support for user ui files)
 

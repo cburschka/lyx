@@ -63,7 +63,10 @@ public:
 		    OutputParams const & runparams) const;
 	///
 	int plaintext(Buffer const &, std::ostream &,
-		  OutputParams const & runparams) const;
+		      OutputParams const & runparams) const;
+	///
+	int textString(Buffer const &, std::ostream & os,
+		       OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
