@@ -189,20 +189,21 @@ void writePlaintextParagraph(Buffer const & buf,
 		currlinelen += p.first;
 	}
 
-	// this is to change the linebreak to do it by word a bit more
-	// intelligent hopefully! (only in the case where we have a
-	// max runparams.linelength!) (Jug)
-
 	docstring word;
 
 	for (pos_type i = 0; i < par.size(); ++i) {
+		if (par.isDeleted(i)) // deleted characters don't make much sense in plain text output
+			continue;
+
 		char_type c = par.getUChar(buf.params(), i);
 		switch (c) {
 		case Paragraph::META_INSET: {
 			InsetBase const * inset = par.getInset(i);
+
 			os << word;
 			currlinelen += word.length();
 			word.erase();
+
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
 			if (inset->plaintext(buf, os, rp)) {
