@@ -35,6 +35,9 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
+	/// draw decorations.
+	void drawDecoration(PainterInfo & pi, int x, int y) const
+	{ drawMarkers(pi, x, y); }
 	/// identifies NestInsets
 	InsetMathNest * asNestInset() { return this; }
 	/// identifies NestInsets

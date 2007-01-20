@@ -31,6 +31,9 @@ public:
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
+	/// draw decorations.
+	void drawDecoration(PainterInfo & pi, int x, int y) const
+	{ drawMarkers2(pi, x, y); }
 	///
 	bool extraBraces() const;
 private:

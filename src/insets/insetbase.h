@@ -114,6 +114,10 @@ public:
 	virtual bool editing(BufferView * bv) const;
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
+
+	/// draw inset decoration if necessary.
+	/// This can use \c drawMarkers() for example.
+	virtual void drawDecoration(PainterInfo &, int, int) const {}
 	/// draw four angular markers
 	void drawMarkers(PainterInfo & pi, int x, int y) const;
 	/// draw two angular markers

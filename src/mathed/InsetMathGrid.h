@@ -103,6 +103,9 @@ public:
 	///
 	void drawWithMargin(PainterInfo & pi, int x, int y,
 		int lmargin = 0, int rmargin = 0) const;
+	/// draw decorations.
+	void drawDecoration(PainterInfo & pi, int x, int y) const
+	{ drawMarkers2(pi, x, y); }
 	///
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
