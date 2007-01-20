@@ -317,8 +317,8 @@ Menuset
 
 	Menu "insert_file"
 		Item "LyX Document...|X" "file-insert"
-		Item "Plain Text as Lines...|L" "file-insert-plaintext"
-		Item "Plain Text as Paragraphs...|P" "file-insert-plaintext-para"
+		Item "Plain Text...|T" "file-insert-plaintext"
+		Item "Plain Text, Join Lines...|J" "file-insert-plaintext-para"
 	End
 
 	Menu "edit_change"
