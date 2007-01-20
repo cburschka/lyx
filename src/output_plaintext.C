@@ -59,8 +59,10 @@ void writePlaintextFile(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator it = beg;
 	for (; it != end; ++it) {
 		writePlaintextParagraph(buf, *it, os, runparams, ref_printed);
+		os << "\n";
+		if (runparams.linelen > 0)
+			os << "\n";
 	}
-	os << "\n";
 }
 
 
@@ -130,9 +132,6 @@ void writePlaintextParagraph(Buffer const & buf,
 	// runparams.linelen == 0 is special and means we don't have paragraph breaks
 
 	string::size_type currlinelen = 0;
-
-	if (runparams.linelen > 0)
-		os << "\n\n";
 
 	os << docstring(depth * 2, ' ');
 	currlinelen += depth * 2;
