@@ -112,12 +112,12 @@ class ViewMetricsInfo
 public:
 	ViewMetricsInfo()
 			: p1(0), p2(0), y1(0), y2(0),
-			update_strategy(NoScreenUpdate), size(0)
+			update_strategy(FullScreenUpdate), size(0)
 		{}
 	ViewMetricsInfo(pit_type p1, pit_type p2, int y1, int y2,
 			ScreenUpdateStrategy updatestrategy, pit_type size)
 			: p1(p1), p2(p2), y1(y1), y2(y2),
-			update_strategy(update_strategy), size(size)
+			update_strategy(updatestrategy), size(size)
 		{}
 
 	pit_type p1;
