@@ -160,7 +160,7 @@ bool LaTeXFeatures::isAvailable(string const & name) const
 }
 
 
-void LaTeXFeatures::addExternalPreamble(string const & preamble)
+void LaTeXFeatures::addPreambleSnippet(string const & preamble)
 {
 	FeaturesList::const_iterator begin = preamble_snippets_.begin();
 	FeaturesList::const_iterator end   = preamble_snippets_.end();

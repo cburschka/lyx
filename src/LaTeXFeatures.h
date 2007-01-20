@@ -66,7 +66,7 @@ public:
 	/// Print requirements to lyxerr
 	void showStruct() const;
 	///
-	void addExternalPreamble(std::string const &);
+	void addPreambleSnippet(std::string const &);
 	/// Provide a string name-space to the requirements
 	void require(std::string const & name);
 	/// Which of the required packages are installed?

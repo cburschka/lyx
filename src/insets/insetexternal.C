@@ -780,7 +780,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	for (; it != end; ++it) {
 		string const preamble = etm.getPreambleDefByName(*it);
 		if (!preamble.empty())
-			features.addExternalPreamble(preamble);
+			features.addPreambleSnippet(preamble);
 	}
 }
 
