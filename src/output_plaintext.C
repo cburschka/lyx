@@ -215,7 +215,7 @@ void writePlaintextParagraph(Buffer const & buf,
 
 		case ' ':
 			if (runparams.linelen > 0 &&
-			    currlinelen + word.length() > runparams.linelen - 10) {
+			    currlinelen + word.length() > runparams.linelen) {
 				os << '\n';
 				pair<int, docstring> p = addDepth(depth, ltype_depth);
 				os << p.second;
@@ -233,16 +233,16 @@ void writePlaintextParagraph(Buffer const & buf,
 
 		default:
 			word += c;
-			if (runparams.linelen > 0 &&
-			    currlinelen + word.length() > runparams.linelen)
-			{
-				os << '\n';
-				pair<int, docstring> p = addDepth(depth, ltype_depth);
-				os << p.second;
-				currlinelen = p.first;
-			}
 			break;
 		}
+	}
+
+	if (runparams.linelen > 0 &&
+	    currlinelen + word.length() > runparams.linelen) {
+		os << '\n';
+		pair<int, docstring> p = addDepth(depth, ltype_depth);
+		os << p.second;
+		currlinelen = p.first;
 	}
 	os << word;
 }
