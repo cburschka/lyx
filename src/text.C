@@ -1042,9 +1042,10 @@ bool LyXText::erase(LCursor & cur)
 		// this is the code for a normal delete, not pasting
 		// any paragraphs
 		recordUndo(cur, Undo::DELETE);
-		par.eraseChar(cur.pos(), cur.buffer().params().trackChanges);
-		if (par.isDeleted(cur.pos()))
+		if(!par.eraseChar(cur.pos(), cur.buffer().params().trackChanges)) {
+			// the character has been logically deleted only => skip it
 			cur.forwardPosNoDescend();
+		}
 		needsUpdate = true;
 	} else {
 		if (cur.pit() == cur.lastpit())
