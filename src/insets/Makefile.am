@@ -112,7 +112,7 @@ libinsets_la_SOURCES = \
 	insetvspace.C \
 	insetvspace.h \
 	insetwrap.h \
-	insetwrap.C 
+	insetwrap.C
 
 #	insetlist.C \
 #	insetlist.h \
