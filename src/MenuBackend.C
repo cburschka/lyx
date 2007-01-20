@@ -537,9 +537,9 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 		switch (kind) {
 		case MenuItem::ImportFormats:
 			if ((*fit)->name() == "text")
-				label = _("Plain Text as Lines");
+				label = _("Plain Text");
 			else if ((*fit)->name() == "textparagraph")
-				label = _("Plain Text as Paragraphs");
+				label = _("Plain Text, Join Lines");
 			label += "...";
 			break;
 		case MenuItem::ViewFormats:
