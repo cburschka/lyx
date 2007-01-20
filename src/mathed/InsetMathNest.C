@@ -499,11 +499,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHAR_FORWARD:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_CHAR_FORWARD_SELECT:
 		cur.selHandle(cmd.action == LFUN_CHAR_FORWARD_SELECT);
 		cur.autocorrect() = false;
@@ -522,11 +518,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHAR_BACKWARD:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_CHAR_BACKWARD_SELECT:
 		cur.selHandle(cmd.action == LFUN_CHAR_BACKWARD_SELECT);
 		cur.autocorrect() = false;
@@ -546,11 +538,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_UP:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_UP_SELECT:
 		// FIXME Tried to use clearTargetX and macroModeClose, crashed on cur.up()
 		if (cur.inMacroMode()) {
@@ -568,11 +556,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_DOWN:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_DOWN_SELECT:
 		if (cur.inMacroMode()) {
 			cur.macroModeClose();
@@ -601,22 +585,14 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
 		break;
 
 	case LFUN_LINE_BEGIN:
 	case LFUN_WORD_BACKWARD:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
 		cur.selHandle(cmd.action == LFUN_WORD_BACKWARD_SELECT ||
@@ -638,11 +614,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_WORD_FORWARD:
 	case LFUN_LINE_END:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_LINE_END_SELECT:
 		cur.selHandle(cmd.action == LFUN_WORD_FORWARD_SELECT ||
@@ -676,20 +648,12 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CELL_FORWARD:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 		cur.inset().idxNext(cur);
 		break;
 
 	case LFUN_CELL_BACKWARD:
-		// FIXME: we have to enable full redraw here because of the
-		// visual box corners that define the inset. If we know for
-		// sure that we stay within the same cell we can optimize for
-		// that using:
-		//cur.updateFlags(Update::FitCursor);
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 		cur.inset().idxPrev(cur);
 		break;
 
@@ -1184,7 +1148,7 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 		bv.mouseSetCursor(cur);
 		// FIXME: we have to enable full redraw here because of the
 		// visual box corners that define the inset.
-		//cur.noUpdate();
+		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
 		if (cur.selection()) {

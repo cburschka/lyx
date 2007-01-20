@@ -20,7 +20,8 @@ namespace Update {
 		FitCursor = 1,
 		Force = 2,
 		SinglePar = 4,
-		MultiParSel = 8
+		MultiParSel = 8,
+		Decoration = 16
 	};
 
 inline flags operator|(flags const f, flags const g)

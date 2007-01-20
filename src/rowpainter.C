@@ -977,7 +977,10 @@ void paintText(BufferView & bv,
 	
 	PainterInfo pi(const_cast<BufferView *>(&bv), pain);
 	// Should the whole screen, including insets, be refreshed?
-	bool repaintAll = select || !vi.singlepar;
+	// FIXME: We should also distinguish DecorationUpdate to avoid text
+	// drawing if possible. This is not possible to do easily right now
+	// because of the single backing pixmap.
+	bool repaintAll = select || vi.update_strategy != SingleParUpdate;
 
 	if (repaintAll) {
 		// Clear background (if not delegated to rows)
@@ -1000,12 +1003,12 @@ void paintText(BufferView & bv,
 
 	// and grey out above (should not happen later)
 //	lyxerr << "par ascent: " << text.getPar(vi.p1).ascent() << endl;
-	if (vi.y1 > 0 && !vi.singlepar)
+	if (vi.y1 > 0 && vi.update_strategy != SingleParUpdate)
 		pain.fillRectangle(0, 0, bv.workWidth(), vi.y1, LColor::bottomarea);
 
 	// and possibly grey out below
 //	lyxerr << "par descent: " << text.getPar(vi.p1).ascent() << endl;
-	if (vi.y2 < bv.workHeight() && !vi.singlepar)
+	if (vi.y2 < bv.workHeight() && vi.update_strategy != SingleParUpdate)
 		pain.fillRectangle(0, vi.y2, bv.workWidth(), bv.workHeight() - vi.y2, LColor::bottomarea);
 }
 

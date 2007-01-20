@@ -351,15 +351,30 @@ bool BufferView::update(Update::flags flags)
 	// Case when no explicit update is requested.
 	if (!flags) {
 		// no need to redraw anything.
+		metrics_info_.update_strategy = NoScreenUpdate;
 		return false;
 	}
 
-	if (flags == Update::FitCursor) {
+	if (flags == Update::Decoration) {
+		metrics_info_.update_strategy = DecorationUpdate;
+		return true;
+	}
+
+	if (flags == Update::FitCursor 
+		|| flags == (Update::Decoration | Update::FitCursor)) {
 		bool const fit_cursor = fitCursor();
-		if (fit_cursor)
-			updateMetrics(false);
 		// tell the frontend to update the screen if needed.
-		return fit_cursor;
+		if (fit_cursor) {
+			updateMetrics(false);
+			return true;
+		}
+		if (flags & Update::Decoration) {
+			metrics_info_.update_strategy = DecorationUpdate;
+			return true;
+		}
+		// no screen update is needed.
+		metrics_info_.update_strategy = NoScreenUpdate;
+		return false;
 	}
 
 	bool full_metrics = flags & Update::Force;
@@ -1084,7 +1099,8 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 		// not expose the button for redraw. We adjust here the metrics dimension
 		// to enable a full redraw.
 		// FIXME: It is possible to redraw only the area around the button!
-		if (need_redraw && metrics_info_.singlepar) {
+		if (need_redraw 
+			&& metrics_info_.update_strategy == SingleParUpdate) {
 			// FIXME: It should be possible to redraw only the area around 
 			// the button by doing this:
 			//
@@ -1454,7 +1470,8 @@ void BufferView::updateMetrics(bool singlepar)
 		<< "size: " << size
 		<< endl;
 
-	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2, singlepar, size);
+	metrics_info_ = ViewMetricsInfo(pit1, pit2, y1, y2, 
+		singlepar? SingleParUpdate: FullScreenUpdate, size);
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		lyxerr[Debug::WORKAREA] << "BufferView::updateMetrics" << endl;
