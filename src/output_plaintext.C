@@ -152,7 +152,7 @@ void writePlaintextParagraph(Buffer const & buf,
 			os << _("Abstract") << "\n\n";
 			currlinelen = 0;
 		} else {
-			docstring const abst = _("Abstract: ");
+			docstring const abst = _("Abstract") + from_ascii(": ");
 			os << abst;
 			currlinelen += abst.length();
 		}
@@ -164,7 +164,7 @@ void writePlaintextParagraph(Buffer const & buf,
 				os << _("References") << "\n\n";
 				currlinelen = 0;
 			} else {
-				docstring const refs = _("References: ");
+				docstring const refs = _("References") + from_ascii(": ");
 				os << refs;
 				currlinelen += refs.length();
 			}
@@ -174,14 +174,16 @@ void writePlaintextParagraph(Buffer const & buf,
 
 	default: {
 		docstring const label = par.params().labelString();
-		os << label << ' ';
-		currlinelen += label.length() + 1;
+		if (!label.empty()) {
+			os << label << ' ';
+			currlinelen += label.length() + 1;
+		}
 		break;
 	}
 
 	}
 
-	if (!currlinelen) {
+	if (currlinelen == 0) {
 		pair<int, docstring> p = addDepth(depth, ltype_depth);
 		os << p.second;
 		currlinelen += p.first;
