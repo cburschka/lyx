@@ -283,29 +283,31 @@ void InsetBase::metricsMarkers2(Dimension & dim, int framesize) const
 
 void InsetBase::drawMarkers(PainterInfo & pi, int x, int y) const
 {
-	if (!editing(pi.base.bv))
-		return;
+	LColor::color pen_color = editing(pi.base.bv)?
+		LColor::mathframe : LColor::background;
+
 	int const t = x + width() - 1;
 	int const d = y + descent();
-	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
-	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
-	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
-	pi.pain.line(t - 3, d, t, d, LColor::mathframe);
+	pi.pain.line(x, d - 3, x, d, pen_color);
+	pi.pain.line(t, d - 3, t, d, pen_color);
+	pi.pain.line(x, d, x + 3, d, pen_color);
+	pi.pain.line(t - 3, d, t, d, pen_color);
 	setPosCache(pi, x, y);
 }
 
 
 void InsetBase::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
-	if (!editing(pi.base.bv))
-		return;
+	LColor::color pen_color = editing(pi.base.bv)?
+		LColor::mathframe : LColor::background;
+
 	drawMarkers(pi, x, y);
 	int const t = x + width() - 1;
 	int const a = y - ascent();
-	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
-	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
-	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
-	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
+	pi.pain.line(x, a + 3, x, a, pen_color);
+	pi.pain.line(t, a + 3, t, a, pen_color);
+	pi.pain.line(x, a, x + 3, a, pen_color);
+	pi.pain.line(t - 3, a, t, a, pen_color);
 	setPosCache(pi, x, y);
 }
 
