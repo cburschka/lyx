@@ -51,7 +51,7 @@
        <item>
         <widget class="QSpinBox" name="plaintextLinelengthSB" >
          <property name="toolTip" >
-          <string>Max. line length of exported plain text/LaTeX/SGML files. If set to 0, paragraphs are output in a single line; if the line length is > 0, paragraphs are separated by a blank line.</string>
+          <string>The maximum line length of exported plain text/LaTeX/SGML files. If set to 0, paragraphs are output in a single line; if the line length is > 0, paragraphs are separated by a blank line.</string>
          </property>
          <property name="maximum" >
           <number>120</number>

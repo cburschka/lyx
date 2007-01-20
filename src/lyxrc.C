@@ -2178,7 +2178,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_PLAINTEXT_LINELEN:
-		str = _("This is the maximum line length of an exported text file (LaTeX, SGML or plain text). If set to 0, paragraphs are output in a single line; if the line length is != 0, paragraphs are separated by a blank line.");
+		str = _("The maximum line length of exported plain text/LaTeX/SGML files. If set to 0, paragraphs are output in a single line; if the line length is > 0, paragraphs are separated by a blank line.");
 		break;
 
 	case RC_AUTOREGIONDELETE:

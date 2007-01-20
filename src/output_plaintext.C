@@ -127,7 +127,7 @@ void writePlaintextParagraph(Buffer const & buf,
 
 	/* what about the alignment */
 
-	// runparams.linelen <= 0 is special and means we don't have paragraph breaks
+	// runparams.linelen == 0 is special and means we don't have paragraph breaks
 
 	string::size_type currlinelen = 0;
 
