@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-18 23:53+0100\n"
+"POT-Creation-Date: 2007-01-20 18:32+0100\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -1734,7 +1734,7 @@ msgid "&Shaded"
 msgstr "Ta&llenna"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1599
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1600
 msgid "Single"
 msgstr "Yksink."
 
@@ -1743,7 +1743,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1605
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1606
 msgid "Double"
 msgstr "Kaksink."
 
@@ -2152,10 +2152,10 @@ msgstr "&Malliasiakirjat:"
 msgid "&roff command:"
 msgstr "&roff-komento:"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54
+#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2181
 msgid ""
-"Max. line length of exported plain text/LaTeX/SGML files. If set to 0, "
-"paragraphs are output in a single line; if the line length is > 0, "
+"The maximum line length of exported plain text/LaTeX/SGML files. If set to "
+"0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
 
@@ -3537,7 +3537,7 @@ msgstr "Alialikappale*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:153
+#: src/output_plaintext.C:152 src/output_plaintext.C:155
 msgid "Abstract"
 msgstr "Tiivistelmä"
 
@@ -3825,7 +3825,8 @@ msgstr "Kiitokset"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:165
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Viitteet"
 
@@ -9066,11 +9067,11 @@ msgstr "Haluatko tallentaa asiakirjan?"
 msgid "Print document"
 msgstr "Tuo asiakirja"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:698
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:713
 msgid "Undo"
 msgstr "Kumoa"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:709
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:724
 msgid "Redo"
 msgstr "Tee uudelleen"
 
@@ -9463,65 +9464,65 @@ msgstr "Luodaanko uusi tämän niminen asiakirja?"
 msgid "&Create"
 msgstr "Jä&rjestä"
 
-#: src/BufferView.C:527
+#: src/BufferView.C:542
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Tallenna kirjanmerkki 2"
 
-#: src/BufferView.C:701
+#: src/BufferView.C:716
 msgid "No further undo information"
 msgstr "Ei enää muuta kumottavaa"
 
-#: src/BufferView.C:712
+#: src/BufferView.C:727
 msgid "No further redo information"
 msgstr "Ei muuta uudelleen tehtävää"
 
-#: src/BufferView.C:873
+#: src/BufferView.C:888
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView.C:880
+#: src/BufferView.C:895
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView.C:887
+#: src/BufferView.C:902
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView.C:890
+#: src/BufferView.C:905
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView.C:936
+#: src/BufferView.C:951
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d sanaa tarkastettu."
 
-#: src/BufferView.C:939
+#: src/BufferView.C:954
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d sanaa tarkastettu."
 
-#: src/BufferView.C:944
+#: src/BufferView.C:959
 #, fuzzy
 msgid "One word in selection."
 msgstr "Yksi sana tarkastettu."
 
-#: src/BufferView.C:946
+#: src/BufferView.C:961
 #, fuzzy
 msgid "One word in document."
 msgstr "Lisätään asiakirja "
 
-#: src/BufferView.C:949
+#: src/BufferView.C:964
 #, fuzzy
 msgid "Count words"
 msgstr "Nykyinen sana"
 
-#: src/BufferView.C:1484
+#: src/BufferView.C:1501
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/BufferView.C:1486 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1503 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -9530,32 +9531,32 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView.C:1487 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1504 src/lyxfunc.C:1897 src/lyxfunc.C:1970
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView.C:1491 src/lyx_cb.C:140 src/lyxfunc.C:1864
+#: src/BufferView.C:1508 src/lyx_cb.C:140 src/lyxfunc.C:1864
 #: src/lyxfunc.C:1901
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView.C:1503 src/lyxfunc.C:1911 src/lyxfunc.C:1991
+#: src/BufferView.C:1520 src/lyxfunc.C:1911 src/lyxfunc.C:1991
 #: src/lyxfunc.C:2005 src/lyxfunc.C:2021
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView.C:1514
+#: src/BufferView.C:1531
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lisätään asiakirja %1$s..."
 
-#: src/BufferView.C:1525
+#: src/BufferView.C:1542
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView.C:1527
+#: src/BufferView.C:1544
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lisätä"
@@ -11134,7 +11135,7 @@ msgstr "Asiakirjan asetukset"
 msgid "Length"
 msgstr "Pituus"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1602
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1603
 msgid "OneHalf"
 msgstr "Puolikas"
 
@@ -12342,12 +12343,12 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:128
+#: src/lyx_main.C:129
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/lyx_main.C:129
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12355,38 +12356,38 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:138
+#: src/lyx_main.C:139
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Käyttäjän hakemisto konfiguroituu uudelleen"
 
-#: src/lyx_main.C:142
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Valmis!"
 
-#: src/lyx_main.C:490
+#: src/lyx_main.C:491
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/lyx_main.C:492
+#: src/lyx_main.C:493
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Valitse väliaikaishakemisto"
 
-#: src/lyx_main.C:528
+#: src/lyx_main.C:529
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Virheellinen valitsin \"%1$s\". Ohjelma sulkeutuu."
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:785
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:914
 msgid "Could not create temporary directory"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:915
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12397,51 +12398,51 @@ msgstr ""
 "%1$s epäonnistui. Varmista, että hakemisto on\n"
 "olemassa ja sinne voi kirjoittaa, ja yritä uudelleen."
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1082
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1083
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Kirjoitit käyttäjän LyX-hakemiston, joka ei ole olemassa."
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1088
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Luo hakemiston "
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1089
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Lopeta"
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1090
 msgid "No user LyX directory. Exiting."
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/lyx_main.C:1093
+#: src/lyx_main.C:1094
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Luo hakemiston %1$s"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1100
 msgid "Failed to create directory. Exiting."
 msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
 
-#: src/lyx_main.C:1254
+#: src/lyx_main.C:1265
 msgid "List of supported debug flags:"
 msgstr "Luettelo mahdollisista virheilmoitusasetuksista:"
 
-#: src/lyx_main.C:1258
+#: src/lyx_main.C:1269
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Virheilmoitustaso on nyt %1$s"
 
-#: src/lyx_main.C:1269
+#: src/lyx_main.C:1280
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12484,29 +12485,29 @@ msgstr ""
 "        -version           näytä yhteenveto versio- ja käännöstiedoista\n"
 "Katso lisätietoja LyXin manuaalisivulta."
 
-#: src/lyx_main.C:1305
+#: src/lyx_main.C:1316
 msgid "Missing directory for -sysdir switch"
 msgstr "Komento puuttuu -sysdir-valitsimelta"
 
-#: src/lyx_main.C:1315
+#: src/lyx_main.C:1326
 msgid "Missing directory for -userdir switch"
 msgstr "Komento puuttuu -userdir-valitsimelta"
 
-#: src/lyx_main.C:1325
+#: src/lyx_main.C:1336
 msgid "Missing command string after --execute switch"
 msgstr "Komento puuttuu --execute-valitsimelta"
 
-#: src/lyx_main.C:1335
+#: src/lyx_main.C:1346
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --export-valitsimen jäljestä"
 
-#: src/lyx_main.C:1347
+#: src/lyx_main.C:1358
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --import-valitsimen jäljestä"
 
-#: src/lyx_main.C:1352
+#: src/lyx_main.C:1363
 msgid "Missing filename for --import"
 msgstr "Valitsimelle --import ei annettu tiedostoa"
 
@@ -12753,13 +12754,6 @@ msgstr ""
 "Määrittele taulukoita Ascii-muodossa tuottava erillinen ohjelma. Esim. "
 "\"groff -t -Tlatin1 $$FName\", jossa \"$$FName\" on syötetiedosto. Jos "
 "asetat arvoksi \"none\", niin LyX muotoilee taulukot itse."
-
-#: src/lyxrc.C:2181
-msgid ""
-"This is the maximum line length of an exported text file (LaTeX, SGML or "
-"plain text). If set to 0, paragraphs are output in a single line; if the "
-"line length is != 0, paragraphs are separated by a blank line."
-msgstr ""
 
 #: src/lyxrc.C:2185
 msgid ""
@@ -13333,11 +13327,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/InsetMathNest.C:894
+#: src/mathed/InsetMathNest.C:858
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:897
+#: src/mathed/InsetMathNest.C:861
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Tavallinen teksti\t\\textrm"
@@ -13348,14 +13342,6 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
-
-#: src/output_plaintext.C:156
-msgid "Abstract: "
-msgstr "Tiivistelmä: "
-
-#: src/output_plaintext.C:168
-msgid "References: "
-msgstr "Viitteet: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"
@@ -13567,59 +13553,59 @@ msgstr "Kappaleen alkuun ei voi lisätä välilyöntiä. Ks. Opastus."
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
-#: src/text.C:1565
+#: src/text.C:1566
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Vaihda kieli"
 
-#: src/text.C:1571
+#: src/text.C:1572
 #, fuzzy
 msgid "Change: "
 msgstr "Sivu: "
 
 # FIXME: Cannot translate properly!
-#: src/text.C:1575
+#: src/text.C:1576
 #, fuzzy
 msgid " at "
 msgstr " -> "
 
-#: src/text.C:1585
+#: src/text.C:1586
 #, c-format
 msgid "Font: %1$s"
 msgstr "Kirjasin: %1$s"
 
-#: src/text.C:1590
+#: src/text.C:1591
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Syvyys: %1$d"
 
-#: src/text.C:1596
+#: src/text.C:1597
 msgid ", Spacing: "
 msgstr ", Välit: "
 
-#: src/text.C:1608
+#: src/text.C:1609
 msgid "Other ("
 msgstr "Muu ("
 
-#: src/text.C:1617
+#: src/text.C:1618
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Syvyys: "
 
-#: src/text.C:1618
+#: src/text.C:1619
 msgid ", Paragraph: "
 msgstr ", kappale: "
 
-#: src/text.C:1619
+#: src/text.C:1620
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:1620
+#: src/text.C:1621
 #, fuzzy
 msgid ", Position: "
 msgstr "Väittämä"
 
-#: src/text.C:1621
+#: src/text.C:1622
 msgid ", Boundary: "
 msgstr ""
 

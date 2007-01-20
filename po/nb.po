@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-18 23:53+0100\n"
+"POT-Creation-Date: 2007-01-20 18:32+0100\n"
 "PO-Revision-Date: 2006-11-03 15:48+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -1603,7 +1603,7 @@ msgid "&Shaded"
 msgstr "&Skyggelagt"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1599
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1600
 msgid "Single"
 msgstr "Enkel"
 
@@ -1612,7 +1612,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1605
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1606
 msgid "Double"
 msgstr "Dobbel"
 
@@ -2005,10 +2005,10 @@ msgstr "&Dokumentmaler:"
 msgid "&roff command:"
 msgstr "&roff-kommando:"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54
+#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2181
 msgid ""
-"Max. line length of exported plain text/LaTeX/SGML files. If set to 0, "
-"paragraphs are output in a single line; if the line length is > 0, "
+"The maximum line length of exported plain text/LaTeX/SGML files. If set to "
+"0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
 
@@ -3352,7 +3352,7 @@ msgstr "UnderUnderSeksjon*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:153
+#: src/output_plaintext.C:152 src/output_plaintext.C:155
 msgid "Abstract"
 msgstr "Sammendrag"
 
@@ -3635,7 +3635,8 @@ msgstr ""
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:165
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Referanser"
 
@@ -8497,11 +8498,11 @@ msgstr "Lagre dokumentet"
 msgid "Print document"
 msgstr "Skriv ut dokumentet"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:698
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:713
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:709
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:724
 msgid "Redo"
 msgstr "Gjør omigjen"
 
@@ -8845,62 +8846,62 @@ msgstr "Lage nytt dokument med dette navnet?"
 msgid "&Create"
 msgstr "&Nytt"
 
-#: src/BufferView.C:527
+#: src/BufferView.C:542
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Lagre bokmerke 5"
 
-#: src/BufferView.C:701
+#: src/BufferView.C:716
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/BufferView.C:712
+#: src/BufferView.C:727
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/BufferView.C:873
+#: src/BufferView.C:888
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.C:880
+#: src/BufferView.C:895
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.C:887
+#: src/BufferView.C:902
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/BufferView.C:890
+#: src/BufferView.C:905
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/BufferView.C:936
+#: src/BufferView.C:951
 #, c-format
 msgid "%1$d words in selection."
 msgstr "Det er %1$d ord i utvalget"
 
-#: src/BufferView.C:939
+#: src/BufferView.C:954
 #, c-format
 msgid "%1$d words in document."
 msgstr "Det er %1$d ord i dokumentet."
 
-#: src/BufferView.C:944
+#: src/BufferView.C:959
 msgid "One word in selection."
 msgstr "Det er ett ord i utvalget."
 
-#: src/BufferView.C:946
+#: src/BufferView.C:961
 msgid "One word in document."
 msgstr "Ett ord i dokumentet."
 
-#: src/BufferView.C:949
+#: src/BufferView.C:964
 msgid "Count words"
 msgstr "Telle ord"
 
-#: src/BufferView.C:1484
+#: src/BufferView.C:1501
 msgid "Select LyX document to insert"
 msgstr "Velg LyX dokument som skal settes inn"
 
-#: src/BufferView.C:1486 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1503 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -8909,31 +8910,31 @@ msgstr "Velg LyX dokument som skal settes inn"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView.C:1487 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1504 src/lyxfunc.C:1897 src/lyxfunc.C:1970
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.C:1491 src/lyx_cb.C:140 src/lyxfunc.C:1864
+#: src/BufferView.C:1508 src/lyx_cb.C:140 src/lyxfunc.C:1864
 #: src/lyxfunc.C:1901
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
-#: src/BufferView.C:1503 src/lyxfunc.C:1911 src/lyxfunc.C:1991
+#: src/BufferView.C:1520 src/lyxfunc.C:1911 src/lyxfunc.C:1991
 #: src/lyxfunc.C:2005 src/lyxfunc.C:2021
 msgid "Canceled."
 msgstr "Avbrutt."
 
-#: src/BufferView.C:1514
+#: src/BufferView.C:1531
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Setter inn dokumentet %1$s..."
 
-#: src/BufferView.C:1525
+#: src/BufferView.C:1542
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView.C:1527
+#: src/BufferView.C:1544
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke sette inn dokumentet %1$s"
@@ -10447,7 +10448,7 @@ msgstr "Dokumentinnstillinger"
 msgid "Length"
 msgstr "Lengde"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1602
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1603
 msgid "OneHalf"
 msgstr "Halvannen"
 
@@ -11635,11 +11636,11 @@ msgstr ""
 "Du må restarte LyX for å kunne\n"
 "bruke oppdaterte dokumentklasser."
 
-#: src/lyx_main.C:128
+#: src/lyx_main.C:129
 msgid "Could not read configuration file"
 msgstr "Kunne ikke lese konfigurasjonsfilen"
 
-#: src/lyx_main.C:129
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11650,37 +11651,37 @@ msgstr ""
 "%1$s.\n"
 "Sjekk om LyX er rett installert."
 
-#: src/lyx_main.C:138
+#: src/lyx_main.C:139
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurerer brukerfolder"
 
-#: src/lyx_main.C:142
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Ferdig!"
 
-#: src/lyx_main.C:490
+#: src/lyx_main.C:491
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Feil: Klarte ikke å fjerne den midlertidige mappen %1$s"
 
-#: src/lyx_main.C:492
+#: src/lyx_main.C:493
 msgid "Unable to remove temporary directory"
 msgstr "Feil: Klarte ikke å fjerne midlertidig mappe"
 
-#: src/lyx_main.C:528
+#: src/lyx_main.C:529
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolineargument `%1$s'. Avslutter."
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:785
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:914
 msgid "Could not create temporary directory"
 msgstr "Klarte ikke å lage midlertidig mappe"
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:915
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11688,50 +11689,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1082
 msgid "Missing user LyX directory"
 msgstr "Ingen brukerkatalog for LyX"
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1083
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1088
 #, fuzzy
 msgid "&Create directory"
 msgstr "&Opprett mappe."
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1089
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "&Avslutt LyX."
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1090
 msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukerkatalog for LyX. Avslutter."
 
-#: src/lyx_main.C:1093
+#: src/lyx_main.C:1094
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lager mappen %1$s"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1100
 msgid "Failed to create directory. Exiting."
 msgstr "Mislyktes i å lage mappen. Avslutter."
 
-#: src/lyx_main.C:1254
+#: src/lyx_main.C:1265
 msgid "List of supported debug flags:"
 msgstr "Liste over debug flagg some støttes:"
 
-#: src/lyx_main.C:1258
+#: src/lyx_main.C:1269
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Setter debug nivå til %1$s"
 
-#: src/lyx_main.C:1269
+#: src/lyx_main.C:1280
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -11772,27 +11773,27 @@ msgstr ""
 "\t-version        versjons og byggeinformasjon\n"
 "Les man sidene til LyX for flere detaljer."
 
-#: src/lyx_main.C:1305
+#: src/lyx_main.C:1316
 msgid "Missing directory for -sysdir switch"
 msgstr "Mangler folder for -sysdir parameter"
 
-#: src/lyx_main.C:1315
+#: src/lyx_main.C:1326
 msgid "Missing directory for -userdir switch"
 msgstr "Mangler folder for -userdir parameter"
 
-#: src/lyx_main.C:1325
+#: src/lyx_main.C:1336
 msgid "Missing command string after --execute switch"
 msgstr "Mangler kommandostreng etter --execute parameter"
 
-#: src/lyx_main.C:1335
+#: src/lyx_main.C:1346
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --export parameter"
 
-#: src/lyx_main.C:1347
+#: src/lyx_main.C:1358
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --import parameter"
 
-#: src/lyx_main.C:1352
+#: src/lyx_main.C:1363
 msgid "Missing filename for --import"
 msgstr "Mangler filnavn for --import"
 
@@ -12030,13 +12031,6 @@ msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
-msgstr ""
-
-#: src/lyxrc.C:2181
-msgid ""
-"This is the maximum line length of an exported text file (LaTeX, SGML or "
-"plain text). If set to 0, paragraphs are output in a single line; if the "
-"line length is != 0, paragraphs are separated by a blank line."
 msgstr ""
 
 #: src/lyxrc.C:2185
@@ -12529,11 +12523,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Matte editerings modus"
 
-#: src/mathed/InsetMathNest.C:894
+#: src/mathed/InsetMathNest.C:858
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:897
+#: src/mathed/InsetMathNest.C:861
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal tekstmodus\t\\textrm"
@@ -12546,14 +12540,6 @@ msgid ""
 msgstr ""
 "Kunne ikke åpne dokumentet\n"
 "%1$s."
-
-#: src/output_plaintext.C:156
-msgid "Abstract: "
-msgstr "Sammendrag: "
-
-#: src/output_plaintext.C:168
-msgid "References: "
-msgstr "Referanser: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"
@@ -12749,56 +12735,56 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/text.C:1565
+#: src/text.C:1566
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Spore endringer"
 
-#: src/text.C:1571
+#: src/text.C:1572
 #, fuzzy
 msgid "Change: "
 msgstr "Side: "
 
-#: src/text.C:1575
+#: src/text.C:1576
 #, fuzzy
 msgid " at "
 msgstr " til "
 
-#: src/text.C:1585
+#: src/text.C:1586
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/text.C:1590
+#: src/text.C:1591
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
-#: src/text.C:1596
+#: src/text.C:1597
 msgid ", Spacing: "
 msgstr ", Linjeavstand: "
 
-#: src/text.C:1608
+#: src/text.C:1609
 msgid "Other ("
 msgstr "Annet ("
 
-#: src/text.C:1617
+#: src/text.C:1618
 msgid ", Inset: "
 msgstr ""
 
-#: src/text.C:1618
+#: src/text.C:1619
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/text.C:1619
+#: src/text.C:1620
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:1620
+#: src/text.C:1621
 msgid ", Position: "
 msgstr ", Posisjon : "
 
-#: src/text.C:1621
+#: src/text.C:1622
 msgid ", Boundary: "
 msgstr ""
 

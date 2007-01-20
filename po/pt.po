@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-18 23:53+0100\n"
+"POT-Creation-Date: 2007-01-20 18:32+0100\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -1830,7 +1830,7 @@ msgid "&Shaded"
 msgstr "Salvar"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1599
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1600
 #, fuzzy
 msgid "Single"
 msgstr "Simples|#S"
@@ -1840,7 +1840,7 @@ msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1605
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1606
 #, fuzzy
 msgid "Double"
 msgstr "Duplo|#D"
@@ -2293,10 +2293,10 @@ msgstr "Documento renomeado para '"
 msgid "&roff command:"
 msgstr "Romano"
 
-#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54
+#: src/frontends/qt4/ui/QPrefPlaintextUi.ui:54 src/lyxrc.C:2181
 msgid ""
-"Max. line length of exported plain text/LaTeX/SGML files. If set to 0, "
-"paragraphs are output in a single line; if the line length is > 0, "
+"The maximum line length of exported plain text/LaTeX/SGML files. If set to "
+"0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
 
@@ -3814,7 +3814,7 @@ msgstr "Decoração"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:153
+#: src/output_plaintext.C:152 src/output_plaintext.C:155
 msgid "Abstract"
 msgstr ""
 
@@ -4118,7 +4118,8 @@ msgstr ""
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:165
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: src/output_plaintext.C:167
 #, fuzzy
 msgid "References"
 msgstr "Inserir Referências"
@@ -9583,11 +9584,11 @@ msgstr "Salvar o documento?"
 msgid "Print document"
 msgstr "Importar documento"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:698
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:713
 msgid "Undo"
 msgstr "Desfazer"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:709
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:724
 msgid "Redo"
 msgstr "Refazer"
 
@@ -9985,67 +9986,67 @@ msgstr "Criar novo documento com este nome?"
 msgid "&Create"
 msgstr "Latex"
 
-#: src/BufferView.C:527
+#: src/BufferView.C:542
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Abaixo|#B"
 
-#: src/BufferView.C:701
+#: src/BufferView.C:716
 #, fuzzy
 msgid "No further undo information"
 msgstr "Não há infomação ulterior de undo"
 
-#: src/BufferView.C:712
+#: src/BufferView.C:727
 msgid "No further redo information"
 msgstr "Não há informação ulterior de refazer"
 
-#: src/BufferView.C:873
+#: src/BufferView.C:888
 msgid "Mark off"
 msgstr "Marca fora"
 
-#: src/BufferView.C:880
+#: src/BufferView.C:895
 msgid "Mark on"
 msgstr "Marca dentro"
 
-#: src/BufferView.C:887
+#: src/BufferView.C:902
 msgid "Mark removed"
 msgstr "Marca removida"
 
-#: src/BufferView.C:890
+#: src/BufferView.C:905
 msgid "Mark set"
 msgstr "Marca definida"
 
-#: src/BufferView.C:936
+#: src/BufferView.C:951
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Um erro foi detectado."
 
-#: src/BufferView.C:939
+#: src/BufferView.C:954
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Não posso abrir o documento"
 
-#: src/BufferView.C:944
+#: src/BufferView.C:959
 #, fuzzy
 msgid "One word in selection."
 msgstr "Um erro foi detectado."
 
-#: src/BufferView.C:946
+#: src/BufferView.C:961
 #, fuzzy
 msgid "One word in document."
 msgstr "Abrindo o documento filho"
 
-#: src/BufferView.C:949
+#: src/BufferView.C:964
 #, fuzzy
 msgid "Count words"
 msgstr "Contar:"
 
-#: src/BufferView.C:1484
+#: src/BufferView.C:1501
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Selecione um documento para inserir"
 
-#: src/BufferView.C:1486 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1503 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -10055,33 +10056,33 @@ msgstr "Selecione um documento para inserir"
 msgid "Documents|#o#O"
 msgstr "Documentos"
 
-#: src/BufferView.C:1487 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1504 src/lyxfunc.C:1897 src/lyxfunc.C:1970
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exemplos"
 
-#: src/BufferView.C:1491 src/lyx_cb.C:140 src/lyxfunc.C:1864
+#: src/BufferView.C:1508 src/lyx_cb.C:140 src/lyxfunc.C:1864
 #: src/lyxfunc.C:1901
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documento"
 
-#: src/BufferView.C:1503 src/lyxfunc.C:1911 src/lyxfunc.C:1991
+#: src/BufferView.C:1520 src/lyxfunc.C:1911 src/lyxfunc.C:1991
 #: src/lyxfunc.C:2005 src/lyxfunc.C:2021
 msgid "Canceled."
 msgstr "Cancelado."
 
-#: src/BufferView.C:1514
+#: src/BufferView.C:1531
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Inserindo o documento"
 
-#: src/BufferView.C:1525
+#: src/BufferView.C:1542
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento renomeado para '"
 
-#: src/BufferView.C:1527
+#: src/BufferView.C:1544
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Não posso inserir o documento"
@@ -11775,7 +11776,7 @@ msgstr "Documentos"
 msgid "Length"
 msgstr "Taman.|#T"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1602
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1603
 msgid "OneHalf"
 msgstr ""
 
@@ -13076,12 +13077,12 @@ msgid ""
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:128
+#: src/lyx_main.C:129
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Não posso executar com o arquivo"
 
-#: src/lyx_main.C:129
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -13089,41 +13090,41 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:138
+#: src/lyx_main.C:139
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Criando diretório "
 
-#: src/lyx_main.C:142
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Pronto!"
 
-#: src/lyx_main.C:490
+#: src/lyx_main.C:491
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Erro! Impossível criar diretório temporário"
 
-#: src/lyx_main.C:492
+#: src/lyx_main.C:493
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Erro! Impossível criar diretório temporário"
 
-#: src/lyx_main.C:528
+#: src/lyx_main.C:529
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:785
 #, fuzzy
 msgid "LyX: "
 msgstr "Imprimir"
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:914
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Erro! Impossível criar diretório temporário"
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:915
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13131,50 +13132,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1082
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: Criando diretório "
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1083
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1088
 #, fuzzy
 msgid "&Create directory"
 msgstr "Erro! Não posso abrir o diretório:"
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1089
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1090
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1093
+#: src/lyx_main.C:1094
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " e executando o programa de configuração..."
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1100
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1254
+#: src/lyx_main.C:1265
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:1258
+#: src/lyx_main.C:1269
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Definindo nível de depuração para "
 
-#: src/lyx_main.C:1269
+#: src/lyx_main.C:1280
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13196,32 +13197,32 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:1305
+#: src/lyx_main.C:1316
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Está faltando um diretório para a opção -sysdir"
 
-#: src/lyx_main.C:1315
+#: src/lyx_main.C:1326
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Está faltando um diretório para a opção -sysdir"
 
-#: src/lyx_main.C:1325
+#: src/lyx_main.C:1336
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Está faltando um número para a opção -dbg"
 
-#: src/lyx_main.C:1335
+#: src/lyx_main.C:1346
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Selecione um arquivo LaTeX para importar"
 
-#: src/lyx_main.C:1347
+#: src/lyx_main.C:1358
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Selecione um arquivo LaTeX para importar"
 
-#: src/lyx_main.C:1352
+#: src/lyx_main.C:1363
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Selecione um arquivo LaTeX para importar"
@@ -13469,13 +13470,6 @@ msgid ""
 "Use to define an external program to render tables in plain text output. E."
 "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" is "
 "specified, an internal routine is used."
-msgstr ""
-
-#: src/lyxrc.C:2181
-msgid ""
-"This is the maximum line length of an exported text file (LaTeX, SGML or "
-"plain text). If set to 0, paragraphs are output in a single line; if the "
-"line length is != 0, paragraphs are separated by a blank line."
 msgstr ""
 
 #: src/lyxrc.C:2185
@@ -13973,11 +13967,11 @@ msgstr ""
 msgid "Math editor mode"
 msgstr "Modo editor matemático"
 
-#: src/mathed/InsetMathNest.C:894
+#: src/mathed/InsetMathNest.C:858
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.C:897
+#: src/mathed/InsetMathNest.C:861
 msgid "entered math text mode (textrm)"
 msgstr ""
 
@@ -13987,15 +13981,6 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Não posso abrir o documento"
-
-#: src/output_plaintext.C:156
-msgid "Abstract: "
-msgstr ""
-
-#: src/output_plaintext.C:168
-#, fuzzy
-msgid "References: "
-msgstr "Inserir Referências"
 
 #: src/support/filefilterlist.C:109
 #, fuzzy
@@ -14198,62 +14183,62 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Você não pode digitar dois espaços. Por favor, leia o Tutorial."
 
-#: src/text.C:1565
+#: src/text.C:1566
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Linguagem"
 
-#: src/text.C:1571
+#: src/text.C:1572
 #, fuzzy
 msgid "Change: "
 msgstr "Páginas:"
 
-#: src/text.C:1575
+#: src/text.C:1576
 #, fuzzy
 msgid " at "
 msgstr " de "
 
-#: src/text.C:1585
+#: src/text.C:1586
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Fonte: "
 
-#: src/text.C:1590
+#: src/text.C:1591
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ". Nível: "
 
-#: src/text.C:1596
+#: src/text.C:1597
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Espaçamento"
 
-#: src/text.C:1608
+#: src/text.C:1609
 #, fuzzy
 msgid "Other ("
 msgstr "Outro...|#O"
 
-#: src/text.C:1617
+#: src/text.C:1618
 #, fuzzy
 msgid ", Inset: "
 msgstr ". Nível: "
 
-#: src/text.C:1618
+#: src/text.C:1619
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Formatação de parágrafo definida"
 
-#: src/text.C:1619
+#: src/text.C:1620
 #, fuzzy
 msgid ", Id: "
 msgstr ". Nível: "
 
-#: src/text.C:1620
+#: src/text.C:1621
 #, fuzzy
 msgid ", Position: "
 msgstr "   opções: "
 
-#: src/text.C:1621
+#: src/text.C:1622
 msgid ", Boundary: "
 msgstr ""
 
