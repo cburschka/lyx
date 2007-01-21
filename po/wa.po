@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -3783,7 +3783,7 @@ msgstr "Gåliotaedje"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr ""
 
@@ -4088,7 +4088,6 @@ msgstr ""
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 #, fuzzy
 msgid "References"
 msgstr "Sititchî on rahuca"
@@ -8696,15 +8695,15 @@ msgstr "Intreye bibiografike"
 msgid "LyX Document...|X"
 msgstr "Documint"
 
-#: lib/ui/classic.ui:320
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
 #, fuzzy
-msgid "Plain Text as Lines...|L"
-msgstr "Royes"
+msgid "Plain Text...|T"
+msgstr "Mete el plaece"
 
-#: lib/ui/classic.ui:321
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
 #, fuzzy
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Tchwezi li hagnon shûvant"
+msgid "Plain Text, Join Lines...|J"
+msgstr "Royes"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 #, fuzzy
@@ -9405,16 +9404,6 @@ msgstr "Scriftôr matematike"
 msgid "Text Wrap Float|W"
 msgstr "Sititchî on tåvlea"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Mete el plaece"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Royes"
-
 #: lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "External Material...|M"
@@ -9897,6 +9886,37 @@ msgstr "Rissayî|#R#r"
 msgid "Next note"
 msgstr "Ôte"
 
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Schaper li documint?"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Loukî è DVI"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "Metaedje a djoû|#û#U"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+msgid "View PostScript"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:172
+msgid "Update PostScript"
+msgstr ""
+
 #: src/BufferView.C:216
 #, c-format
 msgid ""
@@ -10373,12 +10393,12 @@ msgstr "I gn a nou documint di drovu!%t"
 
 #: src/MenuBackend.C:540
 #, fuzzy
-msgid "Plain Text as Lines"
-msgstr "Tchwezi li hagnon shûvant"
+msgid "Plain Text"
+msgstr "Mete el plaece"
 
 #: src/MenuBackend.C:542
 #, fuzzy
-msgid "Plain Text as Paragraphs"
+msgid "Plain Text, Join Lines"
 msgstr "Tchwezi li hagnon shûvant"
 
 #: src/MenuBackend.C:714
@@ -13917,6 +13937,15 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Dji n' sai drovi li documint"
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr ""
+
+#: src/output_plaintext.C:167
+#, fuzzy
+msgid "References: "
+msgstr "Sititchî on rahuca"
 
 #: src/support/filefilterlist.C:109
 #, fuzzy

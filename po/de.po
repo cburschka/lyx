@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2006-12-09 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -3387,7 +3387,7 @@ msgstr "Unterunterabschn.*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr "Zusammenfassung"
 
@@ -3671,7 +3671,6 @@ msgstr "Danksagungen"
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Referenzen"
 
@@ -7712,13 +7711,15 @@ msgstr "BibTeX-Literaturverzeichnis...|B"
 msgid "LyX Document...|X"
 msgstr "LyX-Dokument...|L"
 
-#: lib/ui/classic.ui:320
-msgid "Plain Text as Lines...|L"
-msgstr "Einfacher Text als Zeilen...|Z"
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#, fuzzy
+msgid "Plain Text...|T"
+msgstr "Einfacher Text"
 
-#: lib/ui/classic.ui:321
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Einfacher Text als Absätze...|A"
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#, fuzzy
+msgid "Plain Text, Join Lines...|J"
+msgstr "Einfacher Text als Zeilen...|Z"
 
 # , c-format
 # , c-format
@@ -8318,16 +8319,6 @@ msgstr "Mathe-Kontrollfläche|M"
 msgid "Text Wrap Float|W"
 msgstr "Umflossenes Gleitobjekt|U"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Einfacher Text"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Einfacher Text als Zeilen...|Z"
-
 #: lib/ui/stdmenus.inc:383
 msgid "External Material...|M"
 msgstr "Externes Material...|E"
@@ -8722,6 +8713,39 @@ msgstr "Alle Änderungen ablehnen"
 #: lib/ui/stdtoolbars.inc:163
 msgid "Next note"
 msgstr "Nächste Notiz"
+
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Hauptdokument"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Ansicht|i"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "&Aktualisieren"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "View PostScript"
+msgstr "Post Scriptum:"
+
+#: lib/ui/stdtoolbars.inc:172
+#, fuzzy
+msgid "Update PostScript"
+msgstr "Post Scriptum:"
 
 #: src/BufferView.C:216
 #, c-format
@@ -9143,12 +9167,14 @@ msgid "No Documents Open!"
 msgstr "Keine Dokumente geöffnet!"
 
 #: src/MenuBackend.C:540
-msgid "Plain Text as Lines"
-msgstr "Einfacher Text als Zeilen"
+#, fuzzy
+msgid "Plain Text"
+msgstr "Einfacher Text"
 
 #: src/MenuBackend.C:542
-msgid "Plain Text as Paragraphs"
-msgstr "Einfacher Text als Absätze"
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Einfacher Text als Zeilen|Z"
 
 #: src/MenuBackend.C:714
 msgid "Master Document"
@@ -12583,6 +12609,14 @@ msgid ""
 msgstr ""
 "Das angegebene Dokument %1$s\n"
 "konnte nicht geöffnet werden."
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr "Zusammenfassung: "
+
+#: src/output_plaintext.C:167
+msgid "References: "
+msgstr "Referenzen: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2006-11-02 00:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -3300,7 +3300,7 @@ msgstr "Podpodsekce*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr "Abstrakt"
 
@@ -3584,7 +3584,6 @@ msgstr "Acknowledgements"
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Literatura"
 
@@ -7626,13 +7625,15 @@ msgstr "Bibliografie BibTeX-u...|B"
 msgid "LyX Document...|X"
 msgstr "Dokument LyX-u...|X"
 
-#: lib/ui/classic.ui:320
-msgid "Plain Text as Lines...|L"
-msgstr "Prostý text jako øádky...|P"
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#, fuzzy
+msgid "Plain Text...|T"
+msgstr "Prostý text"
 
-#: lib/ui/classic.ui:321
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Prostý text jako odstavce...|o"
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#, fuzzy
+msgid "Plain Text, Join Lines...|J"
+msgstr "Prostý text jako øádky...|P"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 msgid "Track Changes|T"
@@ -8234,16 +8235,6 @@ msgstr "Matematický panel|M"
 msgid "Text Wrap Float|W"
 msgstr "Plovoucí text (obtékání)|P"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Prostý text"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Prostý text jako øádky...|P"
-
 #: lib/ui/stdmenus.inc:383
 msgid "External Material...|M"
 msgstr "Externí materiál...|E"
@@ -8641,6 +8632,39 @@ msgstr "Odmítnout v¹echny zmìny"
 #: lib/ui/stdtoolbars.inc:163
 msgid "Next note"
 msgstr "Dal¹í poznámka"
+
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Hlavní dokument"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Prohlí¾et|r"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "&Aktualizace"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "View PostScript"
+msgstr "Post Scriptum:"
+
+#: lib/ui/stdtoolbars.inc:172
+#, fuzzy
+msgid "Update PostScript"
+msgstr "Post Scriptum:"
 
 #: src/BufferView.C:216
 #, c-format
@@ -9064,12 +9088,14 @@ msgid "No Documents Open!"
 msgstr "®ádné otevøené dokumenty !"
 
 #: src/MenuBackend.C:540
-msgid "Plain Text as Lines"
-msgstr "Prostý text jako øádky"
+#, fuzzy
+msgid "Plain Text"
+msgstr "Prostý text"
 
 #: src/MenuBackend.C:542
-msgid "Plain Text as Paragraphs"
-msgstr "Prostý text jako odstavce"
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Prostý text jako øádky"
 
 #: src/MenuBackend.C:714
 msgid "Master Document"
@@ -12431,6 +12457,14 @@ msgid ""
 msgstr ""
 "Nelze otevøít zadaný dokument\n"
 "%1$s."
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr "Abstrakt: "
+
+#: src/output_plaintext.C:167
+msgid "References: "
+msgstr "Reference: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"

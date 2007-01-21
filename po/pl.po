@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2006-07-04 00:28+0200\n"
 "Last-Translator: Andrzej Tomaszewski <tomaszewski@wne.uw.edu.pl>\n"
 "Language-Team: Polski <pl@li.org>\n"
@@ -3356,7 +3356,7 @@ msgstr "Podpodsekcja*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr "Streszczenie"
 
@@ -3640,7 +3640,6 @@ msgstr "Podziêkowania"
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Odno¶niki"
 
@@ -7721,13 +7720,15 @@ msgstr "Bibliografia BibTeX-a...|B"
 msgid "LyX Document...|X"
 msgstr "Dokument LyX-a...|X"
 
-#: lib/ui/classic.ui:320
-msgid "Plain Text as Lines...|L"
-msgstr "Plik ASCII jako wiersze...|w"
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#, fuzzy
+msgid "Plain Text...|T"
+msgstr "Tekst ASCII"
 
-#: lib/ui/classic.ui:321
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Plik ASCII jako akapity...|a"
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#, fuzzy
+msgid "Plain Text, Join Lines...|J"
+msgstr "Plik ASCII jako wiersze...|w"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 msgid "Track Changes|T"
@@ -8377,16 +8378,6 @@ msgstr "Panel symboli matematycznych|l"
 msgid "Text Wrap Float|W"
 msgstr "Wstawka oblana tekstem|W"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Tekst ASCII"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Plik ASCII jako wiersze...|w"
-
 #: lib/ui/stdmenus.inc:383
 msgid "External Material...|M"
 msgstr "¬ród³o zewnêtrzne...|z"
@@ -8805,6 +8796,39 @@ msgstr "Odrzuæ wszystkie zmiany|O"
 #, fuzzy
 msgid "Next note"
 msgstr "Nastêpna notka|N"
+
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Zapisz dokument"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Podgl±d|g"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "&Aktualizuj"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "View PostScript"
+msgstr "Postscriptum:"
+
+#: lib/ui/stdtoolbars.inc:172
+#, fuzzy
+msgid "Update PostScript"
+msgstr "Postscriptum:"
 
 #: src/BufferView.C:216
 #, c-format
@@ -9231,12 +9255,14 @@ msgid "No Documents Open!"
 msgstr "Nie ma otwartych dokumentów!"
 
 #: src/MenuBackend.C:540
-msgid "Plain Text as Lines"
-msgstr "Plik ASCII jako wiersze"
+#, fuzzy
+msgid "Plain Text"
+msgstr "Tekst ASCII"
 
 #: src/MenuBackend.C:542
-msgid "Plain Text as Paragraphs"
-msgstr "Plik ASCII jako akapity"
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Plik ASCII jako wiersze"
 
 #: src/MenuBackend.C:714
 #, fuzzy
@@ -12592,6 +12618,14 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Nie mo¿na otworzyæ dokumentu %1$s"
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr "Streszczenie: "
+
+#: src/output_plaintext.C:167
+msgid "References: "
+msgstr "Odno¶niki: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"

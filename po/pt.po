@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.0.0-1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2005-12-18 15:07+0100\n"
 "Last-Translator: Pedro Kröger <Kroger@e-net.com.br>\n"
 "Language-Team: Portuguese <LL@li.org>\n"
@@ -3814,7 +3814,7 @@ msgstr "Decoração"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr ""
 
@@ -4119,7 +4119,6 @@ msgstr ""
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 #, fuzzy
 msgid "References"
 msgstr "Inserir Referências"
@@ -8741,15 +8740,15 @@ msgstr "Item bibliográfico"
 msgid "LyX Document...|X"
 msgstr "Documento"
 
-#: lib/ui/classic.ui:320
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
 #, fuzzy
-msgid "Plain Text as Lines...|L"
-msgstr "Linhas"
+msgid "Plain Text...|T"
+msgstr "Substituir"
 
-#: lib/ui/classic.ui:321
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
 #, fuzzy
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Selecionar o próximo parágrafo"
+msgid "Plain Text, Join Lines...|J"
+msgstr "Linhas"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 #, fuzzy
@@ -9453,16 +9452,6 @@ msgstr "Painel Matemático"
 msgid "Text Wrap Float|W"
 msgstr "Inserir Tabela"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Substituir"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Linhas"
-
 #: lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "External Material...|M"
@@ -9945,6 +9934,37 @@ msgstr "Reler|R#r"
 msgid "Next note"
 msgstr "outro"
 
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Salvar o documento?"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Ver DVI"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "Atualizar|#A"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+msgid "View PostScript"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:172
+msgid "Update PostScript"
+msgstr ""
+
 #: src/BufferView.C:216
 #, c-format
 msgid ""
@@ -10421,12 +10441,12 @@ msgstr "Não existem documentos abertos!%t"
 
 #: src/MenuBackend.C:540
 #, fuzzy
-msgid "Plain Text as Lines"
-msgstr "Selecionar o próximo parágrafo"
+msgid "Plain Text"
+msgstr "Substituir"
 
 #: src/MenuBackend.C:542
 #, fuzzy
-msgid "Plain Text as Paragraphs"
+msgid "Plain Text, Join Lines"
 msgstr "Selecionar o próximo parágrafo"
 
 #: src/MenuBackend.C:714
@@ -13981,6 +14001,15 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Não posso abrir o documento"
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr ""
+
+#: src/output_plaintext.C:167
+#, fuzzy
+msgid "References: "
+msgstr "Inserir Referências"
 
 #: src/support/filefilterlist.C:109
 #, fuzzy

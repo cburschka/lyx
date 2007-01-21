@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2006-12-14 00:42+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -3302,7 +3302,7 @@ msgstr "Alalszakasz*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr "Kivonat"
 
@@ -3586,7 +3586,6 @@ msgstr "Köszönetnyilvánítások"
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Hivatkozások"
 
@@ -7628,13 +7627,15 @@ msgstr "BibTeX irodalomjegyzék...|B"
 msgid "LyX Document...|X"
 msgstr "LyX dokumentum...|X"
 
-#: lib/ui/classic.ui:320
-msgid "Plain Text as Lines...|L"
-msgstr "Sima szöveg sorokként...|s"
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#, fuzzy
+msgid "Plain Text...|T"
+msgstr "Sima szöveg"
 
-#: lib/ui/classic.ui:321
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Sima szöveg bekezdésekként...|b"
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#, fuzzy
+msgid "Plain Text, Join Lines...|J"
+msgstr "Sima szöveg sorokként...|s"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 msgid "Track Changes|T"
@@ -8233,16 +8234,6 @@ msgstr "Képletszerkesztõ|K"
 msgid "Text Wrap Float|W"
 msgstr "Körbefuttatás úsztatása|u"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Sima szöveg"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Sima szöveg sorokként...|s"
-
 #: lib/ui/stdmenus.inc:383
 msgid "External Material...|M"
 msgstr "Külsõ anyag...|K"
@@ -8635,6 +8626,39 @@ msgstr "Minden változás elvetése"
 #: lib/ui/stdtoolbars.inc:163
 msgid "Next note"
 msgstr "Következõ megjegyzés"
+
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Fõdokumentum"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Nézet|z"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "&Frissítés"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "View PostScript"
+msgstr "Utóirat:"
+
+#: lib/ui/stdtoolbars.inc:172
+#, fuzzy
+msgid "Update PostScript"
+msgstr "Utóirat:"
 
 #: src/BufferView.C:216
 #, c-format
@@ -9056,12 +9080,14 @@ msgid "No Documents Open!"
 msgstr "Nincs nyitott dokumentum!"
 
 #: src/MenuBackend.C:540
-msgid "Plain Text as Lines"
-msgstr "Sima szöveg sorokként"
+#, fuzzy
+msgid "Plain Text"
+msgstr "Sima szöveg"
 
 #: src/MenuBackend.C:542
-msgid "Plain Text as Paragraphs"
-msgstr "Sima szöveg bekezdésekként"
+#, fuzzy
+msgid "Plain Text, Join Lines"
+msgstr "Sima szöveg sorokként"
 
 #: src/MenuBackend.C:714
 msgid "Master Document"
@@ -12438,6 +12464,14 @@ msgid ""
 msgstr ""
 "A %1$s dokumentum\n"
 "nem nyitható meg ."
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr "Kivonat: "
+
+#: src/output_plaintext.C:167
+msgid "References: "
+msgstr "Hivatkozások: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"

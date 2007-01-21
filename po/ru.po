@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2005-04-01 13:42MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -3483,7 +3483,7 @@ msgstr "Подподраздел*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr "Аннотация"
 
@@ -3772,7 +3772,6 @@ msgstr "Благодарности"
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Ссылки"
 
@@ -8196,15 +8195,15 @@ msgstr "Библиография BibTeX...|B"
 msgid "LyX Document...|X"
 msgstr "Документ LyX...|X"
 
-#: lib/ui/classic.ui:320
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
 #, fuzzy
-msgid "Plain Text as Lines...|L"
-msgstr "Строки отдельными абзацами...|о"
+msgid "Plain Text...|T"
+msgstr "Найти следующее"
 
-#: lib/ui/classic.ui:321
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
 #, fuzzy
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Авторазбиение на абзацы...|а"
+msgid "Plain Text, Join Lines...|J"
+msgstr "Строки отдельными абзацами...|о"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 #, fuzzy
@@ -8897,16 +8896,6 @@ msgstr "Математическая панель|п"
 msgid "Text Wrap Float|W"
 msgstr "Вставить плавающий объект"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Найти следующее"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Строки отдельными абзацами...|о"
-
 #: lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "External Material...|M"
@@ -9384,6 +9373,39 @@ msgstr "Обновить|#О"
 msgid "Next note"
 msgstr "Заметку|З"
 
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "Сохранить документ?"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Просмотреть|П"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "&Обновить"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "View PostScript"
+msgstr "&Драйвер PostScript:"
+
+#: lib/ui/stdtoolbars.inc:172
+#, fuzzy
+msgid "Update PostScript"
+msgstr "&Драйвер PostScript:"
+
 #: src/BufferView.C:216
 #, c-format
 msgid ""
@@ -9827,13 +9849,13 @@ msgstr "Нет открытых документов!"
 
 #: src/MenuBackend.C:540
 #, fuzzy
-msgid "Plain Text as Lines"
-msgstr "Текстового файла, строки отдельными абзацами"
+msgid "Plain Text"
+msgstr "Найти следующее"
 
 #: src/MenuBackend.C:542
 #, fuzzy
-msgid "Plain Text as Paragraphs"
-msgstr "Текстового файла с авторазбиением на абзац"
+msgid "Plain Text, Join Lines"
+msgstr "Текстового файла, строки отдельными абзацами"
 
 #: src/MenuBackend.C:714
 #, fuzzy
@@ -13301,6 +13323,14 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Нвозможно открыть документ %1$s"
+
+#: src/output_plaintext.C:155
+msgid "Abstract: "
+msgstr "Аннотация: "
+
+#: src/output_plaintext.C:167
+msgid "References: "
+msgstr "Ссылки: "
 
 #: src/support/filefilterlist.C:109
 msgid "All files (*)"

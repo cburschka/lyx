@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-20 18:32+0100\n"
+"POT-Creation-Date: 2007-01-21 12:01+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -3508,7 +3508,7 @@ msgstr "Podpodrazdelek*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152 src/output_plaintext.C:155
+#: src/output_plaintext.C:152
 msgid "Abstract"
 msgstr "Povzetek"
 
@@ -3797,7 +3797,6 @@ msgstr "Priznanja"
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
-#: src/output_plaintext.C:167
 msgid "References"
 msgstr "Sklici"
 
@@ -8244,15 +8243,15 @@ msgstr "Literatura"
 msgid "LyX Document...|X"
 msgstr "Dokument v LyXu...|X"
 
-#: lib/ui/classic.ui:320
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
 #, fuzzy
-msgid "Plain Text as Lines...|L"
-msgstr "Ascii kot vrstice...|v"
+msgid "Plain Text...|T"
+msgstr "Umesti"
 
-#: lib/ui/classic.ui:321
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
 #, fuzzy
-msgid "Plain Text as Paragraphs...|P"
-msgstr "Ascii kot odstavki...|o"
+msgid "Plain Text, Join Lines...|J"
+msgstr "Ascii kot vrstice...|v"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 #, fuzzy
@@ -8948,16 +8947,6 @@ msgstr "Matematièna plo¹èa|l"
 msgid "Text Wrap Float|W"
 msgstr "Vstavi tabelo"
 
-#: lib/ui/stdmenus.inc:380
-#, fuzzy
-msgid "Plain Text...|T"
-msgstr "Umesti"
-
-#: lib/ui/stdmenus.inc:381
-#, fuzzy
-msgid "Plain Text, Join Lines...|J"
-msgstr "Ascii kot vrstice...|v"
-
 #: lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "External Material...|M"
@@ -9436,6 +9425,39 @@ msgstr "Prebrskaj|#r"
 msgid "Next note"
 msgstr "Opomba|O"
 
+#: lib/ui/stdtoolbars.inc:166
+#, fuzzy
+msgid "View/Update Document"
+msgstr "®elite shraniti spis?"
+
+#: lib/ui/stdtoolbars.inc:167
+#, fuzzy
+msgid "View DVI"
+msgstr "Ogled|O"
+
+#: lib/ui/stdtoolbars.inc:168
+#, fuzzy
+msgid "Update DVI"
+msgstr "&Osve¾i"
+
+#: lib/ui/stdtoolbars.inc:169
+msgid "View PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:170
+msgid "Update PDF (pdflatex)"
+msgstr ""
+
+#: lib/ui/stdtoolbars.inc:171
+#, fuzzy
+msgid "View PostScript"
+msgstr "&Gonilnik za postscript:"
+
+#: lib/ui/stdtoolbars.inc:172
+#, fuzzy
+msgid "Update PostScript"
+msgstr "&Gonilnik za postscript:"
+
 #: src/BufferView.C:216
 #, c-format
 msgid ""
@@ -9890,13 +9912,13 @@ msgstr "Ni odprtih spisov!"
 
 #: src/MenuBackend.C:540
 #, fuzzy
-msgid "Plain Text as Lines"
-msgstr "Besedilo ASCII kot vrstice"
+msgid "Plain Text"
+msgstr "Umesti"
 
 #: src/MenuBackend.C:542
 #, fuzzy
-msgid "Plain Text as Paragraphs"
-msgstr "Besedilo ASCII kot odstavki"
+msgid "Plain Text, Join Lines"
+msgstr "Besedilo ASCII kot vrstice"
 
 #: src/MenuBackend.C:714
 #, fuzzy
@@ -13361,6 +13383,16 @@ msgid ""
 "Could not open the specified document\n"
 "%1$s."
 msgstr "Spisa ni moè odpreti"
+
+#: src/output_plaintext.C:155
+#, fuzzy
+msgid "Abstract: "
+msgstr "Povzetek"
+
+#: src/output_plaintext.C:167
+#, fuzzy
+msgid "References: "
+msgstr " Sklic: "
 
 #: src/support/filefilterlist.C:109
 #, fuzzy
