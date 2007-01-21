@@ -338,7 +338,8 @@ public:
 	int cursorY(BufferView const & bv, CursorSlice const & cursor,
 		bool boundary) const;
 
-	/// delete double space or empty paragraphs around old cursor
+	/// delete double space or empty paragraphs around old cursor.
+	/// \retval true if a change has happened and we need a redraw.
 	/// FIXME: replace LCursor with DocIterator. This is not possible right
 	/// now because recordUndo() is called which needs a LCursor.
 	bool deleteEmptyParagraphMechanism(LCursor & cur,
