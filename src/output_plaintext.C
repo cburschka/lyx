@@ -152,7 +152,7 @@ void writePlaintextParagraph(Buffer const & buf,
 			os << _("Abstract") << "\n\n";
 			currlinelen = 0;
 		} else {
-			docstring const abst = _("Abstract") + from_ascii(": ");
+			docstring const abst = _("Abstract: ");
 			os << abst;
 			currlinelen += abst.length();
 		}
@@ -164,7 +164,7 @@ void writePlaintextParagraph(Buffer const & buf,
 				os << _("References") << "\n\n";
 				currlinelen = 0;
 			} else {
-				docstring const refs = _("References") + from_ascii(": ");
+				docstring const refs = _("References: ");
 				os << refs;
 				currlinelen += refs.length();
 			}
