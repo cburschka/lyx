@@ -341,8 +341,9 @@ public:
 	/// returns -1 if inset not found
 	int getPositionOfInset(InsetBase const * inset) const;
 
-	/// Returns the number of line breaks and white-space stripped at the start
-	int stripLeadingSpaces(bool trackChanges);
+	/// returns true if at least one line break or line separator has been deleted 
+	/// at the beginning of the paragraph (either physically or logically)
+	bool stripLeadingSpaces(bool trackChanges);
 
 	/// return true if we allow multiple spaces
 	bool isFreeSpacing() const;
