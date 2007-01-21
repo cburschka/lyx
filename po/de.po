@@ -2055,6 +2055,10 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
+"Die maximale Zeilenlänge für exportierte Text/LaTeX/SGML-Dateien. Bei einem "
+"Wert von 0 werden Absätze in einer einzelnen Zeile ausgegeben; wenn die "
+"Zeilenlänge größer 0 ist, sind Absätze durch eine Leerzeile voneinander "
+"getrennt."
 
 #: src/frontends/qt4/ui/QPrefPlaintextUi.ui:82
 msgid "Output &line length:"
@@ -7712,14 +7716,12 @@ msgid "LyX Document...|X"
 msgstr "LyX-Dokument...|L"
 
 #: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
-#, fuzzy
 msgid "Plain Text...|T"
-msgstr "Einfacher Text"
+msgstr "Einfacher Text...|T"
 
 #: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
-#, fuzzy
 msgid "Plain Text, Join Lines...|J"
-msgstr "Einfacher Text als Zeilen...|Z"
+msgstr "Einfacher Text, Zeilen verbinden...|Z"
 
 # , c-format
 # , c-format
@@ -8016,24 +8018,20 @@ msgid "Table Settings...|a"
 msgstr "Tabellen-Einstellungen...|n"
 
 #: lib/ui/stdmenus.inc:128
-#, fuzzy
 msgid "Plain Text|T"
-msgstr "Einfacher Text"
+msgstr "Einfacher Text|T"
 
 #: lib/ui/stdmenus.inc:129
-#, fuzzy
 msgid "Plain Text, Join Lines|J"
-msgstr "Einfacher Text als Zeilen|Z"
+msgstr "Einfacher Text, Zeilen verbinden|Z"
 
 #: lib/ui/stdmenus.inc:131
-#, fuzzy
 msgid "Selection|S"
-msgstr "&Auswahl:"
+msgstr "Auswahl|A"
 
 #: lib/ui/stdmenus.inc:132
-#, fuzzy
 msgid "Selection, Join Lines|i"
-msgstr "Auswahl als Zeilen|e"
+msgstr "Auswahl, Zeilen verbinden|v"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Customized...|C"
@@ -8400,9 +8398,8 @@ msgid "TeX Information|I"
 msgstr "TeX-Informationen|X"
 
 #: lib/ui/stdmenus.inc:468
-#, fuzzy
 msgid "Insets|n"
-msgstr "Einfügen|E"
+msgstr "Einfügungen|n"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -8715,37 +8712,32 @@ msgid "Next note"
 msgstr "Nächste Notiz"
 
 #: lib/ui/stdtoolbars.inc:166
-#, fuzzy
 msgid "View/Update Document"
-msgstr "Hauptdokument"
+msgstr "Dokument ansehen/aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:167
-#, fuzzy
 msgid "View DVI"
-msgstr "Ansicht|i"
+msgstr "DVI ansehen"
 
 #: lib/ui/stdtoolbars.inc:168
-#, fuzzy
 msgid "Update DVI"
-msgstr "&Aktualisieren"
+msgstr "DVI aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:169
 msgid "View PDF (pdflatex)"
-msgstr ""
+msgstr "PDF (pdflatex) ansehen"
 
 #: lib/ui/stdtoolbars.inc:170
 msgid "Update PDF (pdflatex)"
-msgstr ""
+msgstr "PDF (pdflatex) aktualisieren"
 
 #: lib/ui/stdtoolbars.inc:171
-#, fuzzy
 msgid "View PostScript"
-msgstr "Post Scriptum:"
+msgstr "PostScript ansehen"
 
 #: lib/ui/stdtoolbars.inc:172
-#, fuzzy
 msgid "Update PostScript"
-msgstr "Post Scriptum:"
+msgstr "PostScript aktualisieren"
 
 #: src/BufferView.C:216
 #, c-format
@@ -9167,14 +9159,12 @@ msgid "No Documents Open!"
 msgstr "Keine Dokumente geöffnet!"
 
 #: src/MenuBackend.C:540
-#, fuzzy
 msgid "Plain Text"
 msgstr "Einfacher Text"
 
 #: src/MenuBackend.C:542
-#, fuzzy
 msgid "Plain Text, Join Lines"
-msgstr "Einfacher Text als Zeilen|Z"
+msgstr "Einfacher Text, Zeilen verbinden"
 
 #: src/MenuBackend.C:714
 msgid "Master Document"
@@ -9307,12 +9297,12 @@ msgid "Backup failure"
 msgstr "Die Sicherung ist fehlgeschlagen"
 
 #: src/buffer.C:772
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
-"LyX konnte keine Sicherungskopie in %1$s erstellen.\n"
+"Die Sicherungskopie %1$s kann nicht erstellt werden.\n"
 "Bitte prüfen Sie, ob das Verzeichnis existiert und beschreibbar ist."
 
 #: src/buffer.C:884
