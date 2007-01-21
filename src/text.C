@@ -887,13 +887,13 @@ void LyXText::acceptChange(LCursor & cur)
 		// last paragraph of the selection requires special handling
 		if (pit == end.pit()) {
 			// skip if the selection ends before the end-of-par
-			if (end.pos < pos)
+			if (end.pos() < pos)
 				continue;
 
 			// skip if the selection ends with the end-of-par and this is not the
 			// last paragraph of the document
 			// note: the user must be able to accept the end-of-par of the last par!
-			if (end.pos == pos && pit != pars_.size() - 1)
+			if (end.pos() == pos && pit != pars_.size() - 1)
 				continue;
 		}
 
