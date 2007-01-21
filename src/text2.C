@@ -1233,8 +1233,12 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
 		return true;
 	}
 
-	if (oldpar.stripLeadingSpaces(cur.buffer().params().trackChanges))
+	if (oldpar.stripLeadingSpaces(cur.buffer().params().trackChanges)) {
 		need_anchor_change = true;
+		// We return true here because the Paragraph contents changed and
+		// we need a redraw before further action is processed.
+		return true;
+	}
 
 	return false;
 }
