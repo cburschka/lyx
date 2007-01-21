@@ -163,9 +163,9 @@ Toolbar "review" "Review"
 	Item "Next note" "note-next"
 End
 
-Toolbar "view/update" "View/update view document"
-	Item "View DVI output" "buffer-view dvi"
-	Item "Update DVI output" "buffer-update dvi"
+Toolbar "view/update" "View/Update Document"
+	Item "View DVI" "buffer-view dvi"
+	Item "Update DVI" "buffer-update dvi"
 	Item "View PDF (pdflatex)" "buffer-view pdf2"
 	Item "Update PDF (pdflatex)" "buffer-update pdf2"
 	Item "View PostScript" "buffer-view ps"
