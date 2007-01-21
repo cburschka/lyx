@@ -163,7 +163,7 @@ Toolbar "review" "Review"
 	Item "Next note" "note-next"
 End
 
-Toolbar "view/update" "View/Update Document"
+Toolbar "view/update" "View/Update"
 	Item "View DVI" "buffer-view dvi"
 	Item "Update DVI" "buffer-update dvi"
 	Item "View PDF (pdflatex)" "buffer-view pdf2"
