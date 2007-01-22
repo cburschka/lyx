@@ -1,0 +1,94 @@
+﻿Version LyX 1.5svn-xx-01-2007
+
+- LyX 1.5svn from 15-01-2007:
+  - InstantPreview and formal tables work now properly
+  - fix some problems when file paths have accented characters
+  - new toolbar to view/update view documents
+  - lots of crashes fixed
+
+- fix crash when viewing PDF when Acrobat 8 Standard/Professional is used
+- existing Python installation is now only used for LyX when it is Python 2.5
+  (some Compaq and Dell computers are delivered with outdated Python interpreters)
+- the thesaurus program "Aiksaurus" that is used by LyX is now registered separately from LyX
+
+- updated to ImageMagick 6.3.2-0
+
+Thanks to Christian Ridderström:
+- updated Swedish translation of the installer
+
+Known problem:
+- LyX's package and class database is incomplete when you don't have an open internet
+  connection while LyX is first started. (This is a bug in MiKTeX.)
+  Workaround: open an internet connection and reconfigure LyX
+
+
+Version LyX 1.5svn-15-01-2007
+
+- LyX 1.5svn from 15-01-2007:
+  - improved bookmark handling
+  - copy/paste now possible between LyX-files opened in different LyX instances (programs).
+  - updated documentation
+- this LyX 1.5svn build can now be started on every Windows 2000/XP machine
+
+- updated Readme files for the installer sourcecode:
+  - mention the Galician translation files for NSIS
+
+- updated Galician translation of the installer
+
+Known LyX problem:
+- LyX's package and class database is incomplete when you don't have an open internet
+  connection while LyX is first started. (This is a bug in MiKTeX.)
+  Workaround: open an internet connection and reconfigure LyX
+
+
+Version LyX 1.5svn-07-01-2007
+
+- LyX 1.5svn from 07-01-2007:
+  - the tex2lyx.exe and lyx.exe and LyX's dialogs now have an icon
+  - LyX is now also translated into Galician
+  - you can now copy and paste stuff from other programs to LyX with "Strg-v"
+    like for all other Windows programs
+  - lots of bugfixes: e.g. TOC dialog, spellchecker, change tracking, LaTeX-error dialog
+
+- updated Readme files for the installer sourcecode:
+  - mention the required NSIS-package "InetLoad"
+  - require NSIS 2.22 to create the installer
+- updated installer source code documentation
+
+- fix bug that small installer version took care about JabRef while uninstalling
+- fix that complete installer version does no longer propose to install programs
+  that are already installed
+- fix crash when viewing PDF when Adobe Reader 8 is used
+
+Thanks to Ramon Flores <fa2ramon@usc.es>:
+- updated Spanish and Portuguese translation and new Galician translation of the installer
+
+
+Version LyX 1.5svn-22-12-2006
+
+- LyX 1.5svn from 22-12-2006
+- added two .dll-files needed to get LyX working on all Windows platforms
+
+!Happy new year!
+
+
+Version LyX 1.5svn-18-12-2006
+
+- LyX 1.5svn from 18-12-2006
+- open LyX with defined session file
+- update to MiKTeX 2.5.2540
+- update to - ImageMagick 6.3.1-2
+- fix bug that installed Ghostscript is not always recognized
+- fix error when invoking View -> PDF (pdflatex)
+- GSView is no longer shipped with the small installer version
+- the complete installer version comes now with the bibliography manager "JabRef"
+  which can be installed optionally
+- updated to version 1.4.3-6 of the Extended-Insets manual
+
+
+Version LyX 1.5svn-13-12-2006
+
+- LyX 1.5svn from 13-12-2006
+- ImageMagick 6.3.1-1
+- new method to view PDF-files
+- fixes bug in Aspell that prevents words to be added to spellchecker database
