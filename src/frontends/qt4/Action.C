@@ -12,14 +12,13 @@
 
 #include "Action.h"
 
+#include "GuiView.h"
+#include "qt_helpers.h"
+
 #include "lyx_cb.h"
 #include "lyxfunc.h"
 #include "FuncStatus.h"
 #include "debug.h"
-
-#include "frontends/LyXView.h"
-
-#include "qt_helpers.h"
 
 #include "support/lstrings.h"
 
@@ -40,9 +39,9 @@ int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
-Action::Action(LyXView & lyxView, docstring const & text,
+Action::Action(GuiView & lyxView, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip)
-	: QAction(this), func_(func), lyxView_(lyxView)
+	: QAction(&lyxView), func_(func), lyxView_(lyxView)
 {
 	setText(toqstr(text));
 	setToolTip(toqstr(tooltip));
@@ -51,9 +50,9 @@ Action::Action(LyXView & lyxView, docstring const & text,
 	update();
 }
 
-Action::Action(LyXView & lyxView, string const & icon, docstring const & text,
+Action::Action(GuiView & lyxView, string const & icon, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip)
-		: QAction(this), func_(func), lyxView_(lyxView)
+		: QAction(&lyxView), func_(func), lyxView_(lyxView)
 {
 	setIcon(QPixmap(icon.c_str()));
 	setText(toqstr(text));
