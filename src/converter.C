@@ -426,9 +426,11 @@ bool Converters::convert(Buffer const * buffer,
 			int res;
 			if (conv.original_dir) {
 				Path p(buffer->filePath());
-				res = one.startscript(type, command);
+				res = one.startscript(type,
+					to_filesystem8bit(from_utf8(command)));
 			} else
-				res = one.startscript(type, command);
+				res = one.startscript(type,
+					to_filesystem8bit(from_utf8(command)));
 
 			if (!real_outfile.empty()) {
 				Mover const & mover = getMover(conv.to);
@@ -450,7 +452,8 @@ bool Converters::convert(Buffer const * buffer,
 				string const command2 = script +
 					" < " + quoteName(infile2 + ".out") +
 					" > " + quoteName(logfile);
-				one.startscript(Systemcall::Wait, command2);
+				one.startscript(Systemcall::Wait,
+					to_filesystem8bit(from_utf8(command2)));
 				if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
 					return false;
 			}
@@ -464,7 +467,7 @@ bool Converters::convert(Buffer const * buffer,
 // it is a document (.lyx) or something else. Same goes for elsewhere.
 					Alert::error(_("Cannot convert file"),
 						bformat(_("An error occurred whilst running %1$s"),
-						from_ascii(command.substr(0, 50))));
+						from_utf8(command.substr(0, 50))));
 				}
 				return false;
 			}
@@ -487,7 +490,7 @@ bool Converters::convert(Buffer const * buffer,
 			if (!mover.rename(FileName(from), FileName(to))) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary directory from %1$s to %2$s."),
-						from_ascii(from), from_ascii(to)));
+						from_utf8(from), from_utf8(to)));
 				return false;
 			}
 		}

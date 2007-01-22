@@ -125,6 +125,13 @@ docstring const from_filesystem8bit(std::string const & s)
 }
 
 
+std::string const to_filesystem8bit(docstring const & s)
+{
+	QByteArray const encoded = QFile::encodeName(toqstr(s));
+	return std::string(encoded.begin(), encoded.end());
+}
+
+
 bool operator==(lyx::docstring const & l, char const * r)
 {
 	int const len = l.length();

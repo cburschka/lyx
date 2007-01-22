@@ -59,6 +59,9 @@ std::string const to_local8bit(docstring const & s);
 /// convert \p s from the encoding of the file system to ucs4.
 docstring const from_filesystem8bit(std::string const & s);
 
+/// convert \p s from ucs4 to the encoding of the file system.
+std::string const to_filesystem8bit(docstring const & s);
+
 /// Compare a docstring with a C string of ASCII characters
 bool operator==(lyx::docstring const &, char const *);
 
