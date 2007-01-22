@@ -1237,8 +1237,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			view()->setCursorFromRow(row);
 
-			view()->center();
-			// see BufferView::center()
+			updateFlags = Update::FitCursor;
 			break;
 		}
 
