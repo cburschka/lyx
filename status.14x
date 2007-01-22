@@ -115,6 +115,9 @@ What's new
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
+- Fix a crash when navigating from a label a reference in the crossrefs
+  dialog (bug 3063) [qt only].
+
 - Fix hang when deleting a forced newling character in change tracking
   mode (bug 2865).
 

@@ -1,3 +1,8 @@
+2007-01-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QRef.C (updateRefs): remove recursive call to gotoRef()
+	(fixes bug 3063); backport from revision 16754.
+
 2007-01-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QGraphicsDialog.C: allow double values in the bounding
