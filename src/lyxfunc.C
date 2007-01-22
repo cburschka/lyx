@@ -386,24 +386,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	//lyxerr << "LyXFunc::getStatus: cmd: " << cmd << endl;
 	FuncStatus flag;
 
-	if (cmd.action == LFUN_LYX_QUIT) {
-		flag.message(from_utf8(N_("Exiting")));
-		flag.enabled(true);
-		return flag;
-	} else if (cmd.action == LFUN_BOOKMARK_GOTO) {
-		// bookmarks can be valid even if there is no opened buffer
-		flag.enabled(LyX::ref().session().bookmarks().isValid(convert<unsigned int>(to_utf8(cmd.argument()))));
-		return flag;
-	} else if (cmd.action == LFUN_BOOKMARK_CLEAR) {
-		flag.enabled(LyX::ref().session().bookmarks().size() > 0);
-		return flag;
-	} else if (cmd.action == LFUN_TOOLBAR_TOGGLE_STATE) {
-		ToolbarBackend::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
-		if (!(flags & ToolbarBackend::AUTO))
-			flag.setOnOff(flags & ToolbarBackend::ON);
-		return flag;
-	}
-
 	LCursor & cur = view()->cursor();
 
 	/* In LyX/Mac, when a dialog is open, the menus of the
@@ -614,6 +596,22 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_BOOKMARK_GOTO: {
+		const unsigned int num = convert<unsigned int>(to_utf8(cmd.argument()));
+		enable = LyX::ref().session().bookmarks().isValid(num);
+		break;
+	}
+
+	case LFUN_BOOKMARK_CLEAR:
+		enable = LyX::ref().session().bookmarks().size() > 0;
+		break;
+
+	case LFUN_TOOLBAR_TOGGLE_STATE: {
+		ToolbarBackend::Flags flags = lyx_view_->getToolbarState(to_utf8(cmd.argument()));
+		if (!(flags & ToolbarBackend::AUTO))
+			flag.setOnOff(flags & ToolbarBackend::ON);
+		break;
+	}
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
@@ -677,6 +675,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_BUFFER_PREVIOUS:
 	case LFUN_WINDOW_NEW:
 	case LFUN_WINDOW_CLOSE:
+	case LFUN_LYX_QUIT:
 		// these are handled in our dispatch()
 		break;
 
@@ -1074,6 +1073,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_LYX_QUIT:
 			// quitting is triggered by the gui code
 			// (leaving the event loop).
+			lyx_view_->message(from_utf8(N_("Exiting.")));
 			if (theBufferList().quitWriteAll())
 				theApp()->gui().closeAllViews();
 			break;
