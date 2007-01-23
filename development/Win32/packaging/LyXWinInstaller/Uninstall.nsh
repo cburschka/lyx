@@ -42,9 +42,8 @@ Section "un.LyX" un.SecUnProgramFiles
   ReadRegStr $0 HKLM "Software\Aiksaurus" "OnlyWithLyX" ; special entry to test if it was installed with LyX
   ${if} $0 == "Yes" 
    ; unregister Aiksaurus
-   ReadRegStr $1 HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "AIK_DATA_DIR"
+   ReadRegStr $1 HKLM "Software\Aiksaurus" "Data Path"
    RMDir /r "$1"
-   DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "AIK_DATA_DIR"
    DeleteRegKey HKLM "SOFTWARE\Aiksaurus"
   ${endif}
 
