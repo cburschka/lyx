@@ -22,6 +22,9 @@
 #include "support/path.h"
 
 #include "debug.h"
+#include "gettext.h"
+
+#include "frontends/Alert.h"
 
 #include <boost/assert.hpp>
 
@@ -343,16 +346,16 @@ GetFolderPath::GetFolderPath()
 {
 	folder_module_ = LoadLibrary("shfolder.dll");
 	if (!folder_module_) {
-		lyxerr << "Unable to load shfolder.dll\nPlease install."
-		       << std::endl;
+		frontend::Alert::error(_("System file not found"),
+			_("Unable to load shfolder.dll\nPlease install."));
 		bail_out();
 	}
 
 	folder_path_func_ = reinterpret_cast<function_pointer>(::GetProcAddress(folder_module_, "SHGetFolderPathA"));
 	if (folder_path_func_ == 0) {
-		lyxerr << "Unable to find SHGetFolderPathA in shfolder.dll\n"
-			  "Don't know how to proceed. Sorry."
-		       << std::endl;
+		frontend::Alert::error(_("System function not found"),
+			_("Unable to find SHGetFolderPathA in shfolder.dll\n"
+			  "Don't know how to proceed. Sorry."));
 		bail_out();
 	}
 }
