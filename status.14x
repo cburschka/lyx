@@ -66,6 +66,9 @@ What's new
 
 * Document Input/Output
 
+- Fix crash when viewing documents as PDF on Windows with installed
+  Adobe Reader/Acrobat 8 (bug 3045).
+
 - Write inherited colors correctly as "inherit" to the .lyx file. Previously
   they where written as "default", which was then read in as "none".
   Fix some help documents that contained this invalid color.
@@ -86,7 +89,7 @@ What's new
 
 - Revert fix from 1.4.3 for better display of script insets with a nucleus
   with more than one element (like {a'}^{2}), since it was buggy and it is
-  very difficult to do it right (bug 2921)
+  very difficult to do it right (bug 2921).
 
 - Re-enable Address paragraph style in AMS article classes (bug 2890).
 
@@ -107,6 +110,8 @@ What's new
 * User Interface:
 
 - Fix slowness with lots of math on Windows (bug 2900).
+
+- Fix that LyX's dialogs remain partly untranslated on Windows (bug 2906).
 
 - Fix a crash with PageDown/Up when the next/previous paragraph is an inset
   taller than the workarea.
