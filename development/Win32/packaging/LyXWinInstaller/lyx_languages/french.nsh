@@ -16,7 +16,7 @@ LangString WelcomePageText "${LYX_LANG}" "Cet assistant vous guidera durant l'in
 					  \r\n\
 					  $_CLICK"
 
-LangString FileTypeTitle "${LYX_LANG}" "LyX-Document"
+LangString FileTypeTitle "${LYX_LANG}" "Document LyX"
 
 LangString SecInstGSviewTitle "${LYX_LANG}" "GSview"
 LangString SecInstJabRefTitle "${LYX_LANG}" "JabRef"

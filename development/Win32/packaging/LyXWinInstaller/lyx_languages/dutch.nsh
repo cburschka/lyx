@@ -10,7 +10,7 @@ LicenseLangString LyXLicenseData ${LYX_LANG} "${PRODUCT_LICENSE_FILE}"
 
 LangString WelcomePageText "${LYX_LANG}" "Dit installatie programma zal LyX op uw systeem installeren.\r\n\
 					  \r\n\
-					  U heeft systeembeheer nodig om LyX te installeren.\r\n\
+					  U heeft systeem-beheerrechten nodig om LyX te installeren.\r\n\
 					  \r\n\
 					  Het is aanbevolen om alle andere programma's af te sluiten voordat u Setup start. Dit zorgt ervoor dat Setup bepaalde systeembestanden kan bijwerken zonder uw systeem opnieuw op te starten.\r\n\
 					  \r\n\
@@ -37,25 +37,25 @@ LangString AvailableLang "${LYX_LANG}" " Beschikbare Talen "
 LangString MissProgHeader "${LYX_LANG}" "Controleer welke programma's nodig zijn"
 LangString MissProgCap "${LYX_LANG}" "De volgende aanvullende programmma's zijn vereist, en zullen worden geinstalleerd"
 LangString MissProgLatex "${LYX_LANG}" "MiKTeX, LaTeX software"
-LangString MissProgGhostscript "${LYX_LANG}" "Ghostscript, een PostScript/PDF conversie programma"
-LangString MissProgImageMagick "${LYX_LANG}" "ImageMagick, een grafische conversie programma"
+LangString MissProgGhostscript "${LYX_LANG}" "Ghostscript, een PostScript/PDF converteer programma"
+LangString MissProgImageMagick "${LYX_LANG}" "ImageMagick, een programma om afbeeldingen te converteren"
 LangString MissProgAspell "${LYX_LANG}" "Aspell, een programma voor spellingscontrole"
 LangString MissProgMessage "${LYX_LANG}" 'Aanvullende programma$\'s zijn niet vereist.'
 
 LangString EnterLaTeXHeader1 "${LYX_LANG}" 'LaTeX software'
 LangString EnterLaTeXHeader2 "${LYX_LANG}" 'Geef aan welke LaTeX-software LyX moet gebruiken.'
-LangString EnterLaTeXFolder "${LYX_LANG}" 'You can optionally set here the path to the file "latex.exe" and therewith set the \
-					   LaTeX-distribution that should be used by LyX.\r\n\
-					   If you don$\'t use LaTeX, LyX cannot output documents!\r\n\
+LangString EnterLaTeXFolder "${LYX_LANG}" 'U kunt hier opgeven in welke map het programma "latex.exe" zich bevindt en op deze manier bepalen \
+					   welke LaTeX softare gebruikt wordt door LyX.\r\n\
+					   Zonder LaTeX kan LyX geen documenten generen!\r\n\
 					   \r\n\
-					   The installer has detected the LaTeX-distribution \
-					   "$LaTeXName" on your system. Displayed below is its path.'
-LangString EnterLaTeXFolderNone "${LYX_LANG}" 'Set below the path to the file "latex.exe". Therewith you set which \
-					       LaTeX-distribution should be used by LyX.\r\n\
-					       If you don$\'t use LaTeX, LyX cannot output documents!\r\n\
+					   Het installatie programma heeft de LaTeX software \
+					   "$LaTeXName" op uw systeem gevonden in de volgende map.'
+LangString EnterLaTeXFolderNone "${LYX_LANG}" 'U kunt hier opgeven in welke map het programma "latex.exe" zich bevindt en op deze manier bepalen \
+					   welke LaTeX software gebruikt wordt door LyX.\r\n\
+					   Zonder LaTeX kan LyX geen documenten generen!\r\n\
 					       \r\n\
-					       The installer couldn$\'t find a LaTeX-distribution on your system.'
-LangString PathName "${LYX_LANG}" 'Path to the file "latex.exe"'
+					       Het installatie programma heeft geen LaTeX software op uw systeem gevonden.'
+LangString PathName "${LYX_LANG}" 'Map met het programma "latex.exe"'
 LangString DontUseLaTeX "${LYX_LANG}" "Gebruik geen LaTeX"
 LangString InvalidLaTeXFolder "${LYX_LANG}" '"latex.exe" is niet gevonden.'
 
@@ -75,48 +75,48 @@ LangString GSviewError "${LYX_LANG}" 'Het programma "GSview" kon niet worden gei
 		                      De installatie van LyX gaat echter door.$\r$\n\
 				      Probeer GSview later te installeren.'
 
-LangString JabRefInfo "${LYX_LANG}" 'Now the installer of the program "JabRef" will be launched.$\r$\n\
-				     You can use all default options of the JabRef-installer.'
-LangString JabRefError "${LYX_LANG}" 'The program "JabRef" could not successfully be installed!$\r$\n\
-		                      The installer will continue anyway.$\r$\n\
-				      Try to install JabRef again later.'
+LangString JabRefInfo "${LYX_LANG}" 'Het installatie programma van "JabRef" wordt nu gestart.$\r$\n\
+				     U kunt de standaard opties gebruiken.'
+LangString JabRefError "${LYX_LANG}" 'Het programma "JabRef" kon niet worden geinstalleerd!$\r$\n\
+		                      De LyX installatie gaat desondanks verder.$\r$\n\
+				      Probeer JabRef later te installeren.'
 				      
 LangString LatexConfigInfo "${LYX_LANG}" "De volgende configuratie van LyX zal enige tijd duren."
 
-LangString AspellInfo "${LYX_LANG}" 'Now dictionaries for the spellchecker "Aspell" will be downloaded and installed.$\r$\n\
-				     Every dictionary has a different license that will be displayed before the installation.'
-LangString AspellDownloadFailed "${LYX_LANG}" "No Aspell spellchecker dictionary could be downloaded!"
-LangString AspellInstallFailed "${LYX_LANG}" "No Aspell spellchecker dictionary could be installed!"
-LangString AspellPartAnd "${LYX_LANG}" " and "
+LangString AspellInfo "${LYX_LANG}" 'Er worden nu woordenlijst gedownload en geinstalleer voor het spellingscontrole programma "Aspell".$\r$\n\
+				     Elke woordenlijst heeft een eigen licensie die zal worden getoond voor installatie.'
+LangString AspellDownloadFailed "${LYX_LANG}" "Er kon geen Aspell woordenlijst worden gedownload!"
+LangString AspellInstallFailed "${LYX_LANG}" "Er kon geen Aspell woordenlijst worden geinstalleerd!"
+LangString AspellPartAnd "${LYX_LANG}" " en "
 LangString AspellPartSep "${LYX_LANG}" ", "
-LangString AspellAll "${LYX_LANG}" 'There is already installed a dictionary of the language'
-LangString AspellNone "${LYX_LANG}" 'No dictionary for the spellchecker "Aspell" has been installed.$\r$\n\
-				     Dictionaries can be downloaded from$\r$\n\
+LangString AspellAll "${LYX_LANG}" 'Woordenlijst reeds geinstalleerd voor: '
+LangString AspellNone "${LYX_LANG}" 'Er is geen woordenlijst geinstalleerd voor het spellingscontrole programma "Aspell".$\r$\n\
+				     Woordenlijsten kunnen worden gedownload van$\r$\n\
 				     ${AspellLocation}$\r$\n\
-				     Do you want to download dictionaries now?'
-LangString AspellPartStart "${LYX_LANG}" "There was successfully installed "
-LangString AspellPart1 "${LYX_LANG}" "an english dictionary"
-LangString AspellPart2 "${LYX_LANG}" "a dictionary of the language $LangName"
-LangString AspellPart3 "${LYX_LANG}" "a$\r$\n\
-				      dictionary of the language $LangNameSys"
-LangString AspellPart4 "${LYX_LANG}" ' for the spellchecker "Aspell".$\r$\n\
-				      More dictionaries can be downloaded from$\r$\n\
+				     Wilt u de woordenlijsten nu downloaden?'
+LangString AspellPartStart "${LYX_LANG}" "Succesvolle installatie van "
+LangString AspellPart1 "${LYX_LANG}" "een engelse woordenlijst"
+LangString AspellPart2 "${LYX_LANG}" "een woordenlijst voor $LangName"
+LangString AspellPart3 "${LYX_LANG}" "een$\r$\n\
+				      woordenlijst voor $LangNameSys"
+LangString AspellPart4 "${LYX_LANG}" ' voor het spellingscontrole programma "Aspell".$\r$\n\
+				      Meer woordenlijsten kunnen worden gedownload van$\r$\n\
 				      ${AspellLocation}$\r$\n\
-				      Do you want to download other dictionaries now?'
+				      Wilt u nu andere woordenlijsten downloaden?'
 
-LangString MiKTeXPathInfo "${LYX_LANG}" "In order that every user is later able to customize MiKTeX for his needs$\r$\n\
-					 it is necessary to set write permissions for all users to MiKTeX's installation folder$\r$\n\
+LangString MiKTeXPathInfo "${LYX_LANG}" "Opdat elke gebruiker zijn MiKTeX configuratie kan aanpassen$\r$\n\
+					 is het noodzakelijk alle gebruikers schrijfpermissie te geven in MiKTeX's installatie map$\r$\n\
 					 $MiKTeXPath $\r$\n\
-					 and its subfolders."
-LangString MiKTeXInfo "${LYX_LANG}" 'The LaTeX-distribution "MiKTeX" will be used together with LyX.$\r$\n\
-				     It is recommended to install available MiKTeX-updates using the program "MiKTeX Update Wizard"$\r$\n\
-				     before you use LyX for the first time.$\r$\n\
-				     Would you now check for MiKTeX updates?'
+					 en submappen."
+LangString MiKTeXInfo "${LYX_LANG}" 'LyX gebruikt de LaTeX softare "MiKTeX".$\r$\n\
+				     Het is aanbevolen MiKTeX-updates te installeren via de "MiKTeX Update Wizard"$\r$\n\
+				     voordat u LyX voor de eerste keer gebruikt.$\r$\n\
+				     Wilt u controleren of er updates voor MiKTeX beschikbaar zijn?'
 				     
 LangString ModifyingConfigureFailed "${LYX_LANG}" "Mislukte poging om 'path_prefix' te registreren tijdens de configuratie"
 LangString CreateCmdFilesFailed "${LYX_LANG}" "lyx.bat kon niet worden aangemaakt"
 LangString RunConfigureFailed "${LYX_LANG}" "Mislukte configuratie poging"
-LangString NotAdmin "${LYX_LANG}" "U heeft systeembeheerrechten nodig om LyX te installeren!"
+LangString NotAdmin "${LYX_LANG}" "U heeft systeem-beheerrechten nodig om LyX te installeren!"
 LangString InstallRunning "${LYX_LANG}" "Het installatieprogramma is al gestart!"
 LangString StillInstalled "${LYX_LANG}" "LyX is reeds geinstalleerd! Verwijder LyX eerst."
 
@@ -128,20 +128,20 @@ LangString FinishPageRun "${LYX_LANG}" "Start LyX"
 LangString UnNotInRegistryLabel "${LYX_LANG}" "LyX is niet gevonden in het Windows register.$\r$\n\
 					       Snelkoppelingen op het Bureaublad en in het Start Menu worden niet verwijderd."
 LangString UnInstallRunning "${LYX_LANG}" "U moet LyX eerst afsluiten!"
-LangString UnNotAdminLabel "${LYX_LANG}" "U heeft systeembeheer rechten nodig om LyX te verwijderen!"
+LangString UnNotAdminLabel "${LYX_LANG}" "U heeft systeem-beheerrechten nodig om LyX te verwijderen!"
 LangString UnReallyRemoveLabel "${LYX_LANG}" "Weet u zeker dat u LyX en alle componenten volledig wil verwijderen van deze computer?"
 LangString UnLyXPreferencesTitle "${LYX_LANG}" 'LyX$\'s user preferences'
 LangString UnGSview "${LYX_LANG}" 'Klik op de "Uninstall" knop in het volgende venster om het$\r$\n\
 				   Postscript en PDF leesprogramma "GSview" te verwijderen.'
 LangString UnRemoveSuccessLabel "${LYX_LANG}" "LyX was successvol verwijderd van uw computer."
 
-LangString SecUnAspellDescription "${LYX_LANG}" "Uninstalls the spellchecker Aspell and all of its dictionaries."
-LangString SecUnMiKTeXDescription "${LYX_LANG}" "Uninstalls the LaTeX-distribution MiKTeX."
-LangString SecUnJabRefDescription "${LYX_LANG}" "Uninstalls the bibliography manager JabRef."
-LangString SecUnPreferencesDescription "${LYX_LANG}" 'Deletes LyX$\'s configuration folder$\r$\n\
+LangString SecUnAspellDescription "${LYX_LANG}" "Verwijder het spellingscontrole programma Aspell en alle bijbehorende woordelijsten."
+LangString SecUnMiKTeXDescription "${LYX_LANG}" "Verwijder de LaTeX software MiKTeX."
+LangString SecUnJabRefDescription "${LYX_LANG}" "Verwijder de bibliografie manager JabRef."
+LangString SecUnPreferencesDescription "${LYX_LANG}" 'Verwijder LyX$\'s configuratie map$\r$\n\
 					   "$AppPre\username\$AppSuff\${PRODUCT_SUBFOLDER}"$\r$\n\
-					   for all users.'
-LangString SecUnProgramFilesDescription "${LYX_LANG}" "Uninstall LyX and all of its components."
+					   voor alle gebruikers.'
+LangString SecUnProgramFilesDescription "${LYX_LANG}" "Verwijder LyX en alle bijbehorende onderdelen."
 
 !undef LYX_LANG
 

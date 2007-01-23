@@ -16,7 +16,7 @@ LangString WelcomePageText "${LYX_LANG}" "Denna guide tar dig igenom installatio
 					  \r\n\
 					  $_CLICK"
 
-LangString FileTypeTitle "${LYX_LANG}" "LyX-Document"
+LangString FileTypeTitle "${LYX_LANG}" "LyX-dokument"
 
 LangString SecInstGSviewTitle "${LYX_LANG}" "GSview"
 LangString SecInstJabRefTitle "${LYX_LANG}" "JabRef"
