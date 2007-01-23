@@ -102,7 +102,7 @@ Section "-Installation actions" SecInstallation
    ; copy the files and register Aiksaurus
    CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
    WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes" ; special entry to tell the uninstaller that it was installed with LyX
-   WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "AIK_DATA_DIR" "${AiksaurusDir}"
+   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
   ${endif}
 
   ${if} $PSVPath == ""
