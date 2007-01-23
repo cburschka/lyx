@@ -845,7 +845,7 @@ bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 }
 
 
-void LyXText::acceptChange(LCursor & cur)
+void LyXText::acceptOrRejectChange(LCursor & cur, bool accept)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -854,148 +854,82 @@ void LyXText::acceptChange(LCursor & cur)
 
 	recordUndoSelection(cur, Undo::ATOMIC);
 
-	DocIterator beg = cur.selectionBegin();
-	DocIterator end = cur.selectionEnd();
+	pit_type begPit = cur.selectionBegin().pit();
+	pit_type endPit = cur.selectionEnd().pit();
 
-	// first, accept changes within each individual paragraph (do not consider end-of-par)
+	pos_type begPos = cur.selectionBegin().pos();
+	pos_type endPos = cur.selectionEnd().pos();
+
+	// keep selection info, because endPos becomes invalid after the first loop
+	bool endsBeforeEndOfPar = (endPos < pars_[endPit].size());
+
+	// first, accept/reject changes within each individual paragraph (do not consider end-of-par)
  	
-	for (pit_type pit = beg.pit(); pit <= end.pit(); ++pit) {
-		// ignore empty paragraphs; otherwise, an assertion will fail for acceptChanges(0, 0) 
-		if (pars_[pit].size() == 0)
+	for (pit_type pit = begPit; pit <= endPit; ++pit) {
+		pos_type parSize = pars_[pit].size();
+
+		// ignore empty paragraphs; otherwise, an assertion will fail for
+		// acceptChanges(bparams, 0, 0) or rejectChanges(bparams, 0, 0)
+		if (parSize == 0)
 			continue;
 
 		// do not consider first paragraph if the cursor starts at pos size()
-		if (pit == beg.pit() && beg.pos() == pars_[pit].size())
+		if (pit == begPit && begPos == parSize)
 			continue;
 
 		// do not consider last paragraph if the cursor ends at pos 0
-		if (pit == end.pit() && end.pos() == 0) 
+		if (pit == endPit && endPos == 0) 
 			break; // last iteration anyway
 
-		pos_type left  = (pit == beg.pit() ? beg.pos() : 0);
-		pos_type right = (pit == end.pit() ? end.pos() : pars_[pit].size());
-		pars_[pit].acceptChanges(left, right);
+		pos_type left  = (pit == begPit ? begPos : 0);
+		pos_type right = (pit == endPit ? endPos : parSize);
+
+		if (accept) {
+			pars_[pit].acceptChanges(cur.buffer().params(), left, right);
+		} else {
+			pars_[pit].rejectChanges(cur.buffer().params(), left, right);
+		}
 	}
 	
-	// next, accept imaginary end-of-par characters
-	// iterate from last to first paragraph such that we don't have to care for a changing 'end' 
+	// next, accept/reject imaginary end-of-par characters
  
-	pos_type endpit = end.pit();	
-	for (pit_type pit = endpit; pit >= beg.pit(); --pit) {
+	for (pit_type pit = begPit; pit <= endPit; ++pit) {
 		pos_type pos = pars_[pit].size();
 
-		// last paragraph of the selection requires special handling
-		if (pit == end.pit()) {
-			// skip if the selection ends before the end-of-par
-			if (end.pos() < pos)
-				continue;
+		// skip if the selection ends before the end-of-par
+		if (pit == endPit && endsBeforeEndOfPar)
+			break; // last iteration anyway
 
-			// skip if the selection ends with the end-of-par and this is not the
-			// last paragraph of the document
-			// note: the user must be able to accept the end-of-par of the last par!
-			if (end.pos() == pos && pit != pars_.size() - 1)
-				continue;
-		}
+		// skip if this is not the last paragraph of the document
+		// note: the user should be able to accept/reject the par break of the last par!
+		if (pit == endPit && pit != pars_.size() - 1)
+			break; // last iteration anway
 
-
-		if (!pars_[pit].isUnchanged(pos)) {
+		if (accept) {
 			if (pars_[pit].isInserted(pos)) {
 				pars_[pit].setChange(pos, Change(Change::UNCHANGED));
-			} else { // isDeleted
-				if (pit == pars_.size()) {
-					// we cannot remove a par break at the end of the last paragraph
+			} else if (pars_[pit].isDeleted(pos)) {
+				if (pit == pars_.size() - 1) {
+					// we cannot remove a par break at the end of the last paragraph;
 					// instead, we mark it unchanged
 					pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 				} else {
 					mergeParagraph(cur.buffer().params(), pars_, pit);
-					endpit--;
+					--endPit;
+					--pit;
 				}
 			}
-		}
-	}
-
-	// finally, invoke the DEPM
-	// FIXME: the following code will be changed in the near future
-	setCursorIntern(cur, endpit, 0);
-	for (pit_type pit = endpit - 1; pit >= beg.pit(); --pit) {
-		bool dummy;
-		LCursor old = cur;
-		setCursorIntern(cur, pit, 0);
-		deleteEmptyParagraphMechanism(cur, old, dummy);
-	}
-
-	finishUndo();
-	cur.clearSelection();
-	setCursorIntern(cur, beg.pit(), beg.pos());
-	cur.updateFlags(Update::Force);
-	updateLabels(cur.buffer());
-}
-
-
-void LyXText::rejectChange(LCursor & cur)
-{
-	BOOST_ASSERT(this == cur.text());
-
-	if (!cur.selection())
-		return;
-
-	recordUndoSelection(cur, Undo::ATOMIC);
-
-	DocIterator beg = cur.selectionBegin();
-	DocIterator end = cur.selectionEnd();
-
-	// first, accept changes within each individual paragraph (do not consider end-of-par)
- 	
-	for (pit_type pit = beg.pit(); pit <= end.pit(); ++pit) {
-		// ignore empty paragraphs; otherwise, an assertion will fail for acceptChanges(0, 0) 
-		if (pars_[pit].size() == 0)
-			continue;
-
-		// do not consider first paragraph if the cursor starts at pos size()
-		if (pit == beg.pit() && beg.pos() == pars_[pit].size())
-			continue;
-
-		// do not consider last paragraph if the cursor ends at pos 0
-		if (pit == end.pit() && end.pos() == 0) 
-			break; // last iteration anyway
-
-		pos_type left  = (pit == beg.pit() ? beg.pos() : 0);
-		pos_type right = (pit == end.pit() ? end.pos() : pars_[pit].size());
-		pars_[pit].rejectChanges(left, right);
-	}
-	
-	// next, accept imaginary end-of-par characters
-	// iterate from last to first paragraph such that we don't have to care for a changing 'end' 
- 
-	pos_type endpit = end.pit();	
-	for (pit_type pit = endpit; pit >= beg.pit(); --pit) {
-		pos_type pos = pars_[pit].size();
-
-		// last paragraph of the selection requires special handling
-		if (pit == end.pit()) {
-			// skip if the selection ends before the end-of-par
-			if (end.pos() < pos)
-				continue;
-
-			// skip if the selection ends with the end-of-par and this is not the
-			// last paragraph of the document
-			// note: the user must be able to accept the end-of-par of the last par!
-			if (end.pos() == pos && pit != pars_.size() - 1)
-				continue;
-		}
-
-
-		if (!pars_[pit].isUnchanged(pos)) {
+		} else {
 			if (pars_[pit].isDeleted(pos)) {
 				pars_[pit].setChange(pos, Change(Change::UNCHANGED));
-			} else { // isInserted
-				if (pit == pars_.size()) {
-					// we cannot remove a par break at the end of the last paragraph
-					// instead, we mark it unchanged
+			} else if (pars_[pit].isInserted(pos)) {
+				if (pit == pars_.size() - 1) {
+					// we mark the par break at the end of the last paragraph unchanged
 					pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 				} else {
 					mergeParagraph(cur.buffer().params(), pars_, pit);
-					endpit--;
+					--endPit;
+					--pit;
 				}
 			}
 		}
@@ -1003,8 +937,8 @@ void LyXText::rejectChange(LCursor & cur)
 
 	// finally, invoke the DEPM
 	// FIXME: the following code will be changed in the near future
-	setCursorIntern(cur, endpit, 0);
-	for (pit_type pit = endpit - 1; pit >= beg.pit(); --pit) {
+	setCursorIntern(cur, endPit, 0);
+	for (pit_type pit = endPit - 1; pit >= begPit; --pit) {
 		bool dummy;
 		LCursor old = cur;
 		setCursorIntern(cur, pit, 0);
@@ -1013,7 +947,7 @@ void LyXText::rejectChange(LCursor & cur)
 
 	finishUndo();
 	cur.clearSelection();
-	setCursorIntern(cur, beg.pit(), beg.pos());
+	setCursorIntern(cur, begPit, begPos);
 	cur.updateFlags(Update::Force);
 	updateLabels(cur.buffer());
 }

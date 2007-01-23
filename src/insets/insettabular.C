@@ -1933,17 +1933,17 @@ void InsetTabular::setChange(Change const & change)
 }
 
 
-void InsetTabular::acceptChanges()
+void InsetTabular::acceptChanges(BufferParams const & bparams)
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx)->acceptChanges();
+		cell(idx)->acceptChanges(bparams);
 }
 
 
-void InsetTabular::rejectChanges()
+void InsetTabular::rejectChanges(BufferParams const & bparams)
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx)->rejectChanges();
+		cell(idx)->rejectChanges(bparams);
 }
 
 

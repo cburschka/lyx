@@ -211,10 +211,10 @@ public:
 	void setChange(pos_type pos, Change const & change);
 
 	/// accept changes within the given range
-	void acceptChanges(pos_type start, pos_type end);
+	void acceptChanges(BufferParams const & bparams, pos_type start, pos_type end);
 
 	/// reject changes within the given range
-	void rejectChanges(pos_type start, pos_type end);
+	void rejectChanges(BufferParams const & bparams, pos_type start, pos_type end);
 
 	/// Paragraphs can contain "manual labels", for example, Description
 	/// environment. The text for this user-editable label is stored in

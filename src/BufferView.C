@@ -859,7 +859,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 #warning FIXME changes
 #endif
 		while (findNextChange(this))
-			getLyXText()->acceptChange(cursor_);
+			getLyXText()->acceptOrRejectChange(cursor_, true);
 		update();
 		break;
 	}
@@ -870,7 +870,7 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 #warning FIXME changes
 #endif
 		while (findNextChange(this))
-			getLyXText()->rejectChange(cursor_);
+			getLyXText()->acceptOrRejectChange(cursor_, false);
 		break;
 	}
 

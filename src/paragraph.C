@@ -1462,15 +1462,15 @@ void Paragraph::setChange(pos_type pos, Change const & change)
 }
 
 
-void Paragraph::acceptChanges(pos_type start, pos_type end)
+void Paragraph::acceptChanges(BufferParams const & bparams, pos_type start, pos_type end)
 {
-	return pimpl_->acceptChanges(start, end);
+	return pimpl_->acceptChanges(bparams, start, end);
 }
 
 
-void Paragraph::rejectChanges(pos_type start, pos_type end)
+void Paragraph::rejectChanges(BufferParams const & bparams, pos_type start, pos_type end)
 {
-	return pimpl_->rejectChanges(start, end);
+	return pimpl_->rejectChanges(bparams, start, end);
 }
 
 

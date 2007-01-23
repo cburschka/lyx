@@ -277,27 +277,70 @@ void InsetText::setChange(Change const & change)
 }
 
 
-void InsetText::acceptChanges()
+void InsetText::acceptChanges(BufferParams const & bparams)
 {
-	ParagraphList::iterator pit = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	for (; pit != end; ++pit) {
-		// FIXME: change tracking (MG)
-		// we must handle end-of-par chars!
-		pit->acceptChanges(0, pit->size() + 1);
+	ParagraphList & pars = paragraphs();
+
+	// first, accept changes within each individual paragraph (do not consider end-of-par)
+ 	
+	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+		if (pars[pit].size() != 0)   // prevent assertion failure 
+			pars[pit].acceptChanges(bparams, 0, pars[pit].size());
 	}
+
+	// next, accept imaginary end-of-par characters
+ 
+	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+		pos_type pos = pars[pit].size();
+
+		if (pars[pit].isInserted(pos)) {
+			pars[pit].setChange(pos, Change(Change::UNCHANGED));
+		} else if (pars[pit].isDeleted(pos)) {
+			if (pit == pars.size() - 1) {
+				// we cannot remove a par break at the end of the last paragraph;
+				// instead, we mark it unchanged
+				pars[pit].setChange(pos, Change(Change::UNCHANGED));
+			} else {
+				mergeParagraph(bparams, pars, pit);
+				--pit;
+			}
+		}
+	}
+
+	// FIXME: finally, invoke the DEPM
 }
 
 
-void InsetText::rejectChanges()
+void InsetText::rejectChanges(BufferParams const & bparams)
 {
-	ParagraphList::iterator pit = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	for (; pit != end; ++pit) {
-		// FIXME: change tracking (MG)
-		// we must handle end-of-par chars!
-		pit->rejectChanges(0, pit->size() + 1);
+	ParagraphList & pars = paragraphs();
+
+	// first, reject changes within each individual paragraph (do not consider end-of-par)
+ 	
+	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+		if (pars[pit].size() != 0)   // prevent assertion failure
+			pars[pit].rejectChanges(bparams, 0, pars[pit].size());
 	}
+
+	// next, reject imaginary end-of-par characters
+ 
+	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+		pos_type pos = pars[pit].size();
+
+		if (pars[pit].isDeleted(pos)) {
+			pars[pit].setChange(pos, Change(Change::UNCHANGED));
+		} else if (pars[pit].isInserted(pos)) {
+			if (pit == pars.size() - 1) {
+				// we mark the par break at the end of the last paragraph unchanged
+				pars[pit].setChange(pos, Change(Change::UNCHANGED));
+			} else {
+				mergeParagraph(bparams, pars, pit);
+				--pit;
+			}
+		}
+	}
+
+	// FIXME: finally, invoke the DEPM
 }
 
 

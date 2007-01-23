@@ -153,10 +153,8 @@ public:
 	/// just selects the word the cursor is in
 	void selectWord(LCursor & cur, word_location loc);
 
-	/// accept selected change
-	void acceptChange(LCursor & cur);
-	/// reject selected change
-	void rejectChange(LCursor & cur);
+	/// accept or reject the selected change
+	void acceptOrRejectChange(LCursor & cur, bool accept);
 
 	/// returns true if par was empty and was removed
 	bool setCursor(LCursor & cur, pit_type par, pos_type pos,

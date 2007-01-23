@@ -23,6 +23,7 @@
 namespace lyx {
 
 class Buffer;
+class BufferParams;
 class BufferView;
 class CursorSlice;
 class FuncRequest;
@@ -421,9 +422,9 @@ public:
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset
-	virtual void acceptChanges() {};
+	virtual void acceptChanges(BufferParams const & bparams) {};
 	/// reject the changes within the inset
-	virtual void rejectChanges() {};
+	virtual void rejectChanges(BufferParams const & bparams) {};
 
 	/// pretty arbitrary
 	virtual int width() const { return 10; }
