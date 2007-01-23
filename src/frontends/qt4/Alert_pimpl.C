@@ -17,6 +17,8 @@
 #include "ui/QAskForTextUi.h"
 #include "qt_helpers.h"
 
+#include "frontends/Application.h"
+
 #include "gettext.h"
 
 #include <QApplication>
@@ -84,6 +86,15 @@ void warning_pimpl(docstring const & tit, docstring const & message)
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
 
+	if (theApp() == 0) {
+		int argc = 1;
+		char * argv[1];
+		QApplication app(argc, argv);
+		QMessageBox::warning(0,
+			toqstr(title),
+			toqstr(formatted(message)));
+		return;
+	}
 	MessageBox mb;
 	mb.warning(qApp->focusWidget(),
 			     toqstr(title),
@@ -94,6 +105,15 @@ void warning_pimpl(docstring const & tit, docstring const & message)
 void error_pimpl(docstring const & tit, docstring const & message)
 {
 	docstring const title = bformat(_("LyX: %1$s"), tit);
+	if (theApp() == 0) {
+		int argc = 1;
+		char * argv[1];
+		QApplication app(argc, argv);
+		QMessageBox::critical(0,
+			toqstr(title),
+			toqstr(formatted(message)));
+		return;
+	}
 	MessageBox mb;
 	mb.critical(qApp->focusWidget(),
 			      toqstr(title),

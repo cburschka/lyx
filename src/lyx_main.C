@@ -197,7 +197,7 @@ struct LyX::Singletons
 frontend::Application * theApp()
 {
 	if (singleton_)
-		return &singleton_->application();
+		return singleton_->pimpl_->application_.get();
 	else
 		return 0;
 }
@@ -1313,7 +1313,8 @@ int parse_version(string const &, string const &)
 int parse_sysdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << to_utf8(_("Missing directory for -sysdir switch")) << endl;
+		Alert::error(_("No system directory"),
+			_("Missing directory for -sysdir switch"));
 		exit(1);
 	}
 	cl_system_support = arg;
@@ -1323,7 +1324,8 @@ int parse_sysdir(string const & arg, string const &)
 int parse_userdir(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << to_utf8(_("Missing directory for -userdir switch")) << endl;
+		Alert::error(_("No user directory"),
+			_("Missing directory for -userdir switch"));
 		exit(1);
 	}
 	cl_user_support = arg;
@@ -1333,7 +1335,8 @@ int parse_userdir(string const & arg, string const &)
 int parse_execute(string const & arg, string const &)
 {
 	if (arg.empty()) {
-		lyxerr << to_utf8(_("Missing command string after --execute switch")) << endl;
+		Alert::error(_("Incomplete command"),
+			_("Missing command string after --execute switch"));
 		exit(1);
 	}
 	batch = arg;

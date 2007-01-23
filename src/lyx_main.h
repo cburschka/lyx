@@ -169,6 +169,7 @@ private:
 	friend Mover const & getMover(std::string  const & fmt);
 	friend void setMover(std::string const & fmt, std::string const & command);
 	friend Movers & theSystemMovers();
+	friend frontend::Application * theApp();
 };
 
 } // namespace lyx

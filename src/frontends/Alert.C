@@ -57,8 +57,8 @@ void Alert::warning(docstring const & title, docstring const & message)
 		lyxerr << "Warning: " << to_utf8(title) << '\n'
 		       << "----------------------------------------\n"
 		       << to_utf8(message) << endl;
-	if (use_gui)
-		warning_pimpl(title, message);
+
+	warning_pimpl(title, message);
 }
 
 
@@ -69,8 +69,7 @@ void Alert::error(docstring const & title, docstring const & message)
 		       << "----------------------------------------\n"
 		       << to_utf8(message) << endl;
 
-	if (use_gui)
-		error_pimpl(title, message);
+	error_pimpl(title, message);
 }
 
 
