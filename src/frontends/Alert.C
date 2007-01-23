@@ -53,23 +53,23 @@ int Alert::prompt(docstring const & title, docstring const & question,
 
 void Alert::warning(docstring const & title, docstring const & message)
 {
-	if (!use_gui || lyxerr.debugging())
-		lyxerr << "Warning: " << to_utf8(title) << '\n'
-		       << "----------------------------------------\n"
-		       << to_utf8(message) << endl;
+	lyxerr << "Warning: " << to_utf8(title) << '\n'
+	       << "----------------------------------------\n"
+	       << to_utf8(message) << endl;
 
-	warning_pimpl(title, message);
+	if (use_gui)
+		warning_pimpl(title, message);
 }
 
 
 void Alert::error(docstring const & title, docstring const & message)
 {
-	if (!use_gui || lyxerr.debugging())
-		lyxerr << "Error: " << to_utf8(title) << '\n'
-		       << "----------------------------------------\n"
-		       << to_utf8(message) << endl;
+	lyxerr << "Error: " << to_utf8(title) << '\n'
+	       << "----------------------------------------\n"
+	       << to_utf8(message) << endl;
 
-	error_pimpl(title, message);
+	if (use_gui)
+		error_pimpl(title, message);
 }
 
 
