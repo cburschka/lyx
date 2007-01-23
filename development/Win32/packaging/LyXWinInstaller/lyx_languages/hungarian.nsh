@@ -16,7 +16,7 @@ LangString WelcomePageText "${LYX_LANG}" "A varázsló segítségével tudja telepíte
 					  \r\n\
 					  $_CLICK"
 
-LangString FileTypeTitle "${LYX_LANG}" "LyX-Document"
+LangString FileTypeTitle "${LYX_LANG}" "LyX-dokumentum"
 
 LangString SecInstGSviewTitle "${LYX_LANG}" "GSview"
 LangString SecInstJabRefTitle "${LYX_LANG}" "JabRef"
@@ -26,7 +26,7 @@ LangString SecDesktopTitle "${LYX_LANG}" "Parancsikon asztalra"
 
 LangString SecCoreDescription "${LYX_LANG}" "A LyX futtatásához szükséges fájlok."
 LangString SecInstGSviewDescription "${LYX_LANG}" "Alkalmazás Postscript- és PDF-fájlok megjelenítéséhez."
-LangString SecInstJabRefDescription "${LYX_LANG}" "Bibliography reference manager and editor for BibTeX files."
+LangString SecInstJabRefDescription "${LYX_LANG}" "Irodalomjegyzék hivatkozás szerkesztõ és kezelõ BibTeX fájlokhoz."
 LangString SecAllUsersDescription "${LYX_LANG}" "Minden felhasználónak telepítsem vagy csak az aktuálisnak?"
 LangString SecFileAssocDescription "${LYX_LANG}" "A .lyx kiterjesztéssel rendelkezõ fájlok megnyitása automatikusan a LyX-el történik."
 LangString SecDesktopDescription "${LYX_LANG}" "LyX-ikon elhelyezése az asztalon."
@@ -61,28 +61,28 @@ LangString InvalidLaTeXFolder "${LYX_LANG}" 'Nem találom a "latex.exe" fájlt, a 
 LangString LatexInfo "${LYX_LANG}" 'A "MiKteX" LaTeX-disztribúció telepítõjének indítása következik.$\r$\n\
 			            A program telepítéséhez addig nyomkodja a "Következõ" gombot a telepítõ ablakában, amíg a telepítés el nem kezdõdik.$\r$\n\
 				    $\r$\n\
-				    !!! Kérem használja a MikTeX-telepítõ alapértelmezett opcióit !!!'
+				    !!! Kérem használja a MikTeX-telepítõ alapértelmezett opcióit!!!'
 LangString LatexError1 "${LYX_LANG}" 'Nem találtam LaTeX-disztribúciót!$\r$\n\
                       		      A LyX nem használható egy LaTeX-disztibúció nélkül,(mint például a "MiKTeX")!$\r$\n\
 				      Ezért a telepítés nem folytatható!'
 
 LangString GSviewInfo "${LYX_LANG}" 'A "GSview" program telepítõjének indítása következik.$\r$\n\
-			             A program telepítéséhez, nyomja meg a "Telepít"-gombot a telepítõ elsõ ablakában$\r$\n\
+			             A program telepítéséhez, nyomja meg a "Telepít"-gombot a telepítõ elsõ ablakában,$\r$\n\
 				     azután válasszon nyelvet, majd nyomja meg a "Következõ"-gombot a következõ telepítõ ablakokban.$\r$\n\
 				     Használhatja a program által javasolt beállításokat.'
 LangString GSviewError "${LYX_LANG}" 'A "GSview" programot nem sikerült telepíteni!$\r$\n\
 		                      Azonban a telepítés tovább fog folytatódni.$\r$\n\
 				      Késõbb próbálja meg újra a GSview telepítését.'
 
-LangString JabRefInfo "${LYX_LANG}" 'Now the installer of the program "JabRef" will be launched.$\r$\n\
-				     You can use all default options of the JabRef-installer.'
-LangString JabRefError "${LYX_LANG}" 'The program "JabRef" could not successfully be installed!$\r$\n\
-		                      The installer will continue anyway.$\r$\n\
-				      Try to install JabRef again later.'
+LangString JabRefInfo "${LYX_LANG}" 'A "JabRef" telepítõjének elindítása következik.$\r$\n\
+				     Használhatja az alapértelmezett opciókat.'
+LangString JabRefError "${LYX_LANG}" 'Nem tudom telepíteni a "JabRef" programot!$\r$\n\
+		                      Azonban a telepítés tovább fog folytatódni.$\r$\n\
+				      késõbb próbálja meg újra telepíteni a JabRef-et.'
 
 LangString LatexConfigInfo "${LYX_LANG}" "A LyX telepítés utáni beállítása hosszú idõt fog igénybe venni."
 
-LangString AspellInfo "${LYX_LANG}" 'Az "Aspell" helyesírás-ellenõrzõhoz használható szótárak letöltése és telepítése köevtkezik.$\r$\n\
+LangString AspellInfo "${LYX_LANG}" 'Az "Aspell" helyesírás-ellenõrzõhöz használható szótárak letöltése és telepítése következik.$\r$\n\
 				     Minden egyes szótárnak különbözõ licence lehet, ezért a licenc minden telepítés elõtt meg lesz jelenítve.'
 LangString AspellDownloadFailed "${LYX_LANG}" "Nem tudtam Aspell szótárat letölteni!"
 LangString AspellInstallFailed "${LYX_LANG}" "Nincs telepítendõ Aspell szótár!"
@@ -136,8 +136,8 @@ LangString UnRemoveSuccessLabel "${LYX_LANG}" "LyX eltávolítása a számítógépérõl
 
 LangString SecUnAspellDescription "${LYX_LANG}" "Az Aspell és minden szótárának eltávolítása."
 LangString SecUnMiKTeXDescription "${LYX_LANG}" "A MikTeX LaTeX-disztibúció eltávolítása."
-LangString SecUnJabRefDescription "${LYX_LANG}" "Uninstalls the bibliography manager JabRef."
-LangString SecUnPreferencesDescription "${LYX_LANG}" 'A  LyX$\'s beállítások mappa törlése$\r$\n\
+LangString SecUnJabRefDescription "${LYX_LANG}" "A JabRef irodalomjegyzék kezelõ eltávolítása."
+LangString SecUnPreferencesDescription "${LYX_LANG}" 'A  LyX beállítások mappa törlése$\r$\n\
 					   "$AppPre\username\$AppSuff\${PRODUCT_SUBFOLDER}"$\r$\n\
 					   minden felhasználónál.'
 LangString SecUnProgramFilesDescription "${LYX_LANG}" "A LyX és minden komponensének eltávolítása."
