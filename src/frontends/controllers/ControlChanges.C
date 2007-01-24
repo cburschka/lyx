@@ -19,6 +19,12 @@
 #include "changes.h"
 #include "funcrequest.h"
 #include "lyxfind.h"
+
+// FIXME: those two headers are needed because of the
+// WorkArea::redraw() call below.
+#include "frontends/LyXView.h"
+#include "frontends/WorkArea.h"
+
 #include "support/lyxtime.h"
 
 using std::string;
@@ -35,7 +41,13 @@ ControlChanges::ControlChanges(Dialog & parent)
 
 bool ControlChanges::find()
 {
-	return findNextChange(kernel().bufferview());
+	// FIXME: it would be better to use an LFUN.
+	if (!findNextChange(kernel().bufferview()))
+		return false;
+
+	kernel().bufferview()->update();
+	kernel().lyxview().currentWorkArea()->redraw();
+	return true;
 }
 
 
@@ -80,14 +92,14 @@ docstring const ControlChanges::getChangeAuthor()
 bool ControlChanges::accept()
 {
 	kernel().dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
-	return findNextChange(kernel().bufferview());
+	return find();
 }
 
 
 bool ControlChanges::reject()
 {
 	kernel().dispatch(FuncRequest(LFUN_CHANGE_REJECT));
-	return findNextChange(kernel().bufferview());
+	return find();
 }
 
 

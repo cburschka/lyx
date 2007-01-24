@@ -358,9 +358,6 @@ bool findNextChange(BufferView * bv)
 	bv->cursor().setCursor(cur);
 	bv->cursor().setSelection();
 	theSelection().haveSelection(bv->cursor().selection());
-	// if we used a lfun like in find/replace, dispatch would do
-	// that for us
-	bv->update();
 
 	return true;
 }
