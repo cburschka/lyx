@@ -18,10 +18,12 @@
 #include "support/os_win32.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
+#include "support/ExceptionMessage.h"
 #include "support/package.h"
 #include "support/path.h"
 
 #include "debug.h"
+#include "gettext.h"
 
 #include <boost/assert.hpp>
 
@@ -324,36 +326,21 @@ void windows_style_tex_paths(bool use_windows_paths)
 }
 
 
-namespace {
-
-void bail_out()
-{
-#ifndef CXX_GLOBAL_CSTD
-	using std::exit;
-#endif
-	exit(1);
-}
-
-} // namespace anon
-
-
 GetFolderPath::GetFolderPath()
 	: folder_module_(0),
 	  folder_path_func_(0)
 {
 	folder_module_ = LoadLibrary("shfolder.dll");
 	if (!folder_module_) {
-		lyxerr << "Unable to load shfolder.dll\nPlease install."
-		       << std::endl;
-		bail_out();
+		throw ExceptionMessage(ErrorException, _("System file not found"),
+			_("Unable to load shfolder.dll\nPlease install."));
 	}
 
 	folder_path_func_ = reinterpret_cast<function_pointer>(::GetProcAddress(folder_module_, "SHGetFolderPathA"));
 	if (folder_path_func_ == 0) {
-		lyxerr << "Unable to find SHGetFolderPathA in shfolder.dll\n"
-			  "Don't know how to proceed. Sorry."
-		       << std::endl;
-		bail_out();
+		throw ExceptionMessage(ErrorException, _("System function not found"),
+			_("Unable to find SHGetFolderPathA in shfolder.dll\n"
+			  "Don't know how to proceed. Sorry."));
 	}
 }
 

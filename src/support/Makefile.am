@@ -35,6 +35,7 @@ libsupport_la_SOURCES = \
 	docstring.h \
 	environment.h \
 	environment.C \
+	ExceptionMessage.h \
 	filefilterlist.C \
 	filefilterlist.h \
 	filename.C \

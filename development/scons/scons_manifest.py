@@ -99,6 +99,7 @@ src_support_header_files = Split('''
     docstream.h
     docstring.h
     environment.h
+    ExceptionMessage.h
     filefilterlist.h
     filename.h
     filetools.h

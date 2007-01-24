@@ -23,6 +23,7 @@
 #include "support/fs_extras.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/ExceptionMessage.h"
 #include "support/os.h"
 #include "support/package.h"
 #include "support/unicode.h"
@@ -518,9 +519,16 @@ int main(int argc, char * argv[])
 	}
 
 	lyx::support::os::init(argc, argv);
-	support::init_package(to_utf8(from_local8bit(argv[0])),
+
+	try { support::init_package(to_utf8(from_local8bit(argv[0])),
 		cl_system_support, cl_user_support,
 		support::top_build_dir_is_two_levels_up);
+	} catch (support::ExceptionMessage const & message) {
+		cerr << to_utf8(message.title_) << ':\n'
+			<< to_utf8(message.details_) << endl;
+		if (message.type_ == support::ErrorException)
+			exit(1);
+	}
 
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).

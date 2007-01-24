@@ -53,6 +53,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
+#include "support/ExceptionMessage.h"
 #include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
@@ -395,9 +396,17 @@ int LyX::exec(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	easyParse(argc, argv);
 
-	support::init_package(to_utf8(from_local8bit(argv[0])),
+	try { support::init_package(to_utf8(from_local8bit(argv[0])),
 	                      cl_system_support, cl_user_support,
 	                      support::top_build_dir_is_one_level_up);
+	} catch (support::ExceptionMessage const & message) {
+		if (message.type_ == support::ErrorException) {
+			Alert::error(message.title_, message.details_);
+			exit(1);
+		} else if (message.type_ == support::WarningException) {
+			Alert::warning(message.title_, message.details_);
+		}
+	}
 
 	if (!use_gui) {
 		// FIXME: create a ConsoleApplication
