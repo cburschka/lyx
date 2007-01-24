@@ -296,7 +296,9 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	//Encoding const * encoding = view()->cursor().getEncoding();
 	//encoded_last_key = keysym->getISOEncoded(encoding ? encoding->name() : "");
-	size_t encoded_last_key = keysym->getUCSEncoded();
+	// FIXME: encoded_last_key shadows the member variable of the same
+	// name. Is that intended?
+	char_type encoded_last_key = keysym->getUCSEncoded();
 
 	// Do a one-deep top-level lookup for
 	// cancel and meta-fake keys. RVDK_PATCH_5

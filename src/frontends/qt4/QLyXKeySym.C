@@ -201,7 +201,7 @@ string QLyXKeySym::getSymbolName() const
 }
 
 
-size_t QLyXKeySym::getUCSEncoded() const
+char_type QLyXKeySym::getUCSEncoded() const
 {
 	if (text_.isEmpty())
 		return 0;

@@ -57,7 +57,7 @@ public:
 	 * Return the value of the keysym into the UCS-4 encoding.
 	 * This converts the LyXKeySym to a 32-bit encoded character.
 	 */
-	virtual size_t getUCSEncoded() const = 0;
+	virtual char_type getUCSEncoded() const = 0;
 
 	/**
 	 * Return a string describing the KeySym with modifier mod.
