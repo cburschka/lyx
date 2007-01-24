@@ -98,7 +98,20 @@ namespace {
 			int xo;
 			int yo;
 			InsetBase const * inset = &it.inset();
-			Point o = theCoords.getInsets().xy(inset);
+			std::map<InsetBase const *, Point> const & data =
+				theCoords.getInsets().getData();
+			std::map<InsetBase const *, Point>::const_iterator I = data.find(inset);
+
+			// FIXME: in the case where the inset is not in the cache, this
+			// means that no part of it is visible on screen. In this case
+			// we don't do elaborate search and we just return the forwarded
+			// DocIterator at its beginning.
+			if (I == data.end()) {
+				it.top().pos() = 0;
+				return it;
+			}
+
+			Point o = I->second;
 			inset->cursorPos(it.top(), c.boundary(), xo, yo);
 			// Convert to absolute
 			xo += o.x_;

@@ -211,6 +211,9 @@ What's new
 
 - Read filenames with spaces in external insets correctly from .lyx files
 
+- Fix some crashes (with console error message "break on pointer: ...")
+  related to large insets.
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.
