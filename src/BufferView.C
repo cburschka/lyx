@@ -690,7 +690,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 }
 
 
-bool BufferView::dispatch(FuncRequest const & cmd)
+Update::flags BufferView::dispatch(FuncRequest const & cmd)
 {
 	//lyxerr << BOOST_CURRENT_FUNCTION
 	//       << [ cmd = " << cmd << "]" << endl;
@@ -704,30 +704,34 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		<< " button[" << cmd.button() << ']'
 		<< endl;
 
+	// FIXME: this should not be possible.
+	if (!buffer_)
+		return Update::None;
+
 	LCursor & cur = cursor_;
+	// Default Update flags.
+	Update::flags updateFlags = Update::Force | Update::FitCursor;
 
 	switch (cmd.action) {
 
 	case LFUN_UNDO:
-		if (buffer_) {
-			cur.message(_("Undo"));
-			cur.clearSelection();
-			if (!textUndo(*this))
-				cur.message(_("No further undo information"));
-			update();
-			switchKeyMap();
+		cur.message(_("Undo"));
+		cur.clearSelection();
+		if (!textUndo(*this)) {
+			cur.message(_("No further undo information"));
+			updateFlags = Update::None;
 		}
+		switchKeyMap();
 		break;
 
 	case LFUN_REDO:
-		if (buffer_) {
-			cur.message(_("Redo"));
-			cur.clearSelection();
-			if (!textRedo(*this))
-				cur.message(_("No further redo information"));
-			update();
-			switchKeyMap();
+		cur.message(_("Redo"));
+		cur.clearSelection();
+		if (!textRedo(*this)) {
+			cur.message(_("No further redo information"));
+			updateFlags = Update::None;
 		}
+		switchKeyMap();
 		break;
 
 	case LFUN_FILE_INSERT:
@@ -789,13 +793,13 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 				if (b == buffer_) {
 					// Set the cursor
 					setCursor(makeDocIterator(par, 0));
-					update();
 					switchKeyMap();
 				} else {
 					// Switch to other buffer view and resend cmd
 					theLyXFunc().dispatch(FuncRequest(
 						LFUN_BUFFER_SWITCH, b->fileName()));
 					theLyXFunc().dispatch(cmd);
+					updateFlags = Update::None;
 				}
 				break;
 			}
@@ -839,10 +843,9 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 		buffer_->params().trackChanges = !buffer_->params().trackChanges;
 		break;
 
-	case LFUN_CHANGES_OUTPUT: {
+	case LFUN_CHANGES_OUTPUT:
 		buffer_->params().outputChanges = !buffer_->params().outputChanges;
 		break;
-	}
 
 	case LFUN_CHANGE_NEXT:
 		findNextChange(this);
@@ -860,7 +863,6 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 #endif
 		while (findNextChange(this))
 			getLyXText()->acceptOrRejectChange(cursor_, true);
-		update();
 		break;
 	}
 
@@ -995,10 +997,10 @@ bool BufferView::dispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		return false;
+		updateFlags = Update::None;
 	}
 
-	return true;
+	return updateFlags;
 }
 
 

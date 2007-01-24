@@ -1739,8 +1739,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			view()->cursor().dispatch(cmd);
 			updateFlags = view()->cursor().result().update();
 			if (!view()->cursor().result().dispatched())
-				if (view()->dispatch(cmd)) 
-					updateFlags = Update::Force | Update::FitCursor;
+				updateFlags = view()->dispatch(cmd);
 			break;
 		}
 		}

@@ -157,7 +157,8 @@ public:
 	/// return true for events that will handle.
 	FuncStatus getStatus(FuncRequest const & cmd);
 	/// execute the given function.
-	bool dispatch(FuncRequest const & argument);
+	/// \return the Update::flags for further metrics update.
+	Update::flags dispatch(FuncRequest const & argument);
 
 	/// request an X11 selection.
 	/// \return the selected string.

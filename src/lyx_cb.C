@@ -337,7 +337,6 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 		bv->getLyXText()->insertStringAsParagraphs(bv->cursor(), tmpstr);
 	else
 		bv->getLyXText()->insertStringAsLines(bv->cursor(), tmpstr);
-	bv->update();
 }
 
 
