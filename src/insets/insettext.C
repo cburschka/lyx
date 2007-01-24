@@ -280,17 +280,17 @@ void InsetText::setChange(Change const & change)
 void InsetText::acceptChanges(BufferParams const & bparams)
 {
 	ParagraphList & pars = paragraphs();
+ 	pit_type const parsize = (pit_type) pars.size();
 
 	// first, accept changes within each individual paragraph (do not consider end-of-par)
- 	
-	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+	for (pit_type pit = 0; pit < parsize; ++pit) {
 		if (pars[pit].size() != 0)   // prevent assertion failure 
 			pars[pit].acceptChanges(bparams, 0, pars[pit].size());
 	}
 
 	// next, accept imaginary end-of-par characters
  
-	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+	for (pit_type pit = 0; pit < parsize; ++pit) {
 		pos_type pos = pars[pit].size();
 
 		if (pars[pit].isInserted(pos)) {
@@ -314,17 +314,18 @@ void InsetText::acceptChanges(BufferParams const & bparams)
 void InsetText::rejectChanges(BufferParams const & bparams)
 {
 	ParagraphList & pars = paragraphs();
+ 	pit_type const parsize = (pit_type) pars.size();
 
 	// first, reject changes within each individual paragraph (do not consider end-of-par)
  	
-	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+	for (pit_type pit = 0; pit < parsize; ++pit) {
 		if (pars[pit].size() != 0)   // prevent assertion failure
 			pars[pit].rejectChanges(bparams, 0, pars[pit].size());
 	}
 
 	// next, reject imaginary end-of-par characters
  
-	for (pit_type pit = 0; pit < pars.size(); ++pit) {
+	for (pit_type pit = 0; pit < parsize; ++pit) {
 		pos_type pos = pars[pit].size();
 
 		if (pars[pit].isDeleted(pos)) {
