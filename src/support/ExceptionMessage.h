@@ -33,14 +33,17 @@ class ExceptionMessage: public std::exception {
 public:
 	ExceptionMessage(ExceptionType type, docstring const & title,
 		docstring const & details)
-		: exception((to_utf8(title) + "\n" + to_utf8(details)).c_str()),
-	type_(type), title_(title), details_(details) {}
+	: type_(type), title_(title), details_(details),
+	  message_(to_utf8(title_ + '\n' + details_)) {}
 
-	virtual ~ExceptionMessage() {}
+	virtual const char * what() const throw() { return message_.c_str(); }
+	virtual ~ExceptionMessage() throw() {}
 
 	ExceptionType type_;
 	docstring title_;
 	docstring details_;
+	// Needed because we may not return a temporary in what().
+	std::string message_;
 };
 
 } // namespace support
