@@ -422,9 +422,9 @@ public:
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}
 	/// accept the changes within the inset
-	virtual void acceptChanges(BufferParams const & bparams) {};
+	virtual void acceptChanges(BufferParams const &) {};
 	/// reject the changes within the inset
-	virtual void rejectChanges(BufferParams const & bparams) {};
+	virtual void rejectChanges(BufferParams const &) {};
 
 	/// pretty arbitrary
 	virtual int width() const { return 10; }
