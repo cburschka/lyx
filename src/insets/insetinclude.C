@@ -271,13 +271,13 @@ void InsetInclude::read(Buffer const &, LyXLex & lex)
 void InsetInclude::read(LyXLex & lex)
 {
 	if (lex.isOK()) {
-		lex.next();
+		lex.eatLine();
 		string const command = lex.getString();
 		params_.scanCommand(command);
 	}
 	string token;
 	while (lex.isOK()) {
-		lex.eatLine();
+		lex.next();
 		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
