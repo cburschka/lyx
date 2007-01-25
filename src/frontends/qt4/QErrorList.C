@@ -57,9 +57,6 @@ void QErrorList::update_contents()
 	for(; it != end; ++it) {
 		dialog_->errorsLW->addItem(toqstr(it->error));
 	}
-
-	dialog_->errorsLW->setCurrentRow(0);
-	select(dialog_->errorsLW->item(0));
 }
 
 } // namespace frontend

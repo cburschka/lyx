@@ -29,10 +29,12 @@ class QErrorListDialog : public QDialog, public Ui::QErrorListUi {
 public:
 	QErrorListDialog(QErrorList * form);
 	~QErrorListDialog();
+
 public Q_SLOTS:
 	void select_adaptor(QListWidgetItem *);
 protected:
-	void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent *);
+	void showEvent(QShowEvent *);
 private:
 	QErrorList * form_;
 };

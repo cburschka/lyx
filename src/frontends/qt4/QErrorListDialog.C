@@ -49,6 +49,15 @@ void QErrorListDialog::closeEvent(QCloseEvent * e)
 	e->accept();
 }
 
+
+void QErrorListDialog::showEvent(QShowEvent *e)
+{
+	errorsLW->setCurrentRow(0);
+	form_->select(errorsLW->item(0));
+	e->accept();
+}
+
+
 } // namespace frontend
 } // namespace lyx
 
