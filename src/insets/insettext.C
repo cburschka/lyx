@@ -279,73 +279,13 @@ void InsetText::setChange(Change const & change)
 
 void InsetText::acceptChanges(BufferParams const & bparams)
 {
-	ParagraphList & pars = paragraphs();
- 	pit_type pars_size = (pit_type) pars.size();
-
-	// first, accept changes within each individual paragraph
-	// (do not consider end-of-par)
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars[pit].empty())   // prevent assertion failure 
-			pars[pit].acceptChanges(bparams, 0, pars[pit].size());
-	}
-
-	// next, accept imaginary end-of-par characters
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		pos_type pos = pars[pit].size();
-
-		if (pars[pit].isInserted(pos)) {
-			pars[pit].setChange(pos, Change(Change::UNCHANGED));
-		} else if (pars[pit].isDeleted(pos)) {
-			if (pit == pars.size() - 1) {
-				// we cannot remove a par break at the end of the last
-				// paragraph; instead, we mark it unchanged
-				pars[pit].setChange(pos, Change(Change::UNCHANGED));
-			} else {
-				mergeParagraph(bparams, pars, pit);
-				--pit;
-				--pars_size;
-			}
-		}
-	}
-
-	// finally, invoke the DEPM
-	text_.deleteEmptyParagraphMechanism(0, pars.size() - 1, bparams.trackChanges);
+	text_.acceptChanges(bparams);
 }
 
 
 void InsetText::rejectChanges(BufferParams const & bparams)
 {
-	ParagraphList & pars = paragraphs();
- 	pit_type pars_size = (pit_type) pars.size();
-
-	// first, reject changes within each individual paragraph
-	// (do not consider end-of-par) 	
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (!pars[pit].empty())   // prevent assertion failure 
-			pars[pit].rejectChanges(bparams, 0, pars[pit].size());
-	}
-
-	// next, reject imaginary end-of-par characters
-	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		pos_type pos = pars[pit].size();
-
-		if (pars[pit].isDeleted(pos)) {
-			pars[pit].setChange(pos, Change(Change::UNCHANGED));
-		} else if (pars[pit].isInserted(pos)) {
-			if (pit == pars.size() - 1) {
-				// we mark the par break at the end of the last
-				// paragraph unchanged
-				pars[pit].setChange(pos, Change(Change::UNCHANGED));
-			} else {
-				mergeParagraph(bparams, pars, pit);
-				--pit;
-				--pars_size;
-			}
-		}
-	}
-
-	// finally, invoke the DEPM
-	text_.deleteEmptyParagraphMechanism(0, pars.size() - 1, bparams.trackChanges);
+	text_.rejectChanges(bparams);
 }
 
 

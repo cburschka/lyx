@@ -1429,12 +1429,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_CHANGE_ACCEPT: {
-		acceptOrRejectChange(cur, ACCEPT);
+		acceptOrRejectChanges(cur, ACCEPT);
 		break;
 	}
 
 	case LFUN_CHANGE_REJECT: {
-		acceptOrRejectChange(cur, REJECT);
+		acceptOrRejectChanges(cur, REJECT);
 		break;
 	}
 

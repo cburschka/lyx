@@ -159,7 +159,11 @@ public:
 		REJECT
 	};
 	/// accept or reject the selected change
-	void acceptOrRejectChange(LCursor & cur, ChangeOp op);
+	void acceptOrRejectChanges(LCursor & cur, ChangeOp op);
+	/// accept the changes within the complete LyXText
+	void acceptChanges(BufferParams const & bparams);
+	/// reject the changes within the complete LyXText
+	void rejectChanges(BufferParams const & bparams);
 
 	/// returns true if par was empty and was removed
 	bool setCursor(LCursor & cur, pit_type par, pos_type pos,
