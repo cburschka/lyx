@@ -524,7 +524,7 @@ int main(int argc, char * argv[])
 		cl_system_support, cl_user_support,
 		support::top_build_dir_is_two_levels_up);
 	} catch (support::ExceptionMessage const & message) {
-		cerr << to_utf8(message.title_) << ':\n'
+		cerr << to_utf8(message.title_) << ":\n"
 			<< to_utf8(message.details_) << endl;
 		if (message.type_ == support::ErrorException)
 			exit(1);
