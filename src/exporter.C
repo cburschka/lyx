@@ -225,7 +225,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		tmp_result_file, FileName(buffer->fileName()), backend_format, format,
 		buffer->errorList(error_type));
 	// Emit the signal to show the error list.
-	buffer->errors(error_type);
+	if (format != backend_format)
+		buffer->errors(error_type);
 	if (!success)
 		return false;
 
