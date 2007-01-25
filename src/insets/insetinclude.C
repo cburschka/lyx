@@ -277,7 +277,7 @@ void InsetInclude::read(LyXLex & lex)
 	}
 	string token;
 	while (lex.isOK()) {
-		lex.next();
+		lex.eatLine();
 		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
