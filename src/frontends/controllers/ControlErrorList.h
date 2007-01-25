@@ -41,7 +41,7 @@ public:
 	ErrorList const & errorList() const;
 private:
 	///
-	ErrorList errorlist_;
+	std::string error_type_;
 	///
 	std::string name_;
 };
