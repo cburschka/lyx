@@ -845,7 +845,7 @@ bool LyXText::selectWordWhenUnderCursor(LCursor & cur, word_location loc)
 }
 
 
-void LyXText::acceptOrRejectChange(LCursor & cur, bool accept)
+void LyXText::acceptOrRejectChange(LCursor & cur, ChangeOp op)
 {
 	BOOST_ASSERT(this == cur.text());
 
@@ -884,7 +884,7 @@ void LyXText::acceptOrRejectChange(LCursor & cur, bool accept)
 		pos_type left  = (pit == begPit ? begPos : 0);
 		pos_type right = (pit == endPit ? endPos : parSize);
 
-		if (accept) {
+		if (op == ACCEPT) {
 			pars_[pit].acceptChanges(cur.buffer().params(), left, right);
 		} else {
 			pars_[pit].rejectChanges(cur.buffer().params(), left, right);
@@ -905,7 +905,7 @@ void LyXText::acceptOrRejectChange(LCursor & cur, bool accept)
 		if (pit == endPit && pit != pars_.size() - 1)
 			break; // last iteration anway
 
-		if (accept) {
+		if (op == ACCEPT) {
 			if (pars_[pit].isInserted(pos)) {
 				pars_[pit].setChange(pos, Change(Change::UNCHANGED));
 			} else if (pars_[pit].isDeleted(pos)) {
@@ -936,14 +936,10 @@ void LyXText::acceptOrRejectChange(LCursor & cur, bool accept)
 	}
 
 	// finally, invoke the DEPM
-	// FIXME: the following code will be changed in the near future
-	setCursorIntern(cur, endPit, 0);
-	for (pit_type pit = endPit - 1; pit >= begPit; --pit) {
-		bool dummy;
-		LCursor old = cur;
-		setCursorIntern(cur, pit, 0);
-		deleteEmptyParagraphMechanism(cur, old, dummy);
-	}
+
+	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer().params().trackChanges);
+
+	// 
 
 	finishUndo();
 	cur.clearSelection();

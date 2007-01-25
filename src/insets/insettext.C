@@ -280,14 +280,13 @@ void InsetText::setChange(Change const & change)
 void InsetText::acceptChanges(BufferParams const & bparams)
 {
 	ParagraphList & pars = paragraphs();
- 	pit_type const pars_size = (pit_type) pars.size();
+ 	pit_type pars_size = (pit_type) pars.size();
 
 	// first, accept changes within each individual paragraph
 	// (do not consider end-of-par)
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (pars[pit].empty())   // prevent assertion failure 
-			continue;
-		pars[pit].acceptChanges(bparams, 0, pars[pit].size());
+		if (!pars[pit].empty())   // prevent assertion failure 
+			pars[pit].acceptChanges(bparams, 0, pars[pit].size());
 	}
 
 	// next, accept imaginary end-of-par characters
@@ -304,27 +303,26 @@ void InsetText::acceptChanges(BufferParams const & bparams)
 			} else {
 				mergeParagraph(bparams, pars, pit);
 				--pit;
+				--pars_size;
 			}
 		}
 	}
 
-	// FIXME: finally, invoke the DEPM
-	// This cannot be done here but at a higher calling level
-	// because we need BufferView::checkDepm().
+	// finally, invoke the DEPM
+	text_.deleteEmptyParagraphMechanism(0, pars.size() - 1, bparams.trackChanges);
 }
 
 
 void InsetText::rejectChanges(BufferParams const & bparams)
 {
 	ParagraphList & pars = paragraphs();
- 	pit_type const pars_size = (pit_type) pars.size();
+ 	pit_type pars_size = (pit_type) pars.size();
 
-	// first, reject changes within each individual paragraph (do not
-	// consider end-of-par) 	
+	// first, reject changes within each individual paragraph
+	// (do not consider end-of-par) 	
 	for (pit_type pit = 0; pit < pars_size; ++pit) {
-		if (pars[pit].empty())   // prevent assertion failure 
-			continue;
-		pars[pit].rejectChanges(bparams, 0, pars[pit].size());
+		if (!pars[pit].empty())   // prevent assertion failure 
+			pars[pit].rejectChanges(bparams, 0, pars[pit].size());
 	}
 
 	// next, reject imaginary end-of-par characters
@@ -341,13 +339,13 @@ void InsetText::rejectChanges(BufferParams const & bparams)
 			} else {
 				mergeParagraph(bparams, pars, pit);
 				--pit;
+				--pars_size;
 			}
 		}
 	}
 
-	// FIXME: finally, invoke the DEPM
-	// This cannot be done here but at a higher calling level
-	// because we need BufferView::checkDepm().
+	// finally, invoke the DEPM
+	text_.deleteEmptyParagraphMechanism(0, pars.size() - 1, bparams.trackChanges);
 }
 
 

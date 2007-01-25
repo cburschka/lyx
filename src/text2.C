@@ -1180,7 +1180,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
 		    && oldpar.isLineSeparator(old.pos())
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)) {
-			oldpar.eraseChar(old.pos() - 1, false); // do not track changes in DEPM
+			oldpar.eraseChar(old.pos() - 1, cur.buffer().params().trackChanges);
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
@@ -1241,6 +1241,44 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
 	}
 
 	return false;
+}
+
+
+void LyXText::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
+{
+	for (pit_type pit = first; pit <= last; ++pit) {
+		Paragraph & par = pars_[pit];
+
+		// We allow all kinds of "mumbo-jumbo" when freespacing.
+		if (par.isFreeSpacing())
+			continue;
+
+		for (pos_type pos = 1; pos < par.size(); ++pos) {
+			if (par.isLineSeparator(pos) && par.isLineSeparator(pos - 1)
+			    && !par.isDeleted(pos - 1)) {
+				if (par.eraseChar(pos - 1, trackChanges)) {
+					--pos;
+				}
+			}
+		}
+
+		// don't delete anything if this is the ONLY paragraph
+		if (pars_.size() == 1)
+			continue;
+
+		// don't delete empty paragraphs with keepempty set
+		if (par.allowEmpty())
+			continue;
+
+		if (par.empty() || (par.size() == 1 && par.isLineSeparator(0))) {
+			pars_.erase(boost::next(pars_.begin(), pit));
+			--pit;
+			--last;
+			continue;
+		}
+
+		par.stripLeadingSpaces(trackChanges);
+	}
 }
 
 

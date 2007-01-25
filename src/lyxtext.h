@@ -153,8 +153,13 @@ public:
 	/// just selects the word the cursor is in
 	void selectWord(LCursor & cur, word_location loc);
 
+	/// what type of change operation to make 
+	enum ChangeOp {
+		ACCEPT,
+		REJECT
+	};
 	/// accept or reject the selected change
-	void acceptOrRejectChange(LCursor & cur, bool accept);
+	void acceptOrRejectChange(LCursor & cur, ChangeOp op);
 
 	/// returns true if par was empty and was removed
 	bool setCursor(LCursor & cur, pit_type par, pos_type pos,
@@ -336,12 +341,16 @@ public:
 	int cursorY(BufferView const & bv, CursorSlice const & cursor,
 		bool boundary) const;
 
-	/// delete double space or empty paragraphs around old cursor.
+	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
 	/// \retval true if a change has happened and we need a redraw.
 	/// FIXME: replace LCursor with DocIterator. This is not possible right
 	/// now because recordUndo() is called which needs a LCursor.
 	bool deleteEmptyParagraphMechanism(LCursor & cur,
 		LCursor & old, bool & need_anchor_change);
+
+	/// delete double spaces, leading spaces, and empty paragraphs
+	/// from \first to \last paragraph
+	void deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges);
 
 public:
 	/// the current font settings

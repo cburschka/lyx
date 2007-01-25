@@ -862,7 +862,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 #warning FIXME changes
 #endif
 		while (findNextChange(this))
-			getLyXText()->acceptOrRejectChange(cursor_, true);
+			getLyXText()->acceptOrRejectChange(cursor_, LyXText::ChangeOp::ACCEPT);
 		break;
 	}
 
@@ -872,7 +872,7 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 #warning FIXME changes
 #endif
 		while (findNextChange(this))
-			getLyXText()->acceptOrRejectChange(cursor_, false);
+			getLyXText()->acceptOrRejectChange(cursor_, LyXText::ChangeOp::REJECT);
 		break;
 	}
 
