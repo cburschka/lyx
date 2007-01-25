@@ -1264,8 +1264,9 @@ void LyXText::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool 
 			}
 		}
 
-		// don't delete anything if this is the ONLY paragraph
-		if (pars_.size() == 1)
+		// don't delete anything if this is the only remaining paragraph within the given range
+		// note: LyXText::acceptOrRejectChanges() sets the cursor to 'first' after calling DEPM 
+		if (first == last)
 			continue;
 
 		// don't delete empty paragraphs with keepempty set
