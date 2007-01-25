@@ -13,7 +13,7 @@
 #
 
 import os, sys, re, shutil, glob
-from SCons.Util import WhereIs
+from SCons.Util import *
 
 
 def getVerFromConfigure(path):
@@ -76,6 +76,31 @@ def env_subst(target, source, env):
     #os.chmod(str(target[0]), stat.S_IMODE(st[stat.ST_MODE]) | stat.S_IWRITE)
 
 
+def env_nsis(source, target, env, for_signature):
+    ''' Get nsis command line '''
+    def quoteIfSpaced(str):
+        if ' ' in str:
+            return '"' + str + '"'
+        else:
+            return str
+    ret = env['NSIS'] + " "
+    if env.has_key('NSISFLAGS'):
+        for flag in env['NSISFLAGS']:
+            ret += flag
+            ret += ' '
+    if env.has_key('NSISDEFINES'):
+        for d in env['NSISDEFINES']:
+            ret += '/D'+d
+            if env['NSISDEFINES'][d]:
+                ret += '=' + quoteIfSpaced(toString(env['NSISDEFINES'][d],env))
+            ret += ' '
+    for s in source:
+        ret += quoteIfSpaced(str(s))
+    print ret
+    Exit(0)
+    return ret
+
+
 def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':
@@ -133,7 +158,7 @@ int main()
 
 
 def checkCXXGlobalCstd(conf):
-    ''' Check the use of std::tolower or tolower '''
+    ''' Checking the use of std::tolower or tolower '''
     check_global_cstd_source = '''
 #include <cctype>
 using std::tolower;
@@ -142,7 +167,7 @@ int main()
     return 0;
 }
 '''
-    conf.Message('Check for the use of global cstd... ')
+    conf.Message('Checking for the use of global cstd... ')
     ret = conf.TryLink(check_global_cstd_source, '.c')
     conf.Result(ret)
     return ret
@@ -271,6 +296,30 @@ def checkCommand(conf, cmd):
     return res
 
 
+def checkNSIS(conf):
+    ''' check the existence of nsis compiler, return the fullpath '''
+    conf.Message('Checking for nsis compiler...')
+    res = None
+    if can_read_reg:
+        # If we can read the registry, get the NSIS command from it
+        try:
+            k = RegOpenKeyEx(hkey_mod.HKEY_LOCAL_MACHINE,
+                                  'SOFTWARE\\NSIS')
+            val, tok = RegQueryValueEx(k,None)
+            ret = val + os.path.sep + 'makensis.exe'
+            if os.path.isfile(ret):
+                res = '"' + ret + '"'
+            else:
+                res = None
+        except:
+            pass # Couldn't find the key, just act like we can't read the registry
+    # Hope it's on the path
+    if res is None:
+        res = WhereIs('makensis.exe')
+    conf.Result(res is not None)
+    return res
+
+
 def checkLC_MESSAGES(conf):
     ''' check the definition of LC_MESSAGES '''
     check_LC_MESSAGES = '''
@@ -280,7 +329,7 @@ int main()
     return LC_MESSAGES;
 }
 '''
-    conf.Message('Check for LC_MESSAGES in locale.h... ')
+    conf.Message('Checking for LC_MESSAGES in locale.h... ')
     ret = conf.TryLink(check_LC_MESSAGES, '.c')
     conf.Result(ret)
     return ret
@@ -297,7 +346,7 @@ int main() {
     return 0; 
 }
 '''
-    conf.Message('Check if the declaration of iconv needs const... ')
+    conf.Message('Checking if the declaration of iconv needs const... ')
     ret = conf.TryLink(check_iconv_const, '.c')
     conf.Result(ret)
     return ret
@@ -312,7 +361,7 @@ int main()
     return 0;
 }
 '''
-    conf.Message('Check the size of wchar_t... ')
+    conf.Message('Checking the size of wchar_t... ')
     if conf.TryLink(check_sizeof_wchar % 2, '.cpp'):
         ret = 2
     elif conf.TryLink(check_sizeof_wchar % 4, '.cpp'):

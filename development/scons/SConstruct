@@ -590,6 +590,7 @@ conf = Configure(env,
         'CheckSelectArgType' : utils.checkSelectArgType,
         'CheckBoostLibraries' : utils.checkBoostLibraries,
         'CheckCommand' : utils.checkCommand,
+        'CheckNSIS' : utils.checkNSIS,
         'CheckCXXGlobalCstd' : utils.checkCXXGlobalCstd,
         'CheckLC_MESSAGES' : utils.checkLC_MESSAGES,
         'CheckIconvConst' : utils.checkIconvConst,
@@ -707,6 +708,10 @@ else:
 #
 # check for msgfmt command
 env['MSGFMT'] = conf.CheckCommand('msgfmt')
+
+# if under windows, check the nsis compiler
+if platform_name == 'win32':
+    env['NSIS'] = conf.CheckNSIS()
 
 # cygwin packaging requires the binaries to be stripped
 if platform_name == 'cygwin':
@@ -1479,8 +1484,9 @@ def appExists(apppath, appname):
     return os.path.isfile(File(env.subst('$BUILDDIR/common/%s/${PROGPREFIX}%s$PROGSUFFIX' % (apppath, appname))).abspath)
 
 targets = BUILD_TARGETS
+build_installer = 'installer' in targets
 # msvc need to pass full target name, so I have to look for path/lyx etc
-build_lyx = targets == [] or True in ['lyx' in x for x in targets] \
+build_lyx = build_installer or targets == [] or True in ['lyx' in x for x in targets] \
     or 'install' in targets or 'all' in targets
 build_boost = (included_boost and not libExists('boost_regex')) or 'boost' in targets
 build_intl = (included_gettext and not libExists('included_intl')) or 'intl' in targets
@@ -1491,9 +1497,9 @@ build_frontends = build_lyx or 'frontends' in targets
 build_graphics = build_lyx or 'graphics' in targets
 build_controllers = build_lyx or 'controllers' in targets
 build_client = True in ['client' in x for x in targets] \
-    or 'install' in targets or 'all' in targets
+    or 'install' in targets or 'all' in targets or build_installer
 build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
-    or 'install' in targets or 'all' in targets
+    or 'install' in targets or 'all' in targets or build_installer
 build_lyxbase = build_lyx or 'lyxbase' in targets
 build_po = 'po' in targets or 'install' in targets or 'all' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
@@ -1987,6 +1993,41 @@ if build_po:
             #
             if not languages or country in languages:
                 gmo_files.extend(env.Transfiles(f))
+
+
+if build_installer:
+    #
+    # build windows installer using NSIS
+    #
+    # NOTE:
+    # There is a nsis builder on scons wiki but it does not work with
+    # our lyx.nsi because it does not dig through all the include directives
+    # and find the dependencies automatically. Also, it can not parse
+    # OutFile in lyx.nsi since it is defined as SETUP_EXE which is in turn
+    # something rely on date.
+    # Because of this, I am doing a simple nsis builder here.
+    if platform_name != 'win32':
+        print 'installer target is only available for windows platform'
+        Exit(1)
+    if env.has_key('NSIS') and env['NSIS'] is not None:
+        # create a builder to strip and install
+        env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)
+    else:
+        print 'No nsis compiler is found. Existing...'
+        Exit(2)
+    installer = env.installer(# 'target.exe',
+            '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
+    # since I can not use a scanner, explicit dependent is required
+    env.Depends(installer, \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' % x for x in win32_packaging_installer_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' % x for x in win32_packaging_installer_components_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' % x for x in win32_packaging_installer_dialogs_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/graphics/%s' % x for x in win32_packaging_installer_graphics_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' % x for x in win32_packaging_installer_include_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' % x for x in win32_packaging_installer_lang_files ]
+    )
+    print "installer is", installer
+    frontend_env.Alias('installer', installer)
 
 
 if 'install' in targets:

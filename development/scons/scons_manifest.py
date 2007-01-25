@@ -2382,3 +2382,58 @@ win32_bakoma_fonts = Split('''
     msam10.ttf  
     wasy10.ttf
 ''')
+
+
+win32_packaging_installer_files = Split('''
+    license.rtf
+    lyx.nsi
+    settings.nsh
+    settings.user.nsh
+''')
+
+
+win32_packaging_installer_components_files = Split('''
+    configure.nsh
+    dicts.nsh
+    langselect.nsh
+    uninstall.nsh
+    viewer.nsh
+    core.nsh
+    external.nsh
+    reinstall.nsh
+    user.nsh
+''')
+    
+
+win32_packaging_installer_dialogs_files = Split('''
+    external.ini
+    langselect.ini
+    reinstall.ini
+    user.ini
+    viewer.ini
+''')
+
+
+win32_packaging_installer_graphics_files = Split('''
+    header.bmp
+    wizard.bmp
+''')
+
+
+win32_packaging_installer_include_files = Split('''
+    declarations.nsh
+    detection.nsh
+    filelists.nsh
+    gui.nsh
+    init.nsh
+    lang.nsh
+    windows.nsh
+''')
+    
+
+win32_packaging_installer_lang_files = Split('''
+    english.nsh
+    french.nsh
+    german.nsh
+    italian.nsh
+''')
