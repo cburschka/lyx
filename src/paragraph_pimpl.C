@@ -426,6 +426,8 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 
 	// does the wanted text start at point?
 	for (string::size_type i = 0; i < str.length(); ++i) {
+		// Caution: direct comparison of characters works only
+		// because str is pure ASCII.
 		if (str[i] != owner_->text_[pos + i])
 			return false;
 	}
