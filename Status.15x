@@ -77,10 +77,6 @@ TABLE OF CONTENTS
 
 DIALOGS
 
-* If you try to view a document as postscript that cannot be typeset because
-  of LaTeX errors and export to LaTeX afterwards you will get the old error
-  list again, although the export succeded.
-
 * Dialogs do not get focus (e.g. when clicking on an inset).
 
 
@@ -666,4 +662,10 @@ e C:\cygwin\home\ms\lyx-trunk\src\support\filename.C:48
   click on a item, switch to the other doc without closing the TOC dialog, 
   click on the TOC button -> crash
   FIXED (2007-01-19 Peter)
+
+* If you try to view a document as postscript that cannot be typeset because
+  of LaTeX errors and export to LaTeX afterwards you will get the old error
+  list again, although the export succeded.
+  FIXED (2007-01-25 Abdel)
+  
 
