@@ -113,3 +113,8 @@ Creating the Installer
 	Finally, go to development\Win32\packaging\installer
 	(in a normal Windows Explorer), right-click on lyx.nsi and click
 	"Compile NSIS Script".
+
+	You can also use the installer target of scons. Namely, use a command like
+	   $ scons -f development\scons\SConscript installer
+	This will create $BUILDDIR\lyx-version-timestamp-Installer.exe for a devel version,
+	and $BUILDDIR\lyx-version-Install.exe for a released version of lyx.

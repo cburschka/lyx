@@ -24,9 +24,14 @@ SetCompressor /SOLID lzma
 !system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
 
 ;--------------------------------
-;LyX Installer
+;LyX Installer, output file can be specified using command line option
+; /DExeFile=/path/to/installer
 
-OutFile "${SETUP_EXE}"
+!ifdef ExeFile
+OutFile "${ExeFile}"
+!else
+Outfile "${SETUP_EXE}"
+!endif
 
 ;--------------------------------
 ;Components

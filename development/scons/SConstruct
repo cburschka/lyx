@@ -189,6 +189,8 @@ opts.AddOptions(
         comp1,comp2,...: rebuild specified targets''', None),
     # can be set to a non-existing directory
     ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
+    # replace the default name and location of the windows installer
+    ('win_installer', 'name or full path to the windows installer', None),
     # build directory, will use $mode if not set
     ('build_dir', 'Build directory', None),
     # version suffix
@@ -2015,10 +2017,19 @@ if build_installer:
     else:
         print 'No nsis compiler is found. Existing...'
         Exit(2)
-    installer = env.installer(# 'target.exe',
-            '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
+    if not env.has_key('win_installer') or env['win_installer'] is None:
+        if devel_version:
+            env['win_installer'] = '%s-%s-%s-Installer.exe' % (package_name, package_version, time.strftime('%Y-%m-%d'))
+        else:
+            env['win_installer'] = '%s-%s-Installer.exe' % (package_name, package_version)
+    # if absolute path is given, use it, otherwise, write to current directory
+    if not (':' in env['win_installer'] or '/' in env['win_installer'] or '\\' in env['win_installer']):
+        env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
+    env.Append(NSISDEFINES={'ExeFile':env['win_installer']})
+    installer = env.installer(env['win_installer'],
+        '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
     # since I can not use a scanner, explicit dependent is required
-    env.Depends(installer, \
+    env.Depends(installer, [lyx, tex2lyx] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' % x for x in win32_packaging_installer_files] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' % x for x in win32_packaging_installer_components_files] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' % x for x in win32_packaging_installer_dialogs_files] + \
@@ -2026,7 +2037,6 @@ if build_installer:
         ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' % x for x in win32_packaging_installer_include_files] + \
         ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' % x for x in win32_packaging_installer_lang_files ]
     )
-    print "installer is", installer
     frontend_env.Alias('installer', installer)
 
 

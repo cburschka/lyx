@@ -83,7 +83,7 @@ def env_nsis(source, target, env, for_signature):
             return '"' + str + '"'
         else:
             return str
-    ret = env['NSIS'] + " "
+    ret = env['NSIS'] + " /V2 "
     if env.has_key('NSISFLAGS'):
         for flag in env['NSISFLAGS']:
             ret += flag
@@ -92,12 +92,10 @@ def env_nsis(source, target, env, for_signature):
         for d in env['NSISDEFINES']:
             ret += '/D'+d
             if env['NSISDEFINES'][d]:
-                ret += '=' + quoteIfSpaced(toString(env['NSISDEFINES'][d],env))
+                ret += '=' + quoteIfSpaced(env['NSISDEFINES'][d])
             ret += ' '
     for s in source:
         ret += quoteIfSpaced(str(s))
-    print ret
-    Exit(0)
     return ret
 
 

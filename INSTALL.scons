@@ -126,6 +126,11 @@ Installation options:
   * DESTDIR: if specified, install to this directory instead of $prefix.
   * version_suffix=yes/no/something : if specified, this suffix will be 
     appended to the user data directory.
+  * win_installer: if specified under windows, and if 'installer' target
+    is given, generate NSIS installer specifed as win_installer which can 
+    be a full path name. The default is lyx-version-timestamp-Installer.exe
+    for a development version, and lyx-version-Installer.exe for a released
+    version.
 
 
 Compiler choice and flags:
@@ -147,7 +152,7 @@ You can specify one or more of the following targets:
   Programs:
     tex2lyx, client, lyx, all = tex2lyx + client + lyx
   Installation:
-    po, install = all + po
+    po, install = all + po, installer (windows only, need NSIS)
   Misc:
     msvs_projects
 
