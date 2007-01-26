@@ -1,4 +1,4 @@
-#LyX 1.4.4svn created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -76,9 +76,9 @@
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
   pdfauthor={LyX Team}, pdftex,
-  pdftitle={LyX's Table Manual},
-  pdfsubject={LyX-documentation about tables},
-  pdfkeywords={LyX}]{hyperref}
+  pdftitle={LyX's Figure, Table, Floats, Notes, and Boxes manual},
+  pdfsubject={LyX-documentation about figures, tables, floats, notes, and boxes},
+  pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
  
 \else % if dvi or ps is produced
 
@@ -129,7 +129,7 @@
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
 
-% To be able to enter the characters ° , · and × directly in LyX
+% To be able to enter the characters ±, ° , · and × directly in LyX
 \DeclareInputText{177}{\ifmmode\pm\else\textpm\fi}
 \DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
 \DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
@@ -204,7 +204,7 @@
 \begin_body
 
 \begin_layout Title
-LyX's Boxes, Figure, Floats, Notes, and Table manual
+LyX's Figure, Table, Floats, Notes, and Boxes manual
 \end_layout
 
 \begin_layout Author
