@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-19 17:30+0100\n"
-"PO-Revision-Date: 2006-12-14 00:42+0100\n"
+"PO-Revision-Date: 2007-01-22 21:52+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -902,7 +902,7 @@ msgstr "Megjelenítés LyX-ben"
 
 #: src/frontends/xforms/forms/form_graphics.fd:248
 msgid "Draft mode|#o"
-msgstr "Vázlat mód|#z"
+msgstr "Vázlat mód|#l"
 
 #: src/frontends/xforms/forms/form_graphics.fd:266
 msgid "Do not unzip|#u"
@@ -1448,9 +1448,8 @@ msgid "Editor:|#i"
 msgstr "Szerkesztõ:|#e"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1864
-#, fuzzy
 msgid "Vector graphics format:|#c"
-msgstr "Kép fájl kiválasztása"
+msgstr "Vektorgrafikus formátum|#i"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1882
 #: src/frontends/xforms/forms/form_preferences.fd:2032
@@ -1691,7 +1690,7 @@ msgstr "Leválogatás|#L"
 
 #: src/frontends/xforms/forms/form_print.fd:188
 msgid "To:|#T[[as in 'From page x to page y']]"
-msgstr "Utolsó:|#t"
+msgstr "Utolsó:|#l"
 
 #: src/frontends/xforms/forms/form_print.fd:224
 msgid "Reverse order|#R"
@@ -3275,7 +3274,7 @@ msgstr "A kép forgatási szöge"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:558
 msgid "&Origin:"
-msgstr "Kiindulóp&ont:"
+msgstr "&Kiindulópont:"
 
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:566
 #: src/frontends/qt2/ui/QExternalDialogBase.ui:577
@@ -3430,7 +3429,7 @@ msgstr "További LaTeX opciók"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1122
 msgid "&Draft mode"
-msgstr "Vázlat &mód"
+msgstr "Váz&lat mód"
 
 #: src/frontends/qt2/ui/QGraphicsDialogBase.ui:1126
 msgid "Draft mode"
@@ -3845,14 +3844,13 @@ msgid "Instant &Preview:"
 msgstr "Azo&nnali elõnézet:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:70
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Kép fájl kiválasztása"
+msgstr "Vektorgraf&ikus formátum"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:1343
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Jelölje be, amennyiben ez egy vektorgrafikát tartalmazhat."
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:92
 msgid "&GUI name:"
@@ -7787,9 +7785,8 @@ msgid "Preprint"
 msgstr "Elõnyomat"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Kapcsolat"
+msgstr "Masik kapcsolat"
 
 #: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
 msgid "Thanks:"
@@ -9809,7 +9806,7 @@ msgstr "Eszköztárak"
 
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
-msgstr "Dokumentumok|D"
+msgstr "Dokumentum|D"
 
 #: lib/ui/stdmenus.inc:26
 msgid "Tools|T"
@@ -10117,9 +10114,8 @@ msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
 #: lib/ui/stdmenus.inc:451
-#, fuzzy
 msgid "Insets|n"
-msgstr "Beszúrás|B"
+msgstr "Betétek|k"
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
