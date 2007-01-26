@@ -1767,13 +1767,13 @@ name "Table ! Edit Menu"
 \end_layout
 
 \begin_layout Standard
-Additionally to the table dialog and toolbar, the menu Edit
+Additionally to the table dialog and toolbar, the menu 
 \family sans
-\SpecialChar \menuseparator
-
+Edit\SpecialChar \menuseparator
+Table
 \family default
-Table allows you to add and delete border lines for the current row/column
- and to set the current selection as multicolumn.
+ allows you to add and delete border lines for the current row/column and
+ to set the current selection as multicolumn.
  The menu is only available when the cursor is inside a table.
 \end_layout
 
@@ -22632,8 +22632,12 @@ reference "sec:Colored-Boxes"
 \end_layout
 
 \begin_layout Standard
-Boxes can be inserted with the menu Insert\SpecialChar \menuseparator
-Box.
+Boxes can be inserted with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Box
+\family default
+.
  A grey box with the label 
 \family sans
 Box (Minipage)
