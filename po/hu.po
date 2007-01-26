@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-21 12:35+0100\n"
-"PO-Revision-Date: 2006-12-14 00:42+0100\n"
+"POT-Creation-Date: 2007-01-22 15:14+0100\n"
+"PO-Revision-Date: 2007-01-21 17:46+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
 "MIME-Version: 1.0\n"
@@ -221,7 +221,7 @@ msgstr "Ús&ztatások lapja"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:82
 msgid "&Bottom of page"
-msgstr "O&ldal alja"
+msgstr "Ol&dal alja"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:92
 msgid "&Span columns"
@@ -250,7 +250,7 @@ msgstr "&Roman:"
 
 #: src/frontends/qt4/ui/FontUi.ui:110
 msgid "S&cale (%):"
-msgstr "Méreta&rány (%):"
+msgstr "&Méretarány (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "&Sans Serif:"
@@ -482,8 +482,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
 #: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:727
-#: src/lyxfunc.C:899 src/lyxfunc.C:2018 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:726
+#: src/lyxfunc.C:898 src/lyxfunc.C:2018 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Mégsem"
 
@@ -512,7 +512,7 @@ msgstr "LyX: BibTeX fájl hozzáadása"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:246
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:843
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:842
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -621,7 +621,7 @@ msgstr "Támogatott doboz típusok"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:66
 msgid "Inner Bo&x:"
-msgstr "&Belsõ doboz:"
+msgstr "B&elsõ doboz:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:79
 msgid "&Decoration:"
@@ -861,9 +861,8 @@ msgid "&Find:"
 msgstr "&Mit keres:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:67
-#, fuzzy
 msgid "<- Clear"
-msgstr "Összes tör&lése"
+msgstr "<- Törlés"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:117
 msgid "A&pply"
@@ -879,7 +878,7 @@ msgstr "Natbib idézetstílus kiválasztása"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:166
 msgid "Citation &style:"
-msgstr "Idézet &stílusa:"
+msgstr "&Idézet stílusa:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:176
 msgid "List all authors"
@@ -907,7 +906,7 @@ msgstr "Az idézet után elhelyezendõ szöveg"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:221
 msgid "Text &before:"
-msgstr "Szöveg &elõtte:"
+msgstr "&Szöveg elõtte:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:239
 msgid "Text to place before citation"
@@ -1128,7 +1127,7 @@ msgstr "A forgatás középpontja"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:394
 msgid "&Origin:"
-msgstr "Kiindulóp&ont:"
+msgstr "&Kiindulópont:"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:414
 msgid "A&ngle:"
@@ -1235,7 +1234,7 @@ msgstr "Kimenet mérete"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:184
 msgid "&Scale Graphics (%):"
-msgstr "&Grafika mérete(%):"
+msgstr "Grafika &mérete(%):"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:220
 msgid "Rotate Graphics"
@@ -1293,9 +1292,8 @@ msgid "&Draft mode"
 msgstr "Vázlat &mód"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:514
-#, fuzzy
 msgid "S&ubfigure"
-msgstr "Részábra"
+msgstr "&Részábra"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:535
 #: src/frontends/qt4/ui/QGraphicsUi.ui:556
@@ -1307,9 +1305,8 @@ msgid "Ca&ption:"
 msgstr "Áb&racím:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:569
-#, fuzzy
 msgid "Sho&w in LyX"
-msgstr "Megjelenítés LyX-ben"
+msgstr "Megjelen&ítés LyX-ben"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:630
 msgid "Sca&le on Screen (%):"
@@ -1574,7 +1571,7 @@ msgid "&Shaded"
 msgstr "Árnyé&kolt"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1600
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1646
 msgid "Single"
 msgstr "Egyszeres"
 
@@ -1583,7 +1580,7 @@ msgid "1.5"
 msgstr "Másfélszeres"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1606
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1652
 msgid "Double"
 msgstr "Kétszeres"
 
@@ -1647,7 +1644,7 @@ msgstr "&Módosít"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:105
 msgid "&From:"
-msgstr "Mirõ&l:"
+msgstr "M&irõl:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:130
 msgid "E&xtra flag:"
@@ -1659,7 +1656,7 @@ msgstr "Átala&kító:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:150
 msgid "&To:[[as in 'From format x to format y']]"
-msgstr "&Mire:[[as in 'átalakítás format x-rõl, format y-ra']]"
+msgstr "Mi&re:[[as in 'átalakítás format x-rõl, format y-ra']]"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:168
 msgid "&Converters"
@@ -1667,7 +1664,7 @@ msgstr "Á&talakítók"
 
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:51
 msgid "C&opiers"
-msgstr "Má&solók"
+msgstr "Másoló&k"
 
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:99
 #: src/frontends/qt4/ui/QRefUi.ui:132
@@ -1726,7 +1723,7 @@ msgstr "Azo&nnali elõnézet:"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:72
 msgid "Ed&itor:"
-msgstr "&Szerkesztõ:"
+msgstr "Sz&erkesztõ:"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:82
 msgid "&GUI name:"
@@ -1981,6 +1978,9 @@ msgid ""
 "0, paragraphs are output in a single line; if the line length is > 0, "
 "paragraphs are separated by a blank line."
 msgstr ""
+"Az exportált fájl maximális sorhosszúsága (LaTeX, SGML vagy sima szöveg). Ha "
+"ez az érték 0, a bekezdések egyetlen sorként kerülnek kiírásra, ha ez az "
+"érték nem 0, a bekezdések között egy üres sor lesz."
 
 #: src/frontends/qt4/ui/QPrefPlaintextUi.ui:82
 msgid "Output &line length:"
@@ -2251,7 +2251,7 @@ msgid "&Maximum last files:"
 msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:726
+#: src/bufferlist.C:222 src/lyxfunc.C:725
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -2313,7 +2313,7 @@ msgstr "Az egyes példányok oldalai, helyes sorrendben lesznek nyomtatva"
 
 #: src/frontends/qt4/ui/QPrintUi.ui:183
 msgid "&Collate"
-msgstr "&Leválogatás"
+msgstr "L&eválogatás"
 
 #: src/frontends/qt4/ui/QPrintUi.ui:233
 msgid "&Print"
@@ -2577,7 +2577,7 @@ msgstr "Használjon formális keret stílust (nincs függõleges keret)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:316
 msgid "Fo&rmal"
-msgstr "Formá&lis"
+msgstr "&Formális"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:326
 msgid "Use default (grid-like) border style"
@@ -2585,7 +2585,7 @@ msgstr "Alapértelmezett keret stílust használjon (rácsos forma)."
 
 #: src/frontends/qt4/ui/QTabularUi.ui:329
 msgid "De&fault"
-msgstr "&Alapérték"
+msgstr "Alapé&rték"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:352
 msgid "Set Borders"
@@ -5795,9 +5795,8 @@ msgid "Preprint"
 msgstr "Elõnyomat"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Kapcsolat"
+msgstr "Másik kapcsolat"
 
 #: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
 msgid "Thanks:"
@@ -7140,7 +7139,7 @@ msgstr "Újrakonfigurálás|r"
 
 #: lib/ui/classic.ui:115
 msgid "Selection as Lines|L"
-msgstr "Kijelölés sorokként|s"
+msgstr "Kijelölés sorokként|K"
 
 #: lib/ui/classic.ui:116
 msgid "Selection as Paragraphs|P"
@@ -7628,14 +7627,12 @@ msgid "LyX Document...|X"
 msgstr "LyX dokumentum...|X"
 
 #: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
-#, fuzzy
 msgid "Plain Text...|T"
-msgstr "Sima szöveg"
+msgstr "Síma szöveg...|m"
 
 #: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
-#, fuzzy
 msgid "Plain Text, Join Lines...|J"
-msgstr "Sima szöveg sorokként...|s"
+msgstr "Sima szöveg, sorok befûzése...|b"
 
 #: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
 msgid "Track Changes|T"
@@ -7862,9 +7859,8 @@ msgid "Paste Recent|e"
 msgstr "Utolsó beillesztések|o"
 
 #: lib/ui/stdmenus.inc:91
-#, fuzzy
 msgid "Paste Special"
-msgstr "Beillesztés|i"
+msgstr "Egyedi beillesztés"
 
 #: lib/ui/stdmenus.inc:95
 msgid "Move Paragraph Up|o"
@@ -7900,7 +7896,7 @@ msgstr "Környezeti mélység csökkentése|c"
 
 #: lib/ui/stdmenus.inc:113
 msgid "Dissolve Inset|l"
-msgstr "Betét megszüntetése|m"
+msgstr "Betét megszüntetése|n"
 
 #: lib/ui/stdmenus.inc:114
 msgid "TeX Code Settings...|C"
@@ -7931,24 +7927,20 @@ msgid "Table Settings...|a"
 msgstr "Táblázat beállításai...|a"
 
 #: lib/ui/stdmenus.inc:128
-#, fuzzy
 msgid "Plain Text|T"
-msgstr "Sima szöveg"
+msgstr "Síma szöveg|m"
 
 #: lib/ui/stdmenus.inc:129
-#, fuzzy
 msgid "Plain Text, Join Lines|J"
-msgstr "Sima szöveg sorokként"
+msgstr "Sima szöveg, sorok befûzése|e"
 
 #: lib/ui/stdmenus.inc:131
-#, fuzzy
 msgid "Selection|S"
-msgstr "Kijelölé&s:"
+msgstr "Kijelölé|s"
 
 #: lib/ui/stdmenus.inc:132
-#, fuzzy
 msgid "Selection, Join Lines|i"
-msgstr "Kijelölés sorokként|s"
+msgstr "Kijelölés, sorok befûzése|f"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Customized...|C"
@@ -8315,9 +8307,8 @@ msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
 #: lib/ui/stdmenus.inc:468
-#, fuzzy
 msgid "Insets|n"
-msgstr "Beszúrás|B"
+msgstr "Betétek|k"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -8628,37 +8619,32 @@ msgid "Next note"
 msgstr "Következõ megjegyzés"
 
 #: lib/ui/stdtoolbars.inc:166
-#, fuzzy
 msgid "View/Update"
-msgstr "Fõdokumentum"
+msgstr "Nézet/Frissítés"
 
 #: lib/ui/stdtoolbars.inc:167
-#, fuzzy
 msgid "View DVI"
-msgstr "Nézet|z"
+msgstr "DVI nézete"
 
 #: lib/ui/stdtoolbars.inc:168
-#, fuzzy
 msgid "Update DVI"
-msgstr "&Frissítés"
+msgstr "DVI frissítése"
 
 #: lib/ui/stdtoolbars.inc:169
 msgid "View PDF (pdflatex)"
-msgstr ""
+msgstr "PDF (pdflatex) nézete"
 
 #: lib/ui/stdtoolbars.inc:170
 msgid "Update PDF (pdflatex)"
-msgstr ""
+msgstr "PDF (pdflatex) frissítése"
 
 #: lib/ui/stdtoolbars.inc:171
-#, fuzzy
 msgid "View PostScript"
-msgstr "Utóirat:"
+msgstr "PostScript nézete"
 
 #: lib/ui/stdtoolbars.inc:172
-#, fuzzy
 msgid "Update PostScript"
-msgstr "Utóirat:"
+msgstr "PostScript frissítése"
 
 #: src/BufferView.C:216
 #, c-format
@@ -8671,11 +8657,11 @@ msgstr ""
 "\n"
 "Vissza akar térni egy mentett változathoz?"
 
-#: src/BufferView.C:219 src/lyxfunc.C:898
+#: src/BufferView.C:219 src/lyxfunc.C:897
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/BufferView.C:220 src/lyxfunc.C:899 src/lyxvc.C:175
+#: src/BufferView.C:220 src/lyxfunc.C:898 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Visszatér"
 
@@ -9080,14 +9066,12 @@ msgid "No Documents Open!"
 msgstr "Nincs nyitott dokumentum!"
 
 #: src/MenuBackend.C:540
-#, fuzzy
 msgid "Plain Text"
 msgstr "Sima szöveg"
 
 #: src/MenuBackend.C:542
-#, fuzzy
 msgid "Plain Text, Join Lines"
-msgstr "Sima szöveg sorokként"
+msgstr "Sima szöveg, sorok befûzése"
 
 #: src/MenuBackend.C:714
 msgid "Master Document"
@@ -9221,12 +9205,12 @@ msgid "Backup failure"
 msgstr "Biztonsági mentés hiba"
 
 #: src/buffer.C:772
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
-"A LyX nem tudott biztonsági másolatot készíteni a %1$s könyvtárba.\n"
+"Biztonsági másolat készítése nem lehetséges %1$s.\n"
 "Kérem ellenõrizze a könyvtár meglétét és írhatóságát."
 
 #: src/buffer.C:884
@@ -9382,7 +9366,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy elveti a módosításokat?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:725
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:724
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
@@ -9445,8 +9429,8 @@ msgstr "Minden nyomkövetési üzenet"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Nyomkövetés `%1$s' (%2$s)"
 
-#: src/converter.C:333 src/converter.C:465 src/converter.C:488
-#: src/converter.C:533
+#: src/converter.C:333 src/converter.C:468 src/converter.C:491
+#: src/converter.C:536
 msgid "Cannot convert file"
 msgstr "A fájl nem alakítható át"
 
@@ -9463,39 +9447,39 @@ msgstr ""
 msgid "Executing command: "
 msgstr "Parancs végrehajtása:"
 
-#: src/converter.C:460
+#: src/converter.C:463
 msgid "Build errors"
 msgstr "Fordítási hibák"
 
-#: src/converter.C:461
+#: src/converter.C:464
 msgid "There were errors during the build process."
 msgstr "Hibák léptek fel a dokumentum fordítása során."
 
-#: src/converter.C:466 src/format.C:327 src/format.C:386
+#: src/converter.C:469 src/format.C:327 src/format.C:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Hiba történt %1$s futása közben"
 
-#: src/converter.C:489
+#: src/converter.C:492
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Az ideiglenes könyvtár nem mozgatható innen:%1$s ide: %2$s."
 
-#: src/converter.C:535
+#: src/converter.C:538
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Az ideiglenes fájl nem másolható innen:%1$s ide: %2$s."
 
-#: src/converter.C:536
+#: src/converter.C:539
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Az ideiglenes fájl nem mozgatható innen:%1$s ide: %2$s."
 
-#: src/converter.C:594
+#: src/converter.C:597
 msgid "Running LaTeX..."
 msgstr "LaTeX futtatása..."
 
-#: src/converter.C:612
+#: src/converter.C:615
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -9504,15 +9488,15 @@ msgstr ""
 "LaTeX sikertelenül futott le. Továbbá, a LyX nem találja a LaTeX napló "
 "fájlt: %1$s."
 
-#: src/converter.C:615
+#: src/converter.C:618
 msgid "LaTeX failed"
 msgstr "LaTeX sikertelen"
 
-#: src/converter.C:617
+#: src/converter.C:620
 msgid "Output is empty"
 msgstr "A kimenet üres"
 
-#: src/converter.C:618
+#: src/converter.C:621
 msgid "An empty output file was generated."
 msgstr "Az eredmény fájl üres!"
 
@@ -10306,7 +10290,7 @@ msgstr "Dokumentumbeállítások"
 msgid "Length"
 msgstr "Hossza"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1603
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1649
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -10359,9 +10343,8 @@ msgid "B4"
 msgstr "B4"
 
 #: src/frontends/qt4/QDocumentDialog.C:292
-#, fuzzy
 msgid "LaTeX default"
-msgstr "LaTeX sikertelen"
+msgstr "LaTeX alapértékek"
 
 #: src/frontends/qt4/QDocumentDialog.C:298
 msgid "``text''"
@@ -11698,35 +11681,31 @@ msgstr "  Szám %1$s"
 msgid "Unknown function."
 msgstr "Ismeretlen funkció."
 
-#: src/lyxfunc.C:390
-msgid "Exiting"
-msgstr "Kilépés"
-
-#: src/lyxfunc.C:422
+#: src/lyxfunc.C:404
 msgid "Nothing to do"
 msgstr "Nincs mit tenni"
 
-#: src/lyxfunc.C:441
+#: src/lyxfunc.C:423
 msgid "Unknown action"
 msgstr "Ismeretlen mûvelet"
 
-#: src/lyxfunc.C:447 src/lyxfunc.C:709
+#: src/lyxfunc.C:429 src/lyxfunc.C:708
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
-#: src/lyxfunc.C:454
+#: src/lyxfunc.C:436
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/lyxfunc.C:695
+#: src/lyxfunc.C:694
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:702
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/lyxfunc.C:722
+#: src/lyxfunc.C:721
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -11737,7 +11716,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/lyxfunc.C:740
+#: src/lyxfunc.C:739
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -11746,11 +11725,11 @@ msgstr ""
 "A %1$s dokumentum nem nyomtatható.\n"
 "Kérem ellenõrizze a nyomtató beállításait."
 
-#: src/lyxfunc.C:743
+#: src/lyxfunc.C:742
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
-#: src/lyxfunc.C:762
+#: src/lyxfunc.C:761
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -11759,20 +11738,20 @@ msgstr ""
 "A dokumentumot nem lehet\n"
 " %1$s osztály formátumba átalakítani."
 
-#: src/lyxfunc.C:765
+#: src/lyxfunc.C:764
 msgid "Could not change class"
 msgstr "Osztály nem változtatható meg"
 
-#: src/lyxfunc.C:877
+#: src/lyxfunc.C:876
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése: %1$s..."
 
-#: src/lyxfunc.C:881
+#: src/lyxfunc.C:880
 msgid " done."
 msgstr " kész."
 
-#: src/lyxfunc.C:896
+#: src/lyxfunc.C:895
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -11780,6 +11759,11 @@ msgid ""
 msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
+
+#: src/lyxfunc.C:1076
+#, fuzzy
+msgid "Exiting."
+msgstr "Kilépés"
 
 #: src/lyxfunc.C:1102 src/text3.C:1222
 msgid "Missing argument"
@@ -12671,54 +12655,53 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
 
-#: src/text.C:1566
-#, fuzzy
+#: src/text.C:1612
 msgid "[Change Tracking] "
-msgstr "Változások követése|l"
+msgstr "[Változás követés]"
 
-#: src/text.C:1572
+#: src/text.C:1618
 msgid "Change: "
 msgstr "Változás: "
 
-#: src/text.C:1576
+#: src/text.C:1622
 msgid " at "
 msgstr " itt "
 
-#: src/text.C:1586
+#: src/text.C:1632
 #, c-format
 msgid "Font: %1$s"
 msgstr "Betûkészlet: %1$s"
 
-#: src/text.C:1591
+#: src/text.C:1637
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Mélység: %1$d"
 
-#: src/text.C:1597
+#: src/text.C:1643
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/text.C:1609
+#: src/text.C:1655
 msgid "Other ("
 msgstr "Egyéb ("
 
-#: src/text.C:1618
+#: src/text.C:1664
 msgid ", Inset: "
 msgstr ", Betét: "
 
-#: src/text.C:1619
+#: src/text.C:1665
 msgid ", Paragraph: "
 msgstr ", Bekezdés: "
 
-#: src/text.C:1620
+#: src/text.C:1666
 msgid ", Id: "
 msgstr ", Azon.: "
 
-#: src/text.C:1621
+#: src/text.C:1667
 msgid ", Position: "
 msgstr ", Pozíció: "
 
-#: src/text.C:1622
+#: src/text.C:1668
 msgid ", Boundary: "
 msgstr ", Határ: "
 
@@ -12781,3 +12764,43 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "védett"
+
+#~ msgid "Plain Text as Paragraphs...|P"
+#~ msgstr "Sima szöveg bekezdésekként...|b"
+
+#~ msgid "Plain Text as Paragraphs|e"
+#~ msgstr "Sima szöveg bekezdésekként|S"
+
+#~ msgid "Plain Text as Paragraphs"
+#~ msgstr "Sima szöveg bekezdésekként"
+
+#~ msgid ""
+#~ "This is the maximum line length of an exported text file (LaTeX, SGML or "
+#~ "plain text). If set to 0, paragraphs are output in a single line; if the "
+#~ "line length is != 0, paragraphs are separated by a blank line."
+#~ msgstr ""
+#~ "Az exportált fájl maximális sorhosszúsága(LaTeX, SGML vagy sima szöveg). "
+#~ "Ha ez az érték 0, a bekezdések egyetlen sorként kerülnek lesznek kiírva, "
+#~ "ha ez az érték nem 0 a bekezdések között legy egy üres sor."
+
+#~ msgid "Max. line length of exported plain text/LaTeX/SGML files"
+#~ msgstr "Az exportált ASCII/LaTeX/ SGML fájlok maximális sorhossza"
+
+#~ msgid "Clipboard as Lines|C"
+#~ msgstr "Vágólap sorokként|V"
+
+#~ msgid "Clipboard as Paragraphs|a"
+#~ msgstr "Vágólap bekezdésekként|k"
+
+#~ msgid "%1$s #:"
+#~ msgstr "%1$s #:"
+
+#~ msgid ""
+#~ "This is the maximum line length of an exported text file (LaTeX, SGML or "
+#~ "plain text)."
+#~ msgstr ""
+#~ "Ez a maximális sorhossza az exportált ASCII fájlnak (LaTeX, SGML vagy "
+#~ "sima szöveg)."
+
+#~ msgid "Paste External Clipboard/Selection"
+#~ msgstr "Külsõ vágólap/kijelölés beillesztése"
