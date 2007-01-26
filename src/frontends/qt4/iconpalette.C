@@ -158,7 +158,16 @@ IconPalette::IconPalette(QWidget * parent, char const ** entries)
 		buttons_.push_back(make_pair(p, entries[i]));
 		layout_->addWidget(p);
 	}
-
+	// FIXME: This is a hack to work around bug 2859
+	// http://bugzilla.lyx.org/show_bug.cgi?id=2859
+	// Short description of the bug:
+	/*
+	Open the math panel and detach the operator panel by pressing the
+	"Detach Panel" button. The detached panel is then always set too
+	high in the left upper corner of the screen as in the attached
+	screenshot.
+	*/
+	move(50, 50);
 }
 
 
