@@ -1246,7 +1246,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur,
 
 void LyXText::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool trackChanges)
 {
-	BOOST_ASSERT(first >= 0 && first <= last && last < pars_.size());
+	BOOST_ASSERT(first >= 0 && first <= last && last < (int) pars_.size());
 
 	for (pit_type pit = first; pit <= last; ++pit) {
 		Paragraph & par = pars_[pit];
