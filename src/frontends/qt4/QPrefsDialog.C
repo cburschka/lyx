@@ -1764,7 +1764,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	: form_(form)
 {
 	setupUi(this);
-	QDialog::setModal(true);
+	QDialog::setModal(false);
 
 	connect(savePB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));
