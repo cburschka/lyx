@@ -236,8 +236,17 @@ SpaceTranslator const & spacetranslator()
 	return translator;
 }
 
-// ends annonym namespace
+
+textclass_type defaultTextclass()
+{
+	// Initialize textclass to point to article. if `first' is
+	// true in the returned pair, then `second' is the textclass
+	// number; if it is false, second is 0. In both cases, second
+	// is what we want.
+	return textclasslist.numberOfClass("article").second;
 }
+
+} // anon namespace
 
 
 class BufferParams::Impl
@@ -282,12 +291,7 @@ void BufferParams::MemoryTraits::destroy(BufferParams::Impl * ptr)
 
 
 BufferParams::BufferParams()
-	: // Initialize textclass to point to article. if `first' is
-	  // true in the returned pair, then `second' is the textclass
-	  // number; if it is false, second is 0. In both cases, second
-	  // is what we want.
-	textclass(textclasslist.numberOfClass("article").second),
-	pimpl_(new Impl)
+	: textclass(defaultTextclass()), pimpl_(new Impl)
 {
 	paragraph_separation = PARSEP_INDENT;
 	quotes_language = InsetQuotes::EnglishQ;
@@ -422,7 +426,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			if (pp.first) {
 				textclass = pp.second;
 			} else {
-				textclass = 0;
+				textclass = defaultTextclass();
 				return classname;
 			}
 		}
