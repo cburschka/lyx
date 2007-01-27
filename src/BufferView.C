@@ -500,10 +500,16 @@ void BufferView::setCursorFromScrollbar()
 
 	switch (st) {
 	case bv_funcs::CUR_ABOVE:
+		// We reset the cursor because bv_funcs::status() does not
+		// work when the cursor is within mathed.
+		cur.reset(buffer_->inset());
 		t.setCursorFromCoordinates(cur, 0, first);
 		cur.clearSelection();
 		break;
 	case bv_funcs::CUR_BELOW:
+		// We reset the cursor because bv_funcs::status() does not
+		// work when the cursor is within mathed.
+		cur.reset(buffer_->inset());
 		t.setCursorFromCoordinates(cur, 0, last);
 		cur.clearSelection();
 		break;

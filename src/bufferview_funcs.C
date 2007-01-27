@@ -222,6 +222,7 @@ Point getPos(BufferView const & bv, DocIterator const & dit, bool boundary)
 
 
 // this could be used elsewhere as well?
+// FIXME: This does not work within mathed!
 CurStatus status(BufferView const * bv, DocIterator const & dit)
 {
 	CoordCache::InnerParPosCache const & cache =
