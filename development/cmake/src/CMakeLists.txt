@@ -13,7 +13,7 @@ add_subdirectory(graphics)
 add_subdirectory(insets) 
 add_subdirectory(mathed) 
 add_subdirectory(support) 
-#add_subdirectory(tex2lyx) 
+add_subdirectory(tex2lyx) 
 
 
 configure_file(${TOP_SRC_DIR}/src/version.C.in ${CMAKE_CURRENT_BINARY_DIR}/version.C)
