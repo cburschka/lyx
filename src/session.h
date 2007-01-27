@@ -258,10 +258,14 @@ public:
 	public:
 		///
 		ToolbarInfo() :
-			state(ON), location(NOTSET) { }
+			state(ON), location(NOTSET), posx(0), posy(0) { }
 		///
-		ToolbarInfo(int s, int loc) :
-			state(static_cast<State>(s)), location(static_cast<Location>(loc)) { }
+		ToolbarInfo(int s, int loc, int x=0, int y=0) :
+			state(static_cast<State>(s)), 
+			location(static_cast<Location>(loc)),
+			posx(x),
+			posy(y)
+			{ }
 
 	public:
 		enum State {
@@ -284,6 +288,12 @@ public:
 
 		Location location;
 
+		/// x-position of the toolbar
+		int posx;
+
+		/// y-position of the toolbar
+		int posy;
+		
 		/// potentially, icons
 	};
 

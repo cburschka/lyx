@@ -241,6 +241,11 @@ void QLToolbar::saveInfo(ToolbarSection::ToolbarInfo & info)
 		info.location = ToolbarSection::ToolbarInfo::LEFT;
 	else
 		info.location = ToolbarSection::ToolbarInfo::NOTSET;
+	
+	// save toolbar position. They are not used to restore toolbar position 
+	// now because move(x,y) does not work for toolbar.
+	info.posx = pos().x();
+	info.posy = pos().y();
 }
 
 

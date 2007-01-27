@@ -691,30 +691,37 @@ void GuiView::busy(bool yes)
 Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 {
 	QLToolbar * Tb = new QLToolbar(tbb, *this);
-	//static QLToolbar * lastTb = 0;
 
+	/* NOTE:
+		saved toolbar position can not be restored with simple move(x,y),
+		Consequently, toolbars from different lines will be restore to one
+		line. I therefore add addToolBarBreak after each toolbar to restore
+		toolbars to separate lines, although toolbars in the same line can 
+		not be restored correctly.
+	  NOTE: qt < 4.2.2 cannot handle addToolBarBreak on non-TOP dock.
+	*/
 	if (tbb.flags & ToolbarBackend::TOP) {
-			addToolBar(Qt::TopToolBarArea, Tb);
-			addToolBarBreak(Qt::TopToolBarArea);
+		addToolBar(Qt::TopToolBarArea, Tb);
+		addToolBarBreak(Qt::TopToolBarArea);
 	}
 	if (tbb.flags & ToolbarBackend::BOTTOM) {
 		addToolBar(Qt::BottomToolBarArea, Tb);
-		/*
-		// Qt bug:
-		// http://www.trolltech.com/developer/task-tracker/index_html?id=137015&method=entry
-		// Doesn't work because the toolbar will evtl. be hidden.
-		if (lastTb)
-			insertToolBarBreak(lastTb);
-		lastTb = Tb;
-		*/
+		addToolBarBreak(Qt::BottomToolBarArea);
 	}
 	if (tbb.flags & ToolbarBackend::LEFT) {
 		addToolBar(Qt::LeftToolBarArea, Tb);
+		addToolBarBreak(Qt::LeftToolBarArea);
 	}
 	if (tbb.flags & ToolbarBackend::RIGHT) {
 		addToolBar(Qt::RightToolBarArea, Tb);
+		addToolBarBreak(Qt::RightToolBarArea);
 	}
 
+	// The following does not work so saved toolbar location can not be used.
+	/*
+	ToolbarSection::ToolbarInfo & info = LyX::ref().session().toolbars().load(tbb.name);
+	Tb->move(info.posx, info.posy);
+	*/
 	return Toolbars::ToolbarPtr(Tb);
 }
 

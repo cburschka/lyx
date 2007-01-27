@@ -332,11 +332,14 @@ void ToolbarSection::read(istream & is)
 				string key = tmp.substr(0, pos);
 				int state;
 				int location;
+				int posx;
+				int posy;
 				istringstream value(tmp.substr(pos + 3));
 				value >> state;
-				value.ignore(1); // ignore " "
 				value >> location;
-				toolbars[key] = ToolbarInfo(state, location);
+				value >> posx;
+				value >> posy;
+				toolbars[key] = ToolbarInfo(state, location, posx, posy);
 			} else 
 				lyxerr[Debug::INIT] << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
 		} catch (...) {
@@ -353,7 +356,9 @@ void ToolbarSection::write(ostream & os) const
 		tb != toolbars.end(); ++tb) {
 		os << tb->first << " = "
 		  << static_cast<int>(tb->second.state) << " "
-		  << static_cast<int>(tb->second.location) << '\n';
+		  << static_cast<int>(tb->second.location) << " "
+		  << tb->second.posx << " "
+		  << tb->second.posy << '\n';
 	}
 }
 
