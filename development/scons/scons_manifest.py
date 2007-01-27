@@ -1298,7 +1298,6 @@ lib_image_noinst_files = Split('''
     images/math/delim.xbm
     images/math/dots.xbm
     images/math/font.xbm
-    images/math/frac-square.xpm
     images/math/greek.xbm
     images/math/misc.xbm
     images/math/varsz.xbm
@@ -1677,6 +1676,7 @@ lib_images_math_files = Split('''
     flat.xpm
     forall.xpm
     frac.xpm
+    frac-square.xpm
     frown.xpm
     gamma.xpm
     gamma2.xpm
