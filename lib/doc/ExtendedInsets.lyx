@@ -1467,7 +1467,12 @@ longtable
 
 \end_inset
 
- describes the longtable feature in detail.
+ and 
+\begin_inset LatexCommand \ref{sec:Special-Longtable-Issues}
+
+\end_inset
+
+ describe the longtable features in detail.
 \end_layout
 
 \begin_layout Standard
@@ -8164,6 +8169,11 @@ Roberto
 
 \begin_layout Section
 Special Longtable Issues
+\begin_inset LatexCommand \label{sec:Special-Longtable-Issues}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -11197,7 +11207,7 @@ Booktabs
 \end_inset
 
 
-\begin_inset LatexCommand \index{LaTeX-packages ! booktabs}
+\begin_inset LatexCommand \index{Table ! Booktabs}
 
 \end_inset
 
@@ -11374,7 +11384,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11487,7 +11497,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11655,7 +11665,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11937,7 +11947,8 @@ r{trimwidth}
 \emph on
 l{2pt}
 \emph default
- means that the line is trimmed from its left end by 2pt.
+ means that the line is trimmed from its left end by 2\InsetSpace \thinspace{}
+pt.
  If you don't specify the trimwidth the lines are trimmed by the default
  of 0.5\InsetSpace \thinspace{}
 em.
@@ -12073,9 +12084,7 @@ s like in Table\InsetSpace ~
 \series bold
 
 \backslash
-moremidrule
-\series default
-s
+moremidrules
 \end_layout
 
 \begin_layout Standard
@@ -12136,7 +12145,7 @@ The surrounding space of each line in a booktabs table can be specified
 
 .
  If you are anyway not satisfied with the spacing, you can use the following
- command to produce lines that span over all table columns
+ command to produce lines that span over all table columns:
 \end_layout
 
 \begin_layout Standard
@@ -12293,7 +12302,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -12406,7 +12415,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -12587,7 +12596,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -14807,15 +14816,8 @@ Extra Row Height
 \end_layout
 
 \begin_layout Standard
-Large letters or those with a bigger height like 
-\emph on
-b
-\emph default
- and 
-\emph on
-d
-\emph default
- often have not enough space between under the upper cell border.
+For example letters with a bigger height like b and d or formulas in tables
+ often have not enough space to the cell borders.
  With the preamble line
 \end_layout
 
@@ -17704,7 +17706,7 @@ having a figure too close to the bottom
  of the page can mess things up in the way that the float doesn't appear
  in the output or that it is placed over some other text.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 The better solution is to use the LaTeX-package 

@@ -10951,7 +10951,7 @@ Booktabs
 \end_inset
 
 
-\begin_inset LatexCommand \index{LaTeX-paquetes ! booktabs}
+\begin_inset LatexCommand \index{Tablas ! Booktabs}
 
 \end_inset
 
@@ -11138,7 +11138,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11251,7 +11251,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11419,7 +11419,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11702,7 +11702,8 @@ r{recorte}
 \emph on
 l{2pt}
 \emph default
- significa que la línea se recorta 2 pt por su izquierda.
+ significa que la línea se recorta 2\InsetSpace \thinspace{}
+pt por su izquierda.
  Si no se especifica el tamaño del recorte, las líneas se recortan por defecto
  en 0.5\InsetSpace \thinspace{}
 em.
@@ -11721,7 +11722,7 @@ cmidrule
 \backslash
 midrule
 \series default
- deben insertarse como primera entrada de la primera celda de una fila .
+ deben insertarse como primera entrada de la primera celda de una fila.
  Las líneas se crean sobre la fila.
 \end_layout
 
@@ -11839,9 +11840,7 @@ cmidrules
 \series bold
 
 \backslash
-moremidrule
-\series default
-s
+moremidrules
 \end_layout
 
 \begin_layout Standard
@@ -12058,7 +12057,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -12171,7 +12170,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -12352,7 +12351,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
