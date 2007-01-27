@@ -44,37 +44,6 @@ SPELL CHECKING (Joost 4/11/06)
   works if lyxrc.isp_use_input_encoding == true, aspell works on linux,
   cygwin and native windows (it is not clear yet whether it works on OS X).
   ispell (if lyxrc.isp_use_input_encoding == false) does not work yet.
-  
-
-DIALOGS
-
-* Dialogs do not get focus (e.g. when clicking on an inset).
-
-
-MATH CONTROL PANEL
-
-* In the math control panel, there is no icon for the "Fractions" button.
-
-* In the math control panel, the buttons are too small.
-  The reason is probably that qt resizes the icons so that they fit into the
-  button, leaving some margin. This leads to different scales for each icon.
-  qt3 did not resize the icons. Can this be set in qt4, too? MG: Why don't we 
-  enlarge the buttons?
-
-
-OTHER PANELS
-
-* The visual table size selection on the "Insert Table" dialog has gone
-  (Joost 3/11/06).
-
-* The UI for bullet selection in the documents settings looks weird
-  (Joost 4/11/06):
-  There is a big listbox just to select one of the four levels.
-  Isn't this supposed to be a drop-down list or something like that?
-
-* The bullet selection widget shows the bullets in 5 columns (instead of 6)
-  for me, and hence does not fit into the window.
-  (JSpitzm 2006-11-06)
 
 
 MULTIPLE WINDOWS / DOCUMENTS
