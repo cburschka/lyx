@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_1.5.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-21 12:35+0100\n"
+"POT-Creation-Date: 2007-01-27 19:30+0100\n"
 "PO-Revision-Date: 2006-11-08 11:47+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -489,8 +489,8 @@ msgstr "&Ados"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
 #: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:727
-#: src/lyxfunc.C:899 src/lyxfunc.C:2018 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
+#: src/lyxfunc.C:900 src/lyxfunc.C:2018 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Utzi"
 
@@ -519,7 +519,7 @@ msgstr "LyX: gehitu BibTeX datu-basea"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:246
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:843
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -1589,7 +1589,7 @@ msgid "&Shaded"
 msgstr "&Itzaldurarekin"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1600
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1692
 msgid "Single"
 msgstr "Bakuna"
 
@@ -1598,7 +1598,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1606
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1698
 msgid "Double"
 msgstr "Bikoitza"
 
@@ -2269,7 +2269,7 @@ msgid "&Maximum last files:"
 msgstr "&Gehienezko azken dokumentuak:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:726
+#: src/bufferlist.C:222 src/lyxfunc.C:727
 msgid "&Save"
 msgstr "&Gorde"
 
@@ -8396,11 +8396,11 @@ msgstr "Gorde dokumentua"
 msgid "Print document"
 msgstr "Inprimatu dokumentua"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:713
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:724
 msgid "Undo"
 msgstr "Desegin"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:724
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:734
 msgid "Redo"
 msgstr "Berregin"
 
@@ -8738,11 +8738,11 @@ msgstr ""
 "\n"
 "Gordetako bertsioa berreskuratzea nahi duzu?"
 
-#: src/BufferView.C:219 src/lyxfunc.C:898
+#: src/BufferView.C:219 src/lyxfunc.C:899
 msgid "Revert to saved document?"
 msgstr "Gordetako dokumentua berreskuratu?"
 
-#: src/BufferView.C:220 src/lyxfunc.C:899 src/lyxvc.C:175
+#: src/BufferView.C:220 src/lyxfunc.C:900 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Berreskuratu"
 
@@ -8769,62 +8769,62 @@ msgstr "Sortu dokumentu berria?"
 msgid "&Create"
 msgstr "&Sortu"
 
-#: src/BufferView.C:542
+#: src/BufferView.C:548
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Gorde 5. laster-marka"
 
-#: src/BufferView.C:716
+#: src/BufferView.C:727
 msgid "No further undo information"
 msgstr "Gehiago desegiteko infomaziorik ez"
 
-#: src/BufferView.C:727
+#: src/BufferView.C:737
 msgid "No further redo information"
 msgstr "Gehiago berregiteko informaziorik ez"
 
-#: src/BufferView.C:888
+#: src/BufferView.C:896
 msgid "Mark off"
 msgstr "Marka desaktibatua"
 
-#: src/BufferView.C:895
+#: src/BufferView.C:903
 msgid "Mark on"
 msgstr "Marka aktibatua"
 
-#: src/BufferView.C:902
+#: src/BufferView.C:910
 msgid "Mark removed"
 msgstr "Marka ezabatuta"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:913
 msgid "Mark set"
 msgstr "Marka ezarrita"
 
-#: src/BufferView.C:951
+#: src/BufferView.C:959
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d hitz hautapenean."
 
-#: src/BufferView.C:954
+#: src/BufferView.C:962
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d hitz dokumentuan."
 
-#: src/BufferView.C:959
+#: src/BufferView.C:967
 msgid "One word in selection."
 msgstr "Hitz bat hautapenean."
 
-#: src/BufferView.C:961
+#: src/BufferView.C:969
 msgid "One word in document."
 msgstr "Hitz bat dokumentuan."
 
-#: src/BufferView.C:964
+#: src/BufferView.C:972
 msgid "Count words"
 msgstr "Zenbatu hitzak"
 
-#: src/BufferView.C:1501
+#: src/BufferView.C:1509
 msgid "Select LyX document to insert"
 msgstr "Hautatu LyX dokumentua txertatzeko"
 
-#: src/BufferView.C:1503 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -8833,31 +8833,31 @@ msgstr "Hautatu LyX dokumentua txertatzeko"
 msgid "Documents|#o#O"
 msgstr "Dokumentuak|#d#D"
 
-#: src/BufferView.C:1504 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1512 src/lyxfunc.C:1897 src/lyxfunc.C:1970
 msgid "Examples|#E#e"
 msgstr "Adibideak|#A#a"
 
-#: src/BufferView.C:1508 src/lyx_cb.C:140 src/lyxfunc.C:1864
+#: src/BufferView.C:1516 src/lyx_cb.C:140 src/lyxfunc.C:1864
 #: src/lyxfunc.C:1901
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentuak (*.lyx)"
 
-#: src/BufferView.C:1520 src/lyxfunc.C:1911 src/lyxfunc.C:1991
+#: src/BufferView.C:1528 src/lyxfunc.C:1911 src/lyxfunc.C:1991
 #: src/lyxfunc.C:2005 src/lyxfunc.C:2021
 msgid "Canceled."
 msgstr "Bertan behera utzita."
 
-#: src/BufferView.C:1531
+#: src/BufferView.C:1539
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.C:1542
+#: src/BufferView.C:1550
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.C:1544
+#: src/BufferView.C:1552
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
@@ -9450,7 +9450,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea edo aldaketak baztertu nahi dituzu?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:725
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
 msgid "Save changed document?"
 msgstr "Gorde aldatutako dokumentua?"
 
@@ -9475,20 +9475,20 @@ msgstr " Huts egin du gordetzean! Saiatzen..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Huts egin du gordetzean! Dokumentua galdu da."
 
-#: src/bufferparams.C:434
+#: src/bufferparams.C:438
 #, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
 msgstr "Dokumentuak falta den \"%1$s\" TeX-klasea erabiltzen du.\n"
 
-#: src/bufferparams.C:436
+#: src/bufferparams.C:440
 msgid "Document class not available"
 msgstr "Dokumentu-klasea ez dago erabilgarri"
 
-#: src/bufferparams.C:437
+#: src/bufferparams.C:441
 msgid "LyX will not be able to produce output."
 msgstr "LyX ezingo du irteera landu."
 
-#: src/bufferview_funcs.C:307
+#: src/bufferview_funcs.C:308
 msgid "No more insets"
 msgstr "Barnekorik ez"
 
@@ -9513,8 +9513,8 @@ msgstr "Araazte-mezu guztiak"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Arazten `%1$s' (%2$s)"
 
-#: src/converter.C:333 src/converter.C:465 src/converter.C:488
-#: src/converter.C:533
+#: src/converter.C:333 src/converter.C:468 src/converter.C:491
+#: src/converter.C:536
 msgid "Cannot convert file"
 msgstr "Ezin fitxategia bihurtu"
 
@@ -9531,39 +9531,39 @@ msgstr ""
 msgid "Executing command: "
 msgstr "Komandoa exekutatzen: "
 
-#: src/converter.C:460
+#: src/converter.C:463
 msgid "Build errors"
 msgstr "Eraikitze-erroreak"
 
-#: src/converter.C:461
+#: src/converter.C:464
 msgid "There were errors during the build process."
 msgstr "Erroreak gertatu dira eraikitze prozesuan."
 
-#: src/converter.C:466 src/format.C:327 src/format.C:386
+#: src/converter.C:469 src/format.C:327 src/format.C:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Errorea gertatu da %1$s exekutatzean."
 
-#: src/converter.C:489
+#: src/converter.C:492
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Ezin izan da aldi-baterako fitxategia lekuz aldatu: %1$s --> %2$s."
 
-#: src/converter.C:535
+#: src/converter.C:538
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Ezin izan da aldi-baterako fitxategia kopiatu: %1$s --> %2$s."
 
-#: src/converter.C:536
+#: src/converter.C:539
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Ezin izan da aldi-baterako fitxategia lekuz aldatu: %1$s --> %2$s."
 
-#: src/converter.C:594
+#: src/converter.C:597
 msgid "Running LaTeX..."
 msgstr "LaTeX exekutatzen..."
 
-#: src/converter.C:612
+#: src/converter.C:615
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -9572,15 +9572,15 @@ msgstr ""
 "LaTeX ez da ongi exekutatu. Gainera, LyX-ek ezin izan du LaTeX-en %1$s "
 "egunkaria aurkitu."
 
-#: src/converter.C:615
+#: src/converter.C:618
 msgid "LaTeX failed"
 msgstr "LaTeX-ek huts egin du"
 
-#: src/converter.C:617
+#: src/converter.C:620
 msgid "Output is empty"
 msgstr "Irteera hutsa dago"
 
-#: src/converter.C:618
+#: src/converter.C:621
 msgid "An empty output file was generated."
 msgstr "Irteera hutsa duen fitxategia sortu da."
 
@@ -9733,16 +9733,16 @@ msgstr "Fitxategi-izenean errorea"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Dokumentuaren bide-izenak ezin du zuriunerik izan."
 
-#: src/exporter.C:251
+#: src/exporter.C:252
 msgid "Document export cancelled."
 msgstr "Dokumentua esportatzea bertan behera utzi da."
 
-#: src/exporter.C:257
+#: src/exporter.C:258
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentua %1$s gisa esportatuta '%2$s' fitxategira"
 
-#: src/exporter.C:263
+#: src/exporter.C:264
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
@@ -9788,7 +9788,7 @@ msgstr " (aldatuta)"
 msgid " (read only)"
 msgstr " (irakurtzeko soilik)"
 
-#: src/frontends/WorkArea.C:227
+#: src/frontends/WorkArea.C:239
 msgid "Formatting document..."
 msgstr "Dokumentua formateatzen..."
 
@@ -9912,7 +9912,7 @@ msgstr "Sans Serif"
 msgid "Typewriter"
 msgstr "Idazmakina"
 
-#: src/frontends/controllers/ControlErrorList.C:56
+#: src/frontends/controllers/ControlErrorList.C:57
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s erroreak (%2$s)"
@@ -10230,9 +10230,9 @@ msgstr "Ezin izan da TeX-en informazioa eguneratu"
 msgid "The script `%s' failed."
 msgstr "'%s' script-ak huts egin du."
 
-#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
-#: src/frontends/qt4/Alert_pimpl.C:96 src/frontends/qt4/Alert_pimpl.C:106
-#: src/frontends/qt4/Alert_pimpl.C:117
+#: src/frontends/qt4/Alert_pimpl.C:60 src/frontends/qt4/Alert_pimpl.C:87
+#: src/frontends/qt4/Alert_pimpl.C:107 src/frontends/qt4/Alert_pimpl.C:126
+#: src/frontends/qt4/Alert_pimpl.C:137
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -10268,6 +10268,18 @@ msgstr "Etiketa"
 #: src/frontends/qt4/FileDialog.C:159
 msgid "Directories"
 msgstr "Direktorioak"
+
+#: src/frontends/qt4/GuiView.C:126
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.C:132
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.C:139
+msgid "Big-sized icons"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.C:669
 msgid "LyX"
@@ -10379,7 +10391,7 @@ msgstr "Dokumentu-ezarpenak"
 msgid "Length"
 msgstr "Luzera"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1603
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1695
 msgid "OneHalf"
 msgstr "Bat eta erdi"
 
@@ -11483,11 +11495,11 @@ msgstr "Huts egin du automatikoki gordetzean!"
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/lyx_cb.C:350
+#: src/lyx_cb.C:349
 msgid "Select file to insert"
 msgstr "Hautatu fitxategia txertatzeko"
 
-#: src/lyx_cb.C:369
+#: src/lyx_cb.C:368
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11498,11 +11510,11 @@ msgstr ""
 "%1$s\n"
 "honako erroreagatik: %2$s"
 
-#: src/lyx_cb.C:371
+#: src/lyx_cb.C:370
 msgid "Could not read file"
 msgstr "Ezin izan da fitxategia irakurri"
 
-#: src/lyx_cb.C:379
+#: src/lyx_cb.C:378
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11513,23 +11525,23 @@ msgstr ""
 "%1$s\n"
 "honako erroreagatik: %2$s"
 
-#: src/lyx_cb.C:381 src/output.C:41
+#: src/lyx_cb.C:380 src/output.C:41
 msgid "Could not open file"
 msgstr "Ezin izan da fitxategia ireki"
 
-#: src/lyx_cb.C:411
+#: src/lyx_cb.C:410
 msgid "Running configure..."
 msgstr "Konfigurazioa exekutatzen..."
 
-#: src/lyx_cb.C:420
+#: src/lyx_cb.C:419
 msgid "Reloading configuration..."
 msgstr "Konfigurazioa birkargatzen..."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:424
 msgid "System reconfigured"
 msgstr "Sistema birkonfiguratu da."
 
-#: src/lyx_cb.C:426
+#: src/lyx_cb.C:425
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11539,11 +11551,11 @@ msgstr ""
 "LyX berrabiarazi behar duzu eguneratutako \n"
 "dokumentu-klasearen zehaztasunak erabiltzeko."
 
-#: src/lyx_main.C:129
+#: src/lyx_main.C:130
 msgid "Could not read configuration file"
 msgstr "Ezin izan da konfigurazioko fitxategia irakurri"
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:131
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11554,37 +11566,37 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/lyx_main.C:139
+#: src/lyx_main.C:140
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: erabiltzaile-direktorioa birkonfiguratzen"
 
-#: src/lyx_main.C:143
+#: src/lyx_main.C:144
 msgid "Done!"
 msgstr "Eginda!"
 
-#: src/lyx_main.C:491
+#: src/lyx_main.C:500
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Ezin izan da aldi-baterako %1$s direktorioa kendu"
 
-#: src/lyx_main.C:493
+#: src/lyx_main.C:502
 msgid "Unable to remove temporary directory"
 msgstr "Ezin da aldi baterako direktorioa ezabatu"
 
-#: src/lyx_main.C:529
+#: src/lyx_main.C:538
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Komandoaren `%1$s' aukera okerra. Irteten."
 
-#: src/lyx_main.C:785
+#: src/lyx_main.C:794
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:923
 msgid "Could not create temporary directory"
 msgstr "Ezin izan da aldi-baterako direktorioa sortu:"
 
-#: src/lyx_main.C:915
+#: src/lyx_main.C:924
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11595,11 +11607,11 @@ msgstr ""
 "Ziurtatu bide-izen hori existitzen dela eta idazteko \n"
 "baimenak dituela, eta saiatu berriro."
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1091
 msgid "Missing user LyX directory"
 msgstr "Erabiltzailearen LyX direktorioa falta da"
 
-#: src/lyx_main.C:1083
+#: src/lyx_main.C:1092
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11608,37 +11620,37 @@ msgstr ""
 "Existitzen ez den erabiltzailearen LyX direktorioa zehaztu duzu: %1$s.\n"
 "Zure konfigurazioa gordetzeko behar da."
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1097
 msgid "&Create directory"
 msgstr "&Sortu direktorioa"
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1098
 msgid "&Exit LyX"
 msgstr "&Irten LyX-etik"
 
-#: src/lyx_main.C:1090
+#: src/lyx_main.C:1099
 msgid "No user LyX directory. Exiting."
 msgstr "Ez dago erabiltzailearen LyX direktoriorik. Irtetzen."
 
-#: src/lyx_main.C:1094
+#: src/lyx_main.C:1103
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: %1$s direktorioa sortzen"
 
-#: src/lyx_main.C:1100
+#: src/lyx_main.C:1109
 msgid "Failed to create directory. Exiting."
 msgstr "Huts egin du direktorioa sortzean. Irtetzen."
 
-#: src/lyx_main.C:1265
+#: src/lyx_main.C:1274
 msgid "List of supported debug flags:"
 msgstr "Onartutako arazte-ikurren zerrenda:"
 
-#: src/lyx_main.C:1269
+#: src/lyx_main.C:1278
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Arazte-maila %1$s-ra ezartzen"
 
-#: src/lyx_main.C:1280
+#: src/lyx_main.C:1289
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11679,29 +11691,44 @@ msgstr ""
 "\t-version        bertsioa eta konpilatze-informazioaren laburpena\n"
 "Ikus LyX-en man eskuliburua xehetasun gehiagorako (exekutatu: man lyx)."
 
-#: src/lyx_main.C:1316
+#: src/lyx_main.C:1325 src/support/package.C.in:556
+#, fuzzy
+msgid "No system directory"
+msgstr "Erabiltzailearen direktorioa: "
+
+#: src/lyx_main.C:1326
 msgid "Missing directory for -sysdir switch"
 msgstr "'-sysdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:1326
+#: src/lyx_main.C:1336
+#, fuzzy
+msgid "No user directory"
+msgstr "Erabiltzailearen direktorioa: "
+
+#: src/lyx_main.C:1337
 msgid "Missing directory for -userdir switch"
 msgstr "'-userdir' aukeraren direktorioa falta da"
 
-#: src/lyx_main.C:1336
+#: src/lyx_main.C:1347
+#, fuzzy
+msgid "Incomplete command"
+msgstr "Indize-komandoa:"
+
+#: src/lyx_main.C:1348
 msgid "Missing command string after --execute switch"
 msgstr "'--execute' aukeraren ondoren komandoa falta da"
 
-#: src/lyx_main.C:1346
+#: src/lyx_main.C:1358
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "'--export' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:1358
+#: src/lyx_main.C:1370
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "'--import' aukeraren ondoren fitxategi-mota falta da (adib. latex, ps...)"
 
-#: src/lyx_main.C:1363
+#: src/lyx_main.C:1375
 msgid "Missing filename for --import"
 msgstr "'--import' aukeraren fitxategi-izena falta da"
 
@@ -11772,39 +11799,35 @@ msgstr "Hizkuntza: %1$s, "
 msgid "  Number %1$s"
 msgstr "  Zenbakia %1$s"
 
-#: src/lyxfunc.C:365
+#: src/lyxfunc.C:367
 msgid "Unknown function."
 msgstr "Funtzio ezezaguna."
 
-#: src/lyxfunc.C:390
-msgid "Exiting"
-msgstr "Irtetzen"
-
-#: src/lyxfunc.C:422
+#: src/lyxfunc.C:406
 msgid "Nothing to do"
 msgstr "Ezin ezer egin"
 
-#: src/lyxfunc.C:441
+#: src/lyxfunc.C:425
 msgid "Unknown action"
 msgstr "Ekintza ezezaguna"
 
-#: src/lyxfunc.C:447 src/lyxfunc.C:709
+#: src/lyxfunc.C:431 src/lyxfunc.C:710
 msgid "Command disabled"
 msgstr "Komandoa desgaitua"
 
-#: src/lyxfunc.C:454
+#: src/lyxfunc.C:438
 msgid "Command not allowed without any document open"
 msgstr "Ezin komandoa erabili dokumentu bat ireki arte"
 
-#: src/lyxfunc.C:695
+#: src/lyxfunc.C:696
 msgid "Document is read-only"
 msgstr "Dokumentua irakurtzeko soilik da"
 
-#: src/lyxfunc.C:703
+#: src/lyxfunc.C:704
 msgid "This portion of the document is deleted."
 msgstr "Dokumentuaren zati hau ezabatu egin da."
 
-#: src/lyxfunc.C:722
+#: src/lyxfunc.C:723
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -11815,7 +11838,7 @@ msgstr ""
 "\n"
 "Nahi duzu dokumentua gordetzea?"
 
-#: src/lyxfunc.C:740
+#: src/lyxfunc.C:741
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -11824,11 +11847,11 @@ msgstr ""
 "Ezin izan da %1$s dokumentua inprimatu.\n"
 "Egiaztatu inprimagailua ongi konfiguratuta dagoela."
 
-#: src/lyxfunc.C:743
+#: src/lyxfunc.C:744
 msgid "Print document failed"
 msgstr "Huts egin du dokumentua inprimatzean"
 
-#: src/lyxfunc.C:762
+#: src/lyxfunc.C:763
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -11837,20 +11860,20 @@ msgstr ""
 "Dokumentua ezin izan da bihurtu\n"
 "%1$s dokumentu-klasera."
 
-#: src/lyxfunc.C:765
+#: src/lyxfunc.C:766
 msgid "Could not change class"
 msgstr "Ezin izan da klasea aldatu"
 
-#: src/lyxfunc.C:877
+#: src/lyxfunc.C:878
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/lyxfunc.C:881
+#: src/lyxfunc.C:882
 msgid " done."
 msgstr " eginda."
 
-#: src/lyxfunc.C:896
+#: src/lyxfunc.C:897
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -11859,39 +11882,44 @@ msgstr ""
 "Edozein aldaketa galdu egingo da. Ziur zaude %1$s dokumentuaren gordetako "
 "bertsioa leheneratu nahi duzula?"
 
-#: src/lyxfunc.C:1102 src/text3.C:1222
+#: src/lyxfunc.C:1078
+#, fuzzy
+msgid "Exiting."
+msgstr "Irtetzen"
+
+#: src/lyxfunc.C:1104 src/text3.C:1222
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
-#: src/lyxfunc.C:1111
+#: src/lyxfunc.C:1113
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen..."
 
-#: src/lyxfunc.C:1390
+#: src/lyxfunc.C:1391
 msgid "Opening child document "
 msgstr "Ume-dokumentua irekitzen "
 
-#: src/lyxfunc.C:1477
+#: src/lyxfunc.C:1478
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/lyxfunc.C:1488
+#: src/lyxfunc.C:1489
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Huts egin du \"%1$s\" kolorea ezartzean - kolorea definitu gabe dago edo "
 "ezin da berriz definitu"
 
-#: src/lyxfunc.C:1604
+#: src/lyxfunc.C:1605
 msgid "Document defaults saved in "
 msgstr "Dokumentuaren lehenetsiak hemen gordeta: "
 
-#: src/lyxfunc.C:1607
+#: src/lyxfunc.C:1608
 msgid "Unable to save document defaults"
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
-#: src/lyxfunc.C:1663
+#: src/lyxfunc.C:1664
 msgid "Converting document to new document class..."
 msgstr "Dokumentua klase berrira bihurtzen..."
 
@@ -12561,13 +12589,40 @@ msgstr "Erreferentziak: "
 msgid "All files (*)"
 msgstr "Fitxategi guztiak (*)"
 
-#: src/support/package.C.in:443
+#: src/support/os_win32.C:335
+#, fuzzy
+msgid "System file not found"
+msgstr "Ez da katerik aurkitu!"
+
+#: src/support/os_win32.C:336
+msgid ""
+"Unable to load shfolder.dll\n"
+"Please install."
+msgstr ""
+
+#: src/support/os_win32.C:341
+#, fuzzy
+msgid "System function not found"
+msgstr "Ez da katerik aurkitu!"
+
+#: src/support/os_win32.C:342
+msgid ""
+"Unable to find SHGetFolderPathA in shfolder.dll\n"
+"Don't know how to proceed. Sorry."
+msgstr ""
+
+#: src/support/package.C.in:436
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "Ez da katerik aurkitu!"
+
+#: src/support/package.C.in:437
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "Ezin da LyX liburutegien bide-izena zehaztu (%1$s komando lerrotik)"
 
-#: src/support/package.C.in:565
+#: src/support/package.C.in:557
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12581,7 +12636,12 @@ msgstr ""
 "LYX_DIR_15x aldagaia LyX sistemako direktorioarekin ('chkconfig.ltx' "
 "fitxategia duena)."
 
-#: src/support/package.C.in:651
+#: src/support/package.C.in:641 src/support/package.C.in:668
+#, fuzzy
+msgid "File not found"
+msgstr "Ez da katerik aurkitu!"
+
+#: src/support/package.C.in:642
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
@@ -12590,7 +12650,7 @@ msgstr ""
 "%1$s aldatzaile baliogabea.\n"
 "%2$s direktorioak ez dauka %3$s."
 
-#: src/support/package.C.in:679
+#: src/support/package.C.in:669
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -12599,7 +12659,7 @@ msgstr ""
 "Inguruneko %1$s aldagai baliogabea.\n"
 "%2$s direktorioak ez dauka %3$s."
 
-#: src/support/package.C.in:704
+#: src/support/package.C.in:694
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -12607,6 +12667,11 @@ msgid ""
 msgstr ""
 "Inguruneko %1$s aldagaia baliogabea da.\n"
 "%2$s ez da direktorioa."
+
+#: src/support/package.C.in:696
+#, fuzzy
+msgid "Directory not found"
+msgstr "Ez da katerik aurkitu!"
 
 #: src/support/userinfo.C:44
 msgid "Unknown user"
@@ -12754,54 +12819,54 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Ezin duzu bi zuriune honela idatzi. Irakurri Tutoretza."
 
-#: src/text.C:1566
+#: src/text.C:1658
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Aldaketen aztarna|A"
 
-#: src/text.C:1572
+#: src/text.C:1664
 msgid "Change: "
 msgstr "Aldaketa: "
 
-#: src/text.C:1576
+#: src/text.C:1668
 msgid " at "
 msgstr " hemen "
 
-#: src/text.C:1586
+#: src/text.C:1678
 #, c-format
 msgid "Font: %1$s"
 msgstr "Letra-tipoa: %1$s"
 
-#: src/text.C:1591
+#: src/text.C:1683
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Sakonera: %1$d"
 
-#: src/text.C:1597
+#: src/text.C:1689
 msgid ", Spacing: "
 msgstr ", Tartea: "
 
-#: src/text.C:1609
+#: src/text.C:1701
 msgid "Other ("
 msgstr "Bestea ("
 
-#: src/text.C:1618
+#: src/text.C:1710
 msgid ", Inset: "
 msgstr ", Barnekoa: "
 
-#: src/text.C:1619
+#: src/text.C:1711
 msgid ", Paragraph: "
 msgstr ", Paragrafoa: "
 
-#: src/text.C:1620
+#: src/text.C:1712
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:1621
+#: src/text.C:1713
 msgid ", Position: "
 msgstr ", Posizioa: "
 
-#: src/text.C:1622
+#: src/text.C:1714
 msgid ", Boundary: "
 msgstr ", Muga: "
 

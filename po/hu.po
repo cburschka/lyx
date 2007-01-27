@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-22 15:14+0100\n"
+"POT-Creation-Date: 2007-01-27 19:30+0100\n"
 "PO-Revision-Date: 2007-01-21 17:46+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -482,8 +482,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
 #: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:726
-#: src/lyxfunc.C:898 src/lyxfunc.C:2018 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
+#: src/lyxfunc.C:900 src/lyxfunc.C:2018 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Mégsem"
 
@@ -512,7 +512,7 @@ msgstr "LyX: BibTeX fájl hozzáadása"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:246
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:842
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -1571,7 +1571,7 @@ msgid "&Shaded"
 msgstr "Árnyé&kolt"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1646
+#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1692
 msgid "Single"
 msgstr "Egyszeres"
 
@@ -1580,7 +1580,7 @@ msgid "1.5"
 msgstr "Másfélszeres"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1652
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1698
 msgid "Double"
 msgstr "Kétszeres"
 
@@ -2251,7 +2251,7 @@ msgid "&Maximum last files:"
 msgstr "&Utoljára használt fájlok száma:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:725
+#: src/bufferlist.C:222 src/lyxfunc.C:727
 msgid "&Save"
 msgstr "Menté&s"
 
@@ -8326,11 +8326,11 @@ msgstr "Dokumentum mentése"
 msgid "Print document"
 msgstr "Dokumentum nyomtatása"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:713
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:724
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:724
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:734
 msgid "Redo"
 msgstr "Mégis"
 
@@ -8657,11 +8657,11 @@ msgstr ""
 "\n"
 "Vissza akar térni egy mentett változathoz?"
 
-#: src/BufferView.C:219 src/lyxfunc.C:897
+#: src/BufferView.C:219 src/lyxfunc.C:899
 msgid "Revert to saved document?"
 msgstr "Mentett dokumentum visszaállítása?"
 
-#: src/BufferView.C:220 src/lyxfunc.C:898 src/lyxvc.C:175
+#: src/BufferView.C:220 src/lyxfunc.C:900 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Visszatér"
 
@@ -8688,61 +8688,61 @@ msgstr "Létrehozzam az új dokumentumot?"
 msgid "&Create"
 msgstr "&Létrehozás"
 
-#: src/BufferView.C:542
+#: src/BufferView.C:548
 msgid "Save bookmark"
 msgstr "Könyvjelzõ mentése"
 
-#: src/BufferView.C:716
+#: src/BufferView.C:727
 msgid "No further undo information"
 msgstr "Nincs több visszavonás"
 
-#: src/BufferView.C:727
+#: src/BufferView.C:737
 msgid "No further redo information"
 msgstr "Minden visszavonás semlegesítve"
 
-#: src/BufferView.C:888
+#: src/BufferView.C:896
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView.C:895
+#: src/BufferView.C:903
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView.C:902
+#: src/BufferView.C:910
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView.C:905
+#: src/BufferView.C:913
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView.C:951
+#: src/BufferView.C:959
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d szó van a kijelölésben."
 
-#: src/BufferView.C:954
+#: src/BufferView.C:962
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d szó van a dokumentumban."
 
-#: src/BufferView.C:959
+#: src/BufferView.C:967
 msgid "One word in selection."
 msgstr "Egy szó van a kijelölésben."
 
-#: src/BufferView.C:961
+#: src/BufferView.C:969
 msgid "One word in document."
 msgstr "Egy szó van a dokumentumban."
 
-#: src/BufferView.C:964
+#: src/BufferView.C:972
 msgid "Count words"
 msgstr "Szavak megszámolása"
 
-#: src/BufferView.C:1501
+#: src/BufferView.C:1509
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 
-#: src/BufferView.C:1503 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -8751,31 +8751,31 @@ msgstr "Válassza ki a beszúrandó LyX dokumentumot"
 msgid "Documents|#o#O"
 msgstr "Dokumentumok|#d#D"
 
-#: src/BufferView.C:1504 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1512 src/lyxfunc.C:1897 src/lyxfunc.C:1970
 msgid "Examples|#E#e"
 msgstr "Példák|#P#p"
 
-#: src/BufferView.C:1508 src/lyx_cb.C:140 src/lyxfunc.C:1864
+#: src/BufferView.C:1516 src/lyx_cb.C:140 src/lyxfunc.C:1864
 #: src/lyxfunc.C:1901
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumentumok (*.lyx)"
 
-#: src/BufferView.C:1520 src/lyxfunc.C:1911 src/lyxfunc.C:1991
+#: src/BufferView.C:1528 src/lyxfunc.C:1911 src/lyxfunc.C:1991
 #: src/lyxfunc.C:2005 src/lyxfunc.C:2021
 msgid "Canceled."
 msgstr "Törölve."
 
-#: src/BufferView.C:1531
+#: src/BufferView.C:1539
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dokumentum beszúrása %1$s..."
 
-#: src/BufferView.C:1542
+#: src/BufferView.C:1550
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentum: %1$s beszúrása megtörtént."
 
-#: src/BufferView.C:1544
+#: src/BufferView.C:1552
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nem tudom beszúrni a dokumentumot %1$s"
@@ -9366,7 +9366,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy elveti a módosításokat?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:724
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
 msgid "Save changed document?"
 msgstr "Mentsem a megváltozott dokumentumot?"
 
@@ -9391,20 +9391,20 @@ msgstr "  Sikertelen mentés! Próbálkozok..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Sikertelen mentés! A csudába, a dokumentum elvesztett."
 
-#: src/bufferparams.C:434
+#: src/bufferparams.C:438
 #, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
 msgstr "A dokumentum egy hiányzó TeX osztályt használ: \"%1$s\".\n"
 
-#: src/bufferparams.C:436
+#: src/bufferparams.C:440
 msgid "Document class not available"
 msgstr "A dokumentum-osztály nem érhetõ el"
 
-#: src/bufferparams.C:437
+#: src/bufferparams.C:441
 msgid "LyX will not be able to produce output."
 msgstr "LyX nem tudja  elkészíteni a kimenetet."
 
-#: src/bufferview_funcs.C:307
+#: src/bufferview_funcs.C:308
 msgid "No more insets"
 msgstr "Nincs több betét"
 
@@ -9649,16 +9649,16 @@ msgstr "Fájlnév hiba"
 msgid "The directory path to the document cannot contain spaces."
 msgstr "A lyx fájl elérési útja nem tartalmazhat szóközöket."
 
-#: src/exporter.C:251
+#: src/exporter.C:252
 msgid "Document export cancelled."
 msgstr "A dokumentumot exportálás megszakítva."
 
-#: src/exporter.C:257
+#: src/exporter.C:258
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "A %1$s dokumentumot exportáltam, mint `%2$s'"
 
-#: src/exporter.C:263
+#: src/exporter.C:264
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "A dokumentumot exportáltam, mint %1$s"
@@ -9704,7 +9704,7 @@ msgstr " (megváltozott)"
 msgid " (read only)"
 msgstr " (csak olvasható)"
 
-#: src/frontends/WorkArea.C:227
+#: src/frontends/WorkArea.C:239
 msgid "Formatting document..."
 msgstr "Dokumentum formázása..."
 
@@ -9825,7 +9825,7 @@ msgstr "Sans Serif"
 msgid "Typewriter"
 msgstr "Írógép"
 
-#: src/frontends/controllers/ControlErrorList.C:56
+#: src/frontends/controllers/ControlErrorList.C:57
 #, c-format
 msgid "%1$s Errors (%2$s)"
 msgstr "%1$s hibák (%2$s)"
@@ -10143,9 +10143,9 @@ msgstr "A TeX információ frissítése nem lehetséges"
 msgid "The script `%s' failed."
 msgstr "A `%s' parancsfájl sikertelen."
 
-#: src/frontends/qt4/Alert_pimpl.C:58 src/frontends/qt4/Alert_pimpl.C:85
-#: src/frontends/qt4/Alert_pimpl.C:96 src/frontends/qt4/Alert_pimpl.C:106
-#: src/frontends/qt4/Alert_pimpl.C:117
+#: src/frontends/qt4/Alert_pimpl.C:60 src/frontends/qt4/Alert_pimpl.C:87
+#: src/frontends/qt4/Alert_pimpl.C:107 src/frontends/qt4/Alert_pimpl.C:126
+#: src/frontends/qt4/Alert_pimpl.C:137
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -10181,6 +10181,18 @@ msgstr "Címke"
 #: src/frontends/qt4/FileDialog.C:159
 msgid "Directories"
 msgstr "Könyvtárak"
+
+#: src/frontends/qt4/GuiView.C:126
+msgid "Small-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.C:132
+msgid "Normal-sized icons"
+msgstr ""
+
+#: src/frontends/qt4/GuiView.C:139
+msgid "Big-sized icons"
+msgstr ""
 
 #: src/frontends/qt4/GuiView.C:669
 msgid "LyX"
@@ -10290,7 +10302,7 @@ msgstr "Dokumentumbeállítások"
 msgid "Length"
 msgstr "Hossza"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1649
+#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1695
 msgid "OneHalf"
 msgstr "Másfél"
 
@@ -11391,11 +11403,11 @@ msgstr "Automatikus mentés sikertelen!"
 msgid "Autosaving current document..."
 msgstr "Aktuális dokumentum automatikus mentése..."
 
-#: src/lyx_cb.C:350
+#: src/lyx_cb.C:349
 msgid "Select file to insert"
 msgstr "Válassza ki a beszúrandó fájlt"
 
-#: src/lyx_cb.C:369
+#: src/lyx_cb.C:368
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11406,11 +11418,11 @@ msgstr ""
 "nem olvasható,\n"
 "%2$s hiba miatt"
 
-#: src/lyx_cb.C:371
+#: src/lyx_cb.C:370
 msgid "Could not read file"
 msgstr "A fájl nem olvasható"
 
-#: src/lyx_cb.C:379
+#: src/lyx_cb.C:378
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11421,23 +11433,23 @@ msgstr ""
 "nem nyitható meg,\n"
 "%2$s hiba miatt"
 
-#: src/lyx_cb.C:381 src/output.C:41
+#: src/lyx_cb.C:380 src/output.C:41
 msgid "Could not open file"
 msgstr "A fájl nem nyitható meg"
 
-#: src/lyx_cb.C:411
+#: src/lyx_cb.C:410
 msgid "Running configure..."
 msgstr "Beállítás folyamatban..."
 
-#: src/lyx_cb.C:420
+#: src/lyx_cb.C:419
 msgid "Reloading configuration..."
 msgstr "Beállítások újratöltése..."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:424
 msgid "System reconfigured"
 msgstr "A rendszer beállítása megtörtént"
 
-#: src/lyx_cb.C:426
+#: src/lyx_cb.C:425
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11447,11 +11459,11 @@ msgstr ""
 "Újra kell indítania a LyX-et az új beállítások\n"
 "használatba vételéhez."
 
-#: src/lyx_main.C:129
+#: src/lyx_main.C:130
 msgid "Could not read configuration file"
 msgstr "Konfiguráció fájl nem olvasható"
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:131
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11462,37 +11474,37 @@ msgstr ""
 "a konfigurációs fájl olvasása közben.\n"
 "Ellenõrizze a programot. (Please check your installation.)"
 
-#: src/lyx_main.C:139
+#: src/lyx_main.C:140
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: felhasználói könyvtár újra beállítása"
 
-#: src/lyx_main.C:143
+#: src/lyx_main.C:144
 msgid "Done!"
 msgstr "Kész!"
 
-#: src/lyx_main.C:491
+#: src/lyx_main.C:500
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Az %1$s ideiglenes könyvtár nem törölhetõ"
 
-#: src/lyx_main.C:493
+#: src/lyx_main.C:502
 msgid "Unable to remove temporary directory"
 msgstr "Ideiglenes könyvtár nem törölhetõ"
 
-#: src/lyx_main.C:529
+#: src/lyx_main.C:538
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hibás parancssori kapcsoló `%1$s'. Kilépek."
 
-#: src/lyx_main.C:785
+#: src/lyx_main.C:794
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:923
 msgid "Could not create temporary directory"
 msgstr "Ideiglenes könyvtár nem hozható létre"
 
-#: src/lyx_main.C:915
+#: src/lyx_main.C:924
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11503,11 +11515,11 @@ msgstr ""
 "%1$s. Ellenõrizze, hogy az elérési út létezik és\n"
 "írható, majd próbálja újra!"
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1091
 msgid "Missing user LyX directory"
 msgstr "Nincs felhasználói LyX könyvtár"
 
-#: src/lyx_main.C:1083
+#: src/lyx_main.C:1092
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11516,37 +11528,37 @@ msgstr ""
 "Nem létezõ LyX felhasználói könyvtárat adott meg, %1$s.\n"
 "Valahol tárolnia kell a saját beállításait."
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1097
 msgid "&Create directory"
 msgstr "&Könyvtár létrehozása"
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1098
 msgid "&Exit LyX"
 msgstr "&Kilépés LyX-bõl"
 
-#: src/lyx_main.C:1090
+#: src/lyx_main.C:1099
 msgid "No user LyX directory. Exiting."
 msgstr "Nincs felhasználói LyX könyvtár. Kilépek."
 
-#: src/lyx_main.C:1094
+#: src/lyx_main.C:1103
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Könyvtár létrehozása %1$s"
 
-#: src/lyx_main.C:1100
+#: src/lyx_main.C:1109
 msgid "Failed to create directory. Exiting."
 msgstr "Nem sikerült létrehozni a könyvtárat. Kilépek."
 
-#: src/lyx_main.C:1265
+#: src/lyx_main.C:1274
 msgid "List of supported debug flags:"
 msgstr "Támogatott nyomkövetési jelzõk listája:"
 
-#: src/lyx_main.C:1269
+#: src/lyx_main.C:1278
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nyomkövetési szint beállítása: %1$s"
 
-#: src/lyx_main.C:1280
+#: src/lyx_main.C:1289
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11586,27 +11598,42 @@ msgstr ""
 "\t-version        megadja a verziószámot és a fordítási információkat\n"
 "Olvassa el a LyX kézikönyvet a további részletekért!"
 
-#: src/lyx_main.C:1316
+#: src/lyx_main.C:1325 src/support/package.C.in:556
+#, fuzzy
+msgid "No system directory"
+msgstr "Felhasználói könyvtár: "
+
+#: src/lyx_main.C:1326
 msgid "Missing directory for -sysdir switch"
 msgstr "Hiányzó könyvtár a -sysdir kapcsolóhoz"
 
-#: src/lyx_main.C:1326
+#: src/lyx_main.C:1336
+#, fuzzy
+msgid "No user directory"
+msgstr "Felhasználói könyvtár: "
+
+#: src/lyx_main.C:1337
 msgid "Missing directory for -userdir switch"
 msgstr "Hiányzó könyvtár a -userdir kapcsolóhoz"
 
-#: src/lyx_main.C:1336
+#: src/lyx_main.C:1347
+#, fuzzy
+msgid "Incomplete command"
+msgstr "Tárgymutató parancsa:"
+
+#: src/lyx_main.C:1348
 msgid "Missing command string after --execute switch"
 msgstr "Hiányzó parancs az --execute kapcsoló után"
 
-#: src/lyx_main.C:1346
+#: src/lyx_main.C:1358
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --export kapcsoló után"
 
-#: src/lyx_main.C:1358
+#: src/lyx_main.C:1370
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Hiányzó fájltípus [pl. latex, ps...] az --import kapcsoló után"
 
-#: src/lyx_main.C:1363
+#: src/lyx_main.C:1375
 msgid "Missing filename for --import"
 msgstr "Hiányzó fájlnév --import-hoz"
 
@@ -11677,35 +11704,35 @@ msgstr "Nyelv: %1$s, "
 msgid "  Number %1$s"
 msgstr "  Szám %1$s"
 
-#: src/lyxfunc.C:365
+#: src/lyxfunc.C:367
 msgid "Unknown function."
 msgstr "Ismeretlen funkció."
 
-#: src/lyxfunc.C:404
+#: src/lyxfunc.C:406
 msgid "Nothing to do"
 msgstr "Nincs mit tenni"
 
-#: src/lyxfunc.C:423
+#: src/lyxfunc.C:425
 msgid "Unknown action"
 msgstr "Ismeretlen mûvelet"
 
-#: src/lyxfunc.C:429 src/lyxfunc.C:708
+#: src/lyxfunc.C:431 src/lyxfunc.C:710
 msgid "Command disabled"
 msgstr "Letiltott parancs"
 
-#: src/lyxfunc.C:436
+#: src/lyxfunc.C:438
 msgid "Command not allowed without any document open"
 msgstr "A parancsot csak nyitott dokumentum mellett használhatja"
 
-#: src/lyxfunc.C:694
+#: src/lyxfunc.C:696
 msgid "Document is read-only"
 msgstr "Csak olvasható dokumentum"
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:704
 msgid "This portion of the document is deleted."
 msgstr "A dokumentum ezen része törölve lett."
 
-#: src/lyxfunc.C:721
+#: src/lyxfunc.C:723
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -11716,7 +11743,7 @@ msgstr ""
 "\n"
 "Akarja menteni a dokumentumot vagy a módosítások elvetése?"
 
-#: src/lyxfunc.C:739
+#: src/lyxfunc.C:741
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -11725,11 +11752,11 @@ msgstr ""
 "A %1$s dokumentum nem nyomtatható.\n"
 "Kérem ellenõrizze a nyomtató beállításait."
 
-#: src/lyxfunc.C:742
+#: src/lyxfunc.C:744
 msgid "Print document failed"
 msgstr "Nyomtatás sikertelen"
 
-#: src/lyxfunc.C:761
+#: src/lyxfunc.C:763
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -11738,20 +11765,20 @@ msgstr ""
 "A dokumentumot nem lehet\n"
 " %1$s osztály formátumba átalakítani."
 
-#: src/lyxfunc.C:764
+#: src/lyxfunc.C:766
 msgid "Could not change class"
 msgstr "Osztály nem változtatható meg"
 
-#: src/lyxfunc.C:876
+#: src/lyxfunc.C:878
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése: %1$s..."
 
-#: src/lyxfunc.C:880
+#: src/lyxfunc.C:882
 msgid " done."
 msgstr " kész."
 
-#: src/lyxfunc.C:895
+#: src/lyxfunc.C:897
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -11760,44 +11787,44 @@ msgstr ""
 "A változtatások el fognak veszni. Biztos benne, hogy visszatér a %1$s "
 "dokumentum mentett változatához?"
 
-#: src/lyxfunc.C:1076
+#: src/lyxfunc.C:1078
 #, fuzzy
 msgid "Exiting."
 msgstr "Kilépés"
 
-#: src/lyxfunc.C:1102 src/text3.C:1222
+#: src/lyxfunc.C:1104 src/text3.C:1222
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/lyxfunc.C:1111
+#: src/lyxfunc.C:1113
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Súgófájl megnyitása %1$s..."
 
-#: src/lyxfunc.C:1390
+#: src/lyxfunc.C:1391
 msgid "Opening child document "
 msgstr "Aldokumentum megnyitása"
 
-#: src/lyxfunc.C:1477
+#: src/lyxfunc.C:1478
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Szintaxis: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1488
+#: src/lyxfunc.C:1489
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" sikertelen - a szín nincs meghatározva vagy nem lehet "
 "újradefiniálni"
 
-#: src/lyxfunc.C:1604
+#: src/lyxfunc.C:1605
 msgid "Document defaults saved in "
 msgstr "Dokumentum alapértékek elmentve ide:"
 
-#: src/lyxfunc.C:1607
+#: src/lyxfunc.C:1608
 msgid "Unable to save document defaults"
 msgstr "Sikertelen mentése a dokumentum alapértékeknek"
 
-#: src/lyxfunc.C:1663
+#: src/lyxfunc.C:1664
 msgid "Converting document to new document class..."
 msgstr "Dokumentum átalakítása másik dokumentumosztályra..."
 
@@ -12461,7 +12488,34 @@ msgstr "Hivatkozások: "
 msgid "All files (*)"
 msgstr "Minden fájl (*)"
 
-#: src/support/package.C.in:443
+#: src/support/os_win32.C:335
+#, fuzzy
+msgid "System file not found"
+msgstr "Nem találtam meg a szöveget!"
+
+#: src/support/os_win32.C:336
+msgid ""
+"Unable to load shfolder.dll\n"
+"Please install."
+msgstr ""
+
+#: src/support/os_win32.C:341
+#, fuzzy
+msgid "System function not found"
+msgstr "Nem találtam meg a szöveget!"
+
+#: src/support/os_win32.C:342
+msgid ""
+"Unable to find SHGetFolderPathA in shfolder.dll\n"
+"Don't know how to proceed. Sorry."
+msgstr ""
+
+#: src/support/package.C.in:436
+#, fuzzy
+msgid "LyX binary not found"
+msgstr "Nem találtam meg a szöveget!"
+
+#: src/support/package.C.in:437
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
@@ -12469,7 +12523,7 @@ msgstr ""
 "Nem tudom meghatározni az elérési útvonalat a LyX programhoz a "
 "parancssorból: %1$s"
 
-#: src/support/package.C.in:565
+#: src/support/package.C.in:557
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -12482,7 +12536,12 @@ msgstr ""
 "változót LYX_DIR_15x néven a LyX rendszerkönyvtárhoz, ahol a  `chkconfig."
 "ltx' fájl van."
 
-#: src/support/package.C.in:651
+#: src/support/package.C.in:641 src/support/package.C.in:668
+#, fuzzy
+msgid "File not found"
+msgstr "Nem találtam meg a szöveget!"
+
+#: src/support/package.C.in:642
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
@@ -12491,7 +12550,7 @@ msgstr ""
 "Érvénytelen %1$s kapcsoló.\n"
 "A %2$s nem tartalmazza %3$s-at."
 
-#: src/support/package.C.in:679
+#: src/support/package.C.in:669
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -12500,7 +12559,7 @@ msgstr ""
 "Érvénytelen %1$s környezeti változó.\n"
 "%2$s könyvtár nem tartalmazza %3$s-at."
 
-#: src/support/package.C.in:704
+#: src/support/package.C.in:694
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -12508,6 +12567,11 @@ msgid ""
 msgstr ""
 "Érvénytelen %1$s környezeti változó.\n"
 "%2$s nem könyvtár."
+
+#: src/support/package.C.in:696
+#, fuzzy
+msgid "Directory not found"
+msgstr "Nem találtam meg a szöveget!"
 
 #: src/support/userinfo.C:44
 msgid "Unknown user"
@@ -12655,53 +12719,53 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Két szóközt így nem üthet egymás mellé. Kérem, olvassa el a Tankönyvet."
 
-#: src/text.C:1612
+#: src/text.C:1658
 msgid "[Change Tracking] "
 msgstr "[Változás követés]"
 
-#: src/text.C:1618
+#: src/text.C:1664
 msgid "Change: "
 msgstr "Változás: "
 
-#: src/text.C:1622
+#: src/text.C:1668
 msgid " at "
 msgstr " itt "
 
-#: src/text.C:1632
+#: src/text.C:1678
 #, c-format
 msgid "Font: %1$s"
 msgstr "Betûkészlet: %1$s"
 
-#: src/text.C:1637
+#: src/text.C:1683
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Mélység: %1$d"
 
-#: src/text.C:1643
+#: src/text.C:1689
 msgid ", Spacing: "
 msgstr ", sorköz: "
 
-#: src/text.C:1655
+#: src/text.C:1701
 msgid "Other ("
 msgstr "Egyéb ("
 
-#: src/text.C:1664
+#: src/text.C:1710
 msgid ", Inset: "
 msgstr ", Betét: "
 
-#: src/text.C:1665
+#: src/text.C:1711
 msgid ", Paragraph: "
 msgstr ", Bekezdés: "
 
-#: src/text.C:1666
+#: src/text.C:1712
 msgid ", Id: "
 msgstr ", Azon.: "
 
-#: src/text.C:1667
+#: src/text.C:1713
 msgid ", Position: "
 msgstr ", Pozíció: "
 
-#: src/text.C:1668
+#: src/text.C:1714
 msgid ", Boundary: "
 msgstr ", Határ: "
 
@@ -12764,43 +12828,3 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "védett"
-
-#~ msgid "Plain Text as Paragraphs...|P"
-#~ msgstr "Sima szöveg bekezdésekként...|b"
-
-#~ msgid "Plain Text as Paragraphs|e"
-#~ msgstr "Sima szöveg bekezdésekként|S"
-
-#~ msgid "Plain Text as Paragraphs"
-#~ msgstr "Sima szöveg bekezdésekként"
-
-#~ msgid ""
-#~ "This is the maximum line length of an exported text file (LaTeX, SGML or "
-#~ "plain text). If set to 0, paragraphs are output in a single line; if the "
-#~ "line length is != 0, paragraphs are separated by a blank line."
-#~ msgstr ""
-#~ "Az exportált fájl maximális sorhosszúsága(LaTeX, SGML vagy sima szöveg). "
-#~ "Ha ez az érték 0, a bekezdések egyetlen sorként kerülnek lesznek kiírva, "
-#~ "ha ez az érték nem 0 a bekezdések között legy egy üres sor."
-
-#~ msgid "Max. line length of exported plain text/LaTeX/SGML files"
-#~ msgstr "Az exportált ASCII/LaTeX/ SGML fájlok maximális sorhossza"
-
-#~ msgid "Clipboard as Lines|C"
-#~ msgstr "Vágólap sorokként|V"
-
-#~ msgid "Clipboard as Paragraphs|a"
-#~ msgstr "Vágólap bekezdésekként|k"
-
-#~ msgid "%1$s #:"
-#~ msgstr "%1$s #:"
-
-#~ msgid ""
-#~ "This is the maximum line length of an exported text file (LaTeX, SGML or "
-#~ "plain text)."
-#~ msgstr ""
-#~ "Ez a maximális sorhossza az exportált ASCII fájlnak (LaTeX, SGML vagy "
-#~ "sima szöveg)."
-
-#~ msgid "Paste External Clipboard/Selection"
-#~ msgstr "Külsõ vágólap/kijelölés beillesztése"
