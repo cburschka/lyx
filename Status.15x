@@ -36,23 +36,6 @@ GENERAL
 ******************************************* 
 
 
-ICONS:
-
-* make all icons of the same size(s)
-
-
-FILE
-
-* agu-dtd is used as the default document class, which is not a good 
-  idea in 99% of all cases
-
-* When having at least one file in the session you get the following error
-  messages on Linux on startup:
-    QPainter::begin: Cannot paint on a null pixmap
-    QPainter::end: Painter not active, aborted
-  This does not happen if the session is empty.
-
-
 SPELL CHECKING (Joost 4/11/06)
 
 * Words with umlauts or accents do not arrive as a whole word in the spell
@@ -62,18 +45,6 @@ SPELL CHECKING (Joost 4/11/06)
   cygwin and native windows (it is not clear yet whether it works on OS X).
   ispell (if lyxrc.isp_use_input_encoding == false) does not work yet.
   
-
-TABLE OF CONTENTS
-
-* In TOC, the buttons "Up", "Down", "Promote", and "Demote" are not
-  self-explaining. Why don't we group them in two pairs: Section Up/Down, Level
-  Up/Down? The arrangement of the buttons may also give some hint to the user.
-
-* open Tutorial; click on TOC: TOC dialog has no contents 
-   (only with --enable-stdlib-debug, has been seen on qt 4.2.2, gcc 4.1.2,
-    openSuse 10.1/x32 and 10.2/x64, but is probably not OS/qt specific, but
-    dependant on the compiler)
-
 
 DIALOGS
 
