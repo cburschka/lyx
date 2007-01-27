@@ -158,6 +158,7 @@ IconPalette::IconPalette(QWidget * parent, char const ** entries)
 		buttons_.push_back(make_pair(p, entries[i]));
 		layout_->addWidget(p);
 	}
+#ifdef Q_WS_WIN
 	// FIXME: This is a hack to work around bug 2859
 	// http://bugzilla.lyx.org/show_bug.cgi?id=2859
 	// Short description of the bug:
@@ -168,6 +169,7 @@ IconPalette::IconPalette(QWidget * parent, char const ** entries)
 	screenshot.
 	*/
 	move(50, 50);
+#endif
 }
 
 
