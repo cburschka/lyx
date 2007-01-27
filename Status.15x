@@ -46,21 +46,6 @@ SPELL CHECKING (Joost 4/11/06)
   ispell (if lyxrc.isp_use_input_encoding == false) does not work yet.
 
 
-MULTIPLE WINDOWS / DOCUMENTS
-
-* There are cursor problems when the same document is opened in two windows
-  (Joost 4/11/06).
-
-  Information from Abdel:
-  Yes, this is the famous dEPM bug (delete Empty Paragraph Mechanism).
-  There are two ways to fix that:
-  1) the correct way: fix the dEPM to not invalidate the cursor.
-  2) the easy way: disable the cursor on focus out event and re-enable it at
-  focus in event and jump the saved position (at focus out).
-
-* Middle button paste does not work across windows. (Bo 12/15/06)
-
-
 MENUS
 
 * Some oddities with View menu on MAC (Bennett 3/11/06): DVI does not appear
@@ -69,22 +54,6 @@ MENUS
   used without the document flag.
   This should definitely be documented somewhere before the final release,
   because many users will copy their old config files.
-
-
-EDITING
-
-* edit->text style->capitalize/lower/upper case doesn't work due to change
-  tracking-related changes.
-
-
-CHANGE TRACKING
-
-* No change bar is given in LaTeX output if (only) the par break has changed
-
-* In tables, cut & paste (complete cells) do not support change tracking
-
-* When running "find & replace", the cursor is not moved forward, such 
-  that LyX always offers to replace the same string
 
 
 LAYOUT
@@ -98,8 +67,6 @@ PAINTING & PERFORMANCE
 * END_LABEL_* handling in RowPainer::paintLast() is broken. In regular text,
   label boxes are not completely visible (because we shrinked the margin on 
   screen?). Inside of insets, they don't work at all. 
-
-* The cursor is not L-shaped for foreign languages
 
 * Some math symbols are not displayed (from Enrico Forestieri)
   I noticed that some math symbols are not shown on screen. This seems
@@ -125,16 +92,6 @@ PAINTING & PERFORMANCE
  - On my linux box it looks a bit different: \int is shown if it was a \square,
    bot about half as wide and in black instead of blue. For \Omega I see the
    same as Enrico. (Georg 2007-01-18)
-
-
-MAC OS X
-
-* Many issues with toolbars on MAC (Bennett 3/11/06):
-  Most obvious of which are that icons are spaced too widely and that changes in
-  the visibility of the toolbars with the GUI do not stick after the screen is
-  redrawn).
-
-* Menu bar disappears on MAC (instead of being disabled) when dialogs appear.
 
 
 WONT FIX (for 1.5.0)
