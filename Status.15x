@@ -114,16 +114,8 @@ CHANGE TRACKING
 
 * In tables, cut & paste (complete cells) do not support change tracking
 
-* When accepting or rejecting changes, paragraphs with deleted par breaks are
-  not merged (in top-level pars & in nested text insets)
-
 * When running "find & replace", the cursor is not moved forward, such 
   that LyX always offers to replace the same string
-
-* LyX crashes if you want to accept/reject an end-of-par character only
-
-* accept/reject change are presently broken, because redoParagraph() and 
-  updateLabels() aren't invoked properly
 
 
 LAYOUT
@@ -138,43 +130,7 @@ PAINTING & PERFORMANCE
   label boxes are not completely visible (because we shrinked the margin on 
   screen?). Inside of insets, they don't work at all. 
 
-* Too much painting 2 (Edwin 3/11/2006): There is also a lot of painting going
-  on when selecting text. When selecting a word the whole screen is repainted.
-  PARTLY FIXED (Abdel 2006-11-20): there's a full repaint only when the mouse is
-  released. More to come in this area.
-
-* Too much painting 1 (Edwin 3/11/2006): when i click in the workarea (to put
-  the cursor in another part of the text) the screen is repainted *twice*
-  whereas it seems to me that no repainting is necessary at all.
-  PARTLY FIXED (Abdel 2006-11-20): except for math insets.
-
-* Too much painting 3 (Edwin 3/11/2006): the screen is repainted even when the
-  selection does not change (moving the mouse with the left button pushed down 
-  always triggers a repaint).
-  PARTLY FIXED (Abdel 2006-11-20): When within the main text inset only the
-  current line is repainted.
-
 * The cursor is not L-shaped for foreign languages
-
-* Slowness on MAC 1 (Bennett 3/11/06):
-  There seems to be a fraction of a second lag between when I press a key and
-  when the letter appears on screen -- but the time lag doesn't obviously vary
-  with the amount of text on the screen (as was the case previously). Right now,
-  the speed of normal text entry makes LyX-1.5 usable on my
-  not-fast-but-still-not-outdated computer. (Not sure how it would be on my
-  slow-but-still-usable laptop.)
-
-* Slowness on MAC 2 (Bennett 3/11/06):
-  Speed is still an issue typing in insets: noticeable lag between typing and
-  text appearing on screen. This does not seem to be compounded by having nested
-  insets, and it seems to be compounded only a little by the amount of text in
-  the inset. (This is especially a problem in math environments.)
-  PARTLY FIXED (Abdel 2006-11-20): except for math insets.
-
-* Slowness on MAC 3 (Bennett 3/11/06): Some operations that with 1.4 are
-  pretty much instantaneous (inserting a footnote, dragging the mouse, switching
-  to LyX from another application, opening dialogs, etc.) take quite a long time
-  to complete in 1.5.
 
 * Some math symbols are not displayed (from Enrico Forestieri)
   I noticed that some math symbols are not shown on screen. This seems
@@ -208,13 +164,6 @@ MAC OS X
   Most obvious of which are that icons are spaced too widely and that changes in
   the visibility of the toolbars with the GUI do not stick after the screen is
   redrawn).
-
-* Many issue with dialogs on MAC (Bennett 3/11/06):
-  Most obviously: the Preferences dialog -- which can only be accessed now via
-  keyboard command, not from the menu -- appears initially too small and must be
-  resized; not possible to select buttons with the keyboard).
-
-  The prefs dialog size should be better now. See below (JSpitzm-2006-11-07).
 
 * Menu bar disappears on MAC (instead of being disabled) when dialogs appear.
 
