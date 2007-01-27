@@ -372,7 +372,7 @@ def convert_comment(document):
                         #but if this happens deal with it greacefully adding
                         #the missing \end_deeper.
                         i = len(document.body) - 1
-                        document.body[i:i] = ["\end_deeper",""]
+                        document.body[i:i] = ["\\end_deeper",""]
                         return
                     else:
                         del document.body[i]
