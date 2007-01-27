@@ -98,7 +98,8 @@ protected:
 	/// cause the display of the given area of the work area
 	virtual void expose(int x, int y, int w, int h) = 0;
 	///
-	void dispatch(FuncRequest const & cmd0);
+	void dispatch(FuncRequest const & cmd0,
+		key_modifier::state = key_modifier::none);
 	///
 	void resizeBufferView();
 	///

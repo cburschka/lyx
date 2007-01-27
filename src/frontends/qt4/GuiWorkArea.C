@@ -290,8 +290,8 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	}
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
-			      q_button_state(e->button()));
-	dispatch(cmd);
+		q_button_state(e->button()));
+	dispatch(cmd, q_key_state(e->modifiers()));
 }
 
 

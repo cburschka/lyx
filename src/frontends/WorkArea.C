@@ -182,7 +182,7 @@ void WorkArea::processKeySym(LyXKeySymPtr key, key_modifier::state state)
 }
 
 
-void WorkArea::dispatch(FuncRequest const & cmd0)
+void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 {
 	// Handle drag&drop
 	if (cmd0.action == LFUN_FILE_OPEN) {
@@ -192,10 +192,23 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 
 	theLyXFunc().setLyXView(&lyx_view_);
 
-	bool needRedraw = buffer_view_->workAreaDispatch(cmd0);
+	FuncRequest cmd;
+
+	if (cmd0.action == LFUN_MOUSE_PRESS) {
+		if (k == key_modifier::shift)
+			cmd = FuncRequest(cmd0, "region-select");
+		else if (k == key_modifier::ctrl)
+			cmd = FuncRequest(cmd0, "paragraph-select");
+		else
+			cmd = cmd0;
+	}
+	else
+		cmd = cmd0;
+
+	bool needRedraw = buffer_view_->workAreaDispatch(cmd);
 
 	// Skip these when selecting
-	if (cmd0.action != LFUN_MOUSE_MOTION) {
+	if (cmd.action != LFUN_MOUSE_MOTION) {
 		lyx_view_.updateLayoutChoice();
 		lyx_view_.updateMenubar();
 		lyx_view_.updateToolbars();
@@ -203,14 +216,14 @@ void WorkArea::dispatch(FuncRequest const & cmd0)
 
 	
 	// GUI tweaks except with mouse motion with no button pressed.
-	if (!(cmd0.action == LFUN_MOUSE_MOTION 
-		&& cmd0.button() == mouse_button::none)) {
+	if (!(cmd.action == LFUN_MOUSE_MOTION 
+		&& cmd.button() == mouse_button::none)) {
 		// Slight hack: this is only called currently when we
 		// clicked somewhere, so we force through the display
 		// of the new status here.
 		lyx_view_.clearMessage();
 
-		// Show the cursor immediately after any operation.
+		// Show the cursor	 immediately after any operation.
 		hideCursor();
 		toggleCursor();
 	}
