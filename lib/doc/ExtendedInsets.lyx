@@ -1188,11 +1188,11 @@ Table
 <lyxtabular version="3" rows="4" columns="4">
 <features>
 <column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" width="0in">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
 <row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1201,7 +1201,7 @@ Table
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1219,7 +1219,7 @@ Table
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1228,7 +1228,7 @@ Table
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1313,20 +1313,11 @@ B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
- 
 \end_layout
 
 \end_inset
@@ -1342,7 +1333,7 @@ B
 </cell>
 </row>
 <row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1360,7 +1351,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1369,7 +1360,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1378,7 +1369,7 @@ C
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -1496,11 +1487,25 @@ reference "sec:Colored-Tables"
 Borders
 \family default
  In this tab you can add and delete border lines for the current row/column.
- Using the style option Formal will convert the table into a booktabs-table
- as described in section\InsetSpace ~
+\newline
+Using
+ the style option 
+\family sans
+Formal
+\family default
+ will convert the table to a formal table as described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "alg:Example-Algorithm-float"
+reference "sec:Formal-Tables"
+
+\end_inset
+
+.
+\newline
+You can also add here space to table rows as decribed in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Row-Spacing"
 
 \end_inset
 
@@ -1532,7 +1537,13 @@ reference "sec:Longtables"
 
 \end_inset
 
- describes the longtable feature in detail.
+ and 
+\begin_inset LatexCommand ref
+reference "sec:Special-Longtable-Issues"
+
+\end_inset
+
+ describe the longtable features in detail.
 \end_layout
 
 \begin_layout Standard
@@ -8255,6 +8266,12 @@ Roberto
 
 \begin_layout Section
 Special Longtable Issues
+\begin_inset LatexCommand label
+name "sec:Special-Longtable-Issues"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -11309,21 +11326,15 @@ raggedright
 \end_layout
 
 \begin_layout Section
-Booktabs
+Formal Tables
 \begin_inset LatexCommand label
-name "sec:Booktabs"
+name "sec:Formal-Tables"
 
 \end_inset
 
 
 \begin_inset LatexCommand index
-name "Booktabs"
-
-\end_inset
-
-
-\begin_inset LatexCommand index
-name "LaTeX-packages ! booktabs"
+name "Table ! Formal"
 
 \end_inset
 
@@ -11339,20 +11350,28 @@ reference "tab:Example-booktabs-table"
 \end_inset
 
 .
- They are therefore called 
+ This kind of tables is called 
 \begin_inset Quotes eld
 \end_inset
 
 
 \emph on
-booktabs
+formal
 \emph default
 
 \begin_inset Quotes erd
 \end_inset
 
 .
- To make a table a booktabs-table use the option 
+ To make a table a formal table use the option 
+\family sans
+Formal
+\family default
+ in the 
+\family sans
+Borders
+\family default
+ tab of the table dialog.
 \end_layout
 
 \begin_layout Standard
@@ -11374,35 +11393,23 @@ Example booktabs-table
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="4">
-<features>
+<lyxtabular version="3" rows="8" columns="4">
+<features booktabs="true">
+<column alignment="center" valignment="top" rightline="true" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<row>
+<row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-toprule 
-\end_layout
-
-\end_inset
-
 System
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -11476,7 +11483,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11514,23 +11521,11 @@ textmu m
 \end_inset
 </cell>
 </row>
-<row>
+<row topline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-midrule 
-\end_layout
-
-\end_inset
-
 Edge angle [°]
 \end_layout
 
@@ -11564,23 +11559,11 @@ Edge angle [°]
 \end_inset
 </cell>
 </row>
-<row>
+<row topspace="default">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-addlinespace 
-\end_layout
-
-\end_inset
-
 Spatial resolution [
 \begin_inset ERT
 status collapsed
@@ -11589,7 +11572,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11627,23 +11610,11 @@ textmu m
 \end_inset
 </cell>
 </row>
-<row>
+<row topspace="default">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-addlinespace 
-\end_layout
-
-\end_inset
-
 MTF at 
 \begin_inset Formula $f_{\mathrm{max}}$
 \end_inset
@@ -11681,24 +11652,11 @@ MTF at
 \end_inset
 </cell>
 </row>
-<row>
+<row topspace="default">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-addlinespace 
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -11757,7 +11715,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -11795,7 +11753,7 @@ textmu m
 \end_inset
 </cell>
 </row>
-<row>
+<row bottomline="true">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -11833,56 +11791,6 @@ in % of pixel size
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-bottomrule 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
 \end_inset
@@ -11896,66 +11804,76 @@ bottomrule
 \end_layout
 
 \begin_layout Standard
-This chapter describes how to create booktabs tables in LyX\InsetSpace ~
-1.4.
-\end_layout
+Spaces to table rows can be added using the 
+\family sans
+Borders
+\family default
+ tab of the table dialog as described in section\InsetSpace ~
 
-\begin_layout Subsection
-Basic Commands
-\begin_inset LatexCommand index
-name "Booktabs ! Basic Commands"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To be able to use booktabs the LaTeX-package 
-\series bold
-booktabs
-\series default
- must be loaded in the document preamble with the line
-\begin_inset LatexCommand index
-name "LaTeX-packages ! booktabs"
+\begin_inset LatexCommand ref
+reference "sub:Row-Spacing"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{booktabs}
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The first line of a booktabs table is created with the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-toprule[width]
-\end_layout
-
-\begin_layout Standard
-that is inserted into the first table cell in ERT as first cell entry.
- The optional width specifies the thickness of the line; its default is
- 0.08\InsetSpace \thinspace{}
+In contrary to normal tables, formal tables have no vertical table lines.
+ The horizontal table lines can be set like for normal tables but they appear
+ with different width in the output:
+\newline
+The first and the last table line have
+ a default width of 0.08\InsetSpace \thinspace{}
+em while the other lines have a default width of
+ 0.05\InsetSpace \thinspace{}
 em.
+\end_layout
+
+\begin_layout Standard
+The default widths can be changed with the following preamble lines
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+let
+\backslash
+mytoprule
+\backslash
+toprule
+\newline
+
+\backslash
+renewcommand{
+\backslash
+toprule}{
+\backslash
+mytoprule[width]}
+\end_layout
+
+\begin_layout Standard
+This example is for the first line, the so called toprule.
+ If you want to change the width for the last line, replace 
+\series bold
+toprule
+\series default
+ by 
+\series bold
+bottomrule
+\series default
+.
+ To change the width for the other lines replace 
+\series bold
+toprule
+\series default
+ by 
+\series bold
+midrule
+\series default
+.
  You can use all units listed in appendix\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -11964,54 +11882,19 @@ reference "cha:Units-available-in"
 \end_inset
 
  to set the width.
-\newline
-Note that all commands in ERT must end with a space when
- text follows the ERT-box!
 \end_layout
 
 \begin_layout Standard
-The last line of a booktabs table is created with the ERT command
-\end_layout
-
-\begin_layout Standard
-
+Lines that don't span over all table columns can be created by setting a
+ table line for multicolumn cells.
+ LyX will then internally use the command 
 \series bold
 
 \backslash
-bottomrule[width]
-\end_layout
-
-\begin_layout Standard
-in the first cell of the last row.
- The last row is only for this command and could not have any other content.
- The default for the width is the same as for 
-\series bold
-
-\backslash
-toprule
+cmidrule
 \series default
-.
-\end_layout
-
-\begin_layout Standard
-Horizontal lines that span over all columns are created with the ERT command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-midrule[width]
-\end_layout
-
-\begin_layout Standard
-The default for the width is 0.05\InsetSpace \thinspace{}
-em.
-\end_layout
-
-\begin_layout Standard
-Lines that don't span over all table columns are created with the ERT command
+ to create this line.
+ Its full scheme is
 \end_layout
 
 \begin_layout Standard
@@ -12023,11 +11906,31 @@ cmidrule[width](trim){startcol-endcol}
 \end_layout
 
 \begin_layout Standard
+The options of 
+\series bold
+
+\backslash
+cmidrule
+\series default
+ are are currently not supported by LyX so you have to use ERT to be able
+ to use them.
+ 
+\series bold
+
+\backslash
+cmidrule
+\series default
+s can manually be created by inserting the command as ERT as first cell
+ entry of the first cell of a row.
+ The line is then drawn in the output above the current row.
+\end_layout
+
+\begin_layout Standard
 The default for the width is 0.03\InsetSpace \thinspace{}
 em.
- Startcol is the number of the column where the line starts and endcol is
- the column number where the line ends.
- The endcol always needs to be specified also when the line should span
+ Startcol is the number of the column where the line starts and endcol the
+ column number where the line ends.
+ The endcol always needs to be specified, also when the line should span
  only one column.
  The optional parameter trim could be either 
 \emph on
@@ -12042,27 +11945,11 @@ r{trimwidth}
 \emph on
 l{2pt}
 \emph default
- means that the line is trimmed from its left end by 2pt.
+ means that the line is trimmed from its left end by 2\InsetSpace \thinspace{}
+pt.
  If you don't specify the trimwidth the lines are trimmed by the default
  of 0.5\InsetSpace \thinspace{}
 em.
-\end_layout
-
-\begin_layout Standard
-The 
-\series bold
-
-\backslash
-cmidrule
-\series default
- and 
-\series bold
-
-\backslash
-midrule
-\series default
- commands must be inserted as first cell entry of the first cell of a row.
- The lines are created above the row.
 \end_layout
 
 \begin_layout Standard
@@ -12090,13 +11977,7 @@ cmidrule(l){3-4}
 \end_layout
 
 \begin_layout Standard
-in the second row, 
-\series bold
-
-\backslash
-midrule
-\series default
- in the third row, and
+at the beginning of the in the second row and
 \end_layout
 
 \begin_layout Standard
@@ -12111,49 +11992,12 @@ cmidrule(l{10pt}){1-1}
 in the sixth row.
 \end_layout
 
-\begin_layout Subsection
-Special Commands
-\begin_inset LatexCommand index
-name "Booktabs ! Special Commands"
-
-\end_inset
-
+\begin_layout Standard
 
 \end_layout
 
 \begin_layout Standard
-To separate rows vertically the following ERT command can be used
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-addlinespace[width]
-\end_layout
-
-\begin_layout Standard
-The default width is 0.5 em.
- In Table\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "tab:Example-booktabs-table"
-
-\end_inset
-
- 
-\series bold
-
-\backslash
-addlinespace
-\series default
- was inserted to the first cell of some rows.
- The space is created above the rows where the command is inserted
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -12182,9 +12026,7 @@ reference "tab:Special-booktabs-table"
 \series bold
 
 \backslash
-moremidrule
-\series default
-s
+moremidrules
 \end_layout
 
 \begin_layout Standard
@@ -12236,18 +12078,10 @@ cmidrule{3-4}
 \end_layout
 
 \begin_layout Standard
-The surrounding space of each line in a booktabs table can be specified
- and changed in the document preamble.
- For more informations about this, we refer to the manual of the booktabs
- package 
-\begin_inset LatexCommand cite
-key "booktabs"
-
-\end_inset
-
-.
- If you are anyway not satisfied with the spacing, you can use the following
- command to produce lines that span over all table columns
+If you are anyway not satisfied with the border line spacing, you can use
+ the following command to produce lines that span over all table columns
+\series bold
+:
 \end_layout
 
 \begin_layout Standard
@@ -12256,6 +12090,27 @@ key "booktabs"
 
 \backslash
 specialrule{width}{space above}{space below}
+\end_layout
+
+\begin_layout Standard
+For more informations about these specialties, we refer to the manual of
+ the LaTeX-package 
+\series bold
+booktabs
+\series default
+ 
+\begin_inset LatexCommand cite
+key "booktabs"
+
+\end_inset
+
+.
+\begin_inset LatexCommand index
+name "LaTeX-packages ! booktabs"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12387,7 +12242,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -12476,7 +12331,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -12632,7 +12487,7 @@ status collapsed
 
 
 \backslash
-textmu m 
+textmu m
 \end_layout
 
 \end_inset
@@ -14718,7 +14573,7 @@ sd
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
+<row topline="true" bottomline="true" topspace="default">
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -14814,15 +14669,15 @@ name "Table ! Customization"
 \end_layout
 
 \begin_layout Subsection
-Extra Row Height
+Row Spacing
 \begin_inset LatexCommand label
-name "sub:Extra-Row-Height"
+name "sub:Row-Spacing"
 
 \end_inset
 
 
 \begin_inset LatexCommand index
-name "Table Customization ! Extra Row Height"
+name "Table Customization ! Row Spacing"
 
 \end_inset
 
@@ -14830,16 +14685,172 @@ name "Table Customization ! Extra Row Height"
 \end_layout
 
 \begin_layout Standard
-Large letters or those with a bigger height like 
-\emph on
-b
-\emph default
- and 
-\emph on
-d
-\emph default
- often have not enough space between under the upper cell border.
- With the preamble line
+You can add vertical space to table rows in the 
+\family sans
+Borders
+\family default
+ tab of the table dialog.
+ You find there three possibilities:
+\end_layout
+
+\begin_layout Description
+Top\InsetSpace ~
+of\InsetSpace ~
+row will add space above the characters of the table row.
+ If the table is a formal table
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Formal tables are explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Formal-Tables"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ LyX will insert as default 0.5\InsetSpace \thinspace{}
+em space.
+ For normal tables the inserted space will unfortunately destroy the vertical
+ table lines as in the following table: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" topspace="3mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+3\InsetSpace \thinspace{}
+mm space top of row
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+C
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\newline
+So inserting space to the top of row for normal tables is only useful when
+ you don't have vertical lines.
+\end_layout
+
+\begin_layout Description
+Bottom\InsetSpace ~
+of\InsetSpace ~
+row will add space below the characters of the table row.
+ If the table is a formal table LyX will insert as default 0.5\InsetSpace \thinspace{}
+em space, for
+ normal tables the default size is 2\InsetSpace \thinspace{}
+pt.
+\end_layout
+
+\begin_layout Description
+Between\InsetSpace ~
+rows only has an effect when you have selected the whole table row
+ before.
+ The space is added between the current and the following row.
+ If the table is a formal table LyX will insert as default 0.5\InsetSpace \thinspace{}
+em space.
+ For normal tables the inserted space will unfortunately destroy the vertical
+ table lines as in the following table: 
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features>
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" interlinespace="3mm">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 3\InsetSpace \thinspace{}
+mm space between row 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 3\InsetSpace \thinspace{}
+mm space between row 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\newline
+So inserting space to the top of row for normal tables is only useful when
+ you don't have vertical lines.
+\end_layout
+
+\begin_layout Standard
+When you want to add extra height to all cells of all tables, you can do
+ this with the following preamble line:
 \end_layout
 
 \begin_layout Standard
@@ -14849,25 +14860,12 @@ d
 \backslash
 setlength{
 \backslash
-extrarowheight}{2pt}
+extrarowheight}{height}
 \end_layout
 
 \begin_layout Standard
-you can add 2\InsetSpace \thinspace{}
-pt extra height to all cells of all tables.
- Although this often looks better, it has the disadvantage that the cell
- texts are no longer exactly vertically centered.
-\end_layout
-
-\begin_layout Standard
-An alternative method for extra row height is described in section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sub:Vertical-Alignment"
-
-\end_inset
-
-.
+But this has the disadvantage that the cell texts are no longer exactly
+ vertically centered.
 \end_layout
 
 \begin_layout Subsection
@@ -14896,6 +14894,7 @@ reference "tab:Table-cells-of"
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -24911,371 +24910,6 @@ status collapsed
 \end_inset
 
  as raised word.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-The 
-\series bold
-
-\backslash
-raisebox
-\series default
- command is useful when you want to insert some extra vertical space for
- certain table rows so that the row content is better separated from the
- surrounding lines.
- In Table\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "tab:Two-tables-showing"
-
-\end_inset
-
- the table rows with the sub- and superscripts got extra space by raising
- an empty box: The command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-raisebox{5mm}{}
-\end_layout
-
-\begin_layout Standard
-was inserted to the table rows.
-\end_layout
-
-\begin_layout Standard
-To add extra vertical space for all rows of all tables, the method described
- in section\InsetSpace ~
-
-\begin_inset LatexCommand ref
-reference "sub:Extra-Row-Height"
-
-\end_inset
-
- might be more convenient.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Caption
-\begin_inset LatexCommand label
-name "tab:Two-tables-showing"
-
-\end_inset
-
-Two tables showing the effect of extra vertical space using 
-\backslash
-
-\series bold
-raisebox
-\end_layout
-
-\begin_layout Standard
-
-\hfill
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features>
-<column alignment="center" valignment="top" leftline="true" width="0pt">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
-<row topline="true">
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-without 
-\series bold
-
-\backslash
-raisebox
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Command
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Result
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-B_V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $B_{V}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-B^V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $B^{V}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-B^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textvisiblespace 
-\end_layout
-
-\end_inset
-
-A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $B^{A}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-hspace{2pt}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-with 
-\series bold
-
-\backslash
-raisebox
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Command
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Result
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-B_V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $B_{V}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-B^V
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $\raisebox{5mm}{}B^{V}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-B^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textvisiblespace 
-\end_layout
-
-\end_inset
-
-A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-\begin_inset Formula $\raisebox{5mm}{}B^{A}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\hfill
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
