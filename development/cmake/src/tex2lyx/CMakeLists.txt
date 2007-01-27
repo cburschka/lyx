@@ -42,6 +42,15 @@ set(tex2lyx_sources
 
 include_directories(BEFORE ${TOP_SRC_DIR}/src/tex2lyx)
 
+if(MSVC)
+	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/lyxlayout.C ${TOP_SRC_DIR}/src/lyxtextclass.C
+	 	PROPERTIES COMPILE_FLAGS 
+		"/FI${TOP_SRC_DIR}/src/tex2lyx/lyxfont.h /FI${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+else(MSVC)
+	SET_SOURCE_FILES_PROPERTIES(${TOP_SRC_DIR}/src/lyxlayout.C ${TOP_SRC_DIR}/src/lyxtextclass.C
+	 	PROPERTIES COMPILE_FLAGS 
+		"-include ${TOP_SRC_DIR}/src/tex2lyx/lyxfont.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
+endif(MSVC)
 
 add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_FILES})
 
