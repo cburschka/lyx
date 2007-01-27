@@ -52,7 +52,8 @@ public:
 	/// Does the clipboard contain LyX contents?
 	virtual bool hasLyXContents() const = 0;
 	/// state of clipboard.
-	/// \retval true if the system clipboard has been set within LyX.
+	/// \returns true if the system clipboard has been set within LyX
+	/// (document contents, dialogs count as external here).
 	virtual bool isInternal() const = 0;
 	/// Is the clipboard empty?
 	virtual bool empty() const = 0;

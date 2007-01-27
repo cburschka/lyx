@@ -108,7 +108,9 @@ bool GuiClipboard::hasLyXContents() const
 
 bool GuiClipboard::isInternal() const
 {
-	return qApp->clipboard()->ownsClipboard();
+	// ownsClipboard() is also true for stuff coming from dialogs, e.g.
+	// the preamble dialog
+	return qApp->clipboard()->ownsClipboard() && hasLyXContents();
 }
 
 
