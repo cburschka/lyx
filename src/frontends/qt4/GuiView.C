@@ -123,20 +123,20 @@ struct GuiView::GuiViewPrivate
 		QActionGroup *iconSizeGroup = new QActionGroup(parent);
 
 		QAction *smallIcons = new QAction(iconSizeGroup);
-		smallIcons->setText("Small sized icons");
+		smallIcons->setText(qt_("Small-sized icons"));
 		smallIcons->setCheckable(true);
 		QObject::connect(smallIcons, SIGNAL(triggered()), parent, SLOT(smallSizedIcons()));
 		menu->addAction(smallIcons);
 
 		QAction *normalIcons = new QAction(iconSizeGroup);
-		normalIcons->setText("Normal sized icons");
+		normalIcons->setText(qt_("Normal-sized icons"));
 		normalIcons->setCheckable(true);
 		QObject::connect(normalIcons, SIGNAL(triggered()), parent, SLOT(normalSizedIcons()));
 		menu->addAction(normalIcons);
 
 
 		QAction *bigIcons = new QAction(iconSizeGroup);
-		bigIcons->setText("Big sized icons");
+		bigIcons->setText(qt_("Big-sized icons"));
 		bigIcons->setCheckable(true);
 		QObject::connect(bigIcons, SIGNAL(triggered()), parent, SLOT(bigSizedIcons()));
 		menu->addAction(bigIcons);
