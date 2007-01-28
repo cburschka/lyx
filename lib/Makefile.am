@@ -967,6 +967,8 @@ dist_templates_DATA = \
 	templates/README.new_templates \
 	templates/aa.lyx \
 	templates/aastex.lyx \
+	templates/beamer-conference-ornate-20min.de.lyx \
+	templates/beamer-conference-ornate-20min.en.lyx \
 	templates/dinbrief.lyx \
 	templates/docbook_article.lyx \
 	templates/elsart.lyx \
