@@ -2268,8 +2268,6 @@ lib_doc_files = Split('''
 
 lib_clipart_files = Split('''
     BoxInsetDefault.png
-    buffer-export_pdf2.png
-    buffer-view_dvi.png
     ComentNotaImagen.png
     CommentNoteImage.png
     CuadroMinipag.png
