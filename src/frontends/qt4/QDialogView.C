@@ -60,6 +60,7 @@ void QDialogView::show()
 
 	if (form()->isVisible()) {
 		form()->raise();
+		form()->activateWindow();
 	} else {
 		form()->show();
 	}
