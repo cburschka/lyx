@@ -56,23 +56,23 @@ dist_bind_DATA = \
 clipartdir = $(pkgdatadir)/clipart
 dist_clipart_DATA = \
 	clipart/BoxInsetDefaultQt4.png \
-	clipart/ComentNotaImagen.png \
+	clipart/ComentNotaImagenQt4.png \
 	clipart/CommentNoteImageQt4.png \
-	clipart/CuadroMinipag.png \
+	clipart/CuadroMinipagQt4.png \
 	clipart/endnotes.pdf \
-	clipart/etiqueta.png \
+	clipart/etiquetaQt4.png \
 	clipart/floatQt4.png \
-	clipart/flotante.png \
+	clipart/flotanteQt4.png \
 	clipart/footnoteQt4.png \
 	clipart/GreyedOutNoteImageQt4.png \
-	clipart/GrisNotaImagen.png \
+	clipart/GrisNotaImagenQt4.png \
 	clipart/labelQt4.png \
 	clipart/LyXNoteImageQt4.png \
-	clipart/NotaLyXImagen.png \
-	clipart/notapie.png \
+	clipart/NotaLyXImagenQt4.png \
+	clipart/notapieQt4.png \
 	clipart/platypus.eps \
 	clipart/referenceQt4.png \
-	clipart/referencia2.png \
+	clipart/referenciaQt4.png \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 
