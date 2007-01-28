@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-27 19:30+0100\n"
+"POT-Creation-Date: 2007-01-28 15:10+0100\n"
 "PO-Revision-Date: 2007-01-21 17:46+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -8307,8 +8307,9 @@ msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
 #: lib/ui/stdmenus.inc:468
-msgid "Insets|n"
-msgstr "Betétek|k"
+#, fuzzy
+msgid "Special Insets|S"
+msgstr "Minden betét kinyitása|b"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -12828,3 +12829,6 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "védett"
+
+#~ msgid "Insets|n"
+#~ msgstr "Betétek|k"

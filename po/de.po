@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-27 19:30+0100\n"
+"POT-Creation-Date: 2007-01-28 15:10+0100\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -8398,8 +8398,9 @@ msgid "TeX Information|I"
 msgstr "TeX-Informationen|X"
 
 #: lib/ui/stdmenus.inc:468
-msgid "Insets|n"
-msgstr "Einfügungen|n"
+#, fuzzy
+msgid "Special Insets|S"
+msgstr "Alle Einfügungen öffnen|ö"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -12984,3 +12985,6 @@ msgstr "Variabel"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "geschützt"
+
+#~ msgid "Insets|n"
+#~ msgstr "Einfügungen|n"

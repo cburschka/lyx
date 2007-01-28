@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-27 19:30+0100\n"
+"POT-Creation-Date: 2007-01-28 15:10+0100\n"
 "PO-Revision-Date: 2006-11-03 15:48+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -8470,8 +8470,8 @@ msgstr "LaTeX Konfigurasjon|X"
 
 #: lib/ui/stdmenus.inc:468
 #, fuzzy
-msgid "Insets|n"
-msgstr "Sett inn|S"
+msgid "Special Insets|S"
+msgstr "Åpne alle \"insets\"|a"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -12945,3 +12945,7 @@ msgstr "vertikalt fyll, \\vfill"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "beskyttet"
+
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Sett inn|S"

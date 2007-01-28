@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-27 19:30+0100\n"
+"POT-Creation-Date: 2007-01-28 15:10+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -11173,11 +11173,11 @@ msgstr "Свойства на таблица"
 msgid "TeX Information|I"
 msgstr "LaTeX конфигурация|L"
 
-# src/ext_l10n.h:6
+# src/insets/insetfloat.C:150
 #: lib/ui/stdmenus.inc:468
 #, fuzzy
-msgid "Insets|n"
-msgstr "Вмъкни(I)|I"
+msgid "Special Insets|S"
+msgstr "Отворен Float Inset"
 
 # src/LyXAction.C:141
 #: lib/ui/stdtoolbars.inc:44
@@ -16862,3 +16862,8 @@ msgstr "Вертикално разстояние"
 #, fuzzy
 msgid "protected"
 msgstr "Защитен интервал(B)|B"
+
+# src/ext_l10n.h:6
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Вмъкни(I)|I"
