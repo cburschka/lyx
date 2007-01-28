@@ -19846,7 +19846,7 @@ Aquí hay un ejemplo de marca de pie:
 \bar no
 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -20974,7 +20974,7 @@ cm
 
 
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Standard
 Esta nota está 1.5\InsetSpace \thinspace{}
@@ -23133,7 +23133,7 @@ Las minipáginas también sirven para poner un color de fondo para partes
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -24107,7 +24107,7 @@ color
 \series default
  cuando colorees texto
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Para evitar cargarlo dos veces se usa el comando 
@@ -25544,7 +25544,7 @@ device-independent
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -25574,26 +25574,7 @@ Archivo\SpecialChar \menuseparator
 Exportar\SpecialChar \menuseparator
 DVI
 \family default
- o el botón 
-\begin_inset Graphics
-	filename ../clipart/buffer-view_dvi.png
-	scale 85
-
-\end_inset
-
 .
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-N.
- del t.
- Yo no veo este botón ¿?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -25867,26 +25848,6 @@ PDF\InsetSpace ~
 pdftex
 \family default
  que convierte directamente el archivo a PDF.
- Alternativamente se puede usar el  botón 
-\begin_inset Graphics
-	filename ../clipart/buffer-export_pdf2.png
-	scale 85
-
-\end_inset
-
-.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-N.
- del t.
- Yo no veo este botón ¿?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
