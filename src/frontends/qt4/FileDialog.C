@@ -91,6 +91,7 @@ FileDialog::Result const FileDialog::save(docstring const & path,
 	LyXFileDialog dlg(title_, path, filters, private_->b1, private_->b2);
 	dlg.setFileMode(QFileDialog::AnyFile);
 	dlg.setAcceptMode(QFileDialog::AcceptSave);
+	dlg.setConfirmOverwrite(false);
 
 	if (!suggested.empty())
 		dlg.selectFile(toqstr(suggested));
