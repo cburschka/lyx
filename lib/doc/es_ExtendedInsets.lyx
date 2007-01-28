@@ -73,7 +73,7 @@
 
 % link all cross references and URLs
 % in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=2,
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1,
   linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
   pdfpagelayout=OneColumn, pdfnewwindow=true,
   pdfstartview=XYZ, plainpages=false, pdfpagelabels,
@@ -8213,7 +8213,8 @@ Cuando la celda a cortar está en la última columna, el comando
 \backslash
 setlength{
 \backslash
-parfillskip}{0pt}
+parf\SpecialChar \textcompwordmark{}
+illskip}{0pt}
 \end_layout
 
 \begin_layout Standard
@@ -12926,7 +12927,8 @@ Puedes definir tus propios colores con el comando
 \series bold
 
 \backslash
-definecolor{nombre del color}{modelo de color}{valores de color}
+def\SpecialChar \textcompwordmark{}
+inecolor{nombre del color}{modelo de color}{valores de color}
 \end_layout
 
 \begin_layout Standard
@@ -12966,7 +12968,8 @@ verde oscuro
 \series bold
 
 \backslash
-definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
+def\SpecialChar \textcompwordmark{}
+inecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
@@ -12982,7 +12985,8 @@ gris claro
 \series bold
 
 \backslash
-definecolor{grisclaro}{gray}{0.8}
+def\SpecialChar \textcompwordmark{}
+inecolor{grisclaro}{gray}{0.8}
 \end_layout
 
 \begin_layout Standard
@@ -16351,7 +16355,7 @@ reference "sec:Colocación-de-Encabezados"
  del flotante haciendo click-izquierda sobre ella.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
-	filename ../clipart/flotante.png
+	filename ../clipart/flotanteQt4.png
 	scale 70
 
 \end_inset
@@ -16815,12 +16819,13 @@ Nota:
  pueden perder cosas en el camino de salida, el flotante puede no aparecer
  o situarse junto a otro texto.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 La mejor solución es usar el paquete LaTeX 
 \series bold
-wrapfig
+wrapf\SpecialChar \textcompwordmark{}
+ig
 \series default
 
 \begin_inset LatexCommand index
@@ -16830,7 +16835,8 @@ name "LaTeX-paquetes ! wrapfig\\vspace{4mm}"
 
  en vez de 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
  pero actualmente no es soportado por LyX.
 \end_layout
@@ -16910,7 +16916,7 @@ Etiqueta
  Aparece una ventana esperando la introducción del texto de la etiqueta
  y se inserta un cuadro gris como este: 
 \begin_inset Graphics
-	filename ../clipart/etiqueta.png
+	filename ../clipart/etiquetaQt4.png
 	scale 85
 
 \end_inset
@@ -16952,7 +16958,7 @@ cruzada
  Puedes ordenar las etiquetas alfabéticamente y elegir una.
  Se inserta un cuadro gris como este: 
 \begin_inset Graphics
-	filename ../clipart/referencia2.png
+	filename ../clipart/referenciaQt4.png
 	scale 85
 
 \end_inset
@@ -17369,7 +17375,8 @@ hypcap
 \series bold
 
 \backslash
-usepackage[figure]{hypcap}
+usepackage[f\SpecialChar \textcompwordmark{}
+igure]{hypcap}
 \end_layout
 
 \begin_layout Standard
@@ -17683,7 +17690,8 @@ A veces surge el problema de que un flotante se sitúa al principio de la
 \series bold
 
 \backslash
-suppressfloats
+suppressf\SpecialChar \textcompwordmark{}
+loats
 \series default
 , que suprime la ubicación de un flotante dado en la página donde se inserta
  y además puede servir para evitar que el flotante se coloque antes del
@@ -17708,7 +17716,8 @@ renewcommand{
 \backslash
 section}{
 \backslash
-suppressfloats[t]
+suppressf\SpecialChar \textcompwordmark{}
+loats[t]
 \backslash
 mySection}
 \end_layout
@@ -17728,7 +17737,8 @@ En ciertos casos se quieren tener todas las figuras/tablas al final del
  documento.
  Para estos casos está el paquete LaTeX 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 
 \begin_inset LatexCommand index
@@ -17755,7 +17765,8 @@ name "LaTeX-paquetes ! endfloat"
 .
  El paquete 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
  se carga en el preámbulo con la línea
 \end_layout
@@ -17765,7 +17776,8 @@ endfloat
 \series bold
 
 \backslash
-usepackage[options]{endfloat}
+usepackage[options]{endf\SpecialChar \textcompwordmark{}
+loat}
 \end_layout
 
 \begin_layout Standard
@@ -17785,7 +17797,8 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: endfloat
+Nota: endf\SpecialChar \textcompwordmark{}
+loat
 \series default
  no traduce automáticamente la indicación, hay que hacerlo manualmente,
  ver sección\InsetSpace ~
@@ -17813,7 +17826,8 @@ Nota:
 \series default
  Actualmente hay un error en 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
  cuando el encabezado contiene el caracter alemán 
 \begin_inset Quotes eld
@@ -18164,7 +18178,8 @@ usepackage[tableposition=top]{caption}
 \series bold
 
 \backslash
-captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm,%
+captionsetup[f\SpecialChar \textcompwordmark{}
+igure]{labelfont={tt}, textfont=it, indention=1cm,%
 \newline
 
 \begin_inset ERT
@@ -18804,7 +18819,8 @@ let
 \backslash
 MyFigure
 \backslash
-figure
+f\SpecialChar \textcompwordmark{}
+igure
 \newline
 
 \begin_inset ERT
@@ -18823,9 +18839,11 @@ hphantom{ }
 \backslash
 let
 \backslash
-MyEndfigure
+MyEndf\SpecialChar \textcompwordmark{}
+igure
 \backslash
-endfigure
+endf\SpecialChar \textcompwordmark{}
+igure
 \newline
 
 \begin_inset ERT
@@ -18842,11 +18860,14 @@ hphantom{ }
 
 
 \backslash
-renewenvironment{figure}{
+renewenvironment{f\SpecialChar \textcompwordmark{}
+igure}{
 \backslash
-begin{SCfigure}}{
+begin{SCf\SpecialChar \textcompwordmark{}
+igure}}{
 \backslash
-end{SCfigure}}}
+end{SCf\SpecialChar \textcompwordmark{}
+igure}}}
 \end_layout
 
 \begin_layout Standard
@@ -18875,7 +18896,8 @@ hphantom{ }
 \backslash
 let
 \backslash
-figure
+f\SpecialChar \textcompwordmark{}
+igure
 \backslash
 MyFigure
 \newline
@@ -18896,9 +18918,11 @@ hphantom{ }
 \backslash
 let
 \backslash
-endfigure
+endf\SpecialChar \textcompwordmark{}
+igure
 \backslash
-MyEndfigure}
+MyEndf\SpecialChar \textcompwordmark{}
+igure}
 \end_layout
 
 \begin_layout Standard
@@ -19068,7 +19092,8 @@ bottom
 \series bold
 
 \backslash
-sidecaptionvpos{figure}{c}
+sidecaptionvpos{f\SpecialChar \textcompwordmark{}
+igure}{c}
 \end_layout
 
 \begin_layout Standard
@@ -19101,7 +19126,7 @@ key "sidecap"
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -19613,14 +19638,14 @@ Nota
 
 \begin_layout Description
 Nota\InsetSpace ~
-LyX Este tipo es para notas internas que no han de aparecer en la salida:
+LyX Este tipo es para notas internas que no han de aparecer en la salida.
  Su cuadro se muestra como este:
 \newline
 
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/NotaLyXImagen.png
+	filename ../clipart/NotaLyXImagenQt4.png
 	display none
 	scale 85
 
@@ -19628,7 +19653,7 @@ LyX Este tipo es para notas internas que no han de aparecer en la salida:
 
  
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Standard
 Este es un texto en un recuadro que no se muestra en la salida.
@@ -19654,7 +19679,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/ComentNotaImagen.png
+	filename ../clipart/ComentNotaImagenQt4.png
 	display none
 	scale 85
 
@@ -19662,11 +19687,10 @@ LaTeX (pdflatex) / LaTeX (plain)
 
  
 \begin_inset Note Comment
-status collapsed
+status open
 
 \begin_layout Standard
-Texto de una nota comentario que solo aparece como comentario en archivos
- LaTeX.
+Una nota comentario que solo aparece como comentario en archivos LaTeX.
 \end_layout
 
 \end_inset
@@ -19684,7 +19708,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/GrisNotaImagen.png
+	filename ../clipart/GrisNotaImagenQt4.png
 	display none
 	scale 85
 
@@ -19761,9 +19785,17 @@ egroup}
 \end_inset
 
 
+\newline
+
+\newline
+Como se ve en el ejemplo, la primera línea de notas resaltadas en gris está
+ un poco sangrada y puede tener notas al pie.
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 Si usas el botón de la barra de herramientas para insertar notas, se inserta
  una 
 \family sans
@@ -19783,11 +19815,6 @@ Si quieres convertir un texto presente a nota, márcalo y pincha sobre el
 \series default
 \bar default
 .
-\end_layout
-
-\begin_layout Standard
-Como se ve en el ejemplo anterior: La primera línea de notas resaltadas
- en gris está un poco sangrada y puede tener notas al pie.
 \end_layout
 
 \begin_layout Standard
@@ -19892,7 +19919,7 @@ Aparece un recuadro como este:
 \bar default
  
 \begin_inset Graphics
-	filename ../clipart/notapie.png
+	filename ../clipart/notapieQt4.png
 	scale 80
 
 \end_inset
@@ -21719,7 +21746,7 @@ Cuadro (Minipágina)
 \family default
 : 
 \begin_inset Graphics
-	filename ../clipart/CuadroMinipag.png
+	filename ../clipart/CuadroMinipagQt4.png
 	scale 75
 	keepAspectRatio
 
@@ -24408,7 +24435,8 @@ name "LaTeX-paquetes ! color"
 \series bold
 
 \backslash
-@ifundefined{textcolor}
+@ifundef\SpecialChar \textcompwordmark{}
+ined{textcolor}
 \newline
 
 \begin_inset ERT
@@ -24442,7 +24470,8 @@ Para evitar cargarlo dos veces se usa el comando
 \series bold
 
 \backslash
-@ifundefined
+@ifundef\SpecialChar \textcompwordmark{}
+ined
 \series default
 .
 \end_layout
@@ -26543,7 +26572,8 @@ status collapsed
 
  del paquete LaTeX 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 
 \begin_inset LatexCommand index
@@ -26587,7 +26617,8 @@ status collapsed
 
  del paquete LaTeX 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
 
 \begin_inset LatexCommand index
