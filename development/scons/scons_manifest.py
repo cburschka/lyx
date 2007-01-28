@@ -2322,8 +2322,6 @@ lib_doc_files = Split('''
 
 lib_clipart_files = Split('''
     BoxInsetDefaultQt4.png
-    buffer-export_pdf2.png
-    buffer-view_dvi.png
     ComentNotaImagen.png
     CommentNoteImageQt4.png
     CuadroMinipag.png
