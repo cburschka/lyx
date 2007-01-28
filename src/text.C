@@ -1711,6 +1711,9 @@ docstring LyXText::currentState(LCursor & cur)
 	os << _(", Paragraph: ") << cur.pit();
 	os << _(", Id: ") << par.id();
 	os << _(", Position: ") << cur.pos();
+	// Force output of code point, not character
+	size_t const c = par.getChar(cur.pos());
+	os << _(", Char: 0x") << std::hex << c;
 	os << _(", Boundary: ") << cur.boundary();
 //	Row & row = cur.textRow();
 //	os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
