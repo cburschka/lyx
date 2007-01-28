@@ -417,6 +417,7 @@ void LyXView::updateWindowTitle()
 	}
 
 	setWindowTitle(maximize_title, minimize_title);
+	updateTab();
 }
 
 
