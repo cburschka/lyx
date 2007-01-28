@@ -1486,10 +1486,11 @@ def appExists(apppath, appname):
     return os.path.isfile(File(env.subst('$BUILDDIR/common/%s/${PROGPREFIX}%s$PROGSUFFIX' % (apppath, appname))).abspath)
 
 targets = BUILD_TARGETS
+build_install = 'install' in targets or 'installer' in targets
 build_installer = 'installer' in targets
 # msvc need to pass full target name, so I have to look for path/lyx etc
 build_lyx = build_installer or targets == [] or True in ['lyx' in x for x in targets] \
-    or 'install' in targets or 'all' in targets
+    or build_install or 'all' in targets
 build_boost = (included_boost and not libExists('boost_regex')) or 'boost' in targets
 build_intl = (included_gettext and not libExists('included_intl')) or 'intl' in targets
 build_support = build_lyx or True in [x in targets for x in ['support', 'client', 'tex2lyx']]
@@ -1499,11 +1500,11 @@ build_frontends = build_lyx or 'frontends' in targets
 build_graphics = build_lyx or 'graphics' in targets
 build_controllers = build_lyx or 'controllers' in targets
 build_client = True in ['client' in x for x in targets] \
-    or 'install' in targets or 'all' in targets or build_installer
+    or build_install or 'all' in targets or build_installer
 build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
-    or 'install' in targets or 'all' in targets or build_installer
+    or build_install or 'all' in targets or build_installer
 build_lyxbase = build_lyx or 'lyxbase' in targets
-build_po = 'po' in targets or 'install' in targets or 'all' in targets
+build_po = 'po' in targets or build_install or 'all' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
 build_msvs_projects = use_vc and 'msvs_projects' in targets
 
@@ -1997,9 +1998,7 @@ if build_po:
                 gmo_files.extend(env.Transfiles(f))
 
 
-
-
-if 'install' in targets or 'installer' in targets:
+if build_install:
     #
     # this part is a bit messy right now. Since scons will provide
     # --DESTDIR option soon, at least the dest_dir handling can be 
