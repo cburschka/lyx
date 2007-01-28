@@ -8376,7 +8376,8 @@ When the cell to be broken is in the last column, the command
 \backslash
 setlength{
 \backslash
-parfillskip}{0pt}
+parf\SpecialChar \textcompwordmark{}
+illskip}{0pt}
 \end_layout
 
 \begin_layout Standard
@@ -13814,7 +13815,8 @@ You can also define your own color with the command
 \series bold
 
 \backslash
-definecolor{color name}{color model}{color values}
+def\SpecialChar \textcompwordmark{}
+inecolor{color name}{color model}{color values}
 \end_layout
 
 \begin_layout Standard
@@ -13856,7 +13858,8 @@ darkgreen
 \series bold
 
 \backslash
-definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
+def\SpecialChar \textcompwordmark{}
+inecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
@@ -13872,7 +13875,8 @@ lightgray
 \series bold
 
 \backslash
-definecolor{lightgray}{gray}{0.8}
+def\SpecialChar \textcompwordmark{}
+inecolor{lightgray}{gray}{0.8}
 \end_layout
 
 \begin_layout Standard
@@ -17706,12 +17710,13 @@ having a figure too close to the bottom
  of the page can mess things up in the way that the float doesn't appear
  in the output or that it is placed over some other text.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Standard
 The better solution is to use the LaTeX-package 
 \series bold
-wrapfig
+wrapf\SpecialChar \textcompwordmark{}
+ig
 \series default
 
 \begin_inset LatexCommand \index{LaTeX-packages ! wrapfig\vspace{4mm}}
@@ -17720,7 +17725,8 @@ wrapfig
 
  instead of 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
 , but it is currently not supported by LyX.
 \end_layout
@@ -18253,7 +18259,8 @@ hypcap
 \series bold
 
 \backslash
-usepackage[figure]{hypcap}
+usepackage[f\SpecialChar \textcompwordmark{}
+igure]{hypcap}
 \end_layout
 
 \begin_layout Standard
@@ -18529,7 +18536,8 @@ Sometimes you have the problem that a float is placed at the top of a page
 \series bold
 
 \backslash
-suppressfloats
+suppressf\SpecialChar \textcompwordmark{}
+loats
 \series default
  can be used.
  It suppresses a given float placement for the page where it is inserted
@@ -18555,7 +18563,8 @@ renewcommand{
 \backslash
 section}{
 \backslash
-suppressfloats[t]
+suppressf\SpecialChar \textcompwordmark{}
+loats[t]
 \backslash
 mySection}
 \end_layout
@@ -18575,7 +18584,8 @@ In some cases it is required to have all figures/tables at the end of the
  document.
  For this purpose the LaTeX-package 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 
 \begin_inset LatexCommand \index{LaTeX-packages ! endfloat}
@@ -18607,14 +18617,16 @@ endfloat
 \series bold
 
 \backslash
-usepackage[options]{endfloat}
+usepackage[options]{endf\SpecialChar \textcompwordmark{}
+loat}
 \end_layout
 
 \begin_layout Standard
 There are various package options to format the created figure/table sections.
  For more information we refer to the 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
  documentation 
 \begin_inset LatexCommand \cite{endfloat}
@@ -18630,7 +18642,8 @@ status open
 \begin_layout Standard
 
 \series bold
-Note: endfloat
+Note: endf\SpecialChar \textcompwordmark{}
+loat
 \series default
  doesn't provide an automatic translation for the text hint, you have to
  do this manually, see section\InsetSpace ~
@@ -18657,7 +18670,8 @@ Note:
 \series default
  There is currently a bug in 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
  when the caption contains a German 
 \begin_inset Quotes eld
@@ -19000,7 +19014,12 @@ usepackage[tableposition=top]{caption}
 \series bold
 
 \backslash
-captionsetup[figure]{labelfont={tt}, textfont=it, indention=1cm,%
+captionsetup[f
+\lang spanish
+\SpecialChar \textcompwordmark{}
+
+\lang english
+igure]{labelfont={tt}, textfont=it, indention=1cm,%
 \newline
 
 \begin_inset ERT
@@ -19623,7 +19642,8 @@ let
 \backslash
 MyFigure
 \backslash
-figure
+f\SpecialChar \textcompwordmark{}
+igure
 \newline
 
 \begin_inset ERT
@@ -19642,9 +19662,11 @@ hphantom{ }
 \backslash
 let
 \backslash
-MyEndfigure
+MyEndf\SpecialChar \textcompwordmark{}
+igure
 \backslash
-endfigure
+endf\SpecialChar \textcompwordmark{}
+igure
 \newline
 
 \begin_inset ERT
@@ -19661,11 +19683,14 @@ hphantom{ }
 
 
 \backslash
-renewenvironment{figure}{
+renewenvironment{f\SpecialChar \textcompwordmark{}
+igure}{
 \backslash
-begin{SCfigure}}{
+begin{SCf\SpecialChar \textcompwordmark{}
+igure}}{
 \backslash
-end{SCfigure}}}
+end{SCf\SpecialChar \textcompwordmark{}
+igure}}}
 \end_layout
 
 \begin_layout Standard
@@ -19694,7 +19719,8 @@ hphantom{ }
 \backslash
 let
 \backslash
-figure
+f\SpecialChar \textcompwordmark{}
+igure
 \backslash
 MyFigure
 \newline
@@ -19715,9 +19741,11 @@ hphantom{ }
 \backslash
 let
 \backslash
-endfigure
+endf\SpecialChar \textcompwordmark{}
+igure
 \backslash
-MyEndfigure}
+MyEndf\SpecialChar \textcompwordmark{}
+igure}
 \end_layout
 
 \begin_layout Standard
@@ -19861,7 +19889,8 @@ b
 \series bold
 
 \backslash
-sidecaptionvpos{figure}{c}
+sidecaptionvpos{f\SpecialChar \textcompwordmark{}
+igure}{c}
 \end_layout
 
 \begin_layout Standard
@@ -20396,7 +20425,7 @@ Note
 
 \begin_layout Description
 LyX\InsetSpace ~
-Note This note type is for internal notes that won't appear in the output:
+Note This note type is for internal notes that won't appear in the output.
  Its note-box looks like this:
 \newline
 
@@ -20458,8 +20487,8 @@ This is text in a note box that only appears as comment in LaTeX-files.
 
 \begin_layout Description
 Greyed\InsetSpace ~
-Out This note will appear in the output as grey text: Its note-box
- looks like this:
+Out This note will appear in the output as grey text.
+ Its note-box looks like this:
 \newline
 
 \newline
@@ -20542,9 +20571,29 @@ egroup}
 \end_inset
 
 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+The greyed out note is here redefined to show it with the original LyX definitio
+n because greyed out notes are redefined in the preamble of this document,
+ as described below, to have blue text.
+\end_layout
+
+\end_inset
+
+
+\newline
+
+\newline
+As you can see in the example, the first line of greyed out notes is a bit
+ indented and greyed out notes can have footnotes.
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 When you use the toolbar button to insert notes, a 
 \family sans
 LyX\InsetSpace ~
@@ -20573,16 +20622,11 @@ button
 \end_layout
 
 \begin_layout Standard
-As you can see in the example above: The first line of greyed out notes
- is a bit indented and greyed out notes can have footnotes.
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-You can change the color of the greyed out notes in the preamble with the
- following command:
+You can change the text color of the greyed out notes in the preamble with
+ the following command:
 \end_layout
 
 \begin_layout Standard
@@ -22998,8 +23042,8 @@ To stretch the box content, it must consist of more than one paragraph.
 \begin_inset VSpace bigskip
 \end_inset
 
-To align the box content horizontally use LyX's paragraph dialog when If
- you have chosen an 
+To align the box content horizontally you can use LyX's paragraph dialog
+ when you have chosen an 
 \family sans
 Inner\InsetSpace ~
 Box
@@ -25120,7 +25164,8 @@ color
 \series bold
 
 \backslash
-@ifundefined{textcolor}
+@ifundef\SpecialChar \textcompwordmark{}
+ined{textcolor}
 \newline
 
 \begin_inset ERT
@@ -25154,7 +25199,8 @@ To avoid that it is loaded twice the command
 \series bold
 
 \backslash
-@ifundefined
+@ifundef\SpecialChar \textcompwordmark{}
+ined
 \series default
  is used.
 \end_layout
@@ -25898,7 +25944,19 @@ LyX's homepage
 \begin_inset Quotes erd
 \end_inset
 
- followed by a brace that is inside an ERT-box.
+ as normal text followed by a closing brace 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+}
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ in ERT.
  This is the result: 
 \begin_inset ERT
 status collapsed
@@ -25976,24 +26034,21 @@ Using
 href
 \series default
  instead of LyX's URL box has the advantage that you can specify the text
- style of the link text for all other text parts and that you are able to
- change the text style for all URLs in your document with an option in 
+ style of the link text like for all other text parts.
+ You can therefore set hyphenation points and forced linebreaks to have
+ long link text broken at the page margin.
+ You are furthermore able to change the text style for all URLs in your
+ document with an option in 
 \series bold
 hyperref
 \series default
-'s load command.
- Furthermore the restrictions mentioned above doesn't apply for 
+'s load command and the restrictions mentioned above doesn't apply for 
 \series bold
 
 \backslash
 href
 \series default
 .
- 
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -27215,7 +27270,8 @@ status collapsed
 
  of the LaTeX-package 
 \series bold
-endfloat
+endf\SpecialChar \textcompwordmark{}
+loat
 \series default
 
 \begin_inset LatexCommand \index{LaTeX-packages ! endfloat}
@@ -27255,7 +27311,8 @@ status collapsed
 
  of the LaTeX-package 
 \series bold
-floatflt
+floatf\SpecialChar \textcompwordmark{}
+lt
 \series default
 
 \begin_inset LatexCommand \index{LaTeX-packages ! floatflt}
