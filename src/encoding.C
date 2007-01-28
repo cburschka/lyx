@@ -236,32 +236,18 @@ Encoding const * Encodings::getFromLyXName(string const & name) const
 }
 
 
-namespace {
-
-class LaTeXNamesEqual : public std::unary_function<std::pair<std::string, Encoding>, bool> {
-	public:
-		LaTeXNamesEqual(string const & LaTeXName)
-			: LaTeXName_(LaTeXName) {}
-		bool operator()(std::pair<std::string, Encoding> const & encoding) const
-		{
-			return encoding.second.latexName() == LaTeXName_;
-		}
-	private:
-		string LaTeXName_;
-};
-
-} // namespace anon
-
-
 Encoding const * Encodings::getFromLaTeXName(string const & name) const
 {
-	EncodingList::const_iterator const it =
-		std::find_if(encodinglist.begin(), encodinglist.end(),
-		             LaTeXNamesEqual(name));
-	if (it != encodinglist.end())
-		return &it->second;
-	else
-		return 0;
+	// We don't use std::find_if because it makes copies of the pairs in
+	// the map.
+	// This linear search is OK since we don't have many encodings.
+	// Users could even optimize it by putting the encodings they use
+	// most at the top of lib/encodings.
+	EncodingList::const_iterator const end = encodinglist.end();
+	for (EncodingList::const_iterator it = encodinglist.begin(); it != end; ++it)
+		if (it->second.latexName() == name)
+			return &it->second;
+	return 0;
 }
 
 
