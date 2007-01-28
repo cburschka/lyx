@@ -56,8 +56,6 @@ dist_bind_DATA = \
 clipartdir = $(pkgdatadir)/clipart
 dist_clipart_DATA = \
 	clipart/BoxInsetDefaultQt4.png \
-	clipart/buffer-export_pdf2.png \
-	clipart/buffer-view_dvi.png \
 	clipart/ComentNotaImagen.png \
 	clipart/CommentNoteImageQt4.png \
 	clipart/CuadroMinipag.png \
@@ -185,6 +183,7 @@ dist_images_DATA = \
 	images/buffer-close.xpm \
 	images/buffer-export_dvi.xpm \
 	images/buffer-export_latex.xpm \
+	images/buffer-export_pdf2.xpm \
 	images/buffer-export_ps.xpm \
 	images/buffer-export_text.xpm \
 	images/buffer-new.xpm \

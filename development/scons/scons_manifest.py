@@ -1429,6 +1429,7 @@ lib_images_files = Split('''
     buffer-close.xpm
     buffer-export_dvi.xpm
     buffer-export_latex.xpm
+    buffer-export_pdf2.xpm
     buffer-export_ps.xpm
     buffer-export_text.xpm
     buffer-new.xpm
