@@ -880,7 +880,7 @@ bool LyX::init()
 	if (!readRcFile("preferences"))
 		return false;
 
-	if (!readEncodingsFile("encodings"))
+	if (!readEncodingsFile("encodings", "unicodesymbols"))
 		return false;
 	if (!readLanguagesFile("languages"))
 		return false;
@@ -1247,16 +1247,24 @@ bool LyX::readLanguagesFile(string const & name)
 
 
 // Read the encodings file `name'
-bool LyX::readEncodingsFile(string const & name)
+bool LyX::readEncodingsFile(string const & enc_name,
+                            string const & symbols_name)
 {
-	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
+	lyxerr[Debug::INIT] << "About to read " << enc_name << " and "
+	                    << symbols_name << "..." << endl;
 
-	FileName const enc_path = libFileSearch(string(), name);
-	if (enc_path.empty()) {
-		showFileError(name);
+	FileName const symbols_path = libFileSearch(string(), symbols_name);
+	if (symbols_path.empty()) {
+		showFileError(symbols_name);
 		return false;
 	}
-	encodings.read(enc_path);
+
+	FileName const enc_path = libFileSearch(string(), enc_name);
+	if (enc_path.empty()) {
+		showFileError(enc_name);
+		return false;
+	}
+	encodings.read(enc_path, symbols_path);
 	return true;
 }
 

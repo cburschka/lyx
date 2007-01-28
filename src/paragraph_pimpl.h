@@ -26,6 +26,7 @@
 
 namespace lyx {
 
+class Encoding;
 class LyXLayout;
 
 
@@ -123,16 +124,23 @@ public:
 	///
 	FontList fontlist;
 
-	///
-	void simpleTeXBlanks(odocstream &, TexRow & texrow,
-			     pos_type const i,
+	/// Output the surrogate pair formed by \p c and \p next to \p os.
+	/// \return the number of characters written.
+	int latexSurrogatePair(odocstream & os, value_type c, value_type next,
+	                       Encoding const &);
+	/// Output a space in appropriate formatting (or a surrogate pair
+	/// if the next character is a combining character).
+	/// \return whether a surrogate pair was output.
+	bool simpleTeXBlanks(BufferParams const &, Encoding const &,
+	                     odocstream &, TexRow & texrow,
+			     pos_type & i,
 			     unsigned int & column,
 			     LyXFont const & font,
 			     LyXLayout const & style);
 	///
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
-				   odocstream &, TexRow & texrow,
-				   OutputParams const &,
+	                           Encoding const &, odocstream &,
+	                           TexRow & texrow, OutputParams const &,
 				   LyXFont & font, LyXFont & running_font,
 				   LyXFont & basefont,
 				   LyXFont const & outerfont,

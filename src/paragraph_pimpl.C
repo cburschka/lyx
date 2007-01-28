@@ -59,16 +59,15 @@ special_phrase const special_phrases[] = {
 size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
 
 
-bool isEncoding(BufferParams const & bparams, LyXFont const & font,
-		string const & encoding)
+/// Get the real encoding of a character with font \p font.
+/// doc_encoding == bparams.encoding(), but we use a precomputed variable
+/// since bparams.encoding() is expensive
+inline Encoding const & getEncoding(BufferParams const & bparams,
+		Encoding const & doc_encoding, LyXFont const & font)
 {
-	// We do ignore bparams.inputenc == "default" here because characters
-	// in this encoding could be treated by TeX as something different,
-	// e.g. if they are inside a CJK environment. See also
-	// http://bugzilla.lyx.org/show_bug.cgi?id=3043.
-	return (bparams.inputenc == encoding
-		|| (bparams.inputenc == "auto"
-		    && font.language()->encoding()->latexName() == encoding));
+	if (bparams.inputenc == "auto" || bparams.inputenc == "default")
+		return *(font.language()->encoding());
+	return doc_encoding;
 }
 
 } // namespace anon
@@ -381,14 +380,44 @@ int Paragraph::Pimpl::eraseChars(pos_type start, pos_type end, bool trackChanges
 }
 
 
-void Paragraph::Pimpl::simpleTeXBlanks(odocstream & os, TexRow & texrow,
-				       pos_type const i,
+int Paragraph::Pimpl::latexSurrogatePair(odocstream & os, value_type c,
+		value_type next, Encoding const & encoding)
+{
+	// Writing next here may circumvent a possible font change between
+	// c and next. Since next is only output if it forms a surrogate pair
+	// with c we can ignore this:
+	// A font change inside a surrogate pair does not make sense and is
+	// hopefully impossible to input.
+	// FIXME: change tracking
+	// Is this correct WRT change tracking?
+	docstring const latex1 = encoding.latexChar(next);
+	docstring const latex2 = encoding.latexChar(c);
+	os << latex1 << '{' << latex2 << '}';
+	return latex1.length() + latex2.length() + 2;
+}
+
+
+bool Paragraph::Pimpl::simpleTeXBlanks(BufferParams const & bparams,
+                                       Encoding const & doc_encoding,
+                                       odocstream & os, TexRow & texrow,
+                                       pos_type & i,
 				       unsigned int & column,
 				       LyXFont const & font,
 				       LyXLayout const & style)
 {
 	if (style.pass_thru)
-		return;
+		return false;
+
+	if (i < size() - 1) {
+		char_type next = getChar(i + 1);
+		if (Encodings::isCombiningChar(next)) {
+			// This space has an accent, so we must always output it.
+			Encoding const & encoding = getEncoding(bparams, doc_encoding, font);
+			column += latexSurrogatePair(os, ' ', next, encoding) - 1;
+			++i;
+			return true;
+		}
+	}
 
 	if (lyxrc.plaintext_linelen > 0
 	    && column > lyxrc.plaintext_linelen
@@ -413,6 +442,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(odocstream & os, TexRow & texrow,
 	} else {
 		os << ' ';
 	}
+	return false;
 }
 
 
@@ -448,6 +478,7 @@ bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos) const
 
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
+					     Encoding const & doc_encoding,
 					     odocstream & os,
 					     TexRow & texrow,
 					     OutputParams const & runparams,
@@ -465,6 +496,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 	if (style.pass_thru) {
 		if (c != Paragraph::META_INSET) {
 			if (c != '\0')
+				// FIXME UNICODE: This can fail if c cannot
+				// be encoded in the current encoding.
 				os.put(c);
 		} else
 			owner_->getInset(i)->plaintext(buf, os, runparams);
@@ -581,25 +614,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		// would be wrongly converted on systems where char is signed, so we give
 		// the code points.
 		// This also makes us independant from the encoding of this source file.
-		case 0xb1:    // ± PLUS-MINUS SIGN
-		case 0xb2:    // ² SUPERSCRIPT TWO
-		case 0xb3:    // ³ SUPERSCRIPT THREE
-		case 0xd7:    // × MULTIPLICATION SIGN
-		case 0xf7:    // ÷ DIVISION SIGN
-		case 0xb9:    // ¹ SUPERSCRIPT ONE
-		case 0xac:    // ¬ NOT SIGN
-		case 0xb5:    // µ MICRO SIGN
-			if (isEncoding(bparams, font, "latin1")
-			    || isEncoding(bparams, font, "latin9")) {
-				os << "\\ensuremath{";
-				os.put(c);
-				os << '}';
-				column += 13;
-			} else {
-				os.put(c);
-			}
-			break;
-
 		case '|': case '<': case '>':
 			// In T1 encoding, these characters exist
 			if (lyxrc.fontenc == "T1") {
@@ -658,82 +672,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += 9;
 			break;
 
-		case 0xa3:    // £ POUND SIGN
-			if (bparams.inputenc == "default") {
-				os << "\\pounds{}";
-				column += 8;
-			} else {
-				os.put(c);
-			}
-			break;
-
-		case 0x20ac:    // EURO SIGN
-			if (isEncoding(bparams, font, "latin9")
-			    || isEncoding(bparams, font, "cp1251")
-			    || isEncoding(bparams, font, "utf8")
-			    || isEncoding(bparams, font, "latin10")
-			    || isEncoding(bparams, font, "cp858")) {
-				os.put(c);
-			} else {
-				os << "\\texteuro{}";
-				column += 10;
-			}
-			break;
-
-		// These characters are covered by latin1, but not
-		// by latin9 (a.o.). We have to support them because
-		// we switched the default of latin1-languages to latin9
-		case 0xa4:    // CURRENCY SYMBOL
-		case 0xa6:    // BROKEN BAR
-		case 0xa8:    // DIAERESIS
-		case 0xb4:    // ACUTE ACCENT
-		case 0xb8:    // CEDILLA
-		case 0xbd:    // 1/2 FRACTION
-		case 0xbc:    // 1/4 FRACTION
-		case 0xbe:    // 3/4 FRACTION
-			if (isEncoding(bparams, font, "latin1")
-			    || isEncoding(bparams, font, "latin5")
-			    || isEncoding(bparams, font, "utf8")) {
-				os.put(c);
-				break;
-			} else {
-				switch (c) {
-				case 0xa4:
-					os << "\\textcurrency{}";
-					column += 15;
-					break;
-				case 0xa6:
-					os << "\\textbrokenbar{}";
-					column += 16;
-					break;
-				case 0xa8:
-					os << "\\textasciidieresis{}";
-					column += 20;
-					break;
-				case 0xb4:
-					os << "\\textasciiacute{}";
-					column += 17;
-					break;
-				case 0xb8: // from latin1.def:
-					os << "\\c\\ ";
-					column += 3;
-					break;
-				case 0xbd:
-					os << "\\textonehalf{}";
-					column += 14;
-					break;
-				case 0xbc:
-					os << "\\textonequarter{}";
-					column += 17;
-					break;
-				case 0xbe:
-					os << "\\textthreequarters{}";
-					column += 20;
-					break;
-				}
-				break;
-			}
-
 		case '$': case '&':
 		case '%': case '#': case '{':
 		case '}': case '_':
@@ -771,6 +709,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		default:
 
 			// I assume this is hack treating typewriter as verbatim
+			// FIXME UNICODE: This can fail if c cannot be encoded
+			// in the current encoding.
 			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				if (c != '\0') {
 					os.put(c);
@@ -798,7 +738,27 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			}
 
 			if (pnr == phrases_nr && c != '\0') {
-				os.put(c);
+				Encoding const & encoding = getEncoding(bparams, doc_encoding, font);
+				if (i < size() - 1) {
+					char_type next = getChar(i + 1);
+					if (Encodings::isCombiningChar(next)) {
+						column += latexSurrogatePair(os, c, next, encoding) - 1;
+						++i;
+						break;
+					}
+				}
+				docstring const latex = encoding.latexChar(c);
+				if (latex.length() > 1 &&
+				    latex[latex.length() - 1] != '}') {
+					// Prevent eating of a following
+					// space or command corruption by
+					// following characters
+					column += latex.length() + 1;
+					os << latex << "{}";
+				} else {
+					column += latex.length() - 1;
+					os << latex;
+				}
 			}
 			break;
 		}
@@ -876,6 +836,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	}
 
 	// then the contents
+	Encoding const & doc_encoding = bparams.encoding();
 	for (pos_type i = 0; i < size() ; ++i) {
 		for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
 			if (!special_phrases[pnr].builtin
@@ -884,12 +845,12 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 				break;
 			}
 		}
-		// these glyphs require the textcomp package
-		if (getChar(i) == 0x20ac || getChar(i) == 0xa4
-		    || getChar(i) == 0xa6 || getChar(i) == 0xa8
-		    || getChar(i) == 0xb4 || getChar(i) == 0xbd
-		    || getChar(i) == 0xbc || getChar(i) == 0xbe)
-			features.require("textcomp");
+		// We do not need the completely realized font, since we are
+		// only interested in the language, and that is never inherited.
+		// Therefore we can use getFontSettings instead of getFont.
+		LyXFont const & font = owner_->getFontSettings(bparams, i);
+		Encoding const & encoding = getEncoding(bparams, doc_encoding, font);
+		encoding.validate(getChar(i), features);
 	}
 }
 

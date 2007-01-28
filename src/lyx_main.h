@@ -149,8 +149,11 @@ private:
 	bool readUIFile(std::string const & name, bool include = false);
 	/// read the given languages file
 	bool readLanguagesFile(std::string const & name);
-	/// read the given encodings file
-	bool readEncodingsFile(std::string const & name);
+	/// read the encodings.
+	/// \param enc_name encodings definition file
+	/// \param symbols_name unicode->LaTeX mapping file
+	bool readEncodingsFile(std::string const & enc_name,
+	                       std::string const & symbols_name);
 	/// parsing of non-gui LyX options.
 	void easyParse(int & argc, char * argv[]);
 	/// shows up a parsing error on screen

@@ -1275,6 +1275,7 @@ lib_files = Split('''
     languages
     symbols
     syntax.default
+    unicodesymbols
     configure.py
 ''')
 

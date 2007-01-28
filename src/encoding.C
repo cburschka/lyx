@@ -15,13 +15,18 @@
 #include "encoding.h"
 
 #include "debug.h"
+#include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 
 #include "support/filename.h"
+#include "support/lstrings.h"
+#include "support/unicode.h"
 
 
 namespace lyx {
+
+using support::FileName;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strtol;
@@ -177,8 +182,96 @@ char_type arabic_table[63][2] = {
 
 char_type const arabic_start = 0xc1;
 
+
+/// Information about a single UCS4 character
+struct CharInfo {
+	/// LaTeX command for this character
+	docstring command;
+	/// Needed LaTeX preamble (or feature)
+	string preamble;
+	/// Is this a combining character?
+	bool combining;
+	/// Is \c preamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// command?
+	bool feature;
+	/// Always force the LaTeX command, even if the encoding contains
+	/// this character?
+	bool force;
+};
+
+
+typedef std::map<char_type, CharInfo> CharInfoMap;
+CharInfoMap unicodesymbols;
+
 } // namespace anon
 
+
+Encoding::Encoding(string const & n, string const & l, string const & i)
+	: Name_(n), LatexName_(l), iconvName_(i)
+{
+	if (n == "utf8")
+		// UTF8 can encode all 1<<20 + 1<<16 UCS4 code points
+		start_encodable_ = 0x110000;
+	else {
+		start_encodable_ = 0;
+		// temporarily switch off lyxerr, since we will generate iconv errors
+		lyxerr.disable();
+		for (unsigned short j = 0; j < 256; ++j) {
+			char const c = j;
+			std::vector<char_type> const ucs4 = eightbit_to_ucs4(&c, 1, i);
+			if (ucs4.size() == 1) {
+				char_type const c = ucs4[0];
+				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+				if (it == unicodesymbols.end() || !it->second.force)
+					encodable_.insert(c);
+			}
+		}
+		lyxerr.enable();
+		CharSet::iterator it = encodable_.find(start_encodable_);
+		while (it != encodable_.end()) {
+			encodable_.erase(it);
+			++start_encodable_;
+			it = encodable_.find(start_encodable_);
+		}
+	}
+}
+
+
+docstring const Encoding::latexChar(char_type c) const
+{
+	if (c < start_encodable_)
+		return docstring(1, c);
+	if (encodable_.find(c) == encodable_.end()) {
+		// c cannot be encoded in this encoding
+		CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+		if (it == unicodesymbols.end())
+			lyxerr << "Could not find LaTeX command for character 0x"
+			       << std::hex << c << ".\nLaTeX export will fail."
+			       << endl;
+		else
+			return it->second.command;
+	}
+	return docstring(1, c);
+}
+
+
+void Encoding::validate(char_type c, LaTeXFeatures & features) const
+{
+	if (c < start_encodable_)
+		return;
+
+	if (encodable_.find(c) != encodable_.end())
+		return;
+
+	// c cannot be encoded in this encoding
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	if (it != unicodesymbols.end() && !it->second.preamble.empty()) {
+		if (it->second.feature)
+			features.require(it->second.preamble);
+		else
+			features.addPreambleSnippet(it->second.preamble);
+	}
+}
 
 
 bool Encodings::isComposeChar_hebrew(char_type c)
@@ -226,6 +319,15 @@ char_type Encodings::transformChar(char_type c,
 }
 
 
+bool Encodings::isCombiningChar(char_type c)
+{
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	if (it != unicodesymbols.end())
+		return it->second.combining;
+	return false;
+}
+
+
 Encoding const * Encodings::getFromLyXName(string const & name) const
 {
 	EncodingList::const_iterator it = encodinglist.find(name);
@@ -255,8 +357,68 @@ Encodings::Encodings()
 {
 }
 
-void Encodings::read(support::FileName const & filename)
+
+void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 {
+	// We must read the symbolsfile first, because the Encoding
+	// constructor depends on it.
+	LyXLex symbolslex(0, 0);
+	symbolslex.setFile(symbolsfile);
+	while (symbolslex.isOK()) {
+		char_type symbol;
+		CharInfo info;
+		string flags;
+
+		if (symbolslex.next(true)) {
+			std::istringstream is(symbolslex.getString());
+			// reading symbol directly does not work if
+			// char_type == std::wchar_t.
+			boost::uint32_t tmp;
+			if(!(is >> std::hex >> tmp))
+				break;
+			symbol = tmp;
+		} else
+			break;
+		if (symbolslex.next(true))
+			info.command = symbolslex.getDocString();
+		else
+			break;
+		if (symbolslex.next(true))
+			info.preamble = symbolslex.getString();
+		else
+			break;
+		if (symbolslex.next(true))
+			flags = symbolslex.getString();
+		else
+			break;
+
+		info.combining = false;
+		info.force = false;
+		while (!flags.empty()) {
+			string flag;
+			flags = support::split(flags, flag, ',');
+			if (flag == "combining")
+				info.combining = true;
+			else if (flag == "force")
+				info.force = true;
+			else
+				lyxerr << "Ignoring unknown flag `" << flag
+				       << "' for symbol `0x" << std::hex
+				       << symbol << "'." << endl;
+		}
+
+		if (!info.preamble.empty())
+			info.feature = info.preamble[0] != '\\';
+
+		lyxerr[Debug::INFO]
+			<< "Read unicode symbol " << symbol << " '"
+			<< to_utf8(info.command) << "' '" << info.preamble
+			<< "' " << info.combining << ' ' << info.feature
+			<< endl;
+		unicodesymbols[symbol] = info;
+	}
+
+	// Now read the encodings
 	enum Encodingtags {
 		et_encoding = 1,
 		et_end,
@@ -269,7 +431,7 @@ void Encodings::read(support::FileName const & filename)
 	};
 
 	LyXLex lex(encodingtags, et_last - 1);
-	lex.setFile(filename);
+	lex.setFile(encfile);
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case et_encoding:

@@ -64,12 +64,14 @@ public:
 	typedef typename debug::type Type;
 
 	basic_debugstream()
-		: std::basic_ostream<charT, traits>(0), dt(debug::NONE)
+		: std::basic_ostream<charT, traits>(0), dt(debug::NONE),
+		  realbuf_(0), enabled_(true)
 	{}
 
 	/// Constructor, sets the debug level to t.
 	explicit basic_debugstream(std::basic_streambuf<charT, traits> * buf)
-		: std::basic_ostream<charT, traits>(buf), dt(debug::NONE)
+		: std::basic_ostream<charT, traits>(buf), dt(debug::NONE),
+		  realbuf_(0), enabled_(true)
 	{}
 
 	/// Sets the debug level to t.
@@ -99,11 +101,32 @@ public:
 			return *this;
 		return nullstream;
 	}
+	/// Disable the stream completely
+	void disable()
+	{
+		if (enabled_) {
+			realbuf_ = this->rdbuf();
+			rdbuf(nullstream.rdbuf());
+			enabled_ = false;
+		}
+	}
+	/// Enable the stream after a possible call of disable()
+	void enable()
+	{
+		if (!enabled_) {
+			this->rdbuf(realbuf_);
+			enabled_ = true;
+		}
+	}
 private:
 	/// The current debug level
 	Type dt;
 	/// The no-op stream.
 	boost::basic_onullstream<charT, traits> nullstream;
+	/// The buffer of the real stream
+	std::streambuf * realbuf_;
+	/// Is the stream enabled?
+	bool enabled_;
 };
 
 typedef basic_debugstream<debug_trait> debugstream;

@@ -13,14 +13,16 @@
 #ifndef ENCODING_H
 #define ENCODING_H
 
-#include <map>
-#include <string>
+#include "support/docstring.h"
 
-#include "support/types.h"
+#include <set>
 
 namespace lyx {
 
 namespace support { class FileName; }
+
+class LaTeXFeatures;
+
 
 ///
 class Encoding {
@@ -29,16 +31,25 @@ public:
 	Encoding() {}
 	///
 	Encoding(std::string const & n, std::string const & l,
-	         std::string const & i)
-		: Name_(n), LatexName_(l), iconvName_(i)
-	{
-	}
+	         std::string const & i);
 	///
 	std::string const & name() const { return Name_; }
 	///
 	std::string const & latexName() const { return LatexName_; }
 	///
 	std::string const & iconvName() const { return iconvName_; }
+	/**
+	 * Convert \p c to something that LaTeX can understand.
+	 * This is either the character itself (if it is representable
+	 * in this encoding), or a LaTeX macro.
+	 * If the character is not representable in this encoding, but no
+	 * LaTeX macro is known, a warning is given of lyxerr, and the
+	 * character is returned.
+	 */
+	docstring const latexChar(char_type c) const;
+	/// Add the preamble snippet needed for the output of latexChar(c)
+	/// to \p features.
+	void validate(char_type c, LaTeXFeatures & features) const;
 private:
 	///
 	std::string Name_;
@@ -46,6 +57,15 @@ private:
 	std::string LatexName_;
 	///
 	std::string iconvName_;
+	///
+	typedef std::set<char_type> CharSet;
+	/// Set of UCS4 characters that we can encode (for singlebyte
+	/// encodings only)
+	CharSet encodable_;
+	/// All code points below this are encodable. This helps us to avoid
+	/// lokup of ASCII characters in encodable_ and gives about 1 sec
+	/// speedup on export of the Userguide.
+	char_type start_encodable_;
 };
 
 class Encodings {
@@ -64,8 +84,11 @@ public:
 	};
 	///
 	Encodings();
-	///
-	void read(support::FileName const & filename);
+	/// Read the encodings.
+	/// \param encfile encodings definition file
+	/// \param symbolsfile unicode->LaTeX mapping file
+	void read(support::FileName const & encfile,
+	          support::FileName const & symbolsfile);
 	/// Get encoding from LyX name \p name
 	Encoding const * getFromLyXName(std::string const & name) const;
 	/// Get encoding from LaTeX name \p name
@@ -97,6 +120,8 @@ public:
 	static bool is_arabic(char_type c);
 	///
 	static char_type transformChar(char_type c, Letter_Form form);
+	/// Is this a combining char?
+	static bool isCombiningChar(char_type c);
 
 private:
 	///

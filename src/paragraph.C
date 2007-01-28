@@ -1007,6 +1007,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 						    runparams.moving_arg);
 	}
 
+	// Computed only once per paragraph since bparams.encoding() is expensive
+	Encoding const & doc_encoding = bparams.encoding();
 	for (pos_type i = 0; i < size(); ++i) {
 		++column;
 		// First char in paragraph or after label?
@@ -1066,10 +1068,18 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		if (c == ' ') {
 			// Do not print the separation of the optional argument
 			if (i != body_pos - 1) {
-				// FIXME: change tracking
-				// Is this correct WRT change tracking?
-				pimpl_->simpleTeXBlanks(os, texrow, i,
-						       column, font, *style);
+				if (pimpl_->simpleTeXBlanks(bparams,
+						doc_encoding, os, texrow,
+						i, column, font, *style))
+					// A surrogate pair was output. We
+					// must not call simpleTeXSpecialChars
+					// in this iteration, since
+					// simpleTeXBlanks incremented i, and
+					// simpleTeXSpecialChars would output
+					// the combining character again.
+					// FIXME: change tracking
+					// Is this correct WRT change tracking?
+					continue;
 			}
 		}
 
@@ -1101,7 +1111,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			rp.local_font = &font;
 			rp.intitle = style->intitle;
 			pimpl_->simpleTeXSpecialChars(buf, bparams,
-						os, texrow, rp,
+						doc_encoding, os, texrow, rp,
 						font, running_font,
 						basefont, outerfont, open_font,
 						runningChangeType,
