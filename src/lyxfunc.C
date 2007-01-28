@@ -1165,9 +1165,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		// --- buffers ----------------------------------------
 		case LFUN_BUFFER_SWITCH:
 			BOOST_ASSERT(lyx_view_);
-			// update bookmark pit of the current buffer before switch
-			for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i)
-				gotoBookmark(i+1, false, false);			
 			lyx_view_->setBuffer(theBufferList().getBuffer(argument));
 			break;
 

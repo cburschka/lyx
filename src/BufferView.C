@@ -155,6 +155,19 @@ void BufferView::setBuffer(Buffer * b)
 		// to this buffer later on.
 		buffer_->saveCursor(cursor_.selectionBegin(),
 				    cursor_.selectionEnd());
+		// update bookmark pit of the current buffer before switch
+		for (size_t i = 0; i < LyX::ref().session().bookmarks().size(); ++i) {
+			BookmarksSection::Bookmark const & bm = LyX::ref().session().bookmarks().bookmark(i);
+			if (buffer()->fileName() != bm.filename.absFilename())
+				continue;
+			// if par_id or pit has been changed, reset par_pit and par_id
+			// see http://bugzilla.lyx.org/show_bug.cgi?id=3092
+			pit_type new_pit;
+			int new_id;
+			boost::tie(new_pit, new_id) = moveToPosition(bm.par_pit, bm.par_id, bm.par_pos);
+			if (bm.par_pit != new_pit || bm.par_id != new_id)
+				const_cast<BookmarksSection::Bookmark &>(bm).setPos(new_pit, new_id);
+		}
 		// current buffer is going to be switched-off, save cursor pos
 		LyX::ref().session().lastFilePos().save(FileName(buffer_->fileName()),
 			boost::tie(cursor_.pit(), cursor_.pos()) );
