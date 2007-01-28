@@ -56,8 +56,6 @@ dist_bind_DATA = \
 clipartdir = $(pkgdatadir)/clipart
 dist_clipart_DATA = \
 	clipart/BoxInsetDefault.png \
-	clipart/buffer-export_pdf2.png \
-	clipart/buffer-view_dvi.png \
 	clipart/ComentNotaImagen.png \
 	clipart/CommentNoteImage.png \
 	clipart/CuadroMinipag.png \
