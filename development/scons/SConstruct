@@ -1997,50 +1997,9 @@ if build_po:
                 gmo_files.extend(env.Transfiles(f))
 
 
-if build_installer:
-    #
-    # build windows installer using NSIS
-    #
-    # NOTE:
-    # There is a nsis builder on scons wiki but it does not work with
-    # our lyx.nsi because it does not dig through all the include directives
-    # and find the dependencies automatically. Also, it can not parse
-    # OutFile in lyx.nsi since it is defined as SETUP_EXE which is in turn
-    # something rely on date.
-    # Because of this, I am doing a simple nsis builder here.
-    if platform_name != 'win32':
-        print 'installer target is only available for windows platform'
-        Exit(1)
-    if env.has_key('NSIS') and env['NSIS'] is not None:
-        # create a builder to strip and install
-        env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)
-    else:
-        print 'No nsis compiler is found. Existing...'
-        Exit(2)
-    if not env.has_key('win_installer') or env['win_installer'] is None:
-        if devel_version:
-            env['win_installer'] = '%s-%s-%s-Installer.exe' % (package_name, package_version, time.strftime('%Y-%m-%d'))
-        else:
-            env['win_installer'] = '%s-%s-Installer.exe' % (package_name, package_version)
-    # if absolute path is given, use it, otherwise, write to current directory
-    if not (':' in env['win_installer'] or '/' in env['win_installer'] or '\\' in env['win_installer']):
-        env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
-    env.Append(NSISDEFINES={'ExeFile':env['win_installer']})
-    installer = env.installer(env['win_installer'],
-        '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
-    # since I can not use a scanner, explicit dependent is required
-    env.Depends(installer, [lyx, tex2lyx] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' % x for x in win32_packaging_installer_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' % x for x in win32_packaging_installer_components_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' % x for x in win32_packaging_installer_dialogs_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/graphics/%s' % x for x in win32_packaging_installer_graphics_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' % x for x in win32_packaging_installer_include_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' % x for x in win32_packaging_installer_lang_files ]
-    )
-    frontend_env.Alias('installer', installer)
 
 
-if 'install' in targets:
+if 'install' in targets or 'installer' in targets:
     #
     # this part is a bit messy right now. Since scons will provide
     # --DESTDIR option soon, at least the dest_dir handling can be 
@@ -2174,6 +2133,52 @@ if 'install' in targets:
         dest_file = os.path.join(locale_dest_dir, lan, 'LC_MESSAGES', 'lyx' + program_suffix + '.mo')
         env.InstallAs(dest_file, gmo)
         Alias('install', dest_file)
+
+
+if build_installer:
+    #
+    # build windows installer using NSIS
+    #
+    # NOTE:
+    # There is a nsis builder on scons wiki but it does not work with
+    # our lyx.nsi because it does not dig through all the include directives
+    # and find the dependencies automatically. Also, it can not parse
+    # OutFile in lyx.nsi since it is defined as SETUP_EXE which is in turn
+    # something rely on date.
+    # Because of this, I am doing a simple nsis builder here.
+    if platform_name != 'win32':
+        print 'installer target is only available for windows platform'
+        Exit(1)
+    if env.has_key('NSIS') and env['NSIS'] is not None:
+        # create a builder to strip and install
+        env['BUILDERS']['installer'] = Builder(generator=utils.env_nsis)
+    else:
+        print 'No nsis compiler is found. Existing...'
+        Exit(2)
+    if not env.has_key('win_installer') or env['win_installer'] is None:
+        if devel_version:
+            env['win_installer'] = '%s-%s-%s-Installer.exe' % (package_name, package_version, time.strftime('%Y-%m-%d'))
+        else:
+            env['win_installer'] = '%s-%s-Installer.exe' % (package_name, package_version)
+    # if absolute path is given, use it, otherwise, write to current directory
+    if not (':' in env['win_installer'] or '/' in env['win_installer'] or '\\' in env['win_installer']):
+        env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
+    env.Append(NSISDEFINES={
+        'ExeFile':env['win_installer'],
+        'FilesLyx':env.get('DESTDIR', r'..\..\..\..\build-msvc')
+        })
+    installer = env.installer(env['win_installer'],
+        '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
+    # since I can not use a scanner, explicit dependent is required
+    env.Depends(installer, [lyx, tex2lyx] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' % x for x in win32_packaging_installer_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' % x for x in win32_packaging_installer_components_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' % x for x in win32_packaging_installer_dialogs_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/graphics/%s' % x for x in win32_packaging_installer_graphics_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' % x for x in win32_packaging_installer_include_files] + \
+        ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' % x for x in win32_packaging_installer_lang_files ]
+    )
+    frontend_env.Alias('installer', installer)
 
 
 Default('lyx')
