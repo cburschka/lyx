@@ -2164,7 +2164,7 @@ if build_installer:
         env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
     env.Append(NSISDEFINES={
         'ExeFile':env['win_installer'],
-        'FilesLyx':env.get('DESTDIR', r'..\..\..\..\build-msvc')
+        'FilesLyx':env.Dir(dest_prefix_dir).abspath
         })
     installer = env.installer(env['win_installer'],
         '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
