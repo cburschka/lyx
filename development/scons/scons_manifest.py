@@ -2325,23 +2325,23 @@ lib_doc_files = Split('''
 
 lib_clipart_files = Split('''
     BoxInsetDefaultQt4.png
-    ComentNotaImagen.png
+    ComentNotaImagenQt4.png
     CommentNoteImageQt4.png
-    CuadroMinipag.png
+    CuadroMinipagQt4.png
     endnotes.pdf
-    etiqueta.png
+    etiquetaQt4.png
     floatQt4.png
-    flotante.png
+    flotanteQt4.png
     footnoteQt4.png
     GreyedOutNoteImageQt4.png
-    GrisNotaImagen.png
+    GrisNotaImagenQt4.png
     labelQt4.png
     LyXNoteImageQt4.png
-    NotaLyXImagen.png
-    notapie.png
+    NotaLyXImagenQt4.png
+    notapieQt4.png
     platypus.eps
     referenceQt4.png
-    referencia2.png
+    referenciaQt4.png
     with_fntright.pdf
     without_fntright.pdf
 ''')
