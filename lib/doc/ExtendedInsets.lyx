@@ -26476,9 +26476,14 @@ File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
 DVI
 \family default
- or the toolbar button 
+.
+ You can view your document as PostScript via the 
+\family sans
+View
+\family default
+ menu or by using the toolbar button 
 \begin_inset Graphics
-	filename ../clipart/buffer-view_dvi.png
+	filename ../images/buffer-view_dvi.xpm
 	scale 85
 
 \end_inset
@@ -26600,6 +26605,18 @@ File\SpecialChar \menuseparator
 Export\SpecialChar \menuseparator
 Postscript
 \family default
+.
+ You can view your document as PostScript via the 
+\family sans
+View
+\family default
+ menu or by using the toolbar button 
+\begin_inset Graphics
+	filename ../images/buffer-view_ps.xpm
+	scale 85
+
+\end_inset
+
 .
 \end_layout
 
@@ -26766,14 +26783,6 @@ PDF\InsetSpace ~
 pdftex
 \family default
  that converts your file directly to PDF.
- You can alternatively use the toolbar button 
-\begin_inset Graphics
-	filename ../clipart/buffer-export_pdf2.png
-	scale 85
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -26793,6 +26802,30 @@ pdftex
 dvipdfm
 \family default
  is not under development and therefore a bit outdated.
+\end_layout
+
+\begin_layout Standard
+You can view your document as PDF via the 
+\family sans
+View
+\family default
+ menu or by using the toolbar button 
+\begin_inset Graphics
+	filename ../images/buffer-view_pdf2.xpm
+	scale 85
+
+\end_inset
+
+ 
+\family sans
+(
+\family default
+that uses 
+\family sans
+PDF\InsetSpace ~
+(pdflatex)
+\family default
+).
 \end_layout
 
 \begin_layout Chapter
