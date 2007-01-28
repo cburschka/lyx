@@ -8398,9 +8398,8 @@ msgid "TeX Information|I"
 msgstr "TeX-Informationen|X"
 
 #: lib/ui/stdmenus.inc:468
-#, fuzzy
 msgid "Special Insets|S"
-msgstr "Alle Einfügungen öffnen|ö"
+msgstr "Besondere Einfügungen|s"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -10287,15 +10286,15 @@ msgstr "Verzeichnisse"
 
 #: src/frontends/qt4/GuiView.C:126
 msgid "Small-sized icons"
-msgstr ""
+msgstr "Kleine Symbole"
 
 #: src/frontends/qt4/GuiView.C:132
 msgid "Normal-sized icons"
-msgstr ""
+msgstr "Normale Symbole"
 
 #: src/frontends/qt4/GuiView.C:139
 msgid "Big-sized icons"
-msgstr ""
+msgstr "Große Symbole"
 
 #: src/frontends/qt4/GuiView.C:669
 msgid "LyX"
@@ -11713,27 +11712,24 @@ msgstr ""
 "Weitere Optionen sind in der Online-Hilfe (man lyx) aufgeführt."
 
 #: src/lyx_main.C:1325 src/support/package.C.in:556
-#, fuzzy
 msgid "No system directory"
-msgstr "Benutzerverzeichnis: "
+msgstr "Kein Systemverzeichnis"
 
 #: src/lyx_main.C:1326
 msgid "Missing directory for -sysdir switch"
 msgstr "Die Option -sysdir verlangt die Angabe eines Verzeichnisses"
 
 #: src/lyx_main.C:1336
-#, fuzzy
 msgid "No user directory"
-msgstr "Benutzerverzeichnis: "
+msgstr "Kein Benutzerverzeichnis"
 
 #: src/lyx_main.C:1337
 msgid "Missing directory for -userdir switch"
 msgstr "Die Option -userdir verlangt die Angabe eines Verzeichnisses"
 
 #: src/lyx_main.C:1347
-#, fuzzy
 msgid "Incomplete command"
-msgstr "Befehl für Stichwortverzeichnis:"
+msgstr "Unvollständiger Befehl"
 
 #: src/lyx_main.C:1348
 msgid "Missing command string after --execute switch"
@@ -11904,9 +11900,8 @@ msgstr ""
 "Version des Dokuments %1$s zurückkehren möchten?"
 
 #: src/lyxfunc.C:1078
-#, fuzzy
 msgid "Exiting."
-msgstr "LyX wird beendet"
+msgstr "LyX wird beendet."
 
 #: src/lyxfunc.C:1104 src/text3.C:1222
 msgid "Missing argument"
@@ -12642,31 +12637,32 @@ msgid "All files (*)"
 msgstr "Alle Dateien (*)"
 
 #: src/support/os_win32.C:335
-#, fuzzy
 msgid "System file not found"
-msgstr "Die Zeichenkette wurde nicht gefunden!"
+msgstr "Systemdatei nicht gefunden"
 
 #: src/support/os_win32.C:336
 msgid ""
 "Unable to load shfolder.dll\n"
 "Please install."
 msgstr ""
+"LyX kann shfolder.dll nicht laden\n"
+"Bitte installieren."
 
 #: src/support/os_win32.C:341
-#, fuzzy
 msgid "System function not found"
-msgstr "Die Zeichenkette wurde nicht gefunden!"
+msgstr "Systemfunktion nicht gefunden"
 
 #: src/support/os_win32.C:342
 msgid ""
 "Unable to find SHGetFolderPathA in shfolder.dll\n"
 "Don't know how to proceed. Sorry."
 msgstr ""
+"LyX kann SHGetFolderPathA in shfolder.dll nicht finden\n"
+"Keine Ahnung, wie es weitergehen soll. Entschuldigung."
 
 #: src/support/package.C.in:436
-#, fuzzy
 msgid "LyX binary not found"
-msgstr "Die Zeichenkette wurde nicht gefunden!"
+msgstr "LyX-Applikation nicht gefunden"
 
 #: src/support/package.C.in:437
 #, c-format
@@ -12691,9 +12687,8 @@ msgstr ""
 "Systemverzeichnis, das die Datei 'chkconfig.ltx' enthält."
 
 #: src/support/package.C.in:641 src/support/package.C.in:668
-#, fuzzy
 msgid "File not found"
-msgstr "Die Zeichenkette wurde nicht gefunden!"
+msgstr "Datei nicht gefunden"
 
 #: src/support/package.C.in:642
 #, c-format
@@ -12723,9 +12718,8 @@ msgstr ""
 "%2$s ist kein Verzeichnis."
 
 #: src/support/package.C.in:696
-#, fuzzy
 msgid "Directory not found"
-msgstr "Die Zeichenkette wurde nicht gefunden!"
+msgstr "Verzeichnis nicht gefunden"
 
 #: src/support/userinfo.C:44
 msgid "Unknown user"
