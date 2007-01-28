@@ -1066,6 +1066,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		if (c == ' ') {
 			// Do not print the separation of the optional argument
 			if (i != body_pos - 1) {
+				// FIXME: change tracking
+				// Is this correct WRT change tracking?
 				pimpl_->simpleTeXBlanks(os, texrow, i,
 						       column, font, *style);
 			}
@@ -1091,6 +1093,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		// do not output text which is marked deleted
 		// if change tracking output is not desired
 		if (output || runningChangeType != Change::DELETED) {
+			// FIXME: change tracking
+			// simpleTeXSpecialChars does not output anything if
+			// c is a space. Is this correct WRT change tracking?
 			OutputParams rp = runparams;
 			rp.free_spacing = style->free_spacing;
 			rp.local_font = &font;
