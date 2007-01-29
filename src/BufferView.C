@@ -502,6 +502,9 @@ void BufferView::scrollDocView(int value)
 
 void BufferView::setCursorFromScrollbar()
 {
+	if (!buffer)
+		return;
+
 	LyXText & t = buffer_->text();
 
 	int const height = 2 * defaultRowHeight();
