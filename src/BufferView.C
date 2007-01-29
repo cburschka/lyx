@@ -502,7 +502,7 @@ void BufferView::scrollDocView(int value)
 
 void BufferView::setCursorFromScrollbar()
 {
-	if (!buffer)
+	if (!buffer_)
 		return;
 
 	LyXText & t = buffer_->text();
