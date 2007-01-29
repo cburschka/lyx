@@ -2160,6 +2160,8 @@ lib_templates_files = Split('''
     README.new_templates
     aa.lyx
     aastex.lyx
+    beamer-conference-ornate-20min.lyx
+    de_beamer-conference-ornate-20min.lyx
     dinbrief.lyx
     docbook_article.lyx
     elsart.lyx
