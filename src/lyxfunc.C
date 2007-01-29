@@ -880,8 +880,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				lyx_view_->message(str);
 				menuWrite(lyx_view_->buffer());
 				lyx_view_->message(str + _(" done."));
-			} else
-				writeAs(lyx_view_->buffer());
+			} else {
+ 				writeAs(lyx_view_->buffer());
+				lyx_view_->updateTab();
+			}
 			updateFlags = Update::None;
 			break;
 
@@ -889,6 +891,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_ && lyx_view_->buffer());
 			writeAs(lyx_view_->buffer(), argument);
 			updateFlags = Update::None;
+			lyx_view_->updateTab();
 			break;
 
 		case LFUN_BUFFER_RELOAD: {
