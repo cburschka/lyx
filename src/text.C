@@ -1711,7 +1711,9 @@ docstring LyXText::currentState(LCursor & cur)
 	os << _(", Paragraph: ") << cur.pit();
 	os << _(", Id: ") << par.id();
 	os << _(", Position: ") << cur.pos();
-	if (!par.empty()) {
+	// FIXME: Why is the check for par.size() needed?
+	// We are called with cur.pos() == par.size() quite often.
+	if (!par.empty() && cur.pos() < par.size()) {
 		// Force output of code point, not character
 		size_t const c = par.getChar(cur.pos());
 		os << _(", Char: 0x") << std::hex << c;
