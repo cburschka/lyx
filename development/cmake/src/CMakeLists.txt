@@ -61,6 +61,11 @@ if(ASPELL_FOUND)
 	target_link_libraries(lyx-${qt_postfix} ${ASPELL_LIBRARY})
 endif(ASPELL_FOUND)
 
+if(APPLE)
+  target_link_libraries(lyx-${qt_postfix} "-bind_at_load" ) 
+  target_link_libraries(lyx-${qt_postfix} "-framework Carbon" ) 
+endif(APPLE)
+
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 

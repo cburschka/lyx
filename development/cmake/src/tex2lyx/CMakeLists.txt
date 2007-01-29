@@ -67,5 +67,9 @@ if(WIN32)
 	target_link_libraries(tex2lyx shlwapi)
 endif(WIN32)
 
+if(APPLE)
+	target_link_libraries(tex2lyx "-framework Carbon")
+endif(APPLE)
+
 project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 
