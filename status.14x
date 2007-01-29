@@ -214,6 +214,8 @@ What's new
 - Fix some crashes (with console error message "break on pointer: ...")
   related to large insets.
 
+- Fix nested list (like) output in docbook (bug 2841)
+
 * Build/installation:
 
 - Allow autoconf 2.60 and 2.61 for building.

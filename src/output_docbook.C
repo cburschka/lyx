@@ -160,7 +160,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				sgml::closeTag(os, bstyle->labeltag());
 			}
 			wrapper = defaultstyle->latexname();
-			sgml::openTag(os, bstyle->itemtag());
+			// If a sub list (embedded list) appears next with a
+			// different depth, then there is no need to open
+			// another tag at the current depth.
+			if(par->params().depth() == pbegin->params().depth()) {
+				sgml::openTag(os, bstyle->itemtag());
+			}
+			break;
 		default:
 			break;
 		}
@@ -197,7 +203,17 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
-			sgml::closeTag(os, bstyle->itemtag());
+			// If a sub list (embedded list) appears next, then
+			// there is no need to close the current tag.
+			// par should have already been incremented to the next
+			// element. So we can compare the depth of the next
+			// element with pbegin.
+			// We need to be careful, that we don't dereference par
+			// when par == pend but at the same time that the
+			// current tag is closed.
+			if((par != pend && par->params().depth() == pbegin->params().depth()) || par == pend) {
+				sgml::closeTag(os, bstyle->itemtag());
+			}
 			if (!bstyle->labeltag().empty())
 				sgml::closeTag(os, bstyle->innertag());
 			break;

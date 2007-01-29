@@ -1,3 +1,10 @@
+2007-01-29  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (makeEnvironment): If a sub list (embedded
+	list) appears next with a different depth, then there is no need
+	to open another tag at the current depth. (from Harshula
+	Jayasuriya). (bug 2841)
+
 2007-01-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text3.C (cursorPrevious, cursorNext): take the selection()
