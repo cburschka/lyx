@@ -136,8 +136,13 @@ AC_DEFUN([QT4_DO_IT_ALL],
 
 	dnl Check if it possible to do a pkg-config
 	QT4_DO_PKG_CONFIG
-	if test "$pkg_failed" != "no" ; then
+	if test -n "$qt4_cv_dir" -o -n "$qt4_cv_includes" -o -n "$qt4_cv_libraries"; then
+		dnl The user gave commandline arguments, override pkg-config
 		QT4_DO_MANUAL_CONFIG
+	else
+		if test "$pkg_failed" != "no" ; then
+			QT4_DO_MANUAL_CONFIG
+		fi
 	fi
 	AC_PATH_PROGS(MOC4, [moc-qt4 moc],[],$qt4_cv_bin:$PATH)
 	AC_PATH_PROGS(UIC4, [uic-qt4 uic],[],$qt4_cv_bin:$PATH)
@@ -200,7 +205,9 @@ AC_DEFUN([QT4_DO_MANUAL_CONFIG],
 
 	QT4_CHECK_COMPILE
 
-	QT4_LIB=$qt4_cv_libname;
+	if test -n "$qt4_cv_libname"; then
+		QT4_LIB=$qt4_cv_libname;
+	fi
 	AC_SUBST(QT4_LIB)
 	AC_SUBST(QT4_CORE_LIB)
 

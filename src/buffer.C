@@ -576,7 +576,7 @@ bool Buffer::readString(std::string const & s)
 	std::istringstream is(s);
 	lex.setStream(is);
 	FileName const name(tempName());
-	switch (readFile(lex, name)) {
+	switch (readFile(lex, name, true)) {
 	case failure:
 		return false;
 	case wrongversion: {
@@ -584,7 +584,7 @@ bool Buffer::readString(std::string const & s)
 		std::ofstream os(name.toFilesystemEncoding().c_str());
 		os << s;
 		os.close();
-		return readFile(name) == success;
+		return readFile(name);
 	}
 	case success:
 		break;

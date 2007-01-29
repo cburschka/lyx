@@ -229,6 +229,13 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 
 	int textwidth;
 
+	if (f.family() == LyXFont::ESINT_FAMILY) {
+		if (ls != 1)
+			lyxerr << "draw should not happen\n";
+		else
+			lyxerr << "draw " << s[0] << " at " << x << "," << y << " color: " << f.realColor() << std::endl;
+	}
+
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		setQPainterPen(f.realColor());
 		if (font() != fi.font)

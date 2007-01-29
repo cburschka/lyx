@@ -256,20 +256,26 @@ FileName const fileSearch(string const & path, string const & name,
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
 	string const tmpname = replaceEnvironmentPath(name);
+	lyxerr << "path: '" << path << "' name: '" << name << "' ext: '" << ext << "' tmpname: '" << tmpname << "'" << std::endl;
 	FileName fullname(makeAbsPath(tmpname, path));
+	lyxerr << "fullname: '" << fullname << "'";
 	// search first without extension, then with it.
-	if (isFileReadable(fullname))
+	if (isFileReadable(fullname)) {
+		lyxerr << " return fullname " << std::endl;
 		return fullname;
-	if (ext.empty())
+	}
+	if (ext.empty()) {
 		// We are done.
-		return mode == allow_unreadable ? fullname : FileName();
-	// Only add the extension if it is not already the extension of
-	// fullname.
-	if (getExtension(fullname.absFilename()) != ext)
-		fullname = FileName(addExtension(fullname.absFilename(), ext));
-	if (isFileReadable(fullname) || mode == allow_unreadable)
-		return fullname;
-	return FileName();
+		lyxerr << " return FileName " << std::endl;
+		return FileName();
+	}
+	fullname = FileName(changeExtension(fullname.absFilename(), ext));
+	lyxerr << " fullname: '" << fullname << "'";
+	if (isFileReadable(fullname))
+		lyxerr << " return fullname " << std::endl;
+	else
+		lyxerr << " return FileName " << std::endl;
+	return isFileReadable(fullname) ? fullname : FileName();
 }
 
 
