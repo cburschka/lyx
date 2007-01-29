@@ -23,6 +23,8 @@
 #include "support/lstrings.h"
 #include "support/unicode.h"
 
+#include <sstream>
+
 
 namespace lyx {
 
