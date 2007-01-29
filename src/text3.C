@@ -203,12 +203,12 @@ bool LyXText::cursorPrevious(LCursor & cur)
 	bool updated = setCursorFromCoordinates(cur, x, 0);
 	if (updated)
 		cur.bv().update();
-	cur.dispatch(FuncRequest(LFUN_UP));
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_UPSEL: LFUN_UP));
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
-		cur.dispatch(FuncRequest(LFUN_UP));
+		cur.dispatch(FuncRequest(cur.selection()? LFUN_UPSEL: LFUN_UP));
 	}
 
 	cur.bv().updateScrollbar();
@@ -226,12 +226,12 @@ bool LyXText::cursorNext(LCursor & cur)
 	bool updated = setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
 	if (updated)
 		cur.bv().update();
-	cur.dispatch(FuncRequest(LFUN_DOWN));
+	cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWNSEL: LFUN_DOWN));
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
-		cur.dispatch(FuncRequest(LFUN_DOWN));
+		cur.dispatch(FuncRequest(cur.selection()? LFUN_DOWNSEL: LFUN_DOWN));
 	}
 
 	cur.bv().updateScrollbar();

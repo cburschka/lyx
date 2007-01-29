@@ -1,3 +1,8 @@
+2007-01-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (cursorPrevious, cursorNext): take the selection()
+	status of the cursor in account.
+
 2007-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* output_plaintext.C (asciiParagraph): output things in the right
