@@ -692,29 +692,53 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 {
 	QLToolbar * Tb = new QLToolbar(tbb, *this);
 
-	/* NOTE:
-		saved toolbar position can not be restored with simple move(x,y),
-		Consequently, toolbars from different lines will be restore to one
-		line. I therefore add addToolBarBreak after each toolbar to restore
-		toolbars to separate lines, although toolbars in the same line can 
-		not be restored correctly.
-	  NOTE: qt < 4.2.2 cannot handle addToolBarBreak on non-TOP dock.
-	*/
 	if (tbb.flags & ToolbarBackend::TOP) {
 		addToolBar(Qt::TopToolBarArea, Tb);
-		addToolBarBreak(Qt::TopToolBarArea);
+		if (toolbarSize_.top_width > 0
+		    && toolbarSize_.top_width + Tb->sizeHint().width() > width()) {
+			insertToolBarBreak(Tb);
+			toolbarSize_.top_width = Tb->sizeHint().width();
+		} else
+			toolbarSize_.top_width += Tb->sizeHint().width();
 	}
+
 	if (tbb.flags & ToolbarBackend::BOTTOM) {
 		addToolBar(Qt::BottomToolBarArea, Tb);
-		addToolBarBreak(Qt::BottomToolBarArea);
+// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
+#if (QT_VERSION >= 0x040202)
+		if (toolbarSize_.bottom_width > 0
+		    && toolbarSize_.bottom_width + Tb->sizeHint().width() > width()) {
+			insertToolBarBreak(Tb);
+			toolbarSize_.bottom_width = Tb->sizeHint().width();
+		} else
+			toolbarSize_.bottom_width += Tb->sizeHint().width();
+#endif
 	}
+
 	if (tbb.flags & ToolbarBackend::LEFT) {
 		addToolBar(Qt::LeftToolBarArea, Tb);
-		addToolBarBreak(Qt::LeftToolBarArea);
+// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
+#if (QT_VERSION >= 0x040202)
+		if (toolbarSize_.left_height > 0
+		    && toolbarSize_.left_height + Tb->sizeHint().height() > height()) {
+			insertToolBarBreak(Tb);
+			toolbarSize_.left_height = Tb->sizeHint().height();
+		} else
+			toolbarSize_.left_height += Tb->sizeHint().height();
+#endif
 	}
+
 	if (tbb.flags & ToolbarBackend::RIGHT) {
 		addToolBar(Qt::RightToolBarArea, Tb);
-		addToolBarBreak(Qt::RightToolBarArea);
+// Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
+#if (QT_VERSION >= 0x040202)
+		if (toolbarSize_.right_height > 0
+		    && toolbarSize_.right_height + Tb->sizeHint().height() > height()) {
+			insertToolBarBreak(Tb);
+			toolbarSize_.right_height = Tb->sizeHint().height();
+		} else
+			toolbarSize_.right_height += Tb->sizeHint().height();
+#endif
 	}
 
 	// The following does not work so saved toolbar location can not be used.
@@ -722,6 +746,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 	ToolbarSection::ToolbarInfo & info = LyX::ref().session().toolbars().load(tbb.name);
 	Tb->move(info.posx, info.posy);
 	*/
+
 	return Toolbars::ToolbarPtr(Tb);
 }
 

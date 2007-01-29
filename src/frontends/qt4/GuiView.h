@@ -144,6 +144,15 @@ private:
 
 	void setIconSize(unsigned int size);
 
+	struct ToolbarSize {
+		int top_width;
+		int bottom_width;
+		int left_height;
+		int right_height;
+	};
+
+	ToolbarSize toolbarSize_;
+
 	struct GuiViewPrivate;
 	GuiViewPrivate& d;
 };
