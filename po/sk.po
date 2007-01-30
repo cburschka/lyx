@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-28 15:10+0100\n"
+"POT-Creation-Date: 2007-01-30 23:34+0100\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -494,10 +494,10 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
-#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:100
+#: src/buffer_funcs.C:127 src/buffer_funcs.C:168 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
-#: src/lyxfunc.C:900 src/lyxfunc.C:2018 src/lyxvc.C:175
+#: src/lyxfunc.C:901 src/lyxfunc.C:2016 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Zru¹i»"
 
@@ -525,7 +525,7 @@ msgstr "LyX: Prida» BibTeX databázu"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:246
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:259
 #: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
 msgid "Cancel"
 msgstr "Zru¹i»"
@@ -3436,6 +3436,7 @@ msgstr "®ivotopis"
 #: lib/layouts/egs.layout:584 lib/layouts/egs.layout:594
 #: lib/layouts/isprs.layout:215 lib/layouts/latex8.layout:116
 #: lib/layouts/db_stdlayouts.inc:29 lib/layouts/stdlayouts.inc:64
+#: lib/ui/stdmenus.inc:303
 msgid "Caption"
 msgstr "Názov"
 
@@ -3566,7 +3567,7 @@ msgstr "Po¹ta"
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:311
+#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:314
 msgid "Date"
 msgstr "Dátum"
 
@@ -4107,7 +4108,7 @@ msgid "Seriate"
 msgstr ""
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:455
+#: src/buffer_funcs.C:517
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -7472,7 +7473,7 @@ msgstr "Vlo¾i»|l"
 msgid "Paste External Selection|x"
 msgstr "Vlo¾i» externú selekciu (zo schránku)|x"
 
-#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:93
+#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:95
 msgid "Find & Replace...|F"
 msgstr "Nájs» a nahradi»|h"
 
@@ -7480,11 +7481,11 @@ msgstr "Nájs» a nahradi»|h"
 msgid "Tabular|T"
 msgstr "Formát tabuµky|t"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:103
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:105
 msgid "Math|M"
 msgstr "Matemat.|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:447
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:450
 msgid "Spellchecker...|S"
 msgstr "Kontrola pravopisu...|K"
 
@@ -7492,11 +7493,11 @@ msgstr "Kontrola pravopisu...|K"
 msgid "Thesaurus..."
 msgstr "Synonymický slovník..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:452
 msgid "Count Words|W"
 msgstr "Poèet slov|P"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:453
 msgid "Check TeX|h"
 msgstr "Kontrola TeXu|X"
 
@@ -7505,11 +7506,11 @@ msgstr "Kontrola TeXu|X"
 msgid "Change Tracking|g"
 msgstr "Zmeni» jazyk"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:457
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:460
 msgid "Preferences...|P"
 msgstr "Nastavenia...|N"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:459
 msgid "Reconfigure|R"
 msgstr "Rekonfigurácia|R"
 
@@ -7521,7 +7522,7 @@ msgstr "Ako riadky|r"
 msgid "Selection as Paragraphs|P"
 msgstr "Ako odstavce|o"
 
-#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:151
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:153
 msgid "Multicolumn|M"
 msgstr "Viacståpcové|V"
 
@@ -7546,7 +7547,7 @@ msgstr "Èiara vpravo|p"
 msgid "Alignment|i"
 msgstr "Zarovnanie|Z"
 
-#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:169
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:171
 msgid "Add Row|A"
 msgstr "Prida» riadok|P"
 
@@ -7562,7 +7563,7 @@ msgstr "Kopírova» riadok"
 msgid "Swap Rows"
 msgstr ""
 
-#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:174
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:176
 msgid "Add Column|u"
 msgstr "Prida» ståpec|r"
 
@@ -7578,53 +7579,53 @@ msgstr "Skopírova» ståpec"
 msgid "Swap Columns"
 msgstr ""
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:163
 #, fuzzy
 msgid "Left|L"
 msgstr "Vµavo|#a"
 
-#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:162
+#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:164
 #, fuzzy
 msgid "Center|C"
 msgstr "Na stred"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:163
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:165
 #, fuzzy
 msgid "Right|R"
 msgstr "Vpravo|#r"
 
-#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:165
+#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:167
 #, fuzzy
 msgid "Top|T"
 msgstr "Hore|#H"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:166
+#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:168
 #, fuzzy
 msgid "Middle|M"
 msgstr "Stred"
 
-#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:167
+#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:169
 #, fuzzy
 msgid "Bottom|B"
 msgstr "Dole|#D"
 
-#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:183
 msgid "Toggle Numbering|N"
 msgstr "Prepnutie èíslovania|s"
 
-#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:184
 msgid "Toggle Numbering of Line|u"
 msgstr ""
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:185
 msgid "Change Limits Type|L"
 msgstr ""
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:187
 msgid "Change Formula Type|F"
 msgstr ""
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:191
 msgid "Use Computer Algebra System|S"
 msgstr ""
 
@@ -7636,7 +7637,7 @@ msgstr "Zarovnanie|Z"
 msgid "Add Row|R"
 msgstr "Prida» riadok|R"
 
-#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:170
+#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:172
 msgid "Delete Row|D"
 msgstr "Zmaza» riadok|d"
 
@@ -7644,19 +7645,19 @@ msgstr "Zmaza» riadok|d"
 msgid "Add Column|C"
 msgstr "Prida» ståpec|s"
 
-#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:177
 msgid "Delete Column|e"
 msgstr "Zmaza» ståpec|e"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:207
 msgid "Default|t"
 msgstr "©tandard|t"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:208
 msgid "Display|D"
 msgstr "Zobrazenie|Z"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:207
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:209
 msgid "Inline|I"
 msgstr ""
 
@@ -7688,12 +7689,12 @@ msgstr ""
 msgid "Maple, evalf"
 msgstr ""
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:247
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:249
+#: lib/ui/stdmenus.inc:347
 msgid "Inline Formula|I"
 msgstr "Vlo¾ený vzorec|#i"
 
-#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:248
+#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:250
 msgid "Displayed Formula|D"
 msgstr "Zobrazi» vzorec|z"
 
@@ -7721,7 +7722,7 @@ msgstr ""
 msgid "Multline Environment"
 msgstr "Viacriadkové prostredie"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:288
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:290
 msgid "Math|h"
 msgstr "Matematika|#M"
 
@@ -7729,7 +7730,7 @@ msgstr "Matematika|#M"
 msgid "Special Character|S"
 msgstr "©peciálny znak|p"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:298
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:300
 msgid "Citation...|C"
 msgstr "Citácia...|C"
 
@@ -7737,15 +7738,15 @@ msgstr "Citácia...|C"
 msgid "Cross-reference...|r"
 msgstr "Krí¾ová referencia...|r"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:300
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:302
 msgid "Label...|L"
 msgstr "Oznaèenie...|n"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:307
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:310
 msgid "Footnote|F"
 msgstr "Poznámka pod èiarou|P"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:308
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:311
 msgid "Marginal Note|M"
 msgstr "Poznámka na okraji|o"
 
@@ -7762,11 +7763,11 @@ msgstr "Polo¾ka indexu|i"
 msgid "Glossary Entry"
 msgstr ""
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:306
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:293
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:295
 msgid "Note|N"
 msgstr "Poznámka|P"
 
@@ -7783,7 +7784,7 @@ msgstr "TeX|#T"
 msgid "Minipage|p"
 msgstr "Minipage|p"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:305
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:308
 msgid "Graphics...|G"
 msgstr "Grafika...|G"
 
@@ -7807,11 +7808,11 @@ msgstr "Vlo¾i» súbor|V"
 msgid "External Material...|x"
 msgstr "Externý materiál...|x"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:324
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:327
 msgid "Superscript|S"
 msgstr "Horný index|H"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:325
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:328
 msgid "Subscript|u"
 msgstr "Dolný index|D"
 
@@ -7824,7 +7825,7 @@ msgstr "Horizontálne zarovnanie:|#H"
 msgid "Hyphenation Point|P"
 msgstr "Bod rozdelenia slova|B"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:335
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:338
 msgid "Ligature Break|k"
 msgstr "Zlom ligatúry|Z"
 
@@ -7832,11 +7833,11 @@ msgstr "Zlom ligatúry|Z"
 msgid "Protected Space|r"
 msgstr "Chránená medzera|m"
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:328
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:331
 msgid "Inter-word Space|w"
 msgstr "Medzislovná medzera|s"
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:329
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:332
 msgid "Thin Space|T"
 msgstr "Úzka medzera|k"
 
@@ -7848,11 +7849,11 @@ msgstr "Vertikálna medzera..."
 msgid "Line Break|L"
 msgstr "Zlom riadku|Z"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:315
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:318
 msgid "Ellipsis|i"
 msgstr "Trojbodka|T"
 
-#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:316
+#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:319
 msgid "End of Sentence|E"
 msgstr "Koniec vety|K"
 
@@ -7864,7 +7865,7 @@ msgstr "Jednoduché úvodzovky|O"
 msgid "Ordinary Quote|O"
 msgstr "Úvodzovky|O"
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:319
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:322
 msgid "Menu Separator|M"
 msgstr "Separátor ponuky|S"
 
@@ -7876,46 +7877,46 @@ msgstr "Horizontálna èiara"
 msgid "Page Break"
 msgstr "Zalomenid strany"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:345
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:348
 msgid "Display Formula|D"
 msgstr "Zobrazi» vzorec|z"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:249 lib/ui/stdmenus.inc:347
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:350
 msgid "Eqnarray Environment|E"
 msgstr ""
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:250 lib/ui/stdmenus.inc:348
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:351
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "AMS zarovnanie prostredia|#A"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:349
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:352
 msgid "AMS alignat Environment|t"
 msgstr ""
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:350
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:353
 msgid "AMS flalign Environment|f"
 msgstr ""
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:255 lib/ui/stdmenus.inc:354
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Zmeni» håbku vnorenia"
 
-#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:352
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:256 lib/ui/stdmenus.inc:355
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "AMS viacriadkové prostredie"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:354
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:357
 msgid "Array Environment|y"
 msgstr "Pole prostredia|e"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:355
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:358
 msgid "Cases Environment|C"
 msgstr ""
 
-#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:359
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:362
 msgid "Split Environment|S"
 msgstr "Rozdeli» prostredie|#R"
 
@@ -7955,39 +7956,39 @@ msgstr ""
 msgid "Text Normal Font"
 msgstr ""
 
-#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:222
+#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:224
 msgid "Text Roman Family"
 msgstr ""
 
-#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:223
+#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:225
 msgid "Text Sans Serif Family"
 msgstr ""
 
-#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:224
+#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:226
 msgid "Text Typewriter Family"
 msgstr ""
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:226
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:228
 msgid "Text Bold Series"
 msgstr ""
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:227
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:229
 msgid "Text Medium Series"
 msgstr ""
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:229
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:231
 msgid "Text Italic Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:230
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:232
 msgid "Text Small Caps Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:231
+#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:233
 msgid "Text Slanted Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:232
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:234
 msgid "Text Upright Shape"
 msgstr ""
 
@@ -7995,41 +7996,41 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Plávajúci objekt"
 
-#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:371
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:374
 msgid "Table of Contents|C"
 msgstr "Obsah|O"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:373
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:376
 msgid "Index List|I"
 msgstr "Index |I"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:374
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:377
 msgid "Glossary|G"
 msgstr ""
 
-#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:375
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:378
 msgid "BibTeX Bibliography...|B"
 msgstr "BibTeX bibliografia...|B "
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:382
 msgid "LyX Document...|X"
 msgstr "LyX Dokument...|X"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Jednoduchý text"
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:384
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Jednoduchý text ako riadky...|r"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:416
 msgid "Track Changes|T"
 msgstr "Sledova» zmeny|S"
 
-#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:417
 msgid "Merge Changes...|M"
 msgstr "Spoji» zmeny...|p"
 
@@ -8041,7 +8042,7 @@ msgstr "Akceptova» v¹etky zmeny|A"
 msgid "Reject All Changes|R"
 msgstr "Odmietnu» v¹etky zmeny"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:422
 msgid "Show Changes in Output|S"
 msgstr "Zobrazi» zmeny vo výstupe|Z"
 
@@ -8085,15 +8086,15 @@ msgstr "Zvý¹i» håbky vnorenia|i"
 msgid "Start Appendix Here|S"
 msgstr ""
 
-#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:403
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:406
 msgid "Build Program|B"
 msgstr "Vytvori» program|V"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:266
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:268
 msgid "Update|U"
 msgstr "Aktualizova»|A"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:404
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:407
 msgid "LaTeX Log|L"
 msgstr "Log LaTeX|L"
 
@@ -8101,15 +8102,15 @@ msgstr "Log LaTeX|L"
 msgid "TeX Information|X"
 msgstr "TeX informácie|X"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:427
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:430
 msgid "Next Note|N"
 msgstr "Ïal¹ia poznámka|n"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:430
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:433
 msgid "Go to Label|L"
 msgstr "Prejs» na oznaèenie|z"
 
-#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:426
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:429
 msgid "Bookmarks|B"
 msgstr "Zálo¾ky|Z"
 
@@ -8153,39 +8154,39 @@ msgstr "Prejs» na zálo¾ku 4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Prejs» na zálo¾ku 5|5"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:464
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:467
 msgid "Introduction|I"
 msgstr "Úvod|I"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:468
 msgid "Tutorial|T"
 msgstr "Príruèka|P"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:469
 msgid "User's Guide|U"
 msgstr "Pou¾ívateµov sprievodca|s"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:470
 msgid "Extended Features|E"
 msgstr "Roz¹írené vlastnosti|R"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:469
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:472
 msgid "Customization|C"
 msgstr "Prispôsobenie|n"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:470
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:473
 msgid "FAQ|F"
 msgstr "Èasto kladené otázky - FAQ|F"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:471
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:474
 msgid "Table of Contents|a"
 msgstr "Obsah|O"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:475
 msgid "LaTeX Configuration|L"
 msgstr "Nastavenie LaTeXu|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:477
 msgid "About LyX|X"
 msgstr "O LyXe|X"
 
@@ -8257,529 +8258,534 @@ msgstr "Vlo¾i» nedávne"
 msgid "Paste Special"
 msgstr "Vlo¾i»|l"
 
-#: lib/ui/stdmenus.inc:95
+#: lib/ui/stdmenus.inc:93
+#, fuzzy
+msgid "Select All"
+msgstr "Vybra» súbor"
+
+#: lib/ui/stdmenus.inc:97
 #, fuzzy
 msgid "Move Paragraph Up|o"
 msgstr ", Odstavec: "
 
-#: lib/ui/stdmenus.inc:96
+#: lib/ui/stdmenus.inc:98
 #, fuzzy
 msgid "Move Paragraph Down|v"
 msgstr ", Odstavec: "
 
-#: lib/ui/stdmenus.inc:98
+#: lib/ui/stdmenus.inc:100
 #, fuzzy
 msgid "Text Style|S"
 msgstr "TeX ¹týl|X"
 
-#: lib/ui/stdmenus.inc:99
+#: lib/ui/stdmenus.inc:101
 msgid "Paragraph Settings...|P"
 msgstr "Nastavenie odstavca...|o"
 
-#: lib/ui/stdmenus.inc:102
+#: lib/ui/stdmenus.inc:104
 msgid "Table|T"
 msgstr "Tabuµka|T"
 
-#: lib/ui/stdmenus.inc:104
+#: lib/ui/stdmenus.inc:106
 #, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Prida» ståpec|s"
 
-#: lib/ui/stdmenus.inc:111
+#: lib/ui/stdmenus.inc:113
 #, fuzzy
 msgid "Increase List Depth|I"
 msgstr "Zvý¹i» håbky vnorenia|i"
 
-#: lib/ui/stdmenus.inc:112
+#: lib/ui/stdmenus.inc:114
 #, fuzzy
 msgid "Decrease List Depth|D"
 msgstr "Zní¾i» håbku vnorenia|b"
 
-#: lib/ui/stdmenus.inc:113
+#: lib/ui/stdmenus.inc:115
 msgid "Dissolve Inset|l"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:114
+#: lib/ui/stdmenus.inc:116
 #, fuzzy
 msgid "TeX Code Settings...|C"
 msgstr "LaTeX nastavenia"
 
-#: lib/ui/stdmenus.inc:116
+#: lib/ui/stdmenus.inc:118
 #, fuzzy
 msgid "Float Settings...|a"
 msgstr "Nastavenia objektu"
 
-#: lib/ui/stdmenus.inc:117
+#: lib/ui/stdmenus.inc:119
 msgid "Text Wrap Settings...|W"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:118
+#: lib/ui/stdmenus.inc:120
 #, fuzzy
 msgid "Note Settings...|N"
 msgstr "Nastavenia objektu"
 
-#: lib/ui/stdmenus.inc:119
+#: lib/ui/stdmenus.inc:121
 #, fuzzy
 msgid "Branch Settings...|B"
 msgstr "Nastavenia literatúry"
 
-#: lib/ui/stdmenus.inc:120
+#: lib/ui/stdmenus.inc:122
 #, fuzzy
 msgid "Box Settings...|x"
 msgstr "Nastavenia objektu"
 
-#: lib/ui/stdmenus.inc:124
+#: lib/ui/stdmenus.inc:126
 #, fuzzy
 msgid "Table Settings...|a"
 msgstr "Nastavenia tabuµky"
 
-#: lib/ui/stdmenus.inc:128
+#: lib/ui/stdmenus.inc:130
 #, fuzzy
 msgid "Plain Text|T"
 msgstr "Jednoduchý text"
 
-#: lib/ui/stdmenus.inc:129
+#: lib/ui/stdmenus.inc:131
 #, fuzzy
 msgid "Plain Text, Join Lines|J"
 msgstr "Ascii text ako riadky"
 
-#: lib/ui/stdmenus.inc:131
+#: lib/ui/stdmenus.inc:133
 #, fuzzy
 msgid "Selection|S"
 msgstr "&Výber:"
 
-#: lib/ui/stdmenus.inc:132
+#: lib/ui/stdmenus.inc:134
 #, fuzzy
 msgid "Selection, Join Lines|i"
 msgstr "Ako riadky|r"
 
-#: lib/ui/stdmenus.inc:142
+#: lib/ui/stdmenus.inc:144
 #, fuzzy
 msgid "Customized...|C"
 msgstr "Vlastné...|V"
 
-#: lib/ui/stdmenus.inc:144
+#: lib/ui/stdmenus.inc:146
 #, fuzzy
 msgid "Capitalize|a"
 msgstr "Katalánsky"
 
-#: lib/ui/stdmenus.inc:145
+#: lib/ui/stdmenus.inc:147
 #, fuzzy
 msgid "Uppercase|U"
 msgstr "Aktualizova»|A"
 
-#: lib/ui/stdmenus.inc:146
+#: lib/ui/stdmenus.inc:148
 msgid "Lowercase|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:153
+#: lib/ui/stdmenus.inc:155
 #, fuzzy
 msgid "Top Line|T"
 msgstr "Hore|#H"
 
-#: lib/ui/stdmenus.inc:154
+#: lib/ui/stdmenus.inc:156
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "Dole|#D"
 
-#: lib/ui/stdmenus.inc:155
+#: lib/ui/stdmenus.inc:157
 #, fuzzy
 msgid "Left Line|L"
 msgstr "ako riadky|r"
 
-#: lib/ui/stdmenus.inc:156
+#: lib/ui/stdmenus.inc:158
 #, fuzzy
 msgid "Right Line|R"
 msgstr "Vpravo|#r"
 
-#: lib/ui/stdmenus.inc:171
+#: lib/ui/stdmenus.inc:173
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Kopírova» riadok"
 
-#: lib/ui/stdmenus.inc:172
+#: lib/ui/stdmenus.inc:174
 msgid "Swap Rows|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:176
+#: lib/ui/stdmenus.inc:178
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "Skopírova» ståpec"
 
-#: lib/ui/stdmenus.inc:177
+#: lib/ui/stdmenus.inc:179
 #, fuzzy
 msgid "Swap Columns|w"
 msgstr "Prida» ståpec|s"
 
-#: lib/ui/stdmenus.inc:187
+#: lib/ui/stdmenus.inc:189
 #, fuzzy
 msgid "Text Style|T"
 msgstr "TeX ¹týl|X"
 
-#: lib/ui/stdmenus.inc:191
+#: lib/ui/stdmenus.inc:193
 #, fuzzy
 msgid "Split Cell|C"
 msgstr "Zvlá¹tna bunka"
 
-#: lib/ui/stdmenus.inc:193
+#: lib/ui/stdmenus.inc:195
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Ohranièenie nad"
 
-#: lib/ui/stdmenus.inc:194
+#: lib/ui/stdmenus.inc:196
 #, fuzzy
 msgid "Add Line Below|B"
 msgstr "Ohranièenie pod"
 
-#: lib/ui/stdmenus.inc:195
+#: lib/ui/stdmenus.inc:197
 #, fuzzy
 msgid "Delete Line Above|D"
 msgstr "Zmaza» tento riadok"
 
-#: lib/ui/stdmenus.inc:196
+#: lib/ui/stdmenus.inc:198
 #, fuzzy
 msgid "Delete Line Below|e"
 msgstr "Zmaza» tento riadok"
 
-#: lib/ui/stdmenus.inc:198
+#: lib/ui/stdmenus.inc:200
 #, fuzzy
 msgid "Add Line to Left"
 msgstr "Èiara vµavo|v"
 
-#: lib/ui/stdmenus.inc:199
+#: lib/ui/stdmenus.inc:201
 #, fuzzy
 msgid "Add Line to Right"
 msgstr "Èiara vpravo|p"
 
-#: lib/ui/stdmenus.inc:200
+#: lib/ui/stdmenus.inc:202
 #, fuzzy
 msgid "Delete Line to Left"
 msgstr "Vyberte súbor na vlo¾enie"
 
-#: lib/ui/stdmenus.inc:201
+#: lib/ui/stdmenus.inc:203
 #, fuzzy
 msgid "Delete Line to Right"
 msgstr "Vyberte súbor na vlo¾enie"
 
-#: lib/ui/stdmenus.inc:211
+#: lib/ui/stdmenus.inc:213
 msgid "Math Normal Font|N"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:213
+#: lib/ui/stdmenus.inc:215
 msgid "Math Calligraphic Family|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:214
+#: lib/ui/stdmenus.inc:216
 msgid "Math Fraktur Family|F"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:215
+#: lib/ui/stdmenus.inc:217
 msgid "Math Roman Family|R"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:216
+#: lib/ui/stdmenus.inc:218
 msgid "Math Sans Serif Family|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:218
+#: lib/ui/stdmenus.inc:220
 #, fuzzy
 msgid "Math Bold Series|B"
 msgstr "Tuèný ¹týl|u"
 
-#: lib/ui/stdmenus.inc:220
+#: lib/ui/stdmenus.inc:222
 #, fuzzy
 msgid "Text Normal Font|T"
 msgstr "Vlo¾i» objekt"
 
-#: lib/ui/stdmenus.inc:236
+#: lib/ui/stdmenus.inc:238
 #, fuzzy
 msgid "Octave|O"
 msgstr "Oktáva"
 
-#: lib/ui/stdmenus.inc:237
+#: lib/ui/stdmenus.inc:239
 msgid "Maxima|M"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:238
+#: lib/ui/stdmenus.inc:240
 #, fuzzy
 msgid "Mathematica|a"
 msgstr "Matematika"
 
-#: lib/ui/stdmenus.inc:240
+#: lib/ui/stdmenus.inc:242
 msgid "Maple, simplify|s"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:243
 msgid "Maple, factor|f"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:242
+#: lib/ui/stdmenus.inc:244
 msgid "Maple, evalm|e"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:243
+#: lib/ui/stdmenus.inc:245
 msgid "Maple, evalf|v"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:264
 #, fuzzy
 msgid "Open All Insets|O"
 msgstr "Otvorený objekt prílohy"
 
-#: lib/ui/stdmenus.inc:263
+#: lib/ui/stdmenus.inc:265
 msgid "Close All Insets|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:265
+#: lib/ui/stdmenus.inc:267
 #, fuzzy
 msgid "View Source|S"
 msgstr "Viditeµná medzera|#m"
 
-#: lib/ui/stdmenus.inc:269
+#: lib/ui/stdmenus.inc:271
 #, fuzzy
 msgid "Toolbars|b"
 msgstr "Nástrojové panely"
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:291
 #, fuzzy
 msgid "Special Character|p"
 msgstr "©peciálny znak|p"
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:292
 #, fuzzy
 msgid "Formatting|o"
 msgstr "Formáty"
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:293
 msgid "List / TOC|i"
 msgstr "Zoznamy / Obsah|O"
 
-#: lib/ui/stdmenus.inc:292
+#: lib/ui/stdmenus.inc:294
 #, fuzzy
 msgid "Float|a"
 msgstr "Objekty|j"
 
-#: lib/ui/stdmenus.inc:294
+#: lib/ui/stdmenus.inc:296
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:295
+#: lib/ui/stdmenus.inc:297
 #, fuzzy
 msgid "File|e"
 msgstr "Súbor|S"
 
-#: lib/ui/stdmenus.inc:296 src/insets/insetbox.C:152
+#: lib/ui/stdmenus.inc:298 src/insets/insetbox.C:152
 msgid "Box"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:301
 #, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Krí¾ová referencia...|r"
 
-#: lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:304
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "Polo¾ka indexu"
 
-#: lib/ui/stdmenus.inc:302
+#: lib/ui/stdmenus.inc:305
 msgid "Glossary Entry|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:304
+#: lib/ui/stdmenus.inc:307
 #, fuzzy
 msgid "Table...|T"
 msgstr "Tabuµka...|T"
 
-#: lib/ui/stdmenus.inc:309
+#: lib/ui/stdmenus.inc:312
 #, fuzzy
 msgid "Short Title|S"
 msgstr "Krátky nadpis"
 
-#: lib/ui/stdmenus.inc:310
+#: lib/ui/stdmenus.inc:313
 #, fuzzy
 msgid "TeX Code|X"
 msgstr "TeX ¹týl|X"
 
-#: lib/ui/stdmenus.inc:317
+#: lib/ui/stdmenus.inc:320
 msgid "Ordinary Quote|Q"
 msgstr "Obyèajné úvodzovky|O"
 
-#: lib/ui/stdmenus.inc:318
+#: lib/ui/stdmenus.inc:321
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Jednod.|#J"
 
-#: lib/ui/stdmenus.inc:320
+#: lib/ui/stdmenus.inc:323
 msgid "Phonetic Symbols|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:327
+#: lib/ui/stdmenus.inc:330
 #, fuzzy
 msgid "Protected Space|P"
 msgstr "Chránená medzera|m"
 
-#: lib/ui/stdmenus.inc:330
+#: lib/ui/stdmenus.inc:333
 #, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Horizontálne zarovnanie:|#H"
 
-#: lib/ui/stdmenus.inc:331
+#: lib/ui/stdmenus.inc:334
 #, fuzzy
 msgid "Horizontal Line|L"
 msgstr "Horizontálna èiara"
 
-#: lib/ui/stdmenus.inc:332
+#: lib/ui/stdmenus.inc:335
 #, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Vertikálna medzera..."
 
-#: lib/ui/stdmenus.inc:334
+#: lib/ui/stdmenus.inc:337
 #, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Bod rozdelenia slova|B"
 
-#: lib/ui/stdmenus.inc:336
+#: lib/ui/stdmenus.inc:339
 #, fuzzy
 msgid "Line Break|B"
 msgstr "Zlom riadku|Z"
 
-#: lib/ui/stdmenus.inc:338
+#: lib/ui/stdmenus.inc:341
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Zalomenid strany"
 
-#: lib/ui/stdmenus.inc:339
+#: lib/ui/stdmenus.inc:342
 #, fuzzy
 msgid "Clear Page|C"
 msgstr "Zálo¾ky|Z"
 
-#: lib/ui/stdmenus.inc:340
+#: lib/ui/stdmenus.inc:343
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:349
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "Èíslovaný zoznam"
 
-#: lib/ui/stdmenus.inc:356
+#: lib/ui/stdmenus.inc:359
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Zarovnanie prostredia|#a"
 
-#: lib/ui/stdmenus.inc:357
+#: lib/ui/stdmenus.inc:360
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Zarovnanie|#A"
 
-#: lib/ui/stdmenus.inc:358
+#: lib/ui/stdmenus.inc:361
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Viacriadkové prostredie"
 
-#: lib/ui/stdmenus.inc:361
+#: lib/ui/stdmenus.inc:364
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "Matematický panel|M"
 
-#: lib/ui/stdmenus.inc:367
+#: lib/ui/stdmenus.inc:370
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Vlo¾i» objekt"
 
-#: lib/ui/stdmenus.inc:383
+#: lib/ui/stdmenus.inc:386
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Externý materiál...|x"
 
-#: lib/ui/stdmenus.inc:384
+#: lib/ui/stdmenus.inc:387
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Dokument...|D"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:391
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "Poznámka|P"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:392
 msgid "Comment|C"
 msgstr "Komentár"
 
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/stdmenus.inc:393
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:402
+#: lib/ui/stdmenus.inc:405
 msgid "Change Tracking|C"
 msgstr "Zmeni» sledovanie|Z"
 
-#: lib/ui/stdmenus.inc:405
+#: lib/ui/stdmenus.inc:408
 msgid "Table of Contents|T"
 msgstr "Obsah|O"
 
-#: lib/ui/stdmenus.inc:406
+#: lib/ui/stdmenus.inc:409
 msgid "Start Appendix Here|A"
 msgstr "Tu zaèa» prílohy|T"
 
-#: lib/ui/stdmenus.inc:408
+#: lib/ui/stdmenus.inc:411
 msgid "Compressed|o"
 msgstr "Komprimované|o"
 
-#: lib/ui/stdmenus.inc:409
+#: lib/ui/stdmenus.inc:412
 msgid "Settings...|S"
 msgstr "Nastavenia...|N"
 
-#: lib/ui/stdmenus.inc:415
+#: lib/ui/stdmenus.inc:418
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Akceptova» zmeny|#A"
 
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/stdmenus.inc:419
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Odmietnu» zmeny|#O"
 
-#: lib/ui/stdmenus.inc:417
+#: lib/ui/stdmenus.inc:420
 #, fuzzy
 msgid "Accept All Changes|c"
 msgstr "Akceptova» v¹etky zmeny|A"
 
-#: lib/ui/stdmenus.inc:418
+#: lib/ui/stdmenus.inc:421
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Odmietnu» v¹etky zmeny"
 
-#: lib/ui/stdmenus.inc:428
+#: lib/ui/stdmenus.inc:431
 #, fuzzy
 msgid "Next Change|C"
 msgstr "Nasledujúca zmena|#N"
 
-#: lib/ui/stdmenus.inc:429
+#: lib/ui/stdmenus.inc:432
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Referencia"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:439
 #, fuzzy
 msgid "Save Bookmark|S"
 msgstr "Ulo¾i» zálo¾ku 1|U"
 
-#: lib/ui/stdmenus.inc:437
+#: lib/ui/stdmenus.inc:440
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Zálo¾ky|Z"
 
-#: lib/ui/stdmenus.inc:448
+#: lib/ui/stdmenus.inc:451
 msgid "Thesaurus...|T"
 msgstr "Synonymický slovník...|S"
 
-#: lib/ui/stdmenus.inc:451
+#: lib/ui/stdmenus.inc:454
 msgid "TeX Information|I"
 msgstr "TeX informácie|i"
 
-#: lib/ui/stdmenus.inc:468
+#: lib/ui/stdmenus.inc:471
 #, fuzzy
 msgid "Special Insets|S"
 msgstr "Otvorený objekt prílohy"
@@ -8800,11 +8806,11 @@ msgstr "Ulo¾i» dokument"
 msgid "Print document"
 msgstr "Tlaèi» dokument"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:724
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:740
 msgid "Undo"
 msgstr "Spä»"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:734
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:750
 msgid "Redo"
 msgstr "Znova"
 
@@ -9176,7 +9182,7 @@ msgstr "skript"
 msgid "Update PostScript"
 msgstr "skript"
 
-#: src/BufferView.C:216
+#: src/BufferView.C:229
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -9184,22 +9190,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:219 src/lyxfunc.C:899
+#: src/BufferView.C:232 src/lyxfunc.C:900
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Obnovenie ulo¾enej verzie"
 
-#: src/BufferView.C:220 src/lyxfunc.C:900 src/lyxvc.C:175
+#: src/BufferView.C:233 src/lyxfunc.C:901 src/lyxvc.C:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Vráti»|r"
 
-#: src/BufferView.C:220
+#: src/BufferView.C:233
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Prepnú» na otvorenie dokumentu"
 
-#: src/BufferView.C:242
+#: src/BufferView.C:255
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -9207,105 +9213,105 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.C:245
+#: src/BufferView.C:258
 #, fuzzy
 msgid "Create new document?"
 msgstr "Vytvori» nový dokument s týmto názvom?"
 
-#: src/BufferView.C:246
+#: src/BufferView.C:259
 #, fuzzy
 msgid "&Create"
 msgstr "Uspo&riada»"
 
-#: src/BufferView.C:548
+#: src/BufferView.C:564
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Ulo¾i» zálo¾ku 5"
 
-#: src/BufferView.C:727
+#: src/BufferView.C:743
 msgid "No further undo information"
 msgstr "Nie je viac informácií pre funkciu Vráti» spä»"
 
-#: src/BufferView.C:737
+#: src/BufferView.C:753
 msgid "No further redo information"
 msgstr "Nie je viac informácií pre funkciu Opakova» vrátené"
 
-#: src/BufferView.C:896
+#: src/BufferView.C:912
 msgid "Mark off"
 msgstr "Znaèka vypnutá"
 
-#: src/BufferView.C:903
+#: src/BufferView.C:919
 msgid "Mark on"
 msgstr "Znaèka zapnutá"
 
-#: src/BufferView.C:910
+#: src/BufferView.C:926
 msgid "Mark removed"
 msgstr "Znaèka odstránená"
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 msgid "Mark set"
 msgstr "Znaèka nastavená"
 
-#: src/BufferView.C:959
+#: src/BufferView.C:975
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d slov vo výbere."
 
-#: src/BufferView.C:962
+#: src/BufferView.C:978
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d slov v dokumente."
 
-#: src/BufferView.C:967
+#: src/BufferView.C:983
 msgid "One word in selection."
 msgstr "Jedno slovo vo výbere."
 
-#: src/BufferView.C:969
+#: src/BufferView.C:985
 msgid "One word in document."
 msgstr "Jedno slovo v dokumente."
 
-#: src/BufferView.C:972
+#: src/BufferView.C:988
 msgid "Count words"
 msgstr "Poèet slov"
 
-#: src/BufferView.C:1509
+#: src/BufferView.C:1525
 msgid "Select LyX document to insert"
 msgstr "Zvoµte LyX dokument na vlo¾enie"
 
-#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1527 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
-#: src/lyxfunc.C:1859 src/lyxfunc.C:1896 src/lyxfunc.C:1969
+#: src/lyxfunc.C:1857 src/lyxfunc.C:1894 src/lyxfunc.C:1967
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.C:1512 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1528 src/lyxfunc.C:1895 src/lyxfunc.C:1968
 msgid "Examples|#E#e"
 msgstr "Príklady|#P#p"
 
-#: src/BufferView.C:1516 src/lyx_cb.C:140 src/lyxfunc.C:1864
-#: src/lyxfunc.C:1901
+#: src/BufferView.C:1532 src/lyx_cb.C:140 src/lyxfunc.C:1862
+#: src/lyxfunc.C:1899
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumenty (*.lyx)"
 
-#: src/BufferView.C:1528 src/lyxfunc.C:1911 src/lyxfunc.C:1991
-#: src/lyxfunc.C:2005 src/lyxfunc.C:2021
+#: src/BufferView.C:1544 src/lyxfunc.C:1909 src/lyxfunc.C:1989
+#: src/lyxfunc.C:2003 src/lyxfunc.C:2019
 msgid "Canceled."
 msgstr "Zru¹ené."
 
-#: src/BufferView.C:1539
+#: src/BufferView.C:1555
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.C:1550
+#: src/BufferView.C:1566
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vlo¾ený."
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1568
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je mo¾né vlo¾i» dokument %1$s"
@@ -9789,7 +9795,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex úspe¹ne skonèil."
 
-#: src/buffer_funcs.C:79
+#: src/buffer_funcs.C:80
 #, c-format
 msgid ""
 "The specified document\n"
@@ -9797,12 +9803,12 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/buffer_funcs.C:81
+#: src/buffer_funcs.C:82
 #, fuzzy
 msgid "Could not read document"
 msgstr "Nedá sa otvori» dokument "
 
-#: src/buffer_funcs.C:94
+#: src/buffer_funcs.C:95
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -9810,20 +9816,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Existuje bezpeènostná kópia tohoto dokumentu!"
 
-#: src/buffer_funcs.C:97
+#: src/buffer_funcs.C:98
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 #, fuzzy
 msgid "&Recover"
 msgstr "&Odstráni»"
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 msgid "&Load Original"
 msgstr ""
 
-#: src/buffer_funcs.C:121
+#: src/buffer_funcs.C:122
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -9831,36 +9837,36 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:124
+#: src/buffer_funcs.C:125
 #, fuzzy
 msgid "Load backup?"
 msgstr "Prejs» dozadu"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 #, fuzzy
 msgid "&Load backup"
 msgstr "&Ís» spä»"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 msgid "Load &original"
 msgstr ""
 
-#: src/buffer_funcs.C:164
+#: src/buffer_funcs.C:165
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
 
-#: src/buffer_funcs.C:166
+#: src/buffer_funcs.C:167
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Chcete otvori»súbor s kontrolovaním verzií?"
 
-#: src/buffer_funcs.C:167
+#: src/buffer_funcs.C:168
 #, fuzzy
 msgid "&Retrieve"
 msgstr "O&bnovi»"
 
-#: src/buffer_funcs.C:200
+#: src/buffer_funcs.C:201
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -9868,20 +9874,20 @@ msgid ""
 "could not be read."
 msgstr ""
 
-#: src/buffer_funcs.C:202
+#: src/buffer_funcs.C:203
 #, fuzzy
 msgid "Could not read template"
 msgstr "Nemô¾em pracova» so súborom:"
 
-#: src/buffer_funcs.C:452
+#: src/buffer_funcs.C:514
 msgid "\\arabic{enumi}."
 msgstr ""
 
-#: src/buffer_funcs.C:458
+#: src/buffer_funcs.C:520
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:461
+#: src/buffer_funcs.C:523
 msgid "\\Alph{enumiv}."
 msgstr ""
 
@@ -10144,7 +10150,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Zobrazi» súbor"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2018
+#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2016
 #, fuzzy
 msgid "&Over-write"
 msgstr "P&ísací stroj:"
@@ -10745,7 +10751,7 @@ msgstr "Polo¾ka indexu"
 msgid "Label"
 msgstr "Oznaèenie"
 
-#: src/frontends/qt4/FileDialog.C:159
+#: src/frontends/qt4/FileDialog.C:160
 msgid "Directories"
 msgstr "Prieèinky"
 
@@ -11531,7 +11537,7 @@ msgstr ""
 msgid "Undef: "
 msgstr "Ref: "
 
-#: src/insets/insetcaption.C:81
+#: src/insets/insetcaption.C:84
 msgid "Opened Caption Inset"
 msgstr "Otvorený popis prílohy"
 
@@ -11996,11 +12002,11 @@ msgstr "Meno"
 msgid "Choose a filename to save document as"
 msgstr "Zvoli» názov súboru, pod ktorým sa má dokument ulo¾i»"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1860
+#: src/lyx_cb.C:135 src/lyxfunc.C:1858
 msgid "Templates|#T#t"
 msgstr "©ablóny|#¹"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2015
+#: src/lyx_cb.C:165 src/lyxfunc.C:2013
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12008,7 +12014,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2017
+#: src/lyx_cb.C:167 src/lyxfunc.C:2015
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Ulo¾i» dokument?"
@@ -12165,16 +12171,16 @@ msgstr "LyX: Vytváram prieèinok "
 msgid "Failed to create directory. Exiting."
 msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
 
-#: src/lyx_main.C:1274
+#: src/lyx_main.C:1282
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich parametrov: "
 
-#: src/lyx_main.C:1278
+#: src/lyx_main.C:1286
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/lyx_main.C:1289
+#: src/lyx_main.C:1297
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12214,42 +12220,42 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
-#: src/lyx_main.C:1325 src/support/package.C.in:556
+#: src/lyx_main.C:1333 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Prieèinok pou¾ívateµa: "
 
-#: src/lyx_main.C:1326
+#: src/lyx_main.C:1334
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba prieèinok pre prepínaè -sysdir!"
 
-#: src/lyx_main.C:1336
+#: src/lyx_main.C:1344
 #, fuzzy
 msgid "No user directory"
 msgstr "Prieèinok pou¾ívateµa: "
 
-#: src/lyx_main.C:1337
+#: src/lyx_main.C:1345
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba prieèinok pre prepínaè -userdir!"
 
-#: src/lyx_main.C:1347
+#: src/lyx_main.C:1355
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Nasledujúci príkaz"
 
-#: src/lyx_main.C:1348
+#: src/lyx_main.C:1356
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový re»azec po prepínaèi -x!"
 
-#: src/lyx_main.C:1358
+#: src/lyx_main.C:1366
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi  --export"
 
-#: src/lyx_main.C:1370
+#: src/lyx_main.C:1378
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 
-#: src/lyx_main.C:1375
+#: src/lyx_main.C:1383
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -12390,85 +12396,85 @@ msgstr "Ukladám dokument %1$s..."
 msgid " done."
 msgstr " skonèené."
 
-#: src/lyxfunc.C:897
+#: src/lyxfunc.C:898
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1078
+#: src/lyxfunc.C:1079
 #, fuzzy
 msgid "Exiting."
 msgstr "Koniec|K"
 
-#: src/lyxfunc.C:1104 src/text3.C:1222
+#: src/lyxfunc.C:1105 src/text3.C:1221
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1114
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s Pomocníkom %1$s..."
 
-#: src/lyxfunc.C:1391
+#: src/lyxfunc.C:1389
 msgid "Opening child document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1478
+#: src/lyxfunc.C:1476
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1489
+#: src/lyxfunc.C:1487
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastavi» farbu  \"%1$s\" - nie je definovaná alebo ju nie je "
 "mo¾né predefinova»"
 
-#: src/lyxfunc.C:1605
+#: src/lyxfunc.C:1603
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "©tandardy dokumentu|#D"
 
-#: src/lyxfunc.C:1608
+#: src/lyxfunc.C:1606
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Ulo¾i» rozlo¾enie ako ¹tandardné"
 
-#: src/lyxfunc.C:1664
+#: src/lyxfunc.C:1662
 msgid "Converting document to new document class..."
 msgstr "Prevod dokumentu do novej triedy dokumentov..."
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1855
 msgid "Select template file"
 msgstr "Zvoli» názov ¹ablóny"
 
-#: src/lyxfunc.C:1894
+#: src/lyxfunc.C:1892
 msgid "Select document to open"
 msgstr "Zvoli» dokument pre otvorenie"
 
-#: src/lyxfunc.C:1933
+#: src/lyxfunc.C:1931
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otváram dokument %1$s..."
 
-#: src/lyxfunc.C:1937
+#: src/lyxfunc.C:1935
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je otvorený."
 
-#: src/lyxfunc.C:1939
+#: src/lyxfunc.C:1937
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nedá sa otvori» dokument %1$s"
 
-#: src/lyxfunc.C:1964
+#: src/lyxfunc.C:1962
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoli» súbor %1$s na import"
 
-#: src/lyxfunc.C:2091
+#: src/lyxfunc.C:2089
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
@@ -13363,7 +13369,11 @@ msgstr ""
 msgid ", Position: "
 msgstr "   mo¾nosti: "
 
-#: src/text.C:1714
+#: src/text.C:1719
+msgid ", Char: 0x"
+msgstr ""
+
+#: src/text.C:1721
 msgid ", Boundary: "
 msgstr ""
 
@@ -13395,11 +13405,11 @@ msgstr "Formát "
 msgid " not known"
 msgstr " neznámy"
 
-#: src/text3.C:1327 src/text3.C:1339
+#: src/text3.C:1326 src/text3.C:1338
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/text3.C:1470
+#: src/text3.C:1469
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený."
 

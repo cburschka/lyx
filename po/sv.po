@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.0.1b\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-28 15:10+0100\n"
+"POT-Creation-Date: 2007-01-30 23:34+0100\n"
 "PO-Revision-Date: 2005-12-18 15:05+0100\n"
 "Last-Translator: Joacim Persson <>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -543,10 +543,10 @@ msgstr "OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
-#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:100
+#: src/buffer_funcs.C:127 src/buffer_funcs.C:168 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
-#: src/lyxfunc.C:900 src/lyxfunc.C:2018 src/lyxvc.C:175
+#: src/lyxfunc.C:901 src/lyxfunc.C:2016 src/lyxvc.C:175
 #, fuzzy
 msgid "&Cancel"
 msgstr "Avbryt"
@@ -580,7 +580,7 @@ msgstr "Databas:"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:246
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:259
 #: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
 msgid "Cancel"
 msgstr "Avbryt"
@@ -3872,6 +3872,7 @@ msgstr "Referens"
 #: lib/layouts/egs.layout:584 lib/layouts/egs.layout:594
 #: lib/layouts/isprs.layout:215 lib/layouts/latex8.layout:116
 #: lib/layouts/db_stdlayouts.inc:29 lib/layouts/stdlayouts.inc:64
+#: lib/ui/stdmenus.inc:303
 #, fuzzy
 msgid "Caption"
 msgstr "Bildtext|#x"
@@ -4010,7 +4011,7 @@ msgstr "Matris"
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:311
+#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:314
 #, fuzzy
 msgid "Date"
 msgstr "Klistra in"
@@ -4557,7 +4558,7 @@ msgid "Seriate"
 msgstr "Lägg in"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:455
+#: src/buffer_funcs.C:517
 msgid "(\\alph{enumii})"
 msgstr ""
 
@@ -8066,7 +8067,7 @@ msgstr "Klistra in"
 msgid "Paste External Selection|x"
 msgstr ""
 
-#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:93
+#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:95
 #, fuzzy
 msgid "Find & Replace...|F"
 msgstr "Sök & byt"
@@ -8076,12 +8077,12 @@ msgstr "Sök & byt"
 msgid "Tabular|T"
 msgstr "Tabellstil"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:103
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:105
 #, fuzzy
 msgid "Math|M"
 msgstr "Matematik|#M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:447
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:450
 #, fuzzy
 msgid "Spellchecker...|S"
 msgstr "Rättstavning"
@@ -8092,12 +8093,12 @@ msgid "Thesaurus..."
 msgstr "Tabellstil"
 
 # Antal kopior
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:452
 #, fuzzy
 msgid "Count Words|W"
 msgstr "Antal:"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:453
 #, fuzzy
 msgid "Check TeX|h"
 msgstr "Prova TeX med ChkTeX"
@@ -8107,12 +8108,12 @@ msgstr "Prova TeX med ChkTeX"
 msgid "Change Tracking|g"
 msgstr "Språk"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:457
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:460
 #, fuzzy
 msgid "Preferences...|P"
 msgstr "Lägg in hänvisning"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:459
 #, fuzzy
 msgid "Reconfigure|R"
 msgstr "Omkonfigurera"
@@ -8127,7 +8128,7 @@ msgstr "Linje"
 msgid "Selection as Paragraphs|P"
 msgstr "Indraget stycke|#I"
 
-#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:151
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:153
 #, fuzzy
 msgid "Multicolumn|M"
 msgstr "Multikolumn|#M"
@@ -8157,7 +8158,7 @@ msgstr "Höger|#H"
 msgid "Alignment|i"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:169
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:171
 #, fuzzy
 msgid "Add Row|A"
 msgstr "Lägg till rad|#r"
@@ -8177,7 +8178,7 @@ msgstr "Kopiera"
 msgid "Swap Rows"
 msgstr "Rader"
 
-#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:174
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:176
 #, fuzzy
 msgid "Add Column|u"
 msgstr "Lägg till kolumn|#u"
@@ -8197,55 +8198,55 @@ msgstr "Lägg till kolumn|#u"
 msgid "Swap Columns"
 msgstr "Kolumner"
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:163
 #, fuzzy
 msgid "Left|L"
 msgstr "Vänster|#s"
 
-#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:162
+#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:164
 #, fuzzy
 msgid "Center|C"
 msgstr "Centrerat|#C"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:163
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:165
 #, fuzzy
 msgid "Right|R"
 msgstr "Höger|#H"
 
-#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:165
+#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:167
 #, fuzzy
 msgid "Top|T"
 msgstr "Topp:|#T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:166
+#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:168
 #, fuzzy
 msgid "Middle|M"
 msgstr "Mitten|#e"
 
-#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:167
+#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:169
 #, fuzzy
 msgid "Bottom|B"
 msgstr "Botten|#B"
 
-#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:183
 #, fuzzy
 msgid "Toggle Numbering|N"
 msgstr "Understrykning av/på"
 
-#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:184
 #, fuzzy
 msgid "Toggle Numbering of Line|u"
 msgstr "Understrykning av/på"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:185
 msgid "Change Limits Type|L"
 msgstr ""
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:187
 msgid "Change Formula Type|F"
 msgstr ""
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:191
 msgid "Use Computer Algebra System|S"
 msgstr ""
 
@@ -8259,7 +8260,7 @@ msgstr "Justering"
 msgid "Add Row|R"
 msgstr "Lägg till rad|#r"
 
-#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:170
+#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:172
 #, fuzzy
 msgid "Delete Row|D"
 msgstr "Ta bort rad|#d"
@@ -8269,22 +8270,22 @@ msgstr "Ta bort rad|#d"
 msgid "Add Column|C"
 msgstr "Lägg till kolumn|#u"
 
-#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:177
 #, fuzzy
 msgid "Delete Column|e"
 msgstr "Ta bort kolumn|#a"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:207
 #, fuzzy
 msgid "Default|t"
 msgstr "Brödstil"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:208
 #, fuzzy
 msgid "Display|D"
 msgstr "[inte visat]"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:207
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:209
 #, fuzzy
 msgid "Inline|I"
 msgstr "Lägg in"
@@ -8318,13 +8319,13 @@ msgstr ""
 msgid "Maple, evalf"
 msgstr ""
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:247
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:249
+#: lib/ui/stdmenus.inc:347
 #, fuzzy
 msgid "Inline Formula|I"
 msgstr "Lägg in figur"
 
-#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:248
+#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:250
 #, fuzzy
 msgid "Displayed Formula|D"
 msgstr "Visa Ram|#V"
@@ -8359,7 +8360,7 @@ msgstr "Justering"
 msgid "Multline Environment"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:288
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:290
 #, fuzzy
 msgid "Math|h"
 msgstr "Matematik|#M"
@@ -8369,7 +8370,7 @@ msgstr "Matematik|#M"
 msgid "Special Character|S"
 msgstr "Särskilt:|#S"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:298
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:300
 #, fuzzy
 msgid "Citation...|C"
 msgstr "Citat"
@@ -8379,17 +8380,17 @@ msgstr "Citat"
 msgid "Cross-reference...|r"
 msgstr "Lägg in hänvisning"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:300
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:302
 #, fuzzy
 msgid "Label...|L"
 msgstr "Etikett:|#E"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:307
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:310
 #, fuzzy
 msgid "Footnote|F"
 msgstr "Lägg in fotnot"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:308
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:311
 #, fuzzy
 msgid "Marginal Note|M"
 msgstr "Lägg in marginalanteckning"
@@ -8408,12 +8409,12 @@ msgstr "Indrag"
 msgid "Glossary Entry"
 msgstr ""
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:306
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
 #, fuzzy
 msgid "URL...|U"
 msgstr "URL..."
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:293
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:295
 #, fuzzy
 msgid "Note|N"
 msgstr "annat"
@@ -8432,7 +8433,7 @@ msgstr "LaTeX|#T"
 msgid "Minipage|p"
 msgstr "Minisida|#M"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:305
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:308
 #, fuzzy
 msgid "Graphics...|G"
 msgstr "Fil|#F"
@@ -8462,12 +8463,12 @@ msgstr "Lägg in figur"
 msgid "External Material...|x"
 msgstr ""
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:324
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:327
 #, fuzzy
 msgid "Superscript|S"
 msgstr "PostScript|#P"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:325
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:328
 #, fuzzy
 msgid "Subscript|u"
 msgstr "PostScript|#P"
@@ -8482,7 +8483,7 @@ msgstr "Justera horisontellt|#h"
 msgid "Hyphenation Point|P"
 msgstr "Lägg in avstavningspunkt"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:335
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:338
 #, fuzzy
 msgid "Ligature Break|k"
 msgstr "Radbrytningar|#n"
@@ -8492,11 +8493,11 @@ msgstr "Radbrytningar|#n"
 msgid "Protected Space|r"
 msgstr "Lägg in skyddat mellanslag"
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:328
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:331
 msgid "Inter-word Space|w"
 msgstr ""
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:329
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:332
 msgid "Thin Space|T"
 msgstr ""
 
@@ -8510,11 +8511,11 @@ msgstr "Vertikalt avstånd"
 msgid "Line Break|L"
 msgstr "Radbrytningar|#n"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:315
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:318
 msgid "Ellipsis|i"
 msgstr ""
 
-#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:316
+#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:319
 #, fuzzy
 msgid "End of Sentence|E"
 msgstr "Lägg in punkt för meningsslut"
@@ -8528,7 +8529,7 @@ msgstr "Enkel:|#E"
 msgid "Ordinary Quote|O"
 msgstr ""
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:319
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:322
 msgid "Menu Separator|M"
 msgstr ""
 
@@ -8542,52 +8543,52 @@ msgstr "Justera horisontellt|#h"
 msgid "Page Break"
 msgstr "Sidbrytning"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:345
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:348
 #, fuzzy
 msgid "Display Formula|D"
 msgstr "Visa Ram|#V"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:249 lib/ui/stdmenus.inc:347
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:350
 #, fuzzy
 msgid "Eqnarray Environment|E"
 msgstr "Styckesmiljö satt"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:250 lib/ui/stdmenus.inc:348
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:351
 #, fuzzy
 msgid "AMS align Environment|a"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:349
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:352
 #, fuzzy
 msgid "AMS alignat Environment|t"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:350
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:353
 #, fuzzy
 msgid "AMS flalign Environment|f"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:255 lib/ui/stdmenus.inc:354
 #, fuzzy
 msgid "AMS gather Environment|g"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:352
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:256 lib/ui/stdmenus.inc:355
 #, fuzzy
 msgid "AMS multline Environment|m"
 msgstr "Justering"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:354
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:357
 #, fuzzy
 msgid "Array Environment|y"
 msgstr "Styckesmiljö satt"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:355
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:358
 #, fuzzy
 msgid "Cases Environment|C"
 msgstr "Ändra miljödjup"
 
-#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:359
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:362
 #, fuzzy
 msgid "Split Environment|S"
 msgstr "Justering"
@@ -8637,45 +8638,45 @@ msgstr "Matematikläge"
 msgid "Text Normal Font"
 msgstr "Textläge"
 
-#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:222
+#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:224
 #, fuzzy
 msgid "Text Roman Family"
 msgstr "Familj:|#F"
 
-#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:223
+#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:225
 #, fuzzy
 msgid "Text Sans Serif Family"
 msgstr "Familj:|#F"
 
-#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:224
+#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:226
 #, fuzzy
 msgid "Text Typewriter Family"
 msgstr "Skrivmaskin"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:226
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:228
 #, fuzzy
 msgid "Text Bold Series"
 msgstr "Textläge"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:227
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:229
 #, fuzzy
 msgid "Text Medium Series"
 msgstr "Textläge"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:229
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:231
 msgid "Text Italic Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:230
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:232
 #, fuzzy
 msgid "Text Small Caps Shape"
 msgstr "Kapitäler"
 
-#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:231
+#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:233
 msgid "Text Slanted Shape"
 msgstr ""
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:232
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:234
 msgid "Text Upright Shape"
 msgstr ""
 
@@ -8684,47 +8685,47 @@ msgstr ""
 msgid "Floatflt Figure"
 msgstr "Figur"
 
-#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:371
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:374
 #, fuzzy
 msgid "Table of Contents|C"
 msgstr "Innehåll"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:373
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:376
 #, fuzzy
 msgid "Index List|I"
 msgstr "Indrag första rad|#I"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:374
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:377
 #, fuzzy
 msgid "Glossary|G"
 msgstr "Infälld|#n"
 
-#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:375
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:378
 #, fuzzy
 msgid "BibTeX Bibliography...|B"
 msgstr "Referens"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:382
 #, fuzzy
 msgid "LyX Document...|X"
 msgstr "Dokumentet"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Ersätt"
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:384
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Linje"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:416
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Skicka in ändringar"
 
-#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:417
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Skicka in ändringar"
@@ -8737,7 +8738,7 @@ msgstr ""
 msgid "Reject All Changes|R"
 msgstr ""
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:422
 msgid "Show Changes in Output|S"
 msgstr ""
 
@@ -8788,17 +8789,17 @@ msgstr "Öka miljödjup"
 msgid "Start Appendix Here|S"
 msgstr ""
 
-#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:403
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:406
 #, fuzzy
 msgid "Build Program|B"
 msgstr "Bygg program"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:266
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:268
 #, fuzzy
 msgid "Update|U"
 msgstr "Uppdatera|#Uu"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:404
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:407
 #, fuzzy
 msgid "LaTeX Log|L"
 msgstr "LaTeX Logg"
@@ -8808,17 +8809,17 @@ msgstr "LaTeX Logg"
 msgid "TeX Information|X"
 msgstr "Inget mer att ångra"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:427
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:430
 #, fuzzy
 msgid "Next Note|N"
 msgstr "annat"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:430
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:433
 #, fuzzy
 msgid "Go to Label|L"
 msgstr "Tabell inlagd"
 
-#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:426
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:429
 #, fuzzy
 msgid "Bookmarks|B"
 msgstr "Botten|#B"
@@ -8870,42 +8871,42 @@ msgstr "Botten|#B"
 msgid "Go to Bookmark 5|5"
 msgstr "Botten|#B"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:464
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:467
 msgid "Introduction|I"
 msgstr ""
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:468
 msgid "Tutorial|T"
 msgstr ""
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:469
 #, fuzzy
 msgid "User's Guide|U"
 msgstr "Foga in|#F"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:470
 msgid "Extended Features|E"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:469
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:472
 #, fuzzy
 msgid "Customization|C"
 msgstr "Citat"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:470
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:473
 msgid "FAQ|F"
 msgstr ""
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:471
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:474
 #, fuzzy
 msgid "Table of Contents|a"
 msgstr "Innehåll"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:475
 msgid "LaTeX Configuration|L"
 msgstr ""
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:477
 msgid "About LyX|X"
 msgstr ""
 
@@ -8981,541 +8982,546 @@ msgstr "Justering"
 msgid "Paste Special"
 msgstr "Klistra in"
 
-#: lib/ui/stdmenus.inc:95
+#: lib/ui/stdmenus.inc:93
+#, fuzzy
+msgid "Select All"
+msgstr "Markera nästa rad"
+
+#: lib/ui/stdmenus.inc:97
 #, fuzzy
 msgid "Move Paragraph Up|o"
 msgstr "Styckesstil satt"
 
-#: lib/ui/stdmenus.inc:96
+#: lib/ui/stdmenus.inc:98
 #, fuzzy
 msgid "Move Paragraph Down|v"
 msgstr "Styckesstil satt"
 
-#: lib/ui/stdmenus.inc:98
+#: lib/ui/stdmenus.inc:100
 #, fuzzy
 msgid "Text Style|S"
 msgstr "Dokumentet"
 
-#: lib/ui/stdmenus.inc:99
+#: lib/ui/stdmenus.inc:101
 #, fuzzy
 msgid "Paragraph Settings...|P"
 msgstr "Styckesstil satt"
 
-#: lib/ui/stdmenus.inc:102
+#: lib/ui/stdmenus.inc:104
 #, fuzzy
 msgid "Table|T"
 msgstr "Tabell%t"
 
-#: lib/ui/stdmenus.inc:104
+#: lib/ui/stdmenus.inc:106
 #, fuzzy
 msgid "Rows & Columns|C"
 msgstr "Kolumner"
 
-#: lib/ui/stdmenus.inc:111
+#: lib/ui/stdmenus.inc:113
 #, fuzzy
 msgid "Increase List Depth|I"
 msgstr "Öka miljödjup"
 
-#: lib/ui/stdmenus.inc:112
+#: lib/ui/stdmenus.inc:114
 #, fuzzy
 msgid "Decrease List Depth|D"
 msgstr "Ändra miljödjup"
 
-#: lib/ui/stdmenus.inc:113
+#: lib/ui/stdmenus.inc:115
 msgid "Dissolve Inset|l"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:114
+#: lib/ui/stdmenus.inc:116
 #, fuzzy
 msgid "TeX Code Settings...|C"
 msgstr "Extra val"
 
-#: lib/ui/stdmenus.inc:116
+#: lib/ui/stdmenus.inc:118
 #, fuzzy
 msgid "Float Settings...|a"
 msgstr "Inställningar"
 
-#: lib/ui/stdmenus.inc:117
+#: lib/ui/stdmenus.inc:119
 msgid "Text Wrap Settings...|W"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:118
+#: lib/ui/stdmenus.inc:120
 #, fuzzy
 msgid "Note Settings...|N"
 msgstr "Inställningar"
 
-#: lib/ui/stdmenus.inc:119
+#: lib/ui/stdmenus.inc:121
 #, fuzzy
 msgid "Branch Settings...|B"
 msgstr "Referens"
 
-#: lib/ui/stdmenus.inc:120
+#: lib/ui/stdmenus.inc:122
 #, fuzzy
 msgid "Box Settings...|x"
 msgstr "Inställningar"
 
-#: lib/ui/stdmenus.inc:124
+#: lib/ui/stdmenus.inc:126
 #, fuzzy
 msgid "Table Settings...|a"
 msgstr "Minisida|#M"
 
-#: lib/ui/stdmenus.inc:128
+#: lib/ui/stdmenus.inc:130
 #, fuzzy
 msgid "Plain Text|T"
 msgstr "Ersätt"
 
-#: lib/ui/stdmenus.inc:129
+#: lib/ui/stdmenus.inc:131
 #, fuzzy
 msgid "Plain Text, Join Lines|J"
 msgstr "Markera nästa stycke"
 
-#: lib/ui/stdmenus.inc:131
+#: lib/ui/stdmenus.inc:133
 #, fuzzy
 msgid "Selection|S"
 msgstr "Dekoration"
 
-#: lib/ui/stdmenus.inc:132
+#: lib/ui/stdmenus.inc:134
 #, fuzzy
 msgid "Selection, Join Lines|i"
 msgstr "Linje"
 
-#: lib/ui/stdmenus.inc:142
+#: lib/ui/stdmenus.inc:144
 #, fuzzy
 msgid "Customized...|C"
 msgstr "Eget arkformat"
 
-#: lib/ui/stdmenus.inc:144
+#: lib/ui/stdmenus.inc:146
 msgid "Capitalize|a"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:145
+#: lib/ui/stdmenus.inc:147
 #, fuzzy
 msgid "Uppercase|U"
 msgstr "Uppdatera|#Uu"
 
-#: lib/ui/stdmenus.inc:146
+#: lib/ui/stdmenus.inc:148
 msgid "Lowercase|L"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:153
+#: lib/ui/stdmenus.inc:155
 #, fuzzy
 msgid "Top Line|T"
 msgstr "Topp:|#T"
 
-#: lib/ui/stdmenus.inc:154
+#: lib/ui/stdmenus.inc:156
 #, fuzzy
 msgid "Bottom Line|B"
 msgstr "Botten|#B"
 
-#: lib/ui/stdmenus.inc:155
+#: lib/ui/stdmenus.inc:157
 #, fuzzy
 msgid "Left Line|L"
 msgstr "Tabell inlagd"
 
-#: lib/ui/stdmenus.inc:156
+#: lib/ui/stdmenus.inc:158
 #, fuzzy
 msgid "Right Line|R"
 msgstr "Höger|#H"
 
-#: lib/ui/stdmenus.inc:171
+#: lib/ui/stdmenus.inc:173
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Kopiera"
 
-#: lib/ui/stdmenus.inc:172
+#: lib/ui/stdmenus.inc:174
 #, fuzzy
 msgid "Swap Rows|S"
 msgstr "Rader"
 
-#: lib/ui/stdmenus.inc:176
+#: lib/ui/stdmenus.inc:178
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "Lägg till kolumn|#u"
 
-#: lib/ui/stdmenus.inc:177
+#: lib/ui/stdmenus.inc:179
 #, fuzzy
 msgid "Swap Columns|w"
 msgstr "Kolumner"
 
-#: lib/ui/stdmenus.inc:187
+#: lib/ui/stdmenus.inc:189
 #, fuzzy
 msgid "Text Style|T"
 msgstr "Dokumentet"
 
-#: lib/ui/stdmenus.inc:191
+#: lib/ui/stdmenus.inc:193
 #, fuzzy
 msgid "Split Cell|C"
 msgstr "Särskild cell"
 
-#: lib/ui/stdmenus.inc:193
+#: lib/ui/stdmenus.inc:195
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Kanter"
 
-#: lib/ui/stdmenus.inc:194
+#: lib/ui/stdmenus.inc:196
 #, fuzzy
 msgid "Add Line Below|B"
 msgstr "Kanter"
 
-#: lib/ui/stdmenus.inc:195
+#: lib/ui/stdmenus.inc:197
 #, fuzzy
 msgid "Delete Line Above|D"
 msgstr "Välj dokument som skall läsas in"
 
-#: lib/ui/stdmenus.inc:196
+#: lib/ui/stdmenus.inc:198
 #, fuzzy
 msgid "Delete Line Below|e"
 msgstr "Ta bort rad|#d"
 
-#: lib/ui/stdmenus.inc:198
+#: lib/ui/stdmenus.inc:200
 #, fuzzy
 msgid "Add Line to Left"
 msgstr "Vänster|#V"
 
-#: lib/ui/stdmenus.inc:199
+#: lib/ui/stdmenus.inc:201
 #, fuzzy
 msgid "Add Line to Right"
 msgstr "Höger|#H"
 
-#: lib/ui/stdmenus.inc:200
+#: lib/ui/stdmenus.inc:202
 #, fuzzy
 msgid "Delete Line to Left"
 msgstr "Välj dokument som skall läsas in"
 
-#: lib/ui/stdmenus.inc:201
+#: lib/ui/stdmenus.inc:203
 #, fuzzy
 msgid "Delete Line to Right"
 msgstr "Välj dokument som skall läsas in"
 
-#: lib/ui/stdmenus.inc:211
+#: lib/ui/stdmenus.inc:213
 #, fuzzy
 msgid "Math Normal Font|N"
 msgstr "Brödstil"
 
-#: lib/ui/stdmenus.inc:213
+#: lib/ui/stdmenus.inc:215
 #, fuzzy
 msgid "Math Calligraphic Family|C"
 msgstr "Familj:|#F"
 
-#: lib/ui/stdmenus.inc:214
+#: lib/ui/stdmenus.inc:216
 #, fuzzy
 msgid "Math Fraktur Family|F"
 msgstr "Familj:|#F"
 
-#: lib/ui/stdmenus.inc:215
+#: lib/ui/stdmenus.inc:217
 #, fuzzy
 msgid "Math Roman Family|R"
 msgstr "Familj:|#F"
 
-#: lib/ui/stdmenus.inc:216
+#: lib/ui/stdmenus.inc:218
 #, fuzzy
 msgid "Math Sans Serif Family|S"
 msgstr "Familj:|#F"
 
-#: lib/ui/stdmenus.inc:218
+#: lib/ui/stdmenus.inc:220
 #, fuzzy
 msgid "Math Bold Series|B"
 msgstr "Matematikläge"
 
-#: lib/ui/stdmenus.inc:220
+#: lib/ui/stdmenus.inc:222
 #, fuzzy
 msgid "Text Normal Font|T"
 msgstr "Textläge"
 
-#: lib/ui/stdmenus.inc:236
+#: lib/ui/stdmenus.inc:238
 #, fuzzy
 msgid "Octave|O"
 msgstr "Annat...|#A"
 
-#: lib/ui/stdmenus.inc:237
+#: lib/ui/stdmenus.inc:239
 msgid "Maxima|M"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:238
+#: lib/ui/stdmenus.inc:240
 #, fuzzy
 msgid "Mathematica|a"
 msgstr "Matris"
 
-#: lib/ui/stdmenus.inc:240
+#: lib/ui/stdmenus.inc:242
 msgid "Maple, simplify|s"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:243
 msgid "Maple, factor|f"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:242
+#: lib/ui/stdmenus.inc:244
 msgid "Maple, evalm|e"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:243
+#: lib/ui/stdmenus.inc:245
 msgid "Maple, evalf|v"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:264
 #, fuzzy
 msgid "Open All Insets|O"
 msgstr "Öppnat insättning"
 
-#: lib/ui/stdmenus.inc:263
+#: lib/ui/stdmenus.inc:265
 msgid "Close All Insets|C"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:265
+#: lib/ui/stdmenus.inc:267
 msgid "View Source|S"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:269
+#: lib/ui/stdmenus.inc:271
 #, fuzzy
 msgid "Toolbars|b"
 msgstr "Topp:|#T"
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:291
 #, fuzzy
 msgid "Special Character|p"
 msgstr "Särskilt:|#S"
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:292
 #, fuzzy
 msgid "Formatting|o"
 msgstr "Infälld|#n"
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:293
 #, fuzzy
 msgid "List / TOC|i"
 msgstr "Tabeller"
 
-#: lib/ui/stdmenus.inc:292
+#: lib/ui/stdmenus.inc:294
 #, fuzzy
 msgid "Float|a"
 msgstr "Infälld|#n"
 
-#: lib/ui/stdmenus.inc:294
+#: lib/ui/stdmenus.inc:296
 msgid "Branch|B"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:295
+#: lib/ui/stdmenus.inc:297
 #, fuzzy
 msgid "File|e"
 msgstr "Fil|#F"
 
-#: lib/ui/stdmenus.inc:296 src/insets/insetbox.C:152
+#: lib/ui/stdmenus.inc:298 src/insets/insetbox.C:152
 msgid "Box"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:301
 #, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Lägg in hänvisning"
 
-#: lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:304
 #, fuzzy
 msgid "Index Entry|d"
 msgstr "Indrag"
 
-#: lib/ui/stdmenus.inc:302
+#: lib/ui/stdmenus.inc:305
 msgid "Glossary Entry|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:304
+#: lib/ui/stdmenus.inc:307
 #, fuzzy
 msgid "Table...|T"
 msgstr "Tabellstil"
 
-#: lib/ui/stdmenus.inc:309
+#: lib/ui/stdmenus.inc:312
 #, fuzzy
 msgid "Short Title|S"
 msgstr "Fil"
 
-#: lib/ui/stdmenus.inc:310
+#: lib/ui/stdmenus.inc:313
 #, fuzzy
 msgid "TeX Code|X"
 msgstr "LaTeX|#T"
 
-#: lib/ui/stdmenus.inc:317
+#: lib/ui/stdmenus.inc:320
 msgid "Ordinary Quote|Q"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:318
+#: lib/ui/stdmenus.inc:321
 #, fuzzy
 msgid "Single Quote|S"
 msgstr "Enkel:|#E"
 
-#: lib/ui/stdmenus.inc:320
+#: lib/ui/stdmenus.inc:323
 msgid "Phonetic Symbols|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:327
+#: lib/ui/stdmenus.inc:330
 #, fuzzy
 msgid "Protected Space|P"
 msgstr "Lägg in skyddat mellanslag"
 
-#: lib/ui/stdmenus.inc:330
+#: lib/ui/stdmenus.inc:333
 #, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Justera horisontellt|#h"
 
-#: lib/ui/stdmenus.inc:331
+#: lib/ui/stdmenus.inc:334
 #, fuzzy
 msgid "Horizontal Line|L"
 msgstr "Justera horisontellt|#h"
 
-#: lib/ui/stdmenus.inc:332
+#: lib/ui/stdmenus.inc:335
 #, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Vertikalt avstånd"
 
-#: lib/ui/stdmenus.inc:334
+#: lib/ui/stdmenus.inc:337
 #, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Lägg in avstavningspunkt"
 
-#: lib/ui/stdmenus.inc:336
+#: lib/ui/stdmenus.inc:339
 #, fuzzy
 msgid "Line Break|B"
 msgstr "Radbrytningar|#n"
 
-#: lib/ui/stdmenus.inc:338
+#: lib/ui/stdmenus.inc:341
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Sidbrytning"
 
-#: lib/ui/stdmenus.inc:339
+#: lib/ui/stdmenus.inc:342
 #, fuzzy
 msgid "Clear Page|C"
 msgstr "Botten|#B"
 
-#: lib/ui/stdmenus.inc:340
+#: lib/ui/stdmenus.inc:343
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:349
 #, fuzzy
 msgid "Numbered Formula|N"
 msgstr "Nummer"
 
-#: lib/ui/stdmenus.inc:356
+#: lib/ui/stdmenus.inc:359
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Justering"
 
-#: lib/ui/stdmenus.inc:357
+#: lib/ui/stdmenus.inc:360
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Justering"
 
-#: lib/ui/stdmenus.inc:358
+#: lib/ui/stdmenus.inc:361
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Justering"
 
-#: lib/ui/stdmenus.inc:361
+#: lib/ui/stdmenus.inc:364
 #, fuzzy
 msgid "Math Panel|P"
 msgstr "Matematikpanel"
 
-#: lib/ui/stdmenus.inc:367
+#: lib/ui/stdmenus.inc:370
 #, fuzzy
 msgid "Text Wrap Float|W"
 msgstr "Lägg in tabell"
 
-#: lib/ui/stdmenus.inc:383
+#: lib/ui/stdmenus.inc:386
 #, fuzzy
 msgid "External Material...|M"
 msgstr "Extra|#X"
 
-#: lib/ui/stdmenus.inc:384
+#: lib/ui/stdmenus.inc:387
 #, fuzzy
 msgid "Child Document...|d"
 msgstr "Dokument"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:391
 #, fuzzy
 msgid "LyX Note|N"
 msgstr "annat"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:392
 #, fuzzy
 msgid "Comment|C"
 msgstr "Kommentar:"
 
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/stdmenus.inc:393
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:402
+#: lib/ui/stdmenus.inc:405
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Språk"
 
-#: lib/ui/stdmenus.inc:405
+#: lib/ui/stdmenus.inc:408
 #, fuzzy
 msgid "Table of Contents|T"
 msgstr "Innehåll"
 
-#: lib/ui/stdmenus.inc:406
+#: lib/ui/stdmenus.inc:409
 msgid "Start Appendix Here|A"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:408
+#: lib/ui/stdmenus.inc:411
 msgid "Compressed|o"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:409
+#: lib/ui/stdmenus.inc:412
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Dekoration"
 
-#: lib/ui/stdmenus.inc:415
+#: lib/ui/stdmenus.inc:418
 #, fuzzy
 msgid "Accept Change|A"
 msgstr "Fontstorlek:|#s"
 
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/stdmenus.inc:419
 #, fuzzy
 msgid "Reject Change|R"
 msgstr "Läs igen|#L#l"
 
-#: lib/ui/stdmenus.inc:417
+#: lib/ui/stdmenus.inc:420
 msgid "Accept All Changes|c"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:418
+#: lib/ui/stdmenus.inc:421
 #, fuzzy
 msgid "Reject All Changes|e"
 msgstr "Läs igen|#L#l"
 
-#: lib/ui/stdmenus.inc:428
+#: lib/ui/stdmenus.inc:431
 #, fuzzy
 msgid "Next Change|C"
 msgstr " (Ändrad)"
 
-#: lib/ui/stdmenus.inc:429
+#: lib/ui/stdmenus.inc:432
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Lägg in hänvisning"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:439
 #, fuzzy
 msgid "Save Bookmark|S"
 msgstr "Botten|#B"
 
-#: lib/ui/stdmenus.inc:437
+#: lib/ui/stdmenus.inc:440
 #, fuzzy
 msgid "Clear Bookmarks|C"
 msgstr "Botten|#B"
 
-#: lib/ui/stdmenus.inc:448
+#: lib/ui/stdmenus.inc:451
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Tabellstil"
 
-#: lib/ui/stdmenus.inc:451
+#: lib/ui/stdmenus.inc:454
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Inget mer att ångra"
 
-#: lib/ui/stdmenus.inc:468
+#: lib/ui/stdmenus.inc:471
 #, fuzzy
 msgid "Special Insets|S"
 msgstr "Öppnat insättning"
@@ -9539,11 +9545,11 @@ msgstr "Spara dokumentet?"
 msgid "Print document"
 msgstr "Importera dokument"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:724
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:740
 msgid "Undo"
 msgstr "Ångra"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:734
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:750
 msgid "Redo"
 msgstr "Gör om"
 
@@ -9932,7 +9938,7 @@ msgstr ""
 msgid "Update PostScript"
 msgstr ""
 
-#: src/BufferView.C:216
+#: src/BufferView.C:229
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -9940,22 +9946,22 @@ msgid ""
 "Do you want to revert to the saved version?"
 msgstr ""
 
-#: src/BufferView.C:219 src/lyxfunc.C:899
+#: src/BufferView.C:232 src/lyxfunc.C:900
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Tillbaka till senast sparade"
 
-#: src/BufferView.C:220 src/lyxfunc.C:900 src/lyxvc.C:175
+#: src/BufferView.C:233 src/lyxfunc.C:901 src/lyxvc.C:175
 #, fuzzy
 msgid "&Revert"
 msgstr "Registrera"
 
-#: src/BufferView.C:220
+#: src/BufferView.C:233
 #, fuzzy
 msgid "&Switch to document"
 msgstr "Markera till slutet av dokumentet"
 
-#: src/BufferView.C:242
+#: src/BufferView.C:255
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -9963,114 +9969,114 @@ msgid ""
 "Do you want to create a new document?"
 msgstr ""
 
-#: src/BufferView.C:245
+#: src/BufferView.C:258
 #, fuzzy
 msgid "Create new document?"
 msgstr "Skapa nytt dokument med detta namn?"
 
-#: src/BufferView.C:246
+#: src/BufferView.C:259
 #, fuzzy
 msgid "&Create"
 msgstr "Lutande"
 
-#: src/BufferView.C:548
+#: src/BufferView.C:564
 #, fuzzy
 msgid "Save bookmark"
 msgstr "Botten|#B"
 
-#: src/BufferView.C:727
+#: src/BufferView.C:743
 #, fuzzy
 msgid "No further undo information"
 msgstr "Inget mer att ångra"
 
-#: src/BufferView.C:737
+#: src/BufferView.C:753
 msgid "No further redo information"
 msgstr "Inget mer att göra om"
 
-#: src/BufferView.C:896
+#: src/BufferView.C:912
 msgid "Mark off"
 msgstr "Märke av"
 
-#: src/BufferView.C:903
+#: src/BufferView.C:919
 msgid "Mark on"
 msgstr "Märke på"
 
-#: src/BufferView.C:910
+#: src/BufferView.C:926
 msgid "Mark removed"
 msgstr "Märke borttaget"
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 msgid "Mark set"
 msgstr "Märke satt"
 
-#: src/BufferView.C:959
+#: src/BufferView.C:975
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Ett fel funnet"
 
-#: src/BufferView.C:962
+#: src/BufferView.C:978
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/BufferView.C:967
+#: src/BufferView.C:983
 #, fuzzy
 msgid "One word in selection."
 msgstr "Ett fel funnet"
 
-#: src/BufferView.C:969
+#: src/BufferView.C:985
 #, fuzzy
 msgid "One word in document."
 msgstr "Öppnar underdokument "
 
 # Antal kopior
-#: src/BufferView.C:972
+#: src/BufferView.C:988
 #, fuzzy
 msgid "Count words"
 msgstr "Antal:"
 
-#: src/BufferView.C:1509
+#: src/BufferView.C:1525
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1527 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
-#: src/lyxfunc.C:1859 src/lyxfunc.C:1896 src/lyxfunc.C:1969
+#: src/lyxfunc.C:1857 src/lyxfunc.C:1894 src/lyxfunc.C:1967
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokument"
 
-#: src/BufferView.C:1512 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1528 src/lyxfunc.C:1895 src/lyxfunc.C:1968
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Exempel"
 
-#: src/BufferView.C:1516 src/lyx_cb.C:140 src/lyxfunc.C:1864
-#: src/lyxfunc.C:1901
+#: src/BufferView.C:1532 src/lyx_cb.C:140 src/lyxfunc.C:1862
+#: src/lyxfunc.C:1899
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumentet"
 
-#: src/BufferView.C:1528 src/lyxfunc.C:1911 src/lyxfunc.C:1991
-#: src/lyxfunc.C:2005 src/lyxfunc.C:2021
+#: src/BufferView.C:1544 src/lyxfunc.C:1909 src/lyxfunc.C:1989
+#: src/lyxfunc.C:2003 src/lyxfunc.C:2019
 msgid "Canceled."
 msgstr "Avbrutet."
 
-#: src/BufferView.C:1539
+#: src/BufferView.C:1555
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Läser in dokumentet"
 
-#: src/BufferView.C:1550
+#: src/BufferView.C:1566
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokumentet omdöpt till: '"
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1568
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunde inte läsa in dokumentet"
@@ -10596,7 +10602,7 @@ msgstr ""
 msgid "Could not run chktex successfully."
 msgstr "Chktex kört utan klagomål"
 
-#: src/buffer_funcs.C:79
+#: src/buffer_funcs.C:80
 #, fuzzy, c-format
 msgid ""
 "The specified document\n"
@@ -10604,12 +10610,12 @@ msgid ""
 "could not be read."
 msgstr "Dokumentstil satt"
 
-#: src/buffer_funcs.C:81
+#: src/buffer_funcs.C:82
 #, fuzzy
 msgid "Could not read document"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/buffer_funcs.C:94
+#: src/buffer_funcs.C:95
 #, fuzzy, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -10617,20 +10623,20 @@ msgid ""
 "Recover emergency save?"
 msgstr "Det finns en nödlagrad version av detta dokument!"
 
-#: src/buffer_funcs.C:97
+#: src/buffer_funcs.C:98
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 #, fuzzy
 msgid "&Recover"
 msgstr "Omvänd sidföljd|#O"
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 msgid "&Load Original"
 msgstr ""
 
-#: src/buffer_funcs.C:121
+#: src/buffer_funcs.C:122
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -10638,36 +10644,36 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/buffer_funcs.C:124
+#: src/buffer_funcs.C:125
 #, fuzzy
 msgid "Load backup?"
 msgstr "Svart"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 #, fuzzy
 msgid "&Load backup"
 msgstr "Svart"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 msgid "Load &original"
 msgstr ""
 
-#: src/buffer_funcs.C:164
+#: src/buffer_funcs.C:165
 #, fuzzy, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Vill du öppna dokumentet?"
 
-#: src/buffer_funcs.C:166
+#: src/buffer_funcs.C:167
 #, fuzzy
 msgid "Retrieve from version control?"
 msgstr "Vill du öppna dokumentet?"
 
-#: src/buffer_funcs.C:167
+#: src/buffer_funcs.C:168
 #, fuzzy
 msgid "&Retrieve"
 msgstr "Omvänd sidföljd|#O"
 
-#: src/buffer_funcs.C:200
+#: src/buffer_funcs.C:201
 #, fuzzy, c-format
 msgid ""
 "The specified document template\n"
@@ -10675,21 +10681,21 @@ msgid ""
 "could not be read."
 msgstr "Dokumentstil satt"
 
-#: src/buffer_funcs.C:202
+#: src/buffer_funcs.C:203
 #, fuzzy
 msgid "Could not read template"
 msgstr "Kunde inte köra med filen:"
 
-#: src/buffer_funcs.C:452
+#: src/buffer_funcs.C:514
 #, fuzzy
 msgid "\\arabic{enumi}."
 msgstr "Dekoration"
 
-#: src/buffer_funcs.C:458
+#: src/buffer_funcs.C:520
 msgid "\\roman{enumiii}."
 msgstr ""
 
-#: src/buffer_funcs.C:461
+#: src/buffer_funcs.C:523
 #, fuzzy
 msgid "\\Alph{enumiv}."
 msgstr "Dekoration"
@@ -10966,7 +10972,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Skrivmaskin"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2018
+#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2016
 #, fuzzy
 msgid "&Over-write"
 msgstr "Skrivmaskin"
@@ -11615,7 +11621,7 @@ msgstr "Indrag"
 msgid "Label"
 msgstr "Tabell inlagd"
 
-#: src/frontends/qt4/FileDialog.C:159
+#: src/frontends/qt4/FileDialog.C:160
 #, fuzzy
 msgid "Directories"
 msgstr "Användarkatalog: "
@@ -12460,7 +12466,7 @@ msgstr "Referens"
 msgid "Undef: "
 msgstr "Ref: "
 
-#: src/insets/insetcaption.C:81
+#: src/insets/insetcaption.C:84
 #, fuzzy
 msgid "Opened Caption Inset"
 msgstr "Öppnat insättning"
@@ -12972,12 +12978,12 @@ msgstr "Namn:|#N"
 msgid "Choose a filename to save document as"
 msgstr "Skriv in filnamnet som dokumentet skall sparas under"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1860
+#: src/lyx_cb.C:135 src/lyxfunc.C:1858
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Mallar"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2015
+#: src/lyx_cb.C:165 src/lyxfunc.C:2013
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12985,7 +12991,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2017
+#: src/lyx_cb.C:167 src/lyxfunc.C:2015
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Spara dokumentet?"
@@ -13144,16 +13150,16 @@ msgstr " och kör \"configure\"..."
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1274
+#: src/lyx_main.C:1282
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:1278
+#: src/lyx_main.C:1286
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Sätter avlusningsnivå till "
 
-#: src/lyx_main.C:1289
+#: src/lyx_main.C:1297
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13175,47 +13181,47 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:1325 src/support/package.C.in:556
+#: src/lyx_main.C:1333 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Användarkatalog: "
 
-#: src/lyx_main.C:1326
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Katalog för -sysdir saknas!"
 
-#: src/lyx_main.C:1336
+#: src/lyx_main.C:1344
 #, fuzzy
 msgid "No user directory"
 msgstr "Användarkatalog: "
 
-#: src/lyx_main.C:1337
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Katalog för -sysdir saknas!"
 
-#: src/lyx_main.C:1347
+#: src/lyx_main.C:1355
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Utför kommando"
 
-#: src/lyx_main.C:1348
+#: src/lyx_main.C:1356
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Nummer för -dbg saknas!"
 
-#: src/lyx_main.C:1358
+#: src/lyx_main.C:1366
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyx_main.C:1370
+#: src/lyx_main.C:1378
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Välj LaTeX-fil att importera"
 
-#: src/lyx_main.C:1375
+#: src/lyx_main.C:1383
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Välj LaTeX-fil att importera"
@@ -13364,85 +13370,85 @@ msgstr "Lagrar dokument"
 msgid " done."
 msgstr "Gå ned"
 
-#: src/lyxfunc.C:897
+#: src/lyxfunc.C:898
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/lyxfunc.C:1078
+#: src/lyxfunc.C:1079
 #, fuzzy
 msgid "Exiting."
 msgstr "Avsluta"
 
-#: src/lyxfunc.C:1104 src/text3.C:1222
+#: src/lyxfunc.C:1105 src/text3.C:1221
 msgid "Missing argument"
 msgstr "Argument saknas"
 
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1114
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Öppnar hjälpfil"
 
-#: src/lyxfunc.C:1391
+#: src/lyxfunc.C:1389
 msgid "Opening child document "
 msgstr "Öppnar underdokument "
 
-#: src/lyxfunc.C:1478
+#: src/lyxfunc.C:1476
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1489
+#: src/lyxfunc.C:1487
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1605
+#: src/lyxfunc.C:1603
 #, fuzzy
 msgid "Document defaults saved in "
 msgstr "Dokumentstil satt"
 
-#: src/lyxfunc.C:1608
+#: src/lyxfunc.C:1606
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Pappersstil satt"
 
-#: src/lyxfunc.C:1664
+#: src/lyxfunc.C:1662
 msgid "Converting document to new document class..."
 msgstr "Konverterar dokument till ny dokumentklass..."
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1855
 #, fuzzy
 msgid "Select template file"
 msgstr "Markera nästa rad"
 
-#: src/lyxfunc.C:1894
+#: src/lyxfunc.C:1892
 #, fuzzy
 msgid "Select document to open"
 msgstr "Välj dokument som skall öppnas"
 
-#: src/lyxfunc.C:1933
+#: src/lyxfunc.C:1931
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Vill du öppna dokumentet?"
 
-#: src/lyxfunc.C:1937
+#: src/lyxfunc.C:1935
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "Inga dokument öppnade!%t"
 
-#: src/lyxfunc.C:1939
+#: src/lyxfunc.C:1937
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunde inte öppna dokumentet"
 
-#: src/lyxfunc.C:1964
+#: src/lyxfunc.C:1962
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Välj dokument som skall läsas in"
 
-#: src/lyxfunc.C:2091
+#: src/lyxfunc.C:2089
 msgid "Welcome to LyX!"
 msgstr "Välkommen till LyX!"
 
@@ -14275,7 +14281,11 @@ msgstr ", Djup: "
 msgid ", Position: "
 msgstr "   val: "
 
-#: src/text.C:1714
+#: src/text.C:1719
+msgid ", Char: 0x"
+msgstr ""
+
+#: src/text.C:1721
 msgid ", Boundary: "
 msgstr ""
 
@@ -14310,12 +14320,12 @@ msgstr "Stil "
 msgid " not known"
 msgstr " okänd"
 
-#: src/text3.C:1327 src/text3.C:1339
+#: src/text3.C:1326 src/text3.C:1338
 #, fuzzy
 msgid "Character set"
 msgstr "Teckenkodning:|#T"
 
-#: src/text3.C:1470
+#: src/text3.C:1469
 msgid "Paragraph layout set"
 msgstr "Styckesstil satt"
 

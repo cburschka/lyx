@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-28 15:10+0100\n"
+"POT-Creation-Date: 2007-01-30 23:34+0100\n"
 "PO-Revision-Date: 2006-11-13 23:37+0100\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -487,10 +487,10 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:99
-#: src/buffer_funcs.C:126 src/buffer_funcs.C:167 src/bufferlist.C:114
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:100
+#: src/buffer_funcs.C:127 src/buffer_funcs.C:168 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
-#: src/lyxfunc.C:900 src/lyxfunc.C:2018 src/lyxvc.C:175
+#: src/lyxfunc.C:901 src/lyxfunc.C:2016 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Avbryt"
 
@@ -518,7 +518,7 @@ msgstr "LyX: Legg til BibTeX Database"
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
-#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:246
+#: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:259
 #: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
 msgid "Cancel"
 msgstr "Avbryt"
@@ -3377,6 +3377,7 @@ msgstr "Biografi utan foto"
 #: lib/layouts/egs.layout:584 lib/layouts/egs.layout:594
 #: lib/layouts/isprs.layout:215 lib/layouts/latex8.layout:116
 #: lib/layouts/db_stdlayouts.inc:29 lib/layouts/stdlayouts.inc:64
+#: lib/ui/stdmenus.inc:303
 msgid "Caption"
 msgstr "Figur/tabell-tekst"
 
@@ -3507,7 +3508,7 @@ msgstr "E-post"
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
-#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:311
+#: lib/layouts/svjour.inc:230 lib/ui/stdmenus.inc:314
 msgid "Date"
 msgstr "Dato"
 
@@ -4005,7 +4006,7 @@ msgid "Seriate"
 msgstr "Punkt i teksten"
 
 #: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
-#: src/buffer_funcs.C:455
+#: src/buffer_funcs.C:517
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -7101,7 +7102,7 @@ msgstr "Lim inn|L"
 msgid "Paste External Selection|x"
 msgstr "Lim inn Utval|U"
 
-#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:93
+#: lib/ui/classic.ui:98 lib/ui/stdmenus.inc:95
 msgid "Find & Replace...|F"
 msgstr "Søk og erstatt...|S"
 
@@ -7109,11 +7110,11 @@ msgstr "Søk og erstatt...|S"
 msgid "Tabular|T"
 msgstr "Tabell|T"
 
-#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:103
+#: lib/ui/classic.ui:101 lib/ui/stdmenus.inc:105
 msgid "Math|M"
 msgstr "Matte|M"
 
-#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:447
+#: lib/ui/classic.ui:104 lib/ui/stdmenus.inc:450
 msgid "Spellchecker...|S"
 msgstr "Stavekontroll...|S"
 
@@ -7121,11 +7122,11 @@ msgstr "Stavekontroll...|S"
 msgid "Thesaurus..."
 msgstr "Synonymordbok..."
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:449
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.inc:452
 msgid "Count Words|W"
 msgstr "Tel ord|o"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:450
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.inc:453
 msgid "Check TeX|h"
 msgstr "Sjekk TeX|k"
 
@@ -7133,11 +7134,11 @@ msgstr "Sjekk TeX|k"
 msgid "Change Tracking|g"
 msgstr "Endra sporing|g"
 
-#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:457
+#: lib/ui/classic.ui:110 lib/ui/stdmenus.inc:460
 msgid "Preferences...|P"
 msgstr "LyX-val...|L"
 
-#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:456
+#: lib/ui/classic.ui:111 lib/ui/stdmenus.inc:459
 msgid "Reconfigure|R"
 msgstr "Set opp på nytt|S"
 
@@ -7149,7 +7150,7 @@ msgstr "Utval som linjer|l"
 msgid "Selection as Paragraphs|P"
 msgstr "Utval som som avsnitt|a"
 
-#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:151
+#: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:153
 msgid "Multicolumn|M"
 msgstr "Multikolonne|M"
 
@@ -7173,7 +7174,7 @@ msgstr "Høgre linje|H"
 msgid "Alignment|i"
 msgstr "Justering|J"
 
-#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:169
+#: lib/ui/classic.ui:129 lib/ui/stdmenus.inc:171
 msgid "Add Row|A"
 msgstr "Legg til rad|L"
 
@@ -7189,7 +7190,7 @@ msgstr "Kopier rad|K"
 msgid "Swap Rows"
 msgstr "Byt om på rader|d"
 
-#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:174
+#: lib/ui/classic.ui:134 lib/ui/stdmenus.inc:176
 msgid "Add Column|u"
 msgstr "Legg til kolonne|k"
 
@@ -7205,47 +7206,47 @@ msgstr "Kopier kolonne|p"
 msgid "Swap Columns"
 msgstr "Byt kolonner"
 
-#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:161
+#: lib/ui/classic.ui:141 lib/ui/stdmenus.inc:163
 msgid "Left|L"
 msgstr "Venstre|V"
 
-#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:162
+#: lib/ui/classic.ui:142 lib/ui/stdmenus.inc:164
 msgid "Center|C"
 msgstr "Sentrum|S"
 
-#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:163
+#: lib/ui/classic.ui:143 lib/ui/stdmenus.inc:165
 msgid "Right|R"
 msgstr "Høgre|H"
 
-#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:165
+#: lib/ui/classic.ui:145 lib/ui/stdmenus.inc:167
 msgid "Top|T"
 msgstr "Topp|T"
 
-#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:166
+#: lib/ui/classic.ui:146 lib/ui/stdmenus.inc:168
 msgid "Middle|M"
 msgstr "Midten|M"
 
-#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:167
+#: lib/ui/classic.ui:147 lib/ui/stdmenus.inc:169
 msgid "Bottom|B"
 msgstr "Nedst|N"
 
-#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:181
+#: lib/ui/classic.ui:159 lib/ui/stdmenus.inc:183
 msgid "Toggle Numbering|N"
 msgstr "Skru av/på nummerering|N"
 
-#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:182
+#: lib/ui/classic.ui:160 lib/ui/stdmenus.inc:184
 msgid "Toggle Numbering of Line|u"
 msgstr "Skru av/på linjenummerering|u"
 
-#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:183
+#: lib/ui/classic.ui:162 lib/ui/stdmenus.inc:185
 msgid "Change Limits Type|L"
 msgstr "Endra på type grenseverdiar|g"
 
-#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:185
+#: lib/ui/classic.ui:164 lib/ui/stdmenus.inc:187
 msgid "Change Formula Type|F"
 msgstr "Endra formel type|T"
 
-#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:189
+#: lib/ui/classic.ui:166 lib/ui/stdmenus.inc:191
 msgid "Use Computer Algebra System|S"
 msgstr "Bruk Datamaskin Algebra System|S"
 
@@ -7257,7 +7258,7 @@ msgstr "Justering|J"
 msgid "Add Row|R"
 msgstr "Legg til rad|L"
 
-#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:170
+#: lib/ui/classic.ui:171 lib/ui/stdmenus.inc:172
 msgid "Delete Row|D"
 msgstr "Fjern rad|F"
 
@@ -7265,19 +7266,19 @@ msgstr "Fjern rad|F"
 msgid "Add Column|C"
 msgstr "Legg til kolonne|k"
 
-#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:175
+#: lib/ui/classic.ui:176 lib/ui/stdmenus.inc:177
 msgid "Delete Column|e"
 msgstr "Fjern kolonne|o"
 
-#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:205
+#: lib/ui/classic.ui:182 lib/ui/stdmenus.inc:207
 msgid "Default|t"
 msgstr "standard|t"
 
-#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:206
+#: lib/ui/classic.ui:183 lib/ui/stdmenus.inc:208
 msgid "Display|D"
 msgstr "Vis|V"
 
-#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:207
+#: lib/ui/classic.ui:184 lib/ui/stdmenus.inc:209
 msgid "Inline|I"
 msgstr "I teksten|I"
 
@@ -7309,12 +7310,12 @@ msgstr "Maple,evalm"
 msgid "Maple, evalf"
 msgstr "Maple, evalf"
 
-#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:247
-#: lib/ui/stdmenus.inc:344
+#: lib/ui/classic.ui:199 lib/ui/classic.ui:261 lib/ui/stdmenus.inc:249
+#: lib/ui/stdmenus.inc:347
 msgid "Inline Formula|I"
 msgstr "Formel i teksten|i"
 
-#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:248
+#: lib/ui/classic.ui:200 lib/ui/stdmenus.inc:250
 msgid "Displayed Formula|D"
 msgstr "Eigen formel|E"
 
@@ -7342,7 +7343,7 @@ msgstr "Samla miljø"
 msgid "Multline Environment"
 msgstr "Multilinje miljø"
 
-#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:288
+#: lib/ui/classic.ui:214 lib/ui/stdmenus.inc:290
 msgid "Math|h"
 msgstr "Matte|t"
 
@@ -7350,7 +7351,7 @@ msgstr "Matte|t"
 msgid "Special Character|S"
 msgstr "Spesialteikn|S"
 
-#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:298
+#: lib/ui/classic.ui:217 lib/ui/stdmenus.inc:300
 msgid "Citation...|C"
 msgstr "Litteratur...|L"
 
@@ -7358,15 +7359,15 @@ msgstr "Litteratur...|L"
 msgid "Cross-reference...|r"
 msgstr "Kryssreferanse...|r"
 
-#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:300
+#: lib/ui/classic.ui:219 lib/ui/stdmenus.inc:302
 msgid "Label...|L"
 msgstr "Etikett...|t"
 
-#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:307
+#: lib/ui/classic.ui:220 lib/ui/stdmenus.inc:310
 msgid "Footnote|F"
 msgstr "Fotnote|F"
 
-#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:308
+#: lib/ui/classic.ui:221 lib/ui/stdmenus.inc:311
 msgid "Marginal Note|M"
 msgstr "Margnotat|a"
 
@@ -7382,11 +7383,11 @@ msgstr "Indeksnøkkel|d"
 msgid "Glossary Entry"
 msgstr ""
 
-#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:306
+#: lib/ui/classic.ui:225 lib/ui/stdmenus.inc:309
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:293
+#: lib/ui/classic.ui:226 lib/ui/stdmenus.inc:295
 msgid "Note|N"
 msgstr "Notat|N"
 
@@ -7402,7 +7403,7 @@ msgstr "TeX|X"
 msgid "Minipage|p"
 msgstr "Miniside|d"
 
-#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:305
+#: lib/ui/classic.ui:231 lib/ui/stdmenus.inc:308
 msgid "Graphics...|G"
 msgstr "Bilete...|B"
 
@@ -7426,11 +7427,11 @@ msgstr "Set inn fil|n"
 msgid "External Material...|x"
 msgstr "Eksternt materiale...|E"
 
-#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:324
+#: lib/ui/classic.ui:241 lib/ui/stdmenus.inc:327
 msgid "Superscript|S"
 msgstr "Heva tekst|v"
 
-#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:325
+#: lib/ui/classic.ui:242 lib/ui/stdmenus.inc:328
 msgid "Subscript|u"
 msgstr "Senka tekst|n"
 
@@ -7442,7 +7443,7 @@ msgstr "Vassrett fyll|#a"
 msgid "Hyphenation Point|P"
 msgstr "Orddelingspunkt|p"
 
-#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:335
+#: lib/ui/classic.ui:245 lib/ui/stdmenus.inc:338
 msgid "Ligature Break|k"
 msgstr "Halvt mellomrom|l"
 
@@ -7450,11 +7451,11 @@ msgstr "Halvt mellomrom|l"
 msgid "Protected Space|r"
 msgstr "Ekstra mellomrom|E"
 
-#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:328
+#: lib/ui/classic.ui:247 lib/ui/stdmenus.inc:331
 msgid "Inter-word Space|w"
 msgstr "Mellom bokstav mellomrom|M"
 
-#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:329
+#: lib/ui/classic.ui:248 lib/ui/stdmenus.inc:332
 msgid "Thin Space|T"
 msgstr "Lite mellomrom|t"
 
@@ -7466,11 +7467,11 @@ msgstr "Loddrett avstand..."
 msgid "Line Break|L"
 msgstr "Ny linje|L"
 
-#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:315
+#: lib/ui/classic.ui:251 lib/ui/stdmenus.inc:318
 msgid "Ellipsis|i"
 msgstr "Ellipsis|i"
 
-#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:316
+#: lib/ui/classic.ui:252 lib/ui/stdmenus.inc:319
 msgid "End of Sentence|E"
 msgstr "Slutt å setning|P"
 
@@ -7482,7 +7483,7 @@ msgstr "Enkelt sitatteikn|E"
 msgid "Ordinary Quote|O"
 msgstr "Vanleg sitatteikn|s"
 
-#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:319
+#: lib/ui/classic.ui:255 lib/ui/stdmenus.inc:322
 msgid "Menu Separator|M"
 msgstr "Meny delar|M"
 
@@ -7494,43 +7495,43 @@ msgstr "Vassrett linje"
 msgid "Page Break"
 msgstr "Sideskift"
 
-#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:345
+#: lib/ui/classic.ui:262 lib/ui/stdmenus.inc:348
 msgid "Display Formula|D"
 msgstr "Vis formel|V"
 
-#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:249 lib/ui/stdmenus.inc:347
+#: lib/ui/classic.ui:263 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:350
 msgid "Eqnarray Environment|E"
 msgstr "Sett med likningar|l"
 
-#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:250 lib/ui/stdmenus.inc:348
+#: lib/ui/classic.ui:264 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:351
 msgid "AMS align Environment|a"
 msgstr "AMS ved sida av miljø|A"
 
-#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:251 lib/ui/stdmenus.inc:349
+#: lib/ui/classic.ui:265 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:352
 msgid "AMS alignat Environment|t"
 msgstr "AMS spesifisert ved sidan av miljø|t"
 
-#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:252 lib/ui/stdmenus.inc:350
+#: lib/ui/classic.ui:266 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:353
 msgid "AMS flalign Environment|f"
 msgstr "AMS Brei ved sida av miljø|B"
 
-#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:253 lib/ui/stdmenus.inc:351
+#: lib/ui/classic.ui:269 lib/ui/stdmenus.inc:255 lib/ui/stdmenus.inc:354
 msgid "AMS gather Environment|g"
 msgstr "AMS samla miljø|s"
 
-#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:254 lib/ui/stdmenus.inc:352
+#: lib/ui/classic.ui:270 lib/ui/stdmenus.inc:256 lib/ui/stdmenus.inc:355
 msgid "AMS multline Environment|m"
 msgstr "AMS multilinje miljø|A"
 
-#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:354
+#: lib/ui/classic.ui:272 lib/ui/stdmenus.inc:357
 msgid "Array Environment|y"
 msgstr "Likningsmiljø|y"
 
-#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:355
+#: lib/ui/classic.ui:273 lib/ui/stdmenus.inc:358
 msgid "Cases Environment|C"
 msgstr "Alternativ-miljø|n"
 
-#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:359
+#: lib/ui/classic.ui:274 lib/ui/stdmenus.inc:362
 msgid "Split Environment|S"
 msgstr "Delt miljø|V"
 
@@ -7570,39 +7571,39 @@ msgstr "Feit matte skriftype"
 msgid "Text Normal Font"
 msgstr "Normal tekst skriftype"
 
-#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:222
+#: lib/ui/classic.ui:292 lib/ui/stdmenus.inc:224
 msgid "Text Roman Family"
 msgstr "Romansk tekst familie"
 
-#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:223
+#: lib/ui/classic.ui:293 lib/ui/stdmenus.inc:225
 msgid "Text Sans Serif Family"
 msgstr "Sans serif tekst familie"
 
-#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:224
+#: lib/ui/classic.ui:294 lib/ui/stdmenus.inc:226
 msgid "Text Typewriter Family"
 msgstr "Typewriter tekst familie"
 
-#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:226
+#: lib/ui/classic.ui:296 lib/ui/stdmenus.inc:228
 msgid "Text Bold Series"
 msgstr "Feit tekst familie"
 
-#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:227
+#: lib/ui/classic.ui:297 lib/ui/stdmenus.inc:229
 msgid "Text Medium Series"
 msgstr "Medium tekst Skriftype"
 
-#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:229
+#: lib/ui/classic.ui:299 lib/ui/stdmenus.inc:231
 msgid "Text Italic Shape"
 msgstr "Kursiv tekst"
 
-#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:230
+#: lib/ui/classic.ui:300 lib/ui/stdmenus.inc:232
 msgid "Text Small Caps Shape"
 msgstr "Litenbokstav tekst"
 
-#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:231
+#: lib/ui/classic.ui:301 lib/ui/stdmenus.inc:233
 msgid "Text Slanted Shape"
 msgstr "Skråstilt tekst"
 
-#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:232
+#: lib/ui/classic.ui:302 lib/ui/stdmenus.inc:234
 msgid "Text Upright Shape"
 msgstr "Opprett tekst"
 
@@ -7610,41 +7611,41 @@ msgstr "Opprett tekst"
 msgid "Floatflt Figure"
 msgstr "Flytar figur"
 
-#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:371
+#: lib/ui/classic.ui:311 lib/ui/classic.ui:361 lib/ui/stdmenus.inc:374
 msgid "Table of Contents|C"
 msgstr "Innhaldsliste|I"
 
-#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:373
+#: lib/ui/classic.ui:313 lib/ui/stdmenus.inc:376
 msgid "Index List|I"
 msgstr "Indeks liste|l"
 
-#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:374
+#: lib/ui/classic.ui:314 lib/ui/stdmenus.inc:377
 msgid "Glossary|G"
 msgstr ""
 
-#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:375
+#: lib/ui/classic.ui:315 lib/ui/stdmenus.inc:378
 msgid "BibTeX Bibliography...|B"
 msgstr "BibTeX Litteratur...|B"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:379
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.inc:382
 msgid "LyX Document...|X"
 msgstr "LyX dokument...|X"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:380
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.inc:383
 #, fuzzy
 msgid "Plain Text...|T"
 msgstr "Rein tekst"
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:381
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.inc:384
 #, fuzzy
 msgid "Plain Text, Join Lines...|J"
 msgstr "Rein tekst som linjer...|R"
 
-#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:413
+#: lib/ui/classic.ui:325 lib/ui/stdmenus.inc:416
 msgid "Track Changes|T"
 msgstr "Registrer endringar...|r"
 
-#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:414
+#: lib/ui/classic.ui:326 lib/ui/stdmenus.inc:417
 msgid "Merge Changes...|M"
 msgstr "Flett endringar...|e"
 
@@ -7656,7 +7657,7 @@ msgstr "Akssepter alle endringar|A"
 msgid "Reject All Changes|R"
 msgstr "Forkast alle endringar|F"
 
-#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:419
+#: lib/ui/classic.ui:329 lib/ui/stdmenus.inc:422
 msgid "Show Changes in Output|S"
 msgstr "Vis endingar i sluttdokumentet|V"
 
@@ -7700,15 +7701,15 @@ msgstr "Auk listedjup|A"
 msgid "Start Appendix Here|S"
 msgstr "Start vedlegga her|S"
 
-#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:403
+#: lib/ui/classic.ui:357 lib/ui/stdmenus.inc:406
 msgid "Build Program|B"
 msgstr "Lag program|B"
 
-#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:266
+#: lib/ui/classic.ui:358 lib/ui/stdmenus.inc:268
 msgid "Update|U"
 msgstr "Oppdater|O"
 
-#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:404
+#: lib/ui/classic.ui:360 lib/ui/stdmenus.inc:407
 msgid "LaTeX Log|L"
 msgstr "LaTeX loggfil|L"
 
@@ -7716,15 +7717,15 @@ msgstr "LaTeX loggfil|L"
 msgid "TeX Information|X"
 msgstr "TeX informasjon|T"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:427
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.inc:430
 msgid "Next Note|N"
 msgstr "Neste notat|N"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:430
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.inc:433
 msgid "Go to Label|L"
 msgstr "Gå til etikett|e"
 
-#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:426
+#: lib/ui/classic.ui:377 lib/ui/stdmenus.inc:429
 msgid "Bookmarks|B"
 msgstr "Bokmerke|B"
 
@@ -7768,39 +7769,39 @@ msgstr "Gå til bokmerke 4|4"
 msgid "Go to Bookmark 5|5"
 msgstr "Gå til bokmerke 5|5"
 
-#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:464
+#: lib/ui/classic.ui:406 lib/ui/stdmenus.inc:467
 msgid "Introduction|I"
 msgstr "Introduksjon|I"
 
-#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:465
+#: lib/ui/classic.ui:407 lib/ui/stdmenus.inc:468
 msgid "Tutorial|T"
 msgstr "Lærebok|L"
 
-#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:408 lib/ui/stdmenus.inc:469
 msgid "User's Guide|U"
 msgstr "Brukarhandbok|B"
 
-#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:470
 msgid "Extended Features|E"
 msgstr "Utvida Funksjonar|U"
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:469
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:472
 msgid "Customization|C"
 msgstr "Tilpassing|T"
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:470
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:473
 msgid "FAQ|F"
 msgstr "FAQ|Q"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:471
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:474
 msgid "Table of Contents|a"
 msgstr "Innhaldsliste|a"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:475
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX innstillingar|L"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:477
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
@@ -7871,495 +7872,500 @@ msgstr "Lim inn nyleg"
 msgid "Paste Special"
 msgstr "Lim inn|L"
 
-#: lib/ui/stdmenus.inc:95
+#: lib/ui/stdmenus.inc:93
+#, fuzzy
+msgid "Select All"
+msgstr "Vel ei-fil"
+
+#: lib/ui/stdmenus.inc:97
 msgid "Move Paragraph Up|o"
 msgstr "Flytt Avsnitt opp|o"
 
-#: lib/ui/stdmenus.inc:96
+#: lib/ui/stdmenus.inc:98
 msgid "Move Paragraph Down|v"
 msgstr "Flytt Avsnitt ned|v "
 
-#: lib/ui/stdmenus.inc:98
+#: lib/ui/stdmenus.inc:100
 msgid "Text Style|S"
 msgstr "Tekststil|s"
 
-#: lib/ui/stdmenus.inc:99
+#: lib/ui/stdmenus.inc:101
 msgid "Paragraph Settings...|P"
 msgstr "Avsnittval...|A"
 
-#: lib/ui/stdmenus.inc:102
+#: lib/ui/stdmenus.inc:104
 msgid "Table|T"
 msgstr "Tabell|T"
 
-#: lib/ui/stdmenus.inc:104
+#: lib/ui/stdmenus.inc:106
 msgid "Rows & Columns|C"
 msgstr "Radar og kolonner"
 
-#: lib/ui/stdmenus.inc:111
+#: lib/ui/stdmenus.inc:113
 msgid "Increase List Depth|I"
 msgstr "Auk miljødjupna|u"
 
-#: lib/ui/stdmenus.inc:112
+#: lib/ui/stdmenus.inc:114
 msgid "Decrease List Depth|D"
 msgstr "Mink miljødjupna|ø"
 
-#: lib/ui/stdmenus.inc:113
+#: lib/ui/stdmenus.inc:115
 #, fuzzy
 msgid "Dissolve Inset|l"
 msgstr "Løys opp innskot|s"
 
-#: lib/ui/stdmenus.inc:114
+#: lib/ui/stdmenus.inc:116
 msgid "TeX Code Settings...|C"
 msgstr "LaTeXkodeval...|X"
 
-#: lib/ui/stdmenus.inc:116
+#: lib/ui/stdmenus.inc:118
 msgid "Float Settings...|a"
 msgstr "Flytarval...|a"
 
-#: lib/ui/stdmenus.inc:117
+#: lib/ui/stdmenus.inc:119
 msgid "Text Wrap Settings...|W"
 msgstr "Val for tekstbrekking...|b"
 
-#: lib/ui/stdmenus.inc:118
+#: lib/ui/stdmenus.inc:120
 msgid "Note Settings...|N"
 msgstr "Notatval...|N"
 
-#: lib/ui/stdmenus.inc:119
+#: lib/ui/stdmenus.inc:121
 msgid "Branch Settings...|B"
 msgstr "Greinval|G"
 
-#: lib/ui/stdmenus.inc:120
+#: lib/ui/stdmenus.inc:122
 msgid "Box Settings...|x"
 msgstr "Rammeval...|R"
 
-#: lib/ui/stdmenus.inc:124
+#: lib/ui/stdmenus.inc:126
 msgid "Table Settings...|a"
 msgstr "Tabellval...|a"
 
-#: lib/ui/stdmenus.inc:128
+#: lib/ui/stdmenus.inc:130
 #, fuzzy
 msgid "Plain Text|T"
 msgstr "Rein tekst"
 
-#: lib/ui/stdmenus.inc:129
+#: lib/ui/stdmenus.inc:131
 #, fuzzy
 msgid "Plain Text, Join Lines|J"
 msgstr "Rein tekst som linjer"
 
-#: lib/ui/stdmenus.inc:131
+#: lib/ui/stdmenus.inc:133
 #, fuzzy
 msgid "Selection|S"
 msgstr "&Utval:"
 
-#: lib/ui/stdmenus.inc:132
+#: lib/ui/stdmenus.inc:134
 #, fuzzy
 msgid "Selection, Join Lines|i"
 msgstr "Utval som linjer|l"
 
-#: lib/ui/stdmenus.inc:142
+#: lib/ui/stdmenus.inc:144
 msgid "Customized...|C"
 msgstr "Tilpassa...|i"
 
-#: lib/ui/stdmenus.inc:144
+#: lib/ui/stdmenus.inc:146
 msgid "Capitalize|a"
 msgstr "Kapitelskrift|a"
 
-#: lib/ui/stdmenus.inc:145
+#: lib/ui/stdmenus.inc:147
 msgid "Uppercase|U"
 msgstr "Versalskrift|V"
 
-#: lib/ui/stdmenus.inc:146
+#: lib/ui/stdmenus.inc:148
 msgid "Lowercase|L"
 msgstr "Litenskrift|L"
 
-#: lib/ui/stdmenus.inc:153
+#: lib/ui/stdmenus.inc:155
 msgid "Top Line|T"
 msgstr "Topplinje|#T"
 
-#: lib/ui/stdmenus.inc:154
+#: lib/ui/stdmenus.inc:156
 msgid "Bottom Line|B"
 msgstr "Botnlinje|B"
 
-#: lib/ui/stdmenus.inc:155
+#: lib/ui/stdmenus.inc:157
 msgid "Left Line|L"
 msgstr "Venstrelinje|V"
 
-#: lib/ui/stdmenus.inc:156
+#: lib/ui/stdmenus.inc:158
 msgid "Right Line|R"
 msgstr "Høgrelinje|H"
 
-#: lib/ui/stdmenus.inc:171
+#: lib/ui/stdmenus.inc:173
 #, fuzzy
 msgid "Copy Row|o"
 msgstr "Kopier rad|K"
 
-#: lib/ui/stdmenus.inc:172
+#: lib/ui/stdmenus.inc:174
 #, fuzzy
 msgid "Swap Rows|S"
 msgstr "Byt om på rader|d"
 
-#: lib/ui/stdmenus.inc:176
+#: lib/ui/stdmenus.inc:178
 #, fuzzy
 msgid "Copy Column|p"
 msgstr "Kopier kolonne|p"
 
-#: lib/ui/stdmenus.inc:177
+#: lib/ui/stdmenus.inc:179
 #, fuzzy
 msgid "Swap Columns|w"
 msgstr "Byt kolonner"
 
-#: lib/ui/stdmenus.inc:187
+#: lib/ui/stdmenus.inc:189
 msgid "Text Style|T"
 msgstr "Tekststil|T"
 
-#: lib/ui/stdmenus.inc:191
+#: lib/ui/stdmenus.inc:193
 msgid "Split Cell|C"
 msgstr "Del cella|c"
 
-#: lib/ui/stdmenus.inc:193
+#: lib/ui/stdmenus.inc:195
 #, fuzzy
 msgid "Add Line Above|A"
 msgstr "Ny linje over"
 
-#: lib/ui/stdmenus.inc:194
+#: lib/ui/stdmenus.inc:196
 #, fuzzy
 msgid "Add Line Below|B"
 msgstr "Ny linje under"
 
-#: lib/ui/stdmenus.inc:195
+#: lib/ui/stdmenus.inc:197
 #, fuzzy
 msgid "Delete Line Above|D"
 msgstr "Fjern linja over"
 
-#: lib/ui/stdmenus.inc:196
+#: lib/ui/stdmenus.inc:198
 #, fuzzy
 msgid "Delete Line Below|e"
 msgstr "Fjern linja over"
 
-#: lib/ui/stdmenus.inc:198
+#: lib/ui/stdmenus.inc:200
 msgid "Add Line to Left"
 msgstr "Ny linje til venstre"
 
-#: lib/ui/stdmenus.inc:199
+#: lib/ui/stdmenus.inc:201
 msgid "Add Line to Right"
 msgstr "Ny linje til høgre"
 
-#: lib/ui/stdmenus.inc:200
+#: lib/ui/stdmenus.inc:202
 msgid "Delete Line to Left"
 msgstr "Fjern linja til venstre"
 
-#: lib/ui/stdmenus.inc:201
+#: lib/ui/stdmenus.inc:203
 msgid "Delete Line to Right"
 msgstr "Fjern linja til høgre"
 
-#: lib/ui/stdmenus.inc:211
+#: lib/ui/stdmenus.inc:213
 #, fuzzy
 msgid "Math Normal Font|N"
 msgstr "Normal matte skriftype"
 
-#: lib/ui/stdmenus.inc:213
+#: lib/ui/stdmenus.inc:215
 #, fuzzy
 msgid "Math Calligraphic Family|C"
 msgstr "Kalliografi matte skrift"
 
-#: lib/ui/stdmenus.inc:214
+#: lib/ui/stdmenus.inc:216
 #, fuzzy
 msgid "Math Fraktur Family|F"
 msgstr "Fraktur matte skriftype"
 
-#: lib/ui/stdmenus.inc:215
+#: lib/ui/stdmenus.inc:217
 #, fuzzy
 msgid "Math Roman Family|R"
 msgstr "Romansk matte skrifttype"
 
-#: lib/ui/stdmenus.inc:216
+#: lib/ui/stdmenus.inc:218
 #, fuzzy
 msgid "Math Sans Serif Family|S"
 msgstr "Sans serif matte skriftype"
 
-#: lib/ui/stdmenus.inc:218
+#: lib/ui/stdmenus.inc:220
 #, fuzzy
 msgid "Math Bold Series|B"
 msgstr "Feit matte skriftype"
 
-#: lib/ui/stdmenus.inc:220
+#: lib/ui/stdmenus.inc:222
 #, fuzzy
 msgid "Text Normal Font|T"
 msgstr "Normal tekst skriftype"
 
-#: lib/ui/stdmenus.inc:236
+#: lib/ui/stdmenus.inc:238
 #, fuzzy
 msgid "Octave|O"
 msgstr "Octave"
 
-#: lib/ui/stdmenus.inc:237
+#: lib/ui/stdmenus.inc:239
 #, fuzzy
 msgid "Maxima|M"
 msgstr "Maxima"
 
-#: lib/ui/stdmenus.inc:238
+#: lib/ui/stdmenus.inc:240
 #, fuzzy
 msgid "Mathematica|a"
 msgstr "Mathematica"
 
-#: lib/ui/stdmenus.inc:240
+#: lib/ui/stdmenus.inc:242
 #, fuzzy
 msgid "Maple, simplify|s"
 msgstr "Maple, simplify"
 
-#: lib/ui/stdmenus.inc:241
+#: lib/ui/stdmenus.inc:243
 #, fuzzy
 msgid "Maple, factor|f"
 msgstr "Maple, factor"
 
-#: lib/ui/stdmenus.inc:242
+#: lib/ui/stdmenus.inc:244
 #, fuzzy
 msgid "Maple, evalm|e"
 msgstr "Maple,evalm"
 
-#: lib/ui/stdmenus.inc:243
+#: lib/ui/stdmenus.inc:245
 #, fuzzy
 msgid "Maple, evalf|v"
 msgstr "Maple, evalf"
 
-#: lib/ui/stdmenus.inc:262
+#: lib/ui/stdmenus.inc:264
 msgid "Open All Insets|O"
 msgstr "Opna alle innskot|O"
 
-#: lib/ui/stdmenus.inc:263
+#: lib/ui/stdmenus.inc:265
 msgid "Close All Insets|C"
 msgstr "Lat att alleinnskot|L"
 
-#: lib/ui/stdmenus.inc:265
+#: lib/ui/stdmenus.inc:267
 #, fuzzy
 msgid "View Source|S"
 msgstr "Vis kjeldekode|#V"
 
-#: lib/ui/stdmenus.inc:269
+#: lib/ui/stdmenus.inc:271
 msgid "Toolbars|b"
 msgstr "Verktyliner|t"
 
-#: lib/ui/stdmenus.inc:289
+#: lib/ui/stdmenus.inc:291
 #, fuzzy
 msgid "Special Character|p"
 msgstr "Spesialteikn|S"
 
-#: lib/ui/stdmenus.inc:290
+#: lib/ui/stdmenus.inc:292
 #, fuzzy
 msgid "Formatting|o"
 msgstr "Formatering"
 
-#: lib/ui/stdmenus.inc:291
+#: lib/ui/stdmenus.inc:293
 msgid "List / TOC|i"
 msgstr "Ulike Lister|l"
 
-#: lib/ui/stdmenus.inc:292
+#: lib/ui/stdmenus.inc:294
 msgid "Float|a"
 msgstr "Flytar|y"
 
-#: lib/ui/stdmenus.inc:294
+#: lib/ui/stdmenus.inc:296
 msgid "Branch|B"
 msgstr "Grein|G"
 
-#: lib/ui/stdmenus.inc:295
+#: lib/ui/stdmenus.inc:297
 msgid "File|e"
 msgstr "Fil|F"
 
-#: lib/ui/stdmenus.inc:296 src/insets/insetbox.C:152
+#: lib/ui/stdmenus.inc:298 src/insets/insetbox.C:152
 msgid "Box"
 msgstr "Ramme"
 
-#: lib/ui/stdmenus.inc:299
+#: lib/ui/stdmenus.inc:301
 #, fuzzy
 msgid "Cross-Reference...|R"
 msgstr "Kryssreferanse...|r"
 
-#: lib/ui/stdmenus.inc:301
+#: lib/ui/stdmenus.inc:304
 msgid "Index Entry|d"
 msgstr "Indeksnøkkel|d"
 
-#: lib/ui/stdmenus.inc:302
+#: lib/ui/stdmenus.inc:305
 msgid "Glossary Entry|y"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:304
+#: lib/ui/stdmenus.inc:307
 msgid "Table...|T"
 msgstr "Tabell...|T"
 
-#: lib/ui/stdmenus.inc:309
+#: lib/ui/stdmenus.inc:312
 #, fuzzy
 msgid "Short Title|S"
 msgstr "Kort tittel"
 
-#: lib/ui/stdmenus.inc:310
+#: lib/ui/stdmenus.inc:313
 msgid "TeX Code|X"
 msgstr "TeX|X"
 
-#: lib/ui/stdmenus.inc:317
+#: lib/ui/stdmenus.inc:320
 msgid "Ordinary Quote|Q"
 msgstr "Vanleg sitatteikn|s"
 
-#: lib/ui/stdmenus.inc:318
+#: lib/ui/stdmenus.inc:321
 msgid "Single Quote|S"
 msgstr "Enkle sitatteikn|E"
 
-#: lib/ui/stdmenus.inc:320
+#: lib/ui/stdmenus.inc:323
 msgid "Phonetic Symbols|y"
 msgstr "Fonetiske symbol|y"
 
-#: lib/ui/stdmenus.inc:327
+#: lib/ui/stdmenus.inc:330
 #, fuzzy
 msgid "Protected Space|P"
 msgstr "Ekstra mellomrom|E"
 
-#: lib/ui/stdmenus.inc:330
+#: lib/ui/stdmenus.inc:333
 #, fuzzy
 msgid "Horizontal Fill|F"
 msgstr "Vassrett fyll|#a"
 
-#: lib/ui/stdmenus.inc:331
+#: lib/ui/stdmenus.inc:334
 #, fuzzy
 msgid "Horizontal Line|L"
 msgstr "Vassrett linje"
 
-#: lib/ui/stdmenus.inc:332
+#: lib/ui/stdmenus.inc:335
 #, fuzzy
 msgid "Vertical Space...|V"
 msgstr "Loddrett avstand..."
 
-#: lib/ui/stdmenus.inc:334
+#: lib/ui/stdmenus.inc:337
 #, fuzzy
 msgid "Hyphenation Point|H"
 msgstr "Orddelingspunkt|p"
 
-#: lib/ui/stdmenus.inc:336
+#: lib/ui/stdmenus.inc:339
 #, fuzzy
 msgid "Line Break|B"
 msgstr "Ny linje|L"
 
-#: lib/ui/stdmenus.inc:338
+#: lib/ui/stdmenus.inc:341
 #, fuzzy
 msgid "Page Break|a"
 msgstr "Sideskift"
 
-#: lib/ui/stdmenus.inc:339
+#: lib/ui/stdmenus.inc:342
 #, fuzzy
 msgid "Clear Page|C"
 msgstr "Fjern Bokmerke|B"
 
-#: lib/ui/stdmenus.inc:340
+#: lib/ui/stdmenus.inc:343
 msgid "Clear Double Page|D"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:346
+#: lib/ui/stdmenus.inc:349
 msgid "Numbered Formula|N"
 msgstr "Nummerert formel|N"
 
-#: lib/ui/stdmenus.inc:356
+#: lib/ui/stdmenus.inc:359
 #, fuzzy
 msgid "Aligned Environment|l"
 msgstr "Ved sida av miljø"
 
-#: lib/ui/stdmenus.inc:357
+#: lib/ui/stdmenus.inc:360
 #, fuzzy
 msgid "AlignedAt Environment|v"
 msgstr "Spesifisert ved sidan av miljø"
 
-#: lib/ui/stdmenus.inc:358
+#: lib/ui/stdmenus.inc:361
 #, fuzzy
 msgid "Gathered Environment|h"
 msgstr "Samla miljø"
 
-#: lib/ui/stdmenus.inc:361
+#: lib/ui/stdmenus.inc:364
 msgid "Math Panel|P"
 msgstr "Matte dialog|d"
 
-#: lib/ui/stdmenus.inc:367
+#: lib/ui/stdmenus.inc:370
 msgid "Text Wrap Float|W"
 msgstr "Set inn ein tekstbrekking flytar"
 
-#: lib/ui/stdmenus.inc:383
+#: lib/ui/stdmenus.inc:386
 msgid "External Material...|M"
 msgstr "Eksternt materiale...|E"
 
-#: lib/ui/stdmenus.inc:384
+#: lib/ui/stdmenus.inc:387
 msgid "Child Document...|d"
 msgstr "Barnedokument dokument...|d"
 
-#: lib/ui/stdmenus.inc:388
+#: lib/ui/stdmenus.inc:391
 msgid "LyX Note|N"
 msgstr "LyX notat|N"
 
-#: lib/ui/stdmenus.inc:389
+#: lib/ui/stdmenus.inc:392
 msgid "Comment|C"
 msgstr "Kommentar|K"
 
-#: lib/ui/stdmenus.inc:390
+#: lib/ui/stdmenus.inc:393
 msgid "Greyed Out|G"
 msgstr "Som Grå-tekst|G"
 
-#: lib/ui/stdmenus.inc:402
+#: lib/ui/stdmenus.inc:405
 msgid "Change Tracking|C"
 msgstr "Endra sporing|E"
 
-#: lib/ui/stdmenus.inc:405
+#: lib/ui/stdmenus.inc:408
 msgid "Table of Contents|T"
 msgstr "Innhaldsliste|I"
 
-#: lib/ui/stdmenus.inc:406
+#: lib/ui/stdmenus.inc:409
 msgid "Start Appendix Here|A"
 msgstr "Start vedlegga her|S"
 
-#: lib/ui/stdmenus.inc:408
+#: lib/ui/stdmenus.inc:411
 msgid "Compressed|o"
 msgstr "Komprimert|o"
 
-#: lib/ui/stdmenus.inc:409
+#: lib/ui/stdmenus.inc:412
 msgid "Settings...|S"
 msgstr "Dokumentval...|D"
 
-#: lib/ui/stdmenus.inc:415
+#: lib/ui/stdmenus.inc:418
 msgid "Accept Change|A"
 msgstr "Godta endring|G"
 
-#: lib/ui/stdmenus.inc:416
+#: lib/ui/stdmenus.inc:419
 msgid "Reject Change|R"
 msgstr "Avvis endring|v"
 
-#: lib/ui/stdmenus.inc:417
+#: lib/ui/stdmenus.inc:420
 msgid "Accept All Changes|c"
 msgstr "Akssepter alle endringar|A"
 
-#: lib/ui/stdmenus.inc:418
+#: lib/ui/stdmenus.inc:421
 msgid "Reject All Changes|e"
 msgstr "Forkast alle endringar|F"
 
-#: lib/ui/stdmenus.inc:428
+#: lib/ui/stdmenus.inc:431
 msgid "Next Change|C"
 msgstr "Neste endring|#N"
 
-#: lib/ui/stdmenus.inc:429
+#: lib/ui/stdmenus.inc:432
 #, fuzzy
 msgid "Next Cross-Reference|R"
 msgstr "Neste Referanse|R"
 
-#: lib/ui/stdmenus.inc:436
+#: lib/ui/stdmenus.inc:439
 msgid "Save Bookmark|S"
 msgstr "Lagra bokmerke 1|L"
 
-#: lib/ui/stdmenus.inc:437
+#: lib/ui/stdmenus.inc:440
 msgid "Clear Bookmarks|C"
 msgstr "Fjern Bokmerke|B"
 
-#: lib/ui/stdmenus.inc:448
+#: lib/ui/stdmenus.inc:451
 msgid "Thesaurus...|T"
 msgstr "Synonymordbok...|S"
 
-#: lib/ui/stdmenus.inc:451
+#: lib/ui/stdmenus.inc:454
 msgid "TeX Information|I"
 msgstr "TeX informasjon|T"
 
-#: lib/ui/stdmenus.inc:468
+#: lib/ui/stdmenus.inc:471
 #, fuzzy
 msgid "Special Insets|S"
 msgstr "Opna alle innskot|O"
@@ -8380,11 +8386,11 @@ msgstr "Lagre dokumentet"
 msgid "Print document"
 msgstr "Skriv ut dokument"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:724
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:740
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:734
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:750
 msgid "Redo"
 msgstr "Gjer om"
 
@@ -8711,7 +8717,7 @@ msgstr "Post Scriptum:"
 msgid "Update PostScript"
 msgstr "Post Scriptum:"
 
-#: src/BufferView.C:216
+#: src/BufferView.C:229
 #, c-format
 msgid ""
 "The document %1$s is already loaded.\n"
@@ -8722,19 +8728,19 @@ msgstr ""
 "\n"
 "Vil du gå tilbake til den siste lagra versjonen?"
 
-#: src/BufferView.C:219 src/lyxfunc.C:899
+#: src/BufferView.C:232 src/lyxfunc.C:900
 msgid "Revert to saved document?"
 msgstr "Gå tilbake til sist lagra?"
 
-#: src/BufferView.C:220 src/lyxfunc.C:900 src/lyxvc.C:175
+#: src/BufferView.C:233 src/lyxfunc.C:901 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Gå tilbake til sist lagra"
 
-#: src/BufferView.C:220
+#: src/BufferView.C:233
 msgid "&Switch to document"
 msgstr "&Byt til dokument"
 
-#: src/BufferView.C:242
+#: src/BufferView.C:255
 #, c-format
 msgid ""
 "The document %1$s does not yet exist.\n"
@@ -8745,102 +8751,102 @@ msgstr ""
 "\n"
 "Vil du laga eit nytt dokument?"
 
-#: src/BufferView.C:245
+#: src/BufferView.C:258
 msgid "Create new document?"
 msgstr "Vil du lagre eit nytt dokument?"
 
-#: src/BufferView.C:246
+#: src/BufferView.C:259
 msgid "&Create"
 msgstr "&Lag"
 
-#: src/BufferView.C:548
+#: src/BufferView.C:564
 msgid "Save bookmark"
 msgstr "Lagra bokmerke"
 
-#: src/BufferView.C:727
+#: src/BufferView.C:743
 msgid "No further undo information"
 msgstr "Ikkje meir \"Angre\" informasjon"
 
-#: src/BufferView.C:737
+#: src/BufferView.C:753
 msgid "No further redo information"
 msgstr "Ikkje meir \"Gjer om\" informasjon"
 
-#: src/BufferView.C:896
+#: src/BufferView.C:912
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.C:903
+#: src/BufferView.C:919
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.C:910
+#: src/BufferView.C:926
 msgid "Mark removed"
 msgstr "Fjerna merke"
 
-#: src/BufferView.C:913
+#: src/BufferView.C:929
 msgid "Mark set"
 msgstr "Merke sett"
 
-#: src/BufferView.C:959
+#: src/BufferView.C:975
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d ord i utval."
 
-#: src/BufferView.C:962
+#: src/BufferView.C:978
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d ord i dokumentet."
 
-#: src/BufferView.C:967
+#: src/BufferView.C:983
 msgid "One word in selection."
 msgstr "Eit ord i utvalet."
 
-#: src/BufferView.C:969
+#: src/BufferView.C:985
 msgid "One word in document."
 msgstr "Eit ord i dokument."
 
-#: src/BufferView.C:972
+#: src/BufferView.C:988
 msgid "Count words"
 msgstr "Tel ord"
 
-#: src/BufferView.C:1509
+#: src/BufferView.C:1525
 msgid "Select LyX document to insert"
 msgstr "Vel kva for LyX-dokument som skal bli henta inn"
 
-#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1527 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
-#: src/lyxfunc.C:1859 src/lyxfunc.C:1896 src/lyxfunc.C:1969
+#: src/lyxfunc.C:1857 src/lyxfunc.C:1894 src/lyxfunc.C:1967
 msgid "Documents|#o#O"
 msgstr "Dokument|#o#O"
 
-#: src/BufferView.C:1512 src/lyxfunc.C:1897 src/lyxfunc.C:1970
+#: src/BufferView.C:1528 src/lyxfunc.C:1895 src/lyxfunc.C:1968
 msgid "Examples|#E#e"
 msgstr "Eksempla|#E#e"
 
-#: src/BufferView.C:1516 src/lyx_cb.C:140 src/lyxfunc.C:1864
-#: src/lyxfunc.C:1901
+#: src/BufferView.C:1532 src/lyx_cb.C:140 src/lyxfunc.C:1862
+#: src/lyxfunc.C:1899
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Dokument (*.lyx)"
 
-#: src/BufferView.C:1528 src/lyxfunc.C:1911 src/lyxfunc.C:1991
-#: src/lyxfunc.C:2005 src/lyxfunc.C:2021
+#: src/BufferView.C:1544 src/lyxfunc.C:1909 src/lyxfunc.C:1989
+#: src/lyxfunc.C:2003 src/lyxfunc.C:2019
 msgid "Canceled."
 msgstr "Avbroten."
 
-#: src/BufferView.C:1539
+#: src/BufferView.C:1555
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Set inn dokument %1$s..."
 
-#: src/BufferView.C:1550
+#: src/BufferView.C:1566
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s er sett inn."
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1568
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikkje sette inn dokumentet %1$s"
@@ -9320,7 +9326,7 @@ msgstr "ChkTeX feil"
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje køyre ChkTeX."
 
-#: src/buffer_funcs.C:79
+#: src/buffer_funcs.C:80
 #, c-format
 msgid ""
 "The specified document\n"
@@ -9331,11 +9337,11 @@ msgstr ""
 "%1$s\n"
 "kunne ikkje bli lest."
 
-#: src/buffer_funcs.C:81
+#: src/buffer_funcs.C:82
 msgid "Could not read document"
 msgstr "Kunne ikkje lese dokumentet"
 
-#: src/buffer_funcs.C:94
+#: src/buffer_funcs.C:95
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -9346,19 +9352,19 @@ msgstr ""
 "\n"
 "Gå tilbake til nødkopien?"
 
-#: src/buffer_funcs.C:97
+#: src/buffer_funcs.C:98
 msgid "Load emergency save?"
 msgstr "Last nødkopien av dokumentet?"
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 msgid "&Recover"
 msgstr "&Gå tilbake"
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 msgid "&Load Original"
 msgstr "&Last Original"
 
-#: src/buffer_funcs.C:121
+#: src/buffer_funcs.C:122
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -9369,32 +9375,32 @@ msgstr ""
 "\n"
 "Skal vi opna det istaden?"
 
-#: src/buffer_funcs.C:124
+#: src/buffer_funcs.C:125
 msgid "Load backup?"
 msgstr "Gå tilbake til reservekopi?"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 msgid "&Load backup"
 msgstr "Gå tilbake til reservekopi"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 msgid "Load &original"
 msgstr "Last &original"
 
-#: src/buffer_funcs.C:164
+#: src/buffer_funcs.C:165
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Vil du laste inn dokumentet %1$s frå versjonkontroll?"
 
-#: src/buffer_funcs.C:166
+#: src/buffer_funcs.C:167
 msgid "Retrieve from version control?"
 msgstr "Vil du laste inn frå versjonkontroll?"
 
-#: src/buffer_funcs.C:167
+#: src/buffer_funcs.C:168
 msgid "&Retrieve"
 msgstr "&Hent inn"
 
-#: src/buffer_funcs.C:200
+#: src/buffer_funcs.C:201
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -9405,19 +9411,19 @@ msgstr ""
 "%1$s\n"
 "kunne ikkje bli lest."
 
-#: src/buffer_funcs.C:202
+#: src/buffer_funcs.C:203
 msgid "Could not read template"
 msgstr "Kan ikkje lese malen"
 
-#: src/buffer_funcs.C:452
+#: src/buffer_funcs.C:514
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.C:458
+#: src/buffer_funcs.C:520
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.C:461
+#: src/buffer_funcs.C:523
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -9677,7 +9683,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "S&krivover dokumentet?"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2018
+#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2016
 msgid "&Over-write"
 msgstr "Skriv&over"
 
@@ -10246,7 +10252,7 @@ msgstr "Indeksnøkkel"
 msgid "Label"
 msgstr "Etikett"
 
-#: src/frontends/qt4/FileDialog.C:159
+#: src/frontends/qt4/FileDialog.C:160
 msgid "Directories"
 msgstr "Katalogar"
 
@@ -10985,7 +10991,7 @@ msgstr "Grein: "
 msgid "Undef: "
 msgstr "Udefin: "
 
-#: src/insets/insetcaption.C:81
+#: src/insets/insetcaption.C:84
 msgid "Opened Caption Inset"
 msgstr "Opna figurtekst innskot"
 
@@ -11442,11 +11448,11 @@ msgstr "End&ra namn"
 msgid "Choose a filename to save document as"
 msgstr "Vel eit anna filnamn"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1860
+#: src/lyx_cb.C:135 src/lyxfunc.C:1858
 msgid "Templates|#T#t"
 msgstr "Malar|#M#m"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2015
+#: src/lyx_cb.C:165 src/lyxfunc.C:2013
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11457,7 +11463,7 @@ msgstr ""
 "\n"
 "Vil du skriva over dokumentet?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2017
+#: src/lyx_cb.C:167 src/lyxfunc.C:2015
 msgid "Over-write document?"
 msgstr "Skriv over dokumentet?"
 
@@ -11620,16 +11626,16 @@ msgstr "LyX: Lagar katalogen %1$s"
 msgid "Failed to create directory. Exiting."
 msgstr "Klarte ikkje å lage katalog. Stoppar."
 
-#: src/lyx_main.C:1274
+#: src/lyx_main.C:1282
 msgid "List of supported debug flags:"
 msgstr "Liste over val ved avlusing:"
 
-#: src/lyx_main.C:1278
+#: src/lyx_main.C:1286
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Set nivået til avlusinga til %1$s"
 
-#: src/lyx_main.C:1289
+#: src/lyx_main.C:1297
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11669,42 +11675,42 @@ msgstr ""
 "\t-version        samandrag av versjon og byggje info\n"
 "Sjå `man' sida til LyX for meir informasjon."
 
-#: src/lyx_main.C:1325 src/support/package.C.in:556
+#: src/lyx_main.C:1333 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Brukar katalog"
 
-#: src/lyx_main.C:1326
+#: src/lyx_main.C:1334
 msgid "Missing directory for -sysdir switch"
 msgstr "Manglar katalog for -sysdir val"
 
-#: src/lyx_main.C:1336
+#: src/lyx_main.C:1344
 #, fuzzy
 msgid "No user directory"
 msgstr "Brukar katalog"
 
-#: src/lyx_main.C:1337
+#: src/lyx_main.C:1345
 msgid "Missing directory for -userdir switch"
 msgstr "Manglarkatalog for -userdir val"
 
-#: src/lyx_main.C:1347
+#: src/lyx_main.C:1355
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Indeks kommando:"
 
-#: src/lyx_main.C:1348
+#: src/lyx_main.C:1356
 msgid "Missing command string after --execute switch"
 msgstr "Manglar kommando etter --execute val"
 
-#: src/lyx_main.C:1358
+#: src/lyx_main.C:1366
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --export val"
 
-#: src/lyx_main.C:1370
+#: src/lyx_main.C:1378
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manglar filtype [t.d. latex, ps...] etter --import val"
 
-#: src/lyx_main.C:1375
+#: src/lyx_main.C:1383
 msgid "Missing filename for --import"
 msgstr "Manglar filnamn for --import"
 
@@ -11849,7 +11855,7 @@ msgstr "Lagrar %1$s..."
 msgid " done."
 msgstr "ferdig."
 
-#: src/lyxfunc.C:897
+#: src/lyxfunc.C:898
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -11858,75 +11864,75 @@ msgstr ""
 "Alle endingar vil forsvinne. Er du sikker at du vil gå tilbake til siste "
 "lagra versjon av dokumentet %1$s?"
 
-#: src/lyxfunc.C:1078
+#: src/lyxfunc.C:1079
 #, fuzzy
 msgid "Exiting."
 msgstr "Avsluttar"
 
-#: src/lyxfunc.C:1104 src/text3.C:1222
+#: src/lyxfunc.C:1105 src/text3.C:1221
 msgid "Missing argument"
 msgstr "Manglande val"
 
-#: src/lyxfunc.C:1113
+#: src/lyxfunc.C:1114
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Opnar hjelpfila %1$s..."
 
-#: src/lyxfunc.C:1391
+#: src/lyxfunc.C:1389
 msgid "Opening child document "
 msgstr "Opner barne-dokumnet"
 
-#: src/lyxfunc.C:1478
+#: src/lyxfunc.C:1476
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1489
+#: src/lyxfunc.C:1487
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Kan ikkje sette fargen  \"%1$s\", den finst ikkje eller kan ikkje bli endra"
 
-#: src/lyxfunc.C:1605
+#: src/lyxfunc.C:1603
 msgid "Document defaults saved in "
 msgstr "Standardval for dokument er lagra i "
 
-#: src/lyxfunc.C:1608
+#: src/lyxfunc.C:1606
 msgid "Unable to save document defaults"
 msgstr "Klarte ikkje å lagre standardval for dokument "
 
-#: src/lyxfunc.C:1664
+#: src/lyxfunc.C:1662
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokumentet til ny dokument klasse ..."
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1855
 msgid "Select template file"
 msgstr "Vel mal"
 
-#: src/lyxfunc.C:1894
+#: src/lyxfunc.C:1892
 msgid "Select document to open"
 msgstr "Vel dokument"
 
-#: src/lyxfunc.C:1933
+#: src/lyxfunc.C:1931
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Opnar dokumentet %1$s..."
 
-#: src/lyxfunc.C:1937
+#: src/lyxfunc.C:1935
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s er ope."
 
-#: src/lyxfunc.C:1939
+#: src/lyxfunc.C:1937
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikkje opna dokumentet %1$s"
 
-#: src/lyxfunc.C:1964
+#: src/lyxfunc.C:1962
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vel %1$s filen som skal importerast"
 
-#: src/lyxfunc.C:2091
+#: src/lyxfunc.C:2089
 msgid "Welcome to LyX!"
 msgstr "Velkomen til LyX!"
 
@@ -12815,7 +12821,11 @@ msgstr " Id: "
 msgid ", Position: "
 msgstr ", plass: "
 
-#: src/text.C:1714
+#: src/text.C:1719
+msgid ", Char: 0x"
+msgstr ""
+
+#: src/text.C:1721
 msgid ", Boundary: "
 msgstr ", Grense: "
 
@@ -12847,11 +12857,11 @@ msgstr "Stil "
 msgid " not known"
 msgstr " ukjent"
 
-#: src/text3.C:1327 src/text3.C:1339
+#: src/text3.C:1326 src/text3.C:1338
 msgid "Character set"
 msgstr "Teiknsett"
 
-#: src/text3.C:1470
+#: src/text3.C:1469
 msgid "Paragraph layout set"
 msgstr "set avsnitt stil"
 
