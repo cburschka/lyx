@@ -92,7 +92,7 @@ QModelIndex const QToc::getCurrentIndex()
 {
 	vector<string> const & types = getTypes();
 	TocIterator const it = getCurrentTocItem(types[type_]);
-	if (!it->isValid()) {
+	if (it == getContents(types[type_]).end() || !it->isValid()) {
 		lyxerr[Debug::GUI] << "QToc::getCurrentIndex(): TocItem is invalid!" << endl;
 		return QModelIndex();
 	}

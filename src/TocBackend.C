@@ -203,6 +203,9 @@ TocIterator const TocBackend::item(
 	Toc const & toc_vector = toclist_it->second;
 	TocIterator last = toc_vector.begin();
 	TocIterator it = toc_vector.end();
+	if (it == last)
+		return it;
+
 	--it;
 
 	for (; it != last; --it) {
