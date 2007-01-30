@@ -169,7 +169,7 @@ bool textUndoOrRedo(BufferView & bv,
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
-		//lyxerr << "undo.array=" << undo.array <<endl;
+		// lyxerr << "undo.array=" << to_ascii(undo.array) <<endl;
 		asArray(undo.array, dit.cell());
 	} else {
 		// Some finer machinery is needed here.
