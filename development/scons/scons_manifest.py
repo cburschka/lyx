@@ -2165,6 +2165,7 @@ lib_templates_files = Split('''
     dinbrief.lyx
     docbook_article.lyx
     elsart.lyx
+    fr_beamer-conference-ornate-20min.lyx
     g-brief-de.lyx
     g-brief-en.lyx
     hollywood.lyx
