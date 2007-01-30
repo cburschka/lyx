@@ -690,12 +690,22 @@ void GuiView::busy(bool yes)
 
 Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 {
+	// get window size
+	int w = width();
+	int h = height();
+	Session & session = LyX::ref().session();
+	string val = session.sessionInfo().load("WindowWidth", false);
+	if (!val.empty())
+		w = convert<unsigned int>(val);
+	val = session.sessionInfo().load("WindowHeight", false);
+	if (!val.empty())
+		h = convert<unsigned int>(val);
 	QLToolbar * Tb = new QLToolbar(tbb, *this);
 
 	if (tbb.flags & ToolbarBackend::TOP) {
 		addToolBar(Qt::TopToolBarArea, Tb);
 		if (toolbarSize_.top_width > 0
-		    && toolbarSize_.top_width + Tb->sizeHint().width() > width()) {
+		    && toolbarSize_.top_width + Tb->sizeHint().width() > w) {
 			insertToolBarBreak(Tb);
 			toolbarSize_.top_width = Tb->sizeHint().width();
 		} else
@@ -707,7 +717,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 // Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
 		if (toolbarSize_.bottom_width > 0
-		    && toolbarSize_.bottom_width + Tb->sizeHint().width() > width()) {
+		    && toolbarSize_.bottom_width + Tb->sizeHint().width() > w) {
 			insertToolBarBreak(Tb);
 			toolbarSize_.bottom_width = Tb->sizeHint().width();
 		} else
@@ -720,7 +730,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 // Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
 		if (toolbarSize_.left_height > 0
-		    && toolbarSize_.left_height + Tb->sizeHint().height() > height()) {
+		    && toolbarSize_.left_height + Tb->sizeHint().height() > h) {
 			insertToolBarBreak(Tb);
 			toolbarSize_.left_height = Tb->sizeHint().height();
 		} else
@@ -733,7 +743,7 @@ Toolbars::ToolbarPtr GuiView::makeToolbar(ToolbarBackend::Toolbar const & tbb)
 // Qt < 4.2.2 cannot handle ToolBarBreak on non-TOP dock.
 #if (QT_VERSION >= 0x040202)
 		if (toolbarSize_.right_height > 0
-		    && toolbarSize_.right_height + Tb->sizeHint().height() > height()) {
+		    && toolbarSize_.right_height + Tb->sizeHint().height() > h) {
 			insertToolBarBreak(Tb);
 			toolbarSize_.right_height = Tb->sizeHint().height();
 		} else

@@ -653,10 +653,10 @@ LyXView * LyX::newLyXView()
 	}
 	// if lyxrc returns (0,0), then use session info
 	else {
-		string val = session().sessionInfo().load("WindowWidth");
+		string val = session().sessionInfo().load("WindowWidth", false);
 		if (!val.empty())
 			width = convert<unsigned int>(val);
-		val = session().sessionInfo().load("WindowHeight");
+		val = session().sessionInfo().load("WindowHeight", false);
 		if (!val.empty())
 			height = convert<unsigned int>(val);
 		if (session().sessionInfo().load("WindowIsMaximized") == "yes")
