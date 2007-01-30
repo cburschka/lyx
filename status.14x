@@ -64,7 +64,7 @@ What's new
 
 ** Bug fixes:
 
-* Document Input/Output
+* DOCUMENT INPUT/OUTPUT
 
 - Fix crash when viewing documents as PDF on Windows with installed
   Adobe Reader/Acrobat 8 (bug 3045).
@@ -107,7 +107,13 @@ What's new
 
 - Import correctly Sweave macros from .tex files.
 
-* User Interface:
+- Fix nested list (like) output in docbook (bug 2841)
+
+- Read filenames with spaces in external insets correctly from .lyx files
+
+- Determine PDF image size within LyX correctly (bug 2418).
+
+* USER INTERFACE:
 
 - Fix slowness with lots of math on Windows (bug 2900).
 
@@ -116,14 +122,17 @@ What's new
 - Fix a crash with PageDown/Up when the next/previous paragraph is an inset
   taller than the workarea.
 
-- Fix a crash that occured on exit if the clipboard was not empty (only on
+- Fix some crashes (with console error message "break on pointer: ...")
+  related to large insets.
+
+- Fix a crash that occurred on exit if the clipboard was not empty (only on
   windows). This fix was already used by the official windows installer for
   1.4.3.
 
 - Fix a crash when navigating from a label a reference in the crossrefs
   dialog (bug 3063) [qt only].
 
-- Fix hang when deleting a forced newling character in change tracking
+- Fix hang when deleting a forced newline character in change tracking
   mode (bug 2865).
 
 - Fix crash when exiting empty superscript in math editor (bugs 2908
@@ -167,7 +176,7 @@ What's new
 - Don't show starred sections in Document->Numbering & TOC (bug 2910).
 
 - Make sure that the size changing shortcuts ``M-s <digit>'' work on a
-  french keyboard too.
+  French keyboard too.
 
 - Make all the operations that require walking over all insets faster.
 
@@ -179,7 +188,7 @@ What's new
 
 - Only one undo step is needed to undo inset-dissolve (bug 2982).
 
-- Fix spellckecking of Norwegian documents with aspell (bug 2850).
+- Fix spell checking of Norwegian documents with aspell (bug 2850).
 
 - Don't reset cell selection when opening tabular dialog (bug 2715).
 
@@ -207,22 +216,13 @@ What's new
 - Rename lib/ui/std*.ui include files to *.inc so that the user is not
   tempted to try them (bug 2387).
 
-- Determine PDF image size within LyX correctly (bug 2418).
-
-- Read filenames with spaces in external insets correctly from .lyx files
-
-- Fix some crashes (with console error message "break on pointer: ...")
-  related to large insets.
-
-- Fix nested list (like) output in docbook (bug 2841)
-
-* Build/installation:
+* BUILD/INSTALLATION:
 
 - Allow autoconf 2.60 and 2.61 for building.
 
 - Do not warn against using gcc 4.1. It works fine.
 
-* Miscellaneous
+* MISCELLANEOUS
 
 - The minimum required python version is now 2.2.0.
 
