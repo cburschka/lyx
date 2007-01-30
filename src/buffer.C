@@ -1167,7 +1167,7 @@ int Buffer::runChktex()
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Fill-in the error list with the TeX errors
-		bufferErrors(*this, terr, errorLists_["ChkTex"]);
+		bufferErrors(*this, terr, errorLists_["ChkTeX"]);
 	}
 
 	busy(false);
