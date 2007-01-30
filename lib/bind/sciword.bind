@@ -10,7 +10,6 @@
 
 # LyX keyboard definitions similar to those of Scientific Word.
 
-#\bind "C-a"                    "------"
 #\bind "C-b"                    "font-bold"
 
 # Copy, paste, etc.: more familiar keys
@@ -111,6 +110,7 @@
 \bind "C-x"	"cut"
 \bind "C-z"	"undo"
 \bind "S-C-Z"	"redo"
+\bind "C-a"	"command-sequence buffer-begin ; buffer-end-select"   # select all
 
 
 # This combination makes an umlaut accent now.

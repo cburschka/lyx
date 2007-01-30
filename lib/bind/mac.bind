@@ -64,6 +64,8 @@
 \bind "C-z"			"undo"
 \bind "C-S-Z"			"redo"
 
+\bind "C-a"			"command-sequence buffer-begin ; buffer-end-select"   # select all
+
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
 \bind "~S-M-quotedbl"		"quote-insert single"
 \bind "~S-C-quotedbl"		"self-insert \""
@@ -180,10 +182,6 @@
 
 # LyX menu
 \bind "C-comma"			"dialog-show prefs"
-
-
-# Other
-\bind "C-a"             "command-sequence buffer-begin ; buffer-end-select"
 
 
 # Include menu and math bindings
