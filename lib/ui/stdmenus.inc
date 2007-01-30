@@ -90,6 +90,8 @@ Menuset
 		Submenu "Paste Recent|e" "edit_pasterecent"
 		Submenu "Paste Special" "edit_paste"
 		Separator
+		Item "Select All" "command-sequence buffer-begin ; buffer-end-select"
+		Separator
 		Item "Find & Replace...|F" "dialog-show findreplace"
 		Separator
 		Item "Move Paragraph Up|o" "paragraph-move-up"
