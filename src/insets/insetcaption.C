@@ -21,9 +21,12 @@
 #include "BufferView.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "funcrequest.h"
+#include "FuncStatus.h"
 #include "gettext.h"
 #include "LColor.h"
 #include "metricsinfo.h"
+#include "output_latex.h"
 #include "paragraph.h"
 
 #include "frontends/FontMetrics.h"
@@ -90,43 +93,23 @@ void InsetCaption::cursorPos(BufferView const & bv,
 }
 
 
-void InsetCaption::setLabel(LCursor & cur) const
+void InsetCaption::setLabel(docstring const & label)
 {
-	// Set caption label _only_ if the cursor is in _this_ float:
-	if (cur.top().text() == &text_) {
-		string s;
-		size_t i = cur.depth();
-		while (i > 0) {
-			--i;
-			InsetBase * const in = &cur[i].inset();
-			if (in->lyxCode() == InsetBase::FLOAT_CODE ||
-			    in->lyxCode() == InsetBase::WRAP_CODE) {
-				s = to_utf8(in->getInsetName());
-				break;
-			}
-		}
-		Floating const & fl = textclass_.floats().getType(s);
-		s = fl.name();
-		docstring num;
-		if (s.empty())
-			s = "Senseless";
-		else
-			num = convert<docstring>(counter_);
-
-		// Generate the label
-		label = bformat(from_ascii("%1$s %2$s:"), _(s), num);
-	}
+	label_ = _(to_ascii(label));
 }
 
 
 bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
-	LCursor cur = mi.base.bv->cursor();
-	setLabel(cur);
-	labelwidth_ = theFontMetrics(mi.base.font).width(label);
+	docstring const number = convert<docstring>(counter_);
+	full_label_ = bformat(from_ascii("%1$s %2$s:"), label_, number);
+	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	dim.wid = labelwidth_;
 	Dimension textdim;
+	InsetText::metrics(mi, textdim);
+	// Correct for button width, and re-fit
+	mi.base.textwidth -= dim.wid;
 	InsetText::metrics(mi, textdim);
 	dim.des = std::max(dim.des - textdim.asc + dim.asc, textdim.des);
 	dim.asc = textdim.asc;
@@ -149,11 +132,9 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// the text inset or the paragraph?
 	// We should also draw the float number (Lgb)
 
-	// See if we can find the name of the float this caption
-	// belongs to.
-	LCursor cur = pi.base.bv->cursor();
-	setLabel(cur);
-	labelwidth_ = pi.pain.text(x, y, label, pi.base.font);
+	// Answer: the text inset (in buffer_funcs.C: setCaption).
+
+	labelwidth_ = pi.pain.text(x, y, full_label_, pi.base.font);
 	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);
 }
@@ -173,6 +154,31 @@ InsetBase * InsetCaption::editXY(LCursor & cur, int x, int y)
 }
 
 
+bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action) {
+
+	case LFUN_CAPTION_INSERT:
+	case LFUN_FLOAT_INSERT:
+	case LFUN_FLOAT_WIDE_INSERT:
+	case LFUN_WRAP_INSERT:
+	case LFUN_PARAGRAPH_MOVE_UP:
+	case LFUN_PARAGRAPH_MOVE_DOWN:
+	case LFUN_BREAK_PARAGRAPH:
+	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
+	case LFUN_BREAK_PARAGRAPH_SKIP:
+	case LFUN_PARAGRAPH_SPACING:
+	case LFUN_PAGEBREAK_INSERT:
+		status.enabled(false);
+		return true;
+
+	default:
+		return InsetText::getStatus(cur, cmd, status);
+	}
+}
+
+
 int InsetCaption::latex(Buffer const & buf, odocstream & os,
 			OutputParams const & runparams) const
 {
@@ -181,18 +187,20 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 	// This code is currently only able to handle the simple
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
-	odocstringstream ost;
-	int const l = InsetText::latex(buf, ost, runparams);
-	os << "\\caption{" << ost.str() << "}\n";
+	os << "\\caption";
+	int l = latexOptArgInsets(buf, paragraphs()[0], os, runparams, 1);
+	os << '{';
+	l += InsetText::latex(buf, os, runparams);
+	os << "}\n";
 	return l + 1;
 }
 
 
-int InsetCaption::plaintext(Buffer const & /*buf*/, odocstream & /*os*/,
-			OutputParams const & /*runparams*/) const
+int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
+		OutputParams const & runparams) const
 {
-	// FIXME: Implement me!
-	return 0;
+	os << full_label_ << ' ';
+	return InsetText::plaintext(buf, os, runparams);
 }
 
 

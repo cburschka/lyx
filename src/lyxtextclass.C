@@ -65,7 +65,7 @@ private:
 };
 
 
-int const FORMAT = 2;
+int const FORMAT = 3;
 
 
 bool layout2layout(FileName const & filename, FileName const & tempfile)

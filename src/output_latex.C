@@ -83,10 +83,6 @@ TeXDeeper(Buffer const & buf,
 }
 
 
-int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
-		      odocstream & os, OutputParams const & runparams, int number);
-
-
 ParagraphList::const_iterator
 TeXEnvironment(Buffer const & buf,
 	       ParagraphList const & paragraphs,
@@ -212,6 +208,8 @@ TeXEnvironment(Buffer const & buf,
 	return par;
 }
 
+}
+
 
 int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
 		      odocstream & os, OutputParams const & runparams, int number)
@@ -231,6 +229,8 @@ int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
 	return lines;
 }
 
+
+namespace {
 
 ParagraphList::const_iterator
 TeXOnePar(Buffer const & buf,

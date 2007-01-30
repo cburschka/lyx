@@ -1127,8 +1127,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 #if 0
 	case LFUN_LIST_INSERT:
 	case LFUN_THEOREM_INSERT:
-	case LFUN_CAPTION_INSERT:
 #endif
+	case LFUN_CAPTION_INSERT:
 	case LFUN_NOTE_INSERT:
 	case LFUN_CHARSTYLE_INSERT:
 	case LFUN_BOX_INSERT:
@@ -1159,9 +1159,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_WRAP_INSERT:
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
-		// FIXME: the "Caption" name should not be hardcoded,
-		// but given by the float definition.
-		cur.dispatch(FuncRequest(LFUN_LAYOUT, "Caption"));
+		cur.dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+		updateLabels(cur.buffer());
 		break;
 
 	case LFUN_INDEX_INSERT:

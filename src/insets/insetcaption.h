@@ -12,7 +12,6 @@
 #ifndef INSETCAPTION_H
 #define INSETCAPTION_H
 
-
 #include "insettext.h"
 #include "lyxtextclass.h"
 
@@ -25,6 +24,8 @@ class InsetCaption : public InsetText {
 public:
 	///
 	InsetCaption(BufferParams const &);
+	///
+	virtual ~InsetCaption() {}
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
@@ -51,6 +52,10 @@ public:
 	///
 	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 	///
+	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
+	virtual bool wide() const { return false; }
+	///
 	virtual int latex(Buffer const & buf, odocstream & os,
 			  OutputParams const &) const;
 	///
@@ -61,17 +66,20 @@ public:
 		    OutputParams const & runparams) const;
 	///
 	void setCount(int c) { counter_ = c; }
-private:
 	///
-	void setLabel(LCursor & cur) const;
+	void setLabel(docstring const & label);
+
+private:
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
-	mutable docstring label;
+	mutable docstring full_label_;
 	///
 	mutable int labelwidth_;
 	///
-	mutable int counter_;
+	docstring label_;
+	///
+	int counter_;
 	///
 	LyXTextClass const & textclass_;
 };

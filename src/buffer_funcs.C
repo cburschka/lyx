@@ -38,6 +38,7 @@
 #include "frontends/Alert.h"
 
 #include "insets/insetbibitem.h"
+#include "insets/insetcaption.h"
 #include "insets/insetinclude.h"
 
 #include "support/filetools.h"
@@ -351,6 +352,67 @@ bool needEnumCounterReset(ParIterator const & it)
 }
 
 
+void setCaptionLabels(InsetBase & inset, Floating const & fl,
+		Counters & counters)
+{
+	LyXText * text = inset.getText(0);
+	if (!text)
+		return;
+
+	ParagraphList & pars = text->paragraphs();
+	if (pars.empty())
+		return;
+
+	// FIXME UNICODE
+	docstring const counter = from_ascii(fl.type());
+	docstring const label = from_utf8(fl.name());
+
+	ParagraphList::iterator p = pars.begin();
+	for (; p != pars.end(); ++p) {
+		InsetList::iterator it2 = p->insetlist.begin();
+		InsetList::iterator end2 = p->insetlist.end();
+		// Any caption within this float should have the same
+		// label prefix but different numbers.
+		for (; it2 != end2; ++it2) {
+			InsetBase & icap = *it2->inset;
+			// Look deeper just in case.
+			setCaptionLabels(icap, fl, counters);
+			if (icap.lyxCode() == InsetBase::CAPTION_CODE) {
+				// We found a caption!
+				counters.step(counter); 
+				int number = counters.value(counter);
+				static_cast<InsetCaption &>(icap).setCount(number);
+				static_cast<InsetCaption &>(icap).setLabel(label);
+			}
+		}
+	}
+}
+
+
+void setCaptions(Paragraph & par, LyXTextClass const & textclass)
+{
+	if (par.insetlist.empty())
+		return;
+
+	Counters & counters = textclass.counters();
+
+	InsetList::iterator it = par.insetlist.begin();
+	InsetList::iterator end = par.insetlist.end();
+	for (; it != end; ++it) {
+		InsetBase & inset = *it->inset;
+		if (inset.lyxCode() != InsetBase::FLOAT_CODE 
+			&& inset.lyxCode() != InsetBase::WRAP_CODE)
+			continue;
+
+		docstring const & type = inset.getInsetName();
+		if (type.empty())
+			continue;
+
+		Floating const & fl = textclass.floats().getType(to_ascii(type));
+		setCaptionLabels(inset, fl, counters);
+	}
+}
+
 // set the label of a paragraph. This includes the counters.
 void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textclass)
 {
@@ -601,6 +663,11 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 		// set the counter for this paragraph
 		setLabel(buf, it, textclass);
+
+		// It is better to set the captions after setLabel because
+		// the caption number might need the section number in the
+		// future.
+		setCaptions(*it, textclass);
 
 		// Now included docs
 		InsetList::const_iterator iit = it->insetlist.begin();

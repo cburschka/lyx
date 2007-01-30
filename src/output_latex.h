@@ -25,6 +25,11 @@ class Encoding;
 class OutputParams;
 class TexRow;
 
+/// Export up to \p number optarg insets
+int latexOptArgInsets(Buffer const & buf, Paragraph const & par,
+                      odocstream & os, OutputParams const & runparams,
+                      int number);
+
 /** Export \p paragraphs of buffer \p buf to LaTeX.
     Don't use a temporary stringstream for \p os if the final output is
     supposed to go to a file.

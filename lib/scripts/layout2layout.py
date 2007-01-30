@@ -9,7 +9,7 @@
 
 # Full author contact details are available in file CREDITS
 
-# This script will update a .layout file to format 2
+# This script will update a .layout file to format 3
 
 
 import os, re, string, sys
@@ -76,6 +76,8 @@ def convert(lines):
     re_LabelStringAppendix = re.compile(r'^(\s*)(LabelStringAppendix)(\s+)(("[^"]+")|(\S+))', re.IGNORECASE)
     re_LatexType = re.compile(r'^(\s*)(LatexType)(\s+)(\S+)', re.IGNORECASE)
     re_Style = re.compile(r'^(\s*)(Style)(\s+)(\S+)', re.IGNORECASE)
+    re_CopyStyle = re.compile(r'^(\s*)(CopyStyle)(\s+)(\S+)', re.IGNORECASE)
+    re_NoStyle = re.compile(r'^(\s*)(NoStyle)(\s+)(\S+)', re.IGNORECASE)
     re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
 
     # counters for sectioning styles (hardcoded in 1.3)
@@ -118,6 +120,7 @@ def convert(lines):
     latextype_line = -1
     style = ""
     maxcounter = 0
+    format = 1
     while i < len(lines):
 
         # Skip comments and empty lines
@@ -129,13 +132,17 @@ def convert(lines):
         if (only_comment):
                 match = re_Format.match(lines[i])
                 if match:
-                        format = match.group(4)
-                        if format == '2':
+                        format = int(match.group(4))
+                        if format == 2:
+                            lines[i] = "Format 3"
+                            only_comment = 0
+                        elif format == 3:
                                 # nothing to do
                                 return
-                        error('Cannot convert file format %s' % format)
+                        else:
+                            error('Cannot convert file format %s' % format)
                 else:
-                        lines.insert(i, "Format 2")
+                        lines.insert(i, "Format 3")
                         only_comment = 0
                         continue
 
@@ -144,6 +151,63 @@ def convert(lines):
             i = i + 1
             while i < len(lines) and not re_EndPreamble.match(lines[i]):
                 i = i + 1
+            continue
+
+        if format == 2:
+            caption = []
+
+            # delete caption styles
+            match = re_Style.match(lines[i])
+            if match:
+                style = string.lower(match.group(4))
+                if style == "caption":
+                    del lines[i]
+                    while i < len(lines) and not re_End.match(lines[i]):
+                        caption.append(lines[i])
+                        del lines[i]
+                    if i == len(lines):
+                        error('Incomplete caption style.')
+                    else:
+                        del lines[i]
+                        continue
+
+            # delete undefinition of caption styles
+            match = re_NoStyle.match(lines[i])
+            if match:
+                style = string.lower(match.group(4))
+                if style == "caption":
+                    del lines[i]
+                    continue
+
+            # replace the CopyStyle statement with the definition of the real
+            # style. This may result in duplicate statements, but that is OK
+            # since the second one will overwrite the first one.
+            match = re_CopyStyle.match(lines[i])
+            if match:
+                style = string.lower(match.group(4))
+                if style == "caption":
+                    if len(caption) > 0:
+                        lines[i:i+1] = caption
+                    else:
+                        # FIXME: This style comes from an include file, we
+                        # should replace the real style and not this default.
+                        lines[i:i+1] = ['	Margin                First_Dynamic',
+                                        '	LatexType             Command',
+                                        '	LatexName             caption',
+                                        '	NeedProtect           1',
+                                        '	LabelSep              xx',
+                                        '	ParSkip               0.4',
+                                        '	TopSep                0.5',
+                                        '	Align                 Center',
+                                        '	AlignPossible         Center',
+                                        '	LabelType             Sensitive',
+                                        '	LabelString           "Senseless!"',
+                                        '	OptionalArgs          1',
+                                        '	LabelFont',
+                                        '	  Series              Bold',
+                                        '	EndFont']
+
+            i = i + 1
             continue
 
         # Delete MaxCounter and remember the value of it

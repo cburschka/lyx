@@ -43,6 +43,9 @@ public:
 	explicit InsetText(BufferParams const &);
 	///
 	InsetText();
+	///
+	virtual ~InsetText() {}
+
 	/// empty inset to empty par
 	void clear();
 	///
@@ -98,7 +101,7 @@ public:
 		return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
 	}
 	///
-	bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 
 	/// set the change for the entire inset
 	void setChange(Change const & change);
@@ -133,7 +136,7 @@ public:
 	///
 	InsetText(InsetText const &);
 	///
-	bool wide() const { return wide_inset_; }
+	virtual bool wide() const { return wide_inset_; }
 	///
 	void setWide(bool wide_inset) { wide_inset_ = wide_inset; }
 
