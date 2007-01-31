@@ -624,7 +624,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 		string const tmpfile = tempName();
 		if (tmpfile.empty()) {
 			Alert::error(_("Conversion failed"),
-				     bformat(_("%1$s is from an earlier"
+				     bformat(_("%1$s is from a different"
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
 					      " not be created."),
@@ -634,7 +634,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 		string const lyx2lyx = LibFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
 			Alert::error(_("Conversion script not found"),
-				     bformat(_("%1$s is from an earlier"
+				     bformat(_("%1$s is from a different"
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
 					       " could not be found."),
@@ -655,7 +655,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 		cmd_ret const ret = RunCommand(command_str);
 		if (ret.first != 0) {
 			Alert::error(_("Conversion script failed"),
-				     bformat(_("%1$s is from an earlier version"
+				     bformat(_("%1$s is from a different version"
 					      " of LyX, but the lyx2lyx script"
 					      " failed to convert it."),
 					      filename));

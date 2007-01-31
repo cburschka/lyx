@@ -1,3 +1,7 @@
+2007-01-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer.C (readFile): reword error message when lyx2lyx fails.
+
 2007-01-29  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C (makeEnvironment): If a sub list (embedded
