@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX ??\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-30 23:34+0100\n"
+"POT-Creation-Date: 2007-01-31 20:06+0100\n"
 "PO-Revision-Date: 2005-12-18 15:11+0100\n"
 "Last-Translator: anon <>\n"
 "Language-Team: he <he@li.org>\n"
@@ -3183,7 +3183,7 @@ msgid "&Type:"
 msgstr "t LaTeX|#T"
 
 #: src/frontends/qt4/ui/QURLUi.ui:31 src/frontends/qt4/ui/QURLUi.ui:64
-#: lib/layouts/scrlttr2.layout:208 lib/layouts/amsdefs.inc:186
+#: lib/layouts/scrlttr2.layout:207 lib/layouts/amsdefs.inc:186
 #: src/frontends/qt4/UrlView.C:33
 #, fuzzy
 msgid "URL"
@@ -3353,7 +3353,7 @@ msgstr ""
 msgid "TheoremTemplate"
 msgstr "תינבת תריחב"
 
-#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:946
+#: lib/layouts/IEEEtran.layout:63 lib/layouts/beamer.layout:925
 #: lib/layouts/elsart.layout:291 lib/layouts/foils.layout:283
 #: lib/layouts/heb-article.layout:95 lib/layouts/ijmpc.layout:230
 #: lib/layouts/ijmpd.layout:230 lib/layouts/llncs.layout:374
@@ -3367,7 +3367,7 @@ msgid "Proof:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:71 lib/layouts/amsart-plain.layout:26
-#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:1024
+#: lib/layouts/amsart-seq.layout:137 lib/layouts/beamer.layout:1003
 #: lib/layouts/elsart.layout:262 lib/layouts/foils.layout:223
 #: lib/layouts/heb-article.layout:18 lib/layouts/ijmpc.layout:208
 #: lib/layouts/ijmpd.layout:211 lib/layouts/llncs.layout:415
@@ -3397,7 +3397,7 @@ msgid "Lemma #:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:91 lib/layouts/amsart-plain.layout:31
-#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:510
+#: lib/layouts/amsart-seq.layout:143 lib/layouts/beamer.layout:489
 #: lib/layouts/elsart.layout:325 lib/layouts/foils.layout:255
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:250
 #: lib/layouts/ijmpd.layout:251 lib/layouts/llncs.layout:319
@@ -3451,7 +3451,7 @@ msgid "Criterion #:"
 msgstr "לדחמ-תרירב ןפוג ןונגס"
 
 #: lib/layouts/IEEEtran.layout:131 lib/layouts/amsart-plain.layout:67
-#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:731
+#: lib/layouts/amsart-seq.layout:179 lib/layouts/beamer.layout:710
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
@@ -3472,7 +3472,7 @@ msgid "Axiom #:"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:151 lib/layouts/amsart-plain.layout:79
-#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:673
+#: lib/layouts/amsart-seq.layout:191 lib/layouts/beamer.layout:652
 #: lib/layouts/elsart.layout:353 lib/layouts/foils.layout:269
 #: lib/layouts/heb-article.layout:75 lib/layouts/ijmpc.layout:143
 #: lib/layouts/ijmpd.layout:140 lib/layouts/llncs.layout:333
@@ -3489,7 +3489,7 @@ msgid "Definition #:"
 msgstr "רוטיע"
 
 #: lib/layouts/IEEEtran.layout:161 lib/layouts/amsart-plain.layout:85
-#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:685
+#: lib/layouts/amsart-seq.layout:197 lib/layouts/beamer.layout:664
 #: lib/layouts/elsart.layout:374 lib/layouts/ijmpc.layout:178
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
@@ -3606,9 +3606,9 @@ msgid "Case #:"
 msgstr "לוטיב"
 
 #: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:37
-#: lib/layouts/aa.layout:234 lib/layouts/aapaper.layout:66
-#: lib/layouts/aapaper.layout:131 lib/layouts/aastex.layout:64
-#: lib/layouts/aastex.layout:168 lib/layouts/amsart.layout:61
+#: lib/layouts/aa.layout:216 lib/layouts/aapaper.layout:64
+#: lib/layouts/aapaper.layout:129 lib/layouts/aastex.layout:64
+#: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
 #: lib/layouts/beamer.layout:265 lib/layouts/cv.layout:29
 #: lib/layouts/egs.layout:29 lib/layouts/ijmpc.layout:102
@@ -3628,9 +3628,9 @@ msgid "Section"
 msgstr "ןוויכ"
 
 #: lib/layouts/IEEEtran.layout:279 lib/layouts/aa.layout:40
-#: lib/layouts/aa.layout:244 lib/layouts/aapaper.layout:69
-#: lib/layouts/aapaper.layout:140 lib/layouts/aastex.layout:67
-#: lib/layouts/aastex.layout:181 lib/layouts/amsart.layout:72
+#: lib/layouts/aa.layout:226 lib/layouts/aapaper.layout:67
+#: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
+#: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
 #: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
 #: lib/layouts/cv.layout:50 lib/layouts/egs.layout:50
 #: lib/layouts/ijmpc.layout:118 lib/layouts/ijmpd.layout:114
@@ -3648,9 +3648,9 @@ msgid "Subsection"
 msgstr "ןוויכ"
 
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/aa.layout:43
-#: lib/layouts/aa.layout:256 lib/layouts/aapaper.layout:72
-#: lib/layouts/aapaper.layout:151 lib/layouts/aastex.layout:70
-#: lib/layouts/aastex.layout:194 lib/layouts/amsart.layout:80
+#: lib/layouts/aa.layout:238 lib/layouts/aapaper.layout:70
+#: lib/layouts/aapaper.layout:149 lib/layouts/aastex.layout:70
+#: lib/layouts/aastex.layout:192 lib/layouts/amsart.layout:80
 #: lib/layouts/amsbook.layout:66 lib/layouts/ijmpc.layout:127
 #: lib/layouts/ijmpd.layout:123 lib/layouts/isprs.layout:177
 #: lib/layouts/kluwer.layout:75 lib/layouts/llncs.layout:60
@@ -3666,7 +3666,7 @@ msgid "Subsubsection"
 msgstr "ןוויכ"
 
 #: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:297
-#: lib/layouts/egs.layout:601 lib/layouts/ijmpc.layout:110
+#: lib/layouts/egs.layout:586 lib/layouts/ijmpc.layout:110
 #: lib/layouts/ijmpd.layout:106 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
 #: lib/layouts/aguplus.inc:34 lib/layouts/db_stdstarsections.inc:36
@@ -3676,7 +3676,7 @@ msgid "Section*"
 msgstr "ןוויכ"
 
 #: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:339
-#: lib/layouts/egs.layout:621 lib/layouts/isprs.layout:197
+#: lib/layouts/egs.layout:606 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
 #, fuzzy
@@ -3690,10 +3690,10 @@ msgstr "ןוויכ"
 msgid "Subsubsection*"
 msgstr "ןוויכ"
 
-#: lib/layouts/IEEEtran.layout:328 lib/layouts/aa.layout:82
-#: lib/layouts/aa.layout:302 lib/layouts/aa.layout:318
-#: lib/layouts/aapaper.layout:99 lib/layouts/aapaper.layout:194
-#: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:246
+#: lib/layouts/IEEEtran.layout:328 lib/layouts/aa.layout:80
+#: lib/layouts/aa.layout:284 lib/layouts/aa.layout:300
+#: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
+#: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:244
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:79
 #: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:491
 #: lib/layouts/elsart.layout:206 lib/layouts/elsart.layout:222
@@ -3718,7 +3718,7 @@ msgid "Abstract---"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:348 lib/layouts/aastex.layout:109
-#: lib/layouts/aastex.layout:283 lib/layouts/elsart.layout:64
+#: lib/layouts/aastex.layout:281 lib/layouts/elsart.layout:64
 #: lib/layouts/ijmpc.layout:80 lib/layouts/ijmpd.layout:83
 #: lib/layouts/isprs.layout:52 lib/layouts/kluwer.layout:282
 #: lib/layouts/paper.layout:174 lib/layouts/revtex4.layout:241
@@ -3733,14 +3733,14 @@ msgstr ""
 msgid "Index Terms---"
 msgstr "i יקפוא גוליד|#I"
 
-#: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:88
-#: lib/layouts/aa.layout:332 lib/layouts/aapaper.layout:105
-#: lib/layouts/aapaper.layout:211 lib/layouts/beamer.layout:440
+#: lib/layouts/IEEEtran.layout:371 lib/layouts/aa.layout:86
+#: lib/layouts/aa.layout:314 lib/layouts/aapaper.layout:103
+#: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:440
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/cv.layout:143
 #: lib/layouts/egs.layout:562 lib/layouts/foils.layout:215
 #: lib/layouts/ijmpc.layout:361 lib/layouts/ijmpd.layout:372
-#: lib/layouts/latex8.layout:123 lib/layouts/llncs.layout:261
+#: lib/layouts/latex8.layout:118 lib/layouts/llncs.layout:261
 #: lib/layouts/memoir.layout:138 lib/layouts/memoir.layout:140
 #: lib/layouts/mwbk.layout:21 lib/layouts/mwbk.layout:23
 #: lib/layouts/mwrep.layout:12 lib/layouts/mwrep.layout:14
@@ -3755,7 +3755,7 @@ msgid "Bibliography"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:380 lib/layouts/IEEEtran.layout:391
-#: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:410
+#: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
 #: src/rowpainter.C:507
@@ -3775,30 +3775,17 @@ msgstr ""
 msgid "BiographyNoPhoto"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:439 lib/layouts/aa.layout:58
-#: lib/layouts/aa.layout:216 lib/layouts/aa.layout:227
-#: lib/layouts/aapaper.layout:60 lib/layouts/aastex.layout:133
-#: lib/layouts/aastex.layout:530 lib/layouts/aastex.layout:541
-#: lib/layouts/beamer.layout:490 lib/layouts/beamer.layout:501
-#: lib/layouts/egs.layout:584 lib/layouts/egs.layout:594
-#: lib/layouts/isprs.layout:215 lib/layouts/latex8.layout:116
-#: lib/layouts/db_stdlayouts.inc:29 lib/layouts/stdlayouts.inc:64
-#: lib/ui/stdmenus.inc:303
-#, fuzzy
-msgid "Caption"
-msgstr "o תויורשפא"
-
-#: lib/layouts/IEEEtran.layout:446 lib/layouts/IEEEtran.layout:457
+#: lib/layouts/IEEEtran.layout:441 lib/layouts/IEEEtran.layout:452
 msgid "Footernote"
 msgstr ""
 
-#: lib/layouts/IEEEtran.layout:469
+#: lib/layouts/IEEEtran.layout:464
 #, fuzzy
 msgid "MarkBoth"
 msgstr "קספומ ןומיס"
 
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
-#: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:294
+#: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
 #: lib/layouts/beamer.layout:41 lib/layouts/cv.layout:80
 #: lib/layouts/egs.layout:162 lib/layouts/manpage.layout:82
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
@@ -3807,7 +3794,7 @@ msgid "Itemize"
 msgstr ""
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
-#: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:312
+#: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
 #: lib/layouts/beamer.layout:59 lib/layouts/egs.layout:144
 #: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
@@ -3835,10 +3822,10 @@ msgstr "רוטיע"
 msgid "List"
 msgstr "i הפסוה"
 
-#: lib/layouts/aa.layout:61 lib/layouts/aa.layout:266
-#: lib/layouts/aapaper.layout:75 lib/layouts/aapaper.layout:161
-#: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:208
-#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:977
+#: lib/layouts/aa.layout:59 lib/layouts/aa.layout:248
+#: lib/layouts/aapaper.layout:73 lib/layouts/aapaper.layout:159
+#: lib/layouts/aastex.layout:88 lib/layouts/aastex.layout:206
+#: lib/layouts/apa.layout:39 lib/layouts/beamer.layout:956
 #: lib/layouts/broadway.layout:190 lib/layouts/cl2emult.layout:39
 #: lib/layouts/cv.layout:122 lib/layouts/docbook-book.layout:11
 #: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
@@ -3849,8 +3836,8 @@ msgstr "i הפסוה"
 #: lib/layouts/kluwer.layout:104 lib/layouts/latex8.layout:33
 #: lib/layouts/llncs.layout:99 lib/layouts/ltugboat.layout:134
 #: lib/layouts/paper.layout:112 lib/layouts/revtex.layout:90
-#: lib/layouts/revtex4.layout:107 lib/layouts/scrlettr.layout:194
-#: lib/layouts/scrlttr2.layout:272 lib/layouts/siamltex.layout:109
+#: lib/layouts/revtex4.layout:107 lib/layouts/scrlettr.layout:193
+#: lib/layouts/scrlttr2.layout:271 lib/layouts/siamltex.layout:109
 #: lib/layouts/svprobth.layout:35 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:60 lib/layouts/db_stdtitle.inc:13
 #: lib/layouts/scrclass.inc:146 lib/layouts/stdtitle.inc:12
@@ -3859,17 +3846,17 @@ msgstr "i הפסוה"
 msgid "Title"
 msgstr "f ץבוק"
 
-#: lib/layouts/aa.layout:64 lib/layouts/aa.layout:108
-#: lib/layouts/aapaper.layout:78 lib/layouts/beamer.layout:1030
+#: lib/layouts/aa.layout:62 lib/layouts/aa.layout:106
+#: lib/layouts/aapaper.layout:76 lib/layouts/beamer.layout:1009
 #: lib/layouts/kluwer.layout:122 lib/layouts/llncs.layout:122
 #: lib/layouts/svprobth.layout:44 lib/layouts/aapaper.inc:9
 #: lib/layouts/svjour.inc:152
 msgid "Subtitle"
 msgstr ""
 
-#: lib/layouts/aa.layout:67 lib/layouts/aa.layout:278
-#: lib/layouts/aapaper.layout:81 lib/layouts/aapaper.layout:172
-#: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:221
+#: lib/layouts/aa.layout:65 lib/layouts/aa.layout:260
+#: lib/layouts/aapaper.layout:79 lib/layouts/aapaper.layout:170
+#: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
 #: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:416
 #: lib/layouts/broadway.layout:203 lib/layouts/cl2emult.layout:56
 #: lib/layouts/egs.layout:289 lib/layouts/elsart.layout:112
@@ -3886,38 +3873,38 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: lib/layouts/aa.layout:70 lib/layouts/aa.layout:129
-#: lib/layouts/aapaper.layout:84 lib/layouts/egs.layout:233
+#: lib/layouts/aa.layout:68 lib/layouts/aa.layout:127
+#: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:233
 #: lib/layouts/entcs.layout:57 lib/layouts/g-brief-en.layout:179
 #: lib/layouts/g-brief2.layout:799 lib/layouts/ijmpc.layout:53
 #: lib/layouts/ijmpd.layout:56 lib/layouts/isprs.layout:115
 #: lib/layouts/kluwer.layout:178 lib/layouts/revtex.layout:116
-#: lib/layouts/revtex4.layout:164 lib/layouts/scrlettr.layout:145
-#: lib/layouts/scrlttr2.layout:40 lib/layouts/aapaper.inc:30
+#: lib/layouts/revtex4.layout:164 lib/layouts/scrlettr.layout:144
+#: lib/layouts/scrlttr2.layout:39 lib/layouts/aapaper.inc:30
 #: lib/layouts/amsdefs.inc:152 lib/layouts/lyxmacros.inc:43
 msgid "Address"
 msgstr ""
 
-#: lib/layouts/aa.layout:73 lib/layouts/aa.layout:146
-#: lib/layouts/aapaper.layout:90 lib/layouts/aapaper.inc:65
+#: lib/layouts/aa.layout:71 lib/layouts/aa.layout:144
+#: lib/layouts/aapaper.layout:88 lib/layouts/aapaper.inc:65
 #, fuzzy
 msgid "Offprint"
 msgstr "הספדה"
 
-#: lib/layouts/aa.layout:76 lib/layouts/aa.layout:169
+#: lib/layouts/aa.layout:74 lib/layouts/aa.layout:167
 #: lib/layouts/svjour.inc:236
 #, fuzzy
 msgid "Mail"
 msgstr "הצירטמ"
 
-#: lib/layouts/aa.layout:79 lib/layouts/aa.layout:290
-#: lib/layouts/aapaper.layout:96 lib/layouts/aapaper.layout:183
-#: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:234
-#: lib/layouts/beamer.layout:651 lib/layouts/egs.layout:475
+#: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
+#: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
+#: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
+#: lib/layouts/beamer.layout:630 lib/layouts/egs.layout:475
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:821 lib/layouts/kluwer.layout:143
 #: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
-#: lib/layouts/scrlettr.layout:166 lib/layouts/scrlttr2.layout:240
+#: lib/layouts/scrlettr.layout:165 lib/layouts/scrlttr2.layout:239
 #: lib/layouts/siamltex.layout:137 lib/layouts/agu_stdtitle.inc:238
 #: lib/layouts/amsdefs.inc:101 lib/layouts/db_stdtitle.inc:35
 #: lib/layouts/scrclass.inc:161 lib/layouts/stdtitle.inc:50
@@ -3925,8 +3912,8 @@ msgstr "הצירטמ"
 msgid "Date"
 msgstr ""
 
-#: lib/layouts/aa.layout:85 lib/layouts/aa.layout:192
-#: lib/layouts/aapaper.layout:102 lib/layouts/amsart-plain.layout:139
+#: lib/layouts/aa.layout:83 lib/layouts/aa.layout:190
+#: lib/layouts/aapaper.layout:100 lib/layouts/amsart-plain.layout:139
 #: lib/layouts/amsart-seq.layout:251 lib/layouts/egs.layout:537
 #: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
 #: lib/layouts/amsmaths-plain.inc:223 lib/layouts/amsmaths-seq.inc:184
@@ -3934,34 +3921,34 @@ msgstr ""
 msgid "Acknowledgement"
 msgstr ""
 
-#: lib/layouts/aa.layout:155 lib/layouts/aapaper.inc:74
+#: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:74
 #, fuzzy
 msgid "Offprint Requests to:"
 msgstr "o תויורשפא"
 
-#: lib/layouts/aa.layout:178
+#: lib/layouts/aa.layout:176
 msgid "Correspondence to:"
 msgstr ""
 
-#: lib/layouts/aa.layout:204 lib/layouts/egs.layout:526
+#: lib/layouts/aa.layout:202 lib/layouts/egs.layout:526
 #: lib/layouts/svjour.inc:308
 msgid "Acknowledgements."
 msgstr ""
 
-#: lib/layouts/aapaper.layout:63 lib/layouts/egs.layout:637
+#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:622
 #: src/frontends/qt4/QPrefsDialog.C:286
 #, fuzzy
 msgid "LaTeX"
 msgstr "t LaTeX|#T"
 
-#: lib/layouts/aapaper.layout:87 lib/layouts/aastex.layout:97
-#: lib/layouts/aastex.layout:309 lib/layouts/latex8.layout:57
+#: lib/layouts/aapaper.layout:85 lib/layouts/aastex.layout:97
+#: lib/layouts/aastex.layout:307 lib/layouts/latex8.layout:57
 #: lib/layouts/llncs.layout:232 lib/layouts/aapaper.inc:47
 #: lib/layouts/amsdefs.inc:178
 msgid "Email"
 msgstr ""
 
-#: lib/layouts/aapaper.layout:93 lib/layouts/aapaper.inc:107
+#: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:107
 #: lib/ui/stdtoolbars.inc:93 src/frontends/qt4/QThesaurus.C:29
 msgid "Thesaurus"
 msgstr ""
@@ -3980,27 +3967,27 @@ msgstr ""
 msgid "Paragraph"
 msgstr "הקספ תביבס"
 
-#: lib/layouts/aastex.layout:94 lib/layouts/aastex.layout:265
+#: lib/layouts/aastex.layout:94 lib/layouts/aastex.layout:263
 #: lib/layouts/apa.layout:150 lib/layouts/latex8.layout:81
 #: lib/layouts/revtex4.layout:133 lib/layouts/agu_stdtitle.inc:128
 #: lib/layouts/aguplus.inc:60
 msgid "Affiliation"
 msgstr ""
 
-#: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:348
+#: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:346
 msgid "And"
 msgstr ""
 
-#: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:327
+#: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:512
-#: lib/layouts/isprs.layout:238 lib/layouts/kluwer.layout:302
+#: lib/layouts/isprs.layout:215 lib/layouts/kluwer.layout:302
 #: lib/layouts/kluwer.layout:314 lib/layouts/aapaper.inc:95
 #: lib/layouts/svjour.inc:294
 msgid "Acknowledgements"
 msgstr ""
 
-#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:443
-#: lib/layouts/aastex.layout:455 lib/layouts/beamer.layout:454
+#: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
+#: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:454
 #: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:576
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
@@ -4010,108 +3997,108 @@ msgstr ""
 msgid "References"
 msgstr "םירויא תפסוה"
 
-#: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:368
+#: lib/layouts/aastex.layout:121 lib/layouts/aastex.layout:366
 #, fuzzy
 msgid "PlaceFigure"
 msgstr "רויא"
 
-#: lib/layouts/aastex.layout:124 lib/layouts/aastex.layout:389
+#: lib/layouts/aastex.layout:124 lib/layouts/aastex.layout:387
 msgid "PlaceTable"
 msgstr ""
 
-#: lib/layouts/aastex.layout:127 lib/layouts/aastex.layout:510
+#: lib/layouts/aastex.layout:127 lib/layouts/aastex.layout:508
 #, fuzzy
 msgid "TableComments"
 msgstr "הלבט%t"
 
-#: lib/layouts/aastex.layout:130 lib/layouts/aastex.layout:490
+#: lib/layouts/aastex.layout:130 lib/layouts/aastex.layout:488
 #, fuzzy
 msgid "TableRefs"
 msgstr "הלבט%t"
 
-#: lib/layouts/aastex.layout:136 lib/layouts/aastex.layout:431
+#: lib/layouts/aastex.layout:134 lib/layouts/aastex.layout:429
 msgid "MathLetters"
 msgstr ""
 
-#: lib/layouts/aastex.layout:139 lib/layouts/aastex.layout:469
+#: lib/layouts/aastex.layout:137 lib/layouts/aastex.layout:467
 msgid "NoteToEditor"
 msgstr ""
 
-#: lib/layouts/aastex.layout:142 lib/layouts/aastex.layout:563
+#: lib/layouts/aastex.layout:140 lib/layouts/aastex.layout:545
 #, fuzzy
 msgid "Facility"
 msgstr "f ץבוק"
 
-#: lib/layouts/aastex.layout:145 lib/layouts/aastex.layout:589
+#: lib/layouts/aastex.layout:143 lib/layouts/aastex.layout:571
 msgid "Objectname"
 msgstr ""
 
-#: lib/layouts/aastex.layout:148 lib/layouts/aastex.layout:616
+#: lib/layouts/aastex.layout:146 lib/layouts/aastex.layout:598
 msgid "Dataset"
 msgstr ""
 
-#: lib/layouts/aastex.layout:295
+#: lib/layouts/aastex.layout:293
 #, fuzzy
 msgid "Subject headings:"
 msgstr "םיפד:"
 
-#: lib/layouts/aastex.layout:338
+#: lib/layouts/aastex.layout:336
 msgid "[Acknowledgements]"
 msgstr ""
 
-#: lib/layouts/aastex.layout:359
+#: lib/layouts/aastex.layout:357
 #, fuzzy
 msgid "and"
 msgstr "ףלחה"
 
-#: lib/layouts/aastex.layout:380
+#: lib/layouts/aastex.layout:378
 #, fuzzy
 msgid "Place Figure here:"
 msgstr "רויא"
 
-#: lib/layouts/aastex.layout:401
+#: lib/layouts/aastex.layout:399
 #, fuzzy
 msgid "Place Table here:"
 msgstr "רויא"
 
-#: lib/layouts/aastex.layout:421
+#: lib/layouts/aastex.layout:419
 #, fuzzy
 msgid "[Appendix]"
 msgstr "חפסנ תפסוה"
 
-#: lib/layouts/aastex.layout:481
+#: lib/layouts/aastex.layout:479
 #, fuzzy
 msgid "Note to Editor:"
 msgstr "e הכירע"
 
-#: lib/layouts/aastex.layout:502
+#: lib/layouts/aastex.layout:500
 #, fuzzy
 msgid "References. ---"
 msgstr "םירויא תפסוה"
 
-#: lib/layouts/aastex.layout:522
+#: lib/layouts/aastex.layout:520
 #, fuzzy
 msgid "Note. ---"
 msgstr "םיטוטיצ"
 
-#: lib/layouts/aastex.layout:548
+#: lib/layouts/aastex.layout:530
 msgid "FigCaption"
 msgstr ""
 
-#: lib/layouts/aastex.layout:558
+#: lib/layouts/aastex.layout:540
 msgid "Fig. ---"
 msgstr ""
 
-#: lib/layouts/aastex.layout:575
+#: lib/layouts/aastex.layout:557
 #, fuzzy
 msgid "Facility:"
 msgstr "f ץבוק"
 
-#: lib/layouts/aastex.layout:601
+#: lib/layouts/aastex.layout:583
 msgid "Obj:"
 msgstr ""
 
-#: lib/layouts/aastex.layout:628
+#: lib/layouts/aastex.layout:610
 msgid "Dataset:"
 msgstr ""
 
@@ -4437,32 +4424,37 @@ msgstr ""
 msgid "CenteredCaption"
 msgstr ""
 
-#: lib/layouts/apa.layout:266
+#: lib/layouts/apa.layout:269 lib/layouts/scrclass.inc:242
+#: lib/layouts/scrclass.inc:262
+msgid "Senseless!"
+msgstr ""
+
+#: lib/layouts/apa.layout:280
 #, fuzzy
 msgid "FitFigure"
 msgstr "רויא"
 
-#: lib/layouts/apa.layout:272
+#: lib/layouts/apa.layout:286
 msgid "FitBitmap"
 msgstr ""
 
-#: lib/layouts/apa.layout:308 lib/layouts/beamer.layout:55
+#: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:55
 #: lib/layouts/cv.layout:94 lib/layouts/egs.layout:176
 #: lib/layouts/manpage.layout:96 lib/layouts/stdlists.inc:25
 msgid "*"
 msgstr ""
 
-#: lib/layouts/apa.layout:330
+#: lib/layouts/apa.layout:344
 #, fuzzy
 msgid "Seriate"
 msgstr "i הפסוה"
 
-#: lib/layouts/apa.layout:346 lib/layouts/apa.layout:347
+#: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
 #: src/buffer_funcs.C:517
 msgid "(\\alph{enumii})"
 msgstr "(\\hebrew{enumii})"
 
-#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:918
+#: lib/layouts/article.layout:18 lib/layouts/beamer.layout:897
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
 #: lib/layouts/scrartcl.layout:20 lib/layouts/seminar.layout:24
 #: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
@@ -4560,195 +4552,195 @@ msgstr ""
 msgid "block "
 msgstr "ףלחה"
 
-#: lib/layouts/beamer.layout:520
+#: lib/layouts/beamer.layout:499
 msgid "Corollary.  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:537
+#: lib/layouts/beamer.layout:516
 #, fuzzy
 msgid "Column"
 msgstr "תודומע "
 
-#: lib/layouts/beamer.layout:548
+#: lib/layouts/beamer.layout:527
 msgid "start column of width:  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:560
+#: lib/layouts/beamer.layout:539
 #, fuzzy
 msgid "Columns"
 msgstr "תודומע "
 
-#: lib/layouts/beamer.layout:572
+#: lib/layouts/beamer.layout:551
 #, fuzzy
 msgid "columns "
 msgstr "תודומע "
 
-#: lib/layouts/beamer.layout:589
+#: lib/layouts/beamer.layout:568
 msgid "ColumnsCenterAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:600
+#: lib/layouts/beamer.layout:579
 msgid "columns (center aligned) "
 msgstr ""
 
-#: lib/layouts/beamer.layout:619
+#: lib/layouts/beamer.layout:598
 msgid "ColumnsTopAligned"
 msgstr ""
 
-#: lib/layouts/beamer.layout:630
+#: lib/layouts/beamer.layout:609
 msgid "columns (top aligned) "
 msgstr ""
 
-#: lib/layouts/beamer.layout:676
+#: lib/layouts/beamer.layout:655
 #, fuzzy
 msgid "Definition.  "
 msgstr "רוטיע"
 
-#: lib/layouts/beamer.layout:679
+#: lib/layouts/beamer.layout:658
 #, fuzzy
 msgid "Definitions"
 msgstr "רוטיע"
 
-#: lib/layouts/beamer.layout:682
+#: lib/layouts/beamer.layout:661
 #, fuzzy
 msgid "Definitions.  "
 msgstr "רוטיע"
 
-#: lib/layouts/beamer.layout:688
+#: lib/layouts/beamer.layout:667
 #, fuzzy
 msgid "Example.  "
 msgstr "תואמגוד"
 
-#: lib/layouts/beamer.layout:696
+#: lib/layouts/beamer.layout:675
 #, fuzzy
 msgid "Examples"
 msgstr "תואמגוד"
 
-#: lib/layouts/beamer.layout:699
+#: lib/layouts/beamer.layout:678
 #, fuzzy
 msgid "Examples.  "
 msgstr "תואמגוד"
 
-#: lib/layouts/beamer.layout:702
+#: lib/layouts/beamer.layout:681
 #, fuzzy
 msgid "ExampleBlock"
 msgstr "תואמגוד"
 
-#: lib/layouts/beamer.layout:712
+#: lib/layouts/beamer.layout:691
 msgid "block showing an example "
 msgstr ""
 
-#: lib/layouts/beamer.layout:734
+#: lib/layouts/beamer.layout:713
 #, fuzzy
 msgid "Fact.  "
 msgstr "f ץבוק"
 
-#: lib/layouts/beamer.layout:737
+#: lib/layouts/beamer.layout:716
 #, fuzzy
 msgid "FrameSubtitle"
 msgstr "p תספדמ|#P"
 
-#: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:68
+#: lib/layouts/beamer.layout:739 lib/layouts/cl2emult.layout:68
 #: lib/layouts/llncs.layout:213 lib/layouts/svjour.inc:211
 #, fuzzy
 msgid "Institute"
 msgstr "טוטיצ תסנכה"
 
-#: lib/layouts/beamer.layout:782 lib/layouts/egs.layout:655
+#: lib/layouts/beamer.layout:761 lib/layouts/egs.layout:640
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr ""
 
-#: lib/layouts/beamer.layout:819
+#: lib/layouts/beamer.layout:798
 #, fuzzy
 msgid "NoteItem"
 msgstr "םיטוטיצ"
 
-#: lib/layouts/beamer.layout:830
+#: lib/layouts/beamer.layout:809
 #, fuzzy
 msgid "note:  "
 msgstr "םיטוטיצ"
 
-#: lib/layouts/beamer.layout:842
+#: lib/layouts/beamer.layout:821
 msgid "Only"
 msgstr ""
 
-#: lib/layouts/beamer.layout:851
+#: lib/layouts/beamer.layout:830
 msgid "only on slides  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:866
+#: lib/layouts/beamer.layout:845
 #, fuzzy
 msgid "Overprint"
 msgstr "הספדה"
 
-#: lib/layouts/beamer.layout:876
+#: lib/layouts/beamer.layout:855
 #, fuzzy
 msgid "overprint "
 msgstr "הספדה"
 
-#: lib/layouts/beamer.layout:892
+#: lib/layouts/beamer.layout:871
 msgid "OverlayArea"
 msgstr ""
 
-#: lib/layouts/beamer.layout:902
+#: lib/layouts/beamer.layout:881
 msgid "overlayarea "
 msgstr ""
 
-#: lib/layouts/beamer.layout:932
+#: lib/layouts/beamer.layout:911
 #, fuzzy
 msgid "Part "
 msgstr "הספדה"
 
-#: lib/layouts/beamer.layout:949
+#: lib/layouts/beamer.layout:928
 msgid "Proof.  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:953
+#: lib/layouts/beamer.layout:932
 #, fuzzy
 msgid "Separator"
 msgstr "תואקספ תדרפה"
 
-#: lib/layouts/beamer.layout:966
+#: lib/layouts/beamer.layout:945
 msgid "___"
 msgstr ""
 
-#: lib/layouts/beamer.layout:1001
+#: lib/layouts/beamer.layout:980
 #, fuzzy
 msgid "TitleGraphic"
 msgstr "f ץבוק|#F"
 
-#: lib/layouts/beamer.layout:1027
+#: lib/layouts/beamer.layout:1006
 #, fuzzy
 msgid "Theorem.  "
 msgstr "m תואחסונ"
 
-#: lib/layouts/beamer.layout:1055
+#: lib/layouts/beamer.layout:1034
 #, fuzzy
 msgid "Uncover"
 msgstr "r ךופה רדס|#R"
 
-#: lib/layouts/beamer.layout:1064
+#: lib/layouts/beamer.layout:1043
 msgid "uncovered on slides  "
 msgstr ""
 
-#: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
+#: lib/layouts/beamer.layout:1065 lib/layouts/stdfloats.inc:10
 #: lib/ui/stdtoolbars.inc:96
 #, fuzzy
 msgid "Table"
 msgstr "הלבט%t"
 
-#: lib/layouts/beamer.layout:1091 lib/layouts/stdfloats.inc:15
+#: lib/layouts/beamer.layout:1070 lib/layouts/stdfloats.inc:15
 #, fuzzy
 msgid "List of Tables"
 msgstr "תואלבט תמישר תפסוה"
 
-#: lib/layouts/beamer.layout:1097 lib/layouts/stdfloats.inc:22
+#: lib/layouts/beamer.layout:1076 lib/layouts/stdfloats.inc:22
 #, fuzzy
 msgid "Figure"
 msgstr "רויא"
 
-#: lib/layouts/beamer.layout:1102 lib/layouts/stdfloats.inc:27
+#: lib/layouts/beamer.layout:1081 lib/layouts/stdfloats.inc:27
 #, fuzzy
 msgid "List of Figures"
 msgstr "רויא"
@@ -4977,8 +4969,8 @@ msgid "Adresse:"
 msgstr "o הרוש תפסוה"
 
 #: lib/layouts/dinbrief.layout:46 lib/layouts/g-brief-en.layout:204
-#: lib/layouts/g-brief2.layout:864 lib/layouts/scrlettr.layout:62
-#: lib/layouts/scrlttr2.layout:92 lib/layouts/stdletter.inc:50
+#: lib/layouts/g-brief2.layout:864 lib/layouts/scrlettr.layout:61
+#: lib/layouts/scrlttr2.layout:91 lib/layouts/stdletter.inc:50
 #, fuzzy
 msgid "Opening"
 msgstr "החיתפ"
@@ -4989,8 +4981,8 @@ msgid "Anrede:"
 msgstr "לוטיב לוטיב"
 
 #: lib/layouts/dinbrief.layout:59 lib/layouts/g-brief-en.layout:53
-#: lib/layouts/g-brief2.layout:212 lib/layouts/scrlettr.layout:138
-#: lib/layouts/scrlttr2.layout:168 lib/layouts/stdletter.inc:72
+#: lib/layouts/g-brief2.layout:212 lib/layouts/scrlettr.layout:137
+#: lib/layouts/scrlttr2.layout:167 lib/layouts/stdletter.inc:72
 #, fuzzy
 msgid "Signature"
 msgstr "רויא"
@@ -5000,8 +4992,8 @@ msgid "Unterschrift:"
 msgstr ""
 
 #: lib/layouts/dinbrief.layout:72 lib/layouts/g-brief-en.layout:230
-#: lib/layouts/g-brief2.layout:934 lib/layouts/scrlettr.layout:72
-#: lib/layouts/scrlttr2.layout:114 lib/layouts/stdletter.inc:93
+#: lib/layouts/g-brief2.layout:934 lib/layouts/scrlettr.layout:71
+#: lib/layouts/scrlttr2.layout:113 lib/layouts/stdletter.inc:93
 #, fuzzy
 msgid "Closing"
 msgstr "הריגס"
@@ -5177,8 +5169,8 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:141 lib/layouts/g-brief-en.layout:184
 #: lib/layouts/g-brief2.layout:810 lib/layouts/revtex.layout:128
-#: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:148
-#: lib/layouts/scrlttr2.layout:57 lib/layouts/amsdefs.inc:163
+#: lib/layouts/revtex4.layout:167 lib/layouts/scrlettr.layout:147
+#: lib/layouts/scrlttr2.layout:56 lib/layouts/amsdefs.inc:163
 #, fuzzy
 msgid "Address:"
 msgstr "o הרוש תפסוה"
@@ -5433,13 +5425,13 @@ msgid "Text:"
 msgstr "ביטגנ|#H"
 
 #: lib/layouts/g-brief-de.layout:34 lib/layouts/g-brief-en.layout:34
-#: lib/layouts/g-brief2.layout:56 lib/layouts/scrlettr.layout:117
-#: lib/layouts/scrlttr2.layout:145 lib/layouts/agu_stdtitle.inc:184
+#: lib/layouts/g-brief2.layout:56 lib/layouts/scrlettr.layout:116
+#: lib/layouts/scrlttr2.layout:144 lib/layouts/agu_stdtitle.inc:184
 msgid "Name"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:44 lib/layouts/g-brief-en.layout:44
-#: lib/layouts/g-brief2.layout:66 lib/layouts/scrlettr.layout:129
+#: lib/layouts/g-brief2.layout:66 lib/layouts/scrlettr.layout:128
 #: lib/layouts/agu_stdtitle.inc:188
 #, fuzzy
 msgid "Name:"
@@ -5563,12 +5555,12 @@ msgid "HTTP:"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:151 lib/layouts/g-brief-en.layout:151
-#: lib/layouts/scrlttr2.layout:216
+#: lib/layouts/scrlttr2.layout:215
 msgid "Bank"
 msgstr ""
 
 #: lib/layouts/g-brief-de.layout:154 lib/layouts/g-brief-en.layout:154
-#: lib/layouts/scrlttr2.layout:220
+#: lib/layouts/scrlttr2.layout:219
 #, fuzzy
 msgid "Bank:"
 msgstr "ףלחה"
@@ -5620,7 +5612,7 @@ msgid "Gruss"
 msgstr ""
 
 #: lib/layouts/g-brief-en.layout:16 lib/layouts/g-brief2.layout:34
-#: lib/layouts/scrlettr.layout:41
+#: lib/layouts/scrlettr.layout:40
 msgid "Letter"
 msgstr ""
 
@@ -5630,7 +5622,7 @@ msgid "Letter:"
 msgstr "הרימש"
 
 #: lib/layouts/g-brief-en.layout:56 lib/layouts/g-brief2.layout:222
-#: lib/layouts/scrlettr.layout:141 lib/layouts/scrlttr2.layout:172
+#: lib/layouts/scrlettr.layout:140 lib/layouts/scrlttr2.layout:171
 #: lib/layouts/stdletter.inc:84
 #, fuzzy
 msgid "Signature:"
@@ -5746,7 +5738,7 @@ msgstr "ךמסמ"
 
 #: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:831
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
-#: lib/layouts/scrlettr.layout:169 lib/layouts/scrlttr2.layout:244
+#: lib/layouts/scrlettr.layout:168 lib/layouts/scrlttr2.layout:243
 #: lib/layouts/amsdefs.inc:114
 #, fuzzy
 msgid "Date:"
@@ -5763,7 +5755,7 @@ msgid "Reference:"
 msgstr "םירויא תפסוה"
 
 #: lib/layouts/g-brief-en.layout:209 lib/layouts/g-brief2.layout:876
-#: lib/layouts/scrlttr2.layout:104 lib/layouts/stdletter.inc:63
+#: lib/layouts/scrlttr2.layout:103 lib/layouts/stdletter.inc:63
 #, fuzzy
 msgid "Opening:"
 msgstr "החיתפ"
@@ -5778,13 +5770,13 @@ msgid "Encl.:"
 msgstr "לוטיב"
 
 #: lib/layouts/g-brief-en.layout:226 lib/layouts/g-brief2.layout:923
-#: lib/layouts/scrlettr.layout:106 lib/layouts/scrlttr2.layout:134
+#: lib/layouts/scrlettr.layout:105 lib/layouts/scrlttr2.layout:133
 #: lib/layouts/stdletter.inc:114
 msgid "cc:"
 msgstr ""
 
 #: lib/layouts/g-brief-en.layout:235 lib/layouts/g-brief2.layout:946
-#: lib/layouts/scrlttr2.layout:118 lib/layouts/stdletter.inc:97
+#: lib/layouts/scrlttr2.layout:117 lib/layouts/stdletter.inc:97
 #, fuzzy
 msgid "Closing:"
 msgstr "הריגס"
@@ -6265,11 +6257,6 @@ msgid "Commission"
 msgstr "םיטוטיצ"
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
-msgid "Caption."
-msgstr "o תויורשפא"
-
-#: lib/layouts/isprs.layout:248
 msgid "ACKNOWLEDGEMENTS"
 msgstr ""
 
@@ -6408,7 +6395,7 @@ msgstr "בוביס"
 msgid "Code"
 msgstr "הריגס"
 
-#: lib/layouts/manpage.layout:163 lib/layouts/db_stdlayouts.inc:34
+#: lib/layouts/manpage.layout:163 lib/layouts/db_stdlayouts.inc:30
 msgid "SGML"
 msgstr ""
 
@@ -6488,196 +6475,196 @@ msgstr ""
 msgid "Labeling"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:52
+#: lib/layouts/scrlettr.layout:51
 msgid "L"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:65
+#: lib/layouts/scrlettr.layout:64
 msgid "O"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:84 lib/layouts/scrlttr2.layout:122
+#: lib/layouts/scrlettr.layout:83 lib/layouts/scrlttr2.layout:121
 msgid "PS"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:95 lib/layouts/scrlttr2.layout:130
+#: lib/layouts/scrlettr.layout:94 lib/layouts/scrlttr2.layout:129
 msgid "CC"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:110 lib/layouts/scrlttr2.layout:138
+#: lib/layouts/scrlettr.layout:109 lib/layouts/scrlttr2.layout:137
 #, fuzzy
 msgid "Encl"
 msgstr "לוטיב"
 
-#: lib/layouts/scrlettr.layout:113 lib/layouts/scrlttr2.layout:141
+#: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:140
 #: lib/layouts/stdletter.inc:122
 #, fuzzy
 msgid "encl:"
 msgstr "לוטיב"
 
-#: lib/layouts/scrlettr.layout:152 lib/layouts/scrlttr2.layout:184
+#: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:183
 #: lib/layouts/stdletter.inc:135
 msgid "Telephone"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:155 lib/layouts/stdletter.inc:139
+#: lib/layouts/scrlettr.layout:154 lib/layouts/stdletter.inc:139
 #, fuzzy
 msgid "Telephone:"
 msgstr "ןוויכ"
 
-#: lib/layouts/scrlettr.layout:159 lib/layouts/scrlttr2.layout:232
+#: lib/layouts/scrlettr.layout:158 lib/layouts/scrlttr2.layout:231
 #, fuzzy
 msgid "Place"
 msgstr "ףלחה"
 
-#: lib/layouts/scrlettr.layout:162 lib/layouts/scrlttr2.layout:236
+#: lib/layouts/scrlettr.layout:161 lib/layouts/scrlttr2.layout:235
 #, fuzzy
 msgid "Place:"
 msgstr "ףלחה"
 
-#: lib/layouts/scrlettr.layout:173 lib/layouts/scrlttr2.layout:248
+#: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:247
 msgid "Backaddress"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:176 lib/layouts/scrlttr2.layout:252
+#: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:251
 msgid "Backaddress:"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:180 lib/layouts/scrlttr2.layout:256
+#: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:255
 msgid "Specialmail"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:183 lib/layouts/scrlttr2.layout:260
+#: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:259
 #, fuzzy
 msgid "Specialmail:"
 msgstr "ות ןונגס"
 
-#: lib/layouts/scrlettr.layout:187 lib/layouts/scrlttr2.layout:264
+#: lib/layouts/scrlettr.layout:186 lib/layouts/scrlttr2.layout:263
 #: lib/layouts/stdletter.inc:127
 #, fuzzy
 msgid "Location"
 msgstr "בוביס"
 
-#: lib/layouts/scrlettr.layout:190 lib/layouts/scrlttr2.layout:268
+#: lib/layouts/scrlettr.layout:189 lib/layouts/scrlttr2.layout:267
 #: lib/layouts/stdletter.inc:131
 #, fuzzy
 msgid "Location:"
 msgstr "בוביס"
 
-#: lib/layouts/scrlettr.layout:197 lib/layouts/scrlttr2.layout:276
+#: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:275
 #, fuzzy
 msgid "Title:"
 msgstr "f ץבוק"
 
-#: lib/layouts/scrlettr.layout:201 lib/layouts/scrlttr2.layout:280
+#: lib/layouts/scrlettr.layout:200 lib/layouts/scrlttr2.layout:279
 #: lib/layouts/scrclass.inc:168
 msgid "Subject"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:204 lib/layouts/scrlttr2.layout:284
+#: lib/layouts/scrlettr.layout:203 lib/layouts/scrlttr2.layout:283
 #, fuzzy
 msgid "Subject:"
 msgstr "ןוויכ"
 
-#: lib/layouts/scrlettr.layout:208 lib/layouts/scrlttr2.layout:288
+#: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:287
 msgid "Yourref"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:211 lib/layouts/scrlttr2.layout:292
+#: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:291
 #, fuzzy
 msgid "Your ref.:"
 msgstr "f ץבוק"
 
-#: lib/layouts/scrlettr.layout:222 lib/layouts/scrlttr2.layout:304
+#: lib/layouts/scrlettr.layout:221 lib/layouts/scrlttr2.layout:303
 msgid "Yourmail"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:225 lib/layouts/scrlttr2.layout:308
+#: lib/layouts/scrlettr.layout:224 lib/layouts/scrlttr2.layout:307
 msgid "Your letter of:"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:229 lib/layouts/scrlttr2.layout:312
+#: lib/layouts/scrlettr.layout:228 lib/layouts/scrlttr2.layout:311
 msgid "Myref"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:232 lib/layouts/scrlttr2.layout:316
+#: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:315
 msgid "Our ref.:"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:236 lib/layouts/scrlttr2.layout:320
+#: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:319
 msgid "Customer"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:239 lib/layouts/scrlttr2.layout:324
+#: lib/layouts/scrlettr.layout:238 lib/layouts/scrlttr2.layout:323
 #, fuzzy
 msgid "Customer no.:"
 msgstr "הריזג"
 
-#: lib/layouts/scrlettr.layout:243 lib/layouts/scrlttr2.layout:328
+#: lib/layouts/scrlettr.layout:242 lib/layouts/scrlttr2.layout:327
 msgid "Invoice"
 msgstr ""
 
-#: lib/layouts/scrlettr.layout:246 lib/layouts/scrlttr2.layout:332
+#: lib/layouts/scrlettr.layout:245 lib/layouts/scrlttr2.layout:331
 msgid "Invoice no.:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:69
+#: lib/layouts/scrlttr2.layout:68
 msgid "NextAddress"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:81
+#: lib/layouts/scrlttr2.layout:80
 msgid "Next Address:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:126
+#: lib/layouts/scrlttr2.layout:125
 msgid "Post Scriptum:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:158
+#: lib/layouts/scrlttr2.layout:157
 #, fuzzy
 msgid "Sender Name:"
 msgstr "הספדה"
 
-#: lib/layouts/scrlttr2.layout:176
+#: lib/layouts/scrlttr2.layout:175
 msgid "SenderAddress"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:180
+#: lib/layouts/scrlttr2.layout:179
 msgid "Sender Address:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:188
+#: lib/layouts/scrlttr2.layout:187
 msgid "Sender Phone:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:192
+#: lib/layouts/scrlttr2.layout:191
 msgid "Fax"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:196
+#: lib/layouts/scrlttr2.layout:195
 msgid "Sender Fax:"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:200
+#: lib/layouts/scrlttr2.layout:199
 #, fuzzy
 msgid "E-Mail"
 msgstr "הצירטמ"
 
-#: lib/layouts/scrlttr2.layout:204
+#: lib/layouts/scrlttr2.layout:203
 #, fuzzy
 msgid "Sender E-Mail:"
 msgstr "הצירטמ"
 
-#: lib/layouts/scrlttr2.layout:212
+#: lib/layouts/scrlttr2.layout:211
 #, fuzzy
 msgid "Sender URL:"
 msgstr "i הפסוה"
 
-#: lib/layouts/scrlttr2.layout:224
+#: lib/layouts/scrlttr2.layout:223
 msgid "Logo"
 msgstr ""
 
-#: lib/layouts/scrlttr2.layout:228
+#: lib/layouts/scrlttr2.layout:227
 msgid "Logo:"
 msgstr ""
 
@@ -7462,12 +7449,12 @@ msgstr ""
 msgid "Captionabove"
 msgstr "o תויורשפא"
 
-#: lib/layouts/scrclass.inc:237
+#: lib/layouts/scrclass.inc:251
 #, fuzzy
 msgid "Captionbelow"
 msgstr "o תויורשפא"
 
-#: lib/layouts/scrclass.inc:243
+#: lib/layouts/scrclass.inc:271
 msgid "Dictum"
 msgstr ""
 
@@ -7475,10 +7462,6 @@ msgstr ""
 #, fuzzy
 msgid "List of Algorithms"
 msgstr "תואלבט תמישר תפסוה"
-
-#: lib/layouts/stdlayouts.inc:75
-msgid "Senseless!"
-msgstr ""
 
 #: lib/layouts/stdlists.inc:103
 msgid "#*"
@@ -8689,37 +8672,41 @@ msgstr ""
 msgid "Extended Features|E"
 msgstr ""
 
-#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:472
+#: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:471
+msgid "Embedded Objects|m"
+msgstr ""
+
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:472
 msgid "Customization|C"
 msgstr ""
 
-#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:473
+#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:473
 msgid "FAQ|F"
 msgstr ""
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:474
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:474
 #, fuzzy
 msgid "Table of Contents|a"
 msgstr "םיניינעה ןכותב רופסמ קמוע:"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:475
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:475
 msgid "LaTeX Configuration|L"
 msgstr ""
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:477
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:477
 msgid "About LyX|X"
 msgstr ""
 
-#: lib/ui/classic.ui:424 src/frontends/qt4/QAbout.C:44
+#: lib/ui/classic.ui:425 src/frontends/qt4/QAbout.C:44
 msgid "About LyX"
 msgstr ""
 
-#: lib/ui/classic.ui:425
+#: lib/ui/classic.ui:426
 #, fuzzy
 msgid "Preferences..."
 msgstr "םירויא תפסוה"
 
-#: lib/ui/classic.ui:426
+#: lib/ui/classic.ui:427
 msgid "Quit LyX"
 msgstr ""
 
@@ -9110,6 +9097,11 @@ msgstr ""
 msgid "Cross-Reference...|R"
 msgstr "םירויא תפסוה"
 
+#: lib/ui/stdmenus.inc:303
+#, fuzzy
+msgid "Caption"
+msgstr "o תויורשפא"
+
 #: lib/ui/stdmenus.inc:304
 #, fuzzy
 msgid "Index Entry|d"
@@ -9311,11 +9303,6 @@ msgstr "ריינה הנבמ"
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "רוטיע"
-
-#: lib/ui/stdmenus.inc:471
-#, fuzzy
-msgid "Special Insets|S"
-msgstr "הביבסה קמוע יוניש"
 
 #: lib/ui/stdtoolbars.inc:44
 msgid "New document"
@@ -9823,12 +9810,12 @@ msgstr "ןב ךמסמ חתופ - "
 msgid "Count words"
 msgstr "רפסמ:"
 
-#: src/BufferView.C:1525
+#: src/BufferView.C:1527
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: src/BufferView.C:1527 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1529 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -9838,34 +9825,34 @@ msgstr "הפסוהל ךמסמ תריחב"
 msgid "Documents|#o#O"
 msgstr "ךמסמ"
 
-#: src/BufferView.C:1528 src/lyxfunc.C:1895 src/lyxfunc.C:1968
+#: src/BufferView.C:1530 src/lyxfunc.C:1895 src/lyxfunc.C:1968
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "תואמגוד"
 
-#: src/BufferView.C:1532 src/lyx_cb.C:140 src/lyxfunc.C:1862
+#: src/BufferView.C:1534 src/lyx_cb.C:140 src/lyxfunc.C:1862
 #: src/lyxfunc.C:1899
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "ךמסמ"
 
-#: src/BufferView.C:1544 src/lyxfunc.C:1909 src/lyxfunc.C:1989
+#: src/BufferView.C:1546 src/lyxfunc.C:1909 src/lyxfunc.C:1989
 #: src/lyxfunc.C:2003 src/lyxfunc.C:2019
 #, fuzzy
 msgid "Canceled."
 msgstr "לוטיב"
 
-#: src/BufferView.C:1555
+#: src/BufferView.C:1557
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "ךמסמ ףיסומ"
 
-#: src/BufferView.C:1566
+#: src/BufferView.C:1568
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "דבלב האירקל אוה ךמסמה"
 
-#: src/BufferView.C:1568
+#: src/BufferView.C:1570
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "ךמסמ ףיסוהל יתחלצה אל"
@@ -10308,7 +10295,7 @@ msgstr "םיטוטיצ"
 #: src/buffer.C:688
 #, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
@@ -10320,7 +10307,7 @@ msgstr "[ץבוק ןיא]"
 #: src/buffer.C:698
 #, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
@@ -10332,7 +10319,7 @@ msgstr "םיטוטיצ"
 #: src/buffer.C:720
 #, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
@@ -12250,6 +12237,10 @@ msgstr "םיפד:"
 msgid "Opened Caption Inset"
 msgstr "הביבסה קמוע יוניש"
 
+#: src/insets/insetcaption.C:106
+msgid "Senseless!!! "
+msgstr ""
+
 #: src/insets/insetcharstyle.C:123
 #, fuzzy
 msgid "Opened CharStyle Inset"
@@ -13151,7 +13142,7 @@ msgstr ""
 msgid "Exiting."
 msgstr "האיצי"
 
-#: src/lyxfunc.C:1105 src/text3.C:1221
+#: src/lyxfunc.C:1105 src/text3.C:1229
 msgid "Missing argument"
 msgstr "טנמוגרא רסח"
 
@@ -14085,12 +14076,12 @@ msgstr "l הנבמ"
 msgid " not known"
 msgstr "עודי אל"
 
-#: src/text3.C:1326 src/text3.C:1338
+#: src/text3.C:1334 src/text3.C:1346
 #, fuzzy
 msgid "Character set"
 msgstr "ות ןונגס"
 
-#: src/text3.C:1469
+#: src/text3.C:1477
 #, fuzzy
 msgid "Paragraph layout set"
 msgstr "o תויורשפא"
@@ -14123,6 +14114,14 @@ msgstr "יכנא רושי|#V"
 #, fuzzy
 msgid "protected"
 msgstr "!רעטצמ"
+
+#, fuzzy
+#~ msgid "Caption."
+#~ msgstr "o תויורשפא"
+
+#, fuzzy
+#~ msgid "Special Insets|S"
+#~ msgstr "הביבסה קמוע יוניש"
 
 #, fuzzy
 #~ msgid "Insets|n"
