@@ -143,8 +143,14 @@ string const ControlPrefs::browsekbmap(string const & file) const
 
 string const ControlPrefs::browsedict(string const & file) const
 {
-	return browseFile(file, _("Choose personal dictionary"),
-			  FileFilterList(_("*.ispell")));
+	if (lyxrc.use_spell_lib)
+		return browseFile(file,
+				  _("Choose personal dictionary"),
+				  FileFilterList(_("*.pws")));
+	else
+		return browseFile(file,
+				  _("Choose personal dictionary"),
+				  FileFilterList(_("*.ispell")));
 }
 
 

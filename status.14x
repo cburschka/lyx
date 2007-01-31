@@ -220,6 +220,9 @@ What's new
 - Rename lib/ui/std*.ui include files to *.inc so that the user is not
   tempted to try them (bug 2387).
 
+- add Aspell/Pspell's file extension for personal dictionary files
+  in preferences (bug 895)
+
 * BUILD/INSTALLATION:
 
 - Allow autoconf 2.60 and 2.61 for building.
