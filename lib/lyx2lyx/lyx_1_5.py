@@ -717,10 +717,10 @@ def convert_lyxline(document):
     # before \lyxline is therefore removed to get the same output.
     fontsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize",
                  "large", "Large", "LARGE", "huge", "Huge"]
-    for n in range(0, len(fontsizes)-1):
+    for n in range(0, len(fontsizes)):
         i = 0
         k = 0
-        while 1:
+        while i < len(document.body):
             i = find_token(document.body, "\\size " + fontsizes[n], i)
             k = find_token(document.body, "\\lyxline",i)
             # the corresponding fontsize command is always 2 lines before the \lyxline
