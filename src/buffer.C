@@ -685,7 +685,7 @@ Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
 		FileName const tmpfile(tempName());
 		if (tmpfile.empty()) {
 			Alert::error(_("Conversion failed"),
-				     bformat(_("%1$s is from an earlier"
+				     bformat(_("%1$s is from a different"
 					      " version of LyX, but a temporary"
 					      " file for converting it could"
 							    " not be created."),
@@ -695,7 +695,7 @@ Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
 		FileName const lyx2lyx = libFileSearch("lyx2lyx", "lyx2lyx");
 		if (lyx2lyx.empty()) {
 			Alert::error(_("Conversion script not found"),
-				     bformat(_("%1$s is from an earlier"
+				     bformat(_("%1$s is from a different"
 					       " version of LyX, but the"
 					       " conversion script lyx2lyx"
 							    " could not be found."),
@@ -717,7 +717,7 @@ Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
 		cmd_ret const ret = runCommand(command_str);
 		if (ret.first != 0) {
 			Alert::error(_("Conversion script failed"),
-				     bformat(_("%1$s is from an earlier version"
+				     bformat(_("%1$s is from a different version"
 					      " of LyX, but the lyx2lyx script"
 							    " failed to convert it."),
 					      from_utf8(filename.absFilename())));
@@ -1145,8 +1145,8 @@ int Buffer::runChktex()
 	busy(true);
 
 	// get LaTeX-Filename
-	string const name = getLatexName(false);
 	string const path = temppath();
+        string const name = addName(path, getLatexName());
 	string const org_path = filePath();
 
 	support::Path p(path); // path to LaTeX file
