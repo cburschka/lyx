@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-19 17:30+0100\n"
+"POT-Creation-Date: 2007-01-31 16:13+0100\n"
 "PO-Revision-Date: 2007-01-22 21:52+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team:  <hu@li.org>\n"
@@ -10114,8 +10114,8 @@ msgid "TeX Information|I"
 msgstr "TeX információ|X"
 
 #: lib/ui/stdmenus.inc:451
-msgid "Insets|n"
-msgstr "Betétek|k"
+msgid "Embedded Objects|m"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
@@ -10903,9 +10903,9 @@ msgid "Conversion failed"
 msgstr "Átalakítás nem sikerült"
 
 #: src/buffer.C:627
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 "%1$s egy korábbi LyX verzióval készült, sajnos az ideiglenes fájl az "
@@ -10916,9 +10916,9 @@ msgid "Conversion script not found"
 msgstr "Átalakító parancsfájl nincs meg"
 
 #: src/buffer.C:637
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 "%1$s egy korábbi LyX verzióval készült, sajnos a lyx2lyx átalakító nem "
@@ -10929,9 +10929,9 @@ msgid "Conversion script failed"
 msgstr "Az átalakító parancs sikertelen"
 
 #: src/buffer.C:658
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 "A %1$s fájl korábbi LyX verzióval készült, és a lyx2lyx program nem tudja "
@@ -13958,18 +13958,27 @@ msgstr "importálva."
 msgid "Opened inset"
 msgstr "Betét kinyitva"
 
-#: src/insets/insetbibtex.C:105
+#: src/insets/insetbibtex.C:106
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX által készített irodalomjegyzék"
 
-#: src/insets/insetbibtex.C:191
+#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
 msgid "Export Warning!"
 msgstr "Exportálási Figyelmeztetés!"
 
-#: src/insets/insetbibtex.C:192
+#: src/insets/insetbibtex.C:194
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
+msgstr ""
+"Szóközök vannak a BibTeX adatbázis elérési útjában.\n"
+"A BibTeX nem fogja tudni megtalálni õket."
+
+#: src/insets/insetbibtex.C:245
+#, fuzzy
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
 msgstr ""
 "Szóközök vannak a BibTeX adatbázis elérési útjában.\n"
 "A BibTeX nem fogja tudni megtalálni õket."
@@ -14074,7 +14083,7 @@ msgstr "lábjegyzet"
 msgid "Opened Footnote Inset"
 msgstr "Lábjegyzetbetét kinyitva"
 
-#: src/insets/insetgraphics.C:484 src/insets/insetinclude.C:416
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14084,12 +14093,12 @@ msgstr ""
 "A %1$s fájl\n"
 "nem másolható az ideiglenes könyvtárba."
 
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:707
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Nincs szükség %1$s átalakítására"
 
-#: src/insets/insetgraphics.C:819
+#: src/insets/insetgraphics.C:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Képfájl: %1$s"
@@ -15739,6 +15748,9 @@ msgstr "Függõleges kitöltés"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "védett"
+
+#~ msgid "Insets|n"
+#~ msgstr "Betétek|k"
 
 #~ msgid "LyX function 'layout' needs an argument."
 #~ msgstr "A 'layout' LyX funkciónak szüksége van egy paraméterre."

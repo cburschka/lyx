@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-19 17:30+0100\n"
+"POT-Creation-Date: 2007-01-31 16:13+0100\n"
 "PO-Revision-Date: 2006-10-17 20:37+0200\n"
 "Last-Translator: José Ramom Flores d'as Seixas <fa2ramon@usc.es>\n"
 "Language-Team:  <gl@li.org>\n"
@@ -10156,9 +10156,8 @@ msgid "TeX Information|I"
 msgstr "Información TeX|X"
 
 #: lib/ui/stdmenus.inc:451
-#, fuzzy
-msgid "Insets|n"
-msgstr "Inserir|I"
+msgid "Embedded Objects|m"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
@@ -10945,9 +10944,9 @@ msgid "Conversion failed"
 msgstr "Fallou a conversión"
 
 #: src/buffer.C:627
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 "%1$s é dunha versión anterior de LyX, porén non se pudo criar un ficheiro "
@@ -10958,9 +10957,9 @@ msgid "Conversion script not found"
 msgstr "Non se achou script de conversión"
 
 #: src/buffer.C:637
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 "%1$s é dunha versión anterior de LyX, porén non se pudo achar o script de "
@@ -10971,9 +10970,9 @@ msgid "Conversion script failed"
 msgstr "Fallou o script de conversión"
 
 #: src/buffer.C:658
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 "%1$s é dunha versión anterior de LyX, porén o script lyx2lyx fallou ao "
@@ -14001,18 +14000,27 @@ msgstr "importado."
 msgid "Opened inset"
 msgstr "Recadro aberto"
 
-#: src/insets/insetbibtex.C:105
+#: src/insets/insetbibtex.C:106
 msgid "BibTeX Generated Bibliography"
 msgstr "Bibliografia Xerada BibTeX"
 
-#: src/insets/insetbibtex.C:191
+#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
 msgid "Export Warning!"
 msgstr "Aviso de exportar!"
 
-#: src/insets/insetbibtex.C:192
+#: src/insets/insetbibtex.C:194
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
+msgstr ""
+"Ha espazos nas rotas a seus bancos de dados BibTeX.\n"
+"BibTeX non vai poder achá-las."
+
+#: src/insets/insetbibtex.C:245
+#, fuzzy
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
 msgstr ""
 "Ha espazos nas rotas a seus bancos de dados BibTeX.\n"
 "BibTeX non vai poder achá-las."
@@ -14117,7 +14125,7 @@ msgstr "rodapé"
 msgid "Opened Footnote Inset"
 msgstr "Recadro de nota de rodapé aberto"
 
-#: src/insets/insetgraphics.C:484 src/insets/insetinclude.C:416
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14128,12 +14136,12 @@ msgstr ""
 "%1$s\n"
 "na directória temporária."
 
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:707
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Finalmente, non é necesário converter %1$s "
 
-#: src/insets/insetgraphics.C:819
+#: src/insets/insetgraphics.C:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Ficheiro gráfico: %1$s"
@@ -15800,6 +15808,10 @@ msgstr "Recheo vertical"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "protexido"
+
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Inserir|I"
 
 #~ msgid "LyX function 'layout' needs an argument."
 #~ msgstr "A función 'layout' de LyX precisa un argumento."

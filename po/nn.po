@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-19 17:30+0100\n"
+"POT-Creation-Date: 2007-01-31 16:13+0100\n"
 "PO-Revision-Date: 2006-09-18 18:34+0200\n"
 "Last-Translator: Ingar Pareliussen <ingarp_ved_samfundet.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -10155,9 +10155,8 @@ msgid "TeX Information|I"
 msgstr "TeX informasjon|T"
 
 #: lib/ui/stdmenus.inc:451
-#, fuzzy
-msgid "Insets|n"
-msgstr "Set inn|S"
+msgid "Embedded Objects|m"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
@@ -10943,9 +10942,9 @@ msgid "Conversion failed"
 msgstr "Feil oppstod i konverteringa"
 
 #: src/buffer.C:627
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 "%1$s vart laga i ein gammal LyX versjon, Desverre kunne vi ikkje lage ein "
@@ -10956,9 +10955,9 @@ msgid "Conversion script not found"
 msgstr "Fann ikkje eksport programmet"
 
 #: src/buffer.C:637
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
@@ -10969,9 +10968,9 @@ msgid "Conversion script failed"
 msgstr "Feil ved køyring av eksport programmet"
 
 #: src/buffer.C:658
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 "%1$s vart laga i ein gammal LyX versjon. men programmet for å fornye "
@@ -13978,18 +13977,27 @@ msgstr "importert."
 msgid "Opened inset"
 msgstr "Opna innskot"
 
-#: src/insets/insetbibtex.C:105
+#: src/insets/insetbibtex.C:106
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX genererte referansar"
 
-#: src/insets/insetbibtex.C:191
+#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
 msgid "Export Warning!"
 msgstr "Eksport åtvaring!"
 
-#: src/insets/insetbibtex.C:192
+#: src/insets/insetbibtex.C:194
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
+msgstr ""
+"Det er mellomrom i stigen til BibTeX databasane.\n"
+"BibTeX vil derfor ikkje kunne finne dei."
+
+#: src/insets/insetbibtex.C:245
+#, fuzzy
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
 msgstr ""
 "Det er mellomrom i stigen til BibTeX databasane.\n"
 "BibTeX vil derfor ikkje kunne finne dei."
@@ -14094,7 +14102,7 @@ msgstr "fot"
 msgid "Opened Footnote Inset"
 msgstr "Opna botntekst innskot"
 
-#: src/insets/insetgraphics.C:484 src/insets/insetinclude.C:416
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14105,12 +14113,12 @@ msgstr ""
 "%1$s\n"
 "til den mellombelse katalogen."
 
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:707
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Ingen konvertering av %1$s var naudsynt likvel"
 
-#: src/insets/insetgraphics.C:819
+#: src/insets/insetgraphics.C:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikk-fil: %1$s"
@@ -15741,6 +15749,10 @@ msgstr "Fyll loddrett"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "vern"
+
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Set inn|S"
 
 #~ msgid "LyX function 'layout' needs an argument."
 #~ msgstr "LyX funksjonen «Stil» treng eit argument."

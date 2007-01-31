@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-19 17:30+0100\n"
+"POT-Creation-Date: 2007-01-31 16:13+0100\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -10837,9 +10837,8 @@ msgid "TeX Information|I"
 msgstr "TeX-tietoja|X"
 
 #: lib/ui/stdmenus.inc:451
-#, fuzzy
-msgid "Insets|n"
-msgstr "Lisää|L"
+msgid "Embedded Objects|m"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 #, fuzzy
@@ -11709,11 +11708,12 @@ msgid "Conversion failed"
 msgstr "Muuntaminen"
 
 #: src/buffer.C:627
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
+"Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
 
 #: src/buffer.C:636
 #, fuzzy
@@ -11721,11 +11721,12 @@ msgid "Conversion script not found"
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
 #: src/buffer.C:637
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
+"Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
 
 #: src/buffer.C:657
 #, fuzzy
@@ -11735,7 +11736,7 @@ msgstr "Muunnoskriptiä ei löydy."
 #: src/buffer.C:658
 #, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 "Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
@@ -14887,19 +14888,25 @@ msgstr "tuotu."
 msgid "Opened inset"
 msgstr "Osio avattiin"
 
-#: src/insets/insetbibtex.C:105
+#: src/insets/insetbibtex.C:106
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeXin luomat lähdeviitteet"
 
-#: src/insets/insetbibtex.C:191
+#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Varoitus!"
 
-#: src/insets/insetbibtex.C:192
+#: src/insets/insetbibtex.C:194
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
+msgstr ""
+
+#: src/insets/insetbibtex.C:245
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
 msgstr ""
 
 #: src/insets/insetbox.C:57
@@ -15010,7 +15017,7 @@ msgstr "alaviite"
 msgid "Opened Footnote Inset"
 msgstr "Alaviiteosio avattiin"
 
-#: src/insets/insetgraphics.C:484 src/insets/insetinclude.C:416
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -15018,12 +15025,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:707
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:819
+#: src/insets/insetgraphics.C:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Kuvatiedosto: %1$s"
@@ -16693,6 +16700,10 @@ msgstr "&Pysty:"
 #, fuzzy
 msgid "protected"
 msgstr "Kova välilyönti|K"
+
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Lisää|L"
 
 #~ msgid "LyX function 'layout' needs an argument."
 #~ msgstr "LyXin funktio \"layout\" vaatii parametrin."

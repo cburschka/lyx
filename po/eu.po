@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-19 17:30+0100\n"
+"POT-Creation-Date: 2007-01-31 16:13+0100\n"
 "PO-Revision-Date: 2006-09-18 10:16+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -10162,9 +10162,8 @@ msgid "TeX Information|I"
 msgstr "TeX informazioa|X"
 
 #: lib/ui/stdmenus.inc:451
-#, fuzzy
-msgid "Insets|n"
-msgstr "Txertatu|T"
+msgid "Embedded Objects|m"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
@@ -10950,9 +10949,9 @@ msgid "Conversion failed"
 msgstr "Bihurketak huts egin du"
 
 #: src/buffer.C:627
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da aldi baterako "
@@ -10963,9 +10962,9 @@ msgid "Conversion script not found"
 msgstr "Ez da bihurtzeko script-a aurkitu"
 
 #: src/buffer.C:637
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina ezin izan da lyx2lyx script-a "
@@ -10976,9 +10975,9 @@ msgid "Conversion script failed"
 msgstr "Bihurtzeko script-ak huts egin du"
 
 #: src/buffer.C:658
-#, c-format
+#, fuzzy, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 "%1$s LyX-en bertsio berriago batekoa da, baina lyx2lyx script-ak huts egin "
@@ -14011,18 +14010,27 @@ msgstr "inportatua."
 msgid "Opened inset"
 msgstr "Irekitako barnekoa"
 
-#: src/insets/insetbibtex.C:105
+#: src/insets/insetbibtex.C:106
 msgid "BibTeX Generated Bibliography"
 msgstr "BibTeX-ek sortutako bibliografia"
 
-#: src/insets/insetbibtex.C:191
+#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
 msgid "Export Warning!"
 msgstr "Esportatze-abisua!"
 
-#: src/insets/insetbibtex.C:192
+#: src/insets/insetbibtex.C:194
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
+msgstr ""
+"BibTeX datu-basearen bide-izenetan zuriuneak daude.\n"
+"BibTeX ez da gai hauek bilatzeko."
+
+#: src/insets/insetbibtex.C:245
+#, fuzzy
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
 msgstr ""
 "BibTeX datu-basearen bide-izenetan zuriuneak daude.\n"
 "BibTeX ez da gai hauek bilatzeko."
@@ -14127,7 +14135,7 @@ msgstr "oina"
 msgid "Opened Footnote Inset"
 msgstr "Irekitako oin-oharren barnekoa"
 
-#: src/insets/insetgraphics.C:484 src/insets/insetinclude.C:416
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14138,12 +14146,12 @@ msgstr ""
 "%1$s\n"
 "aldi-baterako direktorioan."
 
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:707
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Azken finean ez da %1$s(r)en bihurketarik behar"
 
-#: src/insets/insetgraphics.C:819
+#: src/insets/insetgraphics.C:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikoen fitxategia: %1$s"
@@ -15806,6 +15814,10 @@ msgstr "Betegarri bertikala"
 #: src/vspace.C:506
 msgid "protected"
 msgstr "babestua"
+
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Txertatu|T"
 
 #~ msgid "LyX function 'layout' needs an argument."
 #~ msgstr "LyX-eko 'layout' funtzioak argumentu bat behar du."

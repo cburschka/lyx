@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.4.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-19 17:30+0100\n"
+"POT-Creation-Date: 2007-01-31 16:13+0100\n"
 "PO-Revision-Date: 2006-06-29 20:19+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -10513,9 +10513,8 @@ msgid "TeX Information|I"
 msgstr "TeX informácie|i"
 
 #: lib/ui/stdmenus.inc:451
-#, fuzzy
-msgid "Insets|n"
-msgstr "Vlo¾i»|I"
+msgid "Embedded Objects|m"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
@@ -11356,7 +11355,7 @@ msgstr "Prevod"
 #: src/buffer.C:627
 #, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but a temporary file for converting "
+"%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
@@ -11368,7 +11367,7 @@ msgstr "Logovací súbor kontroly verzií nebol nájdený."
 #: src/buffer.C:637
 #, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the conversion script lyx2lyx "
+"%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
@@ -11379,7 +11378,7 @@ msgstr ""
 #: src/buffer.C:658
 #, c-format
 msgid ""
-"%1$s is from an earlier version of LyX, but the lyx2lyx script failed to "
+"%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
@@ -14462,20 +14461,26 @@ msgstr "importované."
 msgid "Opened inset"
 msgstr "Otvorená príloha"
 
-#: src/insets/insetbibtex.C:105
+#: src/insets/insetbibtex.C:106
 #, fuzzy
 msgid "BibTeX Generated Bibliography"
 msgstr "Referencie generované BibTeXom"
 
-#: src/insets/insetbibtex.C:191
+#: src/insets/insetbibtex.C:193 src/insets/insetbibtex.C:244
 #, fuzzy
 msgid "Export Warning!"
 msgstr "Varovanie!"
 
-#: src/insets/insetbibtex.C:192
+#: src/insets/insetbibtex.C:194
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
+msgstr ""
+
+#: src/insets/insetbibtex.C:245
+msgid ""
+"There are spaces in the path to your BibTeX style file.\n"
+"BibTeX will be unable to find it."
 msgstr ""
 
 #: src/insets/insetbox.C:57
@@ -14586,7 +14591,7 @@ msgstr "päta"
 msgid "Opened Footnote Inset"
 msgstr "Otvorená poznámka pod èiarou prílohy"
 
-#: src/insets/insetgraphics.C:484 src/insets/insetinclude.C:416
+#: src/insets/insetgraphics.C:476 src/insets/insetinclude.C:416
 #, fuzzy, c-format
 msgid ""
 "Could not copy the file\n"
@@ -14594,12 +14599,12 @@ msgid ""
 "into the temporary directory."
 msgstr "Chyba! Nemô¾em odstráni» doèasný prieèinok:"
 
-#: src/insets/insetgraphics.C:715
+#: src/insets/insetgraphics.C:707
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr ""
 
-#: src/insets/insetgraphics.C:819
+#: src/insets/insetgraphics.C:811
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafický súbor: %1$s"
@@ -16229,6 +16234,10 @@ msgstr " (vertikálne vyplnenie)"
 #, fuzzy
 msgid "protected"
 msgstr "Chránená medzera|m"
+
+#, fuzzy
+#~ msgid "Insets|n"
+#~ msgstr "Vlo¾i»|I"
 
 #~ msgid "LyX function 'layout' needs an argument."
 #~ msgstr "Funkcia Lyxu 'vrstva' (layout) potrebuje argument."
