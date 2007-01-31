@@ -855,9 +855,11 @@ convert = [[246, []],
            [254, [convert_esint]],
            [255, []],
            [256, []],
-           [257, [convert_caption, convert_lyxline]]]
+           [257, [convert_caption]],
+           [258, [convert_lyxline]]]
 
-revert =  [[256, [revert_caption]],
+revert =  [[257, []],
+           [256, [revert_caption]],
            [255, [revert_encodings]],
            [254, [revert_clearpage, revert_cleardoublepage]],
            [253, [revert_esint]],
