@@ -49,7 +49,7 @@ using std::ostream;
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp), textclass_(bp.getLyXTextClass())
+	: InsetText(bp), textclass_(bp.getLyXTextClass()), counter_(-1)
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -102,8 +102,12 @@ void InsetCaption::setLabel(docstring const & label)
 bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
-	docstring const number = convert<docstring>(counter_);
-	full_label_ = bformat(from_ascii("%1$s %2$s:"), label_, number);
+	if (counter_ < 0)
+		full_label_ = _("Senseless!!! ");
+	else {
+		docstring const number = convert<docstring>(counter_);
+		full_label_ = bformat(from_ascii("%1$s %2$s:"), label_, number);
+	}
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	dim.wid = labelwidth_;
 	Dimension textdim;
