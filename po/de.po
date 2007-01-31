@@ -7857,7 +7857,7 @@ msgstr "Handbuchergänzungen|H"
 
 #: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:471
 msgid "Embedded Objects|m"
-msgstr ""
+msgstr "Eingebettete Objekte|O"
 
 #: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:472
 msgid "Customization|C"
@@ -9247,25 +9247,25 @@ msgid "Conversion failed"
 msgstr "Die Konvertierung ist fehlgeschlagen"
 
 #: src/buffer.C:688
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"%1$s stammt von einer früheren LyX-Version, aber eine temporäre Datei für "
-"die Konvertierung konnte nicht erzeugt werden."
+"%1$s stammt von einer anderen LyX-Version, aber eine temporäre Datei für die "
+"Konvertierung konnte nicht erzeugt werden."
 
 #: src/buffer.C:697
 msgid "Conversion script not found"
 msgstr "Das Konvertierungsskript wurde nicht gefunden"
 
 #: src/buffer.C:698
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
-"%1$s stammt von einer früheren LyX-Version, aber das Konvertierungsskript "
+"%1$s stammt von einer anderen LyX-Version, aber das Konvertierungsskript "
 "lyx2lyx konnte nicht gefunden werden."
 
 #: src/buffer.C:719
@@ -9273,13 +9273,13 @@ msgid "Conversion script failed"
 msgstr "Das Konvertierungsskript ist fehlgeschlagen"
 
 #: src/buffer.C:720
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s stammt von einer früheren LyX-Version, aber das lyx2lyx-Skript konnte "
-"es nicht konvertieren."
+"%1$s stammt von einer anderen LyX-Version, aber das lyx2lyx-Skript konnte "
+"das Dokument nicht konvertieren."
 
 #: src/buffer.C:735
 #, c-format
@@ -11015,9 +11015,8 @@ msgid "Opened Caption Inset"
 msgstr "Legenden-Einfügung geöffnet"
 
 #: src/insets/insetcaption.C:106
-#, fuzzy
 msgid "Senseless!!! "
-msgstr "Sinnlos!"
+msgstr "Sinnlos!!! "
 
 #: src/insets/insetcharstyle.C:123
 msgid "Opened CharStyle Inset"
@@ -12982,12 +12981,3 @@ msgstr "Variabel"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "geschützt"
-
-#~ msgid "Caption."
-#~ msgstr "Legende."
-
-#~ msgid "Special Insets|S"
-#~ msgstr "Besondere Einfügungen|s"
-
-#~ msgid "Insets|n"
-#~ msgstr "Einfügungen|n"
