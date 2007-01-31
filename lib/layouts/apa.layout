@@ -2,7 +2,7 @@
 #  \DeclareLaTeXClass[apa,apacite.sty]{article (APA)}
 # Author: Randy Gobbel <gobbel@andrew.cmu.edu>
 
-Format 2
+Format 3
 Columns                 1
 Sides                   1
 PageStyle               Headers
@@ -256,7 +256,21 @@ End
 Input stdlayouts.inc
 
 Style CenteredCaption
-	CopyStyle             Caption
+	Margin                First_Dynamic
+	LatexType             Command
+	LatexName             caption
+	NeedProtect           1
+	LabelSep              xx
+	ParSkip               0.4
+	TopSep                0.5
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Sensitive
+	LabelString           "Senseless!"
+	OptionalArgs          1
+	LabelFont
+	  Series              Bold
+	EndFont
 	LatexName             centeredcaption
 	Align                 Center
 	AlignPossible         Center

@@ -3,7 +3,7 @@
 # Latex8 textclass definition file.
 # Author : Allan Rae <rae@elec.uq.edu.au>
 
-Format 2
+Format 3
 Preamble
 	\usepackage{latex8}
 	\usepackage{times}
@@ -113,11 +113,6 @@ Style Abstract
 End
 
 
-Style Caption
-	Font
-	  Series              Bold
-	EndFont
-End
 
 
 Style Bibliography

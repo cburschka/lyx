@@ -8,7 +8,7 @@
 # Converted article -> egs Martin Vermeer
 
 
-Format 2
+Format 3
 Columns                 2
 Sides                   1
 PageStyle               Plain
@@ -581,21 +581,6 @@ Style Bibliography
 End
 
 
-Style Caption
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             caption
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Block
-	AlignPossible         Block, Left
-	LabelType             Sensitive
-	LabelString           "Caption"
-	LabelFont
-	  Series              Bold
-	EndFont
-End
 
 
 Style Section*

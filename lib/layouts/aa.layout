@@ -11,7 +11,7 @@
 #             abstract is command
 
 
-Format 2
+Format 3
 Columns                 2
 Sides                   2
 SecNumDepth             3
@@ -55,8 +55,6 @@ End
 Style List
 End
 
-Style Caption
-End
 
 Style Title
 End
@@ -213,22 +211,6 @@ Style Acknowledgement
 End
 
 
-Style Caption
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             caption
-	NeedProtect           1
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Center
-	AlignPossible         Center
-	LabelType             Sensitive
-	LabelString           "Caption"
-	LabelFont
-	  Series              Bold
-	EndFont
-End
 
 
 Style Section

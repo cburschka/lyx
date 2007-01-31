@@ -8,7 +8,7 @@
 # Heavily modifed and enhanced by serveral developers.
 
 # Input general definitions
-Format	2
+Format 3
 Input stdclass.inc
 Sides			2
 Columns			2
@@ -212,27 +212,6 @@ Style Subsubsection*
 End
 
 # Caption style definition
-Style Caption
-  Margin                First_Dynamic
-  LatexType             Command
-  LatexName             caption
-  LeftMargin		""
-  NeedProtect           1
-  LabelSep              x
-  Align                 Block
-  AlignPossible         Block, Left
-  LabelType             Sensitive
-  LabelString           Caption.
-
-# label font definition
-  Font
-    Size		Small
-  EndFont
-
-  LabelFont
-    Size		Small
-  EndFont
-End
 
 # Acknowledgement(s) style definitions
 Style Acknowledgements

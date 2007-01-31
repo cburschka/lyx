@@ -3,7 +3,7 @@
 # KOMA scrlettr2 textclass definition file.
 # Juergen Spitzmueller <j.spitzmueller@gmx.de>, 2003/2/17.
 
-Format 2
+Format 3
 Style Standard
 	LatexName             dummy
 	ParSep                0.4
@@ -34,7 +34,6 @@ Style List
 	Obsoletedby           Labeling
 End
 
-NoStyle Caption
 
 
 Style Address

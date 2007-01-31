@@ -5,7 +5,7 @@
 # $Header: /cvsroot/latex-beamer/latex-beamer/lyx/layouts/beamer.layout,v 1.16 2004/10/07 20:53:07 tantau Exp $
 
 # Includes
-Format 2
+Format 3
 Input stdcounters.inc
 
 # General textclass parameters
@@ -487,25 +487,6 @@ Style Block
 End
 
 # Caption style definition
-Style Caption
-  Margin		First_Dynamic
-  LatexType		Command
-  LatexName		caption
-  NeedProtect		1
-  LabelSep		xx
-  ParSkip		0.4
-  TopSep		0.5
-  Align			Center
-  AlignPossible		Center
-  LabelType		Sensitive
-  LabelString	Caption
-  OptionalArgs		1
-
-  # label font definition
-  LabelFont 
-    Series		Bold
-  EndFont
-End
 
 Style Corollary
   Margin		First_Dynamic
