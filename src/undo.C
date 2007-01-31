@@ -17,6 +17,7 @@
 #include "undo.h"
 
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "cursor.h"
 #include "debug.h"
 #include "BufferView.h"
@@ -195,6 +196,7 @@ bool textUndoOrRedo(BufferView & bv,
 		for (; pit != end; ++pit)
 			pit->setInsetOwner(dit.realInset());
 		plist.insert(first, undo.pars.begin(), undo.pars.end());
+		updateLabels(*buf);
 	}
 
 	// Set cursor
