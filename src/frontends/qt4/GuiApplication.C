@@ -212,7 +212,7 @@ bool GuiApplication::event(QEvent * e)
 		return true;
 	}
 	default:
-		return false;
+		return QApplication::event(e);
 	}
 }
 
