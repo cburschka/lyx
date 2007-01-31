@@ -297,8 +297,11 @@ public:
 		/// potentially, icons
 	};
 
+	typedef boost::tuple<std::string, ToolbarInfo> ToolbarItem;
+
 	/// info for each toolbar
-	typedef std::map<std::string, ToolbarInfo> ToolbarMap;
+	typedef std::vector<ToolbarItem> ToolbarList;
+
 
 public:
 	///
@@ -310,10 +313,23 @@ public:
 	/// return reference to toolbar info, create a new one if needed
 	ToolbarInfo & load(std::string const & name);
 
+	/// toolbar begin
+	ToolbarList::const_iterator begin() { return toolbars.begin(); }
+
+	/// toolbar end
+	ToolbarList::const_iterator end() { return toolbars.end(); }
+
 private:
 	/// toolbar information
-	ToolbarMap toolbars;
+	ToolbarList toolbars;
 };
+
+/// comparison operator to sort toolbars, the rules are:
+///	    ON before OFF
+///     TOP < BOTTOM < LEFT < RIGHT
+///     Line at each side
+///     order in each line
+bool operator< (ToolbarSection::ToolbarItem const & a, ToolbarSection::ToolbarItem const & b);
 
 
 class SessionInfoSection : SessionSection

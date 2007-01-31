@@ -117,8 +117,8 @@ public:
 	typedef boost::shared_ptr<Toolbar> ToolbarPtr;
 
 private:
-	/// Add a new toolbar.
-	void add(ToolbarBackend::Toolbar const & tb);
+	/// Add a new toolbar. if newline==true, start from a new line
+	void add(ToolbarBackend::Toolbar const & tb, bool newline);
 	/// Show or hide a toolbar.
 	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
 	/// Update the state of the icons

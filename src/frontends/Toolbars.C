@@ -109,9 +109,36 @@ void Toolbars::init()
 	ToolbarBackend::Toolbars::iterator cit = toolbarbackend.begin();
 	ToolbarBackend::Toolbars::iterator end = toolbarbackend.end();
 
-	for (; cit != end; ++cit) {
+	// init flags will also add these toolbars to session if they
+	// are not already there (e.g. first run of lyx).
+	for (; cit != end; ++cit)
 		initFlags(*cit);
-		add(*cit);
+
+	// add toolbars according the order in session
+	ToolbarSection::ToolbarList::const_iterator tb = LyX::ref().session().toolbars().begin();
+	ToolbarSection::ToolbarList::const_iterator te = LyX::ref().session().toolbars().end();
+	ToolbarSection::ToolbarInfo::Location last_loc = ToolbarSection::ToolbarInfo::NOTSET;
+	int last_posx = 0;
+	int last_posy = 0;
+	for (; tb != te; ++tb) {
+		lyxerr[Debug::INIT] << "Adding " << tb->get<0>() << " at position " << tb->get<1>().posx << " " << tb->get<1>().posy << endl;
+		// add toolbar break if posx or posy changes
+		bool newline = tb->get<1>().location == last_loc && (
+			// if two toolbars at the same location, assume uninitialized and add toolbar break
+			(tb->get<1>().posx == last_posx && tb->get<1>().posy == last_posy) ||
+			(last_loc == ToolbarSection::ToolbarInfo::TOP && tb->get<1>().posy != last_posy) ||
+			(last_loc == ToolbarSection::ToolbarInfo::BOTTOM && tb->get<1>().posy != last_posy) ||
+			(last_loc == ToolbarSection::ToolbarInfo::LEFT && tb->get<1>().posx != last_posx) ||
+			(last_loc == ToolbarSection::ToolbarInfo::RIGHT && tb->get<1>().posx != last_posx) );
+		// find the backend item and add
+		for (cit = toolbarbackend.begin(); cit != end; ++cit)
+			if (cit->name == tb->get<0>()) {
+				add(*cit, newline);
+				last_loc = tb->get<1>().location;
+				last_posx = tb->get<1>().posx;
+				last_posy = tb->get<1>().posy;
+				break;
+			}
 	}
 }
 
@@ -289,9 +316,9 @@ void Toolbars::clearLayoutList()
 }
 
 
-void Toolbars::add(ToolbarBackend::Toolbar const & tbb)
+void Toolbars::add(ToolbarBackend::Toolbar const & tbb, bool newline)
 {
-	ToolbarPtr tb_ptr = owner_.makeToolbar(tbb);
+	ToolbarPtr tb_ptr = owner_.makeToolbar(tbb, newline);
 	toolbars_[tbb.name] = tb_ptr;
 
 	if (tbb.flags & ToolbarBackend::ON)

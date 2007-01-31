@@ -339,33 +339,63 @@ void ToolbarSection::read(istream & is)
 				value >> location;
 				value >> posx;
 				value >> posy;
-				toolbars[key] = ToolbarInfo(state, location, posx, posy);
+				toolbars.push_back(boost::make_tuple(key, ToolbarInfo(state, location, posx, posy)));
 			} else 
 				lyxerr[Debug::INIT] << "LyX: Warning: Ignore toolbar info: " << tmp << endl;
 		} catch (...) {
 			lyxerr[Debug::INIT] << "LyX: Warning: unknown Toolbar info: " << tmp << endl;
 		}
 	} while (is.good());
+	// sort the toolbars by location, line and position
+	std::sort(toolbars.begin(), toolbars.end());
 }
 
 
 void ToolbarSection::write(ostream & os) const
 {
 	os << '\n' << sec_toolbars << '\n';
-	for (ToolbarMap::const_iterator tb = toolbars.begin();
+	for (ToolbarList::const_iterator tb = toolbars.begin();
 		tb != toolbars.end(); ++tb) {
-		os << tb->first << " = "
-		  << static_cast<int>(tb->second.state) << " "
-		  << static_cast<int>(tb->second.location) << " "
-		  << tb->second.posx << " "
-		  << tb->second.posy << '\n';
+		os << tb->get<0>() << " = "
+		  << static_cast<int>(tb->get<1>().state) << " "
+		  << static_cast<int>(tb->get<1>().location) << " "
+		  << tb->get<1>().posx << " "
+		  << tb->get<1>().posy << '\n';
 	}
 }
 
 
 ToolbarSection::ToolbarInfo & ToolbarSection::load(string const & name)
 {
-	return toolbars[name];
+	for (ToolbarList::iterator tb = toolbars.begin();
+		tb != toolbars.end(); ++tb)
+		if (tb->get<0>() == name)
+			return tb->get<1>();
+	// add a new item
+	toolbars.push_back(boost::make_tuple(name, ToolbarSection::ToolbarInfo()));
+	return toolbars.back().get<1>();
+}
+
+
+bool operator<(ToolbarSection::ToolbarItem const & a, ToolbarSection::ToolbarItem const & b)
+{
+	ToolbarSection::ToolbarInfo lhs = a.get<1>();
+	ToolbarSection::ToolbarInfo rhs = b.get<1>();
+	// on if before off
+	if (lhs.state != rhs.state)
+		return static_cast<int>(lhs.state) < static_cast<int>(rhs.state);
+	// order of dock does not really matter
+	if (lhs.location != rhs.location)
+		return static_cast<int>(lhs.location) < static_cast<int>(rhs.location);
+	// if the same dock, the order depends on position
+	if (lhs.location == ToolbarSection::ToolbarInfo::TOP ||
+		lhs.location == ToolbarSection::ToolbarInfo::BOTTOM)
+		return lhs.posy < rhs.posy || (lhs.posy == rhs.posy && lhs.posx < rhs.posx);
+	else if (lhs.location == ToolbarSection::ToolbarInfo::LEFT ||
+		lhs.location == ToolbarSection::ToolbarInfo::RIGHT)
+		return lhs.posx < rhs.posx || (lhs.posx == rhs.posx && lhs.posy < rhs.posy);
+	else
+		return true;
 }
 
 

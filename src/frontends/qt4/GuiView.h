@@ -66,7 +66,8 @@ public:
 		const std::string & geometryArg);
 	virtual void saveGeometry();
 	virtual void busy(bool);
-	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb);
+	/// add toolbar, if newline==true, add a toolbar break before the toolbar
+	Toolbars::ToolbarPtr makeToolbar(ToolbarBackend::Toolbar const & tbb, bool newline);
 	virtual void updateStatusBar();
 	virtual void message(lyx::docstring const & str);
 	virtual void clearMessage();
