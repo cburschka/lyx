@@ -26,9 +26,9 @@ string const lyx_def =
 	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}";
 
 string const lyxline_def =
-	"\\newcommand{\\lyxline}[1]{\n"
-	"  {#1 \\vspace{1ex} \\hrule width \\columnwidth \\vspace{1ex}}\n"
-	"}";
+	"\\newcommand{\\lyxline}[1][1pt]{%\n"
+	"  \\par\\noindent%\n"
+	"  \\rule[.5ex]{\\linewidth}{#1}\\par}";
 
 string const noun_def = "\\newcommand{\\noun}[1]{\\textsc{#1}}";
 

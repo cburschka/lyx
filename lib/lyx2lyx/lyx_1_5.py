@@ -668,7 +668,7 @@ def revert_esint(document):
 
 
 def revert_clearpage(document):
-    " clearpage -> ERT"
+    " clearpage -> ERT "
     i = 0
     while 1:
         i = find_token(document.body, "\\clearpage", i)
@@ -689,7 +689,7 @@ def revert_clearpage(document):
 
 
 def revert_cleardoublepage(document):
-    " cleardoublepage -> ERT"
+    " cleardoublepage -> ERT "
     i = 0
     while 1:
         i = find_token(document.body, "\\cleardoublepage", i)
@@ -707,6 +707,28 @@ def revert_cleardoublepage(document):
                                 '',
                                 '\\end_inset']
     i = i + 1
+
+
+def convert_lyxline(document):
+    " remove fontsize commands for \lyxline "
+    # The problematic is: The old \lyxline definition doesn't handle the fontsize
+    # to change the line thickness. The new definiton does this so that imported
+    # \lyxlines would have a different line thickness. The eventual fontsize command
+    # before \lyxline is therefore removed to get the same output.
+    fontsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize",
+                 "large", "Large", "LARGE", "huge", "Huge"]
+    for n in range(0, len(fontsizes)-1):
+        i = 0
+        k = 0
+        while 1:
+            i = find_token(document.body, "\\size " + fontsizes[n], i)
+            k = find_token(document.body, "\\lyxline",i)
+            # the corresponding fontsize command is always 2 lines before the \lyxline
+            if (i != -1 and k == i+2):
+                document.body[i:i+1] = []
+            else:
+                break
+        i = i + 1
 
 
 def revert_encodings(document):
@@ -833,7 +855,7 @@ convert = [[246, []],
            [254, [convert_esint]],
            [255, []],
            [256, []],
-           [257, [convert_caption]]]
+           [257, [convert_caption, convert_lyxline]]]
 
 revert =  [[256, [revert_caption]],
            [255, [revert_encodings]],
