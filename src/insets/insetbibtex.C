@@ -50,6 +50,7 @@ using lyx::support::MakeAbsPath;
 using lyx::support::MakeRelPath;
 using lyx::support::Path;
 using lyx::support::prefixIs;
+using lyx::support::RemoveExtension;
 using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::subst;
@@ -164,7 +165,8 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		if (!runparams.inComment && !runparams.nice &&
 		    IsFileReadable(in_file)) {
 
-			database = FileName(database).mangledFilename();
+			// mangledFilename() needs the extension
+			database = RemoveExtension(FileName(in_file).mangledFilename());
 			string const out_file = MakeAbsPath(database + ".bib",
 					buffer.getMasterBuffer()->temppath());
 
@@ -208,10 +210,40 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 	int nlines = 0;
 
 	if (!style.empty()) {
+		string base =
+			normalize_name(buffer, runparams, style, ".bst");
+		string const in_file = base + ".bst";
+		// If this style does not come from texmf and we are not
+		// exporting to .tex copy it to the tmp directory.
+		// This prevents problems with spaces and 8bit charcaters
+		// in the file name.
+		if (!runparams.inComment && !runparams.nice &&
+		    IsFileReadable(in_file)) {
+			// use new style name
+			base = RemoveExtension(
+					FileName(in_file).mangledFilename());
+			string const out_file = MakeAbsPath(base + ".bst",
+					buffer.getMasterBuffer()->temppath());
+			bool const success = copy(in_file, out_file);
+			if (!success) {
+				lyxerr << "Failed to copy '" << in_file
+				       << "' to '" << out_file << "'"
+				       << endl;
+			}
+		}
 		os << "\\bibliographystyle{"
-		   << latex_path(normalize_name(buffer, runparams, style, ".bst"))
+		   << latex_path(normalize_name(buffer, runparams, base, ".bst"))
 		   << "}\n";
 		nlines += 1;
+	}
+
+	// Post this warning only once.
+	static bool warned_about_bst_spaces = false;
+	if (!warned_about_bst_spaces && runparams.nice && contains(style, ' ')) {
+		warned_about_bst_spaces = true;
+		Alert::warning(_("Export Warning!"),
+			       _("There are spaces in the path to your BibTeX style file.\n"
+				 "BibTeX will be unable to find it."));
 	}
 
 	if (!db_out.empty() && buffer.params().use_bibtopic){

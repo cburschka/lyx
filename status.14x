@@ -80,7 +80,11 @@ What's new
 
 - Fix import of \fullcite commands from LaTeX.
 
-- Update bibliography references when the entry has been changed (bug 2744).
+- Update bibliography references when the entry has been changed (bug
+  2744).
+
+- The BibTeX style files (bst files) can now live in paths with spaces
+  (bug 2186).
 
 - Fixed undo-and-TOC-navigation bug.
 

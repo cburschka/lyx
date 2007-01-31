@@ -101,6 +101,7 @@ using lyx::support::GetExtension;
 using lyx::support::IsFileReadable;
 using lyx::support::latex_path;
 using lyx::support::OnlyFilename;
+using lyx::support::RemoveExtension;
 using lyx::support::rtrim;
 using lyx::support::subst;
 using lyx::support::Systemcall;
@@ -118,15 +119,6 @@ using std::ostringstream;
 
 
 namespace {
-
-// This function is a utility function
-// ... that should be with ChangeExtension ...
-inline
-string const RemoveExtension(string const & filename)
-{
-	return ChangeExtension(filename, string());
-}
-
 
 /// Find the most suitable image format for images in \p format
 /// Note that \p format may be unknown (i. e. an empty string)

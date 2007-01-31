@@ -1,3 +1,12 @@
+2007-01-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetbibtex.C (latex): copy the .bst files to the temp
+	dir before running LaTeX, as is done for .bib files, graphics etc.
+	(bug 2186)
+
+	* insetgraphics.C (RemoveExtension): remove. The inset will use
+	the version from filetools instead.
+
 2007-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetbranch.C (textString): implement, so that branches appear
