@@ -284,8 +284,18 @@ private:
 
 ostream & operator<<(ostream & os, Token const & t)
 {
-	if (t.cs().size())
-		os << '\\' << t.cs();
+	if (t.cs().size()) {
+		docstring const & cs = t.cs();
+		// FIXME: For some strange reason, the stream operator instanciate
+		// a new Token before outputting the contents of t.cs().
+		// Because of this the line 
+		//     os << '\\' << cs;
+		// below becomes recursive.
+		// In order to avoid that we return early:
+		if (cs == "\\")
+			return os;
+		os << '\\' << cs;
+	}
 	else if (t.cat() == catLetter)
 		os << t.character();
 	else
