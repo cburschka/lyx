@@ -1129,6 +1129,15 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_THEOREM_INSERT:
 #endif
 	case LFUN_CAPTION_INSERT:
+		// Open the inset, and move the current selection
+		// inside it.
+		doInsertInset(cur, this, cmd, true, true);
+		cur.posRight();
+		updateLabels(*bv->buffer());
+		// FIXME: We should insert two empty paragraphs before and
+		// after the caption so that the user can go up or down in
+		// order to insert a figure or a table.
+		break;
 	case LFUN_NOTE_INSERT:
 	case LFUN_CHARSTYLE_INSERT:
 	case LFUN_BOX_INSERT:
@@ -1160,7 +1169,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
 		cur.dispatch(FuncRequest(LFUN_CAPTION_INSERT));
-		updateLabels(cur.buffer());
 		break;
 
 	case LFUN_INDEX_INSERT:
