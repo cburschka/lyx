@@ -468,7 +468,7 @@ Menuset
 		Item "Tutorial|T" "help-open Tutorial"
 		Item "User's Guide|U" "help-open UserGuide"
 		Item "Extended Features|E" "help-open Extended"
-		Item "Special Insets|S" "help-open ExtendedInsets"
+		Item "Embedded Objects|m" "help-open EmbeddedObjects" 
 		Item "Customization|C" "help-open Customization"
 		Item "FAQ|F" "help-open FAQ"
 		Item "Table of Contents|a" "help-open TOC"
