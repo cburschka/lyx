@@ -28,7 +28,7 @@ import os
 import re
 from glob import glob
 
-possible_documents = ("Intro", "FAQ", "Tutorial", "UserGuide", "ExtendedInsets", "Extended", "Customization")
+possible_documents = ("Intro", "FAQ", "Tutorial", "UserGuide", "EmbeddedObjects", "Extended", "Customization")
 lang_pattern = re.compile('^([a-z]{2})_')
 
 def documents(srcdir, prefix):
