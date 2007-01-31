@@ -1297,6 +1297,8 @@ bool BufferView::checkDepm(LCursor & cur, LCursor & old)
 	if (!changed)
 		return false;
 
+	updateLabels(*buffer_);
+
 	updateMetrics(false);
 	buffer_->changed();
 	return true;
