@@ -170,8 +170,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-31 16:13+0100\n"
-"PO-Revision-Date: 2006-09-19 11:57+0200\n"
+"POT-Creation-Date: 2007-01-31 17:00+0100\n"
+"PO-Revision-Date: 2007-01-31 17:05+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
 "Language-Team: lyxfr \n"
 "MIME-Version: 1.0\n"
@@ -1611,9 +1611,8 @@ msgid "Editor:|#i"
 msgstr "Éditeur :|#i"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1864
-#, fuzzy
 msgid "Vector graphics format:|#c"
-msgstr "Choisir le fichier graphique"
+msgstr "Format d'image vectorielle|#c"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1882
 #: src/frontends/xforms/forms/form_preferences.fd:2032
@@ -3267,9 +3266,8 @@ msgid "Match delimiter types"
 msgstr "Apparier les délimiteurs"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:366
-#, fuzzy
 msgid "Choose delimiter size"
-msgstr "Délimiteur de gauche"
+msgstr "Taille des délimiteurs"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:394
 msgid "&Insert"
@@ -4011,14 +4009,13 @@ msgid "Instant &Preview:"
 msgstr "Aperçu sur le &vif :"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:70
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Choisir le fichier graphique"
+msgstr "Format d'image ve&ctoriel"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:1343
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Ce format peut-il contenir des images vectorielles ?"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:92
 msgid "&GUI name:"
@@ -4966,19 +4963,16 @@ msgid "Contents list"
 msgstr "Liste de contenus"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:171
-#, fuzzy
 msgid "U&pdate"
 msgstr "Mise à &jour"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:182
-#, fuzzy
 msgid "&Up"
-msgstr "Mise à &jour"
+msgstr "&Haut"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:193
-#, fuzzy
 msgid "&Down"
-msgstr "Ville"
+msgstr "&Bas"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:204
 #, fuzzy
@@ -6227,32 +6221,28 @@ msgid "________________________________ "
 msgstr ""
 
 #: lib/layouts/beamer.layout:207
-#, fuzzy
 msgid "Pause"
-msgstr "Coller"
+msgstr "Pause"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgstr ""
 
 #: lib/layouts/beamer.layout:280
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Section \\arabic{section}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:321
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "@Subsection@.\\arabic{subsubsection}"
+msgstr "Subsection \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:334
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "\\arabic{chapter}.\\arabic{section}"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
 #, fuzzy
@@ -9976,40 +9966,44 @@ msgstr "Guide de l'Utilisateur|U"
 msgid "Extended Features|E"
 msgstr "Options Avancées|O"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:452
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:451
+msgid "Embedded Objects|m"
+msgstr "Objets Insérés|b"
+
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:452
 msgid "Customization|C"
 msgstr "Personnalisation|P"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:453
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:453
 msgid "FAQ|F"
 msgstr "FAQ|F"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:454
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:454
 msgid "Table of Contents|a"
 msgstr "Table des Matières|M"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:455
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:455
 msgid "LaTeX Configuration|L"
 msgstr "Configuration LaTeX|X"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:457
+#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:457
 msgid "About LyX|X"
 msgstr "À Propos de LyX...|L"
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.inc:465 src/frontends/qt2/QAbout.C:44
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.inc:465 src/frontends/qt2/QAbout.C:44
 #: src/frontends/xforms/FormAboutlyx.C:45
 msgid "About LyX"
 msgstr "À Propos de LyX"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:427 lib/ui/stdmenus.inc:466
 msgid "Preferences..."
 msgstr "Préférences..."
 
-#: lib/ui/classic.ui:427 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:428 lib/ui/stdmenus.inc:467
 msgid "Quit LyX"
 msgstr "Quitter LyX"
 
-#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/classic.ui:448 lib/ui/default-alltoolbars.ui:34
 #: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
 msgstr "Barres d'outils"
@@ -10323,10 +10317,6 @@ msgstr "Dictionnaire de Synonymes...|y"
 #: lib/ui/stdmenus.inc:434
 msgid "TeX Information|I"
 msgstr "Informations TeX|X"
-
-#: lib/ui/stdmenus.inc:451
-msgid "Embedded Objects|m"
-msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"
@@ -11116,39 +11106,39 @@ msgid "Conversion failed"
 msgstr "Conversion échouée"
 
 #: src/buffer.C:627
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"%1$s est d'une ancienne version de LyX, et la création d'un fichier "
-"temporaire de conversion a échoué."
+"%1$s est d'une autre version de LyX, et la création d'un fichier temporaire "
+"de conversion a échoué."
 
 #: src/buffer.C:636
 msgid "Conversion script not found"
 msgstr "Script de conversion introuvable"
 
 #: src/buffer.C:637
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
-"%1$s est d'une ancienne version de LyX, et le script de conversion lyx2lyx "
-"est introuvable."
+"%1$s est d'une autre version de LyX, et le script de conversion lyx2lyx est "
+"introuvable."
 
 #: src/buffer.C:657
 msgid "Conversion script failed"
 msgstr "Échec du script de conversion"
 
 #: src/buffer.C:658
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s est d'une ancienne version de LyX, et le script lyx2lyx n'a pas réussi "
-"à le convertir."
+"%1$s est d'une autre version de LyX, et le script lyx2lyx n'a pas réussi à "
+"le convertir."
 
 #: src/buffer.C:673
 #, c-format
@@ -11646,13 +11636,12 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "la somme de travail de ceux qui ont travaillé sur le projet LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.C:66
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 msgstr ""
 "LyX est Copyright (C) 1995 par Matthias Ettrich,\n"
-"Équipe LyX 1995-2001"
+"Équipe LyX 1995-2006"
 
 #: src/frontends/controllers/ControlAboutlyx.C:72
 msgid ""
@@ -11667,7 +11656,6 @@ msgstr ""
 "Licence, soit (à votre choix) une version ultérieure."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -11682,8 +11670,8 @@ msgstr ""
 "est ADAPTÉ À UNE TÂCHE DONNÉE. Reportez-vous à la Licence Publique Générale "
 "GNU pour plus de détails. Vous devez avoir reçu une copie de la Licence "
 "Publique Générale GNU en même temps que ce programme ; si ce n'est pas le "
-"cas, écrivez à la Free Software Foundation, Inc., 675 Mass Ave, Cambridge, "
-"MA 02139, USA."
+"cas, écrivez à la Free Software Foundation, Inc., 51 Franklin Street, Fifth "
+"Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:86
 msgid "LyX Version "
@@ -12448,32 +12436,28 @@ msgid "Next command"
 msgstr "Commande suivante"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "big size"
-msgstr "Grand"
+msgstr "grand"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "Big size"
 msgstr "Grand"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
 msgid "bigg size"
-msgstr ""
+msgstr "très grand"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
-#, fuzzy
 msgid "Bigg size"
-msgstr "Grand"
+msgstr "Très Grand"
 
 #: src/frontends/qt2/QDelimiterDialog.C:94
 msgid "LyX: Delimiters"
 msgstr "LyX : Délimiteurs"
 
 #: src/frontends/qt2/QDelimiterDialog.C:106
-#, fuzzy
 msgid "Variable size"
-msgstr "ligne de tableau"
+msgstr "Taille variable"
 
 #: src/frontends/qt2/QDocument.C:78
 msgid "Author-year"
@@ -13521,25 +13505,23 @@ msgstr "Charge le fichier."
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "big"
-msgstr ""
+msgstr "grand"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
-#, fuzzy
 msgid "Big"
 msgstr "Grand"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "bigg"
-msgstr ""
+msgstr "très grand"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "Bigg"
-msgstr ""
+msgstr "Très Grand"
 
 #: src/frontends/xforms/FormMathsDelim.C:85
-#, fuzzy
 msgid "Variable"
-msgstr "Tableau"
+msgstr "Variable"
 
 #: src/frontends/xforms/FormMathsMatrix.C:72
 msgid "Top | Middle | Bottom"
@@ -14200,13 +14182,12 @@ msgstr ""
 "BibTeX n'arrivera pas à les trouver."
 
 #: src/insets/insetbibtex.C:245
-#, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Il y a des espaces dans les chemins de vos bases de données BibTeX.\n"
-"BibTeX n'arrivera pas à les trouver."
+"Il y a des espaces dans le chemin de votre style BibTeX.\n"
+"BibTeX n'arrivera pas à le trouver."
 
 #: src/insets/insetbox.C:57
 msgid "Boxed"
@@ -16013,6 +15994,3 @@ msgstr "protégé"
 #, fuzzy
 #~ msgid "Insets|n"
 #~ msgstr "Insérer|I"
-
-#~ msgid "LyX function 'layout' needs an argument."
-#~ msgstr "La fonction 'layout' nécessite un argument."

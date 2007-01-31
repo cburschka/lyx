@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-31 16:13+0100\n"
+"POT-Creation-Date: 2007-01-31 17:00+0100\n"
 "PO-Revision-Date: 2006-09-18 10:16+0000\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -9813,40 +9813,44 @@ msgstr "Erabiltzailearen gida|E"
 msgid "Extended Features|E"
 msgstr "Ezaugarri hedatuak|h"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:452
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:451
+msgid "Embedded Objects|m"
+msgstr ""
+
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:452
 msgid "Customization|C"
 msgstr "Pertsonalizazioa|P"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:453
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:453
 msgid "FAQ|F"
 msgstr "MEG|M"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:454
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:454
 msgid "Table of Contents|a"
 msgstr "Gaien aurkibidea|a"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:455
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:455
 msgid "LaTeX Configuration|L"
 msgstr "LaTeX konfigurazioa|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:457
+#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:457
 msgid "About LyX|X"
 msgstr "LyX-i buruz|L"
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.inc:465 src/frontends/qt2/QAbout.C:44
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.inc:465 src/frontends/qt2/QAbout.C:44
 #: src/frontends/xforms/FormAboutlyx.C:45
 msgid "About LyX"
 msgstr "LyX-i buruz"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:427 lib/ui/stdmenus.inc:466
 msgid "Preferences..."
 msgstr "Hobespenak..."
 
-#: lib/ui/classic.ui:427 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:428 lib/ui/stdmenus.inc:467
 msgid "Quit LyX"
 msgstr "Irten LyX-etik"
 
-#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/classic.ui:448 lib/ui/default-alltoolbars.ui:34
 #: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
 msgstr "Tresna-barrak"
@@ -10160,10 +10164,6 @@ msgstr "Sinonimoak...|S"
 #: lib/ui/stdmenus.inc:434
 msgid "TeX Information|I"
 msgstr "TeX informazioa|X"
-
-#: lib/ui/stdmenus.inc:451
-msgid "Embedded Objects|m"
-msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 msgid "standard"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-31 16:13+0100\n"
+"POT-Creation-Date: 2007-01-31 17:00+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -10476,42 +10476,46 @@ msgstr "Uporabni¹ki vodnik|v"
 msgid "Extended Features|E"
 msgstr "Dodatne lastnosti|l"
 
-#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:452
+#: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:451
+msgid "Embedded Objects|m"
+msgstr ""
+
+#: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:452
 msgid "Customization|C"
 msgstr "Prilagoditev|P"
 
-#: lib/ui/classic.ui:413 lib/ui/stdmenus.inc:453
+#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:453
 msgid "FAQ|F"
 msgstr "Pogosta vpra¹anja|v"
 
-#: lib/ui/classic.ui:414 lib/ui/stdmenus.inc:454
+#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:454
 msgid "Table of Contents|a"
 msgstr "Vsebinsko kazalo|k"
 
-#: lib/ui/classic.ui:415 lib/ui/stdmenus.inc:455
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.inc:455
 msgid "LaTeX Configuration|L"
 msgstr "Prikrojitev LaTeXa|L"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.inc:457
+#: lib/ui/classic.ui:418 lib/ui/stdmenus.inc:457
 msgid "About LyX|X"
 msgstr "O LyXu|X"
 
-#: lib/ui/classic.ui:425 lib/ui/stdmenus.inc:465 src/frontends/qt2/QAbout.C:44
+#: lib/ui/classic.ui:426 lib/ui/stdmenus.inc:465 src/frontends/qt2/QAbout.C:44
 #: src/frontends/xforms/FormAboutlyx.C:45
 msgid "About LyX"
 msgstr "O programu LyX"
 
-#: lib/ui/classic.ui:426 lib/ui/stdmenus.inc:466
+#: lib/ui/classic.ui:427 lib/ui/stdmenus.inc:466
 #, fuzzy
 msgid "Preferences..."
 msgstr "Izbire...|I"
 
-#: lib/ui/classic.ui:427 lib/ui/stdmenus.inc:467
+#: lib/ui/classic.ui:428 lib/ui/stdmenus.inc:467
 #, fuzzy
 msgid "Quit LyX"
 msgstr "O programu LyX"
 
-#: lib/ui/classic.ui:447 lib/ui/default-alltoolbars.ui:34
+#: lib/ui/classic.ui:448 lib/ui/default-alltoolbars.ui:34
 #: lib/ui/default-autotoolbars.ui:34 lib/ui/default.ui:34
 msgid "Toolbars"
 msgstr ""
@@ -10885,10 +10889,6 @@ msgstr "Tezaver..."
 #, fuzzy
 msgid "TeX Information|I"
 msgstr "Podatki za TeX|X"
-
-#: lib/ui/stdmenus.inc:451
-msgid "Embedded Objects|m"
-msgstr ""
 
 #: lib/ui/stdtoolbars.inc:42
 #, fuzzy
