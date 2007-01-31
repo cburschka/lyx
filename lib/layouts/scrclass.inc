@@ -7,7 +7,7 @@
 # Guenter Milde <g.milde web.de>
 
 
-Format 2
+Format 3
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard
@@ -229,13 +229,41 @@ End
 Input stdlayouts.inc
 
 Style Captionabove
-	CopyStyle            Caption
+	Margin                First_Dynamic
+	LatexType             Command
+	LatexName             caption
+	NeedProtect           1
+	LabelSep              xx
+	ParSkip               0.4
+	TopSep                0.5
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Sensitive
+	LabelString           "Senseless!"
+	OptionalArgs          1
+	LabelFont
+	  Series              Bold
+	EndFont
 	LatexName            captionabove
 End
 
 
 Style Captionbelow
-	CopyStyle            Caption
+	Margin                First_Dynamic
+	LatexType             Command
+	LatexName             caption
+	NeedProtect           1
+	LabelSep              xx
+	ParSkip               0.4
+	TopSep                0.5
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Sensitive
+	LabelString           "Senseless!"
+	OptionalArgs          1
+	LabelFont
+	  Series              Bold
+	EndFont
 	LatexName            captionbelow
 End
 

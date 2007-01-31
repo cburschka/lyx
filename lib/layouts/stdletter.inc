@@ -3,7 +3,7 @@
 # Heavily modifed and enhanced by several developers.
 
 
-Format 2
+Format 3
 Columns                 1
 Sides                   1
 PageStyle               Empty

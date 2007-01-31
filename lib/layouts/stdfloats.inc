@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 2
+Format 3
 Float
 	Type                  table
 	GuiName               Table

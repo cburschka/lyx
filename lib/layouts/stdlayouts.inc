@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 2
+Format 3
 Style Quotation
 	Margin                Static
 	LatexType             Environment
@@ -61,22 +61,5 @@ Style Verse
 End
 
 
-Style Caption
-	Margin                First_Dynamic
-	LatexType             Command
-	LatexName             caption
-	NeedProtect           1
-	LabelSep              xx
-	ParSkip               0.4
-	TopSep                0.5
-	Align                 Center
-	AlignPossible         Center
-	LabelType             Sensitive
-	LabelString	      "Senseless!"
-	OptionalArgs          1
-	LabelFont
-	  Series              Bold
-	EndFont
-End
 
 

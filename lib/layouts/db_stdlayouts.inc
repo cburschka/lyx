@@ -5,7 +5,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 2
+Format 3
 Input stdlayouts.inc
 
 Style Literal
@@ -26,10 +26,6 @@ NoStyle Quote
 NoStyle Verse
 
 
-Style Caption
-	LatexType             Paragraph
-	LatexName             title
-End
 
 Style SGML
 	ObsoletedBy	      Standard

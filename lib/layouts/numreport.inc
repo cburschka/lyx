@@ -1,7 +1,7 @@
 # Author : André Pönitz
 # This include file contains label definitions for a report-like numbering.
 
-Format 2
+Format 3
 Input numarticle.inc
 
 Style Part
