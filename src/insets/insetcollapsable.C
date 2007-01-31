@@ -178,7 +178,7 @@ bool InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	dim.wid += (int) 1.25 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
