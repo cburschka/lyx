@@ -11,6 +11,8 @@
 
 #include <config.h>
 
+#include <QTextLayout>
+
 #include "QLPainter.h"
 
 #include "GuiApplication.h"
@@ -240,7 +242,21 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 				lyxerr[Debug::PAINTING] << "draw " << std::string(str.toUtf8())
 					<< " at " << x << "," << y << std::endl;
 			}
-			drawText(x, y, str);
+			// Qt4 does not display a glyph whose codepoint is the
+			// same as that of a soft-hyphen (0x00ad), unless it
+			// occurs at a line-break. As a kludge, we force Qt to
+			// render this glyph using a one-column line.
+			if (ls == 1 && str[0].unicode() == 0x00ad) {
+				QTextLayout adsymbol(str);
+				adsymbol.setFont(fi.font);
+				adsymbol.beginLayout();
+				QTextLine line = adsymbol.createLine();
+				line.setNumColumns(1);
+				line.setPosition(QPointF(0, -line.ascent()));
+				adsymbol.endLayout();
+				line.draw(this, QPointF(x, y));
+			} else
+				drawText(x, y, str);
 		}
 		// Here we use the font width cache instead of
 		//   textwidth = fontMetrics().width(str);
