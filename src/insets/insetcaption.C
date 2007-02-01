@@ -199,10 +199,14 @@ bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
 		status.enabled(false);
 		return true;
 
+	case LFUN_DIALOG_SHOW_NEW_INSET:
 	case LFUN_INSET_INSERT: {
 		string const name = cmd.getArg(0);
-		if (name == "graphics"
-			|| name == "include") {
+		if (name == "float"
+			|| name == "graphics"
+			|| name == "include"
+			|| name == "wrap"
+			) {
 		status.enabled(false);
 		return true;
 		}
