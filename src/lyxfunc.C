@@ -1067,10 +1067,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 						  "Do you want to over-write that file?"),
 						makeDisplayPath(filename.absFilename()));
 					if (Alert::prompt(_("Over-write file?"),
-					    text, 0, 1, _("&Over-write"), _("&Cancel")) != 0) {
-						showPrintError(buffer->fileName());
+					    text, 0, 1, _("&Over-write"), _("&Cancel")) != 0)
 						break;
-					}
 				}
 				command += lyxrc.print_to_file
 					+ quoteName(filename.toFilesystemEncoding())
