@@ -711,7 +711,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				// position is 'size()' and not 'size()-1':
 				cur.pos() = par.size();
 				// Insert a new paragraph
-				dispatch(cur, FuncRequest(LFUN_BREAK_PARAGRAPH));
+				FuncRequest fr(LFUN_BREAK_PARAGRAPH);
+				dispatch(cur, fr);
 			}
 			insertInset(cur, inset);
 			cur.posRight();
