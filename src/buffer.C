@@ -1166,8 +1166,11 @@ int Buffer::runChktex()
 		Alert::error(_("chktex failure"),
 			     _("Could not run chktex successfully."));
 	} else if (res > 0) {
+		ErrorList & errorList = errorLists_["ChkTeX"];
+		// Clear out old errors
+		errorList.clear();
 		// Fill-in the error list with the TeX errors
-		bufferErrors(*this, terr, errorLists_["ChkTeX"]);
+		bufferErrors(*this, terr, errorList);
 	}
 
 	busy(false);
