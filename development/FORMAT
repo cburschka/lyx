@@ -15,6 +15,18 @@ LyX file-format changes
         The new definition is more robust, see bug 1988 and now really takes care about
 	the fontsize: \lyxline{\Huge} produces now a thicker line then \lyxline{\normalfont}
 
+2007-01-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 257: Caption styles have been replaced by
+	InsetCaption. This is at the same time also a layout file format
+	change to format 3. layout2layout removes caption layouts from old
+	styles.
+	Note that InsetCaption did exist before this format, but was never
+	used. Old files containing do nevertheless still work.
+	Of course users can still define a Caption style in layout files,
+	but the special treatment in LyX is gone (apart from the sensitive
+	label property).
+
 2006-12-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 256: allow some new inputenc settings.
