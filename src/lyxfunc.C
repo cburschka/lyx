@@ -576,7 +576,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
-		enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
+		enable = cur.inset().lyxCode() != InsetBase::ERT_CODE 
+			&& cur.inset().lyxCode() != InsetBase::CAPTION_CODE;
 		break;
 
 	case LFUN_DIALOG_UPDATE: {
