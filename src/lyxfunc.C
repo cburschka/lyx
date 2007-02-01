@@ -1055,9 +1055,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 			} else {
 				// case 1: print to a file
+				FileName const filename(makeAbsPath(target_name, path));
+				if (fs::exists(filename.toFilesystemEncoding())) {
+					docstring text = bformat(
+						_("The file %1$s already exists.\n\n"
+						  "Do you want to over-write that file?"),
+						makeDisplayPath(filename.absFilename()));
+					if (Alert::prompt(_("Over-write file?"),
+					    text, 0, 1, _("&Over-write"), _("&Cancel")) != 0) {
+						showPrintError(buffer->fileName());
+						break;
+					}
+				}
 				command += lyxrc.print_to_file
-					+ quoteName(makeAbsPath(target_name,
-								path).toFilesystemEncoding())
+					+ quoteName(filename.toFilesystemEncoding())
 					+ ' '
 					+ quoteName(dviname);
 				res = one.startscript(Systemcall::DontWait,
