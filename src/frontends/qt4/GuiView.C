@@ -74,40 +74,48 @@ namespace {
 
 int const statusbar_timer_value = 3000;
 
-} // namespace anon
-
-
-class WidgetWithTabBar : public QWidget
+class TabWidget : public QWidget
 {
 public:
 	QTabBar* tabbar;
-	WidgetWithTabBar(QWidget* w)
+
+	TabWidget(QWidget* w, bool topTabBar)
 	{
 		tabbar = new QTabBar;
-		QVBoxLayout* l = new QVBoxLayout;
-		l->addWidget(tabbar);
-		l->addWidget(w);
-		l->setMargin(0);
-		setLayout(l);
+		QVBoxLayout* layout = new QVBoxLayout;
+		if (topTabBar) {
+			layout->addWidget(tabbar);
+			layout->addWidget(w);
+		} else {
+			tabbar->setShape(QTabBar::RoundedSouth);
+			layout->addWidget(w);
+			layout->addWidget(tabbar);
+		}
+		layout->setMargin(0);
+		setLayout(layout);
+	}
+
+	void clearTabbar()
+	{
+		for (int i = tabbar->count() - 1; i >= 0; --i) 
+			tabbar->removeTab(i);
 	}
 };
+
+} // namespace anon
 
 
 struct GuiView::GuiViewPrivate
 {
 	typedef std::map<int, FuncRequest> FuncMap;
-	typedef std::pair<int, FuncRequest> FuncMapPair;
-	typedef std::map<string, QString> NameMap;
-	typedef std::pair<string, QString> NameMapPair;
-
 	FuncMap funcmap;
-	NameMap namemap;
-	WidgetWithTabBar* wt;
+
+	TabWidget* tabWidget;
 
 	int posx_offset;
 	int posy_offset;
 
-	GuiViewPrivate() : wt(0), posx_offset(0), posy_offset(0)
+	GuiViewPrivate() : tabWidget(0), posx_offset(0), posy_offset(0)
 	{}
 
 	unsigned int smallIconSize;
@@ -461,113 +469,56 @@ void GuiView::update_view_state_qt()
 
 void GuiView::initTab(QWidget* workarea)
 {
-	d.wt = new WidgetWithTabBar(workarea);
-	setCentralWidget(d.wt);
-	QObject::connect(d.wt->tabbar, SIGNAL(currentChanged(int)),
+	// construct the TabWidget with 'false' to have the tabbar at the bottom
+	d.tabWidget = new TabWidget(workarea, true);
+	setCentralWidget(d.tabWidget);
+	QObject::connect(d.tabWidget->tabbar, SIGNAL(currentChanged(int)),
 			this, SLOT(currentTabChanged(int)));
 }
 
 
 void GuiView::updateTab()
 {
-	QTabBar& tb = *d.wt->tabbar;
+	static std::vector<string> oldnames;
+	std::vector<string> const& names = theBufferList().getFileNames();
+
+	// avoid unnecessary tabbar rebuild: 
+	// check if something has changed
+	if (oldnames == names) 
+		return;
+	else
+		oldnames = names;
+
+	QTabBar& tabbar = *d.tabWidget->tabbar;
 
 	// update when all  is done
-	tb.blockSignals(true);
+	tabbar.blockSignals(true);
 
-	typedef std::vector<string> Strings;
-	Strings const names = theBufferList().getFileNames();
-	size_t n_size = names.size();
+	// remove all tab bars and clear the function map
+	d.tabWidget->clearTabbar();
+	d.funcmap.clear();
 
-	Strings addtab;
-	// show tabs only when there is more 
-	// than one file opened
-	if (n_size > 1)
-	{
-		for (size_t i = 0; i != n_size; i++) 
-			if (d.namemap.find(names[i]) == d.namemap.end())
-				addtab.push_back(names.at(i));
+	string cur_title;
+	if (view()->buffer()) {
+		cur_title = view()->buffer()->fileName();
 	}
 
-	for(size_t i = 0; i<addtab.size(); i++)
-	{
-		QString tab_name = lyx::toqstr(onlyFilename(addtab.at(i))); 
-		d.namemap.insert(GuiViewPrivate::NameMapPair(addtab.at(i), tab_name));
-		tb.addTab(tab_name);
-	}
-
-	// check if all names showed by the tabs
-	// are also in the current bufferlist
-	Strings removetab;
-	bool notall = true;
-	if (n_size < 2)
-		notall = false;
-	std::map<string, QString>::iterator tabit = d.namemap.begin();
-	for (;tabit != d.namemap.end(); ++tabit)
-	{
-		bool found = false;
-		for (size_t i = 0; i != n_size; i++) 
-			if (tabit->first == names.at(i) && notall)
-				found = true;
-		if (!found)
-			removetab.push_back(tabit->first);
-	}
-	
-
-	// remove tabs
-	for(size_t i = 0; i<removetab.size(); i++)
-	{
-		if (d.namemap.find(removetab.at(i)) != d.namemap.end())
-		{
-			tabit = d.namemap.find(removetab.at(i));
-			for (int i = 0; i < tb.count(); i++)
-				if (tb.tabText(i) == tabit->second)
-				{
-					tb.removeTab(i);
-					break;
-				}
-			d.namemap.erase(tabit);
-		}
-	}
-
-	// rebuild func map
-	if (removetab.size() > 0 || addtab.size() > 0)
-	{
-		d.funcmap.clear();
-		tabit = d.namemap.begin();
-		for (;tabit != d.namemap.end(); ++tabit)
-		{
-			QTabBar& tb = *d.wt->tabbar;
-			for (int i = 0; i < tb.count(); i++)
-			{
-				if (tb.tabText(i) == tabit->second)
-				{
-					FuncRequest func(LFUN_BUFFER_SWITCH, tabit->first);
-					d.funcmap.insert(GuiViewPrivate::FuncMapPair(i, func));
-					break;
-				}
+	// rebuild tabbar and function map from scratch
+	if (names.size() == 1) {
+		d.funcmap.insert(std::pair<int, FuncRequest>
+						(0, FuncRequest(LFUN_BUFFER_SWITCH, names[0])));
+	} else {
+		for(size_t i = 0; i < names.size(); i++) {
+			tabbar.addTab(lyx::toqstr(onlyFilename(names[i]))); 
+			d.funcmap.insert(std::pair<int, FuncRequest>
+							(i, FuncRequest(LFUN_BUFFER_SWITCH, names[i])));
+			// set current tab
+			if (names[i] == cur_title) {
+				tabbar.setCurrentIndex(i);
 			}
 		}
 	}
-
-	// set current tab
-	if (view()->buffer()) 
-	{
-		string cur_title = view()->buffer()->fileName();
-		if (d.namemap.find(cur_title) != d.namemap.end())
-		{
-			QString tabname = d.namemap.find(cur_title)->second;
-			for (int i = 0; i < tb.count(); i++)
-				if (tb.tabText(i) == tabname)
-				{
-					tb.setCurrentIndex(i);
-					break;
-				}
-		}
-	}
-
-	tb.blockSignals(false);
-	d.wt->update();
+	tabbar.blockSignals(false);
 }
 
 
