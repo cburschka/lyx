@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-31 20:06+0100\n"
+"POT-Creation-Date: 2007-02-01 22:05+0100\n"
 "PO-Revision-Date: 2007-01-21 18:21+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -559,8 +559,8 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:100
 #: src/buffer_funcs.C:127 src/buffer_funcs.C:168 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
-#: src/lyxfunc.C:901 src/lyxfunc.C:2016 src/lyxvc.C:175
+#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
@@ -589,7 +589,7 @@ msgstr "LyX: BibTeX-Datenbank hinzufügen"
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
 #: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:259
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:849
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -2336,7 +2336,7 @@ msgid "&Maximum last files:"
 msgstr "&Maximale Anzahl letzter Dateien:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:727
+#: src/bufferlist.C:222 src/lyxfunc.C:732
 msgid "&Save"
 msgstr "&Speichern"
 
@@ -4085,7 +4085,7 @@ msgid "Seriate"
 msgstr ""
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.C:517
+#: src/buffer_funcs.C:520
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -7920,18 +7920,18 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:51
-#: src/mathed/InsetMathNest.C:460 src/text3.C:780
+#: src/mathed/InsetMathNest.C:460 src/text3.C:797
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:52
-#: src/mathed/InsetMathNest.C:468 src/text3.C:785
+#: src/mathed/InsetMathNest.C:468 src/text3.C:802
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
 #: src/mathed/InsetMathGrid.C:1212 src/mathed/InsetMathNest.C:439
-#: src/text3.C:761
+#: src/text3.C:778
 msgid "Paste"
 msgstr "Einfügen"
 
@@ -8744,11 +8744,11 @@ msgstr ""
 "\n"
 "Möchten Sie zu der gespeicherten Version zurückkehren?"
 
-#: src/BufferView.C:232 src/lyxfunc.C:900
+#: src/BufferView.C:232 src/lyxfunc.C:905
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument wieder herstellen?"
 
-#: src/BufferView.C:233 src/lyxfunc.C:901 src/lyxvc.C:175
+#: src/BufferView.C:233 src/lyxfunc.C:906 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Wieder herstellen"
 
@@ -8787,82 +8787,82 @@ msgstr "Nichts mehr rückgängig zu machen"
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.C:912
+#: src/BufferView.C:911
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.C:919
+#: src/BufferView.C:918
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.C:926
+#: src/BufferView.C:925
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.C:929
+#: src/BufferView.C:928
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.C:975
+#: src/BufferView.C:974
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d Wörter in der Auswahl."
 
-#: src/BufferView.C:978
+#: src/BufferView.C:977
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d Wörter im Dokument."
 
-#: src/BufferView.C:983
+#: src/BufferView.C:982
 msgid "One word in selection."
 msgstr "Ein Wort in der Auswahl."
 
-#: src/BufferView.C:985
+#: src/BufferView.C:984
 msgid "One word in document."
 msgstr "Ein Wort im Dokument."
 
-#: src/BufferView.C:988
+#: src/BufferView.C:987
 msgid "Count words"
 msgstr "Wörter zählen"
 
-#: src/BufferView.C:1527
+#: src/BufferView.C:1510
 msgid "Select LyX document to insert"
 msgstr "Wählen Sie das einzufügende LyX-Dokument"
 
-#: src/BufferView.C:1529 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1512 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
-#: src/lyxfunc.C:1857 src/lyxfunc.C:1894 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1895 src/lyxfunc.C:1968
+#: src/BufferView.C:1513 src/lyxfunc.C:1909 src/lyxfunc.C:1982
 msgid "Examples|#E#e"
 msgstr "Beispiele|#B"
 
-#: src/BufferView.C:1534 src/lyx_cb.C:140 src/lyxfunc.C:1862
-#: src/lyxfunc.C:1899
+#: src/BufferView.C:1517 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/lyxfunc.C:1913
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumente (*.lyx)"
 
-#: src/BufferView.C:1546 src/lyxfunc.C:1909 src/lyxfunc.C:1989
-#: src/lyxfunc.C:2003 src/lyxfunc.C:2019
+#: src/BufferView.C:1529 src/lyxfunc.C:1923 src/lyxfunc.C:2003
+#: src/lyxfunc.C:2017 src/lyxfunc.C:2033
 msgid "Canceled."
 msgstr "Abgebrochen."
 
-#: src/BufferView.C:1557
+#: src/BufferView.C:1540
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.C:1568
+#: src/BufferView.C:1551
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.C:1570
+#: src/BufferView.C:1553
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
@@ -9430,15 +9430,15 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Die Vorlage konnte nicht gelesen werden"
 
-#: src/buffer_funcs.C:514
+#: src/buffer_funcs.C:517
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.C:520
+#: src/buffer_funcs.C:523
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.C:523
+#: src/buffer_funcs.C:526
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -9453,7 +9453,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern oder die Änderungen verwerfen?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:731
 msgid "Save changed document?"
 msgstr "Geändertes Dokument speichern?"
 
@@ -9690,7 +9690,7 @@ msgstr "Externe Vorlagen/Einfügungs-Meldungen"
 msgid "RowPainter profiling"
 msgstr "RowPainter-Profiling"
 
-#: src/exporter.C:82
+#: src/exporter.C:82 src/lyxfunc.C:1066
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -9701,11 +9701,11 @@ msgstr ""
 "\n"
 "Möchten Sie die Datei überschreiben?"
 
-#: src/exporter.C:85
+#: src/exporter.C:85 src/lyxfunc.C:1069
 msgid "Over-write file?"
 msgstr "Datei überschreiben?"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2016
+#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 msgid "&Over-write"
 msgstr "&Überschreiben"
 
@@ -10047,11 +10047,16 @@ msgstr "Wählen Sie eine Tastaturtabelle"
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX Tastaturtabellen (*.kmap)"
 
-#: src/frontends/controllers/ControlPrefs.C:136
+#: src/frontends/controllers/ControlPrefs.C:137
+#: src/frontends/controllers/ControlPrefs.C:141
 msgid "Choose personal dictionary"
 msgstr "Wählen Sie ein persönliches Wörterbuch"
 
-#: src/frontends/controllers/ControlPrefs.C:137
+#: src/frontends/controllers/ControlPrefs.C:138
+msgid "*.pws"
+msgstr "*.pws"
+
+#: src/frontends/controllers/ControlPrefs.C:142
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -10278,19 +10283,19 @@ msgstr "Marke"
 msgid "Directories"
 msgstr "Verzeichnisse"
 
-#: src/frontends/qt4/GuiView.C:126
+#: src/frontends/qt4/GuiView.C:134
 msgid "Small-sized icons"
 msgstr "Kleine Symbole"
 
-#: src/frontends/qt4/GuiView.C:132
+#: src/frontends/qt4/GuiView.C:140
 msgid "Normal-sized icons"
 msgstr "Normale Symbole"
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:147
 msgid "Big-sized icons"
 msgstr "Große Symbole"
 
-#: src/frontends/qt4/GuiView.C:669
+#: src/frontends/qt4/GuiView.C:620
 msgid "LyX"
 msgstr "LyX"
 
@@ -10331,11 +10336,11 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
-#: src/frontends/qt4/QChanges.C:36
+#: src/frontends/qt4/QChanges.C:35
 msgid "Merge Changes"
 msgstr "Änderungen zusammenfassen"
 
-#: src/frontends/qt4/QChanges.C:66
+#: src/frontends/qt4/QChanges.C:57
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -10344,7 +10349,7 @@ msgstr ""
 "Änderung durch %1$s\n"
 "\n"
 
-#: src/frontends/qt4/QChanges.C:68
+#: src/frontends/qt4/QChanges.C:59
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "Geändert am %1$s\n"
@@ -11010,11 +11015,11 @@ msgstr "Zweig: "
 msgid "Undef: "
 msgstr "Undef.: "
 
-#: src/insets/insetcaption.C:84
+#: src/insets/insetcaption.C:85
 msgid "Opened Caption Inset"
 msgstr "Legenden-Einfügung geöffnet"
 
-#: src/insets/insetcaption.C:106
+#: src/insets/insetcaption.C:126
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
@@ -11479,11 +11484,11 @@ msgstr "&Umbenennen"
 msgid "Choose a filename to save document as"
 msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1858
+#: src/lyx_cb.C:135 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "Vorlagen|#V"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2013
+#: src/lyx_cb.C:165 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11494,7 +11499,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument überschreiben?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2015
+#: src/lyx_cb.C:167 src/lyxfunc.C:2029
 msgid "Over-write document?"
 msgstr "Dokument überschreiben?"
 
@@ -11826,7 +11831,7 @@ msgstr "Nichts zu tun"
 msgid "Unknown action"
 msgstr "Unbekannte Aktion"
 
-#: src/lyxfunc.C:431 src/lyxfunc.C:710
+#: src/lyxfunc.C:431 src/lyxfunc.C:715
 msgid "Command disabled"
 msgstr "Befehl ist deaktiviert"
 
@@ -11834,15 +11839,15 @@ msgstr "Befehl ist deaktiviert"
 msgid "Command not allowed without any document open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/lyxfunc.C:696
+#: src/lyxfunc.C:701
 msgid "Document is read-only"
 msgstr "Dokument ist schreibgeschützt"
 
-#: src/lyxfunc.C:704
+#: src/lyxfunc.C:709
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/lyxfunc.C:723
+#: src/lyxfunc.C:728
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -11853,7 +11858,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/lyxfunc.C:741
+#: src/lyxfunc.C:746
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -11862,11 +11867,11 @@ msgstr ""
 "Das Dokument %1$s konnte nicht gedruckt werden.\n"
 "Prüfen Sie, ob Ihr Drucker korrekt konfiguriert ist."
 
-#: src/lyxfunc.C:744
+#: src/lyxfunc.C:749
 msgid "Print document failed"
 msgstr "Das Drucken des Dokuments ist fehlgeschlagen"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:768
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -11875,20 +11880,20 @@ msgstr ""
 "Das Dokument konnte nicht in die Dokumentklasse\n"
 "%1$s konvertiert werden."
 
-#: src/lyxfunc.C:766
+#: src/lyxfunc.C:771
 msgid "Could not change class"
 msgstr "Die Klasse konnte nicht geändert werden"
 
-#: src/lyxfunc.C:878
+#: src/lyxfunc.C:883
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Speichere Dokument %1$s..."
 
-#: src/lyxfunc.C:882
+#: src/lyxfunc.C:887
 msgid " done."
 msgstr " fertig."
 
-#: src/lyxfunc.C:898
+#: src/lyxfunc.C:903
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -11897,75 +11902,75 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/lyxfunc.C:1079
+#: src/lyxfunc.C:1093
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/lyxfunc.C:1105 src/text3.C:1229
+#: src/lyxfunc.C:1119 src/text3.C:1256
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/lyxfunc.C:1114
+#: src/lyxfunc.C:1128
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/lyxfunc.C:1389
+#: src/lyxfunc.C:1403
 msgid "Opening child document "
 msgstr "Öffne Unterdokument "
 
-#: src/lyxfunc.C:1476
+#: src/lyxfunc.C:1490
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/lyxfunc.C:1487
+#: src/lyxfunc.C:1501
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen - die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/lyxfunc.C:1603
+#: src/lyxfunc.C:1617
 msgid "Document defaults saved in "
 msgstr "Dokument-Standardeinstellungen gespeichert in "
 
-#: src/lyxfunc.C:1606
+#: src/lyxfunc.C:1620
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/lyxfunc.C:1662
+#: src/lyxfunc.C:1676
 msgid "Converting document to new document class..."
 msgstr "Das Dokument wird an die neue Dokumentklasse angepasst..."
 
-#: src/lyxfunc.C:1855
+#: src/lyxfunc.C:1869
 msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
-#: src/lyxfunc.C:1892
+#: src/lyxfunc.C:1906
 msgid "Select document to open"
 msgstr "Wählen Sie das zu öffnende Dokument"
 
-#: src/lyxfunc.C:1931
+#: src/lyxfunc.C:1945
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Öffne Dokument %1$s..."
 
-#: src/lyxfunc.C:1935
+#: src/lyxfunc.C:1949
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s ist geöffnet."
 
-#: src/lyxfunc.C:1937
+#: src/lyxfunc.C:1951
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Das Dokument %1$s konnte nicht geöffnet werden"
 
-#: src/lyxfunc.C:1962
+#: src/lyxfunc.C:1976
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
-#: src/lyxfunc.C:2089
+#: src/lyxfunc.C:2103
 msgid "Welcome to LyX!"
 msgstr "Willkommen bei LyX!"
 
@@ -12942,19 +12947,19 @@ msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 msgid "Unknown spacing argument: "
 msgstr "Unbekanntes Abstandsargument: "
 
-#: src/text3.C:839
+#: src/text3.C:856
 msgid "Layout "
 msgstr "Format "
 
-#: src/text3.C:840
+#: src/text3.C:857
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/text3.C:1334 src/text3.C:1346
+#: src/text3.C:1361 src/text3.C:1373
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/text3.C:1477
+#: src/text3.C:1504
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
