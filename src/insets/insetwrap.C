@@ -226,19 +226,8 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 
 void InsetWrap::addToToc(TocList & toclist, Buffer const & buf) const
 {
-	ParConstIterator pit = par_const_iterator_begin(*this);
-	ParConstIterator end = par_const_iterator_end(*this);
-
-	// Find a caption layout in one of the (child inset's) pars
-	for (; pit != end; ++pit) {
-		if (pit->layout()->labeltype == LABEL_SENSITIVE) {
-			Toc & toc = toclist[params_.type];
-			docstring const str =
-				convert<docstring>(toc.size() + 1)
-				+ ". " + pit->asString(buf, false);
-			toc.push_back(TocItem(pit, 0, str));
-		}
-	}
+	// Is there a need to provide a list of wrap insets?
+	return;
 }
 
 

@@ -67,7 +67,11 @@ public:
 	///
 	void setCount(int c) { counter_ = c; }
 	///
-	void setLabel(docstring const & label);
+	void setType(std::string const & type) { type_ = type; }
+	///
+	void setCustomLabel(docstring const & label);
+	///
+	void addToToc(TocList &, Buffer const &) const;
 
 private:
 	///
@@ -77,7 +81,9 @@ private:
 	///
 	mutable int labelwidth_;
 	///
-	docstring label_;
+	std::string type_;
+	///
+	docstring custom_label_;
 	///
 	int counter_;
 	///

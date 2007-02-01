@@ -363,8 +363,9 @@ void setCaptionLabels(InsetBase & inset, Floating const & fl,
 	if (pars.empty())
 		return;
 
-	// FIXME UNICODE
+	string const & type = fl.type();
 	docstring const counter = from_ascii(fl.type());
+	// FIXME UNICODE
 	docstring const label = from_utf8(fl.name());
 
 	ParagraphList::iterator p = pars.begin();
@@ -381,8 +382,10 @@ void setCaptionLabels(InsetBase & inset, Floating const & fl,
 				// We found a caption!
 				counters.step(counter); 
 				int number = counters.value(counter);
-				static_cast<InsetCaption &>(icap).setCount(number);
-				static_cast<InsetCaption &>(icap).setLabel(label);
+				InsetCaption & ic = static_cast<InsetCaption &>(icap);
+				ic.setType(type);
+				ic.setCount(number);
+				ic.setCustomLabel(label);
 			}
 		}
 	}

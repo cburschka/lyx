@@ -378,6 +378,12 @@ void InsetFloat::sideways(bool s, BufferParams const & bp)
 
 void InsetFloat::addToToc(TocList & toclist, Buffer const & buf) const
 {
+	// Is there a need to provide a list of float insets?
+	return;
+
+	// Abdel (01/02/2006): I'll let this code for reference in case
+	// there's a need to do something similar for another kind of
+	// inset.
 	ParConstIterator pit = par_const_iterator_begin(*this);
 	ParConstIterator end = par_const_iterator_end(*this);
 

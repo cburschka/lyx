@@ -28,6 +28,7 @@
 #include "metricsinfo.h"
 #include "output_latex.h"
 #include "paragraph.h"
+#include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -38,18 +39,18 @@
 #include <sstream>
 
 
-namespace lyx {
-
-using support::bformat;
-
 using std::auto_ptr;
 using std::endl;
 using std::string;
 using std::ostream;
 
 
+namespace lyx {
+
+using support::bformat;
+
 InsetCaption::InsetCaption(BufferParams const & bp)
-	: InsetText(bp), textclass_(bp.getLyXTextClass()), counter_(-1)
+	: InsetText(bp), textclass_(bp.getLyXTextClass())
 {
 	setAutoBreakRows(true);
 	setDrawFrame(true);
@@ -93,20 +94,40 @@ void InsetCaption::cursorPos(BufferView const & bv,
 }
 
 
-void InsetCaption::setLabel(docstring const & label)
+void InsetCaption::setCustomLabel(docstring const & label)
 {
-	label_ = _(to_ascii(label));
+	if (!support::isAscii(label) || label.empty())
+		// This must be a user defined layout. We cannot translate
+		// this, since gettext accepts only ascii keys.
+		custom_label_ = label;
+	else
+		custom_label_ = _(to_ascii(label));
+}
+
+
+void InsetCaption::addToToc(TocList & toclist, Buffer const & buf) const
+{
+	if (type_.empty())
+		return;
+
+	ParConstIterator pit = par_const_iterator_begin(*this);
+
+	Toc & toc = toclist[type_];
+	docstring const str = convert<docstring>(counter_)
+		+ ". " + pit->asString(buf, false);
+	toc.push_back(TocItem(pit, 0, str));
 }
 
 
 bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
-	if (counter_ < 0)
+	if (type_.empty())
 		full_label_ = _("Senseless!!! ");
 	else {
 		docstring const number = convert<docstring>(counter_);
-		full_label_ = bformat(from_ascii("%1$s %2$s:"), label_, number);
+		docstring label = custom_label_.empty()? _(type_): custom_label_;
+		full_label_ = bformat(from_ascii("%1$s %2$s:"), label, number);
 	}
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	dim.wid = labelwidth_;
