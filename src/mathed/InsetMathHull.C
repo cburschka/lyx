@@ -1273,7 +1273,7 @@ void InsetMathHull::mutateToText()
 	string str = os.str();
 
 	// insert this text
-	LyXText * lt = view_->getLyXText();
+	LyXText * lt = view_->cursor().innerText();
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit)

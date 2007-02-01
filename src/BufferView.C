@@ -598,7 +598,7 @@ void BufferView::switchKeyMap()
 	if (!lyxrc.rtl_support)
 		return;
 
-	if (getLyXText()->real_current_font.isRightToLeft()) {
+	if (cursor_.innerText()->real_current_font.isRightToLeft()) {
 		if (intl_->keymap == Intl::PRIMARY)
 			intl_->keyMapSec();
 	} else {
@@ -1220,22 +1220,6 @@ void BufferView::gotoLabel(docstring const & label)
 			return;
 		}
 	}
-}
-
-
-LyXText * BufferView::getLyXText()
-{
-	LyXText * text = cursor_.innerText();
-	BOOST_ASSERT(text);
-	return text;
-}
-
-
-LyXText const * BufferView::getLyXText() const
-{
-	LyXText const * text = cursor_.innerText();
-	BOOST_ASSERT(text);
-	return text;
 }
 
 

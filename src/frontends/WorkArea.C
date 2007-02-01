@@ -276,7 +276,7 @@ void WorkArea::showCursor()
 
 	CursorShape shape = BAR_SHAPE;
 
-	LyXText const & text = *buffer_view_->getLyXText();
+	LyXText const & text = *buffer_view_->cursor().innerText();
 	LyXFont const & realfont = text.real_current_font;
 	BufferParams const & bp = buffer_view_->buffer()->params();
 	bool const samelang = realfont.language() == bp.language;

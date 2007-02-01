@@ -667,7 +667,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// if the inset can not be removed from within, delete it
 		if (!cur.backspace()) {
 			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
-			cur.bv().getLyXText()->dispatch(cur, cmd);
+			cur.bv().cursor().innerText()->dispatch(cur, cmd);
 		}
 		break;
 
@@ -681,7 +681,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		// if the inset can not be removed from within, delete it
 		if (!cur.erase()) {
 			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
-			cur.bv().getLyXText()->dispatch(cur, cmd);
+			cur.bv().cursor().innerText()->dispatch(cur, cmd);
 		}
 		break;
 

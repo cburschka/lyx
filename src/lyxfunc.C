@@ -232,7 +232,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 		c = 0;
 
 	lyx_view_->view()->getIntl().getTransManager().deadkey(
-		c, get_accent(action).accent, view()->getLyXText(), view()->cursor());
+		c, get_accent(action).accent, view()->cursor().innerText(), view()->cursor());
 	// Need to clear, in case the minibuffer calls these
 	// actions
 	keyseq->clear();

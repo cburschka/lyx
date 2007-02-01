@@ -331,12 +331,12 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 
 	// clear the selection
 	LyXText const & text = bv->buffer()->text();
-	if (&text == bv->getLyXText())
+	if (&text == bv->cursor().innerText())
 		bv->cursor().clearSelection();
 	if (asParagraph)
-		bv->getLyXText()->insertStringAsParagraphs(bv->cursor(), tmpstr);
+		bv->cursor().innerText()->insertStringAsParagraphs(bv->cursor(), tmpstr);
 	else
-		bv->getLyXText()->insertStringAsLines(bv->cursor(), tmpstr);
+		bv->cursor().innerText()->insertStringAsLines(bv->cursor(), tmpstr);
 }
 
 

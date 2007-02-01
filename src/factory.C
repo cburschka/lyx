@@ -173,7 +173,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 		// Try and generate a valid index entry.
 		InsetCommandParams icp("index");
 		icp["name"] = cmd.argument().empty() ?
-			bv->getLyXText()->getStringToIndex(bv->cursor()) :
+			bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
 			cmd.argument();
 		return new InsetIndex(icp);
 	}
@@ -181,7 +181,7 @@ InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 	case LFUN_NOMENCL_INSERT: {
 		InsetCommandParams icp("nomenclature");
 		icp["symbol"] = cmd.argument().empty() ?
-			bv->getLyXText()->getStringToIndex(bv->cursor()) :
+			bv->cursor().innerText()->getStringToIndex(bv->cursor()) :
 			cmd.argument();
 		return new InsetNomencl(icp);
 	}

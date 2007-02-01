@@ -125,12 +125,6 @@ public:
 	/// return the current change at the cursor.
 	Change const getCurrentChange() const;
 
-	/// return the lyxtext we are using.
-	LyXText * getLyXText();
-
-	/// return the lyxtext we are using.
-	LyXText const * getLyXText() const;
-
 	/// move cursor to the named label.
 	void gotoLabel(docstring const & label);
 
