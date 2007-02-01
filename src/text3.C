@@ -1176,7 +1176,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.pos() = 0;
 		cur.dispatch(FuncRequest(LFUN_CAPTION_INSERT));
 		// FIXME: When leaving the Float (or Wrap) inset we should
-		// any empty paragraph left above or below the
+		// delete any empty paragraph left above or below the
 		// caption.
 		break;
 	}
