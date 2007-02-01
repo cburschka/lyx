@@ -1134,9 +1134,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
 		updateLabels(*bv->buffer());
-		// FIXME: We should insert two empty paragraphs before and
-		// after the caption so that the user can go up or down in
-		// order to insert a figure or a table.
 		break;
 	case LFUN_NOTE_INSERT:
 	case LFUN_CHARSTYLE_INSERT:
@@ -1165,11 +1162,24 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
-	case LFUN_WRAP_INSERT:
+	case LFUN_WRAP_INSERT: {
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
+		ParagraphList & pars = cur.text()->paragraphs();
+		// We create two additional empty paragraphs so that the
+		// user can choose where to put the graphics (or table).
+		pars.push_back(pars[0]);
+		pars.push_back(pars[0]);
+		// Now that we have three paragraphs, we reposition the cursor
+		// at the beginning of the second one.
+		cur.pit() = 1;
+		cur.pos() = 0;
 		cur.dispatch(FuncRequest(LFUN_CAPTION_INSERT));
+		// FIXME: When leaving the Float (or Wrap) inset we should
+		// any empty paragraph left above or below the
+		// caption.
 		break;
+	}
 
 	case LFUN_INDEX_INSERT:
 	case LFUN_NOMENCL_INSERT: {
