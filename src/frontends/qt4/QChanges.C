@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -23,8 +24,6 @@
 #include <QTextBrowser>
 
 using lyx::support::bformat;
-
-using std::string;
 
 namespace lyx {
 namespace frontend {
@@ -50,14 +49,6 @@ void QChanges::build_dialog()
 
 void QChanges::update_contents()
 {
-	next();
-}
-
-
-void QChanges::next()
-{
-	controller().find();
-
 	docstring text;
 	docstring author = controller().getChangeAuthor();
 	docstring date = controller().getChangeDate();
@@ -68,6 +59,12 @@ void QChanges::next()
 		text += bformat(_("Change made at %1$s\n"), date);
 
 	dialog_->changeTB->setPlainText(toqstr(text));
+}
+
+
+void QChanges::next()
+{
+	controller().next();
 }
 
 

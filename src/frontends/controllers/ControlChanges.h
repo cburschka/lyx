@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -37,11 +38,8 @@ public:
 	/// always true since dispatchParams() is empty
 	virtual bool canApply() const { return true; }
 
-	/// find the next merge chunk and highlight it
-	bool find();
-
-	/// Are there changes to be merged at current location?
-	bool changed();
+	/// find the next change and highlight it
+	void next();
 
 	/// return date of change
 	lyx::docstring const getChangeDate();
@@ -49,11 +47,11 @@ public:
 	/// return author of change
 	lyx::docstring const getChangeAuthor();
 
-	/// accept the current merge
-	bool accept();
+	/// accept the current change
+	void accept();
 
-	/// reject the current merge
-	bool reject();
+	/// reject the current change
+	void reject();
 };
 
 } // namespace frontend

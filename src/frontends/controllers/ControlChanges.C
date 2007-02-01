@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author John Levon
+ * \author Michael Gerz
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -20,14 +21,8 @@
 #include "funcrequest.h"
 #include "lyxfind.h"
 
-// FIXME: those two headers are needed because of the
-// WorkArea::redraw() call below.
-#include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
-
 #include "support/lyxtime.h"
 
-using std::string;
 
 namespace lyx {
 
@@ -39,29 +34,16 @@ ControlChanges::ControlChanges(Dialog & parent)
 {}
 
 
-bool ControlChanges::find()
+void ControlChanges::next()
 {
-	// FIXME: it would be better to use an LFUN.
-	if (!findNextChange(kernel().bufferview()))
-		return false;
-
-	kernel().bufferview()->update();
-	kernel().lyxview().currentWorkArea()->redraw();
-	return true;
-}
-
-
-bool ControlChanges::changed()
-{
-	Change c(kernel().bufferview()->getCurrentChange());
-	return c.type != Change::UNCHANGED;
+	kernel().dispatch(FuncRequest(LFUN_CHANGE_NEXT));
 }
 
 
 docstring const ControlChanges::getChangeDate()
 {
-	Change c(kernel().bufferview()->getCurrentChange());
-	if (c.type == Change::UNCHANGED || !c.changetime)
+	Change const & c = kernel().bufferview()->getCurrentChange();
+	if (c.type == Change::UNCHANGED)
 		return docstring();
 
 	// FIXME UNICODE
@@ -71,35 +53,33 @@ docstring const ControlChanges::getChangeDate()
 
 docstring const ControlChanges::getChangeAuthor()
 {
-	Change c(kernel().bufferview()->getCurrentChange());
+	Change const & c = kernel().bufferview()->getCurrentChange();
 	if (c.type == Change::UNCHANGED)
 		return docstring();
 
-	Author const & a(kernel().buffer().params().authors().get(c.author));
+	Author const & a = kernel().buffer().params().authors().get(c.author);
 
 	docstring author(a.name());
 
 	if (!a.email().empty()) {
-		author += " (";
-		author += a.email();
-		author += ")";
+		author += " (" + a.email() + ")";
 	}
 
 	return author;
 }
 
 
-bool ControlChanges::accept()
+void ControlChanges::accept()
 {
 	kernel().dispatch(FuncRequest(LFUN_CHANGE_ACCEPT));
-	return find();
+	next();
 }
 
 
-bool ControlChanges::reject()
+void ControlChanges::reject()
 {
 	kernel().dispatch(FuncRequest(LFUN_CHANGE_REJECT));
-	return find();
+	next();
 }
 
 
