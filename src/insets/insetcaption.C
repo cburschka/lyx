@@ -195,9 +195,18 @@ bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAK_PARAGRAPH_SKIP:
 	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_PAGEBREAK_INSERT:
+	case LFUN_TABULAR_INSERT:
 		status.enabled(false);
 		return true;
 
+	case LFUN_INSET_INSERT: {
+		string const name = cmd.getArg(0);
+		if (name == "graphics"
+			|| name == "include") {
+		status.enabled(false);
+		return true;
+		}
+	}
 	default:
 		return InsetText::getStatus(cur, cmd, status);
 	}
