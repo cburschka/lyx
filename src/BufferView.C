@@ -878,25 +878,24 @@ Update::flags BufferView::dispatch(FuncRequest const & cmd)
 			showDialog("changes");
 		break;
 
-	case LFUN_ALL_CHANGES_ACCEPT: {
+	case LFUN_ALL_CHANGES_ACCEPT:
+		// select complete document
 		cursor_.reset(buffer_->inset());
-#ifdef WITH_WARNINGS
-#warning FIXME changes
-#endif
-		while (findNextChange(this))
-			getLyXText()->acceptOrRejectChanges(cursor_, LyXText::ACCEPT);
+		cursor_.selHandle(true);
+		buffer_->text().cursorBottom(cursor_);
+		// accept everything in a single step to support atomic undo
+		buffer_->text().acceptOrRejectChanges(cursor_, LyXText::ACCEPT);
 		break;
-	}
 
-	case LFUN_ALL_CHANGES_REJECT: {
+	case LFUN_ALL_CHANGES_REJECT:
+		// select complete document
 		cursor_.reset(buffer_->inset());
-#ifdef WITH_WARNINGS
-#warning FIXME changes
-#endif
-		while (findNextChange(this))
-			getLyXText()->acceptOrRejectChanges(cursor_, LyXText::REJECT);
+		cursor_.selHandle(true);
+		buffer_->text().cursorBottom(cursor_);
+		// reject everything in a single step to support atomic undo
+		// Note: reject does not work recursively; the user may have to repeat the operation
+		buffer_->text().acceptOrRejectChanges(cursor_, LyXText::REJECT);
 		break;
-	}
 
 	case LFUN_WORD_FIND:
 		find(this, cmd);
