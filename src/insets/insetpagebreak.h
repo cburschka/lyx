@@ -23,7 +23,7 @@ class InsetPagebreak : public InsetOld {
 public:
 	InsetPagebreak() {}
 
-	InsetBase::Code lyxCode() const { return InsetBase::LINE_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::PAGEBREAK_CODE; }
 
 	bool metrics(MetricsInfo &, Dimension &) const;
 

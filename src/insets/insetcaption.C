@@ -27,6 +27,7 @@
 #include "LColor.h"
 #include "metricsinfo.h"
 #include "output_latex.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "TocBackend.h"
 
@@ -179,38 +180,32 @@ InsetBase * InsetCaption::editXY(LCursor & cur, int x, int y)
 }
 
 
+bool InsetCaption::insetAllowed(InsetBase::Code code) const
+{
+	switch (code) {
+	case FLOAT_CODE:
+	case TABULAR_CODE:
+	case WRAP_CODE:
+	case CAPTION_CODE:
+	case PAGEBREAK_CODE:
+		return false;
+	default:
+		return InsetText::insetAllowed(code);
+	}
+}
+
+
 bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action) {
 
-	case LFUN_CAPTION_INSERT:
-	case LFUN_FLOAT_INSERT:
-	case LFUN_FLOAT_WIDE_INSERT:
-	case LFUN_WRAP_INSERT:
-	case LFUN_PARAGRAPH_MOVE_UP:
-	case LFUN_PARAGRAPH_MOVE_DOWN:
 	case LFUN_BREAK_PARAGRAPH:
 	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
-	case LFUN_PARAGRAPH_SPACING:
-	case LFUN_PAGEBREAK_INSERT:
-	case LFUN_TABULAR_INSERT:
 		status.enabled(false);
 		return true;
 
-	case LFUN_DIALOG_SHOW_NEW_INSET:
-	case LFUN_INSET_INSERT: {
-		string const name = cmd.getArg(0);
-		if (name == "float"
-			|| name == "graphics"
-			|| name == "include"
-			|| name == "wrap"
-			) {
-		status.enabled(false);
-		return true;
-		}
-	}
 	default:
 		return InsetText::getStatus(cur, cmd, status);
 	}
@@ -218,13 +213,17 @@ bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetCaption::latex(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+			OutputParams const & runparams_in) const
 {
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
 	// This code is currently only able to handle the simple
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
+	OutputParams runparams = runparams_in;
+	// FIXME: actually, it is moving only when there is no
+	// optional argument.
+	runparams.moving_arg = true;
 	os << "\\caption";
 	int l = latexOptArgInsets(buf, paragraphs()[0], os, runparams, 1);
 	os << '{';

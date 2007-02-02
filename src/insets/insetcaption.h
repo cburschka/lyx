@@ -52,6 +52,8 @@ public:
 	///
 	virtual InsetBase * editXY(LCursor & cur, int x, int y);
 	///
+	bool insetAllowed(InsetBase::Code code) const;
+	///
 	virtual bool getStatus(LCursor & cur, FuncRequest const & cmd, FuncStatus &) const;
 	///
 	virtual bool wide() const { return false; }
