@@ -29,6 +29,7 @@
 #include "output_latex.h"
 #include "outputparams.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 #include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"
@@ -204,6 +205,10 @@ bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_BREAK_PARAGRAPH_KEEP_LAYOUT:
 	case LFUN_BREAK_PARAGRAPH_SKIP:
 		status.enabled(false);
+		return true;
+
+	case LFUN_OPTIONAL_INSERT:
+		status.enabled(numberOfOptArgs(cur.paragraph()) == 0);
 		return true;
 
 	default:
