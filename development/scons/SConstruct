@@ -191,6 +191,8 @@ opts.AddOptions(
     ('prefix', 'install architecture-independent files in PREFIX', default_prefix),
     # replace the default name and location of the windows installer
     ('win_installer', 'name or full path to the windows installer', None),
+    # the deps package used to create minimal installer (qt and other libraries)
+    ('deps_dir', 'path to the development depedency packages with zlib, iconv, zlib and qt libraries', None),
     # build directory, will use $mode if not set
     ('build_dir', 'Build directory', None),
     # version suffix
@@ -2159,24 +2161,24 @@ if build_installer:
             env['win_installer'] = '%s-%s-%s-Installer.exe' % (package_name, package_version, time.strftime('%Y-%m-%d'))
         else:
             env['win_installer'] = '%s-%s-Installer.exe' % (package_name, package_version)
+    # provide default setting            
+    if not env.has_key('deps_dir') or env['deps_dir'] is None:
+        env['deps_dir'] = os.path.join(env.Dir('TOP_SRCDIR').abspath, 'lyx-windows-deps-msvc-qt4')
+    if not os.path.isdir(env['deps_dir']):
+        print 'Development dependency package is not found.'
+        Exit(1)    
     # if absolute path is given, use it, otherwise, write to current directory
     if not (':' in env['win_installer'] or '/' in env['win_installer'] or '\\' in env['win_installer']):
         env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
     env.Append(NSISDEFINES={
         'ExeFile':env['win_installer'],
-        'FilesLyx':env.Dir(dest_prefix_dir).abspath
+        'FilesLyx':env.Dir(dest_prefix_dir).abspath,
+        'FilesDeps':env['deps_dir'],
         })
     installer = env.installer(env['win_installer'],
         '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
     # since I can not use a scanner, explicit dependent is required
-    env.Depends(installer, [lyx, tex2lyx] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/%s' % x for x in win32_packaging_installer_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/components/%s' % x for x in win32_packaging_installer_components_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/dialogs/%s' % x for x in win32_packaging_installer_dialogs_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/graphics/%s' % x for x in win32_packaging_installer_graphics_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/include/%s' % x for x in win32_packaging_installer_include_files] + \
-        ['$TOP_SRCDIR/development/Win32/packaging/installer/lang/%s' % x for x in win32_packaging_installer_lang_files ]
-    )
+    env.Depends(installer, 'install')
     frontend_env.Alias('installer', installer)
 
 
