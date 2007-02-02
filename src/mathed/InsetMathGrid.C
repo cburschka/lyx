@@ -50,7 +50,6 @@ using std::istream;
 using std::istringstream;
 using std::vector;
 
-
 class GridInsetMailer : public MailInset {
 public:
 	GridInsetMailer(InsetMathGrid & inset) : inset_(inset) {}

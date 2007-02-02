@@ -68,15 +68,24 @@ void copySelection(LCursor & cur);
  *        clipboard
  */
 void copySelection(LCursor & cur, docstring const & plaintext);
-/// Push the current selection to the cut buffer.
-void copySelectionToStack(LCursor & cur);
+/// Push the selection buffer to the cut buffer.
+void copySelectionToStack();
+/// Store the current selection in the internal selection buffer
+void saveSelection(LCursor & cur);
+/// Is a selection available in our selection buffer?
+bool selection();
+/// Clear our selection buffer
+void clearSelection();
+/// Paste the current selection at \p cur
+/// Does handle undo. Does only work in text, not mathed.
+void pasteSelection(LCursor & cur, ErrorList &);
 /// Replace the current selection with the clipboard contents (internal or
 /// external: which is newer)
 /// Does handle undo. Does only work in text, not mathed.
 void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs = true);
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
-void pasteSelection(LCursor & cur, ErrorList &, size_t sel_index = 0);
+void pasteFromStack(LCursor & cur, ErrorList & errorList, size_t sel_index);
 
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.

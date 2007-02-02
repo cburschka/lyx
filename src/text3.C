@@ -76,9 +76,10 @@ namespace lyx {
 
 using cap::copySelection;
 using cap::cutSelection;
+using cap::pasteFromStack;
 using cap::pasteClipboard;
-using cap::pasteSelection;
 using cap::replaceSelection;
+using cap::saveSelection;
 
 using support::isStrUnsignedInt;
 using support::token;
@@ -122,7 +123,7 @@ namespace {
 	{
 		if (selecting || cur.mark())
 			cur.setSelection();
-		theSelection().haveSelection(cur.selection());
+		saveSelection(cur);
 		cur.bv().switchKeyMap();
 	}
 
@@ -138,7 +139,6 @@ namespace {
 	{
 		recordUndo(cur);
 		docstring sel = cur.selectionAsString(false);
-		//lyxerr << "selection is: '" << sel << "'" << endl;
 
 		// It may happen that sel is empty but there is a selection
 		replaceSelection(cur);
@@ -434,6 +434,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		}
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_CHAR_BACKWARD:
@@ -450,6 +452,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		}
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_UP:
@@ -464,6 +468,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		}
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_DOWN:
@@ -478,18 +484,24 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		}
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_UP_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_PARAGRAPH_UP_SELECT);
 		needsUpdate |= cursorUpParagraph(cur);
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_PARAGRAPH_DOWN:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_PARAGRAPH_DOWN_SELECT);
 		needsUpdate |= cursorDownParagraph(cur);
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_SCREEN_UP:
@@ -501,6 +513,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		} else {
 			cursorPrevious(cur);
 		}
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_SCREEN_DOWN:
@@ -513,6 +527,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		} else {
 			cursorNext(cur);
 		}
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_LINE_BEGIN:
@@ -525,6 +541,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_LINE_END_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action == LFUN_LINE_END_SELECT);
 		needsUpdate |= cursorEnd(cur);
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_WORD_FORWARD:
@@ -534,6 +552,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorLeftOneWord(cur);
 		else
 			needsUpdate |= cursorRightOneWord(cur);
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_WORD_BACKWARD:
@@ -543,6 +563,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorRightOneWord(cur);
 		else
 			needsUpdate |= cursorLeftOneWord(cur);
+		if (cur.selection())
+			saveSelection(cur);
 		break;
 
 	case LFUN_WORD_SELECT: {
@@ -781,7 +803,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			pasteClipboard(cur, bv->buffer()->errorList("Paste"));
 		else {
 			string const arg(to_utf8(cmd.argument()));
-			pasteSelection(cur, bv->buffer()->errorList("Paste"),
+			pasteFromStack(cur, bv->buffer()->errorList("Paste"),
 					isStrUnsignedInt(arg) ?
 						convert<unsigned int>(arg) :
 						0);
@@ -960,7 +982,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cursorEnd(cur);
 			cur.setSelection();
 			bv->cursor() = cur;
-			theSelection().haveSelection(cur.selection());
+			saveSelection(cur);
 		}
 		break;
 
@@ -968,7 +990,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			selectWord(cur, WHOLE_WORD_STRICT);
 			bv->cursor() = cur;
-			theSelection().haveSelection(cur.selection());
 		}
 		break;
 
@@ -983,15 +1004,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// it could get cleared on the unlocking of the inset so
 		// we have to check this first
 		bool paste_internally = false;
-		if (cmd.button() == mouse_button::button2 && cur.selection()) {
-			// Copy the selection to the clipboard stack. This
-			// is done for two reasons:
-			// - We want it to appear in the "Edit->Paste recent"
-			//   menu.
-			// - We can then use the normal copy/paste machinery
-			//   instead of theSelection().get() to preserve
-			//   formatting of the pasted stuff.
-			cap::copySelectionToStack(cur.bv().cursor());
+		if (cmd.button() == mouse_button::button2 && cap::selection()) {
+			// Copy the selection buffer to the clipboard
+			// stack, because we want it to appear in the
+			// "Edit->Paste recent" menu.
+			cap::copySelectionToStack();
 			paste_internally = true;
 		}
 
@@ -1002,9 +1019,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// if there is a local selection in the current buffer,
 		// insert this
 		if (cmd.button() == mouse_button::button2) {
-			if (paste_internally)
-				lyx::dispatch(FuncRequest(LFUN_PASTE, "0"));
-			else
+			if (paste_internally) {
+				cap::pasteSelection(cur, bv->buffer()->errorList("Paste"));
+				bv->buffer()->errors("Paste");
+				cur.clearSelection(); // bug 393
+				bv->switchKeyMap();
+				finishUndo();
+			} else
 				lyx::dispatch(FuncRequest(LFUN_PRIMARY_SELECTION_PASTE, "paragraph"));
 		}
 
@@ -1061,10 +1082,18 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button2)
 			break;
 
-		// finish selection
 		if (cmd.button() == mouse_button::button1) {
-			if (cur.selection())
-				theSelection().haveSelection(true);
+			// if there is new selection, update persistent
+			// selection, otherwise, single click does not
+			// clear persistent selection buffer
+			if (cur.selection()) {
+				// finish selection
+				// if double click, cur is moved to the end of word by selectWord
+				// but bvcur is current mouse position
+				LCursor & bvcur = cur.bv().cursor();
+				bvcur.selection() = true;
+				saveSelection(bvcur);
+			}
 			needsUpdate = false;
 			cur.noUpdate();
 		}
@@ -1083,13 +1112,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// "auto_region_delete", which defaults to
 		// true (on).
 
-		if (lyxrc.auto_region_delete) {
+		if (lyxrc.auto_region_delete)
 			if (cur.selection())
 				cutSelection(cur, false, false);
-				// cutSelection clears the X selection.
-			else
-				theSelection().haveSelection(false);
-		}
 
 		cur.clearSelection();
 		LyXFont const old_font = real_current_font;
@@ -1508,6 +1533,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_ESCAPE:
 		if (cur.selection()) {
 			cur.selection() = false;
+			saveSelection(cur);
 		} else {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);

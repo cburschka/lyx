@@ -73,6 +73,8 @@ typedef std::pair<pit_type, int> PitPosPair;
 typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 
 CutStack theCuts(10);
+// persistent selection, cleared until the next selection
+CutStack selectionBuffer(1);
 
 // store whether the tabular stack is newer than the normal copy stack
 // FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
@@ -343,7 +345,7 @@ void putClipboard(ParagraphList const & paragraphs, textclass_type textclass,
 
 void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	pit_type startpit, pit_type endpit,
-	int start, int end, textclass_type tc)
+	int start, int end, textclass_type tc, CutStack & cutstack)
 {
 	BOOST_ASSERT(0 <= start && start <= pars[startpit].size());
 	BOOST_ASSERT(0 <= end && end <= pars[endpit].size());
@@ -377,7 +379,7 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	// again, do not track deletion
 	front.eraseChars(0, start, false);
 
-	theCuts.push(make_pair(paragraphs, tc));
+	cutstack.push(make_pair(paragraphs, tc));
 }
 
 } // namespace anon
@@ -524,7 +526,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 				text->paragraphs(),
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
-				bp.textclass);
+				bp.textclass, theCuts);
 			// Stuff what we got on the clipboard.
 			// Even if there is no selection.
 			putClipboard(theCuts[0].first, theCuts[0].second,
@@ -580,16 +582,9 @@ void copySelection(LCursor & cur)
 }
 
 
-void copySelection(LCursor & cur, docstring const & plaintext)
-{
-	copySelectionToStack(cur);
+namespace {
 
-	// stuff the selection onto the X clipboard, from an explicit copy request
-	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
-}
-
-
-void copySelectionToStack(LCursor & cur)
+void copySelectionToStack(LCursor & cur, CutStack & cutstack)
 {
 	// this doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -611,7 +606,7 @@ void copySelectionToStack(LCursor & cur)
 			++pos;
 
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
-			pos, cur.selEnd().pos(), cur.buffer().params().textclass);
+			pos, cur.selEnd().pos(), cur.buffer().params().textclass, cutstack);
 	}
 
 	if (cur.inMathed()) {
@@ -622,10 +617,50 @@ void copySelectionToStack(LCursor & cur)
 		par.layout(bp.getLyXTextClass().defaultLayout());
 		par.insert(0, grabSelection(cur), LyXFont(), Change(Change::UNCHANGED));
 		pars.push_back(par);
-		theCuts.push(make_pair(pars, bp.textclass));
+		cutstack.push(make_pair(pars, bp.textclass));
 	}
-	// tell tabular that a recent copy happened
-	dirtyTabularStack(false);
+}
+
+}
+
+
+void copySelectionToStack()
+{
+	if (!selectionBuffer.empty())
+		theCuts.push(selectionBuffer[0]);
+}
+
+
+void copySelection(LCursor & cur, docstring const & plaintext)
+{
+	copySelectionToStack(cur, theCuts);
+
+	// stuff the selection onto the X clipboard, from an explicit copy request
+	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
+}
+
+
+void saveSelection(LCursor & cur)
+{
+	lyxerr[Debug::ACTION] << "cap::saveSelection: `"
+	       << to_utf8(cur.selectionAsString(true)) << "'." << endl;
+	
+	if (cur.selection())
+		copySelectionToStack(cur, selectionBuffer);
+	// tell X whether we now have a valid selection
+	theSelection().haveSelection(cur.selection());
+}
+
+
+bool selection()
+{
+	return !selectionBuffer.empty();
+}
+
+
+void clearSelection()
+{
+	selectionBuffer.clear();
 }
 
 
@@ -660,11 +695,25 @@ void pasteParagraphList(LCursor & cur, ParagraphList const & parlist,
 }
 
 
+void pasteFromStack(LCursor & cur, ErrorList & errorList, size_t sel_index)
+{
+	// this does not make sense, if there is nothing to paste
+	if (!checkPastePossible(sel_index))
+		return;
+
+	recordUndo(cur);
+	pasteParagraphList(cur, theCuts[sel_index].first,
+			   theCuts[sel_index].second, errorList);
+	cur.setSelection();
+	saveSelection(cur);
+}
+
+
 void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
 {
 	// Use internal clipboard if it is the most recent one
 	if (theClipboard().isInternal()) {
-		pasteSelection(cur, errorList, 0);
+		pasteClipboard(cur, errorList, 0);
 		return;
 	}
 
@@ -696,15 +745,13 @@ void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
 }
 
 
-void pasteSelection(LCursor & cur, ErrorList & errorList, size_t sel_index)
+void pasteSelection(LCursor & cur, ErrorList & errorList)
 {
-	// this does not make sense, if there is nothing to paste
-	if (!checkPastePossible(sel_index))
+	if (selectionBuffer.empty())
 		return;
-
 	recordUndo(cur);
-	pasteParagraphList(cur, theCuts[sel_index].first,
-			   theCuts[sel_index].second, errorList);
+	pasteParagraphList(cur, selectionBuffer[0].first,
+	                   selectionBuffer[0].second, errorList);
 	cur.setSelection();
 }
 
@@ -735,6 +782,7 @@ void replaceSelectionWithString(LCursor & cur, docstring const & str, bool backw
 		cur.setSelection(selbeg, -int(str.length()));
 	} else
 		cur.setSelection(selbeg, str.length());
+	saveSelection(cur);
 }
 
 

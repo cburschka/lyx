@@ -53,7 +53,6 @@
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
-#include "frontends/Selection.h"
 
 #include "insets/insettext.h"
 #include "insets/insetbibitem.h"
@@ -829,7 +828,7 @@ void LyXText::selectWord(LCursor & cur, word_location loc)
 	cur.resetAnchor();
 	setCursor(cur, to.pit(), to.pos());
 	cur.setSelection();
-	theSelection().haveSelection(cur.selection());
+	cap::saveSelection(cur);
 }
 
 

@@ -580,7 +580,7 @@ void InsetMathNest::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selection() = true;
 		cur.pos() = cur.lastpos();
 		cur.idx() = cur.lastidx();
-		theSelection().haveSelection(true);
+		cap::saveSelection(cur);
 		break;
 
 	case LFUN_PARAGRAPH_UP:
@@ -1151,10 +1151,11 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 		cur.updateFlags(Update::Decoration | Update::FitCursor);
 	} else if (cmd.button() == mouse_button::button2) {
 		MathArray ar;
-		if (cur.selection()) {
+		if (cap::selection()) {
 			// See comment in LyXText::dispatch why we do this
-			cap::copySelectionToStack(bv.cursor());
-			asArray(bv.cursor().selectionAsString(false), ar);
+			cap::copySelectionToStack();
+			cmd = FuncRequest(LFUN_PASTE, "0");
+			doDispatch(cur, cmd);
 		} else
 			asArray(theSelection().get(), ar);
 
@@ -1185,10 +1186,13 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "## lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button1) {
-		if (cur.bv().cursor().selection())
-			theSelection().haveSelection(true);
 		if (!cur.selection())
 			cur.noUpdate();
+		else {
+			LCursor & bvcur = cur.bv().cursor();
+			bvcur.selection() = true;
+			cap::saveSelection(bvcur);
+		}
 		return;
 	}
 

@@ -179,7 +179,7 @@ private:
 	///
 	bool copySelection(LCursor & cur);
 	///
-	bool pasteSelection(LCursor & cur);
+	bool pasteClipboard(LCursor & cur);
 	///
 	void cutSelection(LCursor & cur);
 	///

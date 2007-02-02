@@ -63,7 +63,6 @@
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/FontMetrics.h"
-#include "frontends/Selection.h"
 
 #include "graphics/Previews.h"
 
@@ -209,7 +208,8 @@ void BufferView::setBuffer(Buffer * b)
 			cursor_.resetAnchor();
 			cursor_.setCursor(buffer_->getCursor().asDocIterator(&(buffer_->inset())));
 			cursor_.setSelection();
-			theSelection().haveSelection(cursor_.selection());
+			// do not set selection to the new buffer because we
+			// only paste recent selection.
 		}
 	}
 
@@ -1054,6 +1054,10 @@ void BufferView::clearSelection()
 {
 	if (buffer_) {
 		cursor_.clearSelection();
+		// Clear the selection buffer. Otherwise a subsequent
+		// middle-mouse-button paste would use the selection buffer,
+		// not the more current external selection.
+		cap::clearSelection();
 		xsel_cache_.set = false;
 		// The buffer did not really change, but this causes the
 		// redraw we need because we cleared the selection above.
@@ -1342,7 +1346,7 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 			cursor_.setSelection(cursor_, -length);
 		} else
 			cursor_.setSelection(cursor_, length);
-		theSelection().haveSelection(cursor_.selection());
+		cap::saveSelection(cursor_);
 	}
 }
 

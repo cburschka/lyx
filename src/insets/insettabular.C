@@ -50,6 +50,7 @@ namespace lyx {
 
 using cap::dirtyTabularStack;
 using cap::tabularStackDirty;
+using cap::saveSelection;
 
 using graphics::PreviewLoader;
 
@@ -501,12 +502,12 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		}
 
 		if (cmd.button() == mouse_button::button2) {
-			if (bvcur.selection()) {
+			if (cap::selection()) {
 				// See comment in LyXText::dispatch why we
 				// do this
 				// FIXME This does not use paste_tabular,
 				// another reason why paste_tabular should go.
-				cap::copySelectionToStack(bvcur);
+				cap::copySelectionToStack();
 				cmd = FuncRequest(LFUN_PASTE, "0");
 			} else {
 				cmd = FuncRequest(LFUN_PRIMARY_SELECTION_PASTE,
@@ -537,7 +538,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button1) {
 			if (bvcur.selection())
-				theSelection().haveSelection(true);
+				saveSelection(bvcur);// theSelection().haveSelection(true);
 		} else if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
@@ -545,11 +546,13 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_CELL_BACKWARD:
 		movePrevCell(cur);
 		cur.selection() = false;
+		saveSelection(cur);
 		break;
 
 	case LFUN_CELL_FORWARD:
 		moveNextCell(cur);
 		cur.selection() = false;
+		saveSelection(cur);
 		break;
 
 	case LFUN_CHAR_FORWARD_SELECT:
@@ -558,7 +561,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? movePrevCell(cur) : moveNextCell(cur);
 			if (cmd.action == LFUN_CHAR_FORWARD_SELECT)
-				theSelection().haveSelection(cur.selection());
+				saveSelection(cur);
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			else
@@ -572,7 +575,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (!cur.result().dispatched()) {
 			isRightToLeft(cur) ? moveNextCell(cur) : movePrevCell(cur);
 			if (cmd.action == LFUN_CHAR_BACKWARD_SELECT)
-				theSelection().haveSelection(cur.selection());
+				saveSelection(cur);
 			if (sl == cur.top())
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			else
@@ -595,7 +598,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
 				if (cmd.action == LFUN_DOWN_SELECT)
-					theSelection().haveSelection(cur.selection());
+					saveSelection(cur);
 			}
 		if (sl == cur.top()) {
 			// we trick it to go to the RIGHT after leaving the
@@ -622,7 +625,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
 				if (cmd.action == LFUN_UP_SELECT)
-					theSelection().haveSelection(cur.selection());
+					saveSelection(cur);
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
@@ -746,7 +749,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PASTE:
 		if (tabularStackDirty() && theClipboard().isInternal()) {
 			recordUndoInset(cur, Undo::INSERT);
-			pasteSelection(cur);
+			pasteClipboard(cur);
 			break;
 		}
 		cell(cur.idx())->dispatch(cur, cmd);
@@ -1823,7 +1826,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 }
 
 
-bool InsetTabular::pasteSelection(LCursor & cur)
+bool InsetTabular::pasteClipboard(LCursor & cur)
 {
 	if (!paste_tabular)
 		return false;

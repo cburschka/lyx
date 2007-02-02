@@ -29,7 +29,6 @@
 #include "undo.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Selection.h"
 
 #include "support/convert.h"
 #include "support/docstream.h"
@@ -366,7 +365,6 @@ bool findNextChange(BufferView * bv)
 	// Now put cursor to end of selection:
 	bv->cursor().setCursor(cur);
 	bv->cursor().setSelection();
-	theSelection().haveSelection(bv->cursor().selection());
 
 	return true;
 }

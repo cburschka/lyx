@@ -41,8 +41,6 @@
 #include "mathed/InsetMathScript.h"
 #include "mathed/MathMacroTable.h"
 
-#include "frontends/Selection.h"
-
 #include "support/limited_stack.h"
 
 #include <boost/assert.hpp>
@@ -560,7 +558,7 @@ bool LCursor::selHandle(bool sel)
 
 	resetAnchor();
 	selection() = sel;
-	theSelection().haveSelection(sel);
+	cap::saveSelection(*this);
 	return true;
 }
 
