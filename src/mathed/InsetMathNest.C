@@ -1160,6 +1160,7 @@ void InsetMathNest::lfunMousePress(LCursor & cur, FuncRequest & cmd)
 			asArray(theSelection().get(), ar);
 
 		cur.insert(ar);
+		bv.mouseSetCursor(cur);
 	}
 }
 

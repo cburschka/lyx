@@ -1326,8 +1326,6 @@ bool BufferView::mouseSetCursor(LCursor & cur)
 
 	cursor_.setCursor(dit);
 	cursor_.clearSelection();
-	// remember new position.
-	cursor_.setTargetX();
 	finishUndo();
 	return update;
 }
