@@ -2163,10 +2163,12 @@ if build_installer:
             env['win_installer'] = '%s-%s-Installer.exe' % (package_name, package_version)
     # provide default setting            
     if not env.has_key('deps_dir') or env['deps_dir'] is None:
-        env['deps_dir'] = os.path.join(env.Dir('TOP_SRCDIR').abspath, 'lyx-windows-deps-msvc-qt4')
+        env['deps_dir'] = os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'lyx-windows-deps-msvc-qt4')
     if not os.path.isdir(env['deps_dir']):
         print 'Development dependency package is not found.'
         Exit(1)    
+    else:
+        env['deps_dir'] = env.Dir(env['deps_dir']).abspath
     # if absolute path is given, use it, otherwise, write to current directory
     if not (':' in env['win_installer'] or '/' in env['win_installer'] or '\\' in env['win_installer']):
         env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
