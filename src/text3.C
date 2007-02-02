@@ -719,13 +719,17 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndo(cur);
 		InsetBase * inset = createInset(bv, cmd);
 		if (inset) {
-			Paragraph & par = pars_[cur.pit()];
-			// FIXME (Abdel 01/02/2006:
-			// What follows is a partial fix for bug 2154:
+			// FIXME (Abdel 01/02/2006):
+			// What follows would be a partial fix for bug 2154:
 			//   http://bugzilla.lyx.org/show_bug.cgi?id=2154
-			// This will automatically put the label inset _after_ a 
-			// numbered section. It is possible to extend the mechanism
+			// This automatically put the label inset _after_ a 
+			// numbered section. It should be possible to extend the mechanism
 			// to any kind of LateX environement.
+			// The correct way to fix that bug would be at LateX generation.
+			// I'll let the code here for reference as it could be used for some
+			// other feature like "automatic labelling".
+			/*
+			Paragraph & par = pars_[cur.pit()];
 			if (inset->lyxCode() == InsetBase::LABEL_CODE
 				&& par.layout()->labeltype == LABEL_COUNTER) {
 				// Go to the end of the paragraph
@@ -736,6 +740,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				FuncRequest fr(LFUN_BREAK_PARAGRAPH);
 				dispatch(cur, fr);
 			}
+			*/
 			insertInset(cur, inset);
 			cur.posRight();
 		}
