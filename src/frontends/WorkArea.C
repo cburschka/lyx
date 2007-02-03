@@ -205,8 +205,17 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 	else
 		cmd = cmd0;
 
-	bool needRedraw = buffer_view_->workAreaDispatch(cmd);
+	// In order to avoid bad surprise in the middle of an operation, we better stop
+	// the blinking cursor.
+	if (!(cmd.action == LFUN_MOUSE_MOTION 
+		&& cmd.button() == mouse_button::none))
+		stopBlinkingCursor();
 
+	bool const needRedraw = buffer_view_->workAreaDispatch(cmd);
+
+	if (needRedraw)
+		redraw();
+	
 	// Skip these when selecting
 	if (cmd.action != LFUN_MOUSE_MOTION) {
 		lyx_view_.updateLayoutChoice();
@@ -214,7 +223,6 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 		lyx_view_.updateToolbars();
 	}
 
-	
 	// GUI tweaks except with mouse motion with no button pressed.
 	if (!(cmd.action == LFUN_MOUSE_MOTION 
 		&& cmd.button() == mouse_button::none)) {
@@ -223,13 +231,9 @@ void WorkArea::dispatch(FuncRequest const & cmd0, key_modifier::state k)
 		// of the new status here.
 		lyx_view_.clearMessage();
 
-		// Show the cursor	 immediately after any operation.
-		hideCursor();
-		toggleCursor();
+		// Show the cursor immediately after any operation.
+		startBlinkingCursor();
 	}
-
-	if (needRedraw)
-		redraw();
 }
 
 
@@ -255,14 +259,15 @@ void WorkArea::updateScrollbar()
 
 void WorkArea::scrollBufferView(int position)
 {
+	stopBlinkingCursor();
 	buffer_view_->scrollDocView(position);
 	redraw();
-	hideCursor();
 	if (lyxrc.cursor_follows_scrollbar) {
 		buffer_view_->setCursorFromScrollbar();
 		lyx_view_.updateLayoutChoice();
 	}
-	toggleCursor();
+	// Show the cursor immediately after any operation.
+	startBlinkingCursor();
 }
 
 
