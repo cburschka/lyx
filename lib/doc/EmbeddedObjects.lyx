@@ -76,10 +76,6 @@
  \let\figure\MyFigure
  \let\endfigure\MyEndfigure}
 
-% use the marginnote package for margin notes
-\usepackage{marginnote}
-\let\marginpar\marginnote
-
 % enables calculation of values,
 \usepackage{calc}
 
@@ -106,9 +102,6 @@
 \usepackage{colortbl}
 \definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
 \definecolor{lightgrey}{gray}{0.8}
-
-% used for tables with dashed lines
-\usepackage{arydshln}
 
 % used for multirows
 \usepackage{multirow}
@@ -158,6 +151,27 @@
 % redefine the greyed out note
 \renewenvironment{lyxgreyedout}
  {\textcolor{blue}\bgroup}{\egroup}
+
+% ------------------------------------
+% used to check for needed LaTeX packages
+\usepackage{ifthen}
+
+% check for package arydshln
+% used for tables with dashed lines
+\newboolean{arydshln}
+\IfFileExists{arydshln.sty}
+ {\usepackage{arydshln}
+  \setboolean{arydshln}{true}}
+ {\setboolean{arydshln}{false}}
+
+% check for package marginnote
+% used for margin notes
+\newboolean{marginnote}
+\IfFileExists{marginnote.sty}
+ {\usepackage{marginnote}
+  \let\marginpar\marginnote
+  \setboolean{marginnote}{true}}
+ {\setboolean{marginnote}{false}}
 \end_preamble
 \options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage
 \language english
@@ -246,7 +260,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-original author: Uwe Stöhr <uwestoehr@web.de>
+original author: Uwe Stöhr
 \end_layout
 
 \end_inset
@@ -275,19 +289,18 @@ Version 1.5.0-
 status open
 
 \begin_layout Standard
-To export this document to PDF, PS, or DVI the LaTeX-packages 
+To export all parts of this document to PDF, PS, or DVI the LaTeX-packages
+ 
 \series bold
 arydshln
 \series default
-, 
+ and 
 \series bold
 marginnote
 \series default
-, and 
-\series bold
-prettyref
-\series default
  must be installed.
+ If they are not installed you can export the document anyway but the sections
+ where the packages are required won't appear in the output.
 \end_layout
 
 \begin_layout Standard
@@ -16863,6 +16876,37 @@ name "Table Customization ! Dashed Lines"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifarydshln
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following section will only be displayed when you have the LaTeX-package
+ 
+\series bold
+arydshln
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 placement H
 wide false
@@ -17329,6 +17373,60 @@ reference "sec:Colored-Tables"
 
 .
  That means colored tables cannot have dashed lines.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following will be displayed when the LaTeX-package 
+\series bold
+arydshln
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the package 
+\series bold
+arydshln
+\series default
+ to see the contents of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
@@ -22792,6 +22890,44 @@ Note:
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ifmarginnote
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following section will only be displayed when you have the LaTeX-package
+ 
+\series bold
+marginnote
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 This restriction can be evaded by using the LaTeX-package 
 \series bold
 marginnote
@@ -23248,10 +23384,64 @@ myMarginpar{#1}}
 \series default
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Standard
 The margin note format is changed only for this example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+The following will be displayed when the LaTeX-package 
+\series bold
+marginnote
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the LaTeX-package 
+\series bold
+marginnote
+\series default
+ to see the following part of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
