@@ -1,11 +1,55 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 256
+\lyxformat 258
 \begin_document
 \begin_header
 \textclass scrbook
 \begin_preamble
-% provides missing characters,
-\usepackage{textcomp}
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}} % if it exists
+ {% if it exists not
+  \usepackage[scaled=0.92]{helvet}
+  \usepackage{mathptmx}
+  \usepackage{courier}
+ } % end if it exists not
+
+% link all cross references and URLs
+% in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={LyX's Figure, Table, Floats, Notes, and Boxes manual},
+  pdfsubject={LyX-documentation about figures, tables, floats, notes, and boxes},
+  pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in DVI output
+ \usepackage[ps2pdf, colorlinks=true,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
+
+\fi % end if pdflatex is used
+
+% that links to image floats jumps
+% to the beginning of the float and 
+% not to its caption
+\usepackage[figure]{hypcap}
+
+% the pages of the TOC are numbered roman
+% and a PDF-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \pdfbookmark[1]{Contents}{}
+ \myTOC
+ \clearpage
+ \pagenumbering{arabic}}
 
 % provides caption formatting
 \usepackage[labelfont={bf,sf}, tableposition=top]{caption}
@@ -56,43 +100,6 @@
 \newrefformat{fig}
  {Figure~float~\ref{#1} printed on page~\pageref{#1}}
 
-% if pdflatex is used
-\usepackage{ifpdf}
-\ifpdf
-
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}
- {\usepackage{lmodern}} % if it exists
- {% if it exists not
-  \usepackage[scaled=0.92]{helvet}
-  \usepackage{mathptmx}
-  \usepackage{courier}
- } % end if it exists not
-
-% link all cross references and URLs
-% in pdf output
- \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
-  pdfpagelayout=OneColumn, pdfnewwindow=true,
-  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
-  pdfauthor={LyX Team}, pdftex,
-  pdftitle={LyX's Figure, Table, Floats, Notes, and Boxes manual},
-  pdfsubject={LyX-documentation about figures, tables, floats, notes, and boxes},
-  pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
- 
-\else % if dvi or ps is produced
-
- % link all cross references and URLs in DVI output
- \usepackage[ps2pdf, colorlinks=true,
-  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue]{hyperref}
-
-\fi % end if pdflatex is used
-
-% that links to image floats jumps
-% to the beginning of the float and 
-% not to its caption
-\usepackage[figure]{hypcap}
-
 % used for colored tables
 \@ifundefined{textcolor}
  {\usepackage{color}}{}
@@ -129,30 +136,9 @@
 \newcolumntype{W}{!{\color{green}\vline}}
 % ---
 
-% To be able to enter the characters ±, ° , · and × directly in LyX
-\DeclareInputText{177}{\ifmmode\pm\else\textpm\fi}
+% To be able to enter the characters ° and · directly in LyX
 \DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
 \DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
-\DeclareInputText{215}{\ifmmode\times\else\texttimes\fi}
-
-% the pages of the TOC are numbered roman
-% and a PDF-bookmark for the TOC is added
-\pagenumbering{roman}
-\let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{%
- \pdfbookmark[1]{Contents}{}
- \myTOC}
- \clearpage
- \pagenumbering{arabic}
-
-% increase link area for cross-references
-% and autoname them
-%\AtBeginDocument{\renewcommand{\ref}[1]
-% {\mbox{\autoref{#1}}}}
-%\newlength{\abc}
-%\settowidth{\abc}{\space}
-%\renewcommand{\equationautorefname}
-% {\hspace{-\abc}}
 
 % insert additional vertical space of
 % 1.5 mm between footnotes
@@ -278,6 +264,39 @@ Version 1.5.0-
 
 \begin_layout Standard
 \begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+To export this document to PDF, PS, or DVI the LaTeX-packages 
+\series bold
+arydshln
+\series default
+, 
+\series bold
+marginnote
+\series default
+, and 
+\series bold
+prettyref
+\series default
+ must be installed.
+\end_layout
+
+\begin_layout Standard
+The latest PDF-version of this document can be found here:
+\newline
+
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
+\end_layout
 
 \end_inset
 
@@ -465,15 +484,15 @@ x.eps.bb
 \begin_layout Standard
 
 \newpage
-This is an example image in PDF format
+This is an example image in EPS format
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-The PDF format is explained in appendix\InsetSpace ~
+Image formats are explained in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:PDF"
+reference "sec:Image-Formats"
 
 \end_inset
 
@@ -626,7 +645,10 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:kill-plat"
 
@@ -640,13 +662,21 @@ A severely distorted platypus in a float.
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:escher"
 
@@ -654,6 +684,11 @@ name "fig:escher"
 
 M.C.
  Escher on acid.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -807,13 +842,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:Two-distorted-images"
 
 \end_inset
 
 Two distorted images.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -980,8 +1023,8 @@ images consist of vectors and can therefore be scaled to any size
  presentations are always scaled by the video projector.
  Scaling is also useful for online documents to let the user zoom into diagrams.
 \newline
-S
-calable image formats can be 
+W
+ell-known scalable image formats are 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1828,13 +1871,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:a table float"
 
 \end_inset
 
 A table float.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4465,6 +4516,29 @@ end
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+See greyed-out note in section 2.6.2 for an explanation of this command.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -4936,6 +5010,39 @@ asd
 \end_inset
 
 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ The table number is increased for every longtable, also if you didn't set
+ a caption for it.
+ For this reason you could have the case that e.g.
+ Table\InsetSpace ~
+2.4 follows on Table\InsetSpace ~
+2.1 in the list of tables if there are two longtables
+ without captions.
+ To avoid this you can add the following command in ERT behind every longtable
+ without a caption:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -5875,7 +5982,7 @@ caption[caption with width
 \backslash
 ,=
 \backslash
-,15
+,5
 \backslash
 ,cm]{long full title with width set to 5
 \backslash
@@ -5884,7 +5991,7 @@ caption[caption with width
 
 \begin_layout Standard
 
-long full title with width set to 15
+long full title with width set to 5
 \backslash
 ,cm long full title with width set to 5
 \backslash
@@ -9864,13 +9971,21 @@ wide false
 sideways false
 status collapsed
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-multiple"
 
 \end_inset
 
 Table with multiple lines in cells
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -10071,13 +10186,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-and"
 
 \end_inset
 
 Table with and without hyphenation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -10536,7 +10659,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-centered"
 
@@ -10549,6 +10675,11 @@ status collapsed
 
 \begin_layout Standard
 Perfect multicolumn table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10705,7 +10836,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-without-half"
 
@@ -10718,6 +10852,11 @@ status collapsed
 
 \begin_layout Standard
 Imperfect multicolumn table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11382,13 +11521,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Example-booktabs-table"
 
 \end_inset
 
 Example booktabs-table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11476,20 +11623,7 @@ cmidrule(l){3-4}
 
 \end_inset
 
-Detector thickness [
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textmu m
-\end_layout
-
-\end_inset
-
-]
+Detector thickness [µm]
 \end_layout
 
 \end_inset
@@ -11565,20 +11699,7 @@ Edge angle [°]
 \begin_inset Text
 
 \begin_layout Standard
-Spatial resolution [
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textmu m
-\end_layout
-
-\end_inset
-
-]
+Spatial resolution [µm]
 \end_layout
 
 \end_inset
@@ -11708,20 +11829,7 @@ LSF-spatial resolution
 \begin_inset Text
 
 \begin_layout Standard
-in 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textmu m
-\end_layout
-
-\end_inset
-
-
+in µm
 \end_layout
 
 \end_inset
@@ -12027,7 +12135,7 @@ reference "tab:Special-booktabs-table"
 \series bold
 
 \backslash
-moremidrules
+morecmidrules
 \end_layout
 
 \begin_layout Standard
@@ -12050,7 +12158,7 @@ cmidrule(r){2-2}
 \backslash
 cmidrule(l){3-4}
 \backslash
-moremidrules
+morecmidrules
 \backslash
 cmidrule{2-4}
 \end_layout
@@ -12066,7 +12174,7 @@ The command for the sixth row is
 \backslash
 midrule
 \backslash
-moremidrules
+morecmidrules
 \backslash
 cmidrule{3-4}
 \end_layout
@@ -12121,13 +12229,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Special-booktabs-table"
 
 \end_inset
 
 Special booktabs-table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12235,20 +12351,7 @@ cmidrule{2-4}
 
 \end_inset
 
-Detector thickness [
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textmu m
-\end_layout
-
-\end_inset
-
-]
+Detector thickness [µm]
 \end_layout
 
 \end_inset
@@ -12324,20 +12427,7 @@ Edge angle [°]
 \begin_inset Text
 
 \begin_layout Standard
-Spatial resolution [
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textmu m
-\end_layout
-
-\end_inset
-
-]
+Spatial resolution [µm]
 \end_layout
 
 \end_inset
@@ -12480,20 +12570,7 @@ LSF-spatial resolution
 \begin_inset Text
 
 \begin_layout Standard
-in 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-textmu m
-\end_layout
-
-\end_inset
-
-
+in µm
 \end_layout
 
 \end_inset
@@ -13388,7 +13465,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-colored-without"
 
@@ -13404,6 +13484,11 @@ status collapsed
 
 \begin_layout Standard
 Table without colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -13856,7 +13941,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-colored-using"
 
@@ -13872,6 +13960,11 @@ status collapsed
 
 \begin_layout Standard
 Table with colortbl
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14144,13 +14237,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-vertical-colored"
 
 \end_inset
 
 Table with colored vertical lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14336,13 +14437,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-horizontal-colored"
 
 \end_inset
 
 Table with colored horizontal lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14502,13 +14611,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-colored"
 
 \end_inset
 
 Table with colored lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14903,13 +15020,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-cells-of"
 
 \end_inset
 
 Table cells of a column aligned with the decimal separator.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15055,13 +15180,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Several-table-cell"
 
 \end_inset
 
 Several table cell alignments.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15407,7 +15540,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Alignments-when"
 
@@ -15415,6 +15551,11 @@ name "tab:Alignments-when"
 
 Alignments when LaTeX-package dcolumn is used.
  For the second and third alignment some tricks were used.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15884,13 +16025,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-using-user-defined"
 
 \end_inset
 
 Table using user-defined table formats
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16108,7 +16257,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-1.5"
 
@@ -16116,6 +16268,11 @@ name "tab:Table-with-1.5"
 
 Table with 1.5\InsetSpace \thinspace{}
 pt thick lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16364,7 +16521,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-horizontal"
 
@@ -16372,6 +16532,11 @@ name "tab:Table-with-horizontal"
 
 Table with 1.5\InsetSpace \thinspace{}
 pt thick horizontal lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16562,7 +16727,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-vertical"
 
@@ -16570,6 +16738,11 @@ name "tab:Table-with-vertical"
 
 Table with 1.5\InsetSpace \thinspace{}
 pt thick vertical lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16696,13 +16869,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Table-with-dashed"
 
 \end_inset
 
 Table with dashed lines
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17351,13 +17532,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "alg:Example-Algorithm-float"
 
 \end_inset
 
 Example Algorithm float
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -17665,7 +17854,10 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:This-is-a"
 
@@ -17674,6 +17866,11 @@ name "fig:This-is-a"
 This is a wrapped figure, and this is the brilliant caption that describes
  it.
 \begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -18894,13 +19091,21 @@ wide false
 sideways true
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Rotated-table"
 
 \end_inset
 
  Rotated table
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -19295,7 +19500,10 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:This-is-an-fig"
 
@@ -19304,6 +19512,11 @@ name "fig:This-is-an-fig"
 This is an example figure caption that is longer than one line to show the
  different caption format.
  Here a self-defined caption format is used.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19335,7 +19548,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:This-is-an-tab"
 
@@ -19344,6 +19560,11 @@ name "tab:This-is-an-tab"
 This is an example table caption that is longer than one line to show the
  different caption format.
  Here the standard caption format for tables in this document is used.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20108,13 +20329,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:cap-beside-fig"
 
 \end_inset
 
 This is a caption beside a figure.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20144,13 +20373,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:cap-beside-tab"
 
 \end_inset
 
 This is a caption beside a table.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20407,13 +20644,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:cap-beside-fig-2"
 
 \end_inset
 
 This is a vertically centered caption beside a figure.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21898,13 +22143,21 @@ status collapsed
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:Standard-footnote-placement"
 
 \end_inset
 
 Standard footnote placement in two-column documents.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -21953,7 +22206,10 @@ status collapsed
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:Footnote-placement-in"
 
@@ -21964,6 +22220,11 @@ Footnote placement in two-column documents when the LaTeX-package
 ftnright
 \series default
  is used.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22079,7 +22340,10 @@ status collapsed
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:Endnotes----footnotes"
 
@@ -22087,6 +22351,11 @@ name "fig:Endnotes----footnotes"
 
 Endnotes -- footnotes are printed in a separate paragraph at the end of
  sections or chapters.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26352,13 +26621,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "tab:Units"
 
 \end_inset
 
 Units
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
