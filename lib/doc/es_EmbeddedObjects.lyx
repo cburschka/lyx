@@ -22606,6 +22606,10 @@ key "marginnote"
 El diseño de las notas al margen puede ser redefinido.
  Por ejemplo, para crear una cabecera para todas las notas con el texto
  
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
 \bar under
 ¡
@@ -22615,6 +22619,10 @@ Atención
 !
 \series default
 \bar default
+
+\begin_inset Quotes erd
+\end_inset
+
 , subrayado, sans-serif en negrita, añade lo siguiente en el preámbulo:
 \end_layout
 
