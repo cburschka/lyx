@@ -141,18 +141,9 @@
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Contents}{}
- \myTOC}
+ \myTOC
  \clearpage
- \pagenumbering{arabic}
-
-% increase link area for cross-references
-% and autoname them
-%\AtBeginDocument{\renewcommand{\ref}[1]
-% {\mbox{\autoref{#1}}}}
-%\newlength{\abc}
-%\settowidth{\abc}{\space}
-%\renewcommand{\equationautorefname}
-% {\hspace{-\abc}}
+ \pagenumbering{arabic}}
 
 % insert additional vertical space of
 % 1.5 mm between footnotes
@@ -262,11 +253,44 @@ original author: Uwe Stöhr <uwestoehr@web.de>
 \newline
 
 \family sans
-Version 1.4.3-6
+Version 1.4.4-1
 \end_layout
 
 \begin_layout Standard
 \begin_inset LatexCommand \tableofcontents{}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+To export this document to PDF, PS, or DVI the LaTeX-packages 
+\series bold
+arydshln
+\series default
+, 
+\series bold
+marginnote
+\series default
+, and 
+\series bold
+prettyref
+\series default
+ must be installed.
+\end_layout
+
+\begin_layout Standard
+The latest PDF-version of this document can be found here:
+\newline
+
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
+\end_layout
 
 \end_inset
 
@@ -449,14 +473,14 @@ x.eps.bb
 \begin_layout Standard
 
 \newpage
-This is an example image in PDF format
+This is an example image in EPS format
 \begin_inset Foot
 status open
 
 \begin_layout Standard
-The PDF format is explained in appendix\InsetSpace ~
+Image formats are explained in section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:PDF}
+\begin_inset LatexCommand \ref{sec:Image-Formats}
 
 \end_inset
 
@@ -941,8 +965,8 @@ images consist of vectors and can therefore be scaled to any size
  presentations are always scaled by the video projector.
  Scaling is also useful for online documents to let the user zoom into diagrams.
 \newline
-S
-calable image formats can be 
+W
+ell-known scalable image formats are 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4379,6 +4403,29 @@ end
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+See greyed-out note in section 2.6.2 for an explanation of this command.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -4850,6 +4897,39 @@ asd
 \end_inset
 
 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ The table number is increased for every longtable, also if you didn't set
+ a caption for it.
+ For this reason you could have the case that e.g.
+ Table\InsetSpace ~
+2.4 follows on Table\InsetSpace ~
+2.1 in the list of tables if there are two longtables
+ without captions.
+ To avoid this you can add the following command in ERT behind every longtable
+ without a caption: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -5781,7 +5861,7 @@ caption[caption with width
 \backslash
 ,=
 \backslash
-,15
+,5
 \backslash
 ,cm]{long full title with width set to 5
 \backslash
@@ -5790,7 +5870,7 @@ caption[caption with width
 
 \begin_layout Standard
 
-long full title with width set to 15
+long full title with width set to 5
 \backslash
 ,cm long full title with width set to 5
 \backslash
@@ -12085,7 +12165,7 @@ s like in Table\InsetSpace ~
 \series bold
 
 \backslash
-moremidrules
+morecmidrules
 \end_layout
 
 \begin_layout Standard
@@ -12107,7 +12187,7 @@ cmidrule(r){2-2}
 \backslash
 cmidrule(l){3-4}
 \backslash
-moremidrules
+morecmidrules
 \backslash
 cmidrule{2-4}
 \end_layout
@@ -12123,7 +12203,7 @@ The command for the sixth row is
 \backslash
 midrule
 \backslash
-moremidrules
+morecmidrules
 \backslash
 cmidrule{3-4}
 \end_layout

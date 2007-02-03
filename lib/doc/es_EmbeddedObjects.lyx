@@ -54,9 +54,7 @@
 
 % define a new reference format
 \newrefformat{fig}
- % {Figure~float~\ref{#1} printed on page~\pageref{#1}}
- % en español:
- {Figura~flotante~\ref{#1} impresa en página~\pageref{#1}}
+ {Figura~flotante~\ref{#1} impresa en la página~\pageref{#1}}
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -99,10 +97,8 @@
 \@ifundefined{textcolor}
  {\usepackage{color}}{}
 \usepackage{colortbl}
-%\definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
-%\definecolor{lightgrey}{gray}{0.8}
-\definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}	%español
-\definecolor{grisclaro}{gray}{0.8}		%español
+\definecolor{verdeoscuro}{cmyk}{0.5, 0, 1, 0.5}
+\definecolor{grisclaro}{gray}{0.8}
 
 % used for tables with dashed lines
 \usepackage{arydshln}
@@ -144,20 +140,10 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand{\tableofcontents}{%
-% \pdfbookmark[1]{Contents}{}
- \pdfbookmark[1]{Contenidos}{}	%en español
- \myTOC}
+ \pdfbookmark[1]{Contenidos}{}
+ \myTOC
  \clearpage
- \pagenumbering{arabic}
-
-% increase link area for cross-references
-% and autoname them
-%\AtBeginDocument{\renewcommand{\ref}[1]
-% {\mbox{\autoref{#1}}}}
-%\newlength{\abc}
-%\settowidth{\abc}{\space}
-%\renewcommand{\equationautorefname}
-% {\hspace{-\abc}}
+ \pagenumbering{arabic}}
 
 % insert additional vertical space of
 % 1.5 mm between footnotes
@@ -166,8 +152,7 @@
 
 % enable algorithm floats to be referenced
 \newfloat{Xalgorithm}{tbp}{loa}
-%\floatname{Xalgorithm}{Algorithm}
-\floatname{Xalgorithm}{Algoritmo}	%en español
+\floatname{Xalgorithm}{Algoritmo}
 \newcommand{\theHalgorithm}{\theHXalgorithm}
 \renewenvironment{algorithm}[1][tbp]
  {\begin{Xalgorithm}[#1]}{\end{Xalgorithm}}
@@ -210,7 +195,7 @@
 \begin_body
 
 \begin_layout Title
-Manual de Tablas, Figuras, Flotantes, Notas y Cuadros en LyX
+Manual de Figuras, Tablas, Flotantes, Notas y Cuadros en LyX
 \end_layout
 
 \begin_layout Author
@@ -263,26 +248,55 @@ autor original: Uwe Stöhr <uwestoehr@web.de>
 \end_inset
 
 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-Traducción de: Ignacio García <ignacio.garcia@tele2.es> 
-\end_layout
-
-\end_inset
-
-
 \newline
 
 \newline
 
 \family sans
-Versión 1.4.3-5
+Versión 1.4.4-1
 \end_layout
 
 \begin_layout Standard
 \begin_inset LatexCommand \tableofcontents{}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+
+\lang english
+To export this document to PDF, PS, or DVI the LaTeX-packages 
+\series bold
+arydshln
+\series default
+, 
+\series bold
+marginnote
+\series default
+, and 
+\series bold
+prettyref
+\series default
+ must be installed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The latest PDF-version of this document can be found here:
+\newline
+
+\series bold
+http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
+\end_layout
 
 \end_inset
 
@@ -460,14 +474,14 @@ x.eps.bb
 \end_layout
 
 \begin_layout Standard
-Esto es un ejemplo de imagen en formato PDF
+Esto es un ejemplo de imagen en formato EPS
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
-El formato PDF se explica en el apéndice\InsetSpace ~
+Formatos de imagen se explica en el sección\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:PDF}
+\begin_inset LatexCommand \ref{sec:Formatos-de-imagen}
 
 \end_inset
 
@@ -553,14 +567,23 @@ Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
 Figura
 \family default
- insertan un flotante con la etiqueta "
+ insertan un flotante con la etiqueta 
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
 Figura #:
 \series default
-".
- Tras ella escribe el título que quieras para la figura.
- Para insertar una imagen sobre su título sitúa el cursor delante de dicho
- título, presiona Enter e inserta la imagen como se describe arriba.
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Detrás de esta etiqueta escribe el texto para el encabezado que quieras
+ para la figura.
+ Para insertar una imagen sobre su título sitúa el cursor delante del encabezado
+, presiona Enter e inserta la imagen como se describe arriba.
  Esto se hace para la Figura\InsetSpace ~
 
 \begin_inset LatexCommand \ref{fig:kill-plat}
@@ -577,7 +600,7 @@ Figura #:
 \end_inset
 
 .
- Más sobre ubicación de títulos se describe en la sección\InsetSpace ~
+ Más información sobre ubicación de encabezados en la sección\InsetSpace ~
 
 \begin_inset LatexCommand \ref{sec:Colocación-de-Encabezados}
 
@@ -667,10 +690,10 @@ Las figuras\InsetSpace ~
 
 \end_inset
 
- son un ejemplo de figuras con referencias cruzadas.
- Las figuras pueden tener referencias cruzadas en el texto mediante referencia
- a su etiqueta.
- Para hacerlo inserta una etiqueta en el título usando el menú 
+ son ejemplos de figuras con referencias cruzadas.
+ Las figuras pueden tener referencias cruzadas en el documento mediante
+ referencia a su etiqueta.
+ Para hacerlo inserta una etiqueta en el encabezado usando el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Etiqueta
@@ -720,8 +743,8 @@ Subfigura
 Descripción
 \family default
 .
- Observa que sólo el título principal del flotante se añade a la Lista de
- Figuras.
+ Observa que sólo el título principal del encabezado del flotante se añade
+ a la Lista de Figuras.
 \end_layout
 
 \begin_layout Standard
@@ -732,7 +755,7 @@ La figura\InsetSpace ~
 \end_inset
 
  es un ejemplo de figura flotante con dos imágenes una junto a otra.
- también se pueden poner una sobre otra.
+ También se pueden poner una sobre otra.
 \end_layout
 
 \begin_layout Standard
@@ -804,7 +827,7 @@ Formatos de Imagen
 
 \begin_layout Standard
 Puedes insertar imágenes en cualquier formato.
- Pero como se explica en el apéndice \InsetSpace ~
+ Pero como se explica en el apéndice\InsetSpace ~
 
 \begin_inset LatexCommand \ref{cha:Formatos-de-Archivos-de-Salida}
 
@@ -819,7 +842,7 @@ Imagemagick
  en segundo plano para convertir imágenes al formato adecuado.
  Para aumentar el rendimiento evitando estas conversiones, puedes usar sólo
  los formatos de imagen admitidos en el formato de archivo de salida.
- Los formatos de salida se explican en el apéndice \InsetSpace ~
+ Los formatos de salida se explican en el apéndice\InsetSpace ~
 
 \begin_inset LatexCommand \ref{cha:Formatos-de-Archivos-de-Salida}
 
@@ -829,29 +852,85 @@ Imagemagick
 \end_layout
 
 \begin_layout Standard
-Igual que para las fuentes, hay dos tipos de archivos de imagen:
+Como en el caso de las fuentes, hay dos tipos de archivos de imagen:
 \end_layout
 
 \begin_layout Description
 Imágenes\InsetSpace ~
 Mapa\InsetSpace ~
 de\InsetSpace ~
-bits (Bitmap) consiste en valores de píxel, generalmente comprimid
+bits\InsetSpace ~
+(Bitmap) consisten en valores de píxel, generalmente comprimid
 os.
  Por tanto no son totalmente escalables y se ven pixeladas a valores altos
  de zoom.
- Formatos de imágenes en bitmap bien conocidos son "Graphics Interchange
- Format" (GIF, extensión ".gif")
+ Formatos de imágenes en bitmap bien conocidos son 
+\begin_inset Quotes eld
+\end_inset
+
+Graphics Interchange Format
+\begin_inset Quotes erd
+\end_inset
+
+ (GIF, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.gif
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{GIF|see{Formatos de Imagen}}
 
 \end_inset
 
-, "Portable Network Graphics" (PNG, extensión ".png")
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Portable Network Graphics
+\begin_inset Quotes erd
+\end_inset
+
+ (PNG, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.png
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{PNG|see{Formatos de Imagen}}
 
 \end_inset
 
-, y "Joint Photographic Experts Group" (JPG, extensión ".jpg" o ".jpeg")
+, y 
+\begin_inset Quotes eld
+\end_inset
+
+Joint Photographic Experts Group
+\begin_inset Quotes erd
+\end_inset
+
+ (JPG, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.jpg
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+.jpeg
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{JPG|see{Formatos de Imagen}}
 
 \end_inset
@@ -868,34 +947,105 @@ vectoriales consisten en vectores y por tanto pueden escalarse a
  El escalado también es útil en los documentoos en línea para permitir el
  zoom en diagramas.
 \newline
-Formatos de imagen escalables pueden ser "Scalable Vector
- Graphics" (SVG, extensión ".svg")
+Formatos de imagen escalables pueden ser 
+\begin_inset Quotes eld
+\end_inset
+
+Scalable Vector Graphics
+\begin_inset Quotes erd
+\end_inset
+
+ (SVG, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.svg
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{SVG|see{Formatos de Imagen}}
 
 \end_inset
 
-, "Encapsulated PostScript" (EPS, extensión ".eps")
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Encapsulated PostScript
+\begin_inset Quotes erd
+\end_inset
+
+ (EPS, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.eps
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{EPS|see{Formatos de Imagen}}
 
 \end_inset
 
-, "Portabla Document Format" (PDF, extensión ".pdf")
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Portable Document Format
+\begin_inset Quotes erd
+\end_inset
+
+ (PDF, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.pdf
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{PDF|see{Formatos de Imagen}}
 
 \end_inset
 
-, y "Windows Metafile" (WMF, extensión ".wmf")
+, y 
+\begin_inset Quotes eld
+\end_inset
+
+Windows Metafile
+\begin_inset Quotes erd
+\end_inset
+
+ (WMF, extensión 
+\begin_inset Quotes eld
+\end_inset
+
+.wmf
+\begin_inset Quotes erd
+\end_inset
+
+)
 \begin_inset LatexCommand \index{WMF|see{Formatos de Imagen}}
 
 \end_inset
 
 .
- Escribimos "pueden ser", porque se puede convertir cualquier imagen bitmap
- a PDF o EPS y el resultado será todavía una imagen bitmap.
+ Escribimos 
+\begin_inset Quotes eld
+\end_inset
+
+pueden ser
+\begin_inset Quotes erd
+\end_inset
+
+, porque se puede convertir cualquier imagen bitmap a PDF o EPS y el resultado
+ será todavía una imagen bitmap.
  En estos casos sólo se añade una cabecera con las propiedades de la imagen
  a la imagen original
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 En el caso de PDF, además se comprime la imagen original.
@@ -948,7 +1098,7 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-Puede insertarse una tabla mediante el botón
+Puede insertarse una tabla mediante el botón 
 \begin_inset Graphics
 	filename ../images/tabular-insert.xpm
 	scale 85
@@ -1238,11 +1388,11 @@ Además, puedes marcar una o más celdas de una fila como
 \newline
 Las casillas de giro rotan la celda actual, una selección o toda la tabla
  90º en el sentido de las agujas del reloj.
- La rotación no se muestra en LyX, sólo en la salida.
+ La rotación no se ve en LyX, sí en la salida.
 \newline
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -1285,11 +1435,19 @@ Bordes
 Tabla\InsetSpace ~
 Larga
 \family default
- Para hacer "
+ Para hacer 
+\begin_inset Quotes eld
+\end_inset
+
+
 \emph on
 tablas largas
 \emph default
-" que pueden extenderse por varias páginas.
+
+\begin_inset Quotes erd
+\end_inset
+
+ que pueden extenderse por varias páginas.
  La sección\InsetSpace ~
 
 \begin_inset LatexCommand \ref{sec:Tablas-Largas}
@@ -1789,7 +1947,7 @@ Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
 Tabla
 \family default
- o el botón 
+ o con el botón 
 \begin_inset Graphics
 	filename ../images/float-insert_table.xpm
 	scale 85
@@ -1800,16 +1958,24 @@ Tabla
 \end_layout
 
 \begin_layout Standard
-El flotante se muestra como un cuadro expandible con la etiqueta "
+El flotante se muestra como un cuadro desplegable con la etiqueta 
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
 Tabla\InsetSpace ~
 #:
 \series default
-" en su interior.
+
+\begin_inset Quotes erd
+\end_inset
+
+ en su interior.
  El texto que sigue a dicha etiqueta es el encabezado de tabla.
  Para insertar una tabla en el flotante se sitúa el cursor al final del
  texto de encabezado y se pulsa Enter.
- El encabezado se imprime sobre la tabla.
+ El encabezado se imprime encima de la tabla.
 \end_layout
 
 \begin_layout Standard
@@ -1823,23 +1989,27 @@ La tabla\InsetSpace ~
 \end_layout
 
 \begin_layout Standard
-Lo habitual es poner el encabezado de tabla sobre ella, lo que desafortunadament
-e no es soportado en las clases estándar de LaTeX.
- Esto significa que si está usando las clases de documento 
+Lo habitual es poner el encabezado sobre la tabla, lo que desafortunadamente
+ no es soportado en las clases estándar de LaTeX.
+ Esto significa que si estás usando las clases de documento 
 \family sans
-article
+artículo (article
 \family default
-, 
+), 
 \family sans
-book
+libro (book
 \family default
-, 
+), 
 \family sans
-letter
+carta
 \family default
-, o 
+ 
 \family sans
-report
+(letter
+\family default
+), o 
+\family sans
+informe (report),
 \family default
  no habrá espacio entre el encabezado y la tabla.
  Para añadir el espacio faltante hay que poner en el preámbulo LaTeX del
@@ -1854,7 +2024,7 @@ caption
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Para más información ve a la sección\InsetSpace ~
@@ -1918,7 +2088,7 @@ Insertar\SpecialChar \menuseparator
 Referencia\InsetSpace ~
 cruzada
 \family default
- o el botón 
+ o con el botón 
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
@@ -1959,9 +2129,8 @@ larga
 Tabla\InsetSpace ~
 larga
 \family default
- del diálogo para repartir automáticamente la tabla entre varias páginas.
- Al hacer esto se habilitan diversos botones opcionales en los que puede
- definirse:
+ del diálogo para repartir automáticamente la tabla en varias páginas.
+ Al hacerlo se habilitan diversos botones opcionales en los que puedes definir:
 \end_layout
 
 \begin_layout Description
@@ -2018,8 +2187,8 @@ a fila actual y siguientes, que no tienen ninguna opción especial definida,
 \end_layout
 
 \begin_layout Standard
-también se puede especificar una fila en la que se dividirá la tabla.
- Si se establace más de una opción en la misma fila, habría que tener en
+También se puede especificar una fila en la que se dividirá la tabla.
+ Si se establece más de una opción en la misma fila, habría que tener en
  cuenta que sólo la primera de ellas se usa en la fila dada.
  Las otras quedarán definidas como 
 \emph on
@@ -4190,6 +4359,33 @@ fin
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Note
+status open
+
+\begin_layout Standard
+
+\lang english
+See greyed-out note in section 2.6.2 for an explanation of this command.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -4260,7 +4456,11 @@ caption[título corto]{título completo}
 \end_layout
 
 \begin_layout Enumerate
-Insertar un "%" como ERT en cada celda de la primera fila
+Insertar un "
+\series bold
+%
+\series default
+" como ERT en cada celda de la primera fila
 \end_layout
 
 \begin_layout Standard
@@ -4645,7 +4845,42 @@ asd
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ The table number is increased for every longtable, also if you didn't set
+ a caption for it.
+ For this reason you could have the case that e.g.
+ Table\InsetSpace ~
+2.4 follows on Table\InsetSpace ~
+2.1 in the list of tables if there are two longtables
+ without captions.
+ To avoid this you can add the following command in ERT behind every longtable
+ without a caption: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+addtocounter{table}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
 
 \begin_layout Standard
 
@@ -5065,7 +5300,19 @@ caption
 caption
 \series default
 .
- La parte del comando antes de la última llave "}"
+ La parte del comando antes de la última llave 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+}
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5078,11 +5325,19 @@ caption[título corto]{título completo
 
 \begin_layout Standard
 está en el primer cuadro ERT, la etiqueta se inserta tras ella.
- Observa que tienes que añadir el prefijo "
+ Observa que tienes que añadir el prefijo 
+\begin_inset Quotes eld
+\end_inset
+
+
 \emph on
 tab
 \emph default
-:" manualmente en el campo de etiqueta.
+:
+\begin_inset Quotes erd
+\end_inset
+
+ manualmente en el campo de etiqueta.
  El segundo cuadro ERT contiene el resto del comando
 \end_layout
 
@@ -5936,7 +6191,7 @@ LTcapwidth}{4in}
 \end_layout
 
 \begin_layout Subsubsection
-Encabezados Diferentes para cada Página de una Tabla Larga
+Encabezados Distintos para cada Página
 \begin_inset LatexCommand \index{Tablas Largas ! Encabezados Diferentes para cada Página}
 
 \end_inset
@@ -7961,8 +8216,8 @@ Particularidades de las Tablas Largas
 \end_layout
 
 \begin_layout Subsection
-Cálculo
-\begin_inset LatexCommand \index{Tablas Largas ! Cálculo}
+Cálculos
+\begin_inset LatexCommand \index{Tablas Largas ! Cálculos}
 
 \end_inset
 
@@ -9718,7 +9973,7 @@ status open
 
 \end_inset
 
-Tablas con y sin guionado
+Tablas con y sin guión
 \end_layout
 
 \begin_layout Standard
@@ -11630,7 +11885,15 @@ em.
 \end_layout
 
 \begin_layout Standard
-La última línea de una tabla booktabs se crea con el comando ERT
+La última línea de una tabla 
+\begin_inset Quotes eld
+\end_inset
+
+booktabs
+\begin_inset Quotes erd
+\end_inset
+
+ se crea con el comando ERT
 \end_layout
 
 \begin_layout Standard
@@ -11643,7 +11906,7 @@ bottomrule[ancho]
 
 \begin_layout Standard
 en la primera celda de la última fila.
- La última fila es solo para este comoando y no debería tener ningún otro
+ La última fila es solo para este comando y no debería tener ningún otro
  contenido.
  La anchura predeterminada es la misma que para 
 \series bold
@@ -11841,7 +12104,7 @@ cmidrules
 \series bold
 
 \backslash
-moremidrules
+morecmidrules
 \end_layout
 
 \begin_layout Standard
@@ -11863,7 +12126,7 @@ cmidrule(r){2-2}
 \backslash
 cmidrule(l){3-4}
 \backslash
-moremidrules
+morecmidrules
 \backslash
 cmidrule{2-4}
 \end_layout
@@ -11879,7 +12142,7 @@ El comando para la sexta fila es
 \backslash
 midrule
 \backslash
-moremidrules
+morecmidrules
 \backslash
 cmidrule{3-4}
 \end_layout
@@ -12483,6 +12746,789 @@ bottomrule
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Alineación Vertical en Tablas
+\begin_inset LatexCommand \index{Tablas ! Alineación}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para alinear tablas verticalmente en una línea de texto la tabla debe estar
+ en un cuadro.
+ Entonces el cuadro se puede alinear verticalmente como se describe en la
+ sección\InsetSpace ~
+
+\begin_inset LatexCommand \ref{sec:Diálogo-Cuadros}
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+En el ejemplo siguiente las tablas están en un cuadro de minipágina
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+Las minipáginas se describen en la sección\InsetSpace ~
+
+\begin_inset LatexCommand \ref{sec:Minipáginas}
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ que tiene una anchura de 15\InsetSpace \thinspace{}
+col%:
+\end_layout
+
+\begin_layout Itemize
+test 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+g
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ test 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raisebox{0.85
+\backslash
+baselineskip}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+g
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+test 
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+g
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+test 
+\begin_inset Box Frameless
+position "b"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+g
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ test 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+raisebox{-0.32
+\backslash
+baselineskip}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "b"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+d
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+g
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+h
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+i
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como ves, los contenidos de la primera y última filas no se alinean correctament
+e con la línea de texto donde está la tabla.
+ Para conseguir esta alineación, el cuadro (minipágina) debe ponerse en
+ un cuadro elevado (
+\begin_inset Quotes eld
+\end_inset
+
+raisebox
+\begin_inset Quotes erd
+\end_inset
+
+)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+El uso del comando 
+\series bold
+
+\backslash
+raisebox 
+\series default
+se explica en la sección\InsetSpace ~
+
+\begin_inset LatexCommand \ref{sub:Alineación-Vertical}
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ En el ejemplo anterior, la segunda tabla del primer ítem está alineada
+ usando el comando en ERT
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+raisebox{0.85
+\backslash
+baselineskip}{
+\end_layout
+
+\begin_layout Standard
+antes del cuadro.
+ Tras él, se pone la llave de cierre 
+\series bold
+}
+\series default
+ también como ERT.
+ Para la segunda tabla en el tercer ítem se usa el comando 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+raisebox{-0.32
+\backslash
+baselineskip}{
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Not
+\series default
+a: La alineación del contenido de la fila con la línea del texto adyacente
+ no es exacta.
+ El factor necesario del comando 
+\series bold
+
+\backslash
+raisebox
+\series default
+ para este alineamiento depende de la fuente del documento, del tamaño de
+ la fuente y del grosor de línea de la tabla.
 \end_layout
 
 \end_inset
@@ -13265,14 +14311,14 @@ Si quieres tener varios colores, define más formatos de columna.
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Caption
 \begin_inset LatexCommand \label{tab:Tabla-con-verticales-coloreadas}
 
 \end_inset
 
-Tabla con líneas vertcales coloreadas
+Tabla con líneas verticales coloreadas
 \end_layout
 
 \begin_layout Standard
@@ -13813,7 +14859,7 @@ d
 \emph default
  no tienen bastante espacio entre los bordes superior e inferior de una
  celda.
- Con la línea en el preámbulo
+ Con la línea
 \end_layout
 
 \begin_layout Standard
@@ -13827,8 +14873,9 @@ extrarowheight}{2pt}
 \end_layout
 
 \begin_layout Standard
-se añaden 2\InsetSpace \thinspace{}
-pt de altura extra a todas las celdas de todas las tablas.
+en el preámbulo, se añaden 2\InsetSpace \thinspace{}
+pt de altura extra a todas las celdas de todas
+ las tablas.
  Aunque esto suele mejorar la apariencia, tiene el inconveniente de que
  el texto no sale exactamente centrado verticalmente.
 \end_layout
@@ -13853,8 +14900,8 @@ Alineación Especial de Celdas
 \end_layout
 
 \begin_layout Standard
-A veces mejora la presentación las entradas en las celdas de una columna
- se alinean con un caracter determinado, p.\InsetSpace \thinspace{}
+A veces mejora la presentación si las entradas en las celdas de una columna
+ se alinean con un carácter determinado, p.\InsetSpace \thinspace{}
 e.
  el separador decimal, como en la Tabla\InsetSpace ~
 
@@ -14373,7 +15420,11 @@ status open
 
 \end_inset
 
-Alineaciones con el paquete LaTeX dcolumn.
+Alineaciones con el paquete LaTeX 
+\series bold
+dcolumn
+\series default
+.
  Para la segunda y tercera alineaciones se han hecho algunos trucos.
 \end_layout
 
@@ -14390,7 +15441,7 @@ Alineaciones con el paquete LaTeX dcolumn.
 \begin_inset Text
 
 \begin_layout Standard
-units
+unidades
 \end_layout
 
 \end_inset
@@ -14399,7 +15450,7 @@ units
 \begin_inset Text
 
 \begin_layout Standard
-units
+unidades
 \end_layout
 
 \end_inset
@@ -14408,7 +15459,7 @@ units
 \begin_inset Text
 
 \begin_layout Standard
-units
+unidades
 \end_layout
 
 \end_inset
@@ -15952,7 +17003,7 @@ en ERT como primer elemento de la primera celda en la fila.
 \end_layout
 
 \begin_layout Standard
-Para líneas de trazos en multicolumna usa el comandoi
+Para líneas de trazos en multicolumna usa el comando
 \end_layout
 
 \begin_layout Standard
@@ -15997,11 +17048,19 @@ La Tabla\InsetSpace ~
 
 \end_inset
 
- se ha hecho usando "
+ se ha hecho usando 
 \series bold
+
+\begin_inset Quotes eld
+\end_inset
+
 :c
 \series default
-" como argumento LaTeX de la tercera columna.
+
+\begin_inset Quotes erd
+\end_inset
+
+ como argumento LaTeX de la tercera columna.
  El comando ERT 
 \series bold
 
@@ -16166,7 +17225,7 @@ de LyX.
 
 .
  Para mantener legible el documento LyX, puedes abrir y cerrar el cuadro
- del flotante haciendo click-izquierda sobre ella.
+ del flotante haciendo click-izquierda sobre él.
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename ../clipart/flotante.png
@@ -16341,8 +17400,8 @@ hyperref
  para enlazar referencias cruzadas a flotantes en la salida PDF, debe cargarse
  en el preámbulo LaTeX antes de la definición de flotantes para poder referirse
  a ellos.
- LyX establace la definición de algoritmos flotantes automáticamente antes
- que la parte del preámbulo editabla por el usuario, así que hay que insertar
+ LyX establece la definición de algoritmos flotantes automáticamente antes
+ de la parte del preámbulo editable por el usuario, así que hay que insertar
  las siguientes líneas 
 \emph on
 después
@@ -16412,10 +17471,16 @@ algorithm
 \end_layout
 
 \begin_layout Standard
-Los algoritmos flotantes no se numeran por defecto en el esquema "capítulo.algori
-tmo" como es el caso para tablas e imágenes flotantes en muchas clases de
- documento.
- Para numerar algoritmos flotantes en el mismo esquema, añade este comando
+Los algoritmos flotantes no se numeran por defecto según el esquema 
+\begin_inset Quotes eld
+\end_inset
+
+capítulo.algoritmo
+\begin_inset Quotes erd
+\end_inset
+
+ como es el caso para tablas e imágenes flotantes en muchas clases de documento.
+ Para numerar algoritmos flotantes según ese mismo esquema, añade este comando
  en el preámbulo del documento:
 \end_layout
 
@@ -16440,7 +17505,7 @@ después
 \family sans
 Xalgorithm
 \family default
- (los comandos de arriba) en el preámbulo:
+ (los comandos anteriores) en el preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -16458,20 +17523,18 @@ Para poder usar el comando
 \backslash
 numberwithin
 \series default
-, marca en el menú
-\newline
- 
-\family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
-Ecuaciones
-\family default
- la opción 
+, marca la opción 
 \family sans
 Usar\InsetSpace ~
 el\InsetSpace ~
 paquete\InsetSpace ~
 AMS
+\family default
+ en el menú 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Ecuaciones
 \family default
 .
 \end_layout
@@ -16497,7 +17560,7 @@ Este tipo de flotante se usa cuando quieres envolver una figura en el texto,
 \begin_inset Wrap figure
 placement l
 width "40col%"
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
@@ -16883,15 +17946,24 @@ formato: imprime un formato autodefinido:
 \end_layout
 
 \begin_layout Standard
-Ten en cuenta que el estilo <página> no imprime el número si la etiqueta
+Ten en cuenta que el estilo <página>\InsetSpace ~
+ no imprime el número si la etiqueta
  está en la misma página, en la anterior o en la siguiente.
  En su lugar verás p.\InsetSpace \thinspace{}
 e.
- el texto "
+ el texto 
+\begin_inset Quotes eld
+\end_inset
+
+
 \family sans
 en esta página
 \family default
-".
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -16962,7 +18034,7 @@ hphantom{ }
 
 {Figura~flotante~
 \backslash
-ref{#1} impresa en página~
+ref{#1} impresa en la página~
 \backslash
 pageref{#1}}
 \end_layout
@@ -17387,7 +18459,7 @@ solo si más del 50\InsetSpace \thinspace{}
 \series bold
 
 \backslash
-floatpáginafraction
+floatpagefraction
 \series default
 )
 \end_layout
@@ -17403,8 +18475,8 @@ LaTeX
 \family default
 .
 \newline
-También puedes redefinir las reglas con comandos LaTeX que van entre paréntesis
- tras la descripción de reglas anteriores.
+También puedes redefinir las reglas con los comandos LaTeX que van entre
+ paréntesis tras la descripción de las reglas anteriores.
  Por ejemplo, para aumentar el valor predeterminado, quizás pequeño, de
  la regla 
 \family sans
@@ -17668,7 +18740,7 @@ Rotación de Flotantes
 \end_layout
 
 \begin_layout Standard
-Podrías necesitar girar flotantes, especialmente en tablas grandes.
+Podrías necesitar girar flotantes, especialmente con tablas grandes.
  Para girar todo el flotante y su encabezado, pincha sobre su cuadro y marca
  la opción 
 \family sans
@@ -18974,7 +20046,7 @@ status open
 
 \end_inset
 
-Encabezado al lado de una tabla.
+Esto es un encabezado al lado de una tabla.
 \end_layout
 
 \begin_layout Standard
@@ -19287,7 +20359,8 @@ Lista / IG
 
 \begin_layout Standard
 Las entradas de la lista son los encabezados del flotante o su título corto,
- el número, y el número de página del documento en la que aparecen.
+ el número de flotante, y el número de la página del documento en la que
+ aparecen.
 \end_layout
 
 \begin_layout Standard
@@ -19815,7 +20888,7 @@ Para poner notas al pie en tablas, tienes que usar minipáginas, ver sección\Inse
 \begin_inset VSpace defskip
 \end_inset
 
-Para crear solo una marca para una nota al pie, usa el comando 
+Para crear solo una marca para una nota al pie, puedes usar el comando 
 \series bold
 
 \backslash
@@ -20051,7 +21124,7 @@ roman{footnote}}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -20078,7 +21151,7 @@ Ejemplo de nota al pie en números romanos.
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Standard
 
@@ -20119,7 +21192,7 @@ numerar
 \begin_inset Quotes erd
 \end_inset
 
- notas al pie con letras mayúsculas o minúsculas usa 
+ las notas al pie con letras mayúsculas o minúsculas usa 
 \series bold
 
 \backslash
@@ -20140,7 +21213,7 @@ numerar
 \begin_inset Quotes erd
 \end_inset
 
- notas al pie con símbolos usa 
+ las notas al pie con símbolos usa 
 \series bold
 
 \backslash
@@ -20160,7 +21233,7 @@ Nota:
 \series medium
  
 \series default
-Solo puedes numerar hasta 26 pies con letras, porque esta numeración está
+Sólo puedes numerar hasta 26 pies con letras, porque esta numeración está
  limitada a letras simples.
 \end_layout
 
@@ -20177,7 +21250,7 @@ status open
 \series bold
 Nota:
 \series default
- Solo puedes numerar 9 pies con símbolos.
+ Sólo puedes numerar 9 pies con símbolos.
 \end_layout
 
 \end_inset
@@ -21189,10 +22262,6 @@ marginnote
 El diseño de las notas al margen puede ser redefinido.
  Por ejemplo, para crear una cabecera para todas las notas con el texto
  
-\begin_inset Quotes erd
-\end_inset
-
-
 \family sans
 \series bold
 \bar under
@@ -21200,10 +22269,6 @@ Atención
 \family default
 \series default
 \bar default
-
-\begin_inset Quotes eld
-\end_inset
-
 , subrayado, sans-serif en negrita, añade lo siguiente en el preámbulo:
 \end_layout
 
@@ -21598,6 +22663,11 @@ interior
 
 \begin_layout Section
 Diálogo Cuadros
+\begin_inset LatexCommand \label{sec:Diálogo-Cuadros}
+
+\end_inset
+
+
 \begin_inset LatexCommand \index{Cuadros ! Diálogo}
 
 \end_inset
@@ -21881,7 +22951,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -21907,7 +22977,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -22109,11 +23179,11 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
-width "20col%"
+width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Standard
 \align center
@@ -22138,7 +23208,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
-width "20col%"
+width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -22167,7 +23237,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
-width "20col%"
+width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -22547,7 +23617,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
-width "25col%"
+width "28col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -22632,7 +23702,7 @@ hor_pos "c"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
-width "25col%"
+width "28col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -22985,7 +24055,7 @@ width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Standard
 \align center
@@ -23348,7 +24418,7 @@ status collapsed
 
 \begin_layout Standard
 Por supuesto, la palabra sobresale del margen.
- Para evitarlo, añade via el menú 
+ Para evitarlo añade, con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\InsetSpace ~
@@ -23362,7 +24432,7 @@ línea (atajo
 \series bold
 Ctrl-Return
 \series default
-) un salto de línea antes de la palabra:
+), un salto de línea antes de la palabra:
 \end_layout
 
 \begin_layout Standard
@@ -23806,7 +24876,7 @@ raisebox
 \begin_inset Text
 
 \begin_layout Standard
-Commando
+Comando
 \end_layout
 
 \end_inset
@@ -23931,7 +25001,7 @@ hspace{2pt}
 \begin_inset Text
 
 \begin_layout Standard
-sin 
+con 
 \series bold
 
 \backslash
@@ -24710,7 +25780,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-URLs (Localizador Universal de Recursos)
+URLs (Localizador Uniforme de Recursos)
 \begin_inset LatexCommand \index{URLs}
 
 \end_inset
@@ -24806,7 +25876,7 @@ hyperref
 \end_inset
 
  para enlazar referencias cruzadas, en las salidas DVI y PDF los URLs se
- convierten automáticamente en hiperenlaces pinchables.
+ convierten automáticamente en hiperenlaces disponibles.
 \end_layout
 
 \begin_layout Standard
@@ -24970,9 +26040,11 @@ Emplear
 href
 \series default
  en vez del cuadro URL de LyX tiene la ventaja de que puedes especificar
- el estilo de texto del enlace para todas las demás partes del texto y que
- puedes cambiar el estilo de texto para todos los URLs en el documento con
- una opción en el comando de carga de 
+ el estilo de texto del enlace como en las demás partes del texto.
+ Puedes poner guiones y saltos de línea forzados para dividir textos extensos
+ de enlaces en el margen de página.
+ También puedes cambiar el estilo de texto para todos los URLs en el documento
+ con una opción en el comando de carga de 
 \series bold
 hyperref
 \series default
@@ -24985,10 +26057,6 @@ href
 \series default
 .
  
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
@@ -25038,11 +26106,17 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
+
+\series medium
+\size small
 El comando 
 \backslash
 texorpdfstring suministrado por el paquete LaTeX hyperref impide que los
  enlaces se muestren erróneamente en los marcadores PDF.
- Más información en 
+ Más información en
+\series default
+\size default
+ 
 \begin_inset LatexCommand \cite{hyperref}
 
 \end_inset
@@ -25580,13 +26654,13 @@ device-independent
  (DVI), porque es completamente portable; se pueden mover de una máquina
  a otra sin necesidad de conversión alguna.
  En la época en que se desarrolló este formato, esto no era un asunto baladí.
- DVIs se usan para previsualizaciones rápidas y preparación para otros formatos
- de salida como PostScript.
+ Los DVIs se usan para previsualizaciones rápidas y como preparación para
+ otros formatos de salida como PostScript.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Standard
 
@@ -25851,7 +26925,7 @@ Portable Network Graphics
 \end_layout
 
 \begin_layout Standard
-Un documento se puede exportar a PDF via el menú 
+Un documento se puede exportar a PDF con el menú 
 \family sans
 Archivo\SpecialChar \menuseparator
 Exportar
@@ -26591,7 +27665,7 @@ href{http://wiki.lyx.org/LyX/NewInLyX15}{
 
 \end_inset
 
-Wiki página
+Página Wiki
 \begin_inset ERT
 status collapsed
 
