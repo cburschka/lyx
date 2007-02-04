@@ -285,26 +285,32 @@ Versión 1.4.4-1
 status open
 
 \begin_layout Standard
-
+Para exportar
 \lang english
-To export all parts of this document to PDF, PS, or DVI the LaTeX-packages
+ all parts of this 
+\lang spanish
+documento
+\lang english
  
+\lang spanish
+a PDF, PS, o DVI, deben estar instalados los paquetes LaTeX 
 \series bold
 arydshln
 \series default
- and 
+ y 
 \series bold
 marginnote
 \series default
- must be installed.
+.
+
+\lang english
  If they are not installed you can export the document anyway but the sections
  where the packages are required won't appear in the output.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The latest PDF-version of this document can be found here:
+La última versión en PDF de este documento puede encontrarse aquí:
 \newline
 
 \series bold
@@ -4385,15 +4391,14 @@ addtocounter{table}{-1}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-
-\lang english
-See greyed-out note in section 2.6.2 for an explanation of this command.
+Para comprender el uso de este comando, lee al final de la sección\InsetSpace ~
+2.6.2 la
+ primera nota resaltada en gris.
+ 
 \end_layout
 
 \end_inset
@@ -4863,24 +4868,21 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota
 \series default
- The table number is increased for every longtable, also if you didn't set
- a caption for it.
- For this reason you could have the case that e.g.
- Table\InsetSpace ~
-2.4 follows on Table\InsetSpace ~
-2.1 in the list of tables if there are two longtables
- without captions.
- To avoid this you can add the following command in ERT behind every longtable
- without a caption: 
+: El número de la tabla es incrementado para cada tabla larga, aunque no
+ pongas encabezado en alguna de ellas.
+ Por esto podría suceder que, p.e., la Tabla\InsetSpace ~
+2.4 siga a la Tabla\InsetSpace ~
+2.1 en la lista
+ de tablas debido a que hay dos tablas largas sin encabezado.
+ Para evitarlo, puedes añadir el siguiente comando en ERT detrás de cada
+ tabla larga sin encabezado:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
 addtocounter{table}{-1}
