@@ -1025,6 +1025,14 @@ contributers = [
                  "22 February 2005",
                  u"The driving force behind, and maintainer of, the LyX wiki wiki.\nSwedish translation of the Windows installer"),
 
+     contributer(u"Bernhard Roider",
+                 "bernhard.roider () sonnenkinder ! org",
+                 "GPL",
+                 "Re: [PATCH] immediatly display saved filename in tab",
+                 "m=117009852211669",
+                 "29 January 2007",
+                 u"Various small bug fixes"),
+
      contributer(u"Ran Rutenberg",
                  "ran.rutenberg () gmail ! com",
                  "GPL",
