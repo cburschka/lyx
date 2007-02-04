@@ -7,9 +7,6 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-# This is an experimental version of the configure script, written
-# in Python. 
-
 import sys, os, re, shutil, glob
 
 
