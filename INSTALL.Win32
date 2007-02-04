@@ -38,11 +38,11 @@ Compiling with MSVC 2005
 	
 5	Install SCons
 	
-	Download and install SCons 0.96.92 (or newer but not 0.96.1) from http://www.scons.org/download.php
+	Download and install SCons 0.96.92 (or newer, but not 0.96.1) from http://www.scons.org/download.php
 	
 6	Install the dependencies
 	
-	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc-qt4.zip
+	Download http://www.lyx.org/~bpeng/lyx-windows-deps-msvc-qt422.zip
 	and extract in the root directory of your LyX files (so you will get
 	a directory called lyx-windows-deps-msvc next to the other directories
 	like src, development etc.).
@@ -67,9 +67,10 @@ Compiling with MSVC 2005
 	QtCore4.dll
 	QtGui4.dll
 	
-	The Microsoft.VC80.CRT.manifest, QtCore4.dll, and QtGui4.dll should be present on your system.
-	The other files can be downloaded from:
+	All files except of the msvcp80.dll and msvcr80.dll should be present on your system.
+	The missing files can be downloaded from:
 	http://wiki.lyx.org/uploads/DevelTools/buildLyx/LyXWinBuildDLLs.zip
+	(Currently there is a bug in the aspell.dll, so use the version that is delivered in this zip-file.)
 
 
 Compiling with MinGW
