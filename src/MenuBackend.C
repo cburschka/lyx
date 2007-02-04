@@ -536,6 +536,8 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 
 		switch (kind) {
 		case MenuItem::ImportFormats:
+			// FIXME: This is a hack, we should rather solve
+			// FIXME: bug 2488 instead.
 			if ((*fit)->name() == "text")
 				label = _("Plain Text");
 			else if ((*fit)->name() == "textparagraph")

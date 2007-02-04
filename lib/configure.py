@@ -271,7 +271,7 @@ def checkFormatEntries(dtl_tools):
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"
-\Format textparagraph txt "Plain text (paragraphs)"    "" ""	"%%"	"document"''' ])
+\Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
