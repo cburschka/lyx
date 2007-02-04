@@ -68,9 +68,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash when viewing documents as PDF on Windows with installed
-  Adobe Reader/Acrobat 8 (bug 3045).
-
 - Write inherited colors correctly as "inherit" to the .lyx file. Previously
   they where written as "default", which was then read in as "none".
   Fix some help documents that contained this invalid color.
@@ -117,13 +114,14 @@ What's new
 
 - Read filenames with spaces in external insets correctly from .lyx files
 
-- Determine PDF image size within LyX correctly (bug 2418).
-
 * USER INTERFACE:
 
 - Fix slowness with lots of math on Windows (bug 2900).
 
 - Fix that LyX's dialogs remain partly untranslated on Windows (bug 2906).
+
+- Fix crash when viewing documents as PDF on Windows with installed
+  Adobe Reader/Acrobat 8 (bug 3045).
 
 - Fix a crash with PageDown/Up when the next/previous paragraph is an inset
   taller than the workarea.
