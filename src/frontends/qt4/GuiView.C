@@ -107,8 +107,7 @@ public:
 
 struct GuiView::GuiViewPrivate
 {
-	typedef std::map<int, FuncRequest> FuncMap;
-	FuncMap funcmap;
+	std::vector<std::string> tabnames;
 
 	TabWidget* tabWidget;
 
@@ -308,11 +307,11 @@ void GuiView::saveGeometry()
 						  
 
 void GuiView::setGeometry(unsigned int width,
-								  unsigned int height,
-								  int posx, int posy,
-								  bool maximize,
-								  unsigned int iconSizeXY,
-								  const std::string & geometryArg)
+			  unsigned int height,
+			  int posx, int posy,
+			  bool maximize,
+			  unsigned int iconSizeXY,
+			  const string & geometryArg)
 {
 	// use last value (not at startup)
 	if (d.lastIconSize != 0)
@@ -353,12 +352,15 @@ void GuiView::setGeometry(unsigned int width,
 		int x, y;
 		int w, h;
 		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)([+-][0-9]*)){0,1}" );
-		re.indexIn( toqstr(geometryArg.c_str()));
-		w = re.cap( 1 ).toInt();
-		h = re.cap( 2 ).toInt();
-		x = re.cap( 3 ).toInt();
-		y = re.cap( 4 ).toInt();
+		re.indexIn(toqstr(geometryArg.c_str()));
+		w = re.cap(1).toInt();
+		h = re.cap(2).toInt();
+		x = re.cap(3).toInt();
+		y = re.cap(4).toInt();
 		QWidget::setGeometry( x, y, w, h );
+#else
+		// silence warning
+		(void)geometryArg;
 #endif
 	}
 
@@ -479,24 +481,21 @@ void GuiView::initTab(QWidget* workarea)
 
 void GuiView::updateTab()
 {
-	static std::vector<string> oldnames;
-	std::vector<string> const& names = theBufferList().getFileNames();
+	std::vector<string> const & names = theBufferList().getFileNames();
 
 	// avoid unnecessary tabbar rebuild: 
 	// check if something has changed
-	if (oldnames == names) 
+	if (d.tabnames == names) 
 		return;
-	else
-		oldnames = names;
+	d.tabnames = names;
 
-	QTabBar& tabbar = *d.tabWidget->tabbar;
+	QTabBar & tabbar = *d.tabWidget->tabbar;
 
-	// update when all  is done
+	// update when all is done
 	tabbar.blockSignals(true);
 
-	// remove all tab bars and clear the function map
+	// remove all tab bars
 	d.tabWidget->clearTabbar();
-	d.funcmap.clear();
 
 	string cur_title;
 	if (view()->buffer()) {
@@ -504,29 +503,22 @@ void GuiView::updateTab()
 	}
 
 	// rebuild tabbar and function map from scratch
-	if (names.size() == 1) {
-		d.funcmap.insert(std::pair<int, FuncRequest>
-						(0, FuncRequest(LFUN_BUFFER_SWITCH, names[0])));
-	} else {
+	if (names.size() > 1) {
 		for(size_t i = 0; i < names.size(); i++) {
-			tabbar.addTab(lyx::toqstr(onlyFilename(names[i]))); 
-			d.funcmap.insert(std::pair<int, FuncRequest>
-							(i, FuncRequest(LFUN_BUFFER_SWITCH, names[i])));
+			tabbar.addTab(toqstr(onlyFilename(names[i]))); 
 			// set current tab
-			if (names[i] == cur_title) {
+			if (names[i] == cur_title)
 				tabbar.setCurrentIndex(i);
-			}
 		}
 	}
 	tabbar.blockSignals(false);
 }
 
 
-void GuiView::currentTabChanged (int index)
+void GuiView::currentTabChanged(int i)
 {
-	std::map<int, FuncRequest>::const_iterator it = d.funcmap.find(index);
-	if (it != d.funcmap.end())
-		activated(it->second);
+	BOOST_ASSERT(i >= 0 && size_type(i) < d.tabnames.size());
+	dispatch(FuncRequest(LFUN_BUFFER_SWITCH, d.tabnames[i]));
 }
 
 
