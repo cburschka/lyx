@@ -293,39 +293,22 @@ Versión 1.5.0-1
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-Para exportar
-\lang english
- all parts of this 
-\lang spanish
-documento
-\lang english
- 
-\lang spanish
-a PDF, PS, o DVI, deben estar instalados
-\lang english
- 
-\lang spanish
-los paquetes LaTeX
-\lang english
- 
+Para exportar todas las partes de este documento a PDF, PS, o DVI, deben
+ estar instalados los paquetes LaTeX 
 \series bold
-\lang spanish
 arydshln
 \series default
  y 
 \series bold
-marginnote.
-
+marginnote
 \series default
-\lang english
- If they are not installed you can export the document anyway but the sections
- where the packages are required won't appear in the output.
+.
+ Si no están instalados, también podrás exportar el documento, pero las
+ secciones en que dichos paquetes son necesarios no aparecen en la salida.
 \end_layout
 
 \begin_layout Standard
@@ -16696,14 +16679,12 @@ ifarydshln
 status open
 
 \begin_layout Standard
-
-\lang english
-The following section will only be displayed when you have the LaTeX-package
- 
+La siguiente sección sólo se mostrará en pantalla si está instalado el paquete
+ LaTeX 
 \series bold
 arydshln
 \series default
- is installed.
+.
 \end_layout
 
 \end_inset
@@ -17187,13 +17168,12 @@ else
 status open
 
 \begin_layout Standard
-
-\lang english
-The following will be displayed when the LaTeX-package 
+Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
+ 
 \series bold
 arydshln
 \series default
- is not installed:
+.
 \end_layout
 
 \end_inset
@@ -17202,13 +17182,11 @@ arydshln
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You need to install the package 
+Debes instalar el paquete LaTeX 
 \series bold
 arydshln
 \series default
- to see the contents of this section in the output.
+ para ver la parte siguiente en la salida.
 \end_layout
 
 \begin_layout Standard
@@ -22319,14 +22297,12 @@ ifmarginnote
 status open
 
 \begin_layout Standard
-
-\lang english
-The following section will only be displayed when you have the LaTeX-package
- 
+La siguiente sección sólo se mostrará en pantalla si está instalado el paquete
+ LaTeX 
 \series bold
 marginnote
 \series default
- is installed.
+.
 \end_layout
 
 \end_inset
@@ -22821,19 +22797,16 @@ else
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status open
 
 \begin_layout Standard
-
-\lang english
-The following will be displayed when the LaTeX-package 
+Lo siguiente se mostrará en pantalla si no está instalado el paquete LaTeX
+ 
 \series bold
 marginnote
 \series default
- is not installed:
+.
 \end_layout
 
 \end_inset
@@ -22842,13 +22815,11 @@ marginnote
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You need to install the LaTeX-package 
+Debes instalar el paquete LaTeX 
 \series bold
 marginnote
 \series default
- to see the following part of this section in the output.
+ para ver la parte siguiente en la salida.
 \end_layout
 
 \begin_layout Standard
