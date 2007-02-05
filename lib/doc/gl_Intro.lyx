@@ -2,15 +2,72 @@
 \lyxformat 245
 \begin_document
 \begin_header
-\textclass book
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% provides missing characters,
+\usepackage{textcomp}
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
+  {\usepackage[scaled=0.92]{helvet}
+    \usepackage{mathptmx}
+    \usepackage{courier} }
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic} }
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={The LyX User's Guide},pdfsubject={LyX-documentation Intro},
+  pdfkeywords={LyX}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+ % the pages of the TOC are numbered roman
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{%
+   \pdfbookmark[1]{Contents}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic} }
+   
+\fi
+\end_preamble
 \language galician
 \inputencoding default
 \fontscheme default
 \graphics default
-\paperfontsize default
+\paperfontsize 12
 \spacing single
-\papersize default
-\use_geometry true
+\papersize a4paper
+\use_geometry false
 \use_amsmath 0
 \cite_engine basic
 \use_bibtopic false
@@ -19,7 +76,7 @@
 \topmargin 2cm
 \rightmargin 2cm
 \bottommargin 2cm
-\secnumdepth 2
+\secnumdepth 3
 \tocdepth 2
 \paragraph_separation indent
 \defskip medskip
@@ -67,52 +124,15 @@ tradución: Ramón Flores <fa2ramon@usc.es>
 
 \end_layout
 
-\begin_layout Chapter
-\begin_inset LatexCommand \label{cha:A-filosofia-do-LyX}
+\begin_layout Section
+\begin_inset LatexCommand \label{sec:A-filosofia-do-LyX}
 
 \end_inset
 
 A filosofia do LyX
 \end_layout
 
-\begin_layout Quote
-\begin_inset Quotes eld
-\end_inset
-
-Tio Cosmo, por que lle chaman a isto procesador de texto?
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Quote
-\begin_inset Quotes eld
-\end_inset
-
-É ben sinxelo, Skyler.
- Xa tes visto o que os procesadores de comida fan coa comida, non si?
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Quote
-
-\hfill
---- Jeff MacNelly en 
-\begin_inset Quotes eld
-\end_inset
-
-Shoe
-\begin_inset Quotes erd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Section
+\begin_layout Subsection
 Que é o  LyX?
 \end_layout
 
@@ -377,27 +397,13 @@ Esta é a razón pola que o LyX non é bon para elaborar cartaces e anúncios---nese
  para apertar un parafuso, non si?.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Diferenzas entre o LyX e outros procesadores de texto
 \begin_inset OptArg
 status collapsed
 
 \begin_layout Standard
 LyX e outros procesadores de texto
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-Non, non tentamos iniciar (ou gañar) unha cruzada sobre procesadores de
- texto.
- Mais consideramos necesário descreber as características do LyX, e unha
- das características máis importantes do LyX, WYSIWYM, é un conceito radicalment
-e diferente do que ten a maioria da xente sobre o procesamento de texto.
 \end_layout
 
 \end_inset
@@ -543,51 +549,21 @@ funciona
 .
 \end_layout
 
-\begin_layout Section
-Que demo é iso do LaTeX? ( e por que me debe importar?)
+\begin_layout Subsection
+Que é o LaTeX?
 \end_layout
 
 \begin_layout Standard
 O LaTeX é un sistema de preparación de documentos desenvolvido por Leslie
- Lamport en 1985
-\begin_inset Foot
-status collapsed
-
-\begin_layout Standard
-A fonte da que bebe esta sección é o libro 
-\begin_inset Quotes eld
-\end_inset
-
-
-\emph on
-A Guide to LaTeX2e
-\emph default
-,
-\begin_inset Quotes erd
-\end_inset
-
- de Helmut Kopka e Patrick Daly, que ten unha entrada na bibliografia do
- 
-\emph on
-Guia do Usuário
-\emph default
-\SpecialChar \@.
-
-\end_layout
-
-\end_inset
-
-.
- Por sua vez, o LaTeX, elaborou-se sobre unha linguaxe tipográfica chamada
- TeX, criada por Donald Knuth en 1984.
- O que fai o TeX é ler roteiros, ficheiros ASCII con unha secuéncia de instrució
-ns, e executar secuencialmente os comandos tipográficos do roteiro.
+ Lamport en 1985, e elaborado sobre unha linguaxe tipográfica chamada TeX,
+ criada por Donald Knuth en 1984.
+ O TeX le roteiros, ficheiros ASCII con unha secuéncia de instrucións, e
+ executa secuencialmente os comandos tipográficos do roteiro.
  É un pouquiño máis complicado que unha máquina de escreber, mais non tan
  complicado como unha imprensa; porén Knuth modelou moitos dos truques das
  artes tipográficas como algoritmos computacionais, incorporando-os ao TeX,
  e conseguindo con isto atinxir unha excelente cualidade nos textos impresos.
- En todo caso, a saída directa do TeX é un ficheiro no formato coñecido
- como 
+ A saída directa do TeX é un ficheiro no formato coñecido como 
 \begin_inset Quotes eld
 \end_inset
 
@@ -716,30 +692,25 @@ estilo
 Eis un resumo:
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 TeX: Linguaxe tipográfica na que se poden utilizar macros.
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 LaTeX: Pacote de macros construído sobre o TeX\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 clase: Descrición dun tipo de documento, usando LaTeX\SpecialChar \@.
 
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 estilo: Modifica nalgun xeito o comportamento predefinido do LaTeX.
 \end_layout
 
-\begin_layout List
-\labelwidthstring 00.00.0000
+\begin_layout Description
 LyX: Procesador de texto WYSIWYM, que emprega o LaTeX, en toda a sua gloria,
  para imprimir.
 \end_layout
@@ -755,7 +726,7 @@ o que
  está a escreber, deixando ao computador ocupar-se da aparéncia do texto.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Navegando pola documentación
 \end_layout
 
@@ -769,8 +740,8 @@ Para facilitar a resposta ás suas perguntas e a descrición de todas as funcións
 \end_layout
 
 \begin_layout Standard
-Ainda que o LyX xa pasou a versión 1.0, parte da documentación pode estar
- incompleta ou ultrapasada.
+Esperamos que o desenvolvimento do LyX non rematé nunca, sendo posíbel que
+ a documentación non o acompañe pontualmente.
  Como o resto do LyX, os manuais son o traballo dun grupo de voluntários
  que teñen 
 \begin_inset Quotes eld
@@ -784,7 +755,7 @@ ocupacións reais
  Facemos o posíbel para manter os manuais a ponto, mais nen sempre o conseguimos.
  (Se quer axudar a remediar esta situación, asegure-se de ler o capítulo
  
-\begin_inset LatexCommand \ref{chp:Contrib}
+\begin_inset LatexCommand \ref{sec:Contrib}
 
 \end_inset
 
@@ -801,7 +772,7 @@ Un outro favor que nos pode facer é avisar-nos se calquer cousa nestes manuais
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 [N.
@@ -837,7 +808,7 @@ status collapsed
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 O Formato dos Manuais
 \end_layout
 
@@ -851,7 +822,7 @@ Os manuais poden-se ler directamente no LyX, ou imprimi-los e le-los en
  O índice e as notas de rodapé non están visíbeis nun princípio.
  As notas de rodapé, como esta
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Standard
 Esta é unha nota de rodapé
@@ -860,9 +831,8 @@ Esta é unha nota de rodapé
 \end_inset
 
 , poden-se ler clicando sobre elas co botón esquerdo do rato.
- Canto a táboa de contidos pode ben clicar na caixa cincenta que ha no início
- do documento e que di xustamente táboa de contidos, ou clicando no menu
- Navegar.
+ Canto o índice pode ben clicar na caixa cincenta que ha no início do documento
+ e que di xustamente índice xeral, ou clicando no menu Navegar.
  (Probe!)
 \end_layout
 
@@ -871,18 +841,18 @@ No manual impreso as referéncias cruzadas mostran os números correspondentes
  ao capítulo, sección, subsección etc., referenciados.
  Lendo directamente no LyX porén, as referéncias aparecen nunha caixa cincenta
  como esta: 
-\begin_inset LatexCommand \ref{chp:Contrib}
+\begin_inset LatexCommand \ref{sec:Contrib}
 
 \end_inset
 
 .
  (Na versión impresa non se verá a caixa, tan só un número.) Ao clicar nesa
  caixa co botón esquerdo do rato abre-se un diálogo que contén todas as
- referéncias que ha no documento, neste caso só ha unha referéncia 
+ referéncias que ha no documento, por exemplo 
 \begin_inset Quotes eld
 \end_inset
 
-chp:Contrib
+sec:Contrib
 \begin_inset Quotes erd
 \end_inset
 
@@ -944,8 +914,7 @@ usa-se para dar énfase en xeral, argumentos xenéricos, títulos de libros,
 Fonte\InsetSpace ~
 Fixa
 \family default
- usa-se para programas e nomes de ficheiros, código LaTeX, e códigos e funcións
- LyX;
+ usa-se para programas e nomes de ficheiros, e códigos e funcións LyX;
 \end_layout
 
 \begin_layout Itemize
@@ -963,6 +932,14 @@ Serif
 Versalete
 \noun default
  usa-se para nomes próprios.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Negrito
+\series default
+ usa-se para código LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -1316,7 +1293,532 @@ Reference.lyx
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
+Unidades
+\end_layout
+
+\begin_layout Standard
+Na táboa\InsetSpace ~
+
+\begin_inset LatexCommand \ref{cap:Units-for-image}
+
+\end_inset
+
+ descreben-se as distintas unidades empregues em LyX.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Caption
+\begin_inset LatexCommand \label{cap:Units-for-image}
+
+\end_inset
+
+Unidades
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+unidade
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+nome/descrición
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+milimetro
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+centímetro
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+polegada (1 in = 2'524 cm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ponto (72.27
+\begin_inset Formula $\,$
+\end_inset
+
+pt = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pica (1
+\begin_inset Formula $\,$
+\end_inset
+
+pc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ponto escalado (65536
+\begin_inset Formula $\,$
+\end_inset
+
+sp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ponto grande (72
+\begin_inset Formula $\,$
+\end_inset
+
+bp = 1
+\begin_inset Formula $\,$
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+didot (72
+\begin_inset Formula $\,$
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset Formula $\,$
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cicero (1
+\begin_inset Formula $\,$
+\end_inset
+
+cc = 12
+\begin_inset Formula $\,$
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da largura original da imaxe
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da largura do texto
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da largura da coluna
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da largura do papel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da largura da liña
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da altura do texto
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+% da latura do papel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+altura da letra 
+\emph on
+x
+\emph default
+ na fonte en uso
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+largura da letra 
+\emph on
+M
+\emph default
+ da fonte en uso
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+unidade matemática (1
+\begin_inset Formula $\,$
+\end_inset
+
+mu = 1/18
+\begin_inset Formula $\,$
+\end_inset
+
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Os manuais
 \end_layout
 
@@ -1357,7 +1859,7 @@ Se esta a iniciar-se no LyX, e non coñece LaTeX, debe ler antes que nada
  este tutorial.
  Se pensa que LaTeX é o material co que se elaboran os preservativos, entón
  cumpre-lle reler o capítulo 
-\begin_inset LatexCommand \ref{cha:A-filosofia-do-LyX}
+\begin_inset LatexCommand \ref{sec:A-filosofia-do-LyX}
 
 \end_inset
 
@@ -1626,8 +2128,8 @@ Senón pode frustrar-se inecesariamente.
  próprio de o facer.
 \end_layout
 
-\begin_layout Subsection
-\begin_inset LatexCommand \label{sub:manuais-traducidos}
+\begin_layout Subsubsection
+\begin_inset LatexCommand \label{subsub:manuais-traducidos}
 
 \end_inset
 
@@ -1790,15 +2292,15 @@ KDE_LANG=fr_FR
 )
 \end_layout
 
-\begin_layout Chapter
-\begin_inset LatexCommand \label{chp:Contrib}
+\begin_layout Section
+\begin_inset LatexCommand \label{sec:Contrib}
 
 \end_inset
 
 Axudando ao proxecto LyX
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 O programa
 \end_layout
 
@@ -1807,7 +2309,7 @@ O LyX é un programa bastante grande, escrito maiormente en C++, que non
  está libre de erros, sendo sempre ben-vidas as melloras no código fonte.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Informando de erros de código
 \end_layout
 
@@ -1981,7 +2483,7 @@ up
  que contén os desenvolvedores.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Mellorando o código
 \end_layout
 
@@ -1994,7 +2496,7 @@ Se fixo algunha mudanza do código fonte que pensa pudera tornar-se parte
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 A documentación
 \end_layout
 
@@ -2007,7 +2509,7 @@ Se ben é certo que a documentación de LyX é extensa, tamén o é que o programa
  suxestións para mellorar a documentación.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Erros nos manuais
 \end_layout
 
@@ -2022,7 +2524,7 @@ lyx-docs@lists.lyx.org
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Xuntar-se á equipa de documentación.
 \end_layout
 
@@ -2124,7 +2626,7 @@ As mudanzas que pode suxerir poden ir desde esclarecer alguns treitos do
  Calquer mellora é ben recebida.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 A tradución
 \end_layout
 
