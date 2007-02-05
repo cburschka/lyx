@@ -31,6 +31,8 @@ public:
 	InsetBase::Code lyxCode() const { return InsetBase::OPTARG_CODE; }
 	/// return an message upon editing
 	virtual docstring const editMessage() const;
+	///
+	virtual bool wide() const { return false; }
 
 	/// Standard LaTeX output -- short-circuited
 	int latex(Buffer const &, odocstream &,
