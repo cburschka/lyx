@@ -40,6 +40,7 @@
 #include "insets/insetbibitem.h"
 #include "insets/insetcaption.h"
 #include "insets/insetinclude.h"
+#include "insets/insettabular.h"
 
 #include "support/filetools.h"
 #include "support/fs_extras.h"
@@ -400,19 +401,23 @@ void setCaptions(Paragraph & par, LyXTextClass const & textclass)
 	InsetList::iterator end = par.insetlist.end();
 	for (; it != end; ++it) {
 		InsetBase & inset = *it->inset;
-		if (inset.lyxCode() != InsetBase::FLOAT_CODE 
-			&& inset.lyxCode() != InsetBase::WRAP_CODE)
-			continue;
+		if (inset.lyxCode() == InsetBase::FLOAT_CODE 
+			|| inset.lyxCode() == InsetBase::WRAP_CODE) {
+			docstring const & name = inset.getInsetName();
+			if (name.empty())
+				continue;
 
-		docstring const & name = inset.getInsetName();
-		if (name.empty())
-			continue;
-
-		Floating const & fl = textclass.floats().getType(to_ascii(name));
-		// FIXME UNICODE
-		string const & type = fl.type();
-		docstring const label = from_utf8(fl.name());
-		setCaptionLabels(inset, type, label, counters);
+			Floating const & fl = textclass.floats().getType(to_ascii(name));
+			// FIXME UNICODE
+			string const & type = fl.type();
+			docstring const label = from_utf8(fl.name());
+			setCaptionLabels(inset, type, label, counters);
+		}
+		else if (inset.lyxCode() == InsetBase::TABULAR_CODE
+			&&  static_cast<InsetTabular &>(inset).tabular.isLongTabular()) {
+			// FIXME: are "table" and "Table" the correct type and label?
+			setCaptionLabels(inset, "table", from_ascii("Table"), counters);
+		}
 	}
 }
 
