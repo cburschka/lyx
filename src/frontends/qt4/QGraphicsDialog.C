@@ -53,13 +53,17 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT( change_adaptor() ) );
 	connect(subcaption, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
+
+	// FIXME: we should connect to clicked() when we move to Qt 4.2	because
+	// the toggled(bool) signal is also trigged when we update the widgets
 	connect(subfigure, SIGNAL( toggled(bool) ),
 		this, SLOT( change_adaptor() ) );
+	connect(displayGB, SIGNAL( toggled(bool) ),
+		this, SLOT( change_adaptor() ) );
+
 	connect(latexoptions, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
 	connect(clip, SIGNAL( stateChanged(int) ),
-		this, SLOT( change_adaptor() ) );
-	connect(displayGB, SIGNAL( toggled(bool) ),
 		this, SLOT( change_adaptor() ) );
 	connect(showCB, SIGNAL( currentIndexChanged(int) ),
 		this, SLOT( change_adaptor() ) );
