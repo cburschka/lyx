@@ -57,6 +57,8 @@ public:
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::FLOAT_CODE; }
 	///
+	virtual bool wide() const { return false; }
+	///
 	int latex(Buffer const &, odocstream &,
 		  OutputParams const &) const;
 	///
