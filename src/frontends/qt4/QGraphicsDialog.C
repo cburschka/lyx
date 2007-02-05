@@ -53,13 +53,13 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT( change_adaptor() ) );
 	connect(subcaption, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
-	connect(subfigure, SIGNAL( toggled(bool on) ),
+	connect(subfigure, SIGNAL( toggled(bool) ),
 		this, SLOT( change_adaptor() ) );
 	connect(latexoptions, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
 	connect(clip, SIGNAL( stateChanged(int) ),
 		this, SLOT( change_adaptor() ) );
-	connect(displayGB, SIGNAL( toggled(bool on) ),
+	connect(displayGB, SIGNAL( toggled(bool) ),
 		this, SLOT( change_adaptor() ) );
 	connect(showCB, SIGNAL( currentIndexChanged(int) ),
 		this, SLOT( change_adaptor() ) );
