@@ -1,4 +1,4 @@
-# translation of gl-1.4.4.po to Galician
+# translation of gl.po to Galician
 # José Ramom Flores d'as Seixas <fa2ramon@usc.es>, 2006,2007.
 # Ramon Flores <fa2ramon@usc.es>, 2007.
 # translation of gl.po to
@@ -7,10 +7,10 @@
 # This file is distributed under the same license as the PACKAGE package.
 msgid ""
 msgstr ""
-"Project-Id-Version: gl-1.4.4\n"
+"Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-31 17:00+0100\n"
-"PO-Revision-Date: 2007-02-02 16:52+0100\n"
+"PO-Revision-Date: 2007-02-05 17:02+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3739,8 +3739,7 @@ msgstr "Comando &roff:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported plain text/LaTeX/SGML files"
-msgstr ""
-"Longura de liña máx. dos ficheiros exportados de texto simples/LaTeX/SGML"
+msgstr "Longura de liña máx. dos ficheiros exportados de texto simples/LaTeX/SGML"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -4747,8 +4746,7 @@ msgid "&View"
 msgstr "&Ver"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra o contido do ficheiro marcado. Só funciona cando se mostra a rota dos "
 "ficheiros"
@@ -9764,7 +9762,7 @@ msgstr "Funcións avanzadas|F"
 
 #: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:451
 msgid "Embedded Objects|m"
-msgstr ""
+msgstr "Obxectos inseridos|O"
 
 #: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:452
 msgid "Customization|C"
@@ -10851,8 +10849,7 @@ msgstr "Clase de documento descoñecida"
 #: src/buffer.C:390
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr ""
-"Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
+msgstr "Usando a clase de documento predefinida, xa que a clase %1$s é descoñecida."
 
 #: src/buffer.C:443 src/text.C:355
 #, c-format
@@ -10898,12 +10895,12 @@ msgid "Conversion failed"
 msgstr "Fallou a conversión"
 
 #: src/buffer.C:627
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"%1$s é dunha versión anterior de LyX, porén non se pudo criar un ficheiro "
+"%1$s é dunha versión diferente de LyX, porén non se pudo criar un ficheiro "
 "temporário para o converter."
 
 #: src/buffer.C:636
@@ -10911,12 +10908,12 @@ msgid "Conversion script not found"
 msgstr "Non se achou script de conversión"
 
 #: src/buffer.C:637
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
-"%1$s é dunha versión anterior de LyX, porén non se pudo achar o script de "
+"%1$s é dunha versión diferente de LyX, porén non se pudo achar o script de "
 "conversión lyx2lyx."
 
 #: src/buffer.C:657
@@ -10924,12 +10921,12 @@ msgid "Conversion script failed"
 msgstr "Fallou o script de conversión"
 
 #: src/buffer.C:658
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s é dunha versión anterior de LyX, porén o script lyx2lyx fallou ao "
+"%1$s é dunha versión diferente de LyX, porén o script lyx2lyx fallou ao "
 "converte-lo."
 
 #: src/buffer.C:673
@@ -12921,10 +12918,8 @@ msgstr ""
 "(\"Van Gogh\", non \"van Gogh\"). Útil ao início das frases. (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:218
-msgid ""
-"Optional text which appears before the citation, e.g. \"see <Citation>\""
-msgstr ""
-"Texto opcional que aparece antes da citación, ex. \"vexa-se <citación>\""
+msgid "Optional text which appears before the citation, e.g. \"see <Citation>\""
+msgstr "Texto opcional que aparece antes da citación, ex. \"vexa-se <citación>\""
 
 #: src/frontends/xforms/FormCitation.C:221
 msgid "Optional text which appears after the citation, e.g. \"pp. 12\""
@@ -13361,8 +13356,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Obxectos de LyX aos que pode ser asignado unha cor."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr "Trocar a cor do objeto de LyX. Nota: debe entón \"Aplicar\" o troco."
 
 #: src/frontends/xforms/FormPreferences.C:580
@@ -13545,8 +13539,7 @@ msgstr "Desactivado|Sen fórmulas|Activado"
 
 #: src/frontends/xforms/FormPreferences.C:2114
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predefinido | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
+msgstr " predefinido | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2370
 msgid "Default path"
@@ -13709,10 +13702,8 @@ msgid "Search backwards."
 msgstr "Procurar recuando."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid ""
-"Export the buffer to this format before running the command below on it."
-msgstr ""
-"Exportar o búfer a este formato antes de executar o comando que o segue."
+msgid "Export the buffer to this format before running the command below on it."
+msgstr "Exportar o búfer a este formato antes de executar o comando que o segue."
 
 #: src/frontends/xforms/FormSendto.C:59
 msgid ""
@@ -13724,8 +13715,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:61
 msgid "Type replacement for unknown word or select from suggestions."
-msgstr ""
-"Introducir substituta para palabra descoñecida ou seleccionar de suxestións."
+msgstr "Introducir substituta para palabra descoñecida ou seleccionar de suxestións."
 
 #: src/frontends/xforms/FormSpellchecker.C:64
 msgid "List of replacement suggestions from dictionary."
@@ -13798,8 +13788,7 @@ msgstr "Mostrar rota completa ou só nome de ficheiro."
 
 #: src/frontends/xforms/FormTexinfo.C:60
 msgid "Runs the script \"TexFiles.py\" to rebuild the file lists."
-msgstr ""
-"Executa o script \"TexFiles.py\" para reconstruir as listas de ficheiros."
+msgstr "Executa o script \"TexFiles.py\" para reconstruir as listas de ficheiros."
 
 #: src/frontends/xforms/FormTexinfo.C:63
 msgid "Double click to view contents of file."
@@ -13963,13 +13952,12 @@ msgstr ""
 "BibTeX non vai poder achá-las."
 
 #: src/insets/insetbibtex.C:245
-#, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Ha espazos nas rotas a seus bancos de dados BibTeX.\n"
-"BibTeX non vai poder achá-las."
+"Ha espazos nas rotas ao seu ficheiro de estilo de BibTeX.\n"
+"BibTeX non vai poder achá-lo."
 
 #: src/insets/insetbox.C:57
 msgid "Boxed"
@@ -14662,8 +14650,7 @@ msgstr "Falta comando despois da opción --execute"
 
 #: src/lyx_main.C:930
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
+msgstr "Falta tipo de ficheiro [p. ej. latex, ps...] despois da opción --export"
 
 #: src/lyx_main.C:942
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -14954,8 +14941,7 @@ msgstr ""
 "predefinidos despois dun troco de clase."
 
 #: src/lyxrc.C:2119
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalo temporário entre autogravados (en segundos). 0 significa sen "
 "autogravado."
@@ -15074,8 +15060,7 @@ msgstr ""
 
 #: src/lyxrc.C:2212
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Número máximo de palabras na cadea de inicialización de unha nova etiqueta"
+msgstr "Número máximo de palabras na cadea de inicialización de unha nova etiqueta"
 
 #: src/lyxrc.C:2216
 msgid ""
@@ -15086,8 +15071,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2220
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar se for preciso un comando de troco de língua ao final do "
 "documento."
@@ -15136,8 +15120,7 @@ msgstr ""
 
 #: src/lyxrc.C:2248
 msgid "The file where the last-files information should be stored."
-msgstr ""
-"Ficheiro onde se deberia armacenar a información de ficheiros recentes."
+msgstr "Ficheiro onde se deberia armacenar a información de ficheiros recentes."
 
 #: src/lyxrc.C:2252
 msgid "De-select if you don't want LyX to create backup files."
@@ -15167,8 +15150,7 @@ msgstr ""
 "entorno PATH. Use o formato nativo do SO."
 
 #: src/lyxrc.C:2271
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Especificar dicionário personal alternativo. Ex. \".ispell_english\"."
 
 #: src/lyxrc.C:2275
@@ -15227,8 +15209,7 @@ msgstr ""
 
 #: src/lyxrc.C:2319
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
-"Extensión do ficheiro de saída do programa de impresión. Normalmente \".ps\"."
+msgstr "Extensión do ficheiro de saída do programa de impresión. Normalmente \".ps\"."
 
 #: src/lyxrc.C:2323
 msgid "The option to print out in landscape."
@@ -15276,8 +15257,7 @@ msgstr ""
 
 #: src/lyxrc.C:2355
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"Opción para pasar ao programa de impresión para que imprima nun ficheiro."
+msgstr "Opción para pasar ao programa de impresión para que imprima nun ficheiro."
 
 #: src/lyxrc.C:2359
 msgid "Option to pass to the print program to print on a specific printer."
@@ -15298,10 +15278,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Programa favorito de impresión, ex. \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2371
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Seleccionar para permitir escritas de direita-a-esquerda (ex. hebreu, árabe)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Seleccionar para permitir escritas de direita-a-esquerda (ex. hebreu, árabe)."
 
 #: src/lyxrc.C:2375
 msgid ""
@@ -15332,8 +15310,7 @@ msgstr ""
 
 #: src/lyxrc.C:2398
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Tamaños de fontes usados para calcular a escala das fontes de pantalla."
+msgstr "Tamaños de fontes usados para calcular a escala das fontes de pantalla."
 
 #: src/lyxrc.C:2403
 #, no-c-format
@@ -15550,8 +15527,7 @@ msgstr "Todos os ficheiros (*)"
 
 #: src/support/package.C.in:439
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Non foi posíbel determinar a rota ao binario LyX desde a liña de comandos %1"
 "$s"
@@ -15646,8 +15622,7 @@ msgstr ""
 
 #: src/text.C:1199
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non é posíbel inserir dous espazos deste xeito. Recomenda-se ler o Tutorial."
+msgstr "Non é posíbel inserir dous espazos deste xeito. Recomenda-se ler o Tutorial."
 
 #: src/text.C:2355
 msgid "Change: "
@@ -15755,5 +15730,3 @@ msgstr "Recheo vertical"
 msgid "protected"
 msgstr "protexido"
 
-#~ msgid "Insets|n"
-#~ msgstr "Insertos|I"
