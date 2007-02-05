@@ -207,6 +207,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
+\author "" 
 \author "usti" 
 \end_header
 
@@ -4596,34 +4597,37 @@ name "Longtables ! Captions"
 
 \begin_layout Standard
 A longtable cannot be put into a table float because floats can only be
- on one page.
- Therefore the caption layout cannot be used for longtables.
+ on one page but the caption environment of floats can also be used for
+ longtables.
 \end_layout
 
 \begin_layout Standard
-To add a caption, a dirty hack is needed:
+As LyX does not yet fully support captions in longtables, a hack is needed
+ to create them:
 \end_layout
 
 \begin_layout Enumerate
 Create a longtable
+\family sans
+.
 \end_layout
 
 \begin_layout Enumerate
-Mark the first row an disable its upper line
+Mark the first row an disable its upper line.
 \end_layout
 
 \begin_layout Enumerate
-Insert the following command as ERT into the first table cell:
-\newline
-
+Insert a caption via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Caption
+\family default
 \series bold
-
-\backslash
-caption[short title]{full title}
-\backslash
-
-\backslash
-%
+ 
+\series default
+into the first table cell.
+\newline
+You can also add a short title for the caption.
 \end_layout
 
 \begin_layout Enumerate
@@ -4633,29 +4637,31 @@ Insert a
 
 
 \series bold
+
+\backslash
+
+\backslash
 %
 \series default
 
 \begin_inset Quotes erd
 \end_inset
 
- as ERT into every cell of the first row
+ as ERT behind the caption.
 \end_layout
 
 \begin_layout Standard
-The 
+A short title that will appear in the LOT instead of the full title.
+ The 
 \series bold
 
 \backslash
-caption
-\series default
- command is used like for normal captions, the short title that will appear
- in the LOT instead of the full title is optional.
- The 
-\series bold
+
+\backslash
 %
 \series default
- in the table cells omits the vertical line between the the cells.
+ behind the caption omits the vertical lines between the following cells
+ in the row.
  The first table row is now only a dummy row for the caption, the actual
  table starts with the second row.
 \end_layout
@@ -4678,14 +4684,31 @@ Here is a short longtable to see how it works:
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Longtable with caption
+\begin_inset OptArg
+status open
+
+\begin_layout Standard
+Longtable
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
 
-\backslash
-caption[Longtable]{Longtable with caption}
 \backslash
 
 \backslash
@@ -4703,16 +4726,6 @@ caption[Longtable]{Longtable with caption}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4722,16 +4735,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4741,16 +4744,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4760,16 +4753,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5107,31 +5090,27 @@ name "Longtables ! References"
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Caption
 
 \begin_layout Standard
-
-
-\backslash
-caption{Referenced longtable
-\end_layout
-
-\end_inset
-
-
+Referenced longtable
 \begin_inset LatexCommand label
 name "tab:RefExample"
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
 \backslash
 
 \backslash
@@ -5149,16 +5128,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5168,16 +5137,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5187,16 +5146,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5206,16 +5155,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5465,27 +5404,7 @@ asd
 \end_layout
 
 \begin_layout Standard
-To reference a longtable, insert a label into the 
-\series bold
-
-\backslash
-caption
-\series default
- command.
- This is done by splitting the ERT of the caption command.
- The part of the caption command before the last closing brace
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-caption[short title]{full title
-\end_layout
-
-\begin_layout Standard
-is in the first ERT box, the label is inserted behind it.
+To reference a longtable, insert a label into the caption.
  Note that you have to add the label prefix 
 \begin_inset Quotes eld
 \end_inset
@@ -5499,23 +5418,10 @@ tab:
 \end_inset
 
  manually in the label field.
- The second ERT box contains the rest of the 
-\backslash
-caption command
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-}
-\backslash
-
-\backslash
-%
-\end_layout
-
-\begin_layout Standard
-and is inserted behind the label box, see Table\InsetSpace ~
+This is a reference to Table\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:RefExample"
@@ -5565,7 +5471,7 @@ The maximal width of of caption lines is defined by the length
 LTcapwidth
 \series default
 .
- It default value is 4\InsetSpace \thinspace{}
+ Its default value is 4\InsetSpace \thinspace{}
 in.
  To change it add the following command to your document preamble or as
  ERT into your document before the longtable that should be affected
@@ -5610,19 +5516,32 @@ The following tables show the difference:
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+long full title with default width long full title with default width long
+ full title with default width
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+caption with default width
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
 
-\backslash
-caption[caption with default width]{long full title with default width
-\end_layout
-
-\begin_layout Standard
-
-long full title with default width long full title with default width}
 \backslash
 
 \backslash
@@ -5640,16 +5559,6 @@ long full title with default width long full title with default width}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5659,16 +5568,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5678,16 +5577,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5697,16 +5586,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5984,31 +5863,38 @@ LTcapwidth}{5cm}
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+long full title with width set to 5\InsetSpace \thinspace{}
+cm long full title with width set to
+ 5\InsetSpace \thinspace{}
+cm long full title with width set to 5\InsetSpace \thinspace{}
+cm
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+caption with width\InsetSpace \thinspace{}
+=\InsetSpace \thinspace{}
+5\InsetSpace \thinspace{}
+cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
 
-\backslash
-caption[caption with width
-\backslash
-,=
-\backslash
-,5
-\backslash
-,cm]{long full title with width set to 5
-\backslash
-,cm
-\end_layout
-
-\begin_layout Standard
-
-long full title with width set to 5
-\backslash
-,cm long full title with width set to 5
-\backslash
-,cm}
 \backslash
 
 \backslash
@@ -6026,16 +5912,6 @@ long full title with width set to 5
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6045,16 +5921,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6064,16 +5930,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6083,16 +5939,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6372,35 +6218,23 @@ name "Longtables ! Different Captions for Pages"
 
 \begin_layout Standard
 When the other captions should differ from the one of the first table page,
- insert the 
+ insert a caption with a non-empty short title in a dummy caption row marked
+ as first header.
+ The caption used for the other table pages is inserted as caption without
+ a short title in a dummy caption row that is marked as main header.
+ When this caption shouldn't include the table number, use the command
+\end_layout
+
+\begin_layout Standard
+
 \series bold
 
 \backslash
-caption
-\series default
- command with a non-empty short title in a dummy caption row marked as first
- header.
- The caption used for the other table pages is inserted as 
-\series bold
+caption*{caption text}
+\end_layout
 
-\backslash
-caption
-\series default
- command without a short title in a dummy caption row that is marked as
- main header.
- When this caption shouldn't include the table number, use the command 
-\series bold
-
-\backslash
-caption*
-\series default
- instead of 
-\series bold
-
-\backslash
-caption
-\series default
-.
+\begin_layout Standard
+instead of LyX's caption box.
  The label to reference the table is inserted into the caption of the first
  header.
  Table\InsetSpace ~
@@ -6427,31 +6261,37 @@ reference "tab:DiffCaptions"
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Caption
 
 \begin_layout Standard
-
-
-\backslash
-caption[Example Phone List]{Example Phone List 
-\end_layout
-
-\end_inset
-
-
+Example Phone List
 \begin_inset LatexCommand label
 name "tab:DiffCaptions"
 
 \end_inset
 
 
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Example Phone List
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
 \backslash
 
 \backslash
@@ -6469,16 +6309,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6488,16 +6318,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6598,16 +6418,6 @@ caption*{Continued Example Phone List}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6617,16 +6427,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8622,32 +8422,37 @@ must be inserted as ERT at the beginning of the cell.
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Caption
 
 \begin_layout Standard
-
-
-\backslash
-caption[Table with forced page break in table cell]{Table with forced page
- break in table cell 
-\end_layout
-
-\end_inset
-
-
+Table with forced page break in table cell
 \begin_inset LatexCommand label
 name "tab:ForcedPagebreak"
 
 \end_inset
 
 
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Table with forced page break in table cell
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
 \backslash
 
 \backslash
@@ -8665,16 +8470,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8684,16 +8479,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8776,7 +8561,7 @@ status collapsed
 
 
 \backslash
-caption{Continued table with forced page break in table cell}
+caption*{Continued table with forced page break in table cell}
 \backslash
 
 \backslash
@@ -8794,16 +8579,6 @@ caption{Continued table with forced page break in table cell}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8813,16 +8588,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 

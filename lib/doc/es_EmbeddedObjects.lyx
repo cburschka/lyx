@@ -207,6 +207,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
+\author "" 
+\author "muso" 
 \author "usti" 
 \end_header
 
@@ -4382,60 +4384,92 @@ name "Tablas Largas ! Encabezados"
 \end_layout
 
 \begin_layout Standard
-Una tabla larga no se puede poner flotante porque los flotantes solo pueden
- estar en una página.
- Por esto no se puede emplear el formato de encabezado en las tablas largas.
+
+\lang english
+A longtable cannot be put into a table float because floats can only be
+ on one page but the caption environment of floats can also be used for
+ longtables.
 \end_layout
 
 \begin_layout Standard
-Para añadir un encabezado se necesita un sucio truco:
+
+\lang english
+As LyX does not yet fully support captions in longtables, a hack is needed
+ to create them:
 \end_layout
 
 \begin_layout Enumerate
-Crear una tabla larga
+
+\lang english
+Create a longtable
+\family sans
+.
 \end_layout
 
 \begin_layout Enumerate
-Marcar la primera fila y deshabilitar su línea superior
+
+\lang english
+Mark the first row an disable its upper line.
 \end_layout
 
 \begin_layout Enumerate
-Insertar el siguiente comando como ERT en la primera celda:
+
+\lang english
+Insert a caption via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Caption
+\family default
+\series bold
+ 
+\series default
+into the first table cell.
 \newline
-
-\series bold
-
-\backslash
-caption[título corto]{título completo}
-\backslash
-
-\backslash
-%
+You can also add a short title for the caption.
 \end_layout
 
 \begin_layout Enumerate
-Insertar un "
-\series bold
-%
-\series default
-" como ERT en cada celda de la primera fila
-\end_layout
 
-\begin_layout Standard
-El comando 
+\lang english
+Insert a 
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
 
 \backslash
-caption
-\series default
- se usa como para los encabezados normales, el título corto que aparecerá
- en la Lista de Tablas en vez del título completo es opcional.
- El 
-\series bold
+
+\backslash
 %
 \series default
- en las celdas omite la línea vertical entre ellas.
- Ahora, la primera fila de la tabla es sólo una fila postiza para el encabezado,
+
+\begin_inset Quotes erd
+\end_inset
+
+ as ERT behind the caption.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A short title that will appear in the LOT instead of the full title.
+ The 
+\series bold
+
+\backslash
+
+\backslash
+%
+\series default
+ behind the caption omits the vertical lines between the following cells
+ in the row.
+
+\family sans
+ 
+\family default
+\lang spanish
+Ahora, la primera fila de la tabla es sólo una fila postiza para el encabezado,
  la tabla real comienza en la segunda fila.
 \end_layout
 
@@ -4457,14 +4491,31 @@ He aquí una pequeña tabla larga para mostrar cómo funciona:
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Tabla larga con encabezado
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Tabla larga con encabezado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
 
-\backslash
-caption[Tabla larga]{Tabla larga con encabezado}
 \backslash
 
 \backslash
@@ -4482,16 +4533,6 @@ caption[Tabla larga]{Tabla larga con encabezado}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4501,16 +4542,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4520,16 +4551,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4539,16 +4560,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4882,31 +4893,27 @@ name "Tablas Largas ! Referencias a"
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Caption
 
 \begin_layout Standard
-
-
-\backslash
-caption{Tabla larga referenciada
-\end_layout
-
-\end_inset
-
-
+Tabla larga referenciada
 \begin_inset LatexCommand label
 name "tab:RefEjemplo"
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
 \backslash
 
 \backslash
@@ -4924,16 +4931,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4943,16 +4940,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4962,16 +4949,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -4981,16 +4958,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5240,58 +5207,25 @@ asd
 \end_layout
 
 \begin_layout Standard
-Para hacer referencia a una tabla larga, inserta una etiqueta en el comando
+
+\lang english
+To reference a longtable, insert a label into the caption.
  
-\series bold
-
-\backslash
-caption
-\series default
-.
- Esto se hace dividiendo el ERT del comando 
-\series bold
-
-\backslash
-caption
-\series default
-.
- La parte del comando antes de la última llave "
-\series bold
-}
-\series default
-"
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-caption[título corto]{título completo
-\end_layout
-
-\begin_layout Standard
-está en el primer cuadro ERT, la etiqueta se inserta tras ella.
- Observa que tienes que añadir el prefijo "
+\lang spanish
+Observa que tienes que añadir el prefijo "
 \emph on
 tab
 \emph default
 :" manualmente en el campo de etiqueta.
- El segundo cuadro ERT contiene el resto del comando
+ 
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-}
-\backslash
-
-\backslash
-%
-\end_layout
-
-\begin_layout Standard
-y se inserta detrás del cuadro de etiqueta, véase Tabla\InsetSpace ~
+\lang english
+This is a reference to
+\lang spanish
+ Tabla\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "tab:RefEjemplo"
@@ -5386,21 +5320,32 @@ Las tablas siguientes muestran la diferencia:
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Encabezado completo con ancho predeterminado encabezado completo con ancho
+ predeterminado encabezado completo con ancho predeterminado
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Encabezado con ancho predeterminado
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
 
-\backslash
-caption[Encabezado con ancho predeterminado]{Encabezado completo con ancho
- predeterminado
-\end_layout
-
-\begin_layout Standard
-
-encabezado completo con ancho predeterminado encabezado completo con ancho
- predeterminado}
 \backslash
 
 \backslash
@@ -5418,16 +5363,6 @@ encabezado completo con ancho predeterminado encabezado completo con ancho
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5437,16 +5372,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5456,16 +5381,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5475,16 +5390,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5762,31 +5667,38 @@ LTcapwidth}{5cm}
 \begin_inset Text
 
 \begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+Encabezado completo con ancho de  5\InsetSpace \thinspace{}
+cm encabezado completo con ancho de 5\InsetSpace \thinspace{}
+cm
+ encabezado completo con ancho de 5\InsetSpace \thinspace{}
+cm
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Encabezado con anchura\InsetSpace \thinspace{}
+=\InsetSpace \thinspace{}
+5\InsetSpace \thinspace{}
+cm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
 
-\backslash
-caption[Encabezado con anchura
-\backslash
-,=
-\backslash
-,5
-\backslash
-,cm]{Encabezado completo con ancho de  5
-\backslash
-,cm
-\end_layout
-
-\begin_layout Standard
-
-encabezado completo con ancho de 5
-\backslash
-,cm encabezado completo con ancho de 5
-\backslash
-,cm}
 \backslash
 
 \backslash
@@ -5804,16 +5716,6 @@ encabezado completo con ancho de 5
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5823,16 +5725,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5842,16 +5734,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5861,16 +5743,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6145,37 +6017,31 @@ name "Tablas Largas ! Encabezados Diferentes para cada Página"
 \end_layout
 
 \begin_layout Standard
-Si los otros encabezados debieran ser diferentes del de la primera página,
- inserta el comando 
+
+\lang english
+When the other captions should differ from the one of the first table page,
+ insert a caption with a non-empty short title in a dummy caption row marked
+ as first header.
+ The caption used for the other table pages is inserted as caption without
+ a short title in a dummy caption row that is marked as main header.
+ When this caption shouldn't include the table number, use the command
+\end_layout
+
+\begin_layout Standard
+
 \series bold
+\lang english
 
 \backslash
-caption 
-\series default
-con un título corto no vacío en una fila postiza de encabezado marcado como
- primer encabezado.
- El encabezado para las restantes páginas se inserta con el comando 
-\series bold
+caption*{caption text}
+\end_layout
 
-\backslash
-caption
-\series default
- sin título corto en una fila postiza de encabezado marcado como primer
- encabezado.
- Si este encabezado no ha de incluir el número de tabla, usa el comando
- 
-\series bold
+\begin_layout Standard
 
-\backslash
-caption*
-\series default
- en vez de 
-\series bold
+\lang english
+instead of LyX's caption box.
 
-\backslash
-caption
-\series default
-.
+\lang spanish
  La etiqueta para referenciar la tabla se inserta en el primer encabezado.
  La tabla\InsetSpace ~
 
@@ -6201,31 +6067,37 @@ reference "tab:DifEncabezados"
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Caption
 
 \begin_layout Standard
-
-
-\backslash
-caption[Ejemplo de lista telefónica]{Ejemplo de lista telefónica 
-\end_layout
-
-\end_inset
-
-
+Ejemplo de lista telefónica
 \begin_inset LatexCommand label
 name "tab:DifEncabezados"
 
 \end_inset
 
 
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Ejemplo de lista telefónica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
 \backslash
 
 \backslash
@@ -6243,16 +6115,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6262,16 +6124,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6372,16 +6224,6 @@ caption*{Continúa Ejemplo de lista telefónica}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -6391,16 +6233,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8357,32 +8189,37 @@ debe insertarse como ERT al principio de la celda.
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
+\begin_inset Caption
 
 \begin_layout Standard
-
-
-\backslash
-caption[Tabla con salto de página forzado en celda]{Tabla con salto de página
- forzado en celda 
-\end_layout
-
-\end_inset
-
-
+Tabla con salto de página forzado en celda
 \begin_inset LatexCommand label
 name "tab:Saltos de Página Forzados"
 
 \end_inset
 
 
+\begin_inset OptArg
+status collapsed
+
+\begin_layout Standard
+Tabla con salto de página forzado en celda
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Standard
 
-}
+
 \backslash
 
 \backslash
@@ -8400,16 +8237,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8419,16 +8246,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8511,7 +8328,7 @@ status collapsed
 
 
 \backslash
-caption{Continúa tabla con salto de página forzado en celda}
+caption*{Continúa tabla con salto de página forzado en celda}
 \backslash
 
 \backslash
@@ -8529,16 +8346,6 @@ caption{Continúa tabla con salto de página forzado en celda}
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -8548,16 +8355,6 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-%
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
