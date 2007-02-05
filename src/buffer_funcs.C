@@ -352,8 +352,8 @@ bool needEnumCounterReset(ParIterator const & it)
 }
 
 
-void setCaptionLabels(InsetBase & inset, Floating const & fl,
-		Counters & counters)
+void setCaptionLabels(InsetBase & inset, string const & type,
+		docstring const label, Counters & counters)
 {
 	LyXText * text = inset.getText(0);
 	if (!text)
@@ -363,10 +363,7 @@ void setCaptionLabels(InsetBase & inset, Floating const & fl,
 	if (pars.empty())
 		return;
 
-	string const & type = fl.type();
-	docstring const counter = from_ascii(fl.type());
-	// FIXME UNICODE
-	docstring const label = from_utf8(fl.name());
+	docstring const counter = from_ascii(type);
 
 	ParagraphList::iterator p = pars.begin();
 	for (; p != pars.end(); ++p) {
@@ -377,7 +374,7 @@ void setCaptionLabels(InsetBase & inset, Floating const & fl,
 		for (; it2 != end2; ++it2) {
 			InsetBase & icap = *it2->inset;
 			// Look deeper just in case.
-			setCaptionLabels(icap, fl, counters);
+			setCaptionLabels(icap, type, label, counters);
 			if (icap.lyxCode() == InsetBase::CAPTION_CODE) {
 				// We found a caption!
 				counters.step(counter); 
@@ -407,12 +404,15 @@ void setCaptions(Paragraph & par, LyXTextClass const & textclass)
 			&& inset.lyxCode() != InsetBase::WRAP_CODE)
 			continue;
 
-		docstring const & type = inset.getInsetName();
-		if (type.empty())
+		docstring const & name = inset.getInsetName();
+		if (name.empty())
 			continue;
 
-		Floating const & fl = textclass.floats().getType(to_ascii(type));
-		setCaptionLabels(inset, fl, counters);
+		Floating const & fl = textclass.floats().getType(to_ascii(name));
+		// FIXME UNICODE
+		string const & type = fl.type();
+		docstring const label = from_utf8(fl.name());
+		setCaptionLabels(inset, type, label, counters);
 	}
 }
 
