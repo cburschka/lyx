@@ -4536,8 +4536,8 @@ The
 \backslash
 caption
 \series default
- command is used like for normal captions, the short title that will appear
- in the LOT instead of the full title is optional.
+ command is used like for normal captions, the optional short title that
+ will appear in the LOT instead of the full title.
  The 
 \series bold
 %
@@ -5384,8 +5384,12 @@ tab:
 
  manually in the label field.
  The second ERT box contains the rest of the 
+\series bold
+
 \backslash
-caption command
+caption
+\series default
+ command:
 \end_layout
 
 \begin_layout Standard
@@ -5445,7 +5449,7 @@ The maximal width of of caption lines is defined by the length
 LTcapwidth
 \series default
 .
- It default value is 4\InsetSpace \thinspace{}
+ Its default value is 4\InsetSpace \thinspace{}
 in.
  To change it add the following command to your document preamble or as
  ERT into your document before the longtable that should be affected
@@ -8646,7 +8650,7 @@ status collapsed
 
 
 \backslash
-caption{Continued table with forced page break in table cell}
+caption*{Continued table with forced page break in table cell}
 \backslash
 
 \backslash
