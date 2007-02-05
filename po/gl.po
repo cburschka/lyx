@@ -1,21 +1,22 @@
+# translation of gl-1.4.4.po to Galician
+# José Ramom Flores d'as Seixas <fa2ramon@usc.es>, 2006,2007.
+# Ramon Flores <fa2ramon@usc.es>, 2007.
 # translation of gl.po to
 # Mensaxes en galego para LyX.
-# Copyright (C) 2006 LyX Team.
+# Copyright (C) 2007 LyX Team.
 # This file is distributed under the same license as the PACKAGE package.
-# Ramom Flores <fa2ramon at usc dot es>, 2006.
-# José Ramom Flores d'as Seixas <fa2ramon@usc.es>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: gl\n"
+"Project-Id-Version: gl-1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-31 17:00+0100\n"
-"PO-Revision-Date: 2006-10-17 20:37+0200\n"
-"Last-Translator: José Ramom Flores d'as Seixas <fa2ramon@usc.es>\n"
-"Language-Team:  <gl@li.org>\n"
+"PO-Revision-Date: 2007-02-02 16:52+0100\n"
+"Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
+"Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: src/frontends/xforms/forms/form_changes.fd:98
@@ -1433,7 +1434,7 @@ msgstr "Nome GUI:|#G"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1792
 msgid "Shortcut:|#S"
-msgstr "Acelerador:|#S"
+msgstr "Acelerador:|#A"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1810
 msgid "Extension:|#E"
@@ -1448,9 +1449,8 @@ msgid "Editor:|#i"
 msgstr "Editor:|#i"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1864
-#, fuzzy
 msgid "Vector graphics format:|#c"
-msgstr "Selecciona ficheiro de imaxes"
+msgstr "Formato gráfico vectorial:|#g"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1882
 #: src/frontends/xforms/forms/form_preferences.fd:2032
@@ -3104,9 +3104,8 @@ msgid "Match delimiter types"
 msgstr "Cadrar tipos de delimitadores"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:366
-#, fuzzy
 msgid "Choose delimiter size"
-msgstr "Delimitador esquerdo"
+msgstr "Escoller tamaño delimitadores"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:394
 msgid "&Insert"
@@ -3847,14 +3846,13 @@ msgid "Instant &Preview:"
 msgstr "Vista &preliminar imediata:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:70
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Selecciona ficheiro de imaxes"
+msgstr "Formato gráfico &vectorial"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:1343
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Di se esteformato pode conter un gráfico vectorial."
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:92
 msgid "&GUI name:"
@@ -4798,29 +4796,24 @@ msgid "Contents list"
 msgstr "Lista de contidos"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:171
-#, fuzzy
 msgid "U&pdate"
 msgstr "&Actualizar"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:182
-#, fuzzy
 msgid "&Up"
-msgstr "&Actualizar"
+msgstr "&Sube"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:193
-#, fuzzy
 msgid "&Down"
-msgstr "Cidade"
+msgstr "&Baixa"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:204
-#, fuzzy
 msgid "&In"
-msgstr "&Ignorar"
+msgstr "&Interior"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:215
-#, fuzzy
 msgid "&Out"
-msgstr "Exterior"
+msgstr "&Exterior"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
 msgid "&URL:"
@@ -6035,163 +6028,143 @@ msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
 msgid "BeginFrame"
-msgstr ""
+msgstr "InicioDiapositivo"
 
 #: lib/layouts/beamer.layout:115
 msgid "Frame   "
-msgstr ""
+msgstr "Diapositivo"
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
-msgstr ""
+msgstr "InicioDiapositivoPlano"
 
 #: lib/layouts/beamer.layout:156
 msgid "Frame (no head/foot/sidebars)  "
-msgstr ""
+msgstr "Diapositivo(sem cabezallo/pe/barraslaterais)"
 
 #: lib/layouts/beamer.layout:179
-#, fuzzy
 msgid "EndFrame"
-msgstr "Nome do remitente:"
+msgstr "FinDiapositivo"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
-msgstr ""
+msgstr "________________________________ "
 
 #: lib/layouts/beamer.layout:207
-#, fuzzy
 msgid "Pause"
-msgstr "Colar"
+msgstr "Pausa"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:280
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Sección \\arabic{section}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:321
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "@Subsection@.\\arabic{subsubsection}"
+msgstr "Subsección \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:334
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "\\arabic{chapter}.\\arabic{section}"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
-#, fuzzy
 msgid "AgainFrame"
-msgstr "marco de lexendas"
+msgstr "DenovoDiapositivo"
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
-msgstr ""
+msgstr "De novo diapositivo con etiqueta"
 
 #: lib/layouts/beamer.layout:386
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Bloco"
+msgstr "BlocoAlerta"
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
-msgstr ""
+msgstr "Bloco con texto de alerta"
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "block "
-msgstr "Bloco"
+msgstr "bloco"
 
 #: lib/layouts/beamer.layout:520
-#, fuzzy
 msgid "Corollary.  "
 msgstr "Corolário."
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
-msgstr "Colunas"
+msgstr "Coluna "
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
-msgstr ""
+msgstr "comezar coluna de largura:"
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
-msgstr "Colunas"
+msgstr "Colunas "
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "ColunasAliñCentro"
 
 #: lib/layouts/beamer.layout:600
 msgid "columns (center aligned) "
-msgstr ""
+msgstr "colunas(aliñamento centro)"
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "ColunasAliñSup"
 
 #: lib/layouts/beamer.layout:630
 msgid "columns (top aligned) "
-msgstr ""
+msgstr "colunas (aliñamento superior)"
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
 msgstr "Definición."
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
-msgstr "Definición"
+msgstr "Definicións"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Definición."
+msgstr "Definicións."
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
-msgstr "Exemplo."
+msgstr "Exemplo. "
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Exemplo"
+msgstr "Exemplos"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Exemplo."
+msgstr "Exemplos."
 
 #: lib/layouts/beamer.layout:702
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Exemplo"
+msgstr "BlocoExemplo"
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
-msgstr ""
+msgstr "bloco mostrando un exemplo"
 
 #: lib/layouts/beamer.layout:734
-#, fuzzy
 msgid "Fact.  "
-msgstr "Facto."
+msgstr "Facto. "
 
 #: lib/layouts/beamer.layout:737
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "Subtítulo"
+msgstr "DiapositivoSubtítulo"
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:214 lib/layouts/svjour.inc:212
@@ -6204,81 +6177,68 @@ msgid "LyX-Code"
 msgstr "Código-LyX"
 
 #: lib/layouts/beamer.layout:819
-#, fuzzy
 msgid "NoteItem"
-msgstr "Novo Ítem"
+msgstr "ÍtemNota"
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
-msgstr "nota"
+msgstr "nota:"
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "Activado"
+msgstr "Só"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
-msgstr ""
+msgstr "Só en transparéncias"
 
 #: lib/layouts/beamer.layout:866
-#, fuzzy
 msgid "Overprint"
-msgstr "Separata"
+msgstr "Sobreimprimir"
 
 #: lib/layouts/beamer.layout:876
-#, fuzzy
 msgid "overprint "
-msgstr "Preprint"
+msgstr "sobreimprimir"
 
 #: lib/layouts/beamer.layout:892
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Superposto"
+msgstr "AreaSuperposta"
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "overlayarea "
-msgstr "Superposto"
+msgstr "areasuperposta"
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
-msgstr "Parte"
+msgstr "Parte "
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
-msgstr "Demostración."
+msgstr "Demostración. "
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
-msgstr "Separación"
+msgstr "Separador"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1001
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Gráficos"
+msgstr "TítuloGráfico"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
 msgstr "Teorema."
 
 #: lib/layouts/beamer.layout:1055
-#, fuzzy
 msgid "Uncover"
-msgstr "&Recuperar"
+msgstr "Revela"
 
 #: lib/layouts/beamer.layout:1064
 msgid "uncovered on slides  "
-msgstr ""
+msgstr "Revelado nas transparéncias"
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
 #: src/frontends/xforms/FormTabular.C:135
@@ -7647,26 +7607,22 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "Conxetura @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/isprs.layout:38
-#, fuzzy
 msgid "ABSTRACT:"
-msgstr "RESUMO"
+msgstr "RESUMO:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "PALABRAS CHAVE:"
 
 #: lib/layouts/isprs.layout:135
-#, fuzzy
 msgid "Commission"
-msgstr "Condición"
+msgstr "Comisión"
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
 msgstr "Lexenda"
 
 #: lib/layouts/isprs.layout:248
-#, fuzzy
 msgid "ACKNOWLEDGEMENTS"
 msgstr "AGRADECIMENTOS"
 
@@ -7825,9 +7781,8 @@ msgid "Preprint"
 msgstr "Preprint"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Afiliación"
+msgstr "AfiliaciónAlt"
 
 #: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
 msgid "Thanks:"
@@ -10067,9 +10022,8 @@ msgid "Phonetic Symbols|y"
 msgstr "Símbolos fonéticos|S"
 
 #: lib/ui/stdmenus.inc:294
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Lista numerada"
+msgstr "Fórmula numerada|n"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Aligned Environment"
@@ -11348,7 +11302,7 @@ msgstr "Mensaxes de recadros/modelos externos"
 
 #: src/debug.C:66
 msgid "RowPainter profiling"
-msgstr ""
+msgstr "Perfilamento RowPainter"
 
 #: src/exporter.C:77
 #, c-format
@@ -11471,14 +11425,13 @@ msgid "amount of work other people have done for the LyX project."
 msgstr "cantidade de traballo que outra xente realizou no proxecto LyX."
 
 #: src/frontends/controllers/ControlAboutlyx.C:66
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 msgstr ""
 "Os direitos autorais sobre LyX son de\n"
 "Matthias Ettrich (1995) e da\n"
-"Equipa LyX (1995-2001)"
+"Equipa LyX (1995-2006)"
 
 #: src/frontends/controllers/ControlAboutlyx.C:72
 msgid ""
@@ -11493,7 +11446,6 @@ msgstr ""
 "calquer versión posterior."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -12275,32 +12227,28 @@ msgid "Next command"
 msgstr "Comando seguinte"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "big size"
-msgstr "Salto grande"
+msgstr "tamaño grande"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "Big size"
-msgstr "Salto grande"
+msgstr "Tamaño grande"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
 msgid "bigg size"
-msgstr ""
+msgstr "tamaño grande"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
-#, fuzzy
 msgid "Bigg size"
-msgstr "Salto grande"
+msgstr "Tamaño ggrande"
 
 #: src/frontends/qt2/QDelimiterDialog.C:94
 msgid "LyX: Delimiters"
 msgstr "LyX: Delimitadores"
 
 #: src/frontends/qt2/QDelimiterDialog.C:106
-#, fuzzy
 msgid "Variable size"
-msgstr "liña tabular"
+msgstr "Tamaño variábel"
 
 #: src/frontends/qt2/QDocument.C:78
 msgid "Author-year"
@@ -12693,7 +12641,7 @@ msgstr "Opcións avanzadas de colocación"
 
 #: src/frontends/qt2/floatplacement.C:38
 msgid "Use &default placement"
-msgstr "&Usar colocación &predefinida"
+msgstr "&Usar colocación predefinida"
 
 #: src/frontends/qt2/floatplacement.C:39
 msgid "&Top of page"
@@ -12709,11 +12657,11 @@ msgstr "&Páxina de flutuantes"
 
 #: src/frontends/qt2/floatplacement.C:42
 msgid "&Here if possible"
-msgstr "&Aqui, se for posíbel"
+msgstr "A&qui, se for posíbel"
 
 #: src/frontends/qt2/floatplacement.C:43
 msgid "Here definitely"
-msgstr "Aqui, con &certeza"
+msgstr "Aqui, con certeza"
 
 #: src/frontends/qt2/floatplacement.C:44
 msgid "&Ignore LaTeX rules"
@@ -13343,25 +13291,23 @@ msgstr "Carrega o ficheiro."
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "big"
-msgstr ""
+msgstr "grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
-#, fuzzy
 msgid "Big"
 msgstr "Grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "bigg"
-msgstr ""
+msgstr "ggrande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "Bigg"
-msgstr ""
+msgstr "GGrande"
 
 #: src/frontends/xforms/FormMathsDelim.C:85
-#, fuzzy
 msgid "Variable"
-msgstr "Táboa"
+msgstr "Variábel"
 
 #: src/frontends/xforms/FormMathsMatrix.C:72
 msgid "Top | Middle | Bottom"
@@ -15809,9 +15755,5 @@ msgstr "Recheo vertical"
 msgid "protected"
 msgstr "protexido"
 
-#, fuzzy
 #~ msgid "Insets|n"
-#~ msgstr "Inserir|I"
-
-#~ msgid "LyX function 'layout' needs an argument."
-#~ msgstr "A función 'layout' de LyX precisa un argumento."
+#~ msgstr "Insertos|I"
