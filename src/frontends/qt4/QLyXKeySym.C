@@ -206,8 +206,21 @@ char_type QLyXKeySym::getUCSEncoded() const
 	if (text_.isEmpty())
 		return 0;
 
-	BOOST_ASSERT(text_.size() == 1);
-	return qchar_to_ucs4(text_[0]);
+	// UTF16 has a maximum of two characters.
+	BOOST_ASSERT(text_.size() <= 2);
+
+	if (lyxerr.debugging() && text_.size() > 1) {
+		// We don't know yet how well support the full ucs4 range.
+		lyxerr[Debug::KEY] << "QLyXKeySym::getUCSEncoded()" << endl;
+		for (int i = 0; i < text_.size(); ++i) {
+			lyxerr[Debug::KEY] << "char " << i << ": "
+				<< text_[i].unicode() << endl;
+		}
+	}
+	
+	// Only one UCS4 character at the end.
+	docstring ucs4_text = qstring_to_ucs4(text_);
+	return ucs4_text[0];
 }
 
 
