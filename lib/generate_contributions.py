@@ -550,6 +550,14 @@ contributers = [
                  "30 March 2005",
                  u"Bug fixes"),
 
+     contributer(u"Ignacio García",
+                 "ignacio.garcia () tele2 ! es",
+                 "GPL",
+                 "Re: es_EmbeddedObjects",
+                 "m=117079592919653",
+                 "06 February 2007",
+                 u"Spanish translation of documentations"),
+
      contributer(u"Michael Gerz",
                  "michael.gerz () teststep ! org",
                  "GPL",
