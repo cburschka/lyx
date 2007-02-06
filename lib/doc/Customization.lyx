@@ -5948,7 +5948,7 @@ CommandAfter
 \family default
  means that the macro with name 
 \family typewriter
-TitleLaTeXCommand
+TitleLatexName
 \family default
  will be inserted after the last layout which has 
 \begin_inset Quotes eld
@@ -5981,7 +5981,7 @@ InTitle 1
 
  should be enclosed into the
 \family typewriter
- TitleLaTeXCommand 
+ TitleLatexName 
 \family default
 environment
 \family typewriter
@@ -5992,7 +5992,7 @@ environment
 
 \family typewriter
 \series medium
-TitleLatexCommand
+TitleLatexName
 \family default
 \series default
  [
@@ -6448,7 +6448,7 @@ If 1, marks the layout as being part of a title block (see also the
 \family default
  and 
 \family typewriter
-TitleLatexCommand
+TitleLatexName
 \family default
  global entries)
 \end_layout

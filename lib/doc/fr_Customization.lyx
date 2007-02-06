@@ -5531,7 +5531,7 @@ CommandAfter
 \family default
  signifie que la commande définie par 
 \family typewriter
-TitleLatexCommand
+TitleLatexName
 \family default
  sera insérée après le dernier environnement avec 
 \family typewriter
@@ -5552,7 +5552,7 @@ Environment
 \family default
  correspond au cas 
 \family typewriter
-TitleLatexCommand
+TitleLatexName
 \family default
  est un environnement, dans lequel doit être inclus le bloc de paragraphes
  avec 
@@ -5574,7 +5574,7 @@ InTitle 1
 
 \family typewriter
 \series medium
-TitleLatexCommand 
+TitleLatexName 
 \series default
 [string="maketitle"]
 \family default
@@ -6030,7 +6030,7 @@ TitleLatexType
 \family default
  et 
 \family typewriter
-TitleLatexCommand
+TitleLatexName
 \family default
  dans les paramètres généraux).
 \end_layout
