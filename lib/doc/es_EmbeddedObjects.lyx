@@ -130,7 +130,7 @@
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Contenidos}{}
  \myTOC
- \clearpage
+ \cleardoublepage
  \pagenumbering{arabic}}
 
 % insert additional vertical space of
@@ -207,9 +207,9 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
+\author "usti" 
 \author "" 
 \author "muso" 
-\author "usti" 
 \end_header
 
 \begin_body

@@ -48,7 +48,7 @@
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Contents}{}
  \myTOC
- \clearpage
+ \cleardoublepage
  \pagenumbering{arabic}}
 
 % provides caption formatting
@@ -207,8 +207,8 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
-\author "" 
 \author "usti" 
+\author "" 
 \end_header
 
 \begin_body
@@ -742,7 +742,7 @@ reference "fig:escher"
 
 \end_inset
 
- are an example of cross-referenced figures.
+ are examples of cross-referenced figures.
  Figures can be cross-referenced in the text by referencing their label.
  To do this insert a label in the caption using the menu 
 \family sans
