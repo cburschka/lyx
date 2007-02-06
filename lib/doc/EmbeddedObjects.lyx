@@ -8,7 +8,7 @@
 \usepackage{textcomp}
 
 % provides caption formatting
-\usepackage[labelfont={bf,sf}, tableposition=top]{caption}
+\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
 
 % provides commands to set caption
 % beside tables/images
@@ -135,7 +135,7 @@
 \renewcommand{\tableofcontents}{%
  \pdfbookmark[1]{Contents}{}
  \myTOC
- \clearpage
+ \cleardoublepage
  \pagenumbering{arabic}}
 
 % insert additional vertical space of
@@ -701,7 +701,7 @@ Figure\InsetSpace ~
 
 \end_inset
 
- are an example of cross-referenced figures.
+ are examples of cross-referenced figures.
  Figures can be cross-referenced in the text by referencing their label.
  To do this insert a label in the caption using the menu 
 \family sans
