@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+# -*- coding: utf-8 -*-
 #
 # file configure.py
 # This file is part of LyX, the document processor.
