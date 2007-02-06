@@ -8,7 +8,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-import sys, os, re, shutil, glob
+import sys, os, re, shutil, glob, commands
 
 
 class Tee:
@@ -405,6 +405,13 @@ def checkConverterEntries():
     #
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf        "epstopdf --outfile=$$o $$i"	""', ''])
+    #
+    path, convert = checkProg('a PDF -> PNG converter', ['convert'])
+    if convert != '':
+        # check whether convert supports the -define option
+        conv_opts = "-define pdf:use-cropbox=true -depth 8"
+        if not 'Unrecognized' in commands.getoutput('convert ' + conv_opts):
+            addToRC(r'\converter pdf        png        "convert %s pdf:$$i png:$$o"	""' % conv_opts)
     #
     checkProg('a Grace -> Image converter', ['gracebat'],
         rc_entry = [
