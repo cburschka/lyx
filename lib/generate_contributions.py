@@ -1143,7 +1143,7 @@ contributers = [
                  "Re: The LyX licence",
                  "m=111833345825278",
                  "9 June 2005",
-                 u"German translation of the Windows installer"),
+                 u"documentation updates, Windows installer, small fixes"),
 
      contributer(u"David Suárez de Lis",
                  "excalibor () iname ! com",
