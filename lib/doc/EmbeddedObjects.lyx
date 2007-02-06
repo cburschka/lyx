@@ -52,7 +52,7 @@
  \pagenumbering{arabic}}
 
 % provides caption formatting
-\usepackage[labelfont={bf,sf}, tableposition=top]{caption}
+\usepackage[labelfont={bf,sf}, tableposition=top]{caption}[2004/07/16]
 
 % provides commands to set caption
 % beside tables/images
@@ -207,7 +207,6 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
-\author "usti" 
 \author "" 
 \end_header
 
