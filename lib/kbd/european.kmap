@@ -1,77 +1,462 @@
 #
-# (C)1998 by Jacek M. Holeczek, holeczek@us.edu.pl
-# This is the second version of the international european keyboard map.
-# It should fully work ( at least ) for english, french, german, polish.
-# Other languages are currently ( probably ) not fully supported, but
-# most of special characters should already be present. Feel free to
-# add your own language here.
-# To get all characters properly in latex/dvi/ps one needs to set
-# Layout->Document->Encoding latin1 in LyX.
-# This is a keyboard map for keyboards which do not have dead-keys
-# so you can put accents and umlauts on characters.
+# (C)2007 by Jacek M. Holeczek, holeczek@us.edu.pl
+# This is the fifth version of the international European keyboard map.
+# This is a keyboard map for keyboards which do not have dead-keys,
+# so you can put accents, umlauts, and so on, on characters.
+# It should fully work for most alphabets derived from the Latin, for
+# example European languages using ISO/IEC 8859-1...4,9,10,13...16
+# (Latin-1...10). References:
+#    http://en.wikipedia.org/wiki/ISO_8859
+#    http://www.ctan.org/tex-archive/info/symbols/comprehensive/
+#    http://www.bitjungle.com/files/isoent-ref.pdf
 #
-\kmod ' acute aAcCeEiIjJlLnNoOsSuUzZ
-\kmod ` grave aAeEiIjJoOuU
-\kmod ~ tilde aAoO
-\kmod "," cedilla aAcCeE
-\kmod ^ circumflex aAcCeEiIjJnNoOrRsSuUyYzZ
-\kmod \" umlaut aAeEiIjJoOsSuUyY$\#~
-\kmod . dot zZ
+# When changing this file, please keep in mind that, it should remain
+# be usable with the "standard US keyboard", without any national
+# extensions (i.e. without any additional national characters, ISO 8859-1).
+# To get all characters properly in latex/dvi/ps one (probably) needs
+# to set Tools->Preferences...->Outputs->Misc->TeX_encoding: T1,
+# set Document->Settings...->Language->Encoding: latin1.
+# In LaTeX one would say:
+# \usepackage[T1]{fontenc}
+# \usepackage[latin1]{inputenc}
+# Some characters require additional packages to be added manuall to
+# the Document->LaTeX_Preamble... (any potential LaTeX requirements
+# are given explicitly in parentheses below), for example:
+# \usepackage{textcomp} % for many \text...{}
+# \usepackage{eurosym} % for \euro{}
+# \usepackage{nicefrac} % for \nicefrac{...}{...}
+# \usepackage{units} % alternative for \nicefrac{...}{...}
+# \usepackage{ucs} % (requires following \usepackage[utf8x]{inputenc} ???)
+# \usepackage{isoent} % (see http://www.bitjungle.com/isoent)
 #
-# some exceptions
+# (See the lyx_accent_table in the src/tex-accent.C LyX source code
+# file for names of accents used in LyX.)
 #
-\kxmod acute i "\\'{\\i}"
-\kxmod grave i "\\`{\\i}"
-\kxmod circumflex i "\\^{\\i}"
-\kxmod acute j "\\'{\\j}"
-\kxmod grave j "\\`{\\j}"
-\kxmod circumflex j "\\^{\\j}"
+\kmod ' acute aAcCeEiIlLnNoOrRsSuUwWyYzZ\ 	# "\'{}"
+\kmod ` grave aAeEiIoOuUwWyY\ n			# "\`{}"
+\kmod - macron aAeEiIoOuU\ dDfFhHlLtT		# "\={}"
+\kmod ~ tilde aAiInNoOuU\ 			# "\~{}"
+\kmod _ underbar \ acijNoRST\+\%		# "\b{}"
+\kmod \, cedilla cCGkKlLnNrRsStT\ aAeEgiIuU	# "\c{}", plus "ogonek" chars
+\kmod ; underdot \ \`\~1\!2\@3\#4\$5\%6\^7\&8\*9\(0\)\-\_qQwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM\,\<\.\>	# "\d{}"
+\kmod ^ circumflex aAcCeEgGhHiIjJoOsSuUwWyY\ 	# "\^{}"
+\kmod ? circle uU\ aAcCOPR\%			# ring "\r{}"
+\kmod / tie \ 1\!234\$5\%67890\-\=\+qQwWeErtTyYuUiIoOpP\[\]\\\|aAsSdDlL\;\:\'\"zZcCnNm\,\<\?				# "\t{}"
+\kmod > breve aAgGuU\ 				# "\u{}"
+\kmod + caron cCDeEnNrRsSTzZ\ dlLt		# "\v{}"
+\kmod = hugarian_umlaut oOuU\ E\$		# double acute accent "\H{}"
+\kmod : umlaut aAeEiIoOuUwWyY\ sS		# diaeresis / umlaut "\"{}"
+\kmod . dot bBcCdDeEfFgGiIjmMpPsStTzZ\ lL	# "\.{}"
+\kmod < ogonek aAeEiIuU\ 			# "\k{}" (fontenc:T1)
 #
-# polish characters
+# Latin-1...10 language specific characters.
 #
-\kxmod cedilla a "\\k{a}"
-\kxmod cedilla A "\\k{A}"
-# \kxmod acute c "\\'{c}"
-# \kxmod acute C "\\'{C}"
-\kxmod cedilla e "\\k{e}"
-\kxmod cedilla E "\\k{E}"
-\kxmod acute l "\\l{}"
-\kxmod acute L "\\L{}"
-# \kxmod acute n "\\'{n}"
-# \kxmod acute N "\\'{N}"
-# \kxmod acute o "\\'{o}"
-# \kxmod acute O "\\'{O}"
-# \kxmod acute s "\\'{s}"
-# \kxmod acute S "\\'{S}"
-# \kxmod dot z "\\.{z}"
-# \kxmod dot Z "\\.{Z}"
-# \kxmod acute z "\\'{z}"
-# \kxmod acute Z "\\'{Z}"
+\kxmod grave n "{n\\kern-.2em\\textsf{'}}"	# "small n, apostrophe"
 #
-# german characters
+\kxmod macron d "\\dh{}"	# "small edh/eth, Icelandic" (fontenc:T1)
+\kxmod macron D "\\DH{}"	# "capital Edh/Eth, Icelandic" (fontenc:T1)
+\kxmod macron f "\\dj{}"	# "small d, stroke" (fontenc:T1)
+\kxmod macron F "\\DJ{}"	# "capital D, stroke" (fontenc:T1)
 #
-\kxmod umlaut s "\\ss{}"
-\kxmod umlaut S "\\ss{}"
+# \kxmod macron h "\\textmalteseh{}"	# "small h, stroke, Lapp / Sami" (TextSymbolUnavailable!!!)
+# \kxmod macron H "\\textmalteseH{}"	# "capital H, stroke, Lapp / Sami" (TextSymbolUnavailable!!!)
+\kxmod macron h "\\texthbar{}"	# "small h, stroke, Lapp / Sami" (ucs)
+\kxmod macron H "\\textHbar{}"	# "capital H, stroke, Lapp / Sami" (ucs)
+# \kxmod macron h "\\hstrok{}"	# "small h, stroke, Lapp / Sami" (isoent)
+# \kxmod macron H "\\Hstrok{}"	# "capital H, stroke, Lapp / Sami" (isoent)
+# \kxmod macron h "\\B{h}"	# "small h, stroke, Lapp / Sami" (???)
+# \kxmod macron H "\\B{H}"	# "capital H, stroke, Lapp / Sami" (???)
 #
-# french characters
+\kxmod macron l "\\l{}"		# "small l, stroke"
+\kxmod macron L "\\L{}"		# "capital L, stroke"
 #
-\kmap ¬ "\\oe{}"
+# \kxmod macron t "\\texttstroke{}"	# "small t, stroke, Maltese" (TextSymbolUnavailable!!!)
+# \kxmod macron T "\\textTstroke{}"	# "capital T, stroke, Maltese" (TextSymbolUnavailable!!!)
+\kxmod macron t "\\texttbar{}"	# "small t, stroke, Maltese" (ucs)
+\kxmod macron T "\\textTbar{}"	# "capital T, stroke, Maltese" (ucs)
+# \kxmod macron t "\\tstrok{}"	# "small t, stroke, Maltese" (isoent)
+# \kxmod macron T "\\Tstrok{}"	# "capital T, stroke, Maltese" (isoent)
+# \kxmod macron t "\\B{t}"	# "small t, stroke, Maltese" (???)
+# \kxmod macron T "\\B{T}"	# "capital T, stroke, Maltese" (???)
 #
-# special characters
+\kxmod underbar i "\\i{}"	# "small i without dot"
 #
-\kxmod umlaut $ "\\pounds{}"	# pound
-\kxmod umlaut \# "\\S{}"	# paragraph
-\kxmod umlaut ~ "\\b{}"		# degree
-\kmap ¤ "\\euro{}"	# euro sign, to use with package eurofont
+\kxmod cedilla a "\\k{a}"	# "small a, ogonek" (fontenc:T1)
+\kxmod cedilla A "\\k{A}"	# "capital A, ogonek" (fontenc:T1)
+\kxmod cedilla e "\\k{e}"	# "small e, ogonek" (fontenc:T1)
+\kxmod cedilla E "\\k{E}"	# "capital E, ogonek" (fontenc:T1)
+\kxmod cedilla g "\\'{g}"	# "small g, cedilla over the letter, Latvian"
+\kxmod cedilla i "\\k{i}"	# "small i, ogonek" (fontenc:T1)
+\kxmod cedilla I "\\k{I}"	# "capital I, ogonek" (fontenc:T1)
+\kxmod cedilla u "\\k{u}"	# "small u, ogonek" (fontenc:T1)
+\kxmod cedilla U "\\k{U}"	# "capital U, ogonek" (fontenc:T1)
+#
+# \kxmod circle a "\\aa{}"	# (with LaTeX2e works also as "\r{a}")
+# \kxmod circle A "\\AA{}"	# (with LaTeX2e works also as "\r{A}")
+#
+\kxmod umlaut s "\\ss{}"	# "small sharp s, German"
+#
+# \kxmod dot l "l."		# "small l., middle dot, Catalan"
+# \kxmod dot L "L."		# "capital L., middle dot, Catalan"
+\kxmod dot l "\\lmidot{}"	# "small l, middle dot, Catalan" (isoent)
+\kxmod dot L "\\Lmidot{}"	# "capital L, middle dot, Catalan" (isoent)
+#
+# Special Czech and Slovak (Latin-2) characters.
+#
+# (Note: the four characters below use the special caron "\q".
+# In order to use these characters, you would have to add
+# "\usepackage[czech]{babel}" or "\usepackage[slovak]{babel}"
+# to the Document->LaTeX_Preamble... .
+# However, this is not really needed, as the LaTeX with fontenc:T1, used
+# in LyX by default, recognizes there characters with the standard caron
+# and treats them properly, automatically applying the special caron
+# form, which looks like an apostrophe just after the character.)
+#
+# \kxmod caron d "\\q{d}"	# (with fontenc:T1 works also as "\v{d}")
+# \kxmod caron l "\\q{l}"	# (with fontenc:T1 works also as "\v{l}")
+# \kxmod caron L "\\q{L}"	# (with fontenc:T1 works also as "\v{L}")
+# \kxmod caron t "\\q{t}"	# (with fontenc:T1 works also as "\v{t}")
+#
+# Some special Latin-1...10 characters.
+#
+\kxmod underbar a "\\textordfeminine{}"	# "ordinal indicator, feminine" (textcomp)
+\kxmod underbar o "\\textordmasculine{}"	# "ordinal indicator, masculine" (textcomp)
+\kxmod underbar \+ "$\\pm$"		# "plus-or-minus sign"
+\kxmod hugarian_umlaut E "\\texteuro{}"	# "euro sign" (textcomp)
+\kxmod hugarian_umlaut \$ "\\euro{}"	# "euro sign" (eurosym)
+#
+# Some additional LaTeX T1 /EC/ Cork encoding characters. (fontenc:T1)
+#
+\kxmod underbar j "\\j{}"		# "small j without dot"
+\kxmod underbar \% "\\textpertenthousand{}"	# "per ten thousand" (textcomp recommended)
+\kxmod circle \% "\\textperthousand{}"	# "per thousand" (textcomp recommended)
+\kxmod umlaut S "\\SS{}"		# "capital SS ligature"
+#
+# Some additional textcomp characters. (textcomp)
+#
+\kxmod underbar N "\\textnumero{}"	# "No. sign"
+\kxmod underbar R "\\textrecipe{}"	# "pharmaceutical prescription / Rx"
+\kxmod underbar S "\\textservicemark{}"	# "service mark sign"
+\kxmod underbar T "\\texttrademark{}"	# "trade mark sign"
+\kxmod circle c "\\textcopyleft{}"	# "copyleft sign"
+\kxmod circle C "\\copyright{}"		# "copyright sign"
+\kxmod circle O "\\textohm{}"		# "ohm sign"
+\kxmod circle P "\\textcircledP{}"	# "sound recording copyright sign"
+\kxmod circle R "\\textregistered{}"	# "registered sign"
+#
+# Another characters, ligatures, ... .
+#
+\kxmod underbar c "$\\nicefrac{c}{o}$"	# "c/o" (nicefrac / units)
+#
+# Part 3 of ISO/IEC 9995 specifies a common secondary keyboard layout
+# of the alphanumeric zone of the alphanumeric section. In a well
+# configured X Window System, AltGr can be used to produce additional
+# characters with almost every key in the keyboard, using
+# AltGr[+Shift]+<key> combinations (note also that, with some keys
+# AltGr produces a dead key, which can be used to produce a combining
+# accent). (Last but not least, on some computer systems, a compose
+# key, known also as "Multi_key" in the X Window System, designated to
+# signal the software to interpret the next keystrokes as a
+# combination in order to produce a character not found on the
+# keyboard, may be available and working.) References:
+#    http://en.wikipedia.org/wiki/Keyboard_layout
+#    http://en.wikipedia.org/wiki/AltGr_key
+#    http://en.wikipedia.org/wiki/Compose_key
+#    http://www.jwz.org/xkeycaps/man.html
+#    ${X11ROOT:-/usr/X11R6}/lib/X11/xkb/symbols/iso9995-3
+#    ${X11ROOT:-/usr/X11R6}/lib/X11/locale/${LANG:-en_US.UTF-8}/Compose
+#
+# This file adds this common set to any system.
+# Instead of the AltGr key, the "underdot" LyX accent is used.
+#
+#    key <AE01...> keyboard-row 1 2 3 4 5 6 ...
+#    key <AD01...> keyboard-row Q W E R T Y ...
+#    key <AC01...> keyboard-row A S D F G H ...
+#    key <AB01...> keyboard-row Z X C V B N ...
+#    key <TLDE> grave, asciitilde
+#    key <BKSL> backslash, bar
+#    key <LSGT> less, greater (the extra key on some European keyboards)
+#
+#    key <TLDE> {	[], [ notsign,  	notsign 	]	};
+\kxmod underdot \` "$\\lnot$"	# "not sign"
+\kxmod underdot \~ "$\\lnot$"	# "not sign"
+#    key <AE01> {	[], [ onesuperior,  	exclamdown 	]	};
+\kxmod underdot 1 "$\\mathonesuperior$"	# "superscript one"
+\kxmod underdot \! "\\textexclamdown{}"	# "inverted exclamation mark" (fontenc:T1)
+#    key <AE02> {	[], [ twosuperior,  	oneeighth	]	};
+\kxmod underdot 2 "$\\mathtwosuperior$"	# "superscript two"
+\kxmod underdot \@ "$\\nicefrac{1}{8}$"	# "1/8" (nicefrac / units)
+#    key <AE03> {	[], [ threesuperior,	sterling	]	};
+\kxmod underdot 3 "$\\maththreesuperior$"	# "superscript three"
+\kxmod underdot \# "\\pounds{}"	# "pound sign" (textcomp recommended ???)
+#    key <AE04> {	[], [ onequarter,    	dollar		]	};
+\kxmod underdot 4 "$\\nicefrac{1}{4}$"	# "1/4" (nicefrac / units)
+\kxmod underdot \$ "$"
+#    key <AE05> {	[], [ onehalf,		threeeighths	]	};
+\kxmod underdot 5 "$\\nicefrac{1}{2}$"	# "1/2" (nicefrac / units)
+\kxmod underdot \% "$\\nicefrac{3}{8}$"	# "3/8" (nicefrac / units)
+#    key <AE06> {	[], [ threequarters,	fiveeighths	]	};
+\kxmod underdot 6 "$\\nicefrac{3}{4}$"	# "3/4" (nicefrac / units)
+\kxmod underdot \^ "$\\nicefrac{5}{8}$"	# "5/8" (nicefrac / units)
+#    key <AE07> {	[], [ braceleft,	seveneighths	]	};
+\kxmod underdot 7 "{"
+\kxmod underdot \& "$\\nicefrac{7}{8}$"	# "7/8" (nicefrac / units)
+#    key <AE08> {	[], [ bracketleft,	trademark	]	};
+\kxmod underdot 8 "["
+\kxmod underdot \* "\\texttrademark{}"	# "trade mark sign" (textcomp)
+#    key <AE09> {	[], [ bracketright,	plusminus	]	};
+\kxmod underdot 9 "]"
+\kxmod underdot \( "$\\pm$"	# "plus-or-minus sign"
+#    key <AE10> {	[], [ braceright,	degree		]	};
+\kxmod underdot 0 "}"
+\kxmod underdot \) "\\textdegree{}"	# "degree sign" (textcomp)
+#    key <AE11> {	[], [ backslash,	questiondown	]	};
+\kxmod underdot \- "\\"
+\kxmod underdot \_ "\\textquestiondown{}"	# "inverted question mark" (fontenc:T1)
+#    key <AE12> {	[], [ dead_cedilla,	dead_ogonek	]	};
+#
+#    key <AD01> {	[], [ at,		Greek_OMEGA	]	};
+\kxmod underdot q "@"
+\kxmod underdot Q "$\\Omega$"
+#    key <AD02> {	[], [ lstroke,		Lstroke		]	};
+\kxmod underdot w "\\l{}"	# "small l, stroke"
+\kxmod underdot W "\\L{}"	# "capital L, stroke"
+#    key <AD03> {	[], [ oe,		OE		]	};
+\kxmod underdot e "\\oe{}"	# "small oe ligature"
+\kxmod underdot E "\\OE{}"	# "capital OE ligature"
+#    key <AD04> {	[], [ paragraph,	registered	]	};
+\kxmod underdot r "\\P{}"	# "pilerow / paragraph sign"
+\kxmod underdot R "\\textregistered{}"	# "registered sign" (textcomp)
+#    key <AD05> {	[], [ tslash,		Tslash		]	};
+\kxmod underdot t "\\texttbar{}"	# "small t, stroke, Maltese" (ucs)
+\kxmod underdot T "\\textTbar{}"	# "capital T, stroke, Maltese" (ucs)
+#    key <AD06> {	[], [ left arrow,	yen		]	};
+\kxmod underdot y "\\textleftarrow{}"	# "leftarrow" (textcomp)
+\kxmod underdot Y "\\textyen{}"	# "yen sign" (textcomp)
+#    key <AD07> {	[], [ downarrow,	uparrow		]	};
+\kxmod underdot u "\\textdownarrow{}"	# "down arrow" (textcomp)
+\kxmod underdot U "\\textuparrow{}"	# "up arrow" (textcomp)
+#    key <AD08> {	[], [ rightarrow,	idotless	]	};
+\kxmod underdot i "\\textrightarrow{}"	# "right arrow" (textcomp)
+\kxmod underdot I "\\i{}"	# "small i without dot"
+#    key <AD09> {	[], [ oslash,		Ooblique	]	};
+\kxmod underdot o "\\o{}"	# "small o, slash"
+\kxmod underdot O "\\O{}"	# "capital O, slash"
+#    key <AD10> {	[], [ thorn,		Thorn		]	};
+\kxmod underdot p "\\th{}"	# "small thorn, Icelandic" (fontenc:T1)
+\kxmod underdot P "\\TH{}"	# "capital THORN, Icelandic" (fontenc:T1)
+#    key <AD11> {	[], [ dead_diaeresis,	dead_abovering	]	};
+#    key <AD12> {	[], [ dead_tilde,	dead_macron	]	};
+#    key <BKSL> {	[], [ dead_grave,	dead_breve	]	};
+#
+#    key <AC01> {	[], [ ae,		AE 		]	};
+\kxmod underdot a "\\ae{}"	# "small ae diphthong"
+\kxmod underdot A "\\AE{}"	# "capital AE diphthong"
+#    key <AC02> {	[], [ ssharp,		section		]	};
+\kxmod underdot s "\\ss{}"	# "small sharp s, German"
+\kxmod underdot S "\\S{}"	# "section sign"
+#    key <AC03> {	[], [ eth,		Eth		]	};
+\kxmod underdot d "\\dh{}"	# "small edh/eth, Icelandic" (fontenc:T1)
+\kxmod underdot D "\\DH{}"	# "capital Edh/Eth, Icelandic" (fontenc:T1)
+#    key <AC04> {	[], [ dstroke,		ordfeminine	]	};
+\kxmod underdot f "\\dj{}"	# "small d, stroke" (fontenc:T1)
+\kxmod underdot F "\\textordfeminine{}"	# "ordinal indicator, feminine" (textcomp)
+#    key <AC05> {	[], [ eng,		ENG		]	};
+\kxmod underdot g "\\ng{}"	# "small eng, Lapp / Sami" (fontenc:T1)
+\kxmod underdot G "\\NG{}"	# "capital ENG, Lapp / Sami" (fontenc:T1)
+#    key <AC06> {	[], [ hstroke,		Hstroke		]	};
+\kxmod underdot h "\\texthbar{}"	# "small h, stroke, Lapp / Sami" (ucs)
+\kxmod underdot H "\\textHbar{}"	# "capital H, stroke, Lapp / Sami" (ucs)
+#    key <AC07> {	[], [ ij,		IJ		]	};
+\kxmod underdot j "\\ij{}"	# "small ij ligature" (babel:any)
+\kxmod underdot J "\\IJ{}"	# "capital IJ ligature" (babel:any)
+#    key <AC08> {	[], [ kra,		ampersand	]	};
+#
+# \kxmod underdot k "\\textkra{}" 	# "Kra, Kalaallisut / Greenlandic" (TextSymbolUnavailable!!!)
+# \kxmod underdot k "\\textsck{}" 	# "Kra, Kalaallisut / Greenlandic" (ucs ???)
+\kxmod underdot k "\\textsc{k}" 	# "Kra, Kalaallisut / Greenlandic"
+#
+\kxmod underdot K "&"
+#    key <AC09> {	[], [ lstroke,		Lstroke		]	};
+\kxmod underdot l "\\l{}"	# "small l, stroke"
+\kxmod underdot L "\\L{}"	# "capital L, stroke"
+#    key <AC10> {	[], [ dead_acute,	dead_doubleacute]	};
+#    key <AC11> {	[], [ dead_circumflex,	dead_caron	]	};
+#
+#    key <LSGT> {	[], [ bar,		brokenbar	]	};
+# \kxmod underdot \< "|"
+# \kxmod underdot \> "\\textbrokenbar{}"	# "broken vertical bar" (textcomp)
+#    key <AB01> {	[], [ guillemotleft,	less 		]	};
+\kxmod underdot z "\\guillemotleft{}"	# "angle quotation mark, left" (fontenc:T1)
+\kxmod underdot Z "<"
+#    key <AB02> {	[], [ guillemotright,	greater		]	};
+\kxmod underdot x "\\guillemotright{}"	# "angle quotation mark, right" (fontenc:T1)
+\kxmod underdot X ">"
+#    key <AB03> {	[], [ cent,		copyright	]	};
+\kxmod underdot c "\\textcent{}"	# "cent sign" (textcomp)
+\kxmod underdot C "\\copyright{}"	# "copyright sign" (textcomp)
+#    key <AB04> {	[], [ leftdoublequotemark, quoteleft	]	};
+\kxmod underdot v "{``}"
+\kxmod underdot V "`"
+#    key <AB05> {	[], [ rightdoublequotemark, quoteright	]	};
+\kxmod underdot b "{''}"
+\kxmod underdot B "'"
+#    key <AB06> {	[], [ apostrophe_small_n, musicalnote	]	};
+\kxmod underdot n "{n\\kern-.2em\\textsf{'}}"	# "small n, apostrophe"
+\kxmod underdot N "\\textmusicalnote{}"	# "music note / sung text sign" (textcomp)
+#    key <AB07> {	[], [ mu,		masculine	]	};
+\kxmod underdot m "$\\mu$"	# "micro sign"
+\kxmod underdot M "\\textordmasculine{}"	# "ordinal indicator, masculine" (textcomp)
+#    key <AB08> {	[], [ horizconnector,	multiply	]	};
+\kxmod underdot \, "\\textemdash{}"	# "em dash"
+\kxmod underdot \< "$\\times$"	# "multiply sign"
+#    key <AB09> {	[], [ periodcentered,	division	]	};
+\kxmod underdot \. "$\\cdot$"	# "middle dot"
+\kxmod underdot \> "$\\div$"	# "divide sign"
+#    key <AB10> {	[], [ dead_belowdot,	dead_abovedot	]	};
+#
+# Microsoft Windows defines the US International keyboard layout. It
+# changes the left alt and the right alt (AltGr) into modifiers to
+# enter special characters (note also that, some keys are changed into
+# accent dead keys for vowels). References:
+#    http://en.wikipedia.org/wiki/Keyboard_layout
+#    http://en.wikipedia.org/wiki/British_and_American_keyboards
+#
+# This file adds these special characters to any system.
+# Instead of the AltGr key, the "tie" LyX accent is used.
+#
+#    keyboard-row 1 2 3 4 5 6 ...
+#
+\kxmod tie 1 "\\textexclamdown{}"	# "inverted exclamation mark" (fontenc:T1)
+\kxmod tie \! "$\\mathonesuperior$"	# "superscript one"
+\kxmod tie 2 "$\\mathtwosuperior$"	# "superscript two"
+\kxmod tie 3 "$\\maththreesuperior$"	# "superscript three"
+\kxmod tie 4 "\\textcurrency{}"	# "general currency sign" (textcomp)
+\kxmod tie \$ "\\pounds{}"	# "pound sign" (textcomp recommended ???)
+\kxmod tie 5 "\\euro{}"		# "euro sign" (eurosym)
+\kxmod tie \% "\\texteuro{}"	# "euro sign", added! (textcomp)
+\kxmod tie 6 "$\\nicefrac{1}{4}$"	# "1/4" (nicefrac / units)
+\kxmod tie 7 "$\\nicefrac{1}{2}$"	# "1/2" (nicefrac / units)
+\kxmod tie 8 "$\\nicefrac{3}{4}$"	# "3/4" (nicefrac / units)
+\kxmod tie 9 "`"
+\kxmod tie 0 "'"
+\kxmod tie \- "\\textyen{}"	# "yen sign" (textcomp)
+\kxmod tie \= "$\\times$"	# "multiply sign"
+\kxmod tie \+ "$\\div$"		# "divide sign"
+#
+#    keyboard-row Q W E R T Y ...
+#
+\kxmod tie q "\\\"{a}"
+\kxmod tie Q "\\\"{A}"
+\kxmod tie w "\\r{a}"		# (with LaTeX2e "\aa{}" works also as "\r{a}")
+\kxmod tie W "\\r{A}"		# (with LaTeX2e "\AA{}" works also as "\r{A}")
+\kxmod tie e "\\'{e}"
+\kxmod tie E "\\'{E}"
+\kxmod tie r "\\textregistered{}"	# "registered sign" (textcomp)
+\kxmod tie t "\\th{}"		# "small thorn, Icelandic" (fontenc:T1)
+\kxmod tie T "\\TH{}"		# "capital THORN, Icelandic" (fontenc:T1)
+\kxmod tie y "\\\"{u}"
+\kxmod tie Y "\\\"{U}"
+\kxmod tie u "\\'{u}"
+\kxmod tie U "\\'{U}"
+\kxmod tie i "\\'{\\i}"
+\kxmod tie I "\\'{I}"
+\kxmod tie o "\\'{o}"
+\kxmod tie O "\\'{O}"
+\kxmod tie p "\\\"{o}"
+\kxmod tie P "\\\"{O}"
+\kxmod tie \[ "\\guillemotleft{}"	# "angle quotation mark, left" (fontenc:T1)
+\kxmod tie \] "\\guillemotright{}"	# "angle quotation mark, right" (fontenc:T1)
+\kxmod tie \\ "$\\lnot$"	# "not sign"
+\kxmod tie \| "\\textbrokenbar{}"	# "broken vertical bar" (textcomp)
+#
+#    keyboard-row A S D F G H ...
+#
+\kxmod tie a "\\'{a}"
+\kxmod tie A "\\'{A}"
+\kxmod tie s "\\ss{}"		# "small sharp s, German"
+\kxmod tie S "\\S{}"		# "section sign"
+\kxmod tie d "\\dh{}"		# "small edh/eth, Icelandic" (fontenc:T1)
+\kxmod tie D "\\DH{}"		# "capital Edh/Eth, Icelandic" (fontenc:T1)
+\kxmod tie l "\\o{}"		# "small o, slash"
+\kxmod tie L "\\O{}"		# "capital O, slash"
+\kxmod tie \; "\\P{}"		# "pilerow / paragraph sign"
+\kxmod tie \: "\\textdegree{}"	# "degree sign" (textcomp)
+\kxmod tie \' "'"
+\kxmod tie \" "\""
+#
+#    keyboard-row Z X C V B N ...
+#
+\kxmod tie z "\\ae{}"		# "small ae diphthong"
+\kxmod tie Z "\\AE{}"		# "capital AE diphthong"
+\kxmod tie c "\\copyright{}"	# "copyright sign" (textcomp)
+\kxmod tie C "\\textcent{}"	# "cent sign" (textcomp)
+\kxmod tie n "\\~{n}"
+\kxmod tie N "\\~{N}"
+\kxmod tie m "$\\mu$"		# "micro sign"
+\kxmod tie \, "\\c{c}"
+\kxmod tie \< "\\c{C}"
+\kxmod tie \? "\\textquestiondown{}"	# "inverted question mark", changed! (fontenc:T1)
+#
+# An accent with a following space character.
+#
+\kxmod acute \  "' "
+\kxmod grave \  "` "
+\kxmod macron \  "- "
+\kxmod tilde \  "~ "
+\kxmod underbar \  "_ "
+\kxmod cedilla \  ", "
+\kxmod underdot \  "; "
+\kxmod circumflex \  "^ "
+\kxmod circle \  "? "
+\kxmod tie \  "/ "
+\kxmod breve \  "> "
+\kxmod caron \  "+ "
+\kxmod hugarian_umlaut \  "= "
+\kxmod umlaut \  ": "
+\kxmod dot \  ". "
+\kxmod ogonek \  "< "
+#
+# Some exceptions and corrections (needed only for lyx-0.10.7?).
+#
+# \kxmod acute i "\\'{\\i}"
+# \kxmod grave i "\\`{\\i}"
+# \kxmod macron i "\\={\\i}"
+# \kxmod tilde i "\\~{\\i}"
+# \kxmod circumflex i "\\^{\\i}"
+# \kxmod circle i "\\r{\\i}"
+# \kxmod breve i "\\u{\\i}"
+# \kxmod caron i "\\v{\\i}"
+# \kxmod hugarian_umlaut i "\\H{\\i}"
+# \kxmod umlaut i "\\\"{\\i}"
+# \kxmod dot i "\\.{\\i}"
+# \kxmod acute j "\\'{\\j}"
+# \kxmod grave j "\\`{\\j}"
+# \kxmod macron j "\\={\\j}"
+# \kxmod tilde j "\\~{\\j}"
+# \kxmod circumflex j "\\^{\\j}"
+# \kxmod circle j "\\r{\\j}"
+# \kxmod breve j "\\u{\\j}"
+# \kxmod caron j "\\v{\\j}"
+# \kxmod hugarian_umlaut j "\\H{\\j}"
+# \kxmod umlaut j "\\\"{\\j}"
+# \kxmod dot j "\\.{\\j}"
 #
 # \kxmod acute ' '
 # \kxmod grave ` `
+# \kxmod macron - -
 # \kxmod tilde ~ ~
-# \kxmod cedilla "," ","
+# \kxmod underbar _ _
+# \kxmod cedilla \, \,
+# \kxmod underdot ; ;
 # \kxmod circumflex ^ ^
-# \kxmod umlaut \" \"
+# \kxmod circle ? ?
+# \kxmod tie / /
+# \kxmod breve > >
+# \kxmod caron + +
+# \kxmod hugarian_umlaut = =
+# \kxmod umlaut : :
 # \kxmod dot . .
+# \kxmod ogonek < <
 #
-# Example of substituting local chars to TeX-Strings
-#
-# \kmap ß "\\ss{}"
+# end of file european.kmap by Jacek M. Holeczek
