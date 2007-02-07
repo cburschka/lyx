@@ -8,7 +8,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-import sys, os, re, shutil, glob, commands
+import sys, os, re, shutil, glob
 
 
 class Tee:
@@ -410,7 +410,7 @@ def checkConverterEntries():
     if convert != '':
         # check whether convert supports the -define option
         conv_opts = "-define pdf:use-cropbox=true -depth 8"
-        if not 'Unrecognized' in commands.getoutput('convert ' + conv_opts):
+        if not 'Unrecognized' in cmdOutput('convert ' + conv_opts + ' 2>&1'):
             addToRC(r'\converter pdf        png        "convert %s pdf:$$i png:$$o"	""' % conv_opts)
     #
     checkProg('a Grace -> Image converter', ['gracebat'],
