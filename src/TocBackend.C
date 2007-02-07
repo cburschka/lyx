@@ -208,6 +208,14 @@ TocIterator const TocBackend::item(
 
 	--it;
 
+	ParConstIterator par_it_text = par_it;
+	if (par_it_text.inMathed())
+		// It would be better to do
+		//   par_it_text.backwardInset();
+		// but this method does not exist.
+		while (par_it_text.inMathed())
+			par_it_text.backwardPos();
+
 	for (; it != last; --it) {
 		
 		// A good solution for Items inside insets would be to do:
@@ -218,7 +226,7 @@ TocIterator const TocBackend::item(
 		// But for an unknown reason, std::distance(current, it->par_it_) always
 		// returns  a positive value and std::distance(it->par_it_, current) takes forever...
 		// So for now, we do:
-		if (it->par_it_.pit() <= par_it.pit())
+		if (it->par_it_.pit() <= par_it_text.pit())
 			return it;
 	}
 
