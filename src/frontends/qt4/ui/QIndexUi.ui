@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QIndexUi</class>
  <widget class="QDialog" name="QIndexUi" >
   <property name="geometry" >
@@ -94,13 +91,18 @@
        <property name="text" >
         <string>Cancel</string>
        </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>
