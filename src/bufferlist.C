@@ -315,9 +315,7 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
 		if (!(*it)->isDepClean(mastertmpdir)) {
-			string writefile = mastertmpdir;
-			writefile += '/';
-			writefile += (*it)->getLatexName();
+			string writefile = addName(mastertmpdir, (*it)->getLatexName());
 			(*it)->makeLaTeXFile(FileName(writefile), mastertmpdir,
 					     runparams, false);
 			(*it)->markDepClean(mastertmpdir);
