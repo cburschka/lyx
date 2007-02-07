@@ -94,7 +94,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
   !macro InstallComponent COMPONENT
 
     ;Extract
-    File /oname=$PLUGINSDIR\${COMPONENT}Setup.exe ${INSTALL_${COMPONENT}}
+    File /oname=$PLUGINSDIR\${COMPONENT}Setup.exe ${FILES_BUNDLE}\${INSTALL_${COMPONENT}}
     
     !insertmacro SetupComponent ${COMPONENT}
     

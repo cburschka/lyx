@@ -28,7 +28,11 @@ SetCompressor /SOLID lzma
 ; /DExeFile=/path/to/installer
 
 !ifdef ExeFile
+!ifdef SETUPTYPE_BUNDLE
+OutFile "${BundleExeFile}"
+!else
 OutFile "${ExeFile}"
+!endif
 !else
 Outfile "${SETUP_EXE}"
 !endif

@@ -128,3 +128,10 @@ Creating the Installer
 	   $ scons -f development\scons\SConscript installer
 	This will create $BUILDDIR\lyx-version-timestamp-Installer.exe for a devel version,
 	and $BUILDDIR\lyx-version-Install.exe for a released version of lyx.
+
+	If you also want to generate bundled installer, download 
+	lyx-windows-bundle-deps.zip from http://www.lyx.org/~bpeng, unpack
+	to lyx-windows-bundle-deps under the top source directory, and run
+	  $ scons -f development\scons\SConstruct installer bundle=1
+	If you prefer to use another directory, you can use option bundle_dir like
+	  $ scons -f development\scons\SConstruct installer bundle=1 bundle_dir=c:\bundle

@@ -193,6 +193,10 @@ opts.AddOptions(
     ('win_installer', 'name or full path to the windows installer', None),
     # the deps package used to create minimal installer (qt and other libraries)
     ('deps_dir', 'path to the development depedency packages with zlib, iconv, zlib and qt libraries', None),
+    # whether or not build bundle installer
+    BoolOption('bundle', 'Whether or not build bundle installer', False),
+    # the bundle directory, containing bundled applications
+    PathOption('bundle_dir', 'path to the bundle dependency package with miktex setup.exe etc', None),
     # build directory, will use $mode if not set
     ('build_dir', 'Build directory', None),
     # version suffix
@@ -2164,25 +2168,44 @@ if build_installer:
     # provide default setting            
     if not env.has_key('deps_dir') or env['deps_dir'] is None:
         env['deps_dir'] = os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'lyx-windows-deps-msvc-qt4')
-    if not os.path.isdir(env['deps_dir']):
+    if not os.path.isdir(env.Dir('$deps_dir').abspath):
         print 'Development dependency package is not found.'
         Exit(1)    
     else:
-        env['deps_dir'] = env.Dir(env['deps_dir']).abspath
+        env['deps_dir'] = env.Dir('$deps_dir').abspath
+    # build bundle?
+    if env.has_key('bundle_dir') and os.path.isdir(env.Dir('$bundle_dir').abspath):
+        env['bundle_dir'] = env.Dir('$bundle_dir').abspath
+    elif os.path.isdir(os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'lyx-windows-bundle-deps')):
+        env['bundle_dir'] = os.path.join(env.Dir('$TOP_SRCDIR').abspath, 'lyx-windows-bundle-deps')
+    else:
+        env['bundle_dir'] = None
     # if absolute path is given, use it, otherwise, write to current directory
     if not (':' in env['win_installer'] or '/' in env['win_installer'] or '\\' in env['win_installer']):
         env['win_installer'] = os.path.join(env.Dir('$BUILDDIR').abspath, env['win_installer'])
     env.Append(NSISDEFINES={
         'ExeFile':env['win_installer'],
+        'BundleExeFile':env['win_installer'].replace('.exe', '-bundle.exe'),
         'FilesLyx':env.Dir(dest_prefix_dir).abspath,
         'FilesDeps':env['deps_dir'],
+        'FilesBundle':env['bundle_dir'],
         })
     installer = env.installer(env['win_installer'],
         '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
     # since I can not use a scanner, explicit dependent is required
     env.Depends(installer, 'install')
-    frontend_env.Alias('installer', installer)
-
+    env.Alias('installer', installer)
+    # also generate bundle?
+    if env.has_key('bundle') and env['bundle']:
+        if env['bundle_dir'] is None or not os.path.isdir(env['bundle_dir']):
+            print 'Bundle directory does not exist (default to %s\lyx-windows-bundle-deps.' % env.Dir('$TOP_SRCDIR').abspath
+            print 'Use bundle_dir option to specify'
+            Exit(1)
+        # generator of the builder will add bundle stuff depending on output name
+        bundle_installer = env.installer(env['win_installer'].replace('.exe', '-bundle.exe'),
+            '$TOP_SRCDIR/development/Win32/packaging/installer/lyx.nsi')
+        env.Depends(bundle_installer, 'install')
+        env.Alias('installer', bundle_installer)
 
 Default('lyx')
 Alias('all', ['lyx', 'client', 'tex2lyx'])

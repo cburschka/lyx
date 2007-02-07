@@ -16,6 +16,12 @@
 !define FILES_DEPS "..\..\..\..\lyx-windows-deps-msvc-qt4"
 !endif
 
+!ifdef FilesBundle
+!define FILES_BUNDLE "${FilesBundle}"
+!else
+!define FILES_BUNDLE "..\..\..\..\lyx-windows-bundle-deps"
+!endif
+
 ;Location of Windows installation
 
 !ifdef FilesWindows
