@@ -212,7 +212,7 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 	int const h = a + tm.descent() + border_;
 	pi.pain.fillRectangle(x, y - a, (wide() ? tm.maxWidth() : w), h,
 		backgroundColor());
-	text_.drawSelection(pi, x, y);
+	text_.drawSelection(pi, x + border_, y);
 }
 
 
