@@ -110,6 +110,11 @@ Lists of files to include in the installer
 !macro FileListPythonDll COMMAND DIRECTORY
 
   ${FILE}python25.dll"
+
+!macroend
+
+!macro FileListUnicodeDll COMMAND DIRECTORY
+
   ${FILE}unicodedata.pyd"
 
 !macroend
