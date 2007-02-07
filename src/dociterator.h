@@ -197,7 +197,8 @@ public:
 	/// move backward one cell
 	void backwardIdx();
 	/// move backward one inset
-	void backwardInset();
+	/// FIXME: This is not implemented!
+	//void backwardInset();
 
 	/// are we some 'extension' (i.e. deeper nested) of the given iterator
 	bool hasPart(DocIterator const & it) const;
