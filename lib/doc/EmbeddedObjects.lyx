@@ -48,10 +48,6 @@
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
 
-% define a new reference format
-\newrefformat{fig}
- {Figure~float~\ref{#1} printed on page~\pageref{#1}}
-
 % if pdflatex is used
 \usepackage{ifpdf}
 \ifpdf
@@ -18141,10 +18137,22 @@ page\InsetSpace ~
 
 \begin_layout Description
 Formatted\InsetSpace ~
-reference: prints a self defined cross-reference format:
-\newline
+reference: prints a self defined cross-reference format.
+ 
+\begin_inset Note Greyedout
+status open
 
-\begin_inset LatexCommand \prettyref{fig:Two-distorted-images}
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ This feature is only available when you have the LaTeX-package 
+\series bold
+prettyref
+\series default
+ installed.
+\end_layout
 
 \end_inset
 
@@ -18180,81 +18188,6 @@ Format
 \family default
  of the cross-reference window, that appear when you click on the cross-referenc
 e box.
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To define a format for the 
-\family sans
-Formatted\InsetSpace ~
-reference
-\family default
- style, you have to use the following command in the document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newrefformat{prefix}{text}
-\end_layout
-
-\begin_layout Standard
-This formatting command affects all references to labels with the same prefix.
- To get the format of the 
-\family sans
-Formatted\InsetSpace ~
-reference
-\family default
- example above, this command was used:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newrefformat{fig}
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-hphantom{ }
-\end_layout
-
-\end_inset
-
-{Figure~float~
-\backslash
-ref{#1} printed on page~
-\backslash
-pageref{#1}}
-\end_layout
-
-\begin_layout Standard
-The tilde "~" is the LaTeX equivalent for the protected space.
- The command 
-\series bold
-
-\backslash
-ref{#1}
-\series default
- refers to the float number, the command 
-\series bold
-
-\backslash
-pageref{#1}
-\series default
- to the page number.
 \end_layout
 
 \begin_layout Subsection
@@ -18372,7 +18305,6 @@ reference
 \end_inset
 
 .
- That is the reason why it is not used in this document.
 \end_layout
 
 \end_inset
@@ -20994,7 +20926,7 @@ Footnotes can be referenced like floats: Insert a label into the footnote
 \newline
 This is a cross-reference of Footnote\InsetSpace ~
 
-\begin_inset LatexCommand \prettyref{foot:This-is-an}
+\begin_inset LatexCommand \ref{foot:This-is-an}
 
 \end_inset
 

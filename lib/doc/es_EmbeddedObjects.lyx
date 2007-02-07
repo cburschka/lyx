@@ -48,10 +48,6 @@
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
 
-% define a new reference format
-\newrefformat{fig}
- {Figura~flotante~\ref{#1} impresa en la página~\pageref{#1}}
-
 % if pdflatex is used
 \usepackage{ifpdf}
 \ifpdf
@@ -4867,7 +4863,8 @@ Nota
 \series default
 : El número de la tabla es incrementado para cada tabla larga, aunque no
  pongas encabezado en alguna de ellas.
- Por esto podría suceder que, p.e., la Tabla\InsetSpace ~
+ Por esto podría suceder que, p.\InsetSpace \thinspace{}
+e., la Tabla\InsetSpace ~
 2.4 siga a la Tabla\InsetSpace ~
 2.1 en la lista
  de tablas debido a que hay dos tablas largas sin encabezado.
@@ -14912,8 +14909,9 @@ Alineación Especial de Celdas
 \begin_layout Standard
 A veces mejora la presentación si las entradas en las celdas de una columna
  se alinean con un carácter determinado, p.\InsetSpace \thinspace{}
-e.
- el separador decimal, como en la Tabla\InsetSpace ~
+e.\InsetSpace ~
+el separador decimal, como en
+ la Tabla\InsetSpace ~
 
 \begin_inset LatexCommand \ref{tab:Tabla-con-celdas-de}
 
@@ -17773,11 +17771,11 @@ status open
 \series bold
 Nota:
 \series default
- ¡Los flotantes ajustados a texto son frágiles! P.
- e.
- si una figura está demasiado cerca de la parte inferior de la página se
- pueden perder cosas en el camino de salida, el flotante puede no aparecer
- o situarse junto a otro texto.
+ ¡Los flotantes ajustados a texto son frágiles! P.\InsetSpace \thinspace{}
+e.\InsetSpace ~
+si una figura está demasiado
+ cerca de la parte inferior de la página se pueden perder cosas en el camino
+ de salida, el flotante puede no aparecer o situarse junto a otro texto.
 \begin_inset Foot
 status open
 
@@ -17880,8 +17878,9 @@ Etiqueta
 .
  LyX ofrece como texto las primeras palabras del encabezado con un prefijo.
  El prefijo depende del tipo de flotante, p.\InsetSpace \thinspace{}
-e.
- para figuras el prefijo será "
+e.\InsetSpace ~
+para figuras el prefijo será
+ "
 \family sans
 fig:
 \family default
@@ -18031,10 +18030,23 @@ página\InsetSpace ~
 \begin_layout Description
 Referencia\InsetSpace ~
 con\InsetSpace ~
-formato: imprime un formato autodefinido:
-\newline
+formato: imprime un formato autodefinido.
+ 
+\begin_inset Note Greyedout
+status open
 
-\begin_inset LatexCommand \prettyref{fig:Dos-imágenes-distorsionadas}
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ This feature is only available when you have the LaTeX-package 
+\series bold
+prettyref
+\series default
+ installed.
+\end_layout
 
 \end_inset
 
@@ -18046,8 +18058,8 @@ Ten en cuenta que el estilo <página>\InsetSpace ~
  no imprime el número si la etiqueta
  está en la misma página, en la anterior o en la siguiente.
  En su lugar verás p.\InsetSpace \thinspace{}
-e.
- el texto 
+e.\InsetSpace ~
+el texto 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18072,86 +18084,6 @@ Formato
  de la ventana de referencia cruzada, que aparece al pinchar sobre el cuadro.
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para definir un formato en el estilo 
-\family sans
-Referencia\InsetSpace ~
-con\InsetSpace ~
-formato
-\family default
-, puedes usar el siguiente comando en el preámbulo del documento:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newrefformat{prefijo}{texto}
-\end_layout
-
-\begin_layout Standard
-Este comando afecta a todas las referencias a etiquetas con el mismo prefijo.
- Para dar el formato de la 
-\family sans
-Referencia\InsetSpace ~
-con\InsetSpace ~
-formato
-\family default
- del ejemplo anterior se usó el comando: 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-newrefformat{fig}
-\newline
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Standard
-
-
-\backslash
-hphantom{ }
-\end_layout
-
-\end_inset
-
-{Figura~flotante~
-\backslash
-ref{#1} impresa en la página~
-\backslash
-pageref{#1}}
-\end_layout
-
-\begin_layout Standard
-La tilde "~" es el equivalente en LaTeX al espacio protegido.
- El comando 
-\series bold
-
-\backslash
-ref{#1}
-\series default
- se refiere al número flotante, el comando 
-\series bold
-
-\backslash
-pageref{#1}
-\series default
- al número de página.
-\end_layout
-
 \begin_layout Subsection
 Designación Automática de Referencias
 \begin_inset LatexCommand \index{Referencias ! Designación Automática}
@@ -18170,8 +18102,8 @@ hyperref
  en las referencias cruzadas el nombre de los flotantes referidos (o partes
  de texto como secciones).
  Quieres p.\InsetSpace \thinspace{}
-e.
- escribir la palabra "Figura" antes de cada cuadro de referencia.
+e.\InsetSpace ~
+escribir la palabra "Figura" antes de cada cuadro de referencia.
  Para conseguirlo debes cargar el paquete LaTeX 
 \series bold
 hyperref
@@ -18255,7 +18187,6 @@ formato
 \end_inset
 
 .
- Por esto no se ha usado en este documento.
 \end_layout
 
 \end_inset
@@ -20916,7 +20847,7 @@ Las notas al pie pueden referenciarse como flotantes: Inserta una etiqueta
 \newline
 Esto es una referencia cruzada a la Nota al pie\InsetSpace ~
 
-\begin_inset LatexCommand \prettyref{pie:Esto-es-una}
+\begin_inset LatexCommand \ref{pie:Esto-es-una}
 
 \end_inset
 
@@ -21384,9 +21315,10 @@ Colocación de Notas al Pie
 Si tienes varias notas al pie de una página, se muestran sin espacio vertical
  entre ellas al final de la página.
  Para hacerlas más legibles puedes añadir p.\InsetSpace \thinspace{}
-e.
- 1.5\InsetSpace \thinspace{}
-mm con el comando siguiente en el preámbulo:
+e.\InsetSpace ~
+1.5\InsetSpace \thinspace{}
+mm con el comando siguiente
+ en el preámbulo:
 \end_layout
 
 \begin_layout Standard
