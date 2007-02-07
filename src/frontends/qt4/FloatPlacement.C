@@ -187,7 +187,7 @@ void FloatPlacement::on_heredefinitelyCB_clicked()
 void FloatPlacement::on_spanCB_clicked()
 {
 	checkAllowed();
-
+	changed();
 	if (!spanCB->isChecked())
 		return;
 
@@ -200,6 +200,7 @@ void FloatPlacement::on_spanCB_clicked()
 void FloatPlacement::on_sidewaysCB_clicked()
 {
 	checkAllowed();
+	changed();
 }
 
 
