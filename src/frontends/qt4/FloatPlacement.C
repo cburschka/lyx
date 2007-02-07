@@ -188,6 +188,7 @@ void FloatPlacement::on_spanCB_clicked()
 {
 	checkAllowed();
 	changed();
+
 	if (!spanCB->isChecked())
 		return;
 
