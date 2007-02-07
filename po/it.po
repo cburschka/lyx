@@ -1,13 +1,16 @@
+# translation of lyx-1.4xx_devel_it.po to italiano
 # translation of it.po to italiano
 # This file is distributed under the same license as the PACKAGE package.
 # Grazie a Lele Gaifax e Meris Da Silva per tutti i loro suggerimenti e consigli
 # Kostantino <ciclope10ATalice.it>, 2006.
+# Kostantino <ciclope10ATalice.it>, 2007.
+# Kostantino <ciclope10ATalice.it>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: it\n"
+"Project-Id-Version: lyx-1.4xx_devel_it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-31 17:00+0100\n"
-"PO-Revision-Date: 2006-09-18 16:03+0200\n"
+"PO-Revision-Date: 2007-02-06 16:11+0100\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1446,9 +1449,8 @@ msgid "Editor:|#i"
 msgstr "Editor:|#i"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1864
-#, fuzzy
 msgid "Vector graphics format:|#c"
-msgstr "Seleziona file grafico"
+msgstr "Formato grafica vettoriale:|#c"
 
 #: src/frontends/xforms/forms/form_preferences.fd:1882
 #: src/frontends/xforms/forms/form_preferences.fd:2032
@@ -2107,8 +2109,7 @@ msgstr "Bibliografia a s&ezioni"
 #: src/frontends/qt2/ui/BiblioModuleBase.ui:186
 #: src/frontends/xforms/FormDocument.C:321
 msgid "Select this if you want to split your bibliography into sections"
-msgstr ""
-"Seleziona questa opzione se vuoi dividere la tua bibliografia in sezioni"
+msgstr "Seleziona questa opzione se vuoi dividere la tua bibliografia in sezioni"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
 msgid "A&vailable Branches:"
@@ -2799,8 +2800,7 @@ msgstr "Allineamento verticale del contenuto dentro la casella"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:457
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:514
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr ""
-"Allineamento verticale della casella (con attenzione alla linea di base)"
+msgstr "Allineamento verticale della casella (con attenzione alla linea di base)"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:468
 msgid "Content hori&zontal:"
@@ -2824,8 +2824,7 @@ msgstr "Nessuno"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:671
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:690
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr ""
-"Casella interna -- necessaria per larghezze fisse ed interruzioni di linea"
+msgstr "Casella interna -- necessaria per larghezze fisse ed interruzioni di linea"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:682
 msgid "&Inner Box:"
@@ -3105,9 +3104,8 @@ msgid "Match delimiter types"
 msgstr "Tipi corrispondenti di delimitatori"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:366
-#, fuzzy
 msgid "Choose delimiter size"
-msgstr "Delimitatore sinistro"
+msgstr "Scegli la dimensione del delimitatore"
 
 #: src/frontends/qt2/ui/QDelimiterDialogBase.ui:394
 msgid "&Insert"
@@ -3741,8 +3739,7 @@ msgstr "comando &roff:"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported plain text/LaTeX/SGML files"
-msgstr ""
-"Lunghezza massima di linea dei file testo semplice/LaTeX/ SGML esportati"
+msgstr "Lunghezza massima di linea dei file testo semplice/LaTeX/ SGML esportati"
 
 #: src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
@@ -3848,14 +3845,13 @@ msgid "Instant &Preview:"
 msgstr "&Anteprima istantanea:"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:70
-#, fuzzy
 msgid "Vector graphi&cs format"
-msgstr "Seleziona file grafico"
+msgstr "Formato grafi&ca vettoriale"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:1343
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Informa quando questo formato può contenere grafici vettoriali"
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:92
 msgid "&GUI name:"
@@ -3967,13 +3963,11 @@ msgstr "Evidenzia linguaggi &stranieri"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:77
 msgid "&Reset class options when document class changes"
-msgstr ""
-"&Reimposta le opzioni della classe quando cambia la classe del documento"
+msgstr "&Reimposta le opzioni della classe quando cambia la classe del documento"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:81
 msgid "Set class options to default on class change"
-msgstr ""
-"Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
+msgstr "Imposta le opzioni della classe a quelle prestabilite quando cambia la classe"
 
 #: src/frontends/qt2/ui/QPrefLatexModule.ui:92
 msgid "External Applications"
@@ -4214,8 +4208,7 @@ msgstr "Ca&ratteri scappatoia:"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:172
 msgid "Specify a personal dictionary file other than the default"
-msgstr ""
-"Specifica un dizionario personale alternativo diverso da quello prestabilito"
+msgstr "Specifica un dizionario personale alternativo diverso da quello prestabilito"
 
 #: src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:183
 msgid "Personal &dictionary:"
@@ -4661,8 +4654,7 @@ msgstr "Questa riga è l'intestazione della prima pagina"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:968
 msgid "Repeat this row as footer on every (except the last) page"
-msgstr ""
-"Ripeti questa riga come piè di pagina per ogni pagina (eccetto l'ultima)"
+msgstr "Ripeti questa riga come piè di pagina per ogni pagina (eccetto l'ultima)"
 
 #: src/frontends/qt2/ui/QTabularDialogBase.ui:983
 msgid "This row is the footer of the last page"
@@ -4756,8 +4748,7 @@ msgid "&View"
 msgstr "&Vista"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostra i contenuti del file segnato. E' possibile solo quando i file sono "
 "mostrati con il loro percorso."
@@ -4805,29 +4796,24 @@ msgid "Contents list"
 msgstr "Elenco contenuti"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:171
-#, fuzzy
 msgid "U&pdate"
 msgstr "&Aggiorna"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:182
-#, fuzzy
 msgid "&Up"
-msgstr "&Aggiorna"
+msgstr "&Su"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:193
-#, fuzzy
 msgid "&Down"
-msgstr "Città"
+msgstr "&Giù"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:204
-#, fuzzy
 msgid "&In"
-msgstr "&Ignora"
+msgstr "&In"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:215
-#, fuzzy
 msgid "&Out"
-msgstr "Esterno"
+msgstr "&Out"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
 msgid "&URL:"
@@ -4871,8 +4857,7 @@ msgstr "Inserisci uno spazio anche dopo un'interruzione di pagina"
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:113
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr ""
-"Valore personalizzato. Necessita una spaziatura come \"Personalizzato\"."
+msgstr "Valore personalizzato. Necessita una spaziatura come \"Personalizzato\"."
 
 #: src/frontends/qt2/ui/QVSpaceDialogBase.ui:121
 msgid "DefSkip"
@@ -6043,163 +6028,143 @@ msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
 msgid "BeginFrame"
-msgstr ""
+msgstr "BeginFrame"
 
 #: lib/layouts/beamer.layout:115
 msgid "Frame   "
-msgstr ""
+msgstr "Frame"
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
-msgstr ""
+msgstr "BeginPlainFrame"
 
 #: lib/layouts/beamer.layout:156
 msgid "Frame (no head/foot/sidebars)  "
-msgstr ""
+msgstr "Frame (senza apici/pedici/barre laterali)"
 
 #: lib/layouts/beamer.layout:179
-#, fuzzy
 msgid "EndFrame"
-msgstr "Mittente:"
+msgstr "EndFrame"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
-msgstr ""
+msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:207
-#, fuzzy
 msgid "Pause"
-msgstr "Incolla"
+msgstr "Pausa"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:280
-#, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Sezione \\arabic{section}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
 msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:321
-#, fuzzy
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "@Subsection@.\\arabic{subsubsection}"
+msgstr "Sottosezione \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:334
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}"
-msgstr "\\arabic{chapter}.\\arabic{section}"
+msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
-#, fuzzy
 msgid "AgainFrame"
-msgstr "cornice didascalia"
+msgstr "AgainFrame"
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
-msgstr ""
+msgstr "Ancora cornice con etichetta"
 
 #: lib/layouts/beamer.layout:386
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Blocco"
+msgstr "AlertBlock"
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
-msgstr ""
+msgstr "blocco con testo di allerta"
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "block "
-msgstr "Blocco"
+msgstr "blocco"
 
 #: lib/layouts/beamer.layout:520
-#, fuzzy
 msgid "Corollary.  "
 msgstr "Corollario."
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
-msgstr "Colonne"
+msgstr "Colonna"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
-msgstr ""
+msgstr "avvia una colonna di larghezza:"
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
-msgstr "Colonne"
+msgstr "colonne"
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "ColumnsCenterAligned"
 
 #: lib/layouts/beamer.layout:600
 msgid "columns (center aligned) "
-msgstr ""
+msgstr "colonne (allineate al centro) "
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "ColumnsTopAligned"
 
 #: lib/layouts/beamer.layout:630
 msgid "columns (top aligned) "
-msgstr ""
+msgstr "colonne (allineate in alto) "
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
 msgstr "Definizione."
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
-msgstr "Definizione"
+msgstr "Definizioni"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Definizione."
+msgstr "Definizioni."
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
 msgstr "Esempio."
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Esempio"
+msgstr "Esempi"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Esempio."
+msgstr "Esempi."
 
 #: lib/layouts/beamer.layout:702
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Esempio"
+msgstr "ExampleBlock"
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
-msgstr ""
+msgstr "blocco che mostra un esempio"
 
 #: lib/layouts/beamer.layout:734
-#, fuzzy
 msgid "Fact.  "
 msgstr "Fatto."
 
 #: lib/layouts/beamer.layout:737
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "Sottotitolo"
+msgstr "FrameSubtitle"
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:214 lib/layouts/svjour.inc:212
@@ -6212,81 +6177,68 @@ msgid "LyX-Code"
 msgstr "Codice LyX"
 
 #: lib/layouts/beamer.layout:819
-#, fuzzy
 msgid "NoteItem"
-msgstr "Nuova voce"
+msgstr "NoteItem"
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
-msgstr "nota"
+msgstr "nota:"
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "Attivo"
+msgstr "Solo"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
-msgstr ""
+msgstr "solo su lucidi"
 
 #: lib/layouts/beamer.layout:866
-#, fuzzy
 msgid "Overprint"
-msgstr "Offprint"
+msgstr "Sovrastampa"
 
 #: lib/layouts/beamer.layout:876
-#, fuzzy
 msgid "overprint "
-msgstr "Preprint"
+msgstr "sovrastampa"
 
 #: lib/layouts/beamer.layout:892
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Sovrapposizione"
+msgstr "OverlayArea"
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "overlayarea "
-msgstr "Sovrapposizione"
+msgstr "overlayArea"
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
 msgstr "Parte"
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
 msgstr "Dimostrazione."
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
-msgstr "Separazione"
+msgstr "Separatore"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:1001
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Grafici"
+msgstr "TitleGraphic"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
 msgstr "Teorema."
 
 #: lib/layouts/beamer.layout:1055
-#, fuzzy
 msgid "Uncover"
-msgstr "&Recupera"
+msgstr "Scopri"
 
 #: lib/layouts/beamer.layout:1064
 msgid "uncovered on slides  "
-msgstr ""
+msgstr "scopri sui lucidi"
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
 #: src/frontends/xforms/FormTabular.C:135
@@ -7655,26 +7607,22 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "Congettura @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/isprs.layout:38
-#, fuzzy
 msgid "ABSTRACT:"
-msgstr "SUNTO"
+msgstr "SUNTO:"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "PAROLE CHIAVI:"
 
 #: lib/layouts/isprs.layout:135
-#, fuzzy
 msgid "Commission"
-msgstr "Condizione"
+msgstr "Commissione"
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
-msgstr "Didascalia"
+msgstr "Didascalia."
 
 #: lib/layouts/isprs.layout:248
-#, fuzzy
 msgid "ACKNOWLEDGEMENTS"
 msgstr "RICONOSCIMENTI"
 
@@ -7833,9 +7781,8 @@ msgid "Preprint"
 msgstr "Preprint"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Affiliazione"
+msgstr "AltAffiliation"
 
 #: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
 msgid "Thanks:"
@@ -9175,11 +9122,11 @@ msgstr "Riconfigura|g"
 
 #: lib/ui/classic.ui:115 lib/ui/stdmenus.inc:122
 msgid "Selection as Lines|L"
-msgstr "Seleziona come linee|l"
+msgstr "Selezione come linee|l"
 
 #: lib/ui/classic.ui:116 lib/ui/stdmenus.inc:123
 msgid "Selection as Paragraphs|P"
-msgstr "Seleziona come paragrafi|p"
+msgstr "Selezione come paragrafi|p"
 
 #: lib/ui/classic.ui:120 lib/ui/stdmenus.inc:132
 msgid "Multicolumn|M"
@@ -9809,7 +9756,7 @@ msgstr "Tutorial|T"
 
 #: lib/ui/classic.ui:409 lib/ui/stdmenus.inc:449
 msgid "User's Guide|U"
-msgstr "Guida utente|G"
+msgstr "Guida dell'utente|G"
 
 #: lib/ui/classic.ui:410 lib/ui/stdmenus.inc:450
 msgid "Extended Features|E"
@@ -9817,7 +9764,7 @@ msgstr "Caratteristiche estese|C"
 
 #: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:451
 msgid "Embedded Objects|m"
-msgstr ""
+msgstr "Oggetti Incapsulati|p"
 
 #: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:452
 msgid "Customization|C"
@@ -10075,9 +10022,8 @@ msgid "Phonetic Symbols|y"
 msgstr "Simboli fonetici|i"
 
 #: lib/ui/stdmenus.inc:294
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Lista numerata"
+msgstr "Formula Numerata|N"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Aligned Environment"
@@ -10954,7 +10900,7 @@ msgid "Conversion failed"
 msgstr "La conversione ha fallito"
 
 #: src/buffer.C:627
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
@@ -10967,7 +10913,7 @@ msgid "Conversion script not found"
 msgstr "Non è stato trovato alcuno script di conversione."
 
 #: src/buffer.C:637
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
@@ -10980,7 +10926,7 @@ msgid "Conversion script failed"
 msgstr "Lo script di conversione ha fallito"
 
 #: src/buffer.C:658
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
@@ -11480,17 +11426,15 @@ msgstr "Per favore, installa LyX correttamente per avere un'idea dell'enorme\n"
 
 #: src/frontends/controllers/ControlAboutlyx.C:59
 msgid "amount of work other people have done for the LyX project."
-msgstr ""
-"lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
+msgstr "lavoro che altre persone hanno fatto e stanno facendo per il progetto LyX!"
 
 #: src/frontends/controllers/ControlAboutlyx.C:66
-#, fuzzy
 msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 msgstr ""
 "LyX è Copyright (C) 1995 di Matthias Ettrich,\n"
-"1995-2001 Gruppo LyX"
+"1995-200 Gruppo LyX"
 
 #: src/frontends/controllers/ControlAboutlyx.C:72
 msgid ""
@@ -11506,7 +11450,6 @@ msgstr ""
 "(a tua discrezione) in qualunque altra versione più recente della stessa."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -11523,8 +11466,8 @@ msgstr ""
 "(GPL) della GNU per ulteriori dettagli. Dovresti aver\n"
 "ricevuto una copia della Licenza Pubblica Generale (GPL)\n"
 "della GNU con questo programma; se non è così, scrivi a\n"
-"Free Software Foundation, Inc.,\n"
-"675 Mass Ave, Cambridge, MA 02139, USA."
+"Free Software Foundation, Inc., 51 "
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:86
 msgid "LyX Version "
@@ -11676,8 +11619,7 @@ msgstr "Non ho trovato alcun file di registro di LaTeX."
 
 #: src/frontends/controllers/ControlLog.C:113
 msgid "No literate programming build log file found."
-msgstr ""
-"Non è stato trovato alcun registro compilato di programmazione esperta."
+msgstr "Non è stato trovato alcun registro compilato di programmazione esperta."
 
 #: src/frontends/controllers/ControlLog.C:116
 msgid "No lyx2lyx error log file found."
@@ -12056,8 +11998,7 @@ msgstr "Le sottosezioni e ciò che viene prima appaiono nell'Indice generale"
 
 #: src/frontends/gtk/GDocument.C:854
 msgid "Subsubsections and above appear in TOC"
-msgstr ""
-"Le sotto sottosezioni e ciò che viene prima appaiono nell'Indice generale"
+msgstr "Le sotto sottosezioni e ciò che viene prima appaiono nell'Indice generale"
 
 #: src/frontends/gtk/GDocument.C:855
 msgid "Paragraphs and above appear in TOC"
@@ -12291,32 +12232,28 @@ msgid "Next command"
 msgstr "Comando successivo"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "big size"
-msgstr "Salto grande"
+msgstr "grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:48
-#, fuzzy
 msgid "Big size"
-msgstr "Salto grande"
+msgstr "Grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
 msgid "bigg size"
-msgstr ""
+msgstr "grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:49
-#, fuzzy
 msgid "Bigg size"
-msgstr "Salto grande"
+msgstr "Grande dimensione"
 
 #: src/frontends/qt2/QDelimiterDialog.C:94
 msgid "LyX: Delimiters"
 msgstr "LyX: delimitatori"
 
 #: src/frontends/qt2/QDelimiterDialog.C:106
-#, fuzzy
 msgid "Variable size"
-msgstr "linea tabellare"
+msgstr "Dimensione variabile"
 
 #: src/frontends/qt2/QDocument.C:78
 msgid "Author-year"
@@ -12880,8 +12817,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:101
 msgid "Select if the bibliography should appear in the Table of Contents"
-msgstr ""
-"Da selezionare se la bibliografia dovesse apparire nell'indice generale"
+msgstr "Da selezionare se la bibliografia dovesse apparire nell'indice generale"
 
 #: src/frontends/xforms/FormBibtex.C:105
 msgid "Double click to choose a BibTeX style from the list."
@@ -12993,8 +12929,7 @@ msgstr ""
 "frase (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:218
-msgid ""
-"Optional text which appears before the citation, e.g. \"see <Citation>\""
+msgid "Optional text which appears before the citation, e.g. \"see <Citation>\""
 msgstr ""
 "Testo facoltativo come appare prima della citazione e cioè \" vedi "
 "<Citazione>\""
@@ -13054,8 +12989,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:298
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
+msgstr " ``testo'' | ''testo'' | ,,testo`` | ,,testo'' | <<testo>> | >>testo<< "
 
 #: src/frontends/xforms/FormDocument.C:314
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
@@ -13107,8 +13041,7 @@ msgstr "Rami disponibili per questo documento."
 
 #: src/frontends/xforms/FormDocument.C:401
 msgid "Activated branches. Content will occur in the document's output"
-msgstr ""
-"Sono i rami attivati. Il contenuto sarà mostrato nel documento prodotto"
+msgstr "Sono i rami attivati. Il contenuto sarà mostrato nel documento prodotto"
 
 #: src/frontends/xforms/FormDocument.C:403
 msgid "Modify background color of branch inset"
@@ -13231,8 +13164,7 @@ msgstr "Imposta la larghezza dell'immagine al valore inserito."
 #: src/frontends/xforms/FormGraphics.C:163
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
-"Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
+msgstr "Seleziona l'unità di lunghezza e varia per ridimensionare l'intera immagine."
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Set the image height to the inserted value."
@@ -13266,13 +13198,11 @@ msgstr "Mostra l'immagine solo come un rettangolo della dimensione originale."
 
 #: src/frontends/xforms/FormGraphics.C:211
 msgid "The lower left x-value of the bounding box."
-msgstr ""
-"E' il valore inferiore sinistro dell'ascissa della casella delimitante."
+msgstr "E' il valore inferiore sinistro dell'ascissa della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:213
 msgid "The lower left y-value of the bounding box."
-msgstr ""
-"E il valore inferiore sinistro dell'ordinata della casella delimitante."
+msgstr "E il valore inferiore sinistro dell'ordinata della casella delimitante."
 
 #: src/frontends/xforms/FormGraphics.C:215
 msgid ""
@@ -13372,25 +13302,23 @@ msgstr "Carica file."
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "big"
-msgstr ""
+msgstr "grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
-#, fuzzy
 msgid "Big"
-msgstr "Salto grande"
+msgstr "Grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "bigg"
-msgstr ""
+msgstr "grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:68
 msgid "Bigg"
-msgstr ""
+msgstr "Grande"
 
 #: src/frontends/xforms/FormMathsDelim.C:85
-#, fuzzy
 msgid "Variable"
-msgstr "Tabella"
+msgstr "Variebile"
 
 #: src/frontends/xforms/FormMathsMatrix.C:72
 msgid "Top | Middle | Bottom"
@@ -13444,8 +13372,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Oggetti di LyX a cui può essere assegnato un colore."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modifica il colore dell'oggetto di LyX. Nota che allora devi premere il "
 "pulsante \"Applica\" per attivare il cambiamento."
@@ -13634,8 +13561,7 @@ msgstr "No|Niente matematica|Sì"
 
 #: src/frontends/xforms/FormPreferences.C:2114
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
+msgstr " predefinito | Lettera US | Legale US | Esecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2370
 msgid "Default path"
@@ -13799,8 +13725,7 @@ msgid "Search backwards."
 msgstr "Ricerca all'indietro."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 "Esporta il buffer in questo formato prima di eseguire il comando contenuto "
 "in esso."
@@ -14057,12 +13982,11 @@ msgstr ""
 "BibTeX non sarà in grado di trovarli."
 
 #: src/insets/insetbibtex.C:245
-#, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Ci sono degli spazi nei percorsi ai tuoi database BibTeX.\n"
+"Ci sono degli spazi nei percorsi ai tuoi file di stile BibTeX.\n"
 "BibTeX non sarà in grado di trovarli."
 
 #: src/insets/insetbox.C:57
@@ -14367,8 +14291,7 @@ msgstr "Non è stato trovato alcun file!"
 
 #: src/insets/render_graphic.C:107
 msgid "Error converting to loadable format"
-msgstr ""
-"Si è verificato un errore durante la conversione ad un formato caricabile"
+msgstr "Si è verificato un errore durante la conversione ad un formato caricabile"
 
 #: src/insets/render_graphic.C:109
 msgid "Error loading file into memory"
@@ -14420,8 +14343,7 @@ msgstr ""
 
 #: src/ispell.C:377
 msgid "Could not communicate with the ispell spellchecker process."
-msgstr ""
-"Non riesco a comunicare con il processo di controllo ortografico ispell"
+msgstr "Non riesco a comunicare con il processo di controllo ortografico ispell"
 
 #: src/kbsequence.C:160
 msgid "   options: "
@@ -14764,8 +14686,7 @@ msgstr "Manca il tipo di file [esempio latex, ps...] dopo l'opzione --export"
 
 #: src/lyx_main.C:942
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr ""
-"Manca il tipo di file [per esempio. latex, ps...] dopo l'opzione --import"
+msgstr "Manca il tipo di file [per esempio. latex, ps...] dopo l'opzione --import"
 
 #: src/lyx_main.C:947
 msgid "Missing filename for --import"
@@ -15053,8 +14974,7 @@ msgstr ""
 "prestabilite dopo il cambiamento di classe."
 
 #: src/lyxrc.C:2119
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "E' l'intervallo di tempo tra due autosalvataggi (in secondi): 0 significa "
 "nessun autosalvataggio."
@@ -15085,8 +15005,7 @@ msgstr ""
 
 #: src/lyxrc.C:2138
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
+msgstr "Da selezionare per controllare se esiste ancora l'elenco degli ultimi file."
 
 #: src/lyxrc.C:2142
 msgid ""
@@ -15144,8 +15063,7 @@ msgstr ""
 
 #: src/lyxrc.C:2188
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Specifica i caratteri addizionali che possono essere parte di una parola."
+msgstr "Specifica i caratteri addizionali che possono essere parte di una parola."
 
 #: src/lyxrc.C:2192
 msgid ""
@@ -15188,8 +15106,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2220
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Da selezionare se un comando di cambio lingua è richiesto alla fine del "
 "documento."
@@ -15270,8 +15187,7 @@ msgstr ""
 "d'ambiente PERCORSO. Usa il formato nativo del sistema operativo."
 
 #: src/lyxrc.C:2271
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "Specifica un dizionario personale alternativo. Per esempio:\".ispell_english"
 "\"."
@@ -15399,8 +15315,7 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "E' il tuo programma di stampa preferito, cioè \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2371
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Da selezionare per abilitare il supporto per i linguaggi da destra a "
 "sinistra (cioè: Ebreo, Arabo)."
@@ -15660,8 +15575,7 @@ msgstr "Tutti i file (*)"
 
 #: src/support/package.C.in:439
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 "Non riesco a determinare il percorso all'eseguibile di LyX dalla linea di "
 "comando %1$s"
@@ -15756,8 +15670,7 @@ msgstr ""
 
 #: src/text.C:1199
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
+msgstr "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
 #: src/text.C:2355
 msgid "Change: "
@@ -15865,9 +15778,3 @@ msgstr "Riempimento verticale "
 msgid "protected"
 msgstr "protetto"
 
-#, fuzzy
-#~ msgid "Insets|n"
-#~ msgstr "Inserisci|I"
-
-#~ msgid "LyX function 'layout' needs an argument."
-#~ msgstr "La funzione di LyX 'layout' necessita di un argomento."
