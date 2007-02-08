@@ -510,6 +510,15 @@ void LCursor::setSelection(DocIterator const & where, int n)
 }
 
 
+void LCursor::setSelection(DocIterator const & from,
+		DocIterator const & to)
+{
+	setCursor(to);
+	selection() = true;
+	anchor_ = from;
+}
+
+
 void LCursor::clearSelection()
 {
 	selection() = false;
@@ -543,8 +552,12 @@ void LCursor::info(odocstream & os) const
 		operator[](i).inset().infoize(os);
 		os << "  ";
 	}
-	if (pos() != 0)
-		prevInset()->infoize2(os);
+	if (pos() != 0) {
+		InsetBase const * inset = prevInset();
+		// prevInset() can return 0 in certain case.
+		if (inset)
+			prevInset()->infoize2(os);
+	}
 	// overwite old message
 	os << "                    ";
 }

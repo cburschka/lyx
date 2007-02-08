@@ -78,7 +78,13 @@ InsetBase * DocIterator::prevInset()
 	if (pos() == 0)
 		return 0;
 	if (inMathed())
-		return prevAtom().nucleus();
+		if (cell().empty())
+			// FIXME: this should not happen but it does.
+			// See bug 3189
+			// http://bugzilla.lyx.org/show_bug.cgi?id=3189
+			return 0;
+		else
+			return prevAtom().nucleus();
 	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
 }
 
@@ -89,7 +95,13 @@ InsetBase const * DocIterator::prevInset() const
 	if (pos() == 0)
 		return 0;
 	if (inMathed())
-		return prevAtom().nucleus();
+		if (cell().empty())
+			// FIXME: this should not happen but it does.
+			// See bug 3189
+			// http://bugzilla.lyx.org/show_bug.cgi?id=3189
+			return 0;
+		else
+			return prevAtom().nucleus();
 	return paragraph().isInset(pos() - 1) ? paragraph().getInset(pos() - 1) : 0;
 }
 
