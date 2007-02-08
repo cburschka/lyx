@@ -152,7 +152,7 @@ bool LaTeXFeatures::isRequired(string const & name) const
 }
 
 
-bool LaTeXFeatures::isAvailable(string const & name) const
+bool LaTeXFeatures::isAvailable(string const & name)
 {
 	if (packages_.empty())
 		getAvailable();
