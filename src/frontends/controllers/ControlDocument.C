@@ -180,27 +180,25 @@ void ControlDocument::saveAsDefault() const
 
 bool const ControlDocument::isFontAvailable(std::string const & font) const
 {
-	OutputParams runparams;
-	LaTeXFeatures features(kernel().buffer(), kernel().buffer().params(), runparams);
 	if (font == "default" || font == "cmr" 
 	    || font == "cmss" || font == "cmtt")
 		// these are standard
 		return true;
 	else if (font == "lmodern" || font == "lmss" || font == "lmtt")
-		return features.isAvailable("lmodern");
+		return LaTeXFeatures::isAvailable("lmodern");
 	else if (font == "times" || font == "palatino" 
 		 || font == "helvet" || font == "courier")
-		return (features.isAvailable("psnfss"));
+		return LaTeXFeatures::isAvailable("psnfss");
 	else if (font == "cmbr" || font == "cmtl")
-		return features.isAvailable("cmbright");
+		return LaTeXFeatures::isAvailable("cmbright");
 	else if (font == "utopia")
-		return (features.isAvailable("utopia")
-			|| features.isAvailable("fourier"));
+		return LaTeXFeatures::isAvailable("utopia")
+			|| LaTeXFeatures::isAvailable("fourier");
 	else if (font == "beraserif" || font == "berasans" 
 		|| font == "beramono")
-		return features.isAvailable("bera");
+		return LaTeXFeatures::isAvailable("bera");
 	else
-		return features.isAvailable(font);
+		return LaTeXFeatures::isAvailable(font);
 }
 
 
