@@ -349,7 +349,7 @@ public:
 	/// \retval true if a change has happened and we need a redraw.
 	/// FIXME: replace LCursor with DocIterator. This is not possible right
 	/// now because recordUndo() is called which needs a LCursor.
-	bool deleteEmptyParagraphMechanism(LCursor & cur,
+	static bool deleteEmptyParagraphMechanism(LCursor & cur,
 		LCursor & old, bool & need_anchor_change);
 
 	/// delete double spaces, leading spaces, and empty paragraphs
@@ -382,7 +382,7 @@ private:
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
-	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
+	static void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
 
 	// At cursor position 0, try to merge the paragraph with the one before it.
 	// Ignore change tracking, i.e., physically remove the end-of-par character
