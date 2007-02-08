@@ -508,11 +508,14 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 }
 
 
-string const stripExtensionIfPossible(string const & file)
+string const stripExtensionIfPossible(string const & file, bool nice)
 {
-	// Remove the extension so the LaTeX will use whatever
-	// is appropriate (when there are several versions in
-	// different formats)
+	// Remove the extension so the LaTeX compiler will use whatever
+	// is appropriate (when there are several versions in different
+	// formats).
+	// Do this only if we are not exporting for internal usage, because
+	// pdflatex prefers png over pdf and it would pick up the png images
+	// that we generate for preview.
 	// This works only if the filename contains no dots besides
 	// the just removed one. We can fool here by replacing all
 	// dots with a macro whose definition is just a dot ;-)
@@ -520,7 +523,7 @@ string const stripExtensionIfPossible(string const & file)
 	// name is escaped.
 	string const latex_name = latex_path(file,
 					     support::EXCLUDE_EXTENSION);
-	if (contains(latex_name, '"'))
+	if (!nice || contains(latex_name, '"'))
 		return latex_name;
 	return latex_path(removeExtension(file),
 			  support::PROTECT_EXTENSION,
@@ -528,7 +531,7 @@ string const stripExtensionIfPossible(string const & file)
 }
 
 
-string const stripExtensionIfPossible(string const & file, string const & to)
+string const stripExtensionIfPossible(string const & file, string const & to, bool nice)
 {
 	// No conversion is needed. LaTeX can handle the graphic file as is.
 	// This is true even if the orig_file is compressed.
@@ -538,7 +541,7 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 	if (to_format == file_format ||
 	    (to_format == "eps" && file_format ==  "ps") ||
 	    (to_format ==  "ps" && file_format == "eps"))
-		return stripExtensionIfPossible(file);
+		return stripExtensionIfPossible(file, nice);
 	return latex_path(file, support::EXCLUDE_EXTENSION);
 }
 
@@ -557,7 +560,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// previewing source code, no file copying or file format conversion
 	if (runparams.dryrun)
-		return stripExtensionIfPossible(rel_file);
+		return stripExtensionIfPossible(rel_file, runparams.nice);
 
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
@@ -692,7 +695,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 						      output_file);
 		runparams.exportdata->addExternalFile("dvi", source_file,
 						      output_file);
-		return stripExtensionIfPossible(output_file, to);
+		return stripExtensionIfPossible(output_file, to, runparams.nice);
 	}
 
 	FileName const to_file = FileName(changeExtension(temp_file.absFilename(), ext));
@@ -710,7 +713,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 						      output_to_file);
 		runparams.exportdata->addExternalFile("dvi", to_file,
 						      output_to_file);
-		return stripExtensionIfPossible(output_to_file);
+		return stripExtensionIfPossible(output_to_file, runparams.nice);
 	}
 
 	lyxerr[Debug::GRAPHICS]
@@ -730,7 +733,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				to_file, output_to_file);
 	}
 
-	return stripExtensionIfPossible(output_to_file);
+	return stripExtensionIfPossible(output_to_file, runparams.nice);
 }
 
 
