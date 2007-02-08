@@ -510,15 +510,6 @@ void LCursor::setSelection(DocIterator const & where, int n)
 }
 
 
-void LCursor::setSelection(DocIterator const & from,
-		DocIterator const & to)
-{
-	setCursor(to);
-	selection() = true;
-	anchor_ = from;
-}
-
-
 void LCursor::clearSelection()
 {
 	selection() = false;
