@@ -829,7 +829,7 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 
 	// font selection must be done before loading fontenc.sty
 	string const fonts =
-		loadFonts(features, fontsRoman, fontsSans,
+		loadFonts(fontsRoman, fontsSans,
 			  fontsTypewriter, fontsSC, fontsOSF,
 			  fontsSansScale, fontsTypewriterScale);
 	if (!fonts.empty()) {
@@ -1331,7 +1331,7 @@ string const BufferParams::babelCall(string const & lang_opts) const
 }
 
 
-string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm,
+string const BufferParams::loadFonts(string const & rm,
 				     string const & sf, string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale) const
@@ -1375,9 +1375,9 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 	// Times
 	else if (rm == "times") {
 		// try to load the best available package
-		if (features.isAvailable("mathptmx"))
+		if (LaTeXFeatures::isAvailable("mathptmx"))
 			os << "\\usepackage{mathptmx}\n";
-		else if (features.isAvailable("mathptm"))
+		else if (LaTeXFeatures::isAvailable("mathptm"))
 			os << "\\usepackage{mathptm}\n";
 		else
 			os << "\\usepackage{times}\n";
@@ -1385,7 +1385,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 	// Palatino
 	else if (rm == "palatino") {
 		// try to load the best available package
-		if (features.isAvailable("mathpazo")) {
+		if (LaTeXFeatures::isAvailable("mathpazo")) {
 			os << "\\usepackage";
 			if (osf || sc) {
 				os << '[';
@@ -1398,7 +1398,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 			}
 			os << "{mathpazo}\n";
 		}
-		else if (features.isAvailable("mathpple"))
+		else if (LaTeXFeatures::isAvailable("mathpple"))
 			os << "\\usepackage{mathpple}\n";
 		else
 			os << "\\usepackage{palatino}\n";
@@ -1407,7 +1407,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features, string const & rm
 	else if (rm == "utopia") {
 		// fourier supersedes utopia.sty, but does
 		// not work with OT1 encoding.
-		if (features.isAvailable("fourier")
+		if (LaTeXFeatures::isAvailable("fourier")
 		    && lyxrc.fontenc != "default") {
 			os << "\\usepackage";
 			if (osf || sc) {

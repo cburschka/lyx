@@ -271,7 +271,7 @@ public:
 	///
 	std::string const babelCall(std::string const & lang_opts) const;
 	/// set up the document fonts
-	std::string const loadFonts(LaTeXFeatures & features, std::string const & rm,
+	std::string const loadFonts(std::string const & rm,
 				     std::string const & sf, std::string const & tt,
 				     bool const & sc, bool const & osf,
 				     int const & sfscale, int const & ttscale) const;
