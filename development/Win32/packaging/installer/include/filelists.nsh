@@ -123,7 +123,6 @@ Lists of files to include in the installer
 
   ${FILE}UserDict.py"
   ${FILE}codecs.py"
-  ${FILE}commands.py"
   ${FILE}copy_reg.py"
   ${FILE}fnmatch.py"
   ${FILE}getopt.py"
