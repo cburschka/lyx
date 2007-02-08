@@ -168,8 +168,6 @@ public:
 	pos_type size() const { return text_.size(); }
 	///
 	bool empty() const { return text_.empty(); }
-	///
-	void clearContents();
 
 	///
 	LyXLayout_ptr const & layout() const;

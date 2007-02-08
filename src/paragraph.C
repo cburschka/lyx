@@ -1520,12 +1520,6 @@ InsetBase::Code Paragraph::ownerCode() const
 }
 
 
-void Paragraph::clearContents()
-{
-	text_.clear();
-}
-
-
 ParagraphParameters & Paragraph::params()
 {
 	return pimpl_->params;
