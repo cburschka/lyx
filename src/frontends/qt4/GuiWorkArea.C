@@ -161,6 +161,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 GuiWorkArea::GuiWorkArea(int w, int h, int id, LyXView & lyx_view)
 	: WorkArea(id, lyx_view), need_resize_(false), schedule_redraw_(false)
 {
+	screen_ = QPixmap(viewport()->width(), viewport()->height());
 	cursor_ = new frontend::CursorWidget();
 	cursor_->hide();
 
@@ -446,8 +447,6 @@ void GuiWorkArea::update(int x, int y, int w, int h)
 
 void GuiWorkArea::doGreyOut(QLPainter & pain)
 {
-	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
 	pain.fillRectangle(0, 0, width(), height(),
 		LColor::bottomarea);
 
