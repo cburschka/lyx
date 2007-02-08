@@ -350,7 +350,7 @@ Section "-Installation actions" SecInstallation
    UpdateLater:
   ${endif}
 
-  ; save MiKTeX's install path to be able to remove LyX's  LaTeX files in the uninstaller
+  ; save MiKTeX's install path to be able to remove LyX's LaTeX-files in the uninstaller
   FileOpen $R1 "$INSTDIR\Resources\uninstallPaths.dat" w
   FileWrite $R1 '$LaTeXPath'
   FileClose $R1

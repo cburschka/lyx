@@ -138,7 +138,7 @@ Function MissingPrograms
 
   ; test if Python is installed
   ; only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered
-  ; with outdated Python interpretes
+  ; with outdated Python interpreters
   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
   ${if} $PythonPath != ""
    StrCpy $0 $PythonPath "" -1 ; remove the "\" at the end
