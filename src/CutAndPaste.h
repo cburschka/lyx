@@ -45,7 +45,7 @@ docstring getSelection(Buffer const & buffer, size_t sel_index);
  */
 void replaceSelectionWithString(LCursor & cur, docstring const & str,
 				bool backwards);
-/// If a selection exists, cut it and push it to the cut buffer.
+/// If a selection exists, delete it without pushing it to the cut buffer.
 /// Does handle undo.
 void replaceSelection(LCursor & cur);
 
@@ -56,8 +56,8 @@ void replaceSelection(LCursor & cur);
  * \param doclear If this is true: Delete leading spaces in paragraphs before
  *                they get merged.
  * \param realcut If this is true: Push the selection to the cut buffer and
- *                system clipboard. Set this to false for internal cuts that
- *                do not directly originate from the user.
+ *                system clipboard. Set this to false to only delete the
+ *                selection. 
  */
 void cutSelection(LCursor & cur, bool doclear = true, bool realcut = true);
 /// Push the current selection to the cut buffer and the system clipboard.
