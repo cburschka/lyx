@@ -71,10 +71,10 @@ public:
 	void require(std::string const & name);
 	/// Which of the required packages are installed?
 	static void getAvailable();
+	/// Is the (required) package available?
+	static bool isAvailable(std::string const & name);
 	/// Is the package required?
 	bool isRequired(std::string const & name) const;
-	/// Is the (required) package available?
-	bool isAvailable(std::string const & name) const;
 	///
 	void useFloat(std::string const & name);
 	///
