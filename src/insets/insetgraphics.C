@@ -711,7 +711,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		                                      output_to_file);
 		runparams.exportdata->addExternalFile("dvi", to_file,
 		                                      output_to_file);
-		return stripExtensionIfPossible(output_file);
+		return stripExtensionIfPossible(output_to_file);
 	}
 
 	lyxerr[Debug::GRAPHICS]
@@ -727,7 +727,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 				to_file, output_to_file);
 	}
 
-	return stripExtensionIfPossible(output_file);
+	return stripExtensionIfPossible(output_to_file);
 }
 
 

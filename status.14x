@@ -125,6 +125,9 @@ What's new
 
 - Read filenames with spaces in external insets correctly from .lyx files
 
+- Use the correct filename extension of included graphics in latex export if
+  it cannot be omitted.
+
 * USER INTERFACE:
 
 - Fix slowness with lots of math on Windows (bug 2900).
