@@ -352,11 +352,19 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 	BOOST_ASSERT(startpit != endpit || start <= end);
 
 	// Clone the paragraphs within the selection.
-	ParagraphList paragraphs(boost::next(pars.begin(), startpit),
-				 boost::next(pars.begin(), endpit + 1));
+	ParagraphList copy_pars(boost::next(pars.begin(), startpit),
+				boost::next(pars.begin(), endpit + 1));
 
-	ParagraphList::iterator it = paragraphs.begin();
-	ParagraphList::iterator it_end = paragraphs.end();
+	// Remove the end of the last paragraph; afterwards, remove the beginning
+	// of the first paragraph. Keep this order - there may only be one paragraph!
+	// Do not track deletions here; this is an internal action not visible to the user
+	Paragraph & back = copy_pars.back();
+	back.eraseChars(end, back.size(), false);
+	Paragraph & front = copy_pars.front();
+	front.eraseChars(0, start, false);
+
+	ParagraphList::iterator it = copy_pars.begin();
+	ParagraphList::iterator it_end = copy_pars.end();
 
 	for (; it != it_end; it++) {
 		// ERT paragraphs have the Language latex_language.
@@ -369,17 +377,15 @@ void copySelectionHelper(Buffer const & buf, ParagraphList & pars,
 		it->setInsetOwner(0);
 	}
 
-	// Cut out the end of the last paragraph.
-	Paragraph & back = paragraphs.back();
-	// do not track deletion here; it is an internal action not visible to the user
-	back.eraseChars(end, back.size(), false);
+	// do not copy text (also nested in insets) which is marked as deleted
+	// acceptChanges() is defined for LyXText rather than ParagraphList
+	// Thus we must wrap copy_pars into a LyXText object and cross our fingers
+	LyXText lt;
+	copy_pars.swap(lt.paragraphs());
+	lt.acceptChanges(buf.params());
+	copy_pars.swap(lt.paragraphs());
 
-	// Cut out the begin of the first paragraph
-	Paragraph & front = paragraphs.front();
-	// again, do not track deletion
-	front.eraseChars(0, start, false);
-
-	cutstack.push(make_pair(paragraphs, tc));
+	cutstack.push(make_pair(copy_pars, tc));
 }
 
 } // namespace anon
