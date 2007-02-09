@@ -1210,16 +1210,33 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_FLOAT_INSERT:
 	case LFUN_FLOAT_WIDE_INSERT:
 	case LFUN_WRAP_INSERT: {
+		bool content = cur.selection();  // will some text be moved into the inset?
+
 		doInsertInset(cur, this, cmd, true, true);
 		cur.posRight();
 		ParagraphList & pars = cur.text()->paragraphs();
-		// We create two additional empty paragraphs so that the
-		// user can choose where to put the graphics (or table).
-		pars.push_back(pars[0]);
-		pars.push_back(pars[0]);
-		// Now that we have three paragraphs, we reposition the cursor
-		// at the beginning of the second one.
-		cur.pit() = 1;
+
+		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
+
+		// add a separate paragraph for the caption inset
+		pars.push_back(Paragraph());
+		pars.back().setInsetOwner(pars[0].inInset());
+		pars.back().layout(tclass.defaultLayout());
+
+		int cap_pit = pars.size() - 1;
+
+		// if an empty inset was created, we create an additional empty
+		// paragraph at the bottom so that the user can choose where to put
+		// the graphics (or table).
+		if (!content) {
+			pars.push_back(Paragraph());
+			pars.back().setInsetOwner(pars[0].inInset());
+			pars.back().layout(tclass.defaultLayout());
+			
+		}
+
+		// reposition the cursor to the caption
+		cur.pit() = cap_pit;
 		cur.pos() = 0;
 		cur.dispatch(FuncRequest(LFUN_CAPTION_INSERT));
 		// FIXME: When leaving the Float (or Wrap) inset we should
