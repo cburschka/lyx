@@ -964,14 +964,12 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// This must be identical to basefont in TeXOnePar().
 	LyXFont basefont;
 
-	LaTeXFeatures features(buf, bparams, runparams);
-
 	// output change tracking marks only if desired,
 	// if dvipost is installed,
 	// and with dvi/ps (other formats don't work)
 	bool const output = bparams.outputChanges
 		&& runparams.flavor == OutputParams::LATEX
-		&& features.isAvailable("dvipost");
+		&& LaTeXFeatures::isAvailable("dvipost");
 
 	// Maybe we have to create a optional argument.
 	pos_type body_pos = beginOfBody();
@@ -1010,7 +1008,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// Computed only once per paragraph since bparams.encoding() is expensive
 	Encoding const & doc_encoding = bparams.encoding();
 	for (pos_type i = 0; i < size(); ++i) {
-		++column;
 		// First char in paragraph or after label?
 		if (i == body_pos) {
 			if (body_pos > 0) {
@@ -1021,6 +1018,11 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				}
 				basefont = getLayoutFont(bparams, outerfont);
 				running_font = basefont;
+
+				column += Changes::latexMarkChange(os,
+						runningChangeType, Change::UNCHANGED, output);
+				runningChangeType = Change::UNCHANGED;
+
 				os << "}] ";
 				column +=3;
 			}
@@ -1033,6 +1035,21 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				column += startTeXParParams(bparams, os,
 							    runparams.moving_arg);
 		}
+
+		Change::Type changeType = pimpl_->lookupChange(i).type;
+
+		// do not output text which is marked deleted
+		// if change tracking output is disabled
+		if (!output && changeType == Change::DELETED) {
+			runningChangeType = changeType;
+			continue;
+		}
+
+		++column;
+		
+		column += Changes::latexMarkChange(os, runningChangeType,
+			changeType, output);
+		runningChangeType = changeType;
 
 		value_type c = getChar(i);
 
@@ -1077,8 +1094,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 					// simpleTeXBlanks incremented i, and
 					// simpleTeXSpecialChars would output
 					// the combining character again.
-					// FIXME: change tracking
-					// Is this correct WRT change tracking?
 					continue;
 			}
 		}
@@ -1094,33 +1109,15 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			open_font = true;
 		}
 
-		Change::Type changeType = pimpl_->lookupChange(i).type;
-
-		column += Changes::latexMarkChange(os, runningChangeType,
-			changeType, output);
-		runningChangeType = changeType;
-
-		// do not output text which is marked deleted
-		// if change tracking output is not desired
-		if (output || runningChangeType != Change::DELETED) {
-			// FIXME: change tracking
-			// simpleTeXSpecialChars does not output anything if
-			// c is a space. Is this correct WRT change tracking?
-			OutputParams rp = runparams;
-			rp.free_spacing = style->free_spacing;
-			rp.local_font = &font;
-			rp.intitle = style->intitle;
-			pimpl_->simpleTeXSpecialChars(buf, bparams,
-						doc_encoding, os, texrow, rp,
-						font, running_font,
-						basefont, outerfont, open_font,
-						runningChangeType,
-						*style, i, column, c);
-		}
+		OutputParams rp = runparams;
+		rp.free_spacing = style->free_spacing;
+		rp.local_font = &font;
+		rp.intitle = style->intitle;
+		pimpl_->simpleTeXSpecialChars(buf, bparams, doc_encoding, os,
+					texrow, rp, font, running_font,
+					basefont, outerfont, open_font,
+					runningChangeType, *style, i, column, c);
 	}
-
-	column += Changes::latexMarkChange(os,
-			runningChangeType, Change::UNCHANGED, output);
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
@@ -1144,6 +1141,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		                                  bparams);
 #endif
 	}
+
+	column += Changes::latexMarkChange(os,
+			runningChangeType, Change::UNCHANGED, output);
 
 	// Needed if there is an optional argument but no contents.
 	if (body_pos > 0 && body_pos == size()) {
