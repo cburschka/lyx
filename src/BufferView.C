@@ -682,8 +682,7 @@ FuncStatus BufferView::getStatus(FuncRequest const & cmd)
 
 	case LFUN_CHANGES_OUTPUT: {
 		OutputParams runparams;
-		LaTeXFeatures features(*buffer_, buffer_->params(), runparams);
-		flag.enabled(buffer_ && features.isAvailable("dvipost"));
+		flag.enabled(buffer_ && LaTeXFeatures::isAvailable("dvipost"));
 		flag.setOnOff(buffer_->params().outputChanges);
 		break;
 	}
