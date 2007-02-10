@@ -80,10 +80,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.4.3\n"
+"Project-Id-Version: LyX 1.4.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-31 17:00+0100\n"
-"PO-Revision-Date: 2006-11-01 11:21+0200\n"
+"PO-Revision-Date: 2007-02-10 15:03+0200\n"
 "Last-Translator: Michael Gerz <Michael.Gerz@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3936,7 +3936,7 @@ msgstr "Wählen Sie eine Grafikdatei"
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:1343
 msgid "Tell whether this format can contain vector graphics."
-msgstr ""
+msgstr "Legt fest, ob das Format Vektorgrafiken enthalten kann."
 
 #: src/frontends/qt2/ui/QPrefFileformatsModule.ui:92
 msgid "&GUI name:"
@@ -5162,7 +5162,7 @@ msgstr "Kriterium #:"
 #: lib/layouts/amsmaths-plain.inc:103 lib/layouts/amsmaths-seq.inc:88
 #: lib/layouts/amsmaths.inc:213
 msgid "Fact"
-msgstr "Tatsache"
+msgstr "Fakt"
 
 #: lib/layouts/IEEEtran.layout:134
 msgid "Fact #:"
@@ -6140,7 +6140,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:179
 #, fuzzy
 msgid "EndFrame"
-msgstr "Absendername:"
+msgstr ""
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
@@ -6149,7 +6149,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:207
 #, fuzzy
 msgid "Pause"
-msgstr "Einfügen"
+msgstr "Pause"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -6158,7 +6158,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:280
 #, fuzzy
 msgid "Section \\arabic{section}"
-msgstr "@Section@.\\arabic{subsection}"
+msgstr "Abschnitt \\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:292 lib/layouts/numarticle.inc:17
 msgid "\\Alph{section}"
@@ -6177,7 +6177,7 @@ msgstr "\\arabic{chapter}.\\arabic{section}"
 #: lib/layouts/beamer.layout:347
 #, fuzzy
 msgid "AgainFrame"
-msgstr "Legende (Rahmen)"
+msgstr ""
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
@@ -6186,7 +6186,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:386
 #, fuzzy
 msgid "AlertBlock"
-msgstr "Blocksatz"
+msgstr ""
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
@@ -6195,7 +6195,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:474
 #, fuzzy
 msgid "block "
-msgstr "Blocksatz"
+msgstr "Block"
 
 #: lib/layouts/beamer.layout:520
 #, fuzzy
@@ -6205,7 +6205,7 @@ msgstr "Korollar."
 #: lib/layouts/beamer.layout:537
 #, fuzzy
 msgid "Column"
-msgstr "Spalten"
+msgstr "Spalte"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
@@ -6218,11 +6218,11 @@ msgstr "Spalten"
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "Spalten Oben Ausgerichtet"
 
 #: lib/layouts/beamer.layout:600
 msgid "columns (center aligned) "
-msgstr ""
+msgstr "Spalten (oben ausgerichtet) "
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
@@ -6240,12 +6240,12 @@ msgstr "Definition."
 #: lib/layouts/beamer.layout:679
 #, fuzzy
 msgid "Definitions"
-msgstr "Definition"
+msgstr "Definitionen"
 
 #: lib/layouts/beamer.layout:682
 #, fuzzy
 msgid "Definitions.  "
-msgstr "Definition."
+msgstr "Definitionen."
 
 #: lib/layouts/beamer.layout:688
 #, fuzzy
@@ -6255,17 +6255,17 @@ msgstr "Beispiel."
 #: lib/layouts/beamer.layout:696
 #, fuzzy
 msgid "Examples"
-msgstr "Beispiel"
+msgstr "Beispiele"
 
 #: lib/layouts/beamer.layout:699
 #, fuzzy
 msgid "Examples.  "
-msgstr "Beispiel."
+msgstr "Beispiele."
 
 #: lib/layouts/beamer.layout:702
 #, fuzzy
 msgid "ExampleBlock"
-msgstr "Beispiel"
+msgstr ""
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
@@ -6274,12 +6274,12 @@ msgstr ""
 #: lib/layouts/beamer.layout:734
 #, fuzzy
 msgid "Fact.  "
-msgstr "Tatsache."
+msgstr "Fakt."
 
 #: lib/layouts/beamer.layout:737
 #, fuzzy
 msgid "FrameSubtitle"
-msgstr "Untertitel"
+msgstr ""
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:214 lib/layouts/svjour.inc:212
@@ -6299,12 +6299,12 @@ msgstr "Neuer Begriff"
 #: lib/layouts/beamer.layout:830
 #, fuzzy
 msgid "note:  "
-msgstr "Notiz"
+msgstr "Notiz:"
 
 #: lib/layouts/beamer.layout:842
 #, fuzzy
 msgid "Only"
-msgstr "An"
+msgstr ""
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
@@ -6313,22 +6313,22 @@ msgstr ""
 #: lib/layouts/beamer.layout:866
 #, fuzzy
 msgid "Overprint"
-msgstr "Sonderdruck"
+msgstr ""
 
 #: lib/layouts/beamer.layout:876
 #, fuzzy
 msgid "overprint "
-msgstr "Preprint"
+msgstr ""
 
 #: lib/layouts/beamer.layout:892
 #, fuzzy
 msgid "OverlayArea"
-msgstr "Overlay"
+msgstr ""
 
 #: lib/layouts/beamer.layout:902
 #, fuzzy
 msgid "overlayarea "
-msgstr "Overlay"
+msgstr ""
 
 #: lib/layouts/beamer.layout:932
 #, fuzzy
@@ -6343,7 +6343,7 @@ msgstr "Beweis."
 #: lib/layouts/beamer.layout:953
 #, fuzzy
 msgid "Separator"
-msgstr "Absatztrennung"
+msgstr ""
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
@@ -6352,7 +6352,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:1001
 #, fuzzy
 msgid "TitleGraphic"
-msgstr "Grafik"
+msgstr "TitelGrafik"
 
 #: lib/layouts/beamer.layout:1027
 #, fuzzy
@@ -6362,7 +6362,7 @@ msgstr "Theorem."
 #: lib/layouts/beamer.layout:1055
 #, fuzzy
 msgid "Uncover"
-msgstr "&Wieder herstellen"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1064
 msgid "uncovered on slides  "
@@ -9895,7 +9895,7 @@ msgstr "Handbuchergänzungen|H"
 
 #: lib/ui/classic.ui:411 lib/ui/stdmenus.inc:451
 msgid "Embedded Objects|m"
-msgstr ""
+msgstr "Eingebettete Objekte|O"
 
 #: lib/ui/classic.ui:412 lib/ui/stdmenus.inc:452
 msgid "Customization|C"
