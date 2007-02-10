@@ -688,7 +688,8 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 	// run through the LaTeX compiler.
 	// If we're running through the LaTeX compiler, we should write the
 	// generated files in the bufer's temporary directory.
-	bool const external_in_tmpdir = !runparams.nice && !runparams.dryrun;
+	bool const external_in_tmpdir = !runparams.nice;
+	bool const dryrun = runparams.dryrun || runparams.inComment;
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
@@ -707,7 +708,7 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
                                                        buf, os,
                                                        *(runparams.exportdata),
                                                        external_in_tmpdir,
-                                                       runparams.inComment);
+                                                       dryrun);
                 }
                 
 	}
@@ -715,7 +716,7 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 	return external::writeExternal(params_, "LaTeX", buf, os,
                                        *(runparams.exportdata),
                                        external_in_tmpdir,
-                                       runparams.inComment);
+                                       dryrun);
 }
 
 
@@ -724,7 +725,7 @@ int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
 {
 	return external::writeExternal(params_, "Ascii", buf, os,
 				       *(runparams.exportdata), false,
-				       runparams.inComment);
+	                               runparams.dryrun || runparams.inComment);
 }
 
 
@@ -733,7 +734,7 @@ int InsetExternal::docbook(Buffer const & buf, odocstream & os,
 {
 	return external::writeExternal(params_, "DocBook", buf, os,
 				       *(runparams.exportdata), false,
-				       runparams.inComment);
+	                               runparams.dryrun || runparams.inComment);
 }
 
 
