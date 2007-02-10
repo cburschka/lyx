@@ -575,14 +575,23 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 			<< endl;
 
 		int key = 0;
+
+		// FIXME Abdel 10/02/07: Remove?
 		// needed to make math superscript work on some systems
 		// ideally, such special coding should not be necessary
 		if (text == "^")
 			key = Qt::Key_AsciiCircum;
-		// FIXME: Needs for investigation, this key is not really used,
-		// the ctor below just check if key is different from 0.
-		QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, text);
-		keyPressEvent(&ev);
+
+		// FIXME Abdel 10/02/07: Minimal support for CJK, aka systems
+		// with input methods. What should we do with e->preeditString()?
+		// Do we need an inputMethodQuery() method?
+		// FIXME 2: we should take care also of UTF16 surrogates here.
+		for (int i = 0; i < text.size(); ++i) {
+			// FIXME: Needs for investigation, this key is not really used,
+			// the ctor below just check if key is different from 0.
+			QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, text[i]);
+			keyPressEvent(&ev);
+		}
 	}
 	e->accept();
 }
