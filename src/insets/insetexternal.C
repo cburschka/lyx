@@ -710,9 +710,8 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
                                                        external_in_tmpdir,
                                                        dryrun);
                 }
-                
 	}
-        
+
 	return external::writeExternal(params_, "LaTeX", buf, os,
                                        *(runparams.exportdata),
                                        external_in_tmpdir,
