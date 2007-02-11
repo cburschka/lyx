@@ -132,6 +132,8 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 		full_label_ = bformat(from_ascii("%1$s %2$s:"), label, number);
 	}
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
+	// add some space to separate the label from the inset text
+	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = labelwidth_;
 	Dimension textdim;
 	InsetText::metrics(mi, textdim);
@@ -143,7 +145,7 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid += textdim.wid;
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	dim.wid += 0.5 * TEXT_TO_INSET_OFFSET;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
@@ -162,6 +164,8 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// Answer: the text inset (in buffer_funcs.C: setCaption).
 
 	labelwidth_ = pi.pain.text(x, y, full_label_, pi.base.font);
+	// add some space to separate the label from the inset text
+	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
 	InsetText::draw(pi, x + labelwidth_, y);
 	setPosCache(pi, x, y);
 }
@@ -169,7 +173,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 void InsetCaption::drawSelection(PainterInfo & pi, int x, int y) const
 {
-	InsetText::drawSelection(pi, x + labelwidth_ , y);
+	InsetText::drawSelection(pi, x + labelwidth_, y);
 }
 
 
