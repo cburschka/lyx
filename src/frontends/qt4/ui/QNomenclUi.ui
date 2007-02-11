@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QNomenclUi</class>
  <widget class="QDialog" name="QNomenclUi" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>248</width>
-    <height>130</height>
+    <height>136</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -117,7 +114,13 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>symbolED</tabstop>
+  <tabstop>descrED</tabstop>
+  <tabstop>prefixED</tabstop>
+  <tabstop>okPB</tabstop>
+  <tabstop>closePB</tabstop>
+ </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>
