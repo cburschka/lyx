@@ -347,7 +347,6 @@ src_insets_header_files = Split('''
     insetinclude.h
     insetindex.h
     insetlabel.h
-    insetlatexaccent.h
     insetline.h
     insetmarginal.h
     insetnewline.h
@@ -403,7 +402,6 @@ src_insets_files = Split('''
     insetinclude.C
     insetindex.C
     insetlabel.C
-    insetlatexaccent.C
     insetline.C
     insetmarginal.C
     insetnewline.C

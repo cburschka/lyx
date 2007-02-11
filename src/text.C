@@ -57,7 +57,6 @@
 #include "insets/insettext.h"
 #include "insets/insetbibitem.h"
 #include "insets/insethfill.h"
-#include "insets/insetlatexaccent.h"
 #include "insets/insetline.h"
 #include "insets/insetnewline.h"
 #include "insets/insetpagebreak.h"
@@ -239,10 +238,6 @@ void readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 			par.insertInset(par.size(), inset.release(),
 					font, change);
 		}
-	} else if (token == "\\i") {
-		auto_ptr<InsetBase> inset(new InsetLatexAccent);
-		inset->read(buf, lex);
-		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
 	} else if (token == "\\newline") {

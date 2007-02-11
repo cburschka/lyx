@@ -77,8 +77,6 @@ libinsets_la_SOURCES = \
 	insetindex.h \
 	insetlabel.C \
 	insetlabel.h \
-	insetlatexaccent.C \
-	insetlatexaccent.h \
 	insetline.C \
 	insetline.h \
 	insetmarginal.h \

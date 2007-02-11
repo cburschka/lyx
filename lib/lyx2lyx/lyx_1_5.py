@@ -1086,6 +1086,26 @@ def revert_accent(document):
         document.body[i] = unicodedata.normalize("NFKC", document.body[i])
 
 
+def normalize_font_whitespace(document):
+    """ Before format 259 the font changes were ignored if a
+    whitespace was the last character in the sequence, this function
+    transfers the whitespace outside."""
+
+    if document.backend != "latex":
+        return
+
+    lines = document.body
+
+    char_properties = ("\\series", "\\emph", "\\color", "\\shape", "\\family")
+
+    for i in range(len(lines)):
+        words = lines[i].split()
+
+        if len(words) > 1 and words[0] in char_properties \
+               and words[1] == "default" and lines[i-1][-1] == " ":
+            lines[i-1] = lines[i-1][:-1]
+            lines[i+1] = " " + lines[i+1]
+
 ##
 # Conversion hub
 #
@@ -1103,9 +1123,11 @@ convert = [[246, []],
            [255, []],
            [256, []],
            [257, [convert_caption]],
-           [258, [convert_lyxline]]]
+           [258, [convert_lyxline]],
+           [259, [convert_accent, normalize_font_whitespace]]]
 
-revert =  [[257, []],
+revert =  [[258, []],
+           [257, []],
            [256, [revert_caption]],
            [255, [revert_encodings]],
            [254, [revert_clearpage, revert_cleardoublepage]],

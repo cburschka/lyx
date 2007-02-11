@@ -1058,16 +1058,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		LyXFont const last_font = running_font;
 
-		// Spaces at end of font change are simulated to be
-		// outside font change, i.e. we write "\textXX{text} "
-		// rather than "\textXX{text }". (Asger)
-		if (open_font && c == ' ' && i <= size() - 2) {
-			LyXFont const & next_font = getFont(bparams, i + 1, outerfont);
-			if (next_font != running_font && next_font != font) {
-				font = next_font;
-			}
-		}
-
 		// We end font definition before blanks
 		if (open_font &&
 		    (font != running_font ||
@@ -1081,7 +1071,17 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			open_font = false;
 		}
 
-		// Blanks are printed before start of fontswitch
+		// Do we need to change font?
+		if ((font != running_font ||
+		     font.language() != running_font.language()) &&
+			i != body_pos - 1)
+		{
+			column += font.latexWriteStartChanges(
+					os, basefont, last_font, bparams);
+			running_font = font;
+			open_font = true;
+		}
+
 		if (c == ' ') {
 			// Do not print the separation of the optional argument
 			if (i != body_pos - 1) {

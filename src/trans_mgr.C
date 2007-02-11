@@ -22,8 +22,6 @@
 #include "lyxtext.h"
 #include "trans.h"
 
-#include "insets/insetlatexaccent.h"
-
 #include "support/lstrings.h"
 
 
@@ -287,14 +285,7 @@ void TransManager::insert(string const & str, LyXText * text, LCursor & cur)
 	if (chset_.getName() != lyxrc.font_norm ||
 	    !enc.first) {
 		// Could not find an encoding
-		InsetLatexAccent ins(str);
-		if (ins.canDisplay()) {
-			cap::replaceSelection(cur);
-			cur.insert(new InsetLatexAccent(ins));
-			cur.posRight();
-		} else {
-			insertVerbatim(str, text, cur);
-		}
+		insertVerbatim(str, text, cur);
 		return;
 	}
 	string const tmp(1, static_cast<char>(enc.second));
