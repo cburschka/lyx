@@ -10995,12 +10995,12 @@ msgid "Conversion failed"
 msgstr "Die Konvertierung ist fehlgeschlagen"
 
 #: src/buffer.C:627
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
-"%1$s stammt von einer früheren LyX-Version, aber eine temporäre Datei für "
+"%1$s stammt von einer anderen LyX-Version, aber eine temporäre Datei für "
 "die Konvertierung konnte nicht erzeugt werden."
 
 #: src/buffer.C:636
@@ -11008,12 +11008,12 @@ msgid "Conversion script not found"
 msgstr "Das Konvertierungsskript wurde nicht gefunden"
 
 #: src/buffer.C:637
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
-"%1$s stammt von einer früheren LyX-Version, aber das Konvertierungsskript "
+"%1$s stammt von einer anderen LyX-Version, aber das Konvertierungsskript "
 "lyx2lyx konnte nicht gefunden werden."
 
 #: src/buffer.C:657
@@ -11021,12 +11021,12 @@ msgid "Conversion script failed"
 msgstr "Das Konvertierungsskript ist fehlgeschlagen"
 
 #: src/buffer.C:658
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
 "convert it."
 msgstr ""
-"%1$s stammt von einer früheren LyX-Version, aber das lyx2lyx-Skript konnte "
+"%1$s stammt von einer anderen LyX-Version, aber das lyx2lyx-Skript konnte "
 "es nicht konvertieren."
 
 #: src/buffer.C:673
@@ -11533,8 +11533,8 @@ msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995-2006 LyX Team"
 msgstr ""
-"LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
-"1995-2001 LyX Team"
+"LyX is Copyright (C) 1995 Matthias Ettrich,\n"
+"1995-2007 LyX Team"
 
 #: src/frontends/controllers/ControlAboutlyx.C:72
 msgid ""
@@ -11549,7 +11549,6 @@ msgstr ""
 "oder (nach Ihrer Entscheidung) eine spätere Version der Lizenz."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
-#, fuzzy
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
 "WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
@@ -11565,7 +11564,7 @@ msgstr ""
 "Näheres enthält die GNU General Public License.\n"
 "Eine Kopie der GNU General Public License sollte Bestandteil dieser Software "
 "sein. Ist dies nicht der Fall, schreiben Sie bitte an die Free Software "
-"Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:86
 msgid "LyX Version "
@@ -12947,12 +12946,21 @@ msgid ""
 "Shadowbox: Box casting shadow\n"
 "Doublebox: Double line border"
 msgstr ""
+"Rahmenlos: kein Rahmen\n"
+"Gerahmt: rechteckig\n"
+"ovale Box: oval, dünner Rahmen\n"
+"Ovale Box: oval, dicker Rahmen\n"
+"Schattenbox: Box mit Schatten\n"
+"Doppelbox: Rahmen mit Doppellinie"
 
 #: src/frontends/xforms/FormBox.C:71
+#, fuzzy
 msgid ""
 "The inner box may be a parbox or a minipage,\n"
 "with appropriate arguments from this dialog."
 msgstr ""
+"Die innere Box kann eine Parbox oder eine Minipage,\n"
+"mit dazugehörigen Argumenten von diesem Dialog sein."
 
 #: src/frontends/xforms/FormBox.C:269 src/frontends/xforms/FormBox.C:277
 msgid "Invalid length!"
@@ -13275,6 +13283,8 @@ msgid ""
 "Do not distort the image. Keep image within \"width\" by \"height\" and obey "
 "aspect ratio."
 msgstr ""
+"Bild nicht verzerren. Behalte Bildgröße mit gegebener \"Breite\" mal \"Höhe\" und "
+"das Aspektverhältnis bei."
 
 #: src/frontends/xforms/FormGraphics.C:173
 msgid ""
@@ -13282,6 +13292,9 @@ msgid ""
 "should unzip the file. Needs an additional file like \"file.eps.bb\" which "
 "holds the values for the bounding box."
 msgstr ""
+"Verwende Dateinamen wie \"Datei.eps.gz\" für die LaTeX-Ausgabe. Nützlich wenn LaTeX "
+"die Datei entpacken soll. Benötigt eine zusätzliche Datei \"Datei.eps.bb\", mit den "
+"Werten für die Begrenzungsbox."
 
 #: src/frontends/xforms/FormGraphics.C:178
 msgid "Show image only as a rectangle of the original size."
@@ -13300,6 +13313,8 @@ msgid ""
 "The upper right x-value of the bounding box; only this input field allows "
 "length + unit, e.g. 5cm and sets the unit for the other input fields."
 msgstr ""
+"Der obere, rechte x-Wert der Begrenzungsbox; nur dieses Eingabefeld erlaubt "
+"Länge + Einheit, z.B. 5cm, und legt die Einheit für die anderen Eingabefelder fest."
 
 #: src/frontends/xforms/FormGraphics.C:219
 msgid "The upper right y-value of the bounding box."
@@ -13315,6 +13330,9 @@ msgid ""
 "read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
 "PostScript's b(ig) p(oint)."
 msgstr ""
+"Lies die Bildkoordinaten von einer neuen Datei. Für (e)ps-Dateien wird die "
+"Begrenzungsbox gelesen, ansonsten die Bildgröße in Bildpunkten verwendet. "
+"Die voreingestellte Einheit ist \"bp\"."
 
 #: src/frontends/xforms/FormGraphics.C:229
 msgid "Clip image to the bounding box values."
@@ -13341,10 +13359,13 @@ msgid "Insert the optional subfigure caption."
 msgstr "Fügen Sie die optionale Legende der Teilabbildung ein."
 
 #: src/frontends/xforms/FormGraphics.C:271
+#, fuzzy
 msgid ""
 "Add any additional LaTeX option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
 msgstr ""
+"Fügt eine zusätzliche LaTeX-Option ein, die im Paket \"graphicx\" definiert "
+"und nicht im Dialog Tabelle verfügbar ist."
 
 #: src/frontends/xforms/FormGraphics.C:282
 msgid "Bounding Box"
@@ -13931,20 +13952,24 @@ msgid ""
 "Forces float to the right in a paragraph if the page number is odd, and to "
 "the left if page number is even."
 msgstr ""
+"Setzt Gleitobjekt an die rechte Seite eines Absatzes, wenn die Seitennummer ungerade ist "
+"und an die linke Seite, wenn die Seitennummer gerade ist."
 
 #: src/frontends/xforms/FormWrap.C:81
 msgid ""
 "Forces float to the left in a paragraph if the pagenumber is odd, and to the "
 "right if page number is even."
 msgstr ""
+"Setzt Gleitobjekt an die linke Seite eines Absatzes, wenn die Seitennummer ungerade ist "
+"und an die rechte Seite, wenn die Seitennummer gerade ist."
 
 #: src/frontends/xforms/FormWrap.C:84
 msgid "Forces float to the left in the paragraph."
-msgstr ""
+msgstr "Setzt Gleitobjekt an den linken Rand des Absatzes."
 
 #: src/frontends/xforms/FormWrap.C:86
 msgid "Forces float to the right in the paragraph."
-msgstr ""
+msgstr "Setzt Gleitobjekt an den rechten Rand des Absatzes."
 
 #: src/frontends/xforms/XMiniBuffer.C:141
 msgid "[End of history]"
@@ -14055,16 +14080,15 @@ msgid ""
 "BibTeX will be unable to find them."
 msgstr ""
 "Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
-"BiBTeX wird die Datenbanken nicht finden."
+"BibTeX wird die Datenbanken nicht finden."
 
 #: src/insets/insetbibtex.C:245
-#, fuzzy
 msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
-"BiBTeX wird die Datenbanken nicht finden."
+"Der Pfad zur BibTeX Stildatei enthält Leerzeichen.\n"
+"BibTeX wird daher die Datei nicht finden können."
 
 #: src/insets/insetbox.C:57
 msgid "Boxed"
