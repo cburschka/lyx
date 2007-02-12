@@ -1058,7 +1058,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		LyXFont const last_font = running_font;
 
-		// We end font definition before blanks
+		// Do we need to close the previous font?
 		if (open_font &&
 		    (font != running_font ||
 		     font.language() != running_font.language()))
