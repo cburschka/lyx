@@ -223,7 +223,7 @@ void GuiView::init()
 
 	getToolbars().init();
 
-	statusBar()->setSizeGripEnabled(false);
+	statusBar()->setSizeGripEnabled(true);
 
 	QObject::connect(&statusbar_timer_, SIGNAL(timeout()),
 		this, SLOT(update_view_state_qt()));
