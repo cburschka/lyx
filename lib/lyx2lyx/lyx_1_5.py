@@ -1088,7 +1088,7 @@ def revert_accent(document):
 
 def normalize_font_whitespace(document):
     """ Before format 259 the font changes were ignored if a
-    whitespace was the last character in the sequence, this function
+    whitespace was the first or last character in the sequence, this function
     transfers the whitespace outside."""
 
     if document.backend != "latex":
@@ -1100,16 +1100,82 @@ def normalize_font_whitespace(document):
                        "\\emph": "default",
                        "\\color": "none",
                        "\\shape": "default",
+                       "\\bar": "default",
                        "\\family": "default"}
+    changes = {}
 
-    for i in range(len(lines)):
+    i = 0
+    while i < len(lines):
         words = lines[i].split()
 
-        if len(words) > 1 and words[0] in char_properties.keys() \
-               and words[1] == char_properties[words[0]] \
-               and lines[i-1] and lines[i-1][-1] == " ":
-            lines[i-1] = lines[i-1][:-1]
-            lines[i+1] = " " + lines[i+1]
+        if len(words) > 0 and words[0] == "\\begin_layout":
+            # a new paragraph resets all font changes
+            changes.clear()
+
+        elif len(words) > 1 and words[0] in char_properties.keys():
+            # we have a font change
+            if char_properties[words[0]] == words[1]:
+                # property gets reset
+                if words[0] in changes.keys():
+                    del changes[words[0]]
+                defaultproperty = True
+            else:
+                # property gets set
+                changes[words[0]] = words[1]
+                defaultproperty = False
+
+            # We need to explicitly reset all changed properties if we find
+            # a space below, because LyX 1.4 would output the space after
+            # closing the previous change and before starting the new one,
+            # and closing a font change means to close all properties, not
+            # just the changed one.
+
+            if lines[i-1] and lines[i-1][-1] == " ":
+                lines[i-1] = lines[i-1][:-1]
+                # a space before the font change
+                added_lines = [" "]
+                for k in changes.keys():
+                    # exclude property k because that is already in lines[i]
+                    if k != words[0]:
+                        added_lines[1:1] = ["%s %s" % (k, changes[k])]
+                for k in changes.keys():
+                    # exclude property k because that must be added below anyway
+                    if k != words[0]:
+                        added_lines[0:0] = ["%s %s" % (k, char_properties[k])]
+                if defaultproperty:
+                    # Property is reset in lines[i], so add the new stuff afterwards
+                    lines[i+1:i+1] = added_lines
+                else:
+                    # Reset property for the space
+                    added_lines[0:0] = ["%s %s" % (words[0], char_properties[words[0]])]
+                    lines[i:i] = added_lines
+                i = i + len(added_lines)
+
+            elif lines[i+1] and lines[i+1][0] == " " and (len(changes) > 0 or not defaultproperty):
+                # a space after the font change
+                if (lines[i+1] == " " and lines[i+2]):
+                    next_words = lines[i+2].split()
+                    if len(next_words) > 0 and next_words[0] == words[0]:
+                        # a single blank with a property different from the
+                        # previous and the next line must not be changed
+                        i = i + 2
+                        continue
+                lines[i+1] = lines[i+1][1:]
+                added_lines = [" "]
+                for k in changes.keys():
+                    # exclude property k because that is already in lines[i]
+                    if k != words[0]:
+                        added_lines[1:1] = ["%s %s" % (k, changes[k])]
+                for k in changes.keys():
+                    # exclude property k because that must be added below anyway
+                    if k != words[0]:
+                        added_lines[0:0] = ["%s %s" % (k, char_properties[k])]
+                # Reset property for the space
+                added_lines[0:0] = ["%s %s" % (words[0], char_properties[words[0]])]
+                lines[i:i] = added_lines
+                i = i + len(added_lines)
+
+        i = i + 1
 
 ##
 # Conversion hub
