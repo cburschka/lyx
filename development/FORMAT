@@ -1,6 +1,14 @@
 LyX file-format changes
 -----------------------§
 
+2007-02-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 259:
+	Old: Spaces at start or end of font changes were output outside of
+	     the font change, i.e. not 'xx\textbf{ yy }zz', but
+	     'xx \textbf{yy} zz'.
+	New: Spaces are always output with the font set by the user.
+
 2007-01-31  Uwe Stöhr
 
 	* format incremented to 258: new \lyxline definition
