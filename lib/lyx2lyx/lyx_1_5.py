@@ -1096,13 +1096,18 @@ def normalize_font_whitespace(document):
 
     lines = document.body
 
-    char_properties = ("\\series", "\\emph", "\\color", "\\shape", "\\family")
+    char_properties = {"\\series": "default",
+                       "\\emph": "default",
+                       "\\color": "none",
+                       "\\shape": "default",
+                       "\\family": "default"}
 
     for i in range(len(lines)):
         words = lines[i].split()
 
-        if len(words) > 1 and words[0] in char_properties \
-               and words[1] == "default" and lines[i-1][-1] == " ":
+        if len(words) > 1 and words[0] in char_properties.keys() \
+               and words[1] == char_properties[words[0]] \
+               and lines[i-1][-1] == " ":
             lines[i-1] = lines[i-1][:-1]
             lines[i+1] = " " + lines[i+1]
 
