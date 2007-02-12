@@ -152,7 +152,7 @@ InsetRef::type_info InsetRef::types[] = {
 	{ "pageref",   N_("Page Number"),           N_("Page: ")},
 	{ "vpageref",  N_("Textual Page Number"),   N_("TextPage: ")},
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
-	{ "prettyref", N_("PrettyRef"),             N_("PrettyRef: ")},
+	{ "prettyref", N_("PrettyRef"),             N_("FormatRef: ")},
 	{ "", "", "" }
 };
 
