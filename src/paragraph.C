@@ -1098,17 +1098,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			}
 		}
 
-		// Do we need to change font?
-		if ((font != running_font ||
-		     font.language() != running_font.language()) &&
-			i != body_pos - 1)
-		{
-			column += font.latexWriteStartChanges(
-					os, basefont, last_font, bparams);
-			running_font = font;
-			open_font = true;
-		}
-
 		OutputParams rp = runparams;
 		rp.free_spacing = style->free_spacing;
 		rp.local_font = &font;
