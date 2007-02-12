@@ -203,6 +203,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
+\author "Uwe Stöhr" 
 \author "" 
 \end_header
 
@@ -373,8 +374,11 @@ El diálogo Gráficos puede lanzarse en cualquier momento haciendo click-derecha
 \end_layout
 
 \begin_layout Description
-Gráficos Aquí puedes elegir tu archivo gráfico y ajustar separadamente su
- presentación en LyX y en la salida.
+Gráficos 
+\lang english
+Here you can choose an image file and adjust its appearance in the output.
+
+\lang spanish
  En el apéndice\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -388,6 +392,16 @@ Puedes girar
  los gráficos en el sentido de las agujas de reloj estableciendo un ángulo
  y un origen de rotación.
  La imagen también gira en LyX.
+\lang english
+
+\newline
+Images can be opened in a program of your choice when pressing the 
+\family sans
+Edit
+\family default
+ button.
+ The program can be set for every image format in the file format settings
+ in LyX's preferences.
 \end_layout
 
 \begin_layout Description
@@ -415,9 +429,13 @@ as.
 
 \begin_layout Description
 Opciones\InsetSpace ~
-extra Aquí puedes poner una imagen como subfigura de una figura
- flotante que tiene su propio título.
- Las subfiguras se explican en la sección\InsetSpace ~
+extra 
+\lang english
+In this tab you can modify the appearance of the image within LyX and set
+ the image to be a subfigure of a figure float with an own caption.
+ 
+\lang spanish
+Las subfiguras se explican en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:Figuras-Flotantes"
@@ -491,8 +509,9 @@ x.eps.bb
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
 
-\newpage
 
 \end_layout
 
@@ -595,26 +614,21 @@ Insertar\SpecialChar \menuseparator
 Flotante\SpecialChar \menuseparator
 Figura
 \family default
- insertan un flotante con la etiqueta "
-\series bold
-Figura #:
-\series default
-".
- Detrás de esta etiqueta escribe el texto para el encabezado que quieras
- para la figura.
- Para insertar una imagen sobre su título sitúa el cursor delante del encabezado
-, presiona Enter e inserta la imagen como se describe arriba.
- Esto se hace para la Figura\InsetSpace ~
+ insertan un flotante con la etiqueta "Figura #:" 
+\lang english
+(# is the actual number)
+\lang spanish
+.
+ 
+\lang english
+You can insert the image above the caption, like in Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "fig:kill-plat"
 
 \end_inset
 
-.
- Si quieres que la imagen esté bajo su título, sitúa el cursor detrás del
- mismo, presiona Enter e inserta la imagen.
- Esto se hace para la Figura\InsetSpace ~
+ or below the caption, like in Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "fig:escher"
@@ -622,6 +636,8 @@ reference "fig:escher"
 \end_inset
 
 .
+
+\lang spanish
  Más información sobre ubicación de encabezados en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -767,6 +783,17 @@ cruzada
  Es importante emplear referencias a flotantes, mejor que alusiones vagas
  como "la figura de arriba", porque como LaTeX recolocará los flotantes
  en el documento final, podría no quedar "arriba" precisamente.
+\lang english
+
+\newline
+Referencing is explained in detail in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Referencing-Floats"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -789,6 +816,17 @@ Descripción
 .
  Observa que sólo el título principal del encabezado del flotante se añade
  a la Lista de Figuras.
+\lang english
+
+\newline
+Referencing subfigures is explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Referencing-Subfigures"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -829,7 +867,7 @@ status open
 	lyxscale 60
 	width 45col%
 	subcaption
-	subcaptionText "Platypus"
+	subcaptionText "\label{fig: Platypus} Platypus"
 
 \end_inset
 
@@ -1913,12 +1951,13 @@ Tabla
 \end_layout
 
 \begin_layout Standard
-El flotante se muestra como un cuadro desplegable con la etiqueta "
-\series bold
-Tabla\InsetSpace ~
-#:
-\series default
-" en su interior.
+El flotante se muestra como un cuadro desplegable con la etiqueta "Tabla\InsetSpace ~
+#:"
+ 
+\lang english
+(# is the actual number)
+\lang spanish
+..
  El texto que sigue a dicha etiqueta es el encabezado de tabla.
  Para insertar una tabla en el flotante se sitúa el cursor al final del
  texto de encabezado y se pulsa Enter.
@@ -2040,6 +2079,17 @@ cruzada
 \begin_inset Graphics
 	filename ../images/dialog-show-new-inset_ref.xpm
 	scale 85
+
+\end_inset
+
+.
+\newline
+
+\lang english
+Referencing is explained in detail in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Referencing-Floats"
 
 \end_inset
 
@@ -17909,6 +17959,82 @@ Formato
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Referencing Subfigures
+\begin_inset LatexCommand label
+name "sub:Referencing-Subfigures"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Referencias ! to Subfigures"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Currently referencing subfigures is not supported by LyX, so you have to
+ use LaTeX-commands.
+ The label is the created
+\series bold
+ 
+\series default
+with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+label{fig: YourLabelName}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+that is directly inserted into the subfigure caption field.
+ To reference the label add this command in ERT
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+ref{fig: YourLabelName}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+to the position in your document where the reference should be placed.
+ Here is a reference to a subfigure: Subfigure\InsetSpace ~
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ref{fig: Platypus}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Designación Automática de Referencias
 \begin_inset LatexCommand index
 name "Referencias ! Designación Automática"
@@ -18126,6 +18252,26 @@ debe cargarse después de
 en el preámbulo
 \series bold
 .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+Note:
+\series default
+ The set reference position has no effect for references to subfigures.
 \end_layout
 
 \end_inset

@@ -203,6 +203,7 @@
 \bullet 3 2 7 -1
 \tracking_changes false
 \output_changes true
+\author "Uwe Stöhr" 
 \author "" 
 \end_header
 
@@ -381,6 +382,15 @@ reference "cha:Units-available-in"
 You can rotate images counter-clockwise by setting a rotation angle and
  a rotation origin.
  The image will also be rotated inside LyX.
+\newline
+Images can be opened in a program
+ of your choice when pressing the 
+\family sans
+Edit
+\family default
+ button.
+ The program can be set for every image format in the file format settings
+ in LyX's preferences.
 \end_layout
 
 \begin_layout Description
@@ -491,8 +501,13 @@ x.eps.bb
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
 
-\newpage
+
+\end_layout
+
+\begin_layout Standard
 This is an example image in EPS format
 \begin_inset Foot
 status collapsed
@@ -591,33 +606,24 @@ Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
 Figure 
 \family default
-inserts a float with the label 
+inserts a float with a caption that has the label 
 \begin_inset Quotes eld
 \end_inset
 
-
-\series bold
 Figure\InsetSpace ~
 #:
-\series default
-
 \begin_inset Quotes erd
 \end_inset
 
-.
- Set the cursor behind this label, press Enter and insert the image as described
- above to get the caption printed below the image.
- This was done for Figure\InsetSpace ~
+ (# is the actual number).
+ You can insert the image above the caption, like in Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "fig:kill-plat"
 
 \end_inset
 
-.
- If you want the caption to be above the image, set the cursor at the end
- of the caption, press enter and insert the image.
- This was done in Figure\InsetSpace ~
+ or below the caption, like in Figure\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "fig:escher"
@@ -737,8 +743,8 @@ reference "fig:escher"
 
 \end_inset
 
- are examples of cross-referenced figures.
- Figures can be cross-referenced in the text by referencing their label.
+ are examples of referenced figures.
+ Figures can be referenced in the text by referencing their label.
  To do this insert a label in the caption using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -785,6 +791,15 @@ above
 \end_inset
 
  at all.
+\newline
+Referencing is explained in detail in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Referencing-Floats"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -802,6 +817,16 @@ Subfigure
 \family default
  and enter the subcaption for the image in the caption field.
  Note that only the main caption of the float is added to the List of Figures.
+\newline
+Ref
+erencing subfigures is explained in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:Referencing-Subfigures"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -842,7 +867,7 @@ status open
 	lyxscale 60
 	width 45col%
 	subcaption
-	subcaptionText "Platypus"
+	subcaptionText "\label{fig: Platypus} Platypus"
 
 \end_inset
 
@@ -2114,24 +2139,18 @@ Table
 \end_layout
 
 \begin_layout Standard
-The float appears as a collapsible box with the label 
+The float appears as a collapsible box with a caption that has the label
+ 
 \begin_inset Quotes eld
 \end_inset
 
-
-\series bold
 Table\InsetSpace ~
 #:
-\series default
-
 \begin_inset Quotes erd
 \end_inset
 
- inside it.
- The text following the label is the caption of the table.
- To insert a table to the the float set the cursor at the end of the caption
- text, press enter and insert the table.
- The caption is now printed above the table.
+ (# is the actual table number).
+ You can insert tables to the float above or below the caption.
 \end_layout
 
 \begin_layout Standard
@@ -2251,10 +2270,15 @@ reference
 \end_inset
 
 .
-\end_layout
+\newline
+Referencing is explained in detail in section\InsetSpace ~
 
-\begin_layout Standard
+\begin_inset LatexCommand ref
+reference "sec:Referencing-Floats"
 
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -18009,9 +18033,9 @@ Back and you can use it to set the cursor
 \end_layout
 
 \begin_layout Subsection
-Cross-reference formats
+Cross-Reference Formats
 \begin_inset LatexCommand label
-name "sub:Cross-reference-formats"
+name "sub:Cross-Reference-Formats"
 
 \end_inset
 
@@ -18151,6 +18175,72 @@ e box.
 \end_layout
 
 \begin_layout Subsection
+Referencing Subfigures
+\begin_inset LatexCommand label
+name "sub:Referencing-Subfigures"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "References ! to Subfigures"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Currently referencing subfigures is not supported by LyX, so you have to
+ use LaTeX-commands.
+ The label is the created
+\series bold
+ 
+\series default
+with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+label{fig: YourLabelName}
+\end_layout
+
+\begin_layout Standard
+that is directly inserted into the subfigure caption field.
+ To reference the label add this command in ERT
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+ref{fig: YourLabelName}
+\end_layout
+
+\begin_layout Standard
+to the position in your document where the reference should be placed.
+ Here is a reference to a subfigure: Subfigure\InsetSpace ~
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+ref{fig: Platypus}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Automatic Reference Naming
 \begin_inset LatexCommand index
 name "References ! Automatic Reference Naming"
@@ -18264,7 +18354,7 @@ reference
  style, described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:Cross-reference-formats"
+reference "sub:Cross-Reference-Formats"
 
 \end_inset
 
@@ -18383,6 +18473,23 @@ hypcap
 hyperref
 \series default
  in the document preamble.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ The set reference position has no effect for references to subfigures.
 \end_layout
 
 \end_inset
