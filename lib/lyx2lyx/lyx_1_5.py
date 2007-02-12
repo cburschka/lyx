@@ -1107,7 +1107,7 @@ def normalize_font_whitespace(document):
 
         if len(words) > 1 and words[0] in char_properties.keys() \
                and words[1] == char_properties[words[0]] \
-               and lines[i-1][-1] == " ":
+               and lines[i-1] and lines[i-1][-1] == " ":
             lines[i-1] = lines[i-1][:-1]
             lines[i+1] = " " + lines[i+1]
 
