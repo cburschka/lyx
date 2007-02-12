@@ -145,7 +145,7 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid += textdim.wid;
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += 0.5 * TEXT_TO_INSET_OFFSET;
+	dim.wid += TEXT_TO_INSET_OFFSET / 2;
 	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
