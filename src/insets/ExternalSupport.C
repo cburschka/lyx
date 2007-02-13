@@ -31,16 +31,18 @@
 #include "support/os.h"
 #include "support/package.h"
 #include "support/path.h"
-
 #include "support/std_ostream.h"
+
+#include <boost/filesystem/operations.hpp>
 
 namespace support = lyx::support;
 
 using std::endl;
-
 using std::ostream;
 using std::string;
 using std::vector;
+
+using boost::filesystem::is_directory;
 
 
 namespace lyx {
@@ -254,7 +256,7 @@ void updateExternal(InsetExternalParams const & params,
 	string const temp_file =
 		support::MakeAbsPath(params.filename.mangledFilename(),
 				     m_buffer->temppath());
-	if (!abs_from_file.empty()) {
+	if (!abs_from_file.empty() && !is_directory(abs_from_file)) {
 		unsigned long const from_checksum = support::sum(abs_from_file);
 		unsigned long const temp_checksum = support::sum(temp_file);
 
