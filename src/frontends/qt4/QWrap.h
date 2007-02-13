@@ -13,13 +13,12 @@
 #define QWRAP_H
 
 #include "QDialogView.h"
+#include "QWrapDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlWrap;
-class QWrapDialog;
-
 
 class QWrap : public QController<ControlWrap, QView<QWrapDialog> > {
 public:

@@ -14,13 +14,14 @@
 #define QGRAPHICS_H
 
 #include "QDialogView.h"
+#include "QGraphicsDialog.h"
+
 #include <vector>
 
 namespace lyx {
 namespace frontend {
 
 class ControlGraphics;
-class QGraphicsDialog;
 
 ///
 class QGraphics

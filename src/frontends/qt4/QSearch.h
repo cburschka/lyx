@@ -13,12 +13,12 @@
 #define QSEARCH_H
 
 #include "QDialogView.h"
+#include "QSearchDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlSearch;
-class QSearchDialog;
 
 ///
 class QSearch

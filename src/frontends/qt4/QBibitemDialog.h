@@ -18,11 +18,11 @@
 
 #include <QCloseEvent>
 
-#include "QBibitem.h"
-//class QBibitem;
 
 namespace lyx {
 namespace frontend {
+
+class QBibitem;
 
 class QBibitemDialog : public QDialog, public Ui::QBibitemUi {
 	Q_OBJECT

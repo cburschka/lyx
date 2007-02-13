@@ -13,6 +13,7 @@
 #define QSENDTO_H
 
 #include "QDialogView.h"
+#include "QSendtoDialog.h"
 
 #include <vector>
 
@@ -23,7 +24,6 @@ class Format;
 namespace frontend {
 
 class ControlSendto;
-class QSendtoDialog;
 
 /** This class provides a Qt implementation of the Custom Export Dialog.
  */

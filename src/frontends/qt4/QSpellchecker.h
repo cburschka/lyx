@@ -14,13 +14,12 @@
 #define QSPELLCHECKER_H
 
 #include "QDialogView.h"
+#include "QSpellcheckerDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlSpellchecker;
-class QSpellcheckerDialog;
-
 
 class QSpellchecker
 	: public QController<ControlSpellchecker, QView<QSpellcheckerDialog> >

@@ -113,11 +113,7 @@ QView<GUIDialog>::QView(Dialog & p, docstring const & t)
 template <class GUIDialog>
 QDialog * QView<GUIDialog>::form() const
 {
-	/* Brain dead MSVC compiler wants to know the class hierarchy at the
-	   definition site of the template, rather than the instantation point
-	   to downcast correctly. So, rather than including all dialogs to
-	   provide that, we just cast it with the ugly hammer. */
-	return (QDialog *) dialog_.get();
+	return dialog_.get();
 }
 
 

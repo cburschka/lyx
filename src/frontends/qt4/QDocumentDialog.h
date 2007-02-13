@@ -27,8 +27,6 @@
 
 #include "BulletsModule.h"
 
-#include "QBranches.h"
-
 #include <QCloseEvent>
 #include <QDialog>
 #include <vector>
@@ -49,6 +47,7 @@ template<class UI>
 namespace lyx {
 namespace frontend {
 
+class QBranches;
 class QDocument;
 
 class QDocumentDialog : public QDialog, public Ui::QDocumentUi {

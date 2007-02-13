@@ -13,13 +13,12 @@
 #define QERT_H
 
 #include "QDialogView.h"
+#include "QERTDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlERT;
-class QERTDialog;
-
 
 class QERT : public QController<ControlERT, QView<QERTDialog> >
 {

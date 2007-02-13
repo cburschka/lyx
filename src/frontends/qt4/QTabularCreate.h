@@ -13,12 +13,12 @@
 #define QTABULARCREATE_H
 
 #include "QDialogView.h"
+#include "QTabularCreateDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlTabularCreate;
-class QTabularCreateDialog;
 
 ///
 class QTabularCreate

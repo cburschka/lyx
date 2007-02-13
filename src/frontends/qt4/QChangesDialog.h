@@ -13,15 +13,14 @@
 #define QCHANGESDIALOG_H
 
 #include "ui/QChangesUi.h"
-#include "QChanges.h"
 
 #include <QCloseEvent>
 #include <QDialog>
 
-class QChanges;
-
 namespace lyx {
 namespace frontend {
+
+class QChanges;
 
 class QChangesDialog : public QDialog, public Ui::QChangesUi {
 	Q_OBJECT

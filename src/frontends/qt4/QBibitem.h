@@ -12,13 +12,13 @@
 #ifndef QBIBITEM_CONTROLLER_H
 #define QBIBITEM_CONTROLLER_H
 
+#include "QBibitemDialog.h"
 #include "QDialogView.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlCommand;
-class QBibitemDialog;
 
 class QBibitem
 	: public QController<ControlCommand, QView<QBibitemDialog> >

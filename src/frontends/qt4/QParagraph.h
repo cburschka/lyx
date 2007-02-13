@@ -14,13 +14,12 @@
 #define QPARAGRAPH_H
 
 #include "QDialogView.h"
+#include "QParagraphDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlParagraph;
-class QParagraphDialog;
-
 
 class QParagraph
 	: public QController<ControlParagraph, QView<QParagraphDialog> >

@@ -14,13 +14,14 @@
 #define QVIEWSOURCE_H
 
 #include "QDialogView.h"
+#include "QViewSourceDialog.h"
+
 #include <QSyntaxHighlighter>
 
 namespace lyx {
 namespace frontend {
 
 class ControlViewSource;
-class QViewSourceDialog;
 class latexHighlighter;
 
 ///

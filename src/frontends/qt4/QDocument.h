@@ -13,6 +13,8 @@
 #define QDOCUMENT_H
 
 #include "QDialogView.h"
+#include "QDocumentDialog.h"
+
 #include "BranchList.h"
 #include <boost/scoped_ptr.hpp>
 #include <string>
@@ -25,7 +27,6 @@ namespace lyx {
 namespace frontend {
 
 class ControlDocument;
-class QDocumentDialog;
 
 class QDocument
 	: public QController<ControlDocument, QView<QDocumentDialog> >

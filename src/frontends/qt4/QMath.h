@@ -13,14 +13,14 @@
 #define QMATH_H
 
 #include "QDialogView.h"
+#include "QDelimiterDialog.h"
+#include "QMathDialog.h"
+#include "QMathMatrixDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlMath;
-class QMathDialog;
-class QMathMatrixDialog;
-class QDelimiterDialog;
 
 class QMath : public QController<ControlMath, QView<QMathDialog> > {
 public:

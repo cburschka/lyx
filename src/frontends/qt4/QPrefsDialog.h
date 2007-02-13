@@ -41,16 +41,6 @@
 #include "ui/QPrefUi.h"
 #include "ui/QPrefIdentityUi.h"
 
-template<class UI>
-	class UiWidget: public QWidget, public UI
-	{
-	public:
-		UiWidget(QWidget * parent = 0): QWidget(parent)
-		{
-			UI::setupUi(this);
-		}
-	};
-
 namespace lyx {
 namespace frontend {
 

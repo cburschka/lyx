@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include "QBranches.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 

@@ -13,6 +13,7 @@
 #define QERRORLIST_H
 
 #include "QDialogView.h"
+#include "QErrorListDialog.h"
 
 class QListWidgetItem;
 
@@ -20,7 +21,6 @@ namespace lyx {
 namespace frontend {
 
 class ControlErrorList;
-class QErrorListDialog;
 
 class QErrorList :
 	public QController<ControlErrorList, QView<QErrorListDialog> >

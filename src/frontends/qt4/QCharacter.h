@@ -13,7 +13,9 @@
 #ifndef QCHARACTER_H_CONTROLLER
 #define QCHARACTER_H_CONTROLLER
 
+#include "QCharacterDialog.h"
 #include "QDialogView.h"
+
 #include "controllers/character.h"
 #include "controllers/frnt_lang.h"
 
@@ -23,8 +25,6 @@ namespace lyx {
 namespace frontend {
 
 class ControlCharacter;
-class QCharacterDialog;
-
 
 class QCharacter
 	: public QController<ControlCharacter, QView<QCharacterDialog> >

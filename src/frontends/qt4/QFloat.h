@@ -13,13 +13,13 @@
 #define QFLOAT_H
 
 #include "QDialogView.h"
+#include "QFloatDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 
 class ControlFloat;
-class QFloatDialog;
 
 ///
 class QFloat : public QController<ControlFloat, QView<QFloatDialog> > {

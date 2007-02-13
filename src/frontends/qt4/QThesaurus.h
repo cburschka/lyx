@@ -13,12 +13,12 @@
 #define QTHESAURUS_H
 
 #include "QDialogView.h"
+#include "QThesaurusDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlThesaurus;
-class QThesaurusDialog;
 
 ///
 class QThesaurus

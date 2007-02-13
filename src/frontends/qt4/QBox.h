@@ -13,14 +13,15 @@
 #ifndef QBOX_H
 #define QBOX_H
 
+#include "QBoxDialog.h"
 #include "QDialogView.h"
+
 #include <vector>
 
 namespace lyx {
 namespace frontend {
 
 class ControlBox;
-class QBoxDialog;
 
 ///
 class QBox

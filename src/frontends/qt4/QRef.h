@@ -13,6 +13,7 @@
 #define QREF_H
 
 #include "QDialogView.h"
+#include "QRefDialog.h"
 
 #include <vector>
 
@@ -20,8 +21,6 @@ namespace lyx {
 namespace frontend {
 
 class ControlRef;
-class QRefDialog;
-
 
 // full qualification because qt4 has also a ControlRef type
 class QRef

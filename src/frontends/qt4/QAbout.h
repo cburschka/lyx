@@ -13,11 +13,11 @@
 #define FORMABOUT_H
 
 #include "QDialogView.h"
+#include "QAboutDialog.h"
 
 namespace lyx {
 namespace frontend {
 
-class QAboutDialog;
 class ControlAboutlyx;
 
 class QAbout

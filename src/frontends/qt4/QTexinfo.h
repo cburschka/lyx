@@ -13,6 +13,8 @@
 #define QTEXINFO_H
 
 #include "QDialogView.h"
+#include "QTexinfoDialog.h"
+
 #include "ControlTexinfo.h"
 
 #include <map>
@@ -20,8 +22,6 @@
 
 namespace lyx {
 namespace frontend {
-
-class QTexinfoDialog;
 
 ///
 class QTexinfo

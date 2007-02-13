@@ -16,13 +16,12 @@
 #define QTABULAR_H
 
 #include "QDialogView.h"
+#include "QTabularDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlTabular;
-class QTabularDialog;
-
 
 class QTabular :
 	public QController<ControlTabular, QView<QTabularDialog> >

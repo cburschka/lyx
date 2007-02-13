@@ -13,12 +13,12 @@
 #define QNOTE_H
 
 #include "QDialogView.h"
+#include "QNoteDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlNote;
-class QNoteDialog;
 
 /** This class provides a QT implementation of the Note Dialog.
  */

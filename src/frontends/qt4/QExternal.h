@@ -13,14 +13,14 @@
 #define QEXTERNAL_H
 
 #include "QDialogView.h"
+#include "QExternalDialog.h"
+
 #include <map>
 
 namespace lyx {
 namespace frontend {
 
 class ControlExternal;
-class QExternalDialog;
-
 
 class QExternal
 	: public QController<ControlExternal, QView<QExternalDialog> >

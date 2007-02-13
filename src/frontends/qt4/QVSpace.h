@@ -15,6 +15,7 @@
 #define QVSPACE_H
 
 #include "QDialogView.h"
+#include "QVSpaceDialog.h"
 
 #include <vector>
 
@@ -22,7 +23,6 @@ namespace lyx {
 namespace frontend {
 
 class ControlVSpace;
-class QVSpaceDialog;
 
 /** This class provides an Qt implementation of the VSpace dialog.
  */

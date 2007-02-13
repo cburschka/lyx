@@ -12,6 +12,8 @@
 
 #include "QChangesDialog.h"
 
+#include "QChanges.h"
+
 #include <QPushButton>
 #include <QCloseEvent>
 

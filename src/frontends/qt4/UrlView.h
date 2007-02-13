@@ -13,12 +13,12 @@
 #define QT4_URL_VIEW_H
 
 #include "QDialogView.h"
+#include "QURLDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlCommand;
-class QURLDialog;
 
 class UrlView :
 	public QController<ControlCommand, QView<QURLDialog> >

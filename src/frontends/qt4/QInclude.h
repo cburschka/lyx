@@ -13,12 +13,12 @@
 #define QINCLUDE_H
 
 #include "QDialogView.h"
+#include "QIncludeDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlInclude;
-class QIncludeDialog;
 
 ///
 class QInclude : public QController<ControlInclude, QView<QIncludeDialog> >

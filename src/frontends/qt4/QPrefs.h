@@ -13,6 +13,7 @@
 #define QPREFS_H
 
 #include "QDialogView.h"
+#include "QPrefsDialog.h"
 
 #include <vector>
 
@@ -24,7 +25,6 @@ class Movers;
 
 namespace frontend {
 
-class QPrefsDialog;
 class ControlPrefs;
 
 class QPrefs

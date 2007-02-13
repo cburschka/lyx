@@ -13,12 +13,12 @@
 #define QLOG_H
 
 #include "QDialogView.h"
+#include "QLogDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlLog;
-class QLogDialog;
 
 ///
 class QLog

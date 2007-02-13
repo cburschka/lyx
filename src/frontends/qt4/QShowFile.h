@@ -13,13 +13,12 @@
 #define QSHOWFILE_H
 
 #include "QDialogView.h"
+#include "QShowFileDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlShowFile;
-class QShowFileDialog;
-
 
 class QShowFile
 	: public QController<ControlShowFile, QView<QShowFileDialog> >

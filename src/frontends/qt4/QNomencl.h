@@ -15,13 +15,12 @@
 #define QNOMENCL_H
 
 #include "QDialogView.h"
+#include "QNomenclDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlCommand;
-class QNomenclDialog;
-
 
 class QNomencl :
 	public QController<ControlCommand, QView<QNomenclDialog> >

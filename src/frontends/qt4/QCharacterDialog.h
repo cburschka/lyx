@@ -16,13 +16,14 @@
 #include "ui/QCharacterUi.h"
 #include <QCloseEvent>
 #include <QDialog>
-#include "QCharacter.h"
 
 namespace lyx {
 
 class LyXFont;
 
 namespace frontend {
+
+class QCharacter;
 
 class QCharacterDialog : public QDialog, public Ui::QCharacterUi {
 	Q_OBJECT

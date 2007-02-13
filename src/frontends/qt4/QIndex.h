@@ -14,13 +14,12 @@
 #define QINDEX_H
 
 #include "QDialogView.h"
+#include "QIndexDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlCommand;
-class QIndexDialog;
-
 
 class QIndex :
 	public QController<ControlCommand, QView<QIndexDialog> >

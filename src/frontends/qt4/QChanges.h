@@ -12,13 +12,13 @@
 #ifndef QCHANGES_H
 #define QCHANGES_H
 
+#include "QChangesDialog.h"
 #include "QDialogView.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlChanges;
-class QChangesDialog;
 
 class QChanges
 	: public QController<ControlChanges, QView<QChangesDialog> >

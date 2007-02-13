@@ -12,13 +12,13 @@
 #ifndef QBRANCH_H
 #define QBRANCH_H
 
+#include "QBranchDialog.h"
 #include "QDialogView.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlBranch;
-class QBranchDialog;
 
 /** This class provides a QT implementation of the Branch Dialog.
  */

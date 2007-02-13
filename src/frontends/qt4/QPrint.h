@@ -14,12 +14,12 @@
 #define QPRINT_H
 
 #include "QDialogView.h"
+#include "QLPrintDialog.h"
 
 namespace lyx {
 namespace frontend {
 
 class ControlPrint;
-class QLPrintDialog;
 
 ///
 class QPrint
