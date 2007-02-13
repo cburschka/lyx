@@ -256,8 +256,8 @@
 #0x018b ""                         "" "" # LATIN CAPITAL LETTER D WITH TOPBAR
 #0x018c ""                         "" "" # LATIN SMALL LETTER D WITH TOPBAR
 #0x018d ""                         "" "" # LATIN SMALL LETTER TURNED DELTA
-#0x018e ""                         "" "" # LATIN CAPITAL LETTER REVERSED E
-#0x018f ""                         "" "" # LATIN CAPITAL LETTER SCHWA
+0x018e "\\textreve"               "tipa" "" # LATIN CAPITAL LETTER REVERSED E
+0x018f "\\textschwa"              "tipa" "" # LATIN CAPITAL LETTER SCHWA
 #0x0190 ""                         "" "" # LATIN CAPITAL LETTER OPEN E
 #0x0191 ""                         "" "" # LATIN CAPITAL LETTER F WITH HOOK
 #0x0192 ""                         "" "" # LATIN SMALL LETTER F WITH HOOK
@@ -423,7 +423,7 @@
 0x0232 "\\={Y}"                   "" "" # LATIN CAPITAL LETTER Y WITH MACRON
 0x0233 "\\={y}"                   "" "" # LATIN SMALL LETTER Y WITH MACRON
 0x0237 "\\j"                      "" "" # LATIN SMALL LETTER DOTLESS J
-#0x0250 ""                         "" "" # LATIN SMALL LETTER TURNED A
+0x0250 "\\textturna"              "tipa" "" # LATIN SMALL LETTER TURNED A
 #0x0251 ""                         "" "" # LATIN SMALL LETTER ALPHA
 #0x0252 ""                         "" "" # LATIN SMALL LETTER TURNED ALPHA
 #0x0253 ""                         "" "" # LATIN SMALL LETTER B WITH HOOK
@@ -444,7 +444,7 @@
 #0x0262 ""                         "" "" # LATIN LETTER SMALL CAPITAL G
 #0x0263 ""                         "" "" # LATIN SMALL LETTER GAMMA
 #0x0264 ""                         "" "" # LATIN SMALL LETTER RAMS HORN
-#0x0265 ""                         "" "" # LATIN SMALL LETTER TURNED H
+0x0265 "\\textturnh"              "tipa" "" # LATIN SMALL LETTER TURNED H
 #0x0266 ""                         "" "" # LATIN SMALL LETTER H WITH HOOK
 #0x0267 ""                         "" "" # LATIN SMALL LETTER HENG WITH HOOK
 #0x0268 ""                         "" "" # LATIN SMALL LETTER I WITH STROKE
@@ -454,8 +454,8 @@
 #0x026c ""                         "" "" # LATIN SMALL LETTER L WITH BELT
 #0x026d ""                         "" "" # LATIN SMALL LETTER L WITH RETROFLEX HOOK
 #0x026e ""                         "" "" # LATIN SMALL LETTER LEZH
-#0x026f ""                         "" "" # LATIN SMALL LETTER TURNED M
-#0x0270 ""                         "" "" # LATIN SMALL LETTER TURNED M WITH LONG LEG
+0x026f "\\textturnm"              "tipa" "" # LATIN SMALL LETTER TURNED M
+0x0270 "\\textturnmrleg"          "tipa" "" # LATIN SMALL LETTER TURNED M WITH LONG LEG
 #0x0271 ""                         "" "" # LATIN SMALL LETTER M WITH HOOK
 #0x0272 ""                         "" "" # LATIN SMALL LETTER N WITH LEFT HOOK
 #0x0273 ""                         "" "" # LATIN SMALL LETTER N WITH RETROFLEX HOOK
@@ -464,9 +464,9 @@
 #0x0276 ""                         "" "" # LATIN LETTER SMALL CAPITAL OE
 #0x0277 ""                         "" "" # LATIN SMALL LETTER CLOSED OMEGA
 #0x0278 ""                         "" "" # LATIN SMALL LETTER PHI
-#0x0279 ""                         "" "" # LATIN SMALL LETTER TURNED R
-#0x027a ""                         "" "" # LATIN SMALL LETTER TURNED R WITH LONG LEG
-#0x027b ""                         "" "" # LATIN SMALL LETTER TURNED R WITH HOOK
+0x0279 "\\textturnr"              "tipa" "" # LATIN SMALL LETTER TURNED R
+0x027a "\\textturnlonglegr"       "tipa" "" # LATIN SMALL LETTER TURNED R WITH LONG LEG
+0x027b "\\textturnrrtail"         "tipa" "" # LATIN SMALL LETTER TURNED R WITH HOOK
 #0x027c ""                         "" "" # LATIN SMALL LETTER R WITH LONG LEG
 #0x027d ""                         "" "" # LATIN SMALL LETTER R WITH TAIL
 #0x027e ""                         "" "" # LATIN SMALL LETTER R WITH FISHHOOK
@@ -478,22 +478,22 @@
 #0x0284 ""                         "" "" # LATIN SMALL LETTER DOTLESS J WITH STROKE AND HOOK
 #0x0285 ""                         "" "" # LATIN SMALL LETTER SQUAT REVERSED ESH
 #0x0286 ""                         "" "" # LATIN SMALL LETTER ESH WITH CURL
-#0x0287 ""                         "" "" # LATIN SMALL LETTER TURNED T
+0x0287 "\\textturnt"              "tipa" "" # LATIN SMALL LETTER TURNED T
 #0x0288 ""                         "" "" # LATIN SMALL LETTER T WITH RETROFLEX HOOK
 #0x0289 ""                         "" "" # LATIN SMALL LETTER U BAR
 #0x028a ""                         "" "" # LATIN SMALL LETTER UPSILON
 #0x028b ""                         "" "" # LATIN SMALL LETTER V WITH HOOK
-#0x028c ""                         "" "" # LATIN SMALL LETTER TURNED V
-#0x028d ""                         "" "" # LATIN SMALL LETTER TURNED W
-#0x028e ""                         "" "" # LATIN SMALL LETTER TURNED Y
+0x028c "\\textturnv"              "tipa" "" # LATIN SMALL LETTER TURNED V
+0x028d "\\textturnw"              "tipa" "" # LATIN SMALL LETTER TURNED W
+0x028e "\\textturny"              "tipa" "" # LATIN SMALL LETTER TURNED Y
 #0x028f ""                         "" "" # LATIN LETTER SMALL CAPITAL Y
 #0x0290 ""                         "" "" # LATIN SMALL LETTER Z WITH RETROFLEX HOOK
 #0x0291 ""                         "" "" # LATIN SMALL LETTER Z WITH CURL
 #0x0292 ""                         "" "" # LATIN SMALL LETTER EZH
 #0x0293 ""                         "" "" # LATIN SMALL LETTER EZH WITH CURL
-#0x0294 ""                         "" "" # LATIN LETTER GLOTTAL STOP
+0x0294 "\\textglotstop"           "tipa" "" # LATIN LETTER GLOTTAL STOP
 #0x0295 ""                         "" "" # LATIN LETTER PHARYNGEAL VOICED FRICATIVE
-#0x0296 ""                         "" "" # LATIN LETTER INVERTED GLOTTAL STOP
+0x0296 "\\textinvglotstop"        "tipa" "" # LATIN LETTER INVERTED GLOTTAL STOP
 #0x0297 ""                         "" "" # LATIN LETTER STRETCHED C
 #0x0298 ""                         "" "" # LATIN LETTER BILABIAL CLICK
 #0x0299 ""                         "" "" # LATIN LETTER SMALL CAPITAL B
@@ -501,7 +501,7 @@
 #0x029b ""                         "" "" # LATIN LETTER SMALL CAPITAL G WITH HOOK
 #0x029c ""                         "" "" # LATIN LETTER SMALL CAPITAL H
 #0x029d ""                         "" "" # LATIN SMALL LETTER J WITH CROSSED-TAIL
-#0x029e ""                         "" "" # LATIN SMALL LETTER TURNED K
+0x029e "\\textturnk"              "tipa" "" # LATIN SMALL LETTER TURNED K
 #0x029f ""                         "" "" # LATIN LETTER SMALL CAPITAL L
 #0x02a0 ""                         "" "" # LATIN SMALL LETTER Q WITH HOOK
 #0x02a1 ""                         "" "" # LATIN LETTER GLOTTAL STOP WITH STROKE
