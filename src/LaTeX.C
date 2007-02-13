@@ -822,9 +822,11 @@ void LaTeX::deplog(DepTable & head)
 		// Ok, the scanning of files here is not sufficient.
 		// Sometimes files are named by "File: xxx" only
 		// So I think we should use some regexps to find files instead.
-		// "(\([^ ]+\)"   should match the "(file " variant, note
-		// that we can have several of these on one line.
-		// "File: \([^ ]+\)" should match the "File: file" variant
+		// "\(([^ ()]+\.+[^ ()]+)" should match the "(file.ext " variant,
+		//  note that we can have several of these on one line.
+		// "File: ([^\.]+\.+[^ ]+).*" should match the "File: file.ext " variant.
+		// FIXME: sometimes, LaTeX inserts linebreaks while outputting
+		// file names. This case is not handled correctly (bug 1027).
 
 		string token;
 		getline(ifs, token);
@@ -844,7 +846,9 @@ void LaTeX::deplog(DepTable & head)
 		token = to_utf8(from_filesystem8bit(token));
 
 		if (regex_match(token, sub, reg1)) {
-			static regex reg1_1("\\(([^()]+)");
+			// search for strings in (...) that must not contain
+			// a blank, but must contain a dot
+			static regex reg1_1("\\(([^()]+\\.+[^ ()]+)");
 			smatch what;
 			string::const_iterator first = token.begin();
 			string::const_iterator end = token.end();
