@@ -85,19 +85,10 @@ The LyX team.
 What's new in version 1.4.4?
 ---------------------------- 
 
-What's new
-==========
-
-What's new
-==========
-
 ** Updates:
+***********
 
-- Outline support: it is now possible to move around parts of
-  documents in the Table of Contents dialog.
-
-- Add new UI settings default-autotoolbars and default-alltoolbars
-  allowing to select what toolbars are active.
+* DOCUMENT INPUT/OUTPUT
 
 - Improve Computer Algebra System support in math editor.
 
@@ -110,12 +101,6 @@ What's new
 
 - Add a wmf -> eps converter (bug 2845) and a latex -> rtf converter.
 
-- The layout lfun without an argument does now set the layout to the default
-  layout of the text class. This is used by a new button "Default" in the
-  extra toolbar.
-
-- Add a menu entry for numbered formulas (bug 2901).
-
 - Add the layout file and an example document for the beamer
   presentation class (these files where taken from the beamer package
   by Till Tantau); new layout file ISPRS (Int. Soc. Photogrammetry &
@@ -124,24 +109,43 @@ What's new
 
 - New external template for LilyPond (a music typesetter).
 
-- New manual ExtendedInsets available in English and Spanish. It describes
-  in detail how to work with tables, graphics, floats, notes, and
-  boxes; Update Intro and Extended manual (describe ifpdf package).
+* USER INTERFACE:
 
-- New Galician localization; update German, Hungarian and Romanian
-  localization of the interface.
+- Outline support: it is now possible to move around parts of
+  documents in the Table of Contents dialog.
+
+- Add new UI settings default-autotoolbars and default-alltoolbars
+  allowing to select what toolbars are active.
+
+- The layout lfun without an argument does now set the layout to the default
+  layout of the text class. This is used by a new button "Default" in the
+  extra toolbar.
+
+- Add a menu entry for numbered formulas (bug 2901).
+
+- Updates to the european keyboard map (useful for entering accented
+  characters on a qwerty keyboard).
+
+* DOCUMENTATION AND LOCALIZATION
+
+- A new manual named "Embedded Objects" is available in the Help menu
+  in English and Spanish. It describes in detail tables, graphics,
+  floats, notes, and boxes.
+  
+- Updated Intro and Extended manual.
+
+- New Galician localization; update Czech, French, German, Hungarian,
+  Italian and Romanian localization of the interface.
 
 - New Galician translation of the documentation (splash, Intro,
-  Tutorial); Update German (all), Hebrew (Intro) and Italian
-  (Tutorial, UserGuide) documentation.
+  Tutorial); Update German (all), Hebrew (Intro), Italian
+  (Tutorial, UserGuide), and Spanish (Intro) documentation.
 
 
 ** Bug fixes:
+*************
 
 * DOCUMENT INPUT/OUTPUT
-
-- Fix crash when viewing documents as PDF on Windows with installed
-  Adobe Reader/Acrobat 8 (bug 3045).
 
 - Write inherited colors correctly as "inherit" to the .lyx file. Previously
   they where written as "default", which was then read in as "none".
@@ -154,7 +158,11 @@ What's new
 
 - Fix import of \fullcite commands from LaTeX.
 
-- Update bibliography references when the entry has been changed (bug 2744).
+- Update bibliography references when the entry has been changed (bug
+  2744).
+
+- The BibTeX style files (bst files) can now live in paths with spaces
+  (bug 2186).
 
 - Fixed undo-and-TOC-navigation bug.
 
@@ -185,13 +193,17 @@ What's new
 
 - Read filenames with spaces in external insets correctly from .lyx files
 
-- Determine PDF image size within LyX correctly (bug 2418).
+- Use the correct filename extension of included graphics in latex export if
+  it cannot be omitted.
 
 * USER INTERFACE:
 
 - Fix slowness with lots of math on Windows (bug 2900).
 
 - Fix that LyX's dialogs remain partly untranslated on Windows (bug 2906).
+
+- Fix crash when viewing documents as PDF on Windows with installed
+  Adobe Reader/Acrobat 8 (bug 3045).
 
 - Fix a crash with PageDown/Up when the next/previous paragraph is an inset
   taller than the workarea.
@@ -289,6 +301,9 @@ What's new
 
 - Rename lib/ui/std*.ui include files to *.inc so that the user is not
   tempted to try them (bug 2387).
+
+- add Aspell/Pspell's file extension for personal dictionary files
+  in preferences (bug 895)
 
 * BUILD/INSTALLATION:
 
