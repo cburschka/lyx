@@ -123,7 +123,8 @@ void InsetCaption::addToToc(TocList & toclist, Buffer const & buf) const
 
 bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
+	int const width_offset = TEXT_TO_INSET_OFFSET / 2;
+	mi.base.textwidth -= width_offset;
 	if (type_.empty())
 		full_label_ = _("Senseless!!! ");
 	else {
@@ -145,8 +146,8 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid += textdim.wid;
 	dim.asc += TEXT_TO_INSET_OFFSET;
 	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += TEXT_TO_INSET_OFFSET / 2;
-	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
+	dim.wid += width_offset;
+	mi.base.textwidth += width_offset;
 	bool const changed = dim_ != dim;
 	dim_ = dim;
 	return changed;
