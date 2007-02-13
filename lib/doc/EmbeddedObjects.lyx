@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 258
+\lyxformat 259
 \begin_document
 \begin_header
 \textclass scrbook
@@ -604,9 +604,9 @@ The toolbar button
 \family sans
 Insert\SpecialChar \menuseparator
 Float\SpecialChar \menuseparator
-Figure 
+Figure
 \family default
-inserts a float with a caption that has the label 
+ inserts a float with a caption that has the label 
 \begin_inset Quotes eld
 \end_inset
 
@@ -805,9 +805,9 @@ reference "sec:Referencing-Floats"
 \begin_layout Standard
 Normally only one image is inserted to a figure float, but sometimes you
  might want to use two images with separate subcaptions.
- This can be set in the tab
+ This can be set in the tab 
 \family sans
- Extra\InsetSpace ~
+Extra\InsetSpace ~
 options
 \family default
  of the graphics dialog.
@@ -867,7 +867,7 @@ status open
 	lyxscale 60
 	width 45col%
 	subcaption
-	subcaptionText "\label{fig: Platypus} Platypus"
+	subcaptionText "\label{fig:Platypus} Platypus"
 
 \end_inset
 
@@ -2393,10 +2393,7 @@ First\InsetSpace ~
 header.
 
 \family default
-\emph on
- 
-\emph default
-See the following longtable to see how it works:
+ See the following longtable to see how it works:
 \end_layout
 
 \begin_layout Standard
@@ -4641,10 +4638,7 @@ Insert a caption via the menu
 Insert\SpecialChar \menuseparator
 Caption
 \family default
-\series bold
- 
-\series default
-into the first table cell.
+ into the first table cell.
 \newline
 You can also add a short title for the caption.
 \end_layout
@@ -8618,9 +8612,9 @@ caption*{Continued table with forced page break in table cell}
 \begin_inset Text
 
 \begin_layout Standard
-
+ 
 \series bold
- Example Phone List
+Example Phone List
 \end_layout
 
 \end_inset
@@ -13204,10 +13198,10 @@ status open
 \begin_layout Standard
 
 \series bold
-Note: 
+Note:
 \series default
-The alignment of the table row content to the surrounding text line is not
- exact.
+ The alignment of the table row content to the surrounding text line is
+ not exact.
  The needed factor of the 
 \series bold
 
@@ -17482,11 +17476,7 @@ mm vertical space was added
 \begin_layout Standard
 The float label is not automatically translated into the document language.
  If your document is not in English, you have to do this manually by adding
- the following line
-\series bold
- 
-\series default
-to the document preamble
+ the following line to the document preamble
 \series bold
 :
 \end_layout
@@ -18193,11 +18183,7 @@ name "References ! to Subfigures"
 \begin_layout Standard
 Currently referencing subfigures is not supported by LyX, so you have to
  use LaTeX-commands.
- The label is the created
-\series bold
- 
-\series default
-with the command
+ The label is the created with the command
 \end_layout
 
 \begin_layout Standard
@@ -18205,7 +18191,7 @@ with the command
 \series bold
 
 \backslash
-label{fig: YourLabelName}
+label{fig:YourLabelName}
 \end_layout
 
 \begin_layout Standard
@@ -18218,7 +18204,7 @@ that is directly inserted into the subfigure caption field.
 \series bold
 
 \backslash
-ref{fig: YourLabelName}
+ref{fig:YourLabelName}
 \end_layout
 
 \begin_layout Standard
@@ -18232,7 +18218,7 @@ status collapsed
 
 
 \backslash
-ref{fig: Platypus}
+ref{fig:Platypus}
 \end_layout
 
 \end_inset
@@ -20974,11 +20960,11 @@ Note
 \series medium
 \bar no
 If you want to turn existing text into a note, mark it and click on the
- note 
+ note
 \family default
 \series default
 \bar default
-toolbar 
+ toolbar 
 \family roman
 \series medium
 \bar no
@@ -21289,11 +21275,17 @@ status open
 \begin_layout Standard
 
 \color yellow
-This is yellow text in a 
+This is yellow text in a
+\color none
+ 
 \family sans
+\color yellow
 Shaded
 \family default
- note with darkgreen background.
+\color none
+ 
+\color yellow
+note with darkgreen background.
 \end_layout
 
 \end_inset
@@ -21367,28 +21359,28 @@ Footnote
 \family roman
 \series medium
 \bar no
-You'll see 
+You'll see
 \family default
 \series default
 \bar default
-then the following footnote-box: 
+ then the following footnote-box: 
 \begin_inset Graphics
 	filename ../clipart/footnoteQt4.png
 	scale 80
 
 \end_inset
 
-
+ 
 \family roman
 \series medium
 \bar no
- where you can enter the footnote text.
+where you can enter the footnote text.
  If you want to turn existing text into a footnote, mark it and click on
- the footnote 
+ the footnote
 \family default
 \series default
 \bar default
-toolbar 
+ toolbar 
 \family roman
 \series medium
 \bar no
@@ -21873,10 +21865,8 @@ status open
 
 \series bold
 Note:
-\series medium
- 
 \series default
-You can only number 26 footnotes with Latin letters, because this numbering
+ You can only number 26 footnotes with Latin letters, because this numbering
  is limited to single letters.
 \end_layout
 
@@ -22327,9 +22317,9 @@ theendnote
 \series bold
 
 \backslash
-@addtoreset 
+@addtoreset
 \series default
-as described in section\InsetSpace ~
+ as described in section\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Footnote-Numbering"
@@ -22431,19 +22421,13 @@ Note
 \end_inset
 
 .
- A
+ A grey 
 \family roman
 \series medium
- 
+box with the
 \family default
 \series default
-grey
-\family roman
-\series medium
- box with the 
-\family default
-\series default
-red 
+ red 
 \family roman
 \series medium
 label 
@@ -22793,10 +22777,10 @@ reference "tab:Units"
 
 .
  A negative value shifts the note up, a positive value shifts it down.
-
+ 
 \family roman
 \series medium
- For example the margin note beside this text line is shifted up 1.5\InsetSpace \thinspace{}
+For example the margin note beside this text line is shifted up 1.5\InsetSpace \thinspace{}
 cm with
  the ERT-command 
 \begin_inset Quotes eld
@@ -22921,10 +22905,10 @@ The text of this margin note is centered.
 
 \end_inset
 
- 
+
 \family default
 \series default
-The default is
+ The default is
 \end_layout
 
 \begin_layout Standard
@@ -25722,9 +25706,10 @@ blue
 cyan
 \family default
 \series bold
-, 
-\family sans
+,
 \series default
+ 
+\family sans
 green
 \family default
 , 
@@ -26358,9 +26343,9 @@ status open
 \begin_layout Standard
 
 \series bold
-Note: 
+Note:
 \series default
-When you use the following characters: "%", "#", "^", you have to write
+ When you use the following characters: "%", "#", "^", you have to write
  them with a preceding backslash, e.\InsetSpace \thinspace{}
 g.\InsetSpace ~
 
@@ -27656,9 +27641,9 @@ key "latexcompanion"
 Frank Mittelbach and Michel Goossens: 
 \emph on
 The LaTeX Companion Second Edition.
- 
+
 \emph default
-Addison-Wesley, 2004
+ Addison-Wesley, 2004
 \end_layout
 
 \begin_layout Bibliography
@@ -27671,9 +27656,9 @@ Helmut Kopka and Patrick W.
  Daly: 
 \emph on
 A Guide to LaTeX Fourth Edition.
- 
+
 \emph default
-Addison-Wesley, 2003
+ Addison-Wesley, 2003
 \end_layout
 
 \begin_layout Bibliography
@@ -27685,9 +27670,9 @@ key "latexbook"
 Leslie Lamport: 
 \emph on
 LaTeX: A Document Preparation System.
- 
+
 \emph default
-Addison-Wesley, second edition, 1994
+ Addison-Wesley, second edition, 1994
 \end_layout
 
 \begin_layout Bibliography

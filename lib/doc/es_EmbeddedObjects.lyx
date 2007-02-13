@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 258
+\lyxformat 259
 \begin_document
 \begin_header
 \textclass scrbook
@@ -374,11 +374,8 @@ El diálogo Gráficos puede lanzarse en cualquier momento haciendo click-derecha
 \end_layout
 
 \begin_layout Description
-Gráficos 
-\lang english
-Here you can choose an image file and adjust its appearance in the output.
-
-\lang spanish
+Gráficos Aquí puedes elegir tu archivo gráfico y ajustar separadamente su
+ presentación en LyX y en la salida.
  En el apéndice\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -392,16 +389,15 @@ Puedes girar
  los gráficos en el sentido de las agujas de reloj estableciendo un ángulo
  y un origen de rotación.
  La imagen también gira en LyX.
-\lang english
-
 \newline
-Images can be opened in a program of your choice when pressing the 
+Las imágenes se pueden abrir con un programa
+ de tu elección pulsando el botón 
 \family sans
-Edit
+Editar
 \family default
- button.
- The program can be set for every image format in the file format settings
- in LyX's preferences.
+.
+ Los programas visor y editor para cada formato de imagen se pueden establecer
+ en la configuración de los formatos de archivo de las preferencias de LyX.
 \end_layout
 
 \begin_layout Description
@@ -783,13 +779,12 @@ cruzada
  Es importante emplear referencias a flotantes, mejor que alusiones vagas
  como "la figura de arriba", porque como LaTeX recolocará los flotantes
  en el documento final, podría no quedar "arriba" precisamente.
-\lang english
-
 \newline
-Referencing is explained in detail in section\InsetSpace ~
+Las referencias
+ se explican con detalle en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:Referencing-Floats"
+reference "sec:Referencias-a-Flotantes"
 
 \end_inset
 
@@ -816,13 +811,12 @@ Descripción
 .
  Observa que sólo el título principal del encabezado del flotante se añade
  a la Lista de Figuras.
-\lang english
-
 \newline
-Referencing subfigures is explained in section\InsetSpace ~
+Las referencias a las subfiguras se explican en la
+ sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sub:Referencing-Subfigures"
+reference "sub:Referencias-a-Subfiguras"
 
 \end_inset
 
@@ -867,7 +861,7 @@ status open
 	lyxscale 60
 	width 45col%
 	subcaption
-	subcaptionText "\label{fig: Platypus} Platypus"
+	subcaptionText "\label{fig:Platypus} Platypus"
 
 \end_inset
 
@@ -1234,12 +1228,7 @@ B
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
@@ -1380,9 +1369,9 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: 
+Nota:
 \series default
-No todos los visores DVI pueden mostrar rotaciones.
+ No todos los visores DVI pueden mostrar rotaciones.
 \end_layout
 
 \end_inset
@@ -2084,12 +2073,10 @@ cruzada
 
 .
 \newline
-
-\lang english
-Referencing is explained in detail in section\InsetSpace ~
+Las referencias se explican con detalle en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
-reference "sec:Referencing-Floats"
+reference "sec:Referencias-a-Flotantes"
 
 \end_inset
 
@@ -2137,20 +2124,16 @@ larga
 \begin_layout Description
 
 \family sans
-Encabezado: 
+Encabezado:
 \family default
-La fila actual y todas las de arriba, que no tienen ninguna opción especial
+ La fila actual y todas las de arriba, que no tienen ninguna opción especial
  definida, se definen como filas de encabezado para todas las páginas de
- la tabla, excepto para la primera página
+ la tabla, excepto para la primera página si 
 \family sans
- 
+Primer\InsetSpace ~
+encabezado
 \family default
-si
-\family sans
- Primer\InsetSpace ~
-encabezado 
-\family default
-está definido.
+ está definido.
  Este se denomina encabezado principal.
 \end_layout
 
@@ -2158,22 +2141,22 @@ está definido.
 
 \family sans
 Primer\InsetSpace ~
-encabezado: 
+encabezado:
 \family default
-La fila actual y superiores, que no tienen ninguna opción especial definida,
+ La fila actual y superiores, que no tienen ninguna opción especial definida,
  se definen como filas cabeceras de la primera página de la tabla.
 \end_layout
 
 \begin_layout Description
 
 \family sans
-Pie: 
+Pie:
 \family default
-La fila actual y todas las siguientes, que no tienen ninguna opción especial
+ La fila actual y todas las siguientes, que no tienen ninguna opción especial
  definida, se definen como filas de pie de todas las páginas de la tabla,
- excepto para la última página si se define
+ excepto para la última página si se define 
 \family sans
- Último\InsetSpace ~
+Último\InsetSpace ~
 pie.
 \end_layout
 
@@ -4464,10 +4447,7 @@ Insert a caption via the menu
 Insert\SpecialChar \menuseparator
 Caption
 \family default
-\series bold
- 
-\series default
-into the first table cell.
+ into the first table cell.
 \newline
 You can also add a short title for the caption.
 \end_layout
@@ -4508,10 +4488,7 @@ A short title that will appear in the LOT instead of the full title.
 \series default
  behind the caption omits the vertical lines between the following cells
  in the row.
-
-\family sans
  
-\family default
 \lang spanish
 Ahora, la primera fila de la tabla es sólo una fila postiza para el encabezado,
  la tabla real comienza en la segunda fila.
@@ -4893,9 +4870,9 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: 
+Nota:
 \series default
-Si utilizas el paquete de LaTeX 
+ Si utilizas el paquete de LaTeX 
 \series bold
 hyperref
 \series default
@@ -5282,9 +5259,9 @@ reference "tab:RefEjemplo"
 
 \begin_layout Standard
 El formato del encabezado puede configurarse junto con todos los demás encabezad
-os del documento mediante el paquete LaTeX
+os del documento mediante el paquete LaTeX 
 \series bold
- caption
+caption
 \series default
 
 \begin_inset LatexCommand index
@@ -8411,9 +8388,9 @@ caption*{Continúa tabla con salto de página forzado en celda}
 \begin_inset Text
 
 \begin_layout Standard
-
+ 
 \series bold
- Ejemplo de lista telefónica
+Ejemplo de lista telefónica
 \end_layout
 
 \end_inset
@@ -10726,9 +10703,9 @@ La barra "
 \series bold
 |
 \series default
-" al principio dibuja el borde y el comando
+" al principio dibuja el borde y el comando 
 \series bold
- >{ }
+>{ }
 \series default
  significa que los comandos entre llaves se aplican antes de crear la celda.
 \end_layout
@@ -13352,23 +13329,24 @@ red
 \family sans
 green
 \family default
-,
+, 
 \family sans
- yellow, blue
+yellow, blue
 \family default
-,
+, 
 \family sans
- cyan
+cyan
 \family default
 \series bold
 ,
-\family sans
 \series default
- magenta, black
-\family default
-,
+ 
 \family sans
- white
+magenta, black
+\family default
+, 
+\family sans
+white
 \end_layout
 
 \begin_layout Standard
@@ -15430,11 +15408,11 @@ newcolumntype{nombre del formato}[número de argumentos]{comandos}
 El nombre de formato puede ser una sola letra.
  Las letras 
 \emph on
-b, c, l, m, p 
+b, c, l, m, p
 \emph default
-y
+ y 
 \emph on
- r
+r
 \emph default
  están predefinidas y no pueden usarse.
  Pero se permiten todas las mayúsculas.
@@ -16961,9 +16939,9 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: 
+Nota:
 \series default
-Aparentemente el paquete LaTeX 
+ Aparentemente el paquete LaTeX 
 \series bold
 arydshln
 \series default
@@ -17139,9 +17117,9 @@ Encabezado
 \emph on
 Guía\InsetSpace ~
 del\InsetSpace ~
-Usuario 
+Usuario
 \emph default
-de LyX.
+ de LyX.
 \end_layout
 
 \end_inset
@@ -17338,9 +17316,9 @@ algorithm
 \begin_layout Description
 
 \series bold
-Nota: 
+Nota:
 \series default
-Si se emplea el paquete LaTeX 
+ Si se emplea el paquete LaTeX 
 \series bold
 hyperref
 \series default
@@ -17353,19 +17331,15 @@ name "LaTeX-paquetes ! hyperref"
  para enlazar referencias cruzadas a flotantes en la salida PDF, debe cargarse
  en el preámbulo LaTeX antes de la definición de flotantes para poder referirse
  a ellos.
-
-\series bold
- 
-\series default
-LyX establece la definición de algoritmos flotantes automáticamente antes
+ LyX establece la definición de algoritmos flotantes automáticamente antes
  de la parte del preámbulo editable por el usuario, así que hay que insertar
  las siguientes líneas 
 \emph on
 después
 \emph default
- de cargar el comando
+ de cargar el comando 
 \series bold
- hyperref:
+hyperref:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -17959,17 +17933,15 @@ Formato
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Referencing Subfigures
+Referencias a Subfiguras 
 \begin_inset LatexCommand label
-name "sub:Referencing-Subfigures"
+name "sub:Referencias-a-Subfiguras"
 
 \end_inset
 
 
 \begin_inset LatexCommand index
-name "Referencias ! to Subfigures"
+name "Referencias ! a Subfiguras"
 
 \end_inset
 
@@ -17977,47 +17949,35 @@ name "Referencias ! to Subfigures"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently referencing subfigures is not supported by LyX, so you have to
- use LaTeX-commands.
- The label is the created
-\series bold
- 
-\series default
-with the command
+Por el momento LyX no soporta las referencias a subfiguras, de modo que
+ hay que emplear comandos LaTeX.
+ La etiqueta se crea con el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-label{fig: YourLabelName}
+label{fig:NombreEtiqueta}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-that is directly inserted into the subfigure caption field.
- To reference the label add this command in ERT
+que se inserta directamente en el campo de encabezado de la subfigura.
+ Para referenciar la etiqueta añade el siguiente comando en ERT
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-ref{fig: YourLabelName}
+ref{fig:NombreEtiqueta}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to the position in your document where the reference should be placed.
- Here is a reference to a subfigure: Subfigure\InsetSpace ~
+en la posición del documento en la que quieras que aparezca la referencia.
+ Aquí hay una referencia a una subfigura: Subfigura\InsetSpace ~
 
 \begin_inset ERT
 status collapsed
@@ -18026,12 +17986,16 @@ status collapsed
 
 
 \backslash
-ref{fig: Platypus}
+ref{fig:Platypus}
 \end_layout
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
@@ -18091,11 +18055,11 @@ autoref{#1}}}}
 \begin_layout Standard
 
 \series bold
-hyperref 
+hyperref
 \series default
-se utiliza para enlazar referencias cruzadas en las salidas DVI y PDF, esto
- significa que el lector del documento podrá pinchar sobre una entrada de
- Índice o una referencia y será inmediatamente dirigido a esa parte del
+ se utiliza para enlazar referencias cruzadas en las salidas DVI y PDF,
+ esto significa que el lector del documento podrá pinchar sobre una entrada
+ de Índice o una referencia y será inmediatamente dirigido a esa parte del
  documento.
  
 \series bold
@@ -18243,13 +18207,13 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: hypcap 
+Nota: hypcap
 \series default
-debe cargarse después de
+ debe cargarse después de 
 \series bold
- hyperref 
+hyperref
 \series default
-en el preámbulo
+ en el preámbulo
 \series bold
 .
 \end_layout
@@ -18260,18 +18224,15 @@ en el preámbulo
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- The set reference position has no effect for references to subfigures.
+ La colocación de referencias no afecta a las referencias a subfiguras.
 \end_layout
 
 \end_inset
@@ -18421,11 +18382,11 @@ De forma predeterminada cada una de las opciones tiene sus propias reglas:
 \family sans
 Principio\InsetSpace ~
 de\InsetSpace ~
-página: 
+página:
 \family default
-solo si el flotante ocupa menos del 70\InsetSpace \thinspace{}
-% de la página puede ubicarse al principio
- de página (
+ solo si el flotante ocupa menos del 70\InsetSpace \thinspace{}
+% de la página puede ubicarse al
+ principio de página (
 \series bold
 
 \backslash
@@ -18440,11 +18401,11 @@ topfraction
 \family sans
 Fin\InsetSpace ~
 de\InsetSpace ~
-página: 
+página:
 \family default
-solo si el flotante ocupa menos del 30\InsetSpace \thinspace{}
-% de la página puede ubicarse al fin
- de página.
+ solo si el flotante ocupa menos del 30\InsetSpace \thinspace{}
+% de la página puede ubicarse al
+ fin de página.
  (
 \series bold
 
@@ -18460,9 +18421,9 @@ bottomfraction
 \family sans
 Página\InsetSpace ~
 de\InsetSpace ~
-flotantes: 
+flotantes:
 \family default
-solo si más del 50\InsetSpace \thinspace{}
+ solo si más del 50\InsetSpace \thinspace{}
 % de la página se ocupa por flotantes puede haber varios
  juntos en la misma página.
  (
@@ -18500,9 +18461,9 @@ de
 \InsetSpace ~
 
 \family sans
-página 
+página
 \family default
-al 50\InsetSpace \thinspace{}
+ al 50\InsetSpace \thinspace{}
 %, añade esta línea en el preámbulo:
 \end_layout
 
@@ -19122,9 +19083,9 @@ report (koma-script)
 \series bold
 caption
 \series default
- el comando
+ el comando 
 \series bold
- 
+
 \backslash
 setkomafont
 \series default
@@ -20831,11 +20792,11 @@ Aparece un recuadro como este:
 
 \end_inset
 
-
+ 
 \family roman
 \series medium
 \bar no
- donde puedes introducir el texto.
+donde puedes introducir el texto.
  Si quieres convertir un texto existente en nota al pie, márcalo y pincha
  sobre el
 \family default
@@ -21130,9 +21091,9 @@ paquete
 \InsetSpace ~
 
 \family sans
-AMS 
+AMS
 \family default
-en la pestaña 
+ en la pestaña 
 \family sans
 Ecuaciones
 \family default
@@ -21198,9 +21159,9 @@ numberwithin{footnote}{part}
 \end_layout
 
 \begin_layout Standard
-Para reestablecer el número de pie a 1 en cada sección añade este
+Para reestablecer el número de pie a 1 en cada sección añade este 
 \family roman
- comando en el preámbulo:
+comando en el preámbulo:
 \end_layout
 
 \begin_layout Standard
@@ -21301,11 +21262,7 @@ numerar
 \begin_inset Quotes erd
 \end_inset
 
- las
-\series bold
- 
-\series default
-notas al pie con letras mayúsculas o minúsculas usa 
+ las notas al pie con letras mayúsculas o minúsculas usa 
 \series bold
 
 \backslash
@@ -21343,10 +21300,8 @@ status open
 
 \series bold
 Nota:
-\series medium
- 
 \series default
-Sólo puedes numerar hasta 26 pies con letras, porque esta numeración está
+ Sólo puedes numerar hasta 26 pies con letras, porque esta numeración está
  limitada a letras simples.
 \end_layout
 
@@ -21789,9 +21744,9 @@ theendnote
 \series bold
 
 \backslash
-@addtoreset 
+@addtoreset
 \series default
-como se describe en la sección\InsetSpace ~
+ como se describe en la sección\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sub:Numeración-de-Notas-al-Pie"
@@ -21894,10 +21849,10 @@ margen
 \end_inset
 
 .
- Aparece un cuadro gris con la etiqueta en rojo
+ Aparece un cuadro gris con la etiqueta en rojo 
 \family roman
 \series medium
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -22249,12 +22204,12 @@ reference "tab:Unidades"
 .
  Un valor negativo desplaza la nota hacia arriba, un valor positivo hacia
  abajo.
-
+ 
 \family roman
 \series medium
- Por ejemplo la nota adjunta a esta línea de texto está desplazada 1.5\InsetSpace \thinspace{}
-cm
- arriba con el comando ERT 
+Por ejemplo la nota adjunta a esta línea de texto está desplazada 1.5\InsetSpace \thinspace{}
+cm arriba
+ con el comando ERT 
 \begin_inset Quotes eld
 \end_inset
 
@@ -22377,10 +22332,10 @@ El texto de esta nota está centrado.
 
 \end_inset
 
- 
+
 \family default
 \series default
-El valor predeterminado es 
+ El valor predeterminado es 
 \end_layout
 
 \begin_layout Standard
@@ -25568,9 +25523,10 @@ blue
 cyan
 \family default
 \series bold
-, 
-\family sans
+,
 \series default
+ 
+\family sans
 green
 \family default
 , 
@@ -26196,9 +26152,9 @@ status open
 \begin_layout Standard
 
 \series bold
-Nota: 
+Nota:
 \series default
-Cuando utilices los caracteres: "%", "#", "^", debes escribirlos precedidos
+ Cuando utilices los caracteres: "%", "#", "^", debes escribirlos precedidos
  por una barra invertida, p.\InsetSpace \thinspace{}
 e.\InsetSpace ~
 
@@ -27437,9 +27393,9 @@ key "latexcompanion"
 Frank Mittelbach and Michel Goossens: 
 \emph on
 The LaTeX Companion Second Edition.
- 
+
 \emph default
-Addison-Wesley, 2004
+ Addison-Wesley, 2004
 \end_layout
 
 \begin_layout Bibliography
@@ -27452,9 +27408,9 @@ Helmut Kopka and Patrick W.
  Daly: 
 \emph on
 A Guide to LaTeX Fourth Edition.
- 
+
 \emph default
-Addison-Wesley, 2003
+ Addison-Wesley, 2003
 \end_layout
 
 \begin_layout Bibliography
@@ -27466,9 +27422,9 @@ key "latexbook"
 Leslie Lamport: 
 \emph on
 LaTeX: A Document Preparation System.
- 
+
 \emph default
-Addison-Wesley, second edition, 1994
+ Addison-Wesley, second edition, 1994
 \end_layout
 
 \begin_layout Bibliography
