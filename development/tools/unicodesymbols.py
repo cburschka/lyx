@@ -65,7 +65,7 @@ def complete(lines, start, stop):
     for i in range(start, stop):
         # This catches both comments (lines[l][0] == -1) and code points less than i
         while l < len(lines) and lines[l][0] < i:
-            print lines[l]
+#            print lines[l]
             l = l + 1
             continue
         if l >= len(lines) or lines[l][0] != i:
@@ -78,7 +78,7 @@ def complete(lines, start, stop):
                     combining = ""
                 line = [i, '#0x%04x ""                         "" "%s" # %s' % (i, combining, name)]
                 lines.insert(l, line)
-                print lines[l]
+#                print lines[l]
                 l = l + 1
 
 
