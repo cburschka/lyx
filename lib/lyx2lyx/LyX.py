@@ -21,6 +21,7 @@ from parser_tools import get_value, check_token, find_token,\
      find_tokens, find_end_of
 import os.path
 import gzip
+import locale
 import sys
 import re
 import time
@@ -108,9 +109,17 @@ def trim_eol(line):
         return line[:-1]
 
 
-def get_encoding(language, inputencoding, format):
+def get_encoding(language, inputencoding, format, cjk_encoding):
     if format > 248:
         return "utf8"
+    # CJK-LyX encodes files using the current locale encoding.
+    # This means that files created by CJK-LyX can only be converted using
+    # the correct locale settings unless the encoding is given as commandline
+    # argument.
+    if cjk_encoding == 'auto':
+        return locale.getpreferredencoding()
+    elif cjk_encoding != '':
+        return cjk_encoding
     from lyx2lyx_lang import lang
     if inputencoding == "auto" or inputencoding == "default":
         return lang[language][3]
@@ -128,9 +137,9 @@ class LyX_Base:
     """This class carries all the information of the LyX file."""
     
     def __init__(self, end_format = 0, input = "", output = "", error
-                 = "", debug = default_debug_level, try_hard = 0, language = "english",
-                 encoding = "auto"):
-        
+                 = "", debug = default_debug_level, try_hard = 0, cjk_encoding = '',
+                 language = "english", encoding = "auto"):
+
         """Arguments:
         end_format: final format that the file should be converted. (integer)
         input: the name of the input source, if empty resort to standard input.
@@ -147,6 +156,7 @@ class LyX_Base:
 
         self.debug = debug
         self.try_hard = try_hard
+        self.cjk_encoding = cjk_encoding
 
         if end_format:
             self.end_format = self.lyxformat(end_format)
@@ -226,7 +236,7 @@ class LyX_Base:
         self.format  = self.read_format()
         self.language = get_value(self.header, "\\language", 0, default = "english")
         self.inputencoding = get_value(self.header, "\\inputencoding", 0, default = "auto")
-        self.encoding = get_encoding(self.language, self.inputencoding, self.format)
+        self.encoding = get_encoding(self.language, self.inputencoding, self.format, self.cjk_encoding)
         self.initial_version = self.read_version()
 
         # Second pass over header and preamble, now we know the file encoding
@@ -248,7 +258,7 @@ class LyX_Base:
         self.set_version()
         self.set_format()
         if self.encoding == "auto":
-            self.encoding = get_encoding(self.language, self.encoding, self.format)
+            self.encoding = get_encoding(self.language, self.encoding, self.format, self.cjk_encoding)
 
         if self.preamble:
             i = find_token(self.header, '\\textclass', 0) + 1
@@ -532,8 +542,8 @@ class LyX_Base:
 
 class File(LyX_Base):
     " This class reads existing LyX files."
-    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0):
-        LyX_Base.__init__(self, end_format, input, output, error, debug, try_hard)
+    def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level, try_hard = 0, cjk_encoding = ''):
+        LyX_Base.__init__(self, end_format, input, output, error, debug, try_hard, cjk_encoding)
         self.read()
 
 

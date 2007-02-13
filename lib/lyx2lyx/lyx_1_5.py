@@ -230,6 +230,8 @@ where at least two languages have different default encodings are encoded
 in multiple encodings for file formats < 249. These files are incorrectly
 read and written (as if the whole file was in the encoding of the main
 language).
+This is not true for files written by CJK-LyX, they are always in the locale
+encoding.
 
 This function
 - converts from fake unicode values to true unicode if forward is true, and
@@ -239,6 +241,8 @@ document.encoding must be set to the old value (format 248) in both cases.
 We do this here and not in LyX.py because it is far easier to do the
 necessary parsing in modern formats than in ancient ones.
 """
+    if document.cjk_encoding != '':
+        return
     encoding_stack = [document.encoding]
     lang_re = re.compile(r"^\\lang\s(\S+)")
     if document.inputencoding == "auto" or document.inputencoding == "default":
@@ -292,7 +296,7 @@ def revert_utf8(document):
     elif get_value(document.header, "\\inputencoding", i) == "utf8":
         document.header[i] = "\\inputencoding auto"
     document.inputencoding = get_value(document.header, "\\inputencoding", 0)
-    document.encoding = get_encoding(document.language, document.inputencoding, 248)
+    document.encoding = get_encoding(document.language, document.inputencoding, 248, document.cjk_encoding)
     convert_multiencoding(document, False)
 
 
@@ -1016,11 +1020,11 @@ def revert_accent(document):
     # Replace accented characters with InsetLaTeXAccent
     # Do not convert characters that can be represented in the chosen
     # encoding.
-    encoding_stack = [get_encoding(document.language, document.inputencoding, 248)]
+    encoding_stack = [get_encoding(document.language, document.inputencoding, 248, document.cjk_encoding)]
     lang_re = re.compile(r"^\\lang\s(\S+)")
     for i in range(len(document.body)):
 
-        if document.inputencoding == "auto" or document.inputencoding == "default":
+        if (document.inputencoding == "auto" or document.inputencoding == "default") and document.cjk_encoding != '':
             # Track the encoding of the current line
             result = lang_re.match(document.body[i])
             if result:
