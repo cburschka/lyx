@@ -676,6 +676,251 @@
 #0x036d ""                         "" "combining" # COMBINING LATIN SMALL LETTER T
 #0x036e ""                         "" "combining" # COMBINING LATIN SMALL LETTER V
 #0x036f ""                         "" "combining" # COMBINING LATIN SMALL LETTER X
+#0x1e00 ""                         "" "" # LATIN CAPITAL LETTER A WITH RING BELOW
+#0x1e01 ""                         "" "" # LATIN SMALL LETTER A WITH RING BELOW
+0x1e02 "\\.{B}"                   "" "" # LATIN CAPITAL LETTER B WITH DOT ABOVE
+0x1e03 "\\.{b}"                   "" "" # LATIN SMALL LETTER B WITH DOT ABOVE
+0x1e04 "\\d{B}"                   "" "" # LATIN CAPITAL LETTER B WITH DOT BELOW
+0x1e05 "\\d{b}"                   "" "" # LATIN SMALL LETTER B WITH DOT BELOW
+#0x1e06 ""                         "" "" # LATIN CAPITAL LETTER B WITH LINE BELOW
+#0x1e07 ""                         "" "" # LATIN SMALL LETTER B WITH LINE BELOW
+#0x1e08 ""                         "" "" # LATIN CAPITAL LETTER C WITH CEDILLA AND ACUTE
+#0x1e09 ""                         "" "" # LATIN SMALL LETTER C WITH CEDILLA AND ACUTE
+0x1e0a "\\.{D}"                   "" "" # LATIN CAPITAL LETTER D WITH DOT ABOVE
+0x1e0b "\\.{d}"                   "" "" # LATIN SMALL LETTER D WITH DOT ABOVE
+0x1e0c "\\d{D}"                   "" "" # LATIN CAPITAL LETTER D WITH DOT BELOW
+0x1e0d "\\d{d}"                   "" "" # LATIN SMALL LETTER D WITH DOT BELOW
+#0x1e0e ""                         "" "" # LATIN CAPITAL LETTER D WITH LINE BELOW
+#0x1e0f ""                         "" "" # LATIN SMALL LETTER D WITH LINE BELOW
+0x1e10 "\\c{D}"                   "" "" # LATIN CAPITAL LETTER D WITH CEDILLA
+0x1e11 "\\c{d}"                   "" "" # LATIN SMALL LETTER D WITH CEDILLA
+#0x1e12 ""                         "" "" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
+#0x1e13 ""                         "" "" # LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
+#0x1e14 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND GRAVE
+#0x1e15 ""                         "" "" # LATIN SMALL LETTER E WITH MACRON AND GRAVE
+#0x1e16 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND ACUTE
+#0x1e17 ""                         "" "" # LATIN SMALL LETTER E WITH MACRON AND ACUTE
+#0x1e18 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
+#0x1e19 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
+#0x1e1a ""                         "" "" # LATIN CAPITAL LETTER E WITH TILDE BELOW
+#0x1e1b ""                         "" "" # LATIN SMALL LETTER E WITH TILDE BELOW
+#0x1e1c ""                         "" "" # LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
+#0x1e1d ""                         "" "" # LATIN SMALL LETTER E WITH CEDILLA AND BREVE
+0x1e1e "\\.{F}"                   "" "" # LATIN CAPITAL LETTER F WITH DOT ABOVE
+0x1e1f "\\.{f}"                   "" "" # LATIN SMALL LETTER F WITH DOT ABOVE
+#0x1e20 ""                         "" "" # LATIN CAPITAL LETTER G WITH MACRON
+#0x1e21 ""                         "" "" # LATIN SMALL LETTER G WITH MACRON
+0x1e22 "\\.{H}"                   "" "" # LATIN CAPITAL LETTER H WITH DOT ABOVE
+0x1e23 "\\.{h}"                   "" "" # LATIN SMALL LETTER H WITH DOT ABOVE
+0x1e24 "\\d{H}"                   "" "" # LATIN CAPITAL LETTER H WITH DOT BELOW
+0x1e25 "\\d{h}"                   "" "" # LATIN SMALL LETTER H WITH DOT BELOW
+0x1e26 "\\\"{H}"                  "" "" # LATIN CAPITAL LETTER H WITH DIAERESIS
+0x1e27 "\\\"{h}"                  "" "" # LATIN SMALL LETTER H WITH DIAERESIS
+0x1e28 "\\c{H}"                   "" "" # LATIN CAPITAL LETTER H WITH CEDILLA
+0x1e29 "\\c{h}"                   "" "" # LATIN SMALL LETTER H WITH CEDILLA
+#0x1e2a ""                         "" "" # LATIN CAPITAL LETTER H WITH BREVE BELOW
+#0x1e2b ""                         "" "" # LATIN SMALL LETTER H WITH BREVE BELOW
+#0x1e2c ""                         "" "" # LATIN CAPITAL LETTER I WITH TILDE BELOW
+#0x1e2d ""                         "" "" # LATIN SMALL LETTER I WITH TILDE BELOW
+#0x1e2e ""                         "" "" # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
+#0x1e2f ""                         "" "" # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
+0x1e30 "\\'{K}"                   "" "" # LATIN CAPITAL LETTER K WITH ACUTE
+0x1e31 "\\'{k}"                   "" "" # LATIN SMALL LETTER K WITH ACUTE
+0x1e32 "\\d{K}"                   "" "" # LATIN CAPITAL LETTER K WITH DOT BELOW
+0x1e33 "\\d{k}"                   "" "" # LATIN SMALL LETTER K WITH DOT BELOW
+#0x1e34 ""                         "" "" # LATIN CAPITAL LETTER K WITH LINE BELOW
+#0x1e35 ""                         "" "" # LATIN SMALL LETTER K WITH LINE BELOW
+0x1e36 "\\d{L}"                   "" "" # LATIN CAPITAL LETTER L WITH DOT BELOW
+0x1e37 "\\d{l}"                   "" "" # LATIN SMALL LETTER L WITH DOT BELOW
+#0x1e38 ""                         "" "" # LATIN CAPITAL LETTER L WITH DOT BELOW AND MACRON
+#0x1e39 ""                         "" "" # LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
+#0x1e3a ""                         "" "" # LATIN CAPITAL LETTER L WITH LINE BELOW
+#0x1e3b ""                         "" "" # LATIN SMALL LETTER L WITH LINE BELOW
+#0x1e3c ""                         "" "" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
+#0x1e3d ""                         "" "" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
+0x1e3e "\\'{M}"                   "" "" # LATIN CAPITAL LETTER M WITH ACUTE
+0x1e3f "\\'{m}"                   "" "" # LATIN SMALL LETTER M WITH ACUTE
+0x1e40 "\\.{M}"                   "" "" # LATIN CAPITAL LETTER M WITH DOT ABOVE
+0x1e41 "\\.{m}"                   "" "" # LATIN SMALL LETTER M WITH DOT ABOVE
+0x1e42 "\\d{M}"                   "" "" # LATIN CAPITAL LETTER M WITH DOT BELOW
+0x1e43 "\\d{m}"                   "" "" # LATIN SMALL LETTER M WITH DOT BELOW
+0x1e44 "\\.{N}"                   "" "" # LATIN CAPITAL LETTER N WITH DOT ABOVE
+0x1e45 "\\.{n}"                   "" "" # LATIN SMALL LETTER N WITH DOT ABOVE
+0x1e46 "\\d{N}"                   "" "" # LATIN CAPITAL LETTER N WITH DOT BELOW
+0x1e47 "\\d{n}"                   "" "" # LATIN SMALL LETTER N WITH DOT BELOW
+#0x1e48 ""                         "" "" # LATIN CAPITAL LETTER N WITH LINE BELOW
+#0x1e49 ""                         "" "" # LATIN SMALL LETTER N WITH LINE BELOW
+#0x1e4a ""                         "" "" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
+#0x1e4b ""                         "" "" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
+#0x1e4c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
+#0x1e4d ""                         "" "" # LATIN SMALL LETTER O WITH TILDE AND ACUTE
+#0x1e4e ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND DIAERESIS
+#0x1e4f ""                         "" "" # LATIN SMALL LETTER O WITH TILDE AND DIAERESIS
+#0x1e50 ""                         "" "" # LATIN CAPITAL LETTER O WITH MACRON AND GRAVE
+#0x1e51 ""                         "" "" # LATIN SMALL LETTER O WITH MACRON AND GRAVE
+#0x1e52 ""                         "" "" # LATIN CAPITAL LETTER O WITH MACRON AND ACUTE
+#0x1e53 ""                         "" "" # LATIN SMALL LETTER O WITH MACRON AND ACUTE
+0x1e54 "\\'{P}"                   "" "" # LATIN CAPITAL LETTER P WITH ACUTE
+0x1e55 "\\'{p}"                   "" "" # LATIN SMALL LETTER P WITH ACUTE
+0x1e56 "\\.{P}"                   "" "" # LATIN CAPITAL LETTER P WITH DOT ABOVE
+0x1e57 "\\.{p}"                   "" "" # LATIN SMALL LETTER P WITH DOT ABOVE
+0x1e58 "\\.{R}"                   "" "" # LATIN CAPITAL LETTER R WITH DOT ABOVE
+0x1e59 "\\.{r}"                   "" "" # LATIN SMALL LETTER R WITH DOT ABOVE
+0x1e5a "\\d{R}"                   "" "" # LATIN CAPITAL LETTER R WITH DOT BELOW
+0x1e5b "\\d{r}"                   "" "" # LATIN SMALL LETTER R WITH DOT BELOW
+#0x1e5c ""                         "" "" # LATIN CAPITAL LETTER R WITH DOT BELOW AND MACRON
+#0x1e5d ""                         "" "" # LATIN SMALL LETTER R WITH DOT BELOW AND MACRON
+#0x1e5e ""                         "" "" # LATIN CAPITAL LETTER R WITH LINE BELOW
+#0x1e5f ""                         "" "" # LATIN SMALL LETTER R WITH LINE BELOW
+0x1e60 "\\.{S}"                   "" "" # LATIN CAPITAL LETTER S WITH DOT ABOVE
+0x1e61 "\\.{s}"                   "" "" # LATIN SMALL LETTER S WITH DOT ABOVE
+0x1e62 "\\d{S}"                   "" "" # LATIN CAPITAL LETTER S WITH DOT BELOW
+0x1e63 "\\d{s}"                   "" "" # LATIN SMALL LETTER S WITH DOT BELOW
+#0x1e64 ""                         "" "" # LATIN CAPITAL LETTER S WITH ACUTE AND DOT ABOVE
+#0x1e65 ""                         "" "" # LATIN SMALL LETTER S WITH ACUTE AND DOT ABOVE
+#0x1e66 ""                         "" "" # LATIN CAPITAL LETTER S WITH CARON AND DOT ABOVE
+#0x1e67 ""                         "" "" # LATIN SMALL LETTER S WITH CARON AND DOT ABOVE
+#0x1e68 ""                         "" "" # LATIN CAPITAL LETTER S WITH DOT BELOW AND DOT ABOVE
+#0x1e69 ""                         "" "" # LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE
+0x1e6a "\\.{T}"                   "" "" # LATIN CAPITAL LETTER T WITH DOT ABOVE
+0x1e6b "\\.{t}"                   "" "" # LATIN SMALL LETTER T WITH DOT ABOVE
+0x1e6c "\\d{T}"                   "" "" # LATIN CAPITAL LETTER T WITH DOT BELOW
+0x1e6d "\\d{t}"                   "" "" # LATIN SMALL LETTER T WITH DOT BELOW
+#0x1e6e ""                         "" "" # LATIN CAPITAL LETTER T WITH LINE BELOW
+#0x1e6f ""                         "" "" # LATIN SMALL LETTER T WITH LINE BELOW
+#0x1e70 ""                         "" "" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
+#0x1e71 ""                         "" "" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
+#0x1e72 ""                         "" "" # LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
+#0x1e73 ""                         "" "" # LATIN SMALL LETTER U WITH DIAERESIS BELOW
+#0x1e74 ""                         "" "" # LATIN CAPITAL LETTER U WITH TILDE BELOW
+#0x1e75 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE BELOW
+#0x1e76 ""                         "" "" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
+#0x1e77 ""                         "" "" # LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
+#0x1e78 ""                         "" "" # LATIN CAPITAL LETTER U WITH TILDE AND ACUTE
+#0x1e79 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE AND ACUTE
+#0x1e7a ""                         "" "" # LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
+#0x1e7b ""                         "" "" # LATIN SMALL LETTER U WITH MACRON AND DIAERESIS
+0x1e7c "\\~{V}"                   "" "" # LATIN CAPITAL LETTER V WITH TILDE
+0x1e7d "\\~{v}"                   "" "" # LATIN SMALL LETTER V WITH TILDE
+0x1e7e "\\d{V}"                   "" "" # LATIN CAPITAL LETTER V WITH DOT BELOW
+0x1e7f "\\d{v}"                   "" "" # LATIN SMALL LETTER V WITH DOT BELOW
+0x1e80 "\\`{W}"                   "" "" # LATIN CAPITAL LETTER W WITH GRAVE
+0x1e81 "\\`{w}"                   "" "" # LATIN SMALL LETTER W WITH GRAVE
+0x1e82 "\\'{W}"                   "" "" # LATIN CAPITAL LETTER W WITH ACUTE
+0x1e83 "\\'{w}"                   "" "" # LATIN SMALL LETTER W WITH ACUTE
+0x1e84 "\\\"{W}"                  "" "" # LATIN CAPITAL LETTER W WITH DIAERESIS
+0x1e85 "\\\"{w}"                  "" "" # LATIN SMALL LETTER W WITH DIAERESIS
+0x1e86 "\\.{W}"                   "" "" # LATIN CAPITAL LETTER W WITH DOT ABOVE
+0x1e87 "\\.{w}"                   "" "" # LATIN SMALL LETTER W WITH DOT ABOVE
+0x1e88 "\\d{W}"                   "" "" # LATIN CAPITAL LETTER W WITH DOT BELOW
+0x1e89 "\\d{w}"                   "" "" # LATIN SMALL LETTER W WITH DOT BELOW
+0x1e8a "\\.{X}"                   "" "" # LATIN CAPITAL LETTER X WITH DOT ABOVE
+0x1e8b "\\.{x}"                   "" "" # LATIN SMALL LETTER X WITH DOT ABOVE
+0x1e8c "\\\"{X}"                  "" "" # LATIN CAPITAL LETTER X WITH DIAERESIS
+0x1e8d "\\\"{x}"                  "" "" # LATIN SMALL LETTER X WITH DIAERESIS
+0x1e8e "\\.{Y}"                   "" "" # LATIN CAPITAL LETTER Y WITH DOT ABOVE
+0x1e8f "\\.{y}"                   "" "" # LATIN SMALL LETTER Y WITH DOT ABOVE
+0x1e90 "\\^{Z}"                   "" "" # LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
+0x1e91 "\\^{z}"                   "" "" # LATIN SMALL LETTER Z WITH CIRCUMFLEX
+0x1e92 "\\d{Z}"                   "" "" # LATIN CAPITAL LETTER Z WITH DOT BELOW
+0x1e93 "\\d{z}"                   "" "" # LATIN SMALL LETTER Z WITH DOT BELOW
+#0x1e94 ""                         "" "" # LATIN CAPITAL LETTER Z WITH LINE BELOW
+#0x1e95 ""                         "" "" # LATIN SMALL LETTER Z WITH LINE BELOW
+#0x1e96 ""                         "" "" # LATIN SMALL LETTER H WITH LINE BELOW
+0x1e97 "\\\"{t}"                  "" "" # LATIN SMALL LETTER T WITH DIAERESIS
+0x1e98 "\\r{w}"                   "" "" # LATIN SMALL LETTER W WITH RING ABOVE
+0x1e99 "\\r{y}"                   "" "" # LATIN SMALL LETTER Y WITH RING ABOVE
+#0x1e9a ""                         "" "" # LATIN SMALL LETTER A WITH RIGHT HALF RING
+#0x1e9b ""                         "" "" # LATIN SMALL LETTER LONG S WITH DOT ABOVE
+0x1ea0 "\\d{A}"                   "" "" # LATIN CAPITAL LETTER A WITH DOT BELOW
 0x1ea1 "\\d{a}"                   "" "" # LATIN SMALL LETTER A WITH DOT BELOW
+#0x1ea2 ""                         "" "" # LATIN CAPITAL LETTER A WITH HOOK ABOVE
+#0x1ea3 ""                         "" "" # LATIN SMALL LETTER A WITH HOOK ABOVE
+#0x1ea4 ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND ACUTE
+#0x1ea5 ""                         "" "" # LATIN SMALL LETTER A WITH CIRCUMFLEX AND ACUTE
+#0x1ea6 ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND GRAVE
+#0x1ea7 ""                         "" "" # LATIN SMALL LETTER A WITH CIRCUMFLEX AND GRAVE
+#0x1ea8 ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND HOOK ABOVE
+#0x1ea9 ""                         "" "" # LATIN SMALL LETTER A WITH CIRCUMFLEX AND HOOK ABOVE
+#0x1eaa ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND TILDE
+#0x1eab ""                         "" "" # LATIN SMALL LETTER A WITH CIRCUMFLEX AND TILDE
+#0x1eac ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND DOT BELOW
+#0x1ead ""                         "" "" # LATIN SMALL LETTER A WITH CIRCUMFLEX AND DOT BELOW
+#0x1eae ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND ACUTE
+#0x1eaf ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND ACUTE
+#0x1eb0 ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND GRAVE
+#0x1eb1 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND GRAVE
+#0x1eb2 ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND HOOK ABOVE
+#0x1eb3 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND HOOK ABOVE
+#0x1eb4 ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND TILDE
+#0x1eb5 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND TILDE
+#0x1eb6 ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND DOT BELOW
+#0x1eb7 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND DOT BELOW
+0x1eb8 "\\d{E}"                   "" "" # LATIN CAPITAL LETTER E WITH DOT BELOW
+0x1eb9 "\\d{e}"                   "" "" # LATIN SMALL LETTER E WITH DOT BELOW
+#0x1eba ""                         "" "" # LATIN CAPITAL LETTER E WITH HOOK ABOVE
+#0x1ebb ""                         "" "" # LATIN SMALL LETTER E WITH HOOK ABOVE
+0x1ebc "\\~{E}"                   "" "" # LATIN CAPITAL LETTER E WITH TILDE
+0x1ebd "\\~{e}"                   "" "" # LATIN SMALL LETTER E WITH TILDE
+#0x1ebe ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND ACUTE
+#0x1ebf ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND ACUTE
+#0x1ec0 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND GRAVE
+#0x1ec1 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND GRAVE
+#0x1ec2 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND HOOK ABOVE
+#0x1ec3 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND HOOK ABOVE
+#0x1ec4 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND TILDE
+#0x1ec5 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND TILDE
+#0x1ec6 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND DOT BELOW
+#0x1ec7 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND DOT BELOW
+#0x1ec8 ""                         "" "" # LATIN CAPITAL LETTER I WITH HOOK ABOVE
+#0x1ec9 ""                         "" "" # LATIN SMALL LETTER I WITH HOOK ABOVE
+0x1eca "\\d{I}"                   "" "" # LATIN CAPITAL LETTER I WITH DOT BELOW
+0x1ecb "\\d{i}"                   "" "" # LATIN SMALL LETTER I WITH DOT BELOW
+0x1ecc "\\d{O}"                   "" "" # LATIN CAPITAL LETTER O WITH DOT BELOW
+0x1ecd "\\d{o}"                   "" "" # LATIN SMALL LETTER O WITH DOT BELOW
+#0x1ece ""                         "" "" # LATIN CAPITAL LETTER O WITH HOOK ABOVE
+#0x1ecf ""                         "" "" # LATIN SMALL LETTER O WITH HOOK ABOVE
+#0x1ed0 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND ACUTE
+#0x1ed1 ""                         "" "" # LATIN SMALL LETTER O WITH CIRCUMFLEX AND ACUTE
+#0x1ed2 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND GRAVE
+#0x1ed3 ""                         "" "" # LATIN SMALL LETTER O WITH CIRCUMFLEX AND GRAVE
+#0x1ed4 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND HOOK ABOVE
+#0x1ed5 ""                         "" "" # LATIN SMALL LETTER O WITH CIRCUMFLEX AND HOOK ABOVE
+#0x1ed6 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND TILDE
+#0x1ed7 ""                         "" "" # LATIN SMALL LETTER O WITH CIRCUMFLEX AND TILDE
+#0x1ed8 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND DOT BELOW
+#0x1ed9 ""                         "" "" # LATIN SMALL LETTER O WITH CIRCUMFLEX AND DOT BELOW
+#0x1eda ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND ACUTE
+#0x1edb ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND ACUTE
+#0x1edc ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND GRAVE
+#0x1edd ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND GRAVE
+#0x1ede ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND HOOK ABOVE
+#0x1edf ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND HOOK ABOVE
+#0x1ee0 ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND TILDE
+#0x1ee1 ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND TILDE
+#0x1ee2 ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND DOT BELOW
+#0x1ee3 ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND DOT BELOW
+0x1ee4 "\\d{U}"                   "" "" # LATIN CAPITAL LETTER U WITH DOT BELOW
+0x1ee5 "\\d{u}"                   "" "" # LATIN SMALL LETTER U WITH DOT BELOW
+#0x1ee6 ""                         "" "" # LATIN CAPITAL LETTER U WITH HOOK ABOVE
+#0x1ee7 ""                         "" "" # LATIN SMALL LETTER U WITH HOOK ABOVE
+#0x1ee8 ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND ACUTE
+#0x1ee9 ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND ACUTE
+#0x1eea ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND GRAVE
+#0x1eeb ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND GRAVE
+#0x1eec ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND HOOK ABOVE
+#0x1eed ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND HOOK ABOVE
+#0x1eee ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND TILDE
+#0x1eef ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND TILDE
+#0x1ef0 ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND DOT BELOW
+#0x1ef1 ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND DOT BELOW
+0x1ef2 "\\`{Y}"                   "" "" # LATIN CAPITAL LETTER Y WITH GRAVE
+0x1ef3 "\\`{y}"                   "" "" # LATIN SMALL LETTER Y WITH GRAVE
+0x1ef4 "\\d{Y}"                   "" "" # LATIN CAPITAL LETTER Y WITH DOT BELOW
+0x1ef5 "\\d{y}"                   "" "" # LATIN SMALL LETTER Y WITH DOT BELOW
+#0x1ef6 ""                         "" "" # LATIN CAPITAL LETTER Y WITH HOOK ABOVE
+#0x1ef7 ""                         "" "" # LATIN SMALL LETTER Y WITH HOOK ABOVE
+0x1ef8 "\\~{Y}"                   "" "" # LATIN CAPITAL LETTER Y WITH TILDE
+0x1ef9 "\\~{y}"                   "" "" # LATIN SMALL LETTER Y WITH TILDE
 0x20ac "\\texteuro"               "textcomp" "" # EURO SIGN
 
