@@ -35,6 +35,8 @@ QIndexDialog::QIndexDialog(QIndex * form)
 	connect( keywordED, SIGNAL( textChanged(const QString&) ), 
 		this, SLOT( change_adaptor() ) );
 
+	setFocusProxy(keywordED);
+
 	keywordED->setWhatsThis( qt_(
 		"The format of the entry in the index.\n"
 		"\n"
@@ -50,13 +52,6 @@ QIndexDialog::QIndexDialog(QIndex * form)
 		"For further details refer to the local LaTeX\n"
 		"documentation.\n")
 	);
-}
-
-
-void QIndexDialog::show()
-{
-	QDialog::show();
-	keywordED->setFocus();
 }
 
 

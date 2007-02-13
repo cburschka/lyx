@@ -61,8 +61,10 @@ void QDialogView::show()
 	if (form()->isVisible()) {
 		form()->raise();
 		form()->activateWindow();
+		form()->setFocus();
 	} else {
 		form()->show();
+		form()->setFocus();
 	}
 }
 
