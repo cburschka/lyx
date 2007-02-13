@@ -340,8 +340,8 @@
 #0x01df ""                         "" "" # LATIN SMALL LETTER A WITH DIAERESIS AND MACRON
 #0x01e0 ""                         "" "" # LATIN CAPITAL LETTER A WITH DOT ABOVE AND MACRON
 #0x01e1 ""                         "" "" # LATIN SMALL LETTER A WITH DOT ABOVE AND MACRON
-#0x01e2 ""                         "" "" # LATIN CAPITAL LETTER AE WITH MACRON
-#0x01e3 ""                         "" "" # LATIN SMALL LETTER AE WITH MACRON
+0x01e2 "\\={\\AE}"                "" "" # LATIN CAPITAL LETTER AE WITH MACRON
+0x01e3 "\\={\\ae}"                "" "" # LATIN SMALL LETTER AE WITH MACRON
 #0x01e4 ""                         "" "" # LATIN CAPITAL LETTER G WITH STROKE
 #0x01e5 ""                         "" "" # LATIN SMALL LETTER G WITH STROKE
 0x01e6 "\\v{G}"                   "" "" # LATIN CAPITAL LETTER G WITH CARON
@@ -367,8 +367,8 @@
 0x01f9 "\\`{n}"                   "" "" # LATIN SMALL LETTER N WITH GRAVE
 #0x01fa ""                         "" "" # LATIN CAPITAL LETTER A WITH RING ABOVE AND ACUTE
 #0x01fb ""                         "" "" # LATIN SMALL LETTER A WITH RING ABOVE AND ACUTE
-#0x01fc ""                         "" "" # LATIN CAPITAL LETTER AE WITH ACUTE
-#0x01fd ""                         "" "" # LATIN SMALL LETTER AE WITH ACUTE
+0x01fc "\\'{\\AE}"                "" "" # LATIN CAPITAL LETTER AE WITH ACUTE
+0x01fd "\\'{\\ae}"                "" "" # LATIN SMALL LETTER AE WITH ACUTE
 #0x01fe ""                         "" "" # LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
 #0x01ff ""                         "" "" # LATIN SMALL LETTER O WITH STROKE AND ACUTE
 #0x0200 ""                         "" "" # LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
