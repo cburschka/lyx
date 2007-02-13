@@ -378,14 +378,14 @@ Puedes girar
  y un origen de rotación.
  La imagen también gira en LyX.
 \newline
-Images can be opened in a program of your
- choice when pressing the 
+Las imágenes se pueden abrir con un programa
+ de tu elección pulsando el botón 
 \family sans
-Edit
+Editar
 \family default
- button.
- The program can be set for every image format in the file format settings
- in LyX's preferences.
+.
+ Los programas visor y editor para cada formato de imagen se pueden establecer
+ en la configuración de los formatos de archivo de las preferencias de LyX.
 \end_layout
 
 \begin_layout Description
@@ -743,12 +743,11 @@ cruzada
  Es importante emplear referencias a flotantes, mejor que alusiones vagas
  como "la figura de arriba", porque como LaTeX recolocará los flotantes
  en el documento final, podría no quedar "arriba" precisamente.
-\lang english
-
 \newline
-Referencing is explained in detail in section\InsetSpace ~
+Las referencias
+ se explican con detalle en la sección\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:Referencing-Floats}
+\begin_inset LatexCommand \ref{sec:Referencias-a-Flotantes}
 
 \end_inset
 
@@ -775,12 +774,11 @@ Descripción
 .
  Observa que sólo el título principal del encabezado del flotante se añade
  a la Lista de Figuras.
-\lang english
-
 \newline
-Referencing subfigures is explained in section\InsetSpace ~
+Las referencias a las subfiguras se explican en la
+ sección\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sub:Referencing-Subfigures}
+\begin_inset LatexCommand \ref{sub:Referencias-a-Subfiguras}
 
 \end_inset
 
@@ -824,7 +822,7 @@ status open
 	lyxscale 60
 	width 45col%
 	subcaption
-	subcaptionText "\label{fig: Platypus} Platypus"
+	subcaptionText "\label{fig:Platypus} Platypus"
 
 \end_inset
 
@@ -2136,12 +2134,10 @@ cruzada
 \end_inset
 
 .
-\lang english
-
 \newline
-Referencing is explained in detail in section\InsetSpace ~
+Las referencias se explican con detalle en la sección\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:Referencing-Floats}
+\begin_inset LatexCommand \ref{sec:Referencias-a-Flotantes}
 
 \end_inset
 
@@ -18125,15 +18121,13 @@ Formato
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Referencing Subfigures 
-\begin_inset LatexCommand \label{sub:Referencing-Subfigures}
+Referencias a Subfiguras 
+\begin_inset LatexCommand \label{sub:Referencias-a-Subfiguras}
 
 \end_inset
 
 
-\begin_inset LatexCommand \index{Referencias ! to Subfigures}
+\begin_inset LatexCommand \index{Referencias ! a Subfiguras}
 
 \end_inset
 
@@ -18141,45 +18135,35 @@ Referencing Subfigures
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently referencing subfigures is not supported by LyX, so you have to
- use LaTeX-commands.
- The label is created the with the command 
+Por el momento LyX no soporta las referencias a subfiguras, de modo que
+ hay que emplear comandos LaTeX.
+ La etiqueta se crea con el comando
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-label{fig: YourLabelName}
-\series default
- 
+label{fig:NombreEtiqueta}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-that is directly inserted into the subfigure caption field.
- To reference the label add this command in ERT 
+que se inserta directamente en el campo de encabezado de la subfigura.
+ Para referenciar la etiqueta añade el siguiente comando en ERT
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-ref{fig: YourLabelName} 
+ref{fig:NombreEtiqueta}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to the position in your document where the reference should be placed.
- Here is a reference to a subfigure: Subfigure\InsetSpace ~
+en la posición del documento en la que quieras que aparezca la referencia.
+ Aquí hay una referencia a una subfigura: Subfigura\InsetSpace ~
 
 \begin_inset ERT
 status collapsed
@@ -18188,12 +18172,16 @@ status collapsed
 
 
 \backslash
-ref{fig: Platypus}
+ref{fig:Platypus}
 \end_layout
 
 \end_inset
 
-.
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
@@ -18418,10 +18406,9 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- The set reference position has no effect for references to subfigures.
+ La colocación de referencias no afecta a las referencias a subfiguras.
 \end_layout
 
 \end_inset

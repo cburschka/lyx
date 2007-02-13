@@ -832,7 +832,7 @@ status open
 	lyxscale 60
 	width 45col%
 	subcaption
-	subcaptionText "\label{fig: Platypus} Platypus"
+	subcaptionText "\label{fig:Platypus} Platypus"
 
 \end_inset
 
@@ -18254,7 +18254,7 @@ Currently referencing subfigures is not supported by LyX, so you have to
 \series bold
 
 \backslash
-label{fig: YourLabelName}
+label{fig:YourLabelName}
 \series default
  
 \end_layout
@@ -18269,7 +18269,7 @@ that is directly inserted into the subfigure caption field.
 \series bold
 
 \backslash
-ref{fig: YourLabelName} 
+ref{fig:YourLabelName} 
 \end_layout
 
 \begin_layout Standard
