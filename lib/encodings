@@ -6,6 +6,11 @@
 Encoding utf8 utf8 UTF-8
 End
 
+# This one is used by many CJK packages. utf8 is supposed to be the successor,
+# but does not have all features of utf8x yet.
+Encoding utf8x utf8x UTF-8
+End
+
 Encoding iso8859-1 latin1 ISO-8859-1
 End
 

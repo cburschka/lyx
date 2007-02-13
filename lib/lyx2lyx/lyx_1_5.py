@@ -1181,6 +1181,19 @@ def normalize_font_whitespace(document):
 
         i = i + 1
 
+
+def revert_utf8x(document):
+    " Set utf8x encoding to utf8. "
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.header.append("\\inputencoding auto")
+    else:
+        inputenc = get_value(document.header, "\\inputencoding", i)
+        if inputenc == "utf8x":
+            document.header[i] = "\\inputencoding utf8"
+    document.inputencoding = get_value(document.header, "\\inputencoding", 0)
+
+
 ##
 # Conversion hub
 #
@@ -1199,9 +1212,11 @@ convert = [[246, []],
            [256, []],
            [257, [convert_caption]],
            [258, [convert_lyxline]],
-           [259, [convert_accent, normalize_font_whitespace]]]
+           [259, [convert_accent, normalize_font_whitespace]],
+           [260, []]]
 
-revert =  [[258, []],
+revert =  [[259, [revert_utf8x]],
+           [258, []],
            [257, []],
            [256, [revert_caption]],
            [255, [revert_encodings]],
