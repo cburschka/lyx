@@ -451,7 +451,7 @@ def checkConverterEntries():
     #
     # Entried that do not need checkProg
     addToRC(r'''\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""
-\converter date       dateout    "date +%d-%m-%Y > $$o"	""
+\converter date       dateout    "python -tt $$s/scripts/date.py %d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
 \converter fen        asciichess "python -tt $$s/scripts/fen2ascii.py $$i $$o"	""
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
