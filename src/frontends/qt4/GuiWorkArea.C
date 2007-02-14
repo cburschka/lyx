@@ -268,6 +268,11 @@ void GuiWorkArea::focusInEvent(QFocusEvent * /*event*/)
 
 	theApp()->setCurrentView(lyx_view_);
 
+	// Repaint the whole screen.
+	// Note: this is different from redraw() as only the backing pixmap
+	// will be redrawn, which is cheap.
+	viewport()->repaint();
+
 	// FIXME: it would be better to send a signal "newBuffer()"
 	// in BufferList that could be connected to the different tabbars.
 	lyx_view_.updateTab();
