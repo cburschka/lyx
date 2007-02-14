@@ -546,15 +546,16 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 				cur.selBegin().pos(), endpos,
 				doclear);
 
-		// sometimes necessary
-		if (doclear)
-			text->paragraphs()[begpit].stripLeadingSpaces(bp.trackChanges);
-
 		// cutSelection can invalidate the cursor so we need to set
 		// it anew. (Lgb)
 		// we prefer the end for when tracking changes
 		cur.pos() = endpos;
 		cur.pit() = endpit;
+
+		// sometimes necessary
+		if (doclear 
+			&& text->paragraphs()[begpit].stripLeadingSpaces(bp.trackChanges))
+			cur.fixIfBroken();
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
