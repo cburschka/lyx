@@ -1,6 +1,6 @@
-diff -riwBu -Xex aspell-setter-sep06\common\config.cpp aspell-setter-sep06-modified\common\config.cpp
---- aspell-setter-sep06\common\config.cpp	Mon Dec 12 17:41:06 2005
-+++ aspell-setter-sep06-modified\common\config.cpp	Sun Oct 22 13:03:46 2006
+diff -riwBu -Xex aspell-setter-sep06/common/config.cpp aspell-setter-sep06-modified/common/config.cpp
+--- aspell-setter-sep06/common/config.cpp	2005-12-12 17:41:06.000000000 +0100
++++ aspell-setter-sep06-modified/common/config.cpp	2007-02-16 22:40:26.947401600 +0100
 @@ -78,6 +78,10 @@
  
  namespace aspell {
@@ -67,33 +67,50 @@ diff -riwBu -Xex aspell-setter-sep06\common\config.cpp aspell-setter-sep06-modif
    static const KeyInfo config_keys[] = {
      // the description should be under 50 chars
      {"actual-dict-dir", KeyInfoString, "<dict-dir^master>", 0}
-@@ -1484,7 +1473,7 @@
+@@ -1484,12 +1473,12 @@
      , {"per-conf-path", KeyInfoString, "<home-dir/per-conf>", 0}
      , {"personal", KeyInfoString, PERSONAL,
         N_("personal dictionary file name")}
 -    , {"personal-path", KeyInfoString, "<home-dir/personal>", 0}
-+    , {"personal-path", KeyInfoString, PERSONAL_DIR, 0}
++    , {"personal-path", KeyInfoString, "<personal-dir/personal>", 0}
      , {"prefix",   KeyInfoString, PREFIX,
         N_("prefix directory")}
      , {"repl",     KeyInfoString, REPL,
-@@ -1525,10 +1514,8 @@
+        N_("replacements list file name") }
+-    , {"repl-path",     KeyInfoString, "<home-dir/repl>",     0}
++    , {"repl-path",     KeyInfoString, "<personal-dir/repl>",     0}
+     , {"run-together",        KeyInfoBool,  "false",
+        N_("consider run-together words legal"), KEYINFO_MAY_CHANGE}
+     , {"run-together-limit",  KeyInfoInt,   "2",
+@@ -1524,12 +1513,6 @@
+        N_("search path for word list information files"), KEYINFO_HIDDEN}
      , {"warn", KeyInfoBool, "true",
         N_("enable warnings")}
- #ifdef WIN32PORT
+-#ifdef WIN32PORT
 -    , {"dict-subdir", KeyInfoString, "dicts",
 -       N_("sub directory for dictionaries")}
 -    , {"data-subdir", KeyInfoString, "data",
 -       N_("sub directory for other data")}
-+    , {"personal-dir", KeyInfoString, PERSONAL_DIR,
-+       N_("directory for personal dictionaries")}
- #endif
+-#endif
      
      //
-@@ -1587,5 +1574,88 @@
-                       config_impl_keys_begin,
+     // These options are generally used when creating dictionaries
+@@ -1574,7 +1557,10 @@
+        N_("suggest possible replacements"), KEYINFO_MAY_CHANGE}
+     , {"time"   , KeyInfoBool, "false",
+        N_("time load time and suggest time in pipe mode"), KEYINFO_MAY_CHANGE}
+-
++ #ifdef WIN32PORT
++    , {"personal-dir", KeyInfoString, PERSONAL_DIR,
++       N_("directory for personal dictionaries")}
++ #endif
+     };
+ 
+   const KeyInfo * config_impl_keys_begin = config_keys;
+@@ -1588,4 +1574,87 @@
                        config_impl_keys_end);
    }
-+
+   
 +#ifdef WIN32PORT
 +
 +  String ReadRegString(HKEY hive, String key, String name)
@@ -176,11 +193,11 @@ diff -riwBu -Xex aspell-setter-sep06\common\config.cpp aspell-setter-sep06-modif
 +  }
 +
 +#endif
-   
++  
  }
-diff -riwBu -Xex aspell-setter-sep06\common\vector.hpp aspell-setter-sep06-modified\common\vector.hpp
---- aspell-setter-sep06\common\vector.hpp	Thu Oct 13 08:42:54 2005
-+++ aspell-setter-sep06-modified\common\vector.hpp	Sun Sep 17 18:50:45 2006
+diff -riwBu -Xex aspell-setter-sep06/common/vector.hpp aspell-setter-sep06-modified/common/vector.hpp
+--- aspell-setter-sep06/common/vector.hpp	2005-10-13 09:42:54.000000000 +0200
++++ aspell-setter-sep06-modified/common/vector.hpp	2006-09-17 19:50:45.730606400 +0200
 @@ -50,10 +50,10 @@
      T * data_end() {return &*this->end();}
  
@@ -194,10 +211,10 @@ diff -riwBu -Xex aspell-setter-sep06\common\vector.hpp aspell-setter-sep06-modif
  
      template <typename U>
      U * datap() { 
-diff -riwBu -Xex aspell-setter-sep06\win32\dirs.h aspell-setter-sep06-modified\win32\dirs.h
---- aspell-setter-sep06\win32\dirs.h	Thu Oct 13 12:29:34 2005
-+++ aspell-setter-sep06-modified\win32\dirs.h	Sun Oct 22 12:55:10 2006
-@@ -1,16 +1,27 @@
+diff -riwBu -Xex aspell-setter-sep06/win32/dirs.h aspell-setter-sep06-modified/win32/dirs.h
+--- aspell-setter-sep06/win32/dirs.h	2005-10-13 13:29:34.000000000 +0200
++++ aspell-setter-sep06-modified/win32/dirs.h	2007-02-16 22:52:43.486492800 +0100
+@@ -1,16 +1,26 @@
  #ifndef dirs_h
  #define dirs_h
  
@@ -208,16 +225,17 @@ diff -riwBu -Xex aspell-setter-sep06\win32\dirs.h aspell-setter-sep06-modified\w
 +# define DATA_DIR "!data-dir"
 +# define DICT_DIR "!dict-dir"
 +# define PERSONAL_DIR "!personal-dir"
++# define CONF_DIR "<home-dir>"
 +
 +#if defined(WIN32_USE_EXECUTABLE_DIR)
 +# define HOME_DIR "<prefix>"
-+# define PERSONAL "<personal-dir>/<lang>.pws"
-+# define REPL     "<personal-dir>/<lang>.prepl"
++# define PERSONAL "<lang>.pws"
++# define REPL     "<lang>.prepl"
  # define PREFIX "!prefix"
 +#elif defined(WIN32_USE_PERSONAL_DIR)
 +# define HOME_DIR "!home-dir"
-+# define PERSONAL "<personal-dir>/<lang>.pws"
-+# define REPL     "<personal-dir>/<lang>.prepl"
++# define PERSONAL "<lang>.pws"
++# define REPL     "<lang>.prepl"
 +# define PREFIX "<home-dir>"
  #else
 -# define DATA_DIR "aspell-win32/data"
@@ -225,17 +243,15 @@ diff -riwBu -Xex aspell-setter-sep06\win32\dirs.h aspell-setter-sep06-modified\w
 -# define DICT_DIR "dicts"
 -# define PREFIX "aspell-win32"
 +# define HOME_DIR "<$HOME|./>"
-+# define PERSONAL "<personal-dir>/.aspell.<lang>.pws"
-+# define REPL     "<personal-dir>/.aspell.<lang>.prepl"
++# define PERSONAL ".aspell.<lang>.pws"
++# define REPL     ".aspell.<lang>.prepl"
 +# define PREFIX "<home-dir>"
  #endif
-+
-+#define CONF_DIR HOME_DIR
  
  #endif
-diff -riwBu -Xex aspell-setter-sep06\win32\settings.h aspell-setter-sep06-modified\win32\settings.h
---- aspell-setter-sep06\win32\settings.h	Wed Sep 06 09:51:16 2006
-+++ aspell-setter-sep06-modified\win32\settings.h	Sun Sep 17 17:55:23 2006
+diff -riwBu -Xex aspell-setter-sep06/win32/settings.h aspell-setter-sep06-modified/win32/settings.h
+--- aspell-setter-sep06/win32/settings.h	2006-09-06 10:51:16.000000000 +0200
++++ aspell-setter-sep06-modified/win32/settings.h	2006-09-17 18:55:23.112916800 +0200
 @@ -9,9 +9,6 @@
  /* Defined if curses like POSIX Functions should be used */
  #undef CURSES_ONLY
