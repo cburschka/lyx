@@ -40,8 +40,8 @@ Settings for LyX installer
 ;--------------------------------
 ;Locations of components to download
 
-!define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.5.2471.exe"
-!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.3.0-7-Q16-windows-dll.exe"
+!define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.5.2580.exe"
+!define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.3.2-2-Q16-windows-dll.exe"
 !define DOWNLOAD_GHOSTSCRIPT "http://superb-west.dl.sourceforge.net/sourceforge/ghostscript/gs854w32-gpl.exe"
 !define DOWNLOAD_VIEWER "http://tug.ctan.org/tex-archive/nonfree/support/ghostscript/ghostgum/gsv48w32.exe"
 
@@ -50,8 +50,8 @@ Settings for LyX installer
 ;--------------------------------
 ;Download size (in KB)
 
-!define SIZE_DOWNLOAD_LATEX 43127
-!define SIZE_DOWNLOAD_IMAGEMAGICK 6830
+!define SIZE_DOWNLOAD_LATEX 47271
+!define SIZE_DOWNLOAD_IMAGEMAGICK 7096
 !define SIZE_DOWNLOAD_GHOSTSCRIPT 12669
 !define SIZE_DOWNLOAD_VIEWER 1459
 
@@ -66,8 +66,8 @@ Settings for LyX installer
 ;--------------------------------
 ;Locations of setup files for components (for bundled setup)
 
-!define INSTALL_LATEX "basic-miktex-2.5.2471.exe"
-!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.0-7-Q16-windows-dll.exe"
+!define INSTALL_LATEX "basic-miktex-2.5.2580.exe"
+!define INSTALL_IMAGEMAGICK "ImageMagick-6.3.2-2-Q16-windows-dll.exe"
 !define INSTALL_GHOSTSCRIPT "gs854w32-gpl.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 
