@@ -135,7 +135,7 @@ What's new in version 1.4.4?
 - Updated Intro and Extended manual.
 
 - New Galician localization; update Czech, French, German, Hungarian,
-  Italian and Romanian localization of the interface.
+  Italian, Romanian and Spanish localization of the interface.
 
 - New Galician translation of the documentation (splash, Intro,
   Tutorial); Update German (all), Hebrew (Intro), Italian
@@ -304,6 +304,9 @@ What's new in version 1.4.4?
 
 - add Aspell/Pspell's file extension for personal dictionary files
   in preferences (bug 895)
+
+- Fix hang/crash on Windows/Cygwin when using the external date inset
+  (bug 3220).
 
 * BUILD/INSTALLATION:
 
