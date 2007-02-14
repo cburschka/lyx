@@ -1,6 +1,24 @@
 LyX file-format changes
 -----------------------§
 
+2007-02-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 261: \output_changes is now considered
+	even if \tracking_changes is false. This allows to output existing
+	changes even if future changes are not tracked anymore.
+	The old combination
+
+	\tracking_changes false
+	\output_changes true
+
+	is therefore converted to
+
+	\tracking_changes false
+	\output_changes false
+
+	on upgrade. Nothing is done on downgrade since the new behaviour is
+	not supported in older formats.
+
 2007-02-13  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* format incremented to 260: Allow utf8x \inputencoding

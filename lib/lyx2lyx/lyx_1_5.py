@@ -1194,6 +1194,22 @@ def revert_utf8x(document):
     document.inputencoding = get_value(document.header, "\\inputencoding", 0)
 
 
+def convert_changes(document):
+    " Switch output_changes off if tracking_changes is off. "
+    i = find_token(document.header, '\\tracking_changes', 0)
+    if i == -1:
+        document.warning("Malformed lyx document: Missing '\\tracking_changes'.")
+        return
+    j = find_token(document.header, '\\output_changes', 0)
+    if j == -1:
+        document.warning("Malformed lyx document: Missing '\\output_changes'.")
+        return
+    tracking_changes = get_value(document.header, "\\tracking_changes", i)
+    output_changes = get_value(document.header, "\\output_changes", j)
+    if tracking_changes == "false" and output_changes == "true":
+        document.header[j] = "\\output_changes false"
+
+
 ##
 # Conversion hub
 #
@@ -1213,9 +1229,11 @@ convert = [[246, []],
            [257, [convert_caption]],
            [258, [convert_lyxline]],
            [259, [convert_accent, normalize_font_whitespace]],
-           [260, []]]
+           [260, []],
+           [261, [convert_changes]]]
 
-revert =  [[259, [revert_utf8x]],
+revert =  [[260, []],
+           [259, [revert_utf8x]],
            [258, []],
            [257, []],
            [256, [revert_caption]],
