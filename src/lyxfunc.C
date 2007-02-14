@@ -846,7 +846,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			if (view()->buffer())
 				// cancel any selection
 				dispatch(FuncRequest(LFUN_MARK_OFF));
-			setMessage(_("Cancel"));
+			setMessage(from_ascii(N_("Cancel")));
 			break;
 
 		case LFUN_META_PREFIX:
@@ -1116,7 +1116,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			string const arg = argument;
 			if (arg.empty()) {
-				setErrorMessage(_("Missing argument"));
+				setErrorMessage(from_ascii(N_("Missing argument")));
 				break;
 			}
 			FileName const fname = i18nLibFileSearch("doc", arg, "lyx");
@@ -1399,9 +1399,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			BOOST_ASSERT(lyx_view_);
 			FileName const filename =
 				makeAbsPath(argument, lyx_view_->buffer()->filePath());
-			// FIXME Should use bformat
-			setMessage(_("Opening child document ") +
-					 makeDisplayPath(filename.absFilename()) + "...");
+			setMessage(bformat(_("Opening child document %1$s..."),
+			                   makeDisplayPath(filename.absFilename())));
 			view()->saveBookmark(false);
 			string const parentfilename = lyx_view_->buffer()->fileName();
 			if (theBufferList().exists(filename.absFilename()))
@@ -1487,8 +1486,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			string lyx_name;
 			string const x11_name = split(argument, lyx_name, ' ');
 			if (lyx_name.empty() || x11_name.empty()) {
-				setErrorMessage(_("Syntax: set-color <lyx_name>"
-							" <x11_name>"));
+				setErrorMessage(from_ascii(N_(
+						"Syntax: set-color <lyx_name>"
+						" <x11_name>")));
 				break;
 			}
 
@@ -1613,11 +1613,10 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 			}
 
 			if (defaults.writeFile(FileName(defaults.fileName())))
-				// FIXME Should use bformat
-				setMessage(_("Document defaults saved in ")
-					   + makeDisplayPath(fname));
+				setMessage(bformat(_("Document defaults saved in %1$s"),
+				                   makeDisplayPath(fname)));
 			else
-				setErrorMessage(_("Unable to save document defaults"));
+				setErrorMessage(from_ascii(N_("Unable to save document defaults")));
 			break;
 		}
 
@@ -1784,7 +1783,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	if (!quitting) {
 		lyx_view_->updateMenubar();
 		lyx_view_->updateToolbars();
-		sendDispatchMessage(getMessage(), cmd);
+		// Some messages may already be translated, so we cannot use _()
+		sendDispatchMessage(translateIfPossible(getMessage()), cmd);
 	}
 }
 
