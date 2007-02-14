@@ -171,7 +171,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-01-31 17:00+0100\n"
-"PO-Revision-Date: 2007-01-31 17:05+0100\n"
+"PO-Revision-Date: 2007-02-13 19:45+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
 "Language-Team: lyxfr \n"
 "MIME-Version: 1.0\n"
@@ -4975,14 +4975,12 @@ msgid "&Down"
 msgstr "&Bas"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:204
-#, fuzzy
 msgid "&In"
-msgstr "&Ignorer"
+msgstr "&Intérieur"
 
 #: src/frontends/qt2/ui/QTocDialogBase.ui:215
-#, fuzzy
 msgid "&Out"
-msgstr "Extérieur"
+msgstr "&Extérieur"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:45
 msgid "&URL:"
@@ -6197,28 +6195,27 @@ msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
 msgid "BeginFrame"
-msgstr ""
+msgstr "DébutTransparent"
 
 #: lib/layouts/beamer.layout:115
 msgid "Frame   "
-msgstr ""
+msgstr "Transparent   "
 
 #: lib/layouts/beamer.layout:141
 msgid "BeginPlainFrame"
-msgstr ""
+msgstr "DebutTranspSimple"
 
 #: lib/layouts/beamer.layout:156
 msgid "Frame (no head/foot/sidebars)  "
-msgstr ""
+msgstr "Transparent (sans décors)  "
 
 #: lib/layouts/beamer.layout:179
-#, fuzzy
 msgid "EndFrame"
-msgstr "Nom de l'expéditeur :"
+msgstr "FinTransparent"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
-msgstr ""
+msgstr "________________________________ "
 
 #: lib/layouts/beamer.layout:207
 msgid "Pause"
@@ -6226,7 +6223,7 @@ msgstr "Pause"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:280
 msgid "Section \\arabic{section}"
@@ -6245,111 +6242,96 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:347
-#, fuzzy
 msgid "AgainFrame"
-msgstr "cadre de légende"
+msgstr "NouveauTransparent"
 
 #: lib/layouts/beamer.layout:362
 msgid "Again frame with label   "
-msgstr ""
+msgstr "Nouveau transparent indentifié"
 
 #: lib/layouts/beamer.layout:386
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Justifié"
+msgstr "BlocAlerte"
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
-msgstr ""
+msgstr "block avec texte en évidence "
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "block "
-msgstr "Justifié"
+msgstr "bloc "
 
 #: lib/layouts/beamer.layout:520
-#, fuzzy
 msgid "Corollary.  "
-msgstr "Corollaire."
+msgstr "Corollaire.  "
 
 #: lib/layouts/beamer.layout:537
-#, fuzzy
 msgid "Column"
-msgstr "Colonnes"
+msgstr "Colonne"
 
 #: lib/layouts/beamer.layout:548
 msgid "start column of width:  "
-msgstr ""
+msgstr "début colonne, largeur :  "
 
 #: lib/layouts/beamer.layout:572
-#, fuzzy
 msgid "columns "
-msgstr "Colonnes"
+msgstr "colonnes "
 
 #: lib/layouts/beamer.layout:589
 msgid "ColumnsCenterAligned"
-msgstr ""
+msgstr "ColonnesAlignementCentré"
 
 #: lib/layouts/beamer.layout:600
 msgid "columns (center aligned) "
-msgstr ""
+msgstr "colonnes (alignement centré) "
 
 #: lib/layouts/beamer.layout:619
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "ColonnesAlignementHaut"
 
 #: lib/layouts/beamer.layout:630
 msgid "columns (top aligned) "
-msgstr ""
+msgstr "colonnes (alignement haut) "
 
 #: lib/layouts/beamer.layout:676
-#, fuzzy
 msgid "Definition.  "
-msgstr "Définition."
+msgstr "Définition.  "
 
 #: lib/layouts/beamer.layout:679
-#, fuzzy
 msgid "Definitions"
-msgstr "Définition"
+msgstr "Définitions"
 
 #: lib/layouts/beamer.layout:682
-#, fuzzy
 msgid "Definitions.  "
-msgstr "Définition."
+msgstr "Définitions.  "
 
 #: lib/layouts/beamer.layout:688
-#, fuzzy
 msgid "Example.  "
-msgstr "Exemple."
+msgstr "Exemple.  "
 
 #: lib/layouts/beamer.layout:696
-#, fuzzy
 msgid "Examples"
-msgstr "Exemple"
+msgstr "Exemples"
 
 #: lib/layouts/beamer.layout:699
-#, fuzzy
 msgid "Examples.  "
-msgstr "Exemple."
+msgstr "Exemples.  "
 
 #: lib/layouts/beamer.layout:702
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Exemple"
+msgstr "BlocExemple"
 
 #: lib/layouts/beamer.layout:712
 msgid "block showing an example "
-msgstr ""
+msgstr "block montrant un exemple "
 
 #: lib/layouts/beamer.layout:734
-#, fuzzy
 msgid "Fact.  "
-msgstr "Fait."
+msgstr "Fait.  "
 
 #: lib/layouts/beamer.layout:737
-#, fuzzy
 msgid "FrameSubtitle"
-msgstr "SousTitre"
+msgstr "SousTitreTransparent"
 
 #: lib/layouts/beamer.layout:760 lib/layouts/cl2emult.layout:69
 #: lib/layouts/llncs.layout:214 lib/layouts/svjour.inc:212
@@ -6362,81 +6344,68 @@ msgid "LyX-Code"
 msgstr "LyX-Code"
 
 #: lib/layouts/beamer.layout:819
-#, fuzzy
 msgid "NoteItem"
-msgstr "Nouvel Élément"
+msgstr "NouvelÉlémentNote"
 
 #: lib/layouts/beamer.layout:830
-#, fuzzy
 msgid "note:  "
-msgstr "note"
+msgstr "note :  "
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Only"
-msgstr "Activé"
+msgstr "Isolé"
 
 #: lib/layouts/beamer.layout:851
 msgid "only on slides  "
-msgstr ""
+msgstr "Isolé sur les transparents  "
 
 #: lib/layouts/beamer.layout:866
-#, fuzzy
 msgid "Overprint"
-msgstr "Offprint"
+msgstr "Surimpression"
 
 #: lib/layouts/beamer.layout:876
-#, fuzzy
 msgid "overprint "
-msgstr "Preprint"
+msgstr "surimpression "
 
 #: lib/layouts/beamer.layout:892
-#, fuzzy
 msgid "OverlayArea"
-msgstr "SurCouche"
+msgstr "AireRecouvrante"
 
 #: lib/layouts/beamer.layout:902
-#, fuzzy
 msgid "overlayarea "
-msgstr "SurCouche"
+msgstr "aire de recouvrement "
 
 #: lib/layouts/beamer.layout:932
-#, fuzzy
 msgid "Part "
-msgstr "Partie"
+msgstr "Partie "
 
 #: lib/layouts/beamer.layout:949
-#, fuzzy
 msgid "Proof.  "
-msgstr "Preuve."
+msgstr "Preuve.  "
 
 #: lib/layouts/beamer.layout:953
-#, fuzzy
 msgid "Separator"
 msgstr "Séparation"
 
 #: lib/layouts/beamer.layout:966
 msgid "___"
-msgstr ""
+msgstr "   "
 
 #: lib/layouts/beamer.layout:1001
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Graphique"
+msgstr "TitreGraphique"
 
 #: lib/layouts/beamer.layout:1027
-#, fuzzy
 msgid "Theorem.  "
-msgstr "Théorème."
+msgstr "Théorème.  "
 
 #: lib/layouts/beamer.layout:1055
-#, fuzzy
 msgid "Uncover"
-msgstr "&Récupérer"
+msgstr "Découvrir"
 
 #: lib/layouts/beamer.layout:1064
 msgid "uncovered on slides  "
-msgstr ""
+msgstr "découvert sur les transparents  "
 
 #: lib/layouts/beamer.layout:1086 lib/layouts/stdfloats.inc:10
 #: src/frontends/xforms/FormTabular.C:135
@@ -7806,26 +7775,22 @@ msgid "Conjecture @Section@.\\arabic{conjecture}."
 msgstr "Conjecture @Section@.\\arabic{conjecture}."
 
 #: lib/layouts/isprs.layout:38
-#, fuzzy
 msgid "ABSTRACT:"
-msgstr "ABSTRACT"
+msgstr "RÉSUMÉ :"
 
 #: lib/layouts/isprs.layout:66
 msgid "KEY WORDS:"
-msgstr ""
+msgstr "MOTS CLÉES :"
 
 #: lib/layouts/isprs.layout:135
-#, fuzzy
 msgid "Commission"
-msgstr "Condition"
+msgstr "Commission"
 
 #: lib/layouts/isprs.layout:225
-#, fuzzy
 msgid "Caption."
-msgstr "Légende"
+msgstr "Légende."
 
 #: lib/layouts/isprs.layout:248
-#, fuzzy
 msgid "ACKNOWLEDGEMENTS"
 msgstr "REMERCIEMENTS"
 
@@ -7984,9 +7949,8 @@ msgid "Preprint"
 msgstr "Preprint"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Affiliation"
+msgstr "AutreAffiliation"
 
 #: lib/layouts/revtex4.layout:174 lib/layouts/amsdefs.inc:204
 msgid "Thanks:"
@@ -10226,9 +10190,8 @@ msgid "Phonetic Symbols|y"
 msgstr "Symboles phonétiques|y"
 
 #: lib/ui/stdmenus.inc:294
-#, fuzzy
 msgid "Numbered Formula|N"
-msgstr "Liste numérotée"
+msgstr "Formule numérotée|N"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Aligned Environment"
