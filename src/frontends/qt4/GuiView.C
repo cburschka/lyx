@@ -243,12 +243,21 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 {
 	// we may have been called through the close window button
 	// which bypasses the LFUN machinery.
-	if (!quitting_by_menu_) {
+	if (!quitting_by_menu_ && theApp()->gui().viewIds().size() == 1) {
 		if (!theBufferList().quitWriteAll()) {
 			close_event->ignore();
 			return;
 		}
 	}
+
+	theApp()->gui().unregisterView(id());
+	if (!theApp()->gui().viewIds().empty()) {
+		// Just close the window and do nothing else if this is not the
+		// last window.
+		close_event->accept();
+		return;
+	}
+
 	if (view()->buffer()) {
 		// save cursor position for opened files to .lyx/session
 		LyX::ref().session().lastFilePos().save(
@@ -256,17 +265,13 @@ void GuiView::closeEvent(QCloseEvent * close_event)
 			boost::tie(view()->cursor().pit(),
 			view()->cursor().pos()));
 	}
-	theApp()->gui().unregisterView(id());	
-	if (theApp()->gui().viewIds().empty())
-	{
-		// this is the place where we leave the frontend.
-		// it is the only point at which we start quitting.
-		saveGeometry();
-		close_event->accept();
-		// quit the event loop
-		qApp->quit();
-	}
+
+	// this is the place where we leave the frontend.
+	// it is the only point at which we start quitting.
+	saveGeometry();
 	close_event->accept();
+	// quit the event loop
+	qApp->quit();
 }
 
 
