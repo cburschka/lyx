@@ -26,7 +26,7 @@ CRCCheck force
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5alpha-05-02-2007"
+!define PRODUCT_VERSION "1.5beta1-xx-02-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -40,17 +40,17 @@ CRCCheck force
 !define PRODUCT_ABOUT_URL "http://www.lyx.org/about/"
 !define PRODUCT_INFO_URL "http://www.lyx.org/"
 
-BrandingText "LyXWinInstaller v3.08 - Small"
+BrandingText "LyXWinInstaller v3.09 - Small"
 !define INSTALLER_VERSION "Small"
-!define INSTALLER_EXE "LyXWin150alphaSmall-3-08.exe"
-!define INSTALLER2_EXE "LyXWin150alphaComplete-3-08.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150alphaSmall-3-09.exe"
+!define INSTALLER2_EXE "LyXWin150alphaComplete-3-09.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
 !define PRODUCT_ROOT_KEY "SHCTX"
 
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\lyx.exe"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX150svn"
+!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\LyX${PRODUCT_VERSION_SHORT}"
 
 !define ClassFileDir "${PRODUCT_SOURCEDIR}\Resources\tex"
 
