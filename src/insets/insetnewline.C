@@ -16,6 +16,7 @@
 #include "LColor.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
@@ -62,10 +63,10 @@ int InsetNewline::latex(Buffer const &, odocstream &,
 
 
 int InsetNewline::plaintext(Buffer const &, odocstream & os,
-                            OutputParams const &) const
+                            OutputParams const & runparams) const
 {
 	os << '\n';
-	return 0;
+	return runparams.linelen;
 }
 
 
