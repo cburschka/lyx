@@ -86,7 +86,7 @@ void InsetLabel::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 
 int InsetLabel::latex(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+                      OutputParams const &) const
 {
 	os << escape(getCommand());
 	return 0;
@@ -94,15 +94,16 @@ int InsetLabel::latex(Buffer const &, odocstream & os,
 
 
 int InsetLabel::plaintext(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+                          OutputParams const &) const
 {
-	os << '<' << getParam("name") << '>';
-	return 0;
+	docstring str = getParam("name");
+	os << '<' << str << '>';
+	return 2 + str.size();
 }
 
 
 int InsetLabel::docbook(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+                        OutputParams const & runparams) const
 {
 	os << "<!-- anchor id=\""
            << sgml::cleanID(buf, runparams, getParam("name"))

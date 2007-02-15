@@ -167,7 +167,7 @@ void InsetSpace::read(Buffer const &, LyXLex & lex)
 
 
 int InsetSpace::latex(Buffer const &, odocstream & os,
-		      OutputParams const & runparams) const
+                      OutputParams const & runparams) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -200,26 +200,15 @@ int InsetSpace::latex(Buffer const &, odocstream & os,
 
 
 int InsetSpace::plaintext(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+                          OutputParams const &) const
 {
-	switch (kind_) {
-	case NORMAL:
-	case PROTECTED:
-	case THIN:
-	case QUAD:
-	case QQUAD:
-	case ENSPACE:
-	case ENSKIP:
-	case NEGTHIN:
-		os << ' ';
-		break;
-	}
-	return 0;
+	os << ' ';
+	return 1;
 }
 
 
 int InsetSpace::docbook(Buffer const &, odocstream & os,
-			OutputParams const &) const
+                        OutputParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:
