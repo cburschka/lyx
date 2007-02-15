@@ -253,7 +253,7 @@ bool InsetBox::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetBox::latex(Buffer const & buf, odocstream & os,
-				OutputParams const & runparams) const
+                    OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 
@@ -389,39 +389,40 @@ int InsetBox::latex(Buffer const & buf, odocstream & os,
 }
 
 
-int InsetBox::docbook(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const
-{
-	return InsetText::docbook(buf, os, runparams);
-}
-
-
 int InsetBox::plaintext(Buffer const & buf, odocstream & os,
-		    OutputParams const & runparams) const
+                        OutputParams const & runparams) const
 {
 	BoxType const btype = boxtranslator().find(params_.type);
 
 	switch (btype) {
 		case Frameless: break;
-		case Boxed:     os << "[";  break;
-		case ovalbox:   os << "(";  break;
-		case Ovalbox:   os << "(("; break;
-		case Shadowbox: os << "[";  break;
-		case Doublebox: os << "[["; break;
+		case Boxed:     os << "[\n";  break;
+		case ovalbox:   os << "(\n";  break;
+		case Ovalbox:   os << "((\n"; break;
+		case Shadowbox: os << "[/\n"; break;
+		case Doublebox: os << "[[\n"; break;
 	}
 
-	int i = InsetText::plaintext(buf, os, runparams);
+	InsetText::plaintext(buf, os, runparams);
 
+	int len = 0;
 	switch (btype) {
 		case Frameless: break;
-		case Boxed:     os << "]";  break;
-		case ovalbox:   os << ")";  break;
-		case Ovalbox:   os << "))"; break;
-		case Shadowbox: os << "]/"; break;
-		case Doublebox: os << "]]"; break;
+		case Boxed:     os << "\n]";  len = 1; break;
+		case ovalbox:   os << "\n)";  len = 1; break;
+		case Ovalbox:   os << "\n))"; len = 2; break;
+		case Shadowbox: os << "\n/]"; len = 2; break;
+		case Doublebox: os << "\n]]"; len = 2; break;
 	}
 
-	return i;
+	return len + runparams.linelen; // len chars on a separate line
+}
+
+
+int InsetBox::docbook(Buffer const & buf, odocstream & os,
+                      OutputParams const & runparams) const
+{
+	return InsetText::docbook(buf, os, runparams);
 }
 
 

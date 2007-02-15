@@ -295,8 +295,28 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 }
 
 
+int InsetNote::plaintext(Buffer const & buf, odocstream & os,
+                         OutputParams const & runparams_in) const
+{
+	if (params_.type == InsetNoteParams::Note)
+		return 0;
+
+	OutputParams runparams(runparams_in);
+	if (params_.type == InsetNoteParams::Comment) {
+		runparams.inComment = true;
+		// Ignore files that are exported inside a comment
+		runparams.exportdata.reset(new ExportData);
+	}
+	os << '[' << _("note") << ":\n";
+	InsetText::plaintext(buf, os, runparams);
+	os << "\n]";
+
+	return 1 + runparams.linelen; // one char on a separate line
+}
+
+
 int InsetNote::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams_in) const
+                       OutputParams const & runparams_in) const
 {
 	if (params_.type == InsetNoteParams::Note)
 		return 0;
@@ -317,27 +337,6 @@ int InsetNote::docbook(Buffer const & buf, odocstream & os,
 	// Return how many newlines we issued.
 	//return int(count(str.begin(), str.end(), '\n'));
         return n + 1 + 2;
-}
-
-
-int InsetNote::plaintext(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams_in) const
-{
-	if (params_.type == InsetNoteParams::Note)
-		return 0;
-
-	OutputParams runparams(runparams_in);
-	if (params_.type == InsetNoteParams::Comment) {
-		runparams.inComment = true;
-		// Ignore files that are exported inside a comment
-		runparams.exportdata.reset(new ExportData);
-	}
-	os << "[";
-	int const nlines = InsetText::plaintext(buf, os, runparams);
-	os << "]";
-
-	// Return how many newlines we issued.
-	return nlines;
 }
 
 
