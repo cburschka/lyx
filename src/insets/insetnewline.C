@@ -62,7 +62,7 @@ int InsetNewline::latex(Buffer const &, odocstream &,
 
 
 int InsetNewline::plaintext(Buffer const &, odocstream & os,
-			OutputParams const &) const
+                            OutputParams const &) const
 {
 	os << '\n';
 	return 0;
