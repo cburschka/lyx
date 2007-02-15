@@ -2100,9 +2100,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			 || t.cs() == "'" || t.cs() == "`"
 			 || t.cs() == "~" || t.cs() == "." || t.cs() == "=") {
 			// we need the trim as the LyX parser chokes on such spaces
+			// The argument of InsetLatexAccent is parsed as a
+			// subset of LaTeX, so don't parse anything here,
+			// but use the raw argument.
+			// Otherwise we would convert \~{\i} wrongly.
+			// This will of course not translate \~{\ss} to \~{ß},
+			// but that does at least compile and does only look
+			// strange on screen.
 			context.check_layout(os);
 			os << "\\i \\" << t.cs() << "{"
-			   << trim(parse_text_snippet(p, FLAG_ITEM, outer, context), " ")
+			   << trim(p.verbatim_item(), " ")
 			   << "}\n";
 		}
 
