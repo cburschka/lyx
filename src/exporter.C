@@ -153,27 +153,20 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	vector<string> backends = Backends(*buffer);
-	// FIXME: Without this test export to lyx1[34] would be through
-	// latex -> lyx -> lyx1[34], because the first backend below with a
-	// working conversion path is used. We should replace this test and
-	// the explicit loop below with a method
-	// getShortestPath(vector<string> const & from, string const & to)
-	// which returns the shortest path from one of the formats in 'from'
-	// to 'to'.
-	if ((format == "lyx13x" || format == "lyx14x") &&
-	    !theConverters().getPath("lyx", format).empty())
-		backend_format = "lyx";
-	else if (find(backends.begin(), backends.end(), format) == backends.end()) {
+	if (find(backends.begin(), backends.end(), format) == backends.end()) {
+		// Get shortest path to format
+		Graph::EdgePath path;
 		for (vector<string>::const_iterator it = backends.begin();
 		     it != backends.end(); ++it) {
 			Graph::EdgePath p = theConverters().getPath(*it, format);
-			if (!p.empty()) {
-				runparams.flavor = theConverters().getFlavor(p);
+			if (!p.empty() && (path.empty() || p.size() < path.size())) {
 				backend_format = *it;
-				break;
+				path = p;
 			}
 		}
-		if (backend_format.empty()) {
+		if (!path.empty())
+			runparams.flavor = theConverters().getFlavor(path);
+		else {
 			Alert::error(_("Couldn't export file"),
 				bformat(_("No information for exporting the format %1$s."),
 				   formats.prettyName(format)));

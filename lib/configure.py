@@ -301,6 +301,9 @@ def checkFormatEntries(dtl_tools):
 \Format lyx        lyx     LyX                    "" ""	""	""
 \Format lyx13x     lyx13  "LyX 1.3.x"             "" ""	""	"document"
 \Format lyx14x     lyx14  "LyX 1.4.x"             "" ""	""	"document"
+\Format clyx       cjklyx "CJK LyX 1.4.x (big5)"  "" ""	""	"document"
+\Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"
+\Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"
 \Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""
 \Format pdftex     pdftex_t PDFTEX                "" ""	""	""
 \Format program    ""      Program                "" ""	""	""
@@ -449,7 +452,7 @@ def checkConverterEntries():
     # FIXME: no rc_entry? comment it out
     # checkProg('Image converter', ['convert $$i $$o'])
     #
-    # Entried that do not need checkProg
+    # Entries that do not need checkProg
     addToRC(r'''\converter lyxpreview ppm        "python -tt $$s/scripts/lyxpreview2bitmap.py"	""
 \converter date       dateout    "python -tt $$s/scripts/date.py %d-%m-%Y > $$o"	""
 \converter docbook    docbook-xml "cp $$i $$o"	"xml"
@@ -458,6 +461,12 @@ def checkConverterEntries():
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""
 \converter lyx        lyx13x     "python -tt $$s/lyx2lyx/lyx2lyx -t 221 $$i > $$o"	""
 \converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -t 245 $$i > $$o"	""
+\converter lyx        clyx       "python -tt $$s/lyx2lyx/lyx2lyx -c big5 -t 245 $$i > $$o"	""
+\converter lyx        jlyx       "python -tt $$s/lyx2lyx/lyx2lyx -c euc_jp -t 245 $$i > $$o"	""
+\converter lyx        klyx       "python -tt $$s/lyx2lyx/lyx2lyx -c euc_kr -t 245 $$i > $$o"	""
+\converter clyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c big5 $$i > $$o"	""
+\converter jlyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_jp $$i > $$o"	""
+\converter klyx       lyx        "python -tt $$s/lyx2lyx/lyx2lyx -c euc_kr $$i > $$o"	""
 ''')
 
 
