@@ -30,10 +30,10 @@ public:
 	InsetBase::Code lyxCode() const { return InsetBase::HFILL_CODE; }
 	///
 	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const & runparams) const;
+	              OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-		    OutputParams const & runparams) const;
+		    OutputParams const &) const;
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset

@@ -201,6 +201,8 @@ public:
 	virtual void infoize2(odocstream &) const {}
 
 	/// plain text output in ucs4 encoding
+	/// return the number of characters, in case of multiple lines of
+	/// output, add runparams.linelen to the number of chars in the last line
 	virtual int plaintext(Buffer const &, odocstream &,
 		OutputParams const &) const;
 	/// docbook output

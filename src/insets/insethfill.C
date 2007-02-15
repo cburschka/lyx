@@ -50,10 +50,10 @@ docstring const InsetHFill::getScreenLabel(Buffer const &) const
 
 
 int InsetHFill::plaintext(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+                          OutputParams const &) const
 {
-	os << '\t';
-	return 0;
+	os << "     ";
+	return 5; 
 }
 
 

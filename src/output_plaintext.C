@@ -198,18 +198,24 @@ void writePlaintextParagraph(Buffer const & buf,
 		char_type c = par.getUChar(buf.params(), i);
 		switch (c) {
 		case Paragraph::META_INSET: {
-			InsetBase const * inset = par.getInset(i);
-
+			if (runparams.linelen > 0 &&
+			    currlinelen + word.length() > runparams.linelen) {
+				os << '\n';
+				pair<int, docstring> p = addDepth(depth, ltype_depth);
+				os << p.second;
+				currlinelen = p.first;
+			}
 			os << word;
 			currlinelen += word.length();
 			word.erase();
 
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
-			if (inset->plaintext(buf, os, rp)) {
-				// to be sure it breaks paragraph
-				currlinelen += runparams.linelen;
-			}
+			int len = par.getInset(i)->plaintext(buf, os, rp);
+			if (len >= runparams.linelen)
+				currlinelen = len - runparams.linelen;
+			else
+				currlinelen += len;
 			break;
 		}
 

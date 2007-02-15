@@ -80,6 +80,17 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 }
 
 
+int InsetFoot::plaintext(Buffer const & buf, odocstream & os,
+			   OutputParams const & runparams) const
+{
+	os << '[' << _("footnote") << ":\n";
+	InsetText::plaintext(buf, os, runparams);
+	os << "\n]";
+
+	return 1 + runparams.linelen; // one char on a separate line
+}
+
+
 int InsetFoot::docbook(Buffer const & buf, odocstream & os,
 		       OutputParams const & runparams) const
 {
