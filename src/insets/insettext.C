@@ -31,6 +31,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "output_docbook.h"
 #include "output_latex.h"
 #include "output_plaintext.h"
@@ -305,14 +306,23 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
-	odocstringstream oss;
-	for (; it != end; ++it)
+	int len = 0;
+	for (; it != end; ++it) {
+		if (it != beg) {
+			os << '\n';
+			if (runparams.linelen > 0)
+				os << '\n';
+		}
+		odocstringstream oss;
 		writePlaintextParagraph(buf, *it, oss, runparams, ref_printed);
+		docstring const str = oss.str();
+		os << str;
+		// FIXME: len is not computed fully correctly; in principle,
+		// we have to count the characters after the last '\n'
+		len = str.size();
+	}
 
-	docstring const str = oss.str();
-	os << str;
-	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(), '\n'));
+	return len;
 }
 
 
