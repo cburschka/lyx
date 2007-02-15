@@ -75,7 +75,7 @@ void QDocument::update_contents()
 	if (!dialog_.get())
 		return;
 
-	dialog_->update(controller().params());
+	dialog_->updateParams(controller().params());
 }
 
 void QDocument::saveDocDefault()

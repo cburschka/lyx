@@ -1858,7 +1858,7 @@ void QPrefsDialog::apply(LyXRC & rc) const
 }
 
 
-void QPrefsDialog::update(LyXRC const & rc)
+void QPrefsDialog::updateRc(LyXRC const & rc)
 {
 	size_t end = modules_.size();
 	for (size_t i = 0; i != end; ++i)

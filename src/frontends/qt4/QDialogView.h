@@ -17,7 +17,7 @@
 #include <boost/scoped_ptr.hpp>
 
 #include <QApplication>
-#include <QDialog>
+#include <QWidget>
 #include <QObject>
 
 namespace lyx {
@@ -80,68 +80,45 @@ public Q_SLOTS:
 	void slotClose();
 private:
 	/// Pointer to the actual instantiation of the Qt dialog
-	virtual QDialog * form() const = 0;
+	virtual QWidget * form() const = 0;
 };
 
 
 template <class GUIDialog>
 class QView: public QDialogView {
 protected:
-	QView(Dialog &, docstring const &);
+	QView(Dialog & p, docstring const & t): QDialogView(p, t)
+	{}
+
+	virtual ~QView() {}
 
 	/// update the dialog
-	virtual void update();
+	virtual void update() {
+		dialog_->setUpdatesEnabled(false);
+
+		// protect the BC from unwarranted state transitions
+		updating_ = true;
+		update_contents();
+		updating_ = false;
+
+		dialog_->setUpdatesEnabled(true);
+		dialog_->update();
+	}
 
 	/// Build the dialog
-	virtual void build();
+	virtual void build() {
+		// protect the BC from unwarranted state transitions
+		updating_ = true;
+		build_dialog();
+		updating_ = false;
+	}
 
 	/// Pointer to the actual instantiation of the Qt dialog
-	virtual QDialog * form() const;
+	virtual GUIDialog * form() const { return dialog_.get(); }
 
 	/// Real GUI implementation.
 	boost::scoped_ptr<GUIDialog> dialog_;
-
 };
-
-
-template <class GUIDialog>
-QView<GUIDialog>::QView(Dialog & p, docstring const & t)
-	: QDialogView(p, t)
-{}
-
-
-template <class GUIDialog>
-QDialog * QView<GUIDialog>::form() const
-{
-	return dialog_.get();
-}
-
-
-template <class GUIDialog>
-void QView<GUIDialog>::update()
-{
-	form()->setUpdatesEnabled(false);
-
-	// protect the BC from unwarranted state transitions
-
-	updating_ = true;
-	update_contents();
-	updating_ = false;
-
-	form()->setUpdatesEnabled(true);
-	form()->update();
-}
-
-
-template <class GUIDialog>
-void QView<GUIDialog>::build()
-{
-	// protect the BC from unwarranted state transitions
-
-	updating_ = true;
-	build_dialog();
-	updating_ = false;
-}
 
 
 template <class Controller, class Base>
@@ -149,33 +126,17 @@ class QController: public Base
 {
 protected:
 	///
-	QController(Dialog &, docstring const &);
+	QController(Dialog & p, docstring const & t): Base(p, t)
+	{}
 public:
 	/// The parent controller
-	Controller & controller();
+	Controller & controller()
+	{ return static_cast<Controller &>(this->getController()); }
+
 	/// The parent controller
-	Controller const & controller() const;
+	Controller const & controller() const
+	{ return static_cast<Controller const &>(this->getController()); }
 };
-
-
-template <class Controller, class Base>
-QController<Controller, Base>::QController(Dialog & p, docstring const & t)
-	: Base(p, t)
-{}
-
-
-template <class Controller, class Base>
-Controller & QController<Controller, Base>::controller()
-{
-	return static_cast<Controller &>(this->getController());
-}
-
-
-template <class Controller, class Base>
-Controller const & QController<Controller, Base>::controller() const
-{
-	return static_cast<Controller const &>(this->getController());
-}
 
 } // namespace frontend
 } // namespace lyx

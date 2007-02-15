@@ -888,7 +888,7 @@ findPos(std::vector<A> const & vec, A const & val)
 } // namespace anom
 
 
-void QDocumentDialog::update(BufferParams const & params)
+void QDocumentDialog::updateParams(BufferParams const & params)
 {
 	// set the default unit
 	// FIXME: move to controller

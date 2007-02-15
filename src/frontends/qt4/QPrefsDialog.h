@@ -371,7 +371,7 @@ public:
 	~QPrefsDialog();
 
 	void apply(LyXRC & rc) const;
-	void update(LyXRC const & rc);
+	void updateRc(LyXRC const & rc);
 
 public Q_SLOTS:
 	void change_adaptor();

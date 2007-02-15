@@ -67,7 +67,7 @@ void QPrefs::apply()
 
 void QPrefs::update_contents()
 {
-	dialog_->update(controller().rc());
+	dialog_->updateRc(controller().rc());
 }
 
 } // namespace frontend

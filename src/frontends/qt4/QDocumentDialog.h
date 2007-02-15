@@ -58,7 +58,7 @@ public:
 	QDocumentDialog(QDocument *);
 	~QDocumentDialog();
 
-	void update(BufferParams const & params);
+	void updateParams(BufferParams const & params);
 	void apply(BufferParams & params);
 
 	void updateFontsize(std::string const &, std::string const &);
