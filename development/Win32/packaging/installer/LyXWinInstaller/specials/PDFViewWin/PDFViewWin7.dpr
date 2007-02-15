@@ -13,48 +13,23 @@ program PDFViewWin7;
  while the unrenamed version can be modified. When the modified version should
  be displayed, the eventually opened renamed version is closed in Acrobat and
  the modified version is copied, renamed and opened in Acrobat.
- To open/close files in Acrobat, the programs "pdfopen" and "pdfclose",
- written by Fabrice Popineau, is used.}
+ To open/close files in Acrobat, OLE-Obcects are used because the latest
+ manual "Developing Applications Using Interapplication Communication" from
+ Adobe Acrobat SDK Version 8 states:
+ "Although DDE is supported, you should use OLE automation instead of DDE
+  whenever possible because DDE is not a COM technology."}
 
 {$APPTYPE CONSOLE}
 
 uses
-  Windows,SysUtils,ShellApi,Forms;
+  Windows,SysUtils,ShellApi,Forms,ComObj,Variants;
 
 var Input,InputNew : string;
     FileTest : boolean;
-
-    
-function ExecWait(const CommandLine: string;
-                  const Visible: boolean = false;
-                  const MaxSeconds: integer = 60): boolean;
-//Executes programs and waits until they are terminated, taken from
-//http://www.delphipages.com/tips/thread.cfm?ID=259
-var
-SI: TStartupInfo;
-PI: TProcessInformation;
-ExitCode: DWORD;
-begin
- result := false;
- GetStartupInfo(SI);
- if not Visible then
- begin
-  SI.dwFlags := STARTF_USESHOWWINDOW;
-  SI.wShowWindow := SW_HIDE;
- end;
- if CreateProcess(nil, pchar(CommandLine), nil, nil,
-                  False, 0, nil, nil, SI, PI) then
- begin
-  case WaitForSingleObject(PI.hProcess, MaxSeconds * 1000) of
-       WAIT_OBJECT_0: GetExitCodeProcess(PI.hProcess, ExitCode);
-       WAIT_ABANDONED: TerminateProcess(PI.hProcess, ExitCode);
-       WAIT_TIMEOUT: TerminateProcess(PI.hProcess, ExitCode);
-  end;
-  result := ExitCode = 0;
-  CloseHandle(PI.hProcess);
-  CloseHandle(PI.hThread);
- end;
-end; //end function
+    App, AVDoc : Variant;
+    CoInitFlags : Integer = -1;
+    VarTest : IDispatch;
+    test : PVariant;
 
 
 function RenameFile(const OldName, NewName: string): boolean;
@@ -73,8 +48,9 @@ begin
 end; //end function
 
 
-begin //begin program 
+begin //begin program
 
+ Application.Initialize;
  //Read given filename
  Input:= ParamStr(1);
  //InputNew = original filename with ending "-preview" (e.g. test-preview.pdf)
@@ -82,17 +58,33 @@ begin //begin program
  InputNew:= InputNew+'-preview.pdf';
  //check if renamed file exists
  FileTest:= FileExists(InputNew);
+ //Create OLE-object for the program Acrobat or Adobe Viewer
+ App:=CreateOleObject('AcroExch.App');
+ //test if given file already exists
  if FileTest = true then
  begin
   //close old file
-  ExecWait('pdfclose --file "'+InputNew+'"');
+  AVDoc:=App.GetActiveDoc; //handle of the active document
+  VarTest:=AVDoc;
+  test:= PVariant(VarTest);
+  if test <> PVariant(0) then //when handle is existing
+  begin
+   try
+    AVDoc.Close(true);
+   except
+    Application.Terminate;
+   end;
+  end;
   //delete old file
   DeleteFile(InputNew);
- end;
+ end; //end if FileTest
  //rename file
  RenameFile(Input,InputNew);
- //open renamed file
- ExecWait('pdfopen --file "'+InputNew+'"');
+ //open renamed file in Acobat or Adobe Viewer
+ App.Show;                      //show window
+ App.Restore(true);             //restore window size to make window active
+ App.Maximize(true);            //maximize window
+ AVDoc:=CreateOleObject('AcroExch.AVDoc'); //create OLE object for file
+ AVDoc.Open(''+InputNew+'','');            //open file
 
-
-end. //end program 
+end. //end program
