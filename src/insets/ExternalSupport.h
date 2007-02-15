@@ -66,7 +66,7 @@ int writeExternal(InsetExternalParams const &,
 		  odocstream &,
 		  ExportData &,
 		  bool external_in_tmpdir,
-		  bool external_in_comment);
+		  bool dryrun);
 
 } // namespace external
 } // namespace lyx

@@ -197,7 +197,8 @@ void updateExternal(InsetExternalParams const & params,
 		    string const & format,
 		    Buffer const & buffer,
 		    ExportData & exportdata,
-		    bool external_in_tmpdir)
+                    bool external_in_tmpdir,
+                    bool dryrun)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
@@ -274,33 +275,35 @@ void updateExternal(InsetExternalParams const & params,
 	FileName const abs_to_file(
 		support::makeAbsPath(to_file, m_buffer->temppath()));
 
-	// Record the referenced files for the exporter.
-	// The exporter will copy them to the export dir.
-	typedef Template::Format::FileMap FileMap;
-	FileMap::const_iterator rit  = outputFormat.referencedFiles.begin();
-	FileMap::const_iterator rend = outputFormat.referencedFiles.end();
-	for (; rit != rend; ++rit) {
-		vector<string>::const_iterator fit  = rit->second.begin();
-		vector<string>::const_iterator fend = rit->second.end();
-		for (; fit != fend; ++fit) {
-			FileName const source(support::makeAbsPath(
-					doSubstitution(params, buffer, *fit,
-						       false, true),
-					m_buffer->temppath()));
-			// The path of the referenced file is never the
-			// temp path, but the filename may be the mangled
-			// or the real name. Therefore we substitute the
-			// paths and names separately.
-			string file = support::subst(*fit, "$$FName",
-					"$$FPath$$Basename$$Extension");
-			file = doSubstitution(params, buffer, file, false, false,
-					      PATHS);
-			file = doSubstitution(params, buffer, file,
-					      false, external_in_tmpdir,
-					      ALL_BUT_PATHS);
-			// if file is a relative name, it is interpreted
-			// relative to the master document.
-			exportdata.addExternalFile(rit->first, source, file);
+	if (!dryrun) {
+		// Record the referenced files for the exporter.
+		// The exporter will copy them to the export dir.
+		typedef Template::Format::FileMap FileMap;
+		FileMap::const_iterator rit  = outputFormat.referencedFiles.begin();
+		FileMap::const_iterator rend = outputFormat.referencedFiles.end();
+		for (; rit != rend; ++rit) {
+			vector<string>::const_iterator fit  = rit->second.begin();
+			vector<string>::const_iterator fend = rit->second.end();
+			for (; fit != fend; ++fit) {
+				FileName const source(support::makeAbsPath(
+						doSubstitution(params, buffer, *fit,
+							       false, true),
+						m_buffer->temppath()));
+				// The path of the referenced file is never the
+				// temp path, but the filename may be the mangled
+				// or the real name. Therefore we substitute the
+				// paths and names separately.
+				string file = support::subst(*fit, "$$FName",
+						"$$FPath$$Basename$$Extension");
+				file = doSubstitution(params, buffer, file, false, false,
+						      PATHS);
+				file = doSubstitution(params, buffer, file,
+						      false, external_in_tmpdir,
+						      ALL_BUT_PATHS);
+				// if file is a relative name, it is interpreted
+				// relative to the master document.
+				exportdata.addExternalFile(rit->first, source, file);
+			}
 		}
 	}
 
@@ -333,7 +336,7 @@ int writeExternal(InsetExternalParams const & params,
 		  Buffer const & buffer, odocstream & os,
 		  ExportData & exportdata,
 		  bool external_in_tmpdir,
-		  bool external_in_comment)
+		  bool dryrun)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
@@ -349,9 +352,9 @@ int writeExternal(InsetExternalParams const & params,
 		return 0;
 	}
 
-	if (!external_in_comment)
+	if (!dryrun || support::contains(cit->second.product, "$$Contents"))
 		updateExternal(params, format, buffer, exportdata,
-			       external_in_tmpdir);
+		               external_in_tmpdir, dryrun);
 
 	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,
