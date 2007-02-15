@@ -29,14 +29,14 @@ public:
 
 	void draw(PainterInfo & pi, int x, int y) const;
 
-	virtual int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &,
+	          OutputParams const &) const;
 
 	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	              OutputParams const &) const;
 
 	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	            OutputParams const &) const;
 
 	void read(Buffer const &, LyXLex & lex);
 

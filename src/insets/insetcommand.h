@@ -48,14 +48,11 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex)
 		{ p_.read(lex); }
 	///
-	virtual int latex(Buffer const &, odocstream &,
-			  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &, OutputParams const &) const;
 	///
-	virtual int docbook(Buffer const &, odocstream &,
-			    OutputParams const & runparams) const;
+	int docbook(Buffer const &, odocstream &, OutputParams const & runparams) const;
 	///
 	InsetBase::Code lyxCode() const { return InsetBase::NO_CODE; }
 

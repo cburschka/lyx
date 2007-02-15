@@ -17,6 +17,7 @@
 #include "LColor.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "TextMetrics.h"
 
 #include "frontends/FontMetrics.h"
@@ -79,7 +80,7 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetPagebreak::latex(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+                          OutputParams const &) const
 {
 	os << from_ascii(getCmdName()) << "{}";
 	return 0;
@@ -87,15 +88,15 @@ int InsetPagebreak::latex(Buffer const &, odocstream & os,
 
 
 int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
-			  OutputParams const &) const
+                              OutputParams const & runparams) const
 {
 	os << '\n';
-	return 0;
+	return runparams.linelen; 
 }
 
 
 int InsetPagebreak::docbook(Buffer const &, odocstream & os,
-			    OutputParams const &) const
+                            OutputParams const &) const
 {
 	os << '\n';
 	return 0;

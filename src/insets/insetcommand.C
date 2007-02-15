@@ -84,7 +84,7 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 
 
 int InsetCommand::latex(Buffer const &, odocstream & os,
-			OutputParams const &) const
+                        OutputParams const &) const
 {
 	os << getCommand();
 	return 0;
@@ -92,14 +92,14 @@ int InsetCommand::latex(Buffer const &, odocstream & os,
 
 
 int InsetCommand::plaintext(Buffer const &, odocstream &,
-			OutputParams const &) const
+                            OutputParams const &) const
 {
 	return 0;
 }
 
 
 int InsetCommand::docbook(Buffer const &, odocstream &,
-			  OutputParams const &) const
+                          OutputParams const &) const
 {
 	return 0;
 }

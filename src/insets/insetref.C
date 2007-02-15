@@ -84,7 +84,7 @@ docstring const InsetRef::getScreenLabel(Buffer const &) const
 
 
 int InsetRef::latex(Buffer const &, odocstream & os,
-		    OutputParams const &) const
+                    OutputParams const &) const
 {
 	// Don't output p_["name"], this is only used in docbook
 	InsetCommandParams p(getCmdName());
@@ -95,15 +95,16 @@ int InsetRef::latex(Buffer const &, odocstream & os,
 
 
 int InsetRef::plaintext(Buffer const &, odocstream & os,
-		    OutputParams const &) const
+                        OutputParams const &) const
 {
-	os << '[' << getParam("reference") << ']';
-	return 0;
+	docstring str = getParam("reference");
+	os << '[' << str << ']';
+	return 2 + str.size();
 }
 
 
 int InsetRef::docbook(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams) const
+                      OutputParams const & runparams) const
 {
 	docstring const & name = getParam("name");
 	if (name.empty()) {
