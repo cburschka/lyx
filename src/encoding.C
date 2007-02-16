@@ -211,7 +211,7 @@ CharInfoMap unicodesymbols;
 Encoding::Encoding(string const & n, string const & l, string const & i)
 	: Name_(n), LatexName_(l), iconvName_(i)
 {
-	if (n == "utf8")
+	if (n == "utf8" || n == "utf8x")
 		// UTF8 can encode all 1<<20 + 1<<16 UCS4 code points
 		start_encodable_ = 0x110000;
 	else {
