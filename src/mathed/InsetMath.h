@@ -182,6 +182,10 @@ public:
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
 
+	/// plain text output in ucs4 encoding
+	int plaintext(Buffer const &, odocstream &,
+	              OutputParams const &) const { return 0; };
+
 	/// dump content to stderr for debugging
 	virtual void dump() const;
 
