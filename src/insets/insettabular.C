@@ -537,8 +537,13 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button1) {
-			if (bvcur.selection() && !tablemode(bvcur))
-				saveSelection(bvcur);
+			if (bvcur.selection()) {
+				// Bug3238: disable persistent selection for table cells for now
+				if (tablemode(bvcur))
+					theSelection().haveSelection(true);
+				else
+					saveSelection(bvcur);
+			}
 		} else if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
@@ -597,8 +602,13 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				TextMetrics const & tm =
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
-				if (cmd.action == LFUN_DOWN_SELECT && !tablemode(cur))
-					saveSelection(cur);
+				if (cmd.action == LFUN_DOWN_SELECT) {
+					// Bug3238: disable persistent selection for table cells for now
+					if (tablemode(cur))
+						theSelection().haveSelection(true);
+					else
+						saveSelection(cur);
+				}
 			}
 		if (sl == cur.top()) {
 			// we trick it to go to the RIGHT after leaving the
@@ -624,8 +634,13 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
-				if (cmd.action == LFUN_UP_SELECT && !tablemode(cur))
-					saveSelection(cur);
+				if (cmd.action == LFUN_UP_SELECT) {
+					// Bug3238: disable persistent selection for table cells for now
+					if (tablemode(cur))
+						theSelection().haveSelection(true);
+					else
+						saveSelection(cur);
+				}
 			}
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_UP);
