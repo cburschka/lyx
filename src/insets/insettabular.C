@@ -537,8 +537,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_RELEASE:
 		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button1) {
-			if (bvcur.selection())
-				saveSelection(bvcur);// theSelection().haveSelection(true);
+			if (bvcur.selection() && !tablemode(bvcur))
+				saveSelection(bvcur);
 		} else if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;
@@ -597,7 +597,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				TextMetrics const & tm =
 					cur.bv().textMetrics(cell(cur.idx())->getText(0));
 				cur.pos() = tm.x2pos(cur.pit(), 0, cur.targetX());
-				if (cmd.action == LFUN_DOWN_SELECT)
+				if (cmd.action == LFUN_DOWN_SELECT && !tablemode(cur))
 					saveSelection(cur);
 			}
 		if (sl == cur.top()) {
@@ -624,7 +624,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 				ParagraphMetrics const & pm =
 					tm.parMetrics(cur.lastpit());
 				cur.pos() = tm.x2pos(cur.pit(), pm.rows().size()-1, cur.targetX());
-				if (cmd.action == LFUN_UP_SELECT)
+				if (cmd.action == LFUN_UP_SELECT && !tablemode(cur))
 					saveSelection(cur);
 			}
 		if (sl == cur.top()) {
