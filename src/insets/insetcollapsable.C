@@ -449,7 +449,7 @@ void InsetCollapsable::setLabelFont(LyXFont & font)
 	labelfont_ = font;
 }
 
-docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp)
+docstring InsetCollapsable::floatName(string const & type, BufferParams const & bp) const
 {
 	FloatList const & floats = bp.getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[type];

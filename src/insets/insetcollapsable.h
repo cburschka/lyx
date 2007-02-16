@@ -101,7 +101,7 @@ protected:
 	/// Is the width forced to some value?
 	virtual bool hasFixedWidth() const { return false; }
 	///
-	docstring floatName(std::string const & type, BufferParams const &);
+	docstring floatName(std::string const & type, BufferParams const &) const;
 
 protected:
 	///
