@@ -141,7 +141,7 @@ using std::string;
 
 namespace {
 
-int const LYX_FORMAT = 261;
+int const LYX_FORMAT = 262;
 
 } // namespace anon
 

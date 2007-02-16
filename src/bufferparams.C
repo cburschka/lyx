@@ -876,7 +876,8 @@ bool BufferParams::writeLaTeX(odocstream & os, LaTeXFeatures & features,
 			os << "]{inputenc}\n";
 			texrow.newline();
 		}
-	} else if (inputenc != "default" && inputenc != "tis620-0") {
+	} else if (inputenc != "default" && inputenc != "tis620-0" &&
+	           inputenc != "ascii") {
 		os << "\\usepackage[" << from_ascii(inputenc)
 		   << "]{inputenc}\n";
 		texrow.newline();

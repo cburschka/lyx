@@ -1210,6 +1210,18 @@ def convert_changes(document):
         document.header[j] = "\\output_changes false"
 
 
+def revert_ascii(document):
+    " Set ascii encoding to auto. "
+    i = find_token(document.header, "\\inputencoding", 0)
+    if i == -1:
+        document.header.append("\\inputencoding auto")
+    else:
+        inputenc = get_value(document.header, "\\inputencoding", i)
+        if inputenc == "ascii":
+            document.header[i] = "\\inputencoding auto"
+    document.inputencoding = get_value(document.header, "\\inputencoding", 0)
+
+
 ##
 # Conversion hub
 #
@@ -1230,9 +1242,11 @@ convert = [[246, []],
            [258, [convert_lyxline]],
            [259, [convert_accent, normalize_font_whitespace]],
            [260, []],
-           [261, [convert_changes]]]
+           [261, [convert_changes]],
+           [262, []]]
 
-revert =  [[260, []],
+revert =  [[261, [revert_ascii]],
+           [260, []],
            [259, [revert_utf8x]],
            [258, []],
            [257, []],

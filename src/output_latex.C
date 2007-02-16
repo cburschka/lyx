@@ -592,6 +592,7 @@ int switchEncoding(odocstream & os, BufferParams const & bparams,
 	// only, but it is the best we can do.
 	if ((bparams.inputenc == "auto" || bparams.inputenc == "default") &&
 	    oldEnc.name() != newEnc.name() &&
+	    oldEnc.name() != "ascii" && newEnc.name() != "ascii" &&
 	    oldEnc.name() != "tis620-0" && newEnc.name() != "tis620-0") {
 		lyxerr[Debug::LATEX] << "Changing LaTeX encoding from "
 		                     << oldEnc.name() << " to "
