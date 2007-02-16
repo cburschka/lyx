@@ -15,6 +15,7 @@
 #include "bufferparams.h"
 #include "gettext.h"
 #include "paragraph.h"
+#include "outputparams.h"
 #include "output_latex.h"
 #include "texrow.h"
 
@@ -67,7 +68,7 @@ docstring const InsetEnvironment::editMessage() const
 
 
 int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
-			    OutputParams const & runparams) const
+                            OutputParams const & runparams) const
 {
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexheader);
@@ -77,6 +78,17 @@ int InsetEnvironment::latex(Buffer const & buf, odocstream & os,
 	// FIXME UNICODE
 	os << from_utf8(layout_->latexfooter);
 	return texrow.rows();
+}
+
+
+int InsetEnvironment::plaintext(Buffer const & buf, odocstream & os,
+                                OutputParams const & runparams) const
+{
+	os << '[' << to_utf8(getInsetName()) << ":\n";
+	InsetText::plaintext(buf, os, runparams);
+	os << "\n]";
+
+	return 1 + runparams.linelen; // one char on a separate line
 }
 
 

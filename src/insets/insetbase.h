@@ -204,10 +204,10 @@ public:
 	/// return the number of characters, in case of multiple lines of
 	/// output, add runparams.linelen to the number of chars in the last line
 	virtual int plaintext(Buffer const &, odocstream &,
-		OutputParams const &) const;
+	                      OutputParams const &) const = 0;
 	/// docbook output
 	virtual int docbook(Buffer const &, odocstream & os,
-		OutputParams const &) const;
+	                    OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void textString(Buffer const &, odocstream &) const {}
 

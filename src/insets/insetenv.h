@@ -30,7 +30,10 @@ public:
 	InsetBase::Code lyxCode() const { return InsetBase::ENVIRONMENT_CODE; }
 	///
 	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	          OutputParams const &) const;
+	///
+	int plaintext(Buffer const &, odocstream &,
+	              OutputParams const &) const;
 	///
 	virtual docstring const editMessage() const;
 	///

@@ -212,13 +212,6 @@ bool InsetBase::idxUpDown(LCursor &, bool) const
 }
 
 
-int InsetBase::plaintext(Buffer const &,
-	odocstream &, OutputParams const &) const
-{
-	return 0;
-}
-
-
 int InsetBase::docbook(Buffer const &,
 	odocstream &, OutputParams const &) const
 {
