@@ -125,13 +125,9 @@ bool InsetCaption::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int const width_offset = TEXT_TO_INSET_OFFSET / 2;
 	mi.base.textwidth -= width_offset;
-	if (type_.empty())
-		full_label_ = _("Senseless!!! ");
-	else {
-		docstring const number = convert<docstring>(counter_);
-		docstring label = custom_label_.empty()? _(type_): custom_label_;
-		full_label_ = bformat(from_ascii("%1$s %2$s:"), label, number);
-	}
+
+	computeFullLabel();
+
 	labelwidth_ = theFontMetrics(mi.base.font).width(full_label_);
 	// add some space to separate the label from the inset text
 	labelwidth_ += 2 * TEXT_TO_INSET_OFFSET;
@@ -229,7 +225,7 @@ bool InsetCaption::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetCaption::latex(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams_in) const
+                        OutputParams const & runparams_in) const
 {
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
@@ -250,21 +246,38 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetCaption::plaintext(Buffer const & buf, odocstream & os,
-		OutputParams const & runparams) const
+                            OutputParams const & runparams) const
 {
-	os << full_label_ << ' ';
-	return InsetText::plaintext(buf, os, runparams);
+	computeFullLabel();
+
+	os << '[' << full_label_ << "\n";
+	InsetText::plaintext(buf, os, runparams);
+	os << "\n]";
+
+	return 1 + runparams.linelen; // one char on a separate line
 }
 
 
 int InsetCaption::docbook(Buffer const & buf, odocstream & os,
-			  OutputParams const & runparams) const
+                          OutputParams const & runparams) const
 {
 	int ret;
 	os << "<title>";
 	ret = InsetText::docbook(buf, os, runparams);
 	os << "</title>\n";
 	return ret;
+}
+
+
+void InsetCaption::computeFullLabel() const
+{
+	if (type_.empty())
+		full_label_ = _("Senseless!!! ");
+	else {
+		docstring const number = convert<docstring>(counter_);
+		docstring label = custom_label_.empty()? _(type_): custom_label_;
+		full_label_ = bformat(from_ascii("%1$s %2$s:"), label, number);
+	}
 }
 
 

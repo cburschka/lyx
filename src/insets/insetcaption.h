@@ -60,14 +60,14 @@ public:
 	///
 	virtual bool wide() const { return false; }
 	///
-	virtual int latex(Buffer const & buf, odocstream & os,
-			  OutputParams const &) const;
+	int latex(Buffer const & buf, odocstream & os,
+	          OutputParams const &) const;
 	///
 	int plaintext(Buffer const & buf, odocstream & os,
-		  OutputParams const & runparams) const;
+	              OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const & buf, odocstream & os,
-		    OutputParams const & runparams) const;
+	            OutputParams const & runparams) const;
 	///
 	void setCount(int c) { counter_ = c; }
 	///
@@ -78,6 +78,8 @@ public:
 	void addToToc(TocList &, Buffer const &) const;
 
 private:
+	///
+	void computeFullLabel() const;
 	///
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
