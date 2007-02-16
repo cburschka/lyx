@@ -23,6 +23,7 @@
 #include "LColor.h"
 #include "lyxlex.h"
 #include "paragraph.h"
+#include "outputparams.h"
 
 #include <sstream>
 
@@ -222,26 +223,32 @@ bool InsetBranch::isBranchSelected(Buffer const & buffer) const
 
 
 int InsetBranch::latex(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+                       OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?
 		InsetText::latex(buf, os, runparams) : 0;
 }
 
 
-int InsetBranch::docbook(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
+                           OutputParams const & runparams) const
 {
-	return isBranchSelected(buf) ?
-		InsetText::docbook(buf, os, runparams) : 0;
+	if (!isBranchSelected(buf))
+		return 0;
+
+	os << '[' << _("branch") << ' ' << params_.branch << ":\n";
+	InsetText::plaintext(buf, os, runparams);
+	os << "\n]";
+
+	return 1 + runparams.linelen; // one char on a separate line
 }
 
 
-int InsetBranch::plaintext(Buffer const & buf, odocstream & os,
-			   OutputParams const & runparams) const
+int InsetBranch::docbook(Buffer const & buf, odocstream & os,
+                         OutputParams const & runparams) const
 {
 	return isBranchSelected(buf) ?
-		InsetText::plaintext(buf, os, runparams): 0;
+		InsetText::docbook(buf, os, runparams) : 0;
 }
 
 
