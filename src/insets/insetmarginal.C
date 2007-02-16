@@ -15,6 +15,7 @@
 
 #include "gettext.h"
 #include "paragraph.h"
+#include "outputparams.h"
 
 #include "support/std_ostream.h"
 
@@ -55,7 +56,7 @@ docstring const InsetMarginal::editMessage() const
 
 
 int InsetMarginal::latex(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+                         OutputParams const & runparams) const
 {
 	os << "%\n\\marginpar{";
 	int const i = InsetText::latex(buf, os, runparams);
@@ -63,8 +64,20 @@ int InsetMarginal::latex(Buffer const & buf, odocstream & os,
 	return i + 2;
 }
 
+
+int InsetMarginal::plaintext(Buffer const & buf, odocstream & os,
+                             OutputParams const & runparams) const
+{
+	os << '[' << _("margin") << ":\n";
+	InsetText::plaintext(buf, os, runparams);
+	os << "\n]";
+
+	return 1 + runparams.linelen; // one char on a separate line
+}
+
+
 int InsetMarginal::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+                           OutputParams const & runparams) const
 {
 	os << "<note role=\"margin\">";
 	int const i = InsetText::docbook(buf, os, runparams);
