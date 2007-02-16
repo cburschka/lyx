@@ -10,6 +10,9 @@ Compiling with MSVC 2005
 
 	If you don't have MSVC 2005 installed, download and install the free
 	Express edition from http://msdn.microsoft.com/vstudio/express/visualc/
+	(Do not install the service pack 1 for MSVC 2005 as this introduces a bug
+	 that makes compiling LyX's Qt 4 frontend impossible, see
+	 http://support.microsoft.com/?scid=kb%3Ben-us%3B930198&x=13&y=12)
 
 2	Install the Windows Platform SDK
 
