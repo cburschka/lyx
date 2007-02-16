@@ -151,6 +151,7 @@ Function MissingPrograms
    StrCpy $Acrobat "None"
   ${endif}
   ${if} $Acrobat != "None"
+   ReadRegStr $String HKCR "AcroExch.Document/shell/open/command" ""
    StrCpy $Search "8" ; search for Acrobat or Adobe Reader 8 because then PDFViewWin8.exe is needed to view PDF-files
    !insertmacro StrPointer $String $Search $Pointer ; macro from LyXUtils
    ${if} $Pointer == "-1" ; if nothing was found

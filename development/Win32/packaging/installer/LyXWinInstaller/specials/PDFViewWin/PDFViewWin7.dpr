@@ -13,7 +13,7 @@ program PDFViewWin7;
  while the unrenamed version can be modified. When the modified version should
  be displayed, the eventually opened renamed version is closed in Acrobat and
  the modified version is copied, renamed and opened in Acrobat.
- To open/close files in Acrobat, OLE-Obcects are used because the latest
+ To open/close files in Acrobat, OLE-Objects are used because the latest
  manual "Developing Applications Using Interapplication Communication" from
  Adobe Acrobat SDK Version 8 states:
  "Although DDE is supported, you should use OLE automation instead of DDE
