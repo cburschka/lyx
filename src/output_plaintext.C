@@ -243,14 +243,18 @@ void writePlaintextParagraph(Buffer const & buf,
 		}
 	}
 
-	if (runparams.linelen > 0 &&
-	    currlinelen + word.length() > runparams.linelen) {
-		os << '\n';
-		pair<int, docstring> p = addDepth(depth, ltype_depth);
-		os << p.second;
-		currlinelen = p.first;
+	// currlinelen may be greater than runparams.linelen!
+	// => check whether word is empty and do nothing in this case
+	if (!word.empty()) {
+		if (runparams.linelen > 0 &&
+		    currlinelen + word.length() > runparams.linelen) {
+			os << '\n';
+			pair<int, docstring> p = addDepth(depth, ltype_depth);
+			os << p.second;
+			currlinelen = p.first;
+		}
+		os << word;
 	}
-	os << word;
 }
 
 
