@@ -738,7 +738,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 
 int InsetGraphics::latex(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+                         OutputParams const & runparams) const
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
@@ -808,7 +808,7 @@ int InsetGraphics::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetGraphics::plaintext(Buffer const &, odocstream & os,
-			 OutputParams const &) const
+                             OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -817,10 +817,12 @@ int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 	// at least we send the filename
 	// FIXME UNICODE
 	// FIXME: We have no idea what the encoding of the filename is
-	os << '<' << bformat(_("Graphics file: %1$s"),
-			     from_utf8(params().filename.absFilename()))
-	   << ">\n";
-	return 0;
+
+	docstring str = bformat(_("Graphics file: %1$s"),
+	                        from_utf8(params().filename.absFilename()));
+	os << '<' << str << '>';
+
+	return 2 + str.size();
 }
 
 

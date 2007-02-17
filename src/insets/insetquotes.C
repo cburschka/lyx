@@ -296,7 +296,7 @@ void InsetQuotes::read(Buffer const &, LyXLex & lex)
 
 
 int InsetQuotes::latex(Buffer const &, odocstream & os,
-		       OutputParams const & runparams) const
+                       OutputParams const & runparams) const
 {
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
@@ -329,15 +329,16 @@ int InsetQuotes::latex(Buffer const &, odocstream & os,
 
 
 int InsetQuotes::plaintext(Buffer const & buf, odocstream & os,
-			   OutputParams const &) const
+                           OutputParams const &) const
 {
-	os << dispString(buf.params().language);
-	return 0;
+	docstring str = dispString(buf.params().language);
+	os << str;
+	return str.size();
 }
 
 
 int InsetQuotes::docbook(Buffer const &, odocstream & os,
-			 OutputParams const &) const
+                         OutputParams const &) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)
