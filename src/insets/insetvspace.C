@@ -22,6 +22,7 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -202,7 +203,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetVSpace::latex(Buffer const & buf, odocstream & os,
-			  OutputParams const &) const
+                       OutputParams const &) const
 {
 	os << from_ascii(space_.asLatexCommand(buf.params())) << '\n';
 	return 1;
@@ -210,15 +211,15 @@ int InsetVSpace::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetVSpace::plaintext(Buffer const &, odocstream & os,
-			   OutputParams const &) const
+                           OutputParams const & runparams) const
 {
 	os << "\n\n";
-	return 2;
+	return runparams.linelen; // start with column 0 in new line
 }
 
 
 int InsetVSpace::docbook(Buffer const &, odocstream & os,
-			 OutputParams const &) const
+                         OutputParams const &) const
 {
 	os << '\n';
 	return 1;

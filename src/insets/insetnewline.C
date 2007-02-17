@@ -66,7 +66,7 @@ int InsetNewline::plaintext(Buffer const &, odocstream & os,
                             OutputParams const & runparams) const
 {
 	os << '\n';
-	return runparams.linelen;
+	return runparams.linelen; // start with column 0 in new line
 }
 
 
