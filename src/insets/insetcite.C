@@ -365,12 +365,16 @@ docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
                              OutputParams const &) const
 {
+	docstring str;
+
 	if (cache.params == params() &&
 	    cache.engine == biblio::getEngine(buffer))
-		os << cache.generated_label;
+		str = cache.generated_label;
 	else
-		os << generateLabel(buffer);
-	return 0;
+		str = generateLabel(buffer);
+
+	os << str;
+	return str.size();
 }
 
 
@@ -396,7 +400,8 @@ docstring const cleanupWhitespace(docstring const & citelist)
 // end anon namyspace
 }
 
-int InsetCitation::docbook(Buffer const &, odocstream & os, OutputParams const &) const
+int InsetCitation::docbook(Buffer const &, odocstream & os,
+                           OutputParams const &) const
 {
 	os << "<citation>"
            << cleanupWhitespace(getParam("key"))
@@ -417,7 +422,7 @@ int InsetCitation::textString(Buffer const & buf, odocstream & os,
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
 int InsetCitation::latex(Buffer const & buffer, odocstream & os,
-			 OutputParams const &) const
+                         OutputParams const &) const
 {
 	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
 	// FIXME UNICODE

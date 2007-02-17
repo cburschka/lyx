@@ -109,10 +109,15 @@ docstring const InsetBibitem::getScreenLabel(Buffer const &) const
 
 
 int InsetBibitem::plaintext(Buffer const &, odocstream & os,
-			    OutputParams const &) const
+                            OutputParams const &) const
 {
-	os << '[' << getCounter() << "] ";
-	return 0;
+	odocstringstream oss;
+	oss << '[' << getCounter() << "] ";
+
+	docstring const str = oss.str();
+	os << str;
+
+	return str.size();
 }
 
 
