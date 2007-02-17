@@ -40,13 +40,13 @@ public:
 	void read(Buffer const &, LyXLex &);
 	///
 	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	          OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const { return 0; }
+	            OutputParams const &) const { return 0; }
 	///
 	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const & runparams) const;
+	              OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 private:

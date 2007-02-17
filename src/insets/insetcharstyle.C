@@ -284,7 +284,7 @@ bool InsetCharStyle::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams) const
+                          OutputParams const & runparams) const
 {
 	if (!undefined()) {
 		// FIXME UNICODE
@@ -300,8 +300,15 @@ int InsetCharStyle::latex(Buffer const & buf, odocstream & os,
 }
 
 
+int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
+                              OutputParams const & runparams) const
+{
+	return InsetText::plaintext(buf, os, runparams);
+}
+
+
 int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
-			    OutputParams const & runparams) const
+                            OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator par = paragraphs().begin();
@@ -322,13 +329,6 @@ int InsetCharStyle::docbook(Buffer const & buf, odocstream & os,
 		sgml::closeTag(os, params_.latexname);
 
 	return 0;
-}
-
-
-int InsetCharStyle::plaintext(Buffer const & buf, odocstream & os,
-			      OutputParams const & runparams) const
-{
-	return InsetText::plaintext(buf, os, runparams);
 }
 
 

@@ -99,7 +99,7 @@ void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 
 
 int InsetFloatList::latex(Buffer const & buf, odocstream & os,
-			  OutputParams const &) const
+                          OutputParams const &) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats[to_ascii(getParam("type"))];
@@ -129,14 +129,13 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
-                              OutputParams const &) const
+                              OutputParams const & runparams) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
 	buffer.tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os);
 
-	os << "\n";
-	return 0;
+	return runparams.linelen; // start with column 0 in new line
 }
 
 

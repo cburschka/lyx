@@ -77,13 +77,13 @@ public:
 	bool forceDefaultParagraphs(idx_type) const { return true; }
 	///
 	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
-	///
-	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	          OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	              OutputParams const &) const;
+	///
+	int docbook(Buffer const &, odocstream &,
+	            OutputParams const &) const;
 	/// the string that is passed to the TOC
 	virtual void textString(Buffer const &, odocstream &) const;
 	///
