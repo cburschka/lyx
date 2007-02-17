@@ -192,28 +192,28 @@ int InsetSpecialChar::latex(Buffer const &, odocstream & os,
 
 
 int InsetSpecialChar::plaintext(Buffer const &, odocstream & os,
-			    OutputParams const &) const
+                                OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
 	case LIGATURE_BREAK:
-		break;
+		return 0;
 	case END_OF_SENTENCE:
 		os << '.';
-		break;
+		return 1;
 	case LDOTS:
 		os << "...";
-		break;
+		return 3;
 	case MENU_SEPARATOR:
 		os << "->";
-		break;
+		return 2;
 	}
 	return 0;
 }
 
 
 int InsetSpecialChar::docbook(Buffer const &, odocstream & os,
-			      OutputParams const &) const
+                              OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:

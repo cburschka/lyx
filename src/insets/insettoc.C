@@ -17,6 +17,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "TocBackend.h"
 
 #include "support/std_ostream.h"
@@ -56,19 +57,18 @@ InsetBase::Code InsetTOC::lyxCode() const
 
 
 int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
-		    OutputParams const &) const
+                        OutputParams const & runparams) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
 	buffer.tocBackend().writePlaintextTocList(getCmdName(), os);
 
-	os << "\n";
-	return 0;
+	return runparams.linelen; // start with column 0 in new line
 }
 
 
 int InsetTOC::docbook(Buffer const &, odocstream & os,
-		      OutputParams const &) const
+                      OutputParams const &) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";
