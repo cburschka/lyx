@@ -25,6 +25,8 @@ using std::string;
 
 namespace lyx {
 
+using support::quoteName;
+
 bool Mover::copy(support::FileName const & from, support::FileName const & to,
                  unsigned long int mode) const
 {
@@ -69,9 +71,9 @@ bool SpecialisedMover::do_copy(support::FileName const & from, support::FileName
 	}
 
 	string command = support::libScriptSearch(command_);
-	command = support::subst(command, "$$i", from.toFilesystemEncoding());
-	command = support::subst(command, "$$o", to.toFilesystemEncoding());
-	command = support::subst(command, "$$l", latex);
+	command = support::subst(command, "$$i", quoteName(from.toFilesystemEncoding()));
+	command = support::subst(command, "$$o", quoteName(to.toFilesystemEncoding()));
+	command = support::subst(command, "$$l", quoteName(latex));
 
 	support::Systemcall one;
 	return one.startscript(support::Systemcall::Wait, command) == 0;
