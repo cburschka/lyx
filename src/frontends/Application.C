@@ -41,11 +41,6 @@ namespace frontend {
 Application::Application(int &, char **)
 	: current_view_(0)
 {
-	// FIXME: please confirm: with unicode, I think initEncoding()
-	// is not needed anymore!
-	
-	// this can't be done before because it needs the Languages object
-	//initEncodings();
 }
 
 

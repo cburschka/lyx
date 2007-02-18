@@ -78,69 +78,6 @@ char const encode(string const & encoding, QString const & str)
 }
 
 
-void initEncodings()
-{
-#if 0
-	//const char * c = QTextCodec::locale();
-	//string s = c ? c : "";
-	// In this order, see support/filetools.C
-	string s = getEnv("LC_ALL");
-	if (s.empty()) {
-		s = getEnv("LC_MESSAGES");
-		if (s.empty()) {
-			s = getEnv("LANG");
-			if (s.empty())
-				s = "C";
-		}
-	}
-
-	if (s.find("UTF") != string::npos || s.find("utf") != string::npos)
-	//if (contains(c, "UTF") || contains(c, "utf"))
-		lyxerr << "Warning: this system's locale uses Unicode." << endl;
-
-	// strip off any encoding suffix
-	string::size_type i = s.find(".");
-	s = s.substr(0, i);
-
-	encoding_map["iso8859-1"] = QTextCodec::codecForName("ISO 8859-1");
-	encoding_map["iso8859-2"] = QTextCodec::codecForName("ISO 8859-2");
-	encoding_map["iso8859-3"] = QTextCodec::codecForName("ISO 8859-3");
-	encoding_map["iso8859-4"] = QTextCodec::codecForName("ISO 8859-4");
-	encoding_map["iso8859-5"] = QTextCodec::codecForName("ISO 8859-5");
-	encoding_map["iso8859-6"] = QTextCodec::codecForName("ISO 8859-6");
-	encoding_map["iso8859-7"] = QTextCodec::codecForName("ISO 8859-7");
-	encoding_map["iso8859-9"] = QTextCodec::codecForName("ISO 8859-9");
-	encoding_map["iso8859-15"] = QTextCodec::codecForName("ISO 8859-15");
-	encoding_map["cp1255"] = QTextCodec::codecForName("CP 1255");
-	encoding_map["cp1251"] = QTextCodec::codecForName("CP 1251");
-	encoding_map["koi8"] = QTextCodec::codecForName("KOI8-R");
-	encoding_map["koi8-u"] = QTextCodec::codecForName("KOI8-U");
-
-	// FIXME
-	encoding_map["tis620-0"] = 0;
-	encoding_map["pt154"] = 0;
-
-	// There are lots more codecs in Qt too ...
-
-	// when no document open
-	// use the appropriate encoding for the system language
-	lyxerr << "Language code:" << s << endl;
-	for (Languages::const_iterator it=languages.begin(); it != languages.end(); ++it) {
-		//lyxerr << it->second.code() << ":" << it->second.encodingStr() << ":" << it->second.encoding() << endl;
-		if (it->second.code() == s) {
-			s = it->second.encodingStr();
-			break;
-		}
-	}
-	lyxerr << "Setting new locale for Qt:" << s << endl;
-	QTextCodec * defaultCodec = encoding_map[s];
-	encoding_map[""] = defaultCodec;
-
-	QTextCodec::setCodecForCStrings(defaultCodec);
-#endif
-}
-
-
 QLyXKeySym::QLyXKeySym()
 	: LyXKeySym(), key_(0)
 {

@@ -55,9 +55,6 @@
 using std::string;
 using std::endl;
 
-// in QLyXKeySym.C
-extern void initEncodings();
-
 ///////////////////////////////////////////////////////////////
 // You can find other X11 specific stuff
 // at the end of this file...
