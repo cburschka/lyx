@@ -77,7 +77,7 @@ int InsetOptArg::latex(Buffer const &, odocstream &,
 int InsetOptArg::plaintext(Buffer const &, odocstream &,
                            OutputParams const &) const
 {
-	return 0;
+	return 0; // do not output optional arguments
 }
 
 
