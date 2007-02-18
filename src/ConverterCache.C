@@ -216,7 +216,8 @@ ConverterCache::~ConverterCache()
 void ConverterCache::add(FileName const & orig_from, string const & to_format,
 		FileName const & converted_file) const
 {
-	if (!lyxrc.use_converter_cache)
+	if (!lyxrc.use_converter_cache || orig_from.empty() ||
+	    converted_file.empty())
 		return;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << ' ' << converted_file
@@ -269,7 +270,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 void ConverterCache::remove(FileName const & orig_from,
 		string const & to_format) const
 {
-	if (!lyxrc.use_converter_cache)
+	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
@@ -290,7 +291,7 @@ void ConverterCache::remove(FileName const & orig_from,
 bool ConverterCache::inCache(FileName const & orig_from,
 		string const & to_format) const
 {
-	if (!lyxrc.use_converter_cache)
+	if (!lyxrc.use_converter_cache || orig_from.empty())
 		return false;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << std::endl;
@@ -330,7 +331,7 @@ FileName const & ConverterCache::cacheName(FileName const & orig_from,
 bool ConverterCache::copy(FileName const & orig_from, string const & to_format,
 		FileName const & dest) const
 {
-	if (!lyxrc.use_converter_cache)
+	if (!lyxrc.use_converter_cache || orig_from.empty() || dest.empty())
 		return false;
 	lyxerr[Debug::FILES] << BOOST_CURRENT_FUNCTION << ' ' << orig_from
 	                     << ' ' << to_format << ' ' << dest << std::endl;
