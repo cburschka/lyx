@@ -83,13 +83,13 @@ public:
 	bool display() const { return tabular.isLongTabular(); }
 	///
 	int latex(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	          OutputParams const &) const;
 	///
 	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const &) const;
+	              OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	            OutputParams const &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

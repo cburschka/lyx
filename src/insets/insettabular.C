@@ -1093,22 +1093,24 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 
 int InsetTabular::latex(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+                        OutputParams const & runparams) const
 {
 	return tabular.latex(buf, os, runparams);
 }
 
 
 int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
-			OutputParams const & runparams) const
+                            OutputParams const & runparams) const
 {
-	int const dp = runparams.linelen ? runparams.depth : 0;
-	return tabular.plaintext(buf, os, runparams, dp, false, 0);
+	os << '\n'; // output table on a new line
+	int const dp = runparams.linelen > 0 ? runparams.depth : 0;
+	tabular.plaintext(buf, os, runparams, dp, false, 0);
+	return runparams.linelen; // start with column 0 in new line
 }
 
 
 int InsetTabular::docbook(Buffer const & buf, odocstream & os,
-			  OutputParams const & runparams) const
+                          OutputParams const & runparams) const
 {
 	int ret = 0;
 	InsetBase * master = 0;
