@@ -1,12 +1,13 @@
-Public release of LyX version 1.4.0
+Public release of LyX version 1.5.0 (beta 1)
 ===================================
 
-We are glad to announce the release of LyX 1.4.0.
+We are glad to announce the release of LyX 1.5.0 (beta 1).
 
-It is the culmination of 3 years of hard work, and we sincerely hope
+It is the culmination of 1 year of hard work, and we sincerely hope
 this you will enjoy the results. The changes are too numerous to
-summarize in a few words, jump directly to the end of this message if
-you want to know more.
+summarize in a few words, with initial unicode support as the flagship
+of new features, jump directly to the end of this message if you want
+to know more.
 
 As usual with major releases, a lot of work that is not directly
 visible has taken place. The core of LyX has seen more cleanups and
@@ -38,30 +39,31 @@ http://www.lyx.org/ has to say on the subject:
    internationalized application running natively on Unix/Linux and the
    Macintosh and modern Windows platforms. 
 
-You can download LyX 1.4.0 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.5.0 here (the .bz2 are compressed with bzip2,
 which yields smaller files):
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.4.0.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.4.0.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.4.0.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.4.0.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.5.0.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.0.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.5.0.tar.bz2
 
 and it should propagate shortly to the following mirrors (which will also host
 the .bz2 versions):
 
-        http://lyx.mirror.fr/stable/lyx-1.4.0.tar.gz
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.4.0.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.4.0.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.4.0.tar.gz
+        http://lyx.mirror.fr/stable/lyx-1.5.0.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.5.0.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.5.0.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.5.0.tar.gz
 
-Note that no patch is provided to upgrade from version 1.3.7.
+Note that due to the changes no patch is provided to upgrade from
+version 1.4.4.
 
 Prebuilt binaries (rpms for linux distributions, Mac OS X and Windows
 installers) should soon be available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.4.0/
+	ftp://ftp.lyx.org/pub/lyx/bin/1.5.0/
 
 
-If you find what you think is a bug in LyX 1.4.0, you may either
+If you find what you think is a bug in LyX 1.5.0, you may either
 e-mail the LyX developers' mailing list (lyx-devel @ lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
@@ -74,137 +76,118 @@ Enjoy!
 The LyX team.
 
 
-
-What's new in version 1.4.0?
+What's new in version 1.5.0?
 ----------------------------
 
-** Improved user interface
+* Unicode
 
-LyX 1.4 has a re-designed layout for the menus, designed to decrease
-clutter and maximise productivity. Several menu items (in the Edit
-menu) are now context-sensitive, so they only appear when needed. For
-the die-hard old LyX users, the older layout (referred to as the
-classic UI) is still available, for now.
+LyX 1.5's big goal was to use unicode internally and so resolve a slew
+of existing problems with special characters and non-alphabetic
+languages. LyX 1.5 is able to output unicode (in addition to
+encodings current available), so that you can use LaTeX's new utf8
+encoding or such brand new typesetting systems as XeTeX.
+Since the change to unicode touched much of the code base and some
+areas still need a cleanup it is very likely that some bugs related to
+the unicode transition still exist. Please have a look at the Known
+bugs in LyX 1.5 page if you encounter a bug that seems to be related
+to unicode. If it's not there, then please report it to the lyx-devel
+mailing list.
 
-It's now possible to define multiple toolbars as seen in other
-editors. By default, the new LyX release has two toolbars displayed,
-the standard one (similar to the static toolbar in LyX 1.3), plus the
-extra toolbar. In addition, there are two pre-defined toolbars
-available: one for tables, and one for math. 
+* Multiple views of the same buffer
 
-Another new feature worth mentioning is popup toolbars: you can set a
-toolbar such that it only appears when editing math, or when editing a
-table.
+LyX can now display multiple views of the same buffer. I.e., you can
+now open a single document in multiple windows and work on different
+parts of it synchronously.
 
-** Change tracking
+* Outliner
 
-This new feature, similar to that found in Microsoft Word and others,
-makes collaboration on a document a cinch. It provides a way to track
-changes made to a document, and later approve, reject, or modify such
-changes. 
+LyX has another long-awaited feature: a basic outliner mode, in which
+you can move chapters and sections around in the Table of Contents
+dialog. (The outliner has been backported and was released with LyX
+1.4.4.)
 
-** Much better conversion from .tex to .lyx
+* Session managment
 
-The ancient and unloved Perl script, reLyX has finally bitten the dust
-and been replaced by the brand new and shiny tex2lyx. tex2lyx's LaTeX
-parser follows most of the rules of the real TeX and so is already
-much more powerful than reLyX ever was.
+LyX is now able to remember window size and position and it will
+reopen the documents you worked on last time around. If you've
+selected the feature in the Preferences dialog, it'll even move the
+cursor to the place you were working on last!  Furthermore, toolbars
+can (finally!) be switched on/off in View->Toolbars and moved about in
+the LyX window. The session managment will remember their state.
 
-** Character styles
+* Source code Viewer
 
-For a system that purports to make it easy to write documents full of
-logical (as opposed to visual markup), LyX has always had one glaring
-omission: no character styles. LyX 1.4 goes some way towards
-addressing this defect, although there's no dialog to define your own
-styles. 
+As a kind of "anti-preview-latex", a dialog was implemented that lets
+you view the source code of a given paragraph/selection or the whole
+document.
 
+* New Font Selection Interface
 
-** Branches
+LyX's font selection abilities have been one of its weakest and most
+outdated components. A completely new interface was implemented that
+provides access to the power of LaTeX's font selection scheme.
+ 
+* Tabular extensions
 
-The teacher who's setting an exam obviously doesn't want her pupils
-seeing the answers, yet having questions and answers in the same
-document will make the life of the markers of that exam much easier.
+LyX's table support is certainly less powerful than that of
+LaTeX. support for the booktabs package was implemented, which
+provides beautiful and elegant tabulars.
+ 
 
-That's just one example of someone who would benefit from LyX's new
-"branches" feature. In fact, anyone who writes documents which have
-more than one target audience will find this feature useful.
+* Glossaries
 
-** Minipages evolve to Boxes
+Native LyX support for the nomencl package was implemented. With this,
+you can treat your document with all sorts of nomenclatures,
+glossaries and fancy notations.
 
-In 1.3, LyX only had native support for plain minipages. Now you can
-use a wide range of box types and decorations directly from the LyX
-GUI
+* Tabbed Widget
 
-** Notes
+LyX now uses tabbed widgets to display multiple documents.
 
-LyX now has three different Notes for you to add to your document from
-the Insert>Note menu:
+* Frontend News
 
-- the "LyX Note" is not exported to LaTeX, as now. The "Comment" is
-- exported to LaTeX as a comment environment and is not processed
-  further.
-- The Greyed Out note is visible in your PostScript or PDF output as,
-  well, greyed-out text.
+LyX 1.5 will use the Qt4 toolkit. This is especially good news for
+Windows users, since there's an official, GPL version of Qt4. They no
+longer have to rely on an unofficial port of the Unix Qt3 library to
+Windows.  The good old XForms frontend went the way of the dodo. It
+was both hated and loved, and certainly shaped the unique look of LyX
+in the past. It was finally killed off, however, by the switch to
+unicode.  The Qt3 frontend was removed.  The work on the GTK frontend
+has been transfered to a branch because its development has
+essentially stalled.
 
-** Better language and numbering on screen
+* Change tracking enhancements
 
-Two features help to make the screen rendering closer to the printed output:
+Major parts of the change tracking code were rewrote addressing
+several problems that existed in the existing implementation.
 
-- the labels attached to layouts like Chapter are now translated in
-  the language of the document, which may be different from the
-  language of the menus;
-- sectioning headers and theorems are now numbered according to the
-  document class specifications.
+* Converter file cache
 
-** Word count
+A cache for converted files, such as included figures, was
+implemented. This can speed up LyX's performance considerably when
+displaying documents with many included figures that need conversion
+to a format that can be rendered on screen.  The converter file cache
+is disabled by default, and there is no GUI for configuring it yet. If
+you want to use it, add the line
+ \use_converter_cache true
 
-Yes, it's finally there! Tools>Count Words will give you a word
-count of the document or of the current selection.
+to your preferences file. The default maximum age of a cached file is
+6 months. You can change that with the line
+ \converter_cache_maxage xxx
 
-** Error Lists
+where xxx is the maximum age in seconds. 
 
-Nasty "error boxes" were eliminated in favor of a dialog with a list
-of errors popping up at compilation time.
+* Under the hood
 
-** Improved bibliography support
-
-- LyX's support for natbib has been enhanced. Now, also the mysterious
-  "before citation" field is supported;
-- We have added support for jurabib, an amazing package to produce
-  flexible citations that are especially well suited for the humanities
-  and law fields;
-- Support for sectioned bibliographies (bibtopic) has been added;
-- the way bibtex is called is now customizable (as is the way the
-  index processor is invoked).
-
-** Improved microtypography support
-
-LyX aims to produce superior typography. With 1.4, it supports:
-
-- more blank characters (e.g. a "thin space", which should stand here
-  between "e." and "g.");
-- inner and outer quotation marks without the hassle of toggling the
-  style in the documents dialog. Just use the Alt key.
-- the handling of figure and table alignment inside floats has been
-  improved. You can now use the paragraph dialog without getting too
-  much space between figure/table and caption.
-
-** Small bits
-
-- Figure and table floats can be rotated sideways
-
-- The external xfig inset has been improved especially with regard to
-  pdf generation
-
-- The graphics inset dialog has now an "edit" button that allows to
-  edit the included figure
-
-- For index generation, xindy can be used instead of makeindex, which
-  has poor support for other than English index sorting.
+As usual, one big task has been the ongoing code cleanup of the LyX
+core. Performing this cleanup makes the code more understandable and
+easier to maintain. It also leads inevitably to a more robust
+application. Nonetheless, it's an unfortunate fact of life that ugly
+code is sometimes faster than pretty code. We're well aware that LyX
+1.4 is slower than LyX 1.3. One important goal of this 1.5 development
+series has been to bring this speed back.
 
 ** Bug fixes
 
 Lots of long-lasting bugs have been fixed, as documented in LyX
 bugzilla. Probably some new ones have been introduced instead ;-)
-
-

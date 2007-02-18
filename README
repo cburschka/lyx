@@ -27,7 +27,7 @@ What do I need to run LyX?
 
     Either of :
     * a Unix-like system (including Windows with cygwin)
-    * Windows 98 or newer
+    * Windows 2000 or newer
     * Mac OS 10.2 or newer
 
     A decent LaTeX2e installation (e.g. teTeX for unix) not older
@@ -42,10 +42,10 @@ How does the LyX version scheme work?
     are labeled with a "pre" suffix. Thus there are three possible
     file names:
 
-       lyx-1.4.0.tar.gz       -- stable release
-       lyx-1.4.5.tar.gz       -- fifth maintenance release of the
+       lyx-1.5.0.tar.gz       -- stable release
+       lyx-1.5.5.tar.gz       -- fifth maintenance release of the
                                  1.4 stable release
-       lyx-1.4.0pre1.tar.gz   -- potentially unstable test release
+       lyx-1.5.0pre1.tar.gz   -- potentially unstable test release
 
     The maintenance releases are designed primarily to fix bugs. The
     goal here is not to have parallel development as for the linux
@@ -59,10 +59,10 @@ How does the LyX version scheme work?
     If you get the source from Subversion, the version string will
     look like one of:
 
-       1.4.1svn     -- this is the stable branch on which maintenance
-               release 1.4.1 will eventually be tagged.
-       1.5.0svn     -- this is the main branch on which stable
-               release 1.5.0 will eventually be tagged.
+       1.5.1svn     -- this is the stable branch on which maintenance
+               release 1.5.1 will eventually be tagged.
+       1.6.0svn     -- this is the main branch on which stable
+               release 1.6.0 will eventually be tagged.
 
 What's new?
 
@@ -78,11 +78,7 @@ What do I need to compile LyX from the source distribution?
       gcc/g++, but some others work also. As of LyX 1.4.0, you need at
       least gcc 3.x.
 
-    * The Qt library, version 3.0 or newer.
-
-      Or:
-
-      The Qt4 library, version 4.1.1 or newer.
+    * The Qt4 library, version 4.1.1 or newer.
 
     Read the file "INSTALL" for more information on compiling.
 
@@ -104,6 +100,7 @@ Does LyX have support for non-English speakers/writers/readers?
     right-to-left languages like Arabic or Hebrew. There is a port
     of LyX named CJK-LyX which adds support for Chinese, Korean
     and Japanese (http://cellular.phys.pusan.ac.kr/cjk.html)
+    [This support is being merged in lyx-1.5]
 
     Menus and error messages have been translated to 17 languages.
     For the status of the different translations, see
