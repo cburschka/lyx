@@ -317,10 +317,9 @@ public:
 	//
 	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const & runparams,
-		  int const depth,
-		  bool onlydata, unsigned char delim) const;
+	void plaintext(Buffer const &, odocstream &,
+	               OutputParams const & runparams, int const depth,
+	               bool onlydata, unsigned char delim) const;
 	///
 	bool isMultiColumn(idx_type cell) const;
 	///
@@ -604,19 +603,19 @@ public:
 	int TeXRow(odocstream &, row_type const row, Buffer const & buf,
 		   OutputParams const &) const;
 	///
-	// helper functions for plain text return number of newlines
+	// helper functions for plain text
 	///
-	int plaintextTopHLine(odocstream &, row_type row,
-			std::vector<unsigned int> const &) const;
+	bool plaintextTopHLine(odocstream &, row_type row,
+	                       std::vector<unsigned int> const &) const;
 	///
-	int plaintextBottomHLine(odocstream &, row_type row,
-			std::vector<unsigned int> const &) const;
+	bool plaintextBottomHLine(odocstream &, row_type row,
+	                          std::vector<unsigned int> const &) const;
 	///
-	int plaintextPrintCell(Buffer const &, odocstream &,
-			OutputParams const &,
-			idx_type cell, row_type row, col_type column,
-			std::vector<unsigned int> const &,
-					   bool onlydata) const;
+	void plaintextPrintCell(Buffer const &, odocstream &,
+	                        OutputParams const &,
+	                        idx_type cell, row_type row, col_type column,
+	                        std::vector<unsigned int> const &,
+	                        bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(Buffer const & buf, odocstream & os, row_type,
 		       OutputParams const &) const;

@@ -2453,8 +2453,8 @@ int LyXTabular::docbook(Buffer const & buf, odocstream & os,
 }
 
 
-int LyXTabular::plaintextTopHLine(odocstream & os, row_type row,
-			      vector<unsigned int> const & clen) const
+bool LyXTabular::plaintextTopHLine(odocstream & os, row_type row,
+                                   vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
 	idx_type const n = numberOfCellsInRow(fcell) + fcell;
@@ -2467,7 +2467,7 @@ int LyXTabular::plaintextTopHLine(odocstream & os, row_type row,
 		}
 	}
 	if (!tmp)
-		return 0;
+		return false;
 
 	char_type ch;
 	for (idx_type i = fcell; i < n; ++i) {
@@ -2497,12 +2497,12 @@ int LyXTabular::plaintextTopHLine(odocstream & os, row_type row,
 		}
 	}
 	os << endl;
-	return 1;
+	return true;
 }
 
 
-int LyXTabular::plaintextBottomHLine(odocstream & os, row_type row,
-				 vector<unsigned int> const & clen) const
+bool LyXTabular::plaintextBottomHLine(odocstream & os, row_type row,
+                                      vector<unsigned int> const & clen) const
 {
 	idx_type const fcell = getFirstCellInRow(row);
 	idx_type const n = numberOfCellsInRow(fcell) + fcell;
@@ -2515,7 +2515,7 @@ int LyXTabular::plaintextBottomHLine(odocstream & os, row_type row,
 		}
 	}
 	if (!tmp)
-		return 0;
+		return false;
 
 	char_type ch;
 	for (idx_type i = fcell; i < n; ++i) {
@@ -2545,22 +2545,22 @@ int LyXTabular::plaintextBottomHLine(odocstream & os, row_type row,
 		}
 	}
 	os << endl;
-	return 1;
+	return true;
 }
 
 
-int LyXTabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
+void LyXTabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
 			       OutputParams const & runparams,
 			       idx_type cell, row_type row, col_type column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
 {
 	odocstringstream sstr;
-	int const ret = getCellInset(cell)->plaintext(buf, sstr, runparams);
+	getCellInset(cell)->plaintext(buf, sstr, runparams);
 
 	if (onlydata) {
 		os << sstr.str();
-		return ret;
+		return;
 	}
 
 	if (leftLine(cell))
@@ -2597,18 +2597,13 @@ int LyXTabular::plaintextPrintCell(Buffer const & buf, odocstream & os,
 		os << " |";
 	else
 		os << "  ";
-
-	return ret;
 }
 
 
-int LyXTabular::plaintext(Buffer const & buf, odocstream & os,
-		      OutputParams const & runparams,
-		      int const depth,
-		      bool onlydata, unsigned char delim) const
+void LyXTabular::plaintext(Buffer const & buf, odocstream & os,
+                           OutputParams const & runparams, int const depth,
+                           bool onlydata, unsigned char delim) const
 {
-	int ret = 0;
-
 	// first calculate the width of the single columns
 	vector<unsigned int> clen(columns_);
 
@@ -2652,8 +2647,8 @@ int LyXTabular::plaintext(Buffer const & buf, odocstream & os,
 				continue;
 			if (onlydata && j > 0)
 				os << delim;
-			ret += plaintextPrintCell(buf, os, runparams,
-					      cell, i, j, clen, onlydata);
+			plaintextPrintCell(buf, os, runparams,
+			                   cell, i, j, clen, onlydata);
 			++cell;
 		}
 		os << endl;
@@ -2663,7 +2658,6 @@ int LyXTabular::plaintext(Buffer const & buf, odocstream & os,
 				os << docstring(depth * 2, ' ');
 		}
 	}
-	return ret;
 }
 
 
