@@ -674,7 +674,7 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 
 
 int InsetExternal::latex(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+                         OutputParams const & runparams) const
 {
 	if (params_.draft) {
 		// FIXME UNICODE
@@ -720,16 +720,18 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
-			 OutputParams const & runparams) const
+                             OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "Ascii", buf, os,
-				       *(runparams.exportdata), false,
-	                               runparams.dryrun || runparams.inComment);
+	os << '\n'; // output external material on a new line
+	external::writeExternal(params_, "Ascii", buf, os,
+	                        *(runparams.exportdata), false,
+	                        runparams.dryrun || runparams.inComment);
+	return runparams.linelen; // start with column 0 in new line
 }
 
 
 int InsetExternal::docbook(Buffer const & buf, odocstream & os,
-			   OutputParams const & runparams) const
+                           OutputParams const & runparams) const
 {
 	return external::writeExternal(params_, "DocBook", buf, os,
 				       *(runparams.exportdata), false,

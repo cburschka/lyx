@@ -125,14 +125,14 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex);
 
 	/// \returns the number of rows (\n's) of generated code.
-	virtual int latex(Buffer const &, odocstream &,
-			  OutputParams const &) const;
+	int latex(Buffer const &, odocstream &,
+	          OutputParams const &) const;
 	///
-	virtual int plaintext(Buffer const &, odocstream &,
-			  OutputParams const &) const;
+	int plaintext(Buffer const &, odocstream &,
+	              OutputParams const &) const;
 	///
-	virtual int docbook(Buffer const &, odocstream &,
-			    OutputParams const &) const;
+	int docbook(Buffer const &, odocstream &,
+	            OutputParams const &) const;
 
 	/// Update needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;
