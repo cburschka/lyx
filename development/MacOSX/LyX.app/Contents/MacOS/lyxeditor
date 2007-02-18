@@ -1,16 +1,91 @@
 #!/bin/sh
 # ron@18james.com, 11 Dec 2003
-# With modifications by Bennett Helm
+# With modifications by Angus Leeming, tweaked by Bennett Helm 21 Jan 2007
 
-lyxpipe=/Users/$USER/Library/Application\ Support/LyX/.lyxpipe
-if  [ ! -p $lyxpipe.out ]
-  then
-    lyxprefs=`expr "$0" : '\(.*\)MacOS/lyxeditor'`lyx/preferences
-    lyxpipe=`perl -n -e 'print,exit if s/^.serverpipe\\s+\"(.+)\"/$1/;' ~/Library/Application\ Support/LyX/preferences $lyxprefs`
-fi
-[ -p $lyxpipe.in ] || exit 0
+parse_serverpipe()
+{
+        test -r "$1" || {
+                echo "Usage: parse_serverpipe lyxrc" >&2
+                exit 1
+        }
+
+        # The output of this sed script is output to STDOUT
+        LYXPIPE=`sed -n '/^\\\\serverpipe /{
+# First consider that the file path may be quoted
+s/^ *\\\\serverpipe \{1,\}\"\([^"]\{1,\}\)\" *$/\1/
+tfound
+
+# Now, unquoted
+s/^ *\\\\serverpipe \{1,\}\(.*\)/\1/
+s/ *$//
+
+:found
+# Change from single to double shell quoting temporarily...
+'"
+s@^~/@${HOME}/@
+# Revert to single shell quotes
+"'
+
+p
+q
+}' "$1"`
+
+        echo "${LYXPIPE}"
+        unset LYXPIPE
+}
+
+
+USER_SUPPORT="${HOME}/Library/Application Support"
+test -d "${USER_SUPPORT}" || {
+	echo "Something horrible is going on. No user support directory $ {USER_SUPPORT}" >&2 
+	exit 1
+}
+
+for LYXDIR in LyX-1.5 LyX-1.4 LyX
+do
+	ABS_USER_LYXDIR="${USER_SUPPORT}/${LYXDIR}"
+	test -d "${ABS_USER_LYXDIR}" || {
+		echo "Failed to find ABS_USER_LYXDIR: ${ABS_USER_LYXDIR}" >&2
+		continue
+	}
+	PREFERENCES="${ABS_USER_LYXDIR}/preferences"
+	test -r "${PREFERENCES}" || {
+		echo "Failed to find PREFERENCES: ${PREFERENCES}" >&2
+		continue
+	}
+	# preferences file exists.
+	# See if it contains a \\serverpipe entry
+	# Whether it does or not, break out of the loop because we've
+	# found the preferences file.
+	LYXPIPE=`parse_serverpipe "${PREFERENCES}"`
+	break
+done
+
+echo "preferences file sets lyxpipe as ${LYXPIPE}"
+
+test -z "${LYXPIPE}" && {
+	ABS_SYSTEM_LYXDIR='/Applications/LyX.app/Contents/Resources'
+	test -d "${ABS_SYSTEM_LYXDIR}" || {
+                echo "Failed to find ABS_SYSTEM_LYXDIR: ${ABS_SYSTEM_LYXDIR}" >&2
+                exit 1
+        }
+        LYXRC_DIST="${ABS_SYSTEM_LYXDIR}/lyxrc.dist"
+        test -r "${LYXRC_DIST}" || {
+                echo "Failed to find LYXRC_DIST: ${LYXRC_DIST}" >&2
+                exit 1
+        }
+
+	# lyxrc.dist exists
+	# See if it contains a \\serverpipe entry
+	LYXPIPE=`parse_serverpipe "${LYXRC_DIST}"`
+}
+
+echo "Our best guess sets lyxpipe as ${LYXPIPE}"
+
+# The end
+
 file=`echo "$1" | sed 's|^/private||'`
-echo LYXCMD:macdvix:server-goto-file-row:$file $2 > $lyxpipe.in || exit
-read < $lyxpipe.out || exit
 
-
+echo "LYXCMD:macdvix:server-goto-file-row:"$file" $2"
+echo LYXCMD:macdvix:server-goto-file-row:"$file" $2 > "${LYXPIPE}".in || exit
+read < "${LYXPIPE}".out || exit
