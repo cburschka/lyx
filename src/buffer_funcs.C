@@ -550,7 +550,7 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 	} else if (layout->labeltype == LABEL_SENSITIVE) {
 		// Search for the first float or wrap inset in the iterator
 		size_t i = it.depth();
-		InsetBase * in;
+		InsetBase * in = 0;
 		while (i > 0) {
 			--i;
 			in = &it[i].inset();
@@ -558,7 +558,9 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 			    || in->lyxCode() == InsetBase::WRAP_CODE)
 				break;
 		}
-		docstring const & type = in->getInsetName();
+		docstring type;
+		if (in)
+			type = in->getInsetName();
 
 		if (!type.empty()) {
 			Floating const & fl = textclass.floats().getType(to_ascii(type));
