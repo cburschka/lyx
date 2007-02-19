@@ -14,9 +14,6 @@
 
 #include "support/filename.h"
 
-
-namespace lyx {
-
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
@@ -24,6 +21,9 @@ namespace lyx {
 #ifdef _WIN32
 # include <windows.h>
 #endif
+
+
+namespace lyx {
 
 int support::chdir(FileName const & name)
 {
