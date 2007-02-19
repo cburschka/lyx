@@ -331,7 +331,9 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 void putClipboard(ParagraphList const & paragraphs, textclass_type textclass,
                   docstring const & plaintext)
 {
-	Buffer buffer(string(), false);
+	// For some strange reason gcc 3.2 and 3.3 do not accept
+	// Buffer buffer(string(), false);
+	Buffer buffer("", false);
 	buffer.setUnnamed(true);
 	buffer.paragraphs() = paragraphs;
 	buffer.params().textclass = textclass;
@@ -728,7 +730,9 @@ void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
 	if (theClipboard().hasLyXContents()) {
 		string lyx = theClipboard().getAsLyX();
 		if (!lyx.empty()) {
-			Buffer buffer(string(), false);
+			// For some strange reason gcc 3.2 and 3.3 do not accept
+			// Buffer buffer(string(), false);
+			Buffer buffer("", false);
 			buffer.setUnnamed(true);
 			if (buffer.readString(lyx)) {
 				recordUndo(cur);
