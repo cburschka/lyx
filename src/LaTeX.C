@@ -890,14 +890,20 @@ void LaTeX::deplog(DepTable & head)
 		// We care for that and save suspicious lines.
 		// Here we exclude some cases where we are sure 
 		// that there is no continued filename
-		if (prefixIs(token, "File:") || prefixIs(token, "(Font)")
-		    || prefixIs(token, "Package:")
-		    || prefixIs(token, "Language:")
-		    || prefixIs(token, "LaTeX Info:")
-		    || prefixIs(token, "LaTeX Font Info:")
-		    || prefixIs(token, "\\openout[")
-		    || prefixIs(token, "))"))
-			lastline = string();
+		if (!lastline.empty()) {
+			static regex package_info("Package \\w+ Info: .*");
+			static regex package_warning("Package \\w+ Warning: .*");
+			if (prefixIs(token, "File:") || prefixIs(token, "(Font)")
+			|| prefixIs(token, "Package:")
+			|| prefixIs(token, "Language:")
+			|| prefixIs(token, "LaTeX Info:")
+			|| prefixIs(token, "LaTeX Font Info:")
+			|| prefixIs(token, "\\openout[")
+			|| prefixIs(token, "))")
+			|| regex_match(token, package_info)
+			|| regex_match(token, package_warning))
+				lastline = string();
+		}
 
 		if (!lastline.empty())
 			// probably a continued filename from last line
