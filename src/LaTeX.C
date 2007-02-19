@@ -891,9 +891,10 @@ void LaTeX::deplog(DepTable & head)
 		// Here we exclude some cases where we are sure 
 		// that there is no continued filename
 		if (prefixIs(token, "File:") || prefixIs(token, "(Font)")
-		    || prefixIs(token, "Package:") 
+		    || prefixIs(token, "Package:")
 		    || prefixIs(token, "Language:")
-		    || prefixIs(token, "LaTeX Font Info:") 
+		    || prefixIs(token, "LaTeX Info:")
+		    || prefixIs(token, "LaTeX Font Info:")
 		    || prefixIs(token, "\\openout[")
 		    || prefixIs(token, "))"))
 			lastline = string();
