@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-01-31 20:06+0100\n"
+"POT-Creation-Date: 2007-02-19 22:04+0000\n"
 "PO-Revision-Date: 2006-09-18 16:03+0200\n"
 "Last-Translator: Kostantino <ciclope10ATalice.it>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -123,7 +123,7 @@ msgstr "Dimen&sione:"
 #: src/frontends/controllers/ControlDocument.C:49
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:199 src/lyxfont.C:519
+#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:519
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Predefinito"
@@ -482,9 +482,9 @@ msgstr "&Fittizio"
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:702
-#: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:85
+#: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:82
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
-#: src/frontends/qt4/ui/QNomenclUi.ui:98 src/frontends/qt4/ui/QNoteUi.ui:31
+#: src/frontends/qt4/ui/QNomenclUi.ui:95 src/frontends/qt4/ui/QNoteUi.ui:31
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
 #: src/frontends/qt4/ui/QSendtoUi.ui:75
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:68
@@ -495,10 +495,10 @@ msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
 #: src/frontends/qt4/ui/QCitationUi.ui:124
-#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:100
-#: src/buffer_funcs.C:127 src/buffer_funcs.C:168 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:728
-#: src/lyxfunc.C:901 src/lyxfunc.C:2016 src/lyxvc.C:175
+#: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
+#: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
+#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Cancella"
 
@@ -525,9 +525,9 @@ msgstr "LyX: aggiungi un database BibTeX"
 
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:83
 #: src/frontends/qt4/ui/QBibtexUi.ui:229 src/frontends/qt4/ui/QChangesUi.ui:78
-#: src/frontends/qt4/ui/QIndexUi.ui:95 src/frontends/qt4/ui/QNomenclUi.ui:111
+#: src/frontends/qt4/ui/QIndexUi.ui:92 src/frontends/qt4/ui/QNomenclUi.ui:108
 #: src/frontends/qt4/ui/QSendtoUi.ui:95 src/BufferView.C:259
-#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:844
+#: src/frontends/qt4/Qt2BC.h:36 src/lyxfunc.C:849
 msgid "Cancel"
 msgstr "Cancella"
 
@@ -814,7 +814,7 @@ msgstr "Serie carattere"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:114
 #: src/frontends/qt4/ui/QCharacterUi.ui:160
-#: src/frontends/qt4/QDocumentDialog.C:390
+#: src/frontends/qt4/QDocumentDialog.C:391
 #: src/frontends/qt4/QPrefsDialog.C:1457
 msgid "Language"
 msgstr "Lingua"
@@ -1549,17 +1549,17 @@ msgstr "Inserisci matrice"
 msgid "Show delimiter and bracket dialog"
 msgstr "Mostra finestra delimitarore e parentesi"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:37
+#: src/frontends/qt4/ui/QNomenclUi.ui:34
 #, fuzzy
 msgid "Sort &as:"
 msgstr "Strasse:"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:47
+#: src/frontends/qt4/ui/QNomenclUi.ui:44
 #, fuzzy
 msgid "&Description:"
 msgstr "Descrizione"
 
-#: src/frontends/qt4/ui/QNomenclUi.ui:57
+#: src/frontends/qt4/ui/QNomenclUi.ui:54
 #, fuzzy
 msgid "&Symbol:"
 msgstr "Simbolo"
@@ -1612,7 +1612,7 @@ msgid "&Shaded"
 msgstr "&Salva"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:113 src/text.C:1692
+#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1686
 msgid "Single"
 msgstr "Singolo"
 
@@ -1621,7 +1621,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1698
+#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1692
 msgid "Double"
 msgstr "Doppio"
 
@@ -1630,8 +1630,8 @@ msgstr "Doppio"
 #: src/frontends/qt4/ui/QTabularUi.ui:731
 #: src/frontends/qt4/ui/QTabularUi.ui:779
 #: src/frontends/qt4/ui/QVSpaceUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:119
-#: src/frontends/qt4/QDocumentDialog.C:200
+#: src/frontends/qt4/QDocumentDialog.C:120
+#: src/frontends/qt4/QDocumentDialog.C:201
 msgid "Custom"
 msgstr "Personalizzato"
 
@@ -1909,37 +1909,37 @@ msgid "Te&X encoding:"
 msgstr "Codifica Te&X:"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:201
+#: src/frontends/qt4/QDocumentDialog.C:202
 msgid "US letter"
 msgstr "Lettera US"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:202
+#: src/frontends/qt4/QDocumentDialog.C:203
 msgid "US legal"
 msgstr "Legale US"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:203
+#: src/frontends/qt4/QDocumentDialog.C:204
 msgid "US executive"
 msgstr "Esecutivo US"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:204
+#: src/frontends/qt4/QDocumentDialog.C:205
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:205
+#: src/frontends/qt4/QDocumentDialog.C:206
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:206
+#: src/frontends/qt4/QDocumentDialog.C:207
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:209
+#: src/frontends/qt4/QDocumentDialog.C:210
 msgid "B5"
 msgstr "B5"
 
@@ -2298,7 +2298,7 @@ msgid "&Maximum last files:"
 msgstr "&Massimo numero di ultimi file:"
 
 #: src/frontends/qt4/ui/QPrefsUi.ui:76 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyxfunc.C:727
+#: src/bufferlist.C:222 src/lyxfunc.C:732
 msgid "&Save"
 msgstr "&Salva"
 
@@ -2914,17 +2914,17 @@ msgid "DefSkip"
 msgstr "Salto predefinito"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:106
+#: src/frontends/qt4/QDocumentDialog.C:107
 msgid "SmallSkip"
 msgstr "Salto piccolo"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:107
+#: src/frontends/qt4/QDocumentDialog.C:108
 msgid "MedSkip"
 msgstr "Salto medio"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:108
+#: src/frontends/qt4/QDocumentDialog.C:109
 msgid "BigSkip"
 msgstr "Salto grande"
 
@@ -3006,7 +3006,7 @@ msgstr "Documento su due &colonne"
 #: lib/layouts/db_stdclass.inc:22 lib/layouts/scrclass.inc:15
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
-#: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:150
+#: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
 #: src/mathed/InsetMathRef.C:183
 msgid "Standard"
 msgstr "Standard"
@@ -3151,7 +3151,7 @@ msgstr "Definizione #:"
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:314
+#: src/frontends/qt4/QDocumentDialog.C:315
 msgid "Example"
 msgstr "Esempio"
 
@@ -3391,7 +3391,7 @@ msgstr "Voci d'indice---"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:392
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:393
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -4045,7 +4045,7 @@ msgid "Seriate"
 msgstr "In successione"
 
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
-#: src/buffer_funcs.C:517
+#: src/buffer_funcs.C:525
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
@@ -7918,18 +7918,18 @@ msgid "Redo|R"
 msgstr "Rifai|R"
 
 #: lib/ui/stdmenus.inc:87 lib/ui/stdtoolbars.inc:51
-#: src/mathed/InsetMathNest.C:460 src/text3.C:780
+#: src/mathed/InsetMathNest.C:460 src/text3.C:824
 msgid "Cut"
 msgstr "Taglia"
 
 #: lib/ui/stdmenus.inc:88 lib/ui/stdtoolbars.inc:52
-#: src/mathed/InsetMathNest.C:468 src/text3.C:785
+#: src/mathed/InsetMathNest.C:468 src/text3.C:829
 msgid "Copy"
 msgstr "Copia"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
-#: src/mathed/InsetMathGrid.C:1212 src/mathed/InsetMathNest.C:439
-#: src/text3.C:761
+#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:439
+#: src/text3.C:805
 msgid "Paste"
 msgstr "Incolla"
 
@@ -8469,11 +8469,11 @@ msgstr "Salva documento"
 msgid "Print document"
 msgstr "Stampa documento"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:740
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:739
 msgid "Undo"
 msgstr "Annulla"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:750
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:749
 msgid "Redo"
 msgstr "Rifai"
 
@@ -8820,11 +8820,11 @@ msgstr ""
 "\n"
 "Vuoi tornare alla versione salvata?"
 
-#: src/BufferView.C:232 src/lyxfunc.C:900
+#: src/BufferView.C:232 src/lyxfunc.C:905
 msgid "Revert to saved document?"
 msgstr "Ritorno all'ultimo salvataggio?"
 
-#: src/BufferView.C:233 src/lyxfunc.C:901 src/lyxvc.C:175
+#: src/BufferView.C:233 src/lyxfunc.C:906 src/lyxvc.C:175
 msgid "&Revert"
 msgstr "&Ritorna"
 
@@ -8856,90 +8856,90 @@ msgstr "&Crea"
 msgid "Save bookmark"
 msgstr "Salva segnalibro 5"
 
-#: src/BufferView.C:743
+#: src/BufferView.C:742
 msgid "No further undo information"
 msgstr "Nessun altra operazione da annullare"
 
-#: src/BufferView.C:753
+#: src/BufferView.C:752
 msgid "No further redo information"
 msgstr "Nessun altra operazione da rifare"
 
-#: src/BufferView.C:912
+#: src/BufferView.C:910
 msgid "Mark off"
 msgstr "Evidenziazione disattivata"
 
-#: src/BufferView.C:919
+#: src/BufferView.C:917
 msgid "Mark on"
 msgstr "Evidenziazione attivata"
 
-#: src/BufferView.C:926
+#: src/BufferView.C:924
 msgid "Mark removed"
 msgstr "L'evidenziazione è stato rimossa"
 
-#: src/BufferView.C:929
+#: src/BufferView.C:927
 msgid "Mark set"
 msgstr "L'evidenziazione è stato impostata"
 
-#: src/BufferView.C:975
+#: src/BufferView.C:973
 #, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d parole nella selezione."
 
-#: src/BufferView.C:978
+#: src/BufferView.C:976
 #, c-format
 msgid "%1$d words in document."
 msgstr "%1$d parole nel documento."
 
-#: src/BufferView.C:983
+#: src/BufferView.C:981
 msgid "One word in selection."
 msgstr "Una sola parola nella selezione."
 
-#: src/BufferView.C:985
+#: src/BufferView.C:983
 msgid "One word in document."
 msgstr "Una sola parola nel documento "
 
-#: src/BufferView.C:988
+#: src/BufferView.C:986
 msgid "Count words"
 msgstr "Conta parole"
 
-#: src/BufferView.C:1527
+#: src/BufferView.C:1511
 msgid "Select LyX document to insert"
 msgstr "Scegli il documento LyX da inserire"
 
-#: src/BufferView.C:1529 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1513 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
-#: src/lyxfunc.C:1857 src/lyxfunc.C:1894 src/lyxfunc.C:1967
+#: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 msgid "Documents|#o#O"
 msgstr "Documenti|#o#O"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1895 src/lyxfunc.C:1968
+#: src/BufferView.C:1514 src/lyxfunc.C:1909 src/lyxfunc.C:1982
 msgid "Examples|#E#e"
 msgstr "Esempi|#E#e"
 
-#: src/BufferView.C:1534 src/lyx_cb.C:140 src/lyxfunc.C:1862
-#: src/lyxfunc.C:1899
+#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/lyxfunc.C:1913
 msgid "LyX Documents (*.lyx)"
 msgstr "Documenti LyX (*.lyx)"
 
-#: src/BufferView.C:1546 src/lyxfunc.C:1909 src/lyxfunc.C:1989
-#: src/lyxfunc.C:2003 src/lyxfunc.C:2019
+#: src/BufferView.C:1530 src/lyxfunc.C:1923 src/lyxfunc.C:2003
+#: src/lyxfunc.C:2017 src/lyxfunc.C:2033
 msgid "Canceled."
 msgstr "Cancellato."
 
-#: src/BufferView.C:1557
+#: src/BufferView.C:1541
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Sto inserendo il documento %1$s..."
 
-#: src/BufferView.C:1568
+#: src/BufferView.C:1552
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "E' stato inserito il documento %1$s"
 
-#: src/BufferView.C:1570
+#: src/BufferView.C:1554
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Non riesco ad inserire il documento %1$s"
@@ -8953,7 +8953,7 @@ msgstr "Identificativo dell'avviso di ChkTeX numero %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Identificativo dell'avviso di ChkTeX numero"
 
-#: src/CutAndPaste.C:423
+#: src/CutAndPaste.C:433
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -8966,11 +8966,11 @@ msgstr ""
 "a causa della conversione della classe da\n"
 "%3$s a %4$s"
 
-#: src/CutAndPaste.C:428
+#: src/CutAndPaste.C:438
 msgid "Changed Layout"
 msgstr "Struttura modificata"
 
-#: src/CutAndPaste.C:447
+#: src/CutAndPaste.C:457
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -8980,7 +8980,7 @@ msgstr ""
 "classe da\n"
 "%2$s a %3$s"
 
-#: src/CutAndPaste.C:454
+#: src/CutAndPaste.C:464
 msgid "Undefined character style"
 msgstr "Stile carattere indefinito"
 
@@ -9044,7 +9044,7 @@ msgstr "Testo di LaTeX"
 msgid "previewed snippet"
 msgstr "porzioni di anteprima"
 
-#: src/LColor.C:110
+#: src/LColor.C:110 src/insets/insetnote.C:310
 msgid "note"
 msgstr "nota"
 
@@ -9211,49 +9211,49 @@ msgstr "eredità"
 msgid "ignore"
 msgstr "ignora"
 
-#: src/LaTeX.C:92
+#: src/LaTeX.C:93
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "In attesa del lancio di LaTeX numero %1$d"
 
-#: src/LaTeX.C:289 src/LaTeX.C:365
+#: src/LaTeX.C:290 src/LaTeX.C:366
 msgid "Running MakeIndex."
 msgstr "MakeIndex è in esecuzione."
 
-#: src/LaTeX.C:295 src/LaTeX.C:373
+#: src/LaTeX.C:296 src/LaTeX.C:374
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex è in esecuzione."
 
-#: src/LaTeX.C:309
+#: src/LaTeX.C:310
 msgid "Running BibTeX."
 msgstr "BibTeX è in esecuzione."
 
-#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:572
-#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
+#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:574
+#: src/MenuBackend.C:596 src/MenuBackend.C:619 src/MenuBackend.C:705
 msgid "No Documents Open!"
 msgstr "Non è stato aperto alcun documento!"
 
-#: src/MenuBackend.C:540
+#: src/MenuBackend.C:542
 #, fuzzy
 msgid "Plain Text"
 msgstr "Testo semplice"
 
-#: src/MenuBackend.C:542
+#: src/MenuBackend.C:544
 #, fuzzy
 msgid "Plain Text, Join Lines"
 msgstr "Testo semplice come linee"
 
-#: src/MenuBackend.C:714
+#: src/MenuBackend.C:716
 #, fuzzy
 msgid "Master Document"
 msgstr "Salva documento"
 
-#: src/MenuBackend.C:746
+#: src/MenuBackend.C:748
 msgid "No Table of contents"
 msgstr "Nessun indice generale"
 
-#: src/MenuBackend.C:791
+#: src/MenuBackend.C:793
 msgid " (auto)"
 msgstr ""
 
@@ -9281,7 +9281,7 @@ msgstr ""
 "Uso la classe prestabilita del documento, perchè la classe %1$s è "
 "sconosciuta."
 
-#: src/buffer.C:459 src/text.C:298
+#: src/buffer.C:459 src/text.C:292
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Simbolo sconosciuto: %1$s %2$s\n"
@@ -9424,7 +9424,7 @@ msgstr "chktex ha fallito"
 msgid "Could not run chktex successfully."
 msgstr "Chktex è stato eseguito con successo"
 
-#: src/buffer_funcs.C:80
+#: src/buffer_funcs.C:81
 #, c-format
 msgid ""
 "The specified document\n"
@@ -9435,11 +9435,11 @@ msgstr ""
 "%1$s\n"
 "potrebbe non essere letto."
 
-#: src/buffer_funcs.C:82
+#: src/buffer_funcs.C:83
 msgid "Could not read document"
 msgstr "Non riesco a leggere il documento "
 
-#: src/buffer_funcs.C:95
+#: src/buffer_funcs.C:96
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -9450,19 +9450,19 @@ msgstr ""
 "\n"
 "Recupero il salvataggio di emergenza?"
 
-#: src/buffer_funcs.C:98
+#: src/buffer_funcs.C:99
 msgid "Load emergency save?"
 msgstr "Carico il salvataggio di emergenza?"
 
-#: src/buffer_funcs.C:99
+#: src/buffer_funcs.C:100
 msgid "&Recover"
 msgstr "&Recupera"
 
-#: src/buffer_funcs.C:99
+#: src/buffer_funcs.C:100
 msgid "&Load Original"
 msgstr "&Carica originale"
 
-#: src/buffer_funcs.C:122
+#: src/buffer_funcs.C:123
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -9473,32 +9473,32 @@ msgstr ""
 "\n"
 "Carico il backup invece?"
 
-#: src/buffer_funcs.C:125
+#: src/buffer_funcs.C:126
 msgid "Load backup?"
 msgstr "Carico la copia di backup?"
 
-#: src/buffer_funcs.C:126
+#: src/buffer_funcs.C:127
 msgid "&Load backup"
 msgstr "&Carica copia di backup"
 
-#: src/buffer_funcs.C:126
+#: src/buffer_funcs.C:127
 msgid "Load &original"
 msgstr "Carica &originale"
 
-#: src/buffer_funcs.C:165
+#: src/buffer_funcs.C:166
 #, c-format
 msgid "Do you want to retrieve the document %1$s from version control?"
 msgstr "Vuoi recuperare il documento %1$s dal controllo di versione?"
 
-#: src/buffer_funcs.C:167
+#: src/buffer_funcs.C:168
 msgid "Retrieve from version control?"
 msgstr "Vuoi recuperare il documento mediante il controllo di versione?"
 
-#: src/buffer_funcs.C:168
+#: src/buffer_funcs.C:169
 msgid "&Retrieve"
 msgstr "&Ripristina"
 
-#: src/buffer_funcs.C:201
+#: src/buffer_funcs.C:202
 #, c-format
 msgid ""
 "The specified document template\n"
@@ -9509,19 +9509,19 @@ msgstr ""
 "%1$s\n"
 "non può essere letto."
 
-#: src/buffer_funcs.C:203
+#: src/buffer_funcs.C:204
 msgid "Could not read template"
 msgstr "Non posso leggere il modello"
 
-#: src/buffer_funcs.C:514
+#: src/buffer_funcs.C:522
 msgid "\\arabic{enumi}."
 msgstr "\\arabic{enumi}."
 
-#: src/buffer_funcs.C:520
+#: src/buffer_funcs.C:528
 msgid "\\roman{enumiii}."
 msgstr "\\roman{enumiii}."
 
-#: src/buffer_funcs.C:523
+#: src/buffer_funcs.C:531
 msgid "\\Alph{enumiv}."
 msgstr "\\Alph{enumiv}."
 
@@ -9536,7 +9536,7 @@ msgstr ""
 "\n"
 "Vuoi salvare il documento o abbandonare le modifiche?"
 
-#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:726
+#: src/bufferlist.C:113 src/bufferlist.C:221 src/lyxfunc.C:731
 msgid "Save changed document?"
 msgstr "Salvo il documento modificato?"
 
@@ -9544,20 +9544,20 @@ msgstr "Salvo il documento modificato?"
 msgid "&Discard"
 msgstr "&Abbandona"
 
-#: src/bufferlist.C:350
+#: src/bufferlist.C:348
 #, c-format
 msgid "LyX: Attempting to save document %1$s"
 msgstr "LyX: sto tentando di salvare il documento %1$s"
 
-#: src/bufferlist.C:361 src/bufferlist.C:374 src/bufferlist.C:388
+#: src/bufferlist.C:359 src/bufferlist.C:372 src/bufferlist.C:386
 msgid "  Save seems successful. Phew."
 msgstr "  Il salvataggio sembra aver avuto successo. Meno male!"
 
-#: src/bufferlist.C:364 src/bufferlist.C:378
+#: src/bufferlist.C:362 src/bufferlist.C:376
 msgid "  Save failed! Trying..."
 msgstr "  Il salvataggio è fallito! Sto provando..."
 
-#: src/bufferlist.C:391
+#: src/bufferlist.C:389
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Il salvataggio è fallito! Accidenti! Il documento è perso!"
 
@@ -9766,7 +9766,7 @@ msgstr "Modello esterno/inserisci messaggi"
 msgid "RowPainter profiling"
 msgstr "Creazione profilo RowPainter"
 
-#: src/exporter.C:82
+#: src/exporter.C:82 src/lyxfunc.C:1066
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -9777,11 +9777,11 @@ msgstr ""
 "\n"
 "Vuoi davvero sovrascriverlo?"
 
-#: src/exporter.C:85
+#: src/exporter.C:85 src/lyxfunc.C:1069
 msgid "Over-write file?"
 msgstr "Sovrascrivo il file?"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:2016
+#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 msgid "&Over-write"
 msgstr "&Sovrascrivi"
 
@@ -9802,33 +9802,33 @@ msgstr "Non ho potuto copiare il file"
 msgid "Copying %1$s to %2$s failed."
 msgstr "E' fallita la copia di %1$s su %2$s."
 
-#: src/exporter.C:177
+#: src/exporter.C:170
 msgid "Couldn't export file"
 msgstr "Non posso esportare il file"
 
-#: src/exporter.C:178
+#: src/exporter.C:171
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Nessuna informazione per esportare il formato %1$s."
 
-#: src/exporter.C:212
+#: src/exporter.C:205
 msgid "File name error"
 msgstr "Errore sul nome del file"
 
-#: src/exporter.C:213
+#: src/exporter.C:206
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Il percorso della cartella al documento non può contenere spazi."
 
-#: src/exporter.C:252
+#: src/exporter.C:245
 msgid "Document export cancelled."
 msgstr "L'esportazione del documento è stata cancellata."
 
-#: src/exporter.C:258
+#: src/exporter.C:251
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Il documento è stato esportato come %1$s sul file `%2$s'"
 
-#: src/exporter.C:264
+#: src/exporter.C:257
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Il documento è stato esportato come %1$s"
@@ -9874,7 +9874,7 @@ msgstr " (modificato)"
 msgid " (read only)"
 msgstr " (sola lettura)"
 
-#: src/frontends/WorkArea.C:239
+#: src/frontends/WorkArea.C:243
 msgid "Formatting document..."
 msgstr "Formattazione del documento..."
 
@@ -10127,11 +10127,16 @@ msgstr "Scegli mappa di tastiera"
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Mappa di tastiera di LyX (*.kmap)"
 
-#: src/frontends/controllers/ControlPrefs.C:136
+#: src/frontends/controllers/ControlPrefs.C:137
+#: src/frontends/controllers/ControlPrefs.C:141
 msgid "Choose personal dictionary"
 msgstr "Scegli dizionario personale"
 
-#: src/frontends/controllers/ControlPrefs.C:137
+#: src/frontends/controllers/ControlPrefs.C:138
+msgid "*.pws"
+msgstr ""
+
+#: src/frontends/controllers/ControlPrefs.C:142
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -10180,7 +10185,7 @@ msgstr "E' stata controllata una sola parola."
 msgid "Spelling check completed"
 msgstr "Il controllo ortografico è completo"
 
-#: src/frontends/controllers/ControlToc.C:99 src/insets/insettoc.C:45
+#: src/frontends/controllers/ControlToc.C:99 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Indice generale"
 
@@ -10363,23 +10368,23 @@ msgstr "Etichetta"
 msgid "Directories"
 msgstr "Cartelle"
 
-#: src/frontends/qt4/GuiView.C:126
+#: src/frontends/qt4/GuiView.C:133
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:132
+#: src/frontends/qt4/GuiView.C:139
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:146
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:669
+#: src/frontends/qt4/GuiView.C:617
 msgid "LyX"
 msgstr "LyX"
 
-#: src/frontends/qt4/GuiWorkArea.C:455
+#: src/frontends/qt4/GuiWorkArea.C:462
 #, fuzzy
 msgid "unknown version"
 msgstr "Azione sconosciuta"
@@ -10410,19 +10415,19 @@ msgid "Activated"
 msgstr "Attivato"
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:618
+#: src/frontends/qt4/QDocumentDialog.C:619
 msgid "Yes"
 msgstr "Sì"
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:617
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:618
 msgid "No"
 msgstr "No"
 
-#: src/frontends/qt4/QChanges.C:36
+#: src/frontends/qt4/QChanges.C:35
 msgid "Merge Changes"
 msgstr "Unisci modifiche"
 
-#: src/frontends/qt4/QChanges.C:66
+#: src/frontends/qt4/QChanges.C:57
 #, c-format
 msgid ""
 "Change by %1$s\n"
@@ -10431,7 +10436,7 @@ msgstr ""
 "Modificato da %1$s\n"
 "\n"
 
-#: src/frontends/qt4/QChanges.C:68
+#: src/frontends/qt4/QChanges.C:59
 #, c-format
 msgid "Change made at %1$s\n"
 msgstr "Modifica eseguita a  %1$s\n"
@@ -10483,156 +10488,156 @@ msgstr "linea tabellare"
 msgid "Document Settings"
 msgstr "Impostazioni documento"
 
-#: src/frontends/qt4/QDocumentDialog.C:109
+#: src/frontends/qt4/QDocumentDialog.C:110
 msgid "Length"
 msgstr "Lunghezza"
 
-#: src/frontends/qt4/QDocumentDialog.C:115 src/text.C:1695
+#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1689
 msgid "OneHalf"
 msgstr "Uno e mezzo"
 
-#: src/frontends/qt4/QDocumentDialog.C:145
-#: src/frontends/qt4/QDocumentDialog.C:151
-#: src/frontends/qt4/QDocumentDialog.C:157
+#: src/frontends/qt4/QDocumentDialog.C:146
+#: src/frontends/qt4/QDocumentDialog.C:152
+#: src/frontends/qt4/QDocumentDialog.C:158
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:161
-#: src/frontends/qt4/QDocumentDialog.C:187
-#: src/frontends/qt4/QDocumentDialog.C:527
+#: src/frontends/qt4/QDocumentDialog.C:162
+#: src/frontends/qt4/QDocumentDialog.C:188
+#: src/frontends/qt4/QDocumentDialog.C:528
 msgid "default"
 msgstr "predefinito"
 
-#: src/frontends/qt4/QDocumentDialog.C:162
+#: src/frontends/qt4/QDocumentDialog.C:163
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocumentDialog.C:163
+#: src/frontends/qt4/QDocumentDialog.C:164
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocumentDialog.C:164
+#: src/frontends/qt4/QDocumentDialog.C:165
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocumentDialog.C:188
+#: src/frontends/qt4/QDocumentDialog.C:189
 msgid "empty"
 msgstr "vuoto"
 
-#: src/frontends/qt4/QDocumentDialog.C:189
+#: src/frontends/qt4/QDocumentDialog.C:190
 msgid "plain"
 msgstr "semplice"
 
-#: src/frontends/qt4/QDocumentDialog.C:190
+#: src/frontends/qt4/QDocumentDialog.C:191
 msgid "headings"
 msgstr "intestazioni"
 
-#: src/frontends/qt4/QDocumentDialog.C:191
+#: src/frontends/qt4/QDocumentDialog.C:192
 msgid "fancy"
 msgstr "eccessivo"
 
-#: src/frontends/qt4/QDocumentDialog.C:207
+#: src/frontends/qt4/QDocumentDialog.C:208
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocumentDialog.C:208
+#: src/frontends/qt4/QDocumentDialog.C:209
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocumentDialog.C:292
+#: src/frontends/qt4/QDocumentDialog.C:293
 #, fuzzy
 msgid "LaTeX default"
 msgstr "LaTeX ha fallito"
 
-#: src/frontends/qt4/QDocumentDialog.C:298
+#: src/frontends/qt4/QDocumentDialog.C:299
 msgid "``text''"
 msgstr "``testo''"
 
-#: src/frontends/qt4/QDocumentDialog.C:299
+#: src/frontends/qt4/QDocumentDialog.C:300
 msgid "''text''"
 msgstr "''testo''"
 
-#: src/frontends/qt4/QDocumentDialog.C:300
+#: src/frontends/qt4/QDocumentDialog.C:301
 msgid ",,text``"
 msgstr ",,testo``"
 
-#: src/frontends/qt4/QDocumentDialog.C:301
+#: src/frontends/qt4/QDocumentDialog.C:302
 msgid ",,text''"
 msgstr ",,testo''"
 
-#: src/frontends/qt4/QDocumentDialog.C:302
+#: src/frontends/qt4/QDocumentDialog.C:303
 msgid "<<text>>"
 msgstr "«testo»"
 
-#: src/frontends/qt4/QDocumentDialog.C:303
+#: src/frontends/qt4/QDocumentDialog.C:304
 msgid ">>text<<"
 msgstr "»testo«"
 
-#: src/frontends/qt4/QDocumentDialog.C:315
+#: src/frontends/qt4/QDocumentDialog.C:316
 msgid "Numbered"
 msgstr "Numerato"
 
-#: src/frontends/qt4/QDocumentDialog.C:316
+#: src/frontends/qt4/QDocumentDialog.C:317
 msgid "Appears in TOC"
 msgstr "Appare nell'Indice generale"
 
-#: src/frontends/qt4/QDocumentDialog.C:329
+#: src/frontends/qt4/QDocumentDialog.C:330
 msgid "Author-year"
 msgstr "Autore-anno"
 
-#: src/frontends/qt4/QDocumentDialog.C:330
+#: src/frontends/qt4/QDocumentDialog.C:331
 msgid "Numerical"
 msgstr "Numerico"
 
-#: src/frontends/qt4/QDocumentDialog.C:362
+#: src/frontends/qt4/QDocumentDialog.C:363
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Non disponibile: %1$s"
 
-#: src/frontends/qt4/QDocumentDialog.C:385
-#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocumentDialog.C:386
+#: src/frontends/qt4/QDocumentDialog.C:399
 msgid "Document Class"
 msgstr "Classe documento"
 
-#: src/frontends/qt4/QDocumentDialog.C:386
+#: src/frontends/qt4/QDocumentDialog.C:387
 #, fuzzy
 msgid "Fonts"
 msgstr "&Carattere: "
 
-#: src/frontends/qt4/QDocumentDialog.C:387
+#: src/frontends/qt4/QDocumentDialog.C:388
 msgid "Text Layout"
 msgstr "Struttura testo"
 
-#: src/frontends/qt4/QDocumentDialog.C:388
+#: src/frontends/qt4/QDocumentDialog.C:389
 msgid "Page Layout"
 msgstr "Struttura pagina"
 
-#: src/frontends/qt4/QDocumentDialog.C:389
+#: src/frontends/qt4/QDocumentDialog.C:390
 msgid "Page Margins"
 msgstr "Margini"
 
-#: src/frontends/qt4/QDocumentDialog.C:391
+#: src/frontends/qt4/QDocumentDialog.C:392
 msgid "Numbering & TOC"
 msgstr "Numerazione & Indice generale"
 
-#: src/frontends/qt4/QDocumentDialog.C:393
+#: src/frontends/qt4/QDocumentDialog.C:394
 msgid "Math Options"
 msgstr "Opzioni matematiche"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocumentDialog.C:395
 msgid "Float Placement"
 msgstr "Posizione degli oggetti mobili"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocumentDialog.C:396
 msgid "Bullets"
 msgstr "Elenchi puntati"
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:397
 msgid "Branches"
 msgstr "Rami"
 
-#: src/frontends/qt4/QDocumentDialog.C:397
-#: src/frontends/qt4/QDocumentDialog.C:414
+#: src/frontends/qt4/QDocumentDialog.C:398
+#: src/frontends/qt4/QDocumentDialog.C:415
 msgid "LaTeX Preamble"
 msgstr "Preambolo di LaTeX"
 
@@ -11038,7 +11043,7 @@ msgstr "Nessuna informazione per importare il formato %1$s."
 msgid "imported."
 msgstr "importato."
 
-#: src/insets/insetbase.C:249
+#: src/insets/insetbase.C:242
 msgid "Opened inset"
 msgstr "E' stato aperto l'inserto"
 
@@ -11095,24 +11100,29 @@ msgstr "Doublebox"
 msgid "Opened Box Inset"
 msgstr "E' stato aperto l'inserto Casella"
 
-#: src/insets/insetbranch.C:75
+#: src/insets/insetbranch.C:76
 msgid "Opened Branch Inset"
 msgstr "E' stato aperto l'inserto Ramo"
 
-#: src/insets/insetbranch.C:100
+#: src/insets/insetbranch.C:101
 msgid "Branch: "
 msgstr "Ramo:"
 
-#: src/insets/insetbranch.C:107 src/insets/insetcharstyle.C:163
+#: src/insets/insetbranch.C:108 src/insets/insetcharstyle.C:163
 #: src/insets/insetcharstyle.C:212
 msgid "Undef: "
 msgstr "Non definito: "
 
-#: src/insets/insetcaption.C:84
+#: src/insets/insetbranch.C:239
+#, fuzzy
+msgid "branch"
+msgstr "Ramo:"
+
+#: src/insets/insetcaption.C:87
 msgid "Opened Caption Inset"
 msgstr "E' stato aperto l'inserto Didascalia"
 
-#: src/insets/insetcaption.C:106
+#: src/insets/insetcaption.C:275
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "E' privo di senso!"
@@ -11121,7 +11131,7 @@ msgstr "E' privo di senso!"
 msgid "Opened CharStyle Inset"
 msgstr "E' stato aperto l'inserto StileCarattere"
 
-#: src/insets/insetenv.C:65
+#: src/insets/insetenv.C:66
 msgid "Opened Environment Inset: "
 msgstr "E' stato aperto l'inserto Ambiente:"
 
@@ -11138,8 +11148,8 @@ msgstr "ERT"
 msgid "External template %1$s is not installed"
 msgstr "Il modello esterno %1$s non è installato"
 
-#: src/insets/insetfloat.C:121 src/insets/insetfloat.C:362
-#: src/insets/insetfloat.C:372
+#: src/insets/insetfloat.C:121 src/insets/insetfloat.C:373
+#: src/insets/insetfloat.C:383
 msgid "float: "
 msgstr "mobile: "
 
@@ -11147,7 +11157,12 @@ msgstr "mobile: "
 msgid "Opened Float Inset"
 msgstr "E' stato aperto l'inserto Oggetto mobile"
 
-#: src/insets/insetfloat.C:374
+#: src/insets/insetfloat.C:334
+#, fuzzy
+msgid "float"
+msgstr "mobile: "
+
+#: src/insets/insetfloat.C:385
 msgid " (sideways)"
 msgstr " (obliquamente)"
 
@@ -11168,6 +11183,11 @@ msgstr "piede"
 msgid "Opened Footnote Inset"
 msgstr "E' stato aperto l'inserto Nota a piè di pagina"
 
+#: src/insets/insetfoot.C:86
+#, fuzzy
+msgid "footnote"
+msgstr "Nota a piè di pagina"
+
 #: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:443
 #, c-format
 msgid ""
@@ -11179,12 +11199,12 @@ msgstr ""
 "%1$s\n"
 "nella cartella temporanea."
 
-#: src/insets/insetgraphics.C:706
+#: src/insets/insetgraphics.C:709
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Non è necessaria alcuna conversione del file %1$s dopo tutto"
 
-#: src/insets/insetgraphics.C:817
+#: src/insets/insetgraphics.C:821
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "File grafici: %1$s"
@@ -11225,11 +11245,12 @@ msgstr "Idx"
 msgid "Index"
 msgstr "Indice"
 
-#: src/insets/insetmarginal.C:32 src/insets/insetmarginal.C:40
+#: src/insets/insetmarginal.C:33 src/insets/insetmarginal.C:41
+#: src/insets/insetmarginal.C:71
 msgid "margin"
 msgstr "margine"
 
-#: src/insets/insetmarginal.C:53
+#: src/insets/insetmarginal.C:54
 msgid "Opened Marginal Note Inset"
 msgstr "E' stato aperto l'inserto Nota a margine"
 
@@ -11281,63 +11302,64 @@ msgstr "C&ancella"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/insetref.C:150 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
 msgid "Equation"
 msgstr "Equazione"
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
 msgid "EqRef: "
 msgstr "EqRef: "
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
 msgid "Page Number"
 msgstr "Numero pagina"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
 msgid "Page: "
 msgstr "Pagina: "
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
 msgid "Textual Page Number"
 msgstr "Numero pagina di tipo testuale"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
 msgid "TextPage: "
 msgstr "Pagina di testo: "
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
 msgid "Standard+Textual Page"
 msgstr "Pagina usuale e testuale"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
 msgid "Ref+Text: "
 msgstr "Riferimento e testo: "
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
 msgid "PrettyRef"
 msgstr "Riferimento considerevole"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:188
-msgid "PrettyRef: "
-msgstr "Riferimento considerevole: "
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#, fuzzy
+msgid "FormatRef: "
+msgstr "F&ormato:"
 
-#: src/insets/insettabular.C:449
+#: src/insets/insettabular.C:450
 msgid "Opened table"
 msgstr "La tabella è stata aperta"
 
-#: src/insets/insettabular.C:1585
+#: src/insets/insettabular.C:1605
 msgid "Error setting multicolumn"
 msgstr "Si è verificato un errore impostando le multicolonne"
 
-#: src/insets/insettabular.C:1586
+#: src/insets/insettabular.C:1606
 msgid "You cannot set multicolumn vertically."
 msgstr "Non puoi impostare le multicolonne verticalmente."
 
-#: src/insets/insettext.C:233
+#: src/insets/insettext.C:234
 msgid "Opened Text Inset"
 msgstr "E' stato aperto l'inserto Testo"
 
@@ -11349,7 +11371,7 @@ msgstr "teorema"
 msgid "Opened Theorem Inset"
 msgstr "E' stato aperto l'inserto Teorema"
 
-#: src/insets/insettoc.C:46
+#: src/insets/insettoc.C:47
 msgid "Unknown toc list"
 msgstr "L'elenco dell'indice generale è sconosciuto"
 
@@ -11361,7 +11383,7 @@ msgstr "Url: "
 msgid "HtmlUrl: "
 msgstr "HtmlUrl: "
 
-#: src/insets/insetvspace.C:109
+#: src/insets/insetvspace.C:110
 msgid "Vertical Space"
 msgstr "Spazio verticale"
 
@@ -11372,6 +11394,11 @@ msgstr "rientro: "
 #: src/insets/insetwrap.C:178
 msgid "Opened Wrap Inset"
 msgstr "E' stato aperto l'inserto Rientro"
+
+#: src/insets/insetwrap.C:198
+#, fuzzy
+msgid "wrap"
+msgstr "rientro: "
 
 #: src/insets/render_graphic.C:90 src/insets/render_graphic.C:94
 msgid "Not shown."
@@ -11581,11 +11608,11 @@ msgstr "&Rinomina"
 msgid "Choose a filename to save document as"
 msgstr "Scegli un nome con cui salvare il documento"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1858
+#: src/lyx_cb.C:135 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "Modelli|#M#m"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2013
+#: src/lyx_cb.C:165 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11596,7 +11623,7 @@ msgstr ""
 "\n"
 "Vuoi davvero sovrascriverlo?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2015
+#: src/lyx_cb.C:167 src/lyxfunc.C:2029
 msgid "Over-write document?"
 msgstr "Sovrascrivo il documento?"
 
@@ -11849,23 +11876,23 @@ msgstr ""
 msgid "Missing filename for --import"
 msgstr "Manca il nome file per --import"
 
-#: src/lyxfind.C:137
+#: src/lyxfind.C:136
 msgid "Search error"
 msgstr "Cerca errore"
 
-#: src/lyxfind.C:138
+#: src/lyxfind.C:137
 msgid "Search string is empty"
 msgstr "La stringa di ricerca è vuota"
 
-#: src/lyxfind.C:289 src/lyxfind.C:320
+#: src/lyxfind.C:288 src/lyxfind.C:319
 msgid "String not found!"
 msgstr "Stringa non trovata!"
 
-#: src/lyxfind.C:324
+#: src/lyxfind.C:323
 msgid "String has been replaced."
 msgstr "La stringa è stata sostituita."
 
-#: src/lyxfind.C:327
+#: src/lyxfind.C:326
 msgid " strings have been replaced."
 msgstr " le stringhe sono state sostituite."
 
@@ -11928,7 +11955,7 @@ msgstr "Niente da fare"
 msgid "Unknown action"
 msgstr "Azione sconosciuta"
 
-#: src/lyxfunc.C:431 src/lyxfunc.C:710
+#: src/lyxfunc.C:431 src/lyxfunc.C:715
 msgid "Command disabled"
 msgstr "Comando disabilitato"
 
@@ -11936,15 +11963,15 @@ msgstr "Comando disabilitato"
 msgid "Command not allowed without any document open"
 msgstr "Il comando non è permesso senza alcun documento aperto"
 
-#: src/lyxfunc.C:696
+#: src/lyxfunc.C:701
 msgid "Document is read-only"
 msgstr "Il documento è in sola lettura"
 
-#: src/lyxfunc.C:704
+#: src/lyxfunc.C:709
 msgid "This portion of the document is deleted."
 msgstr "Questa porzione del documento è stata cancellata."
 
-#: src/lyxfunc.C:723
+#: src/lyxfunc.C:728
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -11955,7 +11982,7 @@ msgstr ""
 "\n"
 "Vuoi salvare il documento?"
 
-#: src/lyxfunc.C:741
+#: src/lyxfunc.C:746
 #, c-format
 msgid ""
 "Could not print the document %1$s.\n"
@@ -11964,11 +11991,11 @@ msgstr ""
 "Non ho potuto stampare il documento %1$s.\n"
 "Controlla che la tua stampante sia configurata correttamente."
 
-#: src/lyxfunc.C:744
+#: src/lyxfunc.C:749
 msgid "Print document failed"
 msgstr "La stampa del documento non è riuscita"
 
-#: src/lyxfunc.C:763
+#: src/lyxfunc.C:768
 #, c-format
 msgid ""
 "The document could not be converted\n"
@@ -11977,20 +12004,20 @@ msgstr ""
 "Il documento potrebbe non venire convertito\n"
 "nella classe del documento %1$s."
 
-#: src/lyxfunc.C:766
+#: src/lyxfunc.C:771
 msgid "Could not change class"
 msgstr "Non ho potuto cambiare classe"
 
-#: src/lyxfunc.C:878
+#: src/lyxfunc.C:883
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Sto salvando il documento %1$s..."
 
-#: src/lyxfunc.C:882
+#: src/lyxfunc.C:887
 msgid " done."
 msgstr " fatto."
 
-#: src/lyxfunc.C:898
+#: src/lyxfunc.C:903
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -11999,76 +12026,78 @@ msgstr ""
 "Ogni modifica andrà persa. Sei sicuro di voler tornare alla versione salvata "
 "del documento %1$s?"
 
-#: src/lyxfunc.C:1079
+#: src/lyxfunc.C:1093
 #, fuzzy
 msgid "Exiting."
 msgstr "Esci|i"
 
-#: src/lyxfunc.C:1105 src/text3.C:1229
+#: src/lyxfunc.C:1119 src/text3.C:1303
 msgid "Missing argument"
 msgstr "Argomento mancante"
 
-#: src/lyxfunc.C:1114
+#: src/lyxfunc.C:1128
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Sto aprendo il file d'aiuto %1$s..."
 
-#: src/lyxfunc.C:1389
-msgid "Opening child document "
-msgstr "Sto aprendo il documento figlio "
+#: src/lyxfunc.C:1402
+#, fuzzy, c-format
+msgid "Opening child document %1$s..."
+msgstr "Sto aprendo il documento %1$s..."
 
-#: src/lyxfunc.C:1476
+#: src/lyxfunc.C:1490
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintassi: imposta -color <nome_lyx> <nome_X11>"
 
-#: src/lyxfunc.C:1487
+#: src/lyxfunc.C:1501
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "L'impostazione del colore \"%1$s\" è fallita: il colore non è definito o non "
 "può essere ridefinito."
 
-#: src/lyxfunc.C:1603
-msgid "Document defaults saved in "
+#: src/lyxfunc.C:1616
+#, fuzzy, c-format
+msgid "Document defaults saved in %1$s"
 msgstr "Le impostazioni prestabilite del documento sono state salvate in"
 
-#: src/lyxfunc.C:1606
+#: src/lyxfunc.C:1619
 msgid "Unable to save document defaults"
 msgstr "Non è possibile salvare le impostazioni predefinite del documento"
 
-#: src/lyxfunc.C:1662
+#: src/lyxfunc.C:1675
 msgid "Converting document to new document class..."
 msgstr "Sto convertendo il documento alla nuova classe..."
 
-#: src/lyxfunc.C:1855
+#: src/lyxfunc.C:1869
 msgid "Select template file"
 msgstr "Seleziona file modello"
 
-#: src/lyxfunc.C:1892
+#: src/lyxfunc.C:1906
 msgid "Select document to open"
 msgstr "Scegli documento da aprire"
 
-#: src/lyxfunc.C:1931
+#: src/lyxfunc.C:1945
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Sto aprendo il documento %1$s..."
 
-#: src/lyxfunc.C:1935
+#: src/lyxfunc.C:1949
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Il documento %1$s è stato aperto."
 
-#: src/lyxfunc.C:1937
+#: src/lyxfunc.C:1951
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Non riesco ad aprire il documento %1$s"
 
-#: src/lyxfunc.C:1962
+#: src/lyxfunc.C:1976
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Scegli il %1$s file per l'importazone"
 
-#: src/lyxfunc.C:2089
+#: src/lyxfunc.C:2103
 msgid "Welcome to LyX!"
 msgstr "Benvenuto in LyX!"
 
@@ -12641,23 +12670,23 @@ msgstr "Non posso aggiungere linee verticali di griglia in '%1$s'"
 msgid "No vertical grid lines in '%1$s'"
 msgstr "Nessuna linea verticale di griglia in '%1$s'"
 
-#: src/mathed/InsetMathGrid.C:1318
+#: src/mathed/InsetMathGrid.C:1317
 msgid "Only one row"
 msgstr "Una sola riga"
 
-#: src/mathed/InsetMathGrid.C:1324
+#: src/mathed/InsetMathGrid.C:1323
 msgid "Only one column"
 msgstr "Una sola colonna"
 
-#: src/mathed/InsetMathGrid.C:1332
+#: src/mathed/InsetMathGrid.C:1331
 msgid "No hline to delete"
 msgstr "Nessuna linea orizzontale da cancellare"
 
-#: src/mathed/InsetMathGrid.C:1341
+#: src/mathed/InsetMathGrid.C:1340
 msgid "No vline to delete"
 msgstr "Nessuna linea verticale da cancellare"
 
-#: src/mathed/InsetMathGrid.C:1359
+#: src/mathed/InsetMathGrid.C:1358
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "La caratteristica della tabella '%1$s' è sconosciuta "
@@ -12912,11 +12941,11 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Typewriter"
 
-#: src/text.C:134
+#: src/text.C:132
 msgid "Unknown layout"
 msgstr "Struttura sconosciuta"
 
-#: src/text.C:135
+#: src/text.C:133
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -12925,29 +12954,29 @@ msgstr ""
 "La struttura '%1$s' non esiste nella classe di testo '%2$s'\n"
 "Cerco di usare quella predefinita al suo posto.\n"
 
-#: src/text.C:166
+#: src/text.C:164
 msgid "Unknown Inset"
 msgstr "Inserto sconosciuto"
 
-#: src/text.C:276 src/text.C:289
+#: src/text.C:270 src/text.C:283
 msgid "Change tracking error"
 msgstr "Cambia tracciamento dell'errore"
 
-#: src/text.C:277
+#: src/text.C:271
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr "L'indice autore è sconosciuto per l'inserimento: %1$d\n"
 
-#: src/text.C:290
+#: src/text.C:284
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr "L'indice autore è sconosciuto per la cancellazione: %1$d\n"
 
-#: src/text.C:297
+#: src/text.C:291
 msgid "Unknown token"
 msgstr "Simbolo sconosciuto"
 
-#: src/text.C:733
+#: src/text.C:727
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -12955,63 +12984,63 @@ msgstr ""
 "Non puoi inserire uno spazio all'inizio di un paragrafo. Per favore, leggi "
 "il Tutorial!"
 
-#: src/text.C:744
+#: src/text.C:738
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Non puoi usare due spazi in questo modo. Per favore, leggi il Tutorial!"
 
-#: src/text.C:1658
+#: src/text.C:1652
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Cambia Tracciamento|C"
 
-#: src/text.C:1664
+#: src/text.C:1658
 msgid "Change: "
 msgstr "Cambia: "
 
-#: src/text.C:1668
+#: src/text.C:1662
 msgid " at "
 msgstr " a "
 
-#: src/text.C:1678
+#: src/text.C:1672
 #, c-format
 msgid "Font: %1$s"
 msgstr "Carattere: %1$s"
 
-#: src/text.C:1683
+#: src/text.C:1677
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Rientro: %1$d"
 
-#: src/text.C:1689
+#: src/text.C:1683
 msgid ", Spacing: "
 msgstr ", Spaziatura: "
 
-#: src/text.C:1701
+#: src/text.C:1695
 msgid "Other ("
 msgstr "Altro ("
 
-#: src/text.C:1710
+#: src/text.C:1704
 msgid ", Inset: "
 msgstr ", inserto: "
 
-#: src/text.C:1711
+#: src/text.C:1705
 msgid ", Paragraph: "
 msgstr ", Paragrafo: "
 
-#: src/text.C:1712
+#: src/text.C:1706
 msgid ", Id: "
 msgstr ", ID:"
 
-#: src/text.C:1713
+#: src/text.C:1707
 msgid ", Position: "
 msgstr ", posizione:"
 
-#: src/text.C:1719
+#: src/text.C:1713
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1721
+#: src/text.C:1715
 msgid ", Boundary: "
 msgstr ", Contorno:"
 
@@ -13031,23 +13060,23 @@ msgstr "Niente da indicizzare!"
 msgid "Cannot index more than one paragraph!"
 msgstr "Non posso indicizzare più di un paragrafo!"
 
-#: src/text3.C:688
+#: src/text3.C:710
 msgid "Unknown spacing argument: "
 msgstr "L'argomento di spaziatura è sconosciuto: "
 
-#: src/text3.C:839
+#: src/text3.C:883
 msgid "Layout "
 msgstr "Struttura "
 
-#: src/text3.C:840
+#: src/text3.C:884
 msgid " not known"
 msgstr " sconosciuta"
 
-#: src/text3.C:1334 src/text3.C:1346
+#: src/text3.C:1408 src/text3.C:1420
 msgid "Character set"
 msgstr "Insieme di caratteri"
 
-#: src/text3.C:1477
+#: src/text3.C:1551
 msgid "Paragraph layout set"
 msgstr "Ho impostato la struttura del paragrafo"
 
@@ -13074,6 +13103,12 @@ msgstr "Riempimento verticale "
 #: src/vspace.C:509
 msgid "protected"
 msgstr "protetto"
+
+#~ msgid "PrettyRef: "
+#~ msgstr "Riferimento considerevole: "
+
+#~ msgid "Opening child document "
+#~ msgstr "Sto aprendo il documento figlio "
 
 #, fuzzy
 #~ msgid "Caption."
