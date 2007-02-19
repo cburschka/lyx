@@ -1,17 +1,25 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+\lyxformat 262
 \begin_document
 \begin_header
 \textclass scrartcl
 \language ngerman
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -24,7 +32,8 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
 \begin_body
@@ -34,12 +43,12 @@ Willkommen bei LyX!
 \newline
 
 \size large
-(Version 1.4.x)
+(Version 1.5.x)
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 2.
- April 2006
+letzte Ã„nderung: 19.
+ Februar 2007
 \end_layout
 
 \begin_layout Section*
@@ -48,7 +57,7 @@ Die wichtigsten Dinge, wenn Sie LyX verwenden
 
 \begin_layout Enumerate
 LyX besitzt eine exzellente Dokumentation --- bitte machen Sie regen Gebrauch
- davon! Lesen Sie zunächst 
+ davon! Lesen Sie zunÃ¤chst 
 \family sans
 \bar under
 H
@@ -58,10 +67,10 @@ ilfe\SpecialChar \menuseparator
 \bar under
 E
 \bar default
-inführung
+infÃ¼hrung
 \family default
-, dies gibt Ihnen einen kurzen Überblick über die vorhandene Dokumentation.
- Wie Sie mit LyX arbeiten, erläutert Ihnen 
+, dies gibt Ihnen einen kurzen Ãœberblick Ã¼ber die vorhandene Dokumentation.
+ Wie Sie mit LyX arbeiten, erlÃ¤utert Ihnen 
 \family sans
 \bar under
 H
@@ -86,15 +95,15 @@ Dokumenten-Verarbeitung
 \end_inset
 
  beschreiben.
- Vom Design her unterscheidet es sich von gängigen Textverarbeitungen und
+ Vom Design her unterscheidet es sich von gÃ¤ngigen Textverarbeitungen und
  vereinfacht dadurch das Erstellen von komplexen Dokumenten.
  Aber keine Sorge, die Unterschiede sind nur gering und werden in der Dokumentat
-ion erläutert.
+ion erlÃ¤utert.
 \end_layout
 
 \begin_layout Enumerate
 Mit LyX erstellte Texte sehen gut aus.
- Überzeugen Sie sich davon mit 
+ Ãœberzeugen Sie sich davon mit 
 \family sans
 Ans
 \bar under
@@ -105,39 +114,64 @@ cht\SpecialChar \menuseparator
 \bar under
 D
 \bar default
-VI
+VI,
 \family default
- oder 
+ 
 \family sans
-Strg+D
+Strg+D,
 \family default
-.
+ oder klicken Sie auf 
+\begin_inset Graphics
+	filename ../images/buffer-view_dvi.xpm
+	BoundingBox 0bp 6bp 20bp 20bp
+
+\end_inset
+
+, wenn Sie die Werkzeugleiste 
+\family sans
+Ans
+\bar under
+i
+\bar default
+cht\SpecialChar \menuseparator
+
+\bar under
+W
+\bar default
+erkzeugleisten
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Ansicht/Aktualisierung
+\family default
+ aktiviert haben.
 \end_layout
 
 \begin_layout Enumerate
-Ja, LyX kann (fast) die gesamte Funktionalität von LaTeX umsetzen.
+Ja, LyX kann (fast) die gesamte FunktionalitÃ¤t von LaTeX umsetzen.
  Und, ja, LyX kann vorhandene LaTeX-Dateien importieren.
- Erfahrene LaTeX-Nutzer sollten das 
+ Erfahrene LaTeX-Anwender sollten das 
 \emph on
 Tutorium
 \emph default
- überfliegen und dann den Abschnitt 
+ Ã¼berfliegen und dann den Abschnitt 
 \begin_inset Quotes gld
 \end_inset
 
-LyX für LaTeX-Benutzer
+LyX fÃ¼r LaTeX-Benutzer
 \begin_inset Quotes grd
 \end_inset
 
  lesen.
- Alle anderen brauchen sich keine Gedanken zu machen: Sie müssen kein LaTeX
+ Alle anderen brauchen sich keine Gedanken zu machen: Sie mÃ¼ssen kein LaTeX
  lernen, um mit LyX zu arbeiten.
 \end_layout
 
 \begin_layout Enumerate
-LyX bietet ausführliche Unterstützung für all diejenigen, die eine andere
+LyX bietet ausfÃ¼hrliche UnterstÃ¼tzung fÃ¼r all diejenigen, die eine andere
  Sprache als Englisch lesen und schreiben.
- Darüberhinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
+ DarÃ¼berhinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
  weitere Charakteristiken frei konfigurierbar (das meiste durch 
 \family sans
 \bar under
@@ -152,7 +186,7 @@ nstellungen\SpecialChar \ldots{}
 
 \family default
 ).
- Näheres erläutert 
+ NÃ¤heres erlÃ¤utert 
 \family sans
 \bar under
 H
@@ -171,14 +205,15 @@ npassung
 Die Internet-Seite von LyX ist auf 
 \family typewriter
 
-\begin_inset LatexCommand \url{http://www.lyx.org/}
+\begin_inset LatexCommand url
+target "http://www.lyx.org/"
 
 \end_inset
 
 
 \family default
 .
- Dort bekommen Sie aktuelle Informationen zu LyX, können Mailing-Listen
+ Dort bekommen Sie aktuelle Informationen zu LyX, kÃ¶nnen Mailing-Listen
  abonnieren, sich einen grafischen Rundgang durch LyX ansehen und vieles
  mehr.
 \end_layout
