@@ -4,10 +4,15 @@
   - improvements for CJK languages
   - new inset for captions
   - support for more unicode characters, for example TIPA phonetic symbols
+  - better export to plain text
 
 - updated readme files
 - when viewing documents as PDF, Acrobat/Adober Reader is opened with full size
-- updated to ImageMagick 6.3.2-5
+- update to ImageMagick 6.3.2-7: fix bug of wrong display size of PDF and EPS images
+                                 within LyX
+
+Thanks to Martin A. Hansen:
+- updated Danish translation of the installer
 
 
 Version LyX 1.5alpha-05-02-2007
