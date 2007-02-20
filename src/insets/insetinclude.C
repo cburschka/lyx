@@ -369,7 +369,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 
 
 int InsetInclude::latex(Buffer const & buffer, odocstream & os,
-			OutputParams const & runparams) const
+                        OutputParams const & runparams) const
 {
 	string incfile(to_utf8(params_["filename"]));
 
@@ -491,22 +491,26 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 
 
 int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
-			OutputParams const &) const
+                            OutputParams const &) const
 {
 	if (isVerbatim(params_)) {
+		os << '[' << getScreenLabel(buffer) << '\n';
 		// FIXME: We don't know the encoding of the file
-		docstring const str = from_utf8(
-			getFileContents(includedFilename(buffer, params_)));
+		docstring const str =
+		     from_utf8(getFileContents(includedFilename(buffer, params_)));
 		os << str;
-		// Return how many newlines we issued.
-		return int(lyx::count(str.begin(), str.end(), '\n'));
+		os << "\n]";
+		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
+	} else {
+		docstring str = '[' + getScreenLabel(buffer) + ']';
+		os << str;
+		return str.size();
 	}
-	return 0;
 }
 
 
 int InsetInclude::docbook(Buffer const & buffer, odocstream & os,
-			  OutputParams const & runparams) const
+                          OutputParams const & runparams) const
 {
 	string incfile = to_utf8(params_["filename"]);
 
