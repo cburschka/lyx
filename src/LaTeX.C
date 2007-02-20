@@ -788,7 +788,8 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	if (fs::exists(absname.toFilesystemEncoding())) {
+	if (fs::exists(absname.toFilesystemEncoding())&&
+	    !fs::is_directory(absname.toFilesystemEncoding())) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 		if (regex_match(onlyfile, unwanted)) {
 			lyxerr[Debug::DEPEND]
@@ -908,6 +909,12 @@ void LaTeX::deplog(DepTable & head)
 		if (!lastline.empty())
 			// probably a continued filename from last line
 			token = lastline + token;
+		if (token.length() > 255) {
+			// string too long. Cut off.
+			int r = token.length() - 250;
+			string ntoken = token.substr(r, token.length());
+			token = ntoken;
+		}
 
 		smatch sub;
 
