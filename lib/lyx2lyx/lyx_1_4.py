@@ -2298,11 +2298,11 @@ def convert_ert_paragraphs(document):
             if k == -1:
                 break
             document.body[k:k+1] = ["\\end_layout", "", '\\begin_layout %s' % document.default_layout]
-            k = k + 4
-            j = j + 3
+            k = k + 3
+            j = j + 2
             # We need an empty line if document.default_layout == ''
-            if document.body[k-1] != '':
-                document.body.insert(k-1, '')
+            if document.body[k] != '':
+                document.body.insert(k, '')
                 k = k + 1
                 j = j + 1
         i = i + 1
