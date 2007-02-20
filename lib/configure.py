@@ -416,6 +416,10 @@ def checkConverterEntries():
         if not 'Unrecognized' in cmdOutput('convert ' + conv_opts + ' 2>&1'):
             addToRC(r'\converter pdf        png        "convert %s pdf:$$i png:$$o"	""' % conv_opts)
     #
+    # no agr -> pdf converter since the pdf library used by gracebat is not
+    # free software and therefore not compiled in in many installations.
+    # Fortunately this is not a big problem because we will use epstopdf to
+    # convert from agr to pdf via eps without loss of quality.
     checkProg('a Grace -> Image converter', ['gracebat'],
         rc_entry = [
             r'''\converter agr        eps        "gracebat -hardcopy -printfile $$o -hdevice EPS $$i 2>/dev/null"	""
