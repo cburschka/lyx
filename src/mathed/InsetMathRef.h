@@ -37,8 +37,6 @@ public:
 	///
 	virtual RefInset * asRefInset() { return this; }
 
-	/// plain text output in ucs4 encoding
-	int plaintext(odocstream &, OutputParams const &) const;
 	/// docbook output
 	int docbook(Buffer const & buf, odocstream & os, OutputParams const &) const;
 

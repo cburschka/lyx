@@ -149,16 +149,8 @@ void RefInset::validate(LaTeXFeatures & features) const
 }
 
 
-int RefInset::plaintext(odocstream & os, OutputParams const &) const
-{
-	// FIXME UNICODE
-	os << '[' << asString(cell(0)) << ']';
-	return 0;
-}
-
-
 int RefInset::docbook(Buffer const & buf, odocstream & os,
-		OutputParams const & runparams) const
+                      OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
 		os << "<xref linkend=\""
