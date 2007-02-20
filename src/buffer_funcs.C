@@ -553,11 +553,17 @@ void setLabel(Buffer const & buf, ParIterator & it, LyXTextClass const & textcla
 		InsetBase * in = 0;
 		while (i > 0) {
 			--i;
-			in = &it[i].inset();
-			if (in->lyxCode() == InsetBase::FLOAT_CODE
-			    || in->lyxCode() == InsetBase::WRAP_CODE)
+			InsetBase::Code const code = it[i].inset().lyxCode();
+			if (code == InsetBase::FLOAT_CODE ||
+			    code == InsetBase::WRAP_CODE) {
+				in = &it[i].inset();
 				break;
+			}
 		}
+		// FIXME Can getInsetName() return an empty name for wide or
+		// float insets? If not we can put the definition of type
+		// inside the if (in) clause and use that instead of
+		// if (!type.empty()).
 		docstring type;
 		if (in)
 			type = in->getInsetName();
