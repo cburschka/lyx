@@ -980,7 +980,7 @@ void LyXText::acceptChanges(BufferParams const & bparams)
 
 void LyXText::rejectChanges(BufferParams const & bparams)
 {
- 	pit_type pars_size = (pit_type) pars_.size();
+	pit_type pars_size = static_cast<pit_type>(pars_.size());
 
 	// first, reject changes within each individual paragraph
 	// (do not consider end-of-par) 	
