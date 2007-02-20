@@ -291,7 +291,7 @@ void InsetText::rejectChanges(BufferParams const & bparams)
 
 
 int InsetText::latex(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams) const
+                     OutputParams const & runparams) const
 {
 	TexRow texrow;
 	latexParagraphs(buf, paragraphs(), os, texrow, runparams);
@@ -300,7 +300,7 @@ int InsetText::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetText::plaintext(Buffer const & buf, odocstream & os,
-		     OutputParams const & runparams) const
+                         OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs().begin();
 	ParagraphList::const_iterator end = paragraphs().end();
@@ -327,7 +327,7 @@ int InsetText::plaintext(Buffer const & buf, odocstream & os,
 
 
 int InsetText::docbook(Buffer const & buf, odocstream & os,
-		       OutputParams const & runparams) const
+                       OutputParams const & runparams) const
 {
 	docbookParagraphs(paragraphs(), buf, os, runparams);
 	return 0;

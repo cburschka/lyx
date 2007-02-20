@@ -63,7 +63,7 @@ int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
 
 	buffer.tocBackend().writePlaintextTocList(getCmdName(), os);
 
-	return runparams.linelen; // start with column 0 in new line
+	return PLAINTEXT_NEWLINE;
 }
 
 

@@ -1105,7 +1105,7 @@ int InsetTabular::plaintext(Buffer const & buf, odocstream & os,
 	os << '\n'; // output table on a new line
 	int const dp = runparams.linelen > 0 ? runparams.depth : 0;
 	tabular.plaintext(buf, os, runparams, dp, false, 0);
-	return runparams.linelen; // start with column 0 in new line
+	return PLAINTEXT_NEWLINE;
 }
 
 

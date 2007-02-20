@@ -214,7 +214,7 @@ int InsetVSpace::plaintext(Buffer const &, odocstream & os,
                            OutputParams const & runparams) const
 {
 	os << "\n\n";
-	return runparams.linelen; // start with column 0 in new line
+	return PLAINTEXT_NEWLINE;
 }
 
 

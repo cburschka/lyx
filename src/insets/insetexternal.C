@@ -726,7 +726,7 @@ int InsetExternal::plaintext(Buffer const & buf, odocstream & os,
 	external::writeExternal(params_, "Ascii", buf, os,
 	                        *(runparams.exportdata), false,
 	                        runparams.dryrun || runparams.inComment);
-	return runparams.linelen; // start with column 0 in new line
+	return PLAINTEXT_NEWLINE;
 }
 
 

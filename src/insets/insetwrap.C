@@ -199,7 +199,7 @@ int InsetWrap::plaintext(Buffer const & buf, odocstream & os,
 	InsetText::plaintext(buf, os, runparams);
 	os << "\n]";
 
-	return 1 + runparams.linelen; // one char on a separate line
+	return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 }
 
 

@@ -135,7 +135,7 @@ int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
 
 	buffer.tocBackend().writePlaintextTocList(to_ascii(getParam("type")), os);
 
-	return runparams.linelen; // start with column 0 in new line
+	return PLAINTEXT_NEWLINE;
 }
 
 

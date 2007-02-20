@@ -200,9 +200,13 @@ public:
 	/// describe content if cursor behind
 	virtual void infoize2(odocstream &) const {}
 
+	enum {
+		PLAINTEXT_NEWLINE = 10000
+	};
+
 	/// plain text output in ucs4 encoding
-	/// return the number of characters, in case of multiple lines of
-	/// output, add runparams.linelen to the number of chars in the last line
+	/// return the number of characters; in case of multiple lines of
+	/// output, add PLAINTEXT_NEWLINE to the number of chars in the last line
 	virtual int plaintext(Buffer const &, odocstream &,
 	                      OutputParams const &) const = 0;
 	/// docbook output

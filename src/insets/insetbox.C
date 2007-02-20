@@ -415,7 +415,7 @@ int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 		case Doublebox: os << "\n]]"; len = 2; break;
 	}
 
-	return len + runparams.linelen; // len chars on a separate line
+	return PLAINTEXT_NEWLINE + len; // len chars on a separate line
 }
 
 
