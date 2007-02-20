@@ -788,7 +788,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	if (fs::exists(absname.toFilesystemEncoding())&&
+	if (fs::exists(absname.toFilesystemEncoding()) &&
 	    !fs::is_directory(absname.toFilesystemEncoding())) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 		if (regex_match(onlyfile, unwanted)) {
