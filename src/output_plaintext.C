@@ -117,13 +117,7 @@ void writePlaintextParagraph(Buffer const & buf,
 		ltype_depth = 0;
 	}
 
-	/* maybe some vertical spaces */
-
 	/* the labelwidthstring used in lists */
-
-	/* some lines? */
-
-	/* some pagebreaks? */
 
 	/* noindent ? */
 
@@ -192,12 +186,13 @@ void writePlaintextParagraph(Buffer const & buf,
 	docstring word;
 
 	for (pos_type i = 0; i < par.size(); ++i) {
-		if (par.isDeleted(i)) // deleted characters don't make much sense in plain text output
+		// deleted characters don't make much sense in plain text output
+		if (par.isDeleted(i))
 			continue;
 
 		char_type c = par.getUChar(buf.params(), i);
-		switch (c) {
-		case Paragraph::META_INSET: {
+
+		if (c == Paragraph::META_INSET || c == ' ') {
 			if (runparams.linelen > 0 &&
 			    currlinelen + word.length() > runparams.linelen) {
 				os << '\n';
@@ -208,28 +203,23 @@ void writePlaintextParagraph(Buffer const & buf,
 			os << word;
 			currlinelen += word.length();
 			word.erase();
+		}
 
+		switch (c) {
+		case Paragraph::META_INSET: {
 			OutputParams rp = runparams;
 			rp.depth = par.params().depth();
 			int len = par.getInset(i)->plaintext(buf, os, rp);
-			if (len >= runparams.linelen)
-				currlinelen = len - runparams.linelen;
+			if (len >= InsetBase::PLAINTEXT_NEWLINE)
+				currlinelen = len - InsetBase::PLAINTEXT_NEWLINE;
 			else
 				currlinelen += len;
 			break;
 		}
 
 		case ' ':
-			if (runparams.linelen > 0 &&
-			    currlinelen + word.length() > runparams.linelen) {
-				os << '\n';
-				pair<int, docstring> p = addDepth(depth, ltype_depth);
-				os << p.second;
-				currlinelen = p.first;
-			}
-			os << word << ' ';
-			currlinelen += word.length() + 1;
-			word.erase();
+			os << ' ';
+			currlinelen++;
 			break;
 
 		case '\0':
