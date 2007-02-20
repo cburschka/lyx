@@ -184,7 +184,7 @@ public:
 
 	/// plain text output in ucs4 encoding
 	int plaintext(Buffer const &, odocstream &,
-	              OutputParams const &) const { return 0; };
+	              OutputParams const &) const;
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;

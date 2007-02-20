@@ -14,6 +14,7 @@
 #include "InsetMath.h"
 #include "MathData.h"
 #include "MathStream.h"
+#include "gettext.h"
 #include "debug.h"
 
 #include "support/lstrings.h"
@@ -78,6 +79,15 @@ void InsetMath::write(WriteStream & os) const
 	// or anything non-ASCII follows
 	if (s.size() != 1 || isalpha(s[0]))
 		os.pendingSpace(true);
+}
+
+
+int InsetMath::plaintext(Buffer const &, odocstream & os,
+                         OutputParams const &) const
+{
+	docstring str = _("math");
+	os << "[" << str << "]";
+	return 2 + str.size();
 }
 
 
