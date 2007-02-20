@@ -564,7 +564,7 @@ void Paragraph::makeSameLayout(Paragraph const & par)
 bool Paragraph::stripLeadingSpaces(bool trackChanges)
 {
 	if (isFreeSpacing())
-		return 0;
+		return false;
 
 	int pos = 0;
 	int count = 0;
@@ -576,7 +576,7 @@ bool Paragraph::stripLeadingSpaces(bool trackChanges)
 			++pos;
 	}
 
-	return count + pos > 0;
+	return count > 0 || pos > 0;
 }
 
 
