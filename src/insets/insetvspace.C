@@ -211,7 +211,7 @@ int InsetVSpace::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetVSpace::plaintext(Buffer const &, odocstream & os,
-                           OutputParams const & runparams) const
+                           OutputParams const &) const
 {
 	os << "\n\n";
 	return PLAINTEXT_NEWLINE;
