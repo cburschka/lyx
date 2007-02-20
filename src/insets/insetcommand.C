@@ -17,6 +17,7 @@
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
+#include "gettext.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
@@ -91,10 +92,12 @@ int InsetCommand::latex(Buffer const &, odocstream & os,
 }
 
 
-int InsetCommand::plaintext(Buffer const &, odocstream &,
+int InsetCommand::plaintext(Buffer const &, odocstream & os,
                             OutputParams const &) const
 {
-	return 0;
+	docstring str = "[" + _("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
+	os << str;
+	return str.size();
 }
 
 
