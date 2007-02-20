@@ -26,7 +26,7 @@ CRCCheck force
 
 !define PRODUCT_DIR "D:\LyXPackage1.5"
 !define PRODUCT_NAME "LyX"
-!define PRODUCT_VERSION "1.5beta1-xx-02-2007"
+!define PRODUCT_VERSION "1.5beta1-19-02-2007"
 !define PRODUCT_VERSION_SHORT "150svn"
 !define PRODUCT_SUBFOLDER "lyx15"
 !define PRODUCT_LICENSE_FILE "${PRODUCT_DIR}\License.txt"
@@ -42,8 +42,8 @@ CRCCheck force
 
 BrandingText "LyXWinInstaller v3.09 - Complete"
 !define INSTALLER_VERSION "Complete"
-!define INSTALLER_EXE "LyXWin150alphaComplete-3-09.exe"
-!define INSTALLER2_EXE "LyXWin150alphaSmall-3-09.exe" ; to check later if this installer version is running at the same time
+!define INSTALLER_EXE "LyXWin150beta1Complete-3-09.exe"
+!define INSTALLER2_EXE "LyXWin150beta1Small-3-09.exe" ; to check later if this installer version is running at the same time
 !define VERSION_BITMAP "${PRODUCT_DIR}\icons\lyx_logo_vert${PRODUCT_VERSION_SHORT}.bmp"
 
 ; Replaced by HKLM or HKCU depending on SetShellVarContext.
