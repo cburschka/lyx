@@ -105,7 +105,7 @@ void InsetNoteParams::read(LyXLex & lex)
 {
 	string label;
 	lex >> label;
-	if (lex)
+	if (lex.isOK())
 		type = notetranslator().find(label);
 }
 
