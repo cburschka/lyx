@@ -129,7 +129,7 @@ int InsetFloatList::latex(Buffer const & buf, odocstream & os,
 
 
 int InsetFloatList::plaintext(Buffer const & buffer, odocstream & os,
-                              OutputParams const & runparams) const
+                              OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
