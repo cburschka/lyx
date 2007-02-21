@@ -116,7 +116,13 @@ bool GuiClipboard::isInternal() const
 
 bool GuiClipboard::empty() const
 {
-	return qApp->clipboard()->text(QClipboard::Clipboard).isEmpty();
+	// We need to check both the plaintext and the LyX version of the
+	// clipboard. The plaintext version is empty if the LyX version
+	// contains only one inset, and the LyX version is empry if the
+	// clipboard does not come from LyX.
+	if (!qApp->clipboard()->text(QClipboard::Clipboard).isEmpty())
+		return false;
+	return !hasLyXContents();
 }
 
 } // namespace frontend

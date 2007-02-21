@@ -56,6 +56,8 @@ public:
 	/// (document contents, dialogs count as external here).
 	virtual bool isInternal() const = 0;
 	/// Is the clipboard empty?
+	/// \returns true if both the LyX and the plaintext versions of the
+	/// clipboard are empty.
 	virtual bool empty() const = 0;
 };
 
