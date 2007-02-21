@@ -724,7 +724,7 @@ void pasteClipboard(LCursor & cur, ErrorList & errorList, bool asParagraphs)
 {
 	// Use internal clipboard if it is the most recent one
 	if (theClipboard().isInternal()) {
-		pasteClipboard(cur, errorList, 0);
+		pasteFromStack(cur, errorList, 0);
 		return;
 	}
 
