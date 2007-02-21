@@ -8,6 +8,7 @@
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author Dekel Tsur
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -133,10 +134,12 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	num_errors = 0;
 	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
 		depfile = FileName(file.absFilename() + ".dep-pdf");
-		output_file = FileName(changeExtension(file.absFilename(), ".pdf"));
+		output_file =
+			FileName(changeExtension(file.absFilename(), ".pdf"));
 	} else {
 		depfile = FileName(file.absFilename() + ".dep");
-		output_file = FileName(changeExtension(file.absFilename(), ".dvi"));
+		output_file =
+			FileName(changeExtension(file.absFilename(), ".dvi"));
 	}
 }
 
@@ -174,8 +177,8 @@ int LaTeX::run(TeXErrors & terr)
 	// We know that this function will only be run if the lyx buffer
 	// has been changed. We also know that a newly written .tex file
 	// is always different from the previous one because of the date
-	// in it. However it seems safe to run latex (at least) on time each
-	// time the .tex file changes.
+	// in it. However it seems safe to run latex (at least) on time
+	// each time the .tex file changes.
 {
 	int scanres = NO_ERRORS;
 	unsigned int count = 0; // number of times run
@@ -185,7 +188,8 @@ int LaTeX::run(TeXErrors & terr)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	theBufferList().updateIncludedTeXfiles(getcwd().absFilename(), runparams);
+	theBufferList().updateIncludedTeXfiles(getcwd().absFilename(),
+		runparams);
 
 	// Never write the depfile if an error was encountered.
 
@@ -218,12 +222,14 @@ int LaTeX::run(TeXErrors & terr)
 	if (had_depfile) {
 		// Update the checksums
 		head.update();
-		// Can't just check if anything has changed because it might have aborted
-		// on error last time... in which cas we need to re-run latex
-		// and collect the error messages (even if they are the same).
+		// Can't just check if anything has changed because it might
+		// have aborted on error last time... in which cas we need
+		// to re-run latex and collect the error messages 
+		// (even if they are the same).
 		if (!fs::exists(output_file.toFilesystemEncoding())) {
 			lyxerr[Debug::DEPEND]
-				<< "re-running LaTeX because output file doesn't exist." << endl;
+				<< "re-running LaTeX because output file doesn't exist."
+				<< endl;
 		} else if (!head.sumchange()) {
 			lyxerr[Debug::DEPEND] << "return no_change" << endl;
 			return NO_CHANGE;
@@ -236,7 +242,8 @@ int LaTeX::run(TeXErrors & terr)
 			run_bibtex = true;
 	} else
 		lyxerr[Debug::DEPEND]
-			<< "Dependency file does not exist, or has wrong format" << endl;
+			<< "Dependency file does not exist, or has wrong format"
+			<< endl;
 
 	/// We scan the aux file even when had_depfile = false,
 	/// because we can run pdflatex on the file after running latex on it,
@@ -289,14 +296,22 @@ int LaTeX::run(TeXErrors & terr)
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
 		// onlyFilename() is needed for cygwin
-		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()), runparams);
+		rerun |= runMakeIndex(onlyFilename(idxfile.absFilename()),
+				runparams);
 	}
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
-		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
+		lyxerr[Debug::LATEX] 
+			<< "Running MakeIndex for nomencl."
+			<< endl;
 		message(_("Running MakeIndex for nomencl."));
 		// onlyFilename() is needed for cygwin
-		string const nomenclstr = " -s nomencl.ist -o " + onlyFilename(changeExtension(file.toFilesystemEncoding(), ".nls"));
-		rerun |= runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".nlo")), runparams, nomenclstr);
+		string const nomenclstr = " -s nomencl.ist -o " 
+			+ onlyFilename(changeExtension(
+				file.toFilesystemEncoding(), ".nls"));
+		rerun |= runMakeIndex(onlyFilename(changeExtension(
+				file.absFilename(), ".nlo")),
+				runparams,
+				nomenclstr);
 	}
 
 	// run bibtex
@@ -333,7 +348,8 @@ int LaTeX::run(TeXErrors & terr)
 		rerun = false;
 		++count;
 		lyxerr[Debug::DEPEND]
-			<< "Dep. file has changed or rerun requested" << endl;
+			<< "Dep. file has changed or rerun requested"
+			<< endl;
 		lyxerr[Debug::LATEX]
 			<< "Run #" << count << endl;
 		message(runMessage(count));
@@ -348,7 +364,9 @@ int LaTeX::run(TeXErrors & terr)
 		deplog(head); // reads the latex log
 		head.update();
 	} else {
-		lyxerr[Debug::DEPEND] << "Dep. file has NOT changed" << endl;
+		lyxerr[Debug::DEPEND]
+			<< "Dep. file has NOT changed"
+			<< endl;
 	}
 
 	// 1.5
@@ -365,16 +383,24 @@ int LaTeX::run(TeXErrors & terr)
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		message(_("Running MakeIndex."));
 		// onlyFilename() is needed for cygwin
-		rerun = runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".idx")), runparams);
+		rerun = runMakeIndex(onlyFilename(changeExtension(
+				file.absFilename(), ".idx")), runparams);
 	}
 
-	// I am not pretty sure if need this twice. 
+	// I am not pretty sure if need this twice.
 	if (head.haschanged(FileName(changeExtension(file.absFilename(), ".nlo")))) {
-		lyxerr[Debug::LATEX] << "Running MakeIndex for nomencl." << endl;
+		lyxerr[Debug::LATEX] 
+			<< "Running MakeIndex for nomencl."
+			<< endl;
 		message(_("Running MakeIndex for nomencl."));
 		// onlyFilename() is needed for cygwin
-		string nomenclstr = " -s nomencl.ist -o " + onlyFilename(changeExtension(file.toFilesystemEncoding(), ".nls"));
-		rerun |= runMakeIndex(onlyFilename(changeExtension(file.absFilename(), ".nlo")), runparams, nomenclstr);
+		string nomenclstr = " -s nomencl.ist -o " 
+			+ onlyFilename(changeExtension(
+				file.toFilesystemEncoding(), ".nls"));
+		rerun |= runMakeIndex(onlyFilename(changeExtension(
+				file.absFilename(), ".nlo")),
+				runparams,
+				nomenclstr);
 	}
 
 	// 2
@@ -416,7 +442,9 @@ int LaTeX::run(TeXErrors & terr)
 int LaTeX::startscript()
 {
 	// onlyFilename() is needed for cygwin
-	string tmp = cmd + ' ' + quoteName(onlyFilename(file.toFilesystemEncoding())) + " > " + os::nulldev();
+	string tmp = cmd + ' '
+		     + quoteName(onlyFilename(file.toFilesystemEncoding()))
+		     + " > " + os::nulldev();
 	Systemcall one;
 	return one.startscript(Systemcall::Wait, tmp);
 }
@@ -561,7 +589,8 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 
 		string tmp = lyxrc.bibtex_command + " ";
 		// onlyFilename() is needed for cygwin
-		tmp += quoteName(onlyFilename(removeExtension(it->aux_file.absFilename())));
+		tmp += quoteName(onlyFilename(removeExtension(
+				it->aux_file.absFilename())));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);
 	}
@@ -575,7 +604,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	int last_line = -1;
 	int line_count = 1;
 	int retval = NO_ERRORS;
-	string tmp = onlyFilename(changeExtension(file.absFilename(), ".log"));
+	string tmp =
+		onlyFilename(changeExtension(file.absFilename(), ".log"));
 	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
@@ -657,7 +687,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			if (prefixIs(tmp, "l.")) {
 				// we have a latex error
 				retval |=  TEX_ERROR;
-				if (contains(desc, "Package babel Error: You haven't defined the language"))
+				if (contains(desc,
+				    "Package babel Error: You haven't defined the language"))
 					retval |= ERROR_RERUN;
 				// get the line number:
 				int line = 0;
@@ -693,7 +724,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					// but it can include bits from the
 					// document, so whatever encoding we
 					// assume here it can be wrong.
-					terr.insertError(line, from_local8bit(desc), from_local8bit(errstr));
+					terr.insertError(line,
+							 from_local8bit(desc),
+							 from_local8bit(errstr));
 					++num_errors;
 				}
 			}
@@ -783,7 +816,8 @@ bool handleFoundFile(string const & ff, DepTable & head)
 		else {
 			// strip off part after last space and try again
 			string strippedfile;
-			string const stripoff = rsplit(foundfile, strippedfile, ' ');
+			string const stripoff =
+				rsplit(foundfile, strippedfile, ' ');
 			foundfile = strippedfile;
 			onlyfile = onlyFilename(strippedfile);
 			absname = makeAbsPath(onlyfile);
@@ -842,11 +876,12 @@ bool checkLineBreak(string const & ff, DepTable & head)
 
 void LaTeX::deplog(DepTable & head)
 {
-	// This function reads the LaTeX log file end extracts all the external
-	// files used by the LaTeX run. The files are then entered into the
-	// dependency file.
+	// This function reads the LaTeX log file end extracts all the
+	// external files used by the LaTeX run. The files are then
+	// entered into the dependency file.
 
-	string const logfile = onlyFilename(changeExtension(file.absFilename(), ".log"));
+	string const logfile =
+		onlyFilename(changeExtension(file.absFilename(), ".log"));
 
 	static regex reg1("File: (.+).*");
 	static regex reg2("No file (.+)(.).*");
@@ -876,7 +911,6 @@ void LaTeX::deplog(DepTable & head)
 		// Sometimes files are named by "File: xxx" only
 		// So I think we should use some regexps to find files instead.
 		// Note: all file names and paths might contains spaces.
-
 		bool found_file = false;
 		string token;
 		getline(ifs, token);
@@ -899,14 +933,14 @@ void LaTeX::deplog(DepTable & head)
 			static regex package_info("Package \\w+ Info: .*");
 			static regex package_warning("Package \\w+ Warning: .*");
 			if (prefixIs(token, "File:") || prefixIs(token, "(Font)")
-			|| prefixIs(token, "Package:")
-			|| prefixIs(token, "Language:")
-			|| prefixIs(token, "LaTeX Info:")
-			|| prefixIs(token, "LaTeX Font Info:")
-			|| prefixIs(token, "\\openout[")
-			|| prefixIs(token, "))")
-			|| regex_match(token, package_info)
-			|| regex_match(token, package_warning))
+			    || prefixIs(token, "Package:")
+			    || prefixIs(token, "Language:")
+			    || prefixIs(token, "LaTeX Info:")
+			    || prefixIs(token, "LaTeX Font Info:")
+			    || prefixIs(token, "\\openout[")
+			    || prefixIs(token, "))")
+			    || regex_match(token, package_info)
+			    || regex_match(token, package_warning))
 				lastline = string();
 		}
 
