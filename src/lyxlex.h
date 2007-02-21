@@ -61,10 +61,14 @@ public:
 	};
 
 	/// stream is open and end of stream is not reached
+	/// FIXME: Rename to good() since this is the name of the
+	/// corresponding std::stream method.
 	bool isOK() const;
 	/// stream is ok
+	/// FIXME: This does not behave like the std::stream counterpart.
 	operator void const *() const;
 	/// stream is not ok
+	/// FIXME: This does not behave like the std::stream counterpart.
 	bool operator!() const;
 	/// return true if able to open file, else false
 	bool setFile(support::FileName const & filename);
