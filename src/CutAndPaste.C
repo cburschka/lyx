@@ -609,9 +609,9 @@ void copySelectionToStack(LCursor & cur, CutStack & cutstack)
 		ParagraphList & pars = text->paragraphs();
 		pos_type pos = cur.selBegin().pos();
 		pit_type par = cur.selBegin().pit();
-		while (pos < pars[par].size()
-					 && pars[par].isLineSeparator(pos)
-					 && (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
+		while (pos < pars[par].size() &&
+		       pars[par].isLineSeparator(pos) &&
+		       (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
 			++pos;
 
 		copySelectionHelper(cur.buffer(), pars, par, cur.selEnd().pit(),
@@ -651,8 +651,10 @@ void copySelection(LCursor & cur, docstring const & plaintext)
 
 void saveSelection(LCursor & cur)
 {
-	lyxerr[Debug::ACTION] << "cap::saveSelection: `"
-	       << to_utf8(cur.selectionAsString(true)) << "'." << endl;
+	if (lyxerr.debugging(Debug::ACTION))
+		lyxerr << "cap::saveSelection: `"
+		       << to_utf8(cur.selectionAsString(true)) << "'."
+		       << endl;
 	
 	if (cur.selection())
 		copySelectionToStack(cur, selectionBuffer);
