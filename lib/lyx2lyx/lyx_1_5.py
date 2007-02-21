@@ -251,17 +251,17 @@ necessary parsing in modern formats than in ancient ones.
             if result:
                 language = result.group(1)
                 if language == "default":
-                    document.warning("Resetting encoding from %s to %s." % (encoding_stack[-1], document.encoding))
+                    document.warning("Resetting encoding from %s to %s." % (encoding_stack[-1], document.encoding), 3)
                     encoding_stack[-1] = document.encoding
                 else:
                     from lyx2lyx_lang import lang
-                    document.warning("Setting encoding from %s to %s." % (encoding_stack[-1], lang[language][3]))
+                    document.warning("Setting encoding from %s to %s." % (encoding_stack[-1], lang[language][3]), 3)
                     encoding_stack[-1] = lang[language][3]
             elif find_token(document.body, "\\begin_layout", i, i + 1) == i:
-                document.warning("Adding nested encoding %s." % encoding_stack[-1])
+                document.warning("Adding nested encoding %s." % encoding_stack[-1], 3)
                 encoding_stack.append(encoding_stack[-1])
             elif find_token(document.body, "\\end_layout", i, i + 1) == i:
-                document.warning("Removing nested encoding %s." % encoding_stack[-1])
+                document.warning("Removing nested encoding %s." % encoding_stack[-1], 3)
                 del encoding_stack[-1]
             if encoding_stack[-1] != document.encoding:
                 if forward:
