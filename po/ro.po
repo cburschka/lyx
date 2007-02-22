@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2007-02-19 22:04+0000\n"
-"PO-Revision-Date: 2006-11-28 22:04-0500\n"
+"PO-Revision-Date: 2007-02-20 21:33-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -55,9 +55,8 @@ msgid "Select this if you want to split your bibliography into sections"
 msgstr "Selecteazã-mã dacã doreºti sã imparþi bibliografia in secþiuni"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:130
-#, fuzzy
 msgid "S&ectioned bibliography"
-msgstr "Bibliografie"
+msgstr "Bibliografie împãrþitã în secþiuni"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:47
 msgid "Add a new branch to the list"
@@ -134,22 +133,22 @@ msgstr "Implicit"
 #: src/frontends/qt4/ui/BulletsUi.ui:74
 #: src/frontends/controllers/character.C:123 src/lyxfont.C:65
 msgid "Tiny"
-msgstr "Tiny"
+msgstr "Foarte mic"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:79
 #: src/frontends/controllers/character.C:127 src/lyxfont.C:65
 msgid "Smallest"
-msgstr "Smallest"
+msgstr "Cel mai mic"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:84
 #: src/frontends/controllers/character.C:131 src/lyxfont.C:65
 msgid "Smaller"
-msgstr "Smaller"
+msgstr "Mai mic"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:89
 #: src/frontends/controllers/character.C:135 src/lyxfont.C:65
 msgid "Small"
-msgstr "Small"
+msgstr "Mic"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:94
 #: src/frontends/controllers/character.C:139 src/lyxfont.C:65
@@ -159,30 +158,29 @@ msgstr "Normal"
 #: src/frontends/qt4/ui/BulletsUi.ui:99
 #: src/frontends/controllers/character.C:143 src/lyxfont.C:65
 msgid "Large"
-msgstr "Large"
+msgstr "Larg"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:104
 #: src/frontends/controllers/character.C:147 src/lyxfont.C:66
 msgid "Larger"
-msgstr "Larger"
+msgstr "Mai larg"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:109
 #: src/frontends/controllers/character.C:151 src/lyxfont.C:66
 msgid "Largest"
-msgstr "Largest"
+msgstr "Cel mai larg"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:114
 #: src/frontends/controllers/character.C:155 src/lyxfont.C:66
 msgid "Huge"
-msgstr "Huge"
+msgstr "Imens"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:119
 #: src/frontends/controllers/character.C:159 src/lyxfont.C:66
 msgid "Huger"
-msgstr "Huger"
+msgstr "Chiar mai imens"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:147
-#, fuzzy
 msgid "&Custom Bullet:"
 msgstr "Bulini personalizate:"
 
@@ -241,9 +239,8 @@ msgid "FontUi"
 msgstr "Fonturi interfaþã graficã:|#F"
 
 #: src/frontends/qt4/ui/FontUi.ui:64
-#, fuzzy
 msgid "Sc&ale (%):"
-msgstr "Smaller"
+msgstr "P&rocent (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:77
 msgid "&Typewriter:"
@@ -255,9 +252,8 @@ msgid "&Roman:"
 msgstr "&Roman:"
 
 #: src/frontends/qt4/ui/FontUi.ui:110
-#, fuzzy
 msgid "S&cale (%):"
-msgstr "Smaller"
+msgstr "P&rocent (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "&Sans Serif:"
@@ -357,14 +353,12 @@ msgid "Use AMS &math package"
 msgstr "Utilizeazã pachetul &matematic AMS"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
-#, fuzzy
 msgid "Use esint package &automatically"
-msgstr "Foloseºte automat pachetul matematic AMS"
+msgstr "Foloseºte &automat pachetul matematic esint"
 
 #: src/frontends/qt4/ui/MathsUi.ui:55
-#, fuzzy
 msgid "Use &esint package"
-msgstr "Utilizeazã pachetul &matematic AMS"
+msgstr "Utilizeazã pachetul matematic &esint"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:63
 msgid "&List in Table of Contents"
@@ -499,9 +493,8 @@ msgid "&Cancel"
 msgstr "&Renunþã"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:39 src/frontends/qt4/ui/QBibitemUi.ui:74
-#, fuzzy
 msgid "The bibliography key"
-msgstr "Cheia bibliografica:|#b"
+msgstr "Cheia bibliografica"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:54 src/frontends/qt4/ui/QBibitemUi.ui:61
 msgid "The label as it appears in the document"
@@ -619,9 +612,8 @@ msgstr "Nimic"
 #: src/frontends/qt4/ui/QBoxUi.ui:43 src/frontends/qt4/QBox.C:172
 #: src/frontends/qt4/QBox.C:279 src/frontends/qt4/QBox.C:287
 #: src/insets/insetbox.C:156
-#, fuzzy
 msgid "Parbox"
-msgstr "Part"
+msgstr "Parbox"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:48 src/frontends/qt4/QBox.C:280
 #: src/frontends/qt4/QBox.C:288 src/insets/insetbox.C:158
@@ -630,17 +622,15 @@ msgstr "Minipaginã|p"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:56 src/frontends/qt4/ui/QBoxUi.ui:76
 msgid "Supported box types"
-msgstr ""
+msgstr "Tipuri de contururi sportate"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:66
-#, fuzzy
 msgid "Inner Bo&x:"
-msgstr "&Interior:"
+msgstr "Contur &Interior:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:79
-#, fuzzy
 msgid "&Decoration:"
-msgstr "Dedicaþie"
+msgstr "Decoraþie:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:97 src/frontends/qt4/ui/QBoxUi.ui:119
 msgid "Height value"
@@ -657,9 +647,8 @@ msgid "Alignment"
 msgstr "Aliniere"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:160 src/frontends/qt4/ui/QBoxUi.ui:187
-#, fuzzy
 msgid "Horizontal alignment of the content inside the box"
-msgstr "Aliniere orizontalã în coloanã"
+msgstr "Aliniere orizontalã a conþinutului în cadrul conturului"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:164 src/frontends/qt4/ui/QParagraphUi.ui:76
 #: src/frontends/qt4/ui/QTabularUi.ui:145 src/frontends/qt4/ui/QWrapUi.ui:58
@@ -682,18 +671,16 @@ msgid "Right"
 msgstr "Dreapta"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:179 src/frontends/qt4/ui/QBoxUi.ui:261
-#, fuzzy
 msgid "Stretch"
-msgstr "Stradã"
+msgstr "Stretch"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:190
 msgid "Horizontal"
 msgstr "&Orizontal:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:197 src/frontends/qt4/ui/QBoxUi.ui:219
-#, fuzzy
 msgid "Vertical alignment of the box (with regard to baseline)"
-msgstr "Aliniere verticalã pentru coloane de lãþime fixã"
+msgstr "Aliniere verticalã a conturului (cu respect la linia de jos)"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:201 src/frontends/qt4/ui/QBoxUi.ui:246
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:218
@@ -714,18 +701,16 @@ msgid "Bottom"
 msgstr "Jos"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:222
-#, fuzzy
 msgid "&Box:"
-msgstr "&Interior:"
+msgstr "&Contur:"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:232
 msgid "Co&ntent:"
 msgstr "Conþinut"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:242 src/frontends/qt4/ui/QBoxUi.ui:269
-#, fuzzy
 msgid "Vertical alignment of the content inside the box"
-msgstr "Aliniere verticalã pentru coloane de lãþime fixã"
+msgstr "Aliniere verticalã a conþinutului conturului"
 
 #: src/frontends/qt4/ui/QBoxUi.ui:272
 msgid "Vertical"
@@ -751,9 +736,8 @@ msgid "&Apply"
 msgstr "&Aplicã"
 
 #: src/frontends/qt4/ui/QBranchUi.ui:59
-#, fuzzy
 msgid "&Available branches:"
-msgstr "Versiuni de document disponibile"
+msgstr "Versiuni de document disponibile:"
 
 #: src/frontends/qt4/ui/QBranchUi.ui:69
 msgid "Select your branch"
@@ -882,18 +866,16 @@ msgid "&Find:"
 msgstr "C&autã:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:67
-#, fuzzy
 msgid "<- Clear"
-msgstr "ª&terge"
+msgstr "<- ª&terge"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:117
 msgid "A&pply"
 msgstr "&Aplicã"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:136
-#, fuzzy
 msgid "Formatting"
-msgstr "&Format:"
+msgstr "Formatatare"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:159
 msgid "Natbib citation style to use"
@@ -936,32 +918,28 @@ msgid "Text to place before citation"
 msgstr "Text de plasat înainte de citare"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:260
-#, fuzzy
 msgid "&Available Citations:"
-msgstr "Versiuni de document disponibile"
+msgstr "Versiuni de citare disponibile"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:283
-#, fuzzy
 msgid "&Selected Citations:"
-msgstr "&Selecþie:"
+msgstr "Citãri &selectate:"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:301
 msgid "Move the selected citation up"
 msgstr "Mutã citarea selectatã mai sus"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:39
-#, fuzzy
 msgid "&Up"
-msgstr "&Actualizeazã"
+msgstr "Mai &Sus"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:349
 msgid "Move the selected citation down"
 msgstr "Mutã citarea selectatã mai jos"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:352 src/frontends/qt4/ui/QTocUi.ui:46
-#, fuzzy
 msgid "&Down"
-msgstr "Nimic"
+msgstr "Mai jos"
 
 #: src/frontends/qt4/ui/QCitationUi.ui:362
 msgid "D&elete"
@@ -1044,7 +1022,6 @@ msgid "Edit the file externally"
 msgstr "Editeazã extern fiºierul"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:89
-#, fuzzy
 msgid "&Edit File..."
 msgstr "&Editeazã fiºierul"
 
@@ -1184,9 +1161,8 @@ msgid "Width of image in output"
 msgstr "Lãþimea imaginii la tipãrire"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:518
-#, fuzzy
 msgid "Crop"
-msgstr "Copiazã"
+msgstr "Eliminã (ºterge)"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:530
 #: src/frontends/qt4/ui/QGraphicsUi.ui:440
@@ -1201,12 +1177,12 @@ msgstr "&Insereazã din fiºier"
 #: src/frontends/qt4/ui/QExternalUi.ui:553
 #: src/frontends/qt4/ui/QGraphicsUi.ui:312
 msgid "Clip to bounding box values"
-msgstr ""
+msgstr "Redimensioneazã în funcþie de valorile marginilor"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:556
 #: src/frontends/qt4/ui/QGraphicsUi.ui:315
 msgid "Clip to &bounding box"
-msgstr ""
+msgstr "Redimensioneazã în funcþie de  margini"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:573
 #: src/frontends/qt4/ui/QGraphicsUi.ui:348
@@ -1256,19 +1232,16 @@ msgid "&Edit"
 msgstr "&Editeazã"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:98
-#, fuzzy
 msgid "Output Size"
-msgstr "Ieºire"
+msgstr "Mãrimea rezultatului produs"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:184
-#, fuzzy
 msgid "&Scale Graphics (%):"
-msgstr "&Graficã"
+msgstr "Procentul de dimeniune ale &graficului"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:220
-#, fuzzy
 msgid "Rotate Graphics"
-msgstr "&Graficã"
+msgstr "&Roteºte Graficul"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:238
 msgid "A&ngle (Degrees):"
@@ -1284,13 +1257,11 @@ msgstr "&Tãiere"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:396
 #: src/frontends/qt4/ui/QGraphicsUi.ui:403
-#, fuzzy
 msgid "y:"
 msgstr "y:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:410
 #: src/frontends/qt4/ui/QGraphicsUi.ui:417
-#, fuzzy
 msgid "x:"
 msgstr "x"
 
@@ -1324,7 +1295,6 @@ msgid "&Draft mode"
 msgstr "Mod &ciornã"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:514
-#, fuzzy
 msgid "S&ubfigure"
 msgstr "Subf&igurã"
 
@@ -1338,14 +1308,12 @@ msgid "Ca&ption:"
 msgstr "&Titlu:"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:569
-#, fuzzy
 msgid "Sho&w in LyX"
 msgstr "&Afiºeazã în LyX"
 
 #: src/frontends/qt4/ui/QGraphicsUi.ui:630
-#, fuzzy
 msgid "Sca&le on Screen (%):"
-msgstr "Sa&ns Serif:"
+msgstr "Procentul de afiºare pe &ecran:"
 
 #: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "Show LaTeX preview"
@@ -1551,24 +1519,20 @@ msgid "Show delimiter and bracket dialog"
 msgstr "Afiºeazã dialogul de delimitatori ºi paranteze"
 
 #: src/frontends/qt4/ui/QNomenclUi.ui:34
-#, fuzzy
 msgid "Sort &as:"
-msgstr "Strasse"
+msgstr "S&orteazã ca:"
 
 #: src/frontends/qt4/ui/QNomenclUi.ui:44
-#, fuzzy
 msgid "&Description:"
 msgstr "Descriere"
 
 #: src/frontends/qt4/ui/QNomenclUi.ui:54
-#, fuzzy
 msgid "&Symbol:"
-msgstr "Small:"
+msgstr "Simbol:"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:51
-#, fuzzy
 msgid "Type"
-msgstr "&Tip"
+msgstr "Tip"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:63
 msgid "LyX internal only"
@@ -1587,9 +1551,8 @@ msgid "&Comment"
 msgstr "Comentariu"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:83
-#, fuzzy
 msgid "Print as grey text"
-msgstr "Tipãreºte toate paginiile"
+msgstr "Tipãreºte ca text tip gri"
 
 #: src/frontends/qt4/ui/QNoteUi.ui:86
 msgid "&Greyed out"
@@ -1696,7 +1659,6 @@ msgid "C&onverter:"
 msgstr "&Convertor:"
 
 #: src/frontends/qt4/ui/QPrefConvertersUi.ui:150
-#, fuzzy
 msgid "&To:[[as in 'From format x to format y']]"
 msgstr "La [în sensul 'De la pagina x la pagina y']"
 
@@ -1705,7 +1667,6 @@ msgid "&Converters"
 msgstr "&Convertoare"
 
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:51
-#, fuzzy
 msgid "C&opiers"
 msgstr "Copii"
 
@@ -1715,7 +1676,6 @@ msgid "&Format:"
 msgstr "&Format:"
 
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:109
-#, fuzzy
 msgid "&Copier:"
 msgstr "Copii:"
 
@@ -1767,9 +1727,8 @@ msgid "Instant &Preview:"
 msgstr "&Previzualizare instantanee"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:72
-#, fuzzy
 msgid "Ed&itor:"
-msgstr "NotãCãtreEditor"
+msgstr "Editor"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:82
 msgid "&GUI name:"
@@ -1800,7 +1759,6 @@ msgid "Vector graphi&cs format"
 msgstr "Formatul fiºierulului grafig de tip vector"
 
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:165
-#, fuzzy
 msgid ""
 "Tell whether this format is a document format. A document cannot be exported "
 "to or viewed in a non-document format."
@@ -2244,7 +2202,6 @@ msgid "Session"
 msgstr "Sesiune"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:131
-#, fuzzy
 msgid "Save/restore window size, or use fixed size"
 msgstr "Salveazã/restabileºte mãrimea ferestrei, sau foloseºte o mãrime fixã"
 
@@ -2258,8 +2215,7 @@ msgstr "Restabileºte poziþia cursorului"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:171
 msgid "Restore to cursor position when the file was last closed"
-msgstr ""
-"Restabileºte poziþia cursorului din momentul cînd acest fiºier a fost închis"
+msgstr "Restabileºte poziþia cursorului din momentul cînd acest fiºier a fost închis"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Save/restore window position"
@@ -2625,7 +2581,6 @@ msgid "Use formal (a.k.a. booktabs) border style (no vertical borders)"
 msgstr "Foloseºte stilul de margini formal (fãrã margini verticale)"
 
 #: src/frontends/qt4/ui/QTabularUi.ui:316
-#, fuzzy
 msgid "Fo&rmal"
 msgstr "Formal"
 
@@ -2896,9 +2851,8 @@ msgid "&Value:"
 msgstr "&Valoare:"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:54
-#, fuzzy
 msgid "&Protect:"
-msgstr "&Accelerator:"
+msgstr "&Pãstreazã:"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:64
 msgid "Insert the spacing even after a page break"
@@ -3181,7 +3135,6 @@ msgid "Problem"
 msgstr "Problemã"
 
 #: lib/layouts/IEEEtran.layout:184
-#, fuzzy
 msgid "Problem #:"
 msgstr "Problemã #:"
 
@@ -3243,9 +3196,8 @@ msgid "Notation"
 msgstr "Notaþie"
 
 #: lib/layouts/IEEEtran.layout:234
-#, fuzzy
 msgid "Notation #:"
-msgstr "Notaþie"
+msgstr "Notaþie #:"
 
 #: lib/layouts/IEEEtran.layout:241 lib/layouts/amsart-plain.layout:145
 #: lib/layouts/amsart-seq.layout:257 lib/layouts/elsart.layout:417
@@ -3418,9 +3370,8 @@ msgid "Biography"
 msgstr "Biografie"
 
 #: lib/layouts/IEEEtran.layout:421
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Biografie"
+msgstr "Biografiefãrãfotografie"
 
 #: lib/layouts/IEEEtran.layout:441 lib/layouts/IEEEtran.layout:452
 msgid "Footernote"
@@ -3563,9 +3514,8 @@ msgid "Acknowledgement"
 msgstr "Acknowledgement"
 
 #: lib/layouts/aa.layout:153 lib/layouts/aapaper.inc:74
-#, fuzzy
 msgid "Offprint Requests to:"
-msgstr "Offprints"
+msgstr "Rebulicaþii pentru:"
 
 #: lib/layouts/aa.layout:176
 msgid "Correspondence to:"
@@ -3573,7 +3523,6 @@ msgstr "Corespondenþã cãtre:"
 
 #: lib/layouts/aa.layout:202 lib/layouts/egs.layout:526
 #: lib/layouts/svjour.inc:308
-#, fuzzy
 msgid "Acknowledgements."
 msgstr "Acknowledgements"
 
@@ -3616,7 +3565,7 @@ msgstr "Afiliere"
 
 #: lib/layouts/aastex.layout:100 lib/layouts/aastex.layout:346
 msgid "And"
-msgstr "And"
+msgstr "ªi"
 
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
 #: lib/layouts/apa.layout:222 lib/layouts/egs.layout:512
@@ -3674,12 +3623,10 @@ msgid "Dataset"
 msgstr "Seturi de date"
 
 #: lib/layouts/aastex.layout:293
-#, fuzzy
 msgid "Subject headings:"
-msgstr "Secþiune"
+msgstr "Antetul Subiectului:"
 
 #: lib/layouts/aastex.layout:336
-#, fuzzy
 msgid "[Acknowledgements]"
 msgstr "Acknowledgements"
 
@@ -3726,7 +3673,7 @@ msgstr "Fact"
 
 #: lib/layouts/aastex.layout:583
 msgid "Obj:"
-msgstr ""
+msgstr "Obiect:"
 
 #: lib/layouts/aastex.layout:610
 msgid "Dataset:"
@@ -3845,7 +3792,6 @@ msgstr "Sumar"
 #: lib/layouts/amsart-plain.layout:141 lib/layouts/egs.layout:551
 #: lib/layouts/amsmaths-plain.inc:225 lib/layouts/amsmaths.inc:487
 #: lib/layouts/svjour.inc:322
-#, fuzzy
 msgid "Acknowledgement."
 msgstr "Acknowledgement"
 
@@ -3942,7 +3888,7 @@ msgstr "Sumar \\arabic{summary}"
 
 #: lib/layouts/amsart-seq.layout:253
 msgid "Acknowledgement \\arabic{acknowledgement}."
-msgstr ""
+msgstr "Acknowledgement \\\\arabic{acknowledgement}."
 
 #: lib/layouts/amsart-seq.layout:259
 msgid "Case \\arabic{case}."
@@ -4019,7 +3965,6 @@ msgid "CopNum"
 msgstr "CopNum"
 
 #: lib/layouts/apa.layout:234
-#, fuzzy
 msgid "Acknowledgements:"
 msgstr "Acknowledgements"
 
@@ -4038,7 +3983,6 @@ msgstr "CenteredCaption"
 
 #: lib/layouts/apa.layout:269 lib/layouts/scrclass.inc:242
 #: lib/layouts/scrclass.inc:262
-#, fuzzy
 msgid "Senseless!"
 msgstr "Fãrã sens: "
 
@@ -4063,7 +4007,7 @@ msgstr "Seriate"
 #: lib/layouts/apa.layout:360 lib/layouts/apa.layout:361
 #: src/buffer_funcs.C:525
 msgid "(\\alph{enumii})"
-msgstr ""
+msgstr "(\\\\alph{enumii})"
 
 #: lib/layouts/article.layout:18 lib/layouts/beamer.layout:897
 #: lib/layouts/mwart.layout:23 lib/layouts/paper.layout:31
@@ -4087,7 +4031,7 @@ msgstr "MM"
 
 #: lib/layouts/beamer.layout:100
 msgid "BeginFrame"
-msgstr ""
+msgstr "ÎnceputCadru"
 
 #: lib/layouts/beamer.layout:115
 msgid "Frame   "
@@ -4107,7 +4051,7 @@ msgstr "ªfîrºit de cadru:"
 
 #: lib/layouts/beamer.layout:193
 msgid "________________________________ "
-msgstr ""
+msgstr "________________________________"
 
 #: lib/layouts/beamer.layout:207
 msgid "Pause"
@@ -4115,7 +4059,7 @@ msgstr "Pauzã"
 
 #: lib/layouts/beamer.layout:222
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
-msgstr ""
+msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 
 #: lib/layouts/beamer.layout:280
 msgid "Section \\arabic{section}"
@@ -4142,13 +4086,12 @@ msgid "Again frame with label   "
 msgstr "Cadru cu titlu"
 
 #: lib/layouts/beamer.layout:386
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Bloc"
+msgstr "BlocEvidenþiat"
 
 #: lib/layouts/beamer.layout:396
 msgid "block with alerted text "
-msgstr ""
+msgstr "Bloc cu text evidenþiat"
 
 #: lib/layouts/beamer.layout:474
 msgid "block "
@@ -4184,11 +4127,11 @@ msgstr "Coloane (centrate)"
 
 #: lib/layouts/beamer.layout:598
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "Coloane aliniate sus"
 
 #: lib/layouts/beamer.layout:609
 msgid "columns (top aligned) "
-msgstr ""
+msgstr "coloane (aliniate sus)"
 
 #: lib/layouts/beamer.layout:655
 msgid "Definition.  "
@@ -4215,16 +4158,14 @@ msgid "Examples.  "
 msgstr "Exemple."
 
 #: lib/layouts/beamer.layout:681
-#, fuzzy
 msgid "ExampleBlock"
-msgstr "Exemplu"
+msgstr "BlocExemplu"
 
 #: lib/layouts/beamer.layout:691
 msgid "block showing an example "
 msgstr "Cutie cu un exemplu"
 
 #: lib/layouts/beamer.layout:713
-#, fuzzy
 msgid "Fact.  "
 msgstr "Fapt."
 
@@ -4243,13 +4184,12 @@ msgid "LyX-Code"
 msgstr "Cod-LyX"
 
 #: lib/layouts/beamer.layout:798
-#, fuzzy
 msgid "NoteItem"
-msgstr "Item nou"
+msgstr "ItemNotã"
 
 #: lib/layouts/beamer.layout:809
 msgid "note:  "
-msgstr "notã"
+msgstr "notã:"
 
 #: lib/layouts/beamer.layout:821
 msgid "Only"
@@ -4260,14 +4200,12 @@ msgid "only on slides  "
 msgstr "Doar pe slideuri"
 
 #: lib/layouts/beamer.layout:845
-#, fuzzy
 msgid "Overprint"
-msgstr "Offprint"
+msgstr "Overprint"
 
 #: lib/layouts/beamer.layout:855
-#, fuzzy
 msgid "overprint "
-msgstr "Pretipãrire"
+msgstr "overprint"
 
 #: lib/layouts/beamer.layout:871
 msgid "OverlayArea"
@@ -4291,25 +4229,23 @@ msgstr "Separaþia"
 
 #: lib/layouts/beamer.layout:945
 msgid "___"
-msgstr ""
+msgstr "___"
 
 #: lib/layouts/beamer.layout:980
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "&Graficã"
+msgstr "TitluGraficã"
 
 #: lib/layouts/beamer.layout:1006
 msgid "Theorem.  "
 msgstr "Teoremã"
 
 #: lib/layouts/beamer.layout:1034
-#, fuzzy
 msgid "Uncover"
-msgstr "&Eliminã"
+msgstr "Aratã"
 
 #: lib/layouts/beamer.layout:1043
 msgid "uncovered on slides  "
-msgstr ""
+msgstr "Aratã pe slideuri"
 
 #: lib/layouts/beamer.layout:1065 lib/layouts/stdfloats.inc:10
 #: lib/ui/stdtoolbars.inc:96
@@ -4374,7 +4310,7 @@ msgstr "("
 
 #: lib/layouts/broadway.layout:151 lib/layouts/hollywood.layout:180
 msgid "\tEnd)"
-msgstr ""
+msgstr "\\tEnd)"
 
 #: lib/layouts/broadway.layout:162 lib/layouts/broadway.layout:173
 msgid "CURTAIN"
@@ -4532,7 +4468,6 @@ msgid "Opening"
 msgstr "Deschidere"
 
 #: lib/layouts/dinbrief.layout:48 lib/layouts/g-brief-de.layout:209
-#, fuzzy
 msgid "Anrede:"
 msgstr "Anrede"
 
@@ -4543,7 +4478,6 @@ msgid "Signature"
 msgstr "Semnãturã"
 
 #: lib/layouts/dinbrief.layout:61 lib/layouts/g-brief-de.layout:56
-#, fuzzy
 msgid "Unterschrift:"
 msgstr "Unterschrift"
 
@@ -4554,7 +4488,6 @@ msgid "Closing"
 msgstr "Închidere"
 
 #: lib/layouts/dinbrief.layout:74 lib/layouts/g-brief-de.layout:235
-#, fuzzy
 msgid "Gruss:"
 msgstr "Gruss"
 
@@ -4563,7 +4496,6 @@ msgid "encl"
 msgstr "encl"
 
 #: lib/layouts/dinbrief.layout:86 lib/layouts/g-brief-de.layout:217
-#, fuzzy
 msgid "Anlagen:"
 msgstr "Anlagen"
 
@@ -4582,7 +4514,6 @@ msgid "cc"
 msgstr "cc"
 
 #: lib/layouts/dinbrief.layout:121 lib/layouts/g-brief-de.layout:226
-#, fuzzy
 msgid "Verteiler:"
 msgstr "Verteiler"
 
@@ -4591,7 +4522,6 @@ msgid "Betreff"
 msgstr "Betreff"
 
 #: lib/layouts/dinbrief.layout:146 lib/layouts/g-brief-de.layout:200
-#, fuzzy
 msgid "Betreff:"
 msgstr "Betreff"
 
@@ -4600,7 +4530,6 @@ msgid "Stadt"
 msgstr "Stadt"
 
 #: lib/layouts/dinbrief.layout:169
-#, fuzzy
 msgid "Stadt:"
 msgstr "Stadt"
 
@@ -4661,12 +4590,11 @@ msgstr "Jurnal"
 
 #: lib/layouts/egs.layout:358
 msgid "msnumber"
-msgstr "msnumber"
+msgstr "numãrms"
 
 #: lib/layouts/egs.layout:373
-#, fuzzy
 msgid "MS_number:"
-msgstr "msnumber"
+msgstr "Numãr_MS"
 
 #: lib/layouts/egs.layout:383
 msgid "FirstAuthor"
@@ -4798,7 +4726,7 @@ msgstr "Notã \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:405
 msgid "Claim \\arabic{theorem}"
-msgstr "Decleraþie \\arabic{theorem}"
+msgstr "Declaraþie \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:413
 msgid "Summary \\arabic{summ}"
@@ -4809,7 +4737,6 @@ msgid "Case \\arabic{case}"
 msgstr "Caz \\arabic{case}"
 
 #: lib/layouts/elsart.layout:433
-#, fuzzy
 msgid "Acknowledgement \\arabic{theorem}"
 msgstr "Acknowledgement"
 
@@ -4979,7 +4906,6 @@ msgid "Strasse"
 msgstr "Strasse"
 
 #: lib/layouts/g-brief-de.layout:63
-#, fuzzy
 msgid "Strasse:"
 msgstr "Strasse"
 
@@ -4988,7 +4914,6 @@ msgid "Zusatz"
 msgstr "Zusatz"
 
 #: lib/layouts/g-brief-de.layout:70
-#, fuzzy
 msgid "Zusatz:"
 msgstr "Zusatz"
 
@@ -4997,7 +4922,6 @@ msgid "Ort"
 msgstr "Ort"
 
 #: lib/layouts/g-brief-de.layout:77
-#, fuzzy
 msgid "Ort:"
 msgstr "Ort"
 
@@ -5022,7 +4946,6 @@ msgid "MeinZeichen"
 msgstr "MeinZeichen"
 
 #: lib/layouts/g-brief-de.layout:98
-#, fuzzy
 msgid "MeinZeichen:"
 msgstr "MeinZeichen"
 
@@ -5031,7 +4954,6 @@ msgid "IhrZeichen"
 msgstr "IhrZeichen"
 
 #: lib/layouts/g-brief-de.layout:105
-#, fuzzy
 msgid "IhrZeichen:"
 msgstr "IhrZeichen"
 
@@ -5040,7 +4962,6 @@ msgid "IhrSchreiben"
 msgstr "IhrSchreiben"
 
 #: lib/layouts/g-brief-de.layout:112
-#, fuzzy
 msgid "IhrSchreiben:"
 msgstr "IhrSchreiben"
 
@@ -5049,7 +4970,6 @@ msgid "Telefon"
 msgstr "Telefon"
 
 #: lib/layouts/g-brief-de.layout:119
-#, fuzzy
 msgid "Telefon:"
 msgstr "Telefon"
 
@@ -5058,7 +4978,6 @@ msgid "Telefax"
 msgstr "Telefax"
 
 #: lib/layouts/g-brief-de.layout:126 lib/layouts/g-brief-en.layout:126
-#, fuzzy
 msgid "Telefax:"
 msgstr "Telefax"
 
@@ -5117,7 +5036,6 @@ msgid "Postvermerk"
 msgstr "Postvermerk"
 
 #: lib/layouts/g-brief-de.layout:175
-#, fuzzy
 msgid "Postvermerk:"
 msgstr "Postvermerk"
 
@@ -5197,22 +5115,18 @@ msgid "ReturnAddress:"
 msgstr "Adresa de întoarcere"
 
 #: lib/layouts/g-brief-en.layout:95 lib/layouts/g-brief2.layout:715
-#, fuzzy
 msgid "MyRef"
-msgstr "MyRef"
+msgstr "Referinþa mea"
 
 #: lib/layouts/g-brief-en.layout:98 lib/layouts/g-brief2.layout:725
-#, fuzzy
 msgid "MyRef:"
-msgstr "MyRef"
+msgstr "Referinþa mea"
 
 #: lib/layouts/g-brief-en.layout:102 lib/layouts/g-brief2.layout:735
-#, fuzzy
 msgid "YourRef"
 msgstr "YourRef"
 
 #: lib/layouts/g-brief-en.layout:105 lib/layouts/g-brief2.layout:746
-#, fuzzy
 msgid "YourRef:"
 msgstr "YourRef"
 
@@ -5221,9 +5135,8 @@ msgid "YourMail"
 msgstr "Adresa ta poºtalã"
 
 #: lib/layouts/g-brief-en.layout:112 lib/layouts/g-brief2.layout:767
-#, fuzzy
 msgid "YourMail:"
-msgstr "YourMail"
+msgstr "Adresa ta poºtalã"
 
 #: lib/layouts/g-brief-en.layout:116
 msgid "Phone"
@@ -5251,12 +5164,11 @@ msgstr "ContBancar"
 
 #: lib/layouts/g-brief-en.layout:172 lib/layouts/g-brief2.layout:778
 msgid "PostalComment"
-msgstr "PostalComment"
+msgstr "ComentariuPostal"
 
 #: lib/layouts/g-brief-en.layout:175 lib/layouts/g-brief2.layout:788
-#, fuzzy
 msgid "PostalComment:"
-msgstr "PostalComment"
+msgstr "ComentariuPostal"
 
 #: lib/layouts/g-brief-en.layout:191 lib/layouts/g-brief2.layout:831
 #: lib/layouts/revtex.layout:108 lib/layouts/revtex4.layout:125
@@ -5547,7 +5459,7 @@ msgstr "BancãLiniaF"
 
 #: lib/layouts/heb-article.layout:68
 msgid "Claim #."
-msgstr "Declaraþie"
+msgstr "Declaraþie #."
 
 #: lib/layouts/heb-article.layout:85
 msgid "Remarks"
@@ -5555,7 +5467,7 @@ msgstr "Remarci"
 
 #: lib/layouts/heb-article.layout:88
 msgid "Remarks #."
-msgstr "Remarci"
+msgstr "Remarci #."
 
 #: lib/layouts/hollywood.layout:56
 msgid "More"
@@ -5563,7 +5475,7 @@ msgstr "Mai mult"
 
 #: lib/layouts/hollywood.layout:68
 msgid "(MORE)"
-msgstr "Mai mult"
+msgstr "(Mai mult)"
 
 #: lib/layouts/hollywood.layout:81 lib/layouts/hollywood.layout:93
 msgid "FADE IN:"
@@ -5583,7 +5495,7 @@ msgstr "Continuare"
 
 #: lib/layouts/hollywood.layout:205
 msgid "(continuing)"
-msgstr "Continuare"
+msgstr "(continuare)"
 
 #: lib/layouts/hollywood.layout:232
 msgid "Transition"
@@ -5591,7 +5503,7 @@ msgstr "Tranziþie"
 
 #: lib/layouts/hollywood.layout:245 lib/layouts/hollywood.layout:257
 msgid "TITLE OVER:"
-msgstr "TITLE_OVER:"
+msgstr "TITLU DE DEASUPRA:"
 
 #: lib/layouts/hollywood.layout:261
 msgid "INTERCUT"
@@ -5729,34 +5641,32 @@ msgstr "Condiþie"
 
 #: lib/layouts/isprs.layout:225
 msgid "ACKNOWLEDGEMENTS"
-msgstr ""
+msgstr "ACKNOWLEDGEMENTS"
 
 #: lib/layouts/kluwer.layout:194
 msgid "AddressForOffprints"
-msgstr "AddressForOffprints"
+msgstr "Adresã pentru reprinturi"
 
 #: lib/layouts/kluwer.layout:203
-#, fuzzy
 msgid "Address for Offprints:"
-msgstr "AddressForOffprints"
+msgstr "Adresã pentru reprinturi"
 
 #: lib/layouts/kluwer.layout:213
 msgid "RunningTitle"
-msgstr ""
+msgstr "Titlul curent"
 
 #: lib/layouts/kluwer.layout:222 lib/layouts/llncs.layout:159
 #: lib/layouts/svjour.inc:178
-#, fuzzy
 msgid "Running title:"
-msgstr "Running_LaTeX_Title"
+msgstr "Titlul curent"
 
 #: lib/layouts/kluwer.layout:236
 msgid "RunningAuthor"
-msgstr ""
+msgstr "Autorul curent"
 
 #: lib/layouts/kluwer.layout:244
 msgid "Running author:"
-msgstr ""
+msgstr "Autorul curent"
 
 #: lib/layouts/latex8.layout:70
 msgid "E-mail:"
@@ -5771,15 +5681,15 @@ msgstr "Capitol"
 
 #: lib/layouts/llncs.layout:144 lib/layouts/svjour.inc:174
 msgid "Running LaTeX Title"
-msgstr "Running_LaTeX_Title"
+msgstr "Titlul LaTeX Curent"
 
 #: lib/layouts/llncs.layout:168
 msgid "TOC Title"
-msgstr "TitluCuprins"
+msgstr "Titlu Cuprins"
 
 #: lib/layouts/llncs.layout:172
 msgid "TOC title:"
-msgstr "TitluCuprins"
+msgstr "Titlu Cuprins"
 
 #: lib/layouts/llncs.layout:197 lib/layouts/svjour.inc:203
 msgid "Author Running"
@@ -5787,7 +5697,7 @@ msgstr "Author_Running"
 
 #: lib/layouts/llncs.layout:201 lib/layouts/svjour.inc:207
 msgid "Author Running:"
-msgstr "Author_Running"
+msgstr "Autor Curent:"
 
 #: lib/layouts/llncs.layout:205
 msgid "TOC Author"
@@ -5830,7 +5740,6 @@ msgid "Property #."
 msgstr "Proprietate #."
 
 #: lib/layouts/llncs.layout:397 lib/layouts/svjour.inc:460
-#, fuzzy
 msgid "Question #."
 msgstr "Întrebare"
 
@@ -5855,9 +5764,8 @@ msgid "SGML"
 msgstr "SGML"
 
 #: lib/layouts/memoir.layout:76
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Chapter_Exercises"
+msgstr "Sumar al Capitolului"
 
 #: lib/layouts/memoir.layout:97
 msgid "Epigraph"
@@ -5872,9 +5780,8 @@ msgid "Poemtitle*"
 msgstr "Titlupoem*"
 
 #: lib/layouts/memoir.layout:151
-#, fuzzy
 msgid "Legend"
-msgstr "Land"
+msgstr "Legendã"
 
 #: lib/layouts/paper.layout:152
 msgid "SubTitle"
@@ -5889,7 +5796,6 @@ msgid "Preprint"
 msgstr "Pretipãrire"
 
 #: lib/layouts/revtex4.layout:153 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "AltAffiliation"
 msgstr "Afiliere"
 
@@ -5902,7 +5808,6 @@ msgid "Electronic Address:"
 msgstr "Adresã electronicã"
 
 #: lib/layouts/revtex4.layout:220
-#, fuzzy
 msgid "acknowledgments"
 msgstr "Acknowledgments"
 
@@ -5911,9 +5816,8 @@ msgid "PACS"
 msgstr "PACS"
 
 #: lib/layouts/revtex4.layout:237
-#, fuzzy
 msgid "PACS number:"
-msgstr "Comutã sublinierea fontului"
+msgstr "Numãr PACS:"
 
 #: lib/layouts/scrbook.layout:17
 msgid "\\arabic{chapter}"
@@ -5934,9 +5838,8 @@ msgid "L"
 msgstr "L"
 
 #: lib/layouts/scrlettr.layout:64
-#, fuzzy
 msgid "O"
-msgstr "La"
+msgstr "O"
 
 #: lib/layouts/scrlettr.layout:83 lib/layouts/scrlttr2.layout:121
 msgid "PS"
@@ -5948,7 +5851,7 @@ msgstr "CC"
 
 #: lib/layouts/scrlettr.layout:109 lib/layouts/scrlttr2.layout:137
 msgid "Encl"
-msgstr "Plic"
+msgstr "Inclus"
 
 #: lib/layouts/scrlettr.layout:112 lib/layouts/scrlttr2.layout:140
 #: lib/layouts/stdletter.inc:122
@@ -5974,19 +5877,17 @@ msgstr "Loc"
 
 #: lib/layouts/scrlettr.layout:172 lib/layouts/scrlttr2.layout:247
 msgid "Backaddress"
-msgstr "Backaddress"
+msgstr "Adresã returnare"
 
 #: lib/layouts/scrlettr.layout:175 lib/layouts/scrlttr2.layout:251
-#, fuzzy
 msgid "Backaddress:"
-msgstr "Backaddress"
+msgstr "Adresã returnare"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:255
 msgid "Specialmail"
 msgstr "EmailSpecial"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:259
-#, fuzzy
 msgid "Specialmail:"
 msgstr "EmailSpecial"
 
@@ -6015,12 +5916,11 @@ msgstr "Subiect"
 
 #: lib/layouts/scrlettr.layout:207 lib/layouts/scrlttr2.layout:287
 msgid "Yourref"
-msgstr "Yourref"
+msgstr "Ref_dumneavoastrã"
 
 #: lib/layouts/scrlettr.layout:210 lib/layouts/scrlttr2.layout:291
-#, fuzzy
 msgid "Your ref.:"
-msgstr "Yourref"
+msgstr "Ref_dumneavoastrã"
 
 #: lib/layouts/scrlettr.layout:221 lib/layouts/scrlttr2.layout:303
 msgid "Yourmail"
@@ -6035,9 +5935,8 @@ msgid "Myref"
 msgstr "Myref"
 
 #: lib/layouts/scrlettr.layout:231 lib/layouts/scrlttr2.layout:315
-#, fuzzy
 msgid "Our ref.:"
-msgstr "Yourref"
+msgstr "Referinþa noastrã"
 
 #: lib/layouts/scrlettr.layout:235 lib/layouts/scrlttr2.layout:319
 msgid "Customer"
@@ -6052,7 +5951,6 @@ msgid "Invoice"
 msgstr "Facturã"
 
 #: lib/layouts/scrlettr.layout:245 lib/layouts/scrlttr2.layout:331
-#, fuzzy
 msgid "Invoice no.:"
 msgstr "Facturã cu nr."
 
@@ -6165,14 +6063,12 @@ msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:115
-#, fuzzy
 msgid "Progress Contents"
-msgstr "ProgressContents"
+msgstr "Progresul Sumarului"
 
 #: lib/layouts/siamltex.layout:52
-#, fuzzy
 msgid "\tEnd."
-msgstr "Plic"
+msgstr "\\tªfîrºit."
 
 #: lib/layouts/siamltex.layout:102 lib/layouts/aguplus.inc:66
 #: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:57
@@ -6237,7 +6133,7 @@ msgstr "ABSTRACT"
 
 #: lib/layouts/spie.layout:93
 msgid "ACKNOWLEDGMENTS"
-msgstr ""
+msgstr "ACKNOWLEDGMENTS"
 
 #: lib/layouts/aapaper.inc:56
 msgid "email:"
@@ -6276,55 +6172,48 @@ msgid "AGU-journal:"
 msgstr "Jurnal - AGU"
 
 #: lib/layouts/agu_stdtitle.inc:56
-#, fuzzy
 msgid "Citation-number"
-msgstr "Citare"
+msgstr "Numãr-Citare"
 
 #: lib/layouts/agu_stdtitle.inc:59
-#, fuzzy
 msgid "Citation-number:"
-msgstr "Înregistrare citare"
+msgstr "Numãr-citare"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
-msgstr ""
+msgstr "Volum-AGU"
 
 #: lib/layouts/agu_stdtitle.inc:68
 msgid "AGU-volume:"
-msgstr ""
+msgstr "Volum-AGU"
 
 #: lib/layouts/agu_stdtitle.inc:73
 msgid "AGU-issue"
-msgstr ""
+msgstr "Numãr-AGU"
 
 #: lib/layouts/agu_stdtitle.inc:76
 msgid "AGU-issue:"
-msgstr ""
+msgstr "Numãr-AGU"
 
 #: lib/layouts/agu_stdtitle.inc:84
-#, fuzzy
 msgid "Copyright:"
 msgstr "Drepturi de autor"
 
 #: lib/layouts/agu_stdtitle.inc:89
-#, fuzzy
 msgid "Index-terms"
-msgstr "Înregistrare index"
+msgstr "Intrãri index"
 
 #: lib/layouts/agu_stdtitle.inc:93
-#, fuzzy
 msgid "Index-terms..."
-msgstr "Intrare index...|i"
+msgstr "Intrãri index"
 
 #: lib/layouts/agu_stdtitle.inc:102
-#, fuzzy
 msgid "Index-term"
-msgstr "Înregistrare index"
+msgstr "Intrare index:"
 
 #: lib/layouts/agu_stdtitle.inc:106
-#, fuzzy
 msgid "Index-term:"
-msgstr "Înregistrare index"
+msgstr "Intrare index:"
 
 #: lib/layouts/agu_stdtitle.inc:111
 #, fuzzy
@@ -6337,51 +6226,44 @@ msgid "Cross-term:"
 msgstr "CrossList"
 
 #: lib/layouts/agu_stdtitle.inc:136
-#, fuzzy
 msgid "Supplementary"
-msgstr "Sumar"
+msgstr "Suplimentar"
 
 #: lib/layouts/agu_stdtitle.inc:140
 msgid "Supplementary..."
 msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:149
-#, fuzzy
 msgid "Supp-note"
-msgstr "notã"
+msgstr "Notã-sup"
 
 #: lib/layouts/agu_stdtitle.inc:153
 msgid "Sup-mat-note:"
-msgstr ""
+msgstr "Notã-matematicã-sup:"
 
 #: lib/layouts/agu_stdtitle.inc:158
-#, fuzzy
 msgid "Cite-other"
-msgstr "Centrat"
+msgstr "Citeazã-pe-alþii"
 
 #: lib/layouts/agu_stdtitle.inc:162
-#, fuzzy
 msgid "Cite-other:"
-msgstr "Stil de &citare:"
+msgstr "Citeazã-pe-alþii:"
 
 #: lib/layouts/agu_stdtitle.inc:206 lib/layouts/aguplus.inc:115
 msgid "Revised"
 msgstr "Revizuit"
 
 #: lib/layouts/agu_stdtitle.inc:209 lib/layouts/aguplus.inc:119
-#, fuzzy
 msgid "Revised:"
 msgstr "Revizuit"
 
 #: lib/layouts/agu_stdtitle.inc:222
-#, fuzzy
 msgid "Ident-line"
-msgstr "În-&linie"
+msgstr "Aliniat"
 
 #: lib/layouts/agu_stdtitle.inc:225
-#, fuzzy
 msgid "Ident-line:"
-msgstr "În-&linie"
+msgstr "Aliniat"
 
 #: lib/layouts/agu_stdtitle.inc:230
 #, fuzzy
@@ -6394,98 +6276,85 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:241
 msgid "Published-online:"
-msgstr ""
+msgstr "Publicat pe internet:"
 
 #: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.C:44
 msgid "Citation"
 msgstr "Citare"
 
 #: lib/layouts/agu_stdtitle.inc:266
-#, fuzzy
 msgid "Citation:"
 msgstr "Citare"
 
 #: lib/layouts/agu_stdtitle.inc:271
 msgid "Posting-order"
-msgstr ""
+msgstr "Ordinea-postãrii"
 
 #: lib/layouts/agu_stdtitle.inc:274
 msgid "Posting-order:"
-msgstr ""
+msgstr "Ordinea-postãrii:"
 
 #: lib/layouts/agu_stdtitle.inc:279
 msgid "AGU-pages"
-msgstr ""
+msgstr "Pagini-AGU"
 
 #: lib/layouts/agu_stdtitle.inc:282
-#, fuzzy
 msgid "AGU-pages:"
-msgstr "Pagini impare:"
+msgstr "Pagini-AGU:"
 
 #: lib/layouts/agu_stdtitle.inc:287
-#, fuzzy
 msgid "Words"
-msgstr "Margini"
+msgstr "Cuvinte"
 
 #: lib/layouts/agu_stdtitle.inc:290
-#, fuzzy
 msgid "Words:"
-msgstr "Margini"
+msgstr "Cuvinte"
 
 #: lib/layouts/agu_stdtitle.inc:295
-#, fuzzy
 msgid "Figures"
-msgstr "Figurã"
+msgstr "Figuri"
 
 #: lib/layouts/agu_stdtitle.inc:298
-#, fuzzy
 msgid "Figures:"
-msgstr "Figurã"
+msgstr "Figuri:"
 
 #: lib/layouts/agu_stdtitle.inc:303
-#, fuzzy
 msgid "Tables"
-msgstr "Tabel"
+msgstr "Tabele"
 
 #: lib/layouts/agu_stdtitle.inc:306
-#, fuzzy
 msgid "Tables:"
-msgstr "Tabel"
+msgstr "Tabele"
 
 #: lib/layouts/agu_stdtitle.inc:311
-#, fuzzy
 msgid "Datasets"
-msgstr "Datã"
+msgstr "Seturi de date"
 
 #: lib/layouts/agu_stdtitle.inc:314
-#, fuzzy
 msgid "Datasets:"
-msgstr "Datã"
+msgstr "Seturi de date:"
 
 #: lib/layouts/aguplus.inc:131
 msgid "CCC"
 msgstr "CCC"
 
 #: lib/layouts/aguplus.inc:135
-#, fuzzy
 msgid "CCC code:"
-msgstr "Cod"
+msgstr "Cod CCC:"
 
 #: lib/layouts/aguplus.inc:144
 msgid "PaperId"
-msgstr "PaperId"
+msgstr "Id Publicaþie"
 
 #: lib/layouts/aguplus.inc:148
-#, fuzzy
 msgid "Paper Id:"
-msgstr "PaperId"
+msgstr "Id Publicaþie"
 
 #: lib/layouts/aguplus.inc:152
 msgid "AuthorAddr"
-msgstr "AuthorAddr"
+msgstr "Adresã autor"
 
 #: lib/layouts/aguplus.inc:156
-#, fuzzy
 msgid "Author Address:"
 msgstr "Adresã_Autor"
 
@@ -6499,9 +6368,8 @@ msgid "Slug Comment:"
 msgstr "SlugComment"
 
 #: lib/layouts/aguplus.inc:180
-#, fuzzy
 msgid "Plate"
-msgstr "Place"
+msgstr "Tãbliþã"
 
 #: lib/layouts/aguplus.inc:190
 #, fuzzy
@@ -6513,7 +6381,6 @@ msgid "Table Caption"
 msgstr "Table_Caption"
 
 #: lib/layouts/aguplus.inc:212
-#, fuzzy
 msgid "TableCaption"
 msgstr "Table_Caption"
 
@@ -6522,25 +6389,22 @@ msgid "Current Address"
 msgstr "Adresa_Curentã"
 
 #: lib/layouts/amsdefs.inc:174
-#, fuzzy
 msgid "Current address:"
-msgstr "Adresa_Curentã"
+msgstr "Adresa_Curentã:"
 
 #: lib/layouts/amsdefs.inc:182
-#, fuzzy
 msgid "E-mail address:"
-msgstr "Backaddress"
+msgstr "Adresã e-mail:"
 
 #: lib/layouts/amsdefs.inc:197
 msgid "Key words and phrases:"
-msgstr ""
+msgstr "Cuvinte ºi expressi cheie:"
 
 #: lib/layouts/amsdefs.inc:208
 msgid "Dedicatory"
-msgstr "Dedicatory"
+msgstr "Dedicat"
 
 #: lib/layouts/amsdefs.inc:211 lib/layouts/svjour.inc:125
-#, fuzzy
 msgid "Dedication:"
 msgstr "Dedicaþie"
 
@@ -6549,70 +6413,68 @@ msgid "Translator"
 msgstr "Traducãtor"
 
 #: lib/layouts/amsdefs.inc:218
-#, fuzzy
 msgid "Translator:"
-msgstr "Traducãtor"
+msgstr "Traducãtor:"
 
 #: lib/layouts/amsdefs.inc:222
 msgid "Subjectclass"
-msgstr "Subjectclass"
+msgstr "Clasificare în funcþtie de subiect"
 
 #: lib/layouts/amsdefs.inc:225
 msgid "1991 Mathematics Subject Classification:"
-msgstr ""
+msgstr "Clasificarea domeniilor matematice din 1991:"
 
 #: lib/layouts/amsmaths-plain.inc:95
-#, fuzzy
 msgid "Algorithm #."
-msgstr "Algoritm"
+msgstr "Algoritm #."
 
 #: lib/layouts/amsmaths.inc:106
 msgid "Corollary @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Corolariu  @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:128
 msgid "Lemma @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Lemã @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:150
 msgid "Proposition @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Propoziþie  @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:172
 msgid "Conjecture @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Conjecturã @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:180
 msgid "Conjecture*"
-msgstr "Ipotezã*"
+msgstr "Conjecturã*"
 
 #: lib/layouts/amsmaths.inc:194
 msgid "Criterion @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Criteriu @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:205
 msgid "Algorithm @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Algoritm @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:216
 msgid "Fact @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Fapt @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:224
 msgid "Fact*"
-msgstr "Fact*"
+msgstr "Fapt*"
 
 #: lib/layouts/amsmaths.inc:238
 msgid "Axiom @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Axiomã @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:249
 msgid "Definition @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Definiþie @Section@.\\\\arabic{theorem}.\""
 
 #: lib/layouts/amsmaths.inc:279
 msgid "Example @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Exemplu @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:287
 msgid "Example*"
@@ -6623,31 +6485,28 @@ msgid "Condition @Section@.\\arabic{theorem}."
 msgstr ""
 
 #: lib/layouts/amsmaths.inc:309
-#, fuzzy
 msgid "Condition*"
 msgstr "Condiþie"
 
 #: lib/layouts/amsmaths.inc:323
 msgid "Problem @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Problemã @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:331
-#, fuzzy
 msgid "Problem*"
 msgstr "Problemã"
 
 #: lib/layouts/amsmaths.inc:345
 msgid "Exercise @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Exerciþiu @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:354
-#, fuzzy
 msgid "Exercise*"
 msgstr "Exerciþiu"
 
 #: lib/layouts/amsmaths.inc:368
 msgid "Remark @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Remarcã @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:384
 msgid "Remark*"
@@ -6655,7 +6514,7 @@ msgstr "Remarcã*"
 
 #: lib/layouts/amsmaths.inc:399
 msgid "Claim @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Declaraþie @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:407
 msgid "Claim*"
@@ -6663,7 +6522,7 @@ msgstr "Declaraþie*"
 
 #: lib/layouts/amsmaths.inc:421
 msgid "Note @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Notã @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:429
 msgid "Note*"
@@ -6671,20 +6530,19 @@ msgstr "Notã*"
 
 #: lib/layouts/amsmaths.inc:443
 msgid "Notation @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Notaþie @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:451
-#, fuzzy
 msgid "Notation*"
 msgstr "Notaþie"
 
 #: lib/layouts/amsmaths.inc:465
 msgid "Summary @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Sumar @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:476
 msgid "Acknowledgement @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Acknowledgement @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:484
 msgid "Acknowledgement*"
@@ -6692,11 +6550,11 @@ msgstr "Acknowledgement*"
 
 #: lib/layouts/amsmaths.inc:498
 msgid "Case @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Caz @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:509
 msgid "Conclusion @Section@.\\arabic{theorem}."
-msgstr ""
+msgstr "Concluzie @Section@.\\\\arabic{theorem}."
 
 #: lib/layouts/amsmaths.inc:517
 msgid "Conclusion*"
@@ -6716,20 +6574,19 @@ msgstr "Subparagraf*"
 
 #: lib/layouts/db_stdtitle.inc:27
 msgid "Authorgroup"
-msgstr "Authorgroup"
+msgstr "Grup de autori"
 
 #: lib/layouts/db_stdtitle.inc:43
 msgid "RevisionHistory"
-msgstr "RevisionHistory"
+msgstr "Istoria Reviziilor"
 
 #: lib/layouts/db_stdtitle.inc:59
-#, fuzzy
 msgid "Revision History"
-msgstr "RevisionHistory"
+msgstr "Istoria Reviziilor"
 
 #: lib/layouts/db_stdtitle.inc:64
 msgid "Revision"
-msgstr "Revision"
+msgstr "Revizia"
 
 #: lib/layouts/db_stdtitle.inc:80
 msgid "RevisionRemark"
