@@ -49,6 +49,7 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
+#include <boost/current_function.hpp>
 #include <boost/tuple/tuple.hpp>
 
 #include <string>
