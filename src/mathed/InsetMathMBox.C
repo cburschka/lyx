@@ -12,6 +12,7 @@
 
 #include "InsetMathMBox.h"
 #include "MathData.h"
+#include "MathStream.h"
 
 #include "BufferView.h"
 #include "buffer.h"
@@ -23,24 +24,23 @@
 #include "outputparams.h"
 #include "paragraph.h"
 #include "texrow.h"
-
+#include "TextMetrics.h"
 
 namespace lyx {
 
-using odocstream;
+//using support::odocstream;
 
 using std::auto_ptr;
 using std::endl;
 
 
 InsetMathMBox::InsetMathMBox(BufferView & bv)
-	: text_(&bv), bv_(&bv)
+	: text_(), bv_(&bv)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());
 	text_.paragraphs().back().
 		layout(bv.buffer()->params().getLyXTextClass().defaultLayout());
-	text_.redoParagraph(0);
 }
 
 
@@ -52,7 +52,8 @@ auto_ptr<InsetBase> InsetMathMBox::doClone() const
 
 bool InsetMathMBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	text_.metrics(mi, dim);
+	TextMetrics & tm = mi.base.bv->textMetrics(&text_);
+	tm.metrics(mi, dim);
 	metricsMarkers2(dim);
 	if (dim_ == dim)
 		return false;
@@ -114,8 +115,8 @@ LyXText * InsetMathMBox::getText(int) const
 void InsetMathMBox::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
-	x = text_.cursorX(sl, boundary);
-	y = text_.cursorY(sl, boundary);
+	x = text_.cursorX(bv, sl, boundary);
+	y = text_.cursorY(bv, sl, boundary);
 }
 
 

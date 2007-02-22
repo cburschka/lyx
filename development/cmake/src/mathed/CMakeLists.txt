@@ -11,7 +11,6 @@ file(GLOB mathed_headers ${TOP_SRC_DIR}/src/mathed/*.h)
 
 list(REMOVE_ITEM mathed_sources
 	${TOP_SRC_DIR}/src/mathed/InsetMathXYArrow.C
-	${TOP_SRC_DIR}/src/mathed/InsetMathMBox.C
 	${TOP_SRC_DIR}/src/mathed/InsetFormulaMacro.C)
 
 lyx_add_msvc_pch(mathed)
