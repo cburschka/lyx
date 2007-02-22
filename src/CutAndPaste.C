@@ -643,7 +643,20 @@ void copySelectionToStack()
 
 void copySelection(LCursor & cur, docstring const & plaintext)
 {
-	copySelectionToStack(cur, theCuts);
+	// In tablemode, because copy and paste actually use special table stack
+	// we do not attemp to get selected paragraphs under cursor. Instead, a 
+	// paragraph with the plain text version is generated so that table cells
+	// can be pasted as pure text somewhere else.
+	if (cur.selBegin().idx() != cur.selEnd().idx()) {
+		ParagraphList pars;
+		Paragraph par;
+		BufferParams const & bp = cur.buffer().params();
+		par.layout(bp.getLyXTextClass().defaultLayout());
+		par.insert(0, plaintext, LyXFont(), Change(Change::UNCHANGED));
+		pars.push_back(par);
+		theCuts.push(make_pair(pars, bp.textclass));
+	} else
+		copySelectionToStack(cur, theCuts);
 
 	// stuff the selection onto the X clipboard, from an explicit copy request
 	putClipboard(theCuts[0].first, theCuts[0].second, plaintext);
