@@ -214,7 +214,7 @@ Encoding::Encoding(string const & n, string const & l, string const & i)
 	if (n == "ascii")
 		// ASCII can encode 128 code points and nothing else
 		start_encodable_ = 128;
-	if (n == "utf8" || n == "utf8x")
+	else if (i == "UTF-8")
 		// UTF8 can encode all 1<<20 + 1<<16 UCS4 code points
 		start_encodable_ = 0x110000;
 	else {

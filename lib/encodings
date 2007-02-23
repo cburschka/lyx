@@ -1,6 +1,11 @@
 # FIXME: Have a look at the encodings known by the inputenc package and add
 # missing ones. Caution: File format change!
 
+# Note that you can only add single byte encodings to this file without
+# changing some C++ code.
+# The only multibyte encoding that is currently supported is utf8, and this
+# support is hardcoded to the iconv name "UTF-8".
+
 # Order of names: LyX name LaTeX name iconv name
 
 Encoding utf8 utf8 UTF-8
