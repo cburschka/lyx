@@ -9,6 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#define MATH_MBOX
+
+#ifdef MATH_MBOX
+
 #ifndef MATH_MBOXINSET_H
 #define MATH_MBOXINSET_H
 
@@ -26,7 +30,9 @@ class BufferView;
 class InsetMathMBox : public InsetMathDim {
 public:
 	///
+	explicit InsetMathMBox();
 	explicit InsetMathMBox(LyXLayout_ptr const & layout);
+
 	/// this stores metrics information in cache_
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics
@@ -61,4 +67,7 @@ private:
 
 
 } // namespace lyx
-#endif
+
+#endif //MATH_MBOXINSET_H
+
+#endif //MATH_MBOX

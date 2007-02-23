@@ -34,6 +34,13 @@ using std::auto_ptr;
 using std::endl;
 
 
+InsetMathMBox::InsetMathMBox()
+{
+	text_.paragraphs().clear();
+	text_.paragraphs().push_back(Paragraph());
+}
+
+
 InsetMathMBox::InsetMathMBox(LyXLayout_ptr const & layout)
 {
 	text_.paragraphs().clear();
