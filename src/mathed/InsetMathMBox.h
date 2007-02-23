@@ -18,13 +18,15 @@
 
 namespace lyx {
 
+class Buffer;
+class BufferView;
 
 // almost a substitute for the real text inset...
 
 class InsetMathMBox : public InsetMathDim {
 public:
 	///
-	explicit InsetMathMBox(BufferView & bv);
+	explicit InsetMathMBox(LyXLayout_ptr const & layout);
 	/// this stores metrics information in cache_
 	bool metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// draw according to cached metrics
@@ -37,7 +39,7 @@ public:
 	bool isActive() const { return true; }
 
 	///
-	void write(WriteStream & os) const;
+	void write(Buffer const & buf, WriteStream & os) const;
 	///
 	int latex(Buffer const &, odocstream & os,
 			OutputParams const & runparams) const;
@@ -51,8 +53,7 @@ protected:
 
 	///
 	mutable LyXText text_;
-	///
-	BufferView * const bv_;
+
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 };

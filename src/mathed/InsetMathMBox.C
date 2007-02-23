@@ -34,13 +34,11 @@ using std::auto_ptr;
 using std::endl;
 
 
-InsetMathMBox::InsetMathMBox(BufferView & bv)
-	: text_(), bv_(&bv)
+InsetMathMBox::InsetMathMBox(LyXLayout_ptr const & layout)
 {
 	text_.paragraphs().clear();
 	text_.paragraphs().push_back(Paragraph());
-	text_.paragraphs().back().
-		layout(bv.buffer()->params().getLyXTextClass().defaultLayout());
+	text_.paragraphs().back().layout(layout);
 }
 
 
@@ -69,20 +67,19 @@ void InsetMathMBox::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetMathMBox::write(WriteStream & ws) const
+void InsetMathMBox::write(Buffer const & buf, WriteStream & ws) const
 {
 	if (ws.latex()) {
 		ws << "\\mbox{\n";
 		TexRow texrow;
 		OutputParams runparams;
-		latexParagraphs(*bv_->buffer(), text_.paragraphs(),
-			ws.os(), texrow, runparams);
+		latexParagraphs(buf, text_.paragraphs(), ws.os(), texrow, runparams);
 		ws.addlines(texrow.rows());
 		ws << "}";
 	} else {
 		ws << "\\mbox{\n";
 		std::ostringstream os;
-		text_.write(*bv_->buffer(), os);
+		text_.write(buf, os);
 		ws.os() << from_utf8(os.str());
 		ws << "}";
 	}
