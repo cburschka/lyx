@@ -121,6 +121,7 @@ Lists of files to include in the installer
 
 !macro FileListPythonLib COMMAND DIRECTORY
 
+  ${FILE}__future__.py"
   ${FILE}UserDict.py"
   ${FILE}codecs.py"
   ${FILE}copy_reg.py"
