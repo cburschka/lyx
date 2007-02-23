@@ -428,16 +428,18 @@ int InsetBox::docbook(Buffer const & buf, odocstream & os,
 
 void InsetBox::validate(LaTeXFeatures & features) const
 {
-	features.require("calc");
 	BoxType btype = boxtranslator().find(params_.type);
 	switch (btype) {
 	case Frameless:
+		break;
 	case Boxed:
+		features.require("calc");
 		break;
 	case ovalbox:
 	case Ovalbox:
 	case Shadowbox:
 	case Doublebox:
+		features.require("calc");
 		features.require("fancybox");
 		break;
 	}
