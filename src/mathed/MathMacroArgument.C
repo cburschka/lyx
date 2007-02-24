@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "MathMacroArgument.h"
-#include "InsetMathMacro.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "debug.h"

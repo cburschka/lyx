@@ -32,7 +32,6 @@
 #include "lyxrow.h"
 #include "outputparams.h"
 #include "paragraph_funcs.h"
-#include "ParagraphList_fwd.h"
 
 #include "rowpainter.h"
 

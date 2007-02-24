@@ -33,7 +33,6 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "ParagraphList_fwd.h"
 #include "pariterator.h"
 #include "undo.h"
 

@@ -12,7 +12,6 @@
 
 #include "pariterator.h"
 
-#include "ParagraphList_fwd.h"
 #include "paragraph.h"
 #include "lyxtext.h"
 

@@ -602,7 +602,6 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 #include "mathed/InsetMathScript.h"
 #include "mathed/InsetMathUnknown.h"
 #include "mathed/MathFactory.h"
-#include "mathed/MathMacroArgument.h"
 #include "mathed/MathStream.h"
 #include "mathed/MathSupport.h"
 
