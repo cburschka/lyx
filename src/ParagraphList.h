@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file ParagraphList_fwd.h
+ * \file ParagraphList.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
