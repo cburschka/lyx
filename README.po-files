@@ -1,0 +1,58 @@
+
+	 PO FAQ
+       ----------
+
+This file is mainly intended for those who have no or little experience using .po files,
+but want to contribute by translating the LyX interface into their native language.
+
+1) WHERE DO I START?
+
+The file you need to edit it an xx.po file where xx stands for your language's two letter
+code. German would be for example de.po and Polish pl.po.
+If you want to start from scratch than you should obtain a copy of the lyx.pot file.
+
+2) HOW DO I EDIT PO FILES?
+
+PO files can be edited with every text editor available for your system (e.g. VIM, NotePad etc.).
+Yet another option is to use a specialized editor for .po files. You can e.g. use the editors
+"poEdit" or "jEdit", Linux users can additionally use e.g. "kbabel". Using these editors usually
+makes things easier as they have many tools to assist the translator.
+
+3) WHAT DO I NEED TO TRANSLATE?
+
+If your using a simple text editor you should translate the strings that appear in the msgid line
+and write the translation into the msgstr line. You can also add "#, fuzzy" in order to mark a 
+translation as fuzzy. It is recommended that you would take a look at another .po file - that
+way you can get an idea of what to do.
+If your using a specialized po editor then you will see in it the untranslated strings and a 
+place to write your translation for them.
+
+4) WHAT SHOULD I DO WITH THE '&', '|', '$, AND '%' CHARACTERS?
+
+'&' stands for underlined characters (shortcut) in dialog boxes.
+'|' stands for underlined characters in menus.
+'$' and '%' are usually used as handlers for formating or variables to be inserted
+into the strings.
+So all these chars should be somehow used in your translations, however
+you'll have to invent your own working shortcuts for dialog and menu entries
+and resolve possible conflicts of the same shortcut chars in one menu... 
+
+5) WHAT IS pocheck.pl AND HOW DO I USE IT?
+
+This is a small script located in the "po" directory of the source that helps you find common
+errors in your translation. In order to use this script you have to have the script language Perl
+installed.
+
+6) HOW 	CAN I TEST MY TRANSLATION?
+
+In order to test your translation you need to obtain the LyX source (from the SVN) and replace
+the existing .po with yours. Afterwards, you should compile and install LyX (check the INSTALL
+file for your OS). If you don't install LyX it won't work.
+Now, run LyX using the appropriate LANG variable:
+In Linux: LANG=xx_CC lyx
+In Windows you need to change the lyx.bat file and write: set LANG=xx_CC
+xx stands for your language code. CC stands for your country code. So to get for example Czech
+the code is "cs_CZ".
+
+
+Written by Ran Rutenberg 2007
