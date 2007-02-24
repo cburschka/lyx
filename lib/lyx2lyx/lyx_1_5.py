@@ -1222,6 +1222,26 @@ def revert_ascii(document):
     document.inputencoding = get_value(document.header, "\\inputencoding", 0)
 
 
+def normalize_language_name(document):
+    lang = { "brazil": "brazilian",
+             "portuges": "portuguese"}
+
+    if document.language in lang:
+        document.language = lang[document.language]
+        i = find_token(document.header, "\\language", 0)
+        document.header[i] = "\\language %s" % document.language
+
+
+def revert_language_name(document):
+    lang = { "brazilian": "brazil",
+             "portuguese": "portuges"}
+
+    if document.language in lang:
+        document.language = lang[document.language]
+        i = find_token(document.header, "\\language", 0)
+        document.header[i] = "\\language %s" % document.language
+
+
 ##
 # Conversion hub
 #
@@ -1243,9 +1263,11 @@ convert = [[246, []],
            [259, [convert_accent, normalize_font_whitespace]],
            [260, []],
            [261, [convert_changes]],
-           [262, []]]
+           [262, []],
+           [263, [normalize_language_name]]]
 
-revert =  [[261, [revert_ascii]],
+revert =  [[262, [revert_language_name]],
+           [261, [revert_ascii]],
            [260, []],
            [259, [revert_utf8x]],
            [258, []],
