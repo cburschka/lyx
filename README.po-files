@@ -1,6 +1,8 @@
 
-	 PO FAQ
-       ----------
+	PO FAQ
+              
+   by Ran Rutenberg, Pavel Sanda
+   February 2007
 
 This file is mainly intended for those who have no or little experience using .po files,
 but want to contribute by translating the LyX interface into their native language.
@@ -9,6 +11,8 @@ but want to contribute by translating the LyX interface into their native langua
 
 The file you need to edit it an xx.po file where xx stands for your language's two letter
 code. German would be for example de.po and Polish pl.po.
+For a list of country codes look at:
+http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#SEC222
 If you want to start from scratch than you should obtain a copy of the lyx.pot file.
 
 2) HOW DO I EDIT PO FILES?
@@ -21,9 +25,10 @@ makes things easier as they have many tools to assist the translator.
 3) WHAT DO I NEED TO TRANSLATE?
 
 If your using a simple text editor you should translate the strings that appear in the msgid line
-and write the translation into the msgstr line. You can also add "#, fuzzy" in order to mark a 
-translation as fuzzy. It is recommended that you would take a look at another .po file - that
-way you can get an idea of what to do.
+and write the translation into the msgstr line. Note that a "#, fuzzy" line is just a hint
+for translation from compiler - in order to get the translation of the current item working
+you have to delete this line. It is recommended that you would take a look at another .po file -
+that way you can get an idea of what to do.
 If your using a specialized po editor then you will see in it the untranslated strings and a 
 place to write your translation for them.
 
@@ -43,16 +48,17 @@ This is a small script located in the "po" directory of the source that helps yo
 errors in your translation. In order to use this script you have to have the script language Perl
 installed.
 
-6) HOW 	CAN I TEST MY TRANSLATION?
+6) HOW CAN I TEST MY TRANSLATION?
 
 In order to test your translation you need to obtain the LyX source (from the SVN) and replace
 the existing .po with yours. Afterwards, you should compile and install LyX (check the INSTALL
 file for your OS). If you don't install LyX it won't work.
-Now, run LyX using the appropriate LANG variable:
+For running LyX with your translation, use the appropriate LANG variable:
 In Linux: LANG=xx_CC lyx
 In Windows you need to change the lyx.bat file and write: set LANG=xx_CC
 xx stands for your language code. CC stands for your country code. So to get for example Czech
 the code is "cs_CZ".
 
-
-Written by Ran Rutenberg 2007
+7) REFERENCES
+For basic idea how the translation works you can look http://en.wikipedia.org/wiki/Gettext
+Just for detailed reference you can look at http://www.gnu.org/software/gettext/manual/gettext.html
