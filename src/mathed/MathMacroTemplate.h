@@ -44,6 +44,11 @@ public:
 	void write(Buffer const &, std::ostream & os) const;
 	///
 	void write(WriteStream & os) const;
+	///
+	int plaintext(Buffer const &, odocstream & os,
+			OutputParams const &) const
+	{ os << "[math macro]"; return 12; }
+
 	/// Number of arguments
 	int numargs() const;
 	///
