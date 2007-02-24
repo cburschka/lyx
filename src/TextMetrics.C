@@ -707,14 +707,13 @@ void TextMetrics::setHeightOfRow(pit_type const pit,
 		// environment.
 
 		pit_type prev = depthHook(pit, pars, par.getDepth());
-		if (prev != pit) {
-			Paragraph const & prevpar = pars[prev];
-			if (prevpar.layout() == layout
-				&& prevpar.getDepth() == par.getDepth()
-				&& prevpar.getLabelWidthString()
+		Paragraph const & prevpar = pars[prev];
+		if (prev != pit
+		    && prevpar.layout() == layout
+		    && prevpar.getDepth() == par.getDepth()
+		    && prevpar.getLabelWidthString()
 					== par.getLabelWidthString()) {
-					layoutasc = layout->itemsep * dh;
-			}
+			layoutasc = layout->itemsep * dh;
 		} else if (pit != 0 || row.pos() != 0) {
 			if (layout->topsep > 0)
 				layoutasc = layout->topsep * dh;
