@@ -117,9 +117,6 @@ string const makeLatexName(string const & file)
 	string name = onlyFilename(file);
 	string const path = onlyPath(file);
 
-	for (string::size_type i = 0; i < name.length(); ++i)
-		name[i] &= 0x7f; // set 8th bit to 0
-
 	// ok so we scan through the string twice, but who cares.
 	string const keep = "abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
