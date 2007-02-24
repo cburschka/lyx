@@ -407,7 +407,7 @@ int InsetBox::plaintext(Buffer const & buf, odocstream & os,
 
 	int len = 0;
 	switch (btype) {
-		case Frameless: break;
+		case Frameless: os << "\n";            break;
 		case Boxed:     os << "\n]";  len = 1; break;
 		case ovalbox:   os << "\n)";  len = 1; break;
 		case Ovalbox:   os << "\n))"; len = 2; break;
