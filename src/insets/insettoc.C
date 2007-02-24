@@ -57,7 +57,7 @@ InsetBase::Code InsetTOC::lyxCode() const
 
 
 int InsetTOC::plaintext(Buffer const & buffer, odocstream & os,
-                        OutputParams const & runparams) const
+                        OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

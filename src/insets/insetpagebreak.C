@@ -88,7 +88,7 @@ int InsetPagebreak::latex(Buffer const &, odocstream & os,
 
 
 int InsetPagebreak::plaintext(Buffer const &, odocstream & os,
-                              OutputParams const & runparams) const
+                              OutputParams const &) const
 {
 	os << '\n';
 	return PLAINTEXT_NEWLINE;
