@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-21 18:55+0100\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2007-02-22 00:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -245,7 +245,9 @@ msgstr "S&trojopisný:"
 #: src/frontends/qt4/ui/FontUi.ui:90
 #: src/frontends/qt4/ui/QPrefScreenFontsUi.ui:114
 msgid "&Roman:"
-msgstr "&Antikva\n(Roman):"
+msgstr ""
+"&Antikva\n"
+"(Roman):"
 
 #: src/frontends/qt4/ui/FontUi.ui:110
 msgid "S&cale (%):"
@@ -253,7 +255,9 @@ msgstr "Mìøítk&o (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:123
 msgid "&Sans Serif:"
-msgstr "&Bezpatkové\n(Sans Serif):"
+msgstr ""
+"&Bezpatkové\n"
+"(Sans Serif):"
 
 #: src/frontends/qt4/ui/FontUi.ui:146
 msgid "Use &Old Style Figures"
@@ -265,11 +269,15 @@ msgstr "&Kapitálky"
 
 #: src/frontends/qt4/ui/FontUi.ui:160
 msgid "&Default Family:"
-msgstr "Stan&dardní\ntøída:"
+msgstr ""
+"Stan&dardní\n"
+"tøída:"
 
 #: src/frontends/qt4/ui/FontUi.ui:173
 msgid "&Base Size:"
-msgstr "&Základní\nvelikost:"
+msgstr ""
+"&Základní\n"
+"velikost:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Document &class:"
@@ -436,7 +444,7 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1410,107 +1418,111 @@ msgstr "Horizontální zarovnání dle sloupce (l,s,p)"
 msgid "&Horizontal:"
 msgstr "&Horizontálnì:"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr "Otevøít tenhle panel jako samostatné okno"
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr "O&ddìlit panel"
 
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 msgid "Select a page of symbols"
 msgstr "Vybrat stránku se symboly"
 
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 msgid "Operators"
 msgstr "Operátory"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr "Velké operátory"
 
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 msgid "Relations"
 msgstr "Relace"
 
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "Øeètina"
 
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 msgid "Arrows"
 msgstr "©ipeèky"
 
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 msgid "Dots"
 msgstr "Teèky"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr "Dekorace rámù"
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr "Rùzné"
 
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 msgid "AMS operators"
 msgstr "AMS operátory"
 
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 msgid "AMS relations"
 msgstr "AMS relace"
 
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 msgid "AMS negated relations"
 msgstr "AMS negované relace"
 
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 msgid "AMS arrows"
 msgstr "AMS ¹ipeèky"
 
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 msgid "AMS Miscellaneous"
 msgstr "AMS Rùzné"
 
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 msgid "&Functions"
 msgstr "&Funkce"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 msgid "Insert root"
 msgstr "Vlo¾it odmocninu"
 
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 msgid "Insert spacing"
 msgstr "Vlo¾it mezeru"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr "Nastavit styl indexù"
 
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 msgid "Set math font"
 msgstr "Nastavit font pro matematiku"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+msgid "Insert fraction"
+msgstr "Vlo¾it zlomek"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 msgid "Toggle between display and inline mode"
 msgstr "Pøepínání mezi display (celoøádkový) a inline módem"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 msgid "Subscript"
 msgstr "Index dole"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 msgid "Superscript"
 msgstr "Index nahoøe"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 msgid "Insert matrix"
 msgstr "Vlo¾it matici"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr "Dialog pro oddìlovaèe a závorky"
 
@@ -8539,10 +8551,6 @@ msgstr "Vlo¾it integrál"
 msgid "Insert product"
 msgstr "Vlo¾it souèin"
 
-#: lib/ui/stdtoolbars.inc:133
-msgid "Insert fraction"
-msgstr "Vlo¾it zlomek"
-
 #: lib/ui/stdtoolbars.inc:134
 msgid "Insert ( )"
 msgstr "Vlo¾it ( )"
@@ -8774,7 +8782,7 @@ msgstr "ChkTeX varování id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX varování id # "
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -8787,11 +8795,11 @@ msgstr ""
 "kvùli konverzi tøídy z\n"
 "%3$s na %4$s"
 
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 msgid "Changed Layout"
 msgstr "Zmìnìno rozvr¾ení"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -8800,7 +8808,7 @@ msgstr ""
 "Styl znaku %1$s není definován kvùli konverzi tøídy z\n"
 "%2$s na %3$s"
 
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 msgid "Undefined character style"
 msgstr "Nedefinovaný styl znaku"
 
@@ -9066,7 +9074,7 @@ msgstr "Hlavní dokument"
 msgid "No Table of contents"
 msgstr "Bez obsahu|B"
 
-#TODO co to je?
+# TODO co to je?
 #: src/MenuBackend.C:793
 msgid " (auto)"
 msgstr " (auto)"
@@ -11117,7 +11125,7 @@ msgstr "Ref+Text: "
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#TODO kde to je ? 
+# TODO kde to je ? 
 #: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 msgid "FormatRef: "
 msgstr "FormátRef: "
@@ -12388,7 +12396,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Návrat k ulo¾ené verzi dokumentu ?"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Makro: %1$s: "

@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-19 22:04+0000\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2006-09-19 11:57+0200\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
 "Language-Team: lyxfr \n"
@@ -612,7 +612,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1605,107 +1605,111 @@ msgstr "Alignement horizontal par colonne (l,c,r)"
 msgid "&Horizontal:"
 msgstr "&Horizontal :"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr "Ouvre le panneau dans une fenêtre à part"
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr "&Détacher le panneau"
 
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 msgid "Select a page of symbols"
 msgstr "Choisir une page de symboles"
 
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 msgid "Operators"
 msgstr "Opérateurs"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr "Grands Opérateurs"
 
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 msgid "Relations"
 msgstr "Relations Binaires"
 
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "Grec"
 
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 msgid "Arrows"
 msgstr "Flèches"
 
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 msgid "Dots"
 msgstr "Points"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr "Ornements"
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr "Divers"
 
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 msgid "AMS operators"
 msgstr "Opérateurs AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 msgid "AMS relations"
 msgstr "Relations AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 msgid "AMS negated relations"
 msgstr "Négations de Relations AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 msgid "AMS arrows"
 msgstr "Flèches AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 msgid "AMS Miscellaneous"
 msgstr "Divers AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 msgid "&Functions"
 msgstr "&Fonctions"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 msgid "Insert root"
 msgstr "Insérer une racine"
 
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 msgid "Insert spacing"
 msgstr "Insérer une espace"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr "Règle le style des limites"
 
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 msgid "Set math font"
 msgstr "Règle la police mathématique"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+msgid "Insert fraction"
+msgstr "Insérer une fraction"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 msgid "Toggle between display and inline mode"
 msgstr "Bascule entre les modes en ligne et hors ligne"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 msgid "Subscript"
 msgstr "Indice"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 msgid "Superscript"
 msgstr "Exposant"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 msgid "Insert matrix"
 msgstr "Insérer une matrice"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr "Affiche la fenêtre des délimiteurs et parenthèses"
 
@@ -3164,7 +3168,7 @@ msgstr "Document sur &Deux Colonnes"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
 #: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
-#: src/mathed/InsetMathRef.C:183
+#: src/mathed/InsetMathRef.C:175
 msgid "Standard"
 msgstr "Standard"
 
@@ -3508,7 +3512,7 @@ msgstr "SousSousSection*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:146
 msgid "Abstract"
 msgstr "Abstract"
 
@@ -3780,7 +3784,7 @@ msgstr "Remerciements"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
 msgid "References"
 msgstr "Références"
 
@@ -8859,10 +8863,6 @@ msgstr "Insérer une intégrale"
 msgid "Insert product"
 msgstr "Insérer un produit"
 
-#: lib/ui/stdtoolbars.inc:133
-msgid "Insert fraction"
-msgstr "Insérer une fraction"
-
 #: lib/ui/stdtoolbars.inc:134
 msgid "Insert ( )"
 msgstr "Insérer des parenthèses"
@@ -9111,7 +9111,7 @@ msgstr "Avertissement ChkTeX n°%1$d"
 msgid "ChkTeX warning id # "
 msgstr "Avertissement ChkTeX n°"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9124,11 +9124,11 @@ msgstr ""
 "à cause du changement de classe de\n"
 "%3$s à %4$s"
 
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 msgid "Changed Layout"
 msgstr "Style de paragraphe modifié"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9138,7 +9138,7 @@ msgstr ""
 "de\n"
 "%2$s à %3$s"
 
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 msgid "Undefined character style"
 msgstr "Style de caractère non défini"
 
@@ -9370,21 +9370,21 @@ msgstr "hériter"
 msgid "ignore"
 msgstr "ignorer"
 
-#: src/LaTeX.C:93
+#: src/LaTeX.C:94
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Attend l'exécution LaTeX n°%1$d"
 
-#: src/LaTeX.C:290 src/LaTeX.C:366
+#: src/LaTeX.C:297 src/LaTeX.C:384
 msgid "Running MakeIndex."
 msgstr "Exécution de MakeIndex."
 
-#: src/LaTeX.C:296 src/LaTeX.C:374
+#: src/LaTeX.C:306 src/LaTeX.C:395
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Exécution de MakeIndex."
 
-#: src/LaTeX.C:310
+#: src/LaTeX.C:325
 msgid "Running BibTeX."
 msgstr "Exécution de BibTeX."
 
@@ -11461,47 +11461,47 @@ msgstr "&Enlever"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:175
 msgid "Ref: "
 msgstr "Réf : "
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 msgid "Equation"
 msgstr "Équation"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 msgid "EqRef: "
 msgstr "RéfÉq : "
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 msgid "Page Number"
 msgstr "Numéro de Page"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 msgid "Page: "
 msgstr "Page : "
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 msgid "Textual Page Number"
 msgstr "N° de Page du Texte"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 msgid "TextPage: "
 msgstr "Page du Texte : "
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Standard+Textual Page"
 msgstr "Standard + N° de Page du Texte"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Ref+Text: "
 msgstr "Réf+Texte : "
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "FormatRef: "
 msgstr "Forma&t :"
@@ -12814,7 +12814,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Revenir à la version enregistrée du document ?"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Macro : %1$s : "
@@ -12895,11 +12895,11 @@ msgstr ""
 "Impossible d'ouvrir le document\n"
 "%1$s"
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:149
 msgid "Abstract: "
 msgstr "Abstract : "
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:161
 msgid "References: "
 msgstr " Références : "
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-19 22:04+0000\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2007-02-20 21:33-0500\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -442,7 +442,7 @@ msgstr "Drepturi de autor"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1413,108 +1413,112 @@ msgstr "Aliniere orizontalã per coloanã (l,c,r)"
 msgid "&Horizontal:"
 msgstr "&Orizontal:"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr "Afiºeazã acest panou ca o fereastrã separatã"
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr "&Detaºeazã panoul"
 
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 msgid "Select a page of symbols"
 msgstr "Selectaþi o paginã de simboluri"
 
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 msgid "Operators"
 msgstr "Operatori"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr "Operatori mari"
 
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 msgid "Relations"
 msgstr "Relaþii"
 
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "Greacã"
 
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 msgid "Arrows"
 msgstr "Sãgeþi"
 
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 msgid "Dots"
 msgstr "Puncte"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr "Decoraþii cadru"
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 msgid "AMS operators"
 msgstr "Operatori AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 msgid "AMS relations"
 msgstr "Relaþii AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 msgid "AMS negated relations"
 msgstr "Relaþii negate AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 msgid "AMS arrows"
 msgstr "Sãgeþi AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 msgid "AMS Miscellaneous"
 msgstr "Diverse AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 msgid "&Functions"
 msgstr "&Funcþii"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 msgid "Insert root"
 msgstr "Insereazã radical"
 
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 msgid "Insert spacing"
 msgstr "Insereazã spaþiere"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr "Seteazã stilul limitei"
 
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 msgid "Set math font"
 msgstr "Seteazã fontul matematic"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+msgid "Insert fraction"
+msgstr "Insereazã fracþie"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 msgid "Toggle between display and inline mode"
 msgstr ""
 "Comutã între modurile afiºare tip ecuatie sau formulã in cadrul rîndului"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 msgid "Subscript"
 msgstr "Indice"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 msgid "Superscript"
 msgstr "Exponent"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 msgid "Insert matrix"
 msgstr "Insereazã matrice"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr "Afiºeazã dialogul de delimitatori ºi paranteze"
 
@@ -2215,7 +2219,8 @@ msgstr "Restabileºte poziþia cursorului"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:171
 msgid "Restore to cursor position when the file was last closed"
-msgstr "Restabileºte poziþia cursorului din momentul cînd acest fiºier a fost închis"
+msgstr ""
+"Restabileºte poziþia cursorului din momentul cînd acest fiºier a fost închis"
 
 #: src/frontends/qt4/ui/QPrefUi.ui:174
 msgid "Save/restore window position"
@@ -2964,7 +2969,7 @@ msgstr "Documentul pe &douã coloane"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
 #: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
-#: src/mathed/InsetMathRef.C:183
+#: src/mathed/InsetMathRef.C:175
 msgid "Standard"
 msgstr "Standard"
 
@@ -3308,7 +3313,7 @@ msgstr "Subsubsecþiune*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:146
 msgid "Abstract"
 msgstr "Abstract"
 
@@ -3581,7 +3586,7 @@ msgstr "Acknowledgements"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
 msgid "References"
 msgstr "Referinþe"
 
@@ -8792,10 +8797,6 @@ msgstr "Insereazã tabel"
 msgid "Insert product"
 msgstr "Insereazã radical"
 
-#: lib/ui/stdtoolbars.inc:133
-msgid "Insert fraction"
-msgstr "Insereazã fracþie"
-
 #: lib/ui/stdtoolbars.inc:134
 #, fuzzy
 msgid "Insert ( )"
@@ -9050,7 +9051,7 @@ msgstr "Avertizare ChkTeX cu identificatorul nr. %1$d"
 msgid "ChkTeX warning id # "
 msgstr "Avertizare ChkTeX cu identificatorul nr. "
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9063,12 +9064,12 @@ msgstr ""
 "datoritã conversiei de clasã de la\n"
 "%3$s la %4$s"
 
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Caracter"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9079,7 +9080,7 @@ msgstr ""
 "datoritã conversiei de clasã de la\n"
 "%3$s la %4$s"
 
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 msgid "Undefined character style"
 msgstr ""
 
@@ -9320,21 +9321,21 @@ msgstr "moºtenire"
 msgid "ignore"
 msgstr "ignorare"
 
-#: src/LaTeX.C:93
+#: src/LaTeX.C:94
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Execuþia LaTeX cu numãrul %1$d"
 
-#: src/LaTeX.C:290 src/LaTeX.C:366
+#: src/LaTeX.C:297 src/LaTeX.C:384
 msgid "Running MakeIndex."
 msgstr "Execut MakeIndex."
 
-#: src/LaTeX.C:296 src/LaTeX.C:374
+#: src/LaTeX.C:306 src/LaTeX.C:395
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Execut MakeIndex."
 
-#: src/LaTeX.C:310
+#: src/LaTeX.C:325
 msgid "Running BibTeX."
 msgstr "Execut BibTeX."
 
@@ -11540,53 +11541,53 @@ msgstr "ª&terge"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:175
 #, fuzzy
 msgid "Ref: "
 msgstr "MyRef"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "Equation"
 msgstr "Citat"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "EqRef: "
 msgstr "MyRef"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page Number"
 msgstr "Comutã sublinierea fontului"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page: "
 msgstr "Pagini"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 msgid "Textual Page Number"
 msgstr ""
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "TextPage: "
 msgstr "Text dupã"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormat:"
@@ -12770,7 +12771,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Selecteazã pînã la sfîrºitul documentului"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, fuzzy, c-format
 msgid " Macro: %1$s: "
 msgstr " Macro: %s: "
@@ -12852,12 +12853,12 @@ msgid ""
 "%1$s."
 msgstr "Nu pot insera documentul %1$s"
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:149
 #, fuzzy
 msgid "Abstract: "
 msgstr "Abstract "
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:161
 #, fuzzy
 msgid "References: "
 msgstr "Referinþe"

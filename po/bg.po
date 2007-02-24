@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-19 22:04+0000\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -573,7 +573,7 @@ msgstr "Авторски права"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1882,84 +1882,84 @@ msgstr "Хориз. Подравняване(H)|#H"
 msgid "&Horizontal:"
 msgstr "Хориз. Подравняване(H)|#H"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr ""
 
 # src/frontends/kde/citationdlg.C:28
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 #, fuzzy
 msgid "Select a page of symbols"
 msgstr "Избрани клавиши"
 
 # src/ext_l10n.h:438
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 #, fuzzy
 msgid "Operators"
 msgstr "Есперанто"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:244
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 #, fuzzy
 msgid "Relations"
 msgstr "Абзац разделяне"
 
 # src/ext_l10n.h:446 src/mathed/math_forms.C:26
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "Гръцки"
 
 # src/frontends/xforms/form_preferences.C:465
 # src/frontends/xforms/form_preferences.C:467
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 #, fuzzy
 msgid "Arrows"
 msgstr "Търси"
 
 # src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
 # src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 #, fuzzy
 msgid "Dots"
 msgstr "Документи"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr ""
 
 # src/frontends/xforms/form_document.C:244
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 #, fuzzy
 msgid "AMS operators"
 msgstr "Абзац разделяне"
 
 # src/frontends/xforms/form_document.C:244
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 #, fuzzy
 msgid "AMS relations"
 msgstr "Абзац разделяне"
 
 # src/frontends/xforms/form_document.C:244
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 #, fuzzy
 msgid "AMS negated relations"
 msgstr "Абзац разделяне"
 
 # src/frontends/xforms/form_preferences.C:465
 # src/frontends/xforms/form_preferences.C:467
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 #, fuzzy
 msgid "AMS arrows"
 msgstr "Търси"
@@ -1967,62 +1967,68 @@ msgstr "Търси"
 # src/frontends/xforms/FormPreferences.C:247
 # src/frontends/xforms/FormPreferences.C:264
 # src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 #, fuzzy
 msgid "AMS Miscellaneous"
 msgstr "Различни"
 
 # src/mathed/math_forms.C:22
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 #, fuzzy
 msgid "&Functions"
 msgstr "Функции"
 
 # src/LyXAction.C:354
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 #, fuzzy
 msgid "Insert root"
 msgstr "Вмъкни кавички"
 
 # src/mathed/math_panel.C:128
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 #, fuzzy
 msgid "Insert spacing"
 msgstr "Разстояние"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr ""
 
 # src/LyXAction.C:219
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 #, fuzzy
 msgid "Set math font"
 msgstr "Размер на шрифт"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+# src/LyXAction.C:164
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+#, fuzzy
+msgid "Insert fraction"
+msgstr "Вмъкни цитат"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 msgid "Toggle between display and inline mode"
 msgstr ""
 
 # src/ext_l10n.h:96
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 #, fuzzy
 msgid "Subscript"
 msgstr "Индекс(u)|u"
 
 # src/ext_l10n.h:95
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 #, fuzzy
 msgid "Superscript"
 msgstr "Степен(S)|S"
 
 # src/LyXAction.C:98
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 #, fuzzy
 msgid "Insert matrix"
 msgstr "Вмъкни приложение"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr ""
 
@@ -4012,7 +4018,7 @@ msgstr "Запазване на документа?"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
 #: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
-#: src/mathed/InsetMathRef.C:183
+#: src/mathed/InsetMathRef.C:175
 msgid "Standard"
 msgstr "Стандартен"
 
@@ -4426,7 +4432,7 @@ msgstr "Под-подраздел*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:146
 msgid "Abstract"
 msgstr ""
 
@@ -4735,7 +4741,7 @@ msgstr ""
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
 msgid "References"
 msgstr "Препратки"
 
@@ -11538,12 +11544,6 @@ msgstr "Вмъкни таблица"
 msgid "Insert product"
 msgstr "Вмъкни кавички"
 
-# src/LyXAction.C:164
-#: lib/ui/stdtoolbars.inc:133
-#, fuzzy
-msgid "Insert fraction"
-msgstr "Вмъкни цитат"
-
 # src/ext_l10n.h:6
 #: lib/ui/stdtoolbars.inc:134
 #, fuzzy
@@ -11847,7 +11847,7 @@ msgstr "ChkTeX предупреждение Nr. "
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX предупреждение Nr. "
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -11857,12 +11857,12 @@ msgid ""
 msgstr ""
 
 # src/frontends/xforms/FormParagraph.C:33
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Оформление на абзац"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -11870,7 +11870,7 @@ msgid ""
 msgstr ""
 
 # src/form1.C:33
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Кодировка(H):|#H"
@@ -12180,24 +12180,24 @@ msgid "ignore"
 msgstr "игнориране"
 
 # src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
-#: src/LaTeX.C:93
+#: src/LaTeX.C:94
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "LaTeX изпълнение номер "
 
 # src/LaTeX.C:210 src/LaTeX.C:279
-#: src/LaTeX.C:290 src/LaTeX.C:366
+#: src/LaTeX.C:297 src/LaTeX.C:384
 msgid "Running MakeIndex."
 msgstr "Изпълнявам MakeIndex."
 
 # src/LaTeX.C:210 src/LaTeX.C:279
-#: src/LaTeX.C:296 src/LaTeX.C:374
+#: src/LaTeX.C:306 src/LaTeX.C:395
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Изпълнявам MakeIndex."
 
 # src/LaTeX.C:223
-#: src/LaTeX.C:310
+#: src/LaTeX.C:325
 msgid "Running BibTeX."
 msgstr "Стартирам BibTeX."
 
@@ -14840,67 +14840,67 @@ msgid "Clear Double Page"
 msgstr ""
 
 # src/ext_l10n.h:285
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:175
 #, fuzzy
 msgid "Ref: "
 msgstr "Препратка"
 
 # src/ext_l10n.h:191
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "Equation"
 msgstr "Заглавие"
 
 # src/ext_l10n.h:285
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "EqRef: "
 msgstr "Препратка"
 
 # src/frontends/kde/refdlg.C:63
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page Number"
 msgstr "Номер на страница"
 
 # src/frontends/xforms/form_print.C:112
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page: "
 msgstr "Страници:"
 
 # src/frontends/xforms/Menubar_pimpl.C:419
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Вмъкни номер на страница%m"
 
 # src/frontends/xforms/form_print.C:112
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "TextPage: "
 msgstr "Страници:"
 
 # src/frontends/xforms/Menubar_pimpl.C:419
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 #, fuzzy
 msgid "Standard+Textual Page"
 msgstr "Вмъкни номер на страница%m"
 
 # src/ext_l10n.h:285
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "Препратка"
 
 # src/frontends/xforms/Menubar_pimpl.C:425
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "PrettyRef"
 msgstr "Вмъкни Pretty Ref%m"
 
 # src/frontends/xforms/FormPreferences.C:252
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "FormatRef: "
 msgstr "Формати"
@@ -16381,7 +16381,7 @@ msgid "Revert to stored version of document?"
 msgstr "Маркирай до края на документа"
 
 # src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, fuzzy, c-format
 msgid " Macro: %1$s: "
 msgstr "Макрос: "
@@ -16470,12 +16470,12 @@ msgid ""
 "%1$s."
 msgstr "Неуспех при отварянето"
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:149
 msgid "Abstract: "
 msgstr ""
 
 # src/frontends/gnome/FormRef.C:311
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:161
 #, fuzzy
 msgid "References: "
 msgstr " Препратка: "

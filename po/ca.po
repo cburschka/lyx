@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0pre2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-19 22:04+0000\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2005-12-18 15:14+0100\n"
 "Last-Translator:  Francesc Burrull i Mestres <>\n"
 "Language-Team: Catalan <ca@li.org>\n"
@@ -503,7 +503,7 @@ msgstr "Dreta"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1625,124 +1625,129 @@ msgstr "Aliniació Horizontal|#H"
 msgid "&Horizontal:"
 msgstr "Aliniació Horizontal|#H"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 #, fuzzy
 msgid "Select a page of symbols"
 msgstr "Seleccionar la línia següent"
 
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 #, fuzzy
 msgid "Operators"
 msgstr "Opcions"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 #, fuzzy
 msgid "Relations"
 msgstr "Separació"
 
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "Grec"
 
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 #, fuzzy
 msgid "Arrows"
 msgstr "Examinar|#B"
 
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 #, fuzzy
 msgid "Dots"
 msgstr "Documents"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 #, fuzzy
 msgid "AMS operators"
 msgstr "Separació"
 
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 #, fuzzy
 msgid "AMS relations"
 msgstr "Separació"
 
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 #, fuzzy
 msgid "AMS negated relations"
 msgstr "Separació"
 
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 #, fuzzy
 msgid "AMS arrows"
 msgstr "Examinar|#B"
 
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 #, fuzzy
 msgid "AMS Miscellaneous"
 msgstr "Misc."
 
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 #, fuzzy
 msgid "&Functions"
 msgstr "Funcions"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 #, fuzzy
 msgid "Insert root"
 msgstr "Inserir cita"
 
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 #, fuzzy
 msgid "Insert spacing"
 msgstr "Espaiat"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 #, fuzzy
 msgid "Set math font"
 msgstr "Fixar tamany de font"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+#, fuzzy
+msgid "Insert fraction"
+msgstr "Inserir cita"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 msgid "Toggle between display and inline mode"
 msgstr ""
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 #, fuzzy
 msgid "Subscript"
 msgstr "Decoració"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 #, fuzzy
 msgid "Superscript"
 msgstr "Decoració"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 #, fuzzy
 msgid "Insert matrix"
 msgstr "Inserir apèndix"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr ""
 
@@ -3409,7 +3414,7 @@ msgstr "Vols salvar el document?"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
 #: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
-#: src/mathed/InsetMathRef.C:183
+#: src/mathed/InsetMathRef.C:175
 #, fuzzy
 msgid "Standard"
 msgstr "Estàndard"
@@ -3790,7 +3795,7 @@ msgstr "Decoració"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:146
 msgid "Abstract"
 msgstr ""
 
@@ -4088,7 +4093,7 @@ msgstr ""
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
 #, fuzzy
 msgid "References"
 msgstr "Inserir Referència"
@@ -9963,11 +9968,6 @@ msgstr "Inserir Taula"
 msgid "Insert product"
 msgstr "Inserir cita"
 
-#: lib/ui/stdtoolbars.inc:133
-#, fuzzy
-msgid "Insert fraction"
-msgstr "Inserir cita"
-
 #: lib/ui/stdtoolbars.inc:134
 #, fuzzy
 msgid "Insert ( )"
@@ -10225,7 +10225,7 @@ msgstr "Avís de ChkTeX número "
 msgid "ChkTeX warning id # "
 msgstr "Avís de ChkTeX número "
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10234,19 +10234,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Format de paràgrafExtra"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Joc de caràcters:|#H"
@@ -10523,21 +10523,21 @@ msgstr "Heredar"
 msgid "ignore"
 msgstr "Ignorar"
 
-#: src/LaTeX.C:93
+#: src/LaTeX.C:94
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Execució LaTeX número "
 
-#: src/LaTeX.C:290 src/LaTeX.C:366
+#: src/LaTeX.C:297 src/LaTeX.C:384
 msgid "Running MakeIndex."
 msgstr "Executant MakeIndex."
 
-#: src/LaTeX.C:296 src/LaTeX.C:374
+#: src/LaTeX.C:306 src/LaTeX.C:395
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Executant MakeIndex."
 
-#: src/LaTeX.C:310
+#: src/LaTeX.C:325
 msgid "Running BibTeX."
 msgstr "Executant BibTeX."
 
@@ -12816,57 +12816,57 @@ msgstr "Buida"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:175
 #, fuzzy
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "Equation"
 msgstr "Rotació"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "EqRef: "
 msgstr "Ref: "
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page Number"
 msgstr "No número"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page: "
 msgstr "Pàgina: "
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Inserir Numéro de Pàgina|#P"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "TextPage: "
 msgstr "Pagina nova"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 #, fuzzy
 msgid "Standard+Textual Page"
 msgstr "Inserir Numéro de Pàgina|#P"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 #, fuzzy
 msgid "Ref+Text: "
 msgstr "Ref: "
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "PrettyRef"
 msgstr "Ref: "
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "FormatRef: "
 msgstr "     Normal"
@@ -14067,7 +14067,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Seleccionar fins al final del document"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, c-format
 msgid " Macro: %1$s: "
 msgstr ""
@@ -14150,11 +14150,11 @@ msgid ""
 "%1$s."
 msgstr "Impossible obrir el document"
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:149
 msgid "Abstract: "
 msgstr ""
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:161
 #, fuzzy
 msgid "References: "
 msgstr "Inserir Referència"

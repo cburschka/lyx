@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-19 22:04+0000\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -472,7 +472,7 @@ msgstr "Pravice raz¹irjanja"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1515,108 +1515,113 @@ msgstr "Vodoravna poravnava v stolpcu (l,c,r)"
 msgid "&Horizontal:"
 msgstr "&Vodoravno:"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr "Odpri ta pult kot loèeno okno"
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr "&Odcepi pult"
 
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 msgid "Select a page of symbols"
 msgstr "Izberite stran s simboli"
 
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 msgid "Operators"
 msgstr "Operatorji"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr "Veliki operatorji"
 
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 msgid "Relations"
 msgstr "Relacije"
 
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "gr¹ko"
 
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 msgid "Arrows"
 msgstr "Pu¹èice"
 
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 msgid "Dots"
 msgstr "Pike"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr "Okraski okvirja"
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr "Razno"
 
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 msgid "AMS operators"
 msgstr "Operatorji AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 msgid "AMS relations"
 msgstr "Relacije AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 msgid "AMS negated relations"
 msgstr "Negirane relacije AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 msgid "AMS arrows"
 msgstr "Pu¹èice AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 msgid "AMS Miscellaneous"
 msgstr "Razno AMS"
 
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 msgid "&Functions"
 msgstr "&Funkcije"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 msgid "Insert root"
 msgstr "Vstavi koren"
 
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 msgid "Insert spacing"
 msgstr "Vstavi presledke"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr "Doloèi slog limit"
 
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 msgid "Set math font"
 msgstr "Doloèi matematièno pisavo"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+#, fuzzy
+msgid "Insert fraction"
+msgstr "Vnesi ulomek"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 #, fuzzy
 msgid "Toggle between display and inline mode"
 msgstr "Preklopi med naèinom prikaza"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 msgid "Subscript"
 msgstr "Indeks"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 msgid "Superscript"
 msgstr "Eksponent"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 msgid "Insert matrix"
 msgstr "Vstavi matriko"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr "Prika¾i pogovorno okno z loèili in oklepaji"
 
@@ -3145,7 +3150,7 @@ msgstr "Dvo&vrstièni spis"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
 #: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
-#: src/mathed/InsetMathRef.C:183
+#: src/mathed/InsetMathRef.C:175
 msgid "Standard"
 msgstr "Standardno"
 
@@ -3508,7 +3513,7 @@ msgstr "Podpodrazdelek*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:146
 msgid "Abstract"
 msgstr "Povzetek"
 
@@ -3785,7 +3790,7 @@ msgstr "Priznanja"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
 msgid "References"
 msgstr "Sklici"
 
@@ -9338,11 +9343,6 @@ msgstr "Vstavi tabelo"
 msgid "Insert product"
 msgstr "Vstavi koren"
 
-#: lib/ui/stdtoolbars.inc:133
-#, fuzzy
-msgid "Insert fraction"
-msgstr "Vnesi ulomek"
-
 #: lib/ui/stdtoolbars.inc:134
 #, fuzzy
 msgid "Insert ( )"
@@ -9600,7 +9600,7 @@ msgstr "Opozorilo ChkTeXa #"
 msgid "ChkTeX warning id # "
 msgstr "Opozorilo ChkTeXa #"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9613,12 +9613,12 @@ msgstr ""
 "zaradi pretvorbe razreda iz\n"
 "%3$s v %4$s"
 
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Znakovni slog"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9629,7 +9629,7 @@ msgstr ""
 "zaradi pretvorbe razreda iz\n"
 "%3$s v %4$s"
 
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 msgid "Undefined character style"
 msgstr ""
 
@@ -9880,21 +9880,21 @@ msgstr "podeduj"
 msgid "ignore"
 msgstr "prezri"
 
-#: src/LaTeX.C:93
+#: src/LaTeX.C:94
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Tek LaTeXa ¹tevilka "
 
-#: src/LaTeX.C:290 src/LaTeX.C:366
+#: src/LaTeX.C:297 src/LaTeX.C:384
 msgid "Running MakeIndex."
 msgstr "Izvaja se MakeIndex."
 
-#: src/LaTeX.C:296 src/LaTeX.C:374
+#: src/LaTeX.C:306 src/LaTeX.C:395
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Izvaja se MakeIndex."
 
-#: src/LaTeX.C:310
+#: src/LaTeX.C:325
 msgid "Running BibTeX."
 msgstr "Izvaja se BibTeX."
 
@@ -12098,54 +12098,54 @@ msgstr "Zbri¹i"
 msgid "Clear Double Page"
 msgstr ""
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:175
 #, fuzzy
 msgid "Ref: "
 msgstr "Ref: "
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "Equation"
 msgstr "Navedek"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 #, fuzzy
 msgid "EqRef: "
 msgstr "Ref: "
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page Number"
 msgstr "©tevilka strani"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 #, fuzzy
 msgid "Page: "
 msgstr "Strani:"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Vstavi ¹tevilko strani|#P"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 #, fuzzy
 msgid "TextPage: "
 msgstr "StranZBesedilom"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 msgid "PrettyRef"
 msgstr "LepSkl"
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormat:"
@@ -13354,7 +13354,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Izberi do konca spisa"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, fuzzy, c-format
 msgid " Macro: %1$s: "
 msgstr " Makroukaz: %s: "
@@ -13436,12 +13436,12 @@ msgid ""
 "%1$s."
 msgstr "Spisa ni moè odpreti"
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:149
 #, fuzzy
 msgid "Abstract: "
 msgstr "Povzetek"
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:161
 #, fuzzy
 msgid "References: "
 msgstr " Sklic: "

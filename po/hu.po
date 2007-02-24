@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-19 22:04+0000\n"
+"POT-Creation-Date: 2007-02-24 18:10+0100\n"
 "PO-Revision-Date: 2007-01-21 17:46+0100\n"
 "Last-Translator: Szõke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX <alex@lyx.org>\n"
@@ -437,7 +437,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
 #: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
-#: src/frontends/qt4/ui/QMathUi.ui:60 src/frontends/qt4/ui/QParagraphUi.ui:281
+#: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
@@ -1410,107 +1410,111 @@ msgstr "Vízszintes igazítás oszloponként (l,c,r)"
 msgid "&Horizontal:"
 msgstr "&Vízszintes:"
 
-#: src/frontends/qt4/ui/QMathUi.ui:67
+#: src/frontends/qt4/ui/QMathUi.ui:64
 msgid "Open this panel as a separate window"
 msgstr "Megnyitja a panelt egy másik ablakban"
 
-#: src/frontends/qt4/ui/QMathUi.ui:70
+#: src/frontends/qt4/ui/QMathUi.ui:67
 msgid "&Detach panel"
 msgstr "&Panel leválasztása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:98
+#: src/frontends/qt4/ui/QMathUi.ui:95
 msgid "Select a page of symbols"
 msgstr "Válasszon ki egy szimbólumlapot"
 
-#: src/frontends/qt4/ui/QMathUi.ui:102
+#: src/frontends/qt4/ui/QMathUi.ui:99
 msgid "Operators"
 msgstr "Mûveleti jelek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:107
+#: src/frontends/qt4/ui/QMathUi.ui:104
 msgid "Big operators"
 msgstr "Globális mûveletek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:112
+#: src/frontends/qt4/ui/QMathUi.ui:109
 msgid "Relations"
 msgstr "Relációs jelek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:117 lib/languages:33
+#: src/frontends/qt4/ui/QMathUi.ui:114 lib/languages:33
 msgid "Greek"
 msgstr "Görög"
 
-#: src/frontends/qt4/ui/QMathUi.ui:122
+#: src/frontends/qt4/ui/QMathUi.ui:119
 msgid "Arrows"
 msgstr "Nyilak"
 
-#: src/frontends/qt4/ui/QMathUi.ui:127
+#: src/frontends/qt4/ui/QMathUi.ui:124
 msgid "Dots"
 msgstr "Pontok"
 
-#: src/frontends/qt4/ui/QMathUi.ui:132
+#: src/frontends/qt4/ui/QMathUi.ui:129
 msgid "Frame decorations"
 msgstr "Keret díszítõelemek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:137
+#: src/frontends/qt4/ui/QMathUi.ui:134
 msgid "Miscellaneous"
 msgstr "Egyéb jelek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:142
+#: src/frontends/qt4/ui/QMathUi.ui:139
 msgid "AMS operators"
 msgstr "AMS mûveleti jelek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:147
+#: src/frontends/qt4/ui/QMathUi.ui:144
 msgid "AMS relations"
 msgstr "AMS relációs jelek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:152
+#: src/frontends/qt4/ui/QMathUi.ui:149
 msgid "AMS negated relations"
 msgstr "AMS invertált relációk"
 
-#: src/frontends/qt4/ui/QMathUi.ui:157
+#: src/frontends/qt4/ui/QMathUi.ui:154
 msgid "AMS arrows"
 msgstr "AMS nyilak"
 
-#: src/frontends/qt4/ui/QMathUi.ui:162
+#: src/frontends/qt4/ui/QMathUi.ui:159
 msgid "AMS Miscellaneous"
 msgstr "AMS egyéb jelek"
 
-#: src/frontends/qt4/ui/QMathUi.ui:195
+#: src/frontends/qt4/ui/QMathUi.ui:192
 msgid "&Functions"
 msgstr "&Függvények"
 
-#: src/frontends/qt4/ui/QMathUi.ui:240 lib/ui/stdtoolbars.inc:127
+#: src/frontends/qt4/ui/QMathUi.ui:237 lib/ui/stdtoolbars.inc:127
 msgid "Insert root"
 msgstr "Általános gyökjel beszúrása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:265
+#: src/frontends/qt4/ui/QMathUi.ui:262
 msgid "Insert spacing"
 msgstr "Hely beszúrása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:290
+#: src/frontends/qt4/ui/QMathUi.ui:287
 msgid "Set limits style"
 msgstr "Határok stílusának beállítása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:315 src/frontends/qt4/ui/QMathUi.ui:340
+#: src/frontends/qt4/ui/QMathUi.ui:312
 msgid "Set math font"
 msgstr "Képletben használt betûkészlet beállítása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:367
+#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+msgid "Insert fraction"
+msgstr "Törtjel beszúrása"
+
+#: src/frontends/qt4/ui/QMathUi.ui:364
 msgid "Toggle between display and inline mode"
 msgstr "Megjelenítés módjának váltása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:386 lib/ui/stdtoolbars.inc:125
+#: src/frontends/qt4/ui/QMathUi.ui:383 lib/ui/stdtoolbars.inc:125
 msgid "Subscript"
 msgstr "Alsó index"
 
-#: src/frontends/qt4/ui/QMathUi.ui:405 lib/ui/stdtoolbars.inc:126
+#: src/frontends/qt4/ui/QMathUi.ui:402 lib/ui/stdtoolbars.inc:126
 msgid "Superscript"
 msgstr "Felsõ index"
 
-#: src/frontends/qt4/ui/QMathUi.ui:424 lib/ui/stdtoolbars.inc:138
+#: src/frontends/qt4/ui/QMathUi.ui:421 lib/ui/stdtoolbars.inc:138
 msgid "Insert matrix"
 msgstr "Mátrix beszúrása"
 
-#: src/frontends/qt4/ui/QMathUi.ui:443
+#: src/frontends/qt4/ui/QMathUi.ui:440
 msgid "Show delimiter and bracket dialog"
 msgstr "Határoló- és zárójelek megjelenítése..."
 
@@ -2958,7 +2962,7 @@ msgstr "&Kéthasábos dokumentum"
 #: lib/layouts/stdclass.inc:28 lib/layouts/stdletter.inc:12
 #: lib/layouts/svjour.inc:27 lib/ui/stdtoolbars.inc:42
 #: src/frontends/qt4/BulletsModule.C:46 src/insets/insetref.C:151
-#: src/mathed/InsetMathRef.C:183
+#: src/mathed/InsetMathRef.C:175
 msgid "Standard"
 msgstr "Normál szöveg"
 
@@ -3302,7 +3306,7 @@ msgstr "Alalszakasz*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:152
+#: src/output_plaintext.C:146
 msgid "Abstract"
 msgstr "Kivonat"
 
@@ -3574,7 +3578,7 @@ msgstr "Köszönetnyilvánítások"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:164
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
 msgid "References"
 msgstr "Hivatkozások"
 
@@ -8549,10 +8553,6 @@ msgstr "Integrál beszúrása"
 msgid "Insert product"
 msgstr "Szorzat beszúrása"
 
-#: lib/ui/stdtoolbars.inc:133
-msgid "Insert fraction"
-msgstr "Törtjel beszúrása"
-
 #: lib/ui/stdtoolbars.inc:134
 msgid "Insert ( )"
 msgstr "() beszúrása"
@@ -8784,7 +8784,7 @@ msgstr "ChkTeX figyelmeztetési azonosító # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX figyelmeztetési azonosító # "
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:434
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -8797,11 +8797,11 @@ msgstr ""
 "mert osztálykonverzió történt errõl\n"
 "%3$s, erre %4$s"
 
-#: src/CutAndPaste.C:438
+#: src/CutAndPaste.C:439
 msgid "Changed Layout"
 msgstr "Kinézet megváltozott"
 
-#: src/CutAndPaste.C:457
+#: src/CutAndPaste.C:458
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -8810,7 +8810,7 @@ msgstr ""
 "A %1$s betûstílus ismeretlen, mert osztálykonverzió történt\n"
 "%2$s-ról, %3$s-ra"
 
-#: src/CutAndPaste.C:464
+#: src/CutAndPaste.C:465
 msgid "Undefined character style"
 msgstr "Definiálatlan betûstílus"
 
@@ -9038,20 +9038,20 @@ msgstr "örökölt"
 msgid "ignore"
 msgstr "mellõz"
 
-#: src/LaTeX.C:93
+#: src/LaTeX.C:94
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Várakozás a %1$d. LaTeX futtatásra"
 
-#: src/LaTeX.C:290 src/LaTeX.C:366
+#: src/LaTeX.C:297 src/LaTeX.C:384
 msgid "Running MakeIndex."
 msgstr "MakeIndex futtatása."
 
-#: src/LaTeX.C:296 src/LaTeX.C:374
+#: src/LaTeX.C:306 src/LaTeX.C:395
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex futtatása nomencl-hez."
 
-#: src/LaTeX.C:310
+#: src/LaTeX.C:325
 msgid "Running BibTeX."
 msgstr "BibTeX futtatása."
 
@@ -11097,47 +11097,47 @@ msgstr "Üres oldal"
 msgid "Clear Double Page"
 msgstr "Üres dupla oldal"
 
-#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:183
+#: src/insets/insetref.C:151 src/mathed/InsetMathRef.C:175
 msgid "Ref: "
 msgstr "Hiv:"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 msgid "Equation"
 msgstr "Egyenlet"
 
-#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:184
+#: src/insets/insetref.C:152 src/mathed/InsetMathRef.C:176
 msgid "EqRef: "
 msgstr "Képl.Hiv:"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 msgid "Page Number"
 msgstr "Oldalszám"
 
-#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:185
+#: src/insets/insetref.C:153 src/mathed/InsetMathRef.C:177
 msgid "Page: "
 msgstr "Oldal: "
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 msgid "Textual Page Number"
 msgstr "Szöveges oldalszám"
 
-#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:186
+#: src/insets/insetref.C:154 src/mathed/InsetMathRef.C:178
 msgid "TextPage: "
 msgstr "Szövegoldal:"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Standard+Textual Page"
 msgstr "Szokásos+szöveges oldal"
 
-#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:187
+#: src/insets/insetref.C:155 src/mathed/InsetMathRef.C:179
 msgid "Ref+Text: "
 msgstr "Hiv+szöveg:"
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 msgid "PrettyRef"
 msgstr "PrettyRef"
 
-#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:188
+#: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
 #, fuzzy
 msgid "FormatRef: "
 msgstr "F&ormátum:"
@@ -12424,7 +12424,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Visszatérés a dokumentum korábbi tárolt változatához?"
 
-#: src/mathed/InsetFormulaMacro.C:123 src/mathed/MathMacroTemplate.C:108
+#: src/mathed/InsetFormulaMacro.C:127 src/mathed/MathMacroTemplate.C:108
 #, c-format
 msgid " Macro: %1$s: "
 msgstr " Makró: %1$s: "
@@ -12505,11 +12505,11 @@ msgstr ""
 "A %1$s dokumentum\n"
 "nem nyitható meg ."
 
-#: src/output_plaintext.C:155
+#: src/output_plaintext.C:149
 msgid "Abstract: "
 msgstr "Kivonat: "
 
-#: src/output_plaintext.C:167
+#: src/output_plaintext.C:161
 msgid "References: "
 msgstr "Hivatkozások: "
 
