@@ -29,6 +29,8 @@ public:
 private:
 	///
 	std::string lang_;
+	/// Did we warn about unavailable locale already? 
+	mutable bool warned_;
 	///
 	typedef std::map<std::string, docstring> TranslationCache;
 	/// Internal cache for gettext translated strings.

@@ -60,7 +60,7 @@ using support::setEnv;
 
 // This version use the traditional gettext.
 Messages::Messages(string const & l)
-	: lang_(l)
+	: lang_(l), warned_(false)
 {
 	if ( lang_.empty() ) {
 		char const * lc_msgs = 0;
@@ -107,9 +107,8 @@ docstring const Messages::get(string const & m) const
 	// Since this method gets called for every translatable
 	// buffer string like e.g. "Figure:" we warn only once.
 #if !defined(_WIN32) && !defined(__CYGWIN__)
-	bool warned = false;
-	if (!warned && !lc_msgs) {
-		warned = true;
+	if (!warned_ && !lc_msgs) {
+		warned_ = true;
 		lyxerr << "Locale " << lang_ << " could not be set" << endl;
 	}
 #endif
