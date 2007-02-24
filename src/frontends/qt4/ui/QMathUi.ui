@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QMathUi</class>
  <widget class="QDialog" name="QMathUi" >
   <property name="geometry" >
@@ -337,7 +334,7 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Set math font</string>
+        <string>Insert fraction</string>
        </property>
        <property name="text" >
         <string/>
@@ -454,10 +451,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>symbolsCO</tabstop>
   <tabstop>sqrtPB</tabstop>
@@ -474,6 +467,9 @@
   <tabstop>tearoffPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
