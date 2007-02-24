@@ -10,7 +10,7 @@ Input article
 Preamble
 	\usepackage{theorem}
 	\theorembodyfont{\upshape}
-	\newtheorem{theorem}{\R{îùôè}}[section]
+	\newtheorem{theorem}{\R{×ž×©×¤×˜}}[section]
 	\AtBeginDocument{\make@lr\thetheorem}
 EndPreamble
 
@@ -47,7 +47,7 @@ Style Lemma
 	LatexName             lemma
 	LabelString           "Lemma #."
 	Preamble
-		\newtheorem{lemma}[theorem]{\R{ìîä}}
+		\newtheorem{lemma}[theorem]{\R{×œ×ž×”}}
 	EndPreamble
 End
 
@@ -57,7 +57,7 @@ Style Corollary
 	LatexName             corollary
 	LabelString           "Corollary #."
 	Preamble
-		\newtheorem{corollary}[theorem]{\R{îñ÷ðä}}
+		\newtheorem{corollary}[theorem]{\R{×ž×¡×§× ×”}}
 	EndPreamble
 End
 
@@ -67,7 +67,7 @@ Style Claim
 	LatexName             claim
 	LabelString           "Claim #."
 	Preamble
-		\newtheorem{claim}[theorem]{\R{èòðä}}
+		\newtheorem{claim}[theorem]{\R{×˜×¢× ×”}}
 	EndPreamble
 End
 
@@ -77,7 +77,7 @@ Style Definition
 	LatexName             definition
 	LabelString           "Definition #."
 	Preamble
-		\newtheorem{definition}[theorem]{\R{äâãøä}}
+		\newtheorem{definition}[theorem]{\R{×”×’×“×¨×”}}
 	EndPreamble
 End
 
@@ -87,7 +87,7 @@ Style Remarks
 	LatexName             remark
 	LabelString           "Remarks #."
 	Preamble
-		\newtheorem{remark}[theorem]{\R{äòøä}}
+		\newtheorem{remark}[theorem]{\R{×”×¢×¨×”}}
 	EndPreamble
 End
 
@@ -119,7 +119,7 @@ Style Proof
 	EndFont
 	Preamble
 		\newenvironment{proof}%
-			{\R{\textbf{äåëçä:}}}%
+			{\R{\textbf{×”×•×›×—×”:}}}%
 			{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
 	EndPreamble
 End
