@@ -95,7 +95,7 @@ int InsetCommand::latex(Buffer const &, odocstream & os,
 int InsetCommand::plaintext(Buffer const &, odocstream & os,
                             OutputParams const &) const
 {
-	docstring str = "[" + _("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
+	docstring const str = "[" + _("LaTeX Command: ") + from_utf8(getCmdName()) + "]";
 	os << str;
 	return str.size();
 }

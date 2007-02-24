@@ -81,7 +81,7 @@ int InsetUrl::plaintext(Buffer const &, odocstream & os,
 	else
 		oss << "||" << getParam("name") << ']';
 
-	docstring str = oss.str();
+	docstring const str = oss.str();
 	os << str;
 	return str.size();
 }

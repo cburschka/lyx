@@ -502,7 +502,7 @@ int InsetInclude::plaintext(Buffer const & buffer, odocstream & os,
 		os << "\n]";
 		return PLAINTEXT_NEWLINE + 1; // one char on a separate line
 	} else {
-		docstring str = '[' + getScreenLabel(buffer) + ']';
+		docstring const str = '[' + getScreenLabel(buffer) + ']';
 		os << str;
 		return str.size();
 	}

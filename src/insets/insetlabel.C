@@ -96,7 +96,7 @@ int InsetLabel::latex(Buffer const &, odocstream & os,
 int InsetLabel::plaintext(Buffer const &, odocstream & os,
                           OutputParams const &) const
 {
-	docstring str = getParam("name");
+	docstring const str = getParam("name");
 	os << '<' << str << '>';
 	return 2 + str.size();
 }

@@ -331,7 +331,7 @@ int InsetQuotes::latex(Buffer const &, odocstream & os,
 int InsetQuotes::plaintext(Buffer const & buf, odocstream & os,
                            OutputParams const &) const
 {
-	docstring str = dispString(buf.params().language);
+	docstring const str = dispString(buf.params().language);
 	os << str;
 	return str.size();
 }

@@ -818,8 +818,8 @@ int InsetGraphics::plaintext(Buffer const &, odocstream & os,
 	// FIXME UNICODE
 	// FIXME: We have no idea what the encoding of the filename is
 
-	docstring str = bformat(_("Graphics file: %1$s"),
-	                        from_utf8(params().filename.absFilename()));
+	docstring const str = bformat(_("Graphics file: %1$s"),
+	                              from_utf8(params().filename.absFilename()));
 	os << '<' << str << '>';
 
 	return 2 + str.size();

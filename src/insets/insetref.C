@@ -97,7 +97,7 @@ int InsetRef::latex(Buffer const &, odocstream & os,
 int InsetRef::plaintext(Buffer const &, odocstream & os,
                         OutputParams const &) const
 {
-	docstring str = getParam("reference");
+	docstring const str = getParam("reference");
 	os << '[' << str << ']';
 	return 2 + str.size();
 }
