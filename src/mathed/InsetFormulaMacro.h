@@ -44,14 +44,14 @@ public:
 	///
 	void write(Buffer const &, std::ostream & os) const;
 	///
-	int plaintext(Buffer const &, odocstream &,
-		  OutputParams const &) const;
-	///
 	int latex(Buffer const &, odocstream & os,
-		  OutputParams const &) const;
+	          OutputParams const &) const;
+	///
+	int plaintext(Buffer const &, odocstream &,
+	              OutputParams const &) const;
 	///
 	int docbook(Buffer const &, odocstream &,
-		    OutputParams const &) const;
+	            OutputParams const &) const;
 
 	///
 	std::auto_ptr<InsetBase> clone() const;

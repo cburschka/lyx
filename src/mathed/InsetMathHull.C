@@ -1433,7 +1433,7 @@ void InsetMathHull::read(Buffer const &, LyXLex & lex)
 
 
 int InsetMathHull::plaintext(Buffer const &, odocstream & os,
-			OutputParams const &) const
+                             OutputParams const &) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -1446,15 +1446,19 @@ int InsetMathHull::plaintext(Buffer const &, odocstream & os,
 		//metrics();
 		return tpain.textheight();
 	} else {
-		WriteStream wi(os, false, true);
+		odocstringstream oss;
+		WriteStream wi(oss, false, true);
 		wi << cell(0);
-		return wi.line();
+
+		docstring const str = oss.str();
+		os << str;
+		return str.size();
 	}
 }
 
 
 int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
-			  OutputParams const & runparams) const
+                           OutputParams const & runparams) const
 {
 	MathStream ms(os);
 	int res = 0;

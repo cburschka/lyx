@@ -79,7 +79,7 @@ void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 
 
 int InsetFormulaMacro::latex(Buffer const &, odocstream & os,
-			     OutputParams const & runparams) const
+                             OutputParams const & runparams) const
 {
 	//lyxerr << "InsetFormulaMacro::latex" << endl;
 	WriteStream wi(os, runparams.moving_arg, true);
@@ -89,16 +89,20 @@ int InsetFormulaMacro::latex(Buffer const &, odocstream & os,
 
 
 int InsetFormulaMacro::plaintext(Buffer const &, odocstream & os,
-			     OutputParams const &) const
+                                 OutputParams const &) const
 {
-	WriteStream wi(os, false, true);
+	odocstringstream oss;
+	WriteStream wi(oss, false, true);
 	tmpl()->write(wi);
-	return 0;
+
+	docstring const str = oss.str();
+	os << str;
+	return str.size();
 }
 
 
 int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os,
-			       OutputParams const & runparams) const
+                               OutputParams const & runparams) const
 {
 	return plaintext(buf, os, runparams);
 }

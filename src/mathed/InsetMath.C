@@ -85,9 +85,9 @@ void InsetMath::write(WriteStream & os) const
 int InsetMath::plaintext(Buffer const &, odocstream & os,
                          OutputParams const &) const
 {
-	docstring str = _("math");
-	os << "[" << str << "]";
-	return 2 + str.size();
+	// all math plain text output shall take place in InsetMathHull
+	BOOST_ASSERT(false);
+	return 0;
 }
 
 

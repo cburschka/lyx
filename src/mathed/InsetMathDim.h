@@ -12,6 +12,7 @@
 #ifndef MATH_DIMINSET_H
 #define MATH_DIMINSET_H
 
+#include <boost/assert.hpp>
 #include "InsetMath.h"
 
 namespace lyx {
@@ -36,6 +37,12 @@ public:
 
 	///
 	void setPosCache(PainterInfo const & pi, int x, int y) const;
+	///
+	int plaintext(Buffer const &, odocstream & os,
+	              OutputParams const &) const
+		{ // FIXME: math macros are output here but
+		  // should be handled in InsetMathHull
+		  os << "[math macro]"; return 12; }
 };
 
 
