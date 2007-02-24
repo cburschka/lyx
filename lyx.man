@@ -3,7 +3,7 @@
 .\"
 .\"  tbl lyx.1 | nroff -man | less
 .\"
-.TH LYX 1 "Jan 2003" "Version 1.4" "LyX 1.4"
+.TH LYX 1 "Feb 2007" "Version 1.5" "LyX 1.5"
 .SH NAME
 lyx \- A Document Processor
 .\"
@@ -36,8 +36,8 @@ cryptology, fictional novels, poetry, and even a children's book or
 two), articles in refereed scientific journals, scripts for plays and
 movies, business proposals... you get the idea.
 
-Currently, \fBLyX\fR uses either the XForms or Qt library as a
-toolkit. \fBLyX\fR should run everywhere, where these libraries run.
+Currently, \fBLyX\fR uses the Qt4 library as a
+toolkit. \fBLyX\fR should run everywhere, where this library runs.
 This is on all major Unix platforms as well as Windows and Mac OS X
 (which actually is a unix platform).
 .SH OPTIONS
@@ -69,60 +69,6 @@ where fmt is the export format of choice.
 \fB \-i [\-\-import]\fP \fIfmt file.xxx
 where fmt is the import format of choice and file.xxx is the file to be imported.
 
-.SH XFORMS FRONTEND OPTIONS
-When compiled with the XForms frontend, \fBLyX\fR understands the
-following generic command line options from the \fBForms Library\fR,
-which can also be specified as X resources (e. g. in .Xdefaults) with
-class name \fBLyX\fR.
-.TP 6
-.BI \-geometry " WxH+X+Y"
-specifies the preferred size and position of the main \fBLyX\fR
-window; see \fIX(1)\fR.
-.TP
-.BI \-display " host:display"
-specifies the server to connect to.
-.TP
-.BI \-bw " borderwidth"
-specifies the border width to use to built\-in objects.
-.TP
-.BI \-visual " visualName"
-requests a visual by name such as TrueColor etc. By default the
-.B Forms Library
-always selects the visual that has the most depth.
-.TP
-.BI \-depth " depth"
-requests a specific depth. Try "\fB\-depth\fR best" or "\fB\-depth\fR
-8" if you get a bad match.
-.TP
-.BI \-debug " level"
-generates some info about the state of the
-.B XForms.
-where
-.I level
-is an integer between 1\-5 and controls the amount of
-information to output. Depending on the options used
-when the
-.B Forms Library
-was built, a level more than 3 might not be available.
-.TP
-.B \-sync
-runs the application in synchronous mode with debug level set to 4.
-.TP
-.B \-private
-requests a private colormap for the application.
-.TP
-.B \-shared
-requests a shared colormap even if the application needs more
-colors than available. For those colors that can't be allocated
-in the shared colormap, substitutions are made so the closest
-matching color is used.
-.TP
-.B \-stdcmap
-requests a standard colormap.
-.TP
-.B \-name " newname"
-specifies the application name under which resources are to be
-obtained, rather than the default executable file name.
 .SH ENVIRONMENT
 .TP
 .B LYX_DIR_15x
@@ -161,9 +107,8 @@ strings in other languages.
 .ta \w'\fILIBDIR\fR/lyxrc.in  'u
 ~/.lyx/preferences      Personal configuration file
 ~/.lyx/lyxrc.defaults   Personal autodetected configuration file
-\fILIBDIR\fR/lyxrc      System wide configuration file
-\fILIBDIR\fR/lyxrc.defaults System wide autodetected configuration file
-\fILIBDIR\fR/configure  Updates \fBLyX\fR if config has changed
+\fILIBDIR\fR/lyxrc.dist  System wide configuration file
+\fILIBDIR\fR/configure.py  Updates \fBLyX\fR if config has changed
 \fILIBDIR\fR/bind/      Keybindings
 \fILIBDIR\fR/clipart/   Clipart pictures
 \fILIBDIR\fR/doc/       Documentation in \fBLyX\fR format.
@@ -195,8 +140,4 @@ are having problems with!
 files. Consult the \fBtex2lyx\fR documentation.
 
 .SH AUTHORS
-Copyright       
-.Cr
-1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002 by Matthias Ettrich
-(ettrich@informatik.uni\-tuebingen.de) and the rest of the \fBLyX
-Team\fR (See About LyX under the Help menu item).
+LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2006 LyX Team
