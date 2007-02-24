@@ -1,18 +1,19 @@
 Compiling LyX 1.5 for Win32
 ===========================
 
-LyX 1.5 can be compiled with Microsoft Visual C++ 2005 or MinGW.
+LyX 1.5 can be compiled with Microsoft Visual C++ 2005 (recommended) or MinGW.
 
 Compiling with MSVC 2005
 ========================
 
-1	Install MSVC 2005
+1	Install MSVC 2005 SP1
 
 	If you don't have MSVC 2005 installed, download and install the free
 	Express edition from http://msdn.microsoft.com/vstudio/express/visualc/
-	(Do not install the service pack 1 for MSVC 2005 as this introduces a bug
-	 that makes compiling LyX's Qt 4 frontend impossible, see
-	 http://support.microsoft.com/?scid=kb%3Ben-us%3B930198&x=13&y=12)
+	From this page you should also download and install Service Pack 1.
+
+	A hotfix needs to be installed because of a bug in the compiler.
+	Search for VS80sp1-KB930859-X86-ENU.exe on Google and install it.
 
 2	Install the Windows Platform SDK
 
@@ -20,7 +21,7 @@ Compiling with MSVC 2005
 	(You don't need to install the IIS, MDAC, and Tablet PC SDK that are
 	 delivered with the Platform SDK.)
 
-3	configure MSVC
+3	Configure MSVC
 
 	Follow exactly the steps of
 	http://msdn.microsoft.com/vstudio/express/visualc/usingpsdk/
@@ -45,9 +46,9 @@ Compiling with MSVC 2005
 
 6	Install the dependencies
 
-	Download http://www.lyx.org/~bpeng/lyx-windows-deps-msvc-qt422.zip
+	Download ftp://ftp.lyx.org/pub/lyx/contrib/lyx-windows-deps-msvc-qt4.zip
 	and extract in the root directory of your LyX files (so you will get
-	a directory called lyx-windows-deps-msvc next to the other directories
+	a directory called lyx-windows-deps-msvc-qt4 next to the other directories
 	like src, development etc.).
 
 7	Compile
@@ -70,11 +71,6 @@ Compiling with MSVC 2005
 	QtCore4.dll
 	QtGui4.dll
 
-	All files except of the msvcp80.dll and msvcr80.dll should be present on your system.
-	The missing files can be downloaded from:
-	http://wiki.lyx.org/uploads/DevelTools/buildLyx/LyXWinBuildDLLs.zip
-	(Currently there is a bug in the aspell.dll, so use the version that is delivered in this zip-file.)
-
 	msvcp80.dll and msvcr80.dll are the C Runtime and C++ libraries
 	supplied with MSVC 2005. They are freely redistributable.
 	See http://msdn2.microsoft.com/en-us/library/8kche8ah(VS.80).aspx
@@ -87,6 +83,10 @@ Compiling with MSVC 2005
 
 Compiling with MinGW
 ====================
+
+	These instructions allow you to create a basic LyX build with MinGW.
+	To be able to use all LyX features, compiling with MSVC 2005 is recommended.
+	Creating an installer for MinGW builds is no longer supported.
 
 1	Install MinGW, and all the gcc-related stuff, and win32api. 
 
