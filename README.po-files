@@ -1,7 +1,7 @@
 
 	PO FAQ
               
-   by Ran Rutenberg, Pavel Sanda
+   by Ran Rutenberg, Pavel Sanda, Michael Gerz
    February 2007
 
 This file is mainly intended for those who have no or little experience using .po files,
@@ -36,11 +36,16 @@ place to write your translation for them.
 
 '&' stands for underlined characters (shortcut) in dialog boxes.
 '|' stands for underlined characters in menus.
-'$' and '%' are usually used as handlers for formating or variables to be inserted
-into the strings.
-So all these chars should be somehow used in your translations, however
+
+These chars should be somehow used in your translations, however
 you'll have to invent your own working shortcuts for dialog and menu entries
 and resolve possible conflicts of the same shortcut chars in one menu... 
+
+'$' and '%' are usually used as handlers for formating or variables to be inserted
+    into the strings. 
+
+Character sequences like %1$s or %1$d MUST also appear in your translations!
+Please take them exactly as they are or you may experience crashes when running LyX.
 
 5) WHAT IS pocheck.pl AND HOW DO I USE IT?
 
