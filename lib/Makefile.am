@@ -4,8 +4,8 @@ SUBDIRS = doc lyx2lyx
 
 CHMOD = chmod
 
-dist_pkgdata_DATA = CREDITS chkconfig.ltx \
-	       external_templates encodings languages symbols syntax.default unicodesymbols
+dist_pkgdata_DATA = CREDITS chkconfig.ltx external_templates encodings \
+  languages symbols syntax.default unicodesymbols
 
 # Note that we "chmod 755" manually this file in install-data-hook.
 dist_pkgdata_PYTHON = configure.py 
@@ -33,23 +33,35 @@ dist_noinst_DATA = \
 	images/math/misc.xbm \
 	images/math/varsz.xbm
 
+debinddir = $(pkgdatadir)/bind/de
+dist_debind_DATA = \
+	bind/de/menus.bind
+
+fibinddir = $(pkgdatadir)/bind/fi
+dist_fibind_DATA = \
+	bind/fi/menus.bind
+
+ptbinddir = $(pkgdatadir)/bind/pt
+dist_ptbind_DATA = \
+	bind/pt/menus.bind
+
+svbinddir = $(pkgdatadir)/bind/sv
+dist_svbind_DATA = \
+	bind/sv/menus.bind
+
 binddir = $(pkgdatadir)/bind
 dist_bind_DATA = \
 	bind/broadway.bind \
 	bind/cua.bind \
 	bind/cyrkeys.bind \
-	bind/de_menus.bind \
 	bind/emacs.bind \
-	bind/fi_menus.bind \
 	bind/greekkeys.bind \
 	bind/hollywood.bind \
 	bind/latinkeys.bind \
 	bind/mac.bind \
 	bind/math.bind \
 	bind/menus.bind \
-	bind/pt_menus.bind \
 	bind/sciword.bind \
-	bind/sv_menus.bind \
 	bind/xemacs.bind \
 	bind/aqua.bind
 
@@ -76,6 +88,109 @@ dist_clipart_DATA = \
 	clipart/without_fntright.pdf \
 	clipart/with_fntright.pdf
 
+caexamplesdir = $(pkgdatadir)/examples/ca
+dist_caexamples_DATA = \
+	examples/ca/splash.lyx
+
+csexamplesdir = $(pkgdatadir)/examples/cs
+dist_csexamples_DATA = \
+	examples/cs/splash.lyx
+
+daexamplesdir = $(pkgdatadir)/examples/da
+dist_daexamples_DATA = \
+	examples/da/splash.lyx
+
+deexamplesdir = $(pkgdatadir)/examples/de
+dist_deexamples_DATA = \
+	examples/de/ItemizeBullets.lyx \
+	examples/de/Lebenslauf.lyx \
+	examples/de/Minipage.lyx \
+	examples/de/TableExamples.lyx \
+	examples/de/Waehrungen.lyx \
+	examples/de/beispiel_gelyxt.lyx \
+	examples/de/beispiel_roh.lyx \
+	examples/de/decimal.lyx \
+	examples/de/splash.lyx \
+	examples/de/mathed.lyx \
+	examples/de/multicol.lyx
+
+esexamplesdir = $(pkgdatadir)/examples/es
+dist_esexamples_DATA = \
+	examples/es/ejemplo_con_lyx.lyx \
+	examples/es/ejemplo_sin_lyx.lyx \
+	examples/es/splash.lyx
+
+euexamplesdir = $(pkgdatadir)/examples/eu
+dist_euexamples_DATA = \
+	examples/eu/adibide_gordina.lyx \
+	examples/eu/adibide_lyx-atua.lyx \
+	examples/eu/splash.lyx
+
+frexamplesdir = $(pkgdatadir)/examples/fr
+dist_frexamples_DATA = \
+	examples/fr/AlignementDecimal.lyx \
+	examples/fr/CV.lyx \
+	examples/fr/ExemplesTableaux.lyx \
+	examples/fr/Foils.lyx \
+	examples/fr/ListesPuces.lyx \
+	examples/fr/Minipage.lyx \
+	examples/fr/exemple_brut.lyx \
+	examples/fr/exemple_lyxifie.lyx \
+	examples/fr/mathed.lyx \
+	examples/fr/multicol.lyx \
+	examples/fr/splash.lyx
+
+glexamplesdir = $(pkgdatadir)/examples/gl
+dist_glexamples_DATA = \
+	examples/gl/exemplo_bruto.lyx \
+	examples/gl/exemplo_lyxificado.lyx \
+	examples/gl/splash.lyx
+
+heexamplesdir = $(pkgdatadir)/examples/he
+dist_heexamples_DATA = \
+	examples/he/example_raw.lyx \
+	examples/he/he_example_lyxified.lyx \
+	examples/he/he_example_raw.lyx
+
+huexamplesdir = $(pkgdatadir)/examples/hu
+dist_huexamples_DATA = \
+	examples/hu/splash.lyx
+
+itexamplesdir = $(pkgdatadir)/examples/it
+dist_itexamples_DATA = \
+	examples/it/ItemizeBullets.lyx \
+	examples/it/splash.lyx
+
+nlexamplesdir = $(pkgdatadir)/examples/nl
+dist_nlexamples_DATA = \
+	examples/nl/multicol.lyx \
+	examples/nl/opsommingstekens.lyx \
+	examples/nl/splash.lyx \
+	examples/nl/voorbeeld_ruw.lyx \
+	examples/nl/voorbeeld_verlyxt.lyx
+
+plexamplesdir = $(pkgdatadir)/examples/pl
+dist_plexamples_DATA = \
+	examples/pl/splash.lyx
+
+ptexamplesdir = $(pkgdatadir)/examples/pt
+dist_ptexamples_DATA = \
+	examples/pt/splash.lyx
+
+roexamplesdir = $(pkgdatadir)/examples/ro
+dist_roexamples_DATA = \
+	examples/ro/splash.lyx
+
+ruexamplesdir = $(pkgdatadir)/examples/ru
+dist_ruexamples_DATA = \
+	examples/ru/splash.lyx
+
+slexamplesdir = $(pkgdatadir)/examples/sl
+dist_slexamples_DATA = \
+	examples/sl/primer_lyxan.lyx \
+	examples/sl/primer_surov.lyx \
+	examples/sl/splash.lyx
+
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
 	examples/Foils.lyx \
@@ -99,77 +214,25 @@ dist_examples_DATA = \
 	examples/beamer-knight4-mask.png \
 	examples/beamer-knight4.png \
 	examples/beamerlyxexample1.lyx \
-	examples/ca_splash.lyx \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
-	examples/cs_splash.lyx \
 	examples/currency.lyx \
 	examples/cv.lyx \
-	examples/da_splash.lyx \
-	examples/de_ItemizeBullets.lyx \
-	examples/de_Lebenslauf.lyx \
-	examples/de_Minipage.lyx \
-	examples/de_TableExamples.lyx \
-	examples/de_Waehrungen.lyx \
-	examples/de_beispiel_gelyxt.lyx \
-	examples/de_beispiel_roh.lyx \
-	examples/de_decimal.lyx \
-	examples/de_splash.lyx \
-	examples/de_mathed.lyx \
-	examples/de_multicol.lyx \
 	examples/decimal.lyx \
 	examples/docbook_article.lyx \
-	examples/es_ejemplo_con_lyx.lyx \
-	examples/es_ejemplo_sin_lyx.lyx \
-	examples/es_splash.lyx \
-	examples/eu_adibide_gordina.lyx \
-	examples/eu_adibide_lyx-atua.lyx \
-	examples/eu_splash.lyx \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
-	examples/fr_AlignementDecimal.lyx \
-	examples/fr_CV.lyx \
-	examples/fr_ExemplesTableaux.lyx \
-	examples/fr_Foils.lyx \
-	examples/fr_ListesPuces.lyx \
-	examples/fr_Minipage.lyx \
-	examples/fr_exemple_brut.lyx \
-	examples/fr_exemple_lyxifie.lyx \
-	examples/fr_mathed.lyx \
-	examples/fr_multicol.lyx \
-	examples/fr_splash.lyx \
-	examples/gl_exemplo_bruto.lyx \
-	examples/gl_exemplo_lyxificado.lyx \
-	examples/gl_splash.lyx \
-	examples/he_example_raw.lyx \
-	examples/he_he_example_lyxified.lyx \
-	examples/he_he_example_raw.lyx \
-	examples/hu_splash.lyx \
 	examples/iecc05.fen \
 	examples/iecc07.fen \
 	examples/iecc12.fen \
-	examples/it_ItemizeBullets.lyx \
-	examples/it_splash.lyx \
 	examples/landslide.lyx \
 	examples/listerrors.lyx \
 	examples/mathed.lyx \
 	examples/multicol.lyx \
-	examples/nl_multicol.lyx \
-	examples/nl_opsommingstekens.lyx \
-	examples/nl_splash.lyx \
-	examples/nl_voorbeeld_ruw.lyx \
-	examples/nl_voorbeeld_verlyxt.lyx \
 	examples/noweb2lyx.lyx \
-	examples/pl_splash.lyx \
-	examples/pt_splash.lyx \
-	examples/ru_splash.lyx \
 	examples/script_form.lyx \
-	examples/sl_primer_lyxan.lyx \
-	examples/sl_primer_surov.lyx \
-	examples/sl_splash.lyx \
 	examples/splash.lyx \
-	examples/g-brief2.lyx \
-	examples/ro_splash.lyx
+	examples/g-brief2.lyx
 
 imagesdir = $(pkgdatadir)/images
 dist_images_DATA = \

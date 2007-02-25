@@ -1304,27 +1304,76 @@ lib_image_noinst_files = Split('''
 
 
 lib_bind_files = Split('''
+    de/menus.bind
+    fi/menus.bind
+    pt/menus.bind
+    sv/menus.bind
     broadway.bind
     cua.bind
     cyrkeys.bind
-    de_menus.bind
     emacs.bind
-    fi_menus.bind
     greekkeys.bind
     hollywood.bind
     latinkeys.bind
     mac.bind
     math.bind
     menus.bind
-    pt_menus.bind
     sciword.bind
-    sv_menus.bind
     xemacs.bind
     aqua.bind
 ''')
 
 
 lib_examples_files = Split('''
+    ca/splash.lyx
+    cs/splash.lyx
+    da/splash.lyx
+    de/ItemizeBullets.lyx
+    de/Lebenslauf.lyx
+    de/Minipage.lyx
+    de/TableExamples.lyx
+    de/Waehrungen.lyx
+    de/beispiel_gelyxt.lyx
+    de/beispiel_roh.lyx
+    de/decimal.lyx
+    de/splash.lyx
+    de/mathed.lyx
+    de/multicol.lyx
+    es/ejemplo_con_lyx.lyx
+    es/ejemplo_sin_lyx.lyx
+    es/splash.lyx
+    eu/adibide_gordina.lyx
+    eu/adibide_lyx-atua.lyx
+    eu/splash.lyx
+    fr/AlignementDecimal.lyx
+    fr/CV.lyx
+    fr/ExemplesTableaux.lyx
+    fr/Foils.lyx
+    fr/ListesPuces.lyx
+    fr/Minipage.lyx
+    fr/exemple_brut.lyx
+    fr/exemple_lyxifie.lyx
+    fr/mathed.lyx
+    fr/multicol.lyx
+    fr/splash.lyx
+    he/example_raw.lyx
+    he/he_example_lyxified.lyx
+    he/he_example_raw.lyx
+    hu/splash.lyx
+    it/ItemizeBullets.lyx
+    it/splash.lyx
+    nl/multicol.lyx
+    nl/opsommingstekens.lyx
+    nl/splash.lyx
+    nl/voorbeeld_ruw.lyx
+    nl/voorbeeld_verlyxt.lyx
+    pl/splash.lyx
+    pt/splash.lyx
+    ru/splash.lyx
+    sl/primer_lyxan.lyx
+    sl/primer_surov.lyx
+    sl/splash.lyx
+    ro/splash.lyx
     Foils.lyx
     ItemizeBullets.lyx
     Literate.lyx
@@ -1346,74 +1395,25 @@ lib_examples_files = Split('''
     beamer-knight4-mask.png
     beamer-knight4.png
     beamerlyxexample1.lyx
-    ca_splash.lyx
     chess-article.lyx
     chessgame.lyx
-    cs_splash.lyx
     currency.lyx
     cv.lyx
-    da_splash.lyx
-    de_ItemizeBullets.lyx
-    de_Lebenslauf.lyx
-    de_Minipage.lyx
-    de_TableExamples.lyx
-    de_Waehrungen.lyx
-    de_beispiel_gelyxt.lyx
-    de_beispiel_roh.lyx
-    de_decimal.lyx
-    de_splash.lyx
-    de_mathed.lyx
-    de_multicol.lyx
     decimal.lyx
     docbook_article.lyx
-    es_ejemplo_con_lyx.lyx
-    es_ejemplo_sin_lyx.lyx
-    es_splash.lyx
-    eu_adibide_gordina.lyx
-    eu_adibide_lyx-atua.lyx
-    eu_splash.lyx
     example_lyxified.lyx
     example_raw.lyx
-    fr_AlignementDecimal.lyx
-    fr_CV.lyx
-    fr_ExemplesTableaux.lyx
-    fr_Foils.lyx
-    fr_ListesPuces.lyx
-    fr_Minipage.lyx
-    fr_exemple_brut.lyx
-    fr_exemple_lyxifie.lyx
-    fr_mathed.lyx
-    fr_multicol.lyx
-    fr_splash.lyx
-    he_example_raw.lyx
-    he_he_example_lyxified.lyx
-    he_he_example_raw.lyx
-    hu_splash.lyx
     iecc05.fen
     iecc07.fen
     iecc12.fen
-    it_ItemizeBullets.lyx
-    it_splash.lyx
     landslide.lyx
     listerrors.lyx
     mathed.lyx
     multicol.lyx
-    nl_multicol.lyx
-    nl_opsommingstekens.lyx
-    nl_splash.lyx
-    nl_voorbeeld_ruw.lyx
-    nl_voorbeeld_verlyxt.lyx
     noweb2lyx.lyx
-    pl_splash.lyx
-    pt_splash.lyx
-    ru_splash.lyx
     script_form.lyx
-    sl_primer_lyxan.lyx
-    sl_primer_surov.lyx
-    sl_splash.lyx
     splash.lyx
     g-brief2.lyx
-    ro_splash.lyx
 ''')
 
 
@@ -2259,63 +2259,63 @@ lib_ui_files = Split('''
 
 
 lib_doc_files = Split('''
-    cs_Tutorial.lyx
+    cs/Tutorial.lyx
+    da/Intro.lyx
+    de/Customization.lyx
+    de/Extended.lyx
+    de/FAQ.lyx
+    de/Intro.lyx
+    de/Tutorial.lyx
+    de/UserGuide.lyx
+    es/Intro.lyx
+    es/Tutorial.lyx
+    es/EmbeddedObjects.lyx
+    eu/Customization.lyx
+    eu/Extended.lyx
+    eu/FAQ.lyx
+    eu/Intro.lyx
+    eu/Tutorial.lyx
+    eu/UserGuide.lyx
+    fr/Customization.lyx
+    fr/Extended.lyx
+    fr/FAQ.lyx
+    fr/Intro.lyx
+    fr/Tutorial.lyx
+    fr/UserGuide.lyx
+    he/Intro.lyx
+    he/Tutorial.lyx
+    hu/Intro.lyx
+    hu/Tutorial.lyx
+    it/Customization.lyx
+    it/Intro.lyx
+    it/Tutorial.lyx
+    it/UserGuide.lyx
+    nl/Intro.lyx
+    nl/Tutorial.lyx
+    nb/Intro.lyx
+    pl/Extended.lyx
+    pl/Intro.lyx
+    pl/Tutorial.lyx
+    pt/Intro.lyx
+    pt/Tutorial.lyx
+    ro/Intro.lyx
+    ru/FAQ.lyx
+    ru/Intro.lyx
+    ru/Tutorial.lyx
+    sk/Tutorial.lyx
+    sk/UserGuide.lyx
+    sl/Intro.lyx
+    sl/Tutorial.lyx
+    sv/Intro.lyx
+    sv/Tutorial.lyx
     Customization.lyx
-    da_Intro.lyx
-    de_Customization.lyx
-    de_Extended.lyx
-    de_FAQ.lyx
-    de_Intro.lyx
-    de_Tutorial.lyx
-    de_UserGuide.lyx
     DocStyle.lyx
-    es_Intro.lyx
-    es_Tutorial.lyx
-    es_EmbeddedObjects.lyx
-    eu_Customization.lyx
-    eu_Extended.lyx
-    eu_FAQ.lyx
-    eu_Intro.lyx
-    eu_Tutorial.lyx
-    eu_UserGuide.lyx
     EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
-    fr_Customization.lyx
-    fr_Extended.lyx
-    fr_FAQ.lyx
-    fr_Intro.lyx
-    fr_Tutorial.lyx
-    fr_UserGuide.lyx
-    he_Intro.lyx
-    he_Tutorial.lyx
-    hu_Intro.lyx
-    hu_Tutorial.lyx
     Intro.lyx
-    it_Customization.lyx
-    it_Intro.lyx
-    it_Tutorial.lyx
-    it_UserGuide.lyx
     LaTeXConfig.lyx.in
-    nl_Intro.lyx
-    nl_Tutorial.lyx
-    nb_Intro.lyx
-    pl_Extended.lyx
-    pl_Intro.lyx
-    pl_Tutorial.lyx
-    pt_Intro.lyx
-    pt_Tutorial.lyx
     Reference.lyx
-    ro_Intro.lyx
-    ru_FAQ.lyx
-    ru_Intro.lyx
-    ru_Tutorial.lyx
-    sk_Tutorial.lyx
-    sk_UserGuide.lyx
-    sl_Intro.lyx
-    sl_Tutorial.lyx
-    sv_Intro.lyx
-    sv_Tutorial.lyx
     Tutorial.lyx
     UserGuide.lyx
     escher-lsd.eps

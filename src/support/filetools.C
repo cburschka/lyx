@@ -320,11 +320,21 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 	string l;
 	lang = split(lang, l, ':');
 	while (!l.empty() && l != "C" && l != "POSIX") {
-		FileName const tmp = libFileSearch(dir,
-						 token(l, '_', 0) + '_' + name,
-						 ext);
+		FileName const tmp = libFileSearch(addPath(dir, token(l, '_', 0)),
+						      name, ext);
 		if (!tmp.empty())
 			return tmp;
+#if 1
+		// to be removed later (JMarc)
+		FileName const tmpold = libFileSearch(dir,
+						 token(l, '_', 0) + '_' + name,
+						 ext);
+		if (!tmpold.empty()) {
+			lyxerr << "i18nLibFileSearch: File `" << tmpold 
+			       << "' has been found by the old method" <<endl;
+			return tmpold;
+		}
+#endif
 		lang = split(lang, l, ':');
 	}
 

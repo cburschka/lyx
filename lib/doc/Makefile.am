@@ -4,73 +4,130 @@ DISTCLEANFILES += $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
 
-docfiles = \
-	cs_Tutorial.lyx \
+csdocdir = $(pkgdatadir)/doc/cs
+dist_csdoc_DATA = \
+	cs/Tutorial.lyx
+
+dadocdir = $(pkgdatadir)/doc/da
+dist_dadoc_DATA = \
+	da/Intro.lyx
+
+dedocdir = $(pkgdatadir)/doc/de
+dist_dedoc_DATA = \
+	de/Customization.lyx \
+	de/Extended.lyx \
+	de/FAQ.lyx \
+	de/Intro.lyx \
+	de/Tutorial.lyx \
+	de/UserGuide.lyx
+
+esdocdir = $(pkgdatadir)/doc/es
+dist_esdoc_DATA = \
+	es/Intro.lyx \
+	es/Tutorial.lyx \
+	es/EmbeddedObjects.lyx
+
+eudocdir = $(pkgdatadir)/doc/eu
+dist_eudoc_DATA = \
+	eu/Customization.lyx \
+	eu/Extended.lyx \
+	eu/FAQ.lyx \
+	eu/Intro.lyx \
+	eu/Tutorial.lyx \
+	eu/UserGuide.lyx
+
+frdocdir = $(pkgdatadir)/doc/fr
+dist_frdoc_DATA = \
+	fr/Customization.lyx \
+	fr/Extended.lyx \
+	fr/FAQ.lyx \
+	fr/Intro.lyx \
+	fr/Tutorial.lyx \
+	fr/UserGuide.lyx
+
+gldocdir = $(pkgdatadir)/doc/gl
+dist_gldoc_DATA = \
+	gl/Intro.lyx \
+	gl/Tutorial.lyx
+
+hedocdir = $(pkgdatadir)/doc/he
+dist_hedoc_DATA = \
+	he/Intro.lyx \
+	he/Tutorial.lyx
+
+hudocdir = $(pkgdatadir)/doc/hu
+dist_hudoc_DATA = \
+	hu/Intro.lyx \
+	hu/Tutorial.lyx
+
+itdocdir = $(pkgdatadir)/doc/it
+dist_itdoc_DATA = \
+	it/Customization.lyx \
+	it/Intro.lyx \
+	it/Tutorial.lyx \
+	it/UserGuide.lyx
+
+nldocdir = $(pkgdatadir)/doc/nl
+dist_nldoc_DATA = \
+	nl/Intro.lyx \
+	nl/Tutorial.lyx
+
+nbdocdir = $(pkgdatadir)/doc/nb
+dist_nbdoc_DATA = \
+	nb/Intro.lyx
+
+pldocdir = $(pkgdatadir)/doc/pl
+dist_pldoc_DATA = \
+	pl/Extended.lyx \
+	pl/Intro.lyx \
+	pl/Tutorial.lyx
+
+ptdocdir = $(pkgdatadir)/doc/pt
+dist_ptdoc_DATA = \
+	pt/Intro.lyx \
+	pt/Tutorial.lyx
+
+rodocdir = $(pkgdatadir)/doc/ro
+dist_rodoc_DATA = \
+	ro/Intro.lyx
+
+rudocdir = $(pkgdatadir)/doc/ru
+dist_rudoc_DATA = \
+	ru/FAQ.lyx \
+	ru/Intro.lyx \
+	ru/Tutorial.lyx
+
+skdocdir = $(pkgdatadir)/doc/sk
+dist_skdoc_DATA = \
+	sk/Tutorial.lyx \
+	sk/UserGuide.lyx
+
+sldocdir = $(pkgdatadir)/doc/sl
+dist_sldoc_DATA = \
+	sl/Intro.lyx \
+	sl/Tutorial.lyx
+
+svdocdir = $(pkgdatadir)/doc/sv
+dist_svdoc_DATA = \
+	sv/Intro.lyx \
+	sv/Tutorial.lyx
+
+docdir = $(pkgdatadir)/doc
+dist_doc_DATA = \
 	Customization.lyx \
-	da_Intro.lyx \
-	de_Customization.lyx \
-	de_Extended.lyx \
-	de_FAQ.lyx \
-	de_Intro.lyx \
-	de_Tutorial.lyx \
-	de_UserGuide.lyx \
 	DocStyle.lyx \
-	es_Intro.lyx \
-	es_Tutorial.lyx \
-	es_EmbeddedObjects.lyx \
-	eu_Customization.lyx \
-	eu_Extended.lyx \
-	eu_FAQ.lyx \
-	eu_Intro.lyx \
-	eu_Tutorial.lyx \
-	eu_UserGuide.lyx \
 	EmbeddedObjects.lyx \
 	Extended.lyx \
 	FAQ.lyx \
-	fr_Customization.lyx \
-	fr_Extended.lyx \
-	fr_FAQ.lyx \
-	fr_Intro.lyx \
-	fr_Tutorial.lyx \
-	fr_UserGuide.lyx \
-	gl_Intro.lyx \
-	gl_Tutorial.lyx \
-	he_Intro.lyx \
-	he_Tutorial.lyx \
-	hu_Intro.lyx \
-	hu_Tutorial.lyx \
 	Intro.lyx \
-	it_Customization.lyx \
-	it_Intro.lyx \
-	it_Tutorial.lyx \
-	it_UserGuide.lyx \
 	LaTeXConfig.lyx.in \
-	nl_Intro.lyx \
-	nl_Tutorial.lyx \
-	nb_Intro.lyx \
-	pl_Extended.lyx \
-	pl_Intro.lyx \
-	pl_Tutorial.lyx \
-	pt_Intro.lyx \
-	pt_Tutorial.lyx \
 	Reference.lyx \
-	ro_Intro.lyx \
-	ru_FAQ.lyx \
-	ru_Intro.lyx \
-	ru_Tutorial.lyx \
-	sk_Tutorial.lyx \
-	sk_UserGuide.lyx \
-	sl_Intro.lyx \
-	sl_Tutorial.lyx \
-	sv_Intro.lyx \
-	sv_Tutorial.lyx \
 	Tutorial.lyx \
 	UserGuide.lyx \
 	escher-lsd.eps \
 	mobius.eps \
 	platypus.eps
 
-docdir = $(pkgdatadir)/doc
 doc_DATA = $(docfiles) 
 
 DEPENDFILE = $(srcdir)/Makefile.depend
