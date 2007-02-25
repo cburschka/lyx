@@ -792,13 +792,14 @@ string const corrected_env(string const & suffix, string const & env,
 }
 
 
-int adjust_column_count(string const & str, int oldcol)
+void adjust_row_column(string const & str, TexRow & texrow, int & column)
 {
 	if (!contains(str, "\n"))
-		return oldcol + str.size();
+		column += str.size();
 	else {
 		string tmp;
-		return rsplit(str, tmp, '\n').size();
+		texrow.newline();
+		column = rsplit(str, tmp, '\n').size();
 	}
 }
 
@@ -807,7 +808,8 @@ int adjust_column_count(string const & str, int oldcol)
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
-                                 odocstream & os, bool moving_arg) const
+                                 odocstream & os, TexRow & texrow, 
+				 bool moving_arg) const
 {
 	int column = 0;
 
@@ -845,7 +847,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\\begin", "flushright", ownerCode());
 		os << from_ascii(output);
-		column = adjust_column_count(output, column);
+		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
@@ -854,13 +856,13 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\\begin", "flushleft", ownerCode());
 		os << from_ascii(output);
-		column = adjust_column_count(output, column);
+		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\\begin", "center", ownerCode());
 		os << from_ascii(output);
-		column = adjust_column_count(output, column);
+		adjust_row_column(output, texrow, column);
 		break;
 	}
 	}
@@ -870,8 +872,9 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 
 
 // This could go to ParagraphParameters if we want to
-int Paragraph::endTeXParParams(BufferParams const & bparams,
-                               odocstream & os, bool moving_arg) const
+int Paragraph::endTeXParParams(BufferParams const & bparams,  
+                               odocstream & os, TexRow & texrow,
+			       bool moving_arg) const
 {
 	int column = 0;
 
@@ -904,7 +907,7 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\n\\par\\end", "flushright", ownerCode());
 		os << from_ascii(output);
-		column = adjust_column_count(output, column);
+		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
@@ -913,13 +916,13 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		else
 			output = corrected_env("\n\\par\\end", "flushleft", ownerCode());
 		os << from_ascii(output);
-		column = adjust_column_count(output, column);
+		adjust_row_column(output, texrow, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
 		output = corrected_env("\n\\par\\end", "center", ownerCode());
 		os << from_ascii(output);
-		column = adjust_column_count(output, column);
+		adjust_row_column(output, texrow, column);
 		break;
 	}
 	}
@@ -1000,7 +1003,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			++column;
 		}
 		if (!asdefault)
-			column += startTeXParParams(bparams, os,
+			column += startTeXParParams(bparams, os, texrow,
 						    runparams.moving_arg);
 	}
 
@@ -1031,7 +1034,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			}
 
 			if (!asdefault)
-				column += startTeXParParams(bparams, os,
+				column += startTeXParParams(bparams, os, 
+							    texrow,
 							    runparams.moving_arg);
 		}
 
@@ -1140,7 +1144,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	}
 
 	if (!asdefault) {
-		column += endTeXParParams(bparams, os, runparams.moving_arg);
+		column += endTeXParParams(bparams, os, texrow, 
+					  runparams.moving_arg);
 	}
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;

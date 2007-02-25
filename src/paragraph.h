@@ -115,10 +115,12 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	///
-	int startTeXParParams(BufferParams const &, odocstream &, bool) const;
+	int startTeXParParams(BufferParams const &, odocstream &, TexRow &, 
+			      bool) const;
 
 	///
-	int endTeXParParams(BufferParams const &, odocstream &, bool) const;
+	int endTeXParParams(BufferParams const &, odocstream &, TexRow &, 
+			    bool) const;
 
 
 	///
