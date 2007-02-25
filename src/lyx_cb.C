@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
 #include "session.h"
@@ -30,6 +31,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "undo.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Application.h"
@@ -329,18 +331,17 @@ void insertPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 	if (tmpstr.empty())
 		return;
 
-	// clear the selection
-	LyXText const & text = bv->buffer()->text();
-	if (&text == bv->cursor().innerText())
-		bv->cursor().clearSelection();
+	LCursor & cur = bv->cursor();
+	cap::replaceSelection(cur);
+	recordUndo(cur);
 	if (asParagraph)
-		bv->cursor().innerText()->insertStringAsParagraphs(bv->cursor(), tmpstr);
+		cur.innerText()->insertStringAsParagraphs(cur, tmpstr);
 	else
-		bv->cursor().innerText()->insertStringAsLines(bv->cursor(), tmpstr);
+		cur.innerText()->insertStringAsLines(cur, tmpstr);
 }
 
 
-// Insert plain text file (if filename is empty, prompt for one)
+// Read plain text file (if filename is empty, prompt for one)
 string getContentsOfPlaintextFile(BufferView * bv, string const & f, bool asParagraph)
 {
 	FileName fname(f);
