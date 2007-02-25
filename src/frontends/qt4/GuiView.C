@@ -107,7 +107,8 @@ public:
 
 struct GuiView::GuiViewPrivate
 {
-	std::vector<std::string> tabnames;
+	vector<string> tabnames;
+	string cur_title;
 
 	TabWidget* tabWidget;
 
@@ -488,11 +489,17 @@ void GuiView::updateTab()
 {
 	std::vector<string> const & names = theBufferList().getFileNames();
 
+	string cur_title;
+	if (view()->buffer()) {
+		cur_title = view()->buffer()->fileName();
+	}
+
 	// avoid unnecessary tabbar rebuild: 
 	// check if something has changed
-	if (d.tabnames == names) 
+	if (d.tabnames == names && d.cur_title == cur_title) 
 		return;
 	d.tabnames = names;
+	d.cur_title = cur_title;
 
 	QTabBar & tabbar = *d.tabWidget->tabbar;
 
@@ -501,11 +508,6 @@ void GuiView::updateTab()
 
 	// remove all tab bars
 	d.tabWidget->clearTabbar();
-
-	string cur_title;
-	if (view()->buffer()) {
-		cur_title = view()->buffer()->fileName();
-	}
 
 	// rebuild tabbar and function map from scratch
 	if (names.size() > 1) {
