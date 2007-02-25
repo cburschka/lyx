@@ -219,6 +219,16 @@ void MathMacroTemplate::write(WriteStream & os) const
 }
 
 
+int MathMacroTemplate::plaintext(Buffer const &, odocstream & os,
+                                 OutputParams const &) const
+{
+	static docstring const str = '[' + _("math macro") + ']';
+
+	os << str;
+	return str.size();
+}
+
+
 MacroData MathMacroTemplate::asMacroData() const
 {
 	return MacroData(asString(cell(0)), numargs(), asString(cell(1)), std::string());
