@@ -4,8 +4,7 @@
 
 #include <iostream>
 
-
-namespace lyx {
+using lyx::convert;
 
 using namespace std;
 
@@ -87,6 +86,3 @@ int main()
 	convert_unsigned();
 	convert_string();
 }
-
-
-} // namespace lyx
