@@ -64,7 +64,7 @@ namespace {
 
 typedef pair<string, FileName> SnippetPair;
 
-// A list of alll snippets to be converted to previews
+// A list of all snippets to be converted to previews
 typedef list<string> PendingSnippets;
 
 // Each item in the vector is a pair<snippet, image file name>.
@@ -688,8 +688,8 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
-	// int InsetFormula::latex(Buffer const &, odocstream & os,
-	//                         OutputParams const & runparams) const
+	// int InsetMathNest::latex(Buffer const &, odocstream & os,
+	//                          OutputParams const & runparams) const
 	// {
 	//	WriteStream wi(os, runparams.moving_arg, true);
 	//	par_->write(wi);
@@ -708,7 +708,7 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 		if (it->lyxCode() == InsetBase::MATHMACRO_CODE)
 			it->latex(buffer_, os, runparams);
 
-	// All equation lables appear as "(#)" + preview.sty's rendering of
+	// All equation labels appear as "(#)" + preview.sty's rendering of
 	// the label name
 	if (lyxrc.preview_hashed_labels)
 		os << "\\renewcommand{\\theequation}{\\#}\n";
