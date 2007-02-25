@@ -120,7 +120,7 @@ string const makeLatexName(string const & file)
 	// ok so we scan through the string twice, but who cares.
 	string const keep = "abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-		"@!\"'()*+,-./0123456789:;<=>?[]`|";
+		"@!'()*+,-./0123456789:;<=>?[]`|";
 
 	string::size_type pos = 0;
 	while ((pos = name.find_first_not_of(keep, pos)) != string::npos)
