@@ -1992,7 +1992,7 @@ if build_po:
         print 'msgfmt does not exist. Can not process po files'
     else:
         # create a builder
-        env['BUILDERS']['Transfiles'] = Builder(action='$MSGFMT $SOURCE -o $TARGET',suffix='.gmo',src_suffix='.po')
+        env['BUILDERS']['Transfiles'] = Builder(action='$MSGFMT $SOURCE -c --statistics -o $TARGET',suffix='.gmo',src_suffix='.po')
         #
         for f in transfiles:
             # get filename
