@@ -1,3 +1,8 @@
+2007-02-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_cb.C (InsertAsciiFile): delete selection before insertion
+	and handle undo correctly (bug 3204) 
+
 2007-01-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* buffer.C (readFile): reword error message when lyx2lyx fails.

@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "buffer_funcs.h"
 #include "cursor.h"
+#include "CutAndPaste.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lastfiles.h"
@@ -30,6 +31,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "undo.h"
 
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
@@ -368,13 +370,13 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	if (tmpstr.empty())
 		return;
 
-	// clear the selection
-	if (bv->text() == bv->getLyXText())
-		bv->cursor().clearSelection();
+	LCursor & cur = bv->cursor();
+	lyx::cap::replaceSelection(cur);
+	recordUndo(cur);
 	if (asParagraph)
-		bv->getLyXText()->insertStringAsParagraphs(bv->cursor(), tmpstr);
+		cur.innerText()->insertStringAsParagraphs(cur, tmpstr);
 	else
-		bv->getLyXText()->insertStringAsLines(bv->cursor(), tmpstr);
+		cur.innerText()->insertStringAsLines(cur, tmpstr);
 	bv->update();
 }
 
