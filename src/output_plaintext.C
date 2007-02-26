@@ -29,7 +29,6 @@ namespace lyx {
 
 using support::ascii_lowercase;
 using support::compare_ascii_no_case;
-using support::compare_no_case;
 using support::contains;
 using support::FileName;
 
@@ -91,7 +90,7 @@ void writePlaintextParagraph(Buffer const & buf,
 
 	// First write the layout
 	string const & tmp = par.layout()->name();
-	if (compare_no_case(tmp, "itemize") == 0) {
+	if (compare_ascii_no_case(tmp, "itemize") == 0) {
 		ltype = 1;
 		ltype_depth = depth + 1;
 	} else if (compare_ascii_no_case(tmp, "enumerate") == 0) {

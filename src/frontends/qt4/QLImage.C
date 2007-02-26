@@ -20,7 +20,7 @@
 #include "graphics/GraphicsParams.h"
 
 #include "support/filename.h"
-#include "support/lstrings.h"       // lowercase
+#include "support/lstrings.h"       // ascii_lowercase
 
 #include <QPainter>
 #include <QPictureIO>
@@ -31,7 +31,7 @@
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
-using lyx::support::lowercase;
+using lyx::support::ascii_lowercase;
 
 using boost::bind;
 
@@ -89,7 +89,7 @@ Image::FormatList QLImage::loadableFormats()
 
 		lyxerr[Debug::GRAPHICS] << (const char *) *it << ", ";
 
-		string ext = lowercase((const char *) *it);
+		string ext = ascii_lowercase((const char *) *it);
 
 		// special case
 		if (ext == "jpeg")

@@ -25,10 +25,6 @@ namespace lyx {
 namespace support {
 
 /// Compare \p s and \p s2, ignoring the case.
-/// Caution: Depends on the locale
-int compare_no_case(std::string const & s, std::string const & s2);
-
-/// Compare \p s and \p s2, ignoring the case.
 /// Does not depend on the locale.
 int compare_no_case(docstring const & s, docstring const & s2);
 
@@ -37,10 +33,6 @@ int compare_ascii_no_case(std::string const & s, std::string const & s2);
 
 /// Compare \p s and \p s2, ignoring the case of ASCII characters only.
 int compare_ascii_no_case(docstring const & s, docstring const & s2);
-
-/// Compare the first \p len characters of \p s and \p s2, ignoring the case.
-/// Caution: Depends on the locale
-int compare_no_case(std::string const & s, std::string const & s2, unsigned int len);
 
 ///
 inline
@@ -101,16 +93,12 @@ std::string const ascii_lowercase(std::string const &);
 docstring const ascii_lowercase(docstring const &);
 
 /// Changes the case of \p s to lowercase.
-/// Caution: Depends on the locale
-std::string const lowercase(std::string const & s);
-
-/// Changes the case of \p s to lowercase.
 /// Does not depend on the locale.
 docstring const lowercase(docstring const & s);
 
 /// Changes the case of \p s to uppercase.
-/// Caution: Depends on the locale
-std::string const uppercase(std::string const & s);
+/// Does not depend on the locale.
+docstring const uppercase(docstring const & s);
 
 /// Does the string start with this prefix?
 bool prefixIs(docstring const &, char_type);

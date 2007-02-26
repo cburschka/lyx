@@ -262,7 +262,7 @@ bool splitLatexLength(string const & len, string & value, string & unit)
 	if (contains(len, '\\'))
 		unit = trim(string(len, i));
 	else
-		unit = lyx::support::lowercase(trim(string(len, i)));
+		unit = support::ascii_lowercase(trim(string(len, i)));
 	return true;
 }
 

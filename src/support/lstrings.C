@@ -48,28 +48,6 @@ using std::toupper;
 namespace lyx {
 namespace support {
 
-int compare_no_case(string const & s, string const & s2)
-{
-	string::const_iterator p = s.begin();
-	string::const_iterator p2 = s2.begin();
-
-	while (p != s.end() && p2 != s2.end()) {
-		int const lc1 = tolower(*p);
-		int const lc2 = tolower(*p2);
-		if (lc1 != lc2)
-			return (lc1 < lc2) ? -1 : 1;
-		++p;
-		++p2;
-	}
-
-	if (s.size() == s2.size())
-		return 0;
-	if (s.size() < s2.size())
-		return -1;
-	return 1;
-}
-
-
 int compare_no_case(docstring const & s, docstring const & s2)
 {
 	docstring::const_iterator p = s.begin();
@@ -141,29 +119,6 @@ int compare_ascii_no_case(docstring const & s, docstring const & s2)
 	}
 
 	if (s.size() == s2.size())
-		return 0;
-	if (s.size() < s2.size())
-		return -1;
-	return 1;
-}
-
-
-int compare_no_case(string const & s, string const & s2, unsigned int len)
-{
-	string::const_iterator p = s.begin();
-	string::const_iterator p2 = s2.begin();
-	unsigned int i = 0;
-	while (i < len && p != s.end() && p2 != s2.end()) {
-		int const lc1 = tolower(*p);
-		int const lc2 = tolower(*p2);
-		if (lc1 != lc2)
-			return (lc1 < lc2) ? -1 : 1;
-		++i;
-		++p;
-		++p2;
-	}
-
-	if (s.size() >= len && s2.size() >= len)
 		return 0;
 	if (s.size() < s2.size())
 		return -1;
@@ -335,9 +290,6 @@ namespace {
 // calls to std::transform yet, we use these helper clases. (Lgb)
 
 struct local_lowercase {
-	char operator()(char c) const {
-		return tolower(c);
-	}
 	char_type operator()(char_type c) const {
 		if (!is_utf16(c))
 			// We don't know how to lowercase a non-utf16 char
@@ -347,8 +299,11 @@ struct local_lowercase {
 };
 
 struct local_uppercase {
-	char operator()(char c) const {
-		return toupper(c);
+	char_type operator()(char_type c) const {
+		if (!is_utf16(c))
+			// We don't know how to uppercase a non-utf16 char
+			return c;
+		return qchar_to_ucs4(ucs4_to_qchar(c).toUpper());
 	}
 };
 
@@ -360,14 +315,6 @@ template<typename Char> struct local_ascii_lowercase {
 
 } // end of anon namespace
 
-string const lowercase(string const & a)
-{
-	string tmp(a);
-	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
-	return tmp;
-}
-
-
 docstring const lowercase(docstring const & a)
 {
 	docstring tmp(a);
@@ -376,9 +323,9 @@ docstring const lowercase(docstring const & a)
 }
 
 
-string const uppercase(string const & a)
+docstring const uppercase(docstring const & a)
 {
-	string tmp(a);
+	docstring tmp(a);
 	transform(tmp.begin(), tmp.end(), tmp.begin(), local_uppercase());
 	return tmp;
 }

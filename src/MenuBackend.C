@@ -50,7 +50,6 @@
 
 namespace lyx {
 
-using support::compare_no_case;
 using support::compare_ascii_no_case;
 using support::contains;
 using support::makeDisplayPath;
@@ -401,7 +400,7 @@ void Menu::checkShortcuts() const
 			       << "\" does not contain shortcut `"
 			       << to_utf8(shortcut) << "'." << endl;
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
-			if (!compare_no_case(it2->shortcut(), shortcut)) {
+			if (!compare_ascii_no_case(it2->shortcut(), shortcut)) {
 				lyxerr << "Menu warning: menu entries "
 				       << '"' << to_utf8(it1->fulllabel())
 				       << "\" and \"" << to_utf8(it2->fulllabel())

@@ -56,7 +56,7 @@
 #include <iomanip>
 #include <sstream>
 
-using lyx::support::compare_no_case;
+using lyx::support::compare_ascii_no_case;
 using lyx::support::os::external_path;
 using lyx::support::os::external_path_list;
 using lyx::support::os::internal_path;
@@ -110,7 +110,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
 		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
-		if (compare_no_case(tmp.first, family) == 0) {
+		if (compare_ascii_no_case(tmp.first, family) == 0) {
 			cb->setCurrentIndex(i);
 			return;
 		}
@@ -122,7 +122,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count() - 1; i >= 0; --i) {
 		pair<string, string> tmp = parseFontName(fromqstr(cb->itemText(i)));
-		if (compare_no_case(tmp.first, tmpfam.first) == 0) {
+		if (compare_ascii_no_case(tmp.first, tmpfam.first) == 0) {
 			cb->setCurrentIndex(i);
 			return;
 		}
@@ -156,7 +156,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 
 	for (int i = 0; i < cb->count(); ++i) {
 		lyxerr << "Looking at " << fromqstr(cb->itemText(i)) << endl;
-		if (compare_no_case(fromqstr(cb->itemText(i)),
+		if (compare_ascii_no_case(fromqstr(cb->itemText(i)),
 				    default_font_name) == 0) {
 			cb->setCurrentIndex(i);
 			return;
