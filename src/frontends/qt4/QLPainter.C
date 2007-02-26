@@ -207,6 +207,17 @@ int QLPainter::smallCapsText(int x, int y,
 int QLPainter::text(int x, int y, docstring const & s,
 		LyXFont const & f)
 {
+	/* Caution: The following ucs4 to QString conversions work for symbol fonts
+	only because they are no real conversions but simple casts in reality.
+	When we want to draw a symbol or calculate the metrics we pass the position
+	of the symbol in the font (as given in lib/symbols) as a char_type to the
+	frontend. This is just wrong, because the symbol is no UCS4 character at
+	all. You can think of this number as the code point of the symbol in a
+	custom symbol encoding. It works because this char_type is lateron again
+	interpreted as a position in the font again.
+	The correct solution would be to have extra functions for symbols, but that
+	would require to duplicate a lot of frontend and mathed support code.
+	*/
 	QString str = toqstr(s);
 
 #if 0

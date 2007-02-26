@@ -93,6 +93,10 @@ int GuiFontMetrics::width(docstring const & s) const
 	}
 
 	if (smallcaps_shape_)
+		// Caution: The following ucs4 to QString conversions work
+		// for symbol fonts only because they are no real conversions
+		// but simple casts in reality. See comment in QLPainter::text()
+		// for more explanation.
 		return smallcapsWidth(toqstr(s));
 
 	int w = 0;
