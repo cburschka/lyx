@@ -11,6 +11,8 @@
 
 // FIXME: I can think of a better name for this file ...
 
+#include <config.h>
+
 #include "support/textutils.h"
 #include "support/qstring_helpers.h"
 
