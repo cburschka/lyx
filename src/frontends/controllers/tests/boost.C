@@ -16,8 +16,6 @@
 #include <exception>
 
 
-namespace lyx {
-
 namespace boost {
 
 void throw_exception(std::exception const & /*e*/)
@@ -34,6 +32,3 @@ void assertion_failed(char const * /*expr*/, char const * /*function*/,
 
 
 }
-
-
-} // namespace lyx

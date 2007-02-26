@@ -6,8 +6,6 @@
 #include <boost/regex.hpp>
 
 
-namespace lyx {
-
 using std::cout;
 using std::endl;
 using std::string;
@@ -96,6 +94,3 @@ int main()
 	test_escape_special_chars();
 	test_RegexMatch();
 }
-
-
-} // namespace lyx
