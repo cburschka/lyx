@@ -39,7 +39,6 @@ src/frontends/qt4/Alert_pimpl.C
 src/frontends/qt4/BulletsModule.C
 src/frontends/qt4/Dialogs.C
 src/frontends/qt4/FileDialog.C
-src/frontends/qt4/GuiApplication.C
 src/frontends/qt4/GuiView.C
 src/frontends/qt4/GuiWorkArea.C
 src/frontends/qt4/QAbout.C
@@ -92,6 +91,7 @@ src/insets/insetbox.C
 src/insets/insetbranch.C
 src/insets/insetcaption.C
 src/insets/insetcharstyle.C
+src/insets/insetcommand.C
 src/insets/insetenv.C
 src/insets/insetert.C
 src/insets/insetexternal.C

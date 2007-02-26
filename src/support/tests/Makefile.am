@@ -14,9 +14,11 @@ check_PROGRAMS = \
 	filetools \
 	lstrings
 
-AM_CPPFLAGS += $(BOOST_INCLUDES)
+AM_CPPFLAGS += $(BOOST_INCLUDES) -I$(srcdir)/../..
 
-convert_LDADD = ../convert.o
+
+convert_LDADD = ../../debug.o ../convert.o ../docstring.o ../lstrings.o ../unicode.o ../qstring_helpers.o $(BOOST_REGEX) $(QT4_CORE_LIB)
+convert_LDFLAGS = $(QT4_CORE_LDFLAGS)
 convert_SOURCES = \
 	convert.C \
 	boost.C
@@ -26,7 +28,8 @@ filetools_SOURCES = \
 	filetools.C \
 	boost.C
 
-lstrings_LDADD = ../lstrings.o
+lstrings_LDADD = ../../debug.o ../lstrings.o ../convert.o ../docstring.o ../unicode.o ../qstring_helpers.o $(QT4_CORE_LIB)
+lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS)
 lstrings_SOURCES = \
 	lstrings.C \
 	boost.C

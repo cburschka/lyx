@@ -7,9 +7,8 @@ using namespace lyx::support;
 
 using namespace std;
 
-string _(string const & str)
-{
-	return str;
+namespace lyx {
+	docstring const _(string const & s) { return from_ascii(s); }
 }
 
 void test_normalizePath()

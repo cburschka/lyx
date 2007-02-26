@@ -1,12 +1,19 @@
 #include <config.h>
 
 #include "../convert.h"
+#include "../docstring.h"
 
 #include <iostream>
 
 using lyx::convert;
 
 using namespace std;
+
+
+namespace lyx {
+	docstring const _(string const & s) { return from_ascii(s); }
+}
+
 
 void convert_int()
 {
