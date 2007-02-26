@@ -493,6 +493,7 @@ dist_imagesmath_DATA = \
 	images/math/flat.xpm \
 	images/math/forall.xpm \
 	images/math/frac.xpm \
+	images/math/frac-square.xpm \
 	images/math/frown.xpm \
 	images/math/gamma.xpm \
 	images/math/gamma2.xpm \
