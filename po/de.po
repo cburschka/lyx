@@ -6985,7 +6985,6 @@ msgid "Polish"
 msgstr "Polnisch"
 
 #: lib/languages:48
-#, fuzzy
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
@@ -11017,7 +11016,6 @@ msgid "Undef: "
 msgstr "Undef.: "
 
 #: src/insets/insetbranch.C:239
-#, fuzzy
 msgid "branch"
 msgstr "Zweig"
 
@@ -11034,9 +11032,8 @@ msgid "Opened CharStyle Inset"
 msgstr "Zeichenstil-Einfügung geöffnet"
 
 #: src/insets/insetcommand.C:98
-#, fuzzy
 msgid "LaTeX Command: "
-msgstr "&BibTeX-Befehl:"
+msgstr "LaTeX-Befehl: "
 
 #: src/insets/insetenv.C:66
 msgid "Opened Environment Inset: "
@@ -11065,9 +11062,8 @@ msgid "Opened Float Inset"
 msgstr "Gleitobjekt-Einfügung geöffnet"
 
 #: src/insets/insetfloat.C:334
-#, fuzzy
 msgid "float"
-msgstr "Gleitobjekt: "
+msgstr "Gleitobjekt"
 
 #: src/insets/insetfloat.C:385
 msgid " (sideways)"
@@ -11091,7 +11087,6 @@ msgid "Opened Footnote Inset"
 msgstr "Fußnoten-Einfügung geöffnet"
 
 #: src/insets/insetfoot.C:86
-#, fuzzy
 msgid "footnote"
 msgstr "Fußnote"
 
@@ -11245,9 +11240,8 @@ msgid "PrettyRef"
 msgstr "PrettyRef"
 
 #: src/insets/insetref.C:156 src/mathed/InsetMathRef.C:180
-#, fuzzy
 msgid "FormatRef: "
-msgstr "&Format:"
+msgstr "Formatiert: "
 
 #: src/insets/insettabular.C:450
 msgid "Opened table"
@@ -11298,9 +11292,8 @@ msgid "Opened Wrap Inset"
 msgstr "Einfügung für umflossenes Gleitobjekt geöffnet"
 
 #: src/insets/insetwrap.C:198
-#, fuzzy
 msgid "wrap"
-msgstr "Umflossenes Gleitobjekt: "
+msgstr "Umflossenes Gleitobjekt"
 
 #: src/insets/render_graphic.C:90 src/insets/render_graphic.C:94
 msgid "Not shown."
@@ -11944,9 +11937,9 @@ msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
 #: src/lyxfunc.C:1402
-#, fuzzy, c-format
+#, c-format
 msgid "Opening child document %1$s..."
-msgstr "Öffne Dokument %1$s..."
+msgstr "Öffne Unterdokument %1$s..."
 
 #: src/lyxfunc.C:1490
 msgid "Syntax: set-color <lyx_name> <x11_name>"
@@ -11960,9 +11953,9 @@ msgstr ""
 "darf nicht umdefiniert werden."
 
 #: src/lyxfunc.C:1616
-#, fuzzy, c-format
+#, c-format
 msgid "Document defaults saved in %1$s"
-msgstr "Dokument-Standardeinstellungen gespeichert in "
+msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
 #: src/lyxfunc.C:1619
 msgid "Unable to save document defaults"
@@ -12649,9 +12642,8 @@ msgid "entered math text mode (textrm)"
 msgstr "Mathe-Textmodus betreten (textrm)"
 
 #: src/mathed/MathMacroTemplate.C:225
-#, fuzzy
 msgid "math macro"
-msgstr "Mathe (Hintergrund)"
+msgstr "Mathe-Makro"
 
 #: src/output.C:39
 #, c-format
@@ -13021,9 +13013,3 @@ msgstr "Variabel"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "geschützt"
-
-#~ msgid "PrettyRef: "
-#~ msgstr "PrettyRef: "
-
-#~ msgid "Opening child document "
-#~ msgstr "Öffne Unterdokument "
