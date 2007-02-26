@@ -2,12 +2,12 @@ Function MissingPrograms
 
   StrCpy $MissedProg "False"
 
-  ; test if MiKTeX is installed
-  ; read the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
+  # test if MiKTeX is installed
+  # read the PATH variable via the registry because NSIS' "$%Path%" variable is not updated when the PATH changes
   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
   StrCpy $Search "miktex"
   Call LaTeXCheck ; sets the path to the latex.exe to $LatexPath ; function from LyXUtils.nsh
-  ; check if MiKTeX 2.4 or 2.5 is installed
+  # check if MiKTeX 2.4 or 2.5 is installed
   StrCpy $String ""
   ReadRegStr $String HKLM "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
   ${if} $String != ""
@@ -16,14 +16,14 @@ Function MissingPrograms
   ${endif}
   
   ${if} $LatexPath == "" ; check if MiKTeX is installed only for the current user
-   ; check for MiKTeX 2.5
+   # check for MiKTeX 2.5
    ReadRegStr $String HKCU "Environment" "Path"
    StrCpy $Search "miktex"
    Call LaTeXCheck ; function from LyXUtils.nsh
    ${if} $LatexPath != ""
     StrCpy $MiKTeXUser "HKCU" ; needed later to for a message about MiKTeX's install folder write permissions, see InstallActions-*.nsh
    ${endif}
-   ; check for MiKTeX 2.4
+   # check for MiKTeX 2.4
    StrCpy $String ""
    ReadRegStr $String HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Install Root"
    ${if} $String != ""
@@ -39,28 +39,28 @@ Function MissingPrograms
    ${endif} 
   ${endif}
 
-  ; test if TeXLive is installed
-  ; as described at TeXLives' homepage there should be an entry in the PATH
+  # test if TeXLive is installed
+  # as described at TeXLives' homepage there should be an entry in the PATH
   ${if} $LatexPath == ""
    ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
    StrCpy $Search "TeXLive"
    Call LaTeXCheck ; function from LyXUtils.nsh
   ${endif}
-  ; check for the current user Path variable (the case when it is a live CD/DVD)
+  # check for the current user Path variable (the case when it is a live CD/DVD)
   ${if} $LatexPath == ""
    ReadRegStr $String HKCU "Environment" "Path"
    StrCpy $Search "texlive"
    StrCpy $2 "TeXLive"
    Call LaTeXCheck ; function from LyXUtils.nsh
   ${endif}
-  ; check if the variable TLroot exists (the case when it is installed using the program "tlpmgui")
+  # check if the variable TLroot exists (the case when it is installed using the program "tlpmgui")
   ${if} $LatexPath == ""
    ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "TLroot"
    ${if} $String == ""
     ReadRegStr $String HKCU "Environment" "TLroot" ; the case when installed without admin permissions
    ${endif}
    StrCpy $LatexPath "$String\bin\win32"
-   ; check if the latex.exe exists in the $LatexPath folder
+   # check if the latex.exe exists in the $LatexPath folder
    !insertmacro FileCheck $5 "latex.exe" "$LatexPath" ; macro from LyXUtils.nsh
    ${if} $5 == "False"
     StrCpy $LatexPath ""
@@ -72,7 +72,7 @@ Function MissingPrograms
    StrCpy $LaTeXName "TeXLive"
   ${endif} 
 
-  ; test if Ghostscript is installed
+  # test if Ghostscript is installed
   GSloop:
   EnumRegKey $1 HKLM "Software\AFPL Ghostscript" 0
   ${if} $1 == ""
@@ -108,20 +108,20 @@ Function MissingPrograms
    StrCpy $MissedProg "True"
   ${endif}
 
-  ; test if Imagemagick is installed
+  # test if Imagemagick is installed
   ReadRegStr $ImageMagickPath HKLM "Software\ImageMagick\Current" "BinPath"
   ${if} $ImageMagickPath == ""
    StrCpy $MissedProg "True"
   ${endif}
 
-  ; test if Aiksaurus is installed
+  # test if Aiksaurus is installed
   !insertmacro FileCheck $5 "meanings.dat" "${AiksaurusDir}" ; macro from LyXUtils.nsh
   ${if} $5 == "True"
    StrCpy $AiksaurusPath "${AiksaurusDir}"
   ${endif}
-;  ReadRegStr $AiksaurusPath HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "AIK_DATA_DIR"
+#  ReadRegStr $AiksaurusPath HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "AIK_DATA_DIR"
 
-  ; test if Aspell is installed
+  # test if Aspell is installed
   StrCpy $5 ""
   ReadRegStr $5 HKCU "SOFTWARE\Aspell" "Base Path"
   ${if} $5 == ""
@@ -136,16 +136,16 @@ Function MissingPrograms
    StrCpy $AspellPath "$5"
   ${endif}
 
-  ; test if Python is installed
-  ; only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered
-  ; with outdated Python interpreters
+  # test if Python is installed
+  # only use an existing python when it is version 2.5 because many Compaq and Dell PC are delivered
+  # with outdated Python interpreters
   ReadRegStr $PythonPath HKLM "Software\Python\PythonCore\2.5\InstallPath" ""
   ${if} $PythonPath != ""
    StrCpy $0 $PythonPath "" -1 ; remove the "\" at the end
    StrCpy $DelPythonFiles "True"
   ${endif}
 
-  ; test if Acrobat or Adobe Reader is used as PDF-viewer
+  # test if Acrobat or Adobe Reader is used as PDF-viewer
   ReadRegStr $String HKCR ".pdf" ""
   ${if} $String != "AcroExch.Document" ; this name is only used by Acrobat and Adobe Reader
    StrCpy $Acrobat "None"
@@ -161,20 +161,20 @@ Function MissingPrograms
    ${endif}
   ${endif}
 
-  ; test if a PostScript-viewer is installed, only check for GSview32
+  # test if a PostScript-viewer is installed, only check for GSview32
   StrCpy $PSVPath ""
   ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"
 
-  ; test if an editor with syntax-highlighting for LaTeX-files is installed (function in LyXUtils.nsh)
+  # test if an editor with syntax-highlighting for LaTeX-files is installed (function in LyXUtils.nsh)
   Call EditorCheck ; function from LyXUtils.nsh
 
-  ; test if an image editor is installed (due to LyX's bug 2654 first check for GIMP)
+  # test if an image editor is installed (due to LyX's bug 2654 first check for GIMP)
   StrCpy $ImageEditorPath ""
   ReadRegStr $ImageEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\WinGimp-2.0_is1" "DisplayIcon"
   ${if} $ImageEditorPath != ""
    StrCpy $ImageEditorPath "$ImageEditorPath" -13 ; delete "\gimp-2.x.exe"
   ${endif}
-  ; check for Photoshop
+  # check for Photoshop
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\Photoshop.exe" "Path"
   ${if} $0 != ""
    StrCpy $0 "$0" -1 ; delete the last "\"
@@ -185,7 +185,7 @@ Function MissingPrograms
    ${endif}
   ${endif}
 
-  ; test if the BibTeX-editor JabRef is installed
+  # test if the BibTeX-editor JabRef is installed
   StrCpy $BibTeXEditorPath ""
   ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef 2.1" "UninstallString"
   ${if} $BibTeXEditorPath == ""
@@ -196,7 +196,7 @@ FunctionEnd
 
 Function MissingProgramsPage
 
-  ; generate the installer page - re-read empty page first
+  # generate the installer page - re-read empty page first
   StrCpy $0 "2"
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "io_missing_progs.ini"
   !insertmacro MUI_HEADER_TEXT "$(MissProgHeader)" ""

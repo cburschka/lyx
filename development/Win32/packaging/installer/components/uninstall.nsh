@@ -4,12 +4,12 @@ Uninstaller
 
 */
 
-;--------------------------------
-;Sections
+#--------------------------------
+#Sections
 
 Section "un.Program Files" un.SecProgramFiles
 
-  ;Binaries
+  #Binaries
   
   Delete "$INSTDIR\bin\lyx.exe"
   Delete "$INSTDIR\bin\lyxc.exe"
@@ -26,51 +26,51 @@ Section "un.Program Files" un.SecProgramFiles
   !insertmacro FileListPDFToolsBin Delete "$INSTDIR\bin\"
   !insertmacro FileListPDFViewBin Delete "$INSTDIR\bin\"
   
-  ;Icons
+  #Icons
   
   !insertmacro FileListLyXIcons Delete "$INSTDIR\bin\"  
   
-  ;Resources
+  #Resources
   
   RMDir /r "$INSTDIR\Resources"
   
-  ;Components of Python
+  #Components of Python
   
   RMDir /r "$INSTDIR\python"
   
-  ;Aiksaurus Data
+  #Aiksaurus Data
   
   !insertmacro FileListAiksaurusData Delete "$INSTDIR\aiksaurus\"
   RMDir "$INSTDIR\aiksaurus"
   
-  ;Helper DLLs for NSIS-based tools
+  #Helper DLLs for NSIS-based tools
 
   !insertmacro FileListNSISPluginsStandard Delete "$INSTDIR\bin\"
   !insertmacro FileListNSISPlugins Delete "$INSTDIR\bin\"   
   
-  ;Shortcuts
+  #Shortcuts
   
   Delete "$SMPROGRAMS\${APP_NAME} ${APP_SERIES_NAME}.lnk"
   Delete "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
 
-  ;Uninstaller itself
+  #Uninstaller itself
   
   Delete "$INSTDIR\${SETUP_UNINSTALLER}"
   RMDir "$INSTDIR\bin"
   
-  ;Application folder
+  #Application folder
   
   SetOutPath "$PROGRAMFILES"
   RMDir "$INSTDIR"
   
-  ;Registry keys
+  #Registry keys
   
   DeleteRegKey SHELL_CONTEXT "${APP_REGKEY_SETUP}"
   DeleteRegKey SHELL_CONTEXT "${APP_REGKEY}"
   DeleteRegKey SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}"
   DeleteRegKey SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"
   
-  ;File associations
+  #File associations
   
   ReadRegStr $R0 SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
   

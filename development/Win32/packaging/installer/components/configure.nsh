@@ -6,14 +6,14 @@ Create uninstaller, file associations and configure LyX
 
 !define SHORTCUT '${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"'
 
-;--------------------------------
-;Sections
+#--------------------------------
+#Sections
 
 Section -FileAssociations
 
-  ;Associate .lyx files with LyX for current user of all users
+  #Associate .lyx files with LyX for current user of all users
 
-  ;Write information about file type
+  #Write information about file type
   !define REG_FILETYPE 'WriteRegStr SHELL_CONTEXT "Software\Classes\${APP_REGNAME_DOC}'
   
   ${REG_FILETYPE}" "" "${APP_NAME} Document"
@@ -25,14 +25,14 @@ Section -FileAssociations
   ${REG_FILEEXT} "" "${APP_REGNAME_DOC}"
   ${REG_FILEEXT} "Content Type" "${APP_MIME_TYPE}"  
   
-  ;Refresh shell
+  #Refresh shell
   System::Call 'shell32.dll::SHChangeNotify(i, i, i, i) (${SHCNE_ASSOCCHANGED}, ${SHCNF_IDLIST}, 0, 0)'
 
 SectionEnd
 
 Section -InstallData
 
-  ;Registry information
+  #Registry information
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "" $INSTDIR
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY} "Version" "${APP_VERSION}"
 
@@ -41,11 +41,11 @@ Section -InstallData
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "Ghostscript Path" $PathGhostscript
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETUP} "LyX Language" $LangName
 
-  ;Start Menu shortcut
-  ;There is only one shortcut to the application, so it should be in the main group
+  #Start Menu shortcut
+  #There is only one shortcut to the application, so it should be in the main group
   CreateShortCut "$SMPROGRAMS\${SHORTCUT}
     
-  ;Uninstaller information
+  #Uninstaller information
   !define REG_UNINSTALL 'WriteRegStr SHELL_CONTEXT "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SETUP_UNINSTALLER_KEY}"'
   
   ${if} $CurrentUserInstall == ${TRUE}
@@ -66,9 +66,9 @@ SectionEnd
 
 Section -LaTeX
 
-  ;Let MiKTeX ask the user again to download packages if needed
+  #Let MiKTeX ask the user again to download packages if needed
   
-  ;MiKTeX 2.5
+  #MiKTeX 2.5
   
   ReadRegStr $R0 HKCU "Software\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall"  
   
@@ -76,7 +76,7 @@ Section -LaTeX
     WriteRegStr HKCU "Software\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall" 2
   ${endif}
   
-  ;MiKTeX 2.4
+  #MiKTeX 2.4
   
   ReadRegStr $R0 HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly"
   
@@ -84,7 +84,7 @@ Section -LaTeX
     WriteRegStr HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly" 2
   ${endif}
   
-  ;dvipost package
+  #dvipost package
 
   Call SearchLaTeXLocalRoot
   Pop $R0
@@ -94,7 +94,7 @@ Section -LaTeX
     File "${FILES_DVIPOST_PKG}\dvipost.sty"
   ${endif}
   
-  ;Update file name database
+  #Update file name database
   
   ${if} $PathLaTeX != ""
     nsExec::Exec '"$PathLaTeX\initexmf.exe" --update-fndb'
@@ -105,42 +105,42 @@ SectionEnd
 
 Section -Configure
 
-  ;Windows specific configuration in lyxrc.dist
+  #Windows specific configuration in lyxrc.dist
   
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   
-  ;Path prefix
+  #Path prefix
   Call GetPathPrefix
   Pop $R0  
   FileWrite $R1 '\path_prefix "$R0"$\r$\n'
   
-  ;Default screen fonts
+  #Default screen fonts
   FileWrite $R1 '\screen_font_roman "Times New Roman"$\r$\n'
   FileWrite $R1 '\screen_font_sans "Arial"$\r$\n'
   FileWrite $R1 '\screen_font_typewriter "Courier New"$\r$\n'
   FileWrite $R1 '\preview_scale_factor 1.0$\r$\n' ;Fit instant preview font size to screen fonts
-  ;PDF view helper
+  #PDF view helper
   FileWrite $R1 '\format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector"$\r$\n'  
   FileWrite $R1 '\format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector"$\r$\n'
   FileWrite $R1 '\format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector"$\r$\n'
   
   FileClose $R1
   
-  ;Information in the registry for the launcher
+  #Information in the registry for the launcher
   
-  ;Set language
+  #Set language
   WriteRegStr SHELL_CONTEXT ${APP_REGKEY_SETTINGS} "Language" $LangISOCode
 
 SectionEnd
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function CheckDesktopShortcut
 
-  ;Enable desktop icon creation when there is an icon already
-  ;Old shortcuts need to be updated
+  #Enable desktop icon creation when there is an icon already
+  #Old shortcuts need to be updated
   
   ${if} ${fileexists} "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "ioSpecial.ini" "Field 5" "State" "1"
@@ -150,7 +150,7 @@ FunctionEnd
 
 Function CreateDesktopShortcut
 
-  ;Creating a desktop shortcut is an option on the finish page
+  #Creating a desktop shortcut is an option on the finish page
 
   CreateShortCut "$DESKTOP\${SHORTCUT}
 

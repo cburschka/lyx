@@ -13,19 +13,19 @@ SetCompressor /SOLID lzma
 
 !include "include\declarations.nsh"
 
-;--------------------------------
-;Compile the launcher
+#--------------------------------
+#Compile the launcher
 
 !system '"${NSISDIR}\makensis.exe" "${FILES_LAUNCHER}\launcher.nsi"'
 
-;--------------------------------
-;Compile Windows PDF view helper
+#--------------------------------
+#Compile Windows PDF view helper
 
 !system '"${NSISDIR}\makensis.exe" "${FILES_PDFVIEW}\pdfview.nsi"'
 
-;--------------------------------
-;LyX Installer, output file can be specified using command line option
-; /DExeFile=/path/to/installer
+#--------------------------------
+#LyX Installer, output file can be specified using command line option
+# /DExeFile=/path/to/installer
 
 !ifdef ExeFile
 !ifdef SETUPTYPE_BUNDLE
@@ -37,8 +37,8 @@ OutFile "${ExeFile}"
 Outfile "${SETUP_EXE}"
 !endif
 
-;--------------------------------
-;Components
+#--------------------------------
+#Components
 
 !include "components\core.nsh"
 !include "components\user.nsh"

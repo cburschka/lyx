@@ -1,4 +1,4 @@
-; Aspell dictionaries
+# Aspell dictionaries
 
 Function DownloadDictionary
 	
@@ -18,8 +18,8 @@ Function DownloadDictionary
 
   StrCpy $String $String -2 ; delete the linebreak characters at the end
  
-  ; Download aspell dictionaries,
-  ; if first download repository is not available try the other ones listed in "AspellRepositories.txt"
+  # Download aspell dictionaries,
+  # if first download repository is not available try the other ones listed in "AspellRepositories.txt"
   FileOpen $R5 "$INSTDIR\Resources\AspellRepositories.txt" r
   ${For} $4 1 4
    FileRead $R5 $Search ; $Search is now the AspellLocation
@@ -27,8 +27,8 @@ Function DownloadDictionary
    Push $R0
    InetLoad::load /TIMEOUT=5000 "$Search/aspell6-$String.exe" "$INSTDIR\aspell6-$String.exe" /END
    Pop $R0
-   ; test if the downloaded file is really the expected one, because if the file didn't exist on the download server,
-   ; berlios.de downloads a text file with the name of the non-existing file that contains the line "File doesn't exist" 
+   # test if the downloaded file is really the expected one, because if the file didn't exist on the download server,
+   # berlios.de downloads a text file with the name of the non-existing file that contains the line "File doesn't exist" 
    FileOpen $R4 "$INSTDIR\aspell6-$String.exe" r
    FileRead $R4 $Search
    FileClose $R4
@@ -42,14 +42,14 @@ Function DownloadDictionary
   ${Next}
   FileClose $R5
   
-  ; Download failed
+  # Download failed
   ${if} $R0 != "OK"
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(AspellDownloadFailed) $R0"
    StrCpy $AspellInstallYes "$RunNumber$AspellInstallYes"
    Goto abortinstall
   ${endif}
  
-  ; Download successful
+  # Download successful
   ExecWait '"$INSTDIR\aspell6-$String.exe" /NoDirChange /AutoClose'
   ${if} $AspellBaseReg == "HKLM"
    ReadRegStr $R2 HKLM "Software\Aspell\Dictionaries" $DictCode
@@ -66,13 +66,13 @@ Function DownloadDictionary
 
 FunctionEnd
 
-;--------------------------------
+#--------------------------------
 
 Function InstallAspellDictionary
 	
  StrCpy $AspellInstallYes ""
 
- ; install the english dictionary if not already installed
+ # install the english dictionary if not already installed
  StrCpy $DictCode "en"
  StrCpy $RunNumber "1"
  ${if} $AspellBaseReg == "HKLM" ; $AspellBaseReg is either "HKLM" or if Aspell is already installed only for the current user "HKCU"
@@ -88,9 +88,9 @@ Function InstallAspellDictionary
   StrCpy $AspellInstallYes "$RunNumber$AspellInstallYes"
  ${endif}
  
- ; install the dictionary corresponding to the system and the chosen menu language
- ; check if the system language and the chosen menu language are the same, if not install
- ; both dictionaries
+ # install the dictionary corresponding to the system and the chosen menu language
+ # check if the system language and the chosen menu language are the same, if not install
+ # both dictionaries
  StrCpy $DictCode $LangCode 2
  StrCpy $0 $DictCode ; $0 is now the language code of the chosen LyX menu language
  StrCpy $RunNumber "2"
@@ -136,7 +136,7 @@ Function InstallAspellDictionary
   StrCpy $AspellInstallYes "4$AspellInstallYes"
  ${endif}
 
- ; check the registry to divide between nothing installed or all already installed
+ # check the registry to divide between nothing installed or all already installed
  ${if} $AspellInstallYes == "321"
  ${orif} $AspellInstallYes == "421"
   ${if} $AspellBaseReg == "HKLM"
@@ -167,12 +167,12 @@ Function InstallAspellDictionary
  Delete "$INSTDIR\Resources\AspellDictionaryNames.txt"
  Delete "$INSTDIR\Resources\AspellRepositories.txt"
  
- ; show message about Aspell dictionaries
- ; the code rule to display the correct message:
- ; - when the englisch dictionary is already installed or couldn't be installed -> set a "1"
- ; - when the dictionary of the chosen LyX menu language is already installed or couldn't be installed -> set a "2"
- ; - when the dictionary of the Windows system language is already installed or couldn't be installed -> set a "3"
- ; - when the dictionary of the chosen LyX menu language is equal to the dictionary of the Windows system language -> set a "4"
+ # show message about Aspell dictionaries
+ # the code rule to display the correct message:
+ # - when the englisch dictionary is already installed or couldn't be installed -> set a "1"
+ # - when the dictionary of the chosen LyX menu language is already installed or couldn't be installed -> set a "2"
+ # - when the dictionary of the Windows system language is already installed or couldn't be installed -> set a "3"
+ # - when the dictionary of the chosen LyX menu language is equal to the dictionary of the Windows system language -> set a "4"
  ${if} $AspellInstallYes == "32"
  ${orif} $AspellInstallYes == "42"
   MessageBox MB_ICONINFORMATION|MB_DEFBUTTON2|MB_YESNO "$(AspellPartStart)$(AspellPart1)$(AspellPart4)" IDYES DownloadNow IDNO DownloadLater
@@ -208,14 +208,14 @@ Function InstallAspellDictionary
 	 
 FunctionEnd
  
-;---------------------------
+#---------------------------
 
 Function un.UninstAspell
 
     ReadRegStr $1 HKLM "Software\Aspell" "Base Path"
-    ; delete Aspells' install folder
+    # delete Aspells' install folder
     RMDir /r $1
-    ; unregister Aspell and its dictionaries
+    # unregister Aspell and its dictionaries
     DeleteRegKey HKLM "Software\Aspell"
     DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell"
     DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Aspell6-Dictionary-af"

@@ -1,10 +1,10 @@
-;NSIS Modern User Interface - Language File
-;Compatible with Modern UI 1.68
+#NSIS Modern User Interface - Language File
+#Compatible with Modern UI 1.68
 
-;Language: Galician (1110)
-;Ramon Flores <fa2ramon@usc.es>
+#Language: Galician (1110)
+#Ramon Flores <fa2ramon@usc.es>
 
-;--------------------------------
+#--------------------------------
 
 !insertmacro MUI_LANGUAGEFILE_BEGIN "Galician"
 

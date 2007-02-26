@@ -4,36 +4,36 @@ Option to download GSView (PDF/Postscript viewer)
 
 */
 
-;--------------------------------
-;Sections
+#--------------------------------
+#Sections
 
 Section -Viewer ExternalViewer
   !insertmacro ExternalComponent Viewer
 SectionEnd
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function InitSizeViewer
 
-  ;Get size of viewer installer
+  #Get size of viewer installer
  
   SectionGetSize ${ExternalViewer} $SizeViewer
   
   !ifndef SETUPTYPE_BUNDLE
-    ;Add download size
+    #Add download size
     IntOp $SizeViewer $SizeViewer + ${SIZE_DOWNLOAD_VIEWER}
   !endif
   
 FunctionEnd
 
-;--------------------------------
-;Page functions
+#--------------------------------
+#Page functions
 
 Function PageViewer
 
-  ;Show page if no viewer is installed, the user has Power User or Administrator priviledges and
-  ;Ghostscript is installed or will be installed
+  #Show page if no viewer is installed, the user has Power User or Administrator priviledges and
+  #Ghostscript is installed or will be installed
 
   ${if} $AdminOrPowerUser == ${FALSE}
   ${orif} $PathViewer == "associated"
@@ -53,7 +53,7 @@ FunctionEnd
 
 Function PageViewerValidate
 
-  ;Download?
+  #Download?
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "viewer.ini" "Field 2" "State"
   !insertmacro SetComponentState $R0 Viewer
 

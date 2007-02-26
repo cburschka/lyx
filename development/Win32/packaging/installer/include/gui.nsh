@@ -4,17 +4,17 @@ Installer User Interface
 
 */
 
-;--------------------------------
-;General
+#--------------------------------
+#General
 
 Name "${APP_NAME} ${APP_VERSION}"
 BrandingText " "
 
-;Default installation folder
+#Default installation folder
 InstallDir "${SETUP_DEFAULT_DIRECTORY}"
 
-;--------------------------------
-;Interface settings
+#--------------------------------
+#Interface settings
 
 !define MUI_ABORTWARNING
 !define MUI_ICON "${SETUP_ICON}"
@@ -27,10 +27,10 @@ InstallDir "${SETUP_DEFAULT_DIRECTORY}"
 !define MUI_CUSTOMFUNCTION_GUIINIT InitInterface
 !define MUI_COMPONENTSPAGE_NODESC
 
-;--------------------------------
-;Pages
+#--------------------------------
+#Pages
 
-;Installer
+#Installer
 
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !define MUI_WELCOMEPAGE_TEXT $(TEXT_WELCOME_${SETUPTYPE_NAME})
@@ -64,7 +64,7 @@ Page custom PageLanguage PageLanguageValidate
 !define MUI_PAGE_CUSTOMFUNCTION_PRE CheckDesktopShortcut
 !insertmacro MUI_PAGE_FINISH
 
-;Uninstaller
+#Uninstaller
 
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !define MUI_WELCOMEPAGE_TEXT $(UNTEXT_WELCOME)
@@ -75,16 +75,16 @@ Page custom PageLanguage PageLanguageValidate
 
 !insertmacro MUI_UNPAGE_FINISH
 
-;--------------------------------
-;Installer Languages
+#--------------------------------
+#Installer Languages
 
 !insertmacro IncludeLang "english"
 !insertmacro IncludeLang "french"
 !insertmacro IncludeLang "german"
 !insertmacro IncludeLang "italian"
 
-;--------------------------------
-;Version information
+#--------------------------------
+#Version information
 
 VIProductVersion "${APP_VERSION_NUMBER}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
@@ -92,8 +92,8 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro InitDialogExternal COMPONENT CURRENTUSER_POSSIBLE
 
@@ -143,14 +143,14 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
 !macroend
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function InitDialogs
 
   Push $R0
 
-  ;Extract dialogs
+  #Extract dialogs
   
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT_AS "dialogs\user.ini" "user.ini"
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT_AS "dialogs\reinstall.ini" "reinstall.ini"
@@ -160,7 +160,7 @@ Function InitDialogs
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT_AS "dialogs\viewer.ini" "viewer.ini"
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT_AS "dialogs\langselect.ini" "langselect.ini"
   
-  ;Write texts
+  #Write texts
   
   !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 1" "Text" $(TEXT_USER_INFO)
   !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "Text" $(TEXT_USER_ALL)
@@ -182,7 +182,7 @@ Function InitDialogs
   !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 2" "ListItems" $R0
   !insertmacro MUI_INSTALLOPTIONS_WRITE "langselect.ini" "Field 2" "State" "English" ;Default language
   
-  ;Set state of user dialog
+  #Set state of user dialog
   ${if} $CurrentUserInstall == ${TRUE}
     !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 2" "State" "0"
     !insertmacro MUI_INSTALLOPTIONS_WRITE "user.ini" "Field 3" "State" "1"

@@ -4,8 +4,8 @@ Checks for Windows version
 
 */
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro CheckPrivileges
 
@@ -26,8 +26,8 @@ Checks for Windows version
 
 !macroend
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function CheckPrivileges
   !insertmacro CheckPrivileges
@@ -39,7 +39,7 @@ FunctionEnd
 
 Function CheckWindows
 
-  ;Check for Windows NT 5.0 or later (2000, XP, 2003 etc.)
+  #Check for Windows NT 5.0 or later (2000, XP, 2003 etc.)
 
   ${unless} ${IsNT}
     ${andunless} ${AtLeastWin2000}
@@ -55,7 +55,7 @@ Function UpdatePathEnvironment
   Push $R0
   Push $R1
   
-  ;Updates the path environment variable of the instaler process to the latest system value
+  #Updates the path environment variable of the instaler process to the latest system value
   
   ReadRegStr $R0 HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" Path
   ReadRegStr $R1 HKCU "Environment" Path

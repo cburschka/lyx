@@ -4,12 +4,12 @@ Detection functions for all components
 
 */
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro SearchMiKTeX25
 
-  ;Detect location of MiKTeX installation using initexmf
+  #Detect location of MiKTeX installation using initexmf
   
   Push $R0
   
@@ -44,19 +44,19 @@ Detection functions for all components
   StrCpy $R1 0
  
   "${Index}-Loop:"
-  ;Check for key
+  #Check for key
   EnumRegKey $R0 ${ROOT} "${MAIN_KEY}" "$R1"
   StrCmp $R0 "" "${Index}-False"
   IntOp $R1 $R1 + 1
   StrCmp $R0 "${KEY}" "${Index}-True" "${Index}-Loop"
  
   "${Index}-True:"
-  ;Found
+  #Found
   Push ${TRUE}
   Goto "${Index}-End"
  
   "${Index}-False:"
-  ;Not found
+  #Not found
   Push ${FALSE}
   goto "${Index}-End"
  
@@ -69,8 +69,8 @@ Detection functions for all components
 
 !macroend
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function SearchAll
 
@@ -85,7 +85,7 @@ FunctionEnd
 
 Function TrimBackslash
 
-  ;Trim a trailing backslash of a directory
+  #Trim a trailing backslash of a directory
 
   Exch $R0
   Push $R1
@@ -148,7 +148,7 @@ FunctionEnd
 
 Function DetectViewerByExtension
 
-  ;Input on stack: file extension without dot
+  #Input on stack: file extension without dot
 
   Exch $R0
   Push $R1
@@ -174,7 +174,7 @@ FunctionEnd
 
 Function SearchLaTeX
 
-  ;Search where MikTeX is installed
+  #Search where MikTeX is installed
   
   !insertmacro SearchMiKTeX25
   
@@ -194,12 +194,12 @@ FunctionEnd
 
 Function SearchLaTeXLocalRoot
 
-  ;Search for the MikTeX local root
-  ;Returns value on stack
+  #Search for the MikTeX local root
+  #Returns value on stack
 
   Push $R0
   
-  ;MikTeX 2.5
+  #MikTeX 2.5
   
   !insertmacro IfKeyExists HKCU "Software\MiKTeX.org\MiKTeX" "2.5"
   Pop $R0
@@ -213,7 +213,7 @@ Function SearchLaTeXLocalRoot
     StrCpy $R0 "$APPDATA\MiKTeX\2.5"
   ${else}
   
-    ;MiKTeX 2.4
+    #MiKTeX 2.4
     
     ReadRegStr $R0 HKCU "Software\MiK\MiKTeX\CurrentVersion\MiKTeX" "Local Root"
     
@@ -229,7 +229,7 @@ FunctionEnd
 
 Function SearchGhostscript
 
-  ;Search where Ghostscript is installed
+  #Search where Ghostscript is installed
   
   Push $R0 ;Temp
   Push $R1 ;Counter
@@ -240,7 +240,7 @@ Function SearchGhostscript
   StrCpy $R3 ""
   StrCpy $R4 ""
 
-  ;Check the latest version of AFPL Ghostscript installed
+  #Check the latest version of AFPL Ghostscript installed
   
   StrCpy $R1 0
   
@@ -258,7 +258,7 @@ Function SearchGhostscript
     
   ${loopuntil} $R2 == ""
     
-  ;The same for GPL Ghostscript
+  #The same for GPL Ghostscript
     
   StrCpy $R1 0
   
@@ -276,18 +276,18 @@ Function SearchGhostscript
   
   ${loopuntil} $R2 == ""  
   
-  ;Take the latest one
+  #Take the latest one
   ${VersionCompare} $R3 $R4 $R0
 
   ${if} $R0 == "1"
-    ;AFPL is newer
+    #AFPL is newer
     ReadRegStr $PathGhostscript HKLM "Software\AFPL Ghostscript\$R3" "GS_DLL"
   ${else}
-    ;GPL is newer or equal
+    #GPL is newer or equal
     ReadRegStr $PathGhostscript HKLM "Software\GPL Ghostscript\$R4" "GS_DLL"
   ${endif}
   
-  ;Trim the DLL filename to get the path
+  #Trim the DLL filename to get the path
   ${GetParent} $PathGhostscript $PathGhostscript
   
   ${unless} ${FileExists} "$PathGhostscript\${BIN_GHOSTSCRIPT}"
@@ -304,7 +304,7 @@ FunctionEnd
 
 Function SearchImageMagick
 
-  ;Search where ImageMagick is installed
+  #Search where ImageMagick is installed
   ReadRegStr $PathImageMagick HKLM "Software\ImageMagick\Current" "BinPath"
   
   ${unless} ${FileExists} "$PathImageMagick\${BIN_IMAGEMAGICK}"

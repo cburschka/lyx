@@ -7,8 +7,8 @@ Declarations
 !include "settings.user.nsh"
 !include "settings.nsh"
 
-;--------------------------------
-;Defines based on settings
+#--------------------------------
+#Defines based on settings
 
 !ifndef SETUPTYPE_BUNDLE
   !define SETUPTYPE_NAME DOWNLOAD
@@ -16,8 +16,8 @@ Declarations
   !define SETUPTYPE_NAME INSTALL
 !endif
 
-;--------------------------------
-;Standard header files
+#--------------------------------
+#Standard header files
 
 !include "MUI.nsh"
 !include "LogicLib.nsh"
@@ -27,15 +27,15 @@ Declarations
 !include "Sections.nsh"
 !include "WinVer.nsh"
 
-;--------------------------------
-;Windows constants
+#--------------------------------
+#Windows constants
 
 !define SHCNE_ASSOCCHANGED 0x08000000
 !define SHCNF_IDLIST 0x0000
 
-;--------------------------------
-;Reserve Files
-;These files should come first in the compressed data (for faster GUI)
+#--------------------------------
+#Reserve Files
+#These files should come first in the compressed data (for faster GUI)
 
 ReserveFile "${NSISDIR}\Plugins\UserInfo.dll"
 ReserveFile "dialogs\user.ini"
@@ -45,8 +45,8 @@ ReserveFile "dialogs\langselect.ini"
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${FILES_DVIPOST_PKG}\dvipost.sty"
 
-;--------------------------------
-;Variables
+#--------------------------------
+#Variables
 
 Var AdminOrPowerUser
 Var CurrentUserInstall
@@ -71,8 +71,8 @@ Var LangISOCode
 
 Var AspellHive
   
-;--------------------------------
-;Include standard functions
+#--------------------------------
+#Include standard functions
 
 !insertmacro FUNCTION_STRING_StrStr
 
@@ -80,12 +80,12 @@ Var AspellHive
 !insertmacro VersionCompare
 !insertmacro WordFind2X
 
-;--------------------------------
-;Macros  
+#--------------------------------
+#Macros  
 
 !macro ReDef NAME VALUE
 
-  ;Redefine a pre-processor definition
+  #Redefine a pre-processor definition
 
   !ifdef `${NAME}`
     !undef `${NAME}`
@@ -97,7 +97,7 @@ Var AspellHive
   
 !macro CallFunc FUNCTION INPUT VAROUT
   
-  ;Calls a function that modifies a single value on the stack
+  #Calls a function that modifies a single value on the stack
 
   Push ${INPUT}
     Call ${FUNCTION}
@@ -105,8 +105,8 @@ Var AspellHive
 
 !macroend
 
-;--------------------------------
-;LyX installer header files  
+#--------------------------------
+#LyX installer header files  
 
 !include "include\init.nsh"
 !include "include\windows.nsh"

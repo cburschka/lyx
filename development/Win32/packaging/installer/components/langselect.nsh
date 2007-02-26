@@ -4,8 +4,8 @@ Selection of language for LyX interface
 
 */
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro SetSystemLangItem VAR LANGNAME LANGISOCODE LANGID
 
@@ -31,26 +31,26 @@ Selection of language for LyX interface
 
 !macro GetISOLangCode VAR_LANGNAME VAR_LANGISOCODE
 
-  ;Get the language code for the selected language name
+  #Get the language code for the selected language name
 
   !insertmacro LanguageList '!insertmacro GetISOLangCodeItem ${VAR_LANGNAME} ${VAR_LANGISOCODE}'
 
 !macroend
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function InitLanguage
 
-  ;Set the default for the language selection dialog to the Windows language
+  #Set the default for the language selection dialog to the Windows language
 
   System::Call "kernel32::GetUserDefaultUILanguage()i.R0"
   !insertmacro SetSystemLang $R0
   
 FunctionEnd
 
-;--------------------------------
-;Page functions
+#--------------------------------
+#Page functions
 
 Function PageLanguage
 

@@ -5,16 +5,16 @@ Binaries, Resources, Python, Aspell
 
 */
 
-;--------------------------------
-;Sections
+#--------------------------------
+#Sections
 
 Section -Core SecCore
 
-  ;Install and register the core LyX files
+  #Install and register the core LyX files
 
   InitPluginsDir
   
-  ;Binaries
+  #Binaries
   
   SetOutPath "$INSTDIR\bin"
 
@@ -34,19 +34,19 @@ Section -Core SecCore
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
   !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
 
-  ;Icons
+  #Icons
   
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXIcons File "${FILES_ICONS}\"
 
-  ;Resources
+  #Resources
   
   SetOutPath "$INSTDIR"
   File /r "${FILES_LYX}\Resources"
   SetOutPath "$INSTDIR\Resources\fonts"
   !insertmacro FileListFonts File "${FILES_FONTS}\"  
   
-  ;Components of Python
+  #Components of Python
   
   SetOutPath "$INSTDIR\python"
   !insertmacro FileListPythonBin File "${FILES_PYTHON}\"
@@ -58,7 +58,7 @@ Section -Core SecCore
   SetOutPath "$INSTDIR\python\Lib\encodings"
   !insertmacro FileListPythonLibEncodings File "${FILES_PYTHON}\Lib\encodings\"
   
-  ;Aspell
+  #Aspell
 
   File /oname=$PLUGINSDIR\AspellData.exe "${FILES_ASPELLDATA}\AspellData.exe"
 
@@ -70,18 +70,18 @@ Section -Core SecCore
 
   Delete "$PLUGINSDIR\AspellData.exe"
 
-  ;Aiksarus data
+  #Aiksarus data
   
   SetOutPath "$INSTDIR\aiksaurus"
   !insertmacro FileListAiksaurusData File "${FILES_AIKSAURUS}\"
   
-  ;Helper DLLs for NSIS-based tools
+  #Helper DLLs for NSIS-based tools
   
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListNSISPluginsStandard File "${NSISDIR}\Plugins\"
   !insertmacro FileListNSISPlugins File "${FILES_NSISPLUGINS}\"
   
-  ;Create uninstaller
+  #Create uninstaller
   WriteUninstaller "$INSTDIR\${SETUP_UNINSTALLER}"
 
 SectionEnd

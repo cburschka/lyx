@@ -4,8 +4,8 @@ Aspell dictionaries
 
 */
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro Dictionary FILE LANGNAME LANGCODE SIZE
 
@@ -23,8 +23,8 @@ Aspell dictionaries
   
 !macroend
 
-;--------------------------------
-;Sections
+#--------------------------------
+#Sections
 
 Section -AspellDicts
 
@@ -71,13 +71,13 @@ ${DICT} tr-0.50-0 "Türkçe" tr 549
 ${DICT} uk-1.1-0 "Ukrainian" uk 582
 ${DICT} cy-0.50-3 "Welsh" cy 1770
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function GetAspellHive
 
-  ;Check whether the system or local version of Aspell should be used
-  ;The patched Aspell uses the same logic
+  #Check whether the system or local version of Aspell should be used
+  #The patched Aspell uses the same logic
 
   Push $R0
 
@@ -104,12 +104,12 @@ Function DownloadDictionary
 
   dict_download:
 
-    ;Download
+    #Download
     InetLoad::load "${DOWNLOAD_ASPELLDICTS}/aspell6-$R0.exe" "$PLUGINSDIR\aspell6-$R0.exe" /END
     Pop $R3
 
     ${if} $R3 != "OK"
-      ;Download failed
+      #Download failed
       MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_DICT) ($R3)" IDYES dict_download
       Goto dict_noinstall
     ${endif}

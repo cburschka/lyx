@@ -4,8 +4,8 @@ Settings for LyX installer
 
 */
 
-;--------------------------------
-;File locations
+#--------------------------------
+#File locations
 
 !define FILES_LICENSE "license.rtf"
 
@@ -28,8 +28,8 @@ Settings for LyX installer
 
 !define FILES_NSISPLUGINS "${FILES_DEPS}\nsis"
 
-;--------------------------------
-;Locations of components to download
+#--------------------------------
+#Locations of components to download
 !define DOWNLOAD_LATEX "http://superb-west.dl.sourceforge.net/sourceforge/miktex/basic-miktex-2.5.2580.exe"
 !define DOWNLOAD_IMAGEMAGICK "http://superb-west.dl.sourceforge.net/sourceforge/imagemagick/ImageMagick-6.3.2-5-Q16-windows-dll.exe"
 !define DOWNLOAD_GHOSTSCRIPT "http://superb-west.dl.sourceforge.net/sourceforge/ghostscript/gs854w32-gpl.exe"
@@ -37,32 +37,32 @@ Settings for LyX installer
 
 !define DOWNLOAD_ASPELLDICTS "ftp://ftp.lyx.org/pub/lyx/contrib/aspell6-windows"
 
-;--------------------------------
-;Download size (in KB)
+#--------------------------------
+#Download size (in KB)
 
 !define SIZE_DOWNLOAD_LATEX 47271
 !define SIZE_DOWNLOAD_IMAGEMAGICK 7096
 !define SIZE_DOWNLOAD_GHOSTSCRIPT 12669
 !define SIZE_DOWNLOAD_VIEWER 1459
 
-;--------------------------------
-;Approximations of space required for components (in KB)
+#--------------------------------
+#Approximations of space required for components (in KB)
 
 !define SIZE_LATEX 120000
 !define SIZE_IMAGEMAGICK 17000
 !define SIZE_GHOSTSCRIPT 26000
 !define SIZE_VIEWER 4000
 
-;--------------------------------
-;Locations of setup files for components (for bundled setup)
+#--------------------------------
+#Locations of setup files for components (for bundled setup)
 
 !define INSTALL_LATEX "basic-miktex-2.5.2580.exe"
 !define INSTALL_IMAGEMAGICK "ImageMagick-6.3.2-5-Q16-windows-dll.exe"
 !define INSTALL_GHOSTSCRIPT "gs854w32-gpl.exe"
 !define INSTALL_VIEWER "gsv48w32.exe"
 
-;--------------------------------
-;Names and version
+#--------------------------------
+#Names and version
 
 !define APP_NAME "LyX"
 !define /date APP_VERSION "1.5svn %Y%m%d"
@@ -84,8 +84,8 @@ Settings for LyX installer
 !define APP_EXT ".lyx"
 !define APP_MIME_TYPE "application/lyx"
 
-;--------------------------------
-;Setup settings
+#--------------------------------
+#Setup settings
 
 !ifndef SETUPTYPE_BUNDLE
   !define /date SETUP_EXE "lyx-15svn-%Y%m%d.exe"
@@ -100,14 +100,14 @@ Settings for LyX installer
 !define SETUP_UNINSTALLER "Uninstall-${APP_NAME}.exe"
 !define SETUP_UNINSTALLER_KEY "${APP_NAME}"
 
-;--------------------------------
-;Names of binaries to identify compontents
+#--------------------------------
+#Names of binaries to identify compontents
 
 !define BIN_LATEX "tex.exe"
 !define BIN_IMAGEMAGICK "convert.exe"
 !define BIN_GHOSTSCRIPT "gswin32c.exe"
 
-;--------------------------------
-;Custom NSIS plug-ins
+#--------------------------------
+#Custom NSIS plug-ins
 
 !addplugindir "${FILES_NSISPLUGINS}"

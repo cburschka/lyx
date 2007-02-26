@@ -6,8 +6,8 @@ Translations for installer and LyX itself
 
 !macro LanguageList COMMAND
 
-  ;List of supported LyX languages with ISO code and language identifier
-  ;To be used as input for other macros
+  #List of supported LyX languages with ISO code and language identifier
+  #To be used as input for other macros
  
   ${COMMAND} "Bokmål" nb_NO 1044
   ${COMMAND} "Ceština" cs_CZ 1029
@@ -38,7 +38,7 @@ Translations for installer and LyX itself
 
 !macro LanguageStringAdd lang_name name
 
-  ;Takes a define and puts that into a language string
+  #Takes a define and puts that into a language string
   LangString "${name}" "${LANG_${lang_name}}" "${${name}}"
   !undef "${name}"
 
@@ -59,7 +59,7 @@ Translations for installer and LyX itself
 
 !macro LanguageStringCreate lang_name
 
-  ;Creates all language strings
+  #Creates all language strings
   !insertmacro ReDef LanguageStringAdd '!insertmacro LanguageStringAdd "${lang_name}"'
 
   ${LanguageStringAdd} TEXT_NO_PRIVILEDGES
@@ -126,7 +126,7 @@ Translations for installer and LyX itself
     !define DICT_NAME $R1
   !endif
 
-  ;Include both NSIS/LyX language file
+  #Include both NSIS/LyX language file
   
   !insertmacro MUI_LANGUAGE "${langname}"
   

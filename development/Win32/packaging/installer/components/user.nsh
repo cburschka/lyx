@@ -4,8 +4,8 @@ Install type setting (current user/all users)
 
 */
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro GetDirExternal COMPONENT
 
@@ -21,12 +21,12 @@ Install type setting (current user/all users)
 
 !macroend
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function InitUser
 
-  ;Get directories from registry
+  #Get directories from registry
 
   ReadRegStr $R0 SHELL_CONTEXT "${APP_REGKEY}" ""
   
@@ -38,13 +38,13 @@ Function InitUser
   !insertmacro GetDirExternal ImageMagick
   !insertmacro GetDirExternal Ghostscript
   
-  ;Set directories in dialogs
+  #Set directories in dialogs
 
   !insertmacro InitDialogExternalDir latex ${TRUE}
   !insertmacro InitDialogExternalDir imagemagick ${FALSE}
   !insertmacro InitDialogExternalDir ghostscript ${FALSE}
   
-  ;Get LyX language
+  #Get LyX language
   
   ReadRegStr $R0 SHELL_CONTEXT "${APP_REGKEY_SETUP}" "LyX Language"
   
@@ -54,12 +54,12 @@ Function InitUser
   
 FunctionEnd
 
-;--------------------------------
-;Page functions
+#--------------------------------
+#Page functions
 
 Function PageUser
 
-  ;Only show page if installing for all users is possible
+  #Only show page if installing for all users is possible
   ${if} $AdminOrPowerUser == ${FALSE}
     Call InitUser
     Abort

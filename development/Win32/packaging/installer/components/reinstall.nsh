@@ -4,12 +4,12 @@ Reinstall options
 
 */
 
-;--------------------------------
-;Page functions
+#--------------------------------
+#Page functions
 
 Function PageReinstall
 
-  ;Check whether this version is already installed
+  #Check whether this version is already installed
 
   ReadRegStr $R0 SHELL_CONTEXT ${APP_REGKEY} "Version"
 

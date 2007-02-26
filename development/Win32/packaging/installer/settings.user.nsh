@@ -1,8 +1,8 @@
-;LyX Windows Installer
-;User Settings, all these macros can be redefined from command line, 
-;using options like /DFilesLyX="..\..\..\..\lyx-install"
+#LyX Windows Installer
+#User Settings, all these macros can be redefined from command line, 
+#using options like /DFilesLyX="..\..\..\..\lyx-install"
 
-;Location of LyX files and dependencies
+#Location of LyX files and dependencies
 
 !ifdef FilesLyX
 !define FILES_LYX "${FilesLyX}"
@@ -22,7 +22,7 @@
 !define FILES_BUNDLE "..\..\..\..\lyx-windows-bundle-deps"
 !endif
 
-;Location of Windows installation
+#Location of Windows installation
 
 !ifdef FilesWindows
 !define FILES_WINDOWS "${FilesWindows}"
@@ -30,7 +30,7 @@
 !define FILES_WINDOWS "C:\WINDOWS"
 !endif
 
-;Location of Python 2.5
+#Location of Python 2.5
 
 !ifdef FilesPython
 !define FILES_PYTHON "${FilesPython}"

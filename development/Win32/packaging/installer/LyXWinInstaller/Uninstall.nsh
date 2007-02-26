@@ -1,10 +1,10 @@
-; Uninstall sections
+# Uninstall sections
 
 Section "un.LyX" un.SecUnProgramFiles
 
   SectionIn RO
 
-  ; delete LaTeX class files that were installed together with LyX
+  # delete LaTeX class files that were installed together with LyX
   FileOpen $R5 "$INSTDIR\Resources\uninstallPaths.dat" r
   FileRead $R5 $LatexPath
   FileClose $R5
@@ -23,54 +23,54 @@ Section "un.LyX" un.SecUnProgramFiles
    ExecWait "$LatexPath\initexmf --update-fndb"
   ${endif}
 
-  ; delete LyX's installation folder
+  # delete LyX's installation folder
   RMDir /r $INSTDIR
-  ; delete start menu folder
+  # delete start menu folder
   ReadRegStr $0 ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu"
   RMDir /r "$0"
-  ; delete desktop icon
+  # delete desktop icon
   Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
-  ; delete registry entries
+  # delete registry entries
   DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
   DeleteRegKey ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
   DeleteRegKey HKCR "Applications\lyx.exe"
   DeleteRegKey HKCR "Applications\lyx.bat"
 
-  ; Aiksaurus
+  # Aiksaurus
   !insertmacro FileCheck $5 "meanings.dat" "${AiksaurusDir}" ; macro from LyXUtils.nsh
   ${if} $5 == "True"
    RMDir /r "${AiksaurusDir}"
   ${endif}
-;  StrCpy $0 ""
-;  ReadRegStr $0 HKLM "Software\Aiksaurus" "OnlyWithLyX" ; special entry to test if it was installed with LyX
-;  ${if} $0 == "Yes" 
-;   ; unregister Aiksaurus
-;   ReadRegStr $1 HKLM "Software\Aiksaurus" "Data Path"
-;   RMDir /r "$1"
-;   DeleteRegKey HKLM "SOFTWARE\Aiksaurus"
-;  ${endif}
+#  StrCpy $0 ""
+#  ReadRegStr $0 HKLM "Software\Aiksaurus" "OnlyWithLyX" ; special entry to test if it was installed with LyX
+#  ${if} $0 == "Yes" 
+#   ; unregister Aiksaurus
+#   ReadRegStr $1 HKLM "Software\Aiksaurus" "Data Path"
+#   RMDir /r "$1"
+#   DeleteRegKey HKLM "SOFTWARE\Aiksaurus"
+#  ${endif}
 
-  ; ImageMagick
+  # ImageMagick
   StrCpy $0 ""
   ReadRegStr $0 HKLM "Software\ImageMagick" "OnlyWithLyX" ; special entry to test if it was installed with LyX
   ${if} $0 == "Yes" 
-   ; unregister ImageMagick
+   # unregister ImageMagick
    DeleteRegValue HKLM "SOFTWARE\Classes\Applications" "AutoRun"
    DeleteRegKey HKLM "SOFTWARE\ImageMagick"
   ${endif}
   
-  ; Ghostscript and GSview
+  # Ghostscript and GSview
   StrCpy $0 ""
   StrCpy $5 ""
   ReadRegStr $0 HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" ; special entry to test if it was installed with LyX
   ${if} $0 == "Yes"
-   ; unregister Ghostscript
+   # unregister Ghostscript
    DeleteRegKey HKLM "SOFTWARE\GPL Ghostscript"
-   ; test if GSview is installed
+   # test if GSview is installed
    EnumRegValue $5 HKLM "Software\Ghostgum\GSview" 0
    ${if} $5 != ""
-    ; unregister GSview
+    # unregister GSview
     MessageBox MB_ICONINFORMATION|MB_OK "$(UnGSview)"
     ReadRegStr $3 HKLM "Software\Ghostgum\GSview" "$5"
     ReadRegStr $4 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GSview $5" "UninstallString"
@@ -78,15 +78,15 @@ Section "un.LyX" un.SecUnProgramFiles
    ${endif}
   ${endif}
   
-  ; MiKTeX specific LyX setting 
+  # MiKTeX specific LyX setting 
   DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL"
   DeleteRegValue HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY"
   
-  ; remove extension .lyx
+  # remove extension .lyx
   ${RemoveFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}"
   DeleteRegKey HKCR "${PRODUCT_NAME}"
   
-  ; clear info that programs were installed together with LyX
+  # clear info that programs were installed together with LyX
   DeleteRegValue HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   DeleteRegValue HKLM "Software\Aspell" "OnlyWithLyX"
   DeleteRegValue HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "OnlyWithLyX"
@@ -95,17 +95,17 @@ Section "un.LyX" un.SecUnProgramFiles
 
 SectionEnd
 
-;---------------------------------
-; user preferences
+#---------------------------------
+# user preferences
 Section "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
 
- ; remove LyX's config files
+ # remove LyX's config files
  Call un.DelAppPathSub ; function from LyXUtils.nsh
   
 SectionEnd
 
-;---------------------------------
-; Aspell
+#---------------------------------
+# Aspell
 Section "un.Aspell" un.SecUnAspell
 
  ${if} $AspellInstallYes == "Aspell" ; only uninstall Aspell when it was installed together with LyX 
@@ -114,8 +114,8 @@ Section "un.Aspell" un.SecUnAspell
 
 SectionEnd
 
-;---------------------------------
-; MiKTeX
+#---------------------------------
+# MiKTeX
 Section "un.MiKTeX" un.SecUnMiKTeX
 
  ${if} $MiKTeXInstalled == "MiKTeX" ; only uninstall MiKTeX when it was installed together with LyX 
@@ -125,8 +125,8 @@ Section "un.MiKTeX" un.SecUnMiKTeX
 
 SectionEnd
 
-;---------------------------------
-; JabRef
+#---------------------------------
+# JabRef
 Section "un.JabRef" un.SecUnJabRef
 
  ${if} $JabRefInstalled == "JabRef" ; only uninstall JabRef when it was installed together with LyX 
@@ -136,8 +136,8 @@ Section "un.JabRef" un.SecUnJabRef
 
 SectionEnd
 
-;---------------------------------
-; Section descriptions
+#---------------------------------
+# Section descriptions
 !insertmacro MUI_UNFUNCTION_DESCRIPTION_BEGIN
 !insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnAspell} "$(SecUnAspellDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnMiKTeX} "$(SecUnMiKTeXDescription)"

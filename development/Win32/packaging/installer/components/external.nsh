@@ -4,8 +4,8 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 */
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro SetComponentState VAR COMPONENT
 
@@ -16,7 +16,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
     StrCpy $R1 $Size${COMPONENT}
     
     ${if} $Path${COMPONENT} == ""
-      ;Add size of component itself
+      #Add size of component itself
       IntOp $R1 $R1 + ${SIZE_${COMPONENT}}
     ${endif}
     
@@ -33,7 +33,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 !macro ExternalComponent COMPONENT
 
-  ;Action depending on type of installer
+  #Action depending on type of installer
   
   ${if} $Setup${component} == ${TRUE}
   
@@ -51,7 +51,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 !macro SetupComponent COMPONENT
 
-  ;Run the setup application for a component
+  #Run the setup application for a component
 
   install_${COMPONENT}:
       
@@ -73,12 +73,12 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
     download_${COMPONENT}:
 
-      ;Download using HTTP
+      #Download using HTTP
       InetLoad::load "${DOWNLOAD_${COMPONENT}}" "$PLUGINSDIR\${COMPONENT}Setup.exe" /END
       Pop $R0
  
       ${if} $R0 != "OK"
-        ;Download failed
+        #Download failed
         MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(TEXT_DOWNLOAD_FAILED_${COMPONENT}) ($R0)" IDYES download_${COMPONENT}
         Goto noinstall_${COMPONENT}
       ${endif}
@@ -93,7 +93,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
   !macro InstallComponent COMPONENT
 
-    ;Extract
+    #Extract
     File /oname=$PLUGINSDIR\${COMPONENT}Setup.exe ${FILES_BUNDLE}\${INSTALL_${COMPONENT}}
     
     !insertmacro SetupComponent ${COMPONENT}
@@ -104,7 +104,7 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 !macro DialogExternalControl component
 
-  ;Enable/disable the DirRequest control
+  #Enable/disable the DirRequest control
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${component}.ini" "Field 3" "State"
   !insertmacro MUI_INSTALLOPTIONS_READ $R1 "external_${component}.ini" "Field 4" "HWND"
   EnableWindow $R1 $R0
@@ -127,18 +127,18 @@ External Components: MiKTeX, ImageMagick, Ghostscript
   Push $R0
   Push $R1
   
-  ;Next button pressed?
+  #Next button pressed?
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Settings" "State"
   ${if} $R0 != "0"
     !insertmacro DialogExternalControl ${COMPONENT}
     Abort
   ${endif}
   
-  ;Download?
+  #Download?
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Field 2" "State"
   !insertmacro SetComponentState $R0 ${COMPONENT}
   
-  ;Folder?
+  #Folder?
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "external_${COMPONENT}.ini" "Field 3" "State"
   
   ${if} $R0 == "1"
@@ -155,8 +155,8 @@ External Components: MiKTeX, ImageMagick, Ghostscript
 
 !macroend
 
-;--------------------------------
-;Sections
+#--------------------------------
+#Sections
 
 Section -LaTeX ExternalLaTeX
   !insertmacro ExternalComponent LaTeX
@@ -170,19 +170,19 @@ Section -Ghostscript ExternalGhostscript
   !insertmacro ExternalComponent Ghostscript
 SectionEnd
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function InitSizeExternal
 
-  ;Get sizes of external component installers
+  #Get sizes of external component installers
   
   SectionGetSize ${ExternalLaTeX} $SizeLaTeX
   SectionGetSize ${ExternalImageMagick} $SizeImageMagick
   SectionGetSize ${ExternalGhostscript} $SizeGhostscript
   
   !ifndef SETUPTYPE_BUNDLE
-    ;Add download size
+    #Add download size
     IntOp $SizeLaTeX $SizeLaTeX + ${SIZE_DOWNLOAD_LATEX}
     IntOp $SizeImagemagick $SizeImagemagick + ${SIZE_DOWNLOAD_IMAGEMAGICK}
     IntOp $SizeGhostscript $SizeGhostscript + ${SIZE_DOWNLOAD_GHOSTSCRIPT}
@@ -190,8 +190,8 @@ Function InitSizeExternal
   
 FunctionEnd
 
-;--------------------------------
-;Page functions
+#--------------------------------
+#Page functions
 
 Function PageExternalLaTeX
   !insertmacro DialogExternalShow LaTeX

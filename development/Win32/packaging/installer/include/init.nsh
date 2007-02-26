@@ -4,8 +4,8 @@ Installer and uninstaller initialization
 
 */
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function CommandLineParameter
 
@@ -40,7 +40,7 @@ Function .onInit
     Banner::show /NOUNLOAD "Checking system"
   ${endif}
   
-  ;Check all dependencies
+  #Check all dependencies
   
   Call CheckWindows
   Call CheckPrivileges
@@ -62,8 +62,8 @@ FunctionEnd
 
 Function LoadInstaller
 
-  ;Set the correct shell context depending on command line parameter
-  ;and priviledges
+  #Set the correct shell context depending on command line parameter
+  #and priviledges
 
   Push $R0
 
@@ -83,8 +83,8 @@ Function LoadInstaller
       
     ${else}
     
-      ;Display an error when the /AllUsers command line parameter is used
-      ;by a user without Administrator or Power User priviledges
+      #Display an error when the /AllUsers command line parameter is used
+      #by a user without Administrator or Power User priviledges
        
       Push "/AllUsers"
       Call CommandLineParameter
@@ -112,8 +112,8 @@ FunctionEnd
 
 Function un.LoadUnInstaller
 
-  ;Set the correct shell context depending on whether LyX has been installed
-  ;for the current user or all users
+  #Set the correct shell context depending on whether LyX has been installed
+  #for the current user or all users
 
   ReadRegStr $R0 HKCU ${APP_REGKEY} ""
   

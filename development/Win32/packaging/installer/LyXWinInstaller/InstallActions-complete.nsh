@@ -1,20 +1,20 @@
-; The '-' makes the section invisible.
-; Sections are entered in order, so the settings above are all
-; available to SecInstallation
+# The '-' makes the section invisible.
+# Sections are entered in order, so the settings above are all
+# available to SecInstallation
 Section "-Installation actions" SecInstallation
-  ; extract all files
+  # extract all files
   SetOutPath "$INSTDIR"
   File /r "${PRODUCT_SOURCEDIR}\bin"
   File /r "${PRODUCT_SOURCEDIR}\etc"
   File /r "${PRODUCT_SOURCEDIR}\Resources"
   File /r "${PRODUCT_SOURCEDIR}\external"
 
-  ; install MiKTeX if not already installed
+  # install MiKTeX if not already installed
   ${if} $LatexPath == ""
-   ; launch MiKTeX's installer
+   # launch MiKTeX's installer
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
    ExecWait ${MiKTeXInstall}
-   ; test if MiKTeX is installed
+   # test if MiKTeX is installed
    ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
    StrCpy $Search "miktex"
    Call LaTeXCheck
@@ -25,12 +25,12 @@ Section "-Installation actions" SecInstallation
     Call LaTeXCheck
    ${endif}
    ${if} $LatexPath != ""
-    ; set package repository (MiKTeX's primary package repository)
+    # set package repository (MiKTeX's primary package repository)
     WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX" "Yes" ; special entry to tell the uninstaller that it was installed with LyX
     StrCpy $MiKTeXInstalled "yes"
     ${if} $MiKTeXUser != "HKCU"
      StrCpy $MiKTeXPath "$LatexPath" -11
-     ;MessageBox MB_OK|MB_ICONINFORMATION "$(MiKTeXPathInfo)" ; info that MiKTeX's installation folder must have write permissions for all users to work properly
+     #MessageBox MB_OK|MB_ICONINFORMATION "$(MiKTeXPathInfo)" ; info that MiKTeX's installation folder must have write permissions for all users to work properly
     ${endif}
    ${else}
     MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)"
@@ -41,19 +41,19 @@ Section "-Installation actions" SecInstallation
   ${endif}
   
   ${if} $GhostscriptPath == ""
-   ; register Ghostscript
+   # register Ghostscript
    WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_DLL" "${GhostscriptDir}\bin\gsdll32.dll"
    WriteRegStr HKLM "SOFTWARE\GPL Ghostscript\${GhostscriptVersion}" "GS_LIB" "${GhostscriptDir}\lib;${GhostscriptDir}\fonts;${GhostscriptDir}\Resource"
    
    WriteRegStr HKLM "SOFTWARE\GPL Ghostscript" "OnlyWithLyX" "Yes" ; special entry to tell the uninstaller that it was installed with LyX
    StrCpy $GhostscriptPath "${GhostscriptDir}\bin"
   ${else}
-   ; delete unnecessary files
+   # delete unnecessary files
    RMDir /r ${GhostscriptDir}   
   ${endif}
 
   ${if} $ImageMagickPath == ""
-   ; register ImageMagick
+   # register ImageMagick
    WriteRegStr HKLM "SOFTWARE\Classes\Applications" "AutoRun" "${ImageMagickDir}\convert.exe $$"
    WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "${ImageMagickDir}"
    WriteRegStr HKLM "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "${ImageMagickDir}\modules\coders"
@@ -72,15 +72,15 @@ Section "-Installation actions" SecInstallation
    WriteRegStr HKLM "Software\ImageMagick" "OnlyWithLyX" "Yes" ; special entry to tell the uninstaller that it was installed with LyX
    StrCpy $ImageMagickPath ${ImageMagickDir}
   ${else}
-   ; delete unnecessary files
+   # delete unnecessary files
    RMDir /r ${ImageMagickDir}
   ${endif}
 
   ${if} $AspellPath == ""
-   ; extract Aspell's program files
+   # extract Aspell's program files
    SetOutPath "$INSTDIR\external"
    File /r "${PRODUCT_SOURCEDIR}\${AspellInstall}"
-   ; copy the files and register Aspell
+   # copy the files and register Aspell
    CopyFiles "$INSTDIR\${AspellInstall}" "$APPDATA"
    
    WriteRegStr HKLM "SOFTWARE\Aspell" "Base Path" "${AspellDir}"
@@ -96,21 +96,21 @@ Section "-Installation actions" SecInstallation
   ${endif}
 
   ${if} $AiksaurusPath == ""
-   ; extract Aiksaurus' program files
+   # extract Aiksaurus' program files
    SetOutPath "$INSTDIR\external"
    File /r "${PRODUCT_SOURCEDIR}\${AiksaurusInstall}"
-   ; copy the files and register Aiksaurus
+   # copy the files and register Aiksaurus
    CopyFiles "$INSTDIR\${AiksaurusInstall}" "$APPDATA"
-;   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes" ; special entry to tell the uninstaller that it was installed with LyX
-;   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
+#   WriteRegStr HKLM "Software\Aiksaurus" "OnlyWithLyX" "Yes" ; special entry to tell the uninstaller that it was installed with LyX
+#   WriteRegStr HKLM "Software\Aiksaurus" "Data Path" "${AiksaurusDir}"
   ${endif}
 
   ${if} $PSVPath == ""
    ${if} $InstallGSview == "true"
-    ; launch installer
+    # launch installer
     MessageBox MB_OK|MB_ICONINFORMATION "$(GSviewInfo)"
     ExecWait "$INSTDIR\${GSviewInstall}"
-    ; test if GSview is installed
+    # test if GSview is installed
     StrCpy $PSVPath ""
     ReadRegStr $PSVPath HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\gsview32.exe" "Path"    
     ${if} $PSVPath == ""
@@ -121,10 +121,10 @@ Section "-Installation actions" SecInstallation
   
   ${if} $BibTeXEditorPath == ""
    ${if} $InstallJabRef == "true"
-    ; launch installer
+    # launch installer
     MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
     ExecWait "$INSTDIR\${JabRefInstall}"
-    ; test if JabRef is installed
+    # test if JabRef is installed
     StrCpy $BibTeXEditorPath ""
     ReadRegStr $BibTeXEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${JabRefVersion}" "UninstallString"    
     ${if} $BibTeXEditorPath == ""
@@ -135,7 +135,7 @@ Section "-Installation actions" SecInstallation
    ${endif}
   ${endif}
 
-  ; create the PathPrefix
+  # create the PathPrefix
   StrCpy $PathPrefix "$INSTDIR\bin"
   ${if} $PythonPath != ""
     StrCpy $PathPrefix "$PathPrefix;$PythonPath"
@@ -159,8 +159,8 @@ Section "-Installation actions" SecInstallation
     StrCpy $PathPrefix "$PathPrefix;$ImageEditorPath"
   ${endif}
 
-  ; install the LaTeX class files that are delivered with LyX
-  ; and enable MiKTeX's automatic package installation
+  # install the LaTeX class files that are delivered with LyX
+  # and enable MiKTeX's automatic package installation
   StrCpy $String $LatexPath
   StrCpy $Search "miktex\bin"
   StrLen $3 $String
@@ -168,7 +168,7 @@ Section "-Installation actions" SecInstallation
   ${if} $Pointer != "-1" ; if something was found
    IntOp $Pointer $Pointer - 1 ; jump before the first "\" of "\miktex\bin"
    StrCpy $String $String "$Pointer" ; $String is now the part before "\miktex\bin"
-   ; install LaTeX class files
+   # install LaTeX class files
    SetOutPath "$String\tex\latex"
    File "${ClassFileDir}\cv.cls"
    CreateDirectory "$String\tex\latex\lyx"
@@ -184,52 +184,52 @@ Section "-Installation actions" SecInstallation
    CreateDirectory "$String\tex\latex\broadway"
    SetOutPath "$String\tex\latex\broadway"
    File "${ClassFileDir}\broadway.cls"
-   ; install LaTeX-package dvipost (dvipost is not available for MiKTeX)
+   # install LaTeX-package dvipost (dvipost is not available for MiKTeX)
    SetOutPath "$String\tex\latex\"
    File /r "${DVIPostFileDir}"
 
    ${if} $MiKTeXVersion == "2.4"
-    ; refresh MiKTeX's file name database
+    # refresh MiKTeX's file name database
     ExecWait "$String\miktex\bin\initexmf --update-fndb"
-    ; delete MiKTeX 2.4's dvipng executable as it is an old broken version. Then install a working one.
+    # delete MiKTeX 2.4's dvipng executable as it is an old broken version. Then install a working one.
     Delete "$String\miktex\bin\dvipng.exe"
-    ; Install a new one
+    # Install a new one
     SetOutPath "$String\miktex\bin"
     File "${PRODUCT_DIR}\LyX\external\dvipng.exe"
-    ; enable package installation without asking (1=Yes, 0=No, 2=Always Ask Before Installing)						    
+    # enable package installation without asking (1=Yes, 0=No, 2=Always Ask Before Installing)						    
     WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MiKTeX" "InstallPackagesOnTheFly" "1"
     WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MPM\Settings" "" ""
-    ; Setting package repository (MiKTeX's primary package repository)
+    # Setting package repository (MiKTeX's primary package repository)
     WriteRegStr HKCU "SOFTWARE\MiK\MiKTeX\CurrentVersion\MPM" "RemotePackageRepository" "${MiKTeXRepo}"
    
    ${else} ; if MiKTeX 2.5
-    ; refresh MiKTeX's file name database
+    # refresh MiKTeX's file name database
     ExecWait "$LaTeXPath\initexmf --update-fndb"
-    ; enable package installation without asking (t = Yes, f = No)
+    # enable package installation without asking (t = Yes, f = No)
     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "AutoInstall" "1" ; if only for curent user
     WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_AUTOINSTALL" "t"
-    ; set package repository (MiKTeX's primary package repository)
+    # set package repository (MiKTeX's primary package repository)
     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "RemoteRepository" "${MiKTeXRepo}" ; if only for curent user
     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\2.5\MPM" "RepositoryType" "remote" ; if only for curent user
     WriteRegStr HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "MIKTEX_REPOSITORY" "${MiKTeXRepo}"
    ${endif}
    
-   ; enable MiKTeX's automatic package installation
+   # enable MiKTeX's automatic package installation
    ExecWait '$LaTeXPath\mpm.com --update-fndb'
-; the following feature is planned to be used for a possible CD-version
-;   ; copy LaTeX-packages needed by LyX
-;   SetOutPath "$INSTDIR"
-;   File /r "${LaTeXPackagesDir}" 
+# the following feature is planned to be used for a possible CD-version
+#   ; copy LaTeX-packages needed by LyX
+#   SetOutPath "$INSTDIR"
+#   File /r "${LaTeXPackagesDir}" 
   ${endif} ; end ${if} $Pointer
 
-  ; install Aspell dictionaries
+  # install Aspell dictionaries
   ${if} $LangCode == "nb_NO"
    StrCpy $LangCode "no_NO" ; we only have a norwegian dictionary available
   ${endif}
   Call InstallAspellDictionary ; function from aspell.nsh
 
-  ; configure LyX
-  ; Set a path prefix in lyxrc.dist
+  # configure LyX
+  # Set a path prefix in lyxrc.dist
   ClearErrors
   ${if} "$PathPrefix" != ""
    Delete "$INSTDIR\Resources\lyxrc.dist"
@@ -240,7 +240,7 @@ Section "-Installation actions" SecInstallation
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
   ${endif}
 
-  ; Create a batch file to start LyX with the environment variables set
+  # Create a batch file to start LyX with the environment variables set
   ClearErrors
   Delete "${PRODUCT_BAT}"
   FileOpen $R1 "${PRODUCT_BAT}" w
@@ -252,17 +252,17 @@ Section "-Installation actions" SecInstallation
   IfErrors 0 +2
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(CreateCmdFilesFailed)"
 
-  ; set the preferences file
-  ; having one preferences file that is modified to fit the needs isn't possible because the command
-  ; ${LineFind} "$INSTDIR\Resources\preferences" "" "-16:-11" "DeleteLines" ; macro from TextFunc.nsh
-  ; removes the file permissions for Users, so that it can later not be read (bug in ${LineFind} of TextFunc.nsh) 
-  ; if not Acrobat or Adobe Reader is used
+  # set the preferences file
+  # having one preferences file that is modified to fit the needs isn't possible because the command
+  # ${LineFind} "$INSTDIR\Resources\preferences" "" "-16:-11" "DeleteLines" ; macro from TextFunc.nsh
+  # removes the file permissions for Users, so that it can later not be read (bug in ${LineFind} of TextFunc.nsh) 
+  # if not Acrobat or Adobe Reader is used
   ${if} $Acrobat == "None" ; clear the entries in the preferences file that define PDFViewWin7 or 8 as viewer
    Rename "$INSTDIR\Resources\preferencesGSview" "$INSTDIR\Resources\preferences"
    Delete "$INSTDIR\Resources\preferences7"
    Delete "$INSTDIR\Resources\preferences8"
   ${endif}
-  ; if Acrobat or Adobe Reader is used
+  # if Acrobat or Adobe Reader is used
   ${if} $Acrobat == "7" ; clear the entries in the preferences file that define PDFViewWin8 as viewer
    Rename "$INSTDIR\Resources\preferences7" "$INSTDIR\Resources\preferences"
    Delete "$INSTDIR\Resources\preferences8"
@@ -274,7 +274,7 @@ Section "-Installation actions" SecInstallation
    Delete "$INSTDIR\Resources\preferencesGSview"
   ${endif}
 
-  ; register LyX
+  # register LyX
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "${PRODUCT_EXE}"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "RootKey" "$ProductRootKey"
   WriteRegStr ${PRODUCT_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
@@ -300,18 +300,18 @@ Section "-Installation actions" SecInstallation
    CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "${PRODUCT_BAT}" "" "${PRODUCT_EXE}"
   ${endif}
 
-  ; register the extension .lyx
+  # register the extension .lyx
   ${if} $CreateFileAssociations == "true"
    ${CreateApplicationAssociation} "${PRODUCT_NAME}" "${PRODUCT_NAME}" "$(FileTypeTitle)" "${PRODUCT_EXE}" "${PRODUCT_BAT}"
    ${CreateFileAssociation} "${PRODUCT_EXT}" "${PRODUCT_NAME}" "${PRODUCT_MIME_TYPE}"
   ${endif}
 
-  ; create the LyX Application Data folder for all users
-  ; this folder is automatically created by LyX when it is first started but we want to start LyX with a specific session file,
-  ; so we create this folder before LyX starts and copy there the session file
+  # create the LyX Application Data folder for all users
+  # this folder is automatically created by LyX when it is first started but we want to start LyX with a specific session file,
+  # so we create this folder before LyX starts and copy there the session file
   Call CreateAppPathSub ; function from LyXUtils.nsh
 
-  ; delete unnecessary files
+  # delete unnecessary files
   ${if} $DelPythonFiles == "True"
    Delete $INSTDIR\bin\python.exe
    Delete $INSTDIR\bin\python25.dll
@@ -321,16 +321,16 @@ Section "-Installation actions" SecInstallation
   ${endif}
   RMDir /r $INSTDIR\external
 
-  ; create Uninstaller
+  # create Uninstaller
   WriteUninstaller "${PRODUCT_UNINSTALL_EXE}"
 
-  ; run LyX's configure script
-  ; create a bat-file to start configure in a console window so that the user see the progress
-  ; of the configuration and to have a signal when the configuration is ready to start LyX
-  ; this is important when LyX is installed together with MiKTeX or when LyX is installed for the first
-  ; time on a computer, because the installation of missing LaTeX-files required by LyX could last minutes
-  ; a batch file is needed because simply calling ExecWait '"$INSTDIR\bin\python.exe" "$INSTDIR\Resources\configure.py"'
-  ; creates the config files in $INSTDIR\bin
+  # run LyX's configure script
+  # create a bat-file to start configure in a console window so that the user see the progress
+  # of the configuration and to have a signal when the configuration is ready to start LyX
+  # this is important when LyX is installed together with MiKTeX or when LyX is installed for the first
+  # time on a computer, because the installation of missing LaTeX-files required by LyX could last minutes
+  # a batch file is needed because simply calling ExecWait '"$INSTDIR\bin\python.exe" "$INSTDIR\Resources\configure.py"'
+  # creates the config files in $INSTDIR\bin
   StrCpy $1 $INSTDIR 2 ; get drive letter
   FileOpen $R1 "$INSTDIR\Resources\configLyX.bat" w
   FileWrite $R1 'cd $INSTDIR\Resources\$\r$\n\
@@ -341,7 +341,7 @@ Section "-Installation actions" SecInstallation
   ExecWait '"$INSTDIR\Resources\configLyX.bat"'
   Delete "$INSTDIR\Resources\configLyX.bat"
 
-  ; ask to update MiKTeX
+  # ask to update MiKTeX
   ${if} $MiKTeXInstalled == "yes"
    MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
    UpdateNow:
@@ -350,7 +350,7 @@ Section "-Installation actions" SecInstallation
    UpdateLater:
   ${endif}
 
-  ; save MiKTeX's install path to be able to remove LyX's LaTeX-files in the uninstaller
+  # save MiKTeX's install path to be able to remove LyX's LaTeX-files in the uninstaller
   FileOpen $R1 "$INSTDIR\Resources\uninstallPaths.dat" w
   FileWrite $R1 '$LaTeXPath'
   FileClose $R1
