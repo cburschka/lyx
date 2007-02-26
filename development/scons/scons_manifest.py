@@ -1303,11 +1303,23 @@ lib_image_noinst_files = Split('''
 ''')
 
 
+lib_bind_de_files = Split('''
+    menus.bind
+''')
+
+lib_bind_fi_files = Split('''
+    menus.bind
+''')
+
+lib_bind_pt_files = Split('''
+    menus.bind
+''')
+
+lib_bind_sv_files = Split('''
+    menus.bind
+''')
+
 lib_bind_files = Split('''
-    de/menus.bind
-    fi/menus.bind
-    pt/menus.bind
-    sv/menus.bind
     broadway.bind
     cua.bind
     cyrkeys.bind
@@ -1324,56 +1336,104 @@ lib_bind_files = Split('''
 ''')
 
 
+lib_examples_ca_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_cs_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_da_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_de_files = Split('''
+    ItemizeBullets.lyx
+    Lebenslauf.lyx
+    Minipage.lyx
+    TableExamples.lyx
+    Waehrungen.lyx
+    beispiel_gelyxt.lyx
+    beispiel_roh.lyx
+    decimal.lyx
+    splash.lyx
+    mathed.lyx
+    multicol.lyx
+''')
+
+lib_examples_es_files = Split('''
+    ejemplo_con_lyx.lyx
+    ejemplo_sin_lyx.lyx
+    splash.lyx
+''')
+
+lib_examples_eu_files = Split('''
+    adibide_gordina.lyx
+    adibide_lyx-atua.lyx
+    splash.lyx
+''')
+
+lib_examples_fr_files = Split('''
+    AlignementDecimal.lyx
+    CV.lyx
+    ExemplesTableaux.lyx
+    Foils.lyx
+    ListesPuces.lyx
+    Minipage.lyx
+    exemple_brut.lyx
+    exemple_lyxifie.lyx
+    mathed.lyx
+    multicol.lyx
+    splash.lyx
+''')
+
+lib_examples_he_files = Split('''
+    example_raw.lyx
+    he_example_lyxified.lyx
+    he_example_raw.lyx
+''')
+
+lib_examples_hu_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_it_files = Split('''
+    ItemizeBullets.lyx
+    splash.lyx
+''')
+
+lib_examples_nl_files = Split('''
+    multicol.lyx
+    opsommingstekens.lyx
+    splash.lyx
+    voorbeeld_ruw.lyx
+    voorbeeld_verlyxt.lyx
+''')
+
+lib_examples_pl_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_pt_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_ru_files = Split('''
+    splash.lyx
+''')
+
+lib_examples_sl_files = Split('''
+    primer_lyxan.lyx
+    primer_surov.lyx
+    splash.lyx
+''')
+
+lib_examples_ro_files = Split('''
+    splash.lyx
+''')
+
 lib_examples_files = Split('''
-    ca/splash.lyx
-    cs/splash.lyx
-    da/splash.lyx
-    de/ItemizeBullets.lyx
-    de/Lebenslauf.lyx
-    de/Minipage.lyx
-    de/TableExamples.lyx
-    de/Waehrungen.lyx
-    de/beispiel_gelyxt.lyx
-    de/beispiel_roh.lyx
-    de/decimal.lyx
-    de/splash.lyx
-    de/mathed.lyx
-    de/multicol.lyx
-    es/ejemplo_con_lyx.lyx
-    es/ejemplo_sin_lyx.lyx
-    es/splash.lyx
-    eu/adibide_gordina.lyx
-    eu/adibide_lyx-atua.lyx
-    eu/splash.lyx
-    fr/AlignementDecimal.lyx
-    fr/CV.lyx
-    fr/ExemplesTableaux.lyx
-    fr/Foils.lyx
-    fr/ListesPuces.lyx
-    fr/Minipage.lyx
-    fr/exemple_brut.lyx
-    fr/exemple_lyxifie.lyx
-    fr/mathed.lyx
-    fr/multicol.lyx
-    fr/splash.lyx
-    he/example_raw.lyx
-    he/he_example_lyxified.lyx
-    he/he_example_raw.lyx
-    hu/splash.lyx
-    it/ItemizeBullets.lyx
-    it/splash.lyx
-    nl/multicol.lyx
-    nl/opsommingstekens.lyx
-    nl/splash.lyx
-    nl/voorbeeld_ruw.lyx
-    nl/voorbeeld_verlyxt.lyx
-    pl/splash.lyx
-    pt/splash.lyx
-    ru/splash.lyx
-    sl/primer_lyxan.lyx
-    sl/primer_surov.lyx
-    sl/splash.lyx
-    ro/splash.lyx
     Foils.lyx
     ItemizeBullets.lyx
     Literate.lyx
@@ -2258,56 +2318,110 @@ lib_ui_files = Split('''
 ''')
 
 
+lib_doc_cs_files = Split('''
+    Tutorial.lyx
+''')
+
+lib_doc_da_files = Split('''
+    Intro.lyx
+''')
+
+lib_doc_de_files = Split('''
+    Customization.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+lib_doc_es_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+    EmbeddedObjects.lyx
+''')
+
+lib_doc_eu_files = Split('''
+    Customization.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+lib_doc_fr_files = Split('''
+    Customization.lyx
+    Extended.lyx
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+lib_doc_he_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_hu_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_it_files = Split('''
+    Customization.lyx
+    Intro.lyx
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+lib_doc_nl_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_nb_files = Split('''
+    Intro.lyx
+''')
+
+lib_doc_pl_files = Split('''
+    Extended.lyx
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_pt_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_ro_files = Split('''
+    Intro.lyx
+''')
+
+lib_doc_ru_files = Split('''
+    FAQ.lyx
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_sk_files = Split('''
+    Tutorial.lyx
+    UserGuide.lyx
+''')
+
+lib_doc_sl_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
+lib_doc_sv_files = Split('''
+    Intro.lyx
+    Tutorial.lyx
+''')
+
 lib_doc_files = Split('''
-    cs/Tutorial.lyx
-    da/Intro.lyx
-    de/Customization.lyx
-    de/Extended.lyx
-    de/FAQ.lyx
-    de/Intro.lyx
-    de/Tutorial.lyx
-    de/UserGuide.lyx
-    es/Intro.lyx
-    es/Tutorial.lyx
-    es/EmbeddedObjects.lyx
-    eu/Customization.lyx
-    eu/Extended.lyx
-    eu/FAQ.lyx
-    eu/Intro.lyx
-    eu/Tutorial.lyx
-    eu/UserGuide.lyx
-    fr/Customization.lyx
-    fr/Extended.lyx
-    fr/FAQ.lyx
-    fr/Intro.lyx
-    fr/Tutorial.lyx
-    fr/UserGuide.lyx
-    he/Intro.lyx
-    he/Tutorial.lyx
-    hu/Intro.lyx
-    hu/Tutorial.lyx
-    it/Customization.lyx
-    it/Intro.lyx
-    it/Tutorial.lyx
-    it/UserGuide.lyx
-    nl/Intro.lyx
-    nl/Tutorial.lyx
-    nb/Intro.lyx
-    pl/Extended.lyx
-    pl/Intro.lyx
-    pl/Tutorial.lyx
-    pt/Intro.lyx
-    pt/Tutorial.lyx
-    ro/Intro.lyx
-    ru/FAQ.lyx
-    ru/Intro.lyx
-    ru/Tutorial.lyx
-    sk/Tutorial.lyx
-    sk/UserGuide.lyx
-    sl/Intro.lyx
-    sl/Tutorial.lyx
-    sv/Intro.lyx
-    sv/Tutorial.lyx
     Customization.lyx
     DocStyle.lyx
     EmbeddedObjects.lyx
