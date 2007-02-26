@@ -14,6 +14,7 @@
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/convert.h"
+#include "support/qstring_helpers.h"
 
 #include "debug.h"
 
@@ -32,17 +33,6 @@
 #include <algorithm>
 #include <sstream>
 
-#ifdef LIBC_WCTYPE_USES_UCS4
-// We can use the libc ctype functions because we unset the LC_CTYPE
-// category of the current locale in gettext.C
-#include <wctype.h>
-#else
-// Steal some code from somewhere else, e.g. glib (look at gunicode.h)
-// The code that we currently use does not really work.
-#endif
-
-
-using lyx::docstring;
 
 using std::transform;
 using std::string;
@@ -321,38 +311,21 @@ char uppercase(char c)
 }
 
 
-// FIXME UNICODE
-// for lowercase() and uppercase() function below when wchar_t is not used:
-// 1) std::tolower() and std::toupper() are templates that
-// compile fine with char_type. With the test (c >= 256) we
-// do not trust these function to do the right thing with
-// unicode char.
-// 2) these functions use the current locale, which is wrong
-// if it is not latin1 based (latin1 is a subset of UCS4).
-
 char_type lowercase(char_type c)
 {
-#ifdef LIBC_WCTYPE_USES_UCS4
-	return towlower(c);
-#else
-	if (c >= 256)
+	if (!is_utf16(c))
+		// We don't know how to lowercase a non-utf16 char
 		return c;
-
-	return tolower(c);
-#endif
+	return qchar_to_ucs4(ucs4_to_qchar(c).toLower());
 }
 
 
 char_type uppercase(char_type c)
 {
-#ifdef LIBC_WCTYPE_USES_UCS4
-	return towupper(c);
-#else
-	if (c >= 256)
+	if (!is_utf16(c))
+		// We don't know how to uppercase a non-utf16 char
 		return c;
-
-	return toupper(c);
-#endif
+	return qchar_to_ucs4(ucs4_to_qchar(c).toUpper());
 }
 
 
@@ -361,9 +334,15 @@ namespace {
 // since we cannot use std::tolower and std::toupper directly in the
 // calls to std::transform yet, we use these helper clases. (Lgb)
 
-template<typename Char> struct local_lowercase {
-	Char operator()(Char c) const {
+struct local_lowercase {
+	char operator()(char c) const {
 		return tolower(c);
+	}
+	char_type operator()(char_type c) const {
+		if (!is_utf16(c))
+			// We don't know how to lowercase a non-utf16 char
+			return c;
+		return qchar_to_ucs4(ucs4_to_qchar(c).toLower());
 	}
 };
 
@@ -384,7 +363,7 @@ template<typename Char> struct local_ascii_lowercase {
 string const lowercase(string const & a)
 {
 	string tmp(a);
-	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase<char>());
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
 	return tmp;
 }
 
@@ -392,7 +371,7 @@ string const lowercase(string const & a)
 docstring const lowercase(docstring const & a)
 {
 	docstring tmp(a);
-	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase<char_type>());
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
 	return tmp;
 }
 

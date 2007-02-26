@@ -24,6 +24,7 @@ using std::string;
 // We use QString::fromUcs4 in Qt 4.2 and higher
 QString const toqstr(docstring const & str)
 {
+	// This does not properly convert surrogate pairs
 	QString s;
 	int i = static_cast<int>(str.size()); 
 	s.resize(i);
@@ -44,7 +45,7 @@ docstring const qstring_to_ucs4(QString const & qstr)
 	int const ls = qstr.size();
 	docstring ucs4;
 	for (int i = 0; i < ls; ++i)
-		ucs4 += static_cast<char_type>(qstr[i].unicode());
+		ucs4 += qchar_to_ucs4(qstr[i].unicode());
 	return ucs4;
 #endif
 }

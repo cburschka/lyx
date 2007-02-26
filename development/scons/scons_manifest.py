@@ -160,6 +160,7 @@ src_support_files = Split('''
     socktools.C
     systemcall.C
     tempname.C
+    textutils.C
     unicode.C
     unlink.C
     userinfo.C

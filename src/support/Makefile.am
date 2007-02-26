@@ -78,6 +78,7 @@ libsupport_la_SOURCES = \
 	systemcall.C \
 	systemcall.h \
 	tempname.C \
+	textutils.C \
 	textutils.h \
 	translator.h \
 	types.h \

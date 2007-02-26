@@ -24,17 +24,22 @@
 namespace lyx {
 namespace support {
 
-///
+/// Compare \p s and \p s2, ignoring the case.
+/// Caution: Depends on the locale
 int compare_no_case(std::string const & s, std::string const & s2);
+
+/// Compare \p s and \p s2, ignoring the case.
+/// Does not depend on the locale.
 int compare_no_case(docstring const & s, docstring const & s2);
 
-///
+/// Compare \p s and \p s2, ignoring the case of ASCII characters only.
 int compare_ascii_no_case(std::string const & s, std::string const & s2);
 
-///
+/// Compare \p s and \p s2, ignoring the case of ASCII characters only.
 int compare_ascii_no_case(docstring const & s, docstring const & s2);
 
-///
+/// Compare the first \p len characters of \p s and \p s2, ignoring the case.
+/// Caution: Depends on the locale
 int compare_no_case(std::string const & s, std::string const & s2, unsigned int len);
 
 ///
@@ -75,28 +80,37 @@ int hexToInt(lyx::docstring const & str);
 /// is \p str pure ascii?
 bool isAscii(docstring const & str);
 
-///
+/// Changes the case of \p c to lowercase.
+/// Caution: Depends on the locale
 char lowercase(char c);
 
-///
+/// Changes the case of \p c to uppercase.
+/// Caution: Depends on the locale
 char uppercase(char c);
 
-/// changes the case only if c is a one-byte char
+/// Changes the case of \p c to lowercase.
+/// Does not depend on the locale.
 char_type lowercase(char_type c);
 
-/// changes the case only if c is a one-byte char
+/// Changes the case of \p c to uppercase.
+/// Does not depend on the locale.
 char_type uppercase(char_type c);
 
 /// same as lowercase(), but ignores locale
 std::string const ascii_lowercase(std::string const &);
 docstring const ascii_lowercase(docstring const &);
 
-///
-std::string const lowercase(std::string const &);
-docstring const lowercase(docstring const &);
+/// Changes the case of \p s to lowercase.
+/// Caution: Depends on the locale
+std::string const lowercase(std::string const & s);
 
-///
-std::string const uppercase(std::string const &);
+/// Changes the case of \p s to lowercase.
+/// Does not depend on the locale.
+docstring const lowercase(docstring const & s);
+
+/// Changes the case of \p s to uppercase.
+/// Caution: Depends on the locale
+std::string const uppercase(std::string const & s);
 
 /// Does the string start with this prefix?
 bool prefixIs(docstring const &, char_type);

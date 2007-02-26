@@ -45,6 +45,14 @@ inline QString const toqstr(std::string const & str)
 }
 
 
+/// Is \p c a valid utf16 char?
+inline bool is_utf16(char_type c)
+{
+	// 0xd800 ... 0xdfff is the range of surrogate pairs.
+	return c < 0xd800 || (c > 0xdfff && c < 0x10000);
+}
+
+
 /**
  * Convert a QChar into a UCS4 character.
  * This is a hack (it does only make sense for the common part of the UCS4
@@ -54,6 +62,7 @@ inline QString const toqstr(std::string const & str)
  */
 inline char_type const qchar_to_ucs4(QChar const & qchar)
 {
+	BOOST_ASSERT(is_utf16(static_cast<char_type>(qchar.unicode())));
 	return static_cast<char_type>(qchar.unicode());
 }
 
@@ -71,7 +80,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 	// for the ucs2 subrange of unicode. Instead of an assertion we should
 	// return some special characters that indicates that its display is
 	// not supported.
-	BOOST_ASSERT(ucs4 < 65536);
+	BOOST_ASSERT(is_utf16(ucs4));
 	return QChar(static_cast<unsigned short>(ucs4));
 }
 
