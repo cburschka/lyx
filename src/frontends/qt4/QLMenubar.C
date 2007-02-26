@@ -25,8 +25,8 @@
 
 #include "debug.h"
 
-#include <QMenuBar>
 #include <QCursor>
+#include <QMenuBar>
 
 using std::pair;
 using std::string;
@@ -160,10 +160,7 @@ QMenuBar * QLMenubar::menuBar() const
 }
 
 #ifdef Q_WS_MACX
-# define MERGE_MAC_MENUS
-# ifndef MERGE_MAC_MENUS
 extern void qt_mac_set_menubar_merge(bool b);
-# endif
 #endif
 
 void QLMenubar::macxMenuBarInit()
@@ -171,35 +168,67 @@ void QLMenubar::macxMenuBarInit()
 #ifdef Q_WS_MACX
 	mac_menubar_.reset(new QMenuBar);
 
-# ifdef MERGE_MAC_MENUS
-	/* The qt/mac menu code has a very silly hack that moves some
-	   menu entries that it recognizes by name (e.g.
-	   "Preferences...") to the "LyX" menu. This feature can only
-	   work if the menu entries are always available. Since we
-	   build menus on demand, we add the entries to a dummy menu
-	   (JMarc)
+# if QT_VERSION >= 0x040200
+	/* Since Qt 4.2, the qt/mac menu code has special code for
+	   specifying the role of a menu entry. However, it does not
+	   work very well with our scheme of creating menus on demand,
+	   and therefore we need to put these entries in a special
+	   invisible menu. (JMarc)
 	*/
-	
+
+	/* The entries of our special mac menu. If we add support for
+	 * special entries in MenuBackend, we could imagine something
+	 * like
+	 *    SpecialItem About " "About LyX" "dialog-show aboutlyx"
+	 * and therefore avoid hardcoding. I am not sure it is worth
+	 * the hassle, though. (JMarc)
+	 */
+	struct MacMenuEntry {
+		kb_action action;
+		char const * arg;
+		char const * label;
+ 		QAction::MenuRole role;
+	};
+
+	MacMenuEntry entries[] = {
+		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX", 
+		 QAction::AboutRole},
+		{LFUN_DIALOG_SHOW, "prefs", "Preferences", 
+		 QAction::PreferencesRole},
+		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
+	};
+	const size_t num_entries = sizeof(entries) / sizeof(MacMenuEntry);
+
+	// the special menu for MenuBackend. 
 	Menu special;
-	special.add(MenuItem(MenuItem::Command, 
-			     qstring_to_ucs4(QMenuBar::tr("About")), 
-			     FuncRequest(LFUN_DIALOG_SHOW, "aboutlyx")));
-	special.add(MenuItem(MenuItem::Command, 
-			     qstring_to_ucs4(QMenuBar::tr("Preferences")),
-			     FuncRequest(LFUN_DIALOG_SHOW, "prefs")));
-	special.add(MenuItem(MenuItem::Command, 
-			     qstring_to_ucs4(QMenuBar::tr("Quit")),
-			     FuncRequest(LFUN_LYX_QUIT)));
+	for (size_t i = 0 ; i < num_entries ; ++i) {
+		FuncRequest const func(entries[i].action, 
+				       from_utf8(entries[i].arg));
+		special.add(MenuItem(MenuItem::Command, 
+				     from_utf8(entries[i].label), 
+				     func));
+	}
 	menubackend_.specialMenu(special);
-	
-	QMenu * qMenu = owner_->menuBar()->addMenu("special");	
+
+	// add the entries to a QMenu that will eventually be empty
+	// and therefore invisible.
+	QMenu * qMenu = owner_->menuBar()->addMenu("special");
+
+	// we do not use 'special' because it is a temporary variable,
+	// whereas MenuBackend::specialMenu points to a persistent
+	// copy.
+	Menu::const_iterator cit = menubackend_.specialMenu().begin();
 	Menu::const_iterator end = menubackend_.specialMenu().end();
-	for (Menu::const_iterator cit = menubackend_.specialMenu().begin();
-	     cit != end ; ++cit) 
-		qMenu->addAction(new Action(*owner_, cit->label(), cit->func()));
+	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
+		Action * action = new Action(*owner_, cit->label(), 
+					     cit->func());
+		action->setMenuRole(entries[i].role);
+		qMenu->addAction(action);
+
+	}
 # else
 	qt_mac_set_menubar_merge(false);
-# endif // MERGE_MAC_MENUS
+# endif // QT_VERSION >= 0x040200
 #endif // Q_WS_MACX
 }
 

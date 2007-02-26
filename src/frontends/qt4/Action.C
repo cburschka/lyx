@@ -43,6 +43,10 @@ Action::Action(GuiView & lyxView, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip)
 	: QAction(&lyxView), func_(func), lyxView_(lyxView)
 {
+#if QT_VERSION >= 0x040200
+	// only Qt/Mac handles that
+	setMenuRole(NoRole);
+#endif
 	setText(toqstr(text));
 	setToolTip(toqstr(tooltip));
 	setStatusTip(toqstr(tooltip));
