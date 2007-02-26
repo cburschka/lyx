@@ -15,6 +15,11 @@ bugs in LyX 1.5 page if you encounter a bug that seems to be related
 to unicode. If it's not there, then please report it to the lyx-devel
 mailing list.
 
+* Integrated CJK support
+
+The very first result of the Unicode transition is that we have finally
+merged in the externally maintained CJK-LyX branch.
+
 * Multiple views of the same buffer
 
 LyX can now display multiple views of the same buffer. I.e., you can
