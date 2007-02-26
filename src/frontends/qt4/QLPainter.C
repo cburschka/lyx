@@ -172,7 +172,7 @@ void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 
 int QLPainter::text(int x, int y, char_type c, LyXFont const & f)
 {
-	docstring s(c, 1);
+	docstring s(1, c);
 	return text(x, y, s, f);
 }
 
