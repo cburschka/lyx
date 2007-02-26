@@ -28,7 +28,6 @@ dist_noinst_DATA = \
 	images/math/delim.xbm \
 	images/math/dots.xbm \
 	images/math/font.xbm \
-	images/math/frac-square.xpm \
 	images/math/greek.xbm \
 	images/math/misc.xbm \
 	images/math/varsz.xbm
