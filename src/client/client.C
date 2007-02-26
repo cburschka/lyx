@@ -70,13 +70,6 @@ using std::cin;
 using std::endl;
 
 
-IconvProcessor & utf8ToUcs4()
-{
-	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
-	return iconv;
-}
-
-
 namespace support {
 
 string itoa(unsigned int i)

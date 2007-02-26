@@ -58,7 +58,6 @@
 #include "support/package.h"
 #include "support/path.h"
 #include "support/systemcall.h"
-#include "support/unicode.h"
 
 #include <boost/bind.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -150,7 +149,7 @@ void reconfigureUserLyXDir()
 /// The main application class private implementation.
 struct LyX::Singletons 
 {
-	Singletons(): iconv(ucs4_codeset, "UTF-8")
+	Singletons()
 	{
 		// Set the default User Interface language as soon as possible.
 		// The language used will be derived from the environment
@@ -171,9 +170,6 @@ struct LyX::Singletons
 	boost::scoped_ptr<frontend::Application> application_;
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
 	boost::scoped_ptr<Session> session_;
-
-	///
-	IconvProcessor iconv;
 
 	/// Files to load at start.
 	vector<FileName> files_to_load_;
@@ -328,12 +324,6 @@ Converters & LyX::converters()
 Converters & LyX::systemConverters()
 {
 	return pimpl_->system_converters_;
-}
-
-
-IconvProcessor & LyX::iconvProcessor()
-{
-	return pimpl_->iconv;
 }
 
 
@@ -1530,12 +1520,6 @@ void setMover(std::string const & fmt, std::string const & command)
 Movers & theSystemMovers()
 {
 	return  LyX::ref().pimpl_->system_movers_;
-}
-
-
-IconvProcessor & utf8ToUcs4()
-{
-	return LyX::ref().iconvProcessor();
 }
 
 

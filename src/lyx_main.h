@@ -25,7 +25,6 @@ class Buffer;
 class BufferList;
 class Converters;
 class ErrorItem;
-class IconvProcessor;
 class InsetBase;
 class LyXFunc;
 class LyXServer;
@@ -93,8 +92,6 @@ public:
 	void setGuiLanguage(std::string const & language);
 
 	///
-	IconvProcessor & iconvProcessor();
-
 	LyXView * newLyXView();
 
 	/** redraw \c inset in all the BufferViews in which it is currently

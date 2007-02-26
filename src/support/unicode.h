@@ -56,10 +56,6 @@ private:
 	boost::scoped_ptr<Private> pimpl_;
 };
 
-/// This is implemented in lyx_main.C for the LyX program 
-/// and in client.C for the LyX client program.
-extern IconvProcessor & utf8ToUcs4();
-
 // A single codepoint conversion for utf8_to_ucs4 does not make
 // sense, so that function is left out.
 

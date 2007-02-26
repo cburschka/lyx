@@ -69,13 +69,6 @@ using support::isFileReadable;
 namespace fs = boost::filesystem;
 
 
-IconvProcessor & utf8ToUcs4()
-{
-	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
-	return iconv;
-}
-
-
 // Hacks to allow the thing to link in the lyxlayout stuff
 LyXErr lyxerr(std::cerr.rdbuf());
 
