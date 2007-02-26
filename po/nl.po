@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-24 18:10+0100\n"
+"POT-Creation-Date: 2007-02-26 19:19+0100\n"
 "PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -533,7 +533,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
 #: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Annuleren"
@@ -3655,7 +3655,7 @@ msgstr "Bibliografie"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:507
+#: src/rowpainter.C:510
 msgid "Appendix"
 msgstr "Appendix"
 
@@ -7606,7 +7606,8 @@ msgid "Polish"
 msgstr "Pools"
 
 #: lib/languages:48
-msgid "Portugese"
+#, fuzzy
+msgid "Portuguese"
 msgstr "Portugees"
 
 #: lib/languages:49
@@ -9774,7 +9775,7 @@ msgstr "Kies document ter invoeging"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
 #: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 msgid "Documents|#o#O"
 msgstr "Documenten|#o#O"
@@ -9783,7 +9784,7 @@ msgstr "Documenten|#o#O"
 msgid "Examples|#E#e"
 msgstr "Voorbeelden|#E#e"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1913
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
@@ -9818,7 +9819,7 @@ msgstr "ChkTeX waarschuwing id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX waarschuwing id #"
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:433
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9830,19 +9831,19 @@ msgstr ""
 # Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
 # lettertekenstijl definieren die aan/uitgeschakeld wordt met de
 # Font-knop op de werkbalk.
-#: src/CutAndPaste.C:439
+#: src/CutAndPaste.C:438
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Tekenstijl definieren"
 
-#: src/CutAndPaste.C:458
+#: src/CutAndPaste.C:457
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:465
+#: src/CutAndPaste.C:464
 msgid "Undefined character style"
 msgstr ""
 
@@ -10663,7 +10664,7 @@ msgid "Over-write file?"
 msgstr "Het bestand bekijken"
 
 # Schrijfmachine
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 #, fuzzy
 msgid "&Over-write"
 msgstr "T&ypemachine:"
@@ -11302,19 +11303,19 @@ msgstr "&Label"
 msgid "Directories"
 msgstr "Mappen"
 
-#: src/frontends/qt4/GuiView.C:133
+#: src/frontends/qt4/GuiView.C:134
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:140
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:146
+#: src/frontends/qt4/GuiView.C:147
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:617
+#: src/frontends/qt4/GuiView.C:619
 msgid "LyX"
 msgstr "LyX"
 
@@ -11803,7 +11804,7 @@ msgid "Paragraph Settings"
 msgstr "Literatuurverwijzing"
 
 # met deze opmaak
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
 msgid "Senseless with this layout!"
 msgstr "Heeft geen zin met deze stijl!"
 
@@ -12136,6 +12137,11 @@ msgstr ""
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "Voetnoot Inzet geopend"
+
+#: src/insets/insetcommand.C:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "Opdracht uitvoeren"
 
 #: src/insets/insetenv.C:66
 #, fuzzy
@@ -12604,7 +12610,7 @@ msgstr "Rechtsboven"
 msgid "Page Height %"
 msgstr "Rechtsboven"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:114
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12612,25 +12618,25 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:116
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:117
 #, fuzzy
 msgid "&Rename"
 msgstr "r Omgekeerde vlg.|#R"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:134
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Geef bestandsnaam om document op te slaan:"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "Sjablonen|#S#s"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12638,31 +12644,31 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2029
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Document opslaan?"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:218
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-opslaan"
 
-#: src/lyx_cb.C:256
+#: src/lyx_cb.C:258
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Auto-opslaan mislukte!"
 
-#: src/lyx_cb.C:283
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Bezig met Auto-opslaan huidig document..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Kies document ter invoeging"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12670,12 +12676,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, fuzzy
 msgid "Could not read file"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12683,37 +12689,37 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:380 src/output.C:41
+#: src/lyx_cb.C:381 src/output.C:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Kan niet naar bestand schrijven"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "\"configure\" draait..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Herladen configuratiegegevens..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Systeem opnieuw geconfigureerd."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:129
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/lyx_main.C:131
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12721,40 +12727,40 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:140
+#: src/lyx_main.C:139
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:144
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Klaar!"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:490
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:502
+#: src/lyx_main.C:492
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:528
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:784
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:923
+#: src/lyx_main.C:913
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Fout: Kan tijdelijke map niet aanmaken:"
 
-#: src/lyx_main.C:924
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12762,52 +12768,52 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1091
+#: src/lyx_main.C:1081
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "U heeft geen eigen LyX-directory."
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1082
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "U heeft geen eigen LyX-map."
 
-#: src/lyx_main.C:1097
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1088
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Afsluiten"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1103
+#: src/lyx_main.C:1093
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Maak map aan "
 
-#: src/lyx_main.C:1109
+#: src/lyx_main.C:1099
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Aanroep `createDirectory' met ongeldige naam"
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr "Lijst van ondersteunde debug vlaggen:"
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1276
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Zet debugniveau op "
 
-#: src/lyx_main.C:1297
+#: src/lyx_main.C:1287
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12842,47 +12848,47 @@ msgstr ""
 "                          Type `lyx -dbg' voor een lijst met opties.\n"
 "Zie de LyX handleiding voor meer opties."
 
-#: src/lyx_main.C:1333 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Gebruikersmap:"
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1324
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Gebruikersmap:"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1335
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "De -sysdir optie mist een directorynaam!"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Volgende opdracht"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1346
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Commando-tekst na de -x optie ontbreekt!"
 
-#: src/lyx_main.C:1366
+#: src/lyx_main.C:1356
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Ontbrekend bestandstype [bijv latex, ps,...] na "
 
-#: src/lyx_main.C:1378
+#: src/lyx_main.C:1368
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Ontbrekend bestandstype [bijv latex, ps,...] na "
 
-#: src/lyx_main.C:1383
+#: src/lyx_main.C:1373
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Kies LaTeX-bestand ter importering"
@@ -13630,6 +13636,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.C:861
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.C:225
+#, fuzzy
+msgid "math macro"
+msgstr "achtergrond wiskunde"
 
 #: src/output.C:39
 #, fuzzy, c-format

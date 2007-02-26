@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-24 18:10+0100\n"
+"POT-Creation-Date: 2007-02-26 19:19+0100\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -571,7 +571,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
 #: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Peru"
@@ -3591,7 +3591,7 @@ msgstr "Viitteet"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:507
+#: src/rowpainter.C:510
 msgid "Appendix"
 msgstr "Liite"
 
@@ -7456,7 +7456,8 @@ msgid "Polish"
 msgstr "puola"
 
 #: lib/languages:48
-msgid "Portugese"
+#, fuzzy
+msgid "Portuguese"
 msgstr "portugali"
 
 #: lib/languages:49
@@ -9541,7 +9542,7 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
 #: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
@@ -9550,7 +9551,7 @@ msgstr "Asiakirjat|#A#a"
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1913
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
@@ -9585,7 +9586,7 @@ msgstr "ChkTeXin varoitus n:o # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeXin varoitus n:o #"
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:433
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9598,12 +9599,12 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:439
+#: src/CutAndPaste.C:438
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Merkkiasettelu"
 
-#: src/CutAndPaste.C:458
+#: src/CutAndPaste.C:457
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9614,7 +9615,7 @@ msgstr ""
 "koska luokka muuttui\n"
 "luokasta %3$s luokaksi %4$s"
 
-#: src/CutAndPaste.C:465
+#: src/CutAndPaste.C:464
 msgid "Undefined character style"
 msgstr ""
 
@@ -10421,7 +10422,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Katsele tiedostoa"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Kirjoituskone:"
@@ -11040,19 +11041,19 @@ msgstr "&Nimike:"
 msgid "Directories"
 msgstr "Hakemistot"
 
-#: src/frontends/qt4/GuiView.C:133
+#: src/frontends/qt4/GuiView.C:134
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:140
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:146
+#: src/frontends/qt4/GuiView.C:147
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:617
+#: src/frontends/qt4/GuiView.C:619
 msgid "LyX"
 msgstr "LyX"
 
@@ -11526,7 +11527,7 @@ msgstr "Irrallisten asetukset"
 msgid "Paragraph Settings"
 msgstr "Kirjallisuusviitteiden asetukset"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
@@ -11846,6 +11847,11 @@ msgstr "Järjetöntä: "
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "Muistiinpano-osio avattu"
+
+#: src/insets/insetcommand.C:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "&CheckTeX-komento:"
 
 #: src/insets/insetenv.C:66
 #, fuzzy
@@ -12303,7 +12309,7 @@ msgstr "Yläoikealla"
 msgid "Page Height %"
 msgstr "Yläoikealla"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:114
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12311,24 +12317,24 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:116
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:117
 #, fuzzy
 msgid "&Rename"
 msgstr "&Poista"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:134
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12336,29 +12342,29 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2029
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Haluatko tallentaa asiakirjan?"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:218
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s tallentuu itsestään"
 
-#: src/lyx_cb.C:256
+#: src/lyx_cb.C:258
 msgid "Autosave failed!"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/lyx_cb.C:283
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Asiakirjan automaattinen tallennus käynnissä..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "Valitse lisättävä tiedosto"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12366,12 +12372,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, fuzzy
 msgid "Could not read file"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12379,37 +12385,37 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:380 src/output.C:41
+#: src/lyx_cb.C:381 src/output.C:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Ei voi avata tiedostoa"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "\"configure\" käynnissä..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Asetustiedot latautuvat uudelleen..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Kokoonpanoasetukset päivittyivät."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:129
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Ohjelma ei voinut käsitellä tiedostoa:"
 
-#: src/lyx_main.C:131
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12417,38 +12423,38 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:140
+#: src/lyx_main.C:139
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Käyttäjän hakemisto konfiguroituu uudelleen"
 
-#: src/lyx_main.C:144
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Valmis!"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:490
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/lyx_main.C:502
+#: src/lyx_main.C:492
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Valitse väliaikaishakemisto"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:528
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Virheellinen valitsin \"%1$s\". Ohjelma sulkeutuu."
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:784
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:923
+#: src/lyx_main.C:913
 msgid "Could not create temporary directory"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/lyx_main.C:924
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12459,51 +12465,51 @@ msgstr ""
 "%1$s epäonnistui. Varmista, että hakemisto on\n"
 "olemassa ja sinne voi kirjoittaa, ja yritä uudelleen."
 
-#: src/lyx_main.C:1091
+#: src/lyx_main.C:1081
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1082
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Kirjoitit käyttäjän LyX-hakemiston, joka ei ole olemassa."
 
-#: src/lyx_main.C:1097
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Luo hakemiston "
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1088
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Lopeta"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/lyx_main.C:1103
+#: src/lyx_main.C:1093
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Luo hakemiston %1$s"
 
-#: src/lyx_main.C:1109
+#: src/lyx_main.C:1099
 msgid "Failed to create directory. Exiting."
 msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr "Luettelo mahdollisista virheilmoitusasetuksista:"
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1276
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Virheilmoitustaso on nyt %1$s"
 
-#: src/lyx_main.C:1297
+#: src/lyx_main.C:1287
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12546,44 +12552,44 @@ msgstr ""
 "        -version           näytä yhteenveto versio- ja käännöstiedoista\n"
 "Katso lisätietoja LyXin manuaalisivulta."
 
-#: src/lyx_main.C:1333 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Käyttäjän hakemisto: "
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1324
 msgid "Missing directory for -sysdir switch"
 msgstr "Komento puuttuu -sysdir-valitsimelta"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Käyttäjän hakemisto: "
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1335
 msgid "Missing directory for -userdir switch"
 msgstr "Komento puuttuu -userdir-valitsimelta"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Seuraava komento"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1346
 msgid "Missing command string after --execute switch"
 msgstr "Komento puuttuu --execute-valitsimelta"
 
-#: src/lyx_main.C:1366
+#: src/lyx_main.C:1356
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --export-valitsimen jäljestä"
 
-#: src/lyx_main.C:1378
+#: src/lyx_main.C:1368
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --import-valitsimen jäljestä"
 
-#: src/lyx_main.C:1383
+#: src/lyx_main.C:1373
 msgid "Missing filename for --import"
 msgstr "Valitsimelle --import ei annettu tiedostoa"
 
@@ -13412,6 +13418,11 @@ msgstr ""
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Tavallinen teksti\t\\textrm"
+
+#: src/mathed/MathMacroTemplate.C:225
+#, fuzzy
+msgid "math macro"
+msgstr "matematiikan tausta"
 
 #: src/output.C:39
 #, fuzzy, c-format

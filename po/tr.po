@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-24 18:10+0100\n"
+"POT-Creation-Date: 2007-02-26 19:19+0100\n"
 "PO-Revision-Date: 2006-07-01 11:06+0200\n"
 "Last-Translator: Gürer Özen <gurer@pardus.org.tr>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -482,7 +482,7 @@ msgstr "&Tamam"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
 #: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Vazgeç"
@@ -3354,7 +3354,7 @@ msgstr "Kaynakça"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:507
+#: src/rowpainter.C:510
 msgid "Appendix"
 msgstr "Ek"
 
@@ -7087,7 +7087,8 @@ msgid "Polish"
 msgstr "Lehçe"
 
 #: lib/languages:48
-msgid "Portugese"
+#, fuzzy
+msgid "Portuguese"
 msgstr "Portekizce"
 
 #: lib/languages:49
@@ -8966,7 +8967,7 @@ msgstr "Eklenecek LyX belgesini seçin"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
 #: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 msgid "Documents|#o#O"
 msgstr "Belgeler|#b#B"
@@ -8975,7 +8976,7 @@ msgstr "Belgeler|#b#B"
 msgid "Examples|#E#e"
 msgstr "Örnekler|#ö#Ö"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1913
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX Belgeleri (*.lyx)"
@@ -9009,7 +9010,7 @@ msgstr ""
 msgid "ChkTeX warning id # "
 msgstr ""
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:433
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -9022,11 +9023,11 @@ msgstr ""
 "yerleþim '%1$s',\n"
 "'%2$s' a çevrildi"
 
-#: src/CutAndPaste.C:439
+#: src/CutAndPaste.C:438
 msgid "Changed Layout"
 msgstr "Yerleþim Deðiþti"
 
-#: src/CutAndPaste.C:458
+#: src/CutAndPaste.C:457
 #, fuzzy, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -9037,7 +9038,7 @@ msgstr ""
 "yerleþim '%1$s',\n"
 "'%2$s' a çevrildi"
 
-#: src/CutAndPaste.C:465
+#: src/CutAndPaste.C:464
 msgid "Undefined character style"
 msgstr "Bilinmeyen karakter stili"
 
@@ -9820,7 +9821,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Dosyayýnýn Üzerine Yaz?"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 msgid "&Over-write"
 msgstr "&Üzerine Yaz"
 
@@ -10394,19 +10395,19 @@ msgstr "Etiket"
 msgid "Directories"
 msgstr "Dizinler"
 
-#: src/frontends/qt4/GuiView.C:133
+#: src/frontends/qt4/GuiView.C:134
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:140
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:146
+#: src/frontends/qt4/GuiView.C:147
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:617
+#: src/frontends/qt4/GuiView.C:619
 msgid "LyX"
 msgstr "LyX"
 
@@ -10848,7 +10849,7 @@ msgstr "Not Ayarlarý"
 msgid "Paragraph Settings"
 msgstr "Paragraf Ayarlarý"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
 msgid "Senseless with this layout!"
 msgstr ""
 
@@ -11143,6 +11144,11 @@ msgstr ""
 #: src/insets/insetcharstyle.C:123
 msgid "Opened CharStyle Inset"
 msgstr ""
+
+#: src/insets/insetcommand.C:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "&BibTeX komutu:"
 
 #: src/insets/insetenv.C:66
 #, fuzzy
@@ -11584,7 +11590,7 @@ msgstr "Toplam Yükseklik"
 msgid "Page Height %"
 msgstr "Toplam Yükseklik"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:114
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -11592,23 +11598,23 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:116
 msgid "Rename and save?"
 msgstr "Yeni adla kaydet?"
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:117
 msgid "&Rename"
 msgstr "&Yeniden adlandýr"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:134
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "Þablonlar|#Þ#þ"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11616,28 +11622,28 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2029
 msgid "Over-write document?"
 msgstr "Belgenin üzerine yazayým mý?"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:218
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s otomatik kaydediliyor"
 
-#: src/lyx_cb.C:256
+#: src/lyx_cb.C:258
 msgid "Autosave failed!"
 msgstr "Otokayýt baþarýsýz!"
 
-#: src/lyx_cb.C:283
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Belge otomatik kaydediliyor..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "Eklenecek dosyayý seçin"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11645,11 +11651,11 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 msgid "Could not read file"
 msgstr "Dosya okunamýyor"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11657,23 +11663,23 @@ msgid ""
 "due to the error: %2$s"
 msgstr ""
 
-#: src/lyx_cb.C:380 src/output.C:41
+#: src/lyx_cb.C:381 src/output.C:41
 msgid "Could not open file"
 msgstr "Dosya açýlamýyor"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "Yapýlandýrma çalýþtýrýlýyor..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Yapýlandýrma yenileniyor..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 msgid "System reconfigured"
 msgstr "Sistem yeniden yapýlandýrýldý"
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11683,11 +11689,11 @@ msgstr ""
 "Güncellenen belge sýnýflarýný kullanabilmek\n"
 "için, LyX'i yeniden baþlatmalýsýnýz."
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:129
 msgid "Could not read configuration file"
 msgstr "Ayar dosyasý okunamýyor"
 
-#: src/lyx_main.C:131
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11695,37 +11701,37 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:140
+#: src/lyx_main.C:139
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: kullanýcý dizini yeniden yapýlandýrýlýyor"
 
-#: src/lyx_main.C:144
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Bitti!"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:490
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Geçici dizin %1$s yaratýlamadý"
 
-#: src/lyx_main.C:502
+#: src/lyx_main.C:492
 msgid "Unable to remove temporary directory"
 msgstr "Geçici dizin silinemiyor"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:528
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Hatalý komut satýrý seçeneði `%1$s'. Çýkýyorum."
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:784
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:923
+#: src/lyx_main.C:913
 msgid "Could not create temporary directory"
 msgstr "Geçici dizin yaratýlamadý"
 
-#: src/lyx_main.C:924
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11733,48 +11739,48 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1091
+#: src/lyx_main.C:1081
 msgid "Missing user LyX directory"
 msgstr "LyX kullanýcý dizini yok"
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1082
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Varolmayan bir LyX kullanýcý dizini seçtiniz."
 
-#: src/lyx_main.C:1097
+#: src/lyx_main.C:1087
 msgid "&Create directory"
 msgstr "&Dizin yarat"
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1088
 msgid "&Exit LyX"
 msgstr "&LyX'ten çýk"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr "LyX kullanýcý dizini yok. Çýkýyorum."
 
-#: src/lyx_main.C:1103
+#: src/lyx_main.C:1093
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Dizin %1$s yaratýlýyor"
 
-#: src/lyx_main.C:1109
+#: src/lyx_main.C:1099
 msgid "Failed to create directory. Exiting."
 msgstr "Dizin oluþturulamadý. Çýkýyorum."
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr "Desteklenen hata düzeltme seçenekleri:"
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1276
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Hata düzeltme seviyesi %1$s olarak ayarlandý"
 
-#: src/lyx_main.C:1297
+#: src/lyx_main.C:1287
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11813,42 +11819,42 @@ msgstr ""
 "\t-version        sürüm ve inþa bilgilerini verir\n"
 "Daha fazla bilgi için LyX man sayfasýna bakýnýz."
 
-#: src/lyx_main.C:1333 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Kullanýcý dizini: "
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1324
 msgid "Missing directory for -sysdir switch"
 msgstr "-sysdir seçeneði için dizin eksik"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Kullanýcý dizini: "
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1335
 msgid "Missing directory for -userdir switch"
 msgstr "-userdir seçeneði için dizin eksik"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Sonraki komut"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1346
 msgid "Missing command string after --execute switch"
 msgstr "--execute seçeneði için komut eksik"
 
-#: src/lyx_main.C:1366
+#: src/lyx_main.C:1356
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "--export seçeneði için biçim [latex, ps, ...] eksik"
 
-#: src/lyx_main.C:1378
+#: src/lyx_main.C:1368
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "--import seçeneði için biçim [latex, ps, ...] eksik"
 
-#: src/lyx_main.C:1383
+#: src/lyx_main.C:1373
 msgid "Missing filename for --import"
 msgstr "--import seçeneði için dosya adý eksik"
 
@@ -12580,6 +12586,11 @@ msgstr ""
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal metin\t\\textrm"
+
+#: src/mathed/MathMacroTemplate.C:225
+#, fuzzy
+msgid "math macro"
+msgstr "matematik arkaplaný"
 
 #: src/output.C:39
 #, c-format

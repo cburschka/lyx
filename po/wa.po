@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-24 18:10+0100\n"
+"POT-Creation-Date: 2007-02-26 19:19+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -549,7 +549,7 @@ msgstr "I va"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
 #: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 #, fuzzy
 msgid "&Cancel"
@@ -3839,7 +3839,7 @@ msgstr "Intreye bibiografike"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:507
+#: src/rowpainter.C:510
 #, fuzzy
 msgid "Appendix"
 msgstr "inset drovu"
@@ -7814,7 +7814,7 @@ msgid "Polish"
 msgstr ""
 
 #: lib/languages:48
-msgid "Portugese"
+msgid "Portuguese"
 msgstr ""
 
 #: lib/languages:49
@@ -10015,7 +10015,7 @@ msgstr "Tchwezixhoz on documint po stitchî"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
 #: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 #, fuzzy
 msgid "Documents|#o#O"
@@ -10026,7 +10026,7 @@ msgstr "Documints"
 msgid "Examples|#E#e"
 msgstr "Egzimpes"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1913
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
@@ -10062,7 +10062,7 @@ msgstr "Advertixhmint ChkTeX lim."
 msgid "ChkTeX warning id # "
 msgstr "Advertixhmint ChkTeX lim."
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:433
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -10071,19 +10071,19 @@ msgid ""
 "%3$s to %4$s"
 msgstr ""
 
-#: src/CutAndPaste.C:439
+#: src/CutAndPaste.C:438
 #, fuzzy
 msgid "Changed Layout"
 msgstr "Ôtès tchûzes po l' arindjmint del pådje"
 
-#: src/CutAndPaste.C:458
+#: src/CutAndPaste.C:457
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
 "%2$s to %3$s"
 msgstr ""
 
-#: src/CutAndPaste.C:465
+#: src/CutAndPaste.C:464
 #, fuzzy
 msgid "Undefined character style"
 msgstr "Tåve di caracteres:|#å#a"
@@ -10943,7 +10943,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Machine a scrîre"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 #, fuzzy
 msgid "&Over-write"
 msgstr "Machine a scrîre"
@@ -11614,19 +11614,19 @@ msgstr "Li tåvlea est stitchî"
 msgid "Directories"
 msgstr "Ridant ûzeu :"
 
-#: src/frontends/qt4/GuiView.C:133
+#: src/frontends/qt4/GuiView.C:134
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:140
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:146
+#: src/frontends/qt4/GuiView.C:147
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:617
+#: src/frontends/qt4/GuiView.C:619
 #, fuzzy
 msgid "LyX"
 msgstr "Rexhe"
@@ -12130,7 +12130,7 @@ msgstr "Tchûzes"
 msgid "Paragraph Settings"
 msgstr "Intreye bibiografike"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
 msgid "Senseless with this layout!"
 msgstr "Pont d' avance avou ene pådje adjinçneye come çouci"
 
@@ -12472,6 +12472,11 @@ msgstr ""
 #, fuzzy
 msgid "Opened CharStyle Inset"
 msgstr "inset drovu"
+
+#: src/insets/insetcommand.C:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "Enonder ene comande"
 
 #: src/insets/insetenv.C:66
 #, fuzzy
@@ -12964,7 +12969,7 @@ msgstr "Droetes"
 msgid "Page Height %"
 msgstr "Droetes"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:114
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12972,26 +12977,26 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:116
 msgid "Rename and save?"
 msgstr ""
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:117
 #, fuzzy
 msgid "&Rename"
 msgstr "No:|#N"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:134
 #, fuzzy
 msgid "Choose a filename to save document as"
 msgstr "Tapez on no po schaper eyèt lomer li fitchî"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1872
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Modeles"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12999,31 +13004,31 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2029
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Schaper li documint?"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:218
 #, fuzzy, c-format
 msgid "Auto-saving %1$s"
 msgstr "Schaper tot seu"
 
-#: src/lyx_cb.C:256
+#: src/lyx_cb.C:258
 #, fuzzy
 msgid "Autosave failed!"
 msgstr "Dj' a fwait berwete come dji sayîve di schaper tot seu !"
 
-#: src/lyx_cb.C:283
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Dji schape tot seu li documint drovu..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 #, fuzzy
 msgid "Select file to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, fuzzy, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -13031,12 +13036,12 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 #, fuzzy
 msgid "Could not read file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, fuzzy, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -13044,37 +13049,37 @@ msgid ""
 "due to the error: %2$s"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/lyx_cb.C:380 src/output.C:41
+#: src/lyx_cb.C:381 src/output.C:41
 #, fuzzy
 msgid "Could not open file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "Dj' enonde l' apontiaedje..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Dji renonde l' apontiaedje..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Li sistinme est rapontyî"
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:129
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/lyx_main.C:131
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -13082,41 +13087,41 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:140
+#: src/lyx_main.C:139
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: dji fwai li ridant "
 
-#: src/lyx_main.C:144
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Dj' a fwait!"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:490
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/lyx_main.C:502
+#: src/lyx_main.C:492
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:528
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:784
 #, fuzzy
 msgid "LyX: "
 msgstr "Rexhe"
 
-#: src/lyx_main.C:923
+#: src/lyx_main.C:913
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/lyx_main.C:924
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13124,50 +13129,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1091
+#: src/lyx_main.C:1081
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: dji fwai li ridant "
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1082
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:1097
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Create directory"
 msgstr "Aroke! Dji n' sai drovi li ridant:"
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1088
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1103
+#: src/lyx_main.C:1093
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " eyèt dj' enonde l' apontiaedje ..."
 
-#: src/lyx_main.C:1109
+#: src/lyx_main.C:1099
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1276
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Livea di disbugaedje :"
 
-#: src/lyx_main.C:1297
+#: src/lyx_main.C:1287
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13189,47 +13194,47 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:1333 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Ridant ûzeu :"
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1324
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Ridant ûzeu :"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1335
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Enonder ene comande"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1346
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "I manke on nombe pol tchûze -dbg!"
 
-#: src/lyx_main.C:1366
+#: src/lyx_main.C:1356
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/lyx_main.C:1378
+#: src/lyx_main.C:1368
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/lyx_main.C:1383
+#: src/lyx_main.C:1373
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
@@ -13980,6 +13985,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.C:861
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.C:225
+#, fuzzy
+msgid "math macro"
+msgstr "Sititchî ene etikete"
 
 #: src/output.C:39
 #, fuzzy, c-format

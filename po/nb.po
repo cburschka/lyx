@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-24 18:10+0100\n"
+"POT-Creation-Date: 2007-02-26 19:19+0100\n"
 "PO-Revision-Date: 2007-01-31 00:58+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -480,7 +480,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
 #: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Avbryt"
@@ -3348,7 +3348,7 @@ msgstr "Referanseliste"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:507
+#: src/rowpainter.C:510
 msgid "Appendix"
 msgstr "Appendiks"
 
@@ -6953,7 +6953,8 @@ msgid "Polish"
 msgstr "Polsk"
 
 #: lib/languages:48
-msgid "Portugese"
+#, fuzzy
+msgid "Portuguese"
 msgstr "Portugisisk"
 
 #: lib/languages:49
@@ -8798,7 +8799,7 @@ msgstr "Velg LyX dokument som skal settes inn"
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
 #: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
@@ -8807,7 +8808,7 @@ msgstr "Dokumenter|#o#O"
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1913
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
@@ -8841,7 +8842,7 @@ msgstr "ChkTeX advarsel id # %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX advarsel id # "
 
-#: src/CutAndPaste.C:434
+#: src/CutAndPaste.C:433
 #, c-format
 msgid ""
 "Layout had to be changed from\n"
@@ -8854,11 +8855,11 @@ msgstr ""
 "som en følge av bytte av dokumentklasse\n"
 "fra %3$s til %4$s."
 
-#: src/CutAndPaste.C:439
+#: src/CutAndPaste.C:438
 msgid "Changed Layout"
 msgstr "Endret stil"
 
-#: src/CutAndPaste.C:458
+#: src/CutAndPaste.C:457
 #, c-format
 msgid ""
 "Character style %1$s is undefined because of class conversion from\n"
@@ -8867,7 +8868,7 @@ msgstr ""
 "Tekststilen %1$s er udefinert på grunn av konvertering fra\n"
 "%2$s til %3$s"
 
-#: src/CutAndPaste.C:465
+#: src/CutAndPaste.C:464
 msgid "Undefined character style"
 msgstr "Udefinert tekststil"
 
@@ -9657,7 +9658,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Overskrive filen?"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 msgid "&Over-write"
 msgstr "Overskrive"
 
@@ -10230,19 +10231,19 @@ msgstr "Merke"
 msgid "Directories"
 msgstr "Foldere"
 
-#: src/frontends/qt4/GuiView.C:133
+#: src/frontends/qt4/GuiView.C:134
 msgid "Small-sized icons"
 msgstr "Små ikoner"
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:140
 msgid "Normal-sized icons"
 msgstr "Normale ikoner"
 
-#: src/frontends/qt4/GuiView.C:146
+#: src/frontends/qt4/GuiView.C:147
 msgid "Big-sized icons"
 msgstr "Store ikoner"
 
-#: src/frontends/qt4/GuiView.C:617
+#: src/frontends/qt4/GuiView.C:619
 msgid "LyX"
 msgstr "LyX"
 
@@ -10681,7 +10682,7 @@ msgstr "Notisinnstillinger"
 msgid "Paragraph Settings"
 msgstr "Innstillinger for avsnitt"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
 msgid "Senseless with this layout!"
 msgstr "Uten mening for denne stilen!"
 
@@ -10977,6 +10978,11 @@ msgstr "Meningsløst!"
 #: src/insets/insetcharstyle.C:123
 msgid "Opened CharStyle Inset"
 msgstr ""
+
+#: src/insets/insetcommand.C:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "&BibTeX-kommando:"
 
 #: src/insets/insetenv.C:66
 msgid "Opened Environment Inset: "
@@ -11435,7 +11441,7 @@ msgstr "Teksthøyde %"
 msgid "Page Height %"
 msgstr "Sidehøyde %"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:114
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -11446,23 +11452,23 @@ msgstr ""
 "\n"
 "Vil du prøve å lagre det under et annet navn?"
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:116
 msgid "Rename and save?"
 msgstr "Bytte navn og lagre?"
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:117
 msgid "&Rename"
 msgstr "&Bytte navn"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:134
 msgid "Choose a filename to save document as"
 msgstr "Velg filnavn som dokumentet skal lagres som"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "Maler"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11473,28 +11479,28 @@ msgstr ""
 "\n"
 "Vil du overskrive det dokumentet?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2029
 msgid "Over-write document?"
 msgstr "OVerskrive dokument?"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:218
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autolagrer %1$s"
 
-#: src/lyx_cb.C:256
+#: src/lyx_cb.C:258
 msgid "Autosave failed!"
 msgstr "Autolagring feilet!"
 
-#: src/lyx_cb.C:283
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "Autolagrer gjelende dokument..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "Velg fil som skal settes inn"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -11505,11 +11511,11 @@ msgstr ""
 "%1$s.\n"
 "på grunn av feilen: %2$s"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 msgid "Could not read file"
 msgstr "Kunne ikke lese filen"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -11520,23 +11526,23 @@ msgstr ""
 "%1$s\n"
 "på grunn av feilen: %2$s"
 
-#: src/lyx_cb.C:380 src/output.C:41
+#: src/lyx_cb.C:381 src/output.C:41
 msgid "Could not open file"
 msgstr "Kan ikke åpne fil"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 msgid "Running configure..."
 msgstr "Kjører \"configure\"..."
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "Leser konfigurasjon om igjen..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 msgid "System reconfigured"
 msgstr "Systemed har blitt rekonfigurert."
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -11546,11 +11552,11 @@ msgstr ""
 "Du må restarte LyX for å kunne\n"
 "bruke oppdaterte dokumentklasser."
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:129
 msgid "Could not read configuration file"
 msgstr "Kunne ikke lese konfigurasjonsfilen"
 
-#: src/lyx_main.C:131
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -11561,37 +11567,37 @@ msgstr ""
 "%1$s.\n"
 "Sjekk om LyX er rett installert."
 
-#: src/lyx_main.C:140
+#: src/lyx_main.C:139
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurerer brukerfolder"
 
-#: src/lyx_main.C:144
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "Ferdig!"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:490
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Feil: Klarte ikke å fjerne den midlertidige mappen %1$s"
 
-#: src/lyx_main.C:502
+#: src/lyx_main.C:492
 msgid "Unable to remove temporary directory"
 msgstr "Feil: Klarte ikke å fjerne midlertidig mappe"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:528
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolineargument `%1$s'. Avslutter."
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:784
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:923
+#: src/lyx_main.C:913
 msgid "Could not create temporary directory"
 msgstr "Klarte ikke å lage midlertidig mappe"
 
-#: src/lyx_main.C:924
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11602,11 +11608,11 @@ msgstr ""
 "%1$s. Forsikre deg om at denne\n"
 "stien eksisteres og er skrivbar, og prøv igjen."
 
-#: src/lyx_main.C:1091
+#: src/lyx_main.C:1081
 msgid "Missing user LyX directory"
 msgstr "Ingen brukerkatalog for LyX"
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1082
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11615,37 +11621,37 @@ msgstr ""
 "Du har oppgitt en brukermappe som ikke fins, %1$s.\n"
 "Brukermappa trengs for å lagre programkonfigurasjonen."
 
-#: src/lyx_main.C:1097
+#: src/lyx_main.C:1087
 msgid "&Create directory"
 msgstr "&Opprett mappe"
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1088
 msgid "&Exit LyX"
 msgstr "&Avslutt LyX"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukerkatalog for LyX. Avslutter."
 
-#: src/lyx_main.C:1103
+#: src/lyx_main.C:1093
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lager mappen %1$s"
 
-#: src/lyx_main.C:1109
+#: src/lyx_main.C:1099
 msgid "Failed to create directory. Exiting."
 msgstr "Mislyktes i å lage mappen. Avslutter."
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr "Liste over debug flagg some støttes:"
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1276
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Setter debug nivå til %1$s"
 
-#: src/lyx_main.C:1297
+#: src/lyx_main.C:1287
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11685,42 +11691,42 @@ msgstr ""
 "\t-version        versjons- og byggeinformasjon\n"
 "Les man sidene til LyX for flere detaljer."
 
-#: src/lyx_main.C:1333 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Bruker folder: "
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1324
 msgid "Missing directory for -sysdir switch"
 msgstr "Mangler folder for -sysdir parameter"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Bruker folder: "
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1335
 msgid "Missing directory for -userdir switch"
 msgstr "Mangler folder for -userdir parameter"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Register-kommando:"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1346
 msgid "Missing command string after --execute switch"
 msgstr "Mangler kommandostreng etter --execute parameter"
 
-#: src/lyx_main.C:1366
+#: src/lyx_main.C:1356
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --export parameter"
 
-#: src/lyx_main.C:1378
+#: src/lyx_main.C:1368
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --import parameter"
 
-#: src/lyx_main.C:1383
+#: src/lyx_main.C:1373
 msgid "Missing filename for --import"
 msgstr "Mangler filnavn for --import"
 
@@ -12478,6 +12484,11 @@ msgstr ""
 #, fuzzy
 msgid "entered math text mode (textrm)"
 msgstr "Normal tekstmodus\t\\textrm"
+
+#: src/mathed/MathMacroTemplate.C:225
+#, fuzzy
+msgid "math macro"
+msgstr "matte bakgrunn"
 
 #: src/output.C:39
 #, c-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.5\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-25 12:32+0100\n"
+"POT-Creation-Date: 2007-02-26 19:19+0100\n"
 "PO-Revision-Date: 2007-02-25 12:26+0000\n"
 "Last-Translator: Ran Rutenberg <ran.rutenberg@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -526,7 +526,7 @@ msgstr "אישור"
 #: src/frontends/qt4/ui/QCitationUi.ui:124
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
-#: src/bufferlist.C:222 src/lyx_cb.C:115 src/lyx_cb.C:168 src/lyxfunc.C:733
+#: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
 #: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "ביטול"
@@ -3561,7 +3561,7 @@ msgstr "בביליוגרפיה"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:507
+#: src/rowpainter.C:510
 msgid "Appendix"
 msgstr "נספח"
 
@@ -7324,7 +7324,8 @@ msgid "Polish"
 msgstr "פולנית"
 
 #: lib/languages:48
-msgid "Portugese"
+#, fuzzy
+msgid "Portuguese"
 msgstr "פורטוגזית"
 
 #: lib/languages:49
@@ -9347,7 +9348,7 @@ msgstr ""
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
-#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:134
+#: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
 #: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
 #, fuzzy
 msgid "Documents|#o#O"
@@ -9357,7 +9358,7 @@ msgstr "מסמכים|מ"
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:140 src/lyxfunc.C:1876
+#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1913
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
@@ -10263,7 +10264,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "אין אפשרות לכתוב אל הקובץ %s"
 
-#: src/exporter.C:87 src/lyx_cb.C:168 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
 #, fuzzy
 msgid "&Over-write"
 msgstr "שגיאה בכתיבה"
@@ -10888,22 +10889,22 @@ msgstr "Label"
 msgid "Directories"
 msgstr "תיקיות:"
 
-#: src/frontends/qt4/GuiView.C:133
+#: src/frontends/qt4/GuiView.C:134
 #, fuzzy
 msgid "Small-sized icons"
 msgstr "הצ_ג סמלים של אנשי קשר"
 
-#: src/frontends/qt4/GuiView.C:139
+#: src/frontends/qt4/GuiView.C:140
 #, fuzzy
 msgid "Normal-sized icons"
 msgstr "הצ_ג סמלים של אנשי קשר"
 
-#: src/frontends/qt4/GuiView.C:146
+#: src/frontends/qt4/GuiView.C:147
 #, fuzzy
 msgid "Big-sized icons"
 msgstr "הצ_ג סמלים של אנשי קשר"
 
-#: src/frontends/qt4/GuiView.C:617
+#: src/frontends/qt4/GuiView.C:619
 #, fuzzy
 msgid "LyX"
 msgstr "LyX:"
@@ -11735,6 +11736,11 @@ msgstr "חסר משמעות!!!"
 msgid "Opened CharStyle Inset"
 msgstr "ערכת הכלים הנוספת של Andrew"
 
+#: src/insets/insetcommand.C:98
+#, fuzzy
+msgid "LaTeX Command: "
+msgstr "פקודה קודמת"
+
 #: src/insets/insetenv.C:66
 #, fuzzy
 msgid "Opened Environment Inset: "
@@ -12219,7 +12225,7 @@ msgstr "גובה המלל"
 msgid "Page Height %"
 msgstr "גובה עמוד %"
 
-#: src/lyx_cb.C:112
+#: src/lyx_cb.C:114
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -12227,23 +12233,23 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/lyx_cb.C:114
+#: src/lyx_cb.C:116
 msgid "Rename and save?"
 msgstr "לשנות שם ולשמור?"
 
-#: src/lyx_cb.C:115
+#: src/lyx_cb.C:117
 msgid "&Rename"
 msgstr "שנה שם"
 
-#: src/lyx_cb.C:132
+#: src/lyx_cb.C:134
 msgid "Choose a filename to save document as"
 msgstr "בחר שם למסמך כדי לשמור אותו"
 
-#: src/lyx_cb.C:135 src/lyxfunc.C:1872
+#: src/lyx_cb.C:137 src/lyxfunc.C:1872
 msgid "Templates|#T#t"
 msgstr "תבניות"
 
-#: src/lyx_cb.C:165 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2027
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12254,28 +12260,28 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2029
 msgid "Over-write document?"
 msgstr "להחליף את המסמך הקיים?"
 
-#: src/lyx_cb.C:216
+#: src/lyx_cb.C:218
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "שומר אוטומטית %1$s"
 
-#: src/lyx_cb.C:256
+#: src/lyx_cb.C:258
 msgid "Autosave failed!"
 msgstr "שמירה אוטומטית נכשלה!"
 
-#: src/lyx_cb.C:283
+#: src/lyx_cb.C:285
 msgid "Autosaving current document..."
 msgstr "שומר אוטומטית את המסמך הנוכחי..."
 
-#: src/lyx_cb.C:349
+#: src/lyx_cb.C:350
 msgid "Select file to insert"
 msgstr "בחר קובץ להוספה"
 
-#: src/lyx_cb.C:368
+#: src/lyx_cb.C:369
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -12286,11 +12292,11 @@ msgstr ""
 "%1$s\n"
 "בעטיה של השגיאה: %2$s"
 
-#: src/lyx_cb.C:370
+#: src/lyx_cb.C:371
 msgid "Could not read file"
 msgstr "לא יכול לקרוא את הקובץ"
 
-#: src/lyx_cb.C:378
+#: src/lyx_cb.C:379
 #, c-format
 msgid ""
 "Could not open the specified document\n"
@@ -12301,37 +12307,37 @@ msgstr ""
 "%1$s\n"
 "בעטיה של השגיאה: %2$s"
 
-#: src/lyx_cb.C:380 src/output.C:41
+#: src/lyx_cb.C:381 src/output.C:41
 msgid "Could not open file"
 msgstr "לא יכול לפתוח את הקובץ"
 
-#: src/lyx_cb.C:410
+#: src/lyx_cb.C:411
 #, fuzzy
 msgid "Running configure..."
 msgstr "הגדרות החדק"
 
-#: src/lyx_cb.C:419
+#: src/lyx_cb.C:420
 msgid "Reloading configuration..."
 msgstr "טוען מחדש הגדרות..."
 
-#: src/lyx_cb.C:424
+#: src/lyx_cb.C:425
 #, fuzzy
 msgid "System reconfigured"
 msgstr "מערכת קבצים"
 
-#: src/lyx_cb.C:425
+#: src/lyx_cb.C:426
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:130
+#: src/lyx_main.C:129
 #, fuzzy
 msgid "Could not read configuration file"
 msgstr "Could not save configuration file.\n"
 
-#: src/lyx_main.C:131
+#: src/lyx_main.C:130
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -12339,39 +12345,39 @@ msgid ""
 "Please check your installation."
 msgstr ""
 
-#: src/lyx_main.C:140
+#: src/lyx_main.C:139
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/lyx_main.C:144
+#: src/lyx_main.C:143
 msgid "Done!"
 msgstr "בוצע!"
 
-#: src/lyx_main.C:500
+#: src/lyx_main.C:490
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "לא מסוגל להסיר את התיקייה הזמנית %1$s"
 
-#: src/lyx_main.C:502
+#: src/lyx_main.C:492
 msgid "Unable to remove temporary directory"
 msgstr "לא מסוגל להסיר את התיקייה הזמנית"
 
-#: src/lyx_main.C:538
+#: src/lyx_main.C:528
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:794
+#: src/lyx_main.C:784
 msgid "LyX: "
 msgstr "LyX:"
 
-#: src/lyx_main.C:923
+#: src/lyx_main.C:913
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Could not create gnome accelerators directory `%s': %s\n"
 
-#: src/lyx_main.C:924
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12379,52 +12385,52 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1091
+#: src/lyx_main.C:1081
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1082
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:1097
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Create directory"
 msgstr "`%s' היקית תריציב (%s) הלקת"
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1088
 msgid "&Exit LyX"
 msgstr "צא מ- LyX"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1089
 #, fuzzy
 msgid "No user LyX directory. Exiting."
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/lyx_main.C:1103
+#: src/lyx_main.C:1093
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "שגיאה ביצירת התיקייה '%s': %s"
 
-#: src/lyx_main.C:1109
+#: src/lyx_main.C:1099
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Failed to remove lock directory `%s': %s"
 
-#: src/lyx_main.C:1282
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1276
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "תואיגש יופינל עדימ לש `%s' רכומ-יתלב ןייפאמ"
 
-#: src/lyx_main.C:1297
+#: src/lyx_main.C:1287
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12446,43 +12452,43 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:1333 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr ""
 ".תמייק הניא `%s' היקית\n"
 "\n"
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1324
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "אין מידע עבור משתמש זה"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1335
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1345
 msgid "Incomplete command"
 msgstr "פקודה לא שלמה"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1346
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/lyx_main.C:1366
+#: src/lyx_main.C:1356
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/lyx_main.C:1378
+#: src/lyx_main.C:1368
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/lyx_main.C:1383
+#: src/lyx_main.C:1373
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "חסר תוסף הפרוטוקול עבור %s"
@@ -13243,6 +13249,11 @@ msgstr ""
 #: src/mathed/InsetMathNest.C:861
 msgid "entered math text mode (textrm)"
 msgstr ""
+
+#: src/mathed/MathMacroTemplate.C:225
+#, fuzzy
+msgid "math macro"
+msgstr "Background color"
 
 #: src/output.C:39
 #, fuzzy, c-format
