@@ -92,13 +92,6 @@ public:
 	virtual int text(int x, int y,
 		lyx::docstring const & str, LyXFont const & f);
 
-	/** Draw a string at position x, y (y is the baseline)
-	 *  This is just for fast drawing
-	 */
-	virtual int text(int x, int y,
-                lyx::char_type const * str, size_t l,
-		LyXFont const & f);
-
 	/// draw a char at position x, y (y is the baseline)
 	virtual int text(int x, int y,
                 lyx::char_type c, LyXFont const & f);

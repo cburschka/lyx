@@ -170,16 +170,10 @@ void QLPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 }
 
 
-int QLPainter::text(int x, int y, docstring const & s, LyXFont const & f)
-{
-	 return text(x, y, reinterpret_cast<char_type const *>(s.data()), s.length(), f);
-}
-
-
 int QLPainter::text(int x, int y, char_type c, LyXFont const & f)
 {
-	char_type s[2] = { c, char_type('\0') };
-	return text(x, y, s, 1, f);
+	docstring s(c, 1);
+	return text(x, y, s, f);
 }
 
 
@@ -210,15 +204,10 @@ int QLPainter::smallCapsText(int x, int y,
 }
 
 
-int QLPainter::text(int x, int y, char_type const * s, size_t ls,
-	LyXFont const & f)
+int QLPainter::text(int x, int y, docstring const & s,
+		LyXFont const & f)
 {
-	// Caution: The following ucs4_to_qstring conversion works for
-	// symbol fonts only because it is no real conversion but a simple
-	// cast in reality.
-
-	QString str;
-	ucs4_to_qstring(s, ls, str);
+	QString str = toqstr(s);
 
 #if 0
 	// HACK: QT3 refuses to show single compose characters
@@ -246,7 +235,7 @@ int QLPainter::text(int x, int y, char_type const * s, size_t ls,
 			// same as that of a soft-hyphen (0x00ad), unless it
 			// occurs at a line-break. As a kludge, we force Qt to
 			// render this glyph using a one-column line.
-			if (ls == 1 && str[0].unicode() == 0x00ad) {
+			if (s.size() == 1 && str[0].unicode() == 0x00ad) {
 				QTextLayout adsymbol(str);
 				adsymbol.setFont(fi.font);
 				adsymbol.beginLayout();

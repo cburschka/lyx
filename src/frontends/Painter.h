@@ -135,14 +135,6 @@ public:
 	void setDrawingEnabled(bool drawing_enabled = true)
 	{ drawing_enabled_ = drawing_enabled; }
 
-	/**
-	 * Draw a string at position x, y (y is the baseline)
-	 * This is just for fast drawing
-	 * \return the width of the drawn text.
-	 */
-	virtual int text(int x, int y,
-		char_type const * str, size_t l, LyXFont const & f) = 0;
-
 	/// draw a char at position x, y (y is the baseline)
 	/**
 	* \return the width of the drawn text.

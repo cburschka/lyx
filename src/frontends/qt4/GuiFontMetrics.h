@@ -40,7 +40,7 @@ public:
 	virtual int descent(char_type c) const;
 	virtual int lbearing(char_type c) const;
 	virtual int rbearing(char_type c) const;
-	virtual int width(char_type const * s, size_t n) const;
+	virtual int width(docstring const & s) const;
 	virtual int signedWidth(docstring const & s) const;
 	virtual Dimension const dimension(char_type c) const;
 

@@ -301,6 +301,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos, LyXFont const & font)
 	pain_.text(int(x_) + dx, yo_, str, font);
 }
 
+
 void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 			    bool hebrew, bool arabic)
 {
@@ -346,6 +347,8 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 		str.push_back(c);
 	}
 
+	docstring s(&str[0], str.size());
+
 	if (prev_change != Change::UNCHANGED) {
 		LyXFont copy(font);
 		if (prev_change == Change::DELETED) {
@@ -353,9 +356,9 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 		} else if (prev_change == Change::INSERTED) {
 			copy.setColor(LColor::newtext);
 		}
-		x_ += pain_.text(int(x_), yo_, &str[0], str.size(), copy);
+		x_ += pain_.text(int(x_), yo_, s, copy);
 	} else {
-		x_ += pain_.text(int(x_), yo_, &str[0], str.size(), font);
+		x_ += pain_.text(int(x_), yo_, s, font);
 	}
 }
 

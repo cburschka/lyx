@@ -74,7 +74,7 @@ public:
 	/// return the right bearing of the char in the font
 	virtual int rbearing(char_type c) const = 0;
 	/// return the width of the string in the font
-	virtual int width(char_type const * s, size_t n) const = 0;
+	virtual int width(docstring const & s) const = 0;
 	/// FIXME ??
 	virtual int signedWidth(docstring const & s) const = 0;
 	/// return char dimension for the font.
@@ -110,12 +110,6 @@ public:
 	/// return the inner width of the char in the font
 	inline int center(char_type c) const {
 		return (rbearing(c) - lbearing(c)) / 2;
-	}
-
-	/// return the width of the string in the font
-	inline int width(docstring const & s) const
-	{
-	    return s.empty() ? 0 : width(s.data(), s.length());
 	}
 };
 

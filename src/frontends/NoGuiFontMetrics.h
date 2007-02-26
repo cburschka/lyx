@@ -45,13 +45,13 @@ public:
 	
 	virtual int rbearing(char_type) const { return 1; }
 	
-	virtual int width(char_type const *, size_t n) const { return n; }
+	virtual int width(docstring const & s) const { return s.size(); }
 	
 	virtual int signedWidth(docstring const & s) const
 	{
 		if (s.size() && s[0] == '-')
-			return -FontMetrics::width(s.substr(1, s.length() - 1));
-		return FontMetrics::width(s);
+			return -width(s.substr(1, s.length() - 1));
+		return width(s);
 	}
 	
 	virtual Dimension const dimension(char_type) const { return Dimension(1, 1, 1); }

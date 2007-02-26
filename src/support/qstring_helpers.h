@@ -104,21 +104,6 @@ QString const toqstr(docstring const & ucs4);
 
 
 /**
- * ucs4_to_qstring - convert a UCS4 encoded char_type * into a QString
- *
- * This is a hack for the painter and font metrics and should not be used
- * elsewhere. Since it uses ucs4_to_qchar it has the same limitations.
- */
-inline void ucs4_to_qstring(char_type const * str, size_t ls, QString & s)
-{
-	int i = static_cast<int>(ls);
-	s.resize(i);
-	for (; --i >= 0;)
-		s[i] = ucs4_to_qchar(str[i]);
-}
-
-
-/**
  * qstring_to_ucs4 - convert a QString into a UCS4 encoded docstring
  *
  * This is the preferred method of converting anything that possibly

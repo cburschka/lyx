@@ -82,21 +82,18 @@ int GuiFontMetrics::smallcapsWidth(QString const & s) const
 }
 
 
-int GuiFontMetrics::width(char_type const * s, size_t ls) const
+int GuiFontMetrics::width(docstring const & s) const
 {
-	// Caution: The following ucs4_to_something conversions work for
-	// symbol fonts only because they are no real conversions but simple
-	// casts in reality.
+	size_t ls = s.size();
+	if (ls == 0)
+		return 0;
 
 	if (ls == 1 && !smallcaps_shape_) {
 		return width(s[0]);
 	}
 
-	if (smallcaps_shape_) {
-		QString ucs2;
-		ucs4_to_qstring(s, ls, ucs2);
-		return smallcapsWidth(ucs2);
-	}
+	if (smallcaps_shape_)
+		return smallcapsWidth(toqstr(s));
 
 	int w = 0;
 	for (unsigned int i = 0; i < ls; ++i)
@@ -130,9 +127,9 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 		return 0;
 
 	if (s[0] == '-')
-		return -width(&(s[1]), s.length() - 1);
+		return -width(s.substr(1, s.size() - 1));
 	else
-		return FontMetrics::width(s);
+		return width(s);
 }
 
 
@@ -140,7 +137,7 @@ void GuiFontMetrics::rectText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
 	static int const d = 2;
-	w = FontMetrics::width(str) + d * 2 + 2;
+	w = width(str) + d * 2 + 2;
 	ascent = metrics_.ascent() + d;
 	descent = metrics_.descent() + d;
 }
@@ -151,7 +148,7 @@ void GuiFontMetrics::buttonText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
 	static int const d = 3;
-	w = FontMetrics::width(str) + d * 2 + 2;
+	w = width(str) + d * 2 + 2;
 	ascent = metrics_.ascent() + d;
 	descent = metrics_.descent() + d;
 }
