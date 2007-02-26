@@ -397,7 +397,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 		filename = filename_;
 
 	docstring const displayed_filename = makeDisplayPath(filename_.absFilename());
-	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
+	lyxerr[Debug::GRAPHICS] << "[graphics::CacheItem::Impl::convertToDisplayFormat]\n"
 		<< "\tAttempting to convert image file: " << filename
 		<< "\n\twith displayed filename: " << lyx::to_utf8(displayed_filename)
 		<< endl;
