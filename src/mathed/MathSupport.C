@@ -386,7 +386,7 @@ void mathed_string_dim(LyXFont const & font,
 		dim.asc = max(dim.asc, fm.ascent(*it));
 		dim.des = max(dim.des, fm.descent(*it));
 	}
-	dim.wid = fm.width(&s[0], s.size());
+	dim.wid = fm.width(s);
 }
 
 
