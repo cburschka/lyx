@@ -167,14 +167,19 @@ string const DocFileName::mangledFilename(std::string const & dir) const
 	string mname = os::internal_path(name_);
 	// Remove the extension.
 	mname = changeExtension(name_, string());
-	// Replace '/' in the file name with '_'
-	mname = subst(mname, "/", "_");
-	// Replace '.' in the file name with '_'
-	mname = subst(mname, ".", "_");
-	// Replace ' ' in the file name with '_'
-	mname = subst(mname, " ", "_");
-	// Replace ':' in the file name with '_'
-	mname = subst(mname, ":", "_");
+	// The mangled name must be a valid LaTeX name.
+	// The list of characters to keep is probably over-restrictive,
+	// but it is not really a problem.
+	// Apart from non-ASCII characters, at least the following characters
+	// are forbidden: '/', '.', ' ', and ':'.
+	// On windows it is not possible to create files with '<', '>' or '?'
+	// in the name.
+	static string const keep = "abcdefghijklmnopqrstuvwxyz"
+	                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	                           "+,-0123456789;=";
+	string::size_type pos = 0;
+	while ((pos = mname.find_first_not_of(keep, pos)) != string::npos)
+		mname[pos++] = '_';
 	// Add the extension back on
 	mname = changeExtension(mname, getExtension(name_));
 
