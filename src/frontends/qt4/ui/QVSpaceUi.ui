@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QVSpaceUi</class>
  <widget class="QDialog" name="QVSpaceUi" >
   <property name="geometry" >
@@ -116,7 +113,7 @@
     </widget>
    </item>
    <item row="1" column="2" >
-    <widget class="LengthCombo" name="unitCO" />
+    <widget class="LengthCombo" native="1" name="unitCO" />
    </item>
    <item row="3" column="1" >
     <spacer>
@@ -211,27 +208,25 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <customwidgets>
   <customwidget>
    <class>LengthCombo</class>
    <extends>QWidget</extends>
    <header>lengthcombo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>spacingCO</tabstop>
   <tabstop>valueLE</tabstop>
-  <tabstop>keepCB</tabstop>
+  <tabstop>unitCO</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
+  <tabstop>keepCB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>
