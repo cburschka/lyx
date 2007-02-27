@@ -195,6 +195,8 @@ void QLMenubar::macxMenuBarInit()
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences", 
 		 QAction::PreferencesRole},
+		{LFUN_RECONFIGURE, "", "Reconfigure", 
+		 QAction::ApplicationSpecificRole},
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(MacMenuEntry);
