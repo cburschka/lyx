@@ -2136,6 +2136,7 @@ int LyXTabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 			os << "\\addlinespace\n";
 		else
 			os << "\\noalign{\\vskip\\doublerulesep}\n";
+		++ret;
 	} else if(!row_info[i].top_space.zero()) {
 		if (use_booktabs)
 			os << "\\addlinespace["
@@ -2193,6 +2194,7 @@ int LyXTabular::TeXRow(odocstream & os, row_type i, Buffer const & buf,
 			os << "\\addlinespace\n";
 		else
 			os << "\\noalign{\\vskip\\doublerulesep}\n";
+		++ret;
 	} else if (!row_info[i].interline_space.zero()) {
 		if (use_booktabs)
 			os << "\\addlinespace["
