@@ -19,14 +19,14 @@ also included.
 !insertmacro GetParameters
 ${StrStr}
 
-!include "..\packaging\installer\settings.nsh" ;Version info from installer
+!include "..\packaging\installer\settings.nsh" #Version info from installer
 
 Caption "${APP_NAME} ${APP_VERSION}"
 OutFile lyx.exe
 BrandingText " "
 
-;--------------------------------
-;Variables
+#--------------------------------
+#Variables
 
 Var Parameters
 Var Debug
@@ -35,8 +35,8 @@ Var ReturnValue
 Var ResultText
 Var ResultSubText
 
-;--------------------------------
-;User interface for debug output
+#--------------------------------
+#User interface for debug output
 
 !define MUI_ICON "..\packaging\icons\lyx_32x32.ico"
 !define MUI_CUSTOMFUNCTION_GUIINIT InitInterface
@@ -49,8 +49,8 @@ Var ResultSubText
 
 ShowInstDetails show
 
-;--------------------------------
-;Windows API constants
+#--------------------------------
+#Windows API constants
 
 !define SWP_NOSIZE 0x1
 !define MONITOR_DEFAULTTONEAREST 0x2
@@ -59,8 +59,8 @@ ShowInstDetails show
 !define SM_CXSIZEFRAME 32
 !define SM_CYSIZEFRAME 33
 
-;--------------------------------
-;Version information
+#--------------------------------
+#Version information
 
 VIProductVersion "${APP_VERSION_NUMBER}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
@@ -68,8 +68,8 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
-;--------------------------------
-;Macros
+#--------------------------------
+#Macros
 
 !macro SystemCall STACK
 
@@ -86,8 +86,8 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
 
 !macroend
 
-;--------------------------------
-;Main application
+#--------------------------------
+#Main application
 
 Section -Prepare
 
@@ -95,35 +95,35 @@ Section -Prepare
     HideWindow
   ${endif}
   
-  ;Hide controls we don't need
+  #Hide controls we don't need
   FindWindow $R0 "#32770" "" $HWNDPARENT
   GetDlgItem $R0 $R0 1004
   ShowWindow $R0 ${SW_HIDE}  
   
-  ;Debug info
+  #Debug info
   !insertmacro MUI_HEADER_TEXT "Debugging LyX" "The events you have chosen \
       are being logged."
   SetDetailsPrint textonly
   DetailPrint "Debug log:"
   SetDetailsPrint listonly
   
-  ;LyX Language
+  #LyX Language
   !insertmacro GetLyXSetting "Language" $LyXLanguage
   
-  ;Set language for gettext
+  #Set language for gettext
   ${if} $LyXLanguage != ""
     Push LC_ALL
     Push $LyXLanguage
     Call SetEnvironmentVariable
   ${endif}
   
-  ;Apparently the output charset needs to be set to some value,
-  ;otherwise no non-ASCII characters will be displayed
+  #Apparently the output charset needs to be set to some value,
+  #otherwise no non-ASCII characters will be displayed
   Push OUTPUT_CHARSET
   Push -
   Call SetEnvironmentVariable
   
-  ;Point to the Aiksaurus data in the LyX folder
+  #Point to the Aiksaurus data in the LyX folder
   Push AIK_DATA_DIR
   Push "$EXEDIR\..\aiksaurus"
   Call SetEnvironmentVariable
@@ -132,11 +132,11 @@ SectionEnd
 
 Section -Launch
   
-  ;Start LyX and capture the command line output
+  #Start LyX and capture the command line output
   
   Push '"$EXEDIR\lyxc.exe" $Parameters'
   CallInstDLL "$EXEDIR\Console.dll" ExecToLog
-  Pop $ReturnValue ;Return value
+  Pop $ReturnValue #Return value
   
 SectionEnd
 
@@ -144,16 +144,16 @@ Section -Debug
   
   ${if} $Debug == ${FALSE}
   
-    ;Check whether something went wrong
+    #Check whether something went wrong
     
     ${if} $ReturnValue == "error"
   
-      ;Probably the file does not exist
+      #Probably the file does not exist
       MessageBox MB_OK|MB_ICONSTOP "Failed to start LyX."
     
     ${elseif} $ReturnValue != 0
     
-      ;LyX has crashed
+      #LyX has crashed
       MessageBox MB_YESNO|MB_ICONSTOP \
           "LyX has been closed because of an unexpected situation.$\n\
           This is most likely caused by a flaw in the software.$\n$\n\
@@ -189,7 +189,7 @@ Section -Debug
   
   ${if} $Debug == ${FALSE}
 
-    ;Put the log window on the screen again
+    #Put the log window on the screen again
     Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i 133, i 100, i 0, i 0, i ${SWP_NOSIZE})"
     CallInstDLL "$EXEDIR\System.dll" Call
     BringToFront
@@ -199,16 +199,16 @@ Section -Debug
 SectionEnd
 
 
-;--------------------------------
-;Functions
+#--------------------------------
+#Functions
 
 Function InitInterface
   
-  ;Command line parameters
+  #Command line parameters
   Call GetParameters
   Pop $Parameters
   
-  ;Check for debug mode
+  #Check for debug mode
   ${StrStr} $R0 $Parameters "-dbg"
   
   ${if} $R0 == ""
@@ -219,7 +219,7 @@ Function InitInterface
   
   ${if} $Debug == ${FALSE}
 
-    ;Keep the log window outside the screen to ensure that there will be no flickering
+    #Keep the log window outside the screen to ensure that there will be no flickering
     Push "user32::SetWindowPos(i $HWNDPARENT, i 0, i -32000, i -32000, i 0, i 0, i ${SWP_NOSIZE})"
     CallInstDLL "$EXEDIR\System.dll" Call
   
@@ -229,8 +229,8 @@ FunctionEnd
 
 Function GetLyXSetting
 
-  ;Get a LyX setting from the registry
-  ;First try a current user setting, then a system setting
+  #Get a LyX setting from the registry
+  #First try a current user setting, then a system setting
 
   Exch $R0
   Push $R1
@@ -249,8 +249,8 @@ FunctionEnd
 
 Function SetEnvironmentVariable
 
-  ;Sets the value of an environment variable
-  ;Input on stack: name of variable, value
+  #Sets the value of an environment variable
+  #Input on stack: name of variable, value
 
   Exch $R0
   Exch 1
