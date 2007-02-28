@@ -53,6 +53,8 @@ QSearchDialog::QSearchDialog(QSearch * form)
     connect( replacePB, SIGNAL( clicked() ), this, SLOT( replaceClicked() ) );
     connect( replaceallPB, SIGNAL( clicked() ), this, SLOT( replaceallClicked() ) );
     connect( findCO, SIGNAL( editTextChanged(const QString&) ), this, SLOT( findChanged() ) );
+
+	setFocusProxy(findCO);
 }
 
 
