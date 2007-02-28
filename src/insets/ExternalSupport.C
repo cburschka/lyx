@@ -240,14 +240,6 @@ void updateExternal(InsetExternalParams const & params,
 	if (to_format.empty())
 		return; // NOT_NEEDED
 
-	if (!theConverters().isReachable(from_format, to_format)) {
-		lyxerr[Debug::EXTERNAL]
-			<< "external::updateExternal. "
-			<< "Unable to convert from "
-			<< from_format << " to " << to_format << endl;
-		return; // FAILURE
-	}
-
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
 	Buffer const * m_buffer = buffer.getMasterBuffer();
@@ -319,10 +311,17 @@ void updateExternal(InsetExternalParams const & params,
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	/* bool const success = */
+	bool const success =
 		theConverters().convert(&buffer, temp_file, abs_to_file,
 		                   params.filename, from_format, to_format, el,
 		                   Converters::try_default | Converters::try_cache);
+
+	if (!success)
+		lyxerr[Debug::EXTERNAL]
+			<< "external::updateExternal. "
+			<< "Unable to convert from "
+			<< from_format << " to " << to_format << endl;
+
 	// return success
 }
 
