@@ -1,5 +1,5 @@
-#LyX 1.5.0svn, 5. 2. 2007 created this file. For more info see http://www.lyx.org/
-\lyxformat 258
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -36,8 +36,9 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
-\author "Hartmut Haas" hha4491@atomstromfrei.de
+\output_changes false
+\author "usti" 
+\author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
 \begin_body
@@ -81,7 +82,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 6.
+letzte Änderung: 28.
  Februar 2007
 \end_layout
 
@@ -108,18 +109,14 @@ Hartmut
 \noun on
 Haase
 \noun default
-: Weil das Aussehen von Version 1.5.x
-\family typewriter
- 
-\family default
-im Vergleich zu den Vorgängerversionen stark verändert wurde, habe ich womöglich
- nicht alles richtig dokumentiert.
+: Weil das Aussehen von Version 1.5.x im Vergleich zu den Vorgängerversionen
+ stark verändert wurde, habe ich womöglich nicht alles richtig dokumentiert.
  Wenn Sie Anmerkungen oder Korrekturvorschläge machen wollen, schreiben
  Sie bitte an: 
 \family typewriter
-lyx-docs@lists.lyx.org 
+lyx-docs@lists.lyx.org
 \family default
-oder direkt an mich.
+ oder direkt an mich.
  Meine ePost-Adresse finden Sie unter 
 \family sans
 \bar under
@@ -1019,9 +1016,9 @@ lyx-users@lists.lyx.org
  erreichen können.
  Außerdem könnten Sie bei 
 \family typewriter
-http://wiki.lyx.org/ 
+http://wiki.lyx.org/
 \family default
-vorbeischauen.
+ vorbeischauen.
 \end_layout
 
 \begin_layout Section
@@ -1109,11 +1106,7 @@ Gehe zur Marke
 \family sans
 Strg+<
 \family default
- oder einen Mausklick auf
-\family sans
- 
-\family default
-die Schaltfläche 
+ oder einen Mausklick auf die Schaltfläche 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1202,13 +1195,13 @@ Benutzerhandbuches
 \family sans
 Strg
 \family default
-,
+, 
 \family sans
- Umschalt
+Umschalt
 \family default
- und
+ und 
 \family sans
- Alt
+Alt
 \family default
  werden in den Menüs für Tastenkürzel benutzt.
 \end_layout
@@ -1486,9 +1479,8 @@ dos, zusätzliche Layouts und
 \begin_layout Description
 
 \emph on
-Einfügungen\InsetSpace ~
-(Embedded\InsetSpace ~
-Objects) \InsetSpace ~
+Eingebettete\InsetSpace ~
+Objekte \InsetSpace ~
 
 \newline
 
@@ -1599,11 +1591,17 @@ Wenn Sie LyX das erste Mal verwenden, sollten Sie
 \size larger
 jetzt
 \size default
- das 
+ das
+\series default
+ 
+\series bold
 \emph on
 Tutorium
+\series default
 \emph default
- lesen!
+ 
+\series bold
+lesen!
 \end_layout
 
 \begin_layout Standard
@@ -1742,9 +1740,9 @@ gdb
 
 
 \family typewriter
-gdb 
+gdb
 \family default
-
+ 
 \begin_inset LatexCommand url
 target "/usr/src/lyx-1.4.0/src/lyx"
 

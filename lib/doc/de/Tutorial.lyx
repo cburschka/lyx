@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 262
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -40,6 +40,7 @@
 \paperpagestyle headings
 \tracking_changes false
 \output_changes false
+\author "usti" 
 \author "Hartmut Haase" hha4491@atomstromfrei.de
 \end_header
 
@@ -80,7 +81,7 @@ Peter Sütterlin
 \end_layout
 
 \begin_layout Date
-letzte Änderung: 23.
+letzte Änderung: 28.
  Februar 2007
 \end_layout
 
@@ -94,6 +95,48 @@ letzte Änderung: 23.
 
 \begin_layout Chapter
 Einleitung
+\end_layout
+
+\begin_layout Section*
+Vorbemerkung
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+HHa
+\noun default
+: Ich habe ab dieser Version alle Unterstreichnungen von Menü-Befehlen weggelass
+en, weil es zu mühsam ist, die Änderungen während der Weiterentwicklung
+ immer wieder nachzuvollziehen.
+ Ein befehl sieht jetzt so aus: 
+\family sans
+Ansicht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Werkzeugleisten
+\family default
+ an Stelle von 
+\family sans
+Ans
+\bar under
+i
+\bar default
+cht
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+\bar under
+W
+\bar default
+erkzeugleisten
+\family default
+.
+ Wenn sie mit Tastenkürzeln arbeiten wollen, können Sie sich die unterstrichenen
+ Buchstaben merken, wenn Sie einen Menü-Befehl aufrufen.
 \end_layout
 
 \begin_layout Section
@@ -489,7 +532,7 @@ dvips
 \end_layout
 
 \begin_layout Subsubsection*
-beispiel_roh.lyx und beispiel_gelyxt.lyx
+de_beispiel_roh.lyx und de_beispiel_gelyxt.lyx
 \end_layout
 
 \begin_layout Standard
@@ -497,7 +540,7 @@ Und zum Schluss: Wir haben eine Datei erstellt, anhand der Sie den Umgang
  mit LyX üben können.
  Sie heißt 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
 .
  Stellen Sie sich vor, diese Datei hätte jemand geschrieben, der keine Ahnung
@@ -505,7 +548,7 @@ beispiel_roh.lyx
  Immer wenn Sie neue Funktionen von LyX kennenlernen, werden Sie aufgefordert,
  die entsprechenden Abschnitte in 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
  zu korrigieren.
  Außerdem enthält die Datei auch Hinweise und Tipps, wie diese Korrektur
@@ -526,7 +569,7 @@ Notizen
 
  Überprüfen können Sie Ihre Arbeit anhand der Datei 
 \family typewriter
-beispiel_gelyxt.lyx
+de_beispiel_gelyxt.lyx
 \family default
 .
  Sie enthält denselben Text, diesmal aber von einem LyX-Profi geschrieben.
@@ -541,37 +584,20 @@ examples
 ses.
  Sie finden es im Menü 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-Ö
-\bar default
-ffnen\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Öffnen\SpecialChar \ldots{}
 ,
 \family default
  wenn Sie auf den Knopf 
 \family sans
-\bar under
-B
-\bar default
-eispiele
+Beispiele
 \family default
  klicken.
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Speichern\InsetSpace ~
-
-\bar under
-u
-\bar default
-nter
+unter
 \family default
 \SpecialChar \ldots{}
 , um eine editierbare Kopie in Ihrem privaten LyX-Verzeichnis anzulegen.
@@ -602,15 +628,8 @@ Eingabe, Betrachten und Drucken
 \begin_layout Itemize
 Öffnen Sie ein neue Datei mit 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-N
-\bar default
-eu.
+Datei\SpecialChar \menuseparator
+Neu.
 \end_layout
 
 \begin_layout Itemize
@@ -636,16 +655,13 @@ k., der Satz ist ziemlich dumm.
 \begin_layout Itemize
 Speichern Sie den Text: 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Speichern
 \bar under
 \InsetSpace \space{}
-u
+
 \bar default
-nter\SpecialChar \ldots{}
+unter\SpecialChar \ldots{}
 
 \end_layout
 
@@ -656,16 +672,8 @@ dvi
 \family default
 -Datei zu erzeugen: 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ansicht\SpecialChar \menuseparator
+DVI
 \family default
 \SpecialChar \@.
  Falls Sie LyX von einem anderen Fenster aus gestartet haben, können Sie
@@ -690,21 +698,9 @@ xdvi
  dann im Hintergrund weiterlaufen lassen.
  Sie können dann den Menüpunkt 
 \family sans
-Ans
-\bar under
-i
-\bar default
-cht\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-ktualisieren\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-VI
+Ansicht\SpecialChar \menuseparator
+Aktualisieren\SpecialChar \menuseparator
+DVI
 \family default
  wählen und, nachdem LaTeX beendet ist, in das 
 \family typewriter
@@ -722,23 +718,13 @@ es de-ikonifizieren), um die neue Version zu sehen.
 \begin_layout Itemize
 Drucken Sie den Text aus: 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-D
-\bar default
-rucken\SpecialChar \ldots{}
+Datei\SpecialChar \menuseparator
+Drucken\SpecialChar \ldots{}
 
 \family default
  und dann auf 
 \family sans
-\bar under
-D
-\bar default
-rucken
+Drucken
 \family default
  klicken.
 \end_layout
@@ -780,29 +766,15 @@ Selbstverständlich beherrscht LyX auch die meisten Dinge, die Sie von anderen
 Rückgängig LyX unterstützt mehrfaches Rückgängigmachen.
  Dies bedeutet, Sie können durch die wiederholte Auswahl von 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-ückgängig
+Bearbeiten\SpecialChar \menuseparator
+Rückgängig
 \family default
  alles, was Sie seit dem Öffnen des Dokumentes verändert haben, zurücknehmen.
  Falls Sie dabei einen oder mehrere Schritte zuviel tun -- kein Problem.
  
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-W
-\bar default
-iederholen
+Bearbeiten\SpecialChar \menuseparator
+Wiederholen
 \family default
  macht das Rückgängigmachen wieder ungeschehen.
 \end_layout
@@ -821,10 +793,7 @@ alle
 \begin_layout Description
 Ausschneiden/Kopieren/Einfügen Benutzen Sie die Menüpunkte 
 \family sans
-\bar under
-B
-\bar default
-ear\SpecialChar \-
+Bear\SpecialChar \-
 beiten\SpecialChar \menuseparator
 Aus\SpecialChar \-
 schnei\SpecialChar \-
@@ -832,18 +801,12 @@ den,
 \family default
  
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar \menuseparator
 Kopieren
 \family default
  und 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar \menuseparator
 Einfügen
 \family default
 , um markierten Text zu bearbeiten.
@@ -857,15 +820,8 @@ mittlere
 \begin_layout Description
 Suchen/Ersetzen Über den Menüpunkt 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-S
-\bar default
-uchen\InsetSpace ~
+Bearbeiten\SpecialChar \menuseparator
+Suchen\InsetSpace ~
 &\InsetSpace ~
 Ersetzen\SpecialChar \ldots{}
 
@@ -885,33 +841,20 @@ Sie können das Dialogfenster nach getaner Arbeit wieder schließen.
  geschoben werden können, ohne sie zu schließen.
  Dazu gehören unter anderem 
 \family sans
-\bar under
-S
-\bar default
-uchen\InsetSpace ~
+Suchen\InsetSpace ~
 &\InsetSpace ~
 Ersetzen\SpecialChar \ldots{}
 
 \family default
  und 
 \family sans
-\bar under
-I
-\bar default
-nhaltsverzeichnis
+Inhaltsverzeichnis
 \family default
 .
  Im Gegensatz dazu blockieren Dialoge wie 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-Ö
-\bar default
-ffnen
+Datei\SpecialChar \menuseparator
+iffnen
 \family default
  die Texteingabe im Hauptfenster von LyX, bis sie wieder geschlossen werden.
 \end_layout
@@ -924,24 +867,18 @@ ffnen
 \begin_layout Description
 Zeichensatzattribute Über die Schalter im Menü 
 \family sans
-\bar under
-B
-\bar default
-earbeiten
+Bearbeiten
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-T
-\bar default
-extstil
+Textstil
 \family default
  oder einen Klick auf 
 \begin_inset Graphics
 	filename ../../images/dialog-show_character.xpm
 	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
+	BoundingBox 0bp 2bp 20bp 20bp
 
 \end_inset
 
@@ -966,17 +903,11 @@ Werkzeugleisten Die Schalterleisten unterhalb der Menüleiste bezeichnet
  Diese Schalter erlauben es Ihnen, oft verwendete Funktionen wie zum Beispiel
  
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
  oder 
 \family sans
-\bar under
-D
-\bar default
-rucken
+Drucken
 \family default
  einfach anzuklicken.
  Wenn Sie den Mauszeiger eine kurze Zeit unbewegt über einen solchen Schalter
@@ -1252,10 +1183,7 @@ Derartige Umgebungen bilden den Hauptteil des WYSIWYM-Konzeptes von LyX.
 \begin_layout Standard
 Ganz links in der ersten Werkzeugleiste, direkt unterhalb des Menüs 
 \family sans
-\bar under
-D
-\bar default
-atei
+Datei
 \family default
 , wird in einem kleinen Feld angegeben, in welchem Umgebungstyp Sie sich
  gerade befinden.
@@ -1646,7 +1574,7 @@ Unterunterabschn
  Korrigieren Sie die Überschriften der Abschnitte und Unterabschnitte in
  der Datei 
 \begin_inset LatexCommand url
-target "de/beispiel_roh.lyx"
+target "de_beispiel_roh.lyx"
 
 \end_inset
 
@@ -1883,7 +1811,7 @@ Strg+Leertaste
 \series default
 : Setzen Sie die Beispielliste in 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -2000,7 +1928,7 @@ Verse
 \family default
  in der Datei 
 \family typewriter
-bei\SpecialChar \-
+de_bei\SpecialChar \-
 spiel_roh.lyx
 \family default
  richtig.
@@ -2079,16 +2007,8 @@ status open
 Dies ist normalerweise die Standardeinstellung von LyX, Sie können das aber
  (über den Dialog 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen
+Dokument\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 
@@ -2110,16 +2030,8 @@ preferences
  Versuchen Sie doch einfach einmal, es in eine andere Dokumentklasse umzuwandeln
  (im Menü 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen
+Dokument\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
@@ -2377,16 +2289,8 @@ letter
  Eine Möglichkeit, einen Brief zu schreiben, wäre natürlich, zunächst ein
  neues Dokument zu öffnen und dann über den Dialog 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-instellungen
+Dokument\SpecialChar \menuseparator
+Einstellungen
 \family default
 \SpecialChar \ldots{}
 \SpecialChar \menuseparator
@@ -2431,17 +2335,10 @@ Vorlage
 \begin_layout Standard
 Öffnen Sie eine neue Datei über den Menüpunkt 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Neu\InsetSpace ~
 von\InsetSpace ~
-
-\bar under
-V
-\bar default
-orlage
+Vorlage
 \family default
 \SpecialChar \ldots{}
  Nachdem Sie einen Namen für Ihren Brief eingegeben haben, wählen Sie den
@@ -2613,7 +2510,7 @@ Zusammenfassung
 \series default
 : Bringen Sie in der Beispieldatei 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
  Überschrift, Autorenname und Datum in die korrekte Form.
 \end_layout
@@ -2659,15 +2556,8 @@ Was das Tutorium ist\SpecialChar \ldots{}
  Positionieren Sie dazu den Cursor an das Ende der Überschrift und öffnen
  Sie dann das Menü 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-M
-\bar under
-a
-\bar default
-rke\SpecialChar \ldots{}
+Einfügen\SpecialChar \menuseparator
+Marke\SpecialChar \ldots{}
 
 \begin_inset Foot
 status open
@@ -2677,25 +2567,15 @@ Falls Sie diesen Text direkt über das Hilfe-Menü von LyX geöffnet haben,
  lesen Sie die schreibgeschützte Originalversion.
  In diesem Fall können Sie im Menü 
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
  keine Auswahl treffen.
  Speichern Sie zunächst das Dokument in einem eigenen Verzeichnis (Menü
  
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
+Datei\SpecialChar \menuseparator
 Speichern\InsetSpace ~
-
-\bar under
-u
-\bar default
-nter
+unter
 \family default
 \SpecialChar \ldots{}
 ) und öffnen Sie dann diese Kopie.
@@ -2738,10 +2618,7 @@ sec:
 mit Marken versehen werden.
  Klicken Sie nun auf 
 \family sans
-\bar under
-O
-\bar default
-K
+OK
 \family default
 , und der Name der Marke wird in einer grau unterlegten Schaltfläche neben
  der Überschrift erscheinen.
@@ -2791,15 +2668,8 @@ Abschnitt
 \emph default
 vor dem Punkt befinden) den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-Q
-\bar default
-uerverweis
+Einfügen\SpecialChar \menuseparator
+Querverweis
 \family default
 \SpecialChar \ldots{}
  Es öffnet sich ein Auswahlfeld, in dem Sie die im aktuellen Text definierten
@@ -2821,10 +2691,7 @@ Seite\InsetSpace \space{}
 \family default
  und klicken auf 
 \family sans
-\bar under
-O
-\bar default
-K
+OK
 \family default
 .
 \end_layout
@@ -2862,20 +2729,14 @@ Querverweis
 .
  Wenn Sie nun auf 
 \family sans
-\bar under
-G
-\bar default
-ehe\InsetSpace ~
+Gehe\InsetSpace ~
 zur\InsetSpace ~
 Marke
 \family default
  klicken, wird der Cursor an die entsprechende Stelle im Text positioniert,
  auf die der Verweis zeigt, und ein Klick auf 
 \family sans
-\bar under
-G
-\bar default
-ehe\InsetSpace ~
+Gehe\InsetSpace ~
 zurück
 \family default
  bringt Sie wieder zurück zu der Referenz.
@@ -2941,7 +2802,7 @@ Querverweis
 \series default
  Korrigieren Sie die Querverweise in der Datei 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -3079,15 +2940,8 @@ opieren
 \begin_layout Standard
 Randnotizen werden über den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-andnotiz
+Einfügen\SpecialChar \menuseparator
+Randnotiz
 \family default
  oder das Symbol 
 \begin_inset Graphics
@@ -3140,7 +2994,7 @@ dvi
 \series default
 : Korrigieren Sie die Fußnoten in der Datei 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -3237,26 +3091,16 @@ Hinzufügen
 \family default
  klicken, wird es ins Fenster 
 \family sans
-Ausge
-\bar under
-w
-\bar default
-ählte\InsetSpace \space{}
+Ausgewählte\InsetSpace \space{}
 Zitate:
 \family default
  geschrieben und mit 
 \family sans
-\bar under
-Ü
-\bar default
-bernehmen
+Übernehmen
 \family default
  oder 
 \family sans
-\bar under
-O
-\bar default
-K
+OK
 \family default
  eingefügt.
 \begin_inset Foot
@@ -3309,10 +3153,7 @@ Zitat
 , wenn der Artikel von Smith aus dem Jahr 1995 referenziert wird), können
  Sie dazu das Feld 
 \family sans
-\bar under
-M
-\bar default
-arke
+Marke
 \family default
  im Dialog 
 \family sans
@@ -3333,7 +3174,7 @@ Benutzerhandbuch
 \series default
  Korrigieren Sie Literaturverzeichnis und Zitate in der Datei 
 \family typewriter
-beispiel_ roh.lyx
+de_beispiel_ roh.lyx
 \family default
 .
 \end_layout
@@ -3351,22 +3192,11 @@ vor
 \emph default
  der ersten Kapitelüberschrift und wählen dann den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Liste\InsetSpace ~
 /\InsetSpace ~
-
-\bar under
-I
-\bar default
-nhaltsverzeichnis\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-nhaltsverzeichnis
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Inhaltsverzeichnis
 \family default
 .
  Der Schriftzug 
@@ -3402,16 +3232,8 @@ status open
 Entweder indem Sie auf das eingefügte Symbol klicken, oder -- falls Sie
  kein Inhaltsverzeichnis eingefügt haben -- über den Menüpunkt 
 \family sans
-D
-\bar under
-o
-\bar default
-kument\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-nhaltsverzeichnis
+Dokument\SpecialChar \menuseparator
+Inhaltsverzeichnis
 \family default
 .
 \end_layout
@@ -3431,10 +3253,7 @@ Inhaltsverzeichnis
  dieses Fenster dauernd geöffnet zu lassen.
  Darüber hinaus können Sie auch das Menü 
 \family sans
-\bar under
-N
-\bar default
-avigieren
+Navigieren
 \family default
  verwenden, um gezielt einzelne Kapitel anzuspringen.
 \end_layout
@@ -3451,7 +3270,7 @@ Um ein Inhaltsverzeichnis zu löschen, können Sie den Platzhalter ganz einfach
 \series default
 : Korrigieren Sie das Inhaltsverzeichnis in der Datei 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -3682,29 +3501,16 @@ Backspace
 ) werden gebraucht, um Dinge zu löschen, Text wird entweder mit den Pfeiltasten
  oder der Maus selektiert, 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-ückgängig
+Bearbeiten\SpecialChar \menuseparator
+Rückgängig
 \family default
  funktioniert auch im Mathematik-Modus, ebenso wie 
 \family sans
-\bar under
-A
-\bar default
-usschneiden
+Ausschneiden
 \family default
  und 
 \family sans
-\bar under
-E
-\bar default
-infügen.
+Einfügen.
 
 \family default
  Doch Vorsicht ist geboten! Wenn Sie rechts außerhalb eines Ausdruckes im
@@ -3719,15 +3525,8 @@ Backspace
 ) drücken, wird der ganze Ausdruck gelöscht.
  Glücklicherweise können Sie aber alles mit 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-R
-\bar default
-ückgängig
+Bearbeiten\SpecialChar \menuseparator
+Rückgängig
 \family default
  zurückholen.
 \end_layout
@@ -3997,7 +3796,7 @@ _
 \series default
  Schreiben Sie die Gleichung 1 von 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
  im Mathematik-Modus.
 \end_layout
@@ -4150,10 +3949,7 @@ rechten Mausknopf
  Wenn Sie links und rechts die gleiche Klammer haben wollen, können Sie
  
 \family sans
-\bar under
-Z
-\bar default
-usammenpassend
+Zusammenpassend
 \family default
  aktivieren und müssen nur eine Klammer anklicken.
 \end_layout
@@ -4190,10 +3986,7 @@ Die aktuelle Auswahl der Begrenzungssymbole sehen Sie, wenn Sie auf die
 Wenn die Begrenzer ausgewählt sind, dann werden sie durch einen Mausklick
  auf 
 \family sans
-\bar under
-E
-\bar default
-infügen
+Einfügen
 \family default
  in den Text eingefügt.
  Aus Bequemlichkeit könnten Sie auch normale Klammern verwenden.
@@ -4274,7 +4067,7 @@ Kontrollfläche
 \series default
  Schreiben Sie die Gleichung 2 von 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
  im Mathematik-Modus.
 \end_layout
@@ -4363,10 +4156,7 @@ x
 \begin_layout Standard
 Wählen Sie dazu im Kasten 
 \family sans
-\bar under
-F
-\bar default
-unktionen
+Funktionen
 \family default
  im Dialogfeld 
 \family sans
@@ -4453,7 +4243,7 @@ Listenauswahl eingefügt werden müssen, sind andere trigonometrische Funktionen
 \series default
  Schreiben Sie die Gleichung 3 von 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
  im Mathematik-Modus.
 \end_layout
@@ -4519,15 +4309,8 @@ Taste benutzen.
 Falls Sie zu einem späteren Zeitpunkt weitere Zeilen oder Spalten in der
  Matrix benötigen, können Sie das über die Menüpunkte 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-Z
-\bar default
-eilen\InsetSpace ~
+Bearbeiten\SpecialChar \menuseparator
+Zeilen\InsetSpace ~
 &\InsetSpace ~
 Spalten
 \family default
@@ -4674,7 +4457,7 @@ nach
 \series default
  Setzen Sie die verschiedenen Gleichungen in 
 \family typewriter
-beispiel_roh.lyx
+de_beispiel_roh.lyx
 \family default
  in den absetzten Anzeigemodus und sehen Sie sich an, wie sich der Schriftsatz
  verändert.
@@ -4771,20 +4554,9 @@ Strg+Eingabe
 \family default
  drücken oder den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe\SpecialChar \menuseparator
-E
-\bar under
-q
-\bar default
-narray\InsetSpace ~
+Einfügen\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Eqnarray\InsetSpace ~
 Umgebung
 \family default
  wählen.
@@ -4796,15 +4568,8 @@ Strg+Eingabe
 \family default
  oder verwenden Sie 
 \family sans
-\bar under
-B
-\bar default
-earbeiten\SpecialChar \menuseparator
-
-\bar under
-Z
-\bar default
-eilen\InsetSpace ~
+Bearbeiten\SpecialChar \menuseparator
+Zeilen\InsetSpace ~
 &\InsetSpace ~
 Spalten\SpecialChar \menuseparator
 Zeile\InsetSpace ~
@@ -4963,15 +4728,8 @@ Und noch ein letzter Hinweis: Zu mehrzeiligen Gleichungen gäbe es noch viel
  zu sagen.
  Insbesondere haben wir hier die vielen Punkte im Menü 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe
+Einfügen\SpecialChar \menuseparator
+Mathe
 \family default
 , die mit 
 \family sans
@@ -5071,15 +4829,8 @@ Benutzerhandbuch
 LyX unterstützt WYSIWYG-Tabellen.
  Mit der Auswahl 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-T
-\bar default
-abelle\SpecialChar \ldots{}
+Einfügen\SpecialChar \menuseparator
+Tabelle\SpecialChar \ldots{}
 
 \family default
  oder einen Klick auf 
@@ -5115,15 +4866,8 @@ LyX erlaubt die einfache Einbindung von Abbildungen in unterschiedlichen
  und LaTeX).
  Die Auswahl 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-G
-\bar default
-rafik\SpecialChar \ldots{}
+Einfügen\SpecialChar \menuseparator
+Grafik\SpecialChar \ldots{}
 
 \family default
  oder ein Klick auf 
@@ -5164,31 +4908,18 @@ LyX ist voll konfigurierbar.
  alles kann in weitem Rahmen verändert werden.
  Dies geschieht mit dem Menü 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge
+Werkzeuge
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-instellungen\SpecialChar \ldots{}
+Einstellungen\SpecialChar \ldots{}
 
 \family default
  Lesen Sie dazu das Dokument 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-npassung
+Hilfe\SpecialChar \menuseparator
+Anpassung
 \family default
 .
 \end_layout
@@ -5210,15 +4941,8 @@ tungen.
 Alle Menüs in LyX können über Tastaturkombinationen bedient werden, das
  heißt dass Sie das Menü 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-N
-\bar default
-eu
+Datei\SpecialChar \menuseparator
+Neu
 \family default
  auch durch die Tasten 
 \family sans
@@ -5232,15 +4956,8 @@ N
  Diese Tastaturbelegungen sind ebenfalls frei konfigurierbar.
  Lesen Sie dazu 
 \family sans
-\bar under
-H
-\bar default
-ilfe\SpecialChar \menuseparator
-
-\bar under
-A
-\bar default
-npassung
+Hilfe\SpecialChar \menuseparator
+Anpassung
 \family default
 .
 \end_layout
@@ -5259,15 +4976,8 @@ reference "sec:reLyX"
 \begin_layout Itemize
 Mit der Auswahl 
 \family sans
-\bar under
-W
-\bar default
-erkzeuge\SpecialChar \menuseparator
-Rechtschreib
-\bar under
-p
-\bar default
-rüfung\SpecialChar \ldots{}
+Werkzeuge\SpecialChar \menuseparator
+Rechtschreibprüfung\SpecialChar \ldots{}
 
 \family default
  oder 
@@ -5383,10 +5093,7 @@ Alles, was Sie im TeX-Modus eingeben, erscheint in roter Schrift und wird
  unverändert an LaTeX weitergegeben.
  In diesen Modus wechseln Sie mit der Auswahl 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Te
 \begin_inset ERT
 status collapsed
@@ -5398,11 +5105,8 @@ status collapsed
 
 \end_inset
 
-
-\bar under
 X
 \family default
-\bar default
  oder durch Klicken auf 
 \begin_inset Graphics
 	filename ../../images/ert-insert.xpm
@@ -5470,20 +5174,9 @@ sin
  Diese Art der Eingabe ist sehr viel schneller als die Auswahl über den
  Dialog 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe\SpecialChar \menuseparator
-
-\bar under
-M
-\bar default
-athe-Kontrollfläche
+Einfügen\SpecialChar \menuseparator
+Mathe\SpecialChar \menuseparator
+Mathe-Kontrollfläche
 \family default
 , und vor allem für diejenigen, die bereits mit LaTeX vertraut sind, eine
  große Erleichterung.
@@ -5573,20 +5266,9 @@ name "sec:reLyX"
 
 Über den Menüpunkt 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-I
-\bar default
-mportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Datei\SpecialChar \menuseparator
+Importieren\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -5711,20 +5393,9 @@ Eventuell wollen Sie ein LyX-Dokument im LaTeX-Format abspeichern, zum Beispiel,
  Dies ist aber sehr einfach.
  Mit der Auswahl 
 \family sans
-\bar under
-D
-\bar default
-atei\SpecialChar \menuseparator
-
-\bar under
-E
-\bar default
-xportieren\SpecialChar \menuseparator
-
-\bar under
-L
-\bar default
-aTe
+Datei\SpecialChar \menuseparator
+Exportieren\SpecialChar \menuseparator
+LaTe
 \begin_inset ERT
 status collapsed
 
@@ -5781,19 +5452,12 @@ Die Dokumentenklasse
 \begin_layout Standard
 Im Dialog 
 \family sans
-D
-\bar under
-o
-\bar default
-kument
+Dokument
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-instellungen
+Einstellungen
 \family default
 \SpecialChar \ldots{}
  werden praktisch alle Optionen eingestellt, die man dem Befehl 
@@ -5808,10 +5472,7 @@ schrift- und Papiergröße
  eingestellt.
  Für weitere, nicht vorgesehene Einträge verwenden Sie das Feld 
 \family sans
-\bar under
-O
-\bar default
-ptionen
+Optionen
 \family default
 .
 \end_layout
@@ -5830,19 +5491,12 @@ Wenn Sie besondere Befehle im Vorspann Ihrer LaTeX-Dateien benötigen, können
  Sie diese auch für LyX verwenden.
  Öffnen Sie dazu den Dialog 
 \family sans
-D
-\bar under
-o
-\bar default
-kument
+Dokument
 \family default
 \SpecialChar \menuseparator
 
 \family sans
-\bar under
-E
-\bar default
-instellungen
+Einstellungen
 \family default
 \SpecialChar \ldots{}
  
@@ -5895,22 +5549,11 @@ bib
 \family default
 -Datei einzubinden, verwenden Sie den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
+Einfügen\SpecialChar \menuseparator
 Liste\InsetSpace ~
 /\InsetSpace ~
-
-\bar under
-I
-\bar default
-nhaltsverzeichnis\SpecialChar \menuseparator
-
-\bar under
-B
-\bar default
-ibTe
+Inhaltsverzeichnis\SpecialChar \menuseparator
+BibTe
 \begin_inset ERT
 status collapsed
 
@@ -5937,10 +5580,7 @@ Von BibTeX erstellte Verweise
 
 .) Im Feld 
 \family sans
-\bar under
-D
-\bar default
-atenbanken
+Datenbanken
 \family default
  geben Sie den Namen ein, den Sie in den Klammern des TeX-Befehls 
 \family typewriter
@@ -5961,10 +5601,7 @@ Wie bei normalem LaTeX können auch mehrere Bibliographien, durch Kommas
 
  In das Feld 
 \family sans
-\bar under
-S
-\bar default
-til
+Stil
 \family default
  gehört der Eintrag für den Befehl 
 \family typewriter
@@ -5978,15 +5615,8 @@ bibliographystyle{}
 \begin_layout Standard
 Nun können Sie über den Menüpunkt 
 \family sans
-\bar under
-E
-\bar default
-infügen\SpecialChar \menuseparator
-
-\bar under
-Z
-\bar default
-itat
+Einfügen\SpecialChar \menuseparator
+Zitat
 \family default
 \SpecialChar \ldots{}
  die in den Datenbanken definierten Referenzen, die im Dialogfeld angezeigt
