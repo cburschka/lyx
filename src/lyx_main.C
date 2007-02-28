@@ -224,7 +224,6 @@ LyX::LyX()
 {
 	singleton_ = this;
 	pimpl_.reset(new Singletons);
-	geometryArg.clear();
 }
 
 
