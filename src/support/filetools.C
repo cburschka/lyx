@@ -999,9 +999,14 @@ FileName const unzipFile(FileName const & zipped_file, string const & unzipped_f
 docstring const makeDisplayPath(string const & path, unsigned int threshold)
 {
 	string str = path;
-	string const home = package().home_dir();
+
+	// If file is from LyXDir, display it as if it were relative.
+	string const system = package().system_support();
+	if (prefixIs(str, system))
+		return from_utf8("[" + str.erase(0, system.length()) + "]");	
 
 	// replace /home/blah with ~/
+	string const home = package().home_dir();
 	if (!home.empty() && prefixIs(str, home))
 		str = subst(str, home, "~");
 

@@ -64,9 +64,8 @@ using std::vector;
 namespace lyx {
 
 using support::FileName;
-using support::onlyFilename;
-using support::subst;
 using support::libFileSearch;
+using support::makeDisplayPath;
 
 namespace frontend {
 
@@ -512,7 +511,7 @@ void GuiView::updateTab()
 	// rebuild tabbar and function map from scratch
 	if (names.size() > 1) {
 		for(size_t i = 0; i < names.size(); i++) {
-			tabbar.addTab(toqstr(onlyFilename(names[i]))); 
+			tabbar.addTab(toqstr(makeDisplayPath(names[i], 30))); 
 			// set current tab
 			if (names[i] == cur_title)
 				tabbar.setCurrentIndex(i);
