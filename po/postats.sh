@@ -106,7 +106,7 @@ run_msgfmt () {
 		input=`echo $input | sed 's/  */ /g' | cut -d ' ' -f 2-`
 
 		translator=`echo $input | cut -d '<' -f 1 | sed 's/ *$//'`
-		email=`echo $input | cut -d '<' -f 2 | cut -d '>' -f 1`
+		email=`echo $input | cut -d '<' -f 2 | cut -d '>' -f 1 | sed -e 's/@/ () /' -e 's/\./ ! /g'`
 	}
 	unset input
 
