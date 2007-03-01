@@ -251,7 +251,7 @@ void PrefKeyboard::update(LyXRC const & rc)
 
 QString PrefKeyboard::testKeymap(QString keymap)
 {
-	return toqstr(form_->controller().browsekbmap(qstring_to_ucs4(keymap)));
+	return toqstr(form_->controller().browsekbmap(from_utf8(internal_path(fromqstr(keymap)))));
 }
 
 
