@@ -25,8 +25,6 @@
 
 #include <sstream>
 
-using lyx::docstring;
-
 using std::ostringstream;
 using std::pair;
 using std::string;
@@ -108,7 +106,7 @@ void ControlPrefs::updateScreenFonts()
 
 docstring const ControlPrefs::browsebind(docstring const & file) const
 {
-	return browseLibFile(lyx::from_ascii("bind"), file, lyx::from_ascii("bind"),
+	return browseLibFile(from_ascii("bind"), file, from_ascii("bind"),
 			     _("Choose bind file"),
 			     FileFilterList(_("LyX bind files (*.bind)")));
 }
@@ -116,7 +114,7 @@ docstring const ControlPrefs::browsebind(docstring const & file) const
 
 docstring const ControlPrefs::browseUI(docstring const & file) const
 {
-	return browseLibFile(lyx::from_ascii("ui"), file, lyx::from_ascii("ui"),
+	return browseLibFile(from_ascii("ui"), file, from_ascii("ui"),
 			     _("Choose UI file"),
 			     FileFilterList(_("LyX UI files (*.ui)")));
 }
@@ -124,7 +122,7 @@ docstring const ControlPrefs::browseUI(docstring const & file) const
 
 docstring const ControlPrefs::browsekbmap(docstring const & file) const
 {
-	return browseLibFile(lyx::from_ascii("kbd"), file, lyx::from_ascii("kmap"),
+	return browseLibFile(from_ascii("kbd"), file, from_ascii("kmap"),
 			     _("Choose keyboard map"),
 			     FileFilterList(_("LyX keyboard maps (*.kmap)")));
 }
