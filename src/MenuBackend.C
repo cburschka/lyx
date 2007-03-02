@@ -54,7 +54,6 @@ using support::compare_ascii_no_case;
 using support::contains;
 using support::makeDisplayPath;
 using support::token;
-using support::uppercase;
 
 using boost::bind;
 

@@ -35,7 +35,7 @@
 
 namespace lyx {
 
-using support::lowercase;
+using support::compare_no_case;
 using support::uppercase;
 using support::split;
 
@@ -206,7 +206,7 @@ bool stringSelected(BufferView * bv, docstring const & searchstr,
 	// string search and select next occurance and return
 	docstring const & str1 = searchstr;
 	docstring const str2 = bv->cursor().selectionAsString(false);
-	if ((cs && str1 != str2) || lowercase(str1) != lowercase(str2)) {
+	if ((cs && str1 != str2) || compare_no_case(str1, str2) != 0) {
 		find(bv, searchstr, cs, mw, fw);
 		return false;
 	}

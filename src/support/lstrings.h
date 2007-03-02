@@ -72,12 +72,22 @@ int hexToInt(lyx::docstring const & str);
 /// is \p str pure ascii?
 bool isAscii(docstring const & str);
 
-/// Changes the case of \p c to lowercase.
-/// Caution: Depends on the locale
+/**
+ * Changes the case of \p c to lowercase.
+ * Don't use this for non-ASCII characters, since it depends on the locale.
+ * This overloaded function is only implemented because the char_type variant
+ * would be used otherwise, and we assert in this function that \p c is in
+ * the ASCII range.
+ */
 char lowercase(char c);
 
-/// Changes the case of \p c to uppercase.
-/// Caution: Depends on the locale
+/**
+ * Changes the case of \p c to uppercase.
+ * Don't use this for non-ASCII characters, since it depends on the locale.
+ * This overloaded function is only implemented because the char_type variant
+ * would be used otherwise, and we assert in this function that \p c is in
+ * the ASCII range.
+ */
 char uppercase(char c);
 
 /// Changes the case of \p c to lowercase.

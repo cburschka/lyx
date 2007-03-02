@@ -256,12 +256,14 @@ bool isAscii(docstring const & str)
 
 char lowercase(char c)
 {
+	BOOST_ASSERT(static_cast<unsigned char>(c) < 0x80);
 	return char(tolower(c));
 }
 
 
 char uppercase(char c)
 {
+	BOOST_ASSERT(static_cast<unsigned char>(c) < 0x80);
 	return char(toupper(c));
 }
 
