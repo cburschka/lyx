@@ -68,7 +68,7 @@ void InsetGraphicsParams::init()
 	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
 	display = graphics::DefaultDisplay; // display mode; see preferences
-	scale = string();			// output scaling in percentage
+	scale = string("100");			// output scaling in percentage
 	width = LyXLength();
 	height = LyXLength();
 	keepAspectRatio = false;	// for LaTeX output

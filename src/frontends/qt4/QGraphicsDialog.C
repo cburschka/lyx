@@ -89,7 +89,7 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT( change_adaptor() ) );
 	connect(getPB, SIGNAL( clicked() ),
 		this, SLOT( change_adaptor() ) );
-	connect(scaleCB, SIGNAL(clicked()),
+	connect(scaleCB, SIGNAL(clicked() ),
 		this, SLOT(change_adaptor()) );
 	connect(Scale, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );

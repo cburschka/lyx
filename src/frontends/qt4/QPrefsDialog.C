@@ -234,7 +234,6 @@ void PrefKeyboard::apply(LyXRC & rc) const
 {
 	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymapCB->isChecked();
-
 	rc.primary_kbmap = internal_path(fromqstr(firstKeymapED->text()));
 	rc.secondary_kbmap = internal_path(fromqstr(secondKeymapED->text()));
 }
