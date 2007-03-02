@@ -18,8 +18,10 @@ of country codes look at:
 
   http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#SEC222
 
-If you want to start from scratch than you should obtain a copy of the lyx.pot 
-file.
+If you want to start from scratch then you should obtain a copy of the lyx.pot
+and name it after your language. German would be for example de.po and Polish
+pl.po. This file is generated in the "po" directory of the source tree during
+the compilation.
 
 
 2) HOW DO I EDIT PO FILES?
@@ -33,14 +35,14 @@ as they have many tools to assist the translator.
 
 3) WHAT DO I NEED TO TRANSLATE?
 
-If your using a simple text editor you should translate the strings that appear 
-in the msgid line and write the translation into the msgstr line. Note that a 
-"#, fuzzy" line is just a hint for translation from compiler - in order to get 
-the translation of the current item working you have to delete this line. It is 
-recommended that you would take a look at another .po file - that way you can 
-get an idea of what to do. If your using a specialized po editor then you will 
-see in it the untranslated strings and a place to write your translation for 
-them.
+If you are using a simple text editor you should translate the strings that
+appear in the msgid line and write the translation into the msgstr line. Note
+that a "#, fuzzy" line is just a hint for translation from compiler - in order
+to get the translation of the current item working you have to delete this
+line. It is recommended that you would take a look at another .po file - that
+way you can get an idea of what to do. If your using a specialized po editor
+then you will see in it the untranslated strings and a place to write your
+translation for them.
 
 
 4) WHAT SHOULD I DO WITH THE '&', '|', '$, AND '%' CHARACTERS?
@@ -70,7 +72,7 @@ to have the script language Perl installed.
 In order to test your translation you need to obtain the LyX sources (from the 
 SVN repository) and replace the existing .po with yours. Afterwards, you should 
 compile and install LyX (check the INSTALL file for your OS). If you don't 
-install LyX it won't work. For running LyX with your translation, use the 
+install LyX it won't work. In order to run LyX with your translation, use the 
 appropriate LANG variable:
 
   On Linux: LANG=xx_CC lyx
@@ -78,6 +80,13 @@ appropriate LANG variable:
 
 xx stands for your language code. CC stands for your country code. So to get, 
 e.g., Czech, the code is "cs_CZ".
+
+The most comfortable way to see your updated translation while editing, is
+running (in linux):
+1. "make xx.po" in po directory to compile updated xx.po translation
+2. "make install" in root lyx tree to copy xx.gmo into the appropriate location
+   (or do it by hand...) 
+
 
 7) REFERENCES
 
