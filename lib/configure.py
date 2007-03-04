@@ -289,7 +289,7 @@ def checkFormatEntries(dtl_tools):
         # Windows only: DraftDVI
         addToRC(r'\Format dvi2       dvi     DraftDVI               ""	""	"document,vector"')
     #
-    checkViewer('an HTML previewer', ['mozilla file://$$p$$i', 'netscape'],
+    checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format html       html    HTML                   H  "%%"	""	"document"'])
     #
     checkViewer('Noteedit', ['noteedit'],
