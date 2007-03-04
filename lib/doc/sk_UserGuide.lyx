@@ -1,4 +1,4 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+#LyX 1.4.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 245
 \begin_document
 \begin_header
@@ -4434,6 +4434,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 vspace{-2ex} 
 \backslash
@@ -4464,6 +4465,7 @@ Quotation
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4493,6 +4495,7 @@ Itemize
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4522,6 +4525,7 @@ Description
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4545,6 +4549,7 @@ List
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -6761,8 +6766,6 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-
-\bibitem {1}
 Keï prvý krát vyberiete prostredie 
 \family sans
 Bibliography
@@ -6799,8 +6802,6 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-
-\bibitem {1}
 Na 
 \emph on
 zaèiatku prvého riadku
@@ -10235,6 +10236,7 @@ LaTeX
 status collapsed
 
 \begin_layout Standard
+
 Tento text je v re¾ime 
 \backslash
 LaTeX.
@@ -11072,6 +11074,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -11104,6 +11107,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -11115,6 +11119,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 /
@@ -11729,6 +11734,7 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -11756,6 +11762,7 @@ Dorf
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 /
@@ -20252,17 +20259,20 @@ status collapsed
 
 \begin_layout Standard
 
+
 \backslash
 begin{tabular}{ll}
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 Toto je príkald prostredia minipage.
  Do neho mô¾ete vlo¾i» takmer v¹etko, dokonca aj (neplávajúce) obrázky a
  tabuµky.
@@ -20270,21 +20280,25 @@ Toto je príkald prostredia minipage.
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 %
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 begin{verbatim}
@@ -20292,22 +20306,26 @@ begin{verbatim}
 
 \begin_layout Standard
 
+
 \backslash
 begin{minipage}{5cm}
 \end_layout
 
 \begin_layout Standard
+
 Toto ...
  
 \end_layout
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 end{verbatim}
@@ -20315,11 +20333,13 @@ end{verbatim}
 
 \begin_layout Standard
 
+
 \backslash
 end{minipage}
 \end_layout
 
 \begin_layout Standard
+
 
 \backslash
 end{tabular}
