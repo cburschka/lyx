@@ -758,8 +758,18 @@ namespace {
 
 bool insertIfExists(FileName const & absname, DepTable & head)
 {
-	fs::path const path = absname.toFilesystemEncoding();
-	if (fs::exists(path) && !fs::is_directory(path)) {
+	bool exists;
+	try {
+		fs::path const path = absname.toFilesystemEncoding();
+		exists = fs::exists(path) && !fs::is_directory(path);
+	}
+	catch (fs::filesystem_error const & fe) {
+		// This was probably no file at all.
+		lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
+			<< "' while checking whether file `" << absname
+			<< "' exists and is no directory." << endl;
+	}
+	if (exists) {
 			head.insert(absname, true);
 			return true;
 	}
@@ -809,8 +819,18 @@ bool handleFoundFile(string const & ff, DepTable & head)
 	FileName absname(makeAbsPath(onlyfile));
 
 	// check for spaces
-	while (contains(foundfile, " ")) {
-		if (fs::exists(absname.toFilesystemEncoding()))
+	while (contains(foundfile, ' ')) {
+		bool exists;
+		try {
+			exists = fs::exists(absname.toFilesystemEncoding());
+		}
+		catch (fs::filesystem_error const & fe) {
+			// This was probably no file at all.
+			lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
+				<< "' while checking whether file `"
+				<< absname << "' exists." << endl;
+		}
+		if (exists)
 			// everything o.k.
 			break;
 		else {
@@ -826,8 +846,18 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	fs::path const path = absname.toFilesystemEncoding();
-	if (fs::exists(path) && !fs::is_directory(path)) {
+	bool exists;
+	try {
+		fs::path const path = absname.toFilesystemEncoding();
+		exists = fs::exists(path) && !fs::is_directory(path);
+	}
+	catch (fs::filesystem_error const & fe) {
+		// This was probably no file at all.
+		lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
+			<< "' while checking whether file `" << absname
+			<< "' exists and is no directory." << endl;
+	}
+	if (exists) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 		if (regex_match(onlyfile, unwanted)) {
 			lyxerr[Debug::DEPEND]
