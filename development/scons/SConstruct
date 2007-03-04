@@ -2075,7 +2075,6 @@ if build_install:
     dirs = []
     for (dir,files) in [
             ('.', lib_files),  
-            ('clipart', lib_doc_clipart_files),
             ('images', lib_images_files),
             ('images/math', lib_images_math_files),
             ('kbd', lib_kbd_files),
@@ -2090,10 +2089,12 @@ if build_install:
             ('bind/pt', lib_bind_pt_files),
             ('bind/sv', lib_bind_sv_files),
             ('doc', lib_doc_files),
+            ('doc/clipart', lib_doc_clipart_files),
             ('doc/cs', lib_doc_cs_files),
             ('doc/da', lib_doc_da_files),
             ('doc/de', lib_doc_de_files),
             ('doc/es', lib_doc_es_files),
+            ('doc/es/clipart', lib_doc_es_clipart_files),
             ('doc/eu', lib_doc_eu_files),
             ('doc/fr', lib_doc_fr_files),
             ('doc/he', lib_doc_he_files),
@@ -2108,7 +2109,6 @@ if build_install:
             ('doc/sk', lib_doc_sk_files),
             ('doc/sl', lib_doc_sl_files),
             ('doc/sv', lib_doc_sv_files),
-            ('doc', lib_doc_files),
             ('examples', lib_examples_files),
             ('examples/ca', lib_examples_ca_files),
             ('examples/cs', lib_examples_cs_files),
