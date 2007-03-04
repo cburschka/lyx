@@ -2318,6 +2318,24 @@ lib_ui_files = Split('''
     stdtoolbars.inc
 ''')
 
+lib_doc_clipart_files = Split('''
+    BoxInsetDefaultQt4.png
+    CommentNoteImageQt4.png
+    escher-lsd.eps
+    endnotes.pdf
+    floatQt4.png
+    footnoteQt4.png
+    FramedNoteImageQt4.png
+    GreyedOutNoteImageQt4.png
+    labelQt4.png
+    LyXNoteImageQt4.png
+    mobius.eps
+    platypus.eps
+    referenceQt4.png
+    ShadedNoteImageQt4.png
+    with_fntright.pdf
+    without_fntright.pdf
+''')
 
 lib_doc_cs_files = Split('''
     Tutorial.lyx
@@ -2340,6 +2358,19 @@ lib_doc_es_files = Split('''
     Intro.lyx
     Tutorial.lyx
     EmbeddedObjects.lyx
+''')
+
+lib_doc_es_clipart_files = Split('''
+    ComentNotaImagenQt4.png
+    CuadroMinipagQt4.png
+    etiquetaQt4.png
+    flotanteQt4.png
+    GrisNotaImagenQt4.png
+    NotaEnmarcadaImg.png
+    NotaLyXImagenQt4.png
+    notapieQt4.png
+    NotaSombreadaImg.png
+    referenciaQt4.png
 ''')
 
 lib_doc_eu_files = Split('''
@@ -2433,33 +2464,6 @@ lib_doc_files = Split('''
     Reference.lyx
     Tutorial.lyx
     UserGuide.lyx
-    escher-lsd.eps
-    mobius.eps
-    platypus.eps
-''')
-
-
-lib_clipart_files = Split('''
-    BoxInsetDefaultQt4.png
-    ComentNotaImagenQt4.png
-    CommentNoteImageQt4.png
-    CuadroMinipagQt4.png
-    endnotes.pdf
-    etiquetaQt4.png
-    floatQt4.png
-    flotanteQt4.png
-    footnoteQt4.png
-    GreyedOutNoteImageQt4.png
-    GrisNotaImagenQt4.png
-    labelQt4.png
-    LyXNoteImageQt4.png
-    NotaLyXImagenQt4.png
-    notapieQt4.png
-    platypus.eps
-    referenceQt4.png
-    referenciaQt4.png
-    with_fntright.pdf
-    without_fntright.pdf
 ''')
 
 

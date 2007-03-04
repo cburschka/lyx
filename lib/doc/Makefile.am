@@ -4,6 +4,25 @@ DISTCLEANFILES += $(tocfiles)
 
 EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
 
+clipartdocdir = $(pkgdatadir)/doc/clipart
+dist_dadoc_DATA = \
+	escher-lsd.eps \
+	mobius.eps \
+	platypus.eps \
+	BoxInsetDefaultQt4.png \
+	CommentNoteImageQt4.png \
+	endnotes.pdf \
+	floatQt4.png \
+	footnoteQt4.png \
+	FramedNoteImageQt4.png \
+	GreyedOutNoteImageQt4.png \
+	labelQt4.png \
+	LyXNoteImageQt4.png \
+	referenceQt4.png \
+	ShadedNoteImageQt4.png \
+	without_fntright.pdf \
+	with_fntright.pdf
+
 csdocdir = $(pkgdatadir)/doc/cs
 dist_csdoc_DATA = \
 	cs/Tutorial.lyx
@@ -26,6 +45,19 @@ dist_esdoc_DATA = \
 	es/Intro.lyx \
 	es/Tutorial.lyx \
 	es/EmbeddedObjects.lyx
+
+esdocdir = $(pkgdatadir)/doc/es/clipart
+dist_esdoc_DATA = \
+	ComentNotaImagenQt4.png \
+	CuadroMinipagQt4.png \
+	etiquetaQt4.png \
+	flotanteQt4.png \
+	GrisNotaImagenQt4.png \
+	NotaEnmarcadaImg.png \
+	NotaLyXImagenQt4.png \
+	notapieQt4.png \
+	NotaSombreadaImg.png \
+	referenciaQt4.png
 
 eudocdir = $(pkgdatadir)/doc/eu
 dist_eudoc_DATA = \
@@ -123,10 +155,7 @@ dist_doc_DATA = \
 	LaTeXConfig.lyx.in \
 	Reference.lyx \
 	Tutorial.lyx \
-	UserGuide.lyx \
-	escher-lsd.eps \
-	mobius.eps \
-	platypus.eps
+	UserGuide.lyx
 
 doc_DATA = $(docfiles) 
 

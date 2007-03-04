@@ -64,29 +64,6 @@ dist_bind_DATA = \
 	bind/xemacs.bind \
 	bind/aqua.bind
 
-clipartdir = $(pkgdatadir)/clipart
-dist_clipart_DATA = \
-	clipart/BoxInsetDefaultQt4.png \
-	clipart/ComentNotaImagenQt4.png \
-	clipart/CommentNoteImageQt4.png \
-	clipart/CuadroMinipagQt4.png \
-	clipart/endnotes.pdf \
-	clipart/etiquetaQt4.png \
-	clipart/floatQt4.png \
-	clipart/flotanteQt4.png \
-	clipart/footnoteQt4.png \
-	clipart/GreyedOutNoteImageQt4.png \
-	clipart/GrisNotaImagenQt4.png \
-	clipart/labelQt4.png \
-	clipart/LyXNoteImageQt4.png \
-	clipart/NotaLyXImagenQt4.png \
-	clipart/notapieQt4.png \
-	clipart/platypus.eps \
-	clipart/referenceQt4.png \
-	clipart/referenciaQt4.png \
-	clipart/without_fntright.pdf \
-	clipart/with_fntright.pdf
-
 caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
 	examples/ca/splash.lyx
