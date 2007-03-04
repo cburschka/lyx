@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "support/filetools.h"
 #include "support/package.h"
+#include "support/unicode.h"
 
 #include <boost/current_function.hpp>
 
@@ -122,16 +123,11 @@ public:
 				<< "Rtn value : " << c << endl;
 		}
 
-#ifdef WORDS_BIGENDIAN
-		static const char * codeset = "UCS-4BE";
-#else
-		static const char * codeset = "UCS-4LE";
-#endif
-		if (!bind_textdomain_codeset(PACKAGE, codeset)) {
+		if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
 			lyxerr[Debug::DEBUG]
 				<< BOOST_CURRENT_FUNCTION << '\n'
 				<< "Error code: " << errno << '\n'
-				<< "Codeset   : " << codeset << '\n'
+				<< "Codeset   : " << ucs4_codeset << '\n'
 				<< endl;
 		}
 

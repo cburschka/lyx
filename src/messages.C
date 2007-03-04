@@ -17,7 +17,7 @@
 #include "support/environment.h"
 #include "support/filetools.h"
 #include "support/package.h"
-#include "support/types.h"
+#include "support/unicode.h"
 
 #include <boost/current_function.hpp>
 #include <boost/regex.hpp>
@@ -51,12 +51,6 @@ using support::package;
 using support::getEnv;
 using support::setEnv;
 
-
-#ifdef WORDS_BIGENDIAN
-		char const * codeset = "UCS-4BE";
-#else
-		char const * codeset = "UCS-4LE";
-#endif
 
 // This version use the traditional gettext.
 Messages::Messages(string const & l)
@@ -129,11 +123,11 @@ docstring const Messages::get(string const & m) const
 			<< "Rtn value : " << c << endl;
 	}
 
-	if (!bind_textdomain_codeset(PACKAGE, codeset)) {
+	if (!bind_textdomain_codeset(PACKAGE, ucs4_codeset)) {
 		lyxerr[Debug::DEBUG]
 		<< BOOST_CURRENT_FUNCTION << '\n'
 			<< "Error code: " << errno << '\n'
-			<< "Codeset   : " << codeset << '\n'
+			<< "Codeset   : " << ucs4_codeset << '\n'
 			<< endl;
 	}
 
