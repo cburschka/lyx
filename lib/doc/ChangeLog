@@ -1,3 +1,10 @@
+2007-03-04 Uwe StÃ¶hr <uwestoehr@web.de>
+
+	* new clipart directoriy for every language
+	* updated Spanish EmbeddedObjects manual
+	* correct DSC-warnings in EPS-images
+	* make Slovak Userguide compile
+
 2007-02-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Customization.lyx:
@@ -5,11 +12,11 @@
 	* eu_Customization.lyx: there is no TitleLatexCommand layout tag,
 	the right name is TitleLatexName.
 
-2007-01-31 Uwe Stöhr <uwestoehr@web.de>
+2007-01-31 Uwe Stï¿½hr <uwestoehr@web.de>
 
 	* rename Extended-Insets to EmbeddedObjects
 
-2007-01-09 Uwe Stöhr <uwestoehr@web.de>
+2007-01-09 Uwe Stï¿½hr <uwestoehr@web.de>
 
 	* new English manual Extended-Insets
 	* new Spanish manual es_Extended-Insets (by Ignacio Garcia)
@@ -124,12 +131,12 @@
 	* depend.py: adjust generated TOCs rule to Makefile.am changes
 	* doc_toc.py: make it work with srcdir != builddir
 
-2005-09-28  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2005-09-28  Jï¿½rgen Spitzmï¿½ller  <j.spitzmueller@gmx.de>
 
 	* UserGuide.lyx: 
 	* Extended.lyx: fix broken space insets. Format is now 244.
 
-2005-09-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2005-09-19  Jï¿½rgen Spitzmï¿½ller  <j.spitzmueller@gmx.de>
 
 	* UserGuide.lyx: document new space inset, correct some
 	menu references, document new single quotation mark handling.
@@ -142,11 +149,11 @@
 	* UserGuide.lyx: correct grammar describing invocation of the
 	spellchecker.
 
-2005-07-18  José Matos <jamatos@lyx.org>
+2005-07-18  Josï¿½ Matos <jamatos@lyx.org>
 
 	* fr_UserGuide.lyx: fix wrong convertion of \lang french.
 
-2005-07-18  José Matos <jamatos@lyx.org>
+2005-07-18  Josï¿½ Matos <jamatos@lyx.org>
 
 	* *.lyx: update all files to the latest file format
 
@@ -210,7 +217,7 @@
 	* UserGuide.lyx: document use of texconfig for
 	enabling hyphenation for minority languages
 
-2004-11-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2004-11-22  Jï¿½rgen Spitzmï¿½ller  <j.spitzmueller@gmx.de>
 
 	* Extended.lyx: document second OptionalArg in memoir.
 
@@ -222,7 +229,7 @@
 
 	* LaTeXConfig.lyx.in, LyXConfig.lyx.in: add booktabs package
 
-2004-11-04  Christian Ridderström  <chr@home.se>
+2004-11-04  Christian Ridderstrï¿½m  <chr@home.se>
 
 	* LaTeXConfig.lyx.in: remove "supported" and "other" from CTAN
 	locations; fix menu entry for Reconfigure
@@ -232,7 +239,7 @@
 	* Customization.lyx: add description of translation of ambigous
 	messages
 
-2004-10-17  José Matos  <jamatos@lyx.org>
+2004-10-17  Josï¿½ Matos  <jamatos@lyx.org>
 
 	* Depend.pl: removed.
 
@@ -261,7 +268,7 @@
 
 	* UserGuide.lyx: fix the fix
 
-2004.08-15  José Matos  <jamatos@lyx.org>
+2004.08-15  Josï¿½ Matos  <jamatos@lyx.org>
 
 	* UserGuide.lyx: replaced ERT (\newline) with the hyphenisation
 	inset.
@@ -278,7 +285,7 @@
 
 	* UserGuide.lyx: convert to use unix line endings.
 
-2004-07-13  Uwe Stöhr  <uwestoehr@web.de>
+2004-07-13  Uwe Stï¿½hr  <uwestoehr@web.de>
 
 	* UserGuide.lyx: big clean-up: use scrbook class, rewrite preamble
 	and in general make sure that a nice PDF file can be produced.
@@ -286,17 +293,17 @@
 2004-07-02  Angus Leeming  <leeming@lyx.org>
 
 	* Customization.lyx: correct the documented debug number for the
-	lyxserver to 4096. (Reported by Günter Milde.)
+	lyxserver to 4096. (Reported by Gï¿½nter Milde.)
 
-2004-06-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+2004-06-02  Lars Gullik Bjï¿½nnes  <larsbj@lyx.org>
 
 	* Add missing doc files and update makefile.
 
-2004-06-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+2004-06-02  Lars Gullik Bjï¿½nnes  <larsbj@gullik.net>
 
 	* Makefile.am (docfiles): make sure docs are disted
 
-2004-06-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+2004-06-01  Lars Gullik Bjï¿½nnes  <larsbj@gullik.net>
 
 	* Doc files and Changelog included form lyxdoc CVS module.
 
@@ -393,7 +400,7 @@
 
 	* UserGuide.lyx: fix a broken cross-reference
 
-2003-07-21  Christian Ridderström  <chr@home.se>
+2003-07-21  Christian Ridderstrï¿½m  <chr@home.se>
 
 	* UserGuide.lyx: fix menu entry, document "Keep Space"
 	(bug 996)
@@ -593,7 +600,7 @@
 
 	* FAQ.lyx: update. I tried to correct some information that was
 	too old, but a lot remains to do. Added book from Yann Collette.
-	Added tip about \date{} from Christian Ridderström.
+	Added tip about \date{} from Christian Ridderstrï¿½m.
 
 2002-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

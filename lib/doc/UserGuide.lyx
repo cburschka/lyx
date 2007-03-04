@@ -1,5 +1,5 @@
-#LyX 1.4.4svn created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -63,13 +63,21 @@
 \options bibtotoc,BCOR7mm
 \language english
 \inputencoding latin1
-\fontscheme default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize 12
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -82,7 +90,8 @@
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "usti" 
 \end_header
 
 \begin_body
@@ -131,7 +140,7 @@ This package should be part of all popular LaTeX-distributions.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -529,7 +538,8 @@ emplate
  They can be of use for certain classes, especially those for writing letters
  [see sec.
  
-\begin_inset LatexCommand \ref{sec:doc-classes}
+\begin_inset LatexCommand ref
+reference "sec:doc-classes"
 
 \end_inset
 
@@ -778,7 +788,10 @@ ith
 \begin_layout Standard
 Hit 
 \family sans
-Replace 
+Replace
+\family default
+ 
+\family sans
 \bar under
 A
 \bar default
@@ -1054,13 +1067,9 @@ Footnotes, Margin Notes, Figure and Table Floats, etc.
 \begin_layout Standard
 
 \emph on
-Single click 
+Single click
 \emph default
-the
-\emph on
- 
-\emph default
-left mouse button to open or close any of these.
+ the left mouse button to open or close any of these.
  Also check the appropriate section of this manual for more details.
 \end_layout
 
@@ -1075,17 +1084,15 @@ Tables
 \emph on
 Single click
 \emph default
- the right mouse button
-\emph on
- 
-\emph default
-to open a dialog that will allow you to manipulate the table.
+ the right mouse button to open a dialog that will allow you to manipulate
+ the table.
 \end_layout
 
 \end_deeper
 \begin_layout Subsection
 Basic Key Bindings
-\begin_inset LatexCommand \label{sec: key bindings}
+\begin_inset LatexCommand label
+name "sec: key bindings"
 
 \end_inset
 
@@ -1139,18 +1146,21 @@ Tab
 \family default
  There is no such thing as a tab stop in LyX.
  If you don't understand this, go read Sections 
-\begin_inset LatexCommand \ref{sec:parindentintro}
+\begin_inset LatexCommand ref
+reference "sec:parindentintro"
 
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{sec:par-environments}
+\begin_inset LatexCommand ref
+reference "sec:par-environments"
 
 \end_inset
 
 , especially Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:parenvlists}
+\begin_inset LatexCommand ref
+reference "sec:parenvlists"
 
 \end_inset
 
@@ -1229,7 +1239,8 @@ Delete
 \begin_layout Standard
 If you haven't set up your keyboard under X, or have no idea what we mean
  by that, go read section 
-\begin_inset LatexCommand \ref{sec:x-win-keys}
+\begin_inset LatexCommand ref
+reference "sec:x-win-keys"
 
 \end_inset
 
@@ -1605,9 +1616,9 @@ If you're using LyX on a system someone else has set up for you, then you
 If you're installing LyX on your system, 
 \emph on
 you should read the README's that came with the LyX distribution and then
+\emph default
  
 \family sans
-\emph default
 \bar under
 H
 \bar default
@@ -1643,7 +1654,8 @@ This is basically where we decided to document a bunch of info about running
 
 \begin_layout Section
 Basic LyX Setup
-\begin_inset LatexCommand \label{sec:setup}
+\begin_inset LatexCommand label
+name "sec:setup"
 
 \end_inset
 
@@ -1675,10 +1687,8 @@ There are several features of LyX that can be configured from inside LyX,
  It uses this knowledge to give reasonable defaults to several 
 \family typewriter
 preferences
-\family sans
- 
 \family default
-variables.
+ variables.
  Although this configuration has already been done when LyX was installed
  on your system, you might have some items that you installed locally and
  which are not seen by LyX.
@@ -1781,11 +1791,7 @@ preferences
 user directory
 \emph default
 .
-
-\emph on
- 
-\emph default
-To find out where it is, use 
+ To find out where it is, use 
 \family sans
 \bar under
 H
@@ -1833,7 +1839,8 @@ Customization
 
 \begin_layout Section
 Setting Up the X Keyboard [obsolescent]
-\begin_inset LatexCommand \label{sec:x-win-keys}
+\begin_inset LatexCommand label
+name "sec:x-win-keys"
 
 \end_inset
 
@@ -1978,7 +1985,7 @@ Compose+e+'
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- é
+ Ã©
 \end_layout
 
 \begin_layout Itemize
@@ -1990,7 +1997,7 @@ Compose+O+R
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- ®
+ Â®
 \end_layout
 
 \begin_layout Itemize
@@ -2002,7 +2009,7 @@ Compose+1+2
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- ½
+ Â½
 \end_layout
 
 \begin_layout Itemize
@@ -2014,7 +2021,7 @@ Compose+<+<
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- «
+ Â«
 \end_layout
 
 \begin_layout Standard
@@ -2086,9 +2093,9 @@ xmodmap -v -pm
  This will show you all of the currently active modifiers.
  Also try 
 \family typewriter
-xmodmap -v -pke | more 
+xmodmap -v -pke | more
 \family default
-to see which keycode numbers are mapped to which symbolic names.
+ to see which keycode numbers are mapped to which symbolic names.
  It will also give you some idea of the syntax of the 
 \family typewriter
 .Xmodmap
@@ -2241,12 +2248,14 @@ If you're using Linux, LaTeX2e should have come with your distribution.
  A complete list of mirrors may be found at
 \newline
 
-\begin_inset LatexCommand \url{http://www.ctan.org}
+\begin_inset LatexCommand url
+target "http://www.ctan.org"
 
 \end_inset
 
 
-\begin_inset LatexCommand \label{sec:ctan}
+\begin_inset LatexCommand label
+name "sec:ctan"
 
 \end_inset
 
@@ -2294,12 +2303,12 @@ ghostview
 \end_layout
 
 \begin_layout Standard
-The latter two programs are previewer for files in Dvi and PostScript®
+The latter two programs are previewer for files in Dvi and PostScriptÂ®
 \begin_inset Foot
 status collapsed
 
 \begin_layout Standard
-PostScript® is a registered trademark of Adobe Systems Incorporated, and
+PostScriptÂ® is a registered trademark of Adobe Systems Incorporated, and
  is the main page description language in the UN*X world.
  
 \end_layout
@@ -2336,7 +2345,8 @@ dvips
 
 \begin_layout Subsection
 Dvips
-\begin_inset LatexCommand \label{sec:dvipsconfig}
+\begin_inset LatexCommand label
+name "sec:dvipsconfig"
 
 \end_inset
 
@@ -2642,7 +2652,7 @@ PRINTER
 \end_layout
 
 \begin_layout Standard
-If your printer doesn't understand PostScript®, you'll need to use 
+If your printer doesn't understand PostScriptÂ®, you'll need to use 
 \family typewriter
 ghostscript
 \family default
@@ -2670,7 +2680,7 @@ Preferences
  dialog, too.
  There is a major disadvantage to this method.
  You can't include any PostScript files, such as graphics, in your documents,
- since the printer-specific conversion programs don't understand PostScript®.
+ since the printer-specific conversion programs don't understand PostScriptÂ®.
  For that reason, the LyX team highly recommends using 
 \family typewriter
 dvips
@@ -2760,10 +2770,10 @@ Make changes to the document using LyX.
 \end_layout
 
 \begin_layout Enumerate
-To view those changes, just choose
+To view those changes, just choose 
 \family sans
 \bar under
- V
+V
 \bar default
 iew\SpecialChar \menuseparator
 
@@ -2782,7 +2792,7 @@ VI
 \family typewriter
 xdvi
 \family default
- window, and voilà! 
+ window, and voilÃ ! 
 \family typewriter
 xdvi
 \family default
@@ -2804,7 +2814,7 @@ ghostview
 must
 \emph default
  view the PostScript version of the document.
- For repeated changes that aren't PostScript® dependent, you're better off
+ For repeated changes that aren't PostScriptÂ® dependent, you're better off
  previewing with 
 \family typewriter
 xdvi
@@ -2918,7 +2928,8 @@ Read on for info about the document classes you can choose from LyX, and
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand \label{sec:doc-classes}
+\begin_inset LatexCommand label
+name "sec:doc-classes"
 
 \end_inset
 
@@ -2997,7 +3008,7 @@ Amsbook Books in the style and format used by the AMS.
 \end_layout
 
 \begin_layout Description
-Dinbrief für Briefe nach deutscher Art
+Dinbrief fÃ¼r Briefe nach deutscher Art
 \end_layout
 
 \begin_layout Description
@@ -4063,7 +4074,8 @@ Subsubsection
 \family default
  headings, and so on.
  We'll describe these headings fully in section 
-\begin_inset LatexCommand \ref{sec:parenvheadings}
+\begin_inset LatexCommand ref
+reference "sec:parenvheadings"
 
 \end_inset
 
@@ -4122,9 +4134,9 @@ LaTeX does this part.
 \labelwidthstring MMMMMMM
 
 \family sans
-Default 
+Default
 \family default
-Use default pagestyle of current class.
+ Use default pagestyle of current class.
 \end_layout
 
 \begin_layout Labeling
@@ -4286,7 +4298,8 @@ Separation
  This has its own section.
  See sec.
  
-\begin_inset LatexCommand \ref{sec:parindentintro}
+\begin_inset LatexCommand ref
+reference "sec:parindentintro"
 
 \end_inset
 
@@ -4453,7 +4466,8 @@ Paragraph Indentation and Separation
 
 \begin_layout Subsection
 Introduction
-\begin_inset LatexCommand \label{sec:parindentintro}
+\begin_inset LatexCommand label
+name "sec:parindentintro"
 
 \end_inset
 
@@ -4634,7 +4648,8 @@ setspace
 
 \begin_layout Section
 Paragraph Environments
-\begin_inset LatexCommand \label{sec:par-environments}
+\begin_inset LatexCommand label
+name "sec:par-environments"
 
 \end_inset
 
@@ -4910,7 +4925,8 @@ Standard
 
  Usually, starting a new paragraph resets both the paragraph environment
  and the nesting depth [more on nesting in section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -5052,7 +5068,8 @@ thanks
 
 \begin_layout Subsection
 Headings
-\begin_inset LatexCommand \label{sec:parenvheadings}
+\begin_inset LatexCommand label
+name "sec:parenvheadings"
 
 \end_inset
 
@@ -5280,7 +5297,8 @@ The
 
 \begin_layout Subsubsection
 Changing the Numbering
-\begin_inset LatexCommand \label{sub:section-depth}
+\begin_inset LatexCommand label
+name "sub:section-depth"
 
 \end_inset
 
@@ -5499,7 +5517,10 @@ no numbering of any kind
 \begin_layout Standard
 
 \family sans
-add 
+add
+\family default
+ 
+\family sans
 \series medium
 \shape up
 \size normal
@@ -5648,7 +5669,10 @@ add Subsections
 \begin_layout Standard
 
 \family sans
-add 
+add
+\family default
+ 
+\family sans
 \series medium
 \shape up
 \size normal
@@ -5686,7 +5710,10 @@ Subsubsections
 \begin_layout Standard
 
 \family sans
-add 
+add
+\family default
+ 
+\family sans
 \series medium
 \shape up
 \size normal
@@ -5724,7 +5751,10 @@ Paragraphs
 \begin_layout Standard
 
 \family sans
-add 
+add
+\family default
+ 
+\family sans
 \series medium
 \shape up
 \size normal
@@ -5861,7 +5891,7 @@ depth
 \begin_inset Quotes erd
 \end_inset
 
- and voilà! You're all set.
+ and voilÃ ! You're all set.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6025,7 +6055,8 @@ Quote
 Quotation
 \family default
 
-\begin_inset LatexCommand \label{sec:quote}
+\begin_inset LatexCommand label
+name "sec:quote"
 
 \end_inset
 
@@ -6141,7 +6172,8 @@ Quotation
 
 \family sans
 Verse
-\begin_inset LatexCommand \label{sec:verse}
+\begin_inset LatexCommand label
+name "sec:verse"
 
 \end_inset
 
@@ -6205,7 +6237,8 @@ C-Return
 
 \begin_layout Subsection
 Lists
-\begin_inset LatexCommand \label{sec:parenvlists}
+\begin_inset LatexCommand label
+name "sec:parenvlists"
 
 \end_inset
 
@@ -6273,7 +6306,8 @@ You can nest lists of any type inside one another.
  nested.
  If you intend to use any of the list paragraph environments, we suggest
  you read all of section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -6287,7 +6321,8 @@ You can nest lists of any type inside one another.
 Itemize
 \family default
 
-\begin_inset LatexCommand \label{sec:itemize}
+\begin_inset LatexCommand label
+name "sec:itemize"
 
 \end_inset
 
@@ -6350,7 +6385,8 @@ LyX always shows the same symbol, an asterisk, on screen.
 
 \begin_layout Itemize
 See section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -6457,7 +6493,8 @@ Bullets
 Notice how the space between items decreases with increasing depth.
  We'll explain nesting and all the tricks you can do with different depths
  in section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -6471,7 +6508,8 @@ Notice how the space between items decreases with increasing depth.
 Enumerate
 \family default
 
-\begin_inset LatexCommand \label{sec:enumerate}
+\begin_inset LatexCommand label
+name "sec:enumerate"
 
 \end_inset
 
@@ -6630,7 +6668,8 @@ Enumerate
 really
 \emph default
  should read section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -6643,7 +6682,8 @@ really
 Description
 \family default
 
-\begin_inset LatexCommand \label{sec:descrlist}
+\begin_inset LatexCommand label
+name "sec:descrlist"
 
 \end_inset
 
@@ -6669,9 +6709,9 @@ word
 \end_layout
 
 \begin_layout Description
-Example: This is an example of the
+Example: This is an example of the 
 \family sans
- Description
+Description
 \family default
  environment.
 \end_layout
@@ -6747,7 +6787,8 @@ nsert
  menu.
  See sec.
  
-\begin_inset LatexCommand \ref{sec:hspace}
+\begin_inset LatexCommand ref
+reference "sec:hspace"
 
 \end_inset
 
@@ -6816,7 +6857,8 @@ The LyX
 List
 \family default
 
-\begin_inset LatexCommand \label{sec:lyxlist}
+\begin_inset LatexCommand label
+name "sec:lyxlist"
 
 \end_inset
 
@@ -6834,12 +6876,14 @@ List
 
 \begin_layout Standard
 Now, if you jumped here without reading sections 
-\begin_inset LatexCommand \ref{sec:itemize}
+\begin_inset LatexCommand ref
+reference "sec:itemize"
 
 \end_inset
 
 -
-\begin_inset LatexCommand \ref{sec:descrlist}
+\begin_inset LatexCommand ref
+reference "sec:descrlist"
 
 \end_inset
 
@@ -6858,7 +6902,8 @@ not
 Enumerate
 \family default
  does, and it's documented in section 
-\begin_inset LatexCommand \ref{sec:enumerate}
+\begin_inset LatexCommand ref
+reference "sec:enumerate"
 
 \end_inset
 
@@ -6970,7 +7015,8 @@ List
  so on.
  They work just like the other list paragraph environments.
  Read section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -7082,7 +7128,8 @@ HFills
 HFills
 \family default
  later in section 
-\begin_inset LatexCommand \ref{sec:hspace}
+\begin_inset LatexCommand ref
+reference "sec:hspace"
 
 \end_inset
 
@@ -7140,7 +7187,8 @@ List
 That does it for the four paragraph environments for making lists.
  Oh - did we mention that you should read about nesting environments in
  section 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -7214,7 +7262,8 @@ Address
 
 \begin_layout Subsubsection
 Usage
-\begin_inset LatexCommand \label{sec:adress_usage}
+\begin_inset LatexCommand label
+name "sec:adress_usage"
 
 \end_inset
 
@@ -7335,9 +7384,9 @@ nsert
 \family sans
 Address
 \family default
- or
+ or 
 \family sans
- Right\InsetSpace ~
+Right\InsetSpace ~
 Address
 \family default
  environment.
@@ -7521,7 +7570,8 @@ abstract
 Bibliography
 \family default
 
-\begin_inset LatexCommand \label{sec:bibliography}
+\begin_inset LatexCommand label
+name "sec:bibliography"
 
 \end_inset
 
@@ -7662,12 +7712,15 @@ Bibliography
 \end_inset
 
 See 
-\begin_inset LatexCommand \cite{latexguide}
+\begin_inset LatexCommand cite
+key "latexguide"
 
 \end_inset
 
  or 
-\begin_inset LatexCommand \cite[Chapter 3]{latexcompanion}
+\begin_inset LatexCommand cite
+after "Chapter 3"
+key "latexcompanion"
 
 \end_inset
 
@@ -7740,7 +7793,8 @@ There are three standard paragraph environments that simply don't fit any
 Caption
 \family default
 
-\begin_inset LatexCommand \label{sec:captionlayout}
+\begin_inset LatexCommand label
+name "sec:captionlayout"
 
 \end_inset
 
@@ -7826,12 +7880,14 @@ Float
 \family default
 .
  See sections 
-\begin_inset LatexCommand \ref{sec:figures}
+\begin_inset LatexCommand ref
+reference "sec:figures"
 
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{sec:tables}
+\begin_inset LatexCommand ref
+reference "sec:tables"
 
 \end_inset
 
@@ -8075,7 +8131,8 @@ LyX-Code
 
 \begin_layout Section
 Nesting Environments
-\begin_inset LatexCommand \label{sec:nest}
+\begin_inset LatexCommand label
+name "sec:nest"
 
 \end_inset
 
@@ -8093,7 +8150,8 @@ Throughout the previous sections, we've been nagging you to
 
 go read Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:nest}
+\begin_inset LatexCommand ref
+reference "sec:nest"
 
 \end_inset
 
@@ -8196,10 +8254,10 @@ ncrease\InsetSpace ~
 Environment\InsetSpace ~
 Depth
 \family default
- or
+ or 
 \family sans
 \bar under
- D
+D
 \bar default
 ecrease\InsetSpace ~
 Environment\InsetSpace ~
@@ -8236,16 +8294,16 @@ Left
  and 
 \family sans
 M-p\InsetSpace ~
-Right 
+Right
 \family default
-are alternatives, if you prefer those bindings
+ are alternatives, if you prefer those bindings
 \end_layout
 
 \end_inset
 
- 
+
 \family default
-to change the nesting level.
+ to change the nesting level.
  The change will work on the current selection if you have made one (allowing
  you to change the nesting of several paragraphs at once), or the current
  paragraph.
@@ -8559,7 +8617,8 @@ Caption
 \end_deeper
 \begin_layout Subsection
 Nesting Other Things: Tables, Math, Floats, etc.
-\begin_inset LatexCommand \label{sec:table-and-fig-nesting}
+\begin_inset LatexCommand label
+name "sec:table-and-fig-nesting"
 
 \end_inset
 
@@ -8591,12 +8650,14 @@ Float
 \family default
 , this is no longer true.
  See below or look in sections 
-\begin_inset LatexCommand \ref{sec:figures}
+\begin_inset LatexCommand ref
+reference "sec:figures"
 
 \end_inset
 
  or 
-\begin_inset LatexCommand \ref{sec:tables}
+\begin_inset LatexCommand ref
+reference "sec:tables"
 
 \end_inset
 
@@ -9658,9 +9719,9 @@ thirdfold
 Enumerate
 \family default
  environment [i.e.
- we're an
+ we're an 
 \family sans
- Enumerate
+Enumerate
 \family default
  inside an 
 \family sans
@@ -9786,11 +9847,17 @@ Itemize
  environments.
  The number of 
 \emph on
-other 
+other
+\emph default
+ 
 \family sans
+\emph on
 Enumerate
 \family default
- environments
+\emph default
+ 
+\emph on
+environments
 \emph default
  surrounding it determines what kind of label LyX uses for an 
 \family sans
@@ -10309,9 +10376,9 @@ elp\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aTeX Configuration 
+aTeX Configuration
 \family default
-about where to get the fonts.
+ about where to get the fonts.
  Installing a new font for LaTeX is, unfortunately, not as easy as installing
  a new font to common operation systems.
  However, most font packages include a step-by-step instruction.
@@ -10349,19 +10416,16 @@ Text St
 \bar under
 y
 \bar default
-le 
+le
 \family default
-for specific selections of the text (see below section 
-\begin_inset LatexCommand \ref{sub:Text-Style-Dialog}
+ for specific selections of the text (see below section 
+\begin_inset LatexCommand ref
+reference "sub:Text-Style-Dialog"
 
 \end_inset
 
 ).
-
-\family sans
- 
-\family default
-The 
+ The 
 \family sans
 Default\InsetSpace ~
 Family
@@ -10477,7 +10541,10 @@ faked
  check this option.
  
 \family sans
-Use 
+Use
+\family default
+ 
+\family sans
 \bar under
 O
 \bar default
@@ -10704,7 +10771,8 @@ Fine-Tuning with the
 Character Layout
 \family default
  dialog
-\begin_inset LatexCommand \label{sub:Text-Style-Dialog}
+\begin_inset LatexCommand label
+name "sub:Text-Style-Dialog"
 
 \end_inset
 
@@ -10982,8 +11050,11 @@ Italic
 \family default
  
 \shape italic
-This 
+This
+\shape default
+ 
 \family sans
+\shape italic
 i
 \family default
 s the Italic font shape
@@ -11001,11 +11072,8 @@ Slanted
  
 \shape slanted
 This is the Slanted font shape
-\family sans
- 
-\family default
 \shape default
-(although it might not be visible on screen, this is different from italic).
+ (although it might not be visible on screen, this is different from italic).
 \end_layout
 
 \begin_layout Labeling
@@ -11085,8 +11153,9 @@ M-s\InsetSpace ~
 \labelwidthstring MMMMMM
 
 \family sans
-Smallest 
+Smallest
 \family default
+ 
 \size scriptsize
 This is the 
 \begin_inset Quotes eld
@@ -11114,8 +11183,9 @@ M-s\InsetSpace ~
 \labelwidthstring MMMMMM
 
 \family sans
-Smaller 
+Smaller
 \family default
+ 
 \size footnotesize
 This is the 
 \begin_inset Quotes eld
@@ -11511,15 +11581,15 @@ may
 \labelwidthstring 00.00.0000
 
 \family sans
-Color 
+Color
 \family default
-You can adjust the color of the text with this control.
+ You can adjust the color of the text with this control.
  Of course, you need to have a color printer to exploit this, but you also
  need to have the 
 \family sans
-color 
+color
 \family default
-LaTeX package installed.
+ LaTeX package installed.
  Notice that 
 \family typewriter
 xdvi
@@ -11530,11 +11600,7 @@ xdvi
 No\InsetSpace ~
 color
 \family default
-, which
-\family sans
- 
-\family default
-is the standard 
+, which is the standard 
 \begin_inset Quotes eld
 \end_inset
 
@@ -11581,9 +11647,9 @@ Yellow
 \labelwidthstring 00.00.0000
 
 \family sans
-Language 
+Language
 \family default
-This is used to mark regions of text as having a different language from
+ This is used to mark regions of text as having a different language from
  the language of the document.
  Text marked in this way will be underlined in blue to indicate the change.
 \end_layout
@@ -11833,7 +11899,7 @@ ghostview
 
 \begin_deeper
 \begin_layout Standard
-One advantage of using PostScript® is that the converter program [called
+One advantage of using PostScriptÂ® is that the converter program [called
  
 \family typewriter
 dvips
@@ -11999,8 +12065,9 @@ iew
 \family default
  menu.
  When all of the magic behind-the-scenes is done, LyX calls the program
+ 
 \family typewriter
- ghostview
+ghostview
 \family default
 .
  You can now look at the results.
@@ -12106,7 +12173,8 @@ dvips
 \family default
  has to be configured for this printer name.
  See the section 
-\begin_inset LatexCommand \ref{sec:dvipsconfig}
+\begin_inset LatexCommand ref
+reference "sec:dvipsconfig"
 
 \end_inset
 
@@ -12161,7 +12229,8 @@ A Few Words about Typography
 
 \begin_layout Subsection
 Hyphens and Hyphenation
-\begin_inset LatexCommand \label{sec:hyphens}
+\begin_inset LatexCommand label
+name "sec:hyphens"
 
 \end_inset
 
@@ -12499,7 +12568,8 @@ Punctuation Marks
 
 \begin_layout Subsubsection
 Abbreviations and End of Sentence
-\begin_inset LatexCommand \label{sec:abbrev}
+\begin_inset LatexCommand label
+name "sec:abbrev"
 
 \end_inset
 
@@ -12591,7 +12661,8 @@ Space
 \family default
  after lowercase abbreviations (see section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:normblank-lbreak-horline}
+\begin_inset LatexCommand ref
+reference "sec:normblank-lbreak-horline"
 
 \end_inset
 
@@ -12606,7 +12677,8 @@ Space
 \family default
  between two tokens of an abbreviation (see section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:thinblank-lbreak-horline}
+\begin_inset LatexCommand ref
+reference "sec:thinblank-lbreak-horline"
 
 \end_inset
 
@@ -12684,7 +12756,8 @@ Extended Editing
 
 \begin_layout Subsubsection
 Quotes
-\begin_inset LatexCommand \label{sec:quotes}
+\begin_inset LatexCommand label
+name "sec:quotes"
 
 \end_inset
 
@@ -12714,9 +12787,9 @@ open close
 \begin_layout Standard
 
 \series bold
-New in version 1.4: 
+New in version 1.4:
 \series default
-To get single quotation marks, you have to press 
+ To get single quotation marks, you have to press 
 \family sans
 C-"
 \family default
@@ -12843,9 +12916,9 @@ Text
 \begin_inset Quotes prd
 \end_inset
 
- 
+
 \family default
-Use quotes like 
+ Use quotes like 
 \begin_inset Quotes pld
 \end_inset
 
@@ -12952,7 +13025,8 @@ M-"
 
 \begin_layout Subsection
 Ligatures
-\begin_inset LatexCommand \label{sec:ligatures}
+\begin_inset LatexCommand label
+name "sec:ligatures"
 
 \end_inset
 
@@ -13077,7 +13151,8 @@ fest
 
 \begin_layout Subsection
 Widows and Orphans
-\begin_inset LatexCommand \label{sec:widows}
+\begin_inset LatexCommand label
+name "sec:widows"
 
 \end_inset
 
@@ -13118,13 +13193,15 @@ There's no way we can go into how TeX and LaTeX decide to break a page,
  or how you can tweak that behavior.
  Some LaTeX books listed in the bibliography [such as\InsetSpace ~
 
-\begin_inset LatexCommand \cite{latexcompanion}
+\begin_inset LatexCommand cite
+key "latexcompanion"
 
 \end_inset
 
  or\InsetSpace ~
 
-\begin_inset LatexCommand \cite{latexguide}
+\begin_inset LatexCommand cite
+key "latexguide"
 
 \end_inset
 
@@ -13176,25 +13253,31 @@ nsert
 \bar under
 F
 \bar no
-ootnote, 
-\family roman
-you'll first see a 
+ootnote,
 \family default
 \series default
 \bar default
-grey
+ 
 \family roman
 \series medium
 \bar no
- box with a
+you'll first see a
 \family default
 \series default
 \bar default
- red
+ grey 
 \family roman
 \series medium
 \bar no
- label 
+box with a
+\family default
+\series default
+\bar default
+ red 
+\family roman
+\series medium
+\bar no
+label 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13234,15 +13317,15 @@ fold
 \end_inset
 
 .
- 
+
 \family default
 \series default
 \bar default
-Clicking on the button again will
+ Clicking on the button again will 
 \family roman
 \series medium
 \bar no
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -13267,11 +13350,11 @@ To close this footnote, click on the red box at the top left.
  If you want to turn already existing text into a footnote, simply mark
  it and click on the footnote button (a picture of text with an arrow pointing
  to stuff in the bottom margin).
- 
+
 \family default
 \series default
 \bar default
-Vice versa, you can change a footnote to regular text by hitting the 
+ Vice versa, you can change a footnote to regular text by hitting the 
 \family sans
 Backspace
 \family default
@@ -13306,9 +13389,9 @@ article
 \begin_inset Quotes erd
 \end_inset
 
-
+ 
 \family roman
- document class or changing the counter
+document class or changing the counter
 \family default
  
 \family roman
@@ -13317,9 +13400,9 @@ style.
 \family default
 os
 \family roman
-e 
+e
 \family default
-described in the 
+ described in the 
 \emph on
 Tricks for Footnotes and Marginpars
 \emph default
@@ -13384,16 +13467,16 @@ ote
  an arrow pointing to it), you'll see 
 \family roman
 \series medium
-a 
+a
 \family default
 \series default
-grey
+ grey 
 \family roman
 \series medium
- box with a 
+box with a
 \family default
 \series default
-red 
+ red 
 \family roman
 \series medium
 label 
@@ -13467,7 +13550,8 @@ As a default, LyX uses 1.9 cm (0.75 inches) as the margin width to allow room
 
 \begin_layout Section
 Figures and Imported Graphics
-\begin_inset LatexCommand \label{sec:figures}
+\begin_inset LatexCommand label
+name "sec:figures"
 
 \end_inset
 
@@ -13487,7 +13571,8 @@ Note that figures referred to here are do not have captions and sit wherever
  in the document you place them.
  If you need one of these features, see sec.\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:figurefloats}
+\begin_inset LatexCommand ref
+reference "sec:figurefloats"
 
 \end_inset
 
@@ -13507,9 +13592,9 @@ nsert\SpecialChar \menuseparator
 G
 \bar default
 raphics...
- 
+
 \family default
-from the menu.
+ from the menu.
 \end_layout
 
 \begin_layout Standard
@@ -13520,7 +13605,7 @@ A dialog will appear for you to choose the file to load.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename mobius.eps
+	filename clipart/mobius.eps
 	display color
 	scale 70
 	rotateOrigin center
@@ -13542,7 +13627,8 @@ File
  box, and scaling.
  Table\InsetSpace ~
 
-\begin_inset LatexCommand \ref{cap:Units-for-image}
+\begin_inset LatexCommand ref
+reference "cap:Units-for-image"
 
 \end_inset
 
@@ -13568,7 +13654,8 @@ Subfigure
 \family default
  option here, for use in figure floats (see Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:figurefloats}
+\begin_inset LatexCommand ref
+reference "sec:figurefloats"
 
 \end_inset
 
@@ -13584,7 +13671,7 @@ LyX has the ability to handle literally any graphics format in the known
  universe so long as a conversion path from this graphics format to the
  target output format can be created.
  If that sounds a little obtuse, consider how LyX handles Encapsulated PostScrip
-t® figures.
+tÂ® figures.
  LaTeX provides native support for this format, so LyX needs do nothing
  other than use the 
 \family typewriter
@@ -13602,12 +13689,21 @@ wide false
 sideways false
 status collapsed
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{cap:Units-for-image}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "cap:Units-for-image"
 
 \end_inset
 
 Units for setting the image size
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14054,7 +14150,7 @@ math unit (1 mu = 1/18 em)
 
 \begin_layout Standard
 To view the figure on the LyX screen, however, some additional work is required
- because neither the XForms nor the Qt GUI libraries can load PostScript®
+ because neither the XForms nor the Qt GUI libraries can load PostScriptÂ®
  figures themselves.
  The XForms library can load figures in the following, widely used graphics
  formats: 
@@ -14102,7 +14198,7 @@ png
 xpm
 \family default
  format figures.
- Thus, LyX must initiate a conversion from Encapsulated PostScript® to a
+ Thus, LyX must initiate a conversion from Encapsulated PostScriptÂ® to a
  loadable graphics format.
 \end_layout
 
@@ -14129,7 +14225,7 @@ references
 \family default
  dialog.
  If LyX cannot create a conversion path (which might have many steps) from
- Encapsulated PostScript® to one of the loadable formats listed above, then
+ Encapsulated PostScriptÂ® to one of the loadable formats listed above, then
  it defaults to the use of ImageMagick's 
 \family typewriter
 convert
@@ -14156,10 +14252,10 @@ Error converting to loadable format
 This strategy is used both to generate on-screen views of your image and
  when generating the final document.
  In the latter case, the LaTeX compiler must be supplied with graphics files
- in PostScript® format.
- Similarly the PDFLaTeX compiler requires files in
+ in PostScriptÂ® format.
+ Similarly the PDFLaTeX compiler requires files in 
 \family typewriter
- pdf
+pdf
 \family default
 , 
 \family typewriter
@@ -14179,7 +14275,8 @@ Figure Floats
 
 \begin_layout Subsubsection
 Using Figure Floats
-\begin_inset LatexCommand \label{sec:figurefloats}
+\begin_inset LatexCommand label
+name "sec:figurefloats"
 
 \end_inset
 
@@ -14204,7 +14301,8 @@ Caption
 \family default
  environment explained in Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:captionlayout}
+\begin_inset LatexCommand ref
+reference "sec:captionlayout"
 
 \end_inset
 
@@ -14228,9 +14326,9 @@ Flo
 a
 \bar default
 t\SpecialChar \menuseparator
-Figure 
+Figure
 \family default
-from the menu bar.
+ from the menu bar.
  You will get a float without a figure in it; use the toolbar icon described
  above to insert the actual figure.
 \end_layout
@@ -14242,8 +14340,12 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{fig:escher}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:escher"
 
 \end_inset
 
@@ -14251,10 +14353,15 @@ M.C.
  Escher on acid.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename escher-lsd.eps
+	filename clipart/escher-lsd.eps
 	display color
 	rotateOrigin center
 
@@ -14278,7 +14385,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename platypus.eps
+	filename clipart/platypus.eps
 	display color
 	rotateOrigin center
 
@@ -14287,12 +14394,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{fig:kill-plat}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:kill-plat"
 
 \end_inset
 
 A severely distorted platypus in a float.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -14308,11 +14424,12 @@ It seems simple, but there is subtlety involved in the placement of the
  the figure in the new paragraph created above the caption; or you can delete
  the caption and recreate it by selecting the 
 \family sans
-Caption 
+Caption
 \family default
-environment after the figure has been inserted.
+ environment after the figure has been inserted.
  This is what we did for figure 
-\begin_inset LatexCommand \ref{fig:kill-plat}
+\begin_inset LatexCommand ref
+reference "fig:kill-plat"
 
 \end_inset
 
@@ -14322,7 +14439,8 @@ environment after the figure has been inserted.
 Figure
 \family default
  then it will be inserted after the caption, as was the case for 
-\begin_inset LatexCommand \ref{fig:escher}
+\begin_inset LatexCommand ref
+reference "fig:escher"
 
 \end_inset
 
@@ -14342,7 +14460,8 @@ Float
 \begin_layout Standard
 Right-clicking on a float opens a dialog where you can alter the placement
  options that LaTeX uses for positioning the float (see 
-\begin_inset LatexCommand \ref{sec:float-locn}
+\begin_inset LatexCommand ref
+reference "sec:float-locn"
 
 \end_inset
 
@@ -14360,7 +14479,8 @@ columns
 \begin_layout Standard
 This figure also shows how we place a label and create a cross-reference
  to it; as you would expect from reading section 
-\begin_inset LatexCommand \ref{sec:crossref}
+\begin_inset LatexCommand ref
+reference "sec:crossref"
 
 \end_inset
 
@@ -14418,7 +14538,8 @@ igures
 \family default
  (as described in Section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:ListsOf}
+\begin_inset LatexCommand ref
+reference "sec:ListsOf"
 
 \end_inset
 
@@ -14427,7 +14548,8 @@ igures
 
 \begin_layout Subsubsection
 Float Placement
-\begin_inset LatexCommand \label{sec:float-locn}
+\begin_inset LatexCommand label
+name "sec:float-locn"
 
 \end_inset
 
@@ -14705,7 +14827,7 @@ XFig
 Export the figure as Encapsulated PostScript.
  This could be very easy included into LyX as described in the previous
  sections.
- The great advantage of this way is, that you have the full power of PostScript®
+ The great advantage of this way is, that you have the full power of PostScriptÂ®
  available.
  That means Bezier curves, colors, all line thicknesses and many more.
  If you have inserted text into your fig-document this will be printed with
@@ -14730,9 +14852,9 @@ Export the figure as LaTeX.
  use all LaTeX commands within the text inside XFig.
  Therefore you have to set the 
 \emph on
-special flag 
+special flag
 \emph default
-for text in XFig.
+ for text in XFig.
  This is automatic if you invoke XFig with 
 \family typewriter
 xfig\InsetSpace ~
@@ -14753,10 +14875,10 @@ $H_2$
 XFig\SpecialChar \@.
 
 \family default
- If you export this figure as LaTeX and include it in LyX with
+ If you export this figure as LaTeX and include it in LyX with 
 \family sans
 \bar under
- I
+I
 \bar default
 nsert\SpecialChar \menuseparator
 Chil
@@ -14781,7 +14903,7 @@ Extended Features
 \begin_deeper
 \begin_layout Standard
 The disadvantage of this way is that the graphical power of LaTeX isn't
- as strong as PostScript®\SpecialChar \@.
+ as strong as PostScriptÂ®\SpecialChar \@.
  You cannot use all thicknesses of lines and, more
  annoyingly, not all slopes.
  This is why we recommend the third way for more complex figures.
@@ -14889,7 +15011,7 @@ foo.pstex_t
 
 \end_inset
 
- This way you have the full PostScript® and LaTeX power combined except
+ This way you have the full PostScriptÂ® and LaTeX power combined except
  for the possibility to scale the figure after creating.
  So if you want scalable pictures, the PostScript format is your only choice.
  Another little advantage of letting LaTeX typeset the font is that the
@@ -14899,7 +15021,8 @@ foo.pstex_t
 
 \begin_layout Section
 Tables
-\begin_inset LatexCommand \label{sec:tables}
+\begin_inset LatexCommand label
+name "sec:tables"
 
 \end_inset
 
@@ -15641,10 +15764,7 @@ If you want your column to have a fixed width, then you can insert a width
 \family sans
 Width
 \family default
-\emph on
- 
-\emph default
-input-field of the 
+ input-field of the 
 \family sans
 Table
 \family default
@@ -15657,7 +15777,7 @@ If your table becomes too large to fit on a portrait document layout, you
  can select the 
 \family sans
 Rotate\InsetSpace ~
-90°
+90Â°
 \family default
  button, and the table will appear sideways (this means landscape in a portrait
  document style).
@@ -15674,7 +15794,7 @@ Note:
  This 
 \family sans
 Rotate\InsetSpace ~
-90°
+90Â°
 \family default
  option will 
 \emph on
@@ -16757,12 +16877,7 @@ Total
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
@@ -17568,9 +17683,9 @@ Split it into two tables.
 \begin_layout Enumerate
 Select the 
 \family sans
-Longtable 
+Longtable
 \family default
-button in the 
+ button in the 
 \family sans
 Table
 \family default
@@ -17657,16 +17772,11 @@ First\InsetSpace ~
 header.
 
 \family default
-\emph on
- 
-\emph default
-See the 
+ See the 
 \family typewriter
 TableExamples.lyx
 \family default
  example file to see how this works.
-
-\emph on
  
 \end_layout
 
@@ -17683,7 +17793,8 @@ A table can also be placed in a float, as described below, which will allow
 
 \begin_layout Subsection
 Table Floats
-\begin_inset LatexCommand \label{sec:table float}
+\begin_inset LatexCommand label
+name "sec:table float"
 
 \end_inset
 
@@ -17723,25 +17834,29 @@ t
  menu will enable LaTeX to place the table where it fits best, rather than
  exactly where you insert it.
  Float placement for table floats is similar to that for figure floats 
-\begin_inset LatexCommand \ref{sec:figurefloats}
+\begin_inset LatexCommand ref
+reference "sec:figurefloats"
 
 \end_inset
 
 , and is described in section 
-\begin_inset LatexCommand \ref{sec:float-locn}
+\begin_inset LatexCommand ref
+reference "sec:float-locn"
 
 \end_inset
 
 .
  Captions also work the same way as with figure floats, as described in
  section 
-\begin_inset LatexCommand \ref{sec:figurefloats}
+\begin_inset LatexCommand ref
+reference "sec:figurefloats"
 
 \end_inset
 
 .
  Table 
-\begin_inset LatexCommand \ref{table:a table float}
+\begin_inset LatexCommand ref
+reference "table:a table float"
 
 \end_inset
 
@@ -17752,12 +17867,21 @@ wide false
 sideways false
 status collapsed
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{table:a table float}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "table:a table float"
 
 \end_inset
 
 A table float.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17961,7 +18085,8 @@ c & d\end{array}\right]$
 
 \begin_layout Section
 Table of Contents and other Listings
-\begin_inset LatexCommand \label{sec:toc}
+\begin_inset LatexCommand label
+name "sec:toc"
 
 \end_inset
 
@@ -18036,9 +18161,9 @@ S
 \bar default
 ection\InsetSpace ~
 number\InsetSpace ~
-depth 
+depth
 \family default
-and 
+ and 
 \family sans
 \bar under
 T
@@ -18058,7 +18183,8 @@ Document\InsetSpace ~
 Layout
 \family default
  dialog to the appropriate value as described in 
-\begin_inset LatexCommand \ref{sub:section-depth}
+\begin_inset LatexCommand ref
+reference "sub:section-depth"
 
 \end_inset
 
@@ -18112,7 +18238,8 @@ Contents
 
 \begin_layout Subsection
 List of Figures, Tables and Algorithms
-\begin_inset LatexCommand \label{sec:ListsOf}
+\begin_inset LatexCommand label
+name "sec:ListsOf"
 
 \end_inset
 
@@ -18203,9 +18330,9 @@ a
 \begin_inset Formula $\alpha$
 \end_inset
 
-,
+, 
 \family sans
- M-m\InsetSpace ~
+M-m\InsetSpace ~
 g\InsetSpace ~
 b
 \family default
@@ -18279,9 +18406,9 @@ Space
 Escape
 \family default
  will leave the formula, placing the cursor after the formula.
-
+ 
 \family sans
- Tab
+Tab
 \family default
  can be used to move horizontally in a formula; for example, through the
  cells of a matrix or the positions in a multi-line equation.
@@ -18387,9 +18514,9 @@ Selecting Text
 You can select text within a formula in two different ways.
  Place the cursor at one end of the string of text you want, and press 
 \family sans
-Shift 
+Shift
 \family default
-and a cursor movement key to select text.
+ and a cursor movement key to select text.
  It will be highlighted as with regular text selection.
  Alternatively, you can select text with the mouse in the usual way.
  That text can then be cut or copied, and then pasted within any formula
@@ -18437,14 +18564,12 @@ x^2y
 , type 
 \family typewriter
 x^2
-\family sans
- 
 \family default
-then 
+ then 
 \family sans
-Space 
+Space
 \family default
-then
+ then
 \family sans
 \InsetSpace ~
 
@@ -18463,15 +18588,16 @@ a_1
 \InsetSpace ~
 
 \family default
-then
+then 
 \family sans
- Space
+Space
 \family default
 .
  Note that by default, the superscript or subscript is only for the single
  symbol to the left, which changes the spacing and alignment; you should
  read section 
-\begin_inset LatexCommand \ref{sec:Grouping}
+\begin_inset LatexCommand ref
+reference "sec:Grouping"
 
 \end_inset
 
@@ -18488,10 +18614,8 @@ Create a fraction with either
 
 \backslash
 frac
-\family sans
- 
 \family default
-(in Mathed) or using the fraction icon in the 
+ (in Mathed) or using the fraction icon in the 
 \family sans
 Math\InsetSpace ~
 Panel
@@ -18652,9 +18776,9 @@ lim
 \family typewriter
 
 \backslash
-lim 
+lim
 \family default
-in math-mode, or choosing from the 
+ in math-mode, or choosing from the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18663,7 +18787,8 @@ functions
 \end_inset
 
  menu in the math panel; see 
-\begin_inset LatexCommand \ref{sec:math-functions}
+\begin_inset LatexCommand ref
+reference "sec:math-functions"
 
 \end_inset
 
@@ -18770,7 +18895,8 @@ VI
 
 \begin_layout Subsection
 The Math Panel
-\begin_inset LatexCommand \label{sec:math-panel}
+\begin_inset LatexCommand label
+name "sec:math-panel"
 
 \end_inset
 
@@ -18945,7 +19071,8 @@ Space
 
 \begin_layout Subsection
 Math functions
-\begin_inset LatexCommand \label{sec:math-functions}
+\begin_inset LatexCommand label
+name "sec:math-functions"
 
 \end_inset
 
@@ -19762,34 +19889,28 @@ I was finally convinced that the math editor was the way to go when I found
 \begin_inset Formula $\alpha$
 \end_inset
 
- by typing the following keys: First type
-\family typewriter
- 
+ by typing the following keys: First type 
 \family sans
 M-c\InsetSpace ~
 m
-\family typewriter
- 
 \family default
-to enter
+ to enter 
 \family typewriter
- math-mode
+math-mode
 \family default
-, then type
+, then type 
 \family typewriter
- 
+
 \backslash
 alpha
-\family sans
- 
 \family default
-, then 
+ , then 
 \family sans
-Space 
+Space
 \family default
-and
+ and 
 \family sans
- Esc
+Esc
 \family default
 .
  As soon as I typed that 
@@ -19819,9 +19940,9 @@ C-m
 M-m\InsetSpace ~
 m
 \family default
-), the
+), the 
 \family typewriter
- 
+
 \backslash
 alpha
 \family default
@@ -19888,7 +20009,8 @@ Delimiter
 \family default
  dialog [see sec.
  
-\begin_inset LatexCommand \ref{sec:math-panel}
+\begin_inset LatexCommand ref
+reference "sec:math-panel"
 
 \end_inset
 
@@ -19963,7 +20085,8 @@ If you're trying to enter a LaTeX
 {
 \family default
  for grouping, you should read 
-\begin_inset LatexCommand \ref{sec:Grouping}
+\begin_inset LatexCommand ref
+reference "sec:Grouping"
 
 \end_inset
 
@@ -19972,7 +20095,8 @@ If you're trying to enter a LaTeX
 
 \begin_layout Section
 Grouping
-\begin_inset LatexCommand \label{sec:Grouping}
+\begin_inset LatexCommand label
+name "sec:Grouping"
 
 \end_inset
 
@@ -20027,9 +20151,9 @@ Arrays, such as matrices, are easily entered in LyX.
  In the 
 \family sans
 Math\InsetSpace ~
-Panel 
+Panel
 \family default
-there is a matrix button, which will open a dialog for you to choose the
+ there is a matrix button, which will open a dialog for you to choose the
  number of rows/columns.
  Here is an example:
 \begin_inset Formula \[
@@ -20052,9 +20176,9 @@ Shift
  some of them) will be left-, right-, or center-justified.
  The specification is 
 \family typewriter
-ccc 
+ccc
 \family default
-by default.
+ by default.
  Each letter corresponds to the relevant column.
  For example, 
 \family typewriter
@@ -20187,9 +20311,9 @@ not
  you want to start the middle part of the line, and hit 
 \family sans
 C-Tab.
- 
+
 \family default
-It then puts everything to the right of the cursor in the middle region
+ It then puts everything to the right of the cursor in the middle region
  of the equation (which, by the way, is not typeset by LaTeX in display-math
  size, so you should not put large expressions like fractions there).
  Move to where you want the right side of the line to begin, and hit 
@@ -20210,7 +20334,8 @@ extra
 
 \begin_layout Section
 Equation Numbering and Labels
-\begin_inset LatexCommand \label{sec:math-label}
+\begin_inset LatexCommand label
+name "sec:math-label"
 
 \end_inset
 
@@ -20284,7 +20409,8 @@ umbering
 You can toggle it on or off with this menu item.
  You can reference a labelled (not just numbered) equation, (cf.
  (
-\begin_inset LatexCommand \ref{mathed:first-eqn}
+\begin_inset LatexCommand ref
+reference "mathed:first-eqn"
 
 \end_inset
 
@@ -20315,7 +20441,8 @@ For numbered (or labelled) multi-line formulas, the default is that all
  receive a label of #.
  That label can be changed to another so that you can refer to that line,
  like (
-\begin_inset LatexCommand \ref{mathed:third-eqn}
+\begin_inset LatexCommand ref
+reference "mathed:third-eqn"
 
 \end_inset
 
@@ -20359,13 +20486,15 @@ line
 \end_inset
 
 Note that the first equation in this set (
-\begin_inset LatexCommand \ref{mathed:fourth-eqn}
+\begin_inset LatexCommand ref
+reference "mathed:fourth-eqn"
 
 \end_inset
 
 ) is labelled, the next is numbered but unlabelled, the third is unnumbered,
  and the last (
-\begin_inset LatexCommand \ref{mathed:fifth-eqn}
+\begin_inset LatexCommand ref
+reference "mathed:fifth-eqn"
 
 \end_inset
 
@@ -21260,7 +21389,8 @@ More Tools
 
 \begin_layout Section
 Cross-References
-\begin_inset LatexCommand \label{sec:crossref}
+\begin_inset LatexCommand label
+name "sec:crossref"
 
 \end_inset
 
@@ -21281,7 +21411,8 @@ Label
 Reference
 \family default
  proper, and it looks like this: 
-\begin_inset LatexCommand \ref{sec:crossref}
+\begin_inset LatexCommand ref
+reference "sec:crossref"
 
 \end_inset
 
@@ -21291,7 +21422,8 @@ Reference
  Those reading printed versions, however, will see a number --- in this
  case, the number of this section.
  There are also other varieties of cross-reference: for example, 
-\begin_inset LatexCommand \pageref{sec:crossref}
+\begin_inset LatexCommand pageref
+reference "sec:crossref"
 
 \end_inset
 
@@ -21502,17 +21634,20 @@ Reference
 \end_inset
 
  See sections 
-\begin_inset LatexCommand \ref{sec:figurefloats}
+\begin_inset LatexCommand ref
+reference "sec:figurefloats"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand \ref{sec:table float}
+\begin_inset LatexCommand ref
+reference "sec:table float"
 
 \end_inset
 
 , and 
-\begin_inset LatexCommand \ref{sec:math-label}
+\begin_inset LatexCommand ref
+reference "sec:math-label"
 
 \end_inset
 
@@ -21577,7 +21712,8 @@ rl:
  In its simplest usage, that's all you need to do.
  Click on the following gray box to see how LyX's homepage would be entered:
  
-\begin_inset LatexCommand \url{http://www.lyx.org}
+\begin_inset LatexCommand url
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -21626,7 +21762,9 @@ ame
  at 
 \newline
 
-\begin_inset LatexCommand \url[CTAN]{http://ctan.tug.org}
+\begin_inset LatexCommand url
+name "CTAN"
+target "http://ctan.tug.org"
 
 \end_inset
 
@@ -21649,16 +21787,18 @@ http://ctan.tug.org
 \begin_layout Standard
 [
 \emph on
-Author's Note: somebody needs to document the 
-\family sans
+Author's Note: somebody needs to document the
 \emph default
+ 
+\family sans
 \bar under
 H
 \bar default
 TML Type
 \family default
+ 
 \emph on
- button
+button
 \emph default
 ]
 \end_layout
@@ -21757,9 +21897,9 @@ branches
 \begin_layout Standard
 First, you have to 
 \emph on
-define 
+define
 \emph default
-the branches available within a particular document.
+ the branches available within a particular document.
  This is done in the 
 \family sans
 Document\SpecialChar \menuseparator
@@ -21782,9 +21922,9 @@ Branch
 \begin_layout Standard
 
 \emph on
-Activation 
+Activation
 \emph default
-or 
+ or 
 \emph on
 deactivation
 \emph default
@@ -21838,7 +21978,10 @@ VI
  If you'd like to see your math formulae typeset by LaTeX then install the
  necessary software (see below) and select the 
 \family sans
-Instant 
+Instant
+\family default
+ 
+\family sans
 \bar under
 p
 \bar default
@@ -21852,9 +21995,8 @@ On
 \begin_inset Quotes erd
 \end_inset
 
- pulldown item in the
+ pulldown item in the 
 \family sans
- 
 \bar under
 T
 \bar default
@@ -21888,7 +22030,10 @@ not
 \emph default
  generated just by selecting the 
 \family sans
-Instant 
+Instant
+\family default
+ 
+\family sans
 \bar under
 p
 \bar default
@@ -21960,7 +22105,8 @@ Spacing, pagination and line breaks
 
 \begin_layout Subsection
 Extra Horizontal Space
-\begin_inset LatexCommand \label{sec:hspace}
+\begin_inset LatexCommand label
+name "sec:hspace"
 
 \end_inset
 
@@ -21994,9 +22140,9 @@ HFill
 \family default
  is at the beginning of a line, and it's 
 \emph on
-not 
+not
 \emph default
-the first line in a paragraph, LyX ignores it.
+ the first line in a paragraph, LyX ignores it.
  This prevents 
 \family sans
 HFill
@@ -22011,9 +22157,8 @@ HFill
 \family roman
 s
 \family default
- can be inserted with
+ can be inserted with 
 \family sans
- 
 \bar under
 I
 \bar default
@@ -22156,7 +22301,8 @@ multi-margin
 
 \begin_layout Subsection
 Extra Vertical Space
-\begin_inset LatexCommand \label{sec:vertspace}
+\begin_inset LatexCommand label
+name "sec:vertspace"
 
 \end_inset
 
@@ -22326,7 +22472,8 @@ In some paragraph environments, the default is something other than justified
 
 \begin_layout Subsection
 Forcing Page Breaks
-\begin_inset LatexCommand \label{sec:pagebreak}
+\begin_inset LatexCommand label
+name "sec:pagebreak"
 
 \end_inset
 
@@ -22338,11 +22485,12 @@ If you don't like the way LaTeX does the page breaks in your document, you
  can force a pagebreak where you want one.
  In general, this will 
 \emph on
-not 
+not
 \emph default
-be necessary because LaTeX is good at pagebreaking, as was already mentioned
+ be necessary because LaTeX is good at pagebreaking, as was already mentioned
  in section 
-\begin_inset LatexCommand \ref{sec:widows}
+\begin_inset LatexCommand ref
+reference "sec:widows"
 
 \end_inset
 
@@ -22351,15 +22499,12 @@ be necessary because LaTeX is good at pagebreaking, as was already mentioned
 
 \begin_layout Standard
 So in general there is no need to use the option described below, and we
- recommend not using it until the text is
+ recommend not using it until the text is finished, and until you have checked
+ in the preview to see if you 
 \emph on
- 
+really
 \emph default
-finished, and until you have checked in the preview to see if you 
-\emph on
-really 
-\emph default
-have to change the pagebreaking.You can force a pagebreak above or below
+ have to change the pagebreaking.You can force a pagebreak above or below
  a paragraph in the 
 \family sans
 \bar under
@@ -22385,12 +22530,14 @@ You might try to use a pagebreak to ensure that a figure or table appears
  appear at the top of a page [or the bottom, or on their own page] without
  having to worry about what precedes or follows your figure or table.
  See sections 
-\begin_inset LatexCommand \ref{sec:figures}
+\begin_inset LatexCommand ref
+reference "sec:figures"
 
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{sec:tables}
+\begin_inset LatexCommand ref
+reference "sec:tables"
 
 \end_inset
 
@@ -22417,7 +22564,8 @@ A blank is a blank? Not in good typography.
 
 \begin_layout Subsubsection
 Inter-word Space
-\begin_inset LatexCommand \label{sec:normblank-lbreak-horline}
+\begin_inset LatexCommand label
+name "sec:normblank-lbreak-horline"
 
 \end_inset
 
@@ -22431,7 +22579,8 @@ English) have the typographical convention to add extra
  space after an end-of-sentence punctuation mark, and LyX honors those conventio
 ns (see section\InsetSpace ~
 
-\begin_inset LatexCommand \ref{sec:abbrev}
+\begin_inset LatexCommand ref
+reference "sec:abbrev"
 
 \end_inset
 
@@ -22454,9 +22603,9 @@ Inter-
 w
 \bar default
 ord\InsetSpace ~
-Space 
+Space
 \family default
-or with 
+ or with 
 \family sans
 C-M-Space.
 \end_layout
@@ -22466,7 +22615,8 @@ Protected Space
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{sec:protblank-lbreak-horline}
+\begin_inset LatexCommand label
+name "sec:protblank-lbreak-horline"
 
 \end_inset
 
@@ -22517,16 +22667,17 @@ Protected
 \InsetSpace ~
 S
 \bar default
-pace 
+pace
 \family default
-or with 
+ or with 
 \family sans
 C-Space.
 \end_layout
 
 \begin_layout Subsubsection
 Thin Space
-\begin_inset LatexCommand \label{sec:thinblank-lbreak-horline}
+\begin_inset LatexCommand label
+name "sec:thinblank-lbreak-horline"
 
 \end_inset
 
@@ -22582,9 +22733,9 @@ rmatting\SpecialChar \menuseparator
 T
 \bar default
 hin\InsetSpace ~
-Space 
+Space
 \family default
-or with 
+ or with 
 \family sans
 C-S-Space.
 \end_layout
@@ -22938,9 +23089,9 @@ rmatting\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-inebreak 
+inebreak
 \family default
-or with 
+ or with 
 \family sans
 C-Return.
 
@@ -22948,11 +23099,12 @@ C-Return.
  You should, however, not use this to correct LaTeX's linebreaking, as LaTeX
  is 
 \emph on
-very 
+very
 \emph default
-good at linebreaking\SpecialChar \ldots{}
+ good at linebreaking\SpecialChar \ldots{}
  (see section 
-\begin_inset LatexCommand \ref{sec:pagebreak}
+\begin_inset LatexCommand ref
+reference "sec:pagebreak"
 
 \end_inset
 
@@ -22960,17 +23112,20 @@ good at linebreaking\SpecialChar \ldots{}
  There are, however, a number of situations where it is necessary to actively
  set a linebreak, e.g.
  in a poem or for an Address (see sections 
-\begin_inset LatexCommand \ref{sec:quote}
+\begin_inset LatexCommand ref
+reference "sec:quote"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand \ref{sec:verse}
+\begin_inset LatexCommand ref
+reference "sec:verse"
 
 \end_inset
 
  and 
-\begin_inset LatexCommand \ref{sec:adress_usage}
+\begin_inset LatexCommand ref
+reference "sec:adress_usage"
 
 \end_inset
 
@@ -22979,7 +23134,8 @@ good at linebreaking\SpecialChar \ldots{}
 
 \begin_layout Section
 Spellchecking
-\begin_inset LatexCommand \label{sec:spellchecking}
+\begin_inset LatexCommand label
+name "sec:spellchecking"
 
 \end_inset
 
@@ -23036,7 +23192,8 @@ Spellchecker
 
 \begin_layout Subsection
 Spellchecker Options
-\begin_inset LatexCommand \label{sec:spell_opt}
+\begin_inset LatexCommand label
+name "sec:spell_opt"
 
 \end_inset
 
@@ -23065,11 +23222,8 @@ Dictionary
 
 \begin_layout Standard
 By default, the dictionary file to use is determined by the language of
- the text you're checking, which is set in the
+ the text you're checking, which is set in the 
 \family sans
-\shape up
- 
-\shape default
 \bar under
 D
 \bar default
@@ -23362,7 +23516,8 @@ If you have a keyboard suited to the language you are using (for example,
  your X environment, all you need to do for LyX is tell it your language,
  the character encoding, and desired paper size.
  Refer to 
-\begin_inset LatexCommand \ref{sec:langlay}
+\begin_inset LatexCommand ref
+reference "sec:langlay"
 
 \end_inset
 
@@ -23375,7 +23530,8 @@ If, however, you have a U.S.-style keyboard and want to write in a different
  For example, if you have a U.S.-style keyboard but want to write in Italian,
  you can configure LyX to use an Italian keymap.
  Refer to 
-\begin_inset LatexCommand \ref{sec:optkey}
+\begin_inset LatexCommand ref
+reference "sec:optkey"
 
 \end_inset
 
@@ -23411,7 +23567,8 @@ Customization
 
 \begin_layout Subsection
 Language Options
-\begin_inset LatexCommand \label{sec:langlay}
+\begin_inset LatexCommand label
+name "sec:langlay"
 
 \end_inset
 
@@ -23440,17 +23597,17 @@ the language and character encoding for your language.
 \begin_layout Standard
 Choose your language by clicking on the arrow in t
 \family roman
-he 
+he
+\family default
+ 
 \family sans
 Language
-\family roman
- 
 \family default
-combo
+ combo
 \family roman
-box 
+box
 \family default
-of the 
+ of the 
 \family sans
 \bar under
 D
@@ -23501,7 +23658,8 @@ Latin1
 
 \begin_layout Subsection
 Keyboard mapping configuration
-\begin_inset LatexCommand \label{sec:optkey}
+\begin_inset LatexCommand label
+name "sec:optkey"
 
 \end_inset
 
@@ -23517,7 +23675,8 @@ The preferences dialog allows you to choose up to two keyboard mappings.
 
 \begin_layout Subsection
 Character Tables
-\begin_inset LatexCommand \label{sec:keytab}
+\begin_inset LatexCommand label
+name "sec:keytab"
 
 \end_inset
 
@@ -23527,7 +23686,8 @@ Character Tables
 \begin_layout Standard
 Table\InsetSpace ~
 
-\begin_inset LatexCommand \ref{cap:The-latin1-character}
+\begin_inset LatexCommand ref
+reference "cap:The-latin1-character"
 
 \end_inset
 
@@ -23612,7 +23772,8 @@ status collapsed
 \begin_layout Standard
 This only holds when you want to input these quotes by yourself.
  The automatic quote feature described in Section 
-\begin_inset LatexCommand \ref{sec:quotes}
+\begin_inset LatexCommand ref
+reference "sec:quotes"
 
 \end_inset
 
@@ -23672,8 +23833,12 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{cap:The-latin1-character}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "cap:The-latin1-character"
 
 \end_inset
 
@@ -23682,6 +23847,11 @@ The
 latin1
 \family default
  character set
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24175,7 +24345,7 @@ p
 \bar no
 \noun off
 \color none
-°
+Â°
 \end_layout
 
 \end_inset
@@ -24192,7 +24362,7 @@ p
 \bar no
 \noun off
 \color none
-À
+Ã€
 \end_layout
 
 \end_inset
@@ -24209,7 +24379,7 @@ p
 \bar no
 \noun off
 \color none
-Ð
+Ã
 \end_layout
 
 \end_inset
@@ -24226,7 +24396,7 @@ p
 \bar no
 \noun off
 \color none
-à
+Ã 
 \end_layout
 
 \end_inset
@@ -24243,7 +24413,7 @@ p
 \bar no
 \noun off
 \color none
-ð
+Ã°
 \end_layout
 
 \end_inset
@@ -24418,7 +24588,7 @@ q
 \bar no
 \noun off
 \color none
-¡
+Â¡
 \end_layout
 
 \end_inset
@@ -24435,7 +24605,7 @@ q
 \bar no
 \noun off
 \color none
-±
+Â±
 \end_layout
 
 \end_inset
@@ -24452,7 +24622,7 @@ q
 \bar no
 \noun off
 \color none
-Á
+Ã
 \end_layout
 
 \end_inset
@@ -24469,7 +24639,7 @@ q
 \bar no
 \noun off
 \color none
-Ñ
+Ã‘
 \end_layout
 
 \end_inset
@@ -24486,7 +24656,7 @@ q
 \bar no
 \noun off
 \color none
-á
+Ã¡
 \end_layout
 
 \end_inset
@@ -24503,7 +24673,7 @@ q
 \bar no
 \noun off
 \color none
-ñ
+Ã±
 \end_layout
 
 \end_inset
@@ -24690,7 +24860,7 @@ textcent
 status collapsed
 
 \begin_layout Standard
-character ¢ 
+character Â¢ 
 \end_layout
 
 \end_inset
@@ -24712,7 +24882,7 @@ character ¢
 \bar no
 \noun off
 \color none
-²
+Â²
 \end_layout
 
 \end_inset
@@ -24729,7 +24899,7 @@ character ¢
 \bar no
 \noun off
 \color none
-Â
+Ã‚
 \end_layout
 
 \end_inset
@@ -24746,7 +24916,7 @@ character ¢
 \bar no
 \noun off
 \color none
-Ò
+Ã’
 \end_layout
 
 \end_inset
@@ -24763,7 +24933,7 @@ character ¢
 \bar no
 \noun off
 \color none
-â
+Ã¢
 \end_layout
 
 \end_inset
@@ -24780,7 +24950,7 @@ character ¢
 \bar no
 \noun off
 \color none
-ò
+Ã²
 \end_layout
 
 \end_inset
@@ -24955,7 +25125,7 @@ s
 \bar no
 \noun off
 \color none
-£
+Â£
 \end_layout
 
 \end_inset
@@ -24972,7 +25142,7 @@ s
 \bar no
 \noun off
 \color none
-³
+Â³
 \end_layout
 
 \end_inset
@@ -24989,7 +25159,7 @@ s
 \bar no
 \noun off
 \color none
-Ã
+Ãƒ
 \end_layout
 
 \end_inset
@@ -25006,7 +25176,7 @@ s
 \bar no
 \noun off
 \color none
-Ó
+Ã“
 \end_layout
 
 \end_inset
@@ -25023,7 +25193,7 @@ s
 \bar no
 \noun off
 \color none
-ã
+Ã£
 \end_layout
 
 \end_inset
@@ -25040,7 +25210,7 @@ s
 \bar no
 \noun off
 \color none
-ó
+Ã³
 \end_layout
 
 \end_inset
@@ -25224,7 +25394,7 @@ textcurrency
 status collapsed
 
 \begin_layout Standard
-character ¤ 
+character Â¤ 
 \end_layout
 
 \end_inset
@@ -25246,7 +25416,7 @@ character ¤
 \bar no
 \noun off
 \color none
-´
+Â´
 \end_layout
 
 \end_inset
@@ -25263,7 +25433,7 @@ character ¤
 \bar no
 \noun off
 \color none
-Ä
+Ã„
 \end_layout
 
 \end_inset
@@ -25280,7 +25450,7 @@ character ¤
 \bar no
 \noun off
 \color none
-Ô
+Ã”
 \end_layout
 
 \end_inset
@@ -25297,7 +25467,7 @@ character ¤
 \bar no
 \noun off
 \color none
-ä
+Ã¤
 \end_layout
 
 \end_inset
@@ -25314,7 +25484,7 @@ character ¤
 \bar no
 \noun off
 \color none
-ô
+Ã´
 \end_layout
 
 \end_inset
@@ -25498,7 +25668,7 @@ textyen
 status collapsed
 
 \begin_layout Standard
-character ¥ 
+character Â¥ 
 \end_layout
 
 \end_inset
@@ -25520,7 +25690,7 @@ character ¥
 \bar no
 \noun off
 \color none
-µ
+Âµ
 \end_layout
 
 \end_inset
@@ -25537,7 +25707,7 @@ character ¥
 \bar no
 \noun off
 \color none
-Å
+Ã…
 \end_layout
 
 \end_inset
@@ -25554,7 +25724,7 @@ character ¥
 \bar no
 \noun off
 \color none
-Õ
+Ã•
 \end_layout
 
 \end_inset
@@ -25571,7 +25741,7 @@ character ¥
 \bar no
 \noun off
 \color none
-å
+Ã¥
 \end_layout
 
 \end_inset
@@ -25588,7 +25758,7 @@ character ¥
 \bar no
 \noun off
 \color none
-õ
+Ãµ
 \end_layout
 
 \end_inset
@@ -25772,7 +25942,7 @@ textbrokenbar
 status collapsed
 
 \begin_layout Standard
-character ¦ 
+character Â¦ 
 \end_layout
 
 \end_inset
@@ -25794,7 +25964,7 @@ character ¦
 \bar no
 \noun off
 \color none
-¶
+Â¶
 \end_layout
 
 \end_inset
@@ -25811,7 +25981,7 @@ character ¦
 \bar no
 \noun off
 \color none
-Æ
+Ã†
 \end_layout
 
 \end_inset
@@ -25828,7 +25998,7 @@ character ¦
 \bar no
 \noun off
 \color none
-Ö
+Ã–
 \end_layout
 
 \end_inset
@@ -25845,7 +26015,7 @@ character ¦
 \bar no
 \noun off
 \color none
-æ
+Ã¦
 \end_layout
 
 \end_inset
@@ -25862,7 +26032,7 @@ character ¦
 \bar no
 \noun off
 \color none
-ö
+Ã¶
 \end_layout
 
 \end_inset
@@ -26037,7 +26207,7 @@ w
 \bar no
 \noun off
 \color none
-§
+Â§
 \end_layout
 
 \end_inset
@@ -26054,7 +26224,7 @@ w
 \bar no
 \noun off
 \color none
-·
+Â·
 \end_layout
 
 \end_inset
@@ -26071,7 +26241,7 @@ w
 \bar no
 \noun off
 \color none
-Ç
+Ã‡
 \end_layout
 
 \end_inset
@@ -26088,7 +26258,7 @@ w
 \bar no
 \noun off
 \color none
-×
+Ã—
 \end_layout
 
 \end_inset
@@ -26105,7 +26275,7 @@ w
 \bar no
 \noun off
 \color none
-ç
+Ã§
 \end_layout
 
 \end_inset
@@ -26122,7 +26292,7 @@ w
 \bar no
 \noun off
 \color none
-÷
+Ã·
 \end_layout
 
 \end_inset
@@ -26297,7 +26467,7 @@ x
 \bar no
 \noun off
 \color none
-¨
+Â¨
 \end_layout
 
 \end_inset
@@ -26314,7 +26484,7 @@ x
 \bar no
 \noun off
 \color none
-¸
+Â¸
 \end_layout
 
 \end_inset
@@ -26331,7 +26501,7 @@ x
 \bar no
 \noun off
 \color none
-È
+Ãˆ
 \end_layout
 
 \end_inset
@@ -26348,7 +26518,7 @@ x
 \bar no
 \noun off
 \color none
-Ø
+Ã˜
 \end_layout
 
 \end_inset
@@ -26365,7 +26535,7 @@ x
 \bar no
 \noun off
 \color none
-è
+Ã¨
 \end_layout
 
 \end_inset
@@ -26382,7 +26552,7 @@ x
 \bar no
 \noun off
 \color none
-ø
+Ã¸
 \end_layout
 
 \end_inset
@@ -26557,7 +26727,7 @@ y
 \bar no
 \noun off
 \color none
-©
+Â©
 \end_layout
 
 \end_inset
@@ -26574,7 +26744,7 @@ y
 \bar no
 \noun off
 \color none
-¹
+Â¹
 \end_layout
 
 \end_inset
@@ -26591,7 +26761,7 @@ y
 \bar no
 \noun off
 \color none
-É
+Ã‰
 \end_layout
 
 \end_inset
@@ -26608,7 +26778,7 @@ y
 \bar no
 \noun off
 \color none
-Ù
+Ã™
 \end_layout
 
 \end_inset
@@ -26625,7 +26795,7 @@ y
 \bar no
 \noun off
 \color none
-é
+Ã©
 \end_layout
 
 \end_inset
@@ -26642,7 +26812,7 @@ y
 \bar no
 \noun off
 \color none
-ù
+Ã¹
 \end_layout
 
 \end_inset
@@ -26817,7 +26987,7 @@ z
 \bar no
 \noun off
 \color none
-ª
+Âª
 \end_layout
 
 \end_inset
@@ -26834,7 +27004,7 @@ z
 \bar no
 \noun off
 \color none
-º
+Âº
 \end_layout
 
 \end_inset
@@ -26851,7 +27021,7 @@ z
 \bar no
 \noun off
 \color none
-Ê
+ÃŠ
 \end_layout
 
 \end_inset
@@ -26868,7 +27038,7 @@ z
 \bar no
 \noun off
 \color none
-Ú
+Ãš
 \end_layout
 
 \end_inset
@@ -26885,7 +27055,7 @@ z
 \bar no
 \noun off
 \color none
-ê
+Ãª
 \end_layout
 
 \end_inset
@@ -26902,7 +27072,7 @@ z
 \bar no
 \noun off
 \color none
-ú
+Ãº
 \end_layout
 
 \end_inset
@@ -27077,7 +27247,7 @@ k
 \bar no
 \noun off
 \color none
-«
+Â«
 \end_layout
 
 \end_inset
@@ -27094,7 +27264,7 @@ k
 \bar no
 \noun off
 \color none
-»
+Â»
 \end_layout
 
 \end_inset
@@ -27111,7 +27281,7 @@ k
 \bar no
 \noun off
 \color none
-Ë
+Ã‹
 \end_layout
 
 \end_inset
@@ -27128,7 +27298,7 @@ k
 \bar no
 \noun off
 \color none
-Û
+Ã›
 \end_layout
 
 \end_inset
@@ -27145,7 +27315,7 @@ k
 \bar no
 \noun off
 \color none
-ë
+Ã«
 \end_layout
 
 \end_inset
@@ -27162,7 +27332,7 @@ k
 \bar no
 \noun off
 \color none
-û
+Ã»
 \end_layout
 
 \end_inset
@@ -27339,7 +27509,7 @@ l
 \bar no
 \noun off
 \color none
-¬
+Â¬
 \end_layout
 
 \end_inset
@@ -27356,7 +27526,7 @@ l
 \bar no
 \noun off
 \color none
-¼
+Â¼
 \end_layout
 
 \end_inset
@@ -27373,7 +27543,7 @@ l
 \bar no
 \noun off
 \color none
-Ì
+ÃŒ
 \end_layout
 
 \end_inset
@@ -27390,7 +27560,7 @@ l
 \bar no
 \noun off
 \color none
-Ü
+Ãœ
 \end_layout
 
 \end_inset
@@ -27407,7 +27577,7 @@ l
 \bar no
 \noun off
 \color none
-ì
+Ã¬
 \end_layout
 
 \end_inset
@@ -27424,7 +27594,7 @@ l
 \bar no
 \noun off
 \color none
-ü
+Ã¼
 \end_layout
 
 \end_inset
@@ -27608,7 +27778,7 @@ textendash
 status collapsed
 
 \begin_layout Standard
-character ­ 
+character Â­ 
 \end_layout
 
 \end_inset
@@ -27630,7 +27800,7 @@ character ­
 \bar no
 \noun off
 \color none
-½
+Â½
 \end_layout
 
 \end_inset
@@ -27647,7 +27817,7 @@ character ­
 \bar no
 \noun off
 \color none
-Í
+Ã
 \end_layout
 
 \end_inset
@@ -27664,7 +27834,7 @@ character ­
 \bar no
 \noun off
 \color none
-Ý
+Ã
 \end_layout
 
 \end_inset
@@ -27681,7 +27851,7 @@ character ­
 \bar no
 \noun off
 \color none
-í
+Ã­
 \end_layout
 
 \end_inset
@@ -27698,7 +27868,7 @@ character ­
 \bar no
 \noun off
 \color none
-ý
+Ã½
 \end_layout
 
 \end_inset
@@ -27873,7 +28043,7 @@ n
 \bar no
 \noun off
 \color none
-®
+Â®
 \end_layout
 
 \end_inset
@@ -27890,7 +28060,7 @@ n
 \bar no
 \noun off
 \color none
-¾
+Â¾
 \end_layout
 
 \end_inset
@@ -27907,7 +28077,7 @@ n
 \bar no
 \noun off
 \color none
-Î
+ÃŽ
 \end_layout
 
 \end_inset
@@ -27924,7 +28094,7 @@ n
 \bar no
 \noun off
 \color none
-Þ
+Ãž
 \end_layout
 
 \end_inset
@@ -27941,7 +28111,7 @@ n
 \bar no
 \noun off
 \color none
-î
+Ã®
 \end_layout
 
 \end_inset
@@ -27958,7 +28128,7 @@ n
 \bar no
 \noun off
 \color none
-þ
+Ã¾
 \end_layout
 
 \end_inset
@@ -28125,7 +28295,7 @@ o
 \bar no
 \noun off
 \color none
-¯
+Â¯
 \end_layout
 
 \end_inset
@@ -28142,7 +28312,7 @@ o
 \bar no
 \noun off
 \color none
-¿
+Â¿
 \end_layout
 
 \end_inset
@@ -28159,7 +28329,7 @@ o
 \bar no
 \noun off
 \color none
-Ï
+Ã
 \end_layout
 
 \end_inset
@@ -28176,7 +28346,7 @@ o
 \bar no
 \noun off
 \color none
-ß
+ÃŸ
 \end_layout
 
 \end_inset
@@ -28193,7 +28363,7 @@ o
 \bar no
 \noun off
 \color none
-ï
+Ã¯
 \end_layout
 
 \end_inset
@@ -28210,7 +28380,7 @@ o
 \bar no
 \noun off
 \color none
-ÿ
+Ã¿
 \end_layout
 
 \end_inset
@@ -28254,43 +28424,43 @@ ISO8859--1
 
 \begin_deeper
 \begin_layout Standard
-¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
+Â¨ Ã„ Ã‹ Ã Ã– Ãœ Ã¤ Ã« Ã¯ Ã¶ Ã¼ Ã¿
 \hfill
 diaeresis
 \end_layout
 
 \begin_layout Standard
-^ Â Ê Î Ô Û â ê î ô û
+^ Ã‚ ÃŠ ÃŽ Ã” Ã› Ã¢ Ãª Ã® Ã´ Ã»
 \hfill
 circumflex
 \end_layout
 
 \begin_layout Standard
-` À È Ì Ò Ù à è ì ò ù
+` Ã€ Ãˆ ÃŒ Ã’ Ã™ Ã  Ã¨ Ã¬ Ã² Ã¹
 \hfill
 grave
 \end_layout
 
 \begin_layout Standard
-´ Á É Í Ó Ú Ý á é í ó ú ý
+Â´ Ã Ã‰ Ã Ã“ Ãš Ã Ã¡ Ã© Ã­ Ã³ Ãº Ã½
 \hfill
 acute
 \end_layout
 
 \begin_layout Standard
-~ Ã Ñ Õ ã ñ õ
+~ Ãƒ Ã‘ Ã• Ã£ Ã± Ãµ
 \hfill
 tilde
 \end_layout
 
 \begin_layout Standard
-¸Çç
+Â¸Ã‡Ã§
 \hfill
 cedilla
 \end_layout
 
 \begin_layout Standard
-¯
+Â¯
 \hfill
 macron
 \begin_inset Foot
@@ -28328,65 +28498,25 @@ ISO8859--2
 
 \begin_deeper
 \begin_layout Standard
-\i \^{H}
-\i \^{J}
-\i \^{h}
-\i \^{\j}
-\i \^{C}
-\i \^{G}
-\i \^{S}
-\i \^{c}
-\i \^{g}
-\i \^{s}
-
+Ä¤Ä´Ä¥È·Ì‚ÄˆÄœÅœÄ‰ÄÅ
 \hfill
 circumflex
 \end_layout
 
 \begin_layout Standard
-\i \'{S}
-\i \'{Z}
-\i \'{s}
-\i \'{z}
-\i \'{R}
-\i \'{L}
-\i \'{C}
-\i \'{N}
-\i \'{r}
-\i \'{l}
-\i \'{c}
-\i \'{n}
-
+ÅšÅ¹Å›ÅºÅ”Ä¹Ä†ÅƒÅ•ÄºÄ‡Å„
 \hfill
 acute
 \end_layout
 
 \begin_layout Standard
-\i \~{I}
-\i \~{\i}
-\i \~{U}
-\i \~{u}
-
+Ä¨Ä±ÌƒÅ¨Å©
 \hfill
 tilde
 \end_layout
 
 \begin_layout Standard
-\i \c{S}
-\i \c{s}
-\i \c{T}
-\i \c{t}
-\i \c{R}
-\i \c{L}
-\i \c{G}
-\i \c{r}
-\i \c{l}
-\i \c{g}
-\i \c{N}
-\i \c{K}
-\i \c{n}
-\i \c{k}
-
+ÅžÅŸÅ¢Å£Å–Ä»Ä¢Å—Ä¼Ä£Å…Ä¶Å†Ä·
 \hfill
 cedilla
 \begin_inset Foot
@@ -28403,27 +28533,13 @@ These characters might not look very nice on screen, but they will be just
 \end_layout
 
 \begin_layout Standard
-\i \={E}
-\i \={e}
-\i \={A}
-\i \={I}
-\i \={O}
-\i \={U}
-\i \={a}
-\i \={\i}
-\i \={o}
-\i \={u}
-
+Ä’Ä“Ä€ÄªÅŒÅªÄÄ±Ì„ÅÅ«
 \hfill
 macron
 \end_layout
 
 \begin_layout Standard
-\i \H{O}
-\i \H{U}
-\i \H{o}
-\i \H{u}
-
+ÅÅ°Å‘Å±
 \hfill
 hungarian umlaut
 \end_layout
@@ -28482,7 +28598,7 @@ LyX Manifesto,
 \begin_layout Itemize
 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \noun default
  wrote several minidocs, including some of the information about international
  support in LyX.
@@ -28500,7 +28616,7 @@ nal keyboard maps and customization.
 \begin_layout Itemize
 
 \noun on
-Pascal André
+Pascal AndrÃ©
 \noun default
  originally documented the LinuxDoc SGML interface.
 \end_layout
@@ -28519,7 +28635,8 @@ Reference.lyx
 \begin_layout Itemize
 Special thanks to the LyX Team\InsetSpace ~
 
-\begin_inset LatexCommand \cite{lyxcredit}
+\begin_inset LatexCommand cite
+key "lyxcredit"
 
 \end_inset
 
@@ -28782,8 +28899,11 @@ After fall of 1997, the LyX Team as a whole took over maintenance of the
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "lyxcredit"
 
-\bibitem {lyxcredit}
+\end_inset
+
 The LyX Team: 
 \begin_inset ERT
 status collapsed
@@ -28816,38 +28936,50 @@ status collapsed
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexbook"
 
-\bibitem {latexbook}
+\end_inset
+
 Leslie Lamport: 
 \emph on
 LaTeX: A Document Preparation System.
- 
+
 \emph default
-Addison-Wesley, second edition, 1994
+ Addison-Wesley, second edition, 1994
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexcompanion"
 
-\bibitem {latexcompanion}
+\end_inset
+
 Michel Goossens, Frank Mittelbach and Alexander Samarin: 
 \emph on
 The LaTeX Companion.
- 
+
 \emph default
-Addison-Wesley, 1994
+ Addison-Wesley, 1994
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexguide"
 
-\bibitem {latexguide}
+\end_inset
+
 Kopka and Daly: 
 \emph on
 A Guide to LaTeX2e
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "texbook"
 
-\bibitem {texbook}
+\end_inset
+
 Donald E.
  Knuth.
  

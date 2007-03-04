@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 259
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -202,7 +202,8 @@
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "usti" 
 \author "Uwe Stöhr" 
 \author "" 
 \end_header
@@ -531,7 +532,7 @@ reference "sec:Image-Formats"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename mobius.eps
+	filename clipart/mobius.eps
 	display color
 	scale 70
 	rotateOrigin center
@@ -548,7 +549,7 @@ This is the same image like the one above but in draft mode:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename mobius.eps
+	filename clipart/mobius.eps
 	display color
 	scale 70
 	draft
@@ -650,7 +651,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename platypus.eps
+	filename clipart/platypus.eps
 	display color
 	width 50col%
 	rotateOrigin center
@@ -709,7 +710,7 @@ M.C.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename escher-lsd.eps
+	filename clipart/escher-lsd.eps
 	display color
 	scale 80
 	rotateOrigin center
@@ -852,7 +853,7 @@ status open
 \hfill
 
 \begin_inset Graphics
-	filename escher-lsd.eps
+	filename clipart/escher-lsd.eps
 	width 45col%
 	subcaption
 	subcaptionText "Undefinable structure"
@@ -863,7 +864,7 @@ status open
 \hfill
 
 \begin_inset Graphics
-	filename platypus.eps
+	filename clipart/platypus.eps
 	lyxscale 60
 	width 45col%
 	subcaption
@@ -17342,7 +17343,7 @@ reference "sec:Caption-Placement"
  by left-clicking on the box label.
  A closed float box looks like this: 
 \begin_inset Graphics
-	filename ../clipart/floatQt4.png
+	filename clipart/floatQt4.png
 	scale 70
 
 \end_inset
@@ -17716,7 +17717,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename mobius.eps
+	filename clipart/mobius.eps
 	display color
 	width 40col%
 	rotateOrigin center
@@ -17946,7 +17947,7 @@ Label
 .
  A grey label box like this one: 
 \begin_inset Graphics
-	filename ../clipart/labelQt4.png
+	filename clipart/labelQt4.png
 	scale 85
 
 \end_inset
@@ -17980,7 +17981,7 @@ Cross-reference
 .
  A grey cross-reference box like this one: 
 \begin_inset Graphics
-	filename ../clipart/referenceQt4.png
+	filename clipart/referenceQt4.png
 	scale 85
 
 \end_inset
@@ -19377,7 +19378,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename mobius.eps
+	filename clipart/mobius.eps
 	lyxscale 50
 	scale 50
 
@@ -20207,7 +20208,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename escher-lsd.eps
+	filename clipart/escher-lsd.eps
 	scale 75
 
 \end_inset
@@ -20522,7 +20523,7 @@ status open
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename escher-lsd.eps
+	filename clipart/escher-lsd.eps
 	scale 75
 
 \end_inset
@@ -20696,7 +20697,7 @@ Note This note type is for internal notes that won't appear in the output.
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/LyXNoteImageQt4.png
+	filename clipart/LyXNoteImageQt4.png
 	display none
 	scale 85
 
@@ -20730,7 +20731,7 @@ LaTeX (pdflatex) / LaTeX (plain)
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/CommentNoteImageQt4.png
+	filename clipart/CommentNoteImageQt4.png
 	display none
 	scale 85
 
@@ -20758,7 +20759,7 @@ Out This note will appear in the output as grey text.
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/GreyedOutNoteImageQt4.png
+	filename clipart/GreyedOutNoteImageQt4.png
 	display none
 	scale 85
 
@@ -20862,7 +20863,7 @@ Framed This note will appear in the output as framed text.
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/FramedNoteImageQt4.png
+	filename clipart/FramedNoteImageQt4.png
 	display none
 	scale 85
 
@@ -20907,7 +20908,7 @@ Shaded This note will appear in the output with red background color.
 \newline
 
 \begin_inset Graphics
-	filename ../clipart/ShadedNoteImageQt4.png
+	filename clipart/ShadedNoteImageQt4.png
 	display none
 	scale 85
 
@@ -21365,7 +21366,7 @@ You'll see
 \bar default
  then the following footnote-box: 
 \begin_inset Graphics
-	filename ../clipart/footnoteQt4.png
+	filename clipart/footnoteQt4.png
 	scale 80
 
 \end_inset
@@ -22014,7 +22015,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename ../clipart/without_fntright.pdf
+	filename clipart/without_fntright.pdf
 	width 100col%
 
 \end_inset
@@ -22077,7 +22078,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename ../clipart/with_fntright.pdf
+	filename clipart/with_fntright.pdf
 	width 100col%
 
 \end_inset
@@ -22212,7 +22213,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename ../clipart/endnotes.pdf
+	filename clipart/endnotes.pdf
 
 \end_inset
 
@@ -23302,7 +23303,7 @@ Box (Minipage)
 \family default
 : 
 \begin_inset Graphics
-	filename ../clipart/BoxInsetDefaultQt4.png
+	filename clipart/BoxInsetDefaultQt4.png
 	scale 85
 
 \end_inset
@@ -27156,7 +27157,7 @@ Export\SpecialChar \menuseparator
 DVI
 \family default
 .
- You can view your document as PostScript via the 
+ You can view your document as DVI via the 
 \family sans
 View
 \family default

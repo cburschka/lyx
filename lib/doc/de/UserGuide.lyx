@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 256
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -57,7 +57,8 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "usti" 
 \author "Hartmut Haas" hha4491@atomstromfrei.de
 \end_header
 
@@ -745,9 +746,9 @@ atei
 \bar under
 N
 \bar default
-eu (Strg+N) 
+eu (Strg+N)
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/buffer-new.xpm
 	scale 70
@@ -761,7 +762,10 @@ oder
 \begin_layout Itemize
 
 \family sans
-Neu von 
+Neu von
+\family default
+ 
+\family sans
 \bar under
 V
 \bar default
@@ -777,9 +781,9 @@ orlage\SpecialChar \ldots{}
 f
 \bar default
 fnen\SpecialChar \ldots{}
- (Strg+O) 
+ (Strg+O)
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/file-open.xpm
 	scale 70
@@ -806,9 +810,9 @@ hließen (Strg+W)
 \bar under
 S
 \bar default
-peichern (Strg+S) 
+peichern (Strg+S)
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/buffer-write.xpm
 	scale 70
@@ -822,7 +826,10 @@ oder
 \begin_layout Itemize
 
 \family sans
-Speichern 
+Speichern
+\family default
+ 
+\family sans
 \bar under
 u
 \bar default
@@ -846,9 +853,9 @@ ieder herstellen (Strg+R)
 D
 \bar default
 rucken\SpecialChar \ldots{}
- (Strg+P) 
+ (Strg+P)
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_print.xpm
 	scale 70
@@ -1031,9 +1038,9 @@ name "Kopieren"
 
 \end_inset
 
-, Strg+C 
+, Strg+C
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/copy.xpm
 	scale 70
@@ -1088,9 +1095,9 @@ name "Suchen \\& Ersetzen"
 
 \end_inset
 
- Strg+F 
+ Strg+F
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/dialog-show_findreplace.xpm
 	scale 70
@@ -1208,10 +1215,10 @@ S
 uchen:
 \family default
  ein.
- Mit der Schaltfläche
+ Mit der Schaltfläche 
 \family sans
 \bar under
- N
+N
 \bar default
 ächstes
 \family default
@@ -1381,9 +1388,9 @@ R
 \family default
  (
 \family sans
-Strg+Z 
+Strg+Z
 \family default
-oder 
+ oder 
 \begin_inset Graphics
 	filename ../../images/undo.xpm
 	scale 70
@@ -1481,11 +1488,8 @@ Außerdem funktioniert
 W
 \bar default
 iederholen
-\bar under
- 
 \family default
-\bar default
-nicht im Mathematikmodus.
+ nicht im Mathematikmodus.
  Ein Tipp dazu: Wenn Sie in den Mathematikmodus wechseln, dort eine Gleichung
  ändern und dann den Mathematikmodus verlassen, stellt ein 
 \family sans
@@ -1523,9 +1527,9 @@ Positionieren
 \begin_layout Itemize
 Einfaches Klicken mit der 
 \emph on
-linken 
+linken
 \emph default
-Maustaste positioniert den Textcursor unter den Mauscursor.
+ Maustaste positioniert den Textcursor unter den Mauscursor.
 \end_layout
 
 \begin_layout Itemize
@@ -2016,11 +2020,11 @@ name "Compose"
 
 \end_inset
 
- 
+
 \family default
-Diese Taste ist die Kombination
+ Diese Taste ist die Kombination 
 \family sans
- AltGr+Umschalt
+AltGr+Umschalt
 \family default
  und/oder die rechte 
 \family sans
@@ -4246,10 +4250,18 @@ N
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 Sonderzeichen
 \begin_inset LatexCommand label
 name "cap:Sonderzeichen"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4439,11 +4451,7 @@ name "Einf\"ugen"
 \begin_layout Standard
 So können Sie Text von LyX in andere X-Fenster kopieren: Markieren Sie den
  Text in LyX, dann wechseln Sie in das andere X-Fenster und fügen den Text
- mit der mittleren Maustaste
-\family sans
- 
-\family default
-einfügen.
+ mit der mittleren Maustaste einfügen.
 \end_layout
 
 \begin_layout Standard
@@ -4483,9 +4491,9 @@ Wenn jemand LyX für Sie eingerichtet hat, können Sie dieses Kapitel ruhig
 Wenn Sie LyX selber installiert haben, 
 \emph on
 sollten Sie alle README-Dateien, die zusammen mit LyX kamen, lesen und dann
+\emph default
  
 \family sans
-\emph default
 \bar under
 H
 \bar default
@@ -4671,12 +4679,12 @@ gen
  ändern können
 \family sans
 .
- 
+
 \family default
-Zum Ändern öffnen Sie irgendein Dokument, machen Ihre Einstellungen und
- speichern sie unter
+ Zum Ändern öffnen Sie irgendein Dokument, machen Ihre Einstellungen und
+ speichern sie unter 
 \family sans
- D
+D
 \bar under
 o
 \bar default
@@ -4750,9 +4758,9 @@ instellungen\SpecialChar \ldots{}
  können viele LyX-Voreinstellungen geändert werden.
  Das Dokument 
 \emph on
-Anpassung 
+Anpassung
 \emph default
-enthält weitere Informationen hierzu.
+ enthält weitere Informationen hierzu.
 \end_layout
 
 \begin_layout Section
@@ -4924,7 +4932,9 @@ xdvi
 \begin_layout Itemize
 
 \family typewriter
-gv 
+gv
+\family default
+ 
 \family sans
 
 \begin_inset Foot
@@ -4958,9 +4968,9 @@ Postscript\SpecialChar \menuseparator
 \bar under
 B
 \bar default
-etrachter: 
+etrachter:
 \family default
-festlegen
+ festlegen
 \family sans
 .
 \end_layout
@@ -4997,12 +5007,12 @@ ilfe\SpecialChar \menuseparator
 \bar under
 T
 \bar default
-utorium), 
+utorium),
 \family default
-bevor Sie weitermachen.
-
+ bevor Sie weitermachen.
+ 
 \family typewriter
- dvips
+dvips
 \family default
  konvertiert DVI-Dateien nach PostScript®.
  Dieses Format verstehen heutzutage die meisten Drucker.
@@ -5116,9 +5126,9 @@ DVI
 \bar under
 B
 \bar default
-etrachter: 
+etrachter:
 \family default
-fest.
+ fest.
 \end_layout
 
 \begin_layout Standard
@@ -5264,10 +5274,10 @@ gv
  des Dokuments betrachten 
 \emph on
 müssen.
- 
+
 \emph default
-Für wiederholte Änderungen, die nicht von PostScript® abhängen, fahren Sie
- mit einem 
+ Für wiederholte Änderungen, die nicht von PostScript® abhängen, fahren
+ Sie mit einem 
 \family typewriter
 dvi
 \family default
@@ -5344,9 +5354,9 @@ Einleitung
 Bevor Sie anfangen, ein Dokument zu schreiben, müssen Sie entscheiden, was
  für eine 
 \emph on
-Art 
+Art
 \emph default
-von Dokument Sie wollen.
+ von Dokument Sie wollen.
  Unterschiedliche Dokumentarten benutzen unterschiedliche Typen für Zwischenräum
 e, Überschriften, Nummerierungen, usw.
  Außerdem benutzen unterschiedliche Dokumente unterschiedliche Absatzumgebungen
@@ -5538,9 +5548,9 @@ paper für die
 
 
 \family typewriter
-paper 
+paper
 \family default
-LaTeX
+ LaTeX
 \begin_inset Quotes grd
 \end_inset
 
@@ -5590,9 +5600,9 @@ E
 \bar default
 instellungen\SpecialChar \ldots{}
 \SpecialChar \menuseparator
-Dokumentklasse 
+Dokumentklasse
 \family default
-auswählen.
+ auswählen.
  Danach können Sie die benötigten Optionen feineinstellen.
  Wenn Sie ans Ende der Auswahl gehen, sehen Sie einige Dokumentklassen,
  die LyX zwar unterstützt, die aber bei Ihnen nicht installiert sind.
@@ -6134,7 +6144,10 @@ Abschnitt
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:Dokumentklassen"
 
@@ -6143,6 +6156,11 @@ name "table:Dokumentklassen"
 Dokumentklassen
 \begin_inset LatexCommand index
 name "Dokument!-klassen"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -6363,9 +6381,9 @@ status open
 \begin_layout Standard
 siehe 
 \emph on
-Einführung 
+Einführung
 \emph default
-(
+ (
 \family sans
 \bar under
 H
@@ -6410,9 +6428,8 @@ c
 \bar default
 hformat
 \family default
- und
+ und 
 \family sans
- 
 \bar under
 Q
 \bar default
@@ -6453,9 +6470,9 @@ LaTeX macht diesen Teil.
 \begin_layout Description
 
 \family sans
-default 
+default
 \family default
-das Standardseitenformat der gewählten Klasse benutzen.
+ das Standardseitenformat der gewählten Klasse benutzen.
 \end_layout
 
 \begin_layout Description
@@ -6651,9 +6668,9 @@ Außen
 \begin_inset Formula $-$
 \end_inset
 
-
+ 
 \family sans
- Oben
+Oben
 \family default
  
 \begin_inset Formula $-$
@@ -6695,9 +6712,9 @@ Fuß
 \begin_inset Formula $\leq$
 \end_inset
 
- Unten 
+ Unten
 \family default
-und 
+ und 
 \family sans
 Abstand\InsetSpace ~
 zum\InsetSpace \space{}
@@ -6883,9 +6900,8 @@ Absätze\InsetSpace ~
 trennen\InsetSpace ~
 durch
 \family default
- entweder
+ entweder 
 \family sans
- 
 \bar under
 E
 \bar default
@@ -6995,9 +7011,9 @@ setspace
 -Paket installiert haben, können Sie Ihren Zeilenabstand im Dialogfenster
  
 \family sans
-Textformat 
+Textformat
 \family default
-einstellen.
+ einstellen.
 \end_layout
 
 \begin_layout Section
@@ -7022,9 +7038,9 @@ name "sec:par-environments"
 
 \begin_layout Standard
 Die Absatzumgebungen entsprechen in einer normalen LaTeX-Datei den verschiedenen
- Befehlsfolgen
+ Befehlsfolgen 
 \family typewriter
- 
+
 \backslash
 begin{
 \family default
@@ -7033,9 +7049,9 @@ environment
 \family typewriter
 \emph default
 } ...
- 
+
 \family default
- 
+  
 \family typewriter
 
 \backslash
@@ -7161,11 +7177,7 @@ Eine Absatzumgebung ist eine Art
 \emph on
 Behälter
 \emph default
- für einen Absatz, der für ihn gewisse Eigenschaften
-\emph on
- 
-\emph default
-enthält.
+ für einen Absatz, der für ihn gewisse Eigenschaften enthält.
  Diese können Stil, Font, Ränder, Nummerierungsart, Marken usw.\InsetSpace \space{}
 betreffen.
  Außerdem kann man die verschiedenen Umgebungen 
@@ -7323,9 +7335,9 @@ name "Gedicht"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Verse
+ -- LaTeX-Bezeichnung: Verse
 \begin_inset LatexCommand index
 name "Verse"
 
@@ -7344,9 +7356,9 @@ name "Auf\\/listung"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Itemize 
+ -- LaTeX-Bezeichnung: Itemize 
 \family sans
 
 \begin_inset LatexCommand index
@@ -7406,9 +7418,9 @@ name "Liste"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: List
+ -- LaTeX-Bezeichnung: List
 \begin_inset LatexCommand index
 name "List"
 
@@ -7704,9 +7716,9 @@ name "Unterabschnitt"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Subsection
+ -- LaTeX-Bezeichnung: Subsection
 \begin_inset LatexCommand index
 name "Subsection"
 
@@ -7724,9 +7736,9 @@ name "Unterunterabschn."
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Subsubsection
+ -- LaTeX-Bezeichnung: Subsubsection
 \begin_inset LatexCommand index
 name "Subsubsection"
 
@@ -7744,9 +7756,9 @@ name "Paragraph"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Paragraph
+ -- LaTeX-Bezeichnung: Paragraph
 \end_layout
 
 \begin_layout Enumerate
@@ -7758,9 +7770,9 @@ name "Unterparagraph"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Subparagraph
+ -- LaTeX-Bezeichnung: Subparagraph
 \begin_inset LatexCommand index
 name "Subparagraph"
 
@@ -7881,10 +7893,10 @@ abschnitt zu markieren, markiert
  LyX die Überschrift mit der zugehörigen Nummer und den Nummern des Unterabschni
 ttes
 \family sans
-, 
+,
 \family default
-des Abschnittes und, falls möglich, des Kapitels, in dem der Unter-Unterabschnit
-t steht.
+ des Abschnittes und, falls möglich, des Kapitels, in dem der Unter-Unterabschni
+tt steht.
  Beispiel: der fünfte Abschnitt des zweiten Kapitels dieses Handbuches hat
  die Marke 
 \begin_inset Quotes gld
@@ -7934,9 +7946,9 @@ name "Unterabschnitt*"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Subsection*
+ -- LaTeX-Bezeichnung: Subsection*
 \begin_inset LatexCommand index
 name "Subsection*"
 
@@ -7954,9 +7966,9 @@ name "Unterunterabschn.*"
 
 \end_inset
 
- 
+
 \family default
--- LaTeX-Bezeichnung: Subsubsection*
+ -- LaTeX-Bezeichnung: Subsubsection*
 \begin_inset LatexCommand index
 name "Subsubsection*"
 
@@ -8071,15 +8083,11 @@ Innerhalb dieser Umgebungen können Sie keine Randnotiz einfügen.
 \end_layout
 
 \begin_layout Itemize
-Sie
+Sie können 
 \emph on
- 
+eingefügte Formeln
 \emph default
-können
-\emph on
- eingefügte Formeln 
-\emph default
-(s.
+ (s.
  
 \emph on
 Tutorium
@@ -8185,9 +8193,9 @@ Gedicht
 \family sans
 Gedicht
 \family default
- in ein
+ in ein 
 \family sans
- Zitat\InsetSpace ~
+Zitat\InsetSpace ~
 (lang)
 \family default
  setzen, ebenso wie in einige andere Absatzumgebungen.
@@ -8254,9 +8262,9 @@ Nachdem wir die Gemeinsamkeiten dieser drei Umgebungen beschrieben haben,
  
 \family sans
 Zitat\InsetSpace ~
-(kurz) 
+(kurz)
 \family default
--- LaTeX-Bezeichnung: 
+ -- LaTeX-Bezeichnung: 
 \family sans
 quote
 \begin_inset LatexCommand index
@@ -8269,9 +8277,9 @@ name "Quote"
  und 
 \family sans
 Zitat\InsetSpace \space{}
-(lang) 
+(lang)
 \family default
--- LaTeX-Bezeichnung: 
+ -- LaTeX-Bezeichnung: 
 \family sans
 quotation
 \begin_inset LatexCommand index
@@ -8527,9 +8535,9 @@ Standard
  Die Schachtelungstiefe wird jedoch zurückgesetzt.
  Wenn Sie Schachtelungstiefe 
 \emph on
-und 
+und
 \emph default
-Absatzumgebung behalten wollen, müssen Sie 
+ Absatzumgebung behalten wollen, müssen Sie 
 \family sans
 Alt+Eingabe
 \family default
@@ -8704,8 +8712,9 @@ Auflistung
 \family default
 .
  Sie können diese Marken Ihren Wünschen anpassen, indem Sie im Dialogfenster
+ 
 \family sans
- Dokument-Einstellungen
+Dokument-Einstellungen
 \family default
  unter 
 \family sans
@@ -8863,9 +8872,9 @@ Auflistung
 \family sans
 Aufzählung
 \family default
- in LyX
+ in LyX 
 \emph on
- zu erkennen
+zu erkennen
 \emph default
 .
  So markiert LyX die vier Stufen von 
@@ -9009,11 +9018,7 @@ LyX setzt die Marke fett und fügt zusätzlichen Leerraum zwischen die Marke
 
 \begin_layout Standard
 Wenn Sie mehr als ein Wort als Marke wollen oder benötigen, benutzen Sie
- ein normales oder geschütztes
-\family sans
- 
-\family default
-Leerzeichen.
+ ein normales oder geschütztes Leerzeichen.
  (Entweder mit 
 \family sans
 Strg+Alt+Leertaste
@@ -9173,9 +9178,9 @@ Liste
 \family default
 -Umgebung erzeugt 
 \emph on
-keine 
+keine
 \emph default
-nummerierten Listen.
+ nummerierten Listen.
  Das macht 
 \family sans
 Aufzählung
@@ -9370,9 +9375,9 @@ Absatz
 -
 \family sans
 Einstellungen
-\bar under
+\family default
  
-\bar default
+\family sans
 (
 \bar under
 B
@@ -9715,11 +9720,7 @@ Wie Sie sehen ist zwischen
 \family sans
 Adresse (
 \family default
-LaTeX-Bezeichnung:
-\family sans
- 
-\family default
-Address
+LaTeX-Bezeichnung: Address
 \begin_inset LatexCommand index
 name "Address"
 
@@ -9735,9 +9736,9 @@ e\InsetSpace ~
 rechts
 \family default
  und dem nächsten Absatz ein größerer Abstand als normal.
- Wenn Sie
+ Wenn Sie 
 \family sans
- Eingabe
+Eingabe
 \family default
  drücken, setzt LyX die Schachtelungstiefe zurück und kehrt zur 
 \family sans
@@ -10023,12 +10024,12 @@ Eingabe
 \family default
  setzt die Absatzumgebung 
 \emph on
-nicht 
+nicht
 \emph default
-zurück.
- Jeder neue Absatz bleibt in der
+ zurück.
+ Jeder neue Absatz bleibt in der 
 \family sans
- Literaturverzeichnis
+Literaturverzeichnis
 \family default
 -Umgebung.
 \end_layout
@@ -10040,10 +10041,10 @@ Anfang der
 \emph default
  
 \emph on
-ersten Zeile 
+ersten Zeile
 \emph default
-eines Absatzes werden Sie ein graues Kästchen mit einem Wort und einer Zahl
- in eckigen Klammern sehen.
+ eines Absatzes werden Sie ein graues Kästchen mit einem Wort und einer
+ Zahl in eckigen Klammern sehen.
  Wenn Sie daraufklicken, erscheint ein Menü, in dem Sie einen 
 \family sans
 \bar under
@@ -10189,9 +10190,9 @@ latexcompanion
 
 \begin_layout Standard
 Das erweiterte LaTeX-Literaturpaket BibTeX wird von LyX auch unterstützt.
- Im Dokument
+ Im Dokument 
 \emph on
- Handbuchergänzungen
+Handbuchergänzungen
 \emph default
  können Sie nachlesen, wie man es benutzt.
 \end_layout
@@ -10341,9 +10342,9 @@ Bei koma-script-Dokumenten benutzt man vielleicht besser
 Legende\InsetSpace ~
 Oben
 \family default
- und
+ und 
 \family sans
- Legende\InsetSpace ~
+Legende\InsetSpace ~
 Unten
 \family default
  an Stelle von 
@@ -10698,9 +10699,9 @@ Ein gutes Beispiel dafür sind Aufzählungen.
  2 hat auch noch zwei Unterpunkte.
  Mit anderen Worten, Sie haben eine Liste 
 \emph on
-innerhalb 
+innerhalb
 \emph default
-einer anderen, wobei die innere Liste zu Punkt 2 
+ einer anderen, wobei die innere Liste zu Punkt 2 
 \emph on
 gehört
 \emph default
@@ -10841,9 +10842,9 @@ name "Teil"
 
 \end_inset
 
- 
+
 \family default
-(LaTeX-Bezeichnung: Part
+ (LaTeX-Bezeichnung: Part
 \family sans
 
 \begin_inset LatexCommand index
@@ -11378,9 +11379,9 @@ Dies ist (b).
  Die Tabelle ist in 1.
  geschachtelt, aber 
 \emph on
-nicht 
+nicht
 \emph default
-in (a).
+ in (a).
 \end_layout
 
 \end_deeper
@@ -11391,9 +11392,9 @@ Wieder zurück.
 \begin_layout Standard
 Wie Sie sehen, wurde (b) zum ersten Punkt einer neuen Liste, aber 
 \emph on
-innerhalb 
+innerhalb
 \emph default
-von Punkt 1.
+ von Punkt 1.
  Dasselbe würde mit einem Bild oder einer Gleichung geschehen.
  Wenn Sie also Tabellen, Bilder oder Gleichungen schachteln, passen Sie
  auf die richtige Tiefe auf!
@@ -11441,20 +11442,16 @@ Gebrauch und allgemeine Eigenschaften
 Nachdem wir Ihnen gesagt haben, was Sie schachteln können und was nicht,
  ist es an der Zeit zu erklären, 
 \emph on
-wie 
+wie
 \emph default
-man schachtelt.
+ man schachtelt.
  Die Schachtelungstiefe
 \begin_inset LatexCommand index
 name "Schachtelungs!-tiefe"
 
 \end_inset
 
- können Sie mit
-\emph on
- 
-\emph default
-der Tastenkombination 
+ können Sie mit der Tastenkombination 
 \family sans
 Umschalt+Alt+
 \begin_inset Formula $\rightarrow$
@@ -11464,9 +11461,9 @@ Umschalt+Alt+
 \family default
  
 \emph on
-erhöhen 
+erhöhen
 \emph default
-und mit 
+ und mit 
 \family sans
 Umschalt+Alt+
 \begin_inset Formula $\leftarrow$
@@ -11554,9 +11551,9 @@ verringern
 \end_layout
 
 \begin_layout Itemize
-Wenn Sie die Tiefe mehr als 7 Mal
+Wenn Sie die Tiefe mehr als 7 Mal 
 \emph on
- erhöhen
+erhöhen
 \emph default
  (das heißt wiederholt 
 \begin_inset Graphics
@@ -11872,9 +11869,9 @@ Standard
 bung kann man nichts schachteln, deswegen sind wir noch auf 4.
  Aber wir 
 \emph on
-können 
+können
 \emph default
-innerhalb von 
+ innerhalb von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -12108,9 +12105,9 @@ Standard
 \end_layout
 
 \begin_layout Subsubsection
-Beispiel 3: Marken, Stufen und
+Beispiel 3: Marken, Stufen und 
 \family sans
- Aufzählung
+Aufzählung
 \family default
 - und 
 \family sans
@@ -12240,15 +12237,15 @@ kleingeschriebene römische Zahl
 \emph default
 , weil wir auf der 
 \emph on
-dritten 
+dritten
 \emph default
-Stufe der 
+ Stufe der 
 \family sans
 Aufzählung
 \family default
--Umgebung sind (das heißt dies ist eine
+-Umgebung sind (das heißt dies ist eine 
 \family sans
- Aufzählung-
+Aufzählung-
 \family default
  in einer 
 \family sans
@@ -12264,10 +12261,10 @@ Aufzählung
 \begin_layout Enumerate
 Was passiert, wenn wir die Absatzumgebung 
 \emph on
-nicht 
+nicht
 \emph default
-ändern, sondern die Schachtelungstiefe verringern? Welche Nummerierung wird
- LyX benutzen?
+ ändern, sondern die Schachtelungstiefe verringern? Welche Nummerierung
+ wird LyX benutzen?
 \end_layout
 
 \begin_layout Enumerate
@@ -12314,18 +12311,18 @@ Dies ist Stufe 3.
 \begin_layout Enumerate
 Weil der Absatz trotz der Tiefenänderung 
 \emph on
-immer noch 
+immer noch
 \emph default
-die dritte Stufe der 
+ die dritte Stufe der 
 \family sans
 Aufzählung
 \family default
 -Umgebung ist.
  Beachten Sie aber, dass LyX den Zähler für die Marke 
 \emph on
-zurückgesetzt 
+zurückgesetzt
 \emph default
-hat.
+ hat.
 \end_layout
 
 \end_deeper
@@ -12387,8 +12384,11 @@ Auflistung
 -Umgebungen benutzt.
  Die Anzahl von 
 \emph on
-anderen 
+anderen
+\emph default
+ 
 \family sans
+\emph on
 Aufzählung
 \family default
 -Umgebungen
@@ -12430,9 +12430,9 @@ Aufzählung
 \begin_layout Standard
 (
 \family sans
-Eingabe, 
+Eingabe,
 \family default
-
+ 
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
@@ -12469,9 +12469,9 @@ Es wird noch schlechter.
 \newline
 (
 \family sans
-Eingabe, 
+Eingabe,
 \family default
-
+ 
 \begin_inset Graphics
 	filename ../../images/depth-increment.xpm
 	scale 70
@@ -12801,9 +12801,9 @@ name "Hervorhebung"
 
 \end_inset
 
- 
+
 \family default
-und 
+ und 
 \family sans
 Kapitälchen
 \family default
@@ -12843,9 +12843,9 @@ name "sub:Globale-Optionen"
 \end_layout
 
 \begin_layout Standard
-Den Standardfont können Sie im Dialogfenster
+Den Standardfont können Sie im Dialogfenster 
 \family sans
- Dokument-Einstellungen
+Dokument-Einstellungen
 \family default
  festlegen, das Sie mit 
 \family sans
@@ -12951,9 +12951,9 @@ zeichengröße.
 \begin_layout Standard
 Denken Sie daran, dass LyX die Darstellung 
 \emph on
-nicht 
+nicht
 \emph default
-ändert, wenn Sie neue Werte für 
+ ändert, wenn Sie neue Werte für 
 \family sans
 Schrift
 \family default
@@ -12992,9 +12992,9 @@ Wie wir bereits gesehen haben, ändert LyX automatisch den Buchstabenstil
  für gewisse Absatzumgebungen.
  Wir haben bereits zwei Buchstabenstile erwähnt: 
 \family sans
-Hervorhebung 
+Hervorhebung
 \family default
-und 
+ und 
 \family sans
 Kapitälchen
 \family default
@@ -13282,9 +13282,9 @@ Serifenfrei
  
 \family sans
 Dies ist die Fontfamilie Sans Serif.
- 
+
 \family default
-(Tastenkürzel 
+ (Tastenkürzel 
 \family sans
 Alt+Z\InsetSpace ~
 S
@@ -13354,9 +13354,9 @@ Fett
  
 \series bold
 Dies ist die Druckstärke fett.
- 
+
 \series default
-Fettdruck kann man mit 
+ Fettdruck kann man mit 
 \family sans
 Alt+Z\InsetSpace ~
 F
@@ -13406,8 +13406,11 @@ Kursiv
 \family default
  
 \shape italic
-Dies 
+Dies
+\shape default
+ 
 \family sans
+\shape italic
 i
 \family default
 st die kursive Form
@@ -13424,10 +13427,10 @@ Geneigt
 \family default
  
 \shape slanted
-Dies ist die geneigte Form 
+Dies ist die geneigte Form
 \shape default
-(obwohl man es auf dem Bildschirm vielleicht nicht sieht, ist die Form anders
- als kursiv).
+ (obwohl man es auf dem Bildschirm vielleicht nicht sieht, ist die Form
+ anders als kursiv).
 \end_layout
 
 \begin_layout Labeling
@@ -13458,9 +13461,9 @@ name "Font!-farbe"
 
 \end_inset
 
- 
+
 \family default
-Hiermit können Sie eine Textfarbe auswählen.
+ Hiermit können Sie eine Textfarbe auswählen.
  Natürlich benötigen Sie einen Farbdrucker, wenn Sie es sehen wollen, und
  Sie müssen das 
 \family sans
@@ -13605,8 +13608,9 @@ Alt+S\InsetSpace ~
 
 \family sans
 Sehr\InsetSpace ~
-Klein 
+Klein
 \family default
+ 
 \size scriptsize
 Dies ist die 
 \begin_inset Quotes gld
@@ -13639,8 +13643,9 @@ Alt+S\InsetSpace ~
 \labelwidthstring 00.00.0000
 
 \family sans
-Fußnote 
+Fußnote
 \family default
+ 
 \size footnotesize
 Dies ist die 
 \begin_inset Quotes pld
@@ -13912,8 +13917,9 @@ Alt+S\InsetSpace ~
 \labelwidthstring 00.00.0000
 
 \family sans
-Gigantisch 
+Gigantisch
 \family default
+ 
 \size giant
 Dies ist die 
 \begin_inset Quotes gld
@@ -13970,9 +13976,9 @@ Verkleinern
 \noindent
 Wir wollen Sie 
 \emph on
-noch einmal 
+noch einmal
 \emph default
-warnen:
+ warnen:
 \size large
  spielen
 \size default
@@ -13982,9 +13988,9 @@ warnen:
  -- das sollten Sie benutzen.
  Dies ist 
 \emph on
-nur 
+nur
 \emph default
-für Feineinstellungen!
+ für Feineinstellungen!
 \end_layout
 
 \begin_layout Labeling
@@ -14078,10 +14084,10 @@ Vermeiden Sie zu unterstreichen, wenn Sie können! Es ist ein Überbleibsel
  Es ist nur deshalb in LyX, weil es auch in LaTeX ist und weil einige es
  
 \emph on
-möglicherweise 
+möglicherweise
 \emph default
-benötigen, um Stilvorschriften zu genügen (und wir benutzen es in den Handbücher
-n, um Tastenkürzel für Menüeinträge hervorzuheben).
+ benötigen, um Stilvorschriften zu genügen (und wir benutzen es in den Handbüche
+rn, um Tastenkürzel für Menüeinträge hervorzuheben).
 \end_layout
 
 \end_deeper
@@ -14184,9 +14190,9 @@ LaTeX benutzt die Befehle der
  Aber es weiß nichts über Ihren Drucker.
  Stattdessen erzeugt LaTeX eine 
 \emph on
-geräteunabhängige 
+geräteunabhängige
 \emph default
-Datei, kurz DVI (
+ Datei, kurz DVI (
 \emph on
 device-indepen\SpecialChar \-
 dent
@@ -14433,9 +14439,9 @@ dvi
 \family default
 -Betrachter-Fenster geöffnet und schieben es eventuell auf eine andere Arbeitsfl
 äche.
- Nachdem Sie Ihr Dokument geändert haben, wählen Sie
+ Nachdem Sie Ihr Dokument geändert haben, wählen Sie 
 \family sans
- Ans
+Ans
 \bar under
 i
 \bar default
@@ -14579,9 +14585,9 @@ Pos
 \bar under
 t
 \bar default
-script 
+script
 \family default
-oder 
+ oder 
 \family sans
 Strg+Umschalt+T
 \family default
@@ -14644,19 +14650,18 @@ Hier sind die verschiedenen Optionen aufgelistet:
 \begin_layout Standard
 
 \family sans
-Druck-Ziel 
+Druck-Ziel
 \family default
-mit
+ mit 
 \family sans
- D
+D
 \bar under
 r
 \bar default
-ucker 
+ucker
 \family default
-oder
+ oder 
 \family sans
- 
 \bar under
 D
 \bar default
@@ -14718,9 +14723,9 @@ Script®-Format sein.
 \begin_layout Standard
 
 \family sans
-Seiten 
+Seiten
 \family default
-Es gibt fünf Knöpfe, die bestimmen, welche Seiten wie gedruckt werden sollen.
+ Es gibt fünf Knöpfe, die bestimmen, welche Seiten wie gedruckt werden sollen.
  Sie können wählen zwischen:
 \end_layout
 
@@ -14775,7 +14780,10 @@ erade Seiten drucken
 \bar under
 U
 \bar default
-mgekehrte 
+mgekehrte
+\family default
+ 
+\family sans
 \bar under
 R
 \bar default
@@ -14871,9 +14879,9 @@ In LyX hat das
 
 -Zeichen drei Längen, 
 \emph on
-Bindestrich, Gedankenstrich 
+Bindestrich, Gedankenstrich
 \emph default
-und 
+ und 
 \emph on
 langer Gedankenstrich
 \emph default
@@ -15167,9 +15175,9 @@ rt; folgt der Punkt auf einen großgeschriebenen Buchstaben, wird es als
 \begin_layout Standard
 Hier sind einige Beispiele von 
 \emph on
-richtigen 
+richtigen
 \emph default
-Abkürzungen und Satzenden:
+ Abkürzungen und Satzenden:
 \end_layout
 
 \begin_layout Itemize
@@ -15217,9 +15225,9 @@ Normales
 \InsetSpace \space{}
 
 \bar default
-Leerzeichen 
+Leerzeichen
 \family default
-(
+ (
 \family sans
 Strg+Alt+Leertaste
 \family default
@@ -15346,13 +15354,13 @@ Sie können das Verhalten der
 \family sans
 "
 \family default
--Taste im Dialogfenster
+-Taste im Dialogfenster 
 \family sans
- Dokument-Einstellungen 
+Dokument-Einstellungen
 \family default
-unter
+ unter 
 \family sans
- Sprache\SpecialChar \menuseparator
+Sprache\SpecialChar \menuseparator
 Stil
 \family default
 \InsetSpace ~
@@ -15456,9 +15464,9 @@ text
 \begin_inset Quotes prd
 \end_inset
 
- 
+
 \family default
-benutzt folgende Anführungszeichen: 
+ benutzt folgende Anführungszeichen: 
 \begin_inset Quotes pld
 \end_inset
 
@@ -15800,13 +15808,9 @@ infügen\SpecialChar \menuseparator
 \bar under
 F
 \bar default
-ußnote 
+ußnote
 \family default
-oder
-\family sans
- 
-\family default
-
+ oder 
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 70
@@ -15857,13 +15861,9 @@ infügen\SpecialChar \menuseparator
 \bar under
 F
 \bar default
-ußnote 
+ußnote
 \family default
-oder
-\family sans
- 
-\family default
-
+ oder 
 \begin_inset Graphics
 	filename ../../images/footnote-insert.xpm
 	scale 70
@@ -16070,14 +16070,14 @@ infügen\SpecialChar \menuseparator
 G
 \bar default
 rafik\SpecialChar \ldots{}
- 
+
 \family default
-Ein Dialogfenster erscheint, in dem Sie einen Dateinamen zum Laden eingeben
+ Ein Dialogfenster erscheint, in dem Sie einen Dateinamen zum Laden eingeben
  können.
  Außerdem können Sie in diesem Dialogfenster einige Einstellungen ändern.
  
 \begin_inset Graphics
-	filename ../mobius.eps
+	filename ../clipart/mobius.eps
 	lyxscale 30
 	scale 30
 
@@ -16115,9 +16115,8 @@ skalierung beschrieben.
 \bar default
 bernehmen
 \family default
- oder
+ oder 
 \family sans
- 
 \bar under
 O
 \bar default
@@ -16605,7 +16604,10 @@ Math Unit (1 mu =
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "cap:Maßeinheiten-zur-Bildskalierung"
 
@@ -16614,6 +16616,11 @@ name "cap:Maßeinheiten-zur-Bildskalierung"
 Maßeinheiten zur Bildskalierung
 \begin_inset LatexCommand index
 name "Bildskalierung"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -16640,9 +16647,9 @@ rafik
 \bar under
 D
 \bar default
-atei: 
+atei:
 \family default
-Ihre Bilddatei eingeben.
+ Ihre Bilddatei eingeben.
  Bemerken Sie auch, dass die Darstellungen in LyX (
 \family sans
 Ly
@@ -16668,9 +16675,9 @@ Ausgabe
 \family default
 ) getrennt definiert werden können, was bei großen Bildern hilfreich sein
  kann.
- Die Abbildung kann auch gedreht werden (Feld
+ Die Abbildung kann auch gedreht werden (Feld 
 \family sans
- Drehung
+Drehung
 \family default
 ).
  Über die Karteikarte 
@@ -16814,7 +16821,10 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:escher"
 
@@ -16824,10 +16834,15 @@ M.C.
  Escher in Hochform.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	display color
 	rotateOrigin center
 
@@ -16848,7 +16863,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../platypus.eps
+	filename ../clipart/platypus.eps
 	lyxscale 50
 	display color
 	rotateOrigin center
@@ -16858,13 +16873,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "fig:kill-plat"
 
 \end_inset
 
 Ein ziemlich verzerrtes Schnabeltier in einer Gleitobjekt-Umgebung.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -17149,11 +17172,7 @@ Gleitobjekt-Platzierung
 \family default
  jede Kombination der ersten vier Möglichkeiten ankreuzen, die letzte nur
  allein.
-
-\emph on
- 
-\emph default
-Wenn Sie eine Möglichkeit angekreuzt haben, können Sie zusätzlich 
+ Wenn Sie eine Möglichkeit angekreuzt haben, können Sie zusätzlich 
 \family sans
 Ignoriere\InsetSpace \space{}
 LaTe
@@ -17544,9 +17563,9 @@ status collapsed
 
 
 \family sans
-X-Argument 
+X-Argument
 \family default
-eingeben
+ eingeben
 \end_layout
 
 \end_deeper
@@ -17780,9 +17799,9 @@ unter
  der Zeile eingefügt, in der sich der Cursor gerade befindet.
  Gleichermaßen werden Spalten 
 \emph on
-rechts 
+rechts
 \emph default
-vom Cursor eingefügt.
+ vom Cursor eingefügt.
  Aus diesem Grund ist es ziemlich schwierig, eine Spalte auf der linken
  Seite der Tabelle hinzuzufügen -- es ist eine Menge Ausschneide/Kopierarbeit
  notwendig.
@@ -18689,7 +18708,10 @@ Gesamt
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:Zellen-um-90°"
 
@@ -18698,6 +18720,11 @@ name "table:Zellen-um-90°"
 Zellen um 90° drehen
 \begin_inset LatexCommand index
 name "Tabellen!-zelle drehen"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -19601,9 +19628,9 @@ Jetzt ist er länger.
 \begin_inset Text
 
 \begin_layout Standard
-Dies ist ein
+Dies ist ein 
 \emph on
- mehrzeiliger
+mehrzeiliger
 \emph default
  Tabelleneintrag.
 \begin_inset ERT
@@ -19631,7 +19658,10 @@ newline
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:Mehrzeilige-Tabelle"
 
@@ -19640,6 +19670,11 @@ name "table:Mehrzeilige-Tabelle"
 Mehrzeilige Tabelle
 \begin_inset LatexCommand index
 name "Tabelle!mehrzeilig"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -19788,9 +19823,9 @@ eitenumbruch\InsetSpace \space{}
 nach\InsetSpace \space{}
 der\InsetSpace \space{}
 aktuellen\InsetSpace \space{}
-Zeile: 
+Zeile:
 \family default
-manueller Seitenumbruch.
+ manueller Seitenumbruch.
 \begin_inset LatexCommand index
 name "Tabellen!Seitenumbruch"
 
@@ -19819,18 +19854,18 @@ die erste
 \family sans
 Fußzeile
 \family default
-,
+, 
 \family sans
- Letzte\InsetSpace ~
+Letzte\InsetSpace ~
 Fußzeile
 \family default
-,
+, 
 \family sans
- Kopfzeile
+Kopfzeile
 \family default
-,
+, 
 \family sans
- Erste\InsetSpace ~
+Erste\InsetSpace ~
 Kopfzeile
 \family default
  (betrachten Sie die Beispiele in der Datei 
@@ -20139,13 +20174,21 @@ c & d\end{array}\right]$
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:a table float"
 
 \end_inset
 
 Eine gleitende Tabelle
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20318,13 +20361,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:a table float with caption below"
 
 \end_inset
 
 Noch eine gleitende Tabelle, mit beschreibendem Text darunter.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20624,9 +20675,9 @@ nicht
 \end_layout
 
 \begin_layout Enumerate
-Stellen Sie sicher, dass die Einträge im Dialogfenster
+Stellen Sie sicher, dass die Einträge im Dialogfenster 
 \family sans
- Dokument-Einstellungen\SpecialChar \menuseparator
+Dokument-Einstellungen\SpecialChar \menuseparator
  Nummerierung\InsetSpace ~
 &\InsetSpace ~
 Inhaltsverzeichnis\SpecialChar \menuseparator
@@ -20951,9 +21002,9 @@ A
 \begin_inset Formula $\alpha$
 \end_inset
 
-,
+, 
 \family sans
- Alt+M\InsetSpace ~
+Alt+M\InsetSpace ~
 G\InsetSpace ~
 B
 \family default
@@ -21051,10 +21102,10 @@ Die Pfeiltasten können benutzt werden, um sich in einer Mathed-Struktur
  wenn der Pfeil aus dem Mathed-Kästchen herauszeigt.
  Wenn man die 
 \family sans
-Leertaste 
+Leertaste
 \family default
-drückt, verlässt man einen Teil oder eine andere Mathed-Struktur (eine Quadratwu
-rzel 
+ drückt, verlässt man einen Teil oder eine andere Mathed-Struktur (eine
+ Quadratwurzel 
 \begin_inset Formula $\sqrt{2}$
 \end_inset
 
@@ -21074,11 +21125,11 @@ rzel
 Esc
 \family default
  verlässt man Mathed, und der Cursor wird rechts vom Kästchen platziert.
- Mit der
+ Mit der 
 \family sans
- Leertaste 
+Leertaste
 \family default
-kann man Mathed auch verlassen, aber der Cursor wird um eine Leerstelle
+ kann man Mathed auch verlassen, aber der Cursor wird um eine Leerstelle
  neben dem Kästchen gestellt (wenn keine Leerstelle dort war, wird sie erzeugt).
  
 \family sans
@@ -21091,9 +21142,9 @@ Tab
 \begin_layout Standard
 Die 
 \family sans
-Leertaste 
+Leertaste
 \family default
-scheint nichts innerhalb von Mathed zu bewirken, weil sie wirklich keinen
+ scheint nichts innerhalb von Mathed zu bewirken, weil sie wirklich keinen
  Zwischenraum zwischen Zeichen hinzufügt, aber sie verlässt eine geschachtelte
  Struktur.
  Deshalb muss man mit der 
@@ -21118,9 +21169,9 @@ sqrt
 \family sans
 Leertaste
 \family default
-, dann
+, dann 
 \family typewriter
- 2x+1
+2x+1
 \family default
 , aber nicht 
 \family typewriter
@@ -21276,9 +21327,9 @@ Innerhalb von Mathed können Sie Text auf zwei verschiedene Arten auswählen.
  Stellen Sie den Cursor an das eine Ende der Zeichenkette, die Sie auswählen
  wollen und drücken Sie 
 \family sans
-Umschalt+Pfeil 
+Umschalt+Pfeil
 \family default
-in der Richtung, in der Sie markieren wollen.
+ in der Richtung, in der Sie markieren wollen.
  Der markierte Text wird wie sonst auch hervorgehoben.
 \end_layout
 
@@ -21362,16 +21413,14 @@ x^2y
  zu erhalten, müssen Sie 
 \family typewriter
 x^2,
-\family sans
- 
 \family default
-dann 
+ dann 
 \family sans
 Leertaste
 \family default
-, dann
+, dann 
 \family typewriter
- y
+y
 \family default
  tippen.
  Indizes sind ähnlich: um 
@@ -21384,9 +21433,9 @@ a_1
 \family default
 , dann 
 \family sans
-Leertaste 
+Leertaste
 \family default
-tippen.
+ tippen.
 \end_layout
 
 \begin_layout Subsection
@@ -21405,10 +21454,8 @@ Einen Bruch kann man mit
 
 \backslash
 
-\family sans
- 
 \family default
-(in Mathed) oder mit dem Bruchsymbol 
+ (in Mathed) oder mit dem Bruchsymbol 
 \begin_inset Graphics
 	filename ../../images/math/frac.xpm
 	BoundingBox 0bp 6bp 12bp 22bp
@@ -21560,17 +21607,17 @@ lim
 \family typewriter
 
 \backslash
-lim 
+lim
 \family default
-in Mathed oder indem man es aus den 
+ in Mathed oder indem man es aus den 
 \family sans
 Funktionen
 \family default
  im Menü 
 \family sans
-Mathe-Kontrollfläche 
+Mathe-Kontrollfläche
 \family default
-auswählt.
+ auswählt.
  Andere Spezialworte sind trigonometrische Funktionen (siehe Abschnitt 
 \begin_inset LatexCommand vref
 reference "sec:math-functions"
@@ -21581,9 +21628,9 @@ reference "sec:math-functions"
 \end_layout
 
 \begin_layout Subsection
-Das Menü
+Das Menü 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \begin_inset LatexCommand index
 name "Mathed!Kontrollfläche"
 
@@ -21598,9 +21645,9 @@ name "sec:math-panel"
 
 \end_inset
 
-Das Menü
+Das Menü 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \family default
  besitzt eine sehr umfangreiche Liste an Symbolen und Strukturen.
  Wie bereits erwähnt können Sie es geöffnet lassen, wenn Sie mathematische
@@ -21718,9 +21765,9 @@ reference "sub:Fontgrößen"
 
 \end_inset
 
- bringt eine Auswahl von Trennzeichen
+ bringt eine Auswahl von Trennzeichen 
 \family sans
- und
+und
 \family default
  Klammern, zum Beispiel 
 \begin_inset Formula $\left\{ 3\right\rangle $
@@ -21868,9 +21915,9 @@ ochgestellt
 \end_layout
 
 \begin_layout Standard
-Außerdem hat das Menü
+Außerdem hat das Menü 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \family default
  Untermenüs mit mathematischen Symbolen und Funktionen.
 \end_layout
@@ -21997,9 +22044,7 @@ newcommand{
 \backslash
 a}{
 \backslash
-alpha}
-\family sans
- 
+alpha} 
 \end_layout
 
 \begin_layout Standard
@@ -22008,18 +22053,14 @@ können Sie in Mathed
 
 \backslash
 a
-\family sans
- 
 \family default
-anstatt 
+ anstatt 
 \family typewriter
 
 \backslash
 alpha
-\family sans
- 
 \family default
-benutzen, um 
+ benutzen, um 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -22050,9 +22091,9 @@ name "sec:math-functions"
 
 \end_inset
 
-Das Menü
+Das Menü 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \family default
  enthält 
 \emph on
@@ -22146,8 +22187,9 @@ Wandtafel
 -Fettschrift (Blackboard), die für Vektoren, komplexe Zahlen oder ganze
  Zahlen benutzt werden.
  Diese Pakete kann man jetzt über ein Menü hinzufügen: im Dialogfenster
+ 
 \family sans
- Dokument-Einstellungen
+Dokument-Einstellungen
 \family default
  gibt es unter 
 \family sans
@@ -22599,7 +22641,10 @@ vector
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:Akzente"
 
@@ -22608,6 +22653,11 @@ name "table:Akzente"
 Akzente
 \begin_inset LatexCommand index
 name "Akzente"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -22649,9 +22699,9 @@ Es gibt in LyX mehrere Klammerarten.
 <>
 \family default
  zu drücken.
- Aber die Wirkung ist besser, wenn Sie das Menü
+ Aber die Wirkung ist besser, wenn Sie das Menü 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \family default
  benutzen, insbesondere, wenn Sie große Strukturen wie Matrizen oder Brüche
  in Klammern setzen wollen, oder wenn Sie mehrere Klammerschichten haben.
@@ -22704,9 +22754,9 @@ right)
 
 \begin_layout Standard
 Es ist sehr einfach, die gewünschten Klammern zu bekommen.
- Klicken Sie im Menü
+ Klicken Sie im Menü 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \family default
  auf 
 \begin_inset Graphics
@@ -22878,8 +22928,9 @@ y
 -Umgebung
 \family default
 : dann bekommen Sie automatisch eine 2x2-Matrix, oder Sie klicken im Menü
+ 
 \family sans
- Mathe-Kontrollfläche
+Mathe-Kontrollfläche
 \family default
  den Knopf 
 \begin_inset Graphics
@@ -22933,14 +22984,14 @@ Ausrichtung\SpecialChar \menuseparator
 \bar under
 H
 \bar default
-orizontal: 
+orizontal:
 \family default
-gekennzeichnet
+ gekennzeichnet
 \family sans
 ).
- 
+
 \family default
-Bei anderen und verschiedenen Ausrichtungen müssen Sie die entsprechende
+ Bei anderen und verschiedenen Ausrichtungen müssen Sie die entsprechende
  Buchstabenkombinationen aus 
 \family typewriter
 l
@@ -23159,12 +23210,8 @@ Strg+Eingabe
 \family default
 \series default
  tippt.
-  LyX wird alles in den linken Teil der mehrzeiligen Gleichung
-\emph on
- 
-\emph default
-packen, wobei alles links vom Cursor in die erste Zeile kommt, der Rest
- in die zweite.
+  LyX wird alles in den linken Teil der mehrzeiligen Gleichung packen, wobei
+ alles links vom Cursor in die erste Zeile kommt, der Rest in die zweite.
  Um die Gleichungen auszurichten, stellen Sie den Cursor dorthin, wo der
  mittlere Teil (zum Beispiel das Gleichheitszeichen) beginnen soll, und
  tippen 
@@ -23349,9 +23396,9 @@ reference "mathed:fourth-eqn"
 
 \end_inset
 
-Die Nummerierung einer Zeile kann man mit
+Die Nummerierung einer Zeile kann man mit 
 \family sans
- Alt+M\InsetSpace ~
+Alt+M\InsetSpace ~
 Umschalt+N
 \family default
  ab- und wieder anschalten.
@@ -23523,9 +23570,9 @@ name "Makro!mit Argumenten"
 
 \end_inset
 
- 
+
 \emph default
-aber kann man den Cursor in das Makro stellen.
+ aber kann man den Cursor in das Makro stellen.
  In einer Makrodefinition sieht ein Argument aus wie ein # mit einer Nummer
  dahinter: 
 \end_layout
@@ -24394,7 +24441,10 @@ mathsf
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "table:Mathematik-Schriftstile"
 
@@ -24403,6 +24453,11 @@ name "table:Mathematik-Schriftstile"
 Mathematik-Schriftstile
 \begin_inset LatexCommand index
 name "mathematische!Schriftstile"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -24600,9 +24655,9 @@ scriptstyle
 scriptscriptstyle
 \emph default
 .
- Für die meisten Zeichen haben
+ Für die meisten Zeichen haben 
 \emph on
- displaystyle
+displaystyle
 \emph default
  und 
 \emph on
@@ -24796,9 +24851,9 @@ AMS-
 M
 \bar default
 athe-Paket\InsetSpace ~
-verwenden 
+verwenden
 \family default
-aktivieren, werden diese Pakete in Ihrem Dokument verwendet.
+ aktivieren, werden diese Pakete in Ihrem Dokument verwendet.
 \end_layout
 
 \begin_layout Subsection
@@ -24862,9 +24917,9 @@ infügen\SpecialChar \menuseparator
 \bar under
 M
 \bar default
-athe 
+athe
 \family default
-können Sie die AMS-Formeltypen 
+ können Sie die AMS-Formeltypen 
 \family typewriter
 align
 \family default
@@ -25016,9 +25071,9 @@ Marke
  Genauer gesagt ist es eine Hälfte eines Querverweises.
  Die andere Hälfte ist der 
 \family sans
-Querverweis 
+Querverweis
 \family default
-und sieht so aus: 
+ und sieht so aus: 
 \begin_inset LatexCommand ref
 reference "sec:crossref"
 
@@ -25035,9 +25090,9 @@ Mit Querverweisen können Sie andere Teile Ihres Dokumentes zitieren.
  Sie müssen sich die Abschnittsnummer nicht merken -- LyX macht das für
  Sie! Alles, was Sie brauchen, ist eine 
 \family sans
-Marke 
+Marke
 \family default
-zum Markieren eines Abschnittes, eines Bildes, einer Tabelle, einer Gleichung
+ zum Markieren eines Abschnittes, eines Bildes, einer Tabelle, einer Gleichung
  usw., die Sie dann mit einem 
 \family sans
 Querverweis
@@ -25125,9 +25180,9 @@ G
 \bar default
 ehe\InsetSpace ~
 zur\InsetSpace ~
-Marke 
+Marke
 \family default
-dorthin gehen, wo sie definiert wurde.
+ dorthin gehen, wo sie definiert wurde.
 \end_layout
 
 \begin_layout Standard
@@ -25221,9 +25276,9 @@ Abschnitt
 \family default
 -Überschrift unmittelbar folgt, müssen Sie die Marke 
 \emph on
-in 
+in
 \emph default
-die 
+ die 
 \family sans
 Kapitel
 \family default
@@ -25246,9 +25301,9 @@ Abschnitt
 \begin_layout Standard
 Außerdem macht eine Marke 
 \emph on
-nur 
+nur
 \emph default
-für 
+ für 
 \emph on
 nummerierte
 \emph default
@@ -25262,9 +25317,9 @@ status open
 \begin_layout Standard
 Nun, man 
 \emph on
-kann, 
+kann,
 \emph default
-aber nur, wenn man als 
+ aber nur, wenn man als 
 \family sans
 \bar under
 F
@@ -25582,9 +25637,9 @@ status collapsed
 \bar under
 N
 \bar default
-otiz: 
+otiz:
 \family default
-
+ 
 \begin_inset Note Note
 status open
 
@@ -25609,9 +25664,9 @@ name "Notiz!LyX"
 \bar under
 K
 \bar default
-ommentar: 
+ommentar:
 \family default
-
+ 
 \begin_inset Note Comment
 status open
 
@@ -25636,9 +25691,9 @@ name "Notiz!Kommentar"
 \bar under
 G
 \bar default
-rauschrift: 
+rauschrift:
 \family default
-wird, wie der Name sagt, als 
+ wird, wie der Name sagt, als 
 \begin_inset Note Greyedout
 status open
 
@@ -25727,9 +25782,9 @@ HFill
 \family default
  am Anfang einer Zeile, die 
 \emph on
-nicht 
+nicht
 \emph default
-die erste Zeile eines Absatzes ist, einfügen, ignoriert LyX das.
+ die erste Zeile eines Absatzes ist, einfügen, ignoriert LyX das.
  Damit wird verhindert, dass 
 \family sans
 HFill
@@ -25800,9 +25855,9 @@ Zitat\InsetSpace ~
 -Umgebung.
  Hier :
 \hfill
-: ist ein
+: ist ein 
 \family sans
- HFill
+HFill
 \family default
  in einem Standardabsatz.
  Im gedruckten Text ist er vielleicht nicht zu erkennen, aber er ist zwischen
@@ -25861,11 +25916,8 @@ verborgenen
 \family sans
 HFill
 \family default
-; er wird automatisch am Ende der Marke eingefügt.) Die zweite Zeile
-\family sans
- 
-\family default
-ist ein ganz normales Listenelement zum Vergleich.
+; er wird automatisch am Ende der Marke eingefügt.) Die zweite Zeile ist
+ ein ganz normales Listenelement zum Vergleich.
  
 \family sans
 HFill
@@ -26034,18 +26086,18 @@ Mit
 Ausrichtung
 \family default
  ändern Sie einen oder mehrere Absätze.
- Sie haben vier Möglichkeiten
+ Sie haben vier Möglichkeiten 
 \family sans
- Blocksatz, Links, Rechts 
+Blocksatz, Links, Rechts
 \family default
-und 
+ und 
 \family sans
 Zentriert.
- 
+
 \family default
-In den meisten Fällen ist die Voreinstellung
+ In den meisten Fällen ist die Voreinstellung 
 \family sans
- Blocksatz
+Blocksatz
 \family default
 , bei dem der Leerraum zwischen den Worten variabel ist und jede Zeile des
  Absatzes den Platz zwischen den beiden Rändern ausfüllt.
@@ -26082,9 +26134,9 @@ Strg+Eingabe
 \family default
  statt 
 \family sans
-Eingabe 
+Eingabe
 \family default
-benutzen.
+ benutzen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26182,9 +26234,9 @@ Wenn Ihnen nicht gefällt, wie LaTeX die Seiten Ihres Dokumentes umbricht,
  können Sie manuelle Seitenumbrüche einfügen.
  Im allgemeinen ist das 
 \emph on
-nicht 
+nicht
 \emph default
-nötig, weil LaTeX Seitenumbrüche gut gestaltet, wie bereits in Abschnitt
+ nötig, weil LaTeX Seitenumbrüche gut gestaltet, wie bereits in Abschnitt
  
 \begin_inset LatexCommand vref
 reference "sec:widows"
@@ -26202,18 +26254,18 @@ sehr
 \emph default
 , 
 \emph on
-keine 
+keine
 \emph default
-manuellen Seitenumbrüche einzufügen, 
+ manuellen Seitenumbrüche einzufügen, 
 \emph on
-bevor 
+bevor
 \emph default
-das Dokument endgültig fertig ist und Sie sich in der Druckvorschau überzeugt
+ das Dokument endgültig fertig ist und Sie sich in der Druckvorschau überzeugt
  haben, dass Sie die Seitenumbrüche 
 \emph on
-wirklich 
+wirklich
 \emph default
-ändern müssen.
+ ändern müssen.
 \begin_inset Foot
 status open
 
@@ -26292,9 +26344,9 @@ name "sub:protblank"
 Es wird hauptsächlich benutzt, um LyX (und LaTeX) mitzuteilen, die Zeile
  
 \emph on
-nicht 
+nicht
 \emph default
-zwischen den beiden Worten umzubrechen.
+ zwischen den beiden Worten umzubrechen.
  Das ist manchmal nötig, um unschöne Zeilenumbrüche zu vermeiden, wie hier:
  
 \end_layout
@@ -26406,9 +26458,9 @@ umbruch.
  Sie sollten ihn aber nicht benutzen, um den Zeilenumbruch von LaTeX zu
  korrigieren, weil LaTeX Zeilenumbrüche 
 \emph on
-sehr 
+sehr
 \emph default
-gut gestaltet (siehe Abschnitt 
+ gut gestaltet (siehe Abschnitt 
 \begin_inset LatexCommand vref
 reference "sec:pagebreak"
 
@@ -26591,9 +26643,9 @@ p
 rüfung
 \family default
 \SpecialChar \ldots{}
-,
+, 
 \family sans
- F7
+F7
 \family default
  oder 
 \begin_inset Graphics
@@ -26661,10 +26713,9 @@ s-Kästchen kopiert.
 E
 \bar default
 rsetzen
-\series default
- 
 \family default
-ersetzt das bemängelte Wort durch das, das im Kästchen 
+\series default
+ ersetzt das bemängelte Wort durch das, das im Kästchen 
 \family sans
 Ersetzung
 \family default
@@ -26679,15 +26730,10 @@ Ersetzung
 I
 \bar default
 gnorieren
+\family default
 \series default
- 
-\family default
-lässt
-\family sans
- 
-\family default
-das vom Rechtschreibprogramm bemängelte Wort, wie es ist, wird es aber wieder
- bemängeln, wenn es noch einmal vorkommt.
+ lässt das vom Rechtschreibprogramm bemängelte Wort, wie es ist, wird es
+ aber wieder bemängeln, wenn es noch einmal vorkommt.
 \end_layout
 
 \begin_layout Description
@@ -26779,9 +26825,9 @@ Sprach
 Einstellungen
 \family default
 \SpecialChar \menuseparator
-
+ 
 \family sans
- Rechtschreibprüfung
+Rechtschreibprüfung
 \family default
 ):
 \end_layout
@@ -26799,9 +26845,8 @@ ispell/aspell/hspell
 \family default
 -Datei hängt von der Sprache ab, die im zu prüfenden Dokument verwendet
  wird.
- Diese wiederum wurde im Dialogfenster
+ Diese wiederum wurde im Dialogfenster 
 \family sans
- 
 \bar under
 D
 \bar default
@@ -26857,9 +26902,9 @@ Möglicherweise werden Sie auch Probleme bekommen, wenn die Fontkodierung
 \family sans
 Kodierung
 \family default
-s-Option im Dialogfenster
+s-Option im Dialogfenster 
 \family sans
- Dokumentformat
+Dokumentformat
 \family default
  auch 
 \family sans
@@ -26897,9 +26942,8 @@ verwenden
 \end_layout
 
 \begin_layout Itemize
-Wenn das nicht hilft, könnten Sie im Dialogfenster
+Wenn das nicht hilft, könnten Sie im Dialogfenster 
 \family sans
- 
 \bar under
 D
 \bar default
@@ -27006,9 +27050,9 @@ name "W\"orterbuch!pers\"onliches"
 
 \end_inset
 
-
+ 
 \family typewriter
- ispell
+ispell
 \family default
  benutzt ein persönliches Wörterbuch, in dem Worte gespeichert werden können,
  die im Hauptwörterbuch nicht gefunden werden konnten.
@@ -27022,15 +27066,12 @@ target "$HOME/.ispell_Sprache"
 
 , wobei 
 \emph on
-Sprache 
+Sprache
 \emph default
-der
-\emph on
+ der Name des von LyX/LaTeX benutzten globalen Wörterbuches ist (zum Beispiel
  
-\emph default
-Name des von LyX/LaTeX benutzten globalen Wörterbuches ist (zum Beispiel
 \emph on
- [n]german
+[n]german
 \emph default
 ).
  Oft ist der Dateiname für das 
@@ -27166,9 +27207,9 @@ Anpassung
 \bar under
 H
 \bar default
-ilfe 
+ilfe
 \family default
-finden werden.
+ finden werden.
 \end_layout
 
 \begin_layout Subsection
@@ -27285,9 +27326,9 @@ Papier
 \bar under
 g
 \bar default
-röße, 
+röße,
 \family default
-um die Wahlmöglichkeiten für die Papiergröße zu sehen.
+ um die Wahlmöglichkeiten für die Papiergröße zu sehen.
  Die Voreinstellung ist 
 \family sans
 A4
@@ -27359,9 +27400,9 @@ tabelle verwenden
 \bar under
 E
 \bar default
-rste 
+rste
 \family default
-und 
+ und 
 \family sans
 \bar under
 Z
@@ -27442,9 +27483,9 @@ latin1
 \family default
  als 
 \family sans
-Kodierung 
+Kodierung
 \family default
-im Dialogfenster 
+ im Dialogfenster 
 \family sans
 Dokument-Einstellungen
 \family default
@@ -30399,7 +30440,10 @@ o
 
 \end_layout
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "cap:Der-latin1-Zeichensatz"
 
@@ -30410,6 +30454,11 @@ Der
 latin1
 \family default
 -Zeichensatz
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -30541,65 +30590,25 @@ ISO8859-2
 
 \begin_deeper
 \begin_layout Standard
-\i \^{H}
-\i \^{J}
-\i \^{h}
-\i \^{\j}
-\i \^{C}
-\i \^{G}
-\i \^{S}
-\i \^{c}
-\i \^{g}
-\i \^{s}
-
+ĤĴĥȷ̂ĈĜŜĉĝŝ
 \hfill
 circumflex
 \end_layout
 
 \begin_layout Standard
-\i \'{S}
-\i \'{Z}
-\i \'{s}
-\i \'{z}
-\i \'{R}
-\i \'{L}
-\i \'{C}
-\i \'{N}
-\i \'{r}
-\i \'{l}
-\i \'{c}
-\i \'{n}
-
+ŚŹśźŔĹĆŃŕĺćń
 \hfill
 acute
 \end_layout
 
 \begin_layout Standard
-\i \~{I}
-\i \~{\i}
-\i \~{U}
-\i \~{u}
-
+Ĩı̃Ũũ
 \hfill
 tilde
 \end_layout
 
 \begin_layout Standard
-\i \c{S}
-\i \c{s}
-\i \c{T}
-\i \c{t}
-\i \c{R}
-\i \c{L}
-\i \c{G}
-\i \c{r}
-\i \c{l}
-\i \c{g}
-\i \c{N}
-\i \c{K}
-\i \c{n}
-\i \c{k}
-
+ŞşŢţŖĻĢŗļģŅĶņķ
 \hfill
 cedilla
 \begin_inset Foot
@@ -30616,27 +30625,13 @@ Diese Zeichen sehen auf dem Bildschirm sicher nicht schön aus, dafür aber
 \end_layout
 
 \begin_layout Standard
-\i \={E}
-\i \={e}
-\i \={A}
-\i \={I}
-\i \={O}
-\i \={U}
-\i \={a}
-\i \={\i}
-\i \={o}
-\i \={u}
-
+ĒēĀĪŌŪāı̄ōū
 \hfill
 macron
 \end_layout
 
 \begin_layout Standard
-\i \H{O}
-\i \H{U}
-\i \H{o}
-\i \H{u}
-
+ŐŰőű
 \hfill
 hungarian umlaut
 \end_layout
@@ -31251,8 +31246,11 @@ Beschreibung
 \end_inset
 
 :
+\family default
+ 
+\family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 Gleit
@@ -31275,10 +31273,10 @@ Abbildung
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 Gleit
@@ -31301,10 +31299,10 @@ Tabelle
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 M
@@ -31325,10 +31323,10 @@ rke
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 
@@ -31349,10 +31347,10 @@ uerverweis
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 
@@ -31373,10 +31371,10 @@ itat
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 Stich
@@ -31443,10 +31441,10 @@ andnotiz
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 
@@ -31484,10 +31482,10 @@ otiz
 
 \end_inset
 
-:
+: 
 \family sans
 \bar under
- E
+E
 \bar default
 infügen\SpecialChar \menuseparator
 
@@ -31508,9 +31506,8 @@ RL
 
 \end_inset
 
-:
+: 
 \family sans
- 
 \bar under
 E
 \bar default
@@ -31718,9 +31715,9 @@ name "Datei!exportieren"
 Siehe 
 \emph on
 Handbuchergänzungen.
- 
+
 \emph default
-Welche Typen in der Liste auftauchen, hängt davon ab, welche Pakete zusätzlich
+ Welche Typen in der Liste auftauchen, hängt davon ab, welche Pakete zusätzlich
  zu LyX und LaTeX geladen wurden.
 \end_layout
 
@@ -31845,11 +31842,11 @@ cht\SpecialChar \menuseparator
 \begin_layout Subsection
 
 \family sans
-HTML 
+HTML
 \family default
-und
+ und 
 \family sans
- Aktualisieren\SpecialChar \menuseparator
+Aktualisieren\SpecialChar \menuseparator
 HTML
 \begin_inset LatexCommand index
 name "HTML"
@@ -31992,9 +31989,9 @@ lalign
 \family sans
 gather
 \family default
- und
+ und 
 \family sans
- multline-Um\SpecialChar \-
+multline-Um\SpecialChar \-
 gebung
 \family default
 
@@ -33070,9 +33067,9 @@ erkzeuge\SpecialChar \menuseparator
 E
 \bar default
 instellungen\SpecialChar \ldots{}
- 
+
 \family default
-beschrieben, sofern das nicht bereits geschehen ist.
+ beschrieben, sofern das nicht bereits geschehen ist.
  Dann wird nur noch darauf verwiesen.
  Wenn Sie auf diesen Menüpunkt klicken, wird das Fenster 
 \family sans
@@ -33425,9 +33422,9 @@ Datei\SpecialChar \menuseparator
 Neu\InsetSpace \space{}
 von\InsetSpace \space{}
 Vorlage\SpecialChar \ldots{}
- 
+
 \family default
-wählen.
+ wählen.
 \end_layout
 
 \begin_layout Description
@@ -33686,9 +33683,9 @@ kument\SpecialChar \menuseparator
 E
 \bar default
 instellungen\SpecialChar \ldots{}
- 
+
 \family default
-beschrieben, sofern das nicht bereits geschehen ist.
+ beschrieben, sofern das nicht bereits geschehen ist.
  Dann wird nur noch darauf verwiesen.
  Wenn Sie auf diesen Menüpunkt klicken, wird das Fenster 
 \family sans
@@ -33937,9 +33934,9 @@ Verfügbare
 n\InsetSpace ~
 
 \family sans
-Zweige 
+Zweige
 \family default
-eingetragen werden.
+ eingetragen werden.
 \end_layout
 
 \begin_layout Description
@@ -34013,9 +34010,9 @@ Leslie Lamport.
  
 \emph on
 LaTeX: A Document Preparation System.
- 
+
 \emph default
-Addison-Wesley, second edition, 1994
+ Addison-Wesley, second edition, 1994
 \end_layout
 
 \begin_layout Bibliography
@@ -34027,9 +34024,9 @@ key "latexcompanion"
 Michel Goossens, Frank Mittelbach and Alexander Samarin: 
 \emph on
 The LaTeX Companion.
- 
+
 \emph default
-Addison-Wesley, 1994
+ Addison-Wesley, 1994
 \end_layout
 
 \begin_layout Bibliography

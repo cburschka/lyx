@@ -1,5 +1,5 @@
-#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 245
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass scrbook
@@ -78,13 +78,21 @@ p\hspace{-0.55em}l
 \end_preamble
 \language basque
 \inputencoding latin1
-\fontscheme pslatex
+\font_roman times
+\font_sans helvet
+\font_typewriter courier
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \paperfontsize default
 \spacing single
 \papersize default
 \use_geometry false
 \use_amsmath 0
+\use_esint 0
 \cite_engine basic
 \use_bibtopic false
 \paperorientation portrait
@@ -97,7 +105,8 @@ p\hspace{-0.55em}l
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "usti" 
 \end_header
 
 \begin_body
@@ -122,7 +131,7 @@ Mike Ressler
  posta-zerrendara: <lyx-docs@lists.lyx.org>.
  
 \newline
-Itzulpena: Iñaki Larrañaga Murgoitio, <dooteo@euskalgnu.org>, 2004.
+Itzulpena: IÃ±aki LarraÃ±aga Murgoitio, <dooteo@euskalgnu.org>, 2004.
  
 \newline
 Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
@@ -134,7 +143,7 @@ Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \tableofcontents{}
+\begin_inset LatexCommand tableofcontents
 
 \end_inset
 
@@ -337,9 +346,9 @@ Bigarrenik, azaltzen duten informazioaren arabera badirudi erabiltzailea
 
 \emph on
 Editorearen\InsetSpace ~
-oharra: 
+oharra:
 \emph default
-hori gogoan izanda, beste egile guztiei jakinarazi diet aurreiritziekin
+ hori gogoan izanda, beste egile guztiei jakinarazi diet aurreiritziekin
  ez hartzeko, eta sasi-maisu izan ordez pedagogikoak izateko.
  Eskuliburuak irakurri eta ulertzen alferrak direnentzako (Ameriketan diogun
  bezala, "there's no such thing as a free lunch" 
@@ -423,7 +432,10 @@ orde
 \begin_layout Itemize
 
 \family sans
-Gorde 
+Gorde
+\family default
+ 
+\family sans
 \bar under
 h
 \bar default
@@ -479,7 +491,8 @@ xantiloitik)
  Txantiloi bat hautatuta, dokumentuari diseinu-ezaugarri zehatzak automatikoki
  ezarriko dizkio, bestela eskuz aldatu beharko dituzu.
  Zenbait klasetarako erabil daiteke, batik bat gutunak idazteko (ikus 
-\begin_inset LatexCommand \ref{atal:dok-klaseak}
+\begin_inset LatexCommand ref
+reference "atal:dok-klaseak"
 
 \end_inset
 
@@ -612,7 +625,10 @@ tsatsi
 \begin_layout Itemize
 
 \family sans
-Bilatu eta 
+Bilatu eta
+\family default
+ 
+\family sans
 \bar under
 o
 \bar default
@@ -904,7 +920,8 @@ Oinarrizko tekla-lasterbideak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:tekla-lasterbideak}
+\begin_inset LatexCommand label
+name "atal:tekla-lasterbideak"
 
 \end_inset
 
@@ -952,17 +969,20 @@ Behera
 \labelwidthstring 00.00.0000
 Tab LyX-en tabuladore bat bezalakorik ez dago.
  Hori ez baduzu ulertzen, joan oraintxe bertan 
-\begin_inset LatexCommand \ref{atal:parkoskabarne}
+\begin_inset LatexCommand ref
+reference "atal:parkoskabarne"
 
 \end_inset
 
  eta 
-\begin_inset LatexCommand \ref{atal:par-ingurunea}
+\begin_inset LatexCommand ref
+reference "atal:par-ingurunea"
 
 \end_inset
 
  ataletara, bereziki 
-\begin_inset LatexCommand \ref{atal:paringuzerren}
+\begin_inset LatexCommand ref
+reference "atal:paringuzerren"
 
 \end_inset
 
@@ -1046,7 +1066,8 @@ Ezabatu
 \begin_layout Standard
 Teklatua X sistemarren konfigurazioa edo diogunaren Gaineko aztarnik ez
  baduzu, joan oraintxe 
-\begin_inset LatexCommand \ref{atal:x-win-teklak}
+\begin_inset LatexCommand ref
+reference "atal:x-win-teklak"
 
 \end_inset
 
@@ -1399,7 +1420,8 @@ Hori izan zen LyX exekutatzeari eta LyX erabilgarriagoa izateko behar diren
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:konfigurazioa}
+\begin_inset LatexCommand label
+name "atal:konfigurazioa"
 
 \end_inset
 
@@ -1538,7 +1560,8 @@ X teklatua konfiguratu
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:x-win-teklak}
+\begin_inset LatexCommand label
+name "atal:x-win-teklak"
 
 \end_inset
 
@@ -1686,7 +1709,7 @@ Konposizio+e+'
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- é
+ Ã©
 \end_layout
 
 \begin_layout Itemize
@@ -1698,7 +1721,7 @@ Konposizio+O+R
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- ®
+ Â®
 \end_layout
 
 \begin_layout Itemize
@@ -1710,7 +1733,7 @@ Konposizio+1+2
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- ½
+ Â½
 \end_layout
 
 \begin_layout Itemize
@@ -1722,7 +1745,7 @@ Konposizio+<+<
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- «
+ Â«
 \end_layout
 
 \begin_layout Standard
@@ -1865,11 +1888,11 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-LyX-ekin dokumentuak eta
+LyX-ekin dokumentuak eta 
 \family typewriter
- .tex 
+.tex
 \family default
-fitxategiak sortzea baino zerbait gehiago egin nahi baduzu, LaTeX beharko
+ fitxategiak sortzea baino zerbait gehiago egin nahi baduzu, LaTeX beharko
  duzu.
 \end_layout
 
@@ -1914,12 +1937,14 @@ GNU/Linux erabiltzen ari bazara, litekeena da LaTeX2e edukitzea.
  Hori lortzeko (bai TeX bai LaTeX-ekin zerikusia duen guztia), zoaz CTAN
  (Comprehensive TeX Archive Network) ispilu batera.
  Ispiluen zerrenda oso bat hemen aurkituko duzu: 
-\begin_inset LatexCommand \url{http://www.ctan.org}
+\begin_inset LatexCommand url
+target "http://www.ctan.org"
 
 \end_inset
 
 
-\begin_inset LatexCommand \label{atal:ctan}
+\begin_inset LatexCommand label
+name "atal:ctan"
 
 \end_inset
 
@@ -1967,7 +1992,7 @@ ghostview
 \end_layout
 
 \begin_layout Standard
-Azken biak Dvi eta PostScript®
+Azken biak Dvi eta PostScriptÂ®
 \begin_inset Foot
 status collapsed
 
@@ -1989,10 +2014,10 @@ Tutoretza
 \family typewriter
 dvips
 \family default
- programak DVI fitxategi bat PostScript® formatura bihurtzen du; gaur egun
+ programak DVI fitxategi bat PostScriptÂ® formatura bihurtzen du; gaur egun
  inprimagailu gehienek erabiltzen dutena da.
  Baldin eta zure inprimagailua tinta-zorrotadakoa edo puntu-matrize motakoa
- bada, PostScript® iragazteko 
+ bada, PostScriptÂ® iragazteko 
 \family typewriter
 ghostscript
 \family default
@@ -2012,7 +2037,8 @@ Dvips
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:dvipskonfig}
+\begin_inset LatexCommand label
+name "atal:dvipskonfig"
 
 \end_inset
 
@@ -2224,12 +2250,12 @@ Nahi haina konfigurazio-fitxategi erabil ditzakezu, bat inprimagailuko.
  aldagaian zehatz daiteke.
  Gogokoen duzun inprimagailua LyX barruan aukera dezakezu, hori beste atal
  batean deskribatzen da.
- Hori guztia egindakoan, LyX-ek bai PostScript® motako inprimagailura bai
+ Hori guztia egindakoan, LyX-ek bai PostScriptÂ® motako inprimagailura bai
  fitxategira inprimatzeko aukera izango du.
 \end_layout
 
 \begin_layout Standard
-Inprimagailuak ez badu PostScript® onartzen, zure inprimagailuaren spool-arentza
+Inprimagailuak ez badu PostScriptÂ® onartzen, zure inprimagailuaren spool-arentza
 t 
 \family typewriter
 ghostscript
@@ -2256,9 +2282,9 @@ ghostscript
 Hobespenak
 \family default
  elkarrizketa-koadroan programa hau zehatz dezakezu.
- Metodo horren alde txarra da ezin duzula zure dokumentuan PostScript® fitxategi
+ Metodo horren alde txarra da ezin duzula zure dokumentuan PostScriptÂ® fitxategi
 rik gehitu, grafiko batzuk adibidez, inprimagailu-zehatzerako bihurtzaile
- programak ez baitu PostScript® ulertzen.
+ programak ez baitu PostScriptÂ® ulertzen.
  Hori dela eta, LyX taldekideok 
 \family typewriter
 dvips
@@ -2288,7 +2314,7 @@ ghostview
 \family typewriter
 .dvi
 \family default
- fitxategiekin egiten du lan; bigarrena, ostera, PostScript® fitxategiekin
+ fitxategiekin egiten du lan; bigarrena, ostera, PostScriptÂ® fitxategiekin
  aritzen da.
 \end_layout
 
@@ -2382,8 +2408,8 @@ ghostscript
 \family typewriter
 ghostview
 \family default
- hobeto egokituta dago dokumentuaren PostScript® bertsioa ikusi behar duzunerako.
- PostScript®-en menpeko ez diren aldaketentzako, hobe duzu 
+ hobeto egokituta dago dokumentuaren PostScriptÂ® bertsioa ikusi behar duzunerako.
+ PostScriptÂ®-en menpeko ez diren aldaketentzako, hobe duzu 
 \family typewriter
 xdvi
 \family default
@@ -2483,7 +2509,8 @@ Jarraitu irakurtzen jakiteko LyX-ekin aukeran dituzun dokumentu-klaseen
 \end_layout
 
 \begin_layout Subsection
-\begin_inset LatexCommand \label{atal:dok-klaseak}
+\begin_inset LatexCommand label
+name "atal:dok-klaseak"
 
 \end_inset
 
@@ -2547,7 +2574,8 @@ liburua.cls
  Aguirregabiriaren gunera (mila esker Juan!): 
 \newline
 
-\begin_inset LatexCommand \url{http://tp.lc.ehu.es/JMA/basque.html}
+\begin_inset LatexCommand url
+target "http://tp.lc.ehu.es/JMA/basque.html"
 
 \end_inset
 
@@ -2602,7 +2630,7 @@ Amsbook AMS erabiltzen duen estilo eta formatuko liburua da.
 \end_layout
 
 \begin_layout Description
-Dinbrief für Briefe nach deutscher Art
+Dinbrief fÃ¼r Briefe nach deutscher Art
 \begin_inset Foot
 status collapsed
 
@@ -3304,7 +3332,8 @@ Azpiazpiatal
 \family default
  eta antzekoentzako izenburuak.
  Izenburuei buruzkoa 
-\begin_inset LatexCommand \ref{atal:paringurizenburu}
+\begin_inset LatexCommand ref
+reference "atal:paringurizenburu"
 
 \end_inset
 
@@ -3505,7 +3534,8 @@ documentclass
 Bereizketa
 \family default
  Bere zatia dauka, xehetasun gehiagorako, irakur 
-\begin_inset LatexCommand \ref{atal:parkoskabarne}
+\begin_inset LatexCommand ref
+reference "atal:parkoskabarne"
 
 \end_inset
 
@@ -3635,7 +3665,8 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:parkoskabarne}
+\begin_inset LatexCommand label
+name "atal:parkoskabarne"
 
 \end_inset
 
@@ -3815,7 +3846,8 @@ setspace
 
 \begin_layout Section
 Paragrafo-inguruneak
-\begin_inset LatexCommand \label{atal:par-ingurunea}
+\begin_inset LatexCommand label
+name "atal:par-ingurunea"
 
 \end_inset
 
@@ -3907,6 +3939,7 @@ Ingurune hauetariko batean bazaude:
 status collapsed
 
 \begin_layout Standard
+
  
 \end_layout
 
@@ -3920,6 +3953,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
+
 
 \backslash
 vspace{-2ex} 
@@ -3949,6 +3983,7 @@ Zitazioa
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -3976,6 +4011,7 @@ Elementua
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4003,6 +4039,7 @@ Azalpena
 status collapsed
 
 \begin_layout Standard
+
 }
 \backslash
 parbox[t]{3cm}{
@@ -4024,6 +4061,7 @@ Zerrenda
 status collapsed
 
 \begin_layout Standard
+
 }
 \end_layout
 
@@ -4048,7 +4086,8 @@ Estandarra
  Gehienetan, paragrafo berri bat hasterakoan bai paragrafo-ingurunea bai
  habiaratze-sakonera berrasieratzen dira (habiaratzeari buruzko azalpen
  gehiago 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -4167,7 +4206,8 @@ Izenburuak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:paringurizenburu}
+\begin_inset LatexCommand label
+name "atal:paringurizenburu"
 
 \end_inset
 
@@ -4379,7 +4419,8 @@ Izen bakoitzaren ondorengo izartxoak ("*") izenburu horiek zenbatu gabekoak
 
 \begin_layout Subsubsection
 Zenbakera aldatzea
-\begin_inset LatexCommand \label{azpi:atal-sakon}
+\begin_inset LatexCommand label
+name "azpi:atal-sakon"
 
 \end_inset
 
@@ -4580,20 +4621,12 @@ inolako zenbaketarik ez
 
 \begin_layout Standard
 gehitu
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
 \family sans
-\series default
-\shape default
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 Zatiak
@@ -4615,23 +4648,25 @@ Zatiak
 \bar no
 \noun off
 \color none
--0 
+-0
 \series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\size default
 \noun default
 \color inherit
 eta
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
- 0
+ 
+\series medium
+\shape up
+\emph off
+\bar no
+0
 \end_layout
 
 \end_inset
@@ -4641,20 +4676,12 @@ eta
 
 \begin_layout Standard
 gehitu
-\family sans
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
-\series default
-\shape default
+\family sans
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 Kapituluak
@@ -4686,20 +4713,12 @@ Kapituluak
 
 \begin_layout Standard
 gehitu
-\family sans
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
-\series default
-\shape default
+\family sans
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 Atalak
@@ -4731,20 +4750,12 @@ Atalak
 
 \begin_layout Standard
 gehitu
-\family sans
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
-\series default
-\shape default
+\family sans
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 Azpiatalak
@@ -4776,20 +4787,12 @@ Azpiatalak
 
 \begin_layout Standard
 gehitu
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
 \family sans
-\series default
-\shape default
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 Azpiazpiatalak
@@ -4821,20 +4824,12 @@ Azpiazpiatalak
 
 \begin_layout Standard
 gehitu
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
 \family sans
-\series default
-\shape default
 \size default
-\emph default
-\bar default
 \noun default
 \color inherit
 Paragrafoak
@@ -4865,9 +4860,9 @@ Paragrafoak
 \begin_inset Text
 
 \begin_layout Standard
-gehitu
+gehitu 
 \family sans
- Azpiparagrafoak
+Azpiparagrafoak
 \end_layout
 
 \end_inset
@@ -4930,9 +4925,9 @@ Azpiatalak
 \family sans
 Atala
 \family default
- eremuan "5" eta
+ eremuan "5" eta 
 \family sans
- Gaien\InsetSpace ~
+Gaien\InsetSpace ~
 aurkibidea
 \family default
  eremuan "2" eta kitto! Egina duzu.
@@ -5087,7 +5082,8 @@ Zita eta zitazioa
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zita}
+\begin_inset LatexCommand label
+name "atal:zita"
 
 \end_inset
 
@@ -5200,7 +5196,8 @@ Bertsoa
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:bertsoa}
+\begin_inset LatexCommand label
+name "atal:bertsoa"
 
 \end_inset
 
@@ -5259,7 +5256,8 @@ Zerrendak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:paringuzerren}
+\begin_inset LatexCommand label
+name "atal:paringuzerren"
 
 \end_inset
 
@@ -5338,7 +5336,8 @@ Edozein motatako zerrenda beste zerrenda baten barruan habiara dezakezu.
 a dauden moduaren arabera.
  Edozein zerrenda-motatako paragrafo-ingurunea erabiltzeko asmoa edukiz
  gero, 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -5351,7 +5350,8 @@ Elementua
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:elementua}
+\begin_inset LatexCommand label
+name "atal:elementua"
 
 \end_inset
 
@@ -5411,7 +5411,8 @@ LyX-ek pantailan beti ikur berdina agertuko du, izartxoa.
 
 \begin_layout Itemize
 Habiaratzeari buruzko azalpen gehiago 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -5507,7 +5508,8 @@ Buletak
 Ohartuko zinen elementuen arteko tartea gutxitzen dela sakonera handitzen
  den heinean.
  Habiaratze eta sakonerei buruzko trikimailuak 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -5521,7 +5523,8 @@ Zenbatuta
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zenbatuta}
+\begin_inset LatexCommand label
+name "atal:zenbatuta"
 
 \end_inset
 
@@ -5667,7 +5670,8 @@ Ezaugarri hedatuak
 \begin_layout Standard
 Hemen azaldutakoak baino habiaratze-maila gehiago dago.
  Habiatzeari buruzko gauza gehiago ikasteko, 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -5680,7 +5684,8 @@ Azalpena
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:azalpzerren}
+\begin_inset LatexCommand label
+name "atal:azalpzerren"
 
 \end_inset
 
@@ -5767,7 +5772,8 @@ babestua
 \family default
  menua.
  Ikus 
-\begin_inset LatexCommand \ref{atal:htartea}
+\begin_inset LatexCommand ref
+reference "atal:htartea"
 
 \end_inset
 
@@ -5835,7 +5841,8 @@ LyX-eko Zerrenda
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:lyxzerren}
+\begin_inset LatexCommand label
+name "atal:lyxzerren"
 
 \end_inset
 
@@ -5862,12 +5869,14 @@ Etiketatua
 
 \begin_layout Standard
 Orain, 
-\begin_inset LatexCommand \ref{atal:elementua}
+\begin_inset LatexCommand ref
+reference "atal:elementua"
 
 \end_inset
 
  eta 
-\begin_inset LatexCommand \ref{atal:azalpzerren}
+\begin_inset LatexCommand ref
+reference "atal:azalpzerren"
 
 \end_inset
 
@@ -5882,7 +5891,8 @@ Zerrenda
 Zenbatuta
 \family default
 -k egiten du, eta 
-\begin_inset LatexCommand \ref{atal:zenbatuta}
+\begin_inset LatexCommand ref
+reference "atal:zenbatuta"
 
 \end_inset
 
@@ -5999,7 +6009,8 @@ Zerrenda
  ingurunea habiara dezakezu.
  Beste zerrenda paragrafo-ingurune bezala lantzen dira.
  Habiarazteari buruzko xehetasun gehiagorako, irakur 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -6090,7 +6101,8 @@ HBete
 \family default
 ) erabil ditzakezu LyX-ek etiketei ezartzen diren lerrokadura aldatzeko.
  Lerro-betetzaileei buruzkoak 
-\begin_inset LatexCommand \ref{atal:htartea}
+\begin_inset LatexCommand ref
+reference "atal:htartea"
 
 \end_inset
 
@@ -6168,7 +6180,8 @@ Zerrenda
 \family default
 -motako lau paragrafo-ingurunetan erabiltzen da.
  Esan al dizugu inguruneak habiarazteko xehetasunak 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -6234,7 +6247,8 @@ Erabilera
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:helbi_erabil}
+\begin_inset LatexCommand label
+name "atal:helbi_erabil"
 
 \end_inset
 
@@ -6455,7 +6469,8 @@ Bibliografia
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:bibliografia}
+\begin_inset LatexCommand label
+name "atal:bibliografia"
 
 \end_inset
 
@@ -6549,12 +6564,15 @@ erreferentzia
  Hainbat erreferentzia jar daiteke gako bat baino gehiago hautatuz.
  Bibliografiaren adibidea dokumentu honen amaieran agertzen da.
  Bi sarrera aipatzeko adibide bat hau da: "Ikus 
-\begin_inset LatexCommand \cite{latexgida}
+\begin_inset LatexCommand cite
+key "latexgida"
 
 \end_inset
 
  edo 
-\begin_inset LatexCommand \cite[3. kapitulua]{latexlagunartea}
+\begin_inset LatexCommand cite
+after "3. kapitulua"
+key "latexlagunartea"
 
 \end_inset
 
@@ -6594,7 +6612,8 @@ Epigrafea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:epigrafediseinua}
+\begin_inset LatexCommand label
+name "atal:epigrafediseinua"
 
 \end_inset
 
@@ -6660,12 +6679,14 @@ mugikor
 \family default
 retik at erabili.
  Ikus 
-\begin_inset LatexCommand \ref{atal:irudiak}
+\begin_inset LatexCommand ref
+reference "atal:irudiak"
 
 \end_inset
 
  eta 
-\begin_inset LatexCommand \ref{atal:irudimugik}
+\begin_inset LatexCommand ref
+reference "atal:irudimugik"
 
 \end_inset
 
@@ -6845,6 +6866,7 @@ int main(void)
 status collapsed
 
 \begin_layout Standard
+
 {}
 \end_layout
 
@@ -6896,7 +6918,8 @@ Iruzkina
 
 \begin_layout Section
 Inguruneak habiaratzea
-\begin_inset LatexCommand \label{atal:habiaratu}
+\begin_inset LatexCommand label
+name "atal:habiaratu"
 
 \end_inset
 
@@ -6909,7 +6932,8 @@ Zertan datza bere garrantzia
 
 \begin_layout Standard
 Arestian azaldu den bezala, behin eta berriz aipatu dizugu "zoaz 
-\begin_inset LatexCommand \ref{atal:habiaratu}
+\begin_inset LatexCommand ref
+reference "atal:habiaratu"
 
 \end_inset
 
@@ -7319,7 +7343,8 @@ Besteak habiaratzea: taulak, matematikak, mugikorrak, e.a.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:taula-eta-irud-habiara}
+\begin_inset LatexCommand label
+name "atal:taula-eta-irud-habiara"
 
 \end_inset
 
@@ -7351,12 +7376,14 @@ Mugikor
 \family default
  egoeran jartzen baduzu, ez da egia izango.
  Xehetasun gehiagorako, ikus azpian edo 
-\begin_inset LatexCommand \ref{atal:irudiak}
+\begin_inset LatexCommand ref
+reference "atal:irudiak"
 
 \end_inset
 
  edo begiratu 
-\begin_inset LatexCommand \ref{atal:taulak}
+\begin_inset LatexCommand ref
+reference "atal:taulak"
 
 \end_inset
 
@@ -8546,11 +8573,17 @@ Zenbatuta
 \family default
  elementu batean erabiliko den etiketa-mota horren inguruan dauden 
 \emph on
-beste 
+beste
+\emph default
+ 
 \family sans
+\emph on
 Zenbatuta
 \family default
- ingurune
+\emph default
+ 
+\emph on
+ingurune
 \emph default
  kopuruek erabakitzen dute.
  Era berean, 
@@ -9034,9 +9067,9 @@ D
 \bar default
 iseinua
 \family default
- menuko
+ menuko 
 \family sans
- Izen-estiloa
+Izen-estiloa
 \family default
  elementua
 \end_layout
@@ -9049,9 +9082,9 @@ klikatu tresna-barrako pertsona itxura duen botoia
 erabili 
 \family sans
 M-c\InsetSpace ~
-c 
+c
 \family default
-laster-tekla
+ laster-tekla
 \end_layout
 
 \begin_layout Standard
@@ -9092,11 +9125,11 @@ Enfasia
 \begin_layout Itemize
 Hautatu 
 \family sans
-Diseinua 
+Diseinua
 \family default
-menuko
+ menuko 
 \family sans
- Enfasi-estiloa
+Enfasi-estiloa
 \family default
  aukera
 \end_layout
@@ -9117,9 +9150,9 @@ klikatu tresna-barrako
 erabili 
 \family sans
 M-c\InsetSpace ~
-e 
+e
 \family default
-laster-tekla
+ laster-tekla
 \end_layout
 
 \begin_layout Standard
@@ -9609,9 +9642,9 @@ Hau "Handia" letra-tamaina da.
 \begin_layout Standard
 (laster-tekla = 
 \family sans
-M-s l 
+M-s l
 \family default
-edo 
+ edo 
 \family sans
 M-s 6
 \family default
@@ -9735,11 +9768,17 @@ Enfasia
 \family default
  
 \emph on
-Testu honek 
+Testu honek
+\emph default
+ 
 \family sans
+\emph on
 Enfasia
 \family default
- aktibatuta dauka.
+\emph default
+ 
+\emph on
+aktibatuta dauka.
 \end_layout
 
 \begin_deeper
@@ -10001,7 +10040,7 @@ ko bihurketa zehatzik behar.
 Oharra
 \emph default
 : DVI fitxategiak bere barruan LaTeX fitxategiaren edukia dauka.
- Zure dokumentuan PostScript® motako irudi batzuk txertatu badituzu, DVI
+ Zure dokumentuan PostScriptÂ® motako irudi batzuk txertatu badituzu, DVI
  fixtategiak irudiak diren fitxategiei zuzenduriko estekak bakarrik edukiko
  ditu, eta ez baititu irudi horiek bere barruan edukitzen.
  Beraz, ez ahaztu zure 
@@ -10046,27 +10085,27 @@ Inprimagailu eta Unix sistema batzuek DVI ulertzen dute, eta zuzenean zure
 \end_layout
 
 \begin_layout Enumerate
-Gaur egun, inprimagailu gehienek PostScript® formatua ulertzen dute.
+Gaur egun, inprimagailu gehienek PostScriptÂ® formatua ulertzen dute.
  LyX-ek automatikoki 
 \family typewriter
 .dvi
 \family default
- fitxategiak PostScript® fitxategira bihurtzen du, dokumentua inprimatu
+ fitxategiak PostScriptÂ® fitxategira bihurtzen du, dokumentua inprimatu
  nahi duzunean.
- LyX-ek ere dokumentuaren PostScript® bertsioaren aurrebista ikusteko aukera
+ LyX-ek ere dokumentuaren PostScriptÂ® bertsioaren aurrebista ikusteko aukera
  eskaintzen dizu, ghostview programa erabiliz.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-PostScript® erabiltzeak duen alde ona da programa-bihurtzaileak (
+PostScriptÂ® erabiltzeak duen alde ona da programa-bihurtzaileak (
 \family typewriter
 dvips
 \family default
- izenekoa) dokumentuan sartu duzun edozein PostScript® grafiko hartu eta
- dokumentuaren amaierako PostScript® bertsioan jartzen duela.
+ izenekoa) dokumentuan sartu duzun edozein PostScriptÂ® grafiko hartu eta
+ dokumentuaren amaierako PostScriptÂ® bertsioan jartzen duela.
  Erabili dituzun letra-tipo ezberdinak ere sartzen ditu.
- Honela, PostScript® bertsioa DVI bertsioa baino askoz ere eramangarriagoa
+ Honela, PostScriptÂ® bertsioa DVI bertsioa baino askoz ere eramangarriagoa
  da.
 \end_layout
 
@@ -10171,7 +10210,7 @@ xdvi
 \end_layout
 
 \begin_layout Subsection
-PostScript®-en aurrebista: 
+PostScriptÂ®-en aurrebista: 
 \family typewriter
 ghostview
 \end_layout
@@ -10182,7 +10221,7 @@ Orokorrean, dokumentua ikusteko biderik erosoen eta azkarrena
 xdvi
 \family default
  erabiltzea da.
- Hala ere, batzuetan PostScript® bertsioa begiratu nahiko duzu.
+ Hala ere, batzuetan PostScriptÂ® bertsioa begiratu nahiko duzu.
  Zergatietariko bat letra-tipoetan datza
 \begin_inset Foot
 status collapsed
@@ -10196,7 +10235,7 @@ John Weiss
 -en oharra
 \emph default
 : beste arrazoi bat paranoia izan daiteke.
- Inprimatu aurretik PostScript® bertsioari begiratzea atsegin dut, inprimagailua
+ Inprimatu aurretik PostScriptÂ® bertsioari begiratzea atsegin dut, inprimagailua
 ri zehazki zer igorriko zaion ikusteko\SpecialChar \ldots{}
 
 \end_layout
@@ -10204,7 +10243,7 @@ ri zehazki zer igorriko zaion ikusteko\SpecialChar \ldots{}
 \end_inset
 
 .
- LaTeX dokumentu batean PostScript® letra-tipoak erabil ditzakezun arren,
+ LaTeX dokumentu batean PostScriptÂ® letra-tipoak erabil ditzakezun arren,
  
 \family typewriter
 xdvi
@@ -10214,11 +10253,11 @@ xdvi
 \family typewriter
 ghostview
 \family default
- edo beste PostScript® fitxategi-ikustaile bat beharko duzu.
+ edo beste PostScriptÂ® fitxategi-ikustaile bat beharko duzu.
 \end_layout
 
 \begin_layout Standard
-Dokumentuaren PostScript® bertsioa ikusteko, hautatu 
+Dokumentuaren PostScriptÂ® bertsioa ikusteko, hautatu 
 \family sans
 \bar under
 I
@@ -10342,7 +10381,8 @@ dvips
 \family default
  inprimagailu-izen honentzako konfiguratu behar dela.
  Xehetasun gehiagorako, ikus 
-\begin_inset LatexCommand \ref{atal:dvipskonfig}
+\begin_inset LatexCommand ref
+reference "atal:dvipskonfig"
 
 \end_inset
 
@@ -10363,7 +10403,7 @@ lyxrc
 \end_inset
 
 .
- Inprimagailu horrek PostScript® fitxategiekin lan egin beharko du.
+ Inprimagailu horrek PostScriptÂ® fitxategiekin lan egin beharko du.
 \end_layout
 
 \begin_layout Labeling
@@ -10373,7 +10413,7 @@ lyxrc
 Fitxategia
 \family default
  Zein fitxategitan inprimatuko den zehazteko da.
- Irteera PostScript® formatukoa izango da.
+ Irteera PostScriptÂ® formatukoa izango da.
  Normalean fitxategia uneko direktorioan idatziko da, bide-izen osoa ez
  baduzu zehazten bederen.
 \end_layout
@@ -10387,7 +10427,7 @@ dvips
 \family typewriter
 ghostscript
 \family default
- (PostScript® motako inprimagailurik ez baduzu) tresnak urratsez urrats
+ (PostScriptÂ® motako inprimagailurik ez baduzu) tresnak urratsez urrats
  landuko baitira.
 \end_layout
 
@@ -10400,7 +10440,8 @@ Hitz-zatiketa eta marratxoak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:hitz-zatiak}
+\begin_inset LatexCommand label
+name "atal:hitz-zatiak"
 
 \end_inset
 
@@ -10445,6 +10486,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -10477,6 +10519,7 @@ status inlined
 
 \begin_layout Standard
 
+
 \backslash
 /
 \end_layout
@@ -10488,6 +10531,7 @@ status inlined
 status inlined
 
 \begin_layout Standard
+
 
 \backslash
 /
@@ -10636,7 +10680,8 @@ Laburtzapenak eta sententzia-amaiera
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:laburtza}
+\begin_inset LatexCommand label
+name "atal:laburtza"
 
 \end_inset
 
@@ -10706,7 +10751,8 @@ Zuriune\InsetSpace ~
 babestua
 \family default
  minuskuletako laburtzapenen ondoren (ikus 
-\begin_inset LatexCommand \ref{atal:zuribabes-lerrojauzi-horlerro}
+\begin_inset LatexCommand ref
+reference "atal:zuribabes-lerrojauzi-horlerro"
 
 \end_inset
 
@@ -10777,7 +10823,8 @@ Komatxoak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:komatxoak}
+\begin_inset LatexCommand label
+name "atal:komatxoak"
 
 \end_inset
 
@@ -10801,11 +10848,11 @@ iseinua\SpecialChar \menuseparator
 \bar under
 D
 \bar default
-okumentua 
+okumentua
 \family default
-menuan
+ menuan 
 \family sans
- Hizkuntza
+Hizkuntza
 \family default
  fitxako 
 \family sans
@@ -10944,9 +10991,9 @@ Testua
 \begin_inset Quotes prd
 \end_inset
 
- 
+
 \family default
-Erabili komatxoak 
+ Erabili komatxoak 
 \begin_inset Quotes pld
 \end_inset
 
@@ -11044,7 +11091,8 @@ Hizki-loturak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:hizki-loturak}
+\begin_inset LatexCommand label
+name "atal:hizki-loturak"
 
 \end_inset
 
@@ -11121,7 +11169,8 @@ Alargunak eta umezurtzak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:alargunak}
+\begin_inset LatexCommand label
+name "atal:alargunak"
 
 \end_inset
 
@@ -11157,12 +11206,14 @@ LyX-ek atal bateko izenburuaren ostean orri-jauziak saihesten ditu.
 Ez dugu azalduko TeX-ek eta LaTeX-ek noiz erabakitzen duten orri-jauzi bat
  egitea, edo nola eragin dezakezun beraien jokabidean.
  LaTeX-i buruzko zenbait liburuk bibliografian zerrendatzen diren 
-\begin_inset LatexCommand \cite{latexlagunartea}
+\begin_inset LatexCommand cite
+key "latexlagunartea"
 
 \end_inset
 
  edo 
-\begin_inset LatexCommand \cite{latexgida}
+\begin_inset LatexCommand cite
+key "latexgida"
 
 \end_inset
 
@@ -11323,7 +11374,8 @@ rentzako lekua utziz.
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:irudiak}
+\begin_inset LatexCommand label
+name "atal:irudiak"
 
 \end_inset
 
@@ -11331,7 +11383,7 @@ Dokumentuak prestatzeko sistema bat ez da osoa izango baldin eta beste tresnekin
  sortutako irudiak dokumentu batera inportatzeko gaitasunik ez badu.
  LyX-en "irudiak" deitzen zaie (garai bateko zentzuan irudiak dira edo inportatu
 tako grafiko-mota bat izan daiteke).
- LyX-ek Kapsulatutako PostScript® motako irudiak (.eps luzapena eduki ohi
+ LyX-ek Kapsulatutako PostScriptÂ® motako irudiak (.eps luzapena eduki ohi
  dute) oso ongi kudeatzen ditu, eta 
 \family typewriter
 ghostview
@@ -11349,7 +11401,8 @@ includegraphics
 Hemen aipatzen diren irudiak ez dute epigraferik eta dokumentuan jartzen
  dituzun lekuan kokatzen dira.
  Ezaugarri horietariko bat behar baduzu, ikus 
-\begin_inset LatexCommand \ref{atal:irudimugik}
+\begin_inset LatexCommand ref
+reference "atal:irudimugik"
 
 \end_inset
 
@@ -11385,7 +11438,7 @@ Zure dokumentuan grafiko-marko bat gehituko da, eta elkarrizketa-koadro
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../mobius.eps
+	filename ../clipart/mobius.eps
 
 \end_inset
 
@@ -11405,7 +11458,8 @@ Fitxategia
 Azpirudia
 \family default
  aukera ezar dezakezu: (ikus 
-\begin_inset LatexCommand \ref{atal:irudimugik}
+\begin_inset LatexCommand ref
+reference "atal:irudimugik"
 
 \end_inset
 
@@ -11439,7 +11493,8 @@ Irudi mugikorrak erabiltzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:irudimugik}
+\begin_inset LatexCommand label
+name "atal:irudimugik"
 
 \end_inset
 
@@ -11456,7 +11511,8 @@ mugikorrak
  kokatzeko mugituko ditu.
  Ordainez, LyX-ek irudion zerrenda eguneratuko du eta beraietan epigrafeak
  idazteko aukera eskainiko dizu, 
-\begin_inset LatexCommand \ref{atal:epigrafediseinua}
+\begin_inset LatexCommand ref
+reference "atal:epigrafediseinua"
 
 \end_inset
 
@@ -11496,8 +11552,12 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{irud:escher}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "irud:escher"
 
 \end_inset
 
@@ -11505,10 +11565,15 @@ M.C.
  Escher-en azidoa.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	display grayscale
 
 \end_inset
@@ -11528,7 +11593,7 @@ status open
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../platypus.eps
+	filename ../clipart/platypus.eps
 	display color
 	rotateOrigin center
 
@@ -11537,12 +11602,21 @@ status open
 
 \end_layout
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{irud:zapal-ornit}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "irud:zapal-ornit"
 
 \end_inset
 
 Hainbat aldiz itxura-aldatutako ornitorrinkoa mugikor batean.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11564,7 +11638,8 @@ Epigrafea
 \family default
  ingurunea hautatuz, sortu berriro.
  Horixe egin dugu 
-\begin_inset LatexCommand \ref{irud:zapal-ornit}
+\begin_inset LatexCommand ref
+reference "irud:zapal-ornit"
 
 \end_inset
 
@@ -11572,7 +11647,8 @@ Epigrafea
 irudiarekin.
  Kurtsorea epigrafearen ondorengo paragrafoan balego irudia txertatzerakoan,
  hori epigrafearen ostean kokatuko da, 
-\begin_inset LatexCommand \ref{irud:escher}
+\begin_inset LatexCommand ref
+reference "irud:escher"
 
 \end_inset
 
@@ -11589,7 +11665,8 @@ Mugikor
 \begin_layout Standard
 Mugikor baten gainean saguaren eskuineko botoiarekin klikatuz elkarrizketa-koadr
 o bat irekiko du, bertan LaTeX-ek mugikorrak kokatzeko (ikusi 
-\begin_inset LatexCommand \ref{atal:mugik-koka}
+\begin_inset LatexCommand ref
+reference "atal:mugik-koka"
 
 \end_inset
 
@@ -11611,7 +11688,8 @@ utabeak
 \begin_layout Standard
 Irudi honek etiketa bat eta berari dagokion erreferentzia gurutzatu bat
  nola kokatu eta sortzen den erakusten du, hurrenez hurren; irakurri 
-\begin_inset LatexCommand \ref{atal:erref-gurut}
+\begin_inset LatexCommand ref
+reference "atal:erref-gurut"
 
 \end_inset
 
@@ -11645,7 +11723,8 @@ Jabetu zaitez epigrafea
 Irudi-zerrenda
 \family default
 n (
-\begin_inset LatexCommand \ref{atal:zer-zerrend}
+\begin_inset LatexCommand ref
+reference "atal:zer-zerrend"
 
 \end_inset
 
@@ -11659,7 +11738,8 @@ Mugikorraren kokalekua
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:mugik-koka}
+\begin_inset LatexCommand label
+name "atal:mugik-koka"
 
 \end_inset
 
@@ -11729,9 +11809,9 @@ goia
 \begin_layout Itemize
 
 \family sans
-b 
+b
 \family default
-erabili 
+ erabili 
 \emph on
 behea
 \emph default
@@ -11913,18 +11993,18 @@ XFig
 \end_layout
 
 \begin_layout Enumerate
-Esportatu irudia Kapsulatutako PostScript® (Encapsulated PostScript®) formatuan.
+Esportatu irudia Kapsulatutako PostScriptÂ® (Encapsulated PostScriptÂ®) formatuan.
  Hori LyX-en oso erraz txertatzen da, arestiko ataletan azaldu dugunez.
- Abantaila handi bat dauka: PostScript®-en ahalmen guztia eskuragarri duzu.
+ Abantaila handi bat dauka: PostScriptÂ®-en ahalmen guztia eskuragarri duzu.
  Bezier kurbak, koloreak, marra-lodiera guztiak eta gehiago esan nahi du.
- Zure fig dokumentuan testua sartu baduzu, PostScript® motako letra-tipoekin
+ Zure fig dokumentuan testua sartu baduzu, PostScriptÂ® motako letra-tipoekin
  inprimatuko da, ederto! Irudia beste EPS irudien antzera itxuraldatu daiteke,
  arestian azaldu dugun bezala.
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Daukan alde txarra: PostScript® testu gisa ezin duzu ekuaziorik sortu, ez
+Daukan alde txarra: PostScriptÂ® testu gisa ezin duzu ekuaziorik sortu, ez
  bada eskuz.
  Zure irudian ekuazioak, berreketak edo indizeak behar badituzu, bide hau
  jarraitzea ahokatzen dizugu.
@@ -11981,7 +12061,7 @@ Ezaugarri hedatuak
 
 \begin_deeper
 \begin_layout Standard
-Tamalez, LaTeX-ek ez dauka PostScript®-ek duena bezalako ahalmen grafikoa.
+Tamalez, LaTeX-ek ez dauka PostScriptÂ®-ek duena bezalako ahalmen grafikoa.
  Hori dela eta, ezingo dituzu marra-lodiera guztiak erabili eta, gogaikarriagoa
  dena, ezta makurdura guztiak ere.
  horregatik hirugarren bide bat aholkatzen dugu irudi konplexuagoekin lan
@@ -11991,7 +12071,7 @@ Tamalez, LaTeX-ek ez dauka PostScript®-ek duena bezalako ahalmen grafikoa.
 \end_deeper
 \begin_layout Enumerate
 3.
- Esportatu irudia LaTeX/PostScript® konbinatu gisa.
+ Esportatu irudia LaTeX/PostScriptÂ® konbinatu gisa.
  Ondoren XFig-ek (berez 
 \family typewriter
 transfig
@@ -12001,7 +12081,7 @@ transfig
 
 \begin_deeper
 \begin_layout Enumerate
-PostScript® zatia 
+PostScriptÂ® zatia 
 \family typewriter
 iruditxoa.pstex
 \family default
@@ -12013,13 +12093,13 @@ LaTeX zatia
 \family typewriter
 iruditxoa.pstex_t
 \family default
-, testu guztia edukitzeaz gain PostScript® zatira esteka bat dauka.
+, testu guztia edukitzeaz gain PostScriptÂ® zatira esteka bat dauka.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 Ondoren, arestian azaldu dugun antzera, txertatu LaTeX zatia.
- Horrek automatikoki PostScript® zatia ere txertatuko du.
+ Horrek automatikoki PostScriptÂ® zatia ere txertatuko du.
  
 \begin_inset Foot
 status collapsed
@@ -12079,7 +12159,7 @@ Gin@extensions{eps, ps, pstex, eps.gz, ps.gz, eps=2EZ}
 
 \begin_layout Standard
 Horrela gehienei arazoa zuzenduko lieke.
- Bestalde, PostScript® zatia 
+ Bestalde, PostScriptÂ® zatia 
 \family typewriter
 iruditxoa.eps
 \family default
@@ -12094,9 +12174,9 @@ iruditxoa.pstex_t
 \end_inset
 
 .
- Horrela PostScript® eta LaTeX-en ahalmen konbinatu osoa edukiko duzu, sortu
+ Horrela PostScriptÂ® eta LaTeX-en ahalmen konbinatu osoa edukiko duzu, sortu
  orduko irudia eskalatzeko aukera izan ezik.
- Eskala daitezkeen irudiak nahi badituzu, PostScript® formatua da zure aukera
+ Eskala daitezkeen irudiak nahi badituzu, PostScriptÂ® formatua da zure aukera
  bakarra.
  Beste abantaila txiki bat: LaTeX-i letra-tipoaren konposaketa-lanak egiten
  uztea, irudien letra-tipoak testuaren berdinak izango dira, eta hori askoz
@@ -12108,7 +12188,8 @@ Taulak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:taulak}
+\begin_inset LatexCommand label
+name "atal:taulak"
 
 \end_inset
 
@@ -12295,12 +12376,7 @@ B
 
 \begin_layout Standard
 anitza
-\family roman
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
@@ -12587,31 +12663,40 @@ y
 \bar no
 \noun off
 \color none
-a 
+a
 \family default
+\series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\series bold
+\size default
 \noun default
 \color inherit
 eta
-\family roman
-\shape up
+\series default
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
- b
+ 
+\family roman
+\series bold
+\shape up
+\emph off
+\bar no
+b
 \family default
+\series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
+ 
+\series bold
 \color inherit
- gela
+gela
 \end_layout
 
 \end_inset
@@ -12665,31 +12750,40 @@ eta
 \bar no
 \noun off
 \color none
-b 
+b
 \family default
+\series default
 \shape default
-\size default
 \emph default
 \bar default
+ 
+\series bold
+\size default
 \noun default
 \color inherit
 eta
-\family roman
-\shape up
+\series default
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
- a
+ 
+\family roman
+\series bold
+\shape up
+\emph off
+\bar no
+a
 \family default
+\series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
+ 
+\series bold
 \color inherit
- gela
+gela
 \end_layout
 
 \end_inset
@@ -12745,13 +12839,16 @@ eta
 \color none
 abc
 \family default
+\series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
+ 
+\series bold
 \color inherit
- gela
+gela
 \end_layout
 
 \end_inset
@@ -12807,13 +12904,16 @@ abc
 \color none
 abcd
 \family default
+\series default
 \shape default
 \size default
 \emph default
 \bar default
 \noun default
+ 
+\series bold
 \color inherit
- gela
+gela
 \end_layout
 
 \end_inset
@@ -12914,7 +13014,7 @@ Biratu\InsetSpace ~
 90\InsetSpace ~
 gradu
 \family default
- aukera ez da pantailan bistaratzen, eta bakarrik PostScript® motako irteeran
+ aukera ez da pantailan bistaratzen, eta bakarrik PostScriptÂ® motako irteeran
  dabil.
  Beraz, aurreikusi nahi baduzu, erabili 
 \family sans
@@ -13848,12 +13948,7 @@ Guztira
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
 \size normal
-\emph off
-\bar no
 \noun off
 \color none
  
@@ -14601,7 +14696,6 @@ Hau taula baten lerro anitzeko sarrera bat da.
 \emph default
 \bar default
 \noun default
-\color inherit
  
 \family roman
 \series medium
@@ -14610,7 +14704,6 @@ Hau taula baten lerro anitzeko sarrera bat da.
 \emph off
 \bar no
 \noun off
-\color none
 Hau luzeagoa da gainera.
 \end_layout
 
@@ -14777,7 +14870,8 @@ Taula mugikorrak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:taula-mugik}
+\begin_inset LatexCommand label
+name "atal:taula-mugik"
 
 \end_inset
 
@@ -14802,26 +14896,30 @@ ugikorrak
  menutik, LaTeX-i taula leku egokienean doitzeko aukera eskaintzen dio,
  zuk txertatutako leku zehatzaren ordez.
  Taulentzako kokapen mugikor bat irudi mugikorrentzakoa 
-\begin_inset LatexCommand \ref{atal:irudimugik}
+\begin_inset LatexCommand ref
+reference "atal:irudimugik"
 
 \end_inset
 
  bezalakoa da, eta 
-\begin_inset LatexCommand \ref{atal:mugik-koka}
+\begin_inset LatexCommand ref
+reference "atal:mugik-koka"
 
 \end_inset
 
 \InsetSpace ~
 atalean argitzen da.
  Epigrafeak irudi mugikorren antzera lantzen dira, 
-\begin_inset LatexCommand \ref{atal:irudimugik}
+\begin_inset LatexCommand ref
+reference "atal:irudimugik"
 
 \end_inset
 
 \InsetSpace ~
 atalean xehetasunak aurkituko dituzu.
  
-\begin_inset LatexCommand \ref{taula:taula mugikor bat}
+\begin_inset LatexCommand ref
+reference "taula:taula mugikor bat"
 
 \end_inset
 
@@ -14833,12 +14931,21 @@ wide false
 sideways false
 status collapsed
 
-\begin_layout Caption
-\begin_inset LatexCommand \label{taula:taula mugikor bat}
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "taula:taula mugikor bat"
 
 \end_inset
 
 Taula mugikor bat.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -15018,7 +15125,8 @@ Gaien aurkibidea eta bestelako zerrendak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:Gai-aurkib}
+\begin_inset LatexCommand label
+name "atal:Gai-aurkib"
 
 \end_inset
 
@@ -15108,7 +15216,8 @@ Gaien\InsetSpace ~
 aurkibidea
 \family default
  eremuetako balioa 
-\begin_inset LatexCommand \ref{azpi:atal-sakon}
+\begin_inset LatexCommand ref
+reference "azpi:atal-sakon"
 
 \end_inset
 
@@ -15136,14 +15245,11 @@ eta\InsetSpace ~
 A
 \bar default
 urk
-\bar under
- 
 \family default
-\bar default
-menuko
+ menuko 
 \family sans
 \bar under
- G
+G
 \bar default
 aien\InsetSpace ~
 aurkibidea
@@ -15167,7 +15273,8 @@ Irudi, taula eta algoritmoen zerrendak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zer-zerrend}
+\begin_inset LatexCommand label
+name "atal:zer-zerrend"
 
 \end_inset
 
@@ -15257,9 +15364,9 @@ a
 \begin_inset Formula $\beta$
 \end_inset
 
-lortzeko
+lortzeko 
 \family sans
- M-m\InsetSpace ~
+M-m\InsetSpace ~
 g\InsetSpace ~
 b
 \family default
@@ -15267,9 +15374,9 @@ b
 \begin_inset Formula $\tau$
 \end_inset
 
- lortzeko
+ lortzeko 
 \family sans
- M-m\InsetSpace ~
+M-m\InsetSpace ~
 g\InsetSpace ~
 t
 \family default
@@ -15558,7 +15665,8 @@ Zuriunea
  Jabetu zaitez lehenetsi gisa, goi-indize edo azpindizea ezkerrean dagoen
  ikur bakunarentzat bakarrik dela, eta tarte eta lerrokadura aldatzen ditu.
  Hori aldatzeko, irakur 
-\begin_inset LatexCommand \ref{atal:taldekatzea}
+\begin_inset LatexCommand ref
+reference "atal:taldekatzea"
 
 \end_inset
 
@@ -15738,7 +15846,8 @@ lim
 
 Funtzioak" zerrendatik aukeratuta).
  Ikus 
-\begin_inset LatexCommand \ref{atal:mat-funtzioak}
+\begin_inset LatexCommand ref
+reference "atal:mat-funtzioak"
 
 \end_inset
 
@@ -15751,7 +15860,8 @@ Matematikako panela
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:mat-panela}
+\begin_inset LatexCommand label
+name "atal:mat-panela"
 
 \end_inset
 
@@ -15930,7 +16040,8 @@ Matematika funtzioak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:mat-funtzioak}
+\begin_inset LatexCommand label
+name "atal:mat-funtzioak"
 
 \end_inset
 
@@ -16806,7 +16917,8 @@ ako paneleko
 Mugatzaileak
 \family default
  elkarrizketa-koadroa erabiltzea (ikus 
-\begin_inset LatexCommand \ref{atal:mat-panela}
+\begin_inset LatexCommand ref
+reference "atal:mat-panela"
 
 \end_inset
 
@@ -16913,14 +17025,13 @@ Txertatu
 \end_layout
 
 \begin_layout Standard
-LaTeX-eko
-\family sans
- 
+LaTeX-eko 
 \family typewriter
 {
 \family default
  ikurra sartzen saiatzen ari bazara taldekatzeko, 
-\begin_inset LatexCommand \ref{atal:taldekatzea}
+\begin_inset LatexCommand ref
+reference "atal:taldekatzea"
 
 \end_inset
 
@@ -16933,7 +17044,8 @@ Taldekatzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:taldekatzea}
+\begin_inset LatexCommand label
+name "atal:taldekatzea"
 
 \end_inset
 
@@ -16959,14 +17071,14 @@ x^{y^z}
 \end_layout
 
 \begin_layout Standard
-Hala ere, LyX-en
+Hala ere, LyX-en 
 \family typewriter
- }
+}
 \family default
  ikurra idazten saiatzeak uneko kortxetea ixtea dakar irteeran.
- Taldekatzeko, matematika-eran
+ Taldekatzeko, matematika-eran 
 \family typewriter
- 
+
 \backslash
 {
 \family default
@@ -17149,7 +17261,8 @@ Ekuazioak zenbatu eta etiketatzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:mat-etiketa}
+\begin_inset LatexCommand label
+name "atal:mat-etiketa"
 
 \end_inset
 
@@ -17239,7 +17352,8 @@ rutzatua
 \end_inset
 
 ikus (
-\begin_inset LatexCommand \ref{matem:lehen-ekuaz}
+\begin_inset LatexCommand ref
+reference "matem:lehen-ekuaz"
 
 \end_inset
 
@@ -17285,14 +17399,15 @@ tiketa
 Lerro anitzeko ekuazioak zenbatzeko (edo etiketatzeko), jatorriz lerro guztiak
  bereiztuta zenbatzen dira.
  Behin ekuazio bat zenbatzeko etiketa eransten zaionean, ondorengo lerro
- guztiak
+ guztiak 
 \family sans
- #
+#
 \family default
  ikurrarekin etiketatuko dira.
  Ikur hori duten lerroen etiketak alda daiteke, lerro horiei aipamenak egin
  ahal izateko, ondorengo (
-\begin_inset LatexCommand \ref{matem:hirug-ekuaz.}
+\begin_inset LatexCommand ref
+reference "matem:hirug-ekuaz."
 
 \end_inset
 
@@ -17342,13 +17457,15 @@ lerro-zenbakera
 \end_inset
 
  Jakin ezazu multzo honetako lehen ekuazioa (
-\begin_inset LatexCommand \ref{matem:laug-ekuaz.}
+\begin_inset LatexCommand ref
+reference "matem:laug-ekuaz."
 
 \end_inset
 
 ) etiketatuta dagoela, hurrengoa zenbatuta dago baina ez etiketatuta, hirugarren
 ak ez du ez zenbatzailerik ez etiketarik, eta azkena (
-\begin_inset LatexCommand \ref{matem:bostg-ekuaz.}
+\begin_inset LatexCommand ref
+reference "matem:bostg-ekuaz."
 
 \end_inset
 
@@ -17480,9 +17597,9 @@ Adibidez,
 \family typewriter
 
 \backslash
-makrotxoa 
+makrotxoa
 \family default
-makroa 
+ makroa 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18209,7 +18326,8 @@ Erreferentzia gurutzatuak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:erref-gurut}
+\begin_inset LatexCommand label
+name "atal:erref-gurut"
 
 \end_inset
 
@@ -18222,7 +18340,8 @@ Eskuliburu hau LyX-eko leihoan irakurtzen ari bazara, paragrafo honen hasieran
 Erreferentzia
 \family default
  bera da, eta honelako itxura edukitzen du:
-\begin_inset LatexCommand \ref{atal:erref-gurut}
+\begin_inset LatexCommand ref
+reference "atal:erref-gurut"
 
 \end_inset
 
@@ -18236,7 +18355,8 @@ Erreferentzia
 
 \begin_layout Standard
 Bestelako erreferentzia-mota gurutzatuak ere badaude, adibidez, 
-\begin_inset LatexCommand \ref{atal:erref-gurut}
+\begin_inset LatexCommand ref
+reference "atal:erref-gurut"
 
 \end_inset
 
@@ -18417,17 +18537,20 @@ zerbait
 
 .
  Ikus 
-\begin_inset LatexCommand \ref{atal:irudimugik}
+\begin_inset LatexCommand ref
+reference "atal:irudimugik"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand \ref{atal:taula-mugik}
+\begin_inset LatexCommand ref
+reference "atal:taula-mugik"
 
 \end_inset
 
 , eta 
-\begin_inset LatexCommand \ref{atal:mat-etiketa}
+\begin_inset LatexCommand ref
+reference "atal:mat-etiketa"
 
 \end_inset
 
@@ -18486,7 +18609,8 @@ URLa
 : eremuan) sartzeko eskatuz.
  Egin beharreko gauza bakarra duzu.
  Klikatu hurrengo kutxa grisean LyX-eko gune nagusia nola sartu den ikusteko:
-\begin_inset LatexCommand \url{http://www.lyx.org}
+\begin_inset LatexCommand url
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -18497,7 +18621,9 @@ URLa
 URL batekin behin betiko esaldi bat elkarri nahi baduzu, sartu elkarrizketa-koad
 roko Izena eremuan: URLaren aurretik testu soil gisa konposatuko da.
  Adibidez, LaTeX-i buruzko gauza guztiak 
-\begin_inset LatexCommand \url[CTAN]{http://ctan.tug.org}
+\begin_inset LatexCommand url
+name "CTAN"
+target "http://ctan.tug.org"
 
 \end_inset
 
@@ -18586,7 +18712,8 @@ Tarte horizontal osagarria
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:htartea}
+\begin_inset LatexCommand label
+name "atal:htartea"
 
 \end_inset
 
@@ -18735,7 +18862,8 @@ Tarte bertikal osagarria
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:btartea}
+\begin_inset LatexCommand label
+name "atal:btartea"
 
 \end_inset
 
@@ -18871,7 +18999,8 @@ Orrialde-jauziak derrigortzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:orri-jauziak}
+\begin_inset LatexCommand label
+name "atal:orri-jauziak"
 
 \end_inset
 
@@ -18879,7 +19008,8 @@ Ez baduzu atsegin LaTeX-ek dokumentuko orrialdeak nola zatitzen dituen,
  nahi duzun lekuetan orrialdeen jauziak derrigor ditzakezu.
  Orokorrean hori ez da beharrezkoa izaten, LaTeX orriak zatitzen oso ona
  delako, 
-\begin_inset LatexCommand \ref{atal:alargunak}
+\begin_inset LatexCommand ref
+reference "atal:alargunak"
 
 \end_inset
 
@@ -18908,12 +19038,14 @@ Beharbada orrialde-jauzi bat erabili nahi duzu irudi edo taula bat orrialdearen
  gainean (behean edo beraientzako orrialde bereizi batean) agertuko direla
  ziurtatzeko, irudi eta taula aurretik (edo ondoren) dagoenaz kezkatu gabe.
  Ikus 
-\begin_inset LatexCommand \ref{atal:irudiak}
+\begin_inset LatexCommand ref
+reference "atal:irudiak"
 
 \end_inset
 
  eta 
-\begin_inset LatexCommand \ref{atal:taulak}
+\begin_inset LatexCommand ref
+reference "atal:taulak"
 
 \end_inset
 
@@ -18930,7 +19062,8 @@ Zuriune babestuak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zuribabes-lerrojauzi-horlerro}
+\begin_inset LatexCommand label
+name "atal:zuribabes-lerrojauzi-horlerro"
 
 \end_inset
 
@@ -19016,7 +19149,8 @@ C-Lerro-itzulera
  Hala ere, ez zenuke hau erabili beharko LaTeX-en lerro-jauziak konpontzeko,
  LaTeX oso ona baita lerroak eteten\SpecialChar \ldots{}
  (ikus 
-\begin_inset LatexCommand \ref{atal:orri-jauziak}
+\begin_inset LatexCommand ref
+reference "atal:orri-jauziak"
 
 \end_inset
 
@@ -19024,18 +19158,21 @@ C-Lerro-itzulera
 atala).
  Egoera batzuetan beharrezkoa izaten da lerro-jauziak ezartzea, adib.
  olerki edo helbide batean (ikus 
-\begin_inset LatexCommand \ref{atal:zita}
+\begin_inset LatexCommand ref
+reference "atal:zita"
 
 \end_inset
 
 , 
-\begin_inset LatexCommand \ref{atal:bertsoa}
+\begin_inset LatexCommand ref
+reference "atal:bertsoa"
 
 \end_inset
 
 \InsetSpace ~
 eta 
-\begin_inset LatexCommand \ref{atal:helbi_erabil}
+\begin_inset LatexCommand ref
+reference "atal:helbi_erabil"
 
 \end_inset
 
@@ -19048,7 +19185,8 @@ Zuzentzailea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zuzentzailea}
+\begin_inset LatexCommand label
+name "atal:zuzentzailea"
 
 \end_inset
 
@@ -19121,7 +19259,8 @@ Zuzentzailearen aukerak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:zuzent-auk}
+\begin_inset LatexCommand label
+name "atal:zuzent-auk"
 
 \end_inset
 
@@ -19312,9 +19451,9 @@ Zuzentzaile ortografikoa
 \begin_layout Itemize
 
 \family sans
-Onartu hitz konposatuak 
+Onartu hitz konposatuak
 \family default
-
+ 
 \newline
 Zuzentzaileak hitz konposatuak akastunak bezala har ez ditzan erabiltzen
  da.
@@ -19323,9 +19462,9 @@ Zuzentzaileak hitz konposatuak akastunak bezala har ez ditzan erabiltzen
 \begin_layout Itemize
 
 \family sans
-Ihes-karaktereak 
+Ihes-karaktereak
 \family default
-
+ 
 \newline
 Estandarrak ez diren karaktereak dituzten hitzak erabiltzeko aukera eskaintzen
  dizu, zuzentzaile ortografikoak hitz bezala onartzen dituenak.
@@ -19379,7 +19518,8 @@ Erabiltzen duzun hizkuntzarako teklatu egokia baduzu (alemaneraz idazteko
 uta, orduan LyX-i esan beharreko gauza bakarra da zein den zure hizkuntza,
  karaktere-kodeketa eta paper-tamaina.
  Ikus 
-\begin_inset LatexCommand \ref{atal:hizkdiseinu}
+\begin_inset LatexCommand ref
+reference "atal:hizkdiseinu"
 
 \end_inset
 
@@ -19394,7 +19534,8 @@ Hala ere, demagun U.S estiloko teklatua daukazula, eta ingelesa ez den beste
  estiloko teklatua baduzu, eta italieraz idaztea nahi izanez gero, LyX italierak
 o mapa erabil dezan konfigura dezakezu.
  Xehetasuna 
-\begin_inset LatexCommand \ref{atal:auktekla}
+\begin_inset LatexCommand ref
+reference "atal:auktekla"
 
 \end_inset
 
@@ -19428,7 +19569,8 @@ Diseinua, hizkuntzaren aukerak
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:hizkdiseinu}
+\begin_inset LatexCommand label
+name "atal:hizkdiseinu"
 
 \end_inset
 
@@ -19538,7 +19680,8 @@ Teklatu-mapa konfiguratzea
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:auktekla}
+\begin_inset LatexCommand label
+name "atal:auktekla"
 
 \end_inset
 
@@ -19559,7 +19702,8 @@ estiloko
 \end_layout
 
 \begin_layout Standard
-\begin_inset LatexCommand \label{atal:karak_tauka}
+\begin_inset LatexCommand label
+name "atal:karak_tauka"
 
 \end_inset
 
@@ -20070,7 +20214,7 @@ p
 \bar no
 \noun off
 \color none
-°
+Â°
 \end_layout
 
 \end_inset
@@ -20087,7 +20231,7 @@ p
 \bar no
 \noun off
 \color none
-À
+Ã€
 \end_layout
 
 \end_inset
@@ -20104,7 +20248,7 @@ p
 \bar no
 \noun off
 \color none
-Ð
+Ã
 \end_layout
 
 \end_inset
@@ -20121,7 +20265,7 @@ p
 \bar no
 \noun off
 \color none
-à
+Ã 
 \end_layout
 
 \end_inset
@@ -20138,7 +20282,7 @@ p
 \bar no
 \noun off
 \color none
-ð
+Ã°
 \end_layout
 
 \end_inset
@@ -20313,7 +20457,7 @@ q
 \bar no
 \noun off
 \color none
-¡
+Â¡
 \end_layout
 
 \end_inset
@@ -20330,7 +20474,7 @@ q
 \bar no
 \noun off
 \color none
-±
+Â±
 \end_layout
 
 \end_inset
@@ -20347,7 +20491,7 @@ q
 \bar no
 \noun off
 \color none
-Á
+Ã
 \end_layout
 
 \end_inset
@@ -20364,7 +20508,7 @@ q
 \bar no
 \noun off
 \color none
-Ñ
+Ã‘
 \end_layout
 
 \end_inset
@@ -20381,7 +20525,7 @@ q
 \bar no
 \noun off
 \color none
-á
+Ã¡
 \end_layout
 
 \end_inset
@@ -20398,7 +20542,7 @@ q
 \bar no
 \noun off
 \color none
-ñ
+Ã±
 \end_layout
 
 \end_inset
@@ -20576,7 +20720,7 @@ r
 \bar no
 \noun off
 \color none
-¢
+Â¢
 \end_layout
 
 \end_inset
@@ -20593,7 +20737,7 @@ r
 \bar no
 \noun off
 \color none
-²
+Â²
 \end_layout
 
 \end_inset
@@ -20610,7 +20754,7 @@ r
 \bar no
 \noun off
 \color none
-Â
+Ã‚
 \end_layout
 
 \end_inset
@@ -20627,7 +20771,7 @@ r
 \bar no
 \noun off
 \color none
-Ò
+Ã’
 \end_layout
 
 \end_inset
@@ -20644,7 +20788,7 @@ r
 \bar no
 \noun off
 \color none
-â
+Ã¢
 \end_layout
 
 \end_inset
@@ -20661,7 +20805,7 @@ r
 \bar no
 \noun off
 \color none
-ò
+Ã²
 \end_layout
 
 \end_inset
@@ -20836,7 +20980,7 @@ s
 \bar no
 \noun off
 \color none
-£
+Â£
 \end_layout
 
 \end_inset
@@ -20853,7 +20997,7 @@ s
 \bar no
 \noun off
 \color none
-³
+Â³
 \end_layout
 
 \end_inset
@@ -20870,7 +21014,7 @@ s
 \bar no
 \noun off
 \color none
-Ã
+Ãƒ
 \end_layout
 
 \end_inset
@@ -20887,7 +21031,7 @@ s
 \bar no
 \noun off
 \color none
-Ó
+Ã“
 \end_layout
 
 \end_inset
@@ -20904,7 +21048,7 @@ s
 \bar no
 \noun off
 \color none
-ã
+Ã£
 \end_layout
 
 \end_inset
@@ -20921,7 +21065,7 @@ s
 \bar no
 \noun off
 \color none
-ó
+Ã³
 \end_layout
 
 \end_inset
@@ -21096,7 +21240,7 @@ t
 \bar no
 \noun off
 \color none
-¤
+Â¤
 \end_layout
 
 \end_inset
@@ -21113,7 +21257,7 @@ t
 \bar no
 \noun off
 \color none
-´
+Â´
 \end_layout
 
 \end_inset
@@ -21130,7 +21274,7 @@ t
 \bar no
 \noun off
 \color none
-Ä
+Ã„
 \end_layout
 
 \end_inset
@@ -21147,7 +21291,7 @@ t
 \bar no
 \noun off
 \color none
-Ô
+Ã”
 \end_layout
 
 \end_inset
@@ -21164,7 +21308,7 @@ t
 \bar no
 \noun off
 \color none
-ä
+Ã¤
 \end_layout
 
 \end_inset
@@ -21181,7 +21325,7 @@ t
 \bar no
 \noun off
 \color none
-ô
+Ã´
 \end_layout
 
 \end_inset
@@ -21356,7 +21500,7 @@ u
 \bar no
 \noun off
 \color none
-¥
+Â¥
 \end_layout
 
 \end_inset
@@ -21373,7 +21517,7 @@ u
 \bar no
 \noun off
 \color none
-µ
+Âµ
 \end_layout
 
 \end_inset
@@ -21390,7 +21534,7 @@ u
 \bar no
 \noun off
 \color none
-Å
+Ã…
 \end_layout
 
 \end_inset
@@ -21407,7 +21551,7 @@ u
 \bar no
 \noun off
 \color none
-Õ
+Ã•
 \end_layout
 
 \end_inset
@@ -21424,7 +21568,7 @@ u
 \bar no
 \noun off
 \color none
-å
+Ã¥
 \end_layout
 
 \end_inset
@@ -21441,7 +21585,7 @@ u
 \bar no
 \noun off
 \color none
-õ
+Ãµ
 \end_layout
 
 \end_inset
@@ -21616,7 +21760,7 @@ v
 \bar no
 \noun off
 \color none
-¦
+Â¦
 \end_layout
 
 \end_inset
@@ -21633,7 +21777,7 @@ v
 \bar no
 \noun off
 \color none
-¶
+Â¶
 \end_layout
 
 \end_inset
@@ -21650,7 +21794,7 @@ v
 \bar no
 \noun off
 \color none
-Æ
+Ã†
 \end_layout
 
 \end_inset
@@ -21667,7 +21811,7 @@ v
 \bar no
 \noun off
 \color none
-Ö
+Ã–
 \end_layout
 
 \end_inset
@@ -21684,7 +21828,7 @@ v
 \bar no
 \noun off
 \color none
-æ
+Ã¦
 \end_layout
 
 \end_inset
@@ -21701,7 +21845,7 @@ v
 \bar no
 \noun off
 \color none
-ö
+Ã¶
 \end_layout
 
 \end_inset
@@ -21876,7 +22020,7 @@ w
 \bar no
 \noun off
 \color none
-§
+Â§
 \end_layout
 
 \end_inset
@@ -21893,7 +22037,7 @@ w
 \bar no
 \noun off
 \color none
-·
+Â·
 \end_layout
 
 \end_inset
@@ -21910,7 +22054,7 @@ w
 \bar no
 \noun off
 \color none
-Ç
+Ã‡
 \end_layout
 
 \end_inset
@@ -21927,7 +22071,7 @@ w
 \bar no
 \noun off
 \color none
-×
+Ã—
 \end_layout
 
 \end_inset
@@ -21944,7 +22088,7 @@ w
 \bar no
 \noun off
 \color none
-ç
+Ã§
 \end_layout
 
 \end_inset
@@ -21961,7 +22105,7 @@ w
 \bar no
 \noun off
 \color none
-÷
+Ã·
 \end_layout
 
 \end_inset
@@ -22136,7 +22280,7 @@ x
 \bar no
 \noun off
 \color none
-¨
+Â¨
 \end_layout
 
 \end_inset
@@ -22153,7 +22297,7 @@ x
 \bar no
 \noun off
 \color none
-¸
+Â¸
 \end_layout
 
 \end_inset
@@ -22170,7 +22314,7 @@ x
 \bar no
 \noun off
 \color none
-È
+Ãˆ
 \end_layout
 
 \end_inset
@@ -22187,7 +22331,7 @@ x
 \bar no
 \noun off
 \color none
-Ø
+Ã˜
 \end_layout
 
 \end_inset
@@ -22204,7 +22348,7 @@ x
 \bar no
 \noun off
 \color none
-è
+Ã¨
 \end_layout
 
 \end_inset
@@ -22221,7 +22365,7 @@ x
 \bar no
 \noun off
 \color none
-ø
+Ã¸
 \end_layout
 
 \end_inset
@@ -22396,7 +22540,7 @@ y
 \bar no
 \noun off
 \color none
-©
+Â©
 \end_layout
 
 \end_inset
@@ -22413,7 +22557,7 @@ y
 \bar no
 \noun off
 \color none
-¹
+Â¹
 \end_layout
 
 \end_inset
@@ -22430,7 +22574,7 @@ y
 \bar no
 \noun off
 \color none
-É
+Ã‰
 \end_layout
 
 \end_inset
@@ -22447,7 +22591,7 @@ y
 \bar no
 \noun off
 \color none
-Ù
+Ã™
 \end_layout
 
 \end_inset
@@ -22464,7 +22608,7 @@ y
 \bar no
 \noun off
 \color none
-é
+Ã©
 \end_layout
 
 \end_inset
@@ -22481,7 +22625,7 @@ y
 \bar no
 \noun off
 \color none
-ù
+Ã¹
 \end_layout
 
 \end_inset
@@ -22656,7 +22800,7 @@ z
 \bar no
 \noun off
 \color none
-ª
+Âª
 \end_layout
 
 \end_inset
@@ -22673,7 +22817,7 @@ z
 \bar no
 \noun off
 \color none
-º
+Âº
 \end_layout
 
 \end_inset
@@ -22690,7 +22834,7 @@ z
 \bar no
 \noun off
 \color none
-Ê
+ÃŠ
 \end_layout
 
 \end_inset
@@ -22707,7 +22851,7 @@ z
 \bar no
 \noun off
 \color none
-Ú
+Ãš
 \end_layout
 
 \end_inset
@@ -22724,7 +22868,7 @@ z
 \bar no
 \noun off
 \color none
-ê
+Ãª
 \end_layout
 
 \end_inset
@@ -22741,7 +22885,7 @@ z
 \bar no
 \noun off
 \color none
-ú
+Ãº
 \end_layout
 
 \end_inset
@@ -22916,7 +23060,7 @@ k
 \bar no
 \noun off
 \color none
-«
+Â«
 \end_layout
 
 \end_inset
@@ -22933,7 +23077,7 @@ k
 \bar no
 \noun off
 \color none
-»
+Â»
 \end_layout
 
 \end_inset
@@ -22950,7 +23094,7 @@ k
 \bar no
 \noun off
 \color none
-Ë
+Ã‹
 \end_layout
 
 \end_inset
@@ -22967,7 +23111,7 @@ k
 \bar no
 \noun off
 \color none
-Û
+Ã›
 \end_layout
 
 \end_inset
@@ -22984,7 +23128,7 @@ k
 \bar no
 \noun off
 \color none
-ë
+Ã«
 \end_layout
 
 \end_inset
@@ -23001,7 +23145,7 @@ k
 \bar no
 \noun off
 \color none
-û
+Ã»
 \end_layout
 
 \end_inset
@@ -23178,7 +23322,7 @@ l
 \bar no
 \noun off
 \color none
-¬
+Â¬
 \end_layout
 
 \end_inset
@@ -23195,7 +23339,7 @@ l
 \bar no
 \noun off
 \color none
-¼
+Â¼
 \end_layout
 
 \end_inset
@@ -23212,7 +23356,7 @@ l
 \bar no
 \noun off
 \color none
-Ì
+ÃŒ
 \end_layout
 
 \end_inset
@@ -23229,7 +23373,7 @@ l
 \bar no
 \noun off
 \color none
-Ü
+Ãœ
 \end_layout
 
 \end_inset
@@ -23246,7 +23390,7 @@ l
 \bar no
 \noun off
 \color none
-ì
+Ã¬
 \end_layout
 
 \end_inset
@@ -23263,7 +23407,7 @@ l
 \bar no
 \noun off
 \color none
-ü
+Ã¼
 \end_layout
 
 \end_inset
@@ -23438,7 +23582,7 @@ m
 \bar no
 \noun off
 \color none
-­
+Â­
 \end_layout
 
 \end_inset
@@ -23455,7 +23599,7 @@ m
 \bar no
 \noun off
 \color none
-½
+Â½
 \end_layout
 
 \end_inset
@@ -23472,7 +23616,7 @@ m
 \bar no
 \noun off
 \color none
-Í
+Ã
 \end_layout
 
 \end_inset
@@ -23489,7 +23633,7 @@ m
 \bar no
 \noun off
 \color none
-Ý
+Ã
 \end_layout
 
 \end_inset
@@ -23506,7 +23650,7 @@ m
 \bar no
 \noun off
 \color none
-í
+Ã­
 \end_layout
 
 \end_inset
@@ -23523,7 +23667,7 @@ m
 \bar no
 \noun off
 \color none
-ý
+Ã½
 \end_layout
 
 \end_inset
@@ -23698,7 +23842,7 @@ n
 \bar no
 \noun off
 \color none
-®
+Â®
 \end_layout
 
 \end_inset
@@ -23715,7 +23859,7 @@ n
 \bar no
 \noun off
 \color none
-¾
+Â¾
 \end_layout
 
 \end_inset
@@ -23732,7 +23876,7 @@ n
 \bar no
 \noun off
 \color none
-Î
+ÃŽ
 \end_layout
 
 \end_inset
@@ -23749,7 +23893,7 @@ n
 \bar no
 \noun off
 \color none
-Þ
+Ãž
 \end_layout
 
 \end_inset
@@ -23766,7 +23910,7 @@ n
 \bar no
 \noun off
 \color none
-î
+Ã®
 \end_layout
 
 \end_inset
@@ -23783,7 +23927,7 @@ n
 \bar no
 \noun off
 \color none
-þ
+Ã¾
 \end_layout
 
 \end_inset
@@ -23950,7 +24094,7 @@ o
 \bar no
 \noun off
 \color none
-¯
+Â¯
 \end_layout
 
 \end_inset
@@ -23967,7 +24111,7 @@ o
 \bar no
 \noun off
 \color none
-¿
+Â¿
 \end_layout
 
 \end_inset
@@ -23984,7 +24128,7 @@ o
 \bar no
 \noun off
 \color none
-Ï
+Ã
 \end_layout
 
 \end_inset
@@ -24001,7 +24145,7 @@ o
 \bar no
 \noun off
 \color none
-ß
+ÃŸ
 \end_layout
 
 \end_inset
@@ -24018,7 +24162,7 @@ o
 \bar no
 \noun off
 \color none
-ï
+Ã¯
 \end_layout
 
 \end_inset
@@ -24035,7 +24179,7 @@ o
 \bar no
 \noun off
 \color none
-ÿ
+Ã¿
 \end_layout
 
 \end_inset
@@ -24109,7 +24253,8 @@ status collapsed
 \begin_layout Standard
 Horrek komatxoak zeuk sartzea nahi dituzunean bakarrik balio du.
  Komatxo automatikoen ezaugarriak, 
-\begin_inset LatexCommand \ref{atal:komatxoak}
+\begin_inset LatexCommand ref
+reference "atal:komatxoak"
 
 \end_inset
 
@@ -24147,37 +24292,37 @@ ISO8859--1
 
 \begin_deeper
 \begin_layout Standard
-¨ Ä Ë Ï Ö Ü ä ë ï ö ü ÿ
+Â¨ Ã„ Ã‹ Ã Ã– Ãœ Ã¤ Ã« Ã¯ Ã¶ Ã¼ Ã¿
 \hfill
 dieresi
 \end_layout
 
 \begin_layout Standard
-^ Â Ê Î Ô Û â ê î ô û
+^ Ã‚ ÃŠ ÃŽ Ã” Ã› Ã¢ Ãª Ã® Ã´ Ã»
 \hfill
 zirkunflexu
 \end_layout
 
 \begin_layout Standard
-` À È Ì Ò Ù à è ì ò ù
+` Ã€ Ãˆ ÃŒ Ã’ Ã™ Ã  Ã¨ Ã¬ Ã² Ã¹
 \hfill
 kamuts
 \end_layout
 
 \begin_layout Standard
-´ Á É Í Ó Ú Ý á é í ó ú ý
+Â´ Ã Ã‰ Ã Ã“ Ãš Ã Ã¡ Ã© Ã­ Ã³ Ãº Ã½
 \hfill
 zorrotz
 \end_layout
 
 \begin_layout Standard
-~ Ã Ñ Õ ã ñ õ
+~ Ãƒ Ã‘ Ã• Ã£ Ã± Ãµ
 \hfill
 tilet
 \end_layout
 
 \begin_layout Standard
-¸Çç
+Â¸Ã‡Ã§
 \hfill
 cetxoa (
 \begin_inset Quotes eld
@@ -24191,7 +24336,7 @@ cedilla
 \end_layout
 
 \begin_layout Standard
-¯
+Â¯
 \hfill
 macron
 \begin_inset Foot
@@ -24229,65 +24374,25 @@ ISO8859--2
 
 \begin_deeper
 \begin_layout Standard
-\i \^{H}
-\i \^{J}
-\i \^{h}
-\i \^{\j}
-\i \^{C}
-\i \^{G}
-\i \^{S}
-\i \^{c}
-\i \^{g}
-\i \^{s}
-
+Ä¤Ä´Ä¥È·Ì‚ÄˆÄœÅœÄ‰ÄÅ
 \hfill
 zirkunflexu
 \end_layout
 
 \begin_layout Standard
-\i \'{S}
-\i \'{Z}
-\i \'{s}
-\i \'{z}
-\i \'{R}
-\i \'{L}
-\i \'{C}
-\i \'{N}
-\i \'{r}
-\i \'{l}
-\i \'{c}
-\i \'{n}
-
+ÅšÅ¹Å›ÅºÅ”Ä¹Ä†ÅƒÅ•ÄºÄ‡Å„
 \hfill
 zorrotz
 \end_layout
 
 \begin_layout Standard
-\i \~{I}
-\i \~{\i}
-\i \~{U}
-\i \~{u}
-
+Ä¨Ä±ÌƒÅ¨Å©
 \hfill
 tilet
 \end_layout
 
 \begin_layout Standard
-\i \c{S}
-\i \c{s}
-\i \c{T}
-\i \c{t}
-\i \c{R}
-\i \c{L}
-\i \c{G}
-\i \c{r}
-\i \c{l}
-\i \c{g}
-\i \c{N}
-\i \c{K}
-\i \c{n}
-\i \c{k}
-
+ÅžÅŸÅ¢Å£Å–Ä»Ä¢Å—Ä¼Ä£Å…Ä¶Å†Ä·
 \hfill
 cetxoa
 \begin_inset Foot
@@ -24304,27 +24409,13 @@ Karaktere hauek pantailan ez dute itxura politik izango, baina LaTeX-etik
 \end_layout
 
 \begin_layout Standard
-\i \={E}
-\i \={e}
-\i \={A}
-\i \={I}
-\i \={O}
-\i \={U}
-\i \={a}
-\i \={\i}
-\i \={o}
-\i \={u}
-
+Ä’Ä“Ä€ÄªÅŒÅªÄÄ±Ì„ÅÅ«
 \hfill
 macron
 \end_layout
 
 \begin_layout Standard
-\i \H{O}
-\i \H{U}
-\i \H{o}
-\i \H{u}
-
+ÅÅ°Å‘Å±
 \hfill
 hungarierako umlaut
 \end_layout
@@ -24376,7 +24467,7 @@ Matthias Ettrich
 \begin_layout Itemize
 
 \noun on
-Lars Gullik Bjønnes
+Lars Gullik BjÃ¸nnes
 \noun default
 -ek hainbat dokumentutxo idatzi zituen, LyX-en nazioarteko euskarriari buruzkoak
  dituenak barne.
@@ -24394,7 +24485,7 @@ o teklatuari eta pertsonalizazioari buruzkoa bereziki.
 \begin_layout Itemize
 
 \noun on
-Pascal André
+Pascal AndrÃ©
 \noun default
 -ek LinuxDoc SGML interfazeari buruzko jatorrizko dokumentua idatzi zuen.
 \end_layout
@@ -24413,7 +24504,8 @@ Reference.lyx
 
 \begin_layout Itemize
 Esker mila LyX taldeari 
-\begin_inset LatexCommand \cite{lyxospea}
+\begin_inset LatexCommand cite
+key "lyxospea"
 
 \end_inset
 
@@ -24678,15 +24770,21 @@ Dokumentuen editatzailea (96/6tik 1997ko udazkenera arte).
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "lyxospea"
 
-\bibitem {lyxospea}
+\end_inset
+
 LyX iturburuaren zuhaitza.
  Fitxategia: CREDITS.
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexliburua"
 
-\bibitem {latexliburua}
+\end_inset
+
 Leslie Lamport.
  
 \emph on
@@ -24697,8 +24795,11 @@ LaTeX: A Document Preparation System
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexlagunartea"
 
-\bibitem {latexlagunartea}
+\end_inset
+
 Michel Goossens, Frank Mittelbach eta Alexander Samarin: 
 \family typewriter
 The LaTeX Companion
@@ -24708,15 +24809,21 @@ The LaTeX Companion
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "latexgida"
 
-\bibitem {latexgida}
+\end_inset
+
 A Guide to LaTeX2e, Kopka eta Daly.
  
 \end_layout
 
 \begin_layout Bibliography
+\begin_inset LatexCommand bibitem
+key "TeXliburua"
 
-\bibitem {TeXliburua}
+\end_inset
+
 Donald E.
  Knuth.
  
