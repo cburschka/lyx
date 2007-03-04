@@ -41,14 +41,14 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	: form_(form)
 {
 	setupUi(this);
-	connect(okPB, SIGNAL(clicked()),
-		form, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()),
-		form, SLOT(slotApply()));
-	connect(closePB, SIGNAL(clicked()),
-		form, SLOT(slotClose()));
-	connect(restorePB, SIGNAL(clicked()),
-		form, SLOT(slotRestore()));
+	connect(okPB, SIGNAL( clicked() ),
+		form, SLOT( slotOK() ) );
+	connect(applyPB, SIGNAL( clicked() ),
+		form, SLOT( slotApply() ) );
+	connect(closePB, SIGNAL( clicked() ),
+		form, SLOT( slotClose() ) );
+	connect(restorePB, SIGNAL( clicked() ),
+		form, SLOT( slotRestore() ) );
 	connect(filename, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
 	connect(subcaption, SIGNAL( textChanged(const QString&) ),
@@ -89,7 +89,7 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		this, SLOT( change_adaptor() ) );
 	connect(getPB, SIGNAL( clicked() ),
 		this, SLOT( change_adaptor() ) );
-	connect(scaleCB, SIGNAL(clicked() ),
+	connect(scaleCB, SIGNAL( clicked() ),
 		this, SLOT(change_adaptor()) );
 	connect(Scale, SIGNAL( textChanged(const QString&) ),
 		this, SLOT( change_adaptor() ) );
