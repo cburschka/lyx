@@ -44,7 +44,10 @@ esdocdir = $(pkgdatadir)/doc/es
 dist_esdoc_DATA = \
 	es/Intro.lyx \
 	es/Tutorial.lyx \
-	es/EmbeddedObjects.lyx \
+	es/EmbeddedObjects.lyx
+
+esclipartdocdir = $(pkgdatadir)/doc/es/clipart
+dist_esclipartdoc_DATA = \
 	es/clipart/ComentNotaImagenQt4.png \
 	es/clipart/CuadroMinipagQt4.png \
 	es/clipart/etiquetaQt4.png \
