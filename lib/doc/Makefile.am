@@ -5,23 +5,23 @@ DISTCLEANFILES += $(tocfiles)
 EXTRA_DIST = depend.py doc_toc.py README.Documentation $(DEPENDFILE) $(docfiles)
 
 clipartdocdir = $(pkgdatadir)/doc/clipart
-dist_dadoc_DATA = \
-	escher-lsd.eps \
-	mobius.eps \
-	platypus.eps \
-	BoxInsetDefaultQt4.png \
-	CommentNoteImageQt4.png \
-	endnotes.pdf \
-	floatQt4.png \
-	footnoteQt4.png \
-	FramedNoteImageQt4.png \
-	GreyedOutNoteImageQt4.png \
-	labelQt4.png \
-	LyXNoteImageQt4.png \
-	referenceQt4.png \
-	ShadedNoteImageQt4.png \
-	without_fntright.pdf \
-	with_fntright.pdf
+dist_clipartdoc_DATA = \
+	clipart/escher-lsd.eps \
+	clipart/mobius.eps \
+	clipart/platypus.eps \
+	clipart/BoxInsetDefaultQt4.png \
+	clipart/CommentNoteImageQt4.png \
+	clipart/endnotes.pdf \
+	clipart/floatQt4.png \
+	clipart/footnoteQt4.png \
+	clipart/FramedNoteImageQt4.png \
+	clipart/GreyedOutNoteImageQt4.png \
+	clipart/labelQt4.png \
+	clipart/LyXNoteImageQt4.png \
+	clipart/referenceQt4.png \
+	clipart/ShadedNoteImageQt4.png \
+	clipart/without_fntright.pdf \
+	clipart/with_fntright.pdf
 
 csdocdir = $(pkgdatadir)/doc/cs
 dist_csdoc_DATA = \
@@ -44,20 +44,17 @@ esdocdir = $(pkgdatadir)/doc/es
 dist_esdoc_DATA = \
 	es/Intro.lyx \
 	es/Tutorial.lyx \
-	es/EmbeddedObjects.lyx
-
-esdocdir = $(pkgdatadir)/doc/es/clipart
-dist_esdoc_DATA = \
-	ComentNotaImagenQt4.png \
-	CuadroMinipagQt4.png \
-	etiquetaQt4.png \
-	flotanteQt4.png \
-	GrisNotaImagenQt4.png \
-	NotaEnmarcadaImg.png \
-	NotaLyXImagenQt4.png \
-	notapieQt4.png \
-	NotaSombreadaImg.png \
-	referenciaQt4.png
+	es/EmbeddedObjects.lyx \
+	es/clipart/ComentNotaImagenQt4.png \
+	es/clipart/CuadroMinipagQt4.png \
+	es/clipart/etiquetaQt4.png \
+	es/clipart/flotanteQt4.png \
+	es/clipart/GrisNotaImagenQt4.png \
+	es/clipart/NotaEnmarcadaImg.png \
+	es/clipart/NotaLyXImagenQt4.png \
+	es/clipart/notapieQt4.png \
+	es/clipart/NotaSombreadaImg.png \
+	es/clipart/referenciaQt4.png
 
 eudocdir = $(pkgdatadir)/doc/eu
 dist_eudoc_DATA = \
