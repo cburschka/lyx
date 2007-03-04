@@ -2075,7 +2075,7 @@ if build_install:
     dirs = []
     for (dir,files) in [
             ('.', lib_files),  
-            ('clipart', lib_clipart_files),
+            ('clipart', lib_doc_clipart_files),
             ('images', lib_images_files),
             ('images/math', lib_images_math_files),
             ('kbd', lib_kbd_files),
