@@ -80,7 +80,7 @@ void AuthorList::record(int id, Author const & a)
 }
 
 
-Author const & AuthorList::get(int id)
+Author const & AuthorList::get(int id) const
 {
 	Authors::const_iterator it(authors_.find(id));
 	BOOST_ASSERT(it != authors_.end());

@@ -53,7 +53,7 @@ public:
 
 	void record(int id, Author const & a);
 
-	Author const & get(int id);
+	Author const & get(int id) const;
 
 	typedef std::map<int, Author> Authors;
 
