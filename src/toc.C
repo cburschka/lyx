@@ -80,11 +80,10 @@ void outline(OutlineOp mode,  LCursor & cur)
 				break;
 			pit_type const newpit = std::distance(bgn, dest);
 			pit_type const len = std::distance(start, finish);
-			pit += len;
-			pit = std::min(pit, cur.lastpit());
-			recordUndo(cur, Undo::ATOMIC, newpit, pit);
+			pit_type const deletepit = pit + len;
+			recordUndo(cur, Undo::ATOMIC, newpit, deletepit - 1);
 			pars.insert(dest, start, finish);
-			start = boost::next(bgn, pit);
+			start = boost::next(bgn, deletepit);
 			pit = newpit;
 			pars.erase(start, finish);
 		break;
