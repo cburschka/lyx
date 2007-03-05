@@ -634,7 +634,7 @@ def installCygwinPostinstallScript(path):
     ''' Install lyx.sh '''
     postinstall_script = os.path.join(path, 'lyx.sh')
     script = open(postinstall_script, 'w')
-    script.write('''#!/bin/sh
+    script.write(r'''#!/bin/sh
 
 # Add /usr/share/lyx/fonts to /etc/fonts/local.conf
 # if it is not already there.
