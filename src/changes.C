@@ -99,7 +99,7 @@ void Changes::set(Change const & change, pos_type const pos)
 
 void Changes::set(Change const & change, pos_type const start, pos_type const end)
 {
-	if (lyxerr.debugging(Debug::CHANGES)) {
+	if (change.type != Change::UNCHANGED && lyxerr.debugging(Debug::CHANGES)) {
 		lyxerr[Debug::CHANGES] << "setting change (type: " << change.type
 			<< ", author: " << change.author << ", time: " << change.changetime
 			<< ") in range (" << start << ", " << end << ")" << endl;
@@ -202,7 +202,7 @@ void Changes::erase(pos_type const pos)
 
 void Changes::insert(Change const & change, lyx::pos_type pos)
 {
-	if (lyxerr.debugging(Debug::CHANGES)) {
+	if (change.type != Change::UNCHANGED && lyxerr.debugging(Debug::CHANGES)) {
 		lyxerr[Debug::CHANGES] << "Inserting change of type " << change.type
 			<< " at position " << pos << endl;
 	}
@@ -264,22 +264,18 @@ bool Changes::isChanged(pos_type const start, pos_type const end) const
 
 void Changes::merge()
 {
-	if (lyxerr.debugging(Debug::CHANGES)) {
-		lyxerr[Debug::CHANGES] << "merging changes..." << endl;
-	}
-
 	ChangeTable::iterator it = table_.begin();
 
 	while (it != table_.end()) {
 		if (lyxerr.debugging(Debug::CHANGES)) {
-			lyxerr[Debug::CHANGES] << "  found change of type " << it->change.type
+			lyxerr[Debug::CHANGES] << "found change of type " << it->change.type
 				<< " and range (" << it->range.start << ", " << it->range.end
 				<< ")" << endl;
 		}
 
 		if (it->range.start == it->range.end) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "  removing empty range for pos "
+				lyxerr[Debug::CHANGES] << "removing empty range for pos "
 					<< it->range.start << endl;
 			}
 
@@ -294,7 +290,7 @@ void Changes::merge()
 
 		if (it->change.isSimilarTo((it + 1)->change) && it->range.end == (it + 1)->range.start) {
 			if (lyxerr.debugging(Debug::CHANGES)) {
-				lyxerr[Debug::CHANGES] << "  merging ranges (" << it->range.start << ", "
+				lyxerr[Debug::CHANGES] << "merging ranges (" << it->range.start << ", "
 					<< it->range.end << ") and (" << (it + 1)->range.start << ", "
 					<< (it + 1)->range.end << ")" << endl;
 			}
