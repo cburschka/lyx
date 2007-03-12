@@ -100,6 +100,9 @@ public:
 	///
 	void update();
 	///
+	void updateItem(ParConstIterator const & pit);
+
+	///
 	TocList const & tocs() const
 	{ return tocs_; }
 	///

@@ -134,6 +134,43 @@ bool TocBackend::addType(std::string const & type)
 	return true;
 }
 
+void TocBackend::updateItem(ParConstIterator const & par_it)
+{
+	BufferParams const & bufparams = buffer_->params();
+	const int min_toclevel = bufparams.getLyXTextClass().min_toclevel();
+
+	TocIterator toc_item = item("tableofcontents", par_it);
+
+	docstring tocstring;
+
+	// For each paragraph, traverse its insets and let them add
+	// their toc items
+	InsetList::const_iterator it = toc_item->par_it_->insetlist.begin();
+	InsetList::const_iterator end = toc_item->par_it_->insetlist.end();
+	for (; it != end; ++it) {
+		InsetBase & inset = *it->inset;
+		if (inset.lyxCode() == InsetBase::OPTARG_CODE) {
+			if (!tocstring.empty())
+				break;
+			Paragraph const & par = 
+				*static_cast<InsetOptArg&>(inset).paragraphs().begin();
+			if (!toc_item->par_it_->getLabelstring().empty())
+				tocstring = toc_item->par_it_->getLabelstring() + ' ';
+			tocstring += par.asString(*buffer_, false);
+			break;
+		}
+	}
+
+	int const toclevel = toc_item->par_it_->layout()->toclevel;
+	if (toclevel != LyXLayout::NOT_IN_TOC
+	    && toclevel >= min_toclevel
+	    && toclevel <= bufparams.tocdepth
+		&& tocstring.empty())
+			tocstring = toc_item->par_it_->asString(*buffer_, true);
+
+	const_cast<TocItem &>(*toc_item).str_ = tocstring;
+}
+
 
 void TocBackend::update()
 {

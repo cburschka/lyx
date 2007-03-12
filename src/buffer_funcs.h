@@ -65,6 +65,8 @@ void updateLabels(Buffer const & buf,
 /// updates all counters
 void updateLabels(Buffer const &, bool childonly = false);
 
+///
+void checkBufferStructure(Buffer &, ParIterator const &);
 
 } // namespace lyx
 

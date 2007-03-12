@@ -695,8 +695,18 @@ void updateLabels(Buffer const & buf, bool childonly)
 		}
 	}
 
-	const_cast<Buffer &>(buf).tocBackend().update();
+	Buffer & cbuf = const_cast<Buffer &>(buf);
+	cbuf.tocBackend().update();
+	cbuf.structureChanged();
 }
 
+
+void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
+{
+	if (par_it->layout()->labeltype == LABEL_COUNTER) {
+		buffer.tocBackend().updateItem(par_it);
+		buffer.structureChanged();
+	}
+}
 
 } // namespace lyx

@@ -744,6 +744,7 @@ void LyXText::insertChar(LCursor & cur, char_type c)
 	}
 
 	par.insertChar(cur.pos(), c, current_font, cur.buffer().params().trackChanges);
+	checkBufferStructure(cur.buffer(), cur);
 
 //		cur.updateFlags(Update::Force);
 	setCursor(cur.top(), cur.pit(), cur.pos() + 1);
@@ -1025,6 +1026,7 @@ void LyXText::deleteWordForward(LCursor & cur)
 		cursorRightOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
+		checkBufferStructure(cur.buffer(), cur);
 	}
 }
 
@@ -1041,6 +1043,7 @@ void LyXText::deleteWordBackward(LCursor & cur)
 		cursorLeftOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
+		checkBufferStructure(cur.buffer(), cur);
 	}
 }
 
@@ -1062,6 +1065,7 @@ void LyXText::deleteLineForward(LCursor & cur)
 			deleteWordForward(cur);
 		else
 			cutSelection(cur, true, false);
+		checkBufferStructure(cur.buffer(), cur);
 	}
 }
 
@@ -1115,6 +1119,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 		//pars_[pit].setChar(pos, c);
 		++pos;
 	}
+	checkBufferStructure(cur.buffer(), cur);
 }
 
 
@@ -1132,6 +1137,7 @@ bool LyXText::erase(LCursor & cur)
 			// the character has been logically deleted only => skip it
 			cur.forwardPosNoDescend();
 		}
+		checkBufferStructure(cur.buffer(), cur);
 		needsUpdate = true;
 	} else {
 		if (cur.pit() == cur.lastpit())
@@ -1151,6 +1157,7 @@ bool LyXText::erase(LCursor & cur)
 		// Make sure the cursor is correct. Is this really needed?
 		// No, not really... at least not here!
 		cur.text()->setCursor(cur.top(), cur.pit(), cur.pos());
+		checkBufferStructure(cur.buffer(), cur);
 	}
 	
 	return needsUpdate;
@@ -1238,6 +1245,7 @@ bool LyXText::backspace(LCursor & cur)
 		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());
 		cur.paragraph().eraseChar(cur.pos(), cur.buffer().params().trackChanges);
+		checkBufferStructure(cur.buffer(), cur);
 	}
 
 	if (cur.pos() == cur.lastpos())
@@ -1873,6 +1881,8 @@ void LyXText::charsTranspose(LCursor & cur)
 	par.eraseChar(pos1, trackChanges);
 	par.insertChar(pos1, char2, font2, trackChanges);
 	par.insertChar(pos2, char1, font1, trackChanges);
+
+	checkBufferStructure(cur.buffer(), cur);
 
 	// After the transposition, move cursor to after the transposition.
 	setCursor(cur, cur.pit(), pos2);

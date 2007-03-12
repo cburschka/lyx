@@ -224,6 +224,8 @@ private:
 
 	/// buffer changed signal connection
 	boost::signals::connection bufferChangedConnection_;
+	/// buffer structure changed signal connection
+	boost::signals::connection bufferStructureChangedConnection_;
 	/// buffer errors signal connection
 	boost::signals::connection errorsConnection_;
 	/// buffer messages signal connection
@@ -268,6 +270,9 @@ private:
 	void showReadonly(bool);
 
 protected:
+	///
+	void updateToc();
+
 	/// view's command buffer controller
 	// this has to be declared _after_ lyxfunc_ as its initialization depends
 	// on it!

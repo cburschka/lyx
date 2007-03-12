@@ -133,6 +133,8 @@ void LyXView::setBuffer(Buffer * b)
 		getDialogs().hideBufferDependent();
 
 	work_area_->bufferView().setBuffer(b);
+	// Make sure the TOC is updated before anything else.
+	updateToc();
 
 	if (work_area_->bufferView().buffer()) {
 		// Buffer-dependent dialogs should be updated or
@@ -166,6 +168,7 @@ bool LyXView::loadLyXFile(FileName const & filename, bool tolastfiles)
 
 	bool loaded = work_area_->bufferView().loadLyXFile(filename, tolastfiles);
 
+	updateToc();
 	updateMenubar();
 	updateToolbars();
 	updateLayoutChoice();
@@ -191,6 +194,10 @@ void LyXView::connectBuffer(Buffer & buf)
 	bufferChangedConnection_ =
 		buf.changed.connect(
 			boost::bind(&WorkArea::redraw, work_area_));
+
+	bufferStructureChangedConnection_ =
+		buf.structureChanged.connect(
+			boost::bind(&LyXView::updateToc, this));
 
 	errorsConnection_ =
 		buf.errors.connect(
@@ -226,6 +233,7 @@ void LyXView::disconnectBuffer()
 {
 	errorsConnection_.disconnect();
 	bufferChangedConnection_.disconnect();
+	bufferStructureChangedConnection_.disconnect();
 	messageConnection_.disconnect();
 	busyConnection_.disconnect();
 	titleConnection_.disconnect();
@@ -306,6 +314,12 @@ BufferView * LyXView::view() const
 {
 	BOOST_ASSERT(work_area_);
 	return &work_area_->bufferView();
+}
+
+
+void LyXView::updateToc()
+{
+	updateDialog("toc", "");
 }
 
 
