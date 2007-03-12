@@ -10,6 +10,7 @@ set(boost_filesystem_sources
 	exception.cpp
 	operations.cpp
 	path.cpp
+	portability.cpp
 )
 
 lyx_add_path(boost_filesystem_sources ${TOP_SRC_DIR}/boost/libs/filesystem/src)
