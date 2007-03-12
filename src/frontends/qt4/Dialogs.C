@@ -44,6 +44,8 @@
 
 #include "Qt2BC.h"
 #include "ButtonController.h"
+#include "DockView.h"
+#include "GuiView.h"
 #include "QAbout.h"
 #include "QBibitem.h"
 #include "QBibtex.h"
@@ -78,7 +80,7 @@
 #include "QTabularCreate.h"
 #include "QTexinfo.h"
 #include "QToc.h"
-#include "QTocDialog.h"
+#include "TocWidget.h"
 #include "UrlView.h"
 #include "QVSpace.h"
 #include "QWrap.h"
@@ -91,7 +93,6 @@
 #include "qt_helpers.h"
 
 #include <boost/assert.hpp>
-
 
 using std::string;
 
@@ -130,6 +131,7 @@ private:
 
 
 namespace lyx {
+
 
 bool Dialogs::isValidName(string const & name) const
 {
@@ -300,7 +302,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "toc") {
 		QToc * qtoc = new QToc(*dialog);
 		dialog->setController(qtoc);
-		dialog->setView(new QTocDialog(*dialog, qtoc));
+		GuiView & gui_view = static_cast<GuiView &>(lyxview_);
+		dialog->setView(new DockView<QToc, TocWidget>(
+			*dialog, qtoc, &gui_view, _("Toc")));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
 		dialog->setController(new ControlCommand(*dialog, name, name));

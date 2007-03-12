@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file QTocDialog.h
+ * \file TocWidget.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,56 +10,35 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef QTOCDIALOG_H
-#define QTOCDIALOG_H
+#ifndef TOC_WIDGET_H
+#define TOC_WIDGET_H
 
 #include "ui/QTocUi.h"
-#include "controllers/ControlToc.h"
 
-#include <QDialog>
-
-class QTreeViewItem;
+#include <QWidget>
 
 namespace lyx {
 namespace frontend {
 
 class QToc;
 
-class QTocDialog : public QDialog, public Ui::QTocUi, public Dialog::View  {
+class TocWidget : public QWidget, public Ui::QTocUi {
 	Q_OBJECT
 public:
-	QTocDialog(Dialog &, QToc * form);
-
-	~QTocDialog();
-
-	virtual void apply();
-
-	/// Hide the dialog from sight
-	void hide();
-
-	/// Redraw the dialog (e.g. if the colors have been remapped).
-	void redraw() {}
-
-	/// Create the dialog if necessary, update it and display it.
-	void show();
+	TocWidget(QToc * form, QMainWindow * parent = 0);
 
 	/// Update the display of the dialog whilst it is still visible.
 	void update();
 
+protected Q_SLOTS:
 	/// Update Gui of the display.
 	void updateGui();
-
-	/// \return true if the dialog is visible.
-	bool isVisible() const;
-
-protected Q_SLOTS:
 	///
 	void select(QModelIndex const & index);
 	///
 	void selectionChanged(const QModelIndex & current,
 		const QModelIndex & previous);
 
-	void on_closePB_clicked();
 	void on_updatePB_clicked();
 	void on_depthSL_valueChanged(int depth);
 	void on_typeCO_activated(int value);
@@ -71,14 +50,14 @@ protected Q_SLOTS:
 protected:
 	///
 	void enableButtons(bool enable = true);
-	/// Reconnects the selection model change signal when TOC changed.
-	void reconnectSelectionModel();
 	///
 	int getIndexDepth(QModelIndex const & index, int depth = -1);
 	///
-	void setTreeDepth(int depth = -1);
+	void setTreeDepth(int depth);
 
 private:
+	/// Reconnects the selection model change signal when TOC changed.
+	void reconnectSelectionModel();
 
 	QToc * form_;
 
@@ -89,4 +68,4 @@ private:
 } // namespace frontend
 } // namespace lyx
 
-#endif // QTOCDIALOG_H
+#endif // TOC_WIDGET_H

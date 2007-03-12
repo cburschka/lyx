@@ -16,6 +16,7 @@
 
 #include "ControlToc.h"
 
+#include <QObject>
 #include <QStandardItemModel>
 #include <QStringListModel>
 
@@ -25,8 +26,9 @@ namespace frontend {
 class ControlToc;
 class TocModel;
 
-class QToc : public ControlToc
+class QToc : public QObject, public ControlToc
 {
+	Q_OBJECT
 public:
 
 	QToc(Dialog &);
@@ -54,14 +56,17 @@ public:
 	///
 	int getTocDepth();
 
+Q_SIGNALS:
+	/// Signal that the internal toc_models_ has been reset.
+	void modelReset();
+
 private:
-
+	///
 	std::vector<TocModel *> toc_models_;
-
+	///
 	QStringListModel type_model_;
-
+	///
 	int type_;
-	int outline_type_;
 };
 
 } // namespace frontend

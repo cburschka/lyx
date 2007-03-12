@@ -32,6 +32,7 @@ AM_CPPFLAGS += \
 libqt4_la_SOURCES = \
 	Alert_pimpl.C \
 	ColorCache.h ColorCache.C \
+	DockView.h \
 	Dialogs.C \
 	FileDialog.C \
 	GuiClipboard.h GuiClipboard.C \
@@ -78,7 +79,6 @@ libqt4_la_SOURCES = \
 	QTabularCreate.C QTabularCreate.h \
 	QTexinfo.C QTexinfo.h \
 	QThesaurus.C QThesaurus.h \
-	QToc.C QToc.h \
 	QVSpace.C QVSpace.h \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\

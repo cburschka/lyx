@@ -1,5 +1,5 @@
 /**
- * \file QTocDialog.C
+ * \file TocWidget.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,18 +11,16 @@
 
 #include <config.h>
 
-#include "QTocDialog.h"
+#include "TocWidget.h"
+
 #include "QToc.h"
-#include "Qt2BC.h"
 #include "qt_helpers.h"
-#include "controllers/ControlToc.h"
 
 #include "debug.h"
 
-#include <QTreeWidgetItem>
-#include <QPushButton>
-#include <QCloseEvent>
 #include <QHeaderView>
+#include <QPushButton>
+#include <QTreeWidgetItem>
 
 #include <vector>
 #include <string>
@@ -38,28 +36,29 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-QTocDialog::QTocDialog(Dialog & dialog, QToc * form)
-	: Dialog::View(dialog, _("Toc")), form_(form), depth_(2)
+
+TocWidget::TocWidget(QToc * form, QMainWindow * parent)
+	: QWidget(parent), form_(form), depth_(0)
 {
 	setupUi(this);
 
-	updateGui();
+	connect(form, SIGNAL(modelReset()),
+		SLOT(updateGui()));
 
-	connect(tocTV->selectionModel(),
-		SIGNAL(currentChanged(const QModelIndex &,
-			const QModelIndex &)),
-		this, SLOT(selectionChanged(const QModelIndex &,
-			const QModelIndex &)));
+	// avoid flickering
+	tocTV->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
+	tocTV->showColumn(0);
+
+	// hide the pointless QHeader for now
+	// in the future, new columns may appear
+	// like labels, bookmarks, etc...
+	// tocTV->header()->hide();
+	tocTV->header()->setVisible(false);
 }
 
 
-QTocDialog::~QTocDialog()
-{
-	accept();
-}
-
-
-void QTocDialog::selectionChanged(const QModelIndex & current,
+void TocWidget::selectionChanged(const QModelIndex & current,
 				  const QModelIndex & /*previous*/)
 {
 	lyxerr[Debug::GUI]
@@ -71,14 +70,10 @@ void QTocDialog::selectionChanged(const QModelIndex & current,
 }
 
 
-void QTocDialog::on_closePB_clicked()
+void TocWidget::on_updatePB_clicked()
 {
-	accept();
-}
-
-
-void QTocDialog::on_updatePB_clicked()
-{
+	form_->updateBackend();
+	form_->update();
 	update();
 }
 
@@ -88,14 +83,14 @@ opinion, somebody should derive a new qvariant class for tocModelItem
 which saves the string data and depth information. that will save the
 depth calculation.
 */
-int QTocDialog::getIndexDepth(QModelIndex const & index, int depth)
+int TocWidget::getIndexDepth(QModelIndex const & index, int depth)
 {
 	++depth;
 	return (index.parent() == QModelIndex())? depth : getIndexDepth(index.parent(),depth);
 }
 
 
-void QTocDialog::on_depthSL_valueChanged(int depth)
+void TocWidget::on_depthSL_valueChanged(int depth)
 {
 	if (depth == depth_)
 		return;
@@ -103,10 +98,9 @@ void QTocDialog::on_depthSL_valueChanged(int depth)
 }
 
 
-void QTocDialog::setTreeDepth(int depth)
+void TocWidget::setTreeDepth(int depth)
 {
-	if(depth!=-1)
-		depth_ = depth;
+	depth_ = depth;
 
 	// expanding and then collapsing is probably better, 
 	// but my qt 4.1.2 doesn't have expandAll()..
@@ -127,72 +121,81 @@ void QTocDialog::setTreeDepth(int depth)
 }
 
 
-void QTocDialog::on_typeCO_activated(int value)
+void TocWidget::on_typeCO_activated(int value)
 {
 	form_->setTocModel(value);
-	tocTV->setModel(form_->tocModel());
-	reconnectSelectionModel();
-	enableButtons();
-	update();
+	updateGui();
 }
 
 
-void QTocDialog::on_moveUpPB_clicked()
+void TocWidget::on_moveUpPB_clicked()
 {
 	enableButtons(false);
-	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
-	form_->goTo(index);
-	form_->outlineUp();
-	update();
+	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
+	if (!list.isEmpty()) {
+		enableButtons(false);
+		form_->goTo(list[0]);
+		form_->outlineUp();
+		enableButtons(true);
+	}
 }
 
 
-void QTocDialog::on_moveDownPB_clicked()
+void TocWidget::on_moveDownPB_clicked()
 {
 	enableButtons(false);
-	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
-	form_->goTo(index);
-	form_->outlineDown();
-	update();
+	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
+	if (!list.isEmpty()) {
+		enableButtons(false);
+		form_->goTo(list[0]);
+		form_->outlineDown();
+		enableButtons(true);
+	}
 }
 
 
-void QTocDialog::on_moveInPB_clicked()
+void TocWidget::on_moveInPB_clicked()
 {
 	enableButtons(false);
-	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
-	form_->goTo(index);
-	form_->outlineIn();
-	update();
+	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
+	if (!list.isEmpty()) {
+		enableButtons(false);
+		form_->goTo(list[0]);
+		form_->outlineIn();
+		enableButtons(true);
+	}
 }
 
 
-void QTocDialog::on_moveOutPB_clicked()
+void TocWidget::on_moveOutPB_clicked()
 {
-	enableButtons(false);
-	QModelIndex index = tocTV->selectionModel()->selectedIndexes()[0];
-	form_->goTo(index);
-	form_->outlineOut();
-	update();
+	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
+	if (!list.isEmpty()) {
+		enableButtons(false);
+		form_->goTo(list[0]);
+		form_->outlineOut();
+		enableButtons(true);
+	}
 }
 
 
-void QTocDialog::select(QModelIndex const & index)
+void TocWidget::select(QModelIndex const & index)
 {
-//	tocTV->setModel(form_->tocModel());
-
 	if (!index.isValid()) {
 		lyxerr[Debug::GUI]
-			<< "QTocDialog::select(): QModelIndex is invalid!" << endl;
+			<< "TocWidget::select(): QModelIndex is invalid!" << endl;
 		return;
 	}
 
+	tocTV->selectionModel()->blockSignals(true);
 	tocTV->scrollTo(index);
-	tocTV->selectionModel()->select(index, QItemSelectionModel::Select);
+	tocTV->selectionModel()->setCurrentIndex(index,
+		QItemSelectionModel::ClearAndSelect);
+	tocTV->selectionModel()->blockSignals(false);
 }
 
 
-void QTocDialog::enableButtons(bool enable)
+void TocWidget::enableButtons(bool enable)
 {
 	updatePB->setEnabled(enable);
 
@@ -206,18 +209,18 @@ void QTocDialog::enableButtons(bool enable)
 }
 
 
-void QTocDialog::update()
+void TocWidget::update()
 {
-	form_->updateToc();
-	updateGui();
+	select(form_->getCurrentIndex());
+	QWidget::update();
 }
 
 
-void QTocDialog::updateGui()
+void TocWidget::updateGui()
 {
 	QStringListModel * type_model = form_->typeModel();
 	if (type_model->stringList().isEmpty()) {
-		enableButtons();
+		enableButtons(false);
 		typeCO->setModel(type_model);
 		tocTV->setModel(new QStandardItemModel);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -228,35 +231,29 @@ void QTocDialog::updateGui()
 	typeCO->setModel(type_model);
 	typeCO->setCurrentIndex(form_->getType());
 
+	bool buttons_enabled = false;
 	if (form_->tocModel()) {
+		buttons_enabled = form_->tocModel()->rowCount() > 0;
 		tocTV->setModel(form_->tocModel());
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
-	// avoid flickering
-	tocTV-> setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-	tocTV->showColumn(0);
-	// hide the pointless QHeader for now
-	// in the future, new columns may appear
-	// like labels, bookmarks, etc...
-	// tocTV->header()->hide();
-	tocTV->header()->setVisible(false);
-	enableButtons();
+
+	enableButtons(buttons_enabled);
 
 	reconnectSelectionModel();
 	depthSL->setEnabled(true);
 	depthSL->setMaximum(form_->getTocDepth());
-	setTreeDepth();
+	depthSL->setValue(depth_);
 	select(form_->getCurrentIndex());
 
 	lyxerr[Debug::GUI]
 		<< "form_->tocModel()->rowCount " << form_->tocModel()->rowCount()
 		<< "\nform_->tocModel()->columnCount " << form_->tocModel()->columnCount()
 		<< endl;
-//	setTitle(form_->guiname())
 }
 
 
-void QTocDialog::reconnectSelectionModel()
+void TocWidget::reconnectSelectionModel()
 {
 	connect(tocTV->selectionModel(),
 		SIGNAL(currentChanged(const QModelIndex &,
@@ -265,34 +262,7 @@ void QTocDialog::reconnectSelectionModel()
 			const QModelIndex &)));
 }
 
-
-void QTocDialog::apply()
-{
-	// Nothing to do here... for now.
-	// Ideas welcome... (Abdel, 17042006)
-}
-
-
-void QTocDialog::hide()
-{
-	accept();
-}
-
-
-void QTocDialog::show()
-{
-	form_->update();
-	QDialog::show();
-}
-
-
-bool QTocDialog::isVisible() const
-{
-	return QDialog::isVisible();
-}
-
-
 } // namespace frontend
 } // namespace lyx
 
-#include "QTocDialog_moc.cpp"
+#include "TocWidget_moc.cpp"

@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "QToc.h"
+
 #include "TocModel.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
@@ -35,7 +36,6 @@ namespace frontend {
 QToc::QToc(Dialog & parent)
 	: ControlToc(parent)
 {
-	update();
 }
 
 
@@ -130,6 +130,7 @@ void QToc::update()
 {
 	updateType();
 	updateToc();
+	modelReset();
 }
 
 
@@ -184,3 +185,5 @@ void QToc::updateToc()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QToc_moc.cpp"

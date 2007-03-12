@@ -37,8 +37,15 @@ namespace frontend {
 
 ControlToc::ControlToc(Dialog & d)
 	: ControlCommand(d, "tableofcontents", "toc")
-{}
+{
+}
 
+
+bool ControlToc::initialiseParams(string const & data)
+{
+	update();
+	return ControlCommand::initialiseParams(data);
+}
 
 void ControlToc::goTo(TocItem const & item)
 {
@@ -80,6 +87,12 @@ void ControlToc::outlineOut()
 vector<string> const & ControlToc::getTypes() const
 {
 	return kernel().buffer().tocBackend().types();
+}
+
+
+void ControlToc::updateBackend()
+{
+	kernel().buffer().tocBackend().update();
 }
 
 

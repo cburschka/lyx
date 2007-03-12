@@ -726,7 +726,8 @@ src_frontends_qt4_moc_files = Split('''
     QTexinfoDialog.C
     QThesaurusDialog.C
     TocModel.C
-    QTocDialog.C
+    TocWidget.C
+    QToc.C
     GuiView.C
     QURLDialog.C
     QVSpaceDialog.C
@@ -743,6 +744,7 @@ src_frontends_qt4_header_files = Split('''
     BiblioModuleBase.h
     BulletsModule.h
     ColorCache.h
+    DockView.h
     FileDialog_private.h
     GuiApplication.h
     GuiClipboard.h
@@ -831,7 +833,6 @@ src_frontends_qt4_header_files = Split('''
     QThesaurus.h
     QThesaurusDialog.h
     QToc.h
-    QTocDialog.h
     QURLDialog.h
     QVSpace.h
     QVSpaceDialog.h
@@ -841,6 +842,7 @@ src_frontends_qt4_header_files = Split('''
     QWrapDialog.h
     Qt2BC.h
     TocModel.h
+    TocWidget.h
     UrlView.h
     checkedwidgets.h
     emptytable.h
@@ -953,7 +955,6 @@ src_frontends_qt4_files = Split('''
     QThesaurus.C
     QThesaurusDialog.C
     QToc.C
-    QTocDialog.C
     QURLDialog.C
     QVSpace.C
     QVSpaceDialog.C
@@ -963,6 +964,7 @@ src_frontends_qt4_files = Split('''
     QWrapDialog.C
     Qt2BC.C
     TocModel.C
+    TocWidget.C
     UrlView.C
     checkedwidgets.C
     emptytable.C

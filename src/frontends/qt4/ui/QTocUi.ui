@@ -1,22 +1,19 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QTocUi</class>
- <widget class="QDialog" name="QTocUi" >
+ <widget class="QWidget" name="QTocUi" >
+  <property name="windowModality" >
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>351</height>
+    <width>257</width>
+    <height>404</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string/>
-  </property>
-  <property name="sizeGripEnabled" >
-   <bool>true</bool>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -25,7 +22,7 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="3" column="0" >
+   <item row="3" column="0" colspan="2" >
     <layout class="QGridLayout" >
      <property name="margin" >
       <number>0</number>
@@ -34,76 +31,67 @@
       <number>6</number>
      </property>
      <item row="0" column="0" >
-      <widget class="QPushButton" name="moveUpPB" >
+      <widget class="QPushButton" name="moveOutPB" >
        <property name="text" >
-        <string>&amp;Up</string>
+        <string>&lt;- P&amp;romote</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1" >
+     <item row="1" column="2" >
       <widget class="QPushButton" name="moveDownPB" >
        <property name="text" >
         <string>&amp;Down</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="2" >
-      <widget class="QPushButton" name="moveOutPB" >
-       <property name="text" >
-        <string>&lt;- &amp;Promote</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3" >
+     <item row="0" column="1" >
       <widget class="QPushButton" name="moveInPB" >
        <property name="text" >
         <string>&amp;Demote -></string>
        </property>
       </widget>
      </item>
-    </layout>
-   </item>
-   <item row="4" column="0" >
-    <layout class="QGridLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item row="0" column="2" >
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-       <property name="default" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" >
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="0" >
+     <item row="1" column="0" colspan="2" >
       <widget class="QPushButton" name="updatePB" >
        <property name="text" >
         <string>&amp;Update</string>
        </property>
       </widget>
      </item>
+     <item row="0" column="2" >
+      <widget class="QPushButton" name="moveUpPB" >
+       <property name="text" >
+        <string>&amp;Up</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
-   <item row="2" column="0" >
+   <item row="0" column="1" >
+    <widget class="QComboBox" name="typeCO" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QTreeView" name="tocTV" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
     <widget class="QSlider" name="depthSL" >
      <property name="maximum" >
       <number>5</number>
@@ -123,59 +111,17 @@
     </widget>
    </item>
    <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <widget class="QLabel" name="typeLA" >
+     <property name="text" >
+      <string>&amp;Type:</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="buddy" >
+      <cstring>typeCO</cstring>
      </property>
-     <item>
-      <widget class="QLabel" name="typeLA" >
-       <property name="text" >
-        <string>&amp;Type:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>typeCO</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="typeCO" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>3</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>20</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0" >
-    <widget class="QTreeView" name="tocTV" />
+    </widget>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>typeCO</tabstop>
   <tabstop>tocTV</tabstop>
@@ -184,8 +130,6 @@
   <tabstop>moveDownPB</tabstop>
   <tabstop>moveInPB</tabstop>
   <tabstop>moveOutPB</tabstop>
-  <tabstop>updatePB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>

@@ -27,6 +27,11 @@ class ControlToc : public ControlCommand {
 public:
 	///
 	ControlToc(Dialog &);
+	///
+	virtual ~ControlToc() {}
+
+	/// \c ControlCommand inherited method.
+	bool initialiseParams(std::string const & data);
 
 	/// Goto this paragraph id
 	void goTo(TocItem const &);
@@ -51,9 +56,14 @@ public:
 	void outlineIn();
 	///
 	void outlineOut();
-	
 	/// Test if outlining operation is possible
 	bool canOutline(std::string const & type);
+	///
+	void updateBackend();
+
+public:
+	/// Update the model data if needed.
+	virtual void update() = 0;
 };
 
 } // namespace frontend
