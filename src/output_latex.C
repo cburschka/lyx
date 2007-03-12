@@ -96,30 +96,30 @@ TeXEnvironment(Buffer const & buf,
 
 	LyXLayout_ptr const & style = pit->layout();
 
-	Language const * language = pit->getParLanguage(bparams);
-	Language const * doc_language = bparams.language;
-	Language const * previous_language =
+	Language const * const par_language = pit->getParLanguage(bparams);
+	Language const * const doc_language = bparams.language;
+	Language const * const prev_par_language =
 		(pit != paragraphs.begin())
 		? boost::prior(pit)->getParLanguage(bparams)
 		: doc_language;
-	if (language->babel() != previous_language->babel()) {
+	if (par_language->babel() != prev_par_language->babel()) {
 
 		if (!lyxrc.language_command_end.empty() &&
-		    previous_language->babel() != doc_language->babel()) {
+		    prev_par_language->babel() != doc_language->babel()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
-				previous_language->babel()))
+				prev_par_language->babel()))
 			   << '\n';
 			texrow.newline();
 		}
 
 		if (lyxrc.language_command_end.empty() ||
-		    language->babel() != doc_language->babel()) {
+		    par_language->babel() != doc_language->babel()) {
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
-				language->babel()))
+				par_language->babel()))
 			   << '\n';
 			texrow.newline();
 		}
@@ -255,14 +255,14 @@ TeXOnePar(Buffer const & buf,
 	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= style->needprotect;
 
-	Language const * language = pit->getParLanguage(bparams);
-	Language const * doc_language = bparams.language;
-	Language const * previous_language =
+	Language const * const par_language = pit->getParLanguage(bparams);
+	Language const * const doc_language = bparams.language;
+	Language const * const prev_par_language =
 		(pit != paragraphs.begin())
 		? boost::prior(pit)->getParLanguage(bparams)
 		: doc_language;
 
-	if (language->babel() != previous_language->babel()
+	if (par_language->babel() != prev_par_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style->isEnvironment()
 		 && (pit == paragraphs.begin() ||
@@ -271,22 +271,22 @@ TeXOnePar(Buffer const & buf,
 		     || boost::prior(pit)->getDepth() < pit->getDepth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
-		    previous_language->babel() != doc_language->babel())
+		    prev_par_language->babel() != doc_language->babel())
 		{
 			os << from_ascii(subst(lyxrc.language_command_end,
 				"$$lang",
-				previous_language->babel()))
+				prev_par_language->babel()))
 			   << '\n';
 			texrow.newline();
 		}
 
 		if (lyxrc.language_command_end.empty() ||
-		    language->babel() != doc_language->babel())
+		    par_language->babel() != doc_language->babel())
 		{
 			os << from_ascii(subst(
 				lyxrc.language_command_begin,
 				"$$lang",
-				language->babel()))
+				par_language->babel()))
 			   << '\n';
 			texrow.newline();
 		}
@@ -434,7 +434,7 @@ TeXOnePar(Buffer const & buf,
 	}
 
 	if (boost::next(pit) == paragraphs.end()
-	    && language->babel() != doc_language->babel()) {
+	    && par_language->babel() != doc_language->babel()) {
 		// Since \selectlanguage write the language to the aux file,
 		// we need to reset the language at the end of footnote or
 		// float.
@@ -452,7 +452,7 @@ TeXOnePar(Buffer const & buf,
 			os << from_ascii(subst(
 				lyxrc.language_command_end,
 				"$$lang",
-				language->babel()));
+				par_language->babel()));
 		pending_newline = true;
 	}
 
