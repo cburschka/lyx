@@ -215,7 +215,10 @@ void Dialogs::updateBufferDependent(bool switched) const
 	for(; it != end; ++it) {
 		Dialog * dialog =  it->second.get();
 		if (switched && dialog->controller().isBufferDependent()) {
-			dialog->hide();
+			if (dialog->controller().initialiseParams(""))
+				dialog->view().update();
+			else
+				dialog->hide();
 		} else {
 			// A bit clunky, but the dialog will request
 			// that the kernel provides it with the necessary
