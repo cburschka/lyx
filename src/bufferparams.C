@@ -603,7 +603,7 @@ void BufferParams::writeFile(ostream & os) const
 	// the textclass
 	os << "\\textclass " << textclasslist[textclass].name() << '\n';
 
-	// then the the preamble
+	// then the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
 		string const tmppreamble = rtrim(preamble, "\n");
