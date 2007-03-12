@@ -15,7 +15,6 @@
 
 #include "ui/QTocUi.h"
 
-#include <QMainWindow>
 #include <QWidget>
 
 namespace lyx {
@@ -26,7 +25,7 @@ class QToc;
 class TocWidget : public QWidget, public Ui::QTocUi {
 	Q_OBJECT
 public:
-	TocWidget(QToc * form, QMainWindow * parent = 0);
+	TocWidget(QToc * form, QWidget * parent = 0);
 
 	/// Update the display of the dialog whilst it is still visible.
 	void update();

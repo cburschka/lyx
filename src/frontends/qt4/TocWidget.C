@@ -37,7 +37,7 @@ namespace lyx {
 namespace frontend {
 
 
-TocWidget::TocWidget(QToc * form, QMainWindow * parent)
+TocWidget::TocWidget(QToc * form, QWidget * parent)
 	: QWidget(parent), form_(form), depth_(0)
 {
 	setupUi(this);
