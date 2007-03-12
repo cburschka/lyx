@@ -758,18 +758,14 @@ namespace {
 
 bool insertIfExists(FileName const & absname, DepTable & head)
 {
-	bool exists;
-	try {
-		fs::path const path = absname.toFilesystemEncoding();
-		exists = fs::exists(path) && !fs::is_directory(path);
+	// fs::path may throw an exception if absname is too strange
+	if (!fs::native(absname.toFilesystemEncoding())) {
+		lyxerr[Debug::DEPEND] << '`' << absname.absFilename()
+			<< "' is no valid file name." << endl;
+		return false;
 	}
-	catch (fs::filesystem_error const & fe) {
-		// This was probably no file at all.
-		lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
-			<< "' while checking whether file `" << absname
-			<< "' exists and is no directory." << endl;
-	}
-	if (exists) {
+	fs::path const path(absname.toFilesystemEncoding());
+	if (fs::exists(path) && !fs::is_directory(path)) {
 			head.insert(absname, true);
 			return true;
 	}
@@ -820,15 +816,13 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// check for spaces
 	while (contains(foundfile, ' ')) {
-		bool exists;
-		try {
+		// fs::path may throw an exception if absname is too strange
+		bool exists = fs::native(absname.toFilesystemEncoding());
+		if (exists)
 			exists = fs::exists(absname.toFilesystemEncoding());
-		}
-		catch (fs::filesystem_error const & fe) {
-			// This was probably no file at all.
-			lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
-				<< "' while checking whether file `"
-				<< absname << "' exists." << endl;
+		else {
+			lyxerr[Debug::DEPEND] << '`' << absname.absFilename()
+				<< "' is no valid file name." << endl;
 		}
 		if (exists)
 			// everything o.k.
@@ -846,16 +840,14 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	bool exists;
-	try {
+	// fs::path may throw an exception if absname is too strange
+	bool exists = fs::native(absname.toFilesystemEncoding());
+	if (exists) {
 		fs::path const path = absname.toFilesystemEncoding();
 		exists = fs::exists(path) && !fs::is_directory(path);
-	}
-	catch (fs::filesystem_error const & fe) {
-		// This was probably no file at all.
-		lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
-			<< "' while checking whether file `" << absname
-			<< "' exists and is no directory." << endl;
+	} else {
+		lyxerr[Debug::DEPEND] << '`' << absname.absFilename()
+			<< "' is no valid file name." << endl;
 	}
 	if (exists) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
