@@ -12,7 +12,8 @@
 #ifndef DOCK_VIEW_H
 #define DOCK_VIEW_H
 
-#include "controllers/dialog.h"
+#include "controllers/Dialog.h"
+#include "qt_helpers.h"
 
 #include <boost/scoped_ptr.hpp>
 

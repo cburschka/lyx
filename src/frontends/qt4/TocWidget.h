@@ -15,6 +15,7 @@
 
 #include "ui/QTocUi.h"
 
+#include <QMainWindow>
 #include <QWidget>
 
 namespace lyx {
