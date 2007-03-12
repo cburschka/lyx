@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.5.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-26 19:19+0100\n"
+"POT-Creation-Date: 2007-03-12 22:36+0100\n"
 "PO-Revision-Date: 2007-02-22 00:42+0200\n"
 "Last-Translator: Pavel Sanda <ps@ucw.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -450,8 +450,8 @@ msgstr "Autorská práva"
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
 #: src/frontends/qt4/ui/QTexinfoUi.ui:61
-#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QTocUi.ui:77
-#: src/frontends/qt4/ui/QURLUi.ui:115 src/frontends/qt4/ui/QVSpaceUi.ui:171
+#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QURLUi.ui:115
+#: src/frontends/qt4/ui/QVSpaceUi.ui:168
 #: src/frontends/qt4/ui/QViewSourceUi.ui:115
 #: src/frontends/qt4/ui/QWrapUi.ui:216
 msgid "&Close"
@@ -481,7 +481,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
 #: src/frontends/qt4/ui/QSendtoUi.ui:75
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:68
-#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:148
+#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:145
 #: src/frontends/qt4/ui/QWrapUi.ui:193
 msgid "&OK"
 msgstr "&OK"
@@ -491,7 +491,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
-#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
+#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2032 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Zru¹it"
 
@@ -504,7 +504,7 @@ msgid "The label as it appears in the document"
 msgstr "Znaèka tak, jak se objeví v dokumentu"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
-#: src/frontends/qt4/Dialogs.C:231
+#: src/frontends/qt4/Dialogs.C:233
 msgid "&Label:"
 msgstr "Z&naèka:"
 
@@ -733,7 +733,7 @@ msgstr "&Obnovit"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:723
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
 #: src/frontends/qt4/ui/QPrefsUi.ui:86 src/frontends/qt4/ui/QRefUi.ui:90
-#: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:161
+#: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:158
 #: src/frontends/qt4/ui/QWrapUi.ui:206
 msgid "&Apply"
 msgstr "&Pou¾ít"
@@ -800,7 +800,7 @@ msgstr "Duktus písma"
 #: src/frontends/qt4/ui/QCharacterUi.ui:114
 #: src/frontends/qt4/ui/QCharacterUi.ui:160
 #: src/frontends/qt4/QDocumentDialog.C:391
-#: src/frontends/qt4/QPrefsDialog.C:1457
+#: src/frontends/qt4/QPrefsDialog.C:1456
 msgid "Language"
 msgstr "Jazyk"
 
@@ -932,7 +932,7 @@ msgstr "&Vybrané citace:"
 msgid "Move the selected citation up"
 msgstr "Pøesun oznaèené citace nahoru"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:39
+#: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:64
 msgid "&Up"
 msgstr "&Nahoru"
 
@@ -940,7 +940,7 @@ msgstr "&Nahoru"
 msgid "Move the selected citation down"
 msgstr "Pøesun oznaèené citace dolù"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:352 src/frontends/qt4/ui/QTocUi.ui:46
+#: src/frontends/qt4/ui/QCitationUi.ui:352
 msgid "&Down"
 msgstr "&Dolù"
 
@@ -1369,7 +1369,7 @@ msgid "Update the display"
 msgstr "Aktualizuj zobrazení"
 
 #: src/frontends/qt4/ui/QLogUi.ui:61 src/frontends/qt4/ui/QRefUi.ui:235
-#: src/frontends/qt4/ui/QTocUi.ui:100 src/frontends/qt4/ui/QViewSourceUi.ui:92
+#: src/frontends/qt4/ui/QViewSourceUi.ui:92
 msgid "&Update"
 msgstr "&Aktualizace"
 
@@ -1583,7 +1583,7 @@ msgid "&Shaded"
 msgstr "&Stínování"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1686
+#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1694
 msgid "Single"
 msgstr "Jedna"
 
@@ -1592,7 +1592,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1692
+#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1700
 msgid "Double"
 msgstr "Dva"
 
@@ -1600,7 +1600,7 @@ msgstr "Dva"
 #: src/frontends/qt4/ui/QTabularUi.ui:712
 #: src/frontends/qt4/ui/QTabularUi.ui:731
 #: src/frontends/qt4/ui/QTabularUi.ui:779
-#: src/frontends/qt4/ui/QVSpaceUi.ui:113
+#: src/frontends/qt4/ui/QVSpaceUi.ui:110
 #: src/frontends/qt4/QDocumentDialog.C:120
 #: src/frontends/qt4/QDocumentDialog.C:201
 msgid "Custom"
@@ -2783,7 +2783,7 @@ msgstr "Zobraz &cestu"
 msgid "Index entry"
 msgstr "Heslo v rejstøíku"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:221
+#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:223
 msgid "&Keyword:"
 msgstr "&Hledané slovo:"
 
@@ -2804,15 +2804,27 @@ msgstr "&Výbìr:"
 msgid "Replace the entry with the selection"
 msgstr "Zamìò heslo s vybraným"
 
-#: src/frontends/qt4/ui/QTocUi.ui:53
-msgid "<- &Promote"
+#: src/frontends/qt4/ui/QTocUi.ui:36
+#, fuzzy
+msgid "<- P&romote"
 msgstr "<- &Zvý¹it"
 
-#: src/frontends/qt4/ui/QTocUi.ui:60
-msgid "&Demote ->"
+#: src/frontends/qt4/ui/QTocUi.ui:43
+#, fuzzy
+msgid "D&own"
+msgstr "&Dolù"
+
+#: src/frontends/qt4/ui/QTocUi.ui:50
+#, fuzzy
+msgid "De&mote ->"
 msgstr "&Sní¾it ->"
 
-#: src/frontends/qt4/ui/QTocUi.ui:136
+#: src/frontends/qt4/ui/QTocUi.ui:57
+#, fuzzy
+msgid "Upd&ate"
+msgstr "&Aktualizace"
+
+#: src/frontends/qt4/ui/QTocUi.ui:116
 msgid "&Type:"
 msgstr "&Typ:"
 
@@ -2838,50 +2850,50 @@ msgstr "Výstup jako odkaz ?"
 msgid "&Generate hyperlink"
 msgstr "&Generuj odkaz (hyperlink)"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:31
+#: src/frontends/qt4/ui/QVSpaceUi.ui:28
 msgid "&Spacing:"
 msgstr "&Mezera:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:41
+#: src/frontends/qt4/ui/QVSpaceUi.ui:38
 msgid "&Value:"
 msgstr "&Hodnota:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:54
+#: src/frontends/qt4/ui/QVSpaceUi.ui:51
 msgid "&Protect:"
 msgstr "&Chránit:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:64
+#: src/frontends/qt4/ui/QVSpaceUi.ui:61
 msgid "Insert the spacing even after a page break"
 msgstr "Vlo¾it mezeru i za zalomení stránky"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:77
+#: src/frontends/qt4/ui/QVSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr "Vlastní hodnota. Nastavte typ mezery na \"Vlastní\"."
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:84
+#: src/frontends/qt4/ui/QVSpaceUi.ui:81
 msgid "Supported spacing types"
 msgstr "Podporované typy mezer"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:88
+#: src/frontends/qt4/ui/QVSpaceUi.ui:85
 msgid "DefSkip"
 msgstr "Vlastní mezera (DefSkip)"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:93
+#: src/frontends/qt4/ui/QVSpaceUi.ui:90
 #: src/frontends/qt4/QDocumentDialog.C:107
 msgid "SmallSkip"
 msgstr "Malá mezera (SmallSkip)"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:98
+#: src/frontends/qt4/ui/QVSpaceUi.ui:95
 #: src/frontends/qt4/QDocumentDialog.C:108
 msgid "MedSkip"
 msgstr "Støední mezera (MedSkip)"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:103
+#: src/frontends/qt4/ui/QVSpaceUi.ui:100
 #: src/frontends/qt4/QDocumentDialog.C:109
 msgid "BigSkip"
 msgstr "Velká mezera (BigSkip)"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:108
+#: src/frontends/qt4/ui/QVSpaceUi.ui:105
 msgid "VFill"
 msgstr "Výplò (VFill)"
 
@@ -3304,7 +3316,7 @@ msgstr "Podpodsekce*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:146
+#: src/output_plaintext.C:145
 msgid "Abstract"
 msgstr "Abstrakt"
 
@@ -3522,7 +3534,7 @@ msgid "Acknowledgements."
 msgstr "Acknowledgements."
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:622
-#: src/frontends/qt4/QPrefsDialog.C:286
+#: src/frontends/qt4/QPrefsDialog.C:285
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -3576,7 +3588,7 @@ msgstr "Acknowledgements"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:157
 msgid "References"
 msgstr "Literatura"
 
@@ -7363,7 +7375,7 @@ msgstr "Krátký titulek|i"
 msgid "Index Entry|I"
 msgstr "Heslo do rejstøíku|r"
 
-#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:225
+#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:227
 msgid "Glossary Entry"
 msgstr "Heslo slovníèku"
 
@@ -8741,21 +8753,21 @@ msgstr "Vybrat dokument LyX-u ke vlo¾ení"
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
+#: src/lyxfunc.C:1871 src/lyxfunc.C:1910 src/lyxfunc.C:1983
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o#O"
 
-#: src/BufferView.C:1514 src/lyxfunc.C:1909 src/lyxfunc.C:1982
+#: src/BufferView.C:1514 src/lyxfunc.C:1911 src/lyxfunc.C:1984
 msgid "Examples|#E#e"
 msgstr "Pøíklady|#a#A"
 
 #: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
-#: src/lyxfunc.C:1913
+#: src/lyxfunc.C:1915
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumenty LyX-u (*.lyx)"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1923 src/lyxfunc.C:2003
-#: src/lyxfunc.C:2017 src/lyxfunc.C:2033
+#: src/BufferView.C:1530 src/lyxfunc.C:1925 src/lyxfunc.C:2005
+#: src/lyxfunc.C:2019 src/lyxfunc.C:2035
 msgid "Canceled."
 msgstr "Zru¹eno."
 
@@ -9054,29 +9066,29 @@ msgstr "Spou¹tím MakeIndex pro nomencl."
 msgid "Running BibTeX."
 msgstr "Spou¹tím BibTeX."
 
-#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:574
-#: src/MenuBackend.C:596 src/MenuBackend.C:619 src/MenuBackend.C:705
+#: src/MenuBackend.C:463 src/MenuBackend.C:500 src/MenuBackend.C:572
+#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
 msgid "No Documents Open!"
 msgstr "®ádné otevøené dokumenty !"
 
-#: src/MenuBackend.C:542
+#: src/MenuBackend.C:540
 msgid "Plain Text"
 msgstr "Prostý text"
 
-#: src/MenuBackend.C:544
+#: src/MenuBackend.C:542
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, spojit øádky"
 
-#: src/MenuBackend.C:716
+#: src/MenuBackend.C:714
 msgid "Master Document"
 msgstr "Hlavní dokument"
 
-#: src/MenuBackend.C:748
+#: src/MenuBackend.C:746
 msgid "No Table of contents"
 msgstr "Bez obsahu|B"
 
 # TODO co to je?
-#: src/MenuBackend.C:793
+#: src/MenuBackend.C:791
 msgid " (auto)"
 msgstr " (auto)"
 
@@ -9102,56 +9114,56 @@ msgstr "Neznámá tøída dokumentu"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Pou¾ita standardní tøída dokumentu, nebo» tøída %1$s není známa."
 
-#: src/buffer.C:459 src/text.C:292
+#: src/buffer.C:463 src/text.C:292
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznámý token: %1$s %2$s\n"
 
-#: src/buffer.C:463 src/buffer.C:470 src/buffer.C:490
+#: src/buffer.C:467 src/buffer.C:474 src/buffer.C:494
 msgid "Document header error"
 msgstr "Chyba hlavièky dokumentu"
 
-#: src/buffer.C:469
+#: src/buffer.C:473
 msgid "\\begin_header is missing"
 msgstr "chybí \\begin_header"
 
-#: src/buffer.C:489
+#: src/buffer.C:493
 msgid "\\begin_document is missing"
 msgstr "chybí \\begin_document"
 
-#: src/buffer.C:500
+#: src/buffer.C:504
 msgid "Can't load document class"
 msgstr "Nelze naèíst tøídu dokumentu"
 
-#: src/buffer.C:501
+#: src/buffer.C:505
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr "Pou¾ita standardní tøída dokumentu, nebo» tøída %1$s nelze naèíst."
 
-#: src/buffer.C:644 src/buffer.C:653
+#: src/buffer.C:648 src/buffer.C:657
 msgid "Document could not be read"
 msgstr "Dokument nemù¾e být pøeèten"
 
-#: src/buffer.C:645 src/buffer.C:654
+#: src/buffer.C:649 src/buffer.C:658
 #, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s nemù¾e být pøeèten."
 
-#: src/buffer.C:662 src/buffer.C:734
+#: src/buffer.C:666 src/buffer.C:738
 msgid "Document format failure"
 msgstr "Chyba formátování dokumentu"
 
-#: src/buffer.C:663
+#: src/buffer.C:667
 #, c-format
 msgid "%1$s is not a LyX document."
 msgstr "%1$s není dokumentem LyX-u."
 
-#: src/buffer.C:687
+#: src/buffer.C:691
 msgid "Conversion failed"
 msgstr "Konverze se nezdaøila"
 
-#: src/buffer.C:688
+#: src/buffer.C:692
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -9160,11 +9172,11 @@ msgstr ""
 "%1$s je z odli¹né verze LyX-u, ale pomocný soubor pro jeho konverzi nemù¾e "
 "být vytvoøen."
 
-#: src/buffer.C:697
+#: src/buffer.C:701
 msgid "Conversion script not found"
 msgstr "Nenalezen konverzní skript"
 
-#: src/buffer.C:698
+#: src/buffer.C:702
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -9172,11 +9184,11 @@ msgid ""
 msgstr ""
 "%1$s je z odli¹né verze LyX-u, ale konverzní skript lyx2lyx nebyl nalezen."
 
-#: src/buffer.C:719
+#: src/buffer.C:723
 msgid "Conversion script failed"
 msgstr "Konverzní skript selhal"
 
-#: src/buffer.C:720
+#: src/buffer.C:724
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -9184,16 +9196,16 @@ msgid ""
 msgstr ""
 "%1$s je z odli¹né verze LyX-u, ale skript lyx2lyx selhal pøi konverzi. "
 
-#: src/buffer.C:735
+#: src/buffer.C:739
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr "%1$s skonèil neoèekávanì, co¾ znamená, ¾e je pravdìpodobnì po¹kozen."
 
-#: src/buffer.C:771
+#: src/buffer.C:775
 msgid "Backup failure"
 msgstr "Zálohování selhalo"
 
-#: src/buffer.C:772
+#: src/buffer.C:776
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
@@ -9202,11 +9214,11 @@ msgstr ""
 "LyX nebyl schopen vytvoøit zálo¾ní kopii v %1$s.\n"
 "Zkontrolujte, zda-li daný adresáø existuje a lze do nìj zapisovat."
 
-#: src/buffer.C:884
+#: src/buffer.C:888
 msgid "Encoding error"
 msgstr "Chyba kódování"
 
-#: src/buffer.C:885
+#: src/buffer.C:889
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
@@ -9216,11 +9228,11 @@ msgstr ""
 "kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/buffer.C:894
+#: src/buffer.C:898
 msgid "Error closing file"
 msgstr "Chyba pøi uzavírání souboru"
 
-#: src/buffer.C:895
+#: src/buffer.C:899
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -9232,15 +9244,15 @@ msgstr ""
 "zvolném kódování.\n"
 "Mohla by pomoci zmìna kódování dokumentu na utf8."
 
-#: src/buffer.C:1153
+#: src/buffer.C:1157
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/buffer.C:1166
+#: src/buffer.C:1170
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/buffer.C:1167
+#: src/buffer.C:1171
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
@@ -9600,7 +9612,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Pøepsat soubor?"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2032
 msgid "&Over-write"
 msgstr "&Pøepsat"
 
@@ -9685,11 +9697,11 @@ msgstr "®ádná informace pro editaci %1$s"
 msgid "Auto-edit file %1$s failed"
 msgstr "Automatická editace souboru %1$s selhala"
 
-#: src/frontends/LyXView.C:411
+#: src/frontends/LyXView.C:425
 msgid " (changed)"
 msgstr " (zmìnìno)"
 
-#: src/frontends/LyXView.C:415
+#: src/frontends/LyXView.C:429
 msgid " (read only)"
 msgstr " (jen ke ètení)"
 
@@ -9915,40 +9927,40 @@ msgstr "Log chyb z lyx2lyx nenalezen."
 msgid "No version control log file found."
 msgstr "Log ze správy verzí nenalezen."
 
-#: src/frontends/controllers/ControlPrefs.C:112
+#: src/frontends/controllers/ControlPrefs.C:110
 msgid "Choose bind file"
 msgstr "Vybrat soubor klávesových zkratek"
 
-#: src/frontends/controllers/ControlPrefs.C:113
+#: src/frontends/controllers/ControlPrefs.C:111
 msgid "LyX bind files (*.bind)"
 msgstr "Klávesové zkratky LyX-u (*.bind)"
 
-#: src/frontends/controllers/ControlPrefs.C:120
+#: src/frontends/controllers/ControlPrefs.C:118
 msgid "Choose UI file"
 msgstr "Vybrat soubor u¾ivatelského rozhraní"
 
-#: src/frontends/controllers/ControlPrefs.C:121
+#: src/frontends/controllers/ControlPrefs.C:119
 msgid "LyX UI files (*.ui)"
 msgstr "UI soubory LyX-u (*.ui)"
 
-#: src/frontends/controllers/ControlPrefs.C:128
+#: src/frontends/controllers/ControlPrefs.C:126
 msgid "Choose keyboard map"
 msgstr "Vybrat mapu kláves"
 
-#: src/frontends/controllers/ControlPrefs.C:129
+#: src/frontends/controllers/ControlPrefs.C:127
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Mapa kláves pro LyX (*.kmap)"
 
-#: src/frontends/controllers/ControlPrefs.C:137
-#: src/frontends/controllers/ControlPrefs.C:141
+#: src/frontends/controllers/ControlPrefs.C:135
+#: src/frontends/controllers/ControlPrefs.C:139
 msgid "Choose personal dictionary"
 msgstr "Vybrat vlastní slovník"
 
-#: src/frontends/controllers/ControlPrefs.C:138
+#: src/frontends/controllers/ControlPrefs.C:136
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/controllers/ControlPrefs.C:142
+#: src/frontends/controllers/ControlPrefs.C:140
 msgid "*.ispell"
 msgstr "*.ispell"
 
@@ -9997,7 +10009,7 @@ msgstr "Jedno slovo zkontrolováno."
 msgid "Spelling check completed"
 msgstr "Kontrola pravopisu hotova"
 
-#: src/frontends/controllers/ControlToc.C:99 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.C:112 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Obsah"
 
@@ -10163,31 +10175,35 @@ msgstr "Dings 3"
 msgid "Dings 4"
 msgstr "Dings 4"
 
-#: src/frontends/qt4/Dialogs.C:220
+#: src/frontends/qt4/Dialogs.C:222
 msgid "Index Entry"
 msgstr "Heslo rejstøíku"
 
-#: src/frontends/qt4/Dialogs.C:230
+#: src/frontends/qt4/Dialogs.C:232
 msgid "Label"
 msgstr "Znaèka"
+
+#: src/frontends/qt4/Dialogs.C:307
+msgid "Toc"
+msgstr "Obsah"
 
 #: src/frontends/qt4/FileDialog.C:160
 msgid "Directories"
 msgstr "Adresáøe"
 
-#: src/frontends/qt4/GuiView.C:134
+#: src/frontends/qt4/GuiView.C:133
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:140
+#: src/frontends/qt4/GuiView.C:139
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:147
+#: src/frontends/qt4/GuiView.C:146
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:619
+#: src/frontends/qt4/GuiView.C:618
 msgid "LyX"
 msgstr "LyX"
 
@@ -10296,7 +10312,7 @@ msgstr "Nastavení dokumentu"
 msgid "Length"
 msgstr "Vlastní délka"
 
-#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1689
+#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1697
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
@@ -10459,7 +10475,7 @@ msgstr "Mìøítko%"
 msgid "Float Settings"
 msgstr "Nastavení plovoucích objektù"
 
-#: src/frontends/qt4/QGraphics.C:62 src/frontends/qt4/QPrefsDialog.C:575
+#: src/frontends/qt4/QGraphics.C:62 src/frontends/qt4/QPrefsDialog.C:574
 msgid "Graphics"
 msgstr "Obrázek"
 
@@ -10659,91 +10675,91 @@ msgstr "Formát datumu"
 msgid "Keyboard"
 msgstr "Klávesnice"
 
-#: src/frontends/qt4/QPrefsDialog.C:333
+#: src/frontends/qt4/QPrefsDialog.C:332
 msgid "Screen fonts"
 msgstr "Fonty na obrazovce"
 
-#: src/frontends/qt4/QPrefsDialog.C:485
+#: src/frontends/qt4/QPrefsDialog.C:484
 msgid "Colors"
 msgstr "Barvy"
 
-#: src/frontends/qt4/QPrefsDialog.C:554 src/frontends/qt4/QPrefsDialog.C:642
+#: src/frontends/qt4/QPrefsDialog.C:553 src/frontends/qt4/QPrefsDialog.C:641
 msgid "Paths"
 msgstr "Cesty"
 
-#: src/frontends/qt4/QPrefsDialog.C:693
+#: src/frontends/qt4/QPrefsDialog.C:692
 msgid "Select a document templates directory"
 msgstr "Vybrat adresáø se ¹ablonami dokumentù"
 
-#: src/frontends/qt4/QPrefsDialog.C:703
+#: src/frontends/qt4/QPrefsDialog.C:702
 msgid "Select a temporary directory"
 msgstr "Vybrat pomocný adresáø"
 
-#: src/frontends/qt4/QPrefsDialog.C:713
+#: src/frontends/qt4/QPrefsDialog.C:712
 msgid "Select a backups directory"
 msgstr "Vybrat adresáø na zálohy"
 
-#: src/frontends/qt4/QPrefsDialog.C:723
+#: src/frontends/qt4/QPrefsDialog.C:722
 msgid "Select a document directory"
 msgstr "Vybrat adresáø pro dokumenty"
 
-#: src/frontends/qt4/QPrefsDialog.C:733
+#: src/frontends/qt4/QPrefsDialog.C:732
 msgid "Give a filename for the LyX server pipe"
 msgstr "Jméno souboru pro rouru (pipe) LyX serveru"
 
-#: src/frontends/qt4/QPrefsDialog.C:740 src/frontends/qt4/QSpellchecker.C:34
+#: src/frontends/qt4/QPrefsDialog.C:739 src/frontends/qt4/QSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Kontrola pravopisu"
 
-#: src/frontends/qt4/QPrefsDialog.C:762
+#: src/frontends/qt4/QPrefsDialog.C:761
 msgid "ispell"
 msgstr "ispell"
 
-#: src/frontends/qt4/QPrefsDialog.C:763
+#: src/frontends/qt4/QPrefsDialog.C:762
 msgid "aspell"
 msgstr "aspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:764
+#: src/frontends/qt4/QPrefsDialog.C:763
 msgid "hspell"
 msgstr "hspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:766
+#: src/frontends/qt4/QPrefsDialog.C:765
 msgid "pspell (library)"
 msgstr "pspell (knihovna)"
 
-#: src/frontends/qt4/QPrefsDialog.C:769
+#: src/frontends/qt4/QPrefsDialog.C:768
 msgid "aspell (library)"
 msgstr "aspell (knihovna)"
 
-#: src/frontends/qt4/QPrefsDialog.C:842
+#: src/frontends/qt4/QPrefsDialog.C:841
 msgid "Converters"
 msgstr "Konvertory"
 
-#: src/frontends/qt4/QPrefsDialog.C:1004
+#: src/frontends/qt4/QPrefsDialog.C:1003
 msgid "Copiers"
 msgstr "Skripty pro kopírování"
 
-#: src/frontends/qt4/QPrefsDialog.C:1248
+#: src/frontends/qt4/QPrefsDialog.C:1247
 msgid "File formats"
 msgstr "Formáty souborù"
 
-#: src/frontends/qt4/QPrefsDialog.C:1440
+#: src/frontends/qt4/QPrefsDialog.C:1439
 msgid "Format in use"
 msgstr "Pou¾ívaný formát"
 
-#: src/frontends/qt4/QPrefsDialog.C:1441
+#: src/frontends/qt4/QPrefsDialog.C:1440
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr "Nelze smazat Formát pou¾ívaný konvertorem. Nejprve sma¾te konvertor."
 
-#: src/frontends/qt4/QPrefsDialog.C:1532
+#: src/frontends/qt4/QPrefsDialog.C:1531
 msgid "Printer"
 msgstr "Tiskárna"
 
-#: src/frontends/qt4/QPrefsDialog.C:1624 src/frontends/qt4/QPrefsDialog.C:1807
+#: src/frontends/qt4/QPrefsDialog.C:1623 src/frontends/qt4/QPrefsDialog.C:1806
 msgid "User interface"
 msgstr "U¾ivatelské rozhraní"
 
-#: src/frontends/qt4/QPrefsDialog.C:1737
+#: src/frontends/qt4/QPrefsDialog.C:1736
 msgid "Identity"
 msgstr "Va¹e identita"
 
@@ -10790,10 +10806,6 @@ msgstr "Vlo¾ tabulku"
 #: src/frontends/qt4/QTexinfo.C:32
 msgid "TeX Information"
 msgstr "Informace TeX-u"
-
-#: src/frontends/qt4/QTocDialog.C:42
-msgid "Toc"
-msgstr "Obsah"
 
 #: src/frontends/qt4/QVSpace.C:132
 msgid "Vertical Space Settings"
@@ -11392,7 +11404,7 @@ msgstr "Vybrat nové jméno souboru pro dokument"
 msgid "Templates|#T#t"
 msgstr "©ablony|#A#a"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2029
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -11403,7 +11415,7 @@ msgstr ""
 "\n"
 "Chcete jej pøepsat ?"
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2031
 msgid "Over-write document?"
 msgstr "Pøepsat dokument ?"
 
@@ -11499,29 +11511,29 @@ msgstr "LyX: pøekonfigurování u¾ivatelského adresáøe"
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:490
+#: src/lyx_main.C:489
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nelze smazat pomocný adresáø %1$s"
 
-#: src/lyx_main.C:492
+#: src/lyx_main.C:491
 msgid "Unable to remove temporary directory"
 msgstr "Nelze smazat pomocný adresáø"
 
-#: src/lyx_main.C:528
+#: src/lyx_main.C:527
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Chybný parametr pøíkazové øádky `%1$s'. Konec."
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:783
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:912
 msgid "Could not create temporary directory"
 msgstr "Nelze vytvoøit pomocný adresáø"
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:913
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11532,11 +11544,11 @@ msgstr ""
 "%1$s. Ujistìte se, ¾e\n"
 "tato cesta existuje a má práva na zápis. Poté zkuste znovu."
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1080
 msgid "Missing user LyX directory"
 msgstr "Chybí u¾ivatelský adresáø LyX-u"
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1081
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11545,37 +11557,37 @@ msgstr ""
 "Zadal jste neexistující u¾ivatelský adresáø LyX-u, %1$s.\n"
 "Je potøebný k uchování va¹í konfigurace."
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1086
 msgid "&Create directory"
 msgstr "&ytvoøit adresáø"
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1087
 msgid "&Exit LyX"
 msgstr "&Ukonèit LyX"
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1088
 msgid "No user LyX directory. Exiting."
 msgstr "®ádný u¾ivatelský adresáø LyX-u. Konec."
 
-#: src/lyx_main.C:1093
+#: src/lyx_main.C:1092
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváøím adresáø %1$s"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1098
 msgid "Failed to create directory. Exiting."
 msgstr "Selhalo vytváøení adresáøe. Konec."
 
-#: src/lyx_main.C:1272
+#: src/lyx_main.C:1271
 msgid "List of supported debug flags:"
 msgstr "Seznam podporovaných ladících pøíznakù:"
 
-#: src/lyx_main.C:1276
+#: src/lyx_main.C:1275
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveò nastavena na %1$s"
 
-#: src/lyx_main.C:1287
+#: src/lyx_main.C:1286
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11615,39 +11627,39 @@ msgstr ""
 "\t-version        shrnout verzi a informace o sestavení\n"
 "Prohlédnìte manuálovou stránku LyX-u pro detailnìj¹í informace."
 
-#: src/lyx_main.C:1323 src/support/package.C.in:556
+#: src/lyx_main.C:1322 src/support/package.C.in:556
 msgid "No system directory"
 msgstr "®ádný systémový adresáø"
 
-#: src/lyx_main.C:1324
+#: src/lyx_main.C:1323
 msgid "Missing directory for -sysdir switch"
 msgstr "Chybí adresáø pro pøepínaè -sysdir"
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1333
 msgid "No user directory"
 msgstr "®ádný u¾ivatelský adresáø"
 
-#: src/lyx_main.C:1335
+#: src/lyx_main.C:1334
 msgid "Missing directory for -userdir switch"
 msgstr "Chybí adresáø pro pøepínaè -userdir"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1344
 msgid "Incomplete command"
 msgstr "Neúplný pøíkaz"
 
-#: src/lyx_main.C:1346
+#: src/lyx_main.C:1345
 msgid "Missing command string after --execute switch"
 msgstr "Chybí pøíkaz za pøepínaèem --execute"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1355
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --export"
 
-#: src/lyx_main.C:1368
+#: src/lyx_main.C:1367
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chybí typ souboru [napø. latex, ps...] za pøepínaèem --import"
 
-#: src/lyx_main.C:1373
+#: src/lyx_main.C:1372
 msgid "Missing filename for --import"
 msgstr "Chybí jméno souboru za pøepínaèem --import"
 
@@ -11846,31 +11858,31 @@ msgstr "Konverze dokumentu do nové tøídy dokumentu..."
 msgid "Select template file"
 msgstr "Vybrat soubor se ¹ablonou"
 
-#: src/lyxfunc.C:1906
+#: src/lyxfunc.C:1908
 msgid "Select document to open"
 msgstr "Vybrat dokument k otevøení"
 
-#: src/lyxfunc.C:1945
+#: src/lyxfunc.C:1947
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Otvírání dokumentu %1$s..."
 
-#: src/lyxfunc.C:1949
+#: src/lyxfunc.C:1951
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s otevøen."
 
-#: src/lyxfunc.C:1951
+#: src/lyxfunc.C:1953
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nelze otevøít dokument %1$s"
 
-#: src/lyxfunc.C:1976
+#: src/lyxfunc.C:1978
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vybrat soubor %1$s k importu"
 
-#: src/lyxfunc.C:2103
+#: src/lyxfunc.C:2105
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
@@ -12488,11 +12500,11 @@ msgstr ""
 "Nelze otevøít zadaný dokument\n"
 "%1$s."
 
-#: src/output_plaintext.C:149
+#: src/output_plaintext.C:148
 msgid "Abstract: "
 msgstr "Abstrakt: "
 
-#: src/output_plaintext.C:161
+#: src/output_plaintext.C:160
 msgid "References: "
 msgstr "Reference: "
 
@@ -12729,57 +12741,57 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/text.C:1652
+#: src/text.C:1660
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/text.C:1658
+#: src/text.C:1666
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/text.C:1662
+#: src/text.C:1670
 msgid " at "
 msgstr " na "
 
-#: src/text.C:1672
+#: src/text.C:1680
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/text.C:1677
+#: src/text.C:1685
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/text.C:1683
+#: src/text.C:1691
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/text.C:1695
+#: src/text.C:1703
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/text.C:1704
+#: src/text.C:1712
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/text.C:1705
+#: src/text.C:1713
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/text.C:1706
+#: src/text.C:1714
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:1707
+#: src/text.C:1715
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/text.C:1713
+#: src/text.C:1721
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1715
+#: src/text.C:1723
 msgid ", Boundary: "
 msgstr ", Okraj: "
 

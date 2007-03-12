@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-02-26 19:19+0100\n"
+"POT-Creation-Date: 2007-03-12 22:36+0100\n"
 "PO-Revision-Date: 2005-03-30 23:49+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -532,8 +532,8 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/QShowFileUi.ui:58
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
 #: src/frontends/qt4/ui/QTexinfoUi.ui:61
-#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QTocUi.ui:77
-#: src/frontends/qt4/ui/QURLUi.ui:115 src/frontends/qt4/ui/QVSpaceUi.ui:171
+#: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QURLUi.ui:115
+#: src/frontends/qt4/ui/QVSpaceUi.ui:168
 #: src/frontends/qt4/ui/QViewSourceUi.ui:115
 #: src/frontends/qt4/ui/QWrapUi.ui:216
 msgid "&Close"
@@ -562,7 +562,7 @@ msgstr "&Testi"
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
 #: src/frontends/qt4/ui/QSendtoUi.ui:75
 #: src/frontends/qt4/ui/QTabularCreateUi.ui:68
-#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:148
+#: src/frontends/qt4/ui/QURLUi.ui:105 src/frontends/qt4/ui/QVSpaceUi.ui:145
 #: src/frontends/qt4/ui/QWrapUi.ui:193
 msgid "&OK"
 msgstr "&OK"
@@ -572,7 +572,7 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
-#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2030 src/lyxvc.C:175
+#: src/lyxfunc.C:906 src/lyxfunc.C:1070 src/lyxfunc.C:2032 src/lyxvc.C:175
 msgid "&Cancel"
 msgstr "&Peru"
 
@@ -585,7 +585,7 @@ msgid "The label as it appears in the document"
 msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
-#: src/frontends/qt4/Dialogs.C:231
+#: src/frontends/qt4/Dialogs.C:233
 msgid "&Label:"
 msgstr "&Nimike:"
 
@@ -834,7 +834,7 @@ msgstr "Pala&uta"
 #: src/frontends/qt4/ui/QGraphicsUi.ui:723
 #: src/frontends/qt4/ui/QParagraphUi.ui:271
 #: src/frontends/qt4/ui/QPrefsUi.ui:86 src/frontends/qt4/ui/QRefUi.ui:90
-#: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:161
+#: src/frontends/qt4/ui/QSendtoUi.ui:88 src/frontends/qt4/ui/QVSpaceUi.ui:158
 #: src/frontends/qt4/ui/QWrapUi.ui:206
 msgid "&Apply"
 msgstr "&Toteuta"
@@ -908,7 +908,7 @@ msgstr "Kirjasinsarja"
 #: src/frontends/qt4/ui/QCharacterUi.ui:114
 #: src/frontends/qt4/ui/QCharacterUi.ui:160
 #: src/frontends/qt4/QDocumentDialog.C:391
-#: src/frontends/qt4/QPrefsDialog.C:1457
+#: src/frontends/qt4/QPrefsDialog.C:1456
 msgid "Language"
 msgstr "Kieli"
 
@@ -1049,7 +1049,7 @@ msgstr "&Valinta:"
 msgid "Move the selected citation up"
 msgstr "Siirrä valittua lähdeviitettä ylös"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:39
+#: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:64
 #, fuzzy
 msgid "&Up"
 msgstr "Päi&vitä"
@@ -1058,7 +1058,7 @@ msgstr "Päi&vitä"
 msgid "Move the selected citation down"
 msgstr "Siirrä valittua lähdeviitettä alas"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:352 src/frontends/qt4/ui/QTocUi.ui:46
+#: src/frontends/qt4/ui/QCitationUi.ui:352
 #, fuzzy
 msgid "&Down"
 msgstr "Valmis"
@@ -1513,7 +1513,7 @@ msgid "Update the display"
 msgstr "Päivitä näyttö"
 
 #: src/frontends/qt4/ui/QLogUi.ui:61 src/frontends/qt4/ui/QRefUi.ui:235
-#: src/frontends/qt4/ui/QTocUi.ui:100 src/frontends/qt4/ui/QViewSourceUi.ui:92
+#: src/frontends/qt4/ui/QViewSourceUi.ui:92
 msgid "&Update"
 msgstr "Päi&vitä"
 
@@ -1738,7 +1738,7 @@ msgid "&Shaded"
 msgstr "Ta&llenna"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1686
+#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1694
 msgid "Single"
 msgstr "Yksink."
 
@@ -1747,7 +1747,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1692
+#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1700
 msgid "Double"
 msgstr "Kaksink."
 
@@ -1755,7 +1755,7 @@ msgstr "Kaksink."
 #: src/frontends/qt4/ui/QTabularUi.ui:712
 #: src/frontends/qt4/ui/QTabularUi.ui:731
 #: src/frontends/qt4/ui/QTabularUi.ui:779
-#: src/frontends/qt4/ui/QVSpaceUi.ui:113
+#: src/frontends/qt4/ui/QVSpaceUi.ui:110
 #: src/frontends/qt4/QDocumentDialog.C:120
 #: src/frontends/qt4/QDocumentDialog.C:201
 msgid "Custom"
@@ -2992,7 +2992,7 @@ msgstr "Näytä p&olku"
 msgid "Index entry"
 msgstr "Hakemistoviite"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:221
+#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:223
 msgid "&Keyword:"
 msgstr "&Avainsana:"
 
@@ -3013,16 +3013,26 @@ msgstr "&Valinta:"
 msgid "Replace the entry with the selection"
 msgstr "Korvaa kohta valinnalla"
 
-#: src/frontends/qt4/ui/QTocUi.ui:53
+#: src/frontends/qt4/ui/QTocUi.ui:36
 #, fuzzy
-msgid "<- &Promote"
+msgid "<- P&romote"
 msgstr "P&ikanäppäin:"
 
-#: src/frontends/qt4/ui/QTocUi.ui:60
-msgid "&Demote ->"
+#: src/frontends/qt4/ui/QTocUi.ui:43
+#, fuzzy
+msgid "D&own"
+msgstr "Valmis"
+
+#: src/frontends/qt4/ui/QTocUi.ui:50
+msgid "De&mote ->"
 msgstr ""
 
-#: src/frontends/qt4/ui/QTocUi.ui:136
+#: src/frontends/qt4/ui/QTocUi.ui:57
+#, fuzzy
+msgid "Upd&ate"
+msgstr "Päi&vitä"
+
+#: src/frontends/qt4/ui/QTocUi.ui:116
 msgid "&Type:"
 msgstr "T&yyppi:"
 
@@ -3048,53 +3058,53 @@ msgstr "Tuota hyperlinkki?"
 msgid "&Generate hyperlink"
 msgstr "&Luo hyperlinkki"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:31
+#: src/frontends/qt4/ui/QVSpaceUi.ui:28
 #, fuzzy
 msgid "&Spacing:"
 msgstr "R&iviväli"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:41
+#: src/frontends/qt4/ui/QVSpaceUi.ui:38
 msgid "&Value:"
 msgstr "&Arvo:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:54
+#: src/frontends/qt4/ui/QVSpaceUi.ui:51
 #, fuzzy
 msgid "&Protect:"
 msgstr "P&ikanäppäin:"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:64
+#: src/frontends/qt4/ui/QVSpaceUi.ui:61
 #, fuzzy
 msgid "Insert the spacing even after a page break"
 msgstr "Lisää yhdyskirjasinkatko"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:77
+#: src/frontends/qt4/ui/QVSpaceUi.ui:74
 msgid "Custom value. Needs spacing type \"Custom\"."
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:84
+#: src/frontends/qt4/ui/QVSpaceUi.ui:81
 msgid "Supported spacing types"
 msgstr ""
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:88
+#: src/frontends/qt4/ui/QVSpaceUi.ui:85
 msgid "DefSkip"
 msgstr "Oletusväli"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:93
+#: src/frontends/qt4/ui/QVSpaceUi.ui:90
 #: src/frontends/qt4/QDocumentDialog.C:107
 msgid "SmallSkip"
 msgstr "Pieni väli"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:98
+#: src/frontends/qt4/ui/QVSpaceUi.ui:95
 #: src/frontends/qt4/QDocumentDialog.C:108
 msgid "MedSkip"
 msgstr "Keskisuuri väli"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:103
+#: src/frontends/qt4/ui/QVSpaceUi.ui:100
 #: src/frontends/qt4/QDocumentDialog.C:109
 msgid "BigSkip"
 msgstr "Suuri väli"
 
-#: src/frontends/qt4/ui/QVSpaceUi.ui:108
+#: src/frontends/qt4/ui/QVSpaceUi.ui:105
 msgid "VFill"
 msgstr "Pystytäyttö"
 
@@ -3541,7 +3551,7 @@ msgstr "Alialikappale*"
 #: lib/layouts/amsdefs.inc:125 lib/layouts/db_stdstruct.inc:11
 #: lib/layouts/scrclass.inc:216 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svjour.inc:252
-#: src/output_plaintext.C:146
+#: src/output_plaintext.C:145
 msgid "Abstract"
 msgstr "Tiivistelmä"
 
@@ -3764,7 +3774,7 @@ msgid "Acknowledgements."
 msgstr "Kiitokset"
 
 #: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:622
-#: src/frontends/qt4/QPrefsDialog.C:286
+#: src/frontends/qt4/QPrefsDialog.C:285
 msgid "LaTeX"
 msgstr "LaTeX"
 
@@ -3818,7 +3828,7 @@ msgstr "Kiitokset"
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
-#: lib/layouts/svjour.inc:340 src/output_plaintext.C:158
+#: lib/layouts/svjour.inc:340 src/output_plaintext.C:157
 msgid "References"
 msgstr "Viitteet"
 
@@ -7939,7 +7949,7 @@ msgstr "Lyhyt teoksen nimi"
 msgid "Index Entry|I"
 msgstr "Hakemistoviite...|H"
 
-#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:225
+#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:227
 msgid "Glossary Entry"
 msgstr ""
 
@@ -9543,22 +9553,22 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
 #: src/frontends/controllers/ControlInclude.C:91 src/lyx_cb.C:136
-#: src/lyxfunc.C:1871 src/lyxfunc.C:1908 src/lyxfunc.C:1981
+#: src/lyxfunc.C:1871 src/lyxfunc.C:1910 src/lyxfunc.C:1983
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView.C:1514 src/lyxfunc.C:1909 src/lyxfunc.C:1982
+#: src/BufferView.C:1514 src/lyxfunc.C:1911 src/lyxfunc.C:1984
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
 #: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
-#: src/lyxfunc.C:1913
+#: src/lyxfunc.C:1915
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1923 src/lyxfunc.C:2003
-#: src/lyxfunc.C:2017 src/lyxfunc.C:2033
+#: src/BufferView.C:1530 src/lyxfunc.C:1925 src/lyxfunc.C:2005
+#: src/lyxfunc.C:2019 src/lyxfunc.C:2035
 msgid "Canceled."
 msgstr "Peruttu."
 
@@ -9873,31 +9883,31 @@ msgstr "MakeIndex on käynnissä."
 msgid "Running BibTeX."
 msgstr "BibTeX on käynnissä."
 
-#: src/MenuBackend.C:465 src/MenuBackend.C:502 src/MenuBackend.C:574
-#: src/MenuBackend.C:596 src/MenuBackend.C:619 src/MenuBackend.C:705
+#: src/MenuBackend.C:463 src/MenuBackend.C:500 src/MenuBackend.C:572
+#: src/MenuBackend.C:594 src/MenuBackend.C:617 src/MenuBackend.C:703
 msgid "No Documents Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
-#: src/MenuBackend.C:542
+#: src/MenuBackend.C:540
 #, fuzzy
 msgid "Plain Text"
 msgstr "Etsi seuraava"
 
-#: src/MenuBackend.C:544
+#: src/MenuBackend.C:542
 #, fuzzy
 msgid "Plain Text, Join Lines"
 msgstr "ASCII-teksti riveinä"
 
-#: src/MenuBackend.C:716
+#: src/MenuBackend.C:714
 #, fuzzy
 msgid "Master Document"
 msgstr "Haluatko tallentaa asiakirjan?"
 
-#: src/MenuBackend.C:748
+#: src/MenuBackend.C:746
 msgid "No Table of contents"
 msgstr "Ei sisällysluetteloa"
 
-#: src/MenuBackend.C:793
+#: src/MenuBackend.C:791
 msgid " (auto)"
 msgstr ""
 
@@ -9926,61 +9936,61 @@ msgstr "valituksi asiakirjaluokaksi"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:459 src/text.C:292
+#: src/buffer.C:463 src/text.C:292
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Tuntematon merkintä: %1$s %2$s\n"
 
-#: src/buffer.C:463 src/buffer.C:470 src/buffer.C:490
+#: src/buffer.C:467 src/buffer.C:474 src/buffer.C:494
 #, fuzzy
 msgid "Document header error"
 msgstr "Asiakirja nimetty uudelleen: '"
 
-#: src/buffer.C:469
+#: src/buffer.C:473
 msgid "\\begin_header is missing"
 msgstr ""
 
-#: src/buffer.C:489
+#: src/buffer.C:493
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/buffer.C:500
+#: src/buffer.C:504
 #, fuzzy
 msgid "Can't load document class"
 msgstr "Tekstiluokkaa ei voi ladata "
 
-#: src/buffer.C:501
+#: src/buffer.C:505
 #, c-format
 msgid ""
 "Using the default document class, because the class %1$s could not be loaded."
 msgstr ""
 
-#: src/buffer.C:644 src/buffer.C:653
+#: src/buffer.C:648 src/buffer.C:657
 #, fuzzy
 msgid "Document could not be read"
 msgstr "Asiakirjan tallentaminen epäonnistui!"
 
-#: src/buffer.C:645 src/buffer.C:654
+#: src/buffer.C:649 src/buffer.C:658
 #, fuzzy, c-format
 msgid "%1$s could not be read."
 msgstr "%1$s kappaletta ei muuntunut"
 
-#: src/buffer.C:662 src/buffer.C:734
+#: src/buffer.C:666 src/buffer.C:738
 #, fuzzy
 msgid "Document format failure"
 msgstr "Asiakirjan tyyli"
 
-#: src/buffer.C:663
+#: src/buffer.C:667
 #, fuzzy, c-format
 msgid "%1$s is not a LyX document."
 msgstr "LyXissä käytettävä avainsana."
 
-#: src/buffer.C:687
+#: src/buffer.C:691
 #, fuzzy
 msgid "Conversion failed"
 msgstr "Muuntaminen"
 
-#: src/buffer.C:688
+#: src/buffer.C:692
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -9988,12 +9998,12 @@ msgid ""
 msgstr ""
 "Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
 
-#: src/buffer.C:697
+#: src/buffer.C:701
 #, fuzzy
 msgid "Conversion script not found"
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
-#: src/buffer.C:698
+#: src/buffer.C:702
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -10001,12 +10011,12 @@ msgid ""
 msgstr ""
 "Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
 
-#: src/buffer.C:719
+#: src/buffer.C:723
 #, fuzzy
 msgid "Conversion script failed"
 msgstr "Muunnoskriptiä ei löydy."
 
-#: src/buffer.C:720
+#: src/buffer.C:724
 #, fuzzy, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the lyx2lyx script failed to "
@@ -10014,41 +10024,41 @@ msgid ""
 msgstr ""
 "Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
 
-#: src/buffer.C:735
+#: src/buffer.C:739
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/buffer.C:771
+#: src/buffer.C:775
 #, fuzzy
 msgid "Backup failure"
 msgstr "Varmuuskopiot"
 
-#: src/buffer.C:772
+#: src/buffer.C:776
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writeable."
 msgstr ""
 
-#: src/buffer.C:884
+#: src/buffer.C:888
 #, fuzzy
 msgid "Encoding error"
 msgstr "&Merkistö:"
 
-#: src/buffer.C:885
+#: src/buffer.C:889
 msgid ""
 "Some characters of your document are not representable in the chosen "
 "encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:894
+#: src/buffer.C:898
 #, fuzzy
 msgid "Error closing file"
 msgstr "Virhe luettaessa "
 
-#: src/buffer.C:895
+#: src/buffer.C:899
 msgid ""
 "The output file could not be closed properly.\n"
 " Probably some characters of your document are not representable in the "
@@ -10056,15 +10066,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1153
+#: src/buffer.C:1157
 msgid "Running chktex..."
 msgstr "chktex on käynnissä..."
 
-#: src/buffer.C:1166
+#: src/buffer.C:1170
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1167
+#: src/buffer.C:1171
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo onnistui"
@@ -10422,7 +10432,7 @@ msgstr ""
 msgid "Over-write file?"
 msgstr "Katsele tiedostoa"
 
-#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2030
+#: src/exporter.C:87 src/lyx_cb.C:170 src/lyxfunc.C:1070 src/lyxfunc.C:2032
 #, fuzzy
 msgid "&Over-write"
 msgstr "&Kirjoituskone:"
@@ -10515,11 +10525,11 @@ msgstr "Ei tietoa, miten näyttää %1$s"
 msgid "Auto-edit file %1$s failed"
 msgstr ""
 
-#: src/frontends/LyXView.C:411
+#: src/frontends/LyXView.C:425
 msgid " (changed)"
 msgstr " (muutettu)"
 
-#: src/frontends/LyXView.C:415
+#: src/frontends/LyXView.C:429
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
@@ -10758,43 +10768,43 @@ msgstr "Käännöslokitiedostoa ei ole."
 msgid "No version control log file found."
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
-#: src/frontends/controllers/ControlPrefs.C:112
+#: src/frontends/controllers/ControlPrefs.C:110
 msgid "Choose bind file"
 msgstr "Valitse pikanäppäintiedosto"
 
-#: src/frontends/controllers/ControlPrefs.C:113
+#: src/frontends/controllers/ControlPrefs.C:111
 #, fuzzy
 msgid "LyX bind files (*.bind)"
 msgstr "BiBTeX-tietokannat (*.bib)"
 
-#: src/frontends/controllers/ControlPrefs.C:120
+#: src/frontends/controllers/ControlPrefs.C:118
 msgid "Choose UI file"
 msgstr "Valitse käyttöliittymätiedosto"
 
-#: src/frontends/controllers/ControlPrefs.C:121
+#: src/frontends/controllers/ControlPrefs.C:119
 #, fuzzy
 msgid "LyX UI files (*.ui)"
 msgstr "*| Kaikki tiedostot (*)"
 
-#: src/frontends/controllers/ControlPrefs.C:128
+#: src/frontends/controllers/ControlPrefs.C:126
 msgid "Choose keyboard map"
 msgstr "Valitse näppäinkartta"
 
-#: src/frontends/controllers/ControlPrefs.C:129
+#: src/frontends/controllers/ControlPrefs.C:127
 #, fuzzy
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "Käytä &näppäinkarttaa"
 
-#: src/frontends/controllers/ControlPrefs.C:137
-#: src/frontends/controllers/ControlPrefs.C:141
+#: src/frontends/controllers/ControlPrefs.C:135
+#: src/frontends/controllers/ControlPrefs.C:139
 msgid "Choose personal dictionary"
 msgstr "Valitse oma sanasto"
 
-#: src/frontends/controllers/ControlPrefs.C:138
+#: src/frontends/controllers/ControlPrefs.C:136
 msgid "*.pws"
 msgstr ""
 
-#: src/frontends/controllers/ControlPrefs.C:142
+#: src/frontends/controllers/ControlPrefs.C:140
 #, fuzzy
 msgid "*.ispell"
 msgstr "Ispell"
@@ -10852,7 +10862,7 @@ msgstr "Yksi sana tarkastettu."
 msgid "Spelling check completed"
 msgstr "Oikoluku on valmis"
 
-#: src/frontends/controllers/ControlToc.C:99 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.C:112 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Sisällysluettelo"
 
@@ -11027,33 +11037,38 @@ msgstr "Ding 3|#n"
 msgid "Dings 4"
 msgstr "Ding 4|#g"
 
-#: src/frontends/qt4/Dialogs.C:220
+#: src/frontends/qt4/Dialogs.C:222
 #, fuzzy
 msgid "Index Entry"
 msgstr "Hakemistoviite"
 
-#: src/frontends/qt4/Dialogs.C:230
+#: src/frontends/qt4/Dialogs.C:232
 #, fuzzy
 msgid "Label"
 msgstr "&Nimike:"
+
+#: src/frontends/qt4/Dialogs.C:307
+#, fuzzy
+msgid "Toc"
+msgstr "Aihe"
 
 #: src/frontends/qt4/FileDialog.C:160
 msgid "Directories"
 msgstr "Hakemistot"
 
-#: src/frontends/qt4/GuiView.C:134
+#: src/frontends/qt4/GuiView.C:133
 msgid "Small-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:140
+#: src/frontends/qt4/GuiView.C:139
 msgid "Normal-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:147
+#: src/frontends/qt4/GuiView.C:146
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:619
+#: src/frontends/qt4/GuiView.C:618
 msgid "LyX"
 msgstr "LyX"
 
@@ -11170,7 +11185,7 @@ msgstr "Asiakirjan asetukset"
 msgid "Length"
 msgstr "Pituus"
 
-#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1689
+#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1697
 msgid "OneHalf"
 msgstr "Puolikas"
 
@@ -11344,7 +11359,7 @@ msgstr "Skaalaus%"
 msgid "Float Settings"
 msgstr "Irrallisten asetukset"
 
-#: src/frontends/qt4/QGraphics.C:62 src/frontends/qt4/QPrefsDialog.C:575
+#: src/frontends/qt4/QGraphics.C:62 src/frontends/qt4/QPrefsDialog.C:574
 msgid "Graphics"
 msgstr "Kuva"
 
@@ -11562,95 +11577,95 @@ msgstr "Päiväysmuoto"
 msgid "Keyboard"
 msgstr "Näppäimistö"
 
-#: src/frontends/qt4/QPrefsDialog.C:333
+#: src/frontends/qt4/QPrefsDialog.C:332
 msgid "Screen fonts"
 msgstr "Näyttökirjasimet"
 
-#: src/frontends/qt4/QPrefsDialog.C:485
+#: src/frontends/qt4/QPrefsDialog.C:484
 msgid "Colors"
 msgstr "Värit"
 
-#: src/frontends/qt4/QPrefsDialog.C:554 src/frontends/qt4/QPrefsDialog.C:642
+#: src/frontends/qt4/QPrefsDialog.C:553 src/frontends/qt4/QPrefsDialog.C:641
 msgid "Paths"
 msgstr "Polut"
 
-#: src/frontends/qt4/QPrefsDialog.C:693
+#: src/frontends/qt4/QPrefsDialog.C:692
 msgid "Select a document templates directory"
 msgstr "Valitse asiakirjamallien hakemisto"
 
-#: src/frontends/qt4/QPrefsDialog.C:703
+#: src/frontends/qt4/QPrefsDialog.C:702
 msgid "Select a temporary directory"
 msgstr "Valitse väliaikaishakemisto"
 
-#: src/frontends/qt4/QPrefsDialog.C:713
+#: src/frontends/qt4/QPrefsDialog.C:712
 msgid "Select a backups directory"
 msgstr "Valitse varmuuskopiohakemisto"
 
-#: src/frontends/qt4/QPrefsDialog.C:723
+#: src/frontends/qt4/QPrefsDialog.C:722
 msgid "Select a document directory"
 msgstr "Valitse asiakirjahakemisto"
 
-#: src/frontends/qt4/QPrefsDialog.C:733
+#: src/frontends/qt4/QPrefsDialog.C:732
 msgid "Give a filename for the LyX server pipe"
 msgstr "Anna tiedostonimi LyX-palvelinputkelle"
 
-#: src/frontends/qt4/QPrefsDialog.C:740 src/frontends/qt4/QSpellchecker.C:34
+#: src/frontends/qt4/QPrefsDialog.C:739 src/frontends/qt4/QSpellchecker.C:34
 msgid "Spellchecker"
 msgstr "Oikoluku"
 
-#: src/frontends/qt4/QPrefsDialog.C:762
+#: src/frontends/qt4/QPrefsDialog.C:761
 msgid "ispell"
 msgstr "Ispell"
 
-#: src/frontends/qt4/QPrefsDialog.C:763
+#: src/frontends/qt4/QPrefsDialog.C:762
 msgid "aspell"
 msgstr "Aspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:764
+#: src/frontends/qt4/QPrefsDialog.C:763
 msgid "hspell"
 msgstr "Hspell"
 
-#: src/frontends/qt4/QPrefsDialog.C:766
+#: src/frontends/qt4/QPrefsDialog.C:765
 msgid "pspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:769
+#: src/frontends/qt4/QPrefsDialog.C:768
 msgid "aspell (library)"
 msgstr ""
 
-#: src/frontends/qt4/QPrefsDialog.C:842
+#: src/frontends/qt4/QPrefsDialog.C:841
 msgid "Converters"
 msgstr "Muuntimet"
 
-#: src/frontends/qt4/QPrefsDialog.C:1004
+#: src/frontends/qt4/QPrefsDialog.C:1003
 #, fuzzy
 msgid "Copiers"
 msgstr "Kopiot"
 
-#: src/frontends/qt4/QPrefsDialog.C:1248
+#: src/frontends/qt4/QPrefsDialog.C:1247
 msgid "File formats"
 msgstr "Tiedostomuodot"
 
-#: src/frontends/qt4/QPrefsDialog.C:1440
+#: src/frontends/qt4/QPrefsDialog.C:1439
 #, fuzzy
 msgid "Format in use"
 msgstr "Muodot"
 
-#: src/frontends/qt4/QPrefsDialog.C:1441
+#: src/frontends/qt4/QPrefsDialog.C:1440
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
 msgstr ""
 "Tämän muuntimen käyttämän tiedostomuodon poistaminen epäonnistui. Poista "
 "muunnin ensin."
 
-#: src/frontends/qt4/QPrefsDialog.C:1532
+#: src/frontends/qt4/QPrefsDialog.C:1531
 msgid "Printer"
 msgstr "Tulostin"
 
-#: src/frontends/qt4/QPrefsDialog.C:1624 src/frontends/qt4/QPrefsDialog.C:1807
+#: src/frontends/qt4/QPrefsDialog.C:1623 src/frontends/qt4/QPrefsDialog.C:1806
 msgid "User interface"
 msgstr "Käyttöliittymä"
 
-#: src/frontends/qt4/QPrefsDialog.C:1737
+#: src/frontends/qt4/QPrefsDialog.C:1736
 #, fuzzy
 msgid "Identity"
 msgstr "Sise&nnys"
@@ -11705,11 +11720,6 @@ msgstr "Lisää taulukko"
 #, fuzzy
 msgid "TeX Information"
 msgstr "TeX-tietoja|X"
-
-#: src/frontends/qt4/QTocDialog.C:42
-#, fuzzy
-msgid "Toc"
-msgstr "Aihe"
 
 #: src/frontends/qt4/QVSpace.C:132
 #, fuzzy
@@ -12334,7 +12344,7 @@ msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:167 src/lyxfunc.C:2027
+#: src/lyx_cb.C:167 src/lyxfunc.C:2029
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -12342,7 +12352,7 @@ msgid ""
 "Do you want to over-write that document?"
 msgstr ""
 
-#: src/lyx_cb.C:169 src/lyxfunc.C:2029
+#: src/lyx_cb.C:169 src/lyxfunc.C:2031
 #, fuzzy
 msgid "Over-write document?"
 msgstr "Haluatko tallentaa asiakirjan?"
@@ -12431,30 +12441,30 @@ msgstr "LyX: Käyttäjän hakemisto konfiguroituu uudelleen"
 msgid "Done!"
 msgstr "Valmis!"
 
-#: src/lyx_main.C:490
+#: src/lyx_main.C:489
 #, fuzzy, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/lyx_main.C:492
+#: src/lyx_main.C:491
 #, fuzzy
 msgid "Unable to remove temporary directory"
 msgstr "Valitse väliaikaishakemisto"
 
-#: src/lyx_main.C:528
+#: src/lyx_main.C:527
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Virheellinen valitsin \"%1$s\". Ohjelma sulkeutuu."
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:783
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:912
 msgid "Could not create temporary directory"
 msgstr "Väliaikaisen hakemiston luominen epäonnistui"
 
-#: src/lyx_main.C:914
+#: src/lyx_main.C:913
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12465,51 +12475,51 @@ msgstr ""
 "%1$s epäonnistui. Varmista, että hakemisto on\n"
 "olemassa ja sinne voi kirjoittaa, ja yritä uudelleen."
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1080
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/lyx_main.C:1082
+#: src/lyx_main.C:1081
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Kirjoitit käyttäjän LyX-hakemiston, joka ei ole olemassa."
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1086
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Luo hakemiston "
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Lopeta"
 
-#: src/lyx_main.C:1089
+#: src/lyx_main.C:1088
 msgid "No user LyX directory. Exiting."
 msgstr "Käyttäjän LyX-hakemistoa ei ole. Sulkeutuu."
 
-#: src/lyx_main.C:1093
+#: src/lyx_main.C:1092
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Luo hakemiston %1$s"
 
-#: src/lyx_main.C:1099
+#: src/lyx_main.C:1098
 msgid "Failed to create directory. Exiting."
 msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
 
-#: src/lyx_main.C:1272
+#: src/lyx_main.C:1271
 msgid "List of supported debug flags:"
 msgstr "Luettelo mahdollisista virheilmoitusasetuksista:"
 
-#: src/lyx_main.C:1276
+#: src/lyx_main.C:1275
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Virheilmoitustaso on nyt %1$s"
 
-#: src/lyx_main.C:1287
+#: src/lyx_main.C:1286
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12552,44 +12562,44 @@ msgstr ""
 "        -version           näytä yhteenveto versio- ja käännöstiedoista\n"
 "Katso lisätietoja LyXin manuaalisivulta."
 
-#: src/lyx_main.C:1323 src/support/package.C.in:556
+#: src/lyx_main.C:1322 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Käyttäjän hakemisto: "
 
-#: src/lyx_main.C:1324
+#: src/lyx_main.C:1323
 msgid "Missing directory for -sysdir switch"
 msgstr "Komento puuttuu -sysdir-valitsimelta"
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1333
 #, fuzzy
 msgid "No user directory"
 msgstr "Käyttäjän hakemisto: "
 
-#: src/lyx_main.C:1335
+#: src/lyx_main.C:1334
 msgid "Missing directory for -userdir switch"
 msgstr "Komento puuttuu -userdir-valitsimelta"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1344
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Seuraava komento"
 
-#: src/lyx_main.C:1346
+#: src/lyx_main.C:1345
 msgid "Missing command string after --execute switch"
 msgstr "Komento puuttuu --execute-valitsimelta"
 
-#: src/lyx_main.C:1356
+#: src/lyx_main.C:1355
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --export-valitsimen jäljestä"
 
-#: src/lyx_main.C:1368
+#: src/lyx_main.C:1367
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Tiedostotyyppi [esim. latex, ps...] puuttuu --import-valitsimen jäljestä"
 
-#: src/lyx_main.C:1373
+#: src/lyx_main.C:1372
 msgid "Missing filename for --import"
 msgstr "Valitsimelle --import ei annettu tiedostoa"
 
@@ -12785,31 +12795,31 @@ msgstr "Asiakirja muuntuu toiseen asiakirjaluokkaan sopivaksi..."
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1906
+#: src/lyxfunc.C:1908
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1945
+#: src/lyxfunc.C:1947
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/lyxfunc.C:1949
+#: src/lyxfunc.C:1951
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/lyxfunc.C:1951
+#: src/lyxfunc.C:1953
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyxfunc.C:1976
+#: src/lyxfunc.C:1978
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/lyxfunc.C:2103
+#: src/lyxfunc.C:2105
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
@@ -13431,11 +13441,11 @@ msgid ""
 "%1$s."
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/output_plaintext.C:149
+#: src/output_plaintext.C:148
 msgid "Abstract: "
 msgstr "Tiivistelmä: "
 
-#: src/output_plaintext.C:161
+#: src/output_plaintext.C:160
 msgid "References: "
 msgstr "Viitteet: "
 
@@ -13686,63 +13696,63 @@ msgstr "Kappaleen alkuun ei voi lisätä välilyöntiä. Ks. Opastus."
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
-#: src/text.C:1652
+#: src/text.C:1660
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Vaihda kieli"
 
-#: src/text.C:1658
+#: src/text.C:1666
 #, fuzzy
 msgid "Change: "
 msgstr "Sivu: "
 
 # FIXME: Cannot translate properly!
-#: src/text.C:1662
+#: src/text.C:1670
 #, fuzzy
 msgid " at "
 msgstr " -> "
 
-#: src/text.C:1672
+#: src/text.C:1680
 #, c-format
 msgid "Font: %1$s"
 msgstr "Kirjasin: %1$s"
 
-#: src/text.C:1677
+#: src/text.C:1685
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Syvyys: %1$d"
 
-#: src/text.C:1683
+#: src/text.C:1691
 msgid ", Spacing: "
 msgstr ", Välit: "
 
-#: src/text.C:1695
+#: src/text.C:1703
 msgid "Other ("
 msgstr "Muu ("
 
-#: src/text.C:1704
+#: src/text.C:1712
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Syvyys: "
 
-#: src/text.C:1705
+#: src/text.C:1713
 msgid ", Paragraph: "
 msgstr ", kappale: "
 
-#: src/text.C:1706
+#: src/text.C:1714
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:1707
+#: src/text.C:1715
 #, fuzzy
 msgid ", Position: "
 msgstr "Väittämä"
 
-#: src/text.C:1713
+#: src/text.C:1721
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1715
+#: src/text.C:1723
 msgid ", Boundary: "
 msgstr ""
 
