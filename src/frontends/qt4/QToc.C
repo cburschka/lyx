@@ -53,6 +53,8 @@ bool QToc::canOutline()
 
 int QToc::getTocDepth()
 {
+	if (type_ < 0)
+		return 0;
 	return toc_models_[type_]->modelDepth();
 }
 
@@ -91,6 +93,9 @@ QStandardItemModel * QToc::setTocModel(int type)
 QModelIndex const QToc::getCurrentIndex()
 {
 	vector<string> const & types = getTypes();
+	if (types.empty() || type_ < 0)
+		return QModelIndex();
+
 	TocIterator const it = getCurrentTocItem(types[type_]);
 	if (it == getContents(types[type_]).end() || !it->isValid()) {
 		lyxerr[Debug::GUI] << "QToc::getCurrentIndex(): TocItem is invalid!" << endl;
@@ -109,6 +114,8 @@ void QToc::goTo(QModelIndex const & index)
 			<< endl;
 		return;
 	}
+
+	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
 
 	TocIterator const it = toc_models_[type_]->tocIterator(index);
 	
@@ -154,6 +161,7 @@ void QToc::updateType()
 		selected_type = to_ascii(params()["type"]);
 
 	QString gui_names_;
+	type_ = -1;
 	for (size_t i = 0; i != types.size(); ++i) {
 		string const & type_str = types[i];
 		type_list.append(toqstr(getGuiName(type_str)));
