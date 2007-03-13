@@ -1206,9 +1206,16 @@ void InsetMathNest::lfunMouseRelease(LCursor & cur, FuncRequest & cmd)
 }
 
 
+// return false when we leave the formula
 bool InsetMathNest::interpretChar(LCursor & cur, char_type c)
 {
 	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	if (currentMode() == TEXT_MODE && (c == '^' || c == '_')) {
+		theLyXFunc().setMessage(
+			_("Superscripts and subscripts are not allowed in math text mode."));
+		return true;
+	}
+
 	docstring save_selection;
 	if (c == '^' || c == '_')
 		save_selection = grabAndEraseSelection(cur);
