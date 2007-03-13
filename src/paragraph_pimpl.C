@@ -482,7 +482,6 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     odocstream & os,
 					     TexRow & texrow,
 					     OutputParams const & runparams,
-					     LyXFont & font,
 					     LyXFont & running_font,
 					     LyXFont & basefont,
 					     LyXFont const & outerfont,
@@ -527,11 +526,12 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 						os, basefont, basefont, bparams);
 					open_font = false;
 				}
+
+				if (running_font.family() == LyXFont::TYPEWRITER_FAMILY)
+					os << '~';
+
 				basefont = owner_->getLayoutFont(bparams, outerfont);
 				running_font = basefont;
-
-				if (font.family() == LyXFont::TYPEWRITER_FAMILY)
-					os << '~';
 
 				if (runparams.moving_arg)
 					os << "\\protect ";
@@ -634,7 +634,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				break;
 			}
 			// Typewriter font also has them
-			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
+			if (running_font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				os.put(c);
 				break;
 			}
@@ -657,9 +657,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 
 		case '-': // "--" in Typewriter mode -> "-{}-"
-			if (i <= size() - 2
-			    && getChar(i + 1) == '-'
-			    && font.family() == LyXFont::TYPEWRITER_FAMILY) {
+			if (i <= size() - 2 &&
+			    getChar(i + 1) == '-' &&
+			    running_font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				os << "-{}";
 				column += 2;
 			} else {
@@ -711,7 +711,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			// I assume this is hack treating typewriter as verbatim
 			// FIXME UNICODE: This can fail if c cannot be encoded
 			// in the current encoding.
-			if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
+			if (running_font.family() == LyXFont::TYPEWRITER_FAMILY) {
 				if (c != '\0') {
 					os.put(c);
 				}
@@ -738,7 +738,8 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			}
 
 			if (pnr == phrases_nr && c != '\0') {
-				Encoding const & encoding = getEncoding(bparams, doc_encoding, font);
+				Encoding const & encoding =
+					getEncoding(bparams, doc_encoding, running_font);
 				if (i < size() - 1) {
 					char_type next = getChar(i + 1);
 					if (Encodings::isCombiningChar(next)) {

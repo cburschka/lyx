@@ -1106,7 +1106,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		rp.local_font = &font;
 		rp.intitle = style->intitle;
 		pimpl_->simpleTeXSpecialChars(buf, bparams, doc_encoding, os,
-					texrow, rp, font, running_font,
+					texrow, rp, running_font,
 					basefont, outerfont, open_font,
 					runningChangeType, *style, i, column, c);
 	}

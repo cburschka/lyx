@@ -141,7 +141,7 @@ public:
 	void simpleTeXSpecialChars(Buffer const &, BufferParams const &,
 	                           Encoding const &, odocstream &,
 	                           TexRow & texrow, OutputParams const &,
-				   LyXFont & font, LyXFont & running_font,
+	                           LyXFont & running_font,
 				   LyXFont & basefont,
 				   LyXFont const & outerfont,
 				   bool & open_font,
