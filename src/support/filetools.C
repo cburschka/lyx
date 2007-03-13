@@ -678,7 +678,9 @@ string const makeRelPath(string const & abspath, string const & basepath)
 	string::size_type const abslen = abspath.length();
 	string::size_type const baselen = basepath.length();
 
-	string::size_type i = os::common_path(abspath, basepath);
+	// FIXME UNICODE
+	docstring::size_type i =
+		os::common_path(from_utf8(abspath), from_utf8(basepath));
 
 	if (i == 0) {
 		// actually no match - cannot make it relative

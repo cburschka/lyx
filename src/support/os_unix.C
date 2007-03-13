@@ -38,11 +38,11 @@ string current_root()
 }
 
 
-string::size_type common_path(string const & p1, string const & p2)
+docstring::size_type common_path(docstring const & p1, docstring const & p2)
 {
-	string::size_type i = 0;
-	string::size_type p1_len = p1.length();
-	string::size_type p2_len = p2.length();
+	docstring::size_type i = 0;
+	docstring::size_type const p1_len = p1.length();
+	docstring::size_type const p2_len = p2.length();
 	while (i < p1_len && i < p2_len && p1[i] == p2[i])
 		++i;
 	if ((i < p1_len && i < p2_len)
