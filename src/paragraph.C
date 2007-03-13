@@ -1087,6 +1087,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		if (c == ' ') {
 			// Do not print the separation of the optional argument
+			// if style->pass_thru is false. This works because
+			// simpleTeXSpecialChars ignores spaces if
+			// style->pass_thru is false.
 			if (i != body_pos - 1) {
 				if (pimpl_->simpleTeXBlanks(bparams,
 						doc_encoding, os, texrow,
