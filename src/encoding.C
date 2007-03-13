@@ -394,6 +394,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 			break;
 
 		info.combining = false;
+		info.feature = false;
 		info.force = false;
 		while (!flags.empty()) {
 			string flag;
