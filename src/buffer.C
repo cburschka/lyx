@@ -414,6 +414,10 @@ int Buffer::readHeader(LyXLex & lex)
 	params().headheight.erase();
 	params().headsep.erase();
 	params().footskip.erase();
+	for (int i = 0; i < 4; ++i) {
+		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
+		params().temp_bullet(i) = ITEMIZE_DEFAULTS[i];
+	}
 
 	while (lex.isOK()) {
 		lex.next();
