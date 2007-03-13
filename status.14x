@@ -25,8 +25,6 @@ What's new
 
 * USER INTERFACE:
 
-- Handle undo correctly when inserting a plain text file (bug 3204).
-
 * DOCUMENTATION AND LOCALIZATION
 
 
@@ -39,6 +37,10 @@ What's new
 
 * USER INTERFACE:
 
+- Handle undo correctly when inserting a plain text file (bug 3204).
+
+- Make it possible to reset itemize bullets to their original state
+  (bug 3312).
 
 * BUILD/INSTALLATION:
 
@@ -46,4 +48,5 @@ What's new
 * MISCELLANEOUS
 
 - make LyX/Mac recognize correctly newer versions of teTeX.
-- Fix that Slovak userguide couldn't be compiled
+
+- Fix that Slovak userguide couldn't be typeset.
