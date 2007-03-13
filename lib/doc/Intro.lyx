@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 256
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass article
@@ -89,7 +89,7 @@
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \author "usti" 
 \end_header
 
@@ -708,7 +708,7 @@ LaTeX is the reason why LyX differs from other word processors.
  LyX is a graphical user interface (GUI) frontend for LaTeX.
  It is designed to typeset documents with by using LaTeX without knowing
  its macro commands.
- But although LyX can't never support all commands graphically, it offers
+ But although LyX can never support all commands graphically, it offers
  its usage, so that LyX is as functional as LaTeX.
 \end_layout
 
@@ -1329,13 +1329,21 @@ wide false
 sideways false
 status open
 
-\begin_layout Caption
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
 \begin_inset LatexCommand label
 name "cap:Units-for-image"
 
 \end_inset
 
 Units
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1848,15 +1856,7 @@ Introduction This file.
 \begin_layout Description
 Tutorial If you are new to LyX, and have never used LaTeX before, you should
  start here.
- If you
-\emph on
- 
-\emph default
-have
-\emph on
- 
-\emph default
-used LaTeX before, you should still read the 
+ If you have used LaTeX before, you should still read the 
 \emph on
 Tutorial
 \emph default
@@ -1893,24 +1893,12 @@ User's Guide
 \emph default
 .
  Documents in detail how to use tables, graphics, floats, notes, and boxes.
- It
-\emph on
- 
-\emph default
-also
-\emph on
- 
-\emph default
-includes many tricks of the LaTeX masters.
+ It also includes many tricks of the LaTeX masters.
 \end_layout
 
 \begin_layout Description
 Extended\InsetSpace ~
-Features
-\emph on
- 
-\emph default
-Extension of the 
+Features Extension of the 
 \emph on
 User's Guide
 \emph default
@@ -1920,14 +1908,10 @@ e editing features.
 \end_layout
 
 \begin_layout Description
-Customization
-\emph on
- 
-\emph default
-A description of advanced LyX features, including how to customize the overall
- behavior of LyX\SpecialChar \@.
- This includes such things as keybindings, internationalization,
- and configuration files.
+Customization A description of advanced LyX features, including how to customize
+ the overall behavior of LyX\SpecialChar \@.
+ This includes such things as keybindings, internati
+onalization, and configuration files.
 \end_layout
 
 \begin_layout Description
@@ -2166,9 +2150,9 @@ User's Guide
 \begin_layout Enumerate
 Contact the team at:
 \newline
-
+ 
 \family typewriter
- lyx-docs@lists.lyx.org
+lyx-docs@lists.lyx.org
 \family default
 
 \newline
