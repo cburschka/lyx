@@ -687,7 +687,7 @@ int InsetExternal::latex(Buffer const & buf, odocstream & os,
 	// "nice" means that the buffer is exported to LaTeX format but not
 	// run through the LaTeX compiler.
 	// If we're running through the LaTeX compiler, we should write the
-	// generated files in the bufer's temporary directory.
+	// generated files in the buffer's temporary directory.
 	bool const external_in_tmpdir = !runparams.nice;
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 
