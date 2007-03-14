@@ -10,8 +10,10 @@ dist_clipartdoc_DATA = \
 	clipart/mobius.eps \
 	clipart/platypus.eps \
 	clipart/BoxInsetDefaultQt4.png \
+	clipart/ChildDocumentQt4.png \
 	clipart/CommentNoteImageQt4.png \
 	clipart/endnotes.pdf \
+	clipart/ExternalMaterialQt4.png \
 	clipart/floatQt4.png \
 	clipart/footnoteQt4.png \
 	clipart/FramedNoteImageQt4.png \

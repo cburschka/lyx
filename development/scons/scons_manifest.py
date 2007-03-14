@@ -2322,9 +2322,11 @@ lib_ui_files = Split('''
 
 lib_doc_clipart_files = Split('''
     BoxInsetDefaultQt4.png
+    ChildDocumentQt4.png
     CommentNoteImageQt4.png
     escher-lsd.eps
     endnotes.pdf
+    ExternalMaterialQt4.png
     floatQt4.png
     footnoteQt4.png
     FramedNoteImageQt4.png
