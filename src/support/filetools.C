@@ -1004,7 +1004,7 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 
 	// If file is from LyXDir, display it as if it were relative.
 	string const system = package().system_support();
-	if (prefixIs(str, system))
+	if (prefixIs(str, system) && str != system)
 		return from_utf8("[" + str.erase(0, system.length()) + "]");	
 
 	// replace /home/blah with ~/
