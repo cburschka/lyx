@@ -703,7 +703,8 @@ void updateLabels(Buffer const & buf, bool childonly)
 
 void checkBufferStructure(Buffer & buffer, ParIterator const & par_it)
 {
-	if (par_it->layout()->labeltype == LABEL_COUNTER) {
+	if (par_it->layout()->labeltype == LABEL_COUNTER
+		&& par_it->layout()->toclevel != LyXLayout::NOT_IN_TOC) {
 		buffer.tocBackend().updateItem(par_it);
 		buffer.structureChanged();
 	}
