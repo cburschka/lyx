@@ -1,63 +1,74 @@
-Building LyX/Mac-1.4.0
+Building LyX/Mac-1.5
 Ronald Florence <ron@18james.com>
-Modified by Bennett Helm <bennett.helm@fandm.edu>
+Modified by Bennett Helm <bennett.helm@fandm.edu> and by Anders
+Ekberg <anek@mac.com>.
 
 LyX/Mac is built from the LyX source, the GPL-licensed Trolltech
 Qt/Mac library, and a custom application bundle.
 
 You will need the MacOSX development tools. The procedure described
-here builds LyX linked with a static Qt library. If you are using the
-tcsh shell, change the "export VAR=value" statements to
-"setenv VAR value".
+here builds LyX linked with a static Qt library. 
 
 PREREQUISITES
 
-1. Qt/Mac Free Edition, version 3.3. This library is GPL-licensed
+1. Qt/Mac Free Edition, version 4. This library is GPL-licensed
 and can be downloaded from
 <http://www.trolltech.com/download/qt/mac.html>. You will need to 
 compile it yourself (as described below).
 
-2. automake, version 1.9 or higher. The easiest way to get this is
-to use FinkCommander, which can be downloaded from
-<http://finkcommander.sourceforge.net/>.
+2. automake, version 1.9 or higher (check with automake --version). 
+Probably the easiest way to get this is to use DarwinPorts (from
+http://darwinports.opendarwin.org/getdp/) and install automake
+using
+    sudo port install automake
+
+3.  gettext version >= 0.12 (check with gettext --version)
+If the installed version is insufficient the 
+easiest way to obtain a later version is to get DarwinPorts 
+(from http://darwinports.opendarwin.org/getdp/) and install gettext 
+using
+     sudo port install gettext
+
 
 BUILD INSTRUCTIONS
 
-Note that building LyX/Mac requires gcc version 3.3 or higher. (You
+Note that building LyX/Mac requires gcc version 4.0 or higher. (You
 can check your version  by entering "gcc -v" in the Terminal; you
-can change your gcc version to version 3.3, for example, by entering
-"sudo gcc_select 3.3".)
+can change your gcc version to version 4.0, for example, by entering
+"sudo gcc_select 4.0".)
 
-1. Decompress Qt/Mac in a convenient directory, cd to the top of the
+1. Create a directory where you want to install QT4. In the following, 
+the full path to this directory is called /path/to/QT4
+Decompress Qt/Mac in a convenient directory, cd to the top of the
 Qt source hierarcy, and:
 
-     export QTDIR=`pwd`
-     ./configure -static -no-exceptions -lresolv   [for OS X 10.2, use "./configure -static -no-exceptions"]
+     ./configure -static -no-exceptions -nomake examples -nomake tools -prefix /path/to/QT4
      make
-     rm lib/libqt.la
+     make install
+     cd /path/to/QT4/lib
+     rm *.la
+     
+If you don't prescribe -nomake examples -nomake tools in the
+configuration you need to make sure you have some 20+ GB of free hard
+disk space. Else the installation is about 1GB.
+
 
 2. The LyX/Mac application bundle skeleton (LyX.app) can be found in 
-the LyX source hierarchy at development/MacOSX. The default settings
-assume that this bundle has been moved to /Applications and is named
-LyX.app. You can rename it or move it somewhere else, but make sure
-you read the note in step 3.
+the LyX source hierarchy at development/MacOSX. Copy this bundle to a
+directory. In the following, the full path to this directory is called
+/path/to/LyX.app. (The default settings assume that this path is
+/Applications/LyX.app.)
 
-3. Using the same terminal session you used to build the Qt library,
-cd to the top of the LyX source hierarchy, and:
+3. cd to the top of the LyX source hierarchy, and:
 
      export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
      ./autogen.sh
-     ./configure --with-frontend=qt --without-x --with-included-gettext --enable-optimization=-Os --disable-concept-checks
-
-[Note: If you have moved or renamed the LyX/Mac application bundle
-skeleton, you will need to add "--prefix=/path/to/LyX.app"
-(substituting the appropriate path, of course) to this ./configure
-line. (If you do not specify anything for --prefix, the default is
---prefix=/Applications/LyX.app.)]
-     
+     ./configure --prefix=/path/to/LyX.app --disable-concept-checks --with-version-suffix=-1.5 --with-qt4-dir=/path/to/QT4 --enable-optimization=-Os --without-x --with-included-gettext --with-frontend=qt4 --disable-stdlib-debug
      make
-     make install
+     make install-strip
 
+(Note that the --with-version-suffix=-1.5 option will result in LyX's
+user's directory being located at ~/Library/Application Support/LyX-1.5.)
 
 The information on this page is believed to be accurate, has been used
 successfully on many systems and sites, and has benefited from the
