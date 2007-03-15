@@ -94,10 +94,10 @@ protected:
  *  Specialisation of the Mover concept that uses an external command
  *  to copy a file.
  *
- *  For example, an XFig .fig file can contain references to external
+ *  For example, an Xfig .fig file can contain references to external
  *  picture files. If such a reference has a relative path, then the
  *  copied .fig file will require a transformation of the picture file
- *  reference if it is to be found by XFig.
+ *  reference if it is to be found by Xfig.
  */
 class SpecialisedMover : public Mover
 {

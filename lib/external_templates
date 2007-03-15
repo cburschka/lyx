@@ -99,10 +99,10 @@ Template RasterImage
 TemplateEnd
 
 
-Template XFig
-	GuiName "XFig: $$AbsOrRelPathParent$$Basename"
+Template Xfig
+	GuiName "Xfig: $$AbsOrRelPathParent$$Basename"
 	HelpText
-		An XFig figure.
+		An Xfig figure.
 	HelpTextEnd
 	InputFormat fig
 	FileFilter "*.fig"
