@@ -71,6 +71,8 @@ public:
 	///
 	void setCount(int c) { counter_ = c; }
 	///
+	std::string const & type() const { return type_; }
+	///
 	void setType(std::string const & type) { type_ = type; }
 	///
 	void setCustomLabel(docstring const & label);
