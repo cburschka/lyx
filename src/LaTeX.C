@@ -800,6 +800,12 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			// check for spaces
 			string strippedfile = foundfile;
 			while (contains(strippedfile, " ")) {
+				// files with spaces are often enclosed in quotation
+				// marks; those have to be removed
+				string unquoted = subst(strippedfile, '"', char());
+				absname.set(unquoted);
+				if (insertIfExists(absname, head))
+					return true;
 				// strip off part after last space and try again
 				string tmp = strippedfile;
 				string const stripoff =
@@ -828,6 +834,12 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			// everything o.k.
 			break;
 		else {
+			// files with spaces are often enclosed in quotation
+			// marks; those have to be removed
+			string unquoted = subst(foundfile, '"', char());
+			absname = makeAbsPath(unquoted);
+			if (fs::exists(absname.toFilesystemEncoding()))
+				break;
 			// strip off part after last space and try again
 			string strippedfile;
 			string const stripoff =
