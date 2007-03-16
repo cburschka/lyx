@@ -833,13 +833,12 @@ bool handleFoundFile(string const & ff, DepTable & head)
 		if (exists)
 			// everything o.k.
 			break;
-		else {
+		else if (contains(foundfile, '"')) {
 			// files with spaces are often enclosed in quotation
-			// marks; those have to be removed
-			string unquoted = subst(foundfile, '"', char());
+			// marks; remove those and try again
+			string unquoted = subst(foundfile, "\"", "");
 			absname = makeAbsPath(unquoted);
-			if (fs::exists(absname.toFilesystemEncoding()))
-				break;
+		} else {
 			// strip off part after last space and try again
 			string strippedfile;
 			string const stripoff =
