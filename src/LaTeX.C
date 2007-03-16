@@ -802,7 +802,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			while (contains(strippedfile, " ")) {
 				// files with spaces are often enclosed in quotation
 				// marks; those have to be removed
-				string unquoted = subst(strippedfile, '"', char());
+				string unquoted = subst(strippedfile, "\"", "");
 				absname.set(unquoted);
 				if (insertIfExists(absname, head))
 					return true;
@@ -833,12 +833,20 @@ bool handleFoundFile(string const & ff, DepTable & head)
 		if (exists)
 			// everything o.k.
 			break;
-		else if (contains(foundfile, '"')) {
+		else {
 			// files with spaces are often enclosed in quotation
-			// marks; remove those and try again
+			// marks; those have to be removed
 			string unquoted = subst(foundfile, "\"", "");
 			absname = makeAbsPath(unquoted);
-		} else {
+			exists = fs::native(absname.toFilesystemEncoding());
+			if (exists)
+				exists = fs::exists(absname.toFilesystemEncoding());
+			else
+				lyxerr[Debug::DEPEND] << '`'
+					<< absname.absFilename()
+					<< "' is no valid file name." << endl;
+			if (exists)
+				break;
 			// strip off part after last space and try again
 			string strippedfile;
 			string const stripoff =
@@ -982,9 +990,7 @@ void LaTeX::deplog(DepTable & head)
 			token = lastline + token;
 		if (token.length() > 255) {
 			// string too long. Cut off.
-			int r = token.length() - 250;
-			string ntoken = token.substr(r, token.length());
-			token = ntoken;
+			token.erase(0, token.length() - 251);
 		}
 
 		smatch sub;
