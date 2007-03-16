@@ -56,6 +56,7 @@
 
 #include "insets/insettext.h"
 #include "insets/insetbibitem.h"
+#include "insets/insetcaption.h"
 #include "insets/insethfill.h"
 #include "insets/insetline.h"
 #include "insets/insetnewline.h"
@@ -1734,37 +1735,7 @@ docstring LyXText::getPossibleLabel(LCursor & cur) const
 
 	LyXLayout_ptr layout = pars_[pit].layout();
 
-	if (layout->latextype == LATEX_PARAGRAPH && pit != 0) {
-		LyXLayout_ptr const & layout2 = pars_[pit - 1].layout();
-		if (layout2->latextype != LATEX_PARAGRAPH) {
-			--pit;
-			layout = layout2;
-		}
-	}
-
-	docstring name = from_ascii(layout->latexname());
-
-	// for captions, we want the abbreviation of the float type
-	if (layout->labeltype == LABEL_SENSITIVE) {
-		// Search for the first float or wrap inset in the iterator
-		for (int i = cur.depth(); --i >= 0; ) {
-			InsetBase * const in = &cur[i].inset();
-			if (in->lyxCode() == InsetBase::FLOAT_CODE
-			    || in->lyxCode() == InsetBase::WRAP_CODE) {
-				name = in->getInsetName();
-				break;
-			}
-		}
-	}
-
-	docstring text = name.substr(0, 3);
-	if (name == "theorem")
-		text = from_ascii("thm"); // Create a correct prefix for prettyref
-
-	text += ':';
-	if (layout->latextype == LATEX_PARAGRAPH || lyxrc.label_init_length < 0)
-		text.erase();
-
+	docstring text;
 	docstring par_text = pars_[pit].asString(cur.buffer(), false);
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
@@ -1776,6 +1747,46 @@ docstring LyXText::getPossibleLabel(LCursor & cur) const
 			text += '-';
 		text += head;
 	}
+
+	// No need for a prefix if the user said so.
+	if (lyxrc.label_init_length <= 0)
+		return text;
+
+	// Will contain the label type.
+	docstring name;
+
+	// For section, subsection, etc...
+	if (layout->latextype == LATEX_PARAGRAPH && pit != 0) {
+		LyXLayout_ptr const & layout2 = pars_[pit - 1].layout();
+		if (layout2->latextype != LATEX_PARAGRAPH) {
+			--pit;
+			layout = layout2;
+		}
+	}
+	if (layout->latextype != LATEX_PARAGRAPH)
+		name = from_ascii(layout->latexname());
+
+	// for captions, we just take the caption type
+	InsetBase * caption_inset = cur.innerInsetOfType(InsetBase::CAPTION_CODE);
+	if (caption_inset)
+		name = from_ascii(static_cast<InsetCaption *>(caption_inset)->type());
+
+	// Inside floats or wraps, if none of the above worked
+	// we want by default the abbreviation of the float type.
+	if (name.empty()) {
+		InsetBase * float_inset = cur.innerInsetOfType(InsetBase::FLOAT_CODE);
+		if (!float_inset)
+			float_inset = cur.innerInsetOfType(InsetBase::WRAP_CODE);
+		if (float_inset)
+			name = float_inset->getInsetName();
+	}
+
+	// Create a correct prefix for prettyref
+	if (name == "theorem")
+		name = from_ascii("thm");
+
+	if (!name.empty())
+		text = name.substr(0, 3) + ':' + text;
 
 	return text;
 }
