@@ -66,7 +66,7 @@ void TocWidget::selectionChanged(const QModelIndex & current,
 		<< ", " << current.column()
 		<< endl;
 
-	form_->goTo(current);
+	form_->goTo(typeCO->currentIndex(), current);
 }
 
 
@@ -105,10 +105,10 @@ void TocWidget::setTreeDepth(int depth)
 	// expanding and then collapsing is probably better, 
 	// but my qt 4.1.2 doesn't have expandAll()..
 	//tocTV->expandAll(); 
-	QModelIndexList indices = 
-		form_->tocModel()->match(form_->tocModel()->index(0,0),
-		 			Qt::DisplayRole, "*", -1, 
-					Qt::MatchWildcard|Qt::MatchRecursive);
+	QModelIndexList indices = tocTV->model()->match(
+		tocTV->model()->index(0,0),
+		Qt::DisplayRole, "*", -1, 
+		Qt::MatchWildcard|Qt::MatchRecursive);
 	
 	int size = indices.size();
 	for (int i = 0; i < size; i++) {
@@ -123,8 +123,7 @@ void TocWidget::setTreeDepth(int depth)
 
 void TocWidget::on_typeCO_activated(int value)
 {
-	form_->setTocModel(value);
-	updateGui();
+	setTocModel(value);
 }
 
 
@@ -134,7 +133,7 @@ void TocWidget::on_moveUpPB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableButtons(false);
-		form_->goTo(list[0]);
+		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineUp();
 		enableButtons(true);
 	}
@@ -147,7 +146,7 @@ void TocWidget::on_moveDownPB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableButtons(false);
-		form_->goTo(list[0]);
+		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineDown();
 		enableButtons(true);
 	}
@@ -160,7 +159,7 @@ void TocWidget::on_moveInPB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableButtons(false);
-		form_->goTo(list[0]);
+		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineIn();
 		enableButtons(true);
 	}
@@ -172,7 +171,7 @@ void TocWidget::on_moveOutPB_clicked()
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (!list.isEmpty()) {
 		enableButtons(false);
-		form_->goTo(list[0]);
+		form_->goTo(typeCO->currentIndex(), list[0]);
 		form_->outlineOut();
 		enableButtons(true);
 	}
@@ -199,7 +198,7 @@ void TocWidget::enableButtons(bool enable)
 {
 	updatePB->setEnabled(enable);
 
-	if (!form_->canOutline())
+	if (!form_->canOutline(typeCO->currentIndex()))
 		enable = false;
 
 	moveUpPB->setEnabled(enable);
@@ -211,7 +210,8 @@ void TocWidget::enableButtons(bool enable)
 
 void TocWidget::update()
 {
-	select(form_->getCurrentIndex());
+	lyxerr[Debug::GUI] << "In TocWidget::update()" << endl;
+	select(form_->getCurrentIndex(typeCO->currentIndex()));
 	QWidget::update();
 }
 
@@ -228,13 +228,25 @@ void TocWidget::updateGui()
 		return;
 	}
 
+	QString current_text = typeCO->currentText();
 	typeCO->setModel(type_model);
-	typeCO->setCurrentIndex(form_->getType());
+	int const current_type = typeCO->findText(current_text);
+	if (current_type != -1)
+		typeCO->setCurrentIndex(current_type);
+	else
+		typeCO->setCurrentIndex(form_->selectedType());
 
+	setTocModel(typeCO->currentIndex());
+}
+
+
+void TocWidget::setTocModel(size_t type)
+{
 	bool buttons_enabled = false;
-	if (form_->tocModel()) {
-		buttons_enabled = form_->tocModel()->rowCount() > 0;
-		tocTV->setModel(form_->tocModel());
+	QStandardItemModel * toc_model = form_->tocModel(type);
+	if (toc_model) {
+		buttons_enabled = toc_model->rowCount() > 0;
+		tocTV->setModel(toc_model);
 		tocTV->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	}
 
@@ -242,14 +254,21 @@ void TocWidget::updateGui()
 
 	reconnectSelectionModel();
 	depthSL->setEnabled(true);
-	depthSL->setMaximum(form_->getTocDepth());
+	depthSL->setMaximum(form_->getTocDepth(type));
 	depthSL->setValue(depth_);
-	select(form_->getCurrentIndex());
 
-	lyxerr[Debug::GUI]
-		<< "form_->tocModel()->rowCount " << form_->tocModel()->rowCount()
-		<< "\nform_->tocModel()->columnCount " << form_->tocModel()->columnCount()
-		<< endl;
+	lyxerr[Debug::GUI] << "In TocWidget::updateGui()" << endl;
+
+	select(form_->getCurrentIndex(typeCO->currentIndex()));
+
+	if (toc_model) {
+		lyxerr[Debug::GUI]
+		<< "form_->tocModel()->rowCount " 
+			<< toc_model->rowCount()
+			<< "\nform_->tocModel()->columnCount "
+			<< toc_model->columnCount()
+			<< endl;
+	}
 }
 
 

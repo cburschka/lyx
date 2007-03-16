@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -33,20 +34,21 @@ public:
 	/// \c ControlCommand inherited method.
 	bool initialiseParams(std::string const & data);
 
+	///
+	TocList const & tocs() const;
+
 	/// Goto this paragraph id
 	void goTo(TocItem const &);
 
 	/// Return the list of types available
-	std::vector<std::string> const & getTypes() const;
+	std::vector<docstring> const & typeNames() const
+	{ return type_names_; }
 
-	/// Return the guiname from a given cmdName of the TOC param
-	docstring const getGuiName(std::string const & type) const;
+	///
+	int selectedType() { return selected_type_; }
 
 	/// Return the first TocItem before the cursor
-	TocIterator const getCurrentTocItem(std::string const & type) const;
-
-	/// Given a type, returns the contents
-	Toc const & getContents(std::string const & type) const;
+	TocIterator const getCurrentTocItem(size_t type) const;
 
 	/// Apply the selected outlining operation
 	void outlineUp();
@@ -57,13 +59,21 @@ public:
 	///
 	void outlineOut();
 	/// Test if outlining operation is possible
-	bool canOutline(std::string const & type);
+	bool canOutline(size_t type) const;
 	///
 	void updateBackend();
 
 public:
 	/// Update the model data if needed.
 	virtual void update() = 0;
+
+private:
+	/// Return the guiname from a given cmdName of the TOC param
+	docstring const getGuiName(std::string const & type) const;
+
+	std::vector<std::string> types_;
+	std::vector<docstring> type_names_;
+	int selected_type_;
 };
 
 } // namespace frontend

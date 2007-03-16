@@ -39,97 +39,71 @@ QToc::QToc(Dialog & parent)
 }
 
 
-bool QToc::canOutline()
+bool QToc::canOutline(int type) const
 {
-	vector<string> const & types = getTypes();
-
-	if (types.empty())
+	if (type < 0) 
 		return false;
 
-	BOOST_ASSERT(type_ >= 0 && type_ < int(types.size()));
-	return ControlToc::canOutline(types[type_]);
+	return ControlToc::canOutline(type);
 }
 
 
-int QToc::getTocDepth()
+int QToc::getTocDepth(int type)
 {
-	if (type_ < 0)
+	if (type < 0)
 		return 0;
-	return toc_models_[type_]->modelDepth();
+	return toc_models_[type]->modelDepth();
 }
 
 
-QStandardItemModel * QToc::tocModel()
+QStandardItemModel * QToc::tocModel(int type)
 {
+	if (type < 0)
+		return 0;
+
 	if (toc_models_.empty()) {
 		lyxerr[Debug::GUI] << "QToc::tocModel(): no types available " << endl;
 		return 0;
 	}
 
 	lyxerr[Debug::GUI]
-		<< "QToc: type_ " << type_
+		<< "QToc: type_ " << type
 		<< "  toc_models_.size() " << toc_models_.size()
 		<< endl;
 
-	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
-	return toc_models_[type_];
+	BOOST_ASSERT(type >= 0 && type < int(toc_models_.size()));
+	return toc_models_[type];
 }
 
 
-QStandardItemModel * QToc::setTocModel(int type)
+QModelIndex const QToc::getCurrentIndex(int type) const
 {
-	type_ = type;
-
-	lyxerr[Debug::GUI]
-		<< "QToc: type_ " << type_
-		<< "  toc_models_.size() " << toc_models_.size()
-		<< endl;
-
-	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
-	return toc_models_[type_];
-}
-
-
-QModelIndex const QToc::getCurrentIndex()
-{
-	vector<string> const & types = getTypes();
-	if (types.empty() || type_ < 0)
+	if (type < 0)
 		return QModelIndex();
 
-	TocIterator const it = getCurrentTocItem(types[type_]);
-	if (it == getContents(types[type_]).end() || !it->isValid()) {
-		lyxerr[Debug::GUI] << "QToc::getCurrentIndex(): TocItem is invalid!" << endl;
-		return QModelIndex();
-	}
-
-	return toc_models_[type_]->modelIndex(it);
+	return toc_models_[type]->modelIndex(getCurrentTocItem(type));
 }
 
 
-void QToc::goTo(QModelIndex const & index)
+void QToc::goTo(int type, QModelIndex const & index)
 {
-	if (!index.isValid() || index.model() != tocModel()) {
+	if (type < 0 || !index.isValid() 
+		|| index.model() != toc_models_[type]) {
 		lyxerr[Debug::GUI]
 			<< "QToc::goTo(): QModelIndex is invalid!"
 			<< endl;
 		return;
 	}
 
-	BOOST_ASSERT(type_ >= 0 && type_ < int(toc_models_.size()));
+	BOOST_ASSERT(type >= 0 && type < int(toc_models_.size()));
 
-	TocIterator const it = toc_models_[type_]->tocIterator(index);
+	TocIterator const it = toc_models_[type]->tocIterator(index);
 	
 	lyxerr[Debug::GUI]
 		<< "QToc::goTo " << lyx::to_utf8(it->str())
 		<< endl;
 
 	ControlToc::goTo(*it);
-}
-
-
-int QToc::getType()
-{
-	return type_;
 }
 
 
@@ -143,37 +117,13 @@ void QToc::update()
 
 void QToc::updateType()
 {
-
 	QStringList type_list;
 
-	vector<string> const & types = getTypes();
-	if (types.empty()) {
-		type_model_.setStringList(type_list);
-		toc_models_.clear();
-		lyxerr[Debug::GUI] << "QToc::updateType(): no types available " << endl;
-		return;
-	}
+	vector<docstring> const & type_names = typeNames();
+	BOOST_ASSERT(!type_names.empty());
+	for (size_t i = 0; i != type_names.size(); ++i)
+		type_list.append(toqstr(type_names[i]));
 
-	string selected_type ;
-	if(params()["type"].empty()) //Then plain toc...
-		selected_type = params().getCmdName();
-	else
-		selected_type = to_ascii(params()["type"]);
-
-	QString gui_names_;
-	type_ = -1;
-	for (size_t i = 0; i != types.size(); ++i) {
-		string const & type_str = types[i];
-		type_list.append(toqstr(getGuiName(type_str)));
-		if (type_str == selected_type)
-			type_ = i;
-		
-		lyxerr[Debug::GUI]
-			<< "QToc: new type " << type_str
-			<< "\ttoc_models_.size() " << toc_models_.size()
-			<< endl;
-
-	}
 	type_model_.setStringList(type_list);
 }
 
@@ -181,13 +131,10 @@ void QToc::updateType()
 void QToc::updateToc()
 {
 	toc_models_.clear();
-	vector<string> const & types = getTypes();
-
-	for (size_t i = 0; i != types.size(); ++i) {
-
-		toc_models_.push_back(new TocModel(getContents(types[i])));
-	}
-	
+	TocList::const_iterator it = tocs().begin();
+	TocList::const_iterator end = tocs().end();
+	for (; it != end; ++it)
+		toc_models_.push_back(new TocModel(it->second));
 }
 
 

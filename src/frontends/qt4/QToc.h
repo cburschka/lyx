@@ -39,22 +39,21 @@ public:
 	///
 	void updateType();
 
-	bool canOutline();
+	bool canOutline(int type) const;
 	
-	QStandardItemModel * tocModel();
-	QStandardItemModel * setTocModel(int type);
+	QStandardItemModel * tocModel(int type);
 
 	QStringListModel * typeModel()
 	{ return &type_model_; }
 
 	///
-	QModelIndex const getCurrentIndex();
+	QModelIndex const getCurrentIndex(int type) const;
 	///
-	void goTo(QModelIndex const & index);
+	void goTo(int type, QModelIndex const & index);
 	///
 	int getType();
 	///
-	int getTocDepth();
+	int getTocDepth(int type);
 
 Q_SIGNALS:
 	/// Signal that the internal toc_models_ has been reset.

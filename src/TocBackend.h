@@ -96,8 +96,6 @@ public:
 	void setBuffer(Buffer const * buffer)
 	{ buffer_ = buffer; }
 	///
-	bool addType(std::string const & type);
-	///
 	void update();
 	///
 	void updateItem(ParConstIterator const & pit);
@@ -105,9 +103,7 @@ public:
 	///
 	TocList const & tocs() const
 	{ return tocs_; }
-	///
-	std::vector<std::string> const & types() const
-	{ return types_; }
+
 	///
 	Toc const & toc(std::string const & type) const;
 	/// Return the first Toc Item before the cursor
@@ -118,8 +114,6 @@ public:
 private:
 	/// 
 	TocList tocs_;
-	///
-	std::vector<std::string> types_;
 	///
 	Buffer const * buffer_;
 

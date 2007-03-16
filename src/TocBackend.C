@@ -121,19 +121,6 @@ Toc const & TocBackend::toc(std::string const & type) const
 }
 
 
-bool TocBackend::addType(std::string const & type)
-{
-	// Is the type already supported?
-	TocList::iterator toclist_it = tocs_.find(type);
-	if (toclist_it != tocs_.end())
-		return false;
-
-	tocs_.insert(make_pair(type, Toc()));
-	types_.push_back(type);
-
-	return true;
-}
-
 void TocBackend::updateItem(ParConstIterator const & par_it)
 {
 	BufferParams const & bufparams = buffer_->params();
@@ -175,7 +162,6 @@ void TocBackend::updateItem(ParConstIterator const & par_it)
 void TocBackend::update()
 {
 	tocs_.clear();
-	types_.clear();
 
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.getLyXTextClass().min_toclevel();
@@ -223,10 +209,6 @@ void TocBackend::update()
 				TocItem(pit, toclevel - min_toclevel, tocstring));
 		}
 	}
-
-	TocList::iterator it = tocs_.begin();
-	for (; it != tocs_.end(); ++it)
-		types_.push_back(it->first);
 }
 
 

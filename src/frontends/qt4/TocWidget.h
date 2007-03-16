@@ -34,6 +34,8 @@ protected Q_SLOTS:
 	/// Update Gui of the display.
 	void updateGui();
 	///
+	void setTocModel(size_t type);
+	///
 	void select(QModelIndex const & index);
 	///
 	void selectionChanged(const QModelIndex & current,

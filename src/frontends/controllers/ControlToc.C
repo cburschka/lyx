@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,6 +14,7 @@
 #include <config.h>
 
 #include "ControlToc.h"
+
 #include "buffer.h"
 #include "BufferView.h"
 #include "bufferparams.h"
@@ -41,10 +43,42 @@ ControlToc::ControlToc(Dialog & d)
 }
 
 
+TocList const & ControlToc::tocs() const
+{
+	return kernel().buffer().tocBackend().tocs();
+}
+
+
 bool ControlToc::initialiseParams(string const & data)
 {
+	if (!ControlCommand::initialiseParams(data))
+		return false;
+
+	types_.clear();
+	type_names_.clear();
+	TocList const & tocs = kernel().buffer().tocBackend().tocs();
+	TocList::const_iterator it = tocs.begin();
+	TocList::const_iterator end = tocs.end();
+	for (; it != end; ++it) {
+		types_.push_back(it->first);
+		type_names_.push_back(getGuiName(it->first));
+	}
+
+	string selected_type ;
+	if(params()["type"].empty()) //Then plain toc...
+		selected_type = params().getCmdName();
+	else
+		selected_type = to_ascii(params()["type"]);
+	selected_type_ = -1;
+	for (size_t i = 0;  i != types_.size(); ++i) {
+		if (selected_type == types_[i]) {
+			selected_type_ = i;
+			break;
+		}
+	}
+
 	update();
-	return ControlCommand::initialiseParams(data);
+	return true;
 }
 
 void ControlToc::goTo(TocItem const & item)
@@ -54,9 +88,10 @@ void ControlToc::goTo(TocItem const & item)
 }
 
 
-bool ControlToc::canOutline(string const & type)
+bool ControlToc::canOutline(size_t type) const
 {
-	return type == "tableofcontents";
+	BOOST_ASSERT(type >= 0 && type < int(types_.size()));
+	return types_[type] == "tableofcontents";
 }
 
 
@@ -84,25 +119,17 @@ void ControlToc::outlineOut()
 }
 
 
-vector<string> const & ControlToc::getTypes() const
-{
-	return kernel().buffer().tocBackend().types();
-}
-
-
 void ControlToc::updateBackend()
 {
 	kernel().buffer().tocBackend().update();
 }
 
 
-TocIterator const ControlToc::getCurrentTocItem(
-	string const & type) const
+TocIterator const ControlToc::getCurrentTocItem(size_t type) const
 {
 	BOOST_ASSERT(kernel().bufferview());
-
 	ParConstIterator it(kernel().bufferview()->cursor());
-	return kernel().buffer().tocBackend().item(type, it);
+	return kernel().buffer().tocBackend().item(types_[type], it);
 }
 
 
@@ -117,19 +144,6 @@ docstring const ControlToc::getGuiName(string const & type) const
 		return from_utf8(floats.getType(type).name());
 	else
 		return _(type);
-}
-
-
-Toc const empty_list;
-
-Toc const & ControlToc::getContents(string const & type) const
-{
-	// This shouldn't be possible...
-	if (!kernel().isBufferAvailable()) {
-		return empty_list;
-	}
-
-	return kernel().buffer().tocBackend().toc(type);
 }
 
 } // namespace frontend
