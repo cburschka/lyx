@@ -32,6 +32,8 @@ public:
 	ControlCommand(Dialog &, std::string const & command_name,
 	               std::string const & lfun_name);
 	///
+	virtual ~ControlCommand() {}
+	///
 	InsetCommandParams & params() { return params_; }
 	///
 	InsetCommandParams const & params() const { return params_; }
