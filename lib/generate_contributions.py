@@ -232,7 +232,7 @@ echo "
 
 if (isset($msg_ref) && $msg_ref != "") {
         $msg_ref = htmlspecialchars("$msg_ref");
-        echo "<a href=\\"http://marc.theaimsgroup.com/?l=lyx-devel&amp;${msg_ref}\\">${msg_title}</a>";
+        echo "<a href=\\"http://marc.info/?l=lyx-devel&amp;${msg_ref}\\">${msg_title}</a>";
 } else {
         echo "${msg_title}";
 }
