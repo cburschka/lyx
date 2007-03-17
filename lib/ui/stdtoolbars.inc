@@ -130,7 +130,7 @@ Toolbar "math" "Math"
 	Item "Insert integral" "math-insert \int"
 	Item "Insert product" "math-insert \prod"
 	Separator
-	Item "Insert fraction" "math-insert \frac"
+	Item "Insert standard fraction" "math-insert \frac"
 	Item "Insert ( )" "math-delim ( )"
 	Item "Insert [ ]" "math-delim [ ]"
 	Item "Insert { }" "math-delim { }"
