@@ -61,7 +61,7 @@ public:
 		unsigned int width,
 		unsigned int height,
 		int posx, int posy,
-		bool maximize,
+		int maximized,
 		unsigned int iconSizeXY,
 		const std::string & geometryArg);
 	virtual void saveGeometry();
@@ -139,7 +139,7 @@ private:
 	bool quitting_by_menu_;
 
 	///
-	void updateFloatingGeometry();
+	QRect updateFloatingGeometry();
 	///
 	QRect floatingGeometry_;
 

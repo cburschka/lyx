@@ -290,22 +290,51 @@ void GuiView::saveGeometry()
 	// Then also the moveEvent, resizeEvent, and the
 	// code for floatingGeometry_ can be removed;
 	// adjust GuiView::setGeometry()
+	
+	QRect normal_geometry;
+	int maximized;
 #ifdef Q_WS_WIN
-	QRect geometry = normalGeometry();
+	normal_geometry = normalGeometry();
+	if (isMaximized()) {
+		maximized = CompletelyMaximized;
+	} else {
+		maximized = NotMaximized;
+	}
 #else
-	updateFloatingGeometry();
-	QRect geometry = floatingGeometry_;
-#endif
+	normal_geometry = updateFloatingGeometry();
 
+	QDesktopWidget& dw = *qApp->desktop();
+	QRect desk = dw.availableGeometry(dw.primaryScreen());	
+	// Qt bug on Linux: load completely maximized, vert max. save-> frameGeometry().height() is wrong
+	if (isMaximized() && desk.width() <= frameGeometry().width() && desk.height() <= frameGeometry().height()) {
+		maximized = CompletelyMaximized;
+		// maximizing does not work when the window is allready hor. or vert. maximized
+		// Tested only on KDE
+		int dh = frameGeometry().height() - height(); 
+		if (desk.height() <= normal_geometry.height() + dh) 
+			normal_geometry.setHeight(normal_geometry.height() - 1);
+		int dw = frameGeometry().width() - width();
+		if (desk.width() <= normal_geometry.width() + dw) 
+			normal_geometry.setWidth(normal_geometry.width() - 1);
+	} else if (desk.height() <= frameGeometry().height()) {
+		maximized = VerticallyMaximized;		
+	} else if (desk.width() <= frameGeometry().width()) {
+		maximized = HorizontallyMaximized;
+	} else {
+		maximized = NotMaximized;
+	}
+
+
+#endif
 	// save windows size and position
 	Session & session = LyX::ref().session();
-	session.sessionInfo().save("WindowWidth", convert<string>(geometry.width()));
-	session.sessionInfo().save("WindowHeight", convert<string>(geometry.height()));
-	session.sessionInfo().save("WindowIsMaximized", (isMaximized() ? "yes" : "no"));
+	session.sessionInfo().save("WindowWidth", convert<string>(normal_geometry.width()));
+	session.sessionInfo().save("WindowHeight", convert<string>(normal_geometry.height()));
+	session.sessionInfo().save("WindowMaximized", convert<string>(maximized));
 	session.sessionInfo().save("IconSizeXY", convert<string>(iconSize().width()));
 	if (lyxrc.geometry_xysaved) {
-		session.sessionInfo().save("WindowPosX", convert<string>(geometry.x() + d.posx_offset));
-		session.sessionInfo().save("WindowPosY", convert<string>(geometry.y() + d.posy_offset));
+		session.sessionInfo().save("WindowPosX", convert<string>(normal_geometry.x() + d.posx_offset));
+		session.sessionInfo().save("WindowPosY", convert<string>(normal_geometry.y() + d.posy_offset));
 	}
 	getToolbars().saveToolbarInfo();
 }
@@ -314,7 +343,7 @@ void GuiView::saveGeometry()
 void GuiView::setGeometry(unsigned int width,
 			  unsigned int height,
 			  int posx, int posy,
-			  bool maximize,
+			  int maximized,
 			  unsigned int iconSizeXY,
 			  const string & geometryArg)
 {
@@ -347,8 +376,26 @@ void GuiView::setGeometry(unsigned int width,
 			resize(width, height);
 		}
 
-		if (maximize)
-			setWindowState(Qt::WindowMaximized);
+		// remember original size
+		floatingGeometry_ = QRect(posx, posy, width, height);
+
+		if (maximized != NotMaximized) {
+			if (maximized == CompletelyMaximized) {
+				setWindowState(Qt::WindowMaximized);
+			} else {
+#ifndef Q_WS_WIN
+				// TODO How to set by the window manager?
+				//      setWindowState(Qt::WindowVerticallyMaximized); 
+				//      is not possible
+				QDesktopWidget& dw = *qApp->desktop();
+				QRect desk = dw.availableGeometry(dw.primaryScreen());
+				if (maximized == VerticallyMaximized) 
+					resize(width, desk.height());
+				if (maximized == HorizontallyMaximized)
+					resize(desk.width(), height);
+#endif
+			}
+		}
 	}
 	else
 	{
@@ -386,7 +433,7 @@ void GuiView::setGeometry(unsigned int width,
 			d.posy_offset = posy - normalGeometry().y();
 #else
 #ifndef Q_WS_MACX
-			if (!maximize) {
+			if (maximized == NotMaximized) {
 				d.posx_offset = posx - geometry().x();
 				d.posy_offset = posy - geometry().y();
 			}
@@ -550,10 +597,15 @@ bool GuiView::hasFocus() const
 }
 
 
-void  GuiView::updateFloatingGeometry()
+QRect  GuiView::updateFloatingGeometry()
 {
-	if (!isMaximized())
+	QDesktopWidget& dw = *qApp->desktop();
+	QRect desk = dw.availableGeometry(dw.primaryScreen());
+	// remember only non-maximized sizes
+	if (!isMaximized() && desk.width() > frameGeometry().width() && desk.height() > frameGeometry().height()) {
 		floatingGeometry_ = QRect(x(), y(), width(), height());
+	}
+	return floatingGeometry_;
 }
 
 
