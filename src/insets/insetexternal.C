@@ -803,7 +803,7 @@ bool preview_wanted(InsetExternalParams const & params)
 docstring const latex_string(InsetExternal const & inset, Buffer const & buffer)
 {
 	odocstringstream os;
-	OutputParams runparams;
+	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
 	return os.str();

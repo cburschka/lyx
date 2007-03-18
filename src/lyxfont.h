@@ -300,16 +300,14 @@ public:
 	    font state active now.
 	*/
 	int latexWriteStartChanges(odocstream &, LyXFont const & base,
-	                           LyXFont const & prev,
-	                           BufferParams const &) const;
+	                           LyXFont const & prev) const;
 
 	/** Writes the tail of the LaTeX needed to change to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
 	int latexWriteEndChanges(odocstream &, LyXFont const & base,
-	                         LyXFont const & next,
-	                         BufferParams const &) const;
+	                         LyXFont const & next) const;
 
 
 	/// Build GUI description of font state

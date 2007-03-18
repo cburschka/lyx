@@ -241,6 +241,7 @@ int InsetCaption::latex(Buffer const & buf, odocstream & os,
 	os << '{';
 	l += InsetText::latex(buf, os, runparams);
 	os << "}\n";
+	runparams_in.encoding = runparams.encoding;
 	return l + 1;
 }
 

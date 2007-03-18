@@ -75,6 +75,7 @@ int InsetFoot::latex(Buffer const & buf, odocstream & os,
 
 	int const i = InsetText::latex(buf, os, runparams);
 	os << "%\n}";
+	runparams_in.encoding = runparams.encoding;
 
 	return i + 2;
 }

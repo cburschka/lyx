@@ -337,7 +337,7 @@ bool Converters::convert(Buffer const * buffer,
 							from_ascii(from_format), from_ascii(to_format)));
 		return false;
 	}
-	OutputParams runparams;
+	OutputParams runparams(&buffer->params().encoding());
 	runparams.flavor = getFlavor(edgepath);
 
 	// Some converters (e.g. lilypond) can only output files to the
@@ -561,7 +561,7 @@ bool Converters::formatIsUsed(string const & format)
 bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 			 FileName const & filename, ErrorList & errorList)
 {
-	OutputParams runparams;
+	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
 	LaTeX latex("", runparams, filename);
 	TeXErrors terr;

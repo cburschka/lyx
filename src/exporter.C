@@ -149,7 +149,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
 	string backend_format;
-	OutputParams runparams;
+	OutputParams runparams(&buffer->params().encoding());
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;
 	vector<string> backends = Backends(*buffer);

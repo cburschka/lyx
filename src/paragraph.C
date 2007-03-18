@@ -33,6 +33,7 @@
 #include "lyxrow.h"
 #include "messages.h"
 #include "outputparams.h"
+#include "output_latex.h"
 #include "paragraph_funcs.h"
 
 #include "rowpainter.h"
@@ -963,7 +964,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// As long as we are in the label, this font is the base font of the
 	// label. Before the first body character it is set to the base font
 	// of the body.
-	// This must be identical to basefont in TeXOnePar().
 	LyXFont basefont;
 
 	// output change tracking marks only if desired,
@@ -1009,13 +1009,14 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 	// Computed only once per paragraph since bparams.encoding() is expensive
 	Encoding const & doc_encoding = bparams.encoding();
+
 	for (pos_type i = 0; i < size(); ++i) {
 		// First char in paragraph or after label?
 		if (i == body_pos) {
 			if (body_pos > 0) {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(
-						os, basefont, basefont, bparams);
+						os, basefont, basefont);
 					open_font = false;
 				}
 				basefont = getLayoutFont(bparams, outerfont);
@@ -1054,10 +1055,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			changeType, output);
 		runningChangeType = changeType;
 
-		value_type c = getChar(i);
+		value_type const c = getChar(i);
 
 		// Fully instantiated font
-		LyXFont font = getFont(bparams, i, outerfont);
+		LyXFont const font = getFont(bparams, i, outerfont);
 
 		LyXFont const last_font = running_font;
 
@@ -1068,10 +1069,18 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		{
 			column += running_font.latexWriteEndChanges(
 					os, basefont,
-					(i == body_pos-1) ? basefont : font,
-					bparams);
+					(i == body_pos-1) ? basefont : font);
 			running_font = basefont;
 			open_font = false;
+		}
+
+		// Switch file encoding if necessary
+		int const count = switchEncoding(os, bparams,
+				*(runparams.encoding),
+				*(font.language()->encoding()));
+		if (count > 0) {
+			column += count;
+			runparams.encoding = font.language()->encoding();
 		}
 
 		// Do we need to change font?
@@ -1079,8 +1088,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		     font.language() != running_font.language()) &&
 			i != body_pos - 1)
 		{
-			column += font.latexWriteStartChanges(
-					os, basefont, last_font, bparams);
+			column += font.latexWriteStartChanges(os, basefont,
+			                                      last_font);
 			running_font = font;
 			open_font = true;
 		}
@@ -1120,11 +1129,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		if (next_) {
 			running_font
 				.latexWriteEndChanges(os, basefont,
-					next_->getFont(bparams, 0, outerfont),
-					bparams);
+					next_->getFont(bparams, 0, outerfont));
 		} else {
 			running_font.latexWriteEndChanges(os, basefont,
-							  basefont, bparams);
+							  basefont);
 		}
 #else
 #ifdef WITH_WARNINGS
@@ -1132,8 +1140,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 //#warning there as we start another \selectlanguage with the next paragraph if
 //#warning we are in need of this. This should be fixed sometime (Jug)
 #endif
-		running_font.latexWriteEndChanges(os, basefont, basefont,
-		                                  bparams);
+		running_font.latexWriteEndChanges(os, basefont, basefont);
 #endif
 	}
 

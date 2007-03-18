@@ -679,7 +679,9 @@ void PreviewLoader::Impl::dumpPreamble(odocstream & os) const
 	// Why on earth is Buffer::makeLaTeXFile a non-const method?
 	Buffer & tmp = const_cast<Buffer &>(buffer_);
 	// Dump the preamble only.
-	OutputParams runparams;
+	// We don't need an encoding for runparams since it is not used by
+	// the preamble.
+	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = true;
 	runparams.moving_arg = true;

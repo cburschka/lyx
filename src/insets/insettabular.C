@@ -1828,7 +1828,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 				    true, true);
 
 	odocstringstream os;
-	OutputParams const runparams;
+	OutputParams const runparams(0);
 	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
 	// Needed for the "Edit->Paste recent" menu and the system clipboard.
 	cap::copySelection(cur, os.str());

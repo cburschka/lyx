@@ -290,6 +290,7 @@ int InsetNote::latex(Buffer const & buf, odocstream & os,
 
 	docstring const str = ss.str();
 	os << str;
+	runparams_in.encoding = runparams.encoding;
 	// Return how many newlines we issued.
 	return int(lyx::count(str.begin(), str.end(), '\n'));
 }

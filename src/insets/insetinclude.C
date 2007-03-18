@@ -739,7 +739,7 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 docstring const latex_string(InsetInclude const & inset, Buffer const & buffer)
 {
 	odocstringstream os;
-	OutputParams runparams;
+	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
 

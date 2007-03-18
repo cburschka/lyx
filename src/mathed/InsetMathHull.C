@@ -1513,7 +1513,7 @@ int InsetMathHull::docbook(Buffer const & buf, odocstream & os,
 
 void InsetMathHull::textString(Buffer const & buf, odocstream & os) const
 {
-	plaintext(buf, os, OutputParams());
+	plaintext(buf, os, OutputParams(0));
 }
 
 

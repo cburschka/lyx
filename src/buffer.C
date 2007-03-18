@@ -1022,6 +1022,7 @@ void Buffer::writeLaTeXSource(odocstream & os,
 		lyxerr[Debug::LATEX] << "LaTeXFile for inclusion made."
 				     << endl;
 	}
+	runparams_in.encoding = runparams.encoding;
 
 	// Just to be sure. (Asger)
 	texrow().newline();
@@ -1157,7 +1158,7 @@ int Buffer::runChktex()
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary
-	OutputParams runparams;
+	OutputParams runparams(&params().encoding());
 	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = false;
 	makeLaTeXFile(FileName(name), org_path, runparams);
@@ -1676,7 +1677,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 void Buffer::getSourceCode(odocstream & os, pit_type par_begin,
 	pit_type par_end, bool full_source)
 {
-	OutputParams runparams;
+	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.plaintext_linelen;

@@ -292,24 +292,6 @@ TeXOnePar(Buffer const & buf,
 		}
 	}
 
-	LyXFont const outerfont =
-		outerFont(std::distance(paragraphs.begin(), pit),
-			  paragraphs);
-	// This must be identical to basefont in Paragraph::simpleTeXOnePar
-	LyXFont basefont = (pit->beginOfBody() > 0) ?
-			pit->getLabelFont(bparams, outerfont) :
-			pit->getLayoutFont(bparams, outerfont);
-	Encoding const & outer_encoding(*(outerfont.language()->encoding()));
-	// FIXME we switch from the outer encoding to the encoding of
-	// this paragraph, since I could not figure out the correct
-	// logic to take the encoding of the previous paragraph into
-	// account. This may result in some unneeded encoding changes.
-	if (switchEncoding(os, bparams, outer_encoding,
-	                   *(basefont.language()->encoding()))) {
-		os << '\n';
-		texrow.newline();
-	}
-
 	// In an inset with unlimited length (all in one row),
 	// don't allow any special options in the paragraph
 	if (!pit->forceDefaultParagraphs()) {
@@ -360,9 +342,14 @@ TeXOnePar(Buffer const & buf,
 		break;
 	}
 
+	LyXFont const outerfont =
+		outerFont(std::distance(paragraphs.begin(), pit),
+			  paragraphs);
+
 	// FIXME UNICODE
 	os << from_utf8(everypar);
 	bool need_par = pit->simpleTeXOnePar(buf, bparams, outerfont,
+	//                                     *encoding,
 					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
@@ -456,17 +443,11 @@ TeXOnePar(Buffer const & buf,
 		pending_newline = true;
 	}
 
-	// FIXME we switch from the encoding of this paragraph to the
-	// outer encoding, since I could not figure out the correct logic
-	// to take the encoding of the next paragraph into account.
-	// This may result in some unneeded encoding changes.
-	basefont = pit->getLayoutFont(bparams, outerfont);
-	switchEncoding(os, bparams, *(basefont.language()->encoding()),
-	               outer_encoding);
 	if (pending_newline) {
 		os << '\n';
 		texrow.newline();
 	}
+	runparams_in.encoding = runparams.encoding;
 
 	// we don't need it for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitely in

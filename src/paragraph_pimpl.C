@@ -523,7 +523,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			} else {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(
-						os, basefont, basefont, bparams);
+						os, basefont, basefont);
 					open_font = false;
 				}
 
@@ -578,7 +578,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		// some insets cannot be inside a font change command
 		if (open_font && inset->noFontChange()) {
 			column += running_font.latexWriteEndChanges(
-					os, basefont, basefont, bparams);
+					os, basefont, basefont);
 			open_font = false;
 			basefont = owner_->getLayoutFont(bparams, outerfont);
 			running_font = basefont;

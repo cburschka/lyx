@@ -21,6 +21,7 @@
 namespace lyx {
 
 
+class Encoding;
 class ExportData;
 class LyXFont;
 
@@ -33,7 +34,7 @@ public:
 		XML
 	};
 
-	OutputParams();
+	OutputParams(Encoding const *);
 	~OutputParams();
 
 	/** The latex that we export depends occasionally on what is to
@@ -67,6 +68,25 @@ public:
 	/** Document language babel name
 	 */
 	mutable std::string document_language;
+
+	/** Current stream encoding. Only used for LaTeX.
+	    This must be set to the document encoding (via the constructor)
+	    before output starts. Afterwards it must be kept up to date for
+	    each single character (\see Paragraph::simpleTeXOnePar).
+	    This does also mean that you need to set it back if you use a
+	    copy (e.g. in insets): \code
+	    int InsetFoo::latex(..., OutputParams const & runparams_in) const
+	    {
+	        OutputParams runparams(runparams_in);
+		runparams.inComment = true;
+		...
+		InsetBla::latex(..., runparams);
+		...
+		runparams_in.encoding = runparams.encoding;
+	    }
+	    \endcode
+	 */
+	mutable Encoding const * encoding;
 
 	/** free_spacing == true means that the inset is in a free-spacing
 	    paragraph.
