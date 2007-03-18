@@ -174,7 +174,7 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language english
 \inputencoding auto
 \fontscheme default
@@ -19280,6 +19280,45 @@ captionsetup[table]{labelfont={bf,sf}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note: 
+\series default
+The option 
+\series bold
+tableposition=top
+\series default
+ has no effect when a 
+\series bold
+koma-script
+\series default
+
+\begin_inset LatexCommand \index{LaTeX-packages ! koma-script}
+
+\end_inset
+
+
+\series bold
+ 
+\series default
+document class is used.
+ In this case the document class option 
+\series bold
+tablecaptionabove
+\series default
+ must be used.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 For more information about the package 
 \series bold
 caption
@@ -19290,6 +19329,35 @@ caption
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+To change the label name from e.g.
+ ``Figure'' to ``Image'' use this preamble command: 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+fnum@figure}{Image~
+\backslash
+thefigure}
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+where 
+\series bold
+
+\backslash
+thefigure
+\series default
+ inserts the figure number and ``~'' creates a protected space.
 \end_layout
 
 \begin_layout Standard
