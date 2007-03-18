@@ -25,11 +25,13 @@
 import sys
 import os
 
-srcdir = os.path.dirname(sys.argv[0])
-if srcdir == '':
-    srcdir = '.'
-sys.path.insert(0, srcdir + "/../lyx2lyx")
+if __name__ == "__main__":
+    srcdir = os.path.dirname(sys.argv[0])
+    if srcdir == '':
+        srcdir = '.'
+    sys.path.insert(0, srcdir + "/../lyx2lyx")
 
+# when doc_toc is imported by scons, sys.path is set over there
 import parser_tools
 import LyX
 import depend
@@ -45,9 +47,9 @@ info = { 'cs' : ('czech', 'german', 'latin2', "Obsah dokumentace LyXu"),
          'en' : ('english', 'english', 'latin1', "LyX Documentation Table of Contents")}
 
 def usage(pname):
-    print """Usage: %s [lang]
+    print """Usage: %s lang output
 
-    lang is the language to build the TOC file, if not present use english.
+    lang is the language to build the TOC file,
 """ % pname
 
 
@@ -94,30 +96,22 @@ def nest_struct(name, par_list):
         return [ par ]
 
 
-def main(argv):
-    if len(argv) > 2:
-        usage()
-        sys.exit(1)
-
-    # choose language and prefix for files
-    if len(argv) == 1:
-        lang = "en"
-        pref = ""
-    else:
-        lang = argv[1]
-        pref = lang + '_'
-        # fallback
-        if lang not in info:
-            lang = 'en'
-
+def build_toc(output, documents, lang=None):
     # Determine existing translated documents for that language.
     toc_general = []
-    for file in depend.documents(srcdir, pref):
+    for file in documents:
         file = LyX.File(input= file)
         file.convert()
         toc_general.extend(file.get_toc())
 
-    file = LyX.NewFile(output= pref + 'TOC.lyx')
+    # if lang is not given, guess from document names. (Used in scons build)
+    if lang is None:
+        lang = 'en'
+        for file in documents:
+            dir = file.split(os.sep)[-2]
+            if dir in info.keys():
+                lang = dir
+    file = LyX.NewFile(output = output)
     data = info[lang]
     file.set_header(language = data[0], language_quotes = data[1], inputencoding = "utf-8")
     file.language = data[0]
@@ -126,6 +120,25 @@ def main(argv):
     body.extend(build_from_toc(toc_general))
     file.set_body(body)
     file.write()
+
+    
+def main(argv):
+    if len(argv) != 3:
+        usage()
+        sys.exit(1)
+
+    # choose language files
+    if not os.path.isdir(argv[2], argv[1]):
+        lang = "en"
+        output = os.path.join(argv[2], 'TOC.lyx')
+    else:
+        lang = argv[1]
+        output = os.path.join(argv[2], lang, 'TOC.lyx')
+        # fallback
+        if lang not in info:
+            lang = 'en'
+
+    build_toc(output, depend.documents(srcdir, lang), lang)
 
 
 if __name__ == "__main__":

@@ -15,7 +15,6 @@
 import os, sys, copy, cPickle, glob, time
 
 # scons_utils.py defines a few utility function
-sys.path.append('config')
 import scons_utils as utils
 # import all file lists
 from scons_manifest import *
@@ -42,7 +41,8 @@ from SCons.Node.FS import default_fs
 scons_dir = default_fs.SConstruct_dir.path
 # get the ../.. of scons_dir
 top_src_dir = os.path.split(os.path.split(default_fs.SConstruct_dir.abspath)[0])[0]
-
+sys.path.append(os.path.join(top_src_dir, 'lib', 'doc'))
+import depend
 
 #----------------------------------------------------------
 # Global definitions
@@ -730,6 +730,7 @@ if platform_name == 'cygwin':
 #
 # install customized builders
 env['BUILDERS']['substFile'] = Builder(action = utils.env_subst)
+env['BUILDERS']['installTOC'] = Builder(action = utils.env_toc)
 
 
 #----------------------------------------------------------
@@ -2044,6 +2045,7 @@ if build_install:
         share_dest_dir = os.path.join(dest_prefix_dir, share_dir)
     man_dest_dir = os.path.join(dest_prefix_dir, man_dir)
     locale_dest_dir = os.path.join(dest_prefix_dir, locale_dir)
+    env['LYX2LYX_DEST'] = os.path.join(share_dest_dir, 'lyx2lyx')
     #
     import glob
     #
@@ -2130,6 +2132,31 @@ if build_install:
         dirs.append(env.Install(os.path.join(share_dest_dir, dir),
             [env.subst('$TOP_SRCDIR/lib/%s/%s' % (dir, file)) for file in files]))
     Alias('install', dirs)
+
+    # subst and install lyx2lyx_version.py which is not in scons_manifest.py
+    env.Depends(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py', '$BUILDDIR/common/config.h')
+    env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
+        '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
+    Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
+    sys.path.append(share_dest_dir + '/lyx2lyx')
+    
+    # generate TOC files for each doc
+    languages = depend.all_documents(env.Dir('$TOP_SRCDIR/lib/doc').abspath)
+    tocs = []
+    for lang in languages.keys():
+        if os.path.isdir(os.path.join(env.Dir('$TOP_SRCDIR/lib/doc').abspath, lang)):
+            toc = env.installTOC(os.path.join(share_dest_dir, 'doc', lang, 'TOC.lyx'),
+                languages[lang])
+            tocs.append(toc)
+            # doc_toc.build_toc needs a installed version of lyx2lyx to execute
+            env.Depends(toc, share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
+        else:
+            # this is for English
+            toc = env.installTOC(os.path.join(share_dest_dir, 'doc', 'TOC.lyx'),
+                languages[lang])
+            tocs.append(toc)
+            env.Depends(toc, share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
+    Alias('install', tocs)
     
     if platform_name == 'cygwin':
         # cygwin packaging requires a file /usr/share/doc/Cygwin/foot-vendor-suffix.README
@@ -2155,11 +2182,6 @@ if build_install:
         env.Install(postinstall_path, tmp_script)
         Alias('install', postinstall_path)
 
-    # subst and install lyx2lyx_version.py which is not in scons_manifest.py
-    env.Depends(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py', '$BUILDDIR/common/config.h')
-    env.substFile(share_dest_dir + '/lyx2lyx/lyx2lyx_version.py',
-        '$TOP_SRCDIR/lib/lyx2lyx/lyx2lyx_version.py.in')
-    Alias('install', share_dest_dir + '/lyx2lyx/lyx2lyx_version.py')
 
     # man
     env.InstallAs(os.path.join(man_dest_dir, 'lyx' + version_suffix + '.1'),

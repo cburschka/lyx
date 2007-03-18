@@ -102,6 +102,17 @@ def env_nsis(source, target, env, for_signature):
     return ret
 
 
+def env_toc(target, source, env):
+    '''Generate target from source files'''
+    # this is very tricky because we need to use installed lyx2lyx with 
+    # correct lyx2lyx_version.py
+    sys.path.append(env['LYX2LYX_DEST'])
+    sys.path.append(env.Dir('$TOP_SRCDIR/lib/doc').abspath)
+    import doc_toc
+    # build toc
+    doc_toc.build_toc(str(target[0]), [file.abspath for file in source])
+    
+    
 def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':
