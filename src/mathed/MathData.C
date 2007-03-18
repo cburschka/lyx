@@ -243,10 +243,16 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 void MathArray::metrics(MetricsInfo & mi) const
 {
 	dim_ = theFontMetrics(mi.base.font).dimension('I');
+	int xascent = theFontMetrics(mi.base.font).dimension('x').ascent();
+	minasc_ = xascent;
+	mindes_ = (3 * xascent) / 4;
+	slevel_ = (4 * xascent) / 5;
+	sshift_ = xascent / 4;
 
 	if (empty())
 		return;
 
+	dim_.asc = 0;
 	dim_.wid = 0;
 	Dimension d;
 	//BufferView & bv  = *mi.base.bv;

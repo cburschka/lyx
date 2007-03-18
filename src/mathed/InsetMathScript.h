@@ -110,6 +110,8 @@ private:
 	int dxx() const;
 	/// returns width of nucleus if any
 	int nwid() const;
+	/// returns y offset for either superscript or subscript
+	int dy01(int asc, int des, int what) const;
 	/// returns y offset for superscript
 	int dy0() const;
 	/// returns y offset for subscript

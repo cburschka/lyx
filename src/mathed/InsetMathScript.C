@@ -146,6 +146,42 @@ MathArray & InsetMathScript::nuc()
 }
 
 
+int InsetMathScript::dy01(int asc, int des, int what) const
+{
+	int dasc = 0;
+	int slevel = 0;
+	if (hasDown()) {
+		dasc = down().ascent();
+		slevel = nuc().slevel();
+		int ascdrop = dasc - slevel;
+		int desdrop = des + nuc().sshift();
+		int mindes = nuc().mindes();
+		des = max(desdrop, ascdrop);
+		des = max(mindes, des);
+	}
+	if (hasUp()) {
+		int minasc = nuc().minasc();
+		int ascdrop = asc - up().mindes();
+		int udes = up().descent();
+		asc = udes + nuc().sshift();
+		asc = max(ascdrop, asc);
+		asc = max(minasc, asc);
+		if (hasDown()) {
+			int del = asc - udes - dasc;
+			if (del + des <= 2) {
+				des = 2 - del;
+				del = slevel - asc + udes;
+				if (del > 0) {
+					asc += del;
+					des -= del;
+				}
+			}
+		}
+	}
+	return what ? asc : des;
+}
+
+
 int InsetMathScript::dy0() const
 {
 	int nd = ndes();
@@ -154,8 +190,10 @@ int InsetMathScript::dy0() const
 	int des = down().ascent();
 	if (hasLimits())
 		des += nd + 2;
-	else
-		des = max(des, nd);
+	else {
+		int na = nasc();
+		des = dy01(na, nd, 0);
+	}
 	return des;
 }
 
@@ -168,8 +206,10 @@ int InsetMathScript::dy1() const
 	int asc = up().descent();
 	if (hasLimits())
 		asc += na + 2;
-	else
-		asc = max(asc, na);
+	else {
+		int nd = ndes();
+		asc = dy01(na, nd, 1);
+	}
 	asc = max(asc, 5);
 	return asc;
 }
@@ -235,8 +275,18 @@ bool InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = max(dim.wid, down().width());
 		dim.wid += nwid();
 	}
-	dim.asc = dy1() + (hasUp() ? up().ascent() : 0);
-	dim.des = dy0() + (hasDown() ? down().descent() : 0);
+	int na = nasc();
+	if (hasUp()) {
+		int asc = dy1() + up().ascent();
+		dim.asc = max(na, asc);
+	} else
+		dim.asc = na;
+	int nd = ndes();
+	if (hasDown()) {
+		int des = dy0() + down().descent();
+		dim.des = max(nd, des);
+	} else
+		dim.des = nd;
 	metricsMarkers(dim);
 	if (dim_ == dim)
 		return false;

@@ -150,10 +150,23 @@ public:
 	Dimension const & dim() const { return dim_; }
 	/// dimensions of cell
 	void setDim(Dimension const & d) const { dim_ = d; }
+	/// minimum ascent offset for superscript
+	int minasc() const { return minasc_; }
+	/// minimum descent offset for subscript
+	int mindes() const { return mindes_; }
+	/// level above/below which super/subscript should extend
+	int slevel() const { return slevel_; }
+	/// additional super/subscript shift
+	int sshift() const { return sshift_; }
 
 protected:
 	/// cached dimensions of cell
 	mutable Dimension dim_;
+	/// cached values for super/subscript placement
+	mutable int minasc_;
+	mutable int mindes_;
+	mutable int slevel_;
+	mutable int sshift_;
 
 private:
 	/// is this an exact match at this position?
