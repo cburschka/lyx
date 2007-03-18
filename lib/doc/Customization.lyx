@@ -1,5 +1,5 @@
 #LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
-\lyxformat 256
+\lyxformat 263
 \begin_document
 \begin_header
 \textclass book
@@ -38,7 +38,8 @@
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes true
+\output_changes false
+\author "usti" 
 \author "Jean-Marc Lasgouttes" 
 \end_header
 
@@ -415,9 +416,9 @@ Template
 \labelwidthstring 00.00.0000
 
 \family typewriter
-templates/ 
+templates/
 \family default
-contains the standard LyX template files described in Chapter\InsetSpace ~
+ contains the standard LyX template files described in Chapter\InsetSpace ~
 
 \begin_inset LatexCommand ref
 reference "sec:templates"
@@ -732,8 +733,9 @@ The configuration freedom of the local configuration directory may not suffice
 \begin_layout Standard
 Invoking LyX with the command line switch 
 \family typewriter
--userdir 
+-userdir
 \family default
+ 
 \emph on
 <some directory>
 \emph default
@@ -843,9 +845,8 @@ LyXDir/lyxrc.defaults
 LyXDir/lyxrc
 \family default
 .
- Users should use the
+ Users should use the 
 \family sans
- 
 \bar under
 T
 \bar default
@@ -1704,9 +1705,9 @@ Converters, Formats, Viewers, Editors and Copiers
 LyX has a powerful mechanism to convert to and from any file format using
  external programs.
  Define a pair of formats, e.g.
-
+ 
 \family typewriter
- LaTeX
+LaTeX
 \family default
  and 
 \family typewriter
@@ -2073,10 +2074,9 @@ clean up
 Plain text\InsetSpace ~
 roff
 \family default
- 
 \series default
-This option defines the command used to produce better plain text tables with
- the 
+ This option defines the command used to produce better plain text tables
+ with the 
 \family typewriter
 groff/troff/nroff
 \family default
@@ -2092,10 +2092,9 @@ Plain text\InsetSpace ~
 line\InsetSpace ~
 length
 \family default
- 
 \series default
-With this command you can set the default line length of the plain text output
- file.
+ With this command you can set the default line length of the plain text
+ output file.
  Setting it to 0 means endless lines.
 \end_layout
 
@@ -2701,10 +2700,10 @@ name "sec:autodetected"
 
 \end_inset
 
-There are several items that are detected for you when you run
+There are several items that are detected for you when you run 
 \family sans
 \bar under
- T
+T
 \bar default
 ools
 \bar under
@@ -3012,9 +3011,9 @@ gettext
 \family default
 , but in short, this is what you do (
 \series bold
-xx 
+xx
 \series default
-denotes the language code):
+ denotes the language code):
 \end_layout
 
 \begin_layout Standard
@@ -3049,9 +3048,9 @@ xx
 \family typewriter
 lyx.pot
 \family default
- doesn't exist, it can be remade with
+ doesn't exist, it can be remade with 
 \family typewriter
- make lyx.pot
+make lyx.pot
 \family default
  in that directory, or you can use an existing po-file for some other language
  as a template).
@@ -3067,9 +3066,9 @@ status collapsed
 \begin_layout Standard
 We recommend that you use Emacs to do this, since the 
 \family typewriter
-gettext 
+gettext
 \family default
-distribution includes a nice mode that supports you in doing this.
+ distribution includes a nice mode that supports you in doing this.
 \end_layout
 
 \end_inset
@@ -3118,14 +3117,16 @@ xx
 \newline
 
 \family typewriter
-msgfmt -o 
+msgfmt -o
 \family default
+ 
 \series bold
 xx
 \family typewriter
 \series default
-.mo < 
+.mo <
 \family default
+ 
 \series bold
 xx
 \family typewriter
@@ -3182,9 +3183,9 @@ end{sloppypar}
 \begin_layout Standard
 Adding a new po-file to the 
 \emph on
-distribution 
+distribution
 \emph default
-of LyX involves altering the configure scripts and more, but the way 
+ of LyX involves altering the configure scripts and more, but the way 
 \family typewriter
 gettext
 \family default
@@ -3465,8 +3466,11 @@ International Keyboard Support
 \begin_layout Standard
 
 \emph on
-[Editor's Note: The following section is by 
+[Editor's Note: The following section is by
+\emph default
+ 
 \shape smallcaps
+\emph on
 Ivan Schreter
 \shape default
 .
@@ -3510,9 +3514,9 @@ kmap
  
 \family typewriter
 key
-\emph on
+\family default
  
-\emph default
+\family typewriter
 outstring
 \end_layout
 
@@ -3581,8 +3585,7 @@ grave (gra)
 \begin_layout Quotation
 macron (mac)
 \hfill
- \i \={o}
-
+ ō
 \end_layout
 
 \begin_layout Quotation
@@ -3644,9 +3647,7 @@ circumflex (circu)
 \begin_layout Quotation
 circle (circl)
 \hfill
-Å\i \r{u}
-\i \r{U}
-
+ÅůŮ
 \end_layout
 
 \begin_layout Quotation
@@ -3671,8 +3672,7 @@ t o
 \begin_layout Quotation
 breve (bre)
 \hfill
-\i \u{a}
-
+ă
 \begin_inset ERT
 status inlined
 
@@ -3691,18 +3691,13 @@ u o
 \begin_layout Quotation
 caron (car)
 \hfill
-\i \v{c}
-\i \v{s}
-\i \v{z}
-
+čšž
 \end_layout
 
 \begin_layout Quotation
 hungarian umlaut (hug)
 \hfill
-\i \H{o}
-\i \H{u}
-
+őű
 \end_layout
 
 \begin_layout Quotation
@@ -3714,8 +3709,7 @@ umlaut (uml)
 \begin_layout Quotation
 dot (dot)
 \hfill
-\i \.{z}
-
+ż
 \begin_inset ERT
 status inlined
 
@@ -3954,8 +3948,10 @@ kmap
 \family roman
 \emph on
 char
+\family default
 \emph default
  
+\family roman
 \emph on
 string
 \end_layout
@@ -3963,29 +3959,53 @@ string
 \begin_layout Standard
 This will ma
 \family roman
-p 
+p
+\family default
+ 
+\family roman
 \emph on
-char 
+char
+\family default
 \emph default
-to 
+ 
+\family roman
+to
+\family default
+ 
+\family roman
 \emph on
 string
 \emph default
 .
- Note that in 
+ Note that in
+\family default
+ 
+\family roman
 \emph on
 string
 \emph default
-, 
+,
+\family default
+ 
+\family roman
 \shape up
 the double-quote (")
+\family default
 \shape default
- and 
+ 
+\family roman
+and
+\family default
+ 
+\family roman
 \shape up
 the backslash (
 \backslash
-) 
+)
+\family default
 \shape default
+ 
+\family roman
 must be escaped with a preceding backslash (
 \shape up
 
@@ -4004,19 +4024,19 @@ An example of a
 kmap
 \family default
 \shape default
- statement to cause the symbol
+ statement to cause the symbol 
 \family sans
 \shape up
- / 
+/
 \family default
 \shape default
-to be output for the keystroke
+ to be output for the keystroke 
 \family sans
 \shape up
- & 
+&
 \family default
 \shape default
-is:
+ is:
 \end_layout
 
 \begin_layout LyX-Code
@@ -4039,9 +4059,8 @@ kmod
 \begin_layout LyX-Code
 
 \backslash
-kmod
+kmod 
 \family roman
- 
 \emph on
 char accent allowed
 \end_layout
@@ -4049,16 +4068,39 @@ char accent allowed
 \begin_layout Standard
 This will make the cha
 \family roman
-racter 
+racter
+\family default
+ 
+\family roman
 \emph on
 char
+\family default
+\emph default
+ 
+\family roman
 \shape up
- be an accent
-\emph default
- on the 
 \emph on
-allowed 
+be an accent
+\family default
+\shape default
 \emph default
+ 
+\family roman
+\shape up
+on the
+\family default
+\shape default
+ 
+\family roman
+\shape up
+\emph on
+allowed
+\family default
+\shape default
+\emph default
+ 
+\family roman
+\shape up
 cha
 \family default
 racter(s).
@@ -4077,11 +4119,17 @@ dead key
  with another key, produces the desired accent character.
  For example, a German characte
 \family roman
-r with an umlaut like 
+r with an umlaut like
+\family default
+ 
+\family roman
 \emph on
 ä
+\family default
 \emph default
- can be produced in this manner.
+ 
+\family roman
+can be produced in this manner.
 \end_layout
 
 \end_inset
@@ -4093,22 +4141,37 @@ r with an umlaut like
 \begin_layout Standard
 If you 
 \family roman
-hit 
+hit
+\family default
+ 
+\family roman
 \emph on
-char 
+char
+\family default
 \emph default
-and then another key not in 
+ 
+\family roman
+and then another key not in
+\family default
+ 
+\family roman
 \emph on
 allowed
 \emph default
-, you will get a 
-\emph on
-char 
-\emph default
-followed by the other, unallowed key, as output.
- 
+, you will get a
 \family default
-Note that a 
+ 
+\family roman
+\emph on
+char
+\family default
+\emph default
+ 
+\family roman
+followed by the other, unallowed key, as output.
+
+\family default
+ Note that a 
 \family sans
 \shape up
 Backspace
@@ -4116,23 +4179,39 @@ Backspace
 \shape default
  cancels a dead key, so if 
 \family roman
-you hit 
+you hit
+\family default
+ 
+\family roman
 \emph on
 char
-\family sans
+\family default
+\emph default
  
+\family sans
 \shape up
+\emph on
 Backspace
 \family default
 \emph default
 , the cursor will not go one position backwards but will instead cancel
  the effect t
 \family roman
-hat 
+hat
+\family default
+\shape default
+ 
+\family roman
+\shape up
 \emph on
 char
+\family default
+\shape default
 \emph default
- might have had on the next keystroke.
+ 
+\family roman
+\shape up
+might have had on the next keystroke.
  
 \end_layout
 
@@ -4159,22 +4238,29 @@ ksmod
 \begin_layout LyX-Code
 
 \backslash
-kxmod 
-\family sans
-\emph on
- 
+kxmod  
 \family roman
+\emph on
 accent char result
 \end_layout
 
 \begin_layout Standard
 This defines an exce
 \family roman
-ption for 
+ption for
+\family default
+ 
+\family roman
 \emph on
-accent 
+accent
+\family default
 \emph default
-on 
+ 
+\family roman
+on
+\family default
+ 
+\family roman
 \emph on
 char
 \emph default
@@ -4182,13 +4268,29 @@ char
  T
 \shape up
 he
-\emph on
- accent 
-\emph default
-must 
 \family default
-have been assigned a keystroke with a previous 
+\shape default
+ 
+\family roman
+\shape up
+\emph on
+accent
+\family default
+\shape default
+\emph default
+ 
+\family roman
+\shape up
+must
+\family default
+\shape default
+ 
+\shape up
+have been assigned a keystroke with a previous
+\shape default
+ 
 \family typewriter
+\shape up
 
 \backslash
 kmo
@@ -4197,53 +4299,110 @@ d
 \family default
  declar
 \family roman
-ation and 
+ation and
+\family default
+ 
+\family roman
 \emph on
-char 
+char
+\family default
 \emph default
-must not belong in the 
+ 
+\family roman
+must not belong in the
+\family default
+ 
+\family roman
 \emph on
-allowed 
+allowed
+\family default
 \emph default
-set of 
+ 
+\family roman
+set of
+\family default
+ 
+\family roman
 \emph on
 accent
 \emph default
 .
- When 
+ When
+\family default
+ 
+\family roman
 \shape up
-you enter the 
+you enter the
+\family default
+\shape default
+ 
+\family roman
+\shape up
 \emph on
-accent char 
+accent char
+\family default
+\shape default
 \emph default
-sequence, 
+ 
+\family roman
+\shape up
+sequence,
+\family default
+\shape default
+ 
+\family roman
+\shape up
 \emph on
 result
+\family default
+\shape default
 \emph default
-  is produced.
+ 
+\family roman
+\shape up
+ is produced.
  If such a declaration does not exist in
 \family default
- the
-\family sans
+\shape default
+ 
+\shape up
+the
+\shape default
  
 \family typewriter
+\shape up
 .kmap
 \family default
 \shape default
  file and yo
 \family roman
-u enter 
+u enter
+\family default
+ 
+\family roman
 \emph on
 accent  char
 \emph default
-, you get 
+, you get
+\family default
+ 
+\family roman
 \emph on
-accent_key char 
+accent_key char
+\family default
 \emph default
- where 
+ 
+\family roman
+ where
+\family default
+ 
+\family roman
 \emph on
-accent_key 
+accent_key
+\family default
 \emph default
+ 
+\family roman
  is the first arg
 \family default
 ument of the 
@@ -4297,30 +4456,60 @@ accent1 accent2 allowed
 
 \begin_layout Standard
 This one is getting pretty esoteric.
- It allows you to combine the effect
+ It allows you to combine the effect 
 \family roman
- of 
+of
+\family default
+ 
+\family roman
 \emph on
 accent1
+\family default
 \emph default
- and 
+ 
+\family roman
+and
+\family default
+ 
+\family roman
 \emph on
 accent2
+\family default
 \emph default
- (in that order!) on 
+ 
+\family roman
+(in that order!) on
+\family default
+ 
+\family roman
 \emph on
 allowed
+\family default
 \emph default
- chars.
- The keystrokes for 
+ 
+\family roman
+chars.
+ The keystrokes for
+\family default
+ 
+\family roman
 \emph on
 accent1
+\family default
 \emph default
- and 
+ 
+\family roman
+and
+\family default
+ 
+\family roman
 \emph on
 accent2
+\family default
 \emph default
- must have be
+ 
+\family roman
+must have be
 \family default
 en set with a 
 \family typewriter
@@ -4332,13 +4521,19 @@ kmod
 \shape default
  command at 
 \family roman
-a 
+a
+\family default
+ 
+\family roman
 \emph on
 previous
-\emph default
- point in the 
 \family default
-file.
+\emph default
+ 
+\family roman
+point in the
+\family default
+ file.
  
 \end_layout
 
@@ -4383,16 +4578,16 @@ This allows you to press
  
 \family roman
 \shape up
-A backspace 
+A backspace
 \family default
 \shape default
-in this case cancels the last dead key, so if you press
+ in this case cancels the last dead key, so if you press 
 \family sans
 \shape up
- ;: Backspace i 
+;: Backspace i
 \family default
 \shape default
-you get 
+ you get 
 \family typewriter
 \shape up
 
@@ -4412,11 +4607,9 @@ After the
 \family typewriter
 \shape up
 .kmap
-\family sans
- 
 \family default
 \shape default
-mapping is performed, a 
+ mapping is performed, a 
 \family typewriter
 \shape up
 .cde
@@ -4445,11 +4638,9 @@ In general the
 \family typewriter
 \shape up
 .cdef
-\family sans
- 
 \family default
 \shape default
-file is a sequence of declarations of the form
+ file is a sequence of declarations of the form
 \end_layout
 
 \begin_layout LyX-Code
@@ -4457,8 +4648,10 @@ file is a sequence of declarations of the form
 \family roman
 \emph on
 char_index_in_set
+\family default
 \emph default
  
+\family roman
 \emph on
  string
 \end_layout
@@ -4497,24 +4690,25 @@ with
 \family default
  being escap
 \family roman
-ed in 
+ed in
+\family default
+ 
+\family roman
 \emph on
 string
 \emph default
 .
- Note that 
+ Note that
 \family default
-the same character can apply to more than one string.
+ the same character can apply to more than one string.
  In the 
 \family typewriter
 i
 \shape up
 so-8859-7.cdef
-\family sans
- 
 \family default
 \shape default
-file you have
+ file you have
 \end_layout
 
 \begin_layout LyX-Code
@@ -4566,8 +4760,7 @@ Suppose you happen to need the circumflex character,
 \begin_inset Quotes eld
 \end_inset
 
-\i \^{}
-
+ ̂
 \begin_inset Quotes erd
 \end_inset
 
@@ -5065,9 +5258,9 @@ texhash
 .
  This should create 
 \family typewriter
-/usr/local/texmf/ls-R 
+/usr/local/texmf/ls-R
 \family default
-amongst others.
+ amongst others.
 \end_layout
 
 \begin_layout Enumerate
@@ -5678,10 +5871,7 @@ S
 \bar default
 ettings
 \family default
-\emph on
- 
-\emph default
-dialog.
+ dialog.
  This setting (same goes for 
 \family typewriter
 Sides
@@ -5728,11 +5918,8 @@ Sides
 \family default
 ] Whether the class-default should be printing on one or both sides of the
  paper.
- Can be changed in the
-\emph on
- 
+ Can be changed in the 
 \family sans
-\emph default
 \bar under
 D
 \bar default
@@ -5751,10 +5938,9 @@ ettings
 \family typewriter
 \series medium
 PageStyle
-\series default
- 
 \family default
-[
+\series default
+ [
 \family typewriter
 \emph on
 plain
@@ -5774,10 +5960,7 @@ S
 \bar default
 ettings
 \family default
-\emph on
- 
-\emph default
-dialog.
+ dialog.
 \end_layout
 
 \begin_layout Description
@@ -5879,11 +6062,11 @@ ProvidesUrl
 url
 \family default
  package.
- This is the case of the
+ This is the case of the 
 \family typewriter
- AASTeX 
+AASTeX
 \family default
-document class.
+ document class.
 \end_layout
 
 \begin_layout Description
@@ -5979,11 +6162,11 @@ InTitle 1
 \begin_inset Quotes erd
 \end_inset
 
- should be enclosed into the
+ should be enclosed into the 
 \family typewriter
- TitleLatexName 
+TitleLatexName
 \family default
-environment
+ environment
 \family typewriter
 .
 \end_layout
@@ -6100,10 +6283,9 @@ NoFloat
 \series medium
 CharStyle\SpecialChar \ldots{}
 End
-\series default
- 
 \family default
-This section defines a new character style.
+\series default
+ This section defines a new character style.
  See Section\InsetSpace ~
 
 \begin_inset LatexCommand ref
@@ -6439,12 +6621,15 @@ LatexType
 \family typewriter
 \series medium
 InTitle
-\series default
- [1, 0] 
 \family default
-If 1, marks the layout as being part of a title block (see also the
+\series default
+ 
 \family typewriter
- TitleLatexType
+[1, 0]
+\family default
+ If 1, marks the layout as being part of a title block (see also the 
+\family typewriter
+TitleLatexType
 \family default
  and 
 \family typewriter
@@ -6593,7 +6778,10 @@ NextNoIndent
 \series default
  [
 \family typewriter
-1, 
+1,
+\family default
+ 
+\family typewriter
 \emph on
 0
 \family default
@@ -7280,10 +7468,10 @@ status collapsed
 \begin_layout Standard
 
 \emph on
-Note from Jean-Marc: 
+Note from Jean-Marc:
 \emph default
-I'm not sure that this setting has much use, and it should probably be removed
- in later versions.
+ I'm not sure that this setting has much use, and it should probably be
+ removed in later versions.
 \end_layout
 
 \end_inset
@@ -7345,7 +7533,10 @@ Newline
 \series default
  [
 \family typewriter
-0, 
+0,
+\family default
+ 
+\family typewriter
 \emph on
 1
 \family default
@@ -7448,8 +7639,9 @@ Spacing
 \emph on
 single
 \emph default
-, onehalf, double, other 
+, onehalf, double, other
 \family default
+ 
 \emph on
 value
 \emph default
@@ -7488,10 +7680,10 @@ setspace.sty
 
 \family typewriter
 \series medium
-Font 
+Font
 \family default
 \series default
-The font used for both the text body 
+ The font used for both the text body 
 \emph on
 and
 \emph default
@@ -7951,10 +8143,10 @@ CharStyle
 
 \family typewriter
 \series medium
-Font 
+Font
 \family default
 \series default
-The font used for both the text body 
+ The font used for both the text body 
 \emph on
 and
 \emph default
@@ -8142,9 +8334,9 @@ LabelSt
 \family default
 r
 \family typewriter
-ing 
+ing
 \family default
-and 
+ and 
 \family typewriter
 LabelStringAppendix
 \family default
@@ -8209,9 +8401,9 @@ arabic
 \series default
  to translate 
 \family typewriter
-counter 
+counter
 \family default
-to arabic numerals, like 1, 2, 3\SpecialChar \ldots{}
+ to arabic numerals, like 1, 2, 3\SpecialChar \ldots{}
 
 \begin_inset Foot
 status collapsed
@@ -8226,13 +8418,16 @@ status collapsed
 \bar no
 \noun off
 \color none
-Actually, the situation is a bit more complicated than that: any 
-\family typewriter
+Actually, the situation is a bit more complicated than that: any
+\family default
 \series default
 \shape default
+\emph default
+\bar default
+ 
+\family typewriter
 \size default
 \emph on
-\bar default
 \noun default
 numbertype
 \family roman
@@ -8320,13 +8515,13 @@ A font description looks like that:
 \end_layout
 
 \begin_layout LyX-Code
-Font
+Font 
 \family roman
 \emph on
- or 
+or
 \family default
 \emph default
-LabelFont
+ LabelFont
 \end_layout
 
 \begin_layout LyX-Code
@@ -8401,7 +8596,10 @@ Size
 \series default
  [
 \family typewriter
-tiny, small, 
+tiny, small,
+\family default
+ 
+\family typewriter
 \emph on
 normal
 \emph default
@@ -8415,10 +8613,9 @@ normal
 \family typewriter
 \series medium
 Color
-\series default
- 
 \family default
-[
+\series default
+ [
 \family typewriter
 \emph on
 none
@@ -8560,9 +8757,9 @@ dit\SpecialChar \menuseparator
 \bar under
 P
 \bar default
-references 
+references
 \family default
-dialog (tabs 
+ dialog (tabs 
 \family sans
 Input
 \family default
@@ -8593,9 +8790,9 @@ ile
 \bar under
 N
 \bar default
-ew 
+ew
 \family default
-in order to provide useful defaults.
+ in order to provide useful defaults.
  To create this template from inside LyX, all you have to do is to open
  a document with the correct settings, and use the 
 \family sans
@@ -8627,7 +8824,7 @@ This section is completely outdated.
 \end_inset
 
 One often requested feature from LyX users is to be able to interface LyX
- with XFig, Dia, or other similar applications that specialize in producing
+ with Xfig, Dia, or other similar applications that specialize in producing
  a certain kind of diagram, figure, schematic or whatever material might
  be relevant to include in your document.
  Previously, it was only possible to include boring, static, fixed images
@@ -8685,26 +8882,27 @@ How does it work?
 \end_layout
 
 \begin_layout Standard
-The external material feature is based on the concept of a
+The external material feature is based on the concept of a 
 \emph on
- template
+template
 \emph default
 .
  A template is a specification of how LyX should interface with a certain
  kind of material.
- As bundled, LyX comes with predefined templates for XFig figures, Dia diagrams,
+ As bundled, LyX comes with predefined templates for Xfig figures, Dia diagrams,
  various raster format images, gnuplot, and more.
- You can check the actual list by using the 
+ You can check the actual list by using the menu 
 \family sans
 Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
 External
 \family default
 \InsetSpace ~
 
 \family sans
-Material 
+Material
 \family default
-command.
+.
  Furthermore, it is possible to roll your own template to support a specific
  kind of material.
  Later we'll describe in more detail what is involved, and hopefully you
@@ -8716,8 +8914,12 @@ command.
 Another basic idea of the external material feature is to distinguish between
  the original file that serves as a base for final material and the produced
  file that is included in your exported or printed document.
- For example, consider the case of a figure produced with XFig.
- The XFig application itself works on an original file with the 
+ For example, consider the case of a figure produced with 
+\family typewriter
+Xfig
+\family default
+.
+ The Xfig application itself works on an original file with the 
 \family typewriter
 .fig
 \family default
@@ -8746,8 +8948,8 @@ This distinction is important in order to allow updating of the material
  while you are in the process of writing the document.
  Furthermore, it provides us with the flexibility that is needed to support
  multiple export formats.
- For instance, in the case of a plain text file, it is not exactly
- an award-winning idea to include the figure as raw PostScript.
+ For instance, in the case of a plain text file, it is not exactly an award-winn
+ing idea to include the figure as raw PostScript.
  Instead, you'd either prefer to just include a reference to the figure,
  or try to invoke some graphics to Ascii converter to make the final result
  look similar to the real graphics.
@@ -8761,7 +8963,7 @@ Besides supporting the production of different products according to the
  applications.
  In the case of an XFig figure, you are able to invoke 
 \family typewriter
-xfig
+Xfig
 \family default
  on the original file with a single click from within the external material
  dialog in LyX, and also preview the produced PostScript file with 
@@ -8776,228 +8978,22 @@ ghostview
  ultimately be more productive.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-This paragraph is outdated
-\end_layout
-
-\end_inset
-
-So, all in all, LyX has information about a number of different programs
- to use behind the scenes in order to realize all of this machinery.
- This information, in fact, is exactly what is contained in the templates.
- To each template, there is associated a list of command lines that are
- used to invoke applications, convert the original file to the produced
- file, and more.
- This mechanism allows the advanced user to extend the capabilities of LyX
- without fiddling with the source code.
- It requires some footwork to define all the different commands and flags,
- but luckily, the LyX team did all the hard work and specified these for
- you.
-\end_layout
-
-\begin_layout Standard
-But before the trees grow into the skies, we have to admit that we did take
- one tiny short-cut.
- Since you can produce many different kinds of files to go with each exported
- format, one could also expect that it would be possible to preview each
- product.
- The LyX team decided against this in order to keep the user interface simple.
- Instead of providing a button for each exported file format, we decided
- to introduce the concept of the primary file format and just have one button.
- When you press 
-\family sans
-View
-\family default
-\InsetSpace ~
-
-\family sans
-result
-\family default
- in the external material dialog, you will get a view of the produced file
- in the primary file format.
- And the primary file format is specified by your document class.
- For most document classes, the primary file format is LaTeX, but for the
- DocBook document classes, the primary file format is DocBook.
- So, when you view the produced file, keep in mind that it will only be
- a preview of what the main result will be.
- If you want to see how other exported formats turn out, you have to export
- them and preview them by hand.
-\end_layout
-
 \begin_layout Section
-The external material dialog
+External material dialog
 \end_layout
 
 \begin_layout Standard
-You insert external material from the 
+The 
 \family sans
-\bar under
-I
-\bar default
-nsert
+External Material
 \family default
- menu.
- When you do this, a button is inserted into your document, and the external
- material dialog is shown.
- This dialog allows you to describe exactly what material should be included,
- and also how it should be included.
- Furthermore, it provides access to the external applications to either
- view, edit or produce the material that is used in the resulting file.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-This paragraph is outdated
-\end_layout
-
-\end_inset
-
-At the top of this dialog, there is a drop-down list where you can chose
- which template should be used.
- Just below the template drop-down, there's a text area with a short blurb
- about the chosen template that should help you use it.
- Most often, it will provide a short description of the template, and a
- few hints on how to parameterize the use of it.
- Further down, you'll find a filename input field along with a 
-\begin_inset Quotes eld
-\end_inset
-
-Browse
-\begin_inset Quotes erd
-\end_inset
-
- button that allows you to chose which file should be included with the
- standard file browser.
- Thus this field specifies the original file.
- Since the produced file is automatically generated when needed, there is
- no need to give access to it in the user interface.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-This paragraph is outdated
-\end_layout
-
-\end_inset
-
-At the bottom of the dialog, you'll find a general input box called 
+ dialog is described in the 
 \family sans
-Parameters
-\family default
-.
- This box is generally used to parameterize the specific template.
- The specific use should be covered in the help blurb associated with the
- template, but it typically allows you to define variations on how the produced
- file should be generated.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Standard
-This paragraph is outdated
-\end_layout
-
-\end_inset
-
-At the right side of the dialog, you'll find three buttons: 
-\family sans
-Edit
-\family default
-\InsetSpace ~
-
-\family sans
-file
-\family default
-, 
-\family sans
-View
-\family default
-\InsetSpace ~
-
-\family sans
-result
-\family default
-, and 
-\family sans
-Update
-\family default
-\InsetSpace ~
-
-\family sans
-result
-\family default
-.
- These in turn allow you to edit your original file with the appropriate
- editing application, view the produced file as included in the primary
- format document, and finally force an update of the resulting material
- in the primary format.
- Normally, the 
-\family sans
-Update
-\family default
-\InsetSpace ~
-
-\family sans
-result
-\family default
- button will be disabled, because most templates are configured to automatically
- update the produced file when needed.
- In those cases, there is no need to force the production of a new produced
- file.
- However, some templates are configured to not be automatically producing
- the residual product, because the cost of producing the produced file might
- be so large that it would be a pain to do it all the time.
- Those types are known as 
 \emph on
-manual
+EmbeddedObjects
+\family default
 \emph default
- external material.
- In those cases, you can use the button to force the production of the produced
- file exactly when you need it, and thus control the amount of work that
- is done.
- In fact, it is 
-\emph on
-your
-\emph default
- responsibility to do this to keep the produced files current at all times:
- before printing, before exporting, before viewing, etc.
- At some time in the future, it might be possible that LyX will help you
- with this task.Any changes in the template, filename or parameters are actually
- applied whenever you press 
-\family sans
-Edit file
-\family default
-, 
-\family sans
-View
-\family default
-\InsetSpace ~
-
-\family sans
-result
-\family default
- or 
-\family sans
-Update
-\family default
-\InsetSpace ~
-
-\family sans
-result
-\family default
- buttons.
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -9665,9 +9661,9 @@ Preamble\InsetSpace ~
 \series default
  This command specifies a preamble snippet that will be included in the
  LaTeX preamble.
- It has to be defined using
+ It has to be defined using 
 \family typewriter
- PreambleDef
+PreambleDef
 \family default
  \SpecialChar \ldots{}
  
@@ -10660,7 +10656,9 @@ File
 
 \family sans
 M-f\InsetSpace ~
-a 
+a
+\family default
+ 
 \family typewriter
 buffer-write-as
 \end_layout
@@ -10708,7 +10706,9 @@ file_export
 
 \family sans
 M-f\InsetSpace ~
-f 
+f
+\family default
+ 
 \family typewriter
 buffer-export fax
 \end_layout
@@ -10732,7 +10732,9 @@ file_import
 
 \family sans
 M-f\InsetSpace ~
-n 
+n
+\family default
+ 
 \family typewriter
 buffer-new
 \end_layout
@@ -10778,7 +10780,9 @@ buffer-write
 
 \family sans
 M-f\InsetSpace ~
-t 
+t
+\family default
+ 
 \family typewriter
 buffer-new-template
 \end_layout
@@ -10789,8 +10793,10 @@ buffer-new-template
 \family sans
 M-f\InsetSpace ~
 v
+\family default
+ 
 \family typewriter
- file_vc
+file_vc
 \family default
  submenu 
 \end_layout
@@ -10801,8 +10807,10 @@ v
 
 \family sans
 h
+\family default
+ 
 \family typewriter
- vc-history 
+vc-history 
 \end_layout
 
 \begin_layout List
@@ -10810,8 +10818,10 @@ h
 
 \family sans
 i
+\family default
+ 
 \family typewriter
- vc-check-in
+vc-check-in
 \end_layout
 
 \begin_layout List
@@ -10819,8 +10829,10 @@ i
 
 \family sans
 l
+\family default
+ 
 \family typewriter
- vc-revert
+vc-revert
 \end_layout
 
 \begin_layout List
@@ -10828,8 +10840,10 @@ l
 
 \family sans
 o
+\family default
+ 
 \family typewriter
- vc-check-out
+vc-check-out
 \end_layout
 
 \begin_layout List
@@ -10837,8 +10851,10 @@ o
 
 \family sans
 r
+\family default
+ 
 \family typewriter
- vc-register
+vc-register
 \end_layout
 
 \begin_layout List
@@ -10846,8 +10862,10 @@ r
 
 \family sans
 u
+\family default
+ 
 \family typewriter
- vc-undo-last
+vc-undo-last
 \end_layout
 
 \end_deeper
@@ -10856,7 +10874,9 @@ u
 
 \family sans
 M-f\InsetSpace ~
-x 
+x
+\family default
+ 
 \family typewriter
 lyx-quit
 \end_layout
@@ -11136,8 +11156,10 @@ math-panel
 
 \family sans
 a
+\family default
+ 
 \family typewriter
- floats-operate openfoot
+floats-operate openfoot
 \end_layout
 
 \begin_layout List
@@ -11145,8 +11167,10 @@ a
 
 \family sans
 c
+\family default
+ 
 \family typewriter
- floats-operate closefoot
+floats-operate closefoot
 \end_layout
 
 \begin_layout List
@@ -11154,8 +11178,10 @@ c
 
 \family sans
 f
+\family default
+ 
 \family typewriter
- floats-operate openfig
+floats-operate openfig
 \end_layout
 
 \begin_layout List
@@ -11163,8 +11189,10 @@ f
 
 \family sans
 m
+\family default
+ 
 \family typewriter
- melt
+melt
 \end_layout
 
 \begin_layout List
@@ -11172,8 +11200,10 @@ m
 
 \family sans
 o
+\family default
+ 
 \family typewriter
- open-stuff
+open-stuff
 \end_layout
 
 \begin_layout List
@@ -11181,8 +11211,10 @@ o
 
 \family sans
 t
+\family default
+ 
 \family typewriter
- floats-operate closefig
+floats-operate closefig
 \end_layout
 
 \end_deeper
@@ -11208,7 +11240,7 @@ p
  
 \family typewriter
 dialog-preferences
-\family sans
+\family default
  
 \end_layout
 
@@ -11255,7 +11287,9 @@ edit_tabular
 
 \family sans
 M-e\InsetSpace ~
-u 
+u
+\family default
+ 
 \family typewriter
 undo
 \end_layout
@@ -11265,7 +11299,9 @@ undo
 
 \family sans
 M-e\InsetSpace ~
-x 
+x
+\family default
+ 
 \family typewriter
 edit_paste
 \family default
@@ -11970,7 +12006,9 @@ Character
 
 \family sans
 M-c\InsetSpace ~
-b 
+b
+\family default
+ 
 \family typewriter
 font-bold
 \end_layout
@@ -11980,7 +12018,9 @@ font-bold
 
 \family sans
 M-c\InsetSpace ~
-c 
+c
+\family default
+ 
 \family typewriter
 font-noun
 \end_layout
@@ -11990,7 +12030,9 @@ font-noun
 
 \family sans
 M-c\InsetSpace ~
-e 
+e
+\family default
+ 
 \family typewriter
 font-emph
 \end_layout
@@ -12000,7 +12042,9 @@ font-emph
 
 \family sans
 M-c\InsetSpace ~
-m 
+m
+\family default
+ 
 \family typewriter
 math-mode
 \end_layout
@@ -12022,7 +12066,9 @@ font-code
 
 \family sans
 M-c\InsetSpace ~
-r 
+r
+\family default
+ 
 \family typewriter
 font-roman
 \end_layout
@@ -12032,7 +12078,9 @@ font-roman
 
 \family sans
 M-c\InsetSpace ~
-s 
+s
+\family default
+ 
 \family typewriter
 font-sans
 \end_layout
@@ -12042,7 +12090,9 @@ font-sans
 
 \family sans
 M-c\InsetSpace ~
-u 
+u
+\family default
+ 
 \family typewriter
 font-underline
 \end_layout
@@ -12052,7 +12102,9 @@ font-underline
 
 \family sans
 M-c\InsetSpace ~
-space 
+space
+\family default
+ 
 \family typewriter
 font-default
 \end_layout
@@ -12062,7 +12114,9 @@ font-default
 
 \family sans
 M-c\InsetSpace ~
-Down 
+Down
+\family default
+ 
 \family typewriter
 word-lowcase
 \end_layout
@@ -12072,7 +12126,9 @@ word-lowcase
 
 \family sans
 M-c\InsetSpace ~
-Up 
+Up
+\family default
+ 
 \family typewriter
 word-upcase
 \end_layout
@@ -12082,7 +12138,9 @@ word-upcase
 
 \family sans
 M-c\InsetSpace ~
-Right 
+Right
+\family default
+ 
 \family typewriter
 word-capitalize
 \end_layout
@@ -12092,7 +12150,9 @@ word-capitalize
 
 \family sans
 M-s\InsetSpace ~
-h 
+h
+\family default
+ 
 \family typewriter
 font-size huge
 \end_layout
@@ -12150,7 +12210,9 @@ font-size tiny
 
 \family sans
 M-s\InsetSpace ~
-0 
+0
+\family default
+ 
 \family typewriter
 font-size huger
 \end_layout
@@ -12184,7 +12246,9 @@ font-size smallest
 
 \family sans
 M-s\InsetSpace ~
-3 
+3
+\family default
+ 
 \family typewriter
 font-size smaller
 \end_layout
@@ -12242,7 +12306,9 @@ font-size larger
 
 \family sans
 M-s\InsetSpace ~
-8 
+8
+\family default
+ 
 \family typewriter
 font-size largest
 \end_layout
@@ -12252,7 +12318,9 @@ font-size largest
 
 \family sans
 M-s\InsetSpace ~
-9 
+9
+\family default
+ 
 \family typewriter
 font-size huge
 \end_layout
@@ -12298,7 +12366,9 @@ font-size smaller
 
 \family sans
 M-s\InsetSpace ~
-plus 
+plus
+\family default
+ 
 \family typewriter
 font-size increase
 \end_layout
@@ -12308,7 +12378,9 @@ font-size increase
 
 \family sans
 M-s\InsetSpace ~
-minus 
+minus
+\family default
+ 
 \family typewriter
 font-size decrease
 \end_layout
@@ -13056,8 +13128,10 @@ up
 
 \family sans
 C-q
+\family default
+ 
 \family typewriter
- quote-insert 
+quote-insert 
 \end_layout
 
 \begin_layout List
@@ -13928,7 +14002,9 @@ break-paragraph-keep-layout
 \labelwidthstring 00.00.0000
 
 \family sans
-M-S-percent 
+M-S-percent
+\family default
+ 
 \family typewriter
 find-replace
 \end_layout
@@ -14757,7 +14833,9 @@ buffer-write
 \labelwidthstring 00.00.0000
 
 \family sans
-F3 
+F3
+\family default
+ 
 \family typewriter
 buffer-open
 \end_layout
@@ -14864,11 +14942,11 @@ C-c
 \family default
  
 \family typewriter
-copy 
+copy
 \family default
--- Copy, cut, paste is as in Sciword,
+ -- Copy, cut, paste is as in Sciword, 
 \family typewriter
- C-c
+C-c
 \family default
 , 
 \family typewriter
@@ -14889,9 +14967,9 @@ C-d
 \family default
  
 \family typewriter
-math-display 
+math-display
 \family default
--- Display equation toggle: type 
+ -- Display equation toggle: type 
 \family typewriter
 C-d
 \family default
@@ -14925,9 +15003,9 @@ C-f
 \family typewriter
 math-insert 
 \backslash
-frac 
+frac
 \family default
--- Fractions: type 
+ -- Fractions: type 
 \family typewriter
 C-f
 \family default
@@ -14971,9 +15049,9 @@ C-i
 \family typewriter
 math-insert 
 \backslash
-int 
+int
 \family default
--- Inserts 
+ -- Inserts 
 \begin_inset Formula $\int$
 \end_inset
 
@@ -15013,9 +15091,9 @@ C-m
 \family default
  
 \family typewriter
-math-mode 
+math-mode
 \family default
--- A text/math toggle (
+ -- A text/math toggle (
 \family typewriter
 m
 \family default
@@ -15055,9 +15133,9 @@ C-n
 \family default
  
 \family typewriter
-math-number 
+math-number
 \family default
--- Add/remove numbering in a single equation.
+ -- Add/remove numbering in a single equation.
 \end_layout
 
 \begin_layout List
@@ -15115,9 +15193,9 @@ C-o
 \family default
  
 \family typewriter
-file-open 
+file-open
 \family default
--- Open a new document.
+ -- Open a new document.
  (W*ndows)
 \end_layout
 
@@ -15165,9 +15243,9 @@ C-r
 \family typewriter
 math-insert 
 \backslash
-sqrt 
+sqrt
 \family default
--- Square root sign 
+ -- Square root sign 
 \begin_inset Formula $\sqrt{x}$
 \end_inset
 
@@ -15196,9 +15274,9 @@ S-C-R
 \family typewriter
 math-insert 
 \backslash
-root 
+root
 \family default
--- root sign 
+ -- root sign 
 \begin_inset Formula $\sqrt[n]{x}$
 \end_inset
 
@@ -15213,9 +15291,9 @@ C-t
 \family default
  
 \family typewriter
-math-mode 
+math-mode
 \family default
--- Another binding for a switch between the text and the math mode (
+ -- Another binding for a switch between the text and the math mode (
 \family typewriter
 t
 \family default
@@ -15239,9 +15317,9 @@ C-u
 \family default
  
 \family typewriter
-font-underline 
+font-underline
 \family default
--- 
+ -- 
 \bar under
 Underline
 \bar default
@@ -15268,9 +15346,9 @@ C-v
 \family default
  
 \family typewriter
-paste 
+paste
 \family default
--- W*ndows heritage.
+ -- W*ndows heritage.
 \end_layout
 
 \begin_layout List
@@ -15281,9 +15359,9 @@ C-w
 \family default
  
 \family typewriter
-buffer-close 
+buffer-close
 \family default
--- Close the current document (again, a W*ndows heritage).
+ -- Close the current document (again, a W*ndows heritage).
 \end_layout
 
 \begin_layout List
@@ -15316,9 +15394,9 @@ S-C-Z
 \family default
  
 \family typewriter
-redo 
+redo
 \family default
--- the 
+ -- the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -15413,9 +15491,9 @@ C-9
 \family default
  
 \family typewriter
-math-delim ( ) 
+math-delim ( )
 \family default
--- for convenience, pressing 
+ -- for convenience, pressing 
 \family typewriter
 Ctrl-9
 \family default
@@ -15491,9 +15569,9 @@ C-S-less
 \family default
  
 \family typewriter
-math-delim langle rangle 
+math-delim langle rangle
 \family default
--- angular delimiters 
+ -- angular delimiters 
 \begin_inset Formula $\left\langle \right\rangle $
 \end_inset
 
@@ -15629,10 +15707,9 @@ C-period
 \family default
  
 \family typewriter
-accent-dot 
+accent-dot
 \family default
--- overdot accent, \i \.{a}
- (text mode only).
+ -- overdot accent, ȧ (text mode only).
 \end_layout
 
 \begin_layout List
@@ -15645,9 +15722,9 @@ C-comma
 \family typewriter
 math-insert 
 \backslash
-dot 
+dot
 \family default
--- overdot accent, 
+ -- overdot accent, 
 \begin_inset Formula $\dot{a}$
 \end_inset
 
@@ -15681,9 +15758,9 @@ S-C-quotedbl
 \family default
  
 \family typewriter
-accent-umlaut 
+accent-umlaut
 \family default
--- umlaut accent, ä (text mode only)
+ -- umlaut accent, ä (text mode only)
 \end_layout
 
 \begin_layout List
@@ -15696,9 +15773,9 @@ S-C-colon
 \family typewriter
 math-insert 
 \backslash
-ddot 
+ddot
 \family default
--- double dot accent, 
+ -- double dot accent, 
 \begin_inset Formula $\ddot{a}$
 \end_inset
 
@@ -15718,9 +15795,9 @@ C-quoteleft
 \family default
  
 \family typewriter
-accent-grave 
+accent-grave
 \family default
--- grave accent à (text mode only, use 
+ -- grave accent à (text mode only, use 
 \family typewriter
 
 \backslash
@@ -15737,9 +15814,9 @@ S-C-asciitilde
 \family default
  
 \family typewriter
-accent-tilde 
+accent-tilde
 \family default
--- tilde accent ã (text mode only, use 
+ -- tilde accent ã (text mode only, use 
 \family typewriter
 
 \backslash
@@ -15756,9 +15833,9 @@ C-apostrophe
 \family default
  
 \family typewriter
-accent-acute 
+accent-acute
 \family default
--- acute accent á (text mode only, use 
+ -- acute accent á (text mode only, use 
 \family typewriter
 
 \backslash
@@ -15775,9 +15852,9 @@ S-C-asciicircum
 \family default
  
 \family typewriter
-accent-circumflex 
+accent-circumflex
 \family default
--- circumflex (caret) accent â (text mode only, use 
+ -- circumflex (caret) accent â (text mode only, use 
 \family typewriter
 
 \backslash
@@ -15799,9 +15876,9 @@ F2
 \family default
  
 \family typewriter
-buffer-write 
+buffer-write
 \family default
--- Save current document.
+ -- Save current document.
 \end_layout
 
 \begin_layout List
@@ -15812,9 +15889,9 @@ S-F2
 \family default
  
 \family typewriter
-buffer-export latex 
+buffer-export latex
 \family default
--- Write a LaTeX file for the current document.
+ -- Write a LaTeX file for the current document.
 \end_layout
 
 \begin_layout List
@@ -15825,9 +15902,9 @@ F3
 \family default
  
 \family typewriter
-find-replace 
+find-replace
 \family default
--- Find and replace dialog.
+ -- Find and replace dialog.
 \end_layout
 
 \begin_layout List
@@ -15838,9 +15915,9 @@ C-F4
 \family default
  
 \family typewriter
-buffer-close 
+buffer-close
 \family default
--- same as 
+ -- same as 
 \family typewriter
 C-w
 \family default
@@ -15855,9 +15932,9 @@ M-F4
 \family default
  
 \family typewriter
-lyx-quit 
+lyx-quit
 \family default
--- 
+ -- 
 \family typewriter
 Alt-F4
 \family default
@@ -15900,9 +15977,9 @@ F4
 \family default
  
 \family typewriter
-font-default 
+font-default
 \family default
--- stop using any special font
+ -- stop using any special font
 \end_layout
 
 \begin_layout List
@@ -15913,9 +15990,9 @@ F5
 \family default
  
 \family typewriter
-font-bold 
+font-bold
 \family default
--- make 
+ -- make 
 \series bold
 bold
 \series default
@@ -15930,9 +16007,9 @@ F6
 \family default
  
 \family typewriter
-font-emph 
+font-emph
 \family default
--- make 
+ -- make 
 \emph on
 emphasized
 \emph default
@@ -15947,9 +16024,9 @@ F7
 \family default
  
 \family typewriter
-font-code 
+font-code
 \family default
--- make 
+ -- make 
 \family typewriter
 typewritten
 \family default
@@ -15964,9 +16041,9 @@ F8
 \family default
  
 \family typewriter
-font-noun 
+font-noun
 \family default
--- make 
+ -- make 
 \noun on
 Caps/small caps
 \noun default
@@ -16023,9 +16100,9 @@ M-apostrophe
 \family typewriter
 math-insert 
 \backslash
-prime 
+prime
 \family default
--- The 
+ -- The 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16067,9 +16144,9 @@ apostrophe
 \family typewriter
 command-sequence math-superscript; math-insert 
 \backslash
-prime; 
+prime;
 \family default
--- Insert a prime as a superscript (see example above).
+ -- Insert a prime as a superscript (see example above).
 \end_layout
 
 \begin_layout List
@@ -16080,9 +16157,9 @@ C-Up
 \family default
  
 \family typewriter
-math-insert ^ 
+math-insert ^
 \family default
--- Insert an upper index.
+ -- Insert an upper index.
  Also, 
 \family typewriter
 ^ 
@@ -16096,9 +16173,9 @@ C-Down
 \family default
  
 \family typewriter
-math-insert _ 
+math-insert _
 \family default
--- Insert a lower index.
+ -- Insert a lower index.
  Also, 
 \family typewriter
 _
@@ -16115,9 +16192,9 @@ d
 \family typewriter
 math-insert 
 \backslash
-partial 
+partial
 \family default
--- Partial derivative symbol 
+ -- Partial derivative symbol 
 \begin_inset Formula $\partial$
 \end_inset
 
@@ -16135,9 +16212,9 @@ e
 \family typewriter
 math-insert 
 \backslash
-sum 
+sum
 \family default
--- Summation symbol 
+ -- Summation symbol 
 \begin_inset Formula $\sum$
 \end_inset
 
@@ -16183,9 +16260,9 @@ i
 \family typewriter
 math-insert 
 \backslash
-infty 
+infty
 \family default
--- Infinity 
+ -- Infinity 
 \begin_inset Formula $\infty$
 \end_inset
 
@@ -16203,9 +16280,9 @@ x
 \family typewriter
 math-insert 
 \backslash
-times 
+times
 \family default
--- Cross product 
+ -- Cross product 
 \begin_inset Formula $\times$
 \end_inset
 
@@ -16221,9 +16298,9 @@ v
 \family default
  
 \family typewriter
-math-matrix 1 2 
+math-matrix 1 2
 \family default
--- Insert a stacked array 
+ -- Insert a stacked array 
 \begin_inset Formula $\begin{array}{c}
 \begin{array}{c}
 \end{array}\end{array}$
@@ -16242,9 +16319,9 @@ m
 \family default
  
 \family typewriter
-math-matrix 3 3 
+math-matrix 3 3
 \family default
--- Insert a 3
+ -- Insert a 3
 \begin_inset Formula $\times$
 \end_inset
 
@@ -16273,9 +16350,9 @@ S-plus
 \family typewriter
 math-insert 
 \backslash
-dagger 
+dagger
 \family default
--- The 
+ -- The 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16301,9 +16378,9 @@ equal
 \family typewriter
 math-insert 
 \backslash
-equiv 
+equiv
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16328,9 +16405,9 @@ M-equal
 \family typewriter
 math-insert 
 \backslash
-approx 
+approx
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16355,9 +16432,9 @@ M-minus
 \family typewriter
 math-insert 
 \backslash
-sim 
+sim
 \family default
--- The 
+ -- The 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16382,9 +16459,9 @@ C-minus
 \family typewriter
 math-insert 
 \backslash
-rightarrow 
+rightarrow
 \family default
--- The arrow 
+ -- The arrow 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -16405,9 +16482,9 @@ S-M-less
 \family typewriter
 math-insert 
 \backslash
-leq 
+leq
 \family default
--- Less-or-equal 
+ -- Less-or-equal 
 \begin_inset Formula $\leq$
 \end_inset
 
@@ -16424,9 +16501,9 @@ S-M-greater
 \family typewriter
 math-insert 
 \backslash
-geq 
+geq
 \family default
--- Greater-or-equal 
+ -- Greater-or-equal 
 \begin_inset Formula $\geq$
 \end_inset
 
@@ -16444,9 +16521,9 @@ S-less
 \family typewriter
 math-insert 
 \backslash
-ll 
+ll
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16472,9 +16549,9 @@ S-greater
 \family typewriter
 math-insert 
 \backslash
-gg 
+gg
 \family default
--- 
+ -- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -16892,9 +16969,7 @@ neq
 \end_layout
 
 \begin_layout Subsection
-Other Acce
-\change_unchanged
-lerators
+Other Accelerators
 \end_layout
 
 \begin_layout List
@@ -16902,7 +16977,9 @@ lerators
 
 \family sans
 M-k\InsetSpace ~
-o 
+o
+\family default
+ 
 \family typewriter
 keymap-off
 \end_layout
@@ -16912,7 +16989,9 @@ keymap-off
 
 \family sans
 M-k\InsetSpace ~
-t 
+t
+\family default
+ 
 \family typewriter
 keymap-toggle
 \end_layout
@@ -16922,7 +17001,9 @@ keymap-toggle
 
 \family sans
 M-k\InsetSpace ~
-x 
+x
+\family default
+ 
 \family typewriter
 keymap-off
 \end_layout
@@ -16932,7 +17013,9 @@ keymap-off
 
 \family sans
 M-k\InsetSpace ~
-1 
+1
+\family default
+ 
 \family typewriter
 keymap-primary
 \end_layout
@@ -16942,7 +17025,9 @@ keymap-primary
 
 \family sans
 M-k\InsetSpace ~
-2 
+2
+\family default
+ 
 \family typewriter
 keymap-secondary
 \end_layout
