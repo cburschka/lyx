@@ -169,7 +169,7 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 \end_preamble
-\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage
+\options tablecaptionabove,fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage
 \language english
 \inputencoding auto
 \font_roman default
@@ -334,6 +334,12 @@ name "Figure"
 Graphics Dialog
 \begin_inset LatexCommand index
 name "Figure ! Graphics Dialog"
+
+\end_inset
+
+
+\begin_inset LatexCommand label
+name "sec:Graphics-Dialog"
 
 \end_inset
 
@@ -19248,6 +19254,42 @@ captionsetup[table]{labelfont={bf,sf}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ The option 
+\series bold
+tableposition=top
+\series default
+ has no effect when a 
+\series bold
+koma-script
+\series default
+
+\begin_inset LatexCommand index
+name "LaTeX-packages ! koma-script"
+
+\end_inset
+
+ document class is used.
+ In this case the document class option 
+\series bold
+tablecaptionabove
+\series default
+ must be used.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 For more information about the package 
 \series bold
 caption
@@ -19259,6 +19301,61 @@ key "caption,caption-de"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+To change the label name from e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Figure
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+Image
+\begin_inset Quotes erd
+\end_inset
+
+ use this preamble command:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+fnum@figure}{Image~
+\backslash
+thefigure}
+\end_layout
+
+\begin_layout Standard
+where 
+\series bold
+
+\backslash
+thefigure
+\series default
+ inserts the figure number and
+\series bold
+ 
+\begin_inset Quotes eld
+\end_inset
+
+~
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ creates a protected space.
 \end_layout
 
 \begin_layout Standard
@@ -26512,6 +26609,870 @@ hyperref
 href
 \series default
 .
+\end_layout
+
+\begin_layout Chapter
+External Stuff
+\begin_inset LatexCommand index
+name "External Stuff"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+File
+\family default
+ you can insert external material to your document.
+ This can be:
+\end_layout
+
+\begin_layout Description
+LyX\InsetSpace ~
+Document Another LyX document; its content is directly inserted to your
+ document.
+\end_layout
+
+\begin_layout Description
+Plain\InsetSpace ~
+Text A text document; every of its text lines is inserted to your document
+ as own paragraph.
+\end_layout
+
+\begin_layout Description
+Plain\InsetSpace ~
+Text,\InsetSpace ~
+Join\InsetSpace ~
+Lines A text document; its text lines are inserted as they
+ are.
+ Empty text lines creates a new paragraph in your document.
+\end_layout
+
+\begin_layout Description
+External\InsetSpace ~
+Material Files in various formats.
+\end_layout
+
+\begin_layout Description
+Child\InsetSpace ~
+Document LyX or LaTeX-documents.
+\end_layout
+
+\begin_layout Section
+External Material
+\begin_inset LatexCommand index
+name "External Stuff ! External Material"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The external material feature allows you to insert files to your document
+ without converting them previously to a format that can be read by the
+ document output format because LyX takes care of needed conversions.
+ This is similar to images that can be inserted in various image formats
+ to LyX documents.
+\end_layout
+
+\begin_layout Standard
+External material can be inserted via the 
+\family sans
+External Material
+\family default
+ dialog that is accessible with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+External\InsetSpace ~
+Material
+\family default
+.
+ Currently the following file types (
+\family sans
+Templates
+\family default
+) are allowed:
+\end_layout
+
+\begin_layout Description
+ChessDiagram This template supports chess position diagrams made with the
+ program 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://en.wikipedia.org/wiki/XBoard}{
+\end_layout
+
+\end_inset
+
+
+\series bold
+XBoard
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Date This inserts the date in the form 
+\emph on
+Date-Month-Year
+\emph default
+.
+ This is a date inserted as external material: 
+\begin_inset External
+	template Date
+	filename .
+
+\end_inset
+
+
+\newline
+The date is not shown within LyX, only in the output.
+ There are two other methods of inserting a date, via menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Date
+\family default
+ and with the LaTeX command 
+\series bold
+
+\backslash
+today
+\series default
+ as ERT.
+ The different methods are compared in Table\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "tab:Comparison-of-the"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+LilyPond This template is used for music notation typeset with the program
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+linebreak 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://en.wikipedia.org/wiki/LilyPond}{
+\end_layout
+
+\end_inset
+
+
+\series bold
+LilyPond
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Standard
+The command 
+\series bold
+
+\backslash
+linebreak
+\series default
+ breaks the line while the remaining text in the line is stretched to the
+ page margin.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+RasterImage This can be used for bitmap images.
+ Nearly all popular image formats are supported.
+ The image can be treated in the 
+\family sans
+External material
+\family default
+ dialog like the images that are usually included via the 
+\family sans
+Graphics
+\family default
+ dialog as described in section\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sec:Graphics-Dialog"
+
+\end_inset
+
+.
+ The difference is that only raster images are allowed, that means that
+ PDF and EPS-images are not supported.
+\end_layout
+
+\begin_layout Description
+Xfig This template supports images created with the program 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+href{http://en.wikipedia.org/wiki/Xfig}{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Xfig
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "tab:Comparison-of-the"
+
+\end_inset
+
+Comparison of the date input methods.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Document format
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+External Material\SpecialChar \menuseparator
+Date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family sans
+Insert\SpecialChar \menuseparator
+Date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+command 
+\series bold
+
+\backslash
+today
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+LyX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as inset box
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as ERT inset box
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+LaTeX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as command
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+DVI, PDF, PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+as date
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When you use the option 
+\family sans
+Draft
+\family default
+ in the 
+\family sans
+File
+\family default
+ tab of the 
+\family sans
+External Material
+\family default
+ dialog, only the path to the inserted file is shown in the output.
+\newline
+External
+ material is displayed in LyX either as box like this: 
+\begin_inset Graphics
+	filename clipart/ExternalMaterialQt4.png
+	scale 85
+
+\end_inset
+
+ or as image, depending on the setting in the 
+\family sans
+LyX\InsetSpace ~
+View
+\family default
+ tab of the 
+\family sans
+External Material
+\family default
+ dialog.
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+\emph on
+Customization
+\family default
+\emph default
+ manual explains how you can define your own templates.
+\end_layout
+
+\begin_layout Section
+Child Documents
+\begin_inset LatexCommand index
+name "External Stuff ! Child Documents"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Files ! Child Documents"
+
+\end_inset
+
+
+\begin_inset LatexCommand index
+name "Files ! Include"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Child documents are used when you have a long document consisting of several
+ larger parts or sections.
+ For maintenance it is often useful and sometimes even required to split
+ the document in several files that can be revised separately.
+ The different documents are then the so called child documents and a master
+ document connects them to print the full document or parts of it.
+\end_layout
+
+\begin_layout Standard
+Included documents are displayed in LyX as a box like this: 
+\begin_inset Graphics
+	filename clipart/ChildDocumentQt4.png
+	scale 85
+
+\end_inset
+
+ To include child documents to a master document use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+Child\InsetSpace ~
+Documents
+\family default
+.
+ A dialog pops up where you can choose between three include methods:
+\end_layout
+
+\begin_layout Description
+Include You can include LyX and LaTeX-documents.
+ When you press the 
+\family sans
+Load
+\family default
+ button in the 
+\family sans
+Child Document
+\family default
+ dialog, the included documents will be opened in LyX in a new file tab
+ so that you can modify it.
+\newline
+
+\end_layout
+
+\begin_layout Standard
+Here is a child document inserted using 
+\family sans
+Include
+\family default
+: 
+\begin_inset Include \include{DummyDocument1.lyx}
+preview false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The section numbering includes the sections of the included files in the
+ order they are inserted in the master document.
+ The included example document has for example a subsection that is numbered
+ as subsection of this section.
+ Labels of included documents can be referenced: Subsection\InsetSpace ~
+
+\begin_inset LatexCommand ref
+reference "sub:External-Subsection-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The preamble of the child document is ignored, only the preamble of the
+ master document is used.
+ Included documents are inserted starting on a new page and end with a pagebreak.
+\end_layout
+
+\begin_layout Standard
+With the LaTeX-command 
+\series bold
+
+\backslash
+includeonly 
+\series default
+you can specify which included child documents are processed when the output
+ is generated.
+ This is useful when you are perhaps only working on a certain chapter of
+ your large document as this saves compiling time.
+ 
+\series bold
+
+\backslash
+includeonly
+\series default
+ is inserted to the master document preamble.
+ It takes a comma-separated list of the filenames as argument, e.g.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+includeonly{chapter1,chapter5}
+\end_layout
+
+\begin_layout Standard
+will only process the included files named 
+\begin_inset Quotes eld
+\end_inset
+
+chapter1.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ (or 
+\begin_inset Quotes eld
+\end_inset
+
+chapter1.tex
+\begin_inset Quotes erd
+\end_inset
+
+) and 
+\begin_inset Quotes eld
+\end_inset
+
+chapter5.lyx
+\begin_inset Quotes erd
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ When you have included a LyX- or LaTeX-file, you are warned when you export/vie
+w the document in case that the child document uses another document class
+ than the master document as this will lead to unexpected outputs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Input This method is very similar to the Include method.
+ The differences are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Input files don't start with a new page and don't end with a pagebreak.
+\end_layout
+
+\begin_layout Itemize
+Input files can be previewed in LyX when 
+\family sans
+Instant\InsetSpace ~
+Preview
+\family default
+ is enabled in LyX's preferences under 
+\family sans
+Look\InsetSpace ~
+and\InsetSpace ~
+feel\SpecialChar \menuseparator
+Graphics
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+The LaTeX-command 
+\series bold
+
+\backslash
+includeonly
+\series default
+ cannot be used.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Here is a child document inserted using 
+\family sans
+Input
+\family default
+: 
+\begin_inset Include \input{DummyDocument2.lyx}
+preview true
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Verbatim With this method every text file can be included.
+ The file is shown in the output with its source code, no command used in
+ the text is invoked.
+ You can use the option 
+\family sans
+Mark spaces in output
+\family default
+ that displays the character 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textvisiblespace 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ for every space character in the source code.
+ The difference to the method via the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+File\SpecialChar \menuseparator
+Plain\InsetSpace ~
+Text
+\family default
+ is that the document content is not shown in LyX.
+\end_layout
+
+\begin_layout Standard
+Here is a child document inserted as Verbatim: 
+\begin_inset Include \verbatiminput{DummyTextDocument.txt}
+preview false
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+Here is a child document inserted as Verbatim using the 
+\family sans
+Mark spaces in output
+\family default
+ option: 
+\begin_inset Include \verbatiminput*{DummyTextDocument.txt}
+preview false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ As you can see in the examples above, the text of the documents included
+ as verbatim is not broken at the end of the document lines.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Including the same document twice in a document using different methods
+ could cause LaTeX-problems.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

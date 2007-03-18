@@ -2460,6 +2460,9 @@ lib_doc_sv_files = Split('''
 lib_doc_files = Split('''
     Customization.lyx
     DocStyle.lyx
+    DummyTextDocument.txt
+    DummyDocument1.lyx
+    DummyDocument2.lyx
     EmbeddedObjects.lyx
     Extended.lyx
     FAQ.lyx
