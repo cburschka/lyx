@@ -1,0 +1,56 @@
+#LyX 1.5.0svn created this file. For more info see http://www.lyx.org/
+\lyxformat 263
+\begin_document
+\begin_header
+\textclass scrbook
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\spacing single
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "usti" 
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+\begin_inset LatexCommand label
+name "sub:External-Subsection-1"
+
+\end_inset
+
+External Subsection 1
+\end_layout
+
+\begin_layout Standard
+This is a small dummy child document to show how files can be inserted to
+ another document.
+\end_layout
+
+\end_body
+\end_document

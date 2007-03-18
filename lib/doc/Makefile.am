@@ -44,15 +44,20 @@ dist_dedoc_DATA = \
 
 esdocdir = $(pkgdatadir)/doc/es
 dist_esdoc_DATA = \
+	es/EmbeddedObjects.lyx \
+	es/DummyTextDocument.txt \
+	es/DummyDocument1.lyx \
+	es/DummyDocument2.lyx \
 	es/Intro.lyx \
 	es/Tutorial.lyx \
-	es/EmbeddedObjects.lyx
 
 esclipartdocdir = $(pkgdatadir)/doc/es/clipart
 dist_esclipartdoc_DATA = \
+	es/clipart/ChildDocumentQt4.png \
 	es/clipart/ComentNotaImagenQt4.png \
 	es/clipart/CuadroMinipagQt4.png \
 	es/clipart/etiquetaQt4.png \
+	es/clipart/ExternalMaterialQt4.png \
 	es/clipart/flotanteQt4.png \
 	es/clipart/GrisNotaImagenQt4.png \
 	es/clipart/NotaEnmarcadaImg.png \

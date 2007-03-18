@@ -169,7 +169,7 @@
   \setboolean{marginnote}{true}}
  {\setboolean{marginnote}{false}}
 \end_preamble
-\options tablecaptionabove,fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage
+\options fleqn,liststotoc,bibtotoc,idxtotoc,BCOR7.5mm,titlepage,tablecaptionabove
 \language english
 \inputencoding auto
 \font_roman default
@@ -26857,7 +26857,7 @@ reference "sec:Graphics-Dialog"
 \end_layout
 
 \begin_layout Description
-Xfig This template supports images created with the program 
+XFig This template supports images created with the program 
 \begin_inset ERT
 status collapsed
 

@@ -2359,15 +2359,20 @@ lib_doc_de_files = Split('''
 ''')
 
 lib_doc_es_files = Split('''
+    DummyTextDocument.txt
+    DummyDocument1.lyx
+    DummyDocument2.lyx
+    EmbeddedObjects.lyx
     Intro.lyx
     Tutorial.lyx
-    EmbeddedObjects.lyx
 ''')
 
 lib_doc_es_clipart_files = Split('''
     ComentNotaImagenQt4.png
+    ChildDocumentQt4.png
     CuadroMinipagQt4.png
     etiquetaQt4.png
+    ExternalMaterialQt4.png
     flotanteQt4.png
     GrisNotaImagenQt4.png
     NotaEnmarcadaImg.png
