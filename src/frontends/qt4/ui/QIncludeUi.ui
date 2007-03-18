@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>QIncludeUi</class>
  <widget class="QDialog" name="QIncludeUi" >
   <property name="geometry" >
@@ -114,12 +111,12 @@
     <widget class="QComboBox" name="typeCO" >
      <item>
       <property name="text" >
-       <string>Input</string>
+       <string>Include</string>
       </property>
      </item>
      <item>
       <property name="text" >
-       <string>Include</string>
+       <string>Input</string>
       </property>
      </item>
      <item>
@@ -207,10 +204,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
- <includes>
-  <include location="local" >qt_helpers.h</include>
- </includes>
  <tabstops>
   <tabstop>filenameED</tabstop>
   <tabstop>browsePB</tabstop>
@@ -221,6 +214,9 @@
   <tabstop>okPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
+ <includes>
+  <include location="local" >qt_helpers.h</include>
+ </includes>
  <resources/>
  <connections/>
 </ui>

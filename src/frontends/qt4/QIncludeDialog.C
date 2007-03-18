@@ -68,19 +68,20 @@ void QIncludeDialog::closeEvent(QCloseEvent * e)
 void QIncludeDialog::typeChanged(int v)
 {
 	switch (v) {
+		//case Include
 		case 0:
-			visiblespaceCB->setEnabled(false);
-			visiblespaceCB->setChecked(false);
-			previewCB->setEnabled(true);
-			break;
-
-		case 1:
 			visiblespaceCB->setEnabled(false);
 			visiblespaceCB->setChecked(false);
 			previewCB->setEnabled(false);
 			previewCB->setChecked(false);
 			break;
-
+		//case Input
+		case 1:
+			visiblespaceCB->setEnabled(false);
+			visiblespaceCB->setChecked(false);
+			previewCB->setEnabled(true);
+			break;
+		//case Verbatim
 		default:
 			visiblespaceCB->setEnabled(true);
 			previewCB->setEnabled(false);

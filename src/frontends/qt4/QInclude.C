@@ -79,13 +79,13 @@ void QInclude::update_contents()
 	    cmdname != "verbatiminput*")
 		cmdname = "input";
 
-	if (cmdname == "input") {
+	if (cmdname == "include") {
 		dialog_->typeCO->setCurrentIndex(0);
+
+	} else if (cmdname == "input") {
+		dialog_->typeCO->setCurrentIndex(1);
 		dialog_->previewCB->setEnabled(true);
 		dialog_->previewCB->setChecked(params.preview());
-
-	} else if (cmdname == "include") {
-		dialog_->typeCO->setCurrentIndex(1);
 
 	} else if (cmdname == "verbatiminput*") {
 		dialog_->typeCO->setCurrentIndex(2);
@@ -108,9 +108,9 @@ void QInclude::apply()
 
 	int const item = dialog_->typeCO->currentIndex();
 	if (item == 0)
-		params.setCmdName("input");
-	else if (item == 1)
 		params.setCmdName("include");
+	else if (item == 1)
+		params.setCmdName("input");
 	else {
 		if (dialog_->visiblespaceCB->isChecked())
 			params.setCmdName("verbatiminput*");
@@ -127,9 +127,9 @@ void QInclude::browse()
 
 	int const item = dialog_->typeCO->currentIndex();
 	if (item == 0)
-		type = ControlInclude::INPUT;
-	else if (item == 1)
 		type = ControlInclude::INCLUDE;
+	else if (item == 1)
+		type = ControlInclude::INPUT;
 	else
 		type = ControlInclude::VERBATIM;
 
