@@ -29,29 +29,33 @@ import re
 
 possible_documents = ("Intro", "FAQ", "Tutorial", "UserGuide", "EmbeddedObjects", "Extended", "Customization")
 
-def documents(srcdir, lang):
+def documents(srcdir, lang, dir_prefix = None):
     '''Return documents for specified language. Translated files are in lang 
        directory.
     '''
     result = []
+    if dir_prefix is None:
+        dir_prefix = srcdir
     for file in possible_documents:
         fname = os.path.join(srcdir, lang, file + '.lyx')
         if os.access(fname, os.F_OK):
-            result.append(fname)
+            result.append(os.path.join(dir_prefix, lang, file + '.lyx'))
         else:
-            result.append(os.path.join(srcdir, file + '.lyx'))
+            result.append(os.path.join(dir_prefix, file + '.lyx'))
     return result
 
 
-def all_documents(srcdir):
+def all_documents(srcdir, dir_prefix = None):
     '''Return available languages and its documents'''
     languages = {}
+    if dir_prefix is None:
+        dir_prefix = srcdir
     for dir in os.listdir(srcdir):
         if os.path.isdir(os.path.join(srcdir, dir)) and len(dir) == 2:
-            languages[dir] = documents(srcdir, dir)
+            languages[dir] = documents(srcdir, dir, dir_prefix)
     # general, English language
     if 'en' not in languages.keys():
-        languages['en'] = documents(srcdir, 'en')
+        languages['en'] = documents(srcdir, 'en', dir_prefix)
     return languages
   
     
@@ -64,7 +68,7 @@ def main(argv):
 """ % os.path.basename(argv[0])
 
     # What are the languages available? And its documents?
-    languages = all_documents(os.path.dirname(argv[0]))
+    languages = all_documents(os.path.dirname(argv[0]), '')
 
     # sort languages alphabetically
     langs = languages.keys()
@@ -74,7 +78,7 @@ def main(argv):
 
     # Write rules for other languages
     for lang in langs:
-        if os.path.isdir(lang):
+        if lang != 'en':
             toc_name = os.path.join(lang, 'TOC.lyx')
         else:
             # for English, because there is no 'en' directory

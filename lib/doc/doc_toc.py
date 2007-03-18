@@ -127,12 +127,15 @@ def main(argv):
         usage()
         sys.exit(1)
 
+    lang = argv[1]
+    if not os.path.isdir(os.path.join(argv[2], lang)):
+        # need to create lang dir if build dir != src dir
+        os.mkdir(os.path.join(argv[2], lang))
+
     # choose language files
-    if not os.path.isdir(argv[2], argv[1]):
-        lang = "en"
+    if lang == 'en':
         output = os.path.join(argv[2], 'TOC.lyx')
     else:
-        lang = argv[1]
         output = os.path.join(argv[2], lang, 'TOC.lyx')
         # fallback
         if lang not in info:
