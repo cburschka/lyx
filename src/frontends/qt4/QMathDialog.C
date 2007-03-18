@@ -63,7 +63,6 @@ QMathDialog::QMathDialog(QMath * form)
 
 	connect( tearoffPB, SIGNAL( clicked() ), this, SLOT( expandClicked() ) );
 	connect( closePB, SIGNAL( clicked() ), this, SLOT( accept() ) );
-	connect( fracPB, SIGNAL( clicked() ), this, SLOT( fracClicked() ) );
 	connect( superscriptPB, SIGNAL( clicked() ), this, SLOT( superscriptClicked() ) );
 	connect( subscriptPB, SIGNAL( clicked() ), this, SLOT( subscriptClicked() ) );
 	connect( delimitersPB, SIGNAL( clicked() ), this, SLOT( delimiterClicked() ) );
@@ -199,12 +198,6 @@ void QMathDialog::addPanel(int num)
 void QMathDialog::symbol_clicked(const string & str)
 {
 	form_->controller().dispatchInsert(str);
-}
-
-
-void QMathDialog::fracClicked()
-{
-	form_->controller().dispatchInsert("frac");
 }
 
 

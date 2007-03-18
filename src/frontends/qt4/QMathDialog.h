@@ -53,7 +53,6 @@ public:
 public Q_SLOTS:
 	virtual void delimiterClicked();
 	virtual void expandClicked();
-	virtual void fracClicked();
 	virtual void functionSelected(QListWidgetItem *);
 	virtual void matrixClicked();
 	virtual void subscriptClicked();
