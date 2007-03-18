@@ -49,7 +49,7 @@ dist_esdoc_DATA = \
 	es/DummyDocument1.lyx \
 	es/DummyDocument2.lyx \
 	es/Intro.lyx \
-	es/Tutorial.lyx \
+	es/Tutorial.lyx
 
 esclipartdocdir = $(pkgdatadir)/doc/es/clipart
 dist_esclipartdoc_DATA = \
