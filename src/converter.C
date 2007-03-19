@@ -337,7 +337,10 @@ bool Converters::convert(Buffer const * buffer,
 							from_ascii(from_format), from_ascii(to_format)));
 		return false;
 	}
-	OutputParams runparams(&buffer->params().encoding());
+
+	// buffer is only invalid for importing, and then runparams is not
+	// used anyway.
+	OutputParams runparams(buffer ? &buffer->params().encoding() : 0);
 	runparams.flavor = getFlavor(edgepath);
 
 	// Some converters (e.g. lilypond) can only output files to the
