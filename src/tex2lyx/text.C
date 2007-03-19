@@ -1048,7 +1048,13 @@ void parse_noweb(Parser & p, ostream & os, Context & context)
 		return;
 	}
 
-	context.check_end_layout(os);
+	// We use new_paragraph instead of check_end_layout because the stuff
+	// following the noweb chunk needs to start with a \begin_layout.
+	// This may create a new paragraph even if there was none in the
+	// noweb file, but the alternative is an invalid LyX file. Since
+	// noweb code chunks are implemented with a layout style in LyX they
+	// always must be in an own paragraph.
+	context.new_paragraph(os);
 	Context newcontext(true, context.textclass, context.textclass["Scrap"]);
 	newcontext.check_layout(os);
 	os << name;
