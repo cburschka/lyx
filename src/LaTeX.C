@@ -757,18 +757,33 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 
 namespace {
 
-bool insertIfExists(FileName const & absname, DepTable & head)
-{
-	// fs::path may throw an exception if absname is too strange
-	if (!fs::native(absname.toFilesystemEncoding())) {
-		lyxerr[Debug::DEPEND] << '`' << absname.absFilename()
-			<< "' is no valid file name." << endl;
+/**
+ * Wrapper around fs::exists that can handle invalid file names.
+ * In theory we could test with fs::native whether a filename is valid
+ * before calling fs::exists, but in practice it is unusable: On windows it
+ * does not allow spaces, and on unix it does not allow absolute file names.
+ * This function has the disadvantage that it catches also other errors than
+ * invalid names, but for dependency checking we can live with that.
+ */
+bool exists(FileName const & possible_name) {
+	try {
+		return fs::exists(possible_name.toFilesystemEncoding());
+	}
+	catch (fs::filesystem_error const & fe) {
+		lyxerr[Debug::DEPEND] << "Got error `" << fe.what()
+			<< "' while checking whether file `" << possible_name
+			<< "' exists." << endl;
 		return false;
 	}
-	fs::path const path(absname.toFilesystemEncoding());
-	if (fs::exists(path) && !fs::is_directory(path)) {
-			head.insert(absname, true);
-			return true;
+}
+
+
+bool insertIfExists(FileName const & absname, DepTable & head)
+{
+	if (exists(absname) &&
+	    !fs::is_directory(absname.toFilesystemEncoding())) {
+		head.insert(absname, true);
+		return true;
 	}
 	return false;
 }
@@ -823,15 +838,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// check for spaces
 	while (contains(foundfile, ' ')) {
-		// fs::path may throw an exception if absname is too strange
-		bool exists = fs::native(absname.toFilesystemEncoding());
-		if (exists)
-			exists = fs::exists(absname.toFilesystemEncoding());
-		else {
-			lyxerr[Debug::DEPEND] << '`' << absname.absFilename()
-				<< "' is no valid file name." << endl;
-		}
-		if (exists)
+		if (exists(absname))
 			// everything o.k.
 			break;
 		else {
@@ -839,14 +846,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 			// marks; those have to be removed
 			string unquoted = subst(foundfile, "\"", "");
 			absname = makeAbsPath(unquoted);
-			exists = fs::native(absname.toFilesystemEncoding());
-			if (exists)
-				exists = fs::exists(absname.toFilesystemEncoding());
-			else
-				lyxerr[Debug::DEPEND] << '`'
-					<< absname.absFilename()
-					<< "' is no valid file name." << endl;
-			if (exists)
+			if (exists(absname))
 				break;
 			// strip off part after last space and try again
 			string strippedfile;
@@ -860,16 +860,8 @@ bool handleFoundFile(string const & ff, DepTable & head)
 
 	// (2) foundfile is in the tmpdir
 	//     insert it into head
-	// fs::path may throw an exception if absname is too strange
-	bool exists = fs::native(absname.toFilesystemEncoding());
-	if (exists) {
-		fs::path const path = absname.toFilesystemEncoding();
-		exists = fs::exists(path) && !fs::is_directory(path);
-	} else {
-		lyxerr[Debug::DEPEND] << '`' << absname.absFilename()
-			<< "' is no valid file name." << endl;
-	}
-	if (exists) {
+	if (exists(absname) &&
+	    !fs::is_directory(absname.toFilesystemEncoding())) {
 		static regex unwanted("^.*\\.(aux|log|dvi|bbl|ind|glo)$");
 		if (regex_match(onlyfile, unwanted)) {
 			lyxerr[Debug::DEPEND]
