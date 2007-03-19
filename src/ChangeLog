@@ -1,3 +1,8 @@
+2007-03-19  Bernhard Roider  <bernhard.roider@sonnenkinder.org>
+
+	* toc.C (outline): fix bug where moving the last section up in the
+	toc dialog eats the new last paragraph. (bug 3303)
+
 2007-03-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* buffer.C (readHeader): make sure to reset bullets too (bug 3312)

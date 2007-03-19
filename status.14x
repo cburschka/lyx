@@ -37,6 +37,9 @@ What's new
 
 * USER INTERFACE:
 
+- fix bug where moving the last section up in the toc dialog eats the
+  last paragraph (bug 3303).
+
 - Handle undo correctly when inserting a plain text file (bug 3204).
 
 - Make it possible to reset itemize bullets to their original state
