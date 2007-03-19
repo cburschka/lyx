@@ -8053,13 +8053,17 @@ msgstr "À Propos de LyX...|L"
 msgid "About LyX"
 msgstr "À Propos de LyX"
 
+#: lib/ui/classic.ui:425 src/frontends/qt4/QAbout.C:44
+msgid "About %1"
+msgstr "À Propos de %1"
+
 #: lib/ui/classic.ui:426
 msgid "Preferences..."
 msgstr "Préférences..."
 
 #: lib/ui/classic.ui:427
-msgid "Quit LyX"
-msgstr "Quitter LyX"
+msgid "Quit %1"
+msgstr "Quitter %1"
 
 #: lib/ui/stdmenus.inc:25
 msgid "Document|D"
