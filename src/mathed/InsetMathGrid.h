@@ -62,6 +62,8 @@ public:
 		LyXLength crskip_;
 		/// extra distance between lines
 		int skip_;
+		/// Is a page break allowed after this row?
+		bool allow_pagebreak_;
 	};
 
 	// additional per-row information

@@ -113,7 +113,7 @@ InsetMathGrid::CellInfo::CellInfo()
 
 
 InsetMathGrid::RowInfo::RowInfo()
-	: lines_(0), skip_(0)
+	: lines_(0), skip_(0), allow_pagebreak_(true)
 {}
 
 
@@ -616,6 +616,8 @@ docstring InsetMathGrid::eolString(row_type row, bool emptyline, bool fragile) c
 
 	if (!rowinfo_[row].crskip_.zero())
 		eol += '[' + from_utf8(rowinfo_[row].crskip_.asLatexString()) + ']';
+	else if(!rowinfo_[row].allow_pagebreak_)
+		eol += '*';
 
 	// make sure an upcoming '[' does not break anything
 	if (row + 1 < nrows()) {

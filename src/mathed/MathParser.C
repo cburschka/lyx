@@ -111,7 +111,7 @@ bool stared(docstring const & s)
  * environments like "equation" that have a fixed number of rows.
  */
 bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
-	    docstring const & vskip)
+	    docstring const & vskip, bool allow_pagebreak = true)
 {
 	++cellrow;
 	if (cellrow == grid.nrows()) {
@@ -128,11 +128,14 @@ bool addRow(InsetMathGrid & grid, InsetMathGrid::row_type & cellrow,
 			lyxerr << "ignoring extra row";
 			if (!vskip.empty())
 				lyxerr << " with extra space " << to_utf8(vskip);
+			if (!allow_pagebreak)
+				lyxerr << " with no page break allowed";
 			lyxerr << '.' << endl;
 			return false;
 		}
 	}
 	grid.vcrskip(LyXLength(to_utf8(vskip)), cellrow - 1);
+	grid.rowinfo(cellrow - 1).allow_pagebreak_ = allow_pagebreak;
 	return true;
 }
 
@@ -1013,7 +1016,13 @@ void Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "\\") {
 			if (flags & FLAG_ALIGN)
 				return;
-			if (addRow(grid, cellrow, getArg('[', ']'))) {
+			bool added;
+			if (nextToken().asInput() == "*") {
+				getToken();
+				added = addRow(grid, cellrow, docstring(), false);
+			} else
+				added = addRow(grid, cellrow, getArg('[', ']'));
+			if (added) {
 				cellcol = 0;
 				if (grid.asHullInset())
 					grid.asHullInset()->numbered(
