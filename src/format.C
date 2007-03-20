@@ -53,9 +53,9 @@ namespace os = support::os;
 
 namespace {
 
-string const token_from("$$i");
-string const token_path("$$p");
-string const token_socket("$$a");
+string const token_from_format("$$i");
+string const token_path_format("$$p");
+string const token_socket_format("$$a");
 
 
 class FormatNamesEqual : public std::unary_function<Format, bool> {
@@ -309,12 +309,12 @@ bool Formats::view(Buffer const & buffer, FileName const & filename,
 			command += 'r';
 	}
 
-	if (!contains(command, token_from))
-		command += ' ' + token_from;
+	if (!contains(command, token_from_format))
+		command += ' ' + token_from_format;
 
-	command = subst(command, token_from, quoteName(filename.toFilesystemEncoding()));
-	command = subst(command, token_path, quoteName(onlyPath(filename.toFilesystemEncoding())));
-	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
+	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
+	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
+	command = subst(command, token_socket_format, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));
@@ -368,12 +368,12 @@ bool Formats::edit(Buffer const & buffer, FileName const & filename,
 
 	string command = format->editor();
 
-	if (!contains(command, token_from))
-		command += ' ' + token_from;
+	if (!contains(command, token_from_format))
+		command += ' ' + token_from_format;
 
-	command = subst(command, token_from, quoteName(filename.toFilesystemEncoding()));
-	command = subst(command, token_path, quoteName(onlyPath(filename.toFilesystemEncoding())));
-	command = subst(command, token_socket, quoteName(theLyXServerSocket().address()));
+	command = subst(command, token_from_format, quoteName(filename.toFilesystemEncoding()));
+	command = subst(command, token_path_format, quoteName(onlyPath(filename.toFilesystemEncoding())));
+	command = subst(command, token_socket_format, quoteName(theLyXServerSocket().address()));
 	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
 	// FIXME UNICODE utf8 can be wrong for files
 	buffer.message(_("Executing command: ") + from_utf8(command));

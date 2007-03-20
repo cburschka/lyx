@@ -268,11 +268,11 @@ private:
 	double font_scaling_factor_;
 
 	/// We don't own this
-	static Converter const * pconverter_;
+	static lyx::Converter const * pconverter_;
 };
 
 
-Converter const * PreviewLoader::Impl::pconverter_;
+lyx::Converter const * PreviewLoader::Impl::pconverter_;
 
 
 //
