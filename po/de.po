@@ -8652,9 +8652,8 @@ msgid "Insert product"
 msgstr "Produkt einfügen"
 
 #: lib/ui/stdtoolbars.inc:133
-#, fuzzy
 msgid "Insert standard fraction"
-msgstr "Bruch einfügen"
+msgstr "Standard-Bruch einfügen"
 
 #: lib/ui/stdtoolbars.inc:134
 msgid "Insert ( )"
@@ -10681,7 +10680,7 @@ msgstr "Keine horiz. Linie\t\\atop"
 
 #: src/frontends/qt4/QMathDialog.C:140
 msgid "Nice\t\\nicefrac"
-msgstr ""
+msgstr "Mit Schrägstrich\t\\nicefrac"
 
 #: src/frontends/qt4/QMathDialog.C:141
 msgid "Text frac (amsmath)\t\\tfrac"
@@ -10693,7 +10692,7 @@ msgstr ""
 
 #: src/frontends/qt4/QMathDialog.C:143
 msgid "Binomial\t\\choose"
-msgstr ""
+msgstr "Binomialkoeffizient\t\\choose"
 
 #: src/frontends/qt4/QMathDialog.C:147
 msgid "LyX: Math Fonts"
