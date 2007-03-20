@@ -26,7 +26,13 @@ lyx_add_msvc_pch(support)
 	
 include_directories(${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
 
-add_library(support STATIC ${support_sources} ${support_headers})
+if(NOT MERGE_FILES)
+	add_library(support STATIC ${support_sources} ${support_headers})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/support_allinone.C support_sources)
+	add_library(support STATIC ${CMAKE_CURRENT_BINARY_DIR}/support_allinone.C)
+endif(NOT MERGE_FILES)
+
 
 target_link_libraries(support boost_signals)
 

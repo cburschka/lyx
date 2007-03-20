@@ -11,9 +11,15 @@ file(GLOB graphics_headers ${TOP_SRC_DIR}/src/graphics/*.h)
 
 lyx_add_msvc_pch(graphics)
 
+
 include_directories(${TOP_SRC_DIR}/src/graphics)
 
-add_library(graphics STATIC ${graphics_sources} ${graphics_headers})
+if(NOT MERGE_FILES)
+	add_library(graphics STATIC ${graphics_sources} ${graphics_headers})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/graphics_allinone.C graphics_sources)
+	add_library(graphics STATIC ${CMAKE_CURRENT_BINARY_DIR}/graphics_allinone.C)
+endif(NOT MERGE_FILES)
 
 project_source_group("${GROUP_CODE}" graphics_sources graphics_headers)
 

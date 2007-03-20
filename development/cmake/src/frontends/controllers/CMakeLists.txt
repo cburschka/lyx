@@ -13,7 +13,12 @@ lyx_add_msvc_pch(controllers)
 
 include_directories(${TOP_SRC_DIR}/src/frontends/controllers)
 
-add_library(controllers STATIC ${controllers_sources} ${controllers_headers})
+if(NOT MERGE_FILES)
+	add_library(controllers STATIC ${controllers_sources} ${controllers_headers})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/controllers_allinone.C controllers_sources)
+	add_library(controllers STATIC ${CMAKE_CURRENT_BINARY_DIR}/controllers_allinone.C)
+endif(NOT MERGE_FILES)
 
 target_link_libraries(controllers boost_regex boost_filesystem)
 

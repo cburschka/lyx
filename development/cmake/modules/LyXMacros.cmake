@@ -124,3 +124,17 @@ MACRO (LYX_AUTOMOC)
       endif (EXISTS ${_abs_FILE} AND NOT _skip)
    endforeach (_current_FILE)
 endmacro (LYX_AUTOMOC)
+
+
+macro(lyx_merge_files _filename _list)
+	set(_tmp)
+	set(_content)
+   	foreach(_current ${${_list}})
+   		file(READ ${_current} _tmp)
+   		set(_content ${_content} "\n\n\n\n//----------------------------------------\n/*\n file: ${_current} \n*/\n\n")
+   		set(_content ${_content} ${_tmp})
+   	endforeach(_current)  	 
+   	file(WRITE ${_filename} "${_content}")
+endmacro(lyx_merge_files _list _filename)
+
+

@@ -17,7 +17,13 @@ file(GLOB frontends_headers ${TOP_SRC_DIR}/src/frontends/*.h)
 
 lyx_add_msvc_pch(frontends)
 
-add_library(frontends STATIC ${frontends_sources} ${frontends_headers})
+
+if(NOT MERGE_FILES)
+	add_library(frontends STATIC ${frontends_sources} ${frontends_headers})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/frontends_allinone.C frontends_sources)
+	add_library(frontends STATIC ${CMAKE_CURRENT_BINARY_DIR}/frontends_allinone.C)
+endif(NOT MERGE_FILES)
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 

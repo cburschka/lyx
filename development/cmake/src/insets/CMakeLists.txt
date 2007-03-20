@@ -15,7 +15,14 @@ lyx_add_msvc_pch(insets)
 
 include_directories(${TOP_SRC_DIR}/src/insets)
 
-add_library(insets STATIC ${insets_sources} ${insets_headers})
+
+if(NOT MERGE_FILES)
+	add_library(insets STATIC ${insets_sources} ${insets_headers})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/insets_allinone.C insets_sources)
+	add_library(insets STATIC ${CMAKE_CURRENT_BINARY_DIR}/insets_allinone.C)
+endif(NOT MERGE_FILES)
+
 
 project_source_group("${GROUP_CODE}" insets_sources insets_headers)
 
