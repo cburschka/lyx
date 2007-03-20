@@ -14,6 +14,10 @@ SetCompressor /SOLID lzma
 !include "include\declarations.nsh"
 
 #--------------------------------
+# The following commands use makensis to compile two applications.
+# Although these applications are written in NSIS, they do not install anything.
+
+#--------------------------------
 #Compile the launcher
 
 !system '"${NSISDIR}\makensis.exe" "${FILES_LAUNCHER}\launcher.nsi"'
@@ -25,16 +29,23 @@ SetCompressor /SOLID lzma
 
 #--------------------------------
 #LyX Installer, output file can be specified using command line option
-# /DExeFile=/path/to/installer
+# /DExeFile=/path/to/installer or /DBundleExeFile=/path/to/installer if 
+# SETUPTYPE_BUNDLE is defined.
 
-!ifdef ExeFile
+# bundle installer
 !ifdef SETUPTYPE_BUNDLE
+!ifdef BundleExeFile
 OutFile "${BundleExeFile}"
 !else
-OutFile "${ExeFile}"
+Outfile "${SETUP_EXE}"
 !endif
+# regular installer 
+!else
+!ifdef ExeFile
+OutFile "${ExeFile}"
 !else
 Outfile "${SETUP_EXE}"
+!endif
 !endif
 
 #--------------------------------
