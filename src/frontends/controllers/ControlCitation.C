@@ -39,7 +39,7 @@ bool ControlCitation::initialiseParams(string const & data)
 	vector<pair<string, string> > blist;
 	kernel().buffer().fillWithBibKeys(blist);
 
-	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
+	biblio::CiteEngine const engine = kernel().buffer().params().getEngine();
 
 	bool use_styles = engine != biblio::ENGINE_BASIC;
 
@@ -79,7 +79,7 @@ biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 
 biblio::CiteEngine_enum ControlCitation::getEngine() const
 {
-	return biblio::getEngine(kernel().buffer());
+	return kernel().buffer().params().getEngine();
 }
 
 
@@ -87,7 +87,7 @@ vector<string> const ControlCitation::getCiteStrings(string const & key) const
 {
 	vector<string> styles;
 
-	biblio::CiteEngine const engine = biblio::getEngine(kernel().buffer());
+	biblio::CiteEngine const engine = kernel().buffer().params().getEngine();
 	vector<biblio::CiteStyle> const cs = biblio::getCiteStyles(engine);
 
 	if (engine == biblio::ENGINE_NATBIB_NUMERICAL)

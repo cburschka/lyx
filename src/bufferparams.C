@@ -1253,3 +1253,17 @@ string const BufferParams::babelCall(string const & lang_opts) const
 		tmp = string("\\usepackage[") + lang_opts + "]{babel}";
 	return tmp;
 }
+
+
+biblio::CiteEngine_enum BufferParams::getEngine() const
+{
+	// FIXME the class should provide the numerical/
+	// authoryear choice
+	if (getLyXTextClass().provides(LyXTextClass::natbib)
+	   && cite_engine != biblio::ENGINE_NATBIB_NUMERICAL)
+		return biblio::ENGINE_NATBIB_AUTHORYEAR;
+	return cite_engine;
+}
+
+
+

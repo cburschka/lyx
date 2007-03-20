@@ -304,7 +304,7 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 	string const after  = getOptions();
 
 	string label;
-	biblio::CiteEngine const engine = buffer.params().cite_engine;
+	biblio::CiteEngine const engine = buffer.params().getEngine();
 	if (engine != biblio::ENGINE_BASIC) {
 		label = getNatbibLabel(buffer, getCmdName(), getContents(),
 				       before, after, engine);
@@ -321,7 +321,7 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 
 string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 {
-	biblio::CiteEngine const engine = biblio::getEngine(buffer);
+	biblio::CiteEngine const engine = buffer.params().getEngine();
 	if (cache.params == params() && cache.engine == engine)
 		return cache.screen_label;
 
@@ -351,7 +351,7 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 int InsetCitation::plaintext(Buffer const & buffer, ostream & os, OutputParams const &) const
 {
 	if (cache.params == params() &&
-	    cache.engine == biblio::getEngine(buffer))
+	    cache.engine == buffer.params().getEngine())
 		os << cache.generated_label;
 	else
 		os << generateLabel(buffer);

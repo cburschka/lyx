@@ -133,7 +133,7 @@ string const ControlBibtex::getStylefile() const
 	// the different bibtex packages have (and need) their
 	// own "plain" stylefiles
 	biblio::CiteEngine_enum const & engine =
-		biblio::getEngine(kernel().buffer());
+		kernel().buffer().params().getEngine();
 	string defaultstyle;
 	switch (engine) {
 	case biblio::ENGINE_BASIC:

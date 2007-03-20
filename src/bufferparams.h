@@ -230,6 +230,9 @@ public:
 	std::string const paperSizeName() const;
 	///
 	std::string const babelCall(std::string const & lang_opts) const;
+	/// get the appropriate cite engine (natbib handling)
+	lyx::biblio::CiteEngine_enum getEngine() const;
+
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise

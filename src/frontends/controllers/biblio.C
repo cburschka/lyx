@@ -679,12 +679,6 @@ string const CitationStyle::asLatexStr() const
 }
 
 
-CiteEngine_enum getEngine(Buffer const & buffer)
-{
-	return buffer.params().cite_engine;
-}
-
-
 vector<CiteStyle> const getCiteStyles(CiteEngine_enum const & engine)
 {
 	unsigned int nStyles = 0;
