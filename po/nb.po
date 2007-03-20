@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.4.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-03-12 22:36+0100\n"
+"POT-Creation-Date: 2007-03-20 19:51+0100\n"
 "PO-Revision-Date: 2007-02-26 23:42+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -121,58 +121,58 @@ msgstr "Størrelse:"
 #: src/frontends/controllers/ControlDocument.C:49
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:519
+#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Standard"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:74
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "Bitteliten"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:79
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "Minst"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:84
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "Mindre"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:89
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
 msgid "Small"
 msgstr "Liten"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:94
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
 msgid "Normal"
 msgstr "Normal"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:99
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
 msgid "Large"
 msgstr "Stor"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:104
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
 msgid "Larger"
 msgstr "Større"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:109
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
 msgid "Largest"
 msgstr "Størst"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:114
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
 msgid "Huge"
 msgstr "Enorm"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:119
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
 msgstr "Gigantisk"
 
@@ -434,7 +434,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/QDelimiterUi.ui:148
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
-#: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
+#: src/frontends/qt4/ui/QIncludeUi.ui:199 src/frontends/qt4/ui/QLogUi.ui:71
 #: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
@@ -465,7 +465,7 @@ msgstr "&Dummy"
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:702
-#: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:82
+#: src/frontends/qt4/ui/QIncludeUi.ui:189 src/frontends/qt4/ui/QIndexUi.ui:82
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
 #: src/frontends/qt4/ui/QNomenclUi.ui:95 src/frontends/qt4/ui/QNoteUi.ui:31
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
@@ -522,7 +522,7 @@ msgstr "Velg en BibTeX database som skal legges til"
 #: src/frontends/qt4/ui/QBibtexUi.ui:106
 #: src/frontends/qt4/ui/QExternalUi.ui:99
 #: src/frontends/qt4/ui/QGraphicsUi.ui:78
-#: src/frontends/qt4/ui/QIncludeUi.ui:148 src/frontends/qt4/ui/QPrintUi.ui:316
+#: src/frontends/qt4/ui/QIncludeUi.ui:145 src/frontends/qt4/ui/QPrintUi.ui:316
 msgid "&Browse..."
 msgstr "&Se igjennom..."
 
@@ -1019,7 +1019,7 @@ msgid "&Edit File..."
 msgstr "Rediger fil..."
 
 #: src/frontends/qt4/ui/QExternalUi.ui:96
-#: src/frontends/qt4/ui/QIncludeUi.ui:145
+#: src/frontends/qt4/ui/QIncludeUi.ui:142
 msgid "Select a file"
 msgstr "Velg en fil"
 
@@ -1030,7 +1030,7 @@ msgstr "Filnavn"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:109
 #: src/frontends/qt4/ui/QGraphicsUi.ui:65
-#: src/frontends/qt4/ui/QIncludeUi.ui:158 src/frontends/qt4/ui/QPrintUi.ui:296
+#: src/frontends/qt4/ui/QIncludeUi.ui:155 src/frontends/qt4/ui/QPrintUi.ui:296
 msgid "&File:"
 msgstr "&Fil:"
 
@@ -1308,47 +1308,47 @@ msgstr "&Vis i LyX"
 msgid "Sca&le on Screen (%):"
 msgstr "Størrelse på skjermen (%):"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:39
+#: src/frontends/qt4/ui/QIncludeUi.ui:36
 msgid "Show LaTeX preview"
 msgstr "Vis LaTeX forhåndsvisning"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:42
+#: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "&Show preview"
 msgstr "&Forhåndsvisning"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:57
+#: src/frontends/qt4/ui/QIncludeUi.ui:54
 msgid "Underline spaces in generated output"
 msgstr "Understrek blanke tegn i utskrift"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:60
+#: src/frontends/qt4/ui/QIncludeUi.ui:57
 msgid "&Mark spaces in output"
 msgstr "&Vis mellomrom i utskrift"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:83
+#: src/frontends/qt4/ui/QIncludeUi.ui:80
 msgid "File name to include"
 msgstr "Velg dokument som skal settes inn"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:90
+#: src/frontends/qt4/ui/QIncludeUi.ui:87
 msgid "Load the file"
 msgstr "Les inn filen"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:93
+#: src/frontends/qt4/ui/QIncludeUi.ui:90
 msgid "&Load"
 msgstr "&Les inn"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:117 src/insets/insetinclude.C:303
-msgid "Input"
-msgstr ""
-
-#: src/frontends/qt4/ui/QIncludeUi.ui:122 src/insets/insetinclude.C:312
+#: src/frontends/qt4/ui/QIncludeUi.ui:114 src/insets/insetinclude.C:312
 msgid "Include"
 msgstr "Inkluder"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:127 lib/layouts/manpage.layout:122
+#: src/frontends/qt4/ui/QIncludeUi.ui:119 src/insets/insetinclude.C:303
+msgid "Input"
+msgstr ""
+
+#: src/frontends/qt4/ui/QIncludeUi.ui:124 lib/layouts/manpage.layout:122
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:135
+#: src/frontends/qt4/ui/QIncludeUi.ui:132
 msgid "&Include Type:"
 msgstr "&Innkluderingsform:"
 
@@ -1490,7 +1490,7 @@ msgstr "Stil for grenseverdier"
 msgid "Set math font"
 msgstr "Sett matte-font"
 
-#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+#: src/frontends/qt4/ui/QMathUi.ui:337
 msgid "Insert fraction"
 msgstr "Sett inn brøk"
 
@@ -1571,7 +1571,7 @@ msgid "&Shaded"
 msgstr "&Skyggelagt"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1694
+#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1695
 msgid "Single"
 msgstr "Enkel"
 
@@ -1580,7 +1580,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1700
+#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1701
 msgid "Double"
 msgstr "Dobbel"
 
@@ -1701,7 +1701,7 @@ msgstr "Datoformat for \"strftime\""
 msgid "Display &Graphics:"
 msgstr "Grafikkvisning:"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "Av"
 
@@ -1709,7 +1709,7 @@ msgstr "Av"
 msgid "No math"
 msgstr "Ikke matte"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "På"
 
@@ -7838,7 +7838,7 @@ msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
-#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:439
+#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:439
 #: src/text3.C:805
 msgid "Paste"
 msgstr "Lim inn"
@@ -8319,11 +8319,11 @@ msgstr "Lagre dokumentet"
 msgid "Print document"
 msgstr "Skriv ut dokumentet"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:739
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:737
 msgid "Undo"
 msgstr "Angre"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:749
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:747
 msgid "Redo"
 msgstr "Gjør omigjen"
 
@@ -8547,6 +8547,11 @@ msgstr "Sett inn integral"
 msgid "Insert product"
 msgstr "Sett inn produkt"
 
+#: lib/ui/stdtoolbars.inc:133
+#, fuzzy
+msgid "Insert standard fraction"
+msgstr "Sett inn brøk"
+
 #: lib/ui/stdtoolbars.inc:134
 msgid "Insert ( )"
 msgstr "Sett inn ( )"
@@ -8681,57 +8686,57 @@ msgstr "&Nytt"
 msgid "Save bookmark"
 msgstr "Lagre bokmerke"
 
-#: src/BufferView.C:742
+#: src/BufferView.C:740
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/BufferView.C:752
+#: src/BufferView.C:750
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/BufferView.C:910
+#: src/BufferView.C:908
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/BufferView.C:917
+#: src/BufferView.C:915
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/BufferView.C:924
+#: src/BufferView.C:922
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/BufferView.C:927
+#: src/BufferView.C:925
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/BufferView.C:973
+#: src/BufferView.C:971
 #, c-format
 msgid "%1$d words in selection."
 msgstr "Det er %1$d ord i utvalget"
 
-#: src/BufferView.C:976
+#: src/BufferView.C:974
 #, c-format
 msgid "%1$d words in document."
 msgstr "Det er %1$d ord i dokumentet."
 
-#: src/BufferView.C:981
+#: src/BufferView.C:979
 msgid "One word in selection."
 msgstr "Det er ett ord i utvalget."
 
-#: src/BufferView.C:983
+#: src/BufferView.C:981
 msgid "One word in document."
 msgstr "Ett ord i dokumentet."
 
-#: src/BufferView.C:986
+#: src/BufferView.C:984
 msgid "Count words"
 msgstr "Telle ord"
 
-#: src/BufferView.C:1511
+#: src/BufferView.C:1509
 msgid "Select LyX document to insert"
 msgstr "Velg LyX dokument som skal settes inn"
 
-#: src/BufferView.C:1513 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -8740,31 +8745,31 @@ msgstr "Velg LyX dokument som skal settes inn"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView.C:1514 src/lyxfunc.C:1911 src/lyxfunc.C:1984
+#: src/BufferView.C:1512 src/lyxfunc.C:1911 src/lyxfunc.C:1984
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
+#: src/BufferView.C:1516 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1915
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-Dokumenter (*.lyx)"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1925 src/lyxfunc.C:2005
+#: src/BufferView.C:1528 src/lyxfunc.C:1925 src/lyxfunc.C:2005
 #: src/lyxfunc.C:2019 src/lyxfunc.C:2035
 msgid "Canceled."
 msgstr "Avbrutt."
 
-#: src/BufferView.C:1541
+#: src/BufferView.C:1539
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Setter inn dokumentet %1$s..."
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1550
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView.C:1554
+#: src/BufferView.C:1552
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke sette inn dokumentet %1$s"
@@ -8868,7 +8873,7 @@ msgstr "LaTeX tekst"
 msgid "previewed snippet"
 msgstr "forhåndsviste formler o.l."
 
-#: src/LColor.C:110 src/insets/insetnote.C:310
+#: src/LColor.C:110 src/insets/insetnote.C:311
 msgid "note"
 msgstr "notis"
 
@@ -9032,20 +9037,20 @@ msgstr "arv"
 msgid "ignore"
 msgstr "ignorer"
 
-#: src/LaTeX.C:94
+#: src/LaTeX.C:95
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Venter på LaTeX-kjøring nummer %1$d"
 
-#: src/LaTeX.C:297 src/LaTeX.C:384
+#: src/LaTeX.C:298 src/LaTeX.C:385
 msgid "Running MakeIndex."
 msgstr "Kjører MakeIndex."
 
-#: src/LaTeX.C:306 src/LaTeX.C:395
+#: src/LaTeX.C:307 src/LaTeX.C:396
 msgid "Running MakeIndex for nomencl."
 msgstr "Kjører MakeIndex for glossar."
 
-#: src/LaTeX.C:325
+#: src/LaTeX.C:326
 msgid "Running BibTeX."
 msgstr "Kjører BibTeX."
 
@@ -9096,7 +9101,7 @@ msgstr "Ukjent dokumentklasse"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "Bruker standard dokumentklasse, fordi klassen %1$s er ukjent."
 
-#: src/buffer.C:463 src/text.C:292
+#: src/buffer.C:463 src/text.C:293
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Ukjent symbol: %1$s %2$s\n"
@@ -9229,15 +9234,15 @@ msgstr ""
 "tegnkodingen.\n"
 "Å forandre dokumentets tegnkoding til utf8 kan hjelpe."
 
-#: src/buffer.C:1157
+#: src/buffer.C:1158
 msgid "Running chktex..."
 msgstr "Kjører chktex..."
 
-#: src/buffer.C:1170
+#: src/buffer.C:1171
 msgid "chktex failure"
 msgstr "chktex mislyktes"
 
-#: src/buffer.C:1171
+#: src/buffer.C:1172
 msgid "Could not run chktex successfully."
 msgstr "Mislyktes med chktex."
 
@@ -9414,8 +9419,8 @@ msgstr "Alle debug meldinger"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Debugger `%1$s' (%2$s)"
 
-#: src/converter.C:333 src/converter.C:468 src/converter.C:491
-#: src/converter.C:536
+#: src/converter.C:333 src/converter.C:471 src/converter.C:494
+#: src/converter.C:539
 msgid "Cannot convert file"
 msgstr "Kan ikke konvertere fil"
 
@@ -9428,58 +9433,58 @@ msgstr ""
 "Kan ikke konvertere filformatet %1$s til formatet %2$s.\n"
 "Definer en konvertering i preferansene."
 
-#: src/converter.C:420 src/format.C:320 src/format.C:379
+#: src/converter.C:423 src/format.C:320 src/format.C:379
 msgid "Executing command: "
 msgstr "Eksekverer kommando: "
 
-#: src/converter.C:463
+#: src/converter.C:466
 msgid "Build errors"
 msgstr "'Build'-feil"
 
-#: src/converter.C:464
+#: src/converter.C:467
 msgid "There were errors during the build process."
 msgstr "Det ble rapportert feil under kjøring av 'Build' prosessen."
 
-#: src/converter.C:469 src/format.C:327 src/format.C:386
+#: src/converter.C:472 src/format.C:327 src/format.C:386
 #, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Det skjedde en feil ved kjøring av %1$s"
 
-#: src/converter.C:492
+#: src/converter.C:495
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Fikk ikke flyttet midlertidig mappe fra %1$s til %2$s."
 
-#: src/converter.C:538
+#: src/converter.C:541
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Fikk ikke kopiert midlertidig fil fra %1$s til %2$s."
 
-#: src/converter.C:539
+#: src/converter.C:542
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Fikk ikke flyttet midlertidig fil fra %1$s til %2$s."
 
-#: src/converter.C:597
+#: src/converter.C:600
 msgid "Running LaTeX..."
 msgstr "Kjører LaTeX..."
 
-#: src/converter.C:615
+#: src/converter.C:618
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr "LaTeX mislyktes, og LyX finner ikke LaTeX-loggen %1$s."
 
-#: src/converter.C:618
+#: src/converter.C:621
 msgid "LaTeX failed"
 msgstr "LaTeX mislyktes"
 
-#: src/converter.C:620
+#: src/converter.C:623
 msgid "Output is empty"
 msgstr "Ingen utdata"
 
-#: src/converter.C:621
+#: src/converter.C:624
 msgid "An empty output file was generated."
 msgstr "Det ble produsert en tom fil"
 
@@ -9791,17 +9796,17 @@ msgid "Total Height"
 msgstr "Total høyde"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
 msgid "Roman"
 msgstr "Roman"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
 msgid "Typewriter"
 msgstr "Skrivemaskin"
 
@@ -9989,7 +9994,7 @@ msgstr "Ett ord kontrollert."
 msgid "Spelling check completed"
 msgstr "Stavekontroll fullført"
 
-#: src/frontends/controllers/ControlToc.C:112 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.C:139 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Innholdsfortegnelse"
 
@@ -10031,23 +10036,23 @@ msgstr "Ingen endring"
 msgid "Reset"
 msgstr "Tilbakestill"
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
 msgid "Medium"
 msgstr "Medium"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
 msgid "Bold"
 msgstr "Fet"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
 msgid "Upright"
 msgstr "Stående"
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
 msgid "Italic"
 msgstr "Kursiv"
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
 msgid "Slanted"
 msgstr "Skråstilt"
 
@@ -10055,11 +10060,11 @@ msgstr "Skråstilt"
 msgid "Small Caps"
 msgstr "Kapiteler"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
 msgid "Increase"
 msgstr "Øk"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
 msgid "Decrease"
 msgstr "Minsk"
 
@@ -10183,7 +10188,7 @@ msgstr "Normale ikoner"
 msgid "Big-sized icons"
 msgstr "Store ikoner"
 
-#: src/frontends/qt4/GuiView.C:618
+#: src/frontends/qt4/GuiView.C:670
 msgid "LyX"
 msgstr "LyX"
 
@@ -10291,7 +10296,7 @@ msgstr "Dokumentinnstillinger"
 msgid "Length"
 msgstr "Lengde"
 
-#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1697
+#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1698
 msgid "OneHalf"
 msgstr "Halvannen"
 
@@ -10474,139 +10479,139 @@ msgstr "Matte, matrise"
 msgid "Math Delimiter"
 msgstr "Parenteser og klammer"
 
-#: src/frontends/qt4/QMathDialog.C:107
+#: src/frontends/qt4/QMathDialog.C:106
 msgid "LyX: Math Spacing"
 msgstr "LyX: matematiske mellomrom"
 
-#: src/frontends/qt4/QMathDialog.C:109
+#: src/frontends/qt4/QMathDialog.C:108
 msgid "Thin space\t\\,"
 msgstr "Lite mellomrom\t\\,"
 
-#: src/frontends/qt4/QMathDialog.C:110
+#: src/frontends/qt4/QMathDialog.C:109
 msgid "Medium space\t\\:"
 msgstr "Medium mellomrom\t\\:"
 
-#: src/frontends/qt4/QMathDialog.C:111
+#: src/frontends/qt4/QMathDialog.C:110
 msgid "Thick space\t\\;"
 msgstr "Stort mellomrom\t\\;"
 
-#: src/frontends/qt4/QMathDialog.C:112
+#: src/frontends/qt4/QMathDialog.C:111
 msgid "Quadratin space\t\\quad"
 msgstr "Quad mellomrom\t\\quad"
 
-#: src/frontends/qt4/QMathDialog.C:113
+#: src/frontends/qt4/QMathDialog.C:112
 msgid "Double quadratin space\t\\qquad"
 msgstr "Dobbel quad mellomrom\t\\qquad"
 
-#: src/frontends/qt4/QMathDialog.C:114
+#: src/frontends/qt4/QMathDialog.C:113
 msgid "Negative space\t\\!"
 msgstr "Negativt mellomrom\t\\!"
 
-#: src/frontends/qt4/QMathDialog.C:118
+#: src/frontends/qt4/QMathDialog.C:117
 msgid "LyX: Math Roots"
 msgstr "LyX: Røtter"
 
-#: src/frontends/qt4/QMathDialog.C:120
+#: src/frontends/qt4/QMathDialog.C:119
 msgid "Square root\t\\sqrt"
 msgstr "Kvadratrot\t\\sqrt"
 
-#: src/frontends/qt4/QMathDialog.C:121
+#: src/frontends/qt4/QMathDialog.C:120
 msgid "Cube root\t\\root"
 msgstr "Kubikkrot\t\\root"
 
-#: src/frontends/qt4/QMathDialog.C:124
+#: src/frontends/qt4/QMathDialog.C:123
 msgid "Other root\t\\root"
 msgstr "Andre røtter\t\\root"
 
-#: src/frontends/qt4/QMathDialog.C:128
+#: src/frontends/qt4/QMathDialog.C:127
 msgid "LyX: Math Styles"
 msgstr "LyX: Mattestil"
 
-#: src/frontends/qt4/QMathDialog.C:130
+#: src/frontends/qt4/QMathDialog.C:129
 msgid "Display style\t\\displaystyle"
 msgstr "Fremhevet\t\\displaystyle"
 
-#: src/frontends/qt4/QMathDialog.C:131
+#: src/frontends/qt4/QMathDialog.C:130
 msgid "Normal text style\t\\textstyle"
 msgstr "Normal tekststil\t\\textstyle"
 
-#: src/frontends/qt4/QMathDialog.C:132
+#: src/frontends/qt4/QMathDialog.C:131
 msgid "Script (small) style\t\\scriptstyle"
 msgstr "Script (liten)\t\\scriptstyle"
 
-#: src/frontends/qt4/QMathDialog.C:133
+#: src/frontends/qt4/QMathDialog.C:132
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Scriptscript (mindre)\t\\scriptscriptstyle"
 
-#: src/frontends/qt4/QMathDialog.C:137
+#: src/frontends/qt4/QMathDialog.C:136
 msgid "LyX: Fractions"
 msgstr "LyX: Brøker"
 
-#: src/frontends/qt4/QMathDialog.C:139
+#: src/frontends/qt4/QMathDialog.C:138
 msgid "Standard\t\\frac"
 msgstr "Standard\t\\frac"
 
-#: src/frontends/qt4/QMathDialog.C:140
+#: src/frontends/qt4/QMathDialog.C:139
 msgid "No hor. line\t\\atop"
 msgstr "Ingen linje over"
 
-#: src/frontends/qt4/QMathDialog.C:141
+#: src/frontends/qt4/QMathDialog.C:140
 msgid "Nice\t\\nicefrac"
 msgstr "Pen brøk\t\\nicefrac"
 
-#: src/frontends/qt4/QMathDialog.C:142
+#: src/frontends/qt4/QMathDialog.C:141
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr "Tekstbrøk (amsmath)\t\\tfrac"
 
-#: src/frontends/qt4/QMathDialog.C:143
+#: src/frontends/qt4/QMathDialog.C:142
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:144
+#: src/frontends/qt4/QMathDialog.C:143
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:148
+#: src/frontends/qt4/QMathDialog.C:147
 msgid "LyX: Math Fonts"
 msgstr "LyX: Mattefonter"
 
-#: src/frontends/qt4/QMathDialog.C:150
+#: src/frontends/qt4/QMathDialog.C:149
 msgid "Roman\t\\mathrm"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:151
+#: src/frontends/qt4/QMathDialog.C:150
 msgid "Bold\t\\mathbf"
 msgstr "Fet\t\\mathbf"
 
-#: src/frontends/qt4/QMathDialog.C:152
+#: src/frontends/qt4/QMathDialog.C:151
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:153
+#: src/frontends/qt4/QMathDialog.C:152
 msgid "Sans serif\t\\mathsf"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:154
+#: src/frontends/qt4/QMathDialog.C:153
 msgid "Italic\t\\mathit"
 msgstr "Kursiv\t\\mathit"
 
-#: src/frontends/qt4/QMathDialog.C:155
+#: src/frontends/qt4/QMathDialog.C:154
 msgid "Typewriter\t\\mathtt"
 msgstr "Skrivemaskin\t\\mathtt"
 
-#: src/frontends/qt4/QMathDialog.C:156
+#: src/frontends/qt4/QMathDialog.C:155
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:157
+#: src/frontends/qt4/QMathDialog.C:156
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:158
+#: src/frontends/qt4/QMathDialog.C:157
 msgid "Calligraphic\t\\mathcal"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:159
+#: src/frontends/qt4/QMathDialog.C:158
 msgid "Normal text mode\t\\textrm"
 msgstr "Normal tekstmodus\t\\textrm"
 
@@ -10622,7 +10627,7 @@ msgstr "Notisinnstillinger"
 msgid "Paragraph Settings"
 msgstr "Innstillinger for avsnitt"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
 msgid "Senseless with this layout!"
 msgstr "Uten mening for denne stilen!"
 
@@ -10905,7 +10910,7 @@ msgstr ""
 msgid "Opened Caption Inset"
 msgstr ""
 
-#: src/insets/insetcaption.C:275
+#: src/insets/insetcaption.C:276
 msgid "Senseless!!! "
 msgstr "Gir ikke mening!"
 
@@ -10968,7 +10973,7 @@ msgstr "fot"
 msgid "Opened Footnote Inset"
 msgstr "Åpnet fotnote"
 
-#: src/insets/insetfoot.C:86
+#: src/insets/insetfoot.C:87
 msgid "footnote"
 msgstr "fotnote"
 
@@ -11508,15 +11513,15 @@ msgstr "Feil: Klarte ikke å fjerne midlertidig mappe"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolineargument `%1$s'. Avslutter."
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:784
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:913
 msgid "Could not create temporary directory"
 msgstr "Klarte ikke å lage midlertidig mappe"
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11527,11 +11532,11 @@ msgstr ""
 "%1$s. Forsikre deg om at denne\n"
 "stien eksisteres og er skrivbar, og prøv igjen."
 
-#: src/lyx_main.C:1080
+#: src/lyx_main.C:1081
 msgid "Missing user LyX directory"
 msgstr "Ingen brukerkatalog for LyX"
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1082
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -11540,37 +11545,37 @@ msgstr ""
 "Du har oppgitt en brukermappe som ikke fins, %1$s.\n"
 "Brukermappa trengs for å lagre programkonfigurasjonen."
 
-#: src/lyx_main.C:1086
+#: src/lyx_main.C:1087
 msgid "&Create directory"
 msgstr "&Opprett mappe"
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1088
 msgid "&Exit LyX"
 msgstr "&Avslutt LyX"
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr "Ingen brukerkatalog for LyX. Avslutter."
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1093
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Lager mappen %1$s"
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1099
 msgid "Failed to create directory. Exiting."
 msgstr "Mislyktes i å lage mappen. Avslutter."
 
-#: src/lyx_main.C:1271
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr "Liste over debug flagg some støttes:"
 
-#: src/lyx_main.C:1275
+#: src/lyx_main.C:1276
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Setter debug nivå til %1$s"
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1287
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11610,39 +11615,39 @@ msgstr ""
 "\t-version        versjons- og byggeinformasjon\n"
 "Les man sidene til LyX for flere detaljer."
 
-#: src/lyx_main.C:1322 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 msgid "No system directory"
 msgstr ""
 
-#: src/lyx_main.C:1323
+#: src/lyx_main.C:1324
 msgid "Missing directory for -sysdir switch"
 msgstr "Mangler folder for -sysdir parameter"
 
-#: src/lyx_main.C:1333
+#: src/lyx_main.C:1334
 msgid "No user directory"
 msgstr ""
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1335
 msgid "Missing directory for -userdir switch"
 msgstr "Mangler folder for -userdir parameter"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1345
 msgid "Incomplete command"
 msgstr "Ikke komplett kommando"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1346
 msgid "Missing command string after --execute switch"
 msgstr "Mangler kommandostreng etter --execute parameter"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1356
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --export parameter"
 
-#: src/lyx_main.C:1367
+#: src/lyx_main.C:1368
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --import parameter"
 
-#: src/lyx_main.C:1372
+#: src/lyx_main.C:1373
 msgid "Missing filename for --import"
 msgstr "Mangler filnavn for --import"
 
@@ -11666,49 +11671,49 @@ msgstr "En streng har blitt erstattet."
 msgid " strings have been replaced."
 msgstr " strenger har blitt erstattet."
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:52
 msgid "Symbol"
 msgstr "Symbol"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:61 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:60 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Inherit"
 msgstr "Arv"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:62 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:61 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Ignore"
 msgstr "Ignorer"
 
-#: src/lyxfont.C:61
+#: src/lyxfont.C:60
 msgid "Smallcaps"
 msgstr "Kapiteler"
 
-#: src/lyxfont.C:70
+#: src/lyxfont.C:69
 msgid "Toggle"
 msgstr "Bytt"
 
-#: src/lyxfont.C:510
+#: src/lyxfont.C:509
 #, c-format
 msgid "Emphasis %1$s, "
 msgstr "Uthevet %1$s, "
 
-#: src/lyxfont.C:513
+#: src/lyxfont.C:512
 #, c-format
 msgid "Underline %1$s, "
 msgstr "Understreket %1$s, "
 
-#: src/lyxfont.C:516
+#: src/lyxfont.C:515
 #, c-format
 msgid "Noun %1$s, "
 msgstr "Substantiv %1$s, "
 
-#: src/lyxfont.C:521
+#: src/lyxfont.C:520
 #, c-format
 msgid "Language: %1$s, "
 msgstr "Språk: %1$s, "
 
-#: src/lyxfont.C:524
+#: src/lyxfont.C:523
 #, c-format
 msgid "  Number %1$s"
 msgstr "  Nummer %1s"
@@ -12339,23 +12344,23 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1317
+#: src/mathed/InsetMathGrid.C:1319
 msgid "Only one row"
 msgstr "Bare én rad"
 
-#: src/mathed/InsetMathGrid.C:1323
+#: src/mathed/InsetMathGrid.C:1325
 msgid "Only one column"
 msgstr "Bare én kolonne"
 
-#: src/mathed/InsetMathGrid.C:1331
+#: src/mathed/InsetMathGrid.C:1333
 msgid "No hline to delete"
 msgstr "Ingen horisontal linje å fjerne"
 
-#: src/mathed/InsetMathGrid.C:1340
+#: src/mathed/InsetMathGrid.C:1342
 msgid "No vline to delete"
 msgstr "Ingen vertikal linje å fjerne"
 
-#: src/mathed/InsetMathGrid.C:1358
+#: src/mathed/InsetMathGrid.C:1360
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -12588,11 +12593,11 @@ msgstr "LuxiMono"
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: src/text.C:132
+#: src/text.C:133
 msgid "Unknown layout"
 msgstr "Ukjent stil"
 
-#: src/text.C:133
+#: src/text.C:134
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
@@ -12601,91 +12606,91 @@ msgstr ""
 "Avsnittstype '%1$s' fins ikke i klassen '%2$s'\n"
 "Prøver med standard i stedet.\n"
 
-#: src/text.C:164
+#: src/text.C:165
 msgid "Unknown Inset"
 msgstr ""
 
-#: src/text.C:270 src/text.C:283
+#: src/text.C:271 src/text.C:284
 msgid "Change tracking error"
 msgstr "Feil i endringssporing"
 
-#: src/text.C:271
+#: src/text.C:272
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:284
+#: src/text.C:285
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:291
+#: src/text.C:292
 msgid "Unknown token"
 msgstr ""
 
-#: src/text.C:727
+#: src/text.C:728
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/text.C:738
+#: src/text.C:739
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Det er ikke mulig å bruke to mellomrom på denne måten. Les 'Innføring.'"
 
-#: src/text.C:1660
+#: src/text.C:1661
 msgid "[Change Tracking] "
 msgstr "[Endringssporing] "
 
-#: src/text.C:1666
+#: src/text.C:1667
 msgid "Change: "
 msgstr "Endring: "
 
-#: src/text.C:1670
+#: src/text.C:1671
 msgid " at "
 msgstr ""
 
-#: src/text.C:1680
+#: src/text.C:1681
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/text.C:1685
+#: src/text.C:1686
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
-#: src/text.C:1691
+#: src/text.C:1692
 msgid ", Spacing: "
 msgstr ", Linjeavstand: "
 
-#: src/text.C:1703
+#: src/text.C:1704
 msgid "Other ("
 msgstr "Annet ("
 
-#: src/text.C:1712
+#: src/text.C:1713
 msgid ", Inset: "
 msgstr ""
 
-#: src/text.C:1713
+#: src/text.C:1714
 msgid ", Paragraph: "
 msgstr ", Avsnitt: "
 
-#: src/text.C:1714
+#: src/text.C:1715
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/text.C:1715
+#: src/text.C:1716
 msgid ", Position: "
 msgstr ", Posisjon : "
 
-#: src/text.C:1721
+#: src/text.C:1722
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1723
+#: src/text.C:1724
 msgid ", Boundary: "
 msgstr ""
 

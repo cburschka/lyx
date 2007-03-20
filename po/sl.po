@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-03-12 22:36+0100\n"
+"POT-Creation-Date: 2007-03-20 19:51+0100\n"
 "PO-Revision-Date: 2004-01-02 23:55+0100\n"
 "Last-Translator:  Roman Maurer <roman@lugos.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -135,58 +135,58 @@ msgstr "Ve&likost:"
 #: src/frontends/controllers/ControlDocument.C:49
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:519
+#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "privzeta"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:74
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "drobna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:79
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "najmanj¹a"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:84
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "manj¹a"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:89
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
 msgid "Small"
 msgstr "majhna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:94
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
 msgid "Normal"
 msgstr "navadna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:99
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
 msgid "Large"
 msgstr "velika"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:104
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
 msgid "Larger"
 msgstr "veèja"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:109
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
 msgid "Largest"
 msgstr "najveèja"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:114
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
 msgid "Huge"
 msgstr "ogromna"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:119
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
 msgstr "ogromnej¹a"
 
@@ -471,7 +471,7 @@ msgstr "Pravice raz¹irjanja"
 #: src/frontends/qt4/ui/QDelimiterUi.ui:148
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
-#: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
+#: src/frontends/qt4/ui/QIncludeUi.ui:199 src/frontends/qt4/ui/QLogUi.ui:71
 #: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
@@ -503,7 +503,7 @@ msgstr "Povzetek"
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:702
-#: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:82
+#: src/frontends/qt4/ui/QIncludeUi.ui:189 src/frontends/qt4/ui/QIndexUi.ui:82
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
 #: src/frontends/qt4/ui/QNomenclUi.ui:95 src/frontends/qt4/ui/QNoteUi.ui:31
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
@@ -566,7 +566,7 @@ msgstr "Zbirka podatkov BibTeX za rabo"
 #: src/frontends/qt4/ui/QBibtexUi.ui:106
 #: src/frontends/qt4/ui/QExternalUi.ui:99
 #: src/frontends/qt4/ui/QGraphicsUi.ui:78
-#: src/frontends/qt4/ui/QIncludeUi.ui:148 src/frontends/qt4/ui/QPrintUi.ui:316
+#: src/frontends/qt4/ui/QIncludeUi.ui:145 src/frontends/qt4/ui/QPrintUi.ui:316
 msgid "&Browse..."
 msgstr "&Brskaj..."
 
@@ -1107,7 +1107,7 @@ msgid "&Edit File..."
 msgstr "&Uredi datoteko"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:96
-#: src/frontends/qt4/ui/QIncludeUi.ui:145
+#: src/frontends/qt4/ui/QIncludeUi.ui:142
 msgid "Select a file"
 msgstr "Izberite datoteko"
 
@@ -1118,7 +1118,7 @@ msgstr "Ime datoteke"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:109
 #: src/frontends/qt4/ui/QGraphicsUi.ui:65
-#: src/frontends/qt4/ui/QIncludeUi.ui:158 src/frontends/qt4/ui/QPrintUi.ui:296
+#: src/frontends/qt4/ui/QIncludeUi.ui:155 src/frontends/qt4/ui/QPrintUi.ui:296
 msgid "&File:"
 msgstr "&Datoteka:"
 
@@ -1417,47 +1417,47 @@ msgstr "&Prika¾i v LyXu"
 msgid "Sca&le on Screen (%):"
 msgstr "&brez serifov:"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:39
+#: src/frontends/qt4/ui/QIncludeUi.ui:36
 msgid "Show LaTeX preview"
 msgstr "Prika¾i predogled LaTeXa"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:42
+#: src/frontends/qt4/ui/QIncludeUi.ui:39
 msgid "&Show preview"
 msgstr "&Prika¾i predogled"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:57
+#: src/frontends/qt4/ui/QIncludeUi.ui:54
 msgid "Underline spaces in generated output"
 msgstr "Podèrtaj presledke v generiranem izhodu"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:60
+#: src/frontends/qt4/ui/QIncludeUi.ui:57
 msgid "&Mark spaces in output"
 msgstr "&Oznaèi presledke v izhodu"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:83
+#: src/frontends/qt4/ui/QIncludeUi.ui:80
 msgid "File name to include"
 msgstr "Ime datoteke za za vkljuèitev"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:90
+#: src/frontends/qt4/ui/QIncludeUi.ui:87
 msgid "Load the file"
 msgstr "Nalo¾i datoteko"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:93
+#: src/frontends/qt4/ui/QIncludeUi.ui:90
 msgid "&Load"
 msgstr "&Nalo¾i"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:117 src/insets/insetinclude.C:303
-msgid "Input"
-msgstr "Vhod"
-
-#: src/frontends/qt4/ui/QIncludeUi.ui:122 src/insets/insetinclude.C:312
+#: src/frontends/qt4/ui/QIncludeUi.ui:114 src/insets/insetinclude.C:312
 msgid "Include"
 msgstr "Vkljuèi"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:127 lib/layouts/manpage.layout:122
+#: src/frontends/qt4/ui/QIncludeUi.ui:119 src/insets/insetinclude.C:303
+msgid "Input"
+msgstr "Vhod"
+
+#: src/frontends/qt4/ui/QIncludeUi.ui:124 lib/layouts/manpage.layout:122
 msgid "Verbatim"
 msgstr "Dobesedno"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:135
+#: src/frontends/qt4/ui/QIncludeUi.ui:132
 msgid "&Include Type:"
 msgstr "&Vrsta vkljuèitve:"
 
@@ -1599,7 +1599,7 @@ msgstr "Doloèi slog limit"
 msgid "Set math font"
 msgstr "Doloèi matematièno pisavo"
 
-#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+#: src/frontends/qt4/ui/QMathUi.ui:337
 #, fuzzy
 msgid "Insert fraction"
 msgstr "Vnesi ulomek"
@@ -1692,7 +1692,7 @@ msgid "&Shaded"
 msgstr "&Shrani"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1694
+#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1695
 msgid "Single"
 msgstr "Enojni"
 
@@ -1701,7 +1701,7 @@ msgid "1.5"
 msgstr "1,5"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1700
+#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1701
 msgid "Double"
 msgstr "Dvojni"
 
@@ -1824,7 +1824,7 @@ msgstr "Datumski format za izhod strftime"
 msgid "Display &Graphics:"
 msgstr "Prikaz &grafike:"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "izkljuèeno"
 
@@ -1833,7 +1833,7 @@ msgstr "izkljuèeno"
 msgid "No math"
 msgstr "matematika"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "vkljuèeno"
 
@@ -8493,7 +8493,7 @@ msgid "Copy"
 msgstr "Prepi¹i"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
-#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:439
+#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:439
 #: src/text3.C:805
 msgid "Paste"
 msgstr "Prilepi"
@@ -9076,11 +9076,11 @@ msgstr "®elite shraniti spis?"
 msgid "Print document"
 msgstr "Uvozi spis"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:739
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:737
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:749
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:747
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -9354,6 +9354,11 @@ msgstr "Vstavi tabelo"
 msgid "Insert product"
 msgstr "Vstavi koren"
 
+#: lib/ui/stdtoolbars.inc:133
+#, fuzzy
+msgid "Insert standard fraction"
+msgstr "Vnesi ulomek"
+
 #: lib/ui/stdtoolbars.inc:134
 #, fuzzy
 msgid "Insert ( )"
@@ -9508,61 +9513,61 @@ msgstr "primerjano"
 msgid "Save bookmark"
 msgstr "Shrani zaznamek 2"
 
-#: src/BufferView.C:742
+#: src/BufferView.C:740
 #, fuzzy
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView.C:752
+#: src/BufferView.C:750
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView.C:910
+#: src/BufferView.C:908
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/BufferView.C:917
+#: src/BufferView.C:915
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/BufferView.C:924
+#: src/BufferView.C:922
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/BufferView.C:927
+#: src/BufferView.C:925
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/BufferView.C:973
+#: src/BufferView.C:971
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "%1$d words checked."
 
-#: src/BufferView.C:976
+#: src/BufferView.C:974
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "%1$d words checked."
 
-#: src/BufferView.C:981
+#: src/BufferView.C:979
 #, fuzzy
 msgid "One word in selection."
 msgstr "Zaznana ena napaka"
 
-#: src/BufferView.C:983
+#: src/BufferView.C:981
 #, fuzzy
 msgid "One word in document."
 msgstr "Vstavlja se spis "
 
-#: src/BufferView.C:986
+#: src/BufferView.C:984
 #, fuzzy
 msgid "Count words"
 msgstr "Trenutna beseda"
 
-#: src/BufferView.C:1511
+#: src/BufferView.C:1509
 msgid "Select LyX document to insert"
 msgstr "Izberite spis LyXa za vstavitev"
 
-#: src/BufferView.C:1513 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -9571,32 +9576,32 @@ msgstr "Izberite spis LyXa za vstavitev"
 msgid "Documents|#o#O"
 msgstr "Spisi|#s#S"
 
-#: src/BufferView.C:1514 src/lyxfunc.C:1911 src/lyxfunc.C:1984
+#: src/BufferView.C:1512 src/lyxfunc.C:1911 src/lyxfunc.C:1984
 msgid "Examples|#E#e"
 msgstr "Zgledi|#Z#z"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
+#: src/BufferView.C:1516 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1915
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "*.lyx| Dokumenti za LyX (*.lyx)"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1925 src/lyxfunc.C:2005
+#: src/BufferView.C:1528 src/lyxfunc.C:1925 src/lyxfunc.C:2005
 #: src/lyxfunc.C:2019 src/lyxfunc.C:2035
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/BufferView.C:1541
+#: src/BufferView.C:1539
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vstavlja se spis %1$s..."
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1550
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument izvo¾en kot "
 
-#: src/BufferView.C:1554
+#: src/BufferView.C:1552
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Spisa ni moè vstaviti"
@@ -9704,7 +9709,7 @@ msgstr "Besedilo za LaTeX"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/LColor.C:110 src/insets/insetnote.C:310
+#: src/LColor.C:110 src/insets/insetnote.C:311
 msgid "note"
 msgstr "opomba"
 
@@ -9891,21 +9896,21 @@ msgstr "podeduj"
 msgid "ignore"
 msgstr "prezri"
 
-#: src/LaTeX.C:94
+#: src/LaTeX.C:95
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Tek LaTeXa ¹tevilka "
 
-#: src/LaTeX.C:297 src/LaTeX.C:384
+#: src/LaTeX.C:298 src/LaTeX.C:385
 msgid "Running MakeIndex."
 msgstr "Izvaja se MakeIndex."
 
-#: src/LaTeX.C:306 src/LaTeX.C:395
+#: src/LaTeX.C:307 src/LaTeX.C:396
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Izvaja se MakeIndex."
 
-#: src/LaTeX.C:325
+#: src/LaTeX.C:326
 msgid "Running BibTeX."
 msgstr "Izvaja se BibTeX."
 
@@ -9962,7 +9967,7 @@ msgstr "v izbrani razred spisa"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:463 src/text.C:292
+#: src/buffer.C:463 src/text.C:293
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Neznana akcija"
@@ -10088,15 +10093,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1157
+#: src/buffer.C:1158
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:1170
+#: src/buffer.C:1171
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1171
+#: src/buffer.C:1172
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex uspe¹no zagnan"
@@ -10271,8 +10276,8 @@ msgstr ""
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
-#: src/converter.C:333 src/converter.C:468 src/converter.C:491
-#: src/converter.C:536
+#: src/converter.C:333 src/converter.C:471 src/converter.C:494
+#: src/converter.C:539
 #, fuzzy
 msgid "Cannot convert file"
 msgstr "Datoteke ni moè pretvoriti"
@@ -10284,63 +10289,63 @@ msgid ""
 "Define a converter in the preferences."
 msgstr "Ni podatkov za pretvarjanje iz "
 
-#: src/converter.C:420 src/format.C:320 src/format.C:379
+#: src/converter.C:423 src/format.C:320 src/format.C:379
 #, fuzzy
 msgid "Executing command: "
 msgstr "Izvajamo ukaz:"
 
-#: src/converter.C:463
+#: src/converter.C:466
 #, fuzzy
 msgid "Build errors"
 msgstr "Zgradi program"
 
-#: src/converter.C:464
+#: src/converter.C:467
 #, fuzzy
 msgid "There were errors during the build process."
 msgstr "Med gradnjo so nastale napake."
 
-#: src/converter.C:469 src/format.C:327 src/format.C:386
+#: src/converter.C:472 src/format.C:327 src/format.C:386
 #, fuzzy, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Napaka med branjem "
 
-#: src/converter.C:492
+#: src/converter.C:495
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/converter.C:538
+#: src/converter.C:541
 #, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/converter.C:539
+#: src/converter.C:542
 #, fuzzy, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/converter.C:597
+#: src/converter.C:600
 msgid "Running LaTeX..."
 msgstr "LaTeX se izvaja..."
 
-#: src/converter.C:615
+#: src/converter.C:618
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
 
-#: src/converter.C:618
+#: src/converter.C:621
 #, fuzzy
 msgid "LaTeX failed"
 msgstr "Naslov_za_LaTeX "
 
-#: src/converter.C:620
+#: src/converter.C:623
 #, fuzzy
 msgid "Output is empty"
 msgstr "je prazen"
 
-#: src/converter.C:621
+#: src/converter.C:624
 msgid "An empty output file was generated."
 msgstr ""
 
@@ -10676,17 +10681,17 @@ msgid "Total Height"
 msgstr "Copyright"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
 msgid "Roman"
 msgstr "pokonèna"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
 msgid "Sans Serif"
 msgstr "brez serifov"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
 msgid "Typewriter"
 msgstr "pisalni stroj"
 
@@ -10910,7 +10915,7 @@ msgstr "Zaznana ena napaka"
 msgid "Spelling check completed"
 msgstr "Èrkovanje konèano!"
 
-#: src/frontends/controllers/ControlToc.C:112 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.C:139 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Vsebinsko kazalo"
 
@@ -10955,23 +10960,23 @@ msgstr " (Spremenjeno)"
 msgid "Reset"
 msgstr "Resetiraj"
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
 msgid "Medium"
 msgstr "navadna"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
 msgid "Bold"
 msgstr "polkrepka"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
 msgid "Upright"
 msgstr "pokonèna"
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
 msgid "Italic"
 msgstr "le¾eèa"
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
 msgid "Slanted"
 msgstr "nagnjena"
 
@@ -10980,11 +10985,11 @@ msgstr "nagnjena"
 msgid "Small Caps"
 msgstr "majhne velike"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
 msgid "Increase"
 msgstr "Poveèaj"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
 msgid "Decrease"
 msgstr "Zmanj¹aj"
 
@@ -11130,7 +11135,7 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:618
+#: src/frontends/qt4/GuiView.C:670
 msgid "LyX"
 msgstr "LyX"
 
@@ -11248,7 +11253,7 @@ msgstr "Spisi"
 msgid "Length"
 msgstr "Dol¾ina"
 
-#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1697
+#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1698
 #, fuzzy
 msgid "OneHalf"
 msgstr "Polovièni"
@@ -11451,148 +11456,148 @@ msgstr "Matematièna matrika"
 msgid "Math Delimiter"
 msgstr "Matematièna loèila"
 
-#: src/frontends/qt4/QMathDialog.C:107
+#: src/frontends/qt4/QMathDialog.C:106
 #, fuzzy
 msgid "LyX: Math Spacing"
 msgstr "Matematièni presledki"
 
-#: src/frontends/qt4/QMathDialog.C:109
+#: src/frontends/qt4/QMathDialog.C:108
 msgid "Thin space\t\\,"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:110
+#: src/frontends/qt4/QMathDialog.C:109
 msgid "Medium space\t\\:"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:111
+#: src/frontends/qt4/QMathDialog.C:110
 msgid "Thick space\t\\;"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:112
+#: src/frontends/qt4/QMathDialog.C:111
 msgid "Quadratin space\t\\quad"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:113
+#: src/frontends/qt4/QMathDialog.C:112
 msgid "Double quadratin space\t\\qquad"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:114
+#: src/frontends/qt4/QMathDialog.C:113
 msgid "Negative space\t\\!"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:118
+#: src/frontends/qt4/QMathDialog.C:117
 #, fuzzy
 msgid "LyX: Math Roots"
 msgstr "LyX: Matematièna plo¹èa"
 
-#: src/frontends/qt4/QMathDialog.C:120
+#: src/frontends/qt4/QMathDialog.C:119
 msgid "Square root\t\\sqrt"
 msgstr "Kvadratni koren\t\\sqrt"
 
-#: src/frontends/qt4/QMathDialog.C:121
+#: src/frontends/qt4/QMathDialog.C:120
 msgid "Cube root\t\\root"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:124
+#: src/frontends/qt4/QMathDialog.C:123
 msgid "Other root\t\\root"
 msgstr "Drugi koren\t\\root"
 
-#: src/frontends/qt4/QMathDialog.C:128
+#: src/frontends/qt4/QMathDialog.C:127
 #, fuzzy
 msgid "LyX: Math Styles"
 msgstr "LyX: Matematièna plo¹èa"
 
-#: src/frontends/qt4/QMathDialog.C:130
+#: src/frontends/qt4/QMathDialog.C:129
 msgid "Display style\t\\displaystyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:131
+#: src/frontends/qt4/QMathDialog.C:130
 msgid "Normal text style\t\\textstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:132
+#: src/frontends/qt4/QMathDialog.C:131
 msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:133
+#: src/frontends/qt4/QMathDialog.C:132
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:137
+#: src/frontends/qt4/QMathDialog.C:136
 #, fuzzy
 msgid "LyX: Fractions"
 msgstr "LyX: Matematièna plo¹èa"
 
-#: src/frontends/qt4/QMathDialog.C:139
+#: src/frontends/qt4/QMathDialog.C:138
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Standardno"
 
-#: src/frontends/qt4/QMathDialog.C:140
+#: src/frontends/qt4/QMathDialog.C:139
 #, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "Ni veè opomb"
 
-#: src/frontends/qt4/QMathDialog.C:141
+#: src/frontends/qt4/QMathDialog.C:140
 msgid "Nice\t\\nicefrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:142
+#: src/frontends/qt4/QMathDialog.C:141
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:143
+#: src/frontends/qt4/QMathDialog.C:142
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:144
+#: src/frontends/qt4/QMathDialog.C:143
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:148
+#: src/frontends/qt4/QMathDialog.C:147
 #, fuzzy
 msgid "LyX: Math Fonts"
 msgstr "LyX: Matematièna plo¹èa"
 
-#: src/frontends/qt4/QMathDialog.C:150
+#: src/frontends/qt4/QMathDialog.C:149
 msgid "Roman\t\\mathrm"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:151
+#: src/frontends/qt4/QMathDialog.C:150
 msgid "Bold\t\\mathbf"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:152
+#: src/frontends/qt4/QMathDialog.C:151
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:153
+#: src/frontends/qt4/QMathDialog.C:152
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "brez serifov"
 
-#: src/frontends/qt4/QMathDialog.C:154
+#: src/frontends/qt4/QMathDialog.C:153
 msgid "Italic\t\\mathit"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:155
+#: src/frontends/qt4/QMathDialog.C:154
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "pisalni stroj"
 
-#: src/frontends/qt4/QMathDialog.C:156
+#: src/frontends/qt4/QMathDialog.C:155
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:157
+#: src/frontends/qt4/QMathDialog.C:156
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:158
+#: src/frontends/qt4/QMathDialog.C:157
 msgid "Calligraphic\t\\mathcal"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:159
+#: src/frontends/qt4/QMathDialog.C:158
 msgid "Normal text mode\t\\textrm"
 msgstr ""
 
@@ -11611,7 +11616,7 @@ msgstr "Nastavitve plovke"
 msgid "Paragraph Settings"
 msgstr "Postavka literature"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
 msgid "Senseless with this layout!"
 msgstr "Brez pomena s tem videzom!"
 
@@ -11922,7 +11927,7 @@ msgstr "Pot za varnostne kopije:|#P"
 msgid "Opened Caption Inset"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/insetcaption.C:275
+#: src/insets/insetcaption.C:276
 #, fuzzy
 msgid "Senseless!!! "
 msgstr "NaslovPo¹iljatelja"
@@ -11995,7 +12000,7 @@ msgstr "Noga"
 msgid "Opened Footnote Inset"
 msgstr "Odprta zabele¾ka"
 
-#: src/insets/insetfoot.C:86
+#: src/insets/insetfoot.C:87
 #, fuzzy
 msgid "footnote"
 msgstr "OpombaPodÈrto"
@@ -12557,17 +12562,17 @@ msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:784
 #, fuzzy
 msgid "LyX: "
 msgstr "LyX: Url"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:913
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -12575,52 +12580,52 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1080
+#: src/lyx_main.C:1081
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "Izvajamo brez osebnega imenika za LyX."
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1082
 #, fuzzy, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr "Nimate osebnega imenika za LyX."
 
-#: src/lyx_main.C:1086
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Create directory"
 msgstr "LyX: Ustvarja se imenik "
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1088
 #, fuzzy
 msgid "&Exit LyX"
 msgstr "Izhod"
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1093
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Ustvarja se imenik "
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1099
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Klic funkcije ,createDirectory` z napaènim imenom"
 
-#: src/lyx_main.C:1271
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr "Seznam podprtih zastavic za razhro¹èevanje:"
 
-#: src/lyx_main.C:1275
+#: src/lyx_main.C:1276
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavljamo stopnjo razhro¹èevanja na "
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1287
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -12659,47 +12664,47 @@ msgstr ""
 "\n"
 "Veè izbir najdete  v referenènem priroèniku za LyX (man lyx)."
 
-#: src/lyx_main.C:1322 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Uporabni¹ki imenik: "
 
-#: src/lyx_main.C:1323
+#: src/lyx_main.C:1324
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:1333
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Uporabni¹ki imenik: "
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1335
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Naslednji ukaz"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1346
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Manjka ukazni niz za stikalom -x!"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1356
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:1367
+#: src/lyx_main.C:1368
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:1372
+#: src/lyx_main.C:1373
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Izberite datoteko LaTeX za uvoz"
@@ -12727,49 +12732,49 @@ msgstr "Zamenjan je bil en niz."
 msgid " strings have been replaced."
 msgstr " zamenjanih nizov."
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:52
 msgid "Symbol"
 msgstr "simboli"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:61 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:60 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Inherit"
 msgstr "Podeduj"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:62 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:61 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Ignore"
 msgstr "Prezri"
 
-#: src/lyxfont.C:61
+#: src/lyxfont.C:60
 msgid "Smallcaps"
 msgstr "majhne velike"
 
-#: src/lyxfont.C:70
+#: src/lyxfont.C:69
 msgid "Toggle"
 msgstr "Preklopi"
 
-#: src/lyxfont.C:510
+#: src/lyxfont.C:509
 #, fuzzy, c-format
 msgid "Emphasis %1$s, "
 msgstr "Poudari "
 
-#: src/lyxfont.C:513
+#: src/lyxfont.C:512
 #, fuzzy, c-format
 msgid "Underline %1$s, "
 msgstr "podèrtaj "
 
-#: src/lyxfont.C:516
+#: src/lyxfont.C:515
 #, fuzzy, c-format
 msgid "Noun %1$s, "
 msgstr "velike èrke "
 
-#: src/lyxfont.C:521
+#: src/lyxfont.C:520
 #, fuzzy, c-format
 msgid "Language: %1$s, "
 msgstr "Jezik:"
 
-#: src/lyxfont.C:524
+#: src/lyxfont.C:523
 #, fuzzy, c-format
 msgid "  Number %1$s"
 msgstr "©tevilka"
@@ -13386,24 +13391,24 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1317
+#: src/mathed/InsetMathGrid.C:1319
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1323
+#: src/mathed/InsetMathGrid.C:1325
 msgid "Only one column"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1331
+#: src/mathed/InsetMathGrid.C:1333
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Nièesar ni moè storiti"
 
-#: src/mathed/InsetMathGrid.C:1340
+#: src/mathed/InsetMathGrid.C:1342
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1358
+#: src/mathed/InsetMathGrid.C:1360
 #, fuzzy, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Naèrt tabele"
@@ -13654,44 +13659,44 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "pisalni stroj"
 
-#: src/text.C:132
+#: src/text.C:133
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Neznana akcija"
 
-#: src/text.C:133
+#: src/text.C:134
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:164
+#: src/text.C:165
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Neznana akcija"
 
-#: src/text.C:270 src/text.C:283
+#: src/text.C:271 src/text.C:284
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Jezik"
 
-#: src/text.C:271
+#: src/text.C:272
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:284
+#: src/text.C:285
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:291
+#: src/text.C:292
 #, fuzzy
 msgid "Unknown token"
 msgstr "Neznana akcija"
 
-#: src/text.C:727
+#: src/text.C:728
 #, fuzzy
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
@@ -13699,68 +13704,68 @@ msgid ""
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:738
+#: src/text.C:739
 #, fuzzy
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1660
+#: src/text.C:1661
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Jezik"
 
-#: src/text.C:1666
+#: src/text.C:1667
 #, fuzzy
 msgid "Change: "
 msgstr "Strani:"
 
-#: src/text.C:1670
+#: src/text.C:1671
 #, fuzzy
 msgid " at "
 msgstr " za "
 
-#: src/text.C:1680
+#: src/text.C:1681
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Pisava: "
 
-#: src/text.C:1685
+#: src/text.C:1686
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", globina: "
 
-#: src/text.C:1691
+#: src/text.C:1692
 msgid ", Spacing: "
 msgstr ", Presledki: "
 
-#: src/text.C:1703
+#: src/text.C:1704
 msgid "Other ("
 msgstr "Drugi ("
 
-#: src/text.C:1712
+#: src/text.C:1713
 #, fuzzy
 msgid ", Inset: "
 msgstr ", globina: "
 
-#: src/text.C:1713
+#: src/text.C:1714
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "Odstavek"
 
-#: src/text.C:1714
+#: src/text.C:1715
 msgid ", Id: "
 msgstr ""
 
-#: src/text.C:1715
+#: src/text.C:1716
 #, fuzzy
 msgid ", Position: "
 msgstr "Podmena"
 
-#: src/text.C:1721
+#: src/text.C:1722
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1723
+#: src/text.C:1724
 msgid ", Boundary: "
 msgstr ""
 

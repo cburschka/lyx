@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-03-12 22:36+0100\n"
+"POT-Creation-Date: 2007-03-20 19:51+0100\n"
 "PO-Revision-Date: 2005-12-18 15:04+0100\n"
 "Last-Translator: Lorint Hendschel <>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -139,58 +139,58 @@ msgstr "Grandeu:|#G#Z"
 #: src/frontends/controllers/ControlDocument.C:49
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:519
+#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Prémetu"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:74
-#: src/frontends/controllers/character.C:123 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:123 src/lyxfont.C:64
 msgid "Tiny"
 msgstr "Pitites(4)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:79
-#: src/frontends/controllers/character.C:127 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:127 src/lyxfont.C:64
 msgid "Smallest"
 msgstr "Pitites(3)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:84
-#: src/frontends/controllers/character.C:131 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:131 src/lyxfont.C:64
 msgid "Smaller"
 msgstr "Pitites(2)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:89
-#: src/frontends/controllers/character.C:135 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:135 src/lyxfont.C:64
 msgid "Small"
 msgstr "Pitites(1)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:94
-#: src/frontends/controllers/character.C:139 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:139 src/lyxfont.C:64
 msgid "Normal"
 msgstr "Miernuwes"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:99
-#: src/frontends/controllers/character.C:143 src/lyxfont.C:65
+#: src/frontends/controllers/character.C:143 src/lyxfont.C:64
 msgid "Large"
 msgstr "Grandes(1)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:104
-#: src/frontends/controllers/character.C:147 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:147 src/lyxfont.C:65
 msgid "Larger"
 msgstr "Grandes(2)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:109
-#: src/frontends/controllers/character.C:151 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:151 src/lyxfont.C:65
 msgid "Largest"
 msgstr "Grandes(3)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:114
-#: src/frontends/controllers/character.C:155 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:155 src/lyxfont.C:65
 msgid "Huge"
 msgstr "Grandes(4)"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:119
-#: src/frontends/controllers/character.C:159 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:159 src/lyxfont.C:65
 msgid "Huger"
 msgstr "Grandes(5)"
 
@@ -500,7 +500,7 @@ msgstr "Droetes"
 #: src/frontends/qt4/ui/QDelimiterUi.ui:148
 #: src/frontends/qt4/ui/QErrorListUi.ui:62
 #: src/frontends/qt4/ui/QExternalUi.ui:705 src/frontends/qt4/ui/QFloatUi.ui:85
-#: src/frontends/qt4/ui/QIncludeUi.ui:202 src/frontends/qt4/ui/QLogUi.ui:71
+#: src/frontends/qt4/ui/QIncludeUi.ui:199 src/frontends/qt4/ui/QLogUi.ui:71
 #: src/frontends/qt4/ui/QMathUi.ui:57 src/frontends/qt4/ui/QParagraphUi.ui:281
 #: src/frontends/qt4/ui/QPrefsUi.ui:96 src/frontends/qt4/ui/QRefUi.ui:100
 #: src/frontends/qt4/ui/QSearchUi.ui:210
@@ -533,7 +533,7 @@ msgstr ""
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:702
-#: src/frontends/qt4/ui/QIncludeUi.ui:192 src/frontends/qt4/ui/QIndexUi.ui:82
+#: src/frontends/qt4/ui/QIncludeUi.ui:189 src/frontends/qt4/ui/QIndexUi.ui:82
 #: src/frontends/qt4/ui/QMathMatrixUi.ui:170
 #: src/frontends/qt4/ui/QNomenclUi.ui:95 src/frontends/qt4/ui/QNoteUi.ui:31
 #: src/frontends/qt4/ui/QParagraphUi.ui:258 src/frontends/qt4/ui/QRefUi.ui:80
@@ -598,7 +598,7 @@ msgstr "Båze di doneyes:"
 #: src/frontends/qt4/ui/QBibtexUi.ui:106
 #: src/frontends/qt4/ui/QExternalUi.ui:99
 #: src/frontends/qt4/ui/QGraphicsUi.ui:78
-#: src/frontends/qt4/ui/QIncludeUi.ui:148 src/frontends/qt4/ui/QPrintUi.ui:316
+#: src/frontends/qt4/ui/QIncludeUi.ui:145 src/frontends/qt4/ui/QPrintUi.ui:316
 #, fuzzy
 msgid "&Browse..."
 msgstr "Foyter...|#F"
@@ -1180,7 +1180,7 @@ msgid "&Edit File..."
 msgstr "Fitchî EPS|#E"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:96
-#: src/frontends/qt4/ui/QIncludeUi.ui:145
+#: src/frontends/qt4/ui/QIncludeUi.ui:142
 #, fuzzy
 msgid "Select a file"
 msgstr "Tchwezi li roye shûvante"
@@ -1193,7 +1193,7 @@ msgstr "No do fitchî:|#F"
 
 #: src/frontends/qt4/ui/QExternalUi.ui:109
 #: src/frontends/qt4/ui/QGraphicsUi.ui:65
-#: src/frontends/qt4/ui/QIncludeUi.ui:158 src/frontends/qt4/ui/QPrintUi.ui:296
+#: src/frontends/qt4/ui/QIncludeUi.ui:155 src/frontends/qt4/ui/QPrintUi.ui:296
 #, fuzzy
 msgid "&File:"
 msgstr "Fitchî"
@@ -1510,52 +1510,52 @@ msgstr "Fitchî"
 msgid "Sca&le on Screen (%):"
 msgstr ""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:39
+#: src/frontends/qt4/ui/QIncludeUi.ui:36
 #, fuzzy
 msgid "Show LaTeX preview"
 msgstr "Adrovaedje LaTeX"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:42
+#: src/frontends/qt4/ui/QIncludeUi.ui:39
 #, fuzzy
 msgid "&Show preview"
 msgstr "Fitchî"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:57
+#: src/frontends/qt4/ui/QIncludeUi.ui:54
 msgid "Underline spaces in generated output"
 msgstr ""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:60
+#: src/frontends/qt4/ui/QIncludeUi.ui:57
 msgid "&Mark spaces in output"
 msgstr ""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:83
+#: src/frontends/qt4/ui/QIncludeUi.ui:80
 #, fuzzy
 msgid "File name to include"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:90
+#: src/frontends/qt4/ui/QIncludeUi.ui:87
 #, fuzzy
 msgid "Load the file"
 msgstr "Djîveye des tåvleas"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:93
+#: src/frontends/qt4/ui/QIncludeUi.ui:90
 #, fuzzy
 msgid "&Load"
 msgstr "Tcherdjî|#T#L"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:117 src/insets/insetinclude.C:303
-msgid "Input"
-msgstr "Intreye"
-
-#: src/frontends/qt4/ui/QIncludeUi.ui:122 src/insets/insetinclude.C:312
+#: src/frontends/qt4/ui/QIncludeUi.ui:114 src/insets/insetinclude.C:312
 msgid "Include"
 msgstr "Prinde avou"
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:127 lib/layouts/manpage.layout:122
+#: src/frontends/qt4/ui/QIncludeUi.ui:119 src/insets/insetinclude.C:303
+msgid "Input"
+msgstr "Intreye"
+
+#: src/frontends/qt4/ui/QIncludeUi.ui:124 lib/layouts/manpage.layout:122
 msgid "Verbatim"
 msgstr ""
 
-#: src/frontends/qt4/ui/QIncludeUi.ui:135
+#: src/frontends/qt4/ui/QIncludeUi.ui:132
 #, fuzzy
 msgid "&Include Type:"
 msgstr "Prinde avou"
@@ -1722,7 +1722,7 @@ msgstr ""
 msgid "Set math font"
 msgstr "Grandeu del police"
 
-#: src/frontends/qt4/ui/QMathUi.ui:337 lib/ui/stdtoolbars.inc:133
+#: src/frontends/qt4/ui/QMathUi.ui:337
 #, fuzzy
 msgid "Insert fraction"
 msgstr "Sititchî on s' apinse"
@@ -1816,7 +1816,7 @@ msgid "&Shaded"
 msgstr "Schaper"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1694
+#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1695
 #, fuzzy
 msgid "Single"
 msgstr "Simpe|#S"
@@ -1826,7 +1826,7 @@ msgid "1.5"
 msgstr ""
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1700
+#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1701
 #, fuzzy
 msgid "Double"
 msgstr "Dobe|#D"
@@ -1965,7 +1965,7 @@ msgstr ""
 msgid "Display &Graphics:"
 msgstr "Sititchî ene etikete"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:47 src/lyxfont.C:69
 msgid "Off"
 msgstr "Åwe"
 
@@ -1974,7 +1974,7 @@ msgstr "Åwe"
 msgid "No math"
 msgstr "Matematike"
 
-#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:70
+#: src/frontends/qt4/ui/QPrefDisplayUi.ui:57 src/lyxfont.C:69
 msgid "On"
 msgstr "Evoye"
 
@@ -8954,7 +8954,7 @@ msgid "Copy"
 msgstr "Copyî"
 
 #: lib/ui/stdmenus.inc:89 lib/ui/stdtoolbars.inc:53
-#: src/mathed/InsetMathGrid.C:1211 src/mathed/InsetMathNest.C:439
+#: src/mathed/InsetMathGrid.C:1213 src/mathed/InsetMathNest.C:439
 #: src/text3.C:805
 msgid "Paste"
 msgstr "Aclaper"
@@ -9533,11 +9533,11 @@ msgstr "Schaper li documint?"
 msgid "Print document"
 msgstr "Abaguer on documint"
 
-#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:739
+#: lib/ui/stdtoolbars.inc:49 src/BufferView.C:737
 msgid "Undo"
 msgstr "Disfé"
 
-#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:749
+#: lib/ui/stdtoolbars.inc:50 src/BufferView.C:747
 msgid "Redo"
 msgstr "Rifé"
 
@@ -9815,6 +9815,11 @@ msgstr "Sititchî on tåvlea"
 msgid "Insert product"
 msgstr "Sititchî on s' apinse"
 
+#: lib/ui/stdtoolbars.inc:133
+#, fuzzy
+msgid "Insert standard fraction"
+msgstr "Sititchî on s' apinse"
+
 #: lib/ui/stdtoolbars.inc:134
 #, fuzzy
 msgid "Insert ( )"
@@ -9966,62 +9971,62 @@ msgstr "LaTeX "
 msgid "Save bookmark"
 msgstr "Dizo|#o#B"
 
-#: src/BufferView.C:742
+#: src/BufferView.C:740
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nole informåcion po disfé"
 
-#: src/BufferView.C:752
+#: src/BufferView.C:750
 msgid "No further redo information"
 msgstr " Nole informåcion po Rifé"
 
-#: src/BufferView.C:910
+#: src/BufferView.C:908
 msgid "Mark off"
 msgstr "Li rmårke est dismetuwe"
 
-#: src/BufferView.C:917
+#: src/BufferView.C:915
 msgid "Mark on"
 msgstr "Li rmårke est metuwe"
 
-#: src/BufferView.C:924
+#: src/BufferView.C:922
 msgid "Mark removed"
 msgstr "Li rmårke est waesteye"
 
-#: src/BufferView.C:927
+#: src/BufferView.C:925
 msgid "Mark set"
 msgstr "Li rmårke e-st apontieye"
 
-#: src/BufferView.C:973
+#: src/BufferView.C:971
 #, fuzzy, c-format
 msgid "%1$d words in selection."
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.C:976
+#: src/BufferView.C:974
 #, fuzzy, c-format
 msgid "%1$d words in document."
 msgstr "Dji n' sai drovi li documint"
 
-#: src/BufferView.C:981
+#: src/BufferView.C:979
 #, fuzzy
 msgid "One word in selection."
 msgstr "Dj' a trové ene måcule"
 
-#: src/BufferView.C:983
+#: src/BufferView.C:981
 #, fuzzy
 msgid "One word in document."
 msgstr "Dji drove li documint efant"
 
-#: src/BufferView.C:986
+#: src/BufferView.C:984
 #, fuzzy
 msgid "Count words"
 msgstr "Rawete:"
 
-#: src/BufferView.C:1511
+#: src/BufferView.C:1509
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
-#: src/BufferView.C:1513 src/frontends/controllers/ControlBibtex.C:54
+#: src/BufferView.C:1511 src/frontends/controllers/ControlBibtex.C:54
 #: src/frontends/controllers/ControlBibtex.C:66
 #: src/frontends/controllers/ControlExternal.C:169
 #: src/frontends/controllers/ControlGraphics.C:96
@@ -10031,33 +10036,33 @@ msgstr "Tchwezixhoz on documint po stitchî"
 msgid "Documents|#o#O"
 msgstr "Documints"
 
-#: src/BufferView.C:1514 src/lyxfunc.C:1911 src/lyxfunc.C:1984
+#: src/BufferView.C:1512 src/lyxfunc.C:1911 src/lyxfunc.C:1984
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Egzimpes"
 
-#: src/BufferView.C:1518 src/lyx_cb.C:142 src/lyxfunc.C:1876
+#: src/BufferView.C:1516 src/lyx_cb.C:142 src/lyxfunc.C:1876
 #: src/lyxfunc.C:1915
 #, fuzzy
 msgid "LyX Documents (*.lyx)"
 msgstr "Documint"
 
-#: src/BufferView.C:1530 src/lyxfunc.C:1925 src/lyxfunc.C:2005
+#: src/BufferView.C:1528 src/lyxfunc.C:1925 src/lyxfunc.C:2005
 #: src/lyxfunc.C:2019 src/lyxfunc.C:2035
 msgid "Canceled."
 msgstr "Vos avoz rnoncî"
 
-#: src/BufferView.C:1541
+#: src/BufferView.C:1539
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Dji stitche li documint"
 
-#: src/BufferView.C:1552
+#: src/BufferView.C:1550
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Documint rlomé ("
 
-#: src/BufferView.C:1554
+#: src/BufferView.C:1552
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Dji n' sai stitchî li documint"
@@ -10171,7 +10176,7 @@ msgstr "LaTeX|#T"
 msgid "previewed snippet"
 msgstr ""
 
-#: src/LColor.C:110 src/insets/insetnote.C:310
+#: src/LColor.C:110 src/insets/insetnote.C:311
 #, fuzzy
 msgid "note"
 msgstr "Rawete"
@@ -10370,21 +10375,21 @@ msgstr "Eriter"
 msgid "ignore"
 msgstr "passer hute"
 
-#: src/LaTeX.C:94
+#: src/LaTeX.C:95
 #, fuzzy, c-format
 msgid "Waiting for LaTeX run number %1$d"
 msgstr "Enondaedje LaTeX lim."
 
-#: src/LaTeX.C:297 src/LaTeX.C:384
+#: src/LaTeX.C:298 src/LaTeX.C:385
 msgid "Running MakeIndex."
 msgstr "Enondaedje di MakeIndex"
 
-#: src/LaTeX.C:306 src/LaTeX.C:395
+#: src/LaTeX.C:307 src/LaTeX.C:396
 #, fuzzy
 msgid "Running MakeIndex for nomencl."
 msgstr "Enondaedje di MakeIndex"
 
-#: src/LaTeX.C:325
+#: src/LaTeX.C:326
 msgid "Running BibTeX."
 msgstr "Enondaedje di BibTeX"
 
@@ -10443,7 +10448,7 @@ msgstr "dins li classe ki vos avîz tchwezi"
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 
-#: src/buffer.C:463 src/text.C:292
+#: src/buffer.C:463 src/text.C:293
 #, fuzzy, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Bouye nén cnoxhuwe"
@@ -10570,15 +10575,15 @@ msgid ""
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/buffer.C:1157
+#: src/buffer.C:1158
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/buffer.C:1170
+#: src/buffer.C:1171
 msgid "chktex failure"
 msgstr ""
 
-#: src/buffer.C:1171
+#: src/buffer.C:1172
 #, fuzzy
 msgid "Could not run chktex successfully."
 msgstr "Chktex n' a pont trové di måcules"
@@ -10756,8 +10761,8 @@ msgstr ""
 msgid "Debugging `%1$s' (%2$s)"
 msgstr ""
 
-#: src/converter.C:333 src/converter.C:468 src/converter.C:491
-#: src/converter.C:536
+#: src/converter.C:333 src/converter.C:471 src/converter.C:494
+#: src/converter.C:539
 #, fuzzy
 msgid "Cannot convert file"
 msgstr "Dji n' sai scrîre li fitchî"
@@ -10769,63 +10774,63 @@ msgid ""
 "Define a converter in the preferences."
 msgstr ""
 
-#: src/converter.C:420 src/format.C:320 src/format.C:379
+#: src/converter.C:423 src/format.C:320 src/format.C:379
 #, fuzzy
 msgid "Executing command: "
 msgstr "Dj' enonde li cmande :"
 
-#: src/converter.C:463
+#: src/converter.C:466
 #, fuzzy
 msgid "Build errors"
 msgstr "Cråsses"
 
-#: src/converter.C:464
+#: src/converter.C:467
 #, fuzzy
 msgid "There were errors during the build process."
 msgstr "LaTeX a trové des måcules."
 
-#: src/converter.C:469 src/format.C:327 src/format.C:386
+#: src/converter.C:472 src/format.C:327 src/format.C:386
 #, fuzzy, c-format
 msgid "An error occurred whilst running %1$s"
 msgstr "Dj' a aroké come dji sayîve do lere "
 
-#: src/converter.C:492
+#: src/converter.C:495
 #, fuzzy, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/converter.C:538
+#: src/converter.C:541
 #, fuzzy, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/converter.C:539
+#: src/converter.C:542
 #, fuzzy, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/converter.C:597
+#: src/converter.C:600
 msgid "Running LaTeX..."
 msgstr "Dj' enonde LaTeX..."
 
-#: src/converter.C:615
+#: src/converter.C:618
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
 
-#: src/converter.C:618
+#: src/converter.C:621
 #, fuzzy
 msgid "LaTeX failed"
 msgstr "Fitchî des messaedjes LaTeX"
 
-#: src/converter.C:620
+#: src/converter.C:623
 #, fuzzy
 msgid "Output is empty"
 msgstr ", Parfondeu: "
 
-#: src/converter.C:621
+#: src/converter.C:624
 msgid "An empty output file was generated."
 msgstr ""
 
@@ -11178,18 +11183,18 @@ msgid "Total Height"
 msgstr "Droetes"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:33 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:33 src/lyxfont.C:52
 msgid "Roman"
 msgstr "Romane"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:37 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:37 src/lyxfont.C:52
 #, fuzzy
 msgid "Sans Serif"
 msgstr "Fonte Sans Serif|#S"
 
 #: src/frontends/controllers/ControlDocument.C:49
-#: src/frontends/controllers/character.C:41 src/lyxfont.C:53
+#: src/frontends/controllers/character.C:41 src/lyxfont.C:52
 msgid "Typewriter"
 msgstr "Machine a scrîre"
 
@@ -11421,7 +11426,7 @@ msgstr "Dj' a trové ene måcule"
 msgid "Spelling check completed"
 msgstr "Dj' a tot fwait di coridjî !"
 
-#: src/frontends/controllers/ControlToc.C:112 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.C:139 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Ådvins"
 
@@ -11467,23 +11472,23 @@ msgstr "(Candjî)"
 msgid "Reset"
 msgstr "Rah: "
 
-#: src/frontends/controllers/character.C:63 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:63 src/lyxfont.C:57
 msgid "Medium"
 msgstr "Mwinres"
 
-#: src/frontends/controllers/character.C:67 src/lyxfont.C:58
+#: src/frontends/controllers/character.C:67 src/lyxfont.C:57
 msgid "Bold"
 msgstr "Cråsses"
 
-#: src/frontends/controllers/character.C:89 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:89 src/lyxfont.C:60
 msgid "Upright"
 msgstr "Droetes"
 
-#: src/frontends/controllers/character.C:93 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:93 src/lyxfont.C:60
 msgid "Italic"
 msgstr "Clintcheyes(1)"
 
-#: src/frontends/controllers/character.C:97 src/lyxfont.C:61
+#: src/frontends/controllers/character.C:97 src/lyxfont.C:60
 msgid "Slanted"
 msgstr "Clintcheyes(2)"
 
@@ -11492,11 +11497,11 @@ msgstr "Clintcheyes(2)"
 msgid "Small Caps"
 msgstr "Pititès grandès letes"
 
-#: src/frontends/controllers/character.C:163 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:163 src/lyxfont.C:65
 msgid "Increase"
 msgstr "<- Did pus ->"
 
-#: src/frontends/controllers/character.C:167 src/lyxfont.C:66
+#: src/frontends/controllers/character.C:167 src/lyxfont.C:65
 msgid "Decrease"
 msgstr "-> Moens <-"
 
@@ -11641,7 +11646,7 @@ msgstr ""
 msgid "Big-sized icons"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.C:618
+#: src/frontends/qt4/GuiView.C:670
 #, fuzzy
 msgid "LyX"
 msgstr "Rexhe"
@@ -11766,7 +11771,7 @@ msgstr "Documints"
 msgid "Length"
 msgstr "Longueu|#L"
 
-#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1697
+#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1698
 msgid "OneHalf"
 msgstr ""
 
@@ -11983,150 +11988,150 @@ msgstr "Matrice"
 msgid "Math Delimiter"
 msgstr "Côpeu"
 
-#: src/frontends/qt4/QMathDialog.C:107
+#: src/frontends/qt4/QMathDialog.C:106
 #, fuzzy
 msgid "LyX: Math Spacing"
 msgstr "Espåçmint"
 
-#: src/frontends/qt4/QMathDialog.C:109
+#: src/frontends/qt4/QMathDialog.C:108
 msgid "Thin space\t\\,"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:110
+#: src/frontends/qt4/QMathDialog.C:109
 msgid "Medium space\t\\:"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:111
+#: src/frontends/qt4/QMathDialog.C:110
 msgid "Thick space\t\\;"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:112
+#: src/frontends/qt4/QMathDialog.C:111
 msgid "Quadratin space\t\\quad"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:113
+#: src/frontends/qt4/QMathDialog.C:112
 msgid "Double quadratin space\t\\qquad"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:114
+#: src/frontends/qt4/QMathDialog.C:113
 msgid "Negative space\t\\!"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:118
+#: src/frontends/qt4/QMathDialog.C:117
 #, fuzzy
 msgid "LyX: Math Roots"
 msgstr "Grandeu del police"
 
-#: src/frontends/qt4/QMathDialog.C:120
+#: src/frontends/qt4/QMathDialog.C:119
 msgid "Square root\t\\sqrt"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:121
+#: src/frontends/qt4/QMathDialog.C:120
 msgid "Cube root\t\\root"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:124
+#: src/frontends/qt4/QMathDialog.C:123
 msgid "Other root\t\\root"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:128
+#: src/frontends/qt4/QMathDialog.C:127
 #, fuzzy
 msgid "LyX: Math Styles"
 msgstr "Grandeu del police"
 
-#: src/frontends/qt4/QMathDialog.C:130
+#: src/frontends/qt4/QMathDialog.C:129
 msgid "Display style\t\\displaystyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:131
+#: src/frontends/qt4/QMathDialog.C:130
 msgid "Normal text style\t\\textstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:132
+#: src/frontends/qt4/QMathDialog.C:131
 msgid "Script (small) style\t\\scriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:133
+#: src/frontends/qt4/QMathDialog.C:132
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:137
+#: src/frontends/qt4/QMathDialog.C:136
 #, fuzzy
 msgid "LyX: Fractions"
 msgstr "Scriftôr matematike"
 
-#: src/frontends/qt4/QMathDialog.C:139
+#: src/frontends/qt4/QMathDialog.C:138
 #, fuzzy
 msgid "Standard\t\\frac"
 msgstr "Ståndard|#S"
 
-#: src/frontends/qt4/QMathDialog.C:140
+#: src/frontends/qt4/QMathDialog.C:139
 #, fuzzy
 msgid "No hor. line\t\\atop"
 msgstr "Pont d' ôte rawete"
 
-#: src/frontends/qt4/QMathDialog.C:141
+#: src/frontends/qt4/QMathDialog.C:140
 msgid "Nice\t\\nicefrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:142
+#: src/frontends/qt4/QMathDialog.C:141
 msgid "Text frac (amsmath)\t\\tfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:143
+#: src/frontends/qt4/QMathDialog.C:142
 msgid "Display frac (amsmath)\t\\dfrac"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:144
+#: src/frontends/qt4/QMathDialog.C:143
 msgid "Binomial\t\\choose"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:148
+#: src/frontends/qt4/QMathDialog.C:147
 #, fuzzy
 msgid "LyX: Math Fonts"
 msgstr "Scriftôr matematike"
 
-#: src/frontends/qt4/QMathDialog.C:150
+#: src/frontends/qt4/QMathDialog.C:149
 msgid "Roman\t\\mathrm"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:151
+#: src/frontends/qt4/QMathDialog.C:150
 msgid "Bold\t\\mathbf"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:152
+#: src/frontends/qt4/QMathDialog.C:151
 msgid "Bold symbol\t\\boldsymbol"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:153
+#: src/frontends/qt4/QMathDialog.C:152
 #, fuzzy
 msgid "Sans serif\t\\mathsf"
 msgstr "Fonte Sans Serif|#S"
 
-#: src/frontends/qt4/QMathDialog.C:154
+#: src/frontends/qt4/QMathDialog.C:153
 #, fuzzy
 msgid "Italic\t\\mathit"
 msgstr "Clintcheyes(1)"
 
-#: src/frontends/qt4/QMathDialog.C:155
+#: src/frontends/qt4/QMathDialog.C:154
 #, fuzzy
 msgid "Typewriter\t\\mathtt"
 msgstr "Machine a scrîre"
 
-#: src/frontends/qt4/QMathDialog.C:156
+#: src/frontends/qt4/QMathDialog.C:155
 msgid "Blackboard\t\\mathbb"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:157
+#: src/frontends/qt4/QMathDialog.C:156
 msgid "Fraktur\t\\mathfrak"
 msgstr ""
 
-#: src/frontends/qt4/QMathDialog.C:158
+#: src/frontends/qt4/QMathDialog.C:157
 #, fuzzy
 msgid "Calligraphic\t\\mathcal"
 msgstr "Famile:|#F"
 
-#: src/frontends/qt4/QMathDialog.C:159
+#: src/frontends/qt4/QMathDialog.C:158
 msgid "Normal text mode\t\\textrm"
 msgstr ""
 
@@ -12145,7 +12150,7 @@ msgstr "Tchûzes"
 msgid "Paragraph Settings"
 msgstr "Intreye bibiografike"
 
-#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:624
+#: src/frontends/qt4/QParagraph.C:118 src/paragraph.C:625
 msgid "Senseless with this layout!"
 msgstr "Pont d' avance avou ene pådje adjinçneye come çouci"
 
@@ -12474,7 +12479,7 @@ msgstr "Intreye bibiografike"
 msgid "Opened Caption Inset"
 msgstr "inset drovu"
 
-#: src/insets/insetcaption.C:275
+#: src/insets/insetcaption.C:276
 msgid "Senseless!!! "
 msgstr ""
 
@@ -12547,7 +12552,7 @@ msgstr "Pîd del pådje"
 msgid "Opened Footnote Inset"
 msgstr "inset drovu"
 
-#: src/insets/insetfoot.C:86
+#: src/insets/insetfoot.C:87
 #, fuzzy
 msgid "footnote"
 msgstr "Sititchî ene pînote"
@@ -13121,17 +13126,17 @@ msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:783
+#: src/lyx_main.C:784
 #, fuzzy
 msgid "LyX: "
 msgstr "Rexhe"
 
-#: src/lyx_main.C:912
+#: src/lyx_main.C:913
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Aroke! Dji n' sai fé on ridant timporaire:"
 
-#: src/lyx_main.C:913
+#: src/lyx_main.C:914
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -13139,50 +13144,50 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:1080
+#: src/lyx_main.C:1081
 #, fuzzy
 msgid "Missing user LyX directory"
 msgstr "LyX: dji fwai li ridant "
 
-#: src/lyx_main.C:1081
+#: src/lyx_main.C:1082
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
 "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:1086
+#: src/lyx_main.C:1087
 #, fuzzy
 msgid "&Create directory"
 msgstr "Aroke! Dji n' sai drovi li ridant:"
 
-#: src/lyx_main.C:1087
+#: src/lyx_main.C:1088
 msgid "&Exit LyX"
 msgstr ""
 
-#: src/lyx_main.C:1088
+#: src/lyx_main.C:1089
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1092
+#: src/lyx_main.C:1093
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr " eyèt dj' enonde l' apontiaedje ..."
 
-#: src/lyx_main.C:1098
+#: src/lyx_main.C:1099
 msgid "Failed to create directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:1271
+#: src/lyx_main.C:1272
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:1275
+#: src/lyx_main.C:1276
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Livea di disbugaedje :"
 
-#: src/lyx_main.C:1286
+#: src/lyx_main.C:1287
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -13204,47 +13209,47 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:1322 src/support/package.C.in:556
+#: src/lyx_main.C:1323 src/support/package.C.in:556
 #, fuzzy
 msgid "No system directory"
 msgstr "Ridant ûzeu :"
 
-#: src/lyx_main.C:1323
+#: src/lyx_main.C:1324
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/lyx_main.C:1333
+#: src/lyx_main.C:1334
 #, fuzzy
 msgid "No user directory"
 msgstr "Ridant ûzeu :"
 
-#: src/lyx_main.C:1334
+#: src/lyx_main.C:1335
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "I manke on ridant pol tchûze -sysdir!"
 
-#: src/lyx_main.C:1344
+#: src/lyx_main.C:1345
 #, fuzzy
 msgid "Incomplete command"
 msgstr "Enonder ene comande"
 
-#: src/lyx_main.C:1345
+#: src/lyx_main.C:1346
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "I manke on nombe pol tchûze -dbg!"
 
-#: src/lyx_main.C:1355
+#: src/lyx_main.C:1356
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/lyx_main.C:1367
+#: src/lyx_main.C:1368
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/lyx_main.C:1372
+#: src/lyx_main.C:1373
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
@@ -13273,49 +13278,49 @@ msgstr "Li sistinme est rapontyî"
 msgid " strings have been replaced."
 msgstr "Li sistinme est rapontyî"
 
-#: src/lyxfont.C:53
+#: src/lyxfont.C:52
 msgid "Symbol"
 msgstr "Simbole"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:61 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:60 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Inherit"
 msgstr "Eriter"
 
-#: src/lyxfont.C:55 src/lyxfont.C:58 src/lyxfont.C:62 src/lyxfont.C:67
-#: src/lyxfont.C:70
+#: src/lyxfont.C:54 src/lyxfont.C:57 src/lyxfont.C:61 src/lyxfont.C:66
+#: src/lyxfont.C:69
 msgid "Ignore"
 msgstr "Passer hute"
 
-#: src/lyxfont.C:61
+#: src/lyxfont.C:60
 msgid "Smallcaps"
 msgstr "Pititès grandès letes"
 
-#: src/lyxfont.C:70
+#: src/lyxfont.C:69
 msgid "Toggle"
 msgstr "(Dis)mete"
 
-#: src/lyxfont.C:510
+#: src/lyxfont.C:509
 #, fuzzy, c-format
 msgid "Emphasis %1$s, "
 msgstr "È valeur"
 
-#: src/lyxfont.C:513
+#: src/lyxfont.C:512
 #, fuzzy, c-format
 msgid "Underline %1$s, "
 msgstr "Sorlignî"
 
-#: src/lyxfont.C:516
+#: src/lyxfont.C:515
 #, fuzzy, c-format
 msgid "Noun %1$s, "
 msgstr "Pititès grandès letes"
 
-#: src/lyxfont.C:521
+#: src/lyxfont.C:520
 #, fuzzy, c-format
 msgid "Language: %1$s, "
 msgstr "Lingaedje:"
 
-#: src/lyxfont.C:524
+#: src/lyxfont.C:523
 #, fuzzy, c-format
 msgid "  Number %1$s"
 msgstr "Nombe"
@@ -13936,25 +13941,25 @@ msgstr ""
 msgid "No vertical grid lines in '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1317
+#: src/mathed/InsetMathGrid.C:1319
 msgid "Only one row"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1323
+#: src/mathed/InsetMathGrid.C:1325
 #, fuzzy
 msgid "Only one column"
 msgstr "Disfacer li colone|#O"
 
-#: src/mathed/InsetMathGrid.C:1331
+#: src/mathed/InsetMathGrid.C:1333
 #, fuzzy
 msgid "No hline to delete"
 msgstr "Rén a fé"
 
-#: src/mathed/InsetMathGrid.C:1340
+#: src/mathed/InsetMathGrid.C:1342
 msgid "No vline to delete"
 msgstr ""
 
-#: src/mathed/InsetMathGrid.C:1358
+#: src/mathed/InsetMathGrid.C:1360
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
@@ -14204,113 +14209,113 @@ msgstr ""
 msgid "CM Typewriter Light"
 msgstr "Machine a scrîre"
 
-#: src/text.C:132
+#: src/text.C:133
 #, fuzzy
 msgid "Unknown layout"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/text.C:133
+#: src/text.C:134
 #, c-format
 msgid ""
 "Layout '%1$s' does not exist in textclass '%2$s'\n"
 "Trying to use the default instead.\n"
 msgstr ""
 
-#: src/text.C:164
+#: src/text.C:165
 #, fuzzy
 msgid "Unknown Inset"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/text.C:270 src/text.C:283
+#: src/text.C:271 src/text.C:284
 #, fuzzy
 msgid "Change tracking error"
 msgstr "Lingaedje"
 
-#: src/text.C:271
+#: src/text.C:272
 #, c-format
 msgid "Unknown author index for insertion: %1$d\n"
 msgstr ""
 
-#: src/text.C:284
+#: src/text.C:285
 #, c-format
 msgid "Unknown author index for deletion: %1$d\n"
 msgstr ""
 
-#: src/text.C:291
+#: src/text.C:292
 #, fuzzy
 msgid "Unknown token"
 msgstr "Bouye nén cnoxhuwe"
 
-#: src/text.C:727
+#: src/text.C:728
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:738
+#: src/text.C:739
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:1660
+#: src/text.C:1661
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Lingaedje"
 
-#: src/text.C:1666
+#: src/text.C:1667
 #, fuzzy
 msgid "Change: "
 msgstr "Pådje: "
 
-#: src/text.C:1670
+#: src/text.C:1671
 #, fuzzy
 msgid " at "
 msgstr " di "
 
-#: src/text.C:1680
+#: src/text.C:1681
 #, fuzzy, c-format
 msgid "Font: %1$s"
 msgstr "Fonte: "
 
-#: src/text.C:1685
+#: src/text.C:1686
 #, fuzzy, c-format
 msgid ", Depth: %1$d"
 msgstr ", Parfondeu: "
 
-#: src/text.C:1691
+#: src/text.C:1692
 #, fuzzy
 msgid ", Spacing: "
 msgstr "Espåçmint"
 
-#: src/text.C:1703
+#: src/text.C:1704
 #, fuzzy
 msgid "Other ("
 msgstr "Ôte...|#Ô#O"
 
-#: src/text.C:1712
+#: src/text.C:1713
 #, fuzzy
 msgid ", Inset: "
 msgstr ", Parfondeu: "
 
-#: src/text.C:1713
+#: src/text.C:1714
 #, fuzzy
 msgid ", Paragraph: "
 msgstr "L' adjinçnaedje do hagnon est metu"
 
-#: src/text.C:1714
+#: src/text.C:1715
 #, fuzzy
 msgid ", Id: "
 msgstr ", Parfondeu: "
 
-#: src/text.C:1715
+#: src/text.C:1716
 #, fuzzy
 msgid ", Position: "
 msgstr "   tchûzes: "
 
-#: src/text.C:1721
+#: src/text.C:1722
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1723
+#: src/text.C:1724
 msgid ", Boundary: "
 msgstr ""
 
