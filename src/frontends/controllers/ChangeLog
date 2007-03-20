@@ -1,3 +1,9 @@
+2007-03-20  Martin Vermeer <martin.vermeer@tkk.fi>
+
+	* ControlBibtex.C:
+	* ControlCitation.C: correct getEngine() call
+	* biblio.[Ch]: remove old getEngine()
+
 2006-11-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlAboutlyx.C (getCopyright): update dates

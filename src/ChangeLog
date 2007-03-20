@@ -1,3 +1,8 @@
+2007-03-20  Martin Vermeer <martin.vermeer@tkk.fi>
+
+	* bufferparams.[Ch]: move getEngine() here, and let it sense the
+	provides(natbib) flag
+
 2007-03-19  Bernhard Roider  <bernhard.roider@sonnenkinder.org>
 
 	* toc.C (outline): fix bug where moving the last section up in the
