@@ -75,6 +75,9 @@ private:
 	mutable QHash<char_type, AscendDescend> metrics_cache_;
 	/// fill in \c metrics_cache_ at specified value.
 	void fillMetricsCache(char_type) const;
+
+	/// Cache of char right bearings
+	mutable QHash<char_type, int> rbearing_cache_;
 };
 
 } // namespace frontend

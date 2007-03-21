@@ -59,9 +59,13 @@ int GuiFontMetrics::lbearing(char_type c) const
 
 int GuiFontMetrics::rbearing(char_type c) const
 {
-	// Qt rbearing is from the right edge of the char's width().
-	QChar sc = ucs4_to_qchar(c);
-	return metrics_.width(sc) - metrics_.rightBearing(sc);
+	if (!rbearing_cache_.contains(c)) {
+		// Qt rbearing is from the right edge of the char's width().
+		QChar sc = ucs4_to_qchar(c);
+		int rb = metrics_.width(sc) - metrics_.rightBearing(sc);
+		rbearing_cache_.insert(c, rb);
+	}
+	return rbearing_cache_.value(c);
 }
 
 
