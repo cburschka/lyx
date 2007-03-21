@@ -32,6 +32,8 @@ public:
 	void drawT(TextPainter &, int x, int y) const;
 	///
 	int width() const { return width_; }
+	///
+	int kerning() const { return kerning_; }
 
 	///
 	void write(WriteStream & os) const;
@@ -54,6 +56,8 @@ private:
 	char_type char_;
 	/// cached width
 	mutable int width_;
+	/// cached kerning for superscript
+	mutable int kerning_;
 };
 
 } // namespace lyx

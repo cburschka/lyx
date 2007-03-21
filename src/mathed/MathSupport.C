@@ -373,6 +373,13 @@ int mathed_char_width(LyXFont const & font, char_type c)
 }
 
 
+int mathed_char_kerning(LyXFont const & font, char_type c)
+{
+	frontend::FontMetrics const & fm = theFontMetrics(font);
+	return fm.rbearing(c) - fm.width(c);
+}
+
+
 void mathed_string_dim(LyXFont const & font,
 		       docstring const & s,
 		       Dimension & dim)

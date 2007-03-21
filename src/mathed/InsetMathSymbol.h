@@ -37,6 +37,8 @@ public:
 	void draw(PainterInfo &, int x, int y) const;
 	///
 	int width() const { return width_; }
+	///
+	int kerning() const { return kerning_; }
 
 	///
 	bool isRelOp() const;
@@ -76,6 +78,8 @@ private:
 	mutable int h_;
 	/// cached width
 	mutable int width_;
+	/// cached superscript kerning
+	mutable int kerning_;
 	///
 	mutable bool scriptable_;
 };

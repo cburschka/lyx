@@ -46,7 +46,7 @@ namespace {
 
 
 InsetMathChar::InsetMathChar(char_type c)
-	: char_(c)
+	: char_(c), kerning_(0)
 {}
 
 
@@ -70,7 +70,9 @@ bool InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		ShapeChanger dummy(mi.base.font, LyXFont::UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 	} else {
-		dim = theFontMetrics(mi.base.font).dimension(char_);
+		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
+		dim = fm.dimension(char_);
+		kerning_ = fm.rbearing(char_) - dim.wid;
 	}
 	int const em = mathed_char_width(mi.base.font, 'M');
 	if (isBinaryOp(char_))

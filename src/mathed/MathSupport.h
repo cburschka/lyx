@@ -30,6 +30,8 @@ class InsetMath;
 
 int mathed_char_width(LyXFont const &, char_type c);
 
+int mathed_char_kerning(LyXFont const &, char_type c);
+
 void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	docstring const & name);
 

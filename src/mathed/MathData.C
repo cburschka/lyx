@@ -282,6 +282,8 @@ void MathArray::metrics(MetricsInfo & mi) const
 #endif
 		at->metrics(mi, d);
 		dim_ += d;
+		if (i == n - 1)
+			kerning_ = at->kerning();
 	}
 }
 

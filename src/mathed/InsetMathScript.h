@@ -124,6 +124,8 @@ private:
 	int nasc() const;
 	/// returns descent of nucleus if any
 	int ndes() const;
+	/// returns superscript kerning of nucleus if any
+	int nker() const;
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;
 	/// clean up empty cells and return true if a cell has been deleted.

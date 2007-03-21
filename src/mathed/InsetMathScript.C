@@ -225,7 +225,7 @@ int InsetMathScript::dx0() const
 int InsetMathScript::dx1() const
 {
 	BOOST_ASSERT(hasUp());
-	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid();
+	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid() + nker();
 }
 
 
@@ -253,6 +253,16 @@ int InsetMathScript::ndes() const
 }
 
 
+int InsetMathScript::nker() const
+{
+	if (nuc().size()) {
+		int kerning = nuc().kerning();
+		return kerning > 0 ? kerning : 0;
+	}
+	return 0;
+}
+
+
 bool InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi);
@@ -270,7 +280,7 @@ bool InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = max(dim.wid, down().width());
 	} else {
 		if (hasUp())
-			dim.wid = max(dim.wid, up().width());
+			dim.wid = max(dim.wid, nker() + up().width());
 		if (hasDown())
 			dim.wid = max(dim.wid, down().width());
 		dim.wid += nwid();

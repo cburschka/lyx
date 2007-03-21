@@ -64,6 +64,8 @@ bool InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	int const em = mathed_char_width(mi.base.font, 'M');
 	FontSetChanger dummy(mi.base, sym_->inset);
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
+	docstring::const_reverse_iterator rit = sym_->draw.rbegin();
+	kerning_ = mathed_char_kerning(mi.base.font, *rit);
 	// correct height for broken cmex and wasy font
 	if (sym_->inset == "cmex" || sym_->inset == "wasy") {
 		h_ = 4 * dim.des / 5;

@@ -158,6 +158,8 @@ public:
 	int slevel() const { return slevel_; }
 	/// additional super/subscript shift
 	int sshift() const { return sshift_; }
+	/// superscript kerning
+	int kerning() const { return kerning_; }
 
 protected:
 	/// cached dimensions of cell
@@ -167,6 +169,7 @@ protected:
 	mutable int mindes_;
 	mutable int slevel_;
 	mutable int sshift_;
+	mutable int kerning_;
 
 private:
 	/// is this an exact match at this position?

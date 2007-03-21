@@ -200,6 +200,9 @@ public:
 
 	/// math stuff usually isn't allowed in text mode
 	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }
+
+	/// superscript kerning
+	virtual int kerning() const { return 0; }
 };
 
 ///
