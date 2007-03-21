@@ -113,6 +113,39 @@ def env_toc(target, source, env):
     doc_toc.build_toc(str(target[0]), [file.abspath for file in source])
     
     
+def relativePath(env, path):
+    '''return relative path from top source dir'''
+    # full pathname of path
+    path1 = os.path.normpath(env.File(path).abspath).split(os.sep)
+    path2 = os.path.normpath(env.Dir('$TOP_SRCDIR').abspath).split(os.sep)
+    if path1[:len(path2)] != path2:
+        print "Path %s is not under top source directory" % path
+    return os.path.join(*path1[len(path2):])
+
+
+def env_language_l10n(target, source, env):
+    '''Generate pot file from lib/language'''
+    input = open(env.File(source[0]).abspath)
+    output = open(env.File(target[0]).abspath, 'w')
+    for lineno, line in enumerate(input.readlines()):
+        if line[0] == '#':
+            continue
+        items = line.split('"')
+        # empty lines?
+        if len(items) != 5:
+            print 'Warning: this line looks strange:'
+            print line
+        # From:
+        #   afrikaans   afrikaans	"Afrikaans"	false  iso8859-15 af_ZA	 ""
+        # To:
+        #   #: lib/languages:2
+        #   msgid "Afrikaans"
+        #   msgstr ""
+        print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % (relativePath(env, source[0]), lineno+1, items[1])
+    input.close()
+    output.close()
+
+
 def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':

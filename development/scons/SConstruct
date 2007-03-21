@@ -255,7 +255,7 @@ if (not ARGUMENTS.has_key('load_option') or \
         and opt_cache.has_key('qt_dir'):
         opt_cache.pop('qt_dir')
     # and we do not cache some options (dest_dir is obsolete)
-    for arg in ['load_option', 'dest_dir']:
+    for arg in ['load_option', 'dest_dir', 'bundle']:
         if opt_cache.has_key(arg):
             opt_cache.pop(arg)
     # remove obsolete cached keys (well, SConstruct is evolving. :-)
@@ -716,6 +716,8 @@ else:
 #
 # check for msgfmt command
 env['MSGFMT'] = conf.CheckCommand('msgfmt')
+env['MSGMERGE'] = conf.CheckCommand('msgmerge')
+env['XGETTEXT'] = conf.CheckCommand('xgettext')
 
 # if under windows, check the nsis compiler
 if platform_name == 'win32':
@@ -1511,6 +1513,7 @@ build_client = True in ['client' in x for x in targets] \
 build_tex2lyx = True in ['tex2lyx' in x for x in targets] \
     or build_install or 'all' in targets or build_installer
 build_lyxbase = build_lyx or 'lyxbase' in targets
+update_po = 'update_po' in targets
 build_po = 'po' in targets or build_install or 'all' in targets
 build_qt4 = (build_lyx and frontend == 'qt4') or 'qt4' in targets
 build_msvs_projects = use_vc and 'msvs_projects' in targets
@@ -1970,6 +1973,54 @@ if build_msvs_projects:
         res = ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
         rebuildTargetOnly = False,
         full_target = File(env.subst('$BUILDDIR/lyx$PROGSUFFIX')).abspath)
+
+
+if update_po:
+    #
+    # update po files
+    #
+    print 'Updating po/*.po files...'
+
+    import glob
+    # files to translate
+    transfiles = glob.glob(os.path.join(env.subst('$TOP_SRCDIR'), 'po', '*.po'))
+    # possibly *only* handle these languages
+    languages = None
+    if env.has_key('languages'):
+        languages = env.make_list(env['lanauges'])
+    # whether or not update po files
+    if not env['XGETTEXT'] or not env['MSGMERGE']:
+        print 'xgettext or msgmerge does not exist. Can not merge po files'
+        Exit(1)
+    # create a builder that generate 
+    env['XGETTEXT_OPTIONS'] = '--language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=qt_'
+    env['MSGMERGE_OPTIONS'] = '--update'
+    env['COPYRIGHT_HOLDER'] = 'LyX Developers'
+    env['MSGID_BUGS_ADDRESS'] = 'lyx-devel@lists.lyx.org'
+    env['BUILDERS']['xgettext'] = Builder(action='''$XGETTEXT --default-domain=lyx \
+        --output=$TARGET \
+        --directory=$TOP_SRCDIR \
+	    --add-comments=TRANSLATORS: $XGETTEXT_OPTIONS \
+	    --files-from=$TOP_SRCDIR/po/POTFILES.in \
+	    --copyright-holder='$COPYRIGHT_HOLDER' \
+	    --msgid-bugs-address='$MSGID_BUGS_ADDRESS' ''')
+    env['BUILDERS']['msgmerge'] = Builder(action='$MSGMERGE $MSGMERGE_OPTIONS $SOURCE $TARGET')
+    #   ==> lyx.pot
+    env.xgettext('$BUILDDIR/common/lyx.pot', '$TOP_SRCDIR/po/POTFILES.in')
+    # for each po file, generate pot
+    for f in transfiles:
+        # get filename
+        fname = os.path.split(f)[1]
+        # country code
+        country = fname.split('.')[0]
+        #
+        if not languages or country in languages:
+            # merge po files
+            env.msgmerge(f, '$BUILDDIR/common/lyx.pot')
+    # build language_l10n.pot
+    env['BUILDERS']['language_l10n'] = Builder(action=utils.env_language_l10n)
+    tar = env.language_l10n('$BUILDDIR/common/language_l10n.pot', '$TOP_SRCDIR/lib/languages')
+    Alias('update_po', tar)
 
 
 if build_po:
