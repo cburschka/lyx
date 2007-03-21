@@ -16,7 +16,12 @@ lyx_add_path(boost_iostreams_sources ${TOP_SRC_DIR}/boost/libs/iostreams/src)
 
 include_directories(${ZLIB_INCLUDE_DIR})
 
-add_library(boost_iostreams STATIC ${boost_iostreams_sources})
+if(NOT MERGE_FILES)
+	add_library(boost_iostreams STATIC ${boost_iostreams_sources})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/boost_iostreams_allinone.C boost_iostreams_sources)
+	add_library(boost_iostreams STATIC ${CMAKE_CURRENT_BINARY_DIR}/boost_iostreams_allinone.C)
+endif(NOT MERGE_FILES)
 
 target_link_libraries(boost_iostreams ${ZLIB_LIBRARY})
 

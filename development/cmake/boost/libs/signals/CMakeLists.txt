@@ -16,5 +16,10 @@ set(boost_signals_sources
 
 lyx_add_path(boost_signals_sources ${TOP_SRC_DIR}/boost/libs/signals/src)
 
-add_library(boost_signals STATIC ${boost_signals_sources})
-	
+if(NOT MERGE_FILES)
+	add_library(boost_signals STATIC ${boost_signals_sources})
+else(NOT MERGE_FILES)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/boost_signals_allinone.C boost_signals_sources)
+	add_library(boost_signals STATIC ${CMAKE_CURRENT_BINARY_DIR}/boost_signals_allinone.C)
+endif(NOT MERGE_FILES)
+

@@ -680,7 +680,7 @@ namespace boost
       {
         std::string narrow_short_form;
         std::wstring short_form;
-        for ( DWORD buf_sz( static_cast<DWORD>( ph.size()+1 ));; )
+        for ( DWORD buf_sz( static_cast<DWORD>( ph.size()+1 )); ; )
         {
           boost::scoped_array<wchar_t> buf( new wchar_t[buf_sz] );
           DWORD sz( ::GetShortPathNameW( ph.c_str(), buf.get(), buf_sz ) );
@@ -1040,7 +1040,7 @@ namespace boost
       BOOST_FILESYSTEM_DECL fs::system_error_type 
       get_current_path_api( std::string & ph )
       {
-        for ( long path_max = 32;; path_max *=2 ) // loop 'til buffer large enough
+        for ( long path_max = 32; ; path_max *=2 ) // loop 'til buffer large enough
         {
           boost::scoped_array<char>
             buf( new char[static_cast<std::size_t>(path_max)] );

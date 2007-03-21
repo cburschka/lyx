@@ -22,4 +22,3 @@ lyx_add_path(boost_regex_sources ${TOP_SRC_DIR}/boost/libs/regex/src)
 
 add_library(boost_regex STATIC ${boost_regex_sources})
 
-
