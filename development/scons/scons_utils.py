@@ -204,6 +204,33 @@ def env_layouts_l10n(target, source, env):
     output.close()
 
 
+def env_ui_l10n(target, source, env):
+    '''Generate pot file from lib/ui/*.layout and *.inc'''
+    output = open(env.File(target[0]).abspath, 'w')
+    Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"')
+    Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"')
+    Item = re.compile(r'[^#]*Item\s+"([^"]*)"')
+    for src in source:
+        input = open(env.File(src).abspath)
+        for lineno, line in enumerate(input.readlines()):
+            # get lines that match <string>...</string>
+            if Submenu.match(line):
+                (string,) = Submenu.match(line).groups()
+                string = string.replace('_', ' ')
+            elif Toolbar.match(line):
+                (string,) = Toolbar.match(line).groups()
+            elif Item.match(line):
+                (string,) = Item.match(line).groups()
+            else:
+                continue
+            string = string.replace('\\', '\\\\').replace('"', '')
+            if string != "":
+                print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                    (relativePath(env, src), lineno+1, string)
+        input.close()
+    output.close()
+
+
 def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':

@@ -2026,7 +2026,10 @@ if update_po:
     env['BUILDERS']['layouts_l10n'] = Builder(action=utils.env_layouts_l10n)
     tar3 = env.layouts_l10n('$BUILDDIR/common/layouts_l10n.pot', 
         ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files])
-    Alias('update_po', [tar1, tar2, tar3])
+    env['BUILDERS']['ui_l10n'] = Builder(action=utils.env_ui_l10n)
+    tar4 = env.ui_l10n('$BUILDDIR/common/ui_l10n.pot', 
+        ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files])
+    Alias('update_po', [tar1, tar2, tar3, tar4])
 
 
 if build_po:
