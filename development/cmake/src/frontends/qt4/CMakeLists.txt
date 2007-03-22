@@ -15,7 +15,7 @@ lyx_add_msvc_pch(frontends_qt4)
 
 lyx_automoc(${frontends_qt4_sources})
 
-lyx_add_ui_files(frontends_qt4_sources ${frontend_qt4_UI})
+lyx_add_ui_files(frontends_qt4_sources ui_files ${frontend_qt4_UI})
 
 add_definitions(
 		-DQT_CLEAN_NAMESPACE
@@ -26,11 +26,19 @@ add_definitions(
 		)
 
 
-include_directories(	${TOP_SRC_DIR}/src/frontends/qt4 
+include_directories(	
+			${TOP_SRC_DIR}/src/frontends/qt4 
 			${TOP_SRC_DIR}/src/frontends/controllers
 			${CMAKE_CURRENT_BINARY_DIR})
 
-add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers})
+if(MERGE_FILES AND MSVC)
+	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/frontends_qt4_allinone.C frontends_qt4_sources)
+	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
+	SET_SOURCE_FILES_PROPERTIES(frontends_qt4_allinone.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
+	add_library(frontend_qt4 STATIC ${CMAKE_CURRENT_BINARY_DIR}/frontends_qt4_allinone.C ${frontends_qt4_headers} ${ui_files})
+else(MERGE_FILES AND MSVC)	
+	add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
+else(MERGE_FILES AND MSVC)
 
 target_link_libraries(frontend_qt4 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} controllers)
 

@@ -37,7 +37,7 @@ endmacro(lyx_add_path _out _prefix)
 
 #create the implementation files from the ui files and add them to the list of sources
 #usage: LYX_ADD_QT4_UI_FILES(foo_SRCS ${ui_files})
-macro (LYX_ADD_UI_FILES _sources )
+macro (LYX_ADD_UI_FILES _sources _ui)
    foreach (_current_FILE ${ARGN})
 
       get_filename_component(_tmp_FILE ${_current_FILE} ABSOLUTE)
@@ -57,7 +57,7 @@ macro (LYX_ADD_UI_FILES _sources )
          -P ${CMAKE_MODULE_PATH}/LyXuic.cmake
          MAIN_DEPENDENCY ${_tmp_FILE}
       )
-      set(${_sources} ${${_sources}} ${_header})
+      set(${_ui} ${${_ui}} ${_header})
    endforeach (_current_FILE)
 endmacro (LYX_ADD_UI_FILES)
 
@@ -127,14 +127,15 @@ endmacro (LYX_AUTOMOC)
 
 
 macro(lyx_merge_files _filename _list)
+	message("----- Generating merged file ${_filename}\n")	
 	set(_tmp)
 	set(_content)
-   	foreach(_current ${${_list}})
-   		file(READ ${_current} _tmp)
-   		set(_content ${_content} "\n\n\n\n//----------------------------------------\n/*\n file: ${_current} \n*/\n\n")
-   		set(_content ${_content} ${_tmp})
-   	endforeach(_current)  	 
-   	file(WRITE ${_filename} "${_content}")
+	foreach(_current ${${_list}})
+		file(READ ${_current} _tmp)
+		set(_content ${_content} "\n\n\n\n//----------------------------------------\n/*\n file: ${_current} \n*/\n\n")
+		set(_content ${_content} ${_tmp})
+	endforeach(_current)
+	file(WRITE ${_filename} "${_content}")
 endmacro(lyx_merge_files _list _filename)
 
 
