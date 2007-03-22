@@ -1988,19 +1988,20 @@ if update_po:
         Exit(1)
     # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot
     # and combine them to lyx.po
+    env['LYX_POT'] = 'python $TOP_SRCDIR/po/lyx_pot.py'
     lyx_po = env.Command('$BUILDDIR/po/lyx.po',
         env.Command('$BUILDDIR/po/all.po',
             [env.Command('$BUILDDIR/po/language_l10n.pot', '$TOP_SRCDIR/lib/languages', 
-                utils.env_language_l10n),
+                '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/qt4_l10n.pot', 
                 ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
-                utils.env_qt4_l10n),
+                '$LYX_POT -b $TOP_SRCDIR -t qt4 -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/layouts_l10n.pot', 
                 ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files],
-                utils.env_layouts_l10n),
+                '$LYX_POT -b $TOP_SRCDIR -t layouts -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/ui_l10n.pot', 
                 ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files],
-                utils.env_ui_l10n)
+                '$LYX_POT -b $TOP_SRCDIR -t ui -o $TARGET $SOURCES'),
              ], utils.env_cat),
         '$MSGUNIQ -o $TARGET $SOURCE'
     )
