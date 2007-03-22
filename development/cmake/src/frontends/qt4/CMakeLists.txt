@@ -38,7 +38,7 @@ if(MERGE_FILES AND MSVC)
 	add_library(frontend_qt4 STATIC ${CMAKE_CURRENT_BINARY_DIR}/frontends_qt4_allinone.C ${frontends_qt4_headers} ${ui_files})
 else(MERGE_FILES AND MSVC)	
 	add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
-else(MERGE_FILES AND MSVC)
+endif(MERGE_FILES AND MSVC)
 
 target_link_libraries(frontend_qt4 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} controllers)
 
