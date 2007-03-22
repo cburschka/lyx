@@ -1991,37 +1991,32 @@ if update_po:
     env['LYX_POT'] = 'python $TOP_SRCDIR/po/lyx_pot.py'
     lyx_po = env.Command('$BUILDDIR/po/lyx.po',
         env.Command('$BUILDDIR/po/all.po',
-            [env.Command('$BUILDDIR/po/language_l10n.pot', '$TOP_SRCDIR/lib/languages', 
-                '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
-             env.Command('$BUILDDIR/po/qt4_l10n.pot', 
+            [env.Command('$BUILDDIR/po/qt4_l10n.pot', 
                 ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
                 '$LYX_POT -b $TOP_SRCDIR -t qt4 -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/layouts_l10n.pot', 
                 ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files],
                 '$LYX_POT -b $TOP_SRCDIR -t layouts -o $TARGET $SOURCES'),
+             env.Command('$BUILDDIR/po/languages_l10n.pot', '$TOP_SRCDIR/lib/languages', 
+                '$LYX_POT -b $TOP_SRCDIR -t languages -o $TARGET $SOURCES'),
              env.Command('$BUILDDIR/po/ui_l10n.pot', 
                 ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files],
                 '$LYX_POT -b $TOP_SRCDIR -t ui -o $TARGET $SOURCES'),
              ], utils.env_cat),
-        '$MSGUNIQ -o $TARGET $SOURCE'
-    )
-    # create a builder that generate real po files
-    env['BUILDERS']['xgettext'] = Builder(action=['''$XGETTEXT \
-        --default-domain=${SOURCE.filebase} \
-        --directory=$TOP_SRCDIR \
-	    --add-comments=TRANSLATORS: \
-        --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=qt_ \
-	    --files-from=$TOP_SRCDIR/po/POTFILES.in \
-	    --copyright-holder='LyX Developers' \
-	    --msgid-bugs-address='lyx-devel@lists.lyx.org' ''',
-        Copy('$TARGET', '$SOURCE')]
+            ['$MSGUNIQ -o $TARGET $SOURCE',
+             '''$XGETTEXT --default-domain=${TARGET.base} \
+                --directory=$TOP_SRCDIR --add-comments=TRANSLATORS: \
+                --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=qt_ \
+                --files-from=$TOP_SRCDIR/po/POTFILES.in \
+                --copyright-holder='LyX Developers' \
+                --msgid-bugs-address='lyx-devel@lists.lyx.org' ''']
         )
     env['BUILDERS']['msgmerge'] = Builder(action=[
-        '$MSGMERGE -o $TARGET $SOURCE ${TARGET.base}.po',
+        '$MSGMERGE ${TARGET.base}.po $SOURCE -o $TARGET',
         Copy('${TARGET.base}.po', '$TARGET')]
         )
-    #   ==> lyx.pot
-    lyx_pot = env.xgettext('$BUILDDIR/po/lyx.pot', lyx_po)
+    lyx_pot = env.Command('$BUILDDIR/po/lyx.pot', lyx_po,
+        Copy('$TARGET', '$SOURCE'))
     #
     import glob
     # files to translate

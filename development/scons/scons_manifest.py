@@ -632,7 +632,6 @@ src_frontends_qt4_ui_files = Split('''
     QNomenclUi.ui
     QNoteUi.ui
     QParagraphUi.ui
-    QPrefPlaintextUi.ui
     QPrefColorsUi.ui
     QPrefConvertersUi.ui
     QPrefCopiersUi.ui
@@ -645,6 +644,7 @@ src_frontends_qt4_ui_files = Split('''
     QPrefLanguageUi.ui
     QPrefLatexUi.ui
     QPrefPathsUi.ui
+    QPrefPlaintextUi.ui
     QPrefPrinterUi.ui
     QPrefScreenFontsUi.ui
     QPrefSpellcheckerUi.ui
@@ -1542,7 +1542,7 @@ lib_images_files = Split('''
     layout-document.xpm
     layout-paragraph.xpm
     layout_Description.xpm
-    layout_Enumerate.xpm 
+    layout_Enumerate.xpm
     layout_Itemize.xpm
     layout_List.xpm
     layout_LyX-Code.xpm
@@ -2148,18 +2148,14 @@ lib_kbd_files = Split('''
 lib_layouts_files = Split('''
     IEEEtran.layout
     aa.layout
-    aapaper.inc
     aapaper.layout
     aastex.layout
-    aguplus.inc
+    agu-dtd.layout
+    agums.layout
     amsart-plain.layout
     amsart-seq.layout
     amsart.layout
     amsbook.layout
-    amsdefs.inc
-    amsmaths-plain.inc
-    amsmaths-seq.inc
-    amsmaths.inc
     apa.layout
     arab-article.layout
     article.layout
@@ -2169,16 +2165,6 @@ lib_layouts_files = Split('''
     chess.layout
     cl2emult.layout
     cv.layout
-    db_lyxmacros.inc
-    db_stdclass.inc
-    db_stdcharstyles.inc
-    db_stdcounters.inc
-    db_stdlayouts.inc
-    db_stdlists.inc
-    db_stdsections.inc
-    db_stdstarsections.inc
-    db_stdstruct.inc
-    db_stdtitle.inc
     dinbrief.layout
     docbook-book.layout
     docbook-chapter.layout
@@ -2195,6 +2181,7 @@ lib_layouts_files = Split('''
     foils.layout
     g-brief-de.layout
     g-brief-en.layout
+    g-brief2.layout
     heb-article.layout
     heb-letter.layout
     hollywood.layout
@@ -2208,11 +2195,10 @@ lib_layouts_files = Split('''
     literate-article.layout
     literate-book.layout
     literate-report.layout
-    literate-scrap.inc
     llncs.layout
     ltugboat.layout
-    lyxmacros.inc
     manpage.layout
+    memoir.layout
     mwart.layout
     mwbk.layout
     mwrep.layout
@@ -2222,7 +2208,6 @@ lib_layouts_files = Split('''
     revtex4.layout
     scrartcl.layout
     scrbook.layout
-    scrclass.inc
     scrlettr.layout
     scrlttr2.layout
     scrreprt.layout
@@ -2230,6 +2215,36 @@ lib_layouts_files = Split('''
     siamltex.layout
     slides.layout
     spie.layout
+    svglobal.layout
+    svjog.layout
+    svprobth.layout
+    aapaper.inc
+    agu_stdclass.inc
+    agu_stdcounters.inc
+    agu_stdlists.inc
+    agu_stdsections.inc
+    agu_stdtitle.inc
+    aguplus.inc
+    amsdefs.inc
+    amsmaths-plain.inc
+    amsmaths-seq.inc
+    amsmaths.inc
+    db_lyxmacros.inc
+    db_stdcharstyles.inc
+    db_stdclass.inc
+    db_stdcounters.inc
+    db_stdlayouts.inc
+    db_stdlists.inc
+    db_stdsections.inc
+    db_stdstarsections.inc
+    db_stdstruct.inc
+    db_stdtitle.inc
+    literate-scrap.inc
+    lyxmacros.inc
+    numarticle.inc
+    numreport.inc
+    numrevtex.inc
+    scrclass.inc
     stdclass.inc
     stdcounters.inc
     stdfloats.inc
@@ -2240,22 +2255,7 @@ lib_layouts_files = Split('''
     stdstarsections.inc
     stdstruct.inc
     stdtitle.inc
-    svjog.layout
     svjour.inc
-    svprobth.layout
-    agums.layout
-    memoir.layout
-    numarticle.inc
-    numreport.inc
-    numrevtex.inc
-    agu-dtd.layout
-    agu_stdclass.inc
-    agu_stdcounters.inc
-    agu_stdlists.inc
-    agu_stdsections.inc
-    agu_stdtitle.inc
-    g-brief2.layout
-    svglobal.layout
 ''')
 
 
@@ -2505,15 +2505,15 @@ lib_lyx2lyx_files = Split('''
 
 
 win32_bakoma_fonts = Split('''
-    Readme.txt   
-    Licence.txt  
-    cmex10.ttf  
-    cmr10.ttf   
-    eufm10.ttf  
+    Readme.txt
+    Licence.txt
+    cmex10.ttf
+    cmr10.ttf
+    eufm10.ttf
     msbm10.ttf
-    cmmi10.ttf  
-    cmsy10.ttf  
-    msam10.ttf  
+    cmmi10.ttf
+    cmsy10.ttf
+    msam10.ttf
     wasy10.ttf
 ''')
 
@@ -2537,7 +2537,7 @@ win32_packaging_installer_components_files = Split('''
     reinstall.nsh
     user.nsh
 ''')
-    
+
 
 win32_packaging_installer_dialogs_files = Split('''
     external.ini
@@ -2563,7 +2563,7 @@ win32_packaging_installer_include_files = Split('''
     lang.nsh
     windows.nsh
 ''')
-    
+
 
 win32_packaging_installer_lang_files = Split('''
     english.nsh
