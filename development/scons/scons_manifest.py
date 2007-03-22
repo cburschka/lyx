@@ -2200,6 +2200,7 @@ lib_layouts_files = Split('''
     hollywood.layout
     ijmpc.layout
     ijmpd.layout
+    isprs.layout
     jgrga.layout
     kluwer.layout
     latex8.layout

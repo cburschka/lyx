@@ -146,6 +146,64 @@ def env_language_l10n(target, source, env):
     output.close()
 
 
+def env_qt4_l10n(target, source, env):
+    '''Generate pot file from src/frontends/qt4/ui/*.ui'''
+    output = open(env.File(target[0]).abspath, 'w')
+    pat = re.compile(r'\s*<string>(.*)</string>')
+    prop = re.compile(r'\s*<property.*name.*=.*shortcut')
+    for src in source:
+        input = open(env.File(src).abspath)
+        skipNextLine = False
+        for lineno, line in enumerate(input.readlines()):
+            # looking for a line with <string></string>
+            if skipNextLine:
+                skipNextLine = False
+                continue
+            # skip the line after <property name=shortcut>
+            if prop.match(line):
+                skipNextLine = True
+                continue
+            # get lines that match <string>...</string>
+            if pat.match(line):
+                (string,) = pat.match(line).groups()
+                string = string.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>').replace('"', r'\"')
+                print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                    (relativePath(env, src), lineno+1, string) 
+        input.close()
+    output.close()
+
+
+def env_layouts_l10n(target, source, env):
+    '''Generate pot file from lib/layouts/*.layout and *.inc'''
+    output = open(env.File(target[0]).abspath, 'w')
+    Style = re.compile(r'^Style\s+(.*)')
+    # include ???LabelString???, but exclude comment lines
+    LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*)')
+    GuiName = re.compile(r'\s*GuiName\s+(.*)')
+    ListName = re.compile(r'\s*ListName\s+(.*)')
+    for src in source:
+        input = open(env.File(src).abspath)
+        for lineno, line in enumerate(input.readlines()):
+            # get lines that match <string>...</string>
+            if Style.match(line):
+                (string,) = Style.match(line).groups()
+                string = string.replace('_', ' ')
+            elif LabelString.match(line):
+                (string,) = LabelString.match(line).groups()
+            elif GuiName.match(line):
+                (string,) = GuiName.match(line).groups()
+            elif ListName.match(line):
+                (string,) = ListName.match(line).groups()
+            else:
+                continue
+            string = string.replace('\\', '\\\\').replace('"', '')
+            if string != "":
+                print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
+                    (relativePath(env, src), lineno+1, string)
+        input.close()
+    output.close()
+
+
 def createResFromIcon(env, icon_file, rc_file):
     ''' create a rc file with icon, and return res file (windows only) '''
     if os.name == 'nt':
