@@ -277,6 +277,8 @@ public:
 				     int const & sfscale, int const & ttscale) const;
 	/// path of the current buffer
 	std::string filepath;
+	/// get the appropriate cite engine (natbib handling)
+	biblio::CiteEngine_enum getEngine() const;
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise

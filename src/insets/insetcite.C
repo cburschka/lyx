@@ -335,7 +335,7 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 
 docstring const InsetCitation::getScreenLabel(Buffer const & buffer) const
 {
-	biblio::CiteEngine const engine = biblio::getEngine(buffer);
+	biblio::CiteEngine const engine = buffer.params().getEngine();
 	if (cache.params == params() && cache.engine == engine)
 		return cache.screen_label;
 
@@ -368,7 +368,7 @@ int InsetCitation::plaintext(Buffer const & buffer, odocstream & os,
 	docstring str;
 
 	if (cache.params == params() &&
-	    cache.engine == biblio::getEngine(buffer))
+	    cache.engine == buffer.params().getEngine())
 		str = cache.generated_label;
 	else
 		str = generateLabel(buffer);
@@ -424,7 +424,7 @@ int InsetCitation::textString(Buffer const & buf, odocstream & os,
 int InsetCitation::latex(Buffer const & buffer, odocstream & os,
                          OutputParams const &) const
 {
-	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
+	biblio::CiteEngine cite_engine = buffer.params().getEngine();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(
 		biblio::asValidLatexCommand(getCmdName(), cite_engine));

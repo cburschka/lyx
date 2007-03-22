@@ -25,8 +25,6 @@ namespace biblio {
 
 class CiteEngine_enum;
 
-CiteEngine_enum getEngine(Buffer const &);
-
 
 enum CiteStyle {
 	CITE,
