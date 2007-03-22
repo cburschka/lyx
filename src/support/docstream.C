@@ -18,13 +18,6 @@
 #include <iconv.h>
 #include <locale>
 
-#ifdef min
-#undef min
-#endif
-
-#ifdef max
-#undef max
-#endif
 
 using lyx::ucs4_codeset;
 
