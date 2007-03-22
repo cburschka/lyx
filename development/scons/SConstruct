@@ -2011,10 +2011,7 @@ if update_po:
                 --copyright-holder='LyX Developers' \
                 --msgid-bugs-address='lyx-devel@lists.lyx.org' ''']
         )
-    env['BUILDERS']['msgmerge'] = Builder(action=[
-        '$MSGMERGE ${TARGET.base}.po $SOURCE -o $TARGET',
-        Copy('${TARGET.base}.po', '$TARGET')]
-        )
+    # copy lyx.po to lyx.pot
     lyx_pot = env.Command('$BUILDDIR/po/lyx.pot', lyx_po,
         Copy('$TARGET', '$SOURCE'))
     #
@@ -2025,6 +2022,17 @@ if update_po:
     languages = None
     if env.has_key('languages'):
         languages = env.make_list(env['lanauges'])
+    # merge. if I use lan.po as $TARGET, it will be removed
+    # before it is merged. In this builder,
+    # $BUILDDIR/po/lang.po is merged from po/lang.po and $BUILDDIR/po/lyx.pot
+    # and is copied to po/lang.po
+    env['BUILDERS']['msgmerge'] = Builder(action=[
+        '$MSGMERGE $TOP_SRCDIR/po/${TARGET.filebase}.po $SOURCE -o $TARGET',
+        Copy('$TOP_SRCDIR/po/${TARGET.filebase}.po', '$TARGET')]
+        )
+    # get dependency files from POTFILES.in
+    dep_files = ['$TOP_SRCDIR/%s' % x.strip() for x in open(env.File('$TOP_SRCDIR/po/POTFILES.in').abspath).readlines()]
+    dep_files.append('$TOP_SRCDIR/po/POTFILES.in')
     # for each po file, generate pot
     for po_file in transfiles:
         # get filename
@@ -2033,9 +2041,10 @@ if update_po:
         country = fname.split('.')[0]
         #
         if not languages or country in languages:
-            # merge po files
-            # FIXME: Depends on POTFILES.in and its content
-            Alias('update_po', env.msgmerge(po_file + '_new', lyx_pot))
+            # merge po files, the generated lan.po_new file is copied to lan.po file.
+            po = env.msgmerge('$BUILDDIR/po/%s.po' % country, lyx_pot)
+            env.Depends(po, dep_files)
+            Alias('update_po', po)
 
 
 if build_po:
