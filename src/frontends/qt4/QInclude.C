@@ -35,11 +35,11 @@ using lyx::support::os::internal_path;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlInclude, QView<QIncludeDialog> > base_class;
+typedef QController<ControlInclude, QView<QIncludeDialog> > include_base_class;
 
 
 QInclude::QInclude(Dialog & parent)
-	: base_class(parent, _("Child Document"))
+	: include_base_class(parent, _("Child Document"))
 {}
 
 

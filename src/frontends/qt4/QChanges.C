@@ -28,11 +28,11 @@ using lyx::support::bformat;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
+typedef QController<ControlChanges, QView<QChangesDialog> > changes_base_class;
 
 
 QChanges::QChanges(Dialog & parent)
-	: base_class(parent, _("Merge Changes"))
+	: changes_base_class(parent, _("Merge Changes"))
 {
 }
 

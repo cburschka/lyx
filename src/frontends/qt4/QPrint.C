@@ -29,11 +29,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlPrint, QView<QLPrintDialog> > base_class;
+typedef QController<ControlPrint, QView<QLPrintDialog> > print_base_class;
 
 
 QPrint::QPrint(Dialog & parent)
-	: base_class(parent, _("Print Document"))
+	: print_base_class(parent, _("Print Document"))
 {
 }
 

@@ -38,11 +38,11 @@ namespace lyx {
 namespace frontend {
 
 // full qualification because qt4 has also a ControlRef type
-typedef QController<lyx::frontend::ControlRef, QView<QRefDialog> > base_class;
+typedef QController<lyx::frontend::ControlRef, QView<QRefDialog> > ref_base_class;
 
 
 QRef::QRef(Dialog & parent)
-	: base_class(parent, _("Cross-reference")),
+	: ref_base_class(parent, _("Cross-reference")),
 	sort_(false), at_ref_(false)
 {
 }

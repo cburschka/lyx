@@ -126,10 +126,10 @@ VSpace setVSpaceFromWidgets(int spacing,
 } // namespace anon
 
 
-typedef QController<ControlVSpace, QView<QVSpaceDialog> > base_class;
+typedef QController<ControlVSpace, QView<QVSpaceDialog> > vspace_base_class;
 
 QVSpace::QVSpace(Dialog & parent)
-	: base_class(parent, _("Vertical Space Settings"))
+	: vspace_base_class(parent, _("Vertical Space Settings"))
 {}
 
 

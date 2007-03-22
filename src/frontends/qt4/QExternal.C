@@ -276,10 +276,10 @@ void getExtra(external::ExtraData & data,
 } // namespace anon
 
 
-typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
+typedef QController<ControlExternal, QView<QExternalDialog> > external_base_class;
 
 QExternal::QExternal(Dialog & parent)
-	: base_class(parent, _("External Material"))
+	: external_base_class(parent, _("External Material"))
 {}
 
 

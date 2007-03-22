@@ -36,10 +36,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlTabular, QView<QTabularDialog> > base_class;
+typedef QController<ControlTabular, QView<QTabularDialog> > tabular_base_class;
 
 QTabular::QTabular(Dialog & parent)
-	: base_class(parent, _("Table Settings"))
+	: tabular_base_class(parent, _("Table Settings"))
 {
 }
 

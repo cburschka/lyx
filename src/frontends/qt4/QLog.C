@@ -24,10 +24,10 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlLog, QView<QLogDialog> > base_class;
+typedef QController<ControlLog, QView<QLogDialog> > log_base_class;
 
 QLog::QLog(Dialog & parent)
-	: base_class(parent, lyx::docstring())
+	: log_base_class(parent, lyx::docstring())
 {}
 
 

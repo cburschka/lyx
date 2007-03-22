@@ -27,11 +27,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCommand, QView<QIndexDialog> > base_class;
+typedef QController<ControlCommand, QView<QIndexDialog> > index_base_class;
 
 
 QIndex::QIndex(Dialog & parent, docstring const & title, QString const & label)
-	: base_class(parent, title), label_(label)
+	: index_base_class(parent, title), label_(label)
 {
 }
 

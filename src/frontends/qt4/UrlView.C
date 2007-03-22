@@ -27,10 +27,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController< ControlCommand, QView<QURLDialog> > base_class;
+typedef QController< ControlCommand, QView<QURLDialog> > urlview_base_class;
 
 UrlView::UrlView(Dialog & parent)
-	: base_class(parent, _("URL"))
+	: urlview_base_class(parent, _("URL"))
 {
 }
 

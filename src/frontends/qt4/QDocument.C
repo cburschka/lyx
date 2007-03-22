@@ -41,11 +41,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlDocument, QView<QDocumentDialog> > base_class;
+typedef QController<ControlDocument, QView<QDocumentDialog> > document_base_class;
 
 
 QDocument::QDocument(Dialog & parent)
-	: base_class(parent, _("Document Settings"))
+	: document_base_class(parent, _("Document Settings"))
 {}
 
 

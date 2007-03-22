@@ -23,11 +23,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlSearch, QView<QSearchDialog> > base_class;
+typedef QController<ControlSearch, QView<QSearchDialog> > search_base_class;
 
 
 QSearch::QSearch(Dialog & parent)
-	: base_class(parent, _("Find and Replace"))
+	: search_base_class(parent, _("Find and Replace"))
 {
 }
 

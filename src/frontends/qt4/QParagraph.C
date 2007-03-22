@@ -31,11 +31,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlParagraph, QView<QParagraphDialog> > base_class;
+typedef QController<ControlParagraph, QView<QParagraphDialog> > paragraph_base_class;
 
 
 QParagraph::QParagraph(Dialog & parent)
-	: base_class(parent, _("Paragraph Settings"))
+	: paragraph_base_class(parent, _("Paragraph Settings"))
 {}
 
 

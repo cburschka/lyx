@@ -28,11 +28,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlSendto, QView<QSendtoDialog> > base_class;
+typedef QController<ControlSendto, QView<QSendtoDialog> > sendto_base_class;
 
 
 QSendto::QSendto(Dialog & parent)
-	: base_class(parent, _("Send Document to Command"))
+	: sendto_base_class(parent, _("Send Document to Command"))
 {
 }
 

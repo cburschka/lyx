@@ -28,10 +28,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlSpellchecker, QView<QSpellcheckerDialog> > base_class;
+typedef QController<ControlSpellchecker, QView<QSpellcheckerDialog> > spellchecker_base_class;
 
 QSpellchecker::QSpellchecker(Dialog & parent)
-	: base_class(parent, _("Spellchecker"))
+	: spellchecker_base_class(parent, _("Spellchecker"))
 {}
 
 

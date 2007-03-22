@@ -23,10 +23,10 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlThesaurus, QView<QThesaurusDialog> > base_class;
+typedef QController<ControlThesaurus, QView<QThesaurusDialog> > theasaurus_base_class;
 
 QThesaurus::QThesaurus(Dialog & parent)
-	: base_class(parent, _("Thesaurus"))
+	: theasaurus_base_class(parent, _("Thesaurus"))
 {
 }
 

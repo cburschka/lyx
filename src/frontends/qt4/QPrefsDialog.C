@@ -85,7 +85,7 @@ namespace {
 
 template<class A>
 typename std::vector<A>::size_type
-findPos(std::vector<A> const & vec, A const & val)
+findPos_helper(std::vector<A> const & vec, A const & val)
 {
 	typedef typename std::vector<A>::const_iterator Cit;
 
@@ -1522,7 +1522,7 @@ void PrefLanguage::update(LyXRC const & rc)
 	startCommandED->setText(toqstr(rc.language_command_begin));
 	endCommandED->setText(toqstr(rc.language_command_end));
 
-	int const pos = int(findPos(lang_, rc.default_language));
+	int const pos = int(findPos_helper(lang_, rc.default_language));
 	defaultLanguageCO->setCurrentIndex(pos);
 }
 

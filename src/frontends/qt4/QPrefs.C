@@ -32,10 +32,10 @@ using namespace Ui;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlPrefs, QView<QPrefsDialog> > base_class;
+typedef QController<ControlPrefs, QView<QPrefsDialog> > prefs_base_class;
 
 QPrefs::QPrefs(Dialog & parent)
-	: base_class(parent, _("Preferences"))
+	: prefs_base_class(parent, _("Preferences"))
 {
 
 }

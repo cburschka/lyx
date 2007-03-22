@@ -25,11 +25,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlShowFile, QView<QShowFileDialog> > base_class;
+typedef QController<ControlShowFile, QView<QShowFileDialog> > showfile_base_class;
 
 
 QShowFile::QShowFile(Dialog & parent)
-	: base_class(parent, _("Show File"))
+	: showfile_base_class(parent, _("Show File"))
 {
 }
 

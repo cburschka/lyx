@@ -28,11 +28,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCommand, QView<QNomenclDialog> > base_class;
+typedef QController<ControlCommand, QView<QNomenclDialog> > nomencl_base_class;
 
 
 QNomencl::QNomencl(Dialog & parent, docstring const & title)
-	: base_class(parent, title)
+	: nomencl_base_class(parent, title)
 {
 }
 

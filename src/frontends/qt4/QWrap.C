@@ -33,10 +33,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
+typedef QController<ControlWrap, QView<QWrapDialog> > wrap_base_class;
 
 QWrap::QWrap(Dialog & parent)
-	: base_class(parent, _("Text Wrap Settings"))
+	: wrap_base_class(parent, _("Text Wrap Settings"))
 {
 }
 

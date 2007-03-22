@@ -24,10 +24,10 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlErrorList, QView<QErrorListDialog> > base_class;
+typedef QController<ControlErrorList, QView<QErrorListDialog> > errorlist_base_class;
 
 QErrorList::QErrorList(Dialog & parent)
-	: base_class(parent, lyx::docstring())
+	: errorlist_base_class(parent, lyx::docstring())
 {}
 
 

@@ -43,10 +43,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlBox, QView<QBoxDialog> > base_class;
+typedef QController<ControlBox, QView<QBoxDialog> > box_base_class;
 
 QBox::QBox(Dialog & parent)
-	: base_class(parent, _("Box Settings"))
+	: box_base_class(parent, _("Box Settings"))
 {}
 
 

@@ -26,11 +26,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlBranch, QView<QBranchDialog> > base_class;
+typedef QController<ControlBranch, QView<QBranchDialog> > branch_base_class;
 
 
 QBranch::QBranch(Dialog & parent)
-	: base_class(parent, _("Branch Settings"))
+	: branch_base_class(parent, _("Branch Settings"))
 {}
 
 

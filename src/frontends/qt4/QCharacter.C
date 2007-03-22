@@ -27,11 +27,11 @@ using std::vector;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCharacter, QView<QCharacterDialog> > base_class;
+typedef QController<ControlCharacter, QView<QCharacterDialog> > character_base_class;
 
 
 QCharacter::QCharacter(Dialog & parent)
-	: base_class(parent, _("Text Style"))
+	: character_base_class(parent, _("Text Style"))
 {
 }
 

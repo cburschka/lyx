@@ -56,10 +56,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
+typedef QController<ControlGraphics, QView<QGraphicsDialog> > graphics_base_class;
 
 QGraphics::QGraphics(Dialog & parent)
-	: base_class(parent, _("Graphics"))
+	: graphics_base_class(parent, _("Graphics"))
 {
 }
 

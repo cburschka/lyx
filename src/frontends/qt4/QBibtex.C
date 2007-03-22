@@ -42,10 +42,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
+typedef QController<ControlBibtex, QView<QBibtexDialog> > bibtex_base_class;
 
 QBibtex::QBibtex(Dialog & parent)
-	: base_class(parent, _("BibTeX Bibliography"))
+	: bibtex_base_class(parent, _("BibTeX Bibliography"))
 {
 }
 

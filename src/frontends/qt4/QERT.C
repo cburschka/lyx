@@ -23,11 +23,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlERT, QView<QERTDialog> > base_class;
+typedef QController<ControlERT, QView<QERTDialog> > ert_base_class;
 
 
 QERT::QERT(Dialog & parent)
-	: base_class(parent, _("TeX Code Settings"))
+	: ert_base_class(parent, _("TeX Code Settings"))
 {
 }
 

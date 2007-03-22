@@ -22,11 +22,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> > base_class;
+typedef QController<ControlTabularCreate, QView<QTabularCreateDialog> > tabularcreate_base_class;
 
 
 QTabularCreate::QTabularCreate(Dialog & parent)
-	: base_class(parent, _("Insert Table"))
+	: tabularcreate_base_class(parent, _("Insert Table"))
 {
 }
 

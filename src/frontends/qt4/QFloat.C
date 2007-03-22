@@ -24,11 +24,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlFloat, QView<QFloatDialog> > base_class;
+typedef QController<ControlFloat, QView<QFloatDialog> > float_base_class;
 
 
 QFloat::QFloat(Dialog & parent)
-	: base_class(parent, _("Float Settings"))
+	: float_base_class(parent, _("Float Settings"))
 {
 }
 

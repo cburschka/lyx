@@ -27,11 +27,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlViewSource, QView<QViewSourceDialog> > base_class;
+typedef QController<ControlViewSource, QView<QViewSourceDialog> > viewsource_base_class;
 
 
 QViewSource::QViewSource(Dialog & parent)
-	: base_class(parent, lyx::docstring())
+	: viewsource_base_class(parent, lyx::docstring())
 {}
 
 

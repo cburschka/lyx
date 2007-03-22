@@ -24,11 +24,11 @@
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlCommand, QView<QBibitemDialog> > base_class;
+typedef QController<ControlCommand, QView<QBibitemDialog> > bibitem_base_class;
 
 
 QBibitem::QBibitem(Dialog & parent)
-	: base_class(parent, _("Bibliography Entry Settings"))
+	: bibitem_base_class(parent, _("Bibliography Entry Settings"))
 {
 }
 

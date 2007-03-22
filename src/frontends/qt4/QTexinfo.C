@@ -26,10 +26,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
+typedef QController<ControlTexinfo, QView<QTexinfoDialog> > texinfo_base_class;
 
 QTexinfo::QTexinfo(Dialog & parent)
-	: base_class(parent, _("TeX Information")),
+	: texinfo_base_class(parent, _("TeX Information")),
 	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
 }

@@ -33,11 +33,6 @@ namespace lyx {
 
 namespace frontend {
 
-namespace {
-
-int const statusbar_timer_value = 3000;
-
-} // namespace anon
 
 Action::Action(GuiView & lyxView, docstring const & text,
 		FuncRequest const & func, docstring const & tooltip)

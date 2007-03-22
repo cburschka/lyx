@@ -27,11 +27,11 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlNote, QView<QNoteDialog> > base_class;
+typedef QController<ControlNote, QView<QNoteDialog> > note_base_class;
 
 
 QNote::QNote(Dialog & parent)
-	: base_class(parent, _("Note Settings"))
+	: note_base_class(parent, _("Note Settings"))
 {}
 
 

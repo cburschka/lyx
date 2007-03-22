@@ -38,10 +38,10 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;
+typedef QController<ControlAboutlyx, QView<QAboutDialog> > about_base_class;
 
 QAbout::QAbout(Dialog & parent)
-	: base_class(parent, _("About LyX"))
+	: about_base_class(parent, _("About LyX"))
 {
 }
 
