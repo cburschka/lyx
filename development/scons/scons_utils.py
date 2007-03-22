@@ -205,7 +205,7 @@ def env_layouts_l10n(target, source, env):
 
 
 def env_ui_l10n(target, source, env):
-    '''Generate pot file from lib/ui/*.layout and *.inc'''
+    '''Generate pot file from lib/ui/*'''
     output = open(env.File(target[0]).abspath, 'w')
     Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"')
     Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"')
@@ -227,6 +227,16 @@ def env_ui_l10n(target, source, env):
             if string != "":
                 print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % \
                     (relativePath(env, src), lineno+1, string)
+        input.close()
+    output.close()
+
+
+def env_cat(target, source, env):
+    '''Cat source > target. Avoid pipe to increase portability'''
+    output = open(env.File(target[0]).abspath, 'w')
+    for src in source:
+        input = open(env.File(src).abspath)
+        output.write(input.read())
         input.close()
     output.close()
 
