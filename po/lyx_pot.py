@@ -23,7 +23,7 @@ def relativePath(path, base):
     '''return relative path from top source dir'''
     # full pathname of path
     path1 = os.path.normpath(os.path.realpath(path)).split(os.sep)
-    path2 = os.path.normpath(base).split(os.sep)
+    path2 = os.path.normpath(os.path.realpath(base)).split(os.sep)
     if path1[:len(path2)] != path2:
         print "Path %s is not under top source directory" % path
     return os.path.join(*path1[len(path2):])
