@@ -1982,62 +1982,64 @@ if update_po:
     #
     print 'Updating po/*.po files...'
 
-    import glob
-    # files to translate
-    transfiles = glob.glob(os.path.join(env.subst('$TOP_SRCDIR'), 'po', '*.po'))
-    # possibly *only* handle these languages
-    languages = None
-    if env.has_key('languages'):
-        languages = env.make_list(env['lanauges'])
     # whether or not update po files
     if not env['XGETTEXT'] or not env['MSGMERGE'] or not env['MSGUNIQ']:
         print 'xgettext or msgmerge does not exist. Can not merge po files'
         Exit(1)
-    # create a builder that generate 
-    env['XGETTEXT_OPTIONS'] = '--language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=qt_'
-    env['MSGMERGE_OPTIONS'] = '--update'
-    env['COPYRIGHT_HOLDER'] = 'LyX Developers'
-    env['MSGID_BUGS_ADDRESS'] = 'lyx-devel@lists.lyx.org'
-    env['BUILDERS']['xgettext'] = Builder(action='''$XGETTEXT --default-domain=lyx \
-        --output=$TARGET \
+    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot
+    # and combine them to lyx.po
+    lyx_po = env.Command('$BUILDDIR/po/lyx.po',
+        env.Command('$BUILDDIR/po/all.po',
+            [env.Command('$BUILDDIR/po/language_l10n.pot', '$TOP_SRCDIR/lib/languages', 
+                utils.env_language_l10n),
+             env.Command('$BUILDDIR/po/qt4_l10n.pot', 
+                ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files],
+                utils.env_qt4_l10n),
+             env.Command('$BUILDDIR/po/layouts_l10n.pot', 
+                ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files],
+                utils.env_layouts_l10n),
+             env.Command('$BUILDDIR/po/ui_l10n.pot', 
+                ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files],
+                utils.env_ui_l10n)
+             ], utils.env_cat),
+        '$MSGUNIQ -o $TARGET $SOURCE'
+    )
+    # create a builder that generate real po files
+    env['BUILDERS']['xgettext'] = Builder(action=['''$XGETTEXT \
+        --default-domain=${SOURCE.filebase} \
         --directory=$TOP_SRCDIR \
-	    --add-comments=TRANSLATORS: $XGETTEXT_OPTIONS \
+	    --add-comments=TRANSLATORS: \
+        --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=qt_ \
 	    --files-from=$TOP_SRCDIR/po/POTFILES.in \
-	    --copyright-holder='$COPYRIGHT_HOLDER' \
-	    --msgid-bugs-address='$MSGID_BUGS_ADDRESS' ''')
-    env['BUILDERS']['msgmerge'] = Builder(action='$MSGMERGE $MSGMERGE_OPTIONS $SOURCE $TARGET')
+	    --copyright-holder='LyX Developers' \
+	    --msgid-bugs-address='lyx-devel@lists.lyx.org' ''',
+        Copy('$TARGET', '$SOURCE')]
+        )
+    env['BUILDERS']['msgmerge'] = Builder(action=[
+        '$MSGMERGE -o $TARGET $SOURCE ${TARGET.base}.po',
+        Copy('${TARGET.base}.po', '$TARGET')]
+        )
     #   ==> lyx.pot
-    env.xgettext('$BUILDDIR/common/lyx.pot', '$TOP_SRCDIR/po/POTFILES.in')
+    lyx_pot = env.xgettext('$BUILDDIR/po/lyx.pot', lyx_po)
+    #
+    import glob
+    # files to translate
+    transfiles = glob.glob(os.path.join(env.Dir('$TOP_SRCDIR/po').abspath, '*.po'))
+    # possibly *only* handle these languages
+    languages = None
+    if env.has_key('languages'):
+        languages = env.make_list(env['lanauges'])
     # for each po file, generate pot
-    for f in transfiles:
+    for po_file in transfiles:
         # get filename
-        fname = os.path.split(f)[1]
+        fname = os.path.split(po_file)[1]
         # country code
         country = fname.split('.')[0]
         #
         if not languages or country in languages:
             # merge po files
-            env.msgmerge(f, '$BUILDDIR/common/lyx.pot')
-    # build language_l10n.pot, ui_l10n.pot, layouts_l10n.pot, qt4_l10n.pot
-    # and combine them to lyx.po
-    env['BUILDERS']['language_l10n'] = Builder(action=utils.env_language_l10n)
-    env['BUILDERS']['qt4_l10n'] = Builder(action=utils.env_qt4_l10n)
-    env['BUILDERS']['layouts_l10n'] = Builder(action=utils.env_layouts_l10n)
-    env['BUILDERS']['ui_l10n'] = Builder(action=utils.env_ui_l10n)
-    env['BUILDERS']['cat'] = Builder(action=utils.env_cat)
-    env['BUILDERS']['lyx_po'] = Builder(action='$MSGUNIQ -o $TARGET $SOURCE')
-    lyx_po = env.lyx_po('$BUILDDIR/common/lyx.po',
-        env.cat('$BUILDDIR/common/all.po',
-            [env.language_l10n('$BUILDDIR/common/language_l10n.pot', '$TOP_SRCDIR/lib/languages'),
-             env.qt4_l10n('$BUILDDIR/common/qt4_l10n.pot', 
-                ['$TOP_SRCDIR/src/frontends/qt4/ui/%s' % x for x in src_frontends_qt4_ui_files]),
-             env.layouts_l10n('$BUILDDIR/common/layouts_l10n.pot', 
-                ['$TOP_SRCDIR/lib/layouts/%s' % x for x in lib_layouts_files]),
-             env.ui_l10n('$BUILDDIR/common/ui_l10n.pot', 
-                ['$TOP_SRCDIR/lib/ui/%s' % x for x in lib_ui_files])
-             ])
-        )
-    Alias('update_po', lyx_po)
+            # FIXME: Depends on POTFILES.in and its content
+            Alias('update_po', env.msgmerge(po_file + '_new', lyx_pot))
 
 
 if build_po:
