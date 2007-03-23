@@ -28,7 +28,7 @@ namespace frontend {
 
 ControlCharacter::ControlCharacter(Dialog & parent)
 	: Dialog::Controller(parent),
-	  font_(0), toggleall_(false)
+	  font_(0), toggleall_(false), reset_lang_(false)
 {}
 
 
@@ -211,6 +211,8 @@ void ControlCharacter::setColor(LColor_color val)
 
 string ControlCharacter::getLanguage() const
 {
+	if (reset_lang_)
+		return "reset";
 	if (font_.get() && font_->language())
 		return font_->language()->lang();
 	return "ignore";
@@ -221,11 +223,11 @@ void ControlCharacter::setLanguage(string const & val)
 {
 	if (val == "ignore")
 		font_->setLanguage(ignore_language);
-
-	else if (val == "reset")
+	else if (val == "reset") {
+		reset_lang_ = true;
+		// Ignored in getLanguage, but needed for dispatchParams
 		font_->setLanguage(kernel().buffer().params().language);
-
-	else
+	} else
 		font_->setLanguage(languages.getLanguage(val));
 }
 
