@@ -335,6 +335,10 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 		if (!isPrintableNonspace(c))
 			break;
 
+		// We have to draw hebrew characters one by one, since we
+		// apply our own bidi algorithm, and qt would reverse the
+		// order of characters in words again (bug 3040).
+		// The same applys for arabic (see below).
 		if (hebrew) 
 			break;
 
