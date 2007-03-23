@@ -383,18 +383,18 @@ l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot
 
 qt4_l10n.pot: $(top_srcdir)/src/frontends/qt4/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
-	python $(srcdir)/lyx_pot.py -b .. -o $@ -t qt4 ${top_srcdir}/src/frontends/qt4/ui/*.ui 
+	python $(top_srcdir)/po/lyx_pot.py -b $(top_srcdir) -o $@ -t qt4 ${top_srcdir}/src/frontends/qt4/ui/*.ui 
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \
-	python $(srcdir)/lyx_pot.py -b .. -o $@ -t layouts ${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc
+	python $(top_srcdir)/po/lyx_pot.py -b $(top_srcdir) -o $@ -t layouts ${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc
 
 languages_l10n.pot: $(top_srcdir)/lib/languages
-	python $(srcdir)/lyx_pot.py -b .. -o $@ -t languages ${top_srcdir}/lib/languages
+	python $(top_srcdir)/po/lyx_pot.py -b $(top_srcdir) -o $@ -t languages ${top_srcdir}/lib/languages
 
 ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	LC_ALL=C ; export LC_ALL ; \
-	python $(srcdir)/lyx_pot.py -b .. -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
+	python $(top_srcdir)/po/lyx_pot.py -b $(top_srcdir) -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
 
 i18n.php: $(POFILES) postats.sh
 	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
