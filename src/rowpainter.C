@@ -335,14 +335,31 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 		if (!isPrintableNonspace(c))
 			break;
 
+		if (hebrew) 
+			break;
+
+		/* FIXME: these checks are irrelevant, since 'arabic' and
+		 * 'hebrew' alone are already going to trigger a break.
+		 * The encodings used by isComposeChar_arabic and
+		 * isComposeChar_hebrew are incorrect (probably iso8859-8 and
+		 * iso8859-6), they also have to be adapted to Unicode.
+		 * However, this should not be removed completely, because
+		 * if an alternative solution is found which allows grouping
+		 * of arabic and hebrew characters, then these breaks may have
+		 * to be re-applied.
+		 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
+
 		if (arabic && Encodings::isComposeChar_arabic(c))
 			break;
 
 		if (hebrew && Encodings::isComposeChar_hebrew(c))
 			break;
+		*/
 
-		if (arabic)
+		if (arabic) {
 			c = par_.transformChar(c, pos);
+			break;
+		}
 
 		str.push_back(c);
 	}
