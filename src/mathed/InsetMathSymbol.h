@@ -42,6 +42,8 @@ public:
 
 	///
 	bool isRelOp() const;
+	///
+	bool isOrdAlpha() const;
 	/// do we take scripts?
 	bool isScriptable() const;
 	/// do we take \limits or \nolimits?

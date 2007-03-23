@@ -116,6 +116,12 @@ bool InsetMathSymbol::isRelOp() const
 }
 
 
+bool InsetMathSymbol::isOrdAlpha() const
+{
+	return sym_->extra == "mathord" || sym_->extra == "mathalpha";
+}
+
+
 bool InsetMathSymbol::isScriptable() const
 {
 	return scriptable_;

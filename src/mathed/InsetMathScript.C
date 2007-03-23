@@ -15,6 +15,7 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "InsetMathSymbol.h"
+#include "InsetMathFont.h"
 #include "dispatchresult.h"
 #include "cursor.h"
 #include "debug.h"
@@ -146,22 +147,48 @@ MathArray & InsetMathScript::nuc()
 }
 
 
+namespace {
+
+bool isAlphaSymbol(MathAtom const & at)
+{
+	if (at->asCharInset() ||
+			(at->asSymbolInset() &&
+			 at->asSymbolInset()->isOrdAlpha()))
+		return true;
+
+	if (at->asFontInset()) {
+		MathArray const & ar = at->asFontInset()->cell(0);
+		for (size_t i = 0; i < ar.size(); ++i) {
+			if (!(ar[i]->asCharInset() ||
+					(ar[i]->asSymbolInset() &&
+					 ar[i]->asSymbolInset()->isOrdAlpha())))
+				return false;
+		}
+		return true;
+	}
+	return false;
+}
+
+} // namespace anon
+
+
 int InsetMathScript::dy01(int asc, int des, int what) const
 {
 	int dasc = 0;
 	int slevel = 0;
+	bool isCharBox = nuc().size() ? isAlphaSymbol(nuc().back()) : false;
 	if (hasDown()) {
 		dasc = down().ascent();
 		slevel = nuc().slevel();
 		int ascdrop = dasc - slevel;
-		int desdrop = des + nuc().sshift();
+		int desdrop = isCharBox ? 0 : des + nuc().sshift();
 		int mindes = nuc().mindes();
 		des = max(desdrop, ascdrop);
 		des = max(mindes, des);
 	}
 	if (hasUp()) {
 		int minasc = nuc().minasc();
-		int ascdrop = asc - up().mindes();
+		int ascdrop = isCharBox ? 0 : asc - up().mindes();
 		int udes = up().descent();
 		asc = udes + nuc().sshift();
 		asc = max(ascdrop, asc);

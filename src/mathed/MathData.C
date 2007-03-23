@@ -242,8 +242,11 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 
 void MathArray::metrics(MetricsInfo & mi) const
 {
-	dim_ = theFontMetrics(mi.base.font).dimension('I');
-	int xascent = theFontMetrics(mi.base.font).dimension('x').ascent();
+	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
+	dim_ = fm.dimension('I');
+	int xascent = fm.dimension('x').ascent();
+	if (xascent >= dim_.asc)
+		xascent = (2 * dim_.asc) / 3;
 	minasc_ = xascent;
 	mindes_ = (3 * xascent) / 4;
 	slevel_ = (4 * xascent) / 5;
