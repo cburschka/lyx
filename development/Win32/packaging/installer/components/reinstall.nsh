@@ -9,7 +9,8 @@ Reinstall options
 
 Function PageReinstall
 
-  #Check whether this version is already installed
+  # Check whether this version is already installed
+  # If so, some registry key like Software/lyx15 should exist
 
   ReadRegStr $R0 SHELL_CONTEXT ${APP_REGKEY} "Version"
 
@@ -26,6 +27,8 @@ Function PageReinstallValidate
 
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "reinstall.ini" "Field 2" "State"
 
+  # if re-installation, hide many sections
+  # FIXME: where is SelectSection defined?
   ${if} $R0 == "1"
     !insertmacro SelectSection ${SecCore}
   ${else}

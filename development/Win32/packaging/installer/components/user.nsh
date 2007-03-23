@@ -7,13 +7,18 @@ Install type setting (current user/all users)
 #--------------------------------
 #Macros
 
+# COMPONENT can be LaTeX ImageMagick and Ghostscript
 !macro GetDirExternal COMPONENT
 
+  # APP_REGKEY_SETUP = "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
+  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX15
   ReadRegStr $R0 SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${COMPONENT} Path"
   
+  # BIN_LATEX etc are defined in settings.nsh
   ${if} ${FileExists} "$R0\${BIN_${COMPONENT}}"
 
     ${if} $R0 != ""
+      # define variables like PathLATEX
       StrCpy $Path${COMPONENT} $R0
     ${endif}
   
@@ -38,8 +43,8 @@ Function InitUser
   !insertmacro GetDirExternal ImageMagick
   !insertmacro GetDirExternal Ghostscript
   
-  #Set directories in dialogs
-
+  # Set directories in dialogs
+  # Macro defined in include/gui.sh, parameters are COMPONENT CURRENTUSER_POSSIBLE
   !insertmacro InitDialogExternalDir latex ${TRUE}
   !insertmacro InitDialogExternalDir imagemagick ${FALSE}
   !insertmacro InitDialogExternalDir ghostscript ${FALSE}
@@ -74,6 +79,8 @@ Function PageUserValidate
   
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "user.ini" "Field 2" "State"
   
+  # shell var context is important because it determines the actual
+  # meaning of variables like $DESKTOP
   ${if} $R0 == "1"
     SetShellVarContext all
     StrCpy $CurrentUserInstall ${FALSE}
