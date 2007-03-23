@@ -51,6 +51,8 @@ public:
 	void finalize();
 	///
 	bool final() const;
+	///
+	int kerning() const { return kerning_; }
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
 	///
@@ -59,6 +61,8 @@ private:
 	bool final_;
 	///
 	bool black_;
+	///
+	mutable int kerning_;
 };
 
 

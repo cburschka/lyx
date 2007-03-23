@@ -43,6 +43,8 @@ public:
 	void normalize(NormalStream &) const;
 	///
 	void infoize(odocstream & os) const;
+	///
+	int kerning() const { return cell(0).kerning(); }
 
 private:
 	virtual std::auto_ptr<InsetBase> doClone() const;
