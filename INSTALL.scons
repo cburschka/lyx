@@ -111,6 +111,7 @@ Convenience options:
     command line options so you can run 'scons install' directly after a
     long 'scons all' building command. You can load selected options using
     load_option=opt1,opt2,... or exclude options using the - version of it.
+    Note that the option 'bundle' is not reloaded.
   * rebuild=target1,target2... By default, scons will exam all components
     when you build lyx. You can free scons from some hard work and save
     yourself some time by telling scons to rebuild only specified
@@ -154,7 +155,7 @@ You can specify one or more of the following targets:
   Installation:
     po, install = all + po, installer (windows only, need NSIS)
   Misc:
-    msvs_projects
+    msvs_projects, update_po
 
 Your built targets are put into $build_dir, which is debug (mode=debug),
 release (mode=release) or any name specified via build_dir=name. The
@@ -166,6 +167,11 @@ directory structure is:
 
 MSVS projects will be put to development/scons (and you should invoke
 scons from there for this target).
+
+update_po is similar to 'cd po; make update-po' but does not generate
+.gmo files, which is the task of the install target. Note that this 
+target is the only target that changes files (po/*.po in this case)
+of the lyx source tree.
 
 
 A typical working sequence:
