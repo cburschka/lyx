@@ -18,7 +18,6 @@
 #
 import sys, os, re, getopt
 
-
 def relativePath(path, base):
     '''return relative path from top source dir'''
     # full pathname of path
@@ -38,7 +37,6 @@ def ui_l10n(input_files, output, base):
     for src in input_files:
         input = open(src)
         for lineno, line in enumerate(input.readlines()):
-            # get lines that match <string>...</string>
             if Submenu.match(line):
                 (string,) = Submenu.match(line).groups()
                 string = string.replace('_', ' ')
@@ -67,7 +65,6 @@ def layouts_l10n(input_files, output, base):
     for src in input_files:
         input = open(src)
         for lineno, line in enumerate(input.readlines()):
-            # get lines that match <string>...</string>
             if Style.match(line):
                 (string,) = Style.match(line).groups()
                 string = string.replace('_', ' ')
@@ -96,11 +93,10 @@ def qt4_l10n(input_files, output, base):
         input = open(src)
         skipNextLine = False
         for lineno, line in enumerate(input.readlines()):
-            # looking for a line with <string></string>
+            # skip the line after <property name=shortcut>
             if skipNextLine:
                 skipNextLine = False
                 continue
-            # skip the line after <property name=shortcut>
             if prop.match(line):
                 skipNextLine = True
                 continue
@@ -136,21 +132,6 @@ def languages_l10n(input_files, output, base):
         print >> output, '#: %s:%d\nmsgid "%s"\nmsgstr ""\n' % (relativePath(input_files[0], base), lineno+1, items[1])
     input.close()
     output.close()
-
-
-def processFiles(input_type, input_files, output, base):
-    '''Process files according to input_type'''
-    if input_type not in ['ui', 'layouts', 'qt4', 'languages'] or output is None:
-        print 'Wrong input type or output filename.'
-        sys.exit(1)
-    if input_type == 'ui':
-        ui_l10n(input_files, output, base)
-    elif input_type == 'layouts':
-        layouts_l10n(input_files, output, base)
-    elif input_type == 'qt4':
-        qt4_l10n(input_files, output, base)
-    else:
-        languages_l10n(input_files, output, base)
 
 
 Usage = '''
