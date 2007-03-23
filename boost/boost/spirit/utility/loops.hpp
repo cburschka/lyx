@@ -208,7 +208,7 @@ namespace boost { namespace spirit {
             result_t hit = scan.empty_match();
             std::size_t n = m_min;
 
-            for (std::size_t i = 0; ; ++i)
+            for (std::size_t i = 0;; ++i)
             {
                 typename ScannerT::iterator_t save = scan.first;
                 result_t next = this->subject().parse(scan);

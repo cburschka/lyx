@@ -31,6 +31,7 @@ include_directories(
 			${TOP_SRC_DIR}/src/frontends/controllers
 			${CMAKE_CURRENT_BINARY_DIR})
 
+#set(MERGE_FILES 0)
 if(MERGE_FILES AND MSVC)
 	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/frontends_qt4_allinone.C frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})

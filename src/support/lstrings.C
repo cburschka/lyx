@@ -753,7 +753,7 @@ getVectorFromStringT(String const & str, String const & delim)
 	if (str.empty())
 		return vec;
 	String keys = rtrim(str);
-	for(; ;) {
+	for(;;) {
 		typename String::size_type const idx = keys.find(delim);
 		if (idx == String::npos) {
 			vec.push_back(ltrim(keys));

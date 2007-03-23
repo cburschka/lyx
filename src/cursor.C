@@ -93,7 +93,7 @@ namespace {
 		it.top().pos() = 0;
 		DocIterator et = c;
 		et.top().pos() = et.top().asInsetMath()->cell(et.top().idx()).size();
-		for (size_t i = 0; ; ++i) {
+		for (size_t i = 0;; ++i) {
 			int xo;
 			int yo;
 			InsetBase const * inset = &it.inset();

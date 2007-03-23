@@ -54,14 +54,14 @@ else(MSVC)
 		"-include ${TOP_SRC_DIR}/src/tex2lyx/lyxfont.h -include ${TOP_SRC_DIR}/src/tex2lyx/Spacing.h")
 endif(MSVC)
 
-
-if(NOT MERGE_FILES)
+#TODO
+#if(NOT MERGE_FILES)
 	add_executable(tex2lyx ${tex2lyx_sources} ${LINKED_FILES} ${tex2lyx_headers})
-else(NOT MERGE_FILES)
-	set(tex2lyx_sources_all ${tex2lyx_sources} ${LINKED_FILES})
-	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/tex2lyx_allinone.C tex2lyx_sources_all)
-	add_executable(tex2lyx ${CMAKE_CURRENT_BINARY_DIR}/tex2lyx_allinone.C)
-endif(NOT MERGE_FILES)
+#else(NOT MERGE_FILES)
+#	set(tex2lyx_sources_all ${tex2lyx_sources} ${LINKED_FILES})
+#	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/tex2lyx_allinone.C tex2lyx_sources_all)
+#	add_executable(tex2lyx ${CMAKE_CURRENT_BINARY_DIR}/tex2lyx_allinone.C)
+#endif(NOT MERGE_FILES)
 
 
 target_link_libraries(tex2lyx  
