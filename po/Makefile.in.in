@@ -53,6 +53,8 @@ DISTFILES = $(DISTFILES.common) Makevars POTFILES.in $(DOMAIN).pot stamp-po \
 $(POFILES) $(GMOFILES) \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
 
+DISTFILES.extra1 = lyx_pot.py
+
 POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
 
 POTFILES = \
@@ -381,18 +383,18 @@ l10n_pots: qt4_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot
 
 qt4_l10n.pot: $(top_srcdir)/src/frontends/qt4/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
-	python lyx_pot.py -b .. -o $@ -t qt4 ${top_srcdir}/src/frontends/qt4/ui/*.ui 
+	python $(srcdir)/lyx_pot.py -b .. -o $@ -t qt4 ${top_srcdir}/src/frontends/qt4/ui/*.ui 
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \
-	python lyx_pot.py -b .. -o $@ -t layouts ${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc
+	python $(srcdir)/lyx_pot.py -b .. -o $@ -t layouts ${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc
 
 languages_l10n.pot: $(top_srcdir)/lib/languages
-	python lyx_pot.py -b .. -o $@ -t languages ${top_srcdir}/lib/languages
+	python $(srcdir)/lyx_pot.py -b .. -o $@ -t languages ${top_srcdir}/lib/languages
 
 ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	LC_ALL=C ; export LC_ALL ; \
-	python lyx_pot.py -b .. -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
+	python $(srcdir)/lyx_pot.py -b .. -o $@ -t ui ${top_srcdir}/lib/ui/*.ui ${top_srcdir}/lib/ui/*.inc
 
 i18n.php: $(POFILES) postats.sh
 	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
