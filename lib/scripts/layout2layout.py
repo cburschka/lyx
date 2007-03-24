@@ -138,11 +138,11 @@ def convert(lines):
                             only_comment = 0
                         elif format == 3:
                                 # nothing to do
-                                return
+                                return format
                         else:
                             error('Cannot convert file format %s' % format)
                 else:
-                        lines.insert(i, "Format 3")
+                        lines.insert(i, "Format 2")
                         only_comment = 0
                         continue
 
@@ -352,6 +352,8 @@ def convert(lines):
 
         i = i + 1
 
+    return format + 1
+
 
 def main(argv):
 
@@ -367,7 +369,9 @@ def main(argv):
 
     # Do the real work
     lines = read(input)
-    convert(lines)
+    format = 1
+    while (format < 3):
+        format = convert(lines)
     write(output, lines)
 
     # Close files
