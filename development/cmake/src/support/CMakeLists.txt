@@ -35,8 +35,12 @@ else(NOT MERGE_FILES)
 	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
 	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
 	list(REVERSE support_sources)
-	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/support_allinone.C support_sources)
-	add_library(support STATIC ${CMAKE_CURRENT_BINARY_DIR}/support_allinone.C)
+	lyx_merge_files(allinone support_sources)
+	add_library(support STATIC 
+					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
+					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
+					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
+					
 endif(NOT MERGE_FILES)
 
 

@@ -31,12 +31,18 @@ include_directories(
 			${TOP_SRC_DIR}/src/frontends/controllers
 			${CMAKE_CURRENT_BINARY_DIR})
 
-#set(MERGE_FILES 0)
 if(MERGE_FILES AND MSVC)
-	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/frontends_qt4_allinone.C frontends_qt4_sources)
+	lyx_merge_files(allinone frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
-	SET_SOURCE_FILES_PROPERTIES(frontends_qt4_allinone.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
-	add_library(frontend_qt4 STATIC ${CMAKE_CURRENT_BINARY_DIR}/frontends_qt4_allinone.C ${frontends_qt4_headers} ${ui_files})
+	SET_SOURCE_FILES_PROPERTIES(allinone_const.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
+	SET_SOURCE_FILES_PROPERTIES(allinone_touched.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
+	add_library(frontend_qt4 STATIC 
+					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
+					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
+					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C
+					${frontends_qt4_headers} 
+					${ui_files}
+	)
 else(MERGE_FILES AND MSVC)	
 	add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
 endif(MERGE_FILES AND MSVC)

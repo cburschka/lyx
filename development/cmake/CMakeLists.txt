@@ -38,7 +38,7 @@ if(merge OR MERGE_FILES)
 		set(MERGE_FILES TRUE CACHE TYPE STRING FORCE)
 	endif(NOT MERGE_FILES)
 	message(STATUS "")
-	message(STATUS "will merge all *.C files of a project into one file (exception: qt4 and boost_regex files )")
+	message(STATUS "will merge all *.C files of a project into two files")
 	message(STATUS "")
 endif(merge OR MERGE_FILES)	
 

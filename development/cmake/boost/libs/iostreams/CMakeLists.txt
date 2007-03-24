@@ -19,8 +19,12 @@ include_directories(${ZLIB_INCLUDE_DIR})
 if(NOT MERGE_FILES)
 	add_library(boost_iostreams STATIC ${boost_iostreams_sources})
 else(NOT MERGE_FILES)
-	lyx_merge_files(${CMAKE_CURRENT_BINARY_DIR}/boost_iostreams_allinone.C boost_iostreams_sources)
-	add_library(boost_iostreams STATIC ${CMAKE_CURRENT_BINARY_DIR}/boost_iostreams_allinone.C)
+	lyx_merge_files(allinone boost_iostreams_sources)
+	add_library(boost_iostreams STATIC 					
+					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
+					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
+					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
+	
 endif(NOT MERGE_FILES)
 
 target_link_libraries(boost_iostreams ${ZLIB_LIBRARY})
