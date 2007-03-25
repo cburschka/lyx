@@ -15,7 +15,8 @@
 
 
 #include "insetcommand.h"
-#include "bufferparams.h"
+
+#include "frontends/controllers/biblio.h"
 
 
 namespace lyx {

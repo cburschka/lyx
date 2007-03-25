@@ -23,7 +23,12 @@ class Buffer;
 namespace lyx {
 namespace biblio {
 
-class CiteEngine_enum;
+enum CiteEngine {
+	ENGINE_BASIC,
+	ENGINE_NATBIB_AUTHORYEAR,
+	ENGINE_NATBIB_NUMERICAL,
+	ENGINE_JURABIB
+};
 
 
 enum CiteStyle {
@@ -55,7 +60,7 @@ enum Direction {
  *  returns an appropriate command, valid for \c engine.
  */
 std::string const asValidLatexCommand(std::string const & input,
-				      CiteEngine_enum const & engine);
+				      CiteEngine const engine);
 
 /// First entry is the bibliography key, second the data
 typedef std::map<std::string, docstring> InfoMap;
@@ -121,7 +126,7 @@ public:
 
 
 /// Returns a vector of available Citation styles.
-std::vector<CiteStyle> const getCiteStyles(CiteEngine_enum const &);
+std::vector<CiteStyle> const getCiteStyles(CiteEngine const );
 
 /**
    "Translates" the available Citation Styles into strings for this key.

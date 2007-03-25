@@ -39,23 +39,8 @@ class TexRow;
 class VSpace;
 class Language;
 
-
 namespace biblio {
-
-enum CiteEngine {
-	ENGINE_BASIC,
-	ENGINE_NATBIB_AUTHORYEAR,
-	ENGINE_NATBIB_NUMERICAL,
-	ENGINE_JURABIB
-};
-
-class CiteEngine_enum {
-	CiteEngine val_;
-public:
-	CiteEngine_enum(CiteEngine val) : val_(val) {}
-	operator CiteEngine() const{ return val_; }
-};
-
+enum CiteEngine;
 } // namespace biblio
 
 
@@ -240,8 +225,6 @@ public:
 	/// Whether and how to load esint
 	Package use_esint;
 	///
-	biblio::CiteEngine cite_engine;
-	///
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?
 	bool trackChanges;
@@ -278,7 +261,10 @@ public:
 	/// path of the current buffer
 	std::string filepath;
 	/// get the appropriate cite engine (natbib handling)
-	biblio::CiteEngine_enum getEngine() const;
+	biblio::CiteEngine getEngine() const;
+
+	///
+	void setCiteEngine(biblio::CiteEngine const);
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
@@ -291,6 +277,9 @@ private:
 		static void destroy(Impl *);
 	};
 	support::copied_ptr<Impl, MemoryTraits> pimpl_;
+
+	///
+	biblio::CiteEngine cite_engine_;
 };
 
 } // namespace lyx

@@ -1623,7 +1623,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_BUFFER_PARAMS_APPLY: {
 			BOOST_ASSERT(lyx_view_);
 			biblio::CiteEngine const engine =
-				lyx_view_->buffer()->params().cite_engine;
+				lyx_view_->buffer()->params().getEngine();
 
 			istringstream ss(argument);
 			LyXLex lex(0,0);
@@ -1637,7 +1637,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 				       << (unknown_tokens == 1 ? "" : "s")
 				       << endl;
 			}
-			if (engine == lyx_view_->buffer()->params().cite_engine)
+			if (engine == lyx_view_->buffer()->params().getEngine())
 				break;
 
 			LCursor & cur = view()->cursor();

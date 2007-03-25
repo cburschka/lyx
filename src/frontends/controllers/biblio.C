@@ -111,7 +111,7 @@ static const docstring TheBibliographyRef(from_ascii("TheBibliographyRef"));
 
 
 string const asValidLatexCommand(string const & input,
-				 CiteEngine_enum const & engine)
+				 CiteEngine const engine)
 {
 	string const default_str = default_cite_command(engine);
 	if (!is_possible_cite_command(input))
@@ -688,7 +688,7 @@ string const CitationStyle::asLatexStr() const
 }
 
 
-vector<CiteStyle> const getCiteStyles(CiteEngine_enum const & engine)
+vector<CiteStyle> const getCiteStyles(CiteEngine const engine)
 {
 	unsigned int nStyles = 0;
 	unsigned int start = 0;

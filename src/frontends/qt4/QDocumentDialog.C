@@ -35,6 +35,7 @@
 #include "tex-strings.h" // tex_graphics
 #include "Spacing.h"
 
+#include "frontends/controllers/biblio.h"
 #include "controllers/ControlDocument.h"
 #include "controllers/frnt_lang.h"
 
@@ -642,18 +643,18 @@ void QDocumentDialog::apply(BufferParams & params)
 		fromqstr(preambleModule->preambleTE->document()->toPlainText());
 
 	// biblio
-	params.cite_engine = biblio::ENGINE_BASIC;
+	params.setCiteEngine(biblio::ENGINE_BASIC);
 
 	if (biblioModule->citeNatbibRB->isChecked()) {
 		bool const use_numerical_citations =
 			biblioModule->citeStyleCO->currentIndex();
 		if (use_numerical_citations)
-			params.cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
+			params.setCiteEngine(biblio::ENGINE_NATBIB_NUMERICAL);
 		else
-			params.cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
+			params.setCiteEngine(biblio::ENGINE_NATBIB_AUTHORYEAR);
 
 	} else if (biblioModule->citeJurabibRB->isChecked())
-		params.cite_engine = biblio::ENGINE_JURABIB;
+		params.setCiteEngine(biblio::ENGINE_JURABIB);
 
 	params.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
@@ -920,17 +921,17 @@ void QDocumentDialog::updateParams(BufferParams const & params)
 
 	// biblio
 	biblioModule->citeDefaultRB->setChecked(
-		params.cite_engine == biblio::ENGINE_BASIC);
+		params.getEngine() == biblio::ENGINE_BASIC);
 
 	biblioModule->citeNatbibRB->setChecked(
-		params.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL ||
-		params.cite_engine == biblio::ENGINE_NATBIB_AUTHORYEAR);
+		params.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL ||
+		params.getEngine() == biblio::ENGINE_NATBIB_AUTHORYEAR);
 
 	biblioModule->citeStyleCO->setCurrentIndex(
-		params.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL);
+		params.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL);
 
 	biblioModule->citeJurabibRB->setChecked(
-		params.cite_engine == biblio::ENGINE_JURABIB);
+		params.getEngine() == biblio::ENGINE_JURABIB);
 
 	biblioModule->bibtopicCB->setChecked(
 		params.use_bibtopic);

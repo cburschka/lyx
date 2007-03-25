@@ -317,7 +317,7 @@ docstring const InsetCitation::generateLabel(Buffer const & buffer) const
 	docstring const after  = getParam("after");
 
 	docstring label;
-	biblio::CiteEngine const engine = buffer.params().cite_engine;
+	biblio::CiteEngine const engine = buffer.params().getEngine();
 	if (engine != biblio::ENGINE_BASIC) {
 		// FIXME UNICODE
 		label = getNatbibLabel(buffer, getCmdName(), to_utf8(getParam("key")),
@@ -446,7 +446,7 @@ int InsetCitation::latex(Buffer const & buffer, odocstream & os,
 
 void InsetCitation::validate(LaTeXFeatures & features) const
 {
-	switch (features.bufferParams().cite_engine) {
+	switch (features.bufferParams().getEngine()) {
 	case biblio::ENGINE_BASIC:
 		break;
 	case biblio::ENGINE_NATBIB_AUTHORYEAR:

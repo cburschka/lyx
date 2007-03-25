@@ -37,6 +37,7 @@
 #include "vspace.h"
 
 #include "frontends/Alert.h"
+#include "frontends/controllers/biblio.h"
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/convert.h"
@@ -303,7 +304,7 @@ BufferParams::BufferParams()
 	use_geometry = false;
 	use_amsmath = package_auto;
 	use_esint = package_auto;
-	cite_engine = biblio::ENGINE_BASIC;
+	cite_engine_ = biblio::ENGINE_BASIC;
 	use_bibtopic = false;
 	trackChanges = false;
 	outputChanges = false;
@@ -495,7 +496,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\cite_engine") {
 		string engine;
 		lex >> engine;
-		cite_engine = citeenginetranslator().find(engine);
+		cite_engine_ = citeenginetranslator().find(engine);
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
 	} else if (token == "\\tracking_changes") {
@@ -642,7 +643,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_geometry " << convert<string>(use_geometry)
 	   << "\n\\use_amsmath " << use_amsmath
 	   << "\n\\use_esint " << use_esint
-	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine)
+	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine_)
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
@@ -1483,14 +1484,20 @@ Encoding const & BufferParams::encoding() const
 }
 
 
-biblio::CiteEngine_enum BufferParams::getEngine() const
+biblio::CiteEngine BufferParams::getEngine() const
 {
 	// FIXME the class should provide the numerical/
 	// authoryear choice
 	if (getLyXTextClass().provides(LyXTextClass::natbib)
-	    && cite_engine != biblio::ENGINE_NATBIB_NUMERICAL)
+	    && cite_engine_ != biblio::ENGINE_NATBIB_NUMERICAL)
 		return biblio::ENGINE_NATBIB_AUTHORYEAR;
-	return cite_engine;
+	return cite_engine_;
+}
+
+
+void BufferParams::setCiteEngine(biblio::CiteEngine const cite_engine)
+{
+	cite_engine_ = cite_engine;
 }
 
 } // namespace lyx

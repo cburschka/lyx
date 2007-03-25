@@ -31,6 +31,7 @@
 #include "support/docstream.h"
 #include "support/filetools.h"
 
+#include "frontends/controllers/biblio.h"
 
 namespace lyx {
 
@@ -378,7 +379,7 @@ string const LaTeXFeatures::getPackages() const
 	// natbib.sty
 	if (isRequired("natbib") && ! tclass.provides(LyXTextClass::natbib)) {
 		packages << "\\usepackage[";
-		if (params_.cite_engine == biblio::ENGINE_NATBIB_NUMERICAL) {
+		if (params_.getEngine() == biblio::ENGINE_NATBIB_NUMERICAL) {
 			packages << "numbers";
 		} else {
 			packages << "authoryear";
