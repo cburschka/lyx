@@ -45,7 +45,7 @@ template<typename String> static QStringList to_qstring_list(vector<String> cons
 vector<string> const to_string_vector(QStringList const & qlist)
 {
 	vector<string> v;
-	for (size_t i=0; i != qlist.size(); ++i) {
+	for (int i = 0; i != qlist.size(); ++i) {
 		if (qlist[i].isEmpty())
 			continue;
 		v.push_back(lyx::fromqstr(qlist[i]));
