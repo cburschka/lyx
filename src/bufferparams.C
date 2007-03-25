@@ -37,7 +37,6 @@
 #include "vspace.h"
 
 #include "frontends/Alert.h"
-#include "frontends/controllers/biblio.h"
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/convert.h"
