@@ -195,8 +195,8 @@ void Encoding::validate(char_type c, LaTeXFeatures & features) const
 
 bool Encodings::isComposeChar_hebrew(char_type c)
 {
-	return c <= 0xd2 && c >= 0xc0 &&
-		c != 0xce && c != 0xd0;
+	return c <= 0x05c2 && c >= 0x05b0 &&
+	       c != 0x05be && c != 0x05c0;
 }
 
 
