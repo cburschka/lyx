@@ -32,7 +32,11 @@ QViewSourceDialog::QViewSourceDialog(QViewSource * form)
 	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(update()));
 
+	// setting a document at this point trigger an assertion in Qt
+	// so we disable the signals here:
+	form_->document()->blockSignals(true);
 	viewSourceTV->setDocument(form_->document());
+	form_->document()->blockSignals(false);
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
