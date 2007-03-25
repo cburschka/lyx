@@ -253,12 +253,8 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 			if (isPrintableNonspace(c)) {
 				int const width2 = text_.singleWidth(par_, i, c,
 					text_.getFont(*bv_.buffer(), par_, i));
-				// FIXME UNICODE
-				// This does not work anymore, and non-ascii
-				// characters in source files are forbidden
-				// anyway.
-				// dalet / resh
-				dx = (c == 'ø' || c == 'ã')
+				dx = (c == 0x05e8 || // resh
+				      c == 0x05d3)   // dalet
 					? width2 - width
 					: (width2 - width) / 2;
 			}
@@ -267,7 +263,6 @@ void RowPainter::paintHebrewComposeChar(pos_type & vpos, LyXFont const & font)
 	}
 
 	// Draw nikud
-	// FIXME UNICODE
 	pain_.text(int(x_) + dx, yo_, str, font);
 }
 
