@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Bo Peng
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,10 +13,8 @@
 #include <config.h>
 
 #include "QViewSourceDialog.h"
-#include "QViewSource.h"
 
-#include <QPushButton>
-#include <QCloseEvent>
+#include "QViewSource.h"
 
 
 namespace lyx {
@@ -26,26 +25,33 @@ QViewSourceDialog::QViewSourceDialog(QViewSource * form)
 {
 	setupUi(this);
 
-	connect(closePB, SIGNAL(clicked()), form, SLOT(slotClose()));
 	connect(viewFullSourceCB, SIGNAL(clicked()),
-		this, SLOT(slotUpdate()));
+		this, SLOT(update()));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
 	connect(updatePB, SIGNAL(clicked()),
-		this, SLOT(slotUpdate()));
+		this, SLOT(update()));
+
+	viewSourceTV->setDocument(form_->document());
+	viewSourceTV->setReadOnly(true);
+	///dialog_->viewSourceTV->setAcceptRichText(false);
+	// this is personal. I think source code should be in fixed-size font
+	QFont font(toqstr(theApp()->typewriterFontName()));
+	font.setKerning(false);
+	font.setFixedPitch(true);
+	font.setStyleHint(QFont::TypeWriter);
+	viewSourceTV->setFont(font);
+	// again, personal taste
+	viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
 }
 
 
-void QViewSourceDialog::closeEvent(QCloseEvent * e)
+void QViewSourceDialog::update()
 {
-	form_->slotWMHide();
-	e->accept();
-}
+	if (autoUpdateCB->isChecked())
+		form_->update(viewFullSourceCB->isChecked());
 
-
-void QViewSourceDialog::slotUpdate()
-{
-	form_->update_source();
+	QWidget::update();
 }
 
 } // namespace frontend

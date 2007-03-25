@@ -66,6 +66,7 @@
 #include "QNomencl.h"
 #include "QLog.h"
 #include "QViewSource.h"
+#include "QViewSourceDialog.h"
 #include "QMath.h"
 #include "QNote.h"
 #include "QParagraph.h"
@@ -237,8 +238,11 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new QLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "view-source") {
-		dialog->setController(new ControlViewSource(*dialog));
-		dialog->setView(new QViewSource(*dialog));
+		QViewSource * qvs = new QViewSource(*dialog);
+		dialog->setController(qvs);
+		GuiView & gui_view = static_cast<GuiView &>(lyxview_);
+		dialog->setView(new DockView<QViewSource, QViewSourceDialog>(
+			*dialog, qvs, &gui_view, _("LateX Source"), Qt::BottomDockWidgetArea));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "mathpanel") {
 		dialog->setController(new ControlMath(*dialog));

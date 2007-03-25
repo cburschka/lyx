@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Bo Peng
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -15,24 +16,8 @@
 #include "QViewSourceDialog.h"
 #include "qt_helpers.h"
 
-#include "frontends/Application.h"
-
-#include "controllers/ControlViewSource.h"
-
-#include <sstream>
-
-#include <QTextEdit>
-#include <QPushButton>
-
 namespace lyx {
 namespace frontend {
-
-typedef QController<ControlViewSource, QView<QViewSourceDialog> > viewsource_base_class;
-
-
-QViewSource::QViewSource(Dialog & parent)
-	: viewsource_base_class(parent, lyx::docstring())
-{}
 
 
 latexHighlighter::latexHighlighter(QTextDocument * parent) :
@@ -82,37 +67,18 @@ void latexHighlighter::highlightBlock(QString const & text)
 }
 
 
-void QViewSource::build_dialog()
+QViewSource::QViewSource(Dialog & parent)
+	: ControlViewSource(parent)
 {
-	dialog_.reset(new QViewSourceDialog(this));
+	document_ = new QTextDocument(this);
 	// set syntex highlighting
-	highlighter = new latexHighlighter(dialog_->viewSourceTV->document());
-	//
-	dialog_->viewSourceTV->setReadOnly(true);
-	///dialog_->viewSourceTV->setAcceptRichText(false);
-	// this is personal. I think source code should be in fixed-size font
-	QFont font(toqstr(theApp()->typewriterFontName()));
-	font.setKerning(false);
-	font.setFixedPitch(true);
-	font.setStyleHint(QFont::TypeWriter);
-	dialog_->viewSourceTV->setFont(font);
-	// again, personal taste
-	dialog_->viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
-}
-
- 
-void QViewSource::update_source()
-{
-	bool fullSource = dialog_->viewFullSourceCB->isChecked();
-	dialog_->viewSourceTV->setPlainText(toqstr(controller().updateContent(fullSource)));
+	highlighter_ = new latexHighlighter(document_);
 }
 
 
-void QViewSource::update_contents()
+void QViewSource::update(bool full_source)
 {
-	setTitle(controller().title());
-	if (dialog_->autoUpdateCB->isChecked())
-		update_source();
+	document_->setPlainText(toqstr(updateContent(full_source)));
 }
 
 

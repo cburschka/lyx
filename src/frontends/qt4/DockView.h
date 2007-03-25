@@ -34,13 +34,14 @@ public:
 		Dialog & dialog, ///< The (one) parent Dialog class.
 		Controller * form, ///< Associated model/controller
 		QMainWindow * parent, ///< the main window where to dock.
-		docstring const & title ///< Window title (shown in the top title bar).
+		docstring const & title, ///< Window title (shown in the top title bar).
+		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea
 		)
 		: QDockWidget(toqstr(title), parent), Dialog::View(dialog, title)
 	{
 		widget_.reset(new Widget(form));
 		setWidget(widget_.get());
-		parent->addDockWidget(Qt::LeftDockWidgetArea, this);
+		parent->addDockWidget(area, this);
 	}
 
 	/// Dialog::View inherited methods

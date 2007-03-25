@@ -6,6 +6,7 @@
  *
  * \author John Levon
  * \author Bo Peng
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -15,20 +16,24 @@
 
 #include "ui/QViewSourceUi.h"
 
+#include "frontends/Application.h"
+
+#include <QWidget>
+
 namespace lyx {
 namespace frontend {
 
 class QViewSource;
 
-class QViewSourceDialog : public QDialog, public Ui::QViewSourceUi {
+class QViewSourceDialog : public QWidget, public Ui::QViewSourceUi {
 	Q_OBJECT
 public:
 	QViewSourceDialog(QViewSource * form);
-protected:
-	virtual void closeEvent(QCloseEvent * e);
-private Q_SLOTS:
+
+public Q_SLOTS:
 	// update content
-	void slotUpdate();
+	void update();
+
 private:
 	QViewSource * form_;
 };

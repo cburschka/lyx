@@ -1,12 +1,12 @@
 <ui version="4.0" >
  <class>QViewSourceUi</class>
- <widget class="QDialog" name="QViewSourceUi" >
+ <widget class="QWidget" name="QViewSourceUi" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>424</height>
+    <height>116</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -15,108 +15,49 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item>
+   <item row="1" column="1" >
+    <widget class="QCheckBox" name="autoUpdateCB" >
+     <property name="text" >
+      <string>Automatic update</string>
+     </property>
+     <property name="checked" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="updatePB" >
+     <property name="enabled" >
+      <bool>false</bool>
+     </property>
+     <property name="text" >
+      <string>&amp;Update</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3" >
     <widget class="QTextEdit" name="viewSourceTV" >
      <property name="whatsThis" >
       <string/>
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+   <item row="1" column="0" >
+    <widget class="QCheckBox" name="viewFullSourceCB" >
+     <property name="cursor" >
+      <cursor>0</cursor>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="text" >
+      <string>Display complete source</string>
      </property>
-     <item>
-      <widget class="QCheckBox" name="viewFullSourceCB" >
-       <property name="cursor" >
-        <cursor>0</cursor>
-       </property>
-       <property name="text" >
-        <string>Display complete source</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="autoUpdateCB" >
-       <property name="text" >
-        <string>Automatic update</string>
-       </property>
-       <property name="checked" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>201</width>
-         <height>44</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="updatePB" >
-       <property name="enabled" >
-        <bool>false</bool>
-       </property>
-       <property name="text" >
-        <string>&amp;Update</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>31</width>
-         <height>44</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
-        <string>&amp;Close</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -125,7 +66,6 @@
   <tabstop>viewFullSourceCB</tabstop>
   <tabstop>autoUpdateCB</tabstop>
   <tabstop>updatePB</tabstop>
-  <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
   <include location="local" >qt_helpers.h</include>
