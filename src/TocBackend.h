@@ -28,9 +28,7 @@
 namespace lyx {
 
 class Buffer;
-class Paragraph;
 class FuncRequest;
-class LCursor;
 
 ///
 /**
