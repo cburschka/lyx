@@ -1086,40 +1086,88 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 		cursorRightOneWord(cur);
 	}
 
-	recordUndoSelection(cur);
+	recordUndoSelection(cur, Undo::ATOMIC);
 
-	pos_type pos = from.pos();
-	int par = from.pit();
+	pit_type begPit = from.pit();
+	pit_type endPit = to.pit();
 
-	while (par != int(pars_.size()) && (pos != to.pos() || par != to.pit())) {
-		pit_type pit = par;
-		if (pos == pars_[pit].size()) {
-			++par;
-			pos = 0;
-			continue;
-		}
-		char_type c = pars_[pit].getChar(pos);
-		if (c != Paragraph::META_INSET) {
-			switch (action) {
-			case text_lowercase:
-				c = lowercase(c);
-				break;
-			case text_capitalization:
-				c = uppercase(c);
-				action = text_lowercase;
-				break;
-			case text_uppercase:
-				c = uppercase(c);
-				break;
+	pos_type begPos = from.pos();
+	pos_type endPos = to.pos();
+
+	bool const trackChanges = cur.buffer().params().trackChanges;
+
+	pos_type right; // needed after the for loop
+
+	for (pit_type pit = begPit; pit <= endPit; ++pit) {
+		pos_type parSize = pars_[pit].size();
+
+		pos_type pos = (pit == begPit ? begPos : 0);
+		right = (pit == endPit ? endPos : parSize);
+
+		// process sequences of modified characters; in change 
+		// tracking mode, this approach results in much better
+		// usability than changing case on a char-by-char basis
+		docstring changes;
+
+		bool capitalize = true;
+
+		for (; pos < right; ++pos) {
+			char_type oldChar = pars_[pit].getChar(pos);
+			char_type newChar = oldChar;
+
+			// ignore insets and don't play with deleted text!
+			if (oldChar != Paragraph::META_INSET && !pars_[pit].isDeleted(pos)) {
+				switch (action) {
+				case text_lowercase:
+					newChar = lowercase(oldChar);
+					break;
+				case text_capitalization:
+					if (capitalize) {
+						newChar = uppercase(oldChar);
+						capitalize = false;
+					}
+					break;
+				case text_uppercase:
+					newChar = uppercase(oldChar);
+					break;
+				}
+			}
+
+			if (!pars_[pit].isLetter(pos) || pars_[pit].isDeleted(pos)) {
+				capitalize = true; // permit capitalization again
+			}
+
+			if (oldChar != newChar) {
+				changes += newChar;
+			}
+
+			if (oldChar == newChar || pos == right - 1) {
+				if (oldChar != newChar) {
+					pos++; // step behind the changing area
+				}
+				int erasePos = pos - changes.size();
+				for (int i = 0; i < changes.size(); i++) {
+					pars_[pit].insertChar(pos, changes[i],
+						pars_[pit].getFontSettings(cur.buffer().params(),
+								erasePos),
+						trackChanges);
+					if (!pars_[pit].eraseChar(erasePos, trackChanges)) {
+						++erasePos;
+						++pos; // advance
+						++right; // expand selection
+					}
+				}
+				changes.clear();
 			}
 		}
-
-		// FIXME: change tracking (MG)
-		// sorry but we are no longer allowed to set a single character directly
-		// we have to rewrite this method in terms of erase&insert operations
-		//pars_[pit].setChar(pos, c);
-		++pos;
 	}
+
+	// the selection may have changed due to logically-only deleted chars
+	setCursor(cur, begPit, begPos);
+	cur.resetAnchor();
+	setCursor(cur, endPit, right);
+	cur.setSelection();
+
 	checkBufferStructure(cur.buffer(), cur);
 }
 
