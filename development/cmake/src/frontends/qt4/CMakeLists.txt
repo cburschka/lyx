@@ -31,7 +31,12 @@ include_directories(
 			${TOP_SRC_DIR}/src/frontends/controllers
 			${CMAKE_CURRENT_BINARY_DIR})
 
-if(MERGE_FILES AND MSVC)
+if(MERGE_FILES)
+	list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/QCommandEdit.C)
+	list(APPEND frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/QCommandEdit.C)
+	list(REVERSE frontends_qt4_sources)
+	list(REMOVE_ITEM frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/GuiApplication.C)
+	list(APPEND frontends_qt4_sources ${TOP_SRC_DIR}/src/frontends/qt4/GuiApplication.C)
 	lyx_merge_files(allinone frontends_qt4_sources)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
 	SET_SOURCE_FILES_PROPERTIES(allinone_const.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
@@ -43,9 +48,9 @@ if(MERGE_FILES AND MSVC)
 					${frontends_qt4_headers} 
 					${ui_files}
 	)
-else(MERGE_FILES AND MSVC)	
+else(MERGE_FILES)	
 	add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
-endif(MERGE_FILES AND MSVC)
+endif(MERGE_FILES)
 
 target_link_libraries(frontend_qt4 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} controllers)
 

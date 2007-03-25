@@ -28,7 +28,7 @@
 
 #ifdef Q_WS_X11
 #include <qwidget.h>
-#include <X11/Xlib.h>
+//#include <X11/Xlib.h>
 #include <algorithm>
 #endif
 

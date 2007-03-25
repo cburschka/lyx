@@ -42,10 +42,34 @@ if(merge OR MERGE_FILES)
 	message(STATUS "")
 endif(merge OR MERGE_FILES)	
 
+
+set(CMAKE_BUILD_TYPE)
+if(profile)
+	set(CMAKE_BUILD_TYPE Profile)
+	set(profile)
+endif(profile)
 if(release)
 	set(CMAKE_BUILD_TYPE Release)
 	set(release)
-endif(release)	
+endif(release)
+if(debug)
+	set(CMAKE_BUILD_TYPE Debug)
+endif(debug)
+
+
+if(UNIX)
+	set(LYX_CXX_FLAGS -Wall)
+	if(stdlib-debug)
+		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
+	endif(stdlib-debug)
+	if(concept-checks)
+		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCPP_CONCEPT_CHECKS")
+	endif(concept-checks)
+	set(CMAKE_CXX_FLAGS          "${LYX_CXX_FLAGS}" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_DEBUG    "${LYX_CXX_FLAGS} -O -g -D_DEBUG" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_RELEASE  "${LYX_CXX_FLAGS} -O3 -DNDEBUG" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE  "${CMAKE_CXX_FLAGS_RELEASE} -pg" CACHE TYPE STRING FORCE)
+endif(UNIX)
 
 
 set(qt_postfix qt4)
@@ -57,8 +81,6 @@ if(MERGE_FILES)
 endif(MERGE_FILES)
 
 find_package(ZLIB REQUIRED)
-find_package(ICONV REQUIRED)
-add_definitions(-DHAVE_ICONV=1)
 
 if(all OR aspell)
 	set(aspell TRUE CACHE TYPE STRING)
@@ -195,6 +217,10 @@ endif(MSVC)
 # create config.h
 include(ConfigureChecks.cmake)
 configure_file(config.h.cmake ${CMAKE_BINARY_DIR}/config.h )
+
+find_package(ICONV REQUIRED)
+add_definitions(-DHAVE_ICONV=1)
+
 
 #TODO: insource is not the best place
 configure_file(${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx_version.py.in 
