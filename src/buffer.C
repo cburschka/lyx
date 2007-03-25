@@ -1268,19 +1268,20 @@ void Buffer::fillWithBibKeys(vector<pair<string, docstring> > & keys)
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
 			InsetBibtex const & inset =
-				dynamic_cast<InsetBibtex const &>(*it);
+				static_cast<InsetBibtex const &>(*it);
 			inset.fillWithBibKeys(*this, keys);
 		} else if (it->lyxCode() == InsetBase::INCLUDE_CODE) {
 			InsetInclude const & inset =
-				dynamic_cast<InsetInclude const &>(*it);
+				static_cast<InsetInclude const &>(*it);
 			inset.fillWithBibKeys(*this, keys);
 		} else if (it->lyxCode() == InsetBase::BIBITEM_CODE) {
 			InsetBibitem const & inset =
-				dynamic_cast<InsetBibitem const &>(*it);
+				static_cast<InsetBibitem const &>(*it);
 			// FIXME UNICODE
 			string const key = to_utf8(inset.getParam("key"));
 			docstring const label = inset.getParam("label");
-			docstring const ref; // = pit->asString(this, false);
+			DocIterator doc_it(it); doc_it.forwardPos();
+			docstring const ref = doc_it.paragraph().asString(*this, false);
 			docstring const info = label + "TheBibliographyRef" + ref;
 			keys.push_back(pair<string, docstring>(key, info));
 		}
@@ -1303,14 +1304,14 @@ void Buffer::updateBibfilesCache()
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
 			InsetBibtex const & inset =
-				dynamic_cast<InsetBibtex const &>(*it);
+				static_cast<InsetBibtex const &>(*it);
 			vector<FileName> const bibfiles = inset.getFiles(*this);
 			bibfilesCache_.insert(bibfilesCache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
 		} else if (it->lyxCode() == InsetBase::INCLUDE_CODE) {
 			InsetInclude & inset =
-				dynamic_cast<InsetInclude &>(*it);
+				static_cast<InsetInclude &>(*it);
 			inset.updateBibfilesCache(*this);
 			vector<FileName> const & bibfiles =
 					inset.getBibfilesCache(*this);
@@ -1667,7 +1668,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to,
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == code) {
-			InsetCommand & inset = dynamic_cast<InsetCommand &>(*it);
+			InsetCommand & inset = static_cast<InsetCommand &>(*it);
 			inset.replaceContents(to_utf8(from), to_utf8(to));
 		}
 	}
