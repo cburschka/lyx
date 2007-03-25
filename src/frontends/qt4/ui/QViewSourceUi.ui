@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>446</width>
-    <height>123</height>
+    <height>93</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -19,37 +19,60 @@
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="1" column="1" >
-    <widget class="QCheckBox" name="autoUpdateCB" >
-     <property name="text" >
-      <string>Automatic update</string>
-     </property>
-     <property name="checked" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1" >
-    <widget class="QCheckBox" name="viewFullSourceCB" >
-     <property name="cursor" >
-      <cursor>0</cursor>
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="text" >
-      <string>Complete source</string>
+     <property name="spacing" >
+      <number>6</number>
      </property>
-    </widget>
+     <item>
+      <widget class="QCheckBox" name="viewFullSourceCB" >
+       <property name="cursor" >
+        <cursor>0</cursor>
+       </property>
+       <property name="text" >
+        <string>Complete source</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="autoUpdateCB" >
+       <property name="text" >
+        <string>Automatic update</string>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="updatePB" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="text" >
+        <string>&amp;Update</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
-   <item row="2" column="1" >
-    <widget class="QPushButton" name="updatePB" >
-     <property name="enabled" >
-      <bool>false</bool>
-     </property>
-     <property name="text" >
-      <string>&amp;Update</string>
-     </property>
-    </widget>
-   </item>
-   <item rowspan="3" row="0" column="0" >
+   <item row="0" column="0" >
     <widget class="QTextEdit" name="viewSourceTV" >
      <property name="whatsThis" >
       <string/>
