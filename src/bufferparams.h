@@ -23,6 +23,8 @@
 #include "support/copied_ptr.h"
 #include "support/types.h"
 
+#include "frontends/controllers/biblio.h"
+
 #include <vector>
 
 
@@ -38,10 +40,6 @@ class Spacing;
 class TexRow;
 class VSpace;
 class Language;
-
-namespace biblio {
-enum CiteEngine;
-} // namespace biblio
 
 
 /** Buffer parameters.
