@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "gettext.h"
 
+#include <algorithm>
 #include <vector>
 #include <string>
 
