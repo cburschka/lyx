@@ -90,7 +90,6 @@ void ControlToc::goTo(TocItem const & item)
 
 bool ControlToc::canOutline(size_t type) const
 {
-	BOOST_ASSERT(type >= 0 && type < int(types_.size()));
 	return types_[type] == "tableofcontents";
 }
 
