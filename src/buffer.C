@@ -872,7 +872,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 			   OutputParams const & runparams,
 			   bool output_preamble, bool output_body)
 {
-	string const encoding = params().encoding().iconvName();
+	string const encoding = runparams.encoding->iconvName();
 	lyxerr[Debug::LATEX] << "makeLaTeXFile encoding: "
 		<< encoding << "..." << endl;
 

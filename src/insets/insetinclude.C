@@ -426,9 +426,13 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 // argument. Should we set it to string(), or should makeLaTeXFile
 // make use of it somehow? (JMarc 20031002)
 #endif
+		// The included file might be written in a different encoding
+		Encoding const * const oldEnc = runparams.encoding;
+		runparams.encoding = &tmp->params().encoding();
 		tmp->makeLaTeXFile(writefile,
 				   onlyPath(masterFilename(buffer)),
 				   runparams, false);
+		runparams.encoding = oldEnc;
 	} else {
 		// Copy the file to the temp dir, so that .aux files etc.
 		// are not created in the original dir. Files included by
