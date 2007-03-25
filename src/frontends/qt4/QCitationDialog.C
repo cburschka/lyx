@@ -286,7 +286,7 @@ void QCitationDialog::updateInfo(const QModelIndex & idx)
 }
 
 
-void QCitationDialog::on_selectedLV_clicked(const QModelIndex & idx)
+void QCitationDialog::on_selectedLV_clicked(const QModelIndex &)
 {
 	availableLV->selectionModel()->reset();
 	update();
@@ -303,7 +303,7 @@ void QCitationDialog::selectedChanged(const QModelIndex & idx, const QModelIndex
 }
 
 
-void QCitationDialog::on_availableLV_clicked(const QModelIndex & idx)
+void QCitationDialog::on_availableLV_clicked(const QModelIndex &)
 {
 	selectedLV->selectionModel()->reset();
 	update();
@@ -332,7 +332,7 @@ void QCitationDialog::on_availableLV_activated(const QModelIndex & idx)
 }
 
 
-void QCitationDialog::on_availableLV_entered(const QModelIndex & idx)
+void QCitationDialog::on_availableLV_entered(const QModelIndex &)
 {
 }
 
