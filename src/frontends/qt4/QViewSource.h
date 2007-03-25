@@ -24,7 +24,9 @@
 namespace lyx {
 namespace frontend {
 
-///
+/// LateX syntax highlighting.
+/// \todo FIXME: extract the latexHighlighter class into its 
+/// own .[Ch] files.
 class latexHighlighter : public QSyntaxHighlighter
 {
 	Q_OBJECT	
