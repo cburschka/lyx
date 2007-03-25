@@ -335,23 +335,24 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 		if (!isPrintableNonspace(c))
 			break;
 
-		// We have to draw hebrew characters one by one, since we
-		// apply our own bidi algorithm, and qt would reverse the
-		// order of characters in words again (bug 3040).
-		// The same applys for arabic (see below).
+		/* Because we do our own bidi, at this point the strings are
+		 * already in visual order. However, Qt also applies its own
+		 * bidi algorithm to strings that it paints to the screen.
+		 * Therefore, if we were to paint Hebrew/Arabic words as a
+		 * single string, the letters in the words would get reversed
+		 * again. In order to avoid that, we don't collect Hebrew/
+		 * Arabic characters, but rather paint them one at a time.
+		 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
+		 */
 		if (hebrew) 
 			break;
 
 		/* FIXME: these checks are irrelevant, since 'arabic' and
 		 * 'hebrew' alone are already going to trigger a break.
-		 * The encodings used by isComposeChar_arabic and
-		 * isComposeChar_hebrew are incorrect (probably iso8859-8 and
-		 * iso8859-6), they also have to be adapted to Unicode.
 		 * However, this should not be removed completely, because
 		 * if an alternative solution is found which allows grouping
 		 * of arabic and hebrew characters, then these breaks may have
 		 * to be re-applied.
-		 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
 
 		if (arabic && Encodings::isComposeChar_arabic(c))
 			break;
@@ -362,6 +363,7 @@ void RowPainter::paintChars(pos_type & vpos, LyXFont const & font,
 
 		if (arabic) {
 			c = par_.transformChar(c, pos);
+			/* see comment in hebrew, explaining why we break */
 			break;
 		}
 
