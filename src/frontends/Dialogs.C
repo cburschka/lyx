@@ -215,7 +215,7 @@ void Dialogs::updateBufferDependent(bool switched) const
 	for(; it != end; ++it) {
 		Dialog * dialog =  it->second.get();
 		if (switched && dialog->controller().isBufferDependent()) {
-			if (dialog->controller().initialiseParams(""))
+			if (dialog->isVisible() && dialog->controller().initialiseParams(""))
 				dialog->view().update();
 			else
 				dialog->hide();
