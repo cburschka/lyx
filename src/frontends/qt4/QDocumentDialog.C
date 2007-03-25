@@ -24,6 +24,8 @@
 #include "Qt2BC.h"
 #include "checkedwidgets.h"
 #include "qt_helpers.h"
+// For latexHighlighter use in the preamble.
+#include "QViewSource.h"
 
 #include "bufferparams.h"
 #include "encoding.h"
@@ -373,6 +375,9 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// preamble
 	preambleModule = new UiWidget<Ui::PreambleUi>;
 	connect(preambleModule->preambleTE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
+	// This is not a memory leak. The object will be destroyed
+	// with preambleModule.
+	new latexHighlighter(preambleModule->preambleTE->document());
 
 
 	// bullets
