@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Kalle Dalheimer
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -51,6 +52,7 @@ public:
 protected:
 	void closeEvent (QCloseEvent * e);
 	void keyPressEvent (QKeyEvent * event);
+	void findText(QString const & text);
 
 protected Q_SLOTS:
 
@@ -63,10 +65,13 @@ protected Q_SLOTS:
 	void on_upPB_clicked();
 	void on_downPB_clicked();
 	void on_findLE_textChanged(const QString & text);
+	void on_caseCB_stateChanged(int);
+	void on_regexCB_stateChanged(int);
 	void on_selectedLV_clicked(const QModelIndex &);
 	void selectedChanged(const QModelIndex &, const QModelIndex &);
 	void on_availableLV_clicked(const QModelIndex &);
 	void on_availableLV_activated(const QModelIndex &);
+	void on_availableLV_entered(const QModelIndex &);
 	void availableChanged(const QModelIndex &, const QModelIndex &);
 	virtual void changed();
 	/// check whether key is already selected

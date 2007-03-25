@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -25,9 +26,9 @@ class ControlCitation : public ControlCommand {
 public:
 	///
 	ControlCitation(Dialog &);
-
-	///
+	virtual ~ControlCitation() {}
 	virtual bool initialiseParams(std::string const & data);
+
 	/// clean-up on hide.
 	virtual void clearParams();
 
@@ -36,13 +37,24 @@ public:
 	 */
 	virtual bool disconnectOnApply() const { return true; }
 
-	/// Returns a reference to the map of stored keys
-	biblio::InfoMap const & bibkeysInfo() const;
-
+	/// \return the list of all available bibliography keys.
+	std::vector<std::string> const availableKeys() const;
 	///
-	biblio::CiteEngine_enum getEngine() const;
+	biblio::CiteEngine const getEngine() const;
 
-	/// Possible citations based on this key
+	/// \return information for this key.
+	docstring const getInfo(std::string const & key) const;
+
+	/// Search a given string within the passed keys.
+	/// \return the vector of matched keys.
+	std::vector<std::string> searchKeys(
+		std::vector<std::string> const & keys_to_search, //< Keys to search.
+		docstring const & search_expression, //< Search expression (regex possible)
+		bool case_sensitive = false, // set to true is the search should be case sensitive
+		bool regex = false /// \set to true if \c search_expression is a regex
+		); //
+
+	/// \return possible citations based on this key.
 	std::vector<docstring> const getCiteStrings(std::string const & key) const;
 
 	/// available CiteStyle-s (depends on availability of Natbib/Jurabib)

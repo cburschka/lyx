@@ -6,6 +6,7 @@
  *
  * \author Angus Leeming
  * \author Kalle Dalheimer
+ * \author Abdelrazak Younes
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,8 +14,9 @@
 #ifndef QCITATION_H
 #define QCITATION_H
 
-#include "ControlCitation.h"
+#include "frontends/controllers/ControlCitation.h"
 
+#include <QStringList>
 #include <QStringListModel>
 
 namespace lyx {
@@ -25,14 +27,17 @@ class QCitation : public ControlCitation
 public:
 	///
 	QCitation(Dialog &);
+	virtual ~QCitation() {}
+	virtual bool initialiseParams(std::string const & data);
+
+	///
+	void init();
+
 	/// Available keys
-	QStringListModel * available() { return &available_keys_; }
+	QStringListModel * available() { return &available_model_; }
 
 	/// Selected keys
-	QStringListModel * selected() { return &selected_keys_; }
-
-	/// Found keys
-	QStringListModel * found() { return &found_keys_; }
+	QStringListModel * selected() { return &selected_model_; }
 
 	/// Text before cite
 	QString textBefore();
@@ -46,8 +51,13 @@ public:
 	/// Clear selected keys
 	void clearSelection();
 
-	/// Find keys containing the string (not case-sens)
-	void findKey(QString const &);
+	/// Find keys containing a string.
+	void findKey(
+		QString const & str, //< string expression
+		bool only_keys, //< set to true if only keys shall be searched.
+		bool case_sensitive, //< set to true for case sensitive search.
+		bool reg_exp //< set to true if \c str is a regular expression.
+		);
 
 	/// Add key to selected keys
 	void addKey(QModelIndex const &);
@@ -68,18 +78,18 @@ public:
 	virtual void apply(int const choice, bool const full, bool const force,
 					  QString before, QString after);
 
-	/// Update dialog before/whilst showing it.
-	virtual void updateModel();
-
 private:	
-	/// available keys
-	QStringListModel available_keys_;
+	/// available keys.
+	QStringListModel available_model_;
 
-	/// selected keys
-	QStringListModel selected_keys_;
+	/// selected keys.
+	QStringListModel selected_model_;
 
-	/// found keys
-	QStringListModel found_keys_;
+	/// All keys.
+	QStringList all_keys_;
+
+	/// Cited keys.
+	QStringList cited_keys_;
 };
 
 
