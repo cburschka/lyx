@@ -4,7 +4,8 @@
 # Copyright (c) 2006, Peter Kümmel, <syntheticpp@gmx.net>
 #
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4.4 FATAL_ERROR)
+#not really needed
+#CMAKE_MINIMUM_REQUIRED(VERSION 2.4.4 FATAL_ERROR)
 
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
