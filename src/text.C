@@ -1144,7 +1144,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 					pos++; // step behind the changing area
 				}
 				int erasePos = pos - changes.size();
-				for (int i = 0; i < changes.size(); i++) {
+				for (size_t i = 0; i < changes.size(); i++) {
 					pars_[pit].insertChar(pos, changes[i],
 						pars_[pit].getFontSettings(cur.buffer().params(),
 								erasePos),
