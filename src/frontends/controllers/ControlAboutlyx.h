@@ -37,6 +37,7 @@ public:
 	/// Provide the View with specific pieces of information.
 	void getCredits(std::ostream &) const;
 	std::string const getCopyright() const;
+	std::string const getLicense() const;
 	std::string const getDisclaimer() const;
 	std::string const getVersion() const;
 	//@}

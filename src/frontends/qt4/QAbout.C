@@ -53,7 +53,9 @@ void QAbout::build_dialog()
 		this, SLOT(slotClose()));
 
 	dialog_->copyrightTB->setPlainText(toqstr(controller().getCopyright()));
-	dialog_->copyrightTB->append("\n");
+	dialog_->copyrightTB->append("");
+	dialog_->copyrightTB->append(toqstr(controller().getLicense()));
+	dialog_->copyrightTB->append("");
 	dialog_->copyrightTB->append(toqstr(controller().getDisclaimer()));
 
 	dialog_->versionLA->setText(toqstr(controller().getVersion()));
