@@ -32,17 +32,9 @@ latexHighlighter::latexHighlighter(QTextDocument * parent) :
 
 void latexHighlighter::highlightBlock(QString const & text)
 {
-	// comment
-	QRegExp exprComment("^%.*$");
-	int index = text.indexOf(exprComment);
-	while (index >= 0) {
-		int length = exprComment.matchedLength();
-		setFormat(index, length, commentFormat);
-		index = text.indexOf(exprComment, index + length);
-	}
 	// $ $ 
 	QRegExp exprMath("\\$[^\\$]*\\$");
-	index = text.indexOf(exprMath);
+	int index = text.indexOf(exprMath);
 	while (index >= 0) {
 		int length = exprMath.matchedLength();
 		setFormat(index, length, mathFormat);
@@ -94,6 +86,14 @@ void latexHighlighter::highlightBlock(QString const & text)
 		int length = exprKeyword.matchedLength();
 		setFormat(index, length, keywordFormat);
 		index = text.indexOf(exprKeyword, index + length);
+	}
+	// comment
+	QRegExp exprComment("(^|[^\\\\])%.*$");
+	index = text.indexOf(exprComment);
+	while (index >= 0) {
+		int length = exprComment.matchedLength();
+		setFormat(index, length, commentFormat);
+		index = text.indexOf(exprComment, index + length);
 	}
 }
 
