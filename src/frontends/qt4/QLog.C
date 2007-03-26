@@ -14,6 +14,8 @@
 #include "QLogDialog.h"
 #include "qt_helpers.h"
 
+#include "frontends/Application.h"
+
 #include "controllers/ControlLog.h"
 
 #include <sstream>
@@ -31,9 +33,56 @@ QLog::QLog(Dialog & parent)
 {}
 
 
+logHighlighter::logHighlighter(QTextDocument * parent) :
+	QSyntaxHighlighter(parent)
+{
+	infoFormat.setForeground(Qt::gray);
+	warningFormat.setForeground(Qt::darkBlue);
+	errorFormat.setForeground(Qt::red);
+}
+
+
+void logHighlighter::highlightBlock(QString const & text)
+{
+	// Info
+	QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|\\(|\\\\).*$");
+	int index = text.indexOf(exprInfo);
+	while (index >= 0) {
+		int length = exprInfo.matchedLength();
+		setFormat(index, length, infoFormat);
+		index = text.indexOf(exprInfo, index + length);
+	}
+	// LaTeX Warning:
+	QRegExp exprWarning("^LaTeX Warning.*$");
+	index = text.indexOf(exprWarning);
+	while (index >= 0) {
+		int length = exprWarning.matchedLength();
+		setFormat(index, length, warningFormat);
+		index = text.indexOf(exprWarning, index + length);
+	}
+	// ! error 
+	QRegExp exprError("^!.*$");
+	index = text.indexOf(exprError);
+	while (index >= 0) {
+		int length = exprError.matchedLength();
+		setFormat(index, length, errorFormat);
+		index = text.indexOf(exprError, index + length);
+	}
+}
+
+
 void QLog::build_dialog()
 {
 	dialog_.reset(new QLogDialog(this));
+	// set syntax highlighting
+	highlighter = new logHighlighter(dialog_->logTB->document());
+	//
+	dialog_->logTB->setReadOnly(true);
+	QFont font(toqstr(theApp()->typewriterFontName()));
+	font.setKerning(false);
+	font.setFixedPitch(true);
+	font.setStyleHint(QFont::TypeWriter);
+	dialog_->logTB->setFont(font);
 }
 
 
@@ -49,3 +98,5 @@ void QLog::update_contents()
 
 } // namespace frontend
 } // namespace lyx
+
+#include "QLog_moc.cpp"

@@ -15,10 +15,13 @@
 #include "QDialogView.h"
 #include "QLogDialog.h"
 
+#include <QSyntaxHighlighter>
+
 namespace lyx {
 namespace frontend {
 
 class ControlLog;
+class logHighlighter;
 
 ///
 class QLog
@@ -36,7 +39,29 @@ private:
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
+	/// log syntax highlighter
+	logHighlighter * highlighter;
+
 };
+
+
+///
+class logHighlighter : public QSyntaxHighlighter
+{
+	Q_OBJECT
+	
+public:
+	logHighlighter(QTextDocument * parent);
+
+protected:
+	void highlightBlock(QString const & text);
+
+private:
+	QTextCharFormat infoFormat;
+	QTextCharFormat warningFormat;
+	QTextCharFormat errorFormat;
+};
+
 
 } // namespace frontend
 } // namespace lyx

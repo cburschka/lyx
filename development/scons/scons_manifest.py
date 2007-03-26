@@ -701,6 +701,7 @@ src_frontends_qt4_moc_files = Split('''
     QIncludeDialog.C
     QIndexDialog.C
     Action.C
+    QLog.C
     QLogDialog.C
     QViewSourceDialog.C
     QViewSource.C
