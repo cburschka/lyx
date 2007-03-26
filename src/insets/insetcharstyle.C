@@ -184,7 +184,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	getDrawFont(pi.base.font);
 	// I don't understand why the above .reduce and .realize aren't
 	//needed, or even wanted, here. It just works. -- MV 10.04.2005
-	InsetText::draw(pi, x, y);
+	InsetText::draw(pi, x + TEXT_TO_INSET_OFFSET, y);
 	pi.base.font = tmpfont;
 
 	int desc = InsetText::descent();
