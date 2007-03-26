@@ -59,6 +59,9 @@ endif(debug)
 
 
 if(UNIX)
+	if(NOT quiet)
+		set(CMAKE_VERBOSE_MAKEFILE ON)
+	endif(NOT quiet)
 	set(LYX_CXX_FLAGS -Wall)
 	if(stdlib-debug)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
