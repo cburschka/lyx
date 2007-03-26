@@ -251,6 +251,7 @@ void MathArray::metrics(MetricsInfo & mi) const
 	mindes_ = (3 * xascent) / 4;
 	slevel_ = (4 * xascent) / 5;
 	sshift_ = xascent / 4;
+	kerning_ = 0;
 
 	if (empty())
 		return;
