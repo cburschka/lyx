@@ -178,19 +178,20 @@ string const featureAsString(LyXTabular::Feature feature)
 InsetTabular::InsetTabular(Buffer const & buf, row_type rows,
 			   col_type columns)
 	: tabular(buf.params(), max(rows, row_type(1)),
-	  max(columns, col_type(1))), buffer_(&buf), scx_(0)
+	  max(columns, col_type(1))), buffer_(&buf), scx_(0), is_deleted_(false)
 {}
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: InsetOld(tab), tabular(tab.tabular),
-		buffer_(tab.buffer_), scx_(0)
+		buffer_(tab.buffer_), scx_(0), is_deleted_(false)
 {}
 
 
 InsetTabular::~InsetTabular()
 {
 	InsetTabularMailer(*this).hideDialog();
+	is_deleted_ = true;
 }
 
 
@@ -820,7 +821,8 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 	// FIXME: this accesses the position cache before it is initialized
 	//resetPos(cur);
-	InsetTabularMailer(*this).updateDialog(&cur.bv());
+	if (!is_deleted_)
+		InsetTabularMailer(*this).updateDialog(&cur.bv());
 }
 
 
