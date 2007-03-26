@@ -49,12 +49,43 @@ void latexHighlighter::highlightBlock(QString const & text)
 		index = text.indexOf(exprMath, index + length);
 	}
 	// [ ]
-	QRegExp exprDispMath("\\[[^\\]]*\\]");
-	index = text.indexOf(exprDispMath);
-	while (index >= 0) {
-		int length = exprDispMath.matchedLength();
-		setFormat(index, length, mathFormat);
-		index = text.indexOf(exprDispMath, index + length);
+	QRegExp exprStartDispMath("(\\\\\\[|"
+		"\\\\begin\\{equation\\**\\}|"
+		"\\\\begin\\{eqnarray\\**\\}|"
+		"\\\\begin\\{align(ed|at)*\\**\\}|"
+		"\\\\begin\\{flalign\\**\\}|"
+		"\\\\begin\\{gather\\**\\}|"
+		"\\\\begin\\{multline\\**\\}|"
+		"\\\\begin\\{array\\**\\}|"
+		"\\\\begin\\{cases\\**\\}"
+		")");
+	QRegExp exprEndDispMath("(\\\\\\]|"
+		"\\\\end\\{equation\\**\\}|"
+		"\\\\end\\{eqnarray\\**\\}|"
+		"\\\\end\\{align(ed|at)*\\**\\}|"
+		"\\\\end\\{flalign\\**\\}|"
+		"\\\\end\\{gather\\**\\}|"
+		"\\\\end\\{multline\\**\\}|"
+		"\\\\end\\{array\\**\\}|"
+		"\\\\end\\{cases\\**\\}"
+		")");
+	int startIndex = 0;
+	// if previous block was in 'disp math'
+	// start search from 0 (for end disp math)
+	// otherwise, start search from 'begin disp math'
+	if (previousBlockState() != 1)
+		startIndex = text.indexOf(exprStartDispMath);
+	while (startIndex >= 0) {
+		int endIndex = text.indexOf(exprEndDispMath, startIndex);
+		int length;
+		if (endIndex == -1) {
+			setCurrentBlockState(1);
+			length = text.length() - startIndex;
+		} else {
+			length = endIndex - startIndex + exprEndDispMath.matchedLength();
+		}
+		setFormat(startIndex, length, mathFormat);
+		startIndex = text.indexOf(exprStartDispMath, startIndex + length);
 	}
 	// \whatever
 	QRegExp exprKeyword("\\\\[A-Za-z]+");
