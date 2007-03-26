@@ -42,7 +42,6 @@ if(MERGE_FILES)
 	SET_SOURCE_FILES_PROPERTIES(allinone_const.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	SET_SOURCE_FILES_PROPERTIES(allinone_touched.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	add_library(frontend_qt4 STATIC 
-					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C
 					${frontends_qt4_headers} 

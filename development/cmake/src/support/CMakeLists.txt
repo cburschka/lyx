@@ -37,7 +37,6 @@ else(NOT MERGE_FILES)
 	list(REVERSE support_sources)
 	lyx_merge_files(allinone support_sources)
 	add_library(support STATIC 
-					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
 					

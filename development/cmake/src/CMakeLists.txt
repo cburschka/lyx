@@ -45,7 +45,6 @@ if(NOT MERGE_FILES)
 else(NOT MERGE_FILES)
 	lyx_merge_files(allinone lyx_sources)
 	set(lyx_sources 
-					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C
 					${CMAKE_CURRENT_BINARY_DIR}/version.C

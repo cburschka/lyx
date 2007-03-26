@@ -21,7 +21,6 @@ else(NOT MERGE_FILES)
 	add_definitions(-D_WIN32_WINNT=0x500)
 	lyx_merge_files(allinone boost_filesystem_sources)
 	add_library(boost_filesystem STATIC 
-					${CMAKE_CURRENT_BINARY_DIR}/allinone.h
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
 endif(NOT MERGE_FILES)
