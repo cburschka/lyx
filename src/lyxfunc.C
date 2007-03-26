@@ -2190,9 +2190,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			support::prependEnvPath("PATH", lyxrc.path_prefix);
 		}
 	case LyXRC::RC_PERS_DICT:
-	case LyXRC::RC_POPUP_BOLD_FONT:
-	case LyXRC::RC_POPUP_FONT_ENCODING:
-	case LyXRC::RC_POPUP_NORMAL_FONT:
 	case LyXRC::RC_PREVIEW:
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
 	case LyXRC::RC_PREVIEW_SCALE_FACTOR:

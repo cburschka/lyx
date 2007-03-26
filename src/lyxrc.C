@@ -114,9 +114,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
 	{ "\\plaintext_linelen", LyXRC::RC_PLAINTEXT_LINELEN },
 	{ "\\plaintext_roff_command", LyXRC::RC_PLAINTEXT_ROFF_COMMAND },
-	{ "\\popup_bold_font", LyXRC::RC_POPUP_BOLD_FONT },
-	{ "\\popup_font_encoding", LyXRC::RC_POPUP_FONT_ENCODING },
-	{ "\\popup_normal_font", LyXRC::RC_POPUP_NORMAL_FONT },
 	{ "\\preview", LyXRC::RC_PREVIEW },
 	{ "\\preview_hashed_labels", LyXRC::RC_PREVIEW_HASHED_LABELS },
 	{ "\\preview_scale_factor", LyXRC::RC_PREVIEW_SCALE_FACTOR },
@@ -141,12 +138,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\rtl", LyXRC::RC_RTL_SUPPORT },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
 	{ "\\screen_font_encoding", LyXRC::RC_SCREEN_FONT_ENCODING },
-	// compatibility with versions older than 1.2.0 only Angus 10 Jan 2002
-	{ "\\screen_font_encoding_menu", LyXRC::RC_POPUP_FONT_ENCODING },
-	// compatibility with versions older than 1.2.0 only Angus 10 Jan 2002
-	{ "\\screen_font_menu", LyXRC::RC_POPUP_BOLD_FONT },
-	// compatibility with versions older than 1.2.0 only Angus 10 Jan 2002
-	{ "\\screen_font_popup", LyXRC::RC_POPUP_NORMAL_FONT },
 	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
 	{ "\\screen_font_roman_foundry", LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY },
 	{ "\\screen_font_sans", LyXRC::RC_SCREEN_FONT_SANS },
@@ -246,11 +237,8 @@ void LyXRC::setDefaults() {
 	roman_font_name = "";
 	sans_font_name = "";
 	typewriter_font_name = "";
-	popup_bold_font = "-*-helvetica-bold-r";
-	popup_normal_font = "-*-helvetica-medium-r";
 	font_norm = "iso8859-1";
 	font_norm_type = ISO_8859_1;
-	popup_font_encoding.erase();
 	autosave = 300;
 	auto_region_delete = true;
 	auto_reset_options = false;
@@ -813,24 +801,6 @@ int LyXRC::read(LyXLex & lexrc)
 			if (lexrc.next()) {
 				font_norm = lexrc.getString();
 				set_font_norm_type();
-			}
-			break;
-
-		case RC_POPUP_BOLD_FONT:
-			if (lexrc.next()) {
-				popup_bold_font = lexrc.getString();
-			}
-			break;
-
-		case RC_POPUP_NORMAL_FONT:
-			if (lexrc.next()) {
-				popup_normal_font = lexrc.getString();
-			}
-			break;
-
-		case RC_POPUP_FONT_ENCODING:
-			if (lexrc.next()) {
-				popup_font_encoding = lexrc.getString();
 			}
 			break;
 
@@ -1497,24 +1467,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		   << "# SCREEN & FONTS SECTION ############################\n"
 		   << "#\n\n";
 
-	case RC_POPUP_NORMAL_FONT:
-		if (ignore_system_lyxrc ||
-		    popup_normal_font != system_lyxrc.popup_normal_font) {
-			os << "\\popup_normal_font \"" << popup_normal_font
-			   << "\"\n";
-		}
-	case RC_POPUP_BOLD_FONT:
-		if (ignore_system_lyxrc ||
-		    popup_bold_font != system_lyxrc.popup_bold_font) {
-			os << "\\popup_bold_font \"" << popup_bold_font
-			   << "\"\n";
-		}
-	case RC_POPUP_FONT_ENCODING:
-		if (ignore_system_lyxrc ||
-		    popup_font_encoding != system_lyxrc.popup_font_encoding) {
-			os << "\\popup_font_encoding \"" << popup_font_encoding
-			   << "\"\n";
-		}
 	case RC_SCREEN_DPI:
 		if (ignore_system_lyxrc ||
 		    dpi != system_lyxrc.dpi) {
@@ -2348,18 +2300,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_PERS_DICT:
 	case RC_USE_PERS_DICT:
 		str = _("Specify an alternate personal dictionary file. E.g. \".ispell_english\".");
-		break;
-
-	case RC_POPUP_BOLD_FONT:
-		str = _("The bold font in the dialogs.");
-		break;
-
-	case RC_POPUP_FONT_ENCODING:
-		str = _("The encoding for the menu/popups fonts.");
-		break;
-
-	case RC_POPUP_NORMAL_FONT:
-		str = _("The normal font in the dialogs.");
 		break;
 
 	case RC_PREVIEW:

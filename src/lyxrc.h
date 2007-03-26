@@ -87,9 +87,6 @@ public:
 		RC_NUMLASTFILES,
 		RC_PATH_PREFIX,
 		RC_PERS_DICT,
-		RC_POPUP_BOLD_FONT,
-		RC_POPUP_FONT_ENCODING,
-		RC_POPUP_NORMAL_FONT,
 		RC_PREVIEW,
 		RC_PREVIEW_HASHED_LABELS,
 		RC_PREVIEW_SCALE_FACTOR,
@@ -276,10 +273,6 @@ public:
 	///
 	std::string typewriter_font_foundry;
 	///
-	std::string popup_bold_font;
-	///
-	std::string popup_normal_font;
-	///
 	std::string font_norm;
 	///
 	enum FontEncoding {
@@ -304,8 +297,6 @@ public:
 	FontEncoding font_norm_type;
 	///
 	void set_font_norm_type();
-	///
-	std::string popup_font_encoding;
 	///
 	unsigned int autosave;
 	///
