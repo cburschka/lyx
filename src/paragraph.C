@@ -1557,11 +1557,7 @@ bool Paragraph::allowEmpty() const
 char_type Paragraph::transformChar(char_type c, pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
-		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && isDigit(c))
-			// FIXME UNICODE What does this do?
-			return c + (0xb0 - '0');
-		else
-			return c;
+		return c;
 
 	value_type const prev_char = pos > 0 ? getChar(pos - 1) : ' ';
 	value_type next_char = ' ';

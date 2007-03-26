@@ -1475,7 +1475,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		case LFUN_SCREEN_FONT_UPDATE:
 			BOOST_ASSERT(lyx_view_);
 			// handle the screen font changes.
-			lyxrc.set_font_norm_type();
 			theFontLoader().update();
 			/// FIXME: only the current view will be updated. the Gui
 			/// class is able to furnish the list of views.

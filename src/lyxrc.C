@@ -238,7 +238,6 @@ void LyXRC::setDefaults() {
 	sans_font_name = "";
 	typewriter_font_name = "";
 	font_norm = "iso8859-1";
-	font_norm_type = ISO_8859_1;
 	autosave = 300;
 	auto_region_delete = true;
 	auto_reset_options = false;
@@ -800,7 +799,6 @@ int LyXRC::read(LyXLex & lexrc)
 		case RC_SCREEN_FONT_ENCODING:
 			if (lexrc.next()) {
 				font_norm = lexrc.getString();
-				set_font_norm_type();
 			}
 			break;
 
@@ -2087,26 +2085,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 	}
 
 	os.flush();
-}
-
-void LyXRC::set_font_norm_type()
-{
-	if (font_norm == "iso10646-1")
-		font_norm_type = ISO_10646_1;
-	else if (font_norm == "iso8859-1")
-		font_norm_type = ISO_8859_1;
-	else if (font_norm == "iso8859-3")
-		font_norm_type = ISO_8859_3;
-	else if (font_norm == "iso8859-4")
-		font_norm_type = ISO_8859_4;
-	else if (font_norm == "iso8859-6.8x")
-		font_norm_type = ISO_8859_6_8;
-	else if (font_norm == "iso8859-9")
-		font_norm_type = ISO_8859_9;
-	else if (font_norm == "iso8859-15")
-		font_norm_type = ISO_8859_15;
-	else
-		font_norm_type = OTHER_ENCODING;
 }
 
 

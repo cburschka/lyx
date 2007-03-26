@@ -367,9 +367,7 @@ int LyXText::singleWidth(Paragraph const & par,
 	if (isPrintable(c)) {
 		Language const * language = font.language();
 		if (language->rightToLeft()) {
-			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
-			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)
-			    && language->lang() == "arabic") {
+			if (language->lang() == "arabic") {
 				if (Encodings::isComposeChar_arabic(c))
 					return 0;
 				c = par.transformChar(c, pos);

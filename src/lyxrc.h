@@ -275,29 +275,6 @@ public:
 	///
 	std::string font_norm;
 	///
-	enum FontEncoding {
-		///
-		ISO_10646_1,
-		///
-		ISO_8859_1,
-		///
-		ISO_8859_3,
-		///
-		ISO_8859_4,
-		///
-		ISO_8859_6_8,
-		///
-		ISO_8859_9,
-		///
-		ISO_8859_15,
-		///
-		OTHER_ENCODING
-	};
-	///
-	FontEncoding font_norm_type;
-	///
-	void set_font_norm_type();
-	///
 	unsigned int autosave;
 	///
 	std::string plaintext_roff_command;
