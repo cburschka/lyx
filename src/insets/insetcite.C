@@ -402,7 +402,7 @@ int InsetCitation::textString(Buffer const & buf, ostream & os,
 int InsetCitation::latex(Buffer const & buffer, ostream & os,
 			 OutputParams const &) const
 {
-	biblio::CiteEngine const cite_engine = buffer.params().cite_engine;
+	biblio::CiteEngine const cite_engine = buffer.params().getEngine();
 	string const cite_str =
 		biblio::asValidLatexCommand(getCmdName(), cite_engine);
 
