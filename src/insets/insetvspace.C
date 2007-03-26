@@ -88,7 +88,7 @@ void InsetVSpace::read(Buffer const &, LyXLex & lex)
 	BOOST_ASSERT(lex.isOK());
 	string vsp;
 	lex >> vsp;
-	if (lex.isOK())
+	if (lex)
 		space_ = VSpace(vsp);
 
 	string end_token;
@@ -257,7 +257,7 @@ void InsetVSpaceMailer::string2params(string const & in, VSpace & vspace)
 
 	string vsp;
 	lex >> vsp;
-	if (lex.isOK())
+	if (lex)
 		vspace = VSpace(vsp);
 }
 

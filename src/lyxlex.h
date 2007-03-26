@@ -37,8 +37,22 @@ struct keyword_item {
 };
 
 /** Generalized simple lexical analizer.
-    It can be used for simple syntax parsers, like lyxrc,
-    texclass and others to come.
+	Use the method isOK() to check if there is still data available 
+	for lexing. Use one of the the operators void* or ! to test if
+	the last reading operation was successful.
+	
+	Example:
+
+	int readParam(LyxLex &lex) {
+		int param = 1; // default value
+		if (lex.isOK()) { // the lexer has data to read
+			int p;    // temporary variable
+			lex >> p;
+			if (lex) param = p; // only use the input if reading was successful
+		}
+		return param;
+	} 
+
     @see lyxrc.C for an example of usage.
   */
 class LyXLex : boost::noncopyable {
@@ -61,14 +75,16 @@ public:
 	};
 
 	/// stream is open and end of stream is not reached
-	/// FIXME: Rename to good() since this is the name of the
-	/// corresponding std::stream method.
+	/// FIXME: test also if pushTok is not empty
+	/// FIXME: the method should be renamed to something like 
+	///        dataAvailable(), in order to reflect the real behavior
 	bool isOK() const;
-	/// stream is ok
-	/// FIXME: This does not behave like the std::stream counterpart.
+	/// FIXME: The next two operators should be replaced by one method
+	///        called e.g. lastReadOk(), in order to reflect the real 
+	///        behavior
+	/// last read operation was successful.
 	operator void const *() const;
-	/// stream is not ok
-	/// FIXME: This does not behave like the std::stream counterpart.
+	/// last read operation was not successful
 	bool operator!() const;
 	/// return true if able to open file, else false
 	bool setFile(support::FileName const & filename);
@@ -84,7 +100,7 @@ public:
 	/// returns a lex code
 	int lex();
 
-	/** Just read athe next word. If esc is true remember that
+	/** Just read the next word. If esc is true remember that
 	    some chars might be escaped: "\ atleast
 	*/
 	bool next(bool esc = false);
@@ -162,6 +178,8 @@ private:
 	class Pimpl;
 	///
 	Pimpl * pimpl_;
+	///
+	mutable bool lastReadOk_;
 };
 
 

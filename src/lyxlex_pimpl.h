@@ -65,6 +65,8 @@ public:
 	bool eatLine();
 	///
 	bool nextToken();
+	/// test if there is a pushed token or the stream is ok
+	bool inputAvailable();
 	///
 	void pushToken(std::string const &);
 	/// fb_ is only used to open files, the stream is accessed through is.

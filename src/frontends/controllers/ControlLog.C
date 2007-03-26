@@ -43,7 +43,7 @@ bool ControlLog::initialiseParams(string const & data)
 
 	string logtype, logfile;
 	lex >> logtype;
-	if (lex.isOK()) {
+	if (lex) {
 		lex.next(true);
 		logfile = lex.getString();
 	}

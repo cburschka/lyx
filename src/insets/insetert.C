@@ -466,7 +466,7 @@ void InsetERTMailer::string2params(string const & in,
 
 	int s;
 	lex >> s;
-	if (lex.isOK())
+	if (lex)
 		status = static_cast<InsetCollapsable::CollapseStatus>(s);
 }
 

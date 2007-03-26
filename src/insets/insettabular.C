@@ -231,11 +231,11 @@ void InsetTabular::read(Buffer const & buf, LyXLex & lex)
 
 	lex.next();
 	string token = lex.getString();
-	while (lex.isOK() && (token != "\\end_inset")) {
+	while (lex && token != "\\end_inset") {
 		lex.next();
 		token = lex.getString();
 	}
-	if (token != "\\end_inset") {
+	if (!lex) {
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
 	}

@@ -531,15 +531,17 @@ void InsetBoxParams::read(LyXLex & lex)
 	if (!lex.isOK())
 		return;
 
-	if (lex.isOK()) {
-		lex.next();
-		type = lex.getString();
-	}
-	if (!lex.isOK())
+	lex.next();
+	type = lex.getString();
+
+	if (!lex)
 		return;
+
 	lex.next();
 	string token;
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "position") {
 		lex.next();
 		// The [0] is needed. We need the first and only char in
@@ -549,10 +551,11 @@ void InsetBoxParams::read(LyXLex & lex)
 		lyxerr << "InsetBox::Read: Missing 'position'-tag!" << token << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "hor_pos") {
 		lex.next();
 		hor_pos = lex.getString()[0];
@@ -560,10 +563,11 @@ void InsetBoxParams::read(LyXLex & lex)
 		lyxerr << "InsetBox::Read: Missing 'hor_pos'-tag!" << token << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "has_inner_box") {
 		lex.next();
 		inner_box = lex.getInteger();
@@ -572,10 +576,10 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 
-	if (!lex.isOK())
-		return;
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "inner_pos") {
 		lex.next();
 		inner_pos = lex.getString()[0];
@@ -584,10 +588,11 @@ void InsetBoxParams::read(LyXLex & lex)
 			<< token << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "use_parbox") {
 		lex.next();
 		use_parbox = lex.getInteger();
@@ -595,10 +600,11 @@ void InsetBoxParams::read(LyXLex & lex)
 		lyxerr << "InsetBox::Read: Missing 'use_parbox'-tag!" << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());
@@ -606,10 +612,11 @@ void InsetBoxParams::read(LyXLex & lex)
 		lyxerr << "InsetBox::Read: Missing 'width'-tag!" << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "special") {
 		lex.next();
 		special = lex.getString();
@@ -617,10 +624,11 @@ void InsetBoxParams::read(LyXLex & lex)
 		lyxerr << "InsetBox::Read: Missing 'special'-tag!" << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "height") {
 		lex.next();
 		height = LyXLength(lex.getString());
@@ -628,10 +636,11 @@ void InsetBoxParams::read(LyXLex & lex)
 		lyxerr << "InsetBox::Read: Missing 'height'-tag!" << endl;
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
+
 	lex.next();
 	token = lex.getString();
+	if (!lex)
+		return;
 	if (token == "height_special") {
 		lex.next();
 		height_special = lex.getString();

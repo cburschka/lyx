@@ -653,7 +653,7 @@ Buffer::ReadStatus Buffer::readFile(LyXLex & lex, FileName const & filename,
 	lex.next();
 	string const token(lex.getString());
 
-	if (!lex.isOK()) {
+	if (!lex) {
 		Alert::error(_("Document could not be read"),
 			     bformat(_("%1$s could not be read."), from_utf8(filename.absFilename())));
 		return failure;

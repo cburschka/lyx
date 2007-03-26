@@ -79,12 +79,12 @@ void ToolbarBackend::read(LyXLex & lex)
 	Toolbar tb;
 	tb.name = lex.getString();
 	lex.next(true);
-	if (!lex.isOK()) {
+	tb.gui_name = lex.getString();
+	if (!lex) {
 		lyxerr << "ToolbarBackend::read: Malformed toolbar "
 			"description " <<  lex.getString() << endl;
 		return;
 	}
-	tb.gui_name = lex.getString();
 
 	bool quit = false;
 

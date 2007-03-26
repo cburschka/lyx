@@ -234,14 +234,14 @@ DocIterator::col_type DocIterator::col() const
 
 MathArray const & DocIterator::cell() const
 {
-	BOOST_ASSERT(inMathed());
+//	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 
 
 MathArray & DocIterator::cell()
 {
-	BOOST_ASSERT(inMathed());
+//	BOOST_ASSERT(inMathed());
 	return top().cell();
 }
 

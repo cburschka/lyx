@@ -53,7 +53,12 @@ bool ControlParagraph::initialiseParams(string const & data)
 		} else if (token == "update") {
 			lex.next();
 			bool const accept = lex.getBool();
-			action = accept ? 1 : 2;
+			if (lex) {
+				action = accept ? 1 : 2;
+			} else {
+				// Unrecognised update option
+				return false;
+			}
 		} else if (!token.empty()) {
 			// Unrecognised token
 			return false;

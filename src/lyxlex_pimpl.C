@@ -204,15 +204,15 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		// There can have been a whole line pushed so
 		// we extract the first word and leaves the rest
 		// in pushTok. (Lgb)
-		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
+		if (pushTok[0] == '\\' && pushTok.find(' ') != string::npos) {
 			buff.clear();
 			pushTok = split(pushTok, buff, ' ');
-			return true;
 		} else {
 			buff = pushTok;
 			pushTok.clear();
-			return true;
 		}
+		status = LEX_TOKEN;
+		return true;
 	}
 	if (!esc) {
 		unsigned char c = 0; // getc() returns an int
@@ -306,26 +306,8 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			c = cc;
 
 			// skip ','s
-			if (c == ',') continue;
-
-			if (c == '\\') {
-				// escape
-				buff.clear();
-
-				do {
-					if (c == '\\') {
-						// escape the next char
-						is.get(cc);
-						c = cc;
-					}
-					buff.push_back(c);
-					is.get(cc);
-					c = cc;
-				} while (c > ' ' && c != ',' && is);
-
-				status = LEX_TOKEN;
+			if (c == ',') 
 				continue;
-			}
 
 			if (c == commentChar) {
 				// Read rest of line (fast :-)
@@ -457,6 +439,9 @@ bool LyXLex::Pimpl::eatLine()
 		buff.resize(buff.size() - 1);
 		status = LEX_DATA;
 		return true;
+	} else if (buff.length() > 0) { // last line
+		status = LEX_DATA;
+		return true;
 	} else {
 		return false;
 	}
@@ -469,15 +454,15 @@ bool LyXLex::Pimpl::nextToken()
 		// There can have been a whole line pushed so
 		// we extract the first word and leaves the rest
 		// in pushTok. (Lgb)
-		if (pushTok.find(' ') != string::npos && pushTok[0] == '\\') {
+		if (pushTok[0] == '\\' && pushTok.find(' ') != string::npos) {
 			buff.clear();
 			pushTok = split(pushTok, buff, ' ');
-			return true;
 		} else {
 			buff = pushTok;
 			pushTok.clear();
-			return true;
 		}
+		status = LEX_TOKEN;
+		return true;
 	}
 
 	status = 0;
@@ -516,6 +501,11 @@ bool LyXLex::Pimpl::nextToken()
 	status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 	buff.clear();
 	return false;
+}
+
+
+bool LyXLex::Pimpl::inputAvailable() {
+	return is.good(); 
 }
 
 

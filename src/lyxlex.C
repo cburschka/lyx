@@ -53,7 +53,7 @@ LyXLex::~LyXLex()
 
 bool LyXLex::isOK() const
 {
-	return pimpl_->is.good();
+	return pimpl_->inputAvailable();
 }
 
 
@@ -124,8 +124,16 @@ int LyXLex::lex()
 
 int LyXLex::getInteger() const
 {
+	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
+	if (!lastReadOk_) {
+		pimpl_->printError("integer token missing");
+		return -1;
+	}
+
 	if (isStrInt(pimpl_->getString()))
 		return convert<int>(pimpl_->getString());
+
+	lastReadOk_ = false;
 	pimpl_->printError("Bad integer `$$Token'");
 	return -1;
 }
@@ -136,9 +144,17 @@ double LyXLex::getFloat() const
 	// replace comma with dot in case the file was written with
 	// the wrong locale (should be rare, but is easy enough to
 	// avoid).
+	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
+	if (!lastReadOk_) {
+		pimpl_->printError("float token missing");
+		return -1;
+	}
+
 	string const str = subst(pimpl_->getString(), ",", ".");
 	if (isStrDbl(str))
 		return convert<double>(str);
+
+	lastReadOk_ = false;
 	pimpl_->printError("Bad float `$$Token'");
 	return -1;
 }
@@ -146,13 +162,23 @@ double LyXLex::getFloat() const
 
 string const LyXLex::getString() const
 {
+	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
+
+	if (lastReadOk_)
 	return pimpl_->getString();
+
+	return string();
 }
 
 
 docstring const LyXLex::getDocString() const
 {
-	return pimpl_->getDocString();
+	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
+	
+	if (lastReadOk_)
+		return pimpl_->getDocString();
+
+	return docstring();
 }
 
 
@@ -164,7 +190,7 @@ string const LyXLex::getLongString(string const & endtoken)
 	string str, prefix;
 	bool firstline = true;
 
-	while (isOK()) {
+	while (pimpl_->is) { //< eatLine only reads from is, not from pushTok
 		if (!eatLine())
 			// blank line in the file being read
 			continue;
@@ -197,7 +223,7 @@ string const LyXLex::getLongString(string const & endtoken)
 		str += ltrim(tmpstr, "\t") + '\n';
 	}
 
-	if (!isOK()) {
+	if (!pimpl_->is) {
 		printError("Long string not ended by `" + endtoken + '\'');
 	}
 
@@ -208,11 +234,14 @@ string const LyXLex::getLongString(string const & endtoken)
 bool LyXLex::getBool() const
 {
 	if (pimpl_->getString() == "true") {
+		lastReadOk_ = true;
 		return true;
 	} else if (pimpl_->getString() != "false") {
 		pimpl_->printError("Bad boolean `$$Token'. "
 				   "Use \"false\" or \"true\"");
+		lastReadOk_ = false;
 	}
+	lastReadOk_ = true;
 	return false;
 }
 
@@ -246,13 +275,13 @@ LyXLex::operator void const *() const
 	// use fail() here. However, our implementation of getString() et al.
 	// can cause the eof() and fail() bits to be set, even though we
 	// haven't tried to read 'em.
-	return pimpl_->is.bad() ? 0 : this;
+	return lastReadOk_? this: 0;
 }
 
 
 bool LyXLex::operator!() const
 {
-	return pimpl_->is.bad();
+	return !lastReadOk_;
 }
 
 
@@ -261,6 +290,8 @@ LyXLex & LyXLex::operator>>(std::string & s)
 	if (isOK()) {
 		next();
 		s = getString();
+	} else {
+		lastReadOk_ = false;
 	}
 	return *this;
 }
@@ -271,6 +302,8 @@ LyXLex & LyXLex::operator>>(docstring & s)
 	if (isOK()) {
 		next();
 		s = getDocString();
+	} else {
+		lastReadOk_ = false;
 	}
 	return *this;
 }
@@ -281,6 +314,8 @@ LyXLex & LyXLex::operator>>(double & s)
 	if (isOK()) {
 		next();
 		s = getFloat();
+	} else {
+		lastReadOk_ = false;
 	}
 	return *this;
 }
@@ -291,6 +326,8 @@ LyXLex & LyXLex::operator>>(int & s)
 	if (isOK()) {
 		next();
 		s = getInteger();
+	} else {
+		lastReadOk_ = false;
 	}
 	return *this;
 }
@@ -301,6 +338,8 @@ LyXLex & LyXLex::operator>>(unsigned int & s)
 	if (isOK()) {
 		next();
 		s = getInteger();
+	} else {
+		lastReadOk_ = false;
 	}
 	return *this;
 }
@@ -311,6 +350,8 @@ LyXLex & LyXLex::operator>>(bool & s)
 	if (isOK()) {
 		next();
 		s = getBool();
+	} else {
+		lastReadOk_ = false;
 	}
 	return *this;
 }
