@@ -46,7 +46,7 @@ endif(merge OR MERGE_FILES)
 
 set(CMAKE_BUILD_TYPE)
 if(profile)
-	set(CMAKE_BUILD_TYPE Profile)
+	set(CMAKE_BUILD_TYPE Profile CACHE TYPE STRING FORCE)
 	set(profile)
 endif(profile)
 if(release)
