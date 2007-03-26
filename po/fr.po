@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2007-03-20 19:51+0100\n"
+"POT-Creation-Date: 2007-03-26 15:52+0200\n"
 "PO-Revision-Date: 2006-09-19 11:57+0200\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@gmx.fr>\n"
 "Language-Team: lyxfr \n"
@@ -224,7 +224,7 @@ msgstr "Ajoute une nouvelle branche à la liste"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:50
 #: src/frontends/qt4/ui/QBibtexAddUi.ui:70
-#: src/frontends/qt4/ui/QCitationUi.ui:273
+#: src/frontends/qt4/ui/QCitationUi.ui:116
 #: src/frontends/qt4/ui/QPrefCopiersUi.ui:148
 #: src/frontends/qt4/ui/QPrefFileformatsUi.ui:225
 msgid "&Add"
@@ -285,7 +285,7 @@ msgstr "&Taille :"
 #: src/frontends/controllers/ControlDocument.C:49
 #: src/frontends/controllers/ControlExternal.C:234
 #: src/frontends/controllers/ControlGraphics.C:170
-#: src/frontends/qt4/QDocumentDialog.C:200 src/lyxfont.C:518
+#: src/frontends/qt4/QDocumentDialog.C:203 src/lyxfont.C:518
 #: src/tex-strings.C:68 src/tex-strings.C:79 src/tex-strings.C:89
 msgid "Default"
 msgstr "Défaut"
@@ -619,9 +619,7 @@ msgstr "Copyright"
 #: src/frontends/qt4/ui/QSpellcheckerUi.ui:31
 #: src/frontends/qt4/ui/QTexinfoUi.ui:61
 #: src/frontends/qt4/ui/QThesaurusUi.ui:144 src/frontends/qt4/ui/QURLUi.ui:115
-#: src/frontends/qt4/ui/QVSpaceUi.ui:168
-#: src/frontends/qt4/ui/QViewSourceUi.ui:115
-#: src/frontends/qt4/ui/QWrapUi.ui:216
+#: src/frontends/qt4/ui/QVSpaceUi.ui:168 src/frontends/qt4/ui/QWrapUi.ui:216
 msgid "&Close"
 msgstr "&Fermer"
 
@@ -638,7 +636,7 @@ msgstr "&Bidon"
 #: src/frontends/qt4/ui/QBibtexUi.ui:216 src/frontends/qt4/ui/QBoxUi.ui:325
 #: src/frontends/qt4/ui/QBranchUi.ui:31
 #: src/frontends/qt4/ui/QCharacterUi.ui:370
-#: src/frontends/qt4/ui/QCitationUi.ui:104
+#: src/frontends/qt4/ui/QCitationUi.ui:303
 #: src/frontends/qt4/ui/QDocumentUi.ui:135 src/frontends/qt4/ui/QERTUi.ui:100
 #: src/frontends/qt4/ui/QExternalUi.ui:685 src/frontends/qt4/ui/QFloatUi.ui:68
 #: src/frontends/qt4/ui/QGraphicsUi.ui:702
@@ -654,7 +652,7 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/QAskForTextUi.ui:94
-#: src/frontends/qt4/ui/QCitationUi.ui:124
+#: src/frontends/qt4/ui/QCitationUi.ui:323
 #: src/frontends/qt4/ui/QDocumentUi.ui:152 src/buffer_funcs.C:101
 #: src/buffer_funcs.C:128 src/buffer_funcs.C:169 src/bufferlist.C:114
 #: src/bufferlist.C:222 src/lyx_cb.C:117 src/lyx_cb.C:170 src/lyxfunc.C:733
@@ -671,7 +669,7 @@ msgid "The label as it appears in the document"
 msgstr "Le nom du format tel qu'il apparaîtra dans le document"
 
 #: src/frontends/qt4/ui/QBibitemUi.ui:64 src/frontends/qt4/ui/QRefUi.ui:145
-#: src/frontends/qt4/Dialogs.C:233
+#: src/frontends/qt4/Dialogs.C:234
 msgid "&Label:"
 msgstr "É&tiquette :"
 
@@ -894,7 +892,7 @@ msgstr "Alignement vertical du contenu dans la boîte"
 msgid "Vertical"
 msgstr "&Vertical :"
 
-#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:84
+#: src/frontends/qt4/ui/QBoxUi.ui:293 src/frontends/qt4/ui/QCitationUi.ui:283
 #: src/frontends/qt4/ui/QDocumentUi.ui:112 src/frontends/qt4/ui/QFloatUi.ui:42
 #: src/frontends/qt4/ui/QGraphicsUi.ui:673
 #: src/frontends/qt4/ui/QParagraphUi.ui:232
@@ -974,7 +972,7 @@ msgstr "Série de police"
 
 #: src/frontends/qt4/ui/QCharacterUi.ui:114
 #: src/frontends/qt4/ui/QCharacterUi.ui:160
-#: src/frontends/qt4/QDocumentDialog.C:391
+#: src/frontends/qt4/QDocumentDialog.C:397
 #: src/frontends/qt4/QPrefsDialog.C:1456
 msgid "Language"
 msgstr "Langue"
@@ -1039,95 +1037,113 @@ msgstr "Appliquer les changements immédiatement"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:44 src/frontends/qt4/ui/QSearchUi.ui:31
-msgid "&Find:"
-msgstr "Rec&hercher :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:67
-#, fuzzy
-msgid "<- Clear"
-msgstr "&Enlever"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:117
-msgid "A&pply"
-msgstr "&Appliquer"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:136
-#, fuzzy
-msgid "Formatting"
-msgstr "Formats"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:159
-msgid "Natbib citation style to use"
-msgstr "Style de citation Natbib"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:166
-msgid "Citation &style:"
-msgstr "&Style de citation :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:176
-msgid "List all authors"
-msgstr "Donne la liste de tous les auteurs"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:179
-msgid "&Full author list"
-msgstr "&Liste complète des auteurs"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:186
-msgid "Force upper case in citation"
-msgstr "Force les majuscules dans la citation"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:189
-msgid "Force &upper case"
-msgstr "Forcer les &majuscules"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:196
-msgid "&Text after:"
-msgstr "Texte a&près :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:214
-msgid "Text to place after citation"
-msgstr "Texte à ajouter après la citation"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:221
-msgid "Text &before:"
-msgstr "Texte a&vant :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:239
-msgid "Text to place before citation"
-msgstr "Texte à ajouter avant la citation"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:260
-#, fuzzy
-msgid "&Available Citations:"
-msgstr "Branches &disponibles :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:283
-#, fuzzy
-msgid "&Selected Citations:"
-msgstr "&Sélection :"
-
-#: src/frontends/qt4/ui/QCitationUi.ui:301
+#: src/frontends/qt4/ui/QCitationUi.ui:52
 msgid "Move the selected citation up"
 msgstr "Remonter la citation"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:304 src/frontends/qt4/ui/QTocUi.ui:64
+#: src/frontends/qt4/ui/QCitationUi.ui:55 src/frontends/qt4/ui/QTocUi.ui:64
 #, fuzzy
 msgid "&Up"
 msgstr "Mise à &jour"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:349
+#: src/frontends/qt4/ui/QCitationUi.ui:73
 msgid "Move the selected citation down"
 msgstr "Descendre la citation"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:352
+#: src/frontends/qt4/ui/QCitationUi.ui:76
 #, fuzzy
 msgid "&Down"
 msgstr "Ville"
 
-#: src/frontends/qt4/ui/QCitationUi.ui:362
+#: src/frontends/qt4/ui/QCitationUi.ui:99
 msgid "D&elete"
 msgstr "&Effacer"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:126
+#, fuzzy
+msgid "&Selected Citations:"
+msgstr "&Sélection :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:136
+#, fuzzy
+msgid "A&vailable Citations:"
+msgstr "Branches &disponibles :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:162
+#, fuzzy
+msgid "Formatting"
+msgstr "Formats"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:185
+msgid "Natbib citation style to use"
+msgstr "Style de citation Natbib"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:192
+#, fuzzy
+msgid "Citation st&yle:"
+msgstr "&Style de citation :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:202
+msgid "List all authors"
+msgstr "Donne la liste de tous les auteurs"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:205
+#, fuzzy
+msgid "Full aut&hor list"
+msgstr "&Liste complète des auteurs"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:212
+msgid "Force upper case in citation"
+msgstr "Force les majuscules dans la citation"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:215
+#, fuzzy
+msgid "&Force upper case"
+msgstr "Forcer les &majuscules"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:222
+msgid "&Text after:"
+msgstr "Texte a&près :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:240
+msgid "Text to place after citation"
+msgstr "Texte à ajouter après la citation"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:247
+msgid "Text &before:"
+msgstr "Texte a&vant :"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:265
+msgid "Text to place before citation"
+msgstr "Texte à ajouter avant la citation"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:316
+msgid "A&pply"
+msgstr "&Appliquer"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:335
+#, fuzzy
+msgid "Search Citation"
+msgstr "Citation"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:358
+#, fuzzy
+msgid "Case Se&nsitive"
+msgstr "Selon la &casse"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:365
+msgid "Regular E&xpression"
+msgstr ""
+
+#: src/frontends/qt4/ui/QCitationUi.ui:377
+#, fuzzy
+msgid "<- C&lear"
+msgstr "&Enlever"
+
+#: src/frontends/qt4/ui/QCitationUi.ui:391
+#, fuzzy
+msgid "F&ind:"
+msgstr "Rec&hercher :"
 
 #: src/frontends/qt4/ui/QDelimiterUi.ui:49
 msgid "Match delimiter types"
@@ -1556,7 +1572,7 @@ msgid "Update the display"
 msgstr "Mettre à jour l'affichage"
 
 #: src/frontends/qt4/ui/QLogUi.ui:61 src/frontends/qt4/ui/QRefUi.ui:235
-#: src/frontends/qt4/ui/QViewSourceUi.ui:92
+#: src/frontends/qt4/ui/QViewSourceUi.ui:56
 msgid "&Update"
 msgstr "Mise à &jour"
 
@@ -1776,7 +1792,7 @@ msgid "&Shaded"
 msgstr "&Enregistrer"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:37
-#: src/frontends/qt4/QDocumentDialog.C:114 src/text.C:1695
+#: src/frontends/qt4/QDocumentDialog.C:117 src/text.C:1743
 msgid "Single"
 msgstr "Simple"
 
@@ -1785,7 +1801,7 @@ msgid "1.5"
 msgstr "Un et demi"
 
 #: src/frontends/qt4/ui/QParagraphUi.ui:47
-#: src/frontends/qt4/QDocumentDialog.C:118 src/text.C:1701
+#: src/frontends/qt4/QDocumentDialog.C:121 src/text.C:1749
 msgid "Double"
 msgstr "Double"
 
@@ -1794,8 +1810,8 @@ msgstr "Double"
 #: src/frontends/qt4/ui/QTabularUi.ui:731
 #: src/frontends/qt4/ui/QTabularUi.ui:779
 #: src/frontends/qt4/ui/QVSpaceUi.ui:110
-#: src/frontends/qt4/QDocumentDialog.C:120
-#: src/frontends/qt4/QDocumentDialog.C:201
+#: src/frontends/qt4/QDocumentDialog.C:123
+#: src/frontends/qt4/QDocumentDialog.C:204
 msgid "Custom"
 msgstr "Personnalisé"
 
@@ -2072,37 +2088,37 @@ msgid "Te&X encoding:"
 msgstr "Encodage Te&X :"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:83
-#: src/frontends/qt4/QDocumentDialog.C:202
+#: src/frontends/qt4/QDocumentDialog.C:205
 msgid "US letter"
 msgstr "Lettre US"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:88
-#: src/frontends/qt4/QDocumentDialog.C:203
+#: src/frontends/qt4/QDocumentDialog.C:206
 msgid "US legal"
 msgstr "Légal US"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:93
-#: src/frontends/qt4/QDocumentDialog.C:204
+#: src/frontends/qt4/QDocumentDialog.C:207
 msgid "US executive"
 msgstr "Executive US"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:98
-#: src/frontends/qt4/QDocumentDialog.C:205
+#: src/frontends/qt4/QDocumentDialog.C:208
 msgid "A3"
 msgstr "A3"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:103
-#: src/frontends/qt4/QDocumentDialog.C:206
+#: src/frontends/qt4/QDocumentDialog.C:209
 msgid "A4"
 msgstr "A4"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:108
-#: src/frontends/qt4/QDocumentDialog.C:207
+#: src/frontends/qt4/QDocumentDialog.C:210
 msgid "A5"
 msgstr "A5"
 
 #: src/frontends/qt4/ui/QPrefLatexUi.ui:113
-#: src/frontends/qt4/QDocumentDialog.C:210
+#: src/frontends/qt4/QDocumentDialog.C:213
 msgid "B5"
 msgstr "B5"
 
@@ -2599,6 +2615,10 @@ msgstr "Va à l'étiquette"
 msgid "&Go to Label"
 msgstr "A&ller à l'Étiquette"
 
+#: src/frontends/qt4/ui/QSearchUi.ui:31
+msgid "&Find:"
+msgstr "Rec&hercher :"
+
 #: src/frontends/qt4/ui/QSearchUi.ui:71
 msgid "Replace &with:"
 msgstr "Remplacer &par :"
@@ -2990,7 +3010,7 @@ msgstr "&Afficher le chemin"
 msgid "Index entry"
 msgstr "Entrée d'index"
 
-#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:223
+#: src/frontends/qt4/ui/QThesaurusUi.ui:45 src/frontends/qt4/Dialogs.C:224
 msgid "&Keyword:"
 msgstr "Mot-&Clé :"
 
@@ -3085,17 +3105,17 @@ msgid "DefSkip"
 msgstr "par Défaut"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:90
-#: src/frontends/qt4/QDocumentDialog.C:107
+#: src/frontends/qt4/QDocumentDialog.C:110
 msgid "SmallSkip"
 msgstr "Petit"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:95
-#: src/frontends/qt4/QDocumentDialog.C:108
+#: src/frontends/qt4/QDocumentDialog.C:111
 msgid "MedSkip"
 msgstr "Moyen"
 
 #: src/frontends/qt4/ui/QVSpaceUi.ui:100
-#: src/frontends/qt4/QDocumentDialog.C:109
+#: src/frontends/qt4/QDocumentDialog.C:112
 msgid "BigSkip"
 msgstr "Grand"
 
@@ -3103,11 +3123,11 @@ msgstr "Grand"
 msgid "VFill"
 msgstr "Ressort Vertical"
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:46
-msgid "Display complete source"
+#: src/frontends/qt4/ui/QViewSourceUi.ui:36
+msgid "Complete source"
 msgstr ""
 
-#: src/frontends/qt4/ui/QViewSourceUi.ui:53
+#: src/frontends/qt4/ui/QViewSourceUi.ui:43
 msgid "Automatic update"
 msgstr ""
 
@@ -3165,7 +3185,7 @@ msgstr "Document sur &Deux Colonnes"
 #: lib/layouts/apa.layout:24 lib/layouts/beamer.layout:29
 #: lib/layouts/broadway.layout:178 lib/layouts/chess.layout:27
 #: lib/layouts/cl2emult.layout:125 lib/layouts/cv.layout:14
-#: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:17
+#: lib/layouts/dtk.layout:31 lib/layouts/egs.layout:18
 #: lib/layouts/elsart.layout:49 lib/layouts/foils.layout:30
 #: lib/layouts/hollywood.layout:360 lib/layouts/kluwer.layout:33
 #: lib/layouts/llncs.layout:23 lib/layouts/ltugboat.layout:30
@@ -3322,7 +3342,7 @@ msgstr "Définition #:"
 #: lib/layouts/ijmpd.layout:175 lib/layouts/llncs.layout:340
 #: lib/layouts/amsmaths-plain.inc:133 lib/layouts/amsmaths-seq.inc:112
 #: lib/layouts/amsmaths.inc:276 lib/layouts/svjour.inc:397
-#: src/frontends/qt4/QDocumentDialog.C:315
+#: src/frontends/qt4/QDocumentDialog.C:318
 msgid "Example"
 msgstr "Exemple"
 
@@ -3430,7 +3450,7 @@ msgstr "Cas #:"
 #: lib/layouts/aastex.layout:166 lib/layouts/amsart.layout:61
 #: lib/layouts/amsbook.layout:47 lib/layouts/amsbook.layout:95
 #: lib/layouts/beamer.layout:265 lib/layouts/cv.layout:29
-#: lib/layouts/egs.layout:29 lib/layouts/ijmpc.layout:102
+#: lib/layouts/egs.layout:30 lib/layouts/ijmpc.layout:102
 #: lib/layouts/ijmpd.layout:98 lib/layouts/isprs.layout:157
 #: lib/layouts/kluwer.layout:57 lib/layouts/latex8.layout:41
 #: lib/layouts/llncs.layout:44 lib/layouts/ltugboat.layout:45
@@ -3450,7 +3470,7 @@ msgstr "Section"
 #: lib/layouts/aapaper.layout:138 lib/layouts/aastex.layout:67
 #: lib/layouts/aastex.layout:179 lib/layouts/amsart.layout:72
 #: lib/layouts/amsbook.layout:58 lib/layouts/beamer.layout:306
-#: lib/layouts/cv.layout:50 lib/layouts/egs.layout:50
+#: lib/layouts/cv.layout:50 lib/layouts/egs.layout:51
 #: lib/layouts/ijmpc.layout:118 lib/layouts/ijmpd.layout:114
 #: lib/layouts/isprs.layout:168 lib/layouts/kluwer.layout:66
 #: lib/layouts/latex8.layout:49 lib/layouts/llncs.layout:52
@@ -3482,7 +3502,7 @@ msgid "Subsubsection"
 msgstr "SousSousSection"
 
 #: lib/layouts/IEEEtran.layout:295 lib/layouts/beamer.layout:297
-#: lib/layouts/egs.layout:586 lib/layouts/ijmpc.layout:110
+#: lib/layouts/egs.layout:587 lib/layouts/ijmpc.layout:110
 #: lib/layouts/ijmpd.layout:106 lib/layouts/isprs.layout:186
 #: lib/layouts/siamltex.layout:81 lib/layouts/spie.layout:29
 #: lib/layouts/aguplus.inc:34 lib/layouts/db_stdstarsections.inc:36
@@ -3491,7 +3511,7 @@ msgid "Section*"
 msgstr "Section*"
 
 #: lib/layouts/IEEEtran.layout:305 lib/layouts/beamer.layout:339
-#: lib/layouts/egs.layout:606 lib/layouts/isprs.layout:197
+#: lib/layouts/egs.layout:607 lib/layouts/isprs.layout:197
 #: lib/layouts/siamltex.layout:88 lib/layouts/aguplus.inc:48
 #: lib/layouts/db_stdstarsections.inc:48 lib/layouts/stdstarsections.inc:39
 msgid "Subsection*"
@@ -3508,7 +3528,7 @@ msgstr "SousSousSection*"
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
 #: lib/layouts/aastex.layout:106 lib/layouts/aastex.layout:244
 #: lib/layouts/apa.layout:70 lib/layouts/cl2emult.layout:79
-#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:491
+#: lib/layouts/cl2emult.layout:91 lib/layouts/egs.layout:492
 #: lib/layouts/elsart.layout:206 lib/layouts/elsart.layout:222
 #: lib/layouts/entcs.layout:83 lib/layouts/foils.layout:151
 #: lib/layouts/ijmpc.layout:69 lib/layouts/ijmpd.layout:72
@@ -3550,7 +3570,7 @@ msgstr "Termes d'index---"
 #: lib/layouts/aapaper.layout:209 lib/layouts/beamer.layout:440
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
 #: lib/layouts/cl2emult.layout:102 lib/layouts/cv.layout:143
-#: lib/layouts/egs.layout:562 lib/layouts/foils.layout:215
+#: lib/layouts/egs.layout:563 lib/layouts/foils.layout:215
 #: lib/layouts/ijmpc.layout:361 lib/layouts/ijmpd.layout:372
 #: lib/layouts/latex8.layout:118 lib/layouts/llncs.layout:261
 #: lib/layouts/memoir.layout:138 lib/layouts/memoir.layout:140
@@ -3562,7 +3582,7 @@ msgstr "Termes d'index---"
 #: lib/layouts/siamltex.layout:183 lib/layouts/aguplus.inc:168
 #: lib/layouts/aguplus.inc:170 lib/layouts/amsdefs.inc:229
 #: lib/layouts/scrclass.inc:223 lib/layouts/stdstruct.inc:39
-#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:393
+#: lib/layouts/svjour.inc:326 src/frontends/qt4/QDocumentDialog.C:399
 msgid "Bibliography"
 msgstr "Bibliographie"
 
@@ -3570,7 +3590,7 @@ msgstr "Bibliographie"
 #: lib/layouts/aastex.layout:115 lib/layouts/aastex.layout:408
 #: lib/layouts/ijmpc.layout:338 lib/layouts/ijmpd.layout:349
 #: lib/layouts/kluwer.layout:323 lib/layouts/kluwer.layout:336
-#: src/rowpainter.C:510
+#: src/rowpainter.C:528
 msgid "Appendix"
 msgstr "Appendice"
 
@@ -3597,7 +3617,7 @@ msgstr "DoubleMarque"
 #: lib/layouts/aa.layout:46 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:76 lib/layouts/apa.layout:308
 #: lib/layouts/beamer.layout:41 lib/layouts/cv.layout:80
-#: lib/layouts/egs.layout:162 lib/layouts/manpage.layout:82
+#: lib/layouts/egs.layout:163 lib/layouts/manpage.layout:82
 #: lib/layouts/agu_stdlists.inc:13 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:11
 msgid "Itemize"
@@ -3605,7 +3625,7 @@ msgstr "ListePuces"
 
 #: lib/layouts/aa.layout:49 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:79 lib/layouts/apa.layout:326
-#: lib/layouts/beamer.layout:59 lib/layouts/egs.layout:144
+#: lib/layouts/beamer.layout:59 lib/layouts/egs.layout:145
 #: lib/layouts/manpage.layout:65 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:29
 msgid "Enumerate"
@@ -3613,7 +3633,7 @@ msgstr "Énumération"
 
 #: lib/layouts/aa.layout:52 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:82 lib/layouts/beamer.layout:77
-#: lib/layouts/egs.layout:180 lib/layouts/hollywood.layout:134
+#: lib/layouts/egs.layout:181 lib/layouts/hollywood.layout:134
 #: lib/layouts/manpage.layout:100 lib/layouts/paper.layout:103
 #: lib/layouts/scrlettr.layout:17 lib/layouts/scrlttr2.layout:18
 #: lib/layouts/agu_stdlists.inc:29 lib/layouts/db_stdlists.inc:26
@@ -3623,7 +3643,7 @@ msgid "Description"
 msgstr "Description"
 
 #: lib/layouts/aa.layout:55 lib/layouts/aapaper.layout:57
-#: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:127
+#: lib/layouts/aastex.layout:85 lib/layouts/egs.layout:128
 #: lib/layouts/scrlettr.layout:32 lib/layouts/scrlttr2.layout:33
 #: lib/layouts/scrclass.inc:40 lib/layouts/stdlists.inc:69
 #: lib/ui/stdtoolbars.inc:69
@@ -3637,7 +3657,7 @@ msgstr "Liste"
 #: lib/layouts/broadway.layout:190 lib/layouts/cl2emult.layout:39
 #: lib/layouts/cv.layout:122 lib/layouts/docbook-book.layout:11
 #: lib/layouts/docbook-chapter.layout:9 lib/layouts/docbook-section.layout:9
-#: lib/layouts/egs.layout:246 lib/layouts/elsart.layout:92
+#: lib/layouts/egs.layout:247 lib/layouts/elsart.layout:92
 #: lib/layouts/entcs.layout:37 lib/layouts/foils.layout:129
 #: lib/layouts/hollywood.layout:346 lib/layouts/ijmpc.layout:36
 #: lib/layouts/ijmpd.layout:39 lib/layouts/isprs.layout:94
@@ -3666,7 +3686,7 @@ msgstr "SousTitre"
 #: lib/layouts/aastex.layout:91 lib/layouts/aastex.layout:219
 #: lib/layouts/apa.layout:114 lib/layouts/beamer.layout:416
 #: lib/layouts/broadway.layout:203 lib/layouts/cl2emult.layout:56
-#: lib/layouts/egs.layout:289 lib/layouts/elsart.layout:112
+#: lib/layouts/egs.layout:290 lib/layouts/elsart.layout:112
 #: lib/layouts/entcs.layout:47 lib/layouts/foils.layout:137
 #: lib/layouts/hollywood.layout:333 lib/layouts/ijmpc.layout:44
 #: lib/layouts/ijmpd.layout:47 lib/layouts/isprs.layout:76
@@ -3681,7 +3701,7 @@ msgid "Author"
 msgstr "Auteur"
 
 #: lib/layouts/aa.layout:68 lib/layouts/aa.layout:127
-#: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:233
+#: lib/layouts/aapaper.layout:82 lib/layouts/egs.layout:234
 #: lib/layouts/entcs.layout:57 lib/layouts/g-brief-en.layout:179
 #: lib/layouts/g-brief2.layout:799 lib/layouts/ijmpc.layout:53
 #: lib/layouts/ijmpd.layout:56 lib/layouts/isprs.layout:115
@@ -3705,7 +3725,7 @@ msgstr "Courrier"
 #: lib/layouts/aa.layout:77 lib/layouts/aa.layout:272
 #: lib/layouts/aapaper.layout:94 lib/layouts/aapaper.layout:181
 #: lib/layouts/aastex.layout:103 lib/layouts/aastex.layout:232
-#: lib/layouts/beamer.layout:630 lib/layouts/egs.layout:475
+#: lib/layouts/beamer.layout:630 lib/layouts/egs.layout:476
 #: lib/layouts/foils.layout:144 lib/layouts/g-brief-en.layout:188
 #: lib/layouts/g-brief2.layout:821 lib/layouts/kluwer.layout:143
 #: lib/layouts/revtex.layout:106 lib/layouts/revtex4.layout:123
@@ -3719,7 +3739,7 @@ msgstr "Date"
 
 #: lib/layouts/aa.layout:83 lib/layouts/aa.layout:190
 #: lib/layouts/aapaper.layout:100 lib/layouts/amsart-plain.layout:139
-#: lib/layouts/amsart-seq.layout:251 lib/layouts/egs.layout:537
+#: lib/layouts/amsart-seq.layout:251 lib/layouts/egs.layout:538
 #: lib/layouts/elsart.layout:427 lib/layouts/aapaper.inc:83
 #: lib/layouts/amsmaths-plain.inc:223 lib/layouts/amsmaths-seq.inc:184
 #: lib/layouts/amsmaths.inc:473 lib/layouts/svjour.inc:319
@@ -3734,12 +3754,12 @@ msgstr "Demandes d'offprints à :"
 msgid "Correspondence to:"
 msgstr "Correspondance pour :"
 
-#: lib/layouts/aa.layout:202 lib/layouts/egs.layout:526
+#: lib/layouts/aa.layout:202 lib/layouts/egs.layout:527
 #: lib/layouts/svjour.inc:308
 msgid "Acknowledgements."
 msgstr "Remerciements."
 
-#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:622
+#: lib/layouts/aapaper.layout:61 lib/layouts/egs.layout:623
 #: src/frontends/qt4/QPrefsDialog.C:285
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3757,7 +3777,7 @@ msgid "Thesaurus"
 msgstr "Dictionnaire de Synonymes"
 
 #: lib/layouts/aastex.layout:73 lib/layouts/amsbook.layout:101
-#: lib/layouts/egs.layout:68 lib/layouts/kluwer.layout:84
+#: lib/layouts/egs.layout:69 lib/layouts/kluwer.layout:84
 #: lib/layouts/llncs.layout:68 lib/layouts/ltugboat.layout:105
 #: lib/layouts/memoir.layout:66 lib/layouts/paper.layout:71
 #: lib/layouts/revtex.layout:65 lib/layouts/revtex4.layout:71
@@ -3781,7 +3801,7 @@ msgid "And"
 msgstr "Et"
 
 #: lib/layouts/aastex.layout:112 lib/layouts/aastex.layout:325
-#: lib/layouts/apa.layout:222 lib/layouts/egs.layout:512
+#: lib/layouts/apa.layout:222 lib/layouts/egs.layout:513
 #: lib/layouts/isprs.layout:215 lib/layouts/kluwer.layout:302
 #: lib/layouts/kluwer.layout:314 lib/layouts/aapaper.inc:95
 #: lib/layouts/svjour.inc:294
@@ -3790,7 +3810,7 @@ msgstr "Remerciements"
 
 #: lib/layouts/aastex.layout:118 lib/layouts/aastex.layout:441
 #: lib/layouts/aastex.layout:453 lib/layouts/beamer.layout:454
-#: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:576
+#: lib/layouts/cl2emult.layout:116 lib/layouts/egs.layout:577
 #: lib/layouts/kluwer.layout:344 lib/layouts/kluwer.layout:356
 #: lib/layouts/llncs.layout:275 lib/layouts/siamltex.layout:194
 #: lib/layouts/amsdefs.inc:243 lib/layouts/stdstruct.inc:53
@@ -4000,7 +4020,7 @@ msgstr "Résumé"
 msgid "Summary."
 msgstr "Résumé."
 
-#: lib/layouts/amsart-plain.layout:141 lib/layouts/egs.layout:551
+#: lib/layouts/amsart-plain.layout:141 lib/layouts/egs.layout:552
 #: lib/layouts/amsmaths-plain.inc:225 lib/layouts/amsmaths.inc:487
 #: lib/layouts/svjour.inc:322
 msgid "Acknowledgement."
@@ -4167,7 +4187,7 @@ msgstr "TroisAffiliations"
 msgid "FourAffiliations"
 msgstr "QuatreAffiliations"
 
-#: lib/layouts/apa.layout:192 lib/layouts/egs.layout:335
+#: lib/layouts/apa.layout:192 lib/layouts/egs.layout:336
 msgid "Journal"
 msgstr "Journal"
 
@@ -4206,7 +4226,7 @@ msgid "FitBitmap"
 msgstr "AjusteBitmap"
 
 #: lib/layouts/apa.layout:322 lib/layouts/beamer.layout:55
-#: lib/layouts/cv.layout:94 lib/layouts/egs.layout:176
+#: lib/layouts/cv.layout:94 lib/layouts/egs.layout:177
 #: lib/layouts/manpage.layout:96 lib/layouts/stdlists.inc:25
 msgid "*"
 msgstr "*"
@@ -4235,7 +4255,7 @@ msgstr "Partie"
 msgid "Part*"
 msgstr "Partie*"
 
-#: lib/layouts/beamer.layout:92 lib/layouts/egs.layout:195
+#: lib/layouts/beamer.layout:92 lib/layouts/egs.layout:196
 #: lib/layouts/manpage.layout:115 lib/layouts/stdlists.inc:62
 msgid "MM"
 msgstr "MM"
@@ -4409,7 +4429,7 @@ msgstr "SousTitre"
 msgid "Institute"
 msgstr "Institut"
 
-#: lib/layouts/beamer.layout:761 lib/layouts/egs.layout:640
+#: lib/layouts/beamer.layout:761 lib/layouts/egs.layout:641
 #: lib/layouts/db_lyxmacros.inc:18 lib/layouts/lyxmacros.inc:12
 msgid "LyX-Code"
 msgstr "LyX-Code"
@@ -4554,14 +4574,14 @@ msgid "("
 msgstr "("
 
 #: lib/layouts/broadway.layout:151 lib/layouts/hollywood.layout:180
-msgid "\tEnd)"
-msgstr "\tEnd)"
+msgid ")"
+msgstr ""
 
 #: lib/layouts/broadway.layout:162 lib/layouts/broadway.layout:173
 msgid "CURTAIN"
 msgstr "RIDEAU"
 
-#: lib/layouts/broadway.layout:216 lib/layouts/egs.layout:221
+#: lib/layouts/broadway.layout:216 lib/layouts/egs.layout:222
 #: lib/layouts/hollywood.layout:320 lib/layouts/lyxmacros.inc:63
 msgid "Right Address"
 msgstr "Adresse_À_Droite"
@@ -4786,7 +4806,7 @@ msgstr "Datum"
 msgid "Datum:"
 msgstr "Datum:"
 
-#: lib/layouts/egs.layout:85 lib/layouts/kluwer.layout:93
+#: lib/layouts/egs.layout:86 lib/layouts/kluwer.layout:93
 #: lib/layouts/llncs.layout:77 lib/layouts/memoir.layout:71
 #: lib/layouts/paper.layout:80 lib/layouts/agu_stdsections.inc:70
 #: lib/layouts/db_stdsections.inc:60 lib/layouts/numarticle.inc:49
@@ -4795,89 +4815,89 @@ msgstr "Datum:"
 msgid "Subparagraph"
 msgstr "SousParagraphe"
 
-#: lib/layouts/egs.layout:93 lib/layouts/db_stdlayouts.inc:18
+#: lib/layouts/egs.layout:94 lib/layouts/db_stdlayouts.inc:18
 #: lib/layouts/stdlayouts.inc:11
 msgid "Quotation"
 msgstr "Citation"
 
-#: lib/layouts/egs.layout:111 lib/layouts/manpage.layout:29
+#: lib/layouts/egs.layout:112 lib/layouts/manpage.layout:29
 #: lib/layouts/stdlayouts.inc:29
 msgid "Quote"
 msgstr "Cite"
 
-#: lib/layouts/egs.layout:140 lib/layouts/stdlists.inc:82
+#: lib/layouts/egs.layout:141 lib/layouts/stdlists.inc:82
 msgid "00.00.0000"
 msgstr "00.00.0000"
 
-#: lib/layouts/egs.layout:202 lib/layouts/stdlayouts.inc:45
+#: lib/layouts/egs.layout:203 lib/layouts/stdlayouts.inc:45
 msgid "Verse"
 msgstr "Vers"
 
-#: lib/layouts/egs.layout:268
+#: lib/layouts/egs.layout:269
 msgid "LaTeX Title"
 msgstr "Titre_LaTeX"
 
-#: lib/layouts/egs.layout:303
+#: lib/layouts/egs.layout:304
 msgid "Author:"
 msgstr "Auteur :"
 
-#: lib/layouts/egs.layout:312
+#: lib/layouts/egs.layout:313
 msgid "Affil"
 msgstr "Affil."
 
-#: lib/layouts/egs.layout:326
+#: lib/layouts/egs.layout:327
 msgid "Affilation:"
 msgstr "Affiliation :"
 
-#: lib/layouts/egs.layout:349
+#: lib/layouts/egs.layout:350
 msgid "Journal:"
 msgstr "Journal :"
 
-#: lib/layouts/egs.layout:358
+#: lib/layouts/egs.layout:359
 msgid "msnumber"
 msgstr "numéro_ms"
 
-#: lib/layouts/egs.layout:373
+#: lib/layouts/egs.layout:374
 msgid "MS_number:"
 msgstr "Numéro_MS :"
 
-#: lib/layouts/egs.layout:383
+#: lib/layouts/egs.layout:384
 msgid "FirstAuthor"
 msgstr "PremierAuteur"
 
-#: lib/layouts/egs.layout:397
+#: lib/layouts/egs.layout:398
 msgid "1st_author_surname:"
 msgstr "Nom_Famille_Premier_Auteur :"
 
-#: lib/layouts/egs.layout:406 lib/layouts/agu_stdtitle.inc:198
+#: lib/layouts/egs.layout:407 lib/layouts/agu_stdtitle.inc:198
 #: lib/layouts/aguplus.inc:107
 msgid "Received"
 msgstr "Reçu"
 
-#: lib/layouts/egs.layout:420 lib/layouts/agu_stdtitle.inc:201
+#: lib/layouts/egs.layout:421 lib/layouts/agu_stdtitle.inc:201
 #: lib/layouts/aguplus.inc:111
 msgid "Received:"
 msgstr "Reçu :"
 
-#: lib/layouts/egs.layout:429 lib/layouts/agu_stdtitle.inc:214
+#: lib/layouts/egs.layout:430 lib/layouts/agu_stdtitle.inc:214
 #: lib/layouts/aguplus.inc:123
 msgid "Accepted"
 msgstr "Accepté"
 
-#: lib/layouts/egs.layout:443 lib/layouts/agu_stdtitle.inc:217
+#: lib/layouts/egs.layout:444 lib/layouts/agu_stdtitle.inc:217
 #: lib/layouts/aguplus.inc:127
 msgid "Accepted:"
 msgstr "Accepté :"
 
-#: lib/layouts/egs.layout:452
+#: lib/layouts/egs.layout:453
 msgid "Offsets"
 msgstr "Offsets"
 
-#: lib/layouts/egs.layout:466
+#: lib/layouts/egs.layout:467
 msgid "reprint_reqs_to:"
 msgstr "demande_tirés_à_part_à :"
 
-#: lib/layouts/egs.layout:505 lib/layouts/kluwer.layout:271
+#: lib/layouts/egs.layout:506 lib/layouts/kluwer.layout:271
 #: lib/layouts/llncs.layout:254 lib/layouts/siamltex.layout:156
 #: lib/layouts/svglobal.layout:44 lib/layouts/svjog.layout:49
 #: lib/layouts/amsdefs.inc:139 lib/layouts/svjour.inc:266
@@ -6313,8 +6333,8 @@ msgid "Progress Contents"
 msgstr "Sommaire Progrès"
 
 #: lib/layouts/siamltex.layout:52
-msgid "\tEnd."
-msgstr "\tFin."
+msgid "."
+msgstr ""
 
 #: lib/layouts/siamltex.layout:102 lib/layouts/aguplus.inc:66
 #: lib/layouts/db_stdstarsections.inc:72 lib/layouts/stdstarsections.inc:57
@@ -6521,7 +6541,7 @@ msgstr "En-Tête-Courant :"
 msgid "Published-online:"
 msgstr "Publié-en-ligne :"
 
-#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.C:44
+#: lib/layouts/agu_stdtitle.inc:263 src/frontends/qt4/QCitationDialog.C:41
 msgid "Citation"
 msgstr "Citation"
 
@@ -6972,10 +6992,6 @@ msgstr "Dicton"
 #: lib/layouts/stdfloats.inc:39
 msgid "List of Algorithms"
 msgstr "Liste des algorithmes"
-
-#: lib/layouts/stdlists.inc:103
-msgid "#*"
-msgstr "#*"
 
 #: lib/layouts/svjour.inc:97
 msgid "Headnote"
@@ -7619,7 +7635,7 @@ msgstr "Titre Court"
 msgid "Index Entry|I"
 msgstr "Entrée d'Index|I"
 
-#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:227
+#: lib/ui/classic.ui:224 src/frontends/qt4/Dialogs.C:228
 msgid "Glossary Entry"
 msgstr ""
 
@@ -10358,7 +10374,7 @@ msgstr "Un mot vérifié."
 msgid "Spelling check completed"
 msgstr "Correction orthographique terminée"
 
-#: src/frontends/controllers/ControlToc.C:139 src/insets/insettoc.C:46
+#: src/frontends/controllers/ControlToc.C:138 src/insets/insettoc.C:46
 msgid "Table of Contents"
 msgstr "Table des Matières"
 
@@ -10376,7 +10392,7 @@ msgstr "%1$s et al."
 msgid "No year"
 msgstr "Pas d'année"
 
-#: src/frontends/controllers/biblio.C:804
+#: src/frontends/controllers/biblio.C:798
 msgid "before"
 msgstr "avant"
 
@@ -10529,15 +10545,20 @@ msgstr "Dings &3"
 msgid "Dings 4"
 msgstr "Dings &4"
 
-#: src/frontends/qt4/Dialogs.C:222
+#: src/frontends/qt4/Dialogs.C:223
 msgid "Index Entry"
 msgstr "Entrée d'index"
 
-#: src/frontends/qt4/Dialogs.C:232
+#: src/frontends/qt4/Dialogs.C:233
 msgid "Label"
 msgstr "Étiquette"
 
-#: src/frontends/qt4/Dialogs.C:307
+#: src/frontends/qt4/Dialogs.C:245
+#, fuzzy
+msgid "LateX Source"
+msgstr "Espace visible|#E"
+
+#: src/frontends/qt4/Dialogs.C:311
 #, fuzzy
 msgid "Toc"
 msgstr "Sujet"
@@ -10593,11 +10614,11 @@ msgid "Activated"
 msgstr "Activées"
 
 #: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QBranches.C:145
-#: src/frontends/qt4/QDocumentDialog.C:619
+#: src/frontends/qt4/QDocumentDialog.C:625
 msgid "Yes"
 msgstr "Oui"
 
-#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:618
+#: src/frontends/qt4/QBranches.C:73 src/frontends/qt4/QDocumentDialog.C:624
 msgid "No"
 msgstr "Non"
 
@@ -10666,156 +10687,156 @@ msgstr "ligne de tableau"
 msgid "Document Settings"
 msgstr "Paramètres du Document"
 
-#: src/frontends/qt4/QDocumentDialog.C:110
+#: src/frontends/qt4/QDocumentDialog.C:113
 msgid "Length"
 msgstr "Valeur"
 
-#: src/frontends/qt4/QDocumentDialog.C:116 src/text.C:1698
+#: src/frontends/qt4/QDocumentDialog.C:119 src/text.C:1746
 msgid "OneHalf"
 msgstr "Un et Demi"
 
-#: src/frontends/qt4/QDocumentDialog.C:146
-#: src/frontends/qt4/QDocumentDialog.C:152
-#: src/frontends/qt4/QDocumentDialog.C:158
+#: src/frontends/qt4/QDocumentDialog.C:149
+#: src/frontends/qt4/QDocumentDialog.C:155
+#: src/frontends/qt4/QDocumentDialog.C:161
 msgid " (not installed)"
 msgstr ""
 
-#: src/frontends/qt4/QDocumentDialog.C:162
-#: src/frontends/qt4/QDocumentDialog.C:188
-#: src/frontends/qt4/QDocumentDialog.C:528
+#: src/frontends/qt4/QDocumentDialog.C:165
+#: src/frontends/qt4/QDocumentDialog.C:191
+#: src/frontends/qt4/QDocumentDialog.C:534
 msgid "default"
 msgstr "défaut"
 
-#: src/frontends/qt4/QDocumentDialog.C:163
+#: src/frontends/qt4/QDocumentDialog.C:166
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/QDocumentDialog.C:164
+#: src/frontends/qt4/QDocumentDialog.C:167
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/QDocumentDialog.C:165
+#: src/frontends/qt4/QDocumentDialog.C:168
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/QDocumentDialog.C:189
+#: src/frontends/qt4/QDocumentDialog.C:192
 msgid "empty"
 msgstr "vide"
 
-#: src/frontends/qt4/QDocumentDialog.C:190
+#: src/frontends/qt4/QDocumentDialog.C:193
 msgid "plain"
 msgstr "ordinaire"
 
-#: src/frontends/qt4/QDocumentDialog.C:191
+#: src/frontends/qt4/QDocumentDialog.C:194
 msgid "headings"
 msgstr "en-têtes"
 
-#: src/frontends/qt4/QDocumentDialog.C:192
+#: src/frontends/qt4/QDocumentDialog.C:195
 msgid "fancy"
 msgstr "sophistiquée"
 
-#: src/frontends/qt4/QDocumentDialog.C:208
+#: src/frontends/qt4/QDocumentDialog.C:211
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/QDocumentDialog.C:209
+#: src/frontends/qt4/QDocumentDialog.C:212
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/QDocumentDialog.C:293
+#: src/frontends/qt4/QDocumentDialog.C:296
 #, fuzzy
 msgid "LaTeX default"
 msgstr "Échec de LaTeX"
 
-#: src/frontends/qt4/QDocumentDialog.C:299
+#: src/frontends/qt4/QDocumentDialog.C:302
 msgid "``text''"
 msgstr "``texte''"
 
-#: src/frontends/qt4/QDocumentDialog.C:300
+#: src/frontends/qt4/QDocumentDialog.C:303
 msgid "''text''"
 msgstr "''texte''"
 
-#: src/frontends/qt4/QDocumentDialog.C:301
+#: src/frontends/qt4/QDocumentDialog.C:304
 msgid ",,text``"
 msgstr ",,texte``"
 
-#: src/frontends/qt4/QDocumentDialog.C:302
+#: src/frontends/qt4/QDocumentDialog.C:305
 msgid ",,text''"
 msgstr ",,texte''"
 
-#: src/frontends/qt4/QDocumentDialog.C:303
+#: src/frontends/qt4/QDocumentDialog.C:306
 msgid "<<text>>"
 msgstr "<<texte>>"
 
-#: src/frontends/qt4/QDocumentDialog.C:304
+#: src/frontends/qt4/QDocumentDialog.C:307
 msgid ">>text<<"
 msgstr ">>texte<<"
 
-#: src/frontends/qt4/QDocumentDialog.C:316
+#: src/frontends/qt4/QDocumentDialog.C:319
 msgid "Numbered"
 msgstr "Numéroté"
 
-#: src/frontends/qt4/QDocumentDialog.C:317
+#: src/frontends/qt4/QDocumentDialog.C:320
 msgid "Appears in TOC"
 msgstr "Apparaît dans la TdM"
 
-#: src/frontends/qt4/QDocumentDialog.C:330
+#: src/frontends/qt4/QDocumentDialog.C:333
 msgid "Author-year"
 msgstr "Auteur-année"
 
-#: src/frontends/qt4/QDocumentDialog.C:331
+#: src/frontends/qt4/QDocumentDialog.C:334
 msgid "Numerical"
 msgstr "Numéroté"
 
-#: src/frontends/qt4/QDocumentDialog.C:363
+#: src/frontends/qt4/QDocumentDialog.C:366
 #, c-format
 msgid "Unavailable: %1$s"
 msgstr "Indisponible : %1$s"
 
-#: src/frontends/qt4/QDocumentDialog.C:386
-#: src/frontends/qt4/QDocumentDialog.C:399
+#: src/frontends/qt4/QDocumentDialog.C:392
+#: src/frontends/qt4/QDocumentDialog.C:405
 msgid "Document Class"
 msgstr "Classe de Document"
 
-#: src/frontends/qt4/QDocumentDialog.C:387
+#: src/frontends/qt4/QDocumentDialog.C:393
 #, fuzzy
 msgid "Fonts"
 msgstr "&Police :"
 
-#: src/frontends/qt4/QDocumentDialog.C:388
+#: src/frontends/qt4/QDocumentDialog.C:394
 msgid "Text Layout"
 msgstr "Format du Texte"
 
-#: src/frontends/qt4/QDocumentDialog.C:389
+#: src/frontends/qt4/QDocumentDialog.C:395
 msgid "Page Layout"
 msgstr "Format de la Page"
 
-#: src/frontends/qt4/QDocumentDialog.C:390
+#: src/frontends/qt4/QDocumentDialog.C:396
 msgid "Page Margins"
 msgstr "Marges"
 
-#: src/frontends/qt4/QDocumentDialog.C:392
+#: src/frontends/qt4/QDocumentDialog.C:398
 msgid "Numbering & TOC"
 msgstr "Numérotation & TdM"
 
-#: src/frontends/qt4/QDocumentDialog.C:394
+#: src/frontends/qt4/QDocumentDialog.C:400
 msgid "Math Options"
 msgstr "Options des Maths"
 
-#: src/frontends/qt4/QDocumentDialog.C:395
+#: src/frontends/qt4/QDocumentDialog.C:401
 msgid "Float Placement"
 msgstr "Placement des Flottants"
 
-#: src/frontends/qt4/QDocumentDialog.C:396
+#: src/frontends/qt4/QDocumentDialog.C:402
 msgid "Bullets"
 msgstr "Puces"
 
-#: src/frontends/qt4/QDocumentDialog.C:397
+#: src/frontends/qt4/QDocumentDialog.C:403
 msgid "Branches"
 msgstr "Branches"
 
-#: src/frontends/qt4/QDocumentDialog.C:398
-#: src/frontends/qt4/QDocumentDialog.C:415
+#: src/frontends/qt4/QDocumentDialog.C:404
+#: src/frontends/qt4/QDocumentDialog.C:421
 msgid "LaTeX Preamble"
 msgstr "Préambule LaTeX"
 
@@ -11367,7 +11388,7 @@ msgstr "Insert de note en bas de page ouvert"
 msgid "footnote"
 msgstr "NoteBasPage"
 
-#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:443
+#: src/insets/insetgraphics.C:472 src/insets/insetinclude.C:447
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -13177,58 +13198,58 @@ msgstr ""
 "Vous ne pouvez pas entrer deux espaces ainsi. Lisez le Manuel "
 "d'Apprentissage."
 
-#: src/text.C:1661
+#: src/text.C:1709
 #, fuzzy
 msgid "[Change Tracking] "
 msgstr "Suivi des Modifications|S"
 
-#: src/text.C:1667
+#: src/text.C:1715
 msgid "Change: "
 msgstr "Modification : "
 
-#: src/text.C:1671
+#: src/text.C:1719
 msgid " at "
 msgstr " le "
 
-#: src/text.C:1681
+#: src/text.C:1729
 #, c-format
 msgid "Font: %1$s"
 msgstr "Police : %1$s"
 
-#: src/text.C:1686
+#: src/text.C:1734
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Profondeur : %1$d"
 
-#: src/text.C:1692
+#: src/text.C:1740
 msgid ", Spacing: "
 msgstr ", Espacement : "
 
-#: src/text.C:1704
+#: src/text.C:1752
 msgid "Other ("
 msgstr "Autre ("
 
-#: src/text.C:1713
+#: src/text.C:1761
 msgid ", Inset: "
 msgstr ", Insert : "
 
-#: src/text.C:1714
+#: src/text.C:1762
 msgid ", Paragraph: "
 msgstr ", Paragraphe : "
 
-#: src/text.C:1715
+#: src/text.C:1763
 msgid ", Id: "
 msgstr ", Identifiant : "
 
-#: src/text.C:1716
+#: src/text.C:1764
 msgid ", Position: "
 msgstr ", Position : "
 
-#: src/text.C:1722
+#: src/text.C:1770
 msgid ", Char: 0x"
 msgstr ""
 
-#: src/text.C:1724
+#: src/text.C:1772
 msgid ", Boundary: "
 msgstr ", Frontière : "
 
@@ -13291,6 +13312,15 @@ msgstr "Ressort vertical"
 #: src/vspace.C:509
 msgid "protected"
 msgstr "protégé"
+
+#~ msgid "\tEnd)"
+#~ msgstr "\tEnd)"
+
+#~ msgid "\tEnd."
+#~ msgstr "\tFin."
+
+#~ msgid "#*"
+#~ msgstr "#*"
 
 #~ msgid "About %1"
 #~ msgstr "À Propos de %1"
