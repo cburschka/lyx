@@ -54,8 +54,6 @@ void QAbout::build_dialog()
 
 	dialog_->copyrightTB->setPlainText(toqstr(controller().getCopyright()));
 	dialog_->copyrightTB->append("\n");
-	dialog_->copyrightTB->append(toqstr(controller().getLicense()));
-	dialog_->copyrightTB->append("\n");
 	dialog_->copyrightTB->append(toqstr(controller().getDisclaimer()));
 
 	dialog_->versionLA->setText(toqstr(controller().getVersion()));
