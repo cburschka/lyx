@@ -371,28 +371,28 @@
 0x01fd "\\'{\\ae}"                "" "" # LATIN SMALL LETTER AE WITH ACUTE
 #0x01fe ""                         "" "" # LATIN CAPITAL LETTER O WITH STROKE AND ACUTE
 #0x01ff ""                         "" "" # LATIN SMALL LETTER O WITH STROKE AND ACUTE
-#0x0200 ""                         "" "" # LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
-#0x0201 ""                         "" "" # LATIN SMALL LETTER A WITH DOUBLE GRAVE
+0x0200 "\\textdoublegrave{A}"     "tipa" "" # LATIN CAPITAL LETTER A WITH DOUBLE GRAVE
+0x0201 "\\textdoublegrave{a}"     "tipa" "" # LATIN SMALL LETTER A WITH DOUBLE GRAVE
 #0x0202 ""                         "" "" # LATIN CAPITAL LETTER A WITH INVERTED BREVE
 #0x0203 ""                         "" "" # LATIN SMALL LETTER A WITH INVERTED BREVE
-#0x0204 ""                         "" "" # LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
-#0x0205 ""                         "" "" # LATIN SMALL LETTER E WITH DOUBLE GRAVE
+0x0204 "\\textdoublegrave{E}"     "tipa" "" # LATIN CAPITAL LETTER E WITH DOUBLE GRAVE
+0x0205 "\\textdoublegrave{e}"     "tipa" "" # LATIN SMALL LETTER E WITH DOUBLE GRAVE
 #0x0206 ""                         "" "" # LATIN CAPITAL LETTER E WITH INVERTED BREVE
 #0x0207 ""                         "" "" # LATIN SMALL LETTER E WITH INVERTED BREVE
-#0x0208 ""                         "" "" # LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
-#0x0209 ""                         "" "" # LATIN SMALL LETTER I WITH DOUBLE GRAVE
+0x0208 "\\textdoublegrave{I}"     "tipa" "" # LATIN CAPITAL LETTER I WITH DOUBLE GRAVE
+0x0209 "\\textdoublegrave{\\i}"   "tipa" "" # LATIN SMALL LETTER I WITH DOUBLE GRAVE
 #0x020a ""                         "" "" # LATIN CAPITAL LETTER I WITH INVERTED BREVE
 #0x020b ""                         "" "" # LATIN SMALL LETTER I WITH INVERTED BREVE
-#0x020c ""                         "" "" # LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
-#0x020d ""                         "" "" # LATIN SMALL LETTER O WITH DOUBLE GRAVE
+0x020c "\\textdoublegrave{O}"     "tipa" "" # LATIN CAPITAL LETTER O WITH DOUBLE GRAVE
+0x020d "\\textdoublegrave{o}"     "tipa" "" # LATIN SMALL LETTER O WITH DOUBLE GRAVE
 #0x020e ""                         "" "" # LATIN CAPITAL LETTER O WITH INVERTED BREVE
 #0x020f ""                         "" "" # LATIN SMALL LETTER O WITH INVERTED BREVE
-#0x0210 ""                         "" "" # LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
-#0x0211 ""                         "" "" # LATIN SMALL LETTER R WITH DOUBLE GRAVE
+0x0210 "\\textdoublegrave{R}"     "tipa" "" # LATIN CAPITAL LETTER R WITH DOUBLE GRAVE
+0x0211 "\\textdoublegrave{r}"     "tipa" "" # LATIN SMALL LETTER R WITH DOUBLE GRAVE
 #0x0212 ""                         "" "" # LATIN CAPITAL LETTER R WITH INVERTED BREVE
 #0x0213 ""                         "" "" # LATIN SMALL LETTER R WITH INVERTED BREVE
-#0x0214 ""                         "" "" # LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
-#0x0215 ""                         "" "" # LATIN SMALL LETTER U WITH DOUBLE GRAVE
+0x0214 "\\textdoublegrave{U}"     "tipa" "" # LATIN CAPITAL LETTER U WITH DOUBLE GRAVE
+0x0215 "\\textdoublegrave{u}"     "tipa" "" # LATIN SMALL LETTER U WITH DOUBLE GRAVE
 #0x0216 ""                         "" "" # LATIN CAPITAL LETTER U WITH INVERTED BREVE
 #0x0217 ""                         "" "" # LATIN SMALL LETTER U WITH INVERTED BREVE
 #0x0218 ""                         "" "" # LATIN CAPITAL LETTER S WITH COMMA BELOW
@@ -625,7 +625,7 @@
 0x032a "\\textsubbridge"          "tipa" "combining" # COMBINING BRIDGE BELOW
 0x032b "\\textsubw"               "tipa" "combining" # COMBINING INVERTED DOUBLE ARCH BELOW
 0x032c "\\textsubwedge"           "tipa" "combining" # COMBINING CARON BELOW
-#0x032d ""                         "" "combining" # COMBINING CIRCUMFLEX ACCENT BELOW
+0x032d "\\textsubcircum"          "tipa" "combining" # COMBINING CIRCUMFLEX ACCENT BELOW
 #0x032e ""                         "" "combining" # COMBINING BREVE BELOW
 0x032f "\\textsubarch"            "tipa" "combining" # COMBINING INVERTED BREVE BELOW
 0x0330 "\\textsubtilde"           "tipa" "combining" # COMBINING TILDE BELOW
@@ -676,8 +676,8 @@
 #0x036d ""                         "" "combining" # COMBINING LATIN SMALL LETTER T
 #0x036e ""                         "" "combining" # COMBINING LATIN SMALL LETTER V
 #0x036f ""                         "" "combining" # COMBINING LATIN SMALL LETTER X
-#0x1e00 ""                         "" "" # LATIN CAPITAL LETTER A WITH RING BELOW
-#0x1e01 ""                         "" "" # LATIN SMALL LETTER A WITH RING BELOW
+0x1e00 "\\textsubring{A}"         "tipa" "" # LATIN CAPITAL LETTER A WITH RING BELOW
+0x1e01 "\\textsubring{a}"         "tipa" "" # LATIN SMALL LETTER A WITH RING BELOW
 0x1e02 "\\.{B}"                   "" "" # LATIN CAPITAL LETTER B WITH DOT ABOVE
 0x1e03 "\\.{b}"                   "" "" # LATIN SMALL LETTER B WITH DOT ABOVE
 0x1e04 "\\d{B}"                   "" "" # LATIN CAPITAL LETTER B WITH DOT BELOW
@@ -694,16 +694,16 @@
 #0x1e0f ""                         "" "" # LATIN SMALL LETTER D WITH LINE BELOW
 0x1e10 "\\c{D}"                   "" "" # LATIN CAPITAL LETTER D WITH CEDILLA
 0x1e11 "\\c{d}"                   "" "" # LATIN SMALL LETTER D WITH CEDILLA
-#0x1e12 ""                         "" "" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
-#0x1e13 ""                         "" "" # LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
+0x1e12 "\\textsubcircum{D}"       "tipa" "" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
+0x1e13 "\\textsubcircum{d}"       "tipa" "" # LATIN SMALL LETTER D WITH CIRCUMFLEX BELOW
 #0x1e14 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND GRAVE
 #0x1e15 ""                         "" "" # LATIN SMALL LETTER E WITH MACRON AND GRAVE
 #0x1e16 ""                         "" "" # LATIN CAPITAL LETTER E WITH MACRON AND ACUTE
 #0x1e17 ""                         "" "" # LATIN SMALL LETTER E WITH MACRON AND ACUTE
-#0x1e18 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
-#0x1e19 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
-#0x1e1a ""                         "" "" # LATIN CAPITAL LETTER E WITH TILDE BELOW
-#0x1e1b ""                         "" "" # LATIN SMALL LETTER E WITH TILDE BELOW
+0x1e18 "\\textsubcircum{E}"       "tipa" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX BELOW
+0x1e19 "\\textsubcircum{e}"       "tipa" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX BELOW
+0x1e1a "\\textsubtilde{E}"        "tipa" "" # LATIN CAPITAL LETTER E WITH TILDE BELOW
+0x1e1b "\\textsubtilde{e}"        "tipa" "" # LATIN SMALL LETTER E WITH TILDE BELOW
 #0x1e1c ""                         "" "" # LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
 #0x1e1d ""                         "" "" # LATIN SMALL LETTER E WITH CEDILLA AND BREVE
 0x1e1e "\\.{F}"                   "" "" # LATIN CAPITAL LETTER F WITH DOT ABOVE
@@ -720,8 +720,8 @@
 0x1e29 "\\c{h}"                   "" "" # LATIN SMALL LETTER H WITH CEDILLA
 #0x1e2a ""                         "" "" # LATIN CAPITAL LETTER H WITH BREVE BELOW
 #0x1e2b ""                         "" "" # LATIN SMALL LETTER H WITH BREVE BELOW
-#0x1e2c ""                         "" "" # LATIN CAPITAL LETTER I WITH TILDE BELOW
-#0x1e2d ""                         "" "" # LATIN SMALL LETTER I WITH TILDE BELOW
+0x1e2c "\\textsubtilde{I}"        "tipa" "" # LATIN CAPITAL LETTER I WITH TILDE BELOW
+0x1e2d "\\textsubtilde{i}"        "tipa" "" # LATIN SMALL LETTER I WITH TILDE BELOW
 #0x1e2e ""                         "" "" # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
 #0x1e2f ""                         "" "" # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
 0x1e30 "\\'{K}"                   "" "" # LATIN CAPITAL LETTER K WITH ACUTE
@@ -736,8 +736,8 @@
 #0x1e39 ""                         "" "" # LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
 #0x1e3a ""                         "" "" # LATIN CAPITAL LETTER L WITH LINE BELOW
 #0x1e3b ""                         "" "" # LATIN SMALL LETTER L WITH LINE BELOW
-#0x1e3c ""                         "" "" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
-#0x1e3d ""                         "" "" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
+0x1e3c "\\textsubcircum{L}"       "tipa" "" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
+0x1e3d "\\textsubcircum{l}"       "tipa" "" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
 0x1e3e "\\'{M}"                   "" "" # LATIN CAPITAL LETTER M WITH ACUTE
 0x1e3f "\\'{m}"                   "" "" # LATIN SMALL LETTER M WITH ACUTE
 0x1e40 "\\.{M}"                   "" "" # LATIN CAPITAL LETTER M WITH DOT ABOVE
@@ -750,8 +750,8 @@
 0x1e47 "\\d{n}"                   "" "" # LATIN SMALL LETTER N WITH DOT BELOW
 #0x1e48 ""                         "" "" # LATIN CAPITAL LETTER N WITH LINE BELOW
 #0x1e49 ""                         "" "" # LATIN SMALL LETTER N WITH LINE BELOW
-#0x1e4a ""                         "" "" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
-#0x1e4b ""                         "" "" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
+0x1e4a "\\textsubcircum{N}"       "tipa" "" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
+0x1e4b "\\textsubcircum{n}"       "tipa" "" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
 #0x1e4c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
 #0x1e4d ""                         "" "" # LATIN SMALL LETTER O WITH TILDE AND ACUTE
 #0x1e4e ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND DIAERESIS
@@ -788,14 +788,14 @@
 0x1e6d "\\d{t}"                   "" "" # LATIN SMALL LETTER T WITH DOT BELOW
 #0x1e6e ""                         "" "" # LATIN CAPITAL LETTER T WITH LINE BELOW
 #0x1e6f ""                         "" "" # LATIN SMALL LETTER T WITH LINE BELOW
-#0x1e70 ""                         "" "" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
-#0x1e71 ""                         "" "" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
+0x1e70 "\\textsubcircum{T}"       "tipa" "" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
+0x1e71 "\\textsubcircum{t}"       "tipa" "" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
 #0x1e72 ""                         "" "" # LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
 #0x1e73 ""                         "" "" # LATIN SMALL LETTER U WITH DIAERESIS BELOW
-#0x1e74 ""                         "" "" # LATIN CAPITAL LETTER U WITH TILDE BELOW
-#0x1e75 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE BELOW
-#0x1e76 ""                         "" "" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
-#0x1e77 ""                         "" "" # LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
+0x1e74 "\\textsubtilde{U}"        "tipa" "" # LATIN CAPITAL LETTER U WITH TILDE BELOW
+0x1e75 "\\textsubtilde{u}"        "tipa" "" # LATIN SMALL LETTER U WITH TILDE BELOW
+0x1e76 "\\textsubcircum{U}"       "tipa" "" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
+0x1e77 "\\textsubcircum{u}"       "tipa" "" # LATIN SMALL LETTER U WITH CIRCUMFLEX BELOW
 #0x1e78 ""                         "" "" # LATIN CAPITAL LETTER U WITH TILDE AND ACUTE
 #0x1e79 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE AND ACUTE
 #0x1e7a ""                         "" "" # LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
