@@ -318,7 +318,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 
 void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 {
-	//we kill the triple click if we move
+	// we kill the triple click if we move
 	doubleClickTimeout();
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
 			      q_motion_state(e->buttons()));
@@ -430,10 +430,11 @@ void GuiWorkArea::doubleClickTimeout() {
 void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 {
 	dc_event_ = double_click(e);
-	QTimer::singleShot(QApplication::doubleClickInterval(), this, SLOT(doubleClickTimeout()));
+	QTimer::singleShot(QApplication::doubleClickInterval(), this,
+			   SLOT(doubleClickTimeout()));
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
-									e->x(), e->y(),	
-											 q_button_state(e->button()));
+			e->x(), e->y(),
+			q_button_state(e->button()));
 	dispatch(cmd);
 }
 
