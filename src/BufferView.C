@@ -1152,9 +1152,6 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	}
 	
 	// Build temporary cursor.
-	// NOTE: editXY returns the top level inset of nested insets. If you happen
-	// to move from a text (inset=0) to a text inside an inset (e.g. an opened
-	// footnote inset, again inset=0), that inset will not be redrawn.
 	InsetBase * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
 
 	// Put anchor at the same position.
