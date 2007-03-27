@@ -41,14 +41,14 @@ if(MERGE_FILES)
 	set(depends_moc_uic ${frontends_qt4_headers} ${ui_files})
 	SET_SOURCE_FILES_PROPERTIES(allinone_const.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
 	SET_SOURCE_FILES_PROPERTIES(allinone_touched.C PROPERTIES OBJECT_DEPENDS "${depends_moc_uic}")
-	add_library(frontend_qt4 STATIC 
+	add_library(frontend_qt4 ${library_type} 
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C
 					${frontends_qt4_headers} 
 					${ui_files}
 	)
 else(MERGE_FILES)	
-	add_library(frontend_qt4 STATIC ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
+	add_library(frontend_qt4 ${library_type}  ${frontends_qt4_sources} ${frontends_qt4_headers} ${ui_files})
 endif(MERGE_FILES)
 
 target_link_libraries(frontend_qt4 ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} controllers)

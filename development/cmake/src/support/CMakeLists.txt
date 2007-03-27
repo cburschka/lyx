@@ -27,7 +27,7 @@ lyx_add_msvc_pch(support)
 include_directories(${TOP_SRC_DIR}/src/support ${ICONV_INCLUDE_DIR})
 
 if(NOT MERGE_FILES)
-	add_library(support STATIC ${support_sources} ${support_headers})
+	add_library(support ${library_type} ${support_sources} ${support_headers})
 else(NOT MERGE_FILES)
 	# move to front
 	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/convert.C)
@@ -36,7 +36,7 @@ else(NOT MERGE_FILES)
 	list(APPEND support_sources ${TOP_SRC_DIR}/src/support/lstrings.C)
 	list(REVERSE support_sources)
 	lyx_merge_files(allinone support_sources)
-	add_library(support STATIC 
+	add_library(support ${library_type}
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
 					

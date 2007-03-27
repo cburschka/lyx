@@ -17,10 +17,10 @@ include_directories(${TOP_SRC_DIR}/src/insets)
 
 
 if(NOT MERGE_FILES)
-	add_library(insets STATIC ${insets_sources} ${insets_headers})
+	add_library(insets ${library_type} ${insets_sources} ${insets_headers})
 else(NOT MERGE_FILES)
 	lyx_merge_files(allinone insets_sources)
-	add_library(insets STATIC 
+	add_library(insets ${library_type}
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_const.C
 					${CMAKE_CURRENT_BINARY_DIR}/allinone_touched.C)
 endif(NOT MERGE_FILES)
