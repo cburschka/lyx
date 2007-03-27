@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BulletsUi</class>
  <widget class="QWidget" name="BulletsUi" >
   <property name="geometry" >
@@ -182,11 +179,19 @@
     </widget>
    </item>
    <item row="2" column="1" colspan="3" >
-    <widget class="QStackedWidget" name="bulletpaneSW" />
+    <widget class="QStackedWidget" name="bulletpaneSW" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <includes>
   <include location="local" >qt_helpers.h</include>
  </includes>

@@ -13,6 +13,7 @@
 #include "BulletsModule.h"
 #include "qt_helpers.h"
 
+#include "debug.h"
 #include "support/filetools.h"
 
 #include <QPixmap>
@@ -70,6 +71,7 @@ void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string 
 
 	// get pixmap with bullets
 	QPixmap pixmap = QPixmap(toqstr(libFileSearch("images", fname, "xpm").absFilename()));
+
 	int const w = pixmap.width() / 6;
 	int const h = pixmap.height() / 6;
 
@@ -80,9 +82,10 @@ void BulletsModule::setupPanel(QListWidget * lw, QString panelname, std::string 
 	lw->setFlow(QListView::LeftToRight);
 	lw->setMovement(QListView::Static);
 	lw->setUniformItemSizes(true);
-	lw->setGridSize( QSize(w , h) );
-	lw->resize( 6 * w + 6 , 6 * h);
-	bulletpaneSW->setMinimumSize( 6 * w + 6 , 6 * h);
+	lw->setGridSize(QSize(w, h));
+	// the widening by 21 is needed to avoid wrapping
+	lw->resize(6 * w + 21, 6 * h);
+	bulletpaneSW->setMinimumSize(6 * w, 6 * h + 6);
 
 	// get individual bullets from pixmap
 	for (int row = 0; row < 6; ++row) {
