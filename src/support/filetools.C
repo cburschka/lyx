@@ -669,18 +669,16 @@ string const replaceEnvironmentPath(string const & path)
 
 
 // Make relative path out of two absolute paths
-string const makeRelPath(string const & abspath, string const & basepath)
+docstring const makeRelPath(docstring const & abspath, docstring const & basepath)
 // Makes relative path out of absolute path. If it is deeper than basepath,
 // it's easy. If basepath and abspath share something (they are all deeper
 // than some directory), it'll be rendered using ..'s. If they are completely
 // different, then the absolute path will be used as relative path.
 {
-	string::size_type const abslen = abspath.length();
-	string::size_type const baselen = basepath.length();
+	docstring::size_type const abslen = abspath.length();
+	docstring::size_type const baselen = basepath.length();
 
-	// FIXME UNICODE
-	docstring::size_type i =
-		os::common_path(from_utf8(abspath), from_utf8(basepath));
+	docstring::size_type i = os::common_path(abspath, basepath);
 
 	if (i == 0) {
 		// actually no match - cannot make it relative
@@ -689,8 +687,8 @@ string const makeRelPath(string const & abspath, string const & basepath)
 
 	// Count how many dirs there are in basepath above match
 	// and append as many '..''s into relpath
-	string buf;
-	string::size_type j = i;
+	docstring buf;
+	docstring::size_type j = i;
 	while (j < baselen) {
 		if (basepath[j] == '/') {
 			if (j + 1 == baselen)

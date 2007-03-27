@@ -537,14 +537,16 @@ docstring const LaTeXFeatures::getLyXSGMLEntities() const
 docstring const LaTeXFeatures::getIncludedFiles(string const & fname) const
 {
 	odocstringstream sgmlpreamble;
-	string const basename = onlyPath(fname);
+	// FIXME UNICODE
+	docstring const basename(from_utf8(onlyPath(fname)));
 
 	FileMap::const_iterator end = IncludedFiles_.end();
 	for (FileMap::const_iterator fi = IncludedFiles_.begin();
 	     fi != end; ++fi)
+		// FIXME UNICODE
 		sgmlpreamble << "\n<!ENTITY " << fi->first
 			     << (isSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
-			     << from_ascii(makeRelPath(fi->second, basename)) << "\">";
+			     << makeRelPath(from_utf8(fi->second), basename) << "\">";
 
 	return sgmlpreamble.str();
 }

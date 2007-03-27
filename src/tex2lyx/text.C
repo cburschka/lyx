@@ -1024,8 +1024,8 @@ void fix_relative_filename(string & name)
 		return;
 	// FIXME UNICODE encoding of name may be wrong (makeAbsPath expects
 	// utf8)
-	name = makeRelPath(makeAbsPath(name, getMasterFilePath()).absFilename(),
-			   getParentFilePath());
+	name = to_utf8(makeRelPath(from_utf8(makeAbsPath(name, getMasterFilePath()).absFilename()),
+			           from_utf8(getParentFilePath())));
 }
 
 

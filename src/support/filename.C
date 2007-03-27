@@ -143,13 +143,15 @@ void DocFileName::erase()
 
 string const DocFileName::relFilename(string const & path) const
 {
-	return makeRelPath(name_, path);
+	// FIXME UNICODE
+	return to_utf8(makeRelPath(from_utf8(name_), from_utf8(path)));
 }
 
 
 string const DocFileName::outputFilename(string const & path) const
 {
-	return save_abs_path_ ? name_ : makeRelPath(name_, path);
+	// FIXME UNICODE
+	return save_abs_path_ ? name_ : to_utf8(makeRelPath(from_utf8(name_), from_utf8(path)));
 }
 
 

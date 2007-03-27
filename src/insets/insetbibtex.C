@@ -119,7 +119,9 @@ string normalize_name(Buffer const & buffer, OutputParams const & runparams,
 	else if (!runparams.nice)
 		return fname;
 	else
-		return makeRelPath(fname, buffer.getMasterBuffer()->filePath());
+		// FIXME UNICODE
+		return to_utf8(makeRelPath(from_utf8(fname),
+		                           from_utf8(buffer.getMasterBuffer()->filePath())));
 }
 
 }

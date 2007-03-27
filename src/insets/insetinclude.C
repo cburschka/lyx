@@ -383,8 +383,9 @@ int InsetInclude::latex(Buffer const & buffer, odocstream & os,
 	// if incfile is relative, make it relative to the master
 	// buffer directory.
 	if (!absolutePath(incfile)) {
-		incfile = makeRelPath(included_file.absFilename(),
-				      m_buffer->filePath());
+		// FIXME UNICODE
+		incfile = to_utf8(makeRelPath(from_utf8(included_file.absFilename()),
+		                              from_utf8(m_buffer->filePath())));
 	}
 
 	// write it to a file (so far the complete file)

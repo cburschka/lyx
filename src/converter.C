@@ -397,10 +397,13 @@ bool Converters::convert(Buffer const * buffer,
 				runLaTeX(*buffer, latex_command_, runparams, errorList);
 			}
 
+			// FIXME UNICODE
 			string const infile2 = (conv.original_dir)
-				? infile.absFilename() : makeRelPath(infile.absFilename(), path);
+				? infile.absFilename() : to_utf8(makeRelPath(from_utf8(infile.absFilename()),
+				                                             from_utf8(path)));
 			string const outfile2 = (conv.original_dir)
-				? outfile.absFilename() : makeRelPath(outfile.absFilename(), path);
+				? outfile.absFilename() : to_utf8(makeRelPath(from_utf8(outfile.absFilename()),
+				                                              from_utf8(path)));
 
 			string command = conv.command;
 			command = subst(command, token_from, quoteName(infile2));

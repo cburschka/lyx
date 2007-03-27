@@ -106,12 +106,16 @@ string const doSubstitution(InsetExternalParams const & params,
 		string const masterpath = external_in_tmpdir ?
 			m_buffer->temppath() :
 			m_buffer->filePath();
+		// FIXME UNICODE
 		string relToMasterPath = support::onlyPath(
-				support::makeRelPath(absname, masterpath));
+				to_utf8(support::makeRelPath(from_utf8(absname),
+		                                             from_utf8(masterpath))));
 		if (relToMasterPath == "./")
 			relToMasterPath.clear();
+		// FIXME UNICODE
 		string relToParentPath = support::onlyPath(
-				support::makeRelPath(absname, parentpath));
+				to_utf8(support::makeRelPath(from_utf8(absname),
+				                             from_utf8(parentpath))));
 		if (relToParentPath == "./")
 			relToParentPath.clear();
 

@@ -252,8 +252,8 @@ makeDisplayPath(std::string const & path, unsigned int threshold = 1000);
   different, then the absolute path will be used as relative path
   WARNING: the absolute path and base path must really be absolute paths!!!
   */
-std::string const
-makeRelPath(std::string const & abspath, std::string const & basepath);
+docstring const
+makeRelPath(docstring const & abspath, docstring const & basepath);
 
 /// Strip filename from path name
 std::string const onlyPath(std::string const & fname);
