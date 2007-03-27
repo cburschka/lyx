@@ -1094,7 +1094,7 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 
 	bool const trackChanges = cur.buffer().params().trackChanges;
 
-	pos_type right; // needed after the for loop
+	pos_type right = 0; // needed after the for loop
 
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
 		pos_type parSize = pars_[pit].size();
