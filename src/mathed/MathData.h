@@ -50,7 +50,6 @@ public:
 	using base_type::pop_back;
 	using base_type::back;
 	using base_type::front;
-	using base_type::swap;
 	///
 	typedef size_type idx_type;
 	typedef size_type pos_type;
@@ -160,6 +159,8 @@ public:
 	int sshift() const { return sshift_; }
 	/// superscript kerning
 	int kerning() const { return kerning_; }
+	/// 
+	void swap(MathArray & ar) { base_type::swap(ar); }
 
 protected:
 	/// cached dimensions of cell

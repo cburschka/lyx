@@ -26,6 +26,8 @@
 #include "ParagraphList.h"
 
 #include "mathed/MathSupport.h"
+#include "mathed/MathData.h"
+
 #include "insets/inset.h"
 
 #include <algorithm>
@@ -71,6 +73,8 @@ void doRecordUndo(Undo::undo_kind kind,
 		std::swap(first_pit, last_pit);
 	// create the position information of the Undo entry
 	Undo undo;
+	undo.array = 0;
+	undo.pars = 0;
 	undo.kind = kind;
 	undo.cell = cell;
 	undo.cursor = cur;
@@ -97,7 +101,7 @@ void doRecordUndo(Undo::undo_kind kind,
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
 		// simply use the whole cell
-		undo.array = asString(cell.cell());
+		undo.array = new MathArray(cell.cell());
 	} else {
 		// some more effort needed here as 'the whole cell' of the
 		// main LyXText _is_ the whole document.
@@ -109,12 +113,12 @@ void doRecordUndo(Undo::undo_kind kind,
 		advance(first, first_pit);
 		ParagraphList::const_iterator last = plist.begin();
 		advance(last, last_pit + 1);
-		undo.pars = ParagraphList(first, last);
+		undo.pars = new ParagraphList(first, last);
 	}
 
 	// push the undo entry to undo stack
-	//lyxerr << "undo record: " << stack.top() << std::endl;
 	stack.push(undo);
+	//lyxerr << "undo record: " << stack.top() << std::endl;
 
 	// next time we'll try again to combine entries if possible
 	undo_finished = false;
@@ -162,20 +166,27 @@ bool textUndoOrRedo(BufferView & bv,
 	//lyxerr << "undo, performing: " << undo << std::endl;
 	DocIterator dit = undo.cell.asDocIterator(&buf->inset());
 	if (undo.isFullBuffer) {
+		BOOST_ASSERT(undo.pars);
 		// This is a full document
 		otherstack.top().bparams = buf->params();
 		buf->params() = undo.bparams;
-		buf->paragraphs() = undo.pars;
+		std::swap(buf->paragraphs(), *undo.pars);
+		delete undo.pars;
+		undo.pars = 0;
 	} else if (dit.inMathed()) {
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
 		// all math inset cells have just one paragraph!)
-		// lyxerr << "undo.array=" << to_ascii(undo.array) <<endl;
-		asArray(undo.array, dit.cell());
+		//lyxerr << "undo.array: " << *undo.array <<endl;
+		BOOST_ASSERT(undo.array);
+		dit.cell().swap(*undo.array);
+		delete undo.array;
+		undo.array = 0;
 	} else {
 		// Some finer machinery is needed here.
 		LyXText * text = dit.text();
 		BOOST_ASSERT(text);
+		BOOST_ASSERT(undo.pars);
 		ParagraphList & plist = text->paragraphs();
 
 		// remove new stuff between first and last
@@ -191,19 +202,24 @@ bool textUndoOrRedo(BufferView & bv,
 
 		// this ugly stuff is needed until we get rid of the
 		// inset_owner backpointer
-		ParagraphList::iterator pit = undo.pars.begin();
-		ParagraphList::iterator const end = undo.pars.end();
+		ParagraphList::iterator pit = undo.pars->begin();
+		ParagraphList::iterator const end = undo.pars->end();
 		for (; pit != end; ++pit)
 			pit->setInsetOwner(dit.realInset());
-		plist.insert(first, undo.pars.begin(), undo.pars.end());
+		plist.insert(first, undo.pars->begin(), undo.pars->end());
+		delete undo.pars;
+		undo.pars = 0;
 		updateLabels(*buf);
 	}
+	BOOST_ASSERT(undo.pars == 0);
+	BOOST_ASSERT(undo.array == 0);
 
 	// Set cursor
 	LCursor & cur = bv.cursor();
 	cur.setCursor(undo.cursor.asDocIterator(&buf->inset()));
 	cur.selection() = false;
 	cur.resetAnchor();
+	cur.fixIfBroken();
 	finishUndo();
 
 	return true;

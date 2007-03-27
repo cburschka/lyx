@@ -17,8 +17,8 @@
 #define UNDO_H
 
 #include "dociterator.h"
-#include "ParagraphList.h"
 #include "bufferparams.h"
+#include "ParagraphList_fwd.h"
 
 #include "support/types.h"
 
@@ -31,6 +31,7 @@ class BufferParams;
 class BufferView;
 class DocIterator;
 class LCursor;
+class MathArray;
 
 
 /**
@@ -84,9 +85,9 @@ public:
 	/// complement to end of this cell
 	pit_type end;
 	/// the contents of the saved Paragraphs (for texted)
-	ParagraphList pars;
-	/// the stringified contents of the saved MathArray (for mathed)
-	docstring array;
+	ParagraphList * pars;
+	/// the contents of the saved MathArray (for mathed)
+	MathArray * array;
 	/// Only used in case of full backups
 	BufferParams bparams;
 	/// Only used in case of full backups
