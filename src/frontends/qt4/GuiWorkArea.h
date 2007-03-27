@@ -42,22 +42,18 @@ class QLPainter;
 /// for emulating triple click
 class double_click {
 public:
-	int x;
-	int y;
 	Qt::MouseButton state;
 	bool active;
 
 	bool operator==(QMouseEvent const & e) {
-		return x == e.x() && y == e.y()
-			&& state == e.button();
+		return state == e.button();
 	}
 
 	double_click()
-		: x(0), y(0), state(Qt::NoButton), active(false) {}
+		: state(Qt::NoButton), active(false) {}
 
 	double_click(QMouseEvent * e)
-		: x(e->x()), y(e->y()),
-		state(e->button()), active(true) {}
+		: state(e->button()), active(true) {}
 };
 
 /** Qt only emits mouse events when the mouse is being moved, but
@@ -155,7 +151,7 @@ public Q_SLOTS:
 	* emits an 'int' action.
 	*/
 	void adjustViewWithScrollBar(int action = 0);
-	///
+	/// timer to limit triple clicks
 	void doubleClickTimeout();
 
 private:
