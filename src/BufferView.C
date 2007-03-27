@@ -277,10 +277,11 @@ bool BufferView::loadLyXFile(FileName const & filename, bool tolastfiles)
 		pit_type pit;
 		pos_type pos;
 		boost::tie(pit, pos) = LyX::ref().session().lastFilePos().load(filename);
-		// if successfully move to pit (returned par_id is not zero), update metrics
+		// if successfully move to pit (returned par_id is not zero), update metrics and reset font
 		if (moveToPosition(pit, 0, pos).get<1>()) {
 			if (fitCursor())
 				updateMetrics(false);
+			buffer_->text().setCurrentFont(cursor_);
 		}
 	}
 
@@ -1096,21 +1097,19 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 	// Either the inset under the cursor or the
 	// surrounding LyXText will handle this event.
 
-	// Build temporary cursor.
+	// make sure we stay within the screen...
 	cmd.y = min(max(cmd.y, -1), height_);
-	InsetBase * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
-
-	//lyxerr << BOOST_CURRENT_FUNCTION
-	//       << " * hit inset at tip: " << inset << endl;
-	//lyxerr << BOOST_CURRENT_FUNCTION
-	//       << " * created temp cursor:" << cur << endl;
-
-	// NOTE: editXY returns the top level inset of nested insets. If you happen
-	// to move from a text (inset=0) to a text inside an inset (e.g. an opened
-	// footnote inset, again inset=0), that inset will not be redrawn.
+	
 	if (cmd.action == LFUN_MOUSE_MOTION && cmd.button() == mouse_button::none) {
+
 		bool need_redraw = false;
 		
+		//Get inset under mouse, if there is one
+		// NOTE: checkInsetHit returns the top level inset of nested insets. 
+		// If you happen to move from a text (inset=0) to a text inside an inset 
+		// (e.g. an opened footnote inset, again inset=0), that inset will not 
+		// be redrawn.
+		InsetBase * inset = buffer_->text().checkInsetHit(cur.bv(), cmd.x, cmd.y);
 		if (inset != last_inset_) {
 			if (last_inset_)
 				need_redraw |= last_inset_->setMouseHover(false);
@@ -1151,6 +1150,12 @@ bool BufferView::workAreaDispatch(FuncRequest const & cmd0)
 		// This should be changed if it is further utilized.
 		return need_redraw;
 	}
+	
+	// Build temporary cursor.
+	// NOTE: editXY returns the top level inset of nested insets. If you happen
+	// to move from a text (inset=0) to a text inside an inset (e.g. an opened
+	// footnote inset, again inset=0), that inset will not be redrawn.
+	InsetBase * inset = buffer_->text().editXY(cur, cmd.x, cmd.y);
 
 	// Put anchor at the same position.
 	cur.resetAnchor();
