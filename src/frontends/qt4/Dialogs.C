@@ -242,7 +242,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setController(qvs);
 		GuiView & gui_view = static_cast<GuiView &>(lyxview_);
 		dialog->setView(new DockView<QViewSource, QViewSourceDialog>(
-			*dialog, qvs, &gui_view, _("LateX Source"), Qt::BottomDockWidgetArea));
+			*dialog, qvs, &gui_view, _("LaTeX Source"), Qt::BottomDockWidgetArea));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "mathpanel") {
 		dialog->setController(new ControlMath(*dialog));

@@ -144,7 +144,7 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 		static int counter = 0;
 		if (counter == 0) {
 			lyx::frontend::Alert::error(_("Invalid filename"),
-				     _("LyX does not provide LateX support for file names containing any of these characters:\n") +
+				     _("LyX does not provide LaTeX support for file names containing any of these characters:\n") +
 					 printable_list(invalid_chars));
 		}
 		++counter;
