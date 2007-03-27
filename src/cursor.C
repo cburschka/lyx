@@ -1299,6 +1299,7 @@ void LCursor::fixIfBroken()
 			       << ", max is " << copy.lastidx()
 			       << " at level " << copy.depth()
 			       << ". Trying to correct this."  << endl;
+			lyxerr << "old: " << *this << endl;
 			newdepth = copy.depth() - 1;
 		}
 		else if (copy.pit() > copy.lastpit()) {
@@ -1306,6 +1307,7 @@ void LCursor::fixIfBroken()
 			       << ", max is " << copy.lastpit()
 			       << " at level " << copy.depth()
 			       << ". Trying to correct this."  << endl;
+			lyxerr << "old: " << *this << endl;
 			newdepth = copy.depth() - 1;
 		}
 		else if (copy.pos() > copy.lastpos()) {
@@ -1313,6 +1315,7 @@ void LCursor::fixIfBroken()
 			       << ", max is " << copy.lastpos()
 			       << " at level " << copy.depth()
 			       << ". Trying to correct this."  << endl;
+			lyxerr << "old: " << *this << endl;
 			newdepth = copy.depth() - 1;
 		}
 		copy.pop();
@@ -1322,6 +1325,8 @@ void LCursor::fixIfBroken()
 	while (depth() > newdepth) {
 		pop();
 		lyxerr << "correcting cursor to level " << depth() << endl;
+		lyxerr << "new: " << *this << endl;
+		clearSelection();
 	}
 }
 
