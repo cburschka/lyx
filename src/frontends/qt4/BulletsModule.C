@@ -13,7 +13,6 @@
 #include "BulletsModule.h"
 #include "qt_helpers.h"
 
-#include "debug.h"
 #include "support/filetools.h"
 
 #include <QPixmap>
