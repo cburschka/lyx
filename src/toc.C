@@ -63,27 +63,24 @@ void outline(OutlineOp mode,  LCursor & cur)
 			}
 			ParagraphList::iterator dest = start;
 			// Move out (up) from this header
-			if (dest != bgn)
-				--dest;
-			else
+			if (dest == bgn)
 				break;
 			// Search previous same-level header above
-			for (; dest != bgn; --dest) {
+			do {
+				--dest;
 				toclevel = dest->layout()->toclevel;
-				if (toclevel != LyXLayout::NOT_IN_TOC
-				    && toclevel <= thistoclevel) {
-					break;
-				}
-			}
+			} while(dest != bgn && 
+				    (toclevel == LyXLayout::NOT_IN_TOC 
+					 || toclevel > thistoclevel));
 			// Not found; do nothing
-			if (dest == bgn)
+			if (toclevel == LyXLayout::NOT_IN_TOC || toclevel > thistoclevel)
 				break;
 			pit_type const newpit = std::distance(bgn, dest);
 			pit_type const len = std::distance(start, finish);
 			pit_type const deletepit = pit + len;
 			recordUndo(cur, Undo::ATOMIC, newpit, deletepit - 1);
 			pars.insert(dest, start, finish);
-			start = boost::next(bgn, deletepit);
+			start = boost::next(pars.begin(), deletepit);
 			pit = newpit;
 			pars.erase(start, finish);
 		break;
@@ -117,7 +114,7 @@ void outline(OutlineOp mode,  LCursor & cur)
 			// One such was found:
 			pit_type newpit = std::distance(bgn, dest);
 			pit_type const len = std::distance(start, finish);
-			recordUndo(cur, Undo::ATOMIC, pit, newpit -1);
+			recordUndo(cur, Undo::ATOMIC, pit, newpit - 1);
 			pars.insert(dest, start, finish);
 			start = boost::next(bgn, pit);
 			pit = newpit - len;
