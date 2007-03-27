@@ -592,6 +592,14 @@ contributers = [
                  "m=110916171925288",
                  "23 February 2005",
                  u"Norwegian documentation and localization"),
+		 
+     contributer(u"Richard Heck",
+                 "rgheck () brown ! edu",
+                 "GPL",
+                 "GPL Statement",
+                 "m=117501689204059",
+                 "27 March 2007",
+                 u"Bug fixes"),
 
      contributer(u"Bennett Helm",
                  "bennett.helm () fandm ! edu",
