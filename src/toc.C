@@ -69,11 +69,12 @@ void outline(OutlineOp mode,  LCursor & cur)
 			do {
 				--dest;
 				toclevel = dest->layout()->toclevel;
-			} while(dest != bgn && 
-				    (toclevel == LyXLayout::NOT_IN_TOC 
-					 || toclevel > thistoclevel));
+			} while(dest != bgn
+				&& (toclevel == LyXLayout::NOT_IN_TOC
+				    || toclevel > thistoclevel));
 			// Not found; do nothing
-			if (toclevel == LyXLayout::NOT_IN_TOC || toclevel > thistoclevel)
+			if (toclevel == LyXLayout::NOT_IN_TOC
+			    || toclevel > thistoclevel)
 				break;
 			pit_type const newpit = std::distance(bgn, dest);
 			pit_type const len = std::distance(start, finish);
