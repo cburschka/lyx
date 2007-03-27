@@ -155,6 +155,8 @@ public Q_SLOTS:
 	* emits an 'int' action.
 	*/
 	void adjustViewWithScrollBar(int action = 0);
+	///
+	void doubleClickTimeout();
 
 private:
 	/// The slot connected to SyntheticMouseEvent::timeout.

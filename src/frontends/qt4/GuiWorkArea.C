@@ -421,10 +421,8 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * e)
 }
 
 
-void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
+void GuiWorkArea::doubleClickTimeout()
 {
-	dc_event_ = double_click(e);
-
 	if (!dc_event_.active)
 		return;
 
@@ -434,6 +432,16 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
 		dc_event_.x, dc_event_.y,
 		q_button_state(dc_event_.state));
 	dispatch(cmd);
+}
+
+
+void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	dc_event_ = double_click(e);
+
+	// doubleClickInterval() is just too long.
+	QTimer::singleShot(int(QApplication::doubleClickInterval() / 1.5),
+		this, SLOT(doubleClickTimeout()));
 }
 
 
